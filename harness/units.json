@@ -1,0 +1,13 @@
+{
+ "module": "STARFLEETOP",
+ "default_profile": null,
+ "profiles": {
+  "sdk-release": {
+   "compiler": "6.4",
+   "include_first": [],
+   "flags": "/nologo /MT /W3 /GR /GX /O2 /D WIN32 /D NDEBUG /D _WINDOWS /c",
+   "note": "The OP API SDK's Release line (_ScriptInterface.dsp) without its /I list; the profile for game units is decided with the source layout (harness/SRC_LAYOUT.md)."
+  }
+ },
+ "units": {}
+}

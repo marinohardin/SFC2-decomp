@@ -1,0 +1,88 @@
+# harness proof, 2026-11-03T12:21Z
+# source root: $SFCOP_WORK/harness/proof/game (SDK copy); matched set: $SFCOP_WORK/harness/proof/matched_set.json
+
+## 1. The real SDK source scores 100% and is not yet recorded
+
+$ harness/build-and-verify.sh 0x006fc690 --behavioural
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (5.9 s, profile sdk-script-interface)
+OK    0x006fc690 tDynamicAllocator::Instance 100.00% exact (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified); not in matched_set.json
+INFO  behavioural: oracle not available (the replay oracle does not record traces yet; set HARNESS_ORACLE once it does)
+RESULT OK
+[exit 0]
+
+## 2. The harness records it
+
+$ harness/update-matched-set.sh 0x006fc690
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (5.9 s, profile sdk-script-interface)
+OK    0x006fc690 tDynamicAllocator::Instance 100.00% exact (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified); not in matched_set.json
+OK    0x006fc690 recorded in matched_set.json at 100.00%
+RESULT OK
+[exit 0]
+
+$ cat $SFCOP_WORK/harness/proof/matched_set.json
+{
+ "version": 1,
+ "functions": {
+  "0x006fc690": {
+   "name": "tDynamicAllocator::Instance",
+   "symbol": "?Instance@tDynamicAllocator@@SAPAV1@XZ",
+   "unit": "Scripts/ScriptInterface/DynamicAllocator.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-03"
+  }
+ }
+}
+[exit 0]
+
+## 3. One line broken (== NULL -> != NULL): the regression is refused
+
+$ harness/build-and-verify.sh 0x006fc690
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (6.0 s, profile sdk-script-interface)
+ERROR 0x006fc690 tDynamicAllocator::Instance 97.93% partial (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified) REGRESSION: matched_set.json has 100.00%
+INFO      +0x1d replace  original: jne short 0x5b                       rebuilt: je short 0x5b
+INFO    side by side: $SFCOP_WORK/harness/proof/state/build/DynamicAllocator-85775609033b/0x006fc690/diff.txt
+RESULT ERROR regression
+[exit 1]
+
+$ harness/update-matched-set.sh 0x006fc690
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (6.0 s, profile sdk-script-interface)
+ERROR 0x006fc690 tDynamicAllocator::Instance 97.93% partial (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified) REGRESSION: matched_set.json has 100.00%
+INFO      +0x1d replace  original: jne short 0x5b                       rebuilt: je short 0x5b
+INFO    side by side: $SFCOP_WORK/harness/proof/state/build/DynamicAllocator-85775609033b/0x006fc690/diff.txt
+INFO  matched_set.json not written: fix the errors above first
+RESULT ERROR regression
+[exit 1]
+matched_set.json sha256 before 099abef9760d9fe8, after 099abef9760d9fe8
+
+## 4. Line restored: back to 100%, nothing to record
+
+$ harness/build-and-verify.sh 0x006fc690
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (5.8 s, profile sdk-script-interface)
+OK    0x006fc690 tDynamicAllocator::Instance 100.00% exact (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified); matched_set.json has 100.00%
+RESULT OK
+[exit 0]
+
+$ harness/update-matched-set.sh 0x006fc690
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (5.5 s, profile sdk-script-interface)
+OK    0x006fc690 tDynamicAllocator::Instance 100.00% exact (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified); matched_set.json has 100.00%
+INFO  0x006fc690 not recorded: no improvement
+RESULT OK
+[exit 0]
+
+## 5. A change that deletes the entry from the matched set passes --all on its own, but not
+##    when held to the base branch's copy (here: the matched set as recorded in step 2)
+
+$ harness/build-and-verify.sh --all
+
+RESULT OK
+[exit 0]
+
+$ harness/build-and-verify.sh --all --base $SFCOP_WORK/harness/proof/base_matched_set.json
+ERROR 0x006fc690 tDynamicAllocator::Instance REGRESSION: matched_set.json drops the entry in $SFCOP_WORK/harness/proof/base_matched_set.json (100.00% exact)
+INFO  held to $SFCOP_WORK/harness/proof/base_matched_set.json as well (1 entries)
+OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (5.6 s, profile sdk-script-interface)
+OK    0x006fc690 tDynamicAllocator::Instance 100.00% exact (112 bytes original, 112 rebuilt; 10 relocations, 4 unverified); matched_set.json has 100.00%
+RESULT ERROR regression
+[exit 1]
