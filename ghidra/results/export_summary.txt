@@ -1,0 +1,6 @@
+INFO  SfcExport.java> functions by kind/name_source: {eh-funclet/eh-analyzer=16544, function/default=16855, function/ghidra-analysis=17, function/ghidra-fid-vs=307, function/imported=1, function/rtti-class-recovery=8223, function/sdk-fid=217, function/sdklib-exact=1859, thunk/default=209}
+INFO  SfcExport.java> functions by library: {(game)=43107, crt=304, cryptopp=8, import-thunk=41, stl=562, wonapi=210}
+INFO  SfcExport.java> functions with TU: assert-path=639 neighbour=1019
+INFO  SfcExport.java> classes.csv rows=2104 vtables=2149 slots=27479
+INFO  SfcExport.java> strings_to_functions rows=8978
+INFO  SfcSaveGzf.java> saved $SFCOP_ROOT/work/ghidra/StarFleetOP_2552.gzf (38661729 bytes)

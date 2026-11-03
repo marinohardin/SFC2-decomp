@@ -1,0 +1,2615 @@
+{
+ "variant": "gf",
+ "desc": "SP4, .dsp flags + /GF",
+ "compiler": "6.4",
+ "objdiff": {
+  "fuzzy_match_percent": 100.0,
+  "total_code": "139810",
+  "matched_code": "139810",
+  "matched_code_percent": 100.0,
+  "total_data": "24407",
+  "matched_data": "18387",
+  "matched_data_percent": 75.334946,
+  "total_functions": 1230,
+  "matched_functions": 1230,
+  "matched_functions_percent": 100.0,
+  "total_units": 23
+ },
+ "units": {
+  "NormalVictoryState": {
+   "project": "ScriptInterface",
+   "src": "./NormalVictoryState.cpp",
+   "compiled": true,
+   "secs": 13.5,
+   "has_target": true,
+   "n_functions": 33,
+   "exact": 33,
+   "code_bytes": 1633,
+   "exact_bytes": 1633,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 22,
+     "data_identical": 22,
+     "code_sections": 34,
+     "code_identical": 34,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryCondition": {
+   "project": "ScriptInterface",
+   "src": "./VictoryCondition.cpp",
+   "compiled": true,
+   "secs": 13.2,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 798,
+   "exact_bytes": 798,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 18,
+     "data_identical": 18,
+     "code_sections": 28,
+     "code_identical": 28,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryState": {
+   "project": "ScriptInterface",
+   "src": "./VictoryState.cpp",
+   "compiled": true,
+   "secs": 12.0,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 343,
+   "exact_bytes": 343,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Actor": {
+   "project": "ScriptInterface",
+   "src": "./Actor.cpp",
+   "compiled": true,
+   "secs": 13.2,
+   "has_target": true,
+   "n_functions": 47,
+   "exact": 47,
+   "code_bytes": 5207,
+   "exact_bytes": 5207,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 17,
+     "data_identical": 17,
+     "code_sections": 52,
+     "code_identical": 52,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     38,
+     38
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "EventMgr": {
+   "project": "ScriptInterface",
+   "src": "./EventMgr.cpp",
+   "compiled": true,
+   "secs": 13.2,
+   "has_target": true,
+   "n_functions": 26,
+   "exact": 26,
+   "code_bytes": 1702,
+   "exact_bytes": 1702,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 21,
+     "data_identical": 21,
+     "code_sections": 29,
+     "code_identical": 29,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     33,
+     33
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "State": {
+   "project": "ScriptInterface",
+   "src": "./State.cpp",
+   "compiled": true,
+   "secs": 13.1,
+   "has_target": true,
+   "n_functions": 51,
+   "exact": 51,
+   "code_bytes": 1407,
+   "exact_bytes": 1407,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 51,
+     "code_identical": 51,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     21,
+     21
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "teamtracker": {
+   "project": "ScriptInterface",
+   "src": "./teamtracker.cpp",
+   "compiled": true,
+   "secs": 12.7,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 397,
+   "exact_bytes": 397,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 18,
+     "code_identical": 18,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ShipInfo": {
+   "project": "ScriptInterface",
+   "src": "./ShipInfo.cpp",
+   "compiled": true,
+   "secs": 13.3,
+   "has_target": true,
+   "n_functions": 154,
+   "exact": 152,
+   "code_bytes": 14448,
+   "exact_bytes": 13618,
+   "misses": [
+    {
+     "name": "??0tShipInfo@@QAE@XZ",
+     "demangled": "public: __thiscall tShipInfo::tShipInfo(void)",
+     "size": 321,
+     "match": 99.89796,
+     "paired": true
+    },
+    {
+     "name": "?mSetupShipInfo@tShipInfo@@QAEXW4eTeamID@@W4eRace@@JJJPBDJJJJW4eShipOptions@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetupShipInfo(enum eTeamID, enum eRace, long, long, long, char const *, long, long, long, long, enum eShipOptions)",
+     "size": 509,
+     "match": 99.940475,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 122,
+     "data_identical": 119,
+     "code_sections": 221,
+     "code_identical": 217,
+     "code_relocs_differ": 2,
+     "code_unpaired": 2,
+     "data_unpaired": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     288,
+     288
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??EtShipIterator@@QAE?AV0@H@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88578",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88902",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88998",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89300",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "TeamInfo": {
+   "project": "ScriptInterface",
+   "src": "./TeamInfo.cpp",
+   "compiled": true,
+   "secs": 13.4,
+   "has_target": true,
+   "n_functions": 114,
+   "exact": 112,
+   "code_bytes": 11720,
+   "exact_bytes": 10945,
+   "misses": [
+    {
+     "name": "??0tTeamInfo@@QAE@XZ",
+     "demangled": "public: __thiscall tTeamInfo::tTeamInfo(void)",
+     "size": 418,
+     "match": 99.913795,
+     "paired": true
+    },
+    {
+     "name": "?mHandleShipEvent@tTeamInfo@@UAEXPAVtShipInfo@@ABVtEventInfo@tEventMgr@@@Z",
+     "demangled": "public: virtual void __thiscall tTeamInfo::mHandleShipEvent(class tShipInfo *, class tEventMgr::tEventInfo const &)",
+     "size": 357,
+     "match": 99.95868,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 79,
+     "data_identical": 76,
+     "code_sections": 142,
+     "code_identical": 139,
+     "code_relocs_differ": 2,
+     "code_unpaired": 1,
+     "data_unpaired": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     142,
+     142
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tTeamInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88747",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88912",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateTeamFleet@tTeamInfo@@IAEXABVtype_info@@JQAUtCreateShipInfo@@JJJJJJPBDW4eShipOptions@@W4eRace@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0EN@CJMA@A?5event?5meant?5for?5a?5particular?5s@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "DrawCanvas": {
+   "project": "ScriptInterface",
+   "src": "./DrawCanvas.cpp",
+   "compiled": true,
+   "secs": 12.8,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 1629,
+   "exact_bytes": 1629,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 27,
+     "code_identical": 27,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionInfo": {
+   "project": "ScriptInterface",
+   "src": "./MissionInfo.cpp",
+   "compiled": true,
+   "secs": 13.4,
+   "has_target": true,
+   "n_functions": 97,
+   "exact": 96,
+   "code_bytes": 11693,
+   "exact_bytes": 11490,
+   "misses": [
+    {
+     "name": "?mGetINIFileInt@tMissionInfo@@QBEJJJ@Z",
+     "demangled": "public: long __thiscall tMissionInfo::mGetINIFileInt(long, long) const",
+     "size": 203,
+     "match": 99.89796,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 59,
+     "data_identical": 58,
+     "code_sections": 127,
+     "code_identical": 127,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     144,
+     144
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_01KHHK@?$FO?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Script": {
+   "project": "ScriptInterface",
+   "src": "./Script.cpp",
+   "compiled": true,
+   "secs": 13.0,
+   "has_target": true,
+   "n_functions": 58,
+   "exact": 57,
+   "code_bytes": 5481,
+   "exact_bytes": 5030,
+   "misses": [
+    {
+     "name": "??0tScript@@QAE@XZ",
+     "demangled": "public: __thiscall tScript::tScript(void)",
+     "size": 451,
+     "match": 99.92701,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 42,
+     "code_sections": 67,
+     "code_relocs_differ": 1,
+     "code_unpaired": 1,
+     "data_unpaired": 2,
+     "code_identical": 65,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     67,
+     67
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tScript@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L85690",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86009",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptInterface": {
+   "project": "ScriptInterface",
+   "src": "./ScriptInterface.cpp",
+   "compiled": true,
+   "secs": 13.5,
+   "has_target": true,
+   "n_functions": 83,
+   "exact": 82,
+   "code_bytes": 8939,
+   "exact_bytes": 8698,
+   "misses": [
+    {
+     "name": "?mInitMapForRead@tScriptInterface@@IAEEJ@Z",
+     "demangled": "protected: unsigned char __thiscall tScriptInterface::mInitMapForRead(long)",
+     "size": 241,
+     "match": 99.93056,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 41,
+     "code_sections": 91,
+     "code_identical": 91,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     58,
+     58
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_02FCOO@?1?1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MapObject": {
+   "project": "shared",
+   "src": "./Source/Scripting/MapObject.cpp",
+   "compiled": true,
+   "secs": 2.8,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 1847,
+   "exact_bytes": 1847,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "$L": 0,
+     "$T": 0,
+     "_$E": 0
+    },
+    "label_count": [
+     17,
+     17
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionMatchLocation": {
+   "project": "shared",
+   "src": "./Source/Scripting/MissionMatchLocation.cpp",
+   "compiled": true,
+   "secs": 11.4,
+   "has_target": true,
+   "n_functions": 28,
+   "exact": 27,
+   "code_bytes": 1985,
+   "exact_bytes": 1594,
+   "misses": [
+    {
+     "name": "?StreamIn@tMetaLocationSpec@@UAEXAAVtInput@nDataStore@@@Z",
+     "demangled": "public: virtual void __thiscall tMetaLocationSpec::StreamIn(class nDataStore::tInput &)",
+     "size": 391,
+     "match": 99.8,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_identical": 30,
+     "code_sections": 29,
+     "code_identical": 29,
+     "data_unpaired": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     15,
+     15
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_07HKCI@tBuffer?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0DO@CDAM@?4?4?2Shared?2Source?2Taldren?2Common?2@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "missionspec": {
+   "project": "shared",
+   "src": "./Source/Scripting/missionspec.cpp",
+   "compiled": true,
+   "secs": 11.9,
+   "has_target": true,
+   "n_functions": 90,
+   "exact": 90,
+   "code_bytes": 14275,
+   "exact_bytes": 14275,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 44,
+     "code_sections": 106,
+     "code_identical": 106,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     116,
+     116
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "NetMsgClass": {
+   "project": "shared",
+   "src": "./Source/Network/NetMsgClass.cpp",
+   "compiled": true,
+   "secs": 3.7,
+   "has_target": true,
+   "n_functions": 8,
+   "exact": 7,
+   "code_bytes": 1035,
+   "exact_bytes": 219,
+   "misses": [
+    {
+     "name": "?mStream@tNetMsg@@IAEKPBXEPAU1@@Z",
+     "demangled": "protected: unsigned long __thiscall tNetMsg::mStream(void const *, unsigned char, struct tNetMsg *)",
+     "size": 816,
+     "match": 99.94774,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_identical": 7,
+     "code_sections": 8,
+     "code_identical": 8,
+     "data_unpaired": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": 0,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_0FC@IFHA@C?3?2Projects?2Taldren?2Projects?2SFC@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0DE@HKKH@tNetMsg?3?3mStream?$CI?$CJ?3?5Don?8t?5know?5h@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptMapData": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptMapData.cpp",
+   "compiled": true,
+   "secs": 12.8,
+   "has_target": true,
+   "n_functions": 84,
+   "exact": 81,
+   "code_bytes": 33114,
+   "exact_bytes": 27769,
+   "misses": [
+    {
+     "name": "??0tMapOverrides@@QAE@XZ",
+     "demangled": "public: __thiscall tMapOverrides::tMapOverrides(void)",
+     "size": 3814,
+     "match": 99.91817,
+     "paired": true
+    },
+    {
+     "name": "?mLoadMap@tScriptMapData@@QAEXPBDQAPBDPAVtMapOverrides@@@Z",
+     "demangled": "public: void __thiscall tScriptMapData::mLoadMap(char const *, char const **const, class tMapOverrides *)",
+     "size": 970,
+     "match": 99.965515,
+     "paired": true
+    },
+    {
+     "name": "?mFindMapStart@tScriptMapData@@IBEJPBD@Z",
+     "demangled": "protected: long __thiscall tScriptMapData::mFindMapStart(char const *) const",
+     "size": 561,
+     "match": 99.94924,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_identical": 10,
+     "code_sections": 94,
+     "code_identical": 78,
+     "code_relocs_differ": 11,
+     "data_unpaired": 17,
+     "code_unpaired": 5,
+     "data_relocs_differ": 5,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -37,
+     "_$E": 0
+    },
+    "label_count": [
+     133,
+     133
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text$x",
+       "$L81363",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OECE@PL9?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EOLD@PL8?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EPOO@PL7?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OFHJ@PL6?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03BKMA@PL5?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03LAFH@PL4?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OFLC@PL3?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EPCF@PL2?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03LAJM@PL1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_04OCA@PL10?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T82866",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88599",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89386",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89393",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90127",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90147",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90204",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90404",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90718",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindMapStart@tScriptMapData@@IBEJPBD@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90745",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_02FCOO@?1?1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91026",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMapItemType@tScriptMapData@@SA?AW4eMapObjectType@@DPAH@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "??A?$map@DV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@D@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABD@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91954",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92158",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L94047",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T94045",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAU?$pair@$$CBDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABU21@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L100253",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T100659",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtMapObject@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L100672",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T101119",
+       "1"
+      ],
+      "why": "relocs"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptStructs": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptStructs.cpp",
+   "compiled": true,
+   "secs": 11.4,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 594,
+   "exact_bytes": 594,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "sfcstreams": {
+   "project": "shared",
+   "src": "./Source/Common/sfcstreams.cpp",
+   "compiled": true,
+   "secs": 4.2,
+   "has_target": true,
+   "n_functions": 161,
+   "exact": 126,
+   "code_bytes": 14824,
+   "exact_bytes": 8860,
+   "misses": [
+    {
+     "name": "??5tSFCStream@@QAEAAV0@AAVtString@@@Z",
+     "demangled": "public: class tSFCStream & __thiscall tSFCStream::operator>>(class tString &)",
+     "size": 87,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?Int32StreamOutText@@YAXPADAAJAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32StreamOutText(char *, long &, class tSFCStream &)",
+     "size": 77,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int32StreamInText@@YAXPADAAJAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32StreamInText(char *, long &, class tSFCStream &)",
+     "size": 165,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "?Int32uStreamOutText@@YAXPADAAKAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32uStreamOutText(char *, unsigned long &, class tSFCStream &)",
+     "size": 77,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int32uStreamInText@@YAXPADAAKAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32uStreamInText(char *, unsigned long &, class tSFCStream &)",
+     "size": 165,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "?Int16StreamOutText@@YAXPADAAFAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16StreamOutText(char *, short &, class tSFCStream &)",
+     "size": 78,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int16StreamInText@@YAXPADAAFAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16StreamInText(char *, short &, class tSFCStream &)",
+     "size": 177,
+     "match": 99.92063,
+     "paired": true
+    },
+    {
+     "name": "?Int16uStreamOutText@@YAXPADAAGAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16uStreamOutText(char *, unsigned short &, class tSFCStream &)",
+     "size": 80,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?Int16uStreamInText@@YAXPADAAGAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16uStreamInText(char *, unsigned short &, class tSFCStream &)",
+     "size": 177,
+     "match": 99.92063,
+     "paired": true
+    },
+    {
+     "name": "?Int8StreamOutText@@YAXPADAACAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8StreamOutText(char *, signed char &, class tSFCStream &)",
+     "size": 78,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int8StreamInText@@YAXPADAACAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8StreamInText(char *, signed char &, class tSFCStream &)",
+     "size": 175,
+     "match": 99.92063,
+     "paired": true
+    },
+    {
+     "name": "?Int8uStreamOutText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8uStreamOutText(char *, unsigned char &, class tSFCStream &)",
+     "size": 79,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?Int8uStreamInText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8uStreamInText(char *, unsigned char &, class tSFCStream &)",
+     "size": 175,
+     "match": 99.92063,
+     "paired": true
+    },
+    {
+     "name": "?ITruthStreamOutText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl ITruthStreamOutText(char *, unsigned char &, class tSFCStream &)",
+     "size": 79,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?ITruthStreamInText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl ITruthStreamInText(char *, unsigned char &, class tSFCStream &)",
+     "size": 175,
+     "match": 99.92063,
+     "paired": true
+    },
+    {
+     "name": "?FloatStreamOutText@@YAXPADAAMAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl FloatStreamOutText(char *, float &, class tSFCStream &)",
+     "size": 82,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?FloatStreamInText@@YAXPADAAMAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl FloatStreamInText(char *, float &, class tSFCStream &)",
+     "size": 165,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "?TPoint3StreamOutText@@YAXPADAAUtPoint3@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint3StreamOutText(char *, struct tPoint3&, class tSFCStream &)",
+     "size": 101,
+     "match": 99.82758,
+     "paired": true
+    },
+    {
+     "name": "?TPoint3StreamInText@@YAXPADAAUtPoint3@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint3StreamInText(char *, struct tPoint3&, class tSFCStream &)",
+     "size": 199,
+     "match": 99.92958,
+     "paired": true
+    },
+    {
+     "name": "?TPoint2StreamOutText@@YAXPADAAUtPoint2@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint2StreamOutText(char *, struct tPoint2&, class tSFCStream &)",
+     "size": 92,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?TPoint2StreamInText@@YAXPADAAUtPoint2@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint2StreamInText(char *, struct tPoint2&, class tSFCStream &)",
+     "size": 187,
+     "match": 99.92538,
+     "paired": true
+    },
+    {
+     "name": "?TPoint4StreamOutText@@YAXPADAAUtPoint4@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint4StreamOutText(char *, struct tPoint4&, class tSFCStream &)",
+     "size": 110,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?TPoint4StreamInText@@YAXPADAAUtPoint4@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint4StreamInText(char *, struct tPoint4&, class tSFCStream &)",
+     "size": 211,
+     "match": 99.933334,
+     "paired": true
+    },
+    {
+     "name": "?TPoint6StreamOutText@@YAXPADAAUtPoint6@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint6StreamOutText(char *, struct tPoint6&, class tSFCStream &)",
+     "size": 120,
+     "match": 99.60526,
+     "paired": true
+    },
+    {
+     "name": "?TPoint6StreamInText@@YAXPADAAUtPoint6@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint6StreamInText(char *, struct tPoint6&, class tSFCStream &)",
+     "size": 94,
+     "match": 99.67742,
+     "paired": true
+    },
+    {
+     "name": "?TStringStreamOutText@@YAXAAVtString@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStringStreamOutText(class tString &, class tString &, class tSFCStream &)",
+     "size": 152,
+     "match": 99.87805,
+     "paired": true
+    },
+    {
+     "name": "?TStringStreamInText@@YAXAAVtString@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStringStreamInText(class tString &, class tString &, class tSFCStream &)",
+     "size": 247,
+     "match": 99.91071,
+     "paired": true
+    },
+    {
+     "name": "?TStdStringStreamOutText@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStdStringStreamOutText(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class tSFCStream &)",
+     "size": 407,
+     "match": 99.93198,
+     "paired": true
+    },
+    {
+     "name": "?TStdStringStreamInText@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStdStringStreamInText(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class tSFCStream &)",
+     "size": 380,
+     "match": 99.92701,
+     "paired": true
+    },
+    {
+     "name": "?TMatrixStreamOutText@@YAXPADAAVtMatrix@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TMatrixStreamOutText(char *, class tMatrix &, class tSFCStream &)",
+     "size": 704,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?TMatrixStreamInText@@YAXPADAAVtMatrix@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TMatrixStreamInText(char *, class tMatrix &, class tSFCStream &)",
+     "size": 359,
+     "match": 99.796745,
+     "paired": true
+    },
+    {
+     "name": "?DoubleStreamOutText@@YAXPADAANAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl DoubleStreamOutText(char *, double &, class tSFCStream &)",
+     "size": 81,
+     "match": 99.791664,
+     "paired": true
+    },
+    {
+     "name": "?DoubleStreamInText@@YAXPADAANAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl DoubleStreamInText(char *, double &, class tSFCStream &)",
+     "size": 165,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "?TextStreamOutText@@YAXPAD0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TextStreamOutText(char *, char *, class tSFCStream &)",
+     "size": 75,
+     "match": 99.7619,
+     "paired": true
+    },
+    {
+     "name": "?TextStreamInText@@YAXPAD0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TextStreamInText(char *, char *, class tSFCStream &)",
+     "size": 189,
+     "match": 99.92958,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 39,
+     "data_identical": 14,
+     "code_sections": 168,
+     "code_identical": 168,
+     "data_unpaired": 25,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -1,
+     "$T": -1,
+     "_$E": 0
+    },
+    "label_count": [
+     37,
+     37
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_08CMLB@?$CFs?5?$DN?5?$CFld?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_06KMMP@?5?$DN?5?$CFld?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_08CPFG@?$CFs?5?$DN?5?$CFlu?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_06KPCI@?5?$DN?5?$CFlu?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_07MMAO@?$CFs?5?$DN?5?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_05LCJG@?5?$DN?5?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BE@EECI@?$CFs?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?5z?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@CCAG@?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?5z?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0P@GMCA@?$CFs?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@NELG@?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BJ@EDPN@?$CFs?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?5z?$DN?$CFf?5w?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BH@FCNK@?5?$DN?5x?$DN?$CFf?5y?$DN?$CFf?5z?$DN?$CFf?5w?$DN?$CFf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_07IIBK@fNormal?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_04HLIK@fXYZ?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_02DILL@?$CFs?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03FGJK@?5?$DN?5?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0CF@HDNB@mtx?$FL3?$FN?5?$DN?5?$FL0?$FN?$DN?$CFf?5?$FL1?$FN?$DN?$CFf?5?$FL2?$FN?$DN?$CFf?5?$FL3@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0CF@GMFK@mtx?$FL2?$FN?5?$DN?5?$FL0?$FN?$DN?$CFf?5?$FL1?$FN?$DN?$CFf?5?$FL2?$FN?$DN?$CFf?5?$FL3@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0CF@EMMG@mtx?$FL1?$FN?5?$DN?5?$FL0?$FN?$DN?$CFf?5?$FL1?$FN?$DN?$CFf?5?$FL2?$FN?$DN?$CFf?5?$FL3@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0CF@FDEN@mtx?$FL0?$FN?5?$DN?5?$FL0?$FN?$DN?$CFf?5?$FL1?$FN?$DN?$CFf?5?$FL2?$FN?$DN?$CFf?5?$FL3@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BG@KJDK@identity?5?$DN?$CFld?53x4?$DN?$CFld?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_08HJJP@?$CFs?5?$DN?5?$CFlf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_06PJOB@?5?$DN?5?$CFlf?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_07GFLF@?$CFs?5?$DN?5?$CFs?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "SFCThreadState": {
+   "project": "shared",
+   "src": "./Meta/Servers/SFCThreadState.cpp",
+   "compiled": true,
+   "secs": 7.2,
+   "has_target": true,
+   "n_functions": 12,
+   "exact": 12,
+   "code_bytes": 410,
+   "exact_bytes": 410,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 11,
+     "data_identical": 11,
+     "code_sections": 13,
+     "code_identical": 13,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Strength": {
+   "project": "shared",
+   "src": "./Source/Scripting/Strength.cpp",
+   "compiled": true,
+   "secs": 7.3,
+   "has_target": true,
+   "n_functions": 52,
+   "exact": 48,
+   "code_bytes": 6329,
+   "exact_bytes": 4771,
+   "misses": [
+    {
+     "name": "?StreamIn@tStrength@@UAEXAAVtInput@nDataStore@@@Z",
+     "demangled": "public: virtual void __thiscall tStrength::StreamIn(class nDataStore::tInput &)",
+     "size": 284,
+     "match": 99.818184,
+     "paired": true
+    },
+    {
+     "name": "?StreamIn@tShipStrength@@UAEXAAVtInput@nDataStore@@@Z",
+     "demangled": "public: virtual void __thiscall tShipStrength::StreamIn(class nDataStore::tInput &)",
+     "size": 635,
+     "match": 99.78903,
+     "paired": true
+    },
+    {
+     "name": "??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@@Z",
+     "demangled": "class nDataStore::tInput & __cdecl nDataStore::operator>>(class nDataStore::tInput &, class std::vector<class tShipStrength, class std::allocator<class tShipStrength> > &)",
+     "size": 511,
+     "match": 99.94444,
+     "paired": true
+    },
+    {
+     "name": "?Read@tBuffer@nDataStore@@QBEXPAEJK@Z",
+     "demangled": "public: void __thiscall nDataStore::tBuffer::Read(unsigned char *, long, unsigned long) const",
+     "size": 128,
+     "match": 99.79592,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 40,
+     "code_sections": 57,
+     "code_identical": 57,
+     "data_unpaired": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     39,
+     39
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_07HKCI@tBuffer?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0DO@CDAM@?4?4?2Shared?2Source?2Taldren?2Common?2@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "texttoken": {
+   "project": "shared",
+   "src": "./Source/Scripting/texttoken.cpp",
+   "compiled": true,
+   "secs": 0.5,
+   "has_target": true,
+   "n_functions": 0,
+   "exact": 0,
+   "code_bytes": 0,
+   "exact_bytes": 0,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 76,
+     "data_identical": 1,
+     "data_unpaired": 75,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {},
+    "label_count": [
+     0,
+     0
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "??_C@_08DIGF@STARDATE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BF@LDNA@PREVIOUS_SYSTEM_NAME?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@ENLA@SYSTEM_NAME?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MNIH@TEAM20_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@MIGP@TEAM20_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@NJJD@TEAM20_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ICAF@TEAM19_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@PCJO@TEAM19_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@JCIM@TEAM19_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MKCL@TEAM18_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@KDPD@TEAM18_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@HCM@TEAM18_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@HDJG@TEAM17_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@JOJN@TEAM17_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@ECEN@TEAM17_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@DLLI@TEAM16_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@MPPA@TEAM16_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@NHON@TEAM16_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ODML@TEAM15_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@DMEG@TEAM15_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@GJAN@TEAM15_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@KLOF@TEAM14_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@GNCL@TEAM14_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@PMKN@TEAM14_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@FDCM@TEAM13_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@NLCK@TEAM13_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@BEMN@TEAM13_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@BLAC@TEAM12_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@IKEH@TEAM12_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@IBGN@TEAM12_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MDHB@TEAM11_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@HJPB@TEAM11_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@DPIN@TEAM11_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ILFP@TEAM10_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@CIJM@TEAM10_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@KKCN@TEAM10_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@DGJN@TEAM9_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@DBBO@TEAM9_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@HIMK@TEAM9_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@HOLD@TEAM8_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@GAHD@TEAM8_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@ONGK@TEAM8_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@MHAO@TEAM7_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@FNBN@TEAM7_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@KIAL@TEAM7_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@IPCA@TEAM6_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@MHA@TEAM6_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@DNKL@TEAM6_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@FHFD@TEAM5_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@PPMG@TEAM5_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  }
+ },
+ "objdiff_units": {
+  "ScriptInterface/NormalVictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1633",
+   "matched_code": "1633",
+   "matched_code_percent": 100.0,
+   "total_data": "636",
+   "matched_data": "636",
+   "matched_data_percent": 100.0,
+   "total_functions": 33,
+   "matched_functions": 33,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryCondition": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "798",
+   "matched_code": "798",
+   "matched_code_percent": 100.0,
+   "total_data": "532",
+   "matched_data": "532",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "343",
+   "matched_code": "343",
+   "matched_code_percent": 100.0,
+   "total_data": "444",
+   "matched_data": "444",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Actor": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5207",
+   "matched_code": "5207",
+   "matched_code_percent": 100.0,
+   "total_data": "564",
+   "matched_data": "564",
+   "matched_data_percent": 100.0,
+   "total_functions": 47,
+   "matched_functions": 47,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/EventMgr": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1702",
+   "matched_code": "1702",
+   "matched_code_percent": 100.0,
+   "total_data": "816",
+   "matched_data": "816",
+   "matched_data_percent": 100.0,
+   "total_functions": 26,
+   "matched_functions": 26,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/State": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1407",
+   "matched_code": "1407",
+   "matched_code_percent": 100.0,
+   "total_data": "348",
+   "matched_data": "348",
+   "matched_data_percent": 100.0,
+   "total_functions": 51,
+   "matched_functions": 51,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/teamtracker": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "397",
+   "matched_code": "397",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ShipInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14448",
+   "matched_code": "14448",
+   "matched_code_percent": 100.0,
+   "total_data": "3948",
+   "matched_data": "3864",
+   "matched_data_percent": 97.87234,
+   "total_functions": 154,
+   "matched_functions": 154,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/TeamInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11720",
+   "matched_code": "11720",
+   "matched_code_percent": 100.0,
+   "total_data": "2468",
+   "matched_data": "1916",
+   "matched_data_percent": 77.633705,
+   "total_functions": 114,
+   "matched_functions": 114,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/DrawCanvas": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1629",
+   "matched_code": "1629",
+   "matched_code_percent": 100.0,
+   "total_data": "228",
+   "matched_data": "228",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/MissionInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11693",
+   "matched_code": "11693",
+   "matched_code_percent": 100.0,
+   "total_data": "1951",
+   "matched_data": "1687",
+   "matched_data_percent": 86.468475,
+   "total_functions": 97,
+   "matched_functions": 97,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Script": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5481",
+   "matched_code": "5481",
+   "matched_code_percent": 100.0,
+   "total_data": "1328",
+   "matched_data": "1248",
+   "matched_data_percent": 93.9759,
+   "total_functions": 58,
+   "matched_functions": 58,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ScriptInterface": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "8939",
+   "matched_code": "8939",
+   "matched_code_percent": 100.0,
+   "total_data": "1272",
+   "matched_data": "1048",
+   "matched_data_percent": 82.38994,
+   "total_functions": 83,
+   "matched_functions": 83,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MapObject": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1847",
+   "matched_code": "1847",
+   "matched_code_percent": 100.0,
+   "total_data": "285",
+   "matched_data": "285",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MissionMatchLocation": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1985",
+   "matched_code": "1985",
+   "matched_code_percent": 100.0,
+   "total_data": "806",
+   "matched_data": "558",
+   "matched_data_percent": 69.230774,
+   "total_functions": 28,
+   "matched_functions": 28,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/missionspec": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14275",
+   "matched_code": "14275",
+   "matched_code_percent": 100.0,
+   "total_data": "1486",
+   "matched_data": "1486",
+   "matched_data_percent": 100.0,
+   "total_functions": 90,
+   "matched_functions": 90,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/NetMsgClass": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1035",
+   "matched_code": "1035",
+   "matched_code_percent": 100.0,
+   "total_data": "2232",
+   "matched_data": "60",
+   "matched_data_percent": 2.688172,
+   "total_functions": 8,
+   "matched_functions": 8,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptMapData": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "33114",
+   "matched_code": "33114",
+   "matched_code_percent": 100.0,
+   "total_data": "1076",
+   "matched_data": "988",
+   "matched_data_percent": 91.82156,
+   "total_functions": 84,
+   "matched_functions": 84,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptStructs": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "594",
+   "matched_code": "594",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/sfcstreams": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14824",
+   "matched_code": "14824",
+   "matched_code_percent": 100.0,
+   "total_data": "864",
+   "matched_data": "372",
+   "matched_data_percent": 43.055553,
+   "total_functions": 161,
+   "matched_functions": 161,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/SFCThreadState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "410",
+   "matched_code": "410",
+   "matched_code_percent": 100.0,
+   "total_data": "249",
+   "matched_data": "249",
+   "matched_data_percent": 100.0,
+   "total_functions": 12,
+   "matched_functions": 12,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/Strength": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "6329",
+   "matched_code": "6329",
+   "matched_code_percent": 100.0,
+   "total_data": "1126",
+   "matched_data": "854",
+   "matched_data_percent": 75.84369,
+   "total_functions": 52,
+   "matched_functions": 52,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/texttoken": {
+   "fuzzy_match_percent": 100.0,
+   "matched_code_percent": 100.0,
+   "total_data": "1544",
+   "matched_functions_percent": 100.0,
+   "complete_code_percent": 100.0,
+   "total_units": 1
+  }
+ }
+}

@@ -1,0 +1,17 @@
+# StarFleetOP.exe Mon Nov 02 19:37:02 PST 2026
+functions	44100
+thunks	193
+external_functions	351
+function_bytes	3465781
+named_function_bytes	177852
+classes	2112
+data_types	588
+bookmark.Analysis.Address Table	1337
+bookmark.Analysis.Found Code	5860
+bookmark.Analysis.Function ID Analyzer	308
+bookmark.Analysis.Non-Returning Function	6
+bookmark.Error.Bad Instruction	130
+bookmark.Info.PE Header	4
+source.ANALYSIS	16869
+source.DEFAULT	27230
+source.IMPORTED	1

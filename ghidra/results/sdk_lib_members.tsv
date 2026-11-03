@@ -1,0 +1,405 @@
+archive	member	project_file	status
+ScriptInterfaceR.lib	/		not-coff
+ScriptInterfaceR.lib	/		not-coff
+ScriptInterfaceR.lib	//		not-coff
+ScriptInterfaceR.lib	.\Release\MapObject.obj	/sdklibs/ScriptInterfaceR.lib/MapObject.obj	imported
+ScriptInterfaceR.lib	.\Release\MissionMatchLocation.obj	/sdklibs/ScriptInterfaceR.lib/MissionMatchLocation.obj	imported
+ScriptInterfaceR.lib	.\Release\missionspec.obj	/sdklibs/ScriptInterfaceR.lib/missionspec.obj	imported
+ScriptInterfaceR.lib	.\Release\NetMsgClass.obj	/sdklibs/ScriptInterfaceR.lib/NetMsgClass.obj	imported
+ScriptInterfaceR.lib	.\Release\ScriptMapData.obj	/sdklibs/ScriptInterfaceR.lib/ScriptMapData.obj	imported
+ScriptInterfaceR.lib	.\Release\ScriptStructs.obj	/sdklibs/ScriptInterfaceR.lib/ScriptStructs.obj	imported
+ScriptInterfaceR.lib	.\Release\sfcstreams.obj	/sdklibs/ScriptInterfaceR.lib/sfcstreams.obj	imported
+ScriptInterfaceR.lib	.\Release\SFCThreadState.obj	/sdklibs/ScriptInterfaceR.lib/SFCThreadState.obj	imported
+ScriptInterfaceR.lib	.\Release\Strength.obj	/sdklibs/ScriptInterfaceR.lib/Strength.obj	imported
+ScriptInterfaceR.lib	.\Release\texttoken.obj	/sdklibs/ScriptInterfaceR.lib/texttoken.obj	imported
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+ScriptInterfaceR.lib	BugslayerUtil.dll	/sdklibs/ScriptInterfaceR.lib/BugslayerUtil.dll_36	imported
+ScriptInterfaceR.lib	BugslayerUtil.dll	/sdklibs/ScriptInterfaceR.lib/BugslayerUtil.dll_37	imported
+ScriptInterfaceR.lib	BugslayerUtil.dll	/sdklibs/ScriptInterfaceR.lib/BugslayerUtil.dll_38	imported
+ScriptInterfaceR.lib	.\Common_Release\SmartPtr.obj	/sdklibs/ScriptInterfaceR.lib/SmartPtr.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Settings.obj	/sdklibs/ScriptInterfaceR.lib/Settings.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\OSVersion.obj	/sdklibs/ScriptInterfaceR.lib/OSVersion.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Object.obj	/sdklibs/ScriptInterfaceR.lib/Object.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\netvehicle.obj	/sdklibs/ScriptInterfaceR.lib/netvehicle.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\GenericFile.obj	/sdklibs/ScriptInterfaceR.lib/GenericFile.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\FunctionWrapper.obj	/sdklibs/ScriptInterfaceR.lib/FunctionWrapper.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DynamicAllocator.obj	/sdklibs/ScriptInterfaceR.lib/DynamicAllocator.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DateAndTime.obj	/sdklibs/ScriptInterfaceR.lib/DateAndTime.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\CommandLineArgs.obj	/sdklibs/ScriptInterfaceR.lib/CommandLineArgs.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\BasicIniReader.obj	/sdklibs/ScriptInterfaceR.lib/BasicIniReader.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\LanguageTagMgr.obj	/sdklibs/ScriptInterfaceR.lib/LanguageTagMgr.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\LanguageTag.obj	/sdklibs/ScriptInterfaceR.lib/LanguageTag.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\TransitionAction.obj	/sdklibs/ScriptInterfaceR.lib/TransitionAction.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Simulator.obj	/sdklibs/ScriptInterfaceR.lib/Simulator.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\SimEvent.obj	/sdklibs/ScriptInterfaceR.lib/SimEvent.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ScriptTuple.obj	/sdklibs/ScriptInterfaceR.lib/ScriptTuple.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Script.obj	/sdklibs/ScriptInterfaceR.lib/Script.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\CallbackAction.obj	/sdklibs/ScriptInterfaceR.lib/CallbackAction.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Precompiled.obj	/sdklibs/ScriptInterfaceR.lib/Precompiled.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\StatTracker.obj	/sdklibs/ScriptInterfaceR.lib/StatTracker.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Stats.obj	/sdklibs/ScriptInterfaceR.lib/Stats.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Extractor.obj	/sdklibs/ScriptInterfaceR.lib/Extractor.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Converter.obj	/sdklibs/ScriptInterfaceR.lib/Converter.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ResourceTracker.obj	/sdklibs/ScriptInterfaceR.lib/ResourceTracker.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ErrorReporting.obj	/sdklibs/ScriptInterfaceR.lib/ErrorReporting.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\CallStack.obj	/sdklibs/ScriptInterfaceR.lib/CallStack.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\WinTimer.obj	/sdklibs/ScriptInterfaceR.lib/WinTimer.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\WinClock.obj	/sdklibs/ScriptInterfaceR.lib/WinClock.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Timer.obj	/sdklibs/ScriptInterfaceR.lib/Timer.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\PerformanceCounter.obj	/sdklibs/ScriptInterfaceR.lib/PerformanceCounter.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\HeartbeatTimer.obj	/sdklibs/ScriptInterfaceR.lib/HeartbeatTimer.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\QueryPerfData.obj	/sdklibs/ScriptInterfaceR.lib/QueryPerfData.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Smrtheap.obj	/sdklibs/ScriptInterfaceR.lib/Smrtheap.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Shsmp.obj	/sdklibs/ScriptInterfaceR.lib/Shsmp.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\CRC32.obj	/sdklibs/ScriptInterfaceR.lib/CRC32.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\LogStream.obj	/sdklibs/ScriptInterfaceR.lib/LogStream.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Log.obj	/sdklibs/ScriptInterfaceR.lib/Log.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\WaitForObject.obj	/sdklibs/ScriptInterfaceR.lib/WaitForObject.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ThreadState.obj	/sdklibs/ScriptInterfaceR.lib/ThreadState.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ThreadPool.obj	/sdklibs/ScriptInterfaceR.lib/ThreadPool.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ThreadEvent.obj	/sdklibs/ScriptInterfaceR.lib/ThreadEvent.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Thread.obj	/sdklibs/ScriptInterfaceR.lib/Thread.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\SingleWriteMultiRead.obj	/sdklibs/ScriptInterfaceR.lib/SingleWriteMultiRead.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\ResourceGuard.obj	/sdklibs/ScriptInterfaceR.lib/ResourceGuard.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Optex.obj	/sdklibs/ScriptInterfaceR.lib/Optex.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\JobManager.obj	/sdklibs/ScriptInterfaceR.lib/JobManager.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Validate.obj	/sdklibs/ScriptInterfaceR.lib/Validate.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\OutOfBounds.obj	/sdklibs/ScriptInterfaceR.lib/OutOfBounds.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\InvalidAccess.obj	/sdklibs/ScriptInterfaceR.lib/InvalidAccess.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\InitFailed.obj	/sdklibs/ScriptInterfaceR.lib/InitFailed.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\BaseException.obj	/sdklibs/ScriptInterfaceR.lib/BaseException.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Streamable.obj	/sdklibs/ScriptInterfaceR.lib/Streamable.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DataStoreOutput.obj	/sdklibs/ScriptInterfaceR.lib/DataStoreOutput.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DataStoreInput.obj	/sdklibs/ScriptInterfaceR.lib/DataStoreInput.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DataStoreBuffer.obj	/sdklibs/ScriptInterfaceR.lib/DataStoreBuffer.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DataStore.obj	/sdklibs/ScriptInterfaceR.lib/DataStore.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\StreamDatabaseStorage.obj	/sdklibs/ScriptInterfaceR.lib/StreamDatabaseStorage.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\FileDatabaseStorage.obj	/sdklibs/ScriptInterfaceR.lib/FileDatabaseStorage.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\FileDatabaseMgr.obj	/sdklibs/ScriptInterfaceR.lib/FileDatabaseMgr.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DatabaseStorage.obj	/sdklibs/ScriptInterfaceR.lib/DatabaseStorage.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DatabaseObjectUpdate.obj	/sdklibs/ScriptInterfaceR.lib/DatabaseObjectUpdate.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DatabaseObject.obj	/sdklibs/ScriptInterfaceR.lib/DatabaseObject.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DatabaseID.obj	/sdklibs/ScriptInterfaceR.lib/DatabaseID.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\DatabaseExceptions.obj	/sdklibs/ScriptInterfaceR.lib/DatabaseExceptions.obj	imported
+ScriptInterfaceR.lib	.\Common_Release\Database.obj	/sdklibs/ScriptInterfaceR.lib/Database.obj	imported
+ScriptInterfaceR.lib	.\Release\ScriptInterface.obj	/sdklibs/ScriptInterfaceR.lib/ScriptInterface.obj	imported
+ScriptInterfaceR.lib	.\Release\Script.obj	/sdklibs/ScriptInterfaceR.lib/Script.obj_2	imported
+ScriptInterfaceR.lib	.\Release\MissionInfo.obj	/sdklibs/ScriptInterfaceR.lib/MissionInfo.obj	imported
+ScriptInterfaceR.lib	.\Release\DrawCanvas.obj	/sdklibs/ScriptInterfaceR.lib/DrawCanvas.obj	imported
+ScriptInterfaceR.lib	.\Release\TeamInfo.obj	/sdklibs/ScriptInterfaceR.lib/TeamInfo.obj	imported
+ScriptInterfaceR.lib	.\Release\ShipInfo.obj	/sdklibs/ScriptInterfaceR.lib/ShipInfo.obj	imported
+ScriptInterfaceR.lib	.\Release\teamtracker.obj	/sdklibs/ScriptInterfaceR.lib/teamtracker.obj	imported
+ScriptInterfaceR.lib	.\Release\State.obj	/sdklibs/ScriptInterfaceR.lib/State.obj	imported
+ScriptInterfaceR.lib	.\Release\EventMgr.obj	/sdklibs/ScriptInterfaceR.lib/EventMgr.obj	imported
+ScriptInterfaceR.lib	.\Release\Actor.obj	/sdklibs/ScriptInterfaceR.lib/Actor.obj	imported
+ScriptInterfaceR.lib	.\Release\VictoryState.obj	/sdklibs/ScriptInterfaceR.lib/VictoryState.obj	imported
+ScriptInterfaceR.lib	.\Release\VictoryCondition.obj	/sdklibs/ScriptInterfaceR.lib/VictoryCondition.obj	imported
+ScriptInterfaceR.lib	.\Release\NormalVictoryState.obj	/sdklibs/ScriptInterfaceR.lib/NormalVictoryState.obj	imported
+SharedR.lib	/		not-coff
+SharedR.lib	/		not-coff
+SharedR.lib	//		not-coff
+SharedR.lib	.\Common_Release\Database.obj	/sdklibs/SharedR.lib/Database.obj	imported
+SharedR.lib	.\Common_Release\DatabaseExceptions.obj	/sdklibs/SharedR.lib/DatabaseExceptions.obj	imported
+SharedR.lib	.\Common_Release\DatabaseID.obj	/sdklibs/SharedR.lib/DatabaseID.obj	imported
+SharedR.lib	.\Common_Release\DatabaseObject.obj	/sdklibs/SharedR.lib/DatabaseObject.obj	imported
+SharedR.lib	.\Common_Release\DatabaseObjectUpdate.obj	/sdklibs/SharedR.lib/DatabaseObjectUpdate.obj	imported
+SharedR.lib	.\Common_Release\DatabaseStorage.obj	/sdklibs/SharedR.lib/DatabaseStorage.obj	imported
+SharedR.lib	.\Common_Release\FileDatabaseMgr.obj	/sdklibs/SharedR.lib/FileDatabaseMgr.obj	imported
+SharedR.lib	.\Common_Release\FileDatabaseStorage.obj	/sdklibs/SharedR.lib/FileDatabaseStorage.obj	imported
+SharedR.lib	.\Common_Release\StreamDatabaseStorage.obj	/sdklibs/SharedR.lib/StreamDatabaseStorage.obj	imported
+SharedR.lib	.\Common_Release\DataStore.obj	/sdklibs/SharedR.lib/DataStore.obj	imported
+SharedR.lib	.\Common_Release\DataStoreBuffer.obj	/sdklibs/SharedR.lib/DataStoreBuffer.obj	imported
+SharedR.lib	.\Common_Release\DataStoreInput.obj	/sdklibs/SharedR.lib/DataStoreInput.obj	imported
+SharedR.lib	.\Common_Release\DataStoreOutput.obj	/sdklibs/SharedR.lib/DataStoreOutput.obj	imported
+SharedR.lib	.\Common_Release\Streamable.obj	/sdklibs/SharedR.lib/Streamable.obj	imported
+SharedR.lib	.\Common_Release\BaseException.obj	/sdklibs/SharedR.lib/BaseException.obj	imported
+SharedR.lib	.\Common_Release\InitFailed.obj	/sdklibs/SharedR.lib/InitFailed.obj	imported
+SharedR.lib	.\Common_Release\InvalidAccess.obj	/sdklibs/SharedR.lib/InvalidAccess.obj	imported
+SharedR.lib	.\Common_Release\OutOfBounds.obj	/sdklibs/SharedR.lib/OutOfBounds.obj	imported
+SharedR.lib	.\Common_Release\Validate.obj	/sdklibs/SharedR.lib/Validate.obj	imported
+SharedR.lib	.\Common_Release\JobManager.obj	/sdklibs/SharedR.lib/JobManager.obj	imported
+SharedR.lib	.\Common_Release\Optex.obj	/sdklibs/SharedR.lib/Optex.obj	imported
+SharedR.lib	.\Common_Release\ResourceGuard.obj	/sdklibs/SharedR.lib/ResourceGuard.obj	imported
+SharedR.lib	.\Common_Release\SingleWriteMultiRead.obj	/sdklibs/SharedR.lib/SingleWriteMultiRead.obj	imported
+SharedR.lib	.\Common_Release\Thread.obj	/sdklibs/SharedR.lib/Thread.obj	imported
+SharedR.lib	.\Common_Release\ThreadEvent.obj	/sdklibs/SharedR.lib/ThreadEvent.obj	imported
+SharedR.lib	.\Common_Release\ThreadPool.obj	/sdklibs/SharedR.lib/ThreadPool.obj	imported
+SharedR.lib	.\Common_Release\ThreadState.obj	/sdklibs/SharedR.lib/ThreadState.obj	imported
+SharedR.lib	.\Common_Release\WaitForObject.obj	/sdklibs/SharedR.lib/WaitForObject.obj	imported
+SharedR.lib	.\Common_Release\Log.obj	/sdklibs/SharedR.lib/Log.obj	imported
+SharedR.lib	.\Common_Release\LogStream.obj	/sdklibs/SharedR.lib/LogStream.obj	imported
+SharedR.lib	.\Common_Release\CRC32.obj	/sdklibs/SharedR.lib/CRC32.obj	imported
+SharedR.lib	.\Common_Release\Shsmp.obj	/sdklibs/SharedR.lib/Shsmp.obj	imported
+SharedR.lib	.\Common_Release\Smrtheap.obj	/sdklibs/SharedR.lib/Smrtheap.obj	imported
+SharedR.lib	.\Common_Release\QueryPerfData.obj	/sdklibs/SharedR.lib/QueryPerfData.obj	imported
+SharedR.lib	.\Common_Release\HeartbeatTimer.obj	/sdklibs/SharedR.lib/HeartbeatTimer.obj	imported
+SharedR.lib	.\Common_Release\PerformanceCounter.obj	/sdklibs/SharedR.lib/PerformanceCounter.obj	imported
+SharedR.lib	.\Common_Release\Timer.obj	/sdklibs/SharedR.lib/Timer.obj	imported
+SharedR.lib	.\Common_Release\WinClock.obj	/sdklibs/SharedR.lib/WinClock.obj	imported
+SharedR.lib	.\Common_Release\WinTimer.obj	/sdklibs/SharedR.lib/WinTimer.obj	imported
+SharedR.lib	.\Common_Release\CallStack.obj	/sdklibs/SharedR.lib/CallStack.obj	imported
+SharedR.lib	.\Common_Release\ErrorReporting.obj	/sdklibs/SharedR.lib/ErrorReporting.obj	imported
+SharedR.lib	.\Common_Release\ResourceTracker.obj	/sdklibs/SharedR.lib/ResourceTracker.obj	imported
+SharedR.lib	.\Common_Release\Converter.obj	/sdklibs/SharedR.lib/Converter.obj	imported
+SharedR.lib	.\Common_Release\Extractor.obj	/sdklibs/SharedR.lib/Extractor.obj	imported
+SharedR.lib	.\Common_Release\Stats.obj	/sdklibs/SharedR.lib/Stats.obj	imported
+SharedR.lib	.\Common_Release\StatTracker.obj	/sdklibs/SharedR.lib/StatTracker.obj	imported
+SharedR.lib	.\Common_Release\Precompiled.obj	/sdklibs/SharedR.lib/Precompiled.obj	imported
+SharedR.lib	.\Common_Release\CallbackAction.obj	/sdklibs/SharedR.lib/CallbackAction.obj	imported
+SharedR.lib	.\Common_Release\Script.obj	/sdklibs/SharedR.lib/Script.obj	imported
+SharedR.lib	.\Common_Release\ScriptTuple.obj	/sdklibs/SharedR.lib/ScriptTuple.obj	imported
+SharedR.lib	.\Common_Release\SimEvent.obj	/sdklibs/SharedR.lib/SimEvent.obj	imported
+SharedR.lib	.\Common_Release\Simulator.obj	/sdklibs/SharedR.lib/Simulator.obj	imported
+SharedR.lib	.\Common_Release\TransitionAction.obj	/sdklibs/SharedR.lib/TransitionAction.obj	imported
+SharedR.lib	.\Common_Release\LanguageTag.obj	/sdklibs/SharedR.lib/LanguageTag.obj	imported
+SharedR.lib	.\Common_Release\LanguageTagMgr.obj	/sdklibs/SharedR.lib/LanguageTagMgr.obj	imported
+SharedR.lib	.\Common_Release\BasicIniReader.obj	/sdklibs/SharedR.lib/BasicIniReader.obj	imported
+SharedR.lib	.\Common_Release\CommandLineArgs.obj	/sdklibs/SharedR.lib/CommandLineArgs.obj	imported
+SharedR.lib	.\Common_Release\DateAndTime.obj	/sdklibs/SharedR.lib/DateAndTime.obj	imported
+SharedR.lib	.\Common_Release\DynamicAllocator.obj	/sdklibs/SharedR.lib/DynamicAllocator.obj	imported
+SharedR.lib	.\Common_Release\FunctionWrapper.obj	/sdklibs/SharedR.lib/FunctionWrapper.obj	imported
+SharedR.lib	.\Common_Release\GenericFile.obj	/sdklibs/SharedR.lib/GenericFile.obj	imported
+SharedR.lib	.\Common_Release\netvehicle.obj	/sdklibs/SharedR.lib/netvehicle.obj	imported
+SharedR.lib	.\Common_Release\Object.obj	/sdklibs/SharedR.lib/Object.obj	imported
+SharedR.lib	.\Common_Release\OSVersion.obj	/sdklibs/SharedR.lib/OSVersion.obj	imported
+SharedR.lib	.\Common_Release\Settings.obj	/sdklibs/SharedR.lib/Settings.obj	imported
+SharedR.lib	.\Common_Release\SmartPtr.obj	/sdklibs/SharedR.lib/SmartPtr.obj	imported
+SharedR.lib	BugslayerUtil.dll	/sdklibs/SharedR.lib/BugslayerUtil.dll	imported
+SharedR.lib	BugslayerUtil.dll	/sdklibs/SharedR.lib/BugslayerUtil.dll_2	imported
+SharedR.lib	BugslayerUtil.dll	/sdklibs/SharedR.lib/BugslayerUtil.dll_3	imported
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	BugslayerUtil.dll		not-object: Not a valid COFF file
+SharedR.lib	.\Release\texttoken.obj	/sdklibs/SharedR.lib/texttoken.obj	imported
+SharedR.lib	.\Release\Strength.obj	/sdklibs/SharedR.lib/Strength.obj	imported
+SharedR.lib	.\Release\SFCThreadState.obj	/sdklibs/SharedR.lib/SFCThreadState.obj	imported
+SharedR.lib	.\Release\sfcstreams.obj	/sdklibs/SharedR.lib/sfcstreams.obj	imported
+SharedR.lib	.\Release\ScriptStructs.obj	/sdklibs/SharedR.lib/ScriptStructs.obj	imported
+SharedR.lib	.\Release\ScriptMapData.obj	/sdklibs/SharedR.lib/ScriptMapData.obj	imported
+SharedR.lib	.\Release\NetMsgClass.obj	/sdklibs/SharedR.lib/NetMsgClass.obj	imported
+SharedR.lib	.\Release\missionspec.obj	/sdklibs/SharedR.lib/missionspec.obj	imported
+SharedR.lib	.\Release\MissionMatchLocation.obj	/sdklibs/SharedR.lib/MissionMatchLocation.obj	imported
+SharedR.lib	.\Release\MapObject.obj	/sdklibs/SharedR.lib/MapObject.obj	imported
+cryptlibR.lib	/		not-coff
+cryptlibR.lib	/		not-coff
+cryptlibR.lib	//		not-coff
+cryptlibR.lib	.\release\ztrees.obj	/sdklibs/cryptlibR.lib/ztrees.obj	imported
+cryptlibR.lib	.\release\zinflate.obj	/sdklibs/cryptlibR.lib/zinflate.obj	imported
+cryptlibR.lib	.\release\zdeflate.obj	/sdklibs/cryptlibR.lib/zdeflate.obj	imported
+cryptlibR.lib	.\release\zbits.obj	/sdklibs/cryptlibR.lib/zbits.obj	imported
+cryptlibR.lib	.\release\wake.obj	/sdklibs/cryptlibR.lib/wake.obj	imported
+cryptlibR.lib	.\release\twofish.obj	/sdklibs/cryptlibR.lib/twofish.obj	imported
+cryptlibR.lib	.\release\tigertab.obj	/sdklibs/cryptlibR.lib/tigertab.obj	imported
+cryptlibR.lib	.\release\tiger.obj	/sdklibs/cryptlibR.lib/tiger.obj	imported
+cryptlibR.lib	.\release\tftables.obj	/sdklibs/cryptlibR.lib/tftables.obj	imported
+cryptlibR.lib	.\release\tea.obj	/sdklibs/cryptlibR.lib/tea.obj	imported
+cryptlibR.lib	.\release\squaretb.obj	/sdklibs/cryptlibR.lib/squaretb.obj	imported
+cryptlibR.lib	.\release\square.obj	/sdklibs/cryptlibR.lib/square.obj	imported
+cryptlibR.lib	.\release\sharkbox.obj	/sdklibs/cryptlibR.lib/sharkbox.obj	imported
+cryptlibR.lib	.\release\shark.obj	/sdklibs/cryptlibR.lib/shark.obj	imported
+cryptlibR.lib	.\release\sha.obj	/sdklibs/cryptlibR.lib/sha.obj	imported
+cryptlibR.lib	.\release\serpent.obj	/sdklibs/cryptlibR.lib/serpent.obj	imported
+cryptlibR.lib	.\release\secsplit.obj	/sdklibs/cryptlibR.lib/secsplit.obj	imported
+cryptlibR.lib	.\release\secshare.obj	/sdklibs/cryptlibR.lib/secshare.obj	imported
+cryptlibR.lib	.\release\seal.obj	/sdklibs/cryptlibR.lib/seal.obj	imported
+cryptlibR.lib	.\release\sapphire.obj	/sdklibs/cryptlibR.lib/sapphire.obj	imported
+cryptlibR.lib	.\release\safer.obj	/sdklibs/cryptlibR.lib/safer.obj	imported
+cryptlibR.lib	.\release\rw.obj	/sdklibs/cryptlibR.lib/rw.obj	imported
+cryptlibR.lib	.\release\rsa.obj	/sdklibs/cryptlibR.lib/rsa.obj	imported
+cryptlibR.lib	.\release\rng.obj	/sdklibs/cryptlibR.lib/rng.obj	imported
+cryptlibR.lib	.\release\ripemd.obj	/sdklibs/cryptlibR.lib/ripemd.obj	imported
+cryptlibR.lib	.\release\rijndael.obj	/sdklibs/cryptlibR.lib/rijndael.obj	imported
+cryptlibR.lib	.\release\rdtables.obj	/sdklibs/cryptlibR.lib/rdtables.obj	imported
+cryptlibR.lib	.\release\rc6.obj	/sdklibs/cryptlibR.lib/rc6.obj	imported
+cryptlibR.lib	.\release\rc5.obj	/sdklibs/cryptlibR.lib/rc5.obj	imported
+cryptlibR.lib	.\release\rc2.obj	/sdklibs/cryptlibR.lib/rc2.obj	imported
+cryptlibR.lib	.\release\randpool.obj	/sdklibs/cryptlibR.lib/randpool.obj	imported
+cryptlibR.lib	.\release\rabin.obj	/sdklibs/cryptlibR.lib/rabin.obj	imported
+cryptlibR.lib	.\release\queue.obj	/sdklibs/cryptlibR.lib/queue.obj	imported
+cryptlibR.lib	.\release\pubkey.obj	/sdklibs/cryptlibR.lib/pubkey.obj	imported
+cryptlibR.lib	.\release\polynomi.obj	/sdklibs/cryptlibR.lib/polynomi.obj	imported
+cryptlibR.lib	.\release\pkcspad.obj	/sdklibs/cryptlibR.lib/pkcspad.obj	imported
+cryptlibR.lib	.\release\pch.obj	/sdklibs/cryptlibR.lib/pch.obj	imported
+cryptlibR.lib	.\release\oaep.obj	/sdklibs/cryptlibR.lib/oaep.obj	imported
+cryptlibR.lib	.\release\nr.obj	/sdklibs/cryptlibR.lib/nr.obj	imported
+cryptlibR.lib	.\release\nbtheory.obj	/sdklibs/cryptlibR.lib/nbtheory.obj	imported
+cryptlibR.lib	.\release\mqv.obj	/sdklibs/cryptlibR.lib/mqv.obj	imported
+cryptlibR.lib	.\release\modexppc.obj	/sdklibs/cryptlibR.lib/modexppc.obj	imported
+cryptlibR.lib	.\release\modes.obj	/sdklibs/cryptlibR.lib/modes.obj	imported
+cryptlibR.lib	.\release\misc.obj	/sdklibs/cryptlibR.lib/misc.obj	imported
+cryptlibR.lib	.\release\md5mac.obj	/sdklibs/cryptlibR.lib/md5mac.obj	imported
+cryptlibR.lib	.\release\md5.obj	/sdklibs/cryptlibR.lib/md5.obj	imported
+cryptlibR.lib	.\release\md2.obj	/sdklibs/cryptlibR.lib/md2.obj	imported
+cryptlibR.lib	.\release\marss.obj	/sdklibs/cryptlibR.lib/marss.obj	imported
+cryptlibR.lib	.\release\mars.obj	/sdklibs/cryptlibR.lib/mars.obj	imported
+cryptlibR.lib	.\release\luc.obj	/sdklibs/cryptlibR.lib/luc.obj	imported
+cryptlibR.lib	.\release\iterhash.obj	/sdklibs/cryptlibR.lib/iterhash.obj	imported
+cryptlibR.lib	.\release\integer.obj	/sdklibs/cryptlibR.lib/integer.obj	imported
+cryptlibR.lib	.\release\idea.obj	/sdklibs/cryptlibR.lib/idea.obj	imported
+cryptlibR.lib	.\release\hex.obj	/sdklibs/cryptlibR.lib/hex.obj	imported
+cryptlibR.lib	.\release\haval.obj	/sdklibs/cryptlibR.lib/haval.obj	imported
+cryptlibR.lib	.\release\gzip.obj	/sdklibs/cryptlibR.lib/gzip.obj	imported
+cryptlibR.lib	.\release\gost.obj	/sdklibs/cryptlibR.lib/gost.obj	imported
+cryptlibR.lib	.\release\gf2n.obj	/sdklibs/cryptlibR.lib/gf2n.obj	imported
+cryptlibR.lib	.\release\gf2_32.obj	/sdklibs/cryptlibR.lib/gf2_32.obj	imported
+cryptlibR.lib	.\release\gf256.obj	/sdklibs/cryptlibR.lib/gf256.obj	imported
+cryptlibR.lib	.\release\forkjoin.obj	/sdklibs/cryptlibR.lib/forkjoin.obj	imported
+cryptlibR.lib	.\release\filters.obj	/sdklibs/cryptlibR.lib/filters.obj	imported
+cryptlibR.lib	.\release\files.obj	/sdklibs/cryptlibR.lib/files.obj	imported
+cryptlibR.lib	.\release\eprecomp.obj	/sdklibs/cryptlibR.lib/eprecomp.obj	imported
+cryptlibR.lib	.\release\elgamal.obj	/sdklibs/cryptlibR.lib/elgamal.obj	imported
+cryptlibR.lib	.\release\ecp.obj	/sdklibs/cryptlibR.lib/ecp.obj	imported
+cryptlibR.lib	.\release\eccrypto.obj	/sdklibs/cryptlibR.lib/eccrypto.obj	imported
+cryptlibR.lib	.\release\ec2n.obj	/sdklibs/cryptlibR.lib/ec2n.obj	imported
+cryptlibR.lib	.\release\dsa.obj	/sdklibs/cryptlibR.lib/dsa.obj	imported
+cryptlibR.lib	.\release\diamondt.obj	/sdklibs/cryptlibR.lib/diamondt.obj	imported
+cryptlibR.lib	.\release\diamond.obj	/sdklibs/cryptlibR.lib/diamond.obj	imported
+cryptlibR.lib	.\release\dh2.obj	/sdklibs/cryptlibR.lib/dh2.obj	imported
+cryptlibR.lib	.\release\dh.obj	/sdklibs/cryptlibR.lib/dh.obj	imported
+cryptlibR.lib	.\release\dessp.obj	/sdklibs/cryptlibR.lib/dessp.obj	imported
+cryptlibR.lib	.\release\des.obj	/sdklibs/cryptlibR.lib/des.obj	imported
+cryptlibR.lib	.\release\default.obj	/sdklibs/cryptlibR.lib/default.obj	imported
+cryptlibR.lib	.\release\cryptlib.obj	/sdklibs/cryptlibR.lib/cryptlib.obj	imported
+cryptlibR.lib	.\release\crc.obj	/sdklibs/cryptlibR.lib/crc.obj	imported
+cryptlibR.lib	.\release\cbc.obj	/sdklibs/cryptlibR.lib/cbc.obj	imported
+cryptlibR.lib	.\release\cast128s.obj	/sdklibs/cryptlibR.lib/cast128s.obj	imported
+cryptlibR.lib	.\release\cast.obj	/sdklibs/cryptlibR.lib/cast.obj	imported
+cryptlibR.lib	.\release\blumshub.obj	/sdklibs/cryptlibR.lib/blumshub.obj	imported
+cryptlibR.lib	.\release\blumgold.obj	/sdklibs/cryptlibR.lib/blumgold.obj	imported
+cryptlibR.lib	.\release\blowfish.obj	/sdklibs/cryptlibR.lib/blowfish.obj	imported
+cryptlibR.lib	.\release\bfinit.obj	/sdklibs/cryptlibR.lib/bfinit.obj	imported
+cryptlibR.lib	.\release\base64.obj	/sdklibs/cryptlibR.lib/base64.obj	imported
+cryptlibR.lib	.\release\asn.obj	/sdklibs/cryptlibR.lib/asn.obj	imported
+cryptlibR.lib	.\release\arc4.obj	/sdklibs/cryptlibR.lib/arc4.obj	imported
+cryptlibR.lib	.\release\algebra.obj	/sdklibs/cryptlibR.lib/algebra.obj	imported
+cryptlibR.lib	.\release\3way.obj	/sdklibs/cryptlibR.lib/3way.obj	imported
+dmp3D_MSVCR.lib	/		not-coff
+dmp3D_MSVCR.lib	/		not-coff
+dmp3D_MSVCR.lib	//		not-coff
+dmp3D_MSVCR.lib	.\3DNow\cpu.obj	/sdklibs/dmp3D_MSVCR.lib/cpu.obj	imported
+dmp3D_MSVCR.lib	.\3DNow\m3dk6.obj		failed: No load spec found
+dmp3D_MSVCR.lib	.\dmp3D_Release\tGLFontDraw.obj	/sdklibs/dmp3D_MSVCR.lib/tGLFontDraw.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\tGLFontDefs.obj	/sdklibs/dmp3D_MSVCR.lib/tGLFontDefs.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\tGLFont.obj	/sdklibs/dmp3D_MSVCR.lib/tGLFont.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\userdlg.obj	/sdklibs/dmp3D_MSVCR.lib/userdlg.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\getdxver.obj	/sdklibs/dmp3D_MSVCR.lib/getdxver.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\d3dutil.obj	/sdklibs/dmp3D_MSVCR.lib/d3dutil.obj	imported
+dmp3D_MSVCR.lib	.\dmp3D_Release\d3dframe.obj	/sdklibs/dmp3D_MSVCR.lib/d3dframe.obj	imported
+sfcTiger_MSVCR.lib	/		not-coff
+sfcTiger_MSVCR.lib	/		not-coff
+sfcTiger_MSVCR.lib	//		not-coff
+sfcTiger_MSVCR.lib	..\..\..\..\Taldren\Projects\SFC2\source\3DNow\m3dk6.obj		failed: No load spec found
+sfcTiger_MSVCR.lib	..\..\..\..\Taldren\Projects\SFC2\source\3DNow\cpu.obj	/sdklibs/sfcTiger_MSVCR.lib/cpu.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tZipInfoMgr.obj	/sdklibs/sfcTiger_MSVCR.lib/tZipInfoMgr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\twthread.obj	/sdklibs/sfcTiger_MSVCR.lib/twthread.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\twSound.obj	/sdklibs/sfcTiger_MSVCR.lib/twSound.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\twmemory.obj	/sdklibs/sfcTiger_MSVCR.lib/twmemory.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\twfsys.obj	/sdklibs/sfcTiger_MSVCR.lib/twfsys.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\Twdebug.obj	/sdklibs/sfcTiger_MSVCR.lib/Twdebug.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\twclock.obj	/sdklibs/sfcTiger_MSVCR.lib/twclock.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tUniFont.obj	/sdklibs/sfcTiger_MSVCR.lib/tUniFont.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tStrMgrCore.obj	/sdklibs/sfcTiger_MSVCR.lib/tStrMgrCore.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tstringtag.obj	/sdklibs/sfcTiger_MSVCR.lib/tstringtag.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tstring.obj	/sdklibs/sfcTiger_MSVCR.lib/tstring.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tsound_fileio.obj	/sdklibs/sfcTiger_MSVCR.lib/tsound_fileio.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tsndmgr.obj	/sdklibs/sfcTiger_MSVCR.lib/tsndmgr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tSndMemMgr.obj	/sdklibs/sfcTiger_MSVCR.lib/tSndMemMgr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tsequence.obj	/sdklibs/sfcTiger_MSVCR.lib/tsequence.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tsay.obj	/sdklibs/sfcTiger_MSVCR.lib/tsay.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tpart.obj	/sdklibs/sfcTiger_MSVCR.lib/tpart.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tpaging.obj	/sdklibs/sfcTiger_MSVCR.lib/tpaging.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tnstring.obj	/sdklibs/sfcTiger_MSVCR.lib/tnstring.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tInterPlayCompressedSound.obj	/sdklibs/sfcTiger_MSVCR.lib/tInterPlayCompressedSound.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tinifiledefs.obj	/sdklibs/sfcTiger_MSVCR.lib/tinifiledefs.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tinifile.obj	/sdklibs/sfcTiger_MSVCR.lib/tinifile.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tgthread.obj	/sdklibs/sfcTiger_MSVCR.lib/tgthread.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tgStrMgr.obj	/sdklibs/sfcTiger_MSVCR.lib/tgStrMgr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tgSound.obj	/sdklibs/sfcTiger_MSVCR.lib/tgSound.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tgprefs.obj	/sdklibs/sfcTiger_MSVCR.lib/tgprefs.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tgfsys.obj	/sdklibs/sfcTiger_MSVCR.lib/tgfsys.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tFormatStr.obj	/sdklibs/sfcTiger_MSVCR.lib/tFormatStr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tFontmgr.obj	/sdklibs/sfcTiger_MSVCR.lib/tFontmgr.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tfontDraw.obj	/sdklibs/sfcTiger_MSVCR.lib/tfontDraw.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tFile.obj	/sdklibs/sfcTiger_MSVCR.lib/tFile.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tdistriblists.obj	/sdklibs/sfcTiger_MSVCR.lib/tdistriblists.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tDefaultFontFileIO.obj	/sdklibs/sfcTiger_MSVCR.lib/tDefaultFontFileIO.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tcrandsequence.obj	/sdklibs/sfcTiger_MSVCR.lib/tcrandsequence.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tcglue.obj	/sdklibs/sfcTiger_MSVCR.lib/tcglue.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicsoundfilezip.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicsoundfilezip.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicfilezip.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicfilezip.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicfilesearch.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicfilesearch.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicfiledefs.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicfiledefs.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicfilecrt.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicfilecrt.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tbasicfilebuffile.obj	/sdklibs/sfcTiger_MSVCR.lib/tbasicfilebuffile.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tBag.obj	/sdklibs/sfcTiger_MSVCR.lib/tBag.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\taudiopriority.obj	/sdklibs/sfcTiger_MSVCR.lib/taudiopriority.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tAudioFile.obj	/sdklibs/sfcTiger_MSVCR.lib/tAudioFile.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\taudiochannel.obj	/sdklibs/sfcTiger_MSVCR.lib/taudiochannel.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tatomicdistriblists.obj	/sdklibs/sfcTiger_MSVCR.lib/tatomicdistriblists.obj	imported
+sfcTiger_MSVCR.lib	.\sfcTiger Release\tatomic.obj	/sdklibs/sfcTiger_MSVCR.lib/tatomic.obj	imported

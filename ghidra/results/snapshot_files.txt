@@ -1,0 +1,3 @@
+-rw-r--r--@ 1 owner  staff  73666953 Nov  2 19:45 $SFCOP_ROOT/work/ghidra/SFCOP_ghidra_project.tar.gz
+-rw-r-----@ 1 owner  staff  38661729 Nov  2 19:44 $SFCOP_ROOT/work/ghidra/StarFleetOP_2552.gzf
+-rw-r-----@ 1 owner  staff    798758 Nov  2 19:44 $SFCOP_ROOT/work/ghidra/sfcop_sdk.fidb

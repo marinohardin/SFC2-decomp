@@ -1,0 +1,1107 @@
+{
+ "variant": "dsp",
+ "desc": "VC6 SP4, .dsp Release flags verbatim",
+ "compiler": "6.4",
+ "objdiff": {
+  "fuzzy_match_percent": 100.0,
+  "total_code": "139810",
+  "matched_code": "139810",
+  "matched_code_percent": 100.0,
+  "total_data": "24407",
+  "matched_data": "24407",
+  "matched_data_percent": 100.0,
+  "total_functions": 1230,
+  "matched_functions": 1230,
+  "matched_functions_percent": 100.0,
+  "total_units": 23
+ },
+ "units": {
+  "NormalVictoryState": {
+   "project": "ScriptInterface",
+   "src": "./NormalVictoryState.cpp",
+   "compiled": true,
+   "secs": 14.5,
+   "has_target": true,
+   "n_functions": 33,
+   "exact": 33,
+   "code_bytes": 1633,
+   "exact_bytes": 1633,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 22,
+     "data_identical": 22,
+     "code_sections": 34,
+     "code_identical": 34,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryCondition": {
+   "project": "ScriptInterface",
+   "src": "./VictoryCondition.cpp",
+   "compiled": true,
+   "secs": 14.5,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 798,
+   "exact_bytes": 798,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 18,
+     "data_identical": 18,
+     "code_sections": 28,
+     "code_identical": 28,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryState": {
+   "project": "ScriptInterface",
+   "src": "./VictoryState.cpp",
+   "compiled": true,
+   "secs": 13.2,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 343,
+   "exact_bytes": 343,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Actor": {
+   "project": "ScriptInterface",
+   "src": "./Actor.cpp",
+   "compiled": true,
+   "secs": 13.1,
+   "has_target": true,
+   "n_functions": 47,
+   "exact": 47,
+   "code_bytes": 5207,
+   "exact_bytes": 5207,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 17,
+     "data_identical": 17,
+     "code_sections": 52,
+     "code_identical": 52,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     38,
+     38
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "EventMgr": {
+   "project": "ScriptInterface",
+   "src": "./EventMgr.cpp",
+   "compiled": true,
+   "secs": 13.0,
+   "has_target": true,
+   "n_functions": 26,
+   "exact": 26,
+   "code_bytes": 1702,
+   "exact_bytes": 1702,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 21,
+     "data_identical": 21,
+     "code_sections": 29,
+     "code_identical": 29,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     33,
+     33
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "State": {
+   "project": "ScriptInterface",
+   "src": "./State.cpp",
+   "compiled": true,
+   "secs": 13.4,
+   "has_target": true,
+   "n_functions": 51,
+   "exact": 51,
+   "code_bytes": 1407,
+   "exact_bytes": 1407,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 51,
+     "code_identical": 51,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     21,
+     21
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "teamtracker": {
+   "project": "ScriptInterface",
+   "src": "./teamtracker.cpp",
+   "compiled": true,
+   "secs": 12.6,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 397,
+   "exact_bytes": 397,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 18,
+     "code_identical": 18,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ShipInfo": {
+   "project": "ScriptInterface",
+   "src": "./ShipInfo.cpp",
+   "compiled": true,
+   "secs": 13.2,
+   "has_target": true,
+   "n_functions": 154,
+   "exact": 154,
+   "code_bytes": 14448,
+   "exact_bytes": 14448,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 122,
+     "data_identical": 122,
+     "code_sections": 221,
+     "code_identical": 221,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     288,
+     288
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "TeamInfo": {
+   "project": "ScriptInterface",
+   "src": "./TeamInfo.cpp",
+   "compiled": true,
+   "secs": 13.5,
+   "has_target": true,
+   "n_functions": 114,
+   "exact": 114,
+   "code_bytes": 11720,
+   "exact_bytes": 11720,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 79,
+     "data_identical": 79,
+     "code_sections": 142,
+     "code_identical": 142,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     142,
+     142
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "DrawCanvas": {
+   "project": "ScriptInterface",
+   "src": "./DrawCanvas.cpp",
+   "compiled": true,
+   "secs": 12.7,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 1629,
+   "exact_bytes": 1629,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 27,
+     "code_identical": 27,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionInfo": {
+   "project": "ScriptInterface",
+   "src": "./MissionInfo.cpp",
+   "compiled": true,
+   "secs": 13.3,
+   "has_target": true,
+   "n_functions": 97,
+   "exact": 97,
+   "code_bytes": 11693,
+   "exact_bytes": 11693,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 59,
+     "data_identical": 59,
+     "code_sections": 127,
+     "code_identical": 127,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     144,
+     144
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Script": {
+   "project": "ScriptInterface",
+   "src": "./Script.cpp",
+   "compiled": true,
+   "secs": 12.9,
+   "has_target": true,
+   "n_functions": 58,
+   "exact": 58,
+   "code_bytes": 5481,
+   "exact_bytes": 5481,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 44,
+     "data_identical": 44,
+     "code_sections": 67,
+     "code_identical": 67,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     67,
+     67
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptInterface": {
+   "project": "ScriptInterface",
+   "src": "./ScriptInterface.cpp",
+   "compiled": true,
+   "secs": 13.3,
+   "has_target": true,
+   "n_functions": 83,
+   "exact": 83,
+   "code_bytes": 8939,
+   "exact_bytes": 8939,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 42,
+     "code_sections": 91,
+     "code_identical": 91,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     58,
+     58
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MapObject": {
+   "project": "shared",
+   "src": "./Source/Scripting/MapObject.cpp",
+   "compiled": true,
+   "secs": 2.9,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 1847,
+   "exact_bytes": 1847,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "$L": 0,
+     "$T": 0,
+     "_$E": 0
+    },
+    "label_count": [
+     17,
+     17
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionMatchLocation": {
+   "project": "shared",
+   "src": "./Source/Scripting/MissionMatchLocation.cpp",
+   "compiled": true,
+   "secs": 11.1,
+   "has_target": true,
+   "n_functions": 28,
+   "exact": 28,
+   "code_bytes": 1985,
+   "exact_bytes": 1985,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 32,
+     "data_identical": 32,
+     "code_sections": 29,
+     "code_identical": 29,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     15,
+     15
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "missionspec": {
+   "project": "shared",
+   "src": "./Source/Scripting/missionspec.cpp",
+   "compiled": true,
+   "secs": 11.7,
+   "has_target": true,
+   "n_functions": 90,
+   "exact": 90,
+   "code_bytes": 14275,
+   "exact_bytes": 14275,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 44,
+     "code_sections": 106,
+     "code_identical": 106,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     116,
+     116
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "NetMsgClass": {
+   "project": "shared",
+   "src": "./Source/Network/NetMsgClass.cpp",
+   "compiled": true,
+   "secs": 3.7,
+   "has_target": true,
+   "n_functions": 8,
+   "exact": 8,
+   "code_bytes": 1035,
+   "exact_bytes": 1035,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 8,
+     "code_identical": 8,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "$L": 0,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptMapData": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptMapData.cpp",
+   "compiled": true,
+   "secs": 12.9,
+   "has_target": true,
+   "n_functions": 84,
+   "exact": 84,
+   "code_bytes": 33114,
+   "exact_bytes": 33114,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 32,
+     "data_identical": 32,
+     "code_sections": 94,
+     "code_identical": 94,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     133,
+     133
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptStructs": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptStructs.cpp",
+   "compiled": true,
+   "secs": 11.2,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 594,
+   "exact_bytes": 594,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "sfcstreams": {
+   "project": "shared",
+   "src": "./Source/Common/sfcstreams.cpp",
+   "compiled": true,
+   "secs": 4.2,
+   "has_target": true,
+   "n_functions": 161,
+   "exact": 161,
+   "code_bytes": 14824,
+   "exact_bytes": 14824,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 39,
+     "data_identical": 39,
+     "code_sections": 168,
+     "code_identical": 168,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {
+     "$L": 0,
+     "$T": 0,
+     "_$E": 0
+    },
+    "label_count": [
+     37,
+     37
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "SFCThreadState": {
+   "project": "shared",
+   "src": "./Meta/Servers/SFCThreadState.cpp",
+   "compiled": true,
+   "secs": 7.2,
+   "has_target": true,
+   "n_functions": 12,
+   "exact": 12,
+   "code_bytes": 410,
+   "exact_bytes": 410,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 11,
+     "data_identical": 11,
+     "code_sections": 13,
+     "code_identical": 13,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Strength": {
+   "project": "shared",
+   "src": "./Source/Scripting/Strength.cpp",
+   "compiled": true,
+   "secs": 7.0,
+   "has_target": true,
+   "n_functions": 52,
+   "exact": 52,
+   "code_bytes": 6329,
+   "exact_bytes": 6329,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 42,
+     "code_sections": 57,
+     "code_identical": 57,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -36,
+     "$T": -36,
+     "_$E": 0
+    },
+    "label_count": [
+     39,
+     39
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "texttoken": {
+   "project": "shared",
+   "src": "./Source/Scripting/texttoken.cpp",
+   "compiled": true,
+   "secs": 0.5,
+   "has_target": true,
+   "n_functions": 0,
+   "exact": 0,
+   "code_bytes": 0,
+   "exact_bytes": 0,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 76,
+     "data_identical": 76,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {},
+    "label_count": [
+     0,
+     0
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  }
+ },
+ "objdiff_units": {
+  "ScriptInterface/NormalVictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1633",
+   "matched_code": "1633",
+   "matched_code_percent": 100.0,
+   "total_data": "636",
+   "matched_data": "636",
+   "matched_data_percent": 100.0,
+   "total_functions": 33,
+   "matched_functions": 33,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryCondition": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "798",
+   "matched_code": "798",
+   "matched_code_percent": 100.0,
+   "total_data": "532",
+   "matched_data": "532",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "343",
+   "matched_code": "343",
+   "matched_code_percent": 100.0,
+   "total_data": "444",
+   "matched_data": "444",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Actor": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5207",
+   "matched_code": "5207",
+   "matched_code_percent": 100.0,
+   "total_data": "564",
+   "matched_data": "564",
+   "matched_data_percent": 100.0,
+   "total_functions": 47,
+   "matched_functions": 47,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/EventMgr": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1702",
+   "matched_code": "1702",
+   "matched_code_percent": 100.0,
+   "total_data": "816",
+   "matched_data": "816",
+   "matched_data_percent": 100.0,
+   "total_functions": 26,
+   "matched_functions": 26,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/State": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1407",
+   "matched_code": "1407",
+   "matched_code_percent": 100.0,
+   "total_data": "348",
+   "matched_data": "348",
+   "matched_data_percent": 100.0,
+   "total_functions": 51,
+   "matched_functions": 51,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/teamtracker": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "397",
+   "matched_code": "397",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ShipInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14448",
+   "matched_code": "14448",
+   "matched_code_percent": 100.0,
+   "total_data": "3948",
+   "matched_data": "3948",
+   "matched_data_percent": 100.0,
+   "total_functions": 154,
+   "matched_functions": 154,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/TeamInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11720",
+   "matched_code": "11720",
+   "matched_code_percent": 100.0,
+   "total_data": "2468",
+   "matched_data": "2468",
+   "matched_data_percent": 100.0,
+   "total_functions": 114,
+   "matched_functions": 114,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/DrawCanvas": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1629",
+   "matched_code": "1629",
+   "matched_code_percent": 100.0,
+   "total_data": "228",
+   "matched_data": "228",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/MissionInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11693",
+   "matched_code": "11693",
+   "matched_code_percent": 100.0,
+   "total_data": "1951",
+   "matched_data": "1951",
+   "matched_data_percent": 100.0,
+   "total_functions": 97,
+   "matched_functions": 97,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Script": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5481",
+   "matched_code": "5481",
+   "matched_code_percent": 100.0,
+   "total_data": "1328",
+   "matched_data": "1328",
+   "matched_data_percent": 100.0,
+   "total_functions": 58,
+   "matched_functions": 58,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ScriptInterface": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "8939",
+   "matched_code": "8939",
+   "matched_code_percent": 100.0,
+   "total_data": "1272",
+   "matched_data": "1272",
+   "matched_data_percent": 100.0,
+   "total_functions": 83,
+   "matched_functions": 83,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MapObject": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1847",
+   "matched_code": "1847",
+   "matched_code_percent": 100.0,
+   "total_data": "285",
+   "matched_data": "285",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MissionMatchLocation": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1985",
+   "matched_code": "1985",
+   "matched_code_percent": 100.0,
+   "total_data": "806",
+   "matched_data": "806",
+   "matched_data_percent": 100.0,
+   "total_functions": 28,
+   "matched_functions": 28,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/missionspec": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14275",
+   "matched_code": "14275",
+   "matched_code_percent": 100.0,
+   "total_data": "1486",
+   "matched_data": "1486",
+   "matched_data_percent": 100.0,
+   "total_functions": 90,
+   "matched_functions": 90,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/NetMsgClass": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1035",
+   "matched_code": "1035",
+   "matched_code_percent": 100.0,
+   "total_data": "2232",
+   "matched_data": "2232",
+   "matched_data_percent": 100.0,
+   "total_functions": 8,
+   "matched_functions": 8,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptMapData": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "33114",
+   "matched_code": "33114",
+   "matched_code_percent": 100.0,
+   "total_data": "1076",
+   "matched_data": "1076",
+   "matched_data_percent": 100.0,
+   "total_functions": 84,
+   "matched_functions": 84,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptStructs": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "594",
+   "matched_code": "594",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/sfcstreams": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14824",
+   "matched_code": "14824",
+   "matched_code_percent": 100.0,
+   "total_data": "864",
+   "matched_data": "864",
+   "matched_data_percent": 100.0,
+   "total_functions": 161,
+   "matched_functions": 161,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/SFCThreadState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "410",
+   "matched_code": "410",
+   "matched_code_percent": 100.0,
+   "total_data": "249",
+   "matched_data": "249",
+   "matched_data_percent": 100.0,
+   "total_functions": 12,
+   "matched_functions": 12,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/Strength": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "6329",
+   "matched_code": "6329",
+   "matched_code_percent": 100.0,
+   "total_data": "1126",
+   "matched_data": "1126",
+   "matched_data_percent": 100.0,
+   "total_functions": 52,
+   "matched_functions": 52,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/texttoken": {
+   "fuzzy_match_percent": 100.0,
+   "matched_code_percent": 100.0,
+   "total_data": "1544",
+   "matched_data": "1544",
+   "matched_data_percent": 100.0,
+   "matched_functions_percent": 100.0,
+   "complete_code_percent": 100.0,
+   "total_units": 1
+  }
+ }
+}

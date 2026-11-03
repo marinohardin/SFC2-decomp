@@ -1,0 +1,8771 @@
+{
+ "variant": "ox",
+ "desc": "SP4, /Ox instead of /O2",
+ "compiler": "6.4",
+ "objdiff": {
+  "fuzzy_match_percent": 99.52497,
+  "total_code": "139810",
+  "matched_code": "137485",
+  "matched_code_percent": 98.33703,
+  "total_data": "24407",
+  "matched_data": "11715",
+  "matched_data_percent": 47.998524,
+  "total_functions": 1230,
+  "matched_functions": 1217,
+  "matched_functions_percent": 98.94309,
+  "total_units": 23
+ },
+ "units": {
+  "NormalVictoryState": {
+   "project": "ScriptInterface",
+   "src": "./NormalVictoryState.cpp",
+   "compiled": true,
+   "secs": 13.4,
+   "has_target": true,
+   "n_functions": 33,
+   "exact": 33,
+   "code_bytes": 1633,
+   "exact_bytes": 1633,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 22,
+     "data_identical": 22,
+     "code_sections": 34,
+     "code_bytes_differ": 1,
+     "code_unpaired": 30,
+     "code_identical": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -67,
+     "$T": -67,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tNormalVictoryState@@QAE@JJJJJJ@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPointsScoredAgainstTeam@tNormalVictoryState@@MAEMPAVtTeamInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipDestroyedValue@tNormalVictoryState@@MAEMPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipCapturedValue@tNormalVictoryState@@MAEMPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipDisengagedValue@tNormalVictoryState@@MAEMPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipDamagedValue@tNormalVictoryState@@MAEMPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetSide@tNormalVictoryState@@MAEJW4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCalcSideScore@tNormalVictoryState@@MAEMABV?$tSimpleStorage@J$0BE@@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mBalancePoints@tNormalVictoryState@@MAEMABV?$tSimpleStorage@J$0BE@@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetVictoryLevel@tNormalVictoryState@@MAE?AW4eVictoryLevels@@MM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCalcVictoryStatus@tNormalVictoryState@@UAE?AW4eVictoryLevels@@W4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCheckGameStatus@tNormalVictoryState@@MAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCheckForWin@tNormalVictoryState@@MAE?AW4eGameStatus@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCheckForLoss@tNormalVictoryState@@MAE?AW4eGameStatus@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddPlayerSide@tNormalVictoryState@@UAEXW4eTeamID@@E@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddEnemySide@tNormalVictoryState@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDeath@tNormalVictoryState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnCapture@tNormalVictoryState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDisengaged@tNormalVictoryState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryCondition": {
+   "project": "ScriptInterface",
+   "src": "./VictoryCondition.cpp",
+   "compiled": true,
+   "secs": 13.8,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 798,
+   "exact_bytes": 798,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 18,
+     "data_identical": 18,
+     "code_sections": 28,
+     "code_bytes_differ": 1,
+     "code_identical": 4,
+     "code_unpaired": 23,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -69,
+     "$T": -69,
+     "_$E": 0
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tVictoryCondition@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tVictoryCondition@@QAE@PAVtTeamInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tVictoryCondition@@QAE@JJJJJJJPAVtTeamInfo@@JJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRegisterState@tVictoryCondition@@UAEXPAVtVictoryState@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGotoState@tVictoryCondition@@UAEXABVtype_info@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCalcVictoryStatus@tVictoryCondition@@UAE?AW4eVictoryLevels@@W4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetPrestigePoints@tVictoryCondition@@UAEJW4eVictoryLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetBonusPrestige@tVictoryCondition@@UAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mLookupPrestigeValue@tVictoryCondition@@UAEJW4eVictoryLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRegisterState@tVictoryCondition@@EAEXPAVtState@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupState@tVictoryCondition@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeam@tVictoryCondition@@UAEPAVtTeamInfo@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryState": {
+   "project": "ScriptInterface",
+   "src": "./VictoryState.cpp",
+   "compiled": true,
+   "secs": 12.2,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 343,
+   "exact_bytes": 343,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_bytes_differ": 1,
+     "code_unpaired": 19,
+     "code_identical": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tVictoryState@@QAE@JJJJJJ@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeam@tVictoryState@@UAEXPAVtTeamInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetPrestigePoints@tVictoryState@@UAEJW4eVictoryLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetBonusPrestige@tVictoryState@@UAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mLookupPrestigeValue@tVictoryState@@UAEJW4eVictoryLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToPrestige@tVictoryState@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToPrestige@tVictoryState@@UAEXW4eVictoryLevels@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToBonusPrestige@tVictoryState@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Actor": {
+   "project": "ScriptInterface",
+   "src": "./Actor.cpp",
+   "compiled": true,
+   "secs": 13.6,
+   "has_target": true,
+   "n_functions": 47,
+   "exact": 44,
+   "code_bytes": 5207,
+   "exact_bytes": 4277,
+   "misses": [
+    {
+     "name": "??1tActor@@UAE@XZ",
+     "demangled": "public: virtual __thiscall tActor::~tActor(void)",
+     "size": 382,
+     "match": 99.9624,
+     "paired": true
+    },
+    {
+     "name": "?mRegisterState@tActor@@UAEXPAVtState@@@Z",
+     "demangled": "public: virtual void __thiscall tActor::mRegisterState(class tState *)",
+     "size": 220,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "?mGotoState@tActor@@UAEXABVtype_info@@@Z",
+     "demangled": "public: virtual void __thiscall tActor::mGotoState(class type_info const &)",
+     "size": 328,
+     "match": 99.9375,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 17,
+     "data_identical": 12,
+     "code_sections": 52,
+     "code_bytes_differ": 2,
+     "data_bytes_differ": 1,
+     "code_identical": 23,
+     "code_unpaired": 26,
+     "data_unpaired": 4,
+     "code_relocs_differ": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -58,
+     "$T": -58,
+     "_$E": 0
+    },
+    "label_count": [
+     38,
+     38
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tActor@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87978",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88229",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tActor@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88644",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89181",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupState@tActor@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupCommState@tActor@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRegisterState@tActor@@UAEXPAVtState@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89209",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89256",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetState@tActor@@UBEPAVtState@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGotoState@tActor@@UAEXABVtype_info@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89271",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89318",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTimedInterval@tActor@@UAEXW4eTimerIntervalTypes@@JMJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mHandleShipEvent@tActor@@UAEXPAVtShipInfo@@ABVtEventInfo@tEventMgr@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetActorID@tActor@@QAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEndCurState@tActor@@IAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAU?$pair@$$CBVtString@@PAVtState@@@1@ABU21@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92776",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92785",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "EventMgr": {
+   "project": "ScriptInterface",
+   "src": "./EventMgr.cpp",
+   "compiled": true,
+   "secs": 13.4,
+   "has_target": true,
+   "n_functions": 26,
+   "exact": 24,
+   "code_bytes": 1702,
+   "exact_bytes": 1382,
+   "misses": [
+    {
+     "name": "?mKillTimer@tEventMgr@@QAEXABVtTimerID@1@@Z",
+     "demangled": "public: void __thiscall tEventMgr::mKillTimer(class tEventMgr::tTimerID const &)",
+     "size": 142,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mPostEvent@tEventMgr@@QAEXABVtEventInfo@1@@Z",
+     "demangled": "public: void __thiscall tEventMgr::mPostEvent(class tEventMgr::tEventInfo const &)",
+     "size": 178,
+     "match": 99.88636,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 21,
+     "data_identical": 18,
+     "code_sections": 29,
+     "code_bytes_differ": 1,
+     "code_unpaired": 25,
+     "data_bytes_differ": 1,
+     "code_identical": 3,
+     "data_unpaired": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "$T": -61,
+     "_$E": 0
+    },
+    "label_count": [
+     33,
+     33
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tEventMgr@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTimedInterval@tEventMgr@@QAE?AVtTimerID@1@W4eTimerIntervalTypes@@JMJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87371",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87388",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mKillTimer@tEventMgr@@QAEXABVtTimerID@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87401",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87416",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRegisterActor@tEventMgr@@QAEJPAVtActor@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRemoveActor@tEventMgr@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPostEvent@tEventMgr@@QAEXABVtEventInfo@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87435",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87450",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEntityEvent@tEventMgr@@QAEXABUtShipSystemsInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tEventInfo@tEventMgr@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCleanUpActors@tEventMgr@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E60",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E59",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "State": {
+   "project": "ScriptInterface",
+   "src": "./State.cpp",
+   "compiled": true,
+   "secs": 13.3,
+   "has_target": true,
+   "n_functions": 51,
+   "exact": 51,
+   "code_bytes": 1407,
+   "exact_bytes": 1407,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 51,
+     "code_bytes_differ": 1,
+     "code_unpaired": 49,
+     "code_identical": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -35,
+     "_$E": 0
+    },
+    "label_count": [
+     21,
+     21
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tState@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetup@tState@@MAEXPAVtActor@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTimedInterval@tState@@UAEXW4eTimerIntervalTypes@@JM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??8tState@@QAEEABVtype_info@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetName@tState@@UAEPBDXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetStateID@tState@@UAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mBeginState@tState@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEndState@tState@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mHandleShipEvent@tState@@QAEXPAVtShipInfo@@ABVtEventInfo@tEventMgr@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDeath@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnCapture@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDisengaged@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAtDistance@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAtDestination@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnTimedInterval@tState@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnCommButtonPress@tState@@UAEXPAVtShipInfo@@J0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDamage@tState@@UAEXPAVtShipInfo@@0W4eDamageToShip@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnDeepScan@tState@@UAEXPAVtShipInfo@@E@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnAlertStatusChange@tState@@UAEXPAVtShipInfo@@W4eAlertLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnProbeLaunch@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnBeginOrbit@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnEndOrbit@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnBeginTractor@tState@@UAEXPAVtShipInfo@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnEndTractor@tState@@UAEXPAVtShipInfo@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnFlashingButtonPressed@tState@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnTransportedItem@tState@@UAEXPAVtShipInfo@@0W4eScriptTransportItems@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnChangingShip@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnSpecialTransport@tState@@UAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnShipSystemUpdate@tState@@UAEXPAVtShipInfo@@W4eShipUpdateType@@W4eSystemHardPoint@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnShipSystemUpdate@tState@@UAEXPAVtShipInfo@@W4eShipUpdateType@@W4eSystemHardPoint@@M@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnShipStoresUpdate@tState@@UAEXPAVtShipInfo@@W4eShipUpdateType@@W4eAccessShipStores_ItemTypes@@W4eAccessShipStores_SubTypes@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnShipStoresUpdate@tState@@UAEXPAVtShipInfo@@W4eShipUpdateType@@W4eAccessShipStores_ItemTypes@@W4eScriptTransportItems@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnPlayerLeaving@tState@@UAEXJW4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnHostChanged@tState@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnNewTeam@tState@@UAEXPAVtTeamInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnStateChange@tState@@UAEXPAVtActor@@PAV1@W4eStateEvent@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnCommStateChange@tState@@UAEXPAVtActor@@JW4eStateEvent@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mOnCommStateChange@tState@@UAEXPAVtActor@@JJW4eStateEvent@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "teamtracker": {
+   "project": "ScriptInterface",
+   "src": "./teamtracker.cpp",
+   "compiled": true,
+   "secs": 13.3,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 397,
+   "exact_bytes": 397,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 18,
+     "code_bytes_differ": 1,
+     "code_unpaired": 16,
+     "code_identical": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "?mInitialize@tTeamTrackerClass@@QAEXW4eTeamID@@AAVtDynaverseScriptInfo@@J@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipDied@tTeamTrackerClass@@QAEXW4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mTeamGone@tTeamTrackerClass@@QAEXW4eTeamID@@PAVtMissionInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mTrackLeader@tTeamTrackerClass@@QAEXPAVtMissionInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamsStatus@tTeamTrackerClass@@QAE?AW4eGameStatus@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E3",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E2",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E26",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E34",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E33",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E32",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ShipInfo": {
+   "project": "ScriptInterface",
+   "src": "./ShipInfo.cpp",
+   "compiled": true,
+   "secs": 13.7,
+   "has_target": true,
+   "n_functions": 154,
+   "exact": 90,
+   "code_bytes": 14448,
+   "exact_bytes": 3297,
+   "misses": [
+    {
+     "name": "??0tShipInfo@@QAE@XZ",
+     "demangled": "public: __thiscall tShipInfo::tShipInfo(void)",
+     "size": 321,
+     "match": 99.84694,
+     "paired": true
+    },
+    {
+     "name": "?mSetupShipInfo@tShipInfo@@QAEXW4eTeamID@@W4eRace@@JJJPBDJJJJW4eShipOptions@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetupShipInfo(enum eTeamID, enum eRace, long, long, long, char const *, long, long, long, long, enum eShipOptions)",
+     "size": 509,
+     "match": 99.940475,
+     "paired": true
+    },
+    {
+     "name": "?mClearCommands@tShipInfo@@QAEXXZ",
+     "demangled": "public: void __thiscall tShipInfo::mClearCommands(void)",
+     "size": 130,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipTarget@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipTarget(class tShipInfo *, enum eAIPriority)",
+     "size": 167,
+     "match": 99.86842,
+     "paired": true
+    },
+    {
+     "name": "?mRemoveTargets@tShipInfo@@QAEXXZ",
+     "demangled": "public: void __thiscall tShipInfo::mRemoveTargets(void)",
+     "size": 130,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mDisengage@tShipInfo@@QAEXW4eDisengageMethods@@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mDisengage(enum eDisengageMethods, enum eAIPriority)",
+     "size": 154,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mTractorEntity@tShipInfo@@QAEXPAV1@JJW4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mTractorEntity(class tShipInfo *, long, long, enum eAIPriority)",
+     "size": 220,
+     "match": 99.89796,
+     "paired": true
+    },
+    {
+     "name": "?mDefendEntity@tShipInfo@@QAEXPAV1@MMW4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mDefendEntity(class tShipInfo *, float, float, enum eAIPriority)",
+     "size": 193,
+     "match": 99.88095,
+     "paired": true
+    },
+    {
+     "name": "?mFollowEntity@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mFollowEntity(class tShipInfo *, enum eAIPriority)",
+     "size": 167,
+     "match": 99.86842,
+     "paired": true
+    },
+    {
+     "name": "?mFireProbe@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mFireProbe(class tShipInfo *, enum eAIPriority)",
+     "size": 167,
+     "match": 99.86842,
+     "paired": true
+    },
+    {
+     "name": "?mSetWeaponState@tShipInfo@@QAEXW4eWeaponStates@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetWeaponState(enum eWeaponStates)",
+     "size": 154,
+     "match": 99.861115,
+     "paired": true
+    },
+    {
+     "name": "?mPatrol@tShipInfo@@QAEXMJPAUtMapPoint@@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mPatrol(float, long, struct tMapPoint *, enum eAIPriority)",
+     "size": 176,
+     "match": 99.861115,
+     "paired": true
+    },
+    {
+     "name": "?mChangeAIOfficerState@tShipInfo@@QAEXW4eAIOfficers@@E@Z",
+     "demangled": "public: void __thiscall tShipInfo::mChangeAIOfficerState(enum eAIOfficers, unsigned char)",
+     "size": 160,
+     "match": 99.84849,
+     "paired": true
+    },
+    {
+     "name": "?mCloak@tShipInfo@@QAEXE@Z",
+     "demangled": "public: void __thiscall tShipInfo::mCloak(unsigned char)",
+     "size": 148,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipThrust@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipThrust(long)",
+     "size": 137,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipMaxSpeed@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipMaxSpeed(long)",
+     "size": 143,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipImmediateSpeed@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipImmediateSpeed(long)",
+     "size": 143,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mGetShipSpeed@tShipInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tShipInfo::mGetShipSpeed(void)",
+     "size": 136,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipPlayerControlled@tShipInfo@@QAEXXZ",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipPlayerControlled(void)",
+     "size": 179,
+     "match": 99.888885,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipAIControlled@tShipInfo@@QAEXE@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipAIControlled(unsigned char)",
+     "size": 141,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mReplaceShipCallbackEvents@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mReplaceShipCallbackEvents(long)",
+     "size": 143,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mSetFinalDestination@tShipInfo@@QAEXJJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetFinalDestination(long, long)",
+     "size": 184,
+     "match": 99.87805,
+     "paired": true
+    },
+    {
+     "name": "?mTrackTacticalDistance@tShipInfo@@QAEXMJJE@Z",
+     "demangled": "public: void __thiscall tShipInfo::mTrackTacticalDistance(float, long, long, unsigned char)",
+     "size": 221,
+     "match": 99.895836,
+     "paired": true
+    },
+    {
+     "name": "?mSetCommButton@tShipInfo@@QAEXW4eTeamID@@JEJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetCommButton(enum eTeamID, long, unsigned char, long)",
+     "size": 212,
+     "match": 99.891304,
+     "paired": true
+    },
+    {
+     "name": "?mClearCommButton@tShipInfo@@QAEXW4eTeamID@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mClearCommButton(enum eTeamID, long)",
+     "size": 160,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mClearCommMsg@tShipInfo@@QAEXW4eTeamID@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mClearCommMsg(enum eTeamID, long)",
+     "size": 160,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mClearAllCommButtons@tShipInfo@@QAEXXZ",
+     "demangled": "public: void __thiscall tShipInfo::mClearAllCommButtons(void)",
+     "size": 144,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mGetClassName@tShipInfo@@QAEPBDXZ",
+     "demangled": "public: char const * __thiscall tShipInfo::mGetClassName(void)",
+     "size": 128,
+     "match": 99.82758,
+     "paired": true
+    },
+    {
+     "name": "?mGetShipTargetID@tShipInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tShipInfo::mGetShipTargetID(void)",
+     "size": 128,
+     "match": 99.82758,
+     "paired": true
+    },
+    {
+     "name": "?mGetGridPosition@tShipInfo@@QAEXPAJ0@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetGridPosition(long *, long *)",
+     "size": 152,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mGetTacticalDistance@tShipInfo@@QAEMPAV1@@Z",
+     "demangled": "public: float __thiscall tShipInfo::mGetTacticalDistance(class tShipInfo *)",
+     "size": 203,
+     "match": 99.891304,
+     "paired": true
+    },
+    {
+     "name": "?mGetTacticalDistance@tShipInfo@@QAEME@Z",
+     "demangled": "public: float __thiscall tShipInfo::mGetTacticalDistance(unsigned char)",
+     "size": 171,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mGetTacticalDistance@tShipInfo@@QAEMJJ@Z",
+     "demangled": "public: float __thiscall tShipInfo::mGetTacticalDistance(long, long)",
+     "size": 171,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mGetAlertStatus@tShipInfo@@QAE?AW4eAlertLevels@@XZ",
+     "demangled": "public: enum eAlertLevels __thiscall tShipInfo::mGetAlertStatus(void)",
+     "size": 124,
+     "match": 99.81481,
+     "paired": true
+    },
+    {
+     "name": "?mSetAlertStatus@tShipInfo@@QAEXW4eAlertLevels@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetAlertStatus(enum eAlertLevels)",
+     "size": 118,
+     "match": 99.791664,
+     "paired": true
+    },
+    {
+     "name": "?mGetDamagePercent@tShipInfo@@QAEMXZ",
+     "demangled": "public: float __thiscall tShipInfo::mGetDamagePercent(void)",
+     "size": 145,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mChangeName@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mChangeName(long)",
+     "size": 170,
+     "match": 99.871796,
+     "paired": true
+    },
+    {
+     "name": "?mGetOfficerRank@tShipInfo@@QAE?AW4eOfficerRank@@W4eOfficerTypes@@@Z",
+     "demangled": "public: enum eOfficerRank __thiscall tShipInfo::mGetOfficerRank(enum eOfficerTypes)",
+     "size": 143,
+     "match": 99.84849,
+     "paired": true
+    },
+    {
+     "name": "?mSetOfficerRank@tShipInfo@@QAEXW4eOfficerTypes@@W4eOfficerRank@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetOfficerRank(enum eOfficerTypes, enum eOfficerRank)",
+     "size": 146,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mSetOfficerName@tShipInfo@@QAEXW4eOfficerTypes@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetOfficerName(enum eOfficerTypes, long)",
+     "size": 180,
+     "match": 99.875,
+     "paired": true
+    },
+    {
+     "name": "?mSetTargetable@tShipInfo@@QAEXE@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetTargetable(unsigned char)",
+     "size": 186,
+     "match": 99.88095,
+     "paired": true
+    },
+    {
+     "name": "?mSetSystemHealthFromOrig@tShipInfo@@QAEXW4eSystemHardPoint@@ME@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetSystemHealthFromOrig(enum eSystemHardPoint, float, unsigned char)",
+     "size": 172,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mSetSystemHealthFromCurr@tShipInfo@@QAEXW4eSystemHardPoint@@ME@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetSystemHealthFromCurr(enum eSystemHardPoint, float, unsigned char)",
+     "size": 172,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mDamageRandomInternals@tShipInfo@@QAEXM@Z",
+     "demangled": "public: void __thiscall tShipInfo::mDamageRandomInternals(float)",
+     "size": 157,
+     "match": 99.85294,
+     "paired": true
+    },
+    {
+     "name": "?mDamageRandomInternals@tShipInfo@@QAEXH@Z",
+     "demangled": "public: void __thiscall tShipInfo::mDamageRandomInternals(int)",
+     "size": 149,
+     "match": 99.84849,
+     "paired": true
+    },
+    {
+     "name": "?mGetHealthOfSystem@tShipInfo@@QAEXW4eSystemHardPoint@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetHealthOfSystem(enum eSystemHardPoint)",
+     "size": 145,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mGetMaxHealthOfSystem@tShipInfo@@QAEXW4eSystemHardPoint@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetMaxHealthOfSystem(enum eSystemHardPoint)",
+     "size": 145,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mGetPercentAtMarkOriginal_Trigger@tShipInfo@@QAEXW4eSystemHardPoint@@ME@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetPercentAtMarkOriginal_Trigger(enum eSystemHardPoint, float, unsigned char)",
+     "size": 172,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mClearPreviousTriggers@tShipInfo@@QAEXW4eSystemHardPoint@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mClearPreviousTriggers(enum eSystemHardPoint)",
+     "size": 145,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?mRemoveItemFromStores@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mRemoveItemFromStores(enum eAccessShipStores_ItemTypes, long)",
+     "size": 156,
+     "match": 99.85294,
+     "paired": true
+    },
+    {
+     "name": "?mRemoveItemFromStores@tShipInfo@@QAEXW4eScriptTransportItems@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mRemoveItemFromStores(enum eScriptTransportItems, long)",
+     "size": 156,
+     "match": 99.85294,
+     "paired": true
+    },
+    {
+     "name": "?mAddItemToStores@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@W4eAccessShipStores_SubTypes@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mAddItemToStores(enum eAccessShipStores_ItemTypes, enum eAccessShipStores_SubTypes, long)",
+     "size": 170,
+     "match": 99.861115,
+     "paired": true
+    },
+    {
+     "name": "?mAddItemToStores@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@W4eScriptTransportItems@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mAddItemToStores(enum eAccessShipStores_ItemTypes, enum eScriptTransportItems, long)",
+     "size": 162,
+     "match": 99.84849,
+     "paired": true
+    },
+    {
+     "name": "?mSetItemInStores@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@W4eAccessShipStores_SubTypes@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetItemInStores(enum eAccessShipStores_ItemTypes, enum eAccessShipStores_SubTypes, long)",
+     "size": 173,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mSetItemInStores@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@W4eScriptTransportItems@@J@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetItemInStores(enum eAccessShipStores_ItemTypes, enum eScriptTransportItems, long)",
+     "size": 159,
+     "match": 99.85294,
+     "paired": true
+    },
+    {
+     "name": "?mGetAmountOfStore@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetAmountOfStore(enum eAccessShipStores_ItemTypes)",
+     "size": 151,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetAmountOfStore@tShipInfo@@QAEXW4eScriptTransportItems@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetAmountOfStore(enum eScriptTransportItems)",
+     "size": 151,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetMaxAmountOfStore@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetMaxAmountOfStore(enum eAccessShipStores_ItemTypes)",
+     "size": 151,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetMaxAmountOfStore@tShipInfo@@QAEXW4eScriptTransportItems@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetMaxAmountOfStore(enum eScriptTransportItems)",
+     "size": 151,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetAmountAtMark_Trigger@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@ME@Z",
+     "demangled": "public: void __thiscall tShipInfo::mGetAmountAtMark_Trigger(enum eAccessShipStores_ItemTypes, float, unsigned char)",
+     "size": 179,
+     "match": 99.861115,
+     "paired": true
+    },
+    {
+     "name": "?mClearPreviousTriggers@tShipInfo@@QAEXW4eAccessShipStores_ItemTypes@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mClearPreviousTriggers(enum eAccessShipStores_ItemTypes)",
+     "size": 151,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mSetShipLoadout@tShipInfo@@QAEXJJJJJJV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@JJJJJJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShipLoadout(long, long, long, long, long, long, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> >, long, long, long, long, long, long)",
+     "size": 533,
+     "match": 99.97488,
+     "paired": true
+    },
+    {
+     "name": "?mSetShuttles@tShipInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetShuttles(long)",
+     "size": 143,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mSetFighters@tShipInfo@@QAEXJJV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+     "demangled": "public: void __thiscall tShipInfo::mSetFighters(long, long, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> >)",
+     "size": 244,
+     "match": 99.91525,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 122,
+     "data_identical": 54,
+     "code_sections": 221,
+     "code_bytes_differ": 1,
+     "code_unpaired": 197,
+     "code_identical": 20,
+     "data_unpaired": 67,
+     "code_relocs_differ": 3,
+     "data_relocs_differ": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -424,
+     "$T": -420,
+     "_$E": 0
+    },
+    "label_count": [
+     288,
+     290
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E55",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipIterator@@QAE@PAPAVtShipInfo@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddEvaluator@tShipIterator@@QAEXPAVtShipEvaluator@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mValid@tShipIterator@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??EtShipIterator@@QAEAAV0@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??EtShipIterator@@QAE?AV0@H@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88578",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88902",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??DtShipIterator@@QAEPAVtShipInfo@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??CtShipIterator@@QAEPAVtShipInfo@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??8tShipIterator@@QAEEPAPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??7tShipIterator@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEvaluate@tShipIterator@@IAEEPAPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEvaluate@tShipInPlayEval@@UBEEPAPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipCustomIDEval@@QAE@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEvaluate@tShipCustomIDEval@@UBEEPAPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipClassEval@@QAE@ABVtype_info@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEvaluate@tShipClassEval@@UBEEPAPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88998",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89300",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tShipInfo@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupShipInfo@tShipInfo@@QAEXW4eTeamID@@W4eRace@@JJJPBDJJJJW4eShipOptions@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mClearCommands@tShipInfo@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89753",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89768",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetShipTarget@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89778",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89793",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRemoveTargets@tShipInfo@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89800",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89815",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisengage@tShipInfo@@QAEXW4eDisengageMethods@@W4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89822",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89837",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mTractorEntity@tShipInfo@@QAEXPAV1@JJW4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89844",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89859",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDefendEntity@tShipInfo@@QAEXPAV1@MMW4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89866",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89881",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFollowEntity@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89889",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89904",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFireProbe@tShipInfo@@QAEXPAV1@W4eAIPriority@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89911",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "TeamInfo": {
+   "project": "ScriptInterface",
+   "src": "./TeamInfo.cpp",
+   "compiled": true,
+   "secs": 13.9,
+   "has_target": true,
+   "n_functions": 114,
+   "exact": 89,
+   "code_bytes": 11720,
+   "exact_bytes": 5719,
+   "misses": [
+    {
+     "name": "?mTeamSetupComplete@tTeamInfo@@UAEXXZ",
+     "demangled": "public: virtual void __thiscall tTeamInfo::mTeamSetupComplete(void)",
+     "size": 267,
+     "match": 99.9359,
+     "paired": true
+    },
+    {
+     "name": "??1tTeamInfo@@UAE@XZ",
+     "demangled": "public: virtual __thiscall tTeamInfo::~tTeamInfo(void)",
+     "size": 327,
+     "match": 99.95238,
+     "paired": true
+    },
+    {
+     "name": "?mFindShipIndex@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+     "demangled": "public: class tShipInfo * __thiscall tTeamInfo::mFindShipIndex(long)",
+     "size": 175,
+     "match": 99.9,
+     "paired": true
+    },
+    {
+     "name": "?mFindShipID@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+     "demangled": "public: class tShipInfo * __thiscall tTeamInfo::mFindShipID(long)",
+     "size": 175,
+     "match": 99.9,
+     "paired": true
+    },
+    {
+     "name": "?mFindShipCustomID@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+     "demangled": "public: class tShipInfo * __thiscall tTeamInfo::mFindShipCustomID(long)",
+     "size": 211,
+     "match": 99.92308,
+     "paired": true
+    },
+    {
+     "name": "?mAddShipToTeamList@tTeamInfo@@QAEEAAUtCreateShipInfo@@@Z",
+     "demangled": "public: unsigned char __thiscall tTeamInfo::mAddShipToTeamList(struct tCreateShipInfo &)",
+     "size": 680,
+     "match": 99.97959,
+     "paired": true
+    },
+    {
+     "name": "?mDetermineStartPositionOffset@tTeamInfo@@IAEXPAW4eShipOptions@@J@Z",
+     "demangled": "protected: void __thiscall tTeamInfo::mDetermineStartPositionOffset(enum eShipOptions *, long)",
+     "size": 562,
+     "match": 99.9711,
+     "paired": true
+    },
+    {
+     "name": "?mGetShipsInPlayCount@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mGetShipsInPlayCount(void)",
+     "size": 175,
+     "match": 99.90385,
+     "paired": true
+    },
+    {
+     "name": "?mAllShipsReady@tTeamInfo@@QAEEXZ",
+     "demangled": "public: unsigned char __thiscall tTeamInfo::mAllShipsReady(void)",
+     "size": 159,
+     "match": 99.888885,
+     "paired": true
+    },
+    {
+     "name": "?mAllInPosition@tTeamInfo@@QAEEXZ",
+     "demangled": "public: unsigned char __thiscall tTeamInfo::mAllInPosition(void)",
+     "size": 179,
+     "match": 99.89796,
+     "paired": true
+    },
+    {
+     "name": "?mDisengageShips@tTeamInfo@@QAEXW4eDisengageMethods@@W4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tTeamInfo::mDisengageShips(enum eDisengageMethods, enum eAIPriority)",
+     "size": 134,
+     "match": 99.871796,
+     "paired": true
+    },
+    {
+     "name": "?mDefendEntity@tTeamInfo@@QAEXPAVtShipInfo@@MMW4eAIPriority@@@Z",
+     "demangled": "public: void __thiscall tTeamInfo::mDefendEntity(class tShipInfo *, float, float, enum eAIPriority)",
+     "size": 148,
+     "match": 99.893616,
+     "paired": true
+    },
+    {
+     "name": "?mClearCommands@tTeamInfo@@QAEXXZ",
+     "demangled": "public: void __thiscall tTeamInfo::mClearCommands(void)",
+     "size": 118,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetTotalCombatBPV@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mGetTotalCombatBPV(void)",
+     "size": 125,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mAssessDamages@tTeamInfo@@QAEJPAV1@@Z",
+     "demangled": "public: long __thiscall tTeamInfo::mAssessDamages(class tTeamInfo *)",
+     "size": 296,
+     "match": 99.94505,
+     "paired": true
+    },
+    {
+     "name": "?mRemoveShipAsTarget@tTeamInfo@@QAEXPAVtShipInfo@@@Z",
+     "demangled": "public: void __thiscall tTeamInfo::mRemoveShipAsTarget(class tShipInfo *)",
+     "size": 129,
+     "match": 99.861115,
+     "paired": true
+    },
+    {
+     "name": "?mGetTeamStatus@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mGetTeamStatus(void)",
+     "size": 284,
+     "match": 99.947365,
+     "paired": true
+    },
+    {
+     "name": "?mSetRelations@tTeamInfo@@QAEXW4eTeamID@@W4eTeamRelationship@@W4eTargetGoals@@M@Z",
+     "demangled": "public: void __thiscall tTeamInfo::mSetRelations(enum eTeamID, enum eTeamRelationship, enum eTargetGoals, float)",
+     "size": 208,
+     "match": 99.888885,
+     "paired": true
+    },
+    {
+     "name": "?mGetShipCount@tTeamInfo@@QAEJW4eShipStatus@@@Z",
+     "demangled": "public: long __thiscall tTeamInfo::mGetShipCount(enum eShipStatus)",
+     "size": 137,
+     "match": 99.88372,
+     "paired": true
+    },
+    {
+     "name": "?mGetTotalDamagePercent@tTeamInfo@@QAEMXZ",
+     "demangled": "public: float __thiscall tTeamInfo::mGetTotalDamagePercent(void)",
+     "size": 231,
+     "match": 99.92424,
+     "paired": true
+    },
+    {
+     "name": "?mShipsRemainingInPlay@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mShipsRemainingInPlay(void)",
+     "size": 256,
+     "match": 99.9359,
+     "paired": true
+    },
+    {
+     "name": "?mShipsRemainingInPlayFromOriginalTeam@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mShipsRemainingInPlayFromOriginalTeam(void)",
+     "size": 256,
+     "match": 99.9359,
+     "paired": true
+    },
+    {
+     "name": "?mShipsCurrentlyControlled@tTeamInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tTeamInfo::mShipsCurrentlyControlled(void)",
+     "size": 278,
+     "match": 99.94118,
+     "paired": true
+    },
+    {
+     "name": "?mGetMaxClassType@tTeamInfo@@QAE?AW4eClassTypes@@XZ",
+     "demangled": "public: enum eClassTypes __thiscall tTeamInfo::mGetMaxClassType(void)",
+     "size": 134,
+     "match": 99.871796,
+     "paired": true
+    },
+    {
+     "name": "?mHandleShipEvent@tTeamInfo@@UAEXPAVtShipInfo@@ABVtEventInfo@tEventMgr@@@Z",
+     "demangled": "public: virtual void __thiscall tTeamInfo::mHandleShipEvent(class tShipInfo *, class tEventMgr::tEventInfo const &)",
+     "size": 357,
+     "match": 99.95868,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 79,
+     "data_identical": 52,
+     "data_bytes_differ": 1,
+     "code_sections": 142,
+     "code_bytes_differ": 1,
+     "code_unpaired": 111,
+     "code_identical": 30,
+     "data_unpaired": 26,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -256,
+     "$T": -256,
+     "_$E": 0
+    },
+    "label_count": [
+     142,
+     143
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "_gTigerEndianWord",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tCommMessage@tTeamInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tCommMessage@tTeamInfo@@QAE@JJJJJJW4eScriptMessageTypes@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E55",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tTeamInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88747",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88912",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamInfoData@tTeamInfo@@UAEXW4eTeamID@@W4eRace@@EW4eTeamTag@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamFlag@tTeamInfo@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamFlag@tTeamInfo@@QAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mTeamSetupComplete@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88998",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89114",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tTeamInfo@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89179",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89417",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupVictoryCondition@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupState@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupCommState@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateShipsForTeam@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupDebriefingList@tTeamInfo@@UAEXW4eVictoryLevels@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateNewShip@tTeamInfo@@UAEXABVtShipScriptDescription@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateNewShip@tTeamInfo@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeam@tTeamInfo@@QAE?AW4eTeamID@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTag@tTeamInfo@@QAE?AW4eTeamTag@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mIsTeamSetup@tTeamInfo@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mIsTeamHumanControlled@tTeamInfo@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetRace@tTeamInfo@@QAE?AW4eRace@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetFirstShip@tTeamInfo@@QAE?AVtShipIterator@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetThisShip@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindShipIndex@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89518",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89628",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindShipID@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89644",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89754",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindShipCustomID@tTeamInfo@@QAEPAVtShipInfo@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89771",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89936",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddShipToTeamList@tTeamInfo@@QAEEAAUtCreateShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89956",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90241",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRemoveShipFromTeamList@tTeamInfo@@QAEXPAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateTeamShip@tTeamInfo@@IAEXABVtype_info@@AAUtCreateShipInfo@@JJJJJJW4eRace@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDetermineStartPositionOffset@tTeamInfo@@IAEXPAW4eShipOptions@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90337",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90664",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "DrawCanvas": {
+   "project": "ScriptInterface",
+   "src": "./DrawCanvas.cpp",
+   "compiled": true,
+   "secs": 13.0,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 1629,
+   "exact_bytes": 1629,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 27,
+     "code_bytes_differ": 1,
+     "code_unpaired": 25,
+     "code_identical": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tDrawCanvas@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tDrawCanvas@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisplayDrawObject@tDrawCanvas@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEraseDrawObject@tDrawCanvas@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPredefinedSquare@tDrawCanvas@@MAEJQAUtScript3DPoint@@MMM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPredefinedTriangle@tDrawCanvas@@MAEJQAUtScript3DPoint@@MMM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPredefinedLine@tDrawCanvas@@MAEJQAUtScript3DPoint@@MMM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPredefinedPoint@tDrawCanvas@@MAEJQAUtScript3DPoint@@MMM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateDrawObject@tDrawCanvas@@IAEXJPAUtScript3DPrimitive@@QAUtScript3DPoint@@JUtMapPoint@@W4eScriptPrimitiveFlags@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDestroyDrawObject@tDrawCanvas@@IAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisplayScriptPrimitive@tDrawCanvas@@IAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEraseScriptPrimitive@tDrawCanvas@@IAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateScriptPrimitive@tDrawCanvas@@IAEXJUtScript3DPrimitive@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mKillScriptPrimitive@tDrawCanvas@@IAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionInfo": {
+   "project": "ScriptInterface",
+   "src": "./MissionInfo.cpp",
+   "compiled": true,
+   "secs": 13.6,
+   "has_target": true,
+   "n_functions": 97,
+   "exact": 68,
+   "code_bytes": 11693,
+   "exact_bytes": 6104,
+   "misses": [
+    {
+     "name": "?mCheckForMissionEnd@tMissionInfo@@QAEEXZ",
+     "demangled": "public: unsigned char __thiscall tMissionInfo::mCheckForMissionEnd(void)",
+     "size": 202,
+     "match": 99.91071,
+     "paired": true
+    },
+    {
+     "name": "?mDisplayMessage@tMissionInfo@@QAEXW4eTeamID@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eScriptMessageTypes@@PAVtShipInfo@@@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mDisplayMessage(enum eTeamID, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> >, enum eScriptMessageTypes, class tShipInfo *)",
+     "size": 128,
+     "match": 99.87805,
+     "paired": true
+    },
+    {
+     "name": "?mAddToDebriefingList@tMissionInfo@@QAEXW4eTeamID@@PBD@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mAddToDebriefingList(enum eTeamID, char const *)",
+     "size": 169,
+     "match": 99.871796,
+     "paired": true
+    },
+    {
+     "name": "?mAddToDebriefingList@tMissionInfo@@QAEXW4eTeamID@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mAddToDebriefingList(enum eTeamID, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> >)",
+     "size": 118,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mResetDebriefingCount@tMissionInfo@@QAEXW4eTeamID@@@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mResetDebriefingCount(enum eTeamID)",
+     "size": 152,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mGetGridPosition@tMissionInfo@@QBEEEPAJ0@Z",
+     "demangled": "public: unsigned char __thiscall tMissionInfo::mGetGridPosition(unsigned char, long *, long *) const",
+     "size": 247,
+     "match": 99.91525,
+     "paired": true
+    },
+    {
+     "name": "?mGetTacticalDistance@tMissionInfo@@QBEMEE@Z",
+     "demangled": "public: float __thiscall tMissionInfo::mGetTacticalDistance(unsigned char, unsigned char) const",
+     "size": 208,
+     "match": 99.9,
+     "paired": true
+    },
+    {
+     "name": "?mCreateMapObject@tMissionInfo@@QAEXEJJ@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mCreateMapObject(unsigned char, long, long)",
+     "size": 147,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?mGetPlayerRank@tMissionInfo@@QBEJXZ",
+     "demangled": "public: long __thiscall tMissionInfo::mGetPlayerRank(void) const",
+     "size": 116,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?mGetEliteOrganization@tMissionInfo@@QBEJXZ",
+     "demangled": "public: long __thiscall tMissionInfo::mGetEliteOrganization(void) const",
+     "size": 116,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?mGetDifficultyLevel@tMissionInfo@@QBEJXZ",
+     "demangled": "public: long __thiscall tMissionInfo::mGetDifficultyLevel(void) const",
+     "size": 116,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?mGetEra@tMissionInfo@@QBEJXZ",
+     "demangled": "public: long __thiscall tMissionInfo::mGetEra(void) const",
+     "size": 124,
+     "match": 99.81481,
+     "paired": true
+    },
+    {
+     "name": "?mPlaySound@tMissionInfo@@QAEXJ@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mPlaySound(long)",
+     "size": 120,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?mPlayVoiceSample@tMissionInfo@@QAEXJE@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mPlayVoiceSample(long, unsigned char)",
+     "size": 143,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mVoiceSampleStillPlaying@tMissionInfo@@QAEJXZ",
+     "demangled": "public: long __thiscall tMissionInfo::mVoiceSampleStillPlaying(void)",
+     "size": 126,
+     "match": 99.82758,
+     "paired": true
+    },
+    {
+     "name": "?mAddToCareerTotals@tMissionInfo@@QAEXW4eClassTypes@@W4eCareerEvents@@J@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mAddToCareerTotals(enum eClassTypes, enum eCareerEvents, long)",
+     "size": 140,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mFindShipID@tMissionInfo@@QBEPAVtShipInfo@@J@Z",
+     "demangled": "public: class tShipInfo * __thiscall tMissionInfo::mFindShipID(long) const",
+     "size": 203,
+     "match": 99.92424,
+     "paired": true
+    },
+    {
+     "name": "?mGetRaceRelationship@tMissionInfo@@QBE?AW4ePoliticalRelation@@W4eRace@@0@Z",
+     "demangled": "public: enum ePoliticalRelation __thiscall tMissionInfo::mGetRaceRelationship(enum eRace, enum eRace) const",
+     "size": 140,
+     "match": 99.833336,
+     "paired": true
+    },
+    {
+     "name": "?mStartFlashingButton@tMissionInfo@@QAEXPBD@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mStartFlashingButton(char const *)",
+     "size": 126,
+     "match": 99.8,
+     "paired": true
+    },
+    {
+     "name": "?mStopFlashingButton@tMissionInfo@@QAEXPBD@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mStopFlashingButton(char const *)",
+     "size": 120,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?mGetCampaignType@tMissionInfo@@QAEEXZ",
+     "demangled": "public: unsigned char __thiscall tMissionInfo::mGetCampaignType(void)",
+     "size": 132,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mGetINIFileInt@tMissionInfo@@QBEJJJ@Z",
+     "demangled": "public: long __thiscall tMissionInfo::mGetINIFileInt(long, long) const",
+     "size": 203,
+     "match": 99.79592,
+     "paired": true
+    },
+    {
+     "name": "?mSetGoalIndicator@tMissionInfo@@QAEXW4eTeamID@@EJJ@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mSetGoalIndicator(enum eTeamID, unsigned char, long, long)",
+     "size": 349,
+     "match": 99.93976,
+     "paired": true
+    },
+    {
+     "name": "?mSetGoalIndicator@tMissionInfo@@QAEXW4eTeamID@@PAVtShipInfo@@@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mSetGoalIndicator(enum eTeamID, class tShipInfo *)",
+     "size": 318,
+     "match": 99.93507,
+     "paired": true
+    },
+    {
+     "name": "?mSetGoalIndicator@tMissionInfo@@QAEXPAVtShipInfo@@EJJ@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mSetGoalIndicator(class tShipInfo *, unsigned char, long, long)",
+     "size": 200,
+     "match": 99.888885,
+     "paired": true
+    },
+    {
+     "name": "?mSetGoalIndicator@tMissionInfo@@QAEXPAVtShipInfo@@0@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mSetGoalIndicator(class tShipInfo *, class tShipInfo *)",
+     "size": 177,
+     "match": 99.86842,
+     "paired": true
+    },
+    {
+     "name": "?mAdjustDynaverse@tMissionInfo@@QAEXW4eDynaverseTableType@@JW4eRace@@@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mAdjustDynaverse(enum eDynaverseTableType, long, enum eRace)",
+     "size": 140,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?mGetHexType@tMissionInfo@@QAEEAAVtMetaLocationSpec@@@Z",
+     "demangled": "public: unsigned char __thiscall tMissionInfo::mGetHexType(class tMetaLocationSpec &)",
+     "size": 172,
+     "match": 99.875,
+     "paired": true
+    },
+    {
+     "name": "?mInvokeGameStatus@tMissionInfo@@QAEXEW4eTeamID@@EE@Z",
+     "demangled": "public: void __thiscall tMissionInfo::mInvokeGameStatus(unsigned char, enum eTeamID, unsigned char, unsigned char)",
+     "size": 937,
+     "match": 99.97758,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 59,
+     "data_identical": 27,
+     "data_bytes_differ": 2,
+     "code_sections": 127,
+     "code_bytes_differ": 1,
+     "code_unpaired": 104,
+     "code_identical": 22,
+     "data_unpaired": 30,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -231,
+     "$T": -121,
+     "_$E": 0
+    },
+    "label_count": [
+     144,
+     145
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "_gTigerEndianWord",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E55",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E62",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E58",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E61",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E59",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMissionInfo@@QAE@PAVtScript@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tMissionInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mScheduleMission@tMissionInfo@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88672",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88702",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCheckForMissionEnd@tMissionInfo@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88714",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88729",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetDate@tMissionInfo@@QAEXABVtMissionDate@tDynaverseScriptInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetLocation@tMissionInfo@@QAEXW4eSectorName@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetSystemName@tMissionInfo@@QAEXW4eSystems@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupTeam@tMissionInfo@@QAEXJW4eTeamTag@@W4eRace@@EABVtype_info@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamHandle@tMissionInfo@@QAEPAVtTeamInfo@@W4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetGameStatus@tMissionInfo@@QAE?AW4eGameStatus@@W4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAllTeamsReady@tMissionInfo@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRandomInt32@tMissionInfo@@QBEJJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetRandomBitValue@tMissionInfo@@QAEJJJW4eBitRequest@1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisplayMessage@tMissionInfo@@QAEXW4eTeamID@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eScriptMessageTypes@@PAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88770",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88834",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisplayMessage@tMissionInfo@@QAEXW4eTeamID@@JW4eScriptMessageTypes@@PAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDisplayMessage@tMissionInfo@@QAEXW4eTeamID@@PBDW4eScriptMessageTypes@@PAVtShipInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mReplaceTokens@tMissionInfo@@QAEXPAD@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDebugMessage@tMissionInfo@@QAEXPBD@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToDebriefingList@tMissionInfo@@QAEXW4eTeamID@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToDebriefingList@tMissionInfo@@QAEXW4eTeamID@@PBD@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88877",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88892",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAddToDebriefingList@tMissionInfo@@QAEXW4eTeamID@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88899",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88963",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mResetDebriefingCount@tMissionInfo@@QAEXW4eTeamID@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88970",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88985",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetGridPosition@tMissionInfo@@QBEEEPAJ0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88994",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89013",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTacticalDistance@tMissionInfo@@QBEMEE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89021",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89036",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateMapObject@tMissionInfo@@QAEXEJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Script": {
+   "project": "ScriptInterface",
+   "src": "./Script.cpp",
+   "compiled": true,
+   "secs": 13.1,
+   "has_target": true,
+   "n_functions": 58,
+   "exact": 52,
+   "code_bytes": 5481,
+   "exact_bytes": 3683,
+   "misses": [
+    {
+     "name": "??0tScript@@QAE@XZ",
+     "demangled": "public: __thiscall tScript::tScript(void)",
+     "size": 451,
+     "match": 99.92701,
+     "paired": true
+    },
+    {
+     "name": "??1tScript@@UAE@XZ",
+     "demangled": "public: virtual __thiscall tScript::~tScript(void)",
+     "size": 157,
+     "match": 99.88372,
+     "paired": true
+    },
+    {
+     "name": "?mCreateTeamSpec@tScript@@IAE?AVtTeamSpec@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eTeamID@@MEW4eTeamType@@MJJABVtype_info@@W4eTeamTag@@0@Z",
+     "demangled": "protected: class tTeamSpec __thiscall tScript::mCreateTeamSpec(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > const &, enum eTeamID, float, unsigned char, enum eTeamType, float, long, long, class type_info const &, enum eTeamTag, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > const &)",
+     "size": 620,
+     "match": 99.97024,
+     "paired": true
+    },
+    {
+     "name": "?mGetTeamShipStrengths@tScript@@QAE?AV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@J@Z",
+     "demangled": "public: class std::vector<class tShipStrength, class std::allocator<class tShipStrength> > __thiscall tScript::mGetTeamShipStrengths(long)",
+     "size": 312,
+     "match": 99.94681,
+     "paired": true
+    },
+    {
+     "name": "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0JJ@Z",
+     "demangled": "public: void __thiscall tScript::mSetTeamShipStrength(long, enum eClassTypes, enum eClassTypes, long, long)",
+     "size": 129,
+     "match": 99.85714,
+     "paired": true
+    },
+    {
+     "name": "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0MM@Z",
+     "demangled": "public: void __thiscall tScript::mSetTeamShipStrength(long, enum eClassTypes, enum eClassTypes, float, float)",
+     "size": 129,
+     "match": 99.85714,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 33,
+     "code_sections": 67,
+     "code_bytes_differ": 2,
+     "data_unpaired": 9,
+     "code_identical": 21,
+     "code_unpaired": 41,
+     "code_relocs_differ": 3,
+     "data_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -68,
+     "$T": -103,
+     "_$E": 0
+    },
+    "label_count": [
+     67,
+     66
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tScript@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L85690",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86009",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tScript@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86093",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86099",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateExternalShips@tScript@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mASCIIOverrides@tScript@@UAEXPAVtMapOverrides@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mMission@tScript@@UBEPAVtMissionInfo@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mHosting@tScript@@UBEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mReadyToStartMission@tScript@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mIsMissionReadyToStart@tScript@@UAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mStartMission@tScript@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mHasMissionBegun@tScript@@UAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupScript@tScript@@IAEXEW4eTeamID@@ABVtMissionDate@tDynaverseScriptInfo@@W4eSectorName@@W4eSystems@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateTeamSpec@tScript@@IAE?AVtTeamSpec@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eTeamID@@MEW4eTeamType@@MJJABVtype_info@@W4eTeamTag@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86135",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86309",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tStrength@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86358",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86430",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mNewTeam@tScript@@UAEXABVtTeamScriptDescription@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mInitializeDraw@tScript@@UAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAssignMapTerrainTypes@tScript@@UAE?AVtMapTerrain@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetBriefings@tScript@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetBriefingList@tScript@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDefineBriefings@tScript@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamShipStrengths@tScript@@QAE?AV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86884",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87078",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mDefineTeamShipStrengths@tScript@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0JJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87095",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87135",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0MM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87143",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87183",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87902",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87900",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtShipStrength@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88095",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88100",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "__Ios_init",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E60",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptInterface": {
+   "project": "ScriptInterface",
+   "src": "./ScriptInterface.cpp",
+   "compiled": true,
+   "secs": 13.8,
+   "has_target": true,
+   "n_functions": 83,
+   "exact": 80,
+   "code_bytes": 8939,
+   "exact_bytes": 7422,
+   "misses": [
+    {
+     "name": "?mCreateScript@tScriptInterface@@UAEXXZ",
+     "demangled": "public: virtual void __thiscall tScriptInterface::mCreateScript(void)",
+     "size": 820,
+     "match": 99.98233,
+     "paired": true
+    },
+    {
+     "name": "?mSaveEntityID@tScriptInterface@@UAEEW4eTeamID@@JJJ@Z",
+     "demangled": "public: virtual unsigned char __thiscall tScriptInterface::mSaveEntityID(enum eTeamID, long, long, long)",
+     "size": 456,
+     "match": 99.96063,
+     "paired": true
+    },
+    {
+     "name": "?mInitMapForRead@tScriptInterface@@IAEEJ@Z",
+     "demangled": "protected: unsigned char __thiscall tScriptInterface::mInitMapForRead(long)",
+     "size": 241,
+     "match": 99.861115,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 32,
+     "data_bytes_differ": 1,
+     "code_sections": 91,
+     "code_bytes_differ": 1,
+     "code_unpaired": 60,
+     "data_unpaired": 6,
+     "code_identical": 26,
+     "code_relocs_differ": 4,
+     "data_relocs_differ": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -101,
+     "$T": -138,
+     "_$E": 0
+    },
+    "label_count": [
+     58,
+     58
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "_gTigerEndianWord",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E55",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_ScriptEntry",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_MissionSpecEntry",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tScriptInterface@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tScriptInterface@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetGameStatus@tScriptInterface@@QAEXW4eTeamID@@W4eGameStatus@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mMission@tScriptInterface@@QBEPAVtMissionInfo@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mScript@tScriptInterface@@QBEPAVtScript@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetCampaignTitle@tScriptInterface@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88176",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88356",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mIsScriptCreated@tScriptInterface@@QBEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateScript@tScriptInterface@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88385",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88662",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateShipCallback@tScriptInterface@@UAEXP6GXAAUtCreateShipInfo@@@Z@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEntityMgrCallback@tScriptInterface@@UAEXP6GXAAUtShipSystemsInfo@@@Z@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mMessageCallback@tScriptInterface@@UAEXP6GXW4eTeamID@@PBDW4eScriptMessageTypes@@J@Z@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mRandomCallback@tScriptInterface@@UAEXP6GJJJ@Z@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPrimitiveCallback@tScriptInterface@@UAEXP6GXJAAUtScript3DPrimitive@@W4eScriptPrimitiveAction@@@Z@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mInitialize@tScriptInterface@@UAEXAAVtDynaverseScriptInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mChooseRace@tScriptInterface@@IAE?AW4eRace@@QAW42@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mChooseSystem@tScriptInterface@@IAE?AW4eSystems@@QAW42@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFinishSetupShips@tScriptInterface@@IAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mScriptStartMission@tScriptInterface@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetNewHost@tScriptInterface@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSaveEntityID@tScriptInterface@@UAEEW4eTeamID@@JJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89069",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89087",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEntityEvent@tScriptInterface@@UAEXAAUtShipSystemsInfo@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mInitMapForRead@tScriptInterface@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mInitMapForRead@tScriptInterface@@IAEEJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89103",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_02FCOO@?1?1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89105",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetNextMapLine@tScriptInterface@@UAEPBDXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mBriefingText@tScriptInterface@@UAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetScriptSpecs@tScriptInterface@@UAEPBVtMissionSpec@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mValidateVersion@tScriptInterface@@UAEEM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mNewTeam@tScriptInterface@@UAEXABVtTeamScriptDescription@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mNewShip@tScriptInterface@@UAEXABVtShipScriptDescription@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mBeginMission@tScriptInterface@@UAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamRelations@tScriptInterface@@UAE?AW4eTeamRelationship@@W4eTeamID@@0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindMapObject@tScriptInterface@@QAEXEPAJ0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMapDimensions@tScriptInterface@@QAEXPAJ0@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mIsHost@tScriptInterface@@QAEEXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MapObject": {
+   "project": "shared",
+   "src": "./Source/Scripting/MapObject.cpp",
+   "compiled": true,
+   "secs": 2.9,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 17,
+   "code_bytes": 1847,
+   "exact_bytes": 1478,
+   "misses": [
+    {
+     "name": "??0tMapObject@@QAE@W4eMapObjectType@@JJ_NJ0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+     "demangled": "public: __thiscall tMapObject::tMapObject(enum eMapObjectType, long, long, bool, long, enum eMapObjectType, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> >)",
+     "size": 369,
+     "match": 99.96212,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 12,
+     "data_identical": 10,
+     "code_sections": 21,
+     "code_bytes_differ": 1,
+     "code_unpaired": 11,
+     "data_unpaired": 2,
+     "code_identical": 9,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -22,
+     "$T": -22,
+     "_$E": 0
+    },
+    "label_count": [
+     17,
+     17
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tMapObjectPoint@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapObjectPoint@@QAE@JJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapObjectType@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapObjectType@@QAE@W4eMapObjectType@@J0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L11583",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T11854",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??8tMapObjectType@@QAE_NABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapObject@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapObject@@QAE@W4eMapObjectType@@JJ_NJ0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L11875",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T12145",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tMapObject@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E19",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E18",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionMatchLocation": {
+   "project": "shared",
+   "src": "./Source/Scripting/MissionMatchLocation.cpp",
+   "compiled": true,
+   "secs": 11.7,
+   "has_target": true,
+   "n_functions": 28,
+   "exact": 28,
+   "code_bytes": 1985,
+   "exact_bytes": 1985,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_identical": 32,
+     "code_sections": 29,
+     "code_bytes_differ": 1,
+     "code_identical": 13,
+     "code_unpaired": 15,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -54,
+     "$T": -54,
+     "_$E": 0
+    },
+    "label_count": [
+     15,
+     15
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tMetaLocationSpec@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMetaLocationSpec@@QAE@JJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMetaLocationSpec@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tMetaLocationSpec@@QAEAAV0@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamOut@tMetaLocationSpec@@UBEXAAVtOutput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamIn@tMetaLocationSpec@@UAEXAAVtInput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E49",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E48",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E21",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "missionspec": {
+   "project": "shared",
+   "src": "./Source/Scripting/missionspec.cpp",
+   "compiled": true,
+   "secs": 12.1,
+   "has_target": true,
+   "n_functions": 90,
+   "exact": 83,
+   "code_bytes": 14275,
+   "exact_bytes": 11703,
+   "misses": [
+    {
+     "name": "??0tTeamSpec@@QAE@XZ",
+     "demangled": "public: __thiscall tTeamSpec::tTeamSpec(void)",
+     "size": 131,
+     "match": 99.875,
+     "paired": true
+    },
+    {
+     "name": "??1tTeamSpec@@UAE@XZ",
+     "demangled": "public: virtual __thiscall tTeamSpec::~tTeamSpec(void)",
+     "size": 175,
+     "match": 99.916664,
+     "paired": true
+    },
+    {
+     "name": "??0tMissionSpec@@QAE@XZ",
+     "demangled": "public: __thiscall tMissionSpec::tMissionSpec(void)",
+     "size": 262,
+     "match": 99.92958,
+     "paired": true
+    },
+    {
+     "name": "??0tMissionSpec@@QAE@ABV0@@Z",
+     "demangled": "public: __thiscall tMissionSpec::tMissionSpec(class tMissionSpec const &)",
+     "size": 227,
+     "match": 99.91803,
+     "paired": true
+    },
+    {
+     "name": "??1tMissionSpec@@QAE@XZ",
+     "demangled": "public: __thiscall tMissionSpec::~tMissionSpec(void)",
+     "size": 426,
+     "match": 99.96403,
+     "paired": true
+    },
+    {
+     "name": "?copyData@tMissionSpec@@IAEXABV1@@Z",
+     "demangled": "protected: void __thiscall tMissionSpec::copyData(class tMissionSpec const &)",
+     "size": 926,
+     "match": 99.98311,
+     "paired": true
+    },
+    {
+     "name": "?mSetupTeam@tMissionSpec@@QAEXABVtTeamSpec@@@Z",
+     "demangled": "public: void __thiscall tMissionSpec::mSetupTeam(class tTeamSpec const &)",
+     "size": 425,
+     "match": 99.96154,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 33,
+     "code_sections": 106,
+     "code_bytes_differ": 1,
+     "code_unpaired": 32,
+     "data_unpaired": 11,
+     "code_identical": 70,
+     "code_relocs_differ": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -94,
+     "$T": -94,
+     "_$E": 0
+    },
+    "label_count": [
+     116,
+     116
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tTeamSpec@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@JM_NW4eTeamType@@MVtStrength@@JJJW4eTeamTag@@0QAV12@1@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80492",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80678",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tTeamSpec@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80753",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80858",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tTeamSpec@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80867",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80972",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMissionSpec@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80990",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T81159",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMissionSpec@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L81184",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T81351",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tMapOverrides@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L81358",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T82092",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tMissionSpec@@QAEAAV0@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tMissionSpec@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L82560",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T82828",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?copyData@tMissionSpec@@IAEXABV1@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L82847",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T83091",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tTeamSpec@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L83104",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T83333",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetupTeam@tMissionSpec@@QAEXABVtTeamSpec@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L83914",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T84084",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mTeamCount@tMissionSpec@@QAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mPlayableCount@tMissionSpec@@QAEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamSpec@tMissionSpec@@QAEPAVtTeamSpec@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86226",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86224",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E21",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E51",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "NetMsgClass": {
+   "project": "shared",
+   "src": "./Source/Network/NetMsgClass.cpp",
+   "compiled": true,
+   "secs": 3.8,
+   "has_target": true,
+   "n_functions": 8,
+   "exact": 7,
+   "code_bytes": 1035,
+   "exact_bytes": 219,
+   "misses": [
+    {
+     "name": "?mStream@tNetMsg@@IAEKPBXEPAU1@@Z",
+     "demangled": "protected: unsigned long __thiscall tNetMsg::mStream(void const *, unsigned char, struct tNetMsg *)",
+     "size": 816,
+     "match": 99.94774,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_identical": 6,
+     "data_bytes_differ": 1,
+     "code_sections": 8,
+     "code_bytes_differ": 1,
+     "data_unpaired": 3,
+     "code_unpaired": 6,
+     "code_identical": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": 1,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     14
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "_gTigerEndianWord",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mStream@tNetMsg@@IAEKPBXEPAU1@@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0FC@IFHA@C?3?2Projects?2Taldren?2Projects?2SFC@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0DE@HKKH@tNetMsg?3?3mStream?$CI?$CJ?3?5Don?8t?5know?5h@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mStreamTo@tNetMsg@@UAEKPAE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mStreamFrom@tNetMsg@@UAEKPBE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mMakeStringy@tNetMsg@@SAPAEHPBE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mMakeUnStringy@tNetMsg@@SAPAEHPAE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E20",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E19",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptMapData": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptMapData.cpp",
+   "compiled": true,
+   "secs": 13.1,
+   "has_target": true,
+   "n_functions": 84,
+   "exact": 79,
+   "code_bytes": 33114,
+   "exact_bytes": 13262,
+   "misses": [
+    {
+     "name": "??0tMapOverrides@@QAE@XZ",
+     "demangled": "public: __thiscall tMapOverrides::tMapOverrides(void)",
+     "size": 3814,
+     "match": 99.92635,
+     "paired": true
+    },
+    {
+     "name": "??4tMapOverrides@@QAEHV0@@Z",
+     "demangled": "public: int __thiscall tMapOverrides::operator=(class tMapOverrides)",
+     "size": 14388,
+     "match": 99.998825,
+     "paired": true
+    },
+    {
+     "name": "??0tScriptMapData@@QAE@PBDQAPBDPAVtMapOverrides@@@Z",
+     "demangled": "public: __thiscall tScriptMapData::tScriptMapData(char const *, char const **const, class tMapOverrides *)",
+     "size": 119,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?mLoadMap@tScriptMapData@@QAEXPBDQAPBDPAVtMapOverrides@@@Z",
+     "demangled": "public: void __thiscall tScriptMapData::mLoadMap(char const *, char const **const, class tMapOverrides *)",
+     "size": 970,
+     "match": 99.94827,
+     "paired": true
+    },
+    {
+     "name": "?mFindMapStart@tScriptMapData@@IBEJPBD@Z",
+     "demangled": "protected: long __thiscall tScriptMapData::mFindMapStart(char const *) const",
+     "size": 561,
+     "match": 99.92386,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_identical": 9,
+     "code_sections": 94,
+     "code_bytes_differ": 1,
+     "code_unpaired": 34,
+     "data_unpaired": 20,
+     "code_identical": 54,
+     "code_relocs_differ": 5,
+     "data_relocs_differ": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -74,
+     "$T": -105,
+     "_$E": 0
+    },
+    "label_count": [
+     133,
+     145
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tMapOverrides@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L81363",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OECE@PL9?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EOLD@PL8?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EPOO@PL7?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OFHJ@PL6?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03BKMA@PL5?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03LAFH@PL4?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03OFLC@PL3?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03EPCF@PL2?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_03LAJM@PL1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_04OCA@PL10?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T82866",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tMapOverrides@@QAEHV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88599",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89386",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tMapOverrides@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89393",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90127",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapTerrain@@QAE@JJJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tMapTerrain@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tMapTerrain@@QAEHV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tScriptMapData@@QAE@PBDQAPBDPAVtMapOverrides@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90147",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90204",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tScriptMapData@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??8tScriptMapData@@QAEJABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMapDimension@tScriptMapData@@QBE?AVtMapObjectPoint@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMapName@tScriptMapData@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mLoadMap@tScriptMapData@@QAEXPBDQAPBDPAVtMapOverrides@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90404",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90718",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindMapStart@tScriptMapData@@IBEJPBD@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90745",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_02FCOO@?1?1?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91026",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mFindMapDimension@tScriptMapData@@IBE?AVtMapObjectPoint@@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMapItemType@tScriptMapData@@SA?AW4eMapObjectType@@DPAH@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??A?$map@DV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@D@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABD@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91954",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92158",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E21",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "__Ios_init",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptStructs": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptStructs.cpp",
+   "compiled": true,
+   "secs": 11.3,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 594,
+   "exact_bytes": 594,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 21,
+     "code_bytes_differ": 1,
+     "code_unpaired": 18,
+     "code_identical": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tScript3DPoint@@QAE@MMMMMM@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tScript3DPoint@@QAEXU0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tScript3DPrimitive@@QAE@JFFW4eScriptPrimitiveFlags@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tScript3DPrimitive@@QAEXU0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipInGame@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetShipPosition@tShipInGame@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetShipPosition@tShipInGame@@QBEJXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "sfcstreams": {
+   "project": "shared",
+   "src": "./Source/Common/sfcstreams.cpp",
+   "compiled": true,
+   "secs": 4.2,
+   "has_target": true,
+   "n_functions": 161,
+   "exact": 124,
+   "code_bytes": 14824,
+   "exact_bytes": 8432,
+   "misses": [
+    {
+     "name": "??5tSFCStream@@QAEAAV0@AAVtString@@@Z",
+     "demangled": "public: class tSFCStream & __thiscall tSFCStream::operator>>(class tString &)",
+     "size": 87,
+     "match": 99.83871,
+     "paired": true
+    },
+    {
+     "name": "?Int32StreamOutText@@YAXPADAAJAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32StreamOutText(char *, long &, class tSFCStream &)",
+     "size": 77,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int32StreamInText@@YAXPADAAJAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32StreamInText(char *, long &, class tSFCStream &)",
+     "size": 165,
+     "match": 70.566666,
+     "paired": true
+    },
+    {
+     "name": "?Int32uStreamOutText@@YAXPADAAKAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32uStreamOutText(char *, unsigned long &, class tSFCStream &)",
+     "size": 77,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int32uStreamInText@@YAXPADAAKAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int32uStreamInText(char *, unsigned long &, class tSFCStream &)",
+     "size": 165,
+     "match": 70.566666,
+     "paired": true
+    },
+    {
+     "name": "?Int16StreamOutText@@YAXPADAAFAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16StreamOutText(char *, short &, class tSFCStream &)",
+     "size": 78,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int16StreamInText@@YAXPADAAFAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16StreamInText(char *, short &, class tSFCStream &)",
+     "size": 177,
+     "match": 71.61905,
+     "paired": true
+    },
+    {
+     "name": "?Int16uStreamOutText@@YAXPADAAGAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16uStreamOutText(char *, unsigned short &, class tSFCStream &)",
+     "size": 80,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?Int16uStreamInText@@YAXPADAAGAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int16uStreamInText(char *, unsigned short &, class tSFCStream &)",
+     "size": 177,
+     "match": 71.61905,
+     "paired": true
+    },
+    {
+     "name": "?Int8StreamOutText@@YAXPADAACAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8StreamOutText(char *, signed char &, class tSFCStream &)",
+     "size": 78,
+     "match": 99.77273,
+     "paired": true
+    },
+    {
+     "name": "?Int8StreamInText@@YAXPADAACAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8StreamInText(char *, signed char &, class tSFCStream &)",
+     "size": 175,
+     "match": 71.61905,
+     "paired": true
+    },
+    {
+     "name": "?Int8uStreamOutText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8uStreamOutText(char *, unsigned char &, class tSFCStream &)",
+     "size": 79,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?Int8uStreamInText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl Int8uStreamInText(char *, unsigned char &, class tSFCStream &)",
+     "size": 175,
+     "match": 71.61905,
+     "paired": true
+    },
+    {
+     "name": "?ITruthStreamOutText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl ITruthStreamOutText(char *, unsigned char &, class tSFCStream &)",
+     "size": 79,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?ITruthStreamInText@@YAXPADAAEAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl ITruthStreamInText(char *, unsigned char &, class tSFCStream &)",
+     "size": 175,
+     "match": 71.61905,
+     "paired": true
+    },
+    {
+     "name": "?FloatStreamOutText@@YAXPADAAMAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl FloatStreamOutText(char *, float &, class tSFCStream &)",
+     "size": 82,
+     "match": 99.78261,
+     "paired": true
+    },
+    {
+     "name": "?FloatStreamInText@@YAXPADAAMAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl FloatStreamInText(char *, float &, class tSFCStream &)",
+     "size": 165,
+     "match": 71.25,
+     "paired": true
+    },
+    {
+     "name": "?TPoint3StreamOutText@@YAXPADAAUtPoint3@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint3StreamOutText(char *, struct tPoint3&, class tSFCStream &)",
+     "size": 101,
+     "match": 99.82758,
+     "paired": true
+    },
+    {
+     "name": "?TPoint3StreamInText@@YAXPADAAUtPoint3@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint3StreamInText(char *, struct tPoint3&, class tSFCStream &)",
+     "size": 199,
+     "match": 69.26761,
+     "paired": true
+    },
+    {
+     "name": "?TPoint2StreamOutText@@YAXPADAAUtPoint2@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint2StreamOutText(char *, struct tPoint2&, class tSFCStream &)",
+     "size": 92,
+     "match": 99.80769,
+     "paired": true
+    },
+    {
+     "name": "?TPoint2StreamInText@@YAXPADAAUtPoint2@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint2StreamInText(char *, struct tPoint2&, class tSFCStream &)",
+     "size": 187,
+     "match": 69.55224,
+     "paired": true
+    },
+    {
+     "name": "?TPoint4StreamOutText@@YAXPADAAUtPoint4@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint4StreamOutText(char *, struct tPoint4&, class tSFCStream &)",
+     "size": 110,
+     "match": 99.84375,
+     "paired": true
+    },
+    {
+     "name": "?TPoint4StreamInText@@YAXPADAAUtPoint4@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint4StreamInText(char *, struct tPoint4&, class tSFCStream &)",
+     "size": 211,
+     "match": 75.14667,
+     "paired": true
+    },
+    {
+     "name": "?TPoint6StreamOutText@@YAXPADAAUtPoint6@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint6StreamOutText(char *, struct tPoint6&, class tSFCStream &)",
+     "size": 120,
+     "match": 99.60526,
+     "paired": true
+    },
+    {
+     "name": "?TPoint6StreamInText@@YAXPADAAUtPoint6@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TPoint6StreamInText(char *, struct tPoint6&, class tSFCStream &)",
+     "size": 94,
+     "match": 99.67742,
+     "paired": true
+    },
+    {
+     "name": "?TStringStreamOutText@@YAXAAVtString@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStringStreamOutText(class tString &, class tString &, class tSFCStream &)",
+     "size": 152,
+     "match": 99.87805,
+     "paired": true
+    },
+    {
+     "name": "?TStringStreamInText@@YAXAAVtString@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStringStreamInText(class tString &, class tString &, class tSFCStream &)",
+     "size": 247,
+     "match": 99.82143,
+     "paired": true
+    },
+    {
+     "name": "?TStdStringStreamOutText@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStdStringStreamOutText(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class tSFCStream &)",
+     "size": 407,
+     "match": 99.89796,
+     "paired": true
+    },
+    {
+     "name": "?TStdStringStreamInText@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TStdStringStreamInText(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class tSFCStream &)",
+     "size": 380,
+     "match": 99.89051,
+     "paired": true
+    },
+    {
+     "name": "?TMatrixStreamOutText@@YAXPADAAVtMatrix@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TMatrixStreamOutText(char *, class tMatrix &, class tSFCStream &)",
+     "size": 704,
+     "match": 99.86487,
+     "paired": true
+    },
+    {
+     "name": "?TMatrixStreamInText@@YAXPADAAVtMatrix@@AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TMatrixStreamInText(char *, class tMatrix &, class tSFCStream &)",
+     "size": 359,
+     "match": 99.796745,
+     "paired": true
+    },
+    {
+     "name": "?DoubleStreamOutText@@YAXPADAANAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl DoubleStreamOutText(char *, double &, class tSFCStream &)",
+     "size": 81,
+     "match": 99.791664,
+     "paired": true
+    },
+    {
+     "name": "?DoubleStreamInText@@YAXPADAANAAVtSFCStream@@@Z",
+     "demangled": "void __cdecl DoubleStreamInText(char *, double &, class tSFCStream &)",
+     "size": 165,
+     "match": 70.566666,
+     "paired": true
+    },
+    {
+     "name": "?TextStreamOutText@@YAXPAD0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TextStreamOutText(char *, char *, class tSFCStream &)",
+     "size": 75,
+     "match": 99.7619,
+     "paired": true
+    },
+    {
+     "name": "?TextStreamInText@@YAXPAD0AAVtSFCStream@@@Z",
+     "demangled": "void __cdecl TextStreamInText(char *, char *, class tSFCStream &)",
+     "size": 189,
+     "match": 73.014084,
+     "paired": true
+    },
+    {
+     "name": "?ArchiveTStringTM@@YAXAAVtString@@AAVtSFCStream@@KPAD@Z",
+     "demangled": "void __cdecl ArchiveTStringTM(class tString &, class tSFCStream &, unsigned long, char *)",
+     "size": 159,
+     "match": 99.893616,
+     "paired": true
+    },
+    {
+     "name": "?ArchiveStdStringTM@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVtSFCStream@@KPAD@Z",
+     "demangled": "void __cdecl ArchiveStdStringTM(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char> > &, class tSFCStream &, unsigned long, char *)",
+     "size": 269,
+     "match": 99.947365,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 39,
+     "data_identical": 5,
+     "data_bytes_differ": 1,
+     "code_sections": 168,
+     "code_bytes_differ": 1,
+     "code_unpaired": 158,
+     "data_unpaired": 32,
+     "code_identical": 8,
+     "code_relocs_differ": 1,
+     "data_relocs_differ": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -244,
+     "$T": -315,
+     "_$E": 0
+    },
+    "label_count": [
+     37,
+     84
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "_gTigerEndianWord",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tSFCStream@@QAE@PAEJ@Z",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tSFCStream@@QAE@J@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mReset@tSFCStream@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetVersionNumber@tSFCStream@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetVersionNumber@tSFCStream@@QAEHXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tSFCStream@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAUtPoint3@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAUtPoint4@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAUtPoint6@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAUtPoint2@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAVtMatrix@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAVtString@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??6tSFCStream@@QAEAAV0@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAUtPoint3@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAUtPoint4@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAUtPoint6@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAUtPoint2@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAVtMatrix@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAVtString@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".bss",
+       "??_C@_00A@?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5tSFCStream@@QAEAAV0@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mWriteOutTabs@tSFCStream@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mReadInTabs@tSFCStream@@QAEXXZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mWriteToStream@tSFCStream@@QAEXPAEJE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mReadFromStream@tSFCStream@@QAEJPAEJE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetReadSize@tSFCStream@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetReadPtr@tSFCStream@@QAEXPAE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetWritePtr@tSFCStream@@QAEXPAE@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TextStreamCompress@@YAXPADAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TextStreamUncompress@@YAXPADAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?Int32StreamCompress@@YAXAAJAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?Int32StreamUncompress@@YAXAAJAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?Int32uStreamCompress@@YAXAAKAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?Int32uStreamUncompress@@YAXAAKAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?FloatStreamCompress@@YAXAAMAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?FloatStreamUncompress@@YAXAAMAAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint3StreamCompress@@YAXAAUtPoint3@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint3StreamUncompress@@YAXAAUtPoint3@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint4StreamCompress@@YAXAAUtPoint4@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint4StreamUncompress@@YAXAAUtPoint4@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint6StreamCompress@@YAXAAUtPoint6@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint6StreamUncompress@@YAXAAUtPoint6@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint2StreamCompress@@YAXAAUtPoint2@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TPoint2StreamUncompress@@YAXAAUtPoint2@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TMatrixStreamCompress@@YAXAAVtMatrix@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TMatrixStreamUncompress@@YAXAAVtMatrix@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TStringStreamCompress@@YAXAAVtString@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TStringStreamUncompress@@YAXAAVtString@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?TStdStringStreamCompress@@YAXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVtSFCStream@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "SFCThreadState": {
+   "project": "shared",
+   "src": "./Meta/Servers/SFCThreadState.cpp",
+   "compiled": true,
+   "secs": 7.3,
+   "has_target": true,
+   "n_functions": 12,
+   "exact": 12,
+   "code_bytes": 410,
+   "exact_bytes": 410,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 11,
+     "data_identical": 11,
+     "code_sections": 13,
+     "code_bytes_differ": 1,
+     "code_unpaired": 8,
+     "code_identical": 4,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -49,
+     "$T": -49,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "_$E20",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E16",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E19",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E17",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?Instance@tSFCThreadState@@SAPAV1@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tSFCThreadState@@AAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tSFCThreadState@@EAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E26",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Strength": {
+   "project": "shared",
+   "src": "./Source/Scripting/Strength.cpp",
+   "compiled": true,
+   "secs": 7.1,
+   "has_target": true,
+   "n_functions": 52,
+   "exact": 50,
+   "code_bytes": 6329,
+   "exact_bytes": 5753,
+   "misses": [
+    {
+     "name": "??0tStrength@@QAE@V?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@@Z",
+     "demangled": "public: __thiscall tStrength::tStrength(class std::vector<class tShipStrength, class std::allocator<class tShipStrength> >)",
+     "size": 373,
+     "match": 99.95968,
+     "paired": true
+    },
+    {
+     "name": "??1tStrength@@UAE@XZ",
+     "demangled": "public: virtual __thiscall tStrength::~tStrength(void)",
+     "size": 203,
+     "match": 99.93056,
+     "paired": true
+    }
+   ],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 37,
+     "code_sections": 57,
+     "code_bytes_differ": 1,
+     "code_unpaired": 27,
+     "data_bytes_differ": 1,
+     "code_identical": 27,
+     "data_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -63,
+     "$T": -59,
+     "_$E": 0
+    },
+    "label_count": [
+     39,
+     39
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tStrength@@QAE@XZ",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L77377",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T77484",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tStrength@@QAEAAV0@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tStrength@@QAE@V?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L77836",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T78011",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??1tStrength@@UAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L78030",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T78171",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamOut@tStrength@@UBEXAAVtOutput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamIn@tStrength@@UAEXAAVtInput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipStrength@@QAE@XZ",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipStrength@@QAE@W4eClassTypes@@0JJ@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipStrength@@QAE@W4eClassTypes@@0MM@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipStrength@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??4tShipStrength@@QAEHV0@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamOut@tShipStrength@@UBEXAAVtOutput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?StreamIn@tShipStrength@@UAEXAAVtInput@nDataStore@@@Z",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80536",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80796",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E21",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtShipStrength@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80867",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80872",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E49",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E48",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "texttoken": {
+   "project": "shared",
+   "src": "./Source/Scripting/texttoken.cpp",
+   "compiled": true,
+   "secs": 0.5,
+   "has_target": true,
+   "n_functions": 0,
+   "exact": 0,
+   "code_bytes": 0,
+   "exact_bytes": 0,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 76,
+     "data_bytes_differ": 1,
+     "data_unpaired": 75,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {},
+    "label_count": [
+     0,
+     75
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".data",
+       "?gTextTokens@@3PAPADA",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_08DIGF@STARDATE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BF@LDNA@PREVIOUS_SYSTEM_NAME?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@ENLA@SYSTEM_NAME?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MNIH@TEAM20_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@MIGP@TEAM20_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@NJJD@TEAM20_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ICAF@TEAM19_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@PCJO@TEAM19_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@JCIM@TEAM19_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MKCL@TEAM18_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@KDPD@TEAM18_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@HCM@TEAM18_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@HDJG@TEAM17_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@JOJN@TEAM17_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@ECEN@TEAM17_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@DLLI@TEAM16_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@MPPA@TEAM16_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@NHON@TEAM16_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ODML@TEAM15_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@DMEG@TEAM15_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@GJAN@TEAM15_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@KLOF@TEAM14_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@GNCL@TEAM14_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@PMKN@TEAM14_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@FDCM@TEAM13_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@NLCK@TEAM13_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@BEMN@TEAM13_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@BLAC@TEAM12_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@IKEH@TEAM12_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@IBGN@TEAM12_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@MDHB@TEAM11_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@HJPB@TEAM11_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@DPIN@TEAM11_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0O@ILFP@TEAM10_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BD@CIJM@TEAM10_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0M@KKCN@TEAM10_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@DGJN@TEAM9_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@DBBO@TEAM9_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@HIMK@TEAM9_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@HOLD@TEAM8_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@GAHD@TEAM8_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@ONGK@TEAM8_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@MHAO@TEAM7_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@FNBN@TEAM7_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@KIAL@TEAM7_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@IPCA@TEAM6_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0BC@MHA@TEAM6_RACE_PLURAL?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0L@DNKL@TEAM6_RACE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".data",
+       "??_C@_0N@FHFD@TEAM5_EMPIRE?$AA@",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  }
+ },
+ "objdiff_units": {
+  "ScriptInterface/NormalVictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1633",
+   "matched_code": "1633",
+   "matched_code_percent": 100.0,
+   "total_data": "636",
+   "matched_data": "636",
+   "matched_data_percent": 100.0,
+   "total_functions": 33,
+   "matched_functions": 33,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryCondition": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "798",
+   "matched_code": "798",
+   "matched_code_percent": 100.0,
+   "total_data": "532",
+   "matched_data": "532",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "343",
+   "matched_code": "343",
+   "matched_code_percent": 100.0,
+   "total_data": "444",
+   "matched_data": "444",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Actor": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5207",
+   "matched_code": "5207",
+   "matched_code_percent": 100.0,
+   "total_data": "564",
+   "matched_data": "316",
+   "matched_data_percent": 56.028366,
+   "total_functions": 47,
+   "matched_functions": 47,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/EventMgr": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1702",
+   "matched_code": "1702",
+   "matched_code_percent": 100.0,
+   "total_data": "816",
+   "matched_data": "696",
+   "matched_data_percent": 85.29411,
+   "total_functions": 26,
+   "matched_functions": 26,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/State": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1407",
+   "matched_code": "1407",
+   "matched_code_percent": 100.0,
+   "total_data": "348",
+   "matched_data": "348",
+   "matched_data_percent": 100.0,
+   "total_functions": 51,
+   "matched_functions": 51,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/teamtracker": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "397",
+   "matched_code": "397",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ShipInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14448",
+   "matched_code": "14448",
+   "matched_code_percent": 100.0,
+   "total_data": "3948",
+   "matched_data": "1128",
+   "matched_data_percent": 28.57143,
+   "total_functions": 154,
+   "matched_functions": 154,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/TeamInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11720",
+   "matched_code": "11720",
+   "matched_code_percent": 100.0,
+   "total_data": "2468",
+   "matched_data": "776",
+   "matched_data_percent": 31.442463,
+   "total_functions": 114,
+   "matched_functions": 114,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/DrawCanvas": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1629",
+   "matched_code": "1629",
+   "matched_code_percent": 100.0,
+   "total_data": "228",
+   "matched_data": "228",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/MissionInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11693",
+   "matched_code": "11693",
+   "matched_code_percent": 100.0,
+   "total_data": "1951",
+   "matched_data": "455",
+   "matched_data_percent": 23.321373,
+   "total_functions": 97,
+   "matched_functions": 97,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Script": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5481",
+   "matched_code": "5481",
+   "matched_code_percent": 100.0,
+   "total_data": "1328",
+   "matched_data": "712",
+   "matched_data_percent": 53.614456,
+   "total_functions": 58,
+   "matched_functions": 58,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ScriptInterface": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "8939",
+   "matched_code": "8939",
+   "matched_code_percent": 100.0,
+   "total_data": "1272",
+   "matched_data": "632",
+   "matched_data_percent": 49.685535,
+   "total_functions": 83,
+   "matched_functions": 83,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MapObject": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1847",
+   "matched_code": "1847",
+   "matched_code_percent": 100.0,
+   "total_data": "285",
+   "matched_data": "117",
+   "matched_data_percent": 41.05263,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MissionMatchLocation": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1985",
+   "matched_code": "1985",
+   "matched_code_percent": 100.0,
+   "total_data": "806",
+   "matched_data": "806",
+   "matched_data_percent": 100.0,
+   "total_functions": 28,
+   "matched_functions": 28,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/missionspec": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14275",
+   "matched_code": "14275",
+   "matched_code_percent": 100.0,
+   "total_data": "1486",
+   "matched_data": "486",
+   "matched_data_percent": 32.70525,
+   "total_functions": 90,
+   "matched_functions": 90,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/NetMsgClass": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1035",
+   "matched_code": "1035",
+   "matched_code_percent": 100.0,
+   "total_data": "2232",
+   "matched_data": "2064",
+   "matched_data_percent": 92.47312,
+   "total_functions": 8,
+   "matched_functions": 8,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptMapData": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "33114",
+   "matched_code": "33114",
+   "matched_code_percent": 100.0,
+   "total_data": "1076",
+   "matched_data": "100",
+   "matched_data_percent": 9.29368,
+   "total_functions": 84,
+   "matched_functions": 84,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptStructs": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "594",
+   "matched_code": "594",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/sfcstreams": {
+   "fuzzy_match_percent": 95.51984,
+   "total_code": "14824",
+   "matched_code": "12499",
+   "matched_code_percent": 84.31597,
+   "total_data": "864",
+   "matched_data": "28",
+   "matched_data_percent": 3.2407408,
+   "total_functions": 161,
+   "matched_functions": 148,
+   "matched_functions_percent": 91.92547,
+   "total_units": 1
+  },
+  "shared/SFCThreadState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "410",
+   "matched_code": "410",
+   "matched_code_percent": 100.0,
+   "total_data": "249",
+   "matched_data": "249",
+   "matched_data_percent": 100.0,
+   "total_functions": 12,
+   "matched_functions": 12,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/Strength": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "6329",
+   "matched_code": "6329",
+   "matched_code_percent": 100.0,
+   "total_data": "1126",
+   "matched_data": "758",
+   "matched_data_percent": 67.31794,
+   "total_functions": 52,
+   "matched_functions": 52,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/texttoken": {
+   "fuzzy_match_percent": 100.0,
+   "matched_code_percent": 100.0,
+   "total_data": "1544",
+   "matched_functions_percent": 100.0,
+   "complete_code_percent": 100.0,
+   "total_units": 1
+  }
+ }
+}

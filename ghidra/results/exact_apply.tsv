@@ -1,0 +1,458 @@
+address	event	detail
+00612790	demangle-failed	??1?$vector@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@V?$allocator@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@@std@@@std@@QAE@XZ Invalid mangled name
+0061d4d0	replaced	ANALYSIS tVolIterator::vfunction1
+0061d6b0	replaced	ANALYSIS tPathIterator::vfunction1
+00620300	replaced	ANALYSIS tFileSession::vfunction2
+00620310	replaced	ANALYSIS tFileSession::vfunction3
+006210a0	replaced	ANALYSIS tgVolume::vfunction1
+006211c0	replaced	ANALYSIS tgDir::vfunction1
+006214a0	replaced	ANALYSIS tgPath::vfunction1
+00625f30	section-only	StrLen <- .\sfcTiger Release\tstring.obj:.text#258
+00626240	section-only	StrLen <- .\sfcTiger Release\tstring.obj:.text#266
+00626770	replaced	ANALYSIS tDynamicMemoryFreeList::vfunction5
+00626790	replaced	ANALYSIS tDynamicMemoryFreeList::vfunction6
+00626bc0	replaced	ANALYSIS tDynamicMemoryFreeListViaHandles::vfunction9
+00626be0	replaced	ANALYSIS tDynamicMemoryFreeListViaHandles::vfunction11
+00627340	replaced	ANALYSIS tStrMgrCore::vfunction8
+00627360	replaced	ANALYSIS tStrMgrCore::vfunction7
+006273e0	replaced	ANALYSIS tStrMgrCore::vfunction10
+00627470	replaced	ANALYSIS tStrMgrCore::vfunction12
+00628480	created	64
+00628480	section-only	FUN_00628480 <- .\sfcTiger Release\tZipInfoMgr.obj:.text#17; .\sfcTiger Release\tbasicsoundfilezip.obj:.text#19
+00628540	created	64
+00628540	section-only	FUN_00628540 <- .\sfcTiger Release\tZipInfoMgr.obj:.text#21; .\sfcTiger Release\tbasicsoundfilezip.obj:.text#23
+006285b0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::~tBasicFileZip
+006286b0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction3
+006286e0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction4
+006286f0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction5
+00628700	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction6
+00628730	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction7
+00628790	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction8
+006287c0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction9
+006287e0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction10
+00628800	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction11
+00628860	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction12
+006288c0	replaced	ANALYSIS tBasicFileZipNamespace::tBasicFileZip::vfunction13
+00629660	section-only	ClampBaudRate <- .\sfcTiger Release\Twdebug.obj:.text#90
+0062aa30	demangle-failed	_M3DK6_LpSqrt null
+0062b350	demangle-failed	_CPU_CmpStrings null
+0062bf30	replaced	ANALYSIS tINISimpleNamespace::tINIFileSimple::vfunction2
+0062bf4f	overlaps-previous-match	?mDispose@tBasicFile@@QAEPAV1@XZ
+0062ed40	section-only	WinParsePath <- .\sfcTiger Release\twfsys.obj:.text#75
+0062ee00	section-only	WinParseDir <- .\sfcTiger Release\twfsys.obj:.text#80
+0062efe0	section-only	WinParseVolume <- .\sfcTiger Release\twfsys.obj:.text#90
+0062fab0	replaced	ANALYSIS twFileSystemPart::vfunction12
+0062ffc0	section-only	WinResetCWD <- .\sfcTiger Release\twfsys.obj:.text#113
+00630240	section-only	FUN_00630240 <- .\sfcTiger Release\twfsys.obj:.text#117
+00630530	replaced	ANALYSIS twFileSystemPart::vfunction13
+00630a00	section-only	FUN_00630a00 <- .\sfcTiger Release\twfsys.obj:.text#125
+00633bb0	section-only	OpenForReadChar <- .\sfcTiger Release\twfsys.obj:.text#298
+00633e10	section-only	OpenForWriteChar <- .\sfcTiger Release\twfsys.obj:.text#318
+00633fe0	created	208
+006344a0	section-only	OpenForWrite <- .\sfcTiger Release\twfsys.obj:.text#340
+00634520	section-only	OpenForRead <- .\sfcTiger Release\twfsys.obj:.text#342
+00637ba0	created	144
+0063a8d0	replaced	ANALYSIS twMemoryPart::vfunction7
+0063a900	replaced	ANALYSIS tPagingMechanism::vfunction15
+0063c480	replaced	ANALYSIS tPagingMechanism::vfunction7
+0063e9a0	replaced	ANALYSIS tPagingMechanism::vfunction9
+0063edc0	replaced	ANALYSIS tPagingMechanism::vfunction17
+0063ee80	replaced	ANALYSIS tCoopThreadPart::vfunction12
+0063ee90	replaced	ANALYSIS tCoopThreadPart::vfunction3
+00640870	created	144
+00640db0	replaced	ANALYSIS twCoopThreadPart::vfunction10
+006411d0	replaced	ANALYSIS twCoopThreadPart::vfunction24
+006417f0	created	768
+006443e0	created	624
+006447c0	created	160
+00644860	created	160
+00644c30	created	224
+00645490	replaced	ANALYSIS tListMemberWithHandle::vfunction2
+006454a0	replaced	ANALYSIS tListMemberWithHandle::vfunction3
+006454d0	replaced	ANALYSIS tListMemberWithHandle::vfunction7
+00645940	replaced	ANALYSIS twSoundPart::vfunction161
+00645a80	replaced	ANALYSIS twSoundPart::vfunction158
+00645a90	replaced	ANALYSIS twSoundPart::vfunction159
+00645aa0	replaced	ANALYSIS twSoundPart::vfunction160
+00645ac0	replaced	ANALYSIS twSoundPart::vfunction143
+00645ad0	replaced	ANALYSIS twSoundPart::vfunction144
+00645ae0	replaced	ANALYSIS twSoundPart::vfunction145
+00645af0	replaced	ANALYSIS twSoundPart::vfunction146
+00645b00	replaced	ANALYSIS twSoundPart::vfunction147
+00645b10	replaced	ANALYSIS twSoundPart::vfunction148
+00645b20	replaced	ANALYSIS twSoundPart::vfunction149
+00645b30	replaced	ANALYSIS twSoundPart::vfunction150
+00645b40	replaced	ANALYSIS twSoundPart::vfunction151
+00645b50	replaced	ANALYSIS twSoundPart::vfunction152
+00645b60	replaced	ANALYSIS twSoundPart::vfunction153
+00645b70	replaced	ANALYSIS twSoundPart::vfunction154
+00645b80	replaced	ANALYSIS twSoundPart::vfunction155
+00645b90	replaced	ANALYSIS twSoundPart::vfunction156
+00645ba0	replaced	ANALYSIS twSoundPart::vfunction157
+00645c80	replaced	ANALYSIS twSoundPart::vfunction42
+00645ff0	replaced	ANALYSIS twSoundPart::vfunction48
+00646200	created	32
+00646220	created	32
+00646240	created	32
+00646260	created	32
+00646280	created	32
+006462a0	created	32
+006462c0	created	16
+006462d0	created	16
+006462e0	created	16
+006462f0	created	16
+00646300	created	16
+00646340	replaced	ANALYSIS tChannelAttributes::vfunction13
+00646360	replaced	ANALYSIS tChannelAttributes::vfunction12
+00646380	replaced	ANALYSIS tChannelAttributes::vfunction11
+006463a0	replaced	ANALYSIS tChannelAttributes::vfunction14
+006463b0	replaced	ANALYSIS tChannelAttributes::vfunction17
+006463d0	replaced	ANALYSIS tChannelAttributes::vfunction16
+006463f0	replaced	ANALYSIS tChannelAttributes::vfunction15
+00646410	replaced	ANALYSIS tChannelAttributes::vfunction18
+00646420	replaced	ANALYSIS tChannelAttributes::vfunction21
+00646440	replaced	ANALYSIS tChannelAttributes::vfunction20
+00646460	replaced	ANALYSIS tChannelAttributes::vfunction19
+00646480	replaced	ANALYSIS tChannelAttributes::vfunction22
+00646490	replaced	ANALYSIS tChannelAttributes::vfunction23
+006464b0	replaced	ANALYSIS tChannelAttributes::vfunction24
+006464c0	replaced	ANALYSIS tChannelAttributes::vfunction25
+006464e0	replaced	ANALYSIS tChannelAttributes::vfunction26
+006464f0	replaced	ANALYSIS tChannelAttributes::vfunction27
+00646510	replaced	ANALYSIS tChannelAttributes::vfunction28
+00646580	replaced	ANALYSIS tSoundChannelFormat::vfunction13
+00646590	replaced	ANALYSIS tSoundChannelFormat::vfunction14
+006465a0	replaced	ANALYSIS tSoundChannelFormat::vfunction15
+006465b0	replaced	ANALYSIS tSoundChannelFormat::vfunction16
+006465c0	replaced	ANALYSIS tSoundChannelFormat::vfunction17
+006465d0	replaced	ANALYSIS tSoundChannelFormat::vfunction18
+006465e0	replaced	ANALYSIS tSoundChannelFormat::vfunction19
+006465f0	replaced	ANALYSIS tSoundChannelFormat::vfunction20
+00646600	replaced	ANALYSIS tSoundChannelFormat::vfunction21
+00646610	replaced	ANALYSIS tSoundChannelFormat::vfunction22
+00646620	replaced	ANALYSIS tSoundChannelFormat::vfunction23
+00646630	replaced	ANALYSIS tSoundChannelFormat::vfunction24
+00646640	replaced	ANALYSIS tSoundChannelFormat::vfunction25
+00646650	replaced	ANALYSIS tSoundChannelFormat::vfunction26
+00646720	replaced	ANALYSIS tSoundChannel::vfunction11
+00646730	replaced	ANALYSIS tSoundChannel::vfunction18
+00646740	replaced	ANALYSIS tSoundChannel::vfunction19
+00646750	replaced	ANALYSIS tSoundChannel::vfunction28
+00646760	replaced	ANALYSIS tSoundChannel::vfunction29
+00646770	replaced	ANALYSIS tSoundChannel::vfunction30
+00646780	replaced	ANALYSIS tSoundChannel::vfunction41
+00646790	replaced	ANALYSIS tSoundChannel::vfunction42
+006467a0	replaced	ANALYSIS tSoundChannel::vfunction43
+006467b0	replaced	ANALYSIS tSoundChannel::vfunction44
+006467c0	replaced	ANALYSIS tSoundChannel::vfunction45
+006467d0	replaced	ANALYSIS tSoundChannel::vfunction46
+006467e0	replaced	ANALYSIS tSoundChannel::vfunction47
+006467f0	replaced	ANALYSIS tSoundChannel::vfunction48
+00646800	replaced	ANALYSIS tSoundChannel::vfunction49
+00646810	replaced	ANALYSIS tSoundChannel::vfunction50
+00646820	replaced	ANALYSIS tSoundChannel::vfunction51
+00646830	replaced	ANALYSIS tSoundChannel::vfunction52
+00646840	replaced	ANALYSIS tSoundChannel::vfunction54
+00646850	replaced	ANALYSIS tSoundChannel::vfunction55
+00646860	replaced	ANALYSIS tSoundChannel::vfunction56
+00646870	replaced	ANALYSIS tSoundChannel::vfunction57
+00646880	replaced	ANALYSIS tSoundChannel::vfunction59
+00646890	replaced	ANALYSIS tSoundChannel::vfunction60
+006468a0	replaced	ANALYSIS tSoundChannel::vfunction61
+006468c0	replaced	ANALYSIS tSoundChannel::vfunction62
+006468d0	replaced	ANALYSIS tSoundChannel::vfunction65
+006468e0	replaced	ANALYSIS tSoundChannel::vfunction66
+006468f0	replaced	ANALYSIS tSoundChannel::vfunction67
+00646900	replaced	ANALYSIS tSoundChannel::vfunction68
+00646910	replaced	ANALYSIS tSoundChannel::vfunction71
+00646930	replaced	ANALYSIS tSoundChannel::vfunction72
+00646940	replaced	ANALYSIS tSoundChannel::vfunction73
+00646950	replaced	ANALYSIS tSoundChannel::vfunction74
+00646960	replaced	ANALYSIS tSoundChannel::vfunction75
+00646970	replaced	ANALYSIS tSoundChannel::vfunction76
+00646980	replaced	ANALYSIS tSoundChannel::vfunction77
+00646990	replaced	ANALYSIS tSoundChannel::vfunction78
+006469a0	replaced	ANALYSIS tSoundChannel::vfunction79
+006469c0	replaced	ANALYSIS tSoundChannel::vfunction80
+006469e0	replaced	ANALYSIS tSoundChannel::vfunction81
+00646a00	replaced	ANALYSIS tSoundChannel::vfunction82
+00646a20	replaced	ANALYSIS tSoundChannel::vfunction83
+00646a40	replaced	ANALYSIS tSoundChannel::vfunction84
+00646a60	replaced	ANALYSIS tSoundChannel::vfunction85
+00646ac0	replaced	ANALYSIS tSoundChannel::vfunction87
+00646b00	replaced	ANALYSIS tSoundChannel::vfunction113
+00646b10	replaced	ANALYSIS tSoundChannel::vfunction114
+00646b20	replaced	ANALYSIS tSoundChannel::vfunction115
+00646b30	replaced	ANALYSIS tSoundChannel::vfunction116
+00646b50	replaced	ANALYSIS tSoundChannel::vfunction118
+00646ba0	created	16
+00647500	created	1328
+00647ad0	replaced	ANALYSIS tChannelAttributes::vfunction2
+00647c70	replaced	ANALYSIS tSoundChannelFormat::vfunction2
+0064b030	replaced	ANALYSIS tSoundChannel::vfunction70
+0064d350	replaced	ANALYSIS tSoundChannel::vfunction106
+0064d820	replaced	ANALYSIS tSoundChannelCommand::vfunction11
+0064d830	replaced	ANALYSIS tSoundChannelCommand::vfunction12
+0064d880	replaced	ANALYSIS tSoundChannel::vfunction58
+0064dc40	replaced	ANALYSIS tSoundChannelCommand::vfunction20
+0064dc50	replaced	ANALYSIS tSoundChannelCommand::vfunction32
+0064dc80	replaced	ANALYSIS tSoundChannelCommand::vfunction31
+0064dc90	replaced	ANALYSIS tSoundChannelCommand::vfunction36
+0064dcb0	replaced	ANALYSIS tSoundChannelCommand::vfunction38
+0064dcd0	replaced	ANALYSIS tSoundChannelCommand::vfunction43
+0064dce0	replaced	ANALYSIS tSoundChannelCommand::vfunction28
+0064dcf0	replaced	ANALYSIS tSoundChannelCommand::vfunction45
+0064dd00	replaced	ANALYSIS tSoundChannelCommand::vfunction46
+0064eb70	replaced	ANALYSIS tSoundChannel::vfunction98
+0064f250	replaced	ANALYSIS tgSoundPart::vfunction87
+0064fcc0	replaced	ANALYSIS tgSoundPart::vfunction5
+0064fd00	replaced	ANALYSIS tgSoundPart::vfunction6
+006501c0	replaced	ANALYSIS tSoundMemoryBlockManager::vfunction14
+006501d0	replaced	ANALYSIS tSoundMemoryBlockManager::vfunction17
+00650230	created	128
+00653a60	replaced	ANALYSIS tgSoundPart::vfunction116
+00654fb0	replaced	ANALYSIS tgSoundPart::vfunction106
+00655040	replaced	ANALYSIS tgSoundPart::vfunction107
+00657d20	replaced	ANALYSIS tAudioFileInfoPart::vfunction7
+00657d40	replaced	ANALYSIS tAudioFileInfoPart::vfunction8
+00657d60	replaced	ANALYSIS tAudioFileInfoPart::vfunction9
+00657d80	replaced	ANALYSIS tAudioFileInfoPart::vfunction10
+00657da0	replaced	ANALYSIS tAudioFileInfoPart::vfunction11
+00657dc0	replaced	ANALYSIS tAudioFileInfoPart::vfunction12
+0065e580	replaced	ANALYSIS tChannelGroup::vfunction52
+0065e6b0	replaced	ANALYSIS tChannelGroup::vfunction41
+0065e7e0	replaced	ANALYSIS tChannelGroup::vfunction42
+0065e910	replaced	ANALYSIS tChannelGroup::vfunction43
+0065ea40	replaced	ANALYSIS tChannelGroup::vfunction44
+0065eb70	replaced	ANALYSIS tChannelGroup::vfunction45
+0065eca0	replaced	ANALYSIS tChannelGroup::vfunction46
+0065edd0	replaced	ANALYSIS tChannelGroup::vfunction47
+0065ef00	replaced	ANALYSIS tChannelGroup::vfunction48
+0065f030	replaced	ANALYSIS tChannelGroup::vfunction49
+0065f160	replaced	ANALYSIS tChannelGroup::vfunction50
+0065f290	replaced	ANALYSIS tChannelGroup::vfunction51
+0065fbf0	replaced	ANALYSIS tChannelGroup::vfunction58
+0065fe90	replaced	ANALYSIS tChannelGroup::vfunction59
+00660130	replaced	ANALYSIS tChannelGroup::vfunction60
+00660660	replaced	ANALYSIS tChannelGroup::vfunction62
+00660d60	replaced	ANALYSIS tAudioFileInfoPart::vfunction18
+00660f90	replaced	ANALYSIS tChannelGroupManagerPart::vfunction13
+00660fb0	replaced	ANALYSIS tChannelGroupManagerPart::vfunction14
+006612e0	replaced	ANALYSIS tChannelGroup::vfunction1
+006612f0	replaced	ANALYSIS tChannelGroup::vfunction2
+006617a0	replaced	ANALYSIS tAudioPriorityManagerPart::vfunction12
+00661e90	replaced	ANALYSIS tAudioPriorityManagerPart::vfunction11
+00662520	replaced	ANALYSIS tAudioPriorityManagerPart::vfunction5
+00662530	replaced	ANALYSIS tAudioPriorityManagerPart::vfunction6
+00662980	replaced	ANALYSIS tHandleList::vfunction4
+00662990	replaced	ANALYSIS tHandleList::vfunction5
+006629b0	replaced	ANALYSIS tHandleList::vfunction6
+00662dc0	created	208
+00662e90	created	208
+006631a0	created	48
+00663590	replaced	ANALYSIS tHandleList::vfunction3
+006635a0	replaced	ANALYSIS tHandleList::vfunction11
+00663600	replaced	ANALYSIS tAudioFileClass::vfunction1
+00663610	replaced	ANALYSIS tAudioFileClass::vfunction2
+00663630	created	16
+00663660	created	16
+00663670	created	32
+00663690	created	32
+006636b0	created	16
+006636c0	created	16
+006639c0	replaced	ANALYSIS tAFPlayInfo::vfunction23
+00664870	replaced	ANALYSIS tBasicSoundFileManager::vfunction7
+00664880	replaced	ANALYSIS tBasicSoundFileManager::vfunction8
+00667e00	replaced	ANALYSIS tBasicSoundFileManager::vfunction87
+00668970	replaced	ANALYSIS tBasicSoundFileManager::vfunction15
+0066b150	created	144
+0066b1e0	created	144
+0066b270	created	144
+0066bce0	replaced	ANALYSIS tAFPlayInfo::vfunction1
+0066bcf0	replaced	ANALYSIS tAFPlayInfo::vfunction2
+0066bd10	replaced	ANALYSIS tAFPlayInfo::vfunction3
+0066bd20	replaced	ANALYSIS tAFPlayInfo::vfunction4
+0066bd40	replaced	ANALYSIS tAFPlayInfo::vfunction7
+0066bd50	replaced	ANALYSIS tAFPlayInfo::vfunction8
+0066bd60	replaced	ANALYSIS tAFPlayInfo::vfunction9
+0066bd70	replaced	ANALYSIS tAFPlayInfo::vfunction10
+0066bd80	replaced	ANALYSIS tAFPlayInfo::vfunction14
+0066bd90	replaced	ANALYSIS tAFPlayInfo::vfunction15
+0066bda0	replaced	ANALYSIS tAFPlayInfo::vfunction16
+0066bdb0	replaced	ANALYSIS tAFPlayInfo::vfunction17
+0066bdc0	replaced	ANALYSIS tAFPlayInfo::vfunction20
+0066bdd0	replaced	ANALYSIS tAFPlayInfo::vfunction21
+0066bde0	replaced	ANALYSIS tAFPlayInfo::vfunction22
+0066be10	replaced	ANALYSIS tBasicSoundFileManager::vfunction82
+0066be30	replaced	ANALYSIS tgStrManager::vfunction6
+0066be50	replaced	ANALYSIS tgStrManager::vfunction7
+0066be60	replaced	ANALYSIS tgStrManager::vfunction9
+0066be80	replaced	ANALYSIS tgStrManager::vfunction8
+0066bea0	replaced	ANALYSIS tgStrManager::vfunction11
+0066bec0	replaced	ANALYSIS tgStrManager::vfunction10
+0066bee0	replaced	ANALYSIS tgStrManager::vfunction14
+0066bf00	replaced	ANALYSIS tgStrManager::vfunction13
+0066bf20	replaced	ANALYSIS tgStrManager::vfunction12
+0066bf40	replaced	ANALYSIS tgStrManager::vfunction16
+0066bf60	replaced	ANALYSIS tgStrManager::vfunction15
+0066bf80	replaced	ANALYSIS tgStrManager::vfunction18
+0066bfa0	replaced	ANALYSIS tgStrManager::vfunction17
+0066bfc0	replaced	ANALYSIS tgStrManager::vfunction20
+0066bfe0	replaced	ANALYSIS tgStrManager::vfunction19
+0066c000	replaced	ANALYSIS tgStrManager::vfunction24
+0066c020	replaced	ANALYSIS tgStrManager::vfunction23
+0066c040	replaced	ANALYSIS tgStrManager::vfunction22
+0066c060	replaced	ANALYSIS tgStrManager::vfunction21
+0066c1c0	replaced	ANALYSIS tCRandomSequence::vfunction3
+0066c220	replaced	ANALYSIS tSequencePart::vfunction3
+0066c5a0	section-only	tSay::tSay_Constructor_or_Destructor <- .\sfcTiger Release\tsay.obj:.text#8
+0066c5c0	created	48
+0066c5c0	section-only	FUN_0066c5c0 <- .\sfcTiger Release\tsay.obj:.text#16
+0066c680	replaced	ANALYSIS tSay::~tSay
+0066cf80	created	32
+0066d1c0	replaced	ANALYSIS tBasicFileCRTNamespace::tBasicFileCRT::vfunction5
+0066d1e0	replaced	ANALYSIS tBasicFileCRTNamespace::tBasicFileCRT::vfunction4
+0066d1f0	replaced	ANALYSIS tBasicFileCRTNamespace::tBasicFileCRT::vfunction6
+0066d270	replaced	ANALYSIS tBasicFileCRTNamespace::tBasicFileCRT::vfunction9
+0066d8e0	replaced	ANALYSIS tSoundMemoryBlockList::vfunction2
+0066ead0	replaced	ANALYSIS tSoundMemoryBlock::vfunction12
+0066eae0	replaced	ANALYSIS tSoundMemoryBlock::vfunction13
+0066eaf0	replaced	ANALYSIS tSoundMemoryBlock::vfunction14
+0066eb10	replaced	ANALYSIS tSoundMemoryBlock::vfunction15
+0066eb20	replaced	ANALYSIS tSoundMemoryBlock::vfunction16
+0066eb30	replaced	ANALYSIS tSoundChannelFormat::vfunction11
+0066eb50	replaced	ANALYSIS tSoundMemoryBlock::vfunction22
+0066eb60	replaced	ANALYSIS tSoundMemoryBlock::vfunction23
+0066eb70	replaced	ANALYSIS tSoundMemoryBlock::vfunction24
+0066eb80	replaced	ANALYSIS tSoundMemoryBlock::vfunction25
+0066eba0	replaced	ANALYSIS tSoundMemoryBlock::vfunction27
+0066ebb0	replaced	ANALYSIS tSoundMemoryBlock::vfunction28
+0066f040	created	160
+00670220	created	48
+00670220	section-only	FUN_00670220 <- .\sfcTiger Release\tFontmgr.obj:.text#5
+00670250	created	32
+00670250	section-only	FUN_00670250 <- .\sfcTiger Release\tFontmgr.obj:.text#7
+006729e0	created	16
+00673950	replaced	ANALYSIS tTigerQ3BltPart::vfunction4
+0067c710	fid-conflict	std::vector<nDatabase::tStreamDatabaseStorage::tBlock,std::allocator<nDatabase::tStreamDatabaseStorage::tBlock>_>::size -> ?size@?$vector@UEC2NPoint@CryptoPP@@V?$allocator@UEC2NPoint@CryptoPP@@@std@@@std@@QBEIXZ
+0068eed0	replaced	ANALYSIS tHTMLLine::vfunction7
+00693490	replaced	ANALYSIS tEvtMgr::scalar_deleting_destructor
+006a7900	replaced	ANALYSIS tDDSurface::vfunction5
+006a7920	replaced	ANALYSIS tDDSurface::vfunction7
+006a80d0	created	64
+006a80d0	section-only	FUN_006a80d0 <- .\dmp3D_Release\d3dframe.obj:.text#24
+006b32c0	replaced	ANALYSIS tSysMemSurf::vfunction2
+006b32d0	replaced	ANALYSIS tChannelAttributes::vfunction10
+006b32e0	replaced	ANALYSIS tSysMemSurf::vfunction5
+006b3310	replaced	ANALYSIS tSysMemSurf::vfunction10
+006b9b10	created	16
+006b9b50	created	64
+006b9b90	created	48
+006b9bf0	created	48
+006e24f0	section-only	AsciiToWide <- .\Common_Release\Converter.obj:.text#23
+006f6740	replaced	ANALYSIS tFunctionCallback<long>::vfunction2
+006f9130	replaced	ANALYSIS tGLDC::vfunction14
+006fadc0	replaced	ANALYSIS nDatabase::tDatabaseObject::vfunction11
+006fc4d0	replaced	ANALYSIS tAllocatedClass::vfunction3
+006fd5f0	replaced	ANALYSIS nException::tBaseException::vfunction6
+006fe0a0	replaced	ANALYSIS tWinClock::vfunction3
+006feda0	replaced	ANALYSIS nLog::tLogStream::tStreamBuf::vfunction17
+006ffa70	created	48
+00700e20	replaced	ANALYSIS tGFSection::vfunction17
+00700e40	replaced	ANALYSIS tGFSection::vfunction18
+00709a10	replaced	ANALYSIS nDatabase::tFileDatabaseMgr::vfunction10
+0070f900	replaced	ANALYSIS tWinTimer::vfunction6
+0070f920	replaced	ANALYSIS tWinTimer::vfunction7
+0070f940	created	128
+00710fc0	created	96
+00710fc0	section-only	FUN_00710fc0 <- .\Common_Release\Log.obj:.text#589
+00711110	created	32
+00711110	section-only	FUN_00711110 <- .\Common_Release\CallStack.obj:.text#26
+00711170	created	128
+00711170	section-only	FUN_00711170 <- .\Common_Release\CallStack.obj:.text#34
+00712370	created	224
+00712370	section-only	FUN_00712370 <- .\Common_Release\CallStack.obj:.text#128
+00712450	section-only	ConvertAddress <- .\Common_Release\CallStack.obj:.text#130
+00712ce0	created	96
+00712ce0	section-only	FUN_00712ce0 <- .\Common_Release\Stats.obj:.text#57
+00712d80	created	32
+00712d80	section-only	FUN_00712d80 <- .\Common_Release\Stats.obj:.text#65
+007168e0	replaced	ANALYSIS nSwitch::tRequestWithResponse::vfunction7
+0071d1e0	replaced	ANALYSIS nSwitch::tDataHandler::vfunction9
+00722040	replaced	ANALYSIS tMemberCallback<nDatabase::tDatabase,unsigned_long>::vfunction2
+00725bf0	replaced	ANALYSIS tDateAndTime::vfunction2
+0072f020	created	16
+00757030	created	48
+00757030	section-only	FUN_00757030 <- .\sfcTiger Release\tFile.obj:.text#5
+00757060	created	64
+00757060	section-only	FUN_00757060 <- .\sfcTiger Release\tFile.obj:.text#7
+00757d60	replaced	ANALYSIS tFile::vfunction31
+007585c0	replaced	ANALYSIS tBufFile::vfunction7
+007586b0	replaced	ANALYSIS tBufFile::vfunction11
+007587a0	replaced	ANALYSIS tFile::vfunction13
+007587c0	replaced	ANALYSIS tFile::vfunction15
+007587e0	replaced	ANALYSIS tFile::vfunction17
+007589b0	replaced	ANALYSIS nDatabase::tFileDatabaseMgr::vfunction12
+007589c0	replaced	ANALYSIS tBufFile::vfunction30
+007589d0	replaced	ANALYSIS tBufFile::vfunction31
+00758b50	replaced	ANALYSIS tFile::vfunction37
+00758b70	replaced	ANALYSIS tFile::vfunction39
+00758b90	replaced	ANALYSIS tFile::vfunction41
+00759600	replaced	ANALYSIS tFile::vfunction48
+00759630	replaced	ANALYSIS tFile::vfunction19
+00759640	replaced	ANALYSIS tFile::vfunction20
+00759650	replaced	ANALYSIS tFile::vfunction21
+007597e0	replaced	ANALYSIS tFile::vfunction22
+007597f0	replaced	ANALYSIS tFile::vfunction23
+00759800	replaced	ANALYSIS tFile::vfunction24
+00759810	replaced	ANALYSIS tFile::vfunction43
+00759820	replaced	ANALYSIS tFile::vfunction44
+00759830	replaced	ANALYSIS tFile::vfunction45
+00759840	replaced	ANALYSIS tFile::vfunction46
+00759850	replaced	ANALYSIS tFile::vfunction47
+00759e60	created	32
+00759e60	section-only	FUN_00759e60 <- .\sfcTiger Release\tFile.obj:.text#446
+00767ff8	section-only	Unwind@00767ff8 <- .\sfcTiger Release\tbasicsoundfilezip.obj:.text$x#104
+00768b54	section-only	Unwind@00768b54 <- .\Release\missionspec.obj:.text$x#47
+00768bd4	section-only	Unwind@00768bd4 <- .\Release\missionspec.obj:.text$x#59
+00786ec0	section-only	Unwind@00786ec0 <- .\sfcTiger Release\tgfsys.obj:.text$x#765; .\sfcTiger Release\twfsys.obj:.text$x#700
+00787000	section-only	Unwind@00787000 <- .\sfcTiger Release\tgfsys.obj:.text$x#809
+00787230	section-only	Unwind@00787230 <- .\sfcTiger Release\tstring.obj:.text$x#106
+00787640	section-only	Unwind@00787640 <- .\sfcTiger Release\tFormatStr.obj:.text$x#41
+00787680	section-only	Unwind@00787680 <- .\sfcTiger Release\tFormatStr.obj:.text$x#97; .\sfcTiger Release\tFormatStr.obj:.text$x#107
+007876d0	section-only	Unwind@007876d0 <- .\sfcTiger Release\tFormatStr.obj:.text$x#120
+00787790	section-only	Unwind@00787790 <- .\sfcTiger Release\tFormatStr.obj:.text$x#185
+00787930	section-only	Unwind@00787930 <- .\sfcTiger Release\twfsys.obj:.text$x#66
+00787b00	section-only	Unwind@00787b00 <- .\sfcTiger Release\twfsys.obj:.text$x#101
+00787c90	section-only	Unwind@00787c90 <- .\sfcTiger Release\twfsys.obj:.text$x#130
+00787db0	section-only	Unwind@00787db0 <- .\sfcTiger Release\twfsys.obj:.text$x#189
+00787fe0	section-only	Unwind@00787fe0 <- .\sfcTiger Release\twfsys.obj:.text$x#358
+00788130	section-only	Unwind@00788130 <- .\sfcTiger Release\twfsys.obj:.text$x#450
+00788500	section-only	Unwind@00788500 <- .\sfcTiger Release\twSound.obj:.text$x#658
+0078e400	section-only	Unwind@0078e400 <- .\Common_Release\HeartbeatTimer.obj:.text$x#40
+0078e450	section-only	Unwind@0078e450 <- .\Common_Release\HeartbeatTimer.obj:.text$x#58
+0078e5b0	section-only	Unwind@0078e5b0 <- .\Common_Release\Settings.obj:.text$x#21
+0078e6c0	section-only	Unwind@0078e6c0 <- .\Common_Release\Settings.obj:.text$x#89
+0078e9d0	section-only	Unwind@0078e9d0 <- .\Common_Release\DatabaseObject.obj:.text$x#21
+0078ea90	section-only	Unwind@0078ea90 <- .\Common_Release\DatabaseObject.obj:.text$x#67
+0078eb10	section-only	Unwind@0078eb10 <- .\Common_Release\DatabaseObject.obj:.text$x#84
+0078ed80	section-only	Unwind@0078ed80 <- .\Common_Release\LogStream.obj:.text$x#137
+0078f850	section-only	Unwind@0078f850 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#131
+0078f920	section-only	Unwind@0078f920 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#185
+0078f960	section-only	Unwind@0078f960 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#191
+0078fa30	section-only	Unwind@0078fa30 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#216
+0078fab0	section-only	Unwind@0078fab0 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#242
+0078fb60	section-only	Unwind@0078fb60 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#246
+0078fbf0	section-only	Unwind@0078fbf0 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#268
+0078fc70	section-only	Unwind@0078fc70 <- .\Common_Release\FileDatabaseMgr.obj:.text$x#294
+0078fe00	section-only	Unwind@0078fe00 <- .\Common_Release\StreamDatabaseStorage.obj:.text$x#130
+0078fe90	section-only	Unwind@0078fe90 <- .\Common_Release\StreamDatabaseStorage.obj:.text$x#173
+0078fef0	section-only	Unwind@0078fef0 <- .\Common_Release\StreamDatabaseStorage.obj:.text$x#227
+0078ff60	section-only	Unwind@0078ff60 <- .\Common_Release\StreamDatabaseStorage.obj:.text$x#231
+0078ffc0	section-only	Unwind@0078ffc0 <- .\Common_Release\StreamDatabaseStorage.obj:.text$x#250
+007900f0	section-only	Unwind@007900f0 <- .\Common_Release\Extractor.obj:.text$x#29
+00790290	section-only	Unwind@00790290 <- .\Common_Release\Log.obj:.text$x#182
+007902f0	section-only	Unwind@007902f0 <- .\Common_Release\CallStack.obj:.text$x#50; .\Common_Release\CallStack.obj:.text$x#63
+00794060	section-only	Unwind@00794060 <- .\sfcTiger Release\tFile.obj:.text$x#56; .\sfcTiger Release\tFile.obj:.text$x#60
+007942f0	section-only	Unwind@007942f0 <- .\sfcTiger Release\tFile.obj:.text$x#324
+#summary	rows=3758 addresses=1934 names=2396 created=59 trimmed=0 create_failed=0 replaced_other_names=318 fid_agree=1427 fid_conflict=1 icf_addresses=170 labels_added=887 demangle_failed=3 section_only=74 skipped_overlap=1

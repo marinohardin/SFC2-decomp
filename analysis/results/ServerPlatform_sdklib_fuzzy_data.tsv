@@ -1,0 +1,412 @@
+address	name	tier	score	notes
+006f2004	__imp__RegSetValueExA@24	import	1.0	IAT
+006f200c	__imp__ReportEventA@36	import	1.0	IAT
+006f2014	__imp__RegCloseKey@4	import	1.0	IAT
+006f2020	__imp__DeregisterEventSource@4	import	1.0	IAT
+006f2024	__imp__RegisterEventSourceA@8	import	1.0	IAT
+006f2028	__imp__RegCreateKeyA@12	import	1.0	IAT
+006f2030	__imp__SymFunctionTableAccess@8	import	1.0	IAT
+006f2034	__imp__SymSetOptions@4	import	1.0	IAT
+006f2038	__imp__SymGetOptions@0	import	1.0	IAT
+006f203c	__imp__SymInitialize@12	import	1.0	IAT
+006f2040	__imp__SymLoadModule@24	import	1.0	IAT
+006f2044	__imp__SymGetModuleInfo@12	import	1.0	IAT
+006f2048	__imp__SymGetSymFromAddr@16	import	1.0	IAT
+006f204c	__imp__SymGetLineFromAddr@16	import	1.0	IAT
+006f2050	__imp__StackWalk@36	import	1.0	IAT
+006f2060	__imp__GetCurrentDirectoryW@8	import	1.0	IAT
+006f2064	__imp__FindFirstFileA@8	import	1.0	IAT
+006f2084	__imp__GetLastError@0	import	1.0	IAT
+006f2088	__imp__QueryPerformanceFrequency@4	import	1.0	IAT
+006f208c	__imp__lstrlenA@4	import	1.0	IAT
+006f2094	__imp__QueryPerformanceCounter@4	import	1.0	IAT
+006f2098	__imp__LeaveCriticalSection@4	import	1.0	IAT
+006f209c	__imp__InterlockedDecrement@4	import	1.0	IAT
+006f20a0	__imp__SetEvent@4	import	1.0	IAT
+006f20a4	__imp__EnterCriticalSection@4	import	1.0	IAT
+006f20a8	__imp__GetCurrentThreadId@0	import	1.0	IAT
+006f20ac	__imp__InterlockedIncrement@4	import	1.0	IAT
+006f20b0	__imp__WaitForSingleObject@8	import	1.0	IAT
+006f20b4	__imp__InterlockedExchange@8	import	1.0	IAT
+006f20b8	__imp__DeleteCriticalSection@4	import	1.0	IAT
+006f20bc	__imp__CloseHandle@4	import	1.0	IAT
+006f20c0	__imp__UnmapViewOfFile@4	import	1.0	IAT
+006f20c4	__imp__GetSystemInfo@4	import	1.0	IAT
+006f20c8	__imp__CreateEventA@16	import	1.0	IAT
+006f20cc	__imp__CreateFileMappingA@24	import	1.0	IAT
+006f20d0	__imp__MapViewOfFile@20	import	1.0	IAT
+006f20d4	__imp__LoadLibraryA@4	import	1.0	IAT
+006f20d8	__imp__GetProcAddress@8	import	1.0	IAT
+006f20dc	__imp__FreeLibrary@4	import	1.0	IAT
+006f20e0	__imp__FindNextFileA@8	import	1.0	IAT
+006f20e4	__imp__FindClose@4	import	1.0	IAT
+006f20e8	__imp__Sleep@4	import	1.0	IAT
+006f20ec	__imp__FormatMessageA@28	import	1.0	IAT
+006f20f4	__imp__WideCharToMultiByte@32	import	1.0	IAT
+006f20fc	__imp__CreateDirectoryA@8	import	1.0	IAT
+006f2100	__imp__RemoveDirectoryA@4	import	1.0	IAT
+006f2114	__imp__LocalFree@4	import	1.0	IAT
+006f2188	__imp__TerminateProcess@8	import	1.0	IAT
+006f218c	__imp__GetCurrentProcess@0	import	1.0	IAT
+006f2190	__imp__MultiByteToWideChar@24	import	1.0	IAT
+006f2194	__imp__InitializeCriticalSection@4	import	1.0	IAT
+006f2198	__imp__GetModuleFileNameA@12	import	1.0	IAT
+006f219c	__imp__GetModuleHandleA@4	import	1.0	IAT
+006f21a4	__imp__GetDiskFreeSpaceA@20	import	1.0	IAT
+006f21a8	__imp__GetVersionExA@4	import	1.0	IAT
+006f21ac	__imp__ReadFile@20	import	1.0	IAT
+006f21b0	__imp__GetFileSize@8	import	1.0	IAT
+006f21b4	__imp__CreateFileA@28	import	1.0	IAT
+006f21b8	__imp__ResetEvent@4	import	1.0	IAT
+006f21bc	__imp__WaitForMultipleObjects@16	import	1.0	IAT
+006f21c8	__imp__DeleteFileA@4	import	1.0	IAT
+006f21cc	__imp__CopyFileA@12	import	1.0	IAT
+006f21d0	__imp__GetCommandLineA@0	import	1.0	IAT
+006f21d4	__imp__GetCurrentDirectoryA@8	import	1.0	IAT
+006f21d8	__imp__OutputDebugStringA@4	import	1.0	IAT
+006f21dc	__imp__GetThreadContext@8	import	1.0	IAT
+006f21e0	__imp__GetCurrentThread@0	import	1.0	IAT
+006f21e4	__imp__VirtualQueryEx@16	import	1.0	IAT
+006f21e8	__imp__OpenFileMappingA@12	import	1.0	IAT
+006f2208	__imp__ReleaseMutex@4	import	1.0	IAT
+006f2210	__imp__CreateMutexA@12	import	1.0	IAT
+006f221c	__imp__CreateThread@24	import	1.0	IAT
+006f2228	__imp__GetLocalTime@4	import	1.0	IAT
+006f2244	__imp__SetLastError@4	import	1.0	IAT
+006f224c	__imp__ExitThread@4	import	1.0	IAT
+006f2258	__imp__SetFilePointer@16	import	1.0	IAT
+006f2260	__imp__WriteFile@20	import	1.0	IAT
+006f2264	__imp__FlushFileBuffers@4	import	1.0	IAT
+006f22a0	__imp__MessageBoxA@16	import	1.0	IAT
+006f22a8	__imp__wsprintfA	import	1.0	IAT
+006f22b0	__imp__timeGetTime@0	import	1.0	IAT
+006f2538	??_7tOutOfBounds@nException@@6B@	data	0.6	votes=1 from ??0tOutOfBounds@nException@@QAE@ABV01@@Z
+006f255c	??_7tBaseException@nException@@6B@	data	0.938	votes=2 from ??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z,??0tOutOfBounds@nException@@QAE@ABV01@@Z
+006f257c	?_C@?1??_Nullstr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@CAPBDXZ@4DB	data	0.99	votes=24 from ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z,??0?$pair@$$CBDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAE@ABDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z
+006f2580	?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB	data	0.99	votes=38 from ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z,??0?$pair@$$CBDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAE@ABDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z
+006f278c	??_7?$tCallback@K@@6B@	data	0.928	votes=2 from ??1?$tMemberCallback@VtDatabase@nDatabase@@K@@UAE@XZ,??_G?$tCallback@K@@UAEPAXI@Z
+006f278c	??_7facet@locale@std@@6B@	data	0.99	votes=8 from ??1?$codecvt@DDH@std@@UAE@XZ,??1?$ctype@D@std@@UAE@XZ,??1?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@UAE@XZ
+006f278c	??_7tDatabaseStorage@nDatabase@@6B@	data	0.57	votes=1 from ??1tDatabaseStorage@nDatabase@@UAE@XZ
+006f278c	??_7?$tCallback@J@@6B@	data	0.979	votes=3 from ??1?$tFunctionCallback@J@@UAE@XZ,??1?$tMemberCallback@VtJobManager@@J@@UAE@XZ,??_G?$tCallback@J@@UAEPAXI@Z
+006f278c	??_7tThreadState@@6B@	data	0.57	votes=1 from ??1tThreadState@@UAE@XZ
+006f278c	??_7tCRC32@@6B@	data	0.57	votes=1 from ??1tCRC32@@UAE@XZ
+006f278c	??_7tTimer@@6B@	data	0.57	votes=1 from ??1tTimer@@UAE@XZ
+006f278c	??_7tClock@@6B@	data	0.928	votes=2 from ??1tWinClock@@UAE@XZ,??_GtClock@@UAEPAXI@Z
+006f278c	??_7tErrorReporting@@6B@	data	0.57	votes=1 from ??1tErrorReporting@@UAE@XZ
+006f278c	??_7tResourceTracker@@6B@	data	0.57	votes=1 from ??1tResourceTracker@@EAE@XZ
+006f278c	??_7tConverter@@6B@	data	0.57	votes=1 from ??1tConverter@@UAE@XZ
+006f278c	??_7tExtractor@@6B@	data	0.57	votes=1 from ??1tExtractor@@UAE@XZ
+006f278c	??_7tCallbackAction@nTestSim@@6B@	data	0.57	votes=1 from ??1tCallbackAction@nTestSim@@UAE@XZ
+006f278c	??_7tBasicIniReader@@6B@	data	0.57	votes=1 from ??1tBasicIniReader@@UAE@XZ
+006f278c	??_7tAllocator@@6B@	data	0.57	votes=1 from ??1tAllocator@@MAE@XZ
+006f278c	??_7tAllocatedClass@@6B@	data	0.57	votes=1 from ??1tAllocatedClass@@UAE@XZ
+006f278c	??_7tObject@@6B@	data	0.57	votes=1 from ??1tObject@@UAE@XZ
+006f278c	??_7tRefCount@@6B@	data	0.57	votes=1 from ??1tRefCount@@MAE@XZ
+006f278c	??_7tNativeThread@@6B@	data	0.928	votes=2 from ??1tNativeThread@@UAE@XZ,??_GtNativeThread@@UAEPAXI@Z
+006f278c	??_7tListMemberWithHandle@@6B@	data	0.979	votes=3 from ??1tListMemberWithHandle@@UAE@XZ,??1tSoundMemoryBlock@@UAE@XZ,??_GtListMemberWithHandle@@UAEPAXI@Z
+006f278c	??_7tSoundChannelFormat@@6B@	data	0.928	votes=2 from ??1tSoundChannelFormat@@UAE@XZ,??_GtSoundChannelFormat@@UAEPAXI@Z
+006f278c	??_7t3DListenerProfile@@6B@	data	0.928	votes=2 from ??1t3DListenerProfile@@UAE@XZ,??_Gt3DListenerProfile@@UAEPAXI@Z
+006f278c	??_7tPath@@6B@	data	0.57	votes=1 from ??1tPath@@QAE@XZ
+006f278c	??_7tUniFont@@6B@	data	0.928	votes=2 from ??1tUniFont@@UAE@XZ,??_GtUniFont@@UAEPAXI@Z
+006f278c	??_7tBasicFile@@6B@	data	0.979	votes=3 from ??1tBasicFile@@MAE@XZ,??1tSoundFileIOBase@@UAE@XZ,??_GtBasicFile@@MAEPAXI@Z
+006f278c	??_7tPart@@6B@	data	0.928	votes=2 from ??1tPart@@UAE@XZ,??_GtPart@@UAEPAXI@Z
+006f278c	??_7tINIFile@@6B@	data	0.928	votes=2 from ??1tINIFile@@MAE@XZ,??_GtINIFile@@MAEPAXI@Z
+006f278c	??_7t3DSoundProfile@@6B@	data	0.928	votes=2 from ??1t3DSoundProfile@@UAE@XZ,??_Gt3DSoundProfile@@UAEPAXI@Z
+006f278c	??_7tTagInfo@@6B@	data	0.99	votes=5 from ??1tDoubleTag@@UAE@XZ,??1tFormatTag@@UAE@XZ,??1tIntTag@@UAE@XZ
+006f278c	??_7tSoundSelection@@6B@	data	0.928	votes=2 from ??1tSoundSelection@@UAE@XZ,??_GtSoundSelection@@UAEPAXI@Z
+006f278c	??_7tAtomicLock@@6B@	data	0.928	votes=2 from ??1tAtomicLock@@UAE@XZ,??_GtAtomicLock@@UAEPAXI@Z
+006f278c	??_7BufferedTransformation@CryptoPP@@6B@	data	0.99	votes=8 from ??1BitBucket@CryptoPP@@UAE@XZ,??1BodyProcesser@Gunzip@CryptoPP@@UAE@XZ,??1BufferedTransformation@CryptoPP@@UAE@XZ
+006f278c	??_7BlockTransformation@CryptoPP@@6B@	data	0.928	votes=2 from ??1BlockTransformation@CryptoPP@@UAE@XZ,??_GBlockTransformation@CryptoPP@@UAEPAXI@Z
+006f278c	??_7HashModule@CryptoPP@@6B@	data	0.99	votes=4 from ??1CRC32@CryptoPP@@UAE@XZ,??1Diamond2SboxMaker@CryptoPP@@QAE@XZ,??1HashModule@CryptoPP@@UAE@XZ
+006f278c	??_7StreamCipher@CryptoPP@@6B@	data	0.928	votes=2 from ??1StreamCipher@CryptoPP@@UAE@XZ,??_GStreamCipher@CryptoPP@@UAEPAXI@Z
+006f278c	??_7?$AbstractGroup@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@@CryptoPP@@6B@	data	0.928	votes=2 from ??1?$MultiplicativeGroup@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@@CryptoPP@@UAE@XZ,??_G?$AbstractGroup@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@@CryptoPP@@UAEPAXI@Z
+006f278c	??_7RandomNumberGenerator@CryptoPP@@6B@	data	0.928	votes=2 from ??1RandomNumberGenerator@CryptoPP@@UAE@XZ,??_GRandomNumberGenerator@CryptoPP@@UAEPAXI@Z
+006f278c	??_7TrapdoorFunction@CryptoPP@@6B@	data	0.928	votes=2 from ??1TrapdoorFunction@CryptoPP@@UAE@XZ,??_GTrapdoorFunction@CryptoPP@@UAEPAXI@Z
+006f278c	??_7DigestSignatureSystem@CryptoPP@@6B@	data	0.928	votes=2 from ??1DigestSignatureSystem@CryptoPP@@UAE@XZ,??_GDigestSignatureSystem@CryptoPP@@UAEPAXI@Z
+006f278c	??_7PaddingScheme@CryptoPP@@6B@	data	0.99	votes=5 from ??1?$OAEP@VSHA@CryptoPP@@V?$MGF1@VSHA@CryptoPP@@@2@$1?OAEP_P_DEFAULT@2@3PAEA$0A@@CryptoPP@@UAE@XZ,??1EMSA2Pad@CryptoPP@@UAE@XZ,??1PKCS_EncryptionPaddingScheme@CryptoPP@@UAE@XZ
+006f278c	??_7PK_CryptoSystem@CryptoPP@@6B@	data	0.928	votes=2 from ??1PK_CryptoSystem@CryptoPP@@UAE@XZ,??_GPK_CryptoSystem@CryptoPP@@UAEPAXI@Z
+006f278c	??_7PK_Precomputation@CryptoPP@@6B@	data	0.928	votes=2 from ??1PK_Precomputation@CryptoPP@@UAE@XZ,??_GPK_Precomputation@CryptoPP@@UAEPAXI@Z
+006f278c	??_7?$AbstractGroup@VInteger@CryptoPP@@@CryptoPP@@6B@	data	0.979	votes=3 from ??1?$AbstractRing@VInteger@CryptoPP@@@CryptoPP@@UAE@XZ,??1?$MultiplicativeGroup@VInteger@CryptoPP@@@CryptoPP@@UAE@XZ,??_G?$AbstractGroup@VInteger@CryptoPP@@@CryptoPP@@UAEPAXI@Z
+006f278c	??_7PK_AuthenticatedKeyAgreementDomain@CryptoPP@@6B@	data	0.928	votes=2 from ??1PK_AuthenticatedKeyAgreementDomain@CryptoPP@@UAE@XZ,??_GPK_AuthenticatedKeyAgreementDomain@CryptoPP@@UAEPAXI@Z
+006f278c	??_7PK_SimpleKeyAgreementDomain@CryptoPP@@6B@	data	0.928	votes=2 from ??1PK_SimpleKeyAgreementDomain@CryptoPP@@UAE@XZ,??_GPK_SimpleKeyAgreementDomain@CryptoPP@@UAEPAXI@Z
+006f278c	??_7?$AbstractGroup@VPolynomialMod2@CryptoPP@@@CryptoPP@@6B@	data	0.979	votes=3 from ??1?$AbstractRing@VPolynomialMod2@CryptoPP@@@CryptoPP@@UAE@XZ,??1?$MultiplicativeGroup@VPolynomialMod2@CryptoPP@@@CryptoPP@@UAE@XZ,??_G?$AbstractGroup@VPolynomialMod2@CryptoPP@@@CryptoPP@@UAEPAXI@Z
+006f278c	??_7?$AbstractGroup@UECPPoint@CryptoPP@@@CryptoPP@@6B@	data	0.928	votes=2 from ??1?$AbstractGroup@UECPPoint@CryptoPP@@@CryptoPP@@UAE@XZ,??_G?$AbstractGroup@UECPPoint@CryptoPP@@@CryptoPP@@UAEPAXI@Z
+006f278c	??_7?$AbstractGroup@UEC2NPoint@CryptoPP@@@CryptoPP@@6B@	data	0.928	votes=2 from ??1?$AbstractGroup@UEC2NPoint@CryptoPP@@@CryptoPP@@UAE@XZ,??_G?$AbstractGroup@UEC2NPoint@CryptoPP@@@CryptoPP@@UAEPAXI@Z
+006f278c	??_7PK_SignatureSystem@CryptoPP@@6B@	data	0.928	votes=2 from ??1PK_SignatureSystem@CryptoPP@@UAE@XZ,??_GPK_SignatureSystem@CryptoPP@@UAEPAXI@Z
+006f278c	??_7tGLFont@@6B@	data	0.928	votes=2 from ??1tGLFont@@MAE@XZ,??_GtGLFont@@MAEPAXI@Z
+006f278c	??_7CSymbolEngine@@6B@	data	0.6	votes=1 from ??_GCSymbolEngine@@UAEPAXI@Z
+006f278c	??_7tSoundTimerResponse@@6B@	data	0.6	votes=1 from ??_GtSoundTimerResponse@@UAEPAXI@Z
+006f278c	??_7tDbgTarget@twDebugPart@@6B@	data	0.6	votes=1 from ??_GtDbgTarget@twDebugPart@@UAEPAXI@Z
+006f2794	??_7?$numpunct@D@std@@6B@	data	0.938	votes=2 from ??0?$numpunct@D@std@@QAE@I@Z,??1?$numpunct@D@std@@UAE@XZ
+006f324c	??_7?$basic_streambuf@DU?$char_traits@D@std@@@std@@6B@	data	0.99	votes=5 from ??0?$basic_filebuf@DU?$char_traits@D@std@@@std@@QAE@PAU_iobuf@@@Z,??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ,??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ
+006f3284	??_7?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@6B@	data	0.976	votes=3 from ??0?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z,??1?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ,??1?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ
+006f32bc	??_7?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@6B@	data	0.57	votes=1 from ??1?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ
+006f32c4	??_7?$basic_iostream@DU?$char_traits@D@std@@@std@@6B@	data	0.6	votes=1 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+006f32cc	??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@	data	0.984	votes=3 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z,??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z,??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N1@Z
+006f32cc	??_7ios_base@std@@6B@	data	0.57	votes=1 from ??0ios_base@std@@IAE@XZ
+006f3314	??_7?$basic_istream@DU?$char_traits@D@std@@@std@@6B@	data	0.984	votes=3 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z,??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z,??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+006f331c	??_7?$basic_ostream@DU?$char_traits@D@std@@@std@@6B@	data	0.99	votes=5 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z,??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N1@Z,??1?$basic_ofstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+006f3320	??_8?$basic_ostream@DU?$char_traits@D@std@@@std@@7B@	data	0.6	votes=1 from ??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N1@Z
+006f3328	??_8?$basic_istream@DU?$char_traits@D@std@@@std@@7B@	data	0.6	votes=1 from ??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z
+006f3434	??_7tID@nDatabase@@6B@	data	0.938	votes=2 from ?_Construct@std@@YAXPAU?$pair@$$CBVtID@nDatabase@@PAVtDatabaseObject@2@@1@ABU21@@Z,?_Construct@std@@YAXPAU?$pair@$$CBVtID@nDatabase@@VtBlock@tStreamDatabaseStorage@2@@1@ABU21@@Z
+006f3788	??_7tStrength@@6B@	data	0.6	votes=1 from ??0tStrength@@QAE@ABV0@@Z
+006f3c98	??_7tDateAndTime@@6B@	data	0.6	votes=1 from ?_Construct@std@@YAXPAVtDatabaseInfo@tFileDatabaseMgr@nDatabase@@ABV234@@Z
+006f61f4	??_8?$basic_iostream@DU?$char_traits@D@std@@@std@@7B?$basic_ostream@DU?$char_traits@D@std@@@1@@	data	0.6	votes=1 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+006f61fc	??_8?$basic_iostream@DU?$char_traits@D@std@@@std@@7B?$basic_istream@DU?$char_traits@D@std@@@1@@	data	0.6	votes=1 from ??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z
+00709ea4	??_7tSFCThreadState@@6B@	data	0.6	votes=1 from ??0tSFCThreadState@@AAE@XZ
+0070f594	??_7?$basic_ofstream@DU?$char_traits@D@std@@@std@@6B@	data	0.6	votes=1 from ??1?$basic_ofstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+0070f5a4	??_7?$basic_filebuf@DU?$char_traits@D@std@@@std@@6B@	data	0.99	votes=4 from ??0?$basic_filebuf@DU?$char_traits@D@std@@@std@@QAE@PAU_iobuf@@@Z,??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ,??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+0070f5dc	??_7?$codecvt@DDH@std@@6B@	data	0.6	votes=1 from ??0?$codecvt@DDH@std@@QAE@I@Z
+00712028	??_7?$basic_ifstream@DU?$char_traits@D@std@@@std@@6B@	data	0.6	votes=1 from ??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+00714528	??_7tDatabaseInfo@tFileDatabaseMgr@nDatabase@@6B@	data	0.928	votes=2 from ??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ,?_Construct@std@@YAXPAVtDatabaseInfo@tFileDatabaseMgr@nDatabase@@ABV234@@Z
+0071cba0	??_7bad_cast@std@@6B@	data	0.57	votes=1 from ??0bad_cast@std@@QAE@PBD@Z
+0071cbb0	??_7?$ctype@D@std@@6B@	data	0.938	votes=2 from ??0?$ctype@D@std@@QAE@PBF_NI@Z,??1?$ctype@D@std@@UAE@XZ
+0072de24	?npos@?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@std@@2IB	data	0.6	votes=1 from ?assign@?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@std@@QAEAAV12@ABV12@II@Z
+0072de74	?_C@?1??_Nullstr@?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@std@@CAPBGXZ@4GB	data	0.6	votes=1 from ?assign@?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@std@@QAEAAV12@ABV12@II@Z
+0072f7a4	??_7tMapObject@@6B@	data	0.938	votes=2 from ?_Construct@std@@YAXPAVtMapObject@@ABV2@@Z,?_Construct@std@@YAXPAVtScriptMapData@@ABV2@@Z
+007322dc	??_7length_error@std@@6B@	data	0.6	votes=1 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z
+0073b644	??_7tCRCFailed@tStreamable@nDataStore@@6B@	data	0.6	votes=1 from ??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z
+00742058	??_7tAccessViolationOnNonLockedObject@nDatabase@@6B@	data	0.6	votes=1 from ??0tAccessViolationOnNonLockedObject@nDatabase@@QAE@PBD0J@Z
+00742058	??_7tInitFailed@nException@@6B@	data	0.6	votes=1 from ??0tInitFailed@nException@@QAE@PBD0J@Z
+00742058	??_7tInvalidAccess@nException@@6B@	data	0.6	votes=1 from ??0tInvalidAccess@nException@@QAE@PBD0J@Z
+00742058	??_7tValidationFailed@nException@@6B@	data	0.6	votes=1 from ??0tValidationFailed@nException@@QAE@PBD0J@Z
+00745648	?_Fpz@std@@3_JB	data	0.6	votes=1 from ??0?$fpos@H@std@@QAE@J@Z
+007592d8	.\Common_Release\Database.obj|$T82510	data	0.57	votes=1 from .\Common_Release\Database.obj:.text$x#377
+007592d8	.\Common_Release\DatabaseObject.obj|$T68585	data	0.57	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#221
+007592d8	.\Common_Release\FileDatabaseMgr.obj|$T78988	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#614
+007592d8	.\Common_Release\FileDatabaseStorage.obj|$T78428	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#525
+007592d8	.\Common_Release\BaseException.obj|$T60855	data	0.57	votes=1 from .\Common_Release\BaseException.obj:.text$x#91
+007592d8	.\Common_Release\Validate.obj|$T59925	data	0.57	votes=1 from .\Common_Release\Validate.obj:.text$x#79
+007592d8	.\Common_Release\JobManager.obj|$T70794	data	0.57	votes=1 from .\Common_Release\JobManager.obj:.text$x#227
+007592d8	.\Common_Release\Thread.obj|$T62424	data	0.57	votes=1 from .\Common_Release\Thread.obj:.text$x#113
+007592d8	.\Common_Release\ThreadPool.obj|$T66974	data	0.57	votes=1 from .\Common_Release\ThreadPool.obj:.text$x#215
+007592d8	.\Common_Release\Log.obj|$T70166	data	0.57	votes=1 from .\Common_Release\Log.obj:.text$x#434
+007592d8	.\Common_Release\LogStream.obj|$T61072	data	0.57	votes=1 from .\Common_Release\LogStream.obj:.text$x#225
+007592d8	.\Common_Release\DateAndTime.obj|$T62353	data	0.57	votes=1 from .\Common_Release\DateAndTime.obj:.text$x#149
+007592d8	.\release\integer.obj|$T30245	data	0.57	votes=1 from .\release\integer.obj:.text$x#685
+00759360	.\Common_Release\DatabaseObject.obj|$T68879	data	0.6	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#247
+00759360	.\Common_Release\BaseException.obj|$T61141	data	0.6	votes=1 from .\Common_Release\BaseException.obj:.text$x#115
+00759360	.\Common_Release\Validate.obj|$T60211	data	0.6	votes=1 from .\Common_Release\Validate.obj:.text$x#103
+00759360	.\Common_Release\JobManager.obj|$T72125	data	0.6	votes=1 from .\Common_Release\JobManager.obj:.text$x#295
+00759360	.\Common_Release\Log.obj|$T70546	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#466
+00759360	.\Common_Release\DateAndTime.obj|$T62647	data	0.6	votes=1 from .\Common_Release\DateAndTime.obj:.text$x#175
+00759360	.\Common_Release\Extractor.obj|$T50292	data	0.57	votes=1 from .\Common_Release\Extractor.obj:.text$x#16
+007593b0	.\Common_Release\DatabaseObject.obj|$T70136	data	0.6	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#281
+007593b0	.\Common_Release\BaseException.obj|$T62425	data	0.6	votes=1 from .\Common_Release\BaseException.obj:.text$x#151
+007593b0	.\Common_Release\Validate.obj|$T61495	data	0.6	votes=1 from .\Common_Release\Validate.obj:.text$x#139
+007593b0	.\Common_Release\JobManager.obj|$T73365	data	0.6	votes=1 from .\Common_Release\JobManager.obj:.text$x#327
+007593b0	.\Common_Release\Log.obj|$T71412	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#486
+007593b0	.\Common_Release\DateAndTime.obj|$T64184	data	0.6	votes=1 from .\Common_Release\DateAndTime.obj:.text$x#218
+007593e8	.\Common_Release\DatabaseObject.obj|$T70517	data	0.6	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#287
+007593e8	.\Common_Release\BaseException.obj|$T62806	data	0.6	votes=1 from .\Common_Release\BaseException.obj:.text$x#157
+007593e8	.\Common_Release\Validate.obj|$T61876	data	0.6	votes=1 from .\Common_Release\Validate.obj:.text$x#145
+007593e8	.\Common_Release\JobManager.obj|$T73746	data	0.6	votes=1 from .\Common_Release\JobManager.obj:.text$x#333
+007593e8	.\Common_Release\Log.obj|$T71793	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#492
+007593e8	.\Common_Release\DateAndTime.obj|$T64565	data	0.6	votes=1 from .\Common_Release\DateAndTime.obj:.text$x#224
+00759428	.\Common_Release\DatabaseObject.obj|$T70857	data	0.6	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#307
+00759428	.\Common_Release\BaseException.obj|$T63399	data	0.6	votes=1 from .\Common_Release\BaseException.obj:.text$x#184
+00759428	.\Common_Release\Validate.obj|$T62469	data	0.6	votes=1 from .\Common_Release\Validate.obj:.text$x#172
+00759428	.\Common_Release\JobManager.obj|$T74086	data	0.6	votes=1 from .\Common_Release\JobManager.obj:.text$x#353
+00759428	.\Common_Release\Log.obj|$T72200	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#542
+00759428	.\Common_Release\DateAndTime.obj|$T64905	data	0.6	votes=1 from .\Common_Release\DateAndTime.obj:.text$x#244
+00759b00	.\Common_Release\FileDatabaseStorage.obj|$T78689	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#532
+00759b68	.\Common_Release\Streamable.obj|$T61751	data	0.6	votes=1 from .\Common_Release\Streamable.obj:.text$x#77
+0075b168	.\Common_Release\FileDatabaseMgr.obj|$T74215	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#398
+0075b168	.\Common_Release\FileDatabaseStorage.obj|$T69256	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#228
+0075b168	.\Common_Release\Log.obj|$T67140	data	0.57	votes=1 from .\Common_Release\Log.obj:.text$x#311
+0075b190	.\Common_Release\FileDatabaseStorage.obj|$T73672	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#451
+0075b190	.\Common_Release\LogStream.obj|$T58823	data	0.57	votes=1 from .\Common_Release\LogStream.obj:.text$x#85
+0075b1c0	.\Common_Release\FileDatabaseMgr.obj|$T76508	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#494
+0075b1c0	.\Common_Release\FileDatabaseStorage.obj|$T73902	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#457
+0075b1c0	.\Common_Release\Log.obj|$T69199	data	0.57	votes=1 from .\Common_Release\Log.obj:.text$x#398
+0075b1c0	.\Common_Release\GenericFile.obj|$T10349	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#25
+0075b1c0	.\Release\ScriptMapData.obj|$T91026	data	0.57	votes=1 from .\Release\ScriptMapData.obj:.text$x#57
+0075b1f8	.\Common_Release\FileDatabaseMgr.obj|$T75541	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#454
+0075b1f8	.\Common_Release\FileDatabaseStorage.obj|$T71915	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#347
+0075b1f8	.\Common_Release\StreamDatabaseStorage.obj|$T74117	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#389
+0075b1f8	.\Common_Release\Log.obj|$T68334	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#361
+0075b1f8	.\release\files.obj|$T21110	data	0.6	votes=1 from .\release\files.obj:.text$x#333
+0075b220	.\Common_Release\FileDatabaseMgr.obj|$T75719	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#463
+0075b220	.\Common_Release\FileDatabaseStorage.obj|$T72000	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#356
+0075b220	.\Common_Release\StreamDatabaseStorage.obj|$T74289	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#398
+0075b220	.\Common_Release\LanguageTagMgr.obj|$T66676	data	0.6	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#251
+0075b220	.\Common_Release\Settings.obj|$T66097	data	0.6	votes=1 from .\Common_Release\Settings.obj:.text$x#263
+0075b220	.\release\files.obj|$T21303	data	0.6	votes=1 from .\release\files.obj:.text$x#358
+00762278	.\Common_Release\FileDatabaseMgr.obj|$T76163	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#484
+00762278	.\Common_Release\FileDatabaseStorage.obj|$T73555	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#445
+00762278	.\Common_Release\Log.obj|$T68852	data	0.57	votes=1 from .\Common_Release\Log.obj:.text$x#386
+0076f418	.\Common_Release\DatabaseObjectUpdate.obj|$T63131	data	0.57	votes=1 from .\Common_Release\DatabaseObjectUpdate.obj:.text$x#47
+007738f8	.\release\ecp.obj|$T25503	data	0.6	votes=1 from .\release\ecp.obj:.text$x#357
+00780cf0	.\Common_Release\FileDatabaseMgr.obj|$T74910	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#420
+00780cf0	.\Common_Release\FileDatabaseStorage.obj|$T69990	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#278
+00780cf0	.\Common_Release\StreamDatabaseStorage.obj|$T72297	data	0.57	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#331
+00780cf0	.\Common_Release\Log.obj|$T66088	data	0.57	votes=1 from .\Common_Release\Log.obj:.text$x#280
+00780cf0	.\release\files.obj|$T20130	data	0.57	votes=1 from .\release\files.obj:.text$x#297
+00780df0	.\Common_Release\FileDatabaseMgr.obj|$T79576	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#623
+00780df0	.\Common_Release\FileDatabaseStorage.obj|$T79488	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#554
+00780df0	.\Common_Release\StreamDatabaseStorage.obj|$T80233	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#566
+00780df0	.\Common_Release\Log.obj|$T70248	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#437
+00780df0	.\Common_Release\LanguageTagMgr.obj|$T78985	data	0.6	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#418
+00780df0	.\Common_Release\Settings.obj|$T72826	data	0.6	votes=1 from .\Common_Release\Settings.obj:.text$x#379
+00780df0	.\release\files.obj|$T23279	data	0.6	votes=1 from .\release\files.obj:.text$x#462
+00786ff8	.\Common_Release\FileDatabaseMgr.obj|$T72994	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#332
+00786ff8	.\Common_Release\FileDatabaseStorage.obj|$T71052	data	0.57	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#309
+00786ff8	.\Common_Release\StreamDatabaseStorage.obj|$T73319	data	0.57	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#355
+00786ff8	.\Common_Release\LanguageTagMgr.obj|$T64571	data	0.57	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#101
+00786ff8	.\Common_Release\Settings.obj|$T64327	data	0.57	votes=1 from .\Common_Release\Settings.obj:.text$x#181
+00786ff8	.\release\files.obj|$T19048	data	0.57	votes=1 from .\release\files.obj:.text$x#268
+0078d868	.\Common_Release\FileDatabaseMgr.obj|$T71373	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#246
+0078e5c0	.\Release\Actor.obj|$T89256	data	0.6	votes=1 from .\Release\Actor.obj:.text$x#30
+0078ee30	.\sfcTiger Release\tgprefs.obj|$T19281	data	0.6	votes=1 from .\sfcTiger Release\tgprefs.obj:.text$x#108
+00793cb8	.\release\ecp.obj|$T21405	data	0.6	votes=1 from .\release\ecp.obj:.text$x#219
+00793ce8	.\release\ecp.obj|$T25530	data	0.6	votes=1 from .\release\ecp.obj:.text$x#365
+00793ce8	.\release\ec2n.obj|$T24487	data	0.6	votes=1 from .\release\ec2n.obj:.text$x#377
+0079a610	.\Release\Script.obj|$T86430	data	0.6	votes=1 from .\Release\Script.obj:.text$x#72
+007a1bb8	__TI2?AVbad_cast@std@@	data	0.6	votes=1 from ?_Doraise@bad_cast@std@@MBEXXZ
+007a1bc8	.\Common_Release\FileDatabaseMgr.obj|$T78614	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#609
+007a1bc8	.\Common_Release\FileDatabaseStorage.obj|$T72292	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#366
+007a1bc8	.\Common_Release\StreamDatabaseStorage.obj|$T74580	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#406
+007a1bc8	.\Common_Release\DataStoreBuffer.obj|$T55259	data	0.6	votes=1 from .\Common_Release\DataStoreBuffer.obj:.text$x#59
+007a1bc8	.\Common_Release\LanguageTagMgr.obj|$T67233	data	0.6	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#261
+007a1bc8	.\Common_Release\GenericFile.obj|$T20469	data	0.6	votes=1 from .\Common_Release\GenericFile.obj:.text$x#270
+007a1bc8	.\release\integer.obj|$T27508	data	0.6	votes=1 from .\release\integer.obj:.text$x#626
+007a1bc8	.\release\files.obj|$T21594	data	0.6	votes=1 from .\release\files.obj:.text$x#366
+007a1bc8	.\sfcTiger Release\tZipInfoMgr.obj|$T10600	data	0.6	votes=1 from .\sfcTiger Release\tZipInfoMgr.obj:.text$x#14
+007a1bc8	.\sfcTiger Release\tbasicsoundfilezip.obj|$T12011	data	0.6	votes=1 from .\sfcTiger Release\tbasicsoundfilezip.obj:.text$x#16
+007a1bc8	.\sfcTiger Release\tAudioFile.obj|$T70110	data	0.6	votes=1 from .\sfcTiger Release\tAudioFile.obj:.text$x#63
+007a1bc8	.\release\queue.obj|$T11574	data	0.6	votes=1 from .\release\queue.obj:.text$x#52
+007a1c38	.\Common_Release\FileDatabaseMgr.obj|$T78236	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#575
+007a1c38	.\Common_Release\FileDatabaseStorage.obj|$T72365	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#399
+007a1c38	.\Common_Release\StreamDatabaseStorage.obj|$T74653	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#438
+007a1c38	.\Common_Release\DataStoreBuffer.obj|$T55342	data	0.6	votes=1 from .\Common_Release\DataStoreBuffer.obj:.text$x#95
+007a1c38	.\Common_Release\LanguageTagMgr.obj|$T66529	data	0.6	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#217
+007a1c38	.\Common_Release\GenericFile.obj|$T20552	data	0.6	votes=1 from .\Common_Release\GenericFile.obj:.text$x#307
+007a1c38	.\release\integer.obj|$T21856	data	0.6	votes=1 from .\release\integer.obj:.text$x#259
+007a1c38	.\release\files.obj|$T21689	data	0.6	votes=1 from .\release\files.obj:.text$x#387
+007a3da8	.\sfcTiger Release\tgprefs.obj|$T18317	data	0.6	votes=1 from .\sfcTiger Release\tgprefs.obj:.text$x#73
+007aba08	.\sfcTiger Release\tstring.obj|$T16795	data	0.6	votes=1 from .\sfcTiger Release\tstring.obj:.text$x#183
+007b65c0	.\release\ec2n.obj|$T23261	data	0.6	votes=1 from .\release\ec2n.obj:.text$x#321
+007bbe30	.\Common_Release\FileDatabaseMgr.obj|$T78176	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#560
+007bbe30	.\Common_Release\FileDatabaseStorage.obj|$T79382	data	0.6	votes=1 from .\Common_Release\FileDatabaseStorage.obj:.text$x#547
+007be0f8	.\Common_Release\Database.obj|$T70046	data	0.57	votes=1 from .\Common_Release\Database.obj:.text$x#142
+007c9670	.\Release\TeamInfo.obj|$T90241	data	0.6	votes=1 from .\Release\TeamInfo.obj:.text$x#100
+007c9eb0	.\sfcTiger Release\twfsys.obj|$T79948	data	0.6	votes=1 from .\sfcTiger Release\twfsys.obj:.text$x#499
+007ca460	.\sfcTiger Release\taudiopriority.obj|$T71070	data	0.6	votes=1 from .\sfcTiger Release\taudiopriority.obj:.text$x#43
+007ca620	.\release\rw.obj|$T13913	data	0.6	votes=1 from .\release\rw.obj:.text$x#154
+007ca620	.\release\rsa.obj|$T14984	data	0.6	votes=1 from .\release\rsa.obj:.text$x#49
+007ca620	.\release\mqv.obj|$T15930	data	0.6	votes=1 from .\release\mqv.obj:.text$x#49
+007ca620	.\release\modexppc.obj|$T16226	data	0.6	votes=1 from .\release\modexppc.obj:.text$x#40
+007ca620	.\release\modexppc.obj|$T16262	data	0.6	votes=1 from .\release\modexppc.obj:.text$x#44
+007ca620	.\release\modexppc.obj|$T16474	data	0.6	votes=1 from .\release\modexppc.obj:.text$x#71
+007ca620	.\release\luc.obj|$T15413	data	0.6	votes=1 from .\release\luc.obj:.text$x#49
+007ca620	.\release\integer.obj|$T20248	data	0.6	votes=1 from .\release\integer.obj:.text$x#179
+007ca620	.\release\integer.obj|$T23620	data	0.6	votes=1 from .\release\integer.obj:.text$x#350
+007ca620	.\release\integer.obj|$T23656	data	0.6	votes=1 from .\release\integer.obj:.text$x#354
+007ca620	.\release\integer.obj|$T24542	data	0.6	votes=1 from .\release\integer.obj:.text$x#421
+007ca620	.\release\integer.obj|$T24578	data	0.6	votes=1 from .\release\integer.obj:.text$x#425
+007ca620	.\release\integer.obj|$T26053	data	0.6	votes=1 from .\release\integer.obj:.text$x#508
+007ca620	.\release\ecp.obj|$T20123	data	0.6	votes=1 from .\release\ecp.obj:.text$x#125
+007ca620	.\release\ecp.obj|$T20159	data	0.6	votes=1 from .\release\ecp.obj:.text$x#129
+007ca620	.\release\ecp.obj|$T20321	data	0.6	votes=1 from .\release\ecp.obj:.text$x#147
+007ca620	.\release\eccrypto.obj|$T19505	data	0.6	votes=1 from .\release\eccrypto.obj:.text$x#169
+007ca620	.\release\eccrypto.obj|$T19541	data	0.6	votes=1 from .\release\eccrypto.obj:.text$x#173
+007ca620	.\release\blumshub.obj|$T12186	data	0.6	votes=1 from .\release\blumshub.obj:.text$x#30
+007ca620	.\release\blumshub.obj|$T12222	data	0.6	votes=1 from .\release\blumshub.obj:.text$x#34
+007ca920	.\Common_Release\WinTimer.obj|$T53819	data	0.6	votes=1 from .\Common_Release\WinTimer.obj:.text$x#11
+007ca920	.\Common_Release\WinTimer.obj|$T53838	data	0.6	votes=1 from .\Common_Release\WinTimer.obj:.text$x#18
+007ca920	.\Common_Release\WinTimer.obj|$T53852	data	0.6	votes=1 from .\Common_Release\WinTimer.obj:.text$x#22
+007ca920	.\Common_Release\WinTimer.obj|$T53866	data	0.6	votes=1 from .\Common_Release\WinTimer.obj:.text$x#26
+007ca920	.\sfcTiger Release\tBag.obj|$T11335	data	0.6	votes=1 from .\sfcTiger Release\tBag.obj:.text$x#67
+007ca920	.\release\filters.obj|$T11586	data	0.6	votes=1 from .\release\filters.obj:.text$x#28
+007ca950	.\Common_Release\HeartbeatTimer.obj|$T61190	data	0.6	votes=1 from .\Common_Release\HeartbeatTimer.obj:.text$x#70
+007d21c8	.\sfcTiger Release\tgSound.obj|$T75155	data	0.57	votes=1 from .\sfcTiger Release\tgSound.obj:.text$x#925
+007d3f98	.\Release\ScriptMapData.obj|$T92158	data	0.57	votes=1 from .\Release\ScriptMapData.obj:.text$x#76
+007d61f0	.\Common_Release\Stats.obj|$T60079	data	0.6	votes=1 from .\Common_Release\Stats.obj:.text$x#112
+007d73b0	.\release\secshare.obj|$T25370	data	0.57	votes=1 from .\release\secshare.obj:.text$x#310
+007d73b0	.\release\secshare.obj|$T26607	data	0.57	votes=1 from .\release\secshare.obj:.text$x#326
+007d9350	__TI3?AVlength_error@std@@	data	0.938	votes=2 from ?push_back@?$deque@VtLockInfo@tDatabase@nDatabase@@V?$allocator@VtLockInfo@tDatabase@nDatabase@@@std@@@std@@QAEXABVtLockInfo@tDatabase@nDatabase@@@Z,?push_back@?$deque@VtWork@tThreadPool@@V?$allocator@VtWork@tThreadPool@@@std@@@std@@QAEXABVtWork@tThreadPool@@@Z
+007e4218	.\Common_Release\LanguageTagMgr.obj|$T79101	data	0.57	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#422
+007e4218	.\Common_Release\Settings.obj|$T73603	data	0.57	votes=1 from .\Common_Release\Settings.obj:.text$x#389
+007e5250	.\release\rsa.obj|$T19575	data	0.6	votes=1 from .\release\rsa.obj:.text$x#400
+007e5250	.\release\rabin.obj|$T16170	data	0.6	votes=1 from .\release\rabin.obj:.text$x#204
+007e5250	.\release\luc.obj|$T22183	data	0.6	votes=1 from .\release\luc.obj:.text$x#521
+007eb4f8	.\Common_Release\Streamable.obj|$T62217	data	0.6	votes=1 from .\Common_Release\Streamable.obj:.text$x#112
+007eb4f8	.\release\3way.obj|$T11198	data	0.6	votes=1 from .\release\3way.obj:.text$x#4
+007ebfb0	.\Common_Release\DatabaseObject.obj|$T64747	data	0.57	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#21
+007ed188	.\Common_Release\Settings.obj|$T74667	data	0.57	votes=1 from .\Common_Release\Settings.obj:.text$x#463
+007ed1e0	.\Common_Release\GenericFile.obj|$T11171	data	0.6	votes=1 from .\Common_Release\GenericFile.obj:.text$x#73
+007ed1e0	.\Common_Release\Settings.obj|$T76207	data	0.6	votes=1 from .\Common_Release\Settings.obj:.text$x#475
+007ed218	.\Common_Release\Settings.obj|$T76741	data	0.6	votes=1 from .\Common_Release\Settings.obj:.text$x#479
+007ee830	.\Common_Release\GenericFile.obj|$T10558	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#33
+007ee830	.\Common_Release\GenericFile.obj|$T11496	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#77
+007ee830	.\Common_Release\GenericFile.obj|$T12719	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#94
+007ee830	.\Common_Release\GenericFile.obj|$T12837	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#98
+007ee830	.\Common_Release\GenericFile.obj|$T13730	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#134
+007ee830	.\Common_Release\GenericFile.obj|$T13793	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#138
+007ee830	.\Common_Release\GenericFile.obj|$T15213	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#174
+007ee830	.\Common_Release\GenericFile.obj|$T17240	data	0.57	votes=1 from .\Common_Release\GenericFile.obj:.text$x#202
+007ee830	.\Common_Release\Settings.obj|$T61114	data	0.57	votes=1 from .\Common_Release\Settings.obj:.text$x#98
+007ee830	.\Common_Release\Settings.obj|$T62297	data	0.57	votes=1 from .\Common_Release\Settings.obj:.text$x#127
+007f14a8	.\sfcTiger Release\twfsys.obj|$T76019	data	0.57	votes=1 from .\sfcTiger Release\twfsys.obj:.text$x#189
+007f1a98	.\Common_Release\StreamDatabaseStorage.obj|$T70416	data	0.57	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#250
+007f4708	.\Common_Release\CallStack.obj|$T61311	data	0.57	votes=1 from .\Common_Release\CallStack.obj:.text$x#50
+007f4708	.\Common_Release\CallStack.obj|$T61390	data	0.57	votes=1 from .\Common_Release\CallStack.obj:.text$x#63
+007f5d98	.\Common_Release\DatabaseObject.obj|$T65139	data	0.57	votes=1 from .\Common_Release\DatabaseObject.obj:.text$x#67
+007fc048	.\Common_Release\FileDatabaseMgr.obj|$T68620	data	0.57	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#108
+008019e0	.\Release\Actor.obj|$T88229	data	0.6	votes=1 from .\Release\Actor.obj:.text$x#13
+00801c80	.\Common_Release\FileDatabaseMgr.obj|$T75914	data	0.6	votes=1 from .\Common_Release\FileDatabaseMgr.obj:.text$x#474
+00801c80	.\Common_Release\StreamDatabaseStorage.obj|$T75477	data	0.6	votes=1 from .\Common_Release\StreamDatabaseStorage.obj:.text$x#486
+00801c80	.\Common_Release\Log.obj|$T68603	data	0.6	votes=1 from .\Common_Release\Log.obj:.text$x#376
+00801c80	.\Common_Release\LanguageTagMgr.obj|$T69397	data	0.6	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#288
+00801c80	.\Common_Release\Settings.obj|$T66226	data	0.6	votes=1 from .\Common_Release\Settings.obj:.text$x#268
+00801c80	.\release\files.obj|$T21879	data	0.6	votes=1 from .\release\files.obj:.text$x#414
+00801f58	.\Common_Release\Extractor.obj|$T50514	data	0.6	votes=1 from .\Common_Release\Extractor.obj:.text$x#25
+00802100	.\release\ecp.obj|$T19812	data	0.57	votes=1 from .\release\ecp.obj:.text$x#95
+00802100	.\Common_Release\LanguageTagMgr.obj|$T63162	data	0.57	votes=1 from .\Common_Release\LanguageTagMgr.obj:.text$x#53
+00802100	.\sfcTiger Release\tgprefs.obj|$T17846	data	0.57	votes=1 from .\sfcTiger Release\tgprefs.obj:.text$x#44
+00802100	.\sfcTiger Release\tgprefs.obj|$T17961	data	0.57	votes=1 from .\sfcTiger Release\tgprefs.obj:.text$x#57
+00802100	.\sfcTiger Release\tFormatStr.obj|$T12853	data	0.57	votes=1 from .\sfcTiger Release\tFormatStr.obj:.text$x#171
+00805eb4	??_C@_01FKHJ@C?$AA@	data	0.984	votes=3 from ??0?$codecvt@DDH@std@@QAE@I@Z,??0?$ctype@D@std@@QAE@PBF_NI@Z,??0?$numpunct@D@std@@QAE@I@Z
+00805ee8	??_C@_04NCCD@true?$AA@	data	0.6	votes=1 from ??0?$numpunct@D@std@@QAE@I@Z
+00805ef0	??_C@_05NAGO@false?$AA@	data	0.6	votes=1 from ??0?$numpunct@D@std@@QAE@I@Z
+0081f0ac	.\release\secshare.obj|_field	data	0.6	votes=1 from .\release\secshare.obj|_$E34
+00821858	??_C@_0BC@LLLM@deque?$DMT?$DO?5too?5long?$AA@	data	0.938	votes=2 from ?push_back@?$deque@VtLockInfo@tDatabase@nDatabase@@V?$allocator@VtLockInfo@tDatabase@nDatabase@@@std@@@std@@QAEXABVtLockInfo@tDatabase@nDatabase@@@Z,?push_back@?$deque@VtWork@tThreadPool@@V?$allocator@VtWork@tThreadPool@@@std@@@std@@QAEXABVtWork@tThreadPool@@@Z
+0082777c	??_C@_0BI@ONFK@_?$HO?$CKStatDirectoryInfo?$CK?$HO_?$AA@	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E21
+00827794	??_C@_05HBJC@?4info?$AA@	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E27
+0082779c	??_C@_03BEKN@?432?$AA@	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E32
+008277a0	??_C@_03KHNP@?464?$AA@	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E37
+0082d350	.\sfcTiger Release\tFile.obj|_$S29	data	0.6	votes=1 from .\sfcTiger Release\tFile.obj|_$E28
+0082d358	?fSearchVector@tFile@@1V?$vector@VtDir@@V?$allocator@VtDir@@@std@@@std@@A	data	0.6	votes=1 from .\sfcTiger Release\tFile.obj|_$E28
+0082d360	?fInfo@tOSVersion@@0U_OSVERSIONINFOA@@A	data	0.57	votes=1 from ?GetMiscInfo@tOSVersion@@QAEPBDXZ
+0082d374	??_C@_00A@?$AA@	data	0.6	votes=1 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z
+0082d374	??_C@_0CG@EGPE@Access?5violation?5on?5non?5locked?5o@	data	0.6	votes=1 from ??0tAccessViolationOnNonLockedObject@nDatabase@@QAE@PBD0J@Z
+0082d374	??_C@_0CA@HIIK@Object?5failed?5to?5be?5initialized?$AA@	data	0.6	votes=1 from ??0tInitFailed@nException@@QAE@PBD0J@Z
+0082d374	??_C@_0BO@DMJM@Invalid?5access?5of?5a?5function?5?$AA@	data	0.6	votes=1 from ??0tInvalidAccess@nException@@QAE@PBD0J@Z
+0082d374	??_C@_08KNGG@Validate?$AA@	data	0.6	votes=1 from ??0tValidationFailed@nException@@QAE@PBD0J@Z
+0082d374	?gScriptInterface@@3VtScriptInterface@@A	data	0.57	votes=1 from _ScriptEntry
+0082d374	?map@?2??mGetMap@tShipSystemsInfo@@UBEPBUtMapItem@tNetMsg@@XZ@4PAU34@A	data	0.57	votes=1 from ?mGetMap@tShipSystemsInfo@@UBEPBUtMapItem@tNetMsg@@XZ
+0082d374	??_C@_0L@MEMH@FONTID?4NDX?$AA@	data	0.57	votes=1 from ?mGetFontIndexFilename@tFontFileIOBase@@SAPBDXZ
+0082d374	??_C@_0BL@FHPC@assets?1aafonts?1aafonts?4txt?$AA@	data	0.57	votes=1 from ?mGetFontListName@tGLFont@@SAPBDXZ
+0082d600	?fStaticPartCachedPtrCount@tPart@@1JA	data	0.6	votes=1 from ?mResetPartCachePtrList@tPart@@SAXXZ
+0082d708	?_Facsav@?$_Tidyfac@V?$ctype@D@std@@@std@@0PAV?$ctype@D@2@A	data	0.57	votes=1 from ?_Save@?$_Tidyfac@V?$ctype@D@std@@@std@@SAPAV?$ctype@D@2@PAV32@@Z
+0082d810	?fixedRing@?$PolynomialOverFixedRing@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@$0A@@CryptoPP@@0VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@B	data	0.6	votes=1 from .\release\secshare.obj|_$E34
+0082fe50	.\Common_Release\Streamable.obj|_$S41	data	0.57	votes=1 from .\Common_Release\Streamable.obj|_$E40
+0082fe58	?fObjectIDInfoLookup@tStreamable@nDataStore@@2V?$map@PBVtype_info@@VtObjectIDInfo@tStreamable@nDataStore@@U?$less@PBVtype_info@@@std@@V?$allocator@VtObjectIDInfo@tStreamable@nDataStore@@@6@@std@@A	data	0.57	votes=1 from .\Common_Release\Streamable.obj|_$E39
+0082ff70	?debug@nLog@@3VtLogStream@1@A	data	0.6	votes=1 from .\Common_Release\LogStream.obj|_$E55
+00830020	?info@nLog@@3VtLogStream@1@A	data	0.6	votes=1 from .\Common_Release\LogStream.obj|_$E50
+008300d0	?error@nLog@@3VtLogStream@1@A	data	0.6	votes=1 from .\Common_Release\LogStream.obj|_$E45
+00830180	?warning@nLog@@3VtLogStream@1@A	data	0.6	votes=1 from .\Common_Release\LogStream.obj|_$E40
+00830230	?out@nLog@@3VtLogStream@1@A	data	0.57	votes=1 from .\Common_Release\LogStream.obj|_$E35
+008303d8	?fSymbolEngine@@3V?$auto_ptr@VCSymbolEngine@@@std@@A	data	0.6	votes=1 from .\Common_Release\CallStack.obj|_$E38
+008303e8	?fSharedMemInfo@tStats@@1V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVtSharedMemoryInfo@tStats@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@PAVtSharedMemoryInfo@tStats@@@2@@std@@A	data	0.6	votes=1 from .\Common_Release\Stats.obj|_$E43
+00830400	?k64Sufix@tStats@@1V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E38
+00830410	?k32Sufix@tStats@@1V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E33
+00830420	?kInfoSufix@tStats@@1V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E28
+00830430	.\Common_Release\Stats.obj|_$S23	data	0.6	votes=1 from .\Common_Release\Stats.obj|_$E43
+00830438	?kStatDirectoryInfo@tStats@@1V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B	data	0.57	votes=1 from .\Common_Release\Stats.obj|_$E22
+008309cc	?_Global@_Locimp@locale@std@@0PAV123@A	data	0.984	votes=3 from ??0?$basic_filebuf@DU?$char_traits@D@std@@@std@@QAE@PAU_iobuf@@@Z,??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ,??0locale@std@@QAE@XZ
+008309d0	?_Id_cnt@id@locale@std@@0HA	data	0.938	votes=2 from ??Bid@locale@std@@QAEIXZ,?_Addfac@std@@YA?AVlocale@1@V21@PAV?$codecvt@DDH@1@@Z
+008309d4	?_Cltab@?$ctype@D@std@@0PBFB	data	0.938	votes=2 from ??0?$ctype@D@std@@QAE@PBF_NI@Z,?_Term@?$ctype@D@std@@KAXXZ
+008309d8	?id@?$codecvt@DDH@std@@2V0locale@2@A	data	0.6	votes=1 from ?_Addfac@std@@YA?AVlocale@1@V21@PAV?$codecvt@DDH@1@@Z
+00830f04	?_Stinit@?1??_Init@?$basic_filebuf@DU?$char_traits@D@std@@@std@@IAEXPAU_iobuf@@W4_Initfl@23@@Z@4HA	data	0.99	votes=5 from ??0?$basic_filebuf@DU?$char_traits@D@std@@@std@@QAE@PAU_iobuf@@@Z,??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ,?_Init@?$basic_filebuf@DU?$char_traits@D@std@@@std@@IAEXPAU_iobuf@@W4_Initfl@12@@Z
+00830f08	?_Stz@?$fpos@H@std@@0HA	data	0.6	votes=1 from ??0?$fpos@H@std@@QAE@J@Z

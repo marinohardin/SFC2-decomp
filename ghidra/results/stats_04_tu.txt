@@ -1,0 +1,22 @@
+# StarFleetOP.exe Mon Nov 02 19:44:37 PST 2026
+functions	44232
+thunks	209
+external_functions	351
+function_bytes	3475472
+named_function_bytes	1536221
+classes	2256
+data_types	20713
+bookmark.Analysis.Address Table	1337
+bookmark.Analysis.Demangler	805
+bookmark.Analysis.Found Code	5860
+bookmark.Analysis.Function ID Analyzer	308
+bookmark.Analysis.Non-Returning Function	6
+bookmark.Analysis.RECOVERED CLASS	5402
+bookmark.Analysis.operator_delete identification	1
+bookmark.Error.Bad Instruction	130
+bookmark.Info.PE Header	4
+bookmark.Note.Deleting Destructor Fixup	1260
+source.ANALYSIS	27166
+source.DEFAULT	17064
+source.IMPORTED	1
+source.USER_DEFINED	1

@@ -1,0 +1,3543 @@
+{
+ "variant": "dsp-nopch",
+ "desc": "SP4, without /YX /Fr /FD",
+ "compiler": "6.4",
+ "objdiff": {
+  "fuzzy_match_percent": 100.0,
+  "total_code": "139810",
+  "matched_code": "139810",
+  "matched_code_percent": 100.0,
+  "total_data": "24407",
+  "matched_data": "18495",
+  "matched_data_percent": 75.77744,
+  "total_functions": 1230,
+  "matched_functions": 1230,
+  "matched_functions_percent": 100.0,
+  "total_units": 23
+ },
+ "units": {
+  "NormalVictoryState": {
+   "project": "ScriptInterface",
+   "src": "./NormalVictoryState.cpp",
+   "compiled": true,
+   "secs": 12.8,
+   "has_target": true,
+   "n_functions": 33,
+   "exact": 33,
+   "code_bytes": 1633,
+   "exact_bytes": 1633,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 22,
+     "data_relocs_differ": 1,
+     "data_identical": 21,
+     "code_sections": 34,
+     "code_identical": 22,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13604,
+     "$T": -13604,
+     "_$E": -1
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S58",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryCondition": {
+   "project": "ScriptInterface",
+   "src": "./VictoryCondition.cpp",
+   "compiled": true,
+   "secs": 12.1,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 798,
+   "exact_bytes": 798,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 18,
+     "data_relocs_differ": 1,
+     "data_identical": 17,
+     "code_sections": 28,
+     "code_identical": 16,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13604,
+     "$T": -13604,
+     "_$E": -1
+    },
+    "label_count": [
+     16,
+     16
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S58",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "VictoryState": {
+   "project": "ScriptInterface",
+   "src": "./VictoryState.cpp",
+   "compiled": true,
+   "secs": 11.3,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 343,
+   "exact_bytes": 343,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 12,
+     "data_relocs_differ": 1,
+     "data_identical": 11,
+     "code_sections": 21,
+     "code_identical": 9,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": -1
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S55",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Actor": {
+   "project": "ScriptInterface",
+   "src": "./Actor.cpp",
+   "compiled": true,
+   "secs": 11.6,
+   "has_target": true,
+   "n_functions": 47,
+   "exact": 47,
+   "code_bytes": 5207,
+   "exact_bytes": 5207,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 17,
+     "data_identical": 16,
+     "code_sections": 52,
+     "code_identical": 50,
+     "code_relocs_differ": 1,
+     "code_unpaired": 1,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13604,
+     "$T": -13604,
+     "_$E": 0
+    },
+    "label_count": [
+     38,
+     38
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAU?$pair@$$CBVtString@@PAVtState@@@1@ABU21@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92776",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92785",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "EventMgr": {
+   "project": "ScriptInterface",
+   "src": "./EventMgr.cpp",
+   "compiled": true,
+   "secs": 12.1,
+   "has_target": true,
+   "n_functions": 26,
+   "exact": 26,
+   "code_bytes": 1702,
+   "exact_bytes": 1702,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 21,
+     "data_relocs_differ": 1,
+     "data_identical": 19,
+     "code_sections": 29,
+     "code_bytes_differ": 2,
+     "code_unpaired": 9,
+     "code_identical": 14,
+     "code_relocs_differ": 4,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13599,
+     "$T": -13599,
+     "_$E": 6
+    },
+    "label_count": [
+     33,
+     33
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S61",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTimedInterval@tEventMgr@@QAE?AVtTimerID@1@W4eTimerIntervalTypes@@JMJJ@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87371",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87388",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mEntityEvent@tEventMgr@@QAEXABUtShipSystemsInfo@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E60",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E59",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "State": {
+   "project": "ScriptInterface",
+   "src": "./State.cpp",
+   "compiled": true,
+   "secs": 12.0,
+   "has_target": true,
+   "n_functions": 51,
+   "exact": 51,
+   "code_bytes": 1407,
+   "exact_bytes": 1407,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_relocs_differ": 1,
+     "data_identical": 9,
+     "code_sections": 51,
+     "code_identical": 38,
+     "code_relocs_differ": 3,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13750,
+     "_$E": -1
+    },
+    "label_count": [
+     21,
+     21
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S58",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mHandleShipEvent@tState@@QAEXPAVtShipInfo@@ABVtEventInfo@tEventMgr@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "teamtracker": {
+   "project": "ScriptInterface",
+   "src": "./teamtracker.cpp",
+   "compiled": true,
+   "secs": 11.4,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 397,
+   "exact_bytes": 397,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 4,
+     "data_identical": 4,
+     "code_sections": 18,
+     "code_identical": 18,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": 0
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ShipInfo": {
+   "project": "ScriptInterface",
+   "src": "./ShipInfo.cpp",
+   "compiled": true,
+   "secs": 11.8,
+   "has_target": true,
+   "n_functions": 154,
+   "exact": 154,
+   "code_bytes": 14448,
+   "exact_bytes": 14448,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 122,
+     "data_relocs_differ": 1,
+     "data_identical": 115,
+     "code_sections": 221,
+     "code_identical": 195,
+     "code_relocs_differ": 8,
+     "code_unpaired": 16,
+     "data_unpaired": 6,
+     "code_bytes_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13599,
+     "$T": -13599,
+     "_$E": -31
+    },
+    "label_count": [
+     288,
+     288
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S64",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "??EtShipIterator@@QAE?AV0@H@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88578",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88902",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tShipInfo@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88998",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89300",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mClearCommands@tShipInfo@@QAEXXZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89753",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89768",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92429",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92427",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0?$tClassAllocator@VtShipInfo@@@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92472",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92477",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAllocate@?$tClassAllocator@VtShipInfo@@@@UAEPAVtAllocatedClass@@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92488",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92490",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E63",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E62",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "TeamInfo": {
+   "project": "ScriptInterface",
+   "src": "./TeamInfo.cpp",
+   "compiled": true,
+   "secs": 12.4,
+   "has_target": true,
+   "n_functions": 114,
+   "exact": 114,
+   "code_bytes": 11720,
+   "exact_bytes": 11720,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 79,
+     "data_relocs_differ": 1,
+     "data_identical": 69,
+     "code_sections": 142,
+     "code_identical": 109,
+     "code_relocs_differ": 12,
+     "code_unpaired": 20,
+     "data_unpaired": 9,
+     "code_bytes_differ": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13603,
+     "$T": -13603,
+     "_$E": -31
+    },
+    "label_count": [
+     142,
+     142
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S64",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mCreateTeamFleet@tTeamInfo@@IAEXABVtype_info@@JQAUtCreateShipInfo@@JJJJJJPBDW4eShipOptions@@W4eRace@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetShipCount@tTeamInfo@@QAEJW4eShipStatus@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91766",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91822",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTotalDamagePercent@tTeamInfo@@QAEMXZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91835",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91945",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipsRemainingInPlay@tTeamInfo@@QAEJXZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91968",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92087",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipsRemainingInPlayFromOriginalTeam@tTeamInfo@@QAEJXZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92103",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92222",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mShipsCurrentlyControlled@tTeamInfo@@QAEJXZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92238",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92357",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetMaxClassType@tTeamInfo@@QAE?AW4eClassTypes@@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L92373",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T92429",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L93402",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T93400",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0?$tClassAllocator@VtTeamInfo@@@@QAE@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L93523",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T93528",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mAllocate@?$tClassAllocator@VtTeamInfo@@@@UAEPAVtAllocatedClass@@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L93539",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T93541",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E63",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E62",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "DrawCanvas": {
+   "project": "ScriptInterface",
+   "src": "./DrawCanvas.cpp",
+   "compiled": true,
+   "secs": 11.3,
+   "has_target": true,
+   "n_functions": 27,
+   "exact": 27,
+   "code_bytes": 1629,
+   "exact_bytes": 1629,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_relocs_differ": 1,
+     "data_identical": 9,
+     "code_sections": 27,
+     "code_identical": 15,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": -1
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S58",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E57",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionInfo": {
+   "project": "ScriptInterface",
+   "src": "./MissionInfo.cpp",
+   "compiled": true,
+   "secs": 12.0,
+   "has_target": true,
+   "n_functions": 97,
+   "exact": 97,
+   "code_bytes": 11693,
+   "exact_bytes": 11693,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 59,
+     "data_relocs_differ": 1,
+     "data_identical": 57,
+     "code_sections": 127,
+     "code_relocs_differ": 5,
+     "code_unpaired": 15,
+     "code_bytes_differ": 2,
+     "code_identical": 105,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13601,
+     "$T": -13601,
+     "_$E": -31
+    },
+    "label_count": [
+     144,
+     144
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S70",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E56",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E55",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E62",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E58",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E61",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E59",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "?mScheduleMission@tMissionInfo@@QAEXJ@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88672",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88702",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E69",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E68",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Script": {
+   "project": "ScriptInterface",
+   "src": "./Script.cpp",
+   "compiled": true,
+   "secs": 11.5,
+   "has_target": true,
+   "n_functions": 58,
+   "exact": 58,
+   "code_bytes": 5481,
+   "exact_bytes": 5481,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 35,
+     "code_sections": 67,
+     "code_identical": 52,
+     "code_relocs_differ": 9,
+     "data_unpaired": 6,
+     "code_unpaired": 6,
+     "data_relocs_differ": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13598,
+     "$T": -13595,
+     "_$E": 0
+    },
+    "label_count": [
+     67,
+     67
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text$x",
+       "$L85690",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86009",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86093",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86099",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86135",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86309",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "??0tStrength@@QAE@ABV0@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86358",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T86430",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetTeamShipStrengths@tScript@@QAE?AV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@J@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L86884",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87078",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0JJ@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87095",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87135",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?mSetTeamShipStrength@tScript@@QAEXJW4eClassTypes@@0MM@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87143",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87183",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L87902",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T87900",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtShipStrength@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88095",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88100",
+       "1"
+      ],
+      "why": "relocs"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptInterface": {
+   "project": "ScriptInterface",
+   "src": "./ScriptInterface.cpp",
+   "compiled": true,
+   "secs": 11.6,
+   "has_target": true,
+   "n_functions": 83,
+   "exact": 83,
+   "code_bytes": 8939,
+   "exact_bytes": 8939,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_relocs_differ": 1,
+     "data_identical": 39,
+     "code_sections": 91,
+     "code_identical": 73,
+     "code_relocs_differ": 4,
+     "code_unpaired": 14,
+     "data_unpaired": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13605,
+     "$T": -13605,
+     "_$E": -30
+    },
+    "label_count": [
+     58,
+     58
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S65",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E52",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?mGetCampaignTitle@tScriptInterface@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L88176",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T88356",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtMapObject@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91031",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91478",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E64",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E63",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MapObject": {
+   "project": "shared",
+   "src": "./Source/Scripting/MapObject.cpp",
+   "compiled": true,
+   "secs": 2.5,
+   "has_target": true,
+   "n_functions": 18,
+   "exact": 18,
+   "code_bytes": 1847,
+   "exact_bytes": 1847,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 12,
+     "data_identical": 12,
+     "code_sections": 21,
+     "code_identical": 21,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -692,
+     "$T": -692,
+     "_$E": 0
+    },
+    "label_count": [
+     17,
+     17
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "MissionMatchLocation": {
+   "project": "shared",
+   "src": "./Source/Scripting/MissionMatchLocation.cpp",
+   "compiled": true,
+   "secs": 9.5,
+   "has_target": true,
+   "n_functions": 28,
+   "exact": 28,
+   "code_bytes": 1985,
+   "exact_bytes": 1985,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_relocs_differ": 1,
+     "code_sections": 29,
+     "code_identical": 19,
+     "data_identical": 31,
+     "code_bytes_differ": 5,
+     "code_unpaired": 3,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13710,
+     "$T": -13710,
+     "_$E": -1
+    },
+    "label_count": [
+     15,
+     15
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S50",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E49",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E48",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E21",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E27",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "relocs"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "missionspec": {
+   "project": "shared",
+   "src": "./Source/Scripting/missionspec.cpp",
+   "compiled": true,
+   "secs": 10.6,
+   "has_target": true,
+   "n_functions": 90,
+   "exact": 90,
+   "code_bytes": 14275,
+   "exact_bytes": 14275,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 44,
+     "data_identical": 38,
+     "code_sections": 106,
+     "code_relocs_differ": 6,
+     "code_unpaired": 6,
+     "data_unpaired": 5,
+     "code_identical": 94,
+     "data_relocs_differ": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13718,
+     "$T": -13718,
+     "_$E": 0
+    },
+    "label_count": [
+     116,
+     116
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??0tTeamSpec@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@JM_NW4eTeamType@@MVtStrength@@JJJW4eTeamTag@@0QAV12@1@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80492",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80678",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtShipStrength@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89566",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89571",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtScriptMapData@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L89589",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T89832",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAU?$pair@$$CBDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABU21@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90110",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90516",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtMapTerrain@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L90527",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T90532",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtMapObject@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L91373",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T91820",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "NetMsgClass": {
+   "project": "shared",
+   "src": "./Source/Network/NetMsgClass.cpp",
+   "compiled": true,
+   "secs": 3.6,
+   "has_target": true,
+   "n_functions": 8,
+   "exact": 8,
+   "code_bytes": 1035,
+   "exact_bytes": 1035,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 10,
+     "data_identical": 10,
+     "code_sections": 8,
+     "code_relocs_differ": 1,
+     "code_identical": 7,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -1641,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "?mStream@tNetMsg@@IAEKPBXEPAU1@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptMapData": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptMapData.cpp",
+   "compiled": true,
+   "secs": 11.1,
+   "has_target": true,
+   "n_functions": 84,
+   "exact": 84,
+   "code_bytes": 33114,
+   "exact_bytes": 33114,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 32,
+     "data_identical": 29,
+     "code_sections": 94,
+     "code_identical": 87,
+     "code_relocs_differ": 4,
+     "code_unpaired": 3,
+     "data_unpaired": 3,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13725,
+     "$T": -13725,
+     "_$E": 0
+    },
+    "label_count": [
+     133,
+     133
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "?mGetMapItemType@tScriptMapData@@SA?AW4eMapObjectType@@DPAH@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L94047",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T94045",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAU?$pair@$$CBDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABU21@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L100253",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T100659",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtMapObject@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L100672",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T101119",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "ScriptStructs": {
+   "project": "shared",
+   "src": "./Source/Scripting/ScriptStructs.cpp",
+   "compiled": true,
+   "secs": 10.4,
+   "has_target": true,
+   "n_functions": 21,
+   "exact": 21,
+   "code_bytes": 594,
+   "exact_bytes": 594,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 4,
+     "data_relocs_differ": 1,
+     "data_identical": 3,
+     "code_sections": 21,
+     "code_identical": 9,
+     "code_bytes_differ": 6,
+     "code_unpaired": 4,
+     "code_relocs_differ": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "_$E": -1
+    },
+    "label_count": [
+     12,
+     12
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".CRT$XCU",
+       "_$S55",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E54",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E53",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E25",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E22",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E24",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E23",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E31",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E28",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E30",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E29",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E46",
+       "1"
+      ],
+      "why": "bytes"
+     },
+     {
+      "key": [
+       ".text",
+       "_$E45",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "sfcstreams": {
+   "project": "shared",
+   "src": "./Source/Common/sfcstreams.cpp",
+   "compiled": true,
+   "secs": 4.0,
+   "has_target": true,
+   "n_functions": 161,
+   "exact": 161,
+   "code_bytes": 14824,
+   "exact_bytes": 14824,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 39,
+     "data_identical": 38,
+     "code_sections": 168,
+     "code_identical": 166,
+     "code_relocs_differ": 1,
+     "code_unpaired": 1,
+     "data_unpaired": 1,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -1565,
+     "$T": -1565,
+     "_$E": 0
+    },
+    "label_count": [
+     37,
+     37
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L21570",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T21568",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "SFCThreadState": {
+   "project": "shared",
+   "src": "./Meta/Servers/SFCThreadState.cpp",
+   "compiled": true,
+   "secs": 6.5,
+   "has_target": true,
+   "n_functions": 12,
+   "exact": 12,
+   "code_bytes": 410,
+   "exact_bytes": 410,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 11,
+     "data_identical": 11,
+     "code_sections": 13,
+     "code_identical": 13,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -12514,
+     "$T": -12514,
+     "_$E": 0
+    },
+    "label_count": [
+     11,
+     11
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "Strength": {
+   "project": "shared",
+   "src": "./Source/Scripting/Strength.cpp",
+   "compiled": true,
+   "secs": 6.9,
+   "has_target": true,
+   "n_functions": 52,
+   "exact": 52,
+   "code_bytes": 6329,
+   "exact_bytes": 6329,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 0,
+     "data_sections": 42,
+     "data_identical": 40,
+     "code_sections": 57,
+     "code_identical": 53,
+     "code_relocs_differ": 2,
+     "code_unpaired": 2,
+     "data_unpaired": 2,
+     "file_identical_except_timestamp": 0
+    },
+    "label_offset": {
+     "$L": -13710,
+     "$T": -13710,
+     "_$E": 0
+    },
+    "label_count": [
+     39,
+     39
+    ],
+    "diffs": [
+     {
+      "key": [
+       ".text",
+       "??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@VtShipStrength@@V?$allocator@VtShipStrength@@@std@@@std@@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80536",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80796",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".text",
+       "?_Construct@std@@YAXPAVtShipStrength@@ABV2@@Z",
+       "1"
+      ],
+      "why": "relocs"
+     },
+     {
+      "key": [
+       ".text$x",
+       "$L80867",
+       "1"
+      ],
+      "why": "unpaired"
+     },
+     {
+      "key": [
+       ".xdata$x",
+       "$T80872",
+       "1"
+      ],
+      "why": "unpaired"
+     }
+    ]
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  },
+  "texttoken": {
+   "project": "shared",
+   "src": "./Source/Scripting/texttoken.cpp",
+   "compiled": true,
+   "secs": 0.5,
+   "has_target": true,
+   "n_functions": 0,
+   "exact": 0,
+   "code_bytes": 0,
+   "exact_bytes": 0,
+   "misses": [],
+   "log": null,
+   "strict": {
+    "counts": {
+     "symtab_identical_modulo_labels": 1,
+     "data_sections": 76,
+     "data_identical": 76,
+     "file_identical_except_timestamp": 1
+    },
+    "label_offset": {},
+    "label_count": [
+     0,
+     0
+    ],
+    "diffs": []
+   },
+   "comp_id": 729695,
+   "target_comp_id": 729695
+  }
+ },
+ "objdiff_units": {
+  "ScriptInterface/NormalVictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1633",
+   "matched_code": "1633",
+   "matched_code_percent": 100.0,
+   "total_data": "636",
+   "matched_data": "636",
+   "matched_data_percent": 100.0,
+   "total_functions": 33,
+   "matched_functions": 33,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryCondition": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "798",
+   "matched_code": "798",
+   "matched_code_percent": 100.0,
+   "total_data": "532",
+   "matched_data": "532",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/VictoryState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "343",
+   "matched_code": "343",
+   "matched_code_percent": 100.0,
+   "total_data": "444",
+   "matched_data": "444",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Actor": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5207",
+   "matched_code": "5207",
+   "matched_code_percent": 100.0,
+   "total_data": "564",
+   "matched_data": "564",
+   "matched_data_percent": 100.0,
+   "total_functions": 47,
+   "matched_functions": 47,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/EventMgr": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1702",
+   "matched_code": "1702",
+   "matched_code_percent": 100.0,
+   "total_data": "816",
+   "matched_data": "816",
+   "matched_data_percent": 100.0,
+   "total_functions": 26,
+   "matched_functions": 26,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/State": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1407",
+   "matched_code": "1407",
+   "matched_code_percent": 100.0,
+   "total_data": "348",
+   "matched_data": "348",
+   "matched_data_percent": 100.0,
+   "total_functions": 51,
+   "matched_functions": 51,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/teamtracker": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "397",
+   "matched_code": "397",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ShipInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14448",
+   "matched_code": "14448",
+   "matched_code_percent": 100.0,
+   "total_data": "3948",
+   "matched_data": "1212",
+   "matched_data_percent": 30.69909,
+   "total_functions": 154,
+   "matched_functions": 154,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/TeamInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11720",
+   "matched_code": "11720",
+   "matched_code_percent": 100.0,
+   "total_data": "2468",
+   "matched_data": "1244",
+   "matched_data_percent": 50.405186,
+   "total_functions": 114,
+   "matched_functions": 114,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/DrawCanvas": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1629",
+   "matched_code": "1629",
+   "matched_code_percent": 100.0,
+   "total_data": "228",
+   "matched_data": "228",
+   "matched_data_percent": 100.0,
+   "total_functions": 27,
+   "matched_functions": 27,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/MissionInfo": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "11693",
+   "matched_code": "11693",
+   "matched_code_percent": 100.0,
+   "total_data": "1951",
+   "matched_data": "1951",
+   "matched_data_percent": 100.0,
+   "total_functions": 97,
+   "matched_functions": 97,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/Script": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "5481",
+   "matched_code": "5481",
+   "matched_code_percent": 100.0,
+   "total_data": "1328",
+   "matched_data": "792",
+   "matched_data_percent": 59.638554,
+   "total_functions": 58,
+   "matched_functions": 58,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "ScriptInterface/ScriptInterface": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "8939",
+   "matched_code": "8939",
+   "matched_code_percent": 100.0,
+   "total_data": "1272",
+   "matched_data": "856",
+   "matched_data_percent": 67.2956,
+   "total_functions": 83,
+   "matched_functions": 83,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MapObject": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1847",
+   "matched_code": "1847",
+   "matched_code_percent": 100.0,
+   "total_data": "285",
+   "matched_data": "285",
+   "matched_data_percent": 100.0,
+   "total_functions": 18,
+   "matched_functions": 18,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/MissionMatchLocation": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1985",
+   "matched_code": "1985",
+   "matched_code_percent": 100.0,
+   "total_data": "806",
+   "matched_data": "806",
+   "matched_data_percent": 100.0,
+   "total_functions": 28,
+   "matched_functions": 28,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/missionspec": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14275",
+   "matched_code": "14275",
+   "matched_code_percent": 100.0,
+   "total_data": "1486",
+   "matched_data": "486",
+   "matched_data_percent": 32.70525,
+   "total_functions": 90,
+   "matched_functions": 90,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/NetMsgClass": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "1035",
+   "matched_code": "1035",
+   "matched_code_percent": 100.0,
+   "total_data": "2232",
+   "matched_data": "2232",
+   "matched_data_percent": 100.0,
+   "total_functions": 8,
+   "matched_functions": 8,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptMapData": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "33114",
+   "matched_code": "33114",
+   "matched_code_percent": 100.0,
+   "total_data": "1076",
+   "matched_data": "1076",
+   "matched_data_percent": 100.0,
+   "total_functions": 84,
+   "matched_functions": 84,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/ScriptStructs": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "594",
+   "matched_code": "594",
+   "matched_code_percent": 100.0,
+   "total_data": "102",
+   "matched_data": "102",
+   "matched_data_percent": 100.0,
+   "total_functions": 21,
+   "matched_functions": 21,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/sfcstreams": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "14824",
+   "matched_code": "14824",
+   "matched_code_percent": 100.0,
+   "total_data": "864",
+   "matched_data": "864",
+   "matched_data_percent": 100.0,
+   "total_functions": 161,
+   "matched_functions": 161,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/SFCThreadState": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "410",
+   "matched_code": "410",
+   "matched_code_percent": 100.0,
+   "total_data": "249",
+   "matched_data": "249",
+   "matched_data_percent": 100.0,
+   "total_functions": 12,
+   "matched_functions": 12,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/Strength": {
+   "fuzzy_match_percent": 100.0,
+   "total_code": "6329",
+   "matched_code": "6329",
+   "matched_code_percent": 100.0,
+   "total_data": "1126",
+   "matched_data": "1126",
+   "matched_data_percent": 100.0,
+   "total_functions": 52,
+   "matched_functions": 52,
+   "matched_functions_percent": 100.0,
+   "total_units": 1
+  },
+  "shared/texttoken": {
+   "fuzzy_match_percent": 100.0,
+   "matched_code_percent": 100.0,
+   "total_data": "1544",
+   "matched_data": "1544",
+   "matched_data_percent": 100.0,
+   "matched_functions_percent": 100.0,
+   "complete_code_percent": 100.0,
+   "total_units": 1
+  }
+ }
+}

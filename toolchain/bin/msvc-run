@@ -1,0 +1,32 @@
+#!/bin/sh
+# Run a VC6 tool in the sfcop-msvc6 container: msvc-run <cl|link|lib|dumpbin|editbin> [args...]
+# The SFCOP root (parent of the repo, holding work/ and tools/) and the current directory are
+# mounted at their host paths, so absolute and relative paths in arguments work unchanged.
+# Env: MSVC_VERSION=6.4 (VC6 SP4, default) or 6.5 (SP5); MSVC_EXTRA_INCLUDE=dir;dir prepended to
+# the compiler's INCLUDE; SFCOP_MSVC_IMAGE overrides the image tag; SFCOP_MSVC_NAME names the
+# container (so a caller can docker kill it on timeout); SFCOP_MSVC_MOUNTS="host:ctr;host:ctr"
+# adds bind mounts (wibo maps C:\x and Z:\x to /x, so a mount at /Projects lets a source be
+# compiled as C:\Projects\..., reproducing the original __FILE__ and .file paths);
+# MSVC_LIB_SET=initial|sp6 picks the VC6 Lib/ set under $SFCOP_ROOT/tools/vc6-lib (default
+# initial = VC6 RTM CRT, see toolchain/vc6-lib/PROVENANCE.md), or MSVC_LIB=dir;dir overrides it.
+set -e
+here=$(cd "$(dirname "$0")" && pwd)
+root=${SFCOP_ROOT:-$(cd "$here/../../.." && pwd)}
+cwd=$(pwd -P)
+extra=${SFCOP_MSVC_NAME:+--name $SFCOP_MSVC_NAME}
+libdirs=${MSVC_LIB:-$root/tools/vc6-lib/${MSVC_LIB_SET:-initial}}
+winlib=
+oldifs=$IFS; IFS=';'
+for d in $libdirs; do winlib="${winlib:+$winlib;}Z:$d"; done
+IFS=$oldifs
+if [ -n "${SFCOP_MSVC_MOUNTS:-}" ]; then
+    oldifs=$IFS; IFS=';'
+    for m in $SFCOP_MSVC_MOUNTS; do extra="$extra -v $m"; done
+    IFS=$oldifs
+fi
+case "$cwd/" in "$root"/*) ;; *) extra="$extra -v $cwd:$cwd" ;; esac
+# shellcheck disable=SC2086
+exec docker run --rm --platform linux/386 --network none -v "$root:$root" $extra -w "$cwd" \
+    -e MSVC_VERSION="${MSVC_VERSION:-6.4}" -e MSVC_EXTRA_INCLUDE="${MSVC_EXTRA_INCLUDE:-}" \
+    -e MSVC_LIB="$winlib" \
+    "${SFCOP_MSVC_IMAGE:-sfcop-msvc6:latest}" "$@"

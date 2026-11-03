@@ -1,0 +1,1 @@
+SfcMapTU.java> TU: path strings=229 referenced=229 pairs=1284 functions_with_TU=639 (of which >1 TU: 7) operand_refs_added=0

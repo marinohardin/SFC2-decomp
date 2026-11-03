@@ -1,0 +1,23 @@
+SfcVc6Rtti.java> VC6 RTTI: COLs=2149 CHDs=2033 BCDs=2116 vftables=2149 slots=27479 functions_created=2916
+SfcFillGaps.java> gap pass 1: gaps=15789 undefined=1142300 created=5221 rejected=231 error_bookmarks=122
+SfcFillGaps.java> gap pass 2: gaps=11558 undefined=194902 created=625 rejected=333 error_bookmarks=128
+SfcFillGaps.java> gap pass 3: gaps=11017 undefined=99436 created=78 rejected=354 error_bookmarks=129
+SfcFillGaps.java> gap pass 4: gaps=11001 undefined=95012 created=59 rejected=355 error_bookmarks=129
+SfcFillGaps.java> gap pass 5: gaps=10998 undefined=93367 created=55 rejected=356 error_bookmarks=130
+SfcFillGaps.java> gap pass 6: gaps=10974 undefined=92353 created=31 rejected=356 error_bookmarks=130
+SfcFillGaps.java> gap pass 7: gaps=10975 undefined=91698 created=32 rejected=356 error_bookmarks=130
+SfcFillGaps.java> gap pass 8: gaps=10974 undefined=91073 created=31 rejected=356 error_bookmarks=130
+SfcFillGaps.java> gap fill: undefined .text bytes left 90409
+RecoverClassesFromRTTIScript.java> Identified 2033 classes to process and 4796 class member functions to assign.
+RecoverClassesFromRTTIScript.java> Total number of constructors: 1493
+RecoverClassesFromRTTIScript.java> Total number of inlined constructors: 1033
+RecoverClassesFromRTTIScript.java> Total number of destructors: 1845
+RecoverClassesFromRTTIScript.java> Total number of inlined destructors: 692
+RecoverClassesFromRTTIScript.java> Total number of virtual functions: 27478
+RecoverClassesFromRTTIScript.java> Total number of virtual functions that are deleting destructors: 1854
+RecoverClassesFromRTTIScript.java> Total number of virtual functions that are clone functions: 0
+RecoverClassesFromRTTIScript.java> Total number of virtual functions that are vbase_destructors: 0
+RecoverClassesFromRTTIScript.java> Total number of indetermined constructor/destructors: 643
+RecoverClassesFromRTTIScript.java> Total fixed incorrect FID functions: 247
+RecoverClassesFromRTTIScript.java> Total resolved functions that had multiple FID possiblities: 247
+RecoverClassesFromRTTIScript.java> Total fixed functions that had incorrect data types due to incorrect FID: 247

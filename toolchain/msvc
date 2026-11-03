@@ -1,0 +1,27 @@
+#!/bin/sh
+# In-container entry point: msvc <cl|link|lib|dumpbin|editbin> [args...]
+# MSVC_VERSION selects /opt/msvc$MSVC_VERSION (6.4 = VC6 SP4, 6.5 = SP5).
+# Unix paths in arguments work as-is; wibo maps Z:\x and /x to the same file.
+set -e
+tool=$1
+[ -n "$tool" ] || { echo "usage: msvc <cl|link|lib|dumpbin|editbin> [args...]" >&2; exit 2; }
+shift
+root=/opt/msvc${MSVC_VERSION:-6.4}
+[ -d "$root" ] || { echo "msvc: no compiler at $root" >&2; exit 2; }
+case "$tool" in
+    cl) exe=CL.EXE ;;
+    link) exe=LINK.EXE ;;
+    # LIB.EXE only re-spawns LINK.EXE /lib, and wibo's child-process clone() fails under QEMU, so
+    # run LINK.EXE /lib directly (the .dsp files use "link.exe -lib" too). Same for dumpbin/editbin.
+    lib) exe=LINK.EXE; set -- /lib "$@" ;;
+    dumpbin) exe=LINK.EXE; set -- /dump "$@" ;;
+    editbin) exe=LINK.EXE; set -- /edit "$@" ;;
+    *) echo "msvc: unknown tool $tool" >&2; exit 2 ;;
+esac
+# Compiler include/lib dirs come after anything the caller passes with /I, so headers such as
+# Taldren's patched STL given via /I take precedence over the compiler's own.
+export INCLUDE="${MSVC_EXTRA_INCLUDE:+$MSVC_EXTRA_INCLUDE;}Z:$root/Include"
+# The decomp.me tarballs have no Lib/; msvc-run mounts one from tools/vc6-lib and passes MSVC_LIB.
+export LIB="${MSVC_LIB:-Z:$root/Lib}"
+export TMP=Z:/tmp/msvc TEMP=Z:/tmp/msvc
+exec wibo "$root/Bin/$exe" "$@"
