@@ -1,0 +1,288 @@
+{
+ "schema": 2,
+ "generated_at": "2026-11-03T11:43:47Z",
+ "text_bytes": 3751936,
+ "inputs": {
+  "functions_csv": {
+   "path": "ghidra/exports/functions.csv",
+   "present": true,
+   "sha256": "a31c0932234a168c87b60da9f636194ac23e20a1bca2d879c051ce74457ce1a3"
+  },
+  "sdk_exact_tsv": {
+   "path": "analysis/results/StarFleetOP_2552_sdklib_matches.tsv",
+   "present": true,
+   "sha256": "a6d550ca9acfcb556d9490ec322fc8a1acd33b56353e41bac46f7a05f5d0e105"
+  },
+  "sdk_fuzzy_tsv": {
+   "path": "analysis/results/StarFleetOP_2552_sdklib_fuzzy.tsv",
+   "present": true,
+   "sha256": "c9cf1afab1cab290b7ecfe6962ad31bdcaaebf234c71fa93a96e2e5e4b598108"
+  },
+  "eh_funclet_parents": {
+   "path": "analysis/results/progress/eh_funclet_parents.tsv",
+   "present": true,
+   "sha256": "2e9c6d3ce8d72f9c90980e34452c2babeb286b9ee0becbf5c6268fa826bf144f"
+  },
+  "lift_catalog": {
+   "path": "$SFCOP_WORK/lifter/cat/functions.json",
+   "present": true,
+   "sha256": "0b9a1b829df9fb3c6dca6a008516f2297fbd5efc17aacac317944d9e8782608c"
+  },
+  "lift_stats": {
+   "path": "$SFCOP_WORK/lifter/out/lift_stats.json",
+   "present": true,
+   "sha256": "46e52447cf662830a4dccbd203c8cdbfecf63c250cd53f2fbd090a6537026daa"
+  },
+  "lift_errors": {
+   "path": "$SFCOP_WORK/lifter/out/lift_errors.txt",
+   "present": true,
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "matched_set": {
+   "path": "harness/matched_set.json",
+   "present": false,
+   "sha256": null
+  },
+  "functional_set": {
+   "path": "harness/functional_set.json",
+   "present": false,
+   "sha256": null
+  }
+ },
+ "function_kinds": {
+  "eh-funclet": {
+   "functions": 16544,
+   "bytes": 168096
+  },
+  "function": {
+   "functions": 27479,
+   "bytes": 3306300
+  },
+  "thunk": {
+   "functions": 209,
+   "bytes": 1076
+  }
+ },
+ "eh_funclets": {
+  "functions": 16544,
+  "bytes": 168096,
+  "with_parent": 16492,
+  "with_parent_bytes": 167541,
+  "without_parent": 52,
+  "without_parent_bytes": 555
+ },
+ "scopes": {
+  "total": {
+   "functions": 27479,
+   "function_bytes": 3306300,
+   "funclet_bytes": 167541,
+   "bytes": 3473841,
+   "status": {
+    "exact": {
+     "functions": 0,
+     "pct_functions": 0.0,
+     "function_bytes": 0,
+     "funclet_bytes": 0,
+     "bytes": 0,
+     "pct_bytes": 0.0,
+     "pct_text": 0.0
+    },
+    "functional": {
+     "functions": 0,
+     "pct_functions": 0.0,
+     "function_bytes": 0,
+     "funclet_bytes": 0,
+     "bytes": 0,
+     "pct_bytes": 0.0,
+     "pct_text": 0.0
+    },
+    "lifted": {
+     "functions": 27379,
+     "pct_functions": 99.6361,
+     "function_bytes": 3303565,
+     "funclet_bytes": 167541,
+     "bytes": 3471106,
+     "pct_bytes": 99.9213,
+     "pct_text": 92.5151
+    },
+    "original-x86": {
+     "functions": 100,
+     "pct_functions": 0.3639,
+     "function_bytes": 2735,
+     "funclet_bytes": 0,
+     "bytes": 2735,
+     "pct_bytes": 0.0787,
+     "pct_text": 0.0729
+    }
+   },
+   "named": {
+    "sdk-exact": {
+     "functions": 1859,
+     "function_bytes": 441315,
+     "pct_functions": 6.7652
+    },
+    "sdk-fid": {
+     "functions": 217,
+     "function_bytes": 27411,
+     "pct_functions": 0.7897
+    },
+    "vs-fid": {
+     "functions": 307,
+     "function_bytes": 8772,
+     "pct_functions": 1.1172
+    },
+    "manual": {
+     "functions": 0,
+     "function_bytes": 0,
+     "pct_functions": 0.0
+    },
+    "sdk-fuzzy": {
+     "functions": 314,
+     "function_bytes": 21260,
+     "pct_functions": 1.1427
+    },
+    "string": {
+     "functions": 0,
+     "function_bytes": 0,
+     "pct_functions": 0.0
+    },
+    "rtti-class": {
+     "functions": 8053,
+     "function_bytes": 883645,
+     "pct_functions": 29.306
+    },
+    "none": {
+     "functions": 16729,
+     "function_bytes": 1923897,
+     "pct_functions": 60.8792
+    }
+   },
+   "named_real_symbol": {
+    "functions": 2697,
+    "pct_functions": 9.8148
+   },
+   "named_with_class": {
+    "functions": 10750,
+    "pct_functions": 39.1208
+   }
+  },
+  "game": {
+   "functions": 26399,
+   "function_bytes": 3170054,
+   "funclet_bytes": 158138,
+   "bytes": 3328192,
+   "status": {
+    "exact": {
+     "functions": 0,
+     "pct_functions": 0.0,
+     "function_bytes": 0,
+     "funclet_bytes": 0,
+     "bytes": 0,
+     "pct_bytes": 0.0
+    },
+    "functional": {
+     "functions": 0,
+     "pct_functions": 0.0,
+     "function_bytes": 0,
+     "funclet_bytes": 0,
+     "bytes": 0,
+     "pct_bytes": 0.0
+    },
+    "lifted": {
+     "functions": 26299,
+     "pct_functions": 99.6212,
+     "function_bytes": 3167319,
+     "funclet_bytes": 158138,
+     "bytes": 3325457,
+     "pct_bytes": 99.9178
+    },
+    "original-x86": {
+     "functions": 100,
+     "pct_functions": 0.3788,
+     "function_bytes": 2735,
+     "funclet_bytes": 0,
+     "bytes": 2735,
+     "pct_bytes": 0.0822
+    }
+   },
+   "named": {
+    "sdk-exact": {
+     "functions": 1550,
+     "function_bytes": 371633,
+     "pct_functions": 5.8714
+    },
+    "sdk-fid": {
+     "functions": 148,
+     "function_bytes": 14078,
+     "pct_functions": 0.5606
+    },
+    "vs-fid": {
+     "functions": 0,
+     "function_bytes": 0,
+     "pct_functions": 0.0
+    },
+    "manual": {
+     "functions": 0,
+     "function_bytes": 0,
+     "pct_functions": 0.0
+    },
+    "sdk-fuzzy": {
+     "functions": 306,
+     "function_bytes": 21104,
+     "pct_functions": 1.1591
+    },
+    "string": {
+     "functions": 0,
+     "function_bytes": 0,
+     "pct_functions": 0.0
+    },
+    "rtti-class": {
+     "functions": 7666,
+     "function_bytes": 839342,
+     "pct_functions": 29.039
+    },
+    "none": {
+     "functions": 16729,
+     "function_bytes": 1923897,
+     "pct_functions": 63.3698
+    }
+   },
+   "named_real_symbol": {
+    "functions": 2004,
+    "pct_functions": 7.5912
+   },
+   "named_with_class": {
+    "functions": 9670,
+    "pct_functions": 36.6302
+   }
+  }
+ },
+ "excluded_libraries": {
+  "crt": {
+   "functions": 304,
+   "bytes": 9686
+  },
+  "cryptopp": {
+   "functions": 8,
+   "bytes": 213
+  },
+  "stl": {
+   "functions": 562,
+   "bytes": 98845
+  },
+  "wonapi": {
+   "functions": 206,
+   "bytes": 36905
+  }
+ },
+ "lift": {
+  "catalog_functions": 55622,
+  "excluded_errors": 0,
+  "excluded_stubs": 0,
+  "ranges": 9869
+ },
+ "objdiff_skipped_without_address": 0,
+ "unmapped_name_sources": {},
+ "exact": [],
+ "functional": []
+}
