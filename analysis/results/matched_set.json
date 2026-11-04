@@ -261,6 +261,33 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x006fc4d0": {
+   "name": "tAllocatedClass::operator==",
+   "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x006fc5a0": {
+   "name": "tDynamicAllocator::tAllocatorInfo::operator==",
+   "symbol": "??8tAllocatorInfo@tDynamicAllocator@@QBEJPBD@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x006fc750": {
+   "name": "tDynamicAllocator::LockDownAllocator",
+   "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
   }
  }
 }

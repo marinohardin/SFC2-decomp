@@ -9,7 +9,6 @@
 #if !defined( DynamicAllocator_h )
 #define DynamicAllocator_h
 
-// Host headers first: in guest mode port/types.h defines macros a host header must not see.
 #include <typeinfo>
 #include <vector>
 
@@ -21,7 +20,6 @@ const int8 kInvalidAllocatorID = -1;
 // VTABLE: STARFLEETOP 0x007bb2f8
 class tAllocatedClass
 {
-	SFCOP_VFPTR // PORT: pointer size: the guest object's vtable pointer is 32 bits
 public:
 	tAllocatedClass();
 	virtual ~tAllocatedClass();
@@ -38,15 +36,14 @@ protected:
 // VTABLE: STARFLEETOP 0x007bb2e8
 class tAllocator
 {
-	SFCOP_VFPTR // PORT: pointer size: the guest object's vtable pointer is 32 bits
 public:
-	virtual tAllocatedClass* mAllocate() SFCOP_PURE; // PORT: guest mode: the member is not virtual there, so it cannot be pure
+	virtual tAllocatedClass* mAllocate() = 0;
 
 protected:
 	virtual ~tAllocator();
 
 	friend class tDynamicAllocator;
-	virtual void mAssignAllocID( iAllocatorID allocID ) SFCOP_PURE; // PORT: guest mode: the member is not virtual there, so it cannot be pure
+	virtual void mAssignAllocID( iAllocatorID allocID ) = 0;
 };
 
 class tDynamicAllocator
@@ -66,8 +63,8 @@ private:
 		int32	operator==( const type_info& type ) const;
 		int32	operator==( const char* raw_name ) const;
 
-		ptr32( const type_info ) fTypeID;
-		ptr32( tAllocator ) fAllocator;
+		const type_info* fTypeID;
+		tAllocator* fAllocator;
 	};
 
 	typedef std::vector< tAllocatorInfo > tAllocatorList;
@@ -76,7 +73,7 @@ private:
 	~tDynamicAllocator();
 
 	bool fAllocatorListLocked;
-	ptr32( tAllocatorList ) fAllocatorList;
+	tAllocatorList* fAllocatorList;
 };
 
 #endif

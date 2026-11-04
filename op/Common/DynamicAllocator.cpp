@@ -1,7 +1,8 @@
 //	DynamicAllocator.cpp
 //
-//	Three of the unit's functions so far, claimed for the guest-mode spike (DESIGN §12.4). The rest
-//	of the unit (0x006fc490 to 0x006fcb40, game/UNITS.tsv) is still lifted.
+//	Three of the unit's functions so far. The native build lifts this unit's VC6 object (DESIGN
+//	§7.2, tools/objlift/); the rest of the unit (0x006fc490 to 0x006fcb40, game/UNITS.tsv) is
+//	still the exe's lifted code.
 //
 
 #include "Common/DynamicAllocator.h"

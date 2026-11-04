@@ -384,7 +384,7 @@ def override_text(functions, classes):
         '#define SFCOP_GUEST_OVERRIDE_IMPLEMENTATION',
         '#include "app/guest/override.h"',
         '',
-        '#if defined(SFCOP_GUEST_SOURCES)',
+        '#if defined(SFCOP_GUEST_MODE_SOURCES)',
         '',
     ]
     out += ['#include "%s"' % h for h in headers]
@@ -421,7 +421,7 @@ def override_text(functions, classes):
     else:
         out.append('const sfcop_guest_override sfcop_guest_overrides[] = {{0u, nullptr, nullptr, nullptr}};')
     out += ['const unsigned sfcop_guest_override_count = %du;' % len(guest), '', '}  // extern "C"', '',
-            '#else  // the native build without SFCOP_GUEST_SOURCES: everything stays lifted',
+            '#else  // the native build without SFCOP_GUEST_MODE_SOURCES: everything stays lifted',
             '',
             'extern "C" {',
             '',
