@@ -5,11 +5,27 @@ address	size	symbol	source	modes
 0x00628c20	374	tPart::mActivateParts()	Tiger/tpart.cpp	vc6 guest
 0x00628da0	163	tPart::mDeactivateParts()	Tiger/tpart.cpp	vc6 guest
 0x00628e50	53	tPart::mAddToPartCachePtrList(tPart **)	Tiger/tpart.cpp	vc6 guest
+0x00628e90	36	tAtomicLock::tAtomicLock()	Tiger/tatomic.cpp	vc6
+0x00628ee0	7	tAtomicLock::~tAtomicLock()	Tiger/tatomic.cpp	vc6
+0x00628ef0	42	tAtomicLock::mAcquire()	Tiger/tatomic.cpp	vc6 guest
+0x00628f20	8	tAtomicLock::mRelease()	Tiger/tatomic.cpp	vc6 guest
+0x0062ddb0	48	clib::memset(void *,int8u,iCount)	Tiger/tcglue.cpp	vc6 guest
+0x0062dde0	40	clib::strcpy(char *,const char *)	Tiger/tcglue.cpp	vc6 guest
+0x0062de10	35	clib::memcpy(void *,const void *,size_t)	Tiger/tcglue.cpp	vc6 guest
 0x0066c080	95	tCRandomSequence::tCRandomSequence(int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c100	152	tCRandomSequence::tCRandomSequence(int8u,int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c1a0	21	tCRandomSequence::~tCRandomSequence()	Tiger/tcrandsequence.cpp	vc6
 0x0066c1c0	28	tCRandomSequence::mSetSeed(int32u)	Tiger/tcrandsequence.cpp	vc6 guest
 0x0066c1e0	55	tCRandomSequence::mGenerateNumber()	Tiger/tcrandsequence.cpp	vc6 guest
+0x0066c5f0	96	tSay::tSay(const char *,const int32u)	Tiger/tsay.cpp	vc6
+0x0066c680	20	tSay::~tSay()	Tiger/tsay.cpp	vc6
+0x0066c6a0	494	tSay::mHandleOutput(const int,const char *)	Tiger/tsay.cpp	vc6 guest
+0x0066c890	40	tSay::mSay(const char *,...)	Tiger/tsay.cpp	vc6 guest
+0x0066c8c0	162	tSay::mJustSayIt(const char *,...)	Tiger/tsay.cpp	vc6 guest
+0x0066d680	97	tItemBag::tItemBag()	Tiger/tBag.cpp	vc6
+0x0066d710	194	tItemBag::~tItemBag()	Tiger/tBag.cpp	vc6
+0x0066d7e0	147	tItemBag::mAddToList(tBaseItemBag *,char *)	Tiger/tBag.cpp	vc6 guest
+0x0066d880	85	tItemBag::mFindItemWithLabel(char *)	Tiger/tBag.cpp	vc6 guest
 0x00670180	51	tSequencePart::mGetNumber()	Tiger/tsequence.cpp	vc6 guest
 0x006701c0	86	tSequencePart::mGetNumber(int32u)	Tiger/tsequence.cpp	vc6 guest
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest

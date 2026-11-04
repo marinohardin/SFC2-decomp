@@ -55,6 +55,69 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x00628e90": {
+   "name": "tAtomicLock::tAtomicLock",
+   "symbol": "??0tAtomicLock@@QAE@XZ",
+   "unit": "Tiger/tatomic.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x00628ee0": {
+   "name": "tAtomicLock::tAtomicLock",
+   "symbol": "??1tAtomicLock@@UAE@XZ",
+   "unit": "Tiger/tatomic.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x00628ef0": {
+   "name": "tAtomicLock::mAcquire",
+   "symbol": "?mAcquire@tAtomicLock@@QAEEXZ",
+   "unit": "Tiger/tatomic.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x00628f20": {
+   "name": "tAtomicLock::mRelease",
+   "symbol": "?mRelease@tAtomicLock@@QAEXXZ",
+   "unit": "Tiger/tatomic.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0062ddb0": {
+   "name": "clib::memset",
+   "symbol": "?memset@clib@@SAXPAXEJ@Z",
+   "unit": "Tiger/tcglue.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0062dde0": {
+   "name": "clib::strcpy",
+   "symbol": "?strcpy@clib@@SAXPADPBD@Z",
+   "unit": "Tiger/tcglue.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0062de10": {
+   "name": "clib::memcpy",
+   "symbol": "?memcpy@clib@@SAPAXPAXPBXI@Z",
+   "unit": "Tiger/tcglue.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
   "0x0066c080": {
    "name": "tCRandomSequence::tCRandomSequence",
    "symbol": "??0tCRandomSequence@@QAE@KK@Z",
@@ -96,6 +159,87 @@
    "symbol": "?mGenerateNumber@tCRandomSequence@@MAEKXZ",
    "unit": "Tiger/tcrandsequence.cpp",
    "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066c5f0": {
+   "name": "tSay::tSay",
+   "symbol": "??0tSay@@QAE@PBDK@Z",
+   "unit": "Tiger/tsay.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066c680": {
+   "name": "tSay::~tSay",
+   "symbol": "??1tSay@@UAE@XZ",
+   "unit": "Tiger/tsay.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066c6a0": {
+   "name": "tSay::mHandleOutput",
+   "symbol": "?mHandleOutput@tSay@@IAEXHPBD@Z",
+   "unit": "Tiger/tsay.cpp",
+   "size": 496,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066c890": {
+   "name": "tSay::mSay",
+   "symbol": "?mSay@tSay@@QAAXPBDZZ",
+   "unit": "Tiger/tsay.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066c8c0": {
+   "name": "tSay::mJustSayIt",
+   "symbol": "?mJustSayIt@tSay@@QAAXPBDZZ",
+   "unit": "Tiger/tsay.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066d680": {
+   "name": "tItemBag::tItemBag",
+   "symbol": "??0tItemBag@@QAE@XZ",
+   "unit": "Tiger/tBag.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066d710": {
+   "name": "tItemBag::~tItemBag",
+   "symbol": "??1tItemBag@@UAE@XZ",
+   "unit": "Tiger/tBag.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066d7e0": {
+   "name": "tItemBag::mAddToList",
+   "symbol": "?mAddToList@tItemBag@@IAEJPAVtBaseItemBag@@PAD@Z",
+   "unit": "Tiger/tBag.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-04"
+  },
+  "0x0066d880": {
+   "name": "tItemBag::mFindItemWithLabel",
+   "symbol": "?mFindItemWithLabel@tItemBag@@IAEPAVtBaseItemBag@@PAD@Z",
+   "unit": "Tiger/tBag.cpp",
+   "size": 96,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"

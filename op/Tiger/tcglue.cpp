@@ -1,6 +1,24 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Tiger/tcglue.cpp
-// Functions: 0x0062ddb0 to 0x0062de10, 3 in game/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+//	tcglue.cpp: clib, the C library routines behind the Tiger library's glue.
+
+#include "Tiger/tcglue.h"
+
+#include <string.h>
+
+
+// FUNCTION: STARFLEETOP 0x0062ddb0
+void	clib::memset( void *destPtr, int8u value, iCount count )
+{
+	::memset( destPtr, value, count );
+}
+
+// FUNCTION: STARFLEETOP 0x0062dde0
+void	clib::strcpy( char *dest, const char *source )
+{
+	::strcpy( dest, source );
+}
+
+// FUNCTION: STARFLEETOP 0x0062de10
+void	*clib::memcpy( void *dest, const void *src, size_t count )
+{
+	return ::memcpy( dest, src, count );
+}
