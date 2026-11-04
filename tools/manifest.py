@@ -256,6 +256,11 @@ def read_definition(lines, i, rel, kind, address):
             'types': types, 'names': names, 'const': is_const}
 
 
+def is_constructor_or_destructor(name):
+    qual, _, short = name.rpartition('::')
+    return short.startswith('~') or short == qual.rpartition('::')[2]
+
+
 def symbol_of(f):
     return '%s(%s)%s' % (f['name'], ','.join(f['types']), ' const' if f['const'] else '')
 
@@ -342,6 +347,11 @@ def build(game, functions_csv):
         record = owner_class(f['name'], classes)
         f['class'] = record
         f['static'] = bool(record) and find_member(record, f)['static']
+        if record is not None and is_constructor_or_destructor(f['name']):
+            # C++ has no pointer to a constructor or destructor, so the guest build cannot wrap one
+            # as an entry point; the lifted body stays until the object lifter (DESIGN §7.2) carries
+            # the VC6 object in.
+            f['modes'] = 'vc6'
     functions.sort(key=lambda f: f['address'])
     return functions, classes
 

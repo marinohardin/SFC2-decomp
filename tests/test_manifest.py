@@ -232,5 +232,24 @@ def test_a_constructor_initialiser_list_is_not_part_of_the_signature(tmp_path):
     assert [f['name'] for f in functions if f['address'] == 0x00401100] == ['tTestShip::Instance']
 
 
+def test_constructors_and_destructors_have_no_guest_entry_point(tmp_path):
+    # C++ has no pointer to a constructor or destructor: the manifest keeps the function (vc6 only)
+    # and the override table emits no entry for it.
+    header = HEADER.replace('\tstatic tTestShip* Instance();', '\ttTestShip();\n\tstatic tTestShip* Instance();')
+    source = SOURCE + ('\n// FUNCTION: STARFLEETOP 0x00401500\ntTestShip::tTestShip()\n{\n}\n'
+                       '\n// FUNCTION: STARFLEETOP 0x00401600\ntTestShip::~tTestShip()\n{\n}\n')
+    game, csv = make_tree(tmp_path, header=header, source=source)
+    csv.write_text(CSV + '00401500,20,tTestShip::tTestShip,,,default,,,,0,,function,\n'
+                         '00401600,12,tTestShip::~tTestShip,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'][2:] == ['tTestShip::tTestShip()', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401600'][2:] == ['tTestShip::~tTestShip()', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401000'][4] == 'vc6 guest'
+    text = (tmp_path / 'out' / 'override.cpp').read_text()
+    assert 'sub_00401500' not in text and 'sub_00401600' not in text
+    assert '&tTestShip::tTestShip' not in text and '&tTestShip::~tTestShip' not in text
+
+
 def test_committed_manifest_and_override_table_match_the_tree():
     assert manifest.main(['--check']) == 0
