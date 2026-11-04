@@ -26,8 +26,8 @@ setting (`HARNESS_SRC_ROOT`, default `game/`).
   assertion text (`translation_unit` in `ghidra/exports/functions.csv`, 1,658 functions today),
   the `.file` and member names in the SDK libraries, then the class. The prefix that was the
   original developers' drive and project root is dropped, so a unit compiled as
-  `C:\...\Source\Taldren\Common\DynamicAllocator.cpp` lives at
-  `game/Source/Taldren/Common/DynamicAllocator.cpp`.
+  `C:\...\Taldren\Common\DynamicAllocator.cpp` lives at `game/Common/DynamicAllocator.cpp`
+  (`docs/CONVENTIONS.md` §2 and §3 give the tree; `game/UNITS.tsv` the map).
 - **Unknown origin.** A function whose unit is not known goes into `game/unsorted/<Class>.cpp`
   with the rest of its class (or `game/unsorted/fn_<page>.cpp` for free functions, grouped by
   4 KB address page, since the linker kept units contiguous). When evidence for its unit turns up,
