@@ -1,0 +1,6 @@
+// Placeholder written by tools/units.py. Delete this block when the unit's first
+// function lands; the generator never touches a file with content.
+// Unit:      unsorted/tSchematicPanel.cpp
+// Functions: 0x004a5d4a to 0x004a6095, 10 in game/UNITS.tsv
+// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
+// Profile:   sdk-release (harness/units.json)

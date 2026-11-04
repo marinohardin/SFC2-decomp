@@ -1,0 +1,6 @@
+// Placeholder written by tools/units.py. Delete this block when the unit's first
+// function lands; the generator never touches a file with content.
+// Unit:      unsorted/nStoredProcedureArguments__tProcessBattleRequest__tProcessBattleRequestResponse.cpp
+// Functions: 0x005aeb82 to 0x005aeb82, 1 in game/UNITS.tsv
+// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
+// Profile:   sdk-release (harness/units.json)
