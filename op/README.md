@@ -18,6 +18,8 @@ block with the unit's address range and evidence, and no code.
 | `unsorted/` | units whose original file is not known yet | class names, address pages |
 | `port/` | not original: the headers the two compile modes need | |
 
+`Tiger/` and `dmp3d/` are mostly the same code in Empires at War, and the game proper is about half the same (`docs/DESIGN.md` §7.5). When that second module starts, the two libraries move to a tree both games share; until then everything here is Orion Pirates 2.5.5.2 only, annotated `STARFLEETOP`.
+
 ## UNITS.tsv
 
 One row per unit, in address order:
