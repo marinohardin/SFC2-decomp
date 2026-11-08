@@ -127,6 +127,28 @@ def row(entry, outcome, before, after, out, secs, now):
                 seconds=secs)
 
 
+def claim_lines(src_root, claimed):
+    """Every claim line in the tree except the claimed function's, sorted, one per line:
+    `path<TAB>kind module 0xaddress`. The loop compares it before and after a session."""
+    from . import guard
+    if not os.path.isdir(src_root):
+        raise SystemExit(f'claim snapshot: {src_root} is not a directory')
+    out = []
+    for d, dirs, files in os.walk(src_root):
+        dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
+        for name in sorted(files):
+            if not name.lower().endswith(guard.ANNOTATED_EXTS):
+                continue
+            p = os.path.join(d, name)
+            with open(p, encoding='latin1') as f:
+                for line in f:
+                    m = guard.CLAIM_LINE.match(line)
+                    if m and int(m.group(3), 16) != claimed:
+                        out.append(f'{os.path.relpath(p, src_root)}\t{m.group(1)} {m.group(2)} '
+                                   f'0x{int(m.group(3), 16):08x}')
+    return sorted(out)
+
+
 def main(argv):
     cmd = argv[0]
     if cmd == 'claim':
@@ -137,6 +159,8 @@ def main(argv):
     elif cmd == 'score':
         s, exact, code = score(load(argv[1]), argv[2])
         print(f'{s:.2f} {"exact" if exact else "partial"} {code}')
+    elif cmd == 'claims':
+        print('\n'.join(claim_lines(argv[1], int(argv[2], 16))))
     elif cmd == 'limited':
         return 0 if limited(load(argv[1])) else 1
     elif cmd == 'autherror':

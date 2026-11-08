@@ -106,6 +106,9 @@ sessions are unaffected.
   is limited to `harness/build-and-verify.sh` (without `--record`; a look-alike path elsewhere
   is refused), read-only tools and read-only git; no redirection to files, no command
   substitution, no environment overrides, no `sed -i`, no API key. A hook error denies.
+  An edit may not remove or change the claim line (`FUNCTION:`, `STUB:`, `VTABLE:`) of any
+  function but the session's own, in any file; the loop also compares every other claim line in
+  the tree before and after the session and records a change as `tampered`.
 - **Stop** (`hooks/stop_verify.py`, logic in `lib/stophook.py`): re-runs
   `build-and-verify.sh` for the function in `$HARNESS_STATE/claim.json` and blocks completion
   unless it improved on the score it had when the session started, with nothing regressed. After
@@ -218,15 +221,17 @@ the Stop hook then allows it.
   it and `loop.sh` commits `feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)`
   with the source line and the matched set.
 
-`harness/proof/loop_proof.sh` without `--standin` runs one round with real `claude -p` (Opus);
-it needs `claude auth login` on this machine first (see Limits).
+**One function through the loop with a real session** (`proof/loop_proof.sh`, about 1 minute,
+[`proof/results/loop_proof.txt`](proof/results/loop_proof.txt)). The same scratch setup, with one
+Opus `claude -p` session: it added the annotation, build-and-verify said 100% exact, the Stop hook
+let it finish, and the loop committed it (6 turns, 37 s). It needs `claude auth login` on this
+machine. The scratch `game/` is the SDK tree alone with an empty matched set: an earlier run
+copied the checkout's own units, where the function is already claimed, and its session deleted
+that other unit's annotation to get past the double claim, which led to the claim-line rule under
+Hooks.
 
 ## Limits and open points
 
-- **Real session not run yet.** The command-line `claude` on this machine reported an expired
-  login (`claude auth status`: not logged in), so the one real session failed to
-  authenticate. The loop now checks the login before starting. Rerun
-  `harness/proof/loop_proof.sh` after `claude auth login`.
 - **Fable tier.** Opus builds, Sonnet does fix rounds, Fable only after Opus fails and only when
   explicitly enabled (`--allow-fable`); it is off by default.
 - **Unverified relocations** are accepted when used consistently, because most data symbols have

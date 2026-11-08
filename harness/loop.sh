@@ -106,6 +106,7 @@ while :; do
     head0=$(git rev-parse HEAD)
     harness/build-and-verify.sh "$addr" --json > "$tag.before.json" 2>&1
     before=$(py claim "$entry" "$tag.before.json")
+    snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
     py prompt "$entry" > "$tag.prompt.md"
     echo "INFO  $addr $model (baseline $before%) -> $tag.*"
 
@@ -141,6 +142,12 @@ while :; do
         [ "$(git rev-parse HEAD)" = "$head0" ] || tampered="HEAD moved"
         changed=$(git status --porcelain --untracked-files=all -- . ":(exclude)$src")
         [ -z "$changed" ] || tampered="changes outside $src: $(echo "$changed" | head -5 | tr '\n' ' ')"
+        if [ -z "$tampered" ]; then
+            py claims "$src" "$addr" > "$tag.claims.after" || snap_ok=0
+            [ "$snap_ok" = 1 ] || tampered="the claim-line snapshot failed (see $tag.claims.*)"
+            [ -n "$tampered" ] || cmp -s "$tag.claims.before" "$tag.claims.after" \
+                || tampered="claim lines of other functions changed: $(diff "$tag.claims.before" "$tag.claims.after" | grep '^[<>]' | head -3 | tr '\n' ' ')"
+        fi
     fi
     if [ "$dry" = 1 ]; then
         outcome=dry-run after=$before

@@ -5,6 +5,7 @@ read-only commands. Everything that judges its work (the harness, the compiler a
 original exe and its hashes, the analysis exports, generated objects and listings, the queue and
 the matched set) is out of reach, as are the hook settings themselves.
 """
+import json
 import os
 import re
 import shlex
@@ -60,6 +61,80 @@ def check_edit(file_path, cwd=None):
     if not _inside(p, paths.SRC_ROOT):
         return (f'{file_path} is outside the rebuilt source tree '
                 f'({os.path.relpath(paths.SRC_ROOT, paths.REPO)}/); edit only source files there')
+    return None
+
+
+# Any claim line, in any module: a session may add or change only its own function's.
+CLAIM_LINE = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
+ANNOTATED_EXTS = ('.cpp', '.c', '.cxx', '.h', '.hpp', '.inl')
+
+
+def claimed_address():
+    """The function this session works on, from $HARNESS_STATE/claim.json, as an int or None."""
+    try:
+        with open(paths.CLAIM) as f:
+            return int(json.load(f)['address'], 16)
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def other_claims(text, claimed):
+    """Claim lines in text for any address but the claimed one: {(kind, module, address): count}."""
+    out = {}
+    for line in (text or '').splitlines():
+        m = CLAIM_LINE.match(line)
+        if m and int(m.group(3), 16) != claimed:
+            k = (m.group(1), m.group(2), int(m.group(3), 16))
+            out[k] = out.get(k, 0) + 1
+    return out
+
+
+def _apply(text, old, new, replace_all=False):
+    """The file text after one Edit, as the Edit tool applies it (None if old is not found)."""
+    if not old or old not in text:
+        return None
+    return text.replace(old, new) if replace_all else text.replace(old, new, 1)
+
+
+def check_claims(tool, file_path, ti, cwd=None):
+    """None, or the reason an Edit/Write/MultiEdit would remove or change the claim line of a
+    function other than the session's own. The edit is applied to the whole file and the file's
+    claim lines compared, so an edit of part of a line is seen too (the loop checks the whole
+    tree again after the session)."""
+    p = file_path if os.path.isabs(file_path) else os.path.join(cwd or paths.REPO, file_path)
+    if not os.path.realpath(p).lower().endswith(ANNOTATED_EXTS) and not p.lower().endswith(ANNOTATED_EXTS):
+        return None
+    claimed = claimed_address()
+    try:
+        with open(p, encoding='latin1', newline='') as f:
+            old = f.read()
+    except OSError:
+        old = None
+    if tool == 'Write':
+        if old is None:
+            return None
+        new = ti.get('content', '')
+    else:
+        edits = ti.get('edits') if tool == 'MultiEdit' else [ti]
+        if old is None:
+            # no file to apply to: compare each edit's own text
+            old = ''.join(e.get('old_string', '') for e in edits or [])
+            new = ''.join(e.get('new_string', '') for e in edits or [])
+        else:
+            new = old
+            for e in edits or []:
+                applied = _apply(new, e.get('old_string', ''), e.get('new_string', ''),
+                                 bool(e.get('replace_all')))
+                if applied is None:
+                    return None  # the Edit tool refuses it anyway
+                new = applied
+    before, after = other_claims(old, claimed), other_claims(new, claimed)
+    lost = sorted(k for k, n in before.items() if after.get(k, 0) < n)
+    if lost:
+        names = ', '.join(f'{k} {m} 0x{a:08x}' for k, m, a in lost)
+        return (f'{file_path}: this edit removes or changes the claim line of another '
+                f'function ({names}). Only your own function\'s line may change; if another '
+                f'claim is in the way, leave it and say so in your final message')
     return None
 
 
@@ -168,7 +243,8 @@ def decide(event):
     tool = event.get('tool_name', '')
     ti = event.get('tool_input') or {}
     if tool in ('Edit', 'Write', 'MultiEdit'):
-        return check_edit(ti.get('file_path'), event.get('cwd'))
+        return (check_edit(ti.get('file_path'), event.get('cwd'))
+                or check_claims(tool, ti.get('file_path'), ti, event.get('cwd')))
     if tool == 'NotebookEdit':
         return 'notebooks are not part of the rebuilt source'
     if tool == 'Bash':

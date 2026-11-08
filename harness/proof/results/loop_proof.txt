@@ -1,0 +1,49 @@
+# loop proof, 2026-11-08T21:49Z; scratch repository $SFCOP_WORK/harness/loopproof/repo
+# agent: claude -p (Opus)
+
+$ harness/loop.sh --once
+claude logged in (claude.ai)
+INFO  0x006fc750 opus (baseline 0.00%) -> $SFCOP_WORK/harness/loopproof/state/attempts/0x006fc750-20261108T134925.*
+OK    0x006fc750 exact 0.00% -> 100.00%, committed
+[exit 0]
+
+$ git status --porcelain; ls harness/lib/planted.py   (the planted file must be gone)
+No such file or directory
+$ git log --format=%s
+feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)
+loop proof: base tree with the SDK as game/
+$ git log -1 --stat
+feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)
+
+build-and-verify: 0.00% -> 100.00% (exact) with opus.
+
+
+ analysis/results/matched_set.json                 | 15 ++++++++++++++-
+ game/Scripts/ScriptInterface/DynamicAllocator.cpp |  1 +
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+$ git diff -U0 HEAD~1 -- game   (changed lines only; the SDK source itself is not shown)
++++ b/game/Scripts/ScriptInterface/DynamicAllocator.cpp
++// FUNCTION: STARFLEETOP 0x006fc750
+$ cat analysis/results/matched_set.json
+{
+ "version": 1,
+ "functions": {
+  "0x006fc750": {
+   "name": "tDynamicAllocator::LockDownAllocator",
+   "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
+   "unit": "Scripts/ScriptInterface/DynamicAllocator.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  }
+ }
+}
+$ cat $HARNESS_STATE/attempts.tsv
+time	address	name	model	outcome	score_before	score_after	input_tokens	output_tokens	cache_read_tokens	cache_write_tokens	cost_usd	turns	seconds
+2026-11-08T21:50:03Z	0x006fc750	tDynamicAllocator::LockDownAllocator	opus	exact	0.00	100.00	10	1208	238216	29378	0.3068672	6	37
+
+## Session 0x006fc750-20261108T134925: final message
+`tDynamicAllocator::LockDownAllocator` (0x006fc750) now scores **100.00% exact**. The harness reports 64 bytes in the original and 64 in my build, with 0 relocation errors.
+
+The function was already in the SDK source at `game/Scripts/ScriptInterface/DynamicAllocator.cpp`, beside the other `tDynamicAllocator` methods. I didn't change its code. The only edit was adding `// FUNCTION: STARFLEETOP 0x006fc750` on the line before its definition. The harness counts 64 bytes where the brief said 59, probably because it includes padding after the function. It also notes the function isn't in `matched_set.json` yet, which the loop handles when it commits a success.

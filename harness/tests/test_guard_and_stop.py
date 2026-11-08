@@ -130,3 +130,97 @@ def test_stop_is_blocked_without_improvement_or_after_a_regression_or_failed_bui
 
 def test_stop_is_let_through_after_the_maximum_number_of_refusals():
     assert stophook.decide(CLAIM, verify(80.0), 3)[0] is True
+
+
+
+# Claim lines of other functions (the real loop proof's session deleted one in another unit).
+
+OWN = '0x006fc750'
+UNIT = ('// FUNCTION: STARFLEETOP 0x006fc5a0\nint f() { return 1; }\n\n'
+        '// FUNCTION: STARFLEETOP 0x006fc750\nint g() { return 2; }\n')
+
+
+@pytest.fixture
+def unit(tmp_path, monkeypatch):
+    """A unit under a temporary source root, with this session claiming 0x006fc750."""
+    claim = tmp_path / 'state' / 'claim.json'
+    claim.parent.mkdir(parents=True, exist_ok=True)
+    claim.write_text('{"address": "%s"}' % OWN)
+    monkeypatch.setattr(paths, 'CLAIM', str(claim))
+    src = tmp_path / 'game'
+    (src / 'Common').mkdir(parents=True)
+    monkeypatch.setattr(paths, 'SRC_ROOT', str(src))
+    f = src / 'Common' / 'DynamicAllocator.cpp'
+    f.write_text(UNIT)
+    return f
+
+
+def edit_text(f, old, new, **kw):
+    return guard.decide({'tool_name': 'Edit', 'tool_input': dict(
+        file_path=str(f), old_string=old, new_string=new, **kw)})
+
+
+def test_deleting_another_functions_claim_line_is_denied(unit):
+    reason = edit_text(unit, '// FUNCTION: STARFLEETOP 0x006fc5a0\n', '')
+    assert reason is not None and '0x006fc5a0' in reason
+
+
+def test_editing_part_of_another_claim_line_is_denied(unit):
+    assert edit_text(unit, '0x006fc5a0', '0x006fc5a4') is not None
+    assert edit_text(unit, 'FUNCTION: STARFLEETOP 0x006fc5a0', 'STUB: STARFLEETOP 0x006fc5a0') is not None
+    assert edit_text(unit, '// FUNCTION: STARFLEETOP 0x006fc5a0', 'FUNCTION: STARFLEETOP 0x006fc5a0') is not None
+
+
+def test_replace_all_that_reaches_another_claim_is_denied(unit):
+    assert edit_text(unit, 'STARFLEETOP', 'OTHER', replace_all=True) is not None
+
+
+def test_own_claim_line_may_be_changed_or_removed(unit):
+    assert edit_text(unit, '// FUNCTION: STARFLEETOP 0x006fc750\n', '// STUB: STARFLEETOP 0x006fc750\n') is None
+    assert edit_text(unit, '// FUNCTION: STARFLEETOP 0x006fc750\n', '') is None
+
+
+def test_edit_keeping_another_claim_line_is_allowed(unit):
+    assert edit_text(unit, 'return 1;', 'return 3;') is None
+
+
+def test_without_a_claim_every_claim_line_is_protected(unit, monkeypatch, tmp_path):
+    monkeypatch.setattr(paths, 'CLAIM', str(tmp_path / 'missing.json'))
+    assert edit_text(unit, '// FUNCTION: STARFLEETOP 0x006fc750\n', '') is not None
+
+
+def test_write_that_drops_another_claim_is_denied(unit):
+    deny = guard.decide({'tool_name': 'Write', 'tool_input': {'file_path': str(unit), 'content': 'int f();\n'}})
+    keep = guard.decide({'tool_name': 'Write', 'tool_input': {
+        'file_path': str(unit), 'content': '// FUNCTION: STARFLEETOP 0x006fc5a0\nint f();\n'}})
+    assert deny is not None and keep is None
+
+
+def test_write_of_a_new_file_is_allowed(unit):
+    new = unit.parent / 'New.cpp'
+    assert guard.decide({'tool_name': 'Write', 'tool_input': {'file_path': str(new), 'content': 'int h();\n'}}) is None
+
+
+def test_multiedit_is_applied_in_order(unit):
+    reason = guard.decide({'tool_name': 'MultiEdit', 'tool_input': {'file_path': str(unit), 'edits': [
+        {'old_string': 'return 1;', 'new_string': 'return 4;'},
+        {'old_string': '// FUNCTION: STARFLEETOP 0x006fc5a0\n', 'new_string': ''}]}})
+    assert reason is not None and '0x006fc5a0' in reason
+
+
+def test_claim_lines_snapshot_leaves_out_the_claimed_function(tmp_path):
+    from harness.lib import loopio
+    (tmp_path / 'Tiger').mkdir()
+    (tmp_path / 'Tiger' / 'tsay.cpp').write_text(
+        '// FUNCTION: STARFLEETOP 0x0066c5f0\nx\n  // STUB: STARFLEETOP 0x6fc750\n')
+    (tmp_path / 'Tiger' / 'tsay.h').write_text('// FUNCTION: STARFLEETOP 0x66C680\n')
+    (tmp_path / 'notes.txt').write_text('// FUNCTION: STARFLEETOP 0x00401000\n')
+    assert loopio.claim_lines(str(tmp_path), 0x006fc750) == [
+        'Tiger/tsay.cpp\tFUNCTION STARFLEETOP 0x0066c5f0',
+        'Tiger/tsay.h\tFUNCTION STARFLEETOP 0x0066c680']
+
+
+def test_claim_lines_snapshot_of_a_missing_tree_fails(tmp_path):
+    from harness.lib import loopio
+    with pytest.raises(SystemExit):
+        loopio.claim_lines(str(tmp_path / 'nowhere'), 0x006fc750)

@@ -38,6 +38,11 @@ fn=0x006fc750
 rm -rf "$proof"
 mkdir -p "$proof/repo/game" "$proof/state" "$here/results"
 (cd "$repo" && git ls-files -co --exclude-standard -z | xargs -0 tar cf - | tar xf - -C "$proof/repo")
+# game/ is the SDK tree alone, and nothing is recorded yet: the checkout's own units claim
+# functions (0x006fc750 among them) that the proof needs unclaimed.
+rm -rf "$proof/repo/game"; mkdir -p "$proof/repo/game"
+printf '{"version": 1, "functions": {}}\n' > "$proof/repo/analysis/results/matched_set.json"
+head -1 "$repo/analysis/results/difficult_functions.tsv" > "$proof/repo/analysis/results/difficult_functions.tsv"
 cp -R "$sdk/Scripts" "$sdk/STL" "$proof/repo/game/"
 chmod -R u+w "$proof/repo/game"
 flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/repo/game/Scripts/ScriptInterface/_ScriptInterface.dsp" \
