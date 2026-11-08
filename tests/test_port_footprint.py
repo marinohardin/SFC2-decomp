@@ -13,8 +13,9 @@ def write(path, text):
         f.write(text)
 
 
-def run(root, cwd):
-    return subprocess.run([sys.executable, SCRIPT, root], cwd=cwd, capture_output=True, text=True)
+def run(root, cwd, *flags):
+    return subprocess.run([sys.executable, SCRIPT, *flags, root], cwd=cwd, capture_output=True,
+                          text=True)
 
 
 def make_tree(base):

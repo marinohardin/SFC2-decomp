@@ -74,3 +74,32 @@ def test_switch_declarations_alone_are_not_fix_sites(tmp_path):
     p = run('game', str(tmp_path))
     assert p.returncode == 0, p.stderr
     assert p.stdout.splitlines() == ['PORT lines: 0', 'SFCOP_FIX sites: 0']
+
+
+def test_no_fix_sites_flag_fails_a_tree_with_a_fix_site_after_listing_it(tmp_path):
+    make_tree(str(tmp_path))
+    add_fix_sites(str(tmp_path))
+    p = run('game', str(tmp_path), '--no-fix-sites')
+    assert p.returncode == 1
+    assert p.stdout.splitlines()[-2:] == ['PORT lines: 3', 'SFCOP_FIX sites: 7']
+    assert p.stderr.splitlines() == [
+        'port_footprint: 7 SFCOP_FIX site(s) under game; a fix to game code is an override unit '
+        'under src/fixes/overrides/ (DESIGN §6.9)',
+    ]
+
+
+def test_no_fix_sites_flag_passes_a_tree_with_port_lines_only(tmp_path):
+    write(os.path.join(str(tmp_path), 'game', 'Tiger', 'tpart.cpp'),
+          '// FUNCTION: STARFLEETOP 0x00628a60\n'
+          'void tPart::mValidateParts() {\n'
+          '    long p = (long)mNext; // PORT: 64-bit, the original stores a pointer in a long\n'
+          '}\n')
+    p = run('game', str(tmp_path), '--no-fix-sites')
+    assert p.returncode == 0, p.stderr
+    assert p.stdout.splitlines() == [
+        'PORT game/Tiger/tpart.cpp:3: long p = (long)mNext; '
+        '// PORT: 64-bit, the original stores a pointer in a long',
+        'PORT lines: 1',
+        'SFCOP_FIX sites: 0',
+    ]
+    assert p.stderr == ''
