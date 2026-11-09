@@ -370,9 +370,12 @@ def test_placeholders_match_the_tsv():
             continue
         body = (game / rel).read_text(encoding='latin1')
         assert body == text or not units.is_placeholder(body), rel
+    # A header the map does not name may hold shared declarations (its unit's header, or one two
+    # units include); only a placeholder header, or any unit file, outside the map is stray.
     stray = [p.relative_to(game).as_posix() for p in game.rglob('*')
              if p.suffix in ('.cpp', '.h') and units._ours(p.relative_to(game).as_posix())
-             and p.relative_to(game).as_posix() not in expected]
+             and p.relative_to(game).as_posix() not in expected
+             and (p.suffix == '.cpp' or units.is_placeholder(p.read_text(encoding='latin1')))]
     assert stray == []
 
 

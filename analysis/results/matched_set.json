@@ -1,6 +1,510 @@
 {
  "version": 1,
  "functions": {
+  "0x0040fefb": {
+   "name": "tEntity::tEntity",
+   "symbol": "??0tEntity@@QAE@XZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 145,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ff8c": {
+   "name": "tEntity::vfunction5",
+   "symbol": "?vfunction5@tEntity@@UAEXXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ff91": {
+   "name": "tEntity::vfunction9",
+   "symbol": "?vfunction9@tEntity@@UAEEXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ff95": {
+   "name": "tEntity::vfunction10",
+   "symbol": "?vfunction10@tEntity@@UAEXE@Z",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ff9f": {
+   "name": "tEntity::vfunction13",
+   "symbol": "?vfunction13@tEntity@@UAEXH@Z",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ffa9": {
+   "name": "tEntity::vfunction14",
+   "symbol": "?vfunction14@tEntity@@UAEMXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0040ffad": {
+   "name": "tEntity::scalar_deleting_destructor",
+   "symbol": "??1tEntity@@UAE@XZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 28,
+   "score": 6.154,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x0041004d": {
+   "name": "tEntity::vfunction11",
+   "symbol": "?vfunction11@tEntity@@UAEXAAVtSFCStream@@I@Z",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 270,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041015b": {
+   "name": "tEntity::vfunction2",
+   "symbol": "?vfunction2@tEntity@@UAEHXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00410168": {
+   "name": "FUN_00410168",
+   "symbol": "?fn_00410168@tEntity@@QAEMXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041018e": {
+   "name": "tEntity::vfunction7",
+   "symbol": "?vfunction7@tEntity@@UAEXPAVtObject_0041018e_arg@@H@Z",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 58,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004105dd": {
+   "name": "tPhysicalEntity::vfunction28",
+   "symbol": "?vfunction28@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004105e9": {
+   "name": "tPhysicalEntity::vfunction40",
+   "symbol": "?vfunction40@tPhysicalEntity@@UAEPAHXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004105f0": {
+   "name": "tPhysicalEntity::vfunction42",
+   "symbol": "?vfunction42@tPhysicalEntity@@UAEPAHXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004105f7": {
+   "name": "tPhysicalEntity::vfunction44",
+   "symbol": "?vfunction44@tPhysicalEntity@@UAEPAHXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004105fe": {
+   "name": "tPhysicalEntity::vfunction54",
+   "symbol": "?vfunction54@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041060b": {
+   "name": "tPhysicalEntity::vfunction55",
+   "symbol": "?vfunction55@tPhysicalEntity@@UAEMXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00410612": {
+   "name": "tPhysicalEntity::vfunction56",
+   "symbol": "?vfunction56@tPhysicalEntity@@UAEXMMM@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041062f": {
+   "name": "tPhysicalEntity::vfunction57",
+   "symbol": "?vfunction57@tPhysicalEntity@@UAE?AUtPoint3@@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00410650": {
+   "name": "tPhysicalEntity::vfunction59",
+   "symbol": "?vfunction59@tPhysicalEntity@@UAEHXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00410657": {
+   "name": "tPhysicalEntity::vfunction61",
+   "symbol": "?vfunction61@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041065f": {
+   "name": "tPhysicalEntity::vfunction62",
+   "symbol": "?vfunction62@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00410667": {
+   "name": "tPhysicalEntity::vfunction64",
+   "symbol": "?vfunction64@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413153": {
+   "name": "tPhysicalEntity::vfunction11",
+   "symbol": "?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@I@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004133d3": {
+   "name": "FUN_004133d3",
+   "symbol": "?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 117,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413448": {
+   "name": "tPhysicalEntity::vfunction3",
+   "symbol": "?vfunction3@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 134,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004134ce": {
+   "name": "tPhysicalEntity::vfunction43",
+   "symbol": "?vfunction43@tPhysicalEntity@@UAEXPAD@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004134f1": {
+   "name": "tPhysicalEntity::vfunction45",
+   "symbol": "?vfunction45@tPhysicalEntity@@UAEXPAD@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 42,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041351b": {
+   "name": "tPhysicalEntity::vfunction26",
+   "symbol": "?vfunction26@tPhysicalEntity@@UAEXHHHHH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413541": {
+   "name": "tPhysicalEntity::vfunction27",
+   "symbol": "?vfunction27@tPhysicalEntity@@UAEXHFIHD@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 205,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0041360e": {
+   "name": "tNetMsg_kAIChangeTeamRelationshipToWar::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kAIChangeTeamRelationshipToWar@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413614": {
+   "name": "tPhysicalEntity::vfunction7",
+   "symbol": "?vfunction7@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x004139c4": {
+   "name": "tNetMsg_kTractorChangeMessage::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kTractorChangeMessage@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004139ca": {
+   "name": "tNetMsg_kDeepScan::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kDeepScan@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x004139d0": {
+   "name": "tPhysicalEntity::tTractorItem::scalar_deleting_destructor",
+   "symbol": "??1tTractorItem@tPhysicalEntity@@UAE@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 28,
+   "score": 6.154,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x004139ec": {
+   "name": "tPhysicalEntity::vfunction5",
+   "symbol": "?vfunction5@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 75,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413a37": {
+   "name": "tPhysicalEntity::vfunction60",
+   "symbol": "?vfunction60@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 86,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413a8d": {
+   "name": "FUN_00413a8d",
+   "symbol": "?fn_00413a8d@tPhysicalEntity@@QAEXPAVtObject_00413a8d_arg@@@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413ac3": {
+   "name": "tPhysicalEntity::vfunction4",
+   "symbol": "?vfunction4@tPhysicalEntity@@UAEXPAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413b34": {
+   "name": "FUN_00413b34",
+   "symbol": "?fn_00413b34@tPhysicalEntity@@QAEPAVtMatrix@@_N@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 141,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413bc1": {
+   "name": "FUN_00413bc1",
+   "symbol": "?fn_00413bc1@tPhysicalEntity@@QAE?AUtPoint3@@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413bdf": {
+   "name": "tPhysicalEntity::vfunction29",
+   "symbol": "?vfunction29@tPhysicalEntity@@UAE?AUtPoint3@@ABU2@_N@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413c24": {
+   "name": "tPhysicalEntity::vfunction30",
+   "symbol": "?vfunction30@tPhysicalEntity@@UAE?AUtPoint3@@ABU2@@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 68,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413c68": {
+   "name": "tPhysicalEntity::vfunction34",
+   "symbol": "?vfunction34@tPhysicalEntity@@UAEHXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413c6f": {
+   "name": "tPhysicalEntity::vfunction35",
+   "symbol": "?vfunction35@tPhysicalEntity@@UAE_NH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413c9a": {
+   "name": "tPhysicalEntity::vfunction36",
+   "symbol": "?vfunction36@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 171,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413d45": {
+   "name": "tPhysicalEntity::vfunction37",
+   "symbol": "?vfunction37@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 83,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413d98": {
+   "name": "tPhysicalEntity::vfunction38",
+   "symbol": "?vfunction38@tPhysicalEntity@@UAEXH_N@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 31,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413db7": {
+   "name": "tPhysicalEntity::vfunction39",
+   "symbol": "?vfunction39@tPhysicalEntity@@UAEXH@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 31,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00413dd6": {
+   "name": "tEntity_Weapon::~tEntity_Weapon",
+   "symbol": "??1tEntity_Weapon@@QAE@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x00413de0": {
+   "name": "tPhysicalEntity::~tPhysicalEntity",
+   "symbol": "??1tPhysicalEntity@@UAE@XZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 200,
+   "score": 12.614,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x00413ea8": {
+   "name": "tPhysicalEntity::vfunction49",
+   "symbol": "?vfunction49@tPhysicalEntity@@UAE_NPAV1@@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 177,
+   "score": 99.769,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x00413f59": {
+   "name": "tPhysicalEntity::vfunction50",
+   "symbol": "?vfunction50@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 49,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00413f8a": {
+   "name": "tPhysicalEntity::vfunction51",
+   "symbol": "?vfunction51@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00413fba": {
+   "name": "tPhysicalEntity::vfunction52",
+   "symbol": "?vfunction52@tPhysicalEntity@@UAEXXZ",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 47,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00413fe9": {
+   "name": "tPhysicalEntity::vfunction46",
+   "symbol": "?vfunction46@tPhysicalEntity@@UAEXPAV1@H@Z",
+   "unit": "unsorted/tPhysicalEntity.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

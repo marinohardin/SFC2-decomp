@@ -1,4 +1,60 @@
 address	size	symbol	source	modes
+0x0040fefb	145	tEntity::tEntity()	unsorted/tEntity.cpp	vc6
+0x0040ff8c	5	tEntity::vfunction5()	unsorted/tEntity.cpp	vc6 guest
+0x0040ff91	4	tEntity::vfunction9()	unsorted/tEntity.cpp	vc6 guest
+0x0040ff95	10	tEntity::vfunction10(iTruth)	unsorted/tEntity.cpp	vc6 guest
+0x0040ff9f	10	tEntity::vfunction13(tID)	unsorted/tEntity.cpp	vc6 guest
+0x0040ffa9	4	tEntity::vfunction14()	unsorted/tEntity.cpp	vc6 guest
+0x0040ffad	28	tEntity::~tEntity()	unsorted/tEntity.cpp	partial
+0x0041004d	270	tEntity::vfunction11(tSFCStream &,int32u)	unsorted/tEntity.cpp	vc6 guest
+0x0041015b	13	tEntity::vfunction2()	unsorted/tEntity.cpp	vc6 guest
+0x00410168	38	tEntity::fn_00410168()	unsorted/tEntity.cpp	vc6 guest
+0x0041018e	58	tEntity::vfunction7(tObject_0041018e_arg *,int)	unsorted/tEntity.cpp	vc6 guest
+0x004105dd	12	tPhysicalEntity::vfunction28(bool)	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x004105e9	7	tPhysicalEntity::vfunction40()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x004105f0	7	tPhysicalEntity::vfunction42()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x004105f7	7	tPhysicalEntity::vfunction44()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x004105fe	13	tPhysicalEntity::vfunction54(float)	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x0041060b	7	tPhysicalEntity::vfunction55()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x00410612	29	tPhysicalEntity::vfunction56(float,float,float)	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x0041062f	33	tPhysicalEntity::vfunction57()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x00410650	7	tPhysicalEntity::vfunction59()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x00410657	8	tPhysicalEntity::vfunction61()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x0041065f	8	tPhysicalEntity::vfunction62()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest
+0x00413153	640	tPhysicalEntity::vfunction11(tSFCStream &,int32u)	Source/entity/entity_physical.cpp	vc6 guest
+0x004133d3	117	tMemoryPart::Search_tMemoryPart()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413448	134	tPhysicalEntity::vfunction3()	Source/entity/entity_physical.cpp	vc6 guest
+0x004134ce	35	tPhysicalEntity::vfunction43(char *)	Source/entity/entity_physical.cpp	vc6 guest
+0x004134f1	42	tPhysicalEntity::vfunction45(char *)	Source/entity/entity_physical.cpp	vc6 guest
+0x0041351b	38	tPhysicalEntity::vfunction26(int,int,int,int,int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413541	205	tPhysicalEntity::vfunction27(int,short,unsigned aAmount,int,char)	Source/entity/entity_physical.cpp	vc6 guest
+0x0041360e	6	tNetMsg_kAIChangeTeamRelationshipToWar::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
+0x00413614	10	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	partial
+0x004139c4	6	tNetMsg_kTractorChangeMessage::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
+0x004139ca	6	tNetMsg_kDeepScan::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
+0x004139d0	28	tPhysicalEntity::tTractorItem::~tTractorItem()	Source/entity/entity_physical.cpp	partial
+0x004139ec	75	tPhysicalEntity::vfunction5()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413a37	86	tPhysicalEntity::vfunction60(int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413a8d	54	tPhysicalEntity::fn_00413a8d(tObject_00413a8d_arg *)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413ac3	112	tPhysicalEntity::vfunction4(tObject_00413ac3_arg *)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413b34	141	tPhysicalEntity::fn_00413b34(bool)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413bc1	30	tPhysicalEntity::fn_00413bc1()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413bdf	69	tPhysicalEntity::vfunction29(const tPoint3 &,bool)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413c24	68	tPhysicalEntity::vfunction30(const tPoint3 &)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413c68	7	tPhysicalEntity::vfunction34()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413c6f	43	tPhysicalEntity::vfunction35(int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413c9a	171	tPhysicalEntity::vfunction36(int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413d45	83	tPhysicalEntity::vfunction37(int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413d98	31	tPhysicalEntity::vfunction38(int,bool)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413db7	31	tPhysicalEntity::vfunction39(int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00413dd6	10	tEntity_Weapon::~tEntity_Weapon()	Source/entity/entity_physical.cpp	partial
+0x00413de0	200	tPhysicalEntity::~tPhysicalEntity()	Source/entity/entity_physical.cpp	partial
+0x00413ea8	177	tPhysicalEntity::vfunction49(tPhysicalEntity *)	Source/entity/entity_physical.cpp	partial
+0x00413f59	49	tPhysicalEntity::vfunction50()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
+0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

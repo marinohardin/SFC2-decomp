@@ -1,1 +1,9 @@
 address	name	attempts	last_model	best_score	last_attempt	reason
+0x0040ffad	tEntity::scalar_deleting_destructor	4	opus	6.15	2026-11-09T05:06:26Z	not exact after 4 attempts
+0x0040ffc9	tEntity::~tEntity	4	opus	0.00	2026-11-09T05:23:22Z	not exact after 4 attempts
+0x00413614	tPhysicalEntity::vfunction7	4	opus	20.00	2026-11-09T06:22:16Z	not exact after 4 attempts
+0x0041361e	FUN_0041361e	4	opus	0.00	2026-11-09T06:49:55Z	not exact after 4 attempts
+0x004139d0	tPhysicalEntity::tTractorItem::scalar_deleting_destructor	4	opus	6.15	2026-11-09T07:05:38Z	not exact after 4 attempts
+0x00413dd6	tEntity_Weapon::~tEntity_Weapon	4	opus	20.00	2026-11-09T07:39:24Z	not exact after 4 attempts
+0x00413de0	tPhysicalEntity::~tPhysicalEntity	4	opus	12.61	2026-11-09T07:49:18Z	not exact after 4 attempts
+0x00413ea8	tPhysicalEntity::vfunction49	4	opus	99.77	2026-11-09T07:59:26Z	not exact after 4 attempts

@@ -7,41 +7,6 @@
 // tbasic.h declarations this unit needs.
 #include "Tiger/tpart.h"
 
-// tpart.h in the original also defines the part binding macros; tpart.h here does not have them
-// yet, so they are kept here under a guard of their own.
-#ifndef	GenAbstractBinding
-#define	GenAbstractBinding(classx)								\
-		static classx *Search_##classx ( void )					\
-		{														\
-			static	classx	*partCachePtr = (classx*) NULL;		\
-			if (partCachePtr)	return	partCachePtr;			\
-			else												\
-			{													\
-				for( int idx = 0; idx<tPart::fStaticPartActivateCount; idx++)			\
-				{																		\
-					classx	*bindResult = dynamic_cast< classx *>(tPart::fStaticPartActivateList[idx] );	\
-					if (bindResult)														\
-					{																	\
-						tPart::mAddToPartCachePtrList( (tPart**)&partCachePtr );		\
-						partCachePtr = bindResult;										\
-						return bindResult;												\
-					}												\
-				}													\
-				throw	tPartBindingException();					\
-				return (kFalse);									\
-			}														\
-		};															\
-		static iTruth Test_##classx( void )							\
-		{															\
-			try	{ classx *test = classx::Search_##classx();	}		\
-			catch (tPartBindingException)	{ return	kFalse;	}	\
-			return kTrue;											\
-		}
-
-#define	BindPart(classx)	( classx::Search_##classx() )
-#define	TestPart(classx)	( classx::Test_##classx() )
-#endif
-
 // The original includes tdebug.h here. The unit map has no place for a header without a unit of
 // its own yet, so the declarations this unit needs from it are kept here under its guard.
 #ifndef	tdebug_h
