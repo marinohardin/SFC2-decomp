@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "generated_at": "2026-11-03T11:43:47Z",
+ "generated_at": "2026-11-09T00:47:08Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -39,9 +39,9 @@
    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
   },
   "matched_set": {
-   "path": "harness/matched_set.json",
-   "present": false,
-   "sha256": null
+   "path": "analysis/results/matched_set.json",
+   "present": true,
+   "sha256": "e0e0e7f8b4cdba9329aba69526dac49167d07bd28f4cb7ca0048cb9e4cff8cc6"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -79,13 +79,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 0,
-     "pct_functions": 0.0,
-     "function_bytes": 0,
+     "functions": 32,
+     "pct_functions": 0.1165,
+     "function_bytes": 3384,
      "funclet_bytes": 0,
-     "bytes": 0,
-     "pct_bytes": 0.0,
-     "pct_text": 0.0
+     "bytes": 3384,
+     "pct_bytes": 0.0974,
+     "pct_text": 0.0902
     },
     "functional": {
      "functions": 0,
@@ -97,13 +97,13 @@
      "pct_text": 0.0
     },
     "lifted": {
-     "functions": 27379,
-     "pct_functions": 99.6361,
-     "function_bytes": 3303565,
+     "functions": 27347,
+     "pct_functions": 99.5196,
+     "function_bytes": 3300181,
      "funclet_bytes": 167541,
-     "bytes": 3471106,
-     "pct_bytes": 99.9213,
-     "pct_text": 92.5151
+     "bytes": 3467722,
+     "pct_bytes": 99.8239,
+     "pct_text": 92.4249
     },
     "original-x86": {
      "functions": 100,
@@ -173,12 +173,12 @@
    "bytes": 3328192,
    "status": {
     "exact": {
-     "functions": 0,
-     "pct_functions": 0.0,
-     "function_bytes": 0,
+     "functions": 32,
+     "pct_functions": 0.1212,
+     "function_bytes": 3384,
      "funclet_bytes": 0,
-     "bytes": 0,
-     "pct_bytes": 0.0
+     "bytes": 3384,
+     "pct_bytes": 0.1017
     },
     "functional": {
      "functions": 0,
@@ -189,12 +189,12 @@
      "pct_bytes": 0.0
     },
     "lifted": {
-     "functions": 26299,
-     "pct_functions": 99.6212,
-     "function_bytes": 3167319,
+     "functions": 26267,
+     "pct_functions": 99.5,
+     "function_bytes": 3163935,
      "funclet_bytes": 158138,
-     "bytes": 3325457,
-     "pct_bytes": 99.9178
+     "bytes": 3322073,
+     "pct_bytes": 99.8161
     },
     "original-x86": {
      "functions": 100,
@@ -283,6 +283,135 @@
  },
  "objdiff_skipped_without_address": 0,
  "unmapped_name_sources": {},
- "exact": [],
+ "exact": [
+  {
+   "address": "006289b0",
+   "name": "tPart::tPart"
+  },
+  {
+   "address": "00628a50",
+   "name": "tPart::~tPart"
+  },
+  {
+   "address": "00628a60",
+   "name": "tPart::mValidateParts"
+  },
+  {
+   "address": "00628c20",
+   "name": "tPart::mActivateParts"
+  },
+  {
+   "address": "00628da0",
+   "name": "tPart::mDeactivateParts"
+  },
+  {
+   "address": "00628e50",
+   "name": "tPart::mAddToPartCachePtrList"
+  },
+  {
+   "address": "00628e90",
+   "name": "tAtomicLock::tAtomicLock"
+  },
+  {
+   "address": "00628ee0",
+   "name": "tAtomicLock::tAtomicLock"
+  },
+  {
+   "address": "00628ef0",
+   "name": "tAtomicLock::mAcquire"
+  },
+  {
+   "address": "00628f20",
+   "name": "tAtomicLock::mRelease"
+  },
+  {
+   "address": "0062ddb0",
+   "name": "clib::memset"
+  },
+  {
+   "address": "0062dde0",
+   "name": "clib::strcpy"
+  },
+  {
+   "address": "0062de10",
+   "name": "clib::memcpy"
+  },
+  {
+   "address": "0066c080",
+   "name": "tCRandomSequence::tCRandomSequence"
+  },
+  {
+   "address": "0066c100",
+   "name": "tCRandomSequence::tCRandomSequence"
+  },
+  {
+   "address": "0066c1a0",
+   "name": "tCRandomSequence::~tCRandomSequence"
+  },
+  {
+   "address": "0066c1c0",
+   "name": "tCRandomSequence::mSetSeed"
+  },
+  {
+   "address": "0066c1e0",
+   "name": "tCRandomSequence::mGenerateNumber"
+  },
+  {
+   "address": "0066c5f0",
+   "name": "tSay::tSay"
+  },
+  {
+   "address": "0066c680",
+   "name": "tSay::~tSay"
+  },
+  {
+   "address": "0066c6a0",
+   "name": "tSay::mHandleOutput"
+  },
+  {
+   "address": "0066c890",
+   "name": "tSay::mSay"
+  },
+  {
+   "address": "0066c8c0",
+   "name": "tSay::mJustSayIt"
+  },
+  {
+   "address": "0066d680",
+   "name": "tItemBag::tItemBag"
+  },
+  {
+   "address": "0066d710",
+   "name": "tItemBag::~tItemBag"
+  },
+  {
+   "address": "0066d7e0",
+   "name": "tItemBag::mAddToList"
+  },
+  {
+   "address": "0066d880",
+   "name": "tItemBag::mFindItemWithLabel"
+  },
+  {
+   "address": "00670180",
+   "name": "tSequencePart::mGetNumber"
+  },
+  {
+   "address": "006701c0",
+   "name": "tSequencePart::mGetNumber"
+  },
+  {
+   "address": "006fc4d0",
+   "name": "tAllocatedClass::operator=="
+  },
+  {
+   "address": "006fc5a0",
+   "name": "tDynamicAllocator::tAllocatorInfo::operator=="
+  },
+  {
+   "address": "006fc750",
+   "name": "tDynamicAllocator::LockDownAllocator"
+  }
+ ],
  "functional": []
 }
