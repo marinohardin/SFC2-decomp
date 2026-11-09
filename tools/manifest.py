@@ -18,6 +18,24 @@ Scans `game/` for the annotations `harness/SRC_LAYOUT.md` defines and writes:
   body in game/, a dispatcher that calls through the guest vtable (game/port/guest.h, item 5);
   and the table `src/app/guest/override.h` declares.
 
+An annotation may also sit above a global object's definition (`tINIMgr g_tINIMgr;`: one
+declaration, ending in `;`, with no parameter list, outside any class). It then claims a function
+VC6 generates from that line and that has no source line of its own. Several annotations may be
+stacked above the line, one per generated function; counted upwards from the definition they are:
+
+    1. the dynamic initializer (`_$E1`, the constructor call; its line record is the definition,
+       which is why its annotation must be the one directly above the line),
+    2. the atexit registration (the function that passes the destructor thunk to atexit),
+    3. the atexit destructor (the thunk that destroys the object at exit).
+
+Each gets a row whose symbol is the global's name and its role in parentheses
+(`g_tINIMgr (dynamic initializer)`, `g_tINIMgr (atexit registration)`,
+`g_tINIMgr (atexit destructor)`). Exact, it is `vc6` only: there is nothing to call from the
+guest, so it has no entry point in override.cpp; not exact it is `partial`, a `// STUB:` `stub`.
+Only the initializer has a line record in the /FAs listing; the harness and the object lift
+find the registration (`_$E3` for a unit's first global) and the destructor (`_$E2`) from it
+(`harness/lib/source.symbol_for_annotation`).
+
 The scanner reads the original's style of C++ (one declaration per line, braces on their own or
 at the end of a line); what it does not understand it reports rather than guesses:
 
@@ -52,6 +70,14 @@ CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+)\s*(?::\s*(.*?))?\s*(\{)?\s*$')
 BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)$')
 IDENT = re.compile(r'[A-Za-z_]\w*$')
 CONVENTIONS = ('__stdcall', '__fastcall', '__pascal')
+# A global object's definition: `[static] Type[<...>][*&] Name[[N]] [= value];`, no parameter list.
+GLOBAL = re.compile(r'^(?:static\s+)?(?:const\s+)?([A-Za-z_][\w:]*(?:\s*<[^;()]*>)?(?:\s*[*&]+\s*|\s+))'
+                    r'([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*(?:\[[^\];()]*\]\s*)*(?:=[^;()]*)?;$')
+NOT_A_TYPE = ('extern', 'typedef', 'using', 'friend', 'return', 'class', 'struct', 'union', 'enum',
+              'namespace', 'template', 'delete', 'goto', 'break', 'continue', 'public', 'private',
+              'protected')
+# The functions VC6 generates from a global's definition, counted upwards from that line.
+GLOBAL_ROLES = ('dynamic initializer', 'atexit registration', 'atexit destructor')
 
 
 class ManifestError(Exception):
@@ -197,7 +223,14 @@ def scan_file(path, rel, functions, classes):
                                   'ret': ret, 'name': record['name'] + '::' + name,
                                   'types': types, 'names': names, 'const': is_const})
             else:
-                functions.append(read_definition(lines, i, rel, kind, address))
+                glob = read_global(lines, i, rel, in_class=any(k == 'class' for k, _ in stack))
+                if glob is not None:
+                    name, role = glob
+                    functions.append({'kind': kind, 'address': address, 'file': rel, 'line': i + 1,
+                                      'ret': '', 'name': '%s (%s)' % (name, role), 'types': (),
+                                      'names': (), 'const': False, 'global': name})
+                else:
+                    functions.append(read_definition(lines, i, rel, kind, address))
             i += 1
             continue
         code = strip_code(raw)
@@ -261,6 +294,34 @@ def add_member(record, code, rel, lineno):
         'pure': pure, 'line': lineno})
 
 
+def read_global(lines, i, rel, in_class):
+    """(global name, role) when the annotation at line i sits above a global object's definition
+    (further annotations and comments may come between); None when what follows is not a
+    one-line declaration without a parameter list (a function, read by read_definition)."""
+    above, j = 0, i + 1
+    while j < len(lines):
+        if ANNOTATION.match(lines[j]):
+            above += 1
+        elif strip_code(lines[j]).strip():
+            break
+        j += 1
+    if j >= len(lines):
+        return None
+    code = strip_code(lines[j]).strip()
+    if not code.endswith(';') or '(' in code or '{' in code:
+        return None
+    m = GLOBAL.match(code)
+    if in_class or not m or m.group(1).split()[0] in NOT_A_TYPE:
+        raise ManifestError('%s:%d: cannot read %r as a global object definition (one '
+                            'declaration with no parameter list, outside any class)' % (rel, j + 1, code))
+    if above >= len(GLOBAL_ROLES):
+        raise ManifestError('%s:%d: more than %d annotations above the global %s; VC6 generates '
+                            'at most %d functions from its definition (%s)' % (
+                                rel, i + 1, len(GLOBAL_ROLES), m.group(2), len(GLOBAL_ROLES),
+                                ', '.join(GLOBAL_ROLES)))
+    return m.group(2), GLOBAL_ROLES[above]
+
+
 def read_definition(lines, i, rel, kind, address):
     """The definition head after an annotation: the text up to its body's brace."""
     head, j = '', i + 1
@@ -297,6 +358,8 @@ def is_constructor_or_destructor(name):
 
 
 def symbol_of(f):
+    if 'global' in f:
+        return f['name']
     return '%s(%s)%s' % (f['name'], ','.join(f['types']), ' const' if f['const'] else '')
 
 
@@ -398,6 +461,13 @@ def build(game, functions_csv, matched_json=MATCHED):
             f['modes'] = 'partial'
         else:
             f['modes'] = 'vc6 guest'
+        if 'global' in f:
+            # Generated from a global's definition: nothing in the guest can call it by a C++
+            # name, so it has no entry point; exact, only the object lift takes it.
+            f['class'], f['static'] = None, False
+            if f['modes'] == 'vc6 guest':
+                f['modes'] = 'vc6'
+            continue
         record = owner_class(f['name'], classes)
         f['class'] = record
         f['static'] = bool(record) and find_member(record, f)['static']

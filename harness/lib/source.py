@@ -134,6 +134,7 @@ FILE = re.compile(r'^; File (.+?)\s*$')
 LINE = re.compile(r'^; (\d+)\s+:')
 TITLE = re.compile(r'^\tTITLE\t(.+?)\s*$')
 SEGMENT = re.compile(r'^(\S+)\s+SEGMENT\b')
+ENDS = re.compile(r'^(\S+)\s+ENDS\b')
 
 
 def listing_functions(listing_text):
@@ -181,9 +182,118 @@ def listing_functions(listing_text):
     return out
 
 
+BRANCH = re.compile(r'^\t(?:call|jmp)\t(?!SHORT\b)(\S+)')
+PUSH_OFFSET = re.compile(r'^\tpush\tOFFSET FLAT:(\S+)')
+TABLE_ENTRY = re.compile(r'^\S*\s+DD\s+FLAT:(\S+)')
+# The functions VC6 generates from a global object's definition, counted upwards from the
+# annotation directly above it (tools/manifest.py).
+GLOBAL_ROLES = ('dynamic initializer', 'atexit registration', 'atexit destructor')
+
+
+def listing_bodies(listing_text):
+    """({symbol: [(op, target)]}, [startup entries]) from a VC6 /FAs listing: for each PROC, in
+    order, what it calls or jumps to (op 'branch') and the addresses it pushes (op 'push'); and
+    the functions the CRT$XCU segment lists, which the C runtime calls at startup."""
+    bodies, startup, proc, in_xcu = {}, [], None, False
+    for line in listing_text.splitlines():
+        m = SEGMENT.match(line)
+        if m:
+            in_xcu = m.group(1) == 'CRT$XCU'
+            continue
+        if ENDS.match(line):
+            in_xcu = False
+            continue
+        if in_xcu:
+            m = TABLE_ENTRY.match(line)
+            if m:
+                startup.append(m.group(1))
+            continue
+        m = PROC.match(line)
+        if m:
+            proc = m.group(1)
+            bodies[proc] = []
+        elif proc is not None and ENDP.match(line):
+            proc = None
+        elif proc is not None:
+            m = BRANCH.match(line)
+            if m:
+                bodies[proc].append(('branch', m.group(1)))
+            m = PUSH_OFFSET.match(line)
+            if m:
+                bodies[proc].append(('push', m.group(1)))
+    return bodies, startup
+
+
+def global_generated_functions(listing_text, initializer):
+    """What VC6 generates from the global whose dynamic initializer is `initializer`, in
+    GLOBAL_ROLES order: [initializer, registration, destructor], or [initializer] alone when the
+    global registers no destructor. None when `initializer` is not a dynamic initializer: no
+    CRT$XCU entry is it or calls or jumps to it.
+
+    The registration is the function that calls _atexit on the initializer's path: one the
+    initializer branches to, or one its CRT$XCU entry branches to after it (VC6 writes
+    `call _$E1` / `jmp _$E3` there). The destructor is the address it pushes for _atexit."""
+    bodies, startup = listing_bodies(listing_text)
+    if initializer not in bodies:
+        return None
+    entries = [e for e in startup
+               if e == initializer or ('branch', initializer) in bodies.get(e, [])]
+    if not entries:
+        return None
+    reached = [t for op, t in bodies[initializer] if op == 'branch']
+    for e in entries:
+        targets = [t for op, t in bodies.get(e, []) if op == 'branch']
+        if initializer in targets:
+            reached += targets[targets.index(initializer) + 1:]
+    for r in reached:
+        body = bodies.get(r, [])
+        if r == initializer or ('branch', '_atexit') not in body:
+            continue
+        pushed = [t for op, t in body[:body.index(('branch', '_atexit'))] if op == 'push']
+        if pushed and pushed[-1] in bodies:
+            return [initializer, r, pushed[-1]]
+    return [initializer]
+
+
 def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines):
     """The compiled symbol the annotation at ann_line claims: the function whose first source
-    line in this file is the nearest after the annotation, with no other annotation between."""
+    line in this file is the nearest after the annotation, with no other annotation between.
+
+    Annotations stacked above a global object's definition, with no function between them,
+    claim what VC6 generates from that line, counted upwards (GLOBAL_ROLES): the dynamic
+    initializer, whose line record is the definition, so the rule above finds it; then the
+    atexit registration and the atexit destructor, which have no line record and are found
+    from the initializer (global_generated_functions). Raises SourceError when such an
+    annotation has nothing to claim: the global registers no destructor, or the stack is
+    higher than GLOBAL_ROLES."""
+    sym = _nearest_function(listing_text, unit_path, ann_line, other_ann_lines)
+    if sym is not None:
+        return sym
+    lines = sorted(set(other_ann_lines))
+    depth, cur = 0, ann_line
+    while sym is None:
+        below = [n for n in lines if n > cur]
+        if not below:
+            return None
+        depth, cur = depth + 1, below[0]
+        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+    if not isinstance(sym, str):
+        return None
+    generated = global_generated_functions(listing_text, sym)
+    if generated is None:
+        return None
+    if depth < len(generated):
+        return generated[depth]
+    if depth < len(GLOBAL_ROLES):
+        raise SourceError(f'the annotation at line {ann_line} claims the {GLOBAL_ROLES[depth]} '
+                          f'of the global whose initializer is {sym}, but that global registers '
+                          'no destructor with atexit: VC6 generated no such function')
+    raise SourceError(f'the annotation at line {ann_line} is number {depth + 1} above the global '
+                      f'whose initializer is {sym}; VC6 generates at most {len(GLOBAL_ROLES)} '
+                      f'functions from a global ({", ".join(GLOBAL_ROLES)})')
+
+
+def _nearest_function(listing_text, unit_path, ann_line, other_ann_lines):
     main = os.path.basename(unit_path).lower()
     nxt = min([n for n in other_ann_lines if n > ann_line], default=None)
     best = []

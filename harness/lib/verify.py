@@ -150,8 +150,12 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None):
                exact=False, symbol=None, size=fn.size, error=None)
     obj = coff.CoffObject(open(build['obj'], 'rb').read())
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
-    sym = symbol_hint or source.symbol_for_annotation(listing, unit['path'], unit['line'],
-                                                      unit['other_lines'])
+    try:
+        sym = symbol_hint or source.symbol_for_annotation(listing, unit['path'], unit['line'],
+                                                          unit['other_lines'])
+    except source.SourceError as e:
+        res['error'] = str(e)
+        return res
     if isinstance(sym, list):
         sym = fn.mangled if fn.mangled in sym else None
         if sym is None:

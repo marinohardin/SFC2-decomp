@@ -53,6 +53,11 @@ tDynamicAllocator* tDynamicAllocator::Instance()
   first source line follows the annotation, with no other annotation in between. The name in
   `functions.csv` is a fallback, not a requirement, so a function can be claimed before it has a
   name.
+- Annotations stacked above a global object's definition (`tINIMgr g_tINIMgr;`) claim what VC6
+  generates from it, counted upwards: the dynamic initializer (its line record is the
+  definition), the function on the initializer's startup path that calls `_atexit`, and the
+  destructor that function pushes. An annotation with nothing to claim there (a global with no
+  destructor, or more than three) is an error.
 - Functions the compiler does not emit on their own (unused inlines, functions folded into
   their callers) cannot be claimed; they are covered by the functions they are inlined into.
 

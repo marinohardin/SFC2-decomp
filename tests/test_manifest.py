@@ -325,5 +325,77 @@ def test_a_constructor_not_recorded_exact_is_partial_not_vc6(tmp_path):
     assert rows['0x00401500'] == 'partial'
 
 
+# A global object whose class has a constructor and a destructor: VC6 generates its dynamic
+# initializer, an atexit registration and an atexit destructor from the one definition line.
+# Counted upwards from the definition: 0x00401500 initializer, 0x00401600 registration,
+# 0x00401700 destructor. 0x00401700 is not in EXACT, so it is partial.
+GLOBAL_SOURCE = SOURCE + (
+    '\n// FUNCTION: STARFLEETOP 0x00401700\n'
+    '// FUNCTION: STARFLEETOP 0x00401600\n'
+    '// the comment of a hypothesis may sit among them\n'
+    '// FUNCTION: STARFLEETOP 0x00401500\n'
+    'tTestShip g_testShip;\n')
+GLOBAL_CSV = CSV + ('00401500,18,FUN_00401500,,,default,,,,0,,function,\n'
+                    '00401600,12,FUN_00401600,,,default,,,,0,,function,\n'
+                    '00401700,20,FUN_00401700,,,default,,,,0,,function,\n')
+
+
+def test_an_annotated_global_claims_the_functions_vc6_generates_from_it(tmp_path):
+    game, csv = make_tree(tmp_path, source=GLOBAL_SOURCE)
+    csv.write_text(GLOBAL_CSV)
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'][1:] == ['18', 'g_testShip (dynamic initializer)', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401600'][1:] == ['12', 'g_testShip (atexit registration)', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401700'][1:] == ['20', 'g_testShip (atexit destructor)', 'Test/TestShip.cpp', 'partial']
+    text = (tmp_path / 'out' / 'override.cpp').read_text()
+    for a in ('00401500', '00401600', '00401700'):
+        assert 'sub_%s' % a not in text and '0x%su' % a not in text
+    assert 'g_testShip' not in text
+    assert 'sfcop_guest_override_count = 4u;' in text
+
+
+def test_a_stub_on_a_global_and_a_qualified_static_member_are_read(tmp_path):
+    source = SOURCE + ('\n// STUB: STARFLEETOP 0x00401500\nstatic tTestShip g_spare[ 2 ];\n'
+                       '\n// FUNCTION: STARFLEETOP 0x00401600\ntTestShip* tTestShip::sCurrent = 0;\n')
+    game, csv = make_tree(tmp_path, source=source)
+    csv.write_text(GLOBAL_CSV)
+    functions, _ = manifest.build(str(game), str(csv), str(tmp_path / 'matched.json'))
+    assert [(f['address'], manifest.symbol_of(f), f['modes']) for f in functions
+            if f['address'] >= 0x00401500] == [
+        (0x00401500, 'g_spare (dynamic initializer)', 'stub'),
+        (0x00401600, 'tTestShip::sCurrent (dynamic initializer)', 'vc6')]
+
+
+@pytest.mark.parametrize('definition,message', [
+    ('extern tTestShip g_testShip;', "cannot read 'extern tTestShip g_testShip;' as a global"),
+    ('tTestShip g_one, g_two;', "cannot read 'tTestShip g_one, g_two;' as a global"),
+    ('class tTestShip;', "cannot read 'class tTestShip;' as a global"),
+])
+def test_a_declaration_that_is_not_one_global_definition_is_refused(tmp_path, capsys, definition, message):
+    source = SOURCE + '\n// FUNCTION: STARFLEETOP 0x00401500\n%s\n' % definition
+    game, csv = make_tree(tmp_path, source=source)
+    csv.write_text(GLOBAL_CSV)
+    assert run(tmp_path, game, csv) == 2
+    assert message in capsys.readouterr().err
+
+
+def test_a_data_member_is_not_a_global(tmp_path, capsys):
+    header = HEADER.replace('\tint32 fSpeed;', '\t// FUNCTION: STARFLEETOP 0x00401500\n\tint32 fSpeed;')
+    game, csv = make_tree(tmp_path, header=header)
+    csv.write_text(GLOBAL_CSV)
+    assert run(tmp_path, game, csv) == 2
+    assert "TestShip.h:31: cannot read 'int32 fSpeed;' as a global" in capsys.readouterr().err
+
+
+def test_more_annotations_than_vc6_generates_for_a_global_are_refused(tmp_path, capsys):
+    source = GLOBAL_SOURCE.replace('// FUNCTION: STARFLEETOP 0x00401700\n',
+                                   '// FUNCTION: STARFLEETOP 0x00401800\n// FUNCTION: STARFLEETOP 0x00401700\n')
+    game, csv = make_tree(tmp_path, source=source)
+    csv.write_text(GLOBAL_CSV + '00401800,10,FUN_00401800,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 2
+    assert 'more than 3 annotations above the global g_testShip' in capsys.readouterr().err
+
+
 def test_committed_manifest_and_override_table_match_the_tree():
     assert manifest.main(['--check']) == 0
