@@ -138,6 +138,21 @@ def read_lines(path):
         return f.read().splitlines()
 
 
+# The SDK's part binding macro (Tiger/tpart.h), written inside its class's body, defines two
+# static members. An annotation on the macro claims the first, Search_<class>.
+BINDING = re.compile(r'^\s*GenAbstractBinding\s*\(\s*([A-Za-z_]\w*)\s*\)\s*;?\s*$')
+BINDING_MEMBERS = ('static %s *Search_%s( void )', 'static iTruth Test_%s( void )')
+
+
+def binding_members(record, cls, rel, lineno):
+    """Add the members a GenAbstractBinding(cls) line declares to `record`."""
+    if record['name'].rsplit('::', 1)[-1] != cls:
+        raise ManifestError('%s:%d: GenAbstractBinding(%s) inside class %s'
+                            % (rel, lineno, cls, record['name']))
+    add_member(record, BINDING_MEMBERS[0] % (cls, cls) + ';', rel, lineno)
+    add_member(record, BINDING_MEMBERS[1] % cls + ';', rel, lineno)
+
+
 def scan(game):
     """Every annotation and class declaration under `game` (port/ excluded)."""
     functions, classes = [], {}
@@ -162,8 +177,18 @@ def scan_file(path, rel, functions, classes):
             kind, module, address = m.group(1), m.group(2), int(m.group(3), 16)
             if module != MODULE:
                 raise ManifestError('%s:%d: module %s, not %s' % (rel, i + 1, module, MODULE))
+            bm = BINDING.match(strip_code(lines[i + 1])) if i + 1 < len(lines) else None
             if kind == 'VTABLE':
                 pending_vtable = (address, i + 1)
+            elif bm:
+                if not (stack and stack[-1][0] == 'class'):
+                    raise ManifestError('%s:%d: GenAbstractBinding outside a class body' % (rel, i + 2))
+                record = stack[-1][1]
+                ret, name, types, names, is_const = parse_signature(
+                    BINDING_MEMBERS[0] % (bm.group(1), bm.group(1)))
+                functions.append({'kind': kind, 'address': address, 'file': rel, 'line': i + 1,
+                                  'ret': ret, 'name': record['name'] + '::' + name,
+                                  'types': types, 'names': names, 'const': is_const})
             else:
                 functions.append(read_definition(lines, i, rel, kind, address))
             i += 1
@@ -194,7 +219,10 @@ def scan_file(path, rel, functions, classes):
         if pending_vtable and code.strip():
             raise ManifestError('%s:%d: a VTABLE annotation must come right before its class'
                                 % (rel, pending_vtable[1]))
-        if stack and stack[-1][0] == 'class' and '(' in code and code.rstrip().endswith(';') \
+        bm = BINDING.match(code)
+        if bm and stack and stack[-1][0] == 'class':
+            binding_members(stack[-1][1], bm.group(1), rel, i + 1)
+        elif stack and stack[-1][0] == 'class' and '(' in code and code.rstrip().endswith(';') \
                 and code.count('{') == 0:
             add_member(stack[-1][1], code, rel, i + 1)
         for ch in code:

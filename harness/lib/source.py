@@ -132,20 +132,42 @@ PROC = re.compile(r'^(\S+)\s+PROC NEAR')
 ENDP = re.compile(r'^(\S+)\s+ENDP')
 FILE = re.compile(r'^; File (.+?)\s*$')
 LINE = re.compile(r'^; (\d+)\s+:')
+TITLE = re.compile(r'^\tTITLE\t(.+?)\s*$')
+SEGMENT = re.compile(r'^(\S+)\s+SEGMENT\b')
 
 
 def listing_functions(listing_text):
     """[(symbol, file, first_line)] from a VC6 /FAs listing: each PROC with the source line of
-    its first line record (the opening brace)."""
+    its first line record (the opening brace).
+
+    The file starts as the listing's TITLE. A `; File` record inside a PROC applies at once (an
+    inline function from a header). One outside a PROC applies only if the segment it heads is
+    code: VC6 also writes a record before a class's vftable, naming the header that declares the
+    class, and does not repeat the unit's own record before the code that follows."""
     out = []
-    cur_file, proc, first = None, None, None
+    cur_file, pending, proc, first = None, None, None, None
     for line in listing_text.splitlines():
+        m = TITLE.match(line)
+        if m and cur_file is None:
+            cur_file = m.group(1)
+            continue
         m = FILE.match(line)
         if m:
-            cur_file = m.group(1)
+            if proc:
+                cur_file = m.group(1)
+            else:
+                pending = m.group(1)
+            continue
+        m = SEGMENT.match(line)
+        if m:
+            if pending and m.group(1) == '_TEXT':
+                cur_file = pending
+            pending = None
             continue
         m = PROC.match(line)
         if m:
+            if pending:
+                cur_file, pending = pending, None
             proc, first = m.group(1), None
             continue
         if proc:

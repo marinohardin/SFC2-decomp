@@ -251,5 +251,32 @@ def test_constructors_and_destructors_have_no_guest_entry_point(tmp_path):
     assert '&tTestShip::tTestShip' not in text and '&tTestShip::~tTestShip' not in text
 
 
+def test_an_annotated_part_binding_claims_its_search_member(tmp_path):
+    # GenAbstractBinding(X) in X's body defines the static members Search_X and Test_X; an
+    # annotation on it claims Search_X, a static member with no parameters returning X*.
+    header = HEADER.replace('\tstatic tTestShip* Instance();',
+                            '\t// FUNCTION: STARFLEETOP 0x00401500\n'
+                            '\tGenAbstractBinding( tTestShip );\n'
+                            '\tstatic tTestShip* Instance();')
+    game, csv = make_tree(tmp_path, header=header)
+    csv.write_text(CSV + '00401500,117,tTestShip::Search_tTestShip,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'][1:] == ['117', 'tTestShip::Search_tTestShip()', 'Test/TestShip.h', 'vc6 guest']
+    text = (tmp_path / 'out' / 'override.cpp').read_text()
+    assert 'static_cast< tTestShip * (*)() >( &tTestShip::Search_tTestShip )' in text
+    _, classes = manifest.scan(str(game))
+    assert [m['name'] for m in classes['tTestShip']['members'] if m['static']] == \
+        ['Search_tTestShip', 'Test_tTestShip', 'Instance']
+
+
+def test_a_part_binding_for_another_class_is_refused(tmp_path, capsys):
+    header = HEADER.replace('\tstatic tTestShip* Instance();',
+                            '\tGenAbstractBinding( tTestBase );\n\tstatic tTestShip* Instance();')
+    game, csv = make_tree(tmp_path, header=header)
+    assert run(tmp_path, game, csv) != 0
+    assert 'GenAbstractBinding(tTestBase) inside class tTestShip' in capsys.readouterr().err
+
+
 def test_committed_manifest_and_override_table_match_the_tree():
     assert manifest.main(['--check']) == 0

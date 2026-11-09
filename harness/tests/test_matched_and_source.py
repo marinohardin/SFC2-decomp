@@ -56,6 +56,42 @@ def test_annotation_claims_the_next_function_defined_in_the_file():
         '??0tDynamicAllocator@@AAE@XZ'
 
 
+VFTABLE_LISTING = """\
+\tTITLE\ttEntity.cpp
+\t.386P
+;\tCOMDAT ??_7tEntity@@6B@
+; File ..\\unsorted/tEntity.h
+CONST\tSEGMENT
+??_7tEntity@@6B@ DD FLAT:??_R4tEntity@@6B@\t\t; tEntity::`vftable'
+CONST\tENDS
+;\tCOMDAT ??0tEntity@@QAE@XZ
+_TEXT\tSEGMENT
+??0tEntity@@QAE@XZ PROC NEAR\t\t\t\t; tEntity::tEntity, COMDAT
+
+; 43   : {
+
+\tret\t0
+??0tEntity@@QAE@XZ ENDP
+;\tCOMDAT ?f@tEntity@@QAEXXZ
+; File ..\\unsorted/tEntity.h
+_TEXT\tSEGMENT
+?f@tEntity@@QAEXXZ PROC NEAR
+
+; 12   : \tinline void f() {}
+
+\tret\t0
+?f@tEntity@@QAEXXZ ENDP
+"""
+
+
+def test_a_file_record_before_a_vftable_does_not_move_the_code_after_it():
+    # VC6 names the header that declares a class before its vftable and does not name the unit
+    # again before the code that follows; a record heading a code segment still applies.
+    assert source.listing_functions(VFTABLE_LISTING) == [
+        ('??0tEntity@@QAE@XZ', 'tEntity.cpp', 43),
+        ('?f@tEntity@@QAEXXZ', '..\\unsorted/tEntity.h', 12)]
+
+
 def test_annotation_with_another_annotation_before_any_function_claims_nothing():
     assert source.symbol_for_annotation(LISTING, 'x/DynamicAllocator.cpp', 120, [124]) is None
 
