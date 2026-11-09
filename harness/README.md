@@ -131,6 +131,10 @@ and the loop's process), so loops in several worktrees never work on the same fu
 releases it after the round and on exit; a lock whose process is gone is taken over. Attempt-log
 rows are appended under `flock`, and the caps count every loop's attempts.
 
+`queue.py select --unit U --address A` restricts this checkout's loop (see "The loop");
+`next` and `show` (and nothing else) honour the selection only when `HARNESS_SELECTION` names
+its file, which `loop.sh` sets, so a selection left from an earlier run restricts nothing.
+
 ### Model tiers
 
 By counted attempts on the function:
@@ -154,8 +158,21 @@ attempts are committed, so a fix round starts from the best source so far.
 harness/loop.sh --dry-run        # everything except calling claude: no commit, no reset
 harness/loop.sh --once           # one function
 harness/loop.sh --max 20
+harness/loop.sh --unit Tiger/tsay.cpp            # one grind batch: one unit, in address order
+harness/loop.sh --once --address 0x006d2800      # a chosen function; both flags repeat
 harness/loop.sh --allow-fable    # add the Fable tier after attempt 4
 ```
+
+`--unit` takes a unit path from `game/UNITS.tsv` and `--address` a function address; each may
+be given more than once. Before the first round the loop runs `queue.py select`, which resolves
+them against the queue and writes the open functions they cover, in address order, to
+`$HARNESS_STATE/selection.json`; `queue.py next` then takes only those, and the loop stops with
+`OK    nothing left to take in the selection` when each is exact, difficult, at its attempt
+cap, or held by another loop. A selection with no open function at the start is an error. The selection is resolved once, from
+the unit map as it was when the loop started, and lives in the harness state, which a session
+cannot edit. An unknown unit or a malformed address (anything but up to eight hex digits,
+with or without `0x`) stops the loop before any round. Without
+these flags the loop takes the whole queue in its own order.
 
 Each round: `queue.py next` claims the function and picks the model; `build-and-verify.sh` gives its
 starting score; the claim goes to `$HARNESS_STATE/claim.json`; the prompt is rendered from

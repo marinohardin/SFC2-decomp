@@ -144,3 +144,129 @@ def test_attempt_row_carries_tokens_and_cost():
     assert (r['input_tokens'], r['output_tokens'], r['cache_read_tokens'],
             r['cache_write_tokens'], r['cost_usd'], r['turns']) == (10, 20, 30, 40, 0.42, 7)
     assert (r['score_before'], r['score_after']) == ('10.00', '20.50')
+
+
+# --- --unit / --address selection -------------------------------------------------------------
+
+UNIT_MAP = [(0x00401000, 0x0040101f, 'Tiger/tsay.cpp'),
+            (0x00401020, 0x0040103f, 'unsorted/fn_00401020.cpp')]
+
+
+def test_select_takes_a_units_open_functions_in_address_order():
+    # The queue's own order (named first, small first) is not the batch's order.
+    queue = [dict(address='0x00401018'), dict(address='0x00401030'), dict(address='0x00401004')]
+    assert workqueue.select(queue, UNIT_MAP, units=['Tiger/tsay.cpp']) == \
+        ['0x00401004', '0x00401018']
+
+
+def test_select_adds_single_addresses_and_drops_ones_not_in_the_queue():
+    queue = [dict(address='0x00401018'), dict(address='0x00401030')]
+    # 0x00401004 is exact or difficult already, so it is not in the queue.
+    assert workqueue.select(queue, UNIT_MAP, addresses=['0x00401030', '0x00401004']) == \
+        ['0x00401030']
+    assert workqueue.select(queue, UNIT_MAP, units=['Tiger/tsay.cpp'],
+                            addresses=['0x401030']) == ['0x00401018', '0x00401030']
+
+
+def test_select_refuses_a_unit_not_in_the_map_and_a_malformed_address():
+    with pytest.raises(ValueError, match='Tiger/nosuch.cpp'):
+        workqueue.select([], UNIT_MAP, units=['Tiger/tsay.cpp', 'Tiger/nosuch.cpp'])
+    for bad in ('zz', '-5', '1_0', '0x123456789', ''):
+        with pytest.raises(ValueError, match='not an address'):
+            workqueue.select([], UNIT_MAP, addresses=[bad])
+
+
+def test_select_includes_both_ends_of_a_unit_range_and_nothing_past_them():
+    queue = [dict(address=a) for a in ('0x00400fff', '0x00401000', '0x0040101f', '0x00401020')]
+    assert workqueue.select(queue, UNIT_MAP, units=['Tiger/tsay.cpp']) == \
+        ['0x00401000', '0x0040101f']
+
+
+def test_select_lists_a_function_named_twice_once():
+    queue = [dict(address='0x00401004'), dict(address='0x00401030')]
+    assert workqueue.select(queue, UNIT_MAP, units=['Tiger/tsay.cpp'],
+                            addresses=['0x00401004', '0x401004', '0x00401030']) == \
+        ['0x00401004', '0x00401030']
+
+
+def test_restrict_keeps_the_selection_order():
+    queue = [dict(address='0x00401018', name='b'), dict(address='0x00401004', name='a'),
+             dict(address='0x00401030', name='c')]
+    assert [e['name'] for e in workqueue.restrict(queue, ['0x00401004', '0x00401018'])] == \
+        ['a', 'b']
+
+
+def _queue_cli(tmp_path, *args, selection=False):
+    env = dict(os.environ, HARNESS_STATE=str(tmp_path / 'state'),
+               HARNESS_UNITS_TSV=str(tmp_path / 'UNITS.tsv'),
+               HARNESS_DIFFICULT=str(tmp_path / 'difficult.tsv'))
+    env.pop('HARNESS_SELECTION', None)
+    if selection:
+        env['HARNESS_SELECTION'] = str(tmp_path / 'state' / 'selection.json')
+    script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'queue.py')
+    return subprocess.run([sys.executable, script, *args], env=env, capture_output=True,
+                          text=True)
+
+
+def _write_queue_inputs(tmp_path):
+    (tmp_path / 'UNITS.tsv').write_text(
+        'unit\tfirst\tlast\tfunctions\tevidence\tprofile\theader\n'
+        'Tiger/tsay.cpp\t0x00401000\t0x0040101f\t2\tassert-path\tsdk-release\t\n'
+        'unsorted/fn_00401020.cpp\t0x00401020\t0x0040103f\t1\tpage\tsdk-release\t\n')
+    entries = [dict(address=a, name=n, size=4, named=True, similarity=0.0)
+               for a, n in (('0x00401030', 'C'), ('0x00401018', 'B'), ('0x00401004', 'A'))]
+    workqueue.save_queue(str(tmp_path / 'state' / 'queue.json'), entries, 'test')
+
+
+def test_queue_cli_next_follows_the_selection_only_when_the_loop_names_it(tmp_path):
+    _write_queue_inputs(tmp_path)
+    r = _queue_cli(tmp_path, 'select', '--unit', 'Tiger/tsay.cpp')
+    assert r.returncode == 0, r.stderr
+    assert json.loads((tmp_path / 'state' / 'selection.json').read_text())['entries'] == \
+        ['0x00401004', '0x00401018']
+    r = _queue_cli(tmp_path, 'next', selection=True)
+    assert json.loads(r.stdout)['name'] == 'A'
+    _queue_cli(tmp_path, 'release', '0x00401004')
+    # Without HARNESS_SELECTION a leftover selection file restricts nothing.
+    r = _queue_cli(tmp_path, 'next')
+    assert json.loads(r.stdout)['name'] == 'C'
+
+
+def test_queue_cli_select_fails_on_an_unknown_unit_and_writes_nothing(tmp_path):
+    _write_queue_inputs(tmp_path)
+    r = _queue_cli(tmp_path, 'select', '--unit', 'Tiger/nosuch.cpp')
+    assert r.returncode == 2 and 'Tiger/nosuch.cpp' in r.stderr
+    assert not (tmp_path / 'state' / 'selection.json').exists()
+    assert _queue_cli(tmp_path, 'select', '--unit').returncode == 2
+
+
+def test_queue_cli_refuses_an_unreadable_selection_for_next_but_still_releases(tmp_path):
+    _write_queue_inputs(tmp_path)
+    r = _queue_cli(tmp_path, 'next', selection=True)
+    assert r.returncode == 2 and 'selection' in r.stderr
+    # The loop's exit trap releases its claim even if the selection file is gone.
+    assert _queue_cli(tmp_path, 'release', '0x00401004', selection=True).returncode == 0
+
+
+def test_queue_cli_select_with_no_open_function_is_an_error(tmp_path):
+    _write_queue_inputs(tmp_path)
+    r = _queue_cli(tmp_path, 'select', '--address', '0x00402000')
+    assert r.returncode == 2 and 'no open function' in r.stderr
+    assert not (tmp_path / 'state' / 'selection.json').exists()
+
+
+def test_loop_refuses_a_unit_value_with_shell_characters(tmp_path):
+    loop = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'loop.sh')
+    for bad in (['--unit', 'Tiger/a b.cpp'], ['--unit', '$(true)'], ['--address'],
+                ['--unit', '']):
+        r = subprocess.run(['sh', loop, *bad], capture_output=True, text=True,
+                           env=dict(os.environ, HARNESS_STATE=str(tmp_path / 'state')))
+        assert r.returncode == 2 and ('ERROR' in r.stderr or 'usage' in r.stderr), bad
+    assert not (tmp_path / 'state').exists()
+
+
+def test_queue_cli_select_reports_a_missing_unit_map(tmp_path):
+    _write_queue_inputs(tmp_path)
+    (tmp_path / 'UNITS.tsv').unlink()
+    r = _queue_cli(tmp_path, 'select', '--unit', 'Tiger/tsay.cpp')
+    assert r.returncode == 2 and 'ERROR' in r.stderr

@@ -2,6 +2,8 @@
 """The work queue for harness/loop.sh.
 
     harness/queue.py build                 # (re)build $HARNESS_STATE/queue.json
+    harness/queue.py select [--unit U]... [--address A]...
+                                           # restrict this checkout's loop (writes selection.json)
     harness/queue.py next                  # claim the next function: JSON with its model, or nothing
     harness/queue.py release <address>     # drop this checkout's claim on a function
     harness/queue.py record <json-row>     # log an attempt (loop.sh only)
@@ -9,6 +11,12 @@
 
 Skips library-flagged functions, EH funclets and thunks, functions already exact in
 matched_set.json, and those in difficult_functions.tsv. See lib/workqueue.py for the order.
+
+`select` resolves units (paths in game/UNITS.tsv, such as Tiger/tsay.cpp) and addresses to the
+queue entries they cover, in address order, and writes them to $HARNESS_STATE/selection.json.
+`next` and `show` honour that file only when HARNESS_SELECTION names it (loop.sh sets it when
+given --unit or --address), so a selection left over from an earlier run restricts nothing.
+A selection with no open function is an error, not an empty batch.
 """
 import json
 import os
@@ -42,6 +50,42 @@ def main(argv):
     q = workqueue.load_queue(paths.QUEUE)
     attempts = workqueue.read_tsv(paths.ATTEMPTS, workqueue.ATTEMPT_FIELDS)
     owner = paths.REPO  # one loop per checkout
+    if cmd == 'select':
+        units, addresses = [], []
+        it = iter(args)
+        for a in it:
+            if a not in ('--unit', '--address'):
+                print(__doc__)
+                return 2
+            v = next(it, None)
+            if not v:
+                print(f'ERROR {a} needs a value', file=sys.stderr)
+                return 2
+            (units if a == '--unit' else addresses).append(v)
+        try:
+            unit_map = workqueue.read_unit_map(paths.UNITS_TSV) if units else []
+            sel = workqueue.select(q, unit_map, units, addresses)
+        except (OSError, ValueError) as e:
+            print(f'ERROR {e}', file=sys.stderr)
+            return 2
+        if not sel:
+            print('ERROR the selection has no open function: every one is exact or difficult, '
+                  'or the addresses are not functions', file=sys.stderr)
+            return 2
+        os.makedirs(os.path.dirname(paths.SELECTION), exist_ok=True)
+        with open(paths.SELECTION, 'w') as f:
+            json.dump({'units': units, 'addresses': addresses, 'entries': sel}, f, indent=0)
+        print(f'OK    selection: {len(sel)} open functions in {len(units)} units and '
+              f'{len(addresses)} addresses -> {paths.SELECTION}')
+        return 0
+    sel_path = os.environ.get('HARNESS_SELECTION')
+    if sel_path and cmd in ('next', 'show'):  # release and record never depend on it
+        try:
+            with open(sel_path) as f:
+                q = workqueue.restrict(q, json.load(f)['entries'])
+        except (OSError, ValueError, KeyError) as e:
+            print(f'ERROR cannot read the selection {sel_path}: {e}', file=sys.stderr)
+            return 2
     if cmd == 'next':
         pid = int(os.environ.get('HARNESS_LOOP_PID', os.getppid()))
         e = workqueue.next_entry(q, attempts, difficult, tiers,

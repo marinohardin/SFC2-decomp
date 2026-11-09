@@ -2,7 +2,7 @@
 # The headless decompilation loop: one fresh `claude -p` session per function, judged only by
 # harness/build-and-verify.sh.
 #
-#   harness/loop.sh [--once] [--max N] [--dry-run] [--allow-fable]
+#   harness/loop.sh [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--allow-fable]
 #
 # Each round: claim the next function (harness/queue.py; a lock file keeps loops in other
 # worktrees off it), score it as it stands, write the claim the Stop hook checks, run claude with
@@ -27,6 +27,12 @@
 # picks the function and model, scores it, writes the claim and the prompt, and logs the attempt
 # with zero tokens and outcome "dry-run".
 #
+# --unit U (a path from game/UNITS.tsv, e.g. Tiger/tsay.cpp) and --address A, each repeatable,
+# restrict the loop to those units' and addresses' open functions, taken in address order: a
+# grind batch is one unit. They are resolved once, when the loop starts (harness/queue.py
+# select), into a file in the harness state that the session cannot edit. Without them the loop
+# takes the whole queue.
+#
 # HARNESS_CLAUDE replaces the claude command (same arguments); the loop proof uses it to drive a
 # scripted stand-in agent. With the real claude, `claude auth status` must show a subscription
 # login before the first round.
@@ -41,14 +47,22 @@ cd "$repo" || exit 2
 export PYTHONPATH="$repo"
 py() { python3 -m harness.lib.loopio "$@"; }
 
+usage="usage: $0 [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--allow-fable]"
 once=0 dry=0 max=0
+selargs=
 while [ $# -gt 0 ]; do
     case "$1" in
         --once) once=1 ;;
         --dry-run) dry=1 ;;
         --max) max=$2; shift ;;
+        --unit|--address)
+            # Unit paths and addresses use these characters only, so the list needs no quoting.
+            case "${2:-}" in
+                ''|*[!A-Za-z0-9_./+-]*) echo "ERROR $1 takes a unit path from game/UNITS.tsv or an address" >&2; exit 2 ;;
+            esac
+            selargs="$selargs $1 $2"; shift ;;
         --allow-fable) export HARNESS_ALLOW_FABLE=1 ;;
-        *) echo "usage: $0 [--once] [--max N] [--dry-run] [--allow-fable]" >&2; exit 2 ;;
+        *) echo "$usage" >&2; exit 2 ;;
     esac
     shift
 done
@@ -94,12 +108,23 @@ if [ "$dry" = 0 ]; then
     fi
 fi
 [ -f "$state/queue.json" ] || python3 harness/queue.py build || exit 2
+unset HARNESS_SELECTION
+if [ -n "$selargs" ]; then
+    # shellcheck disable=SC2086  # split on purpose: the values were checked above
+    python3 harness/queue.py select $selargs || exit 2
+    export HARNESS_SELECTION="$state/selection.json"
+fi
 
 rounds=0
 while :; do
     entry="$state/entry.json"
     python3 harness/queue.py next > "$entry" || exit 2
-    if [ ! -s "$entry" ]; then echo "OK    queue empty"; break; fi
+    if [ ! -s "$entry" ]; then
+        # Functions another loop holds are skipped too, so this is not always the end of the batch.
+        if [ -n "$selargs" ]; then echo "OK    nothing left to take in the selection:$selargs (each done, at its attempt cap, or held by another loop)"
+        else echo "OK    queue empty (or the rest is held by another loop)"; fi
+        break
+    fi
     addr=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["address"])' "$entry")
     model=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["model"])' "$entry")
     tag="$state/attempts/$addr-$(date +%Y%m%dT%H%M%S)"

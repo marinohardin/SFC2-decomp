@@ -52,6 +52,8 @@ MATCHED_SET = env_path('HARNESS_MATCHED_SET',
 DIFFICULT = env_path('HARNESS_DIFFICULT',
                      os.path.join(REPO, 'analysis', 'results', 'difficult_functions.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
+# The unit map (tools/units.py): one row per translation unit with its address range.
+UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'game', 'UNITS.tsv'))
 # Rebuilt game source (see harness/SRC_LAYOUT.md).
 SRC_ROOT = env_path('HARNESS_SRC_ROOT', os.path.join(REPO, 'game'))
 # Generated, uncommitted state. Per checkout, so loops in several worktrees do not overwrite
@@ -66,5 +68,7 @@ SHARED = env_path('HARNESS_SHARED', STATE if os.environ.get('HARNESS_STATE')
 BUILD = os.path.join(STATE, 'build')
 QUEUE = os.path.join(STATE, 'queue.json')
 CLAIM = os.path.join(STATE, 'claim.json')
+# What loop.sh --unit/--address resolved to when the loop started (queue.py select).
+SELECTION = os.path.join(STATE, 'selection.json')
 ATTEMPTS = os.path.join(SHARED, 'attempts.tsv')
 CLAIMS = os.path.join(SHARED, 'claims')

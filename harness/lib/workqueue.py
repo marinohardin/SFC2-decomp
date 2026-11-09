@@ -11,6 +11,7 @@ of raw byte 4-grams otherwise (a cruder proxy; the order within a bucket is all 
 """
 import csv
 import fcntl
+import re
 import json
 import os
 import socket
@@ -24,6 +25,7 @@ DIFFICULT_FIELDS = ['address', 'name', 'attempts', 'last_model', 'best_score', '
 COUNTED = {'failed', 'improved', 'exact', 'no-change', 'tampered'}
 LARGE_BYTES = 4096  # about 1,000 instructions; such functions go to the end of the queue
 SOLVED_SAMPLE = 200
+ADDRESS = re.compile(r'^(0x)?[0-9A-Fa-f]{1,8}$')
 
 
 DEFAULT_TIERS = ('opus', 'sonnet', 'sonnet', 'opus')
@@ -214,6 +216,42 @@ def record(paths_, entry, row, tiers):
         best_score=f'{best:.2f}', last_attempt=row['time'],
         reason=f'not exact after {n} attempts'))
     return True
+
+
+def read_unit_map(path):
+    """The unit map as [(first, last, unit)], address ranges as ints."""
+    with open(path, newline='') as f:
+        return [(int(r['first'], 16), int(r['last'], 16), r['unit'])
+                for r in csv.DictReader(f, delimiter='\t') if r.get('unit')]
+
+
+def select(queue, unit_map, units=(), addresses=()):
+    """The addresses a loop restricted with --unit/--address may take, in address order (a
+    batch works through a unit from its first function to its last). Raises ValueError for a
+    unit that is not in the map or a value that is not a hex address. An address that is not
+    in the queue (already exact or difficult, or not a function) simply drops out."""
+    known = {u for _, _, u in unit_map}
+    missing = [u for u in units if u not in known]
+    if missing:
+        raise ValueError(f'not in the unit map: {", ".join(missing)}')
+    ranges = [(lo, hi) for lo, hi, u in unit_map if u in set(units)]
+    want = set()
+    for a in addresses:
+        if not ADDRESS.match(a):
+            raise ValueError(f'not an address: {a}')
+        want.add(int(a, 16))
+    out = []
+    for e in queue:
+        a = int(e['address'], 16)
+        if a in want or any(lo <= a <= hi for lo, hi in ranges):
+            out.append(e['address'])
+    return sorted(out, key=lambda x: int(x, 16))
+
+
+def restrict(queue, selection):
+    """The queue limited to a selection, in the selection's order."""
+    pos = {a: i for i, a in enumerate(selection)}
+    return sorted((e for e in queue if e['address'] in pos), key=lambda e: pos[e['address']])
 
 
 def save_queue(path, queue, built):
