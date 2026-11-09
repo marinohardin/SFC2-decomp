@@ -84,10 +84,17 @@ def load_base(spec):
         raise Untrusted(str(e)) from None
 
 
-def objdiff(target_obj, base_obj, symbol, out_dir):
+OBJDIFF_TIMEOUT = 300   # seconds; objdiff has been seen to spin for hours on some objects
+
+
+def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
     out = os.path.join(out_dir, 'objdiff.json')
-    p = subprocess.run([paths.OBJDIFF, 'diff', '-1', target_obj, '-2', base_obj, '-o', out,
-                        '--format', 'json', symbol], capture_output=True, text=True)
+    try:
+        p = subprocess.run([paths.OBJDIFF, 'diff', '-1', target_obj, '-2', base_obj, '-o', out,
+                            '--format', 'json', symbol], capture_output=True, text=True,
+                           timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return None, None, f'objdiff did not finish in {timeout} s'
     if p.returncode != 0 or not os.path.exists(out):
         return None, None, p.stderr.strip()[-500:]
     with open(out) as f:
