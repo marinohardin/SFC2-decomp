@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tRequestChangeHexAttribute.cpp
 // Functions: 0x0054ec20 to 0x0054ec9b, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

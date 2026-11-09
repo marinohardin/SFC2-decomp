@@ -3,4 +3,4 @@
 // Unit:      unsorted/tConnectEvent.cpp
 // Functions: 0x004cae26 to 0x004cae31, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

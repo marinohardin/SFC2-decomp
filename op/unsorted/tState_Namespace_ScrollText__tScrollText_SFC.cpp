@@ -3,4 +3,4 @@
 // Unit:      unsorted/tState_Namespace_ScrollText__tScrollText_SFC.cpp
 // Functions: 0x0050b3dc to 0x0050b505, 10 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

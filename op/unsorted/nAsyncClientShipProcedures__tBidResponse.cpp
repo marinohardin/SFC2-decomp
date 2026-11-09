@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncClientShipProcedures__tBidResponse.cpp
 // Functions: 0x005f18b5 to 0x005f18d1, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

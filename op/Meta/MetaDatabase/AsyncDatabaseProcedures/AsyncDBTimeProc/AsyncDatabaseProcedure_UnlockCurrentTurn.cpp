@@ -3,4 +3,4 @@
 // Unit:      Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_UnlockCurrentTurn.cpp
 // Functions: 0x005604fc to 0x005604fc, 1 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

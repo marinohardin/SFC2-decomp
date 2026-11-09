@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncNotifyProcedures__tRegisterForNotify.cpp
 // Functions: 0x005cb6b6 to 0x005cb6dc, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

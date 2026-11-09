@@ -3,4 +3,4 @@
 // Unit:      Meta/Servers/Idiom.cpp
 // Functions: 0x005d392a to 0x005d39c1, 3 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

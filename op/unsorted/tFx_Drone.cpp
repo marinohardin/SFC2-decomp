@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFx_Drone.cpp
 // Functions: 0x004ef160 to 0x004f0760, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tTransporterGauge.cpp
 // Functions: 0x004c4a1a to 0x004c4c2a, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

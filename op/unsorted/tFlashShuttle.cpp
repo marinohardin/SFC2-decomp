@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFlashShuttle.cpp
 // Functions: 0x004d6b3d to 0x004d6bec, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

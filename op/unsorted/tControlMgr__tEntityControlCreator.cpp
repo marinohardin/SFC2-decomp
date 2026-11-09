@@ -3,4 +3,4 @@
 // Unit:      unsorted/tControlMgr__tEntityControlCreator.cpp
 // Functions: 0x0040fde0 to 0x0040fe13, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

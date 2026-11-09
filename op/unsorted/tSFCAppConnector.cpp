@@ -3,4 +3,4 @@
 // Unit:      unsorted/tSFCAppConnector.cpp
 // Functions: 0x004cae77 to 0x004caea2, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      Meta/Servers/Ship/AsyncShipProcedures/AsyncShipProcedures_AssignShip.cpp
 // Functions: 0x00586b70 to 0x00586eb8, 5 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tState_Namespace_Tactical__tState_Tactical.cpp
 // Functions: 0x004aae19 to 0x004abadd, 17 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

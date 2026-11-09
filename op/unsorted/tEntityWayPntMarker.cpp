@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntityWayPntMarker.cpp
 // Functions: 0x00410a57 to 0x00410b24, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

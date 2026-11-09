@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMapSettings.cpp
 // Functions: 0x005c19f1 to 0x005c1fef, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

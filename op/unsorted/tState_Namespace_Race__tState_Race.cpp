@@ -3,4 +3,4 @@
 // Unit:      unsorted/tState_Namespace_Race__tState_Race.cpp
 // Functions: 0x00479486 to 0x004799f9, 11 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

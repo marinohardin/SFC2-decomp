@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFSCookiePart.cpp
 // Functions: 0x00434d95 to 0x00434e55, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

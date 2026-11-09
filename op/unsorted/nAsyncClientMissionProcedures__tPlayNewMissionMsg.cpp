@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncClientMissionProcedures__tPlayNewMissionMsg.cpp
 // Functions: 0x005ec228 to 0x005ec244, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

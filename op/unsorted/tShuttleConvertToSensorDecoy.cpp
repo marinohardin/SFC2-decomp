@@ -3,4 +3,4 @@
 // Unit:      unsorted/tShuttleConvertToSensorDecoy.cpp
 // Functions: 0x004aa6c8 to 0x004aa6e4, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

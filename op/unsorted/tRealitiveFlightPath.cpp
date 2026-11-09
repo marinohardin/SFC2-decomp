@@ -3,4 +3,4 @@
 // Unit:      unsorted/tRealitiveFlightPath.cpp
 // Functions: 0x00526a77 to 0x005277b0, 15 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

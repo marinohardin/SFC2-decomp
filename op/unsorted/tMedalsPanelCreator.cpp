@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMedalsPanelCreator.cpp
 // Functions: 0x0060116f to 0x006011f9, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

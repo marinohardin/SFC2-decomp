@@ -3,4 +3,4 @@
 // Unit:      unsorted/tDamageControlSystem.cpp
 // Functions: 0x00438de6 to 0x004390fa, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

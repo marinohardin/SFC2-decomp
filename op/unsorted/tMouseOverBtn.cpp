@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMouseOverBtn.cpp
 // Functions: 0x004c9bb6 to 0x004c9ced, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

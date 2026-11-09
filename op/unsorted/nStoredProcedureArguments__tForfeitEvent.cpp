@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tForfeitEvent.cpp
 // Functions: 0x005509e2 to 0x00550acd, 9 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

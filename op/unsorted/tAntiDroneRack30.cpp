@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAntiDroneRack30.cpp
 // Functions: 0x004d99fc to 0x004d9a14, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

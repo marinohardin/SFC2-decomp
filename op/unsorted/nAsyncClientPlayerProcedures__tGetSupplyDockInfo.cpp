@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncClientPlayerProcedures__tGetSupplyDockInfo.cpp
 // Functions: 0x005fdae8 to 0x005fdb04, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

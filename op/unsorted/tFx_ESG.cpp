@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFx_ESG.cpp
 // Functions: 0x004f096a to 0x004f0f3d, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

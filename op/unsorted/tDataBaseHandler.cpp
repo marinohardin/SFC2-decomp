@@ -3,4 +3,4 @@
 // Unit:      unsorted/tDataBaseHandler.cpp
 // Functions: 0x0057454e to 0x00574f77, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

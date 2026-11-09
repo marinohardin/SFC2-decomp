@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMetaSpecLoader__tCreateShipParams.cpp
 // Functions: 0x0058b2a2 to 0x0058b34d, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

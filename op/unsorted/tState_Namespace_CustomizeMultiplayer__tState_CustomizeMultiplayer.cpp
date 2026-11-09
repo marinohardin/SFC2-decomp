@@ -3,4 +3,4 @@
 // Unit:      unsorted/tState_Namespace_CustomizeMultiplayer__tState_CustomizeMultiplayer.cpp
 // Functions: 0x00461c61 to 0x00462dfb, 27 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

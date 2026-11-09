@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAIWeaponOfficer.cpp
 // Functions: 0x00513e90 to 0x0051492b, 22 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

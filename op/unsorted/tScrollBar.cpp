@@ -3,4 +3,4 @@
 // Unit:      unsorted/tScrollBar.cpp
 // Functions: 0x004c8113 to 0x004c8a2d, 15 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

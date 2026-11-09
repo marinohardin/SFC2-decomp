@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tRegisterForNotify.cpp
 // Functions: 0x0055f364 to 0x0055f476, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

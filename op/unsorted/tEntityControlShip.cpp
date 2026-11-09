@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntityControlShip.cpp
 // Functions: 0x00421939 to 0x00422711, 24 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

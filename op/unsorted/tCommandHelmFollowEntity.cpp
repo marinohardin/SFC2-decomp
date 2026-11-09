@@ -3,4 +3,4 @@
 // Unit:      unsorted/tCommandHelmFollowEntity.cpp
 // Functions: 0x0052441f to 0x00524440, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

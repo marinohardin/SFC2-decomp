@@ -3,4 +3,4 @@
 // Unit:      unsorted/switchD_0045aded.cpp
 // Functions: 0x0045ae3e to 0x0045ae3e, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

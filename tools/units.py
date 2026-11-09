@@ -43,6 +43,14 @@ UNITS_TSV = os.path.join(GAME, 'UNITS.tsv')
 UNITS_JSON = os.path.join(REPO, 'harness', 'units.json')
 
 PROFILE = 'sdk-release'
+# The game's own objects come first in the image and are built for size (/O1): they carry its
+# idioms (`and [m], 0`, `push 1; pop eax`, `fldz; fstp` for float zero) and are not padded to 16
+# bytes. The libraries the game links (the SDK's, the engine's) start at GAME_END, 16-byte
+# aligned, with none of those idioms, and match the SDK's /O2 Release flags
+# (toolchain/calibration/game_flags.md).
+GAME_PROFILE = 'game-release'
+GAME_END = 0x0060f600
+DERIVED = (PROFILE, GAME_PROFILE)   # the profiles an address range gives
 PAGE = 0x1000
 COLUMNS = ('unit', 'first', 'last', 'functions', 'evidence', 'profile', 'header')
 MARKER = '// Placeholder written by tools/units.py.'
@@ -311,8 +319,8 @@ def build(fns, sdk_units=None, headers=()):
         key = unit_of.get(pos)
         end = pos
         if key is None:
-            page = fns[pos].address // PAGE
-            while end + 1 < len(fns) and end + 1 not in unit_of and fns[end + 1].address // PAGE == page:
+            page = _page(fns[pos].address)
+            while end + 1 < len(fns) and end + 1 not in unit_of and _page(fns[end + 1].address) == page:
                 end += 1
         else:
             while end + 1 < len(fns) and unit_of.get(end + 1) == key:
@@ -337,8 +345,8 @@ def build(fns, sdk_units=None, headers=()):
             unit = spell(r['key'])
         used.add(unit.lower())
         out.append(dict(unit=unit, first=f'0x{first.address:08x}', last=f'0x{last.address:08x}',
-                        functions=r['end'] - r['start'] + 1, evidence=evidence, profile=PROFILE,
-                        header=''))
+                        functions=r['end'] - r['start'] + 1, evidence=evidence,
+                        profile=profile_of(first.address, last.address, unit), header=''))
     header_set = {spell(h.lower()).lower(): spell(h.lower()) for h, _ in spellings
                   if h.lower().endswith('.h')}
     for row in out:
@@ -346,6 +354,20 @@ def build(fns, sdk_units=None, headers=()):
             h = row['unit'].rsplit('.', 1)[0] + '.h'
             row['header'] = header_set.get(h.lower(), '')
     return out
+
+
+def _page(address):
+    """The page an unsorted function is grouped by; no page runs across GAME_END."""
+    return (address // PAGE, address >= GAME_END)
+
+
+def profile_of(first, last, unit=''):
+    """The compile profile of a unit from its address range: the game's own for one below
+    GAME_END, the SDK's for one at or above it. A unit on both sides is an error in the map."""
+    if first < GAME_END <= last:
+        raise ValueError(f'{unit} (0x{first:08x} to 0x{last:08x}) runs across 0x{GAME_END:08x}, '
+                         'the end of the game\'s own code')
+    return GAME_PROFILE if last < GAME_END else PROFILE
 
 
 def _fill(n, fns, labels, taken=None):
@@ -489,13 +511,16 @@ def write_tree(rows, game_dir=GAME):
     return written, removed, kept
 
 
-def update_units_json(rows, path=UNITS_JSON):
-    """Add an entry for every unit in the map; existing entries and profiles are kept."""
+def update_units_json(rows, path=UNITS_JSON, reprofile=False):
+    """Add an entry for every unit in the map; existing entries and profiles are kept, unless
+    `reprofile`, which sets every mapped unit's profile to the one its address range gives."""
     with open(path) as f:
         cfg = json.load(f)
     units = cfg.setdefault('units', {})
     for r in rows:
-        units.setdefault(r['unit'], {'profile': r['profile']})
+        entry = units.setdefault(r['unit'], {'profile': r['profile']})
+        if reprofile and entry.get('profile') in DERIVED:   # a unit's own profile is kept
+            entry['profile'] = r['profile']
     with open(path, 'w', newline='\n') as f:
         f.write(format_units_json(cfg))
 
@@ -527,6 +552,10 @@ def main(argv=None):
     ap.add_argument('--sdk', help='the SDK directory (default: beside the exe in the install)')
     ap.add_argument('--check', action='store_true',
                     help='only compare the map with game/UNITS.tsv; exit 1 if it differs')
+    ap.add_argument('--reprofile', action='store_true',
+                    help="replace each unit's profile in harness/units.json with the one its address "
+                         'range gives, keeping a profile of its own (an integrator change to '
+                         'compile flags)')
     args = ap.parse_args(argv)
     sdk = sdk_dir(args.sdk)
     if not os.path.isdir(os.path.join(sdk, 'Scripts', 'Libraries')):
@@ -534,7 +563,10 @@ def main(argv=None):
                  '(pass --sdk or set SFCOP_SDK)')
     fns = read_functions()
     sdk_units, object_headers = sdk_evidence(sdk)
-    rows = build(fns, sdk_units, [])
+    try:
+        rows = build(fns, sdk_units, [])
+    except ValueError as e:
+        sys.exit(f'units.py: {e}')
     units = {r['unit'].lower() for r in rows}
     evidenced = [(h, 'sdk-member') for u, hs in object_headers.items() if u.lower() in units for h in hs]
     evidenced += [(h, 'sdk-tree') for h in sdk_tree_headers(sdk)]
@@ -549,7 +581,7 @@ def main(argv=None):
     with open(UNITS_TSV, 'w', newline='\n') as f:
         f.write(text)
     written, removed, kept = write_tree(rows)
-    update_units_json(rows)
+    update_units_json(rows, reprofile=args.reprofile)
     counts = collections.Counter(r['evidence'] for r in rows)
     fn_counts = collections.Counter()
     for r in rows:

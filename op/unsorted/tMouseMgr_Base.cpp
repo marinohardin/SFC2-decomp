@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMouseMgr_Base.cpp
 // Functions: 0x0040bd69 to 0x0040bdbb, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

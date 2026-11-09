@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetLoggedOnCharacterIDsRequest__tGetLoggedOnCharacterIDsRequestResponse.cpp
 // Functions: 0x00554de8 to 0x00554de8, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

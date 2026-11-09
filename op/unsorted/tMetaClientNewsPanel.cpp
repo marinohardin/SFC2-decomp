@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMetaClientNewsPanel.cpp
 // Functions: 0x005df058 to 0x005df17a, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tRelay.cpp
 // Functions: 0x005d3b86 to 0x005d3c14, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

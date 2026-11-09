@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kQUERRYREQUEST_ITEM_AMOUNT.cpp
 // Functions: 0x00442acd to 0x00442b35, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

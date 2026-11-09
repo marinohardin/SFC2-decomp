@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetAuctionShipsRequest__tGetAuctionShipsResponse.cpp
 // Functions: 0x005567a1 to 0x00556850, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

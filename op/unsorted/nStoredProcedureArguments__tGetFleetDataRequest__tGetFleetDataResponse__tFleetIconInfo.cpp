@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetFleetDataRequest__tGetFleetDataResponse__tFleetIconInfo.cpp
 // Functions: 0x005544c5 to 0x005545e8, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

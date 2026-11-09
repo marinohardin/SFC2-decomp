@@ -3,4 +3,4 @@
 // Unit:      unsorted/tShadowBase.cpp
 // Functions: 0x004a742f to 0x004a82cc, 16 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tAwardMedal.cpp
 // Functions: 0x00551b0f to 0x00551ba5, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

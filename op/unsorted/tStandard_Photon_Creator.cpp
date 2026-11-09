@@ -3,4 +3,4 @@
 // Unit:      unsorted/tStandard_Photon_Creator.cpp
 // Functions: 0x004e7082 to 0x004e709a, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

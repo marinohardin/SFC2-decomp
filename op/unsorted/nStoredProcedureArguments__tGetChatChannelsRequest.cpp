@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetChatChannelsRequest.cpp
 // Functions: 0x0055d2b7 to 0x0055d339, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tPoliticalTensionMatrix__tPoliticalTensionVector.cpp
 // Functions: 0x0053adef to 0x0053ae37, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

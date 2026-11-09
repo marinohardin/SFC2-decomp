@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntity_Transporter.cpp
 // Functions: 0x0041bef8 to 0x0041c0b9, 9 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

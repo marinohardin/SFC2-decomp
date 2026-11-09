@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncClientMapProcedures__tGetEmpireInfo.cpp
 // Functions: 0x005df7ef to 0x005df80b, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

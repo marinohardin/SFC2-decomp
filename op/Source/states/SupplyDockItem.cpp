@@ -3,4 +3,4 @@
 // Unit:      Source/states/SupplyDockItem.cpp
 // Functions: 0x00486136 to 0x0048778e, 77 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

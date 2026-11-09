@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tKillCharactersRequest__tKillCharactersResponse.cpp
 // Functions: 0x0055536f to 0x0055536f, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

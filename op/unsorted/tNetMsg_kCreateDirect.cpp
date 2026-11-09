@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kCreateDirect.cpp
 // Functions: 0x004e2cfb to 0x004e3b3e, 9 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

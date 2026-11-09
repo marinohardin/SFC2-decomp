@@ -3,4 +3,4 @@
 // Unit:      unsorted/tPlayerShadow.cpp
 // Functions: 0x004a1284 to 0x004a12a0, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

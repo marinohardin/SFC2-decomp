@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncDatabaseProcedure__tGetNumLoggedOnCharacters.cpp
 // Functions: 0x005637e1 to 0x005637fd, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

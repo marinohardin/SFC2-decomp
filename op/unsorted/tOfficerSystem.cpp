@@ -3,4 +3,4 @@
 // Unit:      unsorted/tOfficerSystem.cpp
 // Functions: 0x0043a2bd to 0x0043a536, 10 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tElectricSpark.cpp
 // Functions: 0x0040c963 to 0x0040cc0a, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tTexBmp.cpp
 // Functions: 0x004b65f9 to 0x004b6637, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

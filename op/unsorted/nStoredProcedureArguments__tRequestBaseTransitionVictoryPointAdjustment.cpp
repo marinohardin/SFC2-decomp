@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tRequestBaseTransitionVictoryPointAdjustment.cpp
 // Functions: 0x0054e9cc to 0x0054ead2, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

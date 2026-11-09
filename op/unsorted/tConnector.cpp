@@ -3,4 +3,4 @@
 // Unit:      unsorted/tConnector.cpp
 // Functions: 0x0047f8af to 0x0047f8ea, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

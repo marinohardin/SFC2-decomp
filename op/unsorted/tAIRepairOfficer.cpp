@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAIRepairOfficer.cpp
 // Functions: 0x0051a3b9 to 0x0051a3fa, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

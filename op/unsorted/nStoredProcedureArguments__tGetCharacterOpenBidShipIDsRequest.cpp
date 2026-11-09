@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetCharacterOpenBidShipIDsRequest.cpp
 // Functions: 0x00552f30 to 0x00552fb8, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

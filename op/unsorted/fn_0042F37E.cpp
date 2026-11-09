@@ -3,4 +3,4 @@
 // Unit:      unsorted/fn_0042F37E.cpp
 // Functions: 0x0042f37e to 0x0042f806, 10 in game/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

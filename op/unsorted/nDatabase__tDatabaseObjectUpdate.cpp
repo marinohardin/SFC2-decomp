@@ -3,4 +3,4 @@
 // Unit:      unsorted/nDatabase__tDatabaseObjectUpdate.cpp
 // Functions: 0x0054d627 to 0x0054d716, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

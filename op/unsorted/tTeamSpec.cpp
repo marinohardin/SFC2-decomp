@@ -3,4 +3,4 @@
 // Unit:      unsorted/tTeamSpec.cpp
 // Functions: 0x00529b82 to 0x00529c1d, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

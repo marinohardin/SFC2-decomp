@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFlagBridgeSystem.cpp
 // Functions: 0x00436c04 to 0x00436c99, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

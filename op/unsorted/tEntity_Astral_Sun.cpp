@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntity_Astral_Sun.cpp
 // Functions: 0x00410c63 to 0x00411166, 14 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

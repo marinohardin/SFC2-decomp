@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMultiPlasmaXPanel.cpp
 // Functions: 0x00495181 to 0x00495324, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

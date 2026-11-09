@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNotify.cpp
 // Functions: 0x005475c4 to 0x005477b6, 10 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

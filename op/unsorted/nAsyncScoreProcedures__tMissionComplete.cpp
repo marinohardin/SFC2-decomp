@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncScoreProcedures__tMissionComplete.cpp
 // Functions: 0x0059ca20 to 0x0059ca46, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

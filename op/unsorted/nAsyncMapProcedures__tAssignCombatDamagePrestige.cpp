@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncMapProcedures__tAssignCombatDamagePrestige.cpp
 // Functions: 0x005a8f2a to 0x005a8f2a, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

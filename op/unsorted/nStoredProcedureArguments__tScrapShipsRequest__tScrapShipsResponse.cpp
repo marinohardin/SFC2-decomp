@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tScrapShipsRequest__tScrapShipsResponse.cpp
 // Functions: 0x0055769f to 0x0055769f, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

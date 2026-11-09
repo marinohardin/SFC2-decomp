@@ -3,4 +3,4 @@
 // Unit:      unsorted/tETrait_Creator.cpp
 // Functions: 0x0040fea0 to 0x0040fed3, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

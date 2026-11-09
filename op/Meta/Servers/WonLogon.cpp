@@ -3,4 +3,4 @@
 // Unit:      Meta/Servers/WonLogon.cpp
 // Functions: 0x005d5a77 to 0x005d6262, 31 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

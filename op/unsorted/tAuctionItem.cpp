@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAuctionItem.cpp
 // Functions: 0x00544b66 to 0x00545705, 43 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

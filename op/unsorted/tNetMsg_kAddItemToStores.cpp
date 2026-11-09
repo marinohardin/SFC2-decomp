@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kAddItemToStores.cpp
 // Functions: 0x00441f49 to 0x00441f49, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

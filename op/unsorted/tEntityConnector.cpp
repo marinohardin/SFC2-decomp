@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntityConnector.cpp
 // Functions: 0x004960c4 to 0x00496183, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

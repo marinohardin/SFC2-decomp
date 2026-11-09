@@ -3,4 +3,4 @@
 // Unit:      unsorted/tPrimitiveSphere.cpp
 // Functions: 0x004ec275 to 0x004ec28d, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

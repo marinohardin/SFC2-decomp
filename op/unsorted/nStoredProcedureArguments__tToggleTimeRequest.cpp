@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tToggleTimeRequest.cpp
 // Functions: 0x0054f305 to 0x0054f37d, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

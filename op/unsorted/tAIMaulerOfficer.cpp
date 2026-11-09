@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAIMaulerOfficer.cpp
 // Functions: 0x00512a03 to 0x00512b2c, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

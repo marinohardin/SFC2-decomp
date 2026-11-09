@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tRegisterForTurnBreakRequest.cpp
 // Functions: 0x0054f1a6 to 0x0054f2ba, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

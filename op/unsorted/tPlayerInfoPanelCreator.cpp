@@ -3,4 +3,4 @@
 // Unit:      unsorted/tPlayerInfoPanelCreator.cpp
 // Functions: 0x005ff8dd to 0x005ff967, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

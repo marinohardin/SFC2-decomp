@@ -3,4 +3,4 @@
 // Unit:      unsorted/tPlasmaDRackTube12.cpp
 // Functions: 0x004ea4ed to 0x004ea505, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

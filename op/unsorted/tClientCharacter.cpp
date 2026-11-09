@@ -3,4 +3,4 @@
 // Unit:      unsorted/tClientCharacter.cpp
 // Functions: 0x004295da to 0x0042a165, 20 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

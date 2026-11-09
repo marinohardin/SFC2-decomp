@@ -3,4 +3,4 @@
 // Unit:      unsorted/fn_004EECAD.cpp
 // Functions: 0x004eecad to 0x004eefb1, 16 in game/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

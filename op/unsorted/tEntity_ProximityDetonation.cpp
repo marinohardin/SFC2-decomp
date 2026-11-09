@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntity_ProximityDetonation.cpp
 // Functions: 0x00420bd0 to 0x00420d0b, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

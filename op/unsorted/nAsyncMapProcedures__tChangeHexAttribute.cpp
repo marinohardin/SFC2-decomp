@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncMapProcedures__tChangeHexAttribute.cpp
 // Functions: 0x005a9c3f to 0x005a9c3f, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

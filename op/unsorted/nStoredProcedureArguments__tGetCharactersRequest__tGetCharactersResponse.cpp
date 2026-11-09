@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetCharactersRequest__tGetCharactersResponse.cpp
 // Functions: 0x005536da to 0x005536da, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

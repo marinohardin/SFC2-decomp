@@ -3,4 +3,4 @@
 // Unit:      Source/network/netcon.cpp
 // Functions: 0x0043405f to 0x00434195, 2 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

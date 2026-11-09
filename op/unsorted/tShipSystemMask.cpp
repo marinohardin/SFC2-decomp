@@ -3,4 +3,4 @@
 // Unit:      unsorted/tShipSystemMask.cpp
 // Functions: 0x004455bb to 0x004459be, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

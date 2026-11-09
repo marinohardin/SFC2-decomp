@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMaulerPanel.cpp
 // Functions: 0x00490f27 to 0x00490f90, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

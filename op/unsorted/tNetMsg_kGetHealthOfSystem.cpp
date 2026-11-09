@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kGetHealthOfSystem.cpp
 // Functions: 0x00443089 to 0x004430f9, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

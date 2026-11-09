@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kGetItemAmountFromStoresAtMark.cpp
 // Functions: 0x00441f5b to 0x00441f5b, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

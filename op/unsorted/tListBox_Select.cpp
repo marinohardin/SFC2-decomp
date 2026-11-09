@@ -3,4 +3,4 @@
 // Unit:      unsorted/tListBox_Select.cpp
 // Functions: 0x004c70b3 to 0x004c7579, 13 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNewsWatchdog.cpp
 // Functions: 0x005a6351 to 0x005a6438, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

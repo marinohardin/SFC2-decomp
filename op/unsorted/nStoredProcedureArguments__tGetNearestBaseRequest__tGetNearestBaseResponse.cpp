@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetNearestBaseRequest__tGetNearestBaseResponse.cpp
 // Functions: 0x00558d9f to 0x00558dbe, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

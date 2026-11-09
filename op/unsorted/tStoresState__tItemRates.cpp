@@ -3,4 +3,4 @@
 // Unit:      unsorted/tStoresState__tItemRates.cpp
 // Functions: 0x0045120b to 0x0045133a, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

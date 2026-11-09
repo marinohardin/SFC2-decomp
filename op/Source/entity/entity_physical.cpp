@@ -3,4 +3,4 @@
 // Unit:      Source/entity/entity_physical.cpp
 // Functions: 0x00413153 to 0x00413fe9, 34 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

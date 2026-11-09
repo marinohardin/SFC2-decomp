@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncNotifyProcedures__tSparkNotifyEvent.cpp
 // Functions: 0x005cb8ab to 0x005cb8c7, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

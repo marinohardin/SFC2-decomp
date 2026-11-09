@@ -3,4 +3,4 @@
 // Unit:      unsorted/tClockPart.cpp
 // Functions: 0x00434f0e to 0x00434f0e, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

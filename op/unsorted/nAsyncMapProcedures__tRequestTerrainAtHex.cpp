@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncMapProcedures__tRequestTerrainAtHex.cpp
 // Functions: 0x005b352f to 0x005b354b, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -96,7 +96,35 @@ def test_fixture_map_follows_the_evidence_rules(tmp_path):
     got = [(r['unit'], r['first'], r['last'], r['functions'], r['evidence'], r['header'])
            for r in _rows(tmp_path)]
     assert got == EXPECTED
-    assert {r['profile'] for r in _rows(tmp_path)} == {'sdk-release'}
+    assert {r['profile'] for r in _rows(tmp_path)} == {'game-release'}   # all below 0x0060f600
+
+
+BOUNDARY = HEADER + '\n'.join([
+    # one unsorted page, 0x0060f000, with the end of the game's own code inside it at 0x0060f600
+    '0060f500,16,FUN_0060f500,,,default,,,,0,,function,',
+    '0060f5e0,16,FUN_0060f5e0,,,default,,,,0,,function,',
+    '0060f600,16,FUN_0060f600,,,default,,,,0,,function,',
+    '0060f700,16,FUN_0060f700,,,default,,,,0,,function,',
+]) + '\n'
+
+
+def test_a_page_splits_where_the_game_code_ends_and_each_side_has_its_profile(tmp_path):
+    p = tmp_path / 'functions.csv'
+    p.write_text(BOUNDARY)
+    got = [(r['unit'], r['first'], r['last'], r['functions'], r['profile'])
+           for r in units.build(units.read_functions(str(p)))]
+    assert got == [
+        ('unsorted/fn_0060F000.cpp', '0x0060f500', '0x0060f5e0', 2, 'game-release'),
+        ('unsorted/fn_0060F600.cpp', '0x0060f600', '0x0060f700', 2, 'sdk-release'),
+    ]
+
+
+def test_profile_of_follows_the_address_range():
+    assert units.profile_of(0x00401000, 0x00401010) == 'game-release'
+    assert units.profile_of(0x0060f5e0, 0x0060f5ff) == 'game-release'
+    assert units.profile_of(0x0060f600, 0x0060f700) == 'sdk-release'
+    with pytest.raises(ValueError, match='Source/test/Across.cpp'):
+        units.profile_of(0x0060f500, 0x0060f600, 'Source/test/Across.cpp')
 
 
 def test_original_paths_map_to_the_game_tree():
@@ -279,6 +307,22 @@ def test_units_json_keeps_existing_entries_and_profiles(tmp_path):
         '  "Tiger/tTest.cpp": {"profile": "other"}\n }\n}\n')
 
 
+def test_reprofile_replaces_the_profile_of_every_mapped_unit(tmp_path):
+    p = tmp_path / 'units.json'
+    p.write_text(json.dumps({'module': 'STARFLEETOP', 'default_profile': None,
+                             'profiles': {'sdk-release': {}, 'game-release': {}},
+                             'units': {'Source/test/Old.cpp': {'profile': 'sdk-release'},
+                                       'Source/test/Own.cpp': {'profile': 'test-own-flags'},
+                                       'Tiger/tGone.cpp': {'profile': 'sdk-release'}}}))
+    rows = [dict(unit='Source/test/Old.cpp', profile='game-release'),
+            dict(unit='Source/test/Own.cpp', profile='game-release')]
+    units.update_units_json(rows, str(p), reprofile=True)
+    got = json.loads(p.read_text())['units']
+    assert got == {'Source/test/Old.cpp': {'profile': 'game-release'},
+                   'Source/test/Own.cpp': {'profile': 'test-own-flags'},   # its own: kept
+                   'Tiger/tGone.cpp': {'profile': 'sdk-release'}}   # unmapped: left as it was
+
+
 # --- the committed map --------------------------------------------------------------------------
 
 def _committed():
@@ -338,6 +382,18 @@ def test_units_json_profiles_every_unit_with_the_game_include_order():
     assert cfg['profiles']['sdk-release']['include_first'] == ['.', 'port']
     missing = [r['unit'] for r in rows if cfg['units'].get(r['unit'], {}).get('profile') not in cfg['profiles']]
     assert missing == []
+    assert cfg['profiles']['game-release']['include_first'] == ['.', 'port']
+
+
+def test_committed_profiles_follow_the_end_of_the_game_code():
+    rows, _ = _committed()
+    cfg = json.loads((ROOT / 'harness' / 'units.json').read_text())
+    wrong = [r['unit'] for r in rows
+             if r['profile'] != ('game-release' if int(r['last'], 16) < 0x0060f600 else 'sdk-release')
+             or cfg['units'][r['unit']]['profile'] != r['profile']]
+    assert wrong == []
+    assert '/O1 ' in cfg['profiles']['game-release']['flags']
+    assert '/O2 ' in cfg['profiles']['sdk-release']['flags']
 
 
 def _sdk():
@@ -357,3 +413,19 @@ def test_sdk_variable_is_honoured_as_main_honours_it(tmp_path, monkeypatch):
                     reason='needs the SDK from the install')
 def test_committed_map_is_what_the_evidence_gives():
     assert units.main(['--check']) == 0
+
+
+def test_the_calibration_idioms_are_counted_from_instructions():
+    spec = importlib.util.spec_from_file_location(
+        'game_flags', ROOT / 'toolchain' / 'calibration' / 'game_flags.py')
+    gf = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gf)
+
+    class Ins:
+        def __init__(self, mnemonic, op_str='', size=2):
+            self.mnemonic, self.op_str, self.size = mnemonic, op_str, size
+    ins = [Ins('fldz'), Ins('fstp', 'dword ptr [ecx + 0x1c]'), Ins('push', '1'), Ins('pop', 'eax'),
+           Ins('and', 'dword ptr [esi + 4], 0', 4), Ins('or', 'dword ptr [esi + 8], 0xffffffff', 4),
+           Ins('mov', 'dword ptr [esi + 0xc], 0', 7), Ins('fldz'), Ins('fstp', 'st(1)')]
+    assert gf.idioms(ins) == dict(fldz_store=1, push_pop=1, and_zero=1, or_minus_one=1,
+                                  mov_zero=1)

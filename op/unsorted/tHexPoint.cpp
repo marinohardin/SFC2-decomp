@@ -3,4 +3,4 @@
 // Unit:      unsorted/tHexPoint.cpp
 // Functions: 0x005b693b to 0x005b6a36, 9 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncDatabaseProcedure__tGetCharacterPosition.cpp
 // Functions: 0x005619bc to 0x005619d8, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

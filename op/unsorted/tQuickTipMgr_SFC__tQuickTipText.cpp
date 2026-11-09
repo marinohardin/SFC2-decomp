@@ -3,4 +3,4 @@
 // Unit:      unsorted/tQuickTipMgr_SFC__tQuickTipText.cpp
 // Functions: 0x004c7669 to 0x004c76d8, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMetaMapControl.cpp
 // Functions: 0x005e2f9f to 0x005e469e, 67 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

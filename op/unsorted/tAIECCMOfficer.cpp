@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAIECCMOfficer.cpp
 // Functions: 0x00515316 to 0x005155bf, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

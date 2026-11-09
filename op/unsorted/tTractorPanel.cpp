@@ -3,4 +3,4 @@
 // Unit:      unsorted/tTractorPanel.cpp
 // Functions: 0x00492f39 to 0x0049302f, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

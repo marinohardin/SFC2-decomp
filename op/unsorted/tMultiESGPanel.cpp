@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMultiESGPanel.cpp
 // Functions: 0x00493c58 to 0x00493d19, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

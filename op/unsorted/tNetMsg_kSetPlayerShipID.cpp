@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kSetPlayerShipID.cpp
 // Functions: 0x004598ce to 0x004598ce, 1 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

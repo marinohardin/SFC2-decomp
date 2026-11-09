@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncCharacterProcedures__tGetCharacterShipIDs.cpp
 // Functions: 0x00595960 to 0x00595986, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

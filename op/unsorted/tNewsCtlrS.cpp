@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNewsCtlrS.cpp
 // Functions: 0x005a5c93 to 0x005a5cfc, 4 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

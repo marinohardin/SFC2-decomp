@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncDatabaseProcedure__tKillOldCharacters.cpp
 // Functions: 0x00563db8 to 0x00563dd4, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

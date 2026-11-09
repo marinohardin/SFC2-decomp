@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntity_Mine.cpp
 // Functions: 0x004128ea to 0x00412abe, 13 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

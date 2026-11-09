@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncMapProcedures__tCorrectBaseAIBug.cpp
 // Functions: 0x005aa6e6 to 0x005aa702, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncCharacterProcedures__tGetCharacterMedals.cpp
 // Functions: 0x00594529 to 0x0059454f, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

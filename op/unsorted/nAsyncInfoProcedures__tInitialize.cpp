@@ -3,4 +3,4 @@
 // Unit:      unsorted/nAsyncInfoProcedures__tInitialize.cpp
 // Functions: 0x005d1353 to 0x005d136f, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

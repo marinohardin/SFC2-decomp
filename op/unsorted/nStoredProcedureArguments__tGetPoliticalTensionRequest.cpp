@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetPoliticalTensionRequest.cpp
 // Functions: 0x0054ba49 to 0x0054bb10, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

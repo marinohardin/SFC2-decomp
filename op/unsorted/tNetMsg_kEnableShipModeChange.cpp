@@ -3,4 +3,4 @@
 // Unit:      unsorted/tNetMsg_kEnableShipModeChange.cpp
 // Functions: 0x0043c56c to 0x0043c60e, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

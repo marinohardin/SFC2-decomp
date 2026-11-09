@@ -71,12 +71,14 @@ and the flags. The harness adds only output paths and `/FAs`, and drops `/Fr /FR
 and output options from a profile (they change no code bytes; see
 `toolchain/calibration/report.md`). A `default_profile` applies to units without an entry.
 
-The game's own Release flags are not known yet. The SDK's (`/MT /W3 /GR /GX /O2`, defines
-`WIN32 NDEBUG _WINDOWS`) reproduce the SDK libraries byte for byte, and the exe's Rich header
-shows the same compiler build, so they are the starting profile (`sdk-release`). A unit that
-cannot match under them is evidence of different flags, recorded per unit, never changed by an
-agent. Include directories (`game/` itself, then vendored headers) are set when the first game
-units exist.
+The SDK's Release flags (`/MT /W3 /GR /GX /O2`, defines `WIN32 NDEBUG _WINDOWS`) reproduce the
+SDK libraries byte for byte, and the exe's Rich header shows the same compiler build. They are
+the `sdk-release` profile, for every unit at or above `0x0060f600`, where the linked libraries
+start. The game's own objects, below that address, were built for size: `game-release` is the
+same line with `/O1` for `/O2` (`toolchain/calibration/game_flags.md`). `tools/units.py` gives
+each unit its profile from its address range. A unit that cannot match under its profile is
+evidence of different flags, recorded per unit, never changed by an agent. Include directories
+(`game/` itself, then vendored headers) are set when the first game units exist.
 
 ## Rules the harness enforces on this tree
 

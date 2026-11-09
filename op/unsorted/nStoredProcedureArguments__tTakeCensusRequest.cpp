@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tTakeCensusRequest.cpp
 // Functions: 0x0054eeb2 to 0x0054ef9a, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

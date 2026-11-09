@@ -3,4 +3,4 @@
 // Unit:      unsorted/tFleetEntry.cpp
 // Functions: 0x004c2669 to 0x004c3da7, 30 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

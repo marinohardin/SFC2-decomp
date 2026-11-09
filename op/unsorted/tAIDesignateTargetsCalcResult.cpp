@@ -3,4 +3,4 @@
 // Unit:      unsorted/tAIDesignateTargetsCalcResult.cpp
 // Functions: 0x00521c62 to 0x00521d05, 6 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

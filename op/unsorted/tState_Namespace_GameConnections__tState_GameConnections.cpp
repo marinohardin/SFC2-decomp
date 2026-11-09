@@ -3,4 +3,4 @@
 // Unit:      unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp
 // Functions: 0x00466674 to 0x004696e0, 42 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

@@ -3,4 +3,4 @@
 // Unit:      Meta/Servers/Character/AsyncCharacterProcedures/AsyncCharacterProcedures_ConnectPlayer.cpp
 // Functions: 0x00591ca3 to 0x00591ca3, 1 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

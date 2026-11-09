@@ -3,4 +3,4 @@
 // Unit:      unsorted/tA3WeaponButton.cpp
 // Functions: 0x004d608d to 0x004d683d, 10 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

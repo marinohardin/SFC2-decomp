@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMessageDialog.cpp
 // Functions: 0x006005b4 to 0x00600a4c, 15 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

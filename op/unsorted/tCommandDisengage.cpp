@@ -3,4 +3,4 @@
 // Unit:      unsorted/tCommandDisengage.cpp
 // Functions: 0x005243bf to 0x005243e0, 2 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

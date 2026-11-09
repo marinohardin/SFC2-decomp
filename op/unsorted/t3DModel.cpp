@@ -3,4 +3,4 @@
 // Unit:      unsorted/t3DModel.cpp
 // Functions: 0x0042e11d to 0x0042e18f, 10 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

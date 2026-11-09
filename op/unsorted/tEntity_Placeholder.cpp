@@ -3,4 +3,4 @@
 // Unit:      unsorted/tEntity_Placeholder.cpp
 // Functions: 0x00414254 to 0x00414557, 7 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

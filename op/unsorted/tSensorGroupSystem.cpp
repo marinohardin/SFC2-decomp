@@ -3,4 +3,4 @@
 // Unit:      unsorted/tSensorGroupSystem.cpp
 // Functions: 0x0043dfd4 to 0x0043f6c3, 44 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

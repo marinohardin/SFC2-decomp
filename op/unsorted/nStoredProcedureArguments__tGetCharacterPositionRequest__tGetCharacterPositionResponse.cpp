@@ -3,4 +3,4 @@
 // Unit:      unsorted/nStoredProcedureArguments__tGetCharacterPositionRequest__tGetCharacterPositionResponse.cpp
 // Functions: 0x00553050 to 0x0055317a, 8 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

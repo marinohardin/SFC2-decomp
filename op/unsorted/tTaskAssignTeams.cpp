@@ -3,4 +3,4 @@
 // Unit:      unsorted/tTaskAssignTeams.cpp
 // Functions: 0x0057ea11 to 0x0057ea54, 3 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)

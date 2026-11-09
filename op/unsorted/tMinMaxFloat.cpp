@@ -3,4 +3,4 @@
 // Unit:      unsorted/tMinMaxFloat.cpp
 // Functions: 0x004cf0c3 to 0x004cf302, 5 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// Profile:   game-release (harness/units.json)
