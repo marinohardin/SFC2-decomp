@@ -5,8 +5,13 @@ Scans `game/` for the annotations `harness/SRC_LAYOUT.md` defines and writes:
 
 - `game/manifest.tsv`: one row per claimed address: address, size (from
   `ghidra/exports/functions.csv`), symbol, source file, compile modes (DESIGN §7.2).
-  `// FUNCTION:` claims a function for both modes, `vc6 guest`; `// STUB:` is `stub`: compiled,
-  not scored, and its lifted body stays in the native build.
+  `// FUNCTION:` claims a function for both modes, `vc6 guest`, once
+  `analysis/results/matched_set.json` records it exact; until then it is `partial`: kept in game/
+  and scored, but its lifted body stays in the native build. A unit may mix the two: /O1 puts each
+  function in its own COMDAT section, the object lift places only claimed sections and what they
+  reference, and an exact function's call to a partial one resolves to the exe's address its own
+  original bytes give (tools/objlift/placement.py). `// STUB:` is `stub`: compiled, not
+  scored, and its lifted body stays in the native build.
 - `src/app/guest/override.cpp`: for every function in guest mode, an entry point named like the
   lifted body it replaces (`sub_006FC5A0`) that takes the guest calling convention and calls the
   function compiled from the source; for every virtual member of a `// VTABLE:` class that has no
@@ -22,11 +27,12 @@ at the end of a line); what it does not understand it reports rather than guesse
 - a member function is __thiscall and a free function or static member __cdecl; other
   conventions are refused.
 
-Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--manifest TSV]
-                                 [--override CPP] [--check]
+Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--matched JSON]
+                                 [--manifest TSV] [--override CPP] [--check]
 """
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -34,6 +40,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GAME = os.path.join(REPO, 'game')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
+MATCHED = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
 MANIFEST = os.path.join(GAME, 'manifest.tsv')
 OVERRIDE = os.path.join(REPO, 'src', 'app', 'guest', 'override.cpp')
 
@@ -354,8 +361,20 @@ def resolve_class(name, context, classes):
         scope = scope[:-1]
 
 
-def build(game, functions_csv):
+def exact_addresses(matched_json):
+    """The addresses the harness has recorded byte-exact (harness/update-matched-set.sh writes it)."""
+    try:
+        with open(matched_json, encoding='utf-8') as f:
+            recorded = json.load(f)['functions']
+        return {int(a, 16) for a, e in recorded.items() if e.get('exact') is True}
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
+        raise ManifestError('%s cannot be read as a matched set (%s); the harness writes it '
+                            '(harness/update-matched-set.sh), or pass --matched' % (matched_json, e)) from None
+
+
+def build(game, functions_csv, matched_json=MATCHED):
     functions, classes = scan(game)
+    exact = exact_addresses(matched_json)
     sizes = {}
     with open(functions_csv, newline='') as f:
         for row in csv.DictReader(f):
@@ -371,11 +390,18 @@ def build(game, functions_csv):
             raise ManifestError('%s:%d: 0x%08x is not a function in %s' % (
                 f['file'], f['line'], f['address'], os.path.relpath(functions_csv, REPO)))
         f['size'] = sizes[f['address']]
-        f['modes'] = 'vc6 guest' if f['kind'] == 'FUNCTION' else 'stub'
+        if f['kind'] != 'FUNCTION':
+            f['modes'] = 'stub'
+        elif f['address'] not in exact:
+            # Not byte-exact yet: the source is kept and scored, but neither the object lift nor
+            # the override table takes it, so the native build runs the original's lifted body.
+            f['modes'] = 'partial'
+        else:
+            f['modes'] = 'vc6 guest'
         record = owner_class(f['name'], classes)
         f['class'] = record
         f['static'] = bool(record) and find_member(record, f)['static']
-        if record is not None and is_constructor_or_destructor(f['name']):
+        if f['modes'] == 'vc6 guest' and record is not None and is_constructor_or_destructor(f['name']):
             # C++ has no pointer to a constructor or destructor, so the guest build cannot wrap one
             # as an entry point; the lifted body stays until the object lifter (DESIGN §7.2) carries
             # the VC6 object in.
@@ -489,12 +515,13 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--game', default=GAME)
     ap.add_argument('--functions', default=FUNCTIONS_CSV)
+    ap.add_argument('--matched', default=MATCHED)
     ap.add_argument('--manifest', default=MANIFEST)
     ap.add_argument('--override', default=OVERRIDE)
     ap.add_argument('--check', action='store_true', help='exit 1 if an output is out of date')
     args = ap.parse_args(argv)
     try:
-        functions, classes = build(args.game, args.functions)
+        functions, classes = build(args.game, args.functions, args.matched)
         manifest, override = manifest_text(functions), override_text(functions, classes)
     except ManifestError as e:
         print('manifest: %s' % e, file=sys.stderr)

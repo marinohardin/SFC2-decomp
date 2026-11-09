@@ -99,6 +99,10 @@ int32 TestRound( int32 value )
 '''
 
 
+# Every FUNCTION address the fixtures claim is recorded exact unless a test says otherwise.
+EXACT = ('0x00401000', '0x00401100', '0x00401300', '0x00401400', '0x00401500', '0x00401600')
+
+
 def make_tree(tmp_path, header=HEADER, source=SOURCE):
     game = tmp_path / 'game'
     (game / 'Test').mkdir(parents=True)
@@ -109,11 +113,20 @@ def make_tree(tmp_path, header=HEADER, source=SOURCE):
     (game / 'port' / 'types.h').write_text('// FUNCTION: STARFLEETOP 0x00409999\nvoid nope();\n')
     csv = tmp_path / 'functions.csv'
     csv.write_text(CSV)
+    write_matched(tmp_path, EXACT)
     return game, csv
+
+
+
+def write_matched(tmp_path, exact, partial=()):
+    entries = ['"%s": {"exact": true, "score": 100.0}' % a for a in exact]
+    entries += ['"%s": {"exact": false, "score": %s}' % (a, s) for a, s in partial]
+    (tmp_path / 'matched.json').write_text('{"version": 1, "functions": {%s}}' % ', '.join(entries))
 
 
 def run(tmp_path, game, csv, *extra):
     return manifest.main(['--game', str(game), '--functions', str(csv),
+                          '--matched', str(tmp_path / 'matched.json'),
                           '--manifest', str(tmp_path / 'out' / 'manifest.tsv'),
                           '--override', str(tmp_path / 'out' / 'override.cpp'), *extra])
 
@@ -174,7 +187,7 @@ def test_virtual_members_without_a_body_get_a_dispatcher_at_their_slot(tmp_path)
 
 def test_slots_follow_vc6_single_inheritance(tmp_path):
     game, csv = make_tree(tmp_path)
-    _, classes = manifest.build(str(game), str(csv))
+    _, classes = manifest.build(str(game), str(csv), str(tmp_path / 'matched.json'))
     slots = [(owner, m['name']) for owner, m in manifest.vtable_slots('tTestShip', classes)]
     assert slots == [('tTestShip', '~tTestShip'), ('tTestShip', 'mSpeed'),
                      ('tTestBase', 'mStop'), ('tTestShip', 'mFire')]
@@ -228,7 +241,7 @@ def test_a_constructor_initialiser_list_is_not_part_of_the_signature(tmp_path):
                             '// FUNCTION: STARFLEETOP 0x00401100\ntTestShip* tTestShip::Instance() :\n'
                             '\tfSpeed( 0 )')
     game, csv = make_tree(tmp_path, source=source)
-    functions, _ = manifest.build(str(game), str(csv))
+    functions, _ = manifest.build(str(game), str(csv), str(tmp_path / 'matched.json'))
     assert [f['name'] for f in functions if f['address'] == 0x00401100] == ['tTestShip::Instance']
 
 
@@ -276,6 +289,40 @@ def test_a_part_binding_for_another_class_is_refused(tmp_path, capsys):
     game, csv = make_tree(tmp_path, header=header)
     assert run(tmp_path, game, csv) != 0
     assert 'GenAbstractBinding(tTestBase) inside class tTestShip' in capsys.readouterr().err
+
+
+def test_a_function_not_recorded_exact_is_partial_and_has_no_entry_point(tmp_path):
+    # 0x00401300 scored 99.5 and 0x00401400 was never recorded: both stay in game/ as partial, so
+    # neither the object lift (vc6) nor the override table (guest) takes them. The exact functions
+    # of the same unit still enter: /O1 gives each function its own section.
+    game, csv = make_tree(tmp_path)
+    write_matched(tmp_path, ('0x00401000', '0x00401100'), partial=[('0x00401300', 99.5)])
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t')[4] for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows == {'0x00401000': 'vc6 guest', '0x00401100': 'vc6 guest', '0x00401200': 'stub',
+                    '0x00401300': 'partial', '0x00401400': 'partial'}
+    text = (tmp_path / 'out' / 'override.cpp').read_text()
+    assert 'sub_00401000' in text and 'sub_00401100' in text
+    assert 'sub_00401300' not in text and 'sub_00401400' not in text
+    assert 'sfcop_guest_override_count = 2u;' in text
+
+
+def test_an_unreadable_matched_set_is_reported(tmp_path, capsys):
+    game, csv = make_tree(tmp_path)
+    (tmp_path / 'matched.json').write_text('{"version": 1}')
+    assert run(tmp_path, game, csv) == 2
+    assert 'cannot be read as a matched set' in capsys.readouterr().err
+
+
+def test_a_constructor_not_recorded_exact_is_partial_not_vc6(tmp_path):
+    header = HEADER.replace('\tstatic tTestShip* Instance();', '\ttTestShip();\n\tstatic tTestShip* Instance();')
+    source = SOURCE + '\n// FUNCTION: STARFLEETOP 0x00401500\ntTestShip::tTestShip()\n{\n}\n'
+    game, csv = make_tree(tmp_path, header=header, source=source)
+    csv.write_text(CSV + '00401500,20,tTestShip::tTestShip,,,default,,,,0,,function,\n')
+    write_matched(tmp_path, ('0x00401000',), partial=[('0x00401500', 20.0)])
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t')[4] for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'] == 'partial'
 
 
 def test_committed_manifest_and_override_table_match_the_tree():
