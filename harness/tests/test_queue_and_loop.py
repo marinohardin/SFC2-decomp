@@ -270,3 +270,79 @@ def test_queue_cli_select_reports_a_missing_unit_map(tmp_path):
     (tmp_path / 'UNITS.tsv').unlink()
     r = _queue_cli(tmp_path, 'select', '--unit', 'Tiger/tsay.cpp')
     assert r.returncode == 2 and 'ERROR' in r.stderr
+
+
+# --- --brief ----------------------------------------------------------------------------------
+
+def _prompt(tmp_path, monkeypatch, brief=None):
+    template = tmp_path / 'function.md'
+    template.write_text('Function {{ADDRESS}}.\n')
+    monkeypatch.setattr(loopio.paths, 'CLAIM', str(tmp_path / 'no-claim.json'))
+    if brief is None:
+        monkeypatch.delenv('HARNESS_BRIEF', raising=False)
+    else:
+        monkeypatch.setenv('HARNESS_BRIEF', brief)
+    return loopio.prompt(dict(address='0x00401000', name='A'), template_path=str(template))
+
+
+def test_prompt_appends_the_batch_brief_after_a_rule(tmp_path, monkeypatch):
+    b = tmp_path / 'brief.md'
+    b.write_text('Notes on the class.\n\n')
+    assert _prompt(tmp_path, monkeypatch, str(b)) == \
+        'Function 0x00401000.\n\n---\n\nNotes on the class.\n'
+    assert _prompt(tmp_path, monkeypatch) == 'Function 0x00401000.\n'
+
+
+def test_prompt_stops_when_the_brief_cannot_be_read(tmp_path, monkeypatch):
+    with pytest.raises(SystemExit, match='batch brief'):
+        _prompt(tmp_path, monkeypatch, str(tmp_path / 'missing.md'))
+
+
+def test_loop_refuses_a_missing_brief_or_one_inside_the_worktree(tmp_path):
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    loop = os.path.join(here, 'loop.sh')
+    env = dict(os.environ, HARNESS_STATE=str(tmp_path / 'state'))
+    r = subprocess.run(['sh', loop, '--dry-run', '--brief', str(tmp_path / 'missing.md')],
+                       capture_output=True, text=True, env=env)
+    assert r.returncode == 2 and 'no readable brief' in r.stderr
+    r = subprocess.run(['sh', loop, '--dry-run', '--brief', os.path.join(here, 'README.md')],
+                       capture_output=True, text=True, env=env)
+    assert r.returncode == 2 and 'outside this worktree' in r.stderr
+    assert subprocess.run(['sh', loop, '--brief'], capture_output=True, text=True,
+                          env=env).returncode == 2
+
+
+def _loop(tmp_path, *args, cwd=None):
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return subprocess.run(['sh', os.path.join(here, 'loop.sh'), '--dry-run', *args],
+                          capture_output=True, text=True, cwd=cwd,
+                          env=dict(os.environ, HARNESS_STATE=str(tmp_path / 'state')))
+
+
+def test_loop_refuses_an_empty_brief(tmp_path):
+    b = tmp_path / 'brief.md'
+    b.write_text(' \n\t\n')
+    r = _loop(tmp_path, '--brief', str(b))
+    assert r.returncode == 2 and 'is empty' in r.stderr
+
+
+def test_loop_takes_a_relative_brief_from_the_callers_directory(tmp_path):
+    r = _loop(tmp_path, '--brief', 'notes.md', cwd=str(tmp_path))
+    assert r.returncode == 2 and str(tmp_path / 'notes.md') in r.stderr
+
+
+def test_loop_refuses_a_link_outside_that_points_into_the_worktree(tmp_path):
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    link = tmp_path / 'readme.md'
+    link.symlink_to(os.path.join(here, 'README.md'))
+    r = _loop(tmp_path, '--brief', str(link))
+    assert r.returncode == 2 and 'outside this worktree' in r.stderr
+
+
+def test_loop_refuses_a_worktree_path_spelled_in_other_letter_case(tmp_path):
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    other = os.path.join(here.swapcase(), 'README.md')
+    if not os.path.exists(other):
+        pytest.skip('case-sensitive file system')
+    r = _loop(tmp_path, '--brief', other)
+    assert r.returncode == 2 and 'outside this worktree' in r.stderr

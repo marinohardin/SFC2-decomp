@@ -85,6 +85,15 @@ def prompt(entry, template_path=None, index=None):
     }
     for k, v in values.items():
         text = text.replace('{{' + k + '}}', v)
+    brief = os.environ.get('HARNESS_BRIEF')
+    if brief:
+        try:
+            with open(brief) as f:
+                extra = f.read().strip()
+        except OSError as e:
+            raise SystemExit(f'ERROR cannot read the batch brief {brief}: {e}')
+        if extra:
+            text = text.rstrip('\n') + '\n\n---\n\n' + extra + '\n'
     return text
 
 

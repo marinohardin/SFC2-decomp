@@ -160,8 +160,17 @@ harness/loop.sh --once           # one function
 harness/loop.sh --max 20
 harness/loop.sh --unit Tiger/tsay.cpp            # one grind batch: one unit, in address order
 harness/loop.sh --once --address 0x006d2800      # a chosen function; both flags repeat
+harness/loop.sh --unit Tiger/tsay.cpp --brief ~/notes/tsay.md    # with a batch brief
 harness/loop.sh --allow-fable    # add the Fable tier after attempt 4
 ```
+
+`--brief FILE` appends a batch brief to every session's prompt, after a `---` line: working
+notes for one batch, such as what the unit's classes do, that are never committed. The file
+must lie outside the worktree and must not be empty; a relative path is taken from the
+directory the loop was started in. The loop copies it into `$HARNESS_STATE/brief.md` at the start,
+where a session cannot change it, and sets `HARNESS_BRIEF` to that copy; each attempt's
+`.prompt.md` shows exactly what the session was given. If the prompt cannot be built (the copy
+has become unreadable, say), the loop stops before starting the session.
 
 `--unit` takes a unit path from `game/UNITS.tsv` and `--address` a function address; each may
 be given more than once. Before the first round the loop runs `queue.py select`, which resolves

@@ -2,7 +2,8 @@
 # The headless decompilation loop: one fresh `claude -p` session per function, judged only by
 # harness/build-and-verify.sh.
 #
-#   harness/loop.sh [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--allow-fable]
+#   harness/loop.sh [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--brief FILE]
+#                   [--allow-fable]
 #
 # Each round: claim the next function (harness/queue.py; a lock file keeps loops in other
 # worktrees off it), score it as it stands, write the claim the Stop hook checks, run claude with
@@ -33,6 +34,11 @@
 # select), into a file in the harness state that the session cannot edit. Without them the loop
 # takes the whole queue.
 #
+# --brief FILE appends a batch brief to every session's prompt: notes on the unit's classes,
+# say, that are working material for one batch and are never committed. The file must lie
+# outside this worktree; it is copied into the harness state when the loop starts, so the
+# session cannot change it and later rounds get the same text.
+#
 # HARNESS_CLAUDE replaces the claude command (same arguments); the loop proof uses it to drive a
 # scripted stand-in agent. With the real claude, `claude auth status` must show a subscription
 # login before the first round.
@@ -43,13 +49,14 @@
 set -u
 here=$(cd "$(dirname "$0")" && pwd)
 repo=$(dirname "$here")
+caller=$(pwd)
 cd "$repo" || exit 2
 export PYTHONPATH="$repo"
 py() { python3 -m harness.lib.loopio "$@"; }
 
-usage="usage: $0 [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--allow-fable]"
+usage="usage: $0 [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--brief FILE] [--allow-fable]"
 once=0 dry=0 max=0
-selargs=
+selargs= brief=
 while [ $# -gt 0 ]; do
     case "$1" in
         --once) once=1 ;;
@@ -61,11 +68,33 @@ while [ $# -gt 0 ]; do
                 ''|*[!A-Za-z0-9_./+-]*) echo "ERROR $1 takes a unit path from game/UNITS.tsv or an address" >&2; exit 2 ;;
             esac
             selargs="$selargs $1 $2"; shift ;;
+        --brief) [ $# -ge 2 ] && [ -n "$2" ] || { echo "$usage" >&2; exit 2; }
+            brief=$2; shift ;;
         --allow-fable) export HARNESS_ALLOW_FABLE=1 ;;
         *) echo "$usage" >&2; exit 2 ;;
     esac
     shift
 done
+
+if [ -n "$brief" ]; then
+    # A relative path is the caller's, not the repository root's.
+    case "$brief" in /*) ;; *) brief="$caller/$brief" ;; esac
+    [ -f "$brief" ] && [ -r "$brief" ] || { echo "ERROR no readable brief at $brief" >&2; exit 2; }
+    [ -n "$(tr -d ' \t\r\n' < "$brief")" ] || { echo "ERROR the brief $brief is empty" >&2; exit 2; }
+    # Inside the worktree if any parent directory of its real path is the worktree (samefile, so
+    # a path that differs only in letter case on a case-insensitive volume is caught too).
+    if python3 -c 'import os, sys
+b, r = os.path.realpath(sys.argv[1]), sys.argv[2]
+d = os.path.dirname(b)
+while True:
+    if os.path.samefile(d, r): sys.exit(0)
+    up = os.path.dirname(d)
+    if up == d: sys.exit(1)
+    d = up' "$brief" "$repo"; then
+        echo "ERROR the brief must lie outside this worktree: it is batch material and is never committed" >&2
+        exit 2
+    fi
+fi
 
 for v in ANTHROPIC_API_KEY ANTHROPIC_AUTH_TOKEN CLAUDE_CODE_USE_BEDROCK CLAUDE_CODE_USE_VERTEX; do
     if [ -n "$(printenv "$v" 2>/dev/null)" ]; then
@@ -108,7 +137,14 @@ if [ "$dry" = 0 ]; then
     fi
 fi
 [ -f "$state/queue.json" ] || python3 harness/queue.py build || exit 2
-unset HARNESS_SELECTION
+unset HARNESS_SELECTION HARNESS_BRIEF
+if [ -n "$brief" ]; then
+    if [ "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$brief")" != \
+         "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$state/brief.md")" ]; then
+        cp "$brief" "$state/brief.md" || exit 2
+    fi
+    export HARNESS_BRIEF="$state/brief.md"
+fi
 if [ -n "$selargs" ]; then
     # shellcheck disable=SC2086  # split on purpose: the values were checked above
     python3 harness/queue.py select $selargs || exit 2
@@ -132,7 +168,11 @@ while :; do
     harness/build-and-verify.sh "$addr" --json > "$tag.before.json" 2>&1
     before=$(py claim "$entry" "$tag.before.json")
     snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
-    py prompt "$entry" > "$tag.prompt.md"
+    # Never run a session on a missing or partial prompt (an unreadable brief, say).
+    if ! py prompt "$entry" > "$tag.prompt.md" || [ ! -s "$tag.prompt.md" ]; then
+        echo "ERROR could not write the prompt for $addr (see above); stopping" >&2
+        exit 2
+    fi
     echo "INFO  $addr $model (baseline $before%) -> $tag.*"
 
     t0=$(date +%s)
