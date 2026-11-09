@@ -55,6 +55,29 @@ address	size	symbol	source	modes
 0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00435391	13	tDynamicMemoryFreeListViaHandles::vfunction3()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043539e	9	tDynamicMemoryFreeListViaHandles::vfunction6()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353a7	9	tDynamicMemoryFreeListViaHandles::vfunction7()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353b0	24	tDynamicMemoryFreeListViaHandles::vfunction8(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353c8	24	tDynamicMemoryFreeListViaHandles::vfunction10(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353e0	24	tDynamicMemoryFreeListViaHandles::vfunction13(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353f8	30	tDynamicMemoryFreeListViaHandles::vfunction13(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435416	24	tDynamicMemoryFreeListViaHandles::vfunction15(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043542e	30	tDynamicMemoryFreeListViaHandles::vfunction15(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043544c	24	tDynamicMemoryFreeListViaHandles::vfunction16(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435464	24	tDynamicMemoryFreeListViaHandles::vfunction19(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043547c	24	tDynamicMemoryFreeListViaHandles::vfunction18(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435494	24	tDynamicMemoryFreeListViaHandles::vfunction20(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354ac	24	tDynamicMemoryFreeListViaHandles::vfunction23(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354c4	24	tDynamicMemoryFreeListViaHandles::vfunction22(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354dc	24	tDynamicMemoryFreeListViaHandles::vfunction25(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354f4	24	tDynamicMemoryFreeListViaHandles::vfunction27(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043550c	36	tDynamicMemoryFreeListViaHandles::vfunction29(int,int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435530	36	tDynamicMemoryFreeListViaHandles::vfunction31(int,int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435554	27	tDynamicMemoryFreeListViaHandles::vfunction33(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043556f	27	tDynamicMemoryFreeListViaHandles::vfunction35(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043558a	27	tDynamicMemoryFreeListViaHandles::vfunction37(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004355a5	34	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	partial
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

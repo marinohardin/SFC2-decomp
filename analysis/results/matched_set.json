@@ -505,6 +505,213 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x00435391": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction3",
+   "symbol": "?vfunction3@tDynamicMemoryFreeListViaHandles@@UAEXXZ",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043539e": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction6",
+   "symbol": "?vfunction6@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@XZ",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004353a7": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction7",
+   "symbol": "?vfunction7@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@XZ",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004353b0": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction8",
+   "symbol": "?vfunction8@tDynamicMemoryFreeListViaHandles@@UAEHH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004353c8": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction10",
+   "symbol": "?vfunction10@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004353e0": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction13",
+   "symbol": "?vfunction13@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@PAV2@@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004353f8": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction12",
+   "symbol": "?vfunction13@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@H@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435416": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction15",
+   "symbol": "?vfunction15@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@PAV2@@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043542e": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction14",
+   "symbol": "?vfunction15@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@H@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043544c": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction16",
+   "symbol": "?vfunction16@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435464": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction19",
+   "symbol": "?vfunction19@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@H@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043547c": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction18",
+   "symbol": "?vfunction18@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@PAV2@@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435494": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction20",
+   "symbol": "?vfunction20@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004354ac": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction23",
+   "symbol": "?vfunction23@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@H@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004354c4": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction22",
+   "symbol": "?vfunction22@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@PAV2@@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004354dc": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction25",
+   "symbol": "?vfunction25@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004354f4": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction27",
+   "symbol": "?vfunction27@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043550c": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction29",
+   "symbol": "?vfunction29@tDynamicMemoryFreeListViaHandles@@UAEXHH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 36,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435530": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction31",
+   "symbol": "?vfunction31@tDynamicMemoryFreeListViaHandles@@UAEXHH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 36,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435554": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction33",
+   "symbol": "?vfunction33@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043556f": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction35",
+   "symbol": "?vfunction35@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043558a": {
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction37",
+   "symbol": "?vfunction37@tDynamicMemoryFreeListViaHandles@@UAEXH@Z",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004355a5": {
+   "name": "tDynamicMemoryFreeListViaHandles::scalar_deleting_destructor",
+   "symbol": "??1tDynamicMemoryFreeListViaHandles@@UAE@XZ",
+   "unit": "unsorted/tDynamicMemoryFreeListViaHandles.cpp",
+   "size": 34,
+   "score": 5.714,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
