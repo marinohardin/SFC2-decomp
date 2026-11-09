@@ -8,3 +8,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00413de0	tPhysicalEntity::~tPhysicalEntity	4	opus	12.61	2026-11-09T07:49:18Z	not exact after 4 attempts
 0x00413ea8	tPhysicalEntity::vfunction49	4	opus	99.77	2026-11-09T07:59:26Z	not exact after 4 attempts
 0x004355a5	tDynamicMemoryFreeListViaHandles::scalar_deleting_destructor	5	fable	5.71	2026-11-09T16:45:53Z	not exact after 5 attempts
+0x004356ac	t3DListenerProfile::scalar_deleting_destructor	5	fable	0.00	2026-11-09T16:00:41Z	not exact after 5 attempts

@@ -712,6 +712,141 @@
    "exact": false,
    "recorded": "2026-11-09"
   },
+  "0x004355c7": {
+   "name": "t3DListenerProfile::~t3DListenerProfile",
+   "symbol": "??1t3DListenerProfile@@UAE@XZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004355ce": {
+   "name": "t3DListenerProfile::vfunction5",
+   "symbol": "?fn_004355ce@t3DListenerProfile@@UAEXPBUt3DListenerProfile_field_08@@@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004355e6": {
+   "name": "t3DListenerProfile::vfunction3",
+   "symbol": "?fn_004355e6@t3DListenerProfile@@UAEXHHH@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004355fe": {
+   "name": "t3DListenerProfile::vfunction6",
+   "symbol": "?fn_004355fe@t3DListenerProfile@@UAEPAUt3DListenerProfile_field_08@@XZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435602": {
+   "name": "t3DListenerProfile::vfunction9",
+   "symbol": "?fn_00435602@t3DListenerProfile@@UAEXPBUt3DListenerProfile_field_08@@@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043561a": {
+   "name": "t3DListenerProfile::vfunction7",
+   "symbol": "?fn_0043561a@t3DListenerProfile@@UAEXHHH@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435632": {
+   "name": "t3DListenerProfile::vfunction10",
+   "symbol": "?fn_00435632@t3DListenerProfile@@UAEPAUt3DListenerProfile_field_08@@XZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435636": {
+   "name": "t3DListenerProfile::vfunction13",
+   "symbol": "?fn_00435636@t3DListenerProfile@@UAEXPBUt3DListenerProfile_field_08@@@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043564e": {
+   "name": "t3DListenerProfile::vfunction11",
+   "symbol": "?fn_0043564e@t3DListenerProfile@@UAEXHHH@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435666": {
+   "name": "t3DListenerProfile::vfunction14",
+   "symbol": "?fn_00435666@t3DListenerProfile@@UAEPAUt3DListenerProfile_field_08@@XZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043566a": {
+   "name": "t3DListenerProfile::vfunction17",
+   "symbol": "?fn_0043566a@t3DListenerProfile@@UAEXPBUt3DListenerProfile_field_08@@@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00435682": {
+   "name": "t3DListenerProfile::vfunction15",
+   "symbol": "?fn_00435682@t3DListenerProfile@@UAEXHHH@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043569a": {
+   "name": "t3DListenerProfile::vfunction18",
+   "symbol": "?fn_0043569a@t3DListenerProfile@@UAEPAUt3DListenerProfile_field_08@@XZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043569e": {
+   "name": "t3DListenerProfile::vfunction19",
+   "symbol": "?fn_0043569e@t3DListenerProfile@@UAEXN@Z",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004356a8": {
+   "name": "t3DListenerProfile::vfunction20",
+   "symbol": "?fn_004356a8@t3DListenerProfile@@UAENXZ",
+   "unit": "unsorted/t3DListenerProfile.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

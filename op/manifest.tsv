@@ -78,6 +78,21 @@ address	size	symbol	source	modes
 0x0043556f	27	tDynamicMemoryFreeListViaHandles::vfunction35(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x0043558a	27	tDynamicMemoryFreeListViaHandles::vfunction37(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x004355a5	34	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	partial
+0x004355c7	7	t3DListenerProfile::~t3DListenerProfile()	unsorted/t3DListenerProfile.cpp	vc6
+0x004355ce	24	t3DListenerProfile::fn_004355ce(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x004355e6	24	t3DListenerProfile::fn_004355e6(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x004355fe	4	t3DListenerProfile::fn_004355fe()	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x00435602	24	t3DListenerProfile::fn_00435602(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x0043561a	24	t3DListenerProfile::fn_0043561a(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x00435632	4	t3DListenerProfile::fn_00435632()	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x00435636	24	t3DListenerProfile::fn_00435636(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x0043564e	24	t3DListenerProfile::fn_0043564e(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x00435666	4	t3DListenerProfile::fn_00435666()	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x0043566a	24	t3DListenerProfile::fn_0043566a(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x00435682	24	t3DListenerProfile::fn_00435682(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x0043569a	4	t3DListenerProfile::fn_0043569a()	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x0043569e	10	t3DListenerProfile::fn_0043569e(double)	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x004356a8	4	t3DListenerProfile::fn_004356a8()	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest
