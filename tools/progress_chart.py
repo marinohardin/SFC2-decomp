@@ -8,12 +8,16 @@ Reads, all from the repository:
   ghidra/exports/functions.csv              every function's address, size, kind and library flag
   game/UNITS.tsv                            the translation units and their address ranges
   analysis/results/matched_set.json         the best verified score of every attempted function
+  analysis/results/progress/eh_funclet_parents.tsv
+                                            the parent of each C++ EH funclet, whose bytes count
+                                            with its parent's as they do in progress.py
 
 Writes into analysis/results/progress/ (or --out):
   badge-exact.svg       game code rebuilt byte-exact, % of game code bytes
   badge-functional.svg  game code rebuilt exact or functionally verified, % of game code bytes
   badge-named.svg       game functions named from a real symbol, % of game functions
-  treemap.svg           one rectangle per unit, area = its game code bytes, grouped by top-level
+  treemap.svg           one rectangle per unit, area = its game code bytes (EH funclets counted
+                        with their parent function, as in progress.py), grouped by top-level
                         directory; bright green when every function in it is exact, otherwise dark
                         grey shading toward green by the share of its bytes matched (exact bytes,
                         plus partial scores from the matched set weighted by size)
@@ -67,8 +71,29 @@ def _addresses(entries):
     return out
 
 
-def read_units(functions_csv, units_tsv, progress, matched):
-    """[(group, unit, bytes, matched_bytes, complete)] for every unit with game code."""
+def read_funclet_parents(path):
+    """funclet address -> parent function address, from eh_funclet_parents.tsv ({} if absent)."""
+    out = {}
+    if not path or not os.path.exists(path):
+        return out
+    with open(path) as f:
+        for line in f:
+            parts = line.rstrip('\n').split('\t')
+            if line.startswith('#') or len(parts) < 2 or parts[0] == 'funclet':
+                continue
+            out[int(parts[0], 16)] = int(parts[1], 16)
+    return out
+
+
+def matched_exact(matched):
+    return {int(k, 16) for k, v in (matched.get('functions') or {}).items() if v.get('exact')}
+
+
+def read_units(functions_csv, units_tsv, progress, matched, funclet_parents=None):
+    """[(group, unit, bytes, matched_bytes, complete)] for every unit with game code.
+
+    A function's bytes include its EH funclets' (funclet_parents), as in progress.py; a funclet
+    whose parent is not a game function in a unit is left out with it."""
     with open(units_tsv, newline='') as f:
         rows = sorted(((int(r['first'], 16), int(r['last'], 16), r['unit'])
                        for r in csv.DictReader(f, delimiter='\t') if r.get('unit')))
@@ -80,26 +105,33 @@ def read_units(functions_csv, units_tsv, progress, matched):
         if v.get('exact'):
             exact.add(a)
         scores[a] = float(v.get('score') or 0.0)
-    totals = {}
+    funclet_parents = funclet_parents or {}
+    sizes, funclet_bytes = {}, {}
     with open(functions_csv, newline='') as f:
         for r in csv.DictReader(f):
-            if r['kind'] != 'function' or r['is_library'] == '1':
-                continue
             size = int(r['size'] or 0)
             if size <= 0:
                 continue
             a = int(r['address'], 16)
-            i = bisect.bisect_right(starts, a) - 1
-            if i < 0 or a > rows[i][1]:
-                continue
-            unit = rows[i][2]
-            t = totals.setdefault(unit, [0, 0.0, True])
-            t[0] += size
-            if a in exact:
-                t[1] += size
-            else:
-                t[1] += size * scores.get(a, 0.0) / 100.0
-                t[2] = False
+            if r['kind'] == 'function' and r['is_library'] != '1':
+                sizes[a] = size
+            elif r['kind'] == 'eh-funclet' and a in funclet_parents:
+                p = funclet_parents[a]
+                funclet_bytes[p] = funclet_bytes.get(p, 0) + size
+    totals = {}
+    for a in sorted(sizes):
+        size = sizes[a] + funclet_bytes.get(a, 0)
+        i = bisect.bisect_right(starts, a) - 1
+        if i < 0 or a > rows[i][1]:
+            continue
+        unit = rows[i][2]
+        t = totals.setdefault(unit, [0, 0.0, True])
+        t[0] += size
+        if a in exact:
+            t[1] += size
+        else:
+            t[1] += size * scores.get(a, 0.0) / 100.0
+            t[2] = False
     out = []
     for unit, (size, done, complete) in totals.items():
         out.append((group_of(unit), unit, size, done, complete))
@@ -217,14 +249,32 @@ def badge_svg(label, value):
     lw = round(_text_width(label) + 12)
     vw = round(_text_width(value) + 12)
     w = lw + vw
+    text = html.escape(f'{label}: {value}')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="20" role="img" '
-            f'aria-label="{label}: {value}"><title>{label}: {value}</title>'
+            f'aria-label="{text}"><title>{text}</title>'
             f'<clipPath id="r"><rect width="{w}" height="20" rx="3" fill="#fff"/></clipPath>'
             f'<g clip-path="url(#r)"><rect width="{lw}" height="20" fill="{BADGE_LABEL}"/>'
             f'<rect x="{lw}" width="{vw}" height="20" fill="{BADGE_VALUE}"/></g>'
             f'<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,'
-            f'sans-serif" font-size="11"><text x="{lw / 2:.1f}" y="14">{label}</text>'
-            f'<text x="{lw + vw / 2:.1f}" y="14">{value}</text></g></svg>\n')
+            f'sans-serif" font-size="11"><text x="{lw / 2:.1f}" y="14">{html.escape(label)}</text>'
+            f'<text x="{lw + vw / 2:.1f}" y="14">{html.escape(value)}</text></g></svg>\n')
+
+
+def warnings(progress, matched, treemap_bytes):
+    """Where the treemap and the badges may disagree: the matched set holds exact functions
+    progress.json does not (run scripts/progress.py first), or the units cover less game code
+    than progress.json counts (functions outside every unit)."""
+    out = []
+    reported = _addresses(progress.get('exact')) | _addresses(progress.get('functional'))
+    newer = matched_exact(matched) - reported
+    if newer:
+        out.append(f'{len(newer)} exact function(s) in the matched set are not in progress.json, '
+                   'so the treemap is ahead of the badges: run scripts/progress.py first')
+    game = progress.get('scopes', {}).get('game', {}).get('bytes')
+    if game and treemap_bytes != game:
+        out.append(f'the treemap covers {treemap_bytes:,} bytes of the {game:,} bytes of game code '
+                   f'in progress.json ({game - treemap_bytes:+,} outside every unit)')
+    return out
 
 
 def write(path, text):
@@ -239,6 +289,7 @@ def main(argv=None):
     ap.add_argument('--functions', default=str(ROOT / 'ghidra' / 'exports' / 'functions.csv'))
     ap.add_argument('--units', default=str(ROOT / 'game' / 'UNITS.tsv'))
     ap.add_argument('--matched-set', default=str(ROOT / 'analysis' / 'results' / 'matched_set.json'))
+    ap.add_argument('--funclets', default=str(PROGRESS / 'eh_funclet_parents.tsv'))
     a = ap.parse_args(argv)
     with open(a.progress) as f:
         progress = json.load(f)
@@ -251,11 +302,13 @@ def main(argv=None):
     for name, label, v in (('exact', 'Exact', exact), ('functional', 'Functional', functional),
                            ('named', 'Named', named)):
         write(os.path.join(a.out, f'badge-{name}.svg'), badge_svg(label, f'{v:.2f}%'))
-    units = read_units(a.functions, a.units, progress, matched)
+    units = read_units(a.functions, a.units, progress, matched, read_funclet_parents(a.funclets))
     write(os.path.join(a.out, 'treemap.svg'), treemap_svg(units))
     done = sum(1 for u in units if u[4])
     print(f'exact {exact:.2f}%  functional {functional:.2f}%  named {named:.2f}%  '
           f'units {len(units)} ({done} complete) -> {a.out}')
+    for w in warnings(progress, matched, sum(u[2] for u in units)):
+        print('warning: ' + w, file=sys.stderr)
     return 0
 
 

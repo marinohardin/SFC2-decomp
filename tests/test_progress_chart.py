@@ -64,7 +64,8 @@ def _write_inputs(tmp_path):
     (tmp_path / 'UNITS.tsv').write_text(
         'unit\tfirst\tlast\tfunctions\tevidence\tprofile\theader\n'
         'Tiger/ta.cpp\t0x00401000\t0x0040101f\t2\tassert-path\tsdk-release\t\n'
-        'unsorted/fn_00402000.cpp\t0x00402000\t0x0040203f\t3\tpage\tsdk-release\t\n')
+        'unsorted/fn_00402000.cpp\t0x00402000\t0x0040203f\t3\tpage\tsdk-release\t\n'
+        'unsorted/fn_00404000.cpp\t0x00404000\t0x0040400f\t1\tpage\tsdk-release\t\n')
     (tmp_path / 'functions.csv').write_text(
         'address,size,name,kind,is_library\n'
         '00401000,16,A,function,0\n'
@@ -73,7 +74,15 @@ def _write_inputs(tmp_path):
         '00402030,10,D,function,0\n'
         '00402038,8,E,function,1\n'      # library code: left out
         '0040203a,4,F,eh-funclet,0\n'    # not an ordinary function: left out
-        '00403000,8,G,function,0\n')     # outside every unit: left out
+        '00403000,8,G,function,0\n'      # in the gap between two units: left out
+        '00405000,8,H,function,0\n'      # after the last unit: left out
+        '00405100,6,I,eh-funclet,0\n'    # funclet of A: counted with A
+        '00405200,5,J,eh-funclet,0\n')   # funclet of H, which is outside every unit: left out
+    (tmp_path / 'funclets.tsv').write_text(
+        '# EH funclet -> parent function\n'
+        'funclet\tparent\n'
+        '00405100\t00401000\n'
+        '00405200\t00405000\n')
 
 
 def test_units_are_sized_by_game_code_and_shaded_by_matched_bytes(tmp_path):
@@ -82,9 +91,11 @@ def test_units_are_sized_by_game_code_and_shaded_by_matched_bytes(tmp_path):
     matched = {'functions': {'0x00401010': {'score': 100.0, 'exact': True},
                              '0x00402000': {'score': 50.0, 'exact': False}}}
     units = pc.read_units(str(tmp_path / 'functions.csv'), str(tmp_path / 'UNITS.tsv'),
-                          _progress(exact=['0x00401000']), matched)
+                          _progress(exact=['0x00401000']), matched,
+                          pc.read_funclet_parents(str(tmp_path / 'funclets.tsv')))
     assert sorted(units) == [
-        ('Tiger', 'Tiger/ta.cpp', 32, 32.0, True),
+        # A 16 + its funclet I 6, and B 16: 38 bytes, all exact.
+        ('Tiger', 'Tiger/ta.cpp', 38, 38.0, True),
         # C 40 bytes at 50% = 20 of 50 bytes (C and D).
         ('unsorted', 'unsorted/fn_00402000.cpp', 50, 20.0, False),
     ]
@@ -103,7 +114,8 @@ def test_running_twice_writes_the_same_files(tmp_path):
     (tmp_path / 'matched.json').write_text('{"functions": {}}')
     args = ['--progress', str(tmp_path / 'progress.json'), '--functions',
             str(tmp_path / 'functions.csv'), '--units', str(tmp_path / 'UNITS.tsv'),
-            '--matched-set', str(tmp_path / 'matched.json')]
+            '--matched-set', str(tmp_path / 'matched.json'),
+            '--funclets', str(tmp_path / 'funclets.tsv')]
     names = ['badge-exact.svg', 'badge-functional.svg', 'badge-named.svg', 'treemap.svg']
     pc.main(args + ['--out', str(tmp_path / 'a')])
     pc.main(args + ['--out', str(tmp_path / 'b')])
@@ -111,4 +123,40 @@ def test_running_twice_writes_the_same_files(tmp_path):
         assert (tmp_path / 'a' / n).read_bytes() == (tmp_path / 'b' / n).read_bytes()
     tm = (tmp_path / 'a' / 'treemap.svg').read_text()
     assert tm.startswith('<svg') and tm.rstrip().endswith('</svg>')
-    assert 'Tiger/ta.cpp: 50.0% of 32 bytes' in tm
+    # A and its funclet (22 bytes) are exact, B (16) is not: 22 / 38 = 57.9%.
+    assert 'Tiger/ta.cpp: 57.9% of 38 bytes' in tm
+
+
+def test_a_complete_unit_is_drawn_bright_green():
+    tm = pc.treemap_svg([('Tiger', 'Tiger/ta.cpp', 10, 10.0, True),
+                         ('Tiger', 'Tiger/tb.cpp', 10, 5.0, False)])
+    assert 'fill="#00d000"><title>Tiger/ta.cpp: 100.0% of 10 bytes' in tm
+    assert 'fill="#00d000"><title>Tiger/tb.cpp' not in tm
+
+
+def test_a_missing_matched_set_or_funclet_map_still_writes_the_files(tmp_path):
+    _write_inputs(tmp_path)
+    (tmp_path / 'progress.json').write_text(json.dumps(_progress()))
+    pc.main(['--progress', str(tmp_path / 'progress.json'), '--functions',
+             str(tmp_path / 'functions.csv'), '--units', str(tmp_path / 'UNITS.tsv'),
+             '--matched-set', str(tmp_path / 'absent.json'),
+             '--funclets', str(tmp_path / 'absent.tsv'), '--out', str(tmp_path / 'o')])
+    # Nothing exact and no funclets: A and B are 32 bytes, none matched.
+    assert 'Tiger/ta.cpp: 0.0% of 32 bytes' in (tmp_path / 'o' / 'treemap.svg').read_text()
+
+
+def test_badge_text_is_escaped():
+    svg = pc.badge_svg('A<B', '1&2')
+    assert '>A&lt;B</text>' in svg and '>1&amp;2</text>' in svg and '<B' not in svg
+
+
+def test_warns_when_the_matched_set_is_ahead_of_progress_or_units_miss_game_code():
+    progress = _progress(exact=['0x00401000'])
+    progress['scopes']['game']['bytes'] = 100
+    matched = {'functions': {'0x00401000': {'score': 100.0, 'exact': True},
+                             '0x00401010': {'score': 100.0, 'exact': True}}}
+    w = pc.warnings(progress, matched, 90)
+    assert len(w) == 2
+    assert w[0].startswith('1 exact function(s) in the matched set')
+    assert '90 bytes of the 100 bytes' in w[1]
+    assert pc.warnings(progress, {'functions': {}}, 100) == []
