@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "generated_at": "2026-11-09T00:47:08Z",
+ "generated_at": "2026-11-10T04:47:55Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "e0e0e7f8b4cdba9329aba69526dac49167d07bd28f4cb7ca0048cb9e4cff8cc6"
+   "sha256": "17ecbce279a7c17c259af97703fdb15500b870ab53b96b9a280bcd7ebb065502"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -79,13 +79,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 32,
-     "pct_functions": 0.1165,
-     "function_bytes": 3384,
+     "functions": 223,
+     "pct_functions": 0.8115,
+     "function_bytes": 13486,
      "funclet_bytes": 0,
-     "bytes": 3384,
-     "pct_bytes": 0.0974,
-     "pct_text": 0.0902
+     "bytes": 13486,
+     "pct_bytes": 0.3882,
+     "pct_text": 0.3594
     },
     "functional": {
      "functions": 0,
@@ -97,13 +97,13 @@
      "pct_text": 0.0
     },
     "lifted": {
-     "functions": 27347,
-     "pct_functions": 99.5196,
-     "function_bytes": 3300181,
+     "functions": 27156,
+     "pct_functions": 98.8246,
+     "function_bytes": 3290079,
      "funclet_bytes": 167541,
-     "bytes": 3467722,
-     "pct_bytes": 99.8239,
-     "pct_text": 92.4249
+     "bytes": 3457620,
+     "pct_bytes": 99.5331,
+     "pct_text": 92.1556
     },
     "original-x86": {
      "functions": 100,
@@ -173,12 +173,12 @@
    "bytes": 3328192,
    "status": {
     "exact": {
-     "functions": 32,
-     "pct_functions": 0.1212,
-     "function_bytes": 3384,
+     "functions": 223,
+     "pct_functions": 0.8447,
+     "function_bytes": 13486,
      "funclet_bytes": 0,
-     "bytes": 3384,
-     "pct_bytes": 0.1017
+     "bytes": 13486,
+     "pct_bytes": 0.4052
     },
     "functional": {
      "functions": 0,
@@ -189,12 +189,12 @@
      "pct_bytes": 0.0
     },
     "lifted": {
-     "functions": 26267,
-     "pct_functions": 99.5,
-     "function_bytes": 3163935,
+     "functions": 26076,
+     "pct_functions": 98.7765,
+     "function_bytes": 3153833,
      "funclet_bytes": 158138,
-     "bytes": 3322073,
-     "pct_bytes": 99.8161
+     "bytes": 3311971,
+     "pct_bytes": 99.5126
     },
     "original-x86": {
      "functions": 100,
@@ -284,6 +284,770 @@
  "objdiff_skipped_without_address": 0,
  "unmapped_name_sources": {},
  "exact": [
+  {
+   "address": "00401017",
+   "name": "tApp3dBase::tApp3dBase"
+  },
+  {
+   "address": "00401033",
+   "name": "tApp3dBase::vfunction13"
+  },
+  {
+   "address": "00401038",
+   "name": "tApp3dBase::vfunction1"
+  },
+  {
+   "address": "00401057",
+   "name": "tApp3dBase::~tApp3dBase"
+  },
+  {
+   "address": "0040105e",
+   "name": "tApp3dBase::vfunction11"
+  },
+  {
+   "address": "004011d0",
+   "name": "tApp3dBase::vfunction12"
+  },
+  {
+   "address": "00401209",
+   "name": "tApp3dBase::vfunction7"
+  },
+  {
+   "address": "004012db",
+   "name": "tApp3dBase::vfunction20"
+  },
+  {
+   "address": "0040135a",
+   "name": "tApp3dBase::vfunction18"
+  },
+  {
+   "address": "0040b080",
+   "name": "FUN_0040b080"
+  },
+  {
+   "address": "0040b0d5",
+   "name": "FUN_0040b0d5"
+  },
+  {
+   "address": "0040b14a",
+   "name": "FUN_0040b14a"
+  },
+  {
+   "address": "0040b241",
+   "name": "tSfcApp3d::vfunction13"
+  },
+  {
+   "address": "0040b2c1",
+   "name": "tSfcApp3d::vfunction9"
+  },
+  {
+   "address": "0040b2db",
+   "name": "tSfcApp3d::vfunction8"
+  },
+  {
+   "address": "0040b2f7",
+   "name": "tSfcApp3d::vfunction1"
+  },
+  {
+   "address": "0040b318",
+   "name": "tSfcApp3d::vfunction3"
+  },
+  {
+   "address": "0040b32b",
+   "name": "tSfcApp3d::vfunction2"
+  },
+  {
+   "address": "0040b366",
+   "name": "tSfcApp3d::vfunction4"
+  },
+  {
+   "address": "0040bd69",
+   "name": "tMouseMgr_Base::~tMouseMgr_Base"
+  },
+  {
+   "address": "0040bd8d",
+   "name": "FUN_0040bd8d"
+  },
+  {
+   "address": "0040bd95",
+   "name": "tMouseMgr_Ex::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040c016",
+   "name": "FUN_0040c016"
+  },
+  {
+   "address": "0040c037",
+   "name": "tSfcMouseMgr_Ex::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040c063",
+   "name": "tSfcMouseMgr_Ex::vfunction4"
+  },
+  {
+   "address": "0040c08b",
+   "name": "tSfcMouseMgr_Ex::vfunction5"
+  },
+  {
+   "address": "0040c094",
+   "name": "tSfcMouseMgr_Ex::vfunction6"
+  },
+  {
+   "address": "0040c09d",
+   "name": "tSfcMouseMgr_Ex::vfunction7"
+  },
+  {
+   "address": "0040c0ad",
+   "name": "tSfcMouseMgr_Ex::vfunction8"
+  },
+  {
+   "address": "0040c0b6",
+   "name": "tSfcMouseMgr_Ex::vfunction9"
+  },
+  {
+   "address": "0040c0bf",
+   "name": "tSfcMouseMgr_Ex::vfunction11"
+  },
+  {
+   "address": "0040c183",
+   "name": "tSfcMouseMgr_Ex::vfunction10"
+  },
+  {
+   "address": "0040c1e7",
+   "name": "tSfcMouseMgr_Ex::vfunction12"
+  },
+  {
+   "address": "0040c1f7",
+   "name": "tSfcMouseMgr_Ex::vfunction13"
+  },
+  {
+   "address": "0040c2ed",
+   "name": "tApplication::~tApplication"
+  },
+  {
+   "address": "0040c2f4",
+   "name": "tApplication::vfunction5"
+  },
+  {
+   "address": "0040c2fe",
+   "name": "tApplication::vfunction7"
+  },
+  {
+   "address": "0040c304",
+   "name": "tApplication::vfunction8"
+  },
+  {
+   "address": "0040c30a",
+   "name": "tApplication::vfunction19"
+  },
+  {
+   "address": "0040c5e6",
+   "name": "tMyApp::vfunction3"
+  },
+  {
+   "address": "0040c612",
+   "name": "tMyApp::vfunction25"
+  },
+  {
+   "address": "0040c63f",
+   "name": "tMyApp::vfunction24"
+  },
+  {
+   "address": "0040c659",
+   "name": "tMyApp::vfunction15"
+  },
+  {
+   "address": "0040c699",
+   "name": "tMyApp::vfunction16"
+  },
+  {
+   "address": "0040c6b3",
+   "name": "tMyApp::vfunction18"
+  },
+  {
+   "address": "0040c6dd",
+   "name": "tMyApp::vfunction19"
+  },
+  {
+   "address": "0040c70d",
+   "name": "tMyApp::vfunction21"
+  },
+  {
+   "address": "0040c71c",
+   "name": "tMyApp::vfunction22"
+  },
+  {
+   "address": "0040c724",
+   "name": "tMyApp::vfunction23"
+  },
+  {
+   "address": "0040ceae",
+   "name": "tINIMgr::tINIMgr_Constructor_or_Destructor"
+  },
+  {
+   "address": "0040cec0",
+   "name": "tINIMgr::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040cee2",
+   "name": "FUN_0040cee2"
+  },
+  {
+   "address": "0040ceee",
+   "name": "tINIMgr::tINIMgr_Constructor_or_Destructor"
+  },
+  {
+   "address": "0040cf12",
+   "name": "tINIMgr::vfunction2"
+  },
+  {
+   "address": "0040cf2e",
+   "name": "tINIMgr::vfunction3"
+  },
+  {
+   "address": "0040cf4b",
+   "name": "tINIMgr::vfunction4"
+  },
+  {
+   "address": "0040cf58",
+   "name": "tINIMgr::vfunction5"
+  },
+  {
+   "address": "0040cf8b",
+   "name": "tINIMgr::vfunction6"
+  },
+  {
+   "address": "0040cfbe",
+   "name": "tINIMgr::vfunction7"
+  },
+  {
+   "address": "0040cff2",
+   "name": "tINIMgr::vfunction8"
+  },
+  {
+   "address": "0040d025",
+   "name": "tINIMgr::vfunction9"
+  },
+  {
+   "address": "0040d05e",
+   "name": "tINIMgr::vfunction10"
+  },
+  {
+   "address": "0040f87f",
+   "name": "tSphere::vfunction4"
+  },
+  {
+   "address": "0040f8c6",
+   "name": "tSphere::vfunction3"
+  },
+  {
+   "address": "0040f917",
+   "name": "tSphere::vfunction11"
+  },
+  {
+   "address": "0040f935",
+   "name": "tSphere::vfunction5"
+  },
+  {
+   "address": "0040f94d",
+   "name": "tSphere::vfunction7"
+  },
+  {
+   "address": "0040f969",
+   "name": "tSphere::vfunction8"
+  },
+  {
+   "address": "0040f975",
+   "name": "tSphere::vfunction9"
+  },
+  {
+   "address": "0040f99d",
+   "name": "tSphere::vfunction10"
+  },
+  {
+   "address": "0040fefb",
+   "name": "tEntity::tEntity"
+  },
+  {
+   "address": "0040ff8c",
+   "name": "tEntity::vfunction5"
+  },
+  {
+   "address": "0040ff91",
+   "name": "tEntity::vfunction9"
+  },
+  {
+   "address": "0040ff95",
+   "name": "tEntity::vfunction10"
+  },
+  {
+   "address": "0040ff9f",
+   "name": "tEntity::vfunction13"
+  },
+  {
+   "address": "0040ffa9",
+   "name": "tEntity::vfunction14"
+  },
+  {
+   "address": "0041004d",
+   "name": "tEntity::vfunction11"
+  },
+  {
+   "address": "0041015b",
+   "name": "tEntity::vfunction2"
+  },
+  {
+   "address": "00410168",
+   "name": "FUN_00410168"
+  },
+  {
+   "address": "0041018e",
+   "name": "tEntity::vfunction7"
+  },
+  {
+   "address": "004105dd",
+   "name": "tPhysicalEntity::vfunction28"
+  },
+  {
+   "address": "004105e9",
+   "name": "tPhysicalEntity::vfunction40"
+  },
+  {
+   "address": "004105f0",
+   "name": "tPhysicalEntity::vfunction42"
+  },
+  {
+   "address": "004105f7",
+   "name": "tPhysicalEntity::vfunction44"
+  },
+  {
+   "address": "004105fe",
+   "name": "tPhysicalEntity::vfunction54"
+  },
+  {
+   "address": "0041060b",
+   "name": "tPhysicalEntity::vfunction55"
+  },
+  {
+   "address": "00410612",
+   "name": "tPhysicalEntity::vfunction56"
+  },
+  {
+   "address": "0041062f",
+   "name": "tPhysicalEntity::vfunction57"
+  },
+  {
+   "address": "00410650",
+   "name": "tPhysicalEntity::vfunction59"
+  },
+  {
+   "address": "00410657",
+   "name": "tPhysicalEntity::vfunction61"
+  },
+  {
+   "address": "0041065f",
+   "name": "tPhysicalEntity::vfunction62"
+  },
+  {
+   "address": "00410667",
+   "name": "tPhysicalEntity::vfunction64"
+  },
+  {
+   "address": "00413153",
+   "name": "tPhysicalEntity::vfunction11"
+  },
+  {
+   "address": "004133d3",
+   "name": "FUN_004133d3"
+  },
+  {
+   "address": "00413448",
+   "name": "tPhysicalEntity::vfunction3"
+  },
+  {
+   "address": "004134ce",
+   "name": "tPhysicalEntity::vfunction43"
+  },
+  {
+   "address": "004134f1",
+   "name": "tPhysicalEntity::vfunction45"
+  },
+  {
+   "address": "0041351b",
+   "name": "tPhysicalEntity::vfunction26"
+  },
+  {
+   "address": "00413541",
+   "name": "tPhysicalEntity::vfunction27"
+  },
+  {
+   "address": "0041360e",
+   "name": "tNetMsg_kAIChangeTeamRelationshipToWar::vfunction1"
+  },
+  {
+   "address": "004139c4",
+   "name": "tNetMsg_kTractorChangeMessage::vfunction1"
+  },
+  {
+   "address": "004139ca",
+   "name": "tNetMsg_kDeepScan::vfunction1"
+  },
+  {
+   "address": "004139ec",
+   "name": "tPhysicalEntity::vfunction5"
+  },
+  {
+   "address": "00413a37",
+   "name": "tPhysicalEntity::vfunction60"
+  },
+  {
+   "address": "00413a8d",
+   "name": "FUN_00413a8d"
+  },
+  {
+   "address": "00413ac3",
+   "name": "tPhysicalEntity::vfunction4"
+  },
+  {
+   "address": "00413b34",
+   "name": "FUN_00413b34"
+  },
+  {
+   "address": "00413bc1",
+   "name": "FUN_00413bc1"
+  },
+  {
+   "address": "00413bdf",
+   "name": "tPhysicalEntity::vfunction29"
+  },
+  {
+   "address": "00413c24",
+   "name": "tPhysicalEntity::vfunction30"
+  },
+  {
+   "address": "00413c68",
+   "name": "tPhysicalEntity::vfunction34"
+  },
+  {
+   "address": "00413c6f",
+   "name": "tPhysicalEntity::vfunction35"
+  },
+  {
+   "address": "00413c9a",
+   "name": "tPhysicalEntity::vfunction36"
+  },
+  {
+   "address": "00413d45",
+   "name": "tPhysicalEntity::vfunction37"
+  },
+  {
+   "address": "00413d98",
+   "name": "tPhysicalEntity::vfunction38"
+  },
+  {
+   "address": "00413db7",
+   "name": "tPhysicalEntity::vfunction39"
+  },
+  {
+   "address": "00413f59",
+   "name": "tPhysicalEntity::vfunction50"
+  },
+  {
+   "address": "00413f8a",
+   "name": "tPhysicalEntity::vfunction51"
+  },
+  {
+   "address": "00413fba",
+   "name": "tPhysicalEntity::vfunction52"
+  },
+  {
+   "address": "00413fe9",
+   "name": "tPhysicalEntity::vfunction46"
+  },
+  {
+   "address": "00431159",
+   "name": "FUN_00431159"
+  },
+  {
+   "address": "004311ec",
+   "name": "FUN_004311ec"
+  },
+  {
+   "address": "004311f6",
+   "name": "FUN_004311f6"
+  },
+  {
+   "address": "00431200",
+   "name": "FUN_00431200"
+  },
+  {
+   "address": "00431227",
+   "name": "FUN_00431227"
+  },
+  {
+   "address": "0043124e",
+   "name": "FUN_0043124e"
+  },
+  {
+   "address": "004314c2",
+   "name": "FUN_004314c2"
+  },
+  {
+   "address": "004314f5",
+   "name": "FUN_004314f5"
+  },
+  {
+   "address": "00431523",
+   "name": "FUN_00431523"
+  },
+  {
+   "address": "00431551",
+   "name": "FUN_00431551"
+  },
+  {
+   "address": "00431571",
+   "name": "FUN_00431571"
+  },
+  {
+   "address": "004315ee",
+   "name": "FUN_004315ee"
+  },
+  {
+   "address": "004316cf",
+   "name": "FUN_004316cf"
+  },
+  {
+   "address": "00431708",
+   "name": "FUN_00431708"
+  },
+  {
+   "address": "004317bd",
+   "name": "FUN_004317bd"
+  },
+  {
+   "address": "004317c3",
+   "name": "FUN_004317c3"
+  },
+  {
+   "address": "004317ce",
+   "name": "tNetControl::vfunction2"
+  },
+  {
+   "address": "004317eb",
+   "name": "tNetControl::vfunction3"
+  },
+  {
+   "address": "00431808",
+   "name": "tNetControl::vfunction4"
+  },
+  {
+   "address": "00435391",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction3"
+  },
+  {
+   "address": "0043539e",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction6"
+  },
+  {
+   "address": "004353a7",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction7"
+  },
+  {
+   "address": "004353b0",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction8"
+  },
+  {
+   "address": "004353c8",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction10"
+  },
+  {
+   "address": "004353e0",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction13"
+  },
+  {
+   "address": "004353f8",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction12"
+  },
+  {
+   "address": "00435416",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction15"
+  },
+  {
+   "address": "0043542e",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction14"
+  },
+  {
+   "address": "0043544c",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction16"
+  },
+  {
+   "address": "00435464",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction19"
+  },
+  {
+   "address": "0043547c",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction18"
+  },
+  {
+   "address": "00435494",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction20"
+  },
+  {
+   "address": "004354ac",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction23"
+  },
+  {
+   "address": "004354c4",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction22"
+  },
+  {
+   "address": "004354dc",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction25"
+  },
+  {
+   "address": "004354f4",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction27"
+  },
+  {
+   "address": "0043550c",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction29"
+  },
+  {
+   "address": "00435530",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction31"
+  },
+  {
+   "address": "00435554",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction33"
+  },
+  {
+   "address": "0043556f",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction35"
+  },
+  {
+   "address": "0043558a",
+   "name": "tDynamicMemoryFreeListViaHandles::vfunction37"
+  },
+  {
+   "address": "004355c7",
+   "name": "t3DListenerProfile::~t3DListenerProfile"
+  },
+  {
+   "address": "004355ce",
+   "name": "t3DListenerProfile::vfunction5"
+  },
+  {
+   "address": "004355e6",
+   "name": "t3DListenerProfile::vfunction3"
+  },
+  {
+   "address": "004355fe",
+   "name": "t3DListenerProfile::vfunction6"
+  },
+  {
+   "address": "00435602",
+   "name": "t3DListenerProfile::vfunction9"
+  },
+  {
+   "address": "0043561a",
+   "name": "t3DListenerProfile::vfunction7"
+  },
+  {
+   "address": "00435632",
+   "name": "t3DListenerProfile::vfunction10"
+  },
+  {
+   "address": "00435636",
+   "name": "t3DListenerProfile::vfunction13"
+  },
+  {
+   "address": "0043564e",
+   "name": "t3DListenerProfile::vfunction11"
+  },
+  {
+   "address": "00435666",
+   "name": "t3DListenerProfile::vfunction14"
+  },
+  {
+   "address": "0043566a",
+   "name": "t3DListenerProfile::vfunction17"
+  },
+  {
+   "address": "00435682",
+   "name": "t3DListenerProfile::vfunction15"
+  },
+  {
+   "address": "0043569a",
+   "name": "t3DListenerProfile::vfunction18"
+  },
+  {
+   "address": "0043569e",
+   "name": "t3DListenerProfile::vfunction19"
+  },
+  {
+   "address": "004356a8",
+   "name": "t3DListenerProfile::vfunction20"
+  },
+  {
+   "address": "004382be",
+   "name": "tCloakSystem::vfunction100"
+  },
+  {
+   "address": "004382cb",
+   "name": "FUN_004382cb"
+  },
+  {
+   "address": "004382e3",
+   "name": "FUN_004382e3"
+  },
+  {
+   "address": "004382ea",
+   "name": "tCloakSystem::vfunction103"
+  },
+  {
+   "address": "0043835d",
+   "name": "tCloakSystem::vfunction102"
+  },
+  {
+   "address": "00438390",
+   "name": "FUN_00438390"
+  },
+  {
+   "address": "0043839d",
+   "name": "tCloakSystem::vfunction62"
+  },
+  {
+   "address": "004384a5",
+   "name": "tCloakSystem::vfunction63"
+  },
+  {
+   "address": "00438522",
+   "name": "FUN_00438522"
+  },
+  {
+   "address": "00438607",
+   "name": "FUN_00438607"
+  },
+  {
+   "address": "004386bc",
+   "name": "tCloakSystem::vfunction40"
+  },
+  {
+   "address": "004386f3",
+   "name": "tCloakSystem::vfunction39"
+  },
+  {
+   "address": "00438877",
+   "name": "tCloakSystem::vfunction23"
+  },
+  {
+   "address": "0043894d",
+   "name": "tCloakSystem::vfunction72"
+  },
+  {
+   "address": "00438974",
+   "name": "tCloakSystem::vfunction76"
+  },
   {
    "address": "006289b0",
    "name": "tPart::tPart"
