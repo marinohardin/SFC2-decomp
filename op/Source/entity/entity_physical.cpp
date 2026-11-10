@@ -4,6 +4,7 @@
 
 #include "Source/entity/entity_physical.h"
 #include "Tiger/tpart.h"
+#include "unsorted/tNetControl.h"
 #include <string.h>
 
 // HYPOTHESIS: the class of the one-time object 0x00413ac3 builds from a message; its
@@ -220,16 +221,6 @@ struct tNetMsg_kKillEntity: public tNetMsg
 
 	bool field_0x4;
 };
-
-// The network control object at 0x008f5b98.
-class tNetControl
-{
-public:
-	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
-	int mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, double aTime);
-};
-
-extern tNetControl gNetControl;
 
 // The object that the pointer at 0x0090be60 holds.
 // HYPOTHESIS: the class is inferred from 0x00413541 only; fn_00427581 returns 5 for the

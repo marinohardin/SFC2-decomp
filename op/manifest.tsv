@@ -86,6 +86,31 @@ address	size	symbol	source	modes
 0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
+0x0043104e	239	tNetControl::tNetControl()	unsorted/tNetControl.cpp	partial
+0x0043113d	28	tNetControl::~tNetControl()	unsorted/tNetControl.cpp	partial
+0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest
+0x0043117a	10	fn_0043117a()	unsorted/tNetControl.cpp	partial
+0x00431184	104	fn_00431184(tNetControl *)	unsorted/tNetControl.cpp	partial
+0x004311ec	10	fn_004311ec()	unsorted/tNetControl.cpp	vc6 guest
+0x004311f6	10	fn_004311f6()	unsorted/tNetControl.cpp	vc6 guest
+0x00431200	39	tNetControl::fn_00431200()	unsorted/tNetControl.cpp	vc6 guest
+0x00431227	39	tNetControl::fn_00431227()	unsorted/tNetControl.cpp	vc6 guest
+0x0043124e	39	tNetControl::fn_0043124e()	unsorted/tNetControl.cpp	vc6 guest
+0x00431275	10	fn_00431275()	unsorted/tNetControl.cpp	partial
+0x0043127f	579	tNetControl::fn_0043127f()	unsorted/tNetControl.cpp	partial
+0x004314c2	51	c_0043127f_node::c_0043127f_node()	unsorted/tNetControl.cpp	vc6
+0x004314f5	46	tNetControl::fn_004314f5(int)	unsorted/tNetControl.cpp	vc6 guest
+0x00431523	46	tNetControl::fn_00431523(int)	unsorted/tNetControl.cpp	vc6 guest
+0x00431551	32	tNetControl::fn_00431551()	unsorted/tNetControl.cpp	vc6 guest
+0x00431571	125	tNetControl::fn_00431571()	unsorted/tNetControl.cpp	vc6 guest
+0x004315ee	224	tNetControl::fn_004315ee()	unsorted/tNetControl.cpp	vc6 guest
+0x004316cf	57	tNetControl::fn_004316cf()	unsorted/tNetControl.cpp	vc6 guest
+0x00431708	181	tNetControl::fn_00431708()	unsorted/tNetControl.cpp	vc6 guest
+0x004317bd	6	tNetControl::fn_004317bd()	unsorted/tNetControl.cpp	vc6 guest
+0x004317c3	11	tNetControl::fn_004317c3()	unsorted/tNetControl.cpp	vc6 guest
+0x004317ce	29	tNetControl::fn_004317ce(int,int)	unsorted/tNetControl.cpp	vc6 guest
+0x004317eb	29	tNetControl::fn_004317eb(int,int)	unsorted/tNetControl.cpp	vc6 guest
+0x00431808	25	tNetControl::fn_00431808(int)	unsorted/tNetControl.cpp	vc6 guest
 0x00435391	13	tDynamicMemoryFreeListViaHandles::vfunction3()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x0043539e	9	tDynamicMemoryFreeListViaHandles::vfunction6()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x004353a7	9	tDynamicMemoryFreeListViaHandles::vfunction7()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest

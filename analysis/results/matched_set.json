@@ -784,6 +784,231 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0043104e": {
+   "name": "tNetControl::~tNetControl",
+   "symbol": "??0tNetControl@@QAE@XZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 239,
+   "score": 10.95,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0043113d": {
+   "name": "tNetControl::scalar_deleting_destructor",
+   "symbol": "??1tNetControl@@UAE@XZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 28,
+   "score": 25.263,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00431159": {
+   "name": "FUN_00431159",
+   "symbol": "?fn_00431159@tNetControl@@QAEXE@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043117a": {
+   "name": "tNetControl::~tNetControl",
+   "symbol": "?fn_0043117a@@YAXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00431184": {
+   "name": "tNetControl::~tNetControl",
+   "symbol": "?fn_00431184@@YAXPAVtNetControl@@@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 104,
+   "score": 14.962,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x004311ec": {
+   "name": "FUN_004311ec",
+   "symbol": "?fn_004311ec@@YAXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004311f6": {
+   "name": "FUN_004311f6",
+   "symbol": "?fn_004311f6@@YAXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431200": {
+   "name": "FUN_00431200",
+   "symbol": "?fn_00431200@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431227": {
+   "name": "FUN_00431227",
+   "symbol": "?fn_00431227@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043124e": {
+   "name": "FUN_0043124e",
+   "symbol": "?fn_0043124e@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431275": {
+   "name": "FUN_00431275",
+   "symbol": "?fn_00431275@@YAXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0043127f": {
+   "name": "FUN_0043127f",
+   "symbol": "?fn_0043127f@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 579,
+   "score": 20.298,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x004314c2": {
+   "name": "FUN_004314c2",
+   "symbol": "??0c_0043127f_node@@QAE@XZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004314f5": {
+   "name": "FUN_004314f5",
+   "symbol": "?fn_004314f5@tNetControl@@QAEPAVc_0043127f_node@@H@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 46,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431523": {
+   "name": "FUN_00431523",
+   "symbol": "?fn_00431523@tNetControl@@QAEPAVc_0043127f_node@@H@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 46,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431551": {
+   "name": "FUN_00431551",
+   "symbol": "?fn_00431551@tNetControl@@QAEPAVc_0043127f_node@@XZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431571": {
+   "name": "FUN_00431571",
+   "symbol": "?fn_00431571@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 125,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004315ee": {
+   "name": "FUN_004315ee",
+   "symbol": "?fn_004315ee@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004316cf": {
+   "name": "FUN_004316cf",
+   "symbol": "?fn_004316cf@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431708": {
+   "name": "FUN_00431708",
+   "symbol": "?fn_00431708@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 181,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004317bd": {
+   "name": "FUN_004317bd",
+   "symbol": "?fn_004317bd@tNetControl@@QAEHXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004317c3": {
+   "name": "FUN_004317c3",
+   "symbol": "?fn_004317c3@tNetControl@@QAEXXZ",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004317ce": {
+   "name": "tNetControl::vfunction2",
+   "symbol": "?fn_004317ce@tNetControl@@QAEXHH@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004317eb": {
+   "name": "tNetControl::vfunction3",
+   "symbol": "?fn_004317eb@tNetControl@@QAEXHH@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00431808": {
+   "name": "tNetControl::vfunction4",
+   "symbol": "?fn_00431808@tNetControl@@QAEXH@Z",
+   "unit": "unsorted/tNetControl.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x00435391": {
    "name": "tDynamicMemoryFreeListViaHandles::vfunction3",
    "symbol": "?vfunction3@tDynamicMemoryFreeListViaHandles@@UAEXXZ",
