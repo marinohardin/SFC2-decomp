@@ -577,6 +577,123 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040ceae": {
+   "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
+   "symbol": "_$E1",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cec0": {
+   "name": "tINIMgr::scalar_deleting_destructor",
+   "symbol": "?fn_0040cec0@tINIMgr@@QAEPAV1@I@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 34,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cee2": {
+   "name": "FUN_0040cee2",
+   "symbol": "?FUN_0040cee2@@YAXXZ",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ceee": {
+   "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
+   "symbol": "?fn_0040ceee@@YAXXZ",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cf12": {
+   "name": "tINIMgr::vfunction2",
+   "symbol": "?fn_0040cf12@tINIMgr@@UAEXPBD@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cf2e": {
+   "name": "tINIMgr::vfunction3",
+   "symbol": "?fn_0040cf2e@tINIMgr@@UAEXXZ",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cf4b": {
+   "name": "tINIMgr::vfunction4",
+   "symbol": "?fn_0040cf4b@tINIMgr@@UAEXXZ",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cf58": {
+   "name": "tINIMgr::vfunction5",
+   "symbol": "?fn_0040cf58@tINIMgr@@UAEHHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cf8b": {
+   "name": "tINIMgr::vfunction6",
+   "symbol": "?fn_0040cf8b@tINIMgr@@UAE_NHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cfbe": {
+   "name": "tINIMgr::vfunction7",
+   "symbol": "?fn_0040cfbe@tINIMgr@@UAEHHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 52,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040cff2": {
+   "name": "tINIMgr::vfunction8",
+   "symbol": "?fn_0040cff2@tINIMgr@@UAE_NHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040d025": {
+   "name": "tINIMgr::vfunction9",
+   "symbol": "?fn_0040d025@tINIMgr@@UAEHHHHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040d05e": {
+   "name": "tINIMgr::vfunction10",
+   "symbol": "?fn_0040d05e@tINIMgr@@UAE_NHHH@Z",
+   "unit": "unsorted/tINIMgr.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0040f15a": {
    "name": "tSphere::vfunction2",
    "symbol": "?vfunction2@tSphere@@UAE_NMHHMMM@Z",

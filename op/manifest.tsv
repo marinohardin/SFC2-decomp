@@ -63,6 +63,19 @@ address	size	symbol	source	modes
 0x0040c70d	15	tMyApp::vfunction21(int)	unsorted/tMyApp.cpp	vc6 guest
 0x0040c71c	8	tMyApp::vfunction22()	unsorted/tMyApp.cpp	vc6 guest
 0x0040c724	8	tMyApp::vfunction23()	unsorted/tMyApp.cpp	vc6 guest
+0x0040ceae	18	g_tINIMgr (dynamic initializer)	unsorted/tINIMgr.cpp	vc6
+0x0040cec0	34	tINIMgr::fn_0040cec0(unsigned int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cee2	12	g_tINIMgr (atexit registration)	unsorted/tINIMgr.cpp	vc6
+0x0040ceee	20	g_tINIMgr (atexit destructor)	unsorted/tINIMgr.cpp	vc6
+0x0040cf12	28	tINIMgr::fn_0040cf12(const char*)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cf2e	29	tINIMgr::fn_0040cf2e()	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cf4b	13	tINIMgr::fn_0040cf4b()	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cf58	51	tINIMgr::fn_0040cf58(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cf8b	51	tINIMgr::fn_0040cf8b(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cfbe	52	tINIMgr::fn_0040cfbe(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040cff2	51	tINIMgr::fn_0040cff2(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040d025	57	tINIMgr::fn_0040d025(int,int,int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
+0x0040d05e	51	tINIMgr::fn_0040d05e(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
 0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
 0x0040f164	1767	FUN_0040f164()	unsorted/tSphere.cpp	partial
 0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial
