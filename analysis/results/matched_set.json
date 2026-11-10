@@ -2125,6 +2125,150 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x006587f0": {
+   "name": "tChannelGroup::mDump",
+   "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00658890": {
+   "name": "tChannelGroup::mDump",
+   "symbol": "?mDump@tChannelGroup@@UAEXXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x006589f0": {
+   "name": "tChannelGroup::mClose",
+   "symbol": "?mClose@tChannelGroup@@QAEXXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00658ac0": {
+   "name": "tChannelGroup::mUnload",
+   "symbol": "?mUnload@tChannelGroup@@QAEXJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 880,
+   "score": 98.704,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x00658e30": {
+   "name": "tChannelGroup::mLoad",
+   "symbol": "?mLoad@tChannelGroup@@QAEXJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 1600,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00659470": {
+   "name": "tChannelGroup::mGetChannelNumberFromIndex",
+   "symbol": "?mGetChannelNumberFromIndex@tChannelGroup@@QAEJJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x006594a0": {
+   "name": "tChannelGroup::mGetIndex",
+   "symbol": "?mGetIndex@tChannelGroup@@QAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00659530": {
+   "name": "tChannelGroup::mAddDuplicate",
+   "symbol": "?mAddDuplicate@tChannelGroup@@QAEJK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00659540": {
+   "name": "tChannelGroup::mAttachFileToChannel",
+   "symbol": "?mAttachFileToChannel@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 688,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x006597f0": {
+   "name": "tChannelGroup::mAttachFileToBaseGroup",
+   "symbol": "?mAttachFileToBaseGroup@tChannelGroup@@UAEEJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00659a20": {
+   "name": "tChannelGroup::mKillRetainedMode",
+   "symbol": "?mKillRetainedMode@tChannelGroup@@UAEEXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00659b80": {
+   "name": "tChannelGroup::mClearAttachments",
+   "symbol": "?mClearAttachments@tChannelGroup@@UAEEXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00659ca0": {
+   "name": "tChannelGroup::mGetAvailableChannel",
+   "symbol": "?mGetAvailableChannel@tChannelGroup@@QAEJK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 1104,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0065a0f0": {
+   "name": "tChannelGroup::mAttachSoundToChannel",
+   "symbol": "?mAttachSoundToChannel@tChannelGroup@@UAEEKPAVtSoundSelection@@J@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0065a370": {
+   "name": "tChannelGroup::mPlayChannel",
+   "symbol": "?mPlayChannel@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 1104,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0065a7c0": {
+   "name": "tChannelGroup::mPauseChannel",
+   "symbol": "?mPauseChannel@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 624,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0066c080": {
    "name": "tCRandomSequence::tCRandomSequence",
    "symbol": "??0tCRandomSequence@@QAE@KK@Z",

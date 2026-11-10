@@ -235,6 +235,22 @@ address	size	symbol	source	modes
 0x0062ddb0	48	clib::memset(void *,int8u,iCount)	Tiger/tcglue.cpp	vc6 guest
 0x0062dde0	40	clib::strcpy(char *,const char *)	Tiger/tcglue.cpp	vc6 guest
 0x0062de10	35	clib::memcpy(void *,const void *,size_t)	Tiger/tcglue.cpp	vc6 guest
+0x006587f0	147	tChannelGroup::mDump(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00658890	253	tChannelGroup::mDump()	Tiger/taudiochannel.cpp	vc6 guest
+0x006589f0	197	tChannelGroup::mClose()	Tiger/taudiochannel.cpp	vc6 guest
+0x00658ac0	867	tChannelGroup::mUnload(long)	Tiger/taudiochannel.cpp	partial
+0x00658e30	1588	tChannelGroup::mLoad(long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00659470	43	tChannelGroup::mGetChannelNumberFromIndex(long)	Tiger/taudiochannel.cpp	vc6 guest
+0x006594a0	130	tChannelGroup::mGetIndex(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00659530	13	tChannelGroup::mAddDuplicate(unsigned long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00659540	674	tChannelGroup::mAttachFileToChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x006597f0	559	tChannelGroup::mAttachFileToBaseGroup(long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00659a20	339	tChannelGroup::mKillRetainedMode()	Tiger/taudiochannel.cpp	vc6 guest
+0x00659b80	280	tChannelGroup::mClearAttachments()	Tiger/taudiochannel.cpp	vc6 guest
+0x00659ca0	1102	tChannelGroup::mGetAvailableChannel(unsigned long)	Tiger/taudiochannel.cpp	vc6 guest
+0x0065a0f0	640	tChannelGroup::mAttachSoundToChannel(unsigned long,tSoundSelection *,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x0065a370	1103	tChannelGroup::mPlayChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x0065a7c0	624	tChannelGroup::mPauseChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x0066c080	95	tCRandomSequence::tCRandomSequence(int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c100	152	tCRandomSequence::tCRandomSequence(int8u,int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c1a0	21	tCRandomSequence::~tCRandomSequence()	Tiger/tcrandsequence.cpp	vc6
