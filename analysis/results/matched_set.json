@@ -2295,6 +2295,141 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x00707e80": {
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
+   "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00707ef0": {
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamOut",
+   "symbol": "?StreamOut@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 592,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00708140": {
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamIn",
+   "symbol": "?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 480,
+   "score": 17.57,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00708330": {
+   "name": "FUN_00708330",
+   "symbol": "_$E15",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 224,
+   "score": 40.398,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00708410": {
+   "name": "FUN_00708410",
+   "symbol": "?fn_00708410@nDatabase@@YAXXZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00708490": {
+   "name": "FUN_00708490",
+   "symbol": "_$E22",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 224,
+   "score": 40.398,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00708570": {
+   "name": "FUN_00708570",
+   "symbol": "?fn_00708570@nDatabase@@YAXXZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x007085f0": {
+   "name": "FUN_007085f0",
+   "symbol": "_$E29",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 224,
+   "score": 40.398,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x007086d0": {
+   "name": "FUN_007086d0",
+   "symbol": "?fn_007086d0@nDatabase@@YAXXZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00708800": {
+   "name": "nDatabase::tFileDatabaseMgr::`scalar_deleting_destructor'",
+   "symbol": "??_GtFileDatabaseMgr@nDatabase@@UAEPAXI@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00708820": {
+   "name": "nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr",
+   "symbol": "??1tFileDatabaseMgr@nDatabase@@UAE@XZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 288,
+   "score": 44.294,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00708fc0": {
+   "name": "nDatabase::tFileDatabaseMgr::GetCurDBInfo",
+   "symbol": "?GetCurDBInfo@tFileDatabaseMgr@nDatabase@@UAE?AVtDatabaseInfo@12@XZ",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00709060": {
+   "name": "nDatabase::tFileDatabaseMgr::GetDBInfo",
+   "symbol": "?GetDBInfo@tFileDatabaseMgr@nDatabase@@UBEPBVtDatabaseInfo@12@J@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x007090b0": {
+   "name": "nDatabase::tFileDatabaseMgr::New",
+   "symbol": "?New@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 448,
+   "score": 30.383,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00709270": {
+   "name": "nDatabase::tFileDatabaseMgr::Load",
+   "symbol": "?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z",
+   "unit": "Common/Database/FileDatabaseMgr.cpp",
+   "size": 784,
+   "score": 79.659,
+   "exact": false,
+   "recorded": "2026-11-09"
   }
  }
 }

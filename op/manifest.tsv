@@ -254,3 +254,18 @@ address	size	symbol	source	modes
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc5a0	93	tDynamicAllocator::tAllocatorInfo::operator==(const char*) const	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc750	54	tDynamicAllocator::LockDownAllocator()	Common/DynamicAllocator.cpp	vc6 guest
+0x00707e80	97	tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo()	Common/Database/FileDatabaseMgr.cpp	vc6
+0x00707ef0	588	tFileDatabaseMgr::tDatabaseInfo::StreamOut(nDataStore::tOutput&) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest
+0x00708140	472	tFileDatabaseMgr::tDatabaseInfo::StreamIn(nDataStore::tInput&)	Common/Database/FileDatabaseMgr.cpp	partial
+0x00708330	216	tFileDatabaseMgr::kDatabaseInfoFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial
+0x00708410	12	tFileDatabaseMgr::kDatabaseInfoFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6
+0x00708490	216	tFileDatabaseMgr::kDatabaseVersionFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial
+0x00708570	12	tFileDatabaseMgr::kDatabaseVersionFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6
+0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial
+0x007086d0	12	tFileDatabaseMgr::kDatabaseSaveDirectory (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6
+0x00708800	30	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	vc6
+0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	partial
+0x00708fc0	153	tFileDatabaseMgr::GetCurDBInfo()	Common/Database/FileDatabaseMgr.cpp	vc6 guest
+0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest
+0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial
+0x00709270	770	tFileDatabaseMgr::Load(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial
