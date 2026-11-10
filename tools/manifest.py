@@ -42,8 +42,10 @@ at the end of a line); what it does not understand it reports rather than guesse
 - a virtual member's slot is its place in the class's declaration order after the base class's
   slots, an override taking its base's slot (VC6's rule for single inheritance). Overloaded
   virtuals and multiple bases are refused: VC6 orders them in ways not modelled yet;
-- a member function is __thiscall and a free function or static member __cdecl; other
-  conventions are refused.
+- a member function is __thiscall and a free function or static member __cdecl. A definition
+  written with another convention (`__stdcall`, `__fastcall`, `__pascal`, a window procedure or a
+  thread entry, say) is read, but the guest's entry points use the default conventions only, so
+  exact it is `vc6` (lifted, no entry point) and not exact `partial`.
 
 Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--matched JSON]
                                  [--manifest TSV] [--override CPP] [--check]
@@ -151,9 +153,11 @@ def parse_signature(text):
     ret = head[:m.start()].strip()
     for word in ('virtual', 'static', 'inline', 'explicit'):
         ret = re.sub(r'\b%s\b' % word, '', ret).strip()
+    convention = None
     for conv in CONVENTIONS:
-        if conv in ret:
-            raise ManifestError('%s: calling convention %s is not handled' % (name, conv))
+        if re.search(r'\b%s\b' % conv, ret):
+            convention = conv
+            ret = re.sub(r'\s*\b%s\b\s*' % conv, ' ', ret).strip()
     ret = ret.replace('__cdecl', '').replace('__thiscall', '').strip()
     types, names = [], []
     if params and params != 'void':
@@ -163,7 +167,7 @@ def parse_signature(text):
             names.append(n)
     if tail not in ('', 'const'):
         raise NotAFunction(text)
-    return ret, name, tuple(types), tuple(names), tail == 'const'
+    return ret, name, tuple(types), tuple(names), tail == 'const', convention
 
 
 def read_lines(path):
@@ -217,7 +221,7 @@ def scan_file(path, rel, functions, classes):
                 if not (stack and stack[-1][0] == 'class'):
                     raise ManifestError('%s:%d: GenAbstractBinding outside a class body' % (rel, i + 2))
                 record = stack[-1][1]
-                ret, name, types, names, is_const = parse_signature(
+                ret, name, types, names, is_const, convention = parse_signature(
                     BINDING_MEMBERS[0] % (bm.group(1), bm.group(1)))
                 functions.append({'kind': kind, 'address': address, 'file': rel, 'line': i + 1,
                                   'ret': ret, 'name': record['name'] + '::' + name,
@@ -283,7 +287,7 @@ def add_member(record, code, rel, lineno):
     pure = bool(re.search(r'(?:=\s*0|\bSFCOP_PURE)\s*$', decl))
     decl = re.sub(r'(?:=\s*0|\bSFCOP_PURE)\s*$', '', decl).strip()
     try:
-        ret, name, types, names, is_const = parse_signature(decl)
+        ret, name, types, names, is_const, convention = parse_signature(decl)
     except NotAFunction:
         return
     except ManifestError as e:
@@ -343,13 +347,13 @@ def read_definition(lines, i, rel, kind, address):
             cut = k
             break
     try:
-        ret, name, types, names, is_const = parse_signature(head[:cut])
+        ret, name, types, names, is_const, convention = parse_signature(head[:cut])
     except NotAFunction:
         raise ManifestError('%s:%d: cannot read the definition %r' % (rel, i + 2, head))
     except ManifestError as e:
         raise ManifestError('%s:%d: %s' % (rel, i + 2, e))
     return {'kind': kind, 'address': address, 'file': rel, 'line': i + 1, 'ret': ret, 'name': name,
-            'types': types, 'names': names, 'const': is_const}
+            'types': types, 'names': names, 'const': is_const, 'convention': convention}
 
 
 def is_constructor_or_destructor(name):
@@ -471,6 +475,10 @@ def build(game, functions_csv, matched_json=MATCHED):
         record = owner_class(f['name'], classes)
         f['class'] = record
         f['static'] = bool(record) and find_member(record, f)['static']
+        if f['modes'] == 'vc6 guest' and f.get('convention'):
+            # The guest's entry points use the default conventions only; the lifted body keeps
+            # the original's (DESIGN §6.3).
+            f['modes'] = 'vc6'
         if f['modes'] == 'vc6 guest' and record is not None and is_constructor_or_destructor(f['name']):
             # C++ has no pointer to a constructor or destructor, so the guest build cannot wrap one
             # as an entry point; the lifted body stays until the object lifter (DESIGN §7.2) carries

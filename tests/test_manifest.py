@@ -214,8 +214,6 @@ def test_check_passes_when_current_and_fails_when_an_annotation_changes(tmp_path
      'overloaded virtual mFire'),
     (HEADER.replace('// VTABLE: STARFLEETOP 0x00790020\n', '// VTABLE: STARFLEETOP 0x00790020\n#define X\n'),
      SOURCE, 'must come right before its class'),
-    (HEADER, SOURCE.replace('int32 TestRound( int32 value )', 'int32 __stdcall TestRound( int32 value )'),
-     'calling convention __stdcall'),
     (HEADER.replace('class tTestShip : public tTestBase', 'class tTestShip : public tTestBase, public tOther'),
      SOURCE, 'multiple bases'),
 ])
@@ -227,13 +225,15 @@ def test_what_the_scanner_cannot_read_is_refused(tmp_path, capsys, header, sourc
 
 def test_signatures_are_read_from_definition_heads():
     assert manifest.parse_signature('int32 X::Y::operator==( const char* raw_name ) const') == (
-        'int32', 'X::Y::operator==', ('const char*',), ('raw_name',), True)
+        'int32', 'X::Y::operator==', ('const char*',), ('raw_name',), True, None)
     assert manifest.parse_signature('virtual int32 operator<( const tFoo& ) const') == (
-        'int32', 'operator<', ('const tFoo&',), ('a0',), True)
+        'int32', 'operator<', ('const tFoo&',), ('a0',), True, None)
     assert manifest.parse_signature('void tFoo::mSet( unsigned int, int32 count = 3 )') == (
-        'void', 'tFoo::mSet', ('unsigned int', 'int32'), ('a0', 'count'), False)
+        'void', 'tFoo::mSet', ('unsigned int', 'int32'), ('a0', 'count'), False, None)
     with pytest.raises(manifest.NotAFunction):
         manifest.parse_signature('ptr32( tFoo ) fNext')
+    assert manifest.parse_signature('long __stdcall tWin::mWndProcThunk( void* w, unsigned int m )') == (
+        'long', 'tWin::mWndProcThunk', ('void*', 'unsigned int'), ('w', 'm'), False, '__stdcall')
 
 
 def test_a_constructor_initialiser_list_is_not_part_of_the_signature(tmp_path):
@@ -305,6 +305,22 @@ def test_a_function_not_recorded_exact_is_partial_and_has_no_entry_point(tmp_pat
     assert 'sub_00401000' in text and 'sub_00401100' in text
     assert 'sub_00401300' not in text and 'sub_00401400' not in text
     assert 'sfcop_guest_override_count = 2u;' in text
+
+
+def test_another_calling_convention_is_lifted_only(tmp_path):
+    # A __stdcall definition (a window procedure, say) cannot be a guest entry point, which uses
+    # the default conventions: exact it is vc6 only, not exact partial.
+    source = SOURCE.replace('int32 TestRound( int32 value )', 'int32 __stdcall TestRound( int32 value )')
+    game, csv = make_tree(tmp_path, source=source)
+    write_matched(tmp_path, EXACT)
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t')[2:5] for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401400'] == ['TestRound(int32)', 'Test/TestShip.cpp', 'vc6']
+    assert 'sub_00401400' not in (tmp_path / 'out' / 'override.cpp').read_text()
+    write_matched(tmp_path, ('0x00401000',))
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t')[4] for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401400'] == 'partial'
 
 
 def test_an_unreadable_matched_set_is_reported(tmp_path, capsys):
