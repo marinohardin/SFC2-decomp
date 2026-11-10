@@ -58,6 +58,14 @@ tDynamicAllocator* tDynamicAllocator::Instance()
   definition), the function on the initializer's startup path that calls `_atexit`, and the
   destructor that function pushes. An annotation with nothing to claim there (a global with no
   destructor, or more than three) is an error.
+- A scalar or vector deleting destructor (`??_G` / `??_E`) is claimed by an annotation stacked
+  on its class's out-of-class destructor definition, directly above it or above the
+  destructor's own annotation; a destructor written inline in the class gets an out-of-class
+  definition for this. The address's evidence (a `??_G` / `??_E` symbol or a
+  `scalar_deleting_destructor` / `vector_deleting_destructor` name in `functions.csv` or the
+  matched set, read by `harness/lib/deleting.py` for the manifest, the harness and the object
+  lift alike) says which annotation it is; the harness then claims the `??_G` / `??_E` that
+  calls that destructor. If the unit does not emit it, the address cannot be claimed yet.
 - Functions the compiler does not emit on their own (unused inlines, functions folded into
   their callers) cannot be claimed; they are covered by the functions they are inlined into.
 

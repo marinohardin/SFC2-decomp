@@ -144,15 +144,17 @@ def write_side_by_side(left, right, path):
             f.write(f'{mark}{o:>7} {a:<43}| {b}\n')
 
 
-def score_function(fn, unit, build, exe, index, symbol_hint=None):
-    """Score one annotated function against an already compiled unit. Returns a result dict."""
+def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None):
+    """Score one annotated function against an already compiled unit; `recorded` is its
+    matched-set entry, part of the evidence for what its annotation claims. Returns a result dict."""
     res = dict(address=f'0x{fn.address:08x}', name=fn.name, unit=unit['rel'], score=0.0,
                exact=False, symbol=None, size=fn.size, error=None)
     obj = coff.CoffObject(open(build['obj'], 'rb').read())
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
     try:
-        sym = symbol_hint or source.symbol_for_annotation(listing, unit['path'], unit['line'],
-                                                          unit['other_lines'])
+        sym = symbol_hint or source.symbol_for_claim(
+            listing, unit['path'], unit['line'], unit['other_lines'],
+            recorded=recorded, mangled=fn.mangled, name=fn.name)
     except source.SourceError as e:
         res['error'] = str(e)
         return res
@@ -292,7 +294,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             fn = index.by_address[a]
             unit = dict(rel=rel, path=path, line=ann.line,
                         other_lines=[n for n in ann_lines if n != ann.line])
-            res = score_function(fn, unit, build, exe, index)
+            res = score_function(fn, unit, build, exe, index,
+                                 recorded=data['functions'].get(matched.key(a)))
             res['claimed'] = a in claimed_addrs
             rep.results.append(res)
             _report_function(rep, data, fn, res)

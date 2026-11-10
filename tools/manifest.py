@@ -47,6 +47,32 @@ at the end of a line); what it does not understand it reports rather than guesse
   thread entry, say) is read, but the guest's entry points use the default conventions only, so
   exact it is `vc6` (lifted, no entry point) and not exact `partial`.
 
+A scalar or vector deleting destructor (`??_G` / `??_E`) is another function VC6 generates with
+no source line of its own: it calls the class's destructor and then operator delete. Its one
+claiming form is an annotation stacked on the class's out-of-class destructor definition,
+directly above the definition or above the destructor's own annotation:
+
+    // FUNCTION: STARFLEETOP 0x00708800
+    // FUNCTION: STARFLEETOP 0x00708820
+    tFileDatabaseMgr::~tFileDatabaseMgr()
+    {
+
+A class whose destructor is written inline in its body gets an out-of-class definition for
+this. Which annotation is the deleting destructor is not read from the source but from the
+evidence for its address: a `??_G` / `??_E` symbol, or a `scalar_deleting_destructor` /
+`vector_deleting_destructor` name, in its `analysis/results/matched_set.json` entry or its
+`functions.csv` row. Its row is named for what it is (`tFileDatabaseMgr::`scalar deleting
+destructor'`); exact it is `vc6` only (nothing in the guest calls it by a C++ name, so it has no
+entry point in override.cpp), not exact `partial`, a `// STUB:` `stub`. The harness finds the
+compiled function the same way: the `??_G` / `??_E` that calls the destructor the stack sits on
+(`harness/lib/source.symbol_for_claim`). All three read the evidence through
+`harness/lib/deleting.kind`.
+
+An annotation claims only what follows it, so these are refused rather than attached to
+something else: a `FUNCTION:` or `STUB:` annotation above a class or inside a class body (other
+than on a part binding, below), and one not followed by a definition, with only further
+annotations and comments between (a blank line, a declaration or the end of the file).
+
 Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--matched JSON]
                                  [--manifest TSV] [--override CPP] [--check]
 """
@@ -58,6 +84,8 @@ import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO)
+from harness.lib import deleting  # noqa: E402  (the one rule for deleting destructors)
 GAME = os.path.join(REPO, 'game')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 MATCHED = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
@@ -227,7 +255,12 @@ def scan_file(path, rel, functions, classes):
                                   'ret': ret, 'name': record['name'] + '::' + name,
                                   'types': types, 'names': names, 'const': is_const})
             else:
+                follows_definition(lines, i, rel)
                 glob = read_global(lines, i, rel, in_class=any(k == 'class' for k, _ in stack))
+                if glob is None and stack and stack[-1][0] == 'class':
+                    raise ManifestError('%s:%d: an annotation inside the body of class %s; a '
+                                        'function is claimed at its out-of-class definition'
+                                        % (rel, i + 1, stack[-1][1]['name']))
                 if glob is not None:
                     name, role = glob
                     functions.append({'kind': kind, 'address': address, 'file': rel, 'line': i + 1,
@@ -298,6 +331,23 @@ def add_member(record, code, rel, lineno):
         'pure': pure, 'line': lineno})
 
 
+def follows_definition(lines, i, rel):
+    """Refuse a FUNCTION or STUB annotation at line i that is not followed by what it claims:
+    only further annotations and comments may come between it and a definition."""
+    j = i + 1
+    while j < len(lines) and (ANNOTATION.match(lines[j]) or lines[j].strip().startswith('//')):
+        j += 1
+    code = strip_code(lines[j]).strip() if j < len(lines) else ''
+    if not code or code.startswith(('#', '}')):
+        raise ManifestError('%s:%d: the annotation is not followed by a definition (only further '
+                            'annotations and comments may come between)' % (rel, i + 1))
+    cm = CLASS.match(code)
+    if cm and (cm.group(3) or (j + 1 < len(lines) and strip_code(lines[j + 1]).strip() == '{')):
+        raise ManifestError('%s:%d: an annotation above class %s claims no function; a '
+                            'compiler-generated destructor is claimed on the out-of-class '
+                            'destructor definition' % (rel, i + 1, cm.group(1)))
+
+
 def read_global(lines, i, rel, in_class):
     """(global name, role) when the annotation at line i sits above a global object's definition
     (further annotations and comments may come between); None when what follows is not a
@@ -335,6 +385,9 @@ def read_definition(lines, i, rel, kind, address):
     if j < len(lines):
         head += ' ' + strip_code(lines[j]).split('{')[0]
     head = head.strip()
+    if j >= len(lines) or ';' in head:
+        raise ManifestError('%s:%d: the annotation is not followed by a definition (%r has no '
+                            'body)' % (rel, i + 1, head))
     # A constructor's initialiser list is not part of the signature.
     depth, cut = 0, len(head)
     for k, ch in enumerate(head):
@@ -362,7 +415,7 @@ def is_constructor_or_destructor(name):
 
 
 def symbol_of(f):
-    if 'global' in f:
+    if 'global' in f or 'deleting' in f:
         return f['name']
     return '%s(%s)%s' % (f['name'], ','.join(f['types']), ' const' if f['const'] else '')
 
@@ -428,24 +481,42 @@ def resolve_class(name, context, classes):
         scope = scope[:-1]
 
 
-def exact_addresses(matched_json):
-    """The addresses the harness has recorded byte-exact (harness/update-matched-set.sh writes it)."""
+def recorded_entries(matched_json):
+    """{address: entry} the harness has recorded (harness/update-matched-set.sh writes it)."""
     try:
         with open(matched_json, encoding='utf-8') as f:
             recorded = json.load(f)['functions']
-        return {int(a, 16) for a, e in recorded.items() if e.get('exact') is True}
+        return {int(a, 16): e for a, e in recorded.items() if isinstance(e, dict)}
     except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
         raise ManifestError('%s cannot be read as a matched set (%s); the harness writes it '
                             '(harness/update-matched-set.sh), or pass --matched' % (matched_json, e)) from None
 
 
+def claim_deleting_destructor(f, kind):
+    """Rename a claim on a destructor definition to the deleting destructor it claims; a claim on
+    anything else is warned about and left as it is."""
+    qual, _, short = f['name'].rpartition('::')
+    if not (qual and short == '~' + qual.rpartition('::')[2]):
+        # A function written only to make the compiler emit the deleting destructor's body is
+        # not this form; it keeps its own row, as the harness scores it, until it is replaced.
+        print('manifest: warning: %s:%d: 0x%08x is a %s claimed on %s; claim it on the class\'s '
+              'out-of-class destructor definition instead' % (
+                  f['file'], f['line'], f['address'], deleting.KINDS[kind][1], symbol_of(f)),
+              file=sys.stderr)
+        return
+    f['name'] = "%s::`%s'" % (qual, deleting.KINDS[kind][1])
+    f['deleting'] = kind
+
+
 def build(game, functions_csv, matched_json=MATCHED):
     functions, classes = scan(game)
-    exact = exact_addresses(matched_json)
-    sizes = {}
+    recorded = recorded_entries(matched_json)
+    exact = {a for a, e in recorded.items() if e.get('exact') is True}
+    sizes, rows = {}, {}
     with open(functions_csv, newline='') as f:
         for row in csv.DictReader(f):
             sizes[int(row['address'], 16)] = row['size']
+            rows[int(row['address'], 16)] = row
     seen = {}
     for f in functions:
         if f['address'] in seen:
@@ -457,6 +528,10 @@ def build(game, functions_csv, matched_json=MATCHED):
             raise ManifestError('%s:%d: 0x%08x is not a function in %s' % (
                 f['file'], f['line'], f['address'], os.path.relpath(functions_csv, REPO)))
         f['size'] = sizes[f['address']]
+        entry, row = recorded.get(f['address'], {}), rows[f['address']]
+        kind = deleting.kind(entry, row.get('mangled'), row.get('name'))
+        if kind and 'global' not in f:
+            claim_deleting_destructor(f, kind)
         if f['kind'] != 'FUNCTION':
             f['modes'] = 'stub'
         elif f['address'] not in exact:
@@ -465,9 +540,12 @@ def build(game, functions_csv, matched_json=MATCHED):
             f['modes'] = 'partial'
         else:
             f['modes'] = 'vc6 guest'
-        if 'global' in f:
-            # Generated from a global's definition: nothing in the guest can call it by a C++
-            # name, so it has no entry point; exact, only the object lift takes it.
+        if 'global' in f or 'deleting' in f:
+            # Generated from a global's definition or a virtual destructor: nothing in the guest
+            # can call it by a C++ name, so it has no entry point; exact, only the object lift
+            # takes it.
+            if 'deleting' in f:
+                owner_class(f['name'], classes)
             f['class'], f['static'] = None, False
             if f['modes'] == 'vc6 guest':
                 f['modes'] = 'vc6'

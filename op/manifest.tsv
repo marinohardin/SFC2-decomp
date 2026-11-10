@@ -93,7 +93,7 @@ address	size	symbol	source	modes
 0x0040ff95	10	tEntity::vfunction10(iTruth)	unsorted/tEntity.cpp	vc6 guest
 0x0040ff9f	10	tEntity::vfunction13(tID)	unsorted/tEntity.cpp	vc6 guest
 0x0040ffa9	4	tEntity::vfunction14()	unsorted/tEntity.cpp	vc6 guest
-0x0040ffad	28	tEntity::~tEntity()	unsorted/tEntity.cpp	partial
+0x0040ffad	28	tEntity::`scalar deleting destructor'	unsorted/tEntity.cpp	partial
 0x0041004d	270	tEntity::vfunction11(tSFCStream &,int32u)	unsorted/tEntity.cpp	vc6 guest
 0x0041015b	13	tEntity::vfunction2()	unsorted/tEntity.cpp	vc6 guest
 0x00410168	38	tEntity::fn_00410168()	unsorted/tEntity.cpp	vc6 guest
@@ -121,7 +121,7 @@ address	size	symbol	source	modes
 0x00413614	10	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	partial
 0x004139c4	6	tNetMsg_kTractorChangeMessage::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
 0x004139ca	6	tNetMsg_kDeepScan::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
-0x004139d0	28	tPhysicalEntity::tTractorItem::~tTractorItem()	Source/entity/entity_physical.cpp	partial
+0x004139d0	28	tPhysicalEntity::tTractorItem::`scalar deleting destructor'	Source/entity/entity_physical.cpp	partial
 0x004139ec	75	tPhysicalEntity::vfunction5()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413a37	86	tPhysicalEntity::vfunction60(int)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413a8d	54	tPhysicalEntity::fn_00413a8d(tObject_00413a8d_arg *)	Source/entity/entity_physical.cpp	vc6 guest
@@ -144,7 +144,7 @@ address	size	symbol	source	modes
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
 0x0043104e	239	tNetControl::tNetControl()	unsorted/tNetControl.cpp	partial
-0x0043113d	28	tNetControl::~tNetControl()	unsorted/tNetControl.cpp	partial
+0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	partial
 0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest
 0x0043117a	10	fn_0043117a()	unsorted/tNetControl.cpp	partial
 0x00431184	104	fn_00431184(tNetControl *)	unsorted/tNetControl.cpp	partial
@@ -190,7 +190,7 @@ address	size	symbol	source	modes
 0x00435554	27	tDynamicMemoryFreeListViaHandles::vfunction33(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x0043556f	27	tDynamicMemoryFreeListViaHandles::vfunction35(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x0043558a	27	tDynamicMemoryFreeListViaHandles::vfunction37(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004355a5	34	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	partial
+0x004355a5	34	tDynamicMemoryFreeListViaHandles::`scalar deleting destructor'	unsorted/tDynamicMemoryFreeListViaHandles.cpp	partial
 0x004355c7	7	t3DListenerProfile::~t3DListenerProfile()	unsorted/t3DListenerProfile.cpp	vc6
 0x004355ce	24	t3DListenerProfile::fn_004355ce(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x004355e6	24	t3DListenerProfile::fn_004355e6(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
@@ -263,7 +263,7 @@ address	size	symbol	source	modes
 0x00708570	12	tFileDatabaseMgr::kDatabaseVersionFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6
 0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial
 0x007086d0	12	tFileDatabaseMgr::kDatabaseSaveDirectory (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6
-0x00708800	30	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	vc6
+0x00708800	30	tFileDatabaseMgr::`scalar deleting destructor'	Common/Database/FileDatabaseMgr.cpp	vc6
 0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	partial
 0x00708fc0	153	tFileDatabaseMgr::GetCurDBInfo()	Common/Database/FileDatabaseMgr.cpp	vc6 guest
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest

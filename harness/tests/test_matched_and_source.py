@@ -1,7 +1,7 @@
 """Never-regress bookkeeping, annotations, and listing-to-symbol mapping."""
 import pytest
 
-from harness.lib import matched, source
+from harness.lib import deleting, matched, source
 
 LISTING = """\
 ; File DynamicAllocator.cpp
@@ -274,3 +274,96 @@ def test_generated_functions_are_read_from_the_startup_table_and_atexit_call():
     assert source.global_generated_functions(GLOBALS_LISTING, '_$E1') == ['_$E1', '_$E3', '_$E2']
     assert source.global_generated_functions(GLOBALS_LISTING, '_$E6') == ['_$E6']
     assert source.global_generated_functions(GLOBALS_LISTING, '??0tPlain@@QAE@XZ') is None
+
+
+# A unit whose class tShip has an out-of-class virtual destructor at line 40 and a stand-in
+# member at line 50, as VC6 lists it: the destructor has line records, the scalar deleting
+# destructor VC6 generates from it has none and calls it; tOther's deleting destructor calls
+# another destructor and must not be taken for tShip's.
+DELETING_LISTING = """\
+\tTITLE\tship.cpp
+;\tCOMDAT ??1tShip@@UAE@XZ
+_TEXT\tSEGMENT
+??1tShip@@UAE@XZ PROC NEAR\t\t\t; tShip::~tShip, COMDAT
+
+; 41   : {
+
+\tret\t0
+??1tShip@@UAE@XZ ENDP\t\t\t\t; tShip::~tShip
+_TEXT\tENDS
+;\tCOMDAT ??_GtOther@@UAEPAXI@Z
+_TEXT\tSEGMENT
+??_GtOther@@UAEPAXI@Z PROC NEAR\t\t\t; tOther::`scalar deleting destructor', COMDAT
+\tcall\t??1tOther@@UAE@XZ\t\t\t; tOther::~tOther
+\tret\t4
+??_GtOther@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+;\tCOMDAT ??_GtShip@@UAEPAXI@Z
+_TEXT\tSEGMENT
+___flags$ = 8
+??_GtShip@@UAEPAXI@Z PROC NEAR\t\t\t; tShip::`scalar deleting destructor', COMDAT
+\tpush\tesi
+\tmov\tesi, ecx
+\tcall\t??1tShip@@UAE@XZ\t\t\t; tShip::~tShip
+\tret\t4
+??_GtShip@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+;\tCOMDAT ?mStandIn@tShip@@QAEPAV1@I@Z
+_TEXT\tSEGMENT
+?mStandIn@tShip@@QAEPAV1@I@Z PROC NEAR\t\t; tShip::mStandIn, COMDAT
+
+; 51   : {
+
+\tret\t4
+?mStandIn@tShip@@QAEPAV1@I@Z ENDP
+_TEXT\tENDS
+END
+"""
+
+
+def _deleting(line, lines, kind='scalar'):
+    return source.symbol_for_annotation(DELETING_LISTING, 'x/ship.cpp', line,
+                                        [n for n in lines if n != line], deleting=kind)
+
+
+def test_a_deleting_destructor_is_read_from_its_name_or_symbol():
+    assert deleting.kind(None, '', 'tShip::scalar_deleting_destructor') == 'scalar'
+    assert deleting.kind(None, '??_GtShip@@UAEPAXI@Z', 'FUN_00401000') == 'scalar'
+    assert deleting.kind(None, '', "tShip::`vector_deleting_destructor'") == 'vector'
+    assert deleting.kind(None, '??_EtShip@@UAEPAXI@Z', '') == 'vector'
+    assert deleting.kind(None, '??1tShip@@UAE@XZ', 'tShip::~tShip') is None
+    # The matched-set entry is evidence too, its symbol first.
+    assert deleting.kind({'symbol': '??_EtShip@@UAEPAXI@Z', 'name': 'FUN_00401000'},
+                         '', 'FUN_00401000') == 'vector'
+    assert deleting.kind({'symbol': '??1tShip@@UAE@XZ',
+                          'name': 'tShip::scalar_deleting_destructor'}, '', 'FUN_00401000') == 'scalar'
+
+
+def test_the_matched_set_alone_can_say_an_annotation_claims_a_deleting_destructor():
+    # functions.csv has only a placeholder name and no mangled name; the matched-set entry
+    # records ??_GtShip. The claim is the deleting destructor, as tools/manifest.py names the row,
+    # not the destructor the plain rule would give.
+    recorded = {'symbol': '??_GtShip@@UAEPAXI@Z', 'name': 'FUN_00401000'}
+    assert source.symbol_for_claim(DELETING_LISTING, 'x/ship.cpp', 39, [49], recorded=recorded,
+                                   mangled='', name='FUN_00401000') == '??_GtShip@@UAEPAXI@Z'
+    assert source.symbol_for_claim(DELETING_LISTING, 'x/ship.cpp', 39, [49], recorded=None,
+                                   mangled='', name='FUN_00401000') == '??1tShip@@UAE@XZ'
+
+
+def test_a_deleting_destructor_stacked_on_the_destructor_claims_the_generated_function():
+    # Directly above the definition (line 39), or above the destructor's own annotation (38,
+    # with 39 the destructor's): both claim ??_GtShip, not the destructor itself.
+    assert _deleting(39, [39, 49]) == '??_GtShip@@UAEPAXI@Z'
+    assert _deleting(38, [38, 39, 49]) == '??_GtShip@@UAEPAXI@Z'
+    # Without the evidence, the plain rule: the destructor.
+    assert source.symbol_for_annotation(DELETING_LISTING, 'x/ship.cpp', 39, [49]) == \
+        '??1tShip@@UAE@XZ'
+
+
+def test_a_deleting_destructor_the_unit_did_not_emit_claims_nothing():
+    # tShip has no vector deleting destructor in this unit.
+    assert _deleting(39, [39, 49], kind='vector') is None
+
+
+def test_a_deleting_destructor_claimed_on_a_stand_in_keeps_the_plain_rule():
+    assert _deleting(49, [39, 49]) == '?mStandIn@tShip@@QAEPAV1@I@Z'

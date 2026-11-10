@@ -17,7 +17,7 @@ import shutil
 import subprocess
 import time
 
-from . import paths
+from . import deleting, paths
 
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB):\s*(\w+)\s+0x([0-9a-fA-F]+)\s*$')
 SOURCE_EXTS = ('.cpp', '.c', '.cxx')
@@ -255,7 +255,28 @@ def global_generated_functions(listing_text, initializer):
     return [initializer]
 
 
-def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines):
+def deleting_destructor_symbol(listing_text, destructor, kind):
+    """The `kind` deleting destructor VC6 generated for the class whose destructor is
+    `destructor` (a `??1` symbol): the `??_G` (scalar) or `??_E` (vector) PROC that calls it or
+    passes it on. None when the unit did not emit one (nothing in it needs it)."""
+    bodies, _ = listing_bodies(listing_text)
+    prefix = deleting.KINDS[kind][0]
+    hits = [p for p, body in bodies.items() if p.startswith(prefix)
+            and (('branch', destructor) in body or ('push', destructor) in body)]
+    return hits[0] if len(hits) == 1 else None
+
+
+def symbol_for_claim(listing_text, unit_path, ann_line, other_ann_lines, recorded=None, mangled='',
+                     name=''):
+    """symbol_for_annotation for the annotation of an address whose evidence is `recorded` (its
+    matched-set entry, or None) and functions.csv's `mangled` and `name`: the evidence decides
+    whether it claims a deleting destructor (harness/lib/deleting.py). The harness and the object
+    lift both claim through this, as tools/manifest.py names rows from the same evidence."""
+    return symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines,
+                                 deleting=deleting.kind(recorded, mangled, name))
+
+
+def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, deleting=None):
     """The compiled symbol the annotation at ann_line claims: the function whose first source
     line in this file is the nearest after the annotation, with no other annotation between.
 
@@ -265,7 +286,17 @@ def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines):
     atexit registration and the atexit destructor, which have no line record and are found
     from the initializer (global_generated_functions). Raises SourceError when such an
     annotation has nothing to claim: the global registers no destructor, or the stack is
-    higher than GLOBAL_ROLES."""
+    higher than GLOBAL_ROLES.
+
+    `deleting` ('scalar' or 'vector', from harness/lib/deleting.kind) says the annotation claims
+    a deleting destructor. Such an annotation is stacked on its class's out-of-class destructor
+    definition, directly above it or above the destructor's own annotation; the deleting
+    destructor has no line record, so it is found from the destructor the stack sits on
+    (deleting_destructor_symbol); None when the unit emitted no such deleting destructor. A stack
+    that does not sit on a destructor (a function written only to make the compiler emit the
+    body) is read with the plain rule."""
+    if deleting:
+        return _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, deleting)
     sym = _nearest_function(listing_text, unit_path, ann_line, other_ann_lines)
     if sym is not None:
         return sym
@@ -291,6 +322,25 @@ def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines):
     raise SourceError(f'the annotation at line {ann_line} is number {depth + 1} above the global '
                       f'whose initializer is {sym}; VC6 generates at most {len(GLOBAL_ROLES)} '
                       f'functions from a global ({", ".join(GLOBAL_ROLES)})')
+
+
+def _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, kind):
+    lines = sorted(set(other_ann_lines))
+    cur = ann_line
+    sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+    while sym is None:
+        below = [n for n in lines if n > cur]
+        if not below:
+            break
+        cur = below[0]
+        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+    if sym is None:
+        return None
+    if not isinstance(sym, str) or not sym.startswith('??1'):
+        # Not the form: a function written to make the compiler emit the deleting destructor's
+        # body (tools/manifest.py warns about it). The plain rule applies, as before the form.
+        return symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines)
+    return deleting_destructor_symbol(listing_text, sym, kind)
 
 
 def _nearest_function(listing_text, unit_path, ann_line, other_ann_lines):
