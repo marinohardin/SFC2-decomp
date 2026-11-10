@@ -128,6 +128,17 @@ def test_usage_limit_is_told_apart_from_a_failed_task():
     assert not loopio.limited(dict(is_error=True, subtype='error_max_turns', result=''))
 
 
+def test_the_five_hour_limit_message_is_a_usage_limit():
+    # The claude CLI's result when the plan's 5-hour window is used up: the run reports
+    # subtype 'success' with is_error set, and the 429 sits in its own field.
+    message = "You've hit your 5-hour limit \u00b7 resets 11am (America/Los_Angeles)"
+    assert loopio.limited(dict(is_error=True, subtype='success', result=message))
+    assert loopio.limited(dict(is_error=True, subtype='success', result='',
+                               terminal_reason='api_error', api_error_status=429))
+    assert not loopio.limited(dict(is_error=True, subtype='success', result='',
+                                   terminal_reason='api_error', api_error_status=500))
+
+
 def test_score_reads_the_claimed_function_and_treats_unscored_as_zero():
     v = dict(exit=0, results=[dict(address='0x00401000', score=97.5, exact=False, relocs=[])])
     assert loopio.score(v, '0x00401000') == (97.5, False, 0)

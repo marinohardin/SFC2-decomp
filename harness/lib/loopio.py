@@ -16,7 +16,7 @@ import sys
 from . import funcs, paths
 
 LIMIT = re.compile(r'usage limit|limit reached|rate.?limit|resets? at|overloaded|429|'
-                   r'credit balance|quota', re.I)
+                   r'credit balance|quota|hit your .{0,40}limit|limit\W+resets?\b', re.I)
 AUTH = re.compile(r'authenticat|oauth|not logged in|log ?in again|/login|invalid api key', re.I)
 MAX_BLOCKS = int(os.environ.get('HARNESS_MAX_STOP_BLOCKS', 3))
 
@@ -103,6 +103,9 @@ def limited(out):
         return False
     if not out.get('is_error') and out.get('subtype', 'success') == 'success':
         return False
+    # An HTTP 429 from the API is a rate or usage limit whatever the message says.
+    if out.get('api_error_status') == 429:
+        return True
     return bool(LIMIT.search(json.dumps(out.get('result', '')) + ' ' + str(out.get('subtype', ''))))
 
 
