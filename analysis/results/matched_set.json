@@ -1,6 +1,186 @@
 {
  "version": 1,
  "functions": {
+  "0x0040bd69": {
+   "name": "tMouseMgr_Base::~tMouseMgr_Base",
+   "symbol": "??1tMouseMgr_Base@@UAE@XZ",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bd70": {
+   "name": "tMouseMgr_Base::scalar_deleting_destructor",
+   "symbol": "??0tMouseMgr_Base@@QAE@XZ",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 29,
+   "score": 12.5,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bd8d": {
+   "name": "FUN_0040bd8d",
+   "symbol": "?fn_0040bd8d@tTimer@tMouseMgr_Ex@@UAEXXZ",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bd95": {
+   "name": "tMouseMgr_Ex::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tMouseMgr_Ex@@QAEPAV1@E@Z",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bdb1": {
+   "name": "tMouseMgr_Ex::~tMouseMgr_Ex",
+   "symbol": "??1tMouseMgr_Ex@@UAE@XZ",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 10,
+   "score": 40.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bdbb": {
+   "name": "tMouseMgr_Base::tMouseMgr_Base",
+   "symbol": "??1fn_0040bdbb@@UAE@XZ",
+   "unit": "unsorted/tMouseMgr_Base.cpp",
+   "size": 56,
+   "score": 14.211,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040be9b": {
+   "name": "tSfcMouseMgr_Ex::vfunction2",
+   "symbol": "?vfunction2@tSfcMouseMgr_Ex@@UAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040bea5": {
+   "name": "FUN_0040bea5",
+   "symbol": "?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 369,
+   "score": 15.854,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c016": {
+   "name": "FUN_0040c016",
+   "symbol": "?fn_0040c016@@YAHPAVfn_00627140_stream@@@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c037": {
+   "name": "tSfcMouseMgr_Ex::scalar_deleting_destructor",
+   "symbol": "?fn_0040c037@fn_0040bea5_mgr@@QAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c063": {
+   "name": "tSfcMouseMgr_Ex::vfunction4",
+   "symbol": "?fn_0040c063@fn_0040bea5_mgr@@QAEXJJJJJ@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c08b": {
+   "name": "tSfcMouseMgr_Ex::vfunction5",
+   "symbol": "?fn_0040c08b@fn_0040bea5_mgr@@QAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c094": {
+   "name": "tSfcMouseMgr_Ex::vfunction6",
+   "symbol": "?fn_0040c094@fn_0040bea5_mgr@@QAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c09d": {
+   "name": "tSfcMouseMgr_Ex::vfunction7",
+   "symbol": "?fn_0040c09d@fn_0040bea5_mgr@@QAEXJ@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c0ad": {
+   "name": "tSfcMouseMgr_Ex::vfunction8",
+   "symbol": "?fn_0040c0ad@fn_0040bea5_mgr@@QAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c0b6": {
+   "name": "tSfcMouseMgr_Ex::vfunction9",
+   "symbol": "?fn_0040c0b6@fn_0040bea5_mgr@@QAEXXZ",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c0bf": {
+   "name": "tSfcMouseMgr_Ex::vfunction11",
+   "symbol": "?fn_0040c0bf@fn_0040bea5_mgr@@QAEXH@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 196,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c183": {
+   "name": "tSfcMouseMgr_Ex::vfunction10",
+   "symbol": "?fn_0040c183@fn_0040bea5_mgr@@QAEXPAD@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 100,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c1e7": {
+   "name": "tSfcMouseMgr_Ex::vfunction12",
+   "symbol": "?fn_0040c1e7@fn_0040bea5_mgr@@QAEXJ@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c1f7": {
+   "name": "tSfcMouseMgr_Ex::vfunction13",
+   "symbol": "?fn_0040c1f7@fn_0040bea5_mgr@@QAEXJ@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0040f15a": {
    "name": "tSphere::vfunction2",
    "symbol": "?vfunction2@tSphere@@UAE_NMHHMMM@Z",

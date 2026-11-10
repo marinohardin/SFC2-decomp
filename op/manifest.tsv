@@ -1,4 +1,24 @@
 address	size	symbol	source	modes
+0x0040bd69	7	tMouseMgr_Base::~tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	vc6
+0x0040bd70	29	tMouseMgr_Base::tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	partial
+0x0040bd8d	8	tMouseMgr_Ex::tTimer::fn_0040bd8d()	unsorted/tMouseMgr_Base.cpp	vc6 guest
+0x0040bd95	28	tMouseMgr_Ex::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest
+0x0040bdb1	10	tMouseMgr_Ex::~tMouseMgr_Ex()	unsorted/tMouseMgr_Base.cpp	partial
+0x0040bdbb	56	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	partial
+0x0040be9b	10	tSfcMouseMgr_Ex::vfunction2()	unsorted/tSfcMouseMgr_Ex.cpp	partial
+0x0040bea5	369	fn_0040bea5_mgr::fn_0040bea5()	unsorted/tSfcMouseMgr_Ex.cpp	partial
+0x0040c016	33	fn_0040c016(fn_00627140_stream *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c037	44	fn_0040bea5_mgr::fn_0040c037()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c063	40	fn_0040bea5_mgr::fn_0040c063(long,long,long,long,long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c08b	9	fn_0040bea5_mgr::fn_0040c08b()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c094	9	fn_0040bea5_mgr::fn_0040c094()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c09d	16	fn_0040bea5_mgr::fn_0040c09d(long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c0ad	9	fn_0040bea5_mgr::fn_0040c0ad()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c0b6	9	fn_0040bea5_mgr::fn_0040c0b6()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c0bf	196	fn_0040bea5_mgr::fn_0040c0bf(int)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c183	100	fn_0040bea5_mgr::fn_0040c183(char *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c1e7	16	fn_0040bea5_mgr::fn_0040c1e7(long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c1f7	16	fn_0040bea5_mgr::fn_0040c1f7(long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
 0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
 0x0040f164	1767	FUN_0040f164()	unsorted/tSphere.cpp	partial
 0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial
