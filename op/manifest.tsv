@@ -1,4 +1,33 @@
 address	size	symbol	source	modes
+0x00401017	28	tApp3dBase::tApp3dBase()	unsorted/tApp3dBase.cpp	vc6
+0x00401033	5	tApp3dBase::vfunction13()	unsorted/tApp3dBase.cpp	vc6 guest
+0x00401038	3	tApp3dBase::vfunction1(tView3D *)	unsorted/tApp3dBase.cpp	vc6 guest
+0x00401057	7	tApp3dBase::~tApp3dBase()	unsorted/tApp3dBase.cpp	vc6
+0x0040105e	370	tApp3dBase::vfunction11(tApplication *,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest
+0x004011d0	57	tApp3dBase::vfunction12()	unsorted/tApp3dBase.cpp	vc6 guest
+0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest
+0x004012db	91	tApp3dBase::vfunction20()	unsorted/tApp3dBase.cpp	vc6 guest
+0x0040135a	5	tApp3dBase::vfunction18()	unsorted/tApp3dBase.cpp	vc6 guest
+0x0040aadc	65	tSfcApp3d::tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
+0x0040ab43	49	tSfcApp3d::~tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
+0x0040ab74	10	tSfcApp3d::vfunction12()	unsorted/tSfcApp3d.cpp	partial
+0x0040ab7e	143	tSfcApp3d::fn_0040ab7e()	unsorted/tSfcApp3d.cpp	partial
+0x0040ac19	37	fn_0040ac19()	unsorted/tSfcApp3d.cpp	partial
+0x0040ac4a	46	fn_0040ac4a()	unsorted/tSfcApp3d.cpp	partial
+0x0040ac84	38	fn_0040ac84()	unsorted/tSfcApp3d.cpp	partial
+0x0040acb6	32	tSfcApp3d::fn_0040acb6()	unsorted/tSfcApp3d.cpp	partial
+0x0040ad0b	36	fn_0040ad0b()	unsorted/tSfcApp3d.cpp	partial
+0x0040ad35	843	tSfcApp3d::vfunction21(tApplication *)	unsorted/tSfcApp3d.cpp	partial
+0x0040b080	85	fn_0040105e_Params::fn_0040105e_Params()	unsorted/tSfcApp3d.cpp	vc6
+0x0040b0d5	117	tStrManagerPart::Search_tStrManagerPart()	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b14a	247	fn_0040b14a()	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b241	128	tSfcApp3d::vfunction13()	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b2c1	26	tSfcApp3d::vfunction9(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b2db	28	tSfcApp3d::vfunction8(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b2f7	33	tSfcApp3d::vfunction1(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b318	19	tSfcApp3d::vfunction3(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b32b	59	tSfcApp3d::vfunction2(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
+0x0040b366	89	tSfcApp3d::vfunction4(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
 0x0040bd69	7	tMouseMgr_Base::~tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	vc6
 0x0040bd70	29	tMouseMgr_Base::tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	partial
 0x0040bd8d	8	tMouseMgr_Ex::tTimer::fn_0040bd8d()	unsorted/tMouseMgr_Base.cpp	vc6 guest
@@ -19,6 +48,21 @@ address	size	symbol	source	modes
 0x0040c183	100	fn_0040bea5_mgr::fn_0040c183(char *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
 0x0040c1e7	16	fn_0040bea5_mgr::fn_0040c1e7(long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
 0x0040c1f7	16	fn_0040bea5_mgr::fn_0040c1f7(long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
+0x0040c2ed	7	tApplication::~tApplication()	unsorted/tApplication.cpp	vc6
+0x0040c2f4	10	tApplication::vfunction5(char *)	unsorted/tApplication.cpp	vc6 guest
+0x0040c2fe	6	tApplication::vfunction7()	unsorted/tApplication.cpp	vc6 guest
+0x0040c304	6	tApplication::vfunction8()	unsorted/tApplication.cpp	vc6 guest
+0x0040c30a	5	tApplication::vfunction19(int)	unsorted/tApplication.cpp	vc6 guest
+0x0040c5e6	44	tMyApp::vfunction3()	unsorted/tMyApp.cpp	vc6 guest
+0x0040c612	45	tMyApp::vfunction25()	unsorted/tMyApp.cpp	vc6 guest
+0x0040c63f	26	tMyApp::vfunction24()	unsorted/tMyApp.cpp	vc6 guest
+0x0040c659	64	tMyApp::vfunction15(int)	unsorted/tMyApp.cpp	vc6 guest
+0x0040c699	26	tMyApp::vfunction16(int)	unsorted/tMyApp.cpp	vc6 guest
+0x0040c6b3	42	tMyApp::vfunction18(int,int,int,int)	unsorted/tMyApp.cpp	vc6 guest
+0x0040c6dd	48	tMyApp::vfunction19(char *)	unsorted/tMyApp.cpp	vc6 guest
+0x0040c70d	15	tMyApp::vfunction21(int)	unsorted/tMyApp.cpp	vc6 guest
+0x0040c71c	8	tMyApp::vfunction22()	unsorted/tMyApp.cpp	vc6 guest
+0x0040c724	8	tMyApp::vfunction23()	unsorted/tMyApp.cpp	vc6 guest
 0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
 0x0040f164	1767	FUN_0040f164()	unsorted/tSphere.cpp	partial
 0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial

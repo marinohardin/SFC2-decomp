@@ -1,6 +1,267 @@
 {
  "version": 1,
  "functions": {
+  "0x00401017": {
+   "name": "tApp3dBase::tApp3dBase",
+   "symbol": "??0tApp3dBase@@QAE@XZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00401033": {
+   "name": "tApp3dBase::vfunction13",
+   "symbol": "?vfunction13@tApp3dBase@@UAEXXZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00401038": {
+   "name": "tApp3dBase::vfunction1",
+   "symbol": "?vfunction1@tApp3dBase@@QAEXH@Z",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 3,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00401057": {
+   "name": "tApp3dBase::~tApp3dBase",
+   "symbol": "??1tApp3dBase@@UAE@XZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040105e": {
+   "name": "tApp3dBase::vfunction11",
+   "symbol": "?vfunction11@tApp3dBase@@UAE_NPAVtApplication@@PAUfn_0040105e_Params@@@Z",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 370,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004011d0": {
+   "name": "tApp3dBase::vfunction12",
+   "symbol": "?vfunction12@tApp3dBase@@UAEXXZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00401209": {
+   "name": "tApp3dBase::vfunction7",
+   "symbol": "?vfunction7@tApp3dBase@@UAE_NPAVtView3D@@HHPAUfn_0040105e_Params@@@Z",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 210,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004012db": {
+   "name": "tApp3dBase::vfunction20",
+   "symbol": "?vfunction20@tApp3dBase@@UAE_NXZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 91,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040135a": {
+   "name": "tApp3dBase::vfunction18",
+   "symbol": "?vfunction18@tApp3dBase@@UAEXXZ",
+   "unit": "unsorted/tApp3dBase.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040aadc": {
+   "name": "tSfcApp3d::tSfcApp3d",
+   "symbol": "??0tSfcApp3d@@QAE@XZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 65,
+   "score": 13.2,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ab43": {
+   "name": "tSfcApp3d::~tSfcApp3d",
+   "symbol": "??1tSfcApp3d@@UAE@XZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 49,
+   "score": 14.706,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ab74": {
+   "name": "tSfcApp3d::vfunction12",
+   "symbol": "?vfunction12@tSfcApp3d@@QAEXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ab7e": {
+   "name": "FUN_0040ab7e",
+   "symbol": "?fn_0040ab7e@tSfcApp3d@@QAEXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 143,
+   "score": 17.772,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ac19": {
+   "name": "FUN_0040ac19",
+   "symbol": "?fn_0040ac19@@YAXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 37,
+   "score": 26.364,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ac4a": {
+   "name": "FUN_0040ac4a",
+   "symbol": "?fn_0040ac4a@@YAXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 46,
+   "score": 22.609,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ac84": {
+   "name": "FUN_0040ac84",
+   "symbol": "?fn_0040ac84@@YAXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 38,
+   "score": 36.154,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040acb6": {
+   "name": "FUN_0040acb6",
+   "symbol": "?fn_0040acb6@tSfcApp3d@@QAEXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 32,
+   "score": 11.429,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ad0b": {
+   "name": "FUN_0040ad0b",
+   "symbol": "?fn_0040ad0b@@YAXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 36,
+   "score": 38.182,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040ad35": {
+   "name": "tSfcApp3d::vfunction21",
+   "symbol": "?vfunction21@tSfcApp3d@@UAE_NPAVtApplication@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 843,
+   "score": 63.962,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b080": {
+   "name": "FUN_0040b080",
+   "symbol": "??0fn_0040105e_Params@@QAE@XZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 85,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b0d5": {
+   "name": "FUN_0040b0d5",
+   "symbol": "?Search_tStrManagerPart@tStrManagerPart@@SAPAV1@XZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 117,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b14a": {
+   "name": "FUN_0040b14a",
+   "symbol": "?fn_0040b14a@@YAXXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 247,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b241": {
+   "name": "tSfcApp3d::vfunction13",
+   "symbol": "?vfunction13@tSfcApp3d@@UAE_NXZ",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b2c1": {
+   "name": "tSfcApp3d::vfunction9",
+   "symbol": "?vfunction9@tSfcApp3d@@UAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b2db": {
+   "name": "tSfcApp3d::vfunction8",
+   "symbol": "?vfunction8@tSfcApp3d@@UAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b2f7": {
+   "name": "tSfcApp3d::vfunction1",
+   "symbol": "?vfunction1@tSfcApp3d@@UAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b318": {
+   "name": "tSfcApp3d::vfunction3",
+   "symbol": "?vfunction3@tSfcApp3d@@UAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b32b": {
+   "name": "tSfcApp3d::vfunction2",
+   "symbol": "?vfunction2@tSfcApp3d@@QAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040b366": {
+   "name": "tSfcApp3d::vfunction4",
+   "symbol": "?vfunction4@tSfcApp3d@@QAEXPAVtView3D@@@Z",
+   "unit": "unsorted/tSfcApp3d.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0040bd69": {
    "name": "tMouseMgr_Base::~tMouseMgr_Base",
    "symbol": "??1tMouseMgr_Base@@UAE@XZ",
@@ -177,6 +438,141 @@
    "symbol": "?fn_0040c1f7@fn_0040bea5_mgr@@QAEXJ@Z",
    "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
    "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c2ed": {
+   "name": "tApplication::~tApplication",
+   "symbol": "??1tApplication@@UAE@XZ",
+   "unit": "unsorted/tApplication.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c2f4": {
+   "name": "tApplication::vfunction5",
+   "symbol": "?vfunction5@tApplication@@QAEXPAD@Z",
+   "unit": "unsorted/tApplication.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c2fe": {
+   "name": "tApplication::vfunction7",
+   "symbol": "?vfunction7@tApplication@@QAEHXZ",
+   "unit": "unsorted/tApplication.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c304": {
+   "name": "tApplication::vfunction8",
+   "symbol": "?vfunction8@tApplication@@QAEHXZ",
+   "unit": "unsorted/tApplication.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c30a": {
+   "name": "tApplication::vfunction19",
+   "symbol": "?vfunction19@tApplication@@QAE_NH@Z",
+   "unit": "unsorted/tApplication.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c5e6": {
+   "name": "tMyApp::vfunction3",
+   "symbol": "?vfunction3@tMyApp@@QAE_NXZ",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c612": {
+   "name": "tMyApp::vfunction25",
+   "symbol": "?vfunction25@tMyApp@@QAE_NXZ",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 45,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c63f": {
+   "name": "tMyApp::vfunction24",
+   "symbol": "?vfunction24@tMyApp@@QAE_NXZ",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c659": {
+   "name": "tMyApp::vfunction15",
+   "symbol": "?vfunction15@tMyApp@@QAE_NH@Z",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c699": {
+   "name": "tMyApp::vfunction16",
+   "symbol": "?vfunction16@tMyApp@@QAE_NH@Z",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c6b3": {
+   "name": "tMyApp::vfunction18",
+   "symbol": "?vfunction18@tMyApp@@QAE_NHHHH@Z",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 42,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c6dd": {
+   "name": "tMyApp::vfunction19",
+   "symbol": "?vfunction19@tMyApp@@QAE_NPAD@Z",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c70d": {
+   "name": "tMyApp::vfunction21",
+   "symbol": "?vfunction21@tMyApp@@QAEXH@Z",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c71c": {
+   "name": "tMyApp::vfunction22",
+   "symbol": "?vfunction22@tMyApp@@QAEXXZ",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040c724": {
+   "name": "tMyApp::vfunction23",
+   "symbol": "?vfunction23@tMyApp@@QAEXXZ",
+   "unit": "unsorted/tMyApp.cpp",
+   "size": 8,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
