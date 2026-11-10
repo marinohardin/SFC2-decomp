@@ -1,6 +1,105 @@
 {
  "version": 1,
  "functions": {
+  "0x0040f15a": {
+   "name": "tSphere::vfunction2",
+   "symbol": "?vfunction2@tSphere@@UAE_NMHHMMM@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 10,
+   "score": 40.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f164": {
+   "name": "FUN_0040f164",
+   "symbol": "?FUN_0040f164@@YAXXZ",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 1767,
+   "score": 0.066,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f86c": {
+   "name": "FUN_0040f86c",
+   "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 19,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f87f": {
+   "name": "tSphere::vfunction4",
+   "symbol": "?vfunction4@tSphere@@UAEXPAVfn_0040f87f_Target@@@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 71,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f8c6": {
+   "name": "tSphere::vfunction3",
+   "symbol": "?vfunction3@tSphere@@UAEXXZ",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 81,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f917": {
+   "name": "tSphere::vfunction11",
+   "symbol": "?vfunction11@tSphere@@UAEXXZ",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f935": {
+   "name": "tSphere::vfunction5",
+   "symbol": "?vfunction5@tSphere@@UAEXH@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f94d": {
+   "name": "tSphere::vfunction7",
+   "symbol": "?vfunction7@tSphere@@UAEXH@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f969": {
+   "name": "tSphere::vfunction8",
+   "symbol": "?vfunction8@tSphere@@UAEXPAH@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f975": {
+   "name": "tSphere::vfunction9",
+   "symbol": "?vfunction9@tSphere@@UAEXM@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0040f99d": {
+   "name": "tSphere::vfunction10",
+   "symbol": "?vfunction10@tSphere@@UAEXVfn_0069c970_Owner@@@Z",
+   "unit": "unsorted/tSphere.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0040fefb": {
    "name": "tEntity::tEntity",
    "symbol": "??0tEntity@@QAE@XZ",

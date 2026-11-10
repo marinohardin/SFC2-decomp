@@ -10,3 +10,6 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x004355a5	tDynamicMemoryFreeListViaHandles::scalar_deleting_destructor	5	fable	5.71	2026-11-09T16:45:53Z	not exact after 5 attempts
 0x004356ac	t3DListenerProfile::scalar_deleting_destructor	5	fable	0.00	2026-11-09T16:00:41Z	not exact after 5 attempts
 0x004381ee	tCloakSystem::tCloakSystem	5	fable	13.59	2026-11-09T15:09:00Z	not exact after 5 attempts
+0x0040f15a	tSphere::vfunction2	5	fable	40.00	2026-11-09T15:09:38Z	not exact after 5 attempts
+0x0040f164	FUN_0040f164	5	fable	0.07	2026-11-09T16:18:56Z	not exact after 5 attempts
+0x0040f86c	FUN_0040f86c	5	fable	25.00	2026-11-09T16:34:36Z	not exact after 5 attempts

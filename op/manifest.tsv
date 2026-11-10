@@ -1,4 +1,15 @@
 address	size	symbol	source	modes
+0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
+0x0040f164	1767	FUN_0040f164()	unsorted/tSphere.cpp	partial
+0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial
+0x0040f87f	71	tSphere::vfunction4(fn_0040f87f_Target *)	unsorted/tSphere.cpp	vc6 guest
+0x0040f8c6	81	tSphere::vfunction3()	unsorted/tSphere.cpp	vc6 guest
+0x0040f917	30	tSphere::vfunction11()	unsorted/tSphere.cpp	vc6 guest
+0x0040f935	24	tSphere::vfunction5(int)	unsorted/tSphere.cpp	vc6 guest
+0x0040f94d	28	tSphere::vfunction7(int)	unsorted/tSphere.cpp	vc6 guest
+0x0040f969	12	tSphere::vfunction8(int *)	unsorted/tSphere.cpp	vc6 guest
+0x0040f975	40	tSphere::vfunction9(float)	unsorted/tSphere.cpp	vc6 guest
+0x0040f99d	44	tSphere::vfunction10(fn_0069c970_Owner)	unsorted/tSphere.cpp	vc6 guest
 0x0040fefb	145	tEntity::tEntity()	unsorted/tEntity.cpp	vc6
 0x0040ff8c	5	tEntity::vfunction5()	unsorted/tEntity.cpp	vc6 guest
 0x0040ff91	4	tEntity::vfunction9()	unsorted/tEntity.cpp	vc6 guest
