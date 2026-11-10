@@ -93,6 +93,22 @@ address	size	symbol	source	modes
 0x0043569a	4	t3DListenerProfile::fn_0043569a()	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x0043569e	10	t3DListenerProfile::fn_0043569e(double)	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x004356a8	4	t3DListenerProfile::fn_004356a8()	unsorted/t3DListenerProfile.cpp	vc6 guest
+0x004381ee	208	tCloakSystem::tCloakSystem(int,int,int,int)	unsorted/tCloakSystem.cpp	partial
+0x004382be	13	tCloakSystem::vfunction100(int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x004382cb	24	tCloakSystem::fn_004382cb()	unsorted/tCloakSystem.cpp	vc6 guest
+0x004382e3	7	tCloakSystem::fn_004382e3()	unsorted/tCloakSystem.cpp	vc6 guest
+0x004382ea	115	tCloakSystem::vfunction103(int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x0043835d	51	tCloakSystem::vfunction102(bool*)	unsorted/tCloakSystem.cpp	vc6 guest
+0x00438390	13	tCloakSystem::fn_00438390()	unsorted/tCloakSystem.cpp	vc6 guest
+0x0043839d	264	tCloakSystem::vfunction62()	unsorted/tCloakSystem.cpp	vc6 guest
+0x004384a5	125	tCloakSystem::vfunction63()	unsorted/tCloakSystem.cpp	vc6 guest
+0x00438522	184	tCloakSystem::mDetermineCloakWeaponRange(float,int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x00438607	180	tCloakSystem::mDetermineCloakSeekingWeaponDamageModifier(int,int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x004386bc	55	tCloakSystem::vfunction40(float)	unsorted/tCloakSystem.cpp	vc6 guest
+0x004386f3	388	tCloakSystem::vfunction39(float)	unsorted/tCloakSystem.cpp	vc6 guest
+0x00438877	214	tCloakSystem::vfunction23(int,unsigned int,int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x0043894d	39	tCloakSystem::vfunction72()	unsorted/tCloakSystem.cpp	vc6 guest
+0x00438974	64	tCloakSystem::vfunction76(float,int)	unsorted/tCloakSystem.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

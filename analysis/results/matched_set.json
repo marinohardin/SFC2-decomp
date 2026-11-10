@@ -847,6 +847,150 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x004381ee": {
+   "name": "tCloakSystem::tCloakSystem",
+   "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 208,
+   "score": 13.591,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x004382be": {
+   "name": "tCloakSystem::vfunction100",
+   "symbol": "?vfunction100@tCloakSystem@@UAEXH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004382cb": {
+   "name": "FUN_004382cb",
+   "symbol": "?fn_004382cb@tCloakSystem@@QAE_NXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004382e3": {
+   "name": "FUN_004382e3",
+   "symbol": "?fn_004382e3@tCloakSystem@@QAEMXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004382ea": {
+   "name": "tCloakSystem::vfunction103",
+   "symbol": "?vfunction103@tCloakSystem@@UAEXH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 115,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043835d": {
+   "name": "tCloakSystem::vfunction102",
+   "symbol": "?vfunction102@tCloakSystem@@UAEHPA_N@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00438390": {
+   "name": "FUN_00438390",
+   "symbol": "?fn_00438390@tCloakSystem@@QAEXXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043839d": {
+   "name": "tCloakSystem::vfunction62",
+   "symbol": "?vfunction62@tCloakSystem@@UAEXXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 264,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004384a5": {
+   "name": "tCloakSystem::vfunction63",
+   "symbol": "?vfunction63@tCloakSystem@@UAEXXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 125,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00438522": {
+   "name": "FUN_00438522",
+   "symbol": "?mDetermineCloakWeaponRange@tCloakSystem@@QAEMMH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 228,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00438607": {
+   "name": "FUN_00438607",
+   "symbol": "?mDetermineCloakSeekingWeaponDamageModifier@tCloakSystem@@QAEMHH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 180,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004386bc": {
+   "name": "tCloakSystem::vfunction40",
+   "symbol": "?vfunction40@tCloakSystem@@UAEXM@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 55,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x004386f3": {
+   "name": "tCloakSystem::vfunction39",
+   "symbol": "?vfunction39@tCloakSystem@@UAEXM@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 388,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00438877": {
+   "name": "tCloakSystem::vfunction23",
+   "symbol": "?vfunction23@tCloakSystem@@UAEIHIH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 214,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0043894d": {
+   "name": "tCloakSystem::vfunction72",
+   "symbol": "?vfunction72@tCloakSystem@@UAEMXZ",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00438974": {
+   "name": "tCloakSystem::vfunction76",
+   "symbol": "?vfunction76@tCloakSystem@@UAEMMH@Z",
+   "unit": "unsorted/tCloakSystem.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
