@@ -275,6 +275,14 @@ def test_matched_set_accepts_an_object_with_status_lists(tmp_path):
     assert statuses(report)['functional'] == (1, 200)
 
 
+def test_a_partial_match_in_the_harness_shape_is_not_exact(tmp_path):
+    matched = {'version': 1, 'functions': {
+        '0x00401000': {'name': 'tShip::tShip', 'score': 100.0, 'exact': True},
+        '0x00402000': {'name': 'tShip::vfunction3', 'score': 13.2, 'exact': False}}}
+    report = progress.compute(write_fixture(tmp_path, matched=matched), NOW)
+    assert statuses(report)['exact'] == (1, 100)
+
+
 def test_input_hashes_and_timestamp_are_recorded(tmp_path):
     report = progress.compute(write_fixture(tmp_path), NOW)
     assert report['generated_at'] == NOW

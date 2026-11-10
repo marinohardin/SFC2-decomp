@@ -333,6 +333,18 @@ def _replaced_entries(data, default_status):
 
 
 def _replaced_entries_list(items, default_status):
+    if isinstance(items, dict):
+        # The harness's own shape: {"0x...": {"exact": bool, "score": ...}}. Only an entry it
+        # records exact counts; a partial match it keeps for a later attempt does not.
+        for key, record in items.items():
+            address = parse_hex_address(key)
+            if isinstance(record, dict) and 'exact' in record:
+                status = default_status if record['exact'] is True else None
+            else:
+                status = default_status
+            if address is not None and status in ('exact', 'functional'):
+                yield address, status
+        return
     for item in items:
         if isinstance(item, dict):
             address = parse_hex_address(item.get('address'))
