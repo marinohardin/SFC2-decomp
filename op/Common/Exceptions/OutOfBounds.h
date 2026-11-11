@@ -1,3 +1,29 @@
-// Placeholder written by tools/units.py. Delete this block when the header's first
-// declaration lands; the generator never touches a file with content.
-// Header of: Common/Exceptions/OutOfBounds.cpp
+//	OutOfBounds.h
+//
+//	Thrown when an index or size falls outside the range an object holds.
+//	Declarations follow the SDK's header.
+//
+#if !defined( OutOfBounds_h )
+#define OutOfBounds_h
+
+#pragma once
+
+#include "Common/Exceptions/BaseException.h"
+
+namespace nException
+{
+
+	class tOutOfBounds : public tBaseException
+	{
+	public:
+		tOutOfBounds( const char* object, int32 min, int32 max, int32 value, const char* file, int32 lineNumber );
+
+		const char* fObject;
+		int32 fMin;
+		int32 fMax;
+		int32 fValue;
+	};
+
+};
+
+#endif

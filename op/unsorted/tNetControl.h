@@ -6,26 +6,11 @@
 
 #include <vector>
 
+#include "Tiger/tstring.h"
+
 class c_tNetControl_8D00;
 class c_0043127f_node;
 struct tNetMsg;
-// The SDK's tString (Tiger/tstring.h): a vftable, five words of instance control and a
-// vector of wide characters, 0x28 bytes. Only what tNetControl.cpp calls is declared.
-class tString
-{
-protected:
-	char *fTempExternalCharRepresentation;
-	int fSizeOfExternalCharAllocation;
-	tString *fTempOperatorSpace;
-	int fMemLimit;
-	int fDataCount;
-	std::vector< unsigned short > fMemSpace;
-
-public:
-	tString();
-	virtual ~tString();
-	void operator=( const char *s );
-};
 
 class tNetControl
 {

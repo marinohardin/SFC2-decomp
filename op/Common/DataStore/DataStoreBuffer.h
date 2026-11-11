@@ -1,3 +1,88 @@
-// Placeholder written by tools/units.py. Delete this block when the header's first
-// declaration lands; the generator never touches a file with content.
-// Header of: Common/DataStore/DataStoreBuffer.cpp
+//	DataStoreBuffer.h
+//
+//	The byte store behind a data store's input and output.
+//	Declarations follow the SDK's header, without its operator const byte*(), which
+//	tools/manifest.py cannot read yet. The original defines the inline functions in
+//	DataStoreBuffer.cpp, which the header includes; here they follow the class, and only the ones
+//	matched code uses are defined yet.
+//
+#if !defined( DataStoreBuffer_h )
+#define DataStoreBuffer_h
+
+#pragma once
+
+#include "Common/BaseTypes.h"
+#include "Common/Object.h"
+#include "Common/Exceptions/OutOfBounds.h"
+
+#include <vector>
+#include <iosfwd>
+
+namespace nDataStore
+{
+
+typedef int32u iPos;
+
+class tBuffer : public tObject
+{
+public:
+	typedef int32u iBufferSize;
+
+	inline tBuffer( iBufferSize initSize = 0 );
+	inline ~tBuffer();
+
+	inline void Clear();
+
+	inline void Put( byte data );
+	inline void Write( const byte* data, int32u size );
+
+	inline byte Get( iPos getPos ) const;
+	inline void Read( byte* data, int32 size, iPos getPos ) const;
+
+	inline iBufferSize Size() const;
+
+protected:
+	typedef std::vector<byte> iBuffer;
+
+	iBuffer fBuffer;
+};
+
+std::istream& operator>>( std::istream& inputStream, tBuffer& input );
+std::ostream& operator<<( std::ostream& outputStream, const tBuffer& output );
+
+void tBuffer::Write( const byte* data, int32u size )
+{
+	fBuffer.insert( fBuffer.end(), data, data + size );
+}
+
+byte tBuffer::Get( iPos getPos ) const
+{
+	if( getPos >= Size() )
+	{
+		throw except::tOutOfBounds( "tBuffer", 0, Size(), getPos, __FILE__, __LINE__ );
+	}
+
+	return fBuffer[getPos];
+}
+
+void tBuffer::Read( byte* data, int32 size, iPos getPos ) const
+{
+	if( getPos + size > Size() )
+	{
+		throw except::tOutOfBounds( "tBuffer", 0, Size(), getPos + size, __FILE__, __LINE__ );
+	}
+
+	iBuffer::const_iterator start = fBuffer.begin() + getPos;
+	iBuffer::const_iterator end = start + size;
+
+	std::copy( start, end, data );
+}
+
+tBuffer::iBufferSize tBuffer::Size() const
+{
+	return fBuffer.size();
+}
+
+};
+
+#endif
