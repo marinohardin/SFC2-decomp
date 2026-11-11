@@ -29,10 +29,19 @@ public:
 	virtual void vfunction36(); virtual void vfunction37(); virtual void vfunction38();
 	virtual void vfunction39(); virtual void vfunction40(); virtual void vfunction41();
 	virtual void vfunction42(); virtual void vfunction43(); virtual void vfunction44();
-	virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
+	virtual void vfunction45();
+	// HYPOTHESIS: sets a one-byte state and returns the previous one; tMyHud3D::vfunction6
+	// (0x004b2725) passes 0 and restores the result afterwards.
+	virtual bool vfunction46(bool aValue);
+	virtual void vfunction47();
 	virtual void vfunction48(); virtual void vfunction49(); virtual void vfunction50();
 	virtual void vfunction51(); virtual void vfunction52(); virtual void vfunction53();
-	virtual void vfunction54(); virtual void vfunction55(); virtual void vfunction56();
+	// HYPOTHESIS: sets a matrix; tMyHud3D::vfunction4 (0x004b14db) passes back a copy of
+	// the one vfunction55 returned.
+	virtual void vfunction54(tMatrix *aMatrix);
+	// HYPOTHESIS: returns a matrix; tMyHud3D::vfunction2 (0x004b0a39) transforms a point by it.
+	virtual tMatrix *vfunction55();
+	virtual void vfunction56();
 	virtual void vfunction57(void *aValue);
 	// HYPOTHESIS: slots 58 to 77 as tAICaptain's 0x005200c8 calls them to draw lines: 18 and 20
 	// set a state and return the old one, 67 begins a set of lines and says whether to draw
@@ -46,16 +55,24 @@ public:
 	virtual void vfunction64();
 	virtual void vfunction65();
 	virtual void vfunction66();
-	virtual bool vfunction67(int aMode);
+	// HYPOTHESIS: takes an int and returns a truth value; 0x004b0a39 draws only when
+	// vfunction67(7) is true, and closes with vfunction68.
+	virtual bool vfunction67(int aValue);
 	virtual void vfunction68();
+	// HYPOTHESIS: takes a vertex position (x, y, z); 0x004b0e1b calls it after vfunction73.
 	virtual void vfunction69(float aX, float aY, float aZ);
-	virtual void vfunction70();
+	// HYPOTHESIS: takes a vertex position as a point; tMyHud3D::fn_004b1692 (0x004b1692)
+	// passes one after each vfunction76 colour.
+	virtual void vfunction70(tPoint3 *aPoint);
 	virtual void vfunction71();
 	virtual void vfunction72();
-	virtual void vfunction73();
+	// HYPOTHESIS: takes a texture coordinate (u, v) for the next vertex.
+	virtual void vfunction73(float aU, float aV);
 	virtual void vfunction74();
 	virtual void vfunction75();
-	virtual void vfunction76(float aRed, float aGreen, float aBlue);
+	// HYPOTHESIS: takes a colour (three floats); 0x004b0e1b passes one level three times.
+	virtual void vfunction76(float aR, float aG, float aB);
+	// HYPOTHESIS: takes one 4-byte argument; 0x004b0a39 passes 0.
 	virtual void vfunction77(int aValue);
 };
 

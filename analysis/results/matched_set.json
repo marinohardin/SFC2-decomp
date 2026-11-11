@@ -3052,6 +3052,330 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x004b0a39": {
+   "name": "tMyHud3D::vfunction2",
+   "symbol": "?vfunction2@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 994,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0e1b": {
+   "name": "FUN_004b0e1b",
+   "symbol": "?fn_004b0e1b@@YAXPAVtObject_00413ac3_arg@@HPAUtObject_00852448@@HM_N@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 1372,
+   "score": 73.915,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0eb6": {
+   "name": "FUN_004b0eb6",
+   "symbol": "?FUN_004b0eb6@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0eca": {
+   "name": "FUN_004b0eca",
+   "symbol": "?FUN_004b0eca@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0ede": {
+   "name": "FUN_004b0ede",
+   "symbol": "?FUN_004b0ede@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0ef2": {
+   "name": "FUN_004b0ef2",
+   "symbol": "?FUN_004b0ef2@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0f06": {
+   "name": "FUN_004b0f06",
+   "symbol": "?FUN_004b0f06@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0f1a": {
+   "name": "FUN_004b0f1a",
+   "symbol": "?FUN_004b0f1a@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b0f2e": {
+   "name": "FUN_004b0f2e",
+   "symbol": "?FUN_004b0f2e@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b14aa": {
+   "name": "FUN_004b14aa",
+   "symbol": "?fn_004b14aa@@YA?AUtPoint2@@H@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b14db": {
+   "name": "tMyHud3D::vfunction4",
+   "symbol": "?vfunction4@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 377,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1654": {
+   "name": "FUN_004b1654",
+   "symbol": "?fn_004b1654@tMyHud3D@@QAEHFF@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 62,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1692": {
+   "name": "FUN_004b1692",
+   "symbol": "?fn_004b1692@tMyHud3D@@QAEXPAVtObject_00413ac3_arg@@FFMH@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 1055,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1ac5": {
+   "name": "FUN_004b1ac5",
+   "symbol": "?FUN_004b1ac5@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1ad9": {
+   "name": "FUN_004b1ad9",
+   "symbol": "?FUN_004b1ad9@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1aed": {
+   "name": "FUN_004b1aed",
+   "symbol": "?FUN_004b1aed@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1b01": {
+   "name": "FUN_004b1b01",
+   "symbol": "?FUN_004b1b01@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1b15": {
+   "name": "FUN_004b1b15",
+   "symbol": "?FUN_004b1b15@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1b29": {
+   "name": "FUN_004b1b29",
+   "symbol": "?FUN_004b1b29@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1b3d": {
+   "name": "FUN_004b1b3d",
+   "symbol": "?FUN_004b1b3d@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1ba9": {
+   "name": "tMyHud3D::vfunction3",
+   "symbol": "?vfunction3@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 656,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1e4d": {
+   "name": "FUN_004b1e4d",
+   "symbol": "?FUN_004b1e4d@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1e61": {
+   "name": "FUN_004b1e61",
+   "symbol": "?FUN_004b1e61@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 20,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1e75": {
+   "name": "FUN_004b1e75",
+   "symbol": "?FUN_004b1e75@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 16,
+   "score": 10.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1e85": {
+   "name": "FUN_004b1e85",
+   "symbol": "?FUN_004b1e85@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 8,
+   "score": 33.333,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1eb1": {
+   "name": "FUN_004b1eb1",
+   "symbol": "?FUN_004b1eb1@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 8,
+   "score": 33.333,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1ecd": {
+   "name": "FUN_004b1ecd",
+   "symbol": "?FUN_004b1ecd@@YAXXZ",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 8,
+   "score": 33.333,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004b1ed5": {
+   "name": "tMyHud3D::vfunction5",
+   "symbol": "?vfunction5@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_004b1ed5_arg@@PAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 1971,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b2688": {
+   "name": "tMyHud3D::vfunction7",
+   "symbol": "?vfunction7@tMyHud3D@@UAEXDPAVtObject_004b0a39_entity@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b269e": {
+   "name": "tMyHud3D::vfunction8",
+   "symbol": "?vfunction8@tMyHud3D@@UAEXABUtPoint3@@PAVtObject_004b0a39_entity@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b26ca": {
+   "name": "FUN_004b26ca",
+   "symbol": "?fn_004b26ca@tObject_004b0a39_entity@@QAEXUtPoint3@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b26e4": {
+   "name": "tMyHud3D::vfunction9",
+   "symbol": "?vfunction9@tMyHud3D@@UAEXHPAVtObject_004b0a39_entity@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 65,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b2725": {
+   "name": "tMyHud3D::vfunction6",
+   "symbol": "?vfunction6@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 961,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b2ae6": {
+   "name": "FUN_004b2ae6",
+   "symbol": "??0tMatrix@@QAE@MMMMMMMMMMMMMMMM@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b2b56": {
+   "name": "tMyHud3D::vfunction11",
+   "symbol": "?vfunction11@tMyHud3D@@UAEXHHDH@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 301,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004b2c83": {
+   "name": "tMyHud3D::vfunction10",
+   "symbol": "?vfunction10@tMyHud3D@@UAEXH@Z",
+   "unit": "unsorted/tMyHud3D.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
   "0x004c61a8": {
    "name": "tListBox_Base::~tListBox_Base",
    "symbol": "??1tListBox_Base@@UAE@XZ",
@@ -5093,6 +5417,195 @@
    "size": 8,
    "score": 20.0,
    "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00607faa": {
+   "name": "tPanelMgr::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00607fd5": {
+   "name": "tPanelMgr::~tPanelMgr",
+   "symbol": "??1tPanelMgr@@UAE@XZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 26.667,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00607fdf": {
+   "name": "tPanelMgr::~tPanelMgr",
+   "symbol": "?fn_00607fdf@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 303,
+   "score": 1.205,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0060810e": {
+   "name": "FUN_0060810e",
+   "symbol": "?fn_0060810e@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 468,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x006082e2": {
+   "name": "FUN_006082e2",
+   "symbol": "?fn_006082e2@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x006082ef": {
+   "name": "FUN_006082ef",
+   "symbol": "?fn_006082ef@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x006082f9": {
+   "name": "FUN_006082f9",
+   "symbol": "?fn_006082f9@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 410,
+   "score": 6.909,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00608493": {
+   "name": "FUN_00608493",
+   "symbol": "?fn_00608493@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 71,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x006084da": {
+   "name": "FUN_006084da",
+   "symbol": "?fn_006084da@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x006084e4": {
+   "name": "FUN_006084e4",
+   "symbol": "?fn_006084e4@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 150,
+   "score": 14.576,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0060857a": {
+   "name": "FUN_0060857a",
+   "symbol": "?fn_0060857a@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x006085b5": {
+   "name": "FUN_006085b5",
+   "symbol": "?fn_006085b5@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x006085bf": {
+   "name": "FUN_006085bf",
+   "symbol": "?fn_006085bf@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 298,
+   "score": 12.893,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x006086e9": {
+   "name": "FUN_006086e9",
+   "symbol": "?fn_006086e9@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 125,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00608766": {
+   "name": "FUN_00608766",
+   "symbol": "?fn_00608766@tPanelMgr@@QAEXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 73,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x006087af": {
+   "name": "tPanelMgr::vfunction2",
+   "symbol": "?fn_006087af@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x006087b9": {
+   "name": "tMemberCallback<tPanelMgr,long>::~tMemberCallback<tPanelMgr,long>",
+   "symbol": "?fn_006087b9@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 917,
+   "score": 0.383,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00608b4e": {
+   "name": "tPanelMgr::vfunction4",
+   "symbol": "?vfunction4@tPanelMgr@@QAE_NXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 121,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00608bc7": {
+   "name": "tPanelMgr::vfunction3",
+   "symbol": "?fn_00608bc7@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00608bd1": {
+   "name": "FUN_00608bd1",
+   "symbol": "?fn_00608bd1@@YAXXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 1190,
+   "score": 0.294,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00609077": {
+   "name": "tPanelMgr::vfunction13",
+   "symbol": "?vfunction13@tPanelMgr@@QAEPADXZ",
+   "unit": "unsorted/tPanelMgr.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-10"
   },
   "0x006289b0": {

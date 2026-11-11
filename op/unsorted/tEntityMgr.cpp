@@ -400,98 +400,98 @@ void tEntityMgr::fn_004237b0(tID id)
 
 
 
-// HYPOTHESIS: the object the pointer at 0x0092deb4 holds (unsorted/tNetControl.cpp
-// declares it as c_0092deb4 inside that unit). Only the slots called here are
-// named, by slot number; their meanings are not known.
-class tObject_0092deb4
-{
-public:
-    virtual void vfunction1();
-    virtual void vfunction2();
-    virtual void vfunction3();
-    virtual void vfunction4();
-    virtual void vfunction5();
-    virtual void vfunction6();
-    virtual void vfunction7();
-    virtual int32 vfunction8();
-    virtual void vfunction9();
-    virtual void vfunction10();
-    virtual void vfunction11();
-    virtual void vfunction12();
-    virtual void vfunction13();
-    virtual void vfunction14();
-    virtual int32 vfunction15(tID aID);
-    virtual void vfunction16();
-    virtual void vfunction17();
-    virtual void vfunction18();
-    virtual void vfunction19();
-    virtual void vfunction20();
-    virtual void vfunction21();
-    virtual void vfunction22();
-    virtual void vfunction23();
-    virtual void vfunction24();
-    virtual void vfunction25();
-    virtual void vfunction26();
-    virtual void vfunction27();
-    virtual void vfunction28();
-    virtual void vfunction29();
-    virtual void vfunction30();
-    virtual void vfunction31();
-    virtual void vfunction32();
-    virtual void vfunction33();
-    virtual int32 vfunction34();
-    virtual void vfunction35();
-    virtual void vfunction36();
-    virtual void vfunction37();
-    virtual void vfunction38();
-    virtual void vfunction39();
-    virtual void vfunction40();
-    virtual void vfunction41();
-    virtual void vfunction42();
-    virtual void vfunction43();
-    virtual void vfunction44();
-    virtual void vfunction45();
-    virtual void vfunction46();
-    virtual void vfunction47();
-    virtual void vfunction48();
-    virtual void vfunction49();
-    virtual void vfunction50();
-    virtual void vfunction51();
-    virtual void vfunction52();
-    virtual void vfunction53();
-    virtual void vfunction54();
-    virtual void vfunction55();
-    virtual void vfunction56();
-    virtual void vfunction57();
-    virtual void vfunction58();
-    virtual void vfunction59();
-    virtual void vfunction60();
-    virtual void vfunction61();
-    virtual void vfunction62();
-    virtual void vfunction63();
-    virtual void vfunction64();
-    virtual void vfunction65();
-    virtual void vfunction66();
-    virtual void vfunction67();
-    virtual void vfunction68();
-    virtual void vfunction69();
-    virtual void vfunction70();
-    virtual void vfunction71();
-    virtual void vfunction72();
-    virtual void vfunction73();
-    virtual void vfunction74(int32 aKind, int32 aValue);
-    virtual void vfunction75();
-    virtual void vfunction76();
-    virtual void vfunction77();
-    virtual void vfunction78();
-    virtual void vfunction79();
-    virtual void vfunction80();
-    virtual void vfunction81();
-    virtual void vfunction82();
-    virtual void vfunction83(int32 aValue, int32 aIndex);
-};
+#include "unsorted/tObject_0092deb4.h"
 
-extern tObject_0092deb4 *gObject_0092deb4;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the entity 0x0042496f looks up, seen only through what is used
 // here: slot 23 returns a fraction (scaled by 100 and subtracted from 100),
@@ -562,7 +562,7 @@ void tEntityMgr::fn_00423831()
     fEntities = NULL;
     fNextAstralIndexFree = 0;
     clib::memset(fAstralEntityArray, 0, sizeof(fAstralEntityArray));
-    int32 value = gObject_0092deb4->vfunction34();
+    int32 value = gObject_0092deb4->vfunction33();
 
     while (pEntity != NULL) {
         tEntity *pNext = pEntity->fPrev;
@@ -570,14 +570,14 @@ void tEntityMgr::fn_00423831()
         if (pFound != NULL) {
             int32 damage = (int32)(100.0 - pFound->vfunction24() * 100.0);
             tID id = pEntity->fID;
-            int32 index = gObject_0092deb4->vfunction15(id);
+            int32 index = gObject_0092deb4->vfunction14(id);
             if (index >= 0) {
-                gObject_0092deb4->vfunction83(damage, index);
+                gObject_0092deb4->vfunction82(damage, index);
             } else if (damage > 70 && damage < 100) {
                 int32 relation = gObject_0090be60->fn_00427581(value, pFound->fTeam);
-                if (gObject_0092deb4->vfunction8() == 0 || gObject_0092deb4->vfunction8() == 1) {
+                if (gObject_0092deb4->vfunction7() == 0 || gObject_0092deb4->vfunction7() == 1) {
                     if (relation == 6 || relation == 5)
-                        gObject_0092deb4->vfunction74(2, gObject_0096ed60.fn_0052ca48(pFound->m_87d, 1));
+                        gObject_0092deb4->vfunction73(2, gObject_0096ed60.fn_0052ca48(pFound->m_87d, 1));
                 }
             }
         }

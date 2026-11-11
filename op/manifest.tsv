@@ -338,6 +338,42 @@ address	size	symbol	source	modes
 0x0045de01	61	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	10	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
+0x004b0a39	994	tMyHud3D::vfunction2(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b0e1b	1372	fn_004b0e1b(tObject_00413ac3_arg *,int,tObject_00852448 *,int,float,bool)	unsorted/tMyHud3D.cpp	partial
+0x004b0eb6	20	FUN_004b0eb6()	unsorted/tMyHud3D.cpp	partial
+0x004b0eca	20	FUN_004b0eca()	unsorted/tMyHud3D.cpp	partial
+0x004b0ede	20	FUN_004b0ede()	unsorted/tMyHud3D.cpp	partial
+0x004b0ef2	20	FUN_004b0ef2()	unsorted/tMyHud3D.cpp	partial
+0x004b0f06	20	FUN_004b0f06()	unsorted/tMyHud3D.cpp	partial
+0x004b0f1a	20	FUN_004b0f1a()	unsorted/tMyHud3D.cpp	partial
+0x004b0f2e	20	FUN_004b0f2e()	unsorted/tMyHud3D.cpp	partial
+0x004b14aa	48	fn_004b14aa(int)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b14db	377	tMyHud3D::vfunction4(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b1654	62	tMyHud3D::fn_004b1654(tAngle,tAngle)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b1692	1055	tMyHud3D::fn_004b1692(tObject_00413ac3_arg *,short,short,float,int)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b1ac5	20	FUN_004b1ac5()	unsorted/tMyHud3D.cpp	partial
+0x004b1ad9	20	FUN_004b1ad9()	unsorted/tMyHud3D.cpp	partial
+0x004b1aed	20	FUN_004b1aed()	unsorted/tMyHud3D.cpp	partial
+0x004b1b01	20	FUN_004b1b01()	unsorted/tMyHud3D.cpp	partial
+0x004b1b15	20	FUN_004b1b15()	unsorted/tMyHud3D.cpp	partial
+0x004b1b29	20	FUN_004b1b29()	unsorted/tMyHud3D.cpp	partial
+0x004b1b3d	20	FUN_004b1b3d()	unsorted/tMyHud3D.cpp	partial
+0x004b1ba9	656	tMyHud3D::vfunction3(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b1e4d	20	FUN_004b1e4d()	unsorted/tMyHud3D.cpp	partial
+0x004b1e61	20	FUN_004b1e61()	unsorted/tMyHud3D.cpp	partial
+0x004b1e75	16	FUN_004b1e75()	unsorted/tMyHud3D.cpp	partial
+0x004b1e85	8	FUN_004b1e85()	unsorted/tMyHud3D.cpp	partial
+0x004b1eb1	8	FUN_004b1eb1()	unsorted/tMyHud3D.cpp	partial
+0x004b1ecd	8	FUN_004b1ecd()	unsorted/tMyHud3D.cpp	partial
+0x004b1ed5	1971	tMyHud3D::vfunction5(tObject_004b0a39_entity *,tObject_004b1ed5_arg *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b2688	22	tMyHud3D::vfunction7(char,tObject_004b0a39_entity *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b269e	44	tMyHud3D::vfunction8(const tPoint3 &,tObject_004b0a39_entity *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b26ca	26	tObject_004b0a39_entity::fn_004b26ca(tPoint3)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b26e4	65	tMyHud3D::vfunction9(int,tObject_004b0a39_entity *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b2725	961	tMyHud3D::vfunction6(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b2ae6	112	tMatrix::tMatrix(const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float)	unsorted/tMyHud3D.cpp	vc6
+0x004b2b56	301	tMyHud3D::vfunction11(int,int,char,int)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004b2c83	24	tMyHud3D::vfunction10(int)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
 0x004c6225	337	tListBox_Base::vfunction8(const tRect *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c6376	103	tRect::mMakeClippedRect(const tRect *,tRect *) const	unsorted/tListBox_Base.cpp	vc6 guest
@@ -565,6 +601,27 @@ address	size	symbol	source	modes
 0x00548473	12	FUN_00548473()	unsorted/tBattles.cpp	partial
 0x0054847f	12	FUN_0054847f()	unsorted/tBattles.cpp	partial
 0x0054848b	8	fn_0054848b()	unsorted/tBattles.cpp	partial
+0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
+0x00607fd5	10	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	partial
+0x00607fdf	303	fn_00607fdf()	unsorted/tPanelMgr.cpp	partial
+0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006082e2	13	fn_006082e2()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006082ef	10	fn_006082ef()	unsorted/tPanelMgr.cpp	partial
+0x006082f9	410	tPanelMgr::fn_006082f9()	unsorted/tPanelMgr.cpp	partial
+0x00608493	71	tPanelMgr::fn_00608493()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006084da	10	fn_006084da()	unsorted/tPanelMgr.cpp	partial
+0x006084e4	150	tPanelMgr::fn_006084e4()	unsorted/tPanelMgr.cpp	partial
+0x0060857a	59	tPanelMgr::fn_0060857a()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006085b5	10	fn_006085b5()	unsorted/tPanelMgr.cpp	partial
+0x006085bf	298	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	partial
+0x006086e9	125	tPanelMgr::fn_006086e9()	unsorted/tPanelMgr.cpp	vc6 guest
+0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006087af	10	fn_006087af()	unsorted/tPanelMgr.cpp	partial
+0x006087b9	917	fn_006087b9()	unsorted/tPanelMgr.cpp	partial
+0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest
+0x00608bc7	10	fn_00608bc7()	unsorted/tPanelMgr.cpp	partial
+0x00608bd1	1190	fn_00608bd1()	unsorted/tPanelMgr.cpp	partial
+0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

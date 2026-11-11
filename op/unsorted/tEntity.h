@@ -43,23 +43,29 @@ public:
 		x = aX; y = aY; z = aZ;
 	}
 
+	tPoint3 operator+(const tPoint3 &a) const;
+	tPoint3 &operator+=(const tPoint3 &a);
+	tPoint3 operator-(const tPoint3 &a) const;
+	tPoint3 &operator-=(const tPoint3 &a);
+	tPoint3 operator%(const tPoint3 &a) const;
+	float operator*(const tPoint3 &a) const;
+	tPoint3 operator*(const float d) const;
+
 	inline tPoint3 &operator=(const tPoint3 &a)
 	{
 		x = a.x; y = a.y; z = a.z;
 		return(*this);
 	}
 
-	// HYPOTHESIS: the out-of-line operators at 0x0069b120, 0x0069b190 and 0x0069b270, and
-	// the methods at 0x0069b390 and 0x0069b3d0, in the order the SDK declares them.
-	tPoint3 operator+(const tPoint3 &a) const;
-	// HYPOTHESIS: 0x0069b160 (+=) and 0x0069b250 (dot product), by the SDK's order and use.
-	tPoint3 &operator+=(const tPoint3 &a);
-	tPoint3 operator-(const tPoint3 &a) const;
-	float operator*(const tPoint3 &a) const;
-	tPoint3 operator*(const float d) const;
 	float mLength(void) const;
-	iTruth mNormalize(void);
+	iTruth	mNormalize(void);
 	tPoint3 &operator*=(const float d);
+};
+
+struct tPoint2
+{
+	union	{ float x; float u; };
+	union	{ float y; float v; };
 };
 
 // As the SDK declares it.
@@ -67,11 +73,17 @@ const double kPi = 3.14159265358979323846;
 
 #pragma pack(pop)
 
-// Only the members the entity units call are declared.
+typedef float	tMtx4x4[4][4];
+
+// Only the members the entity and HUD units call are declared.
 class tMatrix
 {
 protected:
-	float fM[4][4];
+	union
+	{
+		float		fM[4][4];
+		tMtx4x4		fMtx;
+	};
 	unsigned char fIdentity;
 	unsigned char f3x4;
 
@@ -92,16 +104,58 @@ public:
 		}
 	}
 
+	// MATCH-ONLY: the original defines this inline here, in the class. Its out-of-line copy
+	// (STARFLEETOP 0x004b2ae6) is defined in unsorted/tMyHud3D.cpp, its only caller so far,
+	// because the harness claims a function only from a .cpp file.
+	inline tMatrix(
+		const float xx, const float xy, const float xz, const float xw,
+		const float yx, const float yy, const float yz, const float yw,
+		const float zx, const float zy, const float zz, const float zw,
+		const float wx, const float wy, const float wz, const float ww);
+
+	inline tMtx4x4 &mGetMtx4x4(void)
+	{
+		fIdentity = kFalse;
+		return(fMtx);
+	}
+
 	void mIdentity(void);
+	void mRotZRadians(const float radians);
+	void mTransform(tPoint3 &out, const tPoint3 &in) const;
 	inline float mGetItem(const unsigned kRow, const unsigned kCol) const	{	return(fM[kRow][kCol]);	}
 	void mRotX(const tAngle angle);
 	void mRotY(const tAngle angle);
 	void mRotZ(const tAngle angle);
 	void mTranslate(const float x, const float y, const float z);
 	void mForceTranslate(const float x, const float y, const float z);
+	void mPostTranslate(const float x, const float y, const float z);
 	void mTransform(tPoint3 &p) const;
 	void mTransform3x3(tPoint3 &p) const;
 };
+
+
+
+enum
+{
+	kAngle1		= 32,			// one angle (32 seconds per degree)
+	kAngle90	= kAngle1 * 64,	// 64*32 seconds per 90 degrees
+	kAngle180	= kAngle90 * 2,
+	kAngle270	= kAngle90 * 3,
+	kAngle360	= kAngle90 * 4,
+	kAngleMask	= kAngle360 - 1
+};
+
+inline float Sine(const tAngle angle)
+{
+	extern float gSinCosTable[];
+	return( gSinCosTable[ angle & kAngleMask ]);
+}
+
+inline float Cosine(const tAngle angle)
+{
+	extern float gSinCosTable[];
+	return( gSinCosTable[ (angle & kAngleMask) + kAngle90 ] );
+}
 
 #endif	// end tvectormath_h block
 
@@ -114,6 +168,7 @@ class tObject_00413ac3_arg;
 class tObject_008e1060_slot;
 class fn_004e2b02_ship_type;
 class tObject_00410fd4;
+class tObject_004b14db_slot8;
 class tObject_0042496f;
 class tNetMsg;
 
@@ -159,7 +214,9 @@ public:
 	virtual void vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7(tObject_0041018e_arg *param_1, int param_2);
-	virtual void vfunction8();
+	// HYPOTHESIS: returns a pointer to an object; tMyHud3D::vfunction4 (0x004b14db) calls
+	// members of it and of its member at 0x50.
+	virtual tObject_004b14db_slot8 *vfunction8();
 	virtual iTruth vfunction9();
 	virtual void vfunction10(iTruth aValue);
 	virtual void vfunction11(tSFCStream &s, int32u mode);
@@ -751,6 +808,8 @@ public:
 
 	// HYPOTHESIS: returns an entity ID; 0x00421ea9 compares it with its ship's fID.
 	int fn_00525081();
+	// fn_0042496f is also the lookup tMyHud3D::vfunction9 (0x004b26e4) makes; it reads the
+	// result as a tObject_0042496f and takes a point from it through 0x00422cba.
 
 
 
