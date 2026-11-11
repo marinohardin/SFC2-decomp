@@ -1,17 +1,45 @@
 {
+ "permissions": {
+  "deny": [
+   "Read(//**/private/**)",
+   "Read(//**/private)",
+   "Read(//**/testkey*/**)",
+   "Read(//**/testkey*)",
+   "Read(//**/wine/prefix/**)",
+   "Read(//**/*.reg)",
+   "Read(//**/*.env)",
+   "Bash(*private*)",
+   "Bash(*PRIVATE*)",
+   "Bash(*Private*)",
+   "Bash(*testkey*)",
+   "Bash(*TESTKEY*)",
+   "Bash(*wine/prefix*)",
+   "Bash(*.reg*)",
+   "Bash(*.REG*)",
+   "Bash(*.env*)",
+   "Bash(*.ENV*)"
+  ]
+ },
  "hooks": {
   "PreToolUse": [
    {
-    "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash",
+    "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash|Read|Grep|Glob",
     "hooks": [
-     {"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/guard.py\""}
+     {
+      "type": "command",
+      "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/guard.py\""
+     }
     ]
    }
   ],
   "Stop": [
    {
     "hooks": [
-     {"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/stop_verify.py\"", "timeout": 900}
+     {
+      "type": "command",
+      "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/stop_verify.py\"",
+      "timeout": 900
+     }
     ]
    }
   ]

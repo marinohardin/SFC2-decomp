@@ -12,16 +12,17 @@ from conftest import make_pe
 from harness.lib import coff, loopio, matched, workqueue
 
 
-def test_tiers_default_to_opus_build_two_sonnet_fix_rounds_then_opus():
+def test_tiers_default_to_opus_build_one_sonnet_fix_round_then_opus():
     t = workqueue.Tiers.from_env({})
-    assert [t.model(n) for n in range(5)] == ['opus', 'sonnet', 'sonnet', 'opus', None]
-    assert [t.role(n, t.model(n)) for n in range(4)] == ['build', 'fix', 'fix', 'build']
-    assert t.cap == 4
+    assert [t.model(n) for n in range(4)] == ['opus', 'sonnet', 'opus', None]
+    assert [t.role(n, t.model(n)) for n in range(3)] == ['build', 'fix', 'build']
+    assert t.cap == 3
 
 
-def test_fable_runs_only_after_the_default_tiers_and_only_when_enabled():
+def test_fable_comes_after_the_default_tiers_and_only_when_enabled():
     t = workqueue.Tiers.from_env({'HARNESS_ALLOW_FABLE': '1'})
-    assert [t.model(n) for n in range(6)] == ['opus', 'sonnet', 'sonnet', 'opus', 'fable', None]
+    assert [t.model(n) for n in range(5)] == ['opus', 'sonnet', 'opus', 'fable', None]
+    assert t.role(3, 'fable') == 'fix'
     assert 'fable' not in workqueue.Tiers.from_env({'HARNESS_ALLOW_FABLE': 'yes'}).sequence
     with pytest.raises(ValueError):
         workqueue.Tiers.from_env({'HARNESS_TIERS': 'fable,opus'})
@@ -55,19 +56,24 @@ def test_queue_puts_named_functions_first_then_small_then_similar_to_solved():
     assert [e['name'] for e in q] == ['B::similar', 'C::other', 'F::huge', 'FUN_00401030']
 
 
-def test_function_is_moved_to_difficult_after_the_attempt_cap(tmp_path):
-    p = types.SimpleNamespace(ATTEMPTS=str(tmp_path / 'a.tsv'), DIFFICULT=str(tmp_path / 'd.tsv'))
+def test_function_is_moved_to_difficult_after_every_regular_attempt(tmp_path):
+    p = types.SimpleNamespace(ATTEMPTS=str(tmp_path / 'a.tsv'), DIFFICULT=str(tmp_path / 'd.tsv'),
+                              REVISIT=str(tmp_path / 'r.tsv'))
     tiers = workqueue.Tiers(['opus', 'sonnet'])
     entry = dict(address='0x00401010', name='B::f')
     row = dict(time='2026-11-01T00:00:00Z', address='0x00401010', name='B::f', model='opus',
                outcome='failed', score_before='0.00', score_after='42.00')
-    assert workqueue.record(p, entry, row, tiers) is False
-    assert workqueue.record(p, entry, dict(row, outcome='limit'), tiers) is False
-    assert workqueue.record(p, entry, dict(row, model='sonnet', outcome='tampered',
-                                           score_after='60.00'), tiers) is True
+    assert workqueue.record(p, entry, row, tiers) is None
+    assert workqueue.record(p, entry, dict(row, outcome='limit'), tiers) is None
+    assert workqueue.record(p, entry, dict(row, time='2026-11-01T01:00:00Z', model='sonnet',
+                                           outcome='improved', score_before='42.00',
+                                           score_after='60.00'), tiers) == 'difficult'
     (d,) = workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS)
     assert (d['address'], d['attempts'], d['last_model'], d['best_score']) == \
         ('0x00401010', '2', 'sonnet', '60.00')
+    assert d['reason'] == ('not exact after 2 attempts: best not above 90% after 2 attempts; '
+                           'best 60.00%')
+    assert workqueue.read_tsv(p.REVISIT, workqueue.REVISIT_FIELDS) == []
     queue = [dict(address='0x00401010', name='B::f'), dict(address='0x00401020', name='C::g')]
     attempts = workqueue.read_tsv(p.ATTEMPTS, workqueue.ATTEMPT_FIELDS)
     nxt = workqueue.next_entry(queue, attempts, [d], tiers)

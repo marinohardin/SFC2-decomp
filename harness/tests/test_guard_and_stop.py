@@ -224,3 +224,101 @@ def test_claim_lines_snapshot_of_a_missing_tree_fails(tmp_path):
     from harness.lib import loopio
     with pytest.raises(SystemExit):
         loopio.claim_lines(str(tmp_path / 'nowhere'), 0x006fc750)
+
+
+def _read(tool, **ti):
+    return guard.decide({'tool_name': tool, 'cwd': paths.REPO, 'tool_input': ti})
+
+
+def test_private_files_are_never_read_by_any_tool():
+    work = paths.WORK
+    private = os.path.join(work, 'private', 'sfcop.env')
+    assert _read('Read', file_path=private) == guard.PRIVATE_DENY
+    assert _read('Read', file_path=os.path.join(work, 'wine', 'prefix', 'user.reg')) \
+        == guard.PRIVATE_DENY
+    assert _read('Read', file_path=os.path.join(work, 'testkey-data', 'x.ini')) \
+        == guard.PRIVATE_DENY
+    assert _read('Read', file_path='/Users/someone/game.reg') == guard.PRIVATE_DENY
+    # A search from an ancestor would reach the private folder.
+    assert _read('Grep', pattern='key', path=work) == guard.PRIVATE_DENY
+    assert _read('Glob', pattern=os.path.join(work, 'priv*', '*')) == guard.PRIVATE_DENY
+    assert bash('cat ' + private) == guard.PRIVATE_DENY
+    assert bash('cat ../../work/private/cdkey.reg') == guard.PRIVATE_DENY
+    assert bash('grep -r key ../work/testkey-data') == guard.PRIVATE_DENY
+
+
+def test_ordinary_reads_stay_allowed():
+    assert _read('Read', file_path=os.path.join(paths.REPO, 'game', 'UNITS.tsv')) is None
+    assert _read('Grep', pattern='class tFoo', path='game') is None
+    assert _read('Glob', pattern='game/**/*.h') is None
+    assert _read('Read', file_path=os.path.join(paths.WORK, 'ghidra', 'decomp', '0x00401000.c')) \
+        is None
+    assert bash('grep -n "class tFoo" game/unsorted/tFoo.h') is None
+
+
+@pytest.mark.parametrize('command', [
+    'cd ../work && cat private/x',
+    'cat ../work/pri*/x',
+    'ls work/priv*',
+    'ls ../work/priv?',
+    'cat ../work/p[r]ivate/x',
+    'cat ../work/{private,x}/y',
+    'cat ../work/p{r,x}ivate/y',
+    'ls ../../../../work/*',
+    'cat /Volumes/x/work/*/cdkey*',
+    'grep -r key ../../../../..',
+    "cat ../work/'pri'\"vate\"/x",
+    'cat ../work/PRIVATE/x',
+    'cat $HOME/x',
+    "cat $'\\x70rivate'/x",
+    'cat ~/x.txt',
+    'ls testkey-data',
+    'cat ../wine/prefix/user.txt',
+    'cat game/x.REG',
+    'cat sfcop.env',
+])
+def test_bash_refuses_every_way_to_name_the_private_files(command):
+    assert bash(command) == guard.PRIVATE_DENY
+
+
+@pytest.mark.parametrize('command', [
+    'python3 tools/manifest.py --check',
+    'sh harness/build-and-verify.sh 0x00401000',
+    'harness/build-and-verify.sh 0x00401000',
+    'git diff',
+    'git diff -- game/unsorted/tSphere.cpp',
+    'ls game/unsorted/*.h',
+    'grep -n "class tSphere" game/unsorted/tSphere.h',
+])
+def test_ordinary_grind_commands_still_pass(command):
+    assert bash(command) is None
+
+
+def test_settings_fragment_denies_the_private_files_without_the_hook():
+    import json
+    with open(os.path.join(paths.HARNESS, 'hooks', 'settings.fragment.json')) as f:
+        deny = json.load(f)['permissions']['deny']
+    for rule in ('Read(//**/private/**)', 'Read(//**/testkey*/**)', 'Read(//**/wine/prefix/**)',
+                 'Read(//**/*.reg)', 'Read(//**/*.env)', 'Bash(*private*)', 'Bash(*testkey*)',
+                 'Bash(*wine/prefix*)', 'Bash(*.reg*)', 'Bash(*.env*)'):
+        assert rule in deny, rule
+
+
+def test_a_link_in_the_worktree_to_a_private_folder_is_refused_through_realpath(
+        tmp_path, monkeypatch):
+    # A fake work folder and worktree under a temporary directory; the link's own path names
+    # nothing private, only its target does.
+    work, repo = tmp_path / 'work', tmp_path / 'repo'
+    (work / 'private').mkdir(parents=True)
+    (work / 'private' / 'secret.txt').write_text('not real\n')
+    repo.mkdir()
+    (repo / 'notes').symlink_to(work / 'private')
+    monkeypatch.setattr(paths, 'WORK', str(work))
+    monkeypatch.setattr(paths, 'REPO', str(repo))
+    assert guard.decide({'tool_name': 'Read', 'cwd': str(repo),
+                         'tool_input': {'file_path': str(repo / 'notes' / 'secret.txt')}}) \
+        == guard.PRIVATE_DENY
+    assert guard.decide({'tool_name': 'Grep', 'cwd': str(repo),
+                         'tool_input': {'pattern': 'x', 'path': 'notes'}}) == guard.PRIVATE_DENY
+    assert bash('cat notes/secret.txt') == guard.PRIVATE_DENY
+    assert bash('ls notes') == guard.PRIVATE_DENY

@@ -11,7 +11,8 @@ from everything that judges; scores only go up.
 | `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address |
 | `units.json` | Compile profile per unit of the rebuilt tree (flags, compiler, include order) |
 | `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps `difficult_functions.tsv` |
-| `../analysis/results/difficult_functions.tsv` | Functions that reached the attempt cap without becoming exact, for a human |
+| `../analysis/results/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human |
+| `../analysis/results/revisit_functions.tsv` | Functions the stop rule ended short of 100% before their full chance, for a later revisit pass (`--revisit`) |
 | `loop.sh` | The headless loop: one fresh `claude -p` per function |
 | `prompts/function.md` | The prompt each session gets |
 | `hooks/` | `PreToolUse` guard and `Stop` verifier, plus `settings.fragment.json` to merge |
@@ -135,22 +136,65 @@ rows are appended under `flock`, and the caps count every loop's attempts.
 `next` and `show` (and nothing else) honour the selection only when `HARNESS_SELECTION` names
 its file, which `loop.sh` sets, so a selection left from an earlier run restricts nothing.
 
-### Model tiers
+### Model tiers and the stop rule
 
-By counted attempts on the function:
+A function's run, by its counted attempts:
 
 | Attempt | Model | Role |
 | --- | --- | --- |
 | 1 | Opus | Build: write the function from the original instructions |
-| 2, 3 | Sonnet | Fix rounds: close the differences left in the committed near match |
-| 4 | Opus | Build again, with what the earlier attempts left |
-| 5 | Fable | Only with `loop.sh --allow-fable` (or `HARNESS_ALLOW_FABLE=1`); `HARNESS_FABLE_TRIES`, default 1 |
+| 2 | Sonnet | Fix round: close the differences left in the committed near match |
+| 3 | Opus | Build again, with what the earlier attempts left |
+| after the run | Fable | One time-boxed try, only for a best of at least 90%, only with `--allow-fable` |
 
-The prompt tells each session its role. `HARNESS_TIERS` replaces the default sequence (for
-example `opus,sonnet,opus`) and may not name Fable. The cap is the length of the sequence; at the
-cap a function moves to `difficult_functions.tsv`, and the loop commits that. Usage-limit stops
-and harness errors do not count; failed, no-change, improved and tampered attempts do. Improved
-attempts are committed, so a fix round starts from the best source so far.
+The stop rule (`plan` in `lib/workqueue.py`) usually ends a run sooner:
+
+1. From attempt 2 on, an attempt that does not raise the function's best score ends the run.
+   Attempt 1 is exempt, so a failed first build still gets its fix round.
+2. After two attempts the run also ends unless the best is above 90% (`HARNESS_NEAR`).
+3. When the run is over and the best is at least 90%, Fable gets `HARNESS_FABLE_TRIES` tries
+   (default 1) if `--allow-fable` (or `HARNESS_ALLOW_FABLE=1`) is given, capped at
+   `HARNESS_FABLE_MAX_TURNS` turns (30) and `HARNESS_FABLE_TIMEOUT` seconds (1800). A session
+   that hits the time box is stopped and its work is scored like any other; an improvement is
+   kept. Unless it left an exact match, the attempt is logged and noted as `timeout`, and its
+   tokens, cost and turns are left empty in the attempt log: they are unknown, because a
+   stopped session writes no result. Any other session that ends without a result is logged
+   the same way.
+
+The best score is the highest of every attempt's result and starting score, so a function
+that another branch had already raised is judged against that. Usage-limit stops (`limit`),
+login failures and dry runs never count; failed, no-change, improved, exact, tampered and
+timeout attempts do. Improved attempts are committed, so a later attempt starts from the best source so
+far. `HARNESS_TIERS` replaces the regular sequence (for example `opus,sonnet`) and may not name
+Fable.
+
+When a run ends short of 100%, `queue.py record` lists the function, and the loop commits the
+list:
+
+- **`analysis/results/difficult_functions.tsv`** when it had its full chance: every model of
+  the regular sequence was tried and, if its best qualified for Fable, Fable was tried too. The
+  queue never takes it again.
+- **`analysis/results/revisit_functions.tsv`** otherwise: the stop rule ended it early, or it is
+  waiting for a Fable try that was not allowed. Columns: `address`, `name`, `best_score`,
+  `attempts`, `last_model`, `listed` (the time of its last attempt) and `note` (why the run
+  ended). The queue skips these functions unless `--revisit` (or `HARNESS_TAKE_REVISIT=1`) is
+  given. A revisit run starts over and counts only the attempts after `listed`, except for a
+  function that was waiting for Fable, which gets its Fable try instead. A revisit that ends
+  exact takes the function off the list; one that ends short again replaces its row, or moves it
+  to `difficult_functions.tsv` once it has had its full chance.
+
+The two lists live in each checkout, but the attempt log is shared, so a loop on one branch
+does not see what a loop on another branch listed. `--revisit` therefore also takes a function
+that is on neither list here but whose last run in the shared log ended short of its full
+chance and is not exact: it gets a new run, cut from the log alone (a run ends where the rule
+gives no further model, with Fable counted as allowed, so a Fable try continues the run it was
+waiting at). A function waiting for Fable stays waiting without `--allow-fable`, and one that
+used its full chance is left alone. Without `--revisit` the queue skips all of them.
+
+`queue.py sweep` settles the functions in the attempt log that are on neither list but whose
+run the rule has already ended: those attempted before the rule existed. The loop does not run
+it; run it once, on a grind branch, after the loops that used the old tiers have stopped, and
+commit the lists it writes.
 
 ## The loop (`loop.sh`)
 
@@ -161,7 +205,9 @@ harness/loop.sh --max 20
 harness/loop.sh --unit Tiger/tsay.cpp            # one grind batch: one unit, in address order
 harness/loop.sh --once --address 0x006d2800      # a chosen function; both flags repeat
 harness/loop.sh --unit Tiger/tsay.cpp --brief ~/notes/tsay.md    # with a batch brief
-harness/loop.sh --allow-fable    # add the Fable tier after attempt 4
+harness/loop.sh --allow-fable    # Fable's one try for near matches (best at least 90%)
+harness/loop.sh --revisit        # also take functions on revisit_functions.tsv
+harness/loop.sh --lean ~/grind/lean-instructions.md   # see "Lean sessions"; or --no-lean
 ```
 
 `--brief FILE` appends a batch brief to every session's prompt, after a `---` line: working
@@ -185,13 +231,15 @@ these flags the loop takes the whole queue in its own order.
 
 Each round: `queue.py next` claims the function and picks the model; `build-and-verify.sh` gives its
 starting score; the claim goes to `$HARNESS_STATE/claim.json`; the prompt is rendered from
-`prompts/function.md`; `claude -p --model <tier> --output-format json --settings
-hooks/settings.fragment.json --permission-mode acceptEdits` runs with `HARNESS_FUNCTION_SESSION=1`;
+`prompts/function.md`, with the context pack and handoff notes appended; `claude -p --model
+<tier> --output-format json --settings hooks/settings.fragment.json --permission-mode acceptEdits
+--strict-mcp-config` (plus the lean-session flags) runs with `HARNESS_FUNCTION_SESSION=1`, under
+the time box when it has one;
 then `update-matched-set.sh` judges. An improvement is committed on the current branch
 (`feat(game): match <name> (<address>)` with the score change in the body). Anything else is
 undone: the worktree is reset to the commit the round started from. Tokens, cost, turns and seconds of every attempt go to
-`$HARNESS_STATE/attempts.tsv`, and the prompt, output and verification JSON of each attempt to
-`$HARNESS_STATE/attempts/`.
+`$HARNESS_STATE/attempts.tsv`, and the prompt, pack, command line, output and verification JSON
+of each attempt to `$HARNESS_STATE/attempts/`.
 
 Before the first round it refuses to start if `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN` or a
 Bedrock or Vertex switch is set, if `claude auth status` does not show a logged-in subscription,
@@ -208,6 +256,68 @@ verifier. A login failure mid-run stops the loop. A usage-limit stop
 sleeps `HARNESS_LIMIT_SLEEP` (300 s) and retries the same function. Run it in its own worktree on
 a `grind/` or `feature/` branch, and from a workspace Claude Code already trusts (an untrusted
 workspace ignores the project's permission rules; the hooks and `--allowedTools` still apply).
+
+### Lean sessions
+
+A function session needs a page of rules, not the repository's whole `CLAUDE.md` and
+`AGENTS.md`. `--lean FILE` (or `HARNESS_LEAN_INSTRUCTIONS=FILE`) gives every session that file
+instead: the loop runs `claude` with `--setting-sources user`, so neither the project's nor the
+local settings are read and no `CLAUDE.md`, `CLAUDE.local.md` or `AGENTS.md` is loaded, and with
+`--append-system-prompt` holding the file's text. The hooks still apply: they come from
+`--settings hooks/settings.fragment.json`, which is loaded whatever the setting sources, and the
+tool list from `--allowedTools`. Every session also runs with `--strict-mcp-config` and no
+`--mcp-config`, so no MCP server starts.
+
+The project settings' permission rules do not apply in a lean session either. What they denied
+is covered by the guard hook (`lib/guard.py`), which the fragment runs on `Read`, `Grep` and
+`Glob` as well as on edits and `Bash`: the owner's private files (`work/private/`, the Wine
+prefix, the test key data, any `.reg` or `.env` file outside the repository) are never read, by
+any tool or command. The Bash side refuses on sight rather than parsing: any command that
+contains `private`, `testkey`, `wine/prefix`, `.reg` or `.env` in any letter case, uses `$` or a
+leading `~`, or has a glob or brace pattern that could expand to one of those names or reaches
+outside the repository. Over-refusal is deliberate (it costs a session one turn). A second layer
+does not depend on the hook: the fragment's `permissions.deny` holds `Read(//**/private/**)`-style
+rules (Read rules also cover Grep and Glob) and `Bash(*private*)`-style rules, and settings
+passed with `--settings` apply under `--setting-sources user` (checked on the CLI); edits outside the rebuilt source tree, `reference/` included, are denied;
+and `Bash` runs only the verifier and read-only commands, so no `git push`, `gh` or `git config`.
+
+The lean file is working material that is never committed: it must lie outside this worktree
+(checked as for `--brief`), and the loop copies it into `$HARNESS_STATE/lean.md` when it starts.
+The loop refuses to start without one unless `--no-lean` (or `HARNESS_NO_LEAN=1`) says to give
+sessions the repository's instructions as before; the loop proof uses that. Each attempt's
+`.command.txt` shows the command line the session got, with the lean file's path in place of
+its text.
+
+### Context pack
+
+Before each session the loop builds a pack for the function (`lib/pack.py`; the attempt's
+`.pack.md`) and appends it to the prompt after a `---` line:
+
+1. Ghidra's decompiled pseudo-C, read from `$SFCOP_WORK/ghidra/decomp/<address>.c`
+   (`HARNESS_DECOMP` overrides the directory). `ghidra/scripts/export_decomp.sh` writes that
+   cache headless from the project, read-only, for every non-library function (26,399), or for
+   an address list given as its argument; it skips what is already there.
+2. The direct callees (`call rel32` targets that are function starts), with their prototypes
+   from `functions.csv` and the file under `game/` that already holds one.
+3. The declarations of the classes it touches, its own first, from the headers under `game/`;
+   classes declared in no header are named so the session searches before declaring one.
+4. One function already exact in `matched_set.json` from the same class, or else the same unit,
+   nearest by address, as it stands in the source.
+
+Each section is capped and the whole pack is cut at `HARNESS_PACK_MAX` characters (12000), at
+a line end with a note of what was cut. A missing input leaves a one-line note in its section,
+never a failed round; `HARNESS_PACK=0` leaves the pack out.
+
+### Handoff notes
+
+After every scored attempt that does not end exact, the loop writes a note
+(`lib/notes.py`) to `$SFCOP_WORK/harness/shared/notes/<address>.md`: the attempt's model,
+outcome and scores, the remaining differences from the verifier (the function's score line
+and up to eight differing instructions or relocation errors), and the session's own account.
+The prompt asks a session that stops short of 100% to end its last message with a `HANDOFF:`
+section (what it tried, what remains, what it suspects); without one, the note keeps the end of
+its last message. The next attempt's prompt carries the newest two notes, at most 3,000
+characters, after the pack. Notes live only in the harness state, never in the repository.
 
 ## Proof
 
@@ -258,8 +368,9 @@ Hooks.
 
 ## Limits and open points
 
-- **Fable tier.** Opus builds, Sonnet does fix rounds, Fable only after Opus fails and only when
-  explicitly enabled (`--allow-fable`); it is off by default.
+- **Fable tier.** Opus builds, Sonnet does one fix round, Opus tries once more; Fable gets one
+  time-boxed try at a near match (best at least 90%) and only when explicitly enabled
+  (`--allow-fable`); it is off by default.
 - **Unverified relocations** are accepted when used consistently, because most data symbols have
   no known address yet. As names are added to `functions.csv` and the analysis results, more of
   them become checked; the counts are in every result line.

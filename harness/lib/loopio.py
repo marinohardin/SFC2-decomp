@@ -1,11 +1,12 @@
 """JSON plumbing for harness/loop.sh: the claim, the prompt, scores and the attempt row.
 
     python3 -m harness.lib.loopio claim <entry.json> <verify.json>     # writes claim.json
-    python3 -m harness.lib.loopio prompt <entry.json>                  # prints the prompt
+    python3 -m harness.lib.loopio prompt <entry.json> [pack.md]        # prints the prompt
     python3 -m harness.lib.loopio score <verify.json> <address>        # "score exact exit"
     python3 -m harness.lib.loopio limited <claude.json>                # exit 0 on a usage limit
     python3 -m harness.lib.loopio autherror <claude.json>              # exit 0 on a login failure
     claude auth status | python3 -m harness.lib.loopio login -        # exit 0 on a Max login
+    python3 -m harness.lib.loopio outcome <outcome> <session exit status>
     python3 -m harness.lib.loopio row <entry.json> <outcome> <before> <after> <claude.json> <secs> <time>
 """
 import json
@@ -55,12 +56,15 @@ def claim(entry, verify):
 ROLES = {
     'build': 'Your job is to build this function: write it from the original instructions.',
     'fix': ('Your job is a fix round: an earlier attempt left this function at the baseline '
-            'score below. Start from the side-by-side listing and close the remaining '
-            'differences; rewrite only what the listing shows is wrong.'),
+            'score below. Start from the side-by-side listing and the notes from earlier '
+            'attempts at the end of this prompt, and close the remaining differences; rewrite '
+            'only what the listing shows is wrong.'),
 }
 
 
-def prompt(entry, template_path=None, index=None):
+def prompt(entry, template_path=None, index=None, pack_text='', notes_text=''):
+    """The session's prompt: the template filled in, then the context pack, the handoff notes
+    of earlier attempts on the function, and the batch brief, each after a `---` line."""
     template_path = template_path or os.path.join(paths.HARNESS, 'prompts', 'function.md')
     with open(template_path) as f:
         text = f.read()
@@ -85,6 +89,11 @@ def prompt(entry, template_path=None, index=None):
     }
     for k, v in values.items():
         text = text.replace('{{' + k + '}}', v)
+    if pack_text.strip():
+        text = text.rstrip('\n') + '\n\n---\n\n' + pack_text.strip() + '\n'
+    if notes_text.strip():
+        text = (text.rstrip('\n') + '\n\n---\n\n## Notes from earlier attempts on this function'
+                '\n\n' + notes_text.strip() + '\n')
     brief = os.environ.get('HARNESS_BRIEF')
     if brief:
         try:
@@ -128,15 +137,30 @@ def subscription_login(status):
 
 
 def row(entry, outcome, before, after, out, secs, now):
-    u = (out or {}).get('usage') or {}
+    """One attempt-log row. Tokens, cost and turns come from the session's JSON result; when
+    there is none (a session stopped by its time box leaves an empty or cut-off file) they are
+    left empty, meaning unknown, never 0."""
+    known = isinstance(out, dict) and 'total_cost_usd' in out
+    u = (out.get('usage') or {}) if known else {}
+
+    def value(d, key):
+        return d.get(key, 0) if known else ''
     return dict(time=now, address=entry['address'], name=entry['name'], model=entry.get('model'),
                 outcome=outcome, score_before=f'{float(before):.2f}',
-                score_after=f'{float(after):.2f}', input_tokens=u.get('input_tokens', 0),
-                output_tokens=u.get('output_tokens', 0),
-                cache_read_tokens=u.get('cache_read_input_tokens', 0),
-                cache_write_tokens=u.get('cache_creation_input_tokens', 0),
-                cost_usd=(out or {}).get('total_cost_usd', 0), turns=(out or {}).get('num_turns', 0),
-                seconds=secs)
+                score_after=f'{float(after):.2f}', input_tokens=value(u, 'input_tokens'),
+                output_tokens=value(u, 'output_tokens'),
+                cache_read_tokens=value(u, 'cache_read_input_tokens'),
+                cache_write_tokens=value(u, 'cache_creation_input_tokens'),
+                cost_usd=value(out if known else {}, 'total_cost_usd'),
+                turns=value(out if known else {}, 'num_turns'), seconds=secs)
+
+
+def final_outcome(outcome, rc):
+    """The outcome to log: `timeout` for a session its time box stopped (exit status 124),
+    unless it left an exact match or tampered with the tree; the scores say how far it got."""
+    if str(rc) == '124' and outcome not in ('exact', 'tampered', 'dry-run'):
+        return 'timeout'
+    return outcome
 
 
 def claim_lines(src_root, claimed):
@@ -167,7 +191,21 @@ def main(argv):
         c = claim(load(argv[1]), load(argv[2]))
         print(f'{c["baseline_score"]:.2f}')
     elif cmd == 'prompt':
-        print(prompt(load(argv[1]), index=funcs.FunctionIndex(paths.FUNCTIONS_CSV)))
+        entry = load(argv[1])
+        pack_text = ''
+        if os.environ.get('HARNESS_PACK', '1') != '0':
+            from . import pack
+            try:
+                index, exe, ms, unit_map = pack.load_inputs()
+                pack_text = pack.build(entry, index, exe, ms, unit_map=unit_map)
+            except Exception as e:  # a missing input must not stop the round
+                pack_text = f'## Context pack\n\n(not built: {type(e).__name__}: {e})\n'
+            if len(argv) > 2:
+                with open(argv[2], 'w') as f:
+                    f.write(pack_text)
+        from . import notes
+        print(prompt(entry, index=funcs.FunctionIndex(paths.FUNCTIONS_CSV), pack_text=pack_text,
+                     notes_text=notes.latest(entry['address'])))
     elif cmd == 'score':
         s, exact, code = score(load(argv[1]), argv[2])
         print(f'{s:.2f} {"exact" if exact else "partial"} {code}')
@@ -181,6 +219,8 @@ def main(argv):
         ok, why = subscription_login(load(argv[1]))
         print(why)
         return 0 if ok else 1
+    elif cmd == 'outcome':
+        print(final_outcome(argv[1], argv[2]))
     elif cmd == 'row':
         entry, outcome, before, after, out, secs, now = argv[1:8]
         print(json.dumps(row(load(entry), outcome, before, after, load(out), secs, now)))

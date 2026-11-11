@@ -138,8 +138,111 @@ def check_claims(tool, file_path, ti, cwd=None):
     return None
 
 
+# The owner's personal data: never read by a session, by any tool. Lean sessions do not load
+# the project's permission rules, so this hook is what keeps them out.
+PRIVATE_MARKERS = re.compile(r'(?i)(work/private|wine/prefix|testkey-data|\.reg\b|\.env\b|'
+                             r'(^|/)private(/|$))')
+PRIVATE_DENY = ("the owner's private files (work/private, the Wine prefix's .reg files, the test "
+                "key data, any .reg or .env file) are never read")
+
+
+def private_roots():
+    w = paths.WORK
+    return [os.path.join(w, 'private'), os.path.join(w, 'wine', 'prefix'),
+            os.path.join(w, 'testkey-data')]
+
+
+def check_read(path, cwd=None):
+    """None to allow, or the reason to deny reading, searching or listing `path`: inside a
+    private root, an ancestor of one (a search would reach it), or a .reg/.env file outside the
+    repository."""
+    if not path:
+        return None
+    p = path if os.path.isabs(path) else os.path.join(cwd or paths.REPO, path)
+    wild = re.search(r'[*?\[{]', p)
+    if wild:  # a pattern: judge the folder it starts from, which it may reach below
+        p = os.path.dirname(p[:wild.start()]) or os.sep
+    for root in private_roots():
+        if _inside(p, root) or _inside(root, p):
+            return PRIVATE_DENY
+    if p.lower().endswith(('.reg', '.env')) and not _inside(p, paths.REPO):
+        return PRIVATE_DENY
+    if PRIVATE_MARKERS.search(path) and not _inside(p, paths.REPO):
+        return PRIVATE_DENY
+    return None
+
+
+# The Bash side of the private-file rule. It refuses on sight, without trying to work out what
+# a command would really touch: over-refusal is deliberate. A false refusal costs a grind session
+# one turn; a leak of the owner's personal data is not acceptable. Refused:
+# - any of these substrings anywhere in the command, in any letter case, as typed and again
+#   after shell quoting is removed;
+# - `$` in any form (variables, $'...' escapes) and a leading `~`, which could spell a path;
+# - a glob or brace pattern (* ? [ {) that could expand to one of the private names, or that
+#   points outside the repository (absolute, or climbing with ..);
+# - any path argument that is a private folder or an ancestor of one (`grep -r key ..`).
+PRIVATE_SUBSTRINGS = ('private', 'testkey', 'wine/prefix', '.reg', '.env')
+PRIVATE_NAMES = ('private', 'testkey', 'testkey-data', 'wine', 'prefix', 'x.reg', 'x.env')
+GLOB_CHARS = re.compile(r'[*?\[{]')
+MANIFEST_CHECK = ['python3', 'tools/manifest.py', '--check']
+
+
+def _expand_braces(word, limit=64):
+    """The words a shell brace pattern expands to (a{b,c}d -> abd, acd), capped."""
+    m = re.search(r'\{([^{}]*)\}', word)
+    if not m or ',' not in m.group(1):
+        return [word]
+    out = []
+    for alt in m.group(1).split(','):
+        out += _expand_braces(word[:m.start()] + alt + word[m.end():], limit)
+        if len(out) >= limit:
+            break
+    return out[:limit]
+
+
+def _glob_could_reach_private(word):
+    import fnmatch
+    for w in _expand_braces(word):
+        if any(x in w.lower() for x in PRIVATE_SUBSTRINGS):
+            return True
+        if not GLOB_CHARS.search(w):
+            continue
+        if os.path.isabs(w) or '..' in w.split('/'):
+            return True
+        for part in w.split('/'):
+            if GLOB_CHARS.search(part) and any(fnmatch.fnmatch(n, part.lower())
+                                               for n in PRIVATE_NAMES):
+                return True
+    return False
+
+
+def check_private_bash(command):
+    """PRIVATE_DENY if the command could read the owner's private files, else None."""
+    low = command.lower()
+    if any(x in low for x in PRIVATE_SUBSTRINGS) or '$' in command:
+        return PRIVATE_DENY
+    try:
+        words = shlex.split(command)
+    except ValueError:
+        return PRIVATE_DENY
+    for w in words:
+        if any(x in w.lower() for x in PRIVATE_SUBSTRINGS) or w.startswith('~'):
+            return PRIVATE_DENY
+        if (GLOB_CHARS.search(w) or '{' in w) and _glob_could_reach_private(w):
+            return PRIVATE_DENY
+        if w.startswith('-'):
+            continue
+        p = w if os.path.isabs(w) else os.path.join(paths.REPO, w)
+        if any(_inside(p, root) or _inside(root, p) for root in private_roots()):
+            return PRIVATE_DENY
+    return None
+
+
 def check_bash(command):
     """None to allow, or the reason to deny a Bash command."""
+    reason = check_private_bash(command)
+    if reason:
+        return reason
     if 'ANTHROPIC_API_KEY' in command or 'ANTHROPIC_AUTH_TOKEN' in command:
         return 'API credentials are not used in function sessions'
     if '`' in command or '$(' in command or '<(' in command or '>(' in command:
@@ -186,6 +289,8 @@ def _check_words(words):
     cmd, args = words[0], words[1:]
     if cmd in ('sh', 'bash') and args and _is_verify(args[0]):
         cmd, args = args[0], args[1:]
+    if words == MANIFEST_CHECK:  # read-only: reports, writes nothing
+        return None
     if _is_verify(cmd):
         if any(a == '--record' for a in args):
             return 'only the harness records results'
@@ -245,6 +350,10 @@ def decide(event):
     if tool in ('Edit', 'Write', 'MultiEdit'):
         return (check_edit(ti.get('file_path'), event.get('cwd'))
                 or check_claims(tool, ti.get('file_path'), ti, event.get('cwd')))
+    if tool in ('Read', 'Grep', 'Glob'):
+        return (check_read(ti.get('file_path') or ti.get('path'), event.get('cwd'))
+                or (check_read(ti['pattern'], event.get('cwd'))
+                    if tool == 'Glob' and ti.get('pattern') else None))
     if tool == 'NotebookEdit':
         return 'notebooks are not part of the rebuilt source'
     if tool == 'Bash':

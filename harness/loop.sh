@@ -3,14 +3,16 @@
 # harness/build-and-verify.sh.
 #
 #   harness/loop.sh [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--brief FILE]
-#                   [--allow-fable]
+#                   [--lean FILE | --no-lean] [--allow-fable] [--revisit]
 #
 # Each round: claim the next function (harness/queue.py; a lock file keeps loops in other
 # worktrees off it), score it as it stands, write the claim the Stop hook checks, run claude with
 # the prompt harness/prompts/function.md and the hooks in harness/hooks/settings.fragment.json,
 # then let harness/update-matched-set.sh judge the result. An improvement is committed on the
-# current branch; anything else is undone and counted against the function's attempt cap.
-# Usage-limit stops sleep and retry the same function without counting.
+# current branch; anything else is undone and counts as an attempt. An attempt that does not end
+# exact leaves a handoff note in the harness state for the next one (harness/lib/notes.py), and
+# the prompt carries a context pack (harness/lib/pack.py). Usage-limit stops sleep and retry the
+# same function without counting.
 #
 # The worktree must be clean when the loop starts. After each session the loop refuses to score
 # if anything outside the source tree changed (tracked or untracked), or HEAD moved: the attempt
@@ -18,8 +20,13 @@
 # Ignored files under the judging directories (harness/, toolchain/, analysis/, ghidra/,
 # scripts/, oracle/) are removed before scoring, so nothing planted there can run.
 #
-# Models (harness/README.md, "Model tiers"): attempt 1 Opus builds, attempts 2-3 Sonnet fix the
-# near match, attempt 4 Opus. Fable runs only after those and only with --allow-fable.
+# Models and the stop rule (harness/README.md, "Model tiers"): attempt 1 Opus builds, attempt 2
+# Sonnet fixes the near match, attempt 3 Opus. From attempt 2 on, an attempt that does not raise
+# the best score ends the run, and after two attempts so does a best of 90% or less. Fable gets
+# one time-boxed try at a function whose best is at least 90%, and only with --allow-fable. A run
+# that ends short of 100% lists the function in analysis/results/revisit_functions.tsv (or
+# difficult_functions.tsv when it had every attempt), which the loop commits; the queue skips
+# revisit-listed functions unless --revisit is given.
 #
 # Runs under the owner's Claude Max login: it aborts if ANTHROPIC_API_KEY (or another variable
 # that would switch billing) is set. Run it in its own worktree on a grind/ or feature/ branch.
@@ -39,13 +46,24 @@
 # outside this worktree; it is copied into the harness state when the loop starts, so the
 # session cannot change it and later rounds get the same text.
 #
+# --lean FILE gives every session a lean instruction file in place of the repository's
+# CLAUDE.md and AGENTS.md: the session runs with `--setting-sources user` (no project or local
+# settings, so no CLAUDE.md is loaded) and the file's text as `--append-system-prompt`. The file
+# is never committed and must lie outside this worktree; it is copied into the harness state when
+# the loop starts. HARNESS_LEAN_INSTRUCTIONS names it too. The loop refuses to start without one
+# unless --no-lean (or HARNESS_NO_LEAN=1) says to run with the repository's instructions instead.
+# Every session runs with `--strict-mcp-config` and no MCP server either way.
+#
 # HARNESS_CLAUDE replaces the claude command (same arguments); the loop proof uses it to drive a
 # scripted stand-in agent. With the real claude, `claude auth status` must show a subscription
 # login before the first round.
 #
-# Environment: HARNESS_TIERS (opus,sonnet,sonnet,opus), HARNESS_ALLOW_FABLE (0),
-# HARNESS_FABLE_TRIES (1), HARNESS_MAX_TURNS (60), HARNESS_LIMIT_SLEEP (300 s),
-# HARNESS_FAIL_SLEEP (5 s), plus the paths in harness/lib/paths.py.
+# Environment: HARNESS_TIERS (opus,sonnet,opus), HARNESS_NEAR (90), HARNESS_ALLOW_FABLE (0),
+# HARNESS_FABLE_TRIES (1), HARNESS_FABLE_MAX_TURNS (30), HARNESS_FABLE_TIMEOUT (1800 s),
+# HARNESS_MAX_TURNS (60), HARNESS_SESSION_TIMEOUT (0: none), HARNESS_LEAN_INSTRUCTIONS,
+# HARNESS_NO_LEAN (0), HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000),
+# HARNESS_LIMIT_SLEEP (300 s), HARNESS_FAIL_SLEEP (5 s), plus the paths in
+# harness/lib/paths.py.
 set -u
 here=$(cd "$(dirname "$0")" && pwd)
 repo=$(dirname "$here")
@@ -54,9 +72,10 @@ cd "$repo" || exit 2
 export PYTHONPATH="$repo"
 py() { python3 -m harness.lib.loopio "$@"; }
 
-usage="usage: $0 [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--brief FILE] [--allow-fable]"
+usage="usage: $0 [--once] [--max N] [--dry-run] [--unit U]... [--address A]... [--brief FILE] [--lean FILE | --no-lean] [--allow-fable] [--revisit]"
 once=0 dry=0 max=0
 selargs= brief=
+lean=${HARNESS_LEAN_INSTRUCTIONS:-} nolean=${HARNESS_NO_LEAN:-0}
 while [ $# -gt 0 ]; do
     case "$1" in
         --once) once=1 ;;
@@ -70,17 +89,24 @@ while [ $# -gt 0 ]; do
             selargs="$selargs $1 $2"; shift ;;
         --brief) [ $# -ge 2 ] && [ -n "$2" ] || { echo "$usage" >&2; exit 2; }
             brief=$2; shift ;;
+        --lean) [ $# -ge 2 ] && [ -n "$2" ] || { echo "$usage" >&2; exit 2; }
+            lean=$2; shift ;;
+        --no-lean) nolean=1 ;;
         --allow-fable) export HARNESS_ALLOW_FABLE=1 ;;
+        --revisit) export HARNESS_TAKE_REVISIT=1 ;;
         *) echo "$usage" >&2; exit 2 ;;
     esac
     shift
 done
 
-if [ -n "$brief" ]; then
+# outside_worktree WHAT FILE: FILE (relative to the caller) must be a readable, non-empty file
+# that does not lie inside this worktree. Prints the absolute path.
+outside_worktree() {
+    f=$2
     # A relative path is the caller's, not the repository root's.
-    case "$brief" in /*) ;; *) brief="$caller/$brief" ;; esac
-    [ -f "$brief" ] && [ -r "$brief" ] || { echo "ERROR no readable brief at $brief" >&2; exit 2; }
-    [ -n "$(tr -d ' \t\r\n' < "$brief")" ] || { echo "ERROR the brief $brief is empty" >&2; exit 2; }
+    case "$f" in /*) ;; *) f="$caller/$f" ;; esac
+    [ -f "$f" ] && [ -r "$f" ] || { echo "ERROR no readable $1 at $f" >&2; return 2; }
+    [ -n "$(tr -d ' \t\r\n' < "$f")" ] || { echo "ERROR the $1 $f is empty" >&2; return 2; }
     # Inside the worktree if any parent directory of its real path is the worktree (samefile, so
     # a path that differs only in letter case on a case-insensitive volume is caught too).
     if python3 -c 'import os, sys
@@ -90,10 +116,22 @@ while True:
     if os.path.samefile(d, r): sys.exit(0)
     up = os.path.dirname(d)
     if up == d: sys.exit(1)
-    d = up' "$brief" "$repo"; then
-        echo "ERROR the brief must lie outside this worktree: it is batch material and is never committed" >&2
-        exit 2
+    d = up' "$f" "$repo"; then
+        echo "ERROR the $1 must lie outside this worktree: it is never committed" >&2
+        return 2
     fi
+    echo "$f"
+}
+if [ -n "$brief" ]; then
+    brief=$(outside_worktree brief "$brief") || exit 2
+fi
+if [ "$nolean" = 1 ]; then
+    lean=
+elif [ -n "$lean" ]; then
+    lean=$(outside_worktree "lean instruction file" "$lean") || exit 2
+else
+    echo "ERROR no lean instruction file: pass --lean FILE or set HARNESS_LEAN_INSTRUCTIONS (a file outside this worktree), or pass --no-lean to give sessions the repository's CLAUDE.md and AGENTS.md (harness/README.md, \"Lean sessions\")" >&2
+    exit 2
 fi
 
 for v in ANTHROPIC_API_KEY ANTHROPIC_AUTH_TOKEN CLAUDE_CODE_USE_BEDROCK CLAUDE_CODE_USE_VERTEX; do
@@ -107,6 +145,7 @@ eval "$(python3 -c 'from harness.lib import paths; import os, shlex
 rel = lambda p: os.path.relpath(p, paths.REPO)
 print("state=" + shlex.quote(paths.STATE)); print("src=" + shlex.quote(rel(paths.SRC_ROOT)))
 print("difficult=" + shlex.quote(rel(paths.DIFFICULT)))
+print("revisit=" + shlex.quote(rel(paths.REVISIT)))
 print("matched=" + shlex.quote(rel(paths.MATCHED_SET)))')"
 case "$src" in ..*|/*) echo "ERROR the source root must be inside this worktree for the loop" >&2; exit 2 ;; esac
 mkdir -p "$state/attempts"
@@ -114,7 +153,10 @@ judges="harness toolchain analysis ghidra scripts oracle"
 export HARNESS_LOOP_PID=$$
 addr=
 trap '[ -n "$addr" ] && python3 harness/queue.py release "$addr"' EXIT
-trap 'exit 130' INT TERM
+# A signal stops the running session first (timebox passes it to the session's process group and
+# waits for it), so no session goes on editing after the EXIT trap has released its claim.
+session=
+trap '[ -n "$session" ] && kill -TERM "$session" 2>/dev/null && wait "$session"; exit 130' INT TERM HUP
 
 # Undo everything since the round started: tracked changes, new files, commits.
 reset_round() {
@@ -138,6 +180,13 @@ if [ "$dry" = 0 ]; then
 fi
 [ -f "$state/queue.json" ] || python3 harness/queue.py build || exit 2
 unset HARNESS_SELECTION HARNESS_BRIEF
+if [ -n "$lean" ]; then
+    if [ "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$lean")" != \
+         "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$state/lean.md")" ]; then
+        cp "$lean" "$state/lean.md" || exit 2
+    fi
+    lean="$state/lean.md"
+fi
 if [ -n "$brief" ]; then
     if [ "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$brief")" != \
          "$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$state/brief.md")" ]; then
@@ -157,7 +206,7 @@ while :; do
     python3 harness/queue.py next > "$entry" || exit 2
     if [ ! -s "$entry" ]; then
         # Functions another loop holds are skipped too, so this is not always the end of the batch.
-        if [ -n "$selargs" ]; then echo "OK    nothing left to take in the selection:$selargs (each done, at its attempt cap, or held by another loop)"
+        if [ -n "$selargs" ]; then echo "OK    nothing left to take in the selection:$selargs (each done, stopped by the stop rule, on a list, or held by another loop)"
         else echo "OK    queue empty (or the rest is held by another loop)"; fi
         break
     fi
@@ -169,20 +218,46 @@ while :; do
     before=$(py claim "$entry" "$tag.before.json")
     snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
     # Never run a session on a missing or partial prompt (an unreadable brief, say).
-    if ! py prompt "$entry" > "$tag.prompt.md" || [ ! -s "$tag.prompt.md" ]; then
+    if ! py prompt "$entry" "$tag.pack.md" > "$tag.prompt.md" || [ ! -s "$tag.prompt.md" ]; then
         echo "ERROR could not write the prompt for $addr (see above); stopping" >&2
         exit 2
     fi
     echo "INFO  $addr $model (baseline $before%) -> $tag.*"
 
+    # The session's command. Fable is time-boxed: fewer turns and a wall-clock cap.
+    turns=${HARNESS_MAX_TURNS:-60} limit=${HARNESS_SESSION_TIMEOUT:-0}
+    if [ "$model" = fable ]; then
+        turns=${HARNESS_FABLE_MAX_TURNS:-30} limit=${HARNESS_FABLE_TIMEOUT:-1800}
+    fi
+    set -- --model "$model" --output-format json --max-turns "$turns" \
+        --settings "$here/hooks/settings.fragment.json" --permission-mode acceptEdits \
+        --allowedTools "Read Edit Write Grep Glob Bash" --strict-mcp-config
+    [ -n "$lean" ] && set -- "$@" --setting-sources user --append-system-prompt "$(cat "$lean")"
+    {
+        echo "# timebox: ${limit} s (0: none)"
+        if [ -n "$lean" ]; then echo "# lean instructions: $lean"
+        else echo "# lean instructions: none (the repository CLAUDE.md and AGENTS.md)"; fi
+        printf '%s -p <%s>' "$agent" "$tag.prompt.md"
+        prev=
+        for w in "$@"; do
+            if [ "$prev" = --append-system-prompt ]; then printf ' <%s>' "$lean"
+            else printf " '%s'" "$w"; fi
+            prev=$w
+        done
+        echo
+    } > "$tag.command.txt"
     t0=$(date +%s)
+    rc=0
     if [ "$dry" = 1 ]; then
         printf '{"type":"result","subtype":"success","is_error":false,"result":"dry run","num_turns":0,"total_cost_usd":0,"usage":{"input_tokens":0,"output_tokens":0,"cache_read_input_tokens":0,"cache_creation_input_tokens":0}}\n' > "$tag.claude.json"
     else
-        HARNESS_FUNCTION_SESSION=1 HARNESS_STATE="$state" "$agent" -p "$(cat "$tag.prompt.md")" \
-            --model "$model" --output-format json --max-turns "${HARNESS_MAX_TURNS:-60}" \
-            --settings "$here/hooks/settings.fragment.json" --permission-mode acceptEdits \
-            --allowedTools "Read Edit Write Grep Glob Bash" > "$tag.claude.json" 2> "$tag.claude.err"
+        # In the background and waited for, so the trap above runs at once on a signal.
+        HARNESS_FUNCTION_SESSION=1 HARNESS_STATE="$state" python3 -m harness.lib.timebox "$limit" \
+            "$agent" -p "$(cat "$tag.prompt.md")" "$@" > "$tag.claude.json" 2> "$tag.claude.err" < /dev/null &
+        session=$!
+        rc=0; wait "$session" || rc=$?
+        session=
+        [ "$rc" = 124 ] && echo "INFO  $addr: the session hit its ${limit} s time box; scoring what it left"
     fi
     secs=$(( $(date +%s) - t0 ))
     now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
@@ -240,12 +315,28 @@ while :; do
             echo "INFO  $addr $outcome ($before% -> $after%); worktree reset"
         fi
     fi
+    # A session stopped by its time box is logged as a timeout unless it left an exact match;
+    # what it improved is still committed above, and the scores say how far it got.
+    outcome=$(py outcome "$outcome" "$rc")
+    if [ "$dry" = 0 ] && [ "$outcome" != exact ]; then
+        python3 -m harness.lib.notes write "$entry" "$outcome" "$before" "$after" \
+            "$tag.claude.json" "$tag.after.json" "$now" > /dev/null \
+            || echo "WARN  could not write the handoff note for $addr"
+    fi
     python3 harness/queue.py record "$(py row "$entry" "$outcome" "$before" "$after" "$tag.claude.json" "$secs" "$now")"
-    if [ "$dry" = 0 ] && [ -n "$(git status --porcelain -- "$difficult")" ]; then
+    if [ "$dry" = 0 ] && [ -n "$(git status --porcelain -- "$difficult" "$revisit")" ]; then
         name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
-        git add -- "$difficult"
-        git commit -q -m "chore(harness): list $name ($addr) as difficult" \
-            -m "Not exact after the attempt cap; best and last attempt in $difficult."
+        git add -A -- "$difficult" "$revisit"
+        if [ -n "$(git diff --cached --name-only -- "$difficult")" ]; then
+            git commit -q -m "chore(harness): list $name ($addr) as difficult" \
+                -m "Not exact after every attempt the stop rule gives; best and last attempt in $difficult."
+        elif [ "$outcome" = exact ]; then
+            git commit -q -m "chore(harness): take $name ($addr) off the revisit list" \
+                -m "Exact on a revisit pass."
+        else
+            git commit -q -m "chore(harness): update $name ($addr) on the revisit list" \
+                -m "The stop rule ended its run short of 100%; see $revisit."
+        fi
     fi
     python3 harness/queue.py release "$addr"; addr=
 

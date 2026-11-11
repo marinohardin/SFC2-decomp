@@ -21,24 +21,36 @@ ATTEMPT_FIELDS = ['time', 'address', 'name', 'model', 'outcome', 'score_before',
                   'cost_usd', 'turns', 'seconds']
 DIFFICULT_FIELDS = ['address', 'name', 'attempts', 'last_model', 'best_score', 'last_attempt',
                     'reason']
-# Outcomes that count against the attempt cap. A usage-limit stop or a harness error does not.
-COUNTED = {'failed', 'improved', 'exact', 'no-change', 'tampered'}
+# Functions the stop rule ended short of 100% before they had their full chance; the queue skips
+# them unless told to take them (loop.sh --revisit). `listed` is when the run ended: a revisit
+# run counts only attempts after it.
+REVISIT_FIELDS = ['address', 'name', 'best_score', 'attempts', 'last_model', 'listed', 'note']
+# Outcomes that count as attempts. A usage-limit stop, a harness error or a dry run does not.
+COUNTED = {'failed', 'improved', 'exact', 'no-change', 'tampered', 'timeout'}
 LARGE_BYTES = 4096  # about 1,000 instructions; such functions go to the end of the queue
 SOLVED_SAMPLE = 200
 ADDRESS = re.compile(r'^(0x)?[0-9A-Fa-f]{1,8}$')
 
 
-DEFAULT_TIERS = ('opus', 'sonnet', 'sonnet', 'opus')
+DEFAULT_TIERS = ('opus', 'sonnet', 'opus')
+# A function's run goes on past two attempts only while its best score is above this, and Fable
+# is offered only to a function whose best is at least this (harness/README.md, "Model tiers").
+NEAR = float(os.environ.get('HARNESS_NEAR', 90.0))
+EPSILON = 1e-6
 
 
 class Tiers:
-    """Model by number of counted attempts. Opus builds (attempt 1), Sonnet does the fix rounds
-    on what Opus left (attempts 2 and 3), Opus tries once more (attempt 4). Fable comes only
-    after that, and only when explicitly allowed (HARNESS_ALLOW_FABLE=1 or loop.sh
-    --allow-fable). HARNESS_TIERS replaces the default sequence, e.g. "opus,sonnet,opus"."""
+    """Model by attempt. Opus builds (attempt 1), Sonnet does one fix round on what Opus left
+    (attempt 2), Opus tries once more (attempt 3); the stop rule (`plan`) usually ends a run
+    sooner. Fable comes only after the run, only for a near match, and only when explicitly
+    allowed (HARNESS_ALLOW_FABLE=1 or loop.sh --allow-fable). HARNESS_TIERS replaces the default
+    sequence, e.g. "opus,sonnet"."""
 
     def __init__(self, sequence=DEFAULT_TIERS, fable=1, allow_fable=False):
-        self.sequence = list(sequence) + (['fable'] * fable if allow_fable else [])
+        self.regular = list(sequence)
+        self.fable = fable
+        self.allow_fable = allow_fable
+        self.sequence = self.regular + (['fable'] * fable if allow_fable else [])
 
     @classmethod
     def from_env(cls, env=os.environ):
@@ -53,14 +65,83 @@ class Tiers:
         return len(self.sequence)
 
     def model(self, attempts):
-        """The model for the next attempt, or None when the function is exhausted."""
+        """The model by position in the sequence, ignoring the stop rule (see `plan`)."""
         return self.sequence[attempts] if attempts < len(self.sequence) else None
 
     @staticmethod
     def role(attempts, model):
         """What the session is for: building the function, or fixing the near match left by
         an earlier attempt."""
-        return 'build' if attempts == 0 or model != 'sonnet' else 'fix'
+        return 'build' if attempts == 0 or model not in ('sonnet', 'fable') else 'fix'
+
+
+def _score(v):
+    try:
+        return float(v or 0)
+    except ValueError:
+        return 0.0
+
+
+def best_score(rows):
+    """The best score a function has had: any attempt's result or starting point."""
+    return max([_score(r.get('score_before')) for r in rows] +
+               [_score(r.get('score_after')) for r in rows] or [0.0])
+
+
+class Plan:
+    """What happens next to a function, from its counted attempts (`plan`).
+
+    model: the next attempt's model, or None when the run is over.
+    full:  over, and the function had every attempt the rule gives it (the regular sequence to
+           its end, and Fable when its best qualified). Such a function goes to
+           difficult_functions.tsv; one that stopped short goes to revisit_functions.tsv.
+    note:  why the run ended, for the list."""
+
+    def __init__(self, model=None, role=None, full=False, note='', best=0.0, attempts=0):
+        self.model, self.role, self.full, self.note = model, role, full, note
+        self.best, self.attempts = best, attempts
+
+
+def plan(rows, tiers, near=NEAR):
+    """The stop rule. `rows` are the function's counted attempts, oldest first.
+
+    1. Attempt 1 is the first model of the sequence (Opus).
+    2. From attempt 2 on, an attempt that does not raise the best score ends the run.
+    3. After two attempts the run also ends unless the best is above `near` (90%).
+    4. Otherwise the next model of the sequence, until it runs out.
+    5. When the run is over and the best is at least `near`, Fable gets HARNESS_FABLE_TRIES
+       tries (default 1) if allowed. Without --allow-fable the function waits on the revisit
+       list.
+    An exact attempt ends everything (the caller checks that first)."""
+    best = best_score(rows)
+    n = len(rows)
+    regular = [r for r in rows if r.get('model') != 'fable']
+    fables = n - len(regular)
+    k = len(regular)
+    stop = None
+    if k >= 2:
+        last = regular[-1]
+        before = best_score(regular[:-1] + [dict(score_before=last.get('score_before'))])
+        if _score(last.get('score_after')) <= before + EPSILON:
+            stop = f'attempt {k} ({last.get("model")}) did not raise the best'
+        elif best <= near + EPSILON:
+            stop = f'best not above {near:g}% after {k} attempts'
+    if stop is None and not fables and k < len(tiers.regular):
+        model = tiers.regular[k]
+        return Plan(model, Tiers.role(k, model), best=best, attempts=n)
+    ran_out = k >= len(tiers.regular)
+    reason = stop or f'all {k} regular attempts used'
+    fable_due = tiers.fable > 0 and fables < tiers.fable and best + EPSILON >= near
+    if fable_due and tiers.allow_fable:
+        return Plan('fable', 'fix', best=best, attempts=n)
+    if fable_due:
+        note = f'{reason}; waits for Fable'
+    elif fables:
+        note = f'{reason}; Fable tried'
+    else:
+        note = reason
+    return Plan(None, full=ran_out and not fable_due, note=f'{note}; best {best:.2f}%',
+                best=best, attempts=n)
 
 
 def size_bucket(size):
@@ -178,44 +259,169 @@ def release(claims_dir, address, owner):
         pass
 
 
-def counted_attempts(attempts, address):
-    return sum(1 for r in attempts if r['address'] == address and r['outcome'] in COUNTED)
+def counted_attempts(attempts, address, since=''):
+    return len(history(attempts, address, since))
 
 
-def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True):
+def history(attempts, address, since=''):
+    """The function's counted attempts after `since` (an ISO time; '' for all), oldest first."""
+    return [r for r in attempts if r['address'] == address and r['outcome'] in COUNTED
+            and (not since or r.get('time', '') > since)]
+
+
+def run_rows(attempts, address, listed, tiers):
+    """The attempts the stop rule judges for a function: all of them, or for a revisit-listed
+    function (`listed` is when it was listed) those since the listing, so its run starts over.
+    A listed function that was only waiting for Fable keeps its whole history instead: a
+    revisit pass with --allow-fable gives it the Fable try, and one without leaves it waiting
+    rather than spending a new run on it."""
+    rows = history(attempts, address)
+    if not listed:
+        return rows
+    upto = [r for r in rows if r.get('time', '') <= listed]
+    if plan(upto, Tiers(tiers.regular, tiers.fable, allow_fable=True)).model == 'fable':
+        return rows
+    return [r for r in rows if r.get('time', '') > listed]
+
+
+def runs(rows, tiers):
+    """The attempt history cut into runs: a run ends when the stop rule gives it no further
+    model, with Fable counted as allowed (so a Fable try continues the run it was waiting at
+    the end of), and the next attempt begins a new run (a revisit pass)."""
+    allow = Tiers(tiers.regular, tiers.fable, allow_fable=True)
+    out, seg = [], []
+    for r in rows:
+        if seg and plan(seg, allow).model is None:
+            out.append(seg)
+            seg = []
+        seg.append(r)
+    if seg:
+        out.append(seg)
+    return out
+
+
+def unlisted_run(attempts, address, tiers):
+    """The rows of the run a revisit pass would judge for a function not on this checkout's
+    revisit list: none (a new run) when its last run has ended short of its full chance, its
+    last run otherwise. The revisit list is kept per checkout while the attempt log is shared,
+    so a function another loop listed on its own branch is found here from the log alone."""
+    segs = runs(history(attempts, address), tiers)
+    if not segs:
+        return []
+    last = segs[-1]
+    p = plan(last, Tiers(tiers.regular, tiers.fable, allow_fable=True))
+    return [] if p.model is None and not p.full else last
+
+
+def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, revisit=(),
+               take_revisit=False):
     """The first queue entry still open that `claim` grants, with its attempt count, model and
-    role; None if there is none."""
+    role; None if there is none. Functions on the revisit list are skipped unless
+    `take_revisit`, and then their run starts over from the time they were listed (`run_rows`).
+    With `take_revisit`, a function that is not listed here but whose run has ended short of
+    its full chance in the shared log is taken too, with a new run (`unlisted_run`)."""
     done = {r['address'] for r in attempts if r['outcome'] == 'exact'}
     given_up = {r['address'] for r in difficult}
+    listed = {r['address']: r.get('listed', '') for r in revisit}
     for e in queue:
-        if e['address'] in given_up or e['address'] in done:
+        a = e['address']
+        if a in given_up or a in done or (a in listed and not take_revisit):
             continue
-        n = counted_attempts(attempts, e['address'])
-        model = tiers.model(n)
-        if model and claim(e['address']):
-            return dict(e, attempts=n, model=model, role=Tiers.role(n, model))
+        if a not in listed and take_revisit:
+            rows = unlisted_run(attempts, a, tiers)
+        else:
+            rows = run_rows(attempts, a, listed.get(a, ''), tiers)
+        p = plan(rows, tiers)
+        if p.model and claim(a):
+            return dict(e, attempts=p.attempts, model=p.model, role=p.role, best=p.best)
     return None
 
 
-def record(paths_, entry, row, tiers):
-    """Log one attempt; move the function to difficult_functions.tsv when it reaches the cap
-    without becoming exact. Returns True if it was moved."""
-    append_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS, row)
-    if row['outcome'] == 'exact':
-        return False
+def _rewrite_tsv(path, fields, keep):
+    """Rewrite a TSV under an exclusive lock, keeping the rows `keep` accepts."""
+    if not os.path.exists(path):
+        return
+    with open(path, 'r+', newline='') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            rows = [r for r in csv.DictReader(f, delimiter='\t') if r.get(fields[0])]
+            kept = [r for r in rows if keep(r)]
+            if len(kept) == len(rows):
+                return
+            f.seek(0)
+            f.truncate()
+            w = csv.DictWriter(f, fieldnames=fields, delimiter='\t', extrasaction='ignore',
+                               lineterminator='\n')
+            w.writeheader()
+            w.writerows(kept)
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+
+def settle(paths_, entry, tiers, now, take_revisit=False):
+    """Put a function whose run is over on the right list. Returns 'difficult', 'revisit',
+    'cleared' (exact: taken off the revisit list) or None (its run goes on, or it is listed
+    already)."""
+    a = entry['address']
     attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
-    n = counted_attempts(attempts, entry['address'])
-    if tiers.model(n) is not None:
-        return False
-    if any(r['address'] == entry['address'] for r in read_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS)):
-        return False
-    best = max([float(r['score_after'] or 0) for r in attempts if r['address'] == entry['address']]
-               or [0.0])
-    append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
-        address=entry['address'], name=entry['name'], attempts=n, last_model=row['model'],
-        best_score=f'{best:.2f}', last_attempt=row['time'],
-        reason=f'not exact after {n} attempts'))
-    return True
+    revisit = read_tsv(paths_.REVISIT, REVISIT_FIELDS)
+    mine = [r for r in revisit if r['address'] == a]
+    if any(r['address'] == a and r['outcome'] == 'exact' for r in attempts):
+        if mine:
+            _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+            return 'cleared'
+        return None
+    if mine and not take_revisit:
+        return None
+    if not mine and take_revisit:
+        segs = runs(history(attempts, a), tiers)
+        rows = segs[-1] if segs else []
+    else:
+        rows = run_rows(attempts, a, mine[0].get('listed', '') if mine else '', tiers)
+    if not rows:
+        return None
+    p = plan(rows, tiers)
+    if p.model is not None:
+        return None
+    if any(r['address'] == a for r in read_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS)):
+        return None
+    last = rows[-1]
+    if p.full:
+        _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+        append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
+            address=a, name=entry['name'], attempts=p.attempts, last_model=last['model'],
+            best_score=f'{p.best:.2f}', last_attempt=last['time'],
+            reason=f'not exact after {p.attempts} attempts: {p.note}'))
+        return 'difficult'
+    _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+    append_tsv(paths_.REVISIT, REVISIT_FIELDS, dict(
+        address=a, name=entry['name'], best_score=f'{p.best:.2f}', attempts=p.attempts,
+        last_model=last['model'], listed=now, note=p.note))
+    return 'revisit'
+
+
+def record(paths_, entry, row, tiers, take_revisit=False):
+    """Log one attempt, then settle the function if its run is over (see `settle`)."""
+    append_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS, row)
+    if row['outcome'] not in COUNTED:
+        return None
+    return settle(paths_, entry, tiers, row['time'], take_revisit)
+
+
+def sweep(paths_, tiers, now):
+    """Settle every function with counted attempts whose run the stop rule has ended but that
+    is on no list yet: those whose attempts were logged before the rule existed. Returns
+    {address: 'difficult' | 'revisit'}."""
+    attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
+    names, out = {}, {}
+    for r in attempts:
+        if r['outcome'] in COUNTED:
+            names.setdefault(r['address'], r['name'])
+    for a, name in names.items():
+        got = settle(paths_, dict(address=a, name=name), tiers, now)
+        if got in ('difficult', 'revisit'):
+            out[a] = got
+    return out
 
 
 def read_unit_map(path):

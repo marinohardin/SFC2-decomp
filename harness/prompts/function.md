@@ -32,7 +32,15 @@ attempt {{ATTEMPT}} on this function ({{MODEL}}). {{ROLE}}
    to an empty function with the right signature and run it once.
 4. Iterate until the score is 100% or you cannot improve it further, then stop. When you stop,
    the harness builds and scores the function again; it lets you finish only if the score went
-   up. Stopping again after that gives up the attempt, which is fine: another attempt follows.
+   up. Stopping again after that gives up the attempt, which is fine: another attempt may follow.
+5. If you stop short of 100%, end your last message with a section that starts with the line
+   `HANDOFF:` and holds at most eight short lines: what you tried, which differences remain, and
+   what you suspect causes them. The harness keeps it outside the repository and gives it to the
+   next attempt on this function.
+
+The context pack after the rules (Ghidra's pseudo-C, the callees, the class declarations and an
+exact function nearby) and any notes from earlier attempts were gathered for you; start from
+them rather than searching for the same things again.
 
 ## Rules
 

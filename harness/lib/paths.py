@@ -51,6 +51,10 @@ MATCHED_SET = env_path('HARNESS_MATCHED_SET',
                        os.path.join(REPO, 'analysis', 'results', 'matched_set.json'))
 DIFFICULT = env_path('HARNESS_DIFFICULT',
                      os.path.join(REPO, 'analysis', 'results', 'difficult_functions.tsv'))
+# Functions the stop rule ended short of 100% before their full chance (harness/README.md,
+# "Model tiers"); queue.py skips them unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit).
+REVISIT = env_path('HARNESS_REVISIT_LIST',
+                   os.path.join(REPO, 'analysis', 'results', 'revisit_functions.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
 # The unit map (tools/units.py): one row per translation unit with its address range.
 UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'game', 'UNITS.tsv'))
@@ -60,7 +64,7 @@ SRC_ROOT = env_path('HARNESS_SRC_ROOT', os.path.join(REPO, 'game'))
 # each other's claim, queue and objects: work/harness/wt-<checkout>-<hash of its path>/.
 _wt = f'wt-{os.path.basename(REPO)}-{hashlib.sha1(REPO.encode()).hexdigest()[:8]}'
 STATE = env_path('HARNESS_STATE', os.path.join(WORK, 'harness', _wt))
-# Shared by all loops on this machine: the attempt log (attempt caps count every loop's tries)
+# Shared by all loops on this machine: the attempt log (the stop rule counts every loop's tries)
 # and one lock file per claimed function. A run with its own HARNESS_STATE (the proofs, tests)
 # keeps these inside it unless HARNESS_SHARED says otherwise.
 SHARED = env_path('HARNESS_SHARED', STATE if os.environ.get('HARNESS_STATE')
@@ -71,4 +75,6 @@ CLAIM = os.path.join(STATE, 'claim.json')
 # What loop.sh --unit/--address resolved to when the loop started (queue.py select).
 SELECTION = os.path.join(STATE, 'selection.json')
 ATTEMPTS = os.path.join(SHARED, 'attempts.tsv')
+# Handoff notes: what each unfinished attempt left for the next one, one file per function.
+NOTES = os.path.join(SHARED, 'notes')
 CLAIMS = os.path.join(SHARED, 'claims')

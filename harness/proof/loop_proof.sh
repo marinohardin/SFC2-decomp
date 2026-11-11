@@ -67,6 +67,8 @@ git commit -q -m "loop proof: base tree with the SDK as game/" --no-verify
 export SFCOP_ROOT="$ROOT" SFCOP_WORK="$WORK" SFCOP_REFERENCE="$REF"
 export HARNESS_STATE="$proof/state" HARNESS_UNITS="$proof/units.json"
 export HARNESS_MAX_TURNS=40 HARNESS_FAIL_SLEEP=0
+# The proof runs with the repository's own instructions: it has no lean file.
+export HARNESS_NO_LEAN=1 HARNESS_PACK=0
 if [ "$standin" = 1 ]; then
     export HARNESS_CLAUDE="$proof/repo/harness/proof/standin_agent.py"
     export HARNESS_STANDIN_TAMPER="$proof/state/tampered-once"

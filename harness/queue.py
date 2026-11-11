@@ -8,9 +8,18 @@
     harness/queue.py release <address>     # drop this checkout's claim on a function
     harness/queue.py record <json-row>     # log an attempt (loop.sh only)
     harness/queue.py show [N]              # the first N entries and the attempt totals
+    harness/queue.py sweep                 # list functions the stop rule has already ended
 
 Skips library-flagged functions, EH funclets and thunks, functions already exact in
-matched_set.json, and those in difficult_functions.tsv. See lib/workqueue.py for the order.
+matched_set.json, and those in difficult_functions.tsv. Functions in revisit_functions.tsv are
+skipped too unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit); a revisit run counts only the
+attempts made after the function was listed. See lib/workqueue.py for the order and the stop
+rule (`plan`).
+
+`record` settles a function whose run is over: difficult_functions.tsv when it had its full
+chance, revisit_functions.tsv when the stop rule ended it sooner. `sweep` does the same for
+every function in the attempt log that is on neither list, which is how attempts logged before
+the stop rule existed are settled; it prints what it listed.
 
 `select` resolves units (paths in game/UNITS.tsv, such as Tiger/tsay.cpp) and addresses to the
 queue entries they cover, in address order, and writes them to $HARNESS_STATE/selection.json.
@@ -36,6 +45,14 @@ def main(argv):
     cmd, args = argv[0], argv[1:]
     tiers = workqueue.Tiers.from_env()
     difficult = workqueue.read_tsv(paths.DIFFICULT, workqueue.DIFFICULT_FIELDS)
+    revisit = workqueue.read_tsv(paths.REVISIT, workqueue.REVISIT_FIELDS)
+    take_revisit = os.environ.get('HARNESS_TAKE_REVISIT') == '1'
+    if cmd == 'sweep':
+        got = workqueue.sweep(paths, tiers, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()))
+        for a, where in sorted(got.items()):
+            print(f'INFO  {a} -> {where}')
+        print(f'OK    swept: {len(got)} functions listed')
+        return 0
     if cmd == 'build':
         index = funcs.FunctionIndex(paths.FUNCTIONS_CSV)
         exe = coff.PeImage(open(paths.EXE, 'rb').read())
@@ -89,7 +106,8 @@ def main(argv):
     if cmd == 'next':
         pid = int(os.environ.get('HARNESS_LOOP_PID', os.getppid()))
         e = workqueue.next_entry(q, attempts, difficult, tiers,
-                                 lambda a: workqueue.acquire(paths.CLAIMS, a, owner, pid))
+                                 lambda a: workqueue.acquire(paths.CLAIMS, a, owner, pid),
+                                 revisit, take_revisit)
         if e:
             print(json.dumps(e))
         return 0
@@ -99,17 +117,23 @@ def main(argv):
     if cmd == 'record':
         row = json.loads(args[0])
         entry = {'address': row['address'], 'name': row.get('name', '')}
-        moved = workqueue.record(paths, entry, row, tiers)
-        if moved:
-            print(f'INFO  {row["address"]} moved to difficult_functions.tsv after {tiers.cap} attempts')
+        where = workqueue.record(paths, entry, row, tiers, take_revisit)
+        if where in ('difficult', 'revisit'):
+            print(f'INFO  {row["address"]} listed in {where}_functions.tsv')
+        elif where == 'cleared':
+            print(f'INFO  {row["address"]} taken off revisit_functions.tsv')
         return 0
     if cmd == 'show':
         n = int(args[0]) if args else 20
+        listed = {r['address'] for r in revisit}
         for e in q[:n]:
             k = workqueue.counted_attempts(attempts, e['address'])
+            if e['address'] in listed:
+                k = f'{k} (revisit)'
             print(f'{e["address"]}  {e["size"]:>6}  sim {e["similarity"]:.2f}  '
                   f'{"named " if e["named"] else "      "}  attempts {k}  {e["name"]}')
-        print(f'{len(q)} queued, {len(attempts)} attempts logged, {len(difficult)} difficult')
+        print(f'{len(q)} queued, {len(attempts)} attempts logged, {len(difficult)} difficult, '
+              f'{len(revisit)} to revisit')
         return 0
     print(__doc__)
     return 2
