@@ -495,3 +495,13 @@ def test_an_annotation_that_claims_no_definition_is_refused(tmp_path, capsys, he
     csv.write_text(DELETING_CSV)
     assert run(tmp_path, game, csv) == 2
     assert message in capsys.readouterr().err
+
+
+def test_a_member_declared_over_several_lines_is_read_as_one(tmp_path):
+    header = HEADER.replace('\tvirtual void mFire( int32 count, const char* why );',
+                            '\tvirtual void mFire( int32 count,\n\t\tconst char* why );')
+    game, csv = make_tree(tmp_path, header=header)
+    functions, classes = manifest.build(str(game), str(csv), str(tmp_path / 'matched.json'))
+    fire = [m for m in classes['tTestShip']['members'] if m['name'] == 'mFire']
+    assert [(m['types'], m['virtual'], m['line']) for m in fire] == [(('int32', 'const char*'), True, 20)]
+    assert [f['name'] for f in functions if f['address'] == 0x00401200] == ['tTestShip::mFire']

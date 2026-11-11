@@ -297,6 +297,20 @@ def scan_file(path, rel, functions, classes):
             raise ManifestError('%s:%d: a VTABLE annotation must come right before its class'
                                 % (rel, pending_vtable[1]))
         bm = BINDING.match(code)
+        if not bm and stack and stack[-1][0] == 'class' and code.count('(') > code.count(')') \
+                and '{' not in code:
+            # A member declaration whose parameter list runs over several lines is read as one.
+            j, joined = i, code
+            while joined.count('(') > joined.count(')') and j + 1 < len(lines):
+                nxt = strip_code(lines[j + 1])
+                if '{' in nxt or '}' in nxt or ANNOTATION.match(lines[j + 1]):
+                    break
+                j += 1
+                joined += ' ' + nxt.strip()
+            if joined.count('(') == joined.count(')') and joined.rstrip().endswith(';'):
+                add_member(stack[-1][1], joined, rel, i + 1)
+                i = j + 1
+                continue
         if bm and stack and stack[-1][0] == 'class':
             binding_members(stack[-1][1], bm.group(1), rel, i + 1)
         elif stack and stack[-1][0] == 'class' and '(' in code and code.rstrip().endswith(';') \
