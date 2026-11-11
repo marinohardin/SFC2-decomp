@@ -143,6 +143,62 @@ address	size	symbol	source	modes
 0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
+0x00421939	493	tEntityControlShip::tEntityControlShip(tEntity *)	unsorted/tEntityControlShip.cpp	partial
+0x00421b42	124	tEntityControlShip::fn_00421b42(short,int)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421bbe	157	tEntityControlShip::fn_00421bbe(tPoint3)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421c5b	62	tEntityControlShip::fn_00421c5b(tPoint3)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421c99	116	tEntityControlShip::fn_00421c99(int)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421d0d	118	tEntityControlShip::fn_00421d0d(int)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421d83	51	tEntityControlShip::fn_00421d83(int)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421db6	133	tEntityControlShip::fn_00421db6()	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421e45	49	tEntityControlShip::~tEntityControlShip()	unsorted/tEntityControlShip.cpp	partial
+0x00421e76	51	tEntityControlShip::fn_00421e76(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00421ea9	556	tEntityControlShip::fn_00421ea9(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	partial
+0x004220d5	130	tEntityControlShip::fn_004220d5(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00422157	48	tEntityControlShip::fn_00422157(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00422187	28	tEntityControlShip::fn_00422187(tPoint3 &)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x004221a3	82	tEntityControlShip::fn_004221a3(tPoint3 &)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x004221f5	31	tEntityControlShip::fn_004221f5(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00422214	22	tEntityControlShip::fn_00422214()	unsorted/tEntityControlShip.cpp	vc6 guest
+0x0042222a	190	tEntityControlShip::fn_0042222a(float,float *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x004222e8	637	tEntityControlShip::fn_004222e8(short,int)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00422565	40	fn_00422565(short *)	unsorted/tEntityControlShip.cpp	vc6 guest
+0x0042258d	388	tEntityControlShip::fn_0042258d()	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00422711	38	tEntityControlShip::fn_00422711()	unsorted/tEntityControlShip.cpp	vc6 guest
+0x00423537	90	tEntityMgr::tEntityMgr()	unsorted/tEntityMgr.cpp	vc6
+0x00423591	7	tEntityMgr::~tEntityMgr()	unsorted/tEntityMgr.cpp	vc6
+0x00423598	20	tEntityMgr::fn_00423598(int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004235ac	33	tEntityMgr::fn_004235ac(int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004235cd	35	tEntityMgr::fn_004235cd(int8u,int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004235f0	10	fn_004235f0()	unsorted/tEntityMgr.cpp	partial
+0x004235fa	277	tEntityMgr::fn_004235fa(int32)	unsorted/tEntityMgr.cpp	partial
+0x0042370f	38	tEntityMgr::fn_0042370f(int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423735	20	tEntityMgr::fn_00423735(int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423749	59	tEntityMgr::mAddEntity(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423784	44	tEntityMgr::mAddAstralEntity(tEntity_Astral *,int)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004237b0	129	tEntityMgr::fn_004237b0(tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423831	392	tEntityMgr::fn_00423831()	unsorted/tEntityMgr.cpp	vc6 guest
+0x004239ba	28	tEntityMgr::mSetPlayerNumber(const int)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004239d6	80	tEntityMgr::mGetNextPlayerID()	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423a26	68	tEntityMgr::mGetNextHostID()	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423a6a	208	tEntityMgr::mMakeContectWithAnyPhysicalObject(int32)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00423b3b	1265	tEntityMgr::mDetectCollision(tEntity *,tEntity *,iTruth)	unsorted/tEntityMgr.cpp	partial
+0x0042402d	1278	tEntityMgr::mDetectProximityCollision(tEntity *,tEntity *,float,iTruth)	unsorted/tEntityMgr.cpp	partial
+0x0042452c	180	tEntityMgr::mDirectionToPoint(tEntity *,tPoint3)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004245e1	201	tEntityMgr::fn_004245e1(tEntity *,tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004246ab	57	tEntityMgr::mGetDistanceFromEntities(const tID,const tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004246e4	248	tEntityMgr::mGetDistanceFromEntities(const tEntity *,const tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004247dd	36	tEntityMgr::mGetDistanceFromEntityToPoint(const tID,const tPoint3 &)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00424801	179	tEntityMgr::mGetDistanceFromEntityToPoint(const tEntity *,const tPoint3 &)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004248b5	145	tEntityMgr::mMarkIDasControledByPlayer(const tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00424946	22	tEntityMgr::mGetPlayersControledEntity()	unsorted/tEntityMgr.cpp	vc6 guest
+0x0042495c	19	tEntityMgr::mCastToWeapon(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x0042496f	80	tEntityMgr::fn_0042496f(tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004249c0	19	tEntityMgr::fn_004249c0(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004249d3	80	tEntityMgr::fn_004249d3(tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00424a24	19	tEntityMgr::fn_00424a24(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00424a37	88	tEntityMgr::fn_00424a37(tID)	unsorted/tEntityMgr.cpp	vc6 guest
+0x00424a8f	160	tEntityMgr::mArchive(tSFCStream &,unsigned long)	unsorted/tEntityMgr.cpp	vc6 guest
 0x0043104e	239	tNetControl::tNetControl()	unsorted/tNetControl.cpp	partial
 0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	partial
 0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest

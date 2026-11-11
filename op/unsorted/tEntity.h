@@ -48,7 +48,21 @@ public:
 		x = a.x; y = a.y; z = a.z;
 		return(*this);
 	}
+
+	// HYPOTHESIS: the out-of-line operators at 0x0069b120, 0x0069b190 and 0x0069b270, and
+	// the methods at 0x0069b390 and 0x0069b3d0, in the order the SDK declares them.
+	tPoint3 operator+(const tPoint3 &a) const;
+	// HYPOTHESIS: 0x0069b160 (+=) and 0x0069b250 (dot product), by the SDK's order and use.
+	tPoint3 &operator+=(const tPoint3 &a);
+	tPoint3 operator-(const tPoint3 &a) const;
+	float operator*(const tPoint3 &a) const;
+	tPoint3 operator*(const float d) const;
+	float mLength(void) const;
+	iTruth mNormalize(void);
 };
+
+// As the SDK declares it.
+const double kPi = 3.14159265358979323846;
 
 #pragma pack(pop)
 
@@ -158,6 +172,10 @@ public:
 
 	// HYPOTHESIS: returns float; the original leaves the callee's result in place.
 	float fn_00410168();
+	// HYPOTHESIS: 0x00423b3b calls these on an entity with a point: 0x00413112 on the result
+	// of 0x004249c0, 0x00417d3f on the colliding entity with its swept position.
+	void fn_00413112(const tPoint3 &aPoint);
+	void fn_00417d3f(const tPoint3 &aPoint);
 };
 
 // The object at 0x008e1060: a table of 0x4000 entity pointers indexed by ID at +0x30, then 16
@@ -213,6 +231,13 @@ public:
 	tPhysicalEntity *fn_004249c0(tPhysicalEntity *aEntity);
 	// HYPOTHESIS: returns the first entity of a list linked through 0x8; 0x00413f59 walks it.
 	tPhysicalEntity *fn_0055f269();
+	// HYPOTHESIS: returns an int; 0x00421bbe stores it in a new ship-control entry.
+	int fn_004239d6();
+	// fn_0042496f (declared above) is also the lookup 0x00421ea9 and 0x004220d5 make for a
+	// ship-control entry's target; they read the result as a tEntity.
+
+	// HYPOTHESIS: returns an entity ID; 0x00421ea9 compares it with its ship's fID.
+	int fn_00525081();
 
 	char fField00[0x30];                  // +0x00
 	tEntity *fEntities[0x4000];           // +0x30

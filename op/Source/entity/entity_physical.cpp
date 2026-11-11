@@ -7,14 +7,14 @@
 #include "unsorted/tNetControl.h"
 #include <string.h>
 
-// HYPOTHESIS: the class of the one-time object 0x00413ac3 builds from a message; its
-// constructor (0x0040ce21) refers to "QAReport.txt". The destructor does nothing.
-class tObject_0040ce21
-{
-public:
-	tObject_0040ce21(const char *aText);
-	~tObject_0040ce21() {}
-};
+#include "unsorted/tObject_0040ce21.h"
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the memory part, bound through the SDK's GenAbstractBinding (its
 // Search_tMemoryPart is the copy at 0x004133d3); tPart supplies slots 0 to 5, slot 6 is a

@@ -1297,6 +1297,510 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x00421939": {
+   "name": "tEntityControlShip::tEntityControlShip",
+   "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 493,
+   "score": 14.231,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00421b42": {
+   "name": "tEntityControlShip::vfunction18",
+   "symbol": "?fn_00421b42@tEntityControlShip@@UAEXFH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 124,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421bbe": {
+   "name": "tEntityControlShip::vfunction19",
+   "symbol": "?fn_00421bbe@tEntityControlShip@@UAEXHHH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 157,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421c5b": {
+   "name": "tEntityControlShip::vfunction20",
+   "symbol": "?fn_00421c5b@tEntityControlShip@@UAEXUtPoint3@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 62,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421c99": {
+   "name": "tEntityControlShip::vfunction22",
+   "symbol": "?fn_00421c99@tEntityControlShip@@UAEXH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421d0d": {
+   "name": "tEntityControlShip::vfunction21",
+   "symbol": "?fn_00421d0d@tEntityControlShip@@UAEXH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 118,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421d83": {
+   "name": "FUN_00421d83",
+   "symbol": "?fn_00421d83@tEntityControlShip@@QAEXH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421db6": {
+   "name": "tEntityControlShip::vfunction7",
+   "symbol": "?fn_00421db6@tEntityControlShip@@UAEXXZ",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 133,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421e45": {
+   "name": "tEntityControlShip::~tEntityControlShip",
+   "symbol": "??1tEntityControlShip@@UAE@XZ",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 49,
+   "score": 14.706,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00421e76": {
+   "name": "tEntityControlShip::vfunction12",
+   "symbol": "?fn_00421e76@tEntityControlShip@@UAEXH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00421ea9": {
+   "name": "tEntityControlShip::vfunction13",
+   "symbol": "?fn_00421ea9@tEntityControlShip@@UAEXPAVtObject_0042310b_entry@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 556,
+   "score": 17.092,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004220d5": {
+   "name": "tEntityControlShip::vfunction14",
+   "symbol": "?fn_004220d5@tEntityControlShip@@UAEXPAVtObject_0042310b_entry@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 130,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00422157": {
+   "name": "FUN_00422157",
+   "symbol": "?fn_00422157@tEntityControlShip@@QAEFPAVtObject_0042310b_entry@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00422187": {
+   "name": "tEntityControlShip::vfunction11",
+   "symbol": "?fn_00422187@tEntityControlShip@@UAEXAAUtPoint3@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004221a3": {
+   "name": "FUN_004221a3",
+   "symbol": "?fn_004221a3@tEntityControlShip@@QAEFAAUtPoint3@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004221f5": {
+   "name": "tEntityControlShip::vfunction16",
+   "symbol": "?fn_004221f5@tEntityControlShip@@UAEXPAVtObject_0042310b_entry@@@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 31,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00422214": {
+   "name": "FUN_00422214",
+   "symbol": "?fn_00422214@tEntityControlShip@@QAEXXZ",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0042222a": {
+   "name": "tEntityControlShip::vfunction15",
+   "symbol": "?fn_0042222a@tEntityControlShip@@UAEMMPAM@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 190,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004222e8": {
+   "name": "tEntityControlShip::vfunction17",
+   "symbol": "?fn_004222e8@tEntityControlShip@@UAEXFH@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 637,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00422565": {
+   "name": "FUN_00422565",
+   "symbol": "?fn_00422565@@YAXPAF@Z",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0042258d": {
+   "name": "tEntityControlShip::vfunction8",
+   "symbol": "?fn_0042258d@tEntityControlShip@@UAEXXZ",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 388,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00422711": {
+   "name": "tEntityControlShip::vfunction2",
+   "symbol": "?fn_00422711@tEntityControlShip@@UAEXXZ",
+   "unit": "unsorted/tEntityControlShip.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423537": {
+   "name": "tEntityMgr::tEntityMgr",
+   "symbol": "??0tEntityMgr@@QAE@XZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 90,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423591": {
+   "name": "tEntityMgr::~tEntityMgr",
+   "symbol": "??1tEntityMgr@@QAE@XZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423598": {
+   "name": "FUN_00423598",
+   "symbol": "?fn_00423598@tEntityMgr@@QAEXJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004235ac": {
+   "name": "FUN_004235ac",
+   "symbol": "?fn_004235ac@tEntityMgr@@QAEJJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004235cd": {
+   "name": "FUN_004235cd",
+   "symbol": "?fn_004235cd@tEntityMgr@@QAEXEJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004235f0": {
+   "name": "FUN_004235f0",
+   "symbol": "?fn_004235f0@@YAXXZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004235fa": {
+   "name": "FUN_004235fa",
+   "symbol": "?fn_004235fa@tEntityMgr@@QAEEJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 277,
+   "score": 16.629,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0042370f": {
+   "name": "FUN_0042370f",
+   "symbol": "?fn_0042370f@tEntityMgr@@QAEJJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423735": {
+   "name": "FUN_00423735",
+   "symbol": "?fn_00423735@tEntityMgr@@QAEEJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423749": {
+   "name": "FUN_00423749",
+   "symbol": "?mAddEntity@tEntityMgr@@QAEXPAVtEntity@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423784": {
+   "name": "FUN_00423784",
+   "symbol": "?mAddAstralEntity@tEntityMgr@@QAEXPAVtEntity_Astral@@H@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004237b0": {
+   "name": "FUN_004237b0",
+   "symbol": "?fn_004237b0@tEntityMgr@@QAEXJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 129,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423831": {
+   "name": "FUN_00423831",
+   "symbol": "?fn_00423831@tEntityMgr@@QAEXXZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 392,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004239ba": {
+   "name": "FUN_004239ba",
+   "symbol": "?mSetPlayerNumber@tEntityMgr@@QAEXH@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004239d6": {
+   "name": "FUN_004239d6",
+   "symbol": "?mGetNextPlayerID@tEntityMgr@@QAEJXZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423a26": {
+   "name": "FUN_00423a26",
+   "symbol": "?mGetNextHostID@tEntityMgr@@QAEJXZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 68,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423a6a": {
+   "name": "FUN_00423a6a",
+   "symbol": "?mMakeContectWithAnyPhysicalObject@tEntityMgr@@QAEXJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00423b3b": {
+   "name": "FUN_00423b3b",
+   "symbol": "?mDetectCollision@tEntityMgr@@QAEEPAVtEntity@@0E@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 1265,
+   "score": 90.512,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0042402d": {
+   "name": "FUN_0042402d",
+   "symbol": "?mDetectProximityCollision@tEntityMgr@@QAEEPAVtEntity@@0ME@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 1278,
+   "score": 91.51,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0042452c": {
+   "name": "FUN_0042452c",
+   "symbol": "?mDirectionToPoint@tEntityMgr@@QAEFPAVtEntity@@UtPoint3@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 180,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004245e1": {
+   "name": "FUN_004245e1",
+   "symbol": "?fn_004245e1@tEntityMgr@@QAEFPAVtEntity@@0@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 201,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004246ab": {
+   "name": "FUN_004246ab",
+   "symbol": "?mGetDistanceFromEntities@tEntityMgr@@QAEMJJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004246e4": {
+   "name": "FUN_004246e4",
+   "symbol": "?mGetDistanceFromEntities@tEntityMgr@@QAEMPBVtEntity@@0@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 248,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004247dd": {
+   "name": "FUN_004247dd",
+   "symbol": "?mGetDistanceFromEntityToPoint@tEntityMgr@@QAEMJABUtPoint3@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 36,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00424801": {
+   "name": "FUN_00424801",
+   "symbol": "?mGetDistanceFromEntityToPoint@tEntityMgr@@QAEMPBVtEntity@@ABUtPoint3@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 179,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004248b5": {
+   "name": "FUN_004248b5",
+   "symbol": "?mMarkIDasControledByPlayer@tEntityMgr@@QAEEJ@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 145,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00424946": {
+   "name": "FUN_00424946",
+   "symbol": "?mGetPlayersControledEntity@tEntityMgr@@QAEPAVtEntity@@XZ",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0042495c": {
+   "name": "FUN_0042495c",
+   "symbol": "?mCastToWeapon@tEntityMgr@@QAEPAVtEntity_Weapon@@PAVtEntity@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0042496f": {
+   "name": "FUN_0042496f",
+   "symbol": "?fn_0042496f@tEntityMgr@@QAEPAVtObject_00423831_entity@@J@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004249c0": {
+   "name": "FUN_004249c0",
+   "symbol": "?fn_004249c0@tEntityMgr@@QAEPAVtEntity@@PAV2@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004249d3": {
+   "name": "FUN_004249d3",
+   "symbol": "?fn_004249d3@tEntityMgr@@QAEPAVtObject_00423a6a_entity@@J@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00424a24": {
+   "name": "FUN_00424a24",
+   "symbol": "?fn_00424a24@tEntityMgr@@QAEPAVtObject_00423a6a_entity@@PAVtEntity@@@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00424a37": {
+   "name": "FUN_00424a37",
+   "symbol": "?fn_00424a37@tEntityMgr@@QAEPAVtEntity@@J@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 88,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00424a8f": {
+   "name": "tEntityMgr::vfunction1",
+   "symbol": "?mArchive@tEntityMgr@@UAEXAAVtSFCStream@@K@Z",
+   "unit": "unsorted/tEntityMgr.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
   "0x0043104e": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
