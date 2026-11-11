@@ -442,6 +442,79 @@ address	size	symbol	source	modes
 0x004e5b75	100	tPhaserXBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5bd9	43	tPhaserXBank::vfunction116(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5c04	43	tPhaserXBank::vfunction118(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x00513e90	28	tAIWeaponOfficer::scalar_deleting_destructor(unsigned char)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00513eac	10	tObject_00513eac::tObject_00513eac()	unsorted/tAIWeaponOfficer.cpp	partial
+0x00513eb6	268	tAIWeaponOfficer::tAIWeaponOfficer(int,int,int,int)	unsorted/tAIWeaponOfficer.cpp	partial
+0x00513fc2	18	tAIWeaponOfficer::~tAIWeaponOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6
+0x00513fd4	4	tAIWeaponOfficer::fn_00513fd4()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00513fd8	57	tAIWeaponOfficer::vfunction7_for_tAIOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00514011	86	tAIWeaponOfficer::fn_00514011(float)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00514067	95	tAIWeaponOfficer::fn_00514067(float)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005140c6	66	tAIWeaponOfficer::vfunction9_for_tAIOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00514108	57	tAIWeaponOfficer::vfunction8_for_tAIOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00514141	298	tAIWeaponOfficer::vfunction6_for_tAIOfficer(int *,char,int)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x0051426b	59	tAIWeaponOfficer::vfunction10_for_tAIOfficer(int *)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005142a6	13	tAIWeaponOfficer::fn_005142a6(int8u)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005142b3	287	tAIWeaponOfficer::vfunction11_for_tAIOfficer(int *,int,tObject_005142b3 *,int)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005143d2	455	tAIWeaponOfficer::vfunction15(int *,tObject_00429103 *,tObject_005142b3 *,tObject_0096da08 *)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00514599	36	tAIWeaponOfficer::vfunction18(int8u,tObject_00429103 *,tObject_005142b3_entry *)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005145bd	9	tAIWeaponOfficer::vfunction19(float)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005145c6	69	tAIWeaponOfficer::vfunction17(int,int8u,tObject_0096da08 *)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x0051460b	229	tAIWeaponOfficer::vfunction16(int,float,int8u,tObject_0096da08 *,int,int)	unsorted/tAIWeaponOfficer.cpp	partial
+0x005146f0	187	tAIWeaponOfficer::vfunction2_for_tAIOfficer(int *,int)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x005147ab	384	tAIWeaponOfficer::vfunction13(int *,int)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x0051492b	373	tAIWeaponOfficer::vfunction3_for_tPriorityPowerRequest(int *,int,float)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
+0x00515daa	7	tAIHelmOfficer::~tAIHelmOfficer()	unsorted/tAIHelmOfficer.cpp	vc6
+0x00515db1	200	tAIHelmOfficer::fn_00515db1()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00515e79	48	tAIHelmOfficer::fn_00515e79()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00515ea9	126	tAIHelmOfficer::fn_00515ea9()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00515f27	1865	tAIHelmOfficer::fn_00515f27()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00516670	125	fn_00516670(short,short)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x005166ed	70	fn_005166ed(short,short,short)	unsorted/fn_00516000.cpp	vc6 guest
+0x00516733	187	fn_00516733(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x005167ee	55	fn_005167ee(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00516825	84	fn_00516825(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00516879	181	tAIHelmOfficer::fn_00516879()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x0051692e	62	tAIHelmOfficer::fn_0051692e()	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x0051696c	106	tAIHelmOfficer::fn_0051696c(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x005169d6	10	tAIHelmOfficer::fn_005169d6(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x005169e0	665	tAIHelmOfficer::fn_005169e0(int,int)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x00516c79	317	tAIHelmOfficer::vfunction3_for_tPriorityPowerRequest(int *,int,float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
+0x0051daf1	1449	tAICaptain::tAICaptain(float,int,int,int)	unsorted/tAICaptain.cpp	partial
+0x0051e09a	4	tAICaptain::vfunction18()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e09e	28	tAICaptain::scalar_deleting_destructor(unsigned char)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e0c4	307	tAICaptain::~tAICaptain()	unsorted/tAICaptain.cpp	partial
+0x0051e1f7	126	tAICaptain::vfunction7(tObject_0041018e_arg *,int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e275	185	tAICaptain::fn_0051e275(int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e32e	17	tAICaptain::fn_0051e32e()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e33f	62	tAICaptain::fn_0051e33f(tShipCommand *)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e37d	36	tAICaptain::fn_0051e37d()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e3a1	11	tAICaptain::fn_0051e3a1()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e3ac	161	tAICaptain::fn_0051e3ac(int,int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e44d	7	tAICaptain::fn_0051e44d()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051e454	447	tAICaptain::vfunction3()	unsorted/tAICaptain.cpp	partial
+0x0051e613	2736	tAICaptain::fn_0051e613()	unsorted/tAICaptain.cpp	partial
+0x0051f0c3	13	tAICaptain::fn_0051f0c3(char)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f0d0	7	tAICaptain::fn_0051f0d0()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f0d7	10	tAICaptain::fn_0051f0d7()	unsorted/tAICaptain.cpp	partial
+0x0051f0e1	114	tAICaptain::fn_0051f0e1(char)	unsorted/tAICaptain.cpp	partial
+0x0051f153	27	tAICaptain::fn_0051f153(int,int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f16e	22	tAICaptain::fn_0051f16e(int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f184	105	tAICaptain::fn_0051f184(tObject_00525081 *)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f1ed	876	tAICaptain::fn_0051f1ed()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f559	169	tAICaptain::fn_0051f559()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f602	854	tAICaptain::fn_0051f602()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f958	121	tAICaptain::fn_0051f958(int,char)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f9d1	24	tAICaptain::fn_0051f9d1(int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051f9e9	83	tAICaptain::fn_0051f9e9(int)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051fa3c	680	tAICaptain::fn_0051fa3c()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051fce4	486	tAICaptain::fn_0051fce4()	unsorted/tAICaptain.cpp	vc6 guest
+0x0051feca	193	tAICaptain::fn_0051feca(tObject_0042496f *)	unsorted/tAICaptain.cpp	partial
+0x0051ff8b	35	tAICaptain::fn_0051ff8b(int,char)	unsorted/tAICaptain.cpp	vc6 guest
+0x0051ffae	86	tAICaptain::fn_0051ffae(tPoint3)	unsorted/tAICaptain.cpp	vc6 guest
+0x00520004	139	tAICaptain::fn_00520004(float,unsigned char,char *)	unsorted/tAICaptain.cpp	vc6 guest
+0x0052008f	57	tAICaptain::fn_0052008f()	unsorted/tAICaptain.cpp	vc6 guest
+0x005200c8	2058	tAICaptain::vfunction4(tObject_00413ac3_arg *)	unsorted/tAICaptain.cpp	vc6 guest
 0x00538cca	54	tMetaMapDesc::tMetaMapDesc(void**,int32u,bool)	unsorted/tMetaMapDesc.cpp	vc6
 0x00538d00	63	tMetaMapDesc::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00538d3f	102	tMetaMapDesc::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapDesc.cpp	vc6 guest

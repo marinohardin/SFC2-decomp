@@ -14,15 +14,6 @@ extern void ArchiveSeperatorTM(tSFCStream &s, int32u mode);
 extern void IncrementStreamTab(tSFCStream &s);
 extern void DecrementStreamTab(tSFCStream &s);
 
-// The first argument of 0x0041018e; only its type byte at +0x10 is read there.
-// HYPOTHESIS: the class and layout are inferred from 0x0041018e only.
-class tObject_0041018e_arg
-{
-public:
-	char fField00[0x10];          // +0x00
-	unsigned char fType;          // +0x10
-};
-
 // A 12-byte object with the vtable at 0x00795d10, built on the stack in 0x0041018e and
 // filled by 0x00434d0e.
 // HYPOTHESIS: the layout and the virtual are inferred from 0x0041018e only.

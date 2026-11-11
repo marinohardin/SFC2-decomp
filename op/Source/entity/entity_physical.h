@@ -18,7 +18,9 @@ public:
 	virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
 	virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14();
 	virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17();
-	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
+	virtual int vfunction18(int aValue);
+	virtual void vfunction19();
+	virtual int vfunction20(int aValue);
 	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
 	virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
@@ -32,6 +34,29 @@ public:
 	virtual void vfunction51(); virtual void vfunction52(); virtual void vfunction53();
 	virtual void vfunction54(); virtual void vfunction55(); virtual void vfunction56();
 	virtual void vfunction57(void *aValue);
+	// HYPOTHESIS: slots 58 to 77 as tAICaptain's 0x005200c8 calls them to draw lines: 18 and 20
+	// set a state and return the old one, 67 begins a set of lines and says whether to draw
+	// them, 68 ends it, 69 adds a vertex, 76 sets a colour and 77 takes a value.
+	virtual void vfunction58();
+	virtual void vfunction59();
+	virtual void vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual void vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual bool vfunction67(int aMode);
+	virtual void vfunction68();
+	virtual void vfunction69(float aX, float aY, float aZ);
+	virtual void vfunction70();
+	virtual void vfunction71();
+	virtual void vfunction72();
+	virtual void vfunction73();
+	virtual void vfunction74();
+	virtual void vfunction75();
+	virtual void vfunction76(float aRed, float aGreen, float aBlue);
+	virtual void vfunction77(int aValue);
 };
 
 // HYPOTHESIS: the object that 0x00413a8d stores at 0x88 of the entity; slot 9 (offset 0x24)

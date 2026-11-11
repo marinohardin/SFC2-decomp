@@ -3988,6 +3988,663 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x00513e90": {
+   "name": "tAIWeaponOfficer::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tAIWeaponOfficer@@QAEPAV1@E@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00513eac": {
+   "name": "FUN_00513eac",
+   "symbol": "??0tAIWeaponOfficer@@QAE@XZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 10,
+   "score": 30.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00513eb6": {
+   "name": "FUN_00513eb6",
+   "symbol": "??0tAIWeaponOfficer@@QAE@HHHH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 268,
+   "score": 11.744,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00513fc2": {
+   "name": "tAIWeaponOfficer::~tAIWeaponOfficer",
+   "symbol": "??1tAIWeaponOfficer@@UAE@XZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00513fd4": {
+   "name": "FUN_00513fd4",
+   "symbol": "?fn_00513fd4@tAIWeaponOfficer@@QAEEXZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00513fd8": {
+   "name": "tAIWeaponOfficer::vfunction7_for_tAIOfficer",
+   "symbol": "?vfunction7_for_tAIOfficer@tAIWeaponOfficer@@QAEFXZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00514011": {
+   "name": "FUN_00514011",
+   "symbol": "?fn_00514011@tAIWeaponOfficer@@QAEFM@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 86,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00514067": {
+   "name": "FUN_00514067",
+   "symbol": "?fn_00514067@tAIWeaponOfficer@@QAEFM@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 95,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005140c6": {
+   "name": "tAIWeaponOfficer::vfunction9_for_tAIOfficer",
+   "symbol": "?vfunction9_for_tAIOfficer@tAIWeaponOfficer@@QAEFXZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 66,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00514108": {
+   "name": "tAIWeaponOfficer::vfunction8_for_tAIOfficer",
+   "symbol": "?vfunction8_for_tAIOfficer@tAIWeaponOfficer@@QAEFXZ",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00514141": {
+   "name": "tAIWeaponOfficer::vfunction6_for_tAIOfficer",
+   "symbol": "?vfunction6_for_tAIOfficer@tAIWeaponOfficer@@QAEHPAHDH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 298,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051426b": {
+   "name": "tAIWeaponOfficer::vfunction10_for_tAIOfficer",
+   "symbol": "?vfunction10_for_tAIOfficer@tAIWeaponOfficer@@QAE_NPAH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005142a6": {
+   "name": "FUN_005142a6",
+   "symbol": "?fn_005142a6@tAIWeaponOfficer@@QAEXE@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005142b3": {
+   "name": "tAIWeaponOfficer::vfunction11_for_tAIOfficer",
+   "symbol": "?vfunction11_for_tAIOfficer@tAIWeaponOfficer@@QAEMPAHHPAVtObject_005142b3@@H@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 287,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005143d2": {
+   "name": "tAIWeaponOfficer::vfunction15_for_tAIOfficer",
+   "symbol": "?vfunction15@tAIWeaponOfficer@@UAEEPAHPAVtObject_00429103@@PAVtObject_005142b3@@PAVtObject_0096da08@@@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 455,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00514599": {
+   "name": "tAIWeaponOfficer::vfunction18_for_tAIOfficer",
+   "symbol": "?vfunction18@tAIWeaponOfficer@@UAEMEPAVtObject_00429103@@PAVtObject_005142b3_entry@@@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 36,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005145bd": {
+   "name": "tAIWeaponOfficer::vfunction19_for_tAIOfficer",
+   "symbol": "?vfunction19@tAIWeaponOfficer@@UAEMM@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005145c6": {
+   "name": "tAIWeaponOfficer::vfunction17_for_tAIOfficer",
+   "symbol": "?vfunction17@tAIWeaponOfficer@@UAEEHEPAVtObject_0096da08@@@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051460b": {
+   "name": "tAIWeaponOfficer::vfunction16_for_tAIOfficer",
+   "symbol": "?vfunction16@tAIWeaponOfficer@@UAE_NHMEPAVtObject_0096da08@@HH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 229,
+   "score": 95.926,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x005146f0": {
+   "name": "tAIWeaponOfficer::vfunction2_for_tAIOfficer",
+   "symbol": "?vfunction2_for_tAIOfficer@tAIWeaponOfficer@@QAEXPAHH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 187,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005147ab": {
+   "name": "tAIWeaponOfficer::vfunction13_for_tAIOfficer",
+   "symbol": "?vfunction13@tAIWeaponOfficer@@UAEXPAHH@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 384,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051492b": {
+   "name": "tAIWeaponOfficer::vfunction3_for_tPriorityPowerRequest",
+   "symbol": "?vfunction3_for_tPriorityPowerRequest@tAIWeaponOfficer@@UAEMPAHHM@Z",
+   "unit": "unsorted/tAIWeaponOfficer.cpp",
+   "size": 373,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00515daa": {
+   "name": "tAIHelmOfficer::~tAIHelmOfficer",
+   "symbol": "??1tAIHelmOfficer@@UAE@XZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00515db1": {
+   "name": "tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed",
+   "symbol": "?fn_00515db1@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 200,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00515e79": {
+   "name": "FUN_00515e79",
+   "symbol": "?fn_00515e79@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00515ea9": {
+   "name": "FUN_00515ea9",
+   "symbol": "?fn_00515ea9@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00515f27": {
+   "name": "FUN_00515f27",
+   "symbol": "?fn_00515f27@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 1865,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00516670": {
+   "name": "FUN_00516670",
+   "symbol": "?fn_00516670@@YA_NFF@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 125,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005166ed": {
+   "name": "FUN_005166ed",
+   "symbol": "_fn_005166ed",
+   "unit": "unsorted/fn_00516000.cpp",
+   "size": 70,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00516733": {
+   "name": "FUN_00516733",
+   "symbol": "?fn_00516733@@YAMM@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 187,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005167ee": {
+   "name": "FUN_005167ee",
+   "symbol": "?fn_005167ee@@YAMM@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 55,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00516825": {
+   "name": "FUN_00516825",
+   "symbol": "?fn_00516825@@YAFM@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00516879": {
+   "name": "FUN_00516879",
+   "symbol": "?fn_00516879@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 181,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051692e": {
+   "name": "FUN_0051692e",
+   "symbol": "?fn_0051692e@tAIHelmOfficer@@QAEXXZ",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 62,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051696c": {
+   "name": "FUN_0051696c",
+   "symbol": "?fn_0051696c@tAIHelmOfficer@@QAEXM@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 106,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005169d6": {
+   "name": "FUN_005169d6",
+   "symbol": "?fn_005169d6@tAIHelmOfficer@@QAEXH@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005169e0": {
+   "name": "tNetMsg_kMoveInDirection::tNetMsg_kMoveInDirection_Constructor_or_Destructor",
+   "symbol": "?fn_005169e0@tAIHelmOfficer@@QAEXHH@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 665,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00516c79": {
+   "name": "tAIHelmOfficer::vfunction3",
+   "symbol": "?vfunction3_for_tPriorityPowerRequest@tAIHelmOfficer@@UAEMPAHHM@Z",
+   "unit": "unsorted/tAIHelmOfficer.cpp",
+   "size": 317,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051daf1": {
+   "name": "tAICaptain::tAICaptain",
+   "symbol": "?erase@?$list@HV?$allocator@H@std@@@std@@QAE?AViterator@12@V312@0@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 1449,
+   "score": 3.778,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e09a": {
+   "name": "tAICaptain::vfunction18",
+   "symbol": "?vfunction18@tAICaptain@@UAEHXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e09e": {
+   "name": "tAICaptain::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tAICaptain@@QAEPAV1@E@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e0c4": {
+   "name": "tAICaptain::~tAICaptain",
+   "symbol": "??1tAICaptain@@UAE@XZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 307,
+   "score": 13.962,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e1f7": {
+   "name": "tAICaptain::vfunction7",
+   "symbol": "?vfunction7@tAICaptain@@UAEXPAVtObject_0041018e_arg@@H@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e275": {
+   "name": "FUN_0051e275",
+   "symbol": "?fn_0051e275@tAICaptain@@QAEXH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 185,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e32e": {
+   "name": "FUN_0051e32e",
+   "symbol": "?fn_0051e32e@tAICaptain@@QAEPAVtObject_0051e0c4_35b8@@XZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e33f": {
+   "name": "FUN_0051e33f",
+   "symbol": "?fn_0051e33f@tAICaptain@@QAEXPAVtObject_0051e33f_arg@@@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 62,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e37d": {
+   "name": "FUN_0051e37d",
+   "symbol": "?fn_0051e37d@tAICaptain@@QAE?AUtPoint3@@XZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 36,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e3a1": {
+   "name": "FUN_0051e3a1",
+   "symbol": "?fn_0051e3a1@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e3ac": {
+   "name": "FUN_0051e3ac",
+   "symbol": "?fn_0051e3ac@tAICaptain@@QAE_NHH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 161,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e44d": {
+   "name": "FUN_0051e44d",
+   "symbol": "?fn_0051e44d@tAICaptain@@QAEPAVtObject_0051e0c4_3a34@@XZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e454": {
+   "name": "tAICaptain::vfunction3",
+   "symbol": "?vfunction3@tAICaptain@@UAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 447,
+   "score": 98.361,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051e613": {
+   "name": "FUN_0051e613",
+   "symbol": "?fn_0051e613@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 2736,
+   "score": 14.29,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f0c3": {
+   "name": "FUN_0051f0c3",
+   "symbol": "?fn_0051f0c3@tAICaptain@@QAEXD@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f0d0": {
+   "name": "FUN_0051f0d0",
+   "symbol": "?fn_0051f0d0@tAICaptain@@QAEDXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f0d7": {
+   "name": "FUN_0051f0d7",
+   "symbol": "?fn_0051f0d7@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f0e1": {
+   "name": "FUN_0051f0e1",
+   "symbol": "?fn_0051f0e1@tAICaptain@@QAEXD@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 114,
+   "score": 21.056,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f153": {
+   "name": "FUN_0051f153",
+   "symbol": "?fn_0051f153@tAICaptain@@QAEXHH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f16e": {
+   "name": "FUN_0051f16e",
+   "symbol": "?fn_0051f16e@tAICaptain@@QAEXH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f184": {
+   "name": "FUN_0051f184",
+   "symbol": "?fn_0051f184@tAICaptain@@QAEXPAVtObject_00525081@@@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 105,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f1ed": {
+   "name": "FUN_0051f1ed",
+   "symbol": "?fn_0051f1ed@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 876,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f559": {
+   "name": "FUN_0051f559",
+   "symbol": "?fn_0051f559@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 169,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f602": {
+   "name": "FUN_0051f602",
+   "symbol": "?fn_0051f602@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 854,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f958": {
+   "name": "FUN_0051f958",
+   "symbol": "?fn_0051f958@tAICaptain@@QAEXHD@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 121,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f9d1": {
+   "name": "FUN_0051f9d1",
+   "symbol": "?fn_0051f9d1@tAICaptain@@QAEXH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051f9e9": {
+   "name": "FUN_0051f9e9",
+   "symbol": "?fn_0051f9e9@tAICaptain@@QAEXH@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 83,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051fa3c": {
+   "name": "FUN_0051fa3c",
+   "symbol": "?fn_0051fa3c@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 680,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051fce4": {
+   "name": "FUN_0051fce4",
+   "symbol": "?fn_0051fce4@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 486,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051feca": {
+   "name": "FUN_0051feca",
+   "symbol": "?fn_0051feca@tAICaptain@@QAE?AUtPoint3@@PAVtObject_0042496f@@@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 193,
+   "score": 99.485,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0051ff8b": {
+   "name": "FUN_0051ff8b",
+   "symbol": "?fn_0051ff8b@tAICaptain@@QAEXHD@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0051ffae": {
+   "name": "FUN_0051ffae",
+   "symbol": "?fn_0051ffae@tAICaptain@@QAEXUtPoint3@@@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 86,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00520004": {
+   "name": "FUN_00520004",
+   "symbol": "?fn_00520004@tAICaptain@@QAEXMEPAD@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 139,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0052008f": {
+   "name": "FUN_0052008f",
+   "symbol": "?fn_0052008f@tAICaptain@@QAEXXZ",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005200c8": {
+   "name": "tAICaptain::vfunction4",
+   "symbol": "?vfunction4@tAICaptain@@UAEXPAVtObject_00413ac3_arg@@@Z",
+   "unit": "unsorted/tAICaptain.cpp",
+   "size": 2058,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
   "0x00538cca": {
    "name": "tMetaMapDesc::tMetaMapDesc",
    "symbol": "??0tMetaMapDesc@@QAE@PAPAXK_N@Z",

@@ -11,8 +11,12 @@ class tObject_0090be60
 {
 public:
 	int fn_0042748f(int aValue);
+	// HYPOTHESIS: returns a value for an ID; 0x0051e3ac keeps it in a new entry.
+	int fn_0042750a(int aValue);
 	int fn_0042753a(int aValue);
 	int fn_00427581(int aValue1, int aValue2);
+	// HYPOTHESIS: sets the relation of two teams; 0x0051e1f7 passes 6 when it was 5.
+	void fn_004275fe(int aValue1, int aValue2, int aRelation);
 };
 
 extern tObject_0090be60 *gObject_0090be60;

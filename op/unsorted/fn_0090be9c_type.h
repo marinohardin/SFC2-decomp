@@ -18,6 +18,10 @@ public:
     virtual void vfunction6();
     virtual unsigned int vfunction7(); // slot 6
 
+    // HYPOTHESIS: returns a float; 0x0051e613 compares it with the captain's float at 0x3a30
+    // and with 0.5.
+    float fn_004105b4();
+
     char pad04[0x20 - 0x04];
     unsigned int field_20;
 };

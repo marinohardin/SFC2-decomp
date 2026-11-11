@@ -151,31 +151,31 @@ public:
 	tObject_00410fd4_member *field_0xad4;
 };
 
-// The SDK's map-item macros (NetMsgClass.h).
-#define QSI_FIELD_OFFSET(type, field)     ((long)&(((type *)0)->field))
-#define QSI_FIELD_SIZE(type,field)        (sizeof( ((type *)0)->field ) )
-#define	MAKE_NMMI(type,field)	{	QSI_FIELD_SIZE(type,field), QSI_FIELD_OFFSET(type,field) }
+#include "Source/network/NetMsgClass.h"
 
-// The SDK's message base (NetMsgClass.h).
-struct tNetMsg
-{
-	enum eCommandID
-	{
-		kDamage = 15,
-		kKillEntity = 21,
-		kAIChangeTeamRelationshipToWar = 51
-	};
 
-	struct tMapItem
-	{
-		short fSize;
-		unsigned short fOffset;
-	};
 
-	virtual const tNetMsg::tMapItem *mGetMap(void) const = 0;
-	virtual unsigned int mStreamTo(unsigned char *pStreamBuffer);
-	virtual unsigned int mStreamFrom(const unsigned char *pStreamBuffer);
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the fields, from what 0x00413541 stores into them.
 struct tNetMsg_kDamage: public tNetMsg

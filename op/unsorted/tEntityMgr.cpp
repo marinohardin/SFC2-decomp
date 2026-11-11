@@ -252,13 +252,13 @@ iTruth tEntityMgr::fn_00423735(int32 id)
 // position into two indices and fn_00425726 returns the list for them.
 class tObject_00425726_list;
 
-class tObject_008f5170 {
-public:
-    void fn_004257f5(tEntity *pEntity, int32 value);
-    void fn_004258de(tEntity *pEntity, int32 kind, int32 value);
-    void fn_004259bd(float x, float y, int32 *pColumn, int32 *pRow);
-    tObject_00425726_list *fn_00425726(int32 column, int32 row);
-};
+#include "unsorted/tObject_008f5170.h"
+
+
+
+
+
+
 
 // HYPOTHESIS: the list fn_00425726 returns, seen only through 0x00423a6a: its
 // first word is the head of a chain of (entity, next) nodes.

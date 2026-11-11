@@ -45,7 +45,8 @@ public:
 	virtual void fn_vtbl_78();
 	virtual void fn_vtbl_7C();
 	virtual void fn_vtbl_80();
-	virtual void fn_vtbl_84();
+	// HYPOTHESIS: returns an integer; 0x0051e275 compares it with the value 0x004b94dc returns.
+	virtual int fn_vtbl_84();
 	virtual void fn_vtbl_88();
 	virtual void fn_vtbl_8C();
 	virtual void fn_vtbl_90();
