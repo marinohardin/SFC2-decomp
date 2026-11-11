@@ -325,6 +325,66 @@ address	size	symbol	source	modes
 0x0044127f	345	tShieldGroup::vfunction97(int)	unsorted/tShieldGroup.cpp	vc6 guest
 0x004413d8	52	tShieldGroup::vfunction96(int)	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044140c	2344	tShieldGroup::vfunction89(unsigned int,int)	unsorted/tShieldGroup.cpp	partial
+0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
+0x004c6225	337	tListBox_Base::vfunction8(const tRect *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6376	103	tRect::mMakeClippedRect(const tRect *,tRect *) const	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c63dd	197	tListBox_Base::vfunction31(c_tListBox_Base_Event *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c64c6	345	tListBox_Base::vfunction37(tAsset *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c661f	10	tListBox_Base::vfunction41(void *,short,int,unsigned int)	unsorted/tListBox_Base.cpp	partial
+0x004c6629	227	tListBox_Base::fn_004c6629(void *,int,int,unsigned int)	unsorted/tListBox_Base.cpp	partial
+0x004c670c	94	tListBox_Base::vfunction42(c_tListBox_Base_Item *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c676a	29	tListBox_Base::fn_004c676a(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6787	19	tListBox_Base::vfunction43()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c679a	323	tListBox_Base::vfunction44(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c68dd	77	tListBox_Base::fn_004c68dd()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c692a	142	fn_004c692a(tVisObject *,tString *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c69b8	94	tListBox_Base::fn_004c69b8(int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a16	33	tListBox_Base::fn_004c6a16(int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a37	46	tListBox_Base::vfunction47(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a65	7	tListBox_Base::vfunction48()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a6c	7	tListBox_Base::vfunction49()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a73	13	tListBox_Base::vfunction50(bool)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6a80	49	tListBox_Base::vfunction51()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6ab1	71	tListBox_Base::vfunction52(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6af8	28	tListBox_Base::vfunction53(unsigned short *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6b14	152	tListBox_Base::vfunction55(void *,short,int,unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6bac	31	tListBox_Base::vfunction54(c_tListBox_Base_Item *,unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6bcb	72	tListBox_Base::vfunction56(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c13	14	tListBox_Base::vfunction57(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c21	46	tListBox_Base::vfunction58(unsigned int,int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c4f	26	tListBox_Base::vfunction59(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c69	23	tListBox_Base::vfunction60(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c80	29	tListBox_Base::vfunction61(unsigned int,int)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6c9d	76	tListBox_Base::vfunction62(short,c_tListBox_Base_Colors *)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6ce9	69	tListBox_Base::vfunction63(short)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6d2e	7	tListBox_Base::vfunction64()	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c6d35	140	tListBox_Base::vfunction65(short)	unsorted/tListBox_Base.cpp	vc6 guest
+0x004c70b3	46	tListBox_Select::tListBox_Select()	unsorted/tListBox_Select.cpp	vc6
+0x004c70e1	283	tListBox_Select::vfunction31(c_tListBox_Base_Event *)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c71fc	10	tListBox_Select::vfunction44(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Select.cpp	partial
+0x004c7206	610	tListBox_Select::fn_004c7206(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Select.cpp	partial
+0x004c7468	12	tListBox_Select::vfunction51()	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c7474	70	tListBox_Select::vfunction55(void *,short,int,unsigned int)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c74ba	47	tListBox_Select::vfunction56(unsigned int)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c74e9	34	tListBox_Select::vfunction66(bool)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c750b	13	tListBox_Select::vfunction67(bool)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c7518	51	tListBox_Select::vfunction68(bool,c_tListBox_Select_Field_D4 *)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c754b	19	tListBox_Select::vfunction69()	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c755e	27	tListBox_Select::vfunction70(int)	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c7579	7	tListBox_Select::vfunction71()	unsorted/tListBox_Select.cpp	vc6 guest
+0x004c8113	210	tScrollBar::tScrollBar()	unsorted/tScrollBar.cpp	partial
+0x004c820b	128	tScrollBar::~tScrollBar()	unsorted/tScrollBar.cpp	partial
+0x004c828b	109	tScrollBar::vfunction30()	unsorted/tScrollBar.cpp	vc6 guest
+0x004c82f8	321	tScrollBar::fn_004c82f8(tRect *)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c8439	158	tScrollBar::vfunction8(const tRect *)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c84d7	135	tScrollBar::fn_004c84d7(int,int)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c855e	41	tRect::mPointInside(int,int) const	unsorted/tScrollBar.cpp	vc6 guest
+0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c8780	10	tScrollBar::vfunction37()	unsorted/tScrollBar.cpp	partial
+0x004c878a	529	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial
+0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest
+0x004c8a2d	42	tScrollBar::vfunction43(int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
 0x004e1e99	199	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	partial
 0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest

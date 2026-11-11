@@ -109,6 +109,8 @@ class tString
 		iterator				mStrChr(iBasicStringElement c);
 		iterator				mStrRChr(iBasicStringElement c);
 		int						mStrLen(void) const;
+		// HYPOTHESIS: returns the string's characters; tListBox_Base::vfunction44 (0x004c679a) draws them.
+		unsigned short			*fn_00618920();
 		void					mToUpper(void);
 		void					mToLower(void);
 		int32s					mStrICmp(const tString &s) const;
