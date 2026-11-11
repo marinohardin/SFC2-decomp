@@ -46,3 +46,7 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x007085f0	FUN_007085f0	4	opus	40.40	2026-11-09T13:28:49Z	not exact after 4 attempts
 0x00708820	nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr	4	opus	44.29	2026-11-09T13:37:52Z	not exact after 4 attempts
 0x007090b0	nDatabase::tFileDatabaseMgr::New	4	opus	30.38	2026-11-09T15:13:10Z	not exact after 4 attempts
+0x004e1e99	tPhaserBank::tPhaserBank	5	fable	13.04	2026-11-10T14:20:07Z	not exact after 5 attempts
+0x004e24b0	tPhaserBank::vfunction135	5	fable	94.14	2026-11-10T15:17:02Z	not exact after 5 attempts
+0x004e5325	tPhaserXBank::tPhaserXBank	5	fable	12.11	2026-11-10T16:31:05Z	not exact after 5 attempts
+0x004e572e	tPhaserXBank::vfunction135	5	fable	92.94	2026-11-10T17:12:12Z	not exact after 5 attempts

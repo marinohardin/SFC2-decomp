@@ -225,12 +225,12 @@ struct tNetMsg_kKillEntity: public tNetMsg
 // The object that the pointer at 0x0090be60 holds.
 // HYPOTHESIS: the class is inferred from 0x00413541 only; fn_00427581 returns 5 for the
 // relation that sends kAIChangeTeamRelationshipToWar.
-class tObject_0090be60
-{
-public:
-	int fn_0042748f(int aValue);
-	int fn_00427581(int aValue1, int aValue2);
-};
+#include "unsorted/tObject_0090be60.h"
+
+
+
+
+
 
 extern tObject_0090be60 *gObject_0090be60;
 

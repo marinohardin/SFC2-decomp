@@ -2008,6 +2008,402 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x004e1e99": {
+   "name": "tPhaserBank::tPhaserBank",
+   "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 200,
+   "score": 13.038,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004e1f61": {
+   "name": "tPhaserBank::vfunction23",
+   "symbol": "?mStreamOutSystemSpecificData@tPhaserBank@@UAEIAAVtSFCStream@@II@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 367,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e20d1": {
+   "name": "FUN_004e20d1",
+   "symbol": "?fn_004e20d1@tPhaserBank@@QAEXPBDH@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e20f4": {
+   "name": "FUN_004e20f4",
+   "symbol": "?fn_004e20f4@tPhaserBank@@QAEXXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 335,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2243": {
+   "name": "FUN_004e2243",
+   "symbol": "?fn_004e2243@tPhaserBank@@QAEMH@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 146,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e22d5": {
+   "name": "tPhaserBank::vfunction79",
+   "symbol": "?vfunction79@tPhaserBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e22dd": {
+   "name": "tPhaserBank::vfunction109",
+   "symbol": "?vfunction109@tPhaserBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e22e5": {
+   "name": "tPhaserBank::vfunction110",
+   "symbol": "?vfunction110@tPhaserBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e22ed": {
+   "name": "tPhaserBank::vfunction111",
+   "symbol": "?vfunction111@tPhaserBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e22f5": {
+   "name": "tPhaserBank::vfunction105",
+   "symbol": "?vfunction105@tPhaserBank@@UAEXH@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e230c": {
+   "name": "tPhaserBank::vfunction102",
+   "symbol": "?vfunction102@tPhaserBank@@UAEXXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 169,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e23b5": {
+   "name": "tPhaserBank::vfunction74",
+   "symbol": "?vfunction74@tPhaserBank@@UAEMMM@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 169,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e245e": {
+   "name": "tPhaserBank::vfunction143",
+   "symbol": "?vfunction143@tPhaserBank@@UAEMMM@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e24b0": {
+   "name": "tPhaserBank::vfunction135",
+   "symbol": "?vfunction135@tPhaserBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 146,
+   "score": 94.143,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2542": {
+   "name": "tPhaserBank::vfunction80",
+   "symbol": "?vfunction80@tPhaserBank@@UAEXXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e25c0": {
+   "name": "tPhaserBank::vfunction114",
+   "symbol": "?vfunction114@tPhaserBank@@UAEMEHH@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 337,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2711": {
+   "name": "tPhaserBank::vfunction116",
+   "symbol": "?vfunction116@tPhaserBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 194,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e27d3": {
+   "name": "tPhaserBank::vfunction118",
+   "symbol": "?vfunction118@tPhaserBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 194,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2895": {
+   "name": "tPhaserBank::vfunction148",
+   "symbol": "?fn_004e2895@tPhaserBank@@QAEXXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 103,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e28fc": {
+   "name": "tPhaserBank::vfunction136",
+   "symbol": "?vfunction136@tPhaserBank@@UAEHD@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 430,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2aaa": {
+   "name": "FUN_004e2aaa",
+   "symbol": "?fn_004e2aaa@tPhaserBank@@QAEMHD@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 88,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e2b02": {
+   "name": "tPhaserBank::vfunction39",
+   "symbol": "?vfunction39@tPhaserBank@@UAEXM@Z",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 505,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5325": {
+   "name": "tPhaserXBank::tPhaserXBank",
+   "symbol": "??0tPhaserXBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 222,
+   "score": 12.111,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5403": {
+   "name": "tPhaserXBank::vfunction23",
+   "symbol": "?mStreamOutSystemSpecificData@tPhaserXBank@@UAEIAAVtSFCStream@@II@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 367,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5573": {
+   "name": "tPhaserXBank::vfunction105",
+   "symbol": "?vfunction105@tPhaserXBank@@UAEXH@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e558a": {
+   "name": "tPhaserXBank::vfunction148",
+   "symbol": "?fn_004e558a@tPhaserXBank@@QAEXXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 37,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e55af": {
+   "name": "tPhaserXBank::vfunction133",
+   "symbol": "?vfunction133@tPhaserXBank@@UAEHXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 58,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e55e9": {
+   "name": "tPhaserXBank::vfunction79",
+   "symbol": "?vfunction79@tPhaserXBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e55f4": {
+   "name": "tPhaserXBank::vfunction109",
+   "symbol": "?vfunction109@tPhaserXBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e55ff": {
+   "name": "tPhaserXBank::vfunction110",
+   "symbol": "?vfunction110@tPhaserXBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e560a": {
+   "name": "tPhaserXBank::vfunction111",
+   "symbol": "?vfunction111@tPhaserXBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5615": {
+   "name": "tPhaserXBank::vfunction149",
+   "symbol": "?vfunction149@tPhaserXBank@@UAEMH@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e562b": {
+   "name": "tPhaserXBank::vfunction65",
+   "symbol": "?vfunction65@tPhaserXBank@@UAEXD@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e568c": {
+   "name": "tPhaserBank::vfunction70",
+   "symbol": "?vfunction70@tPhaserBank@@UAEMXZ",
+   "unit": "unsorted/tPhaserBank.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e56dc": {
+   "name": "tPhaserXBank::vfunction143",
+   "symbol": "?vfunction143@tPhaserXBank@@UAEMMM@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e572e": {
+   "name": "tPhaserXBank::vfunction135",
+   "symbol": "?vfunction135@tPhaserXBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 146,
+   "score": 92.939,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x004e57c0": {
+   "name": "tPhaserXBank::vfunction74",
+   "symbol": "?vfunction74@tPhaserXBank@@UAEMMM@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 137,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5849": {
+   "name": "tPhaserXBank::vfunction80",
+   "symbol": "?vfunction80@tPhaserXBank@@UAEXXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 31,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5868": {
+   "name": "FUN_004e5868",
+   "symbol": "?fn_004e5868@tPhaserXBank@@QAEXXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 132,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e58ec": {
+   "name": "tPhaserXBank::vfunction134",
+   "symbol": "?vfunction134@tPhaserXBank@@UAE_NXZ",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 108,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5958": {
+   "name": "FUN_004e5958",
+   "symbol": "?fn_004e5958@tPhaserXBank@@QAEHH@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 541,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5b75": {
+   "name": "tPhaserXBank::vfunction114",
+   "symbol": "?vfunction114@tPhaserXBank@@UAEMEHH@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 100,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5bd9": {
+   "name": "tPhaserXBank::vfunction116",
+   "symbol": "?vfunction116@tPhaserXBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004e5c04": {
+   "name": "tPhaserXBank::vfunction118",
+   "symbol": "?vfunction118@tPhaserXBank@@UAEME@Z",
+   "unit": "unsorted/tPhaserXBank.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

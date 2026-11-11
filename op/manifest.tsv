@@ -222,6 +222,50 @@ address	size	symbol	source	modes
 0x00438877	214	tCloakSystem::vfunction23(int,unsigned int,int)	unsorted/tCloakSystem.cpp	vc6 guest
 0x0043894d	39	tCloakSystem::vfunction72()	unsorted/tCloakSystem.cpp	vc6 guest
 0x00438974	64	tCloakSystem::vfunction76(float,int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x004e1e99	199	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	partial
+0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e20f4	335	tPhaserBank::fn_004e20f4()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e2243	146	tPhaserBank::fn_004e2243(int)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e22d5	8	tPhaserBank::vfunction79()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e22dd	8	tPhaserBank::vfunction109()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e22e5	8	tPhaserBank::vfunction110()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e22ed	8	tPhaserBank::vfunction111()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e22f5	23	tPhaserBank::vfunction105(int)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e230c	169	tPhaserBank::vfunction102()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e23b5	169	tPhaserBank::vfunction74(float,float)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e245e	82	tPhaserBank::vfunction143(float,float)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e24b0	146	tPhaserBank::vfunction135(unsigned char)	unsorted/tPhaserBank.cpp	partial
+0x004e2542	126	tPhaserBank::vfunction80()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e25c0	337	tPhaserBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e2711	194	tPhaserBank::vfunction116(unsigned char)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e27d3	194	tPhaserBank::vfunction118(unsigned char)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e2895	103	tPhaserBank::fn_004e2895()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e28fc	430	tPhaserBank::vfunction136(char)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e2aaa	88	tPhaserBank::fn_004e2aaa(int,char)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e2b02	505	tPhaserBank::vfunction39(float)	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e5325	221	tPhaserXBank::tPhaserXBank(int,fn_004e1e99_arg*)	unsorted/tPhaserXBank.cpp	partial
+0x004e5403	367	tPhaserXBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5573	23	tPhaserXBank::vfunction105(int)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e558a	37	tPhaserXBank::fn_004e558a()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e55af	58	tPhaserXBank::vfunction133()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e55e9	11	tPhaserXBank::vfunction79()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e55f4	11	tPhaserXBank::vfunction109()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e55ff	11	tPhaserXBank::vfunction110()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e560a	11	tPhaserXBank::vfunction111()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5615	22	tPhaserXBank::vfunction149(int)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e562b	97	tPhaserXBank::vfunction65(char)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e568c	80	tPhaserBank::vfunction70()	unsorted/tPhaserBank.cpp	vc6 guest
+0x004e56dc	82	tPhaserXBank::vfunction143(float,float)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e572e	146	tPhaserXBank::vfunction135(unsigned char)	unsorted/tPhaserXBank.cpp	partial
+0x004e57c0	137	tPhaserXBank::vfunction74(float,float)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5849	31	tPhaserXBank::vfunction80()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5868	132	tPhaserXBank::fn_004e5868()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e58ec	108	tPhaserXBank::vfunction134()	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5958	541	tPhaserXBank::fn_004e5958(int)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5b75	100	tPhaserXBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5bd9	43	tPhaserXBank::vfunction116(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x004e5c04	43	tPhaserXBank::vfunction118(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

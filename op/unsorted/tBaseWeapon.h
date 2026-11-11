@@ -1,0 +1,197 @@
+//	tBaseWeapon.h: tBaseWeapon, the base of the weapon systems, as its subclasses use it.
+// Evidence:  class (original file unknown)
+
+#ifndef tBaseWeapon_h
+#define tBaseWeapon_h 1
+
+class tSFCStream;
+class fn_004e2b02_ship_type;
+class tEntity;
+
+// HYPOTHESIS: the four values the phaser bank constructors (0x004e1e99, 0x004e5325) copy into
+// the bank, read as four ints.
+struct fn_004e1e99_arg
+{
+    int field_00;
+    int field_04;
+    int field_08;
+    int field_0c;
+};
+
+// HYPOTHESIS: tBaseWeapon's constructor (0x004d70eb) takes the first constructor argument.
+// Its bases (tRepairableShipSystem, tIndividualShipSystem, tListMember) are declared only
+// inside game/unsorted/tCloakSystem.cpp, so they are not repeated here.
+// HYPOTHESIS: slots 1 to 21 are placeholders that only fix the position of slot 22
+// (offset 0x58, mStreamOutSystemSpecificData, 0x004d76b3 in tBaseWeapon) and slot 23
+// (offset 0x5c, 0x00452f40 in tIndividualShipSystem).
+class tBaseWeapon
+{
+public:
+    tBaseWeapon(int param_1);
+    virtual ~tBaseWeapon();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    // HYPOTHESIS: the slot at offset 0x24 returns the number of banks 0x004e58ec walks.
+    virtual int vfunction10();
+    // HYPOTHESIS: the slot at offset 0x28 returns the number of banks 0x004e230c walks.
+    virtual int vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    // HYPOTHESIS: the slot at offset 0x44 takes the value 0x00453c60 returns.
+    virtual void vfunction18(int param_1);
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual unsigned mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode);
+    virtual unsigned vfunction24(tSFCStream &s, unsigned aFlags, unsigned mode);
+    // HYPOTHESIS: the slots from 25 on are placeholders that only fix the positions of the
+    // slots 0x004e20f4 calls: offsets 0xd8, 0xe0, 0x100, 0x108 and 0x110.
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    // HYPOTHESIS: the slot at offset 0x80 returns the ship that owns the system.
+    virtual fn_004e2b02_ship_type* vfunction33();
+    // HYPOTHESIS: the slot at offset 0x84 returns the system's target; 0x004e55af passes it
+    // with the ship to 0x00424705.
+    virtual tEntity* vfunction34();
+    // HYPOTHESIS: the slot at offset 0x88 is a test tPhaserXBank's 0x004e5958 makes.
+    virtual bool vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39(float param_1);
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55(int param_1);
+    virtual void vfunction56();
+    virtual void vfunction57(int param_1);
+    virtual void vfunction58();
+    virtual void vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    // HYPOTHESIS: the slot at offset 0xfc is a test 0x004e28fc makes before firing.
+    virtual bool vfunction64();
+    // HYPOTHESIS: the slot at offset 0x104 sets a mode byte; tPhaserXBank's 0x004e562b reads
+    // its argument as a char.
+    virtual void vfunction65(char param_1);
+    virtual void vfunction66();
+    virtual void vfunction67(float param_1);
+    virtual void vfunction68();
+    virtual void vfunction69(float param_1);
+    // HYPOTHESIS: the slot at offset 0x114 returns a float that 0x004e23b5 caps its request at.
+    virtual float vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual float vfunction74(float param_1, float param_2);
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual float vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    virtual void vfunction83();
+    virtual void vfunction84();
+    virtual void vfunction85();
+    virtual void vfunction86();
+    virtual void vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    virtual void vfunction90();
+    virtual void vfunction91();
+    virtual void vfunction92();
+    virtual void vfunction93();
+    virtual void vfunction94();
+    virtual void vfunction95();
+    virtual void vfunction96();
+    virtual void vfunction97();
+    virtual void vfunction98();
+    virtual void vfunction99();
+    virtual void vfunction100();
+    // HYPOTHESIS: the slot at offset 0x190 takes a damage value and a target ID and returns
+    // the damage; tPhaserXBank's 0x004e5958 calls it when the target passes its test.
+    virtual int vfunction101(int param_1, int param_2);
+    virtual void vfunction102();
+    virtual void vfunction103();
+    virtual void vfunction104();
+    // HYPOTHESIS: tBaseWeapon's slot 104 (0x004d8747), which 0x004e22f5 calls before its own
+    // work.
+    virtual void vfunction105(int param_1);
+    // HYPOTHESIS: the slot at offset 0x1a4 returns the index of the first bank as a char.
+    virtual char vfunction106();
+    virtual void vfunction107();
+    virtual void vfunction108();
+    virtual float vfunction109();
+    virtual float vfunction110();
+    virtual float vfunction111();
+    // HYPOTHESIS: slots 112 to 133 are placeholders that only fix the position of slot 134
+    // (offset 0x214), a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
+    // tPhaserBank overrides at 0x004e25c0.
+    virtual void vfunction112();
+    virtual void vfunction113();
+    virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
+    virtual void vfunction115();
+    virtual void vfunction116();
+    virtual void vfunction117();
+    virtual void vfunction118();
+    virtual void vfunction119();
+    virtual void vfunction120();
+    virtual void vfunction121();
+    virtual void vfunction122();
+    virtual void vfunction123();
+    virtual void vfunction124();
+    virtual void vfunction125();
+    virtual void vfunction126();
+    virtual void vfunction127();
+    virtual void vfunction128();
+    virtual void vfunction129();
+    virtual void vfunction130();
+    virtual void vfunction131();
+    // HYPOTHESIS: 0x004e28fc tests slot 132 (offset 0x20c) with 0 and reads slot 133
+    // (offset 0x210) as a signed status, zero when the weapon may fire.
+    virtual bool vfunction132(int param_1);
+    virtual int vfunction133();
+    virtual bool vfunction134();
+    // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
+    int fn_004d87e3(int param_1);
+    // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
+    float fn_004d786e();
+    // HYPOTHESIS: a base class's own slot 39 (elapsed time), called directly by 0x004e2b02
+    // as tCloakSystem's slot 39 calls it.
+    void fn_0043d696(float elapsed);
+};
+
+#endif // tBaseWeapon_h

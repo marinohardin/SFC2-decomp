@@ -1,6 +1,8 @@
 // tCloakSystem: the ship's cloaking device (a repairable ship system).
 // Original file unknown; class layout reconstructed from the constructor only.
 
+#include "unsorted/fn_0090be9c_type.h"
+
 // HYPOTHESIS: returns a handle stored at +0x18; called with the system's display name.
 int __cdecl fn_00453c60(const char* name, int a2, int a3);
 
@@ -517,12 +519,12 @@ void tCloakSystem::vfunction63()
 
 // HYPOTHESIS: a named marker object (constructor at 0x0040ce21 takes the function's name);
 // its destructor is empty, since the original's atexit thunk is a bare ret.
-class fn_0040ce21_type
-{
-public:
-    fn_0040ce21_type(const char* name);
-    ~fn_0040ce21_type() {}
-};
+#include "unsorted/fn_0040ce21_type.h"
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00438522
 // The name is the string the function hands to its marker object.
@@ -571,24 +573,6 @@ float tCloakSystem::mDetermineCloakWeaponRange(float range, int param_2)
     }
     return result;
 }
-
-// HYPOTHESIS: a global object at 0x0090be9c; vftable slot 6 returns an unsigned count and
-// +0x20 holds an unsigned total.
-class fn_0090be9c_type
-{
-public:
-    virtual void vfunction1();
-    virtual void vfunction2();
-    virtual void vfunction3();
-    virtual void vfunction4();
-    virtual void vfunction5();
-    virtual void vfunction6();
-    virtual unsigned int vfunction7(); // slot 6
-
-    char pad04[0x20 - 0x04];
-    unsigned int field_20;
-};
-extern fn_0090be9c_type* g_0090be9c;
 
 // HYPOTHESIS: double and float constants in the original's read-only data.
 extern double g_0079a148;

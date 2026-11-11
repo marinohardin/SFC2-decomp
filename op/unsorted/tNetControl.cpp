@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include "unsorted/tNetControl.h"
+#include "unsorted/c_0092deb4.h"
 // The class and the object at 0x008f5b98 are declared in tNetControl.h, which
 // Source/entity/entity_physical.cpp also includes for gNetControl.mQueueMsg; this unit
 // defines the members whose functions lie between 0x0043104e and the end of its range.
@@ -254,72 +255,6 @@ public:
 	virtual void fn_vtbl_A0( int a );
 };
 
-// HYPOTHESIS: the object pointed to by 0x0092deb4; only the two virtual slots used here.
-class c_0092deb4
-{
-public:
-	virtual void fn_vtbl_00();
-	virtual void fn_vtbl_04();
-	virtual void fn_vtbl_08();
-	virtual void fn_vtbl_0C();
-	virtual void fn_vtbl_10();
-	virtual void fn_vtbl_14();
-	virtual void fn_vtbl_18();
-	virtual void fn_vtbl_1C();
-	virtual void fn_vtbl_20();
-	virtual void fn_vtbl_24();
-	virtual void fn_vtbl_28( int a, int b, int c );
-	virtual void fn_vtbl_2C();
-	virtual void fn_vtbl_30();
-	virtual void fn_vtbl_34();
-	virtual void fn_vtbl_38();
-	virtual void fn_vtbl_3C();
-	virtual void fn_vtbl_40();
-	virtual void fn_vtbl_44();
-	virtual void fn_vtbl_48();
-	virtual void fn_vtbl_4C();
-	virtual void fn_vtbl_50();
-	virtual void fn_vtbl_54();
-	virtual void fn_vtbl_58();
-	virtual void fn_vtbl_5C();
-	virtual void fn_vtbl_60();
-	virtual void fn_vtbl_64();
-	virtual void fn_vtbl_68();
-	virtual void fn_vtbl_6C();
-	virtual void fn_vtbl_70();
-	virtual void fn_vtbl_74();
-	virtual void fn_vtbl_78();
-	virtual void fn_vtbl_7C();
-	virtual void fn_vtbl_80();
-	virtual void fn_vtbl_84();
-	virtual void fn_vtbl_88();
-	virtual void fn_vtbl_8C();
-	virtual void fn_vtbl_90();
-	virtual void fn_vtbl_94();
-	virtual void fn_vtbl_98();
-	virtual void fn_vtbl_9C();
-	virtual void fn_vtbl_A0();
-	virtual void fn_vtbl_A4();
-	virtual void fn_vtbl_A8();
-	virtual void fn_vtbl_AC();
-	virtual void fn_vtbl_B0();
-	virtual void fn_vtbl_B4();
-	virtual void fn_vtbl_B8();
-	virtual void fn_vtbl_BC();
-	virtual void fn_vtbl_C0();
-	virtual void fn_vtbl_C4();
-	virtual void fn_vtbl_C8();
-	virtual void fn_vtbl_CC();
-	virtual void fn_vtbl_D0();
-	virtual void fn_vtbl_D4();
-	virtual void fn_vtbl_D8();
-	virtual void fn_vtbl_DC();
-	virtual void fn_vtbl_E0();
-	virtual void fn_vtbl_E4();
-	virtual void fn_vtbl_E8();
-	virtual void fn_vtbl_EC( int n );
-};
-
 class c_008e1060
 {
 public:
@@ -329,7 +264,6 @@ public:
 
 extern int g_008f5b84;
 extern int g_008f5b3c;
-extern c_0092deb4 *g_0092deb4;
 extern c_008e1060 g_008e1060;
 
 // HYPOTHESIS: this is the body of the function whose EH prolog sits at 0x00431275; it is

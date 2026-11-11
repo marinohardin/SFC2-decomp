@@ -117,6 +117,7 @@ class tPhysicalEntity;
 class tObject_0041018e_arg;
 class tObject_00413ac3_arg;
 class tObject_008e1060_slot;
+class fn_004e2b02_ship_type;
 class tObject_00410fd4;
 
 // vfunctionN is slot N-1 of the vftable (0x00795cb4, 22 slots); slot 0 is the scalar deleting
@@ -209,6 +210,14 @@ public:
 		return 0;
 	}
 	float fn_004246e4(tEntity *aFrom, tEntity *aTo);
+	// HYPOTHESIS: a float between a weapon's ship and its target, as fn_004246e4 between two
+	// entities; tPhaserXBank's 0x004e55af stores it and compares it with a limit.
+	float fn_00424705(fn_004e2b02_ship_type *aShip, tEntity *aTarget);
+	// HYPOTHESIS: the same float between two entities given by ID; tPhaserXBank's 0x004e5958
+	// passes its ship's ID and the target's.
+	float fn_004246ab(int aFromID, int aToID);
+	// HYPOTHESIS: looks a ship up by ID; tPhaserXBank's 0x004e5958 calls its slot at 0x7c.
+	fn_004e2b02_ship_type *fn_0042496f(int aID);
 	tObject_008e1060_slot *fn_slot(int aIndex)
 	{
 		if (aIndex >= 0 && aIndex < 16)
