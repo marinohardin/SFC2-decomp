@@ -7,7 +7,6 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00413dd6	tEntity_Weapon::~tEntity_Weapon	4	opus	20.00	2026-11-09T07:39:24Z	not exact after 4 attempts
 0x00413de0	tPhysicalEntity::~tPhysicalEntity	4	opus	12.61	2026-11-09T07:49:18Z	not exact after 4 attempts
 0x00413ea8	tPhysicalEntity::vfunction49	4	opus	99.77	2026-11-09T07:59:26Z	not exact after 4 attempts
-0x0040cec0	tINIMgr::scalar_deleting_destructor	5	fable	5.33	2026-11-09T15:19:33Z	not exact after 5 attempts
 0x004355a5	tDynamicMemoryFreeListViaHandles::scalar_deleting_destructor	5	fable	5.71	2026-11-09T16:45:53Z	not exact after 5 attempts
 0x004356ac	t3DListenerProfile::scalar_deleting_destructor	5	fable	0.00	2026-11-09T16:00:41Z	not exact after 5 attempts
 0x004381ee	tCloakSystem::tCloakSystem	5	fable	13.59	2026-11-09T15:09:00Z	not exact after 5 attempts
@@ -182,3 +181,44 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x004c3a2c	FUN_004c3a2c	5	fable	20.00	2026-11-11T01:39:09Z	not exact after 5 attempts
 0x004c3a36	FUN_004c3a36	5	fable	9.96	2026-11-11T01:59:57Z	not exact after 5 attempts
 0x004c3da7	tFleetEntry::vfunction2_for_tVisNotifiee	5	fable	20.00	2026-11-11T02:12:20Z	not exact after 5 attempts
+0x00629720	twDebugPart::mSendLine	4	opus	34.21	2026-11-09T07:48:54Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 34.21%
+0x0066c0e0	tCRandomSequence::scalar_deleting_destructor	4	opus	0.00	2026-11-09T07:54:47Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x00629865	FUN_00629865	4	opus	4.44	2026-11-09T07:53:34Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 4.44%
+0x00648cea	FUN_00648cea	4	opus	13.33	2026-11-09T08:09:46Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 13.33%
+0x0066c390	tUniFont::tUniFont	4	opus	0.00	2026-11-09T08:13:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x00629c40	tWinDbg::mWndProc	4	opus	27.64	2026-11-09T08:27:06Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 27.64%
+0x0066c650	tSay::`scalar_deleting_destructor'	4	opus	8.33	2026-11-09T08:34:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 8.33%
+0x00629e8d	switchD_00629e03::caseD_112	4	opus	0.78	2026-11-09T08:31:56Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.78%
+0x00629f49	FUN_00629f49	4	opus	1.38	2026-11-09T08:36:27Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 1.38%
+0x0066c9b0	tSndZipInfoMgr::mInit	4	opus	84.56	2026-11-09T08:51:06Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 84.56%
+0x0062a470	tWin32Mono::scalar_deleting_destructor	4	opus	0.00	2026-11-09T08:57:43Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x0063fd10	tCoopThreadPart::mDoSleep	4	opus	6.83	2026-11-09T09:55:29Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 6.83%
+0x0061c450	tFSSession::`scalar_deleting_destructor'	4	opus	0.00	2026-11-09T09:02:46Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x0062a680	tWinComPort::`scalar_deleting_destructor'	4	opus	0.00	2026-11-09T09:08:23Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x0061ca60	tFSSession::mDuplicatePath	4	opus	32.21	2026-11-09T09:22:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 32.21%
+0x0062c130	tINISimpleNamespace::tINIFileSimple::mInit	4	opus	87.31	2026-11-09T10:06:04Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 87.31%
+0x0062c510	tINISimpleNamespace::tINIFileSimple::mFlush	4	opus	81.58	2026-11-09T10:11:35Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 81.58%
+0x0062c670	tINIFile::mNewINIFile	4	opus	78.91	2026-11-09T10:22:43Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.91%
+0x00640b40	twNativeThread::mGotoThread	4	opus	7.84	2026-11-09T12:01:53Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 7.84%
+0x0066f0d4	FUN_0066f0d4	4	opus	16.67	2026-11-09T10:28:53Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 16.67%
+0x0062d3c0	tTagInfo::mParseTagTokenList	4	opus	66.01	2026-11-09T11:08:52Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 66.01%
+0x0062d691	FUN_0062d691	4	opus	5.00	2026-11-09T11:25:55Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 5.00%
+0x00640db0	twCoopThreadPart::mCoopRun	4	opus	0.19	2026-11-09T12:35:31Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.19%
+0x00670cc0	tTextFontFileIO::mOpenForRead	4	opus	0.00	2026-11-09T12:38:40Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x0064f629	FUN_0064f629	4	opus	4.54	2026-11-09T12:41:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 4.54%
+0x00640fa3	FUN_00640fa3	4	opus	20.00	2026-11-09T12:41:24Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 20.00%
+0x00670d20	tTextFontFileIO::~tTextFontFileIO	4	opus	26.25	2026-11-09T12:54:35Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 26.25%
+0x00640fa8	FUN_00640fa8	4	opus	14.27	2026-11-09T12:49:45Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 14.27%
+0x0064fbc0	tSoundChannelList::scalar_deleting_destructor	4	opus	3.33	2026-11-09T13:08:35Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 3.33%
+0x0062d8d0	tIntTag::mGetString	4	opus	76.93	2026-11-09T14:29:51Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 76.93%
+0x0064fc00	tSoundPart::Test_tSoundPart	4	opus	78.43	2026-11-09T13:22:08Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.43%
+0x006f41e0	tThreadPool::Heartbeat	4	opus	46.65	2026-11-09T13:42:16Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 46.65%
+0x00650210	tSoundMemoryBlockList::scalar_deleting_destructor	4	opus	3.33	2026-11-09T14:02:51Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 3.33%
+0x006f4440	tThreadPool::EmptyWorkQue	4	opus	54.40	2026-11-09T13:57:23Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 54.40%
+0x006420a0	twStandardSoundChannel::mWriteData	4	opus	89.03	2026-11-09T14:09:05Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 89.03%
+0x006a5a20	tTexBmp::vfunction7	4	opus	78.95	2026-11-09T14:01:14Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.95%
+0x006a62f0	FUN_006a62f0	4	opus	80.00	2026-11-09T14:18:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 80.00%
+0x00642630	twStandardSoundChannel::mDoActiveUpdate	4	opus	53.34	2026-11-09T14:38:16Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 53.34%
+0x006a80d0	FUN_006a80d0	4	opus	0.00	2026-11-09T14:43:49Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x0061f910	tPathIterator::mAdd	4	opus	57.50	2026-11-09T15:40:51Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 57.50%
+0x00642980	twStandardSoundChannel::mUpdateBuffersAndSelections	4	opus	67.06	2026-11-09T15:20:12Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 67.06%
