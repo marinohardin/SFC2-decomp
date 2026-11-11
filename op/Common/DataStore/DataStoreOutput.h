@@ -1,11 +1,11 @@
 //	DataStoreOutput.h
-//
-//	Writes values into a data store buffer.
-//	Declarations follow the SDK's header, without its template stream operators for the standard
-//	containers, which no matched code uses yet. The original defines the inline functions in
-//	DataStoreOutput.cpp, which the header includes; here they follow the class, and only the ones
-//	matched code uses are defined yet.
-//
+//	Writes values into a data store buffer. Declarations follow the SDK's header, without its
+//	template stream operators for the standard containers, which no matched code uses yet. The
+//	original defines the inline functions in DataStoreOutput.cpp, which the header includes; here
+//	they follow the class, and only the ones matched code uses are defined yet.
+//	MATCH-ONLY: operator<<( const std::string& ), defined inline here and inlined by
+//	FileDatabaseMgr.cpp's StreamOut, is left out where DATASTORE_OUT_OF_LINE_WRITE is defined:
+//	tClientCharacter.cpp holds the out-of-line copy (0x0042a116), claimable only from a .cpp.
 #if !defined( DataStoreOutput_h )
 #define DataStoreOutput_h
 
@@ -84,7 +84,7 @@ void tOutput::Write( const byte* data, int32 size )
 {
 	fBuffer->Write( data, size );
 }
-
+#ifndef DATASTORE_OUT_OF_LINE_WRITE
 tOutput& tOutput::operator<<( const std::string& string )
 {
 	int32u size = string.size();
@@ -94,7 +94,7 @@ tOutput& tOutput::operator<<( const std::string& string )
 
 	return *this;
 }
-
+#endif
 tOutput& tOutput::operator<<( bool value )
 {
 	Put( (byte)value );

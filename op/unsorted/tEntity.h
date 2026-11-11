@@ -650,7 +650,8 @@ public:
 	virtual void vfunction21();
 	virtual void vfunction22();
 	virtual void vfunction23();
-	// HYPOTHESIS: slot 24 (offset 0x5c) returns a float.
+	// HYPOTHESIS: slot 24 (offset 0x5c) returns a float, a fraction from 0 to 1 as the fleet
+	// entry's 0x004c3a36 sets a gauge with it.
 	virtual float vfunction24();
 	virtual void vfunction25();
 	virtual void vfunction26();
@@ -659,7 +660,9 @@ public:
 	virtual void vfunction29();
 	virtual void vfunction30();
 	virtual void vfunction31();
-	virtual void vfunction32();
+	// HYPOTHESIS: slot 32 (offset 0x7c) returns a truth value; the fleet entry's 0x004c27a8
+	// asks it.
+	virtual bool vfunction32();
 	virtual void vfunction33();
 	virtual void vfunction34();
 	virtual void vfunction35();
@@ -709,6 +712,19 @@ public:
 	// searches around the point it returns.
 	// HYPOTHESIS: takes a movement message; 0x005169e0 passes the kMoveInDirection it built.
 	void fn_00414bfa(tNetMsg *aMsg);
+	void fn_004168cc(int param_1, int param_2);
+	// HYPOTHESIS: a yes/no question; the fleet entry's 0x004c3a36 asks it with 1.
+	unsigned char fn_004168e2(int param_1);
+	// HYPOTHESIS: an inline reader of the flag at +0x5c; 0x004c3a36 reads it through a
+	// temporary the way an inline function's result is read. The original name is not known.
+	bool fn_inline_b5c() const
+	{
+		return field_0x5c;
+	}
+	void fn_004168ff(int param_1);
+	// HYPOTHESIS: sends the ship a notice; 0x004c3784 passes 0x20000, the entry's ID and three
+	// zeros.
+	void fn_004102d9(int param_1, int param_2, int param_3, int param_4, int param_5);
 
 	char field_0x4[0x20];
 	// HYPOTHESIS: the entity's fIsAlive, if the ship derives from tEntity.
@@ -721,7 +737,10 @@ public:
 	bool field_0x5c;
 	// HYPOTHESIS: the entity's fBelongsToHumanFleet, if the ship derives from tEntity.
 	iTruth field_0x5d;
-	char field_0x5e[0x32];
+	char field_0x5e[0x2];
+	// HYPOTHESIS: the fleet's ID; 0x0048c418 and the fleet entry look its list up by it.
+	int field_0x60;
+	char field_0x64[0x2c];
 	// HYPOTHESIS: the ship's heading; 0x00515f27 steers by it.
 	short field_0x90;
 	char field_0x92[0x76];
@@ -808,10 +827,10 @@ public:
 
 	// HYPOTHESIS: returns an entity ID; 0x00421ea9 compares it with its ship's fID.
 	int fn_00525081();
+	// HYPOTHESIS: takes the ID 0x004c3784 passes; its result is not used there.
+	int fn_004248b5(int aValue);
 	// fn_0042496f is also the lookup tMyHud3D::vfunction9 (0x004b26e4) makes; it reads the
 	// result as a tObject_0042496f and takes a point from it through 0x00422cba.
-
-
 
 	// fn_00525081 (declared above) returns an entity ID; 0x0051e454 does nothing for the ship
 	// with that ID. The address is also the formation object's method of that name, so the

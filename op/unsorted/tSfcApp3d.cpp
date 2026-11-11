@@ -69,15 +69,15 @@ public:
 
 extern fn_008f5b98_Object g_008f5b98;
 
-// HYPOTHESIS: the object the pointer at 0x0096d5d8 names, shut down through 0x00510b1b.
-class fn_0096d5d8_Object {
-public:
-	void fn_00510af7();
-	void fn_00510b1b();
-	void fn_00510b55();
-};
+#include "unsorted/fn_0096d5d8_Object.h"
 
-extern fn_0096d5d8_Object *g_p0096d5d8;
+
+
+
+
+
+
+
 
 // HYPOTHESIS: a global object at 0x0090bf18 with a shutdown method at 0x00458928.
 class fn_0090bf18_Object {
@@ -578,13 +578,13 @@ public:
 	static void Heartbeat();
 };
 
-// HYPOTHESIS: the object the pointer at 0x0090bed4 names, updated through 0x00522681.
-class fn_0090bed4_Object {
-public:
-	void fn_00522681();
-};
+#include "unsorted/fn_0090bed4_Object.h"
 
-extern fn_0090bed4_Object *g_p0090bed4;
+
+
+
+
+
 
 // HYPOTHESIS: a global object at 0x0096e7c8 updated through 0x0051d7cf.
 class fn_0096e7c8_Object {

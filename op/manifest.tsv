@@ -199,6 +199,25 @@ address	size	symbol	source	modes
 0x00424a24	19	tEntityMgr::fn_00424a24(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00424a37	88	tEntityMgr::fn_00424a37(tID)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00424a8f	160	tEntityMgr::mArchive(tSFCStream &,unsigned long)	unsorted/tEntityMgr.cpp	vc6 guest
+0x004295da	238	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial
+0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6
+0x00429717	110	tOptex::fn_00429717()	unsorted/tClientCharacter.cpp	vc6 guest
+0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest
+0x004297fa	83	tOptex::fn_004297fa()	unsorted/tClientCharacter.cpp	vc6 guest
+0x0042984d	10	tOptex::fn_0042984d()	unsorted/tClientCharacter.cpp	partial
+0x00429857	449	tClientCharacter::fn_00429857(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
+0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6
+0x00429a26	10	fn_00429a26()	unsorted/tClientCharacter.cpp	partial
+0x00429a30	386	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
+0x00429bb2	10	fn_00429bb2()	unsorted/tClientCharacter.cpp	partial
+0x00429bbc	330	tClientCharacter::tClientCharacter(int)	unsorted/tClientCharacter.cpp	partial
+0x00429d06	10	tClientCharacter::fn_00429d06(int)	unsorted/tClientCharacter.cpp	partial
+0x00429d10	509	tClientCharacter::fn_00429d10(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	partial
+0x00429f0d	10	fn_00429f0d()	unsorted/tClientCharacter.cpp	partial
+0x00429f17	461	tClientCharacter::fn_00429f17(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
+0x0042a0fc	26	tBuffer::Write(const byte*,int32u)	unsorted/tClientCharacter.cpp	vc6 guest
+0x0042a116	79	tOutput::operator<<(const std::string&)	unsorted/tClientCharacter.cpp	vc6 guest
+0x0042a165	10	fn_0042a165()	unsorted/tClientCharacter.cpp	partial
 0x0043104e	239	tNetControl::tNetControl()	unsorted/tNetControl.cpp	partial
 0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	partial
 0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest
@@ -338,6 +357,17 @@ address	size	symbol	source	modes
 0x0045de01	61	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	10	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
+0x0048bd57	745	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
+0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
+0x0048c05c	10	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	partial
+0x0048c066	325	FUN_0048c066()	unsorted/tFleetPanel.cpp	partial
+0x0048c1ab	10	fn_0048c1ab()	unsorted/tFleetPanel.cpp	partial
+0x0048c1b5	409	FUN_0048c1b5()	unsorted/tFleetPanel.cpp	partial
+0x0048c34e	31	tFleetPanel::fn_0048c34e()	unsorted/tFleetPanel.cpp	vc6 guest
+0x0048c36d	57	tFleetPanel::fn_0048c36d(int)	unsorted/tFleetPanel.cpp	vc6 guest
+0x0048c3a6	65	tFleetPanel::vfunction3(int *)	unsorted/tFleetPanel.cpp	vc6 guest
+0x0048c3e7	49	tFleetPanel::vfunction6(float,int,int)	unsorted/tFleetPanel.cpp	vc6 guest
+0x0048c418	276	tFleetPanel::vfunction4()	unsorted/tFleetPanel.cpp	vc6 guest
 0x004b0a39	994	tMyHud3D::vfunction2(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b0e1b	1372	fn_004b0e1b(tObject_00413ac3_arg *,int,tObject_00852448 *,int,float,bool)	unsorted/tMyHud3D.cpp	partial
 0x004b0eb6	20	FUN_004b0eb6()	unsorted/tMyHud3D.cpp	partial
@@ -374,6 +404,33 @@ address	size	symbol	source	modes
 0x004b2ae6	112	tMatrix::tMatrix(const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float)	unsorted/tMyHud3D.cpp	vc6
 0x004b2b56	301	tMyHud3D::vfunction11(int,int,char,int)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b2c83	24	tMyHud3D::vfunction10(int)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004c2669	137	tFleetEntry::tFleetEntry()	unsorted/tFleetEntry.cpp	partial
+0x004c26f2	13	tFleetEntry::vfunction49_for_tVisGroup(tFleetPanel *)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c26ff	28	tFleetEntry::scalar_deleting_destructor(unsigned char)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c271b	10	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	partial
+0x004c27a8	786	tFleetEntry::vfunction31_for_tVisGroup(int *)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c2aba	59	tFleetEntry::fn_004c2aba(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c2af5	10	fn_004c2af5()	unsorted/tFleetEntry.cpp	partial
+0x004c2b66	59	tFleetEntry::fn_004c2b66(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c2ba1	59	tFleetEntry::fn_004c2ba1(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c2bdc	920	tFleetEntry::vfunction43_for_tVisGroup(int,int,int)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c2f74	875	tFleetEntry::vfunction44_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c32df	270	tFleetEntry::vfunction46_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c33ed	270	tFleetEntry::vfunction45_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c34fb	41	tFleetEntry::vfunction50_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c3524	10	fn_004c3524()	unsorted/tFleetEntry.cpp	partial
+0x004c352e	83	fn_004c352e(tObjBase *,tObject_004c352e_arg)	unsorted/tFleetEntry.cpp	partial
+0x004c3581	10	fn_004c3581()	unsorted/tFleetEntry.cpp	partial
+0x004c36e0	25	tFleetEntry::fn_004c36e0(int)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c36f9	10	fn_004c36f9()	unsorted/tFleetEntry.cpp	partial
+0x004c3703	129	tFleetEntry::fn_004c3703(const char *,tObjBase *)	unsorted/tFleetEntry.cpp	partial
+0x004c3784	135	tFleetEntry::vfunction47_for_tVisGroup(int)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c380b	10	tFleetEntry::vfunction48_for_tVisGroup()	unsorted/tFleetEntry.cpp	partial
+0x004c3815	183	tFleetEntry::fn_004c3815(const tObject_00412f08 &)	unsorted/tFleetEntry.cpp	partial
+0x004c38cc	352	tFleetEntry::vfunction51_for_tVisGroup(float,int,int)	unsorted/tFleetEntry.cpp	vc6 guest
+0x004c3a2c	10	tFleetEntry::fn_004c3a2c()	unsorted/tFleetEntry.cpp	partial
+0x004c3a36	848	tFleetEntry::fn_004c3a36()	unsorted/tFleetEntry.cpp	partial
+0x004c3da7	11	tFleetEntry::vfunction2_for_tVisNotifiee()	unsorted/tFleetEntry.cpp	partial
 0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
 0x004c6225	337	tListBox_Base::vfunction8(const tRect *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c6376	103	tRect::mMakeClippedRect(const tRect *,tRect *) const	unsorted/tListBox_Base.cpp	vc6 guest

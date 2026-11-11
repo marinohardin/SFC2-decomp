@@ -40,8 +40,8 @@ public:
 	virtual void vfunction17();
 	virtual void vfunction18();
 	virtual void vfunction19();
-	virtual void vfunction20();
-	virtual void vfunction21();
+	virtual int vfunction20();
+	virtual void vfunction21( int n );
 	virtual void vfunction22();
 	virtual void vfunction23();
 	virtual void vfunction24();

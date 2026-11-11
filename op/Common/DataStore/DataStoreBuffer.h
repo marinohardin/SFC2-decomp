@@ -1,11 +1,11 @@
 //	DataStoreBuffer.h
-//
-//	The byte store behind a data store's input and output.
-//	Declarations follow the SDK's header, without its operator const byte*(), which
-//	tools/manifest.py cannot read yet. The original defines the inline functions in
-//	DataStoreBuffer.cpp, which the header includes; here they follow the class, and only the ones
-//	matched code uses are defined yet.
-//
+//	The byte store behind a data store's input and output. Declarations follow the SDK's header,
+//	without its operator const byte*(), which tools/manifest.py cannot read yet. The original
+//	defines the inline functions in DataStoreBuffer.cpp, which the header includes; here they
+//	follow the class, and only the ones matched code uses are defined yet.
+//	MATCH-ONLY: tBuffer::Write, defined inline here and inlined by FileDatabaseMgr.cpp's StreamOut,
+//	is left out where DATASTORE_OUT_OF_LINE_WRITE is defined: tClientCharacter.cpp holds the copy
+//	the compiler emitted out of line (0x0042a0fc), which the harness can claim only from a .cpp.
 #if !defined( DataStoreBuffer_h )
 #define DataStoreBuffer_h
 
@@ -54,12 +54,12 @@ void tBuffer::Put( byte data )
 {
 	fBuffer.push_back( data );
 }
-
+#ifndef DATASTORE_OUT_OF_LINE_WRITE
 void tBuffer::Write( const byte* data, int32u size )
 {
 	fBuffer.insert( fBuffer.end(), data, data + size );
 }
-
+#endif
 byte tBuffer::Get( iPos getPos ) const
 {
 	if( getPos >= Size() )
