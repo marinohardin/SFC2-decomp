@@ -57,3 +57,7 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x004235fa	FUN_004235fa	5	fable	16.63	2026-11-10T16:29:46Z	not exact after 5 attempts
 0x00423b3b	FUN_00423b3b	5	fable	90.51	2026-11-10T17:18:43Z	not exact after 5 attempts
 0x0042402d	FUN_0042402d	5	fable	91.51	2026-11-10T19:52:15Z	not exact after 5 attempts
+0x00440559	tShieldGroup::tShieldGroup	5	fable	10.32	2026-11-10T15:13:01Z	not exact after 5 attempts
+0x004406d1	tShieldGroup::vfunction109	5	fable	20.00	2026-11-10T15:41:12Z	not exact after 5 attempts
+0x004406db	FUN_004406db	5	fable	0.00	2026-11-10T16:09:54Z	not exact after 5 attempts
+0x0044140c	tShieldGroup::vfunction89	5	fable	94.86	2026-11-10T17:19:26Z	not exact after 5 attempts

@@ -278,6 +278,53 @@ address	size	symbol	source	modes
 0x00438877	214	tCloakSystem::vfunction23(int,unsigned int,int)	unsorted/tCloakSystem.cpp	vc6 guest
 0x0043894d	39	tCloakSystem::vfunction72()	unsorted/tCloakSystem.cpp	vc6 guest
 0x00438974	64	tCloakSystem::vfunction76(float,int)	unsorted/tCloakSystem.cpp	vc6 guest
+0x0043fa4e	28	tShieldSystem::vfunction52()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fa6a	34	tShieldSystem::vfunction54(int)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fa8c	34	tShieldSystem::vfunction47(int)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043faae	32	tShieldSystem::vfunction62()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043face	231	tShieldSystem::vfunction23(int,unsigned int,int)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fbb5	580	tShieldGroup::vfunction23(int,unsigned int,int)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fdf9	16	tShieldGroup::vfunction93(float)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fe09	123	tShieldGroup::vfunction90(float)	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fe84	82	tShieldSystem::vfunction100()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043fed6	44	tShieldSystem::vfunction101()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043ff02	43	tShieldSystem::vfunction102()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0043ff2d	489	tShieldSystem::fn_0043ff2d(float,float,int*,int*,int*,int*)	unsorted/tShieldSystem.cpp	vc6 guest
+0x00440116	131	tShieldSystem::vfunction103()	unsorted/tShieldSystem.cpp	vc6 guest
+0x00440199	61	tShieldSystem::vfunction104()	unsorted/tShieldSystem.cpp	vc6 guest
+0x004401d6	78	tShieldSystem::vfunction105()	unsorted/tShieldSystem.cpp	vc6 guest
+0x00440224	327	tShieldSystem::fn_00440224()	unsorted/tShieldSystem.cpp	vc6 guest
+0x0044036b	327	tShieldSystem::fn_0044036b()	unsorted/tShieldSystem.cpp	vc6 guest
+0x004404b2	80	tShieldSystem::vfunction106()	unsorted/tShieldSystem.cpp	vc6 guest
+0x00440502	77	tShieldSystem::vfunction107()	unsorted/tShieldSystem.cpp	vc6 guest
+0x00440559	267	tShieldGroup::tShieldGroup(int,int,int,int)	unsorted/tShieldGroup.cpp	partial
+0x00440664	4	tShieldGroup::vfunction85()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440668	4	tShieldGroup::vfunction91()	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044066c	7	tShieldGroup::vfunction92()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440673	4	tShieldGroup::vfunction94()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440677	7	tShieldGroup::vfunction107()	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044067e	20	tShieldGroup::vfunction108()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440692	28	tShieldGroup::scalar_deleting_destructor(unsigned char)	unsorted/tShieldGroup.cpp	vc6 guest
+0x004406ae	11	tShieldGroup::~tShieldGroup()	unsorted/tShieldGroup.cpp	vc6
+0x004406b9	24	tShieldGroup::fn_004406b9()	unsorted/tShieldGroup.cpp	vc6 guest
+0x004406d1	10	tShieldGroup::vfunction109(int,int)	unsorted/tShieldGroup.cpp	partial
+0x0044089f	255	tShieldGroup::vfunction87(float,float,float,float,float,float)	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044099e	286	tShieldGroup::vfunction88(float*,float*,float*,float*,float*,float*)	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440abc	85	tShieldGroup::vfunction95()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440b11	793	tShieldGroup::vfunction86(float,float)	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440e2a	232	tShieldGroup::vfunction101()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440f12	67	tShieldGroup::vfunction99(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440f55	67	tShieldGroup::vfunction100(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x00440f98	227	tShieldGroup::vfunction102()	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044107b	95	tShieldGroup::vfunction103()	unsorted/tShieldGroup.cpp	vc6 guest
+0x004410da	95	tShieldGroup::vfunction104()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00441139	99	tShieldGroup::vfunction105()	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044119c	138	tShieldGroup::vfunction106()	unsorted/tShieldGroup.cpp	vc6 guest
+0x00441226	59	tShieldGroup::fn_00441226(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x00441261	30	tShieldGroup::vfunction98(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044127f	345	tShieldGroup::vfunction97(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x004413d8	52	tShieldGroup::vfunction96(int)	unsorted/tShieldGroup.cpp	vc6 guest
+0x0044140c	2344	tShieldGroup::vfunction89(unsigned int,int)	unsorted/tShieldGroup.cpp	partial
 0x004e1e99	199	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	partial
 0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest

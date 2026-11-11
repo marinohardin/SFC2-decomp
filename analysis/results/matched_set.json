@@ -2512,6 +2512,429 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0043fa4e": {
+   "name": "tShieldSystem::vfunction52",
+   "symbol": "?vfunction52@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fa6a": {
+   "name": "tShieldSystem::vfunction54",
+   "symbol": "?vfunction54@tShieldSystem@@UAEXH@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 34,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fa8c": {
+   "name": "tShieldSystem::vfunction47",
+   "symbol": "?vfunction47@tShieldSystem@@UAEXH@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 34,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043faae": {
+   "name": "tShieldSystem::vfunction62",
+   "symbol": "?vfunction62@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043face": {
+   "name": "tShieldSystem::vfunction23",
+   "symbol": "?vfunction23@tShieldSystem@@UAEIHIH@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 231,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fbb5": {
+   "name": "tShieldGroup::vfunction23",
+   "symbol": "?vfunction23@tShieldGroup@@UAEIHIH@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 580,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fdf9": {
+   "name": "tShieldGroup::vfunction93",
+   "symbol": "?vfunction93@tShieldGroup@@QAEMM@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fe09": {
+   "name": "tShieldGroup::vfunction90",
+   "symbol": "?vfunction90@tShieldGroup@@UAEMM@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 123,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fe84": {
+   "name": "tShieldSystem::vfunction100",
+   "symbol": "?vfunction100@tShieldSystem@@UAEMXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043fed6": {
+   "name": "tShieldSystem::vfunction101",
+   "symbol": "?vfunction101@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043ff02": {
+   "name": "tShieldSystem::vfunction102",
+   "symbol": "?vfunction102@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0043ff2d": {
+   "name": "FUN_0043ff2d",
+   "symbol": "?fn_0043ff2d@tShieldSystem@@QAEXMMPAH000@Z",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 489,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440116": {
+   "name": "tShieldSystem::vfunction103",
+   "symbol": "?vfunction103@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 131,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440199": {
+   "name": "tShieldSystem::vfunction104",
+   "symbol": "?vfunction104@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 61,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004401d6": {
+   "name": "tShieldSystem::vfunction105",
+   "symbol": "?vfunction105@tShieldSystem@@UAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 78,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440224": {
+   "name": "FUN_00440224",
+   "symbol": "?fn_00440224@tShieldSystem@@QAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 327,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044036b": {
+   "name": "FUN_0044036b",
+   "symbol": "?fn_0044036b@tShieldSystem@@QAEXXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 327,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004404b2": {
+   "name": "tShieldSystem::vfunction106",
+   "symbol": "?vfunction106@tShieldSystem@@UAEHXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440502": {
+   "name": "tShieldSystem::vfunction107",
+   "symbol": "?vfunction107@tShieldSystem@@UAEHXZ",
+   "unit": "unsorted/tShieldSystem.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440559": {
+   "name": "tShieldGroup::tShieldGroup",
+   "symbol": "??0tShieldGroup@@QAE@HHHH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 267,
+   "score": 10.325,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00440664": {
+   "name": "tShieldGroup::vfunction85",
+   "symbol": "?vfunction85@tShieldGroup@@UAEMXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440668": {
+   "name": "tShieldGroup::vfunction91",
+   "symbol": "?vfunction91@tShieldGroup@@UAEMXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044066c": {
+   "name": "tShieldGroup::vfunction92",
+   "symbol": "?vfunction92@tShieldGroup@@UAEMXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440673": {
+   "name": "tShieldGroup::vfunction94",
+   "symbol": "?vfunction94@tShieldGroup@@UAEMXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440677": {
+   "name": "tShieldGroup::vfunction107",
+   "symbol": "?vfunction107@tShieldGroup@@UAEXXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044067e": {
+   "name": "tShieldGroup::vfunction108",
+   "symbol": "?vfunction108@tShieldGroup@@UAE_NXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440692": {
+   "name": "tShieldGroup::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tShieldGroup@@QAEPAV1@E@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004406ae": {
+   "name": "tShieldGroup::~tShieldGroup",
+   "symbol": "??1tShieldGroup@@UAE@XZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004406b9": {
+   "name": "FUN_004406b9",
+   "symbol": "?fn_004406b9@tShieldGroup@@QAE_NXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004406d1": {
+   "name": "tShieldGroup::vfunction109",
+   "symbol": "?vfunction109@tShieldGroup@@UAEXHH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0044089f": {
+   "name": "tShieldGroup::vfunction87",
+   "symbol": "?vfunction87@tShieldGroup@@UAEXMMMMMM@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 255,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044099e": {
+   "name": "tShieldGroup::vfunction88",
+   "symbol": "?vfunction88@tShieldGroup@@UAEXPAM00000@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 286,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440abc": {
+   "name": "tShieldGroup::vfunction95",
+   "symbol": "?vfunction95@tShieldGroup@@UAEMXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 85,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440b11": {
+   "name": "tShieldGroup::vfunction86",
+   "symbol": "?vfunction86@tShieldGroup@@UAEXMM@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 793,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440e2a": {
+   "name": "tShieldGroup::vfunction101",
+   "symbol": "?vfunction101@tShieldGroup@@UAEHXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 232,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440f12": {
+   "name": "tShieldGroup::vfunction99",
+   "symbol": "?vfunction99@tShieldGroup@@UAEXH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 67,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440f55": {
+   "name": "tShieldGroup::vfunction100",
+   "symbol": "?vfunction100@tShieldGroup@@UAEXH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 67,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00440f98": {
+   "name": "tShieldGroup::vfunction102",
+   "symbol": "?vfunction102@tShieldGroup@@UAEHXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 227,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044107b": {
+   "name": "tShieldGroup::vfunction103",
+   "symbol": "?vfunction103@tShieldGroup@@UAEXXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 95,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004410da": {
+   "name": "tShieldGroup::vfunction104",
+   "symbol": "?vfunction104@tShieldGroup@@UAEXXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 95,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00441139": {
+   "name": "tShieldGroup::vfunction105",
+   "symbol": "?vfunction105@tShieldGroup@@UAEXXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044119c": {
+   "name": "tShieldGroup::vfunction106",
+   "symbol": "?vfunction106@tShieldGroup@@UAEXXZ",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 138,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00441226": {
+   "name": "FUN_00441226",
+   "symbol": "?fn_00441226@tShieldGroup@@QAEPAVtShieldSystem@@H@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00441261": {
+   "name": "tShieldGroup::vfunction98",
+   "symbol": "?vfunction98@tShieldGroup@@UAEHH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044127f": {
+   "name": "tShieldGroup::vfunction97",
+   "symbol": "?vfunction97@tShieldGroup@@UAE_NH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 345,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x004413d8": {
+   "name": "tShieldGroup::vfunction96",
+   "symbol": "?vfunction96@tShieldGroup@@UAEHH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 52,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0044140c": {
+   "name": "tShieldGroup::vfunction89",
+   "symbol": "?vfunction89@tShieldGroup@@UAEHIH@Z",
+   "unit": "unsorted/tShieldGroup.cpp",
+   "size": 2344,
+   "score": 94.855,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
   "0x004e1e99": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
