@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "generated_at": "2026-11-10T04:47:55Z",
+ "generated_at": "2026-11-11T12:47:02Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "17ecbce279a7c17c259af97703fdb15500b870ab53b96b9a280bcd7ebb065502"
+   "sha256": "4cae2d51f963b403365f64c1fdde0cf387a2130455609a7daa03eee3291f80b1"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -79,13 +79,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 223,
-     "pct_functions": 0.8115,
-     "function_bytes": 13486,
-     "funclet_bytes": 0,
-     "bytes": 13486,
-     "pct_bytes": 0.3882,
-     "pct_text": 0.3594
+     "functions": 579,
+     "pct_functions": 2.1071,
+     "function_bytes": 71195,
+     "funclet_bytes": 27,
+     "bytes": 71222,
+     "pct_bytes": 2.0502,
+     "pct_text": 1.8983
     },
     "functional": {
      "functions": 0,
@@ -97,13 +97,13 @@
      "pct_text": 0.0
     },
     "lifted": {
-     "functions": 27156,
-     "pct_functions": 98.8246,
-     "function_bytes": 3290079,
-     "funclet_bytes": 167541,
-     "bytes": 3457620,
-     "pct_bytes": 99.5331,
-     "pct_text": 92.1556
+     "functions": 26800,
+     "pct_functions": 97.529,
+     "function_bytes": 3232370,
+     "funclet_bytes": 167514,
+     "bytes": 3399884,
+     "pct_bytes": 97.871,
+     "pct_text": 90.6168
     },
     "original-x86": {
      "functions": 100,
@@ -173,12 +173,12 @@
    "bytes": 3328192,
    "status": {
     "exact": {
-     "functions": 223,
-     "pct_functions": 0.8447,
-     "function_bytes": 13486,
-     "funclet_bytes": 0,
-     "bytes": 13486,
-     "pct_bytes": 0.4052
+     "functions": 579,
+     "pct_functions": 2.1933,
+     "function_bytes": 71195,
+     "funclet_bytes": 27,
+     "bytes": 71222,
+     "pct_bytes": 2.14
     },
     "functional": {
      "functions": 0,
@@ -189,12 +189,12 @@
      "pct_bytes": 0.0
     },
     "lifted": {
-     "functions": 26076,
-     "pct_functions": 98.7765,
-     "function_bytes": 3153833,
-     "funclet_bytes": 158138,
-     "bytes": 3311971,
-     "pct_bytes": 99.5126
+     "functions": 25720,
+     "pct_functions": 97.4279,
+     "function_bytes": 3096124,
+     "funclet_bytes": 158111,
+     "bytes": 3254235,
+     "pct_bytes": 97.7779
     },
     "original-x86": {
      "functions": 100,
@@ -765,6 +765,230 @@
    "name": "tPhysicalEntity::vfunction46"
   },
   {
+   "address": "00421b42",
+   "name": "tEntityControlShip::vfunction18"
+  },
+  {
+   "address": "00421bbe",
+   "name": "tEntityControlShip::vfunction19"
+  },
+  {
+   "address": "00421c5b",
+   "name": "tEntityControlShip::vfunction20"
+  },
+  {
+   "address": "00421c99",
+   "name": "tEntityControlShip::vfunction22"
+  },
+  {
+   "address": "00421d0d",
+   "name": "tEntityControlShip::vfunction21"
+  },
+  {
+   "address": "00421d83",
+   "name": "FUN_00421d83"
+  },
+  {
+   "address": "00421db6",
+   "name": "tEntityControlShip::vfunction7"
+  },
+  {
+   "address": "00421e76",
+   "name": "tEntityControlShip::vfunction12"
+  },
+  {
+   "address": "004220d5",
+   "name": "tEntityControlShip::vfunction14"
+  },
+  {
+   "address": "00422157",
+   "name": "FUN_00422157"
+  },
+  {
+   "address": "00422187",
+   "name": "tEntityControlShip::vfunction11"
+  },
+  {
+   "address": "004221a3",
+   "name": "FUN_004221a3"
+  },
+  {
+   "address": "004221f5",
+   "name": "tEntityControlShip::vfunction16"
+  },
+  {
+   "address": "00422214",
+   "name": "FUN_00422214"
+  },
+  {
+   "address": "0042222a",
+   "name": "tEntityControlShip::vfunction15"
+  },
+  {
+   "address": "004222e8",
+   "name": "tEntityControlShip::vfunction17"
+  },
+  {
+   "address": "00422565",
+   "name": "FUN_00422565"
+  },
+  {
+   "address": "0042258d",
+   "name": "tEntityControlShip::vfunction8"
+  },
+  {
+   "address": "00422711",
+   "name": "tEntityControlShip::vfunction2"
+  },
+  {
+   "address": "00423537",
+   "name": "tEntityMgr::tEntityMgr"
+  },
+  {
+   "address": "00423591",
+   "name": "tEntityMgr::~tEntityMgr"
+  },
+  {
+   "address": "00423598",
+   "name": "FUN_00423598"
+  },
+  {
+   "address": "004235ac",
+   "name": "FUN_004235ac"
+  },
+  {
+   "address": "004235cd",
+   "name": "FUN_004235cd"
+  },
+  {
+   "address": "0042370f",
+   "name": "FUN_0042370f"
+  },
+  {
+   "address": "00423735",
+   "name": "FUN_00423735"
+  },
+  {
+   "address": "00423749",
+   "name": "FUN_00423749"
+  },
+  {
+   "address": "00423784",
+   "name": "FUN_00423784"
+  },
+  {
+   "address": "004237b0",
+   "name": "FUN_004237b0"
+  },
+  {
+   "address": "00423831",
+   "name": "FUN_00423831"
+  },
+  {
+   "address": "004239ba",
+   "name": "FUN_004239ba"
+  },
+  {
+   "address": "004239d6",
+   "name": "FUN_004239d6"
+  },
+  {
+   "address": "00423a26",
+   "name": "FUN_00423a26"
+  },
+  {
+   "address": "00423a6a",
+   "name": "FUN_00423a6a"
+  },
+  {
+   "address": "0042452c",
+   "name": "FUN_0042452c"
+  },
+  {
+   "address": "004245e1",
+   "name": "FUN_004245e1"
+  },
+  {
+   "address": "004246ab",
+   "name": "FUN_004246ab"
+  },
+  {
+   "address": "004246e4",
+   "name": "FUN_004246e4"
+  },
+  {
+   "address": "004247dd",
+   "name": "FUN_004247dd"
+  },
+  {
+   "address": "00424801",
+   "name": "FUN_00424801"
+  },
+  {
+   "address": "004248b5",
+   "name": "FUN_004248b5"
+  },
+  {
+   "address": "00424946",
+   "name": "FUN_00424946"
+  },
+  {
+   "address": "0042495c",
+   "name": "FUN_0042495c"
+  },
+  {
+   "address": "0042496f",
+   "name": "FUN_0042496f"
+  },
+  {
+   "address": "004249c0",
+   "name": "FUN_004249c0"
+  },
+  {
+   "address": "004249d3",
+   "name": "FUN_004249d3"
+  },
+  {
+   "address": "00424a24",
+   "name": "FUN_00424a24"
+  },
+  {
+   "address": "00424a37",
+   "name": "FUN_00424a37"
+  },
+  {
+   "address": "00424a8f",
+   "name": "tEntityMgr::vfunction1"
+  },
+  {
+   "address": "004296c8",
+   "name": "FUN_004296c8"
+  },
+  {
+   "address": "00429717",
+   "name": "FUN_00429717"
+  },
+  {
+   "address": "00429785",
+   "name": "FUN_00429785"
+  },
+  {
+   "address": "004297fa",
+   "name": "FUN_004297fa"
+  },
+  {
+   "address": "00429a18",
+   "name": "FUN_00429a18"
+  },
+  {
+   "address": "0042a0fc",
+   "name": "FUN_0042a0fc"
+  },
+  {
+   "address": "0042a116",
+   "name": "FUN_0042a116"
+  },
+  {
    "address": "00431159",
    "name": "FUN_00431159"
   },
@@ -1049,6 +1273,1114 @@
    "name": "tCloakSystem::vfunction76"
   },
   {
+   "address": "0043fa4e",
+   "name": "tShieldSystem::vfunction52"
+  },
+  {
+   "address": "0043fa6a",
+   "name": "tShieldSystem::vfunction54"
+  },
+  {
+   "address": "0043fa8c",
+   "name": "tShieldSystem::vfunction47"
+  },
+  {
+   "address": "0043faae",
+   "name": "tShieldSystem::vfunction62"
+  },
+  {
+   "address": "0043face",
+   "name": "tShieldSystem::vfunction23"
+  },
+  {
+   "address": "0043fbb5",
+   "name": "tShieldGroup::vfunction23"
+  },
+  {
+   "address": "0043fdf9",
+   "name": "tShieldGroup::vfunction93"
+  },
+  {
+   "address": "0043fe09",
+   "name": "tShieldGroup::vfunction90"
+  },
+  {
+   "address": "0043fe84",
+   "name": "tShieldSystem::vfunction100"
+  },
+  {
+   "address": "0043fed6",
+   "name": "tShieldSystem::vfunction101"
+  },
+  {
+   "address": "0043ff02",
+   "name": "tShieldSystem::vfunction102"
+  },
+  {
+   "address": "0043ff2d",
+   "name": "FUN_0043ff2d"
+  },
+  {
+   "address": "00440116",
+   "name": "tShieldSystem::vfunction103"
+  },
+  {
+   "address": "00440199",
+   "name": "tShieldSystem::vfunction104"
+  },
+  {
+   "address": "004401d6",
+   "name": "tShieldSystem::vfunction105"
+  },
+  {
+   "address": "00440224",
+   "name": "FUN_00440224"
+  },
+  {
+   "address": "0044036b",
+   "name": "FUN_0044036b"
+  },
+  {
+   "address": "004404b2",
+   "name": "tShieldSystem::vfunction106"
+  },
+  {
+   "address": "00440502",
+   "name": "tShieldSystem::vfunction107"
+  },
+  {
+   "address": "00440664",
+   "name": "tShieldGroup::vfunction85"
+  },
+  {
+   "address": "00440668",
+   "name": "tShieldGroup::vfunction91"
+  },
+  {
+   "address": "0044066c",
+   "name": "tShieldGroup::vfunction92"
+  },
+  {
+   "address": "00440673",
+   "name": "tShieldGroup::vfunction94"
+  },
+  {
+   "address": "00440677",
+   "name": "tShieldGroup::vfunction107"
+  },
+  {
+   "address": "0044067e",
+   "name": "tShieldGroup::vfunction108"
+  },
+  {
+   "address": "00440692",
+   "name": "tShieldGroup::scalar_deleting_destructor"
+  },
+  {
+   "address": "004406ae",
+   "name": "tShieldGroup::~tShieldGroup"
+  },
+  {
+   "address": "004406b9",
+   "name": "FUN_004406b9"
+  },
+  {
+   "address": "0044089f",
+   "name": "tShieldGroup::vfunction87"
+  },
+  {
+   "address": "0044099e",
+   "name": "tShieldGroup::vfunction88"
+  },
+  {
+   "address": "00440abc",
+   "name": "tShieldGroup::vfunction95"
+  },
+  {
+   "address": "00440b11",
+   "name": "tShieldGroup::vfunction86"
+  },
+  {
+   "address": "00440e2a",
+   "name": "tShieldGroup::vfunction101"
+  },
+  {
+   "address": "00440f12",
+   "name": "tShieldGroup::vfunction99"
+  },
+  {
+   "address": "00440f55",
+   "name": "tShieldGroup::vfunction100"
+  },
+  {
+   "address": "00440f98",
+   "name": "tShieldGroup::vfunction102"
+  },
+  {
+   "address": "0044107b",
+   "name": "tShieldGroup::vfunction103"
+  },
+  {
+   "address": "004410da",
+   "name": "tShieldGroup::vfunction104"
+  },
+  {
+   "address": "00441139",
+   "name": "tShieldGroup::vfunction105"
+  },
+  {
+   "address": "0044119c",
+   "name": "tShieldGroup::vfunction106"
+  },
+  {
+   "address": "00441226",
+   "name": "FUN_00441226"
+  },
+  {
+   "address": "00441261",
+   "name": "tShieldGroup::vfunction98"
+  },
+  {
+   "address": "0044127f",
+   "name": "tShieldGroup::vfunction97"
+  },
+  {
+   "address": "004413d8",
+   "name": "tShieldGroup::vfunction96"
+  },
+  {
+   "address": "0045da31",
+   "name": "tCampaignState::vfunction4"
+  },
+  {
+   "address": "0045dbda",
+   "name": "tState_Campaign::vfunction6"
+  },
+  {
+   "address": "0045dc2b",
+   "name": "tCampaignState::vfunction15"
+  },
+  {
+   "address": "0045dc99",
+   "name": "FUN_0045dc99"
+  },
+  {
+   "address": "0045dd02",
+   "name": "FUN_0045dd02"
+  },
+  {
+   "address": "0045ddc0",
+   "name": "FUN_0045ddc0"
+  },
+  {
+   "address": "0045ddca",
+   "name": "FUN_0045ddca"
+  },
+  {
+   "address": "0045dde5",
+   "name": "tState_Campaign::tState_Campaign"
+  },
+  {
+   "address": "0045deac",
+   "name": "tCampaignState::scalar_deleting_destructor"
+  },
+  {
+   "address": "0048c040",
+   "name": "tFleetPanel::scalar_deleting_destructor"
+  },
+  {
+   "address": "0048c34e",
+   "name": "FUN_0048c34e"
+  },
+  {
+   "address": "0048c36d",
+   "name": "FUN_0048c36d"
+  },
+  {
+   "address": "0048c3a6",
+   "name": "tFleetPanel::vfunction3"
+  },
+  {
+   "address": "0048c3e7",
+   "name": "tFleetPanel::vfunction6"
+  },
+  {
+   "address": "0048c418",
+   "name": "tFleetPanel::vfunction4"
+  },
+  {
+   "address": "004b0a39",
+   "name": "tMyHud3D::vfunction2"
+  },
+  {
+   "address": "004b14aa",
+   "name": "FUN_004b14aa"
+  },
+  {
+   "address": "004b14db",
+   "name": "tMyHud3D::vfunction4"
+  },
+  {
+   "address": "004b1654",
+   "name": "FUN_004b1654"
+  },
+  {
+   "address": "004b1692",
+   "name": "FUN_004b1692"
+  },
+  {
+   "address": "004b1ba9",
+   "name": "tMyHud3D::vfunction3"
+  },
+  {
+   "address": "004b1ed5",
+   "name": "tMyHud3D::vfunction5"
+  },
+  {
+   "address": "004b2688",
+   "name": "tMyHud3D::vfunction7"
+  },
+  {
+   "address": "004b269e",
+   "name": "tMyHud3D::vfunction8"
+  },
+  {
+   "address": "004b26ca",
+   "name": "FUN_004b26ca"
+  },
+  {
+   "address": "004b26e4",
+   "name": "tMyHud3D::vfunction9"
+  },
+  {
+   "address": "004b2725",
+   "name": "tMyHud3D::vfunction6"
+  },
+  {
+   "address": "004b2ae6",
+   "name": "FUN_004b2ae6"
+  },
+  {
+   "address": "004b2b56",
+   "name": "tMyHud3D::vfunction11"
+  },
+  {
+   "address": "004b2c83",
+   "name": "tMyHud3D::vfunction10"
+  },
+  {
+   "address": "004c26f2",
+   "name": "tFleetEntry::vfunction49_for_tVisGroup"
+  },
+  {
+   "address": "004c26ff",
+   "name": "tFleetEntry::scalar_deleting_destructor"
+  },
+  {
+   "address": "004c27a8",
+   "name": "tFleetEntry::vfunction31_for_tVisGroup"
+  },
+  {
+   "address": "004c2aba",
+   "name": "FUN_004c2aba"
+  },
+  {
+   "address": "004c2b66",
+   "name": "FUN_004c2b66"
+  },
+  {
+   "address": "004c2ba1",
+   "name": "FUN_004c2ba1"
+  },
+  {
+   "address": "004c2bdc",
+   "name": "tFleetEntry::vfunction43_for_tVisGroup"
+  },
+  {
+   "address": "004c2f74",
+   "name": "tFleetEntry::vfunction44_for_tVisGroup"
+  },
+  {
+   "address": "004c32df",
+   "name": "tFleetEntry::vfunction46_for_tVisGroup"
+  },
+  {
+   "address": "004c33ed",
+   "name": "tFleetEntry::vfunction45_for_tVisGroup"
+  },
+  {
+   "address": "004c34fb",
+   "name": "tFleetEntry::vfunction50_for_tVisGroup"
+  },
+  {
+   "address": "004c36e0",
+   "name": "FUN_004c36e0"
+  },
+  {
+   "address": "004c3784",
+   "name": "tFleetEntry::vfunction47_for_tVisGroup"
+  },
+  {
+   "address": "004c38cc",
+   "name": "tFleetEntry::vfunction51_for_tVisGroup"
+  },
+  {
+   "address": "004c6225",
+   "name": "tListBox_Base::vfunction8"
+  },
+  {
+   "address": "004c6376",
+   "name": "FUN_004c6376"
+  },
+  {
+   "address": "004c63dd",
+   "name": "tListBox_Base::vfunction31"
+  },
+  {
+   "address": "004c64c6",
+   "name": "tListBox_Base::vfunction37"
+  },
+  {
+   "address": "004c670c",
+   "name": "tListBox_Base::vfunction42"
+  },
+  {
+   "address": "004c676a",
+   "name": "FUN_004c676a"
+  },
+  {
+   "address": "004c6787",
+   "name": "tListBox_Base::vfunction43"
+  },
+  {
+   "address": "004c679a",
+   "name": "tListBox_Base::vfunction44"
+  },
+  {
+   "address": "004c68dd",
+   "name": "FUN_004c68dd"
+  },
+  {
+   "address": "004c692a",
+   "name": "FUN_004c692a"
+  },
+  {
+   "address": "004c69b8",
+   "name": "FUN_004c69b8"
+  },
+  {
+   "address": "004c6a16",
+   "name": "FUN_004c6a16"
+  },
+  {
+   "address": "004c6a37",
+   "name": "tListBox_Base::vfunction47"
+  },
+  {
+   "address": "004c6a65",
+   "name": "tListBox_Base::vfunction48"
+  },
+  {
+   "address": "004c6a6c",
+   "name": "tListBox_Base::vfunction49"
+  },
+  {
+   "address": "004c6a73",
+   "name": "tListBox_Base::vfunction50"
+  },
+  {
+   "address": "004c6a80",
+   "name": "tListBox_Base::vfunction51"
+  },
+  {
+   "address": "004c6ab1",
+   "name": "tListBox_Base::vfunction52"
+  },
+  {
+   "address": "004c6af8",
+   "name": "tListBox_Base::vfunction53"
+  },
+  {
+   "address": "004c6b14",
+   "name": "tListBox_Base::vfunction55"
+  },
+  {
+   "address": "004c6bac",
+   "name": "tListBox_Base::vfunction54"
+  },
+  {
+   "address": "004c6bcb",
+   "name": "tListBox_Base::vfunction56"
+  },
+  {
+   "address": "004c6c13",
+   "name": "tListBox_Base::vfunction57"
+  },
+  {
+   "address": "004c6c21",
+   "name": "tListBox_Base::vfunction58"
+  },
+  {
+   "address": "004c6c4f",
+   "name": "tListBox_Base::vfunction59"
+  },
+  {
+   "address": "004c6c69",
+   "name": "tListBox_Base::vfunction60"
+  },
+  {
+   "address": "004c6c80",
+   "name": "tListBox_Base::vfunction61"
+  },
+  {
+   "address": "004c6c9d",
+   "name": "tListBox_Base::vfunction62"
+  },
+  {
+   "address": "004c6ce9",
+   "name": "tListBox_Base::vfunction63"
+  },
+  {
+   "address": "004c6d2e",
+   "name": "tListBox_Base::vfunction64"
+  },
+  {
+   "address": "004c6d35",
+   "name": "tListBox_Base::vfunction65"
+  },
+  {
+   "address": "004c70b3",
+   "name": "tListBox_Select::tListBox_Select"
+  },
+  {
+   "address": "004c70e1",
+   "name": "tListBox_Select::vfunction31"
+  },
+  {
+   "address": "004c7468",
+   "name": "tListBox_Select::vfunction51"
+  },
+  {
+   "address": "004c7474",
+   "name": "tListBox_Select::vfunction55"
+  },
+  {
+   "address": "004c74ba",
+   "name": "tListBox_Select::vfunction56"
+  },
+  {
+   "address": "004c74e9",
+   "name": "tListBox_Select::vfunction66"
+  },
+  {
+   "address": "004c750b",
+   "name": "tListBox_Select::vfunction67"
+  },
+  {
+   "address": "004c7518",
+   "name": "tListBox_Select::vfunction68"
+  },
+  {
+   "address": "004c754b",
+   "name": "tListBox_Select::vfunction69"
+  },
+  {
+   "address": "004c755e",
+   "name": "tListBox_Select::vfunction70"
+  },
+  {
+   "address": "004c7579",
+   "name": "tListBox_Select::vfunction71"
+  },
+  {
+   "address": "004c828b",
+   "name": "tScrollBar::vfunction30"
+  },
+  {
+   "address": "004c82f8",
+   "name": "FUN_004c82f8"
+  },
+  {
+   "address": "004c8439",
+   "name": "tScrollBar::vfunction8"
+  },
+  {
+   "address": "004c84d7",
+   "name": "FUN_004c84d7"
+  },
+  {
+   "address": "004c855e",
+   "name": "FUN_004c855e"
+  },
+  {
+   "address": "004c8587",
+   "name": "tScrollBar::vfunction31"
+  },
+  {
+   "address": "004c899b",
+   "name": "tScrollBar::vfunction41"
+  },
+  {
+   "address": "004c8a0e",
+   "name": "tScrollBar::vfunction42"
+  },
+  {
+   "address": "004c8a2d",
+   "name": "tScrollBar::vfunction43"
+  },
+  {
+   "address": "004e1f61",
+   "name": "tPhaserBank::vfunction23"
+  },
+  {
+   "address": "004e20d1",
+   "name": "FUN_004e20d1"
+  },
+  {
+   "address": "004e20f4",
+   "name": "FUN_004e20f4"
+  },
+  {
+   "address": "004e2243",
+   "name": "FUN_004e2243"
+  },
+  {
+   "address": "004e22d5",
+   "name": "tPhaserBank::vfunction79"
+  },
+  {
+   "address": "004e22dd",
+   "name": "tPhaserBank::vfunction109"
+  },
+  {
+   "address": "004e22e5",
+   "name": "tPhaserBank::vfunction110"
+  },
+  {
+   "address": "004e22ed",
+   "name": "tPhaserBank::vfunction111"
+  },
+  {
+   "address": "004e22f5",
+   "name": "tPhaserBank::vfunction105"
+  },
+  {
+   "address": "004e230c",
+   "name": "tPhaserBank::vfunction102"
+  },
+  {
+   "address": "004e23b5",
+   "name": "tPhaserBank::vfunction74"
+  },
+  {
+   "address": "004e245e",
+   "name": "tPhaserBank::vfunction143"
+  },
+  {
+   "address": "004e2542",
+   "name": "tPhaserBank::vfunction80"
+  },
+  {
+   "address": "004e25c0",
+   "name": "tPhaserBank::vfunction114"
+  },
+  {
+   "address": "004e2711",
+   "name": "tPhaserBank::vfunction116"
+  },
+  {
+   "address": "004e27d3",
+   "name": "tPhaserBank::vfunction118"
+  },
+  {
+   "address": "004e2895",
+   "name": "tPhaserBank::vfunction148"
+  },
+  {
+   "address": "004e28fc",
+   "name": "tPhaserBank::vfunction136"
+  },
+  {
+   "address": "004e2aaa",
+   "name": "FUN_004e2aaa"
+  },
+  {
+   "address": "004e2b02",
+   "name": "tPhaserBank::vfunction39"
+  },
+  {
+   "address": "004e5403",
+   "name": "tPhaserXBank::vfunction23"
+  },
+  {
+   "address": "004e5573",
+   "name": "tPhaserXBank::vfunction105"
+  },
+  {
+   "address": "004e558a",
+   "name": "tPhaserXBank::vfunction148"
+  },
+  {
+   "address": "004e55af",
+   "name": "tPhaserXBank::vfunction133"
+  },
+  {
+   "address": "004e55e9",
+   "name": "tPhaserXBank::vfunction79"
+  },
+  {
+   "address": "004e55f4",
+   "name": "tPhaserXBank::vfunction109"
+  },
+  {
+   "address": "004e55ff",
+   "name": "tPhaserXBank::vfunction110"
+  },
+  {
+   "address": "004e560a",
+   "name": "tPhaserXBank::vfunction111"
+  },
+  {
+   "address": "004e5615",
+   "name": "tPhaserXBank::vfunction149"
+  },
+  {
+   "address": "004e562b",
+   "name": "tPhaserXBank::vfunction65"
+  },
+  {
+   "address": "004e568c",
+   "name": "tPhaserBank::vfunction70"
+  },
+  {
+   "address": "004e56dc",
+   "name": "tPhaserXBank::vfunction143"
+  },
+  {
+   "address": "004e57c0",
+   "name": "tPhaserXBank::vfunction74"
+  },
+  {
+   "address": "004e5849",
+   "name": "tPhaserXBank::vfunction80"
+  },
+  {
+   "address": "004e5868",
+   "name": "FUN_004e5868"
+  },
+  {
+   "address": "004e58ec",
+   "name": "tPhaserXBank::vfunction134"
+  },
+  {
+   "address": "004e5958",
+   "name": "FUN_004e5958"
+  },
+  {
+   "address": "004e5b75",
+   "name": "tPhaserXBank::vfunction114"
+  },
+  {
+   "address": "004e5bd9",
+   "name": "tPhaserXBank::vfunction116"
+  },
+  {
+   "address": "004e5c04",
+   "name": "tPhaserXBank::vfunction118"
+  },
+  {
+   "address": "00513e90",
+   "name": "tAIWeaponOfficer::scalar_deleting_destructor"
+  },
+  {
+   "address": "00513fc2",
+   "name": "tAIWeaponOfficer::~tAIWeaponOfficer"
+  },
+  {
+   "address": "00513fd4",
+   "name": "FUN_00513fd4"
+  },
+  {
+   "address": "00513fd8",
+   "name": "tAIWeaponOfficer::vfunction7_for_tAIOfficer"
+  },
+  {
+   "address": "00514011",
+   "name": "FUN_00514011"
+  },
+  {
+   "address": "00514067",
+   "name": "FUN_00514067"
+  },
+  {
+   "address": "005140c6",
+   "name": "tAIWeaponOfficer::vfunction9_for_tAIOfficer"
+  },
+  {
+   "address": "00514108",
+   "name": "tAIWeaponOfficer::vfunction8_for_tAIOfficer"
+  },
+  {
+   "address": "00514141",
+   "name": "tAIWeaponOfficer::vfunction6_for_tAIOfficer"
+  },
+  {
+   "address": "0051426b",
+   "name": "tAIWeaponOfficer::vfunction10_for_tAIOfficer"
+  },
+  {
+   "address": "005142a6",
+   "name": "FUN_005142a6"
+  },
+  {
+   "address": "005142b3",
+   "name": "tAIWeaponOfficer::vfunction11_for_tAIOfficer"
+  },
+  {
+   "address": "005143d2",
+   "name": "tAIWeaponOfficer::vfunction15_for_tAIOfficer"
+  },
+  {
+   "address": "00514599",
+   "name": "tAIWeaponOfficer::vfunction18_for_tAIOfficer"
+  },
+  {
+   "address": "005145bd",
+   "name": "tAIWeaponOfficer::vfunction19_for_tAIOfficer"
+  },
+  {
+   "address": "005145c6",
+   "name": "tAIWeaponOfficer::vfunction17_for_tAIOfficer"
+  },
+  {
+   "address": "005146f0",
+   "name": "tAIWeaponOfficer::vfunction2_for_tAIOfficer"
+  },
+  {
+   "address": "005147ab",
+   "name": "tAIWeaponOfficer::vfunction13_for_tAIOfficer"
+  },
+  {
+   "address": "0051492b",
+   "name": "tAIWeaponOfficer::vfunction3_for_tPriorityPowerRequest"
+  },
+  {
+   "address": "00515daa",
+   "name": "tAIHelmOfficer::~tAIHelmOfficer"
+  },
+  {
+   "address": "00515db1",
+   "name": "tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed"
+  },
+  {
+   "address": "00515e79",
+   "name": "FUN_00515e79"
+  },
+  {
+   "address": "00515ea9",
+   "name": "FUN_00515ea9"
+  },
+  {
+   "address": "00515f27",
+   "name": "FUN_00515f27"
+  },
+  {
+   "address": "00516670",
+   "name": "FUN_00516670"
+  },
+  {
+   "address": "005166ed",
+   "name": "FUN_005166ed"
+  },
+  {
+   "address": "00516733",
+   "name": "FUN_00516733"
+  },
+  {
+   "address": "005167ee",
+   "name": "FUN_005167ee"
+  },
+  {
+   "address": "00516825",
+   "name": "FUN_00516825"
+  },
+  {
+   "address": "00516879",
+   "name": "FUN_00516879"
+  },
+  {
+   "address": "0051692e",
+   "name": "FUN_0051692e"
+  },
+  {
+   "address": "0051696c",
+   "name": "FUN_0051696c"
+  },
+  {
+   "address": "005169d6",
+   "name": "FUN_005169d6"
+  },
+  {
+   "address": "005169e0",
+   "name": "tNetMsg_kMoveInDirection::tNetMsg_kMoveInDirection_Constructor_or_Destructor"
+  },
+  {
+   "address": "00516c79",
+   "name": "tAIHelmOfficer::vfunction3"
+  },
+  {
+   "address": "0051e09a",
+   "name": "tAICaptain::vfunction18"
+  },
+  {
+   "address": "0051e09e",
+   "name": "tAICaptain::scalar_deleting_destructor"
+  },
+  {
+   "address": "0051e1f7",
+   "name": "tAICaptain::vfunction7"
+  },
+  {
+   "address": "0051e275",
+   "name": "FUN_0051e275"
+  },
+  {
+   "address": "0051e32e",
+   "name": "FUN_0051e32e"
+  },
+  {
+   "address": "0051e33f",
+   "name": "FUN_0051e33f"
+  },
+  {
+   "address": "0051e37d",
+   "name": "FUN_0051e37d"
+  },
+  {
+   "address": "0051e3a1",
+   "name": "FUN_0051e3a1"
+  },
+  {
+   "address": "0051e3ac",
+   "name": "FUN_0051e3ac"
+  },
+  {
+   "address": "0051e44d",
+   "name": "FUN_0051e44d"
+  },
+  {
+   "address": "0051f0c3",
+   "name": "FUN_0051f0c3"
+  },
+  {
+   "address": "0051f0d0",
+   "name": "FUN_0051f0d0"
+  },
+  {
+   "address": "0051f153",
+   "name": "FUN_0051f153"
+  },
+  {
+   "address": "0051f16e",
+   "name": "FUN_0051f16e"
+  },
+  {
+   "address": "0051f184",
+   "name": "FUN_0051f184"
+  },
+  {
+   "address": "0051f1ed",
+   "name": "FUN_0051f1ed"
+  },
+  {
+   "address": "0051f559",
+   "name": "FUN_0051f559"
+  },
+  {
+   "address": "0051f602",
+   "name": "FUN_0051f602"
+  },
+  {
+   "address": "0051f958",
+   "name": "FUN_0051f958"
+  },
+  {
+   "address": "0051f9d1",
+   "name": "FUN_0051f9d1"
+  },
+  {
+   "address": "0051f9e9",
+   "name": "FUN_0051f9e9"
+  },
+  {
+   "address": "0051fa3c",
+   "name": "FUN_0051fa3c"
+  },
+  {
+   "address": "0051fce4",
+   "name": "FUN_0051fce4"
+  },
+  {
+   "address": "0051ff8b",
+   "name": "FUN_0051ff8b"
+  },
+  {
+   "address": "0051ffae",
+   "name": "FUN_0051ffae"
+  },
+  {
+   "address": "00520004",
+   "name": "FUN_00520004"
+  },
+  {
+   "address": "0052008f",
+   "name": "FUN_0052008f"
+  },
+  {
+   "address": "005200c8",
+   "name": "tAICaptain::vfunction4"
+  },
+  {
+   "address": "00538cca",
+   "name": "tMetaMapDesc::tMetaMapDesc"
+  },
+  {
+   "address": "00538d00",
+   "name": "tMetaMapDesc::vfunction2_for_tStreamable"
+  },
+  {
+   "address": "00538d3f",
+   "name": "tMetaMapDesc::vfunction3_for_tStreamable"
+  },
+  {
+   "address": "00538da5",
+   "name": "tMetaMapDesc::vfunction6_for_tAllocatedClass"
+  },
+  {
+   "address": "00538dfe",
+   "name": "tMetaMapDesc::vfunction7_for_tAllocatedClass"
+  },
+  {
+   "address": "00538e66",
+   "name": "tMetaMapDesc::vfunction8_for_tAllocatedClass"
+  },
+  {
+   "address": "00538e6c",
+   "name": "tMetaMapDesc::vfunction9_for_tAllocatedClass"
+  },
+  {
+   "address": "0053900a",
+   "name": "tClassAllocator<tMetaMapDesc>::vfunction3"
+  },
+  {
+   "address": "00539016",
+   "name": "tClassAllocator<tCampaignInfo>::scalar_deleting_destructor"
+  },
+  {
+   "address": "00547bc5",
+   "name": "tBattles::scalar_deleting_destructor"
+  },
+  {
+   "address": "00547cce",
+   "name": "FUN_00547cce"
+  },
+  {
+   "address": "00547d3b",
+   "name": "FUN_00547d3b"
+  },
+  {
+   "address": "00547d6e",
+   "name": "tBattles::vfunction2_for_tStreamable"
+  },
+  {
+   "address": "00547de9",
+   "name": "tBattles::vfunction3_for_tStreamable"
+  },
+  {
+   "address": "005480e3",
+   "name": "FUN_005480e3"
+  },
+  {
+   "address": "0054814e",
+   "name": "tEntityControlShip::vfunction26"
+  },
+  {
+   "address": "00548151",
+   "name": "tBattles::vfunction8_for_tAllocatedClass"
+  },
+  {
+   "address": "00548157",
+   "name": "tBattles::vfunction9_for_tAllocatedClass"
+  },
+  {
+   "address": "0054815d",
+   "name": "FUN_0054815d"
+  },
+  {
+   "address": "00548167",
+   "name": "tState_Namespace_Tactical::tCameraMgrEx::vfunction17"
+  },
+  {
+   "address": "00548171",
+   "name": "FUN_00548171"
+  },
+  {
+   "address": "00548192",
+   "name": "FUN_00548192"
+  },
+  {
+   "address": "0054819c",
+   "name": "FUN_0054819c"
+  },
+  {
+   "address": "005481ab",
+   "name": "FUN_005481ab"
+  },
+  {
+   "address": "005481bd",
+   "name": "FUN_005481bd"
+  },
+  {
+   "address": "0054841d",
+   "name": "tClassAllocator<tBattles>::vfunction3"
+  },
+  {
+   "address": "00607faa",
+   "name": "tPanelMgr::scalar_deleting_destructor"
+  },
+  {
+   "address": "0060810e",
+   "name": "FUN_0060810e"
+  },
+  {
+   "address": "006082e2",
+   "name": "FUN_006082e2"
+  },
+  {
+   "address": "00608493",
+   "name": "FUN_00608493"
+  },
+  {
+   "address": "0060857a",
+   "name": "FUN_0060857a"
+  },
+  {
+   "address": "006086e9",
+   "name": "FUN_006086e9"
+  },
+  {
+   "address": "00608766",
+   "name": "FUN_00608766"
+  },
+  {
+   "address": "00608b4e",
+   "name": "tPanelMgr::vfunction4"
+  },
+  {
+   "address": "00609077",
+   "name": "tPanelMgr::vfunction13"
+  },
+  {
    "address": "006289b0",
    "name": "tPart::tPart"
   },
@@ -1099,6 +2431,66 @@
   {
    "address": "0062de10",
    "name": "clib::memcpy"
+  },
+  {
+   "address": "006587f0",
+   "name": "tChannelGroup::mDump"
+  },
+  {
+   "address": "00658890",
+   "name": "tChannelGroup::mDump"
+  },
+  {
+   "address": "006589f0",
+   "name": "tChannelGroup::mClose"
+  },
+  {
+   "address": "00658e30",
+   "name": "tChannelGroup::mLoad"
+  },
+  {
+   "address": "00659470",
+   "name": "tChannelGroup::mGetChannelNumberFromIndex"
+  },
+  {
+   "address": "006594a0",
+   "name": "tChannelGroup::mGetIndex"
+  },
+  {
+   "address": "00659530",
+   "name": "tChannelGroup::mAddDuplicate"
+  },
+  {
+   "address": "00659540",
+   "name": "tChannelGroup::mAttachFileToChannel"
+  },
+  {
+   "address": "006597f0",
+   "name": "tChannelGroup::mAttachFileToBaseGroup"
+  },
+  {
+   "address": "00659a20",
+   "name": "tChannelGroup::mKillRetainedMode"
+  },
+  {
+   "address": "00659b80",
+   "name": "tChannelGroup::mClearAttachments"
+  },
+  {
+   "address": "00659ca0",
+   "name": "tChannelGroup::mGetAvailableChannel"
+  },
+  {
+   "address": "0065a0f0",
+   "name": "tChannelGroup::mAttachSoundToChannel"
+  },
+  {
+   "address": "0065a370",
+   "name": "tChannelGroup::mPlayChannel"
+  },
+  {
+   "address": "0065a7c0",
+   "name": "tChannelGroup::mPauseChannel"
   },
   {
    "address": "0066c080",
@@ -1175,6 +2567,38 @@
   {
    "address": "006fc750",
    "name": "tDynamicAllocator::LockDownAllocator"
+  },
+  {
+   "address": "00707e80",
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo"
+  },
+  {
+   "address": "00707ef0",
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamOut"
+  },
+  {
+   "address": "00708410",
+   "name": "FUN_00708410"
+  },
+  {
+   "address": "00708570",
+   "name": "FUN_00708570"
+  },
+  {
+   "address": "007086d0",
+   "name": "FUN_007086d0"
+  },
+  {
+   "address": "00708800",
+   "name": "nDatabase::tFileDatabaseMgr::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00708fc0",
+   "name": "nDatabase::tFileDatabaseMgr::GetCurDBInfo"
+  },
+  {
+   "address": "00709060",
+   "name": "nDatabase::tFileDatabaseMgr::GetDBInfo"
   }
  ],
  "functional": []
