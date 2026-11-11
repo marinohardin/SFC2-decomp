@@ -11,10 +11,12 @@ class c_0092deb4
 public:
 	virtual void fn_vtbl_00();
 	virtual void fn_vtbl_04();
-	virtual void fn_vtbl_08();
+	// HYPOTHESIS: argument types unknown; tState_Campaign passes an entry of its list and -1.
+	virtual void fn_vtbl_08( void *entry, int n );
 	virtual void fn_vtbl_0C();
 	virtual void fn_vtbl_10();
-	virtual void fn_vtbl_14();
+	// HYPOTHESIS: returns the player's name; tState_Campaign stores it as "PlayerName1".
+	virtual const char *fn_vtbl_14();
 	virtual void fn_vtbl_18();
 	virtual void fn_vtbl_1C();
 	virtual void fn_vtbl_20();
@@ -49,7 +51,8 @@ public:
 	virtual void fn_vtbl_90();
 	virtual void fn_vtbl_94();
 	virtual void fn_vtbl_98();
-	virtual void fn_vtbl_9C();
+	// HYPOTHESIS: no arguments; the return type is unknown.
+	virtual int fn_vtbl_9C();
 	virtual void fn_vtbl_A0();
 	virtual void fn_vtbl_A4();
 	virtual void fn_vtbl_A8();
@@ -71,6 +74,30 @@ public:
 	virtual bool fn_vtbl_E4();
 	virtual void fn_vtbl_E8();
 	virtual void fn_vtbl_EC( int n );
+	virtual void fn_vtbl_F0();
+	virtual void fn_vtbl_F4();
+	virtual void fn_vtbl_F8();
+	virtual void fn_vtbl_FC();
+	virtual void fn_vtbl_100();
+	virtual void fn_vtbl_104();
+	virtual void fn_vtbl_108();
+	virtual void fn_vtbl_10C();
+	virtual void fn_vtbl_110();
+	virtual void fn_vtbl_114();
+	virtual void fn_vtbl_118();
+	virtual void fn_vtbl_11C();
+	virtual void fn_vtbl_120();
+	virtual void fn_vtbl_124();
+	virtual void fn_vtbl_128();
+	virtual void fn_vtbl_12C();
+	virtual void fn_vtbl_130();
+	virtual void fn_vtbl_134();
+	virtual void fn_vtbl_138();
+	virtual void fn_vtbl_13C();
+	// HYPOTHESIS: argument types unknown; tState_Campaign passes a small number and 0.
+	virtual void fn_vtbl_140( int a, int b );
+	// HYPOTHESIS: a lookup by a number and a section name ("HULL_TEMPLATE"); types unknown.
+	virtual int fn_vtbl_144( int a, const char *name );
 };
 
 extern c_0092deb4 *g_0092deb4;

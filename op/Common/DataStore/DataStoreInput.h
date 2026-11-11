@@ -108,6 +108,13 @@ tInput& tInput::operator>>( std::string& string )
 	return *this;
 }
 
+tInput& tInput::operator>>( bool& value )
+{
+	value = (bool)Get();
+
+	return *this;
+}
+
 };
 
 #endif

@@ -75,6 +75,11 @@ protected:
 	tBuffer* fBuffer;
 };
 
+void tOutput::Put( byte data )
+{
+	fBuffer->Put( data );
+}
+
 void tOutput::Write( const byte* data, int32 size )
 {
 	fBuffer->Write( data, size );
@@ -86,6 +91,13 @@ tOutput& tOutput::operator<<( const std::string& string )
 	Write( (const byte*)&size, sizeof( size ) );
 
 	Write( (const byte*)string.data(), size );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( bool value )
+{
+	Put( (byte)value );
 
 	return *this;
 }

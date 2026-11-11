@@ -52,6 +52,8 @@ public:
 	static tDynamicAllocator* Instance();
 	void LockDownAllocator();
 
+	void mAddToAllocList( const type_info& type, tAllocator* alloc );
+
 	iAllocatorID mGetAllocatorID( const type_info& type );
 	iAllocatorID mGetAllocatorID( const char* raw_name );
 
@@ -74,6 +76,26 @@ private:
 
 	bool fAllocatorListLocked;
 	tAllocatorList* fAllocatorList;
+};
+
+template< class tClass >
+class tClassAllocator : public tAllocator
+{
+public:
+	tClassAllocator();
+
+	// MATCH-ONLY: the scalar deleting destructor is compiler-generated and has no source line,
+	// so it is written out as a member: destroy, then delete when bit 0 of the flag is set.
+	// The class declares no destructor of its own (as in the SDK); the implicit one is called.
+	tClassAllocator* scalar_deleting_destructor( unsigned char flags );
+
+	virtual tAllocatedClass* mAllocate();
+	static iAllocatorID mGetAllocatorID();
+
+protected:
+	virtual void mAssignAllocID( iAllocatorID allocID );
+
+	static iAllocatorID fAllocID;
 };
 
 #endif

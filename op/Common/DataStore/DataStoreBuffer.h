@@ -50,6 +50,11 @@ protected:
 std::istream& operator>>( std::istream& inputStream, tBuffer& input );
 std::ostream& operator<<( std::ostream& outputStream, const tBuffer& output );
 
+void tBuffer::Put( byte data )
+{
+	fBuffer.push_back( data );
+}
+
 void tBuffer::Write( const byte* data, int32u size )
 {
 	fBuffer.insert( fBuffer.end(), data, data + size );

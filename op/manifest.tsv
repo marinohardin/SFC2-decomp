@@ -325,6 +325,19 @@ address	size	symbol	source	modes
 0x0044127f	345	tShieldGroup::vfunction97(int)	unsorted/tShieldGroup.cpp	vc6 guest
 0x004413d8	52	tShieldGroup::vfunction96(int)	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044140c	2344	tShieldGroup::vfunction89(unsigned int,int)	unsorted/tShieldGroup.cpp	partial
+0x0045da31	15	tCampaignState::vfunction4()	unsorted/tCampaignState.cpp	vc6 guest
+0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	partial
+0x0045dbda	81	tState_Campaign::vfunction6(int)	unsorted/tCampaignState.cpp	vc6 guest
+0x0045dc2b	110	tState_Campaign::vfunction15(int *)	unsorted/tCampaignState.cpp	vc6 guest
+0x0045dc99	105	tState_Campaign::fn_0045dc99(int)	unsorted/tCampaignState.cpp	vc6 guest
+0x0045dd02	180	tState_Campaign::fn_0045dd02()	unsorted/tCampaignState.cpp	vc6 guest
+0x0045ddc0	10	g_0090bfd8 (dynamic initializer)	unsorted/tCampaignState.cpp	vc6
+0x0045ddca	12	g_0090bfd8 (atexit registration)	unsorted/tCampaignState.cpp	vc6
+0x0045dde5	18	tState_Campaign::tState_Campaign()	unsorted/tCampaignState.cpp	vc6
+0x0045ddf7	10	tState_Campaign::~tState_Campaign()	unsorted/tCampaignState.cpp	partial
+0x0045de01	61	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
+0x0045de5a	10	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
+0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
 0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
 0x004c6225	337	tListBox_Base::vfunction8(const tRect *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c6376	103	tRect::mMakeClippedRect(const tRect *,tRect *) const	unsorted/tListBox_Base.cpp	vc6 guest
@@ -429,6 +442,56 @@ address	size	symbol	source	modes
 0x004e5b75	100	tPhaserXBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5bd9	43	tPhaserXBank::vfunction116(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5c04	43	tPhaserXBank::vfunction118(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
+0x00538cca	54	tMetaMapDesc::tMetaMapDesc(void**,int32u,bool)	unsorted/tMetaMapDesc.cpp	vc6
+0x00538d00	63	tMetaMapDesc::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538d3f	102	tMetaMapDesc::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538da5	89	tMetaMapDesc::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538dfe	104	tMetaMapDesc::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538e66	6	tMetaMapDesc::SQLTableName() const	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538e6c	6	tMetaMapDesc::SQLFieldNames() const	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538e7c	157	fn_00538e7c()	unsorted/tMetaMapDesc.cpp	partial
+0x00538f3e	71	fn_00538f3e()	unsorted/tMetaMapDesc.cpp	partial
+0x00538f85	10	fn_00538f85()	unsorted/tMetaMapDesc.cpp	partial
+0x00538f8f	50	tClassAllocator()	unsorted/tMetaMapDesc.cpp	partial
+0x00538fc1	10	fn_00538fc1()	unsorted/tMetaMapDesc.cpp	partial
+0x00538fcb	63	mAllocate()	unsorted/tMetaMapDesc.cpp	partial
+0x0053900a	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00539070	12	fn_00539070()	unsorted/tMetaMapDesc.cpp	partial
+0x0053907c	12	fn_0053907c()	unsorted/tMetaMapDesc.cpp	partial
+0x00539088	12	fn_00539088()	unsorted/tMetaMapDesc.cpp	partial
+0x00539094	8	fn_00539094()	unsorted/tMetaMapDesc.cpp	partial
+0x00547b61	100	tBattles::tBattles()	unsorted/tBattles.cpp	partial
+0x00547bc5	28	tBattles::scalar_deleting_destructor(unsigned char)	unsorted/tBattles.cpp	vc6 guest
+0x00547be1	10	FUN_00547be1()	unsorted/tBattles.cpp	partial
+0x00547beb	116	tBattles::tBattles(const tBattles&)	unsorted/tBattles.cpp	partial
+0x00547c69	101	tBattles::~tBattles()	unsorted/tBattles.cpp	partial
+0x00547cce	109	tBattles::operator=(const tBattles&)	unsorted/tBattles.cpp	vc6 guest
+0x00547d3b	51	tMissionCompleteResults::operator=(const tMissionCompleteResults&)	unsorted/tBattles.cpp	vc6 guest
+0x00547d6e	123	tBattles::StreamOut(nDataStore::tOutput&) const	unsorted/tBattles.cpp	vc6 guest
+0x00547de9	126	tBattles::StreamIn(nDataStore::tInput&)	unsorted/tBattles.cpp	vc6 guest
+0x00547e67	10	tBattles::vfunction6_for_tAllocatedClass()	unsorted/tBattles.cpp	partial
+0x00547e71	626	tBattles::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tBattles.cpp	partial
+0x005480e3	107	fn_005480e3(time_t)	unsorted/tBattles.cpp	vc6 guest
+0x0054814e	3	tBattles::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tBattles.cpp	vc6 guest
+0x00548151	6	tBattles::SQLTableName() const	unsorted/tBattles.cpp	vc6 guest
+0x00548157	6	tBattles::SQLFieldNames() const	unsorted/tBattles.cpp	vc6 guest
+0x0054815d	10	tBattles::fn_0054815d(int32u)	unsorted/tBattles.cpp	vc6 guest
+0x00548167	10	tBattles::fn_00548167(int32u)	unsorted/tBattles.cpp	vc6 guest
+0x00548171	33	tBattles::fn_00548171(nDatabase::tID)	unsorted/tBattles.cpp	vc6 guest
+0x00548192	10	tBattles::fn_00548192(int32u)	unsorted/tBattles.cpp	vc6 guest
+0x0054819c	15	tBattles::fn_0054819c(const tMetaMapHex&)	unsorted/tBattles.cpp	vc6 guest
+0x005481ab	18	tBattles::fn_005481ab(const tMissionCompleteResults&)	unsorted/tBattles.cpp	vc6 guest
+0x005481bd	472	operator=(const std::vector< tObject_0053d20b >&)	unsorted/tBattles.cpp	vc6 guest
+0x00548395	10	FUN_00548395()	unsorted/tBattles.cpp	partial
+0x0054839f	50	tClassAllocator()	unsorted/tBattles.cpp	partial
+0x005483d1	10	fn_005483d1()	unsorted/tBattles.cpp	partial
+0x005483db	66	mAllocate()	unsorted/tBattles.cpp	partial
+0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
+0x00548467	12	FUN_00548467()	unsorted/tBattles.cpp	partial
+0x00548473	12	FUN_00548473()	unsorted/tBattles.cpp	partial
+0x0054847f	12	FUN_0054847f()	unsorted/tBattles.cpp	partial
+0x0054848b	8	fn_0054848b()	unsorted/tBattles.cpp	partial
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

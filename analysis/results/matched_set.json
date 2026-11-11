@@ -2935,6 +2935,123 @@
    "exact": false,
    "recorded": "2026-11-10"
   },
+  "0x0045da31": {
+   "name": "tCampaignState::vfunction4",
+   "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045da40": {
+   "name": "tState_Campaign::vfunction3",
+   "symbol": "?vfunction3@tState_Campaign@@UAEXXZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 410,
+   "score": 95.763,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0045dbda": {
+   "name": "tState_Campaign::vfunction6",
+   "symbol": "?vfunction6@tState_Campaign@@UAEXH@Z",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 81,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045dc2b": {
+   "name": "tCampaignState::vfunction15",
+   "symbol": "?vfunction15@tState_Campaign@@UAEXPAH@Z",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 110,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045dc99": {
+   "name": "FUN_0045dc99",
+   "symbol": "?fn_0045dc99@tState_Campaign@@QAEXH@Z",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 105,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045dd02": {
+   "name": "FUN_0045dd02",
+   "symbol": "?fn_0045dd02@tState_Campaign@@QAE_NXZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 180,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045ddc0": {
+   "name": "FUN_0045ddc0",
+   "symbol": "_$E1",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045ddca": {
+   "name": "FUN_0045ddca",
+   "symbol": "_$E3",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045dde5": {
+   "name": "tState_Campaign::tState_Campaign",
+   "symbol": "??0tState_Campaign@@QAE@XZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0045ddf7": {
+   "name": "tState_Campaign::~tState_Campaign",
+   "symbol": "??1tState_Campaign@@UAE@XZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 10,
+   "score": 26.667,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0045de01": {
+   "name": "FUN_0045de01",
+   "symbol": "??1tCampaignState@@UAE@XZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 61,
+   "score": 13.478,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0045de5a": {
+   "name": "FUN_0045de5a",
+   "symbol": "??0tCampaignState@@QAE@XZ",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 10,
+   "score": 40.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0045deac": {
+   "name": "tCampaignState::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tCampaignState@@QAEPAV1@E@Z",
+   "unit": "unsorted/tCampaignState.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
   "0x004c61a8": {
    "name": "tListBox_Base::~tListBox_Base",
    "symbol": "??1tListBox_Base@@UAE@XZ",
@@ -3869,6 +3986,456 @@
    "size": 43,
    "score": 100.0,
    "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538cca": {
+   "name": "tMetaMapDesc::tMetaMapDesc",
+   "symbol": "??0tMetaMapDesc@@QAE@PAPAXK_N@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538d00": {
+   "name": "tMetaMapDesc::vfunction2_for_tStreamable",
+   "symbol": "?StreamOut@tMetaMapDesc@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 63,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538d3f": {
+   "name": "tMetaMapDesc::vfunction3_for_tStreamable",
+   "symbol": "?StreamIn@tMetaMapDesc@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 102,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538da5": {
+   "name": "tMetaMapDesc::vfunction6_for_tAllocatedClass",
+   "symbol": "?SQLFillInsertStream@tMetaMapDesc@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538dfe": {
+   "name": "tMetaMapDesc::vfunction7_for_tAllocatedClass",
+   "symbol": "?SQLFillUpdateStream@tMetaMapDesc@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 104,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538e66": {
+   "name": "tMetaMapDesc::vfunction8_for_tAllocatedClass",
+   "symbol": "?SQLTableName@tMetaMapDesc@@UBEPBDXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538e6c": {
+   "name": "tMetaMapDesc::vfunction9_for_tAllocatedClass",
+   "symbol": "?SQLFieldNames@tMetaMapDesc@@UBEPBDXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00538e7c": {
+   "name": "FUN_00538e7c",
+   "symbol": "?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEPADXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 157,
+   "score": 4.034,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00538f3e": {
+   "name": "FUN_00538f3e",
+   "symbol": "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 71,
+   "score": 0.28,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00538f85": {
+   "name": "FUN_00538f85",
+   "symbol": "?fn_00538f85@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00538f8f": {
+   "name": "tClassAllocator<tMetaMapDesc>::tClassAllocator<tMetaMapDesc>",
+   "symbol": "??0?$tClassAllocator@VtMetaMapDesc@@@@QAE@XZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 50,
+   "score": 16.875,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00538fc1": {
+   "name": "tClassAllocator<tMetaMapDesc>::vfunction1",
+   "symbol": "?fn_00538fc1@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00538fcb": {
+   "name": "FUN_00538fcb",
+   "symbol": "?mAllocate@?$tClassAllocator@VtMetaMapDesc@@@@UAEPAVtAllocatedClass@@XZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 63,
+   "score": 14.111,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0053900a": {
+   "name": "tClassAllocator<tMetaMapDesc>::vfunction3",
+   "symbol": "?mAssignAllocID@?$tClassAllocator@VtMetaMapDesc@@@@MAEXJ@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00539016": {
+   "name": "tClassAllocator<tCampaignInfo>::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@?$tClassAllocator@VtMetaMapDesc@@@@QAEPAV1@E@Z",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00539070": {
+   "name": "FUN_00539070",
+   "symbol": "?fn_00539070@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0053907c": {
+   "name": "FUN_0053907c",
+   "symbol": "?fn_0053907c@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00539088": {
+   "name": "FUN_00539088",
+   "symbol": "?fn_00539088@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00539094": {
+   "name": "tMetaMapDesc::vfunction1_for_tStreamable",
+   "symbol": "?fn_00539094@@YAXXZ",
+   "unit": "unsorted/tMetaMapDesc.cpp",
+   "size": 8,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547b61": {
+   "name": "tBattles::tBattles",
+   "symbol": "??0tBattles@@QAE@XZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 100,
+   "score": 13.425,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547bc5": {
+   "name": "tBattles::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tBattles@@QAEPAV1@E@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00547be1": {
+   "name": "FUN_00547be1",
+   "symbol": "?FUN_00547be1@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547beb": {
+   "name": "tBattles::tBattles",
+   "symbol": "??0tBattles@@QAE@ABV0@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 116,
+   "score": 11.57,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547c69": {
+   "name": "tBattles::~tBattles",
+   "symbol": "??1tBattles@@UAE@XZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 101,
+   "score": 12.162,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547cce": {
+   "name": "FUN_00547cce",
+   "symbol": "??4tBattles@@QAEAAV0@ABV0@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 109,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00547d3b": {
+   "name": "FUN_00547d3b",
+   "symbol": "??4tMissionCompleteResults@@QAEAAV0@ABV0@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00547d6e": {
+   "name": "tBattles::vfunction2_for_tStreamable",
+   "symbol": "?StreamOut@tBattles@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 123,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00547de9": {
+   "name": "tBattles::vfunction3_for_tStreamable",
+   "symbol": "?StreamIn@tBattles@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00547e67": {
+   "name": "tBattles::vfunction6_for_tAllocatedClass",
+   "symbol": "?vfunction6_for_tAllocatedClass@tBattles@@QAEXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00547e71": {
+   "name": "FUN_00547e71",
+   "symbol": "?SQLFillInsertStream@tBattles@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 626,
+   "score": 7.264,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x005480e3": {
+   "name": "FUN_005480e3",
+   "symbol": "?fn_005480e3@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@J@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 107,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0054814e": {
+   "name": "tEntityControlShip::vfunction26",
+   "symbol": "?SQLFillUpdateStream@tBattles@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 3,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548151": {
+   "name": "tBattles::vfunction8_for_tAllocatedClass",
+   "symbol": "?SQLTableName@tBattles@@UBEPBDXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548157": {
+   "name": "tBattles::vfunction9_for_tAllocatedClass",
+   "symbol": "?SQLFieldNames@tBattles@@UBEPBDXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0054815d": {
+   "name": "FUN_0054815d",
+   "symbol": "?fn_0054815d@tBattles@@QAEXK@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548167": {
+   "name": "tState_Namespace_Tactical::tCameraMgrEx::vfunction17",
+   "symbol": "?fn_00548167@tBattles@@QAEXK@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548171": {
+   "name": "FUN_00548171",
+   "symbol": "?fn_00548171@tBattles@@QAEXVtID@nDatabase@@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548192": {
+   "name": "FUN_00548192",
+   "symbol": "?fn_00548192@tBattles@@QAEXK@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x0054819c": {
+   "name": "FUN_0054819c",
+   "symbol": "?fn_0054819c@tBattles@@QAEXABVtMetaMapHex@@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005481ab": {
+   "name": "FUN_005481ab",
+   "symbol": "?fn_005481ab@tBattles@@QAEXABVtMissionCompleteResults@@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x005481bd": {
+   "name": "FUN_005481bd",
+   "symbol": "??4?$vector@VtObject_0053d20b@@V?$allocator@VtObject_0053d20b@@@std@@@std@@QAEAAV01@ABV01@@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 472,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548395": {
+   "name": "FUN_00548395",
+   "symbol": "?FUN_00548395@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0054839f": {
+   "name": "tClassAllocator<tBattles>::tClassAllocator<tBattles>",
+   "symbol": "??0?$tClassAllocator@VtBattles@@@@QAE@XZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 50,
+   "score": 16.875,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x005483d1": {
+   "name": "tClassAllocator<tBattles>::vfunction1",
+   "symbol": "?fn_005483d1@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 10,
+   "score": 20.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x005483db": {
+   "name": "FUN_005483db",
+   "symbol": "?mAllocate@?$tClassAllocator@VtBattles@@@@UAEPAVtAllocatedClass@@XZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 66,
+   "score": 13.229,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0054841d": {
+   "name": "tClassAllocator<tBattles>::vfunction3",
+   "symbol": "?mAssignAllocID@?$tClassAllocator@VtBattles@@@@MAEXJ@Z",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-10"
+  },
+  "0x00548467": {
+   "name": "FUN_00548467",
+   "symbol": "?FUN_00548467@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x00548473": {
+   "name": "FUN_00548473",
+   "symbol": "?FUN_00548473@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0054847f": {
+   "name": "FUN_0054847f",
+   "symbol": "?FUN_0054847f@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 12,
+   "score": 25.0,
+   "exact": false,
+   "recorded": "2026-11-10"
+  },
+  "0x0054848b": {
+   "name": "tBattles::vfunction1_for_tStreamable",
+   "symbol": "?fn_0054848b@@YAXXZ",
+   "unit": "unsorted/tBattles.cpp",
+   "size": 8,
+   "score": 20.0,
+   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x006289b0": {
