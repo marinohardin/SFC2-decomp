@@ -248,3 +248,40 @@ def test_a_bad_address_on_the_boundary_list_names_the_file_and_line(tmp_path):
                  '4198400\tFUN_00401000\t\tthunk\ty\n')
     with pytest.raises(ValueError, match=r'boundary_errors\.tsv:3: address \'4198400\''):
         matched.boundary_listed(str(p))
+
+
+def _header_claim_tree(game, units):
+    (game / 'Test').mkdir()
+    (game / 'Test' / 'ship.h').write_text('class tShip { public: virtual ~tShip(); };\n'
+                                          '// FUNCTION: STARFLEETOP 0x00401010\n'
+                                          'inline tShip::~tShip()\n{\n}\n')
+    (game / 'Test' / 'unit.cpp').write_text('#include "Test/ship.h"\n'
+                                            '// FUNCTION: STARFLEETOP 0x00401000\n'
+                                            'void f()\n{\n}\n')
+    (game / 'UNITS.tsv').write_text('unit\tfirst\tlast\n' + units)
+
+
+def test_a_header_claim_is_grouped_with_the_unit_that_compiles_it(tmp_path):
+    game = tmp_path / 'game'
+    game.mkdir()
+    _header_claim_tree(game, 'Test/unit.cpp\t0x00401000\t0x00401010\n')
+    from harness.lib import source
+    anns = source.scan_annotations(str(game), 'STARFLEETOP')
+    out, missing, unplaced = verify._units_for({0x401000, 0x401010, 0x401020}, anns, str(game),
+                                               str(game / 'UNITS.tsv'))
+    unit = str(game / 'Test' / 'unit.cpp')
+    assert sorted((p, sorted(a for a, _ in items)) for p, items in out.items()) == \
+        [(unit, [0x401000, 0x401010])]
+    assert [x.path for a, x in out[unit] if a == 0x401010] == [str(game / 'Test' / 'ship.h')]
+    assert missing == [(0x401020, 0)] and unplaced == []
+
+
+def test_a_recorded_header_claim_with_no_unit_is_a_regression_under_all(empty_tree, monkeypatch):
+    game = empty_tree / 'game'
+    _header_claim_tree(game, 'Test/unit.cpp\t0x00401000\t0x00401000\n')
+    monkeypatch.setattr(paths, 'UNITS_TSV', str(game / 'UNITS.tsv'))
+    matched.save(paths.MATCHED_SET, matched_set(a00401010=entry(100.0, True)))
+    rep = verify.run([], check_all=True)
+    assert rep.regressions == [0x401010]
+    assert any('0x00401010 A::f REGRESSION: 0x00401010 is claimed in the header Test/ship.h, but '
+               'no row of game/UNITS.tsv holds that address' in ln for ln in rep.lines)

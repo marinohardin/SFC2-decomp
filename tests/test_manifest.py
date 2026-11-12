@@ -103,12 +103,18 @@ int32 TestRound( int32 value )
 EXACT = ('0x00401000', '0x00401100', '0x00401300', '0x00401400', '0x00401500', '0x00401600')
 
 
+# The unit map: every fixture address is in Test/TestShip.cpp's range.
+UNITS_TSV = ('unit\tfirst\tlast\tfunctions\tevidence\tprofile\theader\n'
+             'Test/TestShip.cpp\t0x00401000\t0x004016ff\t7\tclass\tgame-release\t\n')
+
+
 def make_tree(tmp_path, header=HEADER, source=SOURCE):
     game = tmp_path / 'game'
     (game / 'Test').mkdir(parents=True)
     (game / 'port').mkdir()
     (game / 'Test' / 'TestShip.h').write_text(header)
     (game / 'Test' / 'TestShip.cpp').write_text(source)
+    (game / 'UNITS.tsv').write_text(UNITS_TSV)
     # port/ is not scanned: an annotation there is ignored.
     (game / 'port' / 'types.h').write_text('// FUNCTION: STARFLEETOP 0x00409999\nvoid nope();\n')
     csv = tmp_path / 'functions.csv'
@@ -266,7 +272,8 @@ def test_constructors_and_destructors_have_no_guest_entry_point(tmp_path):
 
 def test_an_annotated_part_binding_claims_its_search_member(tmp_path):
     # GenAbstractBinding(X) in X's body defines the static members Search_X and Test_X; an
-    # annotation on it claims Search_X, a static member with no parameters returning X*.
+    # annotation on it claims Search_X, a static member with no parameters returning X*. In a
+    # header, the claim is compiled in the unit the unit map assigns its address to.
     header = HEADER.replace('\tstatic tTestShip* Instance();',
                             '\t// FUNCTION: STARFLEETOP 0x00401500\n'
                             '\tGenAbstractBinding( tTestShip );\n'
@@ -275,7 +282,7 @@ def test_an_annotated_part_binding_claims_its_search_member(tmp_path):
     csv.write_text(CSV + '00401500,117,tTestShip::Search_tTestShip,,,default,,,,0,,function,\n')
     assert run(tmp_path, game, csv) == 0
     rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
-    assert rows['0x00401500'][1:] == ['117', 'tTestShip::Search_tTestShip()', 'Test/TestShip.h', 'vc6 guest']
+    assert rows['0x00401500'][1:] == ['117', 'tTestShip::Search_tTestShip()', 'Test/TestShip.cpp', 'vc6 guest']
     text = (tmp_path / 'out' / 'override.cpp').read_text()
     assert 'static_cast< tTestShip * (*)() >( &tTestShip::Search_tTestShip )' in text
     _, classes = manifest.scan(str(game))
@@ -505,3 +512,52 @@ def test_a_member_declared_over_several_lines_is_read_as_one(tmp_path):
     fire = [m for m in classes['tTestShip']['members'] if m['name'] == 'mFire']
     assert [(m['types'], m['virtual'], m['line']) for m in fire] == [(('int32', 'const char*'), True, 20)]
     assert [f['name'] for f in functions if f['address'] == 0x00401200] == ['tTestShip::mFire']
+
+
+# tTestShip's destructor written inline in its header, after the class, with the claim of its
+# scalar deleting destructor (0x00401500) on it: the original inlined the destructor everywhere,
+# so there is no out-of-class definition in a unit to stack it on. HEADER has 31 lines; the
+# annotation is line 33.
+INLINE_DELETING_HEADER = HEADER + ('\n// FUNCTION: STARFLEETOP 0x00401500\n'
+                                   'inline tTestShip::~tTestShip()\n{\n\tfSpeed = 0;\n}\n')
+
+
+def test_a_deleting_destructor_on_an_inline_destructor_in_a_header_is_its_units(tmp_path):
+    game, csv = make_tree(tmp_path, header=INLINE_DELETING_HEADER)
+    csv.write_text(DELETING_CSV)
+    assert run(tmp_path, game, csv) == 0
+    assert manifest_rows(tmp_path)['0x00401500'] == [
+        '28', "tTestShip::`scalar deleting destructor'", 'Test/TestShip.cpp', 'vc6']
+    assert 'sub_00401500' not in (tmp_path / 'out' / 'override.cpp').read_text()
+
+
+def test_a_header_claim_reached_through_another_header_is_its_units(tmp_path):
+    game, csv = make_tree(tmp_path, header=INLINE_DELETING_HEADER,
+                          source=SOURCE.replace('#include "Test/TestShip.h"', '#include "Fleet.h"'))
+    (game / 'Test' / 'Fleet.h').write_text('#include <string.h>\n#include "Test/TestShip.h"\n')
+    csv.write_text(DELETING_CSV)
+    assert run(tmp_path, game, csv) == 0
+    assert manifest_rows(tmp_path)['0x00401500'][2] == 'Test/TestShip.cpp'
+
+
+@pytest.mark.parametrize('units,source,message', [
+    # No row of the unit map holds the address.
+    (UNITS_TSV.replace('0x004016ff', '0x004014ff'), SOURCE,
+     'TestShip.h:33: 0x00401500 is claimed in the header Test/TestShip.h, but no row of '
+     'game/UNITS.tsv holds that address'),
+    # The row names a unit that does not exist.
+    (UNITS_TSV + 'Test/Gone.cpp\t0x00401500\t0x00401500\t1\tclass\tgame-release\t\n',
+     SOURCE, 'but 2 rows (Test/TestShip.cpp, Test/Gone.cpp) of game/UNITS.tsv hold'),
+    (UNITS_TSV.replace('Test/TestShip.cpp', 'Test/Gone.cpp'), SOURCE,
+     'game/UNITS.tsv assigns it to Test/Gone.cpp, which does not exist'),
+    # The unit does not include the header.
+    (UNITS_TSV, SOURCE.replace('#include "Test/TestShip.h"', '#include <string.h>'),
+     'game/UNITS.tsv assigns it to Test/TestShip.cpp, which does not include that header'),
+])
+def test_a_header_claim_without_a_unit_that_includes_it_is_refused(tmp_path, capsys, units, source,
+                                                                    message):
+    game, csv = make_tree(tmp_path, header=INLINE_DELETING_HEADER, source=source)
+    (game / 'UNITS.tsv').write_text(units)
+    csv.write_text(DELETING_CSV)
+    assert run(tmp_path, game, csv) == 2
+    assert message in capsys.readouterr().err

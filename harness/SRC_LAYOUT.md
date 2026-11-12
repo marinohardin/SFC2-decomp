@@ -61,11 +61,19 @@ tDynamicAllocator* tDynamicAllocator::Instance()
 - A scalar or vector deleting destructor (`??_G` / `??_E`) is claimed by an annotation stacked
   on its class's out-of-class destructor definition, directly above it or above the
   destructor's own annotation; a destructor written inline in the class gets an out-of-class
-  definition for this. The address's evidence (a `??_G` / `??_E` symbol or a
+  definition for this, in the unit or as an `inline` definition after the class in its header. The address's evidence (a `??_G` / `??_E` symbol or a
   `scalar_deleting_destructor` / `vector_deleting_destructor` name in `functions.csv` or the
   matched set, read by `harness/lib/deleting.py` for the manifest, the harness and the object
   lift alike) says which annotation it is; the harness then claims the `??_G` / `??_E` that
   calls that destructor. If the unit does not emit it, the address cannot be claimed yet.
+- An annotation may sit in a header (`.h`, `.inl`) when the original wrote the code there: on
+  an `inline` out-of-class destructor definition, for the class's deleting destructor, or on a
+  part binding inside a class body. A header is not a unit, so the claim is compiled in the unit
+  `game/UNITS.tsv` assigns to its address, which must include the header (directly or through
+  other headers); anything else is an error (`harness/lib/claims.py`). The symbol is found by the
+  usual rule for the claim form, from the header's line records in that unit's listing; an inline
+  destructor's deleting destructor is the `??_G` / `??_E` whose mangled class is the class on the
+  definition line. The manifest row names the unit, not the header.
 - Functions the compiler does not emit on their own (unused inlines, functions folded into
   their callers) cannot be claimed; they are covered by the functions they are inlined into.
 

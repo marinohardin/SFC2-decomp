@@ -6,7 +6,9 @@ A function is claimed by an annotation on the line(s) before it (harness/SRC_LAY
     // FUNCTION: STARFLEETOP 0x006fc690
     tDynamicAllocator* tDynamicAllocator::Instance()
 
-`STUB:` instead of `FUNCTION:` marks a placeholder that is not scored.
+`STUB:` instead of `FUNCTION:` marks a placeholder that is not scored. An annotation in a unit is
+compiled in that unit; one in a header in the unit game/UNITS.tsv assigns to its address
+(harness/lib/claims.py), whose listing has line records for the header's inline code.
 """
 import hashlib
 import json
@@ -17,10 +19,12 @@ import shutil
 import subprocess
 import time
 
-from . import deleting, paths
+from . import claims, deleting, paths
 
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB):\s*(\w+)\s+0x([0-9a-fA-F]+)\s*$')
 SOURCE_EXTS = ('.cpp', '.c', '.cxx')
+# Files scan_annotations reads: units, and headers, whose claims claim_unit places in a unit.
+ANNOTATED_EXTS = SOURCE_EXTS + claims.HEADER_EXTS
 # Flags the harness owns: output locations and the listing it reads. Browse info, the
 # minimal-rebuild database and automatic precompiled headers are dropped: they change no code or
 # data bytes (toolchain/calibration/report.md, variant dsp-nopch) and /YX .pch files collide
@@ -59,7 +63,7 @@ def scan_annotations(src_root, module):
     for d, dirs, files in os.walk(src_root):
         dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
         for name in sorted(files):
-            if not name.lower().endswith(SOURCE_EXTS):
+            if not name.lower().endswith(ANNOTATED_EXTS):
                 continue
             p = os.path.join(d, name)
             with open(p, encoding='latin1') as f:
@@ -69,6 +73,18 @@ def scan_annotations(src_root, module):
                         a = Annotation(m.group(1), m.group(2), int(m.group(3), 16), p, n)
                         found.setdefault(a.address, []).append(a)
     return found
+
+
+def claim_unit(ann, src_root, units_tsv=None):
+    """The unit that compiles the annotation `ann`: its own file, or for an annotation in a
+    header the unit game/UNITS.tsv assigns to its address (harness/lib/claims.header_unit).
+    Raises SourceError when a header claim has no such unit."""
+    if not claims.is_header(ann.path):
+        return ann.path
+    try:
+        return claims.header_unit(ann.address, ann.path, src_root, units_tsv)
+    except claims.ClaimError as e:
+        raise SourceError(str(e)) from None
 
 
 def unit_profile(cfg, src_root, unit_path):
@@ -145,8 +161,16 @@ def listing_functions(listing_text):
     inline function from a header). One outside a PROC applies only if the segment it heads is
     code: VC6 also writes a record before a class's vftable, naming the header that declares the
     class, and does not repeat the unit's own record before the code that follows."""
+    return [(proc, recs[0][0], recs[0][1]) for proc, recs in listing_line_records(listing_text)
+            if recs]
+
+
+def listing_line_records(listing_text):
+    """[(symbol, [(file, line)])] from a VC6 /FAs listing: each PROC, in order, with every line
+    record inside it and the file each one is in, read as listing_functions reads the first. An
+    inline function from a header that VC6 expanded in a PROC leaves its header's records there."""
     out = []
-    cur_file, pending, proc, first = None, None, None, None
+    cur_file, pending, proc, recs = None, None, None, None
     for line in listing_text.splitlines():
         m = TITLE.match(line)
         if m and cur_file is None:
@@ -169,15 +193,14 @@ def listing_functions(listing_text):
         if m:
             if pending:
                 cur_file, pending = pending, None
-            proc, first = m.group(1), None
+            proc, recs = m.group(1), []
             continue
         if proc:
             m = LINE.match(line)
-            if m and first is None:
-                first = (cur_file, int(m.group(1)))
+            if m:
+                recs.append((cur_file, int(m.group(1))))
             elif ENDP.match(line):
-                if first:
-                    out.append((proc, first[0], first[1]))
+                out.append((proc, recs))
                 proc = None
     return out
 
@@ -267,18 +290,26 @@ def deleting_destructor_symbol(listing_text, destructor, kind):
 
 
 def symbol_for_claim(listing_text, unit_path, ann_line, other_ann_lines, recorded=None, mangled='',
-                     name=''):
+                     name='', unit=None):
     """symbol_for_annotation for the annotation of an address whose evidence is `recorded` (its
     matched-set entry, or None) and functions.csv's `mangled` and `name`: the evidence decides
     whether it claims a deleting destructor (harness/lib/deleting.py). The harness and the object
     lift both claim through this, as tools/manifest.py names rows from the same evidence."""
     return symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines,
-                                 deleting=deleting.kind(recorded, mangled, name))
+                                 deleting=deleting.kind(recorded, mangled, name), unit=unit)
 
 
-def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, deleting=None):
+def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, deleting=None,
+                          unit=None):
     """The compiled symbol the annotation at ann_line claims: the function whose first source
     line in this file is the nearest after the annotation, with no other annotation between.
+
+    `unit_path` is the file the annotation is in and `other_ann_lines` the lines of the other
+    annotations in that file. For an annotation in a header, the listing is that of the unit
+    that compiles the claim (claim_unit, given as `unit`), and the header's line records in it
+    are read. VC6 writes no `; File` record before the header's inline functions it emits after
+    the unit's own code, so the listing gives them the unit's file; a function whose first line
+    record quotes the header's text at that line, and not the unit's, is the header's.
 
     Annotations stacked above a global object's definition, with no function between them,
     claim what VC6 generates from that line, counted upwards (GLOBAL_ROLES): the dynamic
@@ -294,10 +325,16 @@ def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, de
     destructor has no line record, so it is found from the destructor the stack sits on
     (deleting_destructor_symbol); None when the unit emitted no such deleting destructor. A stack
     that does not sit on a destructor (a function written only to make the compiler emit the
-    body) is read with the plain rule."""
+    body) is read with the plain rule.
+
+    In a header, the destructor the stack sits on may be inline and expanded everywhere, so that
+    the unit has no `??1` to start from. The deleting destructor is then the `??_G` / `??_E`
+    with line records of the destructor's definition in the header, or else the one whose
+    mangled class is the class named on the definition line (_inline_deleting_destructor)."""
     if deleting:
-        return _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, deleting)
-    sym = _nearest_function(listing_text, unit_path, ann_line, other_ann_lines)
+        return _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, deleting,
+                                    unit)
+    sym = _nearest_function(listing_text, unit_path, ann_line, other_ann_lines, unit)
     if sym is not None:
         return sym
     lines = sorted(set(other_ann_lines))
@@ -307,7 +344,7 @@ def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, de
         if not below:
             return None
         depth, cur = depth + 1, below[0]
-        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines, unit)
     if not isinstance(sym, str):
         return None
     generated = global_generated_functions(listing_text, sym)
@@ -324,23 +361,77 @@ def symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, de
                       f'functions from a global ({", ".join(GLOBAL_ROLES)})')
 
 
-def _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, kind):
+def _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, kind, unit=None):
     lines = sorted(set(other_ann_lines))
     cur = ann_line
-    sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+    sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines, unit)
     while sym is None:
         below = [n for n in lines if n > cur]
         if not below:
             break
         cur = below[0]
-        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines)
+        sym = _nearest_function(listing_text, unit_path, cur, other_ann_lines, unit)
+    if claims.is_header(unit_path):
+        cls = _destructor_class(unit_path, ann_line)
+        if cls is not None:
+            if isinstance(sym, str) and sym.startswith('??1'):
+                found = deleting_destructor_symbol(listing_text, sym, kind)
+                if found is not None:
+                    return found
+            return _inline_deleting_destructor(listing_text, unit_path, ann_line,
+                                               other_ann_lines, cls, kind)
     if sym is None:
         return None
     if not isinstance(sym, str) or not sym.startswith('??1'):
         # Not the form: a function written to make the compiler emit the deleting destructor's
         # body (tools/manifest.py warns about it). The plain rule applies, as before the form.
-        return symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines)
+        return symbol_for_annotation(listing_text, unit_path, ann_line, other_ann_lines, unit=unit)
     return deleting_destructor_symbol(listing_text, sym, kind)
+
+
+DESTRUCTOR_DEF = re.compile(r'((?:[A-Za-z_]\w*::)*([A-Za-z_]\w*))::~([A-Za-z_]\w*)\s*\(')
+
+
+def _destructor_class(path, ann_line):
+    """The qualified class whose out-of-class destructor definition follows the annotation stack
+    at ann_line in the file at path (`A::B` from `inline A::B::~B()`), or None when what follows
+    is not one."""
+    try:
+        with open(path, encoding='latin1') as f:
+            src = f.read().split('\n')
+    except OSError:
+        return None
+    for text in src[ann_line:]:
+        t = text.strip()
+        if not t or ANNOTATION.match(text) or t.startswith('//'):
+            continue
+        m = DESTRUCTOR_DEF.search(t.split('//')[0])
+        return m.group(1) if m and m.group(2) == m.group(3) else None
+    return None
+
+
+def mangled_class(qualified):
+    """The class part of a VC6 mangled member name: `B@A` for `A::B`, innermost first."""
+    return '@'.join(reversed(qualified.split('::')))
+
+
+def _inline_deleting_destructor(listing_text, path, ann_line, other_ann_lines, cls, kind):
+    """The `kind` deleting destructor of class `cls` whose destructor is defined in the header at
+    `path` after the annotation at ann_line: the one PROC of that kind with line records in the
+    header between the annotation and the next, else the one (of those, if several) whose mangled
+    name is that kind's for `cls`. None when the unit emitted neither."""
+    prefix = deleting.KINDS[kind][0]
+    main = os.path.basename(path).lower()
+    nxt = min([n for n in other_ann_lines if n > ann_line], default=None)
+    procs = [(p, recs) for p, recs in listing_line_records(listing_text) if p.startswith(prefix)]
+    by_line = sorted({p for p, recs in procs for f, n in recs
+                      if f is not None and os.path.basename(f.replace('\\', '/')).lower() == main
+                      and n > ann_line and (nxt is None or n < nxt)})
+    if len(by_line) == 1:
+        return by_line[0]
+    by_name = [p for p in (by_line or sorted({p for p, _ in procs}))
+               if p.startswith(prefix + mangled_class(cls) + '@@')]
+    return by_name[0] if len(by_name) == 1 else None
 
 
 LINE_TEXT = re.compile(r'^; (\d+)\s+:(.*)$')
@@ -382,15 +473,22 @@ def _from_this_file(listing_text, unit_path):
             if 0 < n <= len(src) and _same_text(src[n - 1], text)}
 
 
-def _nearest_function(listing_text, unit_path, ann_line, other_ann_lines):
+def _nearest_function(listing_text, unit_path, ann_line, other_ann_lines, unit=None):
     main = os.path.basename(unit_path).lower()
     nxt = min([n for n in other_ann_lines if n > ann_line], default=None)
     own = _from_this_file(listing_text, unit_path)
+    # In a header, also a function the listing gives another file (the unit's, for want of a
+    # `; File` record) whose first line quotes the header's text there and not the unit's.
+    theirs = (_from_this_file(listing_text, unit)
+              if unit and claims.is_header(unit_path) and own is not None else None)
     best = []
     for sym, f, line in listing_functions(listing_text):
-        if f is None or os.path.basename(f.replace('\\', '/')).lower() != main:
+        if f is None:
             continue
-        if own is not None and sym not in own:
+        if os.path.basename(f.replace('\\', '/')).lower() != main:
+            if theirs is None or sym not in own or sym in theirs:
+                continue
+        elif own is not None and sym not in own:
             continue
         if line > ann_line and (nxt is None or line < nxt):
             best.append((line, sym))

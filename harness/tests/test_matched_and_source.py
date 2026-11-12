@@ -402,3 +402,284 @@ def test_a_template_instance_after_the_unit_is_told_apart_by_the_line_it_quotes(
     # Without the unit's text to compare with, both functions are still on the line.
     assert source.symbol_for_annotation(TRAILING_TEMPLATE_LISTING, str(tmp_path / 'gone' / 'unit.cpp'),
                                         1, []) == ['?f@Unit@@QAEXXZ', '??1?$vector@H@std@@QAE@XZ']
+
+
+# Claims in a header. ship.h, written by hand below, declares tShip and its subclass tShipX and
+# ends with tShip's destructor written inline, with the claim of its scalar deleting destructor
+# on it:
+#
+#   10  // FUNCTION: STARFLEETOP 0x00401500
+#   11  inline tShip::~tShip()
+#   12  {
+#   13      mClear();
+#   14  }
+#
+# and, at line 6, a part binding in tShip's body with its claim at line 5.
+SHIP_H = ('class tShip : public tPart {\n'        # 1
+          'public:\n'                             # 2
+          '\tvirtual ~tShip();\n'                 # 3
+          '\tvirtual void mClear();\n'            # 4
+          '\t// FUNCTION: STARFLEETOP 0x00401600\n'  # 5
+          '\tGenAbstractBinding( tShip );\n'      # 6
+          '};\n'                                  # 7
+          'class tShipX : public tShip { public: virtual ~tShipX() {} };\n'  # 8
+          '\n'                                    # 9
+          '// FUNCTION: STARFLEETOP 0x00401500\n'  # 10
+          'inline tShip::~tShip()\n'              # 11
+          '{\n'                                   # 12
+          '\tmClear();\n'                         # 13
+          '}\n')                                  # 14
+SHIP_CPP = ('#include "Test/ship.h"\n'
+            '\n'
+            '// FUNCTION: STARFLEETOP 0x00401000\n'
+            'void fn_00401000()\n'
+            '{\n'
+            '}\n')
+
+# The unit's listing as VC6 writes it when it inlines the destructor everywhere: the `; File`
+# record for the header heads the vftable, not code; no ??1tShip is emitted, and the deleting
+# destructors have no line records. tShipX's deleting destructor inlines tShip's destructor too.
+INLINED_LISTING = """\
+\tTITLE\tunit.cpp
+; File C:\\game\\.\\Test/ship.h
+CONST\tSEGMENT
+??_7tShip@@6B@ DD FLAT:??_EtShip@@UAEPAXI@Z
+CONST\tENDS
+;\tCOMDAT ?fn_00401000@@YAXXZ
+_TEXT\tSEGMENT
+?fn_00401000@@YAXXZ PROC NEAR\t\t\t; fn_00401000, COMDAT
+
+; 5    : {
+
+\tret\t0
+?fn_00401000@@YAXXZ ENDP\t\t\t; fn_00401000
+_TEXT\tENDS
+;\tCOMDAT ??_GtShipX@@UAEPAXI@Z
+_TEXT\tSEGMENT
+??_GtShipX@@UAEPAXI@Z PROC NEAR\t\t; tShipX::`scalar deleting destructor', COMDAT
+\tcall\t?mClear@tShip@@UAEXXZ\t\t; tShip::mClear
+\tret\t4
+??_GtShipX@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+;\tCOMDAT ??_GtShip@@UAEPAXI@Z
+_TEXT\tSEGMENT
+??_GtShip@@UAEPAXI@Z PROC NEAR\t\t; tShip::`scalar deleting destructor', COMDAT
+\tmov\tDWORD PTR [esi], OFFSET FLAT:??_7tShip@@6B@
+\tcall\t?mClear@tShip@@UAEXXZ\t\t; tShip::mClear
+\tret\t4
+??_GtShip@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+END
+"""
+
+# The same with the header's line records inside the deleting destructors: tShip's at 12 and 13,
+# and tShipX's, which inlines tShip's destructor, at 8, 12 and 13; and the part binding's two
+# members, whose first line record is the binding's line, 6.
+RECORDED_LISTING = """\
+\tTITLE\tunit.cpp
+_TEXT\tSEGMENT
+??_GtShipX@@UAEPAXI@Z PROC NEAR\t\t; tShipX::`scalar deleting destructor', COMDAT
+; File C:\\game\\.\\Test/ship.h
+
+; 8    : class tShipX : public tShip { public: virtual ~tShipX() {} };
+
+; 12   : {
+; 13   : \tmClear();
+
+\tret\t4
+??_GtShipX@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+_TEXT\tSEGMENT
+??_GtShip@@UAEPAXI@Z PROC NEAR\t\t; tShip::`scalar deleting destructor', COMDAT
+; File C:\\game\\.\\Test/ship.h
+
+; 12   : {
+; 13   : \tmClear();
+
+\tret\t4
+??_GtShip@@UAEPAXI@Z ENDP
+_TEXT\tENDS
+_TEXT\tSEGMENT
+?Search_tShip@tShip@@SAPAV1@XZ PROC NEAR\t; tShip::Search_tShip, COMDAT
+; File C:\\game\\.\\Test/ship.h
+
+; 6    : \tGenAbstractBinding( tShip );
+
+\tret\t0
+?Search_tShip@tShip@@SAPAV1@XZ ENDP
+_TEXT\tENDS
+_TEXT\tSEGMENT
+?Test_tShip@tShip@@SAEXXZ PROC NEAR\t; tShip::Test_tShip, COMDAT
+
+; 6    : \tGenAbstractBinding( tShip );
+
+\tret\t0
+?Test_tShip@tShip@@SAEXXZ ENDP
+_TEXT\tENDS
+END
+"""
+
+
+def _ship_tree(tmp_path, units='Test/unit.cpp\t0x00401000\t0x004016ff\n', cpp=SHIP_CPP):
+    game = tmp_path / 'game'
+    (game / 'Test').mkdir(parents=True)
+    (game / 'Test' / 'ship.h').write_text(SHIP_H)
+    (game / 'Test' / 'unit.cpp').write_text(cpp)
+    (game / 'UNITS.tsv').write_text('unit\tfirst\tlast\n' + units)
+    return game
+
+
+def test_the_listing_gives_every_line_record_of_each_proc_with_its_file():
+    assert source.listing_line_records(RECORDED_LISTING) == [
+        ('??_GtShipX@@UAEPAXI@Z', [('C:\\game\\.\\Test/ship.h', 8), ('C:\\game\\.\\Test/ship.h', 12),
+                                   ('C:\\game\\.\\Test/ship.h', 13)]),
+        ('??_GtShip@@UAEPAXI@Z', [('C:\\game\\.\\Test/ship.h', 12), ('C:\\game\\.\\Test/ship.h', 13)]),
+        ('?Search_tShip@tShip@@SAPAV1@XZ', [('C:\\game\\.\\Test/ship.h', 6)]),
+        ('?Test_tShip@tShip@@SAEXXZ', [('C:\\game\\.\\Test/ship.h', 6)])]
+    assert source.listing_line_records(INLINED_LISTING) == [
+        ('?fn_00401000@@YAXXZ', [('unit.cpp', 5)]),
+        ('??_GtShipX@@UAEPAXI@Z', []),
+        ('??_GtShip@@UAEPAXI@Z', [])]
+
+
+def test_a_deleting_destructor_on_an_inline_destructor_is_found_by_its_class(tmp_path):
+    header = str(_ship_tree(tmp_path) / 'Test' / 'ship.h')
+    assert source.symbol_for_annotation(INLINED_LISTING, header, 10, [5],
+                                        deleting='scalar') == '??_GtShip@@UAEPAXI@Z'
+    # Not emitted in this unit: nothing.
+    assert source.symbol_for_annotation(INLINED_LISTING, header, 10, [5], deleting='vector') is None
+
+
+def test_a_deleting_destructor_on_an_inline_destructor_is_found_by_its_line_records(tmp_path):
+    header = str(_ship_tree(tmp_path) / 'Test' / 'ship.h')
+    # Both deleting destructors have records at 12 and 13; tShip's is the one its class names.
+    assert source.symbol_for_annotation(RECORDED_LISTING, header, 10, [5],
+                                        deleting='scalar') == '??_GtShip@@UAEPAXI@Z'
+    # With no deleting destructor named for tShip, neither is taken.
+    assert source.symbol_for_annotation(RECORDED_LISTING.replace('??_GtShip@', '??_GtRenamed@'),
+                                        header, 10, [5], deleting='scalar') is None
+    # When only one has records between the claim and the next annotation, the records decide:
+    # here tShipX's keeps only line 8, before the claim.
+    one = RECORDED_LISTING.replace("; 8    : class tShipX : public tShip { public: virtual ~tShipX() {} };\n\n"
+                                   "; 12   : {\n; 13   : \tmClear();\n",
+                                   "; 8    : class tShipX : public tShip { public: virtual ~tShipX() {} };\n")
+    assert one != RECORDED_LISTING
+    assert source.symbol_for_annotation(one.replace('??_GtShip@', '??_GtRenamed@'), header, 10, [5],
+                                        deleting='scalar') == '??_GtRenamed@@UAEPAXI@Z'
+
+
+def test_a_deleting_destructor_on_an_inline_destructor_emitted_out_of_line(tmp_path):
+    # A unit that emits tShip::~tShip itself (from the header, line records 12 to 14): the
+    # deleting destructor that calls it, as for an out-of-class destructor in a unit.
+    header = str(_ship_tree(tmp_path) / 'Test' / 'ship.h')
+    listing = ('\tTITLE\tunit.cpp\n'
+               '_TEXT\tSEGMENT\n'
+               '??1tShip@@UAE@XZ PROC NEAR\t\t; tShip::~tShip, COMDAT\n'
+               '; File C:\\game\\.\\Test/ship.h\n\n'
+               '; 12   : {\n\n'
+               '\tret\t0\n'
+               '??1tShip@@UAE@XZ ENDP\n'
+               '_TEXT\tENDS\n'
+               '_TEXT\tSEGMENT\n'
+               '??_GtShip@@UAEPAXI@Z PROC NEAR\t\t; tShip::`scalar deleting destructor\', COMDAT\n'
+               '\tcall\t??1tShip@@UAE@XZ\t\t; tShip::~tShip\n'
+               '\tret\t4\n'
+               '??_GtShip@@UAEPAXI@Z ENDP\n'
+               '_TEXT\tENDS\n'
+               'END\n')
+    assert source.symbol_for_annotation(listing, header, 10, [5], deleting='scalar') == \
+        '??_GtShip@@UAEPAXI@Z'
+    # Without the evidence that it is a deleting destructor, the plain rule: the destructor.
+    assert source.symbol_for_annotation(listing, header, 10, [5]) == '??1tShip@@UAE@XZ'
+
+
+def test_a_part_binding_in_a_header_claims_by_the_plain_rule(tmp_path):
+    header = str(_ship_tree(tmp_path) / 'Test' / 'ship.h')
+    # Both members the binding defines start on its line; the harness picks the mangled name.
+    assert source.symbol_for_annotation(RECORDED_LISTING, header, 5, [10]) == \
+        ['?Search_tShip@tShip@@SAPAV1@XZ', '?Test_tShip@tShip@@SAEXXZ']
+    # The unit's own lines are not the header's: the unit's annotation at line 3 claims its own.
+    unit = str(tmp_path / 'game' / 'Test' / 'unit.cpp')
+    assert source.symbol_for_annotation(INLINED_LISTING, unit, 3, []) == '?fn_00401000@@YAXXZ'
+
+
+def test_scan_reads_headers_and_a_header_claim_is_compiled_in_its_units_unit(tmp_path):
+    game = _ship_tree(tmp_path)
+    anns = source.scan_annotations(str(game), 'STARFLEETOP')
+    assert sorted((hex(a), [(x.path.rsplit('/', 1)[1], x.line) for x in v]) for a, v in anns.items()) == [
+        ('0x401000', [('unit.cpp', 3)]), ('0x401500', [('ship.h', 10)]), ('0x401600', [('ship.h', 5)])]
+    unit = str(game / 'Test' / 'unit.cpp')
+    assert source.claim_unit(anns[0x401500][0], str(game)) == unit
+    assert source.claim_unit(anns[0x401600][0], str(game)) == unit
+    assert source.claim_unit(anns[0x401000][0], str(game)) == unit
+
+
+@pytest.mark.parametrize('units,cpp,message', [
+    ('Test/unit.cpp\t0x00401000\t0x004014ff\n', SHIP_CPP,
+     '0x00401500 is claimed in the header Test/ship.h, but no row of game/UNITS.tsv holds that '
+     'address'),
+    ('Test/gone.cpp\t0x00401000\t0x004016ff\n', SHIP_CPP,
+     'game/UNITS.tsv assigns it to Test/gone.cpp, which does not exist'),
+    ('Test/unit.cpp\t0x00401000\t0x004016ff\n', SHIP_CPP.replace('"Test/ship.h"', '<string.h>'),
+     'game/UNITS.tsv assigns it to Test/unit.cpp, which does not include that header'),
+])
+def test_a_header_claim_without_a_unit_that_includes_it_is_an_error(tmp_path, units, cpp, message):
+    game = _ship_tree(tmp_path, units=units, cpp=cpp)
+    ann = source.scan_annotations(str(game), 'STARFLEETOP')[0x401500][0]
+    with pytest.raises(source.SourceError, match=message.replace('(', r'\(')):
+        source.claim_unit(ann, str(game))
+
+
+def test_a_header_reached_through_another_header_counts_as_included(tmp_path):
+    game = _ship_tree(tmp_path, cpp=SHIP_CPP.replace('"Test/ship.h"', '"fleet.h"'))
+    # fleet.h, beside the unit, includes the header by its path from the source root.
+    (game / 'Test' / 'fleet.h').write_text('#include <windows.h>\n#include "Test/ship.h"\n')
+    ann = source.scan_annotations(str(game), 'STARFLEETOP')[0x401500][0]
+    assert source.claim_unit(ann, str(game)) == str(game / 'Test' / 'unit.cpp')
+
+
+# The part binding's member as VC6 lists it when it emits the header's inline code after the
+# unit's own: no `; File` record before it (the header's record heads a data segment), so the
+# listing gives it the unit's file. Its first line record quotes the header's line 6.
+TRAILING_BINDING_LISTING = """\
+\tTITLE\tunit.cpp
+_TEXT\tSEGMENT
+?fn_00401000@@YAXXZ PROC NEAR\t\t\t; fn_00401000, COMDAT
+
+; 5    : {
+
+\tret\t0
+?fn_00401000@@YAXXZ ENDP\t\t\t; fn_00401000
+_TEXT\tENDS
+; File C:\\game\\.\\Test/ship.h
+_BSS\tSEGMENT
+?partCachePtr@?1??Search_tShip@tShip@@SAPAV2@XZ@4PAV2@A DD 01H DUP (?)
+_BSS\tENDS
+_TEXT\tSEGMENT
+?Search_tShip@tShip@@SAPAV1@XZ PROC NEAR\t; tShip::Search_tShip, COMDAT
+
+; 6    : \tGenAbstractBinding( tShip );
+
+\tret\t0
+?Search_tShip@tShip@@SAPAV1@XZ ENDP
+_TEXT\tENDS
+END
+"""
+
+
+def test_a_header_function_listed_under_the_units_file_is_told_apart_by_its_text(tmp_path):
+    game = _ship_tree(tmp_path)
+    header, unit = str(game / 'Test' / 'ship.h'), str(game / 'Test' / 'unit.cpp')
+    assert source.listing_functions(TRAILING_BINDING_LISTING)[1] == \
+        ('?Search_tShip@tShip@@SAPAV1@XZ', 'unit.cpp', 6)
+    assert source.symbol_for_annotation(TRAILING_BINDING_LISTING, header, 5, [10], unit=unit) == \
+        '?Search_tShip@tShip@@SAPAV1@XZ'
+    # Without the unit to compare with, only the header's own records count.
+    assert source.symbol_for_annotation(TRAILING_BINDING_LISTING, header, 5, [10]) is None
+    # The unit's own claim is unaffected.
+    assert source.symbol_for_annotation(TRAILING_BINDING_LISTING, unit, 3, [], unit=unit) == \
+        '?fn_00401000@@YAXXZ'
+    # When the unit has the same text at line 6, the function may be the unit's: not taken.
+    (game / 'Test' / 'unit.cpp').write_text('#include "Test/ship.h"\n\n\n\n\n'
+                                            '\tGenAbstractBinding( tShip );\n')
+    assert source.symbol_for_annotation(TRAILING_BINDING_LISTING, header, 5, [10], unit=unit) is None

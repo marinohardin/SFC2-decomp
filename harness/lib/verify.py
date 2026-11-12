@@ -182,8 +182,8 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
     try:
         sym = symbol_hint or source.symbol_for_claim(
-            listing, unit['path'], unit['line'], unit['other_lines'],
-            recorded=recorded, mangled=fn.mangled, name=fn.name)
+            listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
+            recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
     except source.SourceError as e:
         res['error'] = str(e)
         return res
@@ -227,16 +227,24 @@ def _shown(path):
     return path if rel.startswith('..') else rel
 
 
-def _units_for(addresses, annotations, src_root):
-    """Group addresses by the unit that claims them: {unit path: [(address, Annotation)]}."""
-    out, missing = {}, []
+def _units_for(addresses, annotations, src_root, units_tsv=None):
+    """Group addresses by the unit that compiles their claim (source.claim_unit: the
+    annotation's own file, or for one in a header the unit game/UNITS.tsv assigns):
+    ({unit path: [(address, Annotation)]}, [(address, number of annotations)] for an address
+    claimed by none or several, [(address, error)] for a header claim with no unit)."""
+    out, missing, unplaced = {}, [], []
     for a in addresses:
         anns = [x for x in annotations.get(a, []) if x.kind == 'FUNCTION']
         if len(anns) != 1:
             missing.append((a, len(anns)))
             continue
-        out.setdefault(anns[0].path, []).append((a, anns[0]))
-    return out, missing
+        try:
+            unit = source.claim_unit(anns[0], src_root, units_tsv)
+        except source.SourceError as e:
+            unplaced.append((a, str(e)))
+            continue
+        out.setdefault(unit, []).append((a, anns[0]))
+    return out, missing, unplaced
 
 
 def claimed_keys(cfg=None):
@@ -294,7 +302,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     # Units to build: those of the claimed functions, plus every unit holding a matched function
     # that shares a unit with them (or all matched functions with --all).
     recorded_addrs = {int(k, 16) for k in data['functions']}
-    by_unit, missing = _units_for(claimed_addrs, annotations, src_root)
+    units_tsv = paths.UNITS_TSV
+    by_unit, missing, unplaced = _units_for(claimed_addrs, annotations, src_root, units_tsv)
+    for a, err in unplaced:
+        rep.add('ERROR', f'0x{a:08x} {index.by_address[a].name}: {err}')
+        rep.failed = True
     for a, n in missing:
         fn = index.by_address[a]
         if n == 0:
@@ -305,7 +317,13 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         else:
             rep.add('ERROR', f'0x{a:08x} {fn.name} is claimed by {n} annotations; keep one')
         rep.failed = True
-    others, lost = _units_for(recorded_addrs - claimed_addrs, annotations, src_root)
+    others, lost, unplaced = _units_for(recorded_addrs - claimed_addrs, annotations, src_root,
+                                        units_tsv)
+    for a, err in unplaced:
+        if check_all:
+            old = data['functions'][matched.key(a)]
+            rep.add('ERROR', f'0x{a:08x} {old["name"]} REGRESSION: {err}')
+            rep.regressions.append(a)
     for a, _ in lost:
         if check_all:
             old = data['functions'][matched.key(a)]
@@ -316,6 +334,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         if check_all or path in by_unit:
             by_unit.setdefault(path, []).extend(items)
 
+    lines_in = {}
+    for lst in annotations.values():
+        for x in lst:
+            lines_in.setdefault(x.path, []).append(x.line)
     for path, items in sorted(by_unit.items()):
         try:
             rel, profile = source.unit_profile(cfg, src_root, path)
@@ -338,11 +360,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             rep.failed = rep.failed or any(a in claimed_addrs for a, _ in items)
             continue
         rep.add('OK', f'build {rel} ({build["secs"]} s, profile {profile["name"]})')
-        ann_lines = [x.line for lst in annotations.values() for x in lst if x.path == path]
         for a, ann in sorted(items, key=lambda x: x[0]):
             fn = index.by_address[a]
-            unit = dict(rel=rel, path=path, line=ann.line,
-                        other_lines=[n for n in ann_lines if n != ann.line])
+            # The other annotations in the annotation's own file: the unit, or the header it is in.
+            unit = dict(rel=rel, path=path, file=ann.path, line=ann.line,
+                        other_lines=[n for n in lines_in[ann.path] if n != ann.line])
             res = score_function(fn, unit, build, exe, index,
                                  recorded=data['functions'].get(matched.key(a)))
             res['claimed'] = a in claimed_addrs

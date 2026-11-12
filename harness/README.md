@@ -44,8 +44,16 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
 
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `game/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).
+   That file is the unit, unless it is a header (`.h`, `.inl`): a claim the original wrote in a
+   header (an inline destructor's deleting destructor, a part binding in a class body) is
+   compiled in the unit `game/UNITS.tsv` assigns to its address, which must include the header,
+   directly or through other headers; anything else is an error (`lib/claims.py`, shared with
+   `tools/manifest.py` and the object lift).
 2. Compiles that unit with `toolchain/bin/cl` and the unit's profile from `units.json`, adding
-   only output paths and `/FAs`. The listing tells which compiled symbol follows the annotation.
+   only output paths and `/FAs`. The listing tells which compiled symbol follows the annotation;
+   for a header claim, the header's line records in the unit's listing do. An inline
+   destructor's deleting destructor, whose listing may have no line records, is the `??_G` /
+   `??_E` whose mangled class is the class named on the definition.
 3. Takes the function's original bytes from the exe at the address and size in
    `ghidra/exports/functions.csv` (extended to the rebuilt size when the analysis stopped short,
    never into the next function; trailing `int3`/`nop` padding dropped).

@@ -73,7 +73,17 @@ something else: a `FUNCTION:` or `STUB:` annotation above a class or inside a cl
 than on a part binding, below), and one not followed by a definition, with only further
 annotations and comments between (a blank line, a declaration or the end of the file).
 
-Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--matched JSON]
+An annotation may sit in a header (`.h`, `.inl`) when the original wrote the code there: an
+inline destructor's deleting destructor (on its out-of-class `inline` definition, in the form
+above), a part binding inside a class body (below). A header is not a unit, so the claim is
+compiled in the unit `game/UNITS.tsv` assigns to its address (the row whose range holds it),
+which must include the header, directly or through other headers; the row's source is that unit,
+and anything else is refused (`harness/lib/claims.py`, which the harness and the object lift use
+too). Its symbol is then found by the usual rule for its form, from the header's line records in
+that unit's listing; an inline destructor's deleting destructor, which may have none, is the
+`??_G` / `??_E` whose mangled class is the class named on the definition.
+
+Usage: python3 tools/manifest.py [--game DIR] [--functions CSV] [--matched JSON] [--units TSV]
                                  [--manifest TSV] [--override CPP] [--check]
 """
 import argparse
@@ -85,7 +95,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
-from harness.lib import deleting  # noqa: E402  (the one rule for deleting destructors)
+from harness.lib import claims, deleting  # noqa: E402  (the one rule for each claim form)
 GAME = os.path.join(REPO, 'game')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 MATCHED = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
@@ -515,15 +525,31 @@ def claim_deleting_destructor(f, kind):
         # not this form; it keeps its own row, as the harness scores it, until it is replaced.
         print('manifest: warning: %s:%d: 0x%08x is a %s claimed on %s; claim it on the class\'s '
               'out-of-class destructor definition instead' % (
-                  f['file'], f['line'], f['address'], deleting.KINDS[kind][1], symbol_of(f)),
+                  f.get('header', f['file']), f['line'], f['address'], deleting.KINDS[kind][1],
+                  symbol_of(f)),
               file=sys.stderr)
         return
     f['name'] = "%s::`%s'" % (qual, deleting.KINDS[kind][1])
     f['deleting'] = kind
 
 
-def build(game, functions_csv, matched_json=MATCHED):
+def place_header_claims(functions, game, units_tsv):
+    """Give each claim made in a header the unit that compiles it (harness/lib/claims.py): its
+    row's source is that unit, as the object lift compiles and reads the unit; the header is kept
+    as f['header']."""
+    for f in functions:
+        if not claims.is_header(f['file']):
+            continue
+        try:
+            unit = claims.header_unit(f['address'], os.path.join(game, f['file']), game, units_tsv)
+        except claims.ClaimError as e:
+            raise ManifestError('%s:%d: %s' % (f['file'], f['line'], e))
+        f['header'], f['file'] = f['file'], os.path.relpath(unit, game).replace(os.sep, '/')
+
+
+def build(game, functions_csv, matched_json=MATCHED, units_tsv=None):
     functions, classes = scan(game)
+    place_header_claims(functions, game, units_tsv or os.path.join(game, 'UNITS.tsv'))
     recorded = recorded_entries(matched_json)
     exact = {a for a, e in recorded.items() if e.get('exact') is True}
     sizes, rows = {}, {}
@@ -536,11 +562,12 @@ def build(game, functions_csv, matched_json=MATCHED):
         if f['address'] in seen:
             other = seen[f['address']]
             raise ManifestError('0x%08x claimed twice: %s:%d and %s:%d' % (
-                f['address'], other['file'], other['line'], f['file'], f['line']))
+                f['address'], other.get('header', other['file']), other['line'],
+                f.get('header', f['file']), f['line']))
         seen[f['address']] = f
         if f['address'] not in sizes:
             raise ManifestError('%s:%d: 0x%08x is not a function in %s' % (
-                f['file'], f['line'], f['address'], os.path.relpath(functions_csv, REPO)))
+                f.get('header', f['file']), f['line'], f['address'], os.path.relpath(functions_csv, REPO)))
         f['size'] = sizes[f['address']]
         entry, row = recorded.get(f['address'], {}), rows[f['address']]
         kind = deleting.kind(entry, row.get('mangled'), row.get('name'))
@@ -686,12 +713,13 @@ def main(argv=None):
     ap.add_argument('--game', default=GAME)
     ap.add_argument('--functions', default=FUNCTIONS_CSV)
     ap.add_argument('--matched', default=MATCHED)
+    ap.add_argument('--units', default=None, help='the unit map (default: UNITS.tsv in --game)')
     ap.add_argument('--manifest', default=MANIFEST)
     ap.add_argument('--override', default=OVERRIDE)
     ap.add_argument('--check', action='store_true', help='exit 1 if an output is out of date')
     args = ap.parse_args(argv)
     try:
-        functions, classes = build(args.game, args.functions, args.matched)
+        functions, classes = build(args.game, args.functions, args.matched, args.units)
         manifest, override = manifest_text(functions), override_text(functions, classes)
     except ManifestError as e:
         print('manifest: %s' % e, file=sys.stderr)
