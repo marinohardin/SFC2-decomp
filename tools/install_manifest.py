@@ -9,6 +9,9 @@ setup files beside it (*.gf, *.ini, *.q3, SFC25.txt), and everything under Asset
 MetaAssets/. Left out: the SDK, the manuals, the installer, patcher, uninstaller and
 registration programs and their files, the other executables and libraries, and every file or
 folder whose name starts with '.'. Names are matched ignoring case, as the game does.
+Symbolic links are skipped, files and folders alike, so write the manifest from a plain
+install: the client's import follows links inside an install, and a file reached only through a
+link would be imported unlisted (and, outside Assets/Scripts/, not at all).
 
 Rows are `path<TAB>size<TAB>sha256`, sorted by path; the file holds hashes only, never a byte
 of the game. LIST names, one per line ('#' starts a comment), the files whose content is not
