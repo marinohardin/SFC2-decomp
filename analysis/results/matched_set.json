@@ -100,15 +100,6 @@
    "exact": false,
    "recorded": "2026-11-09"
   },
-  "0x0040ab74": {
-   "name": "tSfcApp3d::vfunction12",
-   "symbol": "?vfunction12@tSfcApp3d@@QAEXXZ",
-   "unit": "unsorted/tSfcApp3d.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-09"
-  },
   "0x0040ab7e": {
    "name": "FUN_0040ab7e",
    "symbol": "?fn_0040ab7e@tSfcApp3d@@QAEXXZ",
@@ -700,15 +691,6 @@
    "unit": "unsorted/tSphere.cpp",
    "size": 10,
    "score": 40.0,
-   "exact": false,
-   "recorded": "2026-11-09"
-  },
-  "0x0040f164": {
-   "name": "FUN_0040f164",
-   "symbol": "?FUN_0040f164@@YAXXZ",
-   "unit": "unsorted/tSphere.cpp",
-   "size": 1767,
-   "score": 0.066,
    "exact": false,
    "recorded": "2026-11-09"
   },
@@ -1538,15 +1520,6 @@
    "size": 35,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x004235f0": {
-   "name": "FUN_004235f0",
-   "symbol": "?fn_004235f0@@YAXXZ",
-   "unit": "unsorted/tEntityMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x004235fa": {
@@ -3250,33 +3223,6 @@
    "exact": false,
    "recorded": "2026-11-10"
   },
-  "0x0048c066": {
-   "name": "FUN_0048c066",
-   "symbol": "?FUN_0048c066@@YAXXZ",
-   "unit": "unsorted/tFleetPanel.cpp",
-   "size": 325,
-   "score": 0.98,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x0048c1ab": {
-   "name": "tFleetPanel::vfunction2",
-   "symbol": "?fn_0048c1ab@@YAXXZ",
-   "unit": "unsorted/tFleetPanel.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x0048c1b5": {
-   "name": "FUN_0048c1b5",
-   "symbol": "?FUN_0048c1b5@@YAXXZ",
-   "unit": "unsorted/tFleetPanel.cpp",
-   "size": 409,
-   "score": 0.69,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x0048c34e": {
    "name": "FUN_0048c34e",
    "symbol": "?fn_0048c34e@tFleetPanel@@QAEXXZ",
@@ -3340,69 +3286,6 @@
    "exact": false,
    "recorded": "2026-11-10"
   },
-  "0x004b0eb6": {
-   "name": "FUN_004b0eb6",
-   "symbol": "?FUN_004b0eb6@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0eca": {
-   "name": "FUN_004b0eca",
-   "symbol": "?FUN_004b0eca@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0ede": {
-   "name": "FUN_004b0ede",
-   "symbol": "?FUN_004b0ede@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0ef2": {
-   "name": "FUN_004b0ef2",
-   "symbol": "?FUN_004b0ef2@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0f06": {
-   "name": "FUN_004b0f06",
-   "symbol": "?FUN_004b0f06@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0f1a": {
-   "name": "FUN_004b0f1a",
-   "symbol": "?FUN_004b0f1a@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b0f2e": {
-   "name": "FUN_004b0f2e",
-   "symbol": "?FUN_004b0f2e@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004b14aa": {
    "name": "FUN_004b14aa",
    "symbol": "?fn_004b14aa@@YA?AUtPoint2@@H@Z",
@@ -3439,69 +3322,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x004b1ac5": {
-   "name": "FUN_004b1ac5",
-   "symbol": "?FUN_004b1ac5@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1ad9": {
-   "name": "FUN_004b1ad9",
-   "symbol": "?FUN_004b1ad9@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1aed": {
-   "name": "FUN_004b1aed",
-   "symbol": "?FUN_004b1aed@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1b01": {
-   "name": "FUN_004b1b01",
-   "symbol": "?FUN_004b1b01@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1b15": {
-   "name": "FUN_004b1b15",
-   "symbol": "?FUN_004b1b15@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1b29": {
-   "name": "FUN_004b1b29",
-   "symbol": "?FUN_004b1b29@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1b3d": {
-   "name": "FUN_004b1b3d",
-   "symbol": "?FUN_004b1b3d@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004b1ba9": {
    "name": "tMyHud3D::vfunction3",
    "symbol": "?vfunction3@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",
@@ -3509,60 +3329,6 @@
    "size": 656,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1e4d": {
-   "name": "FUN_004b1e4d",
-   "symbol": "?FUN_004b1e4d@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1e61": {
-   "name": "FUN_004b1e61",
-   "symbol": "?FUN_004b1e61@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 20,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1e75": {
-   "name": "FUN_004b1e75",
-   "symbol": "?FUN_004b1e75@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 16,
-   "score": 10.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1e85": {
-   "name": "FUN_004b1e85",
-   "symbol": "?FUN_004b1e85@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 8,
-   "score": 33.333,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1eb1": {
-   "name": "FUN_004b1eb1",
-   "symbol": "?FUN_004b1eb1@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 8,
-   "score": 33.333,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004b1ecd": {
-   "name": "FUN_004b1ecd",
-   "symbol": "?FUN_004b1ecd@@YAXXZ",
-   "unit": "unsorted/tMyHud3D.cpp",
-   "size": 8,
-   "score": 33.333,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x004b1ed5": {
@@ -3700,15 +3466,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x004c2af5": {
-   "name": "FUN_004c2af5",
-   "symbol": "?fn_004c2af5@@YAXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004c2b66": {
    "name": "FUN_004c2b66",
    "symbol": "?fn_004c2b66@tFleetEntry@@QAEPAVtMultiStateText@@PAVtObjBase@@@Z",
@@ -3772,30 +3529,12 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x004c3524": {
-   "name": "FUN_004c3524",
-   "symbol": "?fn_004c3524@@YAXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004c352e": {
    "name": "FUN_004c352e",
    "symbol": "?fn_004c352e@@YAXPAVtObjBase@@VtObject_004c352e_arg@@@Z",
    "unit": "unsorted/tFleetEntry.cpp",
    "size": 83,
    "score": 3.308,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x004c3581": {
-   "name": "FUN_004c3581",
-   "symbol": "?fn_004c3581@@YAXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
    "exact": false,
    "recorded": "2026-11-10"
   },
@@ -3806,15 +3545,6 @@
    "size": 25,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x004c36f9": {
-   "name": "FUN_004c36f9",
-   "symbol": "?fn_004c36f9@@YAXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x004c3703": {
@@ -3835,15 +3565,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x004c380b": {
-   "name": "tFleetEntry::vfunction48_for_tVisGroup",
-   "symbol": "?vfunction48_for_tVisGroup@tFleetEntry@@QAEXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004c3815": {
    "name": "FUN_004c3815",
    "symbol": "?fn_004c3815@tFleetEntry@@QAEXABVtObject_00412f08@@@Z",
@@ -3860,15 +3581,6 @@
    "size": 352,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x004c3a2c": {
-   "name": "FUN_004c3a2c",
-   "symbol": "?fn_004c3a2c@tFleetEntry@@QAEXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x004c3a36": {
@@ -4382,15 +4094,6 @@
    "size": 505,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x004c8780": {
-   "name": "tScrollBar::vfunction37",
-   "symbol": "?vfunction37@tScrollBar@@UAEXXZ",
-   "unit": "unsorted/tScrollBar.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x004c878a": {
@@ -5311,15 +5014,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x0051f0d7": {
-   "name": "FUN_0051f0d7",
-   "symbol": "?fn_0051f0d7@tAICaptain@@QAEXXZ",
-   "unit": "unsorted/tAICaptain.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x0051f0e1": {
    "name": "FUN_0051f0e1",
    "symbol": "?fn_0051f0e1@tAICaptain@@QAEXD@Z",
@@ -5950,15 +5644,6 @@
    "exact": false,
    "recorded": "2026-11-10"
   },
-  "0x00607fdf": {
-   "name": "tPanelMgr::~tPanelMgr",
-   "symbol": "?fn_00607fdf@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 303,
-   "score": 1.205,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x0060810e": {
    "name": "FUN_0060810e",
    "symbol": "?fn_0060810e@@YAXXZ",
@@ -5975,15 +5660,6 @@
    "size": 13,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x006082ef": {
-   "name": "FUN_006082ef",
-   "symbol": "?fn_006082ef@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x006082f9": {
@@ -6004,15 +5680,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x006084da": {
-   "name": "FUN_006084da",
-   "symbol": "?fn_006084da@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x006084e4": {
    "name": "FUN_006084e4",
    "symbol": "?fn_006084e4@tPanelMgr@@QAEXXZ",
@@ -6029,15 +5696,6 @@
    "size": 59,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x006085b5": {
-   "name": "FUN_006085b5",
-   "symbol": "?fn_006085b5@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x006085bf": {
@@ -6067,24 +5725,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x006087af": {
-   "name": "tPanelMgr::vfunction2",
-   "symbol": "?fn_006087af@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x006087b9": {
-   "name": "tMemberCallback<tPanelMgr,long>::~tMemberCallback<tPanelMgr,long>",
-   "symbol": "?fn_006087b9@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 917,
-   "score": 0.383,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x00608b4e": {
    "name": "tPanelMgr::vfunction4",
    "symbol": "?vfunction4@tPanelMgr@@QAE_NXZ",
@@ -6092,24 +5732,6 @@
    "size": 121,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x00608bc7": {
-   "name": "tPanelMgr::vfunction3",
-   "symbol": "?fn_00608bc7@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 10,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x00608bd1": {
-   "name": "FUN_00608bd1",
-   "symbol": "?fn_00608bd1@@YAXXZ",
-   "unit": "unsorted/tPanelMgr.cpp",
-   "size": 1190,
-   "score": 0.294,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x00609077": {

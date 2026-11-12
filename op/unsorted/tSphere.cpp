@@ -106,13 +106,6 @@ bool tSphere::vfunction2(float radius, int param_2, int param_3, float param_4, 
     return false;
 }
 
-// HYPOTHESIS: this is the body of tSphere::vfunction2 after its __EH_prolog call (see above),
-// not a function of its own. Stub only: the real body cannot be rebuilt as a separate function.
-// FUNCTION: STARFLEETOP 0x0040f164
-void FUN_0040f164()
-{
-}
-
 // HYPOTHESIS: this is the shared epilogue of tSphere::vfunction2 (xor al,al; restore fs:[0];
 // pop edi/esi/ebx; leave; ret 0x1c), where the catch funclet resumes, not a function of its
 // own. The original bytes pop 0x1c, so the enclosing function takes seven stack arguments, not

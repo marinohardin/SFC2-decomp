@@ -236,7 +236,7 @@ tSfcApp3d::~tSfcApp3d()
 // recorded as functions in between (0x0040ac0d..0x0040ad2f) are its own.
 // HYPOTHESIS: when the analysis rows are merged, fn_0040ab7e becomes this function's body;
 // this empty stub is a placeholder.
-// FUNCTION: STARFLEETOP 0x0040ab74
+// STUB: STARFLEETOP 0x0040ab74
 void tSfcApp3d::vfunction12()
 {
 }

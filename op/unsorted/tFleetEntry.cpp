@@ -596,7 +596,6 @@ public:
 	void vfunction45_for_tVisGroup();
 	void vfunction46_for_tVisGroup();
 	void vfunction47_for_tVisGroup(int param_1);
-	void vfunction48_for_tVisGroup();
 	void vfunction50_for_tVisGroup();
 	void vfunction51_for_tVisGroup(float param_1, int param_2, int param_3);
 	// HYPOTHESIS: a setter for m_n114 that returns the previous value, from its place after
@@ -610,7 +609,6 @@ public:
 	// analysis splits off at 0x004c380b.
 	void fn_004c3815(const tObject_00412f08 &dest);
 	// HYPOTHESIS: a member of tFleetEntry, from its place after vfunction51_for_tVisGroup.
-	void fn_004c3a2c();
 	// HYPOTHESIS: the body of fn_004c3a2c, whose exception-frame prolog the analysis splits off;
 	// 0x0048c418 calls it on each entry and gives the entry slot 44 when it returns false.
 	bool fn_004c3a36();
@@ -827,14 +825,6 @@ tGauge *tFleetEntry::fn_004c2aba(tObjBase *pParent)
 		pChild = pChild->field_04;
 	}
 	return 0;
-}
-
-// HYPOTHESIS: these 10 bytes are `mov eax, <handler>; call __EH_prolog`, the prolog of the
-// function that follows; the analysis boundary splits it off, so it has no body of its own to
-// rebuild. It will match once the boundary is merged into that function.
-// FUNCTION: STARFLEETOP 0x004c2af5
-void fn_004c2af5()
-{
 }
 
 // FUNCTION: STARFLEETOP 0x004c2b66
@@ -1085,14 +1075,6 @@ void tFleetEntry::vfunction50_for_tVisGroup()
 	}
 }
 
-// HYPOTHESIS: not source. The original is `mov eax, <table>; call <helper>`, the compiler's
-// exception-frame handler stub for a function elsewhere in this unit, split off by the
-// analysis boundary; it has no body of its own to rebuild, like 0x004c2af5 above.
-// FUNCTION: STARFLEETOP 0x004c3524
-void fn_004c3524()
-{
-}
-
 // HYPOTHESIS: a value type with a destructor, passed by value to 0x004c352e; its layout and
 // name are not recovered.
 class tObject_004c352e_arg
@@ -1128,14 +1110,6 @@ void fn_004c352e(tObjBase *pParent, tObject_004c352e_arg arg)
 	}
 }
 
-// HYPOTHESIS: not source. The original is `mov eax, <table>; call <helper>`, the compiler's
-// exception-frame prolog for the function that follows it at 0x004c358b, split off by the
-// analysis boundary; it has no body of its own to rebuild, like 0x004c3524 above.
-// FUNCTION: STARFLEETOP 0x004c3581
-void fn_004c3581()
-{
-}
-
 // HYPOTHESIS: a member of tFleetEntry, from its place after tFleetEntry's functions; it sets
 // m_n114 when the value changes and returns the previous value (left in eax by the original).
 // FUNCTION: STARFLEETOP 0x004c36e0
@@ -1148,15 +1122,7 @@ int tFleetEntry::fn_004c36e0(int nValue)
 	return nOld;
 }
 
-// HYPOTHESIS: not source. The original is `mov eax, <table>; call <helper>`, the compiler's
-// exception-frame prolog for the function that follows it at 0x004c3703, split off by the
-// analysis boundary; it has no body of its own to rebuild, like 0x004c3581 above.
-// FUNCTION: STARFLEETOP 0x004c36f9
-void fn_004c36f9()
-{
-}
-
-// HYPOTHESIS: the body of fn_004c36f9 (its prolog is 0x004c36f9 above). It walks pParent's
+// HYPOTHESIS: the body of fn_004c36f9 (its prolog 0x004c36f9 is listed in boundary_errors.tsv). It walks pParent's
 // children, or this group's when pParent is 0, and returns the first tValueBtn whose name
 // matches pszName, or 0.
 // FUNCTION: STARFLEETOP 0x004c3703
@@ -1192,16 +1158,7 @@ void tFleetEntry::vfunction47_for_tVisGroup(int param_1)
 	}
 }
 
-// HYPOTHESIS: the original's 10 bytes are `mov eax, <table>; call <helper>`, the compiler's
-// exception-frame prolog of this virtual (its EH funclet 0x00766154 names 0x004c380b as
-// parent); the analysis boundary splits the body off after it, so only the prolog is scored,
-// like 0x004c36f9 above.
-// FUNCTION: STARFLEETOP 0x004c380b
-void tFleetEntry::vfunction48_for_tVisGroup()
-{
-}
-
-// HYPOTHESIS: the body of vfunction48_for_tVisGroup (its prolog is 0x004c380b above). When
+// HYPOTHESIS: the body of vfunction48_for_tVisGroup (its prolog 0x004c380b is listed in boundary_errors.tsv). When
 // the entry's group is selected it clears the entry if its fleet is gone, then sends the fleet
 // a new command destination built from dest and plays a sound.
 // FUNCTION: STARFLEETOP 0x004c3815
@@ -1245,15 +1202,6 @@ void tFleetEntry::vfunction51_for_tVisGroup(float param_1, int param_2, int para
 	sprintf(szActions, "%s_Actions", szName);
 	m_apSlot[4]->fn_004be8ae(szName, param_1, param_2 / 3, param_3);
 	m_apSlot[5]->fn_004be8ae(szActions, param_1, param_2 / 3, param_3);
-}
-
-// HYPOTHESIS: the original's 10 bytes are `mov eax, 0x00766188; call <helper>`, the compiler's
-// exception-frame prolog of a member (its EH funclets 0x00766168..0x00766180 name 0x004c3a2c
-// as parent); the analysis boundary splits the body off after it, so only the prolog is
-// scored, like 0x004c380b above. The body and the signature are not yet recovered.
-// FUNCTION: STARFLEETOP 0x004c3a2c
-void tFleetEntry::fn_004c3a2c()
-{
 }
 
 // HYPOTHESIS: the entry's periodic update. It updates the slots while any of them asks to be,

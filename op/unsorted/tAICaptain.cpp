@@ -177,7 +177,6 @@ public:
 	void fn_0051e613();
 	void fn_0051f0c3(char aValue);
 	char fn_0051f0d0();
-	void fn_0051f0d7();
 	void fn_0051f0e1(char aValue);
 	void fn_0051f153(int aIndex, int aValue);
 	void fn_0051f16e(int aValue);
@@ -1071,16 +1070,7 @@ char tAICaptain::fn_0051f0d0()
 	return field_0x35f8;
 }
 
-// HYPOTHESIS: the 10 bytes at 0x0051f0d7 are only "mov eax, <unwind table>; call __EH_prolog",
-// the prolog of a function with an exception frame whose body the analysis splits off after it
-// (as at 0x0040f15a). Placeholder, not original code: the prolog cannot be written in source
-// without the body that follows it.
-// FUNCTION: STARFLEETOP 0x0051f0d7
-void tAICaptain::fn_0051f0d7()
-{
-}
-
-// HYPOTHESIS: the body of the function whose exception-handling prolog is 0x0051f0d7 above.
+// HYPOTHESIS: the body of the function whose exception-handling prolog is 0x0051f0d7 (a listed boundary error).
 // Written whole, so its build starts with that 10-byte prolog and the rest follows the
 // original instruction for instruction from 0x0051f0e1 on. With the flag set it tells the offensive officer 0 through 0x00519130 and orders the ship to
 // disengage; otherwise it clears the ship's current orders.

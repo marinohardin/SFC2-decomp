@@ -507,66 +507,6 @@ void fn_004b0e1b(tObject_00413ac3_arg *aView, int aIndex, tObject_00852448 *aEnt
 	}
 }
 
-// HYPOTHESIS: 0x004b0eb6 (20 bytes) is not a function. It lies inside fn_004b0e1b (0x004b0e1b
-// to about 0x004b1376) and starts mid-expression (fstp to a global, then a call), so it is
-// part of fn_004b0e1b's body and has no source of its own. The empty definition below exists
-// only so the harness can score this range; it should be dropped once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0eb6
-void FUN_004b0eb6()
-{
-}
-
-// HYPOTHESIS: 0x004b0eca (20 bytes) is not a function either. It follows 0x004b0eb6 inside
-// fn_004b0e1b and starts mid-expression (fstp to the global at 0x00919a3c, fld of a constant,
-// then a call), so it is part of fn_004b0e1b's body. The empty definition exists only so the
-// harness can score this range; it should be dropped once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0eca
-void FUN_004b0eca()
-{
-}
-
-// HYPOTHESIS: 0x004b0ede (20 bytes) is a third fragment inside fn_004b0e1b, after 0x004b0eca
-// (the uv table's initializer continues through it), so it has no source of its own. The empty
-// definition exists only so the harness can score this range; drop it once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0ede
-void FUN_004b0ede()
-{
-}
-
-// HYPOTHESIS: 0x004b0ef2 (20 bytes) is a fourth fragment inside fn_004b0e1b, after 0x004b0ede
-// (the uv table's initializer continues through it), so it has no source of its own. The empty
-// definition exists only so the harness can score this range; drop it once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0ef2
-void FUN_004b0ef2()
-{
-}
-
-// HYPOTHESIS: 0x004b0f06 (20 bytes) is a fifth fragment inside fn_004b0e1b, after 0x004b0ef2
-// (the uv table's initializer continues through it), so it has no source of its own. The empty
-// definition exists only so the harness can score this range; drop it once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0f06
-void FUN_004b0f06()
-{
-}
-
-// HYPOTHESIS: 0x004b0f1a (20 bytes) is a sixth fragment inside fn_004b0e1b, after 0x004b0f06
-// (it starts mid-expression with fstp to the global at 0x00919a4c, then the uv table's
-// initializer continues), so it has no source of its own. The empty definition exists only so
-// the harness can score this range; drop it once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0f1a
-void FUN_004b0f1a()
-{
-}
-
-// HYPOTHESIS: 0x004b0f2e (20 bytes) is a seventh fragment inside fn_004b0e1b, after 0x004b0f1a
-// (it starts mid-expression with fstp to the global at 0x00919a50, then the uv table's
-// initializer continues), so it has no source of its own. The empty definition exists only so
-// the harness can score this range; drop it once the boundary is fixed.
-// FUNCTION: STARFLEETOP 0x004b0f2e
-void FUN_004b0f2e()
-{
-}
-
 // FUNCTION: STARFLEETOP 0x004b14aa
 tPoint2 fn_004b14aa(int aIndex)
 {
@@ -712,65 +652,6 @@ void tMyHud3D::fn_004b1692(tObject_00413ac3_arg *aView, short aA, short aB, floa
 	aView->vfunction70(&v);
 }
 
-// HYPOTHESIS: 0x004b1ac5 (20 bytes) is not a function. It starts mid-expression (fstp to the
-// global at 0x00919a78, fld of the constant at 0x0079836c, fstp [esp], call), the same pattern
-// as a local static float table's initializer calling fn_005050e2 per element, so it is a
-// fragment of the function that begins after fn_004b1692 ends (0x004b1ab1). The empty
-// definition below exists only so the harness can score this range, as for 0x004b0eb6; drop it
-// once the boundary is fixed and that function is rebuilt.
-// FUNCTION: STARFLEETOP 0x004b1ac5
-void FUN_004b1ac5()
-{
-}
-
-// HYPOTHESIS: 0x004b1ad9 (20 bytes) is the next element of the same initializer as 0x004b1ac5:
-// fstp to 0x00919a7c, fld of the constant at 0x007a0b64, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1ad9
-void FUN_004b1ad9()
-{
-}
-
-// HYPOTHESIS: 0x004b1aed (20 bytes) is the next element of the same initializer as 0x004b1ad9:
-// fstp to 0x00919a80, fld of the constant at 0x007a162c, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1aed
-void FUN_004b1aed()
-{
-}
-
-// HYPOTHESIS: 0x004b1b01 (20 bytes) is the next element of the same initializer as 0x004b1aed:
-// fstp to 0x00919a84, fld of the constant at 0x007a162c, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1b01
-void FUN_004b1b01()
-{
-}
-
-// HYPOTHESIS: 0x004b1b15 (20 bytes) is the next element of the same initializer as 0x004b1b01:
-// fstp to 0x00919a88, fld of the constant at 0x0079836c, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1b15
-void FUN_004b1b15()
-{
-}
-
-// HYPOTHESIS: 0x004b1b29 (20 bytes) is the next element of the same initializer as 0x004b1b15:
-// fstp to 0x00919a8c, fld of the constant at 0x0079836c, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1b29
-void FUN_004b1b29()
-{
-}
-
-// HYPOTHESIS: 0x004b1b3d (20 bytes) is the next element of the same initializer as 0x004b1b29:
-// fstp to 0x00919a90, fld of the constant at 0x007a162c, fstp [esp], call. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1b3d
-void FUN_004b1b3d()
-{
-}
-
 // HYPOTHESIS: the current time, a double (as in tCloakSystem and tNetControl).
 extern double g_00c7c148;
 
@@ -828,54 +709,6 @@ void tMyHud3D::vfunction3(tObject_004b0a39_entity *aEntity, tObject_00413ac3_arg
 	}
 	aView->vfunction68();
 	aView->vfunction54(&saved);
-}
-
-// HYPOTHESIS: 0x004b1e4d (20 bytes) is not a function. It starts mid-expression (fstp to the
-// global at 0x00919aa8, fld of the constant at 0x007a1630, fstp [esp], call), the same pattern
-// as 0x004b1ac5, so it is a fragment of a static float table's initializer that begins after
-// vfunction3 ends (0x004b1e39). The empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1e4d
-void FUN_004b1e4d()
-{
-}
-
-// HYPOTHESIS: 0x004b1e61 (20 bytes) is the next element of the same initializer as 0x004b1e4d.
-// Not a function; the empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1e61
-void FUN_004b1e61()
-{
-}
-
-// HYPOTHESIS: 0x004b1e75 (16 bytes) is the next element of the same initializer as 0x004b1e4d
-// (fstp to the global at 0x00919ab0, fld1, fstp [esp], call). Not a function; the empty
-// definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1e75
-void FUN_004b1e75()
-{
-}
-
-// HYPOTHESIS: 0x004b1e85 (8 bytes) is the tail of the same initializer as 0x004b1e4d
-// (fstp to the global at 0x00919ab4, pop ecx, ret). Not a function; the empty definition only
-// lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1e85
-void FUN_004b1e85()
-{
-}
-
-// HYPOTHESIS: 0x004b1eb1 (8 bytes) is the tail of a static float initializer that begins before
-// it (fstp to the global at 0x009199ac, pop ecx, ret), like 0x004b1e85. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1eb1
-void FUN_004b1eb1()
-{
-}
-
-// HYPOTHESIS: 0x004b1ecd (8 bytes) is the tail of a static float initializer that begins before
-// it (fstp to the global at 0x009199a8, pop ecx, ret), like 0x004b1eb1. Not a function; the
-// empty definition only lets the harness score this range.
-// FUNCTION: STARFLEETOP 0x004b1ecd
-void FUN_004b1ecd()
-{
 }
 
 // HYPOTHESIS: a time in seconds, a float.

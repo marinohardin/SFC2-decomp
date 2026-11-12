@@ -293,23 +293,6 @@ tPanelMgr::~tPanelMgr()
 {
 }
 
-// HYPOTHESIS: the body at 0x00607fdf runs inside the frame __EH_prolog set up (it reads
-// [ebp-0x4], [ebp-0xc], [ebp-0x10] and ends with leave), so it cannot be rebuilt as a function
-// of its own. What it does, for when the destructor is rebuilt whole: set the vtable to
-// 0x007b62a8; delete the object at +0x22c through its virtual slot 0 (flag 1) and clear it; call
-// a member of this (0x006082e2); destroy the members at +0x280, +0x234, +0x204, +0x1f0, +0x1e0,
-// +0x1d0, +0x1b4, +0x174 and +0x100 (+0x234 and +0x174 share a type whose vtable is 0x00799570
-// and which has a member at +0x18; +0x1e0 and +0x1d0 share a destructor, 0x00571a7a); destroy
-// the arrays at +0x4c (4 of 0x2c bytes, element destructor 0x004a719c) and +0x0c (4 of 0x10
-// bytes, element destructor 0x00424ee1) with the vector destructor iterator; then call the base
-// class destructor 0x00469d19.
-// Placeholder only, not the original code: it holds the address until the analysis records
-// 0x00607fd5 and 0x00607fdf as one function and the destructor above is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x00607fdf
-void fn_00607fdf()
-{
-}
-
 // HYPOTHESIS: an 8-byte table entry (two 32-bit fields of unknown meaning). Six other
 // modules each report the byte size of their table and hand out its first entry; this
 // function joins them into one table after four fixed entries, ending with a fifth fixed one.
@@ -373,16 +356,6 @@ void fn_006082e2()
     delete[] g_00c3a68c;
 }
 
-// HYPOTHESIS: the recorded 10 bytes are only the exception-handling prolog (mov eax,
-// <ehhandler 0x007859a3>; call __EH_prolog) of a function whose body the analysis records
-// separately as 0x006082f9 (410 bytes); six unwind funclets (0x00785964..0x00785998) name this
-// address as their parent. Placeholder only, not the original code: it holds the address until
-// the analysis records 0x006082ef and 0x006082f9 as one function and it is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x006082ef
-void fn_006082ef()
-{
-}
-
 // HYPOTHESIS: this is the whole function that starts at 0x006082ef; the analysis records its
 // exception-handling prolog (10 bytes) and its body (0x006082f9, 410 bytes) as two functions, so
 // the body is scored against a build that also carries the prolog. Unless the member at +0x200
@@ -442,16 +415,6 @@ void tPanelMgr::fn_00608493()
     m_0x1f0.fn_0060ab15();
 }
 
-// HYPOTHESIS: the recorded 10 bytes are only the exception-handling prolog (mov eax,
-// <ehhandler 0x007859c3>; call __EH_prolog) of a function whose body follows at 0x006084e4; two
-// unwind funclets (0x007859b0, 0x007859bb) name this address as their parent. Placeholder only,
-// not the original code: it holds the address until the analysis records the prolog and body as
-// one function and it is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x006084da
-void fn_006084da()
-{
-}
-
 // HYPOTHESIS: this is the body of the function that starts at 0x006084da (see above). If the
 // container at +0x1d0 is empty, it makes a player relay creator and a messenger relay creator and
 // appends what each one's inherited function (0x00607460) returns.
@@ -477,15 +440,6 @@ void tPanelMgr::fn_0060857a()
             panel->vfunction11(1);
     }
     m_0x1d0.clear();
-}
-
-// HYPOTHESIS: as at 0x006084da, the recorded 10 bytes are only the exception-handling prolog
-// (mov eax, <ehhandler 0x007859f9>; call __EH_prolog) of a function whose body follows at
-// 0x006085bf. Placeholder only, not the original code: it holds the address until the analysis
-// records the prolog and body as one function and it is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x006085b5
-void fn_006085b5()
-{
 }
 
 // HYPOTHESIS: this is the body of the function that starts at 0x006085b5 (see above). If the
@@ -553,28 +507,6 @@ void tPanelMgr::fn_00608766()
     gObject_0090b730.fn_0060cac6();
 }
 
-// HYPOTHESIS: the analysis names this a virtual function of tPanelMgr, but the recorded 10 bytes
-// are only the exception-handling prolog (mov eax, <ehhandler 0x00785a34>; call __EH_prolog) of a
-// function whose body follows at 0x006087b9. Placeholder only, not the original code: it holds the
-// address until the analysis records the prolog and body as one function and it is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x006087af
-void fn_006087af()
-{
-}
-
-// HYPOTHESIS: the analysis names this ~tMemberCallback<tPanelMgr,long>, but it is the body (917
-// bytes) of the function whose exception-handling prolog is recorded at 0x006087af, so the name is
-// wrong; it runs inside the frame that prolog sets up (it reads [ebp-0x4], [ebp-0xc], and ends
-// with leave) and takes this in ecx. It looks like a tPanelMgr initialiser: it creates a 12-byte
-// callback object stored at +0x16c, reads the member at +0x1cc from the object at 0x0090b730,
-// calls the functions 0x006082f9 and 0x006085bf, sets a table at +0x100 (ids 0x10003..0x10008)
-// and walks the container at +0x204. Placeholder only, not the original code: too many callees
-// and members are unknown to rebuild it yet.
-// FUNCTION: STARFLEETOP 0x006087b9
-void fn_006087b9()
-{
-}
-
 // HYPOTHESIS: the object each value in the vector at +0x1e0 points to; only its non-virtual
 // function 0x00607676 (taking no argument) is known.
 class fn_00607676_panel {
@@ -609,16 +541,6 @@ bool tPanelMgr::vfunction4()
     fn_004d32c4(g_0087b684);
     fn_004d3e88();
     return true;
-}
-
-// HYPOTHESIS: as at 0x006087af, the analysis names this a virtual function of tPanelMgr, but the
-// recorded 10 bytes are only the exception-handling prolog (mov eax, <ehhandler 0x00785a50>; call
-// __EH_prolog) of a function whose body follows at 0x00608bd1 and is not recorded as a function.
-// Placeholder only, not the original code: it holds the address until the analysis records the
-// prolog and body as one function and it is rebuilt whole.
-// FUNCTION: STARFLEETOP 0x00608bc7
-void fn_00608bc7()
-{
 }
 
 // HYPOTHESIS: free functions and globals fn_00608bd1 uses; their types are not known beyond how
@@ -665,8 +587,8 @@ void fn_004bd534();
 
 // HYPOTHESIS: the analysis records this function's body (1190 bytes) as 0x00608bd1, apart from its
 // exception-handling prolog at 0x00608bc7. Built whole, it starts with that prolog, so the body
-// cannot be scored at 0x00608bd1: every instruction sits 10 bytes off. The placeholder below holds
-// the address; this whole function is decoded from the body and carries no annotation until the
+// cannot be scored at 0x00608bd1: every instruction sits 10 bytes off. Both addresses are listed in
+// analysis/results/boundary_errors.tsv; this whole function is decoded from the body and carries no annotation until the
 // analysis records 0x00608bc7 and 0x00608bd1 as one function.
 // It pumps messages through fn_0046aa10: while the flag at +0x170 is set it only waits for
 // message 0x10032 (or, the first time, opens a box); otherwise it dispatches each message by id,
@@ -788,14 +710,6 @@ void tPanelMgr::vfunction3()
     fn_0060a951_container::iterator it2 = m_0x204.fn_0053aa7a(m_0x220);
     if (it2 != m_0x204.end())
         ((fn_00608493_panel *)m_0x204.fn_0060a951(m_0x220))->vfunction16();
-}
-
-// HYPOTHESIS: the body of tPanelMgr::vfunction3 (above), recorded apart from its prolog.
-// Placeholder only, not the original code: it holds the address until the analysis records
-// 0x00608bc7 and 0x00608bd1 as one function and vfunction3 takes its annotation.
-// FUNCTION: STARFLEETOP 0x00608bd1
-void fn_00608bd1()
-{
 }
 
 // FUNCTION: STARFLEETOP 0x00609077

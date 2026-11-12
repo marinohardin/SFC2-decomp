@@ -179,14 +179,6 @@ void tEntityMgr::fn_004235cd(int8u flags, int32 value)
         *(int32 *)fEntityStrength = gValue_0083bb28 + value;
 }
 
-// HYPOTHESIS: the original is a compiler-generated exception-handling stub
-// (loads a handler table at 0x0075c044 and jumps to the frame handler); it has
-// no source of its own. This empty body is a placeholder, not the original code.
-// FUNCTION: STARFLEETOP 0x004235f0
-void fn_004235f0()
-{
-}
-
 // FUNCTION: STARFLEETOP 0x004235fa
 // HYPOTHESIS: 0x004235f0 and 0x004235fa are one function. The 10 bytes at
 // 0x004235f0 are its EH prolog ("mov eax, <EH function info>; call

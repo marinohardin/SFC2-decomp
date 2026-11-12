@@ -255,24 +255,6 @@ tFleetPanel *tFleetPanel::scalar_deleting_destructor(unsigned char flags)
 	return this;
 }
 
-// HYPOTHESIS: this is the body of tFleetPanel::~tFleetPanel after its exception prolog
-// (`mov eax, <handler>; call __EH_prolog` at 0x0048c05c), not a function of its own. The
-// analysis boundary splits the destructor after those 10 bytes, so the body cannot be rebuilt
-// here without regressing 0x0048c05c; left as a placeholder until the boundary is corrected.
-// FUNCTION: STARFLEETOP 0x0048c066
-void FUN_0048c066()
-{
-}
-
-// HYPOTHESIS: like 0x0048c05c, these 10 bytes are only the exception prolog
-// (`mov eax, 0x762c82; call __EH_prolog`) of a larger tFleetPanel virtual whose body the
-// analysis boundary cuts off after 0x0048c1b5. The body is not recovered; placeholder until
-// the boundary is corrected.
-// FUNCTION: STARFLEETOP 0x0048c1ab
-void fn_0048c1ab()
-{
-}
-
 // HYPOTHESIS: the whole of tFleetPanel::vfunction2, which the analysis splits into its
 // exception prolog (0x0048c1ab, 10 bytes) and its body (0x0048c1b5, 409 bytes). Neither
 // address can claim it until the boundary is corrected: compiled whole, it is 415 bytes that
@@ -332,14 +314,6 @@ void tFleetPanel::vfunction2()
 		pArg->m_n0c = m_apButton[0]->m_p140 ? m_apButton[0]->m_p140->m_s36 : 0;
 		m_pCharacter->fn_004b97cc(pArg);
 	}
-}
-
-// HYPOTHESIS: these 409 bytes are the body of tFleetPanel::vfunction2 (above) after its
-// exception prolog; the analysis boundary splits the function at 0x0048c1b5, so it cannot be
-// rebuilt as a function of its own. Placeholder until the boundary is corrected.
-// FUNCTION: STARFLEETOP 0x0048c1b5
-void FUN_0048c1b5()
-{
 }
 
 // FUNCTION: STARFLEETOP 0x0048c34e

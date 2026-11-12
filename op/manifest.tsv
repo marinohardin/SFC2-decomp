@@ -10,7 +10,7 @@ address	size	symbol	source	modes
 0x0040135a	5	tApp3dBase::vfunction18()	unsorted/tApp3dBase.cpp	vc6 guest
 0x0040aadc	65	tSfcApp3d::tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
 0x0040ab43	49	tSfcApp3d::~tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
-0x0040ab74	10	tSfcApp3d::vfunction12()	unsorted/tSfcApp3d.cpp	partial
+0x0040ab74	10	tSfcApp3d::vfunction12()	unsorted/tSfcApp3d.cpp	stub
 0x0040ab7e	143	tSfcApp3d::fn_0040ab7e()	unsorted/tSfcApp3d.cpp	partial
 0x0040ac19	37	fn_0040ac19()	unsorted/tSfcApp3d.cpp	partial
 0x0040ac4a	46	fn_0040ac4a()	unsorted/tSfcApp3d.cpp	partial
@@ -77,7 +77,6 @@ address	size	symbol	source	modes
 0x0040d025	57	tINIMgr::fn_0040d025(int,int,int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
 0x0040d05e	51	tINIMgr::fn_0040d05e(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
 0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
-0x0040f164	1767	FUN_0040f164()	unsorted/tSphere.cpp	partial
 0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial
 0x0040f87f	71	tSphere::vfunction4(fn_0040f87f_Target *)	unsorted/tSphere.cpp	vc6 guest
 0x0040f8c6	81	tSphere::vfunction3()	unsorted/tSphere.cpp	vc6 guest
@@ -170,7 +169,6 @@ address	size	symbol	source	modes
 0x00423598	20	tEntityMgr::fn_00423598(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x004235ac	33	tEntityMgr::fn_004235ac(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x004235cd	35	tEntityMgr::fn_004235cd(int8u,int32)	unsorted/tEntityMgr.cpp	vc6 guest
-0x004235f0	10	fn_004235f0()	unsorted/tEntityMgr.cpp	partial
 0x004235fa	277	tEntityMgr::fn_004235fa(int32)	unsorted/tEntityMgr.cpp	partial
 0x0042370f	38	tEntityMgr::fn_0042370f(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00423735	20	tEntityMgr::fn_00423735(int32)	unsorted/tEntityMgr.cpp	vc6 guest
@@ -360,9 +358,6 @@ address	size	symbol	source	modes
 0x0048bd57	745	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c05c	10	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	partial
-0x0048c066	325	FUN_0048c066()	unsorted/tFleetPanel.cpp	partial
-0x0048c1ab	10	fn_0048c1ab()	unsorted/tFleetPanel.cpp	partial
-0x0048c1b5	409	FUN_0048c1b5()	unsorted/tFleetPanel.cpp	partial
 0x0048c34e	31	tFleetPanel::fn_0048c34e()	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c36d	57	tFleetPanel::fn_0048c36d(int)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c3a6	65	tFleetPanel::vfunction3(int *)	unsorted/tFleetPanel.cpp	vc6 guest
@@ -370,31 +365,11 @@ address	size	symbol	source	modes
 0x0048c418	276	tFleetPanel::vfunction4()	unsorted/tFleetPanel.cpp	vc6 guest
 0x004b0a39	994	tMyHud3D::vfunction2(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b0e1b	1372	fn_004b0e1b(tObject_00413ac3_arg *,int,tObject_00852448 *,int,float,bool)	unsorted/tMyHud3D.cpp	partial
-0x004b0eb6	20	FUN_004b0eb6()	unsorted/tMyHud3D.cpp	partial
-0x004b0eca	20	FUN_004b0eca()	unsorted/tMyHud3D.cpp	partial
-0x004b0ede	20	FUN_004b0ede()	unsorted/tMyHud3D.cpp	partial
-0x004b0ef2	20	FUN_004b0ef2()	unsorted/tMyHud3D.cpp	partial
-0x004b0f06	20	FUN_004b0f06()	unsorted/tMyHud3D.cpp	partial
-0x004b0f1a	20	FUN_004b0f1a()	unsorted/tMyHud3D.cpp	partial
-0x004b0f2e	20	FUN_004b0f2e()	unsorted/tMyHud3D.cpp	partial
 0x004b14aa	48	fn_004b14aa(int)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b14db	377	tMyHud3D::vfunction4(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b1654	62	tMyHud3D::fn_004b1654(tAngle,tAngle)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b1692	1055	tMyHud3D::fn_004b1692(tObject_00413ac3_arg *,short,short,float,int)	unsorted/tMyHud3D.cpp	vc6 guest
-0x004b1ac5	20	FUN_004b1ac5()	unsorted/tMyHud3D.cpp	partial
-0x004b1ad9	20	FUN_004b1ad9()	unsorted/tMyHud3D.cpp	partial
-0x004b1aed	20	FUN_004b1aed()	unsorted/tMyHud3D.cpp	partial
-0x004b1b01	20	FUN_004b1b01()	unsorted/tMyHud3D.cpp	partial
-0x004b1b15	20	FUN_004b1b15()	unsorted/tMyHud3D.cpp	partial
-0x004b1b29	20	FUN_004b1b29()	unsorted/tMyHud3D.cpp	partial
-0x004b1b3d	20	FUN_004b1b3d()	unsorted/tMyHud3D.cpp	partial
 0x004b1ba9	656	tMyHud3D::vfunction3(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
-0x004b1e4d	20	FUN_004b1e4d()	unsorted/tMyHud3D.cpp	partial
-0x004b1e61	20	FUN_004b1e61()	unsorted/tMyHud3D.cpp	partial
-0x004b1e75	16	FUN_004b1e75()	unsorted/tMyHud3D.cpp	partial
-0x004b1e85	8	FUN_004b1e85()	unsorted/tMyHud3D.cpp	partial
-0x004b1eb1	8	FUN_004b1eb1()	unsorted/tMyHud3D.cpp	partial
-0x004b1ecd	8	FUN_004b1ecd()	unsorted/tMyHud3D.cpp	partial
 0x004b1ed5	1971	tMyHud3D::vfunction5(tObject_004b0a39_entity *,tObject_004b1ed5_arg *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b2688	22	tMyHud3D::vfunction7(char,tObject_004b0a39_entity *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b269e	44	tMyHud3D::vfunction8(const tPoint3 &,tObject_004b0a39_entity *)	unsorted/tMyHud3D.cpp	vc6 guest
@@ -410,7 +385,6 @@ address	size	symbol	source	modes
 0x004c271b	10	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	partial
 0x004c27a8	786	tFleetEntry::vfunction31_for_tVisGroup(int *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2aba	59	tFleetEntry::fn_004c2aba(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c2af5	10	fn_004c2af5()	unsorted/tFleetEntry.cpp	partial
 0x004c2b66	59	tFleetEntry::fn_004c2b66(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2ba1	59	tFleetEntry::fn_004c2ba1(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2bdc	920	tFleetEntry::vfunction43_for_tVisGroup(int,int,int)	unsorted/tFleetEntry.cpp	vc6 guest
@@ -418,17 +392,12 @@ address	size	symbol	source	modes
 0x004c32df	270	tFleetEntry::vfunction46_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c33ed	270	tFleetEntry::vfunction45_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c34fb	41	tFleetEntry::vfunction50_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c3524	10	fn_004c3524()	unsorted/tFleetEntry.cpp	partial
 0x004c352e	83	fn_004c352e(tObjBase *,tObject_004c352e_arg)	unsorted/tFleetEntry.cpp	partial
-0x004c3581	10	fn_004c3581()	unsorted/tFleetEntry.cpp	partial
 0x004c36e0	25	tFleetEntry::fn_004c36e0(int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c36f9	10	fn_004c36f9()	unsorted/tFleetEntry.cpp	partial
 0x004c3703	129	tFleetEntry::fn_004c3703(const char *,tObjBase *)	unsorted/tFleetEntry.cpp	partial
 0x004c3784	135	tFleetEntry::vfunction47_for_tVisGroup(int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c380b	10	tFleetEntry::vfunction48_for_tVisGroup()	unsorted/tFleetEntry.cpp	partial
 0x004c3815	183	tFleetEntry::fn_004c3815(const tObject_00412f08 &)	unsorted/tFleetEntry.cpp	partial
 0x004c38cc	352	tFleetEntry::vfunction51_for_tVisGroup(float,int,int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c3a2c	10	tFleetEntry::fn_004c3a2c()	unsorted/tFleetEntry.cpp	partial
 0x004c3a36	848	tFleetEntry::fn_004c3a36()	unsorted/tFleetEntry.cpp	partial
 0x004c3da7	11	tFleetEntry::vfunction2_for_tVisNotifiee()	unsorted/tFleetEntry.cpp	partial
 0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
@@ -486,7 +455,7 @@ address	size	symbol	source	modes
 0x004c84d7	135	tScrollBar::fn_004c84d7(int,int)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c855e	41	tRect::mPointInside(int,int) const	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest
-0x004c8780	10	tScrollBar::vfunction37()	unsorted/tScrollBar.cpp	partial
+0x004c8780	10	tScrollBar::vfunction37()	unsorted/tScrollBar.cpp	stub
 0x004c878a	529	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial
 0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest
@@ -589,7 +558,6 @@ address	size	symbol	source	modes
 0x0051e613	2736	tAICaptain::fn_0051e613()	unsorted/tAICaptain.cpp	partial
 0x0051f0c3	13	tAICaptain::fn_0051f0c3(char)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f0d0	7	tAICaptain::fn_0051f0d0()	unsorted/tAICaptain.cpp	vc6 guest
-0x0051f0d7	10	tAICaptain::fn_0051f0d7()	unsorted/tAICaptain.cpp	partial
 0x0051f0e1	114	tAICaptain::fn_0051f0e1(char)	unsorted/tAICaptain.cpp	partial
 0x0051f153	27	tAICaptain::fn_0051f153(int,int)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f16e	22	tAICaptain::fn_0051f16e(int)	unsorted/tAICaptain.cpp	vc6 guest
@@ -660,24 +628,16 @@ address	size	symbol	source	modes
 0x0054848b	8	fn_0054848b()	unsorted/tBattles.cpp	partial
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
 0x00607fd5	10	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	partial
-0x00607fdf	303	fn_00607fdf()	unsorted/tPanelMgr.cpp	partial
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006082e2	13	fn_006082e2()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006082ef	10	fn_006082ef()	unsorted/tPanelMgr.cpp	partial
 0x006082f9	410	tPanelMgr::fn_006082f9()	unsorted/tPanelMgr.cpp	partial
 0x00608493	71	tPanelMgr::fn_00608493()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006084da	10	fn_006084da()	unsorted/tPanelMgr.cpp	partial
 0x006084e4	150	tPanelMgr::fn_006084e4()	unsorted/tPanelMgr.cpp	partial
 0x0060857a	59	tPanelMgr::fn_0060857a()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006085b5	10	fn_006085b5()	unsorted/tPanelMgr.cpp	partial
 0x006085bf	298	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	partial
 0x006086e9	125	tPanelMgr::fn_006086e9()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006087af	10	fn_006087af()	unsorted/tPanelMgr.cpp	partial
-0x006087b9	917	fn_006087b9()	unsorted/tPanelMgr.cpp	partial
 0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest
-0x00608bc7	10	fn_00608bc7()	unsorted/tPanelMgr.cpp	partial
-0x00608bd1	1190	fn_00608bd1()	unsorted/tPanelMgr.cpp	partial
 0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6

@@ -249,7 +249,7 @@ unsigned char tScrollBar::vfunction31( c_tListBox_Base_Event *event )
 // HYPOTHESIS: the original 10 bytes (mov eax, <ehfuncinfo>; call __EH_prolog) are the frame
 // setup of mLoad (0x004c878a), which the analysis splits off as a function of its own; slot 37
 // is mLoad. This empty body only claims the address.
-// FUNCTION: STARFLEETOP 0x004c8780
+// STUB: STARFLEETOP 0x004c8780
 void tScrollBar::vfunction37()
 {
 }
