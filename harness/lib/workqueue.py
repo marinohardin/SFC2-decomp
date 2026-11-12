@@ -166,10 +166,12 @@ def jaccard(a, b):
     return len(a & b) / len(a | b)
 
 
-def build(index, exe, matched_set, difficult, tiers):
-    """The ordered queue: [{address, name, size, named, similarity}]."""
+def build(index, exe, matched_set, difficult, tiers, boundaries=()):
+    """The ordered queue: [{address, name, size, named, similarity}]. `boundaries` holds the
+    matched-set keys of addresses on the boundary-error list, which are pieces of functions and
+    never taken."""
     done = {int(k, 16) for k, v in matched_set['functions'].items() if v.get('exact')}
-    given_up = {int(r['address'], 16) for r in difficult}
+    given_up = {int(r['address'], 16) for r in difficult} | {int(k, 16) for k in boundaries}
     solved = [index.by_address[a] for a in sorted(done) if a in index.by_address][-SOLVED_SAMPLE:]
     solved_tokens = [_tokens(exe.read(fn.address, fn.size)) for fn in solved if fn.size]
     out = []

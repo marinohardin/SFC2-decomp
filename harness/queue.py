@@ -11,7 +11,8 @@
     harness/queue.py sweep                 # list functions the stop rule has already ended
 
 Skips library-flagged functions, EH funclets and thunks, functions already exact in
-matched_set.json, and those in difficult_functions.tsv. Functions in revisit_functions.tsv are
+matched_set.json, those in difficult_functions.tsv, and the boundary errors in
+boundary_errors.tsv. Functions in revisit_functions.tsv are
 skipped too unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit); a revisit run counts only the
 attempts made after the function was listed. See lib/workqueue.py for the order and the stop
 rule (`plan`).
@@ -61,7 +62,8 @@ def main(argv):
     if cmd == 'build':
         index = funcs.FunctionIndex(paths.FUNCTIONS_CSV)
         exe = coff.PeImage(open(paths.EXE, 'rb').read())
-        q = workqueue.build(index, exe, matched.load(paths.MATCHED_SET), difficult, tiers)
+        q = workqueue.build(index, exe, matched.load(paths.MATCHED_SET), difficult, tiers,
+                            matched.boundary_listed(paths.BOUNDARIES))
         workqueue.save_queue(paths.QUEUE, q, time.strftime('%Y-%m-%dT%H:%M:%S'))
         named = sum(1 for e in q if e['named'])
         print(f'OK    queue: {len(q)} functions ({named} named with a prototype) -> {paths.QUEUE}')

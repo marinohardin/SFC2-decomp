@@ -55,6 +55,12 @@ DIFFICULT = env_path('HARNESS_DIFFICULT',
 # "Model tiers"); queue.py skips them unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit).
 REVISIT = env_path('HARNESS_REVISIT_LIST',
                    os.path.join(REPO, 'analysis', 'results', 'revisit_functions.tsv'))
+# Analysis boundaries known to be wrong: an address the analysis records as a function that is
+# only a piece of one (an exception prolog split from its body, a static initializer's fragment,
+# a compiler stub). queue.py never takes them, and a matched-set entry for one may be dropped if
+# it was never exact (harness/README.md, "Boundary errors").
+BOUNDARIES = env_path('HARNESS_BOUNDARIES',
+                      os.path.join(REPO, 'analysis', 'results', 'boundary_errors.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
 # The unit map (tools/units.py): one row per translation unit with its address range.
 UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'game', 'UNITS.tsv'))

@@ -24,8 +24,49 @@ def empty_tree(tmp_path, monkeypatch):
     src.mkdir()
     monkeypatch.setattr(paths, 'SRC_ROOT', str(src))
     monkeypatch.setattr(paths, 'MATCHED_SET', str(tmp_path / 'matched_set.json'))
+    monkeypatch.setattr(paths, 'BOUNDARIES', str(tmp_path / 'boundary_errors.tsv'))
     monkeypatch.setattr(funcs, 'FunctionIndex', lambda *a: FakeIndex())
     return tmp_path
+
+
+def list_boundaries(tmp_path, *addresses):
+    rows = ''.join(f'{a}\tFUN_{a[2:]}\t0x00401000\teh-prolog\tsplit from its body\n'
+                   for a in addresses)
+    (tmp_path / 'boundary_errors.tsv').write_text('address\tname\tpart_of\tkind\tnote\n' + rows)
+
+
+def test_a_listed_boundary_error_that_was_never_exact_may_be_dropped(empty_tree):
+    matched.save(paths.MATCHED_SET, matched_set(a00401000=entry(99.0)))
+    list_boundaries(empty_tree, '0x00401010')
+    rep = verify.run([], base=(matched_set(a00401000=entry(95.0), a00401010=entry(20.0)), 'base'))
+    assert rep.regressions == [] and not rep.failed
+    assert any('0x00401010 dropped from matched_set.json: on the boundary-error list' in ln
+               for ln in rep.lines)
+
+
+def test_a_listed_address_game_still_claims_may_not_be_dropped(empty_tree):
+    base = matched_set(a00401000=entry(99.0), a00401010=entry(40.0))
+    head = matched_set(a00401000=entry(99.0))
+    got, released = matched.release_listed(base, head, {'0x00401010'}, claimed={'0x00401010'})
+    assert released == [] and got == base
+    (empty_tree / 'game' / 'unit.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401010\nvoid f() {}\n'
+                                                 '// STUB: STARFLEETOP 0x00401020\nvoid g() {}\n')
+    assert verify.claimed_keys({'module': 'STARFLEETOP'}) == {'0x00401010'}
+
+
+def test_an_unlisted_or_exact_entry_still_may_not_be_dropped(empty_tree):
+    matched.save(paths.MATCHED_SET, matched_set())
+    list_boundaries(empty_tree, '0x00401020')
+    base = matched_set(a00401010=entry(20.0), a00401020=entry(100.0, True))
+    rep = verify.run([], base=(base, 'base'))
+    assert sorted(rep.regressions) == [0x401010, 0x401020]
+
+
+def test_a_listed_entry_that_is_kept_is_still_held_to_its_score(empty_tree):
+    matched.save(paths.MATCHED_SET, matched_set(a00401010=entry(10.0)))
+    list_boundaries(empty_tree, '0x00401010')
+    rep = verify.run([], base=(matched_set(a00401010=entry(20.0)), 'base'))
+    assert rep.regressions == [0x401010]
 
 
 def test_entries_the_head_drops_or_lowers_are_regressions(empty_tree):
@@ -122,3 +163,22 @@ def test_another_exe_is_scored_only_when_asked_for_and_then_warned_about(exe, mo
     rep = verify.Report()
     verify.check_exe(rep)
     assert rep.lines and rep.lines[0].startswith('WARN') and 'NOT the original exe' in rep.lines[0]
+
+
+def test_the_boundary_list_reads_keys_and_skips_blank_rows(tmp_path):
+    p = tmp_path / 'boundary_errors.tsv'
+    p.write_text('address\tname\tpart_of\tkind\tnote\n'
+                 '0x0040ab7e\tFUN_0040ab7e\t0x0040ab74\tbody-fragment\tx\n'
+                 '\t\t\t\t\n'
+                 '0x401010\tFUN_00401010\t\tthunk\ty\n')
+    assert matched.boundary_listed(str(p)) == {'0x0040ab7e', '0x00401010'}
+    assert matched.boundary_listed(str(tmp_path / 'missing.tsv')) == set()
+
+
+def test_a_bad_address_on_the_boundary_list_names_the_file_and_line(tmp_path):
+    p = tmp_path / 'boundary_errors.tsv'
+    p.write_text('address\tname\tpart_of\tkind\tnote\n'
+                 '0x0040ab7e\tFUN_0040ab7e\t\tthunk\tx\n'
+                 '4198400\tFUN_00401000\t\tthunk\ty\n')
+    with pytest.raises(ValueError, match=r'boundary_errors\.tsv:3: address \'4198400\''):
+        matched.boundary_listed(str(p))

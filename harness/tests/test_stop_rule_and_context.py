@@ -601,6 +601,21 @@ def test_a_boxed_session_is_logged_and_noted_as_a_timeout_with_unknown_cost(tmp_
                                       '0x00401000') == 1
 
 
+def test_queue_never_takes_a_listed_boundary_error():
+    class Fn:
+        def __init__(self, a):
+            self.address, self.id, self.name, self.size = a, f'0x{a:08x}', f'FUN_{a:08x}', 10
+            self.kind, self.is_library, self.has_name, self.has_prototype = 'function', False, False, False
+
+    class Index:
+        functions = [Fn(0x401000), Fn(0x401010)]
+        by_address = {f.address: f for f in functions}
+
+    q = workqueue.build(Index(), None, {'version': 1, 'functions': {}}, [], TIERS,
+                        boundaries={'0x00401010'})
+    assert [e['address'] for e in q] == ['0x00401000']
+
+
 def test_sweep_skips_and_unlists_functions_the_matched_set_records_exact(tmp_path):
     p = _paths(tmp_path)
     for r in [att(1, 'opus', 0, 40), att(2, 'sonnet', 40, 40, 'failed'),

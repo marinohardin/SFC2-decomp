@@ -3,8 +3,10 @@
 Scores only go up. A verification below the recorded score is a regression, whatever the
 function is called now.
 """
+import csv
 import json
 import os
+import re
 
 VERSION = 1
 EPSILON = 1e-6
@@ -43,6 +45,40 @@ def merged(data, base):
         if worse(out['functions'].get(k), old):
             out['functions'][k] = old
     return out
+
+
+BOUNDARY_FIELDS = ('address', 'name', 'part_of', 'kind', 'note')
+
+
+def boundary_listed(path):
+    """The addresses on the boundary-error list, as matched-set keys. A row whose address is
+    not hexadecimal stops with the file and line, not a traceback from int()."""
+    if not os.path.exists(path):
+        return set()
+    out = set()
+    with open(path, newline='') as f:
+        for n, r in enumerate(csv.DictReader(f, delimiter='\t'), start=2):
+            a = (r.get('address') or '').strip()
+            if not a:
+                continue
+            if not re.fullmatch(r'0x[0-9a-fA-F]{1,8}', a):
+                raise ValueError(f'{path}:{n}: address {a!r} is not a 0x-prefixed hexadecimal address')
+            out.add(key(int(a, 16)))
+    return out
+
+
+def release_listed(base, data, listed, claimed=()):
+    """base without the entries data dropped because the address is on the boundary-error list
+    and was never exact there: such an entry scored a fragment, not a function. Returns
+    (base, [released keys]). An exact entry is never released, nor one a FUNCTION annotation in
+    game/ still claims (claimed: matched-set keys): a listed address has no definition there."""
+    gone = [k for k, old in base['functions'].items()
+            if k in listed and k not in data['functions'] and not old.get('exact')
+            and k not in claimed]
+    if not gone:
+        return base, []
+    return dict(base, functions={k: v for k, v in base['functions'].items() if k not in gone}), \
+        sorted(gone)
 
 
 def save(path, data):

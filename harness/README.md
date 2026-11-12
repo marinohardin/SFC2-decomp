@@ -198,6 +198,27 @@ commit the lists it writes. It reads matched_set.json too: a function recorded e
 listed, and is taken off either list, because a function matched outside the loop has no exact
 attempt in the log.
 
+### Boundary errors
+
+`analysis/results/boundary_errors.tsv` lists addresses the analysis records as functions that are
+only pieces of one: an exception prolog (`mov eax, <table>; call __EH_prolog`) split from the body
+that follows it, a fragment of a static initializer, or a compiler stub with no source line. Each
+row gives the address, its name in the analysis, the function it belongs to (`part_of`, when
+known), the kind and a note. `game/` holds no definition for them: a piece of a function has no
+source of its own, and an empty body written only so the harness can score the range is not the
+original's code.
+
+The queue never takes a listed address. The matched-set gate lets a pull request drop the entry of
+a listed address that was never exact and that no `// FUNCTION:` annotation in `game/` still
+claims, with an `INFO` line saying so; an exact entry can never be dropped this way. A row comes
+off the list when the analysis is corrected and the whole function is claimed at its real start.
+
+The gate reads the list from the pull request itself, so the pull request that adds a row is where
+the row is justified: its description says why the address is a piece and not a function, and what
+`part_of` and `kind` rest on (the bytes at the address, the function that jumps or falls into it).
+Review checks each new row against that, since the gate cannot tell a real boundary error from a
+convenient one.
+
 ## The loop (`loop.sh`)
 
 ```sh

@@ -210,6 +210,13 @@ def _units_for(addresses, annotations, src_root):
     return out, missing
 
 
+def claimed_keys(cfg=None):
+    """The matched-set keys of every address a FUNCTION annotation in game/ claims."""
+    cfg = cfg or source.load_units()
+    return {matched.key(a) for a, anns in source.scan_annotations(paths.SRC_ROOT, cfg['module']).items()
+            if any(x.kind == 'FUNCTION' for x in anns)}
+
+
 def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None):
     """base: (matched set, label) to hold the run to as well, from load_base."""
     rep = Report()
@@ -218,6 +225,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     data = matched.load(paths.MATCHED_SET)
     if base is not None:
         base_data, label = base
+        base_data, released = matched.release_listed(
+            base_data, data, matched.boundary_listed(paths.BOUNDARIES), claimed_keys(cfg))
+        for k in released:
+            rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
+                    f'never exact in {label}')
         for k, old in sorted(base_data['functions'].items()):
             new = data['functions'].get(k)
             if matched.worse(new, old):
