@@ -439,7 +439,7 @@ void fn_004b0e1b(tObject_00413ac3_arg *aView, int aIndex, tObject_00852448 *aEnt
 	radius[0] = aScale * 1.22;
 	radius[1] = aScale * 1.135;
 	radius[2] = aScale * 1.115;
-	radius[3] = aScale * 1.06;
+	radius[3] = aScale * 1.035;
 	radius[4] = aScale;
 	radius[5] = aScale * 0.9;
 
