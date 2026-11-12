@@ -662,6 +662,7 @@ address	size	symbol	source	modes
 0x0066d880	85	tItemBag::mFindItemWithLabel(char *)	Tiger/tBag.cpp	vc6 guest
 0x00670180	51	tSequencePart::mGetNumber()	Tiger/tsequence.cpp	vc6 guest
 0x006701c0	86	tSequencePart::mGetNumber(int32u)	Tiger/tsequence.cpp	vc6 guest
+0x006d2800	3	tSFCStream::mGetVersionNumber()	unsorted/fn_006D2000.cpp	vc6 guest
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc5a0	93	tDynamicAllocator::tAllocatorInfo::operator==(const char*) const	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc750	54	tDynamicAllocator::LockDownAllocator()	Common/DynamicAllocator.cpp	vc6 guest
