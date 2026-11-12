@@ -10,7 +10,12 @@ the exe bytes and checked:
 - unverified  nothing is known about the symbol, and the function uses one address for it
               consistently, not one already known under another name;
 - mismatch    anything else: a wrong callee, a wrong global, an inconsistent use, a field past
-              the end of the original.
+              the end of the original, or a constant whose value differs from the exe's.
+
+A floating-point constant (`__real@`) or string literal (`??_C@`) that the rebuilt object defines
+is also compared by value: the bytes the object holds for it must equal the bytes at the address
+the exe uses. The byte match masks the address, so without this a wrong constant or a stand-in
+string would score exact.
 
 For ok and unverified relocations the field is masked (the target gets the rebuilt addend and the
 same symbol name), so objdiff compares them as equal. A mismatch keeps the exe bytes and points
@@ -34,17 +39,18 @@ def _local_name(name):
 
 
 class Reloc:
-    __slots__ = ('offset', 'type', 'symbol', 'exe_address', 'status', 'detail')
+    __slots__ = ('offset', 'type', 'symbol', 'exe_address', 'status', 'detail', 'file_local')
 
-    def __init__(self, offset, type_, symbol, exe_address, status, detail=''):
+    def __init__(self, offset, type_, symbol, exe_address, status, detail='', file_local=False):
         self.offset, self.type, self.symbol = offset, type_, symbol
         self.exe_address, self.status, self.detail = exe_address, status, detail
+        self.file_local = file_local    # a static symbol of the object: resolved per unit
 
     def as_dict(self):
         return dict(offset=self.offset, type=coff.REL_NAMES.get(self.type, hex(self.type)),
                     symbol=self.symbol,
                     exe_address=None if self.exe_address is None else f'0x{self.exe_address:08x}',
-                    status=self.status, detail=self.detail)
+                    status=self.status, detail=self.detail, file_local=self.file_local)
 
 
 def target_length(fn_address, fn_size, base_size, exe, next_start):
@@ -92,7 +98,10 @@ def build(fn_address, fn_size, obj, symbol, exe, index):
             out_relocs.append((o, name, typ))
             continue
         status, detail = _check(name, sym, sec, off, s_exe, fn_address, index, seen)
-        relocs.append(Reloc(o, typ, name, s_exe, status, detail))
+        if status != 'mismatch':
+            status, detail = _check_value(name, sym, sec, obj, exe, s_exe, status, detail)
+        relocs.append(Reloc(o, typ, name, s_exe, status, detail,
+                            file_local=sym.storage == coff.SYM_CLASS_STATIC))
         if status == 'mismatch':
             out_relocs.append((o, f'$exe_{s_exe:08x}', typ))
         else:
@@ -105,6 +114,57 @@ def build(fn_address, fn_size, obj, symbol, exe, index):
     objbytes = coff.write_object(target, symbol, out_relocs, locals_)
     return dict(base=base, target=target, object=objbytes, relocs=relocs, strict=strict,
                 first_diff=first_diff)
+
+
+VALUE_PREFIXES = ('__real@', '??_C@')
+
+
+def _check_value(name, sym, sec, obj, exe, s_exe, status, detail):
+    """A constant the object defines in its own data section must hold the exe's bytes. The
+    constant runs from its symbol to the next symbol of that section, or the section's end: VC6
+    puts each __real@ and ??_C@ constant in a COMDAT section of its own, so no padding is
+    compared."""
+    if not name.startswith(VALUE_PREFIXES) or sym.section <= 0 or sym.section == sec.number:
+        return status, detail
+    data = obj.sections[sym.section].data
+    later = [s.value for s in obj.symbols.values() if s.section == sym.section and s.value > sym.value]
+    want = data[sym.value:min(later) if later else len(data)]
+    if not want:
+        return status, detail
+    try:
+        got = exe.read(s_exe, len(want))
+    except coff.CoffError:
+        # No constant to compare: the instruction is not where the rebuild puts it (code that is
+        # far from matching), so the field reads other bytes. An exact function never gets here.
+        return status, detail
+    if got != want:
+        if name.startswith('??_C@') and _source_path(exe, s_exe, want):
+            return status, 'the source file name; the exe holds the original build path'
+        return 'mismatch', f'the exe holds {got.hex()} there, the rebuilt constant is {want.hex()}'
+    return status, detail
+
+
+def _source_path(exe, address, want, limit=260):
+    """True when the rebuilt string is a source file name (what __FILE__ expands to here) and
+    the exe's string is the same name under a directory: the original was compiled from the
+    developers' own folders, which no source can reproduce."""
+    if not want.endswith(b'\0') or not want[:-1].lower().endswith((b'.cpp', b'.c', b'.h')):
+        return False
+    raw = b''
+    while b'\0' not in raw and len(raw) < limit:
+        try:
+            raw += exe.read(address + len(raw), 16)
+        except coff.CoffError:
+            try:   # fewer than 16 bytes left in the section: read the rest one at a time
+                raw += exe.read(address + len(raw), 1)
+            except coff.CoffError:
+                return False
+    end = raw.find(b'\0')
+    if end < 0:
+        return False
+    got = raw[:end + 1].replace(b'/', b'\\')
+    name = want.replace(b'/', b'\\')
+    return got.endswith(b'\\' + name.split(b'\\')[-1]) and len(got) > len(name)
 
 
 def _check(name, sym, sec, off, s_exe, fn_address, index, seen):

@@ -312,6 +312,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             rep.results.append(res)
             _report_function(rep, data, fn, res)
 
+    report_shared_symbols(rep)
+
     if behavioural:
         _behavioural(rep, claimed)
     if record and not rep.regressions and not rep.failed:
@@ -331,6 +333,43 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     elif record:
         rep.add('INFO', 'matched_set.json not written: fix the errors above first')
     return rep
+
+
+PER_UNIT_PREFIXES = ('$', '_$', '__real@', '??_C@')
+
+
+def shared_symbol_conflicts(results):
+    """Error lines for a symbol that exact functions use at two exe addresses. The native build
+    links one definition per name, so the object lift refuses such a pair; it means one of the
+    functions names the wrong callee, global or method, which the byte match cannot see. Labels,
+    compiler statics, literal constants and any symbol the object marks static (a `static`
+    function or variable, which two units may define under one name) are resolved per unit, so
+    they are compared only within one."""
+    seen = {}
+    for res in results:
+        if not res.get('exact'):
+            continue
+        for r in res.get('relocs') or []:
+            name, addr = r['symbol'], r['exe_address']
+            if addr is None or r['status'] == 'mismatch':
+                continue
+            per_unit = name.startswith(PER_UNIT_PREFIXES) or r.get('file_local')
+            key = (res['unit'], name) if per_unit else ('', name)
+            seen.setdefault(key, {}).setdefault(addr, set()).add(res['address'])
+    out = []
+    for (_, name), uses in sorted(seen.items()):
+        if len(uses) > 1:
+            where = '; '.join(f'{a} by {", ".join(sorted(fns))}' for a, fns in sorted(uses.items()))
+            out.append(f'{name} is used at more than one exe address by exact functions: {where} '
+                       '(one of them names the wrong symbol)')
+    return out
+
+
+def report_shared_symbols(rep):
+    """An ERROR line, and a failed run, for each symbol shared_symbol_conflicts finds."""
+    for line in shared_symbol_conflicts(rep.results):
+        rep.add('ERROR', line)
+        rep.failed = True
 
 
 def _report_function(rep, data, fn, res):

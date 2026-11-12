@@ -56,7 +56,11 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
      `analysis/results/`, a label inside the function, `__except_list`) and the exe uses it;
    - **unverified**: nothing is known about the symbol, and the function uses one address for it
      consistently, not one known under another name;
-   - **mismatch**: a wrong callee or global, an inconsistent use, a field past the end.
+   - **mismatch**: a wrong callee or global, an inconsistent use, a field past the end, or a
+     floating-point constant (`__real@`) or string literal (`??_C@`) whose bytes in the rebuilt
+     object differ from the bytes at the address the exe uses (a wrong value, or a stand-in
+     string). A source file name (`__FILE__`) is accepted where the exe holds the same name under
+     the original build folder.
 
    ok and unverified fields are masked so objdiff sees them equal; a mismatch keeps the exe bytes
    and points at a symbol named after the exe address, so objdiff counts it. Identical opcodes
@@ -65,6 +69,10 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
    **Exact** means objdiff 100% and the strict check equal.
 6. Re-scores every other recorded function in the same unit (a header or shared edit can break
    them) and compares all against `matched_set.json`.
+7. Refuses a symbol that the exact functions of the run use at two exe addresses (an `ERROR`
+   line naming both, exit 2): the native build links one definition per name, so one of them
+   names the wrong callee, global or method. Labels, compiler statics and literal constants are
+   resolved per unit and compared within one. `--all` checks every recorded function this way.
 
 Output is a few lines, each tagged `OK`, `ERROR` or `INFO`, then a `RESULT` line; for a function
 that is not exact, the first differing instructions side by side and the path of a full

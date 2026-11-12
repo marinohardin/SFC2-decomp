@@ -20,6 +20,7 @@ SYM_CLASS_STATIC = 3
 SYM_CLASS_LABEL = 6
 SYM_TYPE_FUNCTION = 0x20
 TEXT_CHARACTERISTICS = 0x60500020  # CNT_CODE | ALIGN_16BYTES | MEM_EXECUTE | MEM_READ
+RDATA_CHARACTERISTICS = 0x40301040  # CNT_INITIALIZED_DATA | LNK_COMDAT | ALIGN_4BYTES | MEM_READ
 
 
 class CoffError(Exception):
@@ -108,11 +109,13 @@ class CoffObject:
                 if s.is_function and s.storage == SYM_CLASS_EXTERNAL]
 
 
-def write_object(code, func_name, relocs, local_symbols=()):
-    """Write a one-section i386 COFF object holding `code` as the function `func_name`.
+def write_object(code, func_name, relocs, local_symbols=(), data=()):
+    """Write an i386 COFF object holding `code` as the function `func_name`.
 
     relocs: [(offset, target_name, type)]; targets are undefined externals unless listed in
-    local_symbols as (name, value), which are defined in the same section.
+    local_symbols as (name, value), which are defined in the same section, or in data as
+    (name, bytes), each defined at the start of a read-only data section of its own (the way VC6
+    emits a constant or a string literal).
     Returns the object bytes.
     """
     symbols = []   # (name, value, section, type, storage, aux bytes)
@@ -120,6 +123,9 @@ def write_object(code, func_name, relocs, local_symbols=()):
     symbols.append(('.text', 0, 1, 0, SYM_CLASS_STATIC, aux))
     symbols.append((func_name, 0, 1, SYM_TYPE_FUNCTION, SYM_CLASS_EXTERNAL, b''))
     index = {}
+    for i, (name, _) in enumerate(data):
+        symbols.append((name, 0, 2 + i, 0, SYM_CLASS_EXTERNAL, b''))
+        index[name] = sum(1 + (1 if a else 0) for *_, a in symbols) - 1
 
     def slot():
         return sum(1 + (1 if a else 0) for *_, a in symbols)
@@ -148,15 +154,24 @@ def write_object(code, func_name, relocs, local_symbols=()):
     struct.pack_into('<I', strings, 0, len(strings))
     nsym = len(symtab) // 18
 
-    dataoff = 20 + 40
+    nsec = 1 + len(data)
+    dataoff = 20 + 40 * nsec
     reloff = dataoff + len(code)
-    symoff = reloff + 10 * len(relocs)
-    out = bytearray(struct.pack('<HHIIIHH', IMAGE_FILE_MACHINE_I386, 1, 0, symoff, nsym, 0, 0))
+    rdataoff = reloff + 10 * len(relocs)
+    symoff = rdataoff + sum(len(b) for _, b in data)
+    out = bytearray(struct.pack('<HHIIIHH', IMAGE_FILE_MACHINE_I386, nsec, 0, symoff, nsym, 0, 0))
     out += struct.pack('<8sIIIIIIHHI', b'.text', 0, 0, len(code), dataoff,
                        reloff if relocs else 0, 0, len(relocs), 0, TEXT_CHARACTERISTICS)
+    at = rdataoff
+    for _, b in data:
+        out += struct.pack('<8sIIIIIIHHI', b'.rdata', 0, 0, len(b), at, 0, 0, 0, 0,
+                           RDATA_CHARACTERISTICS)
+        at += len(b)
     out += code
     for off, target, typ in relocs:
         out += struct.pack('<IIH', off, index[target], typ)
+    for _, b in data:
+        out += b
     out += symtab + strings
     return bytes(out)
 
