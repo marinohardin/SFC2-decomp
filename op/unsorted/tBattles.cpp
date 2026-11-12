@@ -169,7 +169,7 @@ std::string fn_005480e3( time_t value )
 	// text (at 0x0085c880 in the exe) is not confirmed; only its arguments are.
 	char buffer[100];
 	struct tm* local = localtime( &value );
-	sprintf( buffer, "%d-%02d-%02d %02d:%02d:%02d", local->tm_year + 1900, local->tm_mon + 1,
+	sprintf( buffer, "%4.4d-%02.2d-%02.2d %02.2d:%02.2d:%02.2d", local->tm_year + 1900, local->tm_mon + 1,
 		local->tm_mday, local->tm_hour, local->tm_min, local->tm_sec );
 	return std::string( buffer );
 }

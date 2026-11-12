@@ -1037,7 +1037,7 @@ float tEntityMgr::mGetDistanceFromEntityToPoint(const tID EntID, const tPoint3 &
 // FUNCTION: STARFLEETOP 0x00424801
 float tEntityMgr::mGetDistanceFromEntityToPoint(const tEntity *pEntity, const tPoint3 &location)
 {
-    static tObject_0040ce21 marker("How far is it?");
+    static tObject_0040ce21 marker("No really, How long is it?");
 
     if (pEntity == NULL)
         return -1.0f;

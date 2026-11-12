@@ -440,8 +440,8 @@ void __cdecl fn_0040ec4c(double* value, int param_1, int param_3, const char* na
 
 // FUNCTION: STARFLEETOP 0x00438877
 // HYPOTHESIS: saves or loads the cloak's fields after the slot 23 handler; the two identical
-// save branches are merged by the compiler. The field names are read from the string table
-// by position; "Cloak" for field_98 is the least certain.
+// save branches are merged by the compiler. The field names are the strings the original
+// passes (field_98's is at 0x0083fe2c).
 unsigned int tCloakSystem::vfunction23(int param_1, unsigned int param_2, int param_3)
 {
     if ((param_2 & 0x08) > 0)
@@ -450,7 +450,7 @@ unsigned int tCloakSystem::vfunction23(int param_1, unsigned int param_2, int pa
         fn_0040e9df(&field_84, param_1, param_3, "fCloakCost");
         fn_0040ec4c(&field_88, param_1, param_3, "fUpDownTimer");
         fn_0040ec4c(&field_90, param_1, param_3, "fTemporarilyDownTimeRemaining");
-        fn_0040e9df(&field_98, param_1, param_3, "Cloak");
+        fn_0040e9df(&field_98, param_1, param_3, "fState");
     }
     else if ((param_2 & 0x20) > 0)
     {
@@ -461,12 +461,12 @@ unsigned int tCloakSystem::vfunction23(int param_1, unsigned int param_2, int pa
         fn_0040e9df(&field_84, param_1, param_3, "fCloakCost");
         fn_0040ec4c(&field_88, param_1, param_3, "fUpDownTimer");
         fn_0040ec4c(&field_90, param_1, param_3, "fTemporarilyDownTimeRemaining");
-        fn_0040e9df(&field_98, param_1, param_3, "Cloak");
+        fn_0040e9df(&field_98, param_1, param_3, "fState");
     }
     else if ((param_2 & 0x40) > 0)
     {
         param_2 = vfunction24(param_1, param_2, param_3);
-        fn_0040e9df(&field_98, param_1, param_3, "Cloak");
+        fn_0040e9df(&field_98, param_1, param_3, "fState");
         fn_0040ec4c(&field_90, param_1, param_3, "fTemporarilyDownTimeRemaining");
     }
     return param_2;
