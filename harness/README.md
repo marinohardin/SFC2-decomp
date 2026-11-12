@@ -209,12 +209,14 @@ attempt in the log.
 ### Boundary errors
 
 `analysis/results/boundary_errors.tsv` lists addresses the analysis records as functions that are
-only pieces of one: an exception prolog (`mov eax, <table>; call __EH_prolog`) split from the body
-that follows it, a fragment of a static initializer, or a compiler stub with no source line. Each
-row gives the address, its name in the analysis, the function it belongs to (`part_of`, when
-known), the kind and a note. `game/` holds no definition for them: a piece of a function has no
+only pieces of one: a fragment of a static initializer, the tail of a neighbouring function, or a
+compiler stub with no source line. Each row gives the address, its name in the analysis, the
+function it belongs to (`part_of`, when known), the kind and a note. A piece of a function has no
 source of its own, and an empty body written only so the harness can score the range is not the
-original's code.
+original's code, so `game/` holds no definition for a listed address. The rows whose note begins
+"Body kept in game/" are the exception for now: removing their empty bodies changes which compiled
+function a neighbouring annotation claims, so they stay until those neighbours are claimed another
+way.
 
 The queue never takes a listed address. The matched-set gate lets a pull request drop the entry of
 a listed address that was never exact and that no `// FUNCTION:` annotation in `game/` still
@@ -226,6 +228,18 @@ the row is justified: its description says why the address is a piece and not a 
 `part_of` and `kind` rest on (the bytes at the address, the function that jumps or falls into it).
 Review checks each new row against that, since the gate cannot tell a real boundary error from a
 convenient one.
+
+The exception prolog that VC6 puts at the start of a function with an exception frame (`mov eax,
+<table>; call __EH_prolog`, 10 bytes) is not listed: `ghidra/scripts/join_eh_prologs.py` joins
+each such prolog to the body that follows it in `functions.csv`, so the function starts at its
+real entry point.
+
+When a pull request joins functions this way, the gate does not hold a never-exact entry to its
+score in the base when the address is a joined entry (its row is tagged `eh-prolog-joined`) or the
+body 10 bytes after one, and its size in the pull request's `functions.csv` differs from the
+base's or it is no longer a function: that score was for the prolog or the body alone. It says so
+with an `INFO` line. Any other change of size is held as before, and an exact entry is always
+held.
 
 ## The loop (`loop.sh`)
 

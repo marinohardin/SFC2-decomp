@@ -143,11 +143,11 @@ public:
     bool field_4d8;
 };
 
-// FUNCTION: STARFLEETOP 0x004e1e99
+// FUNCTION: STARFLEETOP 0x004e1e8f
 tPhaserBank::tPhaserBank(int param_1, fn_004e1e99_arg* param_2)
     : tBaseWeapon(param_1)
 {
-    static fn_0040ce21_type marker("tPhaserBank::tPhaserBank");
+    static fn_0040ce21_type marker("I want my money from!");
     field_f8 = param_2->field_00;
     field_100 = param_2->field_04;
     field_104 = param_2->field_08;

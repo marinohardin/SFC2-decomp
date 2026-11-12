@@ -768,7 +768,9 @@ public:
 	virtual void vfunction1();
 };
 
-// FUNCTION: STARFLEETOP 0x00513eac
+// HYPOTHESIS: the code at 0x00513eac (its exception-frame setup and body) is rebuilt as
+// tAIWeaponOfficer::tAIWeaponOfficer, which claims 0x00513eac. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 tObject_00513eac::tObject_00513eac()
 {
 }
@@ -778,7 +780,7 @@ tObject_00513eac::tObject_00513eac()
 // whose value at 0xf8 lies in the officer's range, with their index in the weapon list.
 // The compiler emits the frame setup and this body as one function, so scored against
 // 0x00513eb6 alone everything after the frame setup is offset by 10 bytes.
-// FUNCTION: STARFLEETOP 0x00513eb6
+// FUNCTION: STARFLEETOP 0x00513eac
 tAIWeaponOfficer::tAIWeaponOfficer(int aPowerParam, int aOfficerParam, int aMinType, int aMaxType)
 	: tAIOfficer(aOfficerParam), tPriorityPowerRequest(aPowerParam),
 	  fMinType(aMinType), fMaxType(aMaxType), field_0x30(-1), fNumEntries(0), field_0x3fc(0)

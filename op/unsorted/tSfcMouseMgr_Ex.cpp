@@ -6,14 +6,9 @@ public:
     virtual void vfunction2();
 };
 
-// FUNCTION: STARFLEETOP 0x0040be9b
-// MATCH-ONLY: placeholder, not original code. The 10 bytes at 0x0040be9b are
-// only "mov eax, <unwind table>; call __EH_prolog": the prolog of a function
-// with an unwind table (HYPOTHESIS: a destructor, as at 0x0040bdb1) whose body
-// runs on past the range the analysis gives this address. Written as the full
-// destructor, the prolog matches byte for byte but the body falls outside the
-// scored range. Replace this once the analysis treats the prolog and its body
-// as one function.
+// HYPOTHESIS: the code at 0x0040be9b (its exception-frame setup and body) is rebuilt as
+// fn_0040bea5_mgr::fn_0040bea5, which claims 0x0040be9b. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 void tSfcMouseMgr_Ex::vfunction2()
 {
 }
@@ -114,7 +109,7 @@ public:
     fn_0040c063_inner m_c;         // +0xc
 };
 
-// FUNCTION: STARFLEETOP 0x0040bea5
+// FUNCTION: STARFLEETOP 0x0040be9b
 // MATCH-ONLY: the original function starts at 0x0040be9b with its EH prolog;
 // the analysis scores the body from 0x0040bea5. HYPOTHESIS: this is a member of
 // tSfcMouseMgr_Ex that loads the cursor table; written on a stand-in class of

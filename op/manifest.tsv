@@ -8,10 +8,9 @@ address	size	symbol	source	modes
 0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest
 0x004012db	91	tApp3dBase::vfunction20()	unsorted/tApp3dBase.cpp	vc6 guest
 0x0040135a	5	tApp3dBase::vfunction18()	unsorted/tApp3dBase.cpp	vc6 guest
-0x0040aadc	65	tSfcApp3d::tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
-0x0040ab43	49	tSfcApp3d::~tSfcApp3d()	unsorted/tSfcApp3d.cpp	partial
-0x0040ab74	10	tSfcApp3d::vfunction12()	unsorted/tSfcApp3d.cpp	stub
-0x0040ab7e	143	tSfcApp3d::fn_0040ab7e()	unsorted/tSfcApp3d.cpp	partial
+0x0040aad2	75	tSfcApp3d::tSfcApp3d()	unsorted/tSfcApp3d.cpp	vc6
+0x0040ab39	59	tSfcApp3d::~tSfcApp3d()	unsorted/tSfcApp3d.cpp	vc6
+0x0040ab74	153	tSfcApp3d::fn_0040ab7e()	unsorted/tSfcApp3d.cpp	partial
 0x0040ac19	37	fn_0040ac19()	unsorted/tSfcApp3d.cpp	partial
 0x0040ac4a	46	fn_0040ac4a()	unsorted/tSfcApp3d.cpp	partial
 0x0040ac84	38	fn_0040ac84()	unsorted/tSfcApp3d.cpp	partial
@@ -32,10 +31,8 @@ address	size	symbol	source	modes
 0x0040bd70	29	tMouseMgr_Base::tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	partial
 0x0040bd8d	8	tMouseMgr_Ex::tTimer::fn_0040bd8d()	unsorted/tMouseMgr_Base.cpp	vc6 guest
 0x0040bd95	28	tMouseMgr_Ex::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest
-0x0040bdb1	10	tMouseMgr_Ex::~tMouseMgr_Ex()	unsorted/tMouseMgr_Base.cpp	partial
-0x0040bdbb	56	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	partial
-0x0040be9b	10	tSfcMouseMgr_Ex::vfunction2()	unsorted/tSfcMouseMgr_Ex.cpp	partial
-0x0040bea5	369	fn_0040bea5_mgr::fn_0040bea5()	unsorted/tSfcMouseMgr_Ex.cpp	partial
+0x0040bdb1	66	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	partial
+0x0040be9b	379	fn_0040bea5_mgr::fn_0040bea5()	unsorted/tSfcMouseMgr_Ex.cpp	partial
 0x0040c016	33	fn_0040c016(fn_00627140_stream *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
 0x0040c037	44	fn_0040bea5_mgr::fn_0040c037()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
 0x0040c063	40	fn_0040bea5_mgr::fn_0040c063(long,long,long,long,long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest
@@ -76,7 +73,7 @@ address	size	symbol	source	modes
 0x0040cff2	51	tINIMgr::fn_0040cff2(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
 0x0040d025	57	tINIMgr::fn_0040d025(int,int,int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
 0x0040d05e	51	tINIMgr::fn_0040d05e(int,int,int)	unsorted/tINIMgr.cpp	vc6 guest
-0x0040f15a	10	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
+0x0040f15a	1777	tSphere::vfunction2(float,int,int,float,float,float)	unsorted/tSphere.cpp	partial
 0x0040f86c	19	tSphere::FUN_0040f86c(int,int,int,int,int,int,int)	unsorted/tSphere.cpp	partial
 0x0040f87f	71	tSphere::vfunction4(fn_0040f87f_Target *)	unsorted/tSphere.cpp	vc6 guest
 0x0040f8c6	81	tSphere::vfunction3()	unsorted/tSphere.cpp	vc6 guest
@@ -117,7 +114,7 @@ address	size	symbol	source	modes
 0x0041351b	38	tPhysicalEntity::vfunction26(int,int,int,int,int)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413541	205	tPhysicalEntity::vfunction27(int,short,unsigned aAmount,int,char)	Source/entity/entity_physical.cpp	vc6 guest
 0x0041360e	6	tNetMsg_kAIChangeTeamRelationshipToWar::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
-0x00413614	10	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	partial
+0x00413614	944	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	partial
 0x004139c4	6	tNetMsg_kTractorChangeMessage::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
 0x004139ca	6	tNetMsg_kDeepScan::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
 0x004139d0	28	tPhysicalEntity::tTractorItem::`scalar deleting destructor'	Source/entity/entity_physical.cpp	partial
@@ -135,14 +132,13 @@ address	size	symbol	source	modes
 0x00413d45	83	tPhysicalEntity::vfunction37(int)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413d98	31	tPhysicalEntity::vfunction38(int,bool)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413db7	31	tPhysicalEntity::vfunction39(int)	Source/entity/entity_physical.cpp	vc6 guest
-0x00413dd6	10	tEntity_Weapon::~tEntity_Weapon()	Source/entity/entity_physical.cpp	partial
-0x00413de0	200	tPhysicalEntity::~tPhysicalEntity()	Source/entity/entity_physical.cpp	partial
+0x00413dd6	210	tPhysicalEntity::~tPhysicalEntity()	Source/entity/entity_physical.cpp	vc6
 0x00413ea8	177	tPhysicalEntity::vfunction49(tPhysicalEntity *)	Source/entity/entity_physical.cpp	partial
 0x00413f59	49	tPhysicalEntity::vfunction50()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest
-0x00421939	493	tEntityControlShip::tEntityControlShip(tEntity *)	unsorted/tEntityControlShip.cpp	partial
+0x0042192f	503	tEntityControlShip::tEntityControlShip(tEntity *)	unsorted/tEntityControlShip.cpp	partial
 0x00421b42	124	tEntityControlShip::fn_00421b42(short,int)	unsorted/tEntityControlShip.cpp	vc6 guest
 0x00421bbe	157	tEntityControlShip::fn_00421bbe(tPoint3)	unsorted/tEntityControlShip.cpp	vc6 guest
 0x00421c5b	62	tEntityControlShip::fn_00421c5b(tPoint3)	unsorted/tEntityControlShip.cpp	vc6 guest
@@ -150,7 +146,7 @@ address	size	symbol	source	modes
 0x00421d0d	118	tEntityControlShip::fn_00421d0d(int)	unsorted/tEntityControlShip.cpp	vc6 guest
 0x00421d83	51	tEntityControlShip::fn_00421d83(int)	unsorted/tEntityControlShip.cpp	vc6 guest
 0x00421db6	133	tEntityControlShip::fn_00421db6()	unsorted/tEntityControlShip.cpp	vc6 guest
-0x00421e45	49	tEntityControlShip::~tEntityControlShip()	unsorted/tEntityControlShip.cpp	partial
+0x00421e3b	59	tEntityControlShip::~tEntityControlShip()	unsorted/tEntityControlShip.cpp	vc6
 0x00421e76	51	tEntityControlShip::fn_00421e76(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
 0x00421ea9	556	tEntityControlShip::fn_00421ea9(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	partial
 0x004220d5	130	tEntityControlShip::fn_004220d5(tObject_0042310b_entry *)	unsorted/tEntityControlShip.cpp	vc6 guest
@@ -169,7 +165,7 @@ address	size	symbol	source	modes
 0x00423598	20	tEntityMgr::fn_00423598(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x004235ac	33	tEntityMgr::fn_004235ac(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x004235cd	35	tEntityMgr::fn_004235cd(int8u,int32)	unsorted/tEntityMgr.cpp	vc6 guest
-0x004235fa	277	tEntityMgr::fn_004235fa(int32)	unsorted/tEntityMgr.cpp	partial
+0x004235f0	287	tEntityMgr::fn_004235fa(int32)	unsorted/tEntityMgr.cpp	partial
 0x0042370f	38	tEntityMgr::fn_0042370f(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00423735	20	tEntityMgr::fn_00423735(int32)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00423749	59	tEntityMgr::mAddEntity(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
@@ -197,37 +193,30 @@ address	size	symbol	source	modes
 0x00424a24	19	tEntityMgr::fn_00424a24(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00424a37	88	tEntityMgr::fn_00424a37(tID)	unsorted/tEntityMgr.cpp	vc6 guest
 0x00424a8f	160	tEntityMgr::mArchive(tSFCStream &,unsigned long)	unsorted/tEntityMgr.cpp	vc6 guest
-0x004295da	238	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial
+0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial
 0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6
 0x00429717	110	tOptex::fn_00429717()	unsorted/tClientCharacter.cpp	vc6 guest
 0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest
 0x004297fa	83	tOptex::fn_004297fa()	unsorted/tClientCharacter.cpp	vc6 guest
-0x0042984d	10	tOptex::fn_0042984d()	unsorted/tClientCharacter.cpp	partial
-0x00429857	449	tClientCharacter::fn_00429857(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
+0x0042984d	459	tClientCharacter::fn_00429857(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
 0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6
-0x00429a26	10	fn_00429a26()	unsorted/tClientCharacter.cpp	partial
-0x00429a30	386	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
-0x00429bb2	10	fn_00429bb2()	unsorted/tClientCharacter.cpp	partial
-0x00429bbc	330	tClientCharacter::tClientCharacter(int)	unsorted/tClientCharacter.cpp	partial
-0x00429d06	10	tClientCharacter::fn_00429d06(int)	unsorted/tClientCharacter.cpp	partial
-0x00429d10	509	tClientCharacter::fn_00429d10(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	partial
-0x00429f0d	10	fn_00429f0d()	unsorted/tClientCharacter.cpp	partial
-0x00429f17	461	tClientCharacter::fn_00429f17(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
+0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
+0x00429bb2	340	tClientCharacter::tClientCharacter(int)	unsorted/tClientCharacter.cpp	partial
+0x00429d06	519	tClientCharacter::fn_00429d10(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	partial
+0x00429f0d	471	tClientCharacter::fn_00429f17(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
 0x0042a0fc	26	tBuffer::Write(const byte*,int32u)	unsorted/tClientCharacter.cpp	vc6 guest
 0x0042a116	79	tOutput::operator<<(const std::string&)	unsorted/tClientCharacter.cpp	vc6 guest
-0x0042a165	10	fn_0042a165()	unsorted/tClientCharacter.cpp	partial
-0x0043104e	239	tNetControl::tNetControl()	unsorted/tNetControl.cpp	partial
+0x0042a165	420	fn_0042a165()	unsorted/tClientCharacter.cpp	partial
+0x00431044	249	tNetControl::tNetControl()	unsorted/tNetControl.cpp	vc6
 0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	partial
 0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest
-0x0043117a	10	fn_0043117a()	unsorted/tNetControl.cpp	partial
-0x00431184	104	fn_00431184(tNetControl *)	unsorted/tNetControl.cpp	partial
+0x0043117a	114	fn_00431184(tNetControl *)	unsorted/tNetControl.cpp	partial
 0x004311ec	10	fn_004311ec()	unsorted/tNetControl.cpp	vc6 guest
 0x004311f6	10	fn_004311f6()	unsorted/tNetControl.cpp	vc6 guest
 0x00431200	39	tNetControl::fn_00431200()	unsorted/tNetControl.cpp	vc6 guest
 0x00431227	39	tNetControl::fn_00431227()	unsorted/tNetControl.cpp	vc6 guest
 0x0043124e	39	tNetControl::fn_0043124e()	unsorted/tNetControl.cpp	vc6 guest
-0x00431275	10	fn_00431275()	unsorted/tNetControl.cpp	partial
-0x0043127f	579	tNetControl::fn_0043127f()	unsorted/tNetControl.cpp	partial
+0x00431275	589	tNetControl::fn_0043127f()	unsorted/tNetControl.cpp	partial
 0x004314c2	51	c_0043127f_node::c_0043127f_node()	unsorted/tNetControl.cpp	vc6
 0x004314f5	46	tNetControl::fn_004314f5(int)	unsorted/tNetControl.cpp	vc6 guest
 0x00431523	46	tNetControl::fn_00431523(int)	unsorted/tNetControl.cpp	vc6 guest
@@ -279,7 +268,7 @@ address	size	symbol	source	modes
 0x0043569a	4	t3DListenerProfile::fn_0043569a()	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x0043569e	10	t3DListenerProfile::fn_0043569e(double)	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x004356a8	4	t3DListenerProfile::fn_004356a8()	unsorted/t3DListenerProfile.cpp	vc6 guest
-0x004381ee	208	tCloakSystem::tCloakSystem(int,int,int,int)	unsorted/tCloakSystem.cpp	partial
+0x004381e4	218	tCloakSystem::tCloakSystem(int,int,int,int)	unsorted/tCloakSystem.cpp	vc6
 0x004382be	13	tCloakSystem::vfunction100(int)	unsorted/tCloakSystem.cpp	vc6 guest
 0x004382cb	24	tCloakSystem::fn_004382cb()	unsorted/tCloakSystem.cpp	vc6 guest
 0x004382e3	7	tCloakSystem::fn_004382e3()	unsorted/tCloakSystem.cpp	vc6 guest
@@ -314,7 +303,7 @@ address	size	symbol	source	modes
 0x0044036b	327	tShieldSystem::fn_0044036b()	unsorted/tShieldSystem.cpp	vc6 guest
 0x004404b2	80	tShieldSystem::vfunction106()	unsorted/tShieldSystem.cpp	vc6 guest
 0x00440502	77	tShieldSystem::vfunction107()	unsorted/tShieldSystem.cpp	vc6 guest
-0x00440559	267	tShieldGroup::tShieldGroup(int,int,int,int)	unsorted/tShieldGroup.cpp	partial
+0x0044054f	277	tShieldGroup::tShieldGroup(int,int,int,int)	unsorted/tShieldGroup.cpp	vc6
 0x00440664	4	tShieldGroup::vfunction85()	unsorted/tShieldGroup.cpp	vc6 guest
 0x00440668	4	tShieldGroup::vfunction91()	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044066c	7	tShieldGroup::vfunction92()	unsorted/tShieldGroup.cpp	vc6 guest
@@ -324,7 +313,7 @@ address	size	symbol	source	modes
 0x00440692	28	tShieldGroup::scalar_deleting_destructor(unsigned char)	unsorted/tShieldGroup.cpp	vc6 guest
 0x004406ae	11	tShieldGroup::~tShieldGroup()	unsorted/tShieldGroup.cpp	vc6
 0x004406b9	24	tShieldGroup::fn_004406b9()	unsorted/tShieldGroup.cpp	vc6 guest
-0x004406d1	10	tShieldGroup::vfunction109(int,int)	unsorted/tShieldGroup.cpp	partial
+0x004406d1	462	tShieldGroup::vfunction109(int,int)	unsorted/tShieldGroup.cpp	partial
 0x0044089f	255	tShieldGroup::vfunction87(float,float,float,float,float,float)	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044099e	286	tShieldGroup::vfunction88(float*,float*,float*,float*,float*,float*)	unsorted/tShieldGroup.cpp	vc6 guest
 0x00440abc	85	tShieldGroup::vfunction95()	unsorted/tShieldGroup.cpp	vc6 guest
@@ -351,13 +340,12 @@ address	size	symbol	source	modes
 0x0045ddc0	10	g_0090bfd8 (dynamic initializer)	unsorted/tCampaignState.cpp	vc6
 0x0045ddca	12	g_0090bfd8 (atexit registration)	unsorted/tCampaignState.cpp	vc6
 0x0045dde5	18	tState_Campaign::tState_Campaign()	unsorted/tCampaignState.cpp	vc6
-0x0045ddf7	10	tState_Campaign::~tState_Campaign()	unsorted/tCampaignState.cpp	partial
-0x0045de01	61	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
-0x0045de5a	10	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
+0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
+0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
-0x0048bd57	745	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
+0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
-0x0048c05c	10	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	partial
+0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	partial
 0x0048c34e	31	tFleetPanel::fn_0048c34e()	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c36d	57	tFleetPanel::fn_0048c36d(int)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c3a6	65	tFleetPanel::vfunction3(int *)	unsorted/tFleetPanel.cpp	vc6 guest
@@ -379,10 +367,10 @@ address	size	symbol	source	modes
 0x004b2ae6	112	tMatrix::tMatrix(const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float)	unsorted/tMyHud3D.cpp	vc6
 0x004b2b56	301	tMyHud3D::vfunction11(int,int,char,int)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b2c83	24	tMyHud3D::vfunction10(int)	unsorted/tMyHud3D.cpp	vc6 guest
-0x004c2669	137	tFleetEntry::tFleetEntry()	unsorted/tFleetEntry.cpp	partial
+0x004c265f	147	tFleetEntry::tFleetEntry()	unsorted/tFleetEntry.cpp	vc6
 0x004c26f2	13	tFleetEntry::vfunction49_for_tVisGroup(tFleetPanel *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c26ff	28	tFleetEntry::scalar_deleting_destructor(unsigned char)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c271b	10	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	partial
+0x004c271b	141	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	partial
 0x004c27a8	786	tFleetEntry::vfunction31_for_tVisGroup(int *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2aba	59	tFleetEntry::fn_004c2aba(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2b66	59	tFleetEntry::fn_004c2b66(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
@@ -392,21 +380,20 @@ address	size	symbol	source	modes
 0x004c32df	270	tFleetEntry::vfunction46_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c33ed	270	tFleetEntry::vfunction45_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c34fb	41	tFleetEntry::vfunction50_for_tVisGroup()	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c352e	83	fn_004c352e(tObjBase *,tObject_004c352e_arg)	unsorted/tFleetEntry.cpp	partial
+0x004c3524	93	fn_004c352e(tObjBase *,tObject_004c352e_arg)	unsorted/tFleetEntry.cpp	partial
 0x004c36e0	25	tFleetEntry::fn_004c36e0(int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c3703	129	tFleetEntry::fn_004c3703(const char *,tObjBase *)	unsorted/tFleetEntry.cpp	partial
+0x004c36f9	139	tFleetEntry::fn_004c3703(const char *,tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c3784	135	tFleetEntry::vfunction47_for_tVisGroup(int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c3815	183	tFleetEntry::fn_004c3815(const tObject_00412f08 &)	unsorted/tFleetEntry.cpp	partial
+0x004c380b	193	tFleetEntry::fn_004c3815(const tObject_00412f08 &)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c38cc	352	tFleetEntry::vfunction51_for_tVisGroup(float,int,int)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c3a36	848	tFleetEntry::fn_004c3a36()	unsorted/tFleetEntry.cpp	partial
+0x004c3a2c	858	tFleetEntry::fn_004c3a36()	unsorted/tFleetEntry.cpp	partial
 0x004c3da7	11	tFleetEntry::vfunction2_for_tVisNotifiee()	unsorted/tFleetEntry.cpp	partial
-0x004c61a8	125	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
+0x004c619e	135	tListBox_Base::~tListBox_Base()	unsorted/tListBox_Base.cpp	partial
 0x004c6225	337	tListBox_Base::vfunction8(const tRect *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c6376	103	tRect::mMakeClippedRect(const tRect *,tRect *) const	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c63dd	197	tListBox_Base::vfunction31(c_tListBox_Base_Event *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c64c6	345	tListBox_Base::vfunction37(tAsset *)	unsorted/tListBox_Base.cpp	vc6 guest
-0x004c661f	10	tListBox_Base::vfunction41(void *,short,int,unsigned int)	unsorted/tListBox_Base.cpp	partial
-0x004c6629	227	tListBox_Base::fn_004c6629(void *,int,int,unsigned int)	unsorted/tListBox_Base.cpp	partial
+0x004c661f	237	tListBox_Base::fn_004c6629(void *,int,int,unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c670c	94	tListBox_Base::vfunction42(c_tListBox_Base_Item *)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c676a	29	tListBox_Base::fn_004c676a(unsigned int)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c6787	19	tListBox_Base::vfunction43()	unsorted/tListBox_Base.cpp	vc6 guest
@@ -436,8 +423,7 @@ address	size	symbol	source	modes
 0x004c6d35	140	tListBox_Base::vfunction65(short)	unsorted/tListBox_Base.cpp	vc6 guest
 0x004c70b3	46	tListBox_Select::tListBox_Select()	unsorted/tListBox_Select.cpp	vc6
 0x004c70e1	283	tListBox_Select::vfunction31(c_tListBox_Base_Event *)	unsorted/tListBox_Select.cpp	vc6 guest
-0x004c71fc	10	tListBox_Select::vfunction44(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Select.cpp	partial
-0x004c7206	610	tListBox_Select::fn_004c7206(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Select.cpp	partial
+0x004c71fc	620	tListBox_Select::fn_004c7206(c_tListBox_Base_DrawItem *)	unsorted/tListBox_Select.cpp	partial
 0x004c7468	12	tListBox_Select::vfunction51()	unsorted/tListBox_Select.cpp	vc6 guest
 0x004c7474	70	tListBox_Select::vfunction55(void *,short,int,unsigned int)	unsorted/tListBox_Select.cpp	vc6 guest
 0x004c74ba	47	tListBox_Select::vfunction56(unsigned int)	unsorted/tListBox_Select.cpp	vc6 guest
@@ -447,20 +433,19 @@ address	size	symbol	source	modes
 0x004c754b	19	tListBox_Select::vfunction69()	unsorted/tListBox_Select.cpp	vc6 guest
 0x004c755e	27	tListBox_Select::vfunction70(int)	unsorted/tListBox_Select.cpp	vc6 guest
 0x004c7579	7	tListBox_Select::vfunction71()	unsorted/tListBox_Select.cpp	vc6 guest
-0x004c8113	210	tScrollBar::tScrollBar()	unsorted/tScrollBar.cpp	partial
-0x004c820b	128	tScrollBar::~tScrollBar()	unsorted/tScrollBar.cpp	partial
+0x004c8109	220	tScrollBar::tScrollBar()	unsorted/tScrollBar.cpp	vc6
+0x004c8201	138	tScrollBar::~tScrollBar()	unsorted/tScrollBar.cpp	vc6
 0x004c828b	109	tScrollBar::vfunction30()	unsorted/tScrollBar.cpp	vc6 guest
 0x004c82f8	321	tScrollBar::fn_004c82f8(tRect *)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8439	158	tScrollBar::vfunction8(const tRect *)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c84d7	135	tScrollBar::fn_004c84d7(int,int)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c855e	41	tRect::mPointInside(int,int) const	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest
-0x004c8780	10	tScrollBar::vfunction37()	unsorted/tScrollBar.cpp	stub
-0x004c878a	529	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial
+0x004c8780	539	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial
 0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8a2d	42	tScrollBar::vfunction43(int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
-0x004e1e99	199	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	partial
+0x004e1e8f	209	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	vc6
 0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e20f4	335	tPhaserBank::fn_004e20f4()	unsorted/tPhaserBank.cpp	vc6 guest
@@ -482,7 +467,7 @@ address	size	symbol	source	modes
 0x004e28fc	430	tPhaserBank::vfunction136(char)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e2aaa	88	tPhaserBank::fn_004e2aaa(int,char)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e2b02	505	tPhaserBank::vfunction39(float)	unsorted/tPhaserBank.cpp	vc6 guest
-0x004e5325	221	tPhaserXBank::tPhaserXBank(int,fn_004e1e99_arg*)	unsorted/tPhaserXBank.cpp	partial
+0x004e531b	231	tPhaserXBank::tPhaserXBank(int,fn_004e1e99_arg*)	unsorted/tPhaserXBank.cpp	vc6
 0x004e5403	367	tPhaserXBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5573	23	tPhaserXBank::vfunction105(int)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e558a	37	tPhaserXBank::fn_004e558a()	unsorted/tPhaserXBank.cpp	vc6 guest
@@ -505,8 +490,7 @@ address	size	symbol	source	modes
 0x004e5bd9	43	tPhaserXBank::vfunction116(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x004e5c04	43	tPhaserXBank::vfunction118(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest
 0x00513e90	28	tAIWeaponOfficer::scalar_deleting_destructor(unsigned char)	unsorted/tAIWeaponOfficer.cpp	vc6 guest
-0x00513eac	10	tObject_00513eac::tObject_00513eac()	unsorted/tAIWeaponOfficer.cpp	partial
-0x00513eb6	268	tAIWeaponOfficer::tAIWeaponOfficer(int,int,int,int)	unsorted/tAIWeaponOfficer.cpp	partial
+0x00513eac	278	tAIWeaponOfficer::tAIWeaponOfficer(int,int,int,int)	unsorted/tAIWeaponOfficer.cpp	vc6
 0x00513fc2	18	tAIWeaponOfficer::~tAIWeaponOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6
 0x00513fd4	4	tAIWeaponOfficer::fn_00513fd4()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
 0x00513fd8	57	tAIWeaponOfficer::vfunction7_for_tAIOfficer()	unsorted/tAIWeaponOfficer.cpp	vc6 guest
@@ -542,10 +526,10 @@ address	size	symbol	source	modes
 0x005169d6	10	tAIHelmOfficer::fn_005169d6(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
 0x005169e0	665	tAIHelmOfficer::fn_005169e0(int,int)	unsorted/tAIHelmOfficer.cpp	vc6 guest
 0x00516c79	317	tAIHelmOfficer::vfunction3_for_tPriorityPowerRequest(int *,int,float)	unsorted/tAIHelmOfficer.cpp	vc6 guest
-0x0051daf1	1449	tAICaptain::tAICaptain(float,int,int,int)	unsorted/tAICaptain.cpp	partial
+0x0051dae7	1459	tAICaptain::tAICaptain(float,int,int,int)	unsorted/tAICaptain.cpp	partial
 0x0051e09a	4	tAICaptain::vfunction18()	unsorted/tAICaptain.cpp	vc6 guest
 0x0051e09e	28	tAICaptain::scalar_deleting_destructor(unsigned char)	unsorted/tAICaptain.cpp	vc6 guest
-0x0051e0c4	307	tAICaptain::~tAICaptain()	unsorted/tAICaptain.cpp	partial
+0x0051e0ba	317	tAICaptain::~tAICaptain()	unsorted/tAICaptain.cpp	vc6
 0x0051e1f7	126	tAICaptain::vfunction7(tObject_0041018e_arg *,int)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051e275	185	tAICaptain::fn_0051e275(int)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051e32e	17	tAICaptain::fn_0051e32e()	unsorted/tAICaptain.cpp	vc6 guest
@@ -558,7 +542,7 @@ address	size	symbol	source	modes
 0x0051e613	2736	tAICaptain::fn_0051e613()	unsorted/tAICaptain.cpp	partial
 0x0051f0c3	13	tAICaptain::fn_0051f0c3(char)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f0d0	7	tAICaptain::fn_0051f0d0()	unsorted/tAICaptain.cpp	vc6 guest
-0x0051f0e1	114	tAICaptain::fn_0051f0e1(char)	unsorted/tAICaptain.cpp	partial
+0x0051f0d7	124	tAICaptain::fn_0051f0e1(char)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f153	27	tAICaptain::fn_0051f153(int,int)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f16e	22	tAICaptain::fn_0051f16e(int)	unsorted/tAICaptain.cpp	vc6 guest
 0x0051f184	105	tAICaptain::fn_0051f184(tObject_00525081 *)	unsorted/tAICaptain.cpp	vc6 guest
@@ -583,29 +567,25 @@ address	size	symbol	source	modes
 0x00538dfe	104	tMetaMapDesc::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00538e66	6	tMetaMapDesc::SQLTableName() const	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00538e6c	6	tMetaMapDesc::SQLFieldNames() const	unsorted/tMetaMapDesc.cpp	vc6 guest
-0x00538e7c	157	fn_00538e7c()	unsorted/tMetaMapDesc.cpp	partial
+0x00538e72	167	fn_00538e7c()	unsorted/tMetaMapDesc.cpp	partial
 0x00538f3e	71	fn_00538f3e()	unsorted/tMetaMapDesc.cpp	partial
-0x00538f85	10	fn_00538f85()	unsorted/tMetaMapDesc.cpp	partial
-0x00538f8f	50	tClassAllocator()	unsorted/tMetaMapDesc.cpp	partial
-0x00538fc1	10	fn_00538fc1()	unsorted/tMetaMapDesc.cpp	partial
-0x00538fcb	63	mAllocate()	unsorted/tMetaMapDesc.cpp	partial
+0x00538f85	60	tClassAllocator()	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00538fc1	73	mAllocate()	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x0053900a	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00539070	12	fn_00539070()	unsorted/tMetaMapDesc.cpp	partial
 0x0053907c	12	fn_0053907c()	unsorted/tMetaMapDesc.cpp	partial
 0x00539088	12	fn_00539088()	unsorted/tMetaMapDesc.cpp	partial
 0x00539094	8	fn_00539094()	unsorted/tMetaMapDesc.cpp	partial
-0x00547b61	100	tBattles::tBattles()	unsorted/tBattles.cpp	partial
+0x00547b57	110	tBattles::tBattles()	unsorted/tBattles.cpp	vc6
 0x00547bc5	28	tBattles::scalar_deleting_destructor(unsigned char)	unsorted/tBattles.cpp	vc6 guest
-0x00547be1	10	FUN_00547be1()	unsorted/tBattles.cpp	partial
-0x00547beb	116	tBattles::tBattles(const tBattles&)	unsorted/tBattles.cpp	partial
-0x00547c69	101	tBattles::~tBattles()	unsorted/tBattles.cpp	partial
+0x00547be1	126	tBattles::tBattles(const tBattles&)	unsorted/tBattles.cpp	vc6
+0x00547c5f	111	tBattles::~tBattles()	unsorted/tBattles.cpp	vc6
 0x00547cce	109	tBattles::operator=(const tBattles&)	unsorted/tBattles.cpp	vc6 guest
 0x00547d3b	51	tMissionCompleteResults::operator=(const tMissionCompleteResults&)	unsorted/tBattles.cpp	vc6 guest
 0x00547d6e	123	tBattles::StreamOut(nDataStore::tOutput&) const	unsorted/tBattles.cpp	vc6 guest
 0x00547de9	126	tBattles::StreamIn(nDataStore::tInput&)	unsorted/tBattles.cpp	vc6 guest
-0x00547e67	10	tBattles::vfunction6_for_tAllocatedClass()	unsorted/tBattles.cpp	partial
-0x00547e71	626	tBattles::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tBattles.cpp	partial
+0x00547e67	636	tBattles::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tBattles.cpp	partial
 0x005480e3	107	fn_005480e3(time_t)	unsorted/tBattles.cpp	vc6 guest
 0x0054814e	3	tBattles::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tBattles.cpp	vc6 guest
 0x00548151	6	tBattles::SQLTableName() const	unsorted/tBattles.cpp	vc6 guest
@@ -617,24 +597,22 @@ address	size	symbol	source	modes
 0x0054819c	15	tBattles::fn_0054819c(const tMetaMapHex&)	unsorted/tBattles.cpp	vc6 guest
 0x005481ab	18	tBattles::fn_005481ab(const tMissionCompleteResults&)	unsorted/tBattles.cpp	vc6 guest
 0x005481bd	472	operator=(const std::vector< tObject_0053d20b >&)	unsorted/tBattles.cpp	vc6 guest
-0x00548395	10	FUN_00548395()	unsorted/tBattles.cpp	partial
-0x0054839f	50	tClassAllocator()	unsorted/tBattles.cpp	partial
-0x005483d1	10	fn_005483d1()	unsorted/tBattles.cpp	partial
-0x005483db	66	mAllocate()	unsorted/tBattles.cpp	partial
+0x00548395	60	tClassAllocator()	unsorted/tBattles.cpp	vc6 guest
+0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
 0x00548467	12	FUN_00548467()	unsorted/tBattles.cpp	partial
 0x00548473	12	FUN_00548473()	unsorted/tBattles.cpp	partial
 0x0054847f	12	FUN_0054847f()	unsorted/tBattles.cpp	partial
 0x0054848b	8	fn_0054848b()	unsorted/tBattles.cpp	partial
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
-0x00607fd5	10	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	partial
+0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	partial
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006082e2	13	fn_006082e2()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006082f9	410	tPanelMgr::fn_006082f9()	unsorted/tPanelMgr.cpp	partial
+0x006082ef	420	tPanelMgr::fn_006082f9()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608493	71	tPanelMgr::fn_00608493()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006084e4	150	tPanelMgr::fn_006084e4()	unsorted/tPanelMgr.cpp	partial
+0x006084da	160	tPanelMgr::fn_006084e4()	unsorted/tPanelMgr.cpp	vc6 guest
 0x0060857a	59	tPanelMgr::fn_0060857a()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006085bf	298	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	partial
+0x006085b5	308	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006086e9	125	tPanelMgr::fn_006086e9()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest

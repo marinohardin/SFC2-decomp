@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
 // Unit:      unsorted/tPreparedMissions.cpp
-// Functions: 0x0053eb34 to 0x0053ee4c, 9 in game/UNITS.tsv
+// Functions: 0x0053eb2a to 0x0053f229, 12 in game/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   game-release (harness/units.json)

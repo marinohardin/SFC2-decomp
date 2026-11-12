@@ -367,3 +367,38 @@ def test_a_deleting_destructor_the_unit_did_not_emit_claims_nothing():
 
 def test_a_deleting_destructor_claimed_on_a_stand_in_keeps_the_plain_rule():
     assert _deleting(49, [39, 49]) == '?mStandIn@tShip@@QAEPAV1@I@Z'
+
+
+# VC6 writes the template instances it needs after the unit's own functions with no `; File`
+# record before them, so the listing gives them the unit's file. Here the vector destructor's
+# first line record (line 4 of the header) lands on the same number as Unit::f's first line.
+TRAILING_TEMPLATE_LISTING = """\
+\tTITLE\tunit.cpp
+_TEXT\tSEGMENT
+?f@Unit@@QAEXXZ PROC NEAR\t\t; Unit::f, COMDAT
+
+; 4    : \tfield = 1;
+
+\tret\t0
+?f@Unit@@QAEXXZ ENDP\t\t\t; Unit::f
+_TEXT\tENDS
+;\tCOMDAT ??1?$vector@H@std@@QAE@XZ
+_TEXT\tSEGMENT
+??1?$vector@H@std@@QAE@XZ PROC NEAR\t; std::vector<int>::~vector<int>, COMDAT
+
+; 4    : \t\t{_Destroy(_First, _Last);
+
+\tret\t0
+??1?$vector@H@std@@QAE@XZ ENDP\t\t; std::vector<int>::~vector<int>
+_TEXT\tENDS
+"""
+
+
+def test_a_template_instance_after_the_unit_is_told_apart_by_the_line_it_quotes(tmp_path):
+    unit = tmp_path / 'unit.cpp'
+    unit.write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid Unit::f()\n{\n\tfield = 1;\n}\n')
+    assert source.symbol_for_annotation(TRAILING_TEMPLATE_LISTING, str(unit), 1, []) == \
+        '?f@Unit@@QAEXXZ'
+    # Without the unit's text to compare with, both functions are still on the line.
+    assert source.symbol_for_annotation(TRAILING_TEMPLATE_LISTING, str(tmp_path / 'gone' / 'unit.cpp'),
+                                        1, []) == ['?f@Unit@@QAEXXZ', '??1?$vector@H@std@@QAE@XZ']

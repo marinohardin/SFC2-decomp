@@ -343,12 +343,54 @@ def _deleting_destructor(listing_text, unit_path, ann_line, other_ann_lines, kin
     return deleting_destructor_symbol(listing_text, sym, kind)
 
 
+LINE_TEXT = re.compile(r'^; (\d+)\s+:(.*)$')
+
+
+def listing_first_texts(listing_text):
+    """{symbol: (line, text)}: the source line each PROC's first line record quotes."""
+    out, proc = {}, None
+    for line in listing_text.splitlines():
+        m = PROC.match(line)
+        if m:
+            proc = m.group(1)
+            continue
+        if proc:
+            m = LINE_TEXT.match(line)
+            if m:
+                out[proc] = (int(m.group(1)), m.group(2))
+                proc = None
+            elif ENDP.match(line):
+                proc = None
+    return out
+
+
+def _same_text(a, b):
+    return ' '.join(a.split()) == ' '.join(b.split())
+
+
+def _from_this_file(listing_text, unit_path):
+    """The symbols whose first line record quotes the text the unit has at that line, or None
+    when the unit cannot be read. VC6 writes no `; File` record before the template instances it
+    emits after the unit's own code, so listing_functions gives them the unit's file; the text
+    the listing quotes for their first line is the header's, which tells them apart."""
+    try:
+        with open(unit_path, encoding='latin1') as f:
+            src = f.read().split('\n')
+    except OSError:
+        return None
+    return {sym for sym, (n, text) in listing_first_texts(listing_text).items()
+            if 0 < n <= len(src) and _same_text(src[n - 1], text)}
+
+
 def _nearest_function(listing_text, unit_path, ann_line, other_ann_lines):
     main = os.path.basename(unit_path).lower()
     nxt = min([n for n in other_ann_lines if n > ann_line], default=None)
+    own = _from_this_file(listing_text, unit_path)
     best = []
     for sym, f, line in listing_functions(listing_text):
         if f is None or os.path.basename(f.replace('\\', '/')).lower() != main:
+            continue
+        if own is not None and sym not in own:
             continue
         if line > ann_line and (nxt is None or line < nxt):
             best.append((line, sym))

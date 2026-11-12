@@ -637,12 +637,9 @@ public:
 	~tEntity_Weapon();
 };
 
-// FUNCTION: STARFLEETOP 0x00413dd6
-// HYPOTHESIS: not a function of its own: the original is `mov eax, <ehhandler>; call
-// __EH_prolog`, the /O1 frame setup of the destructor whose body the analysis records
-// separately at 0x00413de0 (tPhysicalEntity::~tPhysicalEntity); its unwind funclets
-// 0x0075ba20 and 0x0075ba28 name this address as their parent. This stub only holds the
-// address, as 0x00413614 does.
+// HYPOTHESIS: the code at 0x00413dd6 (its exception-frame setup and body) is rebuilt as
+// tPhysicalEntity::~tPhysicalEntity, which claims 0x00413dd6. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 tEntity_Weapon::~tEntity_Weapon()
 {
 }
@@ -653,7 +650,7 @@ tEntity_Weapon::~tEntity_Weapon()
 // The compiler emits the frame setup and this body as one function, so the rebuilt code
 // is the original's 10 bytes at 0x00413dd6 followed by its 200 bytes here; scored against
 // 0x00413de0 alone, everything after the frame setup is offset by those 10 bytes.
-// FUNCTION: STARFLEETOP 0x00413de0
+// FUNCTION: STARFLEETOP 0x00413dd6
 tPhysicalEntity::~tPhysicalEntity()
 {
 	if (field_0x88)

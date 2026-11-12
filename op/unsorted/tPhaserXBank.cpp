@@ -153,11 +153,11 @@ public:
     bool field_4a0;
 };
 
-// FUNCTION: STARFLEETOP 0x004e5325
+// FUNCTION: STARFLEETOP 0x004e531b
 tPhaserXBank::tPhaserXBank(int param_1, fn_004e1e99_arg* param_2)
     : tBaseWeapon(param_1)
 {
-    static fn_0040ce21_type marker("tPhaserXBank::tPhaserXBank");
+    static fn_0040ce21_type marker("bite me, it's fun");
     field_f8 = param_2->field_00;
     field_100 = param_2->field_04;
     field_104 = param_2->field_08;

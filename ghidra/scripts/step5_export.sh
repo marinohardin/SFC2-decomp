@@ -6,6 +6,8 @@ source "$(dirname "$0")/env.sh"
 run_headless 05_export "$PROJECTS" "$MAIN_PROJECT" -process StarFleetOP.exe -noanalysis -readOnly \
 	-postScript SfcExport.java "$EXPORTS" \
 	-postScript SfcSaveGzf.java "$WORK/StarFleetOP_2552.gzf"
+# Join the functions Ghidra splits after their exception-frame prolog (see join_eh_prologs.py).
+python3 -I "$SCRIPTS/join_eh_prologs.py" "$EXPORTS" "$EXE" | tee "$RESULTS/join_eh_prologs.txt"
 grep -h -E "^INFO  Sfc[A-Za-z]+\.java> " "$LOGS/05_export.out" | sed -E 's/ \(GhidraScript\) *$//' \
 	> "$RESULTS/export_summary.txt" || true
 

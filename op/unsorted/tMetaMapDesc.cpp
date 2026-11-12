@@ -116,7 +116,7 @@ const char* tMetaMapDesc::SQLFieldNames() const
 // placeholder to claim the address; it is not the original's code and should not be merged
 // as a match.
 
-// FUNCTION: STARFLEETOP 0x00538e7c
+// FUNCTION: STARFLEETOP 0x00538e72
 void fn_00538e7c()
 {
 }
@@ -133,22 +133,12 @@ void fn_00538f3e()
 {
 }
 
-// FUNCTION: STARFLEETOP 0x00538f85
-void fn_00538f85()
-{
-	// HYPOTHESIS: these 10 bytes load the unwind table into eax and call the exception
-	// handler: the compiler's handler stub for the try block of the bool output operator
-	// instance at 0x00538e7c. They have no source of their own and match only when
-	// 0x00538e7c is rebuilt whole. This empty body only claims the address; it is not the
-	// original's code and should not be merged as a match.
-}
-
 // MATCH-ONLY: the SDK's template constructor, written out as this instance's explicit
 // specialization so that its annotation names the one instance; the body is the template's.
 // HYPOTHESIS: the function really starts at 0x00538f85 (mov eax, unwind table; call
 // __EH_prolog), so these bytes cannot match until the two addresses are one function.
 
-// FUNCTION: STARFLEETOP 0x00538f8f
+// FUNCTION: STARFLEETOP 0x00538f85
 template<>
 tClassAllocator<tMetaMapDesc>::tClassAllocator()
 {
@@ -162,17 +152,12 @@ tClassAllocator<tMetaMapDesc>::tClassAllocator()
 // matches. This empty body only claims the address so it is built and scored; it is not the
 // original's code and should not be merged as a match.
 
-// FUNCTION: STARFLEETOP 0x00538fc1
-void fn_00538fc1()
-{
-}
-
 // MATCH-ONLY: the SDK's template mAllocate, written out as this instance's explicit
 // specialization so that its annotation names the one instance; the body is the template's.
 // HYPOTHESIS: the function really starts at 0x00538fc1 (mov eax, unwind table; call
 // __EH_prolog), so these bytes cannot match until the two addresses are one function.
 
-// FUNCTION: STARFLEETOP 0x00538fcb
+// FUNCTION: STARFLEETOP 0x00538fc1
 template<>
 tAllocatedClass* tClassAllocator<tMetaMapDesc>::mAllocate()
 {

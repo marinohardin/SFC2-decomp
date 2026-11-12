@@ -224,7 +224,7 @@ extern const char *g_apsz0084c5e0[6];
 
 
 
-// FUNCTION: STARFLEETOP 0x0048bd57
+// FUNCTION: STARFLEETOP 0x0048bd4d
 tFleetPanel::tFleetPanel(tObject_0048bd57_arg *pCharacter)
 {
 	m_pD8 = 0;

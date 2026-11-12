@@ -119,16 +119,15 @@ bool tListBox_Select::vfunction31( c_tListBox_Base_Event *event )
 	return handled;
 }
 
-// FUNCTION: STARFLEETOP 0x004c71fc
-// HYPOTHESIS: the original's 10 bytes are "mov eax, <ehfuncinfo 0x7664b0>; call __EH_prolog", the
-// frame setup of a larger function whose body the analysis splits off after them (as at 0x004c661f).
-// This body only claims the address; it matches fully once that body is rebuilt in the same function.
+// HYPOTHESIS: the code at 0x004c71fc (its exception-frame setup and body) is rebuilt as
+// tListBox_Select::fn_004c7206, which claims 0x004c71fc. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 bool tListBox_Select::vfunction44( c_tListBox_Base_DrawItem *item )
 {
 	return false;
 }
 
-// FUNCTION: STARFLEETOP 0x004c7206
+// FUNCTION: STARFLEETOP 0x004c71fc
 // The rebuilt function starts with the 10 bytes the original keeps at 0x004c71fc.
 bool tListBox_Select::fn_004c7206( c_tListBox_Base_DrawItem *draw )
 {

@@ -6,7 +6,7 @@
 #include "unsorted/tScrollBar.h"
 #include "unsorted/tAsset.h"
 
-// FUNCTION: STARFLEETOP 0x004c61a8
+// FUNCTION: STARFLEETOP 0x004c619e
 tListBox_Base::~tListBox_Base()
 {
 	vfunction51();
@@ -188,15 +188,15 @@ void tListBox_Base::vfunction37( tAsset *asset )
 	field_7C = text->field_60;
 }
 
-// FUNCTION: STARFLEETOP 0x004c661f
-// HYPOTHESIS: the original bytes (mov eax, <ehfuncinfo>; call __EH_prolog) are the frame setup of
-// 0x004c6629, which the analysis splits off as a function of its own. This body only claims the address.
+// HYPOTHESIS: the code at 0x004c661f (its exception-frame setup and body) is rebuilt as
+// tListBox_Base::fn_004c6629, which claims 0x004c661f. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 c_tListBox_Base_Item *tListBox_Base::vfunction41( void *data, short key, int value, unsigned int index )
 {
 	return 0;
 }
 
-// FUNCTION: STARFLEETOP 0x004c6629
+// FUNCTION: STARFLEETOP 0x004c661f
 // The rebuilt function starts with the 10 bytes the original keeps at 0x004c661f.
 c_tListBox_Base_Item *tListBox_Base::fn_004c6629( void *data, int key, int value, unsigned int index )
 {

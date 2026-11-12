@@ -649,7 +649,7 @@ public:
 // __EH_prolog`; the analysis boundary at 0x004c2669 skips those 10 bytes, so the score is
 // measured against a misaligned original. Past the prolog the rebuilt code is instruction for
 // instruction the original.
-// FUNCTION: STARFLEETOP 0x004c2669
+// FUNCTION: STARFLEETOP 0x004c265f
 tFleetEntry::tFleetEntry()
 	: m_n110(-1)
 {
@@ -1096,7 +1096,7 @@ public:
 
 // HYPOTHESIS: the body of the function whose exception-frame prolog is 0x004c3524. It walks
 // pParent's children, casts each one, and hands the value to vfunction24 of the first that casts.
-// FUNCTION: STARFLEETOP 0x004c352e
+// FUNCTION: STARFLEETOP 0x004c3524
 void fn_004c352e(tObjBase *pParent, tObject_004c352e_arg arg)
 {
 	tObjBase *pChild = pParent->field_24;
@@ -1125,7 +1125,7 @@ int tFleetEntry::fn_004c36e0(int nValue)
 // HYPOTHESIS: the body of fn_004c36f9 (its prolog 0x004c36f9 is listed in boundary_errors.tsv). It walks pParent's
 // children, or this group's when pParent is 0, and returns the first tValueBtn whose name
 // matches pszName, or 0.
-// FUNCTION: STARFLEETOP 0x004c3703
+// FUNCTION: STARFLEETOP 0x004c36f9
 tValueBtn *tFleetEntry::fn_004c3703(const char *pszName, tObjBase *pParent)
 {
 	tString sName(pszName);
@@ -1161,7 +1161,7 @@ void tFleetEntry::vfunction47_for_tVisGroup(int param_1)
 // HYPOTHESIS: the body of vfunction48_for_tVisGroup (its prolog 0x004c380b is listed in boundary_errors.tsv). When
 // the entry's group is selected it clears the entry if its fleet is gone, then sends the fleet
 // a new command destination built from dest and plays a sound.
-// FUNCTION: STARFLEETOP 0x004c3815
+// FUNCTION: STARFLEETOP 0x004c380b
 void tFleetEntry::fn_004c3815(const tObject_00412f08 &dest)
 {
 	if (m_p118 && m_p118->vfunction20()) {
@@ -1208,7 +1208,7 @@ void tFleetEntry::vfunction51_for_tVisGroup(float param_1, int param_2, int para
 // then once per interval (rescheduled from the 0x0090be9c rate, as tFleetPanel's update does)
 // shows the fleet's gauge and text, its target's gauge, text and state, and the fire button's
 // flags. It returns false when the entry's fleet is gone.
-// FUNCTION: STARFLEETOP 0x004c3a36
+// FUNCTION: STARFLEETOP 0x004c3a2c
 bool tFleetEntry::fn_004c3a36()
 {
 	char szBuffer[0x40];

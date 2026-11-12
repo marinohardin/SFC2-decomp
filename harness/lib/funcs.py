@@ -11,7 +11,7 @@ LABEL_MIN_SCORE = 0.85
 
 class Function:
     __slots__ = ('address', 'size', 'name', 'mangled', 'demangled', 'name_source',
-                 'translation_unit', 'is_library', 'library', 'kind')
+                 'translation_unit', 'is_library', 'library', 'kind', 'tags')
 
     def __init__(self, row):
         self.address = int(row['address'], 16)
@@ -24,6 +24,7 @@ class Function:
         self.is_library = (row.get('is_library') or '0').strip() == '1'
         self.library = row.get('library') or ''
         self.kind = row.get('kind') or 'function'
+        self.tags = tuple(t for t in (row.get('tags') or '').split(';') if t)
 
     @property
     def id(self):

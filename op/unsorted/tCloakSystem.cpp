@@ -34,7 +34,7 @@ public:
     int field_98;
 };
 
-// FUNCTION: STARFLEETOP 0x004381ee
+// FUNCTION: STARFLEETOP 0x004381e4
 // HYPOTHESIS: four parameters (ret 0x10); only the first two are used here.
 tCloakSystem::tCloakSystem(int param_1, int param_2, int param_3, int param_4)
 {

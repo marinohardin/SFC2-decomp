@@ -8,7 +8,7 @@ extern tSay g_00c693a0;	// HYPOTHESIS: the tSay mLoad (0x004c878a) warns through
 extern unsigned char g_00c69414;	// HYPOTHESIS: set, it silences that warning
 void fn_006c9980( const char *message );	// HYPOTHESIS: empty in the release build
 
-// FUNCTION: STARFLEETOP 0x004c8113
+// FUNCTION: STARFLEETOP 0x004c8109
 tScrollBar::tScrollBar()
 {
 	field_40 |= 9;
@@ -38,7 +38,7 @@ tScrollBar::tScrollBar()
 	field_D8 = 5;
 }
 
-// FUNCTION: STARFLEETOP 0x004c820b
+// FUNCTION: STARFLEETOP 0x004c8201
 tScrollBar::~tScrollBar()
 {
 	if ( field_80 && field_0C )
@@ -246,15 +246,14 @@ unsigned char tScrollBar::vfunction31( c_tListBox_Base_Event *event )
 	return false;
 }
 
-// HYPOTHESIS: the original 10 bytes (mov eax, <ehfuncinfo>; call __EH_prolog) are the frame
-// setup of mLoad (0x004c878a), which the analysis splits off as a function of its own; slot 37
-// is mLoad. This empty body only claims the address.
-// STUB: STARFLEETOP 0x004c8780
+// HYPOTHESIS: the code at 0x004c8780 (its exception-frame setup and body) is rebuilt as
+// tScrollBar::mLoad, which claims 0x004c8780. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 void tScrollBar::vfunction37()
 {
 }
 
-// FUNCTION: STARFLEETOP 0x004c878a
+// FUNCTION: STARFLEETOP 0x004c8780
 // The rebuilt function starts with the 10 bytes the original keeps at 0x004c8780.
 void tScrollBar::mLoad( tAsset *asset )
 {
@@ -272,7 +271,7 @@ void tScrollBar::mLoad( tAsset *asset )
 		field_70 = false;
 	else
 	{
-		const char *message = "tScrollBar::mLoad(): Can't determine if we are vertical or horizontal.";
+		const char *message = "tScrollBar::mLoad(): Can't determine if we are vertical or horizontal.\nWill default to being horizontal.\n";
 		if ( !g_00c69414 )
 		{
 			fn_006c9980( message );

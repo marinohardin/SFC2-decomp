@@ -277,7 +277,7 @@ public:
     double m_60;
 };
 
-// FUNCTION: STARFLEETOP 0x00421939
+// FUNCTION: STARFLEETOP 0x0042192f
 tEntityControlShip::tEntityControlShip(tEntity *entity)
     : tEntityControl(entity)
 {
@@ -470,7 +470,7 @@ void tEntityControlShip::fn_00421db6()
 // HYPOTHESIS: the analysis puts this function at 0x00421e45, but the exe's
 // bytes show it begins at 0x00421e3b with the EH prolog; from 0x00421e45 on
 // the original and this build agree byte for byte.
-// FUNCTION: STARFLEETOP 0x00421e45
+// FUNCTION: STARFLEETOP 0x00421e3b
 tEntityControlShip::~tEntityControlShip()
 {
 }

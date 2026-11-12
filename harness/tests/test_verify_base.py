@@ -128,6 +128,72 @@ def test_base_is_read_from_a_git_ref_or_a_file(tmp_path, monkeypatch):
         verify.load_base('no-such-ref')
 
 
+
+class SizedIndex:
+    """A FunctionIndex with only the sizes the gate reads."""
+
+    def __init__(self, sizes, joined=()):
+        self.by_address = {a: type('F', (), {'size': n, 'tags': ('eh-prolog-joined',) if a in joined
+                                             else ()})() for a, n in sizes.items()}
+
+
+def test_a_never_exact_entry_the_analysis_reshapes_is_not_held_to_the_base(empty_tree,
+                                                                            monkeypatch):
+    # The base's analysis split a prolog at 0x00401000 (10 bytes) from its body at 0x0040100a;
+    # the head's joins them.
+    monkeypatch.setattr(funcs, 'FunctionIndex',
+                        lambda *a: SizedIndex({0x401000: 26}, joined={0x401000}))
+    matched.save(paths.MATCHED_SET, matched_set())
+    base = {'version': 1, 'functions': {'0x00401000': entry(40.0), '0x0040100a': entry(30.0)}}
+    rep = verify.run([], base=(base, 'base'),
+                     base_sizes={'0x00401000': 10, '0x0040100a': 16})
+    assert rep.regressions == [] and not rep.failed
+    released = [ln for ln in rep.lines if 'joined its exception prolog' in ln]
+    assert len(released) == 2
+
+
+def test_a_size_change_the_join_does_not_explain_is_held(empty_tree, monkeypatch):
+    # 0x00401000 shrinks and 0x00401020 is gone, but neither row is a joined prolog or its body.
+    monkeypatch.setattr(funcs, 'FunctionIndex',
+                        lambda *a: SizedIndex({0x401000: 8, 0x401040: 26}, joined={0x401040}))
+    matched.save(paths.MATCHED_SET, matched_set())
+    base = matched_set(a00401000=entry(40.0), a00401020=entry(30.0))
+    rep = verify.run([], base=(base, 'base'),
+                     base_sizes={'0x00401000': 16, '0x00401020': 16, '0x00401040': 10})
+    assert sorted(rep.regressions) == [0x401000, 0x401020]
+
+
+def test_an_exact_or_unchanged_entry_is_held_whatever_the_analysis_says(empty_tree, monkeypatch):
+    monkeypatch.setattr(funcs, 'FunctionIndex',
+                        lambda *a: SizedIndex({0x401000: 26, 0x401020: 16}))
+    matched.save(paths.MATCHED_SET, matched_set())
+    base = matched_set(a00401000=entry(100.0, True), a00401020=entry(30.0))
+    rep = verify.run([], base=(base, 'base'),
+                     base_sizes={'0x00401000': 10, '0x00401020': 16})
+    assert sorted(rep.regressions) == [0x401000, 0x401020]
+
+
+def test_without_the_base_analysis_nothing_is_released_as_reshaped(empty_tree, monkeypatch):
+    monkeypatch.setattr(funcs, 'FunctionIndex', lambda *a: SizedIndex({0x401000: 26}))
+    matched.save(paths.MATCHED_SET, matched_set())
+    rep = verify.run([], base=(matched_set(a00401000=entry(40.0)), 'base'))
+    assert rep.regressions == [0x401000]
+
+
+def test_base_sizes_are_read_from_the_functions_csv_at_a_git_ref(tmp_path, monkeypatch):
+    repo = tmp_path / 'repo'
+    exports = repo / 'ghidra' / 'exports'
+    exports.mkdir(parents=True)
+    git(repo, 'init', '-q')
+    (exports / 'functions.csv').write_text('address,size,name\n00401000,10,FUN_00401000\n'
+                                           '0040100a,16,FUN_0040100a\n')
+    git(repo, 'add', '-A')
+    git(repo, 'commit', '-q', '-m', 'analysis')
+    monkeypatch.setattr(paths, 'REPO', str(repo))
+    monkeypatch.setattr(paths, 'FUNCTIONS_CSV', str(exports / 'functions.csv'))
+    assert verify.load_base_sizes('HEAD') == {'0x00401000': 10, '0x0040100a': 16}
+    assert verify.load_base_sizes(str(exports / 'functions.csv')) is None
+
 @pytest.fixture
 def exe(tmp_path, monkeypatch):
     raw = make_pe(b'\xc3')

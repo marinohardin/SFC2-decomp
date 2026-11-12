@@ -8,7 +8,7 @@
 // Source/entity/entity_physical.cpp also includes for gNetControl.mQueueMsg; this unit
 // defines the members whose functions lie between 0x0043104e and the end of its range.
 
-// FUNCTION: STARFLEETOP 0x0043104e
+// FUNCTION: STARFLEETOP 0x00431044
 tNetControl::tNetControl()
 {
 	field_8 = 0;
@@ -46,19 +46,10 @@ tNetControl::~tNetControl()
 // wrapper). A class has one destructor definition, already claimed above, so this placeholder
 // only claims the address so it is built and scored; fold it into ~tNetControl when the harness
 // can claim both.
-// FUNCTION: STARFLEETOP 0x00431184
+// FUNCTION: STARFLEETOP 0x0043117a
 void fn_00431184( tNetControl *p )
 {
 	p->field_8D08.~tString();
-}
-
-// HYPOTHESIS: these 10 bytes are a compiler-generated exception-handler stub
-// (mov eax, <unwind data>; jmp frame handler) for a neighbouring function, not source code.
-// This empty body only claims the address so it is built and scored; remove it when the
-// functions this stub belongs to match and the compiler emits it by itself.
-// FUNCTION: STARFLEETOP 0x0043117a
-void fn_0043117a()
-{
 }
 
 // FUNCTION: STARFLEETOP 0x00431159
@@ -143,17 +134,6 @@ void tNetControl::fn_0043124e()
 		node = next;
 	}
 	field_8CC0 = 0;
-}
-
-// HYPOTHESIS: 0x00431275 is only the head of a larger function: its 10 bytes are
-// "mov eax, <EH function info>; call __EH_prolog", and the analysis split the rest of the body
-// off as 0x0043127f. The exe's EH tables name 0x00431275 as the parent of the funclets at
-// 0x0075cf00 and 0x0075cf08, and 0x0043127f makes virtual calls through this+0x8d00, so it is
-// probably a tNetControl member. This empty body is a placeholder, not the original code;
-// replace it with the whole function once 0x00431275 and 0x0043127f are rebuilt as one.
-// FUNCTION: STARFLEETOP 0x00431275
-void fn_00431275()
-{
 }
 
 // HYPOTHESIS: the entries 0x0043127f reads from the vector its source fills in. Only the
@@ -272,7 +252,7 @@ extern c_008e1060 g_008e1060;
 // only because the comparison starts at 0x0043127f and the rebuilt symbol at 0x00431275. It rebuilds the
 // field_8CB8 list from the entries field_8D00 reports, keeping the fields of an old node with
 // the same id.
-// FUNCTION: STARFLEETOP 0x0043127f
+// FUNCTION: STARFLEETOP 0x00431275
 void tNetControl::fn_0043127f()
 {
 	std::vector< c_0043127f_src * > list;

@@ -15,7 +15,6 @@ public:
 	tBattles* scalar_deleting_destructor( unsigned char flags );
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
-	void vfunction6_for_tAllocatedClass();
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
@@ -37,7 +36,7 @@ public:
 	tMissionCompleteResults m_208;
 };
 // HYPOTHESIS: the function really starts at 0x00547b57 (mov eax, unwind table; call __EH_prolog), so these bytes cannot match until the two addresses are one function; the rest is one for one.
-// FUNCTION: STARFLEETOP 0x00547b61
+// FUNCTION: STARFLEETOP 0x00547b57
 tBattles::tBattles() : m_68( 0 ), m_138( 0 )
 {
 }
@@ -54,20 +53,7 @@ tBattles* tBattles::scalar_deleting_destructor( unsigned char flags )
 	return this;
 }
 
-// HYPOTHESIS: the function really starts at 0x00547be1 (mov eax, unwind table; call
-// __EH_prolog), so these bytes cannot match until the two addresses are one function. The
-// address that follows (0x00547beb) is the rest of that function: the copy constructor. After
-// the stub its body is 116 bytes like the one below: the same member constructors, the two
-// vtable stores, then one near call with the argument (taken to be operator=, 0x00547cce).
-// The stub at 0x00547e67 has the same shape: each is the opening of the function whose
-// address follows it, and the two halves are scored apart. This empty body only claims the
-// address.
 // FUNCTION: STARFLEETOP 0x00547be1
-void FUN_00547be1()
-{
-}
-
-// FUNCTION: STARFLEETOP 0x00547beb
 tBattles::tBattles( const tBattles& other ) : m_68( 0 ), m_138( 0 )
 {
 	*this = other;
@@ -77,7 +63,7 @@ tBattles::tBattles( const tBattles& other ) : m_68( 0 ), m_138( 0 )
 // __EH_prolog), so these bytes cannot match until the two addresses are one function. After
 // that stub the original destroys the same members in the same order: m_208, m_138, m_68,
 // m_50, then the tDatabaseObject base.
-// FUNCTION: STARFLEETOP 0x00547c69
+// FUNCTION: STARFLEETOP 0x00547c5f
 tBattles::~tBattles()
 {
 }
@@ -128,16 +114,6 @@ void tBattles::StreamIn( nDataStore::tInput& input )
 	input >> m_48 >> m_4c >> m_50 >> m_60 >> m_68 >> m_138 >> m_208;
 }
 
-// HYPOTHESIS: the function really starts at 0x00547e67 (mov eax, unwind table; call
-// __EH_prolog), so these bytes cannot match until the two addresses are one function. The
-// body that follows at 0x00547e71 runs in that stub's frame (it reads its argument at
-// [ebp+8] and sets the unwind state), so the stub is the opening of
-// tBattles::SQLFillInsertStream; this empty body only claims the address.
-// FUNCTION: STARFLEETOP 0x00547e67
-void tBattles::vfunction6_for_tAllocatedClass()
-{
-}
-
 #include <time.h>
 
 // HYPOTHESIS: makes the text of a time for the SQL stream; defined after its caller in this
@@ -146,7 +122,7 @@ std::string fn_005480e3( time_t value );
 
 // HYPOTHESIS: the function starts at the stub at 0x00547e67 (see above), so the frame setup
 // in the first bytes cannot match until the two addresses are one function.
-// FUNCTION: STARFLEETOP 0x00547e71
+// FUNCTION: STARFLEETOP 0x00547e67
 void tBattles::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
 {
 	tDatabaseObject::SQLFillInsertStream( SQL );
@@ -286,21 +262,12 @@ std::vector< tObject_0053d20b >& std::vector< tObject_0053d20b >::operator=( con
 	return *this;
 }
 
-// HYPOTHESIS: these 10 bytes (mov eax, unwind table 0x0076b024; call __EH_prolog) are the
-// opening of the function whose body follows at 0x0054839f, so they cannot match until the two
-// addresses are one function. They follow the vector assignment above directly; the function
-// they open is not identified. This empty body only claims the address.
-// FUNCTION: STARFLEETOP 0x00548395
-void FUN_00548395()
-{
-}
-
 // MATCH-ONLY: the SDK's template constructor, written out as this instance's explicit
 // specialization so that its annotation names the one instance; the body is the template's.
 // HYPOTHESIS: the function really starts at 0x00548395 (mov eax, unwind table; call
 // __EH_prolog), so these bytes cannot match until the two addresses are one function.
 
-// FUNCTION: STARFLEETOP 0x0054839f
+// FUNCTION: STARFLEETOP 0x00548395
 template<>
 tClassAllocator<tBattles>::tClassAllocator()
 {
@@ -313,17 +280,12 @@ tClassAllocator<tBattles>::tClassAllocator()
 // tMetaMapDesc. It has no source of its own. This empty body only claims the address so it is
 // built and scored; it is not the original's code and should not be merged as a match.
 
-// FUNCTION: STARFLEETOP 0x005483d1
-void fn_005483d1()
-{
-}
-
 // MATCH-ONLY: the SDK's template mAllocate, written out as this instance's explicit
 // specialization so that its annotation names the one instance; the body is the template's.
 // HYPOTHESIS: the function really starts at 0x005483d1 (mov eax, unwind table; call
 // __EH_prolog), so these bytes cannot match until the two addresses are one function.
 
-// FUNCTION: STARFLEETOP 0x005483db
+// FUNCTION: STARFLEETOP 0x005483d1
 template<>
 tAllocatedClass* tClassAllocator<tBattles>::mAllocate()
 {

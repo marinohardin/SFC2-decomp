@@ -179,7 +179,7 @@ void tEntityMgr::fn_004235cd(int8u flags, int32 value)
         *(int32 *)fEntityStrength = gValue_0083bb28 + value;
 }
 
-// FUNCTION: STARFLEETOP 0x004235fa
+// FUNCTION: STARFLEETOP 0x004235f0
 // HYPOTHESIS: 0x004235f0 and 0x004235fa are one function. The 10 bytes at
 // 0x004235f0 are its EH prolog ("mov eax, <EH function info>; call
 // __EH_prolog"), which the analysis split off. Written whole, the function

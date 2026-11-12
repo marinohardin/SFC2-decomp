@@ -361,7 +361,7 @@ void fn_006082e2()
 // the body is scored against a build that also carries the prolog. Unless the member at +0x200
 // is set, it makes one creator of each of six kinds and stores what each creator's inherited
 // function (0x00607460) returns in the container at +0x1f0, under the keys 0 to 5.
-// FUNCTION: STARFLEETOP 0x006082f9
+// FUNCTION: STARFLEETOP 0x006082ef
 void tPanelMgr::fn_006082f9()
 {
     if (!fn_inline_0x200()) {
@@ -418,7 +418,7 @@ void tPanelMgr::fn_00608493()
 // HYPOTHESIS: this is the body of the function that starts at 0x006084da (see above). If the
 // container at +0x1d0 is empty, it makes a player relay creator and a messenger relay creator and
 // appends what each one's inherited function (0x00607460) returns.
-// FUNCTION: STARFLEETOP 0x006084e4
+// FUNCTION: STARFLEETOP 0x006084da
 void tPanelMgr::fn_006084e4()
 {
     if (m_0x1d0.size() == 0) {
@@ -447,7 +447,7 @@ void tPanelMgr::fn_0060857a()
 // what each one's inherited function (0x00607460) returns; when the member at +0x1cc is 5 it
 // stores a player list panel under key 0 of the container at +0x204, and it always stores a help
 // list panel under key 1.
-// FUNCTION: STARFLEETOP 0x006085bf
+// FUNCTION: STARFLEETOP 0x006085b5
 void tPanelMgr::fn_006085bf()
 {
     if (m_0x1e0.size() == 0) {

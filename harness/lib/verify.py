@@ -16,7 +16,9 @@ higher, and every function is held to the higher of the two. This is how a pull 
 stopped from lowering or deleting an entry along with the source that earned it.
 """
 import argparse
+import csv
 import hashlib
+import io
 import json
 import os
 import subprocess
@@ -82,6 +84,33 @@ def load_base(spec):
         return matched.parse(p.stdout, f'{spec}:{rel}'), f'{spec}:{rel}'
     except ValueError as e:
         raise Untrusted(str(e)) from None
+
+
+def function_sizes(index):
+    """Matched-set key -> size for every function in a FunctionIndex."""
+    return {matched.key(a): f.size for a, f in index.by_address.items()}
+
+
+def joined_keys(index):
+    """Matched-set keys of the functions ghidra/scripts/join_eh_prologs.py joined."""
+    return {matched.key(a) for a, f in index.by_address.items()
+            if 'eh-prolog-joined' in getattr(f, 'tags', ())}
+
+
+def load_base_sizes(spec):
+    """The sizes in functions.csv at the git ref spec (matched-set key -> size), or None when spec
+    is a file or the ref has no functions.csv: then no entry is released as reshaped."""
+    if os.path.isfile(spec):
+        return None
+    rel = os.path.relpath(paths.FUNCTIONS_CSV, paths.REPO)
+    if rel.startswith('..'):
+        return None
+    p = subprocess.run(['git', '-C', paths.REPO, 'show', f'{spec}:{rel}'], capture_output=True,
+                       text=True)
+    if p.returncode != 0:
+        return None
+    rows = csv.DictReader(io.StringIO(p.stdout))
+    return {matched.key(int(r['address'], 16)): int(r['size'] or 0) for r in rows}
 
 
 OBJDIFF_TIMEOUT = 300   # seconds; objdiff has been seen to spin for hours on some objects
@@ -217,8 +246,10 @@ def claimed_keys(cfg=None):
             if any(x.kind == 'FUNCTION' for x in anns)}
 
 
-def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None):
-    """base: (matched set, label) to hold the run to as well, from load_base."""
+def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None,
+        base_sizes=None):
+    """base: (matched set, label) to hold the run to as well, from load_base; base_sizes: the
+    base's functions.csv sizes, from load_base_sizes, or None to release nothing for them."""
     rep = Report()
     index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     cfg = source.load_units()
@@ -230,6 +261,12 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
+        if base_sizes is not None:
+            base_data, reshaped = matched.release_reshaped(base_data, base_sizes, function_sizes(
+                index), joined_keys(index))
+            for k in reshaped:
+                rep.add('INFO', f'{k} not held to {label}: the analysis joined its exception '
+                        f'prolog and body (its size differs from the base\'s) and it was never exact there')
         for k, old in sorted(base_data['functions'].items()):
             new = data['functions'].get(k)
             if matched.worse(new, old):
@@ -447,7 +484,9 @@ def main(argv=None):
     os.makedirs(paths.BUILD, exist_ok=True)
     try:
         base = load_base(a.base) if a.base else None
-        rep = run(a.ids, check_all=a.all, behavioural=a.behavioural, record=a.record, base=base)
+        sizes = load_base_sizes(a.base) if a.base else None
+        rep = run(a.ids, check_all=a.all, behavioural=a.behavioural, record=a.record, base=base,
+                  base_sizes=sizes)
     except Untrusted as e:
         rep = Report()
         rep.add('ERROR', str(e))

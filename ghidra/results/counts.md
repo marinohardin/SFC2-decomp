@@ -1,16 +1,16 @@
 ## Functions
 
-- total functions in the program: **44232** (function 27479, eh-funclet 16544, thunk 209)
-- ordinary functions (excluding thunks and EH funclets): 27479, 3306300 bytes
-- of those with a non-default name: **10624** (38.7%), 1368125 bytes (41.4% of function bytes)
+- total functions in the program: **39824** (function 23071, eh-funclet 16544, thunk 209)
+- ordinary functions (excluding thunks and EH funclets): 23071, 3306300 bytes
+- of those with a non-default name: **10246** (44.4%), 1503727 bytes (45.5% of function bytes)
 
 | kind | name_source | functions |
 |---|---|---|
-| function | default | 16855 |
 | eh-funclet | eh-analyzer | 16544 |
-| function | rtti-class-recovery | 8223 |
+| function | default | 12825 |
+| function | rtti-class-recovery | 7885 |
 | function | sdklib-exact | 1859 |
-| function | ghidra-fid-vs | 307 |
+| function | ghidra-fid-vs | 267 |
 | function | sdk-fid | 217 |
 | thunk | default | 209 |
 | function | ghidra-analysis | 17 |
@@ -18,10 +18,10 @@
 
 | ordinary functions by name quality | functions |
 |---|---|
-| class known, method placeholder (vfunctionN / ctor-or-dtor) | 4281 |
-| class recovery: constructor / destructor / deleting destructor | 3942 |
+| class known, method placeholder (vfunctionN / ctor-or-dtor) | 4248 |
+| class recovery: constructor / destructor / deleting destructor | 3637 |
 | real symbol name (sdklib-exact) | 1859 |
-| real symbol name (ghidra-fid-vs) | 307 |
+| real symbol name (ghidra-fid-vs) | 267 |
 | real symbol name (sdk-fid) | 217 |
 | real symbol name (ghidra-analysis) | 17 |
 | real symbol name (imported) | 1 |
@@ -42,10 +42,10 @@
 
 | library | functions |
 |---|---|
-| (game code) | 26563 |
-| stl | 562 |
-| crt | 304 |
-| wonapi | 210 |
+| (game code) | 22328 |
+| stl | 523 |
+| wonapi | 200 |
+| crt | 180 |
 | import-thunk | 41 |
 | cryptopp | 8 |
 
@@ -72,7 +72,7 @@
 
 - source-path strings referenced from code: 229 (227 .c/.cpp, 2 headers)
 - functions with a TU from a path string they reference: **639** (7 reference more than one .cpp)
-- functions with a TU inferred from both neighbours (same single TU before and after): 1019
+- functions with a TU inferred from both neighbours (same single TU before and after): 741
 - functions with only header paths: 37
 - distinct TUs with at least one function: 226
 
@@ -91,26 +91,26 @@
 | 006ed020 | 006f2661 | 73 | 21361 | 006ecf80 WONAPI::BigInteger::BigInteger | 006f2670 WONAPI::WONAPIPumpThread::scalar_deleting_destructor |
 | 0074096a | 0074531e | 81 | 18644 | 0074092e __fload | 0074531f Replicator::operator+= |
 | 0072f110 | 00733533 | 95 | 16169 | 0072f020 CryptoPP::DSABase::MaxDigestLength | 00735c90 type_info::~type_info |
-| 0052c8c8 | 005307d8 | 90 | 15846 | 0052c7d6 tNetMsg::~tNetMsg | 005307d9 tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed |
+| 0052c8c8 | 005307d8 | 75 | 15846 | 0052c7cc tNetMsg::~tNetMsg | 005307d9 tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed |
 | 00614210 | 00618923 | 102 | 15384 | 006141b0 twVolume::~twVolume | 00618930 tSoundSelection::mGetSoundPartHasNoMoreUseForThis |
 | 006c99b0 | 006cdb42 | 103 | 15349 | 006c9980 tDynamicMemoryFreeList::vfunction21 | 006cdb50 WONAPI::AsyncSocket::AsyncSocket |
-| 0056edc3 | 00572927 | 149 | 15205 | 0056edb9 nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction66 | 00572928 tTurn::tTurn |
+| 0056edfe | 0057291d | 104 | 15136 | 0056edb9 nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction66 | 0057291e tTurn::tTurn |
 | 006ad7d0 | 006b104b | 27 | 14312 | 006ad410 GetDXVersion | 006b1050 tSWView3D::vfunction98 |
-| 005bd3b9 | 005c0bb2 | 82 | 14187 | 005bd370 nDatabase::tID::tID | 005c0bb3 tMapRelayS::tMapRelayS |
-| 00530b70 | 0053430e | 49 | 14150 | 00530b28 tNetMsg_kScriptPrimitive::~tNetMsg_kScriptPrimitive | 0053430f tShipInGame::tShipInGame |
-| 005f8558 | 005fb9aa | 111 | 13356 | 005f837f tMetaClientChatCtlrC::tMetaClientChatCtlrC_Constructor_or_Destructor | 005fb9ab tMemberCallback<tMetaClientChatCtlrC,tChatChannel_const&>::tMemberCallback<tMetaClientChatCtlrC,tChatChannel_const&> |
-| 005c2394 | 005c5682 | 133 | 13006 | 005c1fef tMapSettings::~tMapSettings | 005c5683 tMapWatchdog::tMapWatchdog |
-| 005b74b8 | 005ba478 | 71 | 12153 | 005b72f2 tMapCtlrS::~tMapCtlrS | 005bc519 nDatabase::tID::tID |
-| 00582bcf | 005861fd | 133 | 12086 | 00582b13 tMissionMatcherCtlrS::~tMissionMatcherCtlrS | 005861fe tMissionMatcherRelayS::scalar_deleting_destructor |
+| 005bd3b9 | 005c0ba8 | 46 | 14177 | 005bd366 nDatabase::tID::tID | 005c0ba9 tMapRelayS::tMapRelayS |
+| 00530b70 | 0053430e | 42 | 14150 | 00530b28 tNetMsg_kScriptPrimitive::~tNetMsg_kScriptPrimitive | 0053430f tShipInGame::tShipInGame |
+| 005f8558 | 005fb9aa | 74 | 13356 | 005f8375 tMetaClientChatCtlrC::~tMetaClientChatCtlrC | 005fb9ab tMemberCallback<tMetaClientChatCtlrC,tChatChannel_const&>::tMemberCallback<tMetaClientChatCtlrC,tChatChannel_const&> |
+| 005c2394 | 005c5657 | 112 | 12996 | 005c1fe5 tMapSettings::~tMapSettings | 005c5679 tMapWatchdog::tMapWatchdog |
+| 005b74b8 | 005ba478 | 41 | 12153 | 005b72e8 tMapCtlrS::~tMapCtlrS | 005bc50f nDatabase::tID::tID |
+| 00582bcf | 005861fd | 117 | 12086 | 00582b09 tMissionMatcherCtlrS::~tMissionMatcherCtlrS | 005861fe tMissionMatcherRelayS::scalar_deleting_destructor |
 | 0069aa00 | 0069e144 | 53 | 11961 | 0069a9f0 tApplication::vfunction18 | 0069e150 tD3DViewMgr::vfunction2 |
 | 00746f7f | 0074a096 | 61 | 11540 | 00746f60 __allshl | 0074a097 ___add_12 |
 | 006b5fe0 | 006b8fdc | 36 | 10563 | 006b5fa0 twDLLMgrBase::vfunction5 | 006b9000 twDisplayMgr::twDisplayMgr |
-| 004b7161 | 004b99f6 | 21 | 10268 | 004b714d tState_Namespace_Tactical::tState_Tactical::vfunction7 | 004b99f7 tState_Namespace_Tactical::tState_Tactical::vfunction8 |
-| 00445a14 | 0044823e | 49 | 10207 | 004459be tShipSystemMask::~tShipSystemMask | 0044823f tShipSystemsExt::tShipSystemsExt |
+| 004b7161 | 004b99f6 | 17 | 10268 | 004b714d tState_Namespace_Tactical::tState_Tactical::vfunction7 | 004b99f7 tState_Namespace_Tactical::tState_Tactical::vfunction8 |
+| 00445a14 | 0044822a | 43 | 10197 | 004459be tShipSystemMask::~tShipSystemMask | 00448235 tShipSystemsExt::tShipSystemsExt |
 | 00733550 | 00735c77 | 44 | 9682 | 0072f020 CryptoPP::DSABase::MaxDigestLength | 00735c90 type_info::~type_info |
-| 004fa526 | 004fc7fe | 33 | 8821 | 004fa0f1 tHypermass<36>::vfunction1 | 004fc7ff tFx_IonStorm::vfunction14 |
-| 005a2b23 | 005a4d6e | 89 | 8618 | 005a2a02 tMemberCallback<tDataValidatorS,nSwitch::tAsyncProcedure**>::tMemberCallback<tDataValidatorS,nSwitch::tAsyncProcedure**>_Constructor_or_Destructor | 005a4d6f tDataWatchdog::tDataWatchdog |
-| 0050bcc7 | 0050df19 | 58 | 8534 | 0050bc96 tBasicFileCache::vfunction11 | 0050df1a ParseTabData::ParseTabData |
+| 004fa526 | 004fc7fe | 32 | 8821 | 004fa0f1 tHypermass<36>::vfunction1 | 004fc7ff tFx_IonStorm::vfunction14 |
+| 005a2b23 | 005a4d43 | 51 | 8608 | 005a29f8 tDataValidatorS::vfunction5 | 005a4d65 tDataWatchdog::tDataWatchdog |
+| 0050bcc7 | 0050deee | 49 | 8524 | 0050bc96 tBasicFileCache::vfunction11 | 0050df10 ParseTabData::ParseTabData |
 
 ## Timings and memory
 

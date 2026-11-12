@@ -238,7 +238,7 @@ public:
 	char field_0x3a44;                      // +0x3a44
 	char field_0x3a45;                      // +0x3a45
 };
-// FUNCTION: STARFLEETOP 0x0051daf1
+// FUNCTION: STARFLEETOP 0x0051dae7
 tAICaptain::tAICaptain(float aParam1, int aParam2, int aParam3, int aShipID)
 	: field_0x88(aShipID),
 	  field_0x8c(-1),
@@ -427,7 +427,7 @@ class tObject_0051e0c4_3a34 : public tObject_0051e3ac_entry_vector
 
 // HYPOTHESIS: the analysis starts this function 10 bytes into the destructor, after its
 // exception-frame prolog (0x0051e0ba); the source is the whole destructor.
-// FUNCTION: STARFLEETOP 0x0051e0c4
+// FUNCTION: STARFLEETOP 0x0051e0ba
 tAICaptain::~tAICaptain()
 {
 	g_0090bed4->fn_00522681(field_0x35fc);
@@ -1074,7 +1074,7 @@ char tAICaptain::fn_0051f0d0()
 // Written whole, so its build starts with that 10-byte prolog and the rest follows the
 // original instruction for instruction from 0x0051f0e1 on. With the flag set it tells the offensive officer 0 through 0x00519130 and orders the ship to
 // disengage; otherwise it clears the ship's current orders.
-// FUNCTION: STARFLEETOP 0x0051f0e1
+// FUNCTION: STARFLEETOP 0x0051f0d7
 void tAICaptain::fn_0051f0e1(char aValue)
 {
 	if (aValue)

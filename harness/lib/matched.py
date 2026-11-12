@@ -81,6 +81,28 @@ def release_listed(base, data, listed, claimed=()):
         sorted(gone)
 
 
+JOINED_PROLOG = 10   # ghidra/scripts/join_eh_prologs.py: the prolog's size
+
+
+def release_reshaped(base, base_sizes, head_sizes, joined):
+    """base without the entries of functions that join_eh_prologs.py has joined since: the
+    address is a joined entry (`joined`: keys of the rows tagged eh-prolog-joined in this tree's
+    functions.csv) or the body JOINED_PROLOG bytes after one, and its size differs from the
+    base's (`base_sizes` and `head_sizes` map matched-set keys to functions.csv sizes; a missing
+    key means no function there). Such an entry scored a prolog or a body alone, a byte range the
+    function no longer has. Any other change of size is held: the gate releases only what the
+    join explains. Returns (base, [released keys]). An exact entry is never released."""
+    def by_join(k):
+        a = int(k, 16)
+        return k in joined or key(a - JOINED_PROLOG) in joined
+    gone = [k for k, old in base['functions'].items()
+            if not old.get('exact') and base_sizes.get(k) != head_sizes.get(k) and by_join(k)]
+    if not gone:
+        return base, []
+    return dict(base, functions={k: v for k, v in base['functions'].items() if k not in gone}), \
+        sorted(gone)
+
+
 def save(path, data):
     data['functions'] = dict(sorted(data['functions'].items()))
     tmp = path + '.tmp'

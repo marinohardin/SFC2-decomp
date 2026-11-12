@@ -341,19 +341,16 @@ tState_Campaign::tState_Campaign()
 {
 }
 
-// HYPOTHESIS: the original declares no destructor here either. The atexit stub reaches
-// 0x0045ddf7 through 0x0045dde0, a lone jmp: that jmp is tState_Campaign's generated
-// destructor, and 0x0045ddf7 (mov eax, data; call __EH_prolog) is the first 10 bytes of
-// tCampaignState's, whose rest the analysis export calls FUN_0045de01.
-// This definition only gives the declared virtual destructor a body and does not match.
-// FUNCTION: STARFLEETOP 0x0045ddf7
+// HYPOTHESIS: the code at 0x0045ddf7 (its exception-frame setup and body) is rebuilt as
+// tCampaignState::~tCampaignState, which claims 0x0045ddf7. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 tState_Campaign::~tState_Campaign()
 {
 }
 
 // HYPOTHESIS: the rest of tCampaignState's destructor (see the declaration); it starts at
 // 0x0045ddf7, so this build carries 10 bytes and a vtable store more than the original.
-// FUNCTION: STARFLEETOP 0x0045de01
+// FUNCTION: STARFLEETOP 0x0045ddf7
 tCampaignState::~tCampaignState()
 {
 }

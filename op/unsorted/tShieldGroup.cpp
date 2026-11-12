@@ -12,7 +12,7 @@
 // range; the instructions after them follow the original one for one.
 // HYPOTHESIS: four parameters (ret 0x10), as for the other ship systems; the last two go to
 // vftable slot 108.
-// FUNCTION: STARFLEETOP 0x00440559
+// FUNCTION: STARFLEETOP 0x0044054f
 tShieldGroup::tShieldGroup(int param_1, int param_2, int param_3, int param_4)
 {
     field_7c = 0.0f;

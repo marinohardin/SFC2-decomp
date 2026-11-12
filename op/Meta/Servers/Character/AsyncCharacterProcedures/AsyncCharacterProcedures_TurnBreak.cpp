@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
 // Unit:      Meta/Servers/Character/AsyncCharacterProcedures/AsyncCharacterProcedures_TurnBreak.cpp
-// Functions: 0x00598208 to 0x00598208, 1 in game/UNITS.tsv
+// Functions: 0x005981fe to 0x005981fe, 1 in game/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
 // Profile:   game-release (harness/units.json)

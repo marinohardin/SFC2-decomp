@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
 // Unit:      unsorted/fn_00573220.cpp
-// Functions: 0x00573220 to 0x005736b5, 13 in game/UNITS.tsv
+// Functions: 0x00573220 to 0x005736ab, 8 in game/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 // Profile:   game-release (harness/units.json)

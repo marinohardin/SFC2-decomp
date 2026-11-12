@@ -58,7 +58,9 @@ tMouseMgr_Ex *tMouseMgr_Ex::scalar_deleting_destructor(unsigned char flags)
     return this;
 }
 
-// FUNCTION: STARFLEETOP 0x0040bdb1
+// HYPOTHESIS: the code at 0x0040bdb1 (its exception-frame setup and body) is rebuilt as
+// fn_0040bdbb::~fn_0040bdbb, which claims 0x0040bdb1. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 tMouseMgr_Ex::~tMouseMgr_Ex()
 {
 }
@@ -89,7 +91,7 @@ public:
     tLock_0040bdbb m_lock;   // +0x14
 };
 
-// FUNCTION: STARFLEETOP 0x0040bdbb
+// FUNCTION: STARFLEETOP 0x0040bdb1
 fn_0040bdbb::~fn_0040bdbb()
 {
     fn_006a3350();

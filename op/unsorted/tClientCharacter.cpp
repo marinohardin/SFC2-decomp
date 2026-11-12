@@ -123,7 +123,6 @@ public:
 	void fn_00429717();
 	bool TryEnter();
 	void fn_004297fa();
-	void fn_0042984d();
 	int m_00;
 	char m_04;
 	char m_05;
@@ -303,7 +302,7 @@ public:
 // __EH_prolog`; the analysis boundary at 0x004295da skips those 10 bytes, so the score is
 // measured against a misaligned original. Past the prolog the rebuilt code is instruction for
 // instruction the original.
-// FUNCTION: STARFLEETOP 0x004295da
+// FUNCTION: STARFLEETOP 0x004295d0
 tClientCharacter::~tClientCharacter()
 {
 	m_e4.fn_00429717();
@@ -406,14 +405,6 @@ void tOptex::fn_004297fa()
 	}
 }
 
-// HYPOTHESIS: these 10 bytes (`mov eax, <handler>; call __EH_prolog`) are the exception prolog
-// of the function that follows; the analysis boundary split it off, so this cannot be matched
-// as a function of its own. Left as an empty placeholder until the boundary is corrected.
-// FUNCTION: STARFLEETOP 0x0042984d
-void tOptex::fn_0042984d()
-{
-}
-
 // HYPOTHESIS: this is really tClientCharacter::operator=(const tClientCharacter &) (copy of
 // the +0xc/+0x1c/+0x30 strings, +0x5c/+0x70/+0x84 hex points, +0xb4/+0xcc locked members,
 // guarded by the tOptex at +0xe4 through 0x00429717/0x004297fa); its exception prolog is the
@@ -434,7 +425,7 @@ public:
 
 // HYPOTHESIS: the two locked members (+0xb4, +0xcc) are copied through callees whose types are
 // not recovered, so that part is left out until they are.
-// FUNCTION: STARFLEETOP 0x00429857
+// FUNCTION: STARFLEETOP 0x0042984d
 tClientCharacter &tClientCharacter::fn_00429857(const tClientCharacter &other)
 {
 	tOptexHolder holder(&m_e4);
@@ -467,16 +458,7 @@ tOptex::tGuard::~tGuard()
 	}
 }
 
-// HYPOTHESIS: these 10 bytes (`mov eax, <handler>; call __EH_prolog`) are the exception prolog
-// of the function that follows (its unwind funclets at 0x0075c538..0x0075c5c5 name this
-// address as their parent); the analysis boundary split it off, so this cannot be matched as a
-// function of its own. Left as an empty placeholder until the boundary is corrected.
 // FUNCTION: STARFLEETOP 0x00429a26
-void fn_00429a26()
-{
-}
-
-// FUNCTION: STARFLEETOP 0x00429a30
 // HYPOTHESIS: copy constructor: default-constructs the members, makes sure both guarded
 // pointers hold an object and ends with *this = other (0x00429857). The 10-byte exception
 // prolog at 0x00429a26 precedes the analysis boundary, so the score is measured against a
@@ -500,22 +482,13 @@ tClientCharacter::tClientCharacter(const tClientCharacter &other)
 	fn_00429857(other);
 }
 
-// HYPOTHESIS: as at 0x00429a26, these 10 bytes (`mov eax, 0x0075c673; call __EH_prolog`) are
-// the exception prolog of the function that follows, split off by the analysis boundary, so they
-// cannot be matched as a function of their own. Left as an empty placeholder until the boundary
-// is corrected.
-// FUNCTION: STARFLEETOP 0x00429bb2
-void fn_00429bb2()
-{
-}
-
 // HYPOTHESIS: a one-argument constructor: builds the members, gives both guarded pointers a new
 // object and, under the lock at +0xe4, passes its argument to 0x00429d06. The argument's type
 // is not recovered (one dword). Its 10-byte exception prolog is 0x00429bb2, split off by the
 // analysis boundary, so the score is measured against a misaligned original. Past the prolog
 // the rebuilt body is the original's except that the original inlines tOptex::tGuard::~tGuard
 // (here it is out of line, see 0x00429a18), which also saves one stack slot.
-// FUNCTION: STARFLEETOP 0x00429bbc
+// FUNCTION: STARFLEETOP 0x00429bb2
 tClientCharacter::tClientCharacter(int arg)
 	: m_b4(new std::vector<int>)
 	, m_cc(new tObject_005391b0)
@@ -525,11 +498,9 @@ tClientCharacter::tClientCharacter(int arg)
 	guard.Leave();
 }
 
-// HYPOTHESIS: 0x00429bbc calls this address, so it is a real entry point, but its 10 bytes are
-// only the exception prolog (`mov eax, 0x0075c6d0; call __EH_prolog`); the body continues at
-// 0x00429d10, past the analysis boundary. Left empty until the boundary is corrected, as at
-// 0x00429a26 and 0x00429bb2.
-// FUNCTION: STARFLEETOP 0x00429d06
+// HYPOTHESIS: the code at 0x00429d06 (its exception-frame setup and body) is rebuilt as
+// tClientCharacter::fn_00429d10, which claims 0x00429d06. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 void tClientCharacter::fn_00429d06(int arg)
 {
 }
@@ -539,7 +510,7 @@ void tClientCharacter::fn_00429d06(int arg)
 // argument's class is not recovered; it is declared here from the calls alone. Built this way,
 // the function is the prolog plus the body, so the score is measured against a misaligned
 // original, as at 0x004295da.
-// FUNCTION: STARFLEETOP 0x00429d10
+// FUNCTION: STARFLEETOP 0x00429d06
 void tClientCharacter::fn_00429d10(const tObject_00543551 *source)
 {
 	tOptex::tGuard guard(&m_e4);
@@ -566,16 +537,6 @@ void tClientCharacter::fn_00429d10(const tObject_00543551 *source)
 	guard.Leave();
 }
 
-// HYPOTHESIS: as at 0x00429a26, 0x00429bb2 and 0x00429d06, these 10 bytes (`mov eax,
-// 0x0075c704; call __EH_prolog`) are the exception prolog of the function whose body follows
-// at 0x00429f17, split off by the analysis boundary, so they cannot be matched as a function of
-// their own. The analysis places it in tClientCharacter's vtable (slot 2); the body is not
-// recovered. Left as an empty placeholder until the boundary is corrected.
-// FUNCTION: STARFLEETOP 0x00429f0d
-void fn_00429f0d()
-{
-}
-
 // HYPOTHESIS: the stream 0x00429f17 writes to: the original loads a writer from +8 of it and
 // calls a method taking a buffer and a byte count. Neither class is recovered.
 class tObject_00429f17_writer {
@@ -597,7 +558,7 @@ public:
 // fields at +0x50..+0x84 on to one callee. The callees have no recovered types, so only the
 // part that is certain is written: the lock and the two locked accesses. The score is measured
 // against a misaligned original, as at 0x00429d10.
-// FUNCTION: STARFLEETOP 0x00429f17
+// FUNCTION: STARFLEETOP 0x00429f0d
 void tClientCharacter::fn_00429f17(tObject_00429f17 *stream)
 {
 	tOptex::tGuard guard(&m_e4);

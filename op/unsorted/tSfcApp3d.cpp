@@ -211,7 +211,7 @@ public:
 	fn_005298a6_Member m_field24;    // +0x24
 };
 
-// FUNCTION: STARFLEETOP 0x0040aadc
+// FUNCTION: STARFLEETOP 0x0040aad2
 tSfcApp3d::tSfcApp3d()
 {
 	m_field19 = 0;
@@ -223,20 +223,14 @@ tSfcApp3d::tSfcApp3d()
 
 // The exception-handling prolog (mov eax, $L; call __EH_prolog) sits at 0x0040ab39, ten
 // bytes before the recorded start; the 49 bytes from 0x0040ab43 match this body.
-// FUNCTION: STARFLEETOP 0x0040ab43
+// FUNCTION: STARFLEETOP 0x0040ab39
 tSfcApp3d::~tSfcApp3d()
 {
 }
 
-// The recorded 10 bytes are only the exception-handling prolog (mov eax, $L; call
-// __EH_prolog) of the shutdown routine; its body is recorded separately as 0x0040ab7e and is
-// written in full as fn_0040ab7e below. The EH table of this prolog's handler (FuncInfo at
-// 0x007e7dd0) covers 0x0040ab7e..0x0040ad35: thirteen try blocks, each with one catch(...),
-// so the routine runs to 0x0040ad35 and the catch funclets and continuation pieces the analysis
-// recorded as functions in between (0x0040ac0d..0x0040ad2f) are its own.
-// HYPOTHESIS: when the analysis rows are merged, fn_0040ab7e becomes this function's body;
-// this empty stub is a placeholder.
-// STUB: STARFLEETOP 0x0040ab74
+// HYPOTHESIS: the code at 0x0040ab74 (its exception-frame setup and body) is rebuilt as
+// tSfcApp3d::fn_0040ab7e, which claims 0x0040ab74. This empty definition is not the original; it stays
+// until that code moves here, because a caller or a vtable needs it.
 void tSfcApp3d::vfunction12()
 {
 }
@@ -247,7 +241,7 @@ void tSfcApp3d::vfunction12()
 // original is a shutdown step that must not stop the ones after it. The recorded 143 bytes are
 // the first two try blocks; the rest (0x0040ac19..0x0040ad35) follows them in the original.
 // HYPOTHESIS: the order and grouping of the steps follow the original's state numbering.
-// FUNCTION: STARFLEETOP 0x0040ab7e
+// FUNCTION: STARFLEETOP 0x0040ab74
 void tSfcApp3d::fn_0040ab7e()
 {
 	try {
