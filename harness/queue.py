@@ -19,7 +19,8 @@ rule (`plan`).
 `record` settles a function whose run is over: difficult_functions.tsv when it had its full
 chance, revisit_functions.tsv when the stop rule ended it sooner. `sweep` does the same for
 every function in the attempt log that is on neither list, which is how attempts logged before
-the stop rule existed are settled; it prints what it listed.
+the stop rule existed are settled; it prints what it listed. It never lists a function that
+matched_set.json records exact, and takes any such function off both lists.
 
 `select` resolves units (paths in game/UNITS.tsv, such as Tiger/tsay.cpp) and addresses to the
 queue entries they cover, in address order, and writes them to $HARNESS_STATE/selection.json.
@@ -48,10 +49,14 @@ def main(argv):
     revisit = workqueue.read_tsv(paths.REVISIT, workqueue.REVISIT_FIELDS)
     take_revisit = os.environ.get('HARNESS_TAKE_REVISIT') == '1'
     if cmd == 'sweep':
-        got = workqueue.sweep(paths, tiers, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()))
+        exact = {k for k, v in matched.load(paths.MATCHED_SET)['functions'].items()
+                 if v.get('exact')}
+        got = workqueue.sweep(paths, tiers, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+                              exact)
         for a, where in sorted(got.items()):
             print(f'INFO  {a} -> {where}')
-        print(f'OK    swept: {len(got)} functions listed')
+        listed = sum(1 for w in got.values() if w != 'cleared')
+        print(f'OK    swept: {listed} functions listed, {len(got) - listed} exact ones taken off')
         return 0
     if cmd == 'build':
         index = funcs.FunctionIndex(paths.FUNCTIONS_CSV)

@@ -194,7 +194,9 @@ used its full chance is left alone. Without `--revisit` the queue skips all of t
 `queue.py sweep` settles the functions in the attempt log that are on neither list but whose
 run the rule has already ended: those attempted before the rule existed. The loop does not run
 it; run it once, on a grind branch, after the loops that used the old tiers have stopped, and
-commit the lists it writes.
+commit the lists it writes. It reads matched_set.json too: a function recorded exact is never
+listed, and is taken off either list, because a function matched outside the loop has no exact
+attempt in the log.
 
 ## The loop (`loop.sh`)
 

@@ -408,14 +408,22 @@ def record(paths_, entry, row, tiers, take_revisit=False):
     return settle(paths_, entry, tiers, row['time'], take_revisit)
 
 
-def sweep(paths_, tiers, now):
+def sweep(paths_, tiers, now, exact=frozenset()):
     """Settle every function with counted attempts whose run the stop rule has ended but that
-    is on no list yet: those whose attempts were logged before the rule existed. Returns
-    {address: 'difficult' | 'revisit'}."""
+    is on no list yet: those whose attempts were logged before the rule existed. `exact` holds
+    the addresses matched_set.json records exact: a function matched outside the loop (by hand,
+    or in a later batch) has no exact attempt in the log, so it is never listed, and is taken
+    off either list if it is on one. Returns {address: 'difficult' | 'revisit' | 'cleared'}."""
     attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
+    exact = {a.lower() for a in exact}
     names, out = {}, {}
+    for path, fields in ((paths_.DIFFICULT, DIFFICULT_FIELDS), (paths_.REVISIT, REVISIT_FIELDS)):
+        gone = [r['address'] for r in read_tsv(path, fields) if r['address'].lower() in exact]
+        if gone:
+            _rewrite_tsv(path, fields, lambda r: r['address'].lower() not in exact)
+            out.update((a, 'cleared') for a in gone)
     for r in attempts:
-        if r['outcome'] in COUNTED:
+        if r['outcome'] in COUNTED and r['address'].lower() not in exact:
             names.setdefault(r['address'], r['name'])
     for a, name in names.items():
         got = settle(paths_, dict(address=a, name=name), tiers, now)

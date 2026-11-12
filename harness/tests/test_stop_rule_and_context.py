@@ -599,3 +599,18 @@ def test_a_boxed_session_is_logged_and_noted_as_a_timeout_with_unknown_cost(tmp_
     assert (logged['outcome'], logged['cost_usd'], logged['input_tokens']) == ('timeout', '', '')
     assert workqueue.counted_attempts(workqueue.read_tsv(p.ATTEMPTS, workqueue.ATTEMPT_FIELDS),
                                       '0x00401000') == 1
+
+
+def test_sweep_skips_and_unlists_functions_the_matched_set_records_exact(tmp_path):
+    p = _paths(tmp_path)
+    for r in [att(1, 'opus', 0, 40), att(2, 'sonnet', 40, 40, 'failed'),
+              att(1, 'opus', 0, 10, address='0x00401030'),
+              att(2, 'sonnet', 10, 10, 'failed', address='0x00401030')]:
+        workqueue.append_tsv(p.ATTEMPTS, workqueue.ATTEMPT_FIELDS, r)
+    workqueue.append_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS, dict(
+        address='0x00401040', name='C::g', attempts='3', last_model='sonnet', best_score='5.00',
+        last_attempt='2026-11-09T00:00:00Z', reason='not exact after 3 attempts'))
+    got = workqueue.sweep(p, TIERS, '2026-11-11T00:00:00Z', exact={'0x00401030', '0x00401040'})
+    assert got == {A: 'revisit', '0x00401040': 'cleared'}
+    assert workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS) == []
+    assert [r['address'] for r in workqueue.read_tsv(p.REVISIT, workqueue.REVISIT_FIELDS)] == [A]
