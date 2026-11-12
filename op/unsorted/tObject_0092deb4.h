@@ -4,25 +4,27 @@
 #ifndef tObject_0092deb4_h
 #define tObject_0092deb4_h 1
 
-// HYPOTHESIS: unsorted/tNetControl.cpp declares the same object locally as c_0092deb4.
-// vfunctionN is slot N of its vftable (offset 4 * N). Only the slots the rebuilt functions
-// call have known signatures; their meanings are not known unless a comment says so.
+// HYPOTHESIS: vfunctionN is slot N of its vftable (offset 4 * N). Only the slots the rebuilt
+// functions call have known signatures; their meanings are not known unless a comment says so.
 class tObject_0092deb4
 {
 public:
 	virtual void vfunction0();
 	virtual void vfunction1();
-	virtual void vfunction2();
+	// HYPOTHESIS: argument types unknown; tState_Campaign passes an entry of its list and -1.
+	virtual void vfunction2(void *entry, int n);
 	virtual void vfunction3();
 	virtual void vfunction4();
-	virtual void vfunction5();
+	// HYPOTHESIS: returns the player's name; tState_Campaign stores it as "PlayerName1".
+	virtual const char *vfunction5();
 	virtual void vfunction6();
 	// HYPOTHESIS: 0x00423a6a goes on only when it is 0 or 1.
 	virtual int vfunction7();
 	virtual void vfunction8();
 	// HYPOTHESIS: returns a count; 0x00608766 walks indices count-1 down to 0 through slot 15.
 	virtual int vfunction9();
-	virtual void vfunction10();
+	// HYPOTHESIS: argument types unknown; tNetControl passes a value and two zeros.
+	virtual void vfunction10(int a, int b, int c);
 	virtual void vfunction11();
 	virtual void vfunction12();
 	virtual void vfunction13();
@@ -41,12 +43,14 @@ public:
 	virtual void vfunction24();
 	virtual void vfunction25();
 	virtual void vfunction26();
-	virtual void vfunction27();
+	// HYPOTHESIS: returns an int that tPhaserXBank's 0x004e5958 tests for zero.
+	virtual int vfunction27();
 	virtual void vfunction28();
 	virtual void vfunction29();
 	virtual void vfunction30();
 	virtual void vfunction31();
 	virtual void vfunction32();
+	// HYPOTHESIS: returns an integer; 0x0051e275 compares it with the value 0x004b94dc returns.
 	virtual int vfunction33();
 	virtual void vfunction34();
 	virtual void vfunction35();
@@ -72,9 +76,10 @@ public:
 	virtual void vfunction54();
 	virtual void vfunction55();
 	virtual void vfunction56();
-	virtual void vfunction57();
+	// HYPOTHESIS: returns a truth value that tPhaserXBank's 0x004e5958 tests.
+	virtual bool vfunction57();
 	virtual void vfunction58();
-	virtual void vfunction59();
+	virtual void vfunction59(int n);
 	virtual void vfunction60();
 	virtual void vfunction61();
 	virtual void vfunction62();
@@ -95,8 +100,10 @@ public:
 	virtual void vfunction77();
 	virtual void vfunction78();
 	virtual void vfunction79();
-	virtual void vfunction80();
-	virtual void vfunction81();
+	// HYPOTHESIS: argument types unknown; tState_Campaign passes a small number and 0.
+	virtual void vfunction80(int a, int b);
+	// HYPOTHESIS: a lookup by a number and a section name ("HULL_TEMPLATE"); types unknown.
+	virtual int vfunction81(int a, const char *name);
 	virtual void vfunction82(int aValue, int aIndex);
 	virtual void vfunction83();
 	virtual void vfunction84();

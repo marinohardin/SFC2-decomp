@@ -4,7 +4,7 @@
 #include "unsorted/fn_0090bed8_type.h"
 #include "unsorted/fn_0090be9c_type.h"
 #include "unsorted/fn_004e2b02_ship_type.h"
-#include "unsorted/c_0092deb4.h"
+#include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tBaseWeapon.h"
 #include "unsorted/tEntity.h"
 
@@ -439,7 +439,7 @@ int tPhaserXBank::fn_004e5958(int param_1)
     fn_004e5958_slot78_type* slot78 = field_2c->vfunction78();
     if (step > 1 && slot78 != 0 && slot78->vfunction100() == 5)
         step--;
-    if (vfunction35() && !g_0092deb4->fn_vtbl_E4() && g_0092deb4->fn_vtbl_6C() == 0 && step > 1)
+    if (vfunction35() && !gObject_0092deb4->vfunction57() && gObject_0092deb4->vfunction27() == 0 && step > 1)
         step--;
     switch (field_100)
     {

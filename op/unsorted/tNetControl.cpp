@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include "unsorted/tNetControl.h"
-#include "unsorted/c_0092deb4.h"
+#include "unsorted/tObject_0092deb4.h"
 // The class and the object at 0x008f5b98 are declared in tNetControl.h, which
 // Source/entity/entity_physical.cpp also includes for gNetControl.mQueueMsg; this unit
 // defines the members whose functions lie between 0x0043104e and the end of its range.
@@ -312,10 +312,10 @@ void tNetControl::fn_0043127f()
 	if( g_008f5b84 != field_8D00->fn_vtbl_3C() )
 	{
 		g_008f5b84 = field_8D00->fn_vtbl_3C();
-		g_0092deb4->fn_vtbl_EC( g_008f5b84 );
+		gObject_0092deb4->vfunction59( g_008f5b84 );
 		g_008e1060.fn_004239ba( g_008f5b84 );
 		int value = g_008e1060.fn_004239d6();
-		g_0092deb4->fn_vtbl_28( value, 0, 0 );
+		gObject_0092deb4->vfunction10( value, 0, 0 );
 	}
 
 	while( list.size() )

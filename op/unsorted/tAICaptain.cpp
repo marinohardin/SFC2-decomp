@@ -8,7 +8,7 @@
 #include "tAIHelmOfficer.h"
 #include "tAIOffensiveOfficer.h"
 #include "tAIDefensiveOfficer.h"
-#include "c_0092deb4.h"
+#include "unsorted/tObject_0092deb4.h"
 #include "tObject_0096eca8.h"
 #include "fn_0090be9c_type.h"
 #include "tShipCommand.h"
@@ -545,7 +545,7 @@ void tAICaptain::fn_0051e275(int aValue)
 	field_0x3608.fn_0051e275_inline(field_0x8c, fID);
 	float value;
 	tObject_004b94dc *obj = g_0090bed4->fn_00523574(field_0x8c);
-	if (obj && obj->fn_004b94dc() == g_0092deb4->fn_vtbl_84())
+	if (obj && obj->fn_004b94dc() == gObject_0092deb4->vfunction33())
 	{
 		field_0x90 = 1;
 		value = 1.0f;

@@ -1,6 +1,6 @@
 // tCampaignState: functions of this class (original file unknown).
 
-#include "unsorted/c_0092deb4.h"
+#include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tApplication.h"
 
 // HYPOTHESIS: a cdecl function of one pointer argument at 0x004d32cf (the call's
@@ -202,7 +202,7 @@ void tState_Campaign::vfunction3()
 			break;
 		case 0x105:
 			fn_0045dc99(0x105);
-			g_0092deb4->fn_vtbl_08(&m_0c.m_0c[m_0c.m_100c], -1);
+			gObject_0092deb4->vfunction2(&m_0c.m_0c[m_0c.m_100c], -1);
 			break;
 		case 0x10006:
 			m_0c.fn_004cd2c9();
@@ -220,23 +220,23 @@ void tState_Campaign::vfunction3()
 			switch (msg.id)
 			{
 			case 0x10008:
-				g_0092deb4->fn_vtbl_140(4, 0);
+				gObject_0092deb4->vfunction80(4, 0);
 				break;
 			case 0x10009:
-				g_0092deb4->fn_vtbl_140(3, 0);
+				gObject_0092deb4->vfunction80(3, 0);
 				break;
 			case 0x1000a:
-				g_0092deb4->fn_vtbl_140(2, 0);
+				gObject_0092deb4->vfunction80(2, 0);
 				break;
 			case 0x1000b:
-				g_0092deb4->fn_vtbl_140(0, 0);
+				gObject_0092deb4->vfunction80(0, 0);
 				break;
 			default:
 				return;
 			}
 			{
 				c_004cd1db *p = &m_0c;
-				p->fn_004cd1db(g_0092deb4->fn_vtbl_9C(), g_0092deb4->fn_vtbl_144(0, "HULL_TEMPLATE"), p->m_1104);
+				p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), p->m_1104);
 				p->fn_004cd739();
 			}
 			break;
@@ -252,7 +252,7 @@ void tState_Campaign::vfunction6(int arg)
 
 	if ((name == vfunction13() && !m_1130) || (name == "playerOptions" && !m_1130))
 	{
-		fn_0047559f("PlayerName1", g_0092deb4->fn_vtbl_14());
+		fn_0047559f("PlayerName1", gObject_0092deb4->vfunction5());
 		m_1130 = true;
 	}
 }
@@ -330,7 +330,7 @@ bool tState_Campaign::fn_0045dd02()
 	if (current == "VesselLibrary")
 	{
 		c_004cd1db *p = &m_0c;
-		p->fn_004cd1db(g_0092deb4->fn_vtbl_9C(), g_0092deb4->fn_vtbl_144(0, "HULL_TEMPLATE"), (int)current);
+		p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), (int)current);
 		p->fn_004cd739();
 	}
 	return true;
