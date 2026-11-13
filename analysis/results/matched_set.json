@@ -7541,7 +7541,7 @@
    "size": 32,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-13"
   },
   "0x00650230": {
    "name": "SoundPartCurrentTime",
@@ -7804,6 +7804,177 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0066be30": {
+   "name": "tgStrManager::mDeactivate",
+   "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
+   "unit": "unsorted/tgStrManager.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066be50": {
+   "name": "tgStrManager::mDone",
+   "symbol": "?mDone@tgStrManager@@UAEXXZ",
+   "unit": "unsorted/tgStrManager.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066be60": {
+   "name": "tgStrManager::mLoadStringFile",
+   "symbol": "?mLoadStringFile@tgStrManager@@UAEEPBD_N@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066be80": {
+   "name": "tgStrManager::mLoadStringFile",
+   "symbol": "?mLoadStringFile@tgStrManager@@UAEEAAVtBasicFile@@_N@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bea0": {
+   "name": "tgStrManager::mGetStringIndex",
+   "symbol": "?mGetStringIndex@tgStrManager@@UAEHPBD@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bec0": {
+   "name": "tgStrManager::mGetStringIndex",
+   "symbol": "?mGetStringIndex@tgStrManager@@UAEHABVtString@@@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bee0": {
+   "name": "tgStrManager::mGetString",
+   "symbol": "?mGetString@tgStrManager@@UAEABVtString@@H@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bf00": {
+   "name": "tgStrManager::mGetString",
+   "symbol": "?mGetString@tgStrManager@@UAEABVtString@@PBD@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bf20": {
+   "name": "tgStrManager::mGetString",
+   "symbol": "?mGetString@tgStrManager@@UAEABVtString@@ABV2@@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bf40": {
+   "name": "tgStrManager::mGetNumElements",
+   "symbol": "?mGetNumElements@tgStrManager@@UAEJJ@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bf60": {
+   "name": "tgStrManager::mGetNumElements",
+   "symbol": "?mGetNumElements@tgStrManager@@UAEJPBD@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bf80": {
+   "name": "tgStrManager::mGetRandStr",
+   "symbol": "?mGetRandStr@tgStrManager@@UAEABVtString@@J@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bfa0": {
+   "name": "tgStrManager::mGetRandStr",
+   "symbol": "?mGetRandStr@tgStrManager@@UAEABVtString@@PBD@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bfc0": {
+   "name": "tgStrManager::mGetGrpStr",
+   "symbol": "?mGetGrpStr@tgStrManager@@UAEABVtString@@JJ@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066bfe0": {
+   "name": "tgStrManager::mGetGrpStr",
+   "symbol": "?mGetGrpStr@tgStrManager@@UAEABVtString@@PBDH@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c000": {
+   "name": "tgStrManager::mIsAnElement",
+   "symbol": "?mIsAnElement@tgStrManager@@UAEEJJ@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c020": {
+   "name": "tgStrManager::mIsAnElement",
+   "symbol": "?mIsAnElement@tgStrManager@@UAEEPBDJ@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c040": {
+   "name": "tgStrManager::mIsAnElement",
+   "symbol": "?mIsAnElement@tgStrManager@@UAEEJABVtString@@@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c060": {
+   "name": "tgStrManager::mIsAnElement",
+   "symbol": "?mIsAnElement@tgStrManager@@UAEEPBDABVtString@@@Z",
+   "unit": "Tiger/tgStrMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
   "0x0066c080": {
    "name": "tCRandomSequence::tCRandomSequence",
    "symbol": "??0tCRandomSequence@@QAE@KK@Z",
@@ -7848,6 +8019,87 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x0066c270": {
+   "name": "tUniFont::mSetFontID",
+   "symbol": "?mSetFontID@tUniFont@@QAEXK@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c2d0": {
+   "name": "tUniFont::tUniFont",
+   "symbol": "??0tUniFont@@QAE@W4eTypeface@@W4eFontStyle@@W4ePointSize@@@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0066c370": {
+   "name": "tUniFont::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tUniFont@@QAEPAXE@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c3a0": {
+   "name": "tUniFont::mGetCharInfo",
+   "symbol": "?mGetCharInfo@tUniFont@@QBEPBUtCharInfo@@G@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c3c0": {
+   "name": "tUniFont::mChangePtSize",
+   "symbol": "?mChangePtSize@tUniFont@@QAEXW4ePointSize@@@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c450": {
+   "name": "tUniFont::mSetFont",
+   "symbol": "?mSetFont@tUniFont@@QAEXW4eTypeface@@W4eFontStyle@@W4ePointSize@@@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c4f0": {
+   "name": "tUniFont::mGetCharWidth",
+   "symbol": "?mGetCharWidth@tUniFont@@QBE?BKG@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c510": {
+   "name": "tUniFont::mGetTextWidth",
+   "symbol": "?mGetTextWidth@tUniFont@@QBE?BKPBG@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c550": {
+   "name": "tUniFont::mGetFontHeight",
+   "symbol": "?mGetFontHeight@tUniFont@@QBE?BKG@Z",
+   "unit": "Tiger/tUniFont.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
   },
   "0x0066c5f0": {
    "name": "tSay::tSay",
@@ -7894,6 +8146,141 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x0066c970": {
+   "name": "tSndZipInfoMgr::tSndZipInfoMgr",
+   "symbol": "??0tSndZipInfoMgr@@QAE@XZ",
+   "unit": "Tiger/tbasicsoundfilezip.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066c9b0": {
+   "name": "tSndZipInfoMgr::mInit",
+   "symbol": "?mInit@tSndZipInfoMgr@@QAEEPBD@Z",
+   "unit": "Tiger/tbasicsoundfilezip.cpp",
+   "size": 1161,
+   "score": 84.562,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d1c0": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mClose",
+   "symbol": "?mClose@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d1e0": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mIsOpen",
+   "symbol": "?mIsOpen@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d1f0": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mEOF",
+   "symbol": "?mEOF@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d210": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::vfunction7",
+   "symbol": "?mRead@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKPAXK@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d240": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::vfunction8",
+   "symbol": "?vfunction8@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKPBXK@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d270": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mFilePos",
+   "symbol": "?mFilePos@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d290": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mFileSize",
+   "symbol": "?mFileSize@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d2e0": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mSeekSet",
+   "symbol": "?mSeekSet@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d310": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mSeekCur",
+   "symbol": "?mSeekCur@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d340": {
+   "name": "tBasicFileCRTNamespace::tBasicFileCRT::mSeekEnd",
+   "symbol": "?mSeekEnd@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d370": {
+   "name": "_InitNewBasicFileCRT",
+   "symbol": "?_InitNewBasicFileCRT@@YAEE@Z",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d460": {
+   "name": "_DoneNewBasicFileCRT",
+   "symbol": "?_DoneNewBasicFileCRT@@YAXXZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d480": {
+   "name": "_NewBasicFileCRT",
+   "symbol": "?_NewBasicFileCRT@tBasicFileCRTNamespace@@YAPAVtBasicFile@1@XZ",
+   "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0066d680": {
    "name": "tItemBag::tItemBag",
    "symbol": "??0tItemBag@@QAE@XZ",
@@ -7902,6 +8289,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x0066d6f0": {
+   "name": "tItemBag::`scalar_deleting_destructor'",
+   "symbol": "?scalar_deleting_destructor@tItemBag@@QAEPAXE@Z",
+   "unit": "Tiger/tBag.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
   },
   "0x0066d710": {
    "name": "tItemBag::~tItemBag",
@@ -7930,6 +8326,402 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x0066d8e0": {
+   "name": "tSoundMemoryBlockList::mGetListMemberWithHandleFromHandle",
+   "symbol": "?mGetListMemberWithHandleFromHandle@tSoundMemoryBlockList@@UAEPAVtListMemberWithHandle@@J@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d900": {
+   "name": "tSoundMemoryBlockList::mInsertIntoList",
+   "symbol": "?mInsertIntoList@tSoundMemoryBlockList@@UAEEJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d970": {
+   "name": "tSoundMemoryBlock::tSoundMemoryBlock",
+   "symbol": "??0tSoundMemoryBlock@@QAE@XZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066d9a0": {
+   "name": "tSoundMemoryBlock::mMergeBlocks",
+   "symbol": "?mMergeBlocks@tSoundMemoryBlock@@UAEJXZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066dae0": {
+   "name": "tSoundMemoryBlock::mUseThisMuch",
+   "symbol": "?mUseThisMuch@tSoundMemoryBlock@@UAEJJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066db80": {
+   "name": "tSoundMemoryBlock::mDump",
+   "symbol": "?mDump@tSoundMemoryBlock@@UAEXXZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066dc50": {
+   "name": "tSoundMemoryBlockManager::mInit",
+   "symbol": "?mInit@tSoundMemoryBlockManager@@UAEXGJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066def0": {
+   "name": "tSoundMemoryBlock::`vector_deleting_destructor'",
+   "symbol": "??_EtSoundMemoryBlock@@UAEPAXI@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066df50": {
+   "name": "tSoundMemoryBlockManager::~tSoundMemoryBlockManager",
+   "symbol": "??1tSoundMemoryBlockManager@@UAE@XZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e000": {
+   "name": "tSoundMemoryBlockManager::mNewLockedBlock",
+   "symbol": "?mNewLockedBlock@tSoundMemoryBlockManager@@UAEPAEKP6AXJ@ZJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e030": {
+   "name": "tSoundMemoryBlockManager::mFreeLockedBlock",
+   "symbol": "?mFreeLockedBlock@tSoundMemoryBlockManager@@UAEXPAE@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e0f0": {
+   "name": "tSoundMemoryBlockManager::mNewBlock",
+   "symbol": "?mNewBlock@tSoundMemoryBlockManager@@UAEKKP6AXJ@ZJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 816,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e420": {
+   "name": "tSoundMemoryBlockManager::mFreeBlock",
+   "symbol": "?mFreeBlock@tSoundMemoryBlockManager@@UAEXK@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e4e0": {
+   "name": "tSoundMemoryBlockManager::mLockBlock",
+   "symbol": "?mLockBlock@tSoundMemoryBlockManager@@UAEPAEK@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e5e0": {
+   "name": "tSoundMemoryBlockManager::mUnlockBlock",
+   "symbol": "?mUnlockBlock@tSoundMemoryBlockManager@@UAEXJ@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e620": {
+   "name": "tSoundMemoryBlockManager::mGetBlock",
+   "symbol": "?mGetBlock@tSoundMemoryBlockManager@@MAEPAVtSoundMemoryBlock@@J@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e650": {
+   "name": "tSoundMemoryBlockManager::mDumpBlock",
+   "symbol": "?mDumpBlock@tSoundMemoryBlockManager@@UAEXK@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e6c0": {
+   "name": "tSoundMemoryBlockManager::mTestBlockIntegrity",
+   "symbol": "?mTestBlockIntegrity@tSoundMemoryBlockManager@@UAEXXZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 592,
+   "score": 99.526,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e910": {
+   "name": "tSoundMemoryBlockManager::mDump",
+   "symbol": "?mDump@tSoundMemoryBlockManager@@UAEXXZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066e9c0": {
+   "name": "tSoundMemoryBlockManager::mIsThisHandleValid",
+   "symbol": "?mIsThisHandleValid@tSoundMemoryBlockManager@@UAEEK@Z",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066ea20": {
+   "name": "tSoundMemoryBlockManager::mFreeLowestPriorityBlockWithNoLocks",
+   "symbol": "?mFreeLowestPriorityBlockWithNoLocks@tSoundMemoryBlockManager@@MAEEXZ",
+   "unit": "Tiger/tSndMemMgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066ebd0": {
+   "name": "tAsynchSoundQueue::tAsynchSoundQueue",
+   "symbol": "??0tAsynchSoundQueue@@QAE@XZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066ec50": {
+   "name": "tAsynchSoundQueue::mReadNext",
+   "symbol": "?mReadNext@tAsynchSoundQueue@@QAEEXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066ee80": {
+   "name": "tAsynchSoundQueue::mReadNextInterrupt",
+   "symbol": "?mReadNextInterrupt@tAsynchSoundQueue@@QAEXXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 448,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f110": {
+   "name": "tAsynchSoundQueue::~tAsynchSoundQueue",
+   "symbol": "??1tAsynchSoundQueue@@QAE@XZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f170": {
+   "name": "tSoundFileIO::`scalar_deleting_destructor'",
+   "symbol": "?scalar_deleting_destructor@tSoundFileIO@@QAEPAXE@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f190": {
+   "name": "tSoundFileIO::~tSoundFileIO",
+   "symbol": "??1tSoundFileIO@@UAE@XZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f2d0": {
+   "name": "tSoundFileIO::mOpenForRead",
+   "symbol": "?mOpenForRead@tSoundFileIO@@UAEEPBD@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f440": {
+   "name": "tSoundFileIO::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tSoundFileIO@@UAEEPBD@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f4e0": {
+   "name": "tSoundFileIO::mClose",
+   "symbol": "?mClose@tSoundFileIO@@UAEEXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f5d0": {
+   "name": "tSoundFileIO::mRead",
+   "symbol": "?mRead@tSoundFileIO@@UAEKPAXK@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f710": {
+   "name": "tSoundFileIO::mWrite",
+   "symbol": "?mWrite@tSoundFileIO@@UAEKPBXK@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f830": {
+   "name": "tSoundFileIO::mEOF",
+   "symbol": "?mEOF@tSoundFileIO@@UAEEXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f850": {
+   "name": "tSoundFileIO::mFilePos",
+   "symbol": "?mFilePos@tSoundFileIO@@UAEKXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f8b0": {
+   "name": "tSoundFileIO::mFileSize",
+   "symbol": "?mFileSize@tSoundFileIO@@UAEKXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f910": {
+   "name": "tSoundFileIO::mSeekSet",
+   "symbol": "?mSeekSet@tSoundFileIO@@UAEEJ@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f960": {
+   "name": "tSoundFileIO::mSeekCur",
+   "symbol": "?mSeekCur@tSoundFileIO@@UAEEJ@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066f9b0": {
+   "name": "tSoundFileIO::mSeekEnd",
+   "symbol": "?mSeekEnd@tSoundFileIO@@UAEEJ@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066fa40": {
+   "name": "tSoundFileIO::mRead",
+   "symbol": "?mRead@tSoundFileIO@@UAEKPAXKK@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 528,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066fc50": {
+   "name": "tSoundFileIO::mReadAsync",
+   "symbol": "?mReadAsync@tSoundFileIO@@UAEEPAXKP6AX0K@Z0@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066fc80": {
+   "name": "tSoundFileIO::mReadAsync",
+   "symbol": "?mReadAsync@tSoundFileIO@@UAEEPAXKKP6AX0K@Z0@Z",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066fda0": {
+   "name": "_InitSoundFileIO",
+   "symbol": "?_InitSoundFileIO@@YAEXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0066fee0": {
+   "name": "_DoneSoundFileIO",
+   "symbol": "?_DoneSoundFileIO@@YAXXZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670000": {
+   "name": "_NewSoundFileIO",
+   "symbol": "?_NewSoundFileIO@@YAPAVtSoundFileIOBase@@XZ",
+   "unit": "Tiger/tsound_fileio.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x00670180": {
    "name": "tSequencePart::mGetNumber",
    "symbol": "?mGetNumber@tSequencePart@@UAEKXZ",
@@ -7947,6 +8739,348 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x006702c0": {
+   "name": "tFontTable::mResetDataMembers",
+   "symbol": "?mResetDataMembers@tFontTable@@IAEXXZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006702f0": {
+   "name": "tFontTable::mInit",
+   "symbol": "?mInit@tFontTable@@QAEEPBDAAVtFontFileIO@@@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670520": {
+   "name": "tFontTable::mStoreCustomTypeface",
+   "symbol": "?mStoreCustomTypeface@tFontTable@@IAEEPAG@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670650": {
+   "name": "tFontTable::mDone",
+   "symbol": "?mDone@tFontTable@@IAEXXZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 192,
+   "score": 98.214,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00670710": {
+   "name": "tFontTable::mMakeGlyph",
+   "symbol": "?mMakeGlyph@tFontTable@@QAEPAUtCharInfo@@GPAVtFontFileIO@@@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 432,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006708c0": {
+   "name": "tTextFontFileIO::mGetC",
+   "symbol": "?mGetC@tTextFontFileIO@@QAEHXZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670950": {
+   "name": "tFontMgr::mInit",
+   "symbol": "?mInit@tFontMgr@@QAE?AW4eInitStatus@1@XZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 848,
+   "score": 91.546,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00670ca0": {
+   "name": "tFontFileIO::~tFontFileIO",
+   "symbol": "??1tFontFileIO@@QAE@XZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670d50": {
+   "name": "tFontMgr::mDone",
+   "symbol": "?mDone@tFontMgr@@IAEXXZ",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670dd0": {
+   "name": "tFontMgr::mGetCharInfo",
+   "symbol": "?mGetCharInfo@tFontMgr@@QAEPBUtCharInfo@@GK@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00670ee0": {
+   "name": "tFontMgr::mGetTypefacebyName",
+   "symbol": "?mGetTypefacebyName@tFontMgr@@QAE?AW4eTypeface@@ABVtString@@@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00671110": {
+   "name": "_GetCharInfo",
+   "symbol": "?_GetCharInfo@@YAPBUtCharInfo@@GK@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00671130": {
+   "name": "_GetCharHeight",
+   "symbol": "?_GetCharHeight@@YAKKG@Z",
+   "unit": "Tiger/tFontmgr.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a2dc0": {
+   "name": "FUN_006a2dc0",
+   "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",
+   "unit": "dmp3d/common/stream_basicfile.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a2e40": {
+   "name": "FUN_006a2e40",
+   "symbol": "?mPut@tStream_BasicFile@@UAE_NPBXK@Z",
+   "unit": "dmp3d/common/stream_basicfile.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a48d0": {
+   "name": "tTexBmp::vfunction2",
+   "symbol": "?vfunction2@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 1312,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a4df0": {
+   "name": "tTexBmp::vfunction3",
+   "symbol": "?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 3120,
+   "score": 98.684,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006a5a20": {
+   "name": "tTexBmp::vfunction7",
+   "symbol": "?vfunction7@tTexBmp@@UAE_NPBD@Z",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 307,
+   "score": 78.947,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006a5b90": {
+   "name": "tTexBmp::vfunction8",
+   "symbol": "?vfunction8@tTexBmp@@UAE_NXZ",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a5c20": {
+   "name": "FUN_006a5c20",
+   "symbol": "?fn_006a5c20@tTexBmp@@QAEXXZ",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a5c80": {
+   "name": "tTexBmp::vfunction4",
+   "symbol": "?vfunction4@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 720,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a5f50": {
+   "name": "tTexBmp::vfunction5",
+   "symbol": "?vfunction5@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 928,
+   "score": 99.955,
+   "exact": false,
+   "recorded": "2026-11-13"
+  },
+  "0x006a62f0": {
+   "name": "FUN_006a62f0",
+   "symbol": "?mLock@tTexBmp@@QAE_NXZ",
+   "unit": "dmp3d/common/texBmp.cpp",
+   "size": 436,
+   "score": 80.0,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7c20": {
+   "name": "CD3DFramework::CD3DFramework",
+   "symbol": "??0CD3DFramework@@QAE@XZ",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7c60": {
+   "name": "CD3DFramework::DestroyObjects",
+   "symbol": "?DestroyObjects@CD3DFramework@@QAEJXZ",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7d20": {
+   "name": "CD3DFramework::Initialize",
+   "symbol": "?Initialize@CD3DFramework@@QAEJPAUHWND__@@PAU_GUID@@1PAU_DDSURFACEDESC2@@K@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7d90": {
+   "name": "CD3DFramework::CreateEnvironment",
+   "symbol": "?CreateEnvironment@CD3DFramework@@AAEJPAU_GUID@@0PAU_DDSURFACEDESC2@@K@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7ee0": {
+   "name": "CD3DFramework::CreateDirectDraw",
+   "symbol": "?CreateDirectDraw@CD3DFramework@@AAEJPAU_GUID@@K@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a7f80": {
+   "name": "CD3DFramework::CreateDirect3D",
+   "symbol": "?CreateDirect3D@CD3DFramework@@AAEJPAU_GUID@@K@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a8110": {
+   "name": "CD3DFramework::CreateBuffers",
+   "symbol": "?CreateBuffers@CD3DFramework@@AAEJPAU_DDSURFACEDESC2@@K@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 736,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a83f0": {
+   "name": "CD3DFramework::CreateZBuffer",
+   "symbol": "?CreateZBuffer@CD3DFramework@@AAEJXZ",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a84b0": {
+   "name": "CD3DFramework::ShowFrame",
+   "symbol": "?ShowFrame@CD3DFramework@@QAEJXZ",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a8500": {
+   "name": "CD3DFramework::FlipToGDISurface",
+   "symbol": "?FlipToGDISurface@CD3DFramework@@QAEJH@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a8540": {
+   "name": "CD3DFramework::RestoreSurfaces",
+   "symbol": "?RestoreSurfaces@CD3DFramework@@QAEJXZ",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a85a0": {
+   "name": "CD3DFramework::Move",
+   "symbol": "?Move@CD3DFramework@@QAEXHH@Z",
+   "unit": "dmp3d/dx6/d3dframe.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a8930": {
+   "name": "FUN_006a8930",
+   "symbol": "?fn_006a8930@tD3DViewMgr@@QAEPAVtTexFace@@HPAUtTexFormat@@HHPAE@Z",
+   "unit": "dmp3d/d3d/d3dViewMgr_Tex.cpp",
+   "size": 1180,
+   "score": 92.156,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006a94a0": {
+   "name": "D3DUtil_InitSurfaceDesc",
+   "symbol": "?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z",
+   "unit": "dmp3d/dx6/d3dutil.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006a94d0": {
+   "name": "D3DUtil_InitViewport",
+   "symbol": "?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z",
+   "unit": "dmp3d/dx6/d3dutil.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
   },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",

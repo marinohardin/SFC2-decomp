@@ -71,6 +71,21 @@ tItemBag::tItemBag()
 	tBaseItemBag::mUpdateMasterMemInfo(sizeof(tItemBag));
 }
 
+// FUNCTION: STARFLEETOP 0x0066d6f0
+// HYPOTHESIS: compiler-generated scalar deleting destructor of the virtual destructor,
+// annotated at its own address.
+void *tItemBag::scalar_deleting_destructor(unsigned char flags)
+{
+	// MATCH-ONLY: spells out the compiler-generated deleting destructor, since the
+	// harness annotates a function by definition and cannot name the generated one.
+	this->tItemBag::~tItemBag();
+	if (flags & 1)
+		// HYPOTHESIS: the exe calls the global operator delete (0x0072eec0) here, not the
+		// class's own operator delete at 0x006a2f10.
+		::operator delete(this);
+	return this;
+}
+
 // FUNCTION: STARFLEETOP 0x0066d710
 tItemBag::~tItemBag()
 {

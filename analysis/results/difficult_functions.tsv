@@ -227,12 +227,18 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0066c390	tUniFont::tUniFont	4	opus	0.00	2026-11-09T08:13:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
 0x0066c650	tSay::`scalar_deleting_destructor'	4	opus	8.33	2026-11-09T08:34:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 8.33%
 0x0066c9b0	tSndZipInfoMgr::mInit	4	opus	84.56	2026-11-09T08:51:06Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 84.56%
+0x0066e6c0	tSoundMemoryBlockManager::mTestBlockIntegrity	4	opus	99.53	2026-11-09T10:05:12Z	not exact after 4 attempts
+0x0066f040	AsynchSoundIOMain	4	opus	100.00	2026-11-09T10:25:04Z	not exact after 4 attempts
 0x0066f0d4	FUN_0066f0d4	4	opus	16.67	2026-11-09T10:28:53Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 16.67%
+0x00670650	tFontTable::mDone	4	opus	98.21	2026-11-09T11:45:21Z	not exact after 4 attempts
+0x00670950	tFontMgr::mInit	4	opus	91.55	2026-11-09T12:09:24Z	not exact after 4 attempts
 0x00670cc0	tTextFontFileIO::mOpenForRead	4	opus	0.00	2026-11-09T12:38:40Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
 0x00670d20	tTextFontFileIO::~tTextFontFileIO	4	opus	26.25	2026-11-09T12:54:35Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 26.25%
+0x006a4df0	tTexBmp::vfunction3	4	opus	98.68	2026-11-09T13:54:32Z	not exact after 4 attempts
 0x006a5a20	tTexBmp::vfunction7	4	opus	78.95	2026-11-09T14:01:14Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.95%
 0x006a62f0	FUN_006a62f0	4	opus	80.00	2026-11-09T14:18:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 80.00%
 0x006a80d0	FUN_006a80d0	4	opus	0.00	2026-11-09T14:43:49Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x006a8930	FUN_006a8930	4	opus	92.16	2026-11-09T15:58:42Z	not exact after 4 attempts
 0x006f3a20	tThreadPool::tThreadPool	4	opus	97.65	2026-11-09T12:51:10Z	not exact after 4 attempts
 0x006f3b40	tThreadPool::~tThreadPool	4	opus	99.97	2026-11-09T13:05:35Z	not exact after 4 attempts
 0x006f3d50	tThreadPool::Shutdown	4	opus	99.94	2026-11-09T13:12:36Z	not exact after 4 attempts

@@ -44,6 +44,7 @@ tSay::tSay(const char *userName, const int32u kTargetID)
 	fOnOff			= kTrue;
 }
 
+// tSay's scalar deleting destructor is 0x0066c650; this unit does not emit it, so it is not claimed.
 // FUNCTION: STARFLEETOP 0x0066c680
 tSay::~tSay()
 {

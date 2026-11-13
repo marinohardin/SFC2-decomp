@@ -149,6 +149,7 @@ class tItemBag
 
 		tItemBag();
 		virtual ~tItemBag();
+		void	*scalar_deleting_destructor(unsigned char flags);
 
 		// HYPOTHESIS: tFormatStr reaches the protected lookup; the SDK's header has no such line
 		friend class tFormatStr;

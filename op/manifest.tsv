@@ -846,7 +846,7 @@ address	size	symbol	source	modes
 0x0064ff30	646	tgSoundPart::mInit(tInitSoundPartInfo*)	Tiger/tgSound.cpp	vc6 guest
 0x006501c0	12	tSoundMemoryBlockManager::mGetTrueHandle(unsigned long)	Tiger/tgSound.cpp	vc6 guest
 0x006501d0	17	tSoundMemoryBlockManager::mNumberOfBlocksNeeded(long)	Tiger/tgSound.cpp	vc6 guest
-0x006501f0	30	tSoundMemoryBlockManager::`scalar deleting destructor'	Tiger/tgSound.cpp	vc6
+0x006501f0	30	tSoundMemoryBlockManager::scalar_deleting_destructor(unsigned char)	Tiger/tgSound.cpp	vc6 guest
 0x00650230	128	SoundPartCurrentTime()	Tiger/tgSound.cpp	vc6 guest
 0x006502b0	52	tgSoundPart::mClearOutSoundChannel(long)	Tiger/tgSound.cpp	vc6 guest
 0x006502f0	171	tgSoundPart::mRemoveSoundChannel(long)	Tiger/tgSound.cpp	vc6 guest
@@ -876,22 +876,148 @@ address	size	symbol	source	modes
 0x0065a0f0	640	tChannelGroup::mAttachSoundToChannel(unsigned long,tSoundSelection *,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x0065a370	1103	tChannelGroup::mPlayChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x0065a7c0	624	tChannelGroup::mPauseChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x0066be30	5	tgStrManager::mDeactivate()	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066be50	9	tgStrManager::mDone()	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066be60	22	tgStrManager::mLoadStringFile(const char *,bool)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066be80	22	tgStrManager::mLoadStringFile(tBasicFile &,bool)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bea0	17	tgStrManager::mGetStringIndex(const char *)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bec0	17	tgStrManager::mGetStringIndex(const tString &)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bee0	17	tgStrManager::mGetString(int)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bf00	17	tgStrManager::mGetString(const char *)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bf20	17	tgStrManager::mGetString(const tString &)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bf40	17	tgStrManager::mGetNumElements(long)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bf60	17	tgStrManager::mGetNumElements(const char *)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bf80	17	tgStrManager::mGetRandStr(long)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bfa0	17	tgStrManager::mGetRandStr(const char *)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bfc0	22	tgStrManager::mGetGrpStr(long,long)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066bfe0	22	tgStrManager::mGetGrpStr(const char *,int)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066c000	22	tgStrManager::mIsAnElement(long,long)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066c020	22	tgStrManager::mIsAnElement(const char *,long)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066c040	22	tgStrManager::mIsAnElement(long,const tString &)	Tiger/tgStrMgr.cpp	vc6 guest
+0x0066c060	22	tgStrManager::mIsAnElement(const char *,const tString &)	Tiger/tgStrMgr.cpp	vc6 guest
 0x0066c080	95	tCRandomSequence::tCRandomSequence(int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c100	152	tCRandomSequence::tCRandomSequence(int8u,int32u,int32u)	Tiger/tcrandsequence.cpp	vc6
 0x0066c1a0	21	tCRandomSequence::~tCRandomSequence()	Tiger/tcrandsequence.cpp	vc6
 0x0066c1c0	28	tCRandomSequence::mSetSeed(int32u)	Tiger/tcrandsequence.cpp	vc6 guest
 0x0066c1e0	55	tCRandomSequence::mGenerateNumber()	Tiger/tcrandsequence.cpp	vc6 guest
+0x0066c270	86	tUniFont::mSetFontID(ulong)	Tiger/tUniFont.cpp	vc6 guest
+0x0066c2d0	159	tUniFont::tUniFont(eTypeface,eFontStyle,ePointSize)	Tiger/tUniFont.cpp	vc6
+0x0066c370	32	tUniFont::scalar_deleting_destructor(unsigned char)	Tiger/tUniFont.cpp	vc6 guest
+0x0066c3a0	20	tUniFont::mGetCharInfo(unsigned short) const	Tiger/tUniFont.cpp	vc6 guest
+0x0066c3c0	137	tUniFont::mChangePtSize(ePointSize)	Tiger/tUniFont.cpp	vc6 guest
+0x0066c450	145	tUniFont::mSetFont(eTypeface,eFontStyle,ePointSize)	Tiger/tUniFont.cpp	vc6 guest
+0x0066c4f0	32	tUniFont::mGetCharWidth(unsigned short) const	Tiger/tUniFont.cpp	vc6 guest
+0x0066c510	56	tUniFont::mGetTextWidth(const unsigned short*) const	Tiger/tUniFont.cpp	vc6 guest
+0x0066c550	20	tUniFont::mGetFontHeight(unsigned short) const	Tiger/tUniFont.cpp	vc6 guest
 0x0066c5f0	96	tSay::tSay(const char *,const int32u)	Tiger/tsay.cpp	vc6
 0x0066c680	20	tSay::~tSay()	Tiger/tsay.cpp	vc6
 0x0066c6a0	494	tSay::mHandleOutput(const int,const char *)	Tiger/tsay.cpp	vc6 guest
 0x0066c890	40	tSay::mSay(const char *,...)	Tiger/tsay.cpp	vc6 guest
 0x0066c8c0	162	tSay::mJustSayIt(const char *,...)	Tiger/tsay.cpp	vc6 guest
+0x0066c970	52	tSndZipInfoMgr::tSndZipInfoMgr()	Tiger/tbasicsoundfilezip.cpp	vc6
+0x0066c9b0	1161	tSndZipInfoMgr::mInit(const char *)	Tiger/tbasicsoundfilezip.cpp	partial
+0x0066d1c0	30	tBasicFileCRT::mClose()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d1e0	11	tBasicFileCRT::mIsOpen()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d1f0	20	tBasicFileCRT::mEOF()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d210	34	tBasicFileCRT::mRead(void*,unsigned long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d240	34	tBasicFileCRT::vfunction8(const void*,unsigned long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d270	18	tBasicFileCRT::mFilePos()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d290	67	tBasicFileCRT::mFileSize()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d2e0	36	tBasicFileCRT::mSeekSet(long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d310	36	tBasicFileCRT::mSeekCur(long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d340	36	tBasicFileCRT::mSeekEnd(long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d370	239	_InitNewBasicFileCRT(unsigned char)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d460	17	_DoneNewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
+0x0066d480	259	_NewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest
 0x0066d680	97	tItemBag::tItemBag()	Tiger/tBag.cpp	vc6
+0x0066d6f0	30	tItemBag::scalar_deleting_destructor(unsigned char)	Tiger/tBag.cpp	vc6 guest
 0x0066d710	194	tItemBag::~tItemBag()	Tiger/tBag.cpp	vc6
 0x0066d7e0	147	tItemBag::mAddToList(tBaseItemBag *,char *)	Tiger/tBag.cpp	vc6 guest
 0x0066d880	85	tItemBag::mFindItemWithLabel(char *)	Tiger/tBag.cpp	vc6 guest
+0x0066d8e0	19	tSoundMemoryBlockList::mGetListMemberWithHandleFromHandle(long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066d900	110	tSoundMemoryBlockList::mInsertIntoList(long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066d970	42	tSoundMemoryBlock::tSoundMemoryBlock()	Tiger/tSndMemMgr.cpp	vc6
+0x0066d9a0	309	tSoundMemoryBlock::mMergeBlocks()	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066dae0	156	tSoundMemoryBlock::mUseThisMuch(long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066db80	197	tSoundMemoryBlock::mDump()	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066dc50	667	tSoundMemoryBlockManager::mInit(unsigned short,long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066def0	84	tSoundMemoryBlock::`vector deleting destructor'	Tiger/tSndMemMgr.cpp	vc6
+0x0066df50	175	tSoundMemoryBlockManager::~tSoundMemoryBlockManager()	Tiger/tSndMemMgr.cpp	vc6
+0x0066e000	45	tSoundMemoryBlockManager::mNewLockedBlock(unsigned long,void (*callback)(long),long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e030	187	tSoundMemoryBlockManager::mFreeLockedBlock(unsigned char *)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e0f0	816	tSoundMemoryBlockManager::mNewBlock(unsigned long,void (*callback)(long),long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e420	190	tSoundMemoryBlockManager::mFreeBlock(unsigned long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e4e0	252	tSoundMemoryBlockManager::mLockBlock(unsigned long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e5e0	53	tSoundMemoryBlockManager::mUnlockBlock(long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e620	40	tSoundMemoryBlockManager::mGetBlock(long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e650	108	tSoundMemoryBlockManager::mDumpBlock(unsigned long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e6c0	592	tSoundMemoryBlockManager::mTestBlockIntegrity()	Tiger/tSndMemMgr.cpp	partial
+0x0066e910	175	tSoundMemoryBlockManager::mDump()	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066e9c0	84	tSoundMemoryBlockManager::mIsThisHandleValid(unsigned long)	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066ea20	136	tSoundMemoryBlockManager::mFreeLowestPriorityBlockWithNoLocks()	Tiger/tSndMemMgr.cpp	vc6 guest
+0x0066ebd0	127	tAsynchSoundQueue::tAsynchSoundQueue()	Tiger/tsound_fileio.cpp	vc6
+0x0066ec50	554	tAsynchSoundQueue::mReadNext()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066ee80	436	tAsynchSoundQueue::mReadNextInterrupt()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f110	83	tAsynchSoundQueue::~tAsynchSoundQueue()	Tiger/tsound_fileio.cpp	vc6
+0x0066f170	30	tSoundFileIO::`scalar deleting destructor'	Tiger/tsound_fileio.cpp	vc6
+0x0066f190	306	tSoundFileIO::~tSoundFileIO()	Tiger/tsound_fileio.cpp	vc6
+0x0066f2d0	356	tSoundFileIO::mOpenForRead(const char *)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f440	157	tSoundFileIO::mOpenForWrite(const char *)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f4e0	225	tSoundFileIO::mClose()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f5d0	319	tSoundFileIO::mRead(void *,int32u)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f710	281	tSoundFileIO::mWrite(const void *,int32u)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f830	30	tSoundFileIO::mEOF()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f850	85	tSoundFileIO::mFilePos()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f8b0	92	tSoundFileIO::mFileSize()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f910	74	tSoundFileIO::mSeekSet(LONG)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f960	74	tSoundFileIO::mSeekCur(LONG)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066f9b0	74	tSoundFileIO::mSeekEnd(LONG)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066fa40	524	tSoundFileIO::mRead(void *,int32u,int32u)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066fc50	42	tSoundFileIO::mReadAsync(void *,int32u,void (*callback)( void *, int32u ),void *)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066fc80	277	tSoundFileIO::mReadAsync(void *,int32u,int32u,void (*callback)( void *, int32u ),void *)	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066fda0	312	_InitSoundFileIO()	Tiger/tsound_fileio.cpp	vc6 guest
+0x0066fee0	279	_DoneSoundFileIO()	Tiger/tsound_fileio.cpp	vc6 guest
+0x00670000	349	_NewSoundFileIO()	Tiger/tsound_fileio.cpp	vc6 guest
 0x00670180	51	tSequencePart::mGetNumber()	Tiger/tsequence.cpp	vc6 guest
 0x006701c0	86	tSequencePart::mGetNumber(int32u)	Tiger/tsequence.cpp	vc6 guest
+0x006702c0	47	tFontTable::mResetDataMembers()	Tiger/tFontmgr.cpp	vc6 guest
+0x006702f0	545	tFontTable::mInit(const char*,tFontFileIO&)	Tiger/tFontmgr.cpp	vc6 guest
+0x00670520	289	tFontTable::mStoreCustomTypeface(unsigned short*)	Tiger/tFontmgr.cpp	vc6 guest
+0x00670650	190	tFontTable::mDone()	Tiger/tFontmgr.cpp	partial
+0x00670710	432	tFontTable::mMakeGlyph(unsigned short,tFontFileIO*)	Tiger/tFontmgr.cpp	vc6 guest
+0x006708c0	140	tTextFontFileIO::mGetC()	Tiger/tFontmgr.cpp	vc6 guest
+0x00670950	848	tFontMgr::mInit()	Tiger/tFontmgr.cpp	partial
+0x00670ca0	28	tFontFileIO::~tFontFileIO()	Tiger/tFontmgr.cpp	vc6
+0x00670d50	128	tFontMgr::mDone()	Tiger/tFontmgr.cpp	vc6 guest
+0x00670dd0	262	tFontMgr::mGetCharInfo(unsigned short,unsigned long)	Tiger/tFontmgr.cpp	vc6 guest
+0x00670ee0	549	tFontMgr::mGetTypefacebyName(const tString&)	Tiger/tFontmgr.cpp	vc6 guest
+0x00671110	21	_GetCharInfo(unsigned short,unsigned long)	Tiger/tFontmgr.cpp	vc6 guest
+0x00671130	122	_GetCharHeight(unsigned long,unsigned short)	Tiger/tFontmgr.cpp	vc6 guest
+0x006a2dc0	127	tStream_BasicFile::mGet(void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest
+0x006a2e40	127	tStream_BasicFile::mPut(const void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest
+0x006a48d0	1305	tTexBmp::vfunction2(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest
+0x006a4df0	3117	tTexBmp::vfunction3(tBasicFile *)	dmp3d/common/texBmp.cpp	partial
+0x006a5a20	307	tTexBmp::vfunction7(const char *)	dmp3d/common/texBmp.cpp	partial
+0x006a5b90	139	tTexBmp::vfunction8()	dmp3d/common/texBmp.cpp	vc6 guest
+0x006a5c20	93	tTexBmp::fn_006a5c20()	dmp3d/common/texBmp.cpp	vc6 guest
+0x006a5c80	709	tTexBmp::vfunction4(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest
+0x006a5f50	913	tTexBmp::vfunction5(tBasicFile *)	dmp3d/common/texBmp.cpp	partial
+0x006a62f0	436	tTexBmp::mLock()	dmp3d/common/texBmp.cpp	partial
+0x006a7c20	46	CD3DFramework::CD3DFramework()	dmp3d/dx6/d3dframe.cpp	vc6
+0x006a7c60	190	CD3DFramework::DestroyObjects()	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a7d20	99	CD3DFramework::Initialize(HWND,GUID*,GUID*,DDSURFACEDESC2*,DWORD)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a7d90	330	CD3DFramework::CreateEnvironment(GUID*,GUID*,DDSURFACEDESC2*,DWORD)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a7ee0	154	CD3DFramework::CreateDirectDraw(GUID*,DWORD)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a7f80	336	CD3DFramework::CreateDirect3D(GUID*,DWORD)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a8110	721	CD3DFramework::CreateBuffers(DDSURFACEDESC2*,DWORD)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a83f0	181	CD3DFramework::CreateZBuffer()	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a84b0	75	CD3DFramework::ShowFrame()	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a8500	64	CD3DFramework::FlipToGDISurface(BOOL)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a8540	85	CD3DFramework::RestoreSurfaces()	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a85a0	80	CD3DFramework::Move(INT,INT)	dmp3d/dx6/d3dframe.cpp	vc6 guest
+0x006a8930	1180	tD3DViewMgr::fn_006a8930(int,tTexFormat *,int,int,unsigned char *)	dmp3d/d3d/d3dViewMgr_Tex.cpp	partial
+0x006a94a0	45	D3DUtil_InitSurfaceDesc(DDSURFACEDESC2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest
+0x006a94d0	67	D3DUtil_InitViewport(D3DVIEWPORT2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest
 0x006d2800	3	tSFCStream::mGetVersionNumber()	unsorted/fn_006D2000.cpp	vc6 guest
 0x006e7e80	9	tSimulator::tSimulator()	Common/Simulator/Simulator.cpp	vc6
 0x006f39b0	106	tThreadPool::Instance()	Common/Thread/ThreadPool.cpp	vc6 guest

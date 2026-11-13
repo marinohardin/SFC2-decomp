@@ -106,6 +106,8 @@ public:
     // HYPOTHESIS: an inline constructor that initialises the manager (tgSoundPart creates it).
     tSoundMemoryBlockManager(unsigned short numberOfBlocks, long blockSize) { mInit(numberOfBlocks, blockSize); }
     virtual ~tSoundMemoryBlockManager();
+    // MATCH-ONLY: tgSound.cpp writes the scalar deleting destructor out as this member.
+    tSoundMemoryBlockManager *scalar_deleting_destructor(unsigned char flags);
     virtual void mInit(unsigned short, long);
     virtual unsigned long mNewBlock(unsigned long size, void (*callback)(long), long data);
     // mFreeBlock at +0x0c is evidenced by 0x0066ea20, which passes it a block's handle.
@@ -127,7 +129,6 @@ protected:
     virtual tSoundMemoryBlock *mGetBlock(long);
     virtual unsigned char mFreeLowestPriorityBlockWithNoLocks();
     virtual long mNumberOfBlocksNeeded(long);
-
     // HYPOTHESIS: layout from mInit (0x0066dc50); names not yet known. +0x08 and +0x0c
     // hold mInit's block count and block size, +0x10 the sample memory.
     tSoundMemoryBlock *field_04;
@@ -141,5 +142,4 @@ protected:
     // role not yet known.
     long field_34;
 };
-
 #endif

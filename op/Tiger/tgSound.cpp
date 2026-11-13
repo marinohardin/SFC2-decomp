@@ -3120,14 +3120,14 @@ long tSoundMemoryBlockManager::mNumberOfBlocksNeeded(long size)
     return (size + field_0c - 1) / field_0c;
 }
 
-// The address is the scalar deleting destructor the compiler emits with this definition; it
-// calls the destructor and frees the object when asked.
-// HYPOTHESIS: the destructor's own body is empty beyond destroying the two block lists; its
-// original at its own address is not compared yet.
 // FUNCTION: STARFLEETOP 0x006501f0
-tSoundMemoryBlockManager::~tSoundMemoryBlockManager()
+// MATCH-ONLY: the scalar deleting destructor is compiler-generated and the destructor is
+// tSndMemMgr.cpp's, so it is written out as a member that destroys, then deletes on bit 0.
+tSoundMemoryBlockManager *tSoundMemoryBlockManager::scalar_deleting_destructor(unsigned char flags)
 {
-}
+    this->tSoundMemoryBlockManager::~tSoundMemoryBlockManager();
+    if (flags & 1) ::operator delete(this);
+    return this; }
 
 // FUNCTION: STARFLEETOP 0x00650230
 // The sound part's time source (kept at 0xb0 by mInit): the clock part's time in microseconds.
