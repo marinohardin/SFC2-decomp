@@ -110,28 +110,28 @@ const char* tMetaMapDesc::SQLFieldNames() const
 	return " ( ID, Locked, LockID, Width, Height, CorrectedBaseAIs ) ";
 }
 
-// HYPOTHESIS: these 157 bytes are the library's basic_ostream<char>::operator<<(bool) (sentry,
-// try block, num_put::put through the facet), emitted as an inline template instance that the
-// SQL streams above use. It has no source of its own in game/, so this empty body is only a
-// placeholder to claim the address; it is not the original's code and should not be merged
-// as a match.
+// Not claimed: 0x00538e72 is the library's basic_ostream<char>::operator<<(bool), an inline
+// template instance the SQL streams above use, and 0x00538f3e is the tail its try block falls
+// through to after its catch handler (no prologue; it runs in the instance's frame). Neither
+// has source in game/, so the lift keeps the original's bytes for them.
 
-// FUNCTION: STARFLEETOP 0x00538e72
-void fn_00538e7c()
-{
-}
 
-// HYPOTHESIS: these 71 bytes are not a function of their own but the tail of the
-// operator<<(bool) instance above (0x00538e7c): the code the try block falls through to
-// after its catch handler, which sets the stream state, unwinds the exception frame and
-// returns with the caller's frame (no prologue; it reads [ebp-0x18] and [ebp-0x14]). It
-// matches only when 0x00538e7c is rebuilt whole. This empty body only claims the address;
-// it is not the original's code and should not be merged as a match.
 
-// FUNCTION: STARFLEETOP 0x00538f3e
-void fn_00538f3e()
-{
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // MATCH-ONLY: the SDK's template constructor, written out as this instance's explicit
 // specialization so that its annotation names the one instance; the body is the template's.
@@ -191,38 +191,38 @@ tClassAllocator<tMetaMapDesc>* tClassAllocator<tMetaMapDesc>::scalar_deleting_de
 	return this;
 }
 
-// FUNCTION: STARFLEETOP 0x00539070
-void fn_00539070()
-{
-	// HYPOTHESIS: the compiler's atexit registration of a library facet's locale::id (no
-	// source in game/); this empty body only claims the address and is not to be merged.
-}
+// Not claimed: 0x00539070, 0x0053907c and 0x00539088 are the compiler's atexit stubs (push the
+// destructor at 0x004bd431, call atexit, pop, ret) for library statics, and 0x00539094 is its
+// adjustor{8} thunk (sub ecx, 8; jmp 0x00538ca9) for the deleting destructor in the tStreamable
+// vtable. None has a source line of its own, so the lift keeps the original's bytes for them.
 
-// HYPOTHESIS: like 0x00539070, the compiler's atexit stub (push the destructor at 0x004bd431,
-// call atexit, pop, ret) for a library static; it has no source line of its own. This empty
-// body only claims the address and is not the original's code; it should not be merged.
 
-// FUNCTION: STARFLEETOP 0x0053907c
-void fn_0053907c()
-{
-}
 
-// HYPOTHESIS: a third copy of the compiler's atexit stub (push the destructor at 0x004bd431,
-// call atexit, pop, ret) for a library static, as at 0x0053907c; no source line of its own.
-// This empty body only claims the address and is not the original's code; not to be merged.
 
-// FUNCTION: STARFLEETOP 0x00539088
-void fn_00539088()
-{
-}
 
-// HYPOTHESIS: 0x00539094 (sub ecx, 8; jmp 0x00538cb1) is the compiler's adjustor{8} thunk for
-// tMetaMapDesc's deleting destructor in the tStreamable vtable; it has no source line of its
-// own, and this unit already emits it from the implicit destructor. This empty body only
-// claims the address; it is not the original's code and should not be merged as a match.
 
-// FUNCTION: STARFLEETOP 0x00539094
-void fn_00539094()
-{
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

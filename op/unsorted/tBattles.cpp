@@ -306,37 +306,37 @@ void tClassAllocator<tBattles>::mAssignAllocID( iAllocatorID allocID )
 	fAllocID = allocID;
 }
 
-// HYPOTHESIS: the compiler's atexit stub (push the destructor at 0x004bd431, call atexit,
-// pop, ret) for a library static, as at 0x0053907c in tMetaMapDesc.cpp; it has no source
-// line of its own. This empty body only claims the address and is not to be merged.
-// FUNCTION: STARFLEETOP 0x00548467
-void FUN_00548467()
-{
-}
+// Not claimed: 0x00548467, 0x00548473 and 0x0054847f are the compiler's atexit stubs (push the
+// destructor at 0x004bd431, call atexit, pop, ret) for library statics, and 0x0054848b is its
+// adjustor{8} thunk (sub ecx, 8; jmp 0x00547bc5) for the deleting destructor in the tStreamable
+// vtable. None has a source line of its own, so the lift keeps the original's bytes for them.
 
-// HYPOTHESIS: a second copy of the compiler's atexit stub (push 0x004bd431, call atexit, pop,
-// ret) for a library facet's static, as at 0x00548467; no source line of its own. This empty
-// body only claims the address and is not the original's code; it is not to be merged.
-// FUNCTION: STARFLEETOP 0x00548473
-void FUN_00548473()
-{
-}
 
-// HYPOTHESIS: a third copy of the compiler's atexit stub (push 0x004bd431, call atexit, pop,
-// ret) for a library static, as at 0x00548467 and 0x00548473; no source line of its own. This
-// empty body only claims the address and is not the original's code; it is not to be merged.
-// FUNCTION: STARFLEETOP 0x0054847f
-void FUN_0054847f()
-{
-}
 
-// HYPOTHESIS: 0x0054848b (sub ecx, 8; jmp 0x00547bc5) is the compiler's adjustor{8} thunk for
-// tBattles's deleting destructor in the tStreamable vtable, as at 0x00539094 for tMetaMapDesc.
-// It has no source line of its own; this unit already emits it (??_EtBattles@@W7AEPAXI@Z) from
-// the virtual destructor, but without a line record it cannot be claimed. This empty body only
-// claims the address; it is not the original's code and should not be merged as a match.
 
-// FUNCTION: STARFLEETOP 0x0054848b
-void fn_0054848b()
-{
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

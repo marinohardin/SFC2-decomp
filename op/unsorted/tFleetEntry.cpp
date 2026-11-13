@@ -612,7 +612,7 @@ public:
 	// HYPOTHESIS: the body of fn_004c3a2c, whose exception-frame prolog the analysis splits off;
 	// 0x0048c418 calls it on each entry and gives the entry slot 44 when it returns false.
 	bool fn_004c3a36();
-	void vfunction2_for_tVisNotifiee();
+
 
 	int m_n110;
 	int m_n114;
@@ -1279,7 +1279,7 @@ bool tFleetEntry::fn_004c3a36()
 	return false;
 }
 
-// FUNCTION: STARFLEETOP 0x004c3da7
-void tFleetEntry::vfunction2_for_tVisNotifiee()
-{
-}
+// Not claimed: 0x004c3da7 (sub ecx, 0xd4; jmp 0x004c26ff) is the compiler's adjustor thunk for the
+// deleting destructor in the tVisNotifiee vtable; it has no source line of its own.
+
+

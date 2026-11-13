@@ -3412,15 +3412,6 @@
    "exact": false,
    "recorded": "2026-11-11"
   },
-  "0x004c3da7": {
-   "name": "tFleetEntry::vfunction2_for_tVisNotifiee",
-   "symbol": "?vfunction2_for_tVisNotifiee@tFleetEntry@@QAEXXZ",
-   "unit": "unsorted/tFleetEntry.cpp",
-   "size": 11,
-   "score": 20.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x004c619e": {
    "name": "tListBox_Chat_Session::~tListBox_Chat_Session",
    "symbol": "??1tListBox_Base@@UAE@XZ",
@@ -5032,24 +5023,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x00538e72": {
-   "name": "FUN_00538e72",
-   "symbol": "?fn_00538e7c@@YAXXZ",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 167,
-   "score": 0.656,
-   "exact": false,
-   "recorded": "2026-11-11"
-  },
-  "0x00538f3e": {
-   "name": "FUN_00538f3e",
-   "symbol": "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 71,
-   "score": 0.28,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
   "0x00538f85": {
    "name": "tClassAllocator<tMetaMapDesc>::tClassAllocator<tMetaMapDesc>",
    "symbol": "??0?$tClassAllocator@VtMetaMapDesc@@@@QAE@XZ",
@@ -5084,42 +5057,6 @@
    "size": 28,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x00539070": {
-   "name": "FUN_00539070",
-   "symbol": "?fn_00539070@@YAXXZ",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x0053907c": {
-   "name": "FUN_0053907c",
-   "symbol": "?fn_0053907c@@YAXXZ",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x00539088": {
-   "name": "FUN_00539088",
-   "symbol": "?fn_00539088@@YAXXZ",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x00539094": {
-   "name": "tMetaMapDesc::vfunction1_for_tStreamable",
-   "symbol": "?fn_00539094@@YAXXZ",
-   "unit": "unsorted/tMetaMapDesc.cpp",
-   "size": 8,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x00547b57": {
@@ -5318,42 +5255,6 @@
    "size": 12,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-10"
-  },
-  "0x00548467": {
-   "name": "FUN_00548467",
-   "symbol": "?FUN_00548467@@YAXXZ",
-   "unit": "unsorted/tBattles.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x00548473": {
-   "name": "FUN_00548473",
-   "symbol": "?FUN_00548473@@YAXXZ",
-   "unit": "unsorted/tBattles.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x0054847f": {
-   "name": "FUN_0054847f",
-   "symbol": "?FUN_0054847f@@YAXXZ",
-   "unit": "unsorted/tBattles.cpp",
-   "size": 12,
-   "score": 25.0,
-   "exact": false,
-   "recorded": "2026-11-10"
-  },
-  "0x0054848b": {
-   "name": "tBattles::vfunction1_for_tStreamable",
-   "symbol": "?fn_0054848b@@YAXXZ",
-   "unit": "unsorted/tBattles.cpp",
-   "size": 8,
-   "score": 20.0,
-   "exact": false,
    "recorded": "2026-11-10"
   },
   "0x00607faa": {
