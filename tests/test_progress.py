@@ -268,6 +268,19 @@ def test_manual_names_are_a_real_symbol_tier(tmp_path):
     assert report['unmapped_name_sources'] == {}
 
 
+def test_game_copy_names_count_as_manual_names(tmp_path):
+    paths = write_fixture(tmp_path)
+    csv_text = FUNCTIONS_CSV.replace('00401400,150,FUN_00401400,,,default',
+                                     '00401400,150,tOptex::Enter,,,game-copy')
+    paths['functions_csv'].write_text(csv_text)
+    report = progress.compute(paths, NOW)
+    named = report['scopes']['total']['named']
+    # 401400's fuzzy row is below the trusted tiers; the game-copy name is what counts.
+    assert named['manual']['functions'] == 1
+    assert report['scopes']['total']['named_real_symbol']['functions'] == 5  # 401000, 401100, 401300, 401400, 402000
+    assert report['unmapped_name_sources'] == {}
+
+
 def test_matched_set_accepts_an_object_with_status_lists(tmp_path):
     paths = write_fixture(tmp_path, matched={'exact': ['00401000'], 'functional': ['00402000']})
     report = progress.compute(paths, NOW)

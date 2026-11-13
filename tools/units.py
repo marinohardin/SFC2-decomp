@@ -84,12 +84,14 @@ SPELLING = {'assert-path': 0, 'sdk-member': 1, 'header': 2, 'sdk-tree': 3}
 
 
 class Function:
-    __slots__ = ('address', 'size', 'name', 'kind', 'is_library', 'tu', 'tu_evidence', 'headers')
+    __slots__ = ('address', 'size', 'name', 'name_source', 'kind', 'is_library', 'tu',
+                 'tu_evidence', 'headers')
 
     def __init__(self, row):
         self.address = int(row['address'], 16)
         self.size = int(row['size'] or 0)
         self.name = row['name']
+        self.name_source = row.get('name_source', '')
         self.kind = row['kind']
         self.is_library = row['is_library'] == '1'
         self.tu = row['translation_unit']
@@ -267,7 +269,9 @@ def _resolve(labels):
 
 
 def _class_of(fn):
-    if fn.is_library or fn.kind != 'function':
+    # A game copy of a library function carries the library class's name, but the class's unit
+    # is the library's; the copy is no evidence for a unit of its own.
+    if fn.is_library or fn.kind != 'function' or fn.name_source == 'game-copy':
         return None
     m = CLASS_NAME.match(fn.name)
     if not m or m.group(1).startswith(('std::', 'FUN_')):

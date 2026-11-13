@@ -90,6 +90,9 @@ NAME_SOURCE_TIER = {
     'sdk-fid': 'sdk-fid',
     'ghidra-fid-vs': 'vs-fid',
     'manual': 'manual',
+    # A game copy of a library function, named by hand in analysis/results/game_copy_names.tsv
+    # with its evidence; ghidra/results/counts.md counts these as named too.
+    'game-copy': 'manual',
     'string': 'string',
     'rtti-class-recovery': 'rtti-class',
 }

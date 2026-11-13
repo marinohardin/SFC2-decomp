@@ -99,6 +99,22 @@ def test_fixture_map_follows_the_evidence_rules(tmp_path):
     assert {r['profile'] for r in _rows(tmp_path)} == {'game-release'}   # all below 0x0060f600
 
 
+def test_a_game_copy_of_a_library_class_is_no_class_evidence(tmp_path):
+    p = tmp_path / 'functions.csv'
+    p.write_text(HEADER + '\n'.join([
+        '00405000,16,FUN_00405000,,,default,,,,0,,function,',
+        '00405100,16,tTestLock::Enter,,,game-copy,,,,0,,function,',
+        '00405200,16,tTestLock::Leave,,,game-copy,,,,0,,function,',
+        '00406000,16,tTestLock::Enter,,,sdk-fid,,,,0,,function,',
+    ]) + '\n')
+    got = [(r['unit'], r['first'], r['last'], r['functions'], r['evidence'])
+           for r in units.build(units.read_functions(str(p)))]
+    assert got == [
+        ('unsorted/fn_00405000.cpp', '0x00405000', '0x00405200', 3, 'page'),
+        ('unsorted/tTestLock.cpp', '0x00406000', '0x00406000', 1, 'class'),
+    ]
+
+
 BOUNDARY = HEADER + '\n'.join([
     # one unsorted page, 0x0060f000, with the end of the game's own code inside it at 0x0060f600
     '0060f500,16,FUN_0060f500,,,default,,,,0,,function,',

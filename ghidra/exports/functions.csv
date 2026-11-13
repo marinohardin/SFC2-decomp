@@ -1394,9 +1394,9 @@ address,size,name,mangled,demangled,name_source,translation_unit,tu_evidence,hea
 004295cb,5,thunk_FUN_0042ade3,,,default,,,,0,,thunk,
 004295d0,248,tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem,,void __thiscall ~tRemoveItem(void),rtti-class-recovery,,,,0,,function,eh-prolog-joined
 004296c8,79,FUN_004296c8,,,default,,,,0,,function,
-00429717,110,FUN_00429717,,,default,,,,0,,function,
+00429717,110,tOptex::Enter,?Enter@tOptex@@QAEXXZ,,game-copy,,,,0,,function,
 00429785,117,FUN_00429785,,,default,,,,0,,function,
-004297fa,83,FUN_004297fa,,,default,,,,0,,function,
+004297fa,83,tOptex::Leave,?Leave@tOptex@@QAEXXZ,,game-copy,,,,0,,function,
 0042984d,459,FUN_0042984d,,,default,,,,0,,function,eh-prolog-joined
 00429a18,14,FUN_00429a18,,,default,,,,0,,function,
 00429a26,396,tClientCharacter::tClientCharacter,,tClientCharacter * __thiscall tClientCharacter(tClientCharacter * this),rtti-class-recovery,,,,0,,function,eh-prolog-joined

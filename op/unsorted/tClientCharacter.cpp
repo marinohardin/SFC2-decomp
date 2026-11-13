@@ -120,9 +120,9 @@ public:
 	tOptex(int use = 1, unsigned int spinCount = 4000);
 	~tOptex();
 	void CommonConstructor(int use, unsigned int spinCount, bool unicode, const void *pName);
-	void fn_00429717();
+	void Enter();
 	bool TryEnter();
-	void fn_004297fa();
+	void Leave();
 	int m_00;
 	char m_04;
 	char m_05;
@@ -145,12 +145,12 @@ inline tOptex::tGuard::tGuard(tOptex *optex)
 inline void tOptex::tGuard::Enter()
 {
 	fNeedToLeave = true;
-	fOptex->fn_00429717();
+	fOptex->Enter();
 }
 
 inline void tOptex::tGuard::Leave()
 {
-	fOptex->fn_004297fa();
+	fOptex->Leave();
 	fNeedToLeave = false;
 }
 
@@ -305,8 +305,8 @@ public:
 // FUNCTION: STARFLEETOP 0x004295d0
 tClientCharacter::~tClientCharacter()
 {
-	m_e4.fn_00429717();
-	m_e4.fn_004297fa();
+	m_e4.Enter();
+	m_e4.Leave();
 }
 
 // HYPOTHESIS: m_10 is a block either mapped from the file mapping m_0c or allocated on the
@@ -332,7 +332,7 @@ tOptex::~tOptex()
 // a recursive lock in the shared block m_10 (+4 lock count, +8 owner thread, +0xc recursion
 // count) backed by the wait handle m_08. 0x00429785 returns true when no lock is needed.
 // FUNCTION: STARFLEETOP 0x00429717
-void tOptex::fn_00429717()
+void tOptex::Enter()
 {
 	if (m_00) {
 		if (m_05) {
@@ -390,7 +390,7 @@ bool tOptex::TryEnter()
 
 // HYPOTHESIS: releases the lock taken by 0x00429717.
 // FUNCTION: STARFLEETOP 0x004297fa
-void tOptex::fn_004297fa()
+void tOptex::Leave()
 {
 	if (m_00) {
 		if (m_05) {
@@ -417,9 +417,9 @@ public:
 	tOptexHolder(tOptex *optex)
 		: m_optex(optex)
 	{
-		m_optex->fn_00429717();
+		m_optex->Enter();
 	}
-	~tOptexHolder() { m_optex->fn_004297fa(); }
+	~tOptexHolder() { m_optex->Leave(); }
 	tOptex *m_optex;
 };
 
@@ -454,7 +454,7 @@ tClientCharacter &tClientCharacter::fn_00429857(const tClientCharacter &other)
 tOptex::tGuard::~tGuard()
 {
 	if (fNeedToLeave) {
-		fOptex->fn_004297fa();
+		fOptex->Leave();
 	}
 }
 

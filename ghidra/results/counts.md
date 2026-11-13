@@ -2,18 +2,19 @@
 
 - total functions in the program: **39824** (function 23071, eh-funclet 16544, thunk 209)
 - ordinary functions (excluding thunks and EH funclets): 23071, 3306300 bytes
-- of those with a non-default name: **10246** (44.4%), 1503727 bytes (45.5% of function bytes)
+- of those with a non-default name: **10248** (44.4%), 1503920 bytes (45.5% of function bytes)
 
 | kind | name_source | functions |
 |---|---|---|
 | eh-funclet | eh-analyzer | 16544 |
-| function | default | 12825 |
+| function | default | 12823 |
 | function | rtti-class-recovery | 7885 |
 | function | sdklib-exact | 1859 |
 | function | ghidra-fid-vs | 267 |
 | function | sdk-fid | 217 |
 | thunk | default | 209 |
 | function | ghidra-analysis | 17 |
+| function | game-copy | 2 |
 | function | imported | 1 |
 
 | ordinary functions by name quality | functions |
@@ -24,6 +25,7 @@
 | real symbol name (ghidra-fid-vs) | 267 |
 | real symbol name (sdk-fid) | 217 |
 | real symbol name (ghidra-analysis) | 17 |
+| real symbol name (game-copy) | 2 |
 | real symbol name (imported) | 1 |
 
 ## Per-step function counts

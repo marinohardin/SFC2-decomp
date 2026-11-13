@@ -195,9 +195,9 @@ address	size	symbol	source	modes
 0x00424a8f	160	tEntityMgr::mArchive(tSFCStream &,unsigned long)	unsorted/tEntityMgr.cpp	vc6 guest
 0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial
 0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6
-0x00429717	110	tOptex::fn_00429717()	unsorted/tClientCharacter.cpp	vc6 guest
+0x00429717	110	tOptex::Enter()	unsorted/tClientCharacter.cpp	vc6 guest
 0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest
-0x004297fa	83	tOptex::fn_004297fa()	unsorted/tClientCharacter.cpp	vc6 guest
+0x004297fa	83	tOptex::Leave()	unsorted/tClientCharacter.cpp	vc6 guest
 0x0042984d	459	tClientCharacter::fn_00429857(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
 0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6
 0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial

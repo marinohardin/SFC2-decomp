@@ -8,6 +8,9 @@ run_headless 05_export "$PROJECTS" "$MAIN_PROJECT" -process StarFleetOP.exe -noa
 	-postScript SfcSaveGzf.java "$WORK/StarFleetOP_2552.gzf"
 # Join the functions Ghidra splits after their exception-frame prolog (see join_eh_prologs.py).
 python3 -I "$SCRIPTS/join_eh_prologs.py" "$EXPORTS" "$EXE" | tee "$RESULTS/join_eh_prologs.txt"
+# Name the game's own copies of library functions from their evidence (see name_game_copies.py).
+python3 -I "$SCRIPTS/name_game_copies.py" "$EXPORTS" "$REPO/analysis/results/game_copy_names.tsv" \
+	| tee "$RESULTS/name_game_copies.txt"
 grep -h -E "^INFO  Sfc[A-Za-z]+\.java> " "$LOGS/05_export.out" | sed -E 's/ \(GhidraScript\) *$//' \
 	> "$RESULTS/export_summary.txt" || true
 
