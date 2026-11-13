@@ -125,25 +125,25 @@ public:
 
 extern fn_00898c24_Object *g_p00898c24;
 
-// The thread pool (its SDK names, tThreadPool::Instance and tThreadPool::Shutdown).
-class tThreadPool {
-public:
-	static tThreadPool *Instance();
-	void SetMaxThreads(unsigned long);
-	void Shutdown(unsigned long);
-	void Heartbeat();
-};
+#include "Common/Thread/ThreadPool.h"
+#include "Common/Thread/ThreadState.h"
+#include "Common/OSVersion.h"
+// The lines below up to fn_007134c0_Object stay blank so the code keeps its line numbers.
 
-class tThreadState {
-public:
-	static void SetCurThreadState(tThreadState *);
-};
 
-class tOSVersion {
-public:
-	static tOSVersion *Instance();
-	bool Init();
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the object 0x007134c0 returns; vfunction21 calls its +0x04 with 0.
 class fn_007134c0_Object {

@@ -233,8 +233,14 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x006a5a20	tTexBmp::vfunction7	4	opus	78.95	2026-11-09T14:01:14Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.95%
 0x006a62f0	FUN_006a62f0	4	opus	80.00	2026-11-09T14:18:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 80.00%
 0x006a80d0	FUN_006a80d0	4	opus	0.00	2026-11-09T14:43:49Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
+0x006f3a20	tThreadPool::tThreadPool	4	opus	97.65	2026-11-09T12:51:10Z	not exact after 4 attempts
+0x006f3b40	tThreadPool::~tThreadPool	4	opus	99.97	2026-11-09T13:05:35Z	not exact after 4 attempts
+0x006f3d50	tThreadPool::Shutdown	4	opus	99.94	2026-11-09T13:12:36Z	not exact after 4 attempts
+0x006f3e50	tThreadPool::ShutdownComplete	4	opus	99.93	2026-11-09T13:17:58Z	not exact after 4 attempts
 0x006f41e0	tThreadPool::Heartbeat	4	opus	46.65	2026-11-09T13:42:16Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 46.65%
 0x006f4440	tThreadPool::EmptyWorkQue	4	opus	54.40	2026-11-09T13:57:23Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 54.40%
+0x006f4be0	tThreadPool::QueueWorkItem	4	opus	99.95	2026-11-09T15:08:32Z	not exact after 4 attempts
+0x006f53f0	tOSVersion::Instance	4	opus	99.86	2026-11-09T15:37:08Z	not exact after 4 attempts
 0x00708140	nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamIn	4	opus	17.57	2026-11-09T12:57:16Z	not exact after 4 attempts
 0x00708330	FUN_00708330	4	opus	40.40	2026-11-09T13:07:59Z	not exact after 4 attempts
 0x00708490	FUN_00708490	4	opus	40.40	2026-11-09T13:22:22Z	not exact after 4 attempts

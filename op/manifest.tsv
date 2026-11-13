@@ -893,6 +893,29 @@ address	size	symbol	source	modes
 0x00670180	51	tSequencePart::mGetNumber()	Tiger/tsequence.cpp	vc6 guest
 0x006701c0	86	tSequencePart::mGetNumber(int32u)	Tiger/tsequence.cpp	vc6 guest
 0x006d2800	3	tSFCStream::mGetVersionNumber()	unsorted/fn_006D2000.cpp	vc6 guest
+0x006e7e80	9	tSimulator::tSimulator()	Common/Simulator/Simulator.cpp	vc6
+0x006f39b0	106	tThreadPool::Instance()	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f3a20	283	tThreadPool::tThreadPool()	Common/Thread/ThreadPool.cpp	partial
+0x006f3b40	505	tThreadPool::~tThreadPool()	Common/Thread/ThreadPool.cpp	partial
+0x006f3d40	5	tThreadPool::Startup()	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f3d50	254	tThreadPool::Shutdown(int32u)	Common/Thread/ThreadPool.cpp	partial
+0x006f3e50	209	tThreadPool::ShutdownComplete()	Common/Thread/ThreadPool.cpp	partial
+0x006f3f30	355	tThreadPool::SetMaxThreads(int32u)	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f40a0	317	tThreadPool::GetMaxThreads() const	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f41e0	598	tThreadPool::Heartbeat()	Common/Thread/ThreadPool.cpp	partial
+0x006f4440	266	tThreadPool::EmptyWorkQue(bool)	Common/Thread/ThreadPool.cpp	partial
+0x006f4550	10	tThreadPool::SetMemoryChecking(bool)	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f4560	324	tThreadPool::SetDelayMultiple(float)	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f46b0	324	tThreadPool::SetTimeBlockSize(int32u)	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f4800	324	tThreadPool::SetPacketQueLimit(int32u)	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f4950	334	tThreadPool::GetDelayMultiple() const	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f4aa0	317	tThreadPool::GetTimeBlockSize() const	Common/Thread/ThreadPool.cpp	vc6 guest
+0x006f4be0	596	tThreadPool::QueueWorkItem(tCallback<int32>*,int32)	Common/Thread/ThreadPool.cpp	partial
+0x006f53f0	226	tOSVersion::Instance()	Common/OSVersion.cpp	partial
+0x006f54e0	134	tOSVersion::tOSVersion()	Common/OSVersion.cpp	vc6
+0x006f5570	14	tOSVersion::Init()	Common/OSVersion.cpp	vc6 guest
+0x006f5580	28	tOSVersion::IsWindows95()	Common/OSVersion.cpp	vc6 guest
+0x006f55a0	28	tOSVersion::IsWindows98()	Common/OSVersion.cpp	vc6 guest
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc5a0	93	tDynamicAllocator::tAllocatorInfo::operator==(const char*) const	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc750	54	tDynamicAllocator::LockDownAllocator()	Common/DynamicAllocator.cpp	vc6 guest

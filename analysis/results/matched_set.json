@@ -7957,6 +7957,213 @@
    "exact": true,
    "recorded": "2026-11-08"
   },
+  "0x006e7e80": {
+   "name": "nTestSim::tSimulator::tSimulator",
+   "symbol": "??0tSimulator@nTestSim@@QAE@XZ",
+   "unit": "Common/Simulator/Simulator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f39b0": {
+   "name": "tThreadPool::Instance",
+   "symbol": "?Instance@tThreadPool@@SAPAV1@XZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3a20": {
+   "name": "tThreadPool::tThreadPool",
+   "symbol": "??0tThreadPool@@AAE@XZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 288,
+   "score": 97.647,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3b40": {
+   "name": "tThreadPool::~tThreadPool",
+   "symbol": "??1tThreadPool@@AAE@XZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 512,
+   "score": 99.971,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3d40": {
+   "name": "tThreadPool::Startup",
+   "symbol": "?Startup@tThreadPool@@QAEXXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3d50": {
+   "name": "tThreadPool::Shutdown",
+   "symbol": "?Shutdown@tThreadPool@@QAEXK@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 256,
+   "score": 99.941,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3e50": {
+   "name": "tThreadPool::ShutdownComplete",
+   "symbol": "?ShutdownComplete@tThreadPool@@QAE_NXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 224,
+   "score": 99.933,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f3f30": {
+   "name": "tThreadPool::SetMaxThreads",
+   "symbol": "?SetMaxThreads@tThreadPool@@QAEXK@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f40a0": {
+   "name": "tThreadPool::GetMaxThreads",
+   "symbol": "?GetMaxThreads@tThreadPool@@QBEKXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f41e0": {
+   "name": "tThreadPool::Heartbeat",
+   "symbol": "?Heartbeat@tThreadPool@@QAEXXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 608,
+   "score": 46.653,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4440": {
+   "name": "tThreadPool::EmptyWorkQue",
+   "symbol": "?EmptyWorkQue@tThreadPool@@QAEX_N@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 272,
+   "score": 54.395,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4550": {
+   "name": "tThreadPool::SetMemoryChecking",
+   "symbol": "?SetMemoryChecking@tThreadPool@@QAEX_N@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4560": {
+   "name": "tThreadPool::SetDelayMultiple",
+   "symbol": "?SetDelayMultiple@tThreadPool@@QAEXM@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f46b0": {
+   "name": "tThreadPool::SetTimeBlockSize",
+   "symbol": "?SetTimeBlockSize@tThreadPool@@QAEXK@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4800": {
+   "name": "tThreadPool::SetPacketQueLimit",
+   "symbol": "?SetPacketQueLimit@tThreadPool@@QAEXK@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4950": {
+   "name": "tThreadPool::GetDelayMultiple",
+   "symbol": "?GetDelayMultiple@tThreadPool@@QBEMXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4aa0": {
+   "name": "tThreadPool::GetTimeBlockSize",
+   "symbol": "?GetTimeBlockSize@tThreadPool@@QBEKXZ",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f4be0": {
+   "name": "tThreadPool::QueueWorkItem",
+   "symbol": "?QueueWorkItem@tThreadPool@@QAEXPAV?$tCallback@J@@J@Z",
+   "unit": "Common/Thread/ThreadPool.cpp",
+   "size": 608,
+   "score": 99.949,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f53f0": {
+   "name": "tOSVersion::Instance",
+   "symbol": "?Instance@tOSVersion@@SAPAV1@XZ",
+   "unit": "Common/OSVersion.cpp",
+   "size": 240,
+   "score": 99.857,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006f54e0": {
+   "name": "tOSVersion::tOSVersion",
+   "symbol": "??0tOSVersion@@AAE@XZ",
+   "unit": "Common/OSVersion.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f5570": {
+   "name": "tOSVersion::Init",
+   "symbol": "?Init@tOSVersion@@QAE_NXZ",
+   "unit": "Common/OSVersion.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f5580": {
+   "name": "tOSVersion::IsWindows95",
+   "symbol": "?IsWindows95@tOSVersion@@QAE_NXZ",
+   "unit": "Common/OSVersion.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006f55a0": {
+   "name": "tOSVersion::IsWindows98",
+   "symbol": "?IsWindows98@tOSVersion@@QAE_NXZ",
+   "unit": "Common/OSVersion.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

@@ -98,61 +98,61 @@ inline tObject_0042ade3::tObject_0042ade3(const std::less<int> &pred, const std:
 	fn_0042baaf();
 }
 
-// HYPOTHESIS: a 0x14-byte container type with an out-of-line destructor at 0x004296c8, used
-// as the member at +0xe4 and inside the two members below.
-// HYPOTHESIS: the SDK types the first constructor argument tThreadState::eUse
-// (kUseThreadObject = 1); tThreadState is declared only inside another unit, so it is an int
-// here until that class has a shared header.
-class tOptex {
-public:
-	class tGuard {
-	public:
-		tGuard(tOptex *optex);
-		~tGuard();
-		void Enter();
-		void Leave();
+#include "Common/Thread/Optex.h"
+// The lines below up to tSingleAccessWrapper stay blank so the code keeps its line numbers.
 
-	protected:
-		bool fNeedToLeave;
-		tOptex *fOptex;
-	};
 
-	tOptex(int use = 1, unsigned int spinCount = 4000);
-	~tOptex();
-	void CommonConstructor(int use, unsigned int spinCount, bool unicode, const void *pName);
-	void Enter();
-	bool TryEnter();
-	void Leave();
-	int m_00;
-	char m_04;
-	char m_05;
-	HANDLE m_08;
-	HANDLE m_0c;
-	void *m_10;
-};
 
-inline tOptex::tOptex(int use, unsigned int spinCount)
-{
-	CommonConstructor(use, spinCount, false, NULL);
-}
 
-inline tOptex::tGuard::tGuard(tOptex *optex)
-	: fOptex(optex)
-{
-	Enter();
-}
 
-inline void tOptex::tGuard::Enter()
-{
-	fNeedToLeave = true;
-	fOptex->Enter();
-}
 
-inline void tOptex::tGuard::Leave()
-{
-	fOptex->Leave();
-	fNeedToLeave = false;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // The SDK's tSingleAccessWrapper: exclusive access to a pointer. The members at +0xb4 and
 // +0xcc are two instances; the constructor (0x0048589c) and IsValid (0x0058f829) are shared
@@ -309,77 +309,71 @@ tClientCharacter::~tClientCharacter()
 	m_e4.Leave();
 }
 
-// HYPOTHESIS: m_10 is a block either mapped from the file mapping m_0c or allocated on the
-// heap; when m_05 is set it holds a critical section at +0x10.
+// The game's out-of-line copies of the SDK's inline tOptex members.
 // FUNCTION: STARFLEETOP 0x004296c8
-tOptex::~tOptex()
+inline tOptex::~tOptex()
 {
-	if (m_00) {
-		if (m_05 && m_10)
-			DeleteCriticalSection((CRITICAL_SECTION *)((char *)m_10 + 0x10));
-		if (m_08)
-			CloseHandle(m_08);
-		if (m_0c == 0) {
-			operator delete(m_10);
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
 		} else {
-			UnmapViewOfFile(m_10);
-			CloseHandle(m_0c);
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
 		}
 	}
 }
 
-// HYPOTHESIS: acquires the lock: a critical section at m_10+0x10 when m_05 is set, otherwise
-// a recursive lock in the shared block m_10 (+4 lock count, +8 owner thread, +0xc recursion
-// count) backed by the wait handle m_08. 0x00429785 returns true when no lock is needed.
 // FUNCTION: STARFLEETOP 0x00429717
-void tOptex::Enter()
+inline void tOptex::Enter()
 {
-	if (m_00) {
-		if (m_05) {
-			EnterCriticalSection((CRITICAL_SECTION *)((char *)m_10 + 0x10));
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::EnterCriticalSection(&fpSharedInfo->fCriticalSection);
 		} else if (!TryEnter()) {
-			DWORD thread = GetCurrentThreadId();
-			if (InterlockedIncrement((LONG *)((char *)m_10 + 4)) == 1) {
-				*(DWORD *)((char *)m_10 + 8) = thread;
-				*(int *)((char *)m_10 + 0xc) = 1;
-			} else if (*(DWORD *)((char *)m_10 + 8) == thread) {
-				++*(int *)((char *)m_10 + 0xc);
+			int32u threadId = ::GetCurrentThreadId();
+			if (::InterlockedIncrement(&fpSharedInfo->fLockCount) == 1) {
+				fpSharedInfo->fThreadId = threadId;
+				fpSharedInfo->fRecurseCount = 1;
+			} else if (fpSharedInfo->fThreadId == threadId) {
+				++fpSharedInfo->fRecurseCount;
 			} else {
-				WaitForSingleObject(m_08, INFINITE);
-				*(DWORD *)((char *)m_10 + 8) = thread;
-				*(int *)((char *)m_10 + 0xc) = 1;
+				::WaitForSingleObject(fEvent, INFINITE);
+				fpSharedInfo->fThreadId = threadId;
+				fpSharedInfo->fRecurseCount = 1;
 			}
 		}
 	}
 }
 
-// HYPOTHESIS: spins up to the shared block's count at +0 trying to take the lock count at +4
-// from 0 to 1, or re-enters when this thread already owns it; never used with m_05 set.
 // FUNCTION: STARFLEETOP 0x00429785
-bool tOptex::TryEnter()
+inline bool tOptex::TryEnter()
 {
-	if (m_00 == 0)
+	if (fUse == tThreadState::kIgnoreThreadObject)
 		return false;
 
-	if (m_05)
+	if (fUseCriticalSections)
 		return false;
 
-	DWORD threadId = GetCurrentThreadId();
+	int32u threadId = ::GetCurrentThreadId();
 
 	bool thisThreadOwnsTheOptex = false;
-	DWORD spinCount = *(DWORD *)m_10;
+	int32u spinCount = fpSharedInfo->fSpinCount;
 
 	do {
 		thisThreadOwnsTheOptex =
-			(0 == (*(OSSPECIFIC::OS_InterlockedCompareExchange))((LONG *)((char *)m_10 + 4), 1, 0));
+			(0 == (*(OSSPECIFIC::OS_InterlockedCompareExchange))(&fpSharedInfo->fLockCount, 1, 0));
 
 		if (thisThreadOwnsTheOptex) {
-			*(DWORD *)((char *)m_10 + 8) = threadId;
-			*(int *)((char *)m_10 + 0xc) = 1;
+			fpSharedInfo->fThreadId = threadId;
+			fpSharedInfo->fRecurseCount = 1;
 		} else {
-			if (*(DWORD *)((char *)m_10 + 8) == threadId) {
-				InterlockedIncrement((LONG *)((char *)m_10 + 4));
-				++*(int *)((char *)m_10 + 0xc);
+			if (fpSharedInfo->fThreadId == threadId) {
+				::InterlockedIncrement(&fpSharedInfo->fLockCount);
+				++fpSharedInfo->fRecurseCount;
 				thisThreadOwnsTheOptex = TRUE;
 			}
 		}
@@ -388,19 +382,18 @@ bool tOptex::TryEnter()
 	return thisThreadOwnsTheOptex;
 }
 
-// HYPOTHESIS: releases the lock taken by 0x00429717.
 // FUNCTION: STARFLEETOP 0x004297fa
-void tOptex::Leave()
+inline void tOptex::Leave()
 {
-	if (m_00) {
-		if (m_05) {
-			LeaveCriticalSection((CRITICAL_SECTION *)((char *)m_10 + 0x10));
-		} else if (--*(int *)((char *)m_10 + 0xc) > 0) {
-			InterlockedDecrement((LONG *)((char *)m_10 + 4));
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
 		} else {
-			*(DWORD *)((char *)m_10 + 8) = 0;
-			if (InterlockedDecrement((LONG *)((char *)m_10 + 4)) > 0)
-				SetEvent(m_08);
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
 		}
 	}
 }
