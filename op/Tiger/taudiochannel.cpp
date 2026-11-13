@@ -1,36 +1,36 @@
 // Tiger/taudiochannel.cpp
 
-#include "Tiger/tsay.h"
+#include "Tiger/tgSound.h"
 
-// The original reaches these through tgSound.h, which has no unit header here yet.
-extern void AddSoundErrorDuringInterrupt(const char *fmt, ...);
-extern void PrintOutBufferedErrors(void);
-extern tSay gSoundSay;
+// MATCH-ONLY: tgSound.h now declares what stood here; the lines are kept so line numbers stay.
 
-// HYPOTHESIS: only the virtual at vtable offset 0x1d0 is used here; it returns true while
-// the sound part is inside its interrupt. Its name is not recovered.
-class tgSoundPart
-{
-public:
-    virtual void vfn_000(); virtual void vfn_004(); virtual void vfn_008(); virtual void vfn_00c(); virtual void vfn_010(); virtual void vfn_014(); virtual void vfn_018(); virtual void vfn_01c();
-    virtual void vfn_020(); virtual void vfn_024(); virtual void vfn_028(); virtual void vfn_02c(); virtual void vfn_030(); virtual void vfn_034(); virtual void vfn_038(); virtual void vfn_03c();
-    virtual void vfn_040(); virtual void vfn_044(); virtual void vfn_048(); virtual void vfn_04c(); virtual void vfn_050(); virtual void vfn_054(); virtual void vfn_058(); virtual void vfn_05c();
-    virtual void vfn_060(); virtual void vfn_064(); virtual void vfn_068(); virtual void vfn_06c(); virtual void vfn_070(); virtual void vfn_074(); virtual void vfn_078(); virtual void vfn_07c();
-    virtual void vfn_080(); virtual void vfn_084(); virtual void vfn_088(); virtual void vfn_08c(); virtual void vfn_090(); virtual void vfn_094(); virtual void vfn_098(); virtual void vfn_09c();
-    virtual void vfn_0a0(); virtual void vfn_0a4(); virtual void vfn_0a8(); virtual void vfn_0ac(); virtual void vfn_0b0(); virtual void vfn_0b4(); virtual void vfn_0b8(); virtual void vfn_0bc();
-    virtual void vfn_0c0(); virtual void vfn_0c4(); virtual void vfn_0c8(); virtual void vfn_0cc(); virtual void vfn_0d0(); virtual void vfn_0d4(); virtual void vfn_0d8(); virtual void vfn_0dc();
-    virtual void vfn_0e0(); virtual void vfn_0e4(); virtual void vfn_0e8(); virtual void vfn_0ec(); virtual void vfn_0f0(); virtual void vfn_0f4(); virtual void vfn_0f8(); virtual void vfn_0fc();
-    virtual void vfn_100(); virtual void vfn_104(); virtual void vfn_108(); virtual void vfn_10c(); virtual void vfn_110(); virtual void vfn_114(); virtual void vfn_118(); virtual void vfn_11c();
-    virtual void vfn_120(); virtual void vfn_124(); virtual void vfn_128(); virtual void vfn_12c(); virtual void vfn_130(); virtual void vfn_134(); virtual void vfn_138(); virtual void vfn_13c();
-    virtual void vfn_140(); virtual void vfn_144(); virtual void vfn_148(); virtual void vfn_14c(); virtual void vfn_150(); virtual void vfn_154(); virtual void vfn_158(); virtual void vfn_15c();
-    virtual void vfn_160(); virtual void vfn_164(); virtual void vfn_168(); virtual void vfn_16c(); virtual void vfn_170(); virtual void vfn_174(); virtual void vfn_178(); virtual void vfn_17c();
-    virtual void vfn_180(); virtual void vfn_184(); virtual void vfn_188(); virtual void vfn_18c(); virtual void vfn_190(); virtual void vfn_194(); virtual void vfn_198(); virtual void vfn_19c();
-    virtual void vfn_1a0(); virtual void vfn_1a4(); virtual void vfn_1a8(); virtual void vfn_1ac(); virtual void vfn_1b0(); virtual void vfn_1b4(); virtual void vfn_1b8(); virtual void vfn_1bc();
-    virtual void vfn_1c0(); virtual void vfn_1c4(); virtual void vfn_1c8(); virtual void vfn_1cc();
-    virtual iTruth vfn_1d0();
-};
 
-extern tgSoundPart *atgSoundPart;
+
+
+// MATCH-ONLY: tgSound.h now declares tgSoundPart; the lines are kept so line numbers stay.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the element type of the array at tChannelGroup +0x20 (0x18 bytes, with a
 // vtable). Its class and the virtual at offset 0x68 are not named yet.
@@ -147,7 +147,7 @@ void tChannelGroup::mDump(unsigned long param_1, long param_2)
 // FUNCTION: STARFLEETOP 0x00658890
 void tChannelGroup::mDump()
 {
-    if (atgSoundPart->vfn_1d0() == kTrue)
+    if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
     {
         AddSoundErrorDuringInterrupt("Dumping tChannelGorup -- fDepth=%ld, fLinkDepth=%ld, fStopIfChannelIsNeeded = %ld, fChannelInfos=%ld,fNumberOfOwners=%ld",
             field_08, field_14, field_18, field_1c, field_24);
@@ -164,7 +164,7 @@ void tChannelGroup::mDump()
     // expansion in this file is the only line its #line renumbers: the next line sets the
     // numbering back to the file's own, so every annotation pairs by its own line.
 #line 107
-    if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+    if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 169
 
     long i;
@@ -183,7 +183,7 @@ void tChannelGroup::mClose()
 {
     if (field_24 > 0)
     {
-        if (atgSoundPart->vfn_1d0() == kTrue)
+        if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
         {
             AddSoundErrorDuringInterrupt("Warning: Closing while we still are owned!");
         }
@@ -195,7 +195,7 @@ void tChannelGroup::mClose()
         // MATCH-ONLY: as in mDump above, the location note is one macro expansion whose
         // line is the original's.
 #line 204
-        if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+        if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 200
     }
     mUnload(-1);
@@ -213,15 +213,15 @@ void tChannelGroup::mClose()
     field_14 = 0;
 }
 
-class tSoundChannelFormat
-{
-public:
-    tSoundChannelFormat() {}
-    virtual ~tSoundChannelFormat();
-    virtual void mInit();
+// MATCH-ONLY: tgSound.h now declares tSoundChannelFormat; the lines are kept so line numbers stay.
 
-    char pad_04[0x14]; // HYPOTHESIS: fields not recovered; the array stride is 0x18
-};
+
+
+
+
+
+
+
 
 // The compiler generates tSoundChannelFormat's vector deleting destructor (0x00658990) from
 // this definition, with no source line of its own. It is emitted in this unit only where
@@ -232,21 +232,21 @@ tSoundChannelFormat::~tSoundChannelFormat()
 {
 }
 
-// HYPOTHESIS: the sound part bound by name through its part cache (tSoundPart's cache pointer
-// is at 0x00c64794). Only the virtual at offset 0x2c is used here; its name is not recovered.
-class tSoundPart : public tPart
-{
-public:
-    GenAbstractBinding(tSoundPart);
+// MATCH-ONLY: tgSound.h now declares tSoundPart; the lines are kept so line numbers stay.
 
-    virtual void vfn_18(); virtual void vfn_1c();
-    // HYPOTHESIS: loads a sound for a channel format and returns its channel; the argument is
-    // an element of tChannelGroup's array at +0x20 (mLoad's error text calls them formats).
-    virtual long vfn_20(fn_ChannelLink *param_1);
-    virtual void vfn_24();
-    virtual void vfn_28();
-    virtual void vfn_2c(long param_1); /* HYPOTHESIS: releases the sound on a channel */ virtual void vfn_30(); virtual void vfn_34(); virtual unsigned char vfn_38(long param_1, tSoundSelection *param_2); /* HYPOTHESIS: attaches a sound selection to a channel; false on failure */ virtual unsigned char vfn_3c(long param_1); /* HYPOTHESIS: plays the sound on a channel; false on failure */ virtual unsigned char vfn_40(long param_1); /* HYPOTHESIS: pauses the sound on a channel; false on failure */ virtual void vfn_44(); virtual unsigned char vfn_48(long param_1); /* HYPOTHESIS: detaches the file on a channel; false on failure */ virtual void vfn_4c(); virtual void vfn_50(); virtual void vfn_54(); virtual void vfn_58(); virtual void vfn_5c(); virtual void vfn_60(); virtual void vfn_64(); virtual void vfn_68(); virtual void vfn_6c(); virtual void vfn_70(); virtual void vfn_74(); virtual void vfn_78(); virtual void vfn_7c(); virtual void vfn_80(); virtual void vfn_84(); virtual void vfn_88(); virtual void vfn_8c(); virtual void vfn_90(); virtual void vfn_94(); virtual void vfn_98(); virtual void vfn_9c(); virtual void vfn_a0(); virtual void vfn_a4(); virtual void vfn_a8(); virtual void vfn_ac(); virtual void vfn_b0(); virtual void vfn_b4(); virtual long vfn_b8(long param_1); /* HYPOTHESIS: a ranking value of the sound on a channel */ virtual void vfn_bc(); virtual void vfn_c0(); virtual void vfn_c4(); virtual void vfn_c8(); virtual void vfn_cc(); virtual void vfn_d0(); virtual void vfn_d4(); virtual void vfn_d8(); virtual void vfn_dc(); virtual void vfn_e0(); virtual void vfn_e4(); virtual void vfn_e8(); virtual void vfn_ec(); virtual void vfn_f0(); virtual void vfn_f4(); virtual void vfn_f8(); virtual void vfn_fc(); virtual void vfn_100(); virtual void vfn_104(); virtual void vfn_108(); virtual void vfn_10c(); virtual void vfn_110(); virtual void vfn_114(); virtual void vfn_118(); virtual void vfn_11c(); virtual void vfn_120(); virtual void vfn_124(); virtual void vfn_128(); virtual void vfn_12c(); virtual void vfn_130(); virtual void vfn_134(); virtual void vfn_138(); virtual void vfn_13c(); virtual void vfn_140(); virtual void vfn_144(); virtual void vfn_148(); virtual void vfn_14c(); virtual void vfn_150(); virtual void vfn_154(); virtual void vfn_158(); virtual void vfn_15c(); virtual void vfn_160(); virtual void vfn_164(); virtual void vfn_168(); virtual void vfn_16c(); virtual void vfn_170(); virtual void vfn_174(); virtual void vfn_178(); virtual void vfn_17c(); virtual void vfn_180(); virtual void vfn_184(); virtual void vfn_188(); virtual void vfn_18c(); virtual void vfn_190(long param_1); /* HYPOTHESIS: vfn_190 stops the sound on a channel */ virtual void vfn_194(); virtual void vfn_198(); virtual void vfn_19c(); virtual void vfn_1a0(); virtual void vfn_1a4(); virtual void vfn_1a8(); virtual unsigned char vfn_1ac(long param_1); // HYPOTHESIS: true while a channel is busy
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00658ac0
 void tChannelGroup::mUnload(long param_1)
@@ -269,7 +269,7 @@ void tChannelGroup::mUnload(long param_1)
                     channel = field_1c[index].vfn_7c();
                     if (channel != -1)
                     {
-                        BindPart(tSoundPart)->vfn_2c(channel);
+                        BindPart(tSoundPart)->mRemoveSoundChannel(channel);
                         field_1c[index].vfn_90(-1);
                     }
                 }
@@ -280,7 +280,7 @@ void tChannelGroup::mUnload(long param_1)
     {
         if (param_1 > field_08)
         {
-            if (atgSoundPart->vfn_1d0() == kTrue)
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
             {
                 AddSoundErrorDuringInterrupt("Bad Depth!");
             }
@@ -292,7 +292,7 @@ void tChannelGroup::mUnload(long param_1)
             // MATCH-ONLY: as in mDump above, the location note is one macro expansion whose
             // line is the original's.
 #line 274
-            if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 297
         }
         long offset = field_14 * param_1;
@@ -304,9 +304,9 @@ void tChannelGroup::mUnload(long param_1)
                 channel = field_1c[index].vfn_7c();
                 if (channel != -1)
                 {
-                    BindPart(tSoundPart)->vfn_2c(channel);
+                    BindPart(tSoundPart)->mRemoveSoundChannel(channel);
                     field_1c[index].vfn_90(-1);
-                    if (atgSoundPart->vfn_1d0() == kTrue)
+                    if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
                     {
                         AddSoundErrorDuringInterrupt("Clearing %ld from index %ld", channel, index);
                     }
@@ -316,7 +316,7 @@ void tChannelGroup::mUnload(long param_1)
                         gSoundSay.mJustSayIt("Clearing %ld from index %ld", channel, index);
                     }
 #line 285
-                    if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+                    if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 321
                 }
             }
@@ -336,7 +336,7 @@ void tChannelGroup::mLoad(long param_1)
     {
         if (field_20 == 0)
         {
-            if (atgSoundPart->vfn_1d0() == kTrue)
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
             {
                 AddSoundErrorDuringInterrupt("trying to load a channel group before we have formats!");
             }
@@ -346,7 +346,7 @@ void tChannelGroup::mLoad(long param_1)
                 gSoundSay.mJustSayIt("trying to load a channel group before we have formats!");
             }
 #line 362
-            if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 351
             return;
         }
@@ -354,7 +354,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->vfn_20(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -366,7 +366,7 @@ void tChannelGroup::mLoad(long param_1)
                 index = offset + j;
                 if (index < 0 || field_1c == 0 || field_1c[index].vfn_7c() == -1)
                 {
-                    channel = BindPart(tSoundPart)->vfn_20(&field_20[j]);
+                    channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
                     field_1c[index].vfn_90(channel);
                 }
             }
@@ -382,7 +382,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->vfn_20(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -391,7 +391,7 @@ void tChannelGroup::mLoad(long param_1)
     {
         if (field_20 == 0)
         {
-            if (atgSoundPart->vfn_1d0() == kTrue)
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
             {
                 AddSoundErrorDuringInterrupt("trying to load a channel group before we have formats!");
             }
@@ -401,7 +401,7 @@ void tChannelGroup::mLoad(long param_1)
                 gSoundSay.mJustSayIt("trying to load a channel group before we have formats!");
             }
 #line 413
-            if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 406
             return;
         }
@@ -409,7 +409,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->vfn_20(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -418,7 +418,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[offset + j].vfn_7c() == -1)
             {
-                field_1c[offset + j].vfn_90(BindPart(tSoundPart)->vfn_20(&field_20[j]));
+                field_1c[offset + j].vfn_90(BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]));
             }
         }
     }
@@ -598,7 +598,7 @@ unsigned char tChannelGroup::mKillRetainedMode()
                     long channel = field_1c[index].vfn_7c();
                     if (channel != -1)
                     {
-                        BindPart(tSoundPart)->vfn_190(channel);
+                        BindPart(tSoundPart)->mWeDoNotRetainSelections(channel);
                     }
                 }
             }
@@ -622,7 +622,7 @@ unsigned char tChannelGroup::mClearAttachments()
                 long channel = field_1c[index].vfn_7c();
                 if (channel != -1)
                 {
-                    if (!BindPart(tSoundPart)->vfn_48(channel))
+                    if (!BindPart(tSoundPart)->mStopAndClearChannel(channel))
                     {
                         result = 0;
                     }
@@ -667,7 +667,7 @@ long tChannelGroup::mGetAvailableChannel(unsigned long param_1)
                 {
                     mLoad(depth);
                 }
-                if (!BindPart(tSoundPart)->vfn_1ac(field_1c[index].vfn_7c()))
+                if (!BindPart(tSoundPart)->mIsChannelActive(field_1c[index].vfn_7c()))
                 {
                     if (i == field_14 - 1)
                     {
@@ -686,7 +686,7 @@ long tChannelGroup::mGetAvailableChannel(unsigned long param_1)
                 }
                 if (depth == 0)
                 {
-                    long rank = BindPart(tSoundPart)->vfn_b8(field_1c[index].vfn_7c());
+                    long rank = BindPart(tSoundPart)->mGetChannelStatus(field_1c[index].vfn_7c());
                     if (rank < lowest)
                     {
                         lowest = rank;
@@ -710,7 +710,7 @@ long tChannelGroup::mGetAvailableChannel(unsigned long param_1)
                 {
                     mLoad(depth);
                 }
-                if (!BindPart(tSoundPart)->vfn_1ac(field_1c[index].vfn_7c()))
+                if (!BindPart(tSoundPart)->mIsChannelActive(field_1c[index].vfn_7c()))
                 {
                     if (i == field_14 - 1)
                     {
@@ -739,13 +739,13 @@ unsigned char tChannelGroup::mAttachSoundToChannel(unsigned long param_1, tSound
 {
     if (param_3 >= 0)
     {
-        return BindPart(tSoundPart)->vfn_38(mGetChannelNumberFromIndex(mGetIndex(param_1, param_3)), param_2);
+        return BindPart(tSoundPart)->mAttachSoundToChannel(mGetChannelNumberFromIndex(mGetIndex(param_1, param_3)), param_2);
     }
 
     unsigned char result = 1;
     for (long i = 0; i < field_14; i++)
     {
-        if (!BindPart(tSoundPart)->vfn_38(mGetChannelNumberFromIndex(mGetIndex(param_1, i)), param_2))
+        if (!BindPart(tSoundPart)->mAttachSoundToChannel(mGetChannelNumberFromIndex(mGetIndex(param_1, i)), param_2))
         {
             result = 0;
         }
@@ -765,7 +765,7 @@ unsigned char tChannelGroup::mPlayChannel(unsigned long param_1, long param_2)
         long index = mGetIndex(param_1, param_2);
         if (index < 0)
         {
-            if (atgSoundPart->vfn_1d0() == kTrue)
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
             {
                 AddSoundErrorDuringInterrupt("Bad tracking Number! %ld", param_1);
             }
@@ -777,13 +777,13 @@ unsigned char tChannelGroup::mPlayChannel(unsigned long param_1, long param_2)
             // MATCH-ONLY: as in mDump above, the location note is one macro expansion whose
             // line is the original's.
 #line 949
-            if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 782
             return 0;
         }
         field_1c[index].vfn_b0(kTrue);
         long (tChannelGroup::*getChannel)(long) = &tChannelGroup::mGetChannelNumberFromIndex;
-        return BindPart(tSoundPart)->vfn_3c((this->*getChannel)(mGetIndex(param_1, param_2)));
+        return BindPart(tSoundPart)->mPlayChannel((this->*getChannel)(mGetIndex(param_1, param_2)));
     }
 
     unsigned char result = 1;
@@ -792,7 +792,7 @@ unsigned char tChannelGroup::mPlayChannel(unsigned long param_1, long param_2)
         long index = mGetIndex(param_1, i);
         if (index < 0)
         {
-            if (atgSoundPart->vfn_1d0() == kTrue)
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue)
             {
                 AddSoundErrorDuringInterrupt("Bad tracking Number! %ld", param_1);
             }
@@ -802,7 +802,7 @@ unsigned char tChannelGroup::mPlayChannel(unsigned long param_1, long param_2)
                 gSoundSay.mJustSayIt("Bad tracking Number! %ld", param_1);
             }
 #line 964
-            if (atgSoundPart->vfn_1d0() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+            if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
 #line 807
             result = 0;
         }
@@ -811,7 +811,7 @@ unsigned char tChannelGroup::mPlayChannel(unsigned long param_1, long param_2)
             field_1c[index].vfn_b0(kTrue);
             long (tChannelGroup::*getIndex)(unsigned long, long) = &tChannelGroup::mGetIndex;
             long channel = mGetChannelNumberFromIndex((this->*getIndex)(param_1, i));
-            if (!BindPart(tSoundPart)->vfn_3c(channel))
+            if (!BindPart(tSoundPart)->mPlayChannel(channel))
             {
                 result = 0;
             }
@@ -825,13 +825,13 @@ unsigned char tChannelGroup::mPauseChannel(unsigned long param_1, long param_2)
 {
     if (param_2 >= 0)
     {
-        return BindPart(tSoundPart)->vfn_40(mGetChannelNumberFromIndex(mGetIndex(param_1, param_2)));
+        return BindPart(tSoundPart)->mPauseChannel(mGetChannelNumberFromIndex(mGetIndex(param_1, param_2)));
     }
 
     unsigned char result = 1;
     for (long i = 0; i < field_14; i++)
     {
-        if (!BindPart(tSoundPart)->vfn_40(mGetChannelNumberFromIndex(mGetIndex(param_1, i))))
+        if (!BindPart(tSoundPart)->mPauseChannel(mGetChannelNumberFromIndex(mGetIndex(param_1, i))))
         {
             result = 0;
         }

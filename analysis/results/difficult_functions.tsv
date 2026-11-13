@@ -213,7 +213,10 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x006420a0	twStandardSoundChannel::mWriteData	4	opus	89.03	2026-11-09T14:09:05Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 89.03%
 0x00642630	twStandardSoundChannel::mDoActiveUpdate	4	opus	53.34	2026-11-09T14:38:16Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 53.34%
 0x00642980	twStandardSoundChannel::mUpdateBuffersAndSelections	4	opus	67.06	2026-11-09T15:20:12Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 67.06%
+0x00647e40	tSoundChannelCommand::mDump	4	opus	97.60	2026-11-09T08:00:49Z	not exact after 4 attempts
 0x00648cea	FUN_00648cea	4	opus	13.33	2026-11-09T08:09:46Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 13.33%
+0x0064bed0	tSoundChannel::mGetFirstPlayingCommand	4	opus	99.36	2026-11-09T09:24:26Z	not exact after 4 attempts
+0x0064f250	tgSoundPart::mUpdate	4	opus	91.43	2026-11-09T12:30:00Z	not exact after 4 attempts
 0x0064f629	FUN_0064f629	4	opus	4.54	2026-11-09T12:41:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 4.54%
 0x0064fbc0	tSoundChannelList::scalar_deleting_destructor	4	opus	3.33	2026-11-09T13:08:35Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 3.33%
 0x0064fc00	tSoundPart::Test_tSoundPart	4	opus	78.43	2026-11-09T13:22:08Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.43%

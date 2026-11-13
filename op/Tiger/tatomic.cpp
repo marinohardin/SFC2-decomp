@@ -1,21 +1,21 @@
 //	tatomic.cpp: tAtomicLock, a one-bit lock taken with an interlocked bit test and set.
 
-#include "Tiger/tcglue.h"
+#include "Tiger/tatomic.h"
 
-// The unit map gives this unit no header; the class is declared here.
-class	tAtomicLock
-{
-	public:
-						tAtomicLock		( void );
-		virtual			~tAtomicLock	( void );
+// MATCH-ONLY: tatomic.h now declares tAtomicLock; these lines are kept so line numbers stay.
 
-				iTruth	mAcquire		( void );
-				void	mRelease		( void );
 
-	protected:
-		int8u			fReserved[ 28 ];	// HYPOTHESIS: cleared by the constructor, not read in this unit
-		int32u			fLock;
-};
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Returns the previous value of bit 0 of *lockPtr after setting it, in eax.

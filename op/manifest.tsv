@@ -230,29 +230,28 @@ address	size	symbol	source	modes
 0x004317ce	29	tNetControl::fn_004317ce(int,int)	unsorted/tNetControl.cpp	vc6 guest
 0x004317eb	29	tNetControl::fn_004317eb(int,int)	unsorted/tNetControl.cpp	vc6 guest
 0x00431808	25	tNetControl::fn_00431808(int)	unsorted/tNetControl.cpp	vc6 guest
-0x00435391	13	tDynamicMemoryFreeListViaHandles::vfunction3()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043539e	9	tDynamicMemoryFreeListViaHandles::vfunction6()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004353a7	9	tDynamicMemoryFreeListViaHandles::vfunction7()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004353b0	24	tDynamicMemoryFreeListViaHandles::vfunction8(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004353c8	24	tDynamicMemoryFreeListViaHandles::vfunction10(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004353e0	24	tDynamicMemoryFreeListViaHandles::vfunction13(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004353f8	30	tDynamicMemoryFreeListViaHandles::vfunction13(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x00435416	24	tDynamicMemoryFreeListViaHandles::vfunction15(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043542e	30	tDynamicMemoryFreeListViaHandles::vfunction15(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043544c	24	tDynamicMemoryFreeListViaHandles::vfunction16(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x00435464	24	tDynamicMemoryFreeListViaHandles::vfunction19(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043547c	24	tDynamicMemoryFreeListViaHandles::vfunction18(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x00435494	24	tDynamicMemoryFreeListViaHandles::vfunction20(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004354ac	24	tDynamicMemoryFreeListViaHandles::vfunction23(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004354c4	24	tDynamicMemoryFreeListViaHandles::vfunction22(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004354dc	24	tDynamicMemoryFreeListViaHandles::vfunction25(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004354f4	24	tDynamicMemoryFreeListViaHandles::vfunction27(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043550c	36	tDynamicMemoryFreeListViaHandles::vfunction29(int,int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x00435530	36	tDynamicMemoryFreeListViaHandles::vfunction31(int,int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x00435554	27	tDynamicMemoryFreeListViaHandles::vfunction33(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043556f	27	tDynamicMemoryFreeListViaHandles::vfunction35(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x0043558a	27	tDynamicMemoryFreeListViaHandles::vfunction37(int)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
-0x004355a5	34	tDynamicMemoryFreeListViaHandles::`scalar deleting destructor'	unsorted/tDynamicMemoryFreeListViaHandles.cpp	partial
+0x00435391	13	tDynamicMemoryFreeListViaHandles::vfunction2()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043539e	9	tDynamicMemoryFreeListViaHandles::vfunction5()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353a7	9	tDynamicMemoryFreeListViaHandles::vfunction6()	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353b0	24	tDynamicMemoryFreeListViaHandles::vfunction7(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353c8	24	tDynamicMemoryFreeListViaHandles::vfunction9(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353e0	24	tDynamicMemoryFreeListViaHandles::vfunction12(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004353f8	30	tDynamicMemoryFreeListViaHandles::vfunction11(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435416	24	tDynamicMemoryFreeListViaHandles::vfunction14(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043542e	30	tDynamicMemoryFreeListViaHandles::vfunction13(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043544c	24	tDynamicMemoryFreeListViaHandles::vfunction15(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435464	24	tDynamicMemoryFreeListViaHandles::vfunction18(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043547c	24	tDynamicMemoryFreeListViaHandles::vfunction17(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435494	24	tDynamicMemoryFreeListViaHandles::vfunction19(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354ac	24	tDynamicMemoryFreeListViaHandles::vfunction22(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354c4	24	tDynamicMemoryFreeListViaHandles::vfunction21(tListMemberWithHandle *)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354dc	24	tDynamicMemoryFreeListViaHandles::vfunction24(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x004354f4	24	tDynamicMemoryFreeListViaHandles::vfunction26(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043550c	36	tDynamicMemoryFreeListViaHandles::vfunction28(long,long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435530	36	tDynamicMemoryFreeListViaHandles::vfunction30(long,long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x00435554	27	tDynamicMemoryFreeListViaHandles::vfunction32(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043556f	27	tDynamicMemoryFreeListViaHandles::vfunction34(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
+0x0043558a	27	tDynamicMemoryFreeListViaHandles::vfunction36(long)	unsorted/tDynamicMemoryFreeListViaHandles.cpp	vc6 guest
 0x004355c7	7	t3DListenerProfile::~t3DListenerProfile()	unsorted/t3DListenerProfile.cpp	vc6
 0x004355ce	24	t3DListenerProfile::fn_004355ce(const t3DListenerProfile_field_08 *)	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x004355e6	24	t3DListenerProfile::fn_004355e6(int,int,int)	unsorted/t3DListenerProfile.cpp	vc6 guest
@@ -762,6 +761,105 @@ address	size	symbol	source	modes
 0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
 0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
 0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
+0x00646ce0	48	AddSoundErrorDuringInterrupt(const char*,...)	Tiger/tgSound.cpp	vc6 guest
+0x00646d10	70	PrintOutBufferedErrors()	Tiger/tgSound.cpp	vc6 guest
+0x00646d60	270	GetSilenceData(long)	Tiger/tgSound.cpp	vc6 guest
+0x00646e70	58	t3DListenerProfile::mInit()	Tiger/tgSound.cpp	vc6 guest
+0x00646eb0	93	t3DListenerProfile::operator=(t3DListenerProfile&)	Tiger/tgSound.cpp	vc6 guest
+0x00646f10	1348	t3DListenerProfile::mDump()	Tiger/tgSound.cpp	vc6 guest
+0x00647460	62	t3DSoundProfile::mInit()	Tiger/tgSound.cpp	vc6 guest
+0x006474a0	87	t3DSoundProfile::operator=(t3DSoundProfile&)	Tiger/tgSound.cpp	vc6 guest
+0x00647500	1328	t3DSoundProfile::mDump()	Tiger/tgSound.cpp	vc6 guest
+0x00647a30	149	tChannelAttributes::tChannelAttributes()	Tiger/tgSound.cpp	vc6
+0x00647ad0	30	tChannelAttributes::mInit()	Tiger/tgSound.cpp	vc6 guest
+0x00647af0	281	tChannelAttributes::mDump()	Tiger/tgSound.cpp	vc6 guest
+0x00647c10	41	tSoundChannelFormat::tSoundChannelFormat()	Tiger/tgSound.cpp	vc6
+0x00647c40	39	tSoundChannelFormat::operator=(tSoundChannelFormat&)	Tiger/tgSound.cpp	vc6 guest
+0x00647c70	33	tSoundChannelFormat::mInit()	Tiger/tgSound.cpp	vc6 guest
+0x00647ca0	278	tSoundChannelFormat::mDump()	Tiger/tgSound.cpp	vc6 guest
+0x00647dc0	120	tSoundChannelCommand::tSoundChannelCommand()	Tiger/tgSound.cpp	vc6
+0x00647e40	3754	tSoundChannelCommand::mDump()	Tiger/tgSound.cpp	partial
+0x00648d50	266	tSoundCommandList::mGetListMemberWithHandleFromHandle(long)	Tiger/tgSound.cpp	vc6 guest
+0x00648e60	266	tSoundChannelList::mGetListMemberWithHandleFromHandle(long)	Tiger/tgSound.cpp	vc6 guest
+0x00648f70	796	tSoundChannel::mAddDelayedCommand(long)	Tiger/tgSound.cpp	vc6 guest
+0x00649290	728	tSoundChannel::mFadeToVolume(long,double)	Tiger/tgSound.cpp	vc6 guest
+0x00649570	330	tSoundChannel::mGetFirstAttachment()	Tiger/tgSound.cpp	vc6 guest
+0x006496c0	598	tSoundChannel::mFadeToStopAndResetNow(double)	Tiger/tgSound.cpp	vc6 guest
+0x00649920	580	tSoundChannel::mFadeToStopAndClearNow(double)	Tiger/tgSound.cpp	vc6 guest
+0x00649b70	978	tSoundChannel::mAddAttachment(long)	Tiger/tgSound.cpp	vc6 guest
+0x00649f50	297	tSoundChannel::mAddImmediateCommand(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064a080	297	tSoundChannel::mAddImmediateNonInterruptCommandCommand(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064a1d0	643	tSoundChannel::mInit()	Tiger/tgSound.cpp	vc6 guest
+0x0064a460	304	tSoundChannel::mDone()	Tiger/tgSound.cpp	vc6 guest
+0x0064a590	764	tSoundChannel::mClearCommands()	Tiger/tgSound.cpp	vc6 guest
+0x0064a890	790	tSoundChannel::mAddGetNextAttachmentFunction(void (*function)(unsigned long, long),long,double)	Tiger/tgSound.cpp	vc6 guest
+0x0064abb0	1139	tSoundChannel::mGetTotalBytesLeftToPlay()	Tiger/tgSound.cpp	vc6 guest
+0x0064b030	29	tSoundChannel::mGetTotalNumberOfSecondsLeftToPlay()	Tiger/tgSound.cpp	vc6 guest
+0x0064b050	628	tSoundChannel::mClearAllCommands()	Tiger/tgSound.cpp	vc6 guest
+0x0064b2d0	828	tSoundChannel::mClearAttachments()	Tiger/tgSound.cpp	vc6 guest
+0x0064b610	730	tSoundChannel::mClearAllAttachments()	Tiger/tgSound.cpp	vc6 guest
+0x0064b8f0	23	tSoundChannel::mSetUpdateMode(eSoundChannelUpdateMode)	Tiger/tgSound.cpp	vc6 guest
+0x0064b910	498	tSoundChannel::mGetSelectionToAttach()	Tiger/tgSound.cpp	vc6 guest
+0x0064bb10	7	t3DSoundProfile::~t3DSoundProfile()	Tiger/tgSound.cpp	vc6
+0x0064bb20	937	tSoundChannel::mLockInData()	Tiger/tgSound.cpp	vc6 guest
+0x0064bed0	741	tSoundChannel::mGetFirstPlayingCommand()	Tiger/tgSound.cpp	partial
+0x0064c1c0	586	tSoundChannel::mGetLastSelectionToAttach()	Tiger/tgSound.cpp	vc6 guest
+0x0064c410	1370	tSoundChannel::mCleanupSelections()	Tiger/tgSound.cpp	vc6 guest
+0x0064c970	396	tSoundChannel::mClear()	Tiger/tgSound.cpp	vc6 guest
+0x0064cb00	396	tSoundChannel::mClearAll()	Tiger/tgSound.cpp	vc6 guest
+0x0064cc90	1388	tSoundChannel::mReset(iTruth)	Tiger/tgSound.cpp	vc6 guest
+0x0064d200	324	tSoundChannel::mTestInList()	Tiger/tgSound.cpp	vc6 guest
+0x0064d350	15	tSoundChannel::mSetChannelPriority(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064d360	1205	tSoundChannel::mDump()	Tiger/tgSound.cpp	vc6 guest
+0x0064d820	8	tSoundChannelCommand::mIsInvalid()	Tiger/tgSound.cpp	vc6 guest
+0x0064d830	8	tSoundChannelCommand::mMakeInvalid()	Tiger/tgSound.cpp	vc6 guest
+0x0064d840	8	tSoundChannelCommand::mMakeAvailable()	Tiger/tgSound.cpp	vc6 guest
+0x0064d850	8	tSoundChannelCommand::mMakeUnavailable()	Tiger/tgSound.cpp	vc6 guest
+0x0064d860	10	tChannelAttributes::vfunction7(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064d870	4	tSoundChannelFormat::vfunction12()	Tiger/tgSound.cpp	vc6 guest
+0x0064d880	7	tSoundChannelCommand::mGetUserData()	Tiger/tgSound.cpp	vc6 guest
+0x0064d890	941	tSoundChannel::mUpdateRegular(double)	Tiger/tgSound.cpp	vc6 guest
+0x0064dc40	10	tSoundChannelCommand::mSetPan(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064dc50	22	tSoundChannelCommand::mSetChannelAttributes(tChannelAttributes*)	Tiger/tgSound.cpp	vc6 guest
+0x0064dc70	4	tSoundChannelCommand::mGetPan()	Tiger/tgSound.cpp	vc6 guest
+0x0064dc80	4	tSoundChannelCommand::mGet3DSoundPosition()	Tiger/tgSound.cpp	vc6 guest
+0x0064dc90	22	tSoundChannelCommand::mSet3DSoundProfile(t3DSoundProfile*)	Tiger/tgSound.cpp	vc6 guest
+0x0064dcb0	22	tSoundChannelCommand::mSet3DSoundPosition(tPoint3*)	Tiger/tgSound.cpp	vc6 guest
+0x0064dcd0	4	tSoundChannelCommand::mGet3DSoundConeAngleForNoAttenuation()	Tiger/tgSound.cpp	vc6 guest
+0x0064dce0	13	tSoundChannelCommand::mSetUserData(long)	Tiger/tgSound.cpp	vc6 guest
+0x0064dcf0	4	tSoundChannelCommand::mGetTimeToTake()	Tiger/tgSound.cpp	vc6 guest
+0x0064dd00	17	tSoundChannelCommand::mSetTimeToTake(double)	Tiger/tgSound.cpp	vc6 guest
+0x0064dd20	953	tSoundChannel::mUpdateAtInterrupt(double)	Tiger/tgSound.cpp	vc6 guest
+0x0064e0e0	100	tSoundChannel::mAreWeStillActive()	Tiger/tgSound.cpp	vc6 guest
+0x0064e150	2491	tSoundChannel::mDoCommand(tSoundChannelCommand*)	Tiger/tgSound.cpp	vc6 guest
+0x0064eb70	8	tSoundChannel::mRemoveSoundChannel()	Tiger/tgSound.cpp	vc6 guest
+0x0064eb80	384	tSoundChannel::mAddFinishCommand(iTruth)	Tiger/tgSound.cpp	vc6 guest
+0x0064ed00	831	tSoundChannel::mPlaySpecialLoop(long,long,long,long)	Tiger/tgSound.cpp	vc6 guest
+0x0064f040	515	tSoundChannel::mEndSpecialLoop()	Tiger/tgSound.cpp	vc6 guest
+0x0064f250	979	tgSoundPart::mUpdate()	Tiger/tgSound.cpp	partial
+0x0064f670	1064	tgSoundPart::mUpdateAtInterrupt()	Tiger/tgSound.cpp	vc6 guest
+0x0064faa0	274	tgSoundPart::tgSoundPart()	Tiger/tgSound.cpp	vc6
+0x0064fbe0	31	tChannelGroupManagerPart::mIsReady()	Tiger/tgSound.cpp	vc6 guest
+0x0064fcc0	55	tgSoundPart::mActivate()	Tiger/tgSound.cpp	vc6 guest
+0x0064fd00	5	tgSoundPart::mDeactivate()	Tiger/tgSound.cpp	vc6 guest
+0x0064fd10	537	tgSoundPart::mDone()	Tiger/tgSound.cpp	vc6 guest
+0x0064ff30	646	tgSoundPart::mInit(tInitSoundPartInfo*)	Tiger/tgSound.cpp	vc6 guest
+0x006501c0	12	tSoundMemoryBlockManager::mGetTrueHandle(unsigned long)	Tiger/tgSound.cpp	vc6 guest
+0x006501d0	17	tSoundMemoryBlockManager::mNumberOfBlocksNeeded(long)	Tiger/tgSound.cpp	vc6 guest
+0x006501f0	30	tSoundMemoryBlockManager::`scalar deleting destructor'	Tiger/tgSound.cpp	vc6
+0x00650230	128	SoundPartCurrentTime()	Tiger/tgSound.cpp	vc6 guest
+0x006502b0	52	tgSoundPart::mClearOutSoundChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x006502f0	171	tgSoundPart::mRemoveSoundChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x006503a0	158	tgSoundPart::mRemoveAllSoundChannels()	Tiger/tgSound.cpp	vc6 guest
+0x00650440	36	tgSoundPart::mGetSoundChannelCommandPtrFromHandle(long)	Tiger/tgSound.cpp	vc6 guest
+0x00650470	910	tgSoundPart::mFindAvailableSoundChannelCommandPtrAndReturnAHandle()	Tiger/tgSound.cpp	vc6 guest
+0x00650800	574	tgSoundPart::mFindAvailableSoundChannelHandle()	Tiger/tgSound.cpp	vc6 guest
+0x00650a40	299	tgSoundPart::mAddChannelAtHandle(tSoundChannel*,long)	Tiger/tgSound.cpp	vc6 guest
+0x00650b70	1010	tgSoundPart::mSetNumberOfSoundChannelCommands(long)	Tiger/tgSound.cpp	vc6 guest
+0x00650f70	73	tSoundChannelCommand::~tSoundChannelCommand()	Tiger/tgSound.cpp	vc6
+0x00650fc0	87	tSoundChannelCommand::`vector deleting destructor'	Tiger/tgSound.cpp	vc6
+0x00651020	702	tgSoundPart::mSetNumberOfSoundChannels(long)	Tiger/tgSound.cpp	vc6 guest
+0x006512e0	31	tgSoundPart::mGetSoundChannelPtrFromHandle(long)	Tiger/tgSound.cpp	vc6 guest
 0x006587f0	147	tChannelGroup::mDump(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x00658890	253	tChannelGroup::mDump()	Tiger/taudiochannel.cpp	vc6 guest
 0x006589f0	197	tChannelGroup::mClose()	Tiger/taudiochannel.cpp	vc6 guest

@@ -3,13 +3,8 @@
 
 #include "unsorted/tDynamicMemoryFreeListViaHandles.h"
 
-// FUNCTION: STARFLEETOP 0x004355a5
-tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles()
-{
-}
-
 // FUNCTION: STARFLEETOP 0x00435391
-void tDynamicMemoryFreeListViaHandles::vfunction3()
+void tDynamicMemoryFreeListViaHandles::vfunction2()
 {
     field_0xc = 0;
     field_0x4 = -1;
@@ -17,135 +12,134 @@ void tDynamicMemoryFreeListViaHandles::vfunction3()
 }
 
 // FUNCTION: STARFLEETOP 0x0043539e
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction6()
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction5()
 {
-    return vfunction1(field_0x4);
+    return mGetListMemberWithHandleFromHandle(field_0x4);
 }
 
 // FUNCTION: STARFLEETOP 0x004353a7
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction7()
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction6()
 {
-    return vfunction1(field_0x8);
+    return mGetListMemberWithHandleFromHandle(field_0x8);
 }
 
 // FUNCTION: STARFLEETOP 0x004353b0
-int tDynamicMemoryFreeListViaHandles::vfunction8(int handle)
+long tDynamicMemoryFreeListViaHandles::vfunction7(long handle)
 {
-    return vfunction8(vfunction1(handle));
+    return mGetPreviousListMemberHandle(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x004353c8
-int tDynamicMemoryFreeListViaHandles::vfunction10(int handle)
+long tDynamicMemoryFreeListViaHandles::vfunction9(long handle)
 {
-    return vfunction10(vfunction1(handle));
+    return mGetNextListMemberHandle(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x004353e0
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction13(tListMemberWithHandle *member)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction12(tListMemberWithHandle *member)
 {
-    return vfunction1(vfunction8(member));
+    return mGetListMemberWithHandleFromHandle(mGetPreviousListMemberHandle(member));
 }
 
 // FUNCTION: STARFLEETOP 0x004353f8
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction13(int handle)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction11(long handle)
 {
-    return vfunction1(vfunction8(vfunction1(handle)));
+    return mGetListMemberWithHandleFromHandle(
+        mGetPreviousListMemberHandle(mGetListMemberWithHandleFromHandle(handle)));
 }
 
 // FUNCTION: STARFLEETOP 0x00435416
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction15(tListMemberWithHandle *member)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction14(tListMemberWithHandle *member)
 {
-    return vfunction1(vfunction10(member));
+    return mGetListMemberWithHandleFromHandle(mGetNextListMemberHandle(member));
 }
 
 // FUNCTION: STARFLEETOP 0x0043542e
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction15(int handle)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction13(long handle)
 {
-    return vfunction1(vfunction10(vfunction1(handle)));
+    return mGetListMemberWithHandleFromHandle(
+        mGetNextListMemberHandle(mGetListMemberWithHandleFromHandle(handle)));
 }
 
 // FUNCTION: STARFLEETOP 0x0043544c
-void tDynamicMemoryFreeListViaHandles::vfunction16(int handle)
+long tDynamicMemoryFreeListViaHandles::vfunction15(long handle)
 {
-    vfunction16(vfunction1(handle));
+    return mGetPreviousCircularListMemberHandle(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x0043547c
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction18(tListMemberWithHandle *member)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction17(tListMemberWithHandle *member)
 {
-    return vfunction1(vfunction16(member));
+    return mGetListMemberWithHandleFromHandle(mGetPreviousCircularListMemberHandle(member));
 }
 
 // FUNCTION: STARFLEETOP 0x00435464
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction19(int handle)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction18(long handle)
 {
-    // HYPOTHESIS: the slot 15 function (declared here as vfunction15(int)) returns a
-    // handle, since its result is passed straight to vfunction1; its declared member
-    // return type is likely wrong, hence the cast.
-    return vfunction1((int)vfunction15(handle));
+    return mGetListMemberWithHandleFromHandle(vfunction15(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x00435494
-void tDynamicMemoryFreeListViaHandles::vfunction20(int handle)
+long tDynamicMemoryFreeListViaHandles::vfunction19(long handle)
 {
-    vfunction20(vfunction1(handle));
+    return mGetNextCircularListMemberHandle(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x004354c4
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction22(tListMemberWithHandle *member)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction21(tListMemberWithHandle *member)
 {
-    return vfunction1(vfunction20(member));
+    return mGetListMemberWithHandleFromHandle(mGetNextCircularListMemberHandle(member));
 }
 
 // FUNCTION: STARFLEETOP 0x004354ac
-tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction23(int handle)
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::vfunction22(long handle)
 {
-    // HYPOTHESIS: the slot 19 function returns a handle, since its result is passed
-    // straight to vfunction1, as vfunction19 does with slot 15; hence the cast.
-    return vfunction1((int)vfunction19(handle));
+    return mGetListMemberWithHandleFromHandle(vfunction19(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x004354dc
-void tDynamicMemoryFreeListViaHandles::vfunction25(int handle)
+void tDynamicMemoryFreeListViaHandles::vfunction24(long handle)
 {
-    vfunction25(vfunction1(handle));
+    mAddToFrontOfList(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x004354f4
-void tDynamicMemoryFreeListViaHandles::vfunction27(int handle)
+unsigned char tDynamicMemoryFreeListViaHandles::vfunction26(long handle)
 {
     // HYPOTHESIS: the member is held in a local; the same expression written as one nested
     // call keeps the vtable pointer in a register instead of reloading it, unlike the original.
-    tListMemberWithHandle *member = vfunction1(handle);
-    vfunction27(member);
+    tListMemberWithHandle *member = mGetListMemberWithHandleFromHandle(handle);
+    return mAddToBackOfList(member);
 }
 
 // FUNCTION: STARFLEETOP 0x0043550c
-void tDynamicMemoryFreeListViaHandles::vfunction29(int handle, int otherHandle)
+void tDynamicMemoryFreeListViaHandles::vfunction28(long handle, long otherHandle)
 {
-    vfunction29(vfunction1(handle), vfunction1(otherHandle));
+    mInsertAfterListMember(mGetListMemberWithHandleFromHandle(handle),
+                           mGetListMemberWithHandleFromHandle(otherHandle));
 }
 
 // FUNCTION: STARFLEETOP 0x00435530
-void tDynamicMemoryFreeListViaHandles::vfunction31(int handle, int otherHandle)
+void tDynamicMemoryFreeListViaHandles::vfunction30(long handle, long otherHandle)
 {
-    vfunction31(vfunction1(handle), vfunction1(otherHandle));
+    mInsertBeforeListMember(mGetListMemberWithHandleFromHandle(handle),
+                            mGetListMemberWithHandleFromHandle(otherHandle));
 }
 
 // FUNCTION: STARFLEETOP 0x00435554
-void tDynamicMemoryFreeListViaHandles::vfunction33(int handle)
+void tDynamicMemoryFreeListViaHandles::vfunction32(long handle)
 {
-    vfunction33(vfunction1(handle));
+    mRemoveFromList(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x0043556f
-void tDynamicMemoryFreeListViaHandles::vfunction35(int handle)
+unsigned char tDynamicMemoryFreeListViaHandles::vfunction34(long handle)
 {
-    vfunction35(vfunction1(handle));
+    return mIsListMember(mGetListMemberWithHandleFromHandle(handle));
 }
 
 // FUNCTION: STARFLEETOP 0x0043558a
-void tDynamicMemoryFreeListViaHandles::vfunction37(int handle)
+void tDynamicMemoryFreeListViaHandles::vfunction36(long handle)
 {
-    vfunction37(vfunction1(handle));
+    mGetZeroIndexedListMemberPosition(mGetListMemberWithHandleFromHandle(handle));
 }

@@ -28,6 +28,12 @@ public:
     virtual t3DListenerProfile_field_08 *fn_0043569a();
     virtual void fn_0043569e(double param_1);
     virtual double fn_004356a8();
+    // HYPOTHESIS: the exe's vtable (0x00798f44) has mInit at slot 1 and mDump at slot 20, which the
+    // slots above do not model yet; they are declared last so the slots above do not move.
+    // Tiger/tgSound.cpp defines them and operator=, reading the fields as floats and a double.
+    virtual void mInit();
+    virtual void mDump();
+    t3DListenerProfile& operator=(t3DListenerProfile& other);
 
     int field_04;
     t3DListenerProfile_field_08 field_08;
