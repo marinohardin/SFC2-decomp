@@ -617,6 +617,65 @@ address	size	symbol	source	modes
 0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest
+0x0061bae0	344	tFileSession::tFileSession()	Tiger/tgfsys.cpp	vc6
+0x0061bc40	400	tFileSession::`scalar deleting destructor'	Tiger/tgfsys.cpp	partial
+0x0061bdd0	380	tFileSession::~tFileSession()	Tiger/tgfsys.cpp	vc6
+0x0061bf50	287	tFileSession::mGetNamedVolume(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061c070	253	tFileSession::mGetAppPath()	Tiger/tgfsys.cpp	vc6 guest
+0x0061c170	278	tFileSession::mGetSpecialDir(eSpecialDir)	Tiger/tgfsys.cpp	vc6 guest
+0x0061c290	141	tFileSession::mDuplicatePath(tPath)	Tiger/tgfsys.cpp	partial
+0x0061c320	89	tFileSession::mFileOpenDialog(tString &,tString &)	Tiger/tgfsys.cpp	partial
+0x0061c380	89	tFileSession::mFileSaveDialog(tString &,tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061c3e0	109	tFSSession::tFSSession()	Tiger/tgfsys.cpp	vc6
+0x0061c470	199	tFSSession::tFSSession(const tFSSession &)	Tiger/tgfsys.cpp	vc6
+0x0061c540	1116	tFSSession::~tFSSession()	Tiger/tgfsys.cpp	vc6
+0x0061c9a0	121	tFSSession::mGetNamedVolume(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061ca20	55	tFSSession::mGetAppPath()	Tiger/tgfsys.cpp	vc6 guest
+0x0061ca60	153	tFSSession::mDuplicatePath(tPath)	Tiger/tgfsys.cpp	partial
+0x0061cb00	113	tFSSession::mFileOpenDialog(tString &,tString &,tDir)	Tiger/tgfsys.cpp	vc6 guest
+0x0061cb80	113	tFSSession::mFileSaveDialog(tString &,tString &,tDir)	Tiger/tgfsys.cpp	vc6 guest
+0x0061cc00	250	tSession::mAddCookie(tVolume &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061cd00	250	tSession::mAddCookie(tDir &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061ce00	250	tSession::mAddCookie(tPath &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061cf00	250	tSession::mAddCookie(tVolIterator &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061d000	250	tSession::mAddCookie(tDirIterator &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061d100	250	tSession::mAddCookie(tPathIterator &)	Tiger/tgfsys.cpp	vc6 guest
+0x0061d200	225	tVolume::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d2f0	228	tDir::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d3e0	229	tPath::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d4d0	225	tVolIterator::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d5c0	226	tDirIterator::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d6b0	225	tPathIterator::mValid()	Tiger/tgfsys.cpp	partial
+0x0061d7a0	264	tVolume::mGetName()	Tiger/tgfsys.cpp	partial
+0x0061d8b0	536	tVolume::mGetSortName()	Tiger/tgfsys.cpp	partial
+0x0061dad0	274	tVolume::mGetRoot()	Tiger/tgfsys.cpp	partial
+0x0061dbf0	270	tDir::mGetName()	Tiger/tgfsys.cpp	partial
+0x0061dd00	280	tDir::mGetParentVol()	Tiger/tgfsys.cpp	partial
+0x0061de20	280	tDir::mGetParentDir()	Tiger/tgfsys.cpp	partial
+0x0061df40	271	tDir::mGetSize()	Tiger/tgfsys.cpp	partial
+0x0061e050	271	tDir::mExist()	Tiger/tgfsys.cpp	partial
+0x0061e160	280	tDir::mGetPathIterator()	Tiger/tgfsys.cpp	partial
+0x0061e280	285	tDir::mGetNamedDir(tString &)	Tiger/tgfsys.cpp	partial
+0x0061e3a0	530	tDir::mGetNamedFile(tString &)	Tiger/tgfsys.cpp	partial
+0x0061e5c0	271	tDir::mDelete()	Tiger/tgfsys.cpp	partial
+0x0061e6d0	270	tPath::mGetName()	Tiger/tgfsys.cpp	partial
+0x0061e7e0	280	tPath::mGetDate()	Tiger/tgfsys.cpp	partial
+0x0061e900	280	tPath::mGetParentDir()	Tiger/tgfsys.cpp	partial
+0x0061ea20	271	tPath::mExist()	Tiger/tgfsys.cpp	partial
+0x0061eb30	271	tPath::mGetSize()	Tiger/tgfsys.cpp	partial
+0x0061ec40	271	tPath::mCreate()	Tiger/tgfsys.cpp	partial
+0x0061ed50	271	tPath::mDelete()	Tiger/tgfsys.cpp	partial
+0x0061ee60	293	tPath::mRead(void *,int32u,int32u,tPathCallback *)	Tiger/tgfsys.cpp	vc6 guest
+0x0061ef90	293	tPath::mWrite(void *,int32u,int32u,tPathCallback *)	Tiger/tgfsys.cpp	vc6 guest
+0x0061f0c0	271	tPath::mFree()	Tiger/tgfsys.cpp	partial
+0x0061f1d0	277	tVolIterator::mAdd(tVolume)	Tiger/tgfsys.cpp	vc6 guest
+0x0061f2f0	339	tVolIterator::mFirst()	Tiger/tgfsys.cpp	partial
+0x0061f450	284	tVolIterator::mNext(tVolume)	Tiger/tgfsys.cpp	vc6 guest
+0x0061f570	277	tDirIterator::mAdd(tDir)	Tiger/tgfsys.cpp	vc6 guest
+0x0061f690	339	tDirIterator::mFirst()	Tiger/tgfsys.cpp	partial
+0x0061f7f0	284	tDirIterator::mNext(tDir)	Tiger/tgfsys.cpp	vc6 guest
+0x0061f910	333	tPathIterator::mAdd(tPath)	Tiger/tgfsys.cpp	partial
+0x0061fa60	248	tPathIterator::mFirst()	Tiger/tgfsys.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest

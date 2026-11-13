@@ -2,7 +2,7 @@
 //
 //	Declarations follow the SDK's header. Not declared yet: the inline operator!= and the
 //	less_ss and less_ps comparators, whose bodies no unit here uses yet, and the members of
-//	tString::iterator, whose out-of-class definition tools/manifest.py cannot read yet. The original also
+//	tString::iterator that no unit here uses yet. The original also
 //	includes tlearn.h, tcglue.h, tigerstl.h and tBag.h here; nothing below needs them yet.
 
 #ifndef tstring_h
@@ -137,6 +137,28 @@ class tString
 
 		char*				mOSString();
 		tString*			mAppendOSStr(char*	osStr);
+
+		// The original defines the iterator after the class, as tString::iterator; it is
+		// defined here, in the body, because tools/manifest.py cannot read that form yet.
+		// Only the members a unit here uses are declared.
+		class iterator
+		{
+			public:
+				iterator();
+				iterator(const iterator &i);
+
+				iBasicStringElement&	operator*();
+				iterator				operator+(int32 n);
+				iterator				operator-(int32 n);
+				iterator				operator++(int);
+				iTruth					operator==(const iterator i);
+				iTruth					operator!=(const iterator i);
+				iTruth					operator<(const iterator i);
+
+			protected:
+				int32		fIndex;
+				tString		*fString;
+		};
 };
 
 int32 StringToNum(char *str);
