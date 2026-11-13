@@ -250,6 +250,37 @@ def test_a_bad_address_on_the_boundary_list_names_the_file_and_line(tmp_path):
         matched.boundary_listed(str(p))
 
 
+def deleting_entry(symbol, score=5.7, exact=False):
+    return dict(name='A::scalar_deleting_destructor', symbol=symbol, unit='A.cpp', size=34,
+                score=score, exact=exact, recorded='2026-11-01')
+
+
+def test_a_deleting_destructor_scored_against_the_plain_destructor_may_be_dropped(empty_tree):
+    matched.save(paths.MATCHED_SET, matched_set())
+    base = matched_set(a00401010=deleting_entry('??1A@@UAE@XZ'))
+    rep = verify.run([], base=(base, 'base'))
+    assert rep.regressions == [] and not rep.failed
+    assert any('0x00401010 dropped from matched_set.json: its entry in base was scored against '
+               'the plain destructor' in ln for ln in rep.lines)
+
+
+def test_a_deleting_destructor_scored_against_itself_may_not_be_dropped(empty_tree):
+    matched.save(paths.MATCHED_SET, matched_set())
+    base = matched_set(a00401010=deleting_entry('??_GA@@UAEPAXI@Z'),
+                       a00401020=dict(entry(20.0), symbol='??1A@@UAE@XZ'))
+    rep = verify.run([], base=(base, 'base'))
+    assert sorted(rep.regressions) == [0x401010, 0x401020]
+
+
+def test_a_misscored_entry_that_is_exact_or_still_claimed_is_kept(empty_tree):
+    base = matched_set(a00401010=deleting_entry('??1A@@UAE@XZ', 100.0, True),
+                       a00401020=deleting_entry('??1B@@UAE@XZ'))
+    got, released = matched.release_misscored(base, matched_set(), claimed={'0x00401020'})
+    assert released == [] and got == base
+    got, released = matched.release_misscored(base, matched_set())
+    assert released == ['0x00401020'] and list(got['functions']) == ['0x00401010']
+
+
 def _header_claim_tree(game, units):
     (game / 'Test').mkdir()
     (game / 'Test' / 'ship.h').write_text('class tShip { public: virtual ~tShip(); };\n'

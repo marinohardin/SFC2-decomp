@@ -269,6 +269,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
+        base_data, misscored = matched.release_misscored(base_data, data, claimed_keys(cfg))
+        for k in misscored:
+            rep.add('INFO', f'{k} dropped from matched_set.json: its entry in {label} was scored '
+                    f'against the plain destructor, not the deleting destructor it names')
         if base_sizes is not None:
             base_data, reshaped = matched.release_reshaped(base_data, base_sizes, function_sizes(
                 index), joined_keys(index))

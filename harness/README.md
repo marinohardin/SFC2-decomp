@@ -249,6 +249,14 @@ base's or it is no longer a function: that score was for the prolog or the body 
 with an `INFO` line. Any other change of size is held as before, and an exact entry is always
 held.
 
+An entry whose name says deleting destructor (`scalar_deleting_destructor` /
+`vector_deleting_destructor`) but whose recorded symbol is a plain destructor (`??1`) was scored
+against the wrong function: the destructor body, not the deleting destructor at the address. The
+gate lets a pull request drop such an entry when it was never exact and no `// FUNCTION:`
+annotation in `game/` still claims it, with an `INFO` line saying so (`matched.release_misscored`).
+This happens when a class's destructor becomes inline in its header, as the original wrote it, and
+the unit the address belongs to no longer emits anything to score.
+
 ## The loop (`loop.sh`)
 
 ```sh

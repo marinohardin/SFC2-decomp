@@ -8,6 +8,8 @@ import json
 import os
 import re
 
+from . import deleting
+
 VERSION = 1
 EPSILON = 1e-6
 
@@ -75,6 +77,28 @@ def release_listed(base, data, listed, claimed=()):
     gone = [k for k, old in base['functions'].items()
             if k in listed and k not in data['functions'] and not old.get('exact')
             and k not in claimed]
+    if not gone:
+        return base, []
+    return dict(base, functions={k: v for k, v in base['functions'].items() if k not in gone}), \
+        sorted(gone)
+
+
+def misscored(entry):
+    """True when the entry names a deleting destructor but was scored against a plain
+    destructor (`??1`): its score measures a different function than its address."""
+    return ((entry.get('symbol') or '').startswith('??1')
+            and deleting.kind(name=entry.get('name') or '') is not None)
+
+
+def release_misscored(base, data, claimed=()):
+    """base without the entries data dropped that were scored against the wrong function: the
+    name says deleting destructor, the symbol is the plain destructor (misscored). Such a score
+    says nothing about the address, so losing it is not a regression. Returns (base, [released
+    keys]). An exact entry is never released, nor one a FUNCTION annotation in game/ still
+    claims (claimed: matched-set keys)."""
+    gone = [k for k, old in base['functions'].items()
+            if k not in data['functions'] and not old.get('exact') and k not in claimed
+            and misscored(old)]
     if not gone:
         return base, []
     return dict(base, functions={k: v for k, v in base['functions'].items() if k not in gone}), \
