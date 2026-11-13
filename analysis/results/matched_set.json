@@ -6094,6 +6094,609 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x00628f30": {
+   "name": "twDebugPart::twDebugPart",
+   "symbol": "??0twDebugPart@@QAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629060": {
+   "name": "tWinDbgFile::`scalar_deleting_destructor'",
+   "symbol": "??_GtWinDbgFile@@UAEPAXI@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629080": {
+   "name": "tWinDbgFile::~tWinDbgFile",
+   "symbol": "??1tWinDbgFile@@UAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x006290b0": {
+   "name": "twDebugPart::`scalar_deleting_destructor'",
+   "symbol": "??_GtwDebugPart@@UAEPAXI@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x006290d0": {
+   "name": "twDebugPart::~twDebugPart",
+   "symbol": "??1twDebugPart@@UAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629180": {
+   "name": "twDebugPart::mGetConfiguration",
+   "symbol": "?mGetConfiguration@twDebugPart@@IAEXXZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 1248,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629660": {
+   "name": "ClampBaudRate",
+   "symbol": "?ClampBaudRate@@YAKK@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629720": {
+   "name": "twDebugPart::mSendLine",
+   "symbol": "?mSendLine@twDebugPart@@UAEXPBDK@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 325,
+   "score": 34.211,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x006298e0": {
+   "name": "twDebugPart::mCreateLogFileTarget",
+   "symbol": "?mCreateLogFileTarget@twDebugPart@@UAEKPBDEE@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629a10": {
+   "name": "twDebugPart::mCloseLogFileTarget",
+   "symbol": "?mCloseLogFileTarget@twDebugPart@@UAEXK@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629a60": {
+   "name": "twDebugPart::mCloseLogFileTarget",
+   "symbol": "?mCloseLogFileTarget@twDebugPart@@UAEXPBD@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x00629ad0": {
+   "name": "tWinDbg::`scalar_deleting_destructor'",
+   "symbol": "??_GtWinDbg@@UAEPAXI@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00629af0": {
+   "name": "tWinDbg::~tWinDbg",
+   "symbol": "??1tWinDbg@@UAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00629b30": {
+   "name": "tWinDbg::mDrawItem",
+   "symbol": "?mDrawItem@tWinDbg@@AAEXPAUHWND__@@PAUtagDRAWITEMSTRUCT@@@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00629c00": {
+   "name": "tWinDbg::mWndProcThunk",
+   "symbol": "?mWndProcThunk@tWinDbg@@CGJPAUHWND__@@IIJ@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00629c40": {
+   "name": "tWinDbg::mWndProc",
+   "symbol": "?mWndProc@tWinDbg@@AAEJPAUHWND__@@IIJ@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 589,
+   "score": 27.639,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a050": {
+   "name": "tWinDbg::mInit",
+   "symbol": "?mInit@tWinDbg@@AAEHXZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a160": {
+   "name": "tWinDbg::mAppendToLastLine",
+   "symbol": "?mAppendToLastLine@tWinDbg@@AAEXPBDH@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a210": {
+   "name": "tWinDbg::mPuts",
+   "symbol": "?mPuts@tWinDbg@@UAEXPBD@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 608,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a490": {
+   "name": "twDebugPart::tDbgTarget::~tDbgTarget",
+   "symbol": "??1tWin32Mono@@UAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a4a0": {
+   "name": "tWin32Mono::mPuts",
+   "symbol": "?mPuts@tWin32Mono@@UAEXPBD@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 480,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a6a0": {
+   "name": "tWinComPort::~tWinComPort",
+   "symbol": "??1tWinComPort@@UAE@XZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a6e0": {
+   "name": "tWinComPort::mInit",
+   "symbol": "?mInit@tWinComPort@@AAEHXZ",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a7d0": {
+   "name": "tWinComPort::mPuts",
+   "symbol": "?mPuts@tWinComPort@@UAEXPBD@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a880": {
+   "name": "tWinDbgFile::mInit",
+   "symbol": "?mInit@tWinDbgFile@@QAEHPBDEE@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062a930": {
+   "name": "tWinDbgFile::mPuts",
+   "symbol": "?mPuts@tWinDbgFile@@UAEXPBD@Z",
+   "unit": "Tiger/Twdebug.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062b550": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mFindLine",
+   "symbol": "?mFindLine@tINISectionSimple@tINISimpleNamespace@@AAEPAUtINILine@2@PBDPAPBD@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062b5f0": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mGetInteger",
+   "symbol": "?mGetInteger@tINISectionSimple@tINISimpleNamespace@@AAEKPBDKE@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 416,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062b790": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mPutInteger",
+   "symbol": "?mPutInteger@tINISectionSimple@tINISimpleNamespace@@AAEEPBDKE@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ba10": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mGetInt32u",
+   "symbol": "?mGetInt32u@tINISectionSimple@tINISimpleNamespace@@UAEKPBDK@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ba30": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mGetInt32s",
+   "symbol": "?mGetInt32s@tINISectionSimple@tINISimpleNamespace@@UAEJPBDJ@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ba50": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mPutInt32u",
+   "symbol": "?mPutInt32u@tINISectionSimple@tINISimpleNamespace@@UAEEPBDK@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ba70": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mPutInt32s",
+   "symbol": "?mPutInt32s@tINISectionSimple@tINISimpleNamespace@@UAEEPBDJ@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ba90": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mGetString",
+   "symbol": "?mGetString@tINISectionSimple@tINISimpleNamespace@@UAEKPBD0PADK@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062bb80": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mPutString",
+   "symbol": "?mPutString@tINISectionSimple@tINISimpleNamespace@@UAEEPBD0@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 768,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062be80": {
+   "name": "tINISimpleNamespace::tINISectionSimple::mFlush",
+   "symbol": "?mFlush@tINISectionSimple@tINISimpleNamespace@@UAEEXZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062be90": {
+   "name": "tINISimpleNamespace::tINIFileSimple::`scalar_deleting_destructor'",
+   "symbol": "??_GtINIFileSimple@tINISimpleNamespace@@MAEPAXI@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062beb0": {
+   "name": "tINISimpleNamespace::tINIFileSimple::~tINIFileSimple",
+   "symbol": "??1tINIFileSimple@tINISimpleNamespace@@MAE@XZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062bf30": {
+   "name": "tINISimpleNamespace::tINIFileSimple::mAddRef",
+   "symbol": "?mAddRef@tINIFileSimple@tINISimpleNamespace@@UAEHXZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062bf40": {
+   "name": "tINISimpleNamespace::tINIFileSimple::mRelease",
+   "symbol": "?mRelease@tINIFileSimple@tINISimpleNamespace@@UAEHXZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062bf60": {
+   "name": "FUN_0062bf60",
+   "symbol": "?mGetSection@tINIFileSimple@tINISimpleNamespace@@UAEPAVtINISection@@PBDE@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 464,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c130": {
+   "name": "tINISimpleNamespace::tINIFileSimple::mInit",
+   "symbol": "?mInit@tINIFileSimple@tINISimpleNamespace@@QAEEPBD@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 768,
+   "score": 87.309,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c480": {
+   "name": "tINISimpleNamespace::tINIFileSimple::mDone",
+   "symbol": "?mDone@tINIFileSimple@tINISimpleNamespace@@IAEEXZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c510": {
+   "name": "tINISimpleNamespace::tINIFileSimple::mFlush",
+   "symbol": "?mFlush@tINIFileSimple@tINISimpleNamespace@@UAEEXZ",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 293,
+   "score": 81.579,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c670": {
+   "name": "tINIFile::mNewINIFile",
+   "symbol": "?mNewINIFile@tINIFile@@SAPAV1@PBDP6APAVtBasicFile@@XZ@Z",
+   "unit": "Tiger/tinifile.cpp",
+   "size": 225,
+   "score": 78.911,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c800": {
+   "name": "tFormatStr::~tFormatStr",
+   "symbol": "??1tFormatStr@@UAE@XZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062c840": {
+   "name": "tFormatStr::mGenerateFormatTokenList",
+   "symbol": "?mGenerateFormatTokenList@tFormatStr@@AAEDPAVtFormatToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ca70": {
+   "name": "tFormatStr::mAssembleFormattedString",
+   "symbol": "?mAssembleFormattedString@tFormatStr@@AAEXDPAVtFormatToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 768,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062cd70": {
+   "name": "tFormatStr::mGenFormattedStr",
+   "symbol": "?mGenFormattedStr@tFormatStr@@QAEXAAVtString@@V2@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062ce90": {
+   "name": "tFormatToken::tFormatToken",
+   "symbol": "??0tFormatToken@@QAE@XZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062cee0": {
+   "name": "tFormatStr::mTag",
+   "symbol": "?mTag@tFormatStr@@QAEXPADJ@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d110": {
+   "name": "tFormatStr::mTag",
+   "symbol": "?mTag@tFormatStr@@QAEXPADAAVtString@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 576,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d350": {
+   "name": "tFormatStr::mTag",
+   "symbol": "?mTag@tFormatStr@@QAEXPAD0@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d3c0": {
+   "name": "tTagInfo::mParseTagTokenList",
+   "symbol": "?mParseTagTokenList@tTagInfo@@IAECPADPAVtTagToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 216,
+   "score": 66.013,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d4a0": {
+   "name": "tTagInfo::mClassifyTagTokens",
+   "symbol": "?mClassifyTagTokens@tTagInfo@@IAEXCPAVtTagToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 497,
+   "score": 96.894,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d6b0": {
+   "name": "tTagInfo::mSetTagName",
+   "symbol": "?mSetTagName@tTagInfo@@IAEXCPAVtTagToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d720": {
+   "name": "tCharTag::mValidate",
+   "symbol": "?mValidate@tCharTag@@UAEEXZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d750": {
+   "name": "tCharTag::mGetString",
+   "symbol": "?mGetString@tCharTag@@UAE?AVtString@@PAVtFormatTag@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d840": {
+   "name": "tCharTag::mAddCopy",
+   "symbol": "?mAddCopy@tCharTag@@UAEXPAVtFormatStr@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d860": {
+   "name": "tIntTag::mValidate",
+   "symbol": "?mValidate@tIntTag@@UAEEXZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d880": {
+   "name": "tIntTag::mSetGroupSpec",
+   "symbol": "?mSetGroupSpec@tIntTag@@MAEXCPAVtTagToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062d8d0": {
+   "name": "tIntTag::mGetString",
+   "symbol": "?mGetString@tIntTag@@UAE?AVtString@@PAVtFormatTag@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 400,
+   "score": 76.932,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x0062da60": {
+   "name": "tIntTag::mAddCopy",
+   "symbol": "?mAddCopy@tIntTag@@UAEXPAVtFormatStr@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062da80": {
+   "name": "tFormatTag::mSetGroupSpec",
+   "symbol": "?mSetGroupSpec@tFormatTag@@MAEXCPAVtTagToken@@@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062dad0": {
+   "name": "tFormatTag::mGetString",
+   "symbol": "?mGetString@tFormatTag@@QAE?AVtString@@XZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062dc40": {
+   "name": "tTagItemBag::`scalar_deleting_destructor'",
+   "symbol": "??_GtTagItemBag@@UAEPAXI@Z",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062dc60": {
+   "name": "tTagItemBag::~tTagItemBag",
+   "symbol": "??1tTagItemBag@@UAE@XZ",
+   "unit": "Tiger/tFormatStr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x0062ddb0": {
    "name": "clib::memset",
    "symbol": "?memset@clib@@SAXPAXEJ@Z",
@@ -6120,6 +6723,60 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x0062de40": {
+   "name": "tStringTag::tStringTag",
+   "symbol": "??0tStringTag@@QAE@PAD@Z",
+   "unit": "Tiger/tstringtag.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062de60": {
+   "name": "tStringTag::mGetString",
+   "symbol": "?mGetString@tStringTag@@QAEABVtString@@XZ",
+   "unit": "Tiger/tstringtag.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062df70": {
+   "name": "tStringGroupTag::tStringGroupTag",
+   "symbol": "??0tStringGroupTag@@QAE@PAD@Z",
+   "unit": "Tiger/tstringtag.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062dfa0": {
+   "name": "tStringGroupTag::mGetNumElements",
+   "symbol": "?mGetNumElements@tStringGroupTag@@QAEJXZ",
+   "unit": "Tiger/tstringtag.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062e0b0": {
+   "name": "tStringGroupTag::mGetString",
+   "symbol": "?mGetString@tStringGroupTag@@QAEABVtString@@J@Z",
+   "unit": "Tiger/tstringtag.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0062e1c0": {
+   "name": "twFileSystemPart::mGetVolIterator",
+   "symbol": "?mGetVolIterator@twFileSystemPart@@UAE?AVtVolIterator@@VtSession@@@Z",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 1527,
+   "score": 0.626,
+   "exact": false,
+   "recorded": "2026-11-09"
   },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",

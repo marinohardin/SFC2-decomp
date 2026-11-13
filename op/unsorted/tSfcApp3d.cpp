@@ -9,6 +9,7 @@
 #include "Tiger/tsay.h"
 
 #include "unsorted/tApp3dBase.h"
+#include "Tiger/tStrManagerPart.h"
 
 // HYPOTHESIS: a member object at +0x24 whose constructor is 0x005298a6; its type is unknown.
 class fn_005298a6_Member {
@@ -151,19 +152,8 @@ public:
 	virtual void vfunction2(int);    // +0x04
 };
 
-// The string manager part (its type descriptor and its binding's cache pointer at 0x00898b80
-// name it tStrManagerPart); vfunction21 binds it with the part binding macro.
-// HYPOTHESIS: +0x20 loads a string file (name, flag); the slots before it after tPart's own
-// are unknown.
-class tStrManagerPart : public tPart {
-public:
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9(const char *, int);    // +0x20
-
-	// FUNCTION: STARFLEETOP 0x0040b0d5
-	GenAbstractBinding( tStrManagerPart );
-};
+// tStrManagerPart, the string manager part vfunction21 binds, is declared in
+// Tiger/tStrManagerPart.h.
 
 tThreadState *fn_005d4c97();
 fn_007134c0_Object *fn_007134c0();
@@ -434,7 +424,7 @@ bool tSfcApp3d::vfunction21(tApplication *param_1)
 	m_field24.fn_004013f0(fn_006997b0());
 	fn_0040cdb8();
 	fn_0040b14a();
-	BindPart(tStrManagerPart)->vfunction9("assets/strings/strings.txt", 0);
+	BindPart(tStrManagerPart)->mLoadStringFile("assets/strings/strings.txt", 0);
 	m_field19 = (char)g_p008cc580->vfunction5("3D", "ZBuffer", 0);
 
 	switch (g_p008cc580->vfunction5("3D", "lowres", 0)) {

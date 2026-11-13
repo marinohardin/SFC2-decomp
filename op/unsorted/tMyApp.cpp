@@ -8,12 +8,7 @@
 
 #include <string.h>
 
-// HYPOTHESIS: the static that releases the basic file layer; the analysis matches 0x00627130 to
-// the SDK library's tBasicFile::mDone. The class is declared here until its header exists.
-class tBasicFile {
-public:
-	static void mDone();
-};
+#include "Tiger/tbasicfile.h"
 
 // HYPOTHESIS: the object tMyApp holds at +0x4; vfunction3 calls its slot +0x2c first.
 class fn_0040c5e6_Owned {

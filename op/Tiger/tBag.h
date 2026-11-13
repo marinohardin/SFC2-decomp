@@ -149,6 +149,9 @@ class tItemBag
 
 		tItemBag();
 		virtual ~tItemBag();
+
+		// HYPOTHESIS: tFormatStr reaches the protected lookup; the SDK's header has no such line
+		friend class tFormatStr;
 };
 
 #endif

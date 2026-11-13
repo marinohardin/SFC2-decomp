@@ -686,9 +686,82 @@ address	size	symbol	source	modes
 0x00628ee0	7	tAtomicLock::~tAtomicLock()	Tiger/tatomic.cpp	vc6
 0x00628ef0	42	tAtomicLock::mAcquire()	Tiger/tatomic.cpp	vc6 guest
 0x00628f20	8	tAtomicLock::mRelease()	Tiger/tatomic.cpp	vc6 guest
+0x00628f30	299	twDebugPart::twDebugPart()	Tiger/Twdebug.cpp	vc6
+0x00629060	30	tWinDbgFile::`scalar deleting destructor'	Tiger/Twdebug.cpp	vc6
+0x00629080	39	tWinDbgFile::~tWinDbgFile()	Tiger/Twdebug.cpp	vc6
+0x006290b0	30	twDebugPart::`scalar deleting destructor'	Tiger/Twdebug.cpp	vc6
+0x006290d0	172	twDebugPart::~twDebugPart()	Tiger/Twdebug.cpp	vc6
+0x00629180	1237	twDebugPart::mGetConfiguration()	Tiger/Twdebug.cpp	vc6 guest
+0x00629660	185	ClampBaudRate(unsigned long)	Tiger/Twdebug.cpp	vc6 guest
+0x00629720	325	twDebugPart::mSendLine(const char *,const int32u)	Tiger/Twdebug.cpp	partial
+0x006298e0	304	twDebugPart::mCreateLogFileTarget(const char *,iTruth,iTruth)	Tiger/Twdebug.cpp	vc6 guest
+0x00629a10	71	twDebugPart::mCloseLogFileTarget(const int32u)	Tiger/Twdebug.cpp	vc6 guest
+0x00629a60	97	twDebugPart::mCloseLogFileTarget(const char *)	Tiger/Twdebug.cpp	vc6 guest
+0x00629ad0	30	tWinDbg::`scalar deleting destructor'	Tiger/Twdebug.cpp	vc6
+0x00629af0	58	tWinDbg::~tWinDbg()	Tiger/Twdebug.cpp	vc6
+0x00629b30	202	tWinDbg::mDrawItem(HWND,DRAWITEMSTRUCT *)	Tiger/Twdebug.cpp	vc6 guest
+0x00629c00	62	tWinDbg::mWndProcThunk(HWND,unsigned int,unsigned int,long)	Tiger/Twdebug.cpp	vc6
+0x00629c40	589	tWinDbg::mWndProc(HWND,unsigned int,unsigned int,long)	Tiger/Twdebug.cpp	partial
+0x0062a050	271	tWinDbg::mInit()	Tiger/Twdebug.cpp	vc6 guest
+0x0062a160	176	tWinDbg::mAppendToLastLine(const char *,int)	Tiger/Twdebug.cpp	vc6 guest
+0x0062a210	596	tWinDbg::mPuts(const char *)	Tiger/Twdebug.cpp	vc6 guest
+0x0062a490	14	tWin32Mono::~tWin32Mono()	Tiger/Twdebug.cpp	vc6
+0x0062a4a0	473	tWin32Mono::mPuts(const char *)	Tiger/Twdebug.cpp	vc6 guest
+0x0062a6a0	60	tWinComPort::~tWinComPort()	Tiger/Twdebug.cpp	vc6
+0x0062a6e0	236	tWinComPort::mInit()	Tiger/Twdebug.cpp	vc6 guest
+0x0062a7d0	174	tWinComPort::mPuts(const char *)	Tiger/Twdebug.cpp	vc6 guest
+0x0062a880	164	tWinDbgFile::mInit(const char *,iTruth,iTruth)	Tiger/Twdebug.cpp	vc6 guest
+0x0062a930	162	tWinDbgFile::mPuts(const char *)	Tiger/Twdebug.cpp	vc6 guest
+0x0062b550	151	tINISectionSimple::mFindLine(const char*,const char**)	Tiger/tinifile.cpp	vc6 guest
+0x0062b5f0	401	tINISectionSimple::mGetInteger(const char*,unsigned long,unsigned char)	Tiger/tinifile.cpp	vc6 guest
+0x0062b790	627	tINISectionSimple::mPutInteger(const char*,unsigned long,unsigned char)	Tiger/tinifile.cpp	vc6 guest
+0x0062ba10	20	tINISectionSimple::mGetInt32u(const char*,unsigned long)	Tiger/tinifile.cpp	vc6 guest
+0x0062ba30	20	tINISectionSimple::mGetInt32s(const char*,long)	Tiger/tinifile.cpp	vc6 guest
+0x0062ba50	20	tINISectionSimple::mPutInt32u(const char*,unsigned long)	Tiger/tinifile.cpp	vc6 guest
+0x0062ba70	20	tINISectionSimple::mPutInt32s(const char*,long)	Tiger/tinifile.cpp	vc6 guest
+0x0062ba90	235	tINISectionSimple::mGetString(const char*,const char*,char*,unsigned long)	Tiger/tinifile.cpp	vc6 guest
+0x0062bb80	753	tINISectionSimple::mPutString(const char*,const char*)	Tiger/tinifile.cpp	vc6 guest
+0x0062be80	15	tINISectionSimple::mFlush()	Tiger/tinifile.cpp	vc6 guest
+0x0062be90	30	tINIFileSimple::`scalar deleting destructor'	Tiger/tinifile.cpp	vc6
+0x0062beb0	117	tINIFileSimple::~tINIFileSimple()	Tiger/tinifile.cpp	vc6
+0x0062bf30	8	tINIFileSimple::mAddRef()	Tiger/tinifile.cpp	vc6 guest
+0x0062bf40	28	tINIFileSimple::mRelease()	Tiger/tinifile.cpp	vc6 guest
+0x0062bf60	454	tINIFileSimple::mGetSection(const char*,unsigned char)	Tiger/tinifile.cpp	vc6 guest
+0x0062c130	768	tINIFileSimple::mInit(const char*)	Tiger/tinifile.cpp	partial
+0x0062c480	143	tINIFileSimple::mDone()	Tiger/tinifile.cpp	vc6 guest
+0x0062c510	293	tINIFileSimple::mFlush()	Tiger/tinifile.cpp	partial
+0x0062c670	225	tINIFile::mNewINIFile(const char*,tBasicFile* (*createStream)())	Tiger/tinifile.cpp	partial
+0x0062c800	50	tFormatStr::~tFormatStr()	Tiger/tFormatStr.cpp	vc6
+0x0062c840	547	tFormatStr::mGenerateFormatTokenList(tFormatToken *)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062ca70	758	tFormatStr::mAssembleFormattedString(signed char,tFormatToken *)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062cd70	284	tFormatStr::mGenFormattedStr(tString &,tString)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062ce90	15	tFormatToken::tFormatToken()	Tiger/tFormatStr.cpp	vc6
+0x0062cee0	545	tFormatStr::mTag(char *,long)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d110	568	tFormatStr::mTag(char *,tString &)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d350	101	tFormatStr::mTag(char *,char *)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d3c0	216	tTagInfo::mParseTagTokenList(char*,tTagToken*)	Tiger/tFormatStr.cpp	partial
+0x0062d4a0	497	tTagInfo::mClassifyTagTokens(signed char,tTagToken*)	Tiger/tFormatStr.cpp	partial
+0x0062d6b0	101	tTagInfo::mSetTagName(signed char,tTagToken*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d720	36	tCharTag::mValidate()	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d750	230	tCharTag::mGetString(tFormatTag*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d840	20	tCharTag::mAddCopy(tFormatStr*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d860	22	tIntTag::mValidate()	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d880	73	tIntTag::mSetGroupSpec(signed char,tTagToken*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062d8d0	397	tIntTag::mGetString(tFormatTag*)	Tiger/tFormatStr.cpp	partial
+0x0062da60	23	tIntTag::mAddCopy(tFormatStr*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062da80	73	tFormatTag::mSetGroupSpec(signed char,tTagToken*)	Tiger/tFormatStr.cpp	vc6 guest
+0x0062dad0	367	tFormatTag::mGetString()	Tiger/tFormatStr.cpp	vc6 guest
+0x0062dc40	30	tTagItemBag::`scalar deleting destructor'	Tiger/tFormatStr.cpp	vc6
+0x0062dc60	97	tTagItemBag::~tTagItemBag()	Tiger/tFormatStr.cpp	vc6
 0x0062ddb0	48	clib::memset(void *,int8u,iCount)	Tiger/tcglue.cpp	vc6 guest
 0x0062dde0	40	clib::strcpy(char *,const char *)	Tiger/tcglue.cpp	vc6 guest
 0x0062de10	35	clib::memcpy(void *,const void *,size_t)	Tiger/tcglue.cpp	vc6 guest
+0x0062de40	30	tStringTag::tStringTag(char*)	Tiger/tstringtag.cpp	vc6
+0x0062de60	265	tStringTag::mGetString()	Tiger/tstringtag.cpp	vc6 guest
+0x0062df70	33	tStringGroupTag::tStringGroupTag(char*)	Tiger/tstringtag.cpp	vc6
+0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
+0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
+0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
 0x006587f0	147	tChannelGroup::mDump(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x00658890	253	tChannelGroup::mDump()	Tiger/taudiochannel.cpp	vc6 guest
 0x006589f0	197	tChannelGroup::mClose()	Tiger/taudiochannel.cpp	vc6 guest

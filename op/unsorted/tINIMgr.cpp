@@ -5,39 +5,9 @@
 // store, then a call to 0x0040cf2e) into both the scalar deleting destructor at 0x0040cec0
 // and the atexit destructor of the global at 0x0040ceee. 0x0040cf2e (unnamed, so
 // fn_0040cf2e) releases the object at +4 through two virtual calls and clears the member.
-class tBasicFile;
-
-// HYPOTHESIS: the object tINIFile's slot +0xc returns (0x0040cf58 calls its first
-// virtual with two arguments); its class is not known.
-class fn_0040cf58_entry {
-public:
-	virtual int vfunction0(int param_1, int param_2);
-	// HYPOTHESIS: slot +0x4 returns a bool (0x0040cf8b).
-	virtual bool vfunction1(int param_1, int param_2);
-	virtual int vfunction2(int param_1, int param_2);
-	// HYPOTHESIS: slot +0xc returns a bool (0x0040cff2).
-	virtual bool vfunction3(int param_1, int param_2);
-	// HYPOTHESIS: slot +0x10 takes four arguments (0x0040d025); its return type is not known.
-	virtual int vfunction4(int param_1, int param_2, int param_3, int param_4);
-	// HYPOTHESIS: slot +0x14 returns a bool (0x0040d05e).
-	virtual bool vfunction5(int param_1, int param_2);
-};
-
-// Declared from the exe's mangled name ?mNewINIFile@tINIFile@@SAPAV1@PBDP6APAVtBasicFile@@XZ@Z
-// (0x0062c670); the class is defined in its own unit.
-class tINIFile {
-public:
-	static tINIFile* mNewINIFile(const char* name, tBasicFile* (*factory)());
-	// HYPOTHESIS: tINIFile is polymorphic; 0x0040cf2e calls the virtuals at vftable
-	// offsets +0x10 and then +0x8 without arguments before dropping the pointer. Their
-	// names are not known; the slots are named by index.
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual void vfunction2();
-	// HYPOTHESIS: slot +0xc looks up an entry by its first argument (0x0040cf58).
-	virtual fn_0040cf58_entry* vfunction3(int param_1, int param_2);
-	virtual void vfunction4();
-};
+// tINIFile, the INI file the manager holds, and tINISection, the section its slot +0xc returns,
+// are declared in Tiger/tinifile.h.
+#include "Tiger/tinifile.h"
 
 class tINIMgr {
 public:
@@ -49,11 +19,11 @@ public:
 	virtual void fn_0040cf2e();
 	virtual void fn_0040cf4b();
 	virtual int fn_0040cf58(int param_1, int param_2, int param_3);
-	virtual bool fn_0040cf8b(int param_1, int param_2, int param_3);
+	virtual unsigned char fn_0040cf8b(int param_1, int param_2, int param_3);
 	virtual int fn_0040cfbe(int param_1, int param_2, int param_3);
-	virtual bool fn_0040cff2(int param_1, int param_2, int param_3);
+	virtual unsigned char fn_0040cff2(int param_1, int param_2, int param_3);
 	virtual int fn_0040d025(int param_1, int param_2, int param_3, int param_4, int param_5);
-	virtual bool fn_0040d05e(int param_1, int param_2, int param_3);
+	virtual unsigned char fn_0040d05e(int param_1, int param_2, int param_3);
 	tINIMgr* fn_0040cec0(unsigned int flags);
 private:
 	tINIFile* m_field4;
@@ -94,8 +64,8 @@ void tINIMgr::fn_0040cf12(const char* param_1)
 void tINIMgr::fn_0040cf2e()
 {
 	if (m_field4) {
-		m_field4->vfunction4();
-		m_field4->vfunction2();
+		m_field4->mFlush();
+		m_field4->mRelease();
 		m_field4 = 0;
 	}
 }
@@ -106,7 +76,7 @@ void tINIMgr::fn_0040cf2e()
 void tINIMgr::fn_0040cf4b()
 {
 	if (m_field4)
-		m_field4->vfunction4();
+		m_field4->mFlush();
 }
 
 // FUNCTION: STARFLEETOP 0x0040cf58
@@ -116,22 +86,22 @@ void tINIMgr::fn_0040cf4b()
 int tINIMgr::fn_0040cf58(int param_1, int param_2, int param_3)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction0(param_2, param_3);
+			return entry->mGetInt32u((const char*)param_2, param_3);
 	}
 	return param_3;
 }
 
 // FUNCTION: STARFLEETOP 0x0040cf8b
-// HYPOTHESIS: the bool counterpart of 0x0040cf58: looks up the object named by param_1
+// HYPOTHESIS: the truth-value counterpart of 0x0040cf58: looks up the object named by param_1
 // (slot +0xc) and passes param_2 and param_3 to its slot +0x4; false when there is none.
-bool tINIMgr::fn_0040cf8b(int param_1, int param_2, int param_3)
+unsigned char tINIMgr::fn_0040cf8b(int param_1, int param_2, int param_3)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction1(param_2, param_3);
+			return entry->mPutInt32u((const char*)param_2, param_3);
 	}
 	return false;
 }
@@ -143,23 +113,23 @@ bool tINIMgr::fn_0040cf8b(int param_1, int param_2, int param_3)
 int tINIMgr::fn_0040cfbe(int param_1, int param_2, int param_3)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction2(param_2, param_3);
+			return entry->mGetInt32s((const char*)param_2, param_3);
 	}
 	return param_3;
 }
 
 // FUNCTION: STARFLEETOP 0x0040cff2
-// HYPOTHESIS: the second bool counterpart of 0x0040cf58: looks up the object named by
+// HYPOTHESIS: the second truth-value counterpart of 0x0040cf58: looks up the object named by
 // param_1 (slot +0xc) and passes param_2 and param_3 to its slot +0xc; false when there
 // is none.
-bool tINIMgr::fn_0040cff2(int param_1, int param_2, int param_3)
+unsigned char tINIMgr::fn_0040cff2(int param_1, int param_2, int param_3)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction3(param_2, param_3);
+			return entry->mPutInt32s((const char*)param_2, param_3);
 	}
 	return false;
 }
@@ -171,23 +141,23 @@ bool tINIMgr::fn_0040cff2(int param_1, int param_2, int param_3)
 int tINIMgr::fn_0040d025(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction4(param_2, param_3, param_4, param_5);
+			return entry->mGetString((const char*)param_2, (const char*)param_3, (char*)param_4, param_5);
 	}
 	return 0;
 }
 
 // FUNCTION: STARFLEETOP 0x0040d05e
-// HYPOTHESIS: the third bool counterpart of 0x0040cf58: looks up the object named by
+// HYPOTHESIS: the third truth-value counterpart of 0x0040cf58: looks up the object named by
 // param_1 (slot +0xc) and passes param_2 and param_3 to its slot +0x14; false when there
 // is none.
-bool tINIMgr::fn_0040d05e(int param_1, int param_2, int param_3)
+unsigned char tINIMgr::fn_0040d05e(int param_1, int param_2, int param_3)
 {
 	if (m_field4) {
-		fn_0040cf58_entry* entry = m_field4->vfunction3(param_1, 0);
+		tINISection* entry = m_field4->mGetSection((const char*)param_1, 0);
 		if (param_1 && entry)
-			return entry->vfunction5(param_2, param_3);
+			return entry->mPutString((const char*)param_2, (const char*)param_3);
 	}
 	return false;
 }
