@@ -6769,6 +6769,474 @@
    "exact": false,
    "recorded": "2026-11-09"
   },
+  "0x0063edd0": {
+   "name": "tCoopThreadPart::mSetTime",
+   "symbol": "?mSetTime@tCoopThreadPart@@UAENXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063ee80": {
+   "name": "tCoopThreadPart::mGetTime",
+   "symbol": "?mGetTime@tCoopThreadPart@@UAENXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063ee90": {
+   "name": "tCoopThreadPart::mIsReady",
+   "symbol": "?mIsReady@tCoopThreadPart@@UAEEXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063eeb0": {
+   "name": "tCoopThreadPart::mActivate",
+   "symbol": "?mActivate@tCoopThreadPart@@UAEXXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 608,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f110": {
+   "name": "tCoopThreadPart::mDeactivate",
+   "symbol": "?mDeactivate@tCoopThreadPart@@UAEXXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f180": {
+   "name": "tCoopThreadPart::mNewThread",
+   "symbol": "?mNewThread@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f280": {
+   "name": "tCoopThreadPart::mSetThreadFreq",
+   "symbol": "?mSetThreadFreq@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f2f0": {
+   "name": "tCoopThreadPart::mSetMainThreadFreq",
+   "symbol": "?mSetMainThreadFreq@tCoopThreadPart@@UAEXJ@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f370": {
+   "name": "tCoopThreadPart::mResetPriorities",
+   "symbol": "?mResetPriorities@tCoopThreadPart@@UAEXXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f3c0": {
+   "name": "tCoopThreadPart::mSetThreadPriority",
+   "symbol": "?mSetThreadPriority@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f420": {
+   "name": "tCoopThreadPart::mSetMainThreadPriority",
+   "symbol": "?mSetMainThreadPriority@tCoopThreadPart@@UAEXJ@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f490": {
+   "name": "tCoopThreadPart::mRest",
+   "symbol": "?mRest@tCoopThreadPart@@UAEXXZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f4f0": {
+   "name": "tCoopThreadPart::mSleepFor",
+   "symbol": "?mSleepFor@tCoopThreadPart@@UAEXN@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f540": {
+   "name": "tCoopThreadPart::mSleepUntil",
+   "symbol": "?mSleepUntil@tCoopThreadPart@@UAEXN@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f5a0": {
+   "name": "tCoopThreadPart::mSwitchTo",
+   "symbol": "?mSwitchTo@tCoopThreadPart@@UAEXPAVtClientThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 278,
+   "score": 97.778,
+   "exact": false,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f6e0": {
+   "name": "tCoopThreadPart::mAllocCoopThread",
+   "symbol": "?mAllocCoopThread@tCoopThreadPart@@UAEPAVtCoopThread@@XZ",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 528,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-08"
+  },
+  "0x0063f8f0": {
+   "name": "tCoopThreadPart::mFreeCoopThread",
+   "symbol": "?mFreeCoopThread@tCoopThreadPart@@UAEXPAVtCoopThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 544,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0063fb10": {
+   "name": "tCoopThreadPart::mFindCoopThread",
+   "symbol": "?mFindCoopThread@tCoopThreadPart@@UAEPAVtCoopThread@@PAVtClientThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0063fb70": {
+   "name": "tCoopThreadPart::mFindCoopThread",
+   "symbol": "?mFindCoopThread@tCoopThreadPart@@UAEPAVtCoopThread@@PAVtNativeThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0063fbd0": {
+   "name": "tCoopThreadPart::mGetBestNextThread",
+   "symbol": "?mGetBestNextThread@tCoopThreadPart@@UAEPAVtCoopThread@@PAV2@N@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x0063fd10": {
+   "name": "tCoopThreadPart::mDoSleep",
+   "symbol": "?mDoSleep@tCoopThreadPart@@UAEXNPAVtNativeThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 1296,
+   "score": 6.829,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00640220": {
+   "name": "tCoopThreadPart::mDoDelThread",
+   "symbol": "?mDoDelThread@tCoopThreadPart@@MAEXPAVtClientThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006402e0": {
+   "name": "tCoopThreadPart::mDelThread",
+   "symbol": "?mDelThread@tCoopThreadPart@@UAEXPAVtClientThread@@@Z",
+   "unit": "Tiger/tgthread.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640700": {
+   "name": "DumpEventLog",
+   "symbol": "?DumpEventLog@@YAXXZ",
+   "unit": "Tiger/twthread.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006407b0": {
+   "name": "MyReleaseSemaphore",
+   "symbol": "?MyReleaseSemaphore@@YAEPAX@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640810": {
+   "name": "MyWaitForSingleObject",
+   "symbol": "?MyWaitForSingleObject@@YAXPAX@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640870": {
+   "name": "twNativeThread::twNativeThreadEntryProc",
+   "symbol": "?twNativeThreadEntryProc@twNativeThread@@SAKPAVtNativeThread@@@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640900": {
+   "name": "twNativeThread::twNativeThread",
+   "symbol": "??0twNativeThread@@QAE@XZ",
+   "unit": "Tiger/twthread.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006409b0": {
+   "name": "twNativeThread::`scalar_deleting_destructor'",
+   "symbol": "??_GtwNativeThread@@UAEPAXI@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006409d0": {
+   "name": "twNativeThread::twNativeThread",
+   "symbol": "??0twNativeThread@@QAE@PAVtClientThread@@J@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640ae0": {
+   "name": "twNativeThread::~twNativeThread",
+   "symbol": "??1twNativeThread@@UAE@XZ",
+   "unit": "Tiger/twthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00640b40": {
+   "name": "twNativeThread::mGotoThread",
+   "symbol": "?mGotoThread@twNativeThread@@UAEXPAVtNativeThread@@@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 612,
+   "score": 7.84,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00640db0": {
+   "name": "twCoopThreadPart::mCoopRun",
+   "symbol": "?mCoopRun@twCoopThreadPart@@UAEXPAVtNativeThread@@@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 493,
+   "score": 0.187,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00641100": {
+   "name": "twCoopThreadPart::mNewMainThread",
+   "symbol": "?mNewMainThread@twCoopThreadPart@@EAEPAVtNativeThread@@XZ",
+   "unit": "Tiger/twthread.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641160": {
+   "name": "twCoopThreadPart::mNewNativeThread",
+   "symbol": "?mNewNativeThread@twCoopThreadPart@@EAEPAVtNativeThread@@PAVtClientThread@@J@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006411d0": {
+   "name": "twCoopThreadPart::mDelNativeThread",
+   "symbol": "?mDelNativeThread@twCoopThreadPart@@EAEXPAVtNativeThread@@@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006411f0": {
+   "name": "twCoopThreadPart::mDoDelThread",
+   "symbol": "?mDoDelThread@twCoopThreadPart@@MAEXPAVtClientThread@@@Z",
+   "unit": "Tiger/twthread.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641320": {
+   "name": "twSoundPart::mInitDirectSound",
+   "symbol": "?mInitDirectSound@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 800,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641640": {
+   "name": "twStandardSoundChannel::mClear",
+   "symbol": "?mClear@twStandardSoundChannel@@UAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641710": {
+   "name": "twStandardSoundChannel::mReset",
+   "symbol": "?mReset@twStandardSoundChannel@@UAEXE@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006417f0": {
+   "name": "twStandardSoundChannel::mPauseChannel",
+   "symbol": "?mPauseChannel@twStandardSoundChannel@@UAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 768,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641af0": {
+   "name": "twStandardSoundChannel::mDone",
+   "symbol": "?mDone@twStandardSoundChannel@@UAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641bf0": {
+   "name": "twStandardSoundChannel::mInit",
+   "symbol": "?mInit@twStandardSoundChannel@@UAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641cf0": {
+   "name": "twStandardSoundChannel::mLockHardware",
+   "symbol": "?mLockHardware@twStandardSoundChannel@@IAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641e50": {
+   "name": "twStandardSoundChannel::mLockHardwareForSilence",
+   "symbol": "?mLockHardwareForSilence@twStandardSoundChannel@@IAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 400,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00641fe0": {
+   "name": "twStandardSoundChannel::mUnlockHardware",
+   "symbol": "?mUnlockHardware@twStandardSoundChannel@@IAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x006420a0": {
+   "name": "twStandardSoundChannel::mWriteData",
+   "symbol": "?mWriteData@twStandardSoundChannel@@IAEEPAEJ@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 880,
+   "score": 89.028,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00642410": {
+   "name": "twStandardSoundChannel::mWriteSilence",
+   "symbol": "?mWriteSilence@twStandardSoundChannel@@IAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00642510": {
+   "name": "twStandardSoundChannel::mUpdateAmountReadableAndAmountPlayed",
+   "symbol": "?mUpdateAmountReadableAndAmountPlayed@twStandardSoundChannel@@IAEEN@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
+  "0x00642630": {
+   "name": "twStandardSoundChannel::mDoActiveUpdate",
+   "symbol": "?mDoActiveUpdate@twStandardSoundChannel@@IAEEN@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 848,
+   "score": 53.341,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x00642980": {
+   "name": "twStandardSoundChannel::mUpdateBuffersAndSelections",
+   "symbol": "?mUpdateBuffersAndSelections@twStandardSoundChannel@@MAEEN@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 2341,
+   "score": 67.063,
+   "exact": false,
+   "recorded": "2026-11-09"
+  },
+  "0x006432b0": {
+   "name": "twStandardSoundChannel::mUpdateAmountPlayed",
+   "symbol": "?mUpdateAmountPlayed@twStandardSoundChannel@@MAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-09"
+  },
   "0x00646ce0": {
    "name": "AddSoundErrorDuringInterrupt",
    "symbol": "?AddSoundErrorDuringInterrupt@@YAXPBDZZ",

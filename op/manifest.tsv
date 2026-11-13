@@ -761,6 +761,58 @@ address	size	symbol	source	modes
 0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
 0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
 0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
+0x0063edd0	171	tCoopThreadPart::mSetTime()	Tiger/tgthread.cpp	vc6 guest
+0x0063ee80	7	tCoopThreadPart::mGetTime()	Tiger/tgthread.cpp	vc6 guest
+0x0063ee90	27	tCoopThreadPart::mIsReady()	Tiger/tgthread.cpp	vc6 guest
+0x0063eeb0	602	tCoopThreadPart::mActivate()	Tiger/tgthread.cpp	vc6 guest
+0x0063f110	102	tCoopThreadPart::mDeactivate()	Tiger/tgthread.cpp	vc6 guest
+0x0063f180	242	tCoopThreadPart::mNewThread(tClientThread*,long)	Tiger/tgthread.cpp	vc6 guest
+0x0063f280	111	tCoopThreadPart::mSetThreadFreq(tClientThread*,long)	Tiger/tgthread.cpp	vc6 guest
+0x0063f2f0	127	tCoopThreadPart::mSetMainThreadFreq(long)	Tiger/tgthread.cpp	vc6 guest
+0x0063f370	78	tCoopThreadPart::mResetPriorities()	Tiger/tgthread.cpp	vc6 guest
+0x0063f3c0	84	tCoopThreadPart::mSetThreadPriority(tClientThread*,long)	Tiger/tgthread.cpp	vc6 guest
+0x0063f420	98	tCoopThreadPart::mSetMainThreadPriority(long)	Tiger/tgthread.cpp	vc6 guest
+0x0063f490	82	tCoopThreadPart::mRest()	Tiger/tgthread.cpp	vc6 guest
+0x0063f4f0	79	tCoopThreadPart::mSleepFor(double)	Tiger/tgthread.cpp	vc6 guest
+0x0063f540	86	tCoopThreadPart::mSleepUntil(double)	Tiger/tgthread.cpp	vc6 guest
+0x0063f5a0	278	tCoopThreadPart::mSwitchTo(tClientThread*)	Tiger/tgthread.cpp	partial
+0x0063f6e0	516	tCoopThreadPart::mAllocCoopThread()	Tiger/tgthread.cpp	vc6 guest
+0x0063f8f0	539	tCoopThreadPart::mFreeCoopThread(tCoopThread*)	Tiger/tgthread.cpp	vc6 guest
+0x0063fb10	89	tCoopThreadPart::mFindCoopThread(tClientThread*)	Tiger/tgthread.cpp	vc6 guest
+0x0063fb70	89	tCoopThreadPart::mFindCoopThread(tNativeThread*)	Tiger/tgthread.cpp	vc6 guest
+0x0063fbd0	318	tCoopThreadPart::mGetBestNextThread(tCoopThread*,double)	Tiger/tgthread.cpp	vc6 guest
+0x0063fd10	1284	tCoopThreadPart::mDoSleep(double,tNativeThread*)	Tiger/tgthread.cpp	partial
+0x00640220	182	tCoopThreadPart::mDoDelThread(tClientThread*)	Tiger/tgthread.cpp	vc6 guest
+0x006402e0	661	tCoopThreadPart::mDelThread(tClientThread*)	Tiger/tgthread.cpp	vc6 guest
+0x00640700	173	DumpEventLog()	Tiger/twthread.cpp	vc6 guest
+0x006407b0	85	MyReleaseSemaphore(void*)	Tiger/twthread.cpp	vc6 guest
+0x00640810	96	MyWaitForSingleObject(void*)	Tiger/twthread.cpp	vc6 guest
+0x00640870	144	twNativeThread::twNativeThreadEntryProc(tNativeThread*)	Tiger/twthread.cpp	vc6 guest
+0x00640900	163	twNativeThread::twNativeThread()	Tiger/twthread.cpp	vc6
+0x006409b0	30	twNativeThread::`scalar deleting destructor'	Tiger/twthread.cpp	vc6
+0x006409d0	257	twNativeThread::twNativeThread(class tClientThread*,long)	Tiger/twthread.cpp	vc6
+0x00640ae0	87	twNativeThread::~twNativeThread()	Tiger/twthread.cpp	vc6
+0x00640b40	612	twNativeThread::mGotoThread(tNativeThread*)	Tiger/twthread.cpp	partial
+0x00640db0	493	twCoopThreadPart::mCoopRun(tNativeThread*)	Tiger/twthread.cpp	partial
+0x00641100	87	twCoopThreadPart::mNewMainThread()	Tiger/twthread.cpp	vc6 guest
+0x00641160	101	twCoopThreadPart::mNewNativeThread(class tClientThread*,long)	Tiger/twthread.cpp	vc6 guest
+0x006411d0	17	twCoopThreadPart::mDelNativeThread(tNativeThread*)	Tiger/twthread.cpp	vc6 guest
+0x006411f0	247	twCoopThreadPart::mDoDelThread(class tClientThread*)	Tiger/twthread.cpp	vc6 guest
+0x00641320	797	twSoundPart::mInitDirectSound(tInitSoundPartInfo*)	Tiger/twSound.cpp	vc6 guest
+0x00641640	205	twStandardSoundChannel::mClear()	Tiger/twSound.cpp	vc6 guest
+0x00641710	218	twStandardSoundChannel::mReset(iTruth)	Tiger/twSound.cpp	vc6 guest
+0x006417f0	768	twStandardSoundChannel::mPauseChannel()	Tiger/twSound.cpp	vc6 guest
+0x00641af0	250	twStandardSoundChannel::mDone()	Tiger/twSound.cpp	vc6 guest
+0x00641bf0	248	twStandardSoundChannel::mInit()	Tiger/twSound.cpp	vc6 guest
+0x00641cf0	340	twStandardSoundChannel::mLockHardware()	Tiger/twSound.cpp	vc6 guest
+0x00641e50	390	twStandardSoundChannel::mLockHardwareForSilence()	Tiger/twSound.cpp	vc6 guest
+0x00641fe0	189	twStandardSoundChannel::mUnlockHardware()	Tiger/twSound.cpp	vc6 guest
+0x006420a0	877	twStandardSoundChannel::mWriteData(unsigned char*,long)	Tiger/twSound.cpp	partial
+0x00642410	248	twStandardSoundChannel::mWriteSilence()	Tiger/twSound.cpp	vc6 guest
+0x00642510	273	twStandardSoundChannel::mUpdateAmountReadableAndAmountPlayed(double)	Tiger/twSound.cpp	vc6 guest
+0x00642630	843	twStandardSoundChannel::mDoActiveUpdate(double)	Tiger/twSound.cpp	partial
+0x00642980	2341	twStandardSoundChannel::mUpdateBuffersAndSelections(double)	Tiger/twSound.cpp	partial
+0x006432b0	560	twStandardSoundChannel::mUpdateAmountPlayed()	Tiger/twSound.cpp	vc6 guest
 0x00646ce0	48	AddSoundErrorDuringInterrupt(const char*,...)	Tiger/tgSound.cpp	vc6 guest
 0x00646d10	70	PrintOutBufferedErrors()	Tiger/tgSound.cpp	vc6 guest
 0x00646d60	270	GetSilenceData(long)	Tiger/tgSound.cpp	vc6 guest

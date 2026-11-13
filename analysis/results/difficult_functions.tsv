@@ -205,6 +205,7 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0062d4a0	tTagInfo::mClassifyTagTokens	4	opus	96.89	2026-11-09T11:22:08Z	not exact after 4 attempts
 0x0062d691	FUN_0062d691	4	opus	5.00	2026-11-09T11:25:55Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 5.00%
 0x0062d8d0	tIntTag::mGetString	4	opus	76.93	2026-11-09T14:29:51Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 76.93%
+0x0063f5a0	tCoopThreadPart::mSwitchTo	4	opus	97.78	2026-11-09T07:54:37Z	not exact after 4 attempts
 0x0063fd10	tCoopThreadPart::mDoSleep	4	opus	6.83	2026-11-09T09:55:29Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 6.83%
 0x00640b40	twNativeThread::mGotoThread	4	opus	7.84	2026-11-09T12:01:53Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 7.84%
 0x00640db0	twCoopThreadPart::mCoopRun	4	opus	0.19	2026-11-09T12:35:31Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.19%
