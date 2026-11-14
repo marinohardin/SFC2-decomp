@@ -10,6 +10,7 @@
 #include "Tiger/tatomic.h"
 #include "Tiger/tSndMemMgr.h"
 #include "unsorted/tDynamicMemoryFreeListViaHandles.h"
+#include "unsorted/t3DListenerProfile.h"
 
 class tSoundChannel;
 class tSoundChannelCommand;
@@ -35,14 +36,13 @@ public:
     virtual tListMemberWithHandle* mGetListMemberWithHandleFromHandle(long handle);
 };
 
-// HYPOTHESIS: t3DListenerProfile is declared only as far as tgSound.cpp's mInit, operator= and
-// mDump need it. Field names are not recovered; mDump's strings label them, in order,
-// 3DPosition, ForwardDirection, UpDirection, Velocity and fUnitScaleInMeters. The double makes
-// the class 8-aligned, so the compiler pads the vtable pointer to 8. The exe's vtable 0x00798f44
-// has mInit at slot 1 and mDump at slot 20; unsorted/t3DListenerProfile.h declares another
-// reading of the same class (int fields, no mInit or mDump slots) that this one does not match
-// yet, so the two are kept apart until they are reconciled.
-class t3DListenerProfile { public: t3DListenerProfile() { field_0x8[0] = 0.0f; field_0x8[1] = 0.0f; field_0x8[2] = 1.0f; field_0x14[0] = 0.0f; field_0x14[1] = 0.0f; field_0x14[2] = -1.0f; field_0x20[0] = 0.0f; field_0x20[1] = 1.0f; field_0x20[2] = 0.0f; field_0x2c[0] = 0.0f; field_0x2c[1] = 0.0f; field_0x2c[2] = 0.0f; field_0x38 = 1.0; } virtual ~t3DListenerProfile(); virtual void mInit(); virtual void mDump(); t3DListenerProfile& operator=(t3DListenerProfile& other); float field_0x8[3]; float field_0x14[3]; float field_0x20[3]; float field_0x2c[3]; double field_0x38; };
+// t3DListenerProfile, which tgSoundPart holds at 0x68, is declared in its own header.
+
+
+
+
+
+
 
 // HYPOTHESIS: tSoundTimerResponse derives from tTimerResponse and its size is a guess.
 class tSoundTimerResponse

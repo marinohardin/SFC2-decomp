@@ -1,52 +1,52 @@
-//	t3DListenerProfile.h: t3DListenerProfile and the 12-byte value it holds.
-// Evidence:  class (original file unknown)
-
+//	t3DListenerProfile.h: t3DListenerProfile, the listener's position, orientation and velocity.
+// Evidence:  class; the SDK library's symbols name every member (tgsound.h in the original)
 #ifndef t3DListenerProfile_h
 #define t3DListenerProfile_h 1
-
-// HYPOTHESIS: a 12-byte value copied whole, likely a three-component vector; name unknown.
-struct t3DListenerProfile_field_08 {
-    int field_00;
-    int field_04;
-    int field_08;
-};
-
+#include "unsorted/tEntity.h"   // tPoint3, in its copy of the SDK's tvectormath.h
+// The virtual functions in vtable order (0x00798f44), which is the order of the SDK library's
+// vtable for the class; MSVC places overloads in reverse declaration order. The two by-value
+// setters of each vector compile to the same bytes, so the exe holds one body for both slots.
+// The double makes the class 8-aligned, so the compiler pads the vtable pointer to 8.
 class t3DListenerProfile {
 public:
+    t3DListenerProfile();
+    t3DListenerProfile(tPoint3 *a3DPosition, tPoint3 *aForwardDirection, tPoint3 *anUpDirection, tPoint3 *aVelocity, double aUnitScaleInMeters);
+    t3DListenerProfile(tPoint3 a3DPosition, tPoint3 aForwardDirection, tPoint3 anUpDirection, tPoint3 aVelocity, double aUnitScaleInMeters);
     virtual ~t3DListenerProfile();
-    virtual void fn_004355ce(const t3DListenerProfile_field_08 *param_1);
-    virtual void fn_004355e6(int param_1, int param_2, int param_3);
-    virtual t3DListenerProfile_field_08 *fn_004355fe();
-    virtual void fn_00435602(const t3DListenerProfile_field_08 *param_1);
-    virtual void fn_0043561a(int param_1, int param_2, int param_3);
-    virtual t3DListenerProfile_field_08 *fn_00435632();
-    virtual void fn_00435636(const t3DListenerProfile_field_08 *param_1);
-    virtual void fn_0043564e(int param_1, int param_2, int param_3);
-    virtual t3DListenerProfile_field_08 *fn_00435666();
-    virtual void fn_0043566a(const t3DListenerProfile_field_08 *param_1);
-    virtual void fn_00435682(int param_1, int param_2, int param_3);
-    virtual t3DListenerProfile_field_08 *fn_0043569a();
-    virtual void fn_0043569e(double param_1);
-    virtual double fn_004356a8();
-    // HYPOTHESIS: the exe's vtable (0x00798f44) has mInit at slot 1 and mDump at slot 20, which the
-    // slots above do not model yet; they are declared last so the slots above do not move.
-    // Tiger/tgSound.cpp defines them and operator=, reading the fields as floats and a double.
     virtual void mInit();
+    virtual void mSet3DPosition(tPoint3 *aPoint);
+    virtual void mSet3DPosition(tPoint3 aPoint);
+    virtual void mSet3DPosition(float aX, float aY, float aZ);
+    virtual tPoint3 *mGet3DPosition();
+    virtual void mSetForwardDirection(tPoint3 *aPoint);
+    virtual void mSetForwardDirection(tPoint3 aPoint);
+    virtual void mSetForwardDirection(float aX, float aY, float aZ);
+    virtual tPoint3 *mGetForwardDirection();
+    virtual void mSetUpDirection(tPoint3 *aPoint);
+    virtual void mSetUpDirection(tPoint3 aPoint);
+    virtual void mSetUpDirection(float aX, float aY, float aZ);
+    virtual tPoint3 *mGetUpDirection();
+    virtual void mSetVelocity(tPoint3 *aPoint);
+    virtual void mSetVelocity(tPoint3 aPoint);
+    virtual void mSetVelocity(float aX, float aY, float aZ);
+    virtual tPoint3 *mGetVelocity();
+    virtual void mSetUnitScaleInMeters(double aScale);
+    virtual double mGetUnitScaleInMeters();
     virtual void mDump();
     t3DListenerProfile& operator=(t3DListenerProfile& other);
-
-    int field_04;
-    t3DListenerProfile_field_08 field_08;
-    // HYPOTHESIS: a second 12-byte value of the same kind as field_08, set by 0x00435602.
-    t3DListenerProfile_field_08 field_14;
-    // HYPOTHESIS: a third 12-byte value of the same kind, set by 0x00435636.
-    t3DListenerProfile_field_08 field_20;
-    // HYPOTHESIS: a fourth 12-byte value of the same kind, set by 0x0043566a.
-    t3DListenerProfile_field_08 field_2c;
-    // HYPOTHESIS: a double at +0x38, set by 0x0043569e. Declared as two ints because a double
-    // member would make the class 8-byte aligned and pad the vtable pointer, moving every field
-    // by 4; the original layout has no such padding (packing unknown).
-    int field_38[2];
+    // HYPOTHESIS: the vectors' names follow mDump's labels and the f prefix of fUnitScaleInMeters.
+    tPoint3 f3DPosition;
+    tPoint3 fForwardDirection;
+    tPoint3 fUpDirection;
+    tPoint3 fVelocity;
+    double fUnitScaleInMeters;
 };
-
+inline t3DListenerProfile::t3DListenerProfile()
+{
+    f3DPosition.x = 0.0f; f3DPosition.y = 0.0f; f3DPosition.z = 1.0f;
+    fForwardDirection.x = 0.0f; fForwardDirection.y = 0.0f; fForwardDirection.z = -1.0f;
+    fUpDirection.x = 0.0f; fUpDirection.y = 1.0f; fUpDirection.z = 0.0f;
+    fVelocity.x = 0.0f; fVelocity.y = 0.0f; fVelocity.z = 0.0f;
+    fUnitScaleInMeters = 1.0;
+}
 #endif

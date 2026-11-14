@@ -93,11 +93,11 @@ iTruth GetSilenceData(long bits)
     return result;
 }
 
-// HYPOTHESIS: t3DListenerProfile (tgsound.h in the original) is declared here only as far as
-// mInit, operator= and mDump need it. Field names are not recovered; mDump's strings label them, in
-// order, 3DPosition, ForwardDirection, UpDirection, Velocity and fUnitScaleInMeters.
-// It is declared before tgSoundPart, which holds one at 0x68; the double makes the class 8-aligned,
-// so the compiler pads the vtable pointer to 8.
+// t3DListenerProfile (tgsound.h in the original) is declared in unsorted/t3DListenerProfile.h.
+
+
+
+
 // MATCH-ONLY: these lines stand in for its earlier declaration here, so the __LINE__ values below
 // are unchanged.
 
@@ -114,37 +114,37 @@ iTruth GetSilenceData(long bits)
 // FUNCTION: STARFLEETOP 0x00646e70
 void t3DListenerProfile::mInit()
 {
-    field_0x8[0] = 0.0f;
-    field_0x8[1] = 0.0f;
-    field_0x8[2] = 1.0f;
-    field_0x14[0] = 0.0f;
-    field_0x14[1] = 0.0f;
-    field_0x14[2] = -1.0f;
-    field_0x20[0] = 0.0f;
-    field_0x20[1] = 1.0f;
-    field_0x20[2] = 0.0f;
-    field_0x2c[0] = 0.0f;
-    field_0x2c[1] = 0.0f;
-    field_0x2c[2] = 0.0f;
-    field_0x38 = 1.0;
+    f3DPosition.x = 0.0f;
+    f3DPosition.y = 0.0f;
+    f3DPosition.z = 1.0f;
+    fForwardDirection.x = 0.0f;
+    fForwardDirection.y = 0.0f;
+    fForwardDirection.z = -1.0f;
+    fUpDirection.x = 0.0f;
+    fUpDirection.y = 1.0f;
+    fUpDirection.z = 0.0f;
+    fVelocity.x = 0.0f;
+    fVelocity.y = 0.0f;
+    fVelocity.z = 0.0f;
+    fUnitScaleInMeters = 1.0;
 }
 
 // FUNCTION: STARFLEETOP 0x00646eb0
 t3DListenerProfile& t3DListenerProfile::operator=(t3DListenerProfile& other)
 {
-    field_0x8[0] = other.field_0x8[0];
-    field_0x8[1] = other.field_0x8[1];
-    field_0x8[2] = other.field_0x8[2];
-    field_0x2c[0] = other.field_0x2c[0];
-    field_0x2c[1] = other.field_0x2c[1];
-    field_0x2c[2] = other.field_0x2c[2];
-    field_0x38 = other.field_0x38;
-    field_0x14[0] = other.field_0x14[0];
-    field_0x14[1] = other.field_0x14[1];
-    field_0x14[2] = other.field_0x14[2];
-    field_0x20[0] = other.field_0x20[0];
-    field_0x20[1] = other.field_0x20[1];
-    field_0x20[2] = other.field_0x20[2];
+    f3DPosition.x = other.f3DPosition.x;
+    f3DPosition.y = other.f3DPosition.y;
+    f3DPosition.z = other.f3DPosition.z;
+    fVelocity.x = other.fVelocity.x;
+    fVelocity.y = other.fVelocity.y;
+    fVelocity.z = other.fVelocity.z;
+    fUnitScaleInMeters = other.fUnitScaleInMeters;
+    fForwardDirection.x = other.fForwardDirection.x;
+    fForwardDirection.y = other.fForwardDirection.y;
+    fForwardDirection.z = other.fForwardDirection.z;
+    fUpDirection.x = other.fUpDirection.x;
+    fUpDirection.y = other.fUpDirection.y;
+    fUpDirection.z = other.fUpDirection.z;
     return *this;
 }
 
@@ -258,11 +258,11 @@ t3DListenerProfile& t3DListenerProfile::operator=(t3DListenerProfile& other)
 // FUNCTION: STARFLEETOP 0x00646f10
 void t3DListenerProfile::mDump()
 {
-    SOUND_ERROR(("Listener: 3DPosition=(%f,%f,%f)", field_0x8[0], field_0x8[1], field_0x8[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("Listener: ForwardDirection=(%f,%f,%f)", field_0x14[0], field_0x14[1], field_0x14[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("Listener: UpDirection=(%f,%f,%f)", field_0x20[0], field_0x20[1], field_0x20[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("Listener: Velocity=(%f,%f,%f)", field_0x2c[0], field_0x2c[1], field_0x2c[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("Listener: fUnitScaleInMeters=%f", field_0x38)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Listener: 3DPosition=(%f,%f,%f)", f3DPosition.x, f3DPosition.y, f3DPosition.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Listener: ForwardDirection=(%f,%f,%f)", fForwardDirection.x, fForwardDirection.y, fForwardDirection.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Listener: UpDirection=(%f,%f,%f)", fUpDirection.x, fUpDirection.y, fUpDirection.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Listener: Velocity=(%f,%f,%f)", fVelocity.x, fVelocity.y, fVelocity.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Listener: fUnitScaleInMeters=%f", fUnitScaleInMeters)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
 }
 
 // MATCH-ONLY: tgSound.h now declares t3DSoundProfile; the lines are kept so line numbers stay.
