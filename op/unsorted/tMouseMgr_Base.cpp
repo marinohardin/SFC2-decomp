@@ -5,20 +5,20 @@ class tMouseMgr_Base {
 public:
     tMouseMgr_Base();
     virtual ~tMouseMgr_Base();
+    tMouseMgr_Base *scalar_deleting_destructor(unsigned char flags);
 };
 
 // FUNCTION: STARFLEETOP 0x0040bd69
-tMouseMgr_Base::~tMouseMgr_Base()
+inline tMouseMgr_Base::~tMouseMgr_Base()
 {
 }
 
 // FUNCTION: STARFLEETOP 0x0040bd70
 // MATCH-ONLY: the scalar deleting destructor is compiler-generated and has no
-// source line, so the harness cannot claim it directly; this annotation sits on
-// the constructor, which the original defines elsewhere (HYPOTHESIS).
-tMouseMgr_Base::tMouseMgr_Base()
-{
-}
+// source line; it is written out as a member. The original inlines the empty
+// destructor here, so the destructor is inline (HYPOTHESIS: defined in the class).
+tMouseMgr_Base *tMouseMgr_Base::scalar_deleting_destructor(unsigned char flags)
+{ tMouseMgr_Base::~tMouseMgr_Base(); if (flags & 1) ::operator delete(this); return this; }
 
 // tTimerResponse: the callback interface twClock::mSetTimer takes (SDK
 // symbol). Its first virtual is what a timer calls when it fires.
@@ -48,11 +48,11 @@ public:
 // FUNCTION: STARFLEETOP 0x0040bd95
 // MATCH-ONLY: the scalar deleting destructor is compiler-generated and has no
 // source line, so the harness cannot claim it directly; it is written out as a
-// member that calls the base destructor, then deletes when bit 0 of the flag
-// is set (HYPOTHESIS: tMouseMgr_Ex declares no destructor of its own).
+// member that calls the destructor at 0x0040bdb1, then deletes when bit 0
+// of the flag is set.
 tMouseMgr_Ex *tMouseMgr_Ex::scalar_deleting_destructor(unsigned char flags)
 {
-    tMouseMgr_Base::~tMouseMgr_Base();
+    tMouseMgr_Ex::~tMouseMgr_Ex();
     if (flags & 1)
         ::operator delete(this);
     return this;

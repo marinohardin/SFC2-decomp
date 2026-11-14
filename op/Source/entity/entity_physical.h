@@ -6,7 +6,7 @@
 #define entity_physical_h 1
 
 #include "unsorted/tEntity.h"
-
+#include "unsorted/tListMember.h"
 // HYPOTHESIS: the object 0x00413ac3 is given; only slot 57 (offset 0xe4) is called, with
 // the result of 0x00413b34.
 class tObject_00413ac3_arg
@@ -111,18 +111,18 @@ public:
 	// stores this vftable and calls mClearList (slot 18) directly for the member at 0x1a4.
 	virtual ~tDynamicMemoryFreeList() { mClearList(); }
 	virtual void vfunction2();
-	virtual void vfunction3();
+	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
 	virtual void vfunction4();
 	virtual void mGetPreviousListMember();
-	virtual void mGetNextListMember();
+	virtual void *mGetNextListMember(void *aMember);
 	virtual void mGetPreviousCircularListMember();
 	virtual void mGetNextCircularListMember();
 	virtual void mGetListMemberAtThisIndex();
 	virtual void mAddToFrontOfList();
-	virtual void mAddToBackOfList();
+	virtual void mAddToBackOfList(void *aMember);
 	virtual void mInsertAfterListMember();
 	virtual void mInsertBeforeListMember();
-	virtual void mRemoveFromList();
+	virtual void mRemoveFromList(void *aMember);
 	virtual void mIsListMember();
 	virtual void vfunction16();
 	virtual void vfunction17();
@@ -154,8 +154,8 @@ public:
 	virtual int vfunction23();
 	virtual void vfunction24();
 	virtual void vfunction25();
-	// HYPOTHESIS: five 4-byte arguments.
-	virtual void vfunction26(int a1, int a2, int a3, int a4, int a5);
+	// HYPOTHESIS: five arguments; the first is 2 bytes, pushed unextended by 0x00413614.
+	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 	// HYPOTHESIS: (source ID, direction, amount, seed, flags), from the tNetMsg_kDamage it
 	// fills; 0x00413448 passes (-1, 0, 10001, 0, 12).
 	virtual void vfunction27(int aID, short aDirection, unsigned aAmount, int aSeed, char aFlags);
@@ -198,7 +198,7 @@ public:
 	virtual void vfunction50();
 	virtual void vfunction51();
 	virtual void vfunction52();
-	virtual void vfunction53();
+	virtual void vfunction53(tID aID);
 	// HYPOTHESIS: stores its argument in the float member at 0x17c that vfunction55 returns.
 	virtual void vfunction54(float aValue);
 	// The original loads the member at 0x17c with fld, so the member is a float.
@@ -229,7 +229,6 @@ public:
 
 	// HYPOTHESIS: returns by value the first column of the matrix from fn_00413b34(true).
 	tPoint3 fn_00413bc1();
-
 	// HYPOTHESIS: a non-virtual member; its vftable slot, if it has one, is not recovered.
 	void fn_00413a8d(tObject_00413a8d_arg *aObject);
 
@@ -237,13 +236,15 @@ public:
 	// directly.
 	void fn_004101d3();
 
-	// HYPOTHESIS: the nested tractor item; only its virtual destructor is known so far.
-	class tTractorItem
+	// HYPOTHESIS: a member of the list at 0x1a4, one per tractor beam: the beam entity's ID
+	// and the target's, as 0x00413614 fills them; the two links are cleared on construction.
+	class tTractorItem : public tListMember
 	{
-	public:
-		virtual ~tTractorItem();
-	};
-
+	public: tTractorItem() : field_0x4(0), field_0x8(0) {}
+		tTractorItem *scalar_deleting_destructor(unsigned char flags);
+		void *field_0x4; void *field_0x8; tID fEntityID; tID fTargetID; };
+	// HYPOTHESIS: called with 0x2000 when a beam locks on a ship and 0x4000 when it lets go.
+	void fn_004102d9(int aFlag, tID aID, int a3, int a4, int a5);
 	// HYPOTHESIS: the object set by 0x00413a8d; its type is not known.
 	tObject_00413a8d_arg *field_0x88;
 	tObject_00413de0_8c *field_0x8c;
@@ -289,5 +290,4 @@ public:
 	int field_0x1b4;
 	int field_0x1b8;
 };
-
 #endif	// entity_physical_h

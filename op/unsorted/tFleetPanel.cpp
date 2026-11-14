@@ -5,27 +5,6 @@
 #include "tEntity.h"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include "unsorted/tObject_0090be60.h"
 
 
@@ -156,6 +135,7 @@ class tObject_0048ba83
 {
 public:
 	tObject_0048ba83();
+	~tObject_0048ba83();	// 0x0048bbac
 	// HYPOTHESIS: no arguments; called once per interval by 0x0048c418.
 	void fn_0048bc40();
 	char m_pad00[0x158];
@@ -169,6 +149,32 @@ int fn_004d3551(const char *psz1, const char *psz2);
 extern "C" int sprintf(char *, const char *, ...);
 extern bool g_b0090e004;
 extern const char *g_apsz0084c5e0[6];
+void fn_004d3306(const char *psz);
+// HYPOTHESIS: cdecl, no arguments; the values each returns (a width, a height) from 0x0040c28c.
+int fn_0046abb9();
+int fn_0046abc5();
+// HYPOTHESIS: the two objects at 0x0096908c and 0x00969088: slot 9 takes four integers (a
+// rectangle) and slot 10 a float.
+class c_0096908c
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9(int x, int y, int w, int h);
+	virtual void vfunction10(float f);
+};
+extern c_0096908c *g_0096908c;
+extern c_0096908c *g_00969088;
+// HYPOTHESIS: flags for the names at +0x58 and +0x98, set while each is in use.
+extern int g_00916f4c;
+extern int g_00916f50;
 
 #include "unsorted/tArea3Panel.h"
 
@@ -185,44 +191,6 @@ extern const char *g_apsz0084c5e0[6];
 
 
 #include "unsorted/tFleetPanel.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // FUNCTION: STARFLEETOP 0x0048bd4d
 tFleetPanel::tFleetPanel(tObject_0048bd57_arg *pCharacter)
@@ -241,15 +209,47 @@ tFleetPanel::tFleetPanel(tObject_0048bd57_arg *pCharacter)
 // FUNCTION: STARFLEETOP 0x0048c05c
 tFleetPanel::~tFleetPanel()
 {
+	int w = fn_0046abb9();
+	fn_0046abc5();
+	g_0096908c->vfunction9(240, 70, w - 10, 300);
+	g_0096908c->vfunction10(25.0f);
+	g_00969088->vfunction10(25.0f);
+	if (m_pCharacter) {
+		tObject_004b97cc_arg *pArg = &m_pCharacter->m_1f0;
+		pArg->m_n08 = m_n14;
+		pArg->m_n0c = m_n18;
+		m_pCharacter->fn_004b97cc(pArg);
+	}
+	int i;
+	for (i = 0; i < 6; i++)
+		fn_004d3306(g_apsz0084c5e0[i]);
+	fn_004d3306("FCtrl_FormBG");
+	for (i = 0; i < 6; i++) {
+		char buf[64];
+		sprintf(buf, "FCtrl_Form%d", i + 1);
+		fn_004d3306(buf);
+	}
+	if (m_pD8) {
+		delete m_pD8;
+		m_pD8 = 0;
+	}
+	if (g_00916f4c) {
+		g_00916f4c = 0;
+		fn_004d3306(m_sz58);
+	}
+	if (g_00916f50) {
+		g_00916f50 = 0;
+		fn_004d3306(m_sz98);
+	}
 }
 
 // MATCH-ONLY: the scalar deleting destructor is compiler-generated and has no source line,
 // so the harness cannot claim it directly; it is written out as a member that runs the
-// destructor body (HYPOTHESIS: empty, inlined here), then deletes when bit 0 of the flag is set.
+// destructor, then deletes when bit 0 of the flag is set.
 // FUNCTION: STARFLEETOP 0x0048c040
 tFleetPanel *tFleetPanel::scalar_deleting_destructor(unsigned char flags)
 {
-	tArea3Panel::~tArea3Panel();
+	tFleetPanel::~tFleetPanel();
 	if (flags & 1)
 		::operator delete(this);
 	return this;

@@ -5,7 +5,7 @@
 #define tShieldGroup_h 1
 
 #include "unsorted/tIndividualShipSystem.h"
-
+struct tShipSystemEntry;
 class tShieldGroup : public tIndividualShipSystem
 {
 public:
@@ -80,9 +80,9 @@ public:
     // vftable slot 106
     virtual void vfunction107();
     virtual bool vfunction108();
-    // HYPOTHESIS: vftable slot 108; the constructor calls it directly with its last two
-    // arguments.
-    virtual void vfunction109(int param_1, int param_2);
+    // HYPOTHESIS: vftable slot 108; adds the member shields from a table of entries; the
+    // constructor calls it directly with its last two arguments.
+    virtual void vfunction109(const tShipSystemEntry* param_1, int param_2);
     // HYPOTHESIS: reads and clears the changed flag (field_b8); whether it is virtual, and
     // its slot, are not known.
     bool fn_004406b9();

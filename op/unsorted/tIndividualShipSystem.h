@@ -188,11 +188,9 @@ public:
 };
 extern fn_0084b47c_type* g_0084b47c;
 
-class tListMember
-{
-public:
-    virtual ~tListMember();
-};
+#include "unsorted/tListMember.h"
+
+
 
 class tShieldSystem;
 
@@ -201,6 +199,8 @@ class tIndividualShipSystem : public tListMember
 public:
     // body at 0x004533e2
     tIndividualShipSystem();
+    // 0x00453471: stores this class's vftable (0x0079e124), as the constructor does.
+    virtual ~tIndividualShipSystem();
     // vftable slots 1..45, not yet identified
     virtual void vfunction2();
     virtual void vfunction3();

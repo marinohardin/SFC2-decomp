@@ -2,6 +2,7 @@
 
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tApplication.h"
+#include "unsorted/tGameState.h"
 
 // HYPOTHESIS: a cdecl function of one pointer argument at 0x004d32cf (the call's
 // displacement lands there; the analysis export places it inside FUN_004d32c4).
@@ -22,7 +23,8 @@ public:
 	// HYPOTHESIS: three arguments; the split of the pushes between this call and the two
 	// virtual calls inside its argument list is read from the register use at the call
 	// sites, not from the callee. Types unknown.
-	// HYPOTHESIS: the destructor at 0x004cd115; tCampaignState's destructor calls it.
+	// HYPOTHESIS: 0x004cd034 and 0x004cd115 (tShipUI's in the unit table); tCampaignState's call them.
+	c_004cd1db();
 	~c_004cd1db();
 	void fn_004cd1db(int a, int b, int id);
 	void fn_004cd2c9();
@@ -36,20 +38,27 @@ public:
 	int m_1104;
 };
 
-// HYPOTHESIS: the object at tCampaignState+0x1114; only its size (0x1c, up to the flag at
-// +0x1130) and one thiscall method of one pointer argument are known.
+// HYPOTHESIS: an empty allocator, copied from a default one (an uninitialized stack byte).
+struct c_0045dece_allocator {};
+// HYPOTHESIS: the object at tCampaignState+0x1114 (0x1c bytes, up to the flag at +0x1130): a
+// double-ended queue of names in blocks of 0x400 (0x0045dece pushes, 0x0045df4b pops, at the front).
 class c_0045dece
 {
 public:
+	c_0045dece(const c_0045dece_allocator &al = c_0045dece_allocator())
+		: m_00(al), m_04(0), m_08(0), m_0c(0), m_10(0) {}
 	// HYPOTHESIS: the destructor at 0x005d97a8; tCampaignState's destructor calls it.
 	~c_0045dece();
 	void fn_0045dece(const char **name);
 	void fn_0045df4b();
 
-	char m_pad_00[0xc];
-	// HYPOTHESIS: the number of names held; an iterator starts from it.
+	c_0045dece_allocator m_00;
+	// HYPOTHESIS: the block map, its size, the first entry's position and the entry count.
+	void **m_04;
+	int m_08;
 	int m_0c;
-	char m_pad_10[0x8];
+	int m_10;
+	char m_pad_14[0x4];
 	// HYPOTHESIS: the name compared against the top of the stack (the bottom entry).
 	const char *m_18;
 };
@@ -58,15 +67,16 @@ public:
 // constructor (0x0045de5a) before it stores its own vtable.
 // HYPOTHESIS: the members live here, not in tState_Campaign: vfunction4 reads +0x1110 and
 // tState_Campaign's constructor constructs nothing of its own.
-// HYPOTHESIS: tCampaignState has a base class at offset 0: its destructor (0x0045de01) calls
-// a destructor at 0x00469d19 on this after its members. Only that destructor is known.
-class c_00469d19
-{
-public:
-	virtual ~c_00469d19();
-};
+// The base at offset 0 is tGameState: tCampaignState's constructor calls its constructor first
+// and its destructor calls its destructor last.
 
-class tCampaignState : public c_00469d19 {
+
+
+
+
+
+
+class tCampaignState : public tGameState {
 public:
 	tCampaignState();
 	// HYPOTHESIS: the original declares no destructor. The compiler-generated one (code at
@@ -94,7 +104,6 @@ public:
 	virtual void vfunction14();
 	virtual void vfunction15(int *arg);
 
-	char m_pad_04[0x8];
 	c_004cd1db m_0c;
 	c_0045dece m_1114;
 	// HYPOTHESIS: set once the player's name has been sent.
@@ -162,7 +171,7 @@ class tState_Campaign : public tCampaignState {
 public:
 	// The constructor (0x0045dde5) is not inline: the global's initializer calls it.
 	tState_Campaign();
-	virtual ~tState_Campaign();
+	// The original declares no destructor: its implicit one (0x0045dde0) jumps to tCampaignState's.
 	virtual void vfunction3();
 	// HYPOTHESIS: the argument is not read here.
 	virtual void vfunction6(int arg);
@@ -341,15 +350,6 @@ tState_Campaign::tState_Campaign()
 {
 }
 
-// HYPOTHESIS: the code at 0x0045ddf7 (its exception-frame setup and body) is rebuilt as
-// tCampaignState::~tCampaignState, which claims 0x0045ddf7. This empty definition is not the original; it stays
-// until that code moves here, because a caller or a vtable needs it.
-tState_Campaign::~tState_Campaign()
-{
-}
-
-// HYPOTHESIS: the rest of tCampaignState's destructor (see the declaration); it starts at
-// 0x0045ddf7, so this build carries 10 bytes and a vtable store more than the original.
 // FUNCTION: STARFLEETOP 0x0045ddf7
 tCampaignState::~tCampaignState()
 {

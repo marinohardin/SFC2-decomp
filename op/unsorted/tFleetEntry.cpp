@@ -47,15 +47,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 // HYPOTHESIS: 0xd4 bytes; the analysis names tRadioGroup's and tFleetEntry's virtual
 // functions after tVisGroup's slots.
 // HYPOTHESIS: 0x004c3a36 calls vfunction48 and vfunction49 on the fleet entry's "StartFireFleet" button
@@ -455,6 +446,8 @@ void fn_004d3564(const char *psz1, const char *psz2, int n);
 class tVisNotifiee
 {
 public:
+	// HYPOTHESIS: the destructor at 0x00684940; whether it is virtual is not known here.
+	~tVisNotifiee();
 	virtual void vfunction0();
 	virtual void vfunction1();
 	virtual void vfunction2();
@@ -522,7 +515,7 @@ class tRadioGroup : public tVisGroup, public tVisNotifiee
 {
 public:
 	tRadioGroup();
-	virtual ~tRadioGroup();
+	// The original declares no destructor: its implicit one (0x004bf048) stores no vtable.
 	// HYPOTHESIS: called with the button that was pressed.
 	void fn_0067e790(tVisGroup *pButton);
 	// HYPOTHESIS: a tRadioGroup member next to fn_0067e790, called with the selected button.
@@ -536,6 +529,8 @@ public:
 class tObject_004c2669_slot
 {
 public:
+	// HYPOTHESIS: its destructor is the one at 0x005d80e0, which tFleetEntry's calls.
+	~tObject_004c2669_slot();
 	tObject_004c2669_slot()
 	{
 		m_n18 = 0;
@@ -683,6 +678,11 @@ tFleetEntry *tFleetEntry::scalar_deleting_destructor(unsigned char flags)
 // FUNCTION: STARFLEETOP 0x004c271b
 tFleetEntry::~tFleetEntry()
 {
+	vfunction46_for_tVisGroup();
+	for (int i = 0; i < 6; i++) {
+		delete m_apSlot[i];
+		m_apSlot[i] = 0;
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004c27a8

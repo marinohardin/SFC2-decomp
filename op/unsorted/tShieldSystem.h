@@ -5,7 +5,7 @@
 #define tShieldSystem_h 1
 
 #include "unsorted/tIndividualShipSystem.h"
-
+struct tShipSystemEntry;
 class tShieldSystem : public tRepairableShipSystem
 {
 public:
@@ -83,7 +83,7 @@ public:
     void fn_00440224();
     // HYPOTHESIS: called when the shield comes on line.
     void fn_0044036b();
-
+    tShieldSystem(fn_owner_type* pOwner, tIndividualShipSystem* pGroup, const tShipSystemEntry* pEntry, int nFlag);
     // HYPOTHESIS: a state byte compared with tIndividualShipSystem's byte at +0x45.
     bool field_80;
     // HYPOTHESIS: saved as "fReinforced".

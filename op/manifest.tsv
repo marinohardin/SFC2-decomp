@@ -28,7 +28,7 @@ address	size	symbol	source	modes
 0x0040b32b	59	tSfcApp3d::vfunction2(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
 0x0040b366	89	tSfcApp3d::vfunction4(tView3D *)	unsorted/tSfcApp3d.cpp	vc6 guest
 0x0040bd69	7	tMouseMgr_Base::~tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	vc6
-0x0040bd70	29	tMouseMgr_Base::tMouseMgr_Base()	unsorted/tMouseMgr_Base.cpp	partial
+0x0040bd70	29	tMouseMgr_Base::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest
 0x0040bd8d	8	tMouseMgr_Ex::tTimer::fn_0040bd8d()	unsorted/tMouseMgr_Base.cpp	vc6 guest
 0x0040bd95	28	tMouseMgr_Ex::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest
 0x0040bdb1	66	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	partial
@@ -89,7 +89,7 @@ address	size	symbol	source	modes
 0x0040ff95	10	tEntity::vfunction10(iTruth)	unsorted/tEntity.cpp	vc6 guest
 0x0040ff9f	10	tEntity::vfunction13(tID)	unsorted/tEntity.cpp	vc6 guest
 0x0040ffa9	4	tEntity::vfunction14()	unsorted/tEntity.cpp	vc6 guest
-0x0040ffad	28	tEntity::`scalar deleting destructor'	unsorted/tEntity.cpp	partial
+0x0040ffad	28	tEntity::scalar_deleting_destructor(unsigned char)	unsorted/tEntity.cpp	vc6 guest
 0x0041004d	270	tEntity::vfunction11(tSFCStream &,int32u)	unsorted/tEntity.cpp	vc6 guest
 0x0041015b	13	tEntity::vfunction2()	unsorted/tEntity.cpp	vc6 guest
 0x00410168	38	tEntity::fn_00410168()	unsorted/tEntity.cpp	vc6 guest
@@ -111,13 +111,13 @@ address	size	symbol	source	modes
 0x00413448	134	tPhysicalEntity::vfunction3()	Source/entity/entity_physical.cpp	vc6 guest
 0x004134ce	35	tPhysicalEntity::vfunction43(char *)	Source/entity/entity_physical.cpp	vc6 guest
 0x004134f1	42	tPhysicalEntity::vfunction45(char *)	Source/entity/entity_physical.cpp	vc6 guest
-0x0041351b	38	tPhysicalEntity::vfunction26(int,int,int,int,int)	Source/entity/entity_physical.cpp	vc6 guest
+0x0041351b	38	tPhysicalEntity::vfunction26(short,int,int,int,int)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413541	205	tPhysicalEntity::vfunction27(int,short,unsigned aAmount,int,char)	Source/entity/entity_physical.cpp	vc6 guest
 0x0041360e	6	tNetMsg_kAIChangeTeamRelationshipToWar::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
-0x00413614	944	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	partial
+0x00413614	944	tPhysicalEntity::vfunction7(tObject_0041018e_arg *,int)	Source/entity/entity_physical.cpp	vc6 guest
 0x004139c4	6	tNetMsg_kTractorChangeMessage::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
 0x004139ca	6	tNetMsg_kDeepScan::mGetMap() const	Source/entity/entity_physical.cpp	vc6 guest
-0x004139d0	28	tPhysicalEntity::tTractorItem::`scalar deleting destructor'	Source/entity/entity_physical.cpp	partial
+0x004139d0	28	tPhysicalEntity::tTractorItem::scalar_deleting_destructor(unsigned char)	Source/entity/entity_physical.cpp	vc6 guest
 0x004139ec	75	tPhysicalEntity::vfunction5()	Source/entity/entity_physical.cpp	vc6 guest
 0x00413a37	86	tPhysicalEntity::vfunction60(int)	Source/entity/entity_physical.cpp	vc6 guest
 0x00413a8d	54	tPhysicalEntity::fn_00413a8d(tObject_00413a8d_arg *)	Source/entity/entity_physical.cpp	vc6 guest
@@ -206,11 +206,11 @@ address	size	symbol	source	modes
 0x00429f0d	471	tClientCharacter::fn_00429f17(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
 0x0042a0fc	26	tBuffer::Write(const byte*,int32u)	unsorted/tClientCharacter.cpp	vc6 guest
 0x0042a116	79	tOutput::operator<<(const std::string&)	unsorted/tClientCharacter.cpp	vc6 guest
-0x0042a165	420	fn_0042a165()	unsorted/tClientCharacter.cpp	partial
+0x0042a165	420	tClientCharacter::StreamIn(nDataStore::tInput &)	unsorted/tClientCharacter.cpp	partial
 0x00431044	249	tNetControl::tNetControl()	unsorted/tNetControl.cpp	vc6
-0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	partial
+0x0043113d	28	tNetControl::`scalar deleting destructor'	unsorted/tNetControl.cpp	vc6
 0x00431159	33	tNetControl::fn_00431159(unsigned char)	unsorted/tNetControl.cpp	vc6 guest
-0x0043117a	114	fn_00431184(tNetControl *)	unsorted/tNetControl.cpp	partial
+0x0043117a	114	tNetControl::~tNetControl()	unsorted/tNetControl.cpp	vc6
 0x004311ec	10	fn_004311ec()	unsorted/tNetControl.cpp	vc6 guest
 0x004311f6	10	fn_004311f6()	unsorted/tNetControl.cpp	vc6 guest
 0x00431200	39	tNetControl::fn_00431200()	unsorted/tNetControl.cpp	vc6 guest
@@ -312,7 +312,7 @@ address	size	symbol	source	modes
 0x00440692	28	tShieldGroup::scalar_deleting_destructor(unsigned char)	unsorted/tShieldGroup.cpp	vc6 guest
 0x004406ae	11	tShieldGroup::~tShieldGroup()	unsorted/tShieldGroup.cpp	vc6
 0x004406b9	24	tShieldGroup::fn_004406b9()	unsorted/tShieldGroup.cpp	vc6 guest
-0x004406d1	462	tShieldGroup::vfunction109(int,int)	unsorted/tShieldGroup.cpp	partial
+0x004406d1	462	tShieldGroup::vfunction109(const tShipSystemEntry*,int)	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044089f	255	tShieldGroup::vfunction87(float,float,float,float,float,float)	unsorted/tShieldGroup.cpp	vc6 guest
 0x0044099e	286	tShieldGroup::vfunction88(float*,float*,float*,float*,float*,float*)	unsorted/tShieldGroup.cpp	vc6 guest
 0x00440abc	85	tShieldGroup::vfunction95()	unsorted/tShieldGroup.cpp	vc6 guest
@@ -340,11 +340,11 @@ address	size	symbol	source	modes
 0x0045ddca	12	g_0090bfd8 (atexit registration)	unsorted/tCampaignState.cpp	vc6
 0x0045dde5	18	tState_Campaign::tState_Campaign()	unsorted/tCampaignState.cpp	vc6
 0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
-0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	partial
+0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	vc6
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
 0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
-0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	partial
+0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	vc6
 0x0048c34e	31	tFleetPanel::fn_0048c34e()	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c36d	57	tFleetPanel::fn_0048c36d(int)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c3a6	65	tFleetPanel::vfunction3(int *)	unsorted/tFleetPanel.cpp	vc6 guest
@@ -369,7 +369,7 @@ address	size	symbol	source	modes
 0x004c265f	147	tFleetEntry::tFleetEntry()	unsorted/tFleetEntry.cpp	vc6
 0x004c26f2	13	tFleetEntry::vfunction49_for_tVisGroup(tFleetPanel *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c26ff	28	tFleetEntry::scalar_deleting_destructor(unsigned char)	unsorted/tFleetEntry.cpp	vc6 guest
-0x004c271b	141	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	partial
+0x004c271b	141	tFleetEntry::~tFleetEntry()	unsorted/tFleetEntry.cpp	vc6
 0x004c27a8	786	tFleetEntry::vfunction31_for_tVisGroup(int *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2aba	59	tFleetEntry::fn_004c2aba(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c2b66	59	tFleetEntry::fn_004c2b66(tObjBase *)	unsorted/tFleetEntry.cpp	vc6 guest
@@ -593,9 +593,9 @@ address	size	symbol	source	modes
 0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
-0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	partial
+0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	vc6
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
-0x006082e2	13	fn_006082e2()	unsorted/tPanelMgr.cpp	vc6 guest
+0x006082e2	13	tPanelMgr::fn_006082e2()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006082ef	420	tPanelMgr::fn_006082f9()	unsorted/tPanelMgr.cpp	vc6 guest
 0x00608493	71	tPanelMgr::fn_00608493()	unsorted/tPanelMgr.cpp	vc6 guest
 0x006084da	160	tPanelMgr::fn_006084e4()	unsorted/tPanelMgr.cpp	vc6 guest

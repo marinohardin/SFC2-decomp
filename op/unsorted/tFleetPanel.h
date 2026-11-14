@@ -3,7 +3,6 @@
 
 #ifndef tFleetPanel_h
 #define tFleetPanel_h 1
-
 #include <vector>
 
 #include "unsorted/tArea3Panel.h"
@@ -47,7 +46,8 @@ public:
 	tObject_0048c1b5_wnd *m_p4c;
 	int m_n50;
 	int m_n54;
-	char m_pad58[0x80];
+	char m_sz58[0x40];	// HYPOTHESIS: names the destructor passes to 0x004d3306
+	char m_sz98[0x40];
 	tObject_0048ba83 *m_pD8;
 	char m_padDC[0xc];
 	double m_dE8;

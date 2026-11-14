@@ -128,32 +128,6 @@ inline tObject_0042ade3::tObject_0042ade3(const std::less<int> &pred, const std:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // The SDK's tSingleAccessWrapper: exclusive access to a pointer. The members at +0xb4 and
 // +0xcc are two instances; the constructor (0x0048589c) and IsValid (0x0058f829) are shared
 // by both, Delete is 0x0042cc05 for the first and 0x005ff84a for the second.
@@ -276,6 +250,7 @@ public:
 	void fn_00429d06(int arg);
 	void fn_00429d10(const tObject_00543551 *source);
 	void fn_00429f17(tObject_00429f17 *stream);
+	void StreamIn(nDataStore::tInput &input);
 	std::string m_0c;
 	std::string m_1c;
 	int m_2c;
@@ -608,12 +583,37 @@ tOutput& tOutput::operator<<( const std::string& string )
 	return *this;
 }
 }
-// HYPOTHESIS: as at 0x00429f0d, these 10 bytes (`mov eax, 0x0075c738; call __EH_prolog`) are the
-// exception prolog of the function whose body follows, split off by the analysis boundary, so
-// they cannot be matched as a function of their own. The analysis places it in
-// tClientCharacter's vtable (slot 3); the body is not recovered. Left as an empty placeholder
-// until the boundary is corrected.
+#include "Common/DataStore/DataStoreInput.h"
+namespace nDataStore {
+// HYPOTHESIS: the reader of the list at +0xb4 (0x0042c863); its element type is not recovered.
+tInput &operator>>(tInput &input, std::vector<int> &list);
+}
+
+// HYPOTHESIS: StreamIn, read from the original instructions: under the lock at +0xe4, holding
+// both guarded pointers, it reads the fields back in the order 0x00429f17 writes them, the
+// tStreamable at +8 of the object at +0xcc among them. tHexPoint (0x14 bytes) and that object
+// are not recovered as tStreamable classes, so they are cast here. The original inlines the
+// lock's guard destructor (out of line in this unit, see 0x00429a18) and the list's operator*.
 // FUNCTION: STARFLEETOP 0x0042a165
-void fn_0042a165()
+void tClientCharacter::StreamIn(nDataStore::tInput &input)
 {
+	tOptex::tGuard guard(&m_e4);
+	tSingleAccessWrapper<tObject_005391b0>::iPtr object = m_cc.Lock();
+	tObject_005391b0 *pObject = &*object;
+	tSingleAccessWrapper<std::vector<int> >::iPtr list = m_b4.Lock();
+	std::vector<int> &v = *list;
+
+	nDataStore::tInput &in = input >> m_0c >> m_1c;
+	in.Read((byte *)&m_2c, sizeof(m_2c));
+	nDataStore::tInput &in2 = in >> m_30;
+	in2.Read((byte *)&m_40, sizeof(m_40));
+	in2.Read((byte *)&m_44, sizeof(m_44));
+	in2.Read((byte *)&m_48, sizeof(m_48));
+	in2.Read((byte *)&m_4c, sizeof(m_4c));
+	in2 >> (int32s &)m_50 >> (int32s &)m_54 >> (int32s &)m_58
+		>> *(nDataStore::tStreamable *)&m_5c >> *(nDataStore::tStreamable *)&m_70
+		>> *(nDataStore::tStreamable *)&m_84 >> v
+		>> *(nDataStore::tStreamable *)((char *)pObject + 8)
+		>> (int32s &)m_98 >> *(bool *)&m_9c;
+
 }

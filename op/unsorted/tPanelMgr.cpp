@@ -1,5 +1,5 @@
-// HYPOTHESIS: tPanelMgr has a virtual destructor, defined out of line elsewhere (not yet
-// decompiled); the scalar deleting destructor at 0x00607faa calls it, not an inlined body.
+#include "unsorted/tGameState.h"
+#include "unsorted/tValueBase.h"
 #include "unsorted/tMetaClientCreator.h"
 #include "unsorted/tMetaClientMapPanelCreator.h"
 #include "unsorted/tMetaClientMissionPanelCreator.h"
@@ -14,9 +14,9 @@
 #include "unsorted/tMetaClientPlayerListPanelCreator.h"
 #include "unsorted/tMetaClientHelpListPanelCreator.h"
 #include "unsorted/tObject_0092deb4.h"
-
 #include <string>
-
+#include <vector>
+#include "Tiger/tstring.h"
 // HYPOTHESIS: the 16-byte container at tPanelMgr+0x1f0, keyed by an int and holding one 32-bit
 // value per key; only its index operator (0x0060a8f0), its clear (0x0060ab15) and its iterator's
 // increment (0x0052e144) are known. The layout is that of a balanced tree: a head node at +0x04
@@ -36,17 +36,15 @@ struct fn_0060a8f0_container {
         iterator &fn_0052e144();
         iterator &operator++() { return fn_0052e144(); }
         bool operator!=(const iterator &other) const { return m_node != other.m_node; }
-
         node *m_node;
     };
-
+    ~fn_0060a8f0_container();	// 0x0060a919
     void *&fn_0060a8f0(const int &key);
     void fn_0060ab15();
     // HYPOTHESIS: find(key); the same function (0x0053aa7a) serves the container at +0x204.
     iterator fn_0053aa7a(const int &key);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
-
     char m_0x00[0x04];
     node *m_head;
     char m_0x08[0x08];
@@ -56,6 +54,7 @@ struct fn_0060a8f0_container {
 // values (an allocator byte, then first, last and end-of-storage pointers); only its append
 // (0x00571a69) and its destructor (0x00571a7a, shared with the member at +0x1e0) are known.
 struct fn_00571a69_vector {
+    ~fn_00571a69_vector();
     void fn_00571a69(void *const &value);
     // HYPOTHESIS: erase(first, last), returning the iterator after the erased range.
     void **fn_00425ed6(void **first, void **last);
@@ -63,7 +62,6 @@ struct fn_00571a69_vector {
     void **end() { return m_last; }
     void clear() { fn_00425ed6(begin(), end()); }
     unsigned int size() const { return m_first == 0 ? 0 : m_last - m_first; }
-
     char m_allocator;
     void **m_first;
     void **m_last;
@@ -74,6 +72,7 @@ struct fn_00571a69_vector {
 // destructor, 0x00571a7a) but is erased through its own function (0x00425f12), so it is taken to
 // be a vector of another element type. Its append is assumed to be 0x00571a69 as well.
 struct fn_00425f12_vector {
+    ~fn_00425f12_vector();	// HYPOTHESIS: 0x00571a7a, as for the one at +0x1d0
     void fn_00571a69(void *const &value);
     // HYPOTHESIS: erase(first, last), returning the iterator after the erased range.
     void **fn_00425f12(void **first, void **last);
@@ -81,7 +80,6 @@ struct fn_00425f12_vector {
     void **end() { return m_last; }
     void clear() { fn_00425f12(begin(), end()); }
     unsigned int size() const { return m_first == 0 ? 0 : m_last - m_first; }
-
     char m_allocator;
     void **m_first;
     void **m_last;
@@ -100,17 +98,15 @@ struct fn_0060a951_container {
         iterator &fn_0052e1ab();
         iterator &operator++() { return fn_0052e1ab(); }
         bool operator!=(const iterator &other) const { return m_node != other.m_node; }
-
         node *m_node;
     };
-
+    ~fn_0060a951_container();	// 0x0060a97a
     void *&fn_0060a951(const int &key);
     void fn_0060ac16();
     // HYPOTHESIS: find(key), the same function (0x0053aa7a) as the container at +0x1f0 uses.
     iterator fn_0053aa7a(const int &key);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
-
     char m_0x00[0x04];
     node *m_head;
     char m_0x08[0x08];
@@ -128,10 +124,10 @@ public:
 // fn_00608bd1 reads. Only its functions 0x004d290d (no argument), 0x004d288f (looks up an object
 // by a pointer key) and 0x004d269b (two globals and a flag) are known.
 struct fn_004d290d_object {
+    ~fn_004d290d_object();	// 0x004d2636
     void fn_004d290d();
     fn_004d288f_object *fn_004d288f(const void *key);
     void fn_004d269b(void *a, void *b, bool flag);
-
     char m_0x00[0x64];
 };
 
@@ -139,13 +135,13 @@ struct fn_004d290d_object {
 // (taking no argument) is known.
 struct fn_0060b3b0_element {
     void fn_0060b3b0();
-
     char m_0x00[0x14];
 };
 
 // HYPOTHESIS: the vector at tPanelMgr+0x280, laid out like the one at +0x1d0 but of 20-byte
 // elements; only its erase (0x0060abb1) is known.
 struct fn_0060abb1_vector {
+    ~fn_0060abb1_vector();	// 0x0060a9b2
     // HYPOTHESIS: erase(first, last), returning the iterator after the erased range.
     fn_0060b3b0_element *fn_0060abb1(fn_0060b3b0_element *first, fn_0060b3b0_element *last);
     fn_0060b3b0_element *begin() { return m_first; }
@@ -163,7 +159,6 @@ struct fn_0060abb1_vector {
         fn_inline_each(begin(), end());
         fn_0060abb1(begin(), end());
     }
-
     char m_allocator;
     fn_0060b3b0_element *m_first;
     fn_0060b3b0_element *m_last;
@@ -180,7 +175,6 @@ public:
 // fields of which three get initial values.
 struct fn_0046aa10_message {
     fn_0046aa10_message() : id(0), param(-1), m_0x14(0), m_0x18(-1), m_0x1c(-1) {}
-
     int id;
     int param;
     int m_0x08;
@@ -191,8 +185,16 @@ struct fn_0046aa10_message {
     int m_0x1c;
 };
 
-// HYPOTHESIS: only the members the rebuilt functions touch are laid out; the rest is padding.
-class tPanelMgr {
+// HYPOTHESIS: value objects at +0x4c (0x2c bytes each), +0x174 and +0x234 (with a tString at
+// +0x18); the member at +0x1b4 (destroyed by 0x0060a8b8) and the object at +0x22c (deleted
+// through its virtual destructor) are otherwise unknown.
+struct c_tPanelMgr_value2c : public tValueBase { char m_18[0x14]; };
+struct c_tPanelMgr_value40 : public tValueBase { tString m_18; };
+struct c_tPanelMgr_1b4 { ~c_tPanelMgr_1b4(); char m_00[0x18]; };
+struct c_tPanelMgr_22c { virtual ~c_tPanelMgr_22c(); };
+
+// HYPOTHESIS: only members the code touches or the destructor destroys are laid out.
+class tPanelMgr : public tGameState {
 public:
     virtual ~tPanelMgr();
     // HYPOTHESIS: virtual slots 1 to 18 are not known; fn_00608bd1 calls slots 19 and 20.
@@ -217,6 +219,7 @@ public:
     virtual void vslot_0x4c();
     virtual bool vslot_0x50();
     tPanelMgr *scalar_deleting_destructor(unsigned char flags);
+    void fn_006082e2();
     void fn_006082f9();
     void fn_00608493();
     void fn_006084e4();
@@ -242,7 +245,9 @@ public:
     void fn_00609bce();
     fn_005ed4ad_object *fn_0060a500();
     char *vfunction13();
-    char m_0x004[0xf8];
+    // HYPOTHESIS: 0x00424ee1 destroys 0x28-byte elements by a virtual destructor: strings.
+    std::vector<tString> m_0x00c[4];
+    c_tPanelMgr_value2c m_0x04c[4];
     // HYPOTHESIS: a flag, cleared by vfunction4.
     bool m_0x0fc;
     char m_0x0fd[0x03];
@@ -250,7 +255,9 @@ public:
     bool m_0x164;
     char m_0x165[0x0b];
     bool m_0x170;
-    char m_0x171[0x5b];
+    char m_0x171[0x03];
+    c_tPanelMgr_value40 m_0x174;
+    c_tPanelMgr_1b4 m_0x1b4;
     int m_0x1cc;
     fn_00571a69_vector m_0x1d0;
     fn_00425f12_vector m_0x1e0;
@@ -266,7 +273,11 @@ public:
     int m_0x220;
     bool m_0x224;
     bool m_0x225;
-    char m_0x226[0x5a];
+    char m_0x226[0x06];
+    c_tPanelMgr_22c *m_0x22c;
+    char m_0x230[0x04];
+    c_tPanelMgr_value40 m_0x234;
+    char m_0x274[0x0c];
     fn_0060abb1_vector m_0x280;
     bool m_0x290;
 };
@@ -283,14 +294,12 @@ tPanelMgr *tPanelMgr::scalar_deleting_destructor(unsigned char flags)
     return this;
 }
 
-// HYPOTHESIS: the recorded 10 bytes are only the exception-handling prolog (mov eax,
-// <ehhandler>; call __EH_prolog) of the destructor; its body is recorded separately as
-// 0x00607fdf (303 bytes), and fourteen unwind funclets (0x00785898..0x00785952) name this
-// address as their parent. While the analysis split stands only the prolog is scored, so
-// this empty body is a placeholder until the members it destroys are known.
 // FUNCTION: STARFLEETOP 0x00607fd5
 tPanelMgr::~tPanelMgr()
 {
+    delete m_0x22c;
+    m_0x22c = 0;
+    fn_006082e2();
 }
 
 // HYPOTHESIS: an 8-byte table entry (two 32-bit fields of unknown meaning). Six other
@@ -313,10 +322,8 @@ int fn_00602764();
 fn_0060810e_entry *fn_00602749();
 int fn_006054e8();
 fn_0060810e_entry *fn_006054cd();
-
 extern fn_0060810e_entry g_0087b7d0[5];
 extern fn_0060810e_entry *g_00c3a68c;
-
 // FUNCTION: STARFLEETOP 0x0060810e
 void fn_0060810e()
 {
@@ -328,9 +335,7 @@ void fn_0060810e()
     int n6 = fn_006054e8() / 8;
     int i;
     int n;
-
     g_00c3a68c = new fn_0060810e_entry[n1 + n2 + n3 + n4 + n5 + n6 + 5];
-
     n = 0;
     for (i = 0; i < 4; i++)
         g_00c3a68c[n++] = g_0087b7d0[i];
@@ -351,7 +356,7 @@ void fn_0060810e()
 
 // HYPOTHESIS: releases the table fn_0060810e builds.
 // FUNCTION: STARFLEETOP 0x006082e2
-void fn_006082e2()
+void tPanelMgr::fn_006082e2()
 {
     delete[] g_00c3a68c;
 }
@@ -491,7 +496,6 @@ public:
 };
 
 extern tObject_0090b730 gObject_0090b730;
-
 // HYPOTHESIS: calls slots 86 and 109 of the object at 0x0092deb4, then slot 15 for every index
 // below its slot 9 count, from the last down to the first, then the function of the global object
 // at 0x0090b730. It does not use this.
@@ -555,25 +559,21 @@ extern void *g_0087b6bc;
 extern const char g_0087bac8[];
 extern const char g_008443c0[];
 extern const char g_0087baa0[];
-
 class fn_005ef71a_object {
 public:
     void fn_005ef71a();
 };
 fn_005ef71a_object *fn_005edc3b();
-
 class fn_00600bd5_object {
 public:
     void fn_00600bd5();
 };
 fn_00600bd5_object *fn_00600ab8();
-
 class fn_0060a617_object {
 public:
     int fn_0060a617();
 };
 fn_0060a617_object *fn_00607d61();
-
 // HYPOTHESIS: the global objects at 0x0091f930 and 0x0091a298 share a test (0x004bda12).
 class fn_004bda12_object {
 public:

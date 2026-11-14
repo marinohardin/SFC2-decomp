@@ -152,95 +152,66 @@ public:
 };
 
 #include "Source/network/NetMsgClass.h"
+// HYPOTHESIS: the object at 0x0090be5c; 0x00413614 tells it when a tractor beam starts and stops.
+class tObject_0090be5c { public: void fn_004559b7(tID aEntity, tID aTarget);
+	void fn_00455a1a(tID aEntity, tID aTarget, int aValue); };
+extern tObject_0090be5c *gObject_0090be5c;
+extern int gValue_0090bf1c;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// HYPOTHESIS: the 0xb8-byte tractor beam entity (constructor 0x0041bb65, from the two IDs).
+class tEntity_Tractor: public tEntity { public:
+	tEntity_Tractor(tID aEntity, tID aTarget);
+	void fn_0041089e(tPoint3 *aPos);	// HYPOTHESIS: places the beam at the point
+	char field_0x88[0x30]; };
 
 
 // HYPOTHESIS: the fields, from what 0x00413541 stores into them.
 struct tNetMsg_kDamage: public tNetMsg
 {
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
 	short fDirection;
-	short fAmount;
+	unsigned short fAmount;
 	int fSeed;
-	char fFlags;
+	unsigned char fFlags;
 	int fID;
 };
-
 // HYPOTHESIS: the field, from what 0x00413541 stores into it.
 struct tNetMsg_kAIChangeTeamRelationshipToWar: public tNetMsg
 {
 	tNetMsg_kAIChangeTeamRelationshipToWar(int aID): fID(aID) {}
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
 	int fID;
 };
-
-// HYPOTHESIS: the fields are not yet known; the map at 0x004139c4 decides them.
+// HYPOTHESIS: the target's ID and whether the beam goes on (1) or off; the map at 0x004139c4
+// lists fID only. fValue is passed on to the target (0x00413614).
 struct tNetMsg_kTractorChangeMessage: public tNetMsg
 {
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
-	int fID;
+	int fID; bool fOn; bool fValue;
 };
-
 // HYPOTHESIS: the fields are not yet known; the map at 0x004139ca decides them.
 struct tNetMsg_kDeepScan: public tNetMsg
 {
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
 	int fID;
 };
-
 // HYPOTHESIS: one one-byte field, set to 1 by 0x004139ec; its meaning is not known.
 struct tNetMsg_kKillEntity: public tNetMsg
 {
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
 	bool field_0x4;
 };
-
 // The object that the pointer at 0x0090be60 holds.
 // HYPOTHESIS: the class is inferred from 0x00413541 only; fn_00427581 returns 5 for the
 // relation that sends kAIChangeTeamRelationshipToWar.
 #include "unsorted/tObject_0090be60.h"
-
-
-
-
-
-
 extern tObject_0090be60 *gObject_0090be60;
-
 // FUNCTION: STARFLEETOP 0x00413448
 void tPhysicalEntity::vfunction3()
 {
 	int i;
 	tObject_008e1060_slot *slot;
 	tPhysicalEntity *entity;
-
 	fn_004101d3();
 	for (i = 0; i < 16; i++)
 	{
@@ -258,12 +229,10 @@ void tPhysicalEntity::vfunction3()
 		field_0x190 = false;
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413153
 void tPhysicalEntity::vfunction11(tSFCStream &s, int32u mode)
 {
 	int i;
-
 	tEntity::vfunction11(s, mode);
 	fn_0040ed22(s, mode);
 	fn_0040ecfd("Entity physical:", s, mode);
@@ -309,7 +278,6 @@ void tPhysicalEntity::vfunction11(tSFCStream &s, int32u mode)
 	fn_0040e9df(field_0x1b8, s, mode, "fMaxHealth");
 	fn_0040e691(s);
 }
-
 // FUNCTION: STARFLEETOP 0x004134ce
 // HYPOTHESIS: copies a name into the 32-byte member at 0x13c that vfunction42 returns,
 // truncated and terminated at 31 characters.
@@ -318,7 +286,6 @@ void tPhysicalEntity::vfunction43(char *aName)
 	strncpy(field_0x13c, aName, 31);
 	field_0x13c[31] = 0;
 }
-
 // FUNCTION: STARFLEETOP 0x004134f1
 // HYPOTHESIS: copies a name into the 32-byte member at 0x15c that vfunction44 returns,
 // truncated and terminated at 31 characters; a null name leaves it unchanged.
@@ -330,17 +297,15 @@ void tPhysicalEntity::vfunction45(char *aName)
 		field_0x15c[31] = 0;
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x0041351b
 // HYPOTHESIS: applies damage; fHealth (0x1b4) becomes vfunction23's result less the second
 // argument times 128, and vfunction5 runs once it is no longer positive.
-void tPhysicalEntity::vfunction26(int a1, int a2, int a3, int a4, int a5)
+void tPhysicalEntity::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {
 	field_0x1b4 = vfunction23() - a2 * 128;
 	if (field_0x1b4 <= 0)
 		vfunction5();
 }
-
 // FUNCTION: STARFLEETOP 0x00413541
 // HYPOTHESIS: sends damage from entity aID to the other machines; when this entity has a
 // team (0x64) and aID's team is related to it as 5, also tells the team aID is at war.
@@ -355,7 +320,6 @@ void tPhysicalEntity::vfunction27(int aID, short aDirection, unsigned aAmount, i
 		msg.fFlags = aFlags;
 		msg.fID = aID;
 		gNetControl.mQueueMsg(&msg, tNetMsg::kDamage, fID, 0.0);
-
 		if (fField64 != -1)
 		{
 			tPhysicalEntity *entity = gObject_008e1060.fn_entity(aID);
@@ -373,7 +337,6 @@ void tPhysicalEntity::vfunction27(int aID, short aDirection, unsigned aAmount, i
 		}
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x0041360e
 // HYPOTHESIS: the map lists fID only, as the SDK's messages build theirs (NetMsgClass.h).
 const tNetMsg::tMapItem *tNetMsg_kAIChangeTeamRelationshipToWar::mGetMap(void) const
@@ -381,52 +344,114 @@ const tNetMsg::tMapItem *tNetMsg_kAIChangeTeamRelationshipToWar::mGetMap(void) c
 	static tNetMsg::tMapItem map[] =
 	{
 		MAKE_NMMI(tNetMsg_kAIChangeTeamRelationshipToWar, fID),
-
 		{	0, 0	}	// Terminator
 	};
 	return(map);
 }
-
+// HYPOTHESIS: an inline ID accessor; 0x00413614 loads the ID into a register before pushing it.
+inline tID fn_EntityID(const tEntity *aEntity) { return aEntity->fID; }
+// HYPOTHESIS: handles a message for this entity: damage (15), a tractor beam going on or off
+// (17), the entity killed (21) and a deep scan (39); the rest go to tEntity's handler.
 // FUNCTION: STARFLEETOP 0x00413614
-// HYPOTHESIS: not source code: the original is `mov eax, <funcinfo>; call <frame handler>`,
-// the compiler's exception-handler thunk for the unwind data of the function before it.
-// This stub only holds the address.
 void tPhysicalEntity::vfunction7(tObject_0041018e_arg *param_1, int param_2)
 {
+	switch ((signed char)param_1->fType) {
+	case tNetMsg::kDamage: {
+		tNetMsg_kDamage msg;
+		msg.mStreamFrom((const unsigned char *)param_2);
+		vfunction26(msg.fDirection, msg.fAmount, msg.fSeed, msg.fFlags, msg.fID);
+		break; }
+	case 17: {
+		tNetMsg_kTractorChangeMessage msg;
+		msg.mStreamFrom((const unsigned char *)param_2);
+		tTractorItem *item;
+		tPhysicalEntity *target = (tPhysicalEntity *)gObject_008e1060.fn_lookup(msg.fID);
+		if (target) {
+			if (!(target->fClassification & 1)) return;
+			if (msg.fOn == 1) {
+				if (gObject_008e1060.fn_0042496f(msg.fID)) fn_004102d9(0x2000, msg.fID, 0, 0, 0);
+				vfunction36(msg.fID);
+				target->vfunction38(fn_EntityID(this), msg.fValue);
+				gObject_0090be5c->fn_004559b7(fn_EntityID(this), msg.fID);
+				for (item = (tTractorItem *)field_0x1a4.vfunction3(); item && item->fTargetID != msg.fID; item = (tTractorItem *)field_0x1a4.mGetNextListMember(item));
+				if (item) return;
+				tEntity_Tractor *tractor = new tEntity_Tractor(fn_EntityID(this), msg.fID);
+				if (!tractor) return;
+				item = new tTractorItem;
+				item->fEntityID = gObject_008e1060.mGetNextPlayerID();
+				item->fTargetID = msg.fID;
+				field_0x1a4.mAddToBackOfList(item);
+				tractor->fID = item->fEntityID;
+				tractor->fn_0041089e(&fCurrPos);
+				gObject_008e1060.mAddEntity(tractor);
+				return;
+			}
+			if (gObject_008e1060.fn_0042496f(msg.fID)) fn_004102d9(0x4000, msg.fID, 0, 0, 0);
+			tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(fID);
+			if (ship) {
+				// HYPOTHESIS: slot 75 returns an object whose slot 62 runs when its word at 0x138 is zero.
+				tObject_00410fd4_slot *slot = (tObject_00410fd4_slot *)ship->field_0xad4->vfunction76();
+				if (slot && !*(int *)((char *)slot + 0x138)) slot->vfunction62();
+			}
+			vfunction37(msg.fID);
+			target->vfunction39(fID);
+			gObject_0090be5c->fn_00455a1a(fID, msg.fID, field_0x194);
+			for (item = (tTractorItem *)field_0x1a4.vfunction3(); ; item = (tTractorItem *)field_0x1a4.mGetNextListMember(item)) {
+				if (!item) return; if (item->fTargetID == msg.fID) break; }
+			if (tEntity *beam = gObject_008e1060.fn_lookup(item->fEntityID)) beam->vfunction5();
+			field_0x1a4.mRemoveFromList(item);
+			delete item;
+			return;
+		}
+		vfunction37(msg.fID);
+		gObject_0090be5c->fn_00455a1a(fID, msg.fID, field_0x194);
+		for (item = (tTractorItem *)field_0x1a4.vfunction3(); ; item = (tTractorItem *)field_0x1a4.mGetNextListMember(item)) {
+			if (!item) return; if (item->fTargetID == msg.fID) break; }
+		if (tEntity *beam = gObject_008e1060.fn_lookup(item->fEntityID)) beam->vfunction5();
+		field_0x1a4.mRemoveFromList(item);
+		delete item;
+		break; }
+	case tNetMsg::kKillEntity:
+		if (!gObject_008e1060.fn_004235f0(fID)) vfunction5();
+		break;
+	case 39:
+		if (!gObject_008e1060.fn_004235f0(fID) || gValue_0090bf1c == 2) {
+			tNetMsg_kDeepScan msg;
+			msg.mStreamFrom((const unsigned char *)param_2);
+			vfunction53(msg.fID);
+		}
+		break;
+	default:
+		tEntity::vfunction7(param_1, param_2);
+	}
 }
-
 // FUNCTION: STARFLEETOP 0x004139c4
 const tNetMsg::tMapItem *tNetMsg_kTractorChangeMessage::mGetMap(void) const
 {
 	static tNetMsg::tMapItem map[] =
 	{
 		MAKE_NMMI(tNetMsg_kTractorChangeMessage, fID),
-
 		{	0, 0	}	// Terminator
 	};
 	return(map);
 }
-
 // FUNCTION: STARFLEETOP 0x004139ca
 const tNetMsg::tMapItem *tNetMsg_kDeepScan::mGetMap(void) const
 {
 	static tNetMsg::tMapItem map[] =
 	{
 		MAKE_NMMI(tNetMsg_kDeepScan, fID),
-
 		{	0, 0	}	// Terminator
 	};
 	return(map);
 }
-
-// HYPOTHESIS: the compiler generates the scalar deleting destructor from this virtual
-// destructor; the original's body (called from 0x004139d0) is not recovered yet, so this one
-// is empty.
 // FUNCTION: STARFLEETOP 0x004139d0
-tPhysicalEntity::tTractorItem::~tTractorItem()
+// MATCH-ONLY: the scalar deleting destructor is compiler-generated; tTractorItem declares no
+// destructor, so it calls tListMember's (0x004088c6), then deletes when bit 0 is set.
+tPhysicalEntity::tTractorItem *tPhysicalEntity::tTractorItem::scalar_deleting_destructor(unsigned char flags)
 {
+	tListMember::~tListMember(); if (flags & 1) ::operator delete(this); return this;
 }
-
 // FUNCTION: STARFLEETOP 0x004139ec
 // HYPOTHESIS: sends kKillEntity for this entity once, the first time it runs with the flag
 // at 0x24 set.
@@ -443,7 +468,6 @@ void tPhysicalEntity::vfunction5(void)
 		}
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413a37
 // HYPOTHESIS: stores the ID at 0x18c that vfunction59 returns, then, when this entity is
 // still known by its ID, tells the object reached through the one at 0xad4 of the
@@ -459,7 +483,6 @@ void tPhysicalEntity::vfunction60(int aID)
 			slot->vfunction80();
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413a8d
 // HYPOTHESIS: stores the object at 0x88 and sets the float at 0x2c from its slot 9, raised
 // to at least 3, or to 0 when there is no object.
@@ -475,24 +498,20 @@ void tPhysicalEntity::fn_00413a8d(tObject_00413a8d_arg *aObject)
 	else
 		fRadius = 0.0f;
 }
-
 // FUNCTION: STARFLEETOP 0x00413ac3
 // HYPOTHESIS: hands the object the result of 0x00413b34, then has the model at 0x88 draw
 // through it, while bit 0 of the flags at 0x20 is set.
 void tPhysicalEntity::vfunction4(tObject_00413ac3_arg *aObject)
 {
 	static tObject_0040ce21 report("Humm is grey all we can do?");
-
 	if (field_0x88 && (fProperties & 1))
 	{
 		aObject->vfunction57(fn_00413b34(0));
 		field_0x88->vfunction6(aObject, 0.0f, 0);
 	}
 }
-
 // HYPOTHESIS: a counter the matrix cache at 0xdc is checked against; its meaning is not known.
 extern int gValue_00c7c140;
-
 // FUNCTION: STARFLEETOP 0x00413b34
 // HYPOTHESIS: rebuilds the matrix at 0x98 from the position at 0x34 and the three angles,
 // unless it was already built for the current value of the global at 0x00c7c140 or the
@@ -511,7 +530,6 @@ tMatrix *tPhysicalEntity::fn_00413b34(bool aValue)
 	}
 	return &field_0x98;
 }
-
 // FUNCTION: STARFLEETOP 0x00413bc1
 // HYPOTHESIS: the first column of the cached matrix, without rebuilding it.
 tPoint3 tPhysicalEntity::fn_00413bc1()
@@ -519,7 +537,6 @@ tPoint3 tPhysicalEntity::fn_00413bc1()
 	tMatrix *matrix = fn_00413b34(true);
 	return tPoint3(matrix->mGetItem(0, 0), matrix->mGetItem(1, 0), matrix->mGetItem(2, 0));
 }
-
 // FUNCTION: STARFLEETOP 0x00413bdf
 tPoint3 tPhysicalEntity::vfunction29(const tPoint3 &aPoint, bool aValue)
 {
@@ -527,7 +544,6 @@ tPoint3 tPhysicalEntity::vfunction29(const tPoint3 &aPoint, bool aValue)
 	vfunction28(aValue)->mTransform(point);
 	return point;
 }
-
 // HYPOTHESIS: the callee (0x0069c97c) takes the point alone and sits just after mTransform
 // (0x0069c970), so it is read as the rotation-only mTransform3x3; not yet confirmed.
 // FUNCTION: STARFLEETOP 0x00413c24
@@ -537,13 +553,11 @@ tPoint3 tPhysicalEntity::vfunction30(const tPoint3 &aPoint)
 	fn_00413b34(false)->mTransform3x3(point);
 	return point;
 }
-
 // FUNCTION: STARFLEETOP 0x00413c68
 int tPhysicalEntity::vfunction34()
 {
 	return field_0x10c;
 }
-
 // FUNCTION: STARFLEETOP 0x00413c6f
 bool tPhysicalEntity::vfunction35(int aID)
 {
@@ -556,7 +570,6 @@ bool tPhysicalEntity::vfunction35(int aID)
 	}
 	return false;
 }
-
 // FUNCTION: STARFLEETOP 0x00413c9a
 // HYPOTHESIS: adds the ID to the field_0x10c IDs at field_0x100 unless it is already there,
 // allocating room for 8 the first time and growing the room (field_0x114, archived as
@@ -570,7 +583,6 @@ void tPhysicalEntity::vfunction36(int aID)
 			return;
 		}
 	}
-
 	if (field_0x114 == 0)
 	{
 		field_0x100 = (int *)tMemoryPart::Search_tMemoryPart()->mAllocate(8 * 4, 710,
@@ -586,7 +598,6 @@ void tPhysicalEntity::vfunction36(int aID)
 	field_0x100[field_0x10c] = aID;
 	field_0x10c++;
 }
-
 // FUNCTION: STARFLEETOP 0x00413d45
 // HYPOTHESIS: removes the ID from the field_0x10c IDs at field_0x100, closing the gap; the
 // counterpart of 0x00413c9a.
@@ -605,7 +616,6 @@ void tPhysicalEntity::vfunction37(int aID)
 		}
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413d98
 // HYPOTHESIS: marks the entity as being tractored by aID (0x110 is archived as
 // "fWeAreBeingTractored", 0x104 as "fEntityWeAreBeingTractoredByID"); the meaning of the
@@ -616,7 +626,6 @@ void tPhysicalEntity::vfunction38(int aID, bool aValue)
 	field_0x104 = aID;
 	field_0x108 = aValue;
 }
-
 // FUNCTION: STARFLEETOP 0x00413db7
 // HYPOTHESIS: clears the tractored-by state that vfunction38 sets, when aID is the entity
 // tractoring this one.
@@ -628,7 +637,6 @@ void tPhysicalEntity::vfunction39(int aID)
 		field_0x110 = false;
 	}
 }
-
 // HYPOTHESIS: only the name is known here; the class derives from tPhysicalEntity (its
 // vftable at 0x00797430 shares tPhysicalEntity's slots), which is not declared as a base yet.
 class tEntity_Weapon
@@ -636,14 +644,12 @@ class tEntity_Weapon
 public:
 	~tEntity_Weapon();
 };
-
 // HYPOTHESIS: the code at 0x00413dd6 (its exception-frame setup and body) is rebuilt as
 // tPhysicalEntity::~tPhysicalEntity, which claims 0x00413dd6. This empty definition is not the original; it stays
 // until that code moves here, because a caller or a vtable needs it.
 tEntity_Weapon::~tEntity_Weapon()
 {
 }
-
 // HYPOTHESIS: the body after the frame setup at 0x00413dd6: disposes of the objects at 0x88
 // and 0x8c, then frees the threat IDs (0x180, archived as "fNumberOfThreats" and
 // "fMaxNumberOfThreats" at 0x184 and 0x188) and the IDs tractored (0x100, 0x10c, 0x114).
@@ -676,7 +682,6 @@ tPhysicalEntity::~tPhysicalEntity()
 		field_0x114 = 0;
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413ea8
 // HYPOTHESIS: whether aEntity is hostile to this one: this entity must have bit 1 of its
 // flags at 0x18 set and still be known by its ID; an entity with bit 2 is judged by the team
@@ -714,7 +719,6 @@ bool tPhysicalEntity::vfunction49(tPhysicalEntity *aEntity)
 	}
 	return false;
 }
-
 // FUNCTION: STARFLEETOP 0x00413f59
 // HYPOTHESIS: rebuilds the threat list: empties it ("fNumberOfThreats" at 0x184), then passes
 // every entity in the list the entity manager returns to vfunction46 with its ID.
@@ -727,7 +731,6 @@ void tPhysicalEntity::vfunction50()
 		vfunction46(entity, entity->fID);
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413f8a
 // HYPOTHESIS: announces this entity to every entity in the entity manager's list that has
 // bit 0 of its flags at 0x18 set, through their vfunction46 with this entity's ID.
@@ -742,7 +745,6 @@ void tPhysicalEntity::vfunction51()
 		}
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413fba
 // HYPOTHESIS: withdraws this entity from every entity in the entity manager's list that has
 // bit 0 of its flags at 0x18 set, through their vfunction47 with this entity's ID.
@@ -757,7 +759,6 @@ void tPhysicalEntity::vfunction52()
 		}
 	}
 }
-
 // FUNCTION: STARFLEETOP 0x00413fe9
 // HYPOTHESIS: adds the entity's ID to the threat list ("fThreatListIDs" at 0x180, with
 // "fNumberOfThreats" at 0x184) when it is not there yet and vfunction49 judges the entity
@@ -772,7 +773,6 @@ void tPhysicalEntity::vfunction46(tPhysicalEntity *aEntity, int aID)
 			return;
 		}
 	}
-
 	if (vfunction49(aEntity) == true)
 	{
 		if (field_0x188 == 0)

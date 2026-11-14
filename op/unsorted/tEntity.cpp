@@ -138,9 +138,9 @@ float tEntity::vfunction14()
 	return fRadius;
 }
 
-// HYPOTHESIS: the compiler generates the scalar deleting destructor from this virtual destructor;
-// the original's body (called at 0x0040ffc9) is not recovered yet, so this one is empty.
+// HYPOTHESIS: the original's destructor (0x0040ffc9) is not recovered yet; this one is empty.
+tEntity::~tEntity() {}
 // FUNCTION: STARFLEETOP 0x0040ffad
-tEntity::~tEntity()
-{
-}
+// MATCH-ONLY: the scalar deleting destructor, written out as a member that calls the destructor.
+tEntity *tEntity::scalar_deleting_destructor(unsigned char flags)
+{ tEntity::~tEntity(); if (flags & 1) ::operator delete(this); return this; }

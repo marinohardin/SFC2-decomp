@@ -11,7 +11,7 @@
 class c_tNetControl_8D00;
 class c_0043127f_node;
 struct tNetMsg;
-
+struct c_tNetControl_8CC4_entry;	// HYPOTHESIS: defined in tNetControl.cpp, its only user
 class tNetControl
 {
 public:
@@ -58,7 +58,7 @@ public:
 	int field_8CB8;
 	int field_8CBC;
 	int field_8CC0;
-	std::vector< int > field_8CC4;	// HYPOTHESIS: element type unknown
+	std::vector< c_tNetControl_8CC4_entry > field_8CC4;
 	int field_8CD4;
 	int field_8CD8;
 	int field_8CDC;
@@ -66,7 +66,7 @@ public:
 	int field_8CE4;
 	int field_8CE8;
 	float field_8CEC;
-	std::vector< int > field_8CF0;	// HYPOTHESIS: element type unknown
+	std::vector< int > field_8CF0;	// HYPOTHESIS: element type unknown (no destructor)
 	c_tNetControl_8D00 *field_8D00;
 	unsigned char field_8D04;
 	unsigned char field_8D05;

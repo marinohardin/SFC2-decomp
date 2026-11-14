@@ -4,14 +4,14 @@
 #ifndef tArea3Panel_h
 #define tArea3Panel_h 1
 
+void fn_004d3340(const char *pszName);
 // HYPOTHESIS: base class of the fleet panel; its constructor is at 0x0048a734.
 class tArea3Panel
 {
 public:
 	tArea3Panel();
-	// HYPOTHESIS: virtual, since the panel's destructor is reached through a scalar deleting
-	// destructor.
-	virtual ~tArea3Panel();
+	// Inline: tFleetPanel's destructor (0x0048c05c) ends with this body.
+	virtual ~tArea3Panel() { fn_004d3340(m_psz04); }
 	// HYPOTHESIS: the base handler at 0x0048a9c1 that 0x0048c3a6 falls back to.
 	virtual void vfunction3(int *param_1);
 	// HYPOTHESIS: a string handed to 0x004d3331 by the fleet panel.

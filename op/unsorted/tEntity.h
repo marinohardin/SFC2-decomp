@@ -206,6 +206,7 @@ class tEntity
 public:
 	tEntity();
 	virtual ~tEntity();
+	tEntity *scalar_deleting_destructor(unsigned char flags);
 	virtual int vfunction2();
 	virtual void vfunction3();
 	// HYPOTHESIS: draws the entity through the object passed in, as tPhysicalEntity's
@@ -233,7 +234,6 @@ public:
 	virtual void vfunction20();
 	virtual void vfunction21();
 	virtual void vfunction22();
-
 	// Names of the archived fields come from the labels the archive function (0x0041004d)
 	// writes. HYPOTHESIS: the other field types and meanings are read from the constructor's
 	// stores only.
@@ -840,9 +840,9 @@ public:
 	tObject_0042496f *fn_004249ab(int aID);
 	// HYPOTHESIS: looks a ship up by ID; 0x0051e613 uses it for the target ship.
 	tObject_0042496f *fn_004249de(int aID);
-
-
-
+	bool fn_004235f0(tID aID);	// HYPOTHESIS: a test on the entity with the ID (0x00413614)
+	tID mGetNextPlayerID();	// 0x004239d6
+	void mAddEntity(tEntity *pNew);	// 0x00423749
 
 	char fField00[0x30];                  // +0x00
 	tEntity *fEntities[0x4000];           // +0x30

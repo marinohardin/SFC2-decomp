@@ -45,7 +45,7 @@ tShieldGroup::tShieldGroup(int param_1, int param_2, int param_3, int param_4)
     field_68 = 0;
     field_6c = 0;
     field_70 = 0;
-    vfunction109(param_3, param_4);
+    vfunction109((const tShipSystemEntry*)param_3, param_4);
 }
 
 // FUNCTION: STARFLEETOP 0x00440664
@@ -53,33 +53,28 @@ float tShieldGroup::vfunction85()
 {
     return field_7c;
 }
-
 // FUNCTION: STARFLEETOP 0x00440668
 float tShieldGroup::vfunction91()
 {
     return field_78;
 }
-
 // FUNCTION: STARFLEETOP 0x0044066c
 float tShieldGroup::vfunction92()
 {
     return field_b4;
 }
-
 // FUNCTION: STARFLEETOP 0x00440673
 // HYPOTHESIS: returns the reinforcement capacitor (field_74).
 float tShieldGroup::vfunction94()
 {
     return field_74;
 }
-
 // FUNCTION: STARFLEETOP 0x00440677
 // HYPOTHESIS: counts one more shield online or switching (field_a4).
 void tShieldGroup::vfunction107()
 {
     field_a4++;
 }
-
 // FUNCTION: STARFLEETOP 0x0044067e
 // HYPOTHESIS: says whether the requested charge per turn (field_7c) reaches field_b0, the
 // level the shield system raises the group to.
@@ -91,25 +86,22 @@ bool tShieldGroup::vfunction108()
     }
     return true;
 }
-
 // MATCH-ONLY: stands in for the compiler-generated scalar deleting destructor, which has no
-// source line the harness could claim. The original declares no destructor for tShieldGroup,
-// so the compiler wrote this body: the implicit destructor chain down to tListMember's, then
+// source line the harness could claim. It calls tShieldGroup's destructor (0x004406ae, which
+// stores the class's vftable and jumps to tIndividualShipSystem's at 0x00453471), then
 // operator delete when bit 0 of the flag is set.
 // FUNCTION: STARFLEETOP 0x00440692
 tShieldGroup* tShieldGroup::scalar_deleting_destructor(unsigned char flags)
 {
-    this->tIndividualShipSystem::~tIndividualShipSystem();
+    this->tShieldGroup::~tShieldGroup();
     if (flags & 1)
         operator delete(this);
     return this;
 }
-
 // FUNCTION: STARFLEETOP 0x004406ae
 tShieldGroup::~tShieldGroup()
 {
 }
-
 // FUNCTION: STARFLEETOP 0x004406b9
 // HYPOTHESIS: says whether the group changed since the last call, and clears the flag.
 bool tShieldGroup::fn_004406b9()
@@ -121,12 +113,36 @@ bool tShieldGroup::fn_004406b9()
     }
     return false;
 }
-
+// HYPOTHESIS: an entry of the table the group's member shields are built from, 0x14 bytes;
+// +0xc is the system's type (55..60 for the six shield facings).
+struct tShipSystemEntry { int m_00; int m_04; int m_08; int m_0c; int m_10; };
+// HYPOTHESIS: makes the member list when there is none, then builds a shield for each entry
+// whose type is a shield facing, keeps it in that facing's field and adds it to the list.
 // FUNCTION: STARFLEETOP 0x004406d1
-void tShieldGroup::vfunction109(int param_1, int param_2)
+void tShieldGroup::vfunction109(const tShipSystemEntry* param_1, int param_2)
 {
+    if (!field_24)
+    {
+        field_24 = new tIndividualShipSystemList;
+        if (!field_24)
+            return;
+    }
+    for (int i = 0; i < param_2; i++)
+    {
+        tShieldSystem* shield;
+        switch (param_1[i].m_0c)
+        {
+        case 0x37: shield = field_5c = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        case 0x38: shield = field_60 = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        case 0x39: shield = field_64 = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        case 0x3a: shield = field_68 = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        case 0x3b: shield = field_6c = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        case 0x3c: shield = field_70 = new tShieldSystem(field_2c, this, &param_1[i], 1); break;
+        default: continue;
+        }
+        field_24->vfunction22(shield);
+    }
 }
-
 // FUNCTION: STARFLEETOP 0x0044089f
 void tShieldGroup::vfunction87(float param_1, float param_2, float param_3, float param_4, float param_5, float param_6)
 {
@@ -167,7 +183,6 @@ void tShieldGroup::vfunction87(float param_1, float param_2, float param_3, floa
         field_70->vfunction55(level);
     }
 }
-
 // HYPOTHESIS: reads back each shield's level (slot 55) when its slot 108 says yes, and 0
 // for a missing shield.
 // FUNCTION: STARFLEETOP 0x0044099e
@@ -198,7 +213,6 @@ void tShieldGroup::vfunction88(float* param_1, float* param_2, float* param_3, f
     else
         *param_6 = 0.0f;
 }
-
 // HYPOTHESIS: six byte-sized levels at 0x008405d8, indexed by the value at +0x944 of the
 // owner's slot-107 object less one.
 extern unsigned char g_008405d8[6];
@@ -218,7 +232,6 @@ float tShieldGroup::vfunction95()
     }
     return field_b0;
 }
-
 // HYPOTHESIS: the group's per-turn update: param_1 is the energy available, param_2 the time
 // step. It sets every shield to a starting level the first time, takes the minimum shield
 // level, lets each shield count itself into the four counters, then moves the requested charge
@@ -303,7 +316,6 @@ void tShieldGroup::vfunction86(float param_1, float param_2)
     else
         field_74 = param_1 - field_b0;
 }
-
 // HYPOTHESIS: param_1 is a shield's system type (0x37..0x3c, one per facing, after the group's
 // own 0x36); the call goes to that shield's vftable slot 100.
 // FUNCTION: STARFLEETOP 0x00440f12
@@ -336,7 +348,6 @@ void tShieldGroup::vfunction99(int param_1)
     if (shield)
         shield->vfunction101();
 }
-
 // HYPOTHESIS: the counterpart of vfunction99; the call goes to that shield's vftable slot 101.
 // FUNCTION: STARFLEETOP 0x00440f55
 void tShieldGroup::vfunction100(int param_1)
@@ -368,7 +379,6 @@ void tShieldGroup::vfunction100(int param_1)
     if (shield)
         shield->vfunction102();
 }
-
 // HYPOTHESIS: counts the shields that answer yes to slot 107 and whose level (slot 55) is at
 // least 64.
 // FUNCTION: STARFLEETOP 0x00440e2a
@@ -389,7 +399,6 @@ int tShieldGroup::vfunction101()
         count++;
     return count;
 }
-
 // HYPOTHESIS: counts the shields that answer yes to slot 108 and whose level (slot 55) is above
 // zero.
 // FUNCTION: STARFLEETOP 0x00440f98
@@ -410,7 +419,6 @@ int tShieldGroup::vfunction102()
         count++;
     return count;
 }
-
 // HYPOTHESIS: passes the call on to every shield's vftable slot 100 (vfunction101), as
 // vfunction99 does for one shield.
 // FUNCTION: STARFLEETOP 0x0044107b
@@ -429,7 +437,6 @@ void tShieldGroup::vfunction103()
     if (field_6c)
         field_6c->vfunction101();
 }
-
 // HYPOTHESIS: passes the call on to every shield's vftable slot 101 (vfunction102), as
 // vfunction100 does for one shield.
 // FUNCTION: STARFLEETOP 0x004410da
@@ -448,7 +455,6 @@ void tShieldGroup::vfunction104()
     if (field_6c)
         field_6c->vfunction102();
 }
-
 // HYPOTHESIS: sets the group's true-online flag (field_58) and passes the call on to every
 // shield's vftable slot 102 (vfunction103).
 // FUNCTION: STARFLEETOP 0x00441139
@@ -468,7 +474,6 @@ void tShieldGroup::vfunction105()
     if (field_6c)
         field_6c->vfunction103();
 }
-
 // HYPOTHESIS: the counterpart of vfunction105: clears the group's flag (field_58), passes the
 // call on to every shield's vftable slot 103 (vfunction104), then gives the owner's slot 106
 // and the group's minimum shield level (vfunction90) zero.
@@ -492,7 +497,6 @@ void tShieldGroup::vfunction106()
         field_2c->vfunction107(0.0f);
     vfunction90(0.0f);
 }
-
 // HYPOTHESIS: returns the member shield for a facing index (0..5), or null for any other index.
 // FUNCTION: STARFLEETOP 0x00441226
 tShieldSystem* tShieldGroup::fn_00441226(int param_1)
@@ -514,7 +518,6 @@ tShieldSystem* tShieldGroup::fn_00441226(int param_1)
     }
     return 0;
 }
-
 // HYPOTHESIS: forwards a per-facing query to the shield fn_00441226 returns, or 0 when there is none.
 // FUNCTION: STARFLEETOP 0x00441261
 int tShieldGroup::vfunction98(int param_1)
@@ -524,7 +527,6 @@ int tShieldGroup::vfunction98(int param_1)
         return shield->vfunction107();
     return 0;
 }
-
 // FUNCTION: STARFLEETOP 0x0044127f
 bool tShieldGroup::vfunction97(int param_1)
 {
@@ -563,7 +565,6 @@ bool tShieldGroup::vfunction97(int param_1)
     }
     return false;
 }
-
 // HYPOTHESIS: applies param_2 points of damage to the shields and returns what gets through.
 // param_1 picks the facings: one bit per shield (0x01..0x20), 0x3f for all six at once (the
 // reinforcement absorbs first), or 0x40 for the weakest shields first, which hands out the
@@ -1042,7 +1043,6 @@ int tShieldGroup::vfunction89(unsigned int param_1, int param_2)
     }
     return remaining;
 }
-
 // FUNCTION: STARFLEETOP 0x004413d8
 int tShieldGroup::vfunction96(int param_1)
 {

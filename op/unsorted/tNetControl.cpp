@@ -4,9 +4,14 @@
 #include <string.h>
 #include "unsorted/tNetControl.h"
 #include "unsorted/tObject_0092deb4.h"
-// The class and the object at 0x008f5b98 are declared in tNetControl.h, which
-// Source/entity/entity_physical.cpp also includes for gNetControl.mQueueMsg; this unit
-// defines the members whose functions lie between 0x0043104e and the end of its range.
+// The class and gNetControl (0x008f5b98) are declared in tNetControl.h, which other units include.
+// HYPOTHESIS: field_8CC4's 0xc-byte element; 0x0043458a calls its virtual destructor on each.
+struct c_tNetControl_8CC4_entry
+{
+	virtual ~c_tNetControl_8CC4_entry();
+	int m_04;
+	int m_08;
+};
 
 // FUNCTION: STARFLEETOP 0x00431044
 tNetControl::tNetControl()
@@ -38,18 +43,13 @@ tNetControl::tNetControl()
 }
 
 // FUNCTION: STARFLEETOP 0x0043113d
+// FUNCTION: STARFLEETOP 0x0043117a
 tNetControl::~tNetControl()
 {
-}
-
-// HYPOTHESIS: this is the real destructor body (the one at 0x0043113d is its scalar deleting
-// wrapper). A class has one destructor definition, already claimed above, so this placeholder
-// only claims the address so it is built and scored; fold it into ~tNetControl when the harness
-// can claim both.
-// FUNCTION: STARFLEETOP 0x0043117a
-void fn_00431184( tNetControl *p )
-{
-	p->field_8D08.~tString();
+	fn_00431200();
+	fn_00431227();
+	fn_0043124e();
+	field_8D00 = 0;
 }
 
 // FUNCTION: STARFLEETOP 0x00431159
