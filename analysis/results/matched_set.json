@@ -11736,6 +11736,15 @@
    "score": 79.659,
    "exact": false,
    "recorded": "2026-11-09"
+  },
+  "0x0075a5e0": {
+   "name": "tString::mOSString",
+   "symbol": "?mOSString@tString@@QAEPADXZ",
+   "unit": "Tiger/tnstring.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   }
  }
 }
