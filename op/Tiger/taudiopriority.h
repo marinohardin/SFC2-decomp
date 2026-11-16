@@ -130,6 +130,7 @@ class tClassTrackingInfo
 class tAudioPriorityManagerPart : public tPart
 {
 	public:
+		virtual		iTruth	mIsReady	( void );
 		virtual		unsigned char	mAreWeAllowedToPlay	( unsigned long, long, long, long, long *, unsigned long &, double & );
 		virtual		void	mWeHaveStoppedPlaying	( unsigned long );
 		// HYPOTHESIS: VC6 lists overloaded virtuals in reverse order of declaration; slot 8 holds

@@ -329,3 +329,11 @@ long tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo( void )
 	}
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00662510
+iTruth tAudioPriorityManagerPart::mIsReady( void )
+{
+	if ( TestPart( tSoundPart ) == kTrue )
+		return kTrue;
+	return kFalse;
+}
