@@ -373,7 +373,7 @@ public:
     virtual long mGetVolume();
     virtual void mGetChannelPriority();
     virtual tChannelAttributes* mGetChannelAttributes();
-    virtual void mGet3DSoundProfile();
+    virtual t3DSoundProfile* mGet3DSoundProfile();
     virtual void mGet3DSoundPosition();
     virtual void mGet3DSoundOrientation();
     virtual void mGet3DSoundVelocity();
@@ -589,7 +589,8 @@ public:
     virtual long mGetPan(long channel);
     virtual long mGetVolume(long channel);
     virtual tChannelAttributes* mGetChannelAttributes(long channel);
-    virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
+    virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
+    virtual tPoint3* mGet3DSoundPosition(long channel); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
     virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
     virtual void mAreWeStatic(); virtual void mAreWeFixedFrequency(); virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
@@ -713,6 +714,10 @@ public:
     virtual long mGetPan(long channel);
     virtual long mGetVolume(long channel);
     virtual tChannelAttributes* mGetChannelAttributes(long channel);
+    // Declaring mGet3DSoundProfile without mGet3DSoundPosition swaps the same two stack slots in
+    // mSetNumberOfSoundChannelCommands again.
+    virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
+    virtual tPoint3* mGet3DSoundPosition(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
