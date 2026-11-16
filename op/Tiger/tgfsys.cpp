@@ -198,7 +198,12 @@ public:
 	twVolume();
 	~twVolume();
 
-	int32u	f_04[16];
+	// HYPOTHESIS: the volume's own cookie at +0x34, which mGetRoot passes to the root directory as
+	// its parent volume; the members before it are not recovered.
+	tString	f_04;
+	int32u	f_2c;
+	int32u	f_30;
+	tVolume	f_34;
 	// HYPOTHESIS: the sort name copied by mGetSortName from +0x44; later members not recovered.
 	tString	f_44;
 	// HYPOTHESIS: the volume's root path, which mGetClusterSize hands to the system.
@@ -248,9 +253,21 @@ public:
 	// HYPOTHESIS: out of line, as tDir::mGetNamedFile calls both on the default value its inline
 	// map lookup builds.
 	twDir();
+	// HYPOTHESIS: the name, the parent volume and the parent directory, as twVolume::mGetRoot
+	// (STARFLEETOP 0x006313e0) passes them; the argument names are not recovered.
+	twDir( const tString &name, tVolume volume, tDir parent );
 	~twDir();
 
-	int32u	f_04[44];
+	// HYPOTHESIS: laid out like twVolume's members up to +0x94, as twVolume::mGetRoot copies the
+	// word at +0x30 across and stores the directory's own cookie at +0x34; the names and the words
+	// after +0x94 are not recovered.
+	tString	f_04;
+	int32u	f_2c;
+	int32u	f_30;
+	tDir	f_34;
+	tString	f_44;
+	tString	f_6c;
+	int32u	f_94[8];
 };
 
 // HYPOTHESIS: 0xac bytes, as tPath::mValid reads the path map pair's count at +0xc0.
@@ -1228,5 +1245,22 @@ eVolType twVolume::mGetVolType( void )
 iTruth twVolume::mIsEjectable( void )
 {
 	return 0;
+}
+
+// HYPOTHESIS: the original expands ~twDir inline here (three tString destructors, no vtable
+// store) and copies the made cookie into the directory at +0x34 and once more through the
+// out-of-line tCookie copy before returning it; that tail is not recovered. ~twDir stays out of
+// line because tDir::mGetNamedFile (STARFLEETOP 0x0061e3a0) calls it so.
+// FUNCTION: STARFLEETOP 0x006313e0
+tDir twVolume::mGetRoot( void )
+{
+	tString	name( "" );
+	tDir	parent;
+	twDir	dir( name, f_34, parent );
+
+	dir.f_30 = f_30;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	return part->fFSCookies.fDirCookies.mMake( dir );
 }
 
