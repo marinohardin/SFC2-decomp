@@ -840,3 +840,32 @@ int32s tString::mStrCmp(const tString &s) const
 	}
 	return c;
 }
+
+// FUNCTION: STARFLEETOP 0x00625970
+int32s tString::mStrICmp(const tString &s) const
+{
+	// HYPOTHESIS: the original reads tString s1(*this), s2(s); s1.mToUpper(); s2.mToUpper();
+	// return s1.mStrCmp(s2); its /Ob2 build inlines those three one level deep only.
+	// MATCH-ONLY: the bodies are written out because this build cannot inline them.
+	tString s1;
+	s1 = *this;
+	tString s2;
+	s2 = s;
+	iterator i;
+	for (i = s1.begin(); i != s1.end(); i++)
+		if (*i >= 'a' && *i <= 'z')
+			*i -= 0x20;
+	for (i = s2.begin(); i != s2.end(); i++)
+		if (*i >= 'a' && *i <= 'z')
+			*i -= 0x20;
+	int n = s1.fInstanceControl.fDataCount < s2.fInstanceControl.fDataCount ? s1.fInstanceControl.fDataCount : s2.fInstanceControl.fDataCount;
+	int32s c = memcmp(s1.fInstanceControl.fMemSpace.begin(), s2.fInstanceControl.fMemSpace.begin(), n * sizeof(iBasicStringElement));
+	if (c == 0)
+	{
+		if (s1.fInstanceControl.fDataCount < s2.fInstanceControl.fDataCount)
+			c = -1;
+		else if (s1.fInstanceControl.fDataCount > s2.fInstanceControl.fDataCount)
+			c = 1;
+	}
+	return c;
+}
