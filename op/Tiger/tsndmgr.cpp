@@ -1480,3 +1480,16 @@ unsigned char	tBasicSoundFileManager::mTryToLocateInHardware( unsigned long hand
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00667050
+unsigned char	tBasicSoundFileManager::mTryToLocateInSoftware( unsigned long handle, long channel )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mTryToLocateInSoftware( handle, channel );
+	}
+	return 0;
+}
