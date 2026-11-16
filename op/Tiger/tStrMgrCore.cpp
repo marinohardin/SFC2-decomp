@@ -2,6 +2,9 @@
 
 #include "Tiger/tgStrMgr.h"
 
+// Name from the SDK library symbol at 0x00c3b650; a failed lookup returns it.
+tString gErrStr;
+
 // FUNCTION: STARFLEETOP 0x00627180
 void tStrMgrCore::mDone( void )
 {
@@ -30,4 +33,14 @@ int tStrMgrCore::mGetStringIndex( const tString &s )
 int tStrMgrCore::mGetStringIndex( const char *s )
 {
 	return mGetStringIndex( tString( s ) );
+}
+
+// FUNCTION: STARFLEETOP 0x006272e0
+const tString &tStrMgrCore::mGetString( int index )
+{
+	if ( index > 0 && index <= fn_00627180_vec.size() )
+		return *fn_00627180_vec[index - 1];
+	if ( fn_00627200_throwOnMiss )
+		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+	return gErrStr;
 }
