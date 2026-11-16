@@ -340,6 +340,7 @@ public:
 	virtual	void	mUpdateAllSounds	( void );
 	virtual	void	mUpdatePosition	( unsigned long );
 	virtual	void	mFinishSound	( unsigned long, unsigned char );
+	virtual	void	mGetNextAttachment	( unsigned long );
 	void	mUpdateTest	( void );
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
@@ -362,7 +363,7 @@ public:
 	unsigned long			field_0xf4c[0x100];	// HYPOTHESIS: the argument of each slot's position function, by mUpdatePosition.
 	unsigned long			field_0x134c[0x100];	// HYPOTHESIS: each slot's audio class handle, by mFinishSound.
 	void					(* field_0x174c[0x100])( unsigned long, long );	// HYPOTHESIS: each slot's position function; type from mPlay's symbol.
-	char					fUnknown_1b4c[0x400];
+	void					(* field_0x1b4c[0x100])( unsigned long, unsigned long );	// HYPOTHESIS: each slot's next attachment function, by mGetNextAttachment.
 	void					(* field_0x1f4c[0x100])( unsigned long, unsigned long, unsigned char );	// HYPOTHESIS: each slot's finish function; type from mPlay's symbol.
 	// HYPOTHESIS: unsigned, by the unsigned bound check in mNewTrackingNumber; the next slot to try.
 	unsigned long			field_0x234c;
@@ -1682,4 +1683,12 @@ void	tBasicSoundFileManager::mFinishSound( unsigned long handle, unsigned char h
 			field_0x1f4c[index]( field_0xf4c[index], handle, how );
 		mClearTrackingNumber( handle );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00667dd0
+void	tBasicSoundFileManager::mGetNextAttachment( unsigned long handle )
+{
+	long	index = mGetTrackingIndex( handle );
+	if ( index >= 0 && field_0x1b4c[index] )
+		field_0x1b4c[index]( handle, field_0xf4c[index] );
 }
