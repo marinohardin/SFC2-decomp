@@ -337,7 +337,7 @@ public:
 	virtual	void	mAdjustGlobalVolume	( void );
 	virtual	void	mSetGlobalVolume	( long );
 	virtual	void	mUpdateAllSounds	( void );
-
+	virtual	void	mUpdatePosition	( unsigned long );
 	void	mUpdateTest	( void );
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
@@ -357,7 +357,10 @@ public:
 	// HYPOTHESIS: the play information index of each tracking slot, by mUpdateTest.
 	long					field_0x74c[0x100];
 	long					field_0xb4c[0x100];
-	char					fUnknown_0f4c[0x1400];
+	unsigned long			field_0xf4c[0x100];	// HYPOTHESIS: the argument of each slot's position function, by mUpdatePosition.
+	char					fUnknown_134c[0x400];
+	void					(* field_0x174c[0x100])( unsigned long, long );	// HYPOTHESIS: each slot's position function; type from mPlay's symbol.
+	char					fUnknown_1b4c[0x800];
 	// HYPOTHESIS: unsigned, by the unsigned bound check in mNewTrackingNumber; the next slot to try.
 	unsigned long			field_0x234c;
 	short					field_0x2350[0x100];
@@ -494,8 +497,6 @@ unsigned long	tBasicSoundFileManager::mNewTrackingNumber( long info )
 			break;
 	}
 	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("we've run out of tracking numbers!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("we've run out of tracking numbers!"); }
-
-
 
 
 
@@ -1660,4 +1661,12 @@ unsigned char	tBasicSoundFileManager::mFadeToStopAndClearNow( unsigned long hand
 			return channelGroup->mFadeToStopAndClearNow( handle, timeToTake, channel );
 	}
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x00667cc0
+void	tBasicSoundFileManager::mUpdatePosition( unsigned long handle )
+{
+	long	index = mGetTrackingIndex( handle );
+	if ( index >= 0 && field_0x174c[index] )
+		field_0x174c[index]( field_0xf4c[index], handle );
 }
