@@ -4988,3 +4988,15 @@ double tgSoundPart::mGet3DListenerUnitScaleInMeters()
     t3DListenerProfile* listener = &field_0x68;
     return listener->mGetUnitScaleInMeters();
 }
+#line 4992 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656ae0
+void tgSoundPart::mDump(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return;
+#line 7126
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return; }
+    channelPtr->mDump();
+    mReleaseControl();
+}

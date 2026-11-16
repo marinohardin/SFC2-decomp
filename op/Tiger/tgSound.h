@@ -620,7 +620,7 @@ public:
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse
     // declaration order.
     virtual void mDump();
-    virtual void mDump(int level);
+    virtual void mDump(long channel);
     virtual void mUpdate();
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
@@ -758,6 +758,8 @@ public:
     virtual tPoint3* mGet3DListenerVelocity();
     virtual double mGet3DListenerUnitScaleInMeters();
     virtual void mDump();
+    // The SDK library's symbol (?mDump@tgSoundPart@@UAEXJ@Z) gives the parameter type.
+    virtual void mDump(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
