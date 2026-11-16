@@ -84,7 +84,11 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		void	vfunction10	( void );
 		virtual		tAudioFileClass *	mGetAudioFileClassPtrFromHandle	( long );
 		virtual		long	mGetAudioFileClassHandleFromReference	( long );
+		// HYPOTHESIS: mReleaseAudioFileClassPtr in slot 13, from mRemoveClass (0x00661e90) passing
+		// the handle through +0x34; the slots of mNewAudioFileClass and mRemoveClass are not known.
+		virtual		unsigned char	mReleaseAudioFileClassPtr	( long );
 		virtual		long	mNewAudioFileClass	( void );
+		virtual		void	mRemoveClass	( long );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
 

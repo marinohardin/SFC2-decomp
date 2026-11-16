@@ -195,3 +195,10 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		return -1;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00661e90
+void tAudioPriorityManagerPart::mRemoveClass( long reference )
+{
+	long handle = mGetAudioFileClassHandleFromReference( reference );
+	mReleaseAudioFileClassPtr( handle );
+}
