@@ -838,3 +838,12 @@ std::string tSupplyDockFighters::fn_0048719b( std::string name )
 		return name;
 	return "ShipNotFound!";
 }
+
+// FUNCTION: STARFLEETOP 0x00487236
+std::string tSupplyDockFighters::fn_00487236( std::string name )
+{
+	long next;
+	if( ((fn_0045139e_object *) m78)->fn_004513d2( name, &next, -1 ) )
+		return name;
+	return "ShipNotFound!";
+}
