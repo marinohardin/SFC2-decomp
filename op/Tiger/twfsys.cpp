@@ -11,6 +11,7 @@ public:
     virtual tPath mGetAppPath(tSession session);
     virtual tPath mDuplicatePath(tSession session, tPath path);
     virtual tPath mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir);
+    virtual tPath mPathFromWinString(tSession session, tString name);
 };
 
 tPath WinParsePath(tSession session, tString &path);
@@ -483,4 +484,10 @@ bool fn_00630a00(tString &fileName, tString &ext, tString &dirName)
     }
     fileName = fileBuf;
     return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00630cf0
+tPath twFileSystemPart::mPathFromWinString(tSession session, tString name)
+{
+    return WinParsePath(session, name);
 }
