@@ -25,7 +25,7 @@ class tAudioFileClass
 		virtual		void	vfunction11	( void );
 		virtual		void	vfunction12	( void );
 		virtual		void	vfunction13	( void );
-		virtual		void	vfunction14	( void );
+		virtual		void	mRemoveHandle	( unsigned long );
 		virtual		void	mAddHandle	( unsigned long );
 };
 
@@ -51,6 +51,7 @@ class tClassTrackingInfo
 {
 	public:
 		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
+		virtual		void	mSetAvailable	( void );
 
 		unsigned long	f04;
 		unsigned long	f08;

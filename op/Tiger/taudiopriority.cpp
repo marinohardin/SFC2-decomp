@@ -20,3 +20,15 @@ void tClassTrackingInfo::mSet( unsigned long classRef, unsigned long arg2, long 
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00661400
+void tClassTrackingInfo::mSetAvailable( void )
+{
+	for ( long i = 0; i < f20; i++ )
+	{
+		tAudioFileClass *fileClass = BindPart( tAudioPriorityManagerPart )->mGetAudioFileClassPtrFromHandle( f10[i] );
+		if ( fileClass )
+			fileClass->mRemoveHandle( f04 );
+	}
+	f20 = 0;
+}
