@@ -733,3 +733,9 @@ void tSupplyDockItem::vfunction5( fn_004457b7_object *target )
 	target->fn_004457b7( ((fn_004479b4_object *) m74)->fn_00447ce4() );
 	vfunction6();
 }
+
+// FUNCTION: STARFLEETOP 0x00486fac
+void tSupplyDockFighters::fn_00486fac( long i )
+{
+	fn_004d3278( (long) g_0084bbc0[i], (long) g_0084bbc0[i], 0, m04, m0c, 800, 600 );
+}
