@@ -15,6 +15,9 @@ public:
     // HYPOTHESIS: the previous member; tDynamicMemoryFreeList::mGetPreviousListMember
     // (0x00626770) returns it through this slot (offset 0xc).
     virtual tListMember *vfunction4();
+    // HYPOTHESIS: the next member; tDynamicMemoryFreeList::mGetNextListMember
+    // (0x00626790) returns it through this slot (offset 0x10).
+    virtual tListMember *vfunction5();
 };
 
 #endif // tListMember_h

@@ -11,3 +11,11 @@ tListMember *tDynamicMemoryFreeList::mGetPreviousListMember(tListMember *aMember
 		return 0;
 	return aMember->vfunction4();
 }
+
+// FUNCTION: STARFLEETOP 0x00626790
+tListMember *tDynamicMemoryFreeList::mGetNextListMember(tListMember *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	return aMember->vfunction5();
+}
