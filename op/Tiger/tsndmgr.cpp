@@ -760,3 +760,16 @@ unsigned char	tBasicSoundFileManager::mSet3DSoundProfile( unsigned long handle, 
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00665b10
+unsigned char	tBasicSoundFileManager::mSet3DSoundPosition( unsigned long handle, tPoint3 * position )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSet3DSoundPosition( handle, position, -1, 1 );
+	}
+	return 0;
+}
