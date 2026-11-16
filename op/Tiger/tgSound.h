@@ -611,7 +611,9 @@ public:
     virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mPlaySpecialLoop(long channel, long param_2, long param_3, long param_4, long param_5);
-    virtual void mEndSpecialLoop(); virtual void mAddGetNextAttachmentFunction(); virtual void mGetNumberCurrentlyPlaying(); virtual void mDoWeRetainSelections();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mEndSpecialLoop(long channel);
+    virtual void mAddGetNextAttachmentFunction(); virtual void mGetNumberCurrentlyPlaying(); virtual void mDoWeRetainSelections();
     virtual void mWeRetainSelections();
     virtual void mWeDoNotRetainSelections(long channel);
     virtual void mDoWeAutoRemoveChannel(); virtual void mWeAutoRemoveChannel(); virtual void mWeDoNotAutoRemoveChannel(); virtual void mDoWeAutoRemoveSelections();
@@ -659,6 +661,7 @@ public:
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
     virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
     virtual unsigned char mPlaySpecialLoop(long channel, long param_2, long param_3, long param_4, long param_5);
+    virtual unsigned char mEndSpecialLoop(long channel);
     // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
