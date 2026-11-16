@@ -9829,6 +9829,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00666db0": {
+   "name": "tBasicSoundFileManager::mAreWeFixedFrequency",
+   "symbol": "?mAreWeFixedFrequency@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
