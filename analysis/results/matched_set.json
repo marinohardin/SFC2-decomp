@@ -9271,6 +9271,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x00663720": {
+   "name": "mystrequivalent",
+   "symbol": "?mystrequivalent@@YAEPAD0@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",
