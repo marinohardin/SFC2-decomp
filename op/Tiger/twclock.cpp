@@ -7,12 +7,12 @@
 #include "Tiger/tTimerResponse.h"
 
 // HYPOTHESIS: one timer slot of mSetTimer and mTimerReceiver (20 bytes); the response at 0x00,
-// the timer id at 0x04; the meanings of the others are unknown.
+// the timer id at 0x04; 0x08 is unsigned (mTimerReceiver tests it with jbe); the meanings of the others are unknown.
 struct	twClockResponderDesc
 {
 	tTimerResponse	*fUnknown_00;
 	int32s	fUnknown_04;
-	int32s	fUnknown_08;
+	int32u	fUnknown_08;
 	int32s	fUnknown_0c;
 	int32s	fUnknown_10;
 };
@@ -155,5 +155,25 @@ void	twClock::mForgetTimer( tTimerResponse *param_1 )
 		if (timeKillEvent( timerID ) != TIMERR_NOERROR || fNumberOfRunningTimers < 0)
 			throw TimerException();
 		fResponseList[idx].fUnknown_04 = 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00637ba0
+void	CALLBACK	twClock::mTimerReceiver( UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2 )
+{
+	int32u	idx = 0;
+	while (fResponseList[idx].fUnknown_04 != id && idx < kClockResponderMax)
+		idx++;
+
+	if (idx < kClockResponderMax)
+	{
+		fResponseList[idx].fUnknown_00->fn_0040bd8d();
+		if (fResponseList[idx].fUnknown_08 > 0 && --fResponseList[idx].fUnknown_08 == 0)
+		{
+			unsigned long	timerID = fResponseList[idx].fUnknown_04;
+			if (timeKillEvent( timerID ) != TIMERR_NOERROR)
+				throw TimerException();
+			fResponseList[idx].fUnknown_04 = 0;
+		}
 	}
 }
