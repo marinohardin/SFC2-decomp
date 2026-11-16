@@ -456,3 +456,11 @@ unsigned long tHandleList::mGetFirstHandle( void )
 		return 0;
 	return f0c[ 0 ];
 }
+
+// FUNCTION: STARFLEETOP 0x00662990
+unsigned long tHandleList::mGetThisHandle( long index )
+{
+	if ( index < 0 || index >= f04 )
+		return 0;
+	return f0c[ index ];
+}
