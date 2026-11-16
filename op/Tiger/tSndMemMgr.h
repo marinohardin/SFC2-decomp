@@ -34,7 +34,8 @@ public:
 };
 
 // The out-of-line copy VC6 emits for the vtable is 0x00645480 (7 bytes; the exe's derived
-// classes share it). It is not claimed here: its unit, Tiger/twSound.cpp, has no code yet.
+// classes share it), placed with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x00645480
 inline tListMemberWithHandle::~tListMemberWithHandle()
 {
 }
