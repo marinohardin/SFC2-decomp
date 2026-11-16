@@ -630,3 +630,14 @@ tString::iterator::iterator(const iterator &i)
 	fIndex = i.fIndex;
 	fString = i.fString;
 }
+
+// FUNCTION: STARFLEETOP 0x006253a0
+tString::iterator::iterator(int32 index, tString *s)
+{
+	fIndex = index;
+	fString = s;
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	if (fIndex < 0 || fIndex > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+}
