@@ -8,10 +8,10 @@ public:
 	tObject_0045e574();
 	~tObject_0045e574();
 	void fn_004d269b( long arg1, void *a, void *b );
+	void fn_004d2797( long arg1, void *a, long arg3 );
 
 	char m00[0x64];
 };
-
 // HYPOTHESIS: layout from the constructor's stores; 0x7c bytes per the RTTI recovery. The
 // fifth argument's name comes from the original's validate text ("mask").
 class tSupplyDockItem
@@ -89,4 +89,34 @@ void tSupplyDockItem::vfunction8( void *a, void *b )
 double tSupplyDockItem::vfunction11()
 {
 	return 0.0;
+}
+
+// HYPOTHESIS: the object the base keeps at +0x74 ("mask"); only 0x004479b4 is called on it.
+class fn_004479b4_object
+{
+public:
+	long fn_004479b4( long arg1 );
+};
+
+// HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
+class tSupplyDockShuttles : public tSupplyDockItem
+{
+public:
+	tSupplyDockShuttles( long arg1, long arg2, long arg3, long mask, long arg5 );
+
+	long m7c;
+};
+
+// HYPOTHESIS: two globals passed by value; their types are not known.
+extern void *g_0084bb4c;
+extern void *g_0084bb50;
+
+// FUNCTION: STARFLEETOP 0x00486211
+tSupplyDockShuttles::tSupplyDockShuttles( long arg1, long arg2, long arg3, long mask, long arg5 )
+	: tSupplyDockItem( arg1, arg2, arg3, mask, arg5 ), m7c( 0 )
+{
+	m10.fn_004d2797( 0x11014, g_0084bb4c, 0 );
+	m10.fn_004d2797( 0x11015, g_0084bb50, 0 );
+	// HYPOTHESIS: the base stores the "mask" argument as a long; here it is used as an object.
+	m7c = ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
 }
