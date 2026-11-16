@@ -323,9 +323,10 @@ public:
 	// calls it through that slot on the resolved path.
 	virtual iTruth	mDelete( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as its body follows mDelete's; the name is
-	// the exe's symbol for STARFLEETOP 0x00633700. The tenth to twelfth slots are not recovered.
+	// the exe's symbol for STARFLEETOP 0x00633700, and the tenth (+0x24) is the exe's symbol for
+	// STARFLEETOP 0x00633770, whose body follows. The eleventh and twelfth are not recovered.
 	virtual iTruth	mLock( void );
-	virtual void	fn_twPath_slot9( void );
+	virtual iTruth	mLock( iTruth lock );
 	virtual void	fn_twPath_slot10( void );
 	virtual void	fn_twPath_slot11( void );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tPath::mRead (STARFLEETOP 0x0061ee60)
@@ -1916,5 +1917,37 @@ iTruth twPath::mLock( void )
 		}
 	}
 	return locked;
+}
+
+// FUNCTION: STARFLEETOP 0x00633770
+iTruth twPath::mLock( iTruth lock )
+{
+	iTruth	done = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		DWORD	attributes = GetFileAttributesW( g_00c3cbf0 );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			attributes = GetFileAttributesA( g_00c3caec );
+		}
+		if ( lock )
+			attributes |= FILE_ATTRIBUTE_READONLY;
+		else
+			attributes &= ~FILE_ATTRIBUTE_READONLY;
+		SetLastError( 0 );
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		done = SetFileAttributesW( g_00c3cbf0, attributes );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			done = SetFileAttributesA( g_00c3caec, attributes );
+		}
+	}
+	return done;
 }
 
