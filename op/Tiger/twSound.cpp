@@ -340,7 +340,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -357,6 +356,7 @@ public:
 	virtual	unsigned char	mSet3DSoundOrientation	( tPoint3* );
 	virtual	unsigned char	mSet3DSoundVelocity	( tPoint3* );
 	virtual	unsigned char	mSet3DSoundCones	( float, long );
+	virtual	unsigned char	mSet3DSoundReferenceDistance	( double );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1962,6 +1962,19 @@ unsigned char twStandardSoundChannel::mSet3DSoundCones( float angle, long level 
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction24( angle );
 	attributes->vfunction26( level );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644aa0
+unsigned char twStandardSoundChannel::mSet3DSoundReferenceDistance( double distance )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetMinDistance( (float)distance, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction22( distance );
 	return kTrue;
 }
 

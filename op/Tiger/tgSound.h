@@ -162,7 +162,10 @@ public:
     virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
     // HYPOTHESIS: slot 20 records the 3D velocity (twStandardSoundChannel::mSet3DSoundVelocity passes it the velocity it set).
     virtual void vfunction20(tPoint3* velocity);
-    virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+    virtual void vfunction21();
+    // HYPOTHESIS: slot 22 records the reference distance (twStandardSoundChannel::mSet3DSoundReferenceDistance passes it the distance it set).
+    virtual void vfunction22(double distance);
+    virtual void vfunction23();
     // HYPOTHESIS: slots 24 and 26 record the cone angle and the outside level (twStandardSoundChannel::mSet3DSoundCones passes them what it set).
     virtual void vfunction24(float angle);
     virtual void vfunction25();
@@ -438,7 +441,7 @@ public:
     virtual unsigned char mSet3DSoundOrientation(tPoint3* orientation) = 0;
     virtual unsigned char mSet3DSoundVelocity(tPoint3* velocity) = 0;
     virtual unsigned char mSet3DSoundCones(float angle, long level) = 0;
-    virtual void vfunction110(double distance) = 0;
+    virtual unsigned char mSet3DSoundReferenceDistance(double distance) = 0;
     virtual void vfunction111(t3DSoundProfile* profile) = 0;
     virtual void mGetUserPositionContext();
     virtual void mSetUserPositionContext(long context);

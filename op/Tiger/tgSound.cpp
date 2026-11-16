@@ -2597,7 +2597,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         mSet3DSoundVelocity(command->mGet3DSoundVelocity());
         return kTrue;
     case 18:
-        vfunction110(command->mGet3DSoundReferenceDistance());
+        mSet3DSoundReferenceDistance(command->mGet3DSoundReferenceDistance());
         return kTrue;
     case 12:
     {
