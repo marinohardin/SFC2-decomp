@@ -15,7 +15,8 @@ public:
     virtual ~tListMemberWithHandle();
     virtual void mInitListMemberWithHandle();
     virtual void mRemoveFromList();
-    virtual void vfunc_0c();
+    // Name from the SDK library symbols at 0x006454b0; HYPOTHESIS: slot +0x0c.
+    virtual long mGetPreviousListHandle();
     virtual void vfunc_10();
     virtual void vfunc_14();
     virtual void vfunc_18();
@@ -55,6 +56,13 @@ inline void tListMemberWithHandle::mRemoveFromList()
 {
     field_04 = -1;
     field_08 = -1;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454b0
+inline long tListMemberWithHandle::mGetPreviousListHandle()
+{
+    return field_04;
 }
 
 // HYPOTHESIS: tSoundMemoryBlock derives from tListMemberWithHandle (the list returns
