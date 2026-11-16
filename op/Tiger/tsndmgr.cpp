@@ -237,12 +237,60 @@ unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
 	return 1;
 }
 
+#include "Tiger/tpart.h"
+#include "unsorted/tRegisteredAudioType.h"
+
 // HYPOTHESIS: declared only as far as the functions below need.
-class tBasicSoundFileManager
+class tBasicSoundFileManager : public tPart
 {
 public:
+	tBasicSoundFileManager( void );
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
+
+	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
+	long					field_0xc;
+	long					field_0x10;
+	long					field_0x14;
+	tRegisteredAudioType	field_0x18[0x40];
+	long					field_0x718;
+	long					field_0x71c;
+	long					field_0x720;
+	long					field_0x724;
+	char					fUnknown_0728[0x8];
+	double					field_0x730;
+	char					fUnknown_0738[0x8];
+	double					field_0x740;
+	long					field_0x748;
+	char					fUnknown_074c[0x400];
+	long					field_0xb4c[0x100];
+	char					fUnknown_0f4c[0x1400];
+	long					field_0x234c;
+	short					field_0x2350[0x100];
+	char					fUnknown_2550[0x28];
+	unsigned char			field_0x2578;
 };
+
+// FUNCTION: STARFLEETOP 0x00663d80
+tBasicSoundFileManager::tBasicSoundFileManager( void )
+{
+	field_0x71c = 0;
+	field_0x720 = 0;
+	field_0x724 = 0;
+	field_0xc = 0;
+	field_0x10 = 0;
+	field_0x14 = 0;
+	field_0x718 = 0;
+	field_0x748 = 0;
+	field_0x730 = 1.0;
+	field_0x2578 = 0;
+	for ( int i = 0; i < 0x100; i++ )
+	{
+		field_0xb4c[i] = -1;
+		field_0x2350[i] = 1;
+	}
+	field_0x234c = 0;
+	field_0x740 = 2000.0;
+}
 
 // FUNCTION: STARFLEETOP 0x00664870
 unsigned long	tBasicSoundFileManager::mGetTrackingIndex( unsigned long handle )
