@@ -2084,14 +2084,14 @@ long twSoundPart::mDuplicateSoundChannel( long channel )
 		return -1;
 	}
 
-	if( soundChannel->mDuplicateSoundChannel( channel, handle ) == kTrue )
+	if( soundChannel->mDuplicateSoundChannel( channel, handle ) != kTrue )
 	{
 		mReleaseControl();
-		return handle;
+		delete soundChannel;
+		return -1;
 	}
 	mReleaseControl();
-	delete soundChannel;
-	return -1;
+	return handle;
 }
 #line 2098
 
