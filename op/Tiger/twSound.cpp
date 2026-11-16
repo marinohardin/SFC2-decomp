@@ -152,7 +152,6 @@ public:
 
 
 
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -175,6 +174,7 @@ public:
 					twSoundPart					( void );
 	virtual	void	mDetermineHardwareCaps		( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
+	virtual	long	mDuplicateSoundChannel		( long channel );
 	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
 	// (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
@@ -331,13 +331,13 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
-
-
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
+	// HYPOTHESIS: inline; twSoundPart::mDuplicateSoundChannel inlines it.
+					twStandardSoundChannel	( void )	{ mInit(); }
+	// The SDK library names the destructor (0x00646bd0, among the out-of-line inline copies).
+	virtual			~twStandardSoundChannel	( void );
 	virtual	void	mClear	( void );
 	virtual	void	mReset	( iTruth );
 	virtual	iTruth	mPauseChannel	( void );
@@ -400,7 +400,7 @@ public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
 	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
 	virtual unsigned char	mDoFillSelection	( unsigned char );
-	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
+	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );
 	// HYPOTHESIS: slot not recovered; nothing in this unit calls it through the vtable.
 	virtual void	mDoAllImmediateNonInterruptCommands	( void );
 	virtual	void	mDump	( void );
@@ -2057,6 +2057,43 @@ twSoundPart::twSoundPart( void )
 {
 	atwSoundPart = this;
 }
+
+// MATCH-ONLY: the #line directives inside set the original's line number for its __LINE__
+// (2387) and then put this file's own numbering back. They change no code.
+// FUNCTION: STARFLEETOP 0x006452c0
+long twSoundPart::mDuplicateSoundChannel( long channel )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return -1;
+
+#line 2387
+	if( xAttemptToGainControl( __FILE__, __LINE__, 0, 0 ) == kFalse )
+		return 0;
+
+	long handle = mFindAvailableSoundChannelHandle();
+	if( handle < 0 )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	twStandardSoundChannel* soundChannel = new twStandardSoundChannel;
+	if( soundChannel == NULL )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	if( soundChannel->mDuplicateSoundChannel( channel, handle ) == kTrue )
+	{
+		mReleaseControl();
+		return handle;
+	}
+	mReleaseControl();
+	delete soundChannel;
+	return -1;
+}
+#line 2098
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart

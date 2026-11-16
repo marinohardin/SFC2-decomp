@@ -152,7 +152,9 @@ class tChannelAttributes
 {
 public:
     tChannelAttributes();
-    virtual void vfunction0();
+    // HYPOTHESIS: slot 0 is the destructor; twSoundPart::mDuplicateSoundChannel's inlined channel
+    // constructor counts an unwind state for this member.
+    virtual ~tChannelAttributes();
     virtual void mInit();
     // HYPOTHESIS: slot 2 sets the frequency (mDuplicateSoundChannel passes it the format's
     // sample rate); the exe's dump of the attributes is slot 29.
@@ -340,6 +342,15 @@ public:
     // HYPOTHESIS: slot 42 dumps the list (tSoundChannel::mDump); slot 39 returns the member count
     // (mReset); slot 33 removes a member (mClearCommands)
     virtual void vfunction42();
+
+    // HYPOTHESIS: the inline constructor tSoundChannel's construction shows (twSoundPart::
+    // mDuplicateSoundChannel): it sets these the way tDynamicMemoryFreeListViaHandles's does.
+    // A destructor exists (each list counts an unwind state); its slot is not recovered.
+    tSoundCommandList() { field_0xc = 0; field_0x4 = -1; field_0x8 = -1; }
+    ~tSoundCommandList();
+    long field_0x4;
+    long field_0x8;
+    long field_0xc;
 };
 
 // The slots follow the exe's vtable of the class (0x007b6d1c, 122 slots). Slot 0 is the
@@ -352,6 +363,8 @@ public:
 class tSoundChannel : public tListMemberWithHandle
 {
 public:
+    // HYPOTHESIS: inline; twSoundPart::mDuplicateSoundChannel inlines it.
+    tSoundChannel() { mInit(); }
     virtual ~tSoundChannel();
     virtual void mDump();
     virtual tSoundCommandList* mGetAttachmentsList();
@@ -440,9 +453,18 @@ public:
     virtual void mAddFinishCommand(iTruth param_1);
     // Slots 32 and 95: twStandardSoundChannel::mAddActiveSoundChannel calls them with these arguments.
     virtual unsigned char mAddSoundChannel(tSoundChannelFormat* format, long handle) = 0;
-    virtual void vfunction96() = 0;
+    // Slot 96: twSoundPart::mDuplicateSoundChannel calls it on the new channel with the source
+    // channel and the new handle.
+    virtual unsigned char mDuplicateSoundChannel(long channel, long handle) = 0;
     virtual iTruth mRemoveSoundChannel();
-    virtual void vfunction98() = 0;
+    // The fill-selection function and the next-selection function (fields 0x170 and 0x174):
+    // twStandardSoundChannel::mAddActiveSoundChannel's mangled name gives both function types.
+    typedef tSoundSelection* (*tFillSelectionFunction)(unsigned long&, unsigned char, tSoundSelection*&);
+    typedef tSoundSelection* (*tSelectionFunction)(long, long);
+    // HYPOTHESIS: slot 98 is mAddActiveSoundChannel, after the order of tSoundPart's
+    // mAddSoundChannel, mAddActiveSoundChannel and mDuplicateSoundChannel; the other pure slots
+    // here are taken.
+    virtual unsigned char mAddActiveSoundChannel(tSoundChannelFormat* format, long handle, tFillSelectionFunction& fill, tSelectionFunction& select, unsigned long userData) = 0;
     virtual unsigned char mPlayChannel() = 0;
     virtual unsigned char mSetFrequency(long frequency) = 0;
     virtual unsigned char mSetPan(long pan) = 0;
@@ -480,13 +502,9 @@ public:
     double field_0xa8, field_0xb0;
     long field_0xb8;
     tSoundCommandList field_0xbc;
-    long field_0xc0[3];
     tSoundCommandList field_0xcc;
-    long field_0xd0[3];
     tSoundCommandList field_0xdc;
-    long field_0xe0[3];
     tSoundCommandList field_0xec;
-    long field_0xf0[3];
     long field_0xfc;
     long field_0x100;
     long field_0x104;
@@ -510,12 +528,9 @@ public:
     long field_0x158;
     long field_0x15c, field_0x160, field_0x164, field_0x168;
     unsigned char field_0x16c;
-    // The fill-selection function and its user data: twStandardSoundChannel::mAddActiveSoundChannel's
-    // mangled name gives both function types; mDoFillSelection calls this one.
-    typedef tSoundSelection* (*tFillSelectionFunction)(unsigned long&, unsigned char, tSoundSelection*&);
+    // The fill-selection function (mDoFillSelection calls it) and its user data.
     tFillSelectionFunction field_0x170;
     // HYPOTHESIS: a function that hands the channel its next selection; its name is not recovered.
-    typedef tSoundSelection* (*tSelectionFunction)(long, long);
     tSelectionFunction field_0x174;
     unsigned long field_0x178;
 };
@@ -537,7 +552,9 @@ public:
     // HYPOTHESIS: loads a sound for a channel format and returns its channel; the argument is
     // an element of tChannelGroup's array at +0x20 (mLoad's error text calls them formats).
     virtual long mAddSoundChannel(fn_ChannelLink* link);
-    virtual void mAddActiveSoundChannel(); virtual void mDuplicateSoundChannel();
+    virtual void mAddActiveSoundChannel();
+    // The SDK library's symbol gives the signature: long mDuplicateSoundChannel(long).
+    virtual long mDuplicateSoundChannel(long channel);
     virtual unsigned char mRemoveSoundChannel(long channel);
     virtual unsigned char mRemoveAllSoundChannels();
     virtual long vfunction13();
