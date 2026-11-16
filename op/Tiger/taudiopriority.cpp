@@ -377,3 +377,20 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( long reference, long arg2, e
 		mSetAudioFileClass( handle, reference, arg2, preempt, arg4 );
 	return handle;
 }
+
+// FUNCTION: STARFLEETOP 0x00662730
+unsigned char tAudioPriorityManagerPart::mIsHigherPriority( long first, long second, eAudioPreemptType preempt )
+{
+	// HYPOTHESIS: the enumerators for 4 and 2 are not recovered.
+	if ( preempt == 4 )
+		return false;
+	if ( preempt == 2 )
+	{
+		if ( first >= second )
+			return true;
+		return false;
+	}
+	if ( first > second )
+		return true;
+	return false;
+}
