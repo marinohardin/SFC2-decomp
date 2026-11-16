@@ -1042,7 +1042,7 @@ iTruth tSoundChannel::mFadeToStopAndResetNow(double timeToTake)
                     atgSoundPart->vfunction122();
                 }
             }
-            long command = atgSoundPart->mCreateCommand(24, 0, 0);
+            long command = atgSoundPart->mCreateCommand((eSoundChannelCommand)24, 0, 0);
             mAddAttachment(command);
         }
         return 1;
@@ -1088,7 +1088,7 @@ iTruth tSoundChannel::mFadeToStopAndClearNow(double timeToTake)
                     atgSoundPart->vfunction122();
                 }
             }
-            long command = atgSoundPart->mCreateCommand(24, 0, 0);
+            long command = atgSoundPart->mCreateCommand((eSoundChannelCommand)24, 0, 0);
             mAddAttachment(command);
         }
         return 1;
@@ -2700,9 +2700,9 @@ void tSoundChannel::mAddFinishCommand(iTruth param_1)
             // (finished) or 13 (not finished), which mDoCommand runs later.
             long command;
             if (param_1 == kTrue)
-                command = atgSoundPart->mCreateCommand(12, (long)field_0x90, (long)&field_0x8c);
+                command = atgSoundPart->mCreateCommand((eSoundChannelCommand)12, (void*)field_0x90, &field_0x8c);
             else
-                command = atgSoundPart->mCreateCommand(13, (long)field_0x90, (long)&field_0x8c);
+                command = atgSoundPart->mCreateCommand((eSoundChannelCommand)13, (void*)field_0x90, &field_0x8c);
             if (command == -1) // the exe queues the command only when creating it failed (byte-exact)
                 mAddImmediateNonInterruptCommandCommand(command);
         }
@@ -3542,4 +3542,95 @@ unsigned char tgSoundPart::mPauseAllChannels()
     }
     mReleaseControl();
     return 1;
+}
+
+#line 3548 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// HYPOTHESIS: the two data pointers carry the command's arguments; most commands read one value
+// through the first, the paired commands a second value through the second.
+// FUNCTION: STARFLEETOP 0x00651540
+long tgSoundPart::mCreateCommand(eSoundChannelCommand command, void* data1, void* data2)
+{
+    long handle = mFindAvailableSoundChannelCommandPtrAndReturnAHandle();
+    tSoundChannelCommand* commandPtr = mGetSoundChannelCommandPtrFromHandle(handle);
+    if (commandPtr == 0)
+    {
+#line 4620
+        SOUND_ERROR(("Error: Ran out of commands!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return -1;
+    }
+    commandPtr->mSetSoundChannelCommand(command);
+    switch (command)
+    {
+    case 24:
+        commandPtr->mSetSoundSelection(0);
+        break;
+    case 0:
+        commandPtr->mSetSoundSelection((tSoundSelection*)data1);
+        break;
+    case 5:
+        commandPtr->mSetFrequency(*(long*)data1);
+        break;
+    case 6:
+        commandPtr->mSetPan(*(long*)data1);
+        break;
+    case 7:
+        commandPtr->mSetVolume(*(long*)data1);
+        break;
+    case 11:
+    case 12:
+    case 13:
+        commandPtr->mSetFinishSoundCallback((void (*)(unsigned long, iTruth))data1);
+        commandPtr->mSetUserData(*(long*)data2);
+        break;
+    case 10:
+        commandPtr->mSetChannelAttributes((tChannelAttributes*)data1);
+        break;
+    case 19:
+        commandPtr->mSetPriority(*(long*)data1);
+        break;
+    case 8:
+        commandPtr->mSet3DSoundProfile((t3DSoundProfile*)data1);
+        break;
+    case 14:
+        commandPtr->mSet3DSoundPosition((tPoint3*)data1);
+        break;
+    case 15:
+        commandPtr->mSet3DSoundOrientation((tPoint3*)data1);
+        break;
+    case 17:
+        commandPtr->mSet3DSoundVelocity((tPoint3*)data1);
+        break;
+    case 16:
+        commandPtr->mSet3DSoundConeAngleForNoAttenuation(*(float*)data1);
+        commandPtr->mSet3DSoundConeAttenuationLevel(*(long*)data2);
+        break;
+    case 18:
+        commandPtr->mSet3DSoundReferenceDistance(*(double*)data1);
+        break;
+    case 20:
+        commandPtr->mSetUpdateSoundPositionFunction((void (*)(unsigned long, long))data1);
+        commandPtr->mSetUserPositionContext(*(long*)data2);
+        break;
+    case 21:
+        commandPtr->mSetMillisecondsBetweenUpdates(*(double*)data1);
+        break;
+    case 22:
+        commandPtr->mSetDelayImmediateCommandsUntilThisTime(*(double*)data1);
+        break;
+    case 23:
+        commandPtr->mSetTimeToTake(*(double*)data1);
+        commandPtr->mSetFinalVolume(*(long*)data2);
+        break;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 9:
+        break;
+    default:
+#line 4706
+        SOUND_ERROR(("Adding Command That doesn't exist!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return -1;
+    }
+    return handle;
 }

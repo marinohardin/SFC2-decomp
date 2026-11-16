@@ -8677,6 +8677,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00651540": {
+   "name": "tgSoundPart::mCreateCommand",
+   "symbol": "?mCreateCommand@tgSoundPart@@UAEJW4eSoundChannelCommand@@PAX1@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 1001,
+   "score": 93.103,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

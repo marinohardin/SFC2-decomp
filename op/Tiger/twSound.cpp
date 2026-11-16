@@ -1489,7 +1489,7 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 			tSoundSelection* copy = first->vfunction32()->vfunction42();
 			if( created )
 				copy->vfunction20();
-			long handle = atgSoundPart->mCreateCommand( 0, (long)copy, 0 );
+			long handle = atgSoundPart->mCreateCommand( (eSoundChannelCommand)0, copy, 0 );
 			if( handle == -1 )
 			{
 #line 1536

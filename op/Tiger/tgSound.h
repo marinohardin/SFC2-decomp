@@ -634,7 +634,7 @@ public:
     virtual unsigned char mAddChannelAtHandle(tSoundChannel* channel, long handle);
     virtual void mUpdateAtInterrupt();
     virtual unsigned char mClearOutSoundChannel(long channel);
-    virtual long mCreateCommand(long type, long a, long b);
+    virtual long mCreateCommand(eSoundChannelCommand command, void* data1, void* data2);
 
     fn_0064fd10_Array* field_0xc;
     long field_0x10;
