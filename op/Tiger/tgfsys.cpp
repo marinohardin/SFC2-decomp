@@ -101,6 +101,9 @@ public:
 	// resolved parent and returns its result, where the volume and directory iterators have it
 	// expanded inline.
 	tPath	mFirst( void );
+	// HYPOTHESIS: out of line, as tPathIterator::mNext (STARFLEETOP 0x0061fb60) calls it with the
+	// path passed by value and returns its result, like tVolIterParent::mNext.
+	tPath	mNext( tPath path );
 
 	int32u	f_00[10];
 };
@@ -1080,6 +1083,16 @@ tPath tPathIterator::mFirst( void )
 	tPathIterParent	&parent = BindPart( tFSCookiePart )->fFSCookies.fPathIterCookies.fn_0061c070_mResolve( *this );
 
 	return parent.mFirst();
+}
+
+// As in tPathIterator::mAdd, the original resolves with fn_0061f910_mResolve's form; building with
+// it makes the comparison time out, so this one uses the resolve of tDirIterator::mNext for now.
+// FUNCTION: STARFLEETOP 0x0061fb60
+tPath tPathIterator::mNext( tPath path )
+{
+	tPathIterParent	&parent = BindPart( tFSCookiePart )->fFSCookies.fPathIterCookies.fn_0061c070_mResolve( *this );
+
+	return parent.mNext( path );
 }
 
 // MATCH-ONLY: the original has ~tFileSession both inlined into the scalar deleting destructor and

@@ -188,6 +188,7 @@ public:
 
 	int32u	mAdd( tPath path );
 	tPath	mFirst( void );
+	tPath	mNext( tPath path );
 };
 
 #endif
