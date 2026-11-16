@@ -14,6 +14,7 @@ public:
 };
 // HYPOTHESIS: layout from the constructor's stores; 0x7c bytes per the RTTI recovery. The
 // fifth argument's name comes from the original's validate text ("mask").
+class fn_004457b7_object;
 class tSupplyDockItem
 {
 public:
@@ -23,7 +24,7 @@ public:
 	virtual void vfunction2();
 	virtual void vfunction3();
 	virtual void vfunction4();
-	virtual void vfunction5();
+	virtual void vfunction5( fn_004457b7_object *target );
 	virtual long vfunction6();
 	virtual void vfunction7( long *msg );
 	virtual void vfunction8( void *a, bool b );
@@ -39,7 +40,6 @@ public:
 	long m74;
 	long m78;
 };
-
 // HYPOTHESIS: a free cdecl function of seven arguments; its unit is not written yet.
 long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
 // HYPOTHESIS: a free cdecl function of one argument; other units pass it a name string.
@@ -717,4 +717,19 @@ long tSupplyDockFighters::vfunction6()
 	for( long i = 0; i < 4; i++ )
 		total += vfunction18( i );
 	return total;
+}
+
+// HYPOTHESIS: the argument's class is not known; only 0x004457b7 is called on it, with the
+// object 0x00447ce4 returns.
+class fn_004457b7_object
+{
+public:
+	void fn_004457b7( fn_00447ce4_object *object );
+};
+
+// FUNCTION: STARFLEETOP 0x00486f8c
+void tSupplyDockItem::vfunction5( fn_004457b7_object *target )
+{
+	target->fn_004457b7( ((fn_004479b4_object *) m74)->fn_00447ce4() );
+	vfunction6();
 }
