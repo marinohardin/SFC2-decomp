@@ -52,6 +52,10 @@ public:
 	// stores show.
 	tSession() { mInvalidate(); }
 	tSession( const tSession &other ) { *this = other; }
+	// HYPOTHESIS: declared in the class: with the compiler's implicit assignment,
+	// tFSSession::mDuplicatePath (STARFLEETOP 0x0061ca60) calls it out of line where the original
+	// copies the session cookie inline.
+	tSession &operator=( const tSession &other ) { fCookie = other.fCookie; return *this; }
 
 	void	mAddCookie( tVolume &volume );
 	void	mAddCookie( tDir &dir );
@@ -104,15 +108,16 @@ public:
 	iTruth	mDelete( void );
 };
 
-// HYPOTHESIS: a path value returned by value; its layout is not recovered.
-// HYPOTHESIS: 16 bytes from tFileSession::mDuplicatePath's argument copy: a vtable pointer, one
-// word, then a session cookie; the word's meaning is not recovered.
-class tPath
+// HYPOTHESIS: a path cookie with its session like tDir, 16 bytes as tFileSession::mDuplicatePath's
+// argument copy shows; twFileSystemPart::mGetAppPath (STARFLEETOP 0x0062e9f0) stores the invalid
+// cookies of its local before the tPath vtable pointer, as a base constructor does.
+class tPath: public fn_SessionCookie
 {
 public:
-	// MATCH-ONLY: the original stores the copied cookie twice, the first time before the tPath
-	// vtable pointer; how its copy constructor is written is not recovered.
-	tPath( const tPath &other ) { *this = other; fSession = other.fSession; }
+	tPath() {}
+	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
+	// copied session cookie both before and after the tPath vtable pointer.
+	tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
 	virtual ~tPath() {}
 
 	virtual iTruth	mValid( void );
@@ -127,10 +132,6 @@ public:
 	int32u	mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	int32u	mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	int32u	mFree( void );
-
-	// HYPOTHESIS: the path's cookie, which the path cookie manager keys on.
-	int32u		fCookie;	// +0x04
-	tSession	fSession;	// +0x08
 };
 
 // HYPOTHESIS: a volume cookie with its session, like tDir: tSession::mAddCookie sets the session
