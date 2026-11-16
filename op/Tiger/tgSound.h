@@ -542,7 +542,8 @@ public:
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual unsigned char mSet3DListener3DPosition(tPoint3* position);
     virtual unsigned char mSet3DListenerOrientation(tPoint3* forward, tPoint3* up);
-    virtual unsigned char mSet3DListenerVelocity(tPoint3* velocity); virtual void mSet3DListenerUnitScaleInMeters();
+    virtual unsigned char mSet3DListenerVelocity(tPoint3* velocity);
+    virtual unsigned char mSet3DListenerUnitScaleInMeters(double scale);
     virtual long mGetChannelStatus(long channel);
     virtual void mGetHardwareInformation(); virtual void mTotalBytesLeftToPlay(); virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
     virtual void mGetFrequency(); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();

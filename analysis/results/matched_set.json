@@ -7714,6 +7714,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00645f60": {
+   "name": "twSoundPart::mSet3DListenerUnitScaleInMeters",
+   "symbol": "?mSet3DListenerUnitScaleInMeters@twSoundPart@@UAEEN@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00646ce0": {
    "name": "AddSoundErrorDuringInterrupt",
    "symbol": "?AddSoundErrorDuringInterrupt@@YAXPBDZZ",
