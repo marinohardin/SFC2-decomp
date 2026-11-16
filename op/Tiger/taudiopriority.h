@@ -41,6 +41,8 @@ class tAudioFileClass
 			f1c = 0;
 			f34 = 0;
 		}
+		// HYPOTHESIS: not virtual; mReleaseAudioFileClassPtr calls it directly before freeing.
+		~tAudioFileClass( void );
 
 		virtual		void	vfunction0	( void );
 		virtual		long	vfunction1	( void );

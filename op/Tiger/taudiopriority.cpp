@@ -202,3 +202,23 @@ void tAudioPriorityManagerPart::mRemoveClass( long reference )
 	long handle = mGetAudioFileClassHandleFromReference( reference );
 	mReleaseAudioFileClassPtr( handle );
 }
+
+// FUNCTION: STARFLEETOP 0x00661eb0
+unsigned char tAudioPriorityManagerPart::mReleaseAudioFileClassPtr( long handle )
+{
+	if ( handle < 0 || handle >= f14 )
+		return 0;
+	if ( f0c[handle] )
+	{
+		f10--;
+		delete f0c[handle];
+		f0c[handle] = NULL;
+		if ( f10 == 0 )
+		{
+			f14 = 0;
+			delete [] f0c;
+			f0c = NULL;
+		}
+	}
+	return 1;
+}
