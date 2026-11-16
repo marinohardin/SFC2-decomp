@@ -394,3 +394,15 @@ unsigned char tAudioPriorityManagerPart::mIsHigherPriority( long first, long sec
 		return true;
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00662770
+unsigned char tAudioPriorityManagerPart::mIsFirstHigherPriorityThanSecond( unsigned long first, unsigned long second )
+{
+	tClassTrackingInfo *firstInfo = vfunction16( first );
+	tClassTrackingInfo *secondInfo = vfunction16( second );
+	if ( !firstInfo )
+		return false;
+	if ( !secondInfo )
+		return false;
+	return firstInfo->mGetPriority() >= secondInfo->mGetPriority();
+}

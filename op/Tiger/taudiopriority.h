@@ -149,7 +149,9 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		void	mSetAudioFileClass	( long, long, long, eAudioPreemptType, double );
 		// HYPOTHESIS: slots 15 and 16 (0x004359a7, 0x004359bf) have no name or signature yet.
 		virtual		void	vfunction15	( void );
-		virtual		void	vfunction16	( void );
+		// HYPOTHESIS: slot 16 maps a handle to its tracking record, from
+		// mIsFirstHigherPriorityThanSecond (0x00662770) calling mGetPriority on its result.
+		virtual		tClassTrackingInfo *	vfunction16	( unsigned long );
 		virtual		unsigned char	mIsFirstHigherPriorityThanSecond	( unsigned long, unsigned long );
 		virtual		unsigned char	mIsHigherPriority	( long, long, eAudioPreemptType );
 
