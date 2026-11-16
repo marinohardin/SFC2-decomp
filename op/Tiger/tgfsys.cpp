@@ -2125,3 +2125,10 @@ int32u twPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *
 	return size;
 }
 
+// FUNCTION: STARFLEETOP 0x00633e10
+void *OpenForWriteChar( tString &path )
+{
+	path.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+}
+

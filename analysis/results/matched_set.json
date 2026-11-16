@@ -8281,6 +8281,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00633e10": {
+   "name": "OpenForWriteChar",
+   "symbol": "?OpenForWriteChar@@YAPAXAAVtString@@@Z",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
