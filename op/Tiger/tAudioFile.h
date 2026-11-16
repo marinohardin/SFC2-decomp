@@ -23,6 +23,10 @@ public:
     // inlined clear (delete the items, free both blocks, zero the counts); a separate method is
     // what makes the counts' stores precede the next member's load. Its name is not recovered.
     void fn_Clear();
+    // HYPOTHESIS: puts an item in a free slot (growing both blocks by the grow step when full),
+    // bumps the slot's 16-bit use count and returns (count << 16) + slot. Inlined into
+    // tAudioFileInfoPart::mAddSoundFile (0x00657de0); its name is not recovered.
+    unsigned long fn_Add(T *aItem);
 
     T *field_04;
     long field_08;
@@ -58,7 +62,7 @@ public:
     virtual void mActivate();
     virtual void mDeactivate();
 
-    virtual void vfn_18();
+    virtual unsigned long mAddSoundFile(tBasicAudioFile &aFile); // HYPOTHESIS: slot 6 (offset 0x18)
     virtual void vfn_1c();
     virtual void vfn_20();
     virtual void vfn_24();

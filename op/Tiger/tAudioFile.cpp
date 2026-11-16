@@ -5,7 +5,7 @@
 // HYPOTHESIS: tMemoryPart is declared with its part binding (claimed at 0x004133d3) inside another
 // unit; it is restated here only as far as the array destructor needs it (slot 10, offset 0x28,
 // frees a block).
-class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void *mAllocate(int aSize, int aLine, const char *aFile); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(void *aBlock); };
+class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void *mAllocate(int aSize, int aLine, const char *aFile); virtual void *vfunction8(void *aBlock, int aSize); virtual void vfunction9(); virtual void vfunction10(void *aBlock); };
 
 // MATCH-ONLY: included by its bare name so that its __FILE__ is short enough for the harness to
 // pair with the original's build path; the other includes are paths from the op/ root.
@@ -63,6 +63,8 @@ public:
     virtual long vfn_a8(); // HYPOTHESIS: returns the size of the file's sample data in bytes
     virtual long vfn_ac(); // HYPOTHESIS: returns the file's sample depth
     virtual long vfn_b0(); // HYPOTHESIS: returns the file's link depth
+    virtual void vfn_b4();
+    virtual void vfn_b8(unsigned long param_1); // HYPOTHESIS: stores the file's handle
 };
 
 template <class T>
@@ -220,4 +222,12 @@ long tAudioFileInfoPart::mGetLinkDepth(unsigned long param_1)
     if (file)
         return file->vfn_b0();
     return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00657de0
+unsigned long tAudioFileInfoPart::mAddSoundFile(tBasicAudioFile &aFile)
+{
+    unsigned long handle = field_0c.fn_Add(&aFile);
+    aFile.vfn_b8(handle);
+    return handle;
 }
