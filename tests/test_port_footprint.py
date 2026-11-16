@@ -80,5 +80,7 @@ def test_the_check_lists_port_lines_in_the_source_tree_that_exists():
         check = f.read()
     tested = re.findall(r'^if \[ -d (\S+) \]; then\n\s+python3 scripts/port_footprint\.py '
                         r'--no-fix-sites (\S+)$', check, re.M)
-    assert tested == [('op', 'op')]
+    assert tested == [('op', 'op')], (
+        'check.sh no longer has the PORT: step as `if [ -d op ]; then` followed by '
+        '`python3 scripts/port_footprint.py --no-fix-sites op`; update this test with it')
     assert os.path.isdir(os.path.join(ROOT, 'op'))
