@@ -430,7 +430,7 @@ public:
     // The fill-selection function and the next-selection function (fields 0x170 and 0x174):
     // twStandardSoundChannel::mAddActiveSoundChannel's mangled name gives both function types.
     typedef tSoundSelection* (*tFillSelectionFunction)(unsigned long&, unsigned char, tSoundSelection*&);
-    typedef tSoundSelection* (*tSelectionFunction)(long, long);
+    typedef tSoundSelection* (*tSelectionFunction)(unsigned long, long);
     // HYPOTHESIS: slot 98 is mPauseChannel: twStandardSoundChannel's overrides run mPauseChannel,
     // mPlayChannel, mSetFrequency, and mDoCommand calls it with no argument for command type 2.
     virtual iTruth mPauseChannel() = 0;
@@ -521,7 +521,8 @@ public:
     // HYPOTHESIS: loads a sound for a channel format and returns its channel; the argument is
     // an element of tChannelGroup's array at +0x20 (mLoad's error text calls them formats).
     virtual long mAddSoundChannel(fn_ChannelLink* link);
-    virtual void mAddActiveSoundChannel();
+    // The SDK library's symbol for twSoundPart's override gives the signature.
+    virtual long mAddActiveSoundChannel(tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData);
     // The SDK library's symbol gives the signature: long mDuplicateSoundChannel(long).
     virtual long mDuplicateSoundChannel(long channel);
     virtual unsigned char mRemoveSoundChannel(long channel);
