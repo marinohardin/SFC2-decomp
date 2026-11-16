@@ -21,7 +21,8 @@ public:
     // copy, 0x006454d0, mSetNextListHandle).
     virtual void vfunc_10(long handle);
     virtual void vfunc_14();
-    virtual void vfunc_18();
+    // HYPOTHESIS: slot +0x18, the setter of field_0c (0x006454e0).
+    virtual void vfunc_18(long handle);
     virtual void vfunc_1c();
     // HYPOTHESIS: takes the member's handle (0x0066dc50 passes each block's index).
     virtual void vfunc_20(long);
@@ -72,6 +73,13 @@ inline long tListMemberWithHandle::mGetPreviousListHandle()
 inline void tListMemberWithHandle::vfunc_10(long handle)
 {
     field_04 = handle;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454e0
+inline void tListMemberWithHandle::vfunc_18(long handle)
+{
+    field_0c = handle;
 }
 
 // HYPOTHESIS: tSoundMemoryBlock derives from tListMemberWithHandle (the list returns
