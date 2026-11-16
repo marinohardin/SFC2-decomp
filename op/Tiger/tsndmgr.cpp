@@ -1959,3 +1959,63 @@ signed char *	tBasicSoundFileManager::mGetNextToken( char *token, const char *te
 	}
 	return (signed char *)end;
 }
+
+#include "Tiger/tsound_fileio.h"
+// HYPOTHESIS: the memory part is declared in full only in Source/entity/entity_physical.cpp;
+// until it has a shared header, this unit repeats the local form tAudioFile.cpp and
+// tgSound.cpp use. Slot 7 (offset 0x1c) allocates (size, line, file).
+class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void *mAllocate(int aSize, int aLine, const char *aFile); };
+
+// FUNCTION: STARFLEETOP 0x0066ad40
+signed char *	tBasicSoundFileManager::mReadInFileAsString( char *fileName, long a2, long *size )
+{
+	if ( fileName == 0 )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("trouble opening file"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("trouble opening file"); }
+#line 3383
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+		*size = 0;
+		return 0;
+	}
+	tBasicFile *	file = _NewSoundFileIO();
+	if ( file->mOpenForRead( fileName ) == kFalse )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("trouble opening file"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("trouble opening file"); }
+#line 3393
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+		delete file;
+		*size = 0;
+		return 0;
+	}
+	long	fileSize = file->mFileSize();
+	if ( fileSize > 0 )
+	{
+#line 3408
+		signed char *	buffer = (signed char *)BindPart( tMemoryPart )->mAllocate( fileSize + 1, __LINE__, __FILE__ );
+		if ( buffer == 0 )
+		{
+			if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("we could not get any memory"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("we could not get any memory"); }
+#line 3411
+			if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+			file->mClose();
+			delete file;
+			*size = 0;
+		}
+		else
+		{
+			*size = file->mRead( buffer, fileSize );
+			buffer[*size] = '\0';
+			( *size )++;
+			file->mClose();
+			delete file;
+		}
+		return buffer;
+	}
+	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("the file had no size?"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("the file had no size?"); }
+#line 3422
+	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+	file->mClose();
+	delete file;
+	*size = 0;
+	return 0;
+}
