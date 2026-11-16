@@ -6229,6 +6229,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00624b60": {
+   "name": "tString::operator+=",
+   "symbol": "??YtString@@QAEAAV0@ABV0@@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 656,
+   "score": 22.303,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

@@ -499,3 +499,22 @@ void tString::operator=(const char* s)
 {
 	mIncorporateCharList(s);
 }
+
+// FUNCTION: STARFLEETOP 0x00624b60
+tString& tString::operator+=(const tString &s)
+{
+	if (fInstanceControl.fDataCount + s.fInstanceControl.fDataCount < 50000)
+	{
+		int32 newCount = fInstanceControl.fDataCount + s.fInstanceControl.fDataCount;
+		if (newCount > fInstanceControl.fMemLimit)
+		{
+			newCount += fn_ExpansionRoomInline(newCount);
+			fInstanceControl.fMemLimit = newCount;
+			fInstanceControl.fMemSpace.reserve(newCount);
+		}
+		fInstanceControl.fDataCount += s.fInstanceControl.fDataCount;
+		if (mGetMemSize() != 0)
+			fInstanceControl.fMemSpace.insert(fInstanceControl.fMemSpace.end(), s.fInstanceControl.fMemSpace.begin(), s.fInstanceControl.fMemSpace.end());
+	}
+	return *this;
+}
