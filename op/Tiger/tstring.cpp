@@ -95,3 +95,54 @@ tString::tString(const iBasicStringElement c)
 	s[1] = 0;
 	mIncorporateCharList(s);
 }
+
+// MATCH-ONLY: the original inlines this (built with /Ob2).
+inline int32 tString::mExpansionRoom(int32 size)
+{
+	if (size < 50)
+		return size * 2 + 1;
+	if (size < 1000)
+		return size * 20 / 100;
+	return size * 5 / 100;
+}
+
+// MATCH-ONLY: the original inlines this (built with /Ob2).
+inline void tString::mReserve(int32 size)
+{
+	if (size > 0)
+	{
+		int32 newSize = size + mExpansionRoom(size);
+		fInstanceControl.fMemSpace.reserve(newSize);
+		fInstanceControl.fMemLimit = newSize;
+	}
+}
+
+// MATCH-ONLY: the original inlines this (built with /Ob2).
+inline int32 tString::mGetMemSize(void)
+{
+	return fInstanceControl.fMemSpace.capacity();
+}
+
+// MATCH-ONLY: the original inlines this (built with /Ob2).
+inline tString& tString::operator= (const tString &s)
+{
+	if (mGetMemSize() != 0)
+	{
+		fInstanceControl.fDataCount = s.fInstanceControl.fDataCount;
+		fInstanceControl.fMemSpace = s.fInstanceControl.fMemSpace;
+	}
+	return *this;
+}
+
+// FUNCTION: STARFLEETOP 0x00623390
+tString::tString(const tString &s)
+{
+	fInstanceControl.fTempExternalCharRepresentation = NULL;
+	fInstanceControl.fSizeOfExternalCharAllocation = 0;
+	fInstanceControl.fTempOperatorSpace = NULL;
+	fInstanceControl.fMemLimit = 0;
+	fInstanceControl.fDataCount = 0;
+
+	mReserve(s.fInstanceControl.fDataCount);
+	*this = s;
+}
