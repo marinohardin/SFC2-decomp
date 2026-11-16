@@ -246,8 +246,88 @@ class tBasicSoundFileManager : public tPart
 public:
 	tBasicSoundFileManager( void );
 	virtual	~tBasicSoundFileManager( void );
+	// Slots 6 to 82 in the order of the exe's vtable at 0x007b7664; the types come from the
+	// SDK library's symbols.
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
+	virtual	unsigned short	mGetTrackingOffset	( unsigned long handle );
+	virtual	unsigned char	mValidTrackingNumber	( unsigned long handle );
+	virtual	void	mClearTrackingNumber	( unsigned long handle );
+	virtual	unsigned long	mNewTrackingNumber	( long );
+	virtual	long	mGetRegisteredNumber	( char * );
+	// HYPOTHESIS: the sixth parameter reads as void * from the symbol's back reference.
+	virtual	unsigned char	mAddRegisteredAudioType	( char *, unsigned long (*)( char *, long, long, long, tSoundChannelFormat *, long, void * ), unsigned long (*)( unsigned long, long ), long, long, void *, long );
+	virtual	unsigned char	mSetAFPlayInfoAtThisPosition	( long, long, long, long, char *, char *, char *, long, long, long, long, double, double, unsigned char, unsigned char, long );
+	virtual	void	mParseAllSoundsFile	( char *, long, long );
+	virtual	signed char *	mGetNextToken	( char *, const char *, long, long *, char );
+	virtual	signed char *	mReadInFileAsString	( char *, long, long * );
+	virtual	unsigned long	mPlay	( long, long, double, long, long, long, long, void (*)( long, unsigned long, unsigned char ), void (*)( unsigned long, long ) );
+	virtual	void	mSetNextInSequence	( long, long );
+	virtual	void	mStop	( unsigned long );
+	virtual	unsigned char	mAttachSoundToChannel	( unsigned long, tSoundSelection * );
+	virtual	unsigned char	mAttachFileToChannel	( unsigned long, long );
+	virtual	unsigned char	mResumeChannel	( unsigned long );
+	virtual	unsigned char	mPauseChannel	( unsigned long );
+	virtual	unsigned char	mStopAndResetChannel	( unsigned long );
+	virtual	unsigned char	mStopAndClearChannel	( unsigned long );
+	virtual	unsigned char	mSetFrequency	( unsigned long, long );
+	virtual	unsigned char	mSetPan	( unsigned long, long );
+	virtual	unsigned char	mSetVolume	( unsigned long, long );
+	virtual	unsigned char	mSetPriority	( unsigned long, long );
+	virtual	long	mGetChannelPriority	( unsigned long, long );
+	virtual	long	mGetFrequency	( unsigned long, long );
+	virtual	long	mGetPan	( unsigned long, long );
+	virtual	long	mGetVolume	( unsigned long, long );
+	virtual	unsigned char	mIsSoundPlaying	( unsigned long );
+	virtual	unsigned char	mSetChannelAttributes	( unsigned long, tChannelAttributes * );
+	virtual	unsigned char	mSet3DSoundProfile	( unsigned long, t3DSoundProfile * );
+	virtual	unsigned char	mSet3DSoundPosition	( unsigned long, tPoint3 * );
+	virtual	unsigned char	mSet3DSoundOrientation	( unsigned long, tPoint3 *, long, unsigned char );
+	virtual	unsigned char	mSet3DSoundVelocity	( unsigned long, tPoint3 *, long, unsigned char );
+	virtual	unsigned char	mSet3DSoundCones	( unsigned long, float, long, long, unsigned char );
+	virtual	unsigned char	mSet3DSoundReferenceDistance	( unsigned long, double, long, unsigned char );
+	virtual	tChannelAttributes *	mGetChannelAttributes	( unsigned long, long );
+	virtual	t3DSoundProfile *	mGet3DSoundProfile	( unsigned long, long );
+	virtual	tPoint3 *	mGet3DSoundPosition	( unsigned long, long );
+	virtual	tPoint3 *	mGet3DSoundOrientation	( unsigned long, long );
+	virtual	tPoint3 *	mGet3DSoundVelocity	( unsigned long, long );
+	virtual	double	mGet3DSoundReferenceDistance	( unsigned long, long );
+	virtual	float	mGet3DSoundConeAngleForNoAttenuation	( unsigned long, long );
+	virtual	long	mGet3DSoundConeAttenuationLevel	( unsigned long, long );
+	virtual	long	mTotalBytesLeftToPlay	( unsigned long, long );
+	virtual	double	mTotalNumberOfSecondsLeftToPlay	( unsigned long, long );
+	virtual	long	mNumberOfAttachmentsQueuedUp	( unsigned long, long );
+	virtual	tSoundChannelFormat *	mGetSoundChannelFormat	( unsigned long, long );
+	virtual	unsigned char	mAreWeLooping	( unsigned long, long );
+	virtual	unsigned char	mAreWeStreaming	( unsigned long, long );
+	virtual	unsigned char	mAreWe3D	( unsigned long, long );
+	virtual	unsigned char	mAreWeStatic	( unsigned long, long );
+	virtual	unsigned char	mAreWeFixedFrequency	( unsigned long, long );
+	virtual	unsigned char	mAreWeARecordingChannel	( unsigned long, long );
+	virtual	unsigned char	mTryToLocateInHardware	( unsigned long, long );
+	virtual	unsigned char	mTryToLocateInSoftware	( unsigned long, long );
+	virtual	unsigned char	mAreWeFixedPan	( unsigned long, long );
+	virtual	unsigned char	mAreWeFixedVolume	( unsigned long, long );
+	virtual	unsigned char	mAreWeAGlobalSound	( unsigned long, long );
+	virtual	unsigned char	mDoWeRetainSelections	( unsigned long, long );
+	virtual	void	mDump	( unsigned long, long );
+	virtual	unsigned char	mSetFinishFunction	( unsigned long, void (* const)( unsigned long, unsigned char ), long );
+	virtual	unsigned char	mAddUpdateSoundPositionFunction	( unsigned long, void (*)( unsigned long, long ), long, double, long, unsigned char );
+	virtual	unsigned char	mAddDelayCommand	( unsigned long, double, long, unsigned char );
+	virtual	unsigned char	mPlaySpecialLoop	( unsigned long, long, long, long, long, long );
+	virtual	unsigned char	mEndSpecialLoop	( unsigned long, long );
+	virtual	unsigned char	mAddGetNextAttachmentFunction	( unsigned long, void (*)( unsigned long, long ), long, double, long );
+	virtual	unsigned char	mFadeToVolume	( unsigned long, long, double, long, unsigned char );
+	virtual	unsigned char	mFadeToStopAndResetNow	( unsigned long, double, long );
+	virtual	unsigned char	mFadeToStopAndClearNow	( unsigned long, double, long );
+	virtual	void	mCloseAllSoundsInGroup	( long );
+	virtual	void	mCloseAllSoundsNotInThreshold	( long );
+	virtual	void	mCloseAllSounds	( void );
+	virtual	void	mCloseFile	( long );
 	virtual	void	mAdjustGlobalVolume	( void );
+	virtual	void	mSetGlobalVolume	( long );
+	virtual	void	mUpdateAllSounds	( void );
+
+	void	mUpdateTest	( void );
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
 	long					field_0xc;
@@ -319,6 +399,15 @@ void	tBasicSoundFileManager::mAdjustGlobalVolume( void )
 		volume = gVolumeModifierTable[field_0x748] * volume;
 		BindPart( tSoundPart )->mSetGlobalVolume( (long)volume );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00664050
+void	tBasicSoundFileManager::mUpdateAllSounds( void )
+{
+	if ( atgSoundPart->mAreWeInInterruptMode() == kFalse && field_0x2578 )
+		mUpdateTest();
+	if ( atgSoundPart->mAreWeInInterruptMode() == kFalse )
+		mAdjustGlobalVolume();
 }
 
 // FUNCTION: STARFLEETOP 0x00664870
