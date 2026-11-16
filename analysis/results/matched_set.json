@@ -9946,6 +9946,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00667910": {
+   "name": "tBasicSoundFileManager::mGetVolume",
+   "symbol": "?mGetVolume@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
