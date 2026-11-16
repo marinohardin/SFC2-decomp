@@ -9739,6 +9739,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006664f0": {
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAngleForNoAttenuation",
+   "symbol": "?mGet3DSoundConeAngleForNoAttenuation@tBasicSoundFileManager@@UAEMKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
