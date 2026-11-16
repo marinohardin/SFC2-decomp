@@ -853,11 +853,15 @@ class tSupplyDockMisc : public tSupplyDockItem
 public:
 	tSupplyDockMisc( long arg1, long arg2, long arg3, long mask, long arg5 );
 
-	// HYPOTHESIS: called directly with the index; its body is not written yet.
+	// HYPOTHESIS: called directly with the index; their bodies are not written yet.
+	long fn_004876ae( long i );
 	long fn_004876bf( long i );
+	double fn_004876d0( long i );
+	long fn_004876df( long i );
 
 	virtual long vfunction1();
 	virtual void vfunction2();
+	virtual void vfunction3();
 
 	long m7c[3];
 };
@@ -905,4 +909,36 @@ void tSupplyDockMisc::vfunction2()
 	tSupplyDockItem::vfunction2();
 	for( long i = 0; i < 3; i++ )
 		fn_004d3306( (long) g_0084bbe8[i] );
+}
+
+// HYPOTHESIS: the four text ids per misc item, at a fixed data address.
+extern const long g_0079fc48[3][4];
+
+// FUNCTION: STARFLEETOP 0x0048740a
+void tSupplyDockMisc::vfunction3()
+{
+	tString text;
+
+	for( long i = 0; i < 3; i++ )
+	{
+		text = "";
+		text.mAppendInt32s( fn_004876bf( i ) );
+		fn_004d33d4( g_0079fc48[i][0], text );
+		text = "";
+		text.mAppendInt32s( fn_004876ae( i ) );
+		fn_004d33d4( g_0079fc48[i][1], text );
+		text = "";
+		text.mAppendInt32s( fn_004876d0( i ) );
+		fn_004d33d4( g_0079fc48[i][2], text );
+		text = "";
+		text.mAppendInt32s( fn_004876df( i ) );
+		fn_004d33d4( g_0079fc48[i][3], text );
+	}
+
+	vfunction8( g_0084bbd0, fn_004876bf( 0 ) > 0 );
+	vfunction8( g_0084bbd4, fn_004876bf( 0 ) < fn_004876ae( 0 ) );
+	vfunction8( g_0084bbd8, fn_004876bf( 1 ) > 0 );
+	vfunction8( g_0084bbdc, fn_004876bf( 1 ) < fn_004876ae( 1 ) );
+	vfunction8( g_0084bbe0, fn_004876bf( 2 ) > 0 );
+	vfunction8( g_0084bbe4, fn_004876bf( 2 ) < fn_004876ae( 2 ) );
 }
