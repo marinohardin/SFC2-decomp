@@ -4794,3 +4794,16 @@ unsigned char tgSoundPart::mAreWe3D(long channel)
     mReleaseControl();
     return threeD;
 }
+#line 4798 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656090
+unsigned char tgSoundPart::mAreWeStatic(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6816
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char isStatic = channelPtr->mAreWeStatic();
+    mReleaseControl();
+    return isStatic;
+}
