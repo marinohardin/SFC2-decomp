@@ -581,7 +581,8 @@ public:
     virtual void mDump(int level);
     virtual void mUpdate();
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
-    virtual void mAddUpdateListenerPositionFunction();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     virtual void vfunction90();
     virtual void mFadeToVolume(); virtual void mFadeToStopAndResetNow(); virtual void mFadeToStopAndClearNow(); virtual void mPlaySpecialLoop();
@@ -623,6 +624,7 @@ public:
     virtual unsigned char mSetPan(long channel, long pan, unsigned char immediate);
     virtual void mUpdate();
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
+    virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
@@ -659,7 +661,7 @@ public:
     long field_0x1c;
     long field_0x20;
     long field_0x24;
-    void (*field_0x28)(long); // HYPOTHESIS: a callback run with 0x2c when 0x38 seconds have passed since 0x30
+    void (*field_0x28)(unsigned long); // HYPOTHESIS: a callback run with 0x2c when 0x38 seconds have passed since 0x30
     long field_0x2c;
     double field_0x30;
     double field_0x38;

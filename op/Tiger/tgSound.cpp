@@ -3943,3 +3943,17 @@ unsigned char tgSoundPart::mAddUpdateSoundPositionFunction(long channel, void (*
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00652890
+unsigned char tgSoundPart::mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5095
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x28 = function;
+    field_0x2c = data;
+    field_0x38 = interval * 1000.0;
+    mReleaseControl();
+    return 1;
+}
