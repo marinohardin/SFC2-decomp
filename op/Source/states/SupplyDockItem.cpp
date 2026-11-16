@@ -104,6 +104,8 @@ public:
 	long fn_004477f8( long arg1 );
 	long fn_0044780d( long arg1 );
 	std::string fn_00447822( long arg1 );
+	long fn_004477b1( long arg1 );
+	void fn_004477c6( long arg1, long arg2, long arg3 );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -601,6 +603,8 @@ public:
 	virtual long vfunction10();
 	virtual long vfunction12();
 	virtual double vfunction17( const std::string &name );
+	// HYPOTHESIS: virtual in the exe (slot 20); declared plain until slots 13-19 are known.
+	void vfunction20( long arg1, long arg2 );
 	// HYPOTHESIS: called directly with the slot index; its body is not written yet.
 	void fn_00486fac( long i );
 
@@ -644,4 +648,10 @@ long tSupplyDockFighters::vfunction1()
 	}
 	vfunction3();
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00486d32
+void tSupplyDockFighters::vfunction20( long arg1, long arg2 )
+{
+	((fn_004479b4_object *) m74)->fn_004477c6( arg2, arg1, ((fn_004479b4_object *) m74)->fn_004477b1( arg2 ) );
 }
