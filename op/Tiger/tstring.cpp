@@ -458,3 +458,38 @@ int32 tString::rfind(const char *s)
 	tString t(s);
 	return rfind(t, size());
 }
+
+// FUNCTION: STARFLEETOP 0x00624420
+int32 tString::rfind(tString &s, int32 startPos)
+{
+	int32 otherSize = s.size();
+	int32 mySize = size();
+	int32 pos = startPos;
+	if (mySize - pos < otherSize)
+		pos = mySize - otherSize;
+	int32 count = pos + 1;
+	if (count <= 0)
+		return -1;
+	{
+		iterator i = begin() + pos;
+		for (;;)
+		{
+			iterator a = i;
+			iterator j = s.begin();
+			iTruth match;
+			do
+			{
+				if (!(j != s.end()))
+					return pos;
+				match = (*j == *a);
+				++j;
+				++a;
+			} while (match);
+			pos--;
+			if (--count == 0)
+				break;
+			i--;
+		}
+	}
+	return -1;
+}

@@ -130,7 +130,7 @@ class tString
 		int32 					size() const;
 		int32					find(char);
 		int32					find(tString &, int32 startPos = 0);
-		int32					rfind(tString&, int32 startPos);
+		int32					rfind(tString &, int32 startPos);
 		int32					find(const char *, int32 startPos = 0);
 		int32					rfind(const char *, int32 startPos);
 		int32					rfind(const char *);
@@ -155,6 +155,7 @@ class tString
 				iterator				operator-(int32 n);
 				iterator				operator++(int);
 				iterator				operator++();
+				iterator				operator--(int);
 				iTruth					operator==(const iterator i);
 				iTruth					operator!=(const iterator i);
 				iTruth					operator<(const iterator i);
