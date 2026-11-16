@@ -1426,15 +1426,15 @@ iTruth twDir::mExist( void )
 	if ( f_24 == "" && !(&f_14)->mValid() && (&f_04)->mValid() )
 		return true;
 
-	WIN32_FIND_DATAW	wideData;
+	struct { WIN32_FIND_DATAW w; char pad[0x1b0]; }	wide;	// MATCH-ONLY: 0x1b0 unused bytes the original's frame holds
 	WIN32_FIND_DATAA	data;
 	HANDLE	find;
 
 	f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
-	find = FindFirstFileW( g_00c3cbf0, &wideData );
+	find = FindFirstFileW( g_00c3cbf0, &wide.w );
 	if ( find != INVALID_HANDLE_VALUE )
 	{
-		if ( wideData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+		if ( wide.w.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
 			exists = true;
 	}
 	else if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
