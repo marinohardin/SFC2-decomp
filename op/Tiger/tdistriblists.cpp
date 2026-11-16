@@ -110,3 +110,26 @@ unsigned char tDynamicMemoryFreeList::mInsertBeforeListMember(tListMember *aMemb
 	field_0xc++;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626a10
+unsigned char tDynamicMemoryFreeList::mRemoveFromList(tListMember *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	if (field_0x4 == aMember)
+		field_0x4 = aMember->vfunction5();
+	else if (aMember->vfunction4() == 0)
+		return 0;
+	if (field_0x8 == aMember)
+		field_0x8 = aMember->vfunction4();
+	tListMember *previous = aMember->vfunction4();
+	tListMember *next = aMember->vfunction5();
+	if (previous != 0)
+		previous->vfunction7(next);
+	if (next != 0)
+		next->vfunction6(previous);
+	// HYPOTHESIS: slot 2 (offset 8) clears the member's links.
+	aMember->vfunction3();
+	field_0xc--;
+	return 1;
+}
