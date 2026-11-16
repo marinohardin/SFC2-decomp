@@ -25,3 +25,9 @@ int tStrMgrCore::mGetStringIndex( const tString &s )
 		throw (eStrManagerErr)0;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00627280
+int tStrMgrCore::mGetStringIndex( const char *s )
+{
+	return mGetStringIndex( tString( s ) );
+}
