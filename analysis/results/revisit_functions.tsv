@@ -95,3 +95,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00631970	twDir::mGetSize	0.00	2	sonnet	2026-11-16T18:39:21Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00631b30	twDir::mGetNamedDir	22.24	2	sonnet	2026-11-16T18:50:33Z	attempt 2 (sonnet) did not raise the best; best 22.24%
 0x00631d30	twDir::mGetNamedFile	2.83	2	sonnet	2026-11-16T19:11:22Z	best not above 90% after 2 attempts; best 2.83%
+0x00632040	twDir::mGetDirIterator	12.65	2	sonnet	2026-11-16T19:32:23Z	attempt 2 (sonnet) did not raise the best; best 12.65%
