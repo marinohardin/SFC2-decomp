@@ -350,8 +350,8 @@ public:
     virtual void mClearAll();
     virtual void mReset(iTruth param_1);
     virtual iTruth mTestInList();
-    virtual void mGetFrequency();
-    virtual void mGetPan();
+    virtual long mGetFrequency();
+    virtual long mGetPan();
     virtual long mGetVolume();
     virtual void mGetChannelPriority();
     virtual void mGetChannelAttributes();
@@ -394,8 +394,8 @@ public:
     virtual iTruth mDoWeRetainSelections();
     virtual iTruth mDoWeAutoRemoveChannel();
     virtual iTruth mDoWeAutoRemoveSelections();
-    virtual void mAutoRemoveChannel();
-    virtual void mAutoRemoveSelections();
+    virtual unsigned char mAutoRemoveChannel();
+    virtual unsigned char mAutoRemoveSelections();
     virtual iTruth mUpdateRegular(double time);
     virtual iTruth mUpdateAtInterrupt(double time);
     virtual iTruth mDoCommand(tSoundChannelCommand* command);
@@ -409,7 +409,7 @@ public:
     virtual void vfunction96() = 0;
     virtual iTruth mRemoveSoundChannel();
     virtual void vfunction98() = 0;
-    virtual iTruth vfunction99() = 0;
+    virtual unsigned char mPlayChannel() = 0;
     virtual void vfunction100(long frequency) = 0;
     virtual void vfunction101(long pan) = 0;
     virtual void vfunction102(long volume) = 0;

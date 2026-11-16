@@ -349,13 +349,13 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
 	virtual	void	mClear	( void );
 	virtual	void	mReset	( iTruth );
 	virtual	iTruth	mPauseChannel	( void );
+	virtual	unsigned char	mPlayChannel	( void );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1220,7 +1220,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 					}
 				}
 				if( field_0x28 == 0x10 )
-					vfunction99();
+					mPlayChannel();
 			}
 			else
 			{
@@ -1712,6 +1712,65 @@ unsigned char twStandardSoundChannel::mAddActiveSoundChannel( tSoundChannelForma
 	if( !mAddSoundChannel( format, handle ) )
 		return kFalse;
 	return mDoFillSelection( kFalse );
+}
+
+// FUNCTION: STARFLEETOP 0x006443e0
+unsigned char twStandardSoundChannel::mPlayChannel( void )
+{
+	DWORD status;
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	fUnknown_01e8 = 0;
+	fUnknown_01ec = 0;
+	if( status & DSBSTATUS_BUFFERLOST )
+		vfunction127();
+	else if( status )
+		return kTrue;
+
+	unsigned char regular = BindPart( tSoundPart )->vfunction13() == 0;
+	if( !gUpdateBuffers && regular )
+	{
+		mLockInData();
+		mUpdateBuffersAndSelections( atgSoundPart->vfunction125() );
+		if( field_0x168 > ( (&field_0x10)->vfunction3() >> 2 ) )
+			return kFalse;
+	}
+	if( fSoundBuffer->SetCurrentPosition( field_0x15c ) != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	if( regular && field_0x168 == (&field_0x10)->vfunction3() )
+	{
+		field_0x28 = 0x10;
+		atgSoundPart->vfunction123( field_0c );
+		return kTrue;
+	}
+
+	vfunction101( mGetPan() );
+	vfunction100( mGetFrequency() );
+	HRESULT err;
+	if( mAreWeStreaming() == kTrue || mAreWeLooping() == kTrue )
+		err = fSoundBuffer->Play( 0, 0, DSBPLAY_LOOPING );
+	else
+		err = fSoundBuffer->Play( 0, 0, 0 );
+	if( err != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	field_0x28 = 0x20;
+	atgSoundPart->vfunction123( field_0c );
+	field_0x16c = 0;
+	return kTrue;
 }
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'

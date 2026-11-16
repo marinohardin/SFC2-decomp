@@ -2570,7 +2570,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         vfunction111(command->mGet3DSoundProfile());
         return kTrue;
     case 1:
-        return vfunction99();
+        return mPlayChannel();
     case 2:
         vfunction98();
         return kTrue;
