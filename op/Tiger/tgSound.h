@@ -656,7 +656,8 @@ public:
     virtual unsigned char mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
-    virtual iTruth xAttemptToGainControl(const char* file, long line, long a, long b);
+    // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
+    virtual iTruth xAttemptToGainControl(char* file, long line, unsigned char a, long b);
     virtual void mReleaseControl();
     // HYPOTHESIS: slot 116 (vtable offset 0x1d0); true while the sound part is inside its
     // interrupt.

@@ -8848,6 +8848,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00653830": {
+   "name": "tgSoundPart::xAttemptToGainControl",
+   "symbol": "?xAttemptToGainControl@tgSoundPart@@UAEEPADJEJ@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

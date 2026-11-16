@@ -4090,3 +4090,49 @@ unsigned char tgSoundPart::mSet3DSoundProfile(long channel, t3DSoundProfile* pro
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+
+// HYPOTHESIS: the file and line of the caller that holds control (0x00c64798, 0x00c6695c).
+static char g_00c64798[256];
+static long g_00c6695c;
+
+#line 4098 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653830
+iTruth tgSoundPart::xAttemptToGainControl(char* file, long line, unsigned char a, long b)
+{
+    if (a == kTrue)
+    {
+        if (field_0x128 == kTrue) return kFalse;
+        if (field_0xc8 > 0) return kFalse;
+        iTruth result = field_0xcc.mAcquire();
+        if (result == kTrue)
+        {
+            strcpy(g_00c64798, file);
+            g_00c6695c = line;
+        }
+        return result;
+    }
+    if (field_0xc8 > 0 && b == 1)
+    {
+        if (field_0xcc.fLock != 1)
+        {
+#line 5488
+            SOUND_ERROR(("callback mode without control -- ouch!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return kTrue;
+        }
+        return kTrue;
+    }
+    long count = 0;
+    while (field_0xcc.mAcquire() == kFalse)
+    {
+        count++;
+        fSomeoneIsWaitingForControl = 1;
+    }
+    fSomeoneIsWaitingForControl = 0;
+    if (count == 10000)
+    {
+#line 5510
+        AddSoundErrorDuringInterrupt("Warning -- Lock up controlled by %s %ld asking is %s %ld", g_00c64798, g_00c6695c, file, line); AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__);
+    }
+    strcpy(g_00c64798, file);
+    g_00c6695c = line;
+    return kTrue;
+}
