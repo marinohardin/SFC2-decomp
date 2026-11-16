@@ -161,7 +161,6 @@ public:
 		gSoundSay.mJustSayIt a;									\
 	}
 #define SOUNDSAY2(a)	{ SOUNDSAY(a); SOUNDSAY((" -- %s %d\n", __FILE__, __LINE__)); }
-
 long	gNumBuffersCreated;
 long	gNumBuffersReleased;
 
@@ -173,6 +172,7 @@ public:
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
 	virtual	long	mDuplicateSoundChannel		( long channel );
 	virtual	long	mAddActiveSoundChannel		( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData );
+	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
 	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
 	// (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
@@ -2131,7 +2131,44 @@ long twSoundPart::mAddActiveSoundChannel( tSoundChannelFormat* format, tSoundCha
 	mReleaseControl();
 	return handle;
 }
+long	gNumDuplicatesCreated;	// HYPOTHESIS: the SDK library's name for 0x00c64790 (one vote, from this function)
 #line 2136
+// FUNCTION: STARFLEETOP 0x00645770
+long twSoundPart::mAddSoundChannel( tSoundChannelFormat* format )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return -1;
+
+#line 2454
+	if( xAttemptToGainControl( __FILE__, __LINE__, 0, 0 ) == kFalse )
+		return 0;
+
+	long handle = mFindAvailableSoundChannelHandle();
+	if( handle < 0 )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	twStandardSoundChannel* soundChannel = new twStandardSoundChannel;
+	gNumDuplicatesCreated++;
+	if( soundChannel == NULL )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	if( soundChannel->mAddSoundChannel( format, handle ) != kTrue )
+	{
+		mReleaseControl();
+		delete soundChannel;
+		return -1;
+	}
+	mAddChannelAtHandle( soundChannel, handle );
+	mReleaseControl();
+	return handle;
+}
+#line 2172
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart

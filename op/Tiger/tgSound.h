@@ -518,9 +518,9 @@ public:
 
     virtual iTruth mInit(tInitSoundPartInfo* info);
     virtual void mDone();
-    // HYPOTHESIS: loads a sound for a channel format and returns its channel; the argument is
-    // an element of tChannelGroup's array at +0x20 (mLoad's error text calls them formats).
-    virtual long mAddSoundChannel(fn_ChannelLink* link);
+    // The SDK library's symbol for twSoundPart's override gives the signature. tChannelGroup
+    // passes an element of its array at +0x20 (mLoad's error text calls them formats).
+    virtual long mAddSoundChannel(tSoundChannelFormat* format);
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual long mAddActiveSoundChannel(tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData);
     // The SDK library's symbol gives the signature: long mDuplicateSoundChannel(long).
