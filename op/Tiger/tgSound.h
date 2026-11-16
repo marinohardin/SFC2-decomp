@@ -372,7 +372,7 @@ public:
     virtual long mGetPan();
     virtual long mGetVolume();
     virtual void mGetChannelPriority();
-    virtual void mGetChannelAttributes();
+    virtual tChannelAttributes* mGetChannelAttributes();
     virtual void mGet3DSoundProfile();
     virtual void mGet3DSoundPosition();
     virtual void mGet3DSoundOrientation();
@@ -588,7 +588,7 @@ public:
     virtual long mGetFrequency(long channel);
     virtual long mGetPan(long channel);
     virtual long mGetVolume(long channel);
-    virtual void mGetChannelAttributes();
+    virtual tChannelAttributes* mGetChannelAttributes(long channel);
     virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
     virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
@@ -712,6 +712,7 @@ public:
     virtual long mGetFrequency(long channel);
     virtual long mGetPan(long channel);
     virtual long mGetVolume(long channel);
+    virtual tChannelAttributes* mGetChannelAttributes(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
