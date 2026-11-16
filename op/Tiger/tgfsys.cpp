@@ -348,8 +348,9 @@ public:
 	// the twPath vtable store, the call to mFree and the members' destructors.
 	~twPath() { mFree(); }
 
-protected:
+	// HYPOTHESIS: public, as twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) calls it.
 	void	mEnsureFileClosed( void );
+protected:
 	void	mMakeFullPath( void );
 
 public:
@@ -501,6 +502,9 @@ public:
 	typedef tCountMap<tKeyType,tValueType,tCompare>	tMap;
 
 	tMap	&mResolve( tKeyType &key );
+	// Out of line in the exe (STARFLEETOP 0x00636fd0 and 0x00636fb0), named by its symbols.
+	int32u		count( tKeyType &key );
+	tValueType	&operator[]( tKeyType &key );
 
 	int32u	f_00;
 	tMap	fMaps[256];		// +0x04
@@ -608,6 +612,15 @@ public:
 			throw "Use of invalid cookie to resolve an item";
 		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];
 		return map[cookie];
+	}
+
+	// MATCH-ONLY: mResolve as twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) has it for a
+	// read, with the value map's out-of-line count and operator[].
+	tObjectType &fn_006340b0_mResolve( tCookieType &cookie )
+	{
+		if ( fValues.count( cookie ) == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		return fValues[cookie];
 	}
 
 	int32u											f_00;
@@ -2195,4 +2208,66 @@ unsigned long AsynchIOMain( void *data )
 	}
 	delete queue;
 	return 0;
+}
+
+// Named by the exe's symbols; defined after mProcessRequest.
+void *OpenForWrite( tString &path );
+void *OpenForRead( tString &path );
+
+// FUNCTION: STARFLEETOP 0x006340b0
+void twIORequest::mProcessRequest( void )
+{
+	BOOL	done;
+	DWORD	transferred;
+	try
+	{
+		switch ( f_00 )
+		{
+			case fn_twIORequestType_0:
+			{
+				twPath	&path = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_006340b0_mResolve( f_04 );
+				if ( path.f_a8 < 2 )
+				{
+					path.mEnsureFileClosed();
+					path.f_a4 = OpenForRead( path.f_7c );
+					path.f_a8 = 2;
+					if ( path.f_a4 == INVALID_HANDLE_VALUE )
+						path.f_a8 = 0;
+				}
+				HANDLE	file = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_006340b0_mResolve( f_04 ).f_a4;
+				SetFilePointer( file, f_18, NULL, FILE_BEGIN );
+				done = ReadFile( file, f_14, f_1c, &transferred, NULL );
+				break;
+			}
+			case fn_twIORequestType_1:
+			{
+				// MATCH-ONLY: the original calls mResolve out of line here (STARFLEETOP 0x00636ad0).
+				twPath	&(tCookieManager<tPath,twPath>::*resolve)( tPath & ) = &tCookieManager<tPath,twPath>::mResolve;
+				twPath	&path = (BindPart( tFSCookiePart )->fFSCookies.fPathCookies.*resolve)( f_04 );
+				if ( path.f_a8 < 3 )
+				{
+					path.mEnsureFileClosed();
+					path.f_a4 = OpenForWrite( path.f_7c );
+					path.f_a8 = 3;
+					if ( path.f_a4 == INVALID_HANDLE_VALUE )
+						path.f_a8 = 0;
+				}
+				HANDLE	file = (BindPart( tFSCookiePart )->fFSCookies.fPathCookies.*resolve)( f_04 ).f_a4;
+				SetFilePointer( file, f_18, NULL, FILE_BEGIN );
+				done = WriteFile( file, f_14, f_1c, &transferred, NULL );
+				break;
+			}
+		}
+		if ( !done )
+			throw "Error in asynchronous I/O.";
+		if ( transferred != f_1c )
+			throw "Incorrect number of bytes transferred.";
+		if ( f_20 )
+			f_20->fn_006340b0_vfunction0( f_04, 0, transferred );
+	}
+	catch ( ... )
+	{
+		if ( f_20 )
+			f_20->fn_006340b0_vfunction0( f_04, 1, 0 );
+	}
 }

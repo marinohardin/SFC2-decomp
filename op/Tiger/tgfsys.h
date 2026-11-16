@@ -197,4 +197,12 @@ public:
 	tPath	mNext( tPath path );
 };
 
+// HYPOTHESIS: twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) calls the first virtual
+// with the path by value, a zero and the bytes transferred; the names are not recovered.
+class tPathCallback
+{
+public:
+	virtual void	fn_006340b0_vfunction0( tPath path, int32u arg, int32u size );
+};
+
 #endif
