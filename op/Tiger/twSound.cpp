@@ -1527,7 +1527,7 @@ unsigned char twStandardSoundChannel::mAddSoundChannel( tSoundChannelFormat* for
 	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
 	{
 #line 1578
-		SOUNDSAY2(( "3D channels must be mono!" ));
+		SOUNDSAY2(( "3D channels must be mono!\n" ));
 		return kFalse;
 	}
 	if( !mDoWeRetainSelections() && mAreWeLooping() == kTrue )
