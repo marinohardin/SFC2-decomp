@@ -133,3 +133,12 @@ unsigned char tDynamicMemoryFreeList::mRemoveFromList(tListMember *aMember)
 	field_0xc--;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626aa0
+unsigned char tDynamicMemoryFreeList::mIsListMember(tListMember *aMember)
+{
+	for (tListMember *member = field_0x4; member != 0; member = member->vfunction5())
+		if (member == aMember)
+			return 1;
+	return 0;
+}

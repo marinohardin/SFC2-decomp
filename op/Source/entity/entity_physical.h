@@ -123,7 +123,7 @@ public:
 	virtual unsigned char mInsertAfterListMember(tListMember *aListMember, tListMember *aMember);
 	virtual unsigned char mInsertBeforeListMember(tListMember *aMember, tListMember *aListMember);
 	virtual unsigned char mRemoveFromList(tListMember *aMember);
-	virtual void mIsListMember();
+	virtual unsigned char mIsListMember(tListMember *aMember);
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void mGetZeroIndexedListMemberPosition();
