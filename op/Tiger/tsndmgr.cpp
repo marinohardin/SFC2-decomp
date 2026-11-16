@@ -2060,3 +2060,8 @@ void	DefaultNextAttachmentFunction( unsigned long handle, long data )
 {
 	BindPart( tBasicSoundFileManager )->mDoDefaultNextAttachment( handle );
 }
+// FUNCTION: STARFLEETOP 0x0066b300
+void	tBasicSoundFileManager::mSetNextInSequence( long index, long next )
+{
+	field_0x10[index].mSetNextInSequence( next - index );
+}

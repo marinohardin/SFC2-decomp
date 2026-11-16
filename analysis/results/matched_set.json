@@ -10171,6 +10171,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0066b300": {
+   "name": "tBasicSoundFileManager::mSetNextInSequence",
+   "symbol": "?mSetNextInSequence@tBasicSoundFileManager@@UAEXJJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
