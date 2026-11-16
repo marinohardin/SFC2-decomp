@@ -6724,6 +6724,15 @@
    "exact": false,
    "recorded": "2026-11-09"
   },
+  "0x0063a900": {
+   "name": "twMemoryPart::mCheckMemory",
+   "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063edd0": {
    "name": "tCoopThreadPart::mSetTime",
    "symbol": "?mSetTime@tCoopThreadPart@@UAENXZ",
@@ -8370,6 +8379,24 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x006639c0": {
+   "name": "tAFPlayInfo::mSetNextInSequence",
+   "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664870": {
+   "name": "tBasicSoundFileManager::mGetTrackingIndex",
+   "symbol": "?mGetTrackingIndex@tBasicSoundFileManager@@UAEKK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",

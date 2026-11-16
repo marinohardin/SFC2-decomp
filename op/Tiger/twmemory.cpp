@@ -1,6 +1,17 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Tiger/twmemory.cpp
-// Functions: 0x00637c30 to 0x0063b6f0, 24 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+//	twmemory.cpp: the Windows memory part.
+
+#include "Tiger/tbasic.h"
+
+// HYPOTHESIS: declared only as far as the function below needs; its base, fields and other
+// virtuals are not recovered.
+class twMemoryPart
+{
+public:
+	virtual	iTruth	mCheckMemory	( void* a, void* b );
+};
+
+// FUNCTION: STARFLEETOP 0x0063a900
+iTruth	twMemoryPart::mCheckMemory( void*, void* )
+{
+	return kTrue;
+}
