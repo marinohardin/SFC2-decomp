@@ -6949,6 +6949,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00627fa0": {
+   "name": "tZipInfoMgr::mInit",
+   "symbol": "?mInit@tZipInfoMgr@@QAEEPBD@Z",
+   "unit": "Tiger/tZipInfoMgr.cpp",
+   "size": 1134,
+   "score": 36.832,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

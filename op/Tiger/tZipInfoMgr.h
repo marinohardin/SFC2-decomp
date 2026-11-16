@@ -10,6 +10,7 @@ class tZipInfoMgr
 public:
 	tZipInfoMgr();
 
+	unsigned char	mInit( const char * );
 	void			mDone();
 
 protected:
