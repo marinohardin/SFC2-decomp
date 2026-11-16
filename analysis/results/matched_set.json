@@ -8794,6 +8794,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00652a30": {
+   "name": "tgSoundPart::mFadeToVolume",
+   "symbol": "?mFadeToVolume@tgSoundPart@@UAEEJJNE@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 720,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

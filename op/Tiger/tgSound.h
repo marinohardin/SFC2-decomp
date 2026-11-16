@@ -585,7 +585,8 @@ public:
     virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     virtual void vfunction90();
-    virtual void mFadeToVolume();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mFadeToVolume(long channel, long volume, double timeToTake, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
     // The exe's symbol for tgSoundPart's override gives the signature.
@@ -631,6 +632,7 @@ public:
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
     virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
+    virtual unsigned char mFadeToVolume(long channel, long volume, double timeToTake, unsigned char immediate);
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
     virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
