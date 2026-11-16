@@ -1762,3 +1762,38 @@ iTruth twPath::mExist( void )
 	return exists;
 }
 
+// FUNCTION: STARFLEETOP 0x00633340
+tDate twPath::mGetDate( void )
+{
+	tDate	date;
+
+	date.f_00 = 0;
+	if ( mExist() )
+	{
+		if ( f_a8 < 1 )
+		{
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				if ( file )
+					CloseHandle( file );
+				file = CreateFileA( gCopyCharStr( *path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 1;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		FILETIME	writeTime;
+		if ( GetFileTime( f_a4, 0, 0, &writeTime ) )
+			date.f_00 = ( (__int64)(long)writeTime.dwHighDateTime << 32 ) | (long)writeTime.dwLowDateTime;
+		else
+			throw "Failed to get file time";
+	}
+	return date;
+}
+

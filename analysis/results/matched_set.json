@@ -8173,6 +8173,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00633340": {
+   "name": "twPath::mGetDate",
+   "symbol": "?mGetDate@twPath@@UAE?AVtDate@@XZ",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
