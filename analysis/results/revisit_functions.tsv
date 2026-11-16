@@ -58,3 +58,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00623f40	tString::find	9.48	2	sonnet	2026-11-16T11:39:48Z	attempt 2 (sonnet) did not raise the best; best 9.48%
 0x00624020	tString::find	16.43	2	sonnet	2026-11-16T11:50:39Z	best not above 90% after 2 attempts; best 16.43%
 0x00624260	tString::rfind	9.48	2	sonnet	2026-11-16T11:53:22Z	attempt 2 (sonnet) did not raise the best; best 9.48%
+0x00624340	tString::rfind	59.61	2	sonnet	2026-11-16T11:55:54Z	best not above 90% after 2 attempts; best 59.61%
