@@ -618,3 +618,16 @@ unsigned char tAudioFileClass::mDoWeMeetSpaceConstraints( long arg1, long arg2, 
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x006631a0
+void tAudioFileClass::mSet( long arg1, long arg2, eAudioPreemptType preempt, double arg4 )
+{
+	f20 = arg1;
+	// HYPOTHESIS: f30 and f34 are one double in the original; the inlined constructor in
+	// mNewAudioFileClass (0x00661810) stores its halves as two longs.
+	*(double *)&f30 = arg4;
+	f1c = arg2;
+	f28 = preempt;
+	tClassActiveChannelList *list = &f08;
+	list->mInit( arg2 );
+}
