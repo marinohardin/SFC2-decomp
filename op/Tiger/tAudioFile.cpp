@@ -61,6 +61,7 @@ public:
     virtual void vfn_a0();
     virtual long vfn_a4(); // HYPOTHESIS: returns the file's total size in bytes
     virtual long vfn_a8(); // HYPOTHESIS: returns the size of the file's sample data in bytes
+    virtual long vfn_ac(); // HYPOTHESIS: returns the file's sample depth
 };
 
 template <class T>
@@ -199,5 +200,14 @@ long tAudioFileInfoPart::mGetTotalDataSizeInBytes(unsigned long param_1)
     tBasicAudioFile *file = mGetBasicAudioFile(param_1);
     if (file)
         return file->vfn_a8();
+    return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00657da0
+long tAudioFileInfoPart::mGetDepth(unsigned long param_1)
+{
+    tBasicAudioFile *file = mGetBasicAudioFile(param_1);
+    if (file)
+        return file->vfn_ac();
     return 0;
 }

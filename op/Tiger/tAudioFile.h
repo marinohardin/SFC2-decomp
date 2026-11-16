@@ -75,6 +75,7 @@ public:
     virtual long mGetNumberOfSelectionPerSound(unsigned long param_1);
     virtual long mGetTotalSizeInBytes(unsigned long param_1);
     virtual long mGetTotalDataSizeInBytes(unsigned long param_1);
+    virtual long mGetDepth(unsigned long param_1);
 
     tSafeArray<tBasicAudioFile> field_0c;
     long field_28;
