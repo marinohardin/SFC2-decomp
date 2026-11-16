@@ -9451,6 +9451,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006648c0": {
+   "name": "tBasicSoundFileManager::mClearTrackingNumber",
+   "symbol": "?mClearTrackingNumber@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",

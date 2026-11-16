@@ -456,3 +456,16 @@ unsigned char	tBasicSoundFileManager::mValidTrackingNumber( unsigned long handle
 		return 1;
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006648c0
+void	tBasicSoundFileManager::mClearTrackingNumber( unsigned long handle )
+{
+	if ( mValidTrackingNumber( handle ) == 1 )
+	{
+		unsigned long	index = mGetTrackingIndex( handle );
+		field_0xb4c[index] = -1;
+		field_0x2350[index]++;
+		if ( field_0x2350[index] == 0 )
+			field_0x2350[index] = 1;
+	}
+}
