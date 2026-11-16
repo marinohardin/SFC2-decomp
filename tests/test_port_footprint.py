@@ -1,5 +1,6 @@
 """scripts/port_footprint.py lists every PORT: line and SFCOP_FIX( site under a tree."""
 import os
+import re
 import subprocess
 import sys
 
@@ -70,3 +71,16 @@ def test_a_missing_tree_is_an_error(tmp_path):
     p = run('game', str(tmp_path))
     assert p.returncode == 2
     assert 'no directory game' in p.stderr
+
+
+def test_the_check_lists_port_lines_in_the_source_tree_that_exists():
+    # check.sh skips the step when the folder it names is missing, so a stale folder name turns
+    # the step off without failing anything.
+    with open(os.path.join(ROOT, 'scripts', 'check.sh')) as f:
+        check = f.read()
+    tested = re.findall(r'^if \[ -d (\S+) \]; then\n\s+python3 scripts/port_footprint\.py '
+                        r'--no-fix-sites (\S+)$', check, re.M)
+    assert tested == [('op', 'op')], (
+        'check.sh no longer has the PORT: step as `if [ -d op ]; then` followed by '
+        '`python3 scripts/port_footprint.py --no-fix-sites op`; update this test with it')
+    assert os.path.isdir(os.path.join(ROOT, 'op'))
