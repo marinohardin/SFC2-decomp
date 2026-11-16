@@ -7732,6 +7732,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00646010": {
+   "name": "twSoundPart::mInit",
+   "symbol": "?mInit@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 480,
+   "score": 99.879,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00646ce0": {
    "name": "AddSoundErrorDuringInterrupt",
    "symbol": "?AddSoundErrorDuringInterrupt@@YAXPBDZZ",

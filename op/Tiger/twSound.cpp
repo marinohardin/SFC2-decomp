@@ -15,8 +15,8 @@ public:
 	virtual	void	vfunction3	( void );
 	virtual	HWND	vfunction4	( void );
 	virtual	void	vfunction5	( void );
-	virtual	void	vfunction6	( void );
-	virtual	void	vfunction7	( void );
+	virtual	long	vfunction6	( void );
+	virtual	long	vfunction7	( void );
 	virtual	void	vfunction8	( void );
 	virtual	void	vfunction9	( void );
 	virtual	void	vfunction10	( void );
@@ -174,6 +174,7 @@ public:
 	virtual	unsigned char	mSet3DListenerVelocity	( tPoint3* velocity );
 	virtual	unsigned char	mSet3DListenerUnitScaleInMeters	( double scale );
 	virtual	long	mGetHardwareInformation		( long info );
+	virtual	iTruth	mInit						( tInitSoundPartInfo* initInfo );
 	// twSoundPart's own virtuals (the SDK library's symbols), vtable order (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
@@ -218,7 +219,6 @@ struct DSBUFFERDESC7
 	LPWAVEFORMATEX	lpwfxFormat;
 	GUID			guid3DAlgorithm;
 };
-
 // MATCH-ONLY: the original's line numbers, which its " -- %s %d" messages
 // print; this file's own lines differ. The original's __FILE__ was its full
 // build path, D:\work\QSI\Projects\QSIInc\Tiger\twSound.cpp; naming it here
@@ -2447,4 +2447,49 @@ long	twSoundPart::mGetHardwareInformation( long info )
 	if( field_0x114.field_0x4[2] != 0 )
 		return 1;
 	return -0x40;
+}
+
+// FUNCTION: STARFLEETOP 0x00646010
+iTruth	twSoundPart::mInit( tInitSoundPartInfo* initInfo )
+{
+	if( tgSoundPart::mInit( initInfo ) != kTrue )
+		return kFalse;
+#line 3032
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	fUnknown_0130 = NULL;
+	fUnknown_0134 = NULL;
+	fDirectSound = NULL;
+	if( initInfo->vfunction4() == NULL || mInitDirectSound( initInfo ) == kFalse )
+	{
+		field_0x114.field_0x4[2] = 4;
+		mReleaseControl();
+		return kFalse;
+	}
+	switch( initInfo->vfunction6() )
+	{
+		case 1:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_MONO );
+			break;
+		case 4:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_QUAD );
+			break;
+		case 8:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_SURROUND );
+			break;
+		case 16:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_HEADPHONE );
+			break;
+		case 2:
+			if( initInfo->vfunction7() < 7 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_MIN ) );
+			else if( initInfo->vfunction7() < 15 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_NARROW ) );
+			else if( initInfo->vfunction7() < 60 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_WIDE ) );
+			else
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_MAX ) );
+			break;
+	}
+	mReleaseControl();
+	return kTrue;
 }
