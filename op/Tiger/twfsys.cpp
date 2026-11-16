@@ -239,3 +239,41 @@ iWideChar *gCopyWideStr(tString &str, iWideChar *buffer)
     str.mCopyWideStr(g_00c3cbf0, MAX_PATH);
     return g_00c3cbf0;
 }
+
+// FUNCTION: STARFLEETOP 0x0062ffc0
+unsigned char WinResetCWD(void)
+{
+    unsigned char result;
+    tString path(GetCommandLineA());
+
+    if (path[0] == '"')
+    {
+        tString quoted(path.mStrChr('"') + 1);
+        quoted.mEndStrAt(quoted.mStrChr('"'));
+        path = quoted;
+    }
+    else
+    {
+        if (path.mStrChr(' ') != path.end())
+            path.mEndStrAt(path.mStrChr(' '));
+        if (path.mStrChr('\t') != path.end())
+            path.mEndStrAt(path.mStrChr('\t'));
+        if (path.mStrChr('\n') != path.end())
+            path.mEndStrAt(path.mStrChr('\n'));
+    }
+
+    tString dir(path);
+    dir.mEndStrAt(dir.mStrRChr('\\'));
+    path = dir;
+
+    path.mCopyWideStr(g_00c3cbf0, MAX_PATH);
+    if (SetCurrentDirectoryW(g_00c3cbf0))
+        result = true;
+    else if (GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
+    {
+        path.mCopyCharStr(g_00c3caec, MAX_PATH);
+        SetCurrentDirectoryA(g_00c3caec);
+        result = true;
+    }
+    return result;
+}
