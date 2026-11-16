@@ -716,3 +716,9 @@ iTruth tString::iterator::operator==(const iterator i)
 {
 	return fIndex == i.fIndex && fString == i.fString;
 }
+
+// FUNCTION: STARFLEETOP 0x006255d0
+iTruth tString::iterator::operator!=(const iterator i)
+{
+	return fIndex != i.fIndex || fString != i.fString;
+}
