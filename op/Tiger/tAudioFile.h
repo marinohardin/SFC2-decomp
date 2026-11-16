@@ -19,7 +19,7 @@ public:
 
     T *field_04;
     long field_08;
-    long field_0c;
+    unsigned long field_0c;
     long field_10;
     long field_14;
     unsigned char field_18;
