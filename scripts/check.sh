@@ -43,8 +43,8 @@ print("ok:", len(pats), "hotspot patterns,", len(owners), "CODEOWNERS lines")
 EOF
 
 echo "== PORT: lines in op/ (SFCOP_FIX sites there fail)"
-if [ -d game ]; then
-    python3 scripts/port_footprint.py --no-fix-sites game
+if [ -d op ]; then
+    python3 scripts/port_footprint.py --no-fix-sites op
 else
     skip "no op/ tree yet"
 fi
