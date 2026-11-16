@@ -152,7 +152,10 @@ public:
     // HYPOTHESIS: slot 6 records the volume (twStandardSoundChannel::mSetVolume passes it the channel's volume).
     virtual void vfunction6(long volume);
     virtual void vfunction7(long volume);
-    virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
+    virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+    // HYPOTHESIS: slot 12 records the 3D position (twStandardSoundChannel::mSet3DSoundPosition passes it the position it set).
+    virtual void vfunction12(tPoint3* position);
+    virtual void vfunction13();
     virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
     virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
     virtual void vfunction26(); virtual void vfunction27(); virtual void vfunction28();
@@ -422,7 +425,7 @@ public:
     virtual unsigned char mStopAndClearChannel();
     virtual unsigned char mStopAndResetChannel() = 0;
     virtual iTruth mSetChannelPriority(long priority);
-    virtual void vfunction106(tPoint3* position) = 0;
+    virtual unsigned char mSet3DSoundPosition(tPoint3* position) = 0;
     virtual void vfunction107(tPoint3* orientation) = 0;
     virtual void vfunction108(tPoint3* velocity) = 0;
     virtual void vfunction109(float angle, long level) = 0;

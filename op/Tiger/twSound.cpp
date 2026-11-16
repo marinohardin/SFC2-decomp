@@ -28,8 +28,7 @@ public:
 
 #include "Tiger/tgSound.h"
 // The sound part's classes are declared in tgSound.h; these lines are kept so line numbers stay.
-
-
+#include "Tiger/tvectormath.h"
 
 
 
@@ -344,7 +343,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -357,6 +355,7 @@ public:
 	virtual	unsigned char	mSetVolume	( long );
 	virtual	unsigned char	mStopAndClearChannel	( void );
 	virtual	unsigned char	mStopAndResetChannel	( void );
+	virtual	unsigned char	mSet3DSoundPosition	( tPoint3* );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1906,6 +1905,19 @@ unsigned char twStandardSoundChannel::mStopAndResetChannel( void )
 		return kTrue;
 	field_0x28 = 4;
 	mSetUpdateMode( (eSoundChannelUpdateMode)2 );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644900
+unsigned char twStandardSoundChannel::mSet3DSoundPosition( tPoint3* position )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetPosition( position->x, position->y, position->z, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction12( position );
 	return kTrue;
 }
 

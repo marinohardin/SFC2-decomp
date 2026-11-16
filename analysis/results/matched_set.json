@@ -7309,6 +7309,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00644900": {
+   "name": "twStandardSoundChannel::mSet3DSoundPosition",
+   "symbol": "?mSet3DSoundPosition@twStandardSoundChannel@@UAEEPAUtPoint3@@@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",

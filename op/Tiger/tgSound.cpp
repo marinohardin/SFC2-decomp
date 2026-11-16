@@ -2585,7 +2585,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         mSetFrequency(command->vfunction18());
         return kTrue;
     case 14:
-        vfunction106(command->mGet3DSoundPosition());
+        mSet3DSoundPosition(command->mGet3DSoundPosition());
         return kTrue;
     case 15:
         vfunction107(command->mGet3DSoundOrientation());
