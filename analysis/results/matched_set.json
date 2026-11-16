@@ -6994,6 +6994,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00628700": {
+   "name": "tBasicSoundFileZip::mEOF",
+   "symbol": "?mEOF@tBasicFileZip@tBasicFileZipNamespace@@UAEEXZ",
+   "unit": "Tiger/tbasicfilezip.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

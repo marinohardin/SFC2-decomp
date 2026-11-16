@@ -70,4 +70,14 @@ unsigned char tBasicFileZip::mClose( void )
 	return 1;
 }
 
+// FUNCTION: STARFLEETOP 0x00628700
+unsigned char tBasicFileZip::mEOF( void )
+{
+	if ( !field_4 )
+		return 0;
+	if ( !field_14 )
+		return field_4->mEOF();
+	return field_c >= field_8;
+}
+
 }
