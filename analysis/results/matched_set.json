@@ -9307,6 +9307,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006638a0": {
+   "name": "tAFPlayInfo::mGetAcualIndexOffsetIfRandom",
+   "symbol": "?mGetAcualIndexOffsetIfRandom@tAFPlayInfo@@UAEJXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",
