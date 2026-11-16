@@ -384,3 +384,16 @@ void tDynamicMemoryFreeListViaHandles::mClearList()
 	while (field_0x4 != -1)
 		vfunction32(field_0x4);
 }
+
+// FUNCTION: STARFLEETOP 0x006270a0
+void tDynamicMemoryFreeListViaHandles::mDeleteListMembers()
+{
+	// HYPOTHESIS: vfunction5 returns the first member.
+	tListMemberWithHandle *member = vfunction5();
+	while (member != 0)
+	{
+		mRemoveFromList(member);
+		delete member;
+		member = vfunction5();
+	}
+}
