@@ -5,6 +5,7 @@
 #define TAUDIOPRIORITY_H
 
 #include "Tiger/tpart.h"
+#include "unsorted/tSafeArray.h"
 
 // HYPOTHESIS: the enum's name is from the SDK library symbols; its values are not recovered.
 enum eAudioPreemptType
@@ -79,13 +80,16 @@ class tAudioFileClass
 		virtual		void	vfunction6	( void );
 		virtual		void	vfunction7	( void );
 		virtual		void	vfunction8	( void );
-		virtual		void	vfunction9	( void );
+		// Slots 9 and 11 from the exe's vtable at 0x007b759c and the SDK library symbols.
+		virtual		double	mGetAtmostOneCanPlayPerThisNumberOfMicroseconds	( void );
 		virtual		void	vfunction10	( void );
-		virtual		void	vfunction11	( void );
+		virtual		void	mSetEarliestNextStartTime	( double );
 		virtual		void	vfunction12	( void );
 		virtual		void	vfunction13	( void );
 		virtual		void	mRemoveHandle	( unsigned long );
 		virtual		void	mAddHandle	( unsigned long );
+
+					unsigned char	mDoWeMeetSpaceConstraints	( long, long, double & );
 
 		tClassActiveChannelList	f08;
 		long	f18;
@@ -99,25 +103,43 @@ class tAudioFileClass
 		double	f38;
 };
 
-// HYPOTHESIS: mGetAudioFileClassPtrFromHandle (signature from the SDK library symbols) sits in
-// vtable slot 11 (the call at 0x00661300 goes through +0x2c); slots 6 to 10 are not recovered
-// yet.
+// The slot order follows the exe's vtable at 0x0079923c (signatures from the SDK library
+// symbols); slots 2 and 4 are not recovered. The layout after the vtable follows the stores in
+// mSet at 0x00661300; member names are not known.
+class tClassTrackingInfo
+{
+	public:
+		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
+		virtual		long	mGetPriority	( void );
+		virtual		void	vfunction2	( void );
+		virtual		void	mSetAvailable	( void );
+		// HYPOTHESIS: a truth value, from mAreWeAllowedToPlay (0x00661fa0) comparing it with 1.
+		virtual		unsigned char	vfunction4	( void );
+		virtual		long	mFadeToStop	( void );
+		virtual		unsigned char	mAreWeValid	( void );
+
+		unsigned long	f04;
+		unsigned long	f08;
+		long			f0c;
+		long			f10[4];
+		long			f20;
+};
+
+// The slot order follows the exe's vtable at 0x007991e0 (signatures from the SDK library
+// symbols); slots 15 to 19 are not declared yet.
 class tAudioPriorityManagerPart : public tPart
 {
 	public:
-		virtual		void	vfunction6	( void );
-		virtual		void	vfunction7	( void );
-		virtual		void	vfunction8	( void );
-		virtual		void	vfunction9	( void );
-		virtual		void	vfunction10	( void );
+		virtual		unsigned char	mAreWeAllowedToPlay	( unsigned long, long, long, long, long *, unsigned long &, double & );
+		virtual		void	mWeHaveStoppedPlaying	( unsigned long );
+		// HYPOTHESIS: VC6 lists overloaded virtuals in reverse order of declaration; slot 8 holds
+		// the overload with arguments, slot 9 the one without.
+		virtual		long	mNewAudioFileClass	( void );
+		virtual		long	mNewAudioFileClass	( long, long, eAudioPreemptType, double );
+		virtual		void	mRemoveClass	( long );
 		virtual		tAudioFileClass *	mGetAudioFileClassPtrFromHandle	( long );
 		virtual		long	mGetAudioFileClassHandleFromReference	( long );
-		// HYPOTHESIS: mReleaseAudioFileClassPtr in slot 13, from mRemoveClass (0x00661e90) passing
-		// the handle through +0x34; the slots of mNewAudioFileClass and mRemoveClass are not known.
 		virtual		unsigned char	mReleaseAudioFileClassPtr	( long );
-		virtual		long	mNewAudioFileClass	( void );
-		virtual		void	mRemoveClass	( long );
-		// HYPOTHESIS: the slot is not known.
 		virtual		void	mSetAudioFileClass	( long, long, long, eAudioPreemptType, double );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
@@ -127,24 +149,17 @@ class tAudioPriorityManagerPart : public tPart
 		tAudioFileClass	**f0c;
 		long			f10;
 		long			f14;
-};
+		// HYPOTHESIS: the tracking records in use, by handle, and the records themselves, from
+		// mAreWeAllowedToPlay (0x00661fa0); the fields at +0x2c to +0x37 and the records' count
+		// are not known.
+		tSafeArray< tClassTrackingInfo >	f18;
+		long			f2c;
+		long			f30;
+		long			f34;
+		tClassTrackingInfo	f38[ 1 ];
 
-// HYPOTHESIS: mSet is the first virtual (signature from the SDK library symbols); the layout
-// after the vtable follows the stores in mSet at 0x00661300; member names are not known.
-class tClassTrackingInfo
-{
-	public:
-		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
-		virtual		void	mSetAvailable	( void );
-		virtual		long	mGetPriority	( void );
-		virtual		unsigned char	mAreWeValid	( void );
-		virtual		long	mFadeToStop	( void );
-
-		unsigned long	f04;
-		unsigned long	f08;
-		long			f0c;
-		long			f10[4];
-		long			f20;
+	protected:
+		long	mGetNextAvailableClassTrackingInfo	( void );
 };
 
 #endif // TAUDIOPRIORITY_H

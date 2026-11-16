@@ -232,3 +232,69 @@ void tAudioPriorityManagerPart::mSetAudioFileClass( long reference, long arg2, l
 	if ( fileClass )
 		fileClass->mSet( arg2, arg3, preempt, arg5 );
 }
+
+// FUNCTION: STARFLEETOP 0x00661fa0
+unsigned char tAudioPriorityManagerPart::mAreWeAllowedToPlay( unsigned long classRef, long arg2, long arg3, long numHandles, long *handles, unsigned long &handle, double &spaceTime )
+{
+	unsigned long index = f18.mFirstItemIndex();
+	tClassTrackingInfo *info = f18.mGetItemAtThisIndex( index );
+	while ( info )
+	{
+		if ( !info->mAreWeValid() )
+		{
+			info->mSetAvailable();
+			f18.mRemoveItemAtThisIndex( index );
+		}
+		index = f18.mGetNextItemIndex( index );
+		info = f18.mGetItemAtThisIndex( index );
+	}
+
+	spaceTime = 0;
+	double space = 0;
+	long i;
+	for ( i = 0; i < numHandles; i++ )
+	{
+		tAudioFileClass *fileClass = BindPart( tAudioPriorityManagerPart )->mGetAudioFileClassPtrFromHandle( handles[i] );
+		if ( fileClass )
+		{
+			space = 0;
+			if ( atgSoundPart->vfunction125() < fileClass->f38 )
+				return false;
+			if ( !fileClass->mDoWeMeetSpaceConstraints( arg3, arg2, space ) )
+				return false;
+			if ( space > spaceTime )
+				spaceTime = space;
+		}
+	}
+
+	long available = mGetNextAvailableClassTrackingInfo();
+	if ( available == -1 )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("Could not get an available class tracking info for priority"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("Could not get an available class tracking info for priority"); }
+#line 379
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+#line 277
+		return false;
+	}
+
+	index = f18.mAddItem( &f38[available] );
+	info = &f38[available];
+	for ( i = 0; i < numHandles; i++ )
+	{
+		tAudioFileClass *fileClass = BindPart( tAudioPriorityManagerPart )->mGetAudioFileClassPtrFromHandle( handles[i] );
+		if ( fileClass )
+		{
+			double nextStart = atgSoundPart->vfunction125() + space;
+			nextStart += fileClass->mGetAtmostOneCanPlayPerThisNumberOfMicroseconds();
+			fileClass->mSetEarliestNextStartTime( nextStart );
+		}
+	}
+	info->mSet( index, classRef, arg2, numHandles, handles );
+	if ( info->vfunction4() == kTrue )
+	{
+		f18.mDropItem( index );
+		return false;
+	}
+	handle = index;
+	return true;
+}
