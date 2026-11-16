@@ -346,6 +346,7 @@ public:
 
 protected:
 	void	mEnsureFileClosed( void );
+	void	mMakeFullPath( void );
 
 public:
 
@@ -1699,5 +1700,31 @@ void twPath::mEnsureFileClosed( void )
 		f_a4 = INVALID_HANDLE_VALUE;
 		f_a8 = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00632ff0
+void twPath::mMakeFullPath( void )
+{
+	f_7c = f_14;
+	tDir	dir( f_04 );
+
+	while ( dir.mValid() )
+	{
+		tString	name( dir.mGetName() );
+
+		if ( name.mStrLen() )
+		{
+			name += "\\";
+			name += f_7c;
+			f_7c = name;
+		}
+		dir = dir.mGetParentDir();
+	}
+
+	tVolume	volume = f_04.mGetParentVol();
+	tString	root( BindPart( tFSCookiePart )->fFSCookies.fVolumeCookies.fn_006315d0_mResolve( volume ).f_6c );
+
+	root += f_7c;
+	f_7c = root;
 }
 
