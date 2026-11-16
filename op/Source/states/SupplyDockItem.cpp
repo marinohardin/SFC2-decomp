@@ -765,3 +765,13 @@ double tSupplyDockFighters::vfunction17( const std::string &name )
 	((fn_0045139e_object *) m78)->fn_0045147a( name, &value );
 	return value;
 }
+
+// FUNCTION: STARFLEETOP 0x0048701a
+long tSupplyDockFighters::vfunction18( long i )
+{
+	long total = vfunction16( i ) * vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) );
+	long result = total - m8c[i];
+	if( result < 0 )
+		result = 0;
+	return result;
+}
