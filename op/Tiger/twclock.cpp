@@ -4,10 +4,13 @@
 
 #include "Tiger/tclock.h"
 
-// HYPOTHESIS: one timer slot of mSetTimer and mTimerReceiver (20 bytes); field meanings unknown.
+#include "Tiger/tTimerResponse.h"
+
+// HYPOTHESIS: one timer slot of mSetTimer and mTimerReceiver (20 bytes); the response at 0x00,
+// the timer id at 0x04; the meanings of the others are unknown.
 struct	twClockResponderDesc
 {
-	int32s	fUnknown_00;
+	tTimerResponse	*fUnknown_00;
 	int32s	fUnknown_04;
 	int32s	fUnknown_08;
 	int32s	fUnknown_0c;
@@ -25,10 +28,13 @@ class	twClock : public tClockPart
 		virtual		void	mActivate	( void );
 		virtual		void	mDeactivate	( void );
 		virtual		double	mGetMicroseconds	( void );
+		virtual		void	mSetTimer	( long, long, tTimerResponse *, long );
 
 		iTruth			fHasPerformanceCounter;
 		int32u			fUnknown_10;
 		double			fPerformanceFrequency;
+
+		static	void	CALLBACK	mTimerReceiver	( UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2 );
 
 	private:
 		static	twClockResponderDesc	fResponseList[ kClockResponderMax ];
@@ -83,4 +89,25 @@ double	twClock::mGetMicroseconds( void )
 
 	QueryPerformanceCounter( &count );
 	return ((double) count.LowPart + (double) count.HighPart * 4294967296.0) * fUnknown_10 / fPerformanceFrequency;
+}
+
+// FUNCTION: STARFLEETOP 0x00637970
+void	twClock::mSetTimer( long param_1, long param_2, tTimerResponse *param_3, long param_4 )
+{
+	if (fNumberOfRunningTimers < kClockResponderMax)
+	{
+		fResponseList[fNumberOfRunningTimers].fUnknown_00 = param_3;
+		fResponseList[fNumberOfRunningTimers].fUnknown_08 = param_2;
+		fResponseList[fNumberOfRunningTimers].fUnknown_0c = param_1;
+		fResponseList[fNumberOfRunningTimers].fUnknown_10 = param_4;
+
+		MMRESULT	timerID = timeSetEvent( param_1 >= 1000 ? param_1 / 1000 : 1, param_4, mTimerReceiver, 0, TIME_PERIODIC );
+		if (timerID == 0)
+			throw TimerException();
+
+		param_3->mSetIdentity( timerID );
+		fResponseList[fNumberOfRunningTimers++].fUnknown_04 = timerID;
+	}
+	else
+		throw TimerException();
 }
