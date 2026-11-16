@@ -2005,7 +2005,7 @@ iTruth twPath::mHide( iTruth hide )
 
 #include "unsorted/twIORequest.h"
 
-// Out of line in twfsys.cpp (STARFLEETOP 0x00633bb0), named by the SDK library's symbol.
+// Named by the SDK library's symbol; defined below.
 void *OpenForReadChar( tString &path );
 
 // Named by the exe's symbol.
@@ -2057,5 +2057,12 @@ int32u twPath::mRead( void *buffer, int32u offset, int32u size, tPathCallback *c
 			throw "Incorrect number of bytes read from file.";
 	}
 	return size;
+}
+
+// FUNCTION: STARFLEETOP 0x00633bb0
+void *OpenForReadChar( tString &path )
+{
+	path.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return CreateFileA( g_00c3caec, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
 }
 
