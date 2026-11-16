@@ -343,6 +343,7 @@ public:
 	virtual	void	mSetGetNextAttachmentFunction	( unsigned long, void (* function)( unsigned long, long ) );	// HYPOTHESIS: vtable slot after mGetNextAttachment.
 	virtual	void	mDoDefaultNextAttachment	( unsigned long );
 	void	mUpdateTest	( void );
+	eSoundChannelStatus	mGetStatus	( unsigned long handle );
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
 	long					field_0xc;
 	tAFPlayInfo *			field_0x10;
@@ -380,7 +381,6 @@ public:
 	double					field_0x2570;
 	unsigned char			field_0x2578;
 };
-
 // FUNCTION: STARFLEETOP 0x00663d80
 tBasicSoundFileManager::tBasicSoundFileManager( void )
 {
@@ -1753,4 +1753,17 @@ unsigned char	tBasicSoundFileManager::mIsSoundPlaying( unsigned long handle )
 				return 0;
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00668230
+eSoundChannelStatus	tBasicSoundFileManager::mGetStatus( unsigned long handle )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return (eSoundChannelStatus)channelGroup->mGetChannelStatus( handle, -1 );
+	}
+	return (eSoundChannelStatus)-1;
 }

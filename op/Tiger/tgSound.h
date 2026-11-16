@@ -198,7 +198,7 @@ public:
 
 enum eSoundChannelCommand {};
 enum eSoundChannelUpdateMode {};
-
+enum eSoundChannelStatus {};
 // HYPOTHESIS: tSoundSelection is declared only as far as tSoundChannelCommand::mDump needs
 // it: mDump is slot 43 of its vtable; earlier slots are not recovered yet.
 class tSoundSelection

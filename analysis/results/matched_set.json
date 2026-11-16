@@ -10036,6 +10036,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00668230": {
+   "name": "tBasicSoundFileManager::mGetStatus",
+   "symbol": "?mGetStatus@tBasicSoundFileManager@@QAE?AW4eSoundChannelStatus@@K@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
