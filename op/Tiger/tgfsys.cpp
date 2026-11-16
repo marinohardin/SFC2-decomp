@@ -108,6 +108,10 @@ public:
 class tPathIterParent
 {
 public:
+	// Out of line in the exe (STARFLEETOP 0x0061bab0, 0x00634f50).
+	tPathIterParent();
+	~tPathIterParent();
+
 	int32u	mAdd( tPath path );
 	// HYPOTHESIS: out of line, as tPathIterator::mFirst (STARFLEETOP 0x0061fa60) calls it on the
 	// resolved parent and returns its result, where the volume and directory iterators have it
@@ -282,8 +286,17 @@ public:
 	tString	f_8c;
 };
 
+// HYPOTHESIS: the platform-independent path twPath derives from, named by the exe's RTTI; its
+// virtuals and members are not recovered, so twPath declares the slots itself. mCookie
+// (STARFLEETOP 0x00634ea0) is named by the exe's symbol.
+class tgPath
+{
+public:
+	tPath	mCookie( tPath &cookie );
+};
+
 // HYPOTHESIS: 0xac bytes, as tPath::mValid reads the path map pair's count at +0xc0.
-class twPath
+class twPath: public tgPath
 {
 public:
 	// HYPOTHESIS: the first virtual, as tPath::mGetName (STARFLEETOP 0x0061e6d0) calls it through
@@ -327,6 +340,9 @@ public:
 	// HYPOTHESIS: out of line, as twDir::mGetNamedFile (STARFLEETOP 0x00631d30) calls it with the
 	// name and the directory the path lies in; ~twPath is expanded inline there.
 	twPath( const tString &name, tDir dir );
+	// HYPOTHESIS: inline, as twDir::mGetPathIterator (STARFLEETOP 0x00632700) has it expanded:
+	// the twPath vtable store, the call to mFree and the members' destructors.
+	~twPath() { mFree(); }
 
 	// HYPOTHESIS: the directory the path lies in at +0x04, the name at +0x14 and the directory's
 	// word copied into +0x40; the cookie at +0x44 and the strings at +0x54 and +0x7c, the file
@@ -592,6 +608,8 @@ class tFileSystemCookieManager
 {
 public:
 	tFSSession	*mResolve( tSession &session );
+	// Out of line in the exe (STARFLEETOP 0x006357d0), as twDir::mGetPathIterator calls it.
+	tPath	mMake( tPathType &path );
 
 	// HYPOTHESIS: each removal lowers the count tFileSession::tFileSession raises, then removes the
 	// cookie from its manager, as tFSSession::~tFSSession has them; these overloads are not named
@@ -1537,6 +1555,77 @@ tDirIterator twDir::mGetDirIterator( void )
 					tDir	self( dir.f_54 );
 					iter.mAdd( made );
 				}
+			}
+		} while ( FindNextFileW( find, &wide ) );
+	}
+	FindClose( find );
+	return iter;
+}
+
+// HYPOTHESIS: as in mGetDirIterator, the original copies the directory and path cookies through
+// the out-of-line tCookie copy (STARFLEETOP 0x00407c5b) and keeps this in a stack slot; those
+// are not recovered. The word the directory's +0x50 is copied into is the iterator parent's +0x14.
+// FUNCTION: STARFLEETOP 0x00632700
+tPathIterator twDir::mGetPathIterator( void )
+{
+	tPathIterParent	parent;
+
+	parent.f_00[5] = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	tPathIterator	iter = part->fFSCookies.fPathIterCookies.mMake( parent );
+
+	tString	path( f_8c );
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	iWideChar	*wideName = g_00c3cbf0;
+	if ( wideName && path[path.mStrLen() - 1] != '\\' )
+		path += "\\";
+	path += "*.*";
+
+	WIN32_FIND_DATAA	data;
+	WIN32_FIND_DATAW	wide;
+	HANDLE	find;
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wide );
+	if ( find == INVALID_HANDLE_VALUE )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path.mCopyCharStr( g_00c3caec, MAX_PATH );
+			find = FindFirstFileA( g_00c3caec, &data );
+			if ( find != INVALID_HANDLE_VALUE )
+			{
+				do
+				{
+					if ( !( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) )
+					{
+						tString	name( data.cFileName );
+						twPath	file( name, f_54 );
+
+						file.f_40 = f_50;
+						tPath	made = BindPart( tFSCookiePart )->fFSCookies.mMake( file );
+						tPath	cookie = file.mCookie( made );
+						iter.mAdd( cookie );
+					}
+				} while ( FindNextFileA( find, &data ) );
+			}
+		}
+	}
+	else
+	{
+		do
+		{
+			if ( !( wide.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) )
+			{
+				tString	name( wide.cFileName );
+				twPath	file( name, f_54 );
+
+				file.f_40 = f_50;
+				tPath	made = BindPart( tFSCookiePart )->fFSCookies.mMake( file );
+				tPath	cookie = file.mCookie( made );
+				iter.mAdd( cookie );
 			}
 		} while ( FindNextFileW( find, &wide ) );
 	}
