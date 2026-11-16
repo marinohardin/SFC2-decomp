@@ -583,7 +583,8 @@ public:
     virtual eSoundChannelStatus mGetChannelStatus(long channel);
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual long mGetHardwareInformation(long info);
-    virtual void mTotalBytesLeftToPlay(); virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
+    virtual long mTotalBytesLeftToPlay(long channel);
+    virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
     virtual void mGetFrequency(); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();
     virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
@@ -700,6 +701,7 @@ public:
     virtual unsigned char mSet3DSoundCones(long channel, float angle, long level, unsigned char immediate);
     virtual unsigned char mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate);
     virtual eSoundChannelStatus mGetChannelStatus(long channel);
+    virtual long mTotalBytesLeftToPlay(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
