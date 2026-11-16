@@ -2224,6 +2224,14 @@ unsigned char	twSoundPart::mCanWeHandleStereoOutput( void )
 	return kFalse;
 }
 
+// FUNCTION: STARFLEETOP 0x00645aa0
+unsigned char	twSoundPart::mCanWeHandleMono8BitOutput( void )
+{
+	if( ( field_0x13c.dwFlags & DSCAPS_PRIMARY8BIT ) > 0 && ( field_0x13c.dwFlags & DSCAPS_PRIMARYMONO ) > 0 )
+		return kTrue;
+	return kFalse;
+}
+
 // FUNCTION: STARFLEETOP 0x00645ac0
 long	twSoundPart::mGetMinFrequency( void )
 {
