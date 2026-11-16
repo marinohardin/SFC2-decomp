@@ -1914,3 +1914,48 @@ void	tBasicSoundFileManager::mParseAllSoundsFile( char *fileName, long a2, long 
 	if ( text == 0 || size == 0 )
 		return;
 }
+
+// FUNCTION: STARFLEETOP 0x0066ac50
+signed char *	tBasicSoundFileManager::mGetNextToken( char *token, const char *text, long tokenSize, long *remaining, char delimiter )
+{
+	const char *	end = text;
+	if ( delimiter == '\t' )
+	{
+		while ( *end != '\0' && *end != '\t' && *end != '\n' && *end != '\r' )
+			end++;
+	}
+	else
+	{
+		while ( *end != '\0' && *end != '\n' && *end != '\r' )
+			end++;
+	}
+	long	length;
+	if ( *end == '\0' )
+	{
+		length = *remaining;
+		*remaining = 0;
+	}
+	else
+	{
+		length = end - text;
+		*remaining -= length + 1;
+		if ( length == 0 && ( *end == '\n' || *end == '\r' ) )
+			length = 1;
+	}
+	if ( length > tokenSize - 1 )
+		length = tokenSize - 1;
+	memcpy( token, text, length );
+	token[length] = '\0';
+	if ( *remaining == 0 )
+		return 0;
+	end++;
+	if ( token[0] == '\n' || token[0] == '\r' )
+	{
+		while ( *end != '\0' && ( *end == '\n' || *end == '\r' ) )
+		{
+			( *remaining )--;
+			end++;
+		}
+	}
+	return (signed char *)end;
+}

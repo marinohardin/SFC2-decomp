@@ -10108,6 +10108,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x0066ac50": {
+   "name": "tBasicSoundFileManager::mGetNextToken",
+   "symbol": "?mGetNextToken@tBasicSoundFileManager@@UAEPACPADPBDJPAJD@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
