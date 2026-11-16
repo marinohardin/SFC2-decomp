@@ -544,3 +544,11 @@ tString& tString::operator+=(const iBasicStringElement &c)
 	}
 	return *this;
 }
+
+// FUNCTION: STARFLEETOP 0x00624f20
+iTruth operator== (const tString &s1,const tString &s2)
+{
+	if (s1.fInstanceControl.fDataCount != s2.fInstanceControl.fDataCount)
+		return false;
+	return memcmp(s1.fInstanceControl.fMemSpace.begin(), s2.fInstanceControl.fMemSpace.begin(), s1.fInstanceControl.fDataCount * sizeof(iBasicStringElement)) == 0;
+}
