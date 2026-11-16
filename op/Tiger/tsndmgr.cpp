@@ -293,9 +293,10 @@ tBasicSoundFileManager::tBasicSoundFileManager( void )
 	field_0x740 = 2000.0;
 }
 
-// HYPOTHESIS: empty body; the destructor at 0x00663e80 (96 bytes, with an unwind frame) fits
-// the compiler's destruction of field_0x18 and the tPart base alone.
+// HYPOTHESIS: empty body; the destructor's unwind frame fits the compiler's destruction of
+// field_0x18 and the tPart base alone.
 // FUNCTION: STARFLEETOP 0x00663e60
+// FUNCTION: STARFLEETOP 0x00663e80
 tBasicSoundFileManager::~tBasicSoundFileManager( void )
 {
 }
