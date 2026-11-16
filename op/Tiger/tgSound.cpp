@@ -2588,7 +2588,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         mSet3DSoundPosition(command->mGet3DSoundPosition());
         return kTrue;
     case 15:
-        vfunction107(command->mGet3DSoundOrientation());
+        mSet3DSoundOrientation(command->mGet3DSoundOrientation());
         return kTrue;
     case 16:
         vfunction109(command->mGet3DSoundConeAngleForNoAttenuation(), command->mGet3DSoundConeAttenuationLevel());

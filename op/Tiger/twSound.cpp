@@ -356,6 +356,7 @@ public:
 	virtual	unsigned char	mStopAndClearChannel	( void );
 	virtual	unsigned char	mStopAndResetChannel	( void );
 	virtual	unsigned char	mSet3DSoundPosition	( tPoint3* );
+	virtual	unsigned char	mSet3DSoundOrientation	( tPoint3* );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1918,6 +1919,19 @@ unsigned char twStandardSoundChannel::mSet3DSoundPosition( tPoint3* position )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction12( position );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644970
+unsigned char twStandardSoundChannel::mSet3DSoundOrientation( tPoint3* orientation )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetConeOrientation( orientation->x, orientation->y, orientation->z, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction16( orientation );
 	return kTrue;
 }
 
