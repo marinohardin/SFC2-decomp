@@ -362,3 +362,18 @@ void tAudioPriorityManagerPart::mClose( void )
 	}
 	f18.mDeleteAll();
 }
+
+// FUNCTION: STARFLEETOP 0x006626c0
+long tAudioPriorityManagerPart::mNewAudioFileClass( long reference, long arg2, eAudioPreemptType preempt, double arg4 )
+{
+	long handle = mGetAudioFileClassHandleFromReference( reference );
+	if ( handle != -1 )
+	{
+		mSetAudioFileClass( handle, reference, arg2, preempt, arg4 );
+		return handle;
+	}
+	handle = mNewAudioFileClass();
+	if ( handle != -1 )
+		mSetAudioFileClass( handle, reference, arg2, preempt, arg4 );
+	return handle;
+}
