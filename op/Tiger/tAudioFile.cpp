@@ -269,3 +269,9 @@ long tAudioFileInfoPart::mGetNewAsynchReadInfo(unsigned long param_1, long param
     *(double *) &info->field_08 = aClockPart->mGetMicroseconds();
     return index;
 }
+
+// FUNCTION: STARFLEETOP 0x00658290
+tAsynchReadInfo *tAudioFileInfoPart::mGetAsynchReadInfo(long param_1)
+{
+    return field_2c->fn_Get(param_1);
+}
