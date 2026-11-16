@@ -63,3 +63,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006580c0	tAudioFileInfoPart::mGetNewAsynchReadInfo	99.94	2	sonnet	2026-11-16T17:30:52Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.94%
 0x00663ce0	tAFPlayInfo::mIsThisInThisGroup	87.54	2	sonnet	2026-11-16T17:55:33Z	best not above 90% after 2 attempts; best 87.54%
 0x006640a0	tBasicSoundFileManager::mUpdateTest	0.17	2	sonnet	2026-11-16T18:35:32Z	attempt 2 (sonnet) did not raise the best; best 0.17%
+0x006683a0	tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition	47.66	2	sonnet	2026-11-16T20:50:23Z	attempt 2 (sonnet) did not raise the best; best 47.66%
