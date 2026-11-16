@@ -32,8 +32,8 @@ public:
 
 // HYPOTHESIS: a free cdecl function of seven arguments; its unit is not written yet.
 long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
-
-
+// HYPOTHESIS: a free cdecl function of one argument; other units pass it a name string.
+void fn_004d3306( long arg1 );
 
 
 
@@ -62,4 +62,11 @@ long tSupplyDockItem::vfunction1()
 		result = fn_004d3278( m04, m04, 0, m08, m0c, 800, 600 );
 	vfunction3();
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004861e0
+void tSupplyDockItem::vfunction2()
+{
+	if( m04 )
+		fn_004d3306( m04 );
 }
