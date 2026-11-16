@@ -65,3 +65,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006248b0	tString::operator+	0.00	2	sonnet	2026-11-16T12:21:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00624b60	tString::operator+=	22.30	2	sonnet	2026-11-16T12:28:38Z	attempt 2 (sonnet) did not raise the best; best 22.30%
 0x00624fa0	tString::operator+	8.96	2	sonnet	2026-11-16T12:40:58Z	attempt 2 (sonnet) did not raise the best; best 8.96%
+0x00625080	tString::operator+=	8.96	2	sonnet	2026-11-16T12:44:03Z	attempt 2 (sonnet) did not raise the best; best 8.96%
