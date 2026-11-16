@@ -16,6 +16,17 @@ namespace tBasicFileZipNamespace
 class tBasicFileZip : public tBasicFile
 {
 public:
+	// HYPOTHESIS: an inline constructor, seen only inlined in _NewBasicFileZip.
+	tBasicFileZip( tZipInfoMgr *zipInfoMgr )
+	{
+		field_4 = tBasicFile::mNewBasicFile();
+		field_18 = zipInfoMgr;
+		field_8 = 0;
+		field_c = 0;
+		field_10 = 0;
+		field_14 = 0;
+	}
+
 	virtual unsigned char	mOpenForRead( const char *name );
 	virtual unsigned char	mOpenForWrite( const char *name );
 	virtual unsigned char	mIsOpen( void );

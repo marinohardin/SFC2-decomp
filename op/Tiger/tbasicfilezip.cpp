@@ -187,3 +187,9 @@ unsigned char tBasicFileZip::mSeekEnd( long offset )
 }
 
 }
+
+// FUNCTION: STARFLEETOP 0x00628930
+tBasicFile *_NewBasicFileZip( tZipInfoMgr *zipInfoMgr )
+{
+	return new tBasicFileZipNamespace::tBasicFileZip( zipInfoMgr );
+}
