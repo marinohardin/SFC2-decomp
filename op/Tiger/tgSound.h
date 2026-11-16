@@ -552,8 +552,11 @@ public:
     virtual unsigned char mSetVolume(long channel, long volume, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSetPriority(long channel, long priority, unsigned char immediate);
-    virtual void mSetFinishFunction();
-    virtual void mSetChannelAttributes(); virtual void mSet3DSoundProfile(); virtual void mSet3DSoundPosition(); virtual void mSet3DSoundOrientation();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSetFinishFunction(long channel, void (* const function)(unsigned long, unsigned char), long data, unsigned char immediate);
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSetChannelAttributes(long channel, tChannelAttributes* attributes, unsigned char immediate);
+    virtual void mSet3DSoundProfile(); virtual void mSet3DSoundPosition(); virtual void mSet3DSoundOrientation();
     virtual void mSet3DSoundVelocity(); virtual void mSet3DSoundCones(); virtual void mSet3DSoundReferenceDistance(); virtual void mSetGlobalFrequency();
     virtual void mSetGlobalPan(); virtual void mSetGlobalVolume(); virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
@@ -634,6 +637,8 @@ public:
     virtual unsigned char mSetPan(long channel, long pan, unsigned char immediate);
     virtual unsigned char mSetVolume(long channel, long volume, unsigned char immediate);
     virtual unsigned char mSetPriority(long channel, long priority, unsigned char immediate);
+    virtual unsigned char mSetFinishFunction(long channel, void (* const function)(unsigned long, unsigned char), long data, unsigned char immediate);
+    virtual unsigned char mSetChannelAttributes(long channel, tChannelAttributes* attributes, unsigned char immediate);
     virtual void mUpdate();
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
     virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
