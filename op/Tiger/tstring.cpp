@@ -570,3 +570,9 @@ tString& tString::operator+(const char *s)
 {
 	return *this + tString(s);
 }
+
+// FUNCTION: STARFLEETOP 0x00625080
+tString& tString::operator+=(const char *s)
+{
+	return *this += tString(s);
+}
