@@ -106,8 +106,8 @@ inline int32 tString::mExpansionRoom(int32 size)
 	return size * 5 / 100;
 }
 
-// MATCH-ONLY: the original inlines this (built with /Ob2).
-inline void tString::mReserve(int32 size)
+// MATCH-ONLY: the original inlines a reserve with this growth rule into the copy constructor; the descriptive name is this project's own.
+inline void tString::mReserveWithRoom(int32 size)
 {
 	if (size > 0)
 	{
@@ -143,7 +143,7 @@ tString::tString(const tString &s)
 	fInstanceControl.fMemLimit = 0;
 	fInstanceControl.fDataCount = 0;
 
-	mReserve(s.fInstanceControl.fDataCount);
+	mReserveWithRoom(s.fInstanceControl.fDataCount);
 	*this = s;
 }
 
@@ -166,4 +166,14 @@ tString::~tString()
 		delete [] fInstanceControl.fTempExternalCharRepresentation;
 	if (fInstanceControl.fTempOperatorSpace)
 		delete fInstanceControl.fTempOperatorSpace;
+}
+
+// FUNCTION: STARFLEETOP 0x00623600
+void tString::mReserve(int32 size)
+{
+	if (size > fInstanceControl.fMemLimit)
+	{
+		fInstanceControl.fMemSpace.reserve(size);
+		fInstanceControl.fMemLimit = size;
+	}
 }
