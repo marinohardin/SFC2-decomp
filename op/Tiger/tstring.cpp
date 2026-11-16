@@ -96,8 +96,8 @@ tString::tString(const iBasicStringElement c)
 	mIncorporateCharList(s);
 }
 
-// MATCH-ONLY: the original inlines this (built with /Ob2).
-inline int32 tString::mExpansionRoom(int32 size)
+// MATCH-ONLY: the original (/Ob2) inlines tString::mExpansionRoom here and keeps its out-of-line copy below; under /Ob1 the body is written out.
+inline int32 fn_ExpansionRoomInline(int32 size)
 {
 	if (size < 50)
 		return size * 2 + 1;
@@ -111,7 +111,7 @@ inline void tString::mReserveWithRoom(int32 size)
 {
 	if (size > 0)
 	{
-		int32 newSize = size + mExpansionRoom(size);
+		int32 newSize = size + fn_ExpansionRoomInline(size);
 		fInstanceControl.fMemSpace.reserve(newSize);
 		fInstanceControl.fMemLimit = newSize;
 	}
@@ -176,4 +176,14 @@ void tString::mReserve(int32 size)
 		fInstanceControl.fMemSpace.reserve(size);
 		fInstanceControl.fMemLimit = size;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006236b0
+int32 tString::mExpansionRoom(int32 size)
+{
+	if (size < 50)
+		return size * 2 + 1;
+	if (size < 1000)
+		return size * 20 / 100;
+	return size * 5 / 100;
 }

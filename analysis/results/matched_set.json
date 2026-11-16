@@ -6058,6 +6058,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006236b0": {
+   "name": "tString::mExpansionRoom",
+   "symbol": "?mExpansionRoom@tString@@IAEJJ@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
