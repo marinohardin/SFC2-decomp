@@ -172,6 +172,7 @@ public:
 	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
 	virtual	unsigned char	mSet3DListener3DPosition	( tPoint3* position );
 	virtual	unsigned char	mSet3DListenerOrientation	( tPoint3* forward, tPoint3* up );
+	virtual	unsigned char	mSet3DListenerVelocity	( tPoint3* velocity );
 	// twSoundPart's own virtuals (the SDK library's symbols), vtable order (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
@@ -202,7 +203,6 @@ public:
 	// bytes, sets dwSize to 0x60 and passes them to GetCaps. The name is ours.
 	DSCAPS			field_0x13c;
 };
-
 extern twSoundPart*	atwSoundPart;
 
 // HYPOTHESIS: the original was built against the DirectX 7 headers, whose
@@ -2392,6 +2392,29 @@ unsigned char	twSoundPart::mSet3DListenerOrientation( tPoint3* forward, tPoint3*
 	t3DListenerProfile* profile = &field_0x68;
 	profile->mSetForwardDirection( forward );
 	profile->mSetUpDirection( up );
+	mReleaseControl();
+	return kTrue;
+}
+// MATCH-ONLY: the #line directives put this file's own numbering back and set the original's line number for its __LINE__ (2869), as for mDuplicateSoundChannel above.
+#line 2401
+// FUNCTION: STARFLEETOP 0x00645ed0
+unsigned char	twSoundPart::mSet3DListenerVelocity( tPoint3* velocity )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2869
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSetVelocity( velocity );
 	mReleaseControl();
 	return kTrue;
 }
