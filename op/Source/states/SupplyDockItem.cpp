@@ -862,8 +862,8 @@ public:
 	long fn_004876df( long i );
 	// HYPOTHESIS: a member taking the index and the count saved at construction.
 	void fn_00487757( long i, long count );
-	// HYPOTHESIS: steps item i by delta; its body is not written yet.
-	void fn_0048771a( long i, long delta );
+	// HYPOTHESIS: steps item i by delta; false when the result leaves 0..fn_004876ae( i ).
+	bool fn_0048771a( long i, long delta );
 
 	virtual long vfunction1();
 	virtual void vfunction2();
@@ -1020,4 +1020,14 @@ long tSupplyDockMisc::fn_004876df( long i )
 	if ( cost < 0 )
 		cost = 0;
 	return cost;
+}
+
+// FUNCTION: STARFLEETOP 0x0048771a
+bool tSupplyDockMisc::fn_0048771a( long i, long delta )
+{
+	long value = fn_004876bf( i ) + delta;
+	if( value > fn_004876ae( i ) || value < 0 )
+		return false;
+	fn_00487757( i, value );
+	return true;
 }

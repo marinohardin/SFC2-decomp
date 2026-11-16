@@ -3619,6 +3619,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0048771a": {
+   "name": "FUN_0048771a",
+   "symbol": "?fn_0048771a@tSupplyDockMisc@@QAE_NJJ@Z",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 61,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",
