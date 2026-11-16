@@ -999,3 +999,9 @@ long tSupplyDockMisc::fn_004876ae( long i )
 {
 	return ((fn_004479b4_object *) m74)->fn_00447415( i, 2 );
 }
+
+// FUNCTION: STARFLEETOP 0x004876bf
+long tSupplyDockMisc::fn_004876bf( long i )
+{
+	return ((fn_004479b4_object *) m74)->fn_00447415( i, 0 );
+}
