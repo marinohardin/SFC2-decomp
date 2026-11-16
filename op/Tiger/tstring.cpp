@@ -698,3 +698,15 @@ tString::iterator tString::iterator::operator++(int)
 	fIndex = index + 1;
 	return iterator(index, fString);
 }
+
+// FUNCTION: STARFLEETOP 0x00625550
+tString::iterator tString::iterator::operator--(int)
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	int32 index = fIndex;
+	if (index - 1 < 0)
+		throw "Access past bounds of tString";
+	fIndex = index - 1;
+	return iterator(index, fString);
+}
