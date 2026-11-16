@@ -3523,3 +3523,23 @@ unsigned char tgSoundPart::mStopAndClearAllChannels()
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x006514d0
+unsigned char tgSoundPart::mPauseAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4582
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mPauseChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}

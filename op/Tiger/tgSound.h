@@ -533,7 +533,8 @@ public:
     virtual unsigned char mPauseChannel(long channel);
     virtual void mStopAndResetChannel();
     virtual unsigned char mStopAndClearChannel(long channel);
-    virtual void mPauseAllChannels();
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mPauseAllChannels();
     // The SDK library's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mResumeAllChannels();
     // The SDK library's symbol for tgSoundPart's override gives the signature.
@@ -601,6 +602,7 @@ public:
     virtual void mDone();
     virtual unsigned char mRemoveSoundChannel(long channel);
     virtual unsigned char mRemoveAllSoundChannels();
+    virtual unsigned char mPauseAllChannels();
     virtual unsigned char mResumeAllChannels();
     virtual unsigned char mPlayAllChannels();
     virtual unsigned char mStopAndResetAllChannels();
