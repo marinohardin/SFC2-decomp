@@ -601,3 +601,23 @@ twIORequestQueue::twIORequestQueue(twQueueName name)
     if (!f_00)
         throw "Error creating thread";
 }
+
+// HYPOTHESIS: the original inlines tQueue's destructor here (it stores tQueue<twIORequest>'s vtable
+// and deletes the remaining nodes); the header leaves it out of line for tFSSession::~tFSSession.
+template <class tType>
+inline tQueue<tType>::~tQueue()
+{
+    while (f_04)
+        pop();
+}
+
+// The exe rethrows (_CxxThrowException with no object) when the semaphore calls fail.
+// FUNCTION: STARFLEETOP 0x00634770
+twIORequestQueue::~twIORequestQueue()
+{
+    if (!ReleaseSemaphore(f_04, 1, NULL))
+        throw;
+    if (!CloseHandle(f_04))
+        throw;
+    CloseHandle(f_00);
+}
