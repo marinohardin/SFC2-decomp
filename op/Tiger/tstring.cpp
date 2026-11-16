@@ -385,8 +385,8 @@ inline tString::iterator tString::end()
 {
 	return iterator(fInstanceControl.fDataCount, this);
 }
-
-inline iBasicStringElement& tString::iterator::operator*()
+// FUNCTION: STARFLEETOP 0x00625400
+iBasicStringElement& tString::iterator::operator*()
 {
 	if (!fString)
 		throw "Access to uninitialized iterator";
@@ -433,7 +433,13 @@ int32 tString::find(tString &s, int32 startPos)
 			{
 				if (!(j != s.end()))
 					return pos;
-				match = (*a == *j);
+				// MATCH-ONLY: the original (/Ob2) inlines iterator::operator* here and keeps its
+				// out-of-line copy; under /Ob1 its body is written out.
+				if (!a.fString)
+					throw "Access to uninitialized iterator";
+				if (!j.fString)
+					throw "Access to uninitialized iterator";
+				match = (a.fString->fInstanceControl.fMemSpace[a.fIndex] == j.fString->fInstanceControl.fMemSpace[j.fIndex]);
 				++j;
 				++a;
 			} while (match);
@@ -481,7 +487,12 @@ int32 tString::rfind(tString &s, int32 startPos)
 			{
 				if (!(j != s.end()))
 					return pos;
-				match = (*j == *a);
+				// MATCH-ONLY: the original (/Ob2) inlines iterator::operator* here, as in find.
+				if (!j.fString)
+					throw "Access to uninitialized iterator";
+				if (!a.fString)
+					throw "Access to uninitialized iterator";
+				match = (j.fString->fInstanceControl.fMemSpace[j.fIndex] == a.fString->fInstanceControl.fMemSpace[a.fIndex]);
 				++j;
 				++a;
 			} while (match);

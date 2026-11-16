@@ -6337,6 +6337,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00625400": {
+   "name": "tString::iterator::operator*",
+   "symbol": "??Diterator@tString@@QAEAAGXZ",
+   "unit": "Tiger/tstring.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
