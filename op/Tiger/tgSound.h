@@ -533,7 +533,10 @@ public:
     virtual unsigned char mPauseChannel(long channel);
     virtual void mStopAndResetChannel();
     virtual unsigned char mStopAndClearChannel(long channel);
-    virtual void mPauseAllChannels(); virtual void mResumeAllChannels(); virtual void mPlayAllChannels(); virtual void mStopAndResetAllChannels();
+    virtual void mPauseAllChannels(); virtual void mResumeAllChannels();
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mPlayAllChannels();
+    virtual void mStopAndResetAllChannels();
     virtual void mStopAndClearAllChannels(); virtual void vfunction24(); virtual void vfunction25(); virtual void mSetFrequency();
     virtual void mSetPan(); virtual void mSetVolume(); virtual void mSetPriority(); virtual void mSetFinishFunction();
     virtual void mSetChannelAttributes(); virtual void mSet3DSoundProfile(); virtual void mSet3DSoundPosition(); virtual void mSet3DSoundOrientation();
@@ -593,6 +596,7 @@ public:
     virtual void mDone();
     virtual unsigned char mRemoveSoundChannel(long channel);
     virtual unsigned char mRemoveAllSoundChannels();
+    virtual unsigned char mPlayAllChannels();
     virtual void mUpdate();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.

@@ -3439,3 +3439,25 @@ tSoundChannel* tgSoundPart::mGetSoundChannelPtrFromHandle(long handle)
         return field_0x18[handle];
     return 0;
 }
+
+// HYPOTHESIS: the timer response's state (0x120) is 1 while the part runs; every channel in the
+// table (0x18, size 0x1c, count 0x20) is played under the part's lock.
+// FUNCTION: STARFLEETOP 0x00651300
+unsigned char tgSoundPart::mPlayAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4480
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mPlayChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
