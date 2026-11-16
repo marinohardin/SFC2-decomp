@@ -52,3 +52,31 @@ tString::tString(const char *s)
 
 	mIncorporateCharList(s);
 }
+
+// MATCH-ONLY: the original inlines this single-argument form (built with /Ob2).
+inline iTruth tString::mIncorporateCharList(const iBasicStringElement *s)
+{
+	int32 length = 0;
+	if (s != NULL)
+	{
+		const iBasicStringElement *p = s;
+		while (*p != 0)
+		{
+			p++;
+			length++;
+		}
+	}
+	return mIncorporateCharList(s, length);
+}
+
+// FUNCTION: STARFLEETOP 0x00623260
+tString::tString(const iBasicStringElement *s)
+{
+	fInstanceControl.fTempExternalCharRepresentation = NULL;
+	fInstanceControl.fSizeOfExternalCharAllocation = 0;
+	fInstanceControl.fTempOperatorSpace = NULL;
+	fInstanceControl.fMemLimit = 0;
+	fInstanceControl.fDataCount = 0;
+
+	mIncorporateCharList(s);
+}
