@@ -258,16 +258,22 @@ public:
 	twDir( const tString &name, tVolume volume, tDir parent );
 	~twDir();
 
-	// HYPOTHESIS: laid out like twVolume's members up to +0x94, as twVolume::mGetRoot copies the
-	// word at +0x30 across and stores the directory's own cookie at +0x34; the names and the words
-	// after +0x94 are not recovered.
-	tString	f_04;
-	int32u	f_2c;
-	int32u	f_30;
-	tDir	f_34;
-	tString	f_44;
-	tString	f_6c;
-	int32u	f_94[8];
+protected:
+	void	mMakeFullPath( void );
+
+public:
+	// HYPOTHESIS: the parent volume at +0x04 and the parent directory at +0x14, as
+	// twDir::mMakeFullPath (STARFLEETOP 0x006315d0) reads them; the name at +0x24 and the full
+	// path built from it at +0x8c. The words at +0x4c and +0x50 and the strings at +0x64 are not
+	// recovered.
+	tVolume	f_04;
+	tDir	f_14;
+	tString	f_24;
+	int32u	f_4c;
+	int32u	f_50;
+	tDir	f_54;
+	tString	f_64;
+	tString	f_8c;
 };
 
 // HYPOTHESIS: 0xac bytes, as tPath::mValid reads the path map pair's count at +0xc0.
@@ -538,6 +544,22 @@ public:
 		if ( it.fNode == values.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
 			throw "Use of invalid cookie to resolve an item";
 		tMap	&map = values.mResolve( cookie );	return map[cookie];
+	}
+
+	// MATCH-ONLY: mResolve as twDir::mMakeFullPath (STARFLEETOP 0x006315d0) has it, with the
+	// search's comparison taken as a truth value, the found iterator copied before it is tested
+	// and operator[] out of line.
+	tObjectType &fn_006315d0_mResolve( tCookieType &cookie )
+	{
+		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
+
+		for ( ; it.fNode != 0; it++ )
+			if ( !( (*it).fKey != cookie ) )
+				break;
+		tMap::iterator found = it;
+		if ( found.fNode == 0 || (*found).fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
 	}
 
 	int32u											f_00;
@@ -1258,9 +1280,36 @@ tDir twVolume::mGetRoot( void )
 	tDir	parent;
 	twDir	dir( name, f_34, parent );
 
-	dir.f_30 = f_30;
+	dir.f_50 = f_30;
 	tFSCookiePart	*part = BindPart( tFSCookiePart );
 	part->fFSCookies.f_04++;
+	tDir	result = part->fFSCookies.fDirCookies.mMake( dir );
+	return result;
 	return part->fFSCookies.fDirCookies.mMake( dir );
+}
+
+// FUNCTION: STARFLEETOP 0x006315d0
+void twDir::mMakeFullPath( void )
+{
+	f_8c = f_24;
+	tDir	dir( f_14 );
+
+	while ( dir.mValid() )
+	{
+		tString	name( dir.mGetName() );
+
+		if ( name.mStrLen() )
+		{
+			name += "\\";
+			name += f_8c;
+			f_8c = name;
+		}
+		dir = dir.mGetParentDir();
+	}
+
+	tString	root( BindPart( tFSCookiePart )->fFSCookies.fVolumeCookies.fn_006315d0_mResolve( f_04 ).f_6c );
+
+	root += f_8c;
+	f_8c = root;
 }
 
