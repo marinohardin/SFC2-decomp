@@ -107,6 +107,7 @@ public:
 	long fn_004477b1( long arg1 );
 	void fn_004477c6( long arg1, long arg2, long arg3 );
 	void fn_00447867( long arg1, std::string name );
+	long fn_00447415( long arg1, long arg2 );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -991,4 +992,10 @@ void tSupplyDockMisc::vfunction7( long *msg )
 		break;
 	}
 	vfunction6();
+}
+
+// FUNCTION: STARFLEETOP 0x004876ae
+long tSupplyDockMisc::fn_004876ae( long i )
+{
+	return ((fn_004479b4_object *) m74)->fn_00447415( i, 2 );
 }
