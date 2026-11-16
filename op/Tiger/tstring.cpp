@@ -158,3 +158,12 @@ tString::tString(const iterator &i)
 
 	mIncorporateCharList(&i.fString->fInstanceControl.fMemSpace[i.fIndex], i.fString->fInstanceControl.fDataCount - i.fIndex);
 }
+
+// FUNCTION: STARFLEETOP 0x00623580
+tString::~tString()
+{
+	if (fInstanceControl.fTempExternalCharRepresentation)
+		delete [] fInstanceControl.fTempExternalCharRepresentation;
+	if (fInstanceControl.fTempOperatorSpace)
+		delete fInstanceControl.fTempOperatorSpace;
+}
