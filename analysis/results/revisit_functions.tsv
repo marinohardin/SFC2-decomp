@@ -99,3 +99,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00632700	twDir::mGetPathIterator	12.46	2	sonnet	2026-11-16T19:43:57Z	attempt 2 (sonnet) did not raise the best; best 12.46%
 0x00632da0	twDir::mDelete	18.44	2	sonnet	2026-11-16T20:01:38Z	attempt 2 (sonnet) did not raise the best; best 18.44%
 0x00633e40	tVolume::tVolume	0.00	2	sonnet	2026-11-16T21:00:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00633e80	tDir::tDir	1.63	2	sonnet	2026-11-16T21:04:44Z	attempt 2 (sonnet) did not raise the best; best 1.63%
