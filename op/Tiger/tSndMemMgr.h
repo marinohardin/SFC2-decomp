@@ -18,7 +18,9 @@ public:
     // HYPOTHESIS: the previous member's handle; tDynamicMemoryFreeListViaHandles::
     // mGetPreviousListMemberHandle (0x00626bc0) returns it through this slot.
     virtual long vfunc_0c();
-    virtual void vfunc_10();
+    // HYPOTHESIS: the next member's handle; tDynamicMemoryFreeListViaHandles::
+    // mGetNextListMemberHandle (0x00626be0) returns it through this slot.
+    virtual long vfunc_10();
     virtual void vfunc_14();
     virtual void vfunc_18();
     virtual void vfunc_1c();
