@@ -1622,7 +1622,6 @@ unsigned char twStandardSoundChannel::mDoFillSelection( unsigned char param_1 )
 	field_0x164 = 0;
 
 	tSoundSelection* second = NULL;
-	void* secondData = NULL;
 	tSoundSelection* first = field_0x170( field_0x178, param_1, second );
 	if( first == NULL )
 		return kFalse;
@@ -1631,6 +1630,7 @@ unsigned char twStandardSoundChannel::mDoFillSelection( unsigned char param_1 )
 	long total = first->vfunction9();
 	long firstSize = total;
 	long secondSize = 0;
+	void* secondData = NULL;
 	if( second )
 	{
 		second->vfunction14( kFalse );
