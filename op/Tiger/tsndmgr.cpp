@@ -259,6 +259,7 @@ public:
 	virtual	~tBasicSoundFileManager( void );
 	GenAbstractBinding( tBasicSoundFileManager );
 	virtual	iTruth	mIsReady	( void );
+	virtual	void	mDeactivate	( void );
 	// Slots 6 to 83 in the order of the exe's vtable at 0x007b7664; the types from the SDK library's symbols.
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
 	virtual	unsigned short	mGetTrackingOffset	( unsigned long handle );
@@ -409,7 +410,6 @@ tBasicSoundFileManager::tBasicSoundFileManager( void )
 tBasicSoundFileManager::~tBasicSoundFileManager( void )
 {
 }
-
 // The SDK library's symbol for the table at 0x00882160 gives the name; contents not written.
 extern	int	gVolumeModifierTable[];
 // FUNCTION: STARFLEETOP 0x00663ee0
@@ -2029,4 +2029,19 @@ iTruth	tBasicSoundFileManager::mIsReady( void )
 	if ( TestPart( tAudioPriorityManagerPart ) == kTrue && TestPart( tChannelGroupManagerPart ) == kTrue && TestPart( tAudioFileInfoPart ) == kTrue )
 		return kTrue;
 	return kFalse;
+}
+// FUNCTION: STARFLEETOP 0x0066b110
+void	tBasicSoundFileManager::mDeactivate( void )
+{
+	mCloseAllSounds();
+	if ( field_0xc != 0 )
+	{
+		free( (void *)field_0xc );
+		field_0xc = 0;
+	}
+	if ( field_0x10 != 0 )
+	{
+		free( field_0x10 );
+		field_0x10 = 0;
+	}
 }
