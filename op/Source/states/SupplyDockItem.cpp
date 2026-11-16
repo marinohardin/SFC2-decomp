@@ -1,7 +1,6 @@
 #include "Common/Exceptions/Validate.h"
-class fn_00486500_value;
-// HYPOTHESIS: the 0x64-byte member at +0x10; only its constructor (0x0045e574) is known, and
-// the constructor's unwind frame shows it has a destructor.
+class tValueBase;	class fn_004d288f_object;
+// HYPOTHESIS: the 0x64-byte member at +0x10 (+0x08 in tSupplyDockShipInfo); it has a destructor.
 class tObject_0045e574
 {
 public:
@@ -9,11 +8,12 @@ public:
 	~tObject_0045e574();
 	void fn_004d269b( long arg1, void *a, bool b );
 	void fn_004d2797( long arg1, void *a, long arg3 );
-	void fn_004d26fb( fn_00486500_value *value, void *a );
+	void fn_004d26fb( tValueBase *value, void *a );
+	void fn_004d27fa( void *a );
+	fn_004d288f_object *fn_004d288f( const void *key );
 	char m00[0x64];
 };
-// HYPOTHESIS: layout from the constructor's stores; 0x7c bytes per the RTTI recovery. The
-// fifth argument's name comes from the original's validate text ("mask").
+// HYPOTHESIS: layout from the constructor's stores, 0x7c bytes; "mask" is from the validate text.
 class fn_004457b7_object;
 class tSupplyDockItem
 {
@@ -28,10 +28,10 @@ public:
 	virtual long vfunction6();
 	virtual void vfunction7( long *msg );
 	virtual void vfunction8( void *a, bool b );
-	virtual long vfunction9() = 0;
-	virtual long vfunction10() = 0;
+	virtual long vfunction9() { return 0; }
+	virtual long vfunction10() { return 0; }
 	virtual double vfunction11();
-	virtual long vfunction12() = 0;
+	virtual long vfunction12() { return 0; }
 
 	long m04;
 	long m08;
@@ -44,7 +44,7 @@ public:
 long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
 // HYPOTHESIS: a free cdecl function of one argument; other units pass it a name string.
 void fn_004d3306( long arg1 );
-// HYPOTHESIS: vfunction9, 10 and 12 are pure; vtable 0x0079fc7c holds 0x0073ea74 in those slots.
+// vtable 0x0079fc7c holds 0x0073ea74 (3 bytes, a shared return 0) for vfunction9, 10 and 12.
 // The analysis names this address ~tSupplyDockItem; the code is the constructor.
 // FUNCTION: STARFLEETOP 0x0048612c
 tSupplyDockItem::tSupplyDockItem( long arg1, long arg2, long arg3, long mask, long arg5 )
@@ -109,6 +109,14 @@ public:
 	void fn_00447867( long arg1, std::string name );
 	long fn_00447415( long arg1, long arg2 );
 	void fn_00447531( long arg1, long arg2 );
+	// HYPOTHESIS: tSupplyDockShipInfo holds one at +0x6c (0xf0 bytes) and builds it with 0x004455d7,
+	// which sits between tShipSystemMask's deleting destructor and its destructor.
+	fn_004479b4_object( long arg1, long arg2, long arg3, long arg4 );
+	~fn_004479b4_object();
+	long fn_004478b5( long arg1 );
+	bool fn_00447c61( long arg1 );
+
+	char m00[0xf0];
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -260,17 +268,14 @@ void tSupplyDockShuttles::vfunction14( long value )
 	}
 }
 
+#include "unsorted/tValueBase.h"
+
 // HYPOTHESIS: the analysis types this global tValue<long>; its constructor and destructor are external.
-class fn_00486500_value
+class fn_00486500_value : public tValueBase
 {
 public:
 	fn_00486500_value();
 	~fn_00486500_value();
-	// HYPOTHESIS: 0x006712c0 is the function tAICaptain.cpp declares on its tObject_006712c0,
-	// which also sets the integer at +0x18 first.
-	void fn_006712c0( long arg1, long arg2 );
-	long m00;
-	char m04[0x14];
 	long m18;
 };
 
@@ -321,6 +326,18 @@ public:
 		short m10;
 		char m12[2];
 		short m14;
+		// tSupplyDockMissiles is 0x164 bytes (ShipInfo's new), so this is 0xe4.
+		char m16[0xce];
+	};
+
+	// RTTI names the class; tSupplyDockShipInfo holds one at +0x1c0 (0x60 bytes).
+	class tItemRates
+	{
+	public:
+		tItemRates( long arg1 );
+		~tItemRates();
+
+		char m00[0x60];
 	};
 };
 
@@ -1041,4 +1058,110 @@ void tSupplyDockMisc::fn_00487757( long i, long count )
 		((fn_004479b4_object *) m74)->fn_00447531( i, count );
 		vfunction3();
 	}
+}
+
+#include <sstream>
+
+// HYPOTHESIS: the object tObject_0045e574::fn_004d288f returns; tPanelMgr.cpp declares the
+// same class, which belongs in a shared header.
+class fn_004d288f_object
+{
+public:
+	void fn_004d2573( std::string text );
+};
+
+// RTTI names the class tValueI<tString>; vtable 0x0079b8a4, the value at +0x18.
+template< class T >
+class tValueI : public tValueBase
+{
+public:
+	// HYPOTHESIS: the set step; the original assigns the value, notifies with (3, 0), and
+	// only then destroys the temporary it was given.
+	tValueI &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
+
+	T m18;
+};
+
+// HYPOTHESIS: vtable 0x0079fdc0 has one slot (0x00487f84); layout from the constructor's stores.
+class tSupplyDockShipInfo
+{
+public:
+	// The validate text names the limit tSupplyDockShipInfo::kMaxDisplayableOwnedShips.
+	enum { kMaxDisplayableOwnedShips = 3 };
+
+	tSupplyDockShipInfo( long arg1, long arg2, long arg3, long shipIndex, long arg5, long arg6, long arg7, const char *arg8, const char *arg9, long arg10, long arg11, long arg12, long arg13 );
+
+	virtual void vfunction1();
+	void fn_00487df7( long arg1 );
+	void fn_00487e4c( long arg1 );
+
+	long m04;
+	tObject_0045e574 m08;
+	fn_004479b4_object m6c;
+	tSupplyDockItem *m15c[4];
+	long m16c;
+	long m170;
+	long m174;
+	tValueI< tString > m178;
+	long m1b8;
+	long m1bc;
+	tStoresState::tItemRates m1c0;
+	long m220;
+	long m224;
+};
+
+// HYPOTHESIS: per-ship names and control ids indexed by the ship index; their types are not known.
+extern const char *g_0084bb1c[3];
+extern void *g_0084bb28[3];
+extern void *g_0084bb34[3];
+extern void *g_0084bb40[3];
+extern void *g_0084bc00[12];
+// HYPOTHESIS: the names the four item panels are built with.
+extern const char *g_0084bc30;
+extern const char *g_0084bc34;
+extern const char *g_0084bc38;
+extern const char *g_0084bc3c;
+
+// FUNCTION: STARFLEETOP 0x00487784
+tSupplyDockShipInfo::tSupplyDockShipInfo( long arg1, long arg2, long arg3, long shipIndex, long arg5, long arg6, long arg7, const char *arg8, const char *arg9, long arg10, long arg11, long arg12, long arg13 )
+	: m6c( arg5, arg6, arg7, arg12 ), m16c( arg1 ), m170( arg3 ), m174( shipIndex ), m1b8( arg13 ), m1c0( arg11 ), m220( 0 )
+{
+	std::stringstream stream;
+
+#line 1285
+	validate( shipIndex < tSupplyDockShipInfo::kMaxDisplayableOwnedShips );
+
+	long index = m174;
+	m08.fn_004d2797( index + 0x11004, g_0084bb28[index], 0 );
+	m08.fn_004d2797( m174 + 0x1100a, g_0084bb34[m174], 0 );
+	m08.fn_004d2797( m174 + 0x1100d, g_0084bb40[m174], 0 );
+	// MATCH-ONLY: the original shifts the index register in place (x4 for the first table,
+	// x4 again here); a [3][4] table read with the plain index gives a single shl by 4.
+	index *= 4;
+	m08.fn_004d26fb( &m178, g_0084bc00[index + 0] );
+	m08.fn_004d27fa( g_0084bc00[index + 1] );
+	m08.fn_004d27fa( g_0084bc00[index + 2] );
+	m08.fn_004d27fa( g_0084bc00[index + 3] );
+	fn_004d3278( (long) g_0084bb1c[m174], (long) g_0084bb1c[m174], 0, m16c, arg2, 800, 600 );
+
+	m178 = arg8;
+
+	stream.str( "" );
+	stream << arg9;
+	m08.fn_004d288f( g_0084bc00[index + 1] )->fn_004d2573( stream.str() );
+
+	for( long i = 0; i < 4; i++ )
+		m15c[i] = NULL;
+	if( m6c.fn_004478b5( 0 ) )
+		m15c[0] = new tSupplyDockShuttles( (long) g_0084bc30, m16c, arg2, (long) &m6c, (long) &m1c0 );
+	if( m6c.fn_00447c61( 1 ) )
+		m15c[1] = new tSupplyDockMissiles( (long) g_0084bc34, m16c, arg2, (long) &m6c, (long) &m1c0 );
+	if( m6c.fn_00447c61( 2 ) )
+		m15c[2] = new tSupplyDockFighters( (long) g_0084bc38, m16c, arg2, (long) &m6c, (long) &m1c0 );
+	if( m6c.fn_00447c61( 4 ) )
+		m15c[3] = new tSupplyDockMisc( (long) g_0084bc3c, m16c, arg2, (long) &m6c, (long) &m1c0 );
+
+	m224 = -1;
+	fn_00487df7( arg10 );
+	fn_00487e4c( 0 );
 }

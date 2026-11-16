@@ -3637,6 +3637,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00487784": {
+   "name": "tSupplyDockShipInfo::tSupplyDockShipInfo",
+   "symbol": "??0tSupplyDockShipInfo@@QAE@JJJJJJJPBD0JJJJ@Z",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 1017,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",
