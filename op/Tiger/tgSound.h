@@ -654,7 +654,9 @@ public:
     virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
     virtual unsigned char mIsChannelActive(long channel);
     virtual void vfunction108(); virtual void mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel(); virtual void mRecordChannel();
-    virtual void mPauseRecordChannel(); virtual void mStopAndClearRecordChannel();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mPauseRecordChannel();
+    virtual void mStopAndClearRecordChannel();
 };
 
 // HYPOTHESIS: a part like tClockPart: tPart's virtuals fill slots 0-5 and its fields 0x4-0xb, so
@@ -760,6 +762,7 @@ public:
     virtual void mDump();
     // The SDK library's symbol (?mDump@tgSoundPart@@UAEXJ@Z) gives the parameter type.
     virtual void mDump(long channel);
+    virtual unsigned char mPauseRecordChannel();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).

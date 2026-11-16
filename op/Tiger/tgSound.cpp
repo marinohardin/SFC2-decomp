@@ -5014,3 +5014,20 @@ void tgSoundPart::mDump()
     SOUND_ERROR(("  GlobalPan=%ld, GlobalVolume=%ld, VolumePercent=%f,Freq=%f", field_0x50, field_0x54, field_0x58, field_0x60)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
     SOUND_ERROR(("  RecordingChannelHandle=%ld, InterruptMode=%ld,fCurrentTime=%f,fSoundPartGetTimeFunction=%ld END", field_0xa8, field_0x128, field_0xb8, field_0xb0)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
 }
+#line 5018 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00657240
+unsigned char tgSoundPart::mPauseRecordChannel()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7166
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(field_0xa8);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)2, 0, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddImmediateCommand(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
