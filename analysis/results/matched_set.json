@@ -8929,6 +8929,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00654bb0": {
+   "name": "tgSoundPart::mAddGetNextAttachmentFunction",
+   "symbol": "?mAddGetNextAttachmentFunction@tgSoundPart@@UAEEJP6AXKJ@ZJN@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 384,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
