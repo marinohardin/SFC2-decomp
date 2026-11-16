@@ -8299,6 +8299,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00633ec0": {
+   "name": "twPath::mFree",
+   "symbol": "?mFree@twPath@@UAEKXZ",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

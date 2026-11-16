@@ -2132,3 +2132,19 @@ void *OpenForWriteChar( tString &path )
 	return CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
 }
 
+// FUNCTION: STARFLEETOP 0x00633ec0
+int32u twPath::mFree( void )
+{
+	if ( f_a4 != INVALID_HANDLE_VALUE )
+	{
+		FlushFileBuffers( f_a4 );
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+	}
+	return 0;
+}
