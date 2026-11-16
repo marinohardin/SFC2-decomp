@@ -302,8 +302,8 @@ public:
 	// HYPOTHESIS: the first virtual, as tPath::mGetName (STARFLEETOP 0x0061e6d0) calls it through
 	// the vtable's first slot on the resolved path.
 	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second slot is not recovered.
-	virtual void	fn_twPath_slot1( void );
+	// The second slot, by the exe's symbol for twPath::mGetSortName (STARFLEETOP 0x00633260).
+	virtual tString	mGetSortName( void );
 	// HYPOTHESIS: the third virtual (vtable +0x08), as tPath::mGetParentDir (STARFLEETOP
 	// 0x0061e900) calls it through that slot on the resolved path.
 	virtual tDir	mGetParentDir( void );
@@ -1727,5 +1727,11 @@ void twPath::mMakeFullPath( void )
 
 	root += f_7c;
 	f_7c = root;
+}
+
+// FUNCTION: STARFLEETOP 0x00633260
+tString twPath::mGetSortName( void )
+{
+	return f_54;
 }
 
