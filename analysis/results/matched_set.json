@@ -9667,6 +9667,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00665dd0": {
+   "name": "tBasicSoundFileManager::mSet3DSoundCones",
+   "symbol": "?mSet3DSoundCones@tBasicSoundFileManager@@UAEEKMJJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",

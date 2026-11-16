@@ -799,3 +799,16 @@ unsigned char	tBasicSoundFileManager::mSet3DSoundVelocity( unsigned long handle,
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00665dd0
+unsigned char	tBasicSoundFileManager::mSet3DSoundCones( unsigned long handle, float angle, long level, long param_4, unsigned char param_5 )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSet3DSoundCones( handle, angle, level, param_4, param_5 );
+	}
+	return 0;
+}
