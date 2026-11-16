@@ -342,7 +342,7 @@ public:
     virtual tSoundChannelCommand* mGetFirstDelayedCommand();
     virtual tSoundChannelCommand* mGetFirstAttachment();
     virtual tSoundSelection* mGetLastSelectionToAttach();
-    virtual iTruth vfunction32(long value) = 0;
+    virtual unsigned char mDoFillSelection(unsigned char param_1) = 0;
     virtual void vfunction33();
     virtual tSoundSelection* mGetSelectionToAttach();
     virtual tSoundChannelCommand* mGetFirstPlayingCommand();
@@ -404,7 +404,9 @@ public:
     virtual iTruth mCleanupSelections();
     virtual unsigned char mUpdateAmountPlayed() = 0;
     virtual void mAddFinishCommand(iTruth param_1);
-    virtual void vfunction95() = 0; virtual void vfunction96() = 0;
+    // Slots 32 and 95: twStandardSoundChannel::mAddActiveSoundChannel calls them with these arguments.
+    virtual unsigned char mAddSoundChannel(tSoundChannelFormat* format, long handle) = 0;
+    virtual void vfunction96() = 0;
     virtual iTruth mRemoveSoundChannel();
     virtual void vfunction98() = 0;
     virtual iTruth vfunction99() = 0;

@@ -2085,7 +2085,7 @@ void tSoundChannel::mReset(iTruth param_1)
     if (atgSoundPart->vfunction13() == 1)
     {
         if (mAreWeStreaming() == 1)
-            vfunction32(0);
+            mDoFillSelection(0);
     }
     else
     {

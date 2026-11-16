@@ -393,8 +393,7 @@ protected:
 	unsigned char	mDoActiveUpdate	( double );
 	virtual unsigned char	mUpdateBuffersAndSelections	( double );
 	virtual unsigned char	mUpdateAmountPlayed	( void );
-	// HYPOTHESIS: this class's own virtuals follow tSoundChannel's 122 slots: the getter at 125
-	// and mCreate3DBuffer at 128 are called through the vtable; the others are not recovered.
+	// HYPOTHESIS: own virtuals follow tSoundChannel's 122 slots; the getter at 125 and mCreate3DBuffer at 128 are called through the vtable.
 	virtual void vfunction122(); virtual void vfunction123();
 	virtual LPDIRECTSOUNDBUFFER mGetfDSBuffer();
 	virtual void vfunction126(); virtual void vfunction127();
@@ -403,6 +402,7 @@ public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
 	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
 	virtual unsigned char	mDoFillSelection	( unsigned char );
+	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
 };
 
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
@@ -1464,7 +1464,7 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 
 	if( BindPart( tSoundPart )->vfunction13() == 1 )
 	{
-		if( vfunction32( 0 ) != kTrue )
+		if( mDoFillSelection( 0 ) != kTrue )
 		{
 			mRemoveSoundChannel();
 			return kFalse;
@@ -1702,6 +1702,17 @@ unsigned char twStandardSoundChannel::mDoFillSelection( unsigned char param_1 )
 	return kFalse;
 }
 #line 1705
+
+// FUNCTION: STARFLEETOP 0x00644380
+unsigned char twStandardSoundChannel::mAddActiveSoundChannel( tSoundChannelFormat* format, long handle, tFillSelectionFunction& fill, tSelectionFunction& next, unsigned long userData )
+{
+	field_0x170 = fill;
+	field_0x174 = next;
+	field_0x178 = userData;
+	if( !mAddSoundChannel( format, handle ) )
+		return kFalse;
+	return mDoFillSelection( kFalse );
+}
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
