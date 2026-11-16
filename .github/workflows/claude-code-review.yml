@@ -34,11 +34,6 @@ jobs:
       - name: Run Claude Code Review
         id: claude-review
         uses: anthropics/claude-code-action@v1
-        env:
-          # On a self-hosted runner the reviewer must not pick up the owner's own Claude settings,
-          # memory or plugins. It gets a configuration folder of its own, in the runner's
-          # temporary folder, which the runner empties after the job.
-          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude-review-config
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
