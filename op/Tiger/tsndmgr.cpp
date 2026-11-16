@@ -11,12 +11,15 @@ class tAFPlayInfo
 {
 public:
 	virtual	long	mGetRandomFrequency	( void );
+	virtual	long	mGetRandomVolume	( void );
 	virtual	void	mSetNextInSequence	( long next );
 
 	char			fUnknown_0004[0x88];
 	long			field_0x8c;
 	long			field_0x90;
-	char			fUnknown_0094[0x28];
+	long			field_0x94;
+	long			field_0x98;
+	char			fUnknown_009c[0x20];
 	long			field_0xbc;
 };
 
@@ -78,6 +81,14 @@ long	tAFPlayInfo::mGetRandomFrequency( void )
 	if ( field_0x8c == field_0x90 )
 		return -1;
 	return field_0x8c - (long)( (double)rand() * ( field_0x90 - field_0x8c ) * ( -1.0 / RAND_MAX ) );
+}
+
+// FUNCTION: STARFLEETOP 0x00663850
+long	tAFPlayInfo::mGetRandomVolume( void )
+{
+	if ( field_0x94 == field_0x98 )
+		return field_0x94;
+	return field_0x94 - (long)( (double)rand() * ( field_0x98 - field_0x94 ) * ( -1.0 / RAND_MAX ) );
 }
 
 // FUNCTION: STARFLEETOP 0x006639c0
