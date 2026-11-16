@@ -681,3 +681,29 @@ twIORequestQueueManager::~twIORequestQueueManager()
         f_00.pop();
     }
 }
+
+// The exe's unwind table puts the try after the name (state 5) and its catch-all funclet tells the
+// request's callback of the failure with the size -1.
+// HYPOTHESIS: the queue is built from the name's string, as the exe constructs the argument inline
+// from it (tString constructor and assignment) rather than calling the name's copy constructor.
+// FUNCTION: STARFLEETOP 0x00634b50
+void twIORequestQueueManager::mRequest(twIORequest request)
+{
+    tString volName;
+    volName = request.f_04.mGetParentDir().mGetParentVol().mGetSortName();
+    twQueueName name(volName);
+    try
+    {
+        if (f_0c.count(name) == 0)
+        {
+            f_0c[name] = new twIORequestQueue(name.f_00);
+            f_00.push(name);
+        }
+        f_0c[name]->mAdd(request);
+    }
+    catch (...)
+    {
+        if (request.f_20)
+            request.f_20->fn_006340b0_vfunction0(request.f_04, 1, -1);
+    }
+}
