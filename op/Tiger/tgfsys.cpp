@@ -324,10 +324,10 @@ public:
 	virtual iTruth	mDelete( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as its body follows mDelete's; the name is
 	// the exe's symbol for STARFLEETOP 0x00633700, and the tenth (+0x24) is the exe's symbol for
-	// STARFLEETOP 0x00633770, whose body follows. The eleventh and twelfth are not recovered.
+	// STARFLEETOP 0x00633770, and the eleventh (+0x28) for 0x00633850; the twelfth is not recovered.
 	virtual iTruth	mLock( void );
 	virtual iTruth	mLock( iTruth lock );
-	virtual void	fn_twPath_slot10( void );
+	virtual iTruth	mHide( void );
 	virtual void	fn_twPath_slot11( void );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tPath::mRead (STARFLEETOP 0x0061ee60)
 	// calls it through that slot on the resolved path.
@@ -1949,5 +1949,25 @@ iTruth twPath::mLock( iTruth lock )
 		}
 	}
 	return done;
+}
+
+// FUNCTION: STARFLEETOP 0x00633850
+iTruth twPath::mHide( void )
+{
+	iTruth	hidden = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		hidden = ( GetFileAttributesW( g_00c3cbf0 ) & FILE_ATTRIBUTE_HIDDEN ) != 0;
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			hidden = ( GetFileAttributesA( g_00c3caec ) & FILE_ATTRIBUTE_HIDDEN ) != 0;
+		}
+	}
+	return hidden;
 }
 
