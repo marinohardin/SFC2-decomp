@@ -187,3 +187,19 @@ int32 tString::mExpansionRoom(int32 size)
 		return size * 20 / 100;
 	return size * 5 / 100;
 }
+
+// FUNCTION: STARFLEETOP 0x00623700
+iBasicStringElement *tString::mWideStr(void)
+{
+	if (fInstanceControl.fTempExternalCharRepresentation)
+		delete [] fInstanceControl.fTempExternalCharRepresentation;
+	int32 size = fInstanceControl.fDataCount * sizeof(iBasicStringElement) + sizeof(iBasicStringElement);
+	fInstanceControl.fTempExternalCharRepresentation = new char[size];
+	fInstanceControl.fSizeOfExternalCharAllocation = fInstanceControl.fDataCount * sizeof(iBasicStringElement) + sizeof(iBasicStringElement);
+	if (fInstanceControl.fTempExternalCharRepresentation)
+	{
+		iBasicStringElement *wide = (iBasicStringElement *)memcpy(fInstanceControl.fTempExternalCharRepresentation, fInstanceControl.fMemSpace.begin(), fInstanceControl.fDataCount * sizeof(iBasicStringElement));
+		wide[fInstanceControl.fDataCount] = 0;
+	}
+	return (iBasicStringElement *)fInstanceControl.fTempExternalCharRepresentation;
+}
