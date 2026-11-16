@@ -734,3 +734,16 @@ unsigned char	tBasicSoundFileManager::mAddGetNextAttachmentFunction( unsigned lo
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00665950
+unsigned char	tBasicSoundFileManager::mSetChannelAttributes( unsigned long handle, tChannelAttributes * attributes )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSetChannelAttributes( handle, attributes, -1, 1 );
+	}
+	return 0;
+}
