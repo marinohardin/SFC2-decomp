@@ -295,3 +295,25 @@ unsigned char tDynamicMemoryFreeListViaHandles::mInsertAfterListMember(tListMemb
 	field_0xc++;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626e40
+unsigned char tDynamicMemoryFreeListViaHandles::mInsertBeforeListMember(tListMemberWithHandle *aMember, tListMemberWithHandle *aListMember)
+{
+	if (aMember == 0)
+		return 0;
+	if (aListMember == 0)
+		return mAddToBackOfList(aMember);
+	long listHandle = aListMember->vfunc_1c();
+	long handle = aMember->vfunc_1c();
+	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+		return 0;
+	if (field_0x4 == listHandle)
+		return mAddToFrontOfList(aMember);
+	long previousHandle = aListMember->vfunc_0c();
+	mGetListMemberWithHandleFromHandle(previousHandle)->vfunc_18(handle);
+	aMember->vfunc_18(listHandle);
+	aListMember->vfunc_14(handle);
+	aMember->vfunc_14(previousHandle);
+	field_0xc++;
+	return 1;
+}
