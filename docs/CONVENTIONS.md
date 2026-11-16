@@ -1,6 +1,6 @@
-# SFCOP-decomp — Conventions
+# SFC2-decomp — Conventions
 
-The standard every change is held to. `DESIGN.md` says what the system does; this says what the code looks like. The automated review reads this and `AGENTS.md`.
+The standard every change is held to. `DESIGN.md` says what the system does; this says what the code looks like. The automated review reads this and `AGENTS.md`. Rules for `src/`, `server/` and the other port paths apply in the port's repository, which keeps its own copy of this file.
 
 ---
 

@@ -1,6 +1,8 @@
-# SFCOP-decomp — Design
+# SFC2-decomp — Design
 
-What the system does and how it behaves. This document defines behavior; `CONVENTIONS.md` defines form; `PLAN.md` defines the order of work. Sections are numbered and stay numbered, because briefs and reviews cite them by number (`DESIGN §4.2`).
+What the system does and how it behaves. This document defines behavior; `CONVENTIONS.md` defines form; `INTERFACE.md` defines what programs that build on this code may rely on.
+
+**Scope in this repository.** This document was written for a project that held the decompilation and a native port together; the port now lives in a repository of its own, which pins this one as a submodule. Here the sections that govern the work are §§1–3 (what is decompiled and why), §6.3 (claims and function replacement, as `INTERFACE.md` restates them), §6.10 (progress and matched-set files), §7.1 (the source trees), §7.2 (the compile modes), §7.5 (Empires at War) and §12. The other sections describe the port and are kept, numbered, because pull requests cite them; where they name `src/`, `server/`, `oracle/` or the lift, they mean the port's repository. Sections are numbered and stay numbered, because briefs and reviews cite them by number (`DESIGN §4.2`).
 
 How to fill this in: one section at a time, in a design conversation with the owner. Write each behavior concretely enough that a test can be named for it. Where a decision is not made, write it in §12 rather than guessing.
 
@@ -195,7 +197,7 @@ The on-wire format of a game session is the dplay module's session messages, whi
 
 ### 6.10 Progress and matched-set files
 
-`analysis/results/progress/progress.json` and `PROGRESS.md` (written only by `scripts/progress.py`) and `analysis/results/matched_set.json` (written only by the harness) keep the shapes P1-5 and P1-6 fixed. The gate compares against the base branch's copy.
+`analysis/results/progress/op/progress.json` and `PROGRESS.md` (written only by `scripts/progress.py`) and `analysis/results/matched_set.json` (written only by the harness) keep the shapes P1-5 and P1-6 fixed. The gate compares against the base branch's copy.
 
 ## 7. Architecture
 
