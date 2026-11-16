@@ -2055,3 +2055,8 @@ void	DefaultSndMgrFinishFunction( unsigned long handle, unsigned char how )
 {
 	BindPart( tBasicSoundFileManager )->mFinishSound( handle, how );
 }
+// FUNCTION: STARFLEETOP 0x0066b270
+void	DefaultNextAttachmentFunction( unsigned long handle, long data )
+{
+	BindPart( tBasicSoundFileManager )->mDoDefaultNextAttachment( handle );
+}
