@@ -354,3 +354,12 @@ iBasicStringElement& tString::operator[](int32 n)
 		throw "Invalid index for dereference of tString";
 	return fInstanceControl.fMemSpace[n];
 }
+
+// FUNCTION: STARFLEETOP 0x00623f20
+int32 tString::find(char c)
+{
+	char s[2];
+	s[0] = c;
+	s[1] = 0;
+	return find(s);
+}
