@@ -9,10 +9,12 @@
 
 #include "Tiger/tgfsys.h"
 
-// HYPOTHESIS: the enumerators are not recovered; twPath::mRead (STARFLEETOP 0x006339a0) passes 0.
+// HYPOTHESIS: the enumerators are not recovered; twPath::mRead (STARFLEETOP 0x006339a0) passes 0
+// and twPath::mWrite (STARFLEETOP 0x00633bf0) passes 1.
 enum twIORequestType
 {
-	fn_twIORequestType_0
+	fn_twIORequestType_0,
+	fn_twIORequestType_1
 };
 
 // HYPOTHESIS: 0x24 bytes, as twPath::mRead copies them into twIORequestQueueManager::mRequest's

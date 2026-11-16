@@ -2073,3 +2073,55 @@ inline twIORequest::~twIORequest()
 {
 }
 
+// Named by the SDK library's symbol; defined below.
+void *OpenForWriteChar( tString &path );
+
+// FUNCTION: STARFLEETOP 0x00633bf0
+int32u twPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback )
+{
+	if ( f_a8 < 3 )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		HANDLE	file;
+		tString	*path = &f_7c;
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( *path, 0 ), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			CloseHandle( file );
+			file = OpenForWriteChar( *path );
+		}
+		f_a4 = file;
+		f_a8 = 3;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	if ( f_a4 == INVALID_HANDLE_VALUE )
+	{
+		if ( mLock() )
+			throw "File is locked and cannot be opened for writing";
+		throw "Unable to open file for write.";
+	}
+	if ( callback )
+	{
+		// HYPOTHESIS: 1 is the write request.
+		gAsynchManager->mRequest( twIORequest( fn_twIORequestType_1, f_44, buffer, offset, size, callback ) );
+	}
+	else
+	{
+		SetFilePointer( f_a4, offset, NULL, FILE_BEGIN );
+		DWORD	written;
+		if ( !WriteFile( f_a4, buffer, size, &written, NULL ) )
+			throw "Error writing to file.";
+		if ( written != size )
+			throw "Incorrect number of bytes written to file.";
+	}
+	return size;
+}
+
