@@ -54,4 +54,12 @@ unsigned char tBasicFileZip::mOpenForWrite( const char *name )
 	return 0;
 }
 
+// FUNCTION: STARFLEETOP 0x006286e0
+unsigned char tBasicFileZip::mIsOpen( void )
+{
+	if ( !field_4 )
+		return 0;
+	return field_4->mIsOpen();
+}
+
 }
