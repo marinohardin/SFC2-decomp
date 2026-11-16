@@ -4456,3 +4456,28 @@ unsigned char tgSoundPart::mWeDoNotRetainSelections(long channel)
     }
     mReleaseControl(); return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00655260
+unsigned char tgSoundPart::mSetGlobalFrequency(float frequency)
+{
+#line 6169
+    SOUND_ERROR(("tgSoundPart mSetGlobalFrequency %f", frequency)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6176
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x60 = frequency;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedFrequency())
+        {
+            long channelFrequency = channelPtr->mGetFrequency();
+            long command = mCreateCommand((eSoundChannelCommand)5, &channelFrequency, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
