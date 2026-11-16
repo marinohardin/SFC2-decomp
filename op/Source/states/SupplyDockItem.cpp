@@ -29,7 +29,7 @@ public:
 	virtual void vfunction8( void *a, void *b );
 	virtual void vfunction9() = 0;
 	virtual void vfunction10() = 0;
-	virtual void vfunction11();
+	virtual double vfunction11();
 	virtual void vfunction12() = 0;
 
 	long m04;
@@ -83,4 +83,10 @@ void tSupplyDockItem::vfunction6()
 void tSupplyDockItem::vfunction8( void *a, void *b )
 {
 	m10.fn_004d269b( m04, a, b );
+}
+
+// FUNCTION: STARFLEETOP 0x0048620a
+double tSupplyDockItem::vfunction11()
+{
+	return 0.0;
 }
