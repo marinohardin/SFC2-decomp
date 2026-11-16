@@ -10,6 +10,7 @@ public:
     virtual tVolume mGetNamedVolume(tSession session, tString name);
     virtual tPath mGetAppPath(tSession session);
     virtual tPath mDuplicatePath(tSession session, tPath path);
+    virtual tPath mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir);
 };
 
 tPath WinParsePath(tSession session, tString &path);
@@ -186,4 +187,43 @@ tPath twFileSystemPart::mDuplicatePath(tSession session, tPath path)
 {
     tString name;
     return WinParsePath(session, name);
+}
+
+// HYPOTHESIS: the dir.mValid() branch of the original resolves the directory's name through the
+// tFSCookiePart's directory cookie manager (twDir +0x8c); tFSCookiePart and twDir are declared only
+// in tgfsys.cpp and cannot be repeated here, so dirName stays empty.
+// FUNCTION: STARFLEETOP 0x0062fab0
+tPath twFileSystemPart::mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir)
+{
+    tPath path;
+    tString fileName(prompt);
+    tString dirName;
+
+    if (dir.mValid())
+    {
+    }
+
+    tString filterStr;
+    if (filter.mStrLen())
+    {
+        filterStr = "*.";
+        filterStr += filter;
+        filterStr += (iBasicStringElement)0;
+        filterStr += (iBasicStringElement)0;
+    }
+
+    WCHAR fileBuf[MAX_PATH];
+    if (fileName.mStrLen() == 0)
+        fileBuf[0] = 0;
+    else
+    {
+        tString full(fileName);
+        if (filter.mStrLen())
+        {
+            full += ".";
+            full += filter;
+        }
+        full.mCopyWideStr(fileBuf, MAX_PATH);
+    }
+    return path;
 }
