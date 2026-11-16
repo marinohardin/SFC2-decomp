@@ -914,3 +914,16 @@ tString::iterator tString::end()
 	i.fString = s;
 	return i;
 }
+
+// FUNCTION: STARFLEETOP 0x00625f30
+int StrLen(const unsigned short *s)
+{
+	int n = 0;
+	if (s)
+		while (*s)
+		{
+			s++;
+			n++;
+		}
+	return n;
+}
