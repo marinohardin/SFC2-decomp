@@ -856,6 +856,8 @@ public:
 	// HYPOTHESIS: called directly with the index; its body is not written yet.
 	long fn_004876bf( long i );
 
+	virtual long vfunction1();
+
 	long m7c[3];
 };
 
@@ -880,4 +882,18 @@ tSupplyDockMisc::tSupplyDockMisc( long arg1, long arg2, long arg3, long mask, lo
 	m10.fn_004d2797( 0x11057, g_0084bbe4, 0 );
 	for( long i = 0; i < 3; i++ )
 		m7c[i] = fn_004876bf( i );
+}
+
+// The three misc item names, "CC_Marines" first, and their area names, "Misc_AREA_0" first.
+extern const char *g_0084bbe8[];
+extern const char *g_0084bbf4[];
+
+// FUNCTION: STARFLEETOP 0x004873a2
+long tSupplyDockMisc::vfunction1()
+{
+	long result = tSupplyDockItem::vfunction1();
+	for( long i = 0; i < 3; i++ )
+		fn_004d3278( (long) g_0084bbe8[i], (long) g_0084bbf4[i], result, m04, m0c, 800, 600 );
+	vfunction3();
+	return result;
 }
