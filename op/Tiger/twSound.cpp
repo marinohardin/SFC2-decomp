@@ -145,7 +145,6 @@ public:
 
 
 
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -171,6 +170,7 @@ public:
 	virtual	long	mDuplicateSoundChannel		( long channel );
 	virtual	long	mAddActiveSoundChannel		( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData );
 	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
+	virtual	unsigned char	mSet3DListener3DPosition	( tPoint3* position );
 	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
 	// (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
@@ -2347,5 +2347,28 @@ unsigned char	twSoundPart::mCreatePrimaryBuffer( void )
 	gNumBuffersCreated++;
 	if( fUnknown_0130->QueryInterface( IID_IDirectSound3DListener, (void**)&fUnknown_0134 ) != DS_OK )
 		return kFalse;
+	return kTrue;
+}
+
+// MATCH-ONLY: the #line directive sets the original's line number for its __LINE__ (2824), as for mDuplicateSoundChannel above.
+// FUNCTION: STARFLEETOP 0x00645d90
+unsigned char	twSoundPart::mSet3DListener3DPosition( tPoint3* position )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2824
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetPosition( position->x, position->y, position->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSet3DPosition( position );
+	mReleaseControl();
 	return kTrue;
 }
