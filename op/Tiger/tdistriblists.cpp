@@ -3,6 +3,7 @@
 
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tListMember.h"
+#include "Tiger/tSndMemMgr.h"
 
 // FUNCTION: STARFLEETOP 0x00626770
 tListMember *tDynamicMemoryFreeList::mGetPreviousListMember(tListMember *aMember)
@@ -195,4 +196,12 @@ void tDynamicMemoryFreeList::mDumpList()
 	vfunction21();
 	for (tListMember *member = field_0x4; member != 0; member = member->vfunction5())
 		member->vfunction8();
+}
+
+// FUNCTION: STARFLEETOP 0x00626bc0
+long tDynamicMemoryFreeListViaHandles::mGetPreviousListMemberHandle(tListMemberWithHandle *aMember)
+{
+	if (aMember == 0)
+		return -1;
+	return aMember->vfunc_0c();
 }

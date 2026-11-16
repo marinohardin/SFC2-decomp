@@ -15,7 +15,9 @@ public:
     virtual ~tListMemberWithHandle();
     virtual void mInitListMemberWithHandle();
     virtual void mRemoveFromList();
-    virtual void vfunc_0c();
+    // HYPOTHESIS: the previous member's handle; tDynamicMemoryFreeListViaHandles::
+    // mGetPreviousListMemberHandle (0x00626bc0) returns it through this slot.
+    virtual long vfunc_0c();
     virtual void vfunc_10();
     virtual void vfunc_14();
     virtual void vfunc_18();
