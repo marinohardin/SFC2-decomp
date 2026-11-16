@@ -94,3 +94,21 @@ const tString &tStrMgrCore::mGetRandStr( const char *group )
 {
 	return mGetRandStr( mGetStringIndex( group ) );
 }
+
+// FUNCTION: STARFLEETOP 0x00627490
+const tString &tStrMgrCore::mGetGrpStr( long group, long element )
+{
+	if ( group > 0 && group <= fn_00627180_vec.size() )
+	{
+		if ( element > mGetNumElements( group ) )
+		{
+			if ( fn_00627200_throwOnMiss )
+				throw (eStrManagerErr)1;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+			return gErrStr;
+		}
+		return mGetString( group + element );
+	}
+	if ( fn_00627200_throwOnMiss )
+		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+	return gErrStr;
+}
