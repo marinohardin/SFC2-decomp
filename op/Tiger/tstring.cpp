@@ -582,3 +582,32 @@ void tString::operator=(const iBasicStringElement* s)
 {
 	mIncorporateCharList(s);
 }
+
+// HYPOTHESIS: no out-of-line copy is known in the exe; the original inlines it into the
+// comparison operators below.
+inline int16 mCStrCompare(const tString &s1, const char* s2)
+{
+	const iBasicStringElement *p = s1.fInstanceControl.fMemSpace.begin();
+	const char *c = s2;
+	int16 r = 0;
+	int i = 0;
+	while (r == 0 && *c && i < s1.fInstanceControl.fDataCount)
+	{
+		r = *p++ - (unsigned char)*c++;
+		i++;
+	}
+	if (r == 0)
+	{
+		if (i == s1.fInstanceControl.fDataCount && *c)
+			r = -1;
+		else if (i < s1.fInstanceControl.fDataCount && !*c)
+			r = 1;
+	}
+	return r;
+}
+
+// FUNCTION: STARFLEETOP 0x00625190
+iTruth operator== (const tString &s1,const char *s2)
+{
+	return 0 == mCStrCompare(s1, s2);
+}

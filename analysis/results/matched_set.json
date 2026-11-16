@@ -6292,6 +6292,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00625190": {
+   "name": "operator==",
+   "symbol": "??8@YAEABVtString@@PBD@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
