@@ -218,6 +218,8 @@ public:
 	double fn_0045139e( long arg1 );
 	// HYPOTHESIS: looks a name up and writes a long through the pointer; its return is unused.
 	void fn_0045147a( const std::string &name, long *value );
+	// HYPOTHESIS: a lookup by name with an out value and a flag; fn_0048719b tests its result.
+	bool fn_004513d2( const std::string &name, long *value, long flag );
 };
 
 // FUNCTION: STARFLEETOP 0x00486462
@@ -826,4 +828,13 @@ void tSupplyDockFighters::vfunction7( long *msg )
 	}
 	vfunction3();
 	vfunction6();
+}
+
+// FUNCTION: STARFLEETOP 0x0048719b
+std::string tSupplyDockFighters::fn_0048719b( std::string name )
+{
+	long next;
+	if( ((fn_0045139e_object *) m78)->fn_004513d2( name, &next, 1 ) )
+		return name;
+	return "ShipNotFound!";
 }
