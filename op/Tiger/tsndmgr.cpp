@@ -2050,3 +2050,8 @@ void	DefaultSndMgrUpdatePositionFunction( unsigned long handle, long data )
 {
 	BindPart( tBasicSoundFileManager )->mUpdatePosition( handle );
 }
+// FUNCTION: STARFLEETOP 0x0066b1e0
+void	DefaultSndMgrFinishFunction( unsigned long handle, unsigned char how )
+{
+	BindPart( tBasicSoundFileManager )->mFinishSound( handle, how );
+}
