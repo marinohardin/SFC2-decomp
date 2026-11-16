@@ -576,3 +576,9 @@ tString& tString::operator+=(const char *s)
 {
 	return *this += tString(s);
 }
+
+// FUNCTION: STARFLEETOP 0x00625160
+void tString::operator=(const iBasicStringElement* s)
+{
+	mIncorporateCharList(s);
+}
