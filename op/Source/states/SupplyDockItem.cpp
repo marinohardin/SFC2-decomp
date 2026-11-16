@@ -847,3 +847,37 @@ std::string tSupplyDockFighters::fn_00487236( std::string name )
 		return name;
 	return "ShipNotFound!";
 }
+
+class tSupplyDockMisc : public tSupplyDockItem
+{
+public:
+	tSupplyDockMisc( long arg1, long arg2, long arg3, long mask, long arg5 );
+
+	// HYPOTHESIS: called directly with the index; its body is not written yet.
+	long fn_004876bf( long i );
+
+	long m7c[3];
+};
+
+// HYPOTHESIS: globals passed by value, like g_0084bb4c; their types are not known.
+extern void *g_0084bbd0;
+extern void *g_0084bbd4;
+extern void *g_0084bbd8;
+extern void *g_0084bbdc;
+extern void *g_0084bbe0;
+extern void *g_0084bbe4;
+
+// HYPOTHESIS: vtable 0x0079fd84.
+// FUNCTION: STARFLEETOP 0x004872d2
+tSupplyDockMisc::tSupplyDockMisc( long arg1, long arg2, long arg3, long mask, long arg5 )
+	: tSupplyDockItem( arg1, arg2, arg3, mask, arg5 )
+{
+	m10.fn_004d2797( 0x1104a, g_0084bbd0, 0 );
+	m10.fn_004d2797( 0x1104b, g_0084bbd4, 0 );
+	m10.fn_004d2797( 0x11050, g_0084bbd8, 0 );
+	m10.fn_004d2797( 0x11051, g_0084bbdc, 0 );
+	m10.fn_004d2797( 0x11056, g_0084bbe0, 0 );
+	m10.fn_004d2797( 0x11057, g_0084bbe4, 0 );
+	for( long i = 0; i < 3; i++ )
+		m7c[i] = fn_004876bf( i );
+}
