@@ -599,6 +599,7 @@ public:
 	tSupplyDockFighters( long arg1, long arg2, long arg3, long mask, long arg5 );
 
 	virtual long vfunction1();
+	virtual void vfunction2();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
@@ -654,4 +655,20 @@ long tSupplyDockFighters::vfunction1()
 void tSupplyDockFighters::vfunction20( long arg1, long arg2 )
 {
 	((fn_004479b4_object *) m74)->fn_004477c6( arg2, arg1, ((fn_004479b4_object *) m74)->fn_004477b1( arg2 ) );
+}
+
+// HYPOTHESIS: a free cdecl function of a name, the counterpart of fn_004d3306; other units pass
+// it a name string.
+void fn_004d3340( long arg1 );
+// The four fighter bay names, "CC_FighterBay1" first.
+extern const char *g_0084bbc0[];
+
+// FUNCTION: STARFLEETOP 0x00486d56
+void tSupplyDockFighters::vfunction2()
+{
+	for( int i = 3; i > -1; i-- )
+	{
+		fn_004d3340( (long) g_0084bbc0[i] );
+		fn_004d3306( (long) g_0084bbc0[i] );
+	}
 }
