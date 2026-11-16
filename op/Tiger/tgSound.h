@@ -533,7 +533,9 @@ public:
     virtual unsigned char mPauseChannel(long channel);
     virtual void mStopAndResetChannel();
     virtual unsigned char mStopAndClearChannel(long channel);
-    virtual void mPauseAllChannels(); virtual void mResumeAllChannels();
+    virtual void mPauseAllChannels();
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mResumeAllChannels();
     // The SDK library's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mPlayAllChannels();
     virtual void mStopAndResetAllChannels();
@@ -596,6 +598,7 @@ public:
     virtual void mDone();
     virtual unsigned char mRemoveSoundChannel(long channel);
     virtual unsigned char mRemoveAllSoundChannels();
+    virtual unsigned char mResumeAllChannels();
     virtual unsigned char mPlayAllChannels();
     virtual void mUpdate();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound

@@ -3461,3 +3461,24 @@ unsigned char tgSoundPart::mPlayAllChannels()
     mReleaseControl();
     return 1;
 }
+
+// HYPOTHESIS: channel slot 52 returns the channel's state; 8 is paused, so those channels play again.
+// FUNCTION: STARFLEETOP 0x00651370
+unsigned char tgSoundPart::mResumeAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4504
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0 && channel->vfunction52() == 8)
+                field_0x18[i]->mPlayChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
