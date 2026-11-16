@@ -16,6 +16,8 @@ public:
 	virtual	iTruth	mAddClass	( long theClass );
 	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
 
+	tAFPlayInfo &	operator=	( tAFPlayInfo &other );
+
 	// HYPOTHESIS: 0x4 is the alignment gap VC6 leaves after the vtable pointer for the doubles.
 	long			field_0x8;
 	char			field_0xc[0x20];
@@ -122,7 +124,7 @@ iTruth	tAFPlayInfo::mAddClass( long theClass )
 		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("We've hit the class limit!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("We've hit the class limit!"); }
 #line 254
 		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
-#line 126
+#line 128
 		return kFalse;
 	}
 	field_0xc4[field_0xd4] = theClass;
@@ -156,6 +158,31 @@ void	tAFPlayInfo::mInit( long a1, char *s1, char *s2, char *s3, long a5, long a6
 	field_0xa8 = d2;
 	field_0xb4 = u1;
 	field_0xb8 = u2;
+}
+
+// FUNCTION: STARFLEETOP 0x00663ae0
+tAFPlayInfo &	tAFPlayInfo::operator=( tAFPlayInfo &other )
+{
+	field_0x8 = other.field_0x8;
+	strcpy( field_0xc, other.field_0xc );
+	strcpy( field_0x2c, other.field_0x2c );
+	strcpy( field_0x4c, other.field_0x4c );
+	field_0x8c = other.field_0x8c;
+	field_0x90 = other.field_0x90;
+	field_0x94 = other.field_0x94;
+	field_0x98 = other.field_0x98;
+	field_0xc0 = other.field_0xc0;
+	field_0xc1 = other.field_0xc1;
+	field_0xd4 = other.field_0xd4;
+	for ( long i = 0; i < field_0xd4; i++ )
+		field_0xc4[i] = other.field_0xc4[i];
+	field_0xa0 = other.field_0xa0;
+	field_0xa8 = other.field_0xa8;
+	field_0xb0 = other.field_0xb0;
+	field_0xb4 = other.field_0xb4;
+	field_0xb8 = other.field_0xb8;
+	field_0xbc = other.field_0xbc;
+	return *this;
 }
 
 // HYPOTHESIS: declared only as far as the functions below need.
