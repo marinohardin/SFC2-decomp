@@ -518,3 +518,23 @@ tString& tString::operator+=(const tString &s)
 	}
 	return *this;
 }
+
+// FUNCTION: STARFLEETOP 0x00624df0
+tString& tString::operator+=(const iBasicStringElement &c)
+{
+	if (fInstanceControl.fDataCount + 1 < 50000)
+	{
+		if (fInstanceControl.fDataCount + 1 > fInstanceControl.fMemLimit)
+		{
+			int32 newCount = fInstanceControl.fDataCount + 1;
+			newCount += fn_ExpansionRoomInline(newCount);
+			fInstanceControl.fMemSpace.reserve(newCount);
+			fInstanceControl.fMemLimit = newCount;
+		}
+		fInstanceControl.fDataCount++;
+		if (mGetMemSize() != 0)
+			// HYPOTHESIS: the original's insert stays out of line (0x0071b990); here VC6 inlines it.
+			fInstanceControl.fMemSpace.push_back(c);
+	}
+	return *this;
+}
