@@ -7696,6 +7696,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00645e20": {
+   "name": "twSoundPart::mSet3DListenerOrientation",
+   "symbol": "?mSet3DListenerOrientation@twSoundPart@@UAEEPAUtPoint3@@0@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00646ce0": {
    "name": "AddSoundErrorDuringInterrupt",
    "symbol": "?AddSoundErrorDuringInterrupt@@YAXPBDZZ",

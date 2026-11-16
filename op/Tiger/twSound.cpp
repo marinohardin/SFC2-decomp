@@ -171,8 +171,8 @@ public:
 	virtual	long	mAddActiveSoundChannel		( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData );
 	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
 	virtual	unsigned char	mSet3DListener3DPosition	( tPoint3* position );
-	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
-	// (0x00798a3c, slots 141-160).
+	virtual	unsigned char	mSet3DListenerOrientation	( tPoint3* forward, tPoint3* up );
+	// twSoundPart's own virtuals (the SDK library's symbols), vtable order (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
 	virtual	long	mGetMaxFrequency			( void );
@@ -2369,6 +2369,29 @@ unsigned char	twSoundPart::mSet3DListener3DPosition( tPoint3* position )
 	fUnknown_0134->SetPosition( position->x, position->y, position->z, DS3D_IMMEDIATE );
 	t3DListenerProfile* profile = &field_0x68;
 	profile->mSet3DPosition( position );
+	mReleaseControl();
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00645e20
+unsigned char	twSoundPart::mSet3DListenerOrientation( tPoint3* forward, tPoint3* up )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2843
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetOrientation( forward->x, forward->y, forward->z, up->x, up->y, up->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSetForwardDirection( forward );
+	profile->mSetUpDirection( up );
 	mReleaseControl();
 	return kTrue;
 }
