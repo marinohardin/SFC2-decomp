@@ -342,7 +342,7 @@ address	size	symbol	source	modes
 0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	vc6
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
-0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	partial
+0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	vc6
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	vc6
 0x0048c34e	31	tFleetPanel::fn_0048c34e()	unsorted/tFleetPanel.cpp	vc6 guest

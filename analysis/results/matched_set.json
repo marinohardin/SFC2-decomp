@@ -3066,9 +3066,9 @@
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",
    "unit": "unsorted/tFleetPanel.cpp",
    "size": 755,
-   "score": 2.776,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0048c040": {
    "name": "tFleetPanel::scalar_deleting_destructor",

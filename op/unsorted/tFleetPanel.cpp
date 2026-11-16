@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "tEntity.h"
+#include "unsorted/tVisObject.h"
 
 
 #include "unsorted/tObject_0090be60.h"
@@ -103,7 +104,8 @@ public:
 	virtual void vfunction39();
 	virtual void vfunction40();
 	virtual void vfunction41();
-	virtual void vfunction42();
+	// HYPOTHESIS: the button's index, the panel's fleet form and the form's name (0x0048bd4d).
+	virtual void vfunction42(int i, tVisObject *pForm, const char *pszForm);
 	virtual void vfunction43();
 	// HYPOTHESIS: no arguments; called by 0x0048c418 on each button not yet done.
 	virtual void vfunction44();
@@ -112,7 +114,8 @@ public:
 	virtual void vfunction46(int n);
 	// HYPOTHESIS: one argument, passed through from 0x0048c36d.
 	virtual void vfunction47(int n);
-	virtual void vfunction48();
+	// HYPOTHESIS: the panel that owns the button (0x0048bd4d).
+	virtual void vfunction48(class tFleetPanel *pPanel);
 	// HYPOTHESIS: no arguments; called on each fleet button by 0x0048c34e.
 	virtual void vfunction49();
 	// HYPOTHESIS: a float and two further arguments, passed through from 0x0048c3e7.
@@ -120,6 +123,8 @@ public:
 
 	// HYPOTHESIS: a truth value; 0x0048c418 skips slot 44 for a button where it is true.
 	bool fn_004c3a2c();
+	// HYPOTHESIS: one argument, passed as 0 by 0x0048bd4d.
+	void fn_004c3581(int n);
 
 	char m_pad04[0x30];
 	short m_s34;
@@ -172,9 +177,27 @@ public:
 };
 extern c_0096908c *g_0096908c;
 extern c_0096908c *g_00969088;
-// HYPOTHESIS: flags for the names at +0x58 and +0x98, set while each is in use.
-extern int g_00916f4c;
-extern int g_00916f50;
+// HYPOTHESIS: the fleet and form layouts loaded under the names at +0x58 and +0x98; the
+// constructor loads each once, the destructor releases it.
+extern tVisObject *g_00916f4c;
+extern tVisObject *g_00916f50;
+// HYPOTHESIS: the parent the six fleet buttons are made under.
+extern tVisObject *g_00916f48;
+// HYPOTHESIS: cdecl; makes the object named by the first argument from the template named by
+// the second, under a parent, as 0x0048bd4d calls it, and returns it or 0.
+tVisObject *fn_004d3232(const char *pszName, const char *pszTemplate, tVisObject *pParent,
+	const char *pszParentName, int n);
+// HYPOTHESIS: cdecl, no arguments; the screen-size suffix of the layout names ("800x600").
+const char *fn_0046abf2();
+// HYPOTHESIS: cdecl, two strings and a count, as called by 0x0048bd4d.
+void fn_004d357b(const char *psz1, const char *psz2, int n);
+extern "C" char *strcpy(char *, const char *);
+// The buttons are fleet entries, the target of the constructor's cast (type descriptor
+// 0x0084cc20); the panel keeps them through the button interface it calls.
+#include "unsorted/tFleetEntry.h"
+
+
+
 
 #include "unsorted/tArea3Panel.h"
 
@@ -201,9 +224,70 @@ tFleetPanel::tFleetPanel(tObject_0048bd57_arg *pCharacter)
 		m_n14 = pCharacter->m_1f0.m_n08;
 		m_n18 = pCharacter->m_1f0.m_n0c;
 	}
-	// HYPOTHESIS: the rest of the construction (resource loading through the
-	// globals at 0x916f48..0x916f50, the six button images, the 0x84c5e0 string
-	// table loop, the final screen setup) is not yet recovered.
+
+	if (!g_00916f4c) {
+		sprintf(m_sz58, "fleet%s", fn_0046abf2());
+		g_00916f4c = fn_004d3232(m_sz58, 0, 0, 0, 0);
+		if (!g_00916f4c) {
+			strcpy(m_sz58, "fleet800x600");
+			g_00916f4c = fn_004d3232(m_sz58, 0, 0, 0, 0);
+		}
+	}
+	if (!g_00916f50) {
+		if (!m_pD8)
+			m_pD8 = new tObject_0048ba83;
+		sprintf(m_sz98, "form%s", fn_0046abf2());
+		g_00916f50 = fn_004d3232(m_sz98, 0, 0, 0, 0);
+		if (!g_00916f50) {
+			strcpy(m_sz98, "form800x600");
+			g_00916f50 = fn_004d3232(m_sz98, 0, 0, 0, 0);
+		}
+	}
+
+	m_p4c = (tObject_0048c1b5_wnd *)fn_004d3232("FCtrl_FormBG", "FCtrl_FormBG", g_00916f50, m_sz98, 0);
+	fn_004d3340("FCtrl_FormBG");
+	int i;
+	for (i = 0; i < 6; i++) {
+		char buf[64];
+		sprintf(buf, "FCtrl_Form%d", i + 1);
+		m_apLabel[i] = (tObject_0048c1b5_wnd *)fn_004d3232(buf, buf, g_00916f50, m_sz98, 0);
+		fn_004d3340(buf);
+	}
+
+	m_n54 = -1;
+	m_n08 = 8;
+	m_psz04 = "A3_FLEET";
+	for (i = 0; i < 6; i++) {
+		m_apButton[i] = (tObject_0048c1b5_wnd *)dynamic_cast<tFleetEntry *>(
+			fn_004d3232(g_apsz0084c5e0[i], "A3_TEMPLATE", g_00916f48, 0, 0));
+		if (m_apButton[i]) {
+			m_apButton[i]->fn_004c3581(0);
+			m_apButton[i]->vfunction48(this);
+			m_apButton[i]->vfunction42(i, g_00916f4c, m_sz58);
+		}
+		fn_004d3340(g_apsz0084c5e0[i]);
+	}
+
+	tObject_0042496f *pFleet = (tObject_0042496f *)gObject_008e1060.fn_0042496f(gObject_008e1060.fn_00525081());
+	if (pFleet) {
+		std::vector<int> *pList = gObject_0090be60->fn_00426f1a(pFleet->field_0x60);
+		fn_0048c52c(pList, pList);
+		m_n54 = pFleet->vfunction12();
+	}
+
+	fn_004d357b("A3_FLEET", "FleetGroup", 6);
+	if (g_00916f4c) {
+		tVisObject *pOwner = g_00916f4c->field_0C;
+		while (g_00916f4c->field_08)
+			pOwner->fn_0067d870(g_00916f4c, g_00916f4c->field_08);
+		g_00916f4c->field_44 = 3000;
+	}
+
+	vfunction2();
+	int w = fn_0046abb9();
+	fn_0046abc5();
+	g_0096908c->vfunction9(240, 70, w - 50, 300);
+	g_0096908c->vfunction10(25.0f);
 }
 
 // FUNCTION: STARFLEETOP 0x0048c05c
