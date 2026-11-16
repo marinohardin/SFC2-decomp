@@ -9838,6 +9838,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00666e90": {
+   "name": "tBasicSoundFileManager::mAreWeARecordingChannel",
+   "symbol": "?mAreWeARecordingChannel@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
