@@ -87,3 +87,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0062efe0	WinParseVolume	5.21	2	sonnet	2026-11-16T16:42:25Z	attempt 2 (sonnet) did not raise the best; best 5.21%
 0x0062f920	twFileSystemPart::mDuplicatePath	28.47	2	sonnet	2026-11-16T16:44:51Z	attempt 2 (sonnet) did not raise the best; best 28.47%
 0x0062fab0	twFileSystemPart::mFileOpenDialog	2.01	2	sonnet	2026-11-16T16:52:10Z	best not above 90% after 2 attempts; best 2.01%
+0x00630530	twFileSystemPart::mFileSaveDialog	0.00	2	sonnet	2026-11-16T17:06:07Z	attempt 2 (sonnet) did not raise the best; best 0.00%
