@@ -90,7 +90,7 @@ double tSupplyDockItem::vfunction11()
 {
 	return 0.0;
 }
-
+#include <string>
 class fn_00447ce4_object;
 
 // HYPOTHESIS: the object the base keeps at +0x74 ("mask"); only 0x004479b4 is called on it.
@@ -101,6 +101,9 @@ public:
 	void fn_00447926( long arg1, long arg2 );
 	long fn_00447a54( long arg1 );
 	fn_00447ce4_object *fn_00447ce4();
+	long fn_004477f8( long arg1 );
+	long fn_0044780d( long arg1 );
+	std::string fn_00447822( long arg1 );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -583,4 +586,46 @@ void tSupplyDockMissiles::fn_00486b8a( bool up )
 		vfunction14( m7c->m14 );
 	}
 	vfunction3();
+}
+
+// HYPOTHESIS: vtable 0x0079fd30; four slots of two longs each from the constructor's loop.
+// vfunction17 is called directly from the constructor, so its slot is not confirmed; it takes
+// the string 0x00447822 returns and its result is multiplied on the FPU stack.
+class tSupplyDockFighters : public tSupplyDockItem
+{
+public:
+	tSupplyDockFighters( long arg1, long arg2, long arg3, long mask, long arg5 );
+
+	virtual long vfunction9();
+	virtual long vfunction10();
+	virtual long vfunction12();
+	virtual double vfunction17( const std::string &name );
+
+	long m7c[4];
+	long m8c[4];
+};
+
+// HYPOTHESIS: four arrays of four globals passed by value, like g_0084bb4c; their types are not
+// known.
+extern void *g_0084bb80[4];
+extern void *g_0084bb90[4];
+extern void *g_0084bba0[4];
+extern void *g_0084bbb0[4];
+
+// FUNCTION: STARFLEETOP 0x00486bf2
+tSupplyDockFighters::tSupplyDockFighters( long arg1, long arg2, long arg3, long mask, long arg5 )
+	: tSupplyDockItem( arg1, arg2, arg3, mask, arg5 )
+{
+	for( long i = 0; i < 4; i++ )
+	{
+		m7c[i] = ((fn_004479b4_object *) m74)->fn_004477f8( i );
+		m8c[i] = vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) * m7c[i];
+		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+		{
+			m10.fn_004d2797( 0x11027 + i, g_0084bb80[i], 0 );
+			m10.fn_004d2797( 0x1102b + i, g_0084bb90[i], 0 );
+			m10.fn_004d2797( 0x1102f + i, g_0084bba0[i], 0 );
+			m10.fn_004d2797( 0x11033 + i, g_0084bbb0[i], 0 );
+		}
+	}
 }
