@@ -2045,3 +2045,8 @@ void	tBasicSoundFileManager::mDeactivate( void )
 		field_0x10 = 0;
 	}
 }
+// FUNCTION: STARFLEETOP 0x0066b150
+void	DefaultSndMgrUpdatePositionFunction( unsigned long handle, long data )
+{
+	BindPart( tBasicSoundFileManager )->mUpdatePosition( handle );
+}
