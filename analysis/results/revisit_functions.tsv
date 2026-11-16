@@ -52,3 +52,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0062e1c0	twFileSystemPart::mGetVolIterator	0.63	2	sonnet	2026-11-11T12:40:55Z	best not above 90% after 2 attempts; best 0.63%
 0x00623100	tString::`scalar_deleting_destructor'	0.00	2	sonnet	2026-11-16T10:44:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00623120	tString::tString	56.07	2	sonnet	2026-11-16T10:50:33Z	best not above 90% after 2 attempts; best 56.07%
+0x006232f0	tString::tString	89.78	2	sonnet	2026-11-16T10:55:53Z	attempt 2 (sonnet) did not raise the best; best 89.78%
