@@ -6517,6 +6517,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006267e0": {
+   "name": "tDynamicMemoryFreeList::mGetNextCircularListMember",
+   "symbol": "?mGetNextCircularListMember@tDynamicMemoryFreeList@@UAEPAVtListMember@@PAV2@@Z",
+   "unit": "Tiger/tdistriblists.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

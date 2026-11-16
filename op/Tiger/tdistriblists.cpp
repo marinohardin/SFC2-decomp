@@ -30,3 +30,15 @@ tListMember *tDynamicMemoryFreeList::mGetPreviousCircularListMember(tListMember 
 		previous = vfunction4();
 	return previous;
 }
+
+// FUNCTION: STARFLEETOP 0x006267e0
+tListMember *tDynamicMemoryFreeList::mGetNextCircularListMember(tListMember *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	tListMember *next = aMember->vfunction5();
+	if (next == 0)
+		// HYPOTHESIS: vfunction3 returns the first member as a tListMember.
+		next = (tListMember *)vfunction3();
+	return next;
+}
