@@ -6922,6 +6922,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00627a30": {
+   "name": "tStrMgrCore::mLoadStringFile",
+   "symbol": "?mLoadStringFile@tStrMgrCore@@UAEEPBD_N@Z",
+   "unit": "Tiger/tStrMgrCore.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

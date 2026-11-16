@@ -301,3 +301,17 @@ unsigned char tStrMgrCore::mLoadStringFile( tBasicFile &file, bool swap )
 
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00627a30
+unsigned char tStrMgrCore::mLoadStringFile( const char *name, bool swap )
+{
+	unsigned char result = false;
+	tBasicFile *file = tBasicFile::mNewBasicFile();
+	if ( file )
+	{
+		if ( file->mOpenForRead( name ) )
+			result = mLoadStringFile( *file, swap );
+		delete file;
+	}
+	return result;
+}

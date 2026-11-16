@@ -36,6 +36,9 @@ public:
 	// HYPOTHESIS: the static that releases the basic file layer; the analysis matches
 	// 0x00627130 to the SDK library's tBasicFile::mDone.
 	static void				mDone( void );
+
+	// Name from the SDK library symbol matched to 0x00627140.
+	static tBasicFile		*mNewBasicFile( void );
 };
 
 #endif	// tbasicfile_h
