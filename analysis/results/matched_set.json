@@ -6243,8 +6243,8 @@
    "symbol": "??YtString@@QAEAAV0@ABG@Z",
    "unit": "Tiger/tstring.cpp",
    "size": 304,
-   "score": 37.236,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x006289b0": {

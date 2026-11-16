@@ -534,7 +534,13 @@ tString& tString::operator+=(const iBasicStringElement &c)
 		fInstanceControl.fDataCount++;
 		if (mGetMemSize() != 0)
 			// HYPOTHESIS: the original's insert stays out of line (0x0071b990); here VC6 inlines it.
-			fInstanceControl.fMemSpace.push_back(c);
+		{
+			// MATCH-ONLY: keeps vector::insert out of line, as the original calls it
+			typedef std::vector<iBasicStringElement> tVec;
+			void (tVec::*pInsert)(tVec::iterator, tVec::size_type, const iBasicStringElement &) = &tVec::insert;
+			tVec &v = fInstanceControl.fMemSpace;
+			(v.*pInsert)(v.end(), 1, c);
+		}
 	}
 	return *this;
 }
