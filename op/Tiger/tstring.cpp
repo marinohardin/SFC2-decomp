@@ -673,7 +673,11 @@ tString::iterator tString::iterator::operator-(int32 n)
 {
 	if (!fString)
 		throw "Access to uninitialized iterator";
-	if (fIndex - n < 0 || fIndex - n > fString->fInstanceControl.fDataCount)
+	int32 index = fIndex - n;
+	if (index < 0 || index > fString->fInstanceControl.fDataCount)
 		throw "Access past bounds of tString";
-	return iterator(fIndex - n, fString);
+	iterator r;
+	r.fIndex = index;
+	r.fString = fString;
+	return r;
 }
