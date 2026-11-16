@@ -358,7 +358,8 @@ public:
 	long					field_0x74c[0x100];
 	long					field_0xb4c[0x100];
 	char					fUnknown_0f4c[0x1400];
-	long					field_0x234c;
+	// HYPOTHESIS: unsigned, by the unsigned bound check in mNewTrackingNumber; the next slot to try.
+	unsigned long			field_0x234c;
 	short					field_0x2350[0x100];
 	// HYPOTHESIS: the sound test's state, by mUpdateTest: the sound number, its handle, its play
 	// time in milliseconds, the last number, and the times to stop it and to play the next.
@@ -468,4 +469,32 @@ void	tBasicSoundFileManager::mClearTrackingNumber( unsigned long handle )
 		if ( field_0x2350[index] == 0 )
 			field_0x2350[index] = 1;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00664910
+unsigned long	tBasicSoundFileManager::mNewTrackingNumber( long info )
+{
+	if ( field_0x234c >= 0x100 )
+		field_0x234c = 0;
+	unsigned long	start = field_0x234c;
+	while ( 1 )
+	{
+		if ( field_0xb4c[field_0x234c] == -1 )
+		{
+			field_0xb4c[field_0x234c] = info;
+			field_0x2350[field_0x234c]++;
+			if ( field_0x2350[field_0x234c] == 0 )
+				field_0x2350[field_0x234c] = 1;
+			return ( (unsigned short)field_0x2350[field_0x234c] << 16 ) + field_0x234c++;
+		}
+		field_0x234c++;
+		if ( field_0x234c >= 0x100 )
+			field_0x234c = 0;
+		if ( field_0x234c == start )
+			break;
+	}
+	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("we've run out of tracking numbers!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("we've run out of tracking numbers!"); }
+#line 906
+	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+	return 0;
 }
