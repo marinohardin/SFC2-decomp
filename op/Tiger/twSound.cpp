@@ -346,7 +346,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -357,6 +356,7 @@ public:
 	virtual	unsigned char	mSetFrequency	( long );
 	virtual	unsigned char	mSetPan	( long );
 	virtual	unsigned char	mSetVolume	( long );
+	virtual	unsigned char	mStopAndClearChannel	( void );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -896,7 +896,7 @@ unsigned char twStandardSoundChannel::mDoActiveUpdate( double time )
 			if( ( status & ( DSBSTATUS_PLAYING | DSBSTATUS_LOOPING ) ) == 0 )
 			{
 				// HYPOTHESIS: slot 104 of the channel; its name is not known.
-				vfunction104();
+				mStopAndResetChannel();
 				gUpdateBuffers = kFalse;
 				return kTrue;
 			}
@@ -939,7 +939,7 @@ unsigned char twStandardSoundChannel::mDoActiveUpdate( double time )
 	tSoundSelection* block = field_0x174( field_0x178, played );
 	if( block == NULL )
 	{
-		vfunction104();
+		mStopAndResetChannel();
 		gUpdateBuffers = kFalse;
 		return kTrue;
 	}
@@ -1014,7 +1014,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 		fSoundBuffer->GetStatus( &status );
 		if( ( status & ( DSBSTATUS_PLAYING | DSBSTATUS_LOOPING ) ) == 0 )
 		{
-			vfunction104();
+			mStopAndResetChannel();
 			gUpdateBuffers = kFalse;
 			return kTrue;
 		}
@@ -1095,9 +1095,9 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 		if( field_0x28 == 0x20 && field_0x168 == field_0x10.vfunction3() )
 		{
 			if( mDoWeRetainSelections() == kTrue )
-				vfunction104();
+				mStopAndResetChannel();
 			else
-				vfunction103();
+				mStopAndClearChannel();
 			if( mLockHardwareForSilence() == kTrue )
 			{
 				mWriteSilence();
@@ -1111,7 +1111,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 	if( mDoWeRetainSelections() == kTrue && mAreWeStreaming() == kTrue && amountLeftToRead == 0
 		&& field_0x168 == mGetBufferLength() && ( field_0x28 == 0x20 || field_0x28 == 0x10 ) )
 	{
-		vfunction104();
+		mStopAndResetChannel();
 		gUpdateBuffers = kFalse;
 		return kTrue;
 	}
@@ -1830,6 +1830,44 @@ unsigned char twStandardSoundChannel::mSetVolume( long volume )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction6( volume );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x006447c0
+unsigned char twStandardSoundChannel::mStopAndClearChannel( void )
+{
+	if( field_0x28 == 0x20 )
+	{
+		if( fSoundBuffer == NULL )
+			return kFalse;
+		DWORD status = 0;
+		if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+			return kFalse;
+		if( status == 0 )
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kFalse );
+		}
+		else
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kTrue );
+		}
+		field_0x28 = 4;
+	}
+	else if( field_0x28 == 8 )
+	{
+		mAddFinishCommand( kTrue );
+		field_0x28 = 4;
+	}
+	else if( field_0x28 == 0x10 )
+	{
+		mAddFinishCommand( kFalse );
+		field_0x28 = 4;
+	}
+	mSetUpdateMode( (eSoundChannelUpdateMode)3 );
 	return kTrue;
 }
 

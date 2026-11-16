@@ -1290,7 +1290,7 @@ void tSoundChannel::mDone()
         return;
     }
     mSetUpdateMode((eSoundChannelUpdateMode)4);
-    vfunction103();
+    mStopAndClearChannel();
     mClearAll();
     if (field_0xfc == 4)
         atgSoundPart->vfunction123(field_0c);
@@ -2325,9 +2325,9 @@ iTruth tSoundChannel::mUpdateRegular(double time)
         {
             mSetVolume(fFadeVolume);
             if (field_0x118 == 2)
-                vfunction104();
+                mStopAndResetChannel();
             else if (field_0x118 == 3)
-                vfunction103();
+                mStopAndClearChannel();
             field_0x118 = 0;
         }
         else
@@ -2345,9 +2345,9 @@ iTruth tSoundChannel::mUpdateRegular(double time)
             if (newVolume == fFadeVolume)
             {
                 if (field_0x118 == 2)
-                    vfunction104();
+                    mStopAndResetChannel();
                 else if (field_0x118 == 3)
-                    vfunction103();
+                    mStopAndClearChannel();
                 field_0x118 = 0;
             }
         }
@@ -2575,10 +2575,10 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         vfunction98();
         return kTrue;
     case 3:
-        vfunction104();
+        mStopAndResetChannel();
         return kTrue;
     case 4:
-        vfunction103();
+        mStopAndClearChannel();
         return kTrue;
     case 5:
         field_0x98 = command->vfunction18() * field_0x94;

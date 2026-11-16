@@ -418,7 +418,9 @@ public:
     virtual unsigned char mSetFrequency(long frequency) = 0;
     virtual unsigned char mSetPan(long pan) = 0;
     virtual unsigned char mSetVolume(long volume) = 0;
-    virtual void vfunction103(); virtual void vfunction104() = 0;
+    // Slots 103 and 104: mFadeToStopAndClearNow's fade (state 3) ends in 103, the stop-and-reset fade (state 2) in 104.
+    virtual unsigned char mStopAndClearChannel();
+    virtual unsigned char mStopAndResetChannel() = 0;
     virtual iTruth mSetChannelPriority(long priority);
     virtual void vfunction106(tPoint3* position) = 0;
     virtual void vfunction107(tPoint3* orientation) = 0;
