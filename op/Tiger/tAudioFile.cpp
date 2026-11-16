@@ -56,6 +56,7 @@ public:
     virtual void vfn_8c();
     virtual void vfn_90();
     virtual unsigned char vfn_94(long param_1, long param_2);
+    virtual long vfn_98(); // HYPOTHESIS: returns the file's sample count
 };
 
 template <class T>
@@ -158,5 +159,14 @@ unsigned char tAudioFileInfoPart::vfn_48(long param_1, long param_2, long param_
     tBasicAudioFile *file = mGetBasicAudioFile(param_1);
     if (file)
         return file->vfn_94(param_2, param_3);
+    return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00657d20
+long tAudioFileInfoPart::mGetNumberOfSamples(unsigned long param_1)
+{
+    tBasicAudioFile *file = mGetBasicAudioFile(param_1);
+    if (file)
+        return file->vfn_98();
     return 0;
 }
