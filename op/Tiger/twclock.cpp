@@ -30,6 +30,7 @@ class	twClock : public tClockPart
 		virtual		double	mGetMicroseconds	( void );
 		virtual		void	mSetTimer	( long, long, tTimerResponse *, long );
 		virtual		void	mSetTimer	( long, long, tTimerResponse * );
+		virtual		void	mForgetTimer	( tTimerResponse * );
 
 		iTruth			fHasPerformanceCounter;
 		int32u			fUnknown_10;
@@ -136,4 +137,23 @@ void	twClock::mSetTimer( long param_1, long param_2, tTimerResponse *param_3 )
 	}
 	else
 		throw TimerException();
+}
+
+// FUNCTION: STARFLEETOP 0x00637b20
+void	twClock::mForgetTimer( tTimerResponse *param_1 )
+{
+	unsigned long	timerID = param_1->mGetIdentity();
+
+	// The slot is read before the bound is tested, so slot 100 is read past the end.
+	int32u	idx = 0;
+	while (fResponseList[idx].fUnknown_04 != timerID && idx < kClockResponderMax)
+		idx++;
+
+	if (idx < kClockResponderMax)
+	{
+		fNumberOfRunningTimers--;
+		if (timeKillEvent( timerID ) != TIMERR_NOERROR || fNumberOfRunningTimers < 0)
+			throw TimerException();
+		fResponseList[idx].fUnknown_04 = 0;
+	}
 }

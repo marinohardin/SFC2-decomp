@@ -7354,6 +7354,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00637b20": {
+   "name": "twClock::mForgetTimer",
+   "symbol": "?mForgetTimer@twClock@@UAEXPAVtTimerResponse@@@Z",
+   "unit": "Tiger/twclock.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
