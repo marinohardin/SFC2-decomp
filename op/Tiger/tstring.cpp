@@ -281,3 +281,25 @@ iTruth tString::mIncorporateCharList(const iBasicStringElement *s, int32 lengthT
 	}
 	return kFalse;
 }
+
+// FUNCTION: STARFLEETOP 0x00623a10
+iTruth tString::mIncorporateCharList(const char *s, int32 lengthToCopy)
+{
+	if (s != NULL && lengthToCopy < 50000)
+	{
+		fInstanceControl.fMemSpace.erase(fInstanceControl.fMemSpace.begin(), fInstanceControl.fMemSpace.end());
+		if (fInstanceControl.fMemLimit < lengthToCopy)
+		{
+			int32 newSize = lengthToCopy + fn_ExpansionRoomInline(lengthToCopy);
+			fInstanceControl.fMemSpace.reserve(newSize);
+			fInstanceControl.fMemLimit = newSize;
+		}
+		fInstanceControl.fDataCount = lengthToCopy;
+		for (int32 i = 0; i < lengthToCopy; i++)
+		{
+			fInstanceControl.fMemSpace.push_back((unsigned char)*s);
+			s++;
+		}
+	}
+	return kFalse;
+}
