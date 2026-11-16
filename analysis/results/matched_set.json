@@ -5964,8 +5964,8 @@
    "symbol": "?mNext@tPathIterator@@QAE?AVtPath@@V2@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 352,
-   "score": 97.524,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x006289b0": {

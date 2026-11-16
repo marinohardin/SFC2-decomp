@@ -509,7 +509,7 @@ public:
 		tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	&values = fValues;	tMap::iterator it = values.fMaps[cookie.fCookie & 0xff].find( cookie );
 		if ( it.fNode == values.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
 			throw "Use of invalid cookie to resolve an item";
-		return values.mResolve( cookie )[cookie];
+		tMap	&map = values.mResolve( cookie );	return map[cookie];
 	}
 
 	int32u											f_00;
@@ -1084,8 +1084,8 @@ tPath tPathIterator::mFirst( void )
 	return parent.mFirst();
 }
 
-// As in tPathIterator::mAdd, the original resolves with fn_0061f910_mResolve's form; building with
-// it makes the comparison time out, so this one uses the resolve of tDirIterator::mNext for now.
+// The original resolves with fn_0061f910_mResolve's form, as tPathIterator::mAdd does; the map
+// reference local there orders the resolve before operator[]'s argument push.
 // FUNCTION: STARFLEETOP 0x0061fb60
 tPath tPathIterator::mNext( tPath path )
 {
