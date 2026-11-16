@@ -12,6 +12,7 @@ public:
 };
 
 tPath WinParsePath(tSession session, tString &path);
+tDir WinParseDir(tSession session, tString &path);
 
 // Claimed and scored as partial: the original body (about 1.5 KB) walks drive letters 'A' to
 // 'Z' with GetVolumeInformation-style calls and builds the iterator from tString and tVolume
@@ -75,4 +76,15 @@ tPath twFileSystemPart::mGetAppPath(tSession session)
 
     path = WinParsePath(session, cmdLine);
     return path;
+}
+
+// FUNCTION: STARFLEETOP 0x0062ed40
+tPath WinParsePath(tSession session, tString &path)
+{
+    tDir dir = WinParseDir(session, path);
+    tPath file = dir.mGetNamedFile(path);
+
+    if (!file.mValid())
+        throw "Yow! WinParsePath failed to find the file!";
+    return file;
 }

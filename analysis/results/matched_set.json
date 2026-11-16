@@ -7867,6 +7867,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0062ed40": {
+   "name": "WinParsePath",
+   "symbol": "?WinParsePath@@YA?AVtPath@@VtSession@@AAVtString@@@Z",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
