@@ -93,7 +93,7 @@ public:
 	tDir( int ) { fSession = tSession(); }
 	// HYPOTHESIS: the copy assigns the session in its body, as the argument copy in
 	// tFSSession::mFileOpenDialog stores the session cookie after the tDir vtable pointer.
-	tDir( const tDir &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
+	tDir( const tDir &other );
 
 	virtual iTruth	mValid( void );
 
@@ -107,6 +107,11 @@ public:
 	tPath	mGetNamedFile( tString &name );
 	iTruth	mDelete( void );
 };
+
+// HYPOTHESIS: inline, as most callers expand it; the exe's out-of-line copy comes from a caller
+// that does not (twDir::mGetDirIterator, STARFLEETOP 0x00632040), not yet recovered.
+// FUNCTION: STARFLEETOP 0x00633e80
+inline tDir::tDir( const tDir &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
 
 // HYPOTHESIS: a path cookie with its session like tDir, 16 bytes as tFileSession::mDuplicatePath's
 // argument copy shows; twFileSystemPart::mGetAppPath (STARFLEETOP 0x0062e9f0) stores the invalid
