@@ -8389,6 +8389,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00634940": {
+   "name": "twIORequestQueueManager::~twIORequestQueueManager",
+   "symbol": "??1twIORequestQueueManager@@QAE@XZ",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 528,
+   "score": 19.874,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

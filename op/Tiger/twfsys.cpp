@@ -579,10 +579,10 @@ twIORequestQueue::twIORequestQueue(twQueueName name)
     char mutexName[MAX_PATH];
     char *buffer = mutexName;
     if (buffer)
-        name.mCopyCharStr(buffer, MAX_PATH);
+        name.f_00.mCopyCharStr(buffer, MAX_PATH);
     else
-        name.mCopyCharStr(g_00c3caec, MAX_PATH);
-    clib::strcpy(mutexName + name.mStrLen(), "Mtx");
+        name.f_00.mCopyCharStr(g_00c3caec, MAX_PATH);
+    clib::strcpy(mutexName + name.f_00.mStrLen(), "Mtx");
     f_18 = CreateMutexA(NULL, FALSE, mutexName);
     if (!f_18)
         throw "Error creating mutex";
@@ -590,8 +590,8 @@ twIORequestQueue::twIORequestQueue(twQueueName name)
     f_14 = 0;
     ReleaseMutex(f_18);
 
-    name.mCopyCharStr(g_00c3caec, MAX_PATH);
-    f_04 = CreateSemaphoreA(NULL, 1, 2, g_00c3caec);
+    name.f_00.mCopyCharStr(g_00c3caec, MAX_PATH);
+    f_04 =CreateSemaphoreA(NULL, 1, 2, g_00c3caec);
     if (!f_04)
         throw "Error creating semaphore";
 
@@ -658,4 +658,26 @@ void twIORequestQueue::mAdd(twIORequest request)
     }
     f_08.push(request);
     ReleaseMutex(f_18);
+}
+
+// The exe's map is not the toolchain's <map>: it keeps a nil node per map (0x14 bytes, freed by
+// the inlined map destructor without a lock) and calls equal_range out of line.
+// HYPOTHESIS: the queue's stop sequence below may be an inline member of twIORequestQueue; the
+// exe gives it no name.
+// FUNCTION: STARFLEETOP 0x00634940
+twIORequestQueueManager::~twIORequestQueueManager()
+{
+    while (f_00.f_04)
+    {
+        twQueueName name(f_00.f_04->fItem->f_00);
+        twIORequestQueue *queue = f_0c[name];
+        WaitForSingleObject(queue->f_18, INFINITE);
+        queue->f_14 = -1;
+        ReleaseMutex(queue->f_18);
+        if (!ReleaseSemaphore(queue->f_04, 1, NULL))
+            throw;
+        WaitForSingleObject(queue->f_04, INFINITE);
+        f_0c.erase(name);
+        f_00.pop();
+    }
 }

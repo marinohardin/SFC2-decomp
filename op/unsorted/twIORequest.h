@@ -10,6 +10,7 @@
 #include "Tiger/tgfsys.h"
 #include "Tiger/tstring.h"
 #include "unsorted/tQueue.h"
+#include <map>
 
 // HYPOTHESIS: the enumerators are not recovered; twPath::mRead (STARFLEETOP 0x006339a0) passes 0
 // and twPath::mWrite (STARFLEETOP 0x00633bf0) passes 1.
@@ -42,12 +43,27 @@ public:
 
 // HYPOTHESIS: a string naming a request queue; the exe names the class and its copy constructor
 // (STARFLEETOP 0x00635310), and twIORequestQueue::twIORequestQueue copies it into its buffers
-// and destroys it as a tString.
-class twQueueName: public tString
+// and destroys it as a tString. It holds the string rather than deriving from it: the exe has no
+// vtable or type descriptor of its own for it, and twIORequestQueueManager's destructor constructs
+// and destroys one as a bare tString.
+class twQueueName
 {
 public:
+	// HYPOTHESIS: an inline constructor from a string that assigns in its body, and a destructor
+	// of its own: twIORequestQueueManager's destructor builds a name this way and its unwind table
+	// tracks the string and the whole name as two states.
+	twQueueName( const tString &name ) { f_00 = name; }
 	twQueueName( const twQueueName &other );
+	~twQueueName() {}
+
+	tString	f_00;
 };
+
+// HYPOTHESIS: the map of queues orders the names as strings.
+inline bool operator<( const twQueueName &a, const twQueueName &b )
+{
+	return a.f_00 < b.f_00;
+}
 
 // HYPOTHESIS: the layout is read from AsynchIOMain and the constructor: the thread at +0, the
 // semaphore the thread waits on at +4, the queue of requests at +8 (the exe's tQueue<twIORequest>
@@ -83,7 +99,14 @@ inline bool twIORequestQueue::fn_00633fe0_IsEmpty( void )
 class twIORequestQueueManager
 {
 public:
+	~twIORequestQueueManager();
+
 	void	mRequest( twIORequest request );
+
+	// HYPOTHESIS: the names of the open queues at +0 and the queue of each name at +0xc, as the
+	// destructor reads them; the exe names both instantiations, not the members.
+	tQueue<twQueueName>	f_00;
+	std::map<twQueueName, twIORequestQueue *>	f_0c;
 };
 
 #endif
