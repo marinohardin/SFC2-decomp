@@ -1834,3 +1834,40 @@ int32u twPath::mGetSize( void )
 	return size;
 }
 
+// FUNCTION: STARFLEETOP 0x00633550
+iTruth twPath::mCreate( void )
+{
+	iTruth	created = false;
+
+	if ( !mExist() )
+	{
+		if ( f_a8 < 3 )
+		{
+			if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+			{
+				if ( f_a4 != INVALID_HANDLE_VALUE )
+					CloseHandle( f_a4 );
+				f_a4 = INVALID_HANDLE_VALUE;
+				f_a8 = 0;
+			}
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				CloseHandle( file );
+				path->mCopyCharStr( g_00c3caec, MAX_PATH );
+				file = CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 3;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		created = f_a4 != INVALID_HANDLE_VALUE;
+	}
+	return created;
+}
+
