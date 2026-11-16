@@ -4923,3 +4923,16 @@ t3DListenerProfile* tgSoundPart::mGet3DListener()
     }
     return &field_0x68;
 }
+#line 4927 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656590
+tPoint3* tgSoundPart::mGet3DListener3DPosition()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7046
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGet3DPosition();
+}
