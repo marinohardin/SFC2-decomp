@@ -153,7 +153,6 @@ public:
 
 
 
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -173,6 +172,7 @@ long	gNumBuffersReleased;
 class twSoundPart : public tgSoundPart
 {
 public:
+					twSoundPart					( void );
 	virtual	void	mDetermineHardwareCaps		( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
 	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
@@ -2051,6 +2051,12 @@ void twStandardSoundChannel::mDump( void )
 	tSoundChannel::mDump();
 }
 #line 2055
+
+// FUNCTION: STARFLEETOP 0x006452a0
+twSoundPart::twSoundPart( void )
+{
+	atwSoundPart = this;
+}
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
