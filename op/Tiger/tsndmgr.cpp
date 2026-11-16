@@ -1376,3 +1376,16 @@ long	tBasicSoundFileManager::mNumberOfAttachmentsQueuedUp( unsigned long handle,
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00666950
+tSoundChannelFormat *	tBasicSoundFileManager::mGetSoundChannelFormat( unsigned long handle, long channel )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mGetSoundChannelFormat( handle, channel );
+	}
+	return 0;
+}
