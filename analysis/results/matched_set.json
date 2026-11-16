@@ -9073,6 +9073,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00657dc0": {
+   "name": "tAudioFileInfoPart::mGetLinkDepth",
+   "symbol": "?mGetLinkDepth@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
