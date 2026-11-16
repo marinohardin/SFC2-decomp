@@ -5963,8 +5963,8 @@
    "name": "tPathIterator::mNext",
    "symbol": "?mNext@tPathIterator@@QAE?AVtPath@@V2@@Z",
    "unit": "Tiger/tgfsys.cpp",
-   "size": 344,
-   "score": 24.026,
+   "size": 352,
+   "score": 97.524,
    "exact": false,
    "recorded": "2026-11-16"
   },

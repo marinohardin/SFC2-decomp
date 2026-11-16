@@ -506,11 +506,10 @@ public:
 	// differently from fn_0061c070_mResolve is not recovered.
 	tObjectType &fn_0061f910_mResolve( tCookieType &cookie )
 	{
-		tMap::iterator it = fValues.fMaps[cookie.fCookie & 0xff].find( cookie );
-
-		if ( it.fNode == fValues.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
+		tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	&values = fValues;	tMap::iterator it = values.fMaps[cookie.fCookie & 0xff].find( cookie );
+		if ( it.fNode == values.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
 			throw "Use of invalid cookie to resolve an item";
-		return fValues.mResolve( cookie )[cookie];
+		return values.mResolve( cookie )[cookie];
 	}
 
 	int32u											f_00;
@@ -1090,7 +1089,7 @@ tPath tPathIterator::mFirst( void )
 // FUNCTION: STARFLEETOP 0x0061fb60
 tPath tPathIterator::mNext( tPath path )
 {
-	tPathIterParent	&parent = BindPart( tFSCookiePart )->fFSCookies.fPathIterCookies.fn_0061c070_mResolve( *this );
+	tPathIterParent	&parent = BindPart( tFSCookiePart )->fFSCookies.fPathIterCookies.fn_0061f910_mResolve( *this );
 
 	return parent.mNext( path );
 }
