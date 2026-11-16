@@ -5032,3 +5032,20 @@ unsigned char tgSoundPart::mPauseRecordChannel()
     mReleaseControl();
     return 1;
 }
+// FUNCTION: STARFLEETOP 0x00657310
+unsigned char tgSoundPart::mRecordChannel()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7198
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)1, 0, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddImmediateCommand(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
