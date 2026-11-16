@@ -73,6 +73,7 @@ public:
     virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
     virtual long mGetNumberOfSamples(unsigned long param_1);
     virtual long mGetNumberOfSelectionPerSound(unsigned long param_1);
+    virtual long mGetTotalSizeInBytes(unsigned long param_1);
 
     tSafeArray<tBasicAudioFile> field_0c;
     long field_28;
