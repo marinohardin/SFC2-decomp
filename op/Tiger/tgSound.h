@@ -613,7 +613,8 @@ public:
     virtual double vfunction75();
     // HYPOTHESIS: slot 76 returns the global pan, which twStandardSoundChannel::mSetPan adds to the channel's.
     virtual long vfunction76();
-    virtual void vfunction77(); virtual void mGet3DListener();
+    virtual void vfunction77();
+    virtual t3DListenerProfile* mGet3DListener();
     virtual void mGet3DListener3DPosition(); virtual void mGet3DListenerForwardDirection(); virtual void mGet3DListenerUpDirection(); virtual void mGet3DListenerVelocity();
     virtual void mGet3DListenerUnitScaleInMeters();
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse
@@ -750,6 +751,7 @@ public:
     virtual unsigned char mAreWeFixedPan(long channel);
     virtual unsigned char mAreWeFixedVolume(long channel);
     virtual unsigned char mAreWeAGlobalSound(long channel);
+    virtual t3DListenerProfile* mGet3DListener();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).

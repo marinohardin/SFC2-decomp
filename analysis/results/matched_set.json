@@ -9316,6 +9316,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00656480": {
+   "name": "tgSoundPart::mGet3DListener",
+   "symbol": "?mGet3DListener@tgSoundPart@@UAEPAVt3DListenerProfile@@XZ",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

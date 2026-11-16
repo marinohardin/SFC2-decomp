@@ -4911,3 +4911,15 @@ unsigned char tgSoundPart::mAreWeAGlobalSound(long channel)
     mReleaseControl();
     return globalSound;
 }
+#line 4914 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656480
+t3DListenerProfile* tgSoundPart::mGet3DListener()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7030
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    return &field_0x68;
+}
