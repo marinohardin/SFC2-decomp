@@ -77,3 +77,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00625970	tString::mStrICmp	13.03	2	sonnet	2026-11-16T13:53:06Z	attempt 2 (sonnet) did not raise the best; best 13.03%
 0x00625b80	tString::begin	31.37	2	sonnet	2026-11-16T13:58:51Z	attempt 2 (sonnet) did not raise the best; best 31.37%
 0x00625bd0	tString::end	23.33	2	sonnet	2026-11-16T14:04:40Z	attempt 2 (sonnet) did not raise the best; best 23.33%
+0x00625c20	StringToNum	0.00	2	sonnet	2026-11-16T14:10:38Z	attempt 2 (sonnet) did not raise the best; best 0.00%
