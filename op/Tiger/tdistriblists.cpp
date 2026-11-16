@@ -317,3 +317,28 @@ unsigned char tDynamicMemoryFreeListViaHandles::mInsertBeforeListMember(tListMem
 	field_0xc++;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626f00
+unsigned char tDynamicMemoryFreeListViaHandles::mRemoveFromList(tListMemberWithHandle *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	long handle = aMember->vfunc_1c();
+	long nextHandle = aMember->vfunc_10();
+	long previousHandle = aMember->vfunc_0c();
+	if (field_0x4 == handle)
+		field_0x4 = nextHandle;
+	else if (previousHandle == -1)
+		return 0;
+	if (field_0x8 == handle)
+		field_0x8 = previousHandle;
+	tListMemberWithHandle *previous = mGetListMemberWithHandleFromHandle(previousHandle);
+	tListMemberWithHandle *next = mGetListMemberWithHandleFromHandle(nextHandle);
+	if (previous != 0)
+		previous->vfunc_18(nextHandle);
+	if (next != 0)
+		next->vfunc_14(previousHandle);
+	aMember->mRemoveFromList();
+	field_0xc--;
+	return 1;
+}
