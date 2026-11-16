@@ -331,10 +331,10 @@ public:
 	virtual iTruth	mHide( iTruth hide );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tPath::mRead (STARFLEETOP 0x0061ee60)
 	// calls it through that slot on the resolved path.
-	virtual int32u	mRead( void *buffer, int32u offset, int32u size, class tPathCallback *callback );
+	virtual int32u	mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	// HYPOTHESIS: the fourteenth virtual (vtable +0x34), as tPath::mWrite (STARFLEETOP 0x0061ef90)
 	// calls it through that slot on the resolved path.
-	virtual int32u	mWrite( void *buffer, int32u offset, int32u size, class tPathCallback *callback );
+	virtual int32u	mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	// HYPOTHESIS: the fifteenth virtual (vtable +0x38), as tPath::mFree (STARFLEETOP 0x0061f0c0)
 	// calls it through that slot on the resolved path.
 	virtual int32u	mFree( void );
@@ -2001,5 +2001,61 @@ iTruth twPath::mHide( iTruth hide )
 		}
 	}
 	return done;
+}
+
+#include "unsorted/twIORequest.h"
+
+// Out of line in twfsys.cpp (STARFLEETOP 0x00633bb0), named by the SDK library's symbol.
+void *OpenForReadChar( tString &path );
+
+// Named by the exe's symbol.
+extern twIORequestQueueManager	*gAsynchManager;
+
+// FUNCTION: STARFLEETOP 0x006339a0
+int32u twPath::mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback )
+{
+	if ( f_a8 < 2 )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		HANDLE	file;
+		tString	*path = &f_7c;
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( *path, 0 ), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			file = OpenForReadChar( *path );
+		}
+		f_a4 = file;
+		f_a8 = 2;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	if ( callback )
+	{
+		// HYPOTHESIS: 0 is the read request.
+		gAsynchManager->mRequest( twIORequest( fn_twIORequestType_0, f_44, buffer, offset, size, callback ) );
+	}
+	else
+	{
+		if ( SetFilePointer( f_a4, offset, NULL, FILE_BEGIN ) == 0xffffffff )
+			throw "Bad seek.";
+		DWORD	read;
+		if ( !ReadFile( f_a4, buffer, size, &read, NULL ) )
+		{
+			if ( GetLastError() != ERROR_HANDLE_EOF )
+				throw "Error reading from file.";
+		}
+		else if ( read != size )
+			throw "Incorrect number of bytes read from file.";
+	}
+	return size;
 }
 
