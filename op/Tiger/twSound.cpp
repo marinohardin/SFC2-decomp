@@ -2331,3 +2331,21 @@ unsigned char	twSoundPart::mDetermineHardwareCaps( void )
 		return kTrue;
 	return kFalse;
 }
+
+// FUNCTION: STARFLEETOP 0x00645be0
+unsigned char	twSoundPart::mCreatePrimaryBuffer( void )
+{
+	if( fUnknown_0130 )
+		return kTrue;
+	DSBUFFERDESC7	desc = { 0 };
+	memset( &desc, 0, sizeof( desc ) );
+	desc.dwSize			= sizeof( desc );
+	desc.dwFlags		= DSBCAPS_PRIMARYBUFFER | DSBCAPS_CTRL3D;
+	desc.dwBufferBytes	= 0;
+	if( fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&desc, &fUnknown_0130, NULL ) != DS_OK )
+		return kFalse;
+	gNumBuffersCreated++;
+	if( fUnknown_0130->QueryInterface( IID_IDirectSound3DListener, (void**)&fUnknown_0134 ) != DS_OK )
+		return kFalse;
+	return kTrue;
+}
