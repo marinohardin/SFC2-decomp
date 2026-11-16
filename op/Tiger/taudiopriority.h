@@ -21,6 +21,8 @@ class tHandleList
 		virtual		~tHandleList( void );
 		// HYPOTHESIS: the slot after the destructor; the exe's vtable is not checked yet.
 		virtual		void	mInit	( long );
+		// HYPOTHESIS: slot order after mInit is not checked against the exe's vtable.
+		virtual		unsigned long	mGetFirstHandle	( void );
 
 		long	f04;
 		long	f08;

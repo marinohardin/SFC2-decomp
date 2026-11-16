@@ -448,3 +448,11 @@ tHandleList::tHandleList( long size )
 	}
 	f04 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00662980
+unsigned long tHandleList::mGetFirstHandle( void )
+{
+	if ( f04 == 0 )
+		return 0;
+	return f0c[ 0 ];
+}

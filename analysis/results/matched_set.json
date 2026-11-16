@@ -9793,6 +9793,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00662980": {
+   "name": "tHandleList::mGetFirstHandle",
+   "symbol": "?mGetFirstHandle@tHandleList@@UAEKXZ",
+   "unit": "Tiger/taudiopriority.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",
