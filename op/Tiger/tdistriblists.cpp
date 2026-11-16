@@ -254,3 +254,22 @@ unsigned char tDynamicMemoryFreeListViaHandles::mAddToFrontOfList(tListMemberWit
 	field_0xc++;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626cf0
+unsigned char tDynamicMemoryFreeListViaHandles::mAddToBackOfList(tListMemberWithHandle *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	long handle = aMember->vfunc_1c();
+	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+		return 0;
+	aMember->vfunc_18(-1);
+	aMember->vfunc_14(field_0x8);
+	if (field_0x8 != -1)
+		mGetListMemberWithHandleFromHandle(field_0x8)->vfunc_18(handle);
+	else
+		field_0x4 = handle;
+	field_0x8 = handle;
+	field_0xc++;
+	return 1;
+}
