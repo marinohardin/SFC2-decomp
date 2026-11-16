@@ -2282,6 +2282,22 @@ void twIORequest::mProcessRequest( void )
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006344a0
+void *OpenForWrite( tString &path )
+{
+	HANDLE	file;
+	SetLastError( 0 );
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	file = CreateFileW( g_00c3cbf0, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+	if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		CloseHandle( file );
+		path.mCopyCharStr( g_00c3caec, MAX_PATH );
+		file = CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+	}
+	return file;
+}
+
 template <>
 twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie )
 {
