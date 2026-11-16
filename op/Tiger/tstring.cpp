@@ -667,3 +667,13 @@ tString::iterator tString::iterator::operator+(int32 n)
 		throw "Access past bounds of tString";
 	return iterator(fIndex + n, fString);
 }
+
+// FUNCTION: STARFLEETOP 0x00625490
+tString::iterator tString::iterator::operator-(int32 n)
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	if (fIndex - n < 0 || fIndex - n > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	return iterator(fIndex - n, fString);
+}
