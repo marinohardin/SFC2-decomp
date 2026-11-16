@@ -3717,3 +3717,28 @@ unsigned char tgSoundPart::mPauseChannel(long channel)
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00651ca0
+unsigned char tgSoundPart::mStopAndResetChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4832
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)3, 0, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddImmediateCommand(handle);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}

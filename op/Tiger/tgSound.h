@@ -531,7 +531,7 @@ public:
     virtual unsigned char mAttachSoundToChannel(long channel, tSoundSelection* selection);
     virtual unsigned char mPlayChannel(long channel);
     virtual unsigned char mPauseChannel(long channel);
-    virtual void mStopAndResetChannel();
+    virtual unsigned char mStopAndResetChannel(long channel);
     virtual unsigned char mStopAndClearChannel(long channel);
     // The SDK library's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mPauseAllChannels();
@@ -605,6 +605,7 @@ public:
     virtual unsigned char mAttachSoundToChannel(long channel, tSoundSelection* selection);
     virtual unsigned char mPlayChannel(long channel);
     virtual unsigned char mPauseChannel(long channel);
+    virtual unsigned char mStopAndResetChannel(long channel);
     virtual unsigned char mPauseAllChannels();
     virtual unsigned char mResumeAllChannels();
     virtual unsigned char mPlayAllChannels();
