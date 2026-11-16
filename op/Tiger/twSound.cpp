@@ -348,7 +348,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -356,6 +355,7 @@ public:
 	virtual	void	mReset	( iTruth );
 	virtual	iTruth	mPauseChannel	( void );
 	virtual	unsigned char	mPlayChannel	( void );
+	virtual	unsigned char	mSetFrequency	( long );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1755,7 +1755,7 @@ unsigned char twStandardSoundChannel::mPlayChannel( void )
 	}
 
 	vfunction101( mGetPan() );
-	vfunction100( mGetFrequency() );
+	mSetFrequency( mGetFrequency() );
 	HRESULT err;
 	if( mAreWeStreaming() == kTrue || mAreWeLooping() == kTrue )
 		err = fSoundBuffer->Play( 0, 0, DSBPLAY_LOOPING );
@@ -1770,6 +1770,21 @@ unsigned char twStandardSoundChannel::mPlayChannel( void )
 	field_0x28 = 0x20;
 	atgSoundPart->vfunction123( field_0c );
 	field_0x16c = 0;
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644650
+unsigned char twStandardSoundChannel::mSetFrequency( long frequency )
+{
+	if( mAreWeFixedFrequency() == kTrue )
+		return kFalse;
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	HRESULT err = fSoundBuffer->SetFrequency( (long)( atgSoundPart->vfunction75() * frequency ) );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mSetFrequency( frequency );
 	return kTrue;
 }
 

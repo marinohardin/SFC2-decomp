@@ -410,7 +410,7 @@ public:
     virtual iTruth mRemoveSoundChannel();
     virtual void vfunction98() = 0;
     virtual unsigned char mPlayChannel() = 0;
-    virtual void vfunction100(long frequency) = 0;
+    virtual unsigned char mSetFrequency(long frequency) = 0;
     virtual void vfunction101(long pan) = 0;
     virtual void vfunction102(long volume) = 0;
     virtual void vfunction103(); virtual void vfunction104() = 0;
@@ -525,7 +525,10 @@ public:
     virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
     virtual void mAreWeStatic(); virtual void mAreWeFixedFrequency(); virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
     virtual void mTryToLocateInSoftware(); virtual void mAreWeFixedPan(); virtual void mAreWeFixedVolume(); virtual void mAreWeAGlobalSound();
-    virtual void vfunction75(); virtual void vfunction76(); virtual void vfunction77(); virtual void mGet3DListener();
+    // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
+    // multiplies the channel's frequency by it.
+    virtual double vfunction75();
+    virtual void vfunction76(); virtual void vfunction77(); virtual void mGet3DListener();
     virtual void mGet3DListener3DPosition(); virtual void mGet3DListenerForwardDirection(); virtual void mGet3DListenerUpDirection(); virtual void mGet3DListenerVelocity();
     virtual void mGet3DListenerUnitScaleInMeters();
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse

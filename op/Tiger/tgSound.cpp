@@ -2582,7 +2582,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         return kTrue;
     case 5:
         field_0x98 = command->vfunction18() * field_0x94;
-        vfunction100(command->vfunction18());
+        mSetFrequency(command->vfunction18());
         return kTrue;
     case 14:
         vfunction106(command->mGet3DSoundPosition());
