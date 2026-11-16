@@ -2208,6 +2208,14 @@ void twSoundPart::mDone( void )
 }
 #line 2210
 
+// FUNCTION: STARFLEETOP 0x00645a80
+unsigned char	twSoundPart::mCanWeHandle16BitOutput( void )
+{
+	if( ( field_0x13c.dwFlags & DSCAPS_PRIMARY16BIT ) > 0 )
+		return kTrue;
+	return kFalse;
+}
+
 // FUNCTION: STARFLEETOP 0x00645ac0
 long	twSoundPart::mGetMinFrequency( void )
 {

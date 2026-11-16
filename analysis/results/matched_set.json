@@ -7507,6 +7507,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00645a80": {
+   "name": "twSoundPart::mCanWeHandle16BitOutput",
+   "symbol": "?mCanWeHandle16BitOutput@twSoundPart@@UAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645ac0": {
    "name": "twSoundPart::mGetMinFrequency",
    "symbol": "?mGetMinFrequency@twSoundPart@@UAEJXZ",
