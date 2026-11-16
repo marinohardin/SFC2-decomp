@@ -9595,6 +9595,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00665690": {
+   "name": "tBasicSoundFileManager::mPlaySpecialLoop",
+   "symbol": "?mPlaySpecialLoop@tBasicSoundFileManager@@UAEEKJJJJJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
