@@ -626,7 +626,7 @@ public:
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeDoNotAutoRemoveChannel(long channel);
-    virtual void mDoWeAutoRemoveSelections();
+    virtual unsigned char mDoWeAutoRemoveSelections(long channel);
     virtual void mWeAutoRemoveSelections(); virtual void mWeDoNotAutoRemoveSelections();
     virtual unsigned char mIsChannelActive(long channel);
     virtual void vfunction108(); virtual void mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel(); virtual void mRecordChannel();
@@ -678,6 +678,7 @@ public:
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeDoNotAutoRemoveChannel(long channel);
+    virtual unsigned char mDoWeAutoRemoveSelections(long channel);
     // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
