@@ -705,6 +705,7 @@ public:
     virtual unsigned char mDoWeAutoRemoveSelections(long channel);
     virtual unsigned char mWeAutoRemoveSelections(long channel);
     virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
+    virtual unsigned char mIsChannelActive(long channel);
     virtual unsigned char mSetGlobalFrequency(float frequency);
     virtual unsigned char mSetGlobalPan(long pan);
     virtual unsigned char mSetGlobalVolume(long volume);
