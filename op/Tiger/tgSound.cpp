@@ -5090,3 +5090,30 @@ unsigned char tgSoundPart::mRemoveRecordChannel()
     mReleaseControl();
     return 1;
 }
+#line 5094 // MATCH-ONLY: the #line directives in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00657580
+unsigned char tgSoundPart::mAttachSoundToRecordChannel(tSoundSelection* selection)
+{
+    if (vfunction13() == 1)
+    {
+#line 7303
+        SOUND_ERROR(("mAttachSoundToRecordChannel not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return 1;
+    }
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+    if (selection == 0)
+        return 0;
+#line 7311
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)0, selection, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddAttachment(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
