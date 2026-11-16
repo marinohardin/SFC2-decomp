@@ -253,8 +253,8 @@ public:
 	// HYPOTHESIS: the eleventh virtual (vtable +0x28), as tDir::mGetNamedFile (STARFLEETOP
 	// 0x0061e3a0) calls it through that slot on the resolved directory.
 	virtual tPath	mGetNamedFile( tString &name );
-	// HYPOTHESIS: the twelfth slot is not recovered.
-	virtual void	fn_twDir_slot11( void );
+	// The twelfth slot, by the exe's symbol for twDir::mCreate (STARFLEETOP 0x00632d30).
+	virtual iTruth	mCreate( void );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tDir::mDelete (STARFLEETOP 0x0061e5c0)
 	// calls it through that slot on the resolved directory.
 	virtual iTruth	mDelete( void );
@@ -1631,5 +1631,23 @@ tPathIterator twDir::mGetPathIterator( void )
 	}
 	FindClose( find );
 	return iter;
+}
+
+// FUNCTION: STARFLEETOP 0x00632d30
+iTruth twDir::mCreate( void )
+{
+	iTruth	created = false;
+
+	if ( !mExist() )
+	{
+		f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		created = CreateDirectoryW( g_00c3cbf0, NULL );
+		if ( !created && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			created = CreateDirectoryA( g_00c3caec, NULL );
+		}
+	}
+	return created;
 }
 
