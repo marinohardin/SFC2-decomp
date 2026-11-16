@@ -1399,8 +1399,8 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 	fUnknown_01a4.wBitsPerSample	= source->fUnknown_01a4.wBitsPerSample;
 	fUnknown_01a4.nBlockAlign		= source->fUnknown_01a4.nBlockAlign;
 	fUnknown_01a4.nAvgBytesPerSec	= source->fUnknown_01a4.nAvgBytesPerSec;
-	fSoundBuffer = NULL;
-
+	LPDIRECTSOUNDBUFFER* buffer = &fSoundBuffer;	// MATCH-ONLY: a store through a pointer keeps the next vtable load after it
+	*buffer = NULL;
 	if( mAreWeStreaming() == kTrue && mAreWe3D() == kTrue )
 	{
 #line 1425
