@@ -406,3 +406,26 @@ unsigned char tAudioPriorityManagerPart::mIsFirstHigherPriorityThanSecond( unsig
 		return false;
 	return firstInfo->mGetPriority() >= secondInfo->mGetPriority();
 }
+
+// FUNCTION: STARFLEETOP 0x006627d0
+void tHandleList::mInit( long size )
+{
+	if ( f0c )
+	{
+		delete [] f0c;
+		f0c = NULL;
+	}
+	f08 = size;
+	if ( size > 0 )
+	{
+		f0c = new long[ size ];
+		if ( !f0c )
+		{
+			if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("trouble with memory!\n"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("trouble with memory!\n"); }
+#line 660
+			if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+#line 429
+		}
+	}
+	f04 = 0;
+}

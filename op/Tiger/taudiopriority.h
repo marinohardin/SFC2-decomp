@@ -19,6 +19,8 @@ class tHandleList
 	public:
 		tHandleList( long );
 		virtual		~tHandleList( void );
+		// HYPOTHESIS: the slot after the destructor; the exe's vtable is not checked yet.
+		virtual		void	mInit	( long );
 
 		long	f04;
 		long	f08;
