@@ -345,3 +345,9 @@ void tAudioPriorityManagerPart::mActivate( void )
 	f10 = 0;
 	f14 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00662530
+void tAudioPriorityManagerPart::mDeactivate( void )
+{
+	mClose();
+}

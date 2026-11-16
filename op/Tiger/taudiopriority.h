@@ -126,12 +126,13 @@ class tClassTrackingInfo
 };
 
 // The slot order follows the exe's vtable at 0x007991e0 (signatures from the SDK library
-// symbols); slots 15 to 19 are not declared yet.
+// symbols).
 class tAudioPriorityManagerPart : public tPart
 {
 	public:
 		virtual		iTruth	mIsReady	( void );
 		virtual		void	mActivate	( void );
+		virtual		void	mDeactivate	( void );
 		virtual		unsigned char	mAreWeAllowedToPlay	( unsigned long, long, long, long, long *, unsigned long &, double & );
 		virtual		void	mWeHaveStoppedPlaying	( unsigned long );
 		// HYPOTHESIS: VC6 lists overloaded virtuals in reverse order of declaration; slot 8 holds
@@ -143,6 +144,11 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		long	mGetAudioFileClassHandleFromReference	( long );
 		virtual		unsigned char	mReleaseAudioFileClassPtr	( long );
 		virtual		void	mSetAudioFileClass	( long, long, long, eAudioPreemptType, double );
+		// HYPOTHESIS: slots 15 and 16 (0x004359a7, 0x004359bf) have no name or signature yet.
+		virtual		void	vfunction15	( void );
+		virtual		void	vfunction16	( void );
+		virtual		unsigned char	mIsFirstHigherPriorityThanSecond	( unsigned long, unsigned long );
+		virtual		unsigned char	mIsHigherPriority	( long, long, eAudioPreemptType );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
 
@@ -163,6 +169,8 @@ class tAudioPriorityManagerPart : public tPart
 		long			f2438;
 
 	protected:
+		virtual		void	mClose	( void );
+
 		long	mGetNextAvailableClassTrackingInfo	( void );
 };
 
