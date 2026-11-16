@@ -6409,6 +6409,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00625630": {
+   "name": "tString::mStrChr",
+   "symbol": "?mStrChr@tString@@QAE?AViterator@1@G@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 256,
+   "score": 54.753,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

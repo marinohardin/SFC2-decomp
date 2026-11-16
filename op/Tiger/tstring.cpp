@@ -728,3 +728,36 @@ iTruth tString::iterator::operator<(const iterator i)
 {
 	return fIndex < i.fIndex && fString == i.fString;
 }
+
+// FUNCTION: STARFLEETOP 0x00625630
+tString::iterator tString::mStrChr(iBasicStringElement c)
+{
+	// MATCH-ONLY: the original (/Ob2) inlines begin(), end() and iterator::operator* here.
+	if (!this)
+		throw "Access to uninitialized iterator";
+	int32 index = 0;
+	if (index < 0 || index > fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	iterator i;
+	i.fIndex = index;
+	i.fString = this;
+	for (;;)
+	{
+		int32 count = fInstanceControl.fDataCount;
+		if (count < 0 || count > fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		iterator e;
+		e.fIndex = count;
+		e.fString = this;
+		if (!(i != e))
+			break;
+		if (!i.fString)
+			throw "Access to uninitialized iterator";
+		if (c == i.fString->fInstanceControl.fMemSpace[i.fIndex])
+			break;
+		if (i.fIndex + 1 > i.fString->fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		i.fIndex++;
+	}
+	return i;
+}
