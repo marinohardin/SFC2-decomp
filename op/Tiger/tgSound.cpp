@@ -4703,3 +4703,16 @@ double tgSoundPart::mGet3DSoundReferenceDistance(long channel)
     mReleaseControl();
     return distance;
 }
+#line 4706 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655d70
+float tgSoundPart::mGet3DSoundConeAngleForNoAttenuation(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6649
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    float angle = channelPtr->mGet3DSoundConeAngleForNoAttenuation();
+    mReleaseControl();
+    return angle;
+}
