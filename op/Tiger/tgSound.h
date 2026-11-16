@@ -606,7 +606,8 @@ public:
     virtual unsigned char mTryToLocateInHardware(long channel);
     virtual unsigned char mTryToLocateInSoftware(long channel);
     virtual unsigned char mAreWeFixedPan(long channel);
-    virtual void mAreWeFixedVolume(); virtual void mAreWeAGlobalSound();
+    virtual unsigned char mAreWeFixedVolume(long channel);
+    virtual void mAreWeAGlobalSound();
     // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
     // multiplies the channel's frequency by it.
     virtual double vfunction75();
@@ -747,6 +748,7 @@ public:
     virtual unsigned char mTryToLocateInHardware(long channel);
     virtual unsigned char mTryToLocateInSoftware(long channel);
     virtual unsigned char mAreWeFixedPan(long channel);
+    virtual unsigned char mAreWeFixedVolume(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
