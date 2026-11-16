@@ -25,7 +25,7 @@ public:
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
-	virtual void vfunction7();
+	virtual void vfunction7( long *msg );
 	virtual void vfunction8( void *a, bool b );
 	virtual long vfunction9() = 0;
 	virtual long vfunction10() = 0;
@@ -107,6 +107,8 @@ public:
 
 	virtual void vfunction3();
 	virtual void vfunction4();
+	virtual void vfunction7( long *msg );
+	virtual void vfunction13( long delta );
 
 	long m7c;
 };
@@ -162,4 +164,21 @@ void tSupplyDockShuttles::vfunction4()
 		((fn_004479b4_object *) m74)->fn_00447926( 0, value );
 		vfunction3();
 	}
+}
+
+// HYPOTHESIS: the argument points at a message whose first long is one of the ids the
+// constructor registered on m10.
+// FUNCTION: STARFLEETOP 0x0048641f
+void tSupplyDockShuttles::vfunction7( long *msg )
+{
+	switch( *msg )
+	{
+	case 0x11014:
+		vfunction13( -1 );
+		break;
+	case 0x11015:
+		vfunction13( 1 );
+		break;
+	}
+	vfunction6();
 }
