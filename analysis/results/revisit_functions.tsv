@@ -54,3 +54,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00623120	tString::tString	56.07	2	sonnet	2026-11-16T10:50:33Z	best not above 90% after 2 attempts; best 56.07%
 0x006232f0	tString::tString	89.78	2	sonnet	2026-11-16T10:55:53Z	attempt 2 (sonnet) did not raise the best; best 89.78%
 0x00623390	tString::tString	91.14	2	sonnet	2026-11-16T10:59:34Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 91.14%
+0x00623d60	tString::substr	15.78	2	sonnet	2026-11-16T11:34:26Z	attempt 2 (sonnet) did not raise the best; best 15.78%
