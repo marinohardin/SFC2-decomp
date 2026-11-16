@@ -588,7 +588,9 @@ public:
     virtual void mFadeToVolume();
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
-    virtual void mFadeToStopAndClearNow(); virtual void mPlaySpecialLoop();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
+    virtual void mPlaySpecialLoop();
     virtual void mEndSpecialLoop(); virtual void mAddGetNextAttachmentFunction(); virtual void mGetNumberCurrentlyPlaying(); virtual void mDoWeRetainSelections();
     virtual void mWeRetainSelections();
     virtual void mWeDoNotRetainSelections(long channel);
@@ -630,6 +632,7 @@ public:
     virtual unsigned char mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
+    virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     virtual iTruth xAttemptToGainControl(const char* file, long line, long a, long b);
