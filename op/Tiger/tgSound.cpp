@@ -4768,3 +4768,16 @@ unsigned char tgSoundPart::mAreWeLooping(long channel)
     mReleaseControl();
     return looping;
 }
+#line 4772 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655fb0
+unsigned char tgSoundPart::mAreWeStreaming(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6768
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char streaming = channelPtr->mAreWeStreaming();
+    mReleaseControl();
+    return streaming;
+}
