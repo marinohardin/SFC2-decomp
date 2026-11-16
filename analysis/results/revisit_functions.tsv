@@ -74,3 +74,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00625630	tString::mStrChr	54.75	2	sonnet	2026-11-16T13:32:13Z	attempt 2 (sonnet) did not raise the best; best 54.75%
 0x00625730	tString::mStrRChr	20.98	2	sonnet	2026-11-16T13:36:39Z	attempt 2 (sonnet) did not raise the best; best 20.98%
 0x006257f0	tString::mToUpper	41.71	2	sonnet	2026-11-16T13:44:16Z	attempt 2 (sonnet) did not raise the best; best 41.71%
+0x00625970	tString::mStrICmp	13.03	2	sonnet	2026-11-16T13:53:06Z	attempt 2 (sonnet) did not raise the best; best 13.03%
