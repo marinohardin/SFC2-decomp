@@ -4664,3 +4664,16 @@ tPoint3* tgSoundPart::mGet3DSoundPosition(long channel)
     mReleaseControl();
     return position;
 }
+#line 4667 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655c00
+tPoint3* tgSoundPart::mGet3DSoundOrientation(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6575
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tPoint3* orientation = channelPtr->mGet3DSoundOrientation();
+    mReleaseControl();
+    return orientation;
+}
