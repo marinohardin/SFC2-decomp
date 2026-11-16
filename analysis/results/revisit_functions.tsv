@@ -54,3 +54,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00644110	twStandardSoundChannel::mDoFillSelection	84.79	2	sonnet	2026-11-16T11:11:37Z	best not above 90% after 2 attempts; best 84.79%
 0x00644750	twStandardSoundChannel::mSetVolume	99.49	2	sonnet	2026-11-16T11:33:27Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.49%
 0x00645c80	twSoundPart::mAdjust3DListener	0.00	2	sonnet	2026-11-16T12:59:31Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00645cd2	FUN_00645cd2	0.00	2	sonnet	2026-11-16T13:06:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
