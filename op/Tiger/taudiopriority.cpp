@@ -51,3 +51,9 @@ unsigned char tClassTrackingInfo::mAreWeValid( void )
 	}
 	return BindPart( tBasicSoundFileManager )->vfunction8( f08 );
 }
+
+// FUNCTION: STARFLEETOP 0x00661700
+long tClassTrackingInfo::mFadeToStop( void )
+{
+	return BindPart( tBasicSoundFileManager )->mFadeToStopAndResetNow( f08, 500.0, -1 );
+}

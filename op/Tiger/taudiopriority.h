@@ -54,6 +54,7 @@ class tClassTrackingInfo
 		virtual		void	mSetAvailable	( void );
 		virtual		long	mGetPriority	( void );
 		virtual		unsigned char	mAreWeValid	( void );
+		virtual		long	mFadeToStop	( void );
 
 		unsigned long	f04;
 		unsigned long	f08;
