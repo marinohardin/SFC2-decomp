@@ -8151,8 +8151,8 @@
    "symbol": "?mMakeFullPath@twPath@@IAEXXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 624,
-   "score": 99.048,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0063a900": {

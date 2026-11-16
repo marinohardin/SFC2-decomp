@@ -590,12 +590,12 @@ public:
 	}
 
 	// MATCH-ONLY: mResolve as twDir::mMakeFullPath (STARFLEETOP 0x006315d0) has it, with the
-	// search's comparison taken as a truth value, the found iterator copied before it is tested
-	// and operator[] out of line.
+	// bucket index held in a local for the search, the comparison taken as a truth value, the
+	// found iterator copied before it is tested and operator[] out of line.
 	tObjectType &fn_006315d0_mResolve( tCookieType &cookie )
 	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
-
+		int32u	index = cookie.fCookie & 0xff;
+		tMap::iterator it( fValues.fMaps[index].fHead );
 		for ( ; it.fNode != 0; it++ )
 			if ( !( (*it).fKey != cookie ) )
 				break;
