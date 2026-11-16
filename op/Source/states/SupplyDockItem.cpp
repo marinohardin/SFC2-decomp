@@ -108,6 +108,7 @@ public:
 	void fn_004477c6( long arg1, long arg2, long arg3 );
 	void fn_00447867( long arg1, std::string name );
 	long fn_00447415( long arg1, long arg2 );
+	void fn_00447531( long arg1, long arg2 );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -1030,4 +1031,14 @@ bool tSupplyDockMisc::fn_0048771a( long i, long delta )
 		return false;
 	fn_00487757( i, value );
 	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00487757
+void tSupplyDockMisc::fn_00487757( long i, long count )
+{
+	if( count != fn_004876bf( i ) )
+	{
+		((fn_004479b4_object *) m74)->fn_00447531( i, count );
+		vfunction3();
+	}
 }
