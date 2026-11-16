@@ -203,3 +203,29 @@ iBasicStringElement *tString::mWideStr(void)
 	}
 	return (iBasicStringElement *)fInstanceControl.fTempExternalCharRepresentation;
 }
+
+// FUNCTION: STARFLEETOP 0x00623760
+char* tString::mCharStr( char* myMemory )
+{
+	if (myMemory)
+	{
+		char *p = myMemory;
+		for (int32 i = 0; i < fInstanceControl.fDataCount; i++)
+			*p++ = (char)fInstanceControl.fMemSpace[i];
+		*p = 0;
+		return myMemory;
+	}
+	if (fInstanceControl.fTempExternalCharRepresentation)
+		delete [] fInstanceControl.fTempExternalCharRepresentation;
+	int32 size = fInstanceControl.fDataCount + 1;
+	fInstanceControl.fTempExternalCharRepresentation = new char[size];
+	fInstanceControl.fSizeOfExternalCharAllocation = fInstanceControl.fDataCount + 1;
+	if (fInstanceControl.fTempExternalCharRepresentation)
+	{
+		char *p = fInstanceControl.fTempExternalCharRepresentation;
+		for (int32 i = 0; i < fInstanceControl.fDataCount; i++)
+			*p++ = (char)fInstanceControl.fMemSpace[i];
+		*p = 0;
+	}
+	return fInstanceControl.fTempExternalCharRepresentation;
+}
