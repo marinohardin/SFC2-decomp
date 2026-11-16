@@ -601,7 +601,8 @@ public:
     virtual unsigned char mAreWeStreaming(long channel);
     virtual unsigned char mAreWe3D(long channel);
     virtual unsigned char mAreWeStatic(long channel);
-    virtual void mAreWeFixedFrequency(); virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
+    virtual unsigned char mAreWeFixedFrequency(long channel);
+    virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
     virtual void mTryToLocateInSoftware(); virtual void mAreWeFixedPan(); virtual void mAreWeFixedVolume(); virtual void mAreWeAGlobalSound();
     // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
     // multiplies the channel's frequency by it.
@@ -737,6 +738,7 @@ public:
     virtual unsigned char mAreWeStreaming(long channel);
     virtual unsigned char mAreWe3D(long channel);
     virtual unsigned char mAreWeStatic(long channel);
+    virtual unsigned char mAreWeFixedFrequency(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
