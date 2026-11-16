@@ -92,3 +92,21 @@ unsigned char tDynamicMemoryFreeList::mInsertAfterListMember(tListMember *aListM
 	field_0xc++;
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626980
+unsigned char tDynamicMemoryFreeList::mInsertBeforeListMember(tListMember *aMember, tListMember *aListMember)
+{
+	if (aMember == 0 || aMember->vfunction4() != 0 || field_0x4 == aMember)
+		return 0;
+	if (aListMember == 0)
+		return mAddToBackOfList(aMember);
+	if (field_0x4 == aListMember)
+		return mAddToFrontOfList(aMember);
+	tListMember *previous = aListMember->vfunction4();
+	previous->vfunction7(aMember);
+	aMember->vfunction7(aListMember);
+	aListMember->vfunction6(aMember);
+	aMember->vfunction6(previous);
+	field_0xc++;
+	return 1;
+}

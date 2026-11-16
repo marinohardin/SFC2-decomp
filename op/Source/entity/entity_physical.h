@@ -121,7 +121,7 @@ public:
 	virtual unsigned char mAddToFrontOfList(tListMember *aMember);
 	virtual unsigned char mAddToBackOfList(tListMember *aMember);
 	virtual unsigned char mInsertAfterListMember(tListMember *aListMember, tListMember *aMember);
-	virtual void mInsertBeforeListMember();
+	virtual unsigned char mInsertBeforeListMember(tListMember *aMember, tListMember *aListMember);
 	virtual void mRemoveFromList(void *aMember);
 	virtual void mIsListMember();
 	virtual void vfunction16();
