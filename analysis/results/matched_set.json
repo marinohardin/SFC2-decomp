@@ -7444,6 +7444,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006454c0": {
+   "name": "tListMemberWithHandle::vfunction6",
+   "symbol": "?vfunc_10@tListMemberWithHandle@@UAEXJ@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",
