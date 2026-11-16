@@ -376,7 +376,7 @@ public:
     virtual t3DSoundProfile* mGet3DSoundProfile();
     virtual tPoint3* mGet3DSoundPosition();
     virtual tPoint3* mGet3DSoundOrientation();
-    virtual void mGet3DSoundVelocity();
+    virtual tPoint3* mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance();
     virtual void mGet3DSoundConeAngleForNoAttenuation();
     virtual void mGet3DSoundConeAttenuationLevel();
@@ -590,7 +590,8 @@ public:
     virtual long mGetVolume(long channel);
     virtual tChannelAttributes* mGetChannelAttributes(long channel);
     virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
-    virtual tPoint3* mGet3DSoundPosition(long channel); virtual tPoint3* mGet3DSoundOrientation(long channel); virtual void mGet3DSoundVelocity();
+    virtual tPoint3* mGet3DSoundPosition(long channel); virtual tPoint3* mGet3DSoundOrientation(long channel);
+    virtual tPoint3* mGet3DSoundVelocity(long channel);
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
     virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
     virtual void mAreWeStatic(); virtual void mAreWeFixedFrequency(); virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
@@ -719,6 +720,7 @@ public:
     virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
     virtual tPoint3* mGet3DSoundPosition(long channel);
     virtual tPoint3* mGet3DSoundOrientation(long channel);
+    virtual tPoint3* mGet3DSoundVelocity(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
