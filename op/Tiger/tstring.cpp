@@ -370,16 +370,16 @@ int32 tString::find(const char *s, int32 startPos)
 	return find(tString(s), startPos);
 }
 
-// MATCH-ONLY: the original inlined these small members into find.
+// MATCH-ONLY: the original inlined this small member into find.
 inline int32 tString::size() const
 {
 	return fInstanceControl.fDataCount;
 }
 
-inline tString::iterator tString::end()
-{
-	return iterator(fInstanceControl.fDataCount, this);
-}
+// MATCH-ONLY: the original (/Ob2) inlines end() into find, rfind and mStrICmp and keeps
+// its out-of-line copy after begin(); under /Ob1 its body is written out at those uses.
+
+
 // FUNCTION: STARFLEETOP 0x00625400
 iBasicStringElement& tString::iterator::operator*()
 {
@@ -424,7 +424,8 @@ int32 tString::find(tString &s, int32 startPos)
 			iTruth match;
 			do
 			{
-				if (!(j != s.end()))
+				iterator e(s.fInstanceControl.fDataCount, &s);
+				if (!(j != e))
 					return pos;
 				// MATCH-ONLY: the original (/Ob2) inlines iterator::operator* here and keeps its
 				// out-of-line copy; under /Ob1 its body is written out.
@@ -487,7 +488,8 @@ int32 tString::rfind(tString &s, int32 startPos)
 			iTruth match;
 			do
 			{
-				if (!(j != s.end()))
+				iterator e(s.fInstanceControl.fDataCount, &s);
+				if (!(j != e))
 					return pos;
 				// MATCH-ONLY: the original (/Ob2) inlines iterator::operator* here, as in find.
 				if (!j.fString)
@@ -851,13 +853,24 @@ int32s tString::mStrICmp(const tString &s) const
 	iterator i;
 	// MATCH-ONLY: begin() is written out as in find.
 	iterator b1(0, &s1);
-	for (i = b1; i != s1.end(); i++)
+	// MATCH-ONLY: end() is written out as a named local, as in find.
+	for (i = b1; ; i++)
+	{
+		iterator e(s1.fInstanceControl.fDataCount, &s1);
+		if (!(i != e))
+			break;
 		if (*i >= 'a' && *i <= 'z')
 			*i -= 0x20;
+	}
 	iterator b2(0, &s2);
-	for (i = b2; i != s2.end(); i++)
+	for (i = b2; ; i++)
+	{
+		iterator e(s2.fInstanceControl.fDataCount, &s2);
+		if (!(i != e))
+			break;
 		if (*i >= 'a' && *i <= 'z')
 			*i -= 0x20;
+	}
 	int n = s1.fInstanceControl.fDataCount < s2.fInstanceControl.fDataCount ? s1.fInstanceControl.fDataCount : s2.fInstanceControl.fDataCount;
 	int32s c = memcmp(s1.fInstanceControl.fMemSpace.begin(), s2.fInstanceControl.fMemSpace.begin(), n * sizeof(iBasicStringElement));
 	if (c == 0)
@@ -875,6 +888,22 @@ tString::iterator tString::begin()
 {
 	// MATCH-ONLY: the original (/Ob2) inlines iterator(0, this) here.
 	int32 index = 0;
+	tString *s = this;
+	if (!s)
+		throw "Access to uninitialized iterator";
+	if (index < 0 || index > s->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	iterator i;
+	i.fIndex = index;
+	i.fString = s;
+	return i;
+}
+
+// FUNCTION: STARFLEETOP 0x00625bd0
+tString::iterator tString::end()
+{
+	// MATCH-ONLY: the original (/Ob2) inlines iterator(fInstanceControl.fDataCount, this) here.
+	int32 index = fInstanceControl.fDataCount;
 	tString *s = this;
 	if (!s)
 		throw "Access to uninitialized iterator";
