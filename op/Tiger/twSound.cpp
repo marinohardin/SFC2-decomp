@@ -335,7 +335,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -404,6 +403,7 @@ public:
 	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
 	// HYPOTHESIS: slot not recovered; nothing in this unit calls it through the vtable.
 	virtual void	mDoAllImmediateNonInterruptCommands	( void );
+	virtual	void	mDump	( void );
 };
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
 #line 109
@@ -2033,6 +2033,24 @@ void twStandardSoundChannel::mDoAllImmediateNonInterruptCommands( void )
 		command = mGetFirstImmediateNonInterruptCommand();
 	}
 }
+
+// MATCH-ONLY: the #line directives set the original's line numbers for its " -- %s %d" messages (2361-2369) and then put this file's own numbering back. The field names are the format strings'.
+// FUNCTION: STARFLEETOP 0x00644d60
+void twStandardSoundChannel::mDump( void )
+{
+#line 2361
+	SOUNDSAY2(( "twStandardSoundChannel Dump: " ));
+
+	SOUNDSAY2(( " fBufferDesc: dwSize=%ld,dwFlags=%ld,dwBufferBytes=%ld,dwReserved=%ld,lpwfxFormat=%ld", fUnknown_0180.dwSize, fUnknown_0180.dwFlags, fUnknown_0180.dwBufferBytes, fUnknown_0180.dwReserved, fUnknown_0180.lpwfxFormat ));
+	SOUNDSAY2(( " fWaveFormat: wFormatTag=%ld; nChannels=%ld; nSamplesPerSec=%ld; nAvgBytesPerSec=%ld; nBlockAlign=%ld; wBitsPerSample=%ld; cbSize=%ld", fUnknown_01a4.wFormatTag, fUnknown_01a4.nChannels, fUnknown_01a4.nSamplesPerSec, fUnknown_01a4.nAvgBytesPerSec, fUnknown_01a4.nBlockAlign, fUnknown_01a4.wBitsPerSample, fUnknown_01a4.cbSize ));
+	SOUNDSAY2(( " fDSBuffer = %ld,fDS3DBuffer=%ld", fSoundBuffer, fUnknown_01bc ));
+	SOUNDSAY2(( " fStartPlayPosition = %ld,fStartPosition=%ld,fLastPlayPosition=%ld,fAmountThatCanBeAdded=%ld", field_0x15c, field_0x160, field_0x164, field_0x168 ));
+
+	SOUNDSAY2(( " fCurrentBufPosition1 = %ld,fCurrentBufPosition2=%ld,fCurrentBufSize1=%ld,fCurrentBufSize2=%ld", fUnknown_01c0, fUnknown_01c4, fCurrentBufSize1, fUnknown_01cc ));
+	SOUNDSAY2(( " fStartBufPosition1 = %ld,fStartBufPosition2=%ld,fStartBufSize1=%ld,fStartBufSize2=%ld", fUnknown_01d0, fUnknown_01d4, fUnknown_01d8, fUnknown_01dc ));
+	tSoundChannel::mDump();
+}
+#line 2055
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
