@@ -3070,6 +3070,15 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x0048612c": {
+   "name": "tSupplyDockItem::~tSupplyDockItem",
+   "symbol": "??0tSupplyDockItem@@QAE@JJJJJ@Z",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",
