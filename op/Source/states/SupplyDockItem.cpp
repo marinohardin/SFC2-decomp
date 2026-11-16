@@ -297,12 +297,17 @@ public:
 		short fn_00451c45();
 		void fn_00451d07( bool value );
 		void fn_00451dcd( long value );
+		void fn_00451904( long count );
+		void fn_00451dee( long value );
 
 		char m00[0xc];
 		bool m0c;
 		bool m0d;
 		char m0e;
 		char m0f;
+		short m10;
+		char m12[2];
+		short m14;
 	};
 };
 
@@ -562,5 +567,20 @@ void tSupplyDockMissiles::fn_00486ad5( bool up )
 	}
 	else if( m7c->fn_00451c18() > gObject_0090b730.fn_0060ca9e() )
 		m7c->fn_00451dcd( gObject_0090b730.fn_0060ca9e() );
+	vfunction3();
+}
+
+// FUNCTION: STARFLEETOP 0x00486b8a
+void tSupplyDockMissiles::fn_00486b8a( bool up )
+{
+	short max = m7c->fn_00451c45();
+	short cur = m7c->fn_00451a8b();
+	if( up && cur < max )
+		m7c->fn_00451904( max - cur );
+	else
+	{
+		m7c->fn_00451dee( m7c->m10 + ( up ? 1 : -1 ) );
+		vfunction14( m7c->m14 );
+	}
 	vfunction3();
 }
