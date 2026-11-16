@@ -101,3 +101,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00633e40	tVolume::tVolume	0.00	2	sonnet	2026-11-16T21:00:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00633e80	tDir::tDir	1.63	2	sonnet	2026-11-16T21:04:44Z	attempt 2 (sonnet) did not raise the best; best 1.63%
 0x00633fe0	AsynchIOMain	81.25	2	sonnet	2026-11-16T21:21:40Z	attempt 2 (sonnet) did not raise the best; best 81.25%
+0x006340b0	twIORequest::mProcessRequest	31.08	2	sonnet	2026-11-16T21:37:13Z	best not above 90% after 2 attempts; best 31.08%
