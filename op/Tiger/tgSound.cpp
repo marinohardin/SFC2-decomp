@@ -4136,3 +4136,10 @@ iTruth tgSoundPart::xAttemptToGainControl(char* file, long line, unsigned char a
     g_00c6695c = line;
     return kTrue;
 }
+
+// FUNCTION: STARFLEETOP 0x00653a60
+void tgSoundPart::mReleaseControl()
+{
+    if (field_0xc8 == 0)
+        field_0xcc.mRelease();
+}
