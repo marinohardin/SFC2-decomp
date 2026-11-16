@@ -88,3 +88,9 @@ const tString &tStrMgrCore::mGetRandStr( long group )
 		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
 	return gErrStr;
 }
+
+// FUNCTION: STARFLEETOP 0x00627470
+const tString &tStrMgrCore::mGetRandStr( const char *group )
+{
+	return mGetRandStr( mGetStringIndex( group ) );
+}
