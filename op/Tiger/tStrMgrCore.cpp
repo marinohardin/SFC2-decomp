@@ -142,3 +142,21 @@ unsigned char tStrMgrCore::mIsAnElement( const char *group, long element )
 {
 	return mIsAnElement( mGetStringIndex( group ), element );
 }
+
+// FUNCTION: STARFLEETOP 0x006275f0
+unsigned char tStrMgrCore::mIsAnElement( long group, const tString &str )
+{
+	if ( group > 0 && group <= fn_00627180_vec.size() )
+	{
+		int count = mGetNumElements( group );
+		for ( int i = 0; i < count; i++ )
+		{
+			if ( mGetString( group + i ) == str )
+				return true;
+		}
+		return false;
+	}
+	if ( fn_00627200_throwOnMiss )
+		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+	return false;
+}
