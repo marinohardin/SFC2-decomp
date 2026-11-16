@@ -5000,3 +5000,17 @@ void tgSoundPart::mDump(long channel)
     channelPtr->mDump();
     mReleaseControl();
 }
+// FUNCTION: STARFLEETOP 0x00656b40
+void tgSoundPart::mDump()
+{
+#line 7144
+    SOUND_ERROR(("tgSoundPart Dump: fSoundChannelCommands = %ld,fMaxNumberOfSoundChannelCommands=%ld,fNextSoundChannelCommandToTry=%ld", field_0xc, field_0x10, field_0x14)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" fSoundChannels = %ld,fMaxNumberOfSoundChannels=%ld,fActualNumberOfSoundChannels=%ld", field_0x18, field_0x1c, field_0x20)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" fStatus = %ld,fInitialized=%ld", field_0x114.field_0x4[1], field_0x114.field_0x4[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" ActiveChannels:")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    tSoundChannelList* channels = &field_0x40; channels->vfunction42();
+    SOUND_ERROR((" 3DListenerProfile:")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    t3DListenerProfile* listener = &field_0x68; listener->mDump();
+    SOUND_ERROR(("  GlobalPan=%ld, GlobalVolume=%ld, VolumePercent=%f,Freq=%f", field_0x50, field_0x54, field_0x58, field_0x60)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("  RecordingChannelHandle=%ld, InterruptMode=%ld,fCurrentTime=%f,fSoundPartGetTimeFunction=%ld END", field_0xa8, field_0x128, field_0xb8, field_0xb0)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+}
