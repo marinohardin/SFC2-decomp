@@ -621,7 +621,9 @@ public:
     virtual unsigned char mDoWeRetainSelections(long channel);
     virtual void mWeRetainSelections();
     virtual void mWeDoNotRetainSelections(long channel);
-    virtual void mDoWeAutoRemoveChannel(); virtual void mWeAutoRemoveChannel(); virtual void mWeDoNotAutoRemoveChannel(); virtual void mDoWeAutoRemoveSelections();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mDoWeAutoRemoveChannel(long channel);
+    virtual void mWeAutoRemoveChannel(); virtual void mWeDoNotAutoRemoveChannel(); virtual void mDoWeAutoRemoveSelections();
     virtual void mWeAutoRemoveSelections(); virtual void mWeDoNotAutoRemoveSelections();
     virtual unsigned char mIsChannelActive(long channel);
     virtual void vfunction108(); virtual void mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel(); virtual void mRecordChannel();
@@ -670,6 +672,7 @@ public:
     virtual unsigned char mAddGetNextAttachmentFunction(long channel, void (*function)(unsigned long, long), long data, double interval);
     virtual long mGetNumberCurrentlyPlaying();
     virtual unsigned char mDoWeRetainSelections(long channel);
+    virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);

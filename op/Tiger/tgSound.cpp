@@ -4321,3 +4321,15 @@ long tgSoundPart::mGetNumberCurrentlyPlaying()
     mReleaseControl();
     return count;
 }
+#line 4325 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654db0
+unsigned char tgSoundPart::mDoWeAutoRemoveChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5919
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mDoWeAutoRemoveChannel();
+    mReleaseControl(); return result;
+}
