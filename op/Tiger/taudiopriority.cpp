@@ -531,3 +531,12 @@ unsigned char tHandleList::mIsHandle( unsigned long handle )
 			return true;
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00662bf0
+long tHandleList::mGetZeroIndexedHandlePosition( unsigned long handle )
+{
+	for ( long i = 0; i < f04; i++ )
+		if ( f0c[ i ] == handle )
+			return i;
+	return -1;
+}
