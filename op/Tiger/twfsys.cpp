@@ -13,6 +13,7 @@ public:
 
 tPath WinParsePath(tSession session, tString &path);
 tDir WinParseDir(tSession session, tString &path);
+tVolume WinParseVolume(tSession session, tString &path);
 
 // Claimed and scored as partial: the original body (about 1.5 KB) walks drive letters 'A' to
 // 'Z' with GetVolumeInformation-style calls and builds the iterator from tString and tVolume
@@ -87,4 +88,25 @@ tPath WinParsePath(tSession session, tString &path)
     if (!file.mValid())
         throw "Yow! WinParsePath failed to find the file!";
     return file;
+}
+
+// FUNCTION: STARFLEETOP 0x0062ee00
+tDir WinParseDir(tSession session, tString &path)
+{
+    tVolume volume = WinParseVolume(session, path);
+    tDir dir = volume.mGetRoot();
+
+    while (path.mStrChr('\\') != path.end())
+    {
+        tString name(path);
+        name.mEndStrAt(name.mStrChr('\\'));
+        tDir sub = dir.mGetNamedDir(name);
+        if (!sub.mExist())
+            break;
+        dir = sub;
+        tString rest(path);
+        tString next(rest.mStrChr('\\') + 1);
+        path = next;
+    }
+    return dir;
 }
