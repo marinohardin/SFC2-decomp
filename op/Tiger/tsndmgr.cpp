@@ -215,13 +215,14 @@ unsigned char	tAFPlayInfo::mIsThisInThisThreshold( long value )
 // FUNCTION: STARFLEETOP 0x00663ce0
 unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
 {
-	if ( field_0xc[0] == 0 || value == 0 )
+	if ( field_0xc[0] == 0 )
 		return 1;
+	long	wanted = value;
 	long	pos = 0;
 	long	found;
-	if ( sscanf( field_0xc, "%ld", &found ) <= 0 || value == found || found == 0 )
+	if ( wanted == 0 || sscanf( field_0xc, "%ld", &found ) <= 0 || wanted == found || found == 0 )
 		return 1;
-	for ( ;; )
+	do
 	{
 		char	c = field_0xc[pos];
 		if ( c == 0 )
@@ -232,9 +233,8 @@ unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
 			pos++;
 		if ( sscanf( &field_0xc[pos], "%ld", &found ) <= 0 )
 			return 0;
-		if ( value == found || found == 0 )
-			return 1;
-	}
+	} while ( wanted != found && found != 0 );
+	return 1;
 }
 
 // HYPOTHESIS: declared only as far as the functions below need.
