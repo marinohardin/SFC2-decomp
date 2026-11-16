@@ -6454,6 +6454,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00625b80": {
+   "name": "tString::begin",
+   "symbol": "?begin@tString@@QAE?AViterator@1@XZ",
+   "unit": "Tiger/tstring.cpp",
+   "size": 80,
+   "score": 31.368,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
