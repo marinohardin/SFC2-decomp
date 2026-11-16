@@ -4481,3 +4481,26 @@ unsigned char tgSoundPart::mSetGlobalFrequency(float frequency)
     mReleaseControl();
     return 1;
 }
+#line 4484 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655440
+unsigned char tgSoundPart::mSetGlobalPan(long pan)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6221
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x50 = pan;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedPan())
+        {
+            long channelPan = channelPtr->mGetPan();
+            long command = mCreateCommand((eSoundChannelCommand)7, &channelPan, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}

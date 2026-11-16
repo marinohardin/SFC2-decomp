@@ -9037,6 +9037,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00655440": {
+   "name": "tgSoundPart::mSetGlobalPan",
+   "symbol": "?mSetGlobalPan@tgSoundPart@@UAEEJ@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
