@@ -21,9 +21,12 @@ public:
     // HYPOTHESIS: the next member's handle; tDynamicMemoryFreeListViaHandles::
     // mGetNextListMemberHandle (0x00626be0) returns it through this slot.
     virtual long vfunc_10();
-    virtual void vfunc_14();
-    virtual void vfunc_18();
-    virtual void vfunc_1c();
+    // HYPOTHESIS: slots +0x14 and +0x18 set the previous and next members' handles, and +0x1c
+    // returns the member's own handle (tDynamicMemoryFreeListViaHandles::mAddToFrontOfList,
+    // 0x00626c60).
+    virtual void vfunc_14(long);
+    virtual void vfunc_18(long);
+    virtual long vfunc_1c();
     // HYPOTHESIS: takes the member's handle (0x0066dc50 passes each block's index).
     virtual void vfunc_20(long);
     // Slot +0x24: tSoundMemoryBlock's vtable at 0x007b78cc holds mDump (0x0066db80) here.

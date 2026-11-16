@@ -235,3 +235,22 @@ long tDynamicMemoryFreeListViaHandles::mGetNextCircularListMemberHandle(tListMem
 		handle = vfunction3();
 	return handle;
 }
+
+// FUNCTION: STARFLEETOP 0x00626c60
+unsigned char tDynamicMemoryFreeListViaHandles::mAddToFrontOfList(tListMemberWithHandle *aMember)
+{
+	if (aMember == 0)
+		return 0;
+	long handle = aMember->vfunc_1c();
+	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+		return 0;
+	aMember->vfunc_14(-1);
+	aMember->vfunc_18(field_0x4);
+	if (field_0x4 != -1)
+		mGetListMemberWithHandleFromHandle(field_0x4)->vfunc_14(handle);
+	else
+		field_0x8 = handle;
+	field_0x4 = handle;
+	field_0xc++;
+	return 1;
+}
