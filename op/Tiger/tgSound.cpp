@@ -4716,3 +4716,16 @@ float tgSoundPart::mGet3DSoundConeAngleForNoAttenuation(long channel)
     mReleaseControl();
     return angle;
 }
+#line 4719 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655df0
+long tgSoundPart::mGet3DSoundConeAttenuationLevel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6673
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long level = channelPtr->mGet3DSoundConeAttenuationLevel();
+    mReleaseControl();
+    return level;
+}

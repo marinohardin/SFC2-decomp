@@ -9181,6 +9181,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00655df0": {
+   "name": "tgSoundPart::mGet3DSoundConeAttenuationLevel",
+   "symbol": "?mGet3DSoundConeAttenuationLevel@tgSoundPart@@UAEJJ@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
