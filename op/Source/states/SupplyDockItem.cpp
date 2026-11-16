@@ -215,6 +215,8 @@ class fn_0045139e_object
 {
 public:
 	double fn_0045139e( long arg1 );
+	// HYPOTHESIS: looks a name up and writes a long through the pointer; its return is unused.
+	void fn_0045147a( const std::string &name, long *value );
 };
 
 // FUNCTION: STARFLEETOP 0x00486462
@@ -754,4 +756,12 @@ long tSupplyDockFighters::vfunction15( long i )
 long tSupplyDockFighters::vfunction16( long i )
 {
 	return ((fn_004479b4_object *) m74)->fn_004477f8( i );
+}
+
+// FUNCTION: STARFLEETOP 0x00486ffc
+double tSupplyDockFighters::vfunction17( const std::string &name )
+{
+	long value = 0;
+	((fn_0045139e_object *) m78)->fn_0045147a( name, &value );
+	return value;
 }
