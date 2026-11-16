@@ -120,7 +120,7 @@ public:
 	virtual void mGetListMemberAtThisIndex();
 	virtual unsigned char mAddToFrontOfList(tListMember *aMember);
 	virtual unsigned char mAddToBackOfList(tListMember *aMember);
-	virtual void mInsertAfterListMember();
+	virtual unsigned char mInsertAfterListMember(tListMember *aListMember, tListMember *aMember);
 	virtual void mInsertBeforeListMember();
 	virtual void mRemoveFromList(void *aMember);
 	virtual void mIsListMember();
