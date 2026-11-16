@@ -4,6 +4,7 @@
 #include "Tiger/tgSound.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // HYPOTHESIS: fields as mInit stores them; field names and the virtuals' slot order are not recovered.
 class tAFPlayInfo
@@ -15,6 +16,7 @@ public:
 	virtual	void	mSetNextInSequence	( long next );
 	virtual	iTruth	mAddClass	( long theClass );
 	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
+	virtual	unsigned char	mIsThisInThisThreshold	( long value );
 
 	tAFPlayInfo &	operator=	( tAFPlayInfo &other );
 
@@ -183,6 +185,31 @@ tAFPlayInfo &	tAFPlayInfo::operator=( tAFPlayInfo &other )
 	field_0xb8 = other.field_0xb8;
 	field_0xbc = other.field_0xbc;
 	return *this;
+}
+
+// FUNCTION: STARFLEETOP 0x00663c40
+unsigned char	tAFPlayInfo::mIsThisInThisThreshold( long value )
+{
+	if ( field_0x2c[0] == 0 || value == -1 )
+		return 1;
+	long	wanted = value;
+	long	pos = 0;
+	long	found;
+	if ( sscanf( field_0x2c, "%ld", &found ) <= 0 || wanted == found || found == -1 )
+		return 1;
+	while ( field_0x2c[pos] != 0 )
+	{
+		while ( field_0x2c[pos] != ',' && field_0x2c[pos] != ';' && field_0x2c[pos] != 0 )
+			pos++;
+		if ( field_0x2c[pos] != 0 )
+			pos++;
+		// HYPOTHESIS: the original scans from the start of the string each time, not from pos.
+		if ( sscanf( field_0x2c, "%ld", &found ) <= 0 )
+			break;
+		if ( wanted == found || found == -1 )
+			return 1;
+	}
+	return 0;
 }
 
 // HYPOTHESIS: declared only as far as the functions below need.

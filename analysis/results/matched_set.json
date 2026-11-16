@@ -9352,6 +9352,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00663c40": {
+   "name": "tAFPlayInfo::mIsThisInThisThreshold",
+   "symbol": "?mIsThisInThisThreshold@tAFPlayInfo@@UAEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00664870": {
    "name": "tBasicSoundFileManager::mGetTrackingIndex",
    "symbol": "?mGetTrackingIndex@tBasicSoundFileManager@@UAEKK@Z",
