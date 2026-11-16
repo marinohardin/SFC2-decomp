@@ -306,7 +306,7 @@ while :; do
             outcome=$([ "$kind" = exact ] && echo exact || echo improved)
             name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
             git add -A -- "$src" "$matched"
-            git commit -q -m "feat(game): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \
+            git commit -q -m "feat(op): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \
                 -m "build-and-verify: $before% -> $after% ($kind) with $model." \
                 && echo "OK    $addr $outcome $before% -> $after%, committed"
         else

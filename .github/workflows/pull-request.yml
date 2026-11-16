@@ -43,4 +43,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: The definition of done
+        env:
+          # The tests job above has run them on every pull request.
+          CHECK_SKIP_TESTS: "1"
         run: nice -n 5 sh scripts/check.sh

@@ -1,17 +1,17 @@
 #!/bin/sh
 # The one command that is the definition of done. CI runs the same steps, and an agent that
-# says "done" has run this once at the end (DESIGN §7.4). In order:
+# says "done" has run this once at the end. In order:
 #
-#   1. the Python tests (tests/, harness/tests/)
+#   1. the Python tests (tests/, harness/tests/); CHECK_SKIP_TESTS=1 skips them where another
+#      job has run them
 #   2. the hotspot list and CODEOWNERS agree
 #   3. the PORT: lines in op/ (listed, never a failure) and the SFCOP_FIX sites there (a failure:
-#      fixes to game code are override units under src/fixes/overrides/, DESIGN §6.9)
-#   4. the progress gate: no function loses exact or functional status (scripts/progress.py)
-#   5. the matched-set gate: no score drops below the base branch's (harness/build-and-verify.sh)
-#   6. the C++ tests (every CTest test, after building the executables they run), when the
-#      native build is configured here
-#   7. the replay oracle, when a recorded trace, the native client and a prepared data folder
-#      exist (src/app/oracle/README.md)
+#      a fix to game code never goes in op/)
+#   4. the progress gate: no function loses its status (scripts/progress.py)
+#   5. the matched-set gate: no score drops below the base branch's. With the install and the
+#      compiler image, every matched function is rebuilt (harness/build-and-verify.sh), unless
+#      every changed file is documentation (scripts/rebuild_scope.py); otherwise only the
+#      recorded scores are compared
 #
 # A step whose inputs are absent on this machine prints `skip: <why>` and does not fail; it is
 # never left to pass silently. The base branch's copies are read with `git show <base>:<path>`;
@@ -29,7 +29,11 @@ tmp=$(mktemp -d "${TMPDIR:-/tmp}/sfcop-check.XXXXXX")
 trap 'rm -rf "$tmp"' EXIT INT TERM
 
 echo "== tests"
-python3 -m pytest tests harness/tests -q
+if [ "${CHECK_SKIP_TESTS:-}" = 1 ]; then
+    skip "CHECK_SKIP_TESTS=1: the tests ran in another job"
+else
+    python3 -m pytest tests harness/tests -q
+fi
 
 echo "== hotspot list and CODEOWNERS agree"
 python3 - <<'EOF'
@@ -84,12 +88,20 @@ fi
 echo "== matched set holds the base branch's"
 have_install=$(python3 -c 'import os, sys; sys.path.insert(0, "."); from harness.lib import paths; print(1 if os.path.isfile(paths.EXE) else "")')
 have_image=$(docker image inspect sfcop-msvc6:latest >/dev/null 2>&1 && echo 1 || true)
+scope=rebuild
+if [ -n "$base" ]; then
+    scope=$(python3 scripts/rebuild_scope.py "$base" 2>/dev/null || echo rebuild)
+fi
 if [ -z "$base" ]; then
     skip "no base commit to compare with (set SFCOP_BASE_REF)"
-elif [ -n "$have_install" ] && [ -n "$have_image" ]; then
+elif [ -n "$have_install" ] && [ -n "$have_image" ] && [ "$scope" != skip ]; then
     sh harness/build-and-verify.sh --all --base "$base"
 else
-    skip "no sfcop-msvc6 image or no install: the matched functions are not rebuilt; only their scores are held to $base"
+    if [ "$scope" = skip ]; then
+        skip "only documentation changed since $base: the matched functions are not rebuilt; only their scores are held to it"
+    else
+        skip "no sfcop-msvc6 image or no install: the matched functions are not rebuilt; only their scores are held to $base"
+    fi
     python3 - "$base" <<'EOF'
 import os
 import sys

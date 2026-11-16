@@ -16,11 +16,12 @@ concurrency:
 
 jobs:
   hotspots:
-    # Only work package and feature branches are held to the ownership rule, and a pull
+    # Only work package, grind and feature branches are held to the ownership rule, and a pull
     # request that is itself a contract change says so with a label. When this job is
     # skipped the check counts as passed.
     if: >-
-      (startsWith(github.head_ref, 'wp/') || startsWith(github.head_ref, 'feature/')) &&
+      (startsWith(github.head_ref, 'wp/') || startsWith(github.head_ref, 'grind/') ||
+       startsWith(github.head_ref, 'feature/')) &&
       !contains(github.event.pull_request.labels.*.name, 'contract-change')
     # A git diff and a pattern list: a hosted runner, so it never waits behind a build.
     runs-on: ubuntu-latest
