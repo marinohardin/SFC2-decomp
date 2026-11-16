@@ -692,12 +692,9 @@ tString::iterator tString::iterator::operator++(int)
 {
 	if (!fString)
 		throw "Access to uninitialized iterator";
-	// MATCH-ONLY: the original (/Ob2) inlines the copy constructor (iterator old = *this) here.
-	iterator old;
-	old.fIndex = fIndex;
-	old.fString = fString;
-	if (fIndex + 1 > fString->fInstanceControl.fDataCount)
+	int32 index = fIndex;
+	if (index + 1 > fString->fInstanceControl.fDataCount)
 		throw "Access past bounds of tString";
-	fIndex++;
-	return old;
+	fIndex = index + 1;
+	return iterator(index, fString);
 }
