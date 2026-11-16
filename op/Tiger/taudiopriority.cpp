@@ -337,3 +337,11 @@ iTruth tAudioPriorityManagerPart::mIsReady( void )
 		return kTrue;
 	return kFalse;
 }
+
+// FUNCTION: STARFLEETOP 0x00662520
+void tAudioPriorityManagerPart::mActivate( void )
+{
+	f0c = NULL;
+	f10 = 0;
+	f14 = 0;
+}
