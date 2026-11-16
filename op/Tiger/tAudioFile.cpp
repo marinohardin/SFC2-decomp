@@ -20,7 +20,7 @@ public:
 };
 
 template <class T>
-inline tSafeArray<T>::~tSafeArray()
+inline void tSafeArray<T>::fn_Clear()
 {
     if (field_18 == 1)
     {
@@ -48,6 +48,12 @@ inline tSafeArray<T>::~tSafeArray()
     }
     field_0c = 0;
     field_10 = 0;
+}
+
+template <class T>
+inline tSafeArray<T>::~tSafeArray()
+{
+    fn_Clear();
 }
 
 // FUNCTION: STARFLEETOP 0x00657770
@@ -93,4 +99,16 @@ void tAudioFileInfoPart::mActivate()
 {
     _InitSoundFileIO();
     field_2c = new tStandardMemoryArray<tAsynchReadInfo>(0x80);
+}
+
+// FUNCTION: STARFLEETOP 0x00657b60
+void tAudioFileInfoPart::mDeactivate()
+{
+    field_0c.fn_Clear();
+    if (field_2c)
+    {
+        delete field_2c;
+        field_2c = 0;
+    }
+    _DoneSoundFileIO();
 }

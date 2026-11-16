@@ -19,6 +19,11 @@ public:
     tSafeArray();
     virtual ~tSafeArray();
 
+    // HYPOTHESIS: the destructor and tAudioFileInfoPart::mDeactivate (0x00657b60) share this
+    // inlined clear (delete the items, free both blocks, zero the counts); a separate method is
+    // what makes the counts' stores precede the next member's load. Its name is not recovered.
+    void fn_Clear();
+
     T *field_04;
     long field_08;
     unsigned long field_0c;
@@ -51,6 +56,7 @@ public:
     virtual ~tAudioFileInfoPart();
 
     virtual void mActivate();
+    virtual void mDeactivate();
 
     virtual void vfn_18();
     virtual void vfn_1c();
