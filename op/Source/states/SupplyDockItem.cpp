@@ -7,7 +7,7 @@ class tObject_0045e574
 public:
 	tObject_0045e574();
 	~tObject_0045e574();
-	void fn_004d269b( long arg1, void *a, void *b );
+	void fn_004d269b( long arg1, void *a, bool b );
 	void fn_004d2797( long arg1, void *a, long arg3 );
 
 	char m00[0x64];
@@ -26,11 +26,11 @@ public:
 	virtual void vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7();
-	virtual void vfunction8( void *a, void *b );
-	virtual void vfunction9() = 0;
-	virtual void vfunction10() = 0;
+	virtual void vfunction8( void *a, bool b );
+	virtual long vfunction9() = 0;
+	virtual long vfunction10() = 0;
 	virtual double vfunction11();
-	virtual void vfunction12() = 0;
+	virtual long vfunction12() = 0;
 
 	long m04;
 	long m08;
@@ -80,7 +80,7 @@ void tSupplyDockItem::vfunction6()
 // HYPOTHESIS: m10 looks like the 0x64-byte class tPanelMgr holds at +0x100 (declared only in
 // tPanelMgr.cpp), whose 0x004d269b there takes two pointers and a flag.
 // FUNCTION: STARFLEETOP 0x004861f4
-void tSupplyDockItem::vfunction8( void *a, void *b )
+void tSupplyDockItem::vfunction8( void *a, bool b )
 {
 	m10.fn_004d269b( m04, a, b );
 }
@@ -104,6 +104,8 @@ class tSupplyDockShuttles : public tSupplyDockItem
 public:
 	tSupplyDockShuttles( long arg1, long arg2, long arg3, long mask, long arg5 );
 
+	virtual void vfunction3();
+
 	long m7c;
 };
 
@@ -119,4 +121,32 @@ tSupplyDockShuttles::tSupplyDockShuttles( long arg1, long arg2, long arg3, long 
 	m10.fn_004d2797( 0x11015, g_0084bb50, 0 );
 	// HYPOTHESIS: the base stores the "mask" argument as a long; here it is used as an object.
 	m7c = ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
+}
+
+#include "Tiger/tstring.h"
+
+// HYPOTHESIS: a free cdecl function taking a string id and a tString by value; its unit is
+// not written yet.
+void fn_004d33d4( long id, tString text );
+
+// FUNCTION: STARFLEETOP 0x00486296
+void tSupplyDockShuttles::vfunction3()
+{
+	tString text;
+
+	text = "";
+	text.mAppendInt32s( vfunction10() );
+	fn_004d33d4( 0x11010, text );
+	text = "";
+	text.mAppendInt32s( vfunction9() );
+	fn_004d33d4( 0x11011, text );
+	text = "";
+	text.mAppendInt32s( vfunction11() );
+	fn_004d33d4( 0x11012, text );
+	text = "";
+	text.mAppendInt32s( vfunction12() );
+	fn_004d33d4( 0x11013, text );
+
+	vfunction8( g_0084bb4c, vfunction10() > 0 );
+	vfunction8( g_0084bb50, vfunction10() < vfunction9() );
 }
