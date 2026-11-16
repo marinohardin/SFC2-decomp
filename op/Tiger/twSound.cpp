@@ -162,27 +162,6 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -204,10 +183,31 @@ class twSoundPart : public tgSoundPart
 public:
 	virtual	void	mDetermineHardwareCaps		( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
+	// HYPOTHESIS: these are twSoundPart's own virtuals (the SDK library's symbols), declared
+	// after the two above so their slots are unchanged; their own slot order is not recovered.
+	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
+	virtual	long	mGetMinFrequency			( void );
+	virtual	long	mGetMaxFrequency			( void );
+	virtual	long	mGetMaxHwBuffers			( void );
+	virtual	long	mGetMaxHwStaticBuffers		( void );
+	virtual	long	mGetMaxHwStreamingBuffers	( void );
+	virtual	long	mGetMaxHw3DBuffers			( void );
+	virtual	long	mGetFreeHwBuffers			( void );
+	virtual	long	mGetFreeHwStaticBuffers		( void );
+	virtual	long	mGetFreeHwStreamingBuffers	( void );
+	virtual	long	mGetFreeHw3DBuffers			( void );
+	virtual	long	mGetTotalHwMemBytes			( void );
+	virtual	long	mGetFreeHwMemBytes			( void );
+	virtual	long	mGetMaxContigFreeHwMemBytes	( void );
+	virtual	long	mGetPlayCpuOverheadSwBuffers	( void );
+	virtual	long	mGetTransferToHardwareRateInKBytesPerSec	( void );
 
 	// HYPOTHESIS: the fields between tgSoundPart's and the DirectSound object are not known.
 	char			fUnknown_0130[0x8];
 	LPDIRECTSOUND	fDirectSound;
+	// The DirectSound capabilities: mDetermineHardwareCaps (0x00645bb0) clears these 0x60
+	// bytes, sets dwSize to 0x60 and passes them to GetCaps. The name is ours.
+	DSCAPS			field_0x13c;
 };
 
 // HYPOTHESIS: the original was built against the DirectX 7 headers, whose
@@ -1358,4 +1358,106 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 		}
 	}
 	return kTrue;
+}
+
+// MATCH-ONLY: puts this file's own line numbering back for the functions below.
+#line 1365
+
+// The getters below each return one DSCAPS field. Six of their addresses carry other classes'
+// names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
+// getters, matched to the DSCAPS field each reads.
+// FUNCTION: STARFLEETOP 0x00645940
+LPDIRECTSOUND*	twSoundPart::mDirectSoundObject( void )
+{
+	return &fDirectSound;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ac0
+long	twSoundPart::mGetMinFrequency( void )
+{
+	return field_0x13c.dwMinSecondarySampleRate;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ad0
+long	twSoundPart::mGetMaxFrequency( void )
+{
+	return field_0x13c.dwMaxSecondarySampleRate;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ae0
+long	twSoundPart::mGetMaxHwBuffers( void )
+{
+	return field_0x13c.dwMaxHwMixingAllBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645af0
+long	twSoundPart::mGetMaxHwStaticBuffers( void )
+{
+	return field_0x13c.dwMaxHwMixingStaticBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b00
+long	twSoundPart::mGetMaxHwStreamingBuffers( void )
+{
+	return field_0x13c.dwMaxHwMixingStreamingBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b10
+long	twSoundPart::mGetMaxHw3DBuffers( void )
+{
+	return field_0x13c.dwMaxHw3DStaticBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b20
+long	twSoundPart::mGetFreeHwBuffers( void )
+{
+	return field_0x13c.dwFreeHwMixingAllBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b30
+long	twSoundPart::mGetFreeHwStaticBuffers( void )
+{
+	return field_0x13c.dwFreeHwMixingStaticBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b40
+long	twSoundPart::mGetFreeHwStreamingBuffers( void )
+{
+	return field_0x13c.dwFreeHwMixingStreamingBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b50
+long	twSoundPart::mGetFreeHw3DBuffers( void )
+{
+	return field_0x13c.dwFreeHw3DStaticBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b60
+long	twSoundPart::mGetTotalHwMemBytes( void )
+{
+	return field_0x13c.dwTotalHwMemBytes;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b70
+long	twSoundPart::mGetFreeHwMemBytes( void )
+{
+	return field_0x13c.dwFreeHwMemBytes;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b80
+long	twSoundPart::mGetMaxContigFreeHwMemBytes( void )
+{
+	return field_0x13c.dwMaxContigFreeHwMemBytes;
+}
+
+// FUNCTION: STARFLEETOP 0x00645b90
+long	twSoundPart::mGetPlayCpuOverheadSwBuffers( void )
+{
+	return field_0x13c.dwPlayCpuOverheadSwBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ba0
+long	twSoundPart::mGetTransferToHardwareRateInKBytesPerSec( void )
+{
+	return field_0x13c.dwUnlockTransferRateHwBuffers;
 }
