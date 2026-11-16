@@ -525,7 +525,7 @@ unsigned char	tBasicSoundFileManager::mAddRegisteredAudioType( char * name, unsi
 // library's symbols for the entries; the declaration in Tiger/taudiochannel.cpp has another order.
 // Slot 7 of the manager part
 // takes a group index and returns the group, as the SDK library's mGetChannelGroup does.
-class tChannelGroup { public: virtual void mAddOwner(); virtual void mRemoveOwner(); virtual unsigned char mAttachSoundToChannel(unsigned long param_1, tSoundSelection *param_2, long param_3); virtual unsigned char mAttachFileToChannel(unsigned long param_1, long param_2); virtual unsigned char mAttachFileToBaseGroup(long param_1); virtual unsigned char mKillRetainedMode(); virtual unsigned char mClearAttachments(); virtual unsigned char mPlayChannel(unsigned long param_1, long param_2); virtual unsigned char mPauseChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndResetChannel(unsigned long param_1, long param_2); };
+class tChannelGroup { public: virtual void mAddOwner(); virtual void mRemoveOwner(); virtual unsigned char mAttachSoundToChannel(unsigned long param_1, tSoundSelection *param_2, long param_3); virtual unsigned char mAttachFileToChannel(unsigned long param_1, long param_2); virtual unsigned char mAttachFileToBaseGroup(long param_1); virtual unsigned char mKillRetainedMode(); virtual unsigned char mClearAttachments(); virtual unsigned char mPlayChannel(unsigned long param_1, long param_2); virtual unsigned char mPauseChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndResetChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndClearChannel(unsigned long param_1, long param_2); };
 class tChannelGroupManagerPart : public tPart { public: GenAbstractBinding(tChannelGroupManagerPart); virtual unsigned long vfunction6(); virtual tChannelGroup * mGetChannelGroup(unsigned long index); };
 
 // FUNCTION: STARFLEETOP 0x00664b00
@@ -601,6 +601,19 @@ unsigned char	tBasicSoundFileManager::mStopAndResetChannel( unsigned long handle
 		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
 		if ( channelGroup )
 			return channelGroup->mStopAndResetChannel( handle, -1 );
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00665030
+unsigned char	tBasicSoundFileManager::mStopAndClearChannel( unsigned long handle )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mStopAndClearChannel( handle, -1 );
 	}
 	return 0;
 }
