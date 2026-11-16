@@ -110,3 +110,67 @@ tDir WinParseDir(tSession session, tString &path)
     }
     return dir;
 }
+
+// HYPOTHESIS: the buffers the volume root is copied into for the system calls; their names are
+// not recovered.
+extern char g_00c3caec[MAX_PATH];
+extern iWideChar g_00c3cbf0[MAX_PATH];
+
+// HYPOTHESIS: only the parse and the volume queries are written. Where a query succeeds, the
+// original builds a twVolume from the label and the root (its constructor expanded inline), makes
+// its cookie through the tFSCookiePart's volume cookie manager and returns that; twVolume and
+// tFSCookiePart are declared only in tgfsys.cpp and cannot be repeated here.
+// FUNCTION: STARFLEETOP 0x0062efe0
+tVolume WinParseVolume(tSession session, tString &path)
+{
+    tVolume volume;
+    tString root;
+    char name[MAX_PATH];
+    WCHAR wideName[MAX_PATH];
+
+    if (path[1] == ':')
+    {
+        tString drive(path);
+        drive.mEndStrAt(drive.mStrChr('\\') + 1);
+        root = drive;
+        drive = tString(path.mStrChr('\\') + 1);
+        path = drive;
+    }
+    else if (path[0] == '\\' && path[1] == '\\')
+    {
+        tString first(path);
+        tString second(first.mStrChr('\\') + 1);
+        tString server(second.mStrChr('\\') + 1);
+        tString share(server.mStrChr('\\') + 1);
+        tString rest(share.mStrChr('\\') + 1);
+        first.mEndStrAt(first.mStrChr('\\') + 1);
+        second.mEndStrAt(second.mStrChr('\\') + 1);
+        server.mEndStrAt(server.mStrChr('\\') + 1);
+        share.mEndStrAt(share.mStrChr('\\') + 1);
+        first += second;
+        first += server;
+        first += share;
+        root = first;
+        path = rest;
+    }
+    else
+        throw "Whoa!  Unknown volume descriptor just got thrown at me!";
+
+    root.mCopyWideStr(g_00c3cbf0, MAX_PATH);
+    if (GetVolumeInformationW(g_00c3cbf0, wideName, 254, NULL, NULL, NULL, NULL, 0))
+    {
+        tString label(wideName);
+        tString volRoot(root);
+    }
+    else
+    {
+        if (GetLastError() != ERROR_CALL_NOT_IMPLEMENTED)
+            throw "Windows hates us.  We cannot win.";
+        root.mCopyCharStr(g_00c3caec, MAX_PATH);
+        if (!GetVolumeInformationA(g_00c3caec, name, 254, NULL, NULL, NULL, NULL, 0))
+            throw "Windows hates us.  We cannot win.";
+        tString label(name);
+        tString volRoot(root);
+    }
+    return volume;
+}
