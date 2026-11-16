@@ -155,8 +155,6 @@ public:
 
 
 
-
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -354,10 +352,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
-
-
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -401,8 +395,14 @@ protected:
 	unsigned char	mDoActiveUpdate	( double );
 	virtual unsigned char	mUpdateBuffersAndSelections	( double );
 	virtual unsigned char	mUpdateAmountPlayed	( void );
-	// HYPOTHESIS: this class's own virtual, after tSoundChannel's slots; its slot is not recovered.
+	// HYPOTHESIS: this class's own virtuals follow tSoundChannel's 122 slots: the getter at 125
+	// and mCreate3DBuffer at 128 are called through the vtable; the others are not recovered.
+	virtual void vfunction122(); virtual void vfunction123();
+	virtual LPDIRECTSOUNDBUFFER mGetfDSBuffer();
+	virtual void vfunction126(); virtual void vfunction127();
 	virtual unsigned char	mCreate3DBuffer	( void );
+public:
+	virtual unsigned char	mDuplicateSoundChannel	( long, long );
 };
 
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
@@ -1380,6 +1380,131 @@ unsigned char twStandardSoundChannel::mCreate3DBuffer( void )
 		return kTrue;
 	return kFalse;
 }
+
+// MATCH-ONLY: the #line directives inside set the original's line numbers for its three
+// " -- %s %d" messages (1425, 1430, 1536); the last one puts this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x006435b0
+unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long param_2 )
+{
+	twStandardSoundChannel* source = (twStandardSoundChannel*)atgSoundPart->mGetSoundChannelPtrFromHandle( param_1 );
+	if( source == NULL || fSoundBuffer != NULL )
+		return kFalse;
+
+	field_0x10 = *source->mGetSoundChannelFormat();
+	vfunc_20( param_2 );
+	fUnknown_0180.dwFlags			= source->fUnknown_0180.dwFlags;
+	fUnknown_0180.dwBufferBytes		= source->fUnknown_0180.dwBufferBytes;
+	fUnknown_01a4.nChannels			= source->fUnknown_01a4.nChannels;
+	fUnknown_01a4.nSamplesPerSec	= source->fUnknown_01a4.nSamplesPerSec;
+	fUnknown_01a4.wBitsPerSample	= source->fUnknown_01a4.wBitsPerSample;
+	fUnknown_01a4.nBlockAlign		= source->fUnknown_01a4.nBlockAlign;
+	fUnknown_01a4.nAvgBytesPerSec	= source->fUnknown_01a4.nAvgBytesPerSec;
+	fSoundBuffer = NULL;
+
+	if( mAreWeStreaming() == kTrue && mAreWe3D() == kTrue )
+	{
+#line 1425
+		SOUNDSAY2(( "3D sounds can not be streaming!!!" ));
+		return kFalse;
+	}
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1430
+		SOUNDSAY2(( "3D channels must be mono!" ));
+		return kFalse;
+	}
+
+	if( mAreWeStatic() )
+	{
+		atwSoundPart->fDirectSound->DuplicateSoundBuffer( source->mGetfDSBuffer(), &fSoundBuffer );
+		field_0x168 = source->mGetAmountThatCanBeAdded();
+	}
+
+	// HYPOTHESIS: set once a streaming buffer was created, the way the selections are
+	// copied below.
+	unsigned char created = kFalse;
+	if( mAreWeStreaming() )
+	{
+		HRESULT err = atwSoundPart->fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&fUnknown_0180, &fSoundBuffer, NULL );
+		field_0x168 = (&field_0x10)->vfunction3();
+		created = kTrue;
+		if( err != DS_OK )
+			return kFalse;
+	}
+
+	gNumBuffersCreated++;
+	if( mAreWe3D() == kTrue )
+	{
+		if( mCreate3DBuffer() != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+	}
+	else
+		fUnknown_01bc = NULL;
+
+	field_0x28 = 4;
+	atgSoundPart->mAddChannelAtHandle( this, param_2 );
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mInit();
+	attributes->mSetFrequency( (&field_0x10)->vfunction7() );
+	field_0x94 = (&field_0x10)->vfunction12();
+	field_0x98 = (&field_0x10)->vfunction13();
+
+	field_0x110 = 0;
+	field_0x164 = 0;
+	field_0x15c = 0;
+	field_0x160 = 0;
+	if( fSoundBuffer && fSoundBuffer->SetCurrentPosition( 0 ) != DS_OK )
+	{
+		mRemoveSoundChannel();
+		return kFalse;
+	}
+
+	if( BindPart( tSoundPart )->vfunction13() == 1 )
+	{
+		if( vfunction32( 0 ) != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+		return kTrue;
+	}
+
+	if( mDoWeRetainSelections() == kTrue )
+	{
+		tSoundCommandList* list = source->mGetAttachmentsList();
+		tSoundChannelCommand* command = list->vfunction5();
+		tSoundChannelCommand* first = command;
+		while( command )
+		{
+			tSoundSelection* selection = command->vfunction32();
+			command = list->vfunction14( command );
+			if( selection == NULL )
+				first = command;
+		}
+		while( first )
+		{
+			tSoundSelection* copy = first->vfunction32()->vfunction42();
+			if( created )
+				copy->vfunction20();
+			long handle = atgSoundPart->mCreateCommand( 0, (long)copy, 0 );
+			if( handle == -1 )
+			{
+#line 1536
+				SOUNDSAY2(( "Command troubles!" ));
+			}
+			else
+				mAddAttachment( handle );
+			first = list->vfunction14( first );
+		}
+		mAutoRemoveSelections();
+	}
+	mAutoRemoveChannel();
+	return kTrue;
+}
+#line 1508
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart

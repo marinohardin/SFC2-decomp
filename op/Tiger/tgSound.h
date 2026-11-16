@@ -69,7 +69,7 @@ public:
     virtual long vfunction7();
     virtual void vfunction8(); virtual long vfunction9(); virtual void vfunction10(); virtual void vfunction11();
     virtual long vfunction12();
-    virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
+    virtual long vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
     virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24();
     virtual void vfunction25();
     // HYPOTHESIS: tSoundChannel::mDump calls slot 26 to dump the format; its name is not recovered
@@ -135,18 +135,18 @@ class tChannelAttributes
 {
 public:
     tChannelAttributes();
-    virtual void mSetFrequency(long frequency);
+    virtual void vfunction0();
     virtual void mInit();
-    virtual void mDump();
+    // HYPOTHESIS: slot 2 sets the frequency (mDuplicateSoundChannel passes it the format's
+    // sample rate); the exe's dump of the attributes is slot 29.
+    virtual void mSetFrequency(long frequency);
     virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6();
     virtual void vfunction7(long volume);
     virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
     virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
     virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
     virtual void vfunction26(); virtual void vfunction27(); virtual void vfunction28();
-    // HYPOTHESIS: tSoundChannel::mDump calls slot 29 to dump the attributes; its name is not
-    // recovered
-    virtual void vfunction29();
+    virtual void mDump();
 
     // The t3DSoundProfile member makes the class 8-aligned, so the vtable pointer is padded to 8.
     long mFrequency;  // HYPOTHESIS: 22050 at construction, so the frequency in Hz
@@ -176,7 +176,7 @@ public:
     virtual long vfunction27();
     virtual void vfunction28(); virtual void vfunction29(); virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32(); virtual void vfunction33();
     virtual void vfunction34(); virtual void vfunction35(); virtual void vfunction36(); virtual void vfunction37(); virtual void vfunction38(); virtual void vfunction39();
-    virtual void vfunction40(); virtual void vfunction41(); virtual void vfunction42();
+    virtual void vfunction40(); virtual void vfunction41(); virtual tSoundSelection* vfunction42();
     virtual void mDump();
 };
 
@@ -315,7 +315,7 @@ class tSoundChannel : public tListMemberWithHandle
 public:
     virtual ~tSoundChannel();
     virtual void mDump();
-    virtual void mGetAttachmentsList();
+    virtual tSoundCommandList* mGetAttachmentsList();
     virtual iTruth mPlaySpecialLoop(long param_1, long param_2, long param_3, long param_4);
     virtual iTruth mEndSpecialLoop();
     virtual iTruth mAddDelayedCommand(long handle);
@@ -323,7 +323,7 @@ public:
     virtual iTruth mAddAttachment(long handle);
     virtual iTruth mAddImmediateNonInterruptCommandCommand(long handle);
     virtual long mGetUpdateMode();
-    virtual void mGetAmountThatCanBeAdded();
+    virtual long mGetAmountThatCanBeAdded();
     virtual void mDone();
     virtual void mInit();
     virtual void mLockInData();
@@ -337,7 +337,7 @@ public:
     virtual tSoundChannelCommand* mGetFirstDelayedCommand();
     virtual tSoundChannelCommand* mGetFirstAttachment();
     virtual tSoundSelection* mGetLastSelectionToAttach();
-    virtual void vfunction32(long value) = 0;
+    virtual iTruth vfunction32(long value) = 0;
     virtual void vfunction33();
     virtual tSoundSelection* mGetSelectionToAttach();
     virtual tSoundChannelCommand* mGetFirstPlayingCommand();
@@ -358,7 +358,7 @@ public:
     virtual void mGet3DSoundConeAngleForNoAttenuation();
     virtual void mGet3DSoundConeAttenuationLevel();
     virtual long vfunction52();
-    virtual void mGetSoundChannelFormat();
+    virtual tSoundChannelFormat* mGetSoundChannelFormat();
     virtual long mGetBufferLength();
     virtual void mGetNumChannels();
     virtual void mGetBytesPerSample();
@@ -377,7 +377,7 @@ public:
     virtual void mGetNumberOfAttachments();
     virtual iTruth mAreWeLooping();
     virtual iTruth mAreWeStreaming();
-    virtual void mAreWe3D();
+    virtual iTruth mAreWe3D();
     virtual iTruth mAreWeStatic();
     virtual void mAreWeFixedFrequency();
     virtual void mAreWeARecordingChannel();

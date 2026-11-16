@@ -7219,6 +7219,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006435b0": {
+   "name": "twStandardSoundChannel::mDuplicateSoundChannel",
+   "symbol": "?mDuplicateSoundChannel@twStandardSoundChannel@@UAEEJJ@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 1408,
+   "score": 99.589,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",
