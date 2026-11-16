@@ -273,29 +273,10 @@ fn_00486500_value g_009157a8;
 // FUNCTION: STARFLEETOP 0x00486554
 fn_00486500_value g_00915788;
 
-// HYPOTHESIS: the object 0x0055e60f returns; the constructor below sets the bytes at +0xc
-// and +0xd to 1.
-class fn_0055e60f_object
-{
-public:
-	long fn_00451c03();
-	long fn_00451c18();
-	short fn_00451c2d();
-
-	char m00[0xc];
-	bool m0c;
-	bool m0d;
-};
-
-// HYPOTHESIS: the object 0x00447ce4 returns when called on the base's +0x74 object.
-class fn_00447ce4_object
-{
-public:
-	fn_0055e60f_object *fn_0055e60f();
-};
-
-// HYPOTHESIS: RTTI names the class tStoresState::tMissileInfo; only its constructor
-// (0x004514fd) and 0x0045154e are used here, and the unwind frame shows a destructor.
+// HYPOTHESIS: RTTI names the class tStoresState::tMissileInfo; its constructor (0x004514fd)
+// and 0x0045154e are used here, and the unwind frame shows a destructor. 0x0045154e is
+// called both as m80.fn( m7c ) and m7c->fn( &m80 ), so 0x0055e60f returns one too; the
+// constructor below sets its bytes at +0xc and +0xd to 1.
 class tStoresState
 {
 public:
@@ -304,8 +285,22 @@ public:
 	public:
 		tMissileInfo();
 		~tMissileInfo();
-		void fn_0045154e( fn_0055e60f_object *info );
+		void fn_0045154e( tMissileInfo *info );
+		long fn_00451c03();
+		long fn_00451c18();
+		short fn_00451c2d();
+
+		char m00[0xc];
+		bool m0c;
+		bool m0d;
 	};
+};
+
+// HYPOTHESIS: the object 0x00447ce4 returns when called on the base's +0x74 object.
+class fn_00447ce4_object
+{
+public:
+	tStoresState::tMissileInfo *fn_0055e60f();
 };
 
 // HYPOTHESIS: vtable 0x0079fcf4; vfunction9, 10 and 12 are pure in the base, so this class
@@ -316,11 +311,12 @@ public:
 	tSupplyDockMissiles( long arg1, long arg2, long arg3, long mask, long arg5 );
 
 	virtual void vfunction3();
+	virtual void vfunction4();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
 
-	fn_0055e60f_object *m7c;
+	tStoresState::tMissileInfo *m7c;
 	tStoresState::tMissileInfo m80;
 };
 
@@ -416,4 +412,11 @@ void tSupplyDockMissiles::vfunction3()
 
 	fn_004d346f( g_0084bff4, m04 );
 	fn_004d346f( g_0084bfe4, m04 );
+}
+
+// FUNCTION: STARFLEETOP 0x004869a1
+void tSupplyDockMissiles::vfunction4()
+{
+	m7c->fn_0045154e( &m80 );
+	vfunction3();
 }
