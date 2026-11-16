@@ -858,10 +858,13 @@ public:
 	long fn_004876bf( long i );
 	double fn_004876d0( long i );
 	long fn_004876df( long i );
+	// HYPOTHESIS: a member taking the index and the count saved at construction.
+	void fn_00487757( long i, long count );
 
 	virtual long vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
+	virtual void vfunction4();
 
 	long m7c[3];
 };
@@ -941,4 +944,11 @@ void tSupplyDockMisc::vfunction3()
 	vfunction8( g_0084bbdc, fn_004876bf( 1 ) < fn_004876ae( 1 ) );
 	vfunction8( g_0084bbe0, fn_004876bf( 2 ) > 0 );
 	vfunction8( g_0084bbe4, fn_004876bf( 2 ) < fn_004876ae( 2 ) );
+}
+
+// FUNCTION: STARFLEETOP 0x0048761d
+void tSupplyDockMisc::vfunction4()
+{
+	for( long i = 0; i < 3; i++ )
+		fn_00487757( i, m7c[i] );
 }
