@@ -2,6 +2,7 @@
 // Evidence:  class (original file unknown)
 
 #include "unsorted/tEntity.h"
+#include "unsorted/fn_0090bed4_Object.h"
 
 // From the SDK's sfcstreams.h.
 extern void ArchiveInt32TM(int32 &num, tSFCStream &s, int32u mode, char *text);
@@ -138,8 +139,39 @@ float tEntity::vfunction14()
 	return fRadius;
 }
 
-// HYPOTHESIS: the original's destructor (0x0040ffc9) is not recovered yet; this one is empty.
-tEntity::~tEntity() {}
+// HYPOTHESIS: the list 0x00426f1a returns for a team; 0x00426b63 takes an entity ID out of it.
+class tObject_00426b63
+{
+public:
+	void fn_00426b63(tID aID);
+};
+
+// FUNCTION: STARFLEETOP 0x0040ffc9
+tEntity::~tEntity()
+{
+	tEntity::vfunction17();
+	if (fField64 != -1)
+		g_p0090bed4->fn_005229b9(this);
+	tObject_00426b63 *pList = (tObject_00426b63 *)gObject_0090be60->fn_00426f1a(fTeam);
+	if (pList)
+		pList->fn_00426b63(fID);
+	if (fField14) {
+		delete fField14;
+		fField14 = 0;
+	}
+	if (fField68) {
+		tEntity::vfunction20(fField68);
+		delete fField68;
+		fField68 = 0;
+	}
+	tObject_0040ffc9_node *pNode = fField10;
+	while (pNode) {
+		tObject_0040ffc9_node *pNext = pNode->fNext;
+		pNode->vfunction2();
+		pNode = pNext;
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x0040ffad
 // MATCH-ONLY: the scalar deleting destructor, written out as a member that calls the destructor.
 tEntity *tEntity::scalar_deleting_destructor(unsigned char flags)

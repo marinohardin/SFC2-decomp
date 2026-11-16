@@ -97,6 +97,9 @@ class tObjBase
 public:
 	// HYPOTHESIS: 0x0067cb70 in the SDK library range; it sets vftable 0x0079ee08 and +0x34 to +0x5c.
 	tObjBase();
+	// HYPOTHESIS: 0x0067d870; the fleet panel's constructor calls it on its fleet form's +0xc with
+	// the form and the form's +0x8 until +0x8 is clear, so it takes a child out of the form.
+	void fn_0067d870( tVisObject *pForm, tVisObject *pChild );
 	virtual void vfunction1();
 	virtual void vfunction2();
 	// HYPOTHESIS: +0x8 measures a run of text in a font, -1 for the whole string;
@@ -129,7 +132,7 @@ public:
 	tRect field_34;
 	unsigned char field_3C[ 0x40 - 0x3c ];
 	int field_40;	// HYPOTHESIS: flags; tListBox_Select::vfunction31 handles a click only when bit 0 is set
-	unsigned char field_44[ 0x48 - 0x44 ];
+	int field_44;	// HYPOTHESIS: a delay or interval; the fleet panel's constructor (0x0048bd4d) sets its fleet form's to 3000
 	int field_48;
 	unsigned char field_4C[ 0x60 - 0x4c ];
 };

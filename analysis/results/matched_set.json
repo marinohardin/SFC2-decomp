@@ -802,6 +802,15 @@
    "exact": true,
    "recorded": "2026-11-13"
   },
+  "0x0040ffc9": {
+   "name": "tEntity::~tEntity",
+   "symbol": "??1tEntity@@UAE@XZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 132,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0041004d": {
    "name": "tEntity::vfunction11",
    "symbol": "?vfunction11@tEntity@@UAEXAAVtSFCStream@@I@Z",
@@ -1776,12 +1785,12 @@
   },
   "0x0042984d": {
    "name": "FUN_0042984d",
-   "symbol": "?fn_00429857@tClientCharacter@@QAEAAV1@ABV1@@Z",
+   "symbol": "?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 459,
-   "score": 5.604,
+   "score": 99.847,
    "exact": false,
-   "recorded": "2026-11-11"
+   "recorded": "2026-11-16"
   },
   "0x00429a18": {
    "name": "FUN_00429a18",
@@ -1797,36 +1806,36 @@
    "symbol": "??0tClientCharacter@@QAE@ABV0@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 396,
-   "score": 7.805,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x00429bb2": {
    "name": "FUN_00429bb2",
-   "symbol": "??0tClientCharacter@@QAE@H@Z",
+   "symbol": "??0tClientCharacter@@QAE@PBVtObject_00543551@@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 340,
-   "score": 89.571,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x00429d06": {
    "name": "FUN_00429d06",
-   "symbol": "?fn_00429d10@tClientCharacter@@QAEXPBVtObject_00543551@@@Z",
+   "symbol": "?fn_00429d06@tClientCharacter@@QAEXPBVtObject_00543551@@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 519,
-   "score": 95.186,
+   "score": 99.906,
    "exact": false,
-   "recorded": "2026-11-11"
+   "recorded": "2026-11-16"
   },
   "0x00429f0d": {
    "name": "tClientCharacter::vfunction2",
-   "symbol": "?fn_00429f17@tClientCharacter@@QAEXPAVtObject_00429f17@@@Z",
+   "symbol": "?fn_00429f0d@tClientCharacter@@QAEXPAVtObject_00429f17@@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 471,
-   "score": 0.856,
+   "score": 1.066,
    "exact": false,
-   "recorded": "2026-11-11"
+   "recorded": "2026-11-16"
   },
   "0x0042a0fc": {
    "name": "FUN_0042a0fc",
@@ -1932,9 +1941,9 @@
    "symbol": "?fn_0043127f@tNetControl@@QAEXXZ",
    "unit": "unsorted/tNetControl.cpp",
    "size": 589,
-   "score": 99.973,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004314c2": {
    "name": "FUN_004314c2",
@@ -3066,9 +3075,9 @@
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",
    "unit": "unsorted/tFleetPanel.cpp",
    "size": 755,
-   "score": 2.776,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0048c040": {
    "name": "tFleetPanel::scalar_deleting_destructor",
@@ -3396,12 +3405,12 @@
   },
   "0x004c3524": {
    "name": "FUN_004c3524",
-   "symbol": "?fn_004c352e@@YAXPAVtObjBase@@VtObject_004c352e_arg@@@Z",
+   "symbol": "?fn_004c352e@@YAXPAVtObjBase@@VtString@@@Z",
    "unit": "unsorted/tFleetEntry.cpp",
    "size": 93,
-   "score": 99.844,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c36e0": {
    "name": "FUN_004c36e0",
@@ -3453,9 +3462,9 @@
    "symbol": "?fn_004c3a36@tFleetEntry@@QAE_NXZ",
    "unit": "unsorted/tFleetEntry.cpp",
    "size": 858,
-   "score": 99.98,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c619e": {
    "name": "tListBox_Chat_Session::~tListBox_Chat_Session",

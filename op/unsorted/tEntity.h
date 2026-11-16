@@ -184,19 +184,19 @@ public:
 
 #include "unsorted/tObject_0090be60.h"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// HYPOTHESIS: the object at +0x14; the destructor (0x0040ffc9) deletes it through slot 0.
+class tObject_0040ffc9_owned { public: virtual ~tObject_0040ffc9_owned(); };
+// HYPOTHESIS: the object at +0x68, linked through +0x4 and +0x8; vfunction20 (0x00410391)
+// checks that its slot 8 returns the entity and unlinks it before the destructor deletes it.
+class tObject_00410391_link { public: virtual ~tObject_00410391_link(); };
+// HYPOTHESIS: a list at +0x10, linked through +0x4; the destructor calls slot 2 of each.
+class tObject_0040ffc9_node
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	tObject_0040ffc9_node *fNext;	// +0x04
+};
 
 // vfunctionN is slot N-1 of the vftable (0x00795cb4, 22 slots); slot 0 is the scalar deleting
 // destructor.
@@ -231,7 +231,7 @@ public:
 	// HYPOTHESIS: returns an int; tAICaptain's override (0x0051e09a) returns a constant.
 	virtual int vfunction18();
 	virtual void vfunction19();
-	virtual void vfunction20();
+	virtual bool vfunction20(tObject_00410391_link *aLink);	// HYPOTHESIS: unlinks the object at +0x68
 	virtual void vfunction21();
 	virtual void vfunction22();
 	// Names of the archived fields come from the labels the archive function (0x0041004d)
@@ -242,8 +242,8 @@ public:
 	// through this pointer, so it may be the next entity rather than the previous one.
 	tEntity *fPrev;              // +0x08
 	void *fField0C;              // +0x0c
-	void *fField10;              // +0x10
-	void *fField14;              // +0x14
+	tObject_0040ffc9_node *fField10; // +0x10
+	tObject_0040ffc9_owned *fField14; // +0x14
 	// HYPOTHESIS: flag bits as well; 0x00413ea8 tests bits 1, 2 and 14.
 	int32 fClassification;       // +0x18
 	tID fID;                     // +0x1c
@@ -264,7 +264,7 @@ public:
 	iTruth fBelongsToHumanFleet; // +0x5d
 	tID fTeam;                   // +0x60
 	int fField64;                // +0x64
-	unsigned int fField68;       // +0x68
+	tObject_00410391_link *fField68; // +0x68
 	int32 fScriptNotify;         // +0x6c
 	int fField70;                // +0x70, not set by the constructor
 	int fField74;                // +0x74, not set by the constructor
