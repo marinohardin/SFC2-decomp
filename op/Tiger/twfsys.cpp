@@ -227,3 +227,15 @@ tPath twFileSystemPart::mFileOpenDialog(tSession session, tString &prompt, tStri
     }
     return path;
 }
+
+// FUNCTION: STARFLEETOP 0x0062ff80
+iWideChar *gCopyWideStr(tString &str, iWideChar *buffer)
+{
+    if (buffer)
+    {
+        str.mCopyWideStr(buffer, MAX_PATH);
+        return buffer;
+    }
+    str.mCopyWideStr(g_00c3cbf0, MAX_PATH);
+    return g_00c3cbf0;
+}
