@@ -65,3 +65,18 @@ tAudioFileClass *tAudioPriorityManagerPart::mGetAudioFileClassPtrFromHandle( lon
 		return NULL;
 	return f0c[handle];
 }
+
+// HYPOTHESIS: the reference is what slot 1 of each file class returns.
+// FUNCTION: STARFLEETOP 0x006617c0
+long tAudioPriorityManagerPart::mGetAudioFileClassHandleFromReference( long reference )
+{
+	if ( f0c )
+	{
+		for ( long i = 0; i < f14; i++ )
+		{
+			if ( f0c[i] && f0c[i]->vfunction1() == reference )
+				return i;
+		}
+	}
+	return -1;
+}

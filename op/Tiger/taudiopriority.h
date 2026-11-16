@@ -12,7 +12,7 @@ class tAudioFileClass
 {
 	public:
 		virtual		void	vfunction0	( void );
-		virtual		void	vfunction1	( void );
+		virtual		long	vfunction1	( void );
 		virtual		void	vfunction2	( void );
 		virtual		void	vfunction3	( void );
 		virtual		void	vfunction4	( void );
@@ -41,6 +41,7 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		void	vfunction9	( void );
 		virtual		void	vfunction10	( void );
 		virtual		tAudioFileClass *	mGetAudioFileClassPtrFromHandle	( long );
+		virtual		long	mGetAudioFileClassHandleFromReference	( long );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
 
