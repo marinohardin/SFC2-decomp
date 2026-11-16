@@ -552,3 +552,13 @@ iTruth operator== (const tString &s1,const tString &s2)
 		return false;
 	return memcmp(s1.fInstanceControl.fMemSpace.begin(), s2.fInstanceControl.fMemSpace.begin(), s1.fInstanceControl.fDataCount * sizeof(iBasicStringElement)) == 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00624f50
+iTruth operator<  (const tString &s1,const tString &s2)
+{
+	int n = s1.fInstanceControl.fDataCount < s2.fInstanceControl.fDataCount ? s1.fInstanceControl.fDataCount : s2.fInstanceControl.fDataCount;
+	int c = memcmp(s1.fInstanceControl.fMemSpace.begin(), s2.fInstanceControl.fMemSpace.begin(), n * sizeof(iBasicStringElement));
+	if (c == 0 && s1.fInstanceControl.fDataCount < s2.fInstanceControl.fDataCount)
+		return true;
+	return c < 0 ? true : false;
+}
