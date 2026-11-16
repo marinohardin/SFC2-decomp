@@ -50,3 +50,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f53f0	tOSVersion::Instance	99.86	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.86%
 0x00709270	nDatabase::tFileDatabaseMgr::Load	79.66	2	sonnet	2026-11-11T12:40:55Z	attempt 2 (sonnet) did not raise the best; best 79.66%
 0x0062e1c0	twFileSystemPart::mGetVolIterator	0.63	2	sonnet	2026-11-11T12:40:55Z	best not above 90% after 2 attempts; best 0.63%
+0x00643b30	twStandardSoundChannel::mAddSoundChannel	30.95	2	sonnet	2026-11-16T11:02:45Z	best not above 90% after 2 attempts; best 30.95%
