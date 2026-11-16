@@ -1583,3 +1583,16 @@ long	tBasicSoundFileManager::mGetChannelPriority( unsigned long handle, long cha
 	}
 	return -99999999;
 }
+
+// FUNCTION: STARFLEETOP 0x00667750
+long	tBasicSoundFileManager::mGetFrequency( unsigned long handle, long channel )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mGetFrequency( handle, channel );
+	}
+	return -99999999;
+}
