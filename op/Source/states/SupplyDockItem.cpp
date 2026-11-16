@@ -1,5 +1,5 @@
 #include "Common/Exceptions/Validate.h"
-
+class fn_00486500_value;
 // HYPOTHESIS: the 0x64-byte member at +0x10; only its constructor (0x0045e574) is known, and
 // the constructor's unwind frame shows it has a destructor.
 class tObject_0045e574
@@ -9,7 +9,7 @@ public:
 	~tObject_0045e574();
 	void fn_004d269b( long arg1, void *a, bool b );
 	void fn_004d2797( long arg1, void *a, long arg3 );
-
+	void fn_004d26fb( fn_00486500_value *value, void *a );
 	char m00[0x64];
 };
 // HYPOTHESIS: layout from the constructor's stores; 0x7c bytes per the RTTI recovery. The
@@ -91,6 +91,8 @@ double tSupplyDockItem::vfunction11()
 	return 0.0;
 }
 
+class fn_00447ce4_object;
+
 // HYPOTHESIS: the object the base keeps at +0x74 ("mask"); only 0x004479b4 is called on it.
 class fn_004479b4_object
 {
@@ -98,6 +100,7 @@ public:
 	long fn_004479b4( long arg1 );
 	void fn_00447926( long arg1, long arg2 );
 	long fn_00447a54( long arg1 );
+	fn_00447ce4_object *fn_00447ce4();
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -264,3 +267,83 @@ fn_00486500_value g_009157a8;
 // FUNCTION: STARFLEETOP 0x0048655e
 // FUNCTION: STARFLEETOP 0x00486554
 fn_00486500_value g_00915788;
+
+// HYPOTHESIS: the object 0x0055e60f returns; the constructor below sets the bytes at +0xc
+// and +0xd to 1.
+class fn_0055e60f_object
+{
+public:
+	char m00[0xc];
+	bool m0c;
+	bool m0d;
+};
+
+// HYPOTHESIS: the object 0x00447ce4 returns when called on the base's +0x74 object.
+class fn_00447ce4_object
+{
+public:
+	fn_0055e60f_object *fn_0055e60f();
+};
+
+// HYPOTHESIS: RTTI names the class tStoresState::tMissileInfo; only its constructor
+// (0x004514fd) and 0x0045154e are used here, and the unwind frame shows a destructor.
+class tStoresState
+{
+public:
+	class tMissileInfo
+	{
+	public:
+		tMissileInfo();
+		~tMissileInfo();
+		void fn_0045154e( fn_0055e60f_object *info );
+	};
+};
+
+// HYPOTHESIS: vtable 0x0079fcf4; vfunction9, 10 and 12 are pure in the base, so this class
+// overrides them.
+class tSupplyDockMissiles : public tSupplyDockItem
+{
+public:
+	tSupplyDockMissiles( long arg1, long arg2, long arg3, long mask, long arg5 );
+
+	virtual long vfunction9();
+	virtual long vfunction10();
+	virtual long vfunction12();
+
+	fn_0055e60f_object *m7c;
+	tStoresState::tMissileInfo m80;
+};
+
+// HYPOTHESIS: globals passed by value, like g_0084bb4c and g_0084bb50; their types are not known.
+extern void *g_0084bb54;
+extern void *g_0084bb58;
+extern void *g_0084bb5c;
+extern void *g_0084bb60;
+extern void *g_0084bb64;
+extern void *g_0084bb68;
+extern void *g_0084bb6c;
+extern void *g_0084bb70;
+extern void *g_0084bb74;
+extern void *g_0084bb78;
+extern void *g_0084bb7c;
+
+// FUNCTION: STARFLEETOP 0x00486574
+tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long mask, long arg5 )
+	: tSupplyDockItem( arg1, arg2, arg3, mask, arg5 )
+{
+	m10.fn_004d2797( 0x1103b, g_0084bb54, 0 );
+	m10.fn_004d2797( 0x1103c, g_0084bb58, 0 );
+	m10.fn_004d2797( 0x1103d, g_0084bb5c, 0 );
+	m10.fn_004d2797( 0x1103e, g_0084bb60, 0 );
+	m10.fn_004d2797( 0x1103f, g_0084bb64, 0 );
+	m10.fn_004d2797( 0x11040, g_0084bb68, 0 );
+	m10.fn_004d2797( 0x11041, g_0084bb6c, 0 );
+	m10.fn_004d2797( 0x11042, g_0084bb70, 0 );
+	m10.fn_004d26fb( &g_009157c8, g_0084bb74 );
+	m10.fn_004d26fb( &g_009157a8, g_0084bb78 );
+	m10.fn_004d26fb( &g_00915788, g_0084bb7c );
+	m7c = ((fn_004479b4_object *) m74)->fn_00447ce4()->fn_0055e60f();
+	m7c->m0c = true;
+	m7c->m0d = true;
+	m80.fn_0045154e( m7c );
+}
