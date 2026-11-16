@@ -80,4 +80,18 @@ unsigned char tBasicFileZip::mEOF( void )
 	return field_c >= field_8;
 }
 
+// FUNCTION: STARFLEETOP 0x00628730
+unsigned long tBasicFileZip::mRead( void *buffer, unsigned long size )
+{
+	if ( !field_4 )
+		return 0;
+	if ( !field_14 )
+		return field_4->mRead( buffer, size );
+	unsigned long count = ( field_c + size > field_8 ) ? field_8 - field_c : size;
+	if ( count )
+		count = field_4->mRead( buffer, count );
+	field_c += count;
+	return count;
+}
+
 }
