@@ -57,6 +57,7 @@ class tClassActiveChannelList : public tHandleList
 	public:
 		inline tClassActiveChannelList( void ) : tHandleList( 0 ) {}
 		virtual		~tClassActiveChannelList( void );
+		virtual		unsigned char	mInsertHandle	( unsigned long );
 };
 
 // HYPOTHESIS: inline and empty, from ~tAudioFileClass (0x00661f30) storing only the base's vtable.

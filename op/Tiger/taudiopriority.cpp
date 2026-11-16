@@ -540,3 +540,32 @@ long tHandleList::mGetZeroIndexedHandlePosition( unsigned long handle )
 			return i;
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00662c20
+unsigned char tClassActiveChannelList::mInsertHandle( unsigned long handle )
+{
+	unsigned char notInList = true;
+	if ( mRemoveFromList( handle ) == true )
+		notInList = false;
+	if ( f04 == f08 )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("We reached the maximum for a list!\n"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("We reached the maximum for a list!\n"); }
+#line 866
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+#line 556
+		return false;
+	}
+	for ( long i = f04 - 1; i >= 0; i-- )
+	{
+		if ( !BindPart( tAudioPriorityManagerPart )->mIsFirstHigherPriorityThanSecond( handle, f0c[ i ] ) )
+		{
+			f0c[ i + 1 ] = handle;
+			f04++;
+			return notInList;
+		}
+		f0c[ i + 1 ] = f0c[ i ];
+	}
+	f0c[ 0 ] = handle;
+	f04++;
+	return notInList;
+}
