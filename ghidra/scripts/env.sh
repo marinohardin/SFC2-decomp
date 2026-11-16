@@ -10,7 +10,7 @@ RESULTS="$GHIDRA_DIR/results"      # per-step logs/tables small enough to keep i
 GHIDRA_HOME="${GHIDRA_HOME:-/opt/homebrew/Cellar/ghidra/12.2/libexec}"
 HEADLESS="$GHIDRA_HOME/support/analyzeHeadless"
 
-WORK="${WORK:-$SFCOP_ROOT/work/ghidra}"
+WORK="${WORK:-${SFCOP_WORK:-$(cd "$REPO/.." && pwd)/work}/ghidra}"
 PROJECTS="$WORK/projects"
 LOGS="$WORK/logs"
 MAIN_PROJECT="SFCOP"          # the analysed exe

@@ -1,6 +1,6 @@
 # retail game files, disc images, server kit: never committed
 reference/
-# large generated data lives in $SFCOP_ROOT/work (outside the repo)
+# generated data and downloaded tools live in work/ and tools/ beside the clone
 work/
 *.gpr
 *.rep/
