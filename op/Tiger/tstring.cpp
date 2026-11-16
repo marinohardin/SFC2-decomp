@@ -393,17 +393,6 @@ iBasicStringElement& tString::iterator::operator*()
 	return fString->fInstanceControl.fMemSpace[fIndex];
 }
 
-inline tString::iterator tString::iterator::operator+(int32 n)
-{
-	if (!fString)
-		throw "Access to uninitialized iterator";
-	iterator t(*this);
-	t.fIndex = fIndex + n;
-	if (t.fIndex < 0 || t.fIndex > fString->fInstanceControl.fDataCount)
-		throw "Access past bounds of tString";
-	return t;
-}
-
 inline tString::iterator tString::iterator::operator++()
 {
 	iterator old = *this;
@@ -423,7 +412,15 @@ int32 tString::find(tString &s, int32 startPos)
 	if (count <= 0)
 		return -1;
 	{
-		iterator i = begin() + pos;
+		iterator b = begin();
+		// MATCH-ONLY: the original (/Ob2) inlines iterator::operator+ (begin() + pos) here.
+		if (!b.fString)
+			throw "Access to uninitialized iterator";
+		iterator t(b);
+		t.fIndex = b.fIndex + pos;
+		if (t.fIndex < 0 || t.fIndex > b.fString->fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		iterator i(t);
 		for (;;)
 		{
 			iterator a = i;
@@ -477,7 +474,15 @@ int32 tString::rfind(tString &s, int32 startPos)
 	if (count <= 0)
 		return -1;
 	{
-		iterator i = begin() + pos;
+		iterator b = begin();
+		// MATCH-ONLY: the original (/Ob2) inlines iterator::operator+ (begin() + pos) here.
+		if (!b.fString)
+			throw "Access to uninitialized iterator";
+		iterator t(b);
+		t.fIndex = b.fIndex + pos;
+		if (t.fIndex < 0 || t.fIndex > b.fString->fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		iterator i(t);
 		for (;;)
 		{
 			iterator a = i;
@@ -651,4 +656,14 @@ tString::iterator::iterator(int32 index, tString *s)
 		throw "Access to uninitialized iterator";
 	if (fIndex < 0 || fIndex > fString->fInstanceControl.fDataCount)
 		throw "Access past bounds of tString";
+}
+
+// FUNCTION: STARFLEETOP 0x00625430
+tString::iterator tString::iterator::operator+(int32 n)
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	if (fIndex + n < 0 || fIndex + n > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	return iterator(fIndex + n, fString);
 }
