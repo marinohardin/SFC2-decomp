@@ -9712,6 +9712,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00666250": {
+   "name": "tBasicSoundFileManager::mGet3DSoundOrientation",
+   "symbol": "?mGet3DSoundOrientation@tBasicSoundFileManager@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
