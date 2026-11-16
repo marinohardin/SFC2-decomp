@@ -247,6 +247,7 @@ public:
 	tBasicSoundFileManager( void );
 	virtual	~tBasicSoundFileManager( void );
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
+	virtual	void	mAdjustGlobalVolume	( void );
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
 	long					field_0xc;
@@ -299,6 +300,25 @@ tBasicSoundFileManager::tBasicSoundFileManager( void )
 // FUNCTION: STARFLEETOP 0x00663e80
 tBasicSoundFileManager::~tBasicSoundFileManager( void )
 {
+}
+
+// The SDK library's symbol for the table at 0x00882160 gives the name; its contents are not
+// written here.
+extern	int	gVolumeModifierTable[];
+
+// FUNCTION: STARFLEETOP 0x00663ee0
+void	tBasicSoundFileManager::mAdjustGlobalVolume( void )
+{
+	double	volume = field_0x730;
+	long	lastCount = field_0x748;
+	field_0x748 = BindPart( tSoundPart )->mGetNumberCurrentlyPlaying();
+	if ( field_0x748 != lastCount )
+	{
+		if ( field_0x748 >= 51 )
+			field_0x748 = 50;
+		volume = gVolumeModifierTable[field_0x748] * volume;
+		BindPart( tSoundPart )->mSetGlobalVolume( (long)volume );
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x00664870

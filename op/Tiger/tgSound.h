@@ -570,7 +570,10 @@ public:
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate);
     virtual void mSetGlobalFrequency();
-    virtual void mSetGlobalPan(); virtual void mSetGlobalVolume(); virtual void mAdjust3DListener();
+    virtual void mSetGlobalPan();
+    // HYPOTHESIS: tBasicSoundFileManager::mAdjustGlobalVolume passes it the scaled global volume as a long.
+    virtual void mSetGlobalVolume(long volume);
+    virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual unsigned char mSet3DListener3DPosition(tPoint3* position);
     virtual unsigned char mSet3DListenerOrientation(tPoint3* forward, tPoint3* up);
