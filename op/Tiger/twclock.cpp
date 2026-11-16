@@ -29,6 +29,7 @@ class	twClock : public tClockPart
 		virtual		void	mDeactivate	( void );
 		virtual		double	mGetMicroseconds	( void );
 		virtual		void	mSetTimer	( long, long, tTimerResponse *, long );
+		virtual		void	mSetTimer	( long, long, tTimerResponse * );
 
 		iTruth			fHasPerformanceCounter;
 		int32u			fUnknown_10;
@@ -102,6 +103,31 @@ void	twClock::mSetTimer( long param_1, long param_2, tTimerResponse *param_3, lo
 		fResponseList[fNumberOfRunningTimers].fUnknown_10 = param_4;
 
 		MMRESULT	timerID = timeSetEvent( param_1 >= 1000 ? param_1 / 1000 : 1, param_4, mTimerReceiver, 0, TIME_PERIODIC );
+		if (timerID == 0)
+			throw TimerException();
+
+		param_3->mSetIdentity( timerID );
+		fResponseList[fNumberOfRunningTimers++].fUnknown_04 = timerID;
+	}
+	else
+		throw TimerException();
+}
+
+// FUNCTION: STARFLEETOP 0x00637a50
+void	twClock::mSetTimer( long param_1, long param_2, tTimerResponse *param_3 )
+{
+	if (fNumberOfRunningTimers < kClockResponderMax)
+	{
+		fResponseList[fNumberOfRunningTimers].fUnknown_00 = param_3;
+		fResponseList[fNumberOfRunningTimers].fUnknown_08 = param_2;
+		fResponseList[fNumberOfRunningTimers].fUnknown_0c = param_1;
+		fResponseList[fNumberOfRunningTimers].fUnknown_10 = 0;
+
+		long	delay = param_1 / 1000;
+		if (delay == 0)
+			delay = 1;
+
+		MMRESULT	timerID = timeSetEvent( delay, 0, mTimerReceiver, 0, TIME_PERIODIC );
 		if (timerID == 0)
 			throw TimerException();
 
