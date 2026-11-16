@@ -23,6 +23,9 @@ public:
     virtual void vfunction6(tListMember *aMember);
     // HYPOTHESIS: set the next member (offset 0x18).
     virtual void vfunction7(tListMember *aMember);
+    // HYPOTHESIS: dumps the member (offset 0x1c); tDynamicMemoryFreeList::mDumpList
+    // (0x00626b90) calls it on every member.
+    virtual void vfunction8();
 };
 
 #endif // tListMember_h
