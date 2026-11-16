@@ -1,6 +1,7 @@
 // tStrMgrCore.cpp: tStrMgrCore, the string-table core behind tgStrManager.
 
 #include "Tiger/tgStrMgr.h"
+#include "Tiger/tbasicfile.h"
 
 // Name from the SDK library symbol at 0x00c3b650; a failed lookup returns it.
 tString gErrStr;
@@ -165,4 +166,52 @@ unsigned char tStrMgrCore::mIsAnElement( long group, const tString &str )
 unsigned char tStrMgrCore::mIsAnElement( const char *group, const tString &str )
 {
 	return mIsAnElement( mGetStringIndex( group ), str );
+}
+
+// HYPOTHESIS: tWideCharFile (class name from the exe's symbol) reads a file of 16-bit
+// characters through a tBasicFile in blocks of 0x400 characters; layout from mGetChar's
+// accesses only.
+class tWideCharFile
+{
+	public:
+		unsigned short	mGetChar	( void );
+
+		unsigned short	fn_006276a0_buffer[0x400];
+		int				fn_006276a0_count;
+		int				fn_006276a0_pos;
+		unsigned char	fn_006276a0_swap;
+		tBasicFile		*fn_006276a0_file;
+};
+
+// FUNCTION: STARFLEETOP 0x006276a0
+unsigned short tWideCharFile::mGetChar( void )
+{
+	if ( fn_006276a0_pos >= fn_006276a0_count )
+	{
+		if ( fn_006276a0_count < 0 )
+			return 0xffff;
+		fn_006276a0_pos = 0;
+		fn_006276a0_count = fn_006276a0_file->mRead( fn_006276a0_buffer, sizeof( fn_006276a0_buffer ) );
+		if ( fn_006276a0_count & 1 )
+			fn_006276a0_count--;
+		fn_006276a0_count >>= 1;
+		if ( fn_006276a0_count <= 0 )
+		{
+			fn_006276a0_count = -1;
+			return 0xffff;
+		}
+		if ( fn_006276a0_swap )
+		{
+			// The original's byte swap: the test is reversed and the first character is
+			// swapped each time, so the loop never runs for a block that was read.
+			for ( int i = 0; i > fn_006276a0_count; i++ )
+			{
+				unsigned char *p = (unsigned char *)fn_006276a0_buffer;
+				unsigned char c = p[0];
+				p[0] = p[1];
+				p[1] = c;
+			}
+		}
+	}
+	return fn_006276a0_buffer[fn_006276a0_pos++];
 }
