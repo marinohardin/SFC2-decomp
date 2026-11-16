@@ -3767,3 +3767,46 @@ unsigned char tgSoundPart::mStopAndClearChannel(long channel)
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00651e00
+unsigned char tgSoundPart::mSetFrequency(long channel, long frequency, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4893
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    if (channelPtr->mAreWeFixedFrequency() == 1)
+    {
+#line 4901
+        SOUND_ERROR(("you are trying to change the frequency of a fixed Frequency Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)5, &frequency, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 4918
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
