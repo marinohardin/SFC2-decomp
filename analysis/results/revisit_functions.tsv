@@ -70,3 +70,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00625430	tString::iterator::operator+	20.57	2	sonnet	2026-11-16T13:01:50Z	attempt 2 (sonnet) did not raise the best; best 20.57%
 0x00625490	tString::iterator::operator-	25.74	2	sonnet	2026-11-16T13:05:01Z	best not above 90% after 2 attempts; best 25.74%
 0x006254f0	tString::iterator::operator++	72.31	2	sonnet	2026-11-16T13:08:17Z	best not above 90% after 2 attempts; best 72.31%
+0x00625550	tString::iterator::operator--	68.48	2	sonnet	2026-11-16T13:12:13Z	attempt 2 (sonnet) did not raise the best; best 68.48%
