@@ -7327,6 +7327,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006378f0": {
+   "name": "twClock::mGetMicroseconds",
+   "symbol": "?mGetMicroseconds@twClock@@UAENXZ",
+   "unit": "Tiger/twclock.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

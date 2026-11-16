@@ -27,7 +27,7 @@ class	twClock : public tClockPart
 		virtual		double	mGetMicroseconds	( void );
 
 		iTruth			fHasPerformanceCounter;
-		int32s			fUnknown_10;
+		int32u			fUnknown_10;
 		double			fPerformanceFrequency;
 
 	private:
@@ -71,4 +71,16 @@ void	twClock::mDeactivate( void )
 		}
 	}
 	fNumberOfRunningTimers = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006378f0
+double	twClock::mGetMicroseconds( void )
+{
+	if (fHasPerformanceCounter != kTrue)
+		return timeGetTime() * 1000;
+
+	LARGE_INTEGER	count;
+
+	QueryPerformanceCounter( &count );
+	return ((double) count.LowPart + (double) count.HighPart * 4294967296.0) * fUnknown_10 / fPerformanceFrequency;
 }
