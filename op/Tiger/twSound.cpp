@@ -165,7 +165,7 @@ class twSoundPart : public tgSoundPart
 {
 public:
 					twSoundPart					( void );
-	virtual	void	mDetermineHardwareCaps		( void );
+	virtual	unsigned char	mDetermineHardwareCaps	( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
 	virtual	void	mDone						( void );
 	virtual	long	mDuplicateSoundChannel		( long channel );
@@ -2320,4 +2320,14 @@ long	twSoundPart::mGetPlayCpuOverheadSwBuffers( void )
 long	twSoundPart::mGetTransferToHardwareRateInKBytesPerSec( void )
 {
 	return field_0x13c.dwUnlockTransferRateHwBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645bb0
+unsigned char	twSoundPart::mDetermineHardwareCaps( void )
+{
+	memset( &field_0x13c, 0, sizeof( field_0x13c ) );
+	field_0x13c.dwSize = sizeof( field_0x13c );
+	if( fDirectSound->GetCaps( &field_0x13c ) == DS_OK )
+		return kTrue;
+	return kFalse;
 }

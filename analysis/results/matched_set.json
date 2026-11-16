@@ -7669,6 +7669,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00645bb0": {
+   "name": "twSoundPart::mDetermineHardwareCaps",
+   "symbol": "?mDetermineHardwareCaps@twSoundPart@@UAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00646ce0": {
    "name": "AddSoundErrorDuringInterrupt",
    "symbol": "?AddSoundErrorDuringInterrupt@@YAXPBDZZ",
