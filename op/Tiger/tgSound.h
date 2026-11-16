@@ -560,7 +560,8 @@ public:
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate);
-    virtual void mSet3DSoundOrientation();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSet3DSoundOrientation(long channel, tPoint3* orientation, unsigned char immediate);
     virtual void mSet3DSoundVelocity(); virtual void mSet3DSoundCones(); virtual void mSet3DSoundReferenceDistance(); virtual void mSetGlobalFrequency();
     virtual void mSetGlobalPan(); virtual void mSetGlobalVolume(); virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
@@ -654,6 +655,7 @@ public:
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
     virtual unsigned char mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate);
+    virtual unsigned char mSet3DSoundOrientation(long channel, tPoint3* orientation, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).

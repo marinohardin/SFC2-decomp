@@ -4167,3 +4167,26 @@ unsigned char tgSoundPart::mSet3DSoundPosition(long channel, tPoint3* position, 
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+// FUNCTION: STARFLEETOP 0x00653d60
+unsigned char tgSoundPart::mSet3DSoundOrientation(long channel, tPoint3* orientation, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (orientation == 0) return 0;
+#line 5603
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5611
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)15, orientation, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5628
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
