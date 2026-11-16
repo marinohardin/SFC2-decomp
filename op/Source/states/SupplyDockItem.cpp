@@ -7,6 +7,7 @@ class tObject_0045e574
 public:
 	tObject_0045e574();
 	~tObject_0045e574();
+	void fn_004d269b( long arg1, void *a, void *b );
 
 	char m00[0x64];
 };
@@ -25,7 +26,7 @@ public:
 	virtual void vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7();
-	virtual void vfunction8();
+	virtual void vfunction8( void *a, void *b );
 	virtual void vfunction9() = 0;
 	virtual void vfunction10() = 0;
 	virtual void vfunction11();
@@ -44,7 +45,6 @@ long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long ar
 // HYPOTHESIS: a free cdecl function of one argument; other units pass it a name string.
 void fn_004d3306( long arg1 );
 // HYPOTHESIS: vfunction9, 10 and 12 are pure; vtable 0x0079fc7c holds 0x0073ea74 in those slots.
-
 // The analysis names this address ~tSupplyDockItem; the code is the constructor.
 // FUNCTION: STARFLEETOP 0x0048612c
 tSupplyDockItem::tSupplyDockItem( long arg1, long arg2, long arg3, long mask, long arg5 )
@@ -75,4 +75,12 @@ void tSupplyDockItem::vfunction2()
 void tSupplyDockItem::vfunction6()
 {
 	vfunction12();
+}
+
+// HYPOTHESIS: m10 looks like the 0x64-byte class tPanelMgr holds at +0x100 (declared only in
+// tPanelMgr.cpp), whose 0x004d269b there takes two pointers and a flag.
+// FUNCTION: STARFLEETOP 0x004861f4
+void tSupplyDockItem::vfunction8( void *a, void *b )
+{
+	m10.fn_004d269b( m04, a, b );
 }
