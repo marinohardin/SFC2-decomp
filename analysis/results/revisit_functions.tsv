@@ -57,3 +57,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00645cd2	FUN_00645cd2	0.00	2	sonnet	2026-11-16T13:06:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00646010	twSoundPart::mInit	99.88	2	sonnet	2026-11-16T13:26:21Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.88%
 0x00651540	tgSoundPart::mCreateCommand	93.10	2	sonnet	2026-11-16T13:51:03Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 93.10%
+0x00651929	FUN_00651929	0.00	2	sonnet	2026-11-16T13:53:33Z	attempt 2 (sonnet) did not raise the best; best 0.00%
