@@ -145,7 +145,10 @@ public:
     // HYPOTHESIS: slot 2 sets the frequency (mDuplicateSoundChannel passes it the format's
     // sample rate); the exe's dump of the attributes is slot 29.
     virtual void mSetFrequency(long frequency);
-    virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6();
+    virtual void vfunction3();
+    // HYPOTHESIS: slot 4 records the pan (twStandardSoundChannel::mSetPan passes it the channel's pan).
+    virtual void vfunction4(long pan);
+    virtual void vfunction5(); virtual void vfunction6();
     virtual void vfunction7(long volume);
     virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
     virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
@@ -411,7 +414,7 @@ public:
     virtual void vfunction98() = 0;
     virtual unsigned char mPlayChannel() = 0;
     virtual unsigned char mSetFrequency(long frequency) = 0;
-    virtual void vfunction101(long pan) = 0;
+    virtual unsigned char mSetPan(long pan) = 0;
     virtual void vfunction102(long volume) = 0;
     virtual void vfunction103(); virtual void vfunction104() = 0;
     virtual iTruth mSetChannelPriority(long priority);
@@ -528,7 +531,9 @@ public:
     // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
     // multiplies the channel's frequency by it.
     virtual double vfunction75();
-    virtual void vfunction76(); virtual void vfunction77(); virtual void mGet3DListener();
+    // HYPOTHESIS: slot 76 returns the global pan, which twStandardSoundChannel::mSetPan adds to the channel's.
+    virtual long vfunction76();
+    virtual void vfunction77(); virtual void mGet3DListener();
     virtual void mGet3DListener3DPosition(); virtual void mGet3DListenerForwardDirection(); virtual void mGet3DListenerUpDirection(); virtual void mGet3DListenerVelocity();
     virtual void mGet3DListenerUnitScaleInMeters();
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse

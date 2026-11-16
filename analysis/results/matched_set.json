@@ -7273,6 +7273,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006446c0": {
+   "name": "twStandardSoundChannel::mSetPan",
+   "symbol": "?mSetPan@twStandardSoundChannel@@UAEEJ@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",

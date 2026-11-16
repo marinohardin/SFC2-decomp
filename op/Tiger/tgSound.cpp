@@ -2564,7 +2564,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         vfunction102(command->vfunction22());
         return kTrue;
     case 6:
-        vfunction101(command->mGetPan());
+        mSetPan(command->mGetPan());
         return kTrue;
     case 8:
         vfunction111(command->mGet3DSoundProfile());

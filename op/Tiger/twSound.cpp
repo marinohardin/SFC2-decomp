@@ -347,7 +347,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -356,6 +355,7 @@ public:
 	virtual	iTruth	mPauseChannel	( void );
 	virtual	unsigned char	mPlayChannel	( void );
 	virtual	unsigned char	mSetFrequency	( long );
+	virtual	unsigned char	mSetPan	( long );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1754,7 +1754,7 @@ unsigned char twStandardSoundChannel::mPlayChannel( void )
 		return kTrue;
 	}
 
-	vfunction101( mGetPan() );
+	mSetPan( mGetPan() );
 	mSetFrequency( mGetFrequency() );
 	HRESULT err;
 	if( mAreWeStreaming() == kTrue || mAreWeLooping() == kTrue )
@@ -1785,6 +1785,33 @@ unsigned char twStandardSoundChannel::mSetFrequency( long frequency )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->mSetFrequency( frequency );
+	return kTrue;
+}
+
+// The SDK library names the table: 101 attenuations in hundredths of a decibel, indexed
+// from -100 (silent) to 0 (full level).
+extern long LinearVolumes[];
+
+// FUNCTION: STARFLEETOP 0x006446c0
+unsigned char twStandardSoundChannel::mSetPan( long pan )
+{
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	long total = atgSoundPart->vfunction76() + pan;
+	if( total < -100 )
+		total = -100;
+	else if( total > 100 )
+		total = 100;
+	long dsPan;
+	if( total <= 0 )
+		dsPan = LinearVolumes[100 + total];
+	else
+		dsPan = -LinearVolumes[100 - total];
+	HRESULT err = fSoundBuffer->SetPan( dsPan );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction4( pan );
 	return kTrue;
 }
 
