@@ -312,9 +312,13 @@ public:
 
 	virtual void vfunction3();
 	virtual void vfunction4();
+	virtual void vfunction7( long *msg );
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
+	void fn_00486aa1( bool up );
+	void fn_00486ad5( bool up );
+	void fn_00486b8a( bool up );
 
 	tStoresState::tMissileInfo *m7c;
 	tStoresState::tMissileInfo m80;
@@ -419,4 +423,33 @@ void tSupplyDockMissiles::vfunction4()
 {
 	m7c->fn_0045154e( &m80 );
 	vfunction3();
+}
+
+// HYPOTHESIS: the three helpers take a direction flag; the ids are the button pairs the
+// constructor registered on m10.
+// FUNCTION: STARFLEETOP 0x004869bc
+void tSupplyDockMissiles::vfunction7( long *msg )
+{
+	switch( *msg )
+	{
+	case 0x1103d:
+		fn_00486aa1( false );
+		break;
+	case 0x1103e:
+		fn_00486aa1( true );
+		break;
+	case 0x1103f:
+		fn_00486ad5( false );
+		break;
+	case 0x11040:
+		fn_00486ad5( true );
+		break;
+	case 0x11041:
+		fn_00486b8a( false );
+		break;
+	case 0x11042:
+		fn_00486b8a( true );
+		break;
+	}
+	vfunction6();
 }
