@@ -1,8 +1,7 @@
-# Source layout for Phase 2 (proposal)
+# The source layout
 
-A proposal for where rebuilt source lives, written for the harness (P1-5). Nothing here is
-created yet: the plan phase decides, and `harness/` follows whatever it decides through
-`harness/units.json` and `HARNESS_SRC_ROOT`.
+Where rebuilt source lives, and how the harness finds it. The harness reads the tree through
+`harness/units.json` and `HARNESS_SRC_ROOT` (default `op/`).
 
 ## The tree
 
@@ -11,14 +10,8 @@ op/                         rebuilt game code, compiled by VC6 SP4 and scored by
   <original path>/<Unit>.cpp  one file per original translation unit, at its original path
   <original path>/<Unit>.h    headers beside their units, as in the original tree
   unsorted/<Class>.cpp        units whose original file is not known yet (see below)
-src/                          the platform layer (SDL3, audio, files, sockets); never scored
 harness/units.json            compile profile of every unit in op/ (protected)
 ```
-
-`PROPOSAL.md` (Phase 2) and the owner's porting conventions put decompiled game code in
-`op/` and the platform layer in `src/`, so this proposal does the same; the brief for this
-task called the tree `src/`. Only `op/` matters to the harness, and its location is one
-setting (`HARNESS_SRC_ROOT`, default `op/`).
 
 ## One file per original translation unit
 
@@ -63,8 +56,8 @@ tDynamicAllocator* tDynamicAllocator::Instance()
   destructor's own annotation; a destructor written inline in the class gets an out-of-class
   definition for this, in the unit or as an `inline` definition after the class in its header. The address's evidence (a `??_G` / `??_E` symbol or a
   `scalar_deleting_destructor` / `vector_deleting_destructor` name in `functions.csv` or the
-  matched set, read by `harness/lib/deleting.py` for the manifest, the harness and the object
-  lift alike) says which annotation it is; the harness then claims the `??_G` / `??_E` that
+  matched set, read by `harness/lib/deleting.py` for the manifest and the harness
+  alike) says which annotation it is; the harness then claims the `??_G` / `??_E` that
   calls that destructor. If the unit does not emit it, the address cannot be claimed yet.
 - An annotation may sit in a header (`.h`, `.inl`) when the original wrote the code there: on
   an `inline` out-of-class destructor definition, for the class's deleting destructor, or on a

@@ -1,4 +1,4 @@
-# harness: the compiler is the judge (task P1-5)
+# harness: the compiler is the judge
 
 Lets a headless Claude Code loop rebuild the game one function at a time, with the pinned VC6
 SP4 compiler and objdiff deciding whether it worked. One script judges; hooks keep the agent away
@@ -48,7 +48,7 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
    header (an inline destructor's deleting destructor, a part binding in a class body) is
    compiled in the unit `op/UNITS.tsv` assigns to its address, which must include the header,
    directly or through other headers; anything else is an error (`lib/claims.py`, shared with
-   `tools/manifest.py` and the object lift).
+   `tools/manifest.py`).
 2. Compiles that unit with `toolchain/bin/cl` and the unit's profile from `units.json`, adding
    only output paths and `/FAs`. The listing tells which compiled symbol follows the annotation;
    for a header claim, the header's line records in the unit's listing do. An inline
@@ -96,7 +96,7 @@ against the higher of the two scores. Without it, a pull request that lowered or
 entry together with the source that earned it would pass, since `--all` only checks the copy in
 its own tree.
 
-`--behavioural` is the hook for the replay oracle (`oracle/`). It is off: it prints
+`--behavioural` is a hook for an external replay oracle, such as the port's; none lives in this repository. It is off: it prints
 `behavioural: oracle not available` until `HARNESS_ORACLE` names a command that takes a function
 address and exits 0 when the replay trace matches; a non-zero exit then counts as a regression.
 
@@ -297,7 +297,7 @@ starting score; the claim goes to `$HARNESS_STATE/claim.json`; the prompt is ren
 --strict-mcp-config` (plus the lean-session flags) runs with `HARNESS_FUNCTION_SESSION=1`, under
 the time box when it has one;
 then `update-matched-set.sh` judges. An improvement is committed on the current branch
-(`feat(game): match <name> (<address>)` with the score change in the body). Anything else is
+(`feat(op): match <name> (<address>)` with the score change in the body). Anything else is
 undone: the worktree is reset to the commit the round started from. Tokens, cost, turns and seconds of every attempt go to
 `$HARNESS_STATE/attempts.tsv`, and the prompt, pack, command line, output and verification JSON
 of each attempt to `$HARNESS_STATE/attempts/`.
@@ -331,7 +331,7 @@ tool list from `--allowedTools`. Every session also runs with `--strict-mcp-conf
 
 The project settings' permission rules do not apply in a lean session either. What they denied
 is covered by the guard hook (`lib/guard.py`), which the fragment runs on `Read`, `Grep` and
-`Glob` as well as on edits and `Bash`: the owner's private files (`work/private/`, the Wine
+`Glob` as well as on edits and `Bash`: private files (`work/private/`, the Wine
 prefix, the test key data, any `.reg` or `.env` file outside the repository) are never read, by
 any tool or command. The Bash side refuses on sight rather than parsing: any command that
 contains `private`, `testkey`, `wine/prefix`, `.reg` or `.env` in any letter case, uses `$` or a
@@ -415,7 +415,7 @@ the Stop hook then allows it.
   back. The loop refuses to score, records `tampered`, and resets the worktree; the planted file
   and the annotation are gone and nothing is committed.
 - Round 2 (Sonnet, fix round): the same without the tampering. `update-matched-set.sh` records
-  it and `loop.sh` commits `feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)`
+  it and `loop.sh` commits `feat(op): match tDynamicAllocator::LockDownAllocator (0x006fc750)`
   with the source line and the matched set.
 
 **One function through the loop with a real session** (`proof/loop_proof.sh`, about 1 minute,
