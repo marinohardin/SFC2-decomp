@@ -117,9 +117,21 @@ public:
     virtual void mInit();
     // HYPOTHESIS: the exe's setters and getters (mSet3DSoundPosition and the rest) fill slots
     // 2-20; tChannelAttributes::mDump calls mDump through slot 21. Their order is not recovered.
-    virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7();
-    virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
-    virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
+    // HYPOTHESIS: slots 5, 9, 13, 15, 17 and 19 return the position, orientation, velocity,
+    // reference distance, cone angle and cone level (twStandardSoundChannel::mSet3DSoundProfile).
+    virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4();
+    virtual tPoint3* vfunction5();
+    virtual void vfunction6(); virtual void vfunction7();
+    virtual void vfunction8();
+    virtual tPoint3* vfunction9();
+    virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12();
+    virtual tPoint3* vfunction13();
+    virtual void vfunction14();
+    virtual double vfunction15();
+    virtual void vfunction16();
+    virtual float vfunction17();
+    virtual void vfunction18();
+    virtual long vfunction19();
     virtual void vfunction20();
     virtual void mDump();
     t3DSoundProfile& operator=(t3DSoundProfile& other);
@@ -152,7 +164,9 @@ public:
     // HYPOTHESIS: slot 6 records the volume (twStandardSoundChannel::mSetVolume passes it the channel's volume).
     virtual void vfunction6(long volume);
     virtual void vfunction7(long volume);
-    virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+    // HYPOTHESIS: slot 8 records the whole 3D profile (twStandardSoundChannel::mSet3DSoundProfile passes it the profile it set).
+    virtual void vfunction8(t3DSoundProfile* profile);
+    virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
     // HYPOTHESIS: slot 12 records the 3D position (twStandardSoundChannel::mSet3DSoundPosition passes it the position it set).
     virtual void vfunction12(tPoint3* position);
     virtual void vfunction13();
@@ -442,7 +456,7 @@ public:
     virtual unsigned char mSet3DSoundVelocity(tPoint3* velocity) = 0;
     virtual unsigned char mSet3DSoundCones(float angle, long level) = 0;
     virtual unsigned char mSet3DSoundReferenceDistance(double distance) = 0;
-    virtual void vfunction111(t3DSoundProfile* profile) = 0;
+    virtual unsigned char mSet3DSoundProfile(t3DSoundProfile* profile) = 0;
     virtual void mGetUserPositionContext();
     virtual void mSetUserPositionContext(long context);
     virtual void mGetUpdateSoundPositionFunction();

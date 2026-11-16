@@ -339,7 +339,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -357,6 +356,7 @@ public:
 	virtual	unsigned char	mSet3DSoundVelocity	( tPoint3* );
 	virtual	unsigned char	mSet3DSoundCones	( float, long );
 	virtual	unsigned char	mSet3DSoundReferenceDistance	( double );
+	virtual	unsigned char	mSet3DSoundProfile	( t3DSoundProfile* );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1975,6 +1975,37 @@ unsigned char twStandardSoundChannel::mSet3DSoundReferenceDistance( double dista
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction22( distance );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644af0
+unsigned char twStandardSoundChannel::mSet3DSoundProfile( t3DSoundProfile* profile )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	tPoint3* position = profile->vfunction5();
+	HRESULT err = fUnknown_01bc->SetPosition( position->x, position->y, position->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	tPoint3* orientation = profile->vfunction9();
+	err = fUnknown_01bc->SetConeOrientation( orientation->x, orientation->y, orientation->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	tPoint3* velocity = profile->vfunction13();
+	err = fUnknown_01bc->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetConeAngles( (DWORD)( profile->vfunction17() * 2 ), 360, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetMinDistance( (float)profile->vfunction15(), DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetConeOutsideVolume( profile->vfunction19() * -100, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction8( profile );
 	return kTrue;
 }
 
