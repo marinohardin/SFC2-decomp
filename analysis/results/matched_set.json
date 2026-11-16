@@ -9433,6 +9433,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00664880": {
+   "name": "tBasicSoundFileManager::mGetTrackingOffset",
+   "symbol": "?mGetTrackingOffset@tBasicSoundFileManager@@UAEGK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",

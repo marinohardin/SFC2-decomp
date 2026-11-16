@@ -441,3 +441,9 @@ unsigned long	tBasicSoundFileManager::mGetTrackingIndex( unsigned long handle )
 {
 	return handle & 0xffff;
 }
+
+// FUNCTION: STARFLEETOP 0x00664880
+unsigned short	tBasicSoundFileManager::mGetTrackingOffset( unsigned long handle )
+{
+	return (unsigned short)( handle >> 16 );
+}
