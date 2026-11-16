@@ -1,6 +1,7 @@
 //	tsndmgr.cpp: the sound file manager and its play information.
 
 #include "Tiger/tbasic.h"
+#include "Tiger/tgSound.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -15,6 +16,7 @@ public:
 	virtual	long	mGetRandomVolume	( void );
 	virtual	long	mGetAcualIndexOffsetIfRandom	( void );
 	virtual	void	mSetNextInSequence	( long next );
+	virtual	iTruth	mAddClass	( long theClass );
 
 	char			fUnknown_0004[0x88];
 	long			field_0x8c;
@@ -25,6 +27,10 @@ public:
 	long			field_0xb0;
 	char			fUnknown_00b4[0x8];
 	long			field_0xbc;
+	char			fUnknown_00c0[0x4];
+	// HYPOTHESIS: a list of up to four classes at 0xc4 and its count at 0xd4, from mAddClass.
+	long			field_0xc4[4];
+	long			field_0xd4;
 };
 
 // HYPOTHESIS: declared only as far as the functions below need.
@@ -101,6 +107,27 @@ long	tAFPlayInfo::mGetAcualIndexOffsetIfRandom( void )
 	if ( field_0xb0 < 2 )
 		return 0;
 	return ( rand() * field_0xb0 ) / RAND_MAX;
+}
+
+// FUNCTION: STARFLEETOP 0x006638e0
+iTruth	tAFPlayInfo::mAddClass( long theClass )
+{
+	for ( long i = 0; i < field_0xd4; i++ )
+	{
+		if ( field_0xc4[i] == theClass )
+			return kTrue;
+	}
+	if ( field_0xd4 == 4 )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("We've hit the class limit!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("We've hit the class limit!"); }
+#line 254
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+#line 126
+		return kFalse;
+	}
+	field_0xc4[field_0xd4] = theClass;
+	field_0xd4++;
+	return kTrue;
 }
 
 // FUNCTION: STARFLEETOP 0x006639c0
