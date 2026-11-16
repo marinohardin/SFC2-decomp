@@ -860,12 +860,15 @@ public:
 	long fn_004876df( long i );
 	// HYPOTHESIS: a member taking the index and the count saved at construction.
 	void fn_00487757( long i, long count );
+	// HYPOTHESIS: steps item i by delta; its body is not written yet.
+	void fn_0048771a( long i, long delta );
 
 	virtual long vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual long vfunction6();
+	virtual void vfunction7( long *msg );
 
 	long m7c[3];
 };
@@ -961,4 +964,31 @@ long tSupplyDockMisc::vfunction6()
 	for( long i = 0; i < 3; i++ )
 		total += fn_004876df( i );
 	return total;
+}
+
+// FUNCTION: STARFLEETOP 0x0048765d
+void tSupplyDockMisc::vfunction7( long *msg )
+{
+	switch( *msg )
+	{
+	case 0x1104a:
+		fn_0048771a( 0, -1 );
+		break;
+	case 0x1104b:
+		fn_0048771a( 0, 1 );
+		break;
+	case 0x11050:
+		fn_0048771a( 1, -1 );
+		break;
+	case 0x11051:
+		fn_0048771a( 1, 1 );
+		break;
+	case 0x11056:
+		fn_0048771a( 2, -1 );
+		break;
+	case 0x11057:
+		fn_0048771a( 2, 1 );
+		break;
+	}
+	vfunction6();
 }
