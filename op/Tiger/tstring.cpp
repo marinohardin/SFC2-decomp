@@ -562,3 +562,11 @@ iTruth operator<  (const tString &s1,const tString &s2)
 		return true;
 	return c < 0 ? true : false;
 }
+
+// FUNCTION: STARFLEETOP 0x00624fa0
+// HYPOTHESIS: the original (/Ob2) inlines tString(const char *) and ~tString here; with the
+// constructor marked inline this reaches 99.25%, but 0x00623120 is then never emitted.
+tString& tString::operator+(const char *s)
+{
+	return *this + tString(s);
+}
