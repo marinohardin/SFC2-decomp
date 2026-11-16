@@ -7210,6 +7210,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x006434e0": {
+   "name": "twStandardSoundChannel::mCreate3DBuffer",
+   "symbol": "?mCreate3DBuffer@twStandardSoundChannel@@MAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",

@@ -157,11 +157,6 @@ public:
 
 
 
-
-
-
-
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -183,9 +178,9 @@ class twSoundPart : public tgSoundPart
 public:
 	virtual	void	mDetermineHardwareCaps		( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
-	// HYPOTHESIS: these are twSoundPart's own virtuals (the SDK library's symbols), declared
-	// after the two above so their slots are unchanged; their own slot order is not recovered.
-	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
+	// twSoundPart's own virtuals (the SDK library's symbols) in the order of its vtable
+	// (0x00798a3c, slots 141-160).
+	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
 	virtual	long	mGetMaxFrequency			( void );
 	virtual	long	mGetMaxHwBuffers			( void );
@@ -201,7 +196,10 @@ public:
 	virtual	long	mGetMaxContigFreeHwMemBytes	( void );
 	virtual	long	mGetPlayCpuOverheadSwBuffers	( void );
 	virtual	long	mGetTransferToHardwareRateInKBytesPerSec	( void );
-
+	virtual	unsigned char	mCanWeHandle16BitOutput	( void );
+	virtual	unsigned char	mCanWeHandleStereoOutput	( void );
+	virtual	unsigned char	mCanWeHandleMono8BitOutput	( void );
+	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
 	// HYPOTHESIS: the fields between tgSoundPart's and the DirectSound object are not known.
 	char			fUnknown_0130[0x8];
 	LPDIRECTSOUND	fDirectSound;
@@ -209,6 +207,8 @@ public:
 	// bytes, sets dwSize to 0x60 and passes them to GetCaps. The name is ours.
 	DSCAPS			field_0x13c;
 };
+
+extern twSoundPart*	atwSoundPart;
 
 // HYPOTHESIS: the original was built against the DirectX 7 headers, whose
 // DSBUFFERDESC is 36 bytes, with guid3DAlgorithm after lpwfxFormat; the
@@ -358,8 +358,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -374,8 +372,8 @@ public:
 	DSBUFFERDESC7		fUnknown_0180;
 	WAVEFORMATEX		fUnknown_01a4;
 	LPDIRECTSOUNDBUFFER	fSoundBuffer;
-	// HYPOTHESIS: a second DirectSound interface on the buffer, released in
-	// mDone before the buffer itself; the 3D buffer by its place.
+	// The buffer's 3D interface: mCreate3DBuffer queries it, mDone releases it
+	// before the buffer itself. The name is not known.
 	LPDIRECTSOUND3DBUFFER	fUnknown_01bc;
 	// HYPOTHESIS: the two pointers and two sizes of the current buffer lock;
 	// fCurrentBufSize1 is named by the original's "Big Trouble" message.
@@ -403,6 +401,8 @@ protected:
 	unsigned char	mDoActiveUpdate	( double );
 	virtual unsigned char	mUpdateBuffersAndSelections	( double );
 	virtual unsigned char	mUpdateAmountPlayed	( void );
+	// HYPOTHESIS: this class's own virtual, after tSoundChannel's slots; its slot is not recovered.
+	virtual unsigned char	mCreate3DBuffer	( void );
 };
 
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
@@ -1302,10 +1302,10 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 
 
 
-
 // MATCH-ONLY: the #line directives inside set the original's line numbers for
 // its " -- %s %d" messages (1270, 1295), as for mLockHardware above; the others
 // put this file's own numbering back. They change no code.
+#line 1309
 // FUNCTION: STARFLEETOP 0x006432b0
 unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 {
@@ -1360,8 +1360,26 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 	return kTrue;
 }
 
-// MATCH-ONLY: puts this file's own line numbering back for the functions below.
-#line 1365
+// MATCH-ONLY: the #line directives put this file's own numbering back, and inside set the
+// original's line number for the " -- %s %d" message (1326). They change no code.
+#line 1366
+// FUNCTION: STARFLEETOP 0x006434e0
+unsigned char twStandardSoundChannel::mCreate3DBuffer( void )
+{
+	if( atwSoundPart->mCreatePrimaryBuffer() != kTrue )
+		return kFalse;
+
+	if( fSoundBuffer == NULL )
+	{
+#line 1326
+		SOUNDSAY2(( "fDSBuffer was NULL" ));
+#line 1377
+		return kFalse;
+	}
+	if( fSoundBuffer->QueryInterface( IID_IDirectSound3DBuffer, (void**)&fUnknown_01bc ) == DS_OK )
+		return kTrue;
+	return kFalse;
+}
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
