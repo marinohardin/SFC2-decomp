@@ -11,6 +11,9 @@ class	tClockPart : public tPart
 	public:
 		GenAbstractBinding( tClockPart );
 
+		// RTTI .?AVTimerException@tClockPart@@: one catchable type, thrown as a 1-byte temporary.
+		class	TimerException {};
+
 		// HYPOTHESIS: the first virtual after tPart's is twClock::mGetMicroseconds (vtable +0x18).
 		virtual		double	mGetMicroseconds	( void ) = 0;
 };
