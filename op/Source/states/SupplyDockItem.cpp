@@ -110,6 +110,7 @@ public:
 	virtual void vfunction4();
 	virtual void vfunction7( long *msg );
 	virtual long vfunction9();
+	virtual long vfunction10();
 	virtual void vfunction13( long delta );
 
 	long m7c;
@@ -189,4 +190,10 @@ void tSupplyDockShuttles::vfunction7( long *msg )
 long tSupplyDockShuttles::vfunction9()
 {
 	return ((fn_004479b4_object *) m74)->fn_00447a54( 0 );
+}
+
+// FUNCTION: STARFLEETOP 0x00486457
+long tSupplyDockShuttles::vfunction10()
+{
+	return ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
 }
