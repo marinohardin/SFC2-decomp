@@ -5,33 +5,34 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-// HYPOTHESIS: fields as mInit stores them, names not recovered; slots 8 to 22 named from the SDK library, only 13, 14 and 21 pinned by mDoDefaultNextAttachment's calls, the rest of their order not recovered.
+// HYPOTHESIS: fields as mInit stores them, names not recovered; virtuals in the order of the exe's vtable at 0x007b77c8, named from the SDK library.
 class tAFPlayInfo
 {
 public:
-	virtual	long	mGetRandomFrequency	( void );
-	virtual	long	mGetRandomVolume	( void );
-	virtual	long	mGetAcualIndexOffsetIfRandom	( void );
-	virtual	void	mSetNextInSequence	( long next );
-	virtual	iTruth	mAddClass	( long theClass );
-	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
-	virtual	unsigned char	mIsThisInThisThreshold	( long value );
-	virtual	unsigned char	mIsThisInThisGroup	( long value );
+	tAFPlayInfo( void );
 	virtual	double	mGetMinimumDelay	( void );
 	virtual	void	mSetMinimumDelay	( double delay );
 	virtual	double	mGetMaximumDelay	( void );
 	virtual	void	mSetMaximumDelay	( double delay );
+	virtual	unsigned char	mIsThisInThisThreshold	( long value );
+	virtual	unsigned char	mIsThisInThisGroup	( long value );
 	virtual	unsigned char	mAreWeDolby	( void );
-	virtual	unsigned long	mGetActualAudioFileIndex	( void );
-	virtual	unsigned long	mGetActualChannelGroupIndex	( void );
 	virtual	unsigned char	mAreWe3D	( void );
 	virtual	void	mIncreaseRandomCount	( void );
 	virtual	void	mDecreaseRandomCount	( void );
+	virtual	long	mGetRandomFrequency	( void );
+	virtual	long	mGetRandomVolume	( void );
+	virtual	long	mGetAcualIndexOffsetIfRandom	( void );
+	virtual	unsigned long	mGetActualAudioFileIndex	( void );
+	virtual	unsigned long	mGetActualChannelGroupIndex	( void );
 	virtual	void	mSetActualAudioFileIndex	( unsigned long index );
 	virtual	void	mSetActualChannelGroupIndex	( unsigned long index );
+	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
+	virtual	iTruth	mAddClass	( long theClass );
 	virtual	long	mGetNumberOfClasses	( void );
-	virtual	long	mGetNextInSequence	( void );
 	virtual	long *	mGetClasses	( void );
+	virtual	long	mGetNextInSequence	( void );
+	virtual	void	mSetNextInSequence	( long next );
 	tAFPlayInfo &	operator=	( tAFPlayInfo &other );
 	long			field_0x8;	// HYPOTHESIS: 0x4 is the alignment gap VC6 leaves after the vtable pointer for the doubles.
 	char			field_0xc[0x20];
@@ -97,7 +98,6 @@ unsigned char	mystrequivalentN( char *s1, char *s2, long n )
 	}
 	return 1;
 }
-
 // FUNCTION: STARFLEETOP 0x006637f0
 long	tAFPlayInfo::mGetRandomFrequency( void )
 {
@@ -1792,4 +1792,44 @@ long	tBasicSoundFileManager::mGetRegisteredNumber( char *name )
 		}
 	}
 	return -1;
+}
+
+// HYPOTHESIS: the constructor the original inlined into the array new below; its defaults from the stores.
+inline	tAFPlayInfo::tAFPlayInfo( void )
+{
+	mInit( -1, "", "", "", 22050, 22050, 100, 100, 0.0, 0.0, -1, -1, 0, 0, 0 );
+}
+
+// FUNCTION: STARFLEETOP 0x006683a0
+unsigned char	tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition( long position, long u1, long u2, long a1, char *s1, char *s2, char *s3, long a5, long a6, long a7, long a8, double d1, double d2, unsigned char b1, unsigned char b2, long next )
+{
+	if ( position >= field_0x14 )
+	{
+		if ( field_0x14 == 0 )
+		{
+			long	size = 0x800;
+			if ( position > 0x800 )
+				size = ( ( (unsigned long)( position - 1 ) / 0x800 ) + 1 ) * 0x800;
+			field_0x10 = new tAFPlayInfo[size];
+			if ( !field_0x10 )
+				return 0;
+			field_0x14 = size;
+		}
+		else
+		{
+			long	size = field_0x14 + 0x800;
+			if ( size < position )
+				size += (unsigned long)( position - size + 0x7ff ) / 0x800 * 0x800;
+			tAFPlayInfo *	list = new tAFPlayInfo[size];
+			if ( !list )
+				return 0;
+			for ( long i = 0; i < field_0x14; i++ )
+				list[i] = field_0x10[i];
+			field_0x14 = size;
+			delete [] field_0x10;
+			field_0x10 = list;
+		}
+	}
+	field_0x10[position].mInit( a1, s1, s2, s3, a5, a6, a7, a8, d1, d2, u1, u2, b1, b2, next );
+	return 1;
 }
