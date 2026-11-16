@@ -1418,3 +1418,36 @@ tPath twDir::mGetNamedFile( tString &name )
 	return result;
 }
 
+// FUNCTION: STARFLEETOP 0x00631f60
+iTruth twDir::mExist( void )
+{
+	iTruth	exists = false;
+
+	if ( f_24 == "" && !(&f_14)->mValid() && (&f_04)->mValid() )
+		return true;
+
+	WIN32_FIND_DATAW	wideData;
+	WIN32_FIND_DATAA	data;
+	HANDLE	find;
+
+	f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wideData );
+	if ( find != INVALID_HANDLE_VALUE )
+	{
+		if ( wideData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+			exists = true;
+	}
+	else if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+		find = FindFirstFileA( g_00c3caec, &data );
+		if ( find != INVALID_HANDLE_VALUE )
+		{
+			if ( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+				exists = true;
+		}
+	}
+	FindClose( find );
+	return exists;
+}
+
