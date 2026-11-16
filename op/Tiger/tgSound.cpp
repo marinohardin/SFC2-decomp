@@ -4690,3 +4690,16 @@ tPoint3* tgSoundPart::mGet3DSoundVelocity(long channel)
     mReleaseControl();
     return velocity;
 }
+#line 4693 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655ce0
+double tgSoundPart::mGet3DSoundReferenceDistance(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6625
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    double distance = channelPtr->mGet3DSoundReferenceDistance();
+    mReleaseControl();
+    return distance;
+}
