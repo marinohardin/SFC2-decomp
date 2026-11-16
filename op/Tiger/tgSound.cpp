@@ -4005,3 +4005,23 @@ unsigned char tgSoundPart::mSetVolume(long channel, long volume, unsigned char i
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+#line 4009 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00652fd0
+unsigned char tgSoundPart::mSetPriority(long channel, long priority, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5264
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)19, &priority, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5283
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}

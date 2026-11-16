@@ -8812,6 +8812,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00652fd0": {
+   "name": "tgSoundPart::mSetPriority",
+   "symbol": "?mSetPriority@tgSoundPart@@UAEEJJE@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 464,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
