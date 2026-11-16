@@ -19,6 +19,12 @@ enum eSpecialDir
 {
 };
 
+// HYPOTHESIS: named by the exe through twVolume::mGetVolType's symbol; the enumerators are not
+// recovered. mGetVolType maps removable to 0, fixed and RAM disks to 1, CD-ROM to 2, remote to 3.
+enum eVolType
+{
+};
+
 
 // HYPOTHESIS: a queue of 12 bytes, a vtable pointer and two words cleared by the constructor, as
 // tFSSession::tFSSession stores them; the class is named by the exe, its members are not.
@@ -182,7 +188,7 @@ public:
 	virtual int32u	mGetClusterSize( void );
 	virtual int32u	mGetTotalClusters( void );
 	virtual int32u	mGetFreeClusters( void );
-	virtual int32u	mGetVolType( void );
+	virtual eVolType	mGetVolType( void );
 	virtual void	fn_twVolume_slot6( void );
 	virtual void	fn_twVolume_slot7( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tVolume::mGetRoot (STARFLEETOP 0x0061dad0)
@@ -1188,5 +1194,33 @@ int32u twVolume::mGetFreeClusters( void )
 			throw "Error in system getting cluster size";
 	}
 	return freeClusters;
+}
+
+// FUNCTION: STARFLEETOP 0x00631320
+eVolType twVolume::mGetVolType( void )
+{
+	UINT	driveType;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	driveType = GetDriveTypeW( g_00c3cbf0 );
+	if ( ( driveType == DRIVE_UNKNOWN || driveType == DRIVE_NO_ROOT_DIR ) && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+		driveType = GetDriveTypeA( g_00c3caec );
+	}
+	switch ( driveType )
+	{
+		case DRIVE_REMOVABLE:
+			return (eVolType)0;
+		case DRIVE_FIXED:
+		case DRIVE_RAMDISK:
+			return (eVolType)1;
+		case DRIVE_REMOTE:
+			return (eVolType)3;
+		case DRIVE_CDROM:
+			return (eVolType)2;
+		default:
+			throw "Error in system getting vol type";
+	}
 }
 
