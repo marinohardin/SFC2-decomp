@@ -21,6 +21,15 @@ public:
 	virtual long vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9() = 0;
+	virtual void vfunction10() = 0;
+	virtual void vfunction11();
+	virtual void vfunction12() = 0;
 
 	long m04;
 	long m08;
@@ -34,16 +43,7 @@ public:
 long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
 // HYPOTHESIS: a free cdecl function of one argument; other units pass it a name string.
 void fn_004d3306( long arg1 );
-
-
-
-
-
-
-
-
-
-
+// HYPOTHESIS: vfunction9, 10 and 12 are pure; vtable 0x0079fc7c holds 0x0073ea74 in those slots.
 
 // The analysis names this address ~tSupplyDockItem; the code is the constructor.
 // FUNCTION: STARFLEETOP 0x0048612c
@@ -69,4 +69,10 @@ void tSupplyDockItem::vfunction2()
 {
 	if( m04 )
 		fn_004d3306( m04 );
+}
+
+// FUNCTION: STARFLEETOP 0x004861ef
+void tSupplyDockItem::vfunction6()
+{
+	vfunction12();
 }
