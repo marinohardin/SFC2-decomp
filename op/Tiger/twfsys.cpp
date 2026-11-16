@@ -12,6 +12,7 @@ public:
     virtual tPath mDuplicatePath(tSession session, tPath path);
     virtual tPath mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir);
     virtual tPath mPathFromWinString(tSession session, tString name);
+    virtual tString mWinStringFromPath(tPath path);
 };
 
 tPath WinParsePath(tSession session, tString &path);
@@ -490,4 +491,14 @@ bool fn_00630a00(tString &fileName, tString &ext, tString &dirName)
 tPath twFileSystemPart::mPathFromWinString(tSession session, tString name)
 {
     return WinParsePath(session, name);
+}
+
+// HYPOTHESIS: the original expands the path cookie's resolve inline (BindPart( tFSCookiePart ),
+// the path cookie manager's out-of-line find, the count test and operator[]) and copies the
+// resolved twPath's name string at +0x7c; tFSCookiePart and twPath are declared only in
+// tgfsys.cpp and cannot be repeated here, so the name comes through tPath::mGetName.
+// FUNCTION: STARFLEETOP 0x00630d70
+tString twFileSystemPart::mWinStringFromPath(tPath path)
+{
+    return path.mGetName();
 }
