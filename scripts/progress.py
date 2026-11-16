@@ -43,6 +43,7 @@ and functional are zero. Accepted shapes of the harness inputs:
       matched_set.json and functional in functional_set.json.
   op/manifest.tsv
       the claims tools/manifest.py writes; a row whose modes include `partial` is partial.
+      Partial is only as fresh as the manifest: regenerate it first (python3 tools/manifest.py).
   harness/objdiff/**/*.json
       objdiff report JSON ("units" -> "functions"); a function counts as exact when its
       "fuzzy_match_percent" is 100. The original address comes only from

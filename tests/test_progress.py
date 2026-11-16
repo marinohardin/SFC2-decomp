@@ -411,6 +411,7 @@ def test_markdown_keeps_history_and_appends_one_line_per_run(tmp_path):
         'functional 0.00%, partial 0.00%',
     ]
     assert '| exact | 1 | 100 | 0 | 5.00 | 10.00 | 1 | 100 | 10.53 |' in text
+    assert '| partial | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |' in text
     written = json.loads((tmp_path / 'out' / 'progress.json').read_text())
     assert written['generated_at'] == '2026-01-03T00:00:00Z'
 
