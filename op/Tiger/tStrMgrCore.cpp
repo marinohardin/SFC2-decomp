@@ -68,3 +68,9 @@ long tStrMgrCore::mGetNumElements( long group )
 		return (*it).second;
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006273e0
+long tStrMgrCore::mGetNumElements( const char *group )
+{
+	return mGetNumElements( mGetStringIndex( group ) );
+}
