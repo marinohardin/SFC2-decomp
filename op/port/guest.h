@@ -1,4 +1,4 @@
-// game/port/guest.h: guest mode (DESIGN §7.2). Not original; included only by port/types.h when
+// op/port/guest.h: guest mode (DESIGN §7.2). Not original; included only by port/types.h when
 // SFCOP_GUEST is defined, never under VC6.
 //
 // In the native build the original's data lives in the lifted game's 32-bit guest memory: guest
@@ -6,8 +6,8 @@
 // memory directly. `this` and every pointer local or parameter is an ordinary host pointer into
 // it, and the classes keep the original's layout, so member access needs nothing. What does need
 // something is everything whose size or meaning differs between a 32-bit VC6 object and a 64-bit
-// clang one; each such construct is below, in the order the spike met them
-// (spike/guest-mode/REPORT.md):
+// clang one; each such construct is below. This header is used only by the port's guest build
+// and is never seen by the byte check:
 //
 //   1. integers           int32 and friends are fixed width (`long` is 64 bits here)
 //   2. stored pointers    ptr32( T ): a 32-bit guest address that converts to and from T*
@@ -16,7 +16,7 @@
 //   4. pure virtuals      SFCOP_PURE: nothing (a non-virtual member cannot be declared pure)
 //   5. virtual calls      a call to a virtual member that has no body in guest mode is answered
 //                         by a dispatcher that calls through the guest vtable; tools/manifest.py
-//                         generates them into src/app/guest/override.cpp
+//                         generates them into the port's override table
 //   6. type_info, typeid  ::type_info is the guest's (the VC6 CRT's layout); typeid of an object
 //                         asks the guest's own ___RTtypeid, typeid of a pointer expression finds
 //                         the guest TypeDescriptor by its decorated name
@@ -24,7 +24,7 @@
 //                         16 bytes; reading only (growing it would need the guest heap)
 //
 // The guest runtime the functions here call (sfcop_guest_*) is implemented by the native build
-// (src/app/guest/override.h); game/ declares it and nothing more.
+// (the port); op/ declares it and nothing more.
 #if !defined( SFCOP_PORT_GUEST_H )
 #define SFCOP_PORT_GUEST_H
 
