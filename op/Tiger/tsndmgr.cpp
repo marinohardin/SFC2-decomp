@@ -1389,3 +1389,16 @@ tSoundChannelFormat *	tBasicSoundFileManager::mGetSoundChannelFormat( unsigned l
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00666a30
+unsigned char	tBasicSoundFileManager::mAreWeLooping( unsigned long handle, long channel )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mAreWeLooping( handle, channel );
+	}
+	return 0;
+}
