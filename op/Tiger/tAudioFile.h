@@ -6,6 +6,8 @@
 #include "Tiger/tpart.h"
 
 class tBasicAudioFile;
+struct tAsynchReadInfo;
+template <class T> class tStandardMemoryArray;
 
 // The name is in the exe's symbols (tSafeArray<tBasicAudioFile>, tSafeArray<tChannelGroup>,
 // tSafeArray<tClassTrackingInfo>). HYPOTHESIS: field roles (item pointer, counts, grow step 0x40,
@@ -48,6 +50,8 @@ public:
     tAudioFileInfoPart();
     virtual ~tAudioFileInfoPart();
 
+    virtual void mActivate();
+
     virtual void vfn_18();
     virtual void vfn_1c();
     virtual void vfn_20();
@@ -64,7 +68,7 @@ public:
 
     tSafeArray<tBasicAudioFile> field_0c;
     long field_28;
-    long field_2c;
+    tStandardMemoryArray<tAsynchReadInfo> *field_2c;
 };
 
 #endif // tAudioFile_h

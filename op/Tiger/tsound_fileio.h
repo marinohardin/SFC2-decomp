@@ -27,5 +27,6 @@ class	tSoundFileIOBase : public tBasicFile
 };
 
 tSoundFileIOBase	*_NewSoundFileIO	( void );
+int8u				_InitSoundFileIO	( void );
 
 #endif	// tsound_fileio_h

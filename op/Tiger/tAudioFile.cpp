@@ -5,7 +5,12 @@
 // HYPOTHESIS: tMemoryPart is declared with its part binding (claimed at 0x004133d3) inside another
 // unit; it is restated here only as far as the array destructor needs it (slot 10, offset 0x28,
 // frees a block).
-class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(void *aBlock); };
+class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void *mAllocate(int aSize, int aLine, const char *aFile); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(void *aBlock); };
+
+// MATCH-ONLY: included by its bare name so that its __FILE__ is short enough for the harness to
+// pair with the original's build path; the other includes are paths from the op/ root.
+#include "tindexedarray.h"
+#include "Tiger/tsound_fileio.h"
 
 // HYPOTHESIS: only the virtual destructor (slot 0) is known; the array deletes its items through it.
 class tBasicAudioFile
@@ -72,4 +77,20 @@ iTruth tAudioPriorityManagerPart::mIsReady()
     if (TestPart(tMemoryPart) == kTrue)
         return kTrue;
     return kFalse;
+}
+
+// HYPOTHESIS: a 16-byte item of the asynchronous read list; its fields are not recovered.
+struct tAsynchReadInfo
+{
+    long field_00;
+    long field_04;
+    long field_08;
+    long field_0c;
+};
+
+// FUNCTION: STARFLEETOP 0x00657980
+void tAudioFileInfoPart::mActivate()
+{
+    _InitSoundFileIO();
+    field_2c = new tStandardMemoryArray<tAsynchReadInfo>(0x80);
 }

@@ -9001,6 +9001,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00657980": {
+   "name": "tAudioFileInfoPart::mActivate",
+   "symbol": "?mActivate@tAudioFileInfoPart@@UAEXXZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 480,
+   "score": 98.24,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
