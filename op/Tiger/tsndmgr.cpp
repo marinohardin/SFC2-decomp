@@ -1859,3 +1859,13 @@ void	tBasicSoundFileManager::mCloseAllSoundsNotInThreshold( long threshold )
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006686d0
+void	tBasicSoundFileManager::mCloseAllSounds( void )
+{
+	for ( long i = 0; i < field_0x14; i++ )
+	{
+		mCloseFile( i );
+		field_0x10[i].mInit( -1, "", "", "", 22050, 22050, 100, 100, 0.0, 0.0, -1, -1, 0, 0, 0 );
+	}
+}
