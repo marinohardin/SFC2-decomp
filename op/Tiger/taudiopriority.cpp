@@ -2,6 +2,7 @@
 // assertion strings).
 
 #include "Tiger/taudiopriority.h"
+#include "Tiger/tsndmgr.h"
 
 // FUNCTION: STARFLEETOP 0x00661300
 void tClassTrackingInfo::mSet( unsigned long classRef, unsigned long arg2, long arg3, long numHandles, long *handles )
@@ -31,4 +32,10 @@ void tClassTrackingInfo::mSetAvailable( void )
 			fileClass->mRemoveHandle( f04 );
 	}
 	f20 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006614e0
+long tClassTrackingInfo::mGetPriority( void )
+{
+	return BindPart( tBasicSoundFileManager )->mGetChannelPriority( f08, -1 );
 }

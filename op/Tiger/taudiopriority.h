@@ -52,6 +52,7 @@ class tClassTrackingInfo
 	public:
 		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
 		virtual		void	mSetAvailable	( void );
+		virtual		long	mGetPriority	( void );
 
 		unsigned long	f04;
 		unsigned long	f08;
