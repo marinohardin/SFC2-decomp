@@ -229,3 +229,19 @@ char* tString::mCharStr( char* myMemory )
 	}
 	return fInstanceControl.fTempExternalCharRepresentation;
 }
+
+// FUNCTION: STARFLEETOP 0x006237f0
+int tString::mCopyCharStr( char *str, int max_size )
+{
+	int32 count = 0;
+	if (max_size > 0)
+	{
+		char *p = str;
+		iBasicStringElement *src = fInstanceControl.fMemSpace.begin();
+		count = (max_size - 1 < (int32)fInstanceControl.fMemSpace.size()) ? max_size - 1 : (int32)fInstanceControl.fMemSpace.size();
+		for (int32u i = 0; i < (int32u)count; i++)
+			*p++ = (char)*src++;
+		str[count] = 0;
+	}
+	return count;
+}
