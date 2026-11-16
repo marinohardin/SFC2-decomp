@@ -3853,3 +3853,39 @@ unsigned char tgSoundPart::mSetPan(long channel, long pan, unsigned char immedia
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x006523b0
+unsigned char tgSoundPart::mAddDelayCommand(long channel, double delay, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4990
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)22, &delay, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5009
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}

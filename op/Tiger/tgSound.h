@@ -580,7 +580,9 @@ public:
     virtual void mDump();
     virtual void mDump(int level);
     virtual void mUpdate();
-    virtual void mAddUpdateSoundPositionFunction(); virtual void mAddUpdateListenerPositionFunction(); virtual void mAddDelayCommand(); virtual void vfunction90();
+    virtual void mAddUpdateSoundPositionFunction(); virtual void mAddUpdateListenerPositionFunction();
+    virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
+    virtual void vfunction90();
     virtual void mFadeToVolume(); virtual void mFadeToStopAndResetNow(); virtual void mFadeToStopAndClearNow(); virtual void mPlaySpecialLoop();
     virtual void mEndSpecialLoop(); virtual void mAddGetNextAttachmentFunction(); virtual void mGetNumberCurrentlyPlaying(); virtual void mDoWeRetainSelections();
     virtual void mWeRetainSelections();
@@ -619,6 +621,7 @@ public:
     virtual unsigned char mSetFrequency(long channel, long frequency, unsigned char immediate);
     virtual unsigned char mSetPan(long channel, long pan, unsigned char immediate);
     virtual void mUpdate();
+    virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     virtual iTruth xAttemptToGainControl(const char* file, long line, long a, long b);
