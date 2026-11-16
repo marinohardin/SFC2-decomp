@@ -3776,11 +3776,7 @@ unsigned char tgSoundPart::mSetFrequency(long channel, long frequency, unsigned 
 #line 4893
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
     tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
-    if (channelPtr == 0)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
     if (channelPtr->mAreWeFixedFrequency() == 1)
     {
 #line 4901
@@ -3789,11 +3785,7 @@ unsigned char tgSoundPart::mSetFrequency(long channel, long frequency, unsigned 
         return 0;
     }
     long handle = mCreateCommand((eSoundChannelCommand)5, &frequency, 0);
-    if (handle == -1)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (handle == -1) { mReleaseControl(); return 0; }
     if (immediate == 1)
         channelPtr->mAddImmediateCommand(handle);
     else
@@ -3819,11 +3811,7 @@ unsigned char tgSoundPart::mSetPan(long channel, long pan, unsigned char immedia
 #line 4942
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
     tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
-    if (channelPtr == 0)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
     if (channelPtr->mAreWeFixedPan() == 1)
     {
 #line 4950
@@ -3832,11 +3820,7 @@ unsigned char tgSoundPart::mSetPan(long channel, long pan, unsigned char immedia
         return 0;
     }
     long handle = mCreateCommand((eSoundChannelCommand)6, &pan, 0);
-    if (handle == -1)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (handle == -1) { mReleaseControl(); return 0; }
     if (immediate == 1)
         channelPtr->mAddImmediateCommand(handle);
     else
@@ -3862,17 +3846,9 @@ unsigned char tgSoundPart::mAddDelayCommand(long channel, double delay, unsigned
 #line 4990
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
     tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
-    if (channelPtr == 0)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
     long handle = mCreateCommand((eSoundChannelCommand)22, &delay, 0);
-    if (handle == -1)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (handle == -1) { mReleaseControl(); return 0; }
     if (immediate == 1)
         channelPtr->mAddImmediateCommand(handle);
     else
@@ -3898,17 +3874,9 @@ unsigned char tgSoundPart::mAddUpdateSoundPositionFunction(long channel, void (*
 #line 5033
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
     tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
-    if (channelPtr == 0)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
     long handle = mCreateCommand((eSoundChannelCommand)20, &function, (void*)data);
-    if (handle == -1)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (handle == -1) { mReleaseControl(); return 0; }
     if (immediate == 1)
         channelPtr->mAddImmediateCommand(handle);
     else
@@ -3922,11 +3890,7 @@ unsigned char tgSoundPart::mAddUpdateSoundPositionFunction(long channel, void (*
         channelPtr->mAddDelayedCommand(handle);
     }
     handle = mCreateCommand((eSoundChannelCommand)21, &interval, 0);
-    if (handle == -1)
-    {
-        mReleaseControl();
-        return 0;
-    }
+    if (handle == -1) { mReleaseControl(); return 0; }
     if (immediate == 1)
         channelPtr->mAddImmediateCommand(handle);
     else
@@ -3998,7 +3962,7 @@ unsigned char tgSoundPart::mFadeToStopAndClearNow(long channel, double timeToTak
 
 // FUNCTION: STARFLEETOP 0x00652a30
 unsigned char tgSoundPart::mFadeToVolume(long channel, long volume, double timeToTake, unsigned char immediate)
-{   // MATCH-ONLY: compact so the unit stays under 4021 lines; past that, the #line numbers of the functions from 0x006501c0 on take this claim (claims pair by physical line).
+{   // MATCH-ONLY: compact (as the functions from 0x00651e00 on) so the unit stays under 4021 lines; past that, the #line numbers of the functions from 0x006501c0 on take this claim (claims pair by physical line).
     if (field_0x114.field_0x4[2] != 1) return 0;
 #line 5168
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
@@ -4013,6 +3977,29 @@ unsigned char tgSoundPart::mFadeToVolume(long channel, long volume, double timeT
     else {
         if (vfunction13() == 1) {
 #line 5192
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652d00
+unsigned char tgSoundPart::mSetVolume(long channel, long volume, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5216
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeFixedVolume() == 1) {
+#line 5224
+        SOUND_ERROR(("you are trying to change the volume of a fixed Volume Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; } // no mReleaseControl here, as in mSetPan
+    long handle = mCreateCommand((eSoundChannelCommand)7, &volume, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5240
             SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
         channelPtr->mAddDelayedCommand(handle); }
     channelPtr->mUpdateRegular(vfunction125());
