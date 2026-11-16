@@ -802,6 +802,22 @@ address	size	symbol	source	modes
 0x00642630	843	twStandardSoundChannel::mDoActiveUpdate(double)	Tiger/twSound.cpp	partial
 0x00642980	2341	twStandardSoundChannel::mUpdateBuffersAndSelections(double)	Tiger/twSound.cpp	partial
 0x006432b0	560	twStandardSoundChannel::mUpdateAmountPlayed()	Tiger/twSound.cpp	vc6 guest
+0x00645940	7	twSoundPart::mDirectSoundObject()	Tiger/twSound.cpp	vc6 guest
+0x00645ac0	7	twSoundPart::mGetMinFrequency()	Tiger/twSound.cpp	vc6 guest
+0x00645ad0	7	twSoundPart::mGetMaxFrequency()	Tiger/twSound.cpp	vc6 guest
+0x00645ae0	7	twSoundPart::mGetMaxHwBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645af0	7	twSoundPart::mGetMaxHwStaticBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b00	7	twSoundPart::mGetMaxHwStreamingBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b10	7	twSoundPart::mGetMaxHw3DBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b20	7	twSoundPart::mGetFreeHwBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b30	7	twSoundPart::mGetFreeHwStaticBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b40	7	twSoundPart::mGetFreeHwStreamingBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b50	7	twSoundPart::mGetFreeHw3DBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645b60	7	twSoundPart::mGetTotalHwMemBytes()	Tiger/twSound.cpp	vc6 guest
+0x00645b70	7	twSoundPart::mGetFreeHwMemBytes()	Tiger/twSound.cpp	vc6 guest
+0x00645b80	7	twSoundPart::mGetMaxContigFreeHwMemBytes()	Tiger/twSound.cpp	vc6 guest
+0x00645b90	7	twSoundPart::mGetPlayCpuOverheadSwBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00645ba0	7	twSoundPart::mGetTransferToHardwareRateInKBytesPerSec()	Tiger/twSound.cpp	vc6 guest
 0x00646ce0	48	AddSoundErrorDuringInterrupt(const char*,...)	Tiger/tgSound.cpp	vc6 guest
 0x00646d10	70	PrintOutBufferedErrors()	Tiger/tgSound.cpp	vc6 guest
 0x00646d60	270	GetSilenceData(long)	Tiger/tgSound.cpp	vc6 guest
