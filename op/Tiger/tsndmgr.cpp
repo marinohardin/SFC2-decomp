@@ -1886,3 +1886,8 @@ void	tBasicSoundFileManager::mCloseFile( long index )
 		field_0x10[index].mInit( -1, "", "", "", 22050, 22050, 100, 100, 0.0, 0.0, -1, -1, 0, 0, 0 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00668970
+void	tBasicSoundFileManager::mParseAllSoundsFile( char *fileName, long a2, long a3 )
+{
+}
