@@ -164,6 +164,11 @@ public:
 class tVolIterator: public fn_SessionCookie
 {
 public:
+	tVolIterator() {}
+	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
+	// copied session cookie both before and after the tVolIterator vtable pointer.
+	tVolIterator( const tVolIterator &other );
+
 	virtual iTruth	mValid( void );
 
 	int32u	mAdd( tVolume volume );

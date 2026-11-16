@@ -8353,6 +8353,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006345b0": {
+   "name": "tVolIterator::tVolIterator",
+   "symbol": "??0tVolIterator@@QAE@ABV0@@Z",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 64,
+   "score": 99.615,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

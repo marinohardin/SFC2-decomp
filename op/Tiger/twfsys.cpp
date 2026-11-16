@@ -33,8 +33,7 @@ tVolume WinParseVolume(tSession session, tString &path);
 // FUNCTION: STARFLEETOP 0x0062e1c0
 tVolIterator twFileSystemPart::mGetVolIterator(tSession session)
 {
-    tVolIterator it;
-    return it;
+    return tVolIterator();
 }
 
 // HYPOTHESIS: only the first test of the original's loop is written; the second (the name of the
@@ -556,4 +555,12 @@ tDir twFileSystemPart::mGetSpecialDir(tSession session, eSpecialDir which)
     tDir dir;
     dir = WinParseDir(session, path);
     return dir;
+}
+
+// HYPOTHESIS: out of line in this unit, as it sits at the end of this unit's code and
+// mGetVolIterator calls it to copy its result.
+// FUNCTION: STARFLEETOP 0x006345b0
+tVolIterator::tVolIterator(const tVolIterator &other): fn_SessionCookie(other)
+{
+    fSession = other.fSession;
 }
