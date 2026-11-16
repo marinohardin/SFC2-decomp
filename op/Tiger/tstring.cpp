@@ -303,3 +303,11 @@ iTruth tString::mIncorporateCharList(const char *s, int32 lengthToCopy)
 	}
 	return kFalse;
 }
+
+// FUNCTION: STARFLEETOP 0x00623b80
+void tString::mEndStrAt(iterator strPosition)
+{
+	if (this != strPosition.fString)
+		throw "You can't use someone else's iterator to terminate yourself!";
+	mEndStrAt(strPosition.fIndex);
+}
