@@ -1833,3 +1833,16 @@ unsigned char	tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition( long positio
 	field_0x10[position].mInit( a1, s1, s2, s3, a5, a6, a7, a8, d1, d2, u1, u2, b1, b2, next );
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x006685b0
+void	tBasicSoundFileManager::mCloseAllSoundsInGroup( long group )
+{
+	for ( long i = 0; i < field_0x14; i++ )
+	{
+		if ( field_0x10[i].mIsThisInThisGroup( group ) == 1 )
+		{
+			mCloseFile( i );
+			field_0x10[i].mInit( -1, "", "", "", 22050, 22050, 100, 100, 0.0, 0.0, -1, -1, 0, 0, 0 );
+		}
+	}
+}
