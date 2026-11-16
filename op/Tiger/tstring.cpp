@@ -761,3 +761,33 @@ tString::iterator tString::mStrChr(iBasicStringElement c)
 	}
 	return i;
 }
+
+// FUNCTION: STARFLEETOP 0x00625730
+tString::iterator tString::mStrRChr(iBasicStringElement c)
+{
+	// MATCH-ONLY: the original (/Ob2) inlines iterator(int32, tString *) and end() here.
+	iBasicStringElement *p = fInstanceControl.fMemSpace.begin() + fInstanceControl.fDataCount - 1;
+	int32 count = fInstanceControl.fDataCount;
+	iterator r;
+	for (int32 i = count; i != 0; i--, p--)
+	{
+		if (*p == c)
+		{
+			i--;
+			if (!this)
+				throw "Access to uninitialized iterator";
+			if (i < 0 || i > count)
+				throw "Access past bounds of tString";
+			r.fIndex = i;
+			r.fString = this;
+			return r;
+		}
+	}
+	if (!this)
+		throw "Access to uninitialized iterator";
+	if (count < 0)
+		throw "Access past bounds of tString";
+	r.fIndex = count;
+	r.fString = this;
+	return r;
+}
