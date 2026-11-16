@@ -522,3 +522,12 @@ unsigned char tHandleList::mRemoveFromList( unsigned long handle )
 	f04--;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00662bc0
+unsigned char tHandleList::mIsHandle( unsigned long handle )
+{
+	for ( long i = 0; i < f04; i++ )
+		if ( f0c[ i ] == handle )
+			return true;
+	return false;
+}
