@@ -350,7 +350,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -403,6 +402,7 @@ protected:
 public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
 	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
+	virtual unsigned char	mDoFillSelection	( unsigned char );
 };
 
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
@@ -1612,7 +1612,96 @@ unsigned char twStandardSoundChannel::mAddSoundChannel( tSoundChannelFormat* for
 		(*buffer)->SetCurrentPosition( 0 );
 	return kTrue;
 }
-#line 1616
+
+// FUNCTION: STARFLEETOP 0x00644110
+unsigned char twStandardSoundChannel::mDoFillSelection( unsigned char param_1 )
+{
+	field_0x15c = 0;
+	if( fSoundBuffer->SetCurrentPosition( 0 ) != DS_OK )
+		return kFalse;
+	field_0x164 = 0;
+
+	tSoundSelection* second = NULL;
+	void* secondData = NULL;
+	tSoundSelection* first = field_0x170( field_0x178, param_1, second );
+	if( first == NULL )
+		return kFalse;
+
+	first->vfunction14( kFalse );
+	long total = first->vfunction9();
+	long firstSize = total;
+	long secondSize = 0;
+	if( second )
+	{
+		second->vfunction14( kFalse );
+		secondSize = second->vfunction9();
+		total += secondSize;
+	}
+
+	if( total != (&field_0x10)->vfunction3() )
+	{
+		AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1735
+		AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+		return kFalse;
+	}
+
+	void* data = first->vfunction22();
+	if( data == NULL )
+	{
+		AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1742
+		AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+		return kFalse;
+	}
+	if( second )
+	{
+		secondData = second->vfunction22();
+		if( secondData == NULL )
+		{
+			AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1751
+			AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+			first->vfunction23();
+			return kFalse;
+		}
+	}
+
+	LPVOID	ptr1;
+	LPVOID	ptr2;
+	DWORD	bytes1;
+	DWORD	bytes2;
+	LPDIRECTSOUNDBUFFER buffer = fSoundBuffer;
+	if( buffer->Lock( 0, (&field_0x10)->vfunction3(), &ptr1, &bytes1, &ptr2, &bytes2, 0 ) == DS_OK && bytes1 == (&field_0x10)->vfunction3() )
+	{
+		memcpy( ptr1, data, firstSize );
+		// The second block is copied at the offset of its own size, as the original does.
+		if( secondData )
+			memcpy( (char*)ptr1 + secondSize, secondData, secondSize );
+		fSoundBuffer->Unlock( ptr1, bytes1, ptr2, bytes2 );
+		first->vfunction23();
+		first->vfunction14( kTrue );
+		if( second )
+		{
+			first->vfunction14( kTrue );	// the original's: first, not second
+			second->vfunction23();
+		}
+		return kTrue;
+	}
+
+	AddSoundErrorDuringInterrupt( "No Lock -- Major Trouble!" );
+#line 1772
+	AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+	first->vfunction23();
+	first->vfunction14( kTrue );
+	if( second )
+	{
+		second->vfunction14( kTrue );
+		second->vfunction23();
+	}
+	return kFalse;
+}
+#line 1705
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart

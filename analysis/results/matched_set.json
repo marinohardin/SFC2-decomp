@@ -7237,6 +7237,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00644110": {
+   "name": "twStandardSoundChannel::mDoFillSelection",
+   "symbol": "?mDoFillSelection@twStandardSoundChannel@@UAEEE@Z",
+   "unit": "Tiger/twSound.cpp",
+   "size": 624,
+   "score": 83.852,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",

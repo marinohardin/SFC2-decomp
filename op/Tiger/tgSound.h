@@ -472,11 +472,14 @@ public:
     long field_0x158;
     long field_0x15c, field_0x160, field_0x164, field_0x168;
     unsigned char field_0x16c;
-    long field_0x170;
+    // The fill-selection function and its user data: twStandardSoundChannel::mAddActiveSoundChannel's
+    // mangled name gives both function types; mDoFillSelection calls this one.
+    typedef tSoundSelection* (*tFillSelectionFunction)(unsigned long&, unsigned char, tSoundSelection*&);
+    tFillSelectionFunction field_0x170;
     // HYPOTHESIS: a function that hands the channel its next selection; its name is not recovered.
     typedef tSoundSelection* (*tSelectionFunction)(long, long);
     tSelectionFunction field_0x174;
-    long field_0x178;
+    unsigned long field_0x178;
 };
 
 // HYPOTHESIS: the sound part, bound by name through its part cache (its cache pointer is at
