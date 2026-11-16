@@ -259,3 +259,25 @@ int tString::mCopyWideStr( iWideChar *str, int max_size )
 	}
 	return count;
 }
+
+// FUNCTION: STARFLEETOP 0x006238b0
+iTruth tString::mIncorporateCharList(const iBasicStringElement *s, int32 lengthToCopy)
+{
+	if (s != NULL && lengthToCopy < 50000)
+	{
+		fInstanceControl.fMemSpace.erase(fInstanceControl.fMemSpace.begin(), fInstanceControl.fMemSpace.end());
+		if (fInstanceControl.fMemLimit < lengthToCopy)
+		{
+			int32 newSize = lengthToCopy + fn_ExpansionRoomInline(lengthToCopy);
+			fInstanceControl.fMemSpace.reserve(newSize);
+			fInstanceControl.fMemLimit = newSize;
+		}
+		fInstanceControl.fDataCount = lengthToCopy;
+		for (int32 i = 0; i < lengthToCopy; i++)
+		{
+			fInstanceControl.fMemSpace.push_back(*s);
+			s++;
+		}
+	}
+	return kFalse;
+}
