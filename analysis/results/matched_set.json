@@ -7498,6 +7498,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00645950": {
+   "name": "twSoundPart::mDone",
+   "symbol": "?mDone@twSoundPart@@UAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645ac0": {
    "name": "twSoundPart::mGetMinFrequency",
    "symbol": "?mGetMinFrequency@twSoundPart@@UAEJXZ",

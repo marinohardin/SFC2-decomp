@@ -146,9 +146,6 @@ public:
 
 
 
-
-
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -170,6 +167,7 @@ public:
 					twSoundPart					( void );
 	virtual	void	mDetermineHardwareCaps		( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
+	virtual	void	mDone						( void );
 	virtual	long	mDuplicateSoundChannel		( long channel );
 	virtual	long	mAddActiveSoundChannel		( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData );
 	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
@@ -195,8 +193,10 @@ public:
 	virtual	unsigned char	mCanWeHandleStereoOutput	( void );
 	virtual	unsigned char	mCanWeHandleMono8BitOutput	( void );
 	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
-	// HYPOTHESIS: the fields between tgSoundPart's and the DirectSound object are not known.
-	char			fUnknown_0130[0x8];
+	// HYPOTHESIS: two DirectSound interfaces mDone releases before the DirectSound object;
+	// the primary buffer and the 3D listener by their order, names and types are not known.
+	LPDIRECTSOUNDBUFFER		fUnknown_0130;
+	LPDIRECTSOUND3DLISTENER	fUnknown_0134;
 	LPDIRECTSOUND	fDirectSound;
 	// The DirectSound capabilities: mDetermineHardwareCaps (0x00645bb0) clears these 0x60
 	// bytes, sets dwSize to 0x60 and passes them to GetCaps. The name is ours.
@@ -2178,6 +2178,35 @@ LPDIRECTSOUND*	twSoundPart::mDirectSoundObject( void )
 {
 	return &fDirectSound;
 }
+
+// MATCH-ONLY: the #line directives set the original's line numbers (2498, 2517) and then put this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x00645950
+void twSoundPart::mDone( void )
+{
+	tgSoundPart::mDone();
+#line 2498
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0134 )
+	{
+		fUnknown_0134->Release();
+		fUnknown_0134 = NULL;
+	}
+	if( fUnknown_0130 )
+	{
+		fUnknown_0130->Release();
+		fUnknown_0130 = NULL;
+	}
+	if( fDirectSound )
+	{
+		fDirectSound->Release();
+		fDirectSound = NULL;
+	}
+	SOUNDSAY(( "Finishing up: Number created=%ld,numberReleased=%ld", gNumBuffersCreated, gNumBuffersReleased ));
+#line 2517
+	SOUNDSAY(( " -- %s %d\n", __FILE__, __LINE__ ));
+	mReleaseControl();
+}
+#line 2210
 
 // FUNCTION: STARFLEETOP 0x00645ac0
 long	twSoundPart::mGetMinFrequency( void )
