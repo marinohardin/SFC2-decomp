@@ -97,6 +97,7 @@ class fn_004479b4_object
 public:
 	long fn_004479b4( long arg1 );
 	void fn_00447926( long arg1, long arg2 );
+	long fn_00447a54( long arg1 );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -108,6 +109,7 @@ public:
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual void vfunction7( long *msg );
+	virtual long vfunction9();
 	virtual void vfunction13( long delta );
 
 	long m7c;
@@ -181,4 +183,10 @@ void tSupplyDockShuttles::vfunction7( long *msg )
 		break;
 	}
 	vfunction6();
+}
+
+// FUNCTION: STARFLEETOP 0x0048644c
+long tSupplyDockShuttles::vfunction9()
+{
+	return ((fn_004479b4_object *) m74)->fn_00447a54( 0 );
 }
