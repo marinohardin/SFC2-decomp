@@ -348,9 +348,11 @@ public:
 	// the twPath vtable store, the call to mFree and the members' destructors.
 	~twPath() { mFree(); }
 
-	// HYPOTHESIS: public, as twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) calls it.
-	void	mEnsureFileClosed( void );
+	// HYPOTHESIS: protected, by the exe's symbol, with twIORequest::mProcessRequest (STARFLEETOP
+	// 0x006340b0) calling it as a friend.
+	friend class twIORequest;
 protected:
+	void	mEnsureFileClosed( void );
 	void	mMakeFullPath( void );
 
 public:
@@ -623,9 +625,14 @@ public:
 		return fValues[cookie];
 	}
 
+	// MATCH-ONLY: the out-of-line mResolve of tCookieManager<tPath,twPath> (STARFLEETOP
+	// 0x00636ad0), defined after the class so that its callers cannot inline it.
+	tObjectType &fn_00636ad0_mResolve( tCookieType &cookie );
+
 	int32u											f_00;
 	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
 };
+
 
 template <class tVolumeType, class tDirType, class tPathType>
 class tFileSystemCookieManager
@@ -2214,6 +2221,9 @@ unsigned long AsynchIOMain( void *data )
 void *OpenForWrite( tString &path );
 void *OpenForRead( tString &path );
 
+template <>
+twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie );
+
 // FUNCTION: STARFLEETOP 0x006340b0
 void twIORequest::mProcessRequest( void )
 {
@@ -2242,8 +2252,8 @@ void twIORequest::mProcessRequest( void )
 			case fn_twIORequestType_1:
 			{
 				// MATCH-ONLY: the original calls mResolve out of line here (STARFLEETOP 0x00636ad0).
-				twPath	&(tCookieManager<tPath,twPath>::*resolve)( tPath & ) = &tCookieManager<tPath,twPath>::mResolve;
-				twPath	&path = (BindPart( tFSCookiePart )->fFSCookies.fPathCookies.*resolve)( f_04 );
+				twPath	&path = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_00636ad0_mResolve( f_04 );
+
 				if ( path.f_a8 < 3 )
 				{
 					path.mEnsureFileClosed();
@@ -2252,7 +2262,7 @@ void twIORequest::mProcessRequest( void )
 					if ( path.f_a4 == INVALID_HANDLE_VALUE )
 						path.f_a8 = 0;
 				}
-				HANDLE	file = (BindPart( tFSCookiePart )->fFSCookies.fPathCookies.*resolve)( f_04 ).f_a4;
+				HANDLE	file = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_00636ad0_mResolve( f_04 ).f_a4;
 				SetFilePointer( file, f_18, NULL, FILE_BEGIN );
 				done = WriteFile( file, f_14, f_1c, &transferred, NULL );
 				break;
@@ -2270,4 +2280,12 @@ void twIORequest::mProcessRequest( void )
 		if ( f_20 )
 			f_20->fn_006340b0_vfunction0( f_04, 1, 0 );
 	}
+}
+
+template <>
+twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie )
+{
+	if ( fValues.count( cookie ) == 0 )
+		throw "Use of invalid cookie to resolve an item";
+	return fValues[cookie];
 }
