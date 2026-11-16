@@ -300,7 +300,9 @@ def _loop_harness(tmp_path):
     """The harness folder of a checkout the loop will run in.
 
     The loop refuses main and develop, and a fresh clone sits on develop, so there the loop is run
-    from a detached worktree of the same commit; on any other branch, from this checkout.
+    from a detached worktree of the same commit; on any other branch, from this checkout. The
+    worktree holds the committed loop.sh, so on main or develop an uncommitted edit to it is not
+    what runs; work on the loop happens on a work branch, where the checkout's own copy runs.
     """
     repo = os.path.dirname(HERE)
     branch = subprocess.run(['git', '-C', repo, 'rev-parse', '--abbrev-ref', 'HEAD'],
