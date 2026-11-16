@@ -1622,3 +1622,16 @@ long	tBasicSoundFileManager::mGetVolume( unsigned long handle, long channel )
 	}
 	return -99999999;
 }
+
+// FUNCTION: STARFLEETOP 0x006679f0
+unsigned char	tBasicSoundFileManager::mFadeToVolume( unsigned long handle, long volume, double timeToTake, long channel, unsigned char immediate )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mFadeToVolume( handle, volume, timeToTake, channel, immediate );
+	}
+	return false;
+}
