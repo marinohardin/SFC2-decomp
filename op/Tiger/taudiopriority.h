@@ -16,8 +16,22 @@ class tHandleList
 
 		long	f04;
 		long	f08;
-		long	f0c;
+		// HYPOTHESIS: a heap block, from the operator delete call on it in the inlined
+		// destructor (0x00661f30); its element type is not known.
+		long	*f0c;
 };
+
+// HYPOTHESIS: inline, from its body inlined into ~tAudioFileClass (0x00661f30).
+inline tHandleList::~tHandleList( void )
+{
+	if ( f0c )
+	{
+		delete [] f0c;
+		f0c = NULL;
+	}
+	f08 = 0;
+	f04 = 0;
+}
 
 class tClassActiveChannelList : public tHandleList
 {
@@ -25,6 +39,11 @@ class tClassActiveChannelList : public tHandleList
 		inline tClassActiveChannelList( void ) : tHandleList( 0 ) {}
 		virtual		~tClassActiveChannelList( void );
 };
+
+// HYPOTHESIS: inline and empty, from ~tAudioFileClass (0x00661f30) storing only the base's vtable.
+inline tClassActiveChannelList::~tClassActiveChannelList( void )
+{
+}
 
 // HYPOTHESIS: mAddHandle (signature from the SDK library symbols) sits in vtable slot 15 (the
 // call at 0x00661300 goes through +0x3c); the slots before it are not recovered yet. Slot 2
@@ -41,8 +60,8 @@ class tAudioFileClass
 			f1c = 0;
 			f34 = 0;
 		}
-		// HYPOTHESIS: not virtual; mReleaseAudioFileClassPtr calls it directly before freeing.
-		~tAudioFileClass( void );
+		// HYPOTHESIS: no destructor is declared; the implicit one (0x00661f30) stores no vtable
+		// pointer of its own, which a written destructor does.
 
 		virtual		void	vfunction0	( void );
 		virtual		long	vfunction1	( void );

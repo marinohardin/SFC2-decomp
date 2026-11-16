@@ -203,6 +203,8 @@ void tAudioPriorityManagerPart::mRemoveClass( long reference )
 	mReleaseAudioFileClassPtr( handle );
 }
 
+// The implicit tAudioFileClass destructor is emitted out of line for the delete below.
+// FUNCTION: STARFLEETOP 0x00661f30
 // FUNCTION: STARFLEETOP 0x00661eb0
 unsigned char tAudioPriorityManagerPart::mReleaseAudioFileClassPtr( long handle )
 {
