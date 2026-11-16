@@ -4333,3 +4333,19 @@ unsigned char tgSoundPart::mDoWeAutoRemoveChannel(long channel)
     unsigned char result = channelPtr->mDoWeAutoRemoveChannel();
     mReleaseControl(); return result;
 }
+
+// FUNCTION: STARFLEETOP 0x00654e20
+unsigned char tgSoundPart::mWeAutoRemoveChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5942
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (!channelPtr->mDoWeAutoRemoveChannel())
+    {
+        long type = channelPtr->mGetSoundType();
+        channelPtr->mSetSoundType(type + 0x1000);
+    }
+    mReleaseControl(); return 1;
+}
