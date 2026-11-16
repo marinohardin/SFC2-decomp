@@ -2066,3 +2066,10 @@ void *OpenForReadChar( tString &path )
 	return CreateFileA( g_00c3caec, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
 }
 
+// HYPOTHESIS: inline, as twPath::mRead leaves no call to it; the copy here only sets the tPath
+// member's vtable pointer.
+// FUNCTION: STARFLEETOP 0x00633be0
+inline twIORequest::~twIORequest()
+{
+}
+

@@ -36,12 +36,6 @@ public:
 	tPathCallback	*f_20;
 };
 
-// HYPOTHESIS: inline here, as twPath::mRead leaves no call to it; the out-of-line copy is
-// STARFLEETOP 0x00633be0.
-inline twIORequest::~twIORequest()
-{
-}
-
 class twIORequestQueueManager
 {
 public:
