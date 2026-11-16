@@ -129,7 +129,7 @@ class tString
 		iBasicStringElement&	operator[](int32 n);
 		int32 					size() const;
 		int32					find(char);
-		int32					find(tString&, int32 startPos = 0);
+		int32					find(tString &, int32 startPos = 0);
 		int32					rfind(tString&, int32 startPos);
 		int32					find(const char *, int32 startPos = 0);
 		int32					rfind(const char *, int32 startPos);
@@ -147,12 +147,14 @@ class tString
 
 			public:
 				iterator();
+				iterator(int32 index, tString *s);
 				iterator(const iterator &i);
 
 				iBasicStringElement&	operator*();
 				iterator				operator+(int32 n);
 				iterator				operator-(int32 n);
 				iterator				operator++(int);
+				iterator				operator++();
 				iTruth					operator==(const iterator i);
 				iTruth					operator!=(const iterator i);
 				iTruth					operator<(const iterator i);

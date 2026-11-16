@@ -369,3 +369,79 @@ int32 tString::find(const char *s, int32 startPos)
 {
 	return find(tString(s), startPos);
 }
+
+// MATCH-ONLY: the original inlined these small members into find.
+inline int32 tString::size() const
+{
+	return fInstanceControl.fDataCount;
+}
+
+inline tString::iterator tString::begin()
+{
+	return iterator(0, this);
+}
+
+inline tString::iterator tString::end()
+{
+	return iterator(fInstanceControl.fDataCount, this);
+}
+
+inline iBasicStringElement& tString::iterator::operator*()
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	return fString->fInstanceControl.fMemSpace[fIndex];
+}
+
+inline tString::iterator tString::iterator::operator+(int32 n)
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	iterator t(*this);
+	t.fIndex = fIndex + n;
+	if (t.fIndex < 0 || t.fIndex > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	return t;
+}
+
+inline tString::iterator tString::iterator::operator++()
+{
+	iterator old = *this;
+	if (fIndex + 1 > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	fIndex++;
+	return old;
+}
+
+// FUNCTION: STARFLEETOP 0x00624020
+int32 tString::find(tString &s, int32 startPos)
+{
+	int32 &pos = startPos;
+	if (pos < 0)
+		pos = 0;
+	int32 count = size() - s.size() - pos + 1;
+	if (count <= 0)
+		return -1;
+	{
+		iterator i = begin() + pos;
+		for (;;)
+		{
+			iterator a = i;
+			iterator j = s.begin();
+			iTruth match;
+			do
+			{
+				if (!(j != s.end()))
+					return pos;
+				match = (*a == *j);
+				++j;
+				++a;
+			} while (match);
+			pos++;
+			if (--count == 0)
+				break;
+			i++;
+		}
+	}
+	return -1;
+}
