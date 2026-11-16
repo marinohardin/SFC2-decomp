@@ -18,7 +18,9 @@ class tSupplyDockItem
 public:
 	tSupplyDockItem( long arg1, long arg2, long arg3, long mask, long arg5 );
 
-	virtual void vfunction1();
+	virtual long vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
 
 	long m04;
 	long m08;
@@ -28,10 +30,8 @@ public:
 	long m78;
 };
 
-
-
-
-
+// HYPOTHESIS: a free cdecl function of seven arguments; its unit is not written yet.
+long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
 
 
 
@@ -52,4 +52,14 @@ tSupplyDockItem::tSupplyDockItem( long arg1, long arg2, long arg3, long mask, lo
 {
 	// The original's validate sits on line 54 (push 0x36).
 	validate( mask );
+}
+
+// FUNCTION: STARFLEETOP 0x004861aa
+long tSupplyDockItem::vfunction1()
+{
+	long result = 0;
+	if( m04 )
+		result = fn_004d3278( m04, m04, 0, m08, m0c, 800, 600 );
+	vfunction3();
+	return result;
 }
