@@ -27,6 +27,12 @@ public:
     // bumps the slot's 16-bit use count and returns (count << 16) + slot. Inlined into
     // tAudioFileInfoPart::mAddSoundFile (0x00657de0); its name is not recovered.
     unsigned long fn_Add(T *aItem);
+    // HYPOTHESIS: returns the item a handle names, or 0 when the handle is out of range or its
+    // use count is stale. Its name is not recovered.
+    T *fn_Get(unsigned long aHandle);
+    // HYPOTHESIS: deletes the item a handle names when the handle's use count is current.
+    // Inlined into tAudioFileInfoPart::mDeleteSoundFile (0x00658070); its name is not recovered.
+    void fn_Remove(unsigned long aHandle);
 
     T *field_04;
     long field_08;
@@ -63,7 +69,7 @@ public:
     virtual void mDeactivate();
 
     virtual unsigned long mAddSoundFile(tBasicAudioFile &aFile); // HYPOTHESIS: slot 6 (offset 0x18)
-    virtual void vfn_1c();
+    virtual void mDeleteSoundFile(unsigned long param_1); // HYPOTHESIS: slot 7 (offset 0x1c)
     virtual void vfn_20();
     virtual void vfn_24();
     virtual void vfn_28();

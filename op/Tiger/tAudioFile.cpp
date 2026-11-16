@@ -99,6 +99,26 @@ inline void tSafeArray<T>::fn_Clear()
 }
 
 template <class T>
+inline T *tSafeArray<T>::fn_Get(unsigned long aHandle)
+{
+    unsigned long index = aHandle & 0xffff;
+    if (index < (unsigned long) field_10 && (short) (aHandle >> 16) == ((short *) field_08)[index])
+        return ((T **) field_04)[index];
+    return 0;
+}
+
+template <class T>
+inline void tSafeArray<T>::fn_Remove(unsigned long aHandle)
+{
+    if (fn_Get(aHandle))
+    {
+        delete ((T **) field_04)[aHandle & 0xffff];
+        ((T **) field_04)[aHandle & 0xffff] = 0;
+        field_0c--;
+    }
+}
+
+template <class T>
 inline tSafeArray<T>::~tSafeArray()
 {
     fn_Clear();
@@ -230,4 +250,10 @@ unsigned long tAudioFileInfoPart::mAddSoundFile(tBasicAudioFile &aFile)
     unsigned long handle = field_0c.fn_Add(&aFile);
     aFile.vfn_b8(handle);
     return handle;
+}
+
+// FUNCTION: STARFLEETOP 0x00658070
+void tAudioFileInfoPart::mDeleteSoundFile(unsigned long param_1)
+{
+    field_0c.fn_Remove(param_1);
 }
