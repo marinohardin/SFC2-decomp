@@ -6427,6 +6427,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x006257f0": {
+   "name": "tString::mToUpper",
+   "symbol": "?mToUpper@tString@@QAEXXZ",
+   "unit": "Tiger/tstring.cpp",
+   "size": 304,
+   "score": 41.706,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

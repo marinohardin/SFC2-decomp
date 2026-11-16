@@ -791,3 +791,37 @@ tString::iterator tString::mStrRChr(iBasicStringElement c)
 	r.fString = this;
 	return r;
 }
+
+// FUNCTION: STARFLEETOP 0x006257f0
+void tString::mToUpper(void)
+{
+	// MATCH-ONLY: the original (/Ob2) inlines begin(), end(), operator* and operator++ here.
+	if (!this)
+		throw "Access to uninitialized iterator";
+	int32 index = 0;
+	if (index < 0 || index > fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	iterator i;
+	i.fIndex = index;
+	i.fString = this;
+	for (;;)
+	{
+		iterator e;
+		e.fIndex = fInstanceControl.fDataCount;
+		e.fString = this;
+		if (e.fIndex < 0 || e.fIndex > e.fString->fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		if (!(i != e))
+			break;
+		if (!i.fString)
+			throw "Access to uninitialized iterator";
+		iBasicStringElement &c = i.fString->fInstanceControl.fMemSpace[i.fIndex];
+		if (c >= 'a' && c <= 'z')
+			c -= 0x20;
+		if (!i.fString)
+			throw "Access to uninitialized iterator";
+		if (i.fIndex + 1 > i.fString->fInstanceControl.fDataCount)
+			throw "Access past bounds of tString";
+		i.fIndex++;
+	}
+}
