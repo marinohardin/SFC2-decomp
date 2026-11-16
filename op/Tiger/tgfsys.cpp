@@ -1797,3 +1797,40 @@ tDate twPath::mGetDate( void )
 	return date;
 }
 
+// FUNCTION: STARFLEETOP 0x00633440
+int32u twPath::mGetSize( void )
+{
+	int32u	size = 0;
+
+	if ( mExist() )
+	{
+		if ( f_a8 < 1 )
+		{
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				if ( file )
+					CloseHandle( file );
+				path->mCopyCharStr( g_00c3caec, MAX_PATH );
+				file = CreateFileA( g_00c3caec, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 1;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		DWORD	high = 0;
+		DWORD	low = GetFileSize( f_a4, &high );
+		if ( low == 0xffffffff && GetLastError() != NO_ERROR )
+			throw "Failed to get file size";
+		if ( high != 0 )
+			low = 0xffffffff;
+		size = low;
+	}
+	return size;
+}
+
