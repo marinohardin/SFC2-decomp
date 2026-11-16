@@ -126,7 +126,7 @@ public:
 	virtual unsigned char mIsListMember(tListMember *aMember);
 	virtual void vfunction16();
 	virtual void vfunction17();
-	virtual void mGetZeroIndexedListMemberPosition();
+	virtual long mGetZeroIndexedListMemberPosition(tListMember *aMember);
 	virtual void mClearList();
 	virtual void mDeleteListMembers();
 	virtual void vfunction21();

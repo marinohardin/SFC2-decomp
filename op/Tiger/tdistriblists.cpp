@@ -142,3 +142,16 @@ unsigned char tDynamicMemoryFreeList::mIsListMember(tListMember *aMember)
 			return 1;
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00626ad0
+long tDynamicMemoryFreeList::mGetZeroIndexedListMemberPosition(tListMember *aMember)
+{
+	long position = 0;
+	for (tListMember *member = field_0x4; member != 0; member = member->vfunction5())
+	{
+		if (member == aMember)
+			return position;
+		position++;
+	}
+	return -1;
+}
