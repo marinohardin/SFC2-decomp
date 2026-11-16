@@ -155,3 +155,16 @@ long tDynamicMemoryFreeList::mGetZeroIndexedListMemberPosition(tListMember *aMem
 	}
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00626b00
+tListMember *tDynamicMemoryFreeList::mGetListMemberAtThisIndex(long index)
+{
+	tListMember *member = field_0x4;
+	long position = 0;
+	while (member != 0 && position != index)
+	{
+		position++;
+		member = member->vfunction5();
+	}
+	return member;
+}

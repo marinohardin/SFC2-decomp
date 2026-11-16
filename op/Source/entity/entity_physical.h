@@ -117,7 +117,7 @@ public:
 	virtual tListMember *mGetNextListMember(tListMember *aMember);
 	virtual tListMember *mGetPreviousCircularListMember(tListMember *aMember);
 	virtual tListMember *mGetNextCircularListMember(tListMember *aMember);
-	virtual void mGetListMemberAtThisIndex();
+	virtual tListMember *mGetListMemberAtThisIndex(long index);
 	virtual unsigned char mAddToFrontOfList(tListMember *aMember);
 	virtual unsigned char mAddToBackOfList(tListMember *aMember);
 	virtual unsigned char mInsertAfterListMember(tListMember *aListMember, tListMember *aMember);
