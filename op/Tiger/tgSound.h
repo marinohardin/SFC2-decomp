@@ -653,7 +653,7 @@ public:
     virtual unsigned char mWeAutoRemoveSelections(long channel);
     virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
     virtual unsigned char mIsChannelActive(long channel);
-    virtual void vfunction108(); virtual void mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel();
+    virtual void vfunction108(); virtual unsigned char mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel();
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mRecordChannel();
     // The exe's symbol for tgSoundPart's override gives the signature.
@@ -764,6 +764,8 @@ public:
     virtual void mDump();
     // The SDK library's symbol (?mDump@tgSoundPart@@UAEXJ@Z) gives the parameter type.
     virtual void mDump(long channel);
+    // The exe's symbol (?mRemoveRecordChannel@tgSoundPart@@UAEEXZ) gives the return type.
+    virtual unsigned char mRemoveRecordChannel();
     virtual unsigned char mPauseRecordChannel();
     virtual unsigned char mRecordChannel();
     virtual unsigned char mStopAndClearRecordChannel();

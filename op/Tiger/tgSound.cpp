@@ -5066,3 +5066,27 @@ unsigned char tgSoundPart::mStopAndClearRecordChannel()
     mReleaseControl();
     return 1;
 }
+#line 5070 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006574b0
+unsigned char tgSoundPart::mRemoveRecordChannel()
+{
+#line 7259
+    if (!xAttemptToGainControl(__FILE__, __LINE__, 0, 0)) return 0;
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    channelPtr->mRemoveSoundChannel();
+    mReleaseControl();
+    mUpdate();
+#line 7277
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 == 0)
+    {
+        field_0x1c = 0;
+        delete[] field_0x18;
+        field_0x18 = 0;
+    }
+    mReleaseControl();
+    return 1;
+}
