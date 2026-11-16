@@ -74,3 +74,17 @@ long tStrMgrCore::mGetNumElements( const char *group )
 {
 	return mGetNumElements( mGetStringIndex( group ) );
 }
+
+// FUNCTION: STARFLEETOP 0x00627400
+const tString &tStrMgrCore::mGetRandStr( long group )
+{
+	if ( group > 0 && group <= fn_00627180_vec.size() )
+	{
+		long count = mGetNumElements( group );
+		long index = group + rand() % count;
+		return mGetString( index );
+	}
+	if ( fn_00627200_throwOnMiss )
+		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+	return gErrStr;
+}
