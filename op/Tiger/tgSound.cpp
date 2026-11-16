@@ -4259,3 +4259,18 @@ unsigned char tgSoundPart::mSet3DSoundReferenceDistance(long channel, double dis
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+#line 4263 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006548c0
+unsigned char tgSoundPart::mPlaySpecialLoop(long channel, long param_2, long param_3, long param_4, long param_5)
+{
+#line 5800
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mPlaySpecialLoop not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5808
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mPlaySpecialLoop(param_2, param_3, param_4, param_5);
+    mReleaseControl(); return result;
+}
