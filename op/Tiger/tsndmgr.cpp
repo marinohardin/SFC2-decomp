@@ -1890,4 +1890,27 @@ void	tBasicSoundFileManager::mCloseFile( long index )
 // FUNCTION: STARFLEETOP 0x00668970
 void	tBasicSoundFileManager::mParseAllSoundsFile( char *fileName, long a2, long a3 )
 {
+	// HYPOTHESIS: only the opening is recovered: remember the file name, read the file, then stop before the token loop.
+	long	size;
+	if ( fileName == 0 )
+	{
+		if ( field_0xc == 0 )
+			return;
+	}
+	else
+	{
+		if ( field_0xc != 0 )
+		{
+			free( (void *)field_0xc );
+			field_0xc = 0;
+		}
+		char *	copy = (char *)malloc( strlen( fileName ) + 1 );
+		field_0xc = (long)copy;
+		if ( copy == 0 )
+			return;
+		strcpy( copy, fileName );
+	}
+	signed char *	text = mReadInFileAsString( (char *)field_0xc, 1, &size );
+	if ( text == 0 || size == 0 )
+		return;
 }
