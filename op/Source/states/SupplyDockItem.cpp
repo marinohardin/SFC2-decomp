@@ -596,10 +596,13 @@ class tSupplyDockFighters : public tSupplyDockItem
 public:
 	tSupplyDockFighters( long arg1, long arg2, long arg3, long mask, long arg5 );
 
+	virtual long vfunction1();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
 	virtual double vfunction17( const std::string &name );
+	// HYPOTHESIS: called directly with the slot index; its body is not written yet.
+	void fn_00486fac( long i );
 
 	long m7c[4];
 	long m8c[4];
@@ -628,4 +631,17 @@ tSupplyDockFighters::tSupplyDockFighters( long arg1, long arg2, long arg3, long 
 			m10.fn_004d2797( 0x11033 + i, g_0084bbb0[i], 0 );
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00486cfc
+long tSupplyDockFighters::vfunction1()
+{
+	long result = tSupplyDockItem::vfunction1();
+	for( long i = 0; i < 4; i++ )
+	{
+		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+			fn_00486fac( i );
+	}
+	vfunction3();
+	return result;
 }
