@@ -18,6 +18,15 @@ public:
 	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
 	virtual	unsigned char	mIsThisInThisThreshold	( long value );
 	virtual	unsigned char	mIsThisInThisGroup	( long value );
+	// HYPOTHESIS: slots 8 to 14 by mUpdateTest's call at +0x38; the SDK library names them, the
+	// order is not recovered.
+	virtual	double	mGetMinimumDelay	( void );
+	virtual	void	mSetMinimumDelay	( double delay );
+	virtual	double	mGetMaximumDelay	( void );
+	virtual	void	mSetMaximumDelay	( double delay );
+	virtual	unsigned char	mAreWeDolby	( void );
+	virtual	unsigned char	mAreWe3D	( void );
+	virtual	unsigned long	mGetActualChannelGroupIndex	( void );
 
 	tAFPlayInfo &	operator=	( tAFPlayInfo &other );
 
@@ -126,7 +135,7 @@ iTruth	tAFPlayInfo::mAddClass( long theClass )
 		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("We've hit the class limit!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("We've hit the class limit!"); }
 #line 254
 		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
-#line 128
+#line 137
 		return kFalse;
 	}
 	field_0xc4[field_0xd4] = theClass;
@@ -238,6 +247,7 @@ unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
 }
 
 #include "Tiger/tpart.h"
+#include "Tiger/tclock.h"
 #include "unsorted/tRegisteredAudioType.h"
 
 // HYPOTHESIS: declared only as far as the functions below need.
@@ -246,6 +256,7 @@ class tBasicSoundFileManager : public tPart
 public:
 	tBasicSoundFileManager( void );
 	virtual	~tBasicSoundFileManager( void );
+	GenAbstractBinding( tBasicSoundFileManager );
 	// Slots 6 to 82 in the order of the exe's vtable at 0x007b7664; the types come from the
 	// SDK library's symbols.
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
@@ -331,7 +342,7 @@ public:
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
 	long					field_0xc;
-	long					field_0x10;
+	tAFPlayInfo *			field_0x10;
 	long					field_0x14;
 	tRegisteredAudioType	field_0x18[0x40];
 	long					field_0x718;
@@ -343,12 +354,22 @@ public:
 	char					fUnknown_0738[0x8];
 	double					field_0x740;
 	long					field_0x748;
-	char					fUnknown_074c[0x400];
+	// HYPOTHESIS: the play information index of each tracking slot, by mUpdateTest.
+	long					field_0x74c[0x100];
 	long					field_0xb4c[0x100];
 	char					fUnknown_0f4c[0x1400];
 	long					field_0x234c;
 	short					field_0x2350[0x100];
-	char					fUnknown_2550[0x28];
+	// HYPOTHESIS: the sound test's state, by mUpdateTest: the sound number, its handle, its play
+	// time in milliseconds, the last number, and the times to stop it and to play the next.
+	long					field_0x2550;
+	unsigned long			field_0x2554;
+	long					field_0x2558;
+	char					fUnknown_255c[0x4];
+	long					field_0x2560;
+	char					fUnknown_2564[0x4];
+	double					field_0x2568;
+	double					field_0x2570;
 	unsigned char			field_0x2578;
 };
 
@@ -408,6 +429,11 @@ void	tBasicSoundFileManager::mUpdateAllSounds( void )
 		mUpdateTest();
 	if ( atgSoundPart->mAreWeInInterruptMode() == kFalse )
 		mAdjustGlobalVolume();
+}
+
+// FUNCTION: STARFLEETOP 0x006640a0
+void	tBasicSoundFileManager::mUpdateTest( void )
+{
 }
 
 // FUNCTION: STARFLEETOP 0x00664870
