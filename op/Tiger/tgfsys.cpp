@@ -259,6 +259,7 @@ public:
 	twDir( const tString &name, tVolume volume, tDir parent );
 	~twDir();
 
+
 protected:
 	void	mMakeFullPath( void );
 
@@ -1366,5 +1367,23 @@ char *gCopyCharStr(tString &str, char *buffer)
 	}
 	str.mCopyCharStr( g_00c3caec, MAX_PATH );
 	return g_00c3caec;
+}
+
+// HYPOTHESIS: as in twVolume::mGetRoot, the original expands ~twDir inline and, after storing the
+// made cookie at +0x54, copies it once more through the out-of-line tCookie copy into a 16-byte
+// temporary; that tail is not recovered.
+// FUNCTION: STARFLEETOP 0x00631b30
+tDir twDir::mGetNamedDir( tString &name )
+{
+	if ( name == "" )
+		throw "You cannot get a named object without giving a valid name!";
+	twDir	dir( name, f_04, f_54 );
+
+	dir.f_50 = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	tDir	result = part->fFSCookies.fDirCookies.mMake( dir );
+	dir.f_54 = result;
+	return result;
 }
 
