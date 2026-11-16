@@ -1735,3 +1735,30 @@ tString twPath::mGetSortName( void )
 	return f_54;
 }
 
+// FUNCTION: STARFLEETOP 0x00633280
+iTruth twPath::mExist( void )
+{
+	if ( f_a8 < 1 )
+	{
+		HANDLE	file;
+
+		SetLastError( 0 );
+		f_7c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		file =CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			f_7c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			file = CreateFileA( g_00c3caec, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		}
+		f_a4 = file;
+		f_a8 = 1;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	// MATCH-ONLY: the original returns setne al without clearing eax, as a bool result does.
+	bool	exists = f_a4 != INVALID_HANDLE_VALUE;
+	return exists;
+}
+
