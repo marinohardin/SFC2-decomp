@@ -857,6 +857,7 @@ public:
 	long fn_004876bf( long i );
 
 	virtual long vfunction1();
+	virtual void vfunction2();
 
 	long m7c[3];
 };
@@ -896,4 +897,12 @@ long tSupplyDockMisc::vfunction1()
 		fn_004d3278( (long) g_0084bbe8[i], (long) g_0084bbf4[i], result, m04, m0c, 800, 600 );
 	vfunction3();
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004873ea
+void tSupplyDockMisc::vfunction2()
+{
+	tSupplyDockItem::vfunction2();
+	for( long i = 0; i < 3; i++ )
+		fn_004d3306( (long) g_0084bbe8[i] );
 }
