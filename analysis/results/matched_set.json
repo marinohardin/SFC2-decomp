@@ -9820,6 +9820,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006629c0": {
+   "name": "tHandleList::mAddToFrontOfList",
+   "symbol": "?mAddToFrontOfList@tHandleList@@UAEEK@Z",
+   "unit": "Tiger/taudiopriority.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",

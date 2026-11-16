@@ -19,12 +19,19 @@ class tHandleList
 	public:
 		tHandleList( long );
 		virtual		~tHandleList( void );
-		// HYPOTHESIS: the slot after the destructor; the exe's vtable is not checked yet.
+		// Slot order from the exe's vtable at 0x007b761c.
 		virtual		void	mInit	( long );
-		// HYPOTHESIS: slot order after mInit is not checked against the exe's vtable.
+		virtual		void	mClear	( void );
 		virtual		unsigned long	mGetFirstHandle	( void );
 		virtual		unsigned long	mGetThisHandle	( long );
 		virtual		unsigned long	mGetLastHandle	( void );
+		virtual		unsigned char	mAddToFrontOfList	( unsigned long );
+		virtual		unsigned char	mAddToBackOfList	( unsigned long );
+		virtual		unsigned char	mRemoveFromList	( unsigned long );
+		virtual		unsigned char	mIsHandle	( unsigned long );
+		virtual		unsigned char	mIsEmpty	( void );
+		virtual		long	mNumberOfMembers	( void );
+		virtual		long	mGetZeroIndexedHandlePosition	( unsigned long );
 
 		long	f04;
 		long	f08;
