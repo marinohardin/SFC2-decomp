@@ -336,8 +336,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -404,6 +402,8 @@ public:
 	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
 	virtual unsigned char	mDoFillSelection	( unsigned char );
 	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
+	// HYPOTHESIS: slot not recovered; nothing in this unit calls it through the vtable.
+	virtual void	mDoAllImmediateNonInterruptCommands	( void );
 };
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
 #line 109
@@ -2019,6 +2019,19 @@ unsigned char twStandardSoundChannel::mRestoreBuffers( void )
 	else
 		mUpdateBuffersAndSelections( atgSoundPart->vfunction125() );
 	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644d10
+void twStandardSoundChannel::mDoAllImmediateNonInterruptCommands( void )
+{
+	tSoundChannelCommand* command = mGetFirstImmediateNonInterruptCommand();
+	while( command && mDoCommand( command ) == kTrue )
+	{
+		tSoundCommandList* list = &field_0xbc;
+		list->vfunction33( command );
+		command->mMakeAvailable();
+		command = mGetFirstImmediateNonInterruptCommand();
+	}
 }
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'

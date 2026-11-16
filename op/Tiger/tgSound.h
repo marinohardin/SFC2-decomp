@@ -371,7 +371,7 @@ public:
     virtual void mClearAttachments();
     virtual void mClearAllAttachments();
     virtual void mSetUpdateMode(eSoundChannelUpdateMode mode);
-    virtual void mGetFirstImmediateNonInterruptCommand();
+    virtual tSoundChannelCommand* mGetFirstImmediateNonInterruptCommand();
     virtual tSoundChannelCommand* mGetFirstImmediateCommand();
     virtual tSoundChannelCommand* mGetFirstDelayedCommand();
     virtual tSoundChannelCommand* mGetFirstAttachment();

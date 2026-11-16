@@ -7372,6 +7372,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00644d10": {
+   "name": "twStandardSoundChannel::mDoAllImmediateNonInterruptCommands",
+   "symbol": "?mDoAllImmediateNonInterruptCommands@twStandardSoundChannel@@UAEXXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",
