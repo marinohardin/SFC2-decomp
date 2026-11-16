@@ -12,11 +12,50 @@ class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(t
 #include "tindexedarray.h"
 #include "Tiger/tsound_fileio.h"
 
-// HYPOTHESIS: only the virtual destructor (slot 0) is known; the array deletes its items through it.
+// HYPOTHESIS: the virtual destructor (slot 0) deletes the array's items; the virtual at offset 0x94
+// attaches the file to a channel (see tAudioFileInfoPart::mAttachToThisChannel). The other slots'
+// names are not recovered.
 class tBasicAudioFile
 {
 public:
     virtual ~tBasicAudioFile();
+    virtual void vfn_04();
+    virtual void vfn_08();
+    virtual void vfn_0c();
+    virtual void vfn_10();
+    virtual void vfn_14();
+    virtual void vfn_18();
+    virtual void vfn_1c();
+    virtual void vfn_20();
+    virtual void vfn_24();
+    virtual void vfn_28();
+    virtual void vfn_2c();
+    virtual void vfn_30();
+    virtual void vfn_34();
+    virtual void vfn_38();
+    virtual void vfn_3c();
+    virtual void vfn_40();
+    virtual void vfn_44();
+    virtual void vfn_48();
+    virtual void vfn_4c();
+    virtual void vfn_50();
+    virtual void vfn_54();
+    virtual void vfn_58();
+    virtual void vfn_5c();
+    virtual void vfn_60();
+    virtual void vfn_64();
+    virtual void vfn_68();
+    virtual void vfn_6c();
+    virtual void vfn_70();
+    virtual void vfn_74();
+    virtual void vfn_78();
+    virtual void vfn_7c();
+    virtual void vfn_80();
+    virtual void vfn_84();
+    virtual void vfn_88();
+    virtual void vfn_8c();
+    virtual void vfn_90();
+    virtual unsigned char vfn_94(long param_1, long param_2);
 };
 
 template <class T>
@@ -111,4 +150,13 @@ void tAudioFileInfoPart::mDeactivate()
         field_2c = 0;
     }
     _DoneSoundFileIO();
+}
+
+// FUNCTION: STARFLEETOP 0x00657cf0
+unsigned char tAudioFileInfoPart::vfn_48(long param_1, long param_2, long param_3)
+{
+    tBasicAudioFile *file = mGetBasicAudioFile(param_1);
+    if (file)
+        return file->vfn_94(param_2, param_3);
+    return 0;
 }

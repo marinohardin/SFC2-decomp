@@ -69,7 +69,7 @@ public:
     virtual void vfn_38();
     virtual void vfn_3c();
     virtual void vfn_40();
-    virtual void vfn_44();
+    virtual tBasicAudioFile *mGetBasicAudioFile(unsigned long param_1);
     virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
 
     tSafeArray<tBasicAudioFile> field_0c;
