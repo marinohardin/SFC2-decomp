@@ -7318,6 +7318,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00637890": {
+   "name": "twClock::mDeactivate",
+   "symbol": "?mDeactivate@twClock@@UAEXXZ",
+   "unit": "Tiger/twclock.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

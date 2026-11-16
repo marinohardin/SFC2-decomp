@@ -57,3 +57,18 @@ void	twClock::mActivate( void )
 		fResponseList[idx].fUnknown_08 = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00637890
+void	twClock::mDeactivate( void )
+{
+	for( iIndex idx = 0; idx < kClockResponderMax; idx++ )
+	{
+		if (fResponseList[idx].fUnknown_04 != 0)
+		{
+			if (timeKillEvent( fResponseList[idx].fUnknown_04 ) != TIMERR_NOERROR || fNumberOfRunningTimers < 0)
+				throw TimerException();
+			fResponseList[idx].fUnknown_04 = 0;
+		}
+	}
+	fNumberOfRunningTimers = 0;
+}
