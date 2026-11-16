@@ -9892,6 +9892,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00662f60": {
+   "name": "tAudioFileClass::mDoWeMeetSpaceConstraints",
+   "symbol": "?mDoWeMeetSpaceConstraints@tAudioFileClass@@QAEEJJAAN@Z",
+   "unit": "Tiger/taudiopriority.cpp",
+   "size": 576,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",

@@ -591,3 +591,30 @@ void tAudioFileClass::mAddHandle( unsigned long handle )
 		f18 += info->vfunction2();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00662f60
+unsigned char tAudioFileClass::mDoWeMeetSpaceConstraints( long arg1, long arg2, double &waitTime )
+{
+	waitTime = 0;
+	if ( f18 + arg2 <= f1c )
+		return true;
+	if ( arg2 <= f1c && f28 != 4 )
+	{
+		tClassActiveChannelList *list = &f08;
+		unsigned long handle = list->mGetLastHandle();
+		tClassTrackingInfo *info = BindPart( tAudioPriorityManagerPart )->vfunction16( handle );
+		while ( info )
+		{
+			if ( BindPart( tAudioPriorityManagerPart )->mIsHigherPriority( arg1, info->mGetPriority(), (eAudioPreemptType)f28 ) != true )
+				return false;
+			mRemoveHandle( handle );
+			info->mFadeToStop();
+			waitTime = 500.0;
+			if ( f18 + arg2 <= f1c )
+				return true;
+			handle = list->mGetLastHandle();
+			info = BindPart( tAudioPriorityManagerPart )->vfunction16( handle );
+		}
+	}
+	return false;
+}
