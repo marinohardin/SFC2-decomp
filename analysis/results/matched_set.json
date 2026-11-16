@@ -9226,6 +9226,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00656020": {
+   "name": "tgSoundPart::mAreWe3D",
+   "symbol": "?mAreWe3D@tgSoundPart@@UAEEJ@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
