@@ -321,6 +321,8 @@ public:
 	virtual long vfunction10();
 	virtual double vfunction11();
 	virtual long vfunction12();
+	virtual bool vfunction13( long delta );
+	virtual void vfunction14( long value );
 	void fn_00486aa1( bool up );
 	void fn_00486ad5( bool up );
 	void fn_00486b8a( bool up );
@@ -484,4 +486,11 @@ long tSupplyDockMissiles::vfunction12()
 	if( diff < 0 )
 		diff = 0;
 	return diff;
+}
+
+// FUNCTION: STARFLEETOP 0x00486a63
+bool tSupplyDockMissiles::vfunction13( long delta )
+{
+	vfunction14( delta );
+	return true;
 }
