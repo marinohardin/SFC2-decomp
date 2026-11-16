@@ -90,6 +90,7 @@ address	size	symbol	source	modes
 0x0040ff9f	10	tEntity::vfunction13(tID)	unsorted/tEntity.cpp	vc6 guest
 0x0040ffa9	4	tEntity::vfunction14()	unsorted/tEntity.cpp	vc6 guest
 0x0040ffad	28	tEntity::scalar_deleting_destructor(unsigned char)	unsorted/tEntity.cpp	vc6 guest
+0x0040ffc9	132	tEntity::~tEntity()	unsorted/tEntity.cpp	vc6
 0x0041004d	270	tEntity::vfunction11(tSFCStream &,int32u)	unsorted/tEntity.cpp	vc6 guest
 0x0041015b	13	tEntity::vfunction2()	unsorted/tEntity.cpp	vc6 guest
 0x00410168	38	tEntity::fn_00410168()	unsorted/tEntity.cpp	vc6 guest

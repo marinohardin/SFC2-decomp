@@ -11,6 +11,9 @@ class tCommandDestination;
 class fn_0090bed4_Object {
 public:
 	void fn_00522681();
+	// HYPOTHESIS: forgets an entity; tEntity's destructor (0x0040ffc9) calls it when the
+	// entity's +0x64 is set.
+	void fn_005229b9(class tEntity *pEntity);
 	tObject_005235a7 *fn_005235a7(int param_1);
 	// HYPOTHESIS: hands the fleet with this ID a new command destination, as 0x004c3815 calls it.
 	void fn_00522bdf(int param_1, tCommandDestination *pDestination);

@@ -802,6 +802,15 @@
    "exact": true,
    "recorded": "2026-11-13"
   },
+  "0x0040ffc9": {
+   "name": "tEntity::~tEntity",
+   "symbol": "??1tEntity@@UAE@XZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 132,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0041004d": {
    "name": "tEntity::vfunction11",
    "symbol": "?vfunction11@tEntity@@UAEXAAVtSFCStream@@I@Z",
