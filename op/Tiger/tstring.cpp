@@ -451,3 +451,9 @@ int32 tString::rfind(const char *s, int32 startPos)
 {
 	return rfind(tString(s), startPos);
 }
+
+// FUNCTION: STARFLEETOP 0x00624340
+int32 tString::rfind(const char *s)
+{
+	return rfind(tString(s), size());
+}

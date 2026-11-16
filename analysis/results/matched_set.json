@@ -6202,6 +6202,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00624340": {
+   "name": "tString::rfind",
+   "symbol": "?rfind@tString@@QAEJPBD@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 223,
+   "score": 8.196,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
