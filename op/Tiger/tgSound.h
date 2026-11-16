@@ -374,7 +374,7 @@ public:
     virtual void mGetChannelPriority();
     virtual tChannelAttributes* mGetChannelAttributes();
     virtual t3DSoundProfile* mGet3DSoundProfile();
-    virtual void mGet3DSoundPosition();
+    virtual tPoint3* mGet3DSoundPosition();
     virtual void mGet3DSoundOrientation();
     virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance();
