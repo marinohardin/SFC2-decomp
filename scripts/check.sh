@@ -67,30 +67,15 @@ base_ref() {
 }
 base=$(base_ref || true)
 
-# The lift the progress figures are computed from: $SFCOP_LIFTED, the native build's, or the
-# shared one progress.py defaults to ($SFCOP_WORK/lifter).
-lift_dir() {
-    work=${SFCOP_WORK:-$(dirname "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")")/work}
-    for d in ${SFCOP_LIFTED:-} build/macos-arm64/lifted "$work/lifter"; do
-        if [ -f "$d/cat/functions.json" ] && [ -f "$d/out/lift_stats.json" ]; then
-            echo "$d"
-            return
-        fi
-    done
-}
-
 echo "== progress gate"
-lifted=$(lift_dir || true)
 if [ -z "$base" ]; then
     skip "no base commit to compare with (set SFCOP_BASE_REF)"
-elif [ -z "$lifted" ]; then
-    skip "no lifter output (build the native client, or set SFCOP_LIFTED)"
-elif ! git show "$base:analysis/results/progress/progress.json" > "$tmp/progress-base.json" 2>/dev/null; then
-    skip "$base has no analysis/results/progress/progress.json"
+elif ! git show "$base:analysis/results/progress/op/progress.json" > "$tmp/progress-base.json" 2>/dev/null; then
+    skip "$base has no analysis/results/progress/op/progress.json"
 else
-    echo "held to $base, lift in $lifted"
+    echo "held to $base"
     rc=0
-    python3 scripts/progress.py --gate "$tmp/progress-base.json" --lifter "$lifted" \
+    python3 scripts/progress.py --gate "$tmp/progress-base.json" \
         --matched-set analysis/results/matched_set.json > "$tmp/progress.log" 2>&1 || rc=$?
     grep -E '^(Progress:|REGRESSION|gate:|progress:)' "$tmp/progress.log" || tail -n 20 "$tmp/progress.log"
     [ "$rc" = 0 ] || exit "$rc"
@@ -138,80 +123,6 @@ if bad:
     sys.exit(1)
 print('ok: %d entries held to %s' % (len(base['functions']), label))
 EOF
-fi
-
-echo "== C++ tests"
-# Every file a registered test runs is built first, asked of the folder itself
-# (scripts/ctest_targets.py): a lift-on folder registers more tests than sfcop_tests, and CTest
-# reports a test whose executable is absent as "Not Run". Nothing a test does not name is built.
-if [ -f build/macos-arm64/CMakeCache.txt ]; then
-    # The plan reads the folder's generated files, so they are brought up to date first: after a
-    # change to a CMakeLists.txt they would otherwise name the tests of the configuration before.
-    cmake --build --preset macos-arm64 --target build.ninja > "$tmp/regenerate.log" 2>&1 \
-        || { tail -n 40 "$tmp/regenerate.log"; exit 1; }
-    python3 scripts/ctest_targets.py plan build/macos-arm64 > "$tmp/test-targets" \
-        || { cat "$tmp/test-targets"; exit 1; }
-    targets=$(tr '\n' ' ' < "$tmp/test-targets")
-    if [ -n "$targets" ]; then
-        echo "building what the tests run: $targets(a lift-on folder's guest tests link the" \
-             "lifted game: a first build lifts and compiles it, which takes minutes)"
-        # shellcheck disable=SC2086
-        cmake --build --preset macos-arm64 --target $targets > "$tmp/build-tests.log" 2>&1 \
-            || { tail -n 40 "$tmp/build-tests.log"; exit 1; }
-    fi
-    python3 scripts/ctest_targets.py missing build/macos-arm64 || exit 1
-    ctest --preset macos-arm64
-else
-    skip "the native build is not configured here (cmake --preset macos-arm64)"
-fi
-
-echo "== replay oracle"
-# Each recorded trace is played on the native client with its steps file (src/app/oracle/): the
-# client sets the mission up through the game's menus, waits for its END, writes the actual trace
-# at <logs>/<mission>/<input>.trace and exits 0 (identical) or 4 (a tick differs); then every
-# pair is compared again with --tree for one line each. The run needs a prepared per-user folder
-# with a stored key (oracle/driver/README.md): its path comes from $SFCOP_ORACLE_DATA or the
-# first line of the file $SFCOP_ORACLE_CONFIG names, is never printed, and nothing in it is read
-# here; the mission's log leaves it through --logs.
-traces=$(find oracle/expected -name '*.trace' 2>/dev/null | head -n 1)
-oracle_data=${SFCOP_ORACLE_DATA:-}
-if [ -z "$oracle_data" ]; then
-    oracle_config=${SFCOP_ORACLE_CONFIG:-${XDG_CONFIG_HOME:-${HOME:-/nonexistent}/.config}/sfcop/oracle-data}
-    if [ -f "$oracle_config" ]; then
-        IFS= read -r oracle_data < "$oracle_config" || true
-    fi
-fi
-oracle_watchdog=${SFCOP_ORACLE_WATCHDOG:-900}
-if [ -z "$traces" ]; then
-    skip "no recorded trace in oracle/expected/"
-elif [ ! -x build/macos-arm64/sfcop ]; then
-    skip "no native client (build/macos-arm64/sfcop)"
-elif [ -z "$oracle_data" ] || [ ! -d "$oracle_data" ]; then
-    skip "no prepared data folder with a stored key (set SFCOP_ORACLE_DATA, or put its path on the first line of \$SFCOP_ORACLE_CONFIG)"
-else
-    actual=$tmp/oracle
-    for expected in oracle/expected/*/*.trace; do
-        mission=$(basename "$(dirname "$expected")")
-        input=$(basename "$expected" .trace)
-        steps=oracle/driver/$input.steps
-        if [ ! -f "$steps" ]; then
-            echo "oracle: $expected has no steps file $steps"
-            exit 2
-        fi
-        echo "oracle: $mission/$input on build/macos-arm64/sfcop, headless, up to $oracle_watchdog s"
-        rc=0
-        nice -n 19 build/macos-arm64/sfcop --data "$oracle_data" --logs "$actual" --headless \
-            --oracle "$expected" --input "$steps" --watchdog "$oracle_watchdog" \
-            > "$tmp/oracle-$mission-$input.log" 2>&1 || rc=$?
-        grep -E '^\[oracle\]|^\[mark\]|^sfcop:' "$tmp/oracle-$mission-$input.log" | sed 's/^/  /'
-        case $rc in
-        0 | 4) ;;
-        *) echo "oracle: the client exited $rc"; exit "$rc" ;;
-        esac
-    done
-    rc=0
-    python3 oracle/trace/compare.py --tree oracle/expected "$actual" || rc=$?
-    [ "$rc" = 0 ] || exit "$rc"
 fi
 
 echo "check: ok"

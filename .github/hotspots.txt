@@ -1,5 +1,4 @@
-# Files that only the integrator changes once the foundation wave has merged (docs/PLAN.md,
-# "Hotspot files").
+# Files that only the integrator changes (AGENTS.md, "Roles").
 #
 # A pull request from a wp/ or feature/ branch that touches one of these fails the
 # `hotspots` check unless it carries the `contract-change` label.
@@ -14,47 +13,16 @@ AGENTS.md
 .claude/settings.json
 .github/**
 .githooks/**
+.worktreeinclude
 scripts/check.sh
+scripts/setup.sh
 scripts/progress.py
 
 # Shared contracts
 docs/**
-PROPOSAL.md
+INTERFACE_VERSION
 analysis/results/retail_hashes.sha256
 toolchain/**
-oracle/expected/**
 harness/**
-
-# Every module's public surface and dependencies (frozen at gate G0, docs/PLAN.md §6.2)
-src/hle/surface.tsv
-src/hle/com/**
-src/platform/Window/Window.h
-src/platform/Gpu/Gpu.h
-src/platform/Input/Input.h
-src/platform/Audio/Audio.h
-src/platform/Transport/Transport.h
-src/platform/Store/Store.h
-src/platform/Clock/Clock.h
-src/platform/Threads/Threads.h
-src/platform/Window/WindowMock.h
-src/platform/Gpu/GpuMock.h
-src/platform/Input/InputMock.h
-src/platform/Audio/AudioMock.h
-src/platform/Transport/TransportMock.h
-src/platform/Store/StoreMock.h
-src/platform/Clock/ClockMock.h
-src/platform/Threads/ThreadsMock.h
-src/platform/Core/**
-game/port/**
-game/UNITS.tsv
-src/fixes/fixes.h
-src/app/scripts/*.h
-src/net/PROTOCOL.md
-oracle/trace/**
-third_party/**
-CMakeLists.txt
-CMakePresets.json
-cmake/**
-
-# Documents and automation not listed above
-.worktreeinclude
+op/port/**
+op/UNITS.tsv

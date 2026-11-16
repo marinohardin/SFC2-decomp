@@ -12,7 +12,10 @@ concurrency:
 jobs:
   claude-review:
     # Draft pull requests are not reviewed. Marking one ready starts the review.
-    if: github.event.pull_request.draft == false
+    # Not for a fork's pull request: it gets no secrets, and its code never runs with them.
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.head.repo.full_name == github.repository
     # Reads the pull request through gh only: a hosted runner, so it never waits behind a build.
     runs-on: ubuntu-latest
     timeout-minutes: 20

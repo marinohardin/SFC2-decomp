@@ -2,13 +2,13 @@
 """The modernization's footprint inside the decompilation (DESIGN §7.1): every `PORT:` line and
 every `SFCOP_FIX(` site under a tree, with file and line, and the two totals.
 
-    python3 scripts/port_footprint.py [--no-fix-sites] game
+    python3 scripts/port_footprint.py [--no-fix-sites] op
 
 A `PORT:` line is a comment tagged on the line itself, `// PORT: <reason>` (CONVENTIONS §4.1); a
 fix site is each `SFCOP_FIX(` on a line, so `#if SFCOP_FIX(a) || SFCOP_FIX(b)` is two. Only C and
 C++ sources and headers are read. The listing is informational: the exit status is 0 whatever
 the counts, 2 when the tree does not exist. With `--no-fix-sites` a tree holding any fix site
-exits 1 after the listing: `game/` carries no fix, a fix to game code is an override unit under
+exits 1 after the listing: `op/` carries no fix, a fix to game code is an override unit under
 `src/fixes/overrides/` (DESIGN §6.9).
 """
 import os
