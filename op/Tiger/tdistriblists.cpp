@@ -397,3 +397,11 @@ void tDynamicMemoryFreeListViaHandles::mDeleteListMembers()
 		member = vfunction5();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006270e0
+void tDynamicMemoryFreeListViaHandles::mDumpList()
+{
+	vfunction42();
+	for (tListMemberWithHandle *member = mGetListMemberWithHandleFromHandle(field_0x4); member != 0; member = mGetListMemberWithHandleFromHandle(member->vfunc_10()))
+		member->mDump();
+}
