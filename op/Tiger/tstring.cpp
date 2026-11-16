@@ -328,3 +328,19 @@ tString tString::substr(int32 start)
 {
 	return substr(start, mGetDataCount() - start);
 }
+
+// FUNCTION: STARFLEETOP 0x00623d60
+tString tString::substr(int32 start, int32 length)
+{
+	tString result;
+	if (length == -1)
+		length = mGetDataCount();
+	if (start < 0)
+		start = 0;
+	if (length < 0)
+		length = 0;
+	if (start + length > mGetDataCount())
+		length = mGetDataCount() - start;
+	result.mIncorporateCharList(&fInstanceControl.fMemSpace[start], length);
+	return result;
+}
