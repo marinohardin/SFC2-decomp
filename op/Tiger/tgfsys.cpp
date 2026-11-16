@@ -1741,15 +1741,15 @@ iTruth twPath::mExist( void )
 	if ( f_a8 < 1 )
 	{
 		HANDLE	file;
-
+		tString	*path = &f_7c;
 		SetLastError( 0 );
-		f_7c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
 		file =CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
 		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
 		{
 			if ( file )
 				CloseHandle( file );
-			f_7c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
 			file = CreateFileA( g_00c3caec, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
 		}
 		f_a4 = file;
