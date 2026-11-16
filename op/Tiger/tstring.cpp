@@ -80,3 +80,18 @@ tString::tString(const iBasicStringElement *s)
 
 	mIncorporateCharList(s);
 }
+
+// FUNCTION: STARFLEETOP 0x006232f0
+tString::tString(const iBasicStringElement c)
+{
+	fInstanceControl.fTempExternalCharRepresentation = NULL;
+	fInstanceControl.fSizeOfExternalCharAllocation = 0;
+	fInstanceControl.fTempOperatorSpace = NULL;
+	fInstanceControl.fMemLimit = 0;
+	fInstanceControl.fDataCount = 0;
+
+	iBasicStringElement s[2];
+	s[0] = c;
+	s[1] = 0;
+	mIncorporateCharList(s);
+}
