@@ -322,3 +322,9 @@ void tString::mEndStrAt(int32 strPosition)
 		*this = substr(0, strPosition);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00623d30
+tString tString::substr(int32 start)
+{
+	return substr(start, mGetDataCount() - start);
+}
