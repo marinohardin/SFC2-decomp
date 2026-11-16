@@ -3178,6 +3178,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00486462": {
+   "name": "tSupplyDockShuttles::vfunction11",
+   "symbol": "?vfunction11@tSupplyDockShuttles@@UAENXZ",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",

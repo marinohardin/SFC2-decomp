@@ -111,6 +111,7 @@ public:
 	virtual void vfunction7( long *msg );
 	virtual long vfunction9();
 	virtual long vfunction10();
+	virtual double vfunction11();
 	virtual void vfunction13( long delta );
 
 	long m7c;
@@ -196,4 +197,18 @@ long tSupplyDockShuttles::vfunction9()
 long tSupplyDockShuttles::vfunction10()
 {
 	return ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
+}
+
+// HYPOTHESIS: the object the base keeps at +0x78 (the constructor's fifth argument); only
+// 0x0045139e is called on it, and it returns on the FPU stack.
+class fn_0045139e_object
+{
+public:
+	double fn_0045139e( long arg1 );
+};
+
+// FUNCTION: STARFLEETOP 0x00486462
+double tSupplyDockShuttles::vfunction11()
+{
+	return ((fn_0045139e_object *) m78)->fn_0045139e( 3 );
 }
