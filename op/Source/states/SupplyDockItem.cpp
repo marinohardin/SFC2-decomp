@@ -865,6 +865,7 @@ public:
 	virtual void vfunction2();
 	virtual void vfunction3();
 	virtual void vfunction4();
+	virtual long vfunction6();
 
 	long m7c[3];
 };
@@ -951,4 +952,13 @@ void tSupplyDockMisc::vfunction4()
 {
 	for( long i = 0; i < 3; i++ )
 		fn_00487757( i, m7c[i] );
+}
+
+// FUNCTION: STARFLEETOP 0x0048763e
+long tSupplyDockMisc::vfunction6()
+{
+	long total = 0;
+	for( long i = 0; i < 3; i++ )
+		total += fn_004876df( i );
+	return total;
 }
