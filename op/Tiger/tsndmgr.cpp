@@ -1738,3 +1738,19 @@ void	tBasicSoundFileManager::mDoDefaultNextAttachment( unsigned long handle )
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00668150
+unsigned char	tBasicSoundFileManager::mIsSoundPlaying( unsigned long handle )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			if ( channelGroup->mGetChannelStatus( handle, -1 ) == 0x20 )
+				return 1;
+			else
+				return 0;
+	}
+	return 0;
+}
