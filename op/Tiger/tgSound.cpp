@@ -2323,7 +2323,7 @@ iTruth tSoundChannel::mUpdateRegular(double time)
     {
         if (time >= field_0x120)
         {
-            vfunction102(fFadeVolume);
+            mSetVolume(fFadeVolume);
             if (field_0x118 == 2)
                 vfunction104();
             else if (field_0x118 == 3)
@@ -2341,7 +2341,7 @@ iTruth tSoundChannel::mUpdateRegular(double time)
             if (change < 0)
                 change = -change;
             if (newVolume == fFadeVolume || change > 0)
-                vfunction102(newVolume);
+                mSetVolume(newVolume);
             if (newVolume == fFadeVolume)
             {
                 if (field_0x118 == 2)
@@ -2558,10 +2558,10 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
                 field_0x128 = 0.0;
             else
                 field_0x128 = (double)(command->vfunction22() - fFadeVolume) / (field_0x120 - now);
-            vfunction102((long)((field_0x120 - now) * field_0x128) + fFadeVolume);
+            mSetVolume((long)((field_0x120 - now) * field_0x128) + fFadeVolume);
             return kTrue;
         }
-        vfunction102(command->vfunction22());
+        mSetVolume(command->vfunction22());
         return kTrue;
     case 6:
         mSetPan(command->mGetPan());

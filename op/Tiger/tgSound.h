@@ -148,7 +148,9 @@ public:
     virtual void vfunction3();
     // HYPOTHESIS: slot 4 records the pan (twStandardSoundChannel::mSetPan passes it the channel's pan).
     virtual void vfunction4(long pan);
-    virtual void vfunction5(); virtual void vfunction6();
+    virtual void vfunction5();
+    // HYPOTHESIS: slot 6 records the volume (twStandardSoundChannel::mSetVolume passes it the channel's volume).
+    virtual void vfunction6(long volume);
     virtual void vfunction7(long volume);
     virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
     virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
@@ -415,7 +417,7 @@ public:
     virtual unsigned char mPlayChannel() = 0;
     virtual unsigned char mSetFrequency(long frequency) = 0;
     virtual unsigned char mSetPan(long pan) = 0;
-    virtual void vfunction102(long volume) = 0;
+    virtual unsigned char mSetVolume(long volume) = 0;
     virtual void vfunction103(); virtual void vfunction104() = 0;
     virtual iTruth mSetChannelPriority(long priority);
     virtual void vfunction106(tPoint3* position) = 0;
@@ -578,7 +580,9 @@ public:
     virtual void vfunction117(); virtual void vfunction118(); virtual void vfunction119(); virtual void vfunction120();
     virtual void vfunction121(); virtual void vfunction122();
     virtual void vfunction123(long field);
-    virtual void vfunction124();
+    // HYPOTHESIS: slot 124 returns the global volume factor; twStandardSoundChannel::mSetVolume
+    // multiplies the channel's volume by it.
+    virtual double vfunction124();
     virtual double vfunction125();
     virtual void vfunction126();
     virtual void vfunction127();

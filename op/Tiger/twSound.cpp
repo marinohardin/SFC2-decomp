@@ -356,6 +356,7 @@ public:
 	virtual	unsigned char	mPlayChannel	( void );
 	virtual	unsigned char	mSetFrequency	( long );
 	virtual	unsigned char	mSetPan	( long );
+	virtual	unsigned char	mSetVolume	( long );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -404,7 +405,6 @@ public:
 	virtual unsigned char	mDoFillSelection	( unsigned char );
 	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
 };
-
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
 #line 109
 // FUNCTION: STARFLEETOP 0x00641640
@@ -1812,6 +1812,24 @@ unsigned char twStandardSoundChannel::mSetPan( long pan )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction4( pan );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644750
+unsigned char twStandardSoundChannel::mSetVolume( long volume )
+{
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	long total = (long)( atgSoundPart->vfunction124() * volume );
+	if( total < 0 )
+		total = 0;
+	else if( total > 100 )
+		total = 100;
+	HRESULT err = fSoundBuffer->SetVolume( LinearVolumes[total] );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction6( volume );
 	return kTrue;
 }
 
