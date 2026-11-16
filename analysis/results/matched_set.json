@@ -3396,12 +3396,12 @@
   },
   "0x004c3524": {
    "name": "FUN_004c3524",
-   "symbol": "?fn_004c352e@@YAXPAVtObjBase@@VtObject_004c352e_arg@@@Z",
+   "symbol": "?fn_004c352e@@YAXPAVtObjBase@@VtString@@@Z",
    "unit": "unsorted/tFleetEntry.cpp",
    "size": 93,
-   "score": 99.844,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c36e0": {
    "name": "FUN_004c36e0",
@@ -3453,9 +3453,9 @@
    "symbol": "?fn_004c3a36@tFleetEntry@@QAE_NXZ",
    "unit": "unsorted/tFleetEntry.cpp",
    "size": 858,
-   "score": 99.98,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c619e": {
    "name": "tListBox_Chat_Session::~tListBox_Chat_Session",

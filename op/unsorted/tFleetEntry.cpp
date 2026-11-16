@@ -433,10 +433,6 @@ extern double g_00c7c148;
 // the entry's fleet and its target.
 tString fn_004c24cf(tObject_0042496f *pFleet);
 
-// HYPOTHESIS: the string at 0x008930a4 that 0x004c3a36 shows when there is no target, likely
-// empty.
-extern const char g_sz008930a4[];
-
 bool fn_0046a9f3();
 // HYPOTHESIS: cdecl, two strings and a zero, as called by 0x0048c36d.
 void fn_004d3564(const char *psz1, const char *psz2, int n);
@@ -1075,35 +1071,27 @@ void tFleetEntry::vfunction50_for_tVisGroup()
 	}
 }
 
-// HYPOTHESIS: a value type with a destructor, passed by value to 0x004c352e; its layout and
-// name are not recovered.
-class tObject_004c352e_arg
-{
-public:
-	~tObject_004c352e_arg();
-	int m_n00;
-};
-
 // HYPOTHESIS: the class whose type descriptor is at 0x0084cfd8, the cast target of
-// 0x004c352e; its name is not recovered. vfunction24 takes the value's address.
+// 0x004c352e; its name is not recovered. vfunction24 takes the string by reference.
 class tObject_0084cfd8 : public tVisObject
 {
 public:
 	virtual void vfunction22();
 	virtual void vfunction23();
-	virtual void vfunction24(tObject_004c352e_arg *pArg);
+	virtual void vfunction24(const tString &s);
 };
 
 // HYPOTHESIS: the body of the function whose exception-frame prolog is 0x004c3524. It walks
-// pParent's children, casts each one, and hands the value to vfunction24 of the first that casts.
+// pParent's children, casts each one, and hands the string to vfunction24 of the first that
+// casts. The by-value tString is destroyed on return (0x00623580, ??1tString@@UAE@XZ).
 // FUNCTION: STARFLEETOP 0x004c3524
-void fn_004c352e(tObjBase *pParent, tObject_004c352e_arg arg)
+void fn_004c352e(tObjBase *pParent, tString arg)
 {
 	tObjBase *pChild = pParent->field_24;
 	while (pChild) {
 		tObject_0084cfd8 *pObject = dynamic_cast<tObject_0084cfd8 *>(pChild);
 		if (pObject) {
-			pObject->vfunction24(&arg);
+			pObject->vfunction24(arg);
 			break;
 		}
 		pChild = pChild->field_04;
@@ -1259,7 +1247,7 @@ bool tFleetEntry::fn_004c3a36()
 			tObject_004274f4 *pTargetOrders = gObject_0090be60->fn_004274f4(pFleet->field_0x60);
 			m_p168->vfunction21(pTargetOrders->fn_0052518f(m_n110));
 		} else if (m_p160 && m_p164) {
-			tString sEmpty(g_sz008930a4);
+			tString sEmpty("");
 			m_p160->vfunction41(0.0f);
 			m_p160->vfunction42();
 			m_p164->vfunction24(sEmpty);
