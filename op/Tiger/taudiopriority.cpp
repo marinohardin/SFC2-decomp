@@ -510,3 +510,15 @@ unsigned char tHandleList::mAddToBackOfList( unsigned long handle )
 	f04++;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00662b70
+unsigned char tHandleList::mRemoveFromList( unsigned long handle )
+{
+	long position = mGetZeroIndexedHandlePosition( handle );
+	if ( position == -1 )
+		return false;
+	for ( long i = position + 1; i < f04; i++ )
+		f0c[ i - 1 ] = f0c[ i ];
+	f04--;
+	return true;
+}
