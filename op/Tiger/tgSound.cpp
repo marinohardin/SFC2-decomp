@@ -993,12 +993,12 @@ tSoundChannelCommand* tSoundChannel::mGetFirstAttachment()
 {
     // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
     tSoundCommandList* attachments = &field_0xec;
-    tSoundChannelCommand* command = attachments->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     if (command && command->vfunction16() && command->vfunction16() != 24)
     {
         SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
     }
-    return attachments->vfunction5();
+    return (tSoundChannelCommand*)attachments->vfunction5();
 }
 
 // MATCH-ONLY: the original reports its error on line 1363 through __LINE__; the code that sat
@@ -1324,7 +1324,7 @@ void tSoundChannel::mClearCommands()
         {
             mSetFinishSoundCallback(command->vfunction28());
             mSetUserData(command->mGetUserData());
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1336,19 +1336,19 @@ void tSoundChannel::mClearCommands()
                 field_0x90(field_0x8c, 1);
                 atgSoundPart->vfunction122();
             }
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
         else if (command->vfunction16() == 24)
         {
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = 0;
         }
         else
         {
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1360,7 +1360,7 @@ void tSoundChannel::mClearCommands()
         {
             mSetFinishSoundCallback(command->vfunction28());
             mSetUserData(command->mGetUserData());
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
@@ -1372,19 +1372,19 @@ void tSoundChannel::mClearCommands()
                 field_0x90(field_0x8c, 1);
                 atgSoundPart->vfunction122();
             }
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
         else if (command->vfunction16() == 24)
         {
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = 0;
         }
         else
         {
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
@@ -1458,7 +1458,7 @@ long tSoundChannel::mGetTotalBytesLeftToPlay()
     tSoundCommandList* attachments = &field_0xec;
     long handle = attachments->vfunction3();
     long total = 0;
-    tSoundChannelCommand* command = attachments->vfunction1(handle);
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
     while (command != 0)
     {
         if (command->vfunction16() == 0)
@@ -1473,7 +1473,7 @@ long tSoundChannel::mGetTotalBytesLeftToPlay()
             SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
         }
         handle = attachments->vfunction9(handle);
-        command = attachments->vfunction1(handle);
+        command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
     }
     return total;
 }
@@ -1519,7 +1519,7 @@ void tSoundChannel::mClearAllCommands()
                     atgSoundPart->vfunction122();
                 }
             }
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1541,7 +1541,7 @@ void tSoundChannel::mClearAllCommands()
                 atgSoundPart->vfunction122();
             }
         }
-        (&field_0xdc)->vfunction33(command);
+        (&field_0xdc)->mRemoveFromList(command);
         command->mMakeAvailable();
         command = mGetFirstImmediateCommand();
     }
@@ -1575,13 +1575,13 @@ void tSoundChannel::mClearAttachments()
     {
         if (command->vfunction16() == 24)
         {
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             command->mMakeAvailable();
             break;
         }
         else
         {
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             tSoundSelection* selection = command->vfunction32();
             if (selection != 0)
             {
@@ -1599,8 +1599,8 @@ void tSoundChannel::mClearAttachments()
                 command = mGetFirstDelayedCommand();
                 while (command != 0)
                 {
-                    (&field_0xcc)->vfunction33(command);
-                    (&field_0xdc)->vfunction27(command);
+                    (&field_0xcc)->mRemoveFromList(command);
+                    (&field_0xdc)->mAddToBackOfList(command);
                     command = mGetFirstDelayedCommand();
                 }
             }
@@ -1649,7 +1649,7 @@ void tSoundChannel::mClearAllAttachments()
     tSoundChannelCommand* command = mGetFirstAttachment();
     while (command != 0)
     {
-        (&field_0xec)->vfunction33(command);
+        (&field_0xec)->mRemoveFromList(command);
         tSoundSelection* selection = command->vfunction32();
         if (selection != 0)
         {
@@ -1666,8 +1666,8 @@ void tSoundChannel::mClearAllAttachments()
             command = mGetFirstDelayedCommand();
             while (command != 0)
             {
-                (&field_0xcc)->vfunction33(command);
-                (&field_0xdc)->vfunction27(command);
+                (&field_0xcc)->mRemoveFromList(command);
+                (&field_0xdc)->mAddToBackOfList(command);
                 command = mGetFirstDelayedCommand();
             }
         }
@@ -1797,10 +1797,10 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
         skip = field_0x14c - field_0x100;
     // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
     tSoundCommandList* attachments = &field_0xec;
-    tSoundChannelCommand* command = attachments->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     while (command != 0 && skip > 0)
     {
-        command = attachments->vfunction14(command);
+        command = (tSoundChannelCommand*)attachments->vfunction14(command);
         skip--;
         count--;
     }
@@ -1814,7 +1814,7 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
         selection = command->vfunction32();
     while (count > 0 && selection != 0 && selection->vfunction27() == 0)
     {
-        command = attachments->vfunction14(command);
+        command = (tSoundChannelCommand*)attachments->vfunction14(command);
         if (command == 0)
             return 0;
         if (command->vfunction16() == 0)
@@ -1894,7 +1894,7 @@ iTruth tSoundChannel::mCleanupSelections()
     if (mDoWeRetainSelections() == 1)
         return 1;
     mUpdateAmountPlayed();
-    tSoundChannelCommand* command = (&field_0xec)->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
     long played = field_0x100;
     while (command != 0)
     {
@@ -1906,25 +1906,25 @@ iTruth tSoundChannel::mCleanupSelections()
             tSoundChannelCommand* delayed = mGetFirstDelayedCommand();
             while (delayed != 0 && delayed->vfunction14() <= played && mDoCommand(delayed) == 1)
             {
-                (&field_0xcc)->vfunction33(delayed);
+                (&field_0xcc)->mRemoveFromList(delayed);
                 delayed->mMakeAvailable();
                 delayed = mGetFirstDelayedCommand();
             }
             if (mDoWeAutoRemoveSelections() == 1)
                 selection->vfunction39();
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             selection->vfunction2();
             field_0x104--;
             command->mMakeAvailable();
             field_0x100++;
-            command = (&field_0xec)->vfunction5();
+            command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
             if (command == 0)
             {
                 field_0x108 = -1;
                 delayed = mGetFirstDelayedCommand();
                 while (delayed != 0 && mDoCommand(delayed) == 1)
                 {
-                    (&field_0xcc)->vfunction33(delayed);
+                    (&field_0xcc)->mRemoveFromList(delayed);
                     delayed->mMakeAvailable();
                     delayed = mGetFirstDelayedCommand();
                     // MATCH-ONLY: the loop test already covers this; it gives the original's
@@ -1941,18 +1941,18 @@ iTruth tSoundChannel::mCleanupSelections()
 #line 2658
                 SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
             }
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             field_0x104--;
             command->mMakeAvailable();
             field_0x100++;
-            command = (&field_0xec)->vfunction5();
+            command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
             if (command == 0)
             {
                 field_0x108 = -1;
                 tSoundChannelCommand* delayed = mGetFirstDelayedCommand();
                 while (delayed != 0 && mDoCommand(delayed) == 1)
                 {
-                    (&field_0xcc)->vfunction33(delayed);
+                    (&field_0xcc)->mRemoveFromList(delayed);
                     delayed->mMakeAvailable();
                     delayed = mGetFirstDelayedCommand();
                 }
@@ -2107,7 +2107,7 @@ void tSoundChannel::mReset(iTruth param_1)
             long handle = (&field_0xec)->vfunction3();
             if (attachments->vfunction39() > 0)
             {
-                tSoundChannelCommand* command = attachments->vfunction1(handle);
+                tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 while (command != 0)
                 {
                     if (command->vfunction16() == 0)
@@ -2128,12 +2128,12 @@ void tSoundChannel::mReset(iTruth param_1)
                     field_0x168 = mGetBufferLength();
                     attachments = &field_0xec;
                     handle = attachments->vfunction9(handle);
-                    command = attachments->vfunction1(handle);
+                    command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 }
             }
             else
             {
-                tSoundChannelCommand* command = attachments->vfunction1(handle);
+                tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 if (command != 0)
                 {
                     if (param_1 == 1)
@@ -2364,7 +2364,7 @@ iTruth tSoundChannel::mUpdateRegular(double time)
     tSoundChannelCommand* command = mGetFirstImmediateCommand();
     while (command != 0 && mDoCommand(command) == 1)
     {
-        (&field_0xdc)->vfunction33(command);
+        (&field_0xdc)->mRemoveFromList(command);
         command->mMakeAvailable();
         command = mGetFirstImmediateCommand();
     }
@@ -2489,7 +2489,7 @@ iTruth tSoundChannel::mUpdateAtInterrupt(double time)
         {
             if (mDoCommand(command) == kTrue)
             {
-                (&field_0xdc)->vfunction33(command);
+                (&field_0xdc)->mRemoveFromList(command);
                 command->mMakeAvailable();
                 command = mGetFirstImmediateCommand();
             }
@@ -2572,7 +2572,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
     case 1:
         return mPlayChannel();
     case 2:
-        vfunction98();
+        mPauseChannel();
         return kTrue;
     case 3:
         mStopAndResetChannel();
@@ -2623,7 +2623,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
             if (atgSoundPart->vfunction13() == 0 && !mDoWeRetainSelections() && mAreWeStatic() == kTrue)
             {
                 field_0x168 = mGetBufferLength();
-                tSoundChannelCommand* attachment = (&field_0xec)->vfunction5();
+                tSoundChannelCommand* attachment = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
                 if (attachment->vfunction16() == 0)
                 {
                     tSoundSelection* selection = attachment->vfunction32();

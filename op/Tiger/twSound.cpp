@@ -391,7 +391,7 @@ protected:
 	virtual unsigned char	mUpdateBuffersAndSelections	( double );
 	virtual unsigned char	mUpdateAmountPlayed	( void );
 	// HYPOTHESIS: own virtuals follow tSoundChannel's 122 slots; the getter at 125 and mCreate3DBuffer at 128 are called through the vtable.
-	virtual void vfunction122(); virtual void vfunction123();
+	virtual void vfunction122(); virtual void vfunction123(); virtual void vfunction124();
 	virtual LPDIRECTSOUNDBUFFER mGetfDSBuffer();
 	virtual void vfunction126();
 	virtual unsigned char	mRestoreBuffers	( void );
@@ -400,7 +400,7 @@ public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
 	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
 	virtual unsigned char	mDoFillSelection	( unsigned char );
-	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );
+	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );	// HYPOTHESIS: slot not recovered
 	// HYPOTHESIS: slot not recovered; nothing in this unit calls it through the vtable.
 	virtual void	mDoAllImmediateNonInterruptCommands	( void );
 	virtual	void	mDump	( void );
@@ -1341,7 +1341,7 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 					{
 						selection->vfunction25( amountLeft );
 						field_0x110 -= amountLeft;
-						command = field_0xec.vfunction14( command );
+						command = (tSoundChannelCommand*)field_0xec.vfunction14( command );
 					}
 					continue;
 				}
@@ -1351,7 +1351,7 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 #line 1295
 				SOUNDSAY2(( "Big trouble -- command of this type %ld on attachment list", command->vfunction16() ));
 #line 1390
-				command = field_0xec.vfunction14( command );
+				command = (tSoundChannelCommand*)field_0xec.vfunction14( command );
 				continue;
 			}
 			command = NULL;
@@ -1475,12 +1475,12 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 	if( mDoWeRetainSelections() == kTrue )
 	{
 		tSoundCommandList* list = source->mGetAttachmentsList();
-		tSoundChannelCommand* command = list->vfunction5();
+		tSoundChannelCommand* command = (tSoundChannelCommand*)list->vfunction5();
 		tSoundChannelCommand* first = command;
 		while( command )
 		{
 			tSoundSelection* selection = command->vfunction32();
-			command = list->vfunction14( command );
+			command = (tSoundChannelCommand*)list->vfunction14( command );
 			if( selection == NULL )
 				first = command;
 		}
@@ -1497,7 +1497,7 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 			}
 			else
 				mAddAttachment( handle );
-			first = list->vfunction14( first );
+			first = (tSoundChannelCommand*)list->vfunction14( first );
 		}
 		mAutoRemoveSelections();
 	}
@@ -2028,7 +2028,7 @@ void twStandardSoundChannel::mDoAllImmediateNonInterruptCommands( void )
 	while( command && mDoCommand( command ) == kTrue )
 	{
 		tSoundCommandList* list = &field_0xbc;
-		list->vfunction33( command );
+		list->mRemoveFromList( command );
 		command->mMakeAvailable();
 		command = mGetFirstImmediateNonInterruptCommand();
 	}

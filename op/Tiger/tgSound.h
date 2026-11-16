@@ -313,44 +313,14 @@ public:
 
 // HYPOTHESIS: declared only as far as its mGetListMemberWithHandleFromHandle needs it; the list forwards the lookup to
 // the sound part (tgSoundPart slot 129).
-class tSoundCommandList
+class tSoundCommandList : public tDynamicMemoryFreeListViaHandles
 {
 public:
+    // The exe's destructor (0x00646b90, a public virtual by its symbol) is the base's inlined;
+    // twSoundPart::mDuplicateSoundChannel's inlined channel constructor sets the base's fields
+    // before this class's vtable, as an inlined base constructor does.
+    virtual ~tSoundCommandList();
     virtual tListMemberWithHandle* mGetListMemberWithHandleFromHandle(long handle);
-    // HYPOTHESIS: slots 1-25 are not recovered; slot 26 adds a member by handle.
-    // Slot 5 returns the first member (mGetFirstAttachment); slot 14 the member after the one
-    // given.
-    virtual class tSoundChannelCommand* vfunction1(long handle);
-    virtual void vfunction2();
-    virtual long vfunction3();
-    virtual void vfunction4();
-    virtual class tSoundChannelCommand* vfunction5();
-    virtual void vfunction6(); virtual long vfunction7(long handle); virtual void vfunction8();
-    virtual long vfunction9(long handle);
-    virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13();
-    virtual class tSoundChannelCommand* vfunction14(class tSoundChannelCommand* command);
-    virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
-    virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
-    virtual iTruth vfunction26(long handle);
-    virtual void vfunction27(class tSoundChannelCommand* command);
-    virtual void vfunction28(); virtual void vfunction29(); virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32();
-    virtual void vfunction33(class tSoundChannelCommand* command);
-    virtual void vfunction34(); virtual void vfunction35(); virtual void vfunction36(); virtual void vfunction37();
-    virtual iTruth vfunction38();
-    virtual long vfunction39();
-    virtual void vfunction40(); virtual void vfunction41();
-    // HYPOTHESIS: slot 42 dumps the list (tSoundChannel::mDump); slot 39 returns the member count
-    // (mReset); slot 33 removes a member (mClearCommands)
-    virtual void vfunction42();
-
-    // HYPOTHESIS: the inline constructor tSoundChannel's construction shows (twSoundPart::
-    // mDuplicateSoundChannel): it sets these the way tDynamicMemoryFreeListViaHandles's does.
-    // A destructor exists (each list counts an unwind state); its slot is not recovered.
-    tSoundCommandList() { field_0xc = 0; field_0x4 = -1; field_0x8 = -1; }
-    ~tSoundCommandList();
-    long field_0x4;
-    long field_0x8;
-    long field_0xc;
 };
 
 // The slots follow the exe's vtable of the class (0x007b6d1c, 122 slots). Slot 0 is the
@@ -461,10 +431,9 @@ public:
     // twStandardSoundChannel::mAddActiveSoundChannel's mangled name gives both function types.
     typedef tSoundSelection* (*tFillSelectionFunction)(unsigned long&, unsigned char, tSoundSelection*&);
     typedef tSoundSelection* (*tSelectionFunction)(long, long);
-    // HYPOTHESIS: slot 98 is mAddActiveSoundChannel, after the order of tSoundPart's
-    // mAddSoundChannel, mAddActiveSoundChannel and mDuplicateSoundChannel; the other pure slots
-    // here are taken.
-    virtual unsigned char mAddActiveSoundChannel(tSoundChannelFormat* format, long handle, tFillSelectionFunction& fill, tSelectionFunction& select, unsigned long userData) = 0;
+    // HYPOTHESIS: slot 98 is mPauseChannel: twStandardSoundChannel's overrides run mPauseChannel,
+    // mPlayChannel, mSetFrequency, and mDoCommand calls it with no argument for command type 2.
+    virtual iTruth mPauseChannel() = 0;
     virtual unsigned char mPlayChannel() = 0;
     virtual unsigned char mSetFrequency(long frequency) = 0;
     virtual unsigned char mSetPan(long pan) = 0;

@@ -7404,8 +7404,8 @@
    "symbol": "?mDuplicateSoundChannel@twSoundPart@@UAEJJ@Z",
    "unit": "Tiger/twSound.cpp",
    "size": 448,
-   "score": 99.417,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x00645940": {
