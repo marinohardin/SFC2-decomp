@@ -485,13 +485,13 @@ public:
 	tObject_00429f17_writer *m_08;
 };
 
-// HYPOTHESIS: 0x00429f17 is the body of 0x00429f0d past its 10-byte exception prolog. Read from
-// the original instructions: under the lock at +0xe4 it takes the locked pointers at +0xcc and
-// +0xb4, writes the fields at +0x1c, +0x2c, +0x30, +0x40..+0x4c to a stream through the
-// argument (written here as one dword stream class, not recovered) and ends by passing the
-// fields at +0x50..+0x84 on to one callee. The callees have no recovered types, so only the
-// part that is certain is written: the lock and the two locked accesses. The score is measured
-// against a misaligned original, as at 0x00429d10.
+// HYPOTHESIS: an honest partial of 0x00429f0d. Read from the original instructions: under the
+// lock at +0xe4 it takes the locked pointers at +0xcc and +0xb4, writes the fields at +0x1c,
+// +0x2c, +0x30, +0x40..+0x4c to a stream through the argument (written here as one dword
+// stream class, not recovered) and ends by passing the fields at +0x50..+0x84 on to one callee.
+// The callees have no recovered types, so only the part that is certain is written: the lock
+// and the two locked accesses. The body covers only part of the function, hence its 1.066%
+// score.
 // FUNCTION: STARFLEETOP 0x00429f0d
 void tClientCharacter::fn_00429f0d(tObject_00429f17 *stream)
 {
