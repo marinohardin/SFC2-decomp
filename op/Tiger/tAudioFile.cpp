@@ -56,3 +56,20 @@ tAudioFileInfoPart::tAudioFileInfoPart()
 tAudioFileInfoPart::~tAudioFileInfoPart()
 {
 }
+
+// HYPOTHESIS: tAudioPriorityManagerPart is declared only as far as this function needs it; the
+// exe's symbol places its mIsReady in this unit's address range. It waits for the memory part
+// (Test_ at 0x0064fc00, see Tiger/tgSound.cpp).
+class tAudioPriorityManagerPart : public tPart
+{
+public:
+    virtual iTruth mIsReady();
+};
+
+// FUNCTION: STARFLEETOP 0x00657970
+iTruth tAudioPriorityManagerPart::mIsReady()
+{
+    if (TestPart(tMemoryPart) == kTrue)
+        return kTrue;
+    return kFalse;
+}
