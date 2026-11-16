@@ -4236,3 +4236,26 @@ unsigned char tgSoundPart::mSet3DSoundCones(long channel, float angle, long leve
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+#line 4240 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006545f0
+unsigned char tgSoundPart::mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5752
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5760
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)18, &distance, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5777
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
