@@ -39,4 +39,19 @@ unsigned char tBasicFileZip::mOpenForRead( const char *name )
 	return 0;
 }
 
+// FUNCTION: STARFLEETOP 0x006286b0
+unsigned char tBasicFileZip::mOpenForWrite( const char *name )
+{
+	mClose();
+	if ( field_4 )
+	{
+		if ( field_4->mOpenForWrite( name ) )
+		{
+			field_14 = 0;
+			return 1;
+		}
+	}
+	return 0;
+}
+
 }
