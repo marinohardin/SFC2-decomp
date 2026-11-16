@@ -1,6 +1,6 @@
 //	tstring.cpp: tString, Tiger's wide character string.
-
 #include "Tiger/tstring.h"
+#include "Tiger/tcglue.h"
 
 // FUNCTION: STARFLEETOP 0x006230b0
 void tString::mInitInstanceControl(void)
@@ -241,6 +241,20 @@ int tString::mCopyCharStr( char *str, int max_size )
 		count = (max_size - 1 < (int32)fInstanceControl.fMemSpace.size()) ? max_size - 1 : (int32)fInstanceControl.fMemSpace.size();
 		for (int32u i = 0; i < (int32u)count; i++)
 			*p++ = (char)*src++;
+		str[count] = 0;
+	}
+	return count;
+}
+
+// FUNCTION: STARFLEETOP 0x00623850
+int tString::mCopyWideStr( iWideChar *str, int max_size )
+{
+	int32 count = 0;
+	if (max_size > 0)
+	{
+		iBasicStringElement *src = fInstanceControl.fMemSpace.begin();
+		count = (max_size - 1 < (int32)fInstanceControl.fMemSpace.size()) ? max_size - 1 : (int32)fInstanceControl.fMemSpace.size();
+		clib::memcpy(str, src, count * sizeof(iWideChar));
 		str[count] = 0;
 	}
 	return count;
