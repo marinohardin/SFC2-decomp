@@ -9,6 +9,7 @@ public:
     virtual tVolIterator mGetVolIterator(tSession session);
     virtual tVolume mGetNamedVolume(tSession session, tString name);
     virtual tPath mGetAppPath(tSession session);
+    virtual tPath mDuplicatePath(tSession session, tPath path);
 };
 
 tPath WinParsePath(tSession session, tString &path);
@@ -173,4 +174,16 @@ tVolume WinParseVolume(tSession session, tString &path)
         tString volRoot(root);
     }
     return volume;
+}
+
+// HYPOTHESIS: the original resolves the path's cookie through the tFSCookiePart's path cookie
+// manager (the out-of-line find, the map's end and operator[], as tPathIterator::mAdd has them),
+// copies the resolved twPath's name string at +0x7c and parses that into the returned path.
+// tFSCookiePart and twPath are declared only in tgfsys.cpp and cannot be repeated here, so the
+// name copied is not the resolved one.
+// FUNCTION: STARFLEETOP 0x0062f920
+tPath twFileSystemPart::mDuplicatePath(tSession session, tPath path)
+{
+    tString name;
+    return WinParsePath(session, name);
 }
