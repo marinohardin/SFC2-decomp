@@ -364,3 +364,16 @@ long tDynamicMemoryFreeListViaHandles::mGetZeroIndexedListMemberPosition(tListMe
 	}
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00627040
+tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::mGetListMemberAtThisIndex(long index)
+{
+	long position = 0;
+	tListMemberWithHandle *member = mGetListMemberWithHandleFromHandle(field_0x4);
+	while (member != 0 && position != index)
+	{
+		position++;
+		member = mGetListMemberWithHandleFromHandle(member->vfunc_10());
+	}
+	return member;
+}
