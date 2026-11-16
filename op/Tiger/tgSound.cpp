@@ -4304,3 +4304,20 @@ unsigned char tgSoundPart::mAddGetNextAttachmentFunction(long channel, void (*fu
     unsigned char result = channelPtr->mAddGetNextAttachmentFunction(function, data, interval);
     mReleaseControl(); return result;
 }
+#line 4308 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654d30
+long tgSoundPart::mGetNumberCurrentlyPlaying()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5891
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long count = 0;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && channelPtr->vfunction52() == 32)
+            count++;
+    }
+    mReleaseControl();
+    return count;
+}
