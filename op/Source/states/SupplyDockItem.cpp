@@ -1062,13 +1062,7 @@ void tSupplyDockMisc::fn_00487757( long i, long count )
 
 #include <sstream>
 
-// HYPOTHESIS: the object tObject_0045e574::fn_004d288f returns; tPanelMgr.cpp declares the
-// same class, which belongs in a shared header.
-class fn_004d288f_object
-{
-public:
-	void fn_004d2573( std::string text );
-};
+#include "unsorted/fn_004d288f_object.h"
 
 // RTTI names the class tValueI<tString>; vtable 0x0079b8a4, the value at +0x18.
 template< class T >
