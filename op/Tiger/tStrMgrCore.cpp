@@ -112,3 +112,9 @@ const tString &tStrMgrCore::mGetGrpStr( long group, long element )
 		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
 	return gErrStr;
 }
+
+// FUNCTION: STARFLEETOP 0x00627520
+const tString &tStrMgrCore::mGetGrpStr( const char *group, int element )
+{
+	return mGetGrpStr( mGetStringIndex( group ), element );
+}
