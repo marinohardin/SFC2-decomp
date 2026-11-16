@@ -363,3 +363,9 @@ int32 tString::find(char c)
 	s[1] = 0;
 	return find(s);
 }
+
+// FUNCTION: STARFLEETOP 0x00623f40
+int32 tString::find(const char *s, int32 startPos)
+{
+	return find(tString(s), startPos);
+}
