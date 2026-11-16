@@ -60,3 +60,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00651929	FUN_00651929	0.00	2	sonnet	2026-11-16T13:53:33Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x006577b0	tAudioFileInfoPart::`scalar_deleting_destructor'	0.00	2	sonnet	2026-11-16T16:26:08Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00657980	tAudioFileInfoPart::mActivate	98.24	2	sonnet	2026-11-16T16:47:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.24%
+0x006580c0	tAudioFileInfoPart::mGetNewAsynchReadInfo	99.94	2	sonnet	2026-11-16T17:30:52Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.94%
