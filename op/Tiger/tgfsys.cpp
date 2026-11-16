@@ -1167,3 +1167,26 @@ int32u twVolume::mGetTotalClusters( void )
 	return totalClusters;
 }
 
+// FUNCTION: STARFLEETOP 0x00631260
+int32u twVolume::mGetFreeClusters( void )
+{
+	DWORD	sectorsPerCluster;
+	DWORD	bytesPerSector;
+	DWORD	freeClusters;
+	DWORD	totalClusters;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	if ( !GetDiskFreeSpaceW( g_00c3cbf0, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			if ( !GetDiskFreeSpaceA( g_00c3caec, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+				throw "Error in system getting cluster size";
+		}
+		else
+			throw "Error in system getting cluster size";
+	}
+	return freeClusters;
+}
+
