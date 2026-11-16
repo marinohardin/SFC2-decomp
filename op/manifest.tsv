@@ -198,12 +198,12 @@ address	size	symbol	source	modes
 0x00429717	110	tOptex::Enter()	unsorted/tClientCharacter.cpp	vc6 guest
 0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest
 0x004297fa	83	tOptex::Leave()	unsorted/tClientCharacter.cpp	vc6 guest
-0x0042984d	459	tClientCharacter::fn_00429857(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
+0x0042984d	459	tClientCharacter::fn_0042984d(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
 0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6
-0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial
-0x00429bb2	340	tClientCharacter::tClientCharacter(int)	unsorted/tClientCharacter.cpp	partial
-0x00429d06	519	tClientCharacter::fn_00429d10(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	partial
-0x00429f0d	471	tClientCharacter::fn_00429f17(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
+0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	vc6
+0x00429bb2	340	tClientCharacter::tClientCharacter(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	vc6
+0x00429d06	519	tClientCharacter::fn_00429d06(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	partial
+0x00429f0d	471	tClientCharacter::fn_00429f0d(tObject_00429f17 *)	unsorted/tClientCharacter.cpp	partial
 0x0042a0fc	26	tBuffer::Write(const byte*,int32u)	unsorted/tClientCharacter.cpp	vc6 guest
 0x0042a116	79	tOutput::operator<<(const std::string&)	unsorted/tClientCharacter.cpp	vc6 guest
 0x0042a165	420	tClientCharacter::StreamIn(nDataStore::tInput &)	unsorted/tClientCharacter.cpp	partial

@@ -164,6 +164,7 @@ public:
 	void SetPointer(tPtrType *copy);
 	void Delete();
 	iPtr Lock();
+	iConstPtr Lock() const;
 	bool IsValid() const;
 
 protected:
@@ -190,6 +191,7 @@ inline void tSingleAccessWrapper<tPtrType>::SetPointer(tPtrType *copy)
 class tObject_005391b0 {
 public:
 	tObject_005391b0(int arg = 0);
+	tObject_005391b0 &operator=(const tObject_005391b0 &other);
 	char m_00[0xd0];
 };
 
@@ -201,7 +203,7 @@ public:
 
 
 
-// HYPOTHESIS: the object 0x00429d10 copies a tClientCharacter from; its class is not recovered,
+// HYPOTHESIS: the object 0x00429d06 copies a tClientCharacter from; its class is not recovered,
 // its accessors are declared from the calls: the virtual function at +0x30 returns the object's
 // database identifier, the rest are plain members. 0x00413c68 is shared, through
 // identical code folding, with an unrelated getter; operator* (0x00604259) and Done
@@ -244,12 +246,11 @@ public:
 class tClientCharacter : public nDataStore::tStreamable {
 public:
 	tClientCharacter(const tClientCharacter &other);
-	tClientCharacter(int arg);
+	tClientCharacter(const tObject_00543551 *source);
 	virtual ~tClientCharacter();
-	tClientCharacter &fn_00429857(const tClientCharacter &other);
-	void fn_00429d06(int arg);
-	void fn_00429d10(const tObject_00543551 *source);
-	void fn_00429f17(tObject_00429f17 *stream);
+	tClientCharacter &fn_0042984d(const tClientCharacter &other);
+	void fn_00429d06(const tObject_00543551 *source);
+	void fn_00429f0d(tObject_00429f17 *stream);
 	void StreamIn(nDataStore::tInput &input);
 	std::string m_0c;
 	std::string m_1c;
@@ -273,10 +274,8 @@ public:
 	tOptex m_e4;
 };
 
-// HYPOTHESIS: the function really starts at 0x004295d0 with `mov eax, <handler>; call
-// __EH_prolog`; the analysis boundary at 0x004295da skips those 10 bytes, so the score is
-// measured against a misaligned original. Past the prolog the rebuilt code is instruction for
-// instruction the original.
+// The calls to tOptex::~tOptex go to the game's copy (0x004296c8); the SDK's own copy is
+// 0x0070f100, and the harness holds one symbol to one address, so this stays short of exact.
 // FUNCTION: STARFLEETOP 0x004295d0
 tClientCharacter::~tClientCharacter()
 {
@@ -373,35 +372,28 @@ inline void tOptex::Leave()
 	}
 }
 
-// HYPOTHESIS: this is really tClientCharacter::operator=(const tClientCharacter &) (copy of
-// the +0xc/+0x1c/+0x30 strings, +0x5c/+0x70/+0x84 hex points, +0xb4/+0xcc locked members,
-// guarded by the tOptex at +0xe4 through 0x00429717/0x004297fa); its exception prolog is the
-// 10 bytes at 0x0042984d. The callees at 0x00405.. (string assign, tHexPoint copy, etc.) have
-// no recovered types yet, so only an empty placeholder is recorded here.
-// HYPOTHESIS: scoped holder of the tOptex at +0xe4; its constructor and destructor are the
-// calls to 0x00429717 and 0x004297fa.
-class tOptexHolder {
-public:
-	tOptexHolder(tOptex *optex)
-		: m_optex(optex)
-	{
-		m_optex->Enter();
-	}
-	~tOptexHolder() { m_optex->Leave(); }
-	tOptex *m_optex;
-};
-
-// HYPOTHESIS: the two locked members (+0xb4, +0xcc) are copied through callees whose types are
-// not recovered, so that part is left out until they are.
-// FUNCTION: STARFLEETOP 0x0042984d
-tClientCharacter &tClientCharacter::fn_00429857(const tClientCharacter &other)
+// Inline in the SDK; defined before its first use so that the functions below inline it. The
+// out-of-line copy (0x00429a18) is the one their unwind code calls, emitted after 0x0042984d.
+// FUNCTION: STARFLEETOP 0x00429a18
+inline tOptex::tGuard::~tGuard()
 {
-	tOptexHolder holder(&m_e4);
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
 
-	m_0c.assign(other.m_0c);
-	m_1c.assign(other.m_1c);
+// HYPOTHESIS: a copy assignment (it returns *this), likely the class's operator=; the name is
+// not recovered. Under the lock at +0xe4 it copies every field but +0x58, the two locked
+// members through the SDK's `*Lock() = *copy.Lock()` idiom.
+// FUNCTION: STARFLEETOP 0x0042984d
+tClientCharacter &tClientCharacter::fn_0042984d(const tClientCharacter &other)
+{
+	tOptex::tGuard guard(&m_e4);
+
+	m_0c = other.m_0c;
+	m_1c = other.m_1c;
 	m_2c = other.m_2c;
-	m_30.assign(other.m_30);
+	m_30 = other.m_30;
 	m_40 = other.m_40;
 	m_44 = other.m_44;
 	m_48 = other.m_48;
@@ -411,75 +403,49 @@ tClientCharacter &tClientCharacter::fn_00429857(const tClientCharacter &other)
 	m_5c = other.m_5c;
 	m_70 = other.m_70;
 	m_84 = other.m_84;
+	*m_b4.Lock() = *other.m_b4.Lock();
+	*m_cc.Lock() = *other.m_cc.Lock();
 	m_98 = other.m_98;
 	*(char *)&m_9c = *(char *)&other.m_9c;
+
+	guard.Leave();
 	return *this;
 }
 
-// HYPOTHESIS: inline in the SDK header; written without `inline` here so that it is emitted
-// while nothing in this unit uses a tGuard yet (see the note on 0x00429a30).
-// FUNCTION: STARFLEETOP 0x00429a18
-tOptex::tGuard::~tGuard()
-{
-	if (fNeedToLeave) {
-		fOptex->Leave();
-	}
-}
-
-// FUNCTION: STARFLEETOP 0x00429a26
 // HYPOTHESIS: copy constructor: default-constructs the members, makes sure both guarded
-// pointers hold an object and ends with *this = other (0x00429857). The 10-byte exception
-// prolog at 0x00429a26 precedes the analysis boundary, so the score is measured against a
-// misaligned original and says nothing about the body.
-// HYPOTHESIS: read from the original instructions, the full body is the one below, with
-// tOptex::tGuard::~tGuard inline. Built that way the function is the original's 386 bytes
-// plus the 10-byte prolog, but the misaligned comparison scores it 0%, so only the last
-// statement but one is written until the boundary is corrected:
-//
-//	tOptex::tGuard guard(&m_e4);
-//	if (!m_b4.IsValid()) {
-//		m_b4.SetPointer(new std::vector<int>);
-//	}
-//	if (!m_cc.IsValid()) {
-//		m_cc.SetPointer(new tObject_005391b0);
-//	}
-//	fn_00429857(other);
-//	guard.Leave();
+// pointers hold an object and ends with *this = other (0x0042984d).
+// FUNCTION: STARFLEETOP 0x00429a26
 tClientCharacter::tClientCharacter(const tClientCharacter &other)
 {
-	fn_00429857(other);
+	tOptex::tGuard guard(&m_e4);
+	if (!m_b4.IsValid()) {
+		m_b4.SetPointer(new std::vector<int>);
+	}
+	if (!m_cc.IsValid()) {
+		m_cc.SetPointer(new tObject_005391b0);
+	}
+	fn_0042984d(other);
+	guard.Leave();
 }
 
-// HYPOTHESIS: a one-argument constructor: builds the members, gives both guarded pointers a new
-// object and, under the lock at +0xe4, passes its argument to 0x00429d06. The argument's type
-// is not recovered (one dword). Its 10-byte exception prolog is 0x00429bb2, split off by the
-// analysis boundary, so the score is measured against a misaligned original. Past the prolog
-// the rebuilt body is the original's except that the original inlines tOptex::tGuard::~tGuard
-// (here it is out of line, see 0x00429a18), which also saves one stack slot.
+// HYPOTHESIS: a constructor from the object 0x00429d06 copies: builds the members, gives both
+// guarded pointers a new object and, under the lock at +0xe4, copies the fields through
+// 0x00429d06.
 // FUNCTION: STARFLEETOP 0x00429bb2
-tClientCharacter::tClientCharacter(int arg)
+tClientCharacter::tClientCharacter(const tObject_00543551 *source)
 	: m_b4(new std::vector<int>)
 	, m_cc(new tObject_005391b0)
 {
 	tOptex::tGuard guard(&m_e4);
-	fn_00429d06(arg);
+	fn_00429d06(source);
 	guard.Leave();
 }
 
-// HYPOTHESIS: the code at 0x00429d06 (its exception-frame setup and body) is rebuilt as
-// tClientCharacter::fn_00429d10, which claims 0x00429d06. This empty definition is not the original; it stays
-// until that code moves here, because a caller or a vtable needs it.
-void tClientCharacter::fn_00429d06(int arg)
-{
-}
-
-// HYPOTHESIS: 0x00429d10 is the body of 0x00429d06 past its 10-byte exception prolog: under the
-// lock at +0xe4 it copies every field from the object passed in, through its accessors. The
-// argument's class is not recovered; it is declared here from the calls alone. Built this way,
-// the function is the prolog plus the body, so the score is measured against a misaligned
-// original, as at 0x004295da.
+// HYPOTHESIS: under the lock at +0xe4 it copies every field from the object passed in, through
+// its accessors. The argument's class is not recovered; it is declared here from the calls
+// alone.
 // FUNCTION: STARFLEETOP 0x00429d06
-void tClientCharacter::fn_00429d10(const tObject_00543551 *source)
+void tClientCharacter::fn_00429d06(const tObject_00543551 *source)
 {
 	tOptex::tGuard guard(&m_e4);
 
@@ -527,7 +493,7 @@ public:
 // part that is certain is written: the lock and the two locked accesses. The score is measured
 // against a misaligned original, as at 0x00429d10.
 // FUNCTION: STARFLEETOP 0x00429f0d
-void tClientCharacter::fn_00429f17(tObject_00429f17 *stream)
+void tClientCharacter::fn_00429f0d(tObject_00429f17 *stream)
 {
 	tOptex::tGuard guard(&m_e4);
 
