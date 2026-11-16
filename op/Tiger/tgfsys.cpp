@@ -2163,3 +2163,36 @@ iTruth twPath::mExec( tString &args )
 		return false;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00633fe0
+unsigned long AsynchIOMain( void *data )
+{
+	twIORequestQueue	*queue = (twIORequestQueue *)data;
+	for ( ;; )
+	{
+		if ( queue->fn_00633fe0_IsEmpty() )
+		{
+			WaitForSingleObject( queue->f_18, INFINITE );
+			queue->f_14 = 0;
+			ReleaseMutex( queue->f_18 );
+			WaitForSingleObject( queue->f_04, INFINITE );
+		}
+		WaitForSingleObject( queue->f_18, INFINITE );
+		if ( queue->f_14 == -1 )
+			break;
+		ReleaseMutex( queue->f_18 );
+		while ( !queue->fn_00633fe0_IsEmpty() )
+		{
+			queue->f_0c->f_04->mProcessRequest();
+			WaitForSingleObject( queue->f_18, INFINITE );
+			fn_00633fe0_Node	*node = queue->f_0c;
+			queue->f_0c = node->f_08;
+			if ( !queue->f_0c )
+				queue->f_10 = 0;
+			delete node;
+			ReleaseMutex( queue->f_18 );
+		}
+	}
+	delete queue;
+	return 0;
+}
