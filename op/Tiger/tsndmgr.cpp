@@ -258,6 +258,7 @@ public:
 	tBasicSoundFileManager( void );
 	virtual	~tBasicSoundFileManager( void );
 	GenAbstractBinding( tBasicSoundFileManager );
+	virtual	iTruth	mIsReady	( void );
 	// Slots 6 to 83 in the order of the exe's vtable at 0x007b7664; the types from the SDK library's symbols.
 	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
 	virtual	unsigned short	mGetTrackingOffset	( unsigned long handle );
@@ -402,7 +403,6 @@ tBasicSoundFileManager::tBasicSoundFileManager( void )
 	field_0x234c = 0;
 	field_0x740 = 2000.0;
 }
-
 // HYPOTHESIS: empty body; the unwind frame fits destroying field_0x18 and the tPart base alone.
 // FUNCTION: STARFLEETOP 0x00663e60
 // FUNCTION: STARFLEETOP 0x00663e80
@@ -909,6 +909,14 @@ unsigned long	tBasicSoundFileManager::mNewTrackingNumber( long info )
 	return 0;
 }
 
+// HYPOTHESIS: tChannelGroup is declared in Tiger/taudiochannel.cpp and tChannelGroupManagerPart in
+// Tiger/tgSound.cpp, neither in a header yet; both are restated here only as far as the functions
+// below need them. tChannelGroup's slots follow the exe's vtable at 0x007b7454, with the SDK
+// library's symbols for the entries; the declaration in Tiger/taudiochannel.cpp has another order.
+// Slot 7 of the manager part takes a group index and returns the group, as the SDK library's
+// mGetChannelGroup does.
+class tChannelGroup;
+class tChannelGroupManagerPart : public tPart { public: GenAbstractBinding(tChannelGroupManagerPart); virtual unsigned long vfunction6(); virtual tChannelGroup * mGetChannelGroup(unsigned long index); /* HYPOTHESIS: slot 8 takes the group index, by mCloseFile's call once a group has no owners */ virtual void vfunction8(unsigned long index); virtual void vfunction9(); virtual void vfunction10(); /* HYPOTHESIS: slot 11 by mDoDefaultNextAttachment's call (group, handle, file), the SDK library's mAttachFileToChannel signature */ virtual unsigned char mAttachFileToChannel(unsigned long group, unsigned long handle, long file); };
 // FUNCTION: STARFLEETOP 0x00664a50
 unsigned char	tBasicSoundFileManager::mAddRegisteredAudioType( char * name, unsigned long (*func1)( char *, long, long, long, tSoundChannelFormat *, long, void * ), unsigned long (*func2)( unsigned long, long ), long unused, long value, void * data, long extra )
 {
@@ -929,15 +937,7 @@ unsigned char	tBasicSoundFileManager::mAddRegisteredAudioType( char * name, unsi
 	return 0;
 }
 
-// HYPOTHESIS: tChannelGroup is declared in Tiger/taudiochannel.cpp and tChannelGroupManagerPart in
-// Tiger/tgSound.cpp, neither in a header yet; both are restated here only as far as the functions
-// below need them. tChannelGroup's slots follow the exe's vtable at 0x007b7454, with the SDK
-// library's symbols for the entries; the declaration in Tiger/taudiochannel.cpp has another order.
-// Slot 7 of the manager part
-// takes a group index and returns the group, as the SDK library's mGetChannelGroup does.
 class tChannelGroup { public: virtual void mAddOwner(); virtual void mRemoveOwner(); virtual unsigned char mAttachSoundToChannel(unsigned long param_1, tSoundSelection *param_2, long param_3); virtual unsigned char mAttachFileToChannel(unsigned long param_1, long param_2); virtual unsigned char mAttachFileToBaseGroup(long param_1); virtual unsigned char mKillRetainedMode(); virtual unsigned char mClearAttachments(); virtual unsigned char mPlayChannel(unsigned long param_1, long param_2); virtual unsigned char mPauseChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndResetChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndClearChannel(unsigned long param_1, long param_2); virtual unsigned char mSetFrequency(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetPan(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetVolume(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetPriority(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetFinishFunction(unsigned long param_1, void (* const param_2)(unsigned long, unsigned char), long param_3, long param_4, unsigned char param_5); virtual unsigned char mSetChannelAttributes(unsigned long param_1, tChannelAttributes *param_2, long param_3, unsigned char param_4); virtual unsigned char mSet3DSoundProfile(unsigned long param_1, t3DSoundProfile *param_2, long param_3, unsigned char param_4); virtual unsigned char mSet3DSoundPosition(unsigned long param_1, tPoint3 *param_2, long param_3, unsigned char param_4); virtual unsigned char mSet3DSoundOrientation(unsigned long param_1, tPoint3 *param_2, long param_3, unsigned char param_4); virtual unsigned char mSet3DSoundVelocity(unsigned long param_1, tPoint3 *param_2, long param_3, unsigned char param_4); virtual unsigned char mSet3DSoundCones(unsigned long param_1, float param_2, long param_3, long param_4, unsigned char param_5); virtual unsigned char mSet3DSoundReferenceDistance(unsigned long param_1, double param_2, long param_3, unsigned char param_4); virtual long mGetFrequency(unsigned long param_1, long param_2); virtual long mGetPan(unsigned long param_1, long param_2); virtual long mGetVolume(unsigned long param_1, long param_2); virtual tChannelAttributes * mGetChannelAttributes(unsigned long param_1, long param_2); virtual t3DSoundProfile * mGet3DSoundProfile(unsigned long param_1, long param_2); virtual tPoint3 * mGet3DSoundPosition(unsigned long param_1, long param_2); virtual tPoint3 * mGet3DSoundOrientation(unsigned long param_1, long param_2); virtual tPoint3 * mGet3DSoundVelocity(unsigned long param_1, long param_2); virtual double mGet3DSoundReferenceDistance(unsigned long param_1, long param_2); virtual float mGet3DSoundConeAngleForNoAttenuation(unsigned long param_1, long param_2); virtual long mGet3DSoundConeAttenuationLevel(unsigned long param_1, long param_2); virtual long mGetChannelPriority(unsigned long param_1, long param_2); /* HYPOTHESIS: returns eSoundChannelStatus, not declared yet */ virtual long mGetChannelStatus(unsigned long param_1, long param_2); virtual long mTotalBytesLeftToPlay(unsigned long param_1, long param_2); virtual double mTotalNumberOfSecondsLeftToPlay(unsigned long param_1, long param_2); virtual long mNumberOfAttachmentsQueuedUp(unsigned long param_1, long param_2); virtual tSoundChannelFormat * mGetSoundChannelFormat(unsigned long param_1, long param_2); virtual unsigned char mAreWeLooping(unsigned long param_1, long param_2); virtual unsigned char mAreWeStreaming(unsigned long param_1, long param_2); virtual unsigned char mAreWe3D(unsigned long param_1, long param_2); virtual unsigned char mAreWeStatic(unsigned long param_1, long param_2); virtual unsigned char mAreWeFixedFrequency(unsigned long param_1, long param_2); virtual unsigned char mAreWeARecordingChannel(unsigned long param_1, long param_2); virtual unsigned char mTryToLocateInHardware(unsigned long param_1, long param_2); virtual unsigned char mTryToLocateInSoftware(unsigned long param_1, long param_2); virtual unsigned char mAreWeFixedPan(unsigned long param_1, long param_2); virtual unsigned char mAreWeFixedVolume(unsigned long param_1, long param_2); virtual unsigned char mAreWeAGlobalSound(unsigned long param_1, long param_2); virtual unsigned char mDoWeRetainSelections(unsigned long param_1, long param_2); /* The two mDump overloads in this order, as mDump's call through slot 53 shows. */ virtual void mDump(unsigned long param_1, long param_2); virtual void mDump(); virtual unsigned char mAddUpdateSoundPositionFunction(unsigned long param_1, void (*param_2)(unsigned long, long), long param_3, double param_4, long param_5, unsigned char param_6); virtual unsigned char mAddDelayCommand(unsigned long param_1, double param_2, long param_3, unsigned char param_4); virtual unsigned char mFadeToVolume(unsigned long param_1, long param_2, double param_3, long param_4, unsigned char param_5); virtual unsigned char mFadeToStopAndResetNow(unsigned long param_1, double param_2, long param_3); virtual unsigned char mFadeToStopAndClearNow(unsigned long param_1, double param_2, long param_3); virtual unsigned char mPlaySpecialLoop(unsigned long param_1, long param_2, long param_3, long param_4, long param_5, long param_6); virtual unsigned char mEndSpecialLoop(unsigned long param_1, long param_2); virtual unsigned char mAddGetNextAttachmentFunction(unsigned long param_1, void (*param_2)(unsigned long, long), long param_3, double param_4, long param_5); char fUnknown_0004[0x20]; /* fNumberOfOwners, per the dump text in Tiger/taudiochannel.cpp */ long field_24; };
-class tChannelGroupManagerPart : public tPart { public: GenAbstractBinding(tChannelGroupManagerPart); virtual unsigned long vfunction6(); virtual tChannelGroup * mGetChannelGroup(unsigned long index); /* HYPOTHESIS: slot 8 takes the group index, by mCloseFile's call once a group has no owners */ virtual void vfunction8(unsigned long index); virtual void vfunction9(); virtual void vfunction10(); /* HYPOTHESIS: slot 11 by mDoDefaultNextAttachment's call (group, handle, file), the SDK library's mAttachFileToChannel signature */ virtual unsigned char mAttachFileToChannel(unsigned long group, unsigned long handle, long file); };
-
 // FUNCTION: STARFLEETOP 0x00664b00
 void	tBasicSoundFileManager::mStop( unsigned long handle )
 {
@@ -2018,4 +2018,15 @@ signed char *	tBasicSoundFileManager::mReadInFileAsString( char *fileName, long 
 	delete file;
 	*size = 0;
 	return 0;
+}
+// MATCH-ONLY: the original line number is not known; this returns to the file's own numbering
+#line 2024
+// The SDK library's symbol names this tBasicSoundFileManager::mIsReady; the type descriptors its
+// three Test_ copies cast to (0x0083f420, 0x00881fa8, 0x00881d38) give the parts it waits for.
+// FUNCTION: STARFLEETOP 0x0066b0f0
+iTruth	tBasicSoundFileManager::mIsReady( void )
+{
+	if ( TestPart( tAudioPriorityManagerPart ) == kTrue && TestPart( tChannelGroupManagerPart ) == kTrue && TestPart( tAudioFileInfoPart ) == kTrue )
+		return kTrue;
+	return kFalse;
 }

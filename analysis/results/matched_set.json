@@ -10126,6 +10126,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0066b0f0": {
+   "name": "tChannelGroupManagerPart::mIsReady",
+   "symbol": "?mIsReady@tBasicSoundFileManager@@UAEEXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
