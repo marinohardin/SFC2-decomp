@@ -1871,3 +1871,29 @@ iTruth twPath::mCreate( void )
 	return created;
 }
 
+// FUNCTION: STARFLEETOP 0x00633660
+iTruth twPath::mDelete( void )
+{
+	iTruth	deleted = false;
+
+	if ( mExist() )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		deleted = DeleteFileW( g_00c3cbf0 );
+		if ( !deleted && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			deleted = DeleteFileA( g_00c3caec );
+		}
+	}
+	return deleted;
+}
+
