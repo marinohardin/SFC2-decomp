@@ -377,3 +377,10 @@ tListMemberWithHandle *tDynamicMemoryFreeListViaHandles::mGetListMemberAtThisInd
 	}
 	return member;
 }
+
+// FUNCTION: STARFLEETOP 0x00627080
+void tDynamicMemoryFreeListViaHandles::mClearList()
+{
+	while (field_0x4 != -1)
+		vfunction32(field_0x4);
+}
