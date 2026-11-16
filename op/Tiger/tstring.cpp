@@ -106,17 +106,6 @@ inline int32 fn_ExpansionRoomInline(int32 size)
 	return size * 5 / 100;
 }
 
-// MATCH-ONLY: the original inlines a reserve with this growth rule into the copy constructor; the descriptive name is this project's own.
-inline void tString::mReserveWithRoom(int32 size)
-{
-	if (size > 0)
-	{
-		int32 newSize = size + fn_ExpansionRoomInline(size);
-		fInstanceControl.fMemSpace.reserve(newSize);
-		fInstanceControl.fMemLimit = newSize;
-	}
-}
-
 // MATCH-ONLY: the original inlines this (built with /Ob2).
 inline int32 tString::mGetMemSize(void)
 {
@@ -124,8 +113,21 @@ inline int32 tString::mGetMemSize(void)
 }
 
 // MATCH-ONLY: the original inlines this (built with /Ob2).
-inline tString& tString::operator= (const tString &s)
+inline int32 tString::mGetDataCount(void)
 {
+	return fInstanceControl.fDataCount;
+}
+
+// MATCH-ONLY: the original inlines this (built with /Ob2).
+// HYPOTHESIS: the growth reserve belongs to operator=; the copy constructor and mEndStrAt both inline it.
+inline tString& tString::operator=(const tString &s)
+{
+	if (fInstanceControl.fMemLimit < s.fInstanceControl.fDataCount)
+	{
+		int32 newSize = s.fInstanceControl.fDataCount + fn_ExpansionRoomInline(s.fInstanceControl.fDataCount);
+		fInstanceControl.fMemSpace.reserve(newSize);
+		fInstanceControl.fMemLimit = newSize;
+	}
 	if (mGetMemSize() != 0)
 	{
 		fInstanceControl.fDataCount = s.fInstanceControl.fDataCount;
@@ -143,7 +145,6 @@ tString::tString(const tString &s)
 	fInstanceControl.fMemLimit = 0;
 	fInstanceControl.fDataCount = 0;
 
-	mReserveWithRoom(s.fInstanceControl.fDataCount);
 	*this = s;
 }
 
@@ -159,8 +160,9 @@ tString::tString(const iterator &i)
 	mIncorporateCharList(&i.fString->fInstanceControl.fMemSpace[i.fIndex], i.fString->fInstanceControl.fDataCount - i.fIndex);
 }
 
+// MATCH-ONLY: mEndStrAt inlines the destructor of its temporary (built with /Ob2); this copy is the vtable's.
 // FUNCTION: STARFLEETOP 0x00623580
-tString::~tString()
+inline tString::~tString()
 {
 	if (fInstanceControl.fTempExternalCharRepresentation)
 		delete [] fInstanceControl.fTempExternalCharRepresentation;
@@ -310,4 +312,13 @@ void tString::mEndStrAt(iterator strPosition)
 	if (this != strPosition.fString)
 		throw "You can't use someone else's iterator to terminate yourself!";
 	mEndStrAt(strPosition.fIndex);
+}
+
+// FUNCTION: STARFLEETOP 0x00623bb0
+void tString::mEndStrAt(int32 strPosition)
+{
+	if (strPosition < mGetDataCount())
+	{
+		*this = substr(0, strPosition);
+	}
 }

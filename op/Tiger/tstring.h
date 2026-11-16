@@ -70,7 +70,6 @@ class tString
 		int32 mGetMemSize(void);
 		int32 mGetDataCount(void);
 		void  mReserve(int32 size);
-		void  mReserveWithRoom(int32 size);
 
 		char* mCharStr( char* myMemory = NULL );
 		iBasicStringElement *mWideStr(void);
