@@ -602,6 +602,7 @@ public:
     virtual void mDone();
     virtual unsigned char mRemoveSoundChannel(long channel);
     virtual unsigned char mRemoveAllSoundChannels();
+    virtual unsigned char mAttachSoundToChannel(long channel, tSoundSelection* selection);
     virtual unsigned char mPauseAllChannels();
     virtual unsigned char mResumeAllChannels();
     virtual unsigned char mPlayAllChannels();
