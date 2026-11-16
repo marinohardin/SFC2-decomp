@@ -492,3 +492,21 @@ unsigned char tHandleList::mAddToFrontOfList( unsigned long handle )
 	f04++;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00662aa0
+unsigned char tHandleList::mAddToBackOfList( unsigned long handle )
+{
+	if ( f04 == f08 )
+	{
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("We reached the maximum for a list!\n"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("We reached the maximum for a list!\n"); }
+#line 760
+		if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+#line 506
+		return false;
+	}
+	if ( mIsHandle( handle ) == true )
+		return false;
+	f0c[ f04 ] = handle;
+	f04++;
+	return true;
+}
