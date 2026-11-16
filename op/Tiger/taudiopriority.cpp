@@ -569,3 +569,14 @@ unsigned char tClassActiveChannelList::mInsertHandle( unsigned long handle )
 	f04++;
 	return notInList;
 }
+
+// FUNCTION: STARFLEETOP 0x00662dc0
+void tAudioFileClass::mRemoveHandle( unsigned long handle )
+{
+	if ( f08.mRemoveFromList( handle ) == true )
+	{
+		tClassTrackingInfo *info = BindPart( tAudioPriorityManagerPart )->vfunction16( handle );
+		assert( info );
+		f18 -= info->vfunction2();
+	}
+}

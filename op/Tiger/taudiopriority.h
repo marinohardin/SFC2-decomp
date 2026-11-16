@@ -125,7 +125,8 @@ class tClassTrackingInfo
 	public:
 		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
 		virtual		long	mGetPriority	( void );
-		virtual		void	vfunction2	( void );
+		// HYPOTHESIS: returns a count, from mRemoveHandle (0x00662dc0) subtracting it.
+		virtual		long	vfunction2	( void );
 		virtual		void	mSetAvailable	( void );
 		// HYPOTHESIS: a truth value, from mAreWeAllowedToPlay (0x00661fa0) comparing it with 1.
 		virtual		unsigned char	vfunction4	( void );
