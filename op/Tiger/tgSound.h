@@ -556,7 +556,11 @@ public:
     virtual unsigned char mSetFinishFunction(long channel, void (* const function)(unsigned long, unsigned char), long data, unsigned char immediate);
     // The SDK library's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSetChannelAttributes(long channel, tChannelAttributes* attributes, unsigned char immediate);
-    virtual void mSet3DSoundProfile(); virtual void mSet3DSoundPosition(); virtual void mSet3DSoundOrientation();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate);
+    virtual void mSet3DSoundOrientation();
     virtual void mSet3DSoundVelocity(); virtual void mSet3DSoundCones(); virtual void mSet3DSoundReferenceDistance(); virtual void mSetGlobalFrequency();
     virtual void mSetGlobalPan(); virtual void mSetGlobalVolume(); virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
@@ -646,6 +650,10 @@ public:
     virtual unsigned char mFadeToVolume(long channel, long volume, double timeToTake, unsigned char immediate);
     virtual unsigned char mFadeToStopAndResetNow(long channel, double timeToTake);
     virtual unsigned char mFadeToStopAndClearNow(long channel, double timeToTake);
+    // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
+    // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
+    virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
+    virtual unsigned char mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     virtual iTruth xAttemptToGainControl(const char* file, long line, long a, long b);

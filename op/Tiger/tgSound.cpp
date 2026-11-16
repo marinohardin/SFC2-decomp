@@ -4066,3 +4066,27 @@ unsigned char tgSoundPart::mSetChannelAttributes(long channel, tChannelAttribute
     channelPtr->mUpdateRegular(vfunction125());
     mReleaseControl(); return 1;
 }
+#line 4070 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653550
+unsigned char tgSoundPart::mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (profile == 0) return 0;
+#line 5398
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5406
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)8, profile, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5423
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
