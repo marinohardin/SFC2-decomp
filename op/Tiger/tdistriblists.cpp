@@ -213,3 +213,14 @@ long tDynamicMemoryFreeListViaHandles::mGetNextListMemberHandle(tListMemberWithH
 		return -1;
 	return aMember->vfunc_10();
 }
+
+// FUNCTION: STARFLEETOP 0x00626c00
+long tDynamicMemoryFreeListViaHandles::mGetPreviousCircularListMemberHandle(tListMemberWithHandle *aMember)
+{
+	if (aMember == 0)
+		return -1;
+	long handle = aMember->vfunc_0c();
+	if (handle == -1)
+		handle = vfunction4();
+	return handle;
+}
