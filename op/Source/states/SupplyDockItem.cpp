@@ -286,6 +286,7 @@ public:
 		tMissileInfo();
 		~tMissileInfo();
 		void fn_0045154e( tMissileInfo *info );
+		long fn_00451a8b();
 		long fn_00451c03();
 		long fn_00451c18();
 		short fn_00451c2d();
@@ -459,4 +460,10 @@ void tSupplyDockMissiles::vfunction7( long *msg )
 long tSupplyDockMissiles::vfunction9()
 {
 	return m7c->fn_00451c45();
+}
+
+// FUNCTION: STARFLEETOP 0x00486a1d
+long tSupplyDockMissiles::vfunction10()
+{
+	return m7c->fn_00451a8b();
 }
