@@ -6940,6 +6940,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00627f60": {
+   "name": "tZipInfoMgr::mDone",
+   "symbol": "?mDone@tZipInfoMgr@@QAEXXZ",
+   "unit": "Tiger/tZipInfoMgr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
