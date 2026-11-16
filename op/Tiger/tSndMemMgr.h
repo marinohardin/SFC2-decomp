@@ -49,6 +49,14 @@ inline void tListMemberWithHandle::mInitListMemberWithHandle()
     field_0c = -1;
 }
 
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454a0
+inline void tListMemberWithHandle::mRemoveFromList()
+{
+    field_04 = -1;
+    field_08 = -1;
+}
+
 // HYPOTHESIS: tSoundMemoryBlock derives from tListMemberWithHandle (the list returns
 // mGetBlock's result as a tListMemberWithHandle *).
 class tSoundMemoryBlock : public tListMemberWithHandle {
