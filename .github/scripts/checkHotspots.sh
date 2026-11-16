@@ -34,7 +34,7 @@ if [ -n "$changed" ]; then
   echo
   echo "$changed" | sed 's/^/    /'
   echo
-  echo "Describe the change you need and why (docs/PLAN.md, 'Contract changes') instead of making it here."
+  echo "Describe the change you need and why instead of making it here (AGENTS.md, 'Working on a work package')."
   echo "A pull request that is itself the contract change carries the contract-change label."
   exit 1
 fi
