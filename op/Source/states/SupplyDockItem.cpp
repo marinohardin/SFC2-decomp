@@ -289,6 +289,7 @@ public:
 		long fn_00451c03();
 		long fn_00451c18();
 		short fn_00451c2d();
+		short fn_00451c45();
 
 		char m00[0xc];
 		bool m0c;
@@ -452,4 +453,10 @@ void tSupplyDockMissiles::vfunction7( long *msg )
 		break;
 	}
 	vfunction6();
+}
+
+// FUNCTION: STARFLEETOP 0x00486a11
+long tSupplyDockMissiles::vfunction9()
+{
+	return m7c->fn_00451c45();
 }
