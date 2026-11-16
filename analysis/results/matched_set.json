@@ -5986,6 +5986,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00623120": {
+   "name": "tString::tString",
+   "symbol": "??0tString@@QAE@PBD@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 128,
+   "score": 56.069,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",
