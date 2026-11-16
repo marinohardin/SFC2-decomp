@@ -24,7 +24,7 @@ public:
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual void vfunction5();
-	virtual void vfunction6();
+	virtual long vfunction6();
 	virtual void vfunction7( long *msg );
 	virtual void vfunction8( void *a, bool b );
 	virtual long vfunction9() = 0;
@@ -72,9 +72,9 @@ void tSupplyDockItem::vfunction2()
 }
 
 // FUNCTION: STARFLEETOP 0x004861ef
-void tSupplyDockItem::vfunction6()
+long tSupplyDockItem::vfunction6()
 {
-	vfunction12();
+	return vfunction12();
 }
 
 // HYPOTHESIS: m10 looks like the 0x64-byte class tPanelMgr holds at +0x100 (declared only in
@@ -601,6 +601,7 @@ public:
 	virtual long vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
+	virtual long vfunction6();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
@@ -707,4 +708,13 @@ void tSupplyDockFighters::vfunction3()
 			fn_004d33d4( 0x11023 + i, ((fn_004479b4_object *) m74)->fn_00447822( i ) );
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00486f6d
+long tSupplyDockFighters::vfunction6()
+{
+	long total = 0;
+	for( long i = 0; i < 4; i++ )
+		total += vfunction18( i );
+	return total;
 }
