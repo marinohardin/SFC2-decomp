@@ -20,7 +20,7 @@ def run(root, cwd, *flags):
 
 
 def make_tree(base):
-    write(os.path.join(base, 'game', 'Common', 'Allocator.cpp'),
+    write(os.path.join(base, 'op', 'Common', 'Allocator.cpp'),
           '// FUNCTION: STARFLEETOP 0x006fc690\n'
           'void *tAllocator::Get(int n) {\n'
           '    long size = n; // PORT: 64-bit, the original stores a pointer in a long\n'
@@ -30,47 +30,47 @@ def make_tree(base):
           '#endif\n'
           '    return Pool(size);\n'
           '}\n')
-    write(os.path.join(base, 'game', 'Source', 'Ship.h'),
+    write(os.path.join(base, 'op', 'Source', 'Ship.h'),
           'struct tShip {\n'
           '    int mShields; /* PORT: undefined behaviour the original relied on */\n'
           '};\n'
           '#if SFCOP_FIX(fix_a) || SFCOP_FIX(fix_b)\n'
           '#endif\n')
     # Not source files, and words that only look like the tags: none of these count.
-    write(os.path.join(base, 'game', 'README.md'), '// PORT: a note in a document\nSFCOP_FIX(x)\n')
-    write(os.path.join(base, 'game', 'Source', 'Ship.cpp'),
+    write(os.path.join(base, 'op', 'README.md'), '// PORT: a note in a document\nSFCOP_FIX(x)\n')
+    write(os.path.join(base, 'op', 'Source', 'Ship.cpp'),
           'int PORT = 1; // the word PORT without the colon tag\n'
           'int MY_SFCOP_FIX(int);\n')
 
 
 def test_lists_each_site_with_file_and_line_and_the_totals(tmp_path):
     make_tree(str(tmp_path))
-    p = run('game', str(tmp_path))
+    p = run('op', str(tmp_path))
     assert p.returncode == 0, p.stderr
     assert p.stdout.splitlines() == [
-        'PORT game/Common/Allocator.cpp:3: long size = n; '
+        'PORT op/Common/Allocator.cpp:3: long size = n; '
         '// PORT: 64-bit, the original stores a pointer in a long',
-        'PORT game/Source/Ship.h:2: int mShields; '
+        'PORT op/Source/Ship.h:2: int mShields; '
         '/* PORT: undefined behaviour the original relied on */',
-        'SFCOP_FIX game/Common/Allocator.cpp:4: #if SFCOP_FIX(fix_shield_overflow)',
-        'SFCOP_FIX game/Source/Ship.h:4: #if SFCOP_FIX(fix_a) || SFCOP_FIX(fix_b)',
-        'SFCOP_FIX game/Source/Ship.h:4: #if SFCOP_FIX(fix_a) || SFCOP_FIX(fix_b)',
+        'SFCOP_FIX op/Common/Allocator.cpp:4: #if SFCOP_FIX(fix_shield_overflow)',
+        'SFCOP_FIX op/Source/Ship.h:4: #if SFCOP_FIX(fix_a) || SFCOP_FIX(fix_b)',
+        'SFCOP_FIX op/Source/Ship.h:4: #if SFCOP_FIX(fix_a) || SFCOP_FIX(fix_b)',
         'PORT lines: 2',
         'SFCOP_FIX sites: 3',
     ]
 
 
 def test_an_empty_tree_counts_zero(tmp_path):
-    os.makedirs(os.path.join(str(tmp_path), 'game'))
-    p = run('game', str(tmp_path))
+    os.makedirs(os.path.join(str(tmp_path), 'op'))
+    p = run('op', str(tmp_path))
     assert p.returncode == 0
     assert p.stdout.splitlines() == ['PORT lines: 0', 'SFCOP_FIX sites: 0']
 
 
 def test_a_missing_tree_is_an_error(tmp_path):
-    p = run('game', str(tmp_path))
+    p = run('op', str(tmp_path))
     assert p.returncode == 2
-    assert 'no directory game' in p.stderr
+    assert 'no directory op' in p.stderr
 
 
 def test_the_check_lists_port_lines_in_the_source_tree_that_exists():

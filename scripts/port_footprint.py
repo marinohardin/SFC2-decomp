@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The modernization's footprint inside the decompilation (DESIGN §7.1): every `PORT:` line and
+"""Consumers' footprint inside the decompilation (DESIGN §7.1): every `PORT:` line and
 every `SFCOP_FIX(` site under a tree, with file and line, and the two totals.
 
     python3 scripts/port_footprint.py [--no-fix-sites] op
@@ -8,8 +8,8 @@ A `PORT:` line is a comment tagged on the line itself, `// PORT: <reason>` (CONV
 fix site is each `SFCOP_FIX(` on a line, so `#if SFCOP_FIX(a) || SFCOP_FIX(b)` is two. Only C and
 C++ sources and headers are read. The listing is informational: the exit status is 0 whatever
 the counts, 2 when the tree does not exist. With `--no-fix-sites` a tree holding any fix site
-exits 1 after the listing: `op/` carries no fix, a fix to game code is an override unit under
-`src/fixes/overrides/` (DESIGN §6.9).
+exits 1 after the listing: `op/` carries no fix; a fix to game code belongs to a consumer such as
+the port (DESIGN §7.1).
 """
 import os
 import re
@@ -58,8 +58,8 @@ def main(argv):
     print('PORT lines: %d' % len(port))
     print('SFCOP_FIX sites: %d' % len(fix))
     if forbid_fixes and fix:
-        print('port_footprint: %d SFCOP_FIX site(s) under %s; a fix to game code is an override '
-              'unit under src/fixes/overrides/ (DESIGN §6.9)' % (len(fix), root), file=sys.stderr)
+        print('port_footprint: %d SFCOP_FIX site(s) under %s; a fix to game code belongs to a '
+              'consumer, never to the decompilation (DESIGN §7.1)' % (len(fix), root), file=sys.stderr)
         return 1
     return 0
 
