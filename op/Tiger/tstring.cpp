@@ -146,3 +146,15 @@ tString::tString(const tString &s)
 	mReserve(s.fInstanceControl.fDataCount);
 	*this = s;
 }
+
+// FUNCTION: STARFLEETOP 0x00623500
+tString::tString(const iterator &i)
+{
+	fInstanceControl.fTempExternalCharRepresentation = NULL;
+	fInstanceControl.fSizeOfExternalCharAllocation = 0;
+	fInstanceControl.fTempOperatorSpace = NULL;
+	fInstanceControl.fMemLimit = 0;
+	fInstanceControl.fDataCount = 0;
+
+	mIncorporateCharList(&i.fString->fInstanceControl.fMemSpace[i.fIndex], i.fString->fInstanceControl.fDataCount - i.fIndex);
+}

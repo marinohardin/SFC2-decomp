@@ -143,6 +143,8 @@ class tString
 		// Only the members a unit here uses are declared.
 		class iterator
 		{
+			friend tString;
+
 			public:
 				iterator();
 				iterator(const iterator &i);
