@@ -927,3 +927,32 @@ int StrLen(const unsigned short *s)
 		}
 	return n;
 }
+
+// FUNCTION: STARFLEETOP 0x00625f50
+void NumToString(tString &destStr, int32 data, int32s minDigits)
+{
+	// MATCH-ONLY: the original (/Ob2) inlines destStr = "" here.
+	destStr.mIncorporateCharList("");
+	iTruth negative = false;
+	if (data < 0)
+	{
+		data = -data;
+		negative = true;
+	}
+	if (data == 0)
+	{
+		for (int32s i = minDigits; i > 0; i--)
+			destStr += tString("0");
+	}
+	else
+	{
+		for (int32s digits = 0; data > 0 || digits < minDigits; digits++)
+		{
+			char c = data % 10 + '0';
+			destStr = tString((iBasicStringElement)c) + destStr;
+			data /= 10;
+		}
+	}
+	if (negative)
+		destStr = tString((iBasicStringElement)'-') + destStr;
+}

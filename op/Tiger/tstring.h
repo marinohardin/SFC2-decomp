@@ -56,6 +56,8 @@ class tString
 	public:
 		class 	iterator;
 		friend 	iterator;
+		// MATCH-ONLY: the original (/Ob2) inlines operator= and the constructors into NumToString; written out there, they need this access.
+		friend void NumToString(tString &destStr, int32 data, int32s minDigits);
 
 		tString(const char *s);
 		tString(const char *s, int32u length);
