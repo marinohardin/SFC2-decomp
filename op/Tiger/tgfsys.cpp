@@ -2,6 +2,7 @@
 
 // The original includes the file system part headers here. The unit map has no place for them
 // yet, so the declarations this unit needs from them are kept here.
+#include <windows.h>
 #include "Tiger/tsay.h"
 #include "Tiger/tstring.h"
 #include "Tiger/tgfsys.h"
@@ -194,7 +195,8 @@ public:
 	int32u	f_04[16];
 	// HYPOTHESIS: the sort name copied by mGetSortName from +0x44; later members not recovered.
 	tString	f_44;
-	int32u	f_6c[10];
+	// HYPOTHESIS: the volume's root path, which mGetClusterSize hands to the system.
+	tString	f_6c;
 };
 
 // HYPOTHESIS: 0xb4 bytes, as tDir::mValid reads the directory map pair's count at +0xc8.
@@ -1112,5 +1114,33 @@ void fn_use_file_session( void )
 tString twVolume::mGetSortName( void )
 {
 	return f_44;
+}
+
+// HYPOTHESIS: the buffers the root is copied into for the system calls, as in twfsys.cpp; their
+// names are not recovered.
+extern char g_00c3caec[MAX_PATH];
+extern iWideChar g_00c3cbf0[MAX_PATH];
+
+// FUNCTION: STARFLEETOP 0x006310e0
+int32u twVolume::mGetClusterSize( void )
+{
+	DWORD	sectorsPerCluster;
+	DWORD	bytesPerSector;
+	DWORD	freeClusters;
+	DWORD	totalClusters;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	if ( !GetDiskFreeSpaceW( g_00c3cbf0, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			if ( !GetDiskFreeSpaceA( g_00c3caec, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+				throw "Error in system getting cluster size";
+		}
+		else
+			throw "Error in system getting cluster size";
+	}
+	return sectorsPerCluster * bytesPerSector;
 }
 
