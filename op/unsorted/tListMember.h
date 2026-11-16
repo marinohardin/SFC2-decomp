@@ -10,6 +10,11 @@ class tListMember
 public:
     // 0x004088c6: resets the vtable to tListMember's (0x0079590c) and returns.
     virtual ~tListMember();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    // HYPOTHESIS: the previous member; tDynamicMemoryFreeList::mGetPreviousListMember
+    // (0x00626770) returns it through this slot (offset 0xc).
+    virtual tListMember *vfunction4();
 };
 
 #endif // tListMember_h

@@ -113,7 +113,7 @@ public:
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
 	virtual void vfunction4();
-	virtual void mGetPreviousListMember();
+	virtual tListMember *mGetPreviousListMember(tListMember *aMember);
 	virtual void *mGetNextListMember(void *aMember);
 	virtual void mGetPreviousCircularListMember();
 	virtual void mGetNextCircularListMember();
