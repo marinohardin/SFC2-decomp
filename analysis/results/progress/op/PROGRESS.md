@@ -1,8 +1,8 @@
 # Progress
 
-Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-11T12:47:02Z.
+Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-16T05:01:14Z.
 
-Progress: 1.90% exact, 0.00% functional, 90.62% lifted, 0.07% original x86 of .text (3,751,936 bytes); named: 9.81% real symbol, 39.12% with class, of 27,479 functions. Game-only: 2.14% exact, 0.00% functional of 3,328,192 bytes; 7.59% real symbol, 36.63% with class, of 26,399 functions.
+Progress: 4.46% exact, 0.00% functional, 0.00% lifted, 88.13% original x86 of .text (3,751,936 bytes); named: 11.53% real symbol, 44.94% with class, of 23,071 functions. Game-only: 5.02% exact, 0.00% functional of 3,330,800 bytes; 9.42% real symbol, 42.69% with class, of 22,164 functions.
 
 ## Code
 
@@ -10,11 +10,11 @@ One row per ordinary function; its bytes include the EH funclets its EH tables r
 
 | status | functions | bytes | of which funclets | % .text | % code | game fns | game bytes | % game code |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| exact | 579 | 71,222 | 27 | 1.90 | 2.05 | 579 | 71,222 | 2.14 |
+| exact | 982 | 167,329 | 1,764 | 4.46 | 4.82 | 982 | 167,329 | 5.02 |
 | functional | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| lifted | 26,800 | 3,399,884 | 167,514 | 90.62 | 97.87 | 25,720 | 3,254,235 | 97.78 |
-| original-x86 | 100 | 2,735 | 0 | 0.07 | 0.08 | 100 | 2,735 | 0.08 |
-| all | 27,479 | 3,473,841 | 167,541 | 92.59 | 100.00 | 26,399 | 3,328,192 | 100.00 |
+| lifted | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
+| original-x86 | 22,089 | 3,306,512 | 165,777 | 88.13 | 95.18 | 21,182 | 3,163,471 | 94.98 |
+| all | 23,071 | 3,473,841 | 167,541 | 92.59 | 100.00 | 22,164 | 3,330,800 | 100.00 |
 
 ## Names
 
@@ -22,18 +22,18 @@ One tier per function, the first that applies in this order. "Real symbol" is ev
 
 | named by | functions | % | game fns | % game |
 | --- | ---: | ---: | ---: | ---: |
-| sdk-exact | 1,859 | 6.77 | 1,550 | 5.87 |
-| sdk-fid | 217 | 0.79 | 148 | 0.56 |
-| vs-fid | 307 | 1.12 | 0 | 0.00 |
-| manual | 0 | 0.00 | 0 | 0.00 |
-| sdk-fuzzy | 314 | 1.14 | 306 | 1.16 |
+| sdk-exact | 1,859 | 8.06 | 1,550 | 6.99 |
+| sdk-fid | 217 | 0.94 | 148 | 0.67 |
+| vs-fid | 267 | 1.16 | 84 | 0.38 |
+| manual | 2 | 0.01 | 2 | 0.01 |
+| sdk-fuzzy | 315 | 1.37 | 303 | 1.37 |
 | string | 0 | 0.00 | 0 | 0.00 |
-| rtti-class | 8,053 | 29.31 | 7,666 | 29.04 |
-| none | 16,729 | 60.88 | 16,729 | 63.37 |
-| real symbol | 2,697 | 9.81 | 2,004 | 7.59 |
-| with class | 10,750 | 39.12 | 9,670 | 36.63 |
+| rtti-class | 7,709 | 33.41 | 7,375 | 33.27 |
+| none | 12,702 | 55.06 | 12,702 | 57.31 |
+| real symbol | 2,660 | 11.53 | 2,087 | 9.42 |
+| with class | 10,369 | 44.94 | 9,462 | 42.69 |
 
-Game-only leaves out the functions flagged as library code: crt 304, cryptopp 8, stl 562, wonapi 206. The flag comes from names, so unnamed library code still counts as game code.
+Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8, stl 523, wonapi 196. The flag comes from names, so unnamed library code still counts as game code.
 
 ## History
 
@@ -41,3 +41,4 @@ Game-only leaves out the functions flagged as library code: crt 304, cryptopp 8,
 - 2026-11-09T00:47:08Z: exact 0.09%, functional 0.00%, lifted 92.42% of .text; real symbol 9.81%, with class 39.12% of 27,479 functions; game-only exact 0.10%, functional 0.00%
 - 2026-11-10T04:47:55Z: exact 0.36%, functional 0.00%, lifted 92.16% of .text; real symbol 9.81%, with class 39.12% of 27,479 functions; game-only exact 0.41%, functional 0.00%
 - 2026-11-11T12:47:02Z: exact 1.90%, functional 0.00%, lifted 90.62% of .text; real symbol 9.81%, with class 39.12% of 27,479 functions; game-only exact 2.14%, functional 0.00%
+- 2026-11-16T05:01:14Z: exact 4.46%, functional 0.00%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 5.02%, functional 0.00%

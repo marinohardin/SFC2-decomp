@@ -4,15 +4,15 @@
     python3 tools/progress_chart.py [--out DIR]
 
 Reads, all from the repository:
-  analysis/results/progress/progress.json   the figures scripts/progress.py wrote (the badges)
+  analysis/results/progress/op/progress.json   the figures scripts/progress.py wrote (the badges)
   ghidra/exports/functions.csv              every function's address, size, kind and library flag
   op/UNITS.tsv                            the translation units and their address ranges
   analysis/results/matched_set.json         the best verified score of every attempted function
-  analysis/results/progress/eh_funclet_parents.tsv
+  analysis/results/progress/op/eh_funclet_parents.tsv
                                             the parent of each C++ EH funclet, whose bytes count
                                             with its parent's as they do in progress.py
 
-Writes into analysis/results/progress/ (or --out):
+Writes into analysis/results/progress/op/ (or --out):
   badge-exact.svg       game code rebuilt byte-exact, % of game code bytes
   badge-functional.svg  game code rebuilt exact or functionally verified, % of game code bytes
   badge-named.svg       game functions named from a real symbol, % of game functions
@@ -37,7 +37,7 @@ import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-PROGRESS = ROOT / 'analysis' / 'results' / 'progress'
+PROGRESS = ROOT / 'analysis' / 'results' / 'progress' / 'op'
 
 WIDTH, HEIGHT = 1200, 600
 GROUP_GAP = 2           # pixels between top-level directory groups
@@ -290,7 +290,17 @@ def main(argv=None):
     ap.add_argument('--units', default=str(ROOT / 'op' / 'UNITS.tsv'))
     ap.add_argument('--matched-set', default=str(ROOT / 'analysis' / 'results' / 'matched_set.json'))
     ap.add_argument('--funclets', default=str(PROGRESS / 'eh_funclet_parents.tsv'))
+    ap.add_argument('--not-started', action='store_true',
+                    help='write only the three badges, each reading "not started", for a module '
+                         'whose decompilation has not begun (--out analysis/results/progress/eaw)')
     a = ap.parse_args(argv)
+    if a.not_started:
+        os.makedirs(a.out, exist_ok=True)
+        for name, label in (('exact', 'Exact'), ('functional', 'Functional'), ('named', 'Named')):
+            write(os.path.join(a.out, f'badge-{name}.svg'),
+                  badge_svg(label, 'not started'))
+        print(f'not started -> {a.out}')
+        return 0
     with open(a.progress) as f:
         progress = json.load(f)
     matched = {}

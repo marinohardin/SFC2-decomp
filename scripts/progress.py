@@ -22,7 +22,7 @@ gets one status and one name tier:
 The first tier that applies wins. A C++ EH funclet (`Unwind@`/`Catch@`) belongs to the function
 whose EH tables reference it and is counted under that function's status: its bytes are added to
 the status and also reported apart as funclet bytes. The funclet-to-parent table,
-`analysis/results/progress/eh_funclet_parents.tsv`, is built once from the original exe with
+`analysis/results/progress/op/eh_funclet_parents.tsv`, is built once from the original exe with
 `--build-funclet-map`; funclets it does not list stay unclassified. Thunks are counted, not
 classified.
 
@@ -55,7 +55,7 @@ Usage:
 
 The gate compares against the base branch's copy of progress.json, never the working tree's own
 (which a pull request regenerates), for example:
-  git show origin/develop:analysis/results/progress/progress.json > base.json
+  git show origin/develop:analysis/results/progress/op/progress.json > base.json
   python3 scripts/progress.py --gate base.json
 """
 import argparse
@@ -833,8 +833,8 @@ def default_paths():
         'functions_csv': ROOT / 'ghidra/exports/functions.csv',
         'sdk_exact_tsv': ROOT / 'analysis/results/StarFleetOP_2552_sdklib_matches.tsv',
         'sdk_fuzzy_tsv': ROOT / 'analysis/results/StarFleetOP_2552_sdklib_fuzzy.tsv',
-        'eh_funclet_parents': ROOT / 'analysis/results/progress/eh_funclet_parents.tsv',
-        'lifter_dir': work / 'lifter',
+        'eh_funclet_parents': ROOT / 'analysis/results/progress/op/eh_funclet_parents.tsv',
+        'lifter_dir': None,
         'matched_set': ROOT / 'harness/matched_set.json',
         'functional_set': ROOT / 'harness/functional_set.json',
         'objdiff_reports': sorted(pathlib.Path(p) for p in
@@ -845,7 +845,7 @@ def default_paths():
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n\n')[0],
                                  epilog='The gate compares against the base branch copy, e.g. '
-                                        '`git show origin/develop:analysis/results/progress/'
+                                        '`git show origin/develop:analysis/results/progress/op/'
                                         'progress.json > base.json`.')
     d = default_paths()
     ap.add_argument('--functions', type=pathlib.Path, default=d['functions_csv'])
@@ -853,17 +853,18 @@ def main(argv=None):
     ap.add_argument('--sdk-fuzzy', type=pathlib.Path, default=d['sdk_fuzzy_tsv'])
     ap.add_argument('--funclet-parents', type=pathlib.Path, default=d['eh_funclet_parents'])
     ap.add_argument('--lifter', type=pathlib.Path, default=d['lifter_dir'],
-                    help='lifter work directory with cat/ and out/ (default $SFCOP_WORK/lifter)')
+                    help="the port's lifter work directory with cat/ and out/; without it no code counts "
+                         'as lifted, and what is not exact or functional is original x86')
     ap.add_argument('--matched-set', type=pathlib.Path, default=d['matched_set'])
     ap.add_argument('--functional-set', type=pathlib.Path, default=d['functional_set'])
     ap.add_argument('--objdiff', type=pathlib.Path, action='append',
                     help='objdiff report JSON (repeatable; default harness/objdiff/**/*.json)')
     ap.add_argument('--text-bytes', type=int, default=TEXT_BYTES)
     ap.add_argument('--out', type=pathlib.Path,
-                    default=ROOT / 'analysis/results/progress/progress.json')
+                    default=ROOT / 'analysis/results/progress/op/progress.json')
     ap.add_argument('--markdown', action='store_true', help='also write PROGRESS.md')
     ap.add_argument('--markdown-out', type=pathlib.Path,
-                    default=ROOT / 'analysis/results/progress/PROGRESS.md')
+                    default=ROOT / 'analysis/results/progress/op/PROGRESS.md')
     ap.add_argument('--gate', type=pathlib.Path, metavar='BASE_JSON',
                     help="compare with the base branch's progress.json (not the working tree's "
                          'own, which this run would regenerate); writes nothing')

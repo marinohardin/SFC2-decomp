@@ -160,3 +160,10 @@ def test_warns_when_the_matched_set_is_ahead_of_progress_or_units_miss_game_code
     assert w[0].startswith('1 exact function(s) in the matched set')
     assert '90 bytes of the 100 bytes' in w[1]
     assert pc.warnings(progress, {'functions': {}}, 100) == []
+
+
+def test_not_started_writes_three_badges_and_no_treemap(tmp_path):
+    assert pc.main(['--not-started', '--out', str(tmp_path)]) == 0
+    assert sorted(p.name for p in tmp_path.iterdir()) == [
+        'badge-exact.svg', 'badge-functional.svg', 'badge-named.svg']
+    assert 'Exact: not started' in (tmp_path / 'badge-exact.svg').read_text()
