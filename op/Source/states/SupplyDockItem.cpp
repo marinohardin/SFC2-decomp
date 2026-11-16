@@ -296,11 +296,13 @@ public:
 		short fn_00451c2d();
 		short fn_00451c45();
 		void fn_00451d07( bool value );
+		void fn_00451dcd( long value );
 
 		char m00[0xc];
 		bool m0c;
 		bool m0d;
 		char m0e;
+		char m0f;
 	};
 };
 
@@ -523,5 +525,42 @@ void tSupplyDockMissiles::fn_00486aa1( bool up )
 			m7c->fn_00451d07( false );
 		break;
 	}
+	vfunction3();
+}
+
+// HYPOTHESIS: m7c's byte at +0xf is a three-state setting (0..2) that the flag steps up or
+// down; 0x00451dcd sets it, and the mission state then clamps it against the stock.
+// FUNCTION: STARFLEETOP 0x00486ad5
+void tSupplyDockMissiles::fn_00486ad5( bool up )
+{
+	switch( m7c->m0f )
+	{
+	case 0:
+		if( up )
+			m7c->fn_00451dcd( 1 );
+		break;
+	case 1:
+		if( up )
+			m7c->fn_00451dcd( 2 );
+		else
+			m7c->fn_00451dcd( 0 );
+		break;
+	case 2:
+		if( !up )
+			m7c->fn_00451dcd( 1 );
+		break;
+	}
+
+	long state = gObject_0090b730.fn_0060ca4f();
+	if( state == 5 || state == 4 )
+	{
+		long level = gObject_0090b730.fn_005c7fb3();
+		if( level < 4 && m7c->fn_00451c18() > 0 )
+			m7c->fn_00451dcd( 0 );
+		else if( level < 0x11 && m7c->fn_00451c18() > 1 )
+			m7c->fn_00451dcd( 1 );
+	}
+	else if( m7c->fn_00451c18() > gObject_0090b730.fn_0060ca9e() )
+		m7c->fn_00451dcd( gObject_0090b730.fn_0060ca9e() );
 	vfunction3();
 }
