@@ -602,7 +602,8 @@ public:
 		tMap::iterator found = it;
 		if ( found.fNode == 0 || (*found).fCount == 0 )
 			throw "Use of invalid cookie to resolve an item";
-		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
+		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];
+		return map[cookie];
 	}
 
 	int32u											f_00;
