@@ -4,6 +4,13 @@
 #include "Tiger/tstring.h"
 #include "Tiger/tgfsys.h"
 
+// HYPOTHESIS: the enum tgfsys.cpp declares (its enumerators not recovered there); it is not in a
+// header yet, so this unit repeats the name it needs for the mangled signature. The values 4 to 6
+// are the ones mGetSpecialDir tests.
+enum eSpecialDir
+{
+};
+
 class twFileSystemPart {
 public:
     virtual tVolIterator mGetVolIterator(tSession session);
@@ -13,6 +20,7 @@ public:
     virtual tPath mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir);
     virtual tPath mPathFromWinString(tSession session, tString name);
     virtual tString mWinStringFromPath(tPath path);
+    virtual tDir mGetSpecialDir(tSession session, eSpecialDir which);
 };
 
 tPath WinParsePath(tSession session, tString &path);
@@ -501,4 +509,51 @@ tPath twFileSystemPart::mPathFromWinString(tSession session, tString name)
 tString twFileSystemPart::mWinStringFromPath(tPath path)
 {
     return path.mGetName();
+}
+
+// FUNCTION: STARFLEETOP 0x00630eb0
+tDir twFileSystemPart::mGetSpecialDir(tSession session, eSpecialDir which)
+{
+    tString path;
+    char name[MAX_PATH];
+    WCHAR wideName[MAX_PATH];
+
+    switch (which)
+    {
+    case 4:
+        if (GetWindowsDirectoryW(wideName, MAX_PATH))
+            path = wideName;
+        else if (GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
+        {
+            if (GetWindowsDirectoryA(name, MAX_PATH))
+                path = name;
+        }
+        break;
+    case 5:
+        if (GetSystemDirectoryW(wideName, MAX_PATH))
+            path = wideName;
+        else if (GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
+        {
+            if (GetSystemDirectoryA(name, MAX_PATH))
+                path = name;
+        }
+        break;
+    case 6:
+        if (GetCurrentDirectoryW(MAX_PATH, wideName))
+            path = wideName;
+        else if (GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
+        {
+            if (GetCurrentDirectoryA(MAX_PATH, name))
+                path = name;
+        }
+        break;
+    default:
+        throw "Someone asked for an invalid special directory!";
+    }
+
+    if (path[path.mStrLen() - 1] != '\\')
+        path += "\\";
+    tDir dir;
+    dir = WinParseDir(session, path);
+    return dir;
 }

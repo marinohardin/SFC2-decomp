@@ -7966,6 +7966,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00630eb0": {
+   "name": "twFileSystemPart::mGetSpecialDir",
+   "symbol": "?mGetSpecialDir@twFileSystemPart@@UAE?AVtDir@@VtSession@@W4eSpecialDir@@@Z",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 528,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
