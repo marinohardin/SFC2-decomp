@@ -600,10 +600,18 @@ public:
 
 	virtual long vfunction1();
 	virtual void vfunction2();
+	virtual void vfunction3();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
+	// HYPOTHESIS: slots 13 and 14 typed as in tSupplyDockShuttles; 15, 16 and 18 take the
+	// slot index (vfunction3 calls them at vtable +0x38, +0x3c and +0x44).
+	virtual bool vfunction13( long delta );
+	virtual void vfunction14( long value );
+	virtual long vfunction15( long i );
+	virtual long vfunction16( long i );
 	virtual double vfunction17( const std::string &name );
+	virtual long vfunction18( long i );
 	// HYPOTHESIS: virtual in the exe (slot 20); declared plain until slots 13-19 are known.
 	void vfunction20( long arg1, long arg2 );
 	// HYPOTHESIS: called directly with the slot index; its body is not written yet.
@@ -670,5 +678,33 @@ void tSupplyDockFighters::vfunction2()
 	{
 		fn_004d3340( (long) g_0084bbc0[i] );
 		fn_004d3306( (long) g_0084bbc0[i] );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00486d80
+void tSupplyDockFighters::vfunction3()
+{
+	tString text;
+
+	for( long i = 0; i < 4; i++ )
+	{
+		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+		{
+			text = "";
+			text.mAppendInt32s( vfunction16( i ) );
+			fn_004d33d4( 0x11017 + i, text );
+			text = "";
+			text.mAppendInt32s( vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+			fn_004d33d4( 0x1101b + i, text );
+			text = "";
+			text.mAppendInt32s( vfunction18( i ) );
+			fn_004d33d4( 0x1101f + i, text );
+
+			vfunction8( g_0084bb80[i], vfunction16( i ) > 0 );
+			vfunction8( g_0084bb90[i], vfunction16( i ) < vfunction15( i ) );
+			vfunction8( g_0084bba0[i], true );
+			vfunction8( g_0084bbb0[i], true );
+			fn_004d33d4( 0x11023 + i, ((fn_004479b4_object *) m74)->fn_00447822( i ) );
+		}
 	}
 }
