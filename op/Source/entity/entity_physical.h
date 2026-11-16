@@ -112,10 +112,10 @@ public:
 	virtual ~tDynamicMemoryFreeList() { mClearList(); }
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
-	virtual void vfunction4();
+	virtual tListMember *vfunction4();	// HYPOTHESIS: the last member; 0x006267b0 wraps to it
 	virtual tListMember *mGetPreviousListMember(tListMember *aMember);
 	virtual tListMember *mGetNextListMember(tListMember *aMember);
-	virtual void mGetPreviousCircularListMember();
+	virtual tListMember *mGetPreviousCircularListMember(tListMember *aMember);
 	virtual void mGetNextCircularListMember();
 	virtual void mGetListMemberAtThisIndex();
 	virtual void mAddToFrontOfList();
