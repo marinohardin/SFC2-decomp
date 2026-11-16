@@ -1012,3 +1012,12 @@ double tSupplyDockMisc::fn_004876d0( long i )
 {
 	return ((fn_0045139e_object *) m78)->fn_004513a9( i );
 }
+
+// FUNCTION: STARFLEETOP 0x004876df
+long tSupplyDockMisc::fn_004876df( long i )
+{
+	long cost = ( fn_004876bf( i ) - m7c[i] ) * fn_004876d0( i );
+	if ( cost < 0 )
+		cost = 0;
+	return cost;
+}
