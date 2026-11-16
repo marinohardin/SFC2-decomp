@@ -3957,3 +3957,22 @@ unsigned char tgSoundPart::mAddUpdateListenerPositionFunction(void (*function)(u
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x006528f0
+unsigned char tgSoundPart::mFadeToStopAndResetNow(long channel, double timeToTake)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5118
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mFadeToStopAndResetNow(timeToTake);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
