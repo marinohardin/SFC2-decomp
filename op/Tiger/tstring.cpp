@@ -825,3 +825,18 @@ void tString::mToUpper(void)
 		i.fIndex++;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00625920
+int32s tString::mStrCmp(const tString &s) const
+{
+	int n = fInstanceControl.fDataCount < s.fInstanceControl.fDataCount ? fInstanceControl.fDataCount : s.fInstanceControl.fDataCount;
+	int32s c = memcmp(fInstanceControl.fMemSpace.begin(), s.fInstanceControl.fMemSpace.begin(), n * sizeof(iBasicStringElement));
+	if (c == 0)
+	{
+		if (fInstanceControl.fDataCount < s.fInstanceControl.fDataCount)
+			return -1;
+		if (fInstanceControl.fDataCount > s.fInstanceControl.fDataCount)
+			c = 1;
+	}
+	return c;
+}
