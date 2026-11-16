@@ -1,4 +1,5 @@
 """The stop rule, the revisit list, lean sessions, the context pack and handoff notes."""
+import contextlib
 import json
 import os
 import subprocess
@@ -270,9 +271,11 @@ def test_lean_session_command_line_carries_the_lean_flags(tmp_path):
                        if a not in recorded)
     lean = tmp_path / 'lean.md'
     lean.write_text('Lean rules.\n')
-    r = _loop(tmp_path, '--once', '--lean', str(lean), '--address', address, HARNESS_PACK='0',
-              HARNESS_DIFFICULT=str(tmp_path / 'difficult.tsv'),
-              HARNESS_REVISIT_LIST=str(tmp_path / 'revisit.tsv'))
+    with _loop_harness(tmp_path) as harness:
+        r = _loop(tmp_path, '--once', '--lean', str(lean), '--address', address,
+                  harness=harness, HARNESS_PACK='0',
+                  HARNESS_DIFFICULT=str(tmp_path / 'difficult.tsv'),
+                  HARNESS_REVISIT_LIST=str(tmp_path / 'revisit.tsv'))
     assert r.returncode == 0, r.stderr + r.stdout
     (cmd,) = (tmp_path / 'state' / 'attempts').glob('*.command.txt')
     text = cmd.read_text()
@@ -283,13 +286,38 @@ def test_lean_session_command_line_carries_the_lean_flags(tmp_path):
     assert '--mcp-config' not in text
 
 
-def _loop(tmp_path, *args, **env):
+def _loop(tmp_path, *args, harness=HERE, **env):
     e = dict(os.environ, HARNESS_STATE=str(tmp_path / 'state'), **env)
     for k in ('HARNESS_LEAN_INSTRUCTIONS', 'HARNESS_NO_LEAN'):
         if k not in env:
             e.pop(k, None)
-    return subprocess.run(['sh', os.path.join(HERE, 'loop.sh'), '--dry-run', *args],
+    return subprocess.run(['sh', os.path.join(harness, 'loop.sh'), '--dry-run', *args],
                           capture_output=True, text=True, env=e)
+
+
+@contextlib.contextmanager
+def _loop_harness(tmp_path):
+    """The harness folder of a checkout the loop will run in.
+
+    The loop refuses main and develop, and a fresh clone sits on develop, so there the loop is run
+    from a detached worktree of the same commit; on any other branch, from this checkout. The
+    worktree holds the committed loop.sh, so on main or develop an uncommitted edit to it is not
+    what runs; work on the loop happens on a work branch, where the checkout's own copy runs.
+    """
+    repo = os.path.dirname(HERE)
+    branch = subprocess.run(['git', '-C', repo, 'rev-parse', '--abbrev-ref', 'HEAD'],
+                            capture_output=True, text=True).stdout.strip()
+    if branch not in ('main', 'develop'):
+        yield HERE
+        return
+    tree = str(tmp_path / 'detached')
+    subprocess.run(['git', '-C', repo, 'worktree', 'add', '-q', '--detach', tree, 'HEAD'],
+                   check=True, capture_output=True)
+    try:
+        yield os.path.join(tree, 'harness')
+    finally:
+        subprocess.run(['git', '-C', repo, 'worktree', 'remove', '--force', tree],
+                       capture_output=True)
 
 
 def test_loop_refuses_to_start_without_a_lean_file_or_the_opt_out(tmp_path):
