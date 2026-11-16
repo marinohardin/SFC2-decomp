@@ -30,6 +30,9 @@ class	tStandardMemoryArray
 		iTruth			fn_IsUsed				( long aIndex );
 		// HYPOTHESIS: returns the item at a used slot, or 0. Its name is not recovered.
 		T				*fn_Get					( long aIndex );
+		// HYPOTHESIS: marks a used slot free and releases both blocks when none is left in use.
+		// Inlined into tAudioFileInfoPart::mFreeAsynchReadInfo (0x006582c0); name not recovered.
+		void			fn_Free					( long aIndex );
 
 		long			field_04;
 		T				*field_08;
@@ -132,6 +135,31 @@ inline T *tStandardMemoryArray<T>::fn_Get( long aIndex )
 	if ( !fn_IsUsed( aIndex ) )
 		return NULL;
 	return &field_08[aIndex];
+}
+
+template <class T>
+inline void tStandardMemoryArray<T>::fn_Free( long aIndex )
+{
+	if ( fn_IsUsed( aIndex ) )
+	{
+		field_28[aIndex] = 1;
+		field_0c--;
+		if ( field_0c <= 0 )
+		{
+			if ( field_08 )
+			{
+				BindPart(tMemoryPart)->vfunction10( field_08 );
+				field_08 = NULL;
+			}
+			if ( field_28 )
+			{
+				BindPart(tMemoryPart)->vfunction10( field_28 );
+				field_28 = NULL;
+			}
+			field_0c = 0;
+			field_10 = 0;
+		}
+	}
 }
 
 // HYPOTHESIS: tSafeArray (declared in Tiger/tAudioFile.h) keeps its add here; the allocation

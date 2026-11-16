@@ -9118,6 +9118,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006582c0": {
+   "name": "tAudioFileInfoPart::mFreeAsynchReadInfo",
+   "symbol": "?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 576,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

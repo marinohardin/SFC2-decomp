@@ -68,25 +68,20 @@ public:
     virtual void mActivate();
     virtual void mDeactivate();
 
-    virtual unsigned long mAddSoundFile(tBasicAudioFile &aFile); // HYPOTHESIS: slot 6 (offset 0x18)
-    virtual void mDeleteSoundFile(unsigned long param_1); // HYPOTHESIS: slot 7 (offset 0x1c)
-    virtual long mGetNewAsynchReadInfo(unsigned long param_1, long param_2); // HYPOTHESIS: slot 8 (offset 0x20), by address order
-    virtual tAsynchReadInfo *mGetAsynchReadInfo(long param_1); // HYPOTHESIS: slot 9 (offset 0x24), by address order
-    virtual void vfn_28();
-    virtual void vfn_2c();
-    virtual void vfn_30();
-    virtual void vfn_34();
-    virtual void vfn_38();
-    virtual void vfn_3c();
-    virtual void vfn_40();
-    virtual tBasicAudioFile *mGetBasicAudioFile(unsigned long param_1);
-    virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
+    // Slot order from the exe's vtable (0x007b73ec).
     virtual long mGetNumberOfSamples(unsigned long param_1);
     virtual long mGetNumberOfSelectionPerSound(unsigned long param_1);
     virtual long mGetTotalSizeInBytes(unsigned long param_1);
     virtual long mGetTotalDataSizeInBytes(unsigned long param_1);
     virtual long mGetDepth(unsigned long param_1);
     virtual long mGetLinkDepth(unsigned long param_1);
+    virtual long mGetNewAsynchReadInfo(unsigned long param_1, long param_2);
+    virtual tAsynchReadInfo *mGetAsynchReadInfo(long param_1);
+    virtual void mFreeAsynchReadInfo(long param_1);
+    virtual unsigned long mAddSoundFile(tBasicAudioFile &aFile);
+    virtual void mDeleteSoundFile(unsigned long param_1);
+    virtual tBasicAudioFile *mGetBasicAudioFile(unsigned long param_1);
+    virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
 
     tSafeArray<tBasicAudioFile> field_0c;
     long field_28;

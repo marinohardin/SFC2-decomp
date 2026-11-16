@@ -275,3 +275,23 @@ tAsynchReadInfo *tAudioFileInfoPart::mGetAsynchReadInfo(long param_1)
 {
     return field_2c->fn_Get(param_1);
 }
+
+// HYPOTHESIS: statistics of the asynchronous read times (0x00c66968 count, 0x00c66970 longest,
+// 0x00c669c0 total, 0x00c669c8 average); their names are not recovered.
+static long g_00c66968;
+static double g_00c66970;
+static double g_00c669c0;
+static double g_00c669c8;
+
+// FUNCTION: STARFLEETOP 0x006582c0
+void tAudioFileInfoPart::mFreeAsynchReadInfo(long param_1)
+{
+    tAsynchReadInfo *info = mGetAsynchReadInfo(param_1);
+    double elapsed = aClockPart->mGetMicroseconds() - *(double *) &info->field_08;
+    if (elapsed > g_00c66970)
+        g_00c66970 = elapsed;
+    g_00c66968++;
+    g_00c669c0 += elapsed;
+    g_00c669c8 = g_00c669c0 / g_00c66968;
+    field_2c->fn_Free(param_1);
+}
