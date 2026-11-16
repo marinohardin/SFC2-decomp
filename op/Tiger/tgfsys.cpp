@@ -1356,3 +1356,15 @@ tDate twDir::mGetDate( void )
 	return date;
 }
 
+// FUNCTION: STARFLEETOP 0x00631930
+char *gCopyCharStr(tString &str, char *buffer)
+{
+	if ( buffer )
+	{
+		str.mCopyCharStr( buffer, MAX_PATH );
+		return buffer;
+	}
+	str.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return g_00c3caec;
+}
+
