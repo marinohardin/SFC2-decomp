@@ -1767,3 +1767,29 @@ eSoundChannelStatus	tBasicSoundFileManager::mGetStatus( unsigned long handle )
 	}
 	return (eSoundChannelStatus)-1;
 }
+
+// FUNCTION: STARFLEETOP 0x00668310
+long	tBasicSoundFileManager::mGetRegisteredNumber( char *name )
+{
+	if ( name )
+	{
+		long	start = 0;
+		while ( name[start] == ' ' || name[start] == '"' )
+			start++;
+		long	end = strlen( name ) - 1;
+		while ( name[end] == ' ' || name[end] == '"' )
+		{
+			if ( end < 0 )
+				return -1;
+			end--;
+		}
+		if ( end >= 0 )
+		{
+			name[end + 1] = 0;
+			for ( long i = 0; i < field_0x718; i++ )
+				if ( mystrequivalent( &name[start], field_0x18[i].field_0x0 ) == 1 )
+					return i;
+		}
+	}
+	return -1;
+}
