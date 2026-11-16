@@ -320,7 +320,22 @@ public:
 	// calls it through that slot on the resolved path.
 	virtual int32u	mFree( void );
 
-	int32u	f_04[42];
+	// HYPOTHESIS: out of line, as twDir::mGetNamedFile (STARFLEETOP 0x00631d30) calls it with the
+	// name and the directory the path lies in; ~twPath is expanded inline there.
+	twPath( const tString &name, tDir dir );
+
+	// HYPOTHESIS: the directory the path lies in at +0x04, the name at +0x14 and the directory's
+	// word copied into +0x40; the cookie at +0x44 and the strings at +0x54 and +0x7c, the file
+	// handle at +0xa4 and its count at +0xa8 are read by the inline destructor only.
+	tDir	f_04;
+	tString	f_14;
+	int32u	f_3c;
+	int32u	f_40;
+	tPath	f_44;
+	tString	f_54;
+	tString	f_7c;
+	void	*f_a4;
+	int32	f_a8;
 };
 
 namespace std
@@ -1384,6 +1399,22 @@ tDir twDir::mGetNamedDir( tString &name )
 	part->fFSCookies.f_04++;
 	tDir	result = part->fFSCookies.fDirCookies.mMake( dir );
 	dir.f_54 = result;
+	return result;
+}
+
+// HYPOTHESIS: the original builds a path for the name in this directory, makes its cookie and
+// returns the cookie handed back through tPath's own cookie lookup; ~twPath is expanded inline.
+// FUNCTION: STARFLEETOP 0x00631d30
+tPath twDir::mGetNamedFile( tString &name )
+{
+	if ( name == "" )
+		throw "You cannot get a named object without giving a valid name!";
+	twPath	path( name, f_54 );
+
+	path.f_40 = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	tPath	made = part->fFSCookies.fPathCookies.mMake( path );
+	tPath	result = made;
 	return result;
 }
 

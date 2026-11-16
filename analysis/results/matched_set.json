@@ -8083,6 +8083,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00631d30": {
+   "name": "twDir::mGetNamedFile",
+   "symbol": "?mGetNamedFile@twDir@@UAE?AVtPath@@AAVtString@@@Z",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 552,
+   "score": 2.83,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
