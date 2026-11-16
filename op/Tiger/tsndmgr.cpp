@@ -1557,3 +1557,16 @@ void	tBasicSoundFileManager::mDump( unsigned long handle, long channel )
 			channelGroup->mDump( handle, channel );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00667590
+unsigned char	tBasicSoundFileManager::mSetPriority( unsigned long handle, long priority )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSetPriority( handle, priority, -1, 1 );
+	}
+	return 0;
+}
