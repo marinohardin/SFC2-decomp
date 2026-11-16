@@ -7,11 +7,12 @@
 #include "Tiger/tstring.h"
 #include "Tiger/tgfsys.h"
 
-// HYPOTHESIS: a date value returned by value; its layout is not recovered.
+// HYPOTHESIS: a date value returned by value, one signed 64-bit word, as twDir::mGetDate
+// (STARFLEETOP 0x00631860) sign-extends both halves of the file time into it.
 class tDate
 {
 public:
-	int32u	f_00[2];
+	__int64	f_00;
 };
 
 // HYPOTHESIS: the enumerators are not recovered.
@@ -225,8 +226,8 @@ public:
 	// HYPOTHESIS: the fourth virtual (vtable +0x0c), as tDir::mGetParentDir (STARFLEETOP
 	// 0x0061de20) calls it through that slot on the resolved directory.
 	virtual tDir	mGetParentDir( void );
-	// HYPOTHESIS: the fifth slot is not recovered.
-	virtual void	fn_twDir_slot4( void );
+	// HYPOTHESIS: the fifth slot, by the exe's symbol for twDir::mGetDate (STARFLEETOP 0x00631860).
+	virtual tDate	mGetDate( void );
 	// HYPOTHESIS: the sixth virtual (vtable +0x14), as tDir::mGetSize (STARFLEETOP 0x0061df40)
 	// calls it through that slot on the resolved directory.
 	virtual int32u	mGetSize( void );
@@ -1317,5 +1318,41 @@ void twDir::mMakeFullPath( void )
 tString twDir::mGetSortName( void )
 {
 	return f_64;
+}
+
+// HYPOTHESIS: out of line in twfsys.cpp (STARFLEETOP 0x0062ff80) and later in this unit
+// (STARFLEETOP 0x00631930); a null buffer selects the shared system buffer.
+iWideChar *gCopyWideStr(tString &str, iWideChar *buffer);
+char *gCopyCharStr(tString &str, char *buffer);
+
+// FUNCTION: STARFLEETOP 0x00631860
+tDate twDir::mGetDate( void )
+{
+	tDate	date;
+
+	date.f_00 = 0;
+	if ( mExist() )
+	{
+		tString		&path = f_8c;
+		HANDLE		file;
+		FILETIME	writeTime;
+
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0 );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			file = CreateFileA( gCopyCharStr( path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0 );
+		}
+		if ( GetFileTime( file, 0, 0, &writeTime ) )
+		{
+			date.f_00 = ( (__int64)(long)writeTime.dwHighDateTime << 32 ) | (long)writeTime.dwLowDateTime;
+			CloseHandle( file );
+		}
+		else
+			throw "Failed to get file time";
+	}
+	return date;
 }
 
