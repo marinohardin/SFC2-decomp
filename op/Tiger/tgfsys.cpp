@@ -217,8 +217,8 @@ public:
 	// HYPOTHESIS: the first virtual, as tDir::mGetName (STARFLEETOP 0x0061dbf0) calls it through
 	// the vtable's first slot on the resolved directory.
 	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second slot is not recovered.
-	virtual void	fn_twDir_slot1( void );
+	// HYPOTHESIS: the second virtual, as twVolume has its mGetSortName there.
+	virtual tString	mGetSortName( void );
 	// HYPOTHESIS: the third virtual (vtable +0x08), as tDir::mGetParentVol (STARFLEETOP
 	// 0x0061dd00) calls it through that slot on the resolved directory.
 	virtual tVolume	mGetParentVol( void );
@@ -1311,5 +1311,11 @@ void twDir::mMakeFullPath( void )
 
 	root += f_8c;
 	f_8c = root;
+}
+
+// FUNCTION: STARFLEETOP 0x00631840
+tString twDir::mGetSortName( void )
+{
+	return f_64;
 }
 
