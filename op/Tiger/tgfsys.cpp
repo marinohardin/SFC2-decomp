@@ -1651,3 +1651,36 @@ iTruth twDir::mCreate( void )
 	return created;
 }
 
+// HYPOTHESIS: the original expands tSession's constructor inline in all four cookie
+// constructions; this build calls it out of line in three of them while both loops are present.
+// FUNCTION: STARFLEETOP 0x00632da0
+iTruth twDir::mDelete( void )
+{
+	iTruth	deleted = false;
+
+	if ( mExist() )
+	{
+		{
+			tPathIterator	files = mGetPathIterator();
+			tPath	file;
+			for ( file = files.mFirst(); file.mValid(); file = files.mNext( file ) )
+				file.mDelete();
+		}
+		{
+			tDirIterator	dirs = mGetDirIterator();
+			tDir	dir;
+			for ( dir = dirs.mFirst(); dir.mValid(); dir = dirs.mNext( dir ) )
+				dir.mDelete();
+		}
+
+		f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		deleted = RemoveDirectoryW( g_00c3cbf0 );
+		if ( !deleted && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			deleted = RemoveDirectoryA( g_00c3caec );
+		}
+	}
+	return deleted;
+}
+

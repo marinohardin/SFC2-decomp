@@ -8128,6 +8128,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00632da0": {
+   "name": "twDir::mDelete",
+   "symbol": "?mDelete@twDir@@UAEEXZ",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 528,
+   "score": 18.44,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
