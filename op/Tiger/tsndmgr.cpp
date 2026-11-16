@@ -5,10 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-// HYPOTHESIS: declared only as far as the functions below need: mGetRandomFrequency reads a
-// pair of frequency bounds at 0x8c and 0x90, mGetAcualIndexOffsetIfRandom reads a count at 0xb0,
-// mSetNextInSequence stores 0xbc; the other fields
-// and the virtuals' slot order are not recovered.
+// HYPOTHESIS: fields as mInit stores them; field names and the virtuals' slot order are not recovered.
 class tAFPlayInfo
 {
 public:
@@ -17,27 +14,30 @@ public:
 	virtual	long	mGetAcualIndexOffsetIfRandom	( void );
 	virtual	void	mSetNextInSequence	( long next );
 	virtual	iTruth	mAddClass	( long theClass );
+	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
 
-	char			fUnknown_0004[0x88];
+	// HYPOTHESIS: 0x4 is the alignment gap VC6 leaves after the vtable pointer for the doubles.
+	long			field_0x8;
+	char			field_0xc[0x20];
+	char			field_0x2c[0x20];
+	char			field_0x4c[0x40];
 	long			field_0x8c;
 	long			field_0x90;
 	long			field_0x94;
 	long			field_0x98;
-	char			fUnknown_009c[0x14];
+	char			fUnknown_009c[0x4];
+	double			field_0xa0;
+	double			field_0xa8;
 	long			field_0xb0;
-	char			fUnknown_00b4[0x8];
+	unsigned long	field_0xb4;
+	unsigned long	field_0xb8;
 	long			field_0xbc;
-	char			fUnknown_00c0[0x4];
+	unsigned char	field_0xc0;
+	unsigned char	field_0xc1;
+	char			fUnknown_00c2[0x2];
 	// HYPOTHESIS: a list of up to four classes at 0xc4 and its count at 0xd4, from mAddClass.
 	long			field_0xc4[4];
 	long			field_0xd4;
-};
-
-// HYPOTHESIS: declared only as far as the functions below need.
-class tBasicSoundFileManager
-{
-public:
-	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
 };
 
 // FUNCTION: STARFLEETOP 0x00663720
@@ -135,6 +135,35 @@ void	tAFPlayInfo::mSetNextInSequence( long next )
 {
 	field_0xbc = next;
 }
+
+// FUNCTION: STARFLEETOP 0x006639d0
+void	tAFPlayInfo::mInit( long a1, char *s1, char *s2, char *s3, long a5, long a6, long a7, long a8, double d1, double d2, unsigned long u1, unsigned long u2, unsigned char b1, unsigned char b2, long next )
+{
+	field_0x8 = a1;
+	strcpy( field_0xc, s1 );
+	strcpy( field_0x2c, s2 );
+	strcpy( field_0x4c, s3 );
+	field_0x8c = a5;
+	field_0x90 = a6;
+	field_0xbc = next;
+	field_0x94 = a7;
+	field_0x98 = a8;
+	field_0xc0 = b1;
+	field_0xc1 = b2;
+	field_0xd4 = 0;
+	field_0xb0 = 0;
+	field_0xa0 = d1;
+	field_0xa8 = d2;
+	field_0xb4 = u1;
+	field_0xb8 = u2;
+}
+
+// HYPOTHESIS: declared only as far as the functions below need.
+class tBasicSoundFileManager
+{
+public:
+	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
+};
 
 // FUNCTION: STARFLEETOP 0x00664870
 unsigned long	tBasicSoundFileManager::mGetTrackingIndex( unsigned long handle )
