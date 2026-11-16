@@ -6,14 +6,45 @@
 
 #include "Tiger/tpart.h"
 
+// HYPOTHESIS: a 0x10-byte list, from where the inlined tAudioFileClass constructor in
+// mNewAudioFileClass (0x00661810) places it; its virtuals and member names are not recovered.
+class tHandleList
+{
+	public:
+		tHandleList( long );
+		virtual		~tHandleList( void );
+
+		long	f04;
+		long	f08;
+		long	f0c;
+};
+
+class tClassActiveChannelList : public tHandleList
+{
+	public:
+		inline tClassActiveChannelList( void ) : tHandleList( 0 ) {}
+		virtual		~tClassActiveChannelList( void );
+};
+
 // HYPOTHESIS: mAddHandle (signature from the SDK library symbols) sits in vtable slot 15 (the
-// call at 0x00661300 goes through +0x3c); the slots before it are not recovered yet.
+// call at 0x00661300 goes through +0x3c); the slots before it are not recovered yet. Slot 2
+// takes the handle mNewAudioFileClass gives the new class (0x00661810). The members follow
+// the stores of its inlined constructor there (0x40 bytes, the list at +8 behind the vtable
+// pointer padded for the double at +0x38); their names are not known.
 class tAudioFileClass
 {
 	public:
+		inline tAudioFileClass( void ) : f30( 0 )
+		{
+			f18 = 0;
+			f24 = -1;
+			f1c = 0;
+			f34 = 0;
+		}
+
 		virtual		void	vfunction0	( void );
 		virtual		long	vfunction1	( void );
-		virtual		void	vfunction2	( void );
+		virtual		void	vfunction2	( long );
 		virtual		void	vfunction3	( void );
 		virtual		void	vfunction4	( void );
 		virtual		void	vfunction5	( void );
@@ -27,6 +58,17 @@ class tAudioFileClass
 		virtual		void	vfunction13	( void );
 		virtual		void	mRemoveHandle	( unsigned long );
 		virtual		void	mAddHandle	( unsigned long );
+
+		tClassActiveChannelList	f08;
+		long	f18;
+		long	f1c;
+		long	f20;
+		long	f24;
+		long	f28;
+		long	f2c;
+		long	f30;
+		long	f34;
+		double	f38;
 };
 
 // HYPOTHESIS: mGetAudioFileClassPtrFromHandle (signature from the SDK library symbols) sits in
@@ -42,6 +84,7 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		void	vfunction10	( void );
 		virtual		tAudioFileClass *	mGetAudioFileClassPtrFromHandle	( long );
 		virtual		long	mGetAudioFileClassHandleFromReference	( long );
+		virtual		long	mNewAudioFileClass	( void );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
 
