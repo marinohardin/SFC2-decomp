@@ -50,3 +50,9 @@ const tString &tStrMgrCore::mGetString( const char *s )
 {
 	return mGetString( mGetStringIndex( s ) );
 }
+
+// FUNCTION: STARFLEETOP 0x00627360
+const tString &tStrMgrCore::mGetString( const tString &s )
+{
+	return mGetString( mGetStringIndex( s ) );
+}
