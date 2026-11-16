@@ -233,3 +233,13 @@ bool tSupplyDockShuttles::vfunction13( long delta )
 	vfunction14( value );
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x004864cf
+void tSupplyDockShuttles::vfunction14( long value )
+{
+	if( value != vfunction10() )
+	{
+		((fn_004479b4_object *) m74)->fn_00447926( 0, value );
+		vfunction3();
+	}
+}
