@@ -2594,7 +2594,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         vfunction109(command->mGet3DSoundConeAngleForNoAttenuation(), command->mGet3DSoundConeAttenuationLevel());
         return kTrue;
     case 17:
-        vfunction108(command->mGet3DSoundVelocity());
+        mSet3DSoundVelocity(command->mGet3DSoundVelocity());
         return kTrue;
     case 18:
         vfunction110(command->mGet3DSoundReferenceDistance());

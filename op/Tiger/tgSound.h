@@ -160,7 +160,9 @@ public:
     // HYPOTHESIS: slot 16 records the 3D orientation (twStandardSoundChannel::mSet3DSoundOrientation passes it the orientation it set).
     virtual void vfunction16(tPoint3* orientation);
     virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
-    virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
+    // HYPOTHESIS: slot 20 records the 3D velocity (twStandardSoundChannel::mSet3DSoundVelocity passes it the velocity it set).
+    virtual void vfunction20(tPoint3* velocity);
+    virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
     virtual void vfunction26(); virtual void vfunction27(); virtual void vfunction28();
     virtual void mDump();
 
@@ -430,7 +432,7 @@ public:
     virtual iTruth mSetChannelPriority(long priority);
     virtual unsigned char mSet3DSoundPosition(tPoint3* position) = 0;
     virtual unsigned char mSet3DSoundOrientation(tPoint3* orientation) = 0;
-    virtual void vfunction108(tPoint3* velocity) = 0;
+    virtual unsigned char mSet3DSoundVelocity(tPoint3* velocity) = 0;
     virtual void vfunction109(float angle, long level) = 0;
     virtual void vfunction110(double distance) = 0;
     virtual void vfunction111(t3DSoundProfile* profile) = 0;
