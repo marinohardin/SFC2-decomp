@@ -2298,6 +2298,23 @@ void *OpenForWrite( tString &path )
 	return file;
 }
 
+// FUNCTION: STARFLEETOP 0x00634520
+void *OpenForRead( tString &path )
+{
+	HANDLE	file;
+	SetLastError( 0 );
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	file = CreateFileW( g_00c3cbf0, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+	if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		if ( file )
+			CloseHandle( file );
+		path.mCopyCharStr( g_00c3caec, MAX_PATH );
+		file = CreateFileA( g_00c3caec, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+	}
+	return file;
+}
+
 template <>
 twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie )
 {
