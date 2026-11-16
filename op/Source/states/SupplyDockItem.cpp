@@ -106,6 +106,7 @@ public:
 	std::string fn_00447822( long arg1 );
 	long fn_004477b1( long arg1 );
 	void fn_004477c6( long arg1, long arg2, long arg3 );
+	void fn_00447867( long arg1, std::string name );
 };
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
@@ -608,6 +609,7 @@ public:
 	virtual void vfunction2();
 	virtual void vfunction3();
 	virtual long vfunction6();
+	virtual void vfunction7( long *msg );
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
@@ -623,6 +625,9 @@ public:
 	void vfunction20( long arg1, long arg2 );
 	// HYPOTHESIS: called directly with the slot index; its body is not written yet.
 	void fn_00486fac( long i );
+	// HYPOTHESIS: each maps a bay's craft name to another name; their bodies are not written yet.
+	std::string fn_0048719b( std::string name );
+	std::string fn_00487236( std::string name );
 
 	long m7c[4];
 	long m8c[4];
@@ -774,4 +779,51 @@ long tSupplyDockFighters::vfunction18( long i )
 	if( result < 0 )
 		result = 0;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00487091
+void tSupplyDockFighters::vfunction7( long *msg )
+{
+	long i;
+	long count;
+
+	switch( *msg )
+	{
+	case 0x11027:
+	case 0x11028:
+	case 0x11029:
+	case 0x1102a:
+		i = *msg - 0x11027;
+		count = ((fn_004479b4_object *) m74)->fn_004477f8( i ) - 1;
+		if( count < 0 )
+			count = 0;
+		((fn_004479b4_object *) m74)->fn_004477c6( i, count, ((fn_004479b4_object *) m74)->fn_004477b1( i ) );
+		break;
+	case 0x1102b:
+	case 0x1102c:
+	case 0x1102d:
+	case 0x1102e:
+		i = *msg - 0x1102b;
+		count = ((fn_004479b4_object *) m74)->fn_004477f8( i ) + 1;
+		if( count > vfunction15( i ) )
+			count = vfunction15( i );
+		((fn_004479b4_object *) m74)->fn_004477c6( i, count, ((fn_004479b4_object *) m74)->fn_004477b1( i ) );
+		break;
+	case 0x1102f:
+	case 0x11030:
+	case 0x11031:
+	case 0x11032:
+		i = *msg - 0x1102f;
+		((fn_004479b4_object *) m74)->fn_00447867( i, fn_00487236( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+		break;
+	case 0x11033:
+	case 0x11034:
+	case 0x11035:
+	case 0x11036:
+		i = *msg - 0x11033;
+		((fn_004479b4_object *) m74)->fn_00447867( i, fn_0048719b( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+		break;
+	}
+	vfunction3();
+	vfunction6();
 }
