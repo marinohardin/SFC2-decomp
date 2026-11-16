@@ -611,3 +611,9 @@ iTruth operator== (const tString &s1,const char *s2)
 {
 	return 0 == mCStrCompare(s1, s2);
 }
+
+// FUNCTION: STARFLEETOP 0x00625210
+iTruth operator!= (const tString &s1,const char *s2)
+{
+	return 0 != mCStrCompare(s1, s2);
+}
