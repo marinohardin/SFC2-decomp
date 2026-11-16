@@ -398,7 +398,7 @@ public:
     virtual void mSetFinishSoundCallback(long callback);
     virtual long mGetTotalBytesLeftToPlay();
     virtual double mGetTotalNumberOfSecondsLeftToPlay();
-    virtual void mGetNumberOfAttachments();
+    virtual long mGetNumberOfAttachments();
     virtual iTruth mAreWeLooping();
     virtual iTruth mAreWeStreaming();
     virtual iTruth mAreWe3D();

@@ -4570,3 +4570,19 @@ double tgSoundPart::mTotalNumberOfSecondsLeftToPlay(long channel)
     mReleaseControl();
     return seconds;
 }
+#line 4574 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006557f0
+long tgSoundPart::mNumberOfAttachmentsQueuedUp(long channel)
+{
+#line 6393
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mNumberOfAttachmentsQueuedUp not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6401
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long count = channelPtr->mGetNumberOfAttachments();
+    mReleaseControl();
+    return count;
+}
