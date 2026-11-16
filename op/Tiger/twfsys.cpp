@@ -621,3 +621,41 @@ twIORequestQueue::~twIORequestQueue()
         throw;
     CloseHandle(f_00);
 }
+
+// HYPOTHESIS: the request's destructor is inline and empty, as mAdd leaves no call to it; it is
+// claimed in tgfsys.cpp, which defines it the same way.
+inline twIORequest::~twIORequest()
+{
+}
+
+// HYPOTHESIS: the original inlines tQueue::push here; the header leaves it out of line for
+// tSession::mAddCookie.
+template <class tType>
+inline void tQueue<tType>::push(tType &item)
+{
+    fn_QueueNode *node = new fn_QueueNode(item);
+    if (f_04)
+    {
+        f_08->fNext = node;
+        f_08 = node;
+    }
+    else
+    {
+        f_08 = node;
+        f_04 = node;
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x00634810
+void twIORequestQueue::mAdd(twIORequest request)
+{
+    WaitForSingleObject(f_18, INFINITE);
+    if (f_14 == 0)
+    {
+        f_14 = 1;
+        if (!ReleaseSemaphore(f_04, 1, NULL))
+            throw;
+    }
+    f_08.push(request);
+    ReleaseMutex(f_18);
+}

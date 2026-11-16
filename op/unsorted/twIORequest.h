@@ -60,6 +60,8 @@ public:
 	twIORequestQueue( twQueueName name );
 	~twIORequestQueue();
 
+	void	mAdd( twIORequest request );
+
 	// HYPOTHESIS: inline, as AsynchIOMain tests the first entry under the mutex into a byte twice.
 	bool	fn_00633fe0_IsEmpty( void );
 

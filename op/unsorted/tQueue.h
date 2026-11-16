@@ -18,6 +18,9 @@ public:
 	class fn_QueueNode
 	{
 	public:
+		// HYPOTHESIS: the node copies the item, as twIORequestQueue::mAdd (STARFLEETOP 0x00634810)
+		// allocates the copy after storing the node's vtable.
+		fn_QueueNode( tType &item ) { fItem = new tType( item ); fNext = 0; }
 		virtual ~fn_QueueNode();
 
 		tType			*fItem;		// +0x04
