@@ -51,7 +51,6 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0043113d	tNetControl::scalar_deleting_destructor	5	fable	25.26	2026-11-09T15:59:20Z	not exact after 5 attempts
 0x0043117a	tNetControl::~tNetControl	5	fable	20.00	2026-11-09T16:33:27Z	not exact after 5 attempts
 0x00431184	tNetControl::~tNetControl	5	fable	14.96	2026-11-09T17:08:25Z	not exact after 5 attempts
-0x00431275	FUN_00431275	5	fable	20.00	2026-11-09T17:27:37Z	not exact after 5 attempts
 0x0043127f	FUN_0043127f	5	fable	20.30	2026-11-09T17:40:54Z	not exact after 5 attempts
 0x004355a5	tDynamicMemoryFreeListViaHandles::scalar_deleting_destructor	5	fable	5.71	2026-11-09T16:45:53Z	not exact after 5 attempts
 0x004356ac	t3DListenerProfile::scalar_deleting_destructor	5	fable	0.00	2026-11-09T16:00:41Z	not exact after 5 attempts

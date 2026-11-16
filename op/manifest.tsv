@@ -216,7 +216,7 @@ address	size	symbol	source	modes
 0x00431200	39	tNetControl::fn_00431200()	unsorted/tNetControl.cpp	vc6 guest
 0x00431227	39	tNetControl::fn_00431227()	unsorted/tNetControl.cpp	vc6 guest
 0x0043124e	39	tNetControl::fn_0043124e()	unsorted/tNetControl.cpp	vc6 guest
-0x00431275	589	tNetControl::fn_0043127f()	unsorted/tNetControl.cpp	partial
+0x00431275	589	tNetControl::fn_0043127f()	unsorted/tNetControl.cpp	vc6 guest
 0x004314c2	51	c_0043127f_node::c_0043127f_node()	unsorted/tNetControl.cpp	vc6
 0x004314f5	46	tNetControl::fn_004314f5(int)	unsorted/tNetControl.cpp	vc6 guest
 0x00431523	46	tNetControl::fn_00431523(int)	unsorted/tNetControl.cpp	vc6 guest

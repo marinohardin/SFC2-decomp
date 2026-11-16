@@ -246,10 +246,10 @@ extern int g_008f5b84;
 extern int g_008f5b3c;
 extern c_008e1060 g_008e1060;
 
-// HYPOTHESIS: this is the body of the function whose EH prolog sits at 0x00431275; it is
-// defined whole here, so the rebuilt symbol starts with that prolog. Past those 10 bytes the
-// listing is instruction for instruction the original's (589 = 10 + 579 bytes); the score is low
-// only because the comparison starts at 0x0043127f and the rebuilt symbol at 0x00431275. It rebuilds the
+// The function starts with its EH prolog at 0x00431275; the symbol keeps the name of the
+// address 10 bytes in, where analysis first put the start. The 6-byte copy calls 0x007365b0,
+// the CRT memcpy (0x00736e90, the other copy of that code, is the memmove the SDK units call).
+// It rebuilds the
 // field_8CB8 list from the entries field_8D00 reports, keeping the fields of an old node with
 // the same id.
 // FUNCTION: STARFLEETOP 0x00431275
@@ -274,7 +274,7 @@ void tNetControl::fn_0043127f()
 		node->field_68 = src->field_1C;
 		node->field_6D = src->field_20;
 		node->field_88 = src->field_54;
-		strncpy( node->field_95, src->field_8, 6 );
+		memcpy( node->field_95, src->field_8, 6 );
 		int mode = src->field_58;
 		if( mode == 0 )
 			node->field_94 = 1;

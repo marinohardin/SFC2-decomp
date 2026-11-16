@@ -1932,9 +1932,9 @@
    "symbol": "?fn_0043127f@tNetControl@@QAEXXZ",
    "unit": "unsorted/tNetControl.cpp",
    "size": 589,
-   "score": 99.973,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004314c2": {
    "name": "FUN_004314c2",
