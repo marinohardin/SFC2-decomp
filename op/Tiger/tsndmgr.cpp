@@ -266,7 +266,7 @@ public:
 	virtual	unsigned long	mNewTrackingNumber	( long );
 	virtual	long	mGetRegisteredNumber	( char * );
 	// HYPOTHESIS: the sixth parameter reads as void * from the symbol's back reference.
-	virtual	unsigned char	mAddRegisteredAudioType	( char *, unsigned long (*)( char *, long, long, long, tSoundChannelFormat *, long, void * ), unsigned long (*)( unsigned long, long ), long, long, void *, long );
+	virtual	unsigned char	mAddRegisteredAudioType	( char *, unsigned long (*func1)( char *, long, long, long, tSoundChannelFormat *, long, void * ), unsigned long (*func2)( unsigned long, long ), long, long, void *, long );
 	virtual	unsigned char	mSetAFPlayInfoAtThisPosition	( long, long, long, long, char *, char *, char *, long, long, long, long, double, double, unsigned char, unsigned char, long );
 	virtual	void	mParseAllSoundsFile	( char *, long, long );
 	virtual	signed char *	mGetNextToken	( char *, const char *, long, long *, char );
@@ -496,5 +496,25 @@ unsigned long	tBasicSoundFileManager::mNewTrackingNumber( long info )
 	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt("we've run out of tracking numbers!"); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt("we've run out of tracking numbers!"); }
 #line 906
 	if (atgSoundPart->mAreWeInInterruptMode() == kTrue) { AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__); } else { PrintOutBufferedErrors(); gSoundSay.mJustSayIt(" -- %s %d\n", __FILE__, __LINE__); }
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00664a50
+unsigned char	tBasicSoundFileManager::mAddRegisteredAudioType( char * name, unsigned long (*func1)( char *, long, long, long, tSoundChannelFormat *, long, void * ), unsigned long (*func2)( unsigned long, long ), long unused, long value, void * data, long extra )
+{
+	if ( field_0x718 < 0x40 )
+	{
+		tRegisteredAudioType *	type = &field_0x18[field_0x718];
+		type->field_0x0 = new char[strlen( name ) + 1];
+		strcpy( type->field_0x0, name );
+		type->field_0x4 = func1;
+		type->field_0xc = value;
+		type->field_0x10 = data;
+		type->field_0x14 = func2;
+		type->field_0x8 = 1;
+		type->field_0x18 = extra;
+		field_0x718++;
+		return 1;
+	}
 	return 0;
 }

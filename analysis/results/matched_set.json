@@ -9469,6 +9469,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00664a50": {
+   "name": "tBasicSoundFileManager::mAddRegisteredAudioType",
+   "symbol": "?mAddRegisteredAudioType@tBasicSoundFileManager@@UAEEPADP6AK0JJJPAVtSoundChannelFormat@@JPAX@ZP6AKKJ@ZJJ2J@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
