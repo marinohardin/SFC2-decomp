@@ -87,6 +87,10 @@ public:
 class tDirIterParent
 {
 public:
+	// Out of line in the exe (STARFLEETOP 0x0061ba80, 0x00634f20).
+	tDirIterParent();
+	~tDirIterParent();
+
 	int32u	mAdd( tDir dir );
 	// HYPOTHESIS: out of line, as tDirIterator::mNext (STARFLEETOP 0x0061f7f0) calls it with the
 	// directory passed by value and returns its result, like tVolIterParent::mNext.
@@ -234,8 +238,8 @@ public:
 	// HYPOTHESIS: the seventh virtual (vtable +0x18), as tDir::mExist (STARFLEETOP 0x0061e050)
 	// calls it through that slot on the resolved directory.
 	virtual iTruth	mExist( void );
-	// HYPOTHESIS: the eighth slot is not recovered.
-	virtual void	fn_twDir_slot7( void );
+	// The eighth slot, by the exe's symbol for twDir::mGetDirIterator (STARFLEETOP 0x00632040).
+	virtual tDirIterator	mGetDirIterator( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tDir::mGetPathIterator (STARFLEETOP
 	// 0x0061e160) calls it through that slot on the resolved directory.
 	virtual tPathIterator	mGetPathIterator( void );
@@ -1449,5 +1453,94 @@ iTruth twDir::mExist( void )
 	}
 	FindClose( find );
 	return exists;
+}
+
+// HYPOTHESIS: the original expands ~twDir inline in both loops, assigns the made cookie through
+// the out-of-line tDir::operator= (STARFLEETOP 0x00636080), copies +0x54 once more through the
+// out-of-line tDir copy (STARFLEETOP 0x00633e80) and copies cookies through the out-of-line
+// tCookie copy (STARFLEETOP 0x00407c5b); the header has those inline, so they are not recovered.
+// The word the directory's +0x50 is copied into is the iterator parent's +0x14.
+// FUNCTION: STARFLEETOP 0x00632040
+tDirIterator twDir::mGetDirIterator( void )
+{
+	tDirIterParent	parent;
+
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	parent.f_10[1] = f_50;
+	part->fFSCookies.f_04++;
+	tDirIterator	iter = part->fFSCookies.fDirIterCookies.mMake( parent );
+
+	tString	path( f_8c );
+
+	// HYPOTHESIS: the wide copy whose buffer is tested before the separator check is gCopyWideStr
+	// with no buffer, expanded inline.
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	iWideChar	*wideName = g_00c3cbf0;
+	if ( wideName && path[path.mStrLen() - 1] != '\\' )
+		path += "\\";
+	path += "*.*";
+
+	WIN32_FIND_DATAA	data;
+	WIN32_FIND_DATAW	wide;
+	HANDLE	find;
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wide );
+	if ( find == INVALID_HANDLE_VALUE )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path.mCopyCharStr( g_00c3caec, MAX_PATH );
+			find = FindFirstFileA( g_00c3caec, &data );
+			if ( find != INVALID_HANDLE_VALUE )
+			{
+				do
+				{
+					if ( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+					{
+						tString	name( data.cFileName );
+
+						if ( !( name == "." ) && !( name == ".." ) )
+						{
+							twDir	dir( name, f_04, f_54 );
+
+							dir.f_50 = f_50;
+							tFSCookiePart	*part = BindPart( tFSCookiePart );
+							part->fFSCookies.f_04++;
+							tDir	made = part->fFSCookies.fDirCookies.mMake( dir );
+							dir.f_54 = made;
+							tDir	self( dir.f_54 );
+							iter.mAdd( made );
+						}
+					}
+				} while ( FindNextFileA( find, &data ) );
+			}
+		}
+	}
+	else
+	{
+		do
+		{
+			if ( wide.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+			{
+				tString	name( wide.cFileName );
+
+				if ( !( name == "." ) && !( name == ".." ) )
+				{
+					twDir	dir( name, f_04, f_54 );
+
+					dir.f_50 = f_50;
+					tFSCookiePart	*part = BindPart( tFSCookiePart );
+					part->fFSCookies.f_04++;
+					tDir	made = part->fFSCookies.fDirCookies.mMake( dir );
+					dir.f_54 = made;
+					tDir	self( dir.f_54 );
+					iter.mAdd( made );
+				}
+			}
+		} while ( FindNextFileW( find, &wide ) );
+	}
+	FindClose( find );
+	return iter;
 }
 

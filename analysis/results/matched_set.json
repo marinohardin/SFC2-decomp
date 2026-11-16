@@ -8101,6 +8101,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00632040": {
+   "name": "twDir::mGetDirIterator",
+   "symbol": "?mGetDirIterator@twDir@@UAE?AVtDirIterator@@XZ",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 1719,
+   "score": 12.648,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
