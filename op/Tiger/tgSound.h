@@ -584,8 +584,8 @@ public:
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual long mGetHardwareInformation(long info);
     virtual long mTotalBytesLeftToPlay(long channel);
-    virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
-    virtual void mGetFrequency(); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();
+    virtual double mTotalNumberOfSecondsLeftToPlay(long channel); virtual long mNumberOfAttachmentsQueuedUp(long channel);
+    virtual long mGetFrequency(long channel); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();
     virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
     virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
@@ -702,6 +702,11 @@ public:
     virtual unsigned char mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate);
     virtual eSoundChannelStatus mGetChannelStatus(long channel);
     virtual long mTotalBytesLeftToPlay(long channel);
+    // The SDK library's symbols for these overrides give the signatures. Declaring the first alone
+    // makes mSetNumberOfSoundChannelCommands swap two stack slots; with the next two it does not.
+    virtual double mTotalNumberOfSecondsLeftToPlay(long channel);
+    virtual long mNumberOfAttachmentsQueuedUp(long channel);
+    virtual long mGetFrequency(long channel);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
