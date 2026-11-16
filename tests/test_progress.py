@@ -50,7 +50,8 @@ address\tsize\tmangled_name\tlibrary\ttier\tscore\tnotes
 
 
 def write_fixture(tmp, lifted_ranges=((0x401000, 0x401480), (0x402000, 0x4020C8)),
-                  errors=(), stubs=(), matched=None, functional=None, funclet_parents=None):
+                  errors=(), stubs=(), matched=None, functional=None, funclet_parents=None,
+                  manifest=None):
     """Write the fixture into `tmp` and return the paths for progress.compute."""
     (tmp / 'functions.csv').write_text(FUNCTIONS_CSV)
     if funclet_parents is not None:
@@ -77,8 +78,12 @@ def write_fixture(tmp, lifted_ranges=((0x401000, 0x401480), (0x402000, 0x4020C8)
         'lifter_dir': lifter,
         'matched_set': tmp / 'matched_set.json',
         'functional_set': tmp / 'functional_set.json',
+        'manifest': tmp / 'manifest.tsv',
         'objdiff_reports': [],
     }
+    if manifest is not None:
+        (tmp / 'manifest.tsv').write_text('address\tsize\tsymbol\tsource\tmodes\n' + ''.join(
+            '0x%08x\t1\tinvented\tx.cpp\t%s\n' % am for am in manifest))
     if matched is not None:
         (tmp / 'matched_set.json').write_text(json.dumps(matched))
     if functional is not None:
@@ -100,11 +105,33 @@ def test_every_ordinary_function_gets_the_best_status_that_applies(tmp_path):
     assert statuses(report) == {
         'exact': (1, 100),
         'functional': (2, 350),
+        'partial': (0, 0),
         'lifted': (2, 250),
         'original-x86': (1, 300),
     }
     assert report['exact'] == [{'address': '00401000', 'name': 'tShip::mFire'}]
     assert [e['address'] for e in report['functional']] == ['00401100', '00401400']
+
+
+def test_a_partial_claim_counts_as_partial_and_exact_wins_over_it(tmp_path):
+    # 401400 is claimed partial, which wins over lifted; 401000 is exact in the matched set and
+    # partial in a stale manifest, so exact wins; a `vc6 guest` row and a `stub` row are not partial.
+    paths = write_fixture(tmp_path, matched=['00401000'],
+                          manifest=[(0x401000, 'partial'), (0x401400, 'partial'),
+                                    (0x401500, 'vc6 guest'), (0x402000, 'stub')])
+    report = progress.compute(paths, NOW, text_bytes=2000)
+    assert statuses(report)['exact'] == (1, 100)
+    assert statuses(report)['partial'] == (1, 150)
+    assert report['partial'] == [{'address': '00401400', 'name': 'FUN_00401400'}]
+    assert report['scopes']['total']['status']['partial']['pct_bytes'] == 15.0  # 150 of 1000
+    assert report['inputs']['manifest']['present'] is True
+
+
+def test_a_missing_manifest_leaves_partial_at_zero(tmp_path):
+    report = progress.compute(write_fixture(tmp_path), NOW, text_bytes=2000)
+    assert statuses(report)['partial'] == (0, 0)
+    assert report['partial'] == []
+    assert report['inputs']['manifest']['present'] is False
 
 
 def test_funclets_without_a_known_parent_and_thunks_are_counted_but_not_classified(tmp_path):
@@ -311,6 +338,7 @@ def run_cli(tmp_path, *extra):
             '--funclet-parents', str(tmp_path / 'funclets.tsv'),
             '--matched-set', str(tmp_path / 'matched_set.json'),
             '--functional-set', str(tmp_path / 'functional_set.json'), '--objdiff', str(tmp_path / 'none.json'),
+            '--manifest', str(tmp_path / 'manifest.tsv'),
             '--text-bytes', '2000', '--out', str(tmp_path / 'out' / 'progress.json'), '--now', NOW]
     return progress.main(args + list(extra))
 
@@ -375,12 +403,15 @@ def test_markdown_keeps_history_and_appends_one_line_per_run(tmp_path):
     text = md.read_text()
     history = text.split('## History', 1)[1].strip().splitlines()
     assert history == [
-        '- 2026-01-02T03:04:05Z: exact 5.00%, functional 0.00%, lifted 30.00% of .text; '
-        'real symbol 66.67%, with class 66.67% of 6 functions; game-only exact 10.53%, functional 0.00%',
-        '- 2026-01-03T00:00:00Z: exact 5.00%, functional 0.00%, lifted 30.00% of .text; '
-        'real symbol 66.67%, with class 66.67% of 6 functions; game-only exact 10.53%, functional 0.00%',
+        '- 2026-01-02T03:04:05Z: exact 5.00%, functional 0.00%, partial 0.00%, lifted 30.00% of '
+        '.text; real symbol 66.67%, with class 66.67% of 6 functions; game-only exact 10.53%, '
+        'functional 0.00%, partial 0.00%',
+        '- 2026-01-03T00:00:00Z: exact 5.00%, functional 0.00%, partial 0.00%, lifted 30.00% of '
+        '.text; real symbol 66.67%, with class 66.67% of 6 functions; game-only exact 10.53%, '
+        'functional 0.00%, partial 0.00%',
     ]
     assert '| exact | 1 | 100 | 0 | 5.00 | 10.00 | 1 | 100 | 10.53 |' in text
+    assert '| partial | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |' in text
     written = json.loads((tmp_path / 'out' / 'progress.json').read_text())
     assert written['generated_at'] == '2026-01-03T00:00:00Z'
 
