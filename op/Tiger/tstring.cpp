@@ -493,3 +493,9 @@ int32 tString::rfind(tString &s, int32 startPos)
 	}
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00624660
+void tString::operator=(const char* s)
+{
+	mIncorporateCharList(s);
+}
