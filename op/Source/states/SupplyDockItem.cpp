@@ -113,7 +113,8 @@ public:
 	virtual long vfunction10();
 	virtual double vfunction11();
 	virtual long vfunction12();
-	virtual void vfunction13( long delta );
+	virtual bool vfunction13( long delta );
+	virtual void vfunction14( long value );
 
 	long m7c;
 };
@@ -221,4 +222,14 @@ long tSupplyDockShuttles::vfunction12()
 	if( result < 0 )
 		result = 0;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0048649e
+bool tSupplyDockShuttles::vfunction13( long delta )
+{
+	long value = vfunction10() + delta;
+	if( value > vfunction9() || value < 0 )
+		return false;
+	vfunction14( value );
+	return true;
 }
