@@ -7,6 +7,7 @@ gets one status and one name tier:
 
   status      exact         rebuilt byte-exact (harness matched set, or objdiff at 100%)
               functional    rebuilt and verified by the replay oracle
+              partial       claimed in op/ and scored, not yet exact (manifest mode `partial`)
               lifted        still mechanically lifted (Route L): its entry lies in lifted code
               original-x86  none of the above; still only the original machine code
 
@@ -40,6 +41,8 @@ and functional are zero. Accepted shapes of the harness inputs:
       "address" and an optional "status" ("exact" or "functional"); or an object whose "exact",
       "functional" or "functions" keys hold such lists. Entries without a status are exact in
       matched_set.json and functional in functional_set.json.
+  op/manifest.tsv
+      the claims tools/manifest.py writes; a row whose modes include `partial` is partial.
   harness/objdiff/**/*.json
       objdiff report JSON ("units" -> "functions"); a function counts as exact when its
       "fuzzy_match_percent" is 100. The original address comes only from
@@ -77,7 +80,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 # Size of the original .text section (ghidra/REPORT.md).
 TEXT_BYTES = 3_751_936
 
-STATUSES = ('exact', 'functional', 'lifted', 'original-x86')
+STATUSES = ('exact', 'functional', 'partial', 'lifted', 'original-x86')
 NAME_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string', 'rtti-class',
               'none')
 REAL_SYMBOL_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string')
@@ -256,6 +259,21 @@ def load_funclet_parents(path, log):
     return out
 
 
+def load_partial(path, log):
+    """Addresses op/manifest.tsv claims with the mode `partial`: written, scored, not exact."""
+    if not log.note('manifest', path):
+        return set()
+    out = set()
+    with open(path, newline='') as f:
+        for row in csv.DictReader(f, delimiter='\t'):
+            if 'partial' not in (row.get('modes') or '').split():
+                continue
+            address = parse_hex_address(row.get('address'))
+            if address is not None:
+                out.add(address)
+    return out
+
+
 STUB_RE = re.compile(r'void sub_([0-9A-Fa-f]{8})\(void\) \{ RECOMP_NOT_LIFTED\(0x')
 ERROR_RE = re.compile(r'^0x([0-9A-Fa-f]{8})\t')
 
@@ -406,11 +424,13 @@ def load_replaced(matched_set, functional_set, objdiff_reports, log):
     return exact, functional - exact, skipped
 
 
-def classify_status(address, exact, functional, lifted_ranges):
+def classify_status(address, exact, functional, partial, lifted_ranges):
     if address in exact:
         return 'exact'
     if address in functional:
         return 'functional'
+    if address in partial:
+        return 'partial'
     if in_ranges(address, lifted_ranges):
         return 'lifted'
     return 'original-x86'
@@ -484,6 +504,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
     lifted_ranges, lift_info = load_lifted(paths.get('lifter_dir'), log)
     exact, functional, objdiff_skipped = load_replaced(
         paths.get('matched_set'), paths.get('functional_set'), paths.get('objdiff_reports') or [], log)
+    partial = load_partial(paths.get('manifest'), log)
 
     rows = []
     by_address = {}
@@ -491,7 +512,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
     for fn in functions:
         if fn.kind != 'function':
             continue
-        row = Row(fn, classify_status(fn.address, exact, functional, lifted_ranges),
+        row = Row(fn, classify_status(fn.address, exact, functional, partial, lifted_ranges),
                   classify_name(fn, sdk_exact, sdk_fuzzy))
         if fn.name_source not in NAME_SOURCE_TIER and fn.name_source not in NO_NAME_SOURCES:
             unmapped[fn.name_source] = unmapped.get(fn.name_source, 0) + 1
@@ -528,7 +549,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
                 for r in sorted(rows, key=lambda r: r.fn.address) if r.status == status]
 
     return {
-        'schema': 2,
+        'schema': 3,
         'generated_at': now,
         'text_bytes': text_bytes,
         'inputs': log.entries,
@@ -544,6 +565,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
         'unmapped_name_sources': dict(sorted(unmapped.items())),
         'exact': listing('exact'),
         'functional': listing('functional'),
+        'partial': listing('partial'),
     }
 
 
@@ -581,16 +603,18 @@ def summary_line(report):
     t = report['scopes']['total']
     g = report['scopes']['game']
     s = t['status']
-    return ('Progress: %.2f%% exact, %.2f%% functional, %.2f%% lifted, %.2f%% original x86 of .text '
-            '(%s bytes); named: %.2f%% real symbol, %.2f%% with class, of %s functions. '
-            'Game-only: %.2f%% exact, %.2f%% functional of %s bytes; %.2f%% real symbol, '
-            '%.2f%% with class, of %s functions.'
-            % (s['exact']['pct_text'], s['functional']['pct_text'], s['lifted']['pct_text'],
+    return ('Progress: %.2f%% exact, %.2f%% functional, %.2f%% partial, %.2f%% lifted, %.2f%% original '
+            'x86 of .text (%s bytes); named: %.2f%% real symbol, %.2f%% with class, of %s functions. '
+            'Game-only: %.2f%% exact, %.2f%% functional, %.2f%% partial of %s bytes; %.2f%% real '
+            'symbol, %.2f%% with class, of %s functions.'
+            % (s['exact']['pct_text'], s['functional']['pct_text'], s['partial']['pct_text'],
+               s['lifted']['pct_text'],
                s['original-x86']['pct_text'], format(report['text_bytes'], ','),
                t['named_real_symbol']['pct_functions'], t['named_with_class']['pct_functions'],
                format(t['functions'], ','),
                g['status']['exact']['pct_bytes'], g['status']['functional']['pct_bytes'],
-               format(g['bytes'], ','), g['named_real_symbol']['pct_functions'],
+               g['status']['partial']['pct_bytes'], format(g['bytes'], ','),
+               g['named_real_symbol']['pct_functions'],
                g['named_with_class']['pct_functions'], format(g['functions'], ',')))
 
 
@@ -642,12 +666,14 @@ HISTORY_HEADING = '## History'
 def history_line(report):
     t, g = report['scopes']['total'], report['scopes']['game']
     s = t['status']
-    return ('- %s: exact %.2f%%, functional %.2f%%, lifted %.2f%% of .text; real symbol %.2f%%, '
-            'with class %.2f%% of %s functions; game-only exact %.2f%%, functional %.2f%%'
+    return ('- %s: exact %.2f%%, functional %.2f%%, partial %.2f%%, lifted %.2f%% of .text; real '
+            'symbol %.2f%%, with class %.2f%% of %s functions; game-only exact %.2f%%, functional '
+            '%.2f%%, partial %.2f%%'
             % (report['generated_at'], s['exact']['pct_text'], s['functional']['pct_text'],
-               s['lifted']['pct_text'], t['named_real_symbol']['pct_functions'],
-               t['named_with_class']['pct_functions'], format(t['functions'], ','),
-               g['status']['exact']['pct_bytes'], g['status']['functional']['pct_bytes']))
+               s['partial']['pct_text'], s['lifted']['pct_text'],
+               t['named_real_symbol']['pct_functions'], t['named_with_class']['pct_functions'],
+               format(t['functions'], ','), g['status']['exact']['pct_bytes'],
+               g['status']['functional']['pct_bytes'], g['status']['partial']['pct_bytes']))
 
 
 def render_markdown(report, previous_text):
@@ -837,6 +863,7 @@ def default_paths():
         'lifter_dir': None,
         'matched_set': ROOT / 'harness/matched_set.json',
         'functional_set': ROOT / 'harness/functional_set.json',
+        'manifest': ROOT / 'op/manifest.tsv',
         'objdiff_reports': sorted(pathlib.Path(p) for p in
                                   glob.glob(str(ROOT / 'harness/objdiff/**/*.json'), recursive=True)),
     }
@@ -857,6 +884,8 @@ def main(argv=None):
                          'as lifted, and what is not exact or functional is original x86')
     ap.add_argument('--matched-set', type=pathlib.Path, default=d['matched_set'])
     ap.add_argument('--functional-set', type=pathlib.Path, default=d['functional_set'])
+    ap.add_argument('--manifest', type=pathlib.Path, default=d['manifest'],
+                    help='claims whose modes include `partial` count as partial')
     ap.add_argument('--objdiff', type=pathlib.Path, action='append',
                     help='objdiff report JSON (repeatable; default harness/objdiff/**/*.json)')
     ap.add_argument('--text-bytes', type=int, default=TEXT_BYTES)
@@ -898,7 +927,7 @@ def main(argv=None):
     paths = dict(d, functions_csv=args.functions, sdk_exact_tsv=args.sdk_exact,
                  sdk_fuzzy_tsv=args.sdk_fuzzy, eh_funclet_parents=args.funclet_parents,
                  lifter_dir=args.lifter, matched_set=args.matched_set,
-                 functional_set=args.functional_set,
+                 functional_set=args.functional_set, manifest=args.manifest,
                  objdiff_reports=args.objdiff if args.objdiff is not None else d['objdiff_reports'])
     report = compute(paths, now, args.text_bytes)
 
