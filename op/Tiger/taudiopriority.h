@@ -53,6 +53,7 @@ class tClassTrackingInfo
 		virtual		void	mSet	( unsigned long, unsigned long, long, long, long * );
 		virtual		void	mSetAvailable	( void );
 		virtual		long	mGetPriority	( void );
+		virtual		unsigned char	mAreWeValid	( void );
 
 		unsigned long	f04;
 		unsigned long	f08;

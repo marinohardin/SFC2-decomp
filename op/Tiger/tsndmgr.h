@@ -5,6 +5,8 @@
 
 #include "Tiger/tpart.h"
 
+enum eSoundChannelStatus {};
+
 // HYPOTHESIS: declared only as far as the functions in the sound units need; mGetChannelPriority
 // is the call through +0x78 (slot 30) in tClassTrackingInfo::mGetPriority, slots 6 to 29 are not
 // recovered, and the slot of mGetTrackingIndex is unknown.
@@ -13,7 +15,7 @@ class tBasicSoundFileManager : public tPart
 	public:
 		virtual	void	vfunction6	( void );
 		virtual	void	vfunction7	( void );
-		virtual	void	vfunction8	( void );
+		virtual	unsigned char	vfunction8	( unsigned long );
 		virtual	void	vfunction9	( void );
 		virtual	void	vfunction10	( void );
 		virtual	void	vfunction11	( void );
@@ -24,7 +26,7 @@ class tBasicSoundFileManager : public tPart
 		virtual	void	vfunction16	( void );
 		virtual	void	vfunction17	( void );
 		virtual	void	vfunction18	( void );
-		virtual	void	vfunction19	( void );
+		virtual	void	vfunction19	( unsigned long );
 		virtual	void	vfunction20	( void );
 		virtual	void	vfunction21	( void );
 		virtual	void	vfunction22	( void );
@@ -37,6 +39,8 @@ class tBasicSoundFileManager : public tPart
 		virtual	void	vfunction29	( void );
 		virtual	long	mGetChannelPriority	( unsigned long, long );
 		virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
+
+		eSoundChannelStatus	mGetStatus	( unsigned long );
 
 		GenAbstractBinding( tBasicSoundFileManager )
 };
