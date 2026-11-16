@@ -5021,7 +5021,8 @@ unsigned char tgSoundPart::mPauseRecordChannel()
     if (field_0x114.field_0x4[2] != 1) return 0;
 #line 7166
     xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
-    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(field_0xa8);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
     if (channelPtr == 0) { mReleaseControl(); return 0; }
     if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
     long command = mCreateCommand((eSoundChannelCommand)2, 0, 0);
