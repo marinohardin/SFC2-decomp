@@ -572,7 +572,8 @@ public:
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSetGlobalFrequency(float frequency);
     virtual unsigned char mSetGlobalPan(long pan);
-    virtual void mSetGlobalVolume(); virtual void mAdjust3DListener();
+    virtual unsigned char mSetGlobalVolume(long volume);
+    virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual unsigned char mSet3DListener3DPosition(tPoint3* position);
     virtual unsigned char mSet3DListenerOrientation(tPoint3* forward, tPoint3* up);
@@ -688,6 +689,7 @@ public:
     virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
     virtual unsigned char mSetGlobalFrequency(float frequency);
     virtual unsigned char mSetGlobalPan(long pan);
+    virtual unsigned char mSetGlobalVolume(long volume);
     // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);

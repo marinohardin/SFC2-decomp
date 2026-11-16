@@ -4504,3 +4504,30 @@ unsigned char tgSoundPart::mSetGlobalPan(long pan)
     mReleaseControl();
     return 1;
 }
+#line 4508 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655550
+unsigned char tgSoundPart::mSetGlobalVolume(long volume)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6267
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long globalVolume = volume;
+    if (volume > 100) globalVolume = 100;
+    else if (volume < 0) globalVolume = 0;
+    field_0x54 = globalVolume;
+    field_0x58 = globalVolume * 0.01;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedVolume())
+        {
+            long channelVolume = channelPtr->mGetVolume();
+            long command = mCreateCommand((eSoundChannelCommand)7, &channelVolume, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
