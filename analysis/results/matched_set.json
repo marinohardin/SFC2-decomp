@@ -8020,6 +8020,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006313d0": {
+   "name": "twVolume::vfunction7",
+   "symbol": "?mIsEjectable@twVolume@@UAEEXZ",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

@@ -183,13 +183,13 @@ public:
 	virtual tString	&mGetName( void );
 	// HYPOTHESIS: the second virtual, as tVolume::mGetSortName calls it.
 	virtual tString	mGetSortName( void );
-	// HYPOTHESIS: the volume queries the exe names for twVolume, in address order; the two slots
-	// after them are not recovered.
+	// HYPOTHESIS: the volume queries the exe names for twVolume, in address order; the slot
+	// after them is not recovered.
 	virtual int32u	mGetClusterSize( void );
 	virtual int32u	mGetTotalClusters( void );
 	virtual int32u	mGetFreeClusters( void );
 	virtual eVolType	mGetVolType( void );
-	virtual void	fn_twVolume_slot6( void );
+	virtual iTruth	mIsEjectable( void );
 	virtual void	fn_twVolume_slot7( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tVolume::mGetRoot (STARFLEETOP 0x0061dad0)
 	// calls it through that slot on the resolved volume.
@@ -1222,5 +1222,11 @@ eVolType twVolume::mGetVolType( void )
 		default:
 			throw "Error in system getting vol type";
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006313d0
+iTruth twVolume::mIsEjectable( void )
+{
+	return 0;
 }
 
