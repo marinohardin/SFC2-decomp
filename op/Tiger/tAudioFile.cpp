@@ -11,6 +11,7 @@ class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(t
 // pair with the original's build path; the other includes are paths from the op/ root.
 #include "tindexedarray.h"
 #include "Tiger/tsound_fileio.h"
+#include "Tiger/tclock.h"
 
 // HYPOTHESIS: the virtual destructor (slot 0) deletes the array's items; the virtual at offset 0x94
 // attaches the file to a channel (see tAudioFileInfoPart::mAttachToThisChannel). The other slots'
@@ -256,4 +257,15 @@ unsigned long tAudioFileInfoPart::mAddSoundFile(tBasicAudioFile &aFile)
 void tAudioFileInfoPart::mDeleteSoundFile(unsigned long param_1)
 {
     field_0c.fn_Remove(param_1);
+}
+
+// FUNCTION: STARFLEETOP 0x006580c0
+long tAudioFileInfoPart::mGetNewAsynchReadInfo(unsigned long param_1, long param_2)
+{
+    long index = field_2c->fn_New();
+    tAsynchReadInfo *info = field_2c->fn_Get(index);
+    info->field_00 = param_2;
+    info->field_04 = param_1;
+    *(double *) &info->field_08 = aClockPart->mGetMicroseconds();
+    return index;
 }

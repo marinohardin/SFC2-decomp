@@ -18,6 +18,19 @@ class	tStandardMemoryArray
 						tStandardMemoryArray	( long aSize );
 		virtual			~tStandardMemoryArray	( void );
 
+		// HYPOTHESIS: takes a free slot (growing the blocks by the grow step when all are
+		// used), marks it used and returns its index. Inlined into
+		// tAudioFileInfoPart::mGetNewAsynchReadInfo (0x006580c0); its name is not recovered.
+		long			fn_New					( void );
+		// HYPOTHESIS: grows both blocks to a size (allocating them when empty) and marks the
+		// new slots free; the allocation lines match the constructor's. Name not recovered.
+		void			fn_Grow					( long aSize );
+		// HYPOTHESIS: true when an index names a slot in use (its byte is 0); the result is
+		// kept as a value (sete) before the test. Its name is not recovered.
+		iTruth			fn_IsUsed				( long aIndex );
+		// HYPOTHESIS: returns the item at a used slot, or 0. Its name is not recovered.
+		T				*fn_Get					( long aIndex );
+
 		long			field_04;
 		T				*field_08;
 		long			field_0c;
@@ -47,6 +60,78 @@ inline tStandardMemoryArray<T>::tStandardMemoryArray( long aSize )
 		field_08[field_10] = field_18;
 		field_28[field_10] = 1;
 	}
+}
+
+template <class T>
+inline void tStandardMemoryArray<T>::fn_Grow( long aSize )
+{
+	if ( field_10 == 0 )
+	{
+#line 263
+		field_08 = (T *) BindPart(tMemoryPart)->mAllocate( aSize * sizeof(T), __LINE__, __FILE__ );
+		field_28 = (int8u *) BindPart(tMemoryPart)->mAllocate( aSize, __LINE__, __FILE__ );
+	}
+	else
+	{
+		field_08 = (T *) BindPart(tMemoryPart)->vfunction8( field_08, aSize * sizeof(T) );
+#line 269
+		field_28 = (int8u *) BindPart(tMemoryPart)->mAllocate( aSize, __LINE__, __FILE__ );
+	}
+
+	for ( ; field_10 < aSize; field_10++ )
+	{
+		field_08[field_10] = field_18;
+		field_28[field_10] = 1;
+	}
+}
+
+template <class T>
+inline long tStandardMemoryArray<T>::fn_New( void )
+{
+	long	index = 0;
+
+	if ( field_0c >= field_10 )
+	{
+		fn_Grow( field_10 + field_14 );
+		index = field_0c;
+	}
+	else
+	{
+		if ( field_28[field_0c] == 1 )
+			index = field_0c;
+		else
+		{
+			for ( long i = 0; i < field_0c; i++ )
+			{
+				if ( field_28[i] == 1 )
+				{
+					index = i;
+					i = field_0c;
+				}
+			}
+		}
+	}
+
+	field_28[index] = 0;
+	field_0c++;
+
+	return index;
+}
+
+template <class T>
+inline iTruth tStandardMemoryArray<T>::fn_IsUsed( long aIndex )
+{
+	if ( aIndex < field_10 && aIndex >= 0 )
+		return field_28[aIndex] == 0;
+	return kFalse;
+}
+
+template <class T>
+inline T *tStandardMemoryArray<T>::fn_Get( long aIndex )
+{
+	if ( !fn_IsUsed( aIndex ) )
+		return NULL;
+	return &field_08[aIndex];
 }
 
 // HYPOTHESIS: tSafeArray (declared in Tiger/tAudioFile.h) keeps its add here; the allocation

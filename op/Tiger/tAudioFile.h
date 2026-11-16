@@ -70,7 +70,7 @@ public:
 
     virtual unsigned long mAddSoundFile(tBasicAudioFile &aFile); // HYPOTHESIS: slot 6 (offset 0x18)
     virtual void mDeleteSoundFile(unsigned long param_1); // HYPOTHESIS: slot 7 (offset 0x1c)
-    virtual void vfn_20();
+    virtual long mGetNewAsynchReadInfo(unsigned long param_1, long param_2); // HYPOTHESIS: slot 8 (offset 0x20), by address order
     virtual void vfn_24();
     virtual void vfn_28();
     virtual void vfn_2c();
