@@ -118,3 +118,21 @@ const tString &tStrMgrCore::mGetGrpStr( const char *group, int element )
 {
 	return mGetGrpStr( mGetStringIndex( group ), element );
 }
+
+// FUNCTION: STARFLEETOP 0x00627540
+unsigned char tStrMgrCore::mIsAnElement( long group, long element )
+{
+	if ( group > 0 && group <= fn_00627180_vec.size() )
+	{
+		if ( element > mGetNumElements( group ) )
+		{
+			if ( fn_00627200_throwOnMiss )
+				throw (eStrManagerErr)1;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+			return false;
+		}
+		return element <= mGetNumElements( group ) ? true : false;
+	}
+	if ( fn_00627200_throwOnMiss )
+		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
+	return false;
+}
