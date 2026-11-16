@@ -615,8 +615,8 @@ public:
     virtual long vfunction76();
     virtual void vfunction77();
     virtual t3DListenerProfile* mGet3DListener();
-    virtual tPoint3* mGet3DListener3DPosition(); virtual tPoint3* mGet3DListenerForwardDirection(); virtual tPoint3* mGet3DListenerUpDirection(); virtual void mGet3DListenerVelocity();
-    virtual void mGet3DListenerUnitScaleInMeters();
+    virtual tPoint3* mGet3DListener3DPosition(); virtual tPoint3* mGet3DListenerForwardDirection(); virtual tPoint3* mGet3DListenerUpDirection(); virtual tPoint3* mGet3DListenerVelocity();
+    virtual double mGet3DListenerUnitScaleInMeters();
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse
     // declaration order.
     virtual void mDump();
@@ -755,6 +755,9 @@ public:
     virtual tPoint3* mGet3DListener3DPosition();
     virtual tPoint3* mGet3DListenerForwardDirection();
     virtual tPoint3* mGet3DListenerUpDirection();
+    virtual tPoint3* mGet3DListenerVelocity();
+    virtual double mGet3DListenerUnitScaleInMeters();
+    virtual void mDump();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).
