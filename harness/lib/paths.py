@@ -12,15 +12,24 @@ HARNESS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(HARNESS)
 
 
-def _main_checkout():
-    """The main checkout: reference/ lives there and is not copied into worktrees."""
+def _git(repo, *args):
+    return subprocess.run(['git', '-C', repo, *args], capture_output=True, text=True,
+                          check=True).stdout.strip()
+
+
+def _main_checkout(repo=REPO):
+    """The main checkout: reference/ lives there and is not copied into worktrees.
+
+    When this repository is a submodule of another (the port pins it as decomp/), the main
+    checkout is the containing repository's: that is where the clone's reference/ link and
+    the folder beside it, holding work/ and tools/, are.
+    """
     try:
-        common = subprocess.run(['git', '-C', REPO, 'rev-parse', '--path-format=absolute',
-                                 '--git-common-dir'], capture_output=True, text=True,
-                                check=True).stdout.strip()
-        return os.path.dirname(common)
+        top = _git(repo, 'rev-parse', '--show-superproject-working-tree') or repo
+        return os.path.dirname(_git(top, 'rev-parse', '--path-format=absolute',
+                                    '--git-common-dir'))
     except (OSError, subprocess.CalledProcessError):
-        return REPO
+        return repo
 
 
 def env_path(var, default):

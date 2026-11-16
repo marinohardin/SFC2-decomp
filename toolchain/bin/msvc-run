@@ -11,7 +11,14 @@
 # initial = VC6 RTM CRT, see toolchain/vc6-lib/PROVENANCE.md), or MSVC_LIB=dir;dir overrides it.
 set -e
 here=$(cd "$(dirname "$0")" && pwd)
-root=${SFCOP_ROOT:-$(cd "$here/../../.." && pwd)}
+# The SFCOP root is the folder that holds the clone; when the clone is a submodule (the
+# port's decomp/), it is the folder that holds the containing repository.
+super=$(git -C "$here" rev-parse --show-superproject-working-tree 2>/dev/null || true)
+if [ -n "$super" ]; then
+  root=${SFCOP_ROOT:-$(cd "$super/.." && pwd)}
+else
+  root=${SFCOP_ROOT:-$(cd "$here/../../.." && pwd)}
+fi
 cwd=$(pwd -P)
 extra=${SFCOP_MSVC_NAME:+--name $SFCOP_MSVC_NAME}
 libdirs=${MSVC_LIB:-$root/tools/vc6-lib/${MSVC_LIB_SET:-initial}}
