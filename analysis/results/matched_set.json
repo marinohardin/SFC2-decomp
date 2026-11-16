@@ -3223,6 +3223,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0048650a": {
+   "name": "FUN_0048650a",
+   "symbol": "_$E4",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",

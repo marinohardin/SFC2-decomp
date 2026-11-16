@@ -244,13 +244,15 @@ void tSupplyDockShuttles::vfunction14( long value )
 	}
 }
 
-// HYPOTHESIS: the analysis types this global tValue<long>; only its constructor is called here.
+// HYPOTHESIS: the analysis types this global tValue<long>; its constructor and destructor are external.
 class fn_00486500_value
 {
 public:
 	fn_00486500_value();
+	~fn_00486500_value();
 	long m00;
 };
 
+// FUNCTION: STARFLEETOP 0x0048650a
 // FUNCTION: STARFLEETOP 0x00486500
 fn_00486500_value g_009157c8;
