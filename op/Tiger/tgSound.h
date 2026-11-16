@@ -620,7 +620,7 @@ public:
     // The exe's symbols for tgSoundPart's overrides give the signatures.
     virtual long mGetNumberCurrentlyPlaying();
     virtual unsigned char mDoWeRetainSelections(long channel);
-    virtual void mWeRetainSelections();
+    virtual unsigned char mWeRetainSelections(long channel);
     virtual void mWeDoNotRetainSelections(long channel);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
@@ -676,6 +676,7 @@ public:
     virtual unsigned char mAddGetNextAttachmentFunction(long channel, void (*function)(unsigned long, long), long data, double interval);
     virtual long mGetNumberCurrentlyPlaying();
     virtual unsigned char mDoWeRetainSelections(long channel);
+    virtual unsigned char mWeRetainSelections(long channel);
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeDoNotAutoRemoveChannel(long channel);

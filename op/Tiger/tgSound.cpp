@@ -4423,3 +4423,19 @@ unsigned char tgSoundPart::mDoWeRetainSelections(long channel)
     unsigned char result = channelPtr->mDoWeRetainSelections();
     mReleaseControl(); return result;
 }
+#line 4426 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655140
+unsigned char tgSoundPart::mWeRetainSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6113
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (!channelPtr->mDoWeRetainSelections())
+    {
+        long type = channelPtr->mGetSoundType();
+        channelPtr->mSetSoundType(type + 0x800);
+    }
+    mReleaseControl(); return 1;
+}
