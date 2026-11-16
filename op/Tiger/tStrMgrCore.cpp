@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Tiger/tStrMgrCore.cpp
-// Functions: 0x00627180 to 0x00627a30, 19 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// tStrMgrCore.cpp: tStrMgrCore, the string-table core behind tgStrManager.
+
+#include "Tiger/tgStrMgr.h"
+
+// FUNCTION: STARFLEETOP 0x00627180
+void tStrMgrCore::mDone( void )
+{
+	fn_00627180_map1.clear();
+	fn_00627180_map2.clear();
+	for ( std::vector<tString *>::iterator it = fn_00627180_vec.begin(); it != fn_00627180_vec.end(); ++it )
+	{
+		delete *it;
+	}
+	fn_00627180_vec.clear();
+	fn_00627180_count = 0;
+}
