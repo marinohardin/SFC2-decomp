@@ -298,3 +298,23 @@ unsigned char tAudioPriorityManagerPart::mAreWeAllowedToPlay( unsigned long clas
 	handle = index;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00662400
+long tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo( void )
+{
+	if ( f2438 >= 256 )
+		f2438 = 0;
+	long start = f2438;
+	if ( f38[f2438].vfunction4() == kTrue )
+		return f2438++;
+	if ( ++f2438 >= 256 )
+		f2438 = 0;
+	while ( f2438 != start )
+	{
+		if ( f38[f2438].vfunction4() == kTrue )
+			return f2438++;
+		if ( ++f2438 >= 256 )
+			f2438 = 0;
+	}
+	return -1;
+}
