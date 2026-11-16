@@ -488,14 +488,7 @@ void tPanelMgr::fn_006086e9()
     m_0x204.fn_0060ac16();
 }
 
-// HYPOTHESIS: the global object at 0x0090b730; only the one non-virtual function called here
-// (0x0060cac6) is known.
-class tObject_0090b730 {
-public:
-    void fn_0060cac6();
-};
-
-extern tObject_0090b730 gObject_0090b730;
+#include "unsorted/tObject_0090b730.h"
 // HYPOTHESIS: calls slots 86 and 109 of the object at 0x0092deb4, then slot 15 for every index
 // below its slot 9 count, from the last down to the first, then the function of the global object
 // at 0x0090b730. It does not use this.

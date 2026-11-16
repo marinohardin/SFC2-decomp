@@ -253,7 +253,12 @@ class fn_00486500_value
 public:
 	fn_00486500_value();
 	~fn_00486500_value();
+	// HYPOTHESIS: 0x006712c0 is the function tAICaptain.cpp declares on its tObject_006712c0,
+	// which also sets the integer at +0x18 first.
+	void fn_006712c0( long arg1, long arg2 );
 	long m00;
+	char m04[0x14];
+	long m18;
 };
 
 // FUNCTION: STARFLEETOP 0x0048650a
@@ -273,6 +278,10 @@ fn_00486500_value g_00915788;
 class fn_0055e60f_object
 {
 public:
+	long fn_00451c03();
+	long fn_00451c18();
+	short fn_00451c2d();
+
 	char m00[0xc];
 	bool m0c;
 	bool m0d;
@@ -306,6 +315,7 @@ class tSupplyDockMissiles : public tSupplyDockItem
 public:
 	tSupplyDockMissiles( long arg1, long arg2, long arg3, long mask, long arg5 );
 
+	virtual void vfunction3();
 	virtual long vfunction9();
 	virtual long vfunction10();
 	virtual long vfunction12();
@@ -346,4 +356,64 @@ tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long 
 	m7c->m0c = true;
 	m7c->m0d = true;
 	m80.fn_0045154e( m7c );
+}
+
+#include "unsorted/tObject_0090b730.h"
+
+// HYPOTHESIS: a free cdecl function of a name and the base's +0x04; its unit is not written yet.
+void fn_004d346f( const char *name, long arg2 );
+// HYPOTHESIS: two names at fixed data addresses; their text is not known here.
+extern const char g_0084bff4[];
+extern const char g_0084bfe4[];
+
+// FUNCTION: STARFLEETOP 0x004866c4
+void tSupplyDockMissiles::vfunction3()
+{
+	tString text;
+
+	text = "";
+	text.mAppendInt32s( vfunction10() );
+	fn_004d33d4( 0x11037, text );
+	text = "";
+	text.mAppendInt32s( vfunction9() );
+	fn_004d33d4( 0x11038, text );
+	text = "";
+	text.mAppendInt32s( vfunction11() );
+	fn_004d33d4( 0x11039, text );
+	text = "";
+	text.mAppendInt32s( vfunction12() );
+	fn_004d33d4( 0x1103a, text );
+
+	vfunction8( g_0084bb54, vfunction10() > 0 );
+	vfunction8( g_0084bb58, vfunction10() < vfunction9() );
+	vfunction8( g_0084bb5c, m7c->fn_00451c03() != 0 );
+	vfunction8( g_0084bb60, m7c->fn_00451c03() != 1 );
+	vfunction8( g_0084bb64, m7c->fn_00451c18() > 0 );
+
+	long state = gObject_0090b730.fn_0060ca4f();
+	if( state != 5 && state != 4 )
+		vfunction8( g_0084bb68, m7c->fn_00451c18() < gObject_0090b730.fn_0060ca9e() );
+	else
+	{
+		long level = gObject_0090b730.fn_005c7fb3();
+		if( level < 4 )
+			vfunction8( g_0084bb68, m7c->fn_00451c18() < 0 );
+		else if( level < 0x11 )
+			vfunction8( g_0084bb68, m7c->fn_00451c18() < 1 );
+		else
+			vfunction8( g_0084bb68, m7c->fn_00451c18() < 2 );
+	}
+
+	vfunction8( g_0084bb6c, m7c->fn_00451c2d() > 1 );
+	vfunction8( g_0084bb70, m7c->fn_00451c2d() < 4 );
+
+	g_009157c8.m18 = m7c->fn_00451c03();
+	g_009157c8.fn_006712c0( 3, 0 );
+	g_009157a8.m18 = m7c->fn_00451c18();
+	g_009157a8.fn_006712c0( 3, 0 );
+	g_00915788.m18 = m7c->fn_00451c2d() - 1;
+	g_00915788.fn_006712c0( 3, 0 );
+
+	fn_004d346f( g_0084bff4, m04 );
+	fn_004d346f( g_0084bfe4, m04 );
 }
