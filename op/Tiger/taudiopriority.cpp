@@ -580,3 +580,14 @@ void tAudioFileClass::mRemoveHandle( unsigned long handle )
 		f18 -= info->vfunction2();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00662e90
+void tAudioFileClass::mAddHandle( unsigned long handle )
+{
+	if ( f08.mInsertHandle( handle ) == true )
+	{
+		tClassTrackingInfo *info = BindPart( tAudioPriorityManagerPart )->vfunction16( handle );
+		assert( info );
+		f18 += info->vfunction2();
+	}
+}
