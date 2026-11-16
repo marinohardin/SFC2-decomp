@@ -4599,3 +4599,16 @@ long tgSoundPart::mGetFrequency(long channel)
     mReleaseControl();
     return frequency;
 }
+#line 4602 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006559d0
+long tgSoundPart::mGetPan(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6451
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long pan = channelPtr->mGetPan();
+    mReleaseControl();
+    return pan;
+}
