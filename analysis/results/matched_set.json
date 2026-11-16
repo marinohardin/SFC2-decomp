@@ -9676,6 +9676,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00661f60": {
+   "name": "tAudioPriorityManagerPart::mSetAudioFileClass",
+   "symbol": "?mSetAudioFileClass@tAudioPriorityManagerPart@@UAEXJJJW4eAudioPreemptType@@N@Z",
+   "unit": "Tiger/taudiopriority.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",

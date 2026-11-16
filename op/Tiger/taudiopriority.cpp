@@ -224,3 +224,11 @@ unsigned char tAudioPriorityManagerPart::mReleaseAudioFileClassPtr( long handle 
 	}
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00661f60
+void tAudioPriorityManagerPart::mSetAudioFileClass( long reference, long arg2, long arg3, eAudioPreemptType preempt, double arg5 )
+{
+	tAudioFileClass *fileClass = mGetAudioFileClassPtrFromHandle( reference );
+	if ( fileClass )
+		fileClass->mSet( arg2, arg3, preempt, arg5 );
+}

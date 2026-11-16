@@ -6,6 +6,11 @@
 
 #include "Tiger/tpart.h"
 
+// HYPOTHESIS: the enum's name is from the SDK library symbols; its values are not recovered.
+enum eAudioPreemptType
+{
+};
+
 // HYPOTHESIS: a 0x10-byte list, from where the inlined tAudioFileClass constructor in
 // mNewAudioFileClass (0x00661810) places it; its virtuals and member names are not recovered.
 class tHandleList
@@ -67,7 +72,9 @@ class tAudioFileClass
 		virtual		long	vfunction1	( void );
 		virtual		void	vfunction2	( long );
 		virtual		void	vfunction3	( void );
-		virtual		void	vfunction4	( void );
+		// HYPOTHESIS: mSet (signature from the SDK library symbols) in slot 4, from
+		// mSetAudioFileClass (0x00661f60) calling through +0x10.
+		virtual		void	mSet	( long, long, eAudioPreemptType, double );
 		virtual		void	vfunction5	( void );
 		virtual		void	vfunction6	( void );
 		virtual		void	vfunction7	( void );
@@ -110,6 +117,8 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		unsigned char	mReleaseAudioFileClassPtr	( long );
 		virtual		long	mNewAudioFileClass	( void );
 		virtual		void	mRemoveClass	( long );
+		// HYPOTHESIS: the slot is not known.
+		virtual		void	mSetAudioFileClass	( long, long, long, eAudioPreemptType, double );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
 
