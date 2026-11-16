@@ -43,6 +43,12 @@ class tAudioPriorityManagerPart : public tPart
 		virtual		tAudioFileClass *	mGetAudioFileClassPtrFromHandle	( long );
 
 		GenAbstractBinding( tAudioPriorityManagerPart )
+
+		// HYPOTHESIS: a table of file classes indexed by handle and its length, from the reads in
+		// mGetAudioFileClassPtrFromHandle at 0x006617a0; names and the field at +0x10 are not known.
+		tAudioFileClass	**f0c;
+		long			f10;
+		long			f14;
 };
 
 // HYPOTHESIS: mSet is the first virtual (signature from the SDK library symbols); the layout

@@ -57,3 +57,11 @@ long tClassTrackingInfo::mFadeToStop( void )
 {
 	return BindPart( tBasicSoundFileManager )->mFadeToStopAndResetNow( f08, 500.0, -1 );
 }
+
+// FUNCTION: STARFLEETOP 0x006617a0
+tAudioFileClass *tAudioPriorityManagerPart::mGetAudioFileClassPtrFromHandle( long handle )
+{
+	if ( handle < 0 || handle >= f14 )
+		return NULL;
+	return f0c[handle];
+}
