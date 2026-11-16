@@ -174,6 +174,7 @@ unsigned char tStrMgrCore::mIsAnElement( const char *group, const tString &str )
 class tWideCharFile
 {
 	public:
+		tWideCharFile( tBasicFile &file, bool swap );
 		unsigned short	mGetChar	( void );
 
 		unsigned short	fn_006276a0_buffer[0x400];
@@ -214,4 +215,89 @@ unsigned short tWideCharFile::mGetChar( void )
 		}
 	}
 	return fn_006276a0_buffer[fn_006276a0_pos++];
+}
+
+// Name from the SDK library data symbol at 0x0087ec34 (C linkage); HYPOTHESIS: a byte flag.
+extern "C" unsigned char gTigerEndianWord;
+
+// HYPOTHESIS: the original inlines this into mLoadStringFile; the swap flag is the file's
+// byte order against the machine's.
+inline tWideCharFile::tWideCharFile( tBasicFile &file, bool swap )
+{
+	fn_006276a0_count = 0;
+	fn_006276a0_pos = 0;
+	fn_006276a0_swap = gTigerEndianWord ^ swap;
+	fn_006276a0_file = &file;
+}
+
+// FUNCTION: STARFLEETOP 0x00627750
+unsigned char tStrMgrCore::mLoadStringFile( tBasicFile &file, bool swap )
+{
+	tWideCharFile in( file, swap );
+	tString key;
+	key.mReserve( 0x81 );
+	tString line;
+	line.mReserve( 0x400 );
+	long group = -1;
+	iBasicStringElement c;
+
+	do
+	{
+		c = 0;
+		while ( c != '|' )
+		{
+			c = in.mGetChar();
+			if ( c == 0xffff )
+				return true;
+		}
+
+		int n = 0;
+		key = "";
+		c = 0;
+		while ( ( c = in.mGetChar() ) != '|' )
+		{
+			if ( n >= 0x80 )
+			{
+				c = 0;
+				while ( c != '|' )
+				{
+					c = in.mGetChar();
+					if ( c == 0xffff )
+						return true;
+				}
+				break;
+			}
+			key += c;
+			n++;
+			if ( c == 0xffff )
+				return true;
+		}
+
+		if ( key.mStrLen() )
+		{
+			group = fn_00627180_count;
+			( *fn_00627180_map1.insert( std::map<tString, int, less_ss>::value_type( key, 0 ) ).first ).second = fn_00627180_count;
+			fn_00627180_map2[fn_00627180_count] = 1;
+		}
+		else if ( group != -1 )
+		{
+			fn_00627180_map2[group]++;
+		}
+
+		line = "";
+		c = 0;
+		while ( c != 0xffff )
+		{
+			c = in.mGetChar();
+			if ( c == 0xffff || c == '\r' || c == '\n' )
+				break;
+			line += c;
+		}
+
+		// The original calls vector::insert( end(), 1, x ) out of line here; this build inlines it.
+		fn_00627180_vec.push_back( new tString( line ) );
+		fn_00627180_count++;
+	} while ( c != 0xffff );
+
+	return true;
 }
