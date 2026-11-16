@@ -277,3 +277,106 @@ unsigned char WinResetCWD(void)
     }
     return result;
 }
+
+// The SDK names this WinFileOpenDlg. The original inlines gCopyCharStr (out of line at
+// 0x00631930, later in this unit) at each buffer copy below; under /O2 alone it is written out.
+// FUNCTION: STARFLEETOP 0x00630240
+bool WinFileOpenDlg(tString &fileName, tString &ext, tString &dirName)
+{
+    tString filter;
+
+    if (ext.mStrLen())
+    {
+        filter = "*.";
+        filter += ext;
+        filter += (iBasicStringElement)0;
+        filter += (iBasicStringElement)0;
+    }
+
+    char fileBuf[MAX_PATH];
+    if (fileName.mStrLen())
+    {
+        tString full(fileName);
+        if (ext.mStrLen())
+        {
+            full += ".";
+            full += ext;
+        }
+        full.mCopyCharStr(g_00c3caec, MAX_PATH);
+        strcpy(fileBuf, g_00c3caec);
+    }
+    else
+        fileBuf[0] = 0;
+
+    char *initialDir = NULL;
+    char dirBuf[MAX_PATH];
+    if (dirName.mStrLen())
+    {
+        char *buffer = dirBuf;
+        if (buffer)
+        {
+            dirName.mCopyCharStr(buffer, MAX_PATH);
+            initialDir = buffer;
+        }
+        else
+        {
+            dirName.mCopyCharStr(g_00c3caec, MAX_PATH);
+            initialDir = g_00c3caec;
+        }
+    }
+
+    OPENFILENAMEA ofn;
+    char filterBuf[MAX_PATH];
+    char extBuf[MAX_PATH];
+    char *buffer;
+    char *str;
+
+    ofn.lStructSize = sizeof(OPENFILENAMEA);
+    ofn.hwndOwner = NULL;
+    ofn.hInstance = NULL;
+    buffer = filterBuf;
+    if (buffer)
+    {
+        filter.mCopyCharStr(buffer, MAX_PATH);
+        str = buffer;
+    }
+    else
+    {
+        filter.mCopyCharStr(g_00c3caec, MAX_PATH);
+        str = g_00c3caec;
+    }
+    ofn.lpstrFilter = str;
+    ofn.lpstrCustomFilter = NULL;
+    ofn.nFilterIndex = 1;
+    ofn.lpstrFile = fileBuf;
+    ofn.nMaxFile = MAX_PATH;
+    ofn.lpstrFileTitle = NULL;
+    ofn.lpstrInitialDir = initialDir;
+    ofn.lpstrTitle = NULL;
+    ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+    ofn.nFileOffset = 0;
+    ofn.nFileExtension = 0;
+    buffer = extBuf;
+    if (buffer)
+    {
+        ext.mCopyCharStr(buffer, MAX_PATH);
+        str = buffer;
+    }
+    else
+    {
+        ext.mCopyCharStr(g_00c3caec, MAX_PATH);
+        str = g_00c3caec;
+    }
+    ofn.lpstrDefExt = str;
+    ofn.lCustData = 0;
+    ofn.lpfnHook = NULL;
+
+    if (!GetOpenFileNameA(&ofn))
+    {
+        if (CommDlgExtendedError() == 0)
+            return false;
+        throw "Error in OS File Open";
+    }
+    fileName = fileBuf;
+    return true;
+}

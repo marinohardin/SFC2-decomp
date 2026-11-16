@@ -7930,6 +7930,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00630240": {
+   "name": "FUN_00630240",
+   "symbol": "?WinFileOpenDlg@@YA_NAAVtString@@00@Z",
+   "unit": "Tiger/twfsys.cpp",
+   "size": 752,
+   "score": 95.038,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
