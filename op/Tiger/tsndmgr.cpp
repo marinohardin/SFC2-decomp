@@ -249,6 +249,7 @@ unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
 #include "Tiger/tpart.h"
 #include "Tiger/tclock.h"
 #include "unsorted/tRegisteredAudioType.h"
+#include "Tiger/taudiopriority.h"
 
 // HYPOTHESIS: declared only as far as the functions below need.
 class tBasicSoundFileManager : public tPart
@@ -338,6 +339,7 @@ public:
 	virtual	void	mSetGlobalVolume	( long );
 	virtual	void	mUpdateAllSounds	( void );
 	virtual	void	mUpdatePosition	( unsigned long );
+	virtual	void	mFinishSound	( unsigned long, unsigned char );
 	void	mUpdateTest	( void );
 
 	// HYPOTHESIS: fields placed by the offsets the constructor stores; names not recovered.
@@ -358,9 +360,10 @@ public:
 	long					field_0x74c[0x100];
 	long					field_0xb4c[0x100];
 	unsigned long			field_0xf4c[0x100];	// HYPOTHESIS: the argument of each slot's position function, by mUpdatePosition.
-	char					fUnknown_134c[0x400];
+	unsigned long			field_0x134c[0x100];	// HYPOTHESIS: each slot's audio class handle, by mFinishSound.
 	void					(* field_0x174c[0x100])( unsigned long, long );	// HYPOTHESIS: each slot's position function; type from mPlay's symbol.
-	char					fUnknown_1b4c[0x800];
+	char					fUnknown_1b4c[0x400];
+	void					(* field_0x1f4c[0x100])( unsigned long, unsigned long, unsigned char );	// HYPOTHESIS: each slot's finish function; type from mPlay's symbol.
 	// HYPOTHESIS: unsigned, by the unsigned bound check in mNewTrackingNumber; the next slot to try.
 	unsigned long			field_0x234c;
 	short					field_0x2350[0x100];
@@ -399,18 +402,15 @@ tBasicSoundFileManager::tBasicSoundFileManager( void )
 	field_0x740 = 2000.0;
 }
 
-// HYPOTHESIS: empty body; the destructor's unwind frame fits the compiler's destruction of
-// field_0x18 and the tPart base alone.
+// HYPOTHESIS: empty body; the unwind frame fits destroying field_0x18 and the tPart base alone.
 // FUNCTION: STARFLEETOP 0x00663e60
 // FUNCTION: STARFLEETOP 0x00663e80
 tBasicSoundFileManager::~tBasicSoundFileManager( void )
 {
 }
 
-// The SDK library's symbol for the table at 0x00882160 gives the name; its contents are not
-// written here.
+// The SDK library's symbol for the table at 0x00882160 gives the name; contents not written.
 extern	int	gVolumeModifierTable[];
-
 // FUNCTION: STARFLEETOP 0x00663ee0
 void	tBasicSoundFileManager::mAdjustGlobalVolume( void )
 {
@@ -1669,4 +1669,17 @@ void	tBasicSoundFileManager::mUpdatePosition( unsigned long handle )
 	long	index = mGetTrackingIndex( handle );
 	if ( index >= 0 && field_0x174c[index] )
 		field_0x174c[index]( field_0xf4c[index], handle );
+}
+
+// FUNCTION: STARFLEETOP 0x00667cf0
+void	tBasicSoundFileManager::mFinishSound( unsigned long handle, unsigned char how )
+{
+	long	index = mGetTrackingIndex( handle );
+	if ( index >= 0 )
+	{
+		BindPart( tAudioPriorityManagerPart )->mWeHaveStoppedPlaying( field_0x134c[index] );
+		if ( field_0x1f4c[index] )
+			field_0x1f4c[index]( field_0xf4c[index], handle, how );
+		mClearTrackingNumber( handle );
+	}
 }
