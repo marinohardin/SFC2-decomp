@@ -1,4 +1,4 @@
-// game/port/types.h: the types game/ source is written in, for both compile modes (DESIGN §7.2,
+// op/port/types.h: the types op/ source is written in, for both compile modes (DESIGN §7.2,
 // CONVENTIONS §4.1). Not original. Included by every unit's header; the native build also
 // force-includes it first.
 //
@@ -39,7 +39,7 @@ typedef unsigned long	int32u;
 #include "port/guest.h"
 
 #else
-#error "game/ compiles under VC6 SP4 or in guest mode (SFCOP_GUEST); see game/port/types.h"
+#error "op/ compiles under VC6 SP4 or in guest mode (SFCOP_GUEST); see op/port/types.h"
 #endif
 
 #endif

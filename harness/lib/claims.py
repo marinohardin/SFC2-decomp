@@ -3,7 +3,7 @@
 An annotation in a unit (`.cpp`, `.c`) is compiled in that unit. An annotation in a header (`.h`,
 `.inl`) claims code the original wrote in the header and compiled in some unit that includes it:
 an inline destructor's deleting destructor, a part binding inside a class body. The header is not
-a unit, so the claim is compiled in the unit `game/UNITS.tsv` assigns to its address (the row
+a unit, so the claim is compiled in the unit `op/UNITS.tsv` assigns to its address (the row
 whose range holds the address), and that unit must include the header, directly or through
 other headers. tools/manifest.py, the harness (harness/lib/verify.py) and the object lift
 (tools/objlift/objlift.py) all resolve a header claim here, so they cannot disagree. This module
@@ -26,7 +26,7 @@ def is_header(path):
 
 
 def read_unit_map(path):
-    """game/UNITS.tsv as [(first, last, unit)], address ranges as ints."""
+    """op/UNITS.tsv as [(first, last, unit)], address ranges as ints."""
     with open(path, newline='') as f:
         return [(int(r['first'], 16), int(r['last'], 16), r['unit'])
                 for r in csv.DictReader(f, delimiter='\t') if r.get('unit')]
@@ -76,7 +76,7 @@ def includes(unit_path, header_path, include_dirs):
 
 def header_unit(address, header_path, src_root, units_tsv=None, include_dirs=None):
     """The unit (an absolute path) that compiles the claim of `address` in the header at
-    header_path: the game/UNITS.tsv row whose range holds the address. Raises ClaimError when no
+    header_path: the op/UNITS.tsv row whose range holds the address. Raises ClaimError when no
     row holds it, the row's file does not exist, or that file does not include the header."""
     units_tsv = units_tsv or os.path.join(src_root, 'UNITS.tsv')
     shown = os.path.relpath(header_path, src_root).replace(os.sep, '/')
@@ -89,14 +89,14 @@ def header_unit(address, header_path, src_root, units_tsv=None, include_dirs=Non
     if len(hits) != 1:
         what = 'no row' if not hits else f'{len(hits)} rows ({", ".join(hits)})'
         raise ClaimError(f'0x{address:08x} is claimed in the header {shown}, but {what} of '
-                         'game/UNITS.tsv holds that address; a header claim is compiled in the '
+                         'op/UNITS.tsv holds that address; a header claim is compiled in the '
                          'unit whose range holds it')
     unit = os.path.join(src_root, hits[0])
     if not os.path.isfile(unit):
-        raise ClaimError(f'0x{address:08x} is claimed in the header {shown}; game/UNITS.tsv '
+        raise ClaimError(f'0x{address:08x} is claimed in the header {shown}; op/UNITS.tsv '
                          f'assigns it to {hits[0]}, which does not exist')
     dirs = default_include_dirs(src_root) if include_dirs is None else include_dirs
     if not includes(unit, header_path, dirs):
-        raise ClaimError(f'0x{address:08x} is claimed in the header {shown}; game/UNITS.tsv '
+        raise ClaimError(f'0x{address:08x} is claimed in the header {shown}; op/UNITS.tsv '
                          f'assigns it to {hits[0]}, which does not include that header')
     return unit

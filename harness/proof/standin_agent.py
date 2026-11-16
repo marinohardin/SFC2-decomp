@@ -47,7 +47,7 @@ log = []
 def main(argv):
     prompt = argv[argv.index('-p') + 1]
     address = re.search(r'Original address: (0x[0-9a-f]{8})', prompt).group(1)
-    src = os.path.join(REPO, os.environ.get('HARNESS_SRC_ROOT', 'game'))
+    src = os.path.join(REPO, os.environ.get('HARNESS_SRC_ROOT', 'op'))
     matched = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
     for ev in ({'tool_name': 'Edit', 'tool_input': {'file_path': matched}},
                {'tool_name': 'Bash', 'tool_input': {'command': f'harness/update-matched-set.sh {address}'}}):

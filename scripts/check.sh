@@ -4,7 +4,7 @@
 #
 #   1. the Python tests (tests/, harness/tests/)
 #   2. the hotspot list and CODEOWNERS agree
-#   3. the PORT: lines in game/ (listed, never a failure) and the SFCOP_FIX sites there (a failure:
+#   3. the PORT: lines in op/ (listed, never a failure) and the SFCOP_FIX sites there (a failure:
 #      fixes to game code are override units under src/fixes/overrides/, DESIGN §6.9)
 #   4. the progress gate: no function loses exact or functional status (scripts/progress.py)
 #   5. the matched-set gate: no score drops below the base branch's (harness/build-and-verify.sh)
@@ -42,11 +42,11 @@ if missing:
 print("ok:", len(pats), "hotspot patterns,", len(owners), "CODEOWNERS lines")
 EOF
 
-echo "== PORT: lines in game/ (SFCOP_FIX sites there fail)"
+echo "== PORT: lines in op/ (SFCOP_FIX sites there fail)"
 if [ -d game ]; then
     python3 scripts/port_footprint.py --no-fix-sites game
 else
-    skip "no game/ tree yet"
+    skip "no op/ tree yet"
 fi
 
 # The commit whose copies of the progress and matched-set files this tree is held to. Locally a

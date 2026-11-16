@@ -23,7 +23,7 @@ every function in the attempt log that is on neither list, which is how attempts
 the stop rule existed are settled; it prints what it listed. It never lists a function that
 matched_set.json records exact, and takes any such function off both lists.
 
-`select` resolves units (paths in game/UNITS.tsv, such as Tiger/tsay.cpp) and addresses to the
+`select` resolves units (paths in op/UNITS.tsv, such as Tiger/tsay.cpp) and addresses to the
 queue entries they cover, in address order, and writes them to $HARNESS_STATE/selection.json.
 `next` and `show` honour that file only when HARNESS_SELECTION names it (loop.sh sets it when
 given --unit or --address), so a selection left over from an earlier run restricts nothing.

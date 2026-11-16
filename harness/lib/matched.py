@@ -73,7 +73,7 @@ def release_listed(base, data, listed, claimed=()):
     """base without the entries data dropped because the address is on the boundary-error list
     and was never exact there: such an entry scored a fragment, not a function. Returns
     (base, [released keys]). An exact entry is never released, nor one a FUNCTION annotation in
-    game/ still claims (claimed: matched-set keys): a listed address has no definition there."""
+    op/ still claims (claimed: matched-set keys): a listed address has no definition there."""
     gone = [k for k, old in base['functions'].items()
             if k in listed and k not in data['functions'] and not old.get('exact')
             and k not in claimed]
@@ -94,7 +94,7 @@ def release_misscored(base, data, claimed=()):
     """base without the entries data dropped that were scored against the wrong function: the
     name says deleting destructor, the symbol is the plain destructor (misscored). Such a score
     says nothing about the address, so losing it is not a regression. Returns (base, [released
-    keys]). An exact entry is never released, nor one a FUNCTION annotation in game/ still
+    keys]). An exact entry is never released, nor one a FUNCTION annotation in op/ still
     claims (claimed: matched-set keys)."""
     gone = [k for k, old in base['functions'].items()
             if k not in data['functions'] and not old.get('exact') and k not in claimed

@@ -14,7 +14,7 @@ harness=$(dirname "$here")
 eval "$(PYTHONPATH="$(dirname "$harness")" python3 -c 'from harness.lib import paths; print(f"WORK={paths.WORK!r}; REF={paths.REFERENCE!r}")')"
 proof="$WORK/harness/proof"
 sdk="$REF/installed game/Starfleet Command Orion Pirates/OP API - R2.1"
-unit="$proof/game/Scripts/ScriptInterface/DynamicAllocator.cpp"
+unit="$proof/op/Scripts/ScriptInterface/DynamicAllocator.cpp"
 out="$here/results/proof.txt"
 fn=0x006fc690
 
@@ -38,10 +38,10 @@ EOF
 set -e  # setup must succeed; the demonstration below records failures instead
 rm -rf "$proof"
 mkdir -p "$proof/game" "$here/results"
-cp -R "$sdk/Scripts" "$proof/game/"
-cp -R "$sdk/STL" "$proof/game/"
+cp -R "$sdk/Scripts" "$proof/op/"
+cp -R "$sdk/STL" "$proof/op/"
 chmod -R u+w "$proof/game"
-flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/game/Scripts/ScriptInterface/_ScriptInterface.dsp" \
+flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/op/Scripts/ScriptInterface/_ScriptInterface.dsp" \
         | sed 's/^# ADD CPP //' | tr -d '\r')
 python3 - "$proof/units.json" "$flags" <<'EOF'
 import json, sys

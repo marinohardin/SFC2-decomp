@@ -1,4 +1,4 @@
-# game/: the decompiled original
+# op/: the decompiled original
 
 One file per original translation unit, at the original's path with the drive and project root
 dropped (`docs/CONVENTIONS.md` §2 and §3). `UNITS.tsv` maps every function in
@@ -26,12 +26,12 @@ One row per unit, in address order:
 
 | Column | Meaning |
 | --- | --- |
-| `unit` | path under `game/` |
+| `unit` | path under `op/` |
 | `first`, `last` | address of the unit's first and last function |
 | `functions` | number of functions (EH funclets and thunks included) in that range |
 | `evidence` | `assert-path`, `sdk-member`, `class` or `page` (below) |
 | `profile` | compile profile in `harness/units.json` |
-| `header` | path of the unit's own header under `game/`, where one is evidenced |
+| `header` | path of the unit's own header under `op/`, where one is evidenced |
 
 A function belongs to the unit whose `first`..`last` range holds its address; ranges never
 overlap, because the linker kept each unit's functions together.

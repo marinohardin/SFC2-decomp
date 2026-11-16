@@ -336,7 +336,7 @@ def _pack_inputs(tmp_path):
            _fn(0x401010, 1, 'B::g', 'int __thiscall B::g(int)'),
            _fn(0x401020, 1, 'FUN_00401020')]
     index = types.SimpleNamespace(by_address={f.address: f for f in fns})
-    src = tmp_path / 'game'
+    src = tmp_path / 'op'
     (src / 'unsorted').mkdir(parents=True)
     (src / 'unsorted' / 'B.h').write_text(
         'class B;\n\nclass B : public A {\npublic:\n\tvoid f();\n\tint g(int);\n};\n')
@@ -426,7 +426,7 @@ def test_pack_says_what_is_missing_and_respects_its_cap(tmp_path, monkeypatch):
                       src_root=src, decomp=decomp)
     assert '(not exported: run ghidra/scripts/export_decomp.sh)' in text
     assert '(the exe is not available)' in text
-    assert 'Not declared in any header: `B`. Search `game/` before declaring one' in text
+    assert 'Not declared in any header: `B`. Search `op/` before declaring one' in text
     assert text.endswith('### An exact function from the same class or unit\n\n(none yet)\n')
     short = pack.build(dict(address='0x00401000', name='B::f'), index, None, matched.empty(),
                        src_root=src, decomp=decomp, limit=200)

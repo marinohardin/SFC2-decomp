@@ -35,7 +35,7 @@
 # picks the function and model, scores it, writes the claim and the prompt, and logs the attempt
 # with zero tokens and outcome "dry-run".
 #
-# --unit U (a path from game/UNITS.tsv, e.g. Tiger/tsay.cpp) and --address A, each repeatable,
+# --unit U (a path from op/UNITS.tsv, e.g. Tiger/tsay.cpp) and --address A, each repeatable,
 # restrict the loop to those units' and addresses' open functions, taken in address order: a
 # grind batch is one unit. They are resolved once, when the loop starts (harness/queue.py
 # select), into a file in the harness state that the session cannot edit. Without them the loop
@@ -84,7 +84,7 @@ while [ $# -gt 0 ]; do
         --unit|--address)
             # Unit paths and addresses use these characters only, so the list needs no quoting.
             case "${2:-}" in
-                ''|*[!A-Za-z0-9_./+-]*) echo "ERROR $1 takes a unit path from game/UNITS.tsv or an address" >&2; exit 2 ;;
+                ''|*[!A-Za-z0-9_./+-]*) echo "ERROR $1 takes a unit path from op/UNITS.tsv or an address" >&2; exit 2 ;;
             esac
             selargs="$selargs $1 $2"; shift ;;
         --brief) [ $# -ge 2 ] && [ -n "$2" ] || { echo "$usage" >&2; exit 2; }

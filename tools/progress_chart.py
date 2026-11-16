@@ -6,7 +6,7 @@
 Reads, all from the repository:
   analysis/results/progress/progress.json   the figures scripts/progress.py wrote (the badges)
   ghidra/exports/functions.csv              every function's address, size, kind and library flag
-  game/UNITS.tsv                            the translation units and their address ranges
+  op/UNITS.tsv                            the translation units and their address ranges
   analysis/results/matched_set.json         the best verified score of every attempted function
   analysis/results/progress/eh_funclet_parents.tsv
                                             the parent of each C++ EH funclet, whose bytes count
@@ -287,7 +287,7 @@ def main(argv=None):
     ap.add_argument('--out', default=str(PROGRESS))
     ap.add_argument('--progress', default=str(PROGRESS / 'progress.json'))
     ap.add_argument('--functions', default=str(ROOT / 'ghidra' / 'exports' / 'functions.csv'))
-    ap.add_argument('--units', default=str(ROOT / 'game' / 'UNITS.tsv'))
+    ap.add_argument('--units', default=str(ROOT / 'op' / 'UNITS.tsv'))
     ap.add_argument('--matched-set', default=str(ROOT / 'analysis' / 'results' / 'matched_set.json'))
     ap.add_argument('--funclets', default=str(PROGRESS / 'eh_funclet_parents.tsv'))
     a = ap.parse_args(argv)

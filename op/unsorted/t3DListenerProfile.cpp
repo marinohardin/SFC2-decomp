@@ -1,5 +1,5 @@
 // Unit:      unsorted/t3DListenerProfile.cpp
-// Functions: 0x004355c7 to 0x004356ac, 16 in game/UNITS.tsv
+// Functions: 0x004355c7 to 0x004356ac, 16 in op/UNITS.tsv
 // Evidence:  class; the SDK library's symbols name every member. These bodies are the copies the
 //            vtable at 0x00798f44 points to; the SDK library's own copies differ in scheduling.
 

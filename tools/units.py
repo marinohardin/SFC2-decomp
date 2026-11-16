@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Map every function of the original exe to the translation unit it was compiled in.
 
-Writes `game/UNITS.tsv`, one row per unit, and the `game/` tree skeleton: a placeholder
-`game/<unit>.cpp` for every unit, a placeholder `game/<unit>.h` where a header beside the unit is
-evidenced, and the units' entries in `harness/units.json`. See `game/README.md`.
+Writes `op/UNITS.tsv`, one row per unit, and the `op/` tree skeleton: a placeholder
+`op/<unit>.cpp` for every unit, a placeholder `op/<unit>.h` where a header beside the unit is
+evidenced, and the units' entries in `harness/units.json`. See `op/README.md`.
 
 Evidence, strongest first:
 
@@ -38,7 +38,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 SDK_MATCHES = os.path.join(REPO, 'analysis', 'results', 'StarFleetOP_2552_sdklib_matches.tsv')
-GAME = os.path.join(REPO, 'game')
+GAME = os.path.join(REPO, 'op')
 UNITS_TSV = os.path.join(GAME, 'UNITS.tsv')
 UNITS_JSON = os.path.join(REPO, 'harness', 'units.json')
 
@@ -54,10 +54,10 @@ DERIVED = (PROFILE, GAME_PROFILE)   # the profiles an address range gives
 PAGE = 0x1000
 COLUMNS = ('unit', 'first', 'last', 'functions', 'evidence', 'profile', 'header')
 MARKER = '// Placeholder written by tools/units.py.'
-# Paths under game/ that other packages own: the generator never writes or deletes them.
+# Paths under op/ that other packages own: the generator never writes or deletes them.
 NOT_OURS = ('port/', 'common/dynamicallocator.')
 
-# Original source roots, matched inside an absolute path, and their directory under game/
+# Original source roots, matched inside an absolute path, and their directory under op/
 # (docs/CONVENTIONS.md section 2). The SDK's script projects keep their copy of the game's
 # shared source under SCRIPTS\Shared, laid out as the game's tree.
 ROOTS = [
@@ -73,7 +73,7 @@ ROOTS = [
 ]
 ROOTS = [(re.compile(p, re.I), d) for p, d in ROOTS]
 ABSOLUTE = re.compile(r'^[A-Za-z]:\\')
-# The SDK's shipped source tree (Scripts/shared) and its directories under game/.
+# The SDK's shipped source tree (Scripts/shared) and its directories under op/.
 SDK_TREE = [('Source/Taldren/Common/', 'Common/'), ('Source/', 'Source/'), ('Meta/', 'Meta/'),
             ('QSI/Projects/QSIInc/Tiger/', 'Tiger/')]
 CLASS_NAME = re.compile(r'^([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)::~?[A-Za-z_]\w*$')
@@ -107,7 +107,7 @@ def read_functions(path=FUNCTIONS_CSV):
 
 
 def game_path(original):
-    """`game/`-relative path of an absolute original source path, or None for another root."""
+    """`op/`-relative path of an absolute original source path, or None for another root."""
     if not original or not ABSOLUTE.match(original):
         return None
     for pattern, directory in ROOTS:
@@ -119,7 +119,7 @@ def game_path(original):
 
 
 def header_path(original):
-    """`game/`-relative path of a header named by functions.csv (absolute, or relative to a
+    """`op/`-relative path of a header named by functions.csv (absolute, or relative to a
     project directory: `..\\..\\Common\\X.h`)."""
     p = game_path(original)
     if p:
@@ -228,7 +228,7 @@ def _relative_to(unit, header):
 
 
 def sdk_tree_headers(sdk_dir):
-    """`game/`-relative paths of the headers the SDK ships in its copy of the shared tree."""
+    """`op/`-relative paths of the headers the SDK ships in its copy of the shared tree."""
     root = os.path.join(sdk_dir, 'Scripts', 'shared')
     out = set()
     for d, dirs, files in os.walk(root):
@@ -438,7 +438,7 @@ def placeholder(row):
     return (f'{MARKER} Delete this block when the unit\'s first\n'
             f'// function lands; the generator never touches a file with content.\n'
             f'// Unit:      {row["unit"]}\n'
-            f'// Functions: {row["first"]} to {row["last"]}, {row["functions"]} in game/UNITS.tsv\n'
+            f'// Functions: {row["first"]} to {row["last"]}, {row["functions"]} in op/UNITS.tsv\n'
             f'// Evidence:  {EVIDENCE_TEXT[row["evidence"]]}\n'
             f'// Profile:   {row["profile"]} (harness/units.json)\n')
 
@@ -451,7 +451,7 @@ def header_placeholder(row):
 
 PLACEHOLDER_FIELDS = re.compile(
     r'// Unit:      (?P<unit>\S+)\n'
-    r'// Functions: (?P<first>0x[0-9a-f]{8}) to (?P<last>0x[0-9a-f]{8}), (?P<functions>\d+) in game/UNITS\.tsv\n'
+    r'// Functions: (?P<first>0x[0-9a-f]{8}) to (?P<last>0x[0-9a-f]{8}), (?P<functions>\d+) in op/UNITS\.tsv\n'
     r'// Evidence:  (?P<evidence>[a-z-]+) .*\n'
     r'// Profile:   (?P<profile>\S+) \(harness/units\.json\)\n')
 HEADER_FIELDS = re.compile(r'// Header of: (?P<unit>\S+)\n')
@@ -555,7 +555,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n\n')[0])
     ap.add_argument('--sdk', help='the SDK directory (default: beside the exe in the install)')
     ap.add_argument('--check', action='store_true',
-                    help='only compare the map with game/UNITS.tsv; exit 1 if it differs')
+                    help='only compare the map with op/UNITS.tsv; exit 1 if it differs')
     ap.add_argument('--reprofile', action='store_true',
                     help="replace each unit's profile in harness/units.json with the one its address "
                          'range gives, keeping a profile of its own (an integrator change to '
@@ -579,7 +579,7 @@ def main(argv=None):
     if args.check:
         with open(UNITS_TSV) as f:
             same = f.read() == text
-        print('units.py: game/UNITS.tsv is ' + ('current' if same else 'out of date'))
+        print('units.py: op/UNITS.tsv is ' + ('current' if same else 'out of date'))
         return 0 if same else 1
     os.makedirs(GAME, exist_ok=True)
     with open(UNITS_TSV, 'w', newline='\n') as f:

@@ -13,7 +13,7 @@
 # (Sonnet, a fix round) claims the function and is committed.
 #
 # Everything happens in a scratch git repository under $SFCOP_WORK/harness/loopproof: a copy of
-# this checkout's files with the SDK tree as game/. It is never pushed and holds the only commits
+# this checkout's files with the SDK tree as op/. It is never pushed and holds the only commits
 # the loop makes. Uses the Max login (no API key) and a few minutes of one Opus session.
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
@@ -38,14 +38,14 @@ fn=0x006fc750
 rm -rf "$proof"
 mkdir -p "$proof/repo/game" "$proof/state" "$here/results"
 (cd "$repo" && git ls-files -co --exclude-standard -z | xargs -0 tar cf - | tar xf - -C "$proof/repo")
-# game/ is the SDK tree alone, and nothing is recorded yet: the checkout's own units claim
+# op/ is the SDK tree alone, and nothing is recorded yet: the checkout's own units claim
 # functions (0x006fc750 among them) that the proof needs unclaimed.
 rm -rf "$proof/repo/game"; mkdir -p "$proof/repo/game"
 printf '{"version": 1, "functions": {}}\n' > "$proof/repo/analysis/results/matched_set.json"
 head -1 "$repo/analysis/results/difficult_functions.tsv" > "$proof/repo/analysis/results/difficult_functions.tsv"
-cp -R "$sdk/Scripts" "$sdk/STL" "$proof/repo/game/"
+cp -R "$sdk/Scripts" "$sdk/STL" "$proof/repo/op/"
 chmod -R u+w "$proof/repo/game"
-flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/repo/game/Scripts/ScriptInterface/_ScriptInterface.dsp" \
+flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/repo/op/Scripts/ScriptInterface/_ScriptInterface.dsp" \
         | sed 's/^# ADD CPP //' | tr -d '\r')
 python3 - "$proof/units.json" "$flags" "$proof/state/queue.json" "$fn" <<'EOF'
 import json, sys
@@ -62,7 +62,7 @@ EOF
 cd "$proof/repo"
 git init -q -b grind/loop-proof
 git add -A
-git commit -q -m "loop proof: base tree with the SDK as game/" --no-verify
+git commit -q -m "loop proof: base tree with the SDK as op/" --no-verify
 
 export SFCOP_ROOT="$ROOT" SFCOP_WORK="$WORK" SFCOP_REFERENCE="$REF"
 export HARNESS_STATE="$proof/state" HARNESS_UNITS="$proof/units.json"
@@ -87,7 +87,7 @@ git status --porcelain; ls harness/lib/planted.py 2>&1 | sed 's/^.*: //'
 echo "\$ git log --format=%s"
 git log --format=%s
 echo "\$ git log -1 --stat"
-git log -1 --stat --format='%s%n%n%b' | grep -v '^ game/S[CT]' | head -12
+git log -1 --stat --format='%s%n%n%b' | grep -v '^ op/S[CT]' | head -12
 echo "\$ git diff -U0 HEAD~1 -- game   (changed lines only; the SDK source itself is not shown)"
 git diff -U0 HEAD~1 -- game | grep -E '^(\+\+\+|[+-][^+-])'
 echo "\$ cat analysis/results/matched_set.json"

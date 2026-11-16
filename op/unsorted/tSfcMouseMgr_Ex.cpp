@@ -1,5 +1,5 @@
 // tSfcMouseMgr_Ex: the game's mouse manager (RTTI name).
-// Original source file unknown; functions grouped by class (game/UNITS.tsv).
+// Original source file unknown; functions grouped by class (op/UNITS.tsv).
 
 class tSfcMouseMgr_Ex {
 public:

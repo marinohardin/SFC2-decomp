@@ -7,18 +7,18 @@ created yet: the plan phase decides, and `harness/` follows whatever it decides 
 ## The tree
 
 ```
-game/                         rebuilt game code, compiled by VC6 SP4 and scored by the harness
+op/                         rebuilt game code, compiled by VC6 SP4 and scored by the harness
   <original path>/<Unit>.cpp  one file per original translation unit, at its original path
   <original path>/<Unit>.h    headers beside their units, as in the original tree
   unsorted/<Class>.cpp        units whose original file is not known yet (see below)
 src/                          the platform layer (SDL3, audio, files, sockets); never scored
-harness/units.json            compile profile of every unit in game/ (protected)
+harness/units.json            compile profile of every unit in op/ (protected)
 ```
 
 `PROPOSAL.md` (Phase 2) and the owner's porting conventions put decompiled game code in
-`game/` and the platform layer in `src/`, so this proposal does the same; the brief for this
-task called the tree `src/`. Only `game/` matters to the harness, and its location is one
-setting (`HARNESS_SRC_ROOT`, default `game/`).
+`op/` and the platform layer in `src/`, so this proposal does the same; the brief for this
+task called the tree `src/`. Only `op/` matters to the harness, and its location is one
+setting (`HARNESS_SRC_ROOT`, default `op/`).
 
 ## One file per original translation unit
 
@@ -26,10 +26,10 @@ setting (`HARNESS_SRC_ROOT`, default `game/`).
   assertion text (`translation_unit` in `ghidra/exports/functions.csv`, 1,658 functions today),
   the `.file` and member names in the SDK libraries, then the class. The prefix that was the
   original developers' drive and project root is dropped, so a unit compiled as
-  `C:\...\Taldren\Common\DynamicAllocator.cpp` lives at `game/Common/DynamicAllocator.cpp`
-  (`docs/CONVENTIONS.md` §2 and §3 give the tree; `game/UNITS.tsv` the map).
-- **Unknown origin.** A function whose unit is not known goes into `game/unsorted/<Class>.cpp`
-  with the rest of its class (or `game/unsorted/fn_<page>.cpp` for free functions, grouped by
+  `C:\...\Taldren\Common\DynamicAllocator.cpp` lives at `op/Common/DynamicAllocator.cpp`
+  (`docs/CONVENTIONS.md` §2 and §3 give the tree; `op/UNITS.tsv` the map).
+- **Unknown origin.** A function whose unit is not known goes into `op/unsorted/<Class>.cpp`
+  with the rest of its class (or `op/unsorted/fn_<page>.cpp` for free functions, grouped by
   4 KB address page, since the linker kept units contiguous). When evidence for its unit turns up,
   it moves; the matched set is keyed by address, so a move cannot lose a score.
 - **Order.** Functions appear in the order of their original addresses. VC6 emitted a unit's
@@ -69,7 +69,7 @@ tDynamicAllocator* tDynamicAllocator::Instance()
 - An annotation may sit in a header (`.h`, `.inl`) when the original wrote the code there: on
   an `inline` out-of-class destructor definition, for the class's deleting destructor, or on a
   part binding inside a class body. A header is not a unit, so the claim is compiled in the unit
-  `game/UNITS.tsv` assigns to its address, which must include the header (directly or through
+  `op/UNITS.tsv` assigns to its address, which must include the header (directly or through
   other headers); anything else is an error (`harness/lib/claims.py`). The symbol is found by the
   usual rule for the claim form, from the header's line records in that unit's listing; an inline
   destructor's deleting destructor is the `??_G` / `??_E` whose mangled class is the class on the
@@ -99,11 +99,11 @@ start. The game's own objects, below that address, were built for size: `game-re
 same line with `/O1` for `/O2` (`toolchain/calibration/game_flags.md`). `tools/units.py` gives
 each unit its profile from its address range. A unit that cannot match under its profile is
 evidence of different flags, recorded per unit, never changed by an agent. Include directories
-(`game/` itself, then vendored headers) are set when the first game units exist.
+(`op/` itself, then vendored headers) are set when the first game units exist.
 
 ## Rules the harness enforces on this tree
 
-- Function sessions may edit only files under `game/`, and never `.asm`/`.obj` output.
+- Function sessions may edit only files under `op/`, and never `.asm`/`.obj` output.
 - `harness/units.json`, `analysis/results/matched_set.json` and everything else that judges are
   read-only to them (harness/hooks).
 - `--all` re-verifies every recorded function, so moving a function between units, renaming

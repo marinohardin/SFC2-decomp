@@ -8,13 +8,13 @@ The standard every change is held to. `DESIGN.md` says what the system does; thi
 
 | Tool | Convention |
 | --- | --- |
-| Languages | `game/`: C++ that compiles with VC6 SP4 (the byte check and the 32-bit build) and with clang in C++17 mode (the native build, §4.1); `src/`, `server/`, `tools/`: C++17; tooling: Python 3.11 or later, standard library only unless `third_party/` says otherwise |
+| Languages | `op/`: C++ that compiles with VC6 SP4 (the byte check and the 32-bit build) and with clang in C++17 mode (the native build, §4.1); `src/`, `server/`, `tools/`: C++17; tooling: Python 3.11 or later, standard library only unless `third_party/` says otherwise |
 | Compilers | VC6 SP4 in the `sfcop-msvc6` container (`toolchain/`); Apple clang on macOS; clang or MSVC on Windows; clang on Linux. Versions in `toolchain/VERSIONS.md` |
 | Build | CMake 3.28 or later with Ninja for the native build, the tools and the tests (`cmake --preset <platform>`); `toolchain/` scripts for the VC6 side; `-j4` on the owner's machine |
 | Package manager | None. `third_party/` holds pinned copies or pinned FetchContent declarations; Python tooling uses a venv under `work/` with `PIP_CACHE_DIR` there |
 | Tests | `python3 -m pytest tests` for tooling; CTest with doctest for C++ (§6); the harness and the oracle through `sh scripts/check.sh` |
-| Format | clang-format with the repository's `.clang-format` for `src/`, `server/` and `tools/` only; `game/` keeps the original's style and is never reformatted |
-| Lint | None beyond the compiler at `-Wall -Wextra -Werror` for `src/`; `game/` builds with warnings allowed |
+| Format | clang-format with the repository's `.clang-format` for `src/`, `server/` and `tools/` only; `op/` keeps the original's style and is never reformatted |
+| Lint | None beyond the compiler at `-Wall -Wextra -Werror` for `src/`; `op/` builds with warnings allowed |
 | CI | GitHub Actions on the self-hosted runner `sfcop-mac`; the same `scripts/check.sh` as locally |
 
 Versions are pinned in a file in the repository, never "latest".
@@ -22,7 +22,7 @@ Versions are pinned in a file in the repository, never "latest".
 ## 2. Repository layout
 
 ```
-game/                 the decompiled original, one file per original translation unit at its original path
+op/                 the decompiled original, one file per original translation unit at its original path
   Source/...          SFC2_5\Source: the game proper
   Meta/...            the Dynaverse client
   Common/...          Taldren's utility layer (SharedR)
@@ -46,7 +46,7 @@ docs/                 DESIGN.md, CONVENTIONS.md, PLAN.md, FIXES.md
 spike/                Phase 0 and 1 spikes, frozen; read, never extended
 ```
 
-What may include what: `game/` includes only `game/`, by paths from the `game/` root (§4.1); `src/hle/` includes `src/platform/` headers and the `game/` headers a layout needs; `src/platform/` includes `third_party/` and the C++ standard library, never Win32; `src/app/` includes anything in `src/`; `server/` includes `src/net/` and `third_party/`; `tools/` includes `src/` where it must. Generated files (lifted code, objects, traces under test, build directories) live under `work/` or `build/`, never in git.
+What may include what: `op/` includes only `op/`, by paths from the `op/` root (§4.1); `src/hle/` includes `src/platform/` headers and the `op/` headers a layout needs; `src/platform/` includes `third_party/` and the C++ standard library, never Win32; `src/app/` includes anything in `src/`; `server/` includes `src/net/` and `third_party/`; `tools/` includes `src/` where it must. Generated files (lifted code, objects, traces under test, build directories) live under `work/` or `build/`, never in git.
 
 ## 3. Naming
 
@@ -54,8 +54,8 @@ Files
 
 | Kind | Convention | Example |
 | --- | --- | --- |
-| Decompiled unit | The original path and file name, drive and project root dropped | `game/Common/DynamicAllocator.cpp` |
-| Unknown-origin unit | `game/unsorted/<Class>.cpp`, or `fn_<page>.cpp` for free functions by 4 KB page | `game/unsorted/tShipYard.cpp` |
+| Decompiled unit | The original path and file name, drive and project root dropped | `op/Common/DynamicAllocator.cpp` |
+| Unknown-origin unit | `op/unsorted/<Class>.cpp`, or `fn_<page>.cpp` for free functions by 4 KB page | `op/unsorted/tShipYard.cpp` |
 | New C++ source | One class or component per file, named after it, UpperCamelCase | `src/platform/Audio/Audio.h`, `src/hle/miles/Miles.cpp` |
 | Tests | `<Unit>Test.cpp` beside the code for C++; `tests/test_<topic>.py` for Python | `src/net/EnvelopeTest.cpp` |
 | Documents and data | `UPPER.md` for the documents the workflow names, lowercase for data | `docs/FIXES.md`, `src/hle/surface.tsv` |
@@ -73,21 +73,21 @@ Identifiers
 | Fix switches | lower_snake_case, verb first | `fix_shield_overflow` |
 | Macros | `SFCOP_` prefix | `SFCOP_FIX(fix_shield_overflow)` |
 
-Branches follow §7.1. Commit scopes are the top-level directory or the component: `feat(hle/dinput): ...`, `fix(game/Switch): ...`, `docs(design): ...`.
+Branches follow §7.1. Commit scopes are the top-level directory or the component: `feat(hle/dinput): ...`, `fix(op/Switch): ...`, `docs(design): ...`.
 
 ## 4. Code style
 
-### 4.1 Decompiled code (`game/`)
+### 4.1 Decompiled code (`op/`)
 
 - The goal is the original's source, so the style is the original's: its spacing, its idioms, its member order. The matched SDK sources (`Common/`, the scripting library) show that style; follow it.
 - Every function carries its `// FUNCTION: STARFLEETOP 0x...` or `// STUB:` line (DESIGN §6.3). Functions appear in address order inside a unit.
 - A function VC6 generates from a global object's definition, with no source line of its own, is claimed by annotations stacked directly above that definition (`tINIMgr g_tINIMgr;`), never by a stand-in function: counted upwards from the definition, the dynamic initializer (whose annotation is the one directly above the line), the atexit registration, the atexit destructor (`tools/manifest.py`).
-- Includes are paths from the `game/` root: `#include "Common/DynamicAllocator.h"`, with `game/` and `game/port/` the only include directories (owner's decision, 2026-11-04). The original wrote bare file names with a long list of include directories; its include lines are rewritten to this form when a unit is imported, and that rewrite is the one standing exception to "the original's source", since include lines change no code bytes.
+- Includes are paths from the `op/` root: `#include "Common/DynamicAllocator.h"`, with `op/` and `op/port/` the only include directories (owner's decision, 2026-11-04). The original wrote bare file names with a long list of include directories; its include lines are rewritten to this form when a unit is imported, and that rewrite is the one standing exception to "the original's source", since include lines change no code bytes.
 - Only what VC6 SP4 compiles: no C++11 or later, no `long long`, no anonymous namespaces where the original had none. When the guest mode is retired the whole tree compiles with clang in C++17 mode with `-fms-extensions`; a construct clang would reject is fixed with a `PORT:` line when it is written, never by forking the file.
 - A `PORT:` line is one line, tagged on the line itself: `// PORT: <reason>`. The reasons allowed: 64-bit or pointer-size hygiene, undefined behavior the original relied on, a platform difference the HLE surface cannot absorb. Everything else belongs in `src/`, or in an override unit under `src/fixes/overrides/` behind a fix switch.
-- No fix is written into `game/`: no `#if SFCOP_FIX(name)`, no changed line. A fix to a game function is a copy of that function in `src/fixes/overrides/<Dir>/<unit>.cpp`, annotated `// OVERRIDE: STARFLEETOP 0x... fix_name`, in this same style, with the change and a comment on the line that differs (DESIGN §6.9). The byte check never sees it, so no fix changes a function's `FUNCTION:` status.
-- Pointer-typed members and `long` keep the original's VC6 types. The native build takes the VC6 object of a unit and lifts it (DESIGN §7.2, §12.4), so `game/` is never compiled in a guest mode; `game/port/types.h` is the fallback route's header and nothing in `game/` depends on it.
-- A `MATCH-ONLY:` comment marks code in `game/` whose form exists only to make VC6 emit the original bytes: an `inline` the original's compiler chose by itself, a compiler-generated member written out, a load order, or a helper with no original address that is never called and exists only so the compiler emits an original function out of line. The comment names the function it serves and why the plain form does not match. A helper of that last kind carries no `// FUNCTION:` line, is not counted or claimed, and stays in the unit of the function it serves; when a later match makes it unnecessary it is deleted. `MATCH-ONLY:` never changes behavior; a change in behavior is a `PORT:` line or a fix.
+- No fix is written into `op/`: no `#if SFCOP_FIX(name)`, no changed line. A fix to a game function is a copy of that function in `src/fixes/overrides/<Dir>/<unit>.cpp`, annotated `// OVERRIDE: STARFLEETOP 0x... fix_name`, in this same style, with the change and a comment on the line that differs (DESIGN §6.9). The byte check never sees it, so no fix changes a function's `FUNCTION:` status.
+- Pointer-typed members and `long` keep the original's VC6 types. The native build takes the VC6 object of a unit and lifts it (DESIGN §7.2, §12.4), so `op/` is never compiled in a guest mode; `op/port/types.h` is the fallback route's header and nothing in `op/` depends on it.
+- A `MATCH-ONLY:` comment marks code in `op/` whose form exists only to make VC6 emit the original bytes: an `inline` the original's compiler chose by itself, a compiler-generated member written out, a load order, or a helper with no original address that is never called and exists only so the compiler emits an original function out of line. The comment names the function it serves and why the plain form does not match. A helper of that last kind carries no `// FUNCTION:` line, is not counted or claimed, and stays in the unit of the function it serves; when a later match makes it unnecessary it is deleted. `MATCH-ONLY:` never changes behavior; a change in behavior is a `PORT:` line or a fix.
 - No comment restates the code. A comment records evidence (`// matches SharedR.lib DynamicAllocator.obj`), a judgement (`// the original reads one past the end here; kept, see fix_...`) or a `PORT:` reason.
 
 ### 4.2 New code (`src/`, `server/`, `tools/`)
@@ -156,11 +156,11 @@ Branches follow §7.1. Commit scopes are the top-level directory or the componen
 ## 8. Checklists
 
 **Decompiling a function**
-1. Find it in `ghidra/exports/functions.csv`; take the unit path from its evidence, or `game/unsorted/`.
+1. Find it in `ghidra/exports/functions.csv`; take the unit path from its evidence, or `op/unsorted/`.
 2. Write it at its address position in the unit with its `// FUNCTION:` line and the original identifiers.
 3. `harness/build-and-verify.sh 0x<address>` until exact, or until the harness's stop rule ends the run; the harness records it in `difficult_functions.tsv` or `revisit_functions.tsv` (harness/README.md, "Model tiers and the stop rule").
 4. `harness/update-matched-set.sh 0x<address>`; `python3 scripts/progress.py --gate`.
-5. Commit: `feat(game/<dir>): decompile <Class>::<Method>`; the matched set change in the same commit.
+5. Commit: `feat(op/<dir>): decompile <Class>::<Method>`; the matched set change in the same commit.
 
 **Closing a grind batch**
 1. Once the batch's pull requests are merged, on a branch cut from `develop`: `python3 scripts/progress.py --markdown --matched-set analysis/results/matched_set.json`, then `python3 tools/progress_chart.py`. Nothing in the output is edited by hand, and a warning from the second script is fixed, not ignored.
@@ -180,7 +180,7 @@ Branches follow §7.1. Commit scopes are the top-level directory or the componen
 
 **Adding a fix**
 1. Row in `docs/FIXES.md`: name, default, origin, behaviors, tests.
-2. The switch declared in `src/fixes/switches.def` (DESIGN §6.9). A `runtime` fix reads it in `src/` with `isEnabled`. A `build` fix is an override unit: copy the function from `game/` into `src/fixes/overrides/<Dir>/<unit>.cpp` with `// OVERRIDE: STARFLEETOP 0x... fix_<name>` on the line before it, make the change, and comment the changed line. `game/` is not touched.
+2. The switch declared in `src/fixes/switches.def` (DESIGN §6.9). A `runtime` fix reads it in `src/` with `isEnabled`. A `build` fix is an override unit: copy the function from `op/` into `src/fixes/overrides/<Dir>/<unit>.cpp` with `// OVERRIDE: STARFLEETOP 0x... fix_<name>` on the line before it, make the change, and comment the changed line. `op/` is not touched.
 3. A test in each position; the byte check is unchanged, since it never compiles an override.
 4. Commit: `fix(fixes): <what> (fix_<name>)`, or `fix(hle/<module>)` for a runtime fix below the surface.
 

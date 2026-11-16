@@ -16,7 +16,7 @@ from everything that judges; scores only go up.
 | `loop.sh` | The headless loop: one fresh `claude -p` per function |
 | `prompts/function.md` | The prompt each session gets |
 | `hooks/` | `PreToolUse` guard and `Stop` verifier, plus `settings.fragment.json` to merge |
-| `SRC_LAYOUT.md` | Proposed layout of the rebuilt source (`game/`, one file per original unit) |
+| `SRC_LAYOUT.md` | Proposed layout of the rebuilt source (`op/`, one file per original unit) |
 | `proof/` | The round-trip proofs and their transcripts (`proof/results/`) |
 | `lib/`, `tests/` | The Python behind all of the above (stdlib only), and its tests |
 
@@ -42,11 +42,11 @@ harness/build-and-verify.sh --all                  # re-verify every function in
 harness/build-and-verify.sh --all --base origin/develop   # and hold it to the base branch's copy
 ```
 
-1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `game/`) with
+1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).
    That file is the unit, unless it is a header (`.h`, `.inl`): a claim the original wrote in a
    header (an inline destructor's deleting destructor, a part binding in a class body) is
-   compiled in the unit `game/UNITS.tsv` assigns to its address, which must include the header,
+   compiled in the unit `op/UNITS.tsv` assigns to its address, which must include the header,
    directly or through other headers; anything else is an error (`lib/claims.py`, shared with
    `tools/manifest.py` and the object lift).
 2. Compiles that unit with `toolchain/bin/cl` and the unit's profile from `units.json`, adding
@@ -221,13 +221,13 @@ only pieces of one: a fragment of a static initializer, the tail of a neighbouri
 compiler stub with no source line. Each row gives the address, its name in the analysis, the
 function it belongs to (`part_of`, when known), the kind and a note. A piece of a function has no
 source of its own, and an empty body written only so the harness can score the range is not the
-original's code, so `game/` holds no definition for a listed address. The rows whose note begins
-"Body kept in game/" are the exception for now: removing their empty bodies changes which compiled
+original's code, so `op/` holds no definition for a listed address. The rows whose note begins
+"Body kept in op/" are the exception for now: removing their empty bodies changes which compiled
 function a neighbouring annotation claims, so they stay until those neighbours are claimed another
 way.
 
 The queue never takes a listed address. The matched-set gate lets a pull request drop the entry of
-a listed address that was never exact and that no `// FUNCTION:` annotation in `game/` still
+a listed address that was never exact and that no `// FUNCTION:` annotation in `op/` still
 claims, with an `INFO` line saying so; an exact entry can never be dropped this way. A row comes
 off the list when the analysis is corrected and the whole function is claimed at its real start.
 
@@ -253,7 +253,7 @@ An entry whose name says deleting destructor (`scalar_deleting_destructor` /
 `vector_deleting_destructor`) but whose recorded symbol is a plain destructor (`??1`) was scored
 against the wrong function: the destructor body, not the deleting destructor at the address. The
 gate lets a pull request drop such an entry when it was never exact and no `// FUNCTION:`
-annotation in `game/` still claims it, with an `INFO` line saying so (`matched.release_misscored`).
+annotation in `op/` still claims it, with an `INFO` line saying so (`matched.release_misscored`).
 This happens when a class's destructor becomes inline in its header, as the original wrote it, and
 the unit the address belongs to no longer emits anything to score.
 
@@ -279,7 +279,7 @@ where a session cannot change it, and sets `HARNESS_BRIEF` to that copy; each at
 `.prompt.md` shows exactly what the session was given. If the prompt cannot be built (the copy
 has become unreadable, say), the loop stops before starting the session.
 
-`--unit` takes a unit path from `game/UNITS.tsv` and `--address` a function address; each may
+`--unit` takes a unit path from `op/UNITS.tsv` and `--address` a function address; each may
 be given more than once. Before the first round the loop runs `queue.py select`, which resolves
 them against the queue and writes the open functions they cover, in address order, to
 `$HARNESS_STATE/selection.json`; `queue.py next` then takes only those, and the loop stops with
@@ -359,8 +359,8 @@ Before each session the loop builds a pack for the function (`lib/pack.py`; the 
    cache headless from the project, read-only, for every non-library function (26,399), or for
    an address list given as its argument; it skips what is already there.
 2. The direct callees (`call rel32` targets that are function starts), with their prototypes
-   from `functions.csv` and the file under `game/` that already holds one.
-3. The declarations of the classes it touches, its own first, from the headers under `game/`;
+   from `functions.csv` and the file under `op/` that already holds one.
+3. The declarations of the classes it touches, its own first, from the headers under `op/`;
    classes declared in no header are named so the session searches before declaring one.
 4. One function already exact in `matched_set.json` from the same class, or else the same unit,
    nearest by address, as it stands in the source.
@@ -404,11 +404,11 @@ source root's only unit, compiled with the SDK's Release flags; `tDynamicAllocat
 **One function through the loop** (`proof/loop_proof.sh --standin`, about 30 s,
 [`proof/results/loop_proof_standin.txt`](proof/results/loop_proof_standin.txt)). A scratch git
 repository under `$SFCOP_WORK/harness/loopproof/` holds a copy of this checkout with the SDK
-tree as `game/`; the queue holds `tDynamicAllocator::LockDownAllocator` (0x006fc750), whose code
+tree as `op/`; the queue holds `tDynamicAllocator::LockDownAllocator` (0x006fc750), whose code
 is there but unclaimed. `loop.sh --max 2` runs with `HARNESS_CLAUDE` set to
 `proof/standin_agent.py`, a scripted stand-in that makes the calls a session would: the guard
 denies its edit of `matched_set.json` and its `update-matched-set.sh`, the Stop hook blocks it
-before any change, the guard allows the annotation in `game/`, build-and-verify says 100% exact,
+before any change, the guard allows the annotation in `op/`, build-and-verify says 100% exact,
 the Stop hook then allows it.
 
 - Round 1 (Opus, build): the stand-in also writes `harness/lib/planted.py` behind the guard's
@@ -422,7 +422,7 @@ the Stop hook then allows it.
 [`proof/results/loop_proof.txt`](proof/results/loop_proof.txt)). The same scratch setup, with one
 Opus `claude -p` session: it added the annotation, build-and-verify said 100% exact, the Stop hook
 let it finish, and the loop committed it (6 turns, 37 s). It needs `claude auth login` on this
-machine. The scratch `game/` is the SDK tree alone with an empty matched set: an earlier run
+machine. The scratch `op/` is the SDK tree alone with an empty matched set: an earlier run
 copied the checkout's own units, where the function is already claimed, and its session deleted
 that other unit's annotation to get past the double claim, which led to the claim-line rule under
 Hooks.

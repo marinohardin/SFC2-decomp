@@ -229,7 +229,7 @@ def _shown(path):
 
 def _units_for(addresses, annotations, src_root, units_tsv=None):
     """Group addresses by the unit that compiles their claim (source.claim_unit: the
-    annotation's own file, or for one in a header the unit game/UNITS.tsv assigns):
+    annotation's own file, or for one in a header the unit op/UNITS.tsv assigns):
     ({unit path: [(address, Annotation)]}, [(address, number of annotations)] for an address
     claimed by none or several, [(address, error)] for a header claim with no unit)."""
     out, missing, unplaced = {}, [], []
@@ -248,7 +248,7 @@ def _units_for(addresses, annotations, src_root, units_tsv=None):
 
 
 def claimed_keys(cfg=None):
-    """The matched-set keys of every address a FUNCTION annotation in game/ claims."""
+    """The matched-set keys of every address a FUNCTION annotation in op/ claims."""
     cfg = cfg or source.load_units()
     return {matched.key(a) for a, anns in source.scan_annotations(paths.SRC_ROOT, cfg['module']).items()
             if any(x.kind == 'FUNCTION' for x in anns)}

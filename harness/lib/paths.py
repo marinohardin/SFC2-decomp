@@ -63,9 +63,9 @@ BOUNDARIES = env_path('HARNESS_BOUNDARIES',
                       os.path.join(REPO, 'analysis', 'results', 'boundary_errors.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
 # The unit map (tools/units.py): one row per translation unit with its address range.
-UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'game', 'UNITS.tsv'))
+UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'op', 'UNITS.tsv'))
 # Rebuilt game source (see harness/SRC_LAYOUT.md).
-SRC_ROOT = env_path('HARNESS_SRC_ROOT', os.path.join(REPO, 'game'))
+SRC_ROOT = env_path('HARNESS_SRC_ROOT', os.path.join(REPO, 'op'))
 # Generated, uncommitted state. Per checkout, so loops in several worktrees do not overwrite
 # each other's claim, queue and objects: work/harness/wt-<checkout>-<hash of its path>/.
 _wt = f'wt-{os.path.basename(REPO)}-{hashlib.sha1(REPO.encode()).hexdigest()[:8]}'

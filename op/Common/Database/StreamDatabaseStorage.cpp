@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
 // Unit:      Common/Database/StreamDatabaseStorage.cpp
-// Functions: 0x0070ac90 to 0x0070c490, 20 in game/UNITS.tsv
+// Functions: 0x0070ac90 to 0x0070c490, 20 in op/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
 // Profile:   sdk-release (harness/units.json)

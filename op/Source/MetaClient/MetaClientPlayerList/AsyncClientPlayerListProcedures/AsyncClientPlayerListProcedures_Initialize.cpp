@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
 // Unit:      Source/MetaClient/MetaClientPlayerList/AsyncClientPlayerListProcedures/AsyncClientPlayerListProcedures_Initialize.cpp
-// Functions: 0x00601f08 to 0x00601fec, 4 in game/UNITS.tsv
+// Functions: 0x00601f08 to 0x00601fec, 4 in op/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
 // Profile:   game-release (harness/units.json)

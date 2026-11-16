@@ -1,4 +1,4 @@
-"""Tests for tools/units.py and the committed unit map (game/UNITS.tsv, game/, harness/units.json).
+"""Tests for tools/units.py and the committed unit map (op/UNITS.tsv, op/, harness/units.json).
 
 The fixture tests use invented functions; their expected rows are worked out by hand in the
 comments. The committed-map tests read only committed files. One test regenerates the map from the
@@ -241,7 +241,7 @@ def test_placeholder_text():
         "// Placeholder written by tools/units.py. Delete this block when the unit's first\n"
         "// function lands; the generator never touches a file with content.\n"
         "// Unit:      Common/TestTimer.cpp\n"
-        "// Functions: 0x00402010 to 0x00402030, 3 in game/UNITS.tsv\n"
+        "// Functions: 0x00402010 to 0x00402030, 3 in op/UNITS.tsv\n"
         "// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)\n"
         "// Profile:   sdk-release (harness/units.json)\n")
 
@@ -250,7 +250,7 @@ def test_only_the_exact_generated_text_is_a_placeholder():
     old = ("// Placeholder written by tools/units.py. Delete this block when the unit's first\n"
            "// function lands; the generator never touches a file with content.\n"
            "// Unit:      unsorted/tTestDock.cpp\n"
-           "// Functions: 0x00404100 to 0x00404180, 2 in game/UNITS.tsv\n"
+           "// Functions: 0x00404100 to 0x00404180, 2 in op/UNITS.tsv\n"
            "// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)\n"
            "// Profile:   sdk-release (harness/units.json)\n")
     assert units.is_placeholder(old)                                 # an older range: still ours
@@ -342,7 +342,7 @@ def test_reprofile_replaces_the_profile_of_every_mapped_unit(tmp_path):
 # --- the committed map --------------------------------------------------------------------------
 
 def _committed():
-    rows = units.read_tsv(str(ROOT / 'game' / 'UNITS.tsv'))
+    rows = units.read_tsv(str(ROOT / 'op' / 'UNITS.tsv'))
     with open(ROOT / 'ghidra' / 'exports' / 'functions.csv', newline='') as f:
         addresses = sorted(int(r['address'], 16) for r in csv.DictReader(f))
     return rows, addresses
@@ -375,7 +375,7 @@ def test_no_two_units_overlap_and_no_unit_repeats():
 
 def test_placeholders_match_the_tsv():
     rows, _ = _committed()
-    game = ROOT / 'game'
+    game = ROOT / 'op'
     expected = {}
     for r in rows:
         expected[r['unit']] = units.placeholder(r)

@@ -616,12 +616,12 @@ def test_scan_reads_headers_and_a_header_claim_is_compiled_in_its_units_unit(tmp
 
 @pytest.mark.parametrize('units,cpp,message', [
     ('Test/unit.cpp\t0x00401000\t0x004014ff\n', SHIP_CPP,
-     '0x00401500 is claimed in the header Test/ship.h, but no row of game/UNITS.tsv holds that '
+     '0x00401500 is claimed in the header Test/ship.h, but no row of op/UNITS.tsv holds that '
      'address'),
     ('Test/gone.cpp\t0x00401000\t0x004016ff\n', SHIP_CPP,
-     'game/UNITS.tsv assigns it to Test/gone.cpp, which does not exist'),
+     'op/UNITS.tsv assigns it to Test/gone.cpp, which does not exist'),
     ('Test/unit.cpp\t0x00401000\t0x004016ff\n', SHIP_CPP.replace('"Test/ship.h"', '<string.h>'),
-     'game/UNITS.tsv assigns it to Test/unit.cpp, which does not include that header'),
+     'op/UNITS.tsv assigns it to Test/unit.cpp, which does not include that header'),
 ])
 def test_a_header_claim_without_a_unit_that_includes_it_is_an_error(tmp_path, units, cpp, message):
     game = _ship_tree(tmp_path, units=units, cpp=cpp)

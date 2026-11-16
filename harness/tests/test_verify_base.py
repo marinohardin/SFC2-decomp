@@ -315,4 +315,4 @@ def test_a_recorded_header_claim_with_no_unit_is_a_regression_under_all(empty_tr
     rep = verify.run([], check_all=True)
     assert rep.regressions == [0x401010]
     assert any('0x00401010 A::f REGRESSION: 0x00401010 is claimed in the header Test/ship.h, but '
-               'no row of game/UNITS.tsv holds that address' in ln for ln in rep.lines)
+               'no row of op/UNITS.tsv holds that address' in ln for ln in rep.lines)

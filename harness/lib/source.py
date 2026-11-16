@@ -7,7 +7,7 @@ A function is claimed by an annotation on the line(s) before it (harness/SRC_LAY
     tDynamicAllocator* tDynamicAllocator::Instance()
 
 `STUB:` instead of `FUNCTION:` marks a placeholder that is not scored. An annotation in a unit is
-compiled in that unit; one in a header in the unit game/UNITS.tsv assigns to its address
+compiled in that unit; one in a header in the unit op/UNITS.tsv assigns to its address
 (harness/lib/claims.py), whose listing has line records for the header's inline code.
 """
 import hashlib
@@ -77,7 +77,7 @@ def scan_annotations(src_root, module):
 
 def claim_unit(ann, src_root, units_tsv=None):
     """The unit that compiles the annotation `ann`: its own file, or for an annotation in a
-    header the unit game/UNITS.tsv assigns to its address (harness/lib/claims.header_unit).
+    header the unit op/UNITS.tsv assigns to its address (harness/lib/claims.header_unit).
     Raises SourceError when a header claim has no such unit."""
     if not claims.is_header(ann.path):
         return ann.path

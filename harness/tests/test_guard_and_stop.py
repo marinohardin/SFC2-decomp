@@ -8,7 +8,7 @@ from harness.lib import guard, paths, stophook
 
 @pytest.fixture(autouse=True)
 def roots(tmp_path, monkeypatch):
-    monkeypatch.setattr(paths, 'SRC_ROOT', os.path.join(paths.REPO, 'game'))
+    monkeypatch.setattr(paths, 'SRC_ROOT', os.path.join(paths.REPO, 'op'))
     monkeypatch.setattr(paths, 'STATE', str(tmp_path / 'state'))
 
 
@@ -21,9 +21,9 @@ def bash(c):
 
 
 def test_source_under_the_rebuilt_tree_may_be_edited():
-    assert edit(os.path.join(paths.REPO, 'game', 'Source', 'Ship.cpp')) is None
+    assert edit(os.path.join(paths.REPO, 'op', 'Source', 'Ship.cpp')) is None
     assert guard.decide({'tool_name': 'Write', 'cwd': paths.REPO,
-                         'tool_input': {'file_path': 'game/Source/Ship.h'}}) is None
+                         'tool_input': {'file_path': 'op/Source/Ship.h'}}) is None
 
 
 @pytest.mark.parametrize('rel', ['analysis/results/matched_set.json',
@@ -37,8 +37,8 @@ def test_judging_files_and_anything_outside_the_tree_are_denied(rel):
 
 def test_queue_listings_and_objects_are_denied():
     assert edit(os.path.join(paths.STATE, 'queue.json')) is not None
-    assert edit(os.path.join(paths.REPO, 'game', 'Source', 'Ship.asm')) is not None
-    assert edit(os.path.join(paths.REPO, 'game', 'Source', 'Ship.obj')) is not None
+    assert edit(os.path.join(paths.REPO, 'op', 'Source', 'Ship.asm')) is not None
+    assert edit(os.path.join(paths.REPO, 'op', 'Source', 'Ship.obj')) is not None
 
 
 def test_symlink_out_of_the_tree_is_followed(tmp_path):
@@ -49,7 +49,7 @@ def test_symlink_out_of_the_tree_is_followed(tmp_path):
 
 @pytest.mark.parametrize('cmd', ['harness/build-and-verify.sh 0x006fc690',
                                  'sh harness/build-and-verify.sh 0x006fc690 --json 2>&1 | tail -5',
-                                 'grep -n Instance game/Source/A.cpp', 'git diff', 'ls game',
+                                 'grep -n Instance op/Source/A.cpp', 'git diff', 'ls game',
                                  'cat harness/README.md'])
 def test_verify_and_read_only_commands_are_allowed(cmd):
     assert bash(cmd) is None
@@ -58,10 +58,10 @@ def test_verify_and_read_only_commands_are_allowed(cmd):
 @pytest.mark.parametrize('cmd', ['harness/build-and-verify.sh 0x006fc690 --record',
                                  'harness/update-matched-set.sh 0x006fc690',
                                  'python3 -m harness.lib.verify --record 0x006fc690',
-                                 'game/harness/build-and-verify.sh 0x006fc690',
+                                 'op/harness/build-and-verify.sh 0x006fc690',
                                  'rm -rf harness', 'echo {} > harness/matched_set.json',
                                  'cat $(ls)', 'git commit -am x', 'git checkout -- game',
-                                 "sed -i '' s/a/b/ game/A.cpp", 'find game -delete',
+                                 "sed -i '' s/a/b/ op/A.cpp", 'find game -delete',
                                  'HARNESS_MATCHED_SET=/tmp/m.json harness/build-and-verify.sh 0x1',
                                  'env | grep ANTHROPIC_API_KEY', 'pkill -9 bash', 'docker ps',
                                  "awk 'BEGIN{system(\"id\")}'", 'less harness/README.md'])
@@ -72,13 +72,13 @@ def test_writes_and_other_commands_are_denied(cmd):
 # Each of these wrote a file through an allowed command in review of the first version.
 @pytest.mark.parametrize('cmd', ['true & touch harness/x',
                                  'ls |& touch harness/x',
-                                 'sort -o harness/lib/verify.py game/a.cpp',
-                                 'sort -uo harness/lib/verify.py game/a.cpp',
-                                 'sort --output=harness/lib/verify.py game/a.cpp',
-                                 'sed -n "w harness/lib/verify.py" game/a.cpp',
-                                 'sed -n "s/a/b/w harness/x" game/a.cpp',
-                                 'sed -n "1e touch x" game/a.cpp',
-                                 'sed -n -f script.sed game/a.cpp',
+                                 'sort -o harness/lib/verify.py op/a.cpp',
+                                 'sort -uo harness/lib/verify.py op/a.cpp',
+                                 'sort --output=harness/lib/verify.py op/a.cpp',
+                                 'sed -n "w harness/lib/verify.py" op/a.cpp',
+                                 'sed -n "s/a/b/w harness/x" op/a.cpp',
+                                 'sed -n "1e touch x" op/a.cpp',
+                                 'sed -n -f script.sed op/a.cpp',
                                  'git diff --output=harness/x',
                                  'git log --output harness/x',
                                  'git -c core.pager=touch log',
@@ -86,20 +86,20 @@ def test_writes_and_other_commands_are_denied(cmd):
                                  'find . -fprintf harness/x %p',
                                  'find . -fprint harness/x',
                                  'find . -fls harness/x',
-                                 'xxd -r game/a.hex harness/x',
-                                 'xxd game/a.bin harness/x',
-                                 'uniq game/a.txt harness/x',
-                                 'file -C -m game/magic',
+                                 'xxd -r op/a.hex harness/x',
+                                 'xxd op/a.bin harness/x',
+                                 'uniq op/a.txt harness/x',
+                                 'file -C -m op/magic',
                                  'rg --pre touch foo game',
                                  'cat <(touch harness/x)'])
 def test_commands_that_write_through_options_are_denied(cmd):
     assert bash(cmd) is not None
 
 
-@pytest.mark.parametrize('cmd', ['sed -n 10,20p game/a.cpp', "sed -n '/Instance/p' game/a.cpp",
-                                 'sed -n -e 1,5p game/a.cpp', 'grep -o foo game/a.cpp',
-                                 'xxd -c 16 -l 64 game/a.bin', 'sort -u game/a.txt',
-                                 'uniq -c game/a.txt', 'find game -name "*.cpp"',
+@pytest.mark.parametrize('cmd', ['sed -n 10,20p op/a.cpp', "sed -n '/Instance/p' op/a.cpp",
+                                 'sed -n -e 1,5p op/a.cpp', 'grep -o foo op/a.cpp',
+                                 'xxd -c 16 -l 64 op/a.bin', 'sort -u op/a.txt',
+                                 'uniq -c op/a.txt', 'find game -name "*.cpp"',
                                  'git log -p -- game'])
 def test_read_only_forms_of_those_commands_are_allowed(cmd):
     assert bash(cmd) is None
@@ -248,12 +248,12 @@ def test_private_files_are_never_read_by_any_tool():
 
 
 def test_ordinary_reads_stay_allowed():
-    assert _read('Read', file_path=os.path.join(paths.REPO, 'game', 'UNITS.tsv')) is None
-    assert _read('Grep', pattern='class tFoo', path='game') is None
-    assert _read('Glob', pattern='game/**/*.h') is None
+    assert _read('Read', file_path=os.path.join(paths.REPO, 'op', 'UNITS.tsv')) is None
+    assert _read('Grep', pattern='class tFoo', path='op') is None
+    assert _read('Glob', pattern='op/**/*.h') is None
     assert _read('Read', file_path=os.path.join(paths.WORK, 'ghidra', 'decomp', '0x00401000.c')) \
         is None
-    assert bash('grep -n "class tFoo" game/unsorted/tFoo.h') is None
+    assert bash('grep -n "class tFoo" op/unsorted/tFoo.h') is None
 
 
 @pytest.mark.parametrize('command', [
@@ -274,7 +274,7 @@ def test_ordinary_reads_stay_allowed():
     'cat ~/x.txt',
     'ls testkey-data',
     'cat ../wine/prefix/user.txt',
-    'cat game/x.REG',
+    'cat op/x.REG',
     'cat sfcop.env',
 ])
 def test_bash_refuses_every_way_to_name_the_private_files(command):
@@ -286,9 +286,9 @@ def test_bash_refuses_every_way_to_name_the_private_files(command):
     'sh harness/build-and-verify.sh 0x00401000',
     'harness/build-and-verify.sh 0x00401000',
     'git diff',
-    'git diff -- game/unsorted/tSphere.cpp',
-    'ls game/unsorted/*.h',
-    'grep -n "class tSphere" game/unsorted/tSphere.h',
+    'git diff -- op/unsorted/tSphere.cpp',
+    'ls op/unsorted/*.h',
+    'grep -n "class tSphere" op/unsorted/tSphere.h',
 ])
 def test_ordinary_grind_commands_still_pass(command):
     assert bash(command) is None

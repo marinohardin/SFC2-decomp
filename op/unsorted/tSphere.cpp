@@ -1,5 +1,5 @@
 // Unit:      unsorted/tSphere.cpp
-// Functions: 0x0040f15a to 0x0040f99d, 13 in game/UNITS.tsv
+// Functions: 0x0040f15a to 0x0040f99d, 13 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   game-release (harness/units.json)
 

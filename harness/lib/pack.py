@@ -8,11 +8,11 @@ Four sections, each capped, and the whole pack capped at HARNESS_PACK_MAX charac
    ghidra/scripts/export_decomp.sh writes ($SFCOP_WORK/ghidra/decomp/<0xaddress>.c, or
    HARNESS_DECOMP). Ghidra's types and names are rough; it is a reading aid, not source.
 2. The functions it calls directly, with their prototypes from ghidra/exports/functions.csv and
-   the source file under game/ that already holds one.
+   the source file under op/ that already holds one.
 3. The declarations of the classes it touches (its own class, then its callees'), taken from
    the headers under the source root; a class declared in no header is left out.
 4. One function already exact in matched_set.json from the same class, or else from the same
-   unit (game/UNITS.tsv), as it stands in the source.
+   unit (op/UNITS.tsv), as it stands in the source.
 
 Every section that has nothing to show says so in one line, so the session does not look again.
 """

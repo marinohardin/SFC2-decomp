@@ -1,5 +1,5 @@
 // tMouseMgr_Base: base class of the game's mouse managers.
-// Original source file unknown; functions grouped by class (game/UNITS.tsv).
+// Original source file unknown; functions grouped by class (op/UNITS.tsv).
 
 class tMouseMgr_Base {
 public:
