@@ -9748,6 +9748,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006665d0": {
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAttenuationLevel",
+   "symbol": "?mGet3DSoundConeAttenuationLevel@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",

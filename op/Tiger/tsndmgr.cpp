@@ -1324,3 +1324,16 @@ float	tBasicSoundFileManager::mGet3DSoundConeAngleForNoAttenuation( unsigned lon
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006665d0
+long	tBasicSoundFileManager::mGet3DSoundConeAttenuationLevel( unsigned long handle, long channel )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mGet3DSoundConeAttenuationLevel( handle, channel );
+	}
+	return 0;
+}
