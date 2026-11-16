@@ -322,8 +322,9 @@ public:
 	// HYPOTHESIS: the eighth virtual (vtable +0x1c), as tPath::mDelete (STARFLEETOP 0x0061ed50)
 	// calls it through that slot on the resolved path.
 	virtual iTruth	mDelete( void );
-	// HYPOTHESIS: the ninth to twelfth slots are not recovered.
-	virtual void	fn_twPath_slot8( void );
+	// HYPOTHESIS: the ninth virtual (vtable +0x20), as its body follows mDelete's; the name is
+	// the exe's symbol for STARFLEETOP 0x00633700. The tenth to twelfth slots are not recovered.
+	virtual iTruth	mLock( void );
 	virtual void	fn_twPath_slot9( void );
 	virtual void	fn_twPath_slot10( void );
 	virtual void	fn_twPath_slot11( void );
@@ -1895,5 +1896,25 @@ iTruth twPath::mDelete( void )
 		}
 	}
 	return deleted;
+}
+
+// FUNCTION: STARFLEETOP 0x00633700
+iTruth twPath::mLock( void )
+{
+	iTruth	locked = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		locked = GetFileAttributesW( g_00c3cbf0 ) & FILE_ATTRIBUTE_READONLY;
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			locked = GetFileAttributesA( g_00c3caec ) & FILE_ATTRIBUTE_READONLY;
+		}
+	}
+	return locked;
 }
 
