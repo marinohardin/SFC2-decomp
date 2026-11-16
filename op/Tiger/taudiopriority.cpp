@@ -299,6 +299,17 @@ unsigned char tAudioPriorityManagerPart::mAreWeAllowedToPlay( unsigned long clas
 	return true;
 }
 
+// FUNCTION: STARFLEETOP 0x006624b0
+void tAudioPriorityManagerPart::mWeHaveStoppedPlaying( unsigned long handle )
+{
+	tClassTrackingInfo *info = f18.mPeekItem( handle );
+	if ( info )
+	{
+		info->mSetAvailable();
+		f18.mClearItem( handle );
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x00662400
 long tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo( void )
 {

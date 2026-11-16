@@ -24,6 +24,11 @@ class tSafeArray
 		inline	unsigned long	mFirstItemIndex	( void );
 		inline	unsigned long	mAddItem		( T * );
 		inline	void			mDropItem		( unsigned long );
+		// HYPOTHESIS: mWeHaveStoppedPlaying (0x006624b0) inlines a validity check, a lookup and a
+		// removal; the names are this project's own.
+		inline	unsigned char	mIsValid		( unsigned long );
+		inline	T *				mPeekItem		( unsigned long );
+		inline	void			mClearItem		( unsigned long );
 
 	protected:
 		unsigned long	mGetIndexFromRealIndex	( unsigned long );
@@ -83,6 +88,33 @@ template < class T >
 inline void tSafeArray< T >::mDropItem( unsigned long index )
 {
 	if ( mIsThisIndexValid( index ) )
+	{
+		f04[index & 0xffff] = NULL;
+		f0c--;
+	}
+}
+
+template < class T >
+inline unsigned char tSafeArray< T >::mIsValid( unsigned long index )
+{
+	unsigned long realIndex = index & 0xffff;
+	if ( realIndex < f10 && (unsigned short)( index >> 16 ) == f08[realIndex] && f04[realIndex] != NULL )
+		return true;
+	return false;
+}
+
+template < class T >
+inline T *tSafeArray< T >::mPeekItem( unsigned long index )
+{
+	if ( mIsValid( index ) )
+		return f04[index & 0xffff];
+	return NULL;
+}
+
+template < class T >
+inline void tSafeArray< T >::mClearItem( unsigned long index )
+{
+	if ( mIsValid( index ) )
 	{
 		f04[index & 0xffff] = NULL;
 		f0c--;
