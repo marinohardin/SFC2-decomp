@@ -114,4 +114,14 @@ unsigned long tBasicFileZip::mFilePos( void )
 	return field_c;
 }
 
+// FUNCTION: STARFLEETOP 0x006287e0
+unsigned long tBasicFileZip::mFileSize( void )
+{
+	if ( !field_4 )
+		return 0;
+	if ( !field_14 )
+		return field_4->mFileSize();
+	return field_8;
+}
+
 }
