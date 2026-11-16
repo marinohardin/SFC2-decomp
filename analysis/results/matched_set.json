@@ -6157,6 +6157,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00623ed0": {
+   "name": "tString::operator[]",
+   "symbol": "??AtString@@QAEAAGJ@Z",
+   "unit": "Tiger/tstring.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

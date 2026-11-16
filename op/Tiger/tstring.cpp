@@ -344,3 +344,13 @@ tString tString::substr(int32 start, int32 length)
 	result.mIncorporateCharList(&fInstanceControl.fMemSpace[start], length);
 	return result;
 }
+
+// FUNCTION: STARFLEETOP 0x00623ed0
+iBasicStringElement& tString::operator[](int32 n)
+{
+	if (n < 0)
+		throw "Invalid index for dereference of tString";
+	if (n > fInstanceControl.fDataCount)
+		throw "Invalid index for dereference of tString";
+	return fInstanceControl.fMemSpace[n];
+}
