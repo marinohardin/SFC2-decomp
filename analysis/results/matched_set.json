@@ -8758,6 +8758,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00652580": {
+   "name": "tgSoundPart::mAddUpdateSoundPositionFunction",
+   "symbol": "?mAddUpdateSoundPositionFunction@tgSoundPart@@UAEEJP6AXKJ@ZJNE@Z",
+   "unit": "Tiger/tgSound.cpp",
+   "size": 784,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",

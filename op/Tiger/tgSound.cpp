@@ -3889,3 +3889,57 @@ unsigned char tgSoundPart::mAddDelayCommand(long channel, double delay, unsigned
     mReleaseControl();
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00652580
+unsigned char tgSoundPart::mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5033
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)20, &function, (void*)data);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5052
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    handle = mCreateCommand((eSoundChannelCommand)21, &interval, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5071
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}

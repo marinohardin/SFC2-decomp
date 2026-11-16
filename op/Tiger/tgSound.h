@@ -580,7 +580,8 @@ public:
     virtual void mDump();
     virtual void mDump(int level);
     virtual void mUpdate();
-    virtual void mAddUpdateSoundPositionFunction(); virtual void mAddUpdateListenerPositionFunction();
+    virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
+    virtual void mAddUpdateListenerPositionFunction();
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     virtual void vfunction90();
     virtual void mFadeToVolume(); virtual void mFadeToStopAndResetNow(); virtual void mFadeToStopAndClearNow(); virtual void mPlaySpecialLoop();
@@ -621,6 +622,7 @@ public:
     virtual unsigned char mSetFrequency(long channel, long frequency, unsigned char immediate);
     virtual unsigned char mSetPan(long channel, long pan, unsigned char immediate);
     virtual void mUpdate();
+    virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
     virtual unsigned char mAddDelayCommand(long channel, double delay, unsigned char immediate);
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
