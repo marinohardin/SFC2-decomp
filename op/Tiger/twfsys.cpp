@@ -373,7 +373,8 @@ bool WinFileOpenDlg(tString &fileName, tString &ext, tString &dirName)
 
     if (!GetOpenFileNameA(&ofn))
     {
-        if (CommDlgExtendedError() == 0)
+        DWORD err = CommDlgExtendedError();
+        if (err == 0)
             return false;
         throw "Error in OS File Open";
     }
