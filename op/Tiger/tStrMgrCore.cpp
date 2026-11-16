@@ -160,3 +160,9 @@ unsigned char tStrMgrCore::mIsAnElement( long group, const tString &str )
 		throw (eStrManagerErr)2;	// HYPOTHESIS: the original names this value; its enumerator is not recovered
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00627680
+unsigned char tStrMgrCore::mIsAnElement( const char *group, const tString &str )
+{
+	return mIsAnElement( mGetStringIndex( group ), str );
+}
