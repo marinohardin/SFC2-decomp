@@ -812,3 +812,16 @@ unsigned char	tBasicSoundFileManager::mSet3DSoundCones( unsigned long handle, fl
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00665ec0
+unsigned char	tBasicSoundFileManager::mSet3DSoundReferenceDistance( unsigned long handle, double distance, long param_3, unsigned char param_4 )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSet3DSoundReferenceDistance( handle, distance, param_3, param_4 );
+	}
+	return 0;
+}
