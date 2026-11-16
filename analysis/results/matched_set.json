@@ -3358,6 +3358,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00486aa1": {
+   "name": "FUN_00486aa1",
+   "symbol": "?fn_00486aa1@tSupplyDockMissiles@@QAEX_N@Z",
+   "unit": "Source/states/SupplyDockItem.cpp",
+   "size": 52,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0048bd4d": {
    "name": "tFleetPanel::tFleetPanel",
    "symbol": "??0tFleetPanel@@QAE@PAVtObject_0048bd57_arg@@@Z",

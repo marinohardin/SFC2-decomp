@@ -295,10 +295,12 @@ public:
 		long fn_00451c18();
 		short fn_00451c2d();
 		short fn_00451c45();
+		void fn_00451d07( bool value );
 
 		char m00[0xc];
 		bool m0c;
 		bool m0d;
+		char m0e;
 	};
 };
 
@@ -502,5 +504,24 @@ void tSupplyDockMissiles::vfunction14( long value )
 {
 	long count = m7c->fn_004517e1();
 	m7c->fn_0045189f( ( value < 0 ? -1 : 1 ) * count );
+	vfunction3();
+}
+
+// HYPOTHESIS: m7c's byte at +0xe is a two-state setting (0 or 1) that the flag steps
+// up or down; 0x00451d07 sets it.
+// FUNCTION: STARFLEETOP 0x00486aa1
+void tSupplyDockMissiles::fn_00486aa1( bool up )
+{
+	switch( m7c->m0e )
+	{
+	case 0:
+		if( up )
+			m7c->fn_00451d07( true );
+		break;
+	case 1:
+		if( !up )
+			m7c->fn_00451d07( false );
+		break;
+	}
 	vfunction3();
 }
