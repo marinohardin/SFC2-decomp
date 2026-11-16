@@ -321,7 +321,7 @@ public:
 	virtual	unsigned char	mAreWeAGlobalSound	( unsigned long, long );
 	virtual	unsigned char	mDoWeRetainSelections	( unsigned long, long );
 	virtual	void	mDump	( unsigned long, long );
-	virtual	unsigned char	mSetFinishFunction	( unsigned long, void (* const)( unsigned long, unsigned char ), long );
+	virtual	unsigned char	mSetFinishFunction	( unsigned long, void (* const function)( unsigned long, unsigned char ), long );
 	virtual	unsigned char	mAddUpdateSoundPositionFunction	( unsigned long, void (*)( unsigned long, long ), long, double, long, unsigned char );
 	virtual	unsigned char	mAddDelayCommand	( unsigned long, double, long, unsigned char );
 	virtual	unsigned char	mPlaySpecialLoop	( unsigned long, long, long, long, long, long );
@@ -525,7 +525,7 @@ unsigned char	tBasicSoundFileManager::mAddRegisteredAudioType( char * name, unsi
 // library's symbols for the entries; the declaration in Tiger/taudiochannel.cpp has another order.
 // Slot 7 of the manager part
 // takes a group index and returns the group, as the SDK library's mGetChannelGroup does.
-class tChannelGroup { public: virtual void mAddOwner(); virtual void mRemoveOwner(); virtual unsigned char mAttachSoundToChannel(unsigned long param_1, tSoundSelection *param_2, long param_3); virtual unsigned char mAttachFileToChannel(unsigned long param_1, long param_2); virtual unsigned char mAttachFileToBaseGroup(long param_1); virtual unsigned char mKillRetainedMode(); virtual unsigned char mClearAttachments(); virtual unsigned char mPlayChannel(unsigned long param_1, long param_2); virtual unsigned char mPauseChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndResetChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndClearChannel(unsigned long param_1, long param_2); virtual unsigned char mSetFrequency(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetPan(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetVolume(unsigned long param_1, long param_2, long param_3, unsigned char param_4); };
+class tChannelGroup { public: virtual void mAddOwner(); virtual void mRemoveOwner(); virtual unsigned char mAttachSoundToChannel(unsigned long param_1, tSoundSelection *param_2, long param_3); virtual unsigned char mAttachFileToChannel(unsigned long param_1, long param_2); virtual unsigned char mAttachFileToBaseGroup(long param_1); virtual unsigned char mKillRetainedMode(); virtual unsigned char mClearAttachments(); virtual unsigned char mPlayChannel(unsigned long param_1, long param_2); virtual unsigned char mPauseChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndResetChannel(unsigned long param_1, long param_2); virtual unsigned char mStopAndClearChannel(unsigned long param_1, long param_2); virtual unsigned char mSetFrequency(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetPan(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetVolume(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetPriority(unsigned long param_1, long param_2, long param_3, unsigned char param_4); virtual unsigned char mSetFinishFunction(unsigned long param_1, void (* const param_2)(unsigned long, unsigned char), long param_3, long param_4, unsigned char param_5); };
 class tChannelGroupManagerPart : public tPart { public: GenAbstractBinding(tChannelGroupManagerPart); virtual unsigned long vfunction6(); virtual tChannelGroup * mGetChannelGroup(unsigned long index); };
 
 // FUNCTION: STARFLEETOP 0x00664b00
@@ -653,6 +653,19 @@ unsigned char	tBasicSoundFileManager::mSetVolume( unsigned long handle, long vol
 		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
 		if ( channelGroup )
 			return channelGroup->mSetVolume( handle, volume, -1, 1 );
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006653b0
+unsigned char	tBasicSoundFileManager::mSetFinishFunction( unsigned long handle, void (* const function)( unsigned long, unsigned char ), long data )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mSetFinishFunction( handle, function, data, -1, 1 );
 	}
 	return 0;
 }

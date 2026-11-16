@@ -9568,6 +9568,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006653b0": {
+   "name": "tBasicSoundFileManager::mSetFinishFunction",
+   "symbol": "?mSetFinishFunction@tBasicSoundFileManager@@UAEEKQ6AXKE@ZJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",
