@@ -640,6 +640,11 @@ int32s tString::mGetInt32s(void)
 	return StringToNum(mCharStr());
 }
 
+// MATCH-ONLY: the original (/Ob2) inlines the empty default constructor at every use.
+inline tString::iterator::iterator()
+{
+}
+
 // FUNCTION: STARFLEETOP 0x00625380
 tString::iterator::iterator(const iterator &i)
 {
@@ -680,4 +685,19 @@ tString::iterator tString::iterator::operator-(int32 n)
 	r.fIndex = index;
 	r.fString = fString;
 	return r;
+}
+
+// FUNCTION: STARFLEETOP 0x006254f0
+tString::iterator tString::iterator::operator++(int)
+{
+	if (!fString)
+		throw "Access to uninitialized iterator";
+	// MATCH-ONLY: the original (/Ob2) inlines the copy constructor (iterator old = *this) here.
+	iterator old;
+	old.fIndex = fIndex;
+	old.fString = fString;
+	if (fIndex + 1 > fString->fInstanceControl.fDataCount)
+		throw "Access past bounds of tString";
+	fIndex++;
+	return old;
 }
