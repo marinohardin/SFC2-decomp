@@ -40,6 +40,7 @@ inline iTruth tString::mIncorporateCharList(const char *s)
 	return mIncorporateCharList(s, length);
 }
 
+// FUNCTION: STARFLEETOP 0x006231a0
 // FUNCTION: STARFLEETOP 0x00623120
 tString::tString(const char *s)
 {
