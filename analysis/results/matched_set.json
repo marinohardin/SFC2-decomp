@@ -6814,6 +6814,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00627380": {
+   "name": "tStrMgrCore::mGetNumElements",
+   "symbol": "?mGetNumElements@tStrMgrCore@@UAEJJ@Z",
+   "unit": "Tiger/tStrMgrCore.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006289b0": {
    "name": "tPart::tPart",
    "symbol": "??0tPart@@QAE@XZ",

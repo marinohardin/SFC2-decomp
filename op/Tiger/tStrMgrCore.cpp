@@ -9,7 +9,10 @@ tString gErrStr;
 void tStrMgrCore::mDone( void )
 {
 	fn_00627180_map1.clear();
-	fn_00627180_map2.clear();
+	// HYPOTHESIS: the member is a map<long, long> (mGetNumElements' _Lbound is that
+	// instantiation), but this erase is the map<int, tString> one.
+	// MATCH-ONLY: view the member as the type whose erase the exe calls.
+	( (std::map<int, tString> *)&fn_00627180_map2 )->clear();
 	for ( std::vector<tString *>::iterator it = fn_00627180_vec.begin(); it != fn_00627180_vec.end(); ++it )
 	{
 		delete *it;
@@ -55,4 +58,13 @@ const tString &tStrMgrCore::mGetString( const char *s )
 const tString &tStrMgrCore::mGetString( const tString &s )
 {
 	return mGetString( mGetStringIndex( s ) );
+}
+
+// FUNCTION: STARFLEETOP 0x00627380
+long tStrMgrCore::mGetNumElements( long group )
+{
+	std::map<long, long>::iterator it = fn_00627180_map2.find( group );
+	if ( it != fn_00627180_map2.end() )
+		return (*it).second;
+	return 0;
 }

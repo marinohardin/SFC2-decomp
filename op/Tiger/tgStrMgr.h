@@ -55,7 +55,7 @@ class tStrMgrCore
 		// unexplained 4 bytes after each map.
 		std::map<tString, int, less_ss>	fn_00627180_map1;	// type from mGetStringIndex's lower_bound instantiation
 		int						fn_00627180_pad1;
-		std::map<int, tString>	fn_00627180_map2;
+		std::map<long, long>	fn_00627180_map2;
 		int						fn_00627180_pad2;
 		std::vector<tString *>	fn_00627180_vec;
 		int						fn_00627180_count;
