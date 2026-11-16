@@ -321,6 +321,10 @@ class fn_00447ce4_object
 {
 public:
 	tStoresState::tMissileInfo *fn_0055e60f();
+
+	// HYPOTHESIS: a signed byte per fighter bay at +0x17a, read by tSupplyDockFighters::vfunction15.
+	char m00[0x17a];
+	char m17a[4];
 };
 
 // HYPOTHESIS: vtable 0x0079fcf4; vfunction9, 10 and 12 are pure in the base, so this class
@@ -738,4 +742,10 @@ void tSupplyDockItem::vfunction5( fn_004457b7_object *target )
 void tSupplyDockFighters::fn_00486fac( long i )
 {
 	fn_004d3278( (long) g_0084bbc0[i], (long) g_0084bbc0[i], 0, m04, m0c, 800, 600 );
+}
+
+// FUNCTION: STARFLEETOP 0x00486fd6
+long tSupplyDockFighters::vfunction15( long i )
+{
+	return ((fn_004479b4_object *) m74)->fn_00447ce4()->m17a[i];
 }
