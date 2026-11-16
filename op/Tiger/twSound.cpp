@@ -338,7 +338,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -397,7 +396,8 @@ protected:
 	// HYPOTHESIS: own virtuals follow tSoundChannel's 122 slots; the getter at 125 and mCreate3DBuffer at 128 are called through the vtable.
 	virtual void vfunction122(); virtual void vfunction123();
 	virtual LPDIRECTSOUNDBUFFER mGetfDSBuffer();
-	virtual void vfunction126(); virtual void vfunction127();
+	virtual void vfunction126();
+	virtual unsigned char	mRestoreBuffers	( void );
 	virtual unsigned char	mCreate3DBuffer	( void );
 public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
@@ -1729,7 +1729,7 @@ unsigned char twStandardSoundChannel::mPlayChannel( void )
 	fUnknown_01e8 = 0;
 	fUnknown_01ec = 0;
 	if( status & DSBSTATUS_BUFFERLOST )
-		vfunction127();
+		mRestoreBuffers();
 	else if( status )
 		return kTrue;
 
@@ -2006,6 +2006,18 @@ unsigned char twStandardSoundChannel::mSet3DSoundProfile( t3DSoundProfile* profi
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
 	attributes->vfunction8( profile );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644c30
+unsigned char twStandardSoundChannel::mRestoreBuffers( void )
+{
+	fSoundBuffer->Restore();
+	mReset( kTrue );
+	if( BindPart( tSoundPart )->vfunction13() == 1 )
+		mDoFillSelection( kTrue );
+	else
+		mUpdateBuffersAndSelections( atgSoundPart->vfunction125() );
 	return kTrue;
 }
 
