@@ -545,7 +545,9 @@ public:
     virtual unsigned char mSet3DListenerVelocity(tPoint3* velocity);
     virtual unsigned char mSet3DListenerUnitScaleInMeters(double scale);
     virtual long mGetChannelStatus(long channel);
-    virtual void mGetHardwareInformation(); virtual void mTotalBytesLeftToPlay(); virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
+    // The SDK library's symbol for twSoundPart's override gives the signature.
+    virtual long mGetHardwareInformation(long info);
+    virtual void mTotalBytesLeftToPlay(); virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
     virtual void mGetFrequency(); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();
     virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
     virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();

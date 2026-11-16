@@ -144,7 +144,6 @@ public:
 
 
 
-
 // HYPOTHESIS: the sound part's own say macro, after the release build's
 // TGSAY2: at interrupt time the message is buffered, otherwise the buffered
 // messages are flushed and the message printed.
@@ -174,6 +173,7 @@ public:
 	virtual	unsigned char	mSet3DListenerOrientation	( tPoint3* forward, tPoint3* up );
 	virtual	unsigned char	mSet3DListenerVelocity	( tPoint3* velocity );
 	virtual	unsigned char	mSet3DListenerUnitScaleInMeters	( double scale );
+	virtual	long	mGetHardwareInformation		( long info );
 	// twSoundPart's own virtuals (the SDK library's symbols), vtable order (0x00798a3c, slots 141-160).
 	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
@@ -2439,4 +2439,12 @@ unsigned char	twSoundPart::mSet3DListenerUnitScaleInMeters( double scale )
 	profile->mSetUnitScaleInMeters( scale );
 	mReleaseControl();
 	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ff0
+long	twSoundPart::mGetHardwareInformation( long info )
+{
+	if( field_0x114.field_0x4[2] != 0 )
+		return 1;
+	return -0x40;
 }
