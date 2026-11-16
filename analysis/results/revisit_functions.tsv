@@ -61,3 +61,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00624340	tString::rfind	59.61	2	sonnet	2026-11-16T11:55:54Z	best not above 90% after 2 attempts; best 59.61%
 0x00624420	tString::rfind	16.31	2	sonnet	2026-11-16T12:01:08Z	best not above 90% after 2 attempts; best 16.31%
 0x00624660	tString::operator=	26.75	2	sonnet	2026-11-16T12:05:18Z	attempt 2 (sonnet) did not raise the best; best 26.75%
+0x00624690	tString::operator=	0.00	2	sonnet	2026-11-16T12:15:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
