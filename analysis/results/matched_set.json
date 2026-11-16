@@ -8308,6 +8308,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00633f20": {
+   "name": "twPath::mExec",
+   "symbol": "?mExec@twPath@@UAEEAAVtString@@@Z",
+   "unit": "Tiger/tgfsys.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",

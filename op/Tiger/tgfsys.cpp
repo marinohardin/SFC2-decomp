@@ -338,6 +338,8 @@ public:
 	// HYPOTHESIS: the fifteenth virtual (vtable +0x38), as tPath::mFree (STARFLEETOP 0x0061f0c0)
 	// calls it through that slot on the resolved path.
 	virtual int32u	mFree( void );
+	// HYPOTHESIS: the sixteenth virtual, as its body follows mFree's; named by the exe's symbol.
+	virtual iTruth	mExec( tString &args );
 
 	// HYPOTHESIS: out of line, as twDir::mGetNamedFile (STARFLEETOP 0x00631d30) calls it with the
 	// name and the directory the path lies in; ~twPath is expanded inline there.
@@ -2147,4 +2149,17 @@ int32u twPath::mFree( void )
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00633f20
+iTruth twPath::mExec( tString &args )
+{
+	tString	command( '"' );
+	command += f_7c;
+	command += "\" ";
+	command += args;
+	command.mCopyCharStr( g_00c3caec, MAX_PATH );
+	if ( (int32s)WinExec( g_00c3caec, SW_SHOW ) < 32 )
+		return false;
+	return true;
 }
