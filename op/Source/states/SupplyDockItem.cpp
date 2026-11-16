@@ -749,3 +749,9 @@ long tSupplyDockFighters::vfunction15( long i )
 {
 	return ((fn_004479b4_object *) m74)->fn_00447ce4()->m17a[i];
 }
+
+// FUNCTION: STARFLEETOP 0x00486fed
+long tSupplyDockFighters::vfunction16( long i )
+{
+	return ((fn_004479b4_object *) m74)->fn_004477f8( i );
+}
