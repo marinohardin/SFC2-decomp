@@ -118,6 +118,9 @@ class tClassTrackingInfo
 		virtual		long	mFadeToStop	( void );
 		virtual		unsigned char	mAreWeValid	( void );
 
+		// HYPOTHESIS: inline, from mClose (0x00662540) storing the vtable before operator delete.
+		~tClassTrackingInfo( void ) {}
+
 		unsigned long	f04;
 		unsigned long	f08;
 		long			f0c;
@@ -158,12 +161,10 @@ class tAudioPriorityManagerPart : public tPart
 		long			f10;
 		long			f14;
 		// HYPOTHESIS: the tracking records in use, by handle, and the records themselves, from
-		// mAreWeAllowedToPlay (0x00661fa0); the fields at +0x2c to +0x37 are not known. The count
+		// mAreWeAllowedToPlay (0x00661fa0); the field at +0x34 is not known. The count
 		// of 256 records and the cursor after them come from mGetNextAvailableClassTrackingInfo
 		// (0x00662400).
 		tSafeArray< tClassTrackingInfo >	f18;
-		long			f2c;
-		long			f30;
 		long			f34;
 		tClassTrackingInfo	f38[ 256 ];
 		long			f2438;

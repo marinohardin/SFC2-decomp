@@ -4,6 +4,8 @@
 #ifndef TSAFEARRAY_H
 #define TSAFEARRAY_H
 
+#include "unsorted/tMemoryPart.h"
+
 // HYPOTHESIS: the layout follows the reads in tAudioPriorityManagerPart::mAreWeAllowedToPlay
 // (0x00661fa0): the item table, a 16-bit use count per slot (the high half of a handle), the
 // number of items and the table's size. Member names are not known.
@@ -29,6 +31,9 @@ class tSafeArray
 		inline	unsigned char	mIsValid		( unsigned long );
 		inline	T *				mPeekItem		( unsigned long );
 		inline	void			mClearItem		( unsigned long );
+		// HYPOTHESIS: tAudioPriorityManagerPart::mClose (0x00662540) inlines the release of every
+		// item, when the array owns them, and of both tables; the name is this project's own.
+		inline	void			mDeleteAll		( void );
 
 	protected:
 		unsigned long	mGetIndexFromRealIndex	( unsigned long );
@@ -36,8 +41,14 @@ class tSafeArray
 
 		T				**f04;
 		unsigned short	*f08;
-		long			f0c;
-		unsigned long	f10;
+		// HYPOTHESIS: the count is unsigned and the size signed, from the compares in
+		// mClose (0x00662540).
+		unsigned long	f0c;
+		long			f10;
+		// HYPOTHESIS: the field at +0x14 is not known; the flag at +0x18 says the array owns its
+		// items and deletes them (mClose at 0x00662540 compares it with 1).
+		long			f14;
+		unsigned char	f18;
 };
 
 template < class T >
@@ -119,6 +130,35 @@ inline void tSafeArray< T >::mClearItem( unsigned long index )
 		f04[index & 0xffff] = NULL;
 		f0c--;
 	}
+}
+
+template < class T >
+inline void tSafeArray< T >::mDeleteAll( void )
+{
+	if ( f18 == true )
+	{
+		for ( long i = 0; f0c > 0 && i < f10; i++ )
+		{
+			if ( f04[i] )
+			{
+				delete f04[i];
+				f04[i] = NULL;
+				f0c--;
+			}
+		}
+	}
+	if ( f04 )
+	{
+		BindPart( tMemoryPart )->vfunction10( f04 );
+		f04 = NULL;
+	}
+	if ( f08 )
+	{
+		BindPart( tMemoryPart )->vfunction10( f08 );
+		f08 = NULL;
+	}
+	f0c = 0;
+	f10 = 0;
 }
 
 #endif // TSAFEARRAY_H

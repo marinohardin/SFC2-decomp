@@ -32,10 +32,10 @@ void PrintOutBufferedErrors()
     mNumberOfErrors = 0;
 }
 // MATCH-ONLY: tgSound.h now declares the classes that stood here; the lines are kept so line numbers stay.
-// HYPOTHESIS: tMemoryPart is declared with its part binding (claimed at 0x004133d3) in another unit; it is restated here only as far
-// as tChannelGroupManagerPart::mIsReady needs it. The exe's data names put the Test_ function of this unit's binding copy
+// HYPOTHESIS: tMemoryPart's binding is claimed at 0x004133d3 in another unit; tChannelGroupManagerPart::mIsReady
+// needs only its declaration. The exe's data names put the Test_ function of this unit's binding copy
 // (0x0064fc00; cache 0x008e0b54, type descriptor 0x0083c608) on tMemoryPart, not tSoundPart; it is not claimed here.
-class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); };
+#include "unsorted/tMemoryPart.h"
 
 // The scalar deleting destructor the compiler generates from the virtual ~tSoundChannelList is 0x0064fbc0.
 inline tSoundChannelList::~tSoundChannelList()
