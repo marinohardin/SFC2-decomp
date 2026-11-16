@@ -623,3 +623,10 @@ int32s tString::mGetInt32s(void)
 {
 	return StringToNum(mCharStr());
 }
+
+// FUNCTION: STARFLEETOP 0x00625380
+tString::iterator::iterator(const iterator &i)
+{
+	fIndex = i.fIndex;
+	fString = i.fString;
+}
