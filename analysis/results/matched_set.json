@@ -7300,6 +7300,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00644860": {
+   "name": "twStandardSoundChannel::mStopAndResetChannel",
+   "symbol": "?mStopAndResetChannel@twStandardSoundChannel@@UAEEXZ",
+   "unit": "Tiger/twSound.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00645940": {
    "name": "twSoundPart::mDirectSoundObject",
    "symbol": "?mDirectSoundObject@twSoundPart@@UAEPAPAUIDirectSound@@XZ",

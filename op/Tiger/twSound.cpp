@@ -345,7 +345,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -357,6 +356,7 @@ public:
 	virtual	unsigned char	mSetPan	( long );
 	virtual	unsigned char	mSetVolume	( long );
 	virtual	unsigned char	mStopAndClearChannel	( void );
+	virtual	unsigned char	mStopAndResetChannel	( void );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -1868,6 +1868,44 @@ unsigned char twStandardSoundChannel::mStopAndClearChannel( void )
 		field_0x28 = 4;
 	}
 	mSetUpdateMode( (eSoundChannelUpdateMode)3 );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644860
+unsigned char twStandardSoundChannel::mStopAndResetChannel( void )
+{
+	if( field_0x28 == 0x20 )
+	{
+		if( fSoundBuffer == NULL )
+			return kFalse;
+		DWORD status = 0;
+		if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+			return kFalse;
+		if( status == 0 )
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kFalse );
+		}
+		else
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kTrue );
+		}
+	}
+	else if( field_0x28 == 8 )
+	{
+		mAddFinishCommand( kTrue );
+	}
+	else if( field_0x28 == 0x10 )
+	{
+		mAddFinishCommand( kFalse );
+	}
+	else
+		return kTrue;
+	field_0x28 = 4;
+	mSetUpdateMode( (eSoundChannelUpdateMode)2 );
 	return kTrue;
 }
 
