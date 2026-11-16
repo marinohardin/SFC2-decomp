@@ -2220,7 +2220,7 @@ void tSoundChannel::mDump()
 {
 #line 2985
     SOUND_ERROR(("tSoundChannel: Channel %ld Status =%ld, UpdateMode=%ld, ", field_0c, field_0x28, field_0xfc)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    (&field_0x10)->vfunction26();
+    (&field_0x10)->mDump();
     ((tListMemberWithHandle*)this)->tListMemberWithHandle::mDump();
     (&field_0x30)->mDump();
     (&field_0xcc)->vfunction42();

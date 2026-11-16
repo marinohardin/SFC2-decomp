@@ -351,7 +351,6 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
@@ -403,6 +402,7 @@ protected:
 	virtual unsigned char	mCreate3DBuffer	( void );
 public:
 	virtual unsigned char	mDuplicateSoundChannel	( long, long );
+	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
 };
 
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
@@ -1504,7 +1504,115 @@ unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long
 	mAutoRemoveChannel();
 	return kTrue;
 }
-#line 1508
+
+// MATCH-ONLY: the #line directives inside set the original's line numbers for its five
+// " -- %s %d" messages (1578, 1584, 1590, 1596, 1652); the last one puts this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x00643b30
+unsigned char twStandardSoundChannel::mAddSoundChannel( tSoundChannelFormat* format, long handle )
+{
+	if( format == NULL )
+		return kFalse;
+	if( fSoundBuffer != NULL )
+		return kFalse;
+	LPDIRECTSOUNDBUFFER* buffer = &fSoundBuffer;
+
+	long blockSize = format->vfunction12();
+	long length = format->vfunction3();
+	if( length % blockSize > 0 )
+		format->vfunction2( format->vfunction3() - length % blockSize + format->vfunction12() );
+	field_0x10 = *format;
+	vfunc_20( handle );
+
+	DWORD flags = 0;
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1578
+		SOUNDSAY2(( "3D channels must be mono!" ));
+		return kFalse;
+	}
+	if( !mDoWeRetainSelections() && mAreWeLooping() == kTrue )
+	{
+#line 1584
+		SOUNDSAY2(( "Only retained sounds can loop! -- turning off looping" ));
+		(&field_0x10)->vfunction10( (&field_0x10)->vfunction11() - 4 );
+	}
+	if( mAreWeStreaming() == kTrue && mAreWe3D() == kTrue )
+	{
+#line 1590
+		SOUNDSAY2(( "3D sounds can not be streaming!!!" ));
+		return kFalse;
+	}
+	if( !mAreWeStreaming() && !mAreWeStatic() )
+	{
+#line 1596
+		SOUNDSAY2(( "A sound must be static or streaming -- turning static on" ));
+		(&field_0x10)->vfunction10( (&field_0x10)->vfunction11() + 1 );
+	}
+
+	if( !mAreWeFixedFrequency() )
+		flags = DSBCAPS_CTRLFREQUENCY;
+	if( mTryToLocateInHardware() == kTrue )
+		flags |= DSBCAPS_LOCHARDWARE;
+	else if( mTryToLocateInSoftware() == kTrue )
+		flags |= DSBCAPS_LOCSOFTWARE;
+	else if( mAreWeStatic() == kTrue )
+		flags |= DSBCAPS_STATIC;
+	if( mAreWe3D() == kTrue )
+		flags |= DSBCAPS_CTRL3D;
+	if( !mAreWeFixedPan() )
+		flags |= DSBCAPS_CTRLPAN;
+	if( !mAreWeFixedVolume() )
+		flags |= DSBCAPS_CTRLVOLUME;
+	if( mAreWeAGlobalSound() == kTrue )
+		flags |= DSBCAPS_GLOBALFOCUS;
+	fUnknown_0180.dwFlags			= flags;
+	fUnknown_0180.dwBufferBytes		= (&field_0x10)->vfunction3();
+	fUnknown_01a4.nChannels			= (&field_0x10)->vfunction5();
+	fUnknown_01a4.nSamplesPerSec	= (&field_0x10)->vfunction7();
+	fUnknown_01a4.wBitsPerSample	= (&field_0x10)->vfunction9();
+	fUnknown_01a4.nBlockAlign		= (BYTE)(&field_0x10)->vfunction12();
+	fUnknown_01a4.nAvgBytesPerSec	= fUnknown_01a4.nSamplesPerSec * fUnknown_01a4.nBlockAlign;
+
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1652
+		SOUNDSAY2(( "3D channels must be mono!" ));
+		return kFalse;
+	}
+
+	*buffer = NULL;
+	if( atwSoundPart->fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&fUnknown_0180, buffer, NULL ) != DS_OK )
+		return kFalse;
+
+	gNumBuffersCreated++;
+	if( mAreWe3D() == kTrue )
+	{
+		if( mCreate3DBuffer() != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+	}
+	else
+		fUnknown_01bc = NULL;
+
+	field_0x28 = 4;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mInit();
+	attributes->mSetFrequency( (&field_0x10)->vfunction7() );
+	field_0x168 = (&field_0x10)->vfunction3();
+	field_0x94 = (&field_0x10)->vfunction12();
+	field_0x98 = (&field_0x10)->vfunction13();
+
+	field_0x110 = 0;
+	field_0x164 = 0;
+	field_0x15c = 0;
+	field_0x160 = 0;
+	if( *buffer )
+		(*buffer)->SetCurrentPosition( 0 );
+	return kTrue;
+}
+#line 1616
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart

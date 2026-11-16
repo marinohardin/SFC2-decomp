@@ -62,18 +62,23 @@ public:
     virtual ~tSoundChannelFormat();
     tSoundChannelFormat& operator=(tSoundChannelFormat& other);
     virtual void mInit();
-    virtual void mDump();
+    // HYPOTHESIS: slot 2 sets the buffer length (twStandardSoundChannel::mAddSoundChannel rounds
+    // slot 3's length up to slot 12's block size through it); slots 10 and 11 set and get the
+    // sound type flags. Their names are not recovered.
+    virtual void vfunction2(long value);
     // HYPOTHESIS: slots 3-12 are not recovered; tSoundChannel::mInit reads 3, 7 and 12.
     virtual long vfunction3();
     virtual void vfunction4(); virtual long vfunction5(); virtual void vfunction6();
     virtual long vfunction7();
-    virtual void vfunction8(); virtual long vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+    virtual void vfunction8(); virtual long vfunction9();
+    virtual void vfunction10(long value);
+    virtual long vfunction11();
     virtual long vfunction12();
     virtual long vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
     virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24();
     virtual void vfunction25();
-    // HYPOTHESIS: tSoundChannel::mDump calls slot 26 to dump the format; its name is not recovered
-    virtual void vfunction26();
+    // tSoundChannel::mDump calls slot 26 to dump the format.
+    virtual void mDump();
 
     long fBufferLength;
     long fNumChannels;
@@ -379,13 +384,13 @@ public:
     virtual iTruth mAreWeStreaming();
     virtual iTruth mAreWe3D();
     virtual iTruth mAreWeStatic();
-    virtual void mAreWeFixedFrequency();
+    virtual iTruth mAreWeFixedFrequency();
     virtual void mAreWeARecordingChannel();
-    virtual void mTryToLocateInHardware();
-    virtual void mTryToLocateInSoftware();
-    virtual void mAreWeFixedPan();
-    virtual void mAreWeFixedVolume();
-    virtual void mAreWeAGlobalSound();
+    virtual iTruth mTryToLocateInHardware();
+    virtual iTruth mTryToLocateInSoftware();
+    virtual iTruth mAreWeFixedPan();
+    virtual iTruth mAreWeFixedVolume();
+    virtual iTruth mAreWeAGlobalSound();
     virtual iTruth mDoWeRetainSelections();
     virtual iTruth mDoWeAutoRemoveChannel();
     virtual iTruth mDoWeAutoRemoveSelections();
