@@ -8,6 +8,8 @@
 #pragma once
 
 #include "Tiger/tgfsys.h"
+#include "Tiger/tstring.h"
+#include "unsorted/tQueue.h"
 
 // HYPOTHESIS: the enumerators are not recovered; twPath::mRead (STARFLEETOP 0x006339a0) passes 0
 // and twPath::mWrite (STARFLEETOP 0x00633bf0) passes 1.
@@ -38,34 +40,32 @@ public:
 	tPathCallback	*f_20;
 };
 
-// HYPOTHESIS: a queue entry; AsynchIOMain (STARFLEETOP 0x00633fe0) processes the request at +4,
-// follows the next entry at +8 and deletes the entry through its first virtual.
-class fn_00633fe0_Node
+// HYPOTHESIS: a string naming a request queue; the exe names the class and its copy constructor
+// (STARFLEETOP 0x00635310), and twIORequestQueue::twIORequestQueue copies it into its buffers
+// and destroys it as a tString.
+class twQueueName: public tString
 {
 public:
-	virtual ~fn_00633fe0_Node();
-
-	twIORequest	*f_04;
-	fn_00633fe0_Node	*f_08;
+	twQueueName( const twQueueName &other );
 };
 
-// HYPOTHESIS: the layout is read from AsynchIOMain: the event the thread waits on at +4, the
-// first and last entries at +0xc and +0x10, the state at +0x14 (-1 ends the thread) and the
-// mutex at +0x18. The mutex handle is volatile, as AsynchIOMain loads it only after pushing the
-// timeout at every wait and never keeps it in a register.
+// HYPOTHESIS: the layout is read from AsynchIOMain and the constructor: the thread at +0, the
+// semaphore the thread waits on at +4, the queue of requests at +8 (the exe's tQueue<twIORequest>
+// vtable), the state at +0x14 (-1 ends the thread) and the mutex at +0x18. The mutex handle is
+// volatile, as AsynchIOMain loads it only after pushing the timeout at every wait and never keeps
+// it in a register.
 class twIORequestQueue
 {
 public:
+	twIORequestQueue( twQueueName name );
 	~twIORequestQueue();
 
 	// HYPOTHESIS: inline, as AsynchIOMain tests the first entry under the mutex into a byte twice.
 	bool	fn_00633fe0_IsEmpty( void );
 
-	long	f_00;
+	void	*f_00;
 	void	*f_04;
-	long	f_08;
-	fn_00633fe0_Node	*f_0c;
-	fn_00633fe0_Node	*f_10;
+	tQueue<twIORequest>	f_08;
 	long	f_14;
 	void	*volatile f_18;
 };
@@ -73,7 +73,7 @@ public:
 inline bool twIORequestQueue::fn_00633fe0_IsEmpty( void )
 {
 	WaitForSingleObject( f_18, INFINITE );
-	bool	empty = f_0c == 0;
+	bool	empty = f_08.f_04 == 0;
 	ReleaseMutex( f_18 );
 	return empty;
 }

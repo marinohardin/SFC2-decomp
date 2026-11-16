@@ -27,43 +27,7 @@ enum eVolType
 };
 
 
-// HYPOTHESIS: a queue of 12 bytes, a vtable pointer and two words cleared by the constructor, as
-// tFSSession::tFSSession stores them; the class is named by the exe, its members are not.
-// HYPOTHESIS: the queue links nodes of 12 bytes, a vtable pointer, the queued item's address and
-// the next node, as tQueue::pop (STARFLEETOP 0x006202c0) and tFSSession::~tFSSession read them;
-// the node class and its members are not named by the exe.
-template <class tType>
-class tQueue
-{
-public:
-	class fn_QueueNode
-	{
-	public:
-		virtual ~fn_QueueNode();
-
-		tType			*fItem;		// +0x04
-		fn_QueueNode	*fNext;		// +0x08
-	};
-
-	tQueue() { f_04 = 0; f_08 = 0; }
-	virtual ~tQueue();
-
-	// HYPOTHESIS: out of line in the exe, as tSession::mAddCookie calls it.
-	void push( tType &item );
-
-	void pop()
-	{
-		fn_QueueNode	*node = f_04;
-
-		f_04 = node->fNext;
-		if ( f_04 == 0 )
-			f_08 = 0;
-		delete node;
-	}
-
-	fn_QueueNode	*f_04;	// head
-	fn_QueueNode	*f_08;	// tail
-};
+#include "unsorted/tQueue.h"
 
 // HYPOTHESIS: the objects the iterator cookies resolve to; their layouts are not recovered.
 // HYPOTHESIS: 0x28 bytes, as tVolIterator::mValid reads the map pair's count at +0x3c.
@@ -2203,13 +2167,9 @@ unsigned long AsynchIOMain( void *data )
 		ReleaseMutex( queue->f_18 );
 		while ( !queue->fn_00633fe0_IsEmpty() )
 		{
-			queue->f_0c->f_04->mProcessRequest();
+			queue->f_08.f_04->fItem->mProcessRequest();
 			WaitForSingleObject( queue->f_18, INFINITE );
-			fn_00633fe0_Node	*node = queue->f_0c;
-			queue->f_0c = node->f_08;
-			if ( !queue->f_0c )
-				queue->f_10 = 0;
-			delete node;
+			queue->f_08.pop();
 			ReleaseMutex( queue->f_18 );
 		}
 	}

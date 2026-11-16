@@ -564,3 +564,40 @@ tVolIterator::tVolIterator(const tVolIterator &other): fn_SessionCookie(other)
 {
     fSession = other.fSession;
 }
+
+#include "Tiger/tcglue.h"
+#include "unsorted/twIORequest.h"
+
+// Named by the exe's symbol; defined in tgfsys.cpp.
+unsigned long AsynchIOMain(void *data);
+
+// The original inlines gCopyCharStr (out of line at 0x00631930) at both name copies below; under
+// /O2 alone it is written out.
+// FUNCTION: STARFLEETOP 0x006345f0
+twIORequestQueue::twIORequestQueue(twQueueName name)
+{
+    char mutexName[MAX_PATH];
+    char *buffer = mutexName;
+    if (buffer)
+        name.mCopyCharStr(buffer, MAX_PATH);
+    else
+        name.mCopyCharStr(g_00c3caec, MAX_PATH);
+    clib::strcpy(mutexName + name.mStrLen(), "Mtx");
+    f_18 = CreateMutexA(NULL, FALSE, mutexName);
+    if (!f_18)
+        throw "Error creating mutex";
+    WaitForSingleObject(f_18, INFINITE);
+    f_14 = 0;
+    ReleaseMutex(f_18);
+
+    name.mCopyCharStr(g_00c3caec, MAX_PATH);
+    f_04 = CreateSemaphoreA(NULL, 1, 2, g_00c3caec);
+    if (!f_04)
+        throw "Error creating semaphore";
+
+    OutputDebugStringA("Asynch Thread Local Startup.\n");
+    DWORD threadId;
+    f_00 = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)AsynchIOMain, this, 0, &threadId);
+    if (!f_00)
+        throw "Error creating thread";
+}
