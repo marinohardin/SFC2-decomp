@@ -464,3 +464,11 @@ unsigned long tHandleList::mGetThisHandle( long index )
 		return 0;
 	return f0c[ index ];
 }
+
+// FUNCTION: STARFLEETOP 0x006629b0
+unsigned long tHandleList::mGetLastHandle( void )
+{
+	if ( f04 == 0 )
+		return 0;
+	return f0c[ f04 - 1 ];
+}

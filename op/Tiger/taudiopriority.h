@@ -24,6 +24,7 @@ class tHandleList
 		// HYPOTHESIS: slot order after mInit is not checked against the exe's vtable.
 		virtual		unsigned long	mGetFirstHandle	( void );
 		virtual		unsigned long	mGetThisHandle	( long );
+		virtual		unsigned long	mGetLastHandle	( void );
 
 		long	f04;
 		long	f08;
