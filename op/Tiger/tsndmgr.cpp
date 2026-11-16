@@ -17,6 +17,7 @@ public:
 	virtual	iTruth	mAddClass	( long theClass );
 	virtual	void	mInit	( long, char *, char *, char *, long, long, long, long, double, double, unsigned long, unsigned long, unsigned char, unsigned char, long );
 	virtual	unsigned char	mIsThisInThisThreshold	( long value );
+	virtual	unsigned char	mIsThisInThisGroup	( long value );
 
 	tAFPlayInfo &	operator=	( tAFPlayInfo &other );
 
@@ -43,7 +44,6 @@ public:
 	long			field_0xc4[4];
 	long			field_0xd4;
 };
-
 // FUNCTION: STARFLEETOP 0x00663720
 unsigned char	mystrequivalent( char *s1, char *s2 )
 {
@@ -210,6 +210,31 @@ unsigned char	tAFPlayInfo::mIsThisInThisThreshold( long value )
 			return 1;
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00663ce0
+unsigned char	tAFPlayInfo::mIsThisInThisGroup( long value )
+{
+	if ( field_0xc[0] == 0 || value == 0 )
+		return 1;
+	long	pos = 0;
+	long	found;
+	if ( sscanf( field_0xc, "%ld", &found ) <= 0 || value == found || found == 0 )
+		return 1;
+	for ( ;; )
+	{
+		char	c = field_0xc[pos];
+		if ( c == 0 )
+			return 0;
+		while ( c != ',' && c != ';' && c != 0 )
+			c = field_0xc[++pos];
+		if ( field_0xc[pos] != 0 )
+			pos++;
+		if ( sscanf( &field_0xc[pos], "%ld", &found ) <= 0 )
+			return 0;
+		if ( value == found || found == 0 )
+			return 1;
+	}
 }
 
 // HYPOTHESIS: declared only as far as the functions below need.
