@@ -9523,6 +9523,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00664f50": {
+   "name": "tBasicSoundFileManager::mStopAndResetChannel",
+   "symbol": "?mStopAndResetChannel@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0066be30": {
    "name": "tgStrManager::mDeactivate",
    "symbol": "?mDeactivate@tgStrManager@@UAEXXZ",

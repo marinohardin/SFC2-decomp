@@ -591,3 +591,16 @@ unsigned char	tBasicSoundFileManager::mPauseChannel( unsigned long handle )
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00664f50
+unsigned char	tBasicSoundFileManager::mStopAndResetChannel( unsigned long handle )
+{
+	if ( mValidTrackingNumber( handle ) )
+	{
+		unsigned long	group = field_0x10[field_0x74c[mGetTrackingIndex( handle )]].mGetActualChannelGroupIndex();
+		tChannelGroup *	channelGroup = BindPart( tChannelGroupManagerPart )->mGetChannelGroup( group );
+		if ( channelGroup )
+			return channelGroup->mStopAndResetChannel( handle, -1 );
+	}
+	return 0;
+}
