@@ -118,7 +118,7 @@ public:
 	virtual tListMember *mGetPreviousCircularListMember(tListMember *aMember);
 	virtual tListMember *mGetNextCircularListMember(tListMember *aMember);
 	virtual void mGetListMemberAtThisIndex();
-	virtual void mAddToFrontOfList();
+	virtual unsigned char mAddToFrontOfList(tListMember *aMember);
 	virtual void mAddToBackOfList(void *aMember);
 	virtual void mInsertAfterListMember();
 	virtual void mInsertBeforeListMember();
@@ -132,8 +132,10 @@ public:
 	virtual void vfunction21();
 	virtual void mDumpList();
 
-	// HYPOTHESIS: the 12 bytes after the vftable pointer; their layout is not recovered.
-	char field_0x4[0xc];
+	// HYPOTHESIS: first member, last member and member count, from mAddToFrontOfList (0x00626810).
+	tListMember *field_0x4;
+	tListMember *field_0x8;
+	long field_0xc;
 };
 
 class tPhysicalEntity: public tEntity
