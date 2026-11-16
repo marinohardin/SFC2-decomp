@@ -344,6 +344,11 @@ public:
 	// the twPath vtable store, the call to mFree and the members' destructors.
 	~twPath() { mFree(); }
 
+protected:
+	void	mEnsureFileClosed( void );
+
+public:
+
 	// HYPOTHESIS: the directory the path lies in at +0x04, the name at +0x14 and the directory's
 	// word copied into +0x40; the cookie at +0x44 and the strings at +0x54 and +0x7c, the file
 	// handle at +0xa4 and its count at +0xa8 are read by the inline destructor only.
@@ -1682,5 +1687,17 @@ iTruth twDir::mDelete( void )
 		}
 	}
 	return deleted;
+}
+
+// FUNCTION: STARFLEETOP 0x00632fb0
+void twPath::mEnsureFileClosed( void )
+{
+	if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+	{
+		if ( f_a4 != INVALID_HANDLE_VALUE )
+			CloseHandle( f_a4 );
+		f_a4 = INVALID_HANDLE_VALUE;
+		f_a8 = 0;
+	}
 }
 
