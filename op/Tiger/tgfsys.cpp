@@ -191,7 +191,10 @@ public:
 	twVolume();
 	~twVolume();
 
-	int32u	f_04[36];
+	int32u	f_04[16];
+	// HYPOTHESIS: the sort name copied by mGetSortName from +0x44; later members not recovered.
+	tString	f_44;
+	int32u	f_6c[10];
 };
 
 // HYPOTHESIS: 0xb4 bytes, as tDir::mValid reads the directory map pair's count at +0xc8.
@@ -1103,5 +1106,11 @@ void fn_use_file_session( void )
 	tFileSession	session;
 
 	session.mValid();
+}
+
+// FUNCTION: STARFLEETOP 0x006310c0
+tString twVolume::mGetSortName( void )
+{
+	return f_44;
 }
 
