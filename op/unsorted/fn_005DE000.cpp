@@ -350,6 +350,8 @@ void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, t
 template<>
 tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de0cf_Pred _P );
 template<>
+tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de1b8_Pred _P );
+template<>
 tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory* _Piv, fn_005de0cf_Pred _P );
 // FUNCTION: STARFLEETOP 0x005de905
 template<>
@@ -465,4 +467,12 @@ void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, t
 			else
 				{copy_backward(_F, _M, _M + 1);
 				*_F = _V; }}}
+// HYPOTHESIS: the _Median instance _Sort at 0x005deb34 calls.
+// FUNCTION: STARFLEETOP 0x005dedf2
+template<>
+tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de1b8_Pred _P )
+	{if (_P(_X, _Y))
+		return (_P(_Y, _Z) ? _Y : _P(_X, _Z) ? _Z : _X);
+	else
+		return (_P(_X, _Z) ? _X : _P(_Y, _Z) ? _Z : _Y); }
 }
