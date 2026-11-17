@@ -1,5 +1,7 @@
 #include "unsorted/t3DVisual.h"
 #include "Tiger/tvectormath.h"
+#include "Tiger/tbasicfile.h"
+#include "dmp3d/common/stream_basicfile.h"
 #include <string.h>
 
 // HYPOTHESIS: each visual is linked into the list headed at 0x008f5974. Member names
@@ -165,12 +167,19 @@ public:
 	void fn_0042fea4(unsigned int param_1);
 	void fn_0042feb6();
 	bool fn_0042febe(int param_1, int param_2, int param_3, int param_4, tEntry_0042f918 **param_5);
+	bool fn_0042fef9(const char *name);
+	// HYPOTHESIS: chunk readers 0x0042fef9 calls with the chunk size and the stream.
+	tPart_0042f918 *fn_0042f121(unsigned long end, tStream_BasicFile *stream, tEntry_0042f918 *entries, char *strings);
+	void fn_004301bd(unsigned long size, tStream_BasicFile *stream);
+	void fn_004301e9(unsigned long size, tStream_BasicFile *stream);
+	void fn_004302e8(unsigned long size, tStream_BasicFile *stream);
+	void fn_00430367();
 
 	int m08;
 	t3DVisual_Model *mNext;
 	t3DVisual_Model *mPrev;
-	char m14;
-	char m15[0x118 - 0x15];
+	// HYPOTHESIS: the name the model was loaded from (0x0042fef9 copies it here).
+	char m14[0x118 - 0x14];
 	float m118;
 	int m11c;
 	int m120;
@@ -203,7 +212,7 @@ t3DVisual_Model::t3DVisual_Model()
 	m118 = 0.0f;
 	m120 = -1;
 	m128 = 0.0f;
-	m14 = 0;
+	m14[0] = 0;
 	m11c = 0;
 	m124 = 0;
 	for (int i = 0; i < 5; i++)
@@ -504,4 +513,117 @@ bool t3DVisual_Model::fn_0042febe(int param_1, int param_2, int param_3, int par
 		return true;
 	}
 	return false;
+}
+
+// HYPOTHESIS: a chunk header, the tag first and the size of the data after it.
+struct tChunk_0042dd9b
+{
+	unsigned long mTag;
+	unsigned long mSize;
+};
+
+void fn_0042dd9b(tStream_BasicFile *stream, tChunk_0042dd9b *chunk);
+
+// FUNCTION: STARFLEETOP 0x0042fef9
+bool t3DVisual_Model::fn_0042fef9(const char *name)
+{
+	tBasicFile *file = tBasicFile::mNewBasicFile();
+	try
+	{
+		if (file == 0)
+			throw "[Internal error] Could not create file object\n";
+		if (!file->mOpenForRead(name))
+			throw "Unable to open input file\n";
+
+		tStream_BasicFile stream(file, true);
+		tChunk_0042dd9b header;
+		fn_0042dd9b(&stream, &header);
+		if (header.mTag != 0x534c444d)
+			throw "Model file seems corrupt\n";
+		unsigned long end = (stream.fn_006a2da0() + header.mSize + 3) & ~3;
+
+		unsigned long version;
+		stream.fn_006a2f80(&version, 4);
+		stream.fn_006a2f80(&m118, 4);
+		stream.fn_006a2f80(&m11c, 4);
+		if (m11c <= 0 || m11c >= 5)
+			throw "Model has invalid number of LODs\n";
+		if ((version & 0xffffff00) < 0x200)
+			throw "Model has a format less than version 2.\n";
+
+		float ranges[5];
+		// MATCH-ONLY: the block lets base share its stack slot with the chunk read below, as
+		// in the original.
+		{
+			float base;
+			stream.fn_006a2f80(&base, 4);
+			for (int i = 0; i < 5; i++)
+				stream.fn_006a2f80(&ranges[i], 4);
+			if (m11c > 1)
+			{
+				for (int j = 1; j < m11c; j++)
+				{
+					float outer = base + ranges[j];
+					m12c[j] = outer * outer;
+					float inner = ranges[j] - base;
+					m140[j - 1] = inner * inner;
+				}
+			}
+		}
+
+		int part = 0;
+		while (stream.fn_006a2da0() < end)
+		{
+			tChunk_0042dd9b chunk;
+			fn_0042dd9b(&stream, &chunk);
+			unsigned long start = stream.fn_006a2da0();
+			switch (chunk.mTag)
+			{
+			case 0x53544e50:
+				fn_004302e8(chunk.mSize, &stream);
+				break;
+			case 0x5354414d:
+				fn_004301e9(chunk.mSize, &stream);
+				break;
+			case 0x53525453:
+				fn_004301bd(chunk.mSize, &stream);
+				break;
+			case 0x30444f4d:
+				if (part < m11c)
+				{
+					m160[part] = fn_0042f121(chunk.mSize + start, &stream, m158, m154);
+					part++;
+				}
+				break;
+			}
+			stream.fn_006a2db0((chunk.mSize + start + 3) & ~3);
+		}
+
+		file->mClose();
+		file = file->mDispose();
+		strcpy(m14, name);
+		fn_00430367();
+		return true;
+	}
+	// HYPOTHESIS: the handlers sit past the analysed end (0x0042fef9 + 0x27b); their
+	// 56 bytes up to the shared epilogue fit these two. The named variable matches the
+	// original's frame size.
+	catch (const char *error)
+	{
+		if (file != 0)
+		{
+			file->mClose();
+			file->mDispose();
+		}
+		return false;
+	}
+	catch (fn_006a2ec0_Error error)
+	{
+		if (file != 0)
+		{
+			file->mClose();
+			file->mDispose();
+		}
+		return false;
+	}
 }
