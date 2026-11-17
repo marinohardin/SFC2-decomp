@@ -126,3 +126,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00436006	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:35:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436022	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::~tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>	0.00	2	sonnet	2026-11-17T03:37:13Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0043603e	tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:39:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043605a	tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::~tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>	0.00	2	sonnet	2026-11-17T03:41:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
