@@ -219,9 +219,50 @@ public:
 
 // HYPOTHESIS: the global at 0x0091f928 is a std::auto_ptr (owner flag, then the pointer); its
 // constructor clears both (0x004bda7f) and its destructor is registered with atexit (0x004bda8e).
+// The template is written out here, with the destructor outside the class, so the instance
+// at 0x004bdccf can carry its claim.
+template<class _Ty>
+class c_auto_ptr
+{
+public:
+	explicit c_auto_ptr( _Ty *_P = 0 ) : _Owns( _P != 0 ), _Ptr( _P ) {}
+	c_auto_ptr<_Ty> &operator=( const c_auto_ptr<_Ty> &_Y ) throw()
+	{
+		if ( _Ptr != _Y.get() )
+		{
+			if ( _Owns )
+				delete _Ptr;
+			_Owns = _Y._Owns;
+			_Ptr = _Y.release();
+		}
+		else if ( _Y._Owns )
+			_Owns = true, _Y.release();
+		return *this;
+	}
+	~c_auto_ptr();
+	_Ty *get() const { return _Ptr; }
+	_Ty *release() const
+	{
+		( (c_auto_ptr<_Ty> *)this )->_Owns = false;
+		return _Ptr;
+	}
+private:
+	bool _Owns;
+	_Ty *_Ptr;
+};
+
+
+// FUNCTION: STARFLEETOP 0x004bdccf
+template<class _Ty>
+c_auto_ptr<_Ty>::~c_auto_ptr()
+{
+	if ( _Owns )
+		delete _Ptr;
+}
+
 // FUNCTION: STARFLEETOP 0x004bda8e
 // FUNCTION: STARFLEETOP 0x004bda7f
-std::auto_ptr<c_005cf073_Object> g_0091f928;
+c_auto_ptr<c_005cf073_Object> g_0091f928;
 
 // HYPOTHESIS: a std::string global at 0x0091f910 holding the text "Unknown_Failure".
 // FUNCTION: STARFLEETOP 0x004bdaf2
@@ -247,7 +288,7 @@ std::string g_0091f8e0 = "Character_name_invalid";
 c_005cf073_Object *fn_004bdc4d()
 {
 	if ( g_0091f928.get() == 0 )
-		g_0091f928 = std::auto_ptr<c_005cf073_Object>( new c_005cf073_Object );
+		g_0091f928 = c_auto_ptr<c_005cf073_Object>( new c_005cf073_Object );
 	return g_0091f928.get();
 }
 
