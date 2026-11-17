@@ -194,18 +194,12 @@ std::string& std::string::assign(const char* _S, size_type _N)
     return (*this);
 }
 
-// HYPOTHESIS: the out-of-line copy of the library's std::ostream constructor (defined in the
-// class by the header); written out as a stand-in class with the same virtual base.
-class fn_00404374_Ostream : virtual public std::ios
-{
-public:
-    fn_00404374_Ostream(std::streambuf* _S, bool _Isstd, bool _Noinit);
-    virtual ~fn_00404374_Ostream();
-};
-
+// HYPOTHESIS: the out-of-line copy of the library's std::ostream constructor, which the
+// header defines in the class. MATCH-ONLY: written as a specialization with the header's
+// body, since the copy the header instantiates carries no line of this unit.
 // FUNCTION: STARFLEETOP 0x00404374
-fn_00404374_Ostream::fn_00404374_Ostream(std::streambuf* _S, bool _Isstd, bool _Noinit)
+template<> std::basic_ostream<char, std::char_traits<char> >::basic_ostream(std::streambuf* _S, bool _Isstd, bool _Doinit)
 {
-    if (_Noinit) // MATCH-ONLY: the original branches on the flag being set, not clear
+    if (_Doinit)
         init(_S, _Isstd);
 }

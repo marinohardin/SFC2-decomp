@@ -561,11 +561,11 @@
   },
   "0x00404374": {
    "name": "FUN_00404374",
-   "symbol": "??0fn_00404374_Ostream@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@_N1@Z",
+   "symbol": "??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N1@Z",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 106,
-   "score": 99.848,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
