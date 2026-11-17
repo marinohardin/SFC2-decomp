@@ -198,3 +198,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0061d200	tVolume::mValid	5	fable	99.70	2026-11-17T08:17:30Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
 0x0061d2f0	tDir::mValid	5	fable	99.70	2026-11-17T08:28:31Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
 0x0061d3e0	tPath::mValid	5	fable	99.70	2026-11-17T08:44:39Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d4d0	tVolIterator::mValid	5	fable	99.70	2026-11-17T09:27:57Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
