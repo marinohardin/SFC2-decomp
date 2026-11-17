@@ -89,6 +89,7 @@ public:
 	void fn_00426e61( int aArg1, int aArg2 );
 	bool fn_00426c23( int aArg );
 	void fn_00426c5e( int aArg );
+	int fn_00426e7a( int aArg );
 	char pad00[0x10];
 	int field_0x10[20];
 	char pad60[0x64];
@@ -111,6 +112,7 @@ public:
 	int fn_00427669( tEntity *aEntity, int aIndex );
 	int fn_00427695( int aIndex, int aValue );
 	void fn_004276bf( int aIndex, int aArg1, int aArg2 );
+	int fn_004276e4( int aIndex, int aValue, int aArg );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -233,4 +235,19 @@ void tObject_0042750f::fn_004276bf( int aIndex, int aArg1, int aArg2 )
 	tObject_00426da7 *entry;
 	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
 		entry->fn_00426e61( aArg1, aArg2 );
+}
+
+// HYPOTHESIS: the sum of 0x00426e7a for the argument over the entries for which 0x00427581 of
+// entry aIndex gives aValue.
+// FUNCTION: STARFLEETOP 0x004276e4
+int tObject_0042750f::fn_004276e4( int aIndex, int aValue, int aArg )
+{
+	int sum = 0;
+	int i = 19;
+	do
+	{
+		if (fn_00427581( aIndex, i ) == aValue && field_0x54[i] != 0)
+			sum += field_0x54[i]->fn_00426e7a( aArg );
+	} while (i--);
+	return sum;
 }

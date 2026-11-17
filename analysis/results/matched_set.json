@@ -1900,6 +1900,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004276e4": {
+   "name": "FUN_004276e4",
+   "symbol": "?fn_004276e4@tObject_0042750f@@QAEHHHH@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 75,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
