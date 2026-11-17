@@ -50,6 +50,7 @@ public:
     char fn_0043e911(int aID);
     void fn_0043ec81();
     int fn_0043eca6(int param_1);
+    void fn_0043f71b(int param_1, int param_2);
     void fn_0043eee8();
     // HYPOTHESIS: the result is an integer 0x0043eee8 converts to float.
     int fn_0043f023(struct vfunction33_result* owner, tObject_0042496f* target);
