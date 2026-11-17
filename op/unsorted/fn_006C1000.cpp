@@ -398,7 +398,9 @@ void fn_006c1a90()
 struct fn_006c1ae0_Request
 {
 	unsigned long m00;
-	char m04[0x2c];
+	char m04[0x24];
+	int m28;
+	char m2c[4];
 	unsigned long m30;
 	int m34;
 	int m38;
@@ -527,5 +529,32 @@ void fn_006c1c70(char *buffer, struct sockaddr_in *from)
 			else if (strcmp(key, "ison") == 0)
 				fn_006c1ea0(buffer, from);
 		}
+	}
+}
+
+char *fn_006c1fd0(char *buffer, const char *key);
+fn_006c1ae0_Request *fn_006c1e40(char *key);
+
+// HYPOTHESIS: marks the pending request named in a reply as validated or refused.
+// FUNCTION: STARFLEETOP 0x006c1da0
+void fn_006c1da0(char *buffer, int ok)
+{
+	char key[33];
+	int id;
+	fn_006c1ae0_Request *request;
+
+	id = atoi(fn_006c1fd0(buffer, "skey"));
+	strncpy(key, fn_006c1fd0(buffer, "cd"), 32);
+	key[32] = 0;
+	request = fn_006c1e40(key);
+	if (request != 0 && request->m28 == id && request->m38 != 3)
+	{
+		if (ok)
+		{
+			request->m38 = 1;
+			return;
+		}
+		request->m38 = 2;
+		request->m44 = strdup(fn_006c1fd0(buffer, "errmsg"));
 	}
 }
