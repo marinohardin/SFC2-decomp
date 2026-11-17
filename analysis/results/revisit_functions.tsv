@@ -132,6 +132,36 @@ address	name	best_score	attempts	last_model	listed	note
 0x00668970	tBasicSoundFileManager::mParseAllSoundsFile	1.94	2	sonnet	2026-11-16T21:22:10Z	best not above 90% after 2 attempts; best 1.94%
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436006	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:35:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436022	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::~tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>	0.00	2	sonnet	2026-11-17T03:37:13Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043603e	tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:39:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043605a	tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::~tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>	0.00	2	sonnet	2026-11-17T03:41:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436077	tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::~tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>	0.00	2	sonnet	2026-11-17T03:44:45Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436097	tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:47:30Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004360b3	tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::~tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>	0.00	2	sonnet	2026-11-17T03:50:08Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004360cf	tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:52:27Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004360eb	tValueCountMap<tVolume,twVolume,std::less<tVolume>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:54:34Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436107	tValueCountMap<tVolume,twVolume,std::less<tVolume>_>::~tValueCountMap<tVolume,twVolume,std::less<tVolume>_>	0.00	2	sonnet	2026-11-17T03:56:45Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436123	tCountMap<tVolume,twVolume,std::less<tVolume>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:59:02Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043613f	tValueCountMap<tDir,twDir,std::less<tDir>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:01:35Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043615b	tValueCountMap<tDir,twDir,std::less<tDir>_>::~tValueCountMap<tDir,twDir,std::less<tDir>_>	0.00	2	sonnet	2026-11-17T04:04:29Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436177	tCountMap<tDir,twDir,std::less<tDir>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:06:44Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436193	tValueCountMap<tPath,twPath,std::less<tPath>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:08:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004361af	tValueCountMap<tPath,twPath,std::less<tPath>_>::~tValueCountMap<tPath,twPath,std::less<tPath>_>	0.00	2	sonnet	2026-11-17T04:11:12Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004363b3	tSafeArray<tClassTrackingInfo>::scalar_deleting_destructor	85.83	2	sonnet	2026-11-17T04:33:42Z	attempt 2 (sonnet) did not raise the best; best 85.83%
+0x0043e09e	FUN_0043e09e	93.86	2	sonnet	2026-11-17T06:31:56Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 93.86%
+0x0043e201	FUN_0043e201	37.14	2	sonnet	2026-11-17T06:45:55Z	attempt 2 (sonnet) did not raise the best; best 37.14%
+0x0043e870	FUN_0043e870	85.35	2	sonnet	2026-11-17T07:19:27Z	attempt 2 (sonnet) did not raise the best; best 85.35%
+0x0043e911	FUN_0043e911	83.97	2	sonnet	2026-11-17T07:32:16Z	attempt 2 (sonnet) did not raise the best; best 83.97%
+0x0043f023	FUN_0043f023	84.66	2	sonnet	2026-11-17T08:28:59Z	attempt 2 (sonnet) did not raise the best; best 84.66%
+0x00444046	tShipSystemsFighter::tShipSystemsFighter	5.88	2	sonnet	2026-11-17T09:45:06Z	attempt 2 (sonnet) did not raise the best; best 5.88%
+0x00448235	tShipSystemsExt::tShipSystemsExt	52.71	2	sonnet	2026-11-17T11:05:46Z	best not above 90% after 2 attempts; best 52.71%
+0x0044c35d	FUN_0044c35d	18.64	2	sonnet	2026-11-17T15:44:03Z	best not above 90% after 2 attempts; best 18.64%
+0x0044cdbc	tShipSystemsExt::vfunction130	81.08	2	sonnet	2026-11-17T16:25:33Z	attempt 2 (sonnet) did not raise the best; best 81.08%
+0x0044e722	tShuttleBaySystem::vfunction100	0.00	2	sonnet	2026-11-17T17:24:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0044e793	FUN_0044e793	0.00	2	sonnet	2026-11-17T17:27:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0044e844	tShuttleBaySystem::~tShuttleBaySystem	99.96	2	sonnet	2026-11-17T17:35:55Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.96%
+0x0044ea7e	FUN_0044ea7e	79.81	2	sonnet	2026-11-17T17:53:58Z	attempt 2 (sonnet) did not raise the best; best 79.81%
 0x004cf9cb	tSFCPlayer::~tSFCPlayer	99.91	2	opus	2026-11-17T04:13:50Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.91%
 0x004d0a97	tSFCPlayer::vfunction37	6.67	2	opus	2026-11-17T06:51:45Z	attempt 2 (opus) did not raise the best; best 6.67%
 0x004d0ab3	FUN_004d0ab3	22.81	2	opus	2026-11-17T07:01:20Z	attempt 2 (opus) did not raise the best; best 22.81%

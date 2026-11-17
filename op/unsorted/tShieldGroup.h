@@ -16,29 +16,8 @@ public:
     tShieldGroup* scalar_deleting_destructor(unsigned char flags);
     // vftable slot 22; saves or loads the group's fields.
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
-    // HYPOTHESIS: slots 63..103 belong to this class or a base class; they are declared here,
-    // in slot order, because the shared header stops at slot 62. Their signatures are unknown.
-    virtual void vfunction64();
-    virtual void vfunction65();
-    virtual void vfunction66();
-    virtual void vfunction67();
-    virtual void vfunction68();
-    virtual void vfunction69();
-    virtual void vfunction70();
-    virtual void vfunction71();
-    virtual void vfunction72();
-    virtual void vfunction73();
-    virtual void vfunction74();
-    virtual void vfunction75();
-    virtual void vfunction76();
-    virtual void vfunction77();
-    virtual void vfunction78();
-    virtual void vfunction79();
-    virtual void vfunction80();
-    virtual void vfunction81();
-    virtual void vfunction82();
-    virtual void vfunction83();
-    virtual void vfunction84();
+    // Slots 63..83 are tIndividualShipSystem's (vfunction64..vfunction84); this class's own
+    // virtuals start at slot 84.
     // vftable slot 84; returns field_7c (HYPOTHESIS: the requested charge per turn).
     virtual float vfunction85();
     virtual void vfunction86(float param_1, float param_2);
@@ -90,6 +69,19 @@ public:
     // slot, are not known.
     tShieldSystem* fn_00441226(int param_1);
 
+    // HYPOTHESIS: saved as "fTrueOnline".
+    bool field_58;
+    bool field_59;
+    char pad5a[0x5c - 0x5a];
+    // HYPOTHESIS: the six member shields, one per facing; null when the facing has none.
+    tShieldSystem* field_5c;
+    tShieldSystem* field_60;
+    tShieldSystem* field_64;
+    tShieldSystem* field_68;
+    tShieldSystem* field_6c;
+    tShieldSystem* field_70;
+    // HYPOTHESIS: saved as "fReinforcementCapacitor".
+    float field_74;
     // HYPOTHESIS: saved as "fTotalDesiredEnergy".
     float field_78;
     // HYPOTHESIS: saved as "fRequestedChargePerTurn".

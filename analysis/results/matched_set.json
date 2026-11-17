@@ -2440,6 +2440,537 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x004361e7": {
+   "name": "tValueCountMap<tSession,tFSSession,std::less<tSession>_>::tValueCountMap<tSession,tFSSession,std::less<tSession>_>",
+   "symbol": "??0?$tCookieManager@VtSession@@VtFSSession@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436212": {
+   "name": "tValueCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>::tValueCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>",
+   "symbol": "??0?$tCookieManager@VtVolIterator@@VtVolIterParent@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043623d": {
+   "name": "tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>",
+   "symbol": "??0?$tCookieManager@VtDirIterator@@VtDirIterParent@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436268": {
+   "name": "tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>",
+   "symbol": "??0?$tCookieManager@VtPathIterator@@VtPathIterParent@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436293": {
+   "name": "FUN_00436293",
+   "symbol": "?FUN_00436293@tList_00436293@@QAEXXZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004362b0": {
+   "name": "tValueCountMap<tVolume,twVolume,std::less<tVolume>_>::tValueCountMap<tVolume,twVolume,std::less<tVolume>_>",
+   "symbol": "??0?$tCookieManager@VtVolume@@VtwVolume@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004362db": {
+   "name": "tValueCountMap<tDir,twDir,std::less<tDir>_>::tValueCountMap<tDir,twDir,std::less<tDir>_>",
+   "symbol": "??0?$tCookieManager@VtDir@@VtwDir@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436306": {
+   "name": "tValueCountMap<tPath,twPath,std::less<tPath>_>::tValueCountMap<tPath,twPath,std::less<tPath>_>",
+   "symbol": "??0?$tCookieManager@VtPath@@VtwPath@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436331": {
+   "name": "tCountMap<tSession,tFSSession,std::less<tSession>_>::tCountMap<tSession,tFSSession,std::less<tSession>_>",
+   "symbol": "??0?$tCountMap@VtSession@@VtFSSession@@U?$less@VtSession@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436342": {
+   "name": "tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>::tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>",
+   "symbol": "??0?$tCountMap@VtVolIterator@@VtVolIterParent@@U?$less@VtVolIterator@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436353": {
+   "name": "tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>",
+   "symbol": "??0?$tCountMap@VtDirIterator@@VtDirIterParent@@U?$less@VtDirIterator@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436364": {
+   "name": "tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>",
+   "symbol": "??0?$tCountMap@VtPathIterator@@VtPathIterParent@@U?$less@VtPathIterator@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436375": {
+   "name": "tCountMap<tVolume,twVolume,std::less<tVolume>_>::tCountMap<tVolume,twVolume,std::less<tVolume>_>",
+   "symbol": "??0?$tCountMap@VtVolume@@VtwVolume@@U?$less@VtVolume@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436386": {
+   "name": "tCountMap<tDir,twDir,std::less<tDir>_>::tCountMap<tDir,twDir,std::less<tDir>_>",
+   "symbol": "??0?$tCountMap@VtDir@@VtwDir@@U?$less@VtDir@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436397": {
+   "name": "tCountMap<tPath,twPath,std::less<tPath>_>::tCountMap<tPath,twPath,std::less<tPath>_>",
+   "symbol": "??0?$tCountMap@VtPath@@VtwPath@@U?$less@VtPath@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004363a8": {
+   "name": "tSafeArray<tClassTrackingInfo>::~tSafeArray<tClassTrackingInfo>",
+   "symbol": "??1?$tSafeArray@VtClassTrackingInfo@@@@UAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004363b3": {
+   "name": "tSafeArray<tClassTrackingInfo>::scalar_deleting_destructor",
+   "symbol": "??_G?$tSafeArray@VtClassTrackingInfo@@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 34,
+   "score": 85.833,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x004363d5": {
+   "name": "tClassTrackingInfo::~tClassTrackingInfo",
+   "symbol": "?mDeleteAll@?$tSafeArray@VtClassTrackingInfo@@@@QAEXXZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436449": {
+   "name": "FUN_00436449",
+   "symbol": "?mIsThisIndexValid@?$tSafeArray@VtClassTrackingInfo@@@@QAEEK@Z",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 53,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004364b6": {
+   "name": "tBatterySystem::tBatterySystem",
+   "symbol": "??0tBatterySystem@@QAE@HHPAUfn_004364b6_param3@@H@Z",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 279,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043665c": {
+   "name": "tIndividualShipSystem::vfunction11",
+   "symbol": "?vfunction11@tIndividualShipSystem@@UAEHXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436663": {
+   "name": "tETrait::vfunction7",
+   "symbol": "?vfunction7@tETrait@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043666d": {
+   "name": "tDynamicMemoryFreeList::vfunction17",
+   "symbol": "?vfunction17@tDynamicMemoryFreeList@@UAEJXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436671": {
+   "name": "tIndividualShipSystem::vfunction14",
+   "symbol": "?vfunction14@tIndividualShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436683": {
+   "name": "tIndividualShipSystem::vfunction15",
+   "symbol": "?vfunction15@tIndividualShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043668b": {
+   "name": "tIndividualShipSystem::vfunction16",
+   "symbol": "?vfunction16@tIndividualShipSystem@@UAEHXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043668f": {
+   "name": "tIndividualShipSystem::vfunction18",
+   "symbol": "?vfunction18@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436699": {
+   "name": "tIndividualShipSystem::vfunction19",
+   "symbol": "?vfunction19@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366b1": {
+   "name": "tEntity::vfunction12",
+   "symbol": "?vfunction12@tEntity@@UAEHXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366b5": {
+   "name": "tEntity::vfunction15",
+   "symbol": "?vfunction15@tEntity@@UAEXM@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366bf": {
+   "name": "tIndividualShipSystem::vfunction43",
+   "symbol": "?vfunction43@tIndividualShipSystem@@UAEPAVfn_owner_type@@XZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366c3": {
+   "name": "tIndividualShipSystem::vfunction45",
+   "symbol": "?vfunction45@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366d2": {
+   "name": "tIndividualShipSystem::vfunction46",
+   "symbol": "?vfunction46@tIndividualShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366da": {
+   "name": "tIndividualShipSystem::vfunction55",
+   "symbol": "?vfunction55@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366ed": {
+   "name": "tIndividualShipSystem::vfunction56",
+   "symbol": "?vfunction56@tIndividualShipSystem@@UAEHXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004366f1": {
+   "name": "tIndividualShipSystem::vfunction57",
+   "symbol": "?vfunction57@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436704": {
+   "name": "tIndividualShipSystem::vfunction59",
+   "symbol": "?vfunction59@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436725": {
+   "name": "tIndividualShipSystem::vfunction61",
+   "symbol": "?vfunction61@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043672f": {
+   "name": "tIndividualShipSystem::vfunction64",
+   "symbol": "?vfunction64@tIndividualShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436733": {
+   "name": "tIndividualShipSystem::vfunction65",
+   "symbol": "?vfunction65@tIndividualShipSystem@@UAEXD@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043673d": {
+   "name": "tIndividualShipSystem::vfunction66",
+   "symbol": "?vfunction66@tIndividualShipSystem@@UAEDXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436741": {
+   "name": "tIndividualShipSystem::vfunction67",
+   "symbol": "?vfunction67@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043674b": {
+   "name": "tIndividualShipSystem::vfunction68",
+   "symbol": "?vfunction68@tIndividualShipSystem@@UAEMXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043674f": {
+   "name": "tIndividualShipSystem::vfunction69",
+   "symbol": "?vfunction69@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436759": {
+   "name": "tIndividualShipSystem::vfunction71",
+   "symbol": "?vfunction71@tIndividualShipSystem@@UAEXM@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436763": {
+   "name": "tIndividualShipSystem::vfunction75",
+   "symbol": "?vfunction75@tIndividualShipSystem@@UAEXM@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043677c": {
+   "name": "tIndividualShipSystem::vfunction79",
+   "symbol": "?vfunction79@tIndividualShipSystem@@UAEMXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436780": {
+   "name": "tIndividualShipSystem::vfunction83",
+   "symbol": "?vfunction83@tIndividualShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436784": {
+   "name": "tIndividualShipSystem::vfunction84",
+   "symbol": "?vfunction84@tIndividualShipSystem@@UAEX_N@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043678e": {
+   "name": "tRepairableShipSystem::tRepairableShipSystem",
+   "symbol": "??0tRepairableShipSystem@@QAE@XZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 55,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004367c5": {
+   "name": "tRepairableShipSystem::vfunction87",
+   "symbol": "?vfunction87@tRepairableShipSystem@@UAEMXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004367c9": {
+   "name": "tRepairableShipSystem::vfunction92",
+   "symbol": "?vfunction92@tRepairableShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004367d3": {
+   "name": "tRepairableShipSystem::vfunction93",
+   "symbol": "?vfunction93@tRepairableShipSystem@@UAEHXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004367d7": {
+   "name": "tRepairableShipSystem::vfunction94",
+   "symbol": "?vfunction94@tRepairableShipSystem@@UAEXHH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436838": {
+   "name": "tRepairableShipSystem::vfunction95",
+   "symbol": "?vfunction95@tRepairableShipSystem@@UAEMXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 45,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436865": {
+   "name": "tRepairableShipSystem::vfunction96",
+   "symbol": "?vfunction96@tRepairableShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436870": {
+   "name": "tRepairableShipSystem::vfunction97",
+   "symbol": "?vfunction97@tRepairableShipSystem@@UAE_NXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00436884": {
+   "name": "tRepairableShipSystem::vfunction98",
+   "symbol": "?vfunction98@tRepairableShipSystem@@UAEMXZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004368b7": {
+   "name": "tRepairableShipSystem::vfunction99",
+   "symbol": "?vfunction99@tRepairableShipSystem@@UAEXHH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
@@ -2583,6 +3114,393 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x0043dfd4": {
+   "name": "tSensorGroupSystem::scalar_deleting_destructor",
+   "symbol": "??_GtSensorGroupSystem@@UAEPAXI@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043dff0": {
+   "name": "tSensorGroupSystem::~tSensorGroupSystem",
+   "symbol": "??1tSensorGroupSystem@@UAE@XZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 174,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e09e": {
+   "name": "FUN_0043e09e",
+   "symbol": "?fn_0043e09e@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 79,
+   "score": 93.857,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e0ed": {
+   "name": "FUN_0043e0ed",
+   "symbol": "?fn_0043e0ed@tSensorGroupSystem@@QAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 276,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e201": {
+   "name": "FUN_0043e201",
+   "symbol": "?fn_0043e201@tSensorGroupSystem@@QAEXM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 336,
+   "score": 37.143,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e351": {
+   "name": "FUN_0043e351",
+   "symbol": "?fn_0043e351@tSensorGroupSystem@@QAEHXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e359": {
+   "name": "FUN_0043e359",
+   "symbol": "?fn_0043e359@tSensorGroupSystem@@QAEXD@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e366": {
+   "name": "tSensorGroupSystem::vfunction51",
+   "symbol": "?vfunction51@tSensorGroupSystem@@UAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e3d6": {
+   "name": "tSensorGroupSystem::vfunction23",
+   "symbol": "?vfunction23@tSensorGroupSystem@@UAEIHIH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 620,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e642": {
+   "name": "FUN_0043e642",
+   "symbol": "?fn_0043e642@tSensorGroupSystem@@QAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 140,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e6ce": {
+   "name": "FUN_0043e6ce",
+   "symbol": "?fn_0043e6ce@tSensorGroupSystem@@QAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 140,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e75a": {
+   "name": "FUN_0043e75a",
+   "symbol": "?fn_0043e75a@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e761": {
+   "name": "FUN_0043e761",
+   "symbol": "?fn_0043e761@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e768": {
+   "name": "FUN_0043e768",
+   "symbol": "?fn_0043e768@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e76f": {
+   "name": "FUN_0043e76f",
+   "symbol": "?fn_0043e76f@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e776": {
+   "name": "FUN_0043e776",
+   "symbol": "?fn_0043e776@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e77d": {
+   "name": "FUN_0043e77d",
+   "symbol": "?fn_0043e77d@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e78a": {
+   "name": "FUN_0043e78a",
+   "symbol": "?fn_0043e78a@tSensorGroupSystem@@QAEMH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 174,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e838": {
+   "name": "FUN_0043e838",
+   "symbol": "?fn_0043e838@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e853": {
+   "name": "FUN_0043e853",
+   "symbol": "?fn_0043e853@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e870": {
+   "name": "FUN_0043e870",
+   "symbol": "?fn_0043e870@tSensorGroupSystem@@QAEMMH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 106,
+   "score": 85.35,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e8da": {
+   "name": "FUN_0043e8da",
+   "symbol": "?fn_0043e8da@tSensorGroupSystem@@QAEDXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 55,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043e911": {
+   "name": "FUN_0043e911",
+   "symbol": "?fn_0043e911@tSensorGroupSystem@@QAEDH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 590,
+   "score": 83.971,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0043eb5f": {
+   "name": "FUN_0043eb5f",
+   "symbol": "?fn_0043eb5f@tSensorGroupSystem@@QAEDH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 290,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043ec81": {
+   "name": "FUN_0043ec81",
+   "symbol": "?fn_0043ec81@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 37,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043eca6": {
+   "name": "FUN_0043eca6",
+   "symbol": "?fn_0043eca6@tSensorGroupSystem@@QAEHH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 56,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043ecde": {
+   "name": "FUN_0043ecde",
+   "symbol": "?fn_0043ecde@@YAHM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 52,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043ed12": {
+   "name": "FUN_0043ed12",
+   "symbol": "?fn_0043ed12@@YAHH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043ed38": {
+   "name": "FUN_0043ed38",
+   "symbol": "?fn_0043ed38@tSensorGroupSystem@@QAEMHH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043edd8": {
+   "name": "FUN_0043edd8",
+   "symbol": "?fn_0043edd8@tSensorGroupSystem@@QAEHXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 130,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0043ee5a": {
+   "name": "FUN_0043ee5a",
+   "symbol": "?fn_0043ee5a@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 142,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043eee8": {
+   "name": "FUN_0043eee8",
+   "symbol": "?fn_0043eee8@tSensorGroupSystem@@QAEXXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 315,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f023": {
+   "name": "FUN_0043f023",
+   "symbol": "?fn_0043f023@tSensorGroupSystem@@QAEHPAUvfunction33_result@@PAVtObject_0042496f@@@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 414,
+   "score": 84.656,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f1c1": {
+   "name": "tSensorGroupSystem::vfunction39",
+   "symbol": "?vfunction39@tSensorGroupSystem@@UAEXM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 266,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f2cb": {
+   "name": "tSensorGroupSystem::vfunction70",
+   "symbol": "?vfunction70@tSensorGroupSystem@@UAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f2e3": {
+   "name": "tSensorGroupSystem::vfunction73",
+   "symbol": "?vfunction73@tSensorGroupSystem@@UAEMMM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 661,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f578": {
+   "name": "tSensorGroupSystem::vfunction74",
+   "symbol": "?vfunction74@tSensorGroupSystem@@UAEMMM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 113,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f5e9": {
+   "name": "tSensorGroupSystem::vfunction48",
+   "symbol": "?vfunction48@tSensorGroupSystem@@UAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f600": {
+   "name": "tSensorGroupSystem::vfunction49",
+   "symbol": "?vfunction49@tSensorGroupSystem@@UAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f60c": {
+   "name": "tSensorGroupSystem::vfunction50",
+   "symbol": "?vfunction50@tSensorGroupSystem@@UAEXH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f618": {
+   "name": "FUN_0043f618",
+   "symbol": "?fn_0043f618@tSensorGroupSystem@@QAEHHH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f651": {
+   "name": "tSensorGroupSystem::vfunction90",
+   "symbol": "?vfunction90@tSensorGroupSystem@@UAEMMH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 114,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0043f6c3": {
+   "name": "tSensorGroupSystem::vfunction91",
+   "symbol": "?vfunction91@tSensorGroupSystem@@UAEXIH@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 88,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0043fa4e": {
    "name": "tShieldSystem::vfunction52",
@@ -3006,6 +3924,1761 @@
    "score": 94.855,
    "exact": false,
    "recorded": "2026-11-10"
+  },
+  "0x00444004": {
+   "name": "tShipSystemsFighter::vfunction1",
+   "symbol": "?vfunction1@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 65,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444046": {
+   "name": "tShipSystemsFighter::tShipSystemsFighter",
+   "symbol": "??0tShipSystemsFighter@@QAE@H@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 843,
+   "score": 5.878,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x00444391": {
+   "name": "tShipSystemsFighter::vfunction11",
+   "symbol": "?vfunction11@tShipSystemsFighter@@UAEHHHH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444396": {
+   "name": "tShipSystemsFighter::vfunction26",
+   "symbol": "?vfunction26@tShipSystemsFighter@@UAEXM@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443b0": {
+   "name": "tShipSystemsFighter::vfunction27",
+   "symbol": "?vfunction27@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443b7": {
+   "name": "tShipSystemsFighter::vfunction28",
+   "symbol": "?vfunction28@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443be": {
+   "name": "tShipSystemsFighter::vfunction29",
+   "symbol": "?vfunction29@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443c5": {
+   "name": "tShipSystemsFighter::vfunction30",
+   "symbol": "?vfunction30@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443cc": {
+   "name": "tShipSystemsFighter::vfunction35",
+   "symbol": "?vfunction35@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443d3": {
+   "name": "tShipSystemsFighter::vfunction31",
+   "symbol": "?vfunction31@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443da": {
+   "name": "tShipSystemsFighter::vfunction42",
+   "symbol": "?vfunction42@tShipSystemsFighter@@UAEPAV?$tValue@M@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443e1": {
+   "name": "tShipSystemsFighter::vfunction51",
+   "symbol": "?vfunction51@tShipSystemsFighter@@UAEMH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443ea": {
+   "name": "tShipSystemsFighter::vfunction57",
+   "symbol": "?vfunction57@tShipSystemsFighter@@UAEPADXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443f1": {
+   "name": "tShipSystemsFighter::vfunction58",
+   "symbol": "?vfunction58@tShipSystemsFighter@@UAEPADXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004443f8": {
+   "name": "tShipSystemsFighter::vfunction59",
+   "symbol": "?vfunction59@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444409": {
+   "name": "tShipSystemsFighter::vfunction60",
+   "symbol": "?vfunction60@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044441a": {
+   "name": "tShipSystemsFighter::vfunction61",
+   "symbol": "?vfunction61@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044442b": {
+   "name": "tShipSystemsFighter::vfunction62",
+   "symbol": "?vfunction62@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044443c": {
+   "name": "tShipSystemsFighter::vfunction63",
+   "symbol": "?vfunction63@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044444d": {
+   "name": "tShipSystemsFighter::vfunction2",
+   "symbol": "?vfunction2@tShipSystemsFighter@@UAEMXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444466": {
+   "name": "tShipSystemsFighter::vfunction3",
+   "symbol": "?vfunction3@tShipSystemsFighter@@UAEMXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044447f": {
+   "name": "tShipSystemsFighter::vfunction77",
+   "symbol": "?vfunction77@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444490": {
+   "name": "tShipSystemsFighter::vfunction78",
+   "symbol": "?vfunction78@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444a1": {
+   "name": "tShipSystemsFighter::vfunction79",
+   "symbol": "?vfunction79@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444b2": {
+   "name": "tShipSystemsFighter::vfunction80",
+   "symbol": "?vfunction80@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444c3": {
+   "name": "tShipSystemsFighter::vfunction81",
+   "symbol": "?vfunction81@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444d4": {
+   "name": "tShipSystemsFighter::vfunction82",
+   "symbol": "?vfunction82@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444e5": {
+   "name": "tShipSystemsFighter::vfunction83",
+   "symbol": "?vfunction83@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444f6": {
+   "name": "tShipSystemsFighter::vfunction85",
+   "symbol": "?vfunction85@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004444fd": {
+   "name": "tShipSystemsFighter::vfunction87",
+   "symbol": "?vfunction87@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444504": {
+   "name": "tShipSystemsFighter::vfunction108",
+   "symbol": "?vfunction108@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044450b": {
+   "name": "tShipSystemsFighter::vfunction123",
+   "symbol": "?vfunction123@tShipSystemsFighter@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044450f": {
+   "name": "tShipSystemsFighter::vfunction146",
+   "symbol": "?vfunction146@tShipSystemsFighter@@UAEHHH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444515": {
+   "name": "tShipSystemsFighter::vfunction147",
+   "symbol": "?vfunction147@tShipSystemsFighter@@UAEPAVtIndividualShipSystemList@@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444519": {
+   "name": "tShipSystemsFighter::vfunction152",
+   "symbol": "?vfunction152@tShipSystemsFighter@@UAEPAHPAH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444529": {
+   "name": "tShipSystemsFighter::vfunction159",
+   "symbol": "?vfunction159@tShipSystemsFighter@@UAEDH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 5,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044452e": {
+   "name": "tShipSystemsFighter::vfunction172",
+   "symbol": "?vfunction172@tShipSystemsFighter@@UAEXHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044453c": {
+   "name": "tShipSystemsFighter::scalar_deleting_destructor",
+   "symbol": "??_GtShipSystemsFighter@@UAEPAXI@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444558": {
+   "name": "tShipSystemsFighter::~tShipSystemsFighter",
+   "symbol": "??1tShipSystemsFighter@@UAE@XZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444638": {
+   "name": "tShipSystemsFighter::vfunction157",
+   "symbol": "?vfunction157@tShipSystemsFighter@@UAEPAHH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444640": {
+   "name": "tShipSystemsFighter::vfunction165",
+   "symbol": "?vfunction165@tShipSystemsFighter@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444647": {
+   "name": "tShipSystemsFighter::vfunction166",
+   "symbol": "?vfunction166@tShipSystemsFighter@@UAEXH@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444654": {
+   "name": "tShipSystemsFighter::vfunction22",
+   "symbol": "?vfunction22@tShipSystemsFighter@@UAEMM@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 206,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00444723": {
+   "name": "tShipSystemsFighter::vfunction23",
+   "symbol": "?vfunction23@tShipSystemsFighter@@UAEMM@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 170,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448235": {
+   "name": "tShipSystemsExt::tShipSystemsExt",
+   "symbol": "??0tShipSystemsExt@@QAE@K@Z",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 1554,
+   "score": 52.71,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x00448847": {
+   "name": "tShipSystemsExt::vfunction107",
+   "symbol": "?vfunction107@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448861": {
+   "name": "tShipSystemsExt::vfunction58",
+   "symbol": "?vfunction58@tShipSystemsExt@@UAEPADXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448868": {
+   "name": "tShipSystemsExt::vfunction57",
+   "symbol": "?vfunction57@tShipSystemsExt@@UAEPADXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044886f": {
+   "name": "tShipSystemsExt::vfunction53",
+   "symbol": "?vfunction53@tShipSystemsExt@@UAEPAVtShipSystemManager@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448876": {
+   "name": "tShipSystemsExt::vfunction54",
+   "symbol": "?vfunction54@tShipSystemsExt@@UAEPAVtTacticalStoresManager@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044887d": {
+   "name": "tShipSystemsExt::vfunction59",
+   "symbol": "?vfunction59@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044888e": {
+   "name": "tShipSystemsExt::vfunction60",
+   "symbol": "?vfunction60@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044889f": {
+   "name": "tShipSystemsExt::vfunction61",
+   "symbol": "?vfunction61@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004488b0": {
+   "name": "tShipSystemsExt::vfunction62",
+   "symbol": "?vfunction62@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004488c1": {
+   "name": "tShipSystemsExt::vfunction63",
+   "symbol": "?vfunction63@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004488d2": {
+   "name": "tShipSystemsExt::vfunction64",
+   "symbol": "?vfunction64@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004488e6": {
+   "name": "tShipSystemsExt::vfunction65",
+   "symbol": "?vfunction65@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004488fa": {
+   "name": "tShipSystemsExt::vfunction66",
+   "symbol": "?vfunction66@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044890e": {
+   "name": "tShipSystemsExt::vfunction67",
+   "symbol": "?vfunction67@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448922": {
+   "name": "tShipSystemsExt::vfunction68",
+   "symbol": "?vfunction68@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448936": {
+   "name": "tShipSystemsExt::vfunction69",
+   "symbol": "?vfunction69@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044894a": {
+   "name": "tShipSystemsExt::vfunction70",
+   "symbol": "?vfunction70@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044895e": {
+   "name": "tShipSystemsExt::vfunction71",
+   "symbol": "?vfunction71@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044896f": {
+   "name": "tShipSystemsExt::vfunction72",
+   "symbol": "?vfunction72@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448980": {
+   "name": "tShipSystemsExt::vfunction73",
+   "symbol": "?vfunction73@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448991": {
+   "name": "tShipSystemsExt::vfunction74",
+   "symbol": "?vfunction74@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489a2": {
+   "name": "tShipSystemsExt::vfunction75",
+   "symbol": "?vfunction75@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489b3": {
+   "name": "tShipSystemsExt::vfunction77",
+   "symbol": "?vfunction77@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489c4": {
+   "name": "tShipSystemsExt::vfunction78",
+   "symbol": "?vfunction78@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489d5": {
+   "name": "tShipSystemsExt::vfunction79",
+   "symbol": "?vfunction79@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489e6": {
+   "name": "tShipSystemsExt::vfunction80",
+   "symbol": "?vfunction80@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x004489f7": {
+   "name": "tShipSystemsExt::vfunction81",
+   "symbol": "?vfunction81@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a08": {
+   "name": "tShipSystemsExt::vfunction82",
+   "symbol": "?vfunction82@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a19": {
+   "name": "tShipSystemsExt::vfunction83",
+   "symbol": "?vfunction83@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a2a": {
+   "name": "tShipSystemsExt::vfunction84",
+   "symbol": "?vfunction84@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a31": {
+   "name": "tShipSystemsExt::vfunction85",
+   "symbol": "?vfunction85@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a38": {
+   "name": "tShipSystemsExt::vfunction86",
+   "symbol": "?vfunction86@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a3f": {
+   "name": "tShipSystemsExt::vfunction87",
+   "symbol": "?vfunction87@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a46": {
+   "name": "tShipSystemsExt::vfunction88",
+   "symbol": "?vfunction88@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a4d": {
+   "name": "tShipSystemsExt::vfunction89",
+   "symbol": "?vfunction89@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a54": {
+   "name": "tShipSystemsExt::vfunction76",
+   "symbol": "?vfunction76@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a5b": {
+   "name": "tShipSystemsExt::vfunction90",
+   "symbol": "?vfunction90@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a62": {
+   "name": "tShipSystemsExt::vfunction91",
+   "symbol": "?vfunction91@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a69": {
+   "name": "tShipSystemsExt::vfunction92",
+   "symbol": "?vfunction92@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a70": {
+   "name": "tShipSystemsExt::vfunction93",
+   "symbol": "?vfunction93@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a77": {
+   "name": "tShipSystemsExt::vfunction95",
+   "symbol": "?vfunction95@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a7e": {
+   "name": "tShipSystemsExt::vfunction96",
+   "symbol": "?vfunction96@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a85": {
+   "name": "tShipSystemsExt::vfunction97",
+   "symbol": "?vfunction97@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a8c": {
+   "name": "tShipSystemsExt::vfunction98",
+   "symbol": "?vfunction98@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a93": {
+   "name": "tShipSystemsExt::vfunction99",
+   "symbol": "?vfunction99@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448a9a": {
+   "name": "tShipSystemsExt::vfunction100",
+   "symbol": "?vfunction100@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448aa1": {
+   "name": "tShipSystemsExt::vfunction101",
+   "symbol": "?vfunction101@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448ab2": {
+   "name": "tShipSystemsExt::vfunction102",
+   "symbol": "?vfunction102@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448ac3": {
+   "name": "tShipSystemsExt::vfunction103",
+   "symbol": "?vfunction103@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448ad4": {
+   "name": "tShipSystemsExt::vfunction104",
+   "symbol": "?vfunction104@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448ae5": {
+   "name": "tShipSystemsExt::vfunction105",
+   "symbol": "?vfunction105@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448af6": {
+   "name": "tShipSystemsExt::vfunction106",
+   "symbol": "?vfunction106@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b07": {
+   "name": "tShipSystemsExt::vfunction108",
+   "symbol": "?vfunction108@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b0e": {
+   "name": "tShipSystemsExt::vfunction26",
+   "symbol": "?vfunction26@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b28": {
+   "name": "tShipSystemsExt::vfunction27",
+   "symbol": "?vfunction27@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b2f": {
+   "name": "tShipSystemsExt::vfunction28",
+   "symbol": "?vfunction28@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b36": {
+   "name": "tShipSystemsExt::vfunction29",
+   "symbol": "?vfunction29@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b3d": {
+   "name": "tShipSystemsExt::vfunction30",
+   "symbol": "?vfunction30@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b44": {
+   "name": "tShipSystemsExt::vfunction31",
+   "symbol": "?vfunction31@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b4b": {
+   "name": "tShipSystemsExt::vfunction32",
+   "symbol": "?vfunction32@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b52": {
+   "name": "tShipSystemsExt::vfunction33",
+   "symbol": "?vfunction33@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b59": {
+   "name": "tShipSystemsExt::vfunction34",
+   "symbol": "?vfunction34@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b60": {
+   "name": "tShipSystemsExt::vfunction37",
+   "symbol": "?vfunction37@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b67": {
+   "name": "tShipSystemsExt::vfunction38",
+   "symbol": "?vfunction38@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448b6e": {
+   "name": "tShipSystemsExt::vfunction35",
+   "symbol": "?vfunction35@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 53,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448ba3": {
+   "name": "tShipSystemsExt::vfunction36",
+   "symbol": "?vfunction36@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448baa": {
+   "name": "tShipSystemsExt::vfunction2",
+   "symbol": "?vfunction2@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448bc3": {
+   "name": "tShipSystemsExt::vfunction3",
+   "symbol": "?vfunction3@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448bdc": {
+   "name": "tShipSystemsExt::vfunction41",
+   "symbol": "?vfunction41@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448be3": {
+   "name": "tShipSystemsExt::vfunction42",
+   "symbol": "?vfunction42@tShipSystemsExt@@UAEPAV?$tValue@M@@XZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448bea": {
+   "name": "tShipSystemsExt::vfunction44",
+   "symbol": "?vfunction44@tShipSystemsExt@@UAE_NXZ",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x00448bf1": {
+   "name": "tShipSystemsExt::vfunction45",
+   "symbol": "?vfunction45@tShipSystemsExt@@UAEX_N@Z",
+   "unit": "unsorted/tShipSystemsExt.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c185": {
+   "name": "FUN_0044c185",
+   "symbol": "?FUN_0044c185@@YAXPAVfn_0044c185_object@@@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 241,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c276": {
+   "name": "FUN_0044c276",
+   "symbol": "?FUN_0044c276@@YADPAUfn_0044c185_vec3@@PAVfn_0044c185_object@@PBD@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 146,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c308": {
+   "name": "FUN_0044c308",
+   "symbol": "?FUN_0044c308@@YAXPAVfn_0044c185_object@@@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c35d": {
+   "name": "FUN_0044c35d",
+   "symbol": "?FUN_0044c35d@fn_0044c35d_systems@@QAEDHFD@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 1524,
+   "score": 18.645,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c951": {
+   "name": "tShipSystemsExt::vfunction171",
+   "symbol": "?vfunction171@tShipSystemsExt@@UAEPAVtIndividualShipSystemList@@XZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 50,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c984": {
+   "name": "tShipSystemsExt::vfunction149",
+   "symbol": "?vfunction149@tShipSystemsExt@@UAEHH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c99f": {
+   "name": "tShipSystemsExt::vfunction148",
+   "symbol": "?vfunction148@tShipSystemsExt@@UAEHH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044c9bb": {
+   "name": "tShipSystemsExt::vfunction124",
+   "symbol": "?vfunction124@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 132,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ca3f": {
+   "name": "tShipSystemsExt::vfunction125",
+   "symbol": "?vfunction125@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 122,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cab9": {
+   "name": "tShipSystemsExt::vfunction138",
+   "symbol": "?vfunction138@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 108,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cb25": {
+   "name": "tShipSystemsExt::vfunction139",
+   "symbol": "?vfunction139@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 74,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cb6f": {
+   "name": "tShipSystemsExt::vfunction140",
+   "symbol": "?vfunction140@tShipSystemsExt@@UAEHXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 105,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cbd8": {
+   "name": "tShipSystemsExt::vfunction113",
+   "symbol": "?vfunction113@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cbdf": {
+   "name": "tShipSystemsExt::vfunction114",
+   "symbol": "?vfunction114@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cbf9": {
+   "name": "tShipSystemsExt::vfunction126",
+   "symbol": "?vfunction126@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cc00": {
+   "name": "tShipSystemsExt::vfunction127",
+   "symbol": "?vfunction127@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cc1a": {
+   "name": "tShipSystemsExt::vfunction154",
+   "symbol": "?vfunction154@tShipSystemsExt@@UAEXH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cc27": {
+   "name": "tShipSystemsExt::vfunction153",
+   "symbol": "?vfunction153@tShipSystemsExt@@UAEXXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cc5d": {
+   "name": "tShipSystemsExt::vfunction115",
+   "symbol": "?vfunction115@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cc85": {
+   "name": "tShipSystemsExt::vfunction116",
+   "symbol": "?vfunction116@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ccab": {
+   "name": "tShipSystemsExt::vfunction117",
+   "symbol": "?vfunction117@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cce6": {
+   "name": "tShipSystemsExt::vfunction118",
+   "symbol": "?vfunction118@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cced": {
+   "name": "tShipSystemsExt::vfunction119",
+   "symbol": "?vfunction119@tShipSystemsExt@@UAEXXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 102,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cd53": {
+   "name": "tShipSystemsExt::vfunction120",
+   "symbol": "?vfunction120@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cd5a": {
+   "name": "tShipSystemsExt::vfunction128",
+   "symbol": "?vfunction128@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cd7a": {
+   "name": "tShipSystemsExt::vfunction129",
+   "symbol": "?vfunction129@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 66,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cdbc": {
+   "name": "tShipSystemsExt::vfunction130",
+   "symbol": "?vfunction130@tShipSystemsExt@@UAEXM@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 96,
+   "score": 81.083,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ce1c": {
+   "name": "tShipSystemsExt::vfunction131",
+   "symbol": "?vfunction131@tShipSystemsExt@@UAEPAVtMinMaxFloat@@XZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ce23": {
+   "name": "tShipSystemsExt::vfunction132",
+   "symbol": "?vfunction132@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ce2a": {
+   "name": "tShipSystemsExt::vfunction133",
+   "symbol": "?vfunction133@tShipSystemsExt@@UAEXXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 127,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cea9": {
+   "name": "tShipSystemsExt::vfunction134",
+   "symbol": "?vfunction134@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ceb0": {
+   "name": "tShipSystemsExt::vfunction43",
+   "symbol": "?vfunction43@tShipSystemsExt@@UAE_NXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cec6": {
+   "name": "tShipSystemsExt::vfunction109",
+   "symbol": "?vfunction109@tShipSystemsExt@@UAEMMH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 125,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cf43": {
+   "name": "tShipSystemsExt::vfunction110",
+   "symbol": "?vfunction110@tShipSystemsExt@@UAEMHH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cf69": {
+   "name": "tShipSystemsExt::vfunction111",
+   "symbol": "?vfunction111@tShipSystemsExt@@UAEXH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cf83": {
+   "name": "tShipSystemsExt::vfunction112",
+   "symbol": "?vfunction112@tShipSystemsExt@@UAEXHH@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cfa1": {
+   "name": "tShipSystemsExt::vfunction39",
+   "symbol": "?vfunction39@tShipSystemsExt@@UAEXXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 33,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044cfc2": {
+   "name": "FUN_0044cfc2",
+   "symbol": "?FUN_0044cfc2@@YGXHHD@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 688,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e554": {
+   "name": "tShuttleBaySystem::vfunction102",
+   "symbol": "?vfunction102@tShuttleBaySystem@@UAEPAHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e55b": {
+   "name": "tShuttleBaySystem::vfunction103",
+   "symbol": "?vfunction103@tShuttleBaySystem@@UAEPAHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e562": {
+   "name": "tShuttleBaySystem::vfunction104",
+   "symbol": "?vfunction104@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e569": {
+   "name": "tShuttleBaySystem::vfunction105",
+   "symbol": "?vfunction105@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e570": {
+   "name": "tShuttleBaySystem::vfunction106",
+   "symbol": "?vfunction106@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e577": {
+   "name": "tShuttleBaySystem::vfunction107",
+   "symbol": "?vfunction107@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e57e": {
+   "name": "tShuttleBaySystem::vfunction108",
+   "symbol": "?vfunction108@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e585": {
+   "name": "tShuttleBaySystem::vfunction109",
+   "symbol": "?vfunction109@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e58c": {
+   "name": "tShuttleBaySystem::vfunction110",
+   "symbol": "?vfunction110@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e59a": {
+   "name": "tShuttleBaySystem::vfunction111",
+   "symbol": "?vfunction111@tShuttleBaySystem@@UAEXHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5ac": {
+   "name": "tShuttleBaySystem::vfunction116",
+   "symbol": "?vfunction116@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5ba": {
+   "name": "tShuttleBaySystem::vfunction117",
+   "symbol": "?vfunction117@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5c8": {
+   "name": "tShuttleBaySystem::vfunction126",
+   "symbol": "?vfunction126@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5d5": {
+   "name": "tShuttleBaySystem::vfunction127",
+   "symbol": "?vfunction127@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5dc": {
+   "name": "tShuttleBaySystem::vfunction128",
+   "symbol": "?vfunction128@tShuttleBaySystem@@UAEXJ@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e5f5": {
+   "name": "tShuttleBaySystem::vfunction129",
+   "symbol": "?vfunction129@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e602": {
+   "name": "tShuttleBaySystem::vfunction130",
+   "symbol": "?vfunction130@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e60f": {
+   "name": "tShuttleBaySystem::vfunction131",
+   "symbol": "?vfunction131@tShuttleBaySystem@@UAEXHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e621": {
+   "name": "tShuttleBaySystem::vfunction132",
+   "symbol": "?vfunction132@tShuttleBaySystem@@UAEXHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e633": {
+   "name": "tShuttleBaySystem::vfunction133",
+   "symbol": "?vfunction133@tShuttleBaySystem@@UAEXHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e645": {
+   "name": "tShuttleBaySystem::vfunction134",
+   "symbol": "?vfunction134@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e653": {
+   "name": "tShuttleBaySystem::vfunction135",
+   "symbol": "?vfunction135@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e661": {
+   "name": "tShuttleBaySystem::vfunction136",
+   "symbol": "?vfunction136@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e66f": {
+   "name": "tShuttleBaySystem::scalar_deleting_destructor",
+   "symbol": "??_GtShuttleBaySystem@@UAEPAXI@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e68b": {
+   "name": "tShuttleBaySystem::vfunction112",
+   "symbol": "?vfunction112@tShuttleBaySystem@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@F@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e6cb": {
+   "name": "tShuttleBaySystem::vfunction113",
+   "symbol": "?vfunction113@tShuttleBaySystem@@UAEXFV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 87,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e844": {
+   "name": "tShuttleBaySystem::~tShuttleBaySystem",
+   "symbol": "??1tShuttleBaySystem@@UAE@XZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 404,
+   "score": 99.957,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x0044e9d8": {
+   "name": "tShuttleBaySystem::vfunction123",
+   "symbol": "?vfunction123@tShuttleBaySystem@@UAEXJ@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 70,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ea1e": {
+   "name": "tShuttleBaySystem::vfunction124",
+   "symbol": "?vfunction124@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ea2b": {
+   "name": "tShuttleBaySystem::vfunction125",
+   "symbol": "?vfunction125@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ea38": {
+   "name": "tShuttleBaySystem::vfunction17",
+   "symbol": "?vfunction17@tShuttleBaySystem@@UAEHXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 70,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ea7e": {
+   "name": "FUN_0044ea7e",
+   "symbol": "?fn_0044ea7e@tShuttleBaySystem@@QAEXXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 540,
+   "score": 79.815,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x0044ec9a": {
+   "name": "FUN_0044ec9a",
+   "symbol": "?fn_0044ec9a@tShuttleBaySystem@@QAEXM@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 291,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044edbd": {
+   "name": "FUN_0044edbd",
+   "symbol": "??1tObject_0044ec9a_item@@QAE@XZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044edc8": {
+   "name": "tShuttleBaySystem::vfunction39",
+   "symbol": "?vfunction39@tShuttleBaySystem@@UAEXM@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 486,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044efae": {
+   "name": "tShuttleBaySystem::vfunction72",
+   "symbol": "?vfunction72@tShuttleBaySystem@@UAEMXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 94,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044f00c": {
+   "name": "tShuttleBaySystem::vfunction76",
+   "symbol": "?vfunction76@tShuttleBaySystem@@UAEMMH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 101,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044f071": {
+   "name": "FUN_0044f071",
+   "symbol": "?fn_0044f071@tShuttleBaySystem@@QAEXM@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044f161": {
+   "name": "tShuttleBaySystem::vfunction114",
+   "symbol": "?vfunction114@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0044f16f": {
+   "name": "tShuttleBaySystem::vfunction115",
+   "symbol": "?vfunction115@tShuttleBaySystem@@UAEHH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x004557ee": {
    "name": "FUN_004557ee",
