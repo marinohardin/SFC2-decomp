@@ -1251,3 +1251,40 @@ void tSndMgr_Miles::vfunction34( long param_1 )
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00510334
+void tSndMgr_Miles::vfunction35()
+{
+	char swapped = 0;
+	if ( field_2420.field_14 )
+	{
+		fn_005d6a72_node *node = field_2438.field_4->field_0;
+		if ( node != field_2438.field_4 )
+		{
+			fn_005d6a72_node *next = node->field_0;
+			while ( next != field_2438.field_4 )
+			{
+				if ( node->field_c > next->field_c )
+				{
+					long id = node->field_8;
+					long weight = node->field_c;
+					node->field_8 = next->field_8;
+					node->field_c = next->field_c;
+					next->field_8 = id;
+					next->field_c = weight;
+					node = node->field_0->field_0;
+					if ( node == field_2438.field_4 )
+						break;
+					next = node->field_0;
+					swapped = 1;
+				}
+				else
+				{
+					node = next;
+					next = next->field_0;
+				}
+			}
+			field_2420.field_14 = swapped;
+		}
+	}
+}
