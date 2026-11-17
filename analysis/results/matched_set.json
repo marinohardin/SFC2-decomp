@@ -4600,6 +4600,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004bd6d1": {
+   "name": "FUN_004bd6d1",
+   "symbol": "?fn_004bd6d1@@YAHPAVtString@@H@Z",
+   "unit": "unsorted/fn_004BD43E.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004c265f": {
    "name": "tFleetEntry::tFleetEntry",
    "symbol": "??0tFleetEntry@@QAE@XZ",
