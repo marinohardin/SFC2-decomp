@@ -4,6 +4,8 @@
 #ifndef tShipSystems_h
 #define tShipSystems_h 1
 
+class tMinMaxFloat;
+
 // An interface: tShipSystemsFighter's constructor (0x00444046) stores this vtable before it
 // builds its own members, and every slot is _purecall in the exe's vtable.
 // HYPOTHESIS: no data members and no declared constructor.
@@ -37,7 +39,7 @@ public:
     virtual void vfunction24() = 0;
     virtual void vfunction25() = 0;
     virtual void vfunction26( float param_1 ) = 0;
-    virtual void vfunction27() = 0;
+    virtual tMinMaxFloat* vfunction27() = 0;
     virtual void vfunction28() = 0;
     virtual void vfunction29() = 0;
     virtual void vfunction30() = 0;
