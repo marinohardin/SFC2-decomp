@@ -23,7 +23,10 @@ struct fn_005e36cd_entry
 	short field_2e;
 	unsigned char field_30[ 0x40 - 0x30 ];
 	bool field_40;
-	unsigned char field_41[ 0x4c - 0x41 ];
+	unsigned char field_41[ 0x44 - 0x41 ];
+	// HYPOTHESIS: 0x005e3a37 scales the colour when this is 2.
+	int field_44;
+	unsigned char field_48[ 0x4c - 0x48 ];
 	int field_4c;
 	int field_50;
 	unsigned char field_54[ 0x64 - 0x54 ];

@@ -407,3 +407,27 @@ unsigned long tMetaMapControl::fn_005e397b( unsigned char *param_1 )
 	unsigned long bb = blue > 255 ? 255 : blue;
 	return (unsigned char)rr | ( (unsigned short)(unsigned char)gg << 8 ) | ( (unsigned long)(unsigned char)bb << 16 );
 }
+
+// HYPOTHESIS: the scale 0x005e3a37 applies to each channel when the entry's +0x44 is 2.
+extern float g_007b509c;
+
+// FUNCTION: STARFLEETOP 0x005e3a37
+void tMetaMapControl::fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color )
+{
+	if ( color )
+	{
+		if ( *color == 0 )
+			*color = 0xffffff;
+		unsigned long c = *color;
+		unsigned long b = ( c >> 16 ) & 0xff;
+		unsigned long g = ( c >> 8 ) & 0xff;
+		unsigned long r = c & 0xff;
+		if ( entry->field_44 == 2 )
+		{
+			b = (unsigned long)( b * g_007b509c );
+			g = (unsigned long)( g * g_007b509c );
+			r = (unsigned long)( r * g_007b509c );
+		}
+		*color = (unsigned char)b | ( (unsigned short)(unsigned char)g << 8 ) | ( (unsigned long)(unsigned char)r << 16 );
+	}
+}
