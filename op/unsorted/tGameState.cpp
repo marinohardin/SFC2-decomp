@@ -135,3 +135,18 @@ void tGameState::vfunction18()
 {
 	g_fn_0046995a_owner.fn_0046995a();
 }
+
+// HYPOTHESIS: fn_0046995e is the next method of the same unidentified class.
+class fn_0046995e_owner
+{
+public:
+	void fn_0046995e();
+};
+
+extern fn_0046995e_owner g_fn_0046995e_owner;
+
+// FUNCTION: STARFLEETOP 0x00469e34
+void fn_00469e34()
+{
+	g_fn_0046995e_owner.fn_0046995e();
+}
