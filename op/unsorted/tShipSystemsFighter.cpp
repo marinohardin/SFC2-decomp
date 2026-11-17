@@ -116,7 +116,7 @@ public:
     virtual int vfunction96();
     virtual int vfunction97();
     virtual int vfunction98();
-    virtual void vfunction99();
+    virtual int vfunction99();
     virtual void vfunction100();
     virtual void vfunction101();
     virtual void vfunction102();
