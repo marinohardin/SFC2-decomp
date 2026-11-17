@@ -26,6 +26,12 @@ public:
 		public:
 			virtual	void StreamOut( nDataStore::tOutput& output ) const;
 			virtual	void StreamIn( nDataStore::tInput& input );
+
+			// HYPOTHESIS: 0x18 bytes in all, from the element stride of the vector copy at
+			// 0x00427740; the three members' types are not recovered.
+			int32u	field_0xc;
+			int32u	field_0x10;
+			int32u	field_0x14;
 		};
 
 		tPoliticalTensionVector( const tPoliticalTensionVector& source );

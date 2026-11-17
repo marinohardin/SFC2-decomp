@@ -271,3 +271,16 @@ void tObject_0042772f::fn_0042772f( int aArg )
 {
 	fn_00427883( field_0x8, 1, aArg );
 }
+
+// MATCH-ONLY: the library's copy constructor of the vector at 0x10 of tPoliticalTensionVector,
+// emitted in this unit because the copy constructor above uses it. The original is the
+// template in the library header; it is written out here so that it has source lines here.
+// FUNCTION: STARFLEETOP 0x00427740
+template<>
+std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension >::vector( const std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension >& _X )
+	: allocator( _X.allocator )
+{
+	_First = allocator.allocate( _X.size(), (void*)0 );
+	_Last = _Ucopy( _X.begin(), _X.end(), _First );
+	_End = _Last;
+}
