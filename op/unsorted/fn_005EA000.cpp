@@ -357,12 +357,21 @@ void fn_005ea63e()
 {
 }
 
-// HYPOTHESIS: a third red-black tree with the layout of tTree_005ea4a1; the stored value (0x18 bytes, constructed through 0x005eaaa4) is not recovered, and its keys
+// HYPOTHESIS: a 0x10-byte member whose copy constructor (0x005e9013) is out of line; its type
+// is not identified.
+class fn_005e9013_member {
+public:
+	fn_005e9013_member( const fn_005e9013_member& other );
+	int m_00[4];
+};
+
+// HYPOTHESIS: a third red-black tree with the layout of tTree_005ea4a1; the stored value (0x18 bytes, constructed through 0x005eaaa4) is two ints and a member, and its keys
 // are ordered by the comparison at 0x0042c8f7.
 class tTree_005ea63f {
 public:
 	struct tValue {
-		int m_00[6];
+		int m_00[2];
+		fn_005e9013_member m_08;
 	};
 	struct tNode {
 		tNode *m_left;
@@ -702,4 +711,10 @@ void _Construct( tMetaMapNormalHex* _P, const tMetaMapNormalHex& _V )
 {
 	new ((void *)_P) tMetaMapNormalHex(_V);
 }
+}
+
+// FUNCTION: STARFLEETOP 0x005eaaa4
+void fn_005eaaa4(tTree_005ea63f::tValue *p, const tTree_005ea63f::tValue &v)
+{
+	new ((void *)p) tTree_005ea63f::tValue(v);
 }
