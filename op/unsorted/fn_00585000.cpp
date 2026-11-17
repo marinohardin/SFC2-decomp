@@ -839,9 +839,11 @@ void fn_00585bde_owner::fn_00585bde()
 class fn_00585c60_owner {
 public:
 	int fn_00585c60();
+	int fn_00585c7b();
 	tOptex fAccess;
 	char fn_00585c60_pad0[0x150 - sizeof(tOptex)];
 	int fValue;
+	int fValue2;
 };
 
 // FUNCTION: STARFLEETOP 0x00585c60
@@ -849,6 +851,15 @@ int fn_00585c60_owner::fn_00585c60()
 {
 	fAccess.Enter();
 	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x00585c7b
+int fn_00585c60_owner::fn_00585c7b()
+{
+	fAccess.Enter();
+	int value = fValue2;
 	fAccess.Leave();
 	return value;
 }
