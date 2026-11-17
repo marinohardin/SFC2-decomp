@@ -374,3 +374,28 @@ void fn_0090bed4_Object::fn_005235e5(fn_0090bed4_Object *pThis, char param_2, in
 			pThis->fn_00522f1e();
 	}
 }
+
+// HYPOTHESIS: a 16-byte element whose constructor is 0x005224e8; its fields are unknown.
+class tObject_005224e8
+{
+public:
+	tObject_005224e8();
+
+	char m_pad0000[0x10];
+};
+
+// HYPOTHESIS: 0x00523644 constructs 32 of the elements above and clears the count after them.
+class tObject_00523644
+{
+public:
+	tObject_00523644();
+
+	tObject_005224e8 m_0000[32];
+	int m_200;
+};
+
+// FUNCTION: STARFLEETOP 0x00523644
+tObject_00523644::tObject_00523644()
+{
+	m_200 = 0;
+}
