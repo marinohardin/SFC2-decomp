@@ -55,6 +55,8 @@ public:
     c_00427db2(const c_00427db2& other);
     ~c_00427db2();
     c_004280f1* fn_0055e60f();
+    // HYPOTHESIS: 0x004457b7 takes one pointer-sized argument; its type is unknown.
+    void fn_004457b7(int param_1);
 
     char field_0[0xf0];
     char field_f0;
@@ -99,6 +101,7 @@ public:
     // its type and that it belongs to this class are guesses.
     char* fn_005462ec();
     void fn_00546325(int param_1);
+    void fn_00546480(int param_1);
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -407,4 +410,10 @@ void c_00546337::fn_005463cb(float param_1, char param_2)
         char step = param_2 > (int)(gap * param_1) ? param_2 : (int)(gap * param_1);
         field_e7[i] = field_ce[i] < step + field_e7[i] ? field_ce[i] : step + field_e7[i];
     }
+}
+
+// FUNCTION: STARFLEETOP 0x00546480
+void c_00546027::fn_00546480(int param_1)
+{
+    field_100.fn_004457b7(param_1);
 }
