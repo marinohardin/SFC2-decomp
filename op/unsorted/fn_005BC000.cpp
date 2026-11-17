@@ -203,6 +203,10 @@ struct fn_005bc161_tree
 	// HYPOTHESIS: _Erase(node).
 	void FUN_005bc570(node *_X);
 	iterator FUN_005bc161(iterator _F, iterator _L);
+	// HYPOTHESIS: the _Erase(node) of a second tree that shares this one's
+	// iterator and erase(iterator); 0x005bc347 is its erase(first, last).
+	void FUN_005bcd91(node *_X);
+	iterator FUN_005bc347(iterator _F, iterator _L);
 };
 
 // FUNCTION: STARFLEETOP 0x005bc161
@@ -427,4 +431,18 @@ fn_005bc324_tree::_Pairib fn_005bc324_set::FUN_005bc324(const int &_X)
 {
 	fn_005bc324_tree::_Pairib _Ans = _Tr.FUN_0057f946(_X);
 	return (fn_005bc324_tree::_Pairib(_Ans.first, _Ans.second));
+}
+
+// FUNCTION: STARFLEETOP 0x005bc347
+fn_005bc161_tree::iterator fn_005bc161_tree::FUN_005bc347(iterator _F, iterator _L)
+{
+	if (size() == 0 || _F != begin() || _L != end())
+		{while (_F != _L)
+			FUN_0060ac82(_F++);
+		return (_F); }
+	else
+		{FUN_005bcd91(_Head->_Parent);
+		_Head->_Parent = _Nil, _Size = 0;
+		_Head->_Left = _Head, _Head->_Right = _Head;
+		return (begin()); }
 }
