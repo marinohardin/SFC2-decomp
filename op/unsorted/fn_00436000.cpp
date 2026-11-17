@@ -158,3 +158,11 @@ tCountMap<tSession,tFSSession,std::less<tSession> >::tCountMap()
 	fHead = 0;
 	fTail = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00436342
+template <>
+tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator> >::tCountMap()
+{
+	fHead = 0;
+	fTail = 0;
+}

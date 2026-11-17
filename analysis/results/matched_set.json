@@ -2485,6 +2485,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436342": {
+   "name": "tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>::tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator>_>",
+   "symbol": "??0?$tCountMap@VtVolIterator@@VtVolIterParent@@U?$less@VtVolIterator@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
