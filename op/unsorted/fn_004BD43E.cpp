@@ -128,11 +128,14 @@ public:
 	c_004bd805_Object();
 	~c_004bd805_Object();
 	void fn_004bdd67();
+	void fn_004bd8d4( tString *text, int value );
 
 	tString field_0;
 	c_004bd805_Entry field_28[ 500 ];
 	int field_5618;
 	int field_561c;
+	int field_5620;
+	bool field_5624;
 };
 
 // FUNCTION: STARFLEETOP 0x004bd805
@@ -151,5 +154,39 @@ c_004bd805_Object::~c_004bd805_Object()
 	{
 		field_28[ i ].text = "";
 		field_28[ i ].field_28 = 0;
+	}
+}
+
+// HYPOTHESIS: adds a text to the entries, splitting it where it is wider than the list box.
+// FUNCTION: STARFLEETOP 0x004bd8d4
+void c_004bd805_Object::fn_004bd8d4( tString *text, int value )
+{
+	field_5624 = true;
+	int width = fn_004bd5bc();
+	int textWidth = fn_004bd645( text );
+	if ( field_561c >= 500 )
+		field_561c = 0;
+	if ( textWidth < width )
+	{
+		field_28[ field_561c ].text = *text;
+		field_28[ field_561c ].field_28 = value;
+		field_561c++;
+	}
+	else
+	{
+		int split = fn_004bd6d1( text, width );
+		field_28[ field_561c ].text = text->substr( 0, split );
+		field_28[ field_561c ].field_28 = value;
+		field_561c++;
+		if ( split > 0 )
+			fn_004bd8d4( &text->substr( split, text->mStrLen() - split ), value );
+	}
+	field_5620++;
+	if ( field_5620 > 500 )
+	{
+		field_5620 = 500;
+		field_5618++;
+		if ( field_5618 >= 500 )
+			field_5618 = 0;
 	}
 }
