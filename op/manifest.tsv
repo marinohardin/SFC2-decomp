@@ -273,7 +273,6 @@ address	size	symbol	source	modes
 0x0043569a	4	t3DListenerProfile::mGetVelocity()	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x0043569e	10	t3DListenerProfile::mSetUnitScaleInMeters(double)	unsorted/t3DListenerProfile.cpp	vc6 guest
 0x004356a8	4	t3DListenerProfile::mGetUnitScaleInMeters()	unsorted/t3DListenerProfile.cpp	vc6 guest
-0x004361cb	28	~tCountMap()	unsorted/fn_00436000.cpp	vc6 guest
 0x004361e7	43	tCookieManager()	unsorted/fn_00436000.cpp	vc6 guest
 0x00436212	43	tCookieManager()	unsorted/fn_00436000.cpp	vc6 guest
 0x0043623d	43	tCookieManager()	unsorted/fn_00436000.cpp	vc6 guest

@@ -2440,15 +2440,6 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
-  "0x004361cb": {
-   "name": "tCountMap<tPath,twPath,std::less<tPath>_>::scalar_deleting_destructor",
-   "symbol": "??_G?$tCountMap@VtPath@@VtwPath@@U?$less@VtPath@@@std@@@@UAEPAXI@Z",
-   "unit": "unsorted/fn_00436000.cpp",
-   "size": 28,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-16"
-  },
   "0x004361e7": {
    "name": "tValueCountMap<tSession,tFSSession,std::less<tSession>_>::tValueCountMap<tSession,tFSSession,std::less<tSession>_>",
    "symbol": "??0?$tCookieManager@VtSession@@VtFSSession@@@@QAE@XZ",

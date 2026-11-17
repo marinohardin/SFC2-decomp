@@ -65,14 +65,14 @@ inline tValueBase::tValueBase()
 //
 //
 //
-// HYPOTHESIS: the destructor (0x00435e84) is not recovered. The empty body below only makes
-// the compiler emit the scalar deleting destructor claimed here; it does not stand for
-// 0x00435e84, which stays unclaimed.
-// FUNCTION: STARFLEETOP 0x004361cb
-template <>
-tCountMap<tPath,twPath,std::less<tPath> >::~tCountMap()
-{
-}
+//
+//
+//
+//
+//
+//
+//
+//
 
 // FUNCTION: STARFLEETOP 0x004361e7
 template <>
