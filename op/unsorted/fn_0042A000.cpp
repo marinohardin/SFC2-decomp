@@ -127,3 +127,20 @@ bool fn_0042a403_object::FUN_0042a421( int key0, int key1 )
 	std::map< std::pair< int, int >, bool >::iterator it = field_a0.find( std::pair< int, int >( key0, key1 ) );
 	return it != field_a0.end() ? (*it).second : false;
 }
+
+// HYPOTHESIS: both calls go through the same object to an int getter at 0x0042aa4b; the
+// class is not known yet.
+class fn_0042a45f_object
+{
+public:
+	bool FUN_0042a45f();
+	int FUN_0042aa4b();
+};
+
+// FUNCTION: STARFLEETOP 0x0042a45f
+bool fn_0042a45f_object::FUN_0042a45f()
+{
+	if( FUN_0042aa4b() >= 8 && FUN_0042aa4b() <= 15 )
+		return true;
+	return false;
+}
