@@ -254,6 +254,7 @@ public:
 	int FUN_0042aa8b();
 	int FUN_0042aaab();
 	int FUN_0042aacb();
+	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr FUN_0042aaeb();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -514,4 +515,10 @@ int fn_0042a480_object::FUN_0042aacb()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_54;
+}
+
+// FUNCTION: STARFLEETOP 0x0042aaeb
+tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr fn_0042a480_object::FUN_0042aaeb()
+{
+	return field_b4.Lock();
 }

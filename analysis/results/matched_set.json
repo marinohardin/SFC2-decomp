@@ -2485,6 +2485,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042aaeb": {
+   "name": "FUN_0042aaeb",
+   "symbol": "?FUN_0042aaeb@fn_0042a480_object@@QAE?AV?$tAccessPointer@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@V?$tSingleAccessWrapper@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@@@@@XZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
