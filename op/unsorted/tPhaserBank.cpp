@@ -110,26 +110,8 @@ public:
     virtual float vfunction70();
     virtual unsigned mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode);
 
-    char pad04[0x0c - 0x04];
-    // HYPOTHESIS: a type id that 0x004e2aaa switches on, with values 44 to 49.
-    int field_0c;
-    char pad10[0x2c - 0x10];
-    fn_004e20f4_field2c_type* field_2c;
-    char pad30[0x46 - 0x30];
-    bool field_46;
-    char pad47[0xec - 0x47];
-    int field_ec;
-    char padf0[0xf8 - 0xf0];
-    int field_f8;
-    // HYPOTHESIS: a byte that 0x004e2b02 compares with 12.
-    char field_fc;
-    char padfd[0x100 - 0xfd];
-    int field_100;
-    int field_104;
-    int field_108;
-    char pad10c[0x148 - 0x10c];
-    fn_004e2895_field148_type field_148;
-    char pad149[0x470 - 0x149];
+    // Offsets 0x04 to 0x14b are tBaseWeapon's members.
+    char pad14c[0x470 - 0x14c];
     float field_470[4];
     // HYPOTHESIS: 16 floats; the constructor clears the first four, 0x004e2243 reads every fourth.
     float field_480[16];

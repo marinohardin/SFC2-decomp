@@ -40,4 +40,8 @@ address	name	part_of	kind	note
 0x00402c74	FUN_00402c74	0x00402bb6	body-fragment	0x00402c74 is the tail of fn_00402bb6 after its catch funclet (it reads that frame); it has no source of its own.
 0x00403eda	FUN_00403eda		library-instance	The library's basic_istream<char>::ipfx(bool) instance (rdstate test, tie flush, whitespace skip through the ctype facet in a try block). Its claim is removed from op/; it has no source of its own there.
 0x00404695	FUN_00404695		library-instance	The library's vector<string>::insert(pos, n, x) instance (grow and copy, or shift and fill). Its claim is removed from op/; it has no source of its own there.
+0x004d0ed4	FUN_004d0ed4	0x004d0eb6	body-fragment	the body (141 bytes) of tSFCPlayer::vfunction70 after the tShipSpecs construction recorded at 0x004d0eb6; the analysis splits the function there, so it has no source of its own.
+0x004d0f80	FUN_004d0f80	0x004d0f61	body-fragment	the tail of tSFCPlayer::vfunction71 at 0x004d0f61 after its tShipSpecs construction; the analysis splits the function there, so it has no source of its own.
+0x004d29c5	FUN_004d29c5		library-instance	0x004d29c5 is std::basic_ostream<char>::operator<<(double), a standard library instantiation; it is not written in op/.
+0x004d2a96	FUN_004d2a96	0x004d29c5	body-fragment	0x004d2a96 is the shared tail of the basic_ostream<char> operator<< at 0x004d29c5 (it reads the caller frame through ebp and esi); it has no source of its own.
 0x0075a042	FUN_0075a042	0x00759e80	body-fragment	the 2 bytes the analysis splits off right after tFontDraw::mDrawGlyphClipped (0x00759e80, 450 bytes); padding or the tail of that function, not a function of its own, so it has no source.

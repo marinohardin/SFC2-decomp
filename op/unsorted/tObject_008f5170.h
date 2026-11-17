@@ -20,6 +20,8 @@ public:
 	void fn_004259bd(float x, float y, int32 *pColumn, int32 *pRow);
 	tObject_00425726_list *fn_00425726(int32 column, int32 row);
 	std::vector<tPhysicalEntity *> *fn_004255b5(tObject_00412f08 aPoint, float aRange);
+	// HYPOTHESIS: tBaseWeapon's 0x004d87e3 passes it its target, its ship and 1; the types are not known.
+	char fn_00425a18(void *pTarget, void *pShip, int aFlag);
 };
 
 extern tObject_008f5170 gObject_008f5170;

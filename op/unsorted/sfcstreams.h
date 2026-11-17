@@ -51,6 +51,9 @@ public:
 	void mSetReadSize(int32 readSize);
 	void mSetVersionNumber( int32 versionNumber );
 	int mGetVersionNumber();
+	// HYPOTHESIS: the game's own copy of a 4-byte getter; tSFCPlayer::vfunction2 calls it on the
+	// stream (0x004cfb31) and compares the result with the integer at 0x0079ed10.
+	int fn_00423402();
 	void mWriteStringToStream(char *str);
 
 	//Generic Stream function
