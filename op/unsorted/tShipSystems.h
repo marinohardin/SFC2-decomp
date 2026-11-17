@@ -14,7 +14,8 @@ class tIndividualShipSystemList;
 class tShipSystems
 {
 public:
-    virtual void vfunction0() = 0;
+    // The slot names count from 1: vfunctionN sits at +(N-1)*4 (0x00444654 calls vfunction3
+    // through +0x8 and vfunction2 through +0x4).
     virtual int vfunction1() = 0;
     virtual float vfunction2() = 0;
     virtual float vfunction3() = 0;
@@ -36,7 +37,7 @@ public:
     virtual void vfunction19() = 0;
     virtual void vfunction20() = 0;
     virtual void vfunction21() = 0;
-    virtual void vfunction22() = 0;
+    virtual float vfunction22( float param_1 ) = 0;
     virtual void vfunction23() = 0;
     virtual void vfunction24() = 0;
     virtual void vfunction25() = 0;
@@ -183,6 +184,7 @@ public:
     virtual void vfunction166( int param_1 ) = 0;
     virtual void vfunction167() = 0;
     virtual void vfunction168() = 0;
+    virtual void vfunction169() = 0;
 };
 
 #endif	// tShipSystems_h

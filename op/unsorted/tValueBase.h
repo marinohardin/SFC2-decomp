@@ -38,6 +38,9 @@ public:
 	virtual void vfunction2( long param_1 );
 	// HYPOTHESIS: the set step, as tValueI<tString>'s: assign, then notify with (3, 0).
 	tValue &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
+	// HYPOTHESIS: an inline read of the value; 0x00444654 loads two values and compares them
+	// with fcompp, the shape of two inline calls.
+	operator T() const { return m18; }
 
 	T m18;
 };

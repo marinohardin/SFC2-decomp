@@ -11,13 +11,13 @@ extern float g_00799ed0;
 extern double g_0090bef0;
 extern float g_007959cc;
 extern int g_008e0cd0;
+extern double g_00c7c148;
 
 // HYPOTHESIS: the slots before the destructor are not recovered; 0x00444004 calls the
 // deleting destructor through slot 169 (+0x2a4), so it is declared after 168 others.
 class tShipSystemsFighter : public tShipSystems
 {
 public:
-    virtual void vfunction0();
     virtual int vfunction1();
     virtual float vfunction2();
     virtual float vfunction3();
@@ -39,7 +39,7 @@ public:
     virtual void vfunction19();
     virtual void vfunction20();
     virtual void vfunction21();
-    virtual void vfunction22();
+    virtual float vfunction22( float param_1 );
     virtual void vfunction23();
     virtual void vfunction24();
     virtual void vfunction25();
@@ -186,6 +186,7 @@ public:
     virtual void vfunction166( int param_1 );
     virtual void vfunction167();
     virtual void vfunction168();
+    virtual void vfunction169();
     tShipSystemsFighter( int param_1 );
     virtual ~tShipSystemsFighter();
     virtual void vfunction170();
@@ -733,4 +734,21 @@ int tShipSystemsFighter::vfunction165()
 void tShipSystemsFighter::vfunction166( int param_1 )
 {
     m828 = param_1;
+}
+
+// HYPOTHESIS: the types; the request is clamped to the whole part of vfunction3's value, plus
+// one when vfunction2's whole part is higher, then handed to m7e4 and its value returned.
+// FUNCTION: STARFLEETOP 0x00444654
+float tShipSystemsFighter::vfunction22( float param_1 )
+{
+    static tObject_0040ce21 marker("I want it this much! Fighter Style");
+    float level = (float)(int)vfunction3();
+    if( (float)(int)vfunction2() > level )
+        level++;
+    if( param_1 > level )
+        param_1 = level;
+    ((fn_00444396_value*)&m7e4)->vfunction3( param_1 );
+    if( (float)m7e4 == (float)m778 &&(float)m778 != param_1 )
+        m818 = g_00c7c148;
+    return m7e4.m18;
 }
