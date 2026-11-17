@@ -9303,9 +9303,9 @@
    "symbol": "?mResizeHandleZeroIt@twMemoryPart@@UAEJJJ@Z",
    "unit": "Tiger/twmemory.cpp",
    "size": 784,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0063a0a0": {
    "name": "twMemoryPart::mDelHandle",
