@@ -42,6 +42,9 @@ public:
 	bool fn_005e5b2d( fn_005eb3c5_class *pair );
 	// HYPOTHESIS: 0x005e41ec hands it 1 and the control's rectangle.
 	void fn_005e7778( int param_1, const tRect *area );
+	// HYPOTHESIS: 0x005e42a6 hands the hex point 0x005e5d7a returns (by value) to 0x005e5c72.
+	tHexPoint fn_005e5d7a();
+	void fn_005e5c72( const tHexPoint &point );
 };
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
@@ -701,4 +704,14 @@ void tMetaMapControl::fn_005e4293()
 {
 	fn_005e31dd( -1 );
 	fn_0045f4c2();
+}
+
+// FUNCTION: STARFLEETOP 0x005e42a6
+void tMetaMapControl::fn_005e42a6()
+{
+	if ( fn_00607d61()->fn_0060a54d() != 0 )
+	{
+		fn_00607d61()->fn_0060a54d()->fn_005e5c72( fn_00607d61()->fn_0060a54d()->fn_005e5d7a() );
+		fn_0045f4c2();
+	}
 }
