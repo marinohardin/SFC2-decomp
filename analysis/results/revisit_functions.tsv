@@ -146,3 +146,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00476e72	FUN_00476e72	99.95	2	sonnet	2026-11-17T15:07:33Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.95%
 0x004777f3	tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup	22.12	2	sonnet	2026-11-17T15:23:06Z	attempt 2 (sonnet) did not raise the best; best 22.12%
 0x0047792f	tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup	28.15	2	sonnet	2026-11-17T15:28:02Z	attempt 2 (sonnet) did not raise the best; best 28.15%
+0x0060c675	FUN_0060c675	94.29	2	sonnet	2026-11-17T15:52:04Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 94.29%
