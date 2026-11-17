@@ -151,7 +151,8 @@ public:
     virtual void vfunction130() = 0;
     // HYPOTHESIS: the return type; tShipSystemsExt returns the address of a tMinMaxFloat member.
     virtual tMinMaxFloat* vfunction131() = 0;
-    virtual void vfunction132() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns a float member.
+    virtual float vfunction132() = 0;
     virtual void vfunction133() = 0;
     virtual void vfunction134() = 0;
     virtual void vfunction135() = 0;

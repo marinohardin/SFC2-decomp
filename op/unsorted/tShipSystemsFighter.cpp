@@ -149,7 +149,7 @@ public:
     virtual void vfunction129();
     virtual void vfunction130();
     virtual void vfunction131();
-    virtual void vfunction132();
+    virtual float vfunction132();
     virtual void vfunction133();
     virtual void vfunction134();
     virtual void vfunction135();

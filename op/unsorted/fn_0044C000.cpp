@@ -1103,3 +1103,9 @@ tMinMaxFloat* tShipSystemsExt::vfunction131()
 {
 	return &m718;
 }
+
+// FUNCTION: STARFLEETOP 0x0044ce23
+float tShipSystemsExt::vfunction132()
+{
+	return m718;
+}
