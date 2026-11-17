@@ -7,6 +7,7 @@
 class tSFCStream;
 class fn_004e2b02_ship_type;
 class tEntity;
+class fn_004d8219_list;
 
 // HYPOTHESIS: the four values the phaser bank constructors (0x004e1e99, 0x004e5325) copy into
 // the bank, read as four ints.
@@ -98,7 +99,7 @@ public:
     virtual void vfunction43();
     virtual void vfunction44();
     virtual void vfunction45();
-    virtual void vfunction46();
+    virtual char vfunction46();
     virtual void vfunction47();
     virtual void vfunction48();
     virtual void vfunction49();
@@ -132,7 +133,7 @@ public:
     virtual void vfunction73();
     virtual float vfunction74(float param_1, float param_2);
     virtual void vfunction75();
-    virtual void vfunction76();
+    virtual float vfunction76(float param_1, float param_2);
     virtual void vfunction77();
     virtual void vfunction78();
     virtual float vfunction79();
@@ -216,13 +217,17 @@ public:
     virtual int vfunction144();
     virtual void vfunction145(int param_1);
     // HYPOTHESIS: members read by vfunction102, placed by offset.
-    char pad_04[0x28];
+    char pad_04[0x20];
+    // HYPOTHESIS: a list of child weapons, walked by vfunction76.
+    fn_004d8219_list *field_24;
+    char pad_28[4];
     // HYPOTHESIS: a weapon object at offset 0x2c whose slot 143 (offset 0x238) 0x004d76f8 forwards to.
     tBaseWeapon *field_2c;
     char pad_30[8];
     float field_38;
     float field_3c;
-    char pad_40[5];
+    float field_40;
+    char pad_44[1];
     char field_45;
     char field_46;
     char pad_47[0x81];

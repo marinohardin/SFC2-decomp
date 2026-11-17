@@ -9,6 +9,18 @@ short fn_0069afc0(float x, float y);
 extern float g_00795620;
 extern double g_0079de48;
 extern float g_00855984[];
+// HYPOTHESIS: the list of child weapons at offset 0x24; slot 2 gives the first, slot 5 the next.
+class fn_004d8219_list
+{
+public:
+    virtual void vfunction0();
+    virtual void vfunction1();
+    virtual tBaseWeapon *first();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual tBaseWeapon *next(tBaseWeapon *param_1);
+};
+
 // HYPOTHESIS: the slot at offset 0x1a4 returns the number of banks; the header declares it with
 // an int parameter, so vfunction126 calls it through this reduced view of the vtable.
 class fn_004d819c_view
@@ -744,4 +756,26 @@ void tBaseWeapon::vfunction126(float param_1)
         if (banks > 3)
             field_e4 = param_1 * field_e4;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x004d8219
+float tBaseWeapon::vfunction76(float param_1, float param_2)
+{
+    if (vfunction46() == 1)
+    {
+        tBaseWeapon *child;
+        for (child = field_24->first(); child != 0; child = field_24->next(child))
+            param_1 = child->vfunction76(param_1, param_2);
+        return param_1;
+    }
+    else
+    {
+        if (vfunction64())
+        {
+            if (param_1 > field_40)
+                return param_1 - field_40;
+            vfunction124(0);
+        }
+    }
+    return param_1;
 }
