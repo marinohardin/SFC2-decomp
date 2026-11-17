@@ -8011,6 +8011,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005d9281": {
+   "name": "FUN_005d9281",
+   "symbol": "??1fn_005d9281_tree@@QAE@XZ",
+   "unit": "unsorted/fn_005D913F.cpp",
+   "size": 56,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

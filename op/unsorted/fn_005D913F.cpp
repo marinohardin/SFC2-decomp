@@ -77,9 +77,10 @@ inline fn_005d9200_value::~fn_005d9200_value()
         m00->FUN_0046de63();
 }
 
-// HYPOTHESIS: a 16-byte balanced tree (a head node at +0x04 whose left link is the first
-// node; each node holds its key at +0x0c and its value at +0x10). Its destructor
-// (0x005d9281) and its iterator's increment (0x0052e144) are called out of line.
+// HYPOTHESIS: a 20-byte balanced tree (a head node at +0x04 whose left link is the first
+// node, a second node at +0x08, its size at +0x10; each node holds its key at +0x0c and its
+// value at +0x10). Its destructor (0x005d9281), its range erase (0x005d9329) and its
+// iterator's increment (0x0052e144) are called out of line.
 struct fn_005d9281_tree
 {
     struct node
@@ -101,11 +102,14 @@ struct fn_005d9281_tree
         node *m_node;
     };
     ~fn_005d9281_tree();
+    iterator fn_005d9329(iterator first, iterator last);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
     char m_0x00[0x04];
     node *m_head;
-    char m_0x08[0x08];
+    node *m_nil;
+    char m_0x0c[0x04];
+    long m_size;
 };
 
 // HYPOTHESIS: a member at +0x14 whose destructor is 0x005d92b9.
@@ -124,7 +128,6 @@ public:
     ~fn_005d9200_object();
 
     fn_005d9281_tree m00;
-    long m10;
     fn_005d92b9_object m14;
 };
 
@@ -133,4 +136,14 @@ fn_005d9200_object::~fn_005d9200_object()
 {
     for (fn_005d9281_tree::iterator it = m00.begin(); it != m00.end(); ++it)
         delete (*it).second;
+}
+
+// FUNCTION: STARFLEETOP 0x005d9281
+fn_005d9281_tree::~fn_005d9281_tree()
+{
+    fn_005d9329(begin(), end());
+    operator delete(m_head);
+    m_head = 0, m_size = 0;
+    operator delete(m_nil);
+    m_nil = 0;
 }
