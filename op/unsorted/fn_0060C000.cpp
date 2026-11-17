@@ -36,7 +36,7 @@ public:
     void fn_0060c720(tString &text);
     void fn_0060c486(C_0060c486 *owner);
     void fn_0060c51d(bool debriefing);
-    void fn_0060c675(C_0060c486 *next, C_0060c486 *node);
+    C_0060c486 *fn_0060c675(C_0060c486 *next, C_0060c486 *node);
     void fn_0060c76b(tString &text);
     // HYPOTHESIS: five owners the destructor frees through 0x0060c486.
     C_0060c486 *m_00;
@@ -146,6 +146,15 @@ public:
     C_0060c486 *m_08;
 };
 
+// HYPOTHESIS: a 0x3c-byte line of text (RTTI name); 0x0060c68a builds one with (5, entry) and
+// links it as a C_0060c486. The meaning of the constructor's arguments is unknown.
+class tStringMessage : public C_0060c486
+{
+public:
+    tStringMessage(int kind, int entry);
+    char m_0c[0x30];
+};
+
 // FUNCTION: STARFLEETOP 0x0060c486
 // HYPOTHESIS: a member of C_00c3a80c that does not use this; its destructor passes this in ecx.
 void C_00c3a80c::fn_0060c486(C_0060c486 *owner)
@@ -216,9 +225,17 @@ void C_00c3a80c::fn_0060c51d(bool debriefing)
 // FUNCTION: STARFLEETOP 0x0060c675
 // HYPOTHESIS: a member of C_00c3a80c that does not use this (ret 8, like 0x0060c486); it links
 // node before next, so a node keeps its previous link at +0x08.
-void C_00c3a80c::fn_0060c675(C_0060c486 *next, C_0060c486 *node)
+C_0060c486 *C_00c3a80c::fn_0060c675(C_0060c486 *next, C_0060c486 *node)
 {
     node->m_04 = next;
     if (next)
         next->m_08 = node;
+    return node;
+}
+
+// FUNCTION: STARFLEETOP 0x0060c68a
+// HYPOTHESIS: adds a line for entry at the head of the list at +0x08.
+void C_00c3a80c::fn_0060c68a(int entry)
+{
+    m_08 = fn_0060c675(m_08, new tStringMessage(5, entry));
 }
