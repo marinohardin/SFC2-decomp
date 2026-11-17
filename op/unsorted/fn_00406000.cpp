@@ -312,3 +312,14 @@ int std::string::compare(size_type _P0, size_type _N0, const char* _S, size_type
     size_type _Ans = std::char_traits<char>::compare(_Psum(_Ptr, _P0), _S, _N0 < _M ? _N0 : _M);
     return (_Ans != 0 ? _Ans : _N0 < _M ? -1 : _N0 != _M);
 }
+
+// FUNCTION: STARFLEETOP 0x0040683e
+void std::numpunct<char>::_Init(const std::_Locinfo& _Lobj)
+{
+    const lconv* _Ptr = _Lobj._Getlconv();
+    _Dp = _Ptr->decimal_point[0];
+    _Ks = _Ptr->thousands_sep[0];
+    _Gr = _Maklocstr(_Ptr->grouping, (char*)0);
+    _Nf = _Maklocstr("false", (char*)0);
+    _Nt = _Maklocstr("true", (char*)0);
+}
