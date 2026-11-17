@@ -431,3 +431,47 @@ tObject_005236d8::tObject_005236d8()
 	: m_00(-1)
 {
 }
+
+// HYPOTHESIS: a receiver whose first virtual takes the amount handed to it.
+class tObject_005236ea_Target
+{
+public:
+	virtual void vfunction0(float amount);
+};
+
+// HYPOTHESIS: a 12-byte entry: the amount it takes, a flag that refuses part amounts, its receiver.
+struct tObject_005236ea_Entry
+{
+	float m_00;
+	bool m_04;
+	tObject_005236ea_Target *m_08;
+};
+
+// HYPOTHESIS: 45 entries after a 4-byte field, then their count at +0x220.
+class tObject_005236ea
+{
+public:
+	float fn_005236ea(float amount);
+
+	int m_00;
+	tObject_005236ea_Entry m_04[45];
+	int m_220;
+};
+
+// FUNCTION: STARFLEETOP 0x005236ea
+float tObject_005236ea::fn_005236ea(float amount)
+{
+	tObject_005236ea_Entry *pEntry = m_04;
+	for (int i = 0; i < m_220 && amount > 0.0f; i++, pEntry++) {
+		if (amount < pEntry->m_00) {
+			if (!pEntry->m_04) {
+				pEntry->m_08->vfunction0(amount);
+				amount = 0.0f;
+			}
+		} else {
+			pEntry->m_08->vfunction0(pEntry->m_00);
+			amount -= pEntry->m_00;
+		}
+	}
+	return amount;
+}
