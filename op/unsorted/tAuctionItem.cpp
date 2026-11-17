@@ -31,6 +31,20 @@ public:
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
+	// HYPOTHESIS: places a bid; returns 0 when refused, 1 when outbid, 2 when the bidder leads.
+	int fn_0054522d( const nDatabase::tID& bidder, int arg2, int32u bid, nDatabase::tID& owner, int32u* outBid );
+	// HYPOTHESIS: small accessors read from their callers; 0x004b94dc, 0x00420f2f and 0x00420f3c
+	// are bodies the linker shares with other classes' one-line members.
+	bool fn_00545401() const;
+	void fn_00545405( bool value );
+	bool fn_00545560( int arg );
+	int32u fn_004b94dc() const;
+	const nDatabase::tID& fn_005455bb() const;
+	int32u fn_005455c2() const;
+	void fn_005455e3( int32u value );
+	void fn_005455f0( const nDatabase::tID& id );
+	void fn_00420f2f( int value );
+	void fn_00420f3c( int32u value );
 protected:
 	bool fBool_48;
 	std::string fString_4c;
@@ -129,4 +143,51 @@ const char* tAuctionItem::SQLFieldNames() const
 {
 	return " ( ID, Locked, LockID, BiddingHasBegun, ItemName, ItemID, ItemInfo, AuctionValue, "
 		"AuctionRate, TurnOpened, TurnToClose, CurrentBid, BidOwnerID, TurnBidMade, BidMaximum ) ";
+}
+
+// FUNCTION: STARFLEETOP 0x0054522d
+int tAuctionItem::fn_0054522d( const nDatabase::tID& bidder, int arg2, int32u bid, nDatabase::tID& owner, int32u* outBid )
+{
+	// MATCH-ONLY: a named tID in its own block; a temporary copies from the constructor's
+	// return register, the original copies from the stack and destroys the tID at once.
+	{
+		nDatabase::tID none( 0 );
+		owner = none;
+	}
+
+	if ( !bidder.IsValid() || fn_00545560( arg2 ) || ( fn_00545401() && bid <= fn_004b94dc() ) )
+		return 0;
+
+	if ( fn_00545401() )
+	{
+		if ( bid < fn_005455c2() )
+		{
+			if ( !( bidder != fn_005455bb() ) )
+				return 0;
+			fn_005455e3( bid + 1 );
+			owner = fn_005455bb();
+		}
+		else if ( bid == fn_005455c2() )
+		{
+			fn_005455e3( bid );
+		}
+		else
+		{
+			if ( bidder != fn_005455bb() )
+				fn_005455e3( fn_005455c2() + 1 );
+			owner = fn_005455bb();
+			*outBid = fn_005455c2();
+			// The original's layout: the two "return 1" cases share one exit and this case runs on
+			// into the code below.
+			goto lead;
+		}
+		return 1;
+	}
+
+lead:
+	fn_00545405( true );
+	fn_005455f0( bidder );
+	fn_00420f2f( arg2 );
+	fn_00420f3c( bid );
+	return 2;
 }
