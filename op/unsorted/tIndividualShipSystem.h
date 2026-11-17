@@ -290,6 +290,8 @@ public:
     virtual void vfunction65(char param_1);
     // HYPOTHESIS: slot 65; returns the byte at +0x30 set by slot 64.
     virtual char vfunction66();
+    // HYPOTHESIS: slot 66; stores its argument in the dword at +0x38.
+    virtual void vfunction67(int param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -305,7 +307,9 @@ public:
     class fn_owner_type* field_2c;
     // HYPOTHESIS: a byte set by slot 64 (vfunction65).
     char field_30;
-    char pad31[0x40 - 0x31];
+    char pad31[0x38 - 0x31];
+    int field_38;
+    char pad3c[0x40 - 0x3c];
     float field_40;
     char pad44[0x45 - 0x44];
     bool field_45;
