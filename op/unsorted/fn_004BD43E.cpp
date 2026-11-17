@@ -4,6 +4,7 @@
 #include "unsorted/tListBox_Base.h"
 #include "unsorted/tListBox_News.h"
 
+#include <memory>
 #include <string>
 
 // FUNCTION: STARFLEETOP 0x004bd443
@@ -207,21 +208,20 @@ bool c_004bd805_Object::fn_004bda12()
 // FUNCTION: STARFLEETOP 0x004bda34
 c_004bd805_Object g_004bd805_Object;
 
-// HYPOTHESIS: a global object at 0x0091f928 holding a flag byte and a counter; its inline
-// constructor clears both (0x004bda7f) and its destructor is registered with atexit (0x004bda8e).
-class c_0091f928_Object
+// HYPOTHESIS: a one-byte class whose constructor is 0x005cf073; its only instance is owned by
+// the auto_ptr at 0x0091f928 and created on first use (0x004bdc4d).
+class c_005cf073_Object
 {
 public:
-	c_0091f928_Object() { field_0 = false; field_4 = 0; }
-	~c_0091f928_Object();
-
-	bool field_0;
-	int field_4;
+	c_005cf073_Object();
+	~c_005cf073_Object();
 };
 
+// HYPOTHESIS: the global at 0x0091f928 is a std::auto_ptr (owner flag, then the pointer); its
+// constructor clears both (0x004bda7f) and its destructor is registered with atexit (0x004bda8e).
 // FUNCTION: STARFLEETOP 0x004bda8e
 // FUNCTION: STARFLEETOP 0x004bda7f
-c_0091f928_Object g_0091f928;
+std::auto_ptr<c_005cf073_Object> g_0091f928;
 
 // HYPOTHESIS: a std::string global at 0x0091f910 holding the text "Unknown_Failure".
 // FUNCTION: STARFLEETOP 0x004bdaf2
@@ -242,3 +242,11 @@ std::string g_0091f8f0 = "Already_Logged_on";
 // FUNCTION: STARFLEETOP 0x004bdc24
 // FUNCTION: STARFLEETOP 0x004bdbf1
 std::string g_0091f8e0 = "Character_name_invalid";
+
+// FUNCTION: STARFLEETOP 0x004bdc4d
+c_005cf073_Object *fn_004bdc4d()
+{
+	if ( g_0091f928.get() == 0 )
+		g_0091f928 = std::auto_ptr<c_005cf073_Object>( new c_005cf073_Object );
+	return g_0091f928.get();
+}
