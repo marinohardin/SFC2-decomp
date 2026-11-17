@@ -113,3 +113,6 @@ std::string g_00c39008 = "DefenseIcon";
 // FUNCTION: STARFLEETOP 0x005e297a
 // FUNCTION: STARFLEETOP 0x005e2947
 std::string g_00c38ff8 = "EconomyIcon";
+
+// FUNCTION: STARFLEETOP 0x005e299d
+std::string g_00c38fe8 = "ImpedenceIcon";
