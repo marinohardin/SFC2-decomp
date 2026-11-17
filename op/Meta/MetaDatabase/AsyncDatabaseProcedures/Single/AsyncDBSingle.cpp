@@ -10,7 +10,7 @@
 #include "unsorted/tMissionCompleteResults.h"
 #include <sstream>
 #include <vector>
-class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify;	// HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
+class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify; tSettings* fn_005d481f();	// HYPOTHESIS: fn_005d481f returns the server settings; name not known. tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
 class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
@@ -68,8 +68,8 @@ public:
 	void fn_00571018( tShip* ship );
 	void fn_0057118e( tNotify* notify );
 	void fn_00571304( tNewsStory* news );
-};tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
-namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
+	void fn_0057147a( int value );	// HYPOTHESIS: one dword argument; its type is not known.
+}; namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
 	virtual void vfunction1();
@@ -109,7 +109,7 @@ public:
 	virtual void vfunction35( tCampaignInfo* info );
 	virtual void vfunction36( tNotify* notify );
 	virtual void vfunction37( tNewsStory* news );
-	virtual void vfunction38();
+	virtual void vfunction38( int value );
 	virtual void vfunction39();
 	virtual void vfunction40();
 	virtual void vfunction41();
@@ -665,4 +665,11 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction37( tNewsStory* new
 #line 915
 	validate( news );
 	fDatabase->fn_00571304( news );
+}
+#line 671
+// HYPOTHESIS: the argument is passed through unchecked; its type is not known.
+// FUNCTION: STARFLEETOP 0x0056df9e
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction38( int value )
+{
+	fDatabase->fn_0057147a( value );
 }
