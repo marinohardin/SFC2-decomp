@@ -96,7 +96,10 @@ public:
 
     char field_0[0x90];
     c_00451045 field_90;
-    char field_91[0x430 - 0x91];
+    char field_91[0x100 - 0x91];
+    // HYPOTHESIS: the stores state 0x005462e5 returns, at +0x100.
+    c_00427db2 field_100;
+    char field_30c[0x430 - 0x30c];
     // HYPOTHESIS: the flag word at +0x430 that 0x00546264 tests bit 0 of.
     unsigned int field_430;
 };
@@ -307,4 +310,10 @@ unsigned int c_00546027::fn_005462d7()
 c_00451045* c_00546027::fn_005462de()
 {
     return &field_90;
+}
+
+// FUNCTION: STARFLEETOP 0x005462e5
+const c_00427db2& c_00546027::fn_005462e5()
+{
+    return field_100;
 }

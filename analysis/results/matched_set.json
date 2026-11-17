@@ -7705,6 +7705,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005462e5": {
+   "name": "FUN_005462e5",
+   "symbol": "?fn_005462e5@c_00546027@@QAEABVc_00427db2@@XZ",
+   "unit": "unsorted/fn_00546000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
