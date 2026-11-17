@@ -7831,6 +7831,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00546813": {
+   "name": "tClassAllocator<tShip>::vfunction1",
+   "symbol": "?mAllocate@?$tClassAllocator@VtShip@@@@UAEPAVtAllocatedClass@@XZ",
+   "unit": "unsorted/fn_00546000.cpp",
+   "size": 76,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
