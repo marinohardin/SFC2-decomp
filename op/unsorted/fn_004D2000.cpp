@@ -137,6 +137,9 @@ namespace std
 		inline basic_string(const char* s, char al);
 		~basic_string() { _Tidy(true); }
 		basic_string& assign(const char* s, unsigned int n);
+		static const unsigned int npos;
+		inline basic_string(const basic_string& rhs);
+		basic_string& assign(const basic_string& rhs, unsigned int pos, unsigned int n);
 		const char* c_str() const { return _Ptr != 0 ? _Ptr : _Nullstr(); }
 	private:
 		static const char* _Nullstr() { static const char _C = char(); return &_C; }
@@ -151,6 +154,14 @@ namespace std
 }
 
 typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_004d2238_string;
+
+// MATCH-ONLY: the original inlined the copy constructor into its callers.
+inline std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(const basic_string& rhs)
+{
+	m_al = rhs.m_al;
+	_Tidy(false);
+	assign(rhs, 0, npos);
+}
 
 // MATCH-ONLY: the original inlined the const char* constructor into its callers.
 inline std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(const char* s, char al)
@@ -604,12 +615,44 @@ bool __stdcall fn_004d269b( int a, int b, char c )
 }
 
 // HYPOTHESIS: a map from string to fn_004d2265_holder* (operator[] is 0x004d2add); name unknown.
+struct fn_004d26fb_pair
+{
+	inline fn_004d26fb_pair(const fn_004d2238_string& a, fn_004d2265_holder* b);
+	fn_004d2238_string first;
+	fn_004d2265_holder* second;
+};
+
+// MATCH-ONLY: the original inlined the pair constructor into its callers.
+inline fn_004d26fb_pair::fn_004d26fb_pair(const fn_004d2238_string& a, fn_004d2265_holder* b) : first(a), second(b)
+{
+}
+
+struct fn_004d26fb_node
+{
+	char m_0x00[0x1c];
+	fn_004d2265_holder* m_0x1c;
+};
+
+struct fn_004d26fb_insert_result
+{
+	fn_004d26fb_node* node;
+	bool inserted;};
+
 class fn_004d26fb_map
 {
 public:
 	void fn_004d26fb(int a, const char* text);
+	fn_004d26fb_insert_result fn_004d2c20(const fn_004d26fb_pair& value);
 	fn_004d2265_holder*& fn_004d2add(const fn_004d2238_string& key);
 };
+
+// FUNCTION: STARFLEETOP 0x004d2add
+fn_004d2265_holder*& fn_004d26fb_map::fn_004d2add(const fn_004d2238_string& key)
+{
+	fn_004d26fb_pair value(key, 0);
+	fn_004d26fb_insert_result result = fn_004d2c20(value);
+	return result.node->m_0x1c;
+}
 
 // FUNCTION: STARFLEETOP 0x004d26fb
 void fn_004d26fb_map::fn_004d26fb(int a, const char* text)
