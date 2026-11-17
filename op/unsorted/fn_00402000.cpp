@@ -1,4 +1,5 @@
 #include <ios>
+#include <string>
 
 // HYPOTHESIS: a stream holder whose ifstream part sits at +0x5c. The exe calls
 // ~basic_ifstream (0x0040345f) on that part, then ~basic_ios (0x00402a1b) on the same.
@@ -123,7 +124,23 @@ void fn_004021d1_Holder::fn_004021d1(const fn_004021d1_Record* rec)
     m08 = ~m0c->m04;
 }
 
-// FUNCTION: STARFLEETOP 0x0040233b
-void fn_0040233b()
+// HYPOTHESIS: an object whose 0x0040257f turns a string into another string and a count,
+// and whose 0x004026ec consumes that result; neither is written yet.
+class fn_0040233b_Object
 {
+public:
+    std::string fn_0040257f(std::string text, char* count);
+    bool fn_004026ec(const std::string& text, int arg, char count);
+    bool fn_0040233b(std::string text, int arg);
+};
+
+// FUNCTION: STARFLEETOP 0x0040233b
+bool fn_0040233b_Object::fn_0040233b(std::string text, int arg)
+{
+    bool result;
+    char count;
+    std::string parsed = fn_0040257f(text, &count);
+    if (count > 0)
+        result = fn_004026ec(parsed, arg, count);
+    return result;
 }

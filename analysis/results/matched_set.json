@@ -111,11 +111,11 @@
   },
   "0x0040233b": {
    "name": "FUN_0040233b",
-   "symbol": "?fn_0040233b@@YAXXZ",
+   "symbol": "?fn_0040233b@fn_0040233b_Object@@QAE_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 128,
-   "score": 0.952,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0040aad2": {
