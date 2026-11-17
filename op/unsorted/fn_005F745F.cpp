@@ -105,13 +105,14 @@ public:
 	void FUN_005f7635( int value );
 	fn_005f7a4b_value FUN_005f767d();
 	bool FUN_005f76d5();
+	bool FUN_005f76f8();
 
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
 	byte field_05[0x14 - 0x05];
 	int field_14; // HYPOTHESIS: the entry count of the queue at +0x04; 0x005f76d5 tests it
 	fn_005f7961_object field_18;
-	byte field_28[0x2c - 0x28];
+	int field_28; // HYPOTHESIS: the entry count of the list at +0x18; 0x005f76f8 tests it
 	fn_005f7a6a_object field_2c;
 	byte field_2d[0x40 - 0x2d];
 	tOptex field_40;
@@ -202,6 +203,15 @@ bool fn_005f745f_object::FUN_005f76d5()
 {
 	field_40.Enter();
 	bool empty = field_14 == 0;
+	field_40.Leave();
+	return empty;
+}
+
+// FUNCTION: STARFLEETOP 0x005f76f8
+bool fn_005f745f_object::FUN_005f76f8()
+{
+	field_40.Enter();
+	bool empty = field_28 == 0;
 	field_40.Leave();
 	return empty;
 }
