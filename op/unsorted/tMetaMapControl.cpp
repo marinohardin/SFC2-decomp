@@ -4,6 +4,7 @@
 #include "unsorted/tMetaMapControl.h"
 #include "unsorted/tCompassRose.h"
 #include "unsorted/tApplication.h"
+#include "unsorted/tListBox_Base.h"
 
 // FUNCTION: STARFLEETOP 0x005e2f95
 tMetaMapControl::tMetaMapControl()
@@ -553,4 +554,21 @@ void tMetaMapControl::fn_005e3f1d()
 	field_1b4[ 0 ] = fn_005e3f82( g_00c38f08, 0 );
 	field_1b4[ 1 ] = fn_005e3f82( g_00c38ef8, 0 );
 	field_1b4[ 2 ] = fn_005e3f82( g_00c38ee8, 0 );
+}
+
+// HYPOTHESIS: the object at 0x0092e4a0; 0x004d467a turns a name into the id 0x00677060 looks up.
+class c_0092e4a0_Object
+{
+public:
+	int fn_004d467a( const char *name );
+};
+
+extern c_0092e4a0_Object g_0092e4a0;
+
+// FUNCTION: STARFLEETOP 0x005e3f82
+c_tScrollBar_FieldA8 *tMetaMapControl::fn_005e3f82( const std::string &name, int index )
+{
+	c_00677060_Result *found = g_00c69100.fn_00677060( g_0092e4a0.fn_004d467a( name.c_str() ) );
+	assert( found );
+	return g_00c69100.fn_00677380( found->field_128[ index ] );
 }

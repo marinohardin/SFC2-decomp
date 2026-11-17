@@ -8794,6 +8794,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e3f82": {
+   "name": "FUN_005e3f82",
+   "symbol": "?fn_005e3f82@tMetaMapControl@@QAEPAUc_tScrollBar_FieldA8@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+   "unit": "unsorted/tMetaMapControl.cpp",
+   "size": 91,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
