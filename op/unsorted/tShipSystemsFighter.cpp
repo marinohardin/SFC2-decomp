@@ -5,6 +5,7 @@
 #include "unsorted/tValueBase.h"
 #include "unsorted/tIndividualShipSystemList.h"
 #include "Tiger/tcglue.h"
+#include <string>
 
 extern float g_00799ed0;
 extern double g_0090bef0;
@@ -186,6 +187,9 @@ public:
     virtual void vfunction168();
     tShipSystemsFighter( int param_1 );
     virtual ~tShipSystemsFighter();
+    virtual void vfunction170();
+    virtual void vfunction171();
+    virtual void vfunction172( int param_1, std::string param_2 );
 
     // The layout is read from the members the constructor (0x00444046) builds.
     int m04;
@@ -692,4 +696,11 @@ int* tShipSystemsFighter::vfunction152( int* param_1 )
 char tShipSystemsFighter::vfunction159(int)
 {
     return 5;
+}
+
+// HYPOTHESIS: the types; the original pops five dwords and only destroys the by-value string
+// that follows the first argument (std::string::_Tidy(true) on the stack copy).
+// FUNCTION: STARFLEETOP 0x0044452e
+void tShipSystemsFighter::vfunction172( int, std::string )
+{
 }
