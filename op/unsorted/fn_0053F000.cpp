@@ -56,19 +56,49 @@ public:
 	nDatabase::tID *m_0c;
 };
 
+// HYPOTHESIS: the element type of the container below is not known; elements are
+// 0x74 bytes with a virtual destructor in slot 0. The names are placeholders.
+class fn_0053f491_elem
+{
+public:
+	virtual ~fn_0053f491_elem();
+	fn_0053f491_elem( const fn_0053f491_elem &other );
+	fn_0053f491_elem &operator=( const fn_0053f491_elem &other );
+
+	char m_04[0x70];
+};
+
 // HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
-// a member function at 0x0053f4c6 taking two dwords. The names are placeholders.
+// a member function at 0x0053f4c6 taking two dwords and looks like this compiler's
+// std::vector of the 0x74-byte elements above. The names are placeholders.
 class fn_0053f4c6_owner
 {
 public:
 	void fn_0053f4c6( long a, long b );
-	void fn_0053fa94( long first, long last );
-	void fn_0053f834( long pos, long first, long last );
+	void fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last );
+	void fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_elem *first, const fn_0053f491_elem *last );
+	// MATCH-ONLY: the original read the size through an inlined accessor.
+	unsigned int size() const
+	{
+		return ( m_04 == 0 ? 0 : m_08 - m_04 );
+	}
+	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
+	void _Destroy( fn_0053f491_elem *first, fn_0053f491_elem *last )
+	{
+		for( ; first != last; ++first )
+			m_00.destroy( first );
+	}
+	fn_0053f491_elem *_Ucopy( const fn_0053f491_elem *first, const fn_0053f491_elem *last, fn_0053f491_elem *dst )
+	{
+		for( ; first != last; ++dst, ++first )
+			m_00.construct( dst, *first );
+		return dst;
+	}
 
-	long m_00;
-	long m_04;
-	long m_08;
-	long m_0c;
+	std::allocator< fn_0053f491_elem > m_00;
+	fn_0053f491_elem *m_04;
+	fn_0053f491_elem *m_08;
+	fn_0053f491_elem *m_0c;
 };
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
@@ -308,18 +338,8 @@ void fn_0042b0fd_owner::fn_0053f46d( const nDatabase::tID *first, const nDatabas
 	fn_0053f5d9( m_04, first, last );
 }
 
-// HYPOTHESIS: the element type of the container below is not known; elements are
-// 0x74 bytes with a virtual destructor in slot 0. The names are placeholders.
-class fn_0053f491_elem
-{
-public:
-	virtual ~fn_0053f491_elem();
-
-	char m_04[0x70];
-};
-
-// HYPOTHESIS: a vector-like class (first at 4, last at 8, end at 0xc) of the elements
-// above; this member destroys every element, frees the block and clears the three
+// HYPOTHESIS: a vector-like class (first at 4, last at 8, end at 0xc) of the 0x74-byte
+// elements declared at the top; this member destroys every element, frees the block and clears the three
 // pointers, like a vector's tidy. The names are placeholders.
 class fn_0053f491_owner
 {
@@ -352,7 +372,8 @@ void fn_0053f491_owner::fn_0053f491()
 void fn_0053f4c6_owner::fn_0053f4c6( long a, long b )
 {
 	fn_0053fa94( m_04, m_08 );
-	fn_0053f834( m_04, a, b );
+	// HYPOTHESIS: the two dwords are the first and last of another vector of the same elements.
+	fn_0053f834( m_04, (const fn_0053f491_elem *)a, (const fn_0053f491_elem *)b );
 }
 
 // HYPOTHESIS: a member of the vector-like class at 0x6c above; destroys every element,
@@ -449,6 +470,45 @@ void fn_0042b0fd_owner::fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *
 			count = 0;
 		nDatabase::tID *s = m_00.allocate( n, (void *)0 );
 		nDatabase::tID *q = _Ucopy( m_04, pos, s );
+		q = _Ucopy( first, last, q );
+		_Ucopy( pos, m_08, q );
+		_Destroy( m_04, m_08 );
+		m_00.deallocate( m_04, m_0c - m_04 );
+		m_0c = s + n;
+		m_08 = s + size() + m;
+		m_04 = s;
+	}
+	else if( (unsigned int)( m_08 - pos ) < m )
+	{
+		_Ucopy( pos, m_08, pos + m );
+		_Ucopy( first + ( m_08 - pos ), last, m_08 );
+		std::copy( first, first + ( m_08 - pos ), pos );
+		m_08 += m;
+	}
+	else if( 0 < m )
+	{
+		_Ucopy( m_08 - m, m_08, m_08 );
+		std::copy_backward( pos, m_08 - m, m_08 );
+		std::copy( first, last, pos );
+		m_08 += m;
+	}
+}
+
+// HYPOTHESIS: the class at 0x58 above is this compiler's std::vector of the 0x74-byte
+// elements above (fn_0053f491_elem); this member is its range insert.
+// FUNCTION: STARFLEETOP 0x0053f834
+void fn_0053f4c6_owner::fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_elem *first, const fn_0053f491_elem *last )
+{
+	unsigned int m = 0;
+	std::_Distance( first, last, m );
+	if( (unsigned int)( m_0c - m_08 ) < m )
+	{
+		unsigned int n = size() + ( m < size() ? size() : m );
+		int count = n;
+		if( count < 0 )
+			count = 0;
+		fn_0053f491_elem *s = m_00.allocate( n, (void *)0 );
+		fn_0053f491_elem *q = _Ucopy( m_04, pos, s );
 		q = _Ucopy( first, last, q );
 		_Ucopy( pos, m_08, q );
 		_Destroy( m_04, m_08 );
