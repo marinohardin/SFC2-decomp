@@ -218,3 +218,53 @@ template<> void std::basic_ios<char, std::char_traits<char> >::init(std::streamb
     if (_Isstd)
         _Addstd();
 }
+
+// HYPOTHESIS: std::vector<element>::insert(pos, n, x), the out-of-line copy of the library's
+// member, written as a specialization with the header's body. The element is 0xb8 bytes with a
+// virtual destructor, a copy constructor (0x004064a8) and an assignment (0x00401b2d); the
+// analysis calls it tBmpSurf, but there is no evidence for the name yet.
+#include <vector>
+
+class fn_0040441e_Elem
+{
+public:
+    virtual ~fn_0040441e_Elem();
+    fn_0040441e_Elem(const fn_0040441e_Elem&);
+    fn_0040441e_Elem& operator=(const fn_0040441e_Elem&);
+    char pad_04[0xb4];
+};
+
+// FUNCTION: STARFLEETOP 0x0040441e
+template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M, const fn_0040441e_Elem& _X)
+{
+    if (_End - _Last < _M)
+    {
+        size_type _N = (_M < size() ? size() : _M) + size();
+        iterator _S = allocator.allocate(_N, (void *)0);
+        iterator _Q = _Ucopy(_First, _P, _S);
+        _Ufill(_Q, _M, _X);
+        _Ucopy(_P, _Last, _Q + _M);
+        _Destroy(_First, _Last);
+        allocator.deallocate(_First, _End - _First);
+        _End = _S + _N;
+        _Last = _S + (size() + _M);
+        _First = _S;
+    }
+    else if (_Last - _P < _M)
+    {
+        _Ucopy(_P, _Last, _P + _M);
+        _Ufill(_Last, _M - (_Last - _P), _X);
+        fill(_P, _Last, _X);
+        _Last += _M;
+    }
+    else if (0 < _M)
+    {
+        iterator _Oend = _Last;
+        _Last = _Ucopy(_Oend - _M, _Oend, _Last);
+        copy_backward(_P, _Oend - _M, _Oend);
+        fill(_P, _P + _M, _X);
+    }
+}
+
+// MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
+void (std::vector<fn_0040441e_Elem>::*fn_0040441e_Insert)(std::vector<fn_0040441e_Elem>::iterator, std::vector<fn_0040441e_Elem>::size_type, const fn_0040441e_Elem&) = &std::vector<fn_0040441e_Elem>::insert;
