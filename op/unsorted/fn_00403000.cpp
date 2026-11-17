@@ -116,3 +116,23 @@ std::string& std::string::erase(size_type _P0, size_type _M)
 
 // HYPOTHESIS: a caller in the original uses this instantiation.
 std::string& (std::string::*g_fn_00403c99)(std::string::size_type, std::string::size_type) = &std::string::erase;
+
+// FUNCTION: STARFLEETOP 0x00403d05
+std::string::size_type std::string::find(const char* _S, size_type _P, size_type _N) const
+{
+    size_type _Nm;
+    if (_N == 0 && _P <= _Len)
+        return (_P);
+    else if (_P < _Len && _N <= (_Nm = _Len - _P))
+    {
+        const char *_U, *_V;
+        for (_Nm -= _N - 1, _V = _Ptr + _P;
+            (_U = std::char_traits<char>::find(_V, _Nm, *_S)) != 0; _Nm -= _U - _V + 1, _V = _U + 1)
+            if (std::char_traits<char>::compare(_U, _S, _N) == 0)
+                return (_U - _Ptr);
+    }
+    return (npos);
+}
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+std::string::size_type (std::string::*g_fn_00403d05)(const char*, std::string::size_type, std::string::size_type) const = &std::string::find;
