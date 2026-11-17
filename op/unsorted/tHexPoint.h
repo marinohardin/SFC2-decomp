@@ -10,6 +10,8 @@
 class tHexPoint {
 public:
 	tHexPoint();
+	// HYPOTHESIS: 0x005b6973 is the copy constructor (0x005bc50f passes the source).
+	tHexPoint(const tHexPoint &other);
 	~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
 	int m_00;

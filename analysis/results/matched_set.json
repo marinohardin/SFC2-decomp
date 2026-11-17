@@ -6697,6 +6697,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005bc50f": {
+   "name": "nDatabase::tID::tID",
+   "symbol": "??0fn_005bc50f_record@@QAE@ABU0@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

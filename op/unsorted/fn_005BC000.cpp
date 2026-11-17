@@ -546,3 +546,21 @@ fn_005bc161_tree::iterator fn_005bc161_tree::FUN_005bc49b(iterator _F, iterator 
 		_Head->_Left = _Head, _Head->_Right = _Head;
 		return (begin()); }
 }
+
+// HYPOTHESIS: a 0x2c-byte record of a database id, a hex position and two
+// ints; 0x005bc50f is its member-wise copy constructor.
+struct fn_005bc50f_record
+{
+	nDatabase::tID m00;
+	tHexPoint m10;
+	int m24;
+	int m28;
+
+	fn_005bc50f_record(const fn_005bc50f_record &other);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc50f
+fn_005bc50f_record::fn_005bc50f_record(const fn_005bc50f_record &other)
+	: m00(other.m00), m10(other.m10), m24(other.m24), m28(other.m28)
+{
+}
