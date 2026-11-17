@@ -21,6 +21,7 @@ public:
 	// HYPOTHESIS: hands the fleet with this ID a new command destination, as 0x004c3815 calls it.
 	void fn_00522bdf(int param_1, tCommandDestination *pDestination);
 	bool fn_00523027(int param_1, int param_2);
+	bool fn_00523086(int param_1, int param_2);
 	tObject_0051c7af *fn_00523543(int param_1);
 	tObject_0051c7af *fn_00523574(int param_1);
 
