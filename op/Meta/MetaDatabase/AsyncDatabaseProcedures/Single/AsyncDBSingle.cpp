@@ -18,8 +18,7 @@ class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 onl
 public:
 	char fPad00[0x48];
 	long fField48;
-};
-class tCampaignInfo
+}; class tCampaignInfo
 {
 public:
 	tCampaignInfo();
@@ -68,7 +67,8 @@ public:
 	void fn_00570ea2( tMetaMapDesc* description );
 	void fn_00571018( tShip* ship );
 	void fn_0057118e( tNotify* notify );
-}; tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
+	void fn_00571304( tNewsStory* news );
+};tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
@@ -108,7 +108,7 @@ public:
 	virtual void vfunction34( tShip* ship );
 	virtual void vfunction35( tCampaignInfo* info );
 	virtual void vfunction36( tNotify* notify );
-	virtual void vfunction37();
+	virtual void vfunction37( tNewsStory* news );
 	virtual void vfunction38();
 	virtual void vfunction39();
 	virtual void vfunction40();
@@ -656,4 +656,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction36( tNotify* notify
 #line 905
 	validate( notify );
 	fDatabase->fn_0057118e( notify );
+}
+#line 662
+// HYPOTHESIS: the record type is a guess from the assertion text "news"; fn_00571304 stores it.
+// FUNCTION: STARFLEETOP 0x0056df56
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction37( tNewsStory* news )
+{
+#line 915
+	validate( news );
+	fDatabase->fn_00571304( news );
 }
