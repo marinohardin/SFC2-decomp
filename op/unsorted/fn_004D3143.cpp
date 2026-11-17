@@ -25,6 +25,7 @@ class fn_004bf6b9_owner
 public:
 	void fn_004bf6b9( long arg1, long arg2 );
 	void fn_004bf6ea( long arg1 );
+	void fn_004bf74f( long arg1, float arg2 );
 };
 
 extern fn_004bf6b9_owner g_009254f8;
@@ -39,4 +40,10 @@ void fn_004d3179( long arg1, long arg2 )
 void fn_004d318c( long arg1 )
 {
 	g_009254f8.fn_004bf6ea( arg1 );
+}
+
+// FUNCTION: STARFLEETOP 0x004d319b
+void fn_004d319b( long arg1, float arg2 )
+{
+	g_009254f8.fn_004bf74f( arg1, arg2 );
 }
