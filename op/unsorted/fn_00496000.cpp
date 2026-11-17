@@ -203,3 +203,9 @@ void fn_00496565()
 void fn_00496572()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x00496586
+// HYPOTHESIS: 0x00496586 is a mid-function slice (fstp [ebp-8]; fld 89.0; call fn_005050e2) of the function at 0x00496572 (analysis boundary); body is a placeholder.
+void fn_00496586()
+{
+}
