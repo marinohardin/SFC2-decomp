@@ -715,3 +715,18 @@ void tMetaMapControl::fn_005e42a6()
 		fn_0045f4c2();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e4315
+void tMetaMapControl::fn_005e4315( int param_1 )
+{
+	switch ( param_1 )
+	{
+	case 0:
+		fn_005e326c( false );
+		break;
+	case 1:
+		fn_005e326c( true );
+		break;
+	}
+	fn_0045f4c2();
+}
