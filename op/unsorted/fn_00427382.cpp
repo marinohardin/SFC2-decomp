@@ -107,6 +107,7 @@ public:
 	void fn_004275fe( int aIndex, int aArg1, int aArg2 );
 	bool fn_00427623( int aArg, int aIndex );
 	void fn_00427648( int aArg, int aIndex );
+	int fn_00427669( tEntity *aEntity, int aIndex );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -199,4 +200,14 @@ void tObject_0042750f::fn_00427648( int aArg, int aIndex )
 	tObject_00426da7 *entry;
 	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
 		entry->fn_00426c5e( aArg );
+}
+
+// HYPOTHESIS: 0x00427581 for the table entry and the entity's team; zero for no entity, an
+// index out of range or an empty entry.
+// FUNCTION: STARFLEETOP 0x00427669
+int tObject_0042750f::fn_00427669( tEntity *aEntity, int aIndex )
+{
+	if (aEntity == 0 || aIndex < 0 || aIndex >= 20 || field_0x54[aIndex] == 0)
+		return 0;
+	return fn_00427581( aIndex, aEntity->fTeam );
 }
