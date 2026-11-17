@@ -8,7 +8,7 @@
 #include "Common/DynamicAllocator.h"
 #include "Common/Exceptions/Validate.h"
 #include "Common/Database/DatabaseID.h"
-
+#include "Common/Database/DatabaseObject.h"
 // Inline in the SDK; Optex.h declares it only.
 inline tOptex::tGuard::~tGuard()
 {
@@ -553,26 +553,26 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 	// MATCH-ONLY: the struct above stands for the std::vector it has the layout of.
 	return *(fn_005717f7_vector*)&(*it).second;
 }
-// HYPOTHESIS: a forwarding member; 0x00571bda takes the object at +8, a constant 1 and the argument.
 class fn_00571a58_inner;
-void __stdcall fn_00571bda(fn_00571a58_inner* inner, int flag, int arg);
-
-class fn_00571a58_owner {
-public:
-	char fn_00571a58_pad[8];
+class fn_00571a58_owner {	public:
+	char fn_00571a58_pad[4];
+	fn_00571a58_inner* fn_00571a58_first;
 	fn_00571a58_inner* fn_00571a58_ptr;
+	fn_00571a58_inner* fn_00571a58_limit;
 	void fn_00571a58(int arg);
 	void fn_00571a69(int arg);
 	void fn_00571a9a(int arg);
 	void fn_00571aab(int arg);
 	void fn_00571abc(int arg);
+	unsigned int size() const;
+	void fn_00571bda(fn_00571a58_inner* pos, unsigned int m, const fn_00571a58_inner& x);
 	void fn_00571acd(int arg);
 };
 #line 571
 // FUNCTION: STARFLEETOP 0x00571a58
 void fn_00571a58_owner::fn_00571a58(int arg)
 {
-	fn_00571bda(fn_00571a58_ptr, 1, arg);
+	fn_00571bda(fn_00571a58_ptr, 1, *(fn_00571a58_inner*)arg);
 }
 
 // HYPOTHESIS: a forwarding member like 0x00571a58; 0x005de471 takes the object at +8, a constant 1 and the argument.
@@ -735,4 +735,100 @@ fn_00571b81_vector::fn_00571b81_vector(const fn_00571b81_vector& x)
 	first = fn_00571b81_allocate(x.size());
 	last = fn_00571b81_copy(x.first, x.last, first);
 	limit = last;
+}
+
+// HYPOTHESIS: the element of the vector at 0x00571a58: a database object of 0x4c bytes with one
+// long at 0x48; its copy constructor is 0x0057291e and its assignment goes through 0x006fa870.
+class fn_00571a58_inner : public nDatabase::tDatabaseObject {
+public:
+	fn_00571a58_inner& operator=(const fn_00571a58_inner& other);
+	long fn_00571a58_48;
+};
+
+inline fn_00571a58_inner& fn_00571a58_inner::operator=(const fn_00571a58_inner& other)
+{
+	*(nDatabase::tDatabaseObject*)this = other;
+	fn_00571a58_48 = other.fn_00571a58_48;
+	return *this;
+}
+
+inline unsigned int fn_00571a58_owner::size() const
+{
+	return fn_00571a58_first == 0 ? 0 : fn_00571a58_ptr - fn_00571a58_first;
+}
+
+// HYPOTHESIS: the library's _Construct for this element type, out of line (cdecl).
+void __cdecl fn_0057291e(fn_00571a58_inner* p, const fn_00571a58_inner& v);
+
+// MATCH-ONLY: the allocator's clamp, inlined by the original
+inline fn_00571a58_inner* fn_00571bda_allocate(int n)
+{
+	if (n < 0)
+		n = 0;
+	return (fn_00571a58_inner*)operator new((unsigned int)n * sizeof(fn_00571a58_inner));
+}
+
+// MATCH-ONLY: the library's uninitialized copy, inlined by the original
+inline fn_00571a58_inner* fn_00571bda_ucopy(fn_00571a58_inner* f, fn_00571a58_inner* l, fn_00571a58_inner* d)
+{
+	for (; f != l; ++d, ++f)
+		fn_0057291e(d, *f);
+	return d;
+}
+
+// MATCH-ONLY: the library's uninitialized fill, inlined by the original
+inline void fn_00571bda_ufill(fn_00571a58_inner* f, unsigned int n, const fn_00571a58_inner& x)
+{
+	for (; n > 0; --n, ++f)
+		fn_0057291e(f, x);
+}
+
+// MATCH-ONLY: the library's fill, inlined by the original
+inline void fn_00571bda_fill(fn_00571a58_inner* f, fn_00571a58_inner* l, const fn_00571a58_inner& x)
+{
+	for (; f != l; ++f)
+		*f = x;
+}
+
+// MATCH-ONLY: the library's destroy loop, inlined by the original
+inline void fn_00571bda_destroy(fn_00571a58_inner* f, fn_00571a58_inner* l)
+{
+	for (; f != l; ++f)
+		f->~fn_00571a58_inner();
+}
+
+// MATCH-ONLY: the library's copy_backward, inlined by the original
+inline void fn_00571bda_copy_backward(fn_00571a58_inner* f, fn_00571a58_inner* l, fn_00571a58_inner* d)
+{
+	while (f != l)
+		*--d = *--l;
+}
+
+// FUNCTION: STARFLEETOP 0x00571bda
+// HYPOTHESIS: the library's vector::insert(iterator, size_type, const T&), with the helpers inlined.
+void fn_00571a58_owner::fn_00571bda(fn_00571a58_inner* pos, unsigned int m, const fn_00571a58_inner& x)
+{
+	fn_00571a58_inner* last = fn_00571a58_ptr;
+	if ((unsigned int)(fn_00571a58_limit - last) < m) {
+		unsigned int cnt = size() + (m < size() ? size() : m);
+		fn_00571a58_inner* s = fn_00571bda_allocate(cnt);
+		fn_00571a58_inner* q = fn_00571bda_ucopy(fn_00571a58_first, pos, s);
+		fn_00571bda_ufill(q, m, x);
+		fn_00571bda_ucopy(pos, fn_00571a58_ptr, q + m);
+		fn_00571bda_destroy(fn_00571a58_first, fn_00571a58_ptr);
+		operator delete(fn_00571a58_first);
+		fn_00571a58_limit = s + cnt;
+		fn_00571a58_ptr = s + size() + m;
+		fn_00571a58_first = s;
+	} else if ((unsigned int)(fn_00571a58_ptr - pos) < m) {
+		fn_00571bda_ucopy(pos, fn_00571a58_ptr, pos + m);
+		fn_00571bda_ufill(fn_00571a58_ptr, m - (fn_00571a58_ptr - pos), x);
+		fn_00571bda_fill(pos, fn_00571a58_ptr, x);
+		fn_00571a58_ptr += m;
+	} else if (0 < m) {
+		fn_00571bda_ucopy(fn_00571a58_ptr - m, fn_00571a58_ptr, fn_00571a58_ptr);
+		fn_00571bda_copy_backward(pos, fn_00571a58_ptr - m, fn_00571a58_ptr);
+		fn_00571bda_fill(pos, pos + m, x);
+		fn_00571a58_ptr += m;
+	}
 }
