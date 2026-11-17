@@ -28,14 +28,32 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 class fn_0042b0fd_owner
 {
 public:
-	void fn_0042b0fd( long a, long b );
+	void fn_0042b0fd( nDatabase::tID *a, nDatabase::tID *b );
 	void fn_0042add2( long value );
-	void fn_0053f46d( long first, long last );
-	void fn_0053f5d9( long pos, long first, long last );
+	void fn_0053f46d( const nDatabase::tID *first, const nDatabase::tID *last );
+	void fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *first, const nDatabase::tID *last );
+	// MATCH-ONLY: the original read the size through an inlined accessor.
+	unsigned int size() const
+	{
+		return ( m_04 == 0 ? 0 : m_08 - m_04 );
+	}
+	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
+	void _Destroy( nDatabase::tID *first, nDatabase::tID *last )
+	{
+		for( ; first != last; ++first )
+			m_00.destroy( first );
+	}
+	nDatabase::tID *_Ucopy( const nDatabase::tID *first, const nDatabase::tID *last, nDatabase::tID *dst )
+	{
+		for( ; first != last; ++dst, ++first )
+			m_00.construct( dst, *first );
+		return dst;
+	}
 
-	long m_00;
-	long m_04;
-	long m_08;
+	std::allocator< nDatabase::tID > m_00;
+	nDatabase::tID *m_04;
+	nDatabase::tID *m_08;
+	nDatabase::tID *m_0c;
 };
 
 // HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
@@ -136,7 +154,6 @@ public:
 	char m_69[3];
 	fn_0053f522_owner m_6c;
 	fn_0042b0fd_owner m_7c;
-	char m_88[4];
 	long m_8c;
 	long m_90;
 	long m_94;
@@ -285,7 +302,7 @@ void fn_0053f522_owner::fn_0053f461()
 // erases its own range at 4..8, then hands the two arguments to 0x0053f5d9 at its first,
 // like an assign.
 // FUNCTION: STARFLEETOP 0x0053f46d
-void fn_0042b0fd_owner::fn_0053f46d( long first, long last )
+void fn_0042b0fd_owner::fn_0053f46d( const nDatabase::tID *first, const nDatabase::tID *last )
 {
 	fn_0042b0fd( m_04, m_08 );
 	fn_0053f5d9( m_04, first, last );
@@ -415,4 +432,43 @@ char *fn_0053f5ad_owner::fn_0053f5ad( char *first, char *last )
 	fn_0053f5ad_destroy( s, end() );
 	m_08 = s;
 	return first;
+}
+
+// HYPOTHESIS: the class at 0x7c above is this compiler's std::vector< nDatabase::tID >
+// (0x10-byte elements); this member is its range insert.
+// FUNCTION: STARFLEETOP 0x0053f5d9
+void fn_0042b0fd_owner::fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *first, const nDatabase::tID *last )
+{
+	unsigned int m = 0;
+	std::_Distance( first, last, m );
+	if( (unsigned int)( m_0c - m_08 ) < m )
+	{
+		unsigned int n = size() + ( m < size() ? size() : m );
+		int count = n;
+		if( count < 0 )
+			count = 0;
+		nDatabase::tID *s = m_00.allocate( n, (void *)0 );
+		nDatabase::tID *q = _Ucopy( m_04, pos, s );
+		q = _Ucopy( first, last, q );
+		_Ucopy( pos, m_08, q );
+		_Destroy( m_04, m_08 );
+		m_00.deallocate( m_04, m_0c - m_04 );
+		m_0c = s + n;
+		m_08 = s + size() + m;
+		m_04 = s;
+	}
+	else if( (unsigned int)( m_08 - pos ) < m )
+	{
+		_Ucopy( pos, m_08, pos + m );
+		_Ucopy( first + ( m_08 - pos ), last, m_08 );
+		std::copy( first, first + ( m_08 - pos ), pos );
+		m_08 += m;
+	}
+	else if( 0 < m )
+	{
+		_Ucopy( m_08 - m, m_08, m_08 );
+		std::copy_backward( pos, m_08 - m, m_08 );
+		std::copy( first, last, pos );
+		m_08 += m;
+	}
 }
