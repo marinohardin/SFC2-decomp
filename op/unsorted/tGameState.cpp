@@ -197,6 +197,7 @@ class fn_0090db70_owner
 {
 public:
 	char fn_00672b60(fn_0040c28c_object *, int);
+	void fn_006734e0(int, int, int, int);
 };
 
 fn_0040c28c_object *fn_0040c28c();
@@ -279,6 +280,7 @@ public:
 	virtual void v0d();
 	virtual void vfunction15(int *ev);
 	virtual void vfunction16(int *ev);
+	virtual void vfunction17(int *ev);
 };
 
 extern fn_006735e0_owner g_fn_006735e0_owner;
@@ -490,6 +492,63 @@ void fn_00469ef9(unsigned int param_1)
 	if (g_0090db44 != 0)
 	{
 		((fn_0090db44_object *)g_0090db44)->vfunction15(ev);
+		if (ev[0] == 0)
+			return;
+	}
+	g_fn_00469c0a_owner.fn_00469c0a(ev);
+}
+
+// FUNCTION: STARFLEETOP 0x0046a36d
+void fn_0046a36d(int param_1, int param_2, int param_3, int param_4)
+{
+	if (g_0090db9c != 0)
+		return;
+
+	g_0090db70.fn_006734e0(param_1, param_2, param_3, param_4);
+
+	int type;
+	switch (param_4)
+	{
+	case 1:
+		type = 1;
+		break;
+	case 2:
+		type = 2;
+		break;
+	case 3:
+		type = 3;
+		break;
+	case 5:
+		type = 4;
+		break;
+	case 6:
+		type = 5;
+		break;
+	case 8:
+		type = 6;
+		break;
+	case 9:
+		type = 7;
+		break;
+	default:
+		return;
+	}
+
+	// HYPOTHESIS: same eight-int event record as fn_00469ef9.
+	int ev[8];
+	unsigned int flags = 0;
+	if (fn_0069ac10())
+		flags = 1;
+	if (fn_0069ac30())
+		flags |= 2;
+	ev[1] = -1;
+	ev[5] = flags;
+	ev[0] = type;
+	ev[6] = param_1;
+	ev[7] = param_2;
+	if (g_0090db44 != 0)
+	{
+		((fn_0090db44_object *)g_0090db44)->vfunction17(ev);
 		if (ev[0] == 0)
 			return;
 	}
