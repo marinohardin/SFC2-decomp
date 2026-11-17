@@ -43,7 +43,7 @@ public:
     virtual tMinMaxFloat* vfunction28() = 0;
     virtual tMinMaxFloat* vfunction29() = 0;
     virtual tMinMaxFloat* vfunction30() = 0;
-    virtual void vfunction31() = 0;
+    virtual tMinMaxFloat* vfunction31() = 0;
     virtual void vfunction32() = 0;
     virtual void vfunction33() = 0;
     virtual void vfunction34() = 0;
