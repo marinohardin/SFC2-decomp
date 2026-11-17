@@ -134,7 +134,7 @@ public:
     void fn_0053455b(long* value);
     int fn_0053456e(char* name);
     void fn_00534622(fn_0053462c_entry* value);
-    void fn_0053462c(long index);
+    tString& fn_0053462c(long index);
     tString& fn_00534647(long index);
     long fn_00534690(long index);
     long fn_005346a0(long index);
@@ -209,9 +209,9 @@ void fn_005344a3_object::fn_00534622(fn_0053462c_entry* value)
 // callee runs on this same object (both start with their tString), so the two classes are
 // probably one class not yet joined.
 // FUNCTION: STARFLEETOP 0x0053462c
-void fn_005344a3_object::fn_0053462c(long index)
+tString& fn_005344a3_object::fn_0053462c(long index)
 {
-    ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index].field_04);
+    return ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index].field_04).field_00;
 }
 
 // HYPOTHESIS: the entries end with field_00 0x7fffffff; the first entry with field_00 -1
@@ -421,6 +421,7 @@ public:
     void fn_00534b64();
     void fn_00534d2a(int kind, fn_00534ac1_entry* row, char* table);
     int fn_00534d66(char* name);
+    tString& fn_00534d93(int kind, long index);
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -583,4 +584,14 @@ int fn_00534950_object::fn_00534d66(char* name)
             return result;
     }
     return -1;
+}
+
+// HYPOTHESIS: the rank string of the given kind's entry, or the empty global string for a
+// negative kind.
+// FUNCTION: STARFLEETOP 0x00534d93
+tString& fn_00534950_object::fn_00534d93(int kind, long index)
+{
+    if (kind >= 0)
+        return field_e128[kind]->fn_0053462c(index);
+    return g_00c2f3f8;
 }
