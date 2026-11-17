@@ -105,69 +105,37 @@ void tBaseWeapon::fn_004d74f6()
 {
     switch (field_f8)
     {
-    case 1:
-    case 8:
-    case 21:
-        field_cc += 60;
-        return;
-    case 5:
-    case 58:
-        field_cc += 300;
-        return;
-    case 3:
-    case 42:
-        field_cc += 260;
-        return;
-    case 0:
-    case 29:
-        field_cc += 20;
-        return;
-    case 23:
-    case 37:
-        field_cc += 220;
-        return;
-    case 9:
-    case 15:
-        field_cc += 100;
-        return;
-    case 11:
-        field_cc += 40;
-        return;
-    case 10:
-    case 40:
-        field_cc += 120;
-        return;
-    case 25:
-    case 39:
-        field_cc += 180;
-        return;
-    case 26:
-    case 38:
-        field_cc += 160;
-        return;
-    case 12:
-    case 30:
-        field_cc += 80;
-        return;
-    case 4:
-    case 59:
-        field_cc += 280;
-        return;
-    case 57:
-        field_cc += 320;
-        return;
-    case 2:
-    case 44:
-        field_cc += 140;
-        return;
-    case 19:
-    case 43:
-        field_cc += 240;
-        return;
-    case 24:
-    case 41:
-        field_cc += 200;
-        return;
+    case 0: field_cc += 20; break;
+    case 1: field_cc += 60; break;
+    case 2: field_cc += 140; break;
+    case 3: field_cc += 260; break;
+    case 4: field_cc += 280; break;
+    case 5: field_cc += 300; break;
+    case 8: field_cc += 60; break;
+    case 9: field_cc += 100; break;
+    case 10: field_cc += 120; break;
+    case 11: field_cc += 40; break;
+    case 12: field_cc += 80; break;
+    case 15: field_cc += 100; break;
+    case 19: field_cc += 240; break;
+    case 21: field_cc += 60; break;
+    case 23: field_cc += 220; break;
+    case 24: field_cc += 200; break;
+    case 25: field_cc += 180; break;
+    case 26: field_cc += 160; break;
+    case 29: field_cc += 20; break;
+    case 30: field_cc += 80; break;
+    case 37: field_cc += 220; break;
+    case 38: field_cc += 160; break;
+    case 39: field_cc += 180; break;
+    case 40: field_cc += 120; break;
+    case 41: field_cc += 200; break;
+    case 42: field_cc += 260; break;
+    case 43: field_cc += 240; break;
+    case 44: field_cc += 140; break;
+    case 57: field_cc += 320; break;
+    case 58: field_cc += 300; break;
+    case 59: field_cc += 280; break;
+    default: field_cc += 500; break;
     }
-    field_cc += 500;
 }
