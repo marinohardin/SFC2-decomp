@@ -70,7 +70,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00434195	tNetMsg_Header::~tNetMsg_Header	70.69	2	sonnet	2026-11-16T16:57:30Z	attempt 2 (sonnet) did not raise the best; best 70.69%
 0x0065ad80	tChannelGroup::mStopAndClearChannel	0.00	2	sonnet	2026-11-16T18:13:21Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x006b3e10	FUN_006b3e10	65.17	2	sonnet	2026-11-16T22:19:36Z	attempt 2 (sonnet) did not raise the best; best 65.17%
-0x006b3f80	FUN_006b3f80	91.11	2	sonnet	2026-11-16T22:23:57Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 91.11%
 0x006b3ffe	FUN_006b3ffe	0.00	2	sonnet	2026-11-16T22:26:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x006b4540	FUN_006b4540	88.13	2	sonnet	2026-11-16T22:42:46Z	attempt 2 (sonnet) did not raise the best; best 88.13%
 0x006577b0	tAudioFileInfoPart::`scalar_deleting_destructor'	0.00	2	sonnet	2026-11-16T16:26:08Z	attempt 2 (sonnet) did not raise the best; best 0.00%
