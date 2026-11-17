@@ -254,7 +254,8 @@ public:
     virtual void vfunction42();
     // HYPOTHESIS: slot 42; returns the owning ship at +0x2c.
     virtual fn_owner_type* vfunction43();
-    virtual void vfunction44(int param_1);
+    // HYPOTHESIS: slot 43; returns a system looked up by its argument (0x00436884 uses the result).
+    virtual tIndividualShipSystem* vfunction44(int param_1);
     // HYPOTHESIS: slot 44; forwards its argument to slot 43.
     virtual void vfunction45(int param_1);
     // HYPOTHESIS: slot 45; says whether the system is in a list (pointer at +0x24 set).
@@ -375,6 +376,8 @@ public:
     virtual bool vfunction96();
     // vftable slot 96; tests field_5c for bits other than 0x10.
     virtual bool vfunction97();
+    // vftable slot 97; returns slot 94's float.
+    virtual float vfunction98();
 
     // HYPOTHESIS: types follow the constructor's stores (fstp for floats, a register for the
     // rest); the meanings are not known.

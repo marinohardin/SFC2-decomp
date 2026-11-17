@@ -290,3 +290,17 @@ bool tRepairableShipSystem::vfunction97()
         return true;
     return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00436884
+float tRepairableShipSystem::vfunction98()
+{
+    if (field_58 != 0)
+    {
+        // The original calls through the pointer only when the lookup failed, so the call
+        // goes through a null pointer; the test is kept as the exe has it.
+        tRepairableShipSystem* system = (tRepairableShipSystem*)vfunction44(field_58);
+        if (system == 0)
+            field_60 += system->vfunction98();
+    }
+    return vfunction95();
+}
