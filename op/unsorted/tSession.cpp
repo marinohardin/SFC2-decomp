@@ -121,6 +121,7 @@ public:
 	void	fn_00691390();
 	void	fn_006913d0();
 	void	fn_00691410();
+	void	fn_00691460();
 	void	fn_00690de0();
 	void	fn_00690e70();
 	void	fn_00690fb0();
@@ -148,7 +149,7 @@ public:
 	// HYPOTHESIS: one entry per open anchor tag, 0 for a link and 1 for a named anchor (fn_00690a60).
 	std::vector<unsigned long>	f_b4;
 	short	f_c4;
-	char	pad_c6[0xc8 - 0xc6];
+	short	f_c6;
 	short	f_c8;
 	char	pad_ca[0xd8 - 0xca];
 	// HYPOTHESIS: set, fn_006904d0 does nothing.
@@ -654,5 +655,14 @@ void tHtmlParser::fn_00691410()
 	}
 	if ( f_c4 != 0 )
 		f_c4--;
+	f_40->fn_0068e7b0( &f_80 );
+}
+
+// FUNCTION: STARFLEETOP 0x00691460
+void tHtmlParser::fn_00691460()
+{
+	if ( f_c6 == 0 )
+		f_80 = f_80 & ~0x10000 | 0x20000;
+	f_c6++;
 	f_40->fn_0068e7b0( &f_80 );
 }
