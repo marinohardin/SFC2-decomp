@@ -499,9 +499,13 @@ tState_Namespace_CampaignSelector::tState_CampaignSelector g_0090d158;
 
 // HYPOTHESIS: a list-like container whose nodes start with the next link; 0x00460acb tears it
 // down like the library list's destructor, plus a second block at +8.
+// HYPOTHESIS: 0x00460c53 shows the container is the library's tree (left, parent, right links;
+// the head's parent is the root) with its nil node kept in the member at +8.
 struct fn_00460acb_node
 {
     fn_00460acb_node *_Next;
+    fn_00460acb_node *_Parent;
+    fn_00460acb_node *_Right;
 };
 
 // HYPOTHESIS: the container's iterator, a node pointer with a constructor like the library's.
@@ -509,17 +513,44 @@ class fn_00460acb_iterator
 {
 public:
     fn_00460acb_iterator(fn_00460acb_node *p) : _Ptr(p) {}
+    fn_00460acb_iterator operator++(int);
+    bool operator==(const fn_00460acb_iterator &x) const;
+    bool operator!=(const fn_00460acb_iterator &x) const;
+    // HYPOTHESIS: 0x0052aad3 is the library's iterator increment (_Inc).
+    void fn_0052aad3();
 
     fn_00460acb_node *_Ptr;
 };
+
+inline fn_00460acb_iterator fn_00460acb_iterator::operator++(int)
+{
+    fn_00460acb_iterator _Tmp = *this;
+    fn_0052aad3();
+    return (_Tmp);
+}
+
+inline bool fn_00460acb_iterator::operator==(const fn_00460acb_iterator &x) const
+{
+    return (_Ptr == x._Ptr);
+}
+
+inline bool fn_00460acb_iterator::operator!=(const fn_00460acb_iterator &x) const
+{
+    return (!(*this == x));
+}
 
 class fn_00460acb_class
 {
 public:
     // HYPOTHESIS: 0x00460c53 erases the nodes in [first, last) and returns the iterator after.
     fn_00460acb_iterator fn_00460c53(fn_00460acb_iterator first, fn_00460acb_iterator last);
+    // HYPOTHESIS: 0x0055dd78 is the library's erase of one node.
+    fn_00460acb_iterator fn_0055dd78(fn_00460acb_iterator p);
+    // HYPOTHESIS: 0x00460e3e is the library's recursive _Erase of a subtree.
+    void fn_00460e3e(fn_00460acb_node *x);
     fn_00460acb_iterator begin();
     fn_00460acb_iterator end();
+    unsigned int size() const;
     void fn_00460acb();
 
     char pad_000[0x4];
@@ -537,6 +568,11 @@ inline fn_00460acb_iterator fn_00460acb_class::begin()
 inline fn_00460acb_iterator fn_00460acb_class::end()
 {
     return (fn_00460acb_iterator(_Head));
+}
+
+inline unsigned int fn_00460acb_class::size() const
+{
+    return (_Size);
 }
 
 // FUNCTION: STARFLEETOP 0x00460acb
@@ -725,4 +761,22 @@ fn_00460c1d_class::~fn_00460c1d_class()
     _Destroy(_First, _Last);
     allocator.deallocate(_First, _End - _First);
     _First = 0, _Last = 0, _End = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00460c53
+fn_00460acb_iterator fn_00460acb_class::fn_00460c53(fn_00460acb_iterator first, fn_00460acb_iterator last)
+{
+    if (size() == 0 || first != begin() || last != end())
+    {
+        while (first != last)
+            fn_0055dd78(first++);
+        return (first);
+    }
+    else
+    {
+        fn_00460e3e(_Head->_Parent);
+        _Head->_Parent = (fn_00460acb_node *)m_8, _Size = 0;
+        _Head->_Next = _Head, _Head->_Right = _Head;
+        return (begin());
+    }
 }
