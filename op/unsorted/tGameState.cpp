@@ -1179,3 +1179,11 @@ char fn_0046a75b(unsigned int param_1)
 	}
 	return fn_0069ac50(param_1);
 }
+
+// FUNCTION: STARFLEETOP 0x0046a9e2
+char fn_0046a9e2()
+{
+	if (g_0090db9c != 0)
+		return 0;
+	return fn_0069ac10();
+}
