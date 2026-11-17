@@ -172,7 +172,7 @@ public:
     virtual void vfunction121();
     virtual void vfunction122();
     virtual void vfunction123();
-    virtual void vfunction124();
+    virtual void vfunction124(int param_1);
     virtual void vfunction125();
     virtual void vfunction126();
     virtual void vfunction127();
@@ -185,6 +185,19 @@ public:
     virtual bool vfunction132(int param_1);
     virtual int vfunction133();
     virtual bool vfunction134();
+    virtual void vfunction135();
+    virtual void vfunction136();
+    virtual void vfunction137();
+    virtual bool vfunction138();
+    // HYPOTHESIS: members read by vfunction102, placed by offset.
+    char pad_04[0x34];
+    float field_38;
+    float field_3c;
+    char pad_40[0x9c];
+    float field_dc;
+    float field_e0;
+    float field_e4;
+    int field_e8;
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
     int fn_004d87e3(int param_1);
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.

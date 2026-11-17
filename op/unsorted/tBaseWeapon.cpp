@@ -62,3 +62,40 @@ int tBaseWeapon::vfunction101(int param_1, int param_2)
     }
     return param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x004d743f
+void tBaseWeapon::vfunction102()
+{
+    if (vfunction138())
+    {
+        int bank = vfunction106();
+        if (bank < 4)
+        {
+            if (bank < 3)
+            {
+                if (bank < 2)
+                {
+                    if (bank < 1)
+                    {
+                        field_3c = 0;
+                    }
+                    if (field_dc == field_38)
+                    {
+                        vfunction124(field_e8 - 1);
+                    }
+                    field_dc = 0;
+                }
+                if (field_e0 == field_38)
+                {
+                    vfunction124(field_e8 - 1);
+                }
+                field_e0 = 0;
+            }
+            if (field_e4 == field_38)
+            {
+                vfunction124(field_e8 - 1);
+            }
+            field_e4 = 0;
+        }
+    }
+}
