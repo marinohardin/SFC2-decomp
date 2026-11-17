@@ -211,6 +211,7 @@ public:
 	void fn_00446d3d(tObject_0042496f *ship);
 	bool fn_00447c61(int kind);
 	tObject_00447415_limits *fn_00447ce4();
+	tObject_0044715d_table *fn_00447ceb();
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -694,4 +695,10 @@ bool c_0044715d::fn_00447c61(int kind)
 tObject_00447415_limits *c_0044715d::fn_00447ce4()
 {
 	return field_0xe8;
+}
+
+// FUNCTION: STARFLEETOP 0x00447ceb
+tObject_0044715d_table *c_0044715d::fn_00447ceb()
+{
+	return field_0xec;
 }
