@@ -133,6 +133,7 @@ public:
     void fn_0053462c(long index);
     tString& fn_00534647(long index);
     long fn_00534690(long index);
+    long fn_005346a0(long index);
 
     tString field_00;
     long field_28;
@@ -225,4 +226,16 @@ tString& fn_005344a3_object::fn_00534647(long index)
 long fn_005344a3_object::fn_00534690(long index)
 {
     return field_7c[index].field_00;
+}
+
+// HYPOTHESIS: as 0x00534647, but returns the entry's field_00 (0 when no -1 entry is found).
+// FUNCTION: STARFLEETOP 0x005346a0
+long fn_005344a3_object::fn_005346a0(long index)
+{
+    for (int i = 0; field_7c[i].field_00 != 0x7fffffff; i++)
+    {
+        if (field_7c[i].field_00 == -1)
+            return field_7c[index + i].field_00;
+    }
+    return 0;
 }
