@@ -171,7 +171,7 @@ tShipSystemsExt::tShipSystemsExt( unsigned long param_1 )
     value->vfunction3( 0.0f );
     value = &m6c8;
     m73c = 0.0f;
-    value->vfunction5( 0.0f );
+    m6c8.vfunction5( 0.0f );
     value->vfunction4( 1.0f );
     value->vfunction3( 1.0f );
     value = &m6f4;
