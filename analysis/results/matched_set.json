@@ -3088,6 +3088,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042fea4": {
+   "name": "t3DVisual_Model::vfunction23",
+   "symbol": "?fn_0042fea4@t3DVisual_Model@@QAEXI@Z",
+   "unit": "unsorted/t3DVisual_Model.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

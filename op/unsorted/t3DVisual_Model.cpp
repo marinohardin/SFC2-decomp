@@ -158,6 +158,7 @@ public:
 	int vfunction21();
 	bool vfunction22(int param_1, int param_2);
 	int vfunction23(float time);
+	void fn_0042fea4(unsigned int param_1);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -474,4 +475,10 @@ void t3DVisual_Model::vfunction9(tViewer_0042fd3f *param_1, int param_2, int par
 {
 	if (m160[0] != 0)
 		m160[0]->vfunction4(param_1, m158, param_2, param_3);
+}
+
+// FUNCTION: STARFLEETOP 0x0042fea4
+void t3DVisual_Model::fn_0042fea4(unsigned int param_1)
+{
+	m174 = param_1 | 0x80000000;
 }
