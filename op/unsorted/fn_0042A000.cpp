@@ -249,6 +249,7 @@ public:
 	db::tID FUN_0042a9ba();
 	const std::string& FUN_0042aa0b();
 	int FUN_0042aa2b();
+	int FUN_0042aa4b();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -256,7 +257,7 @@ public:
 	int field_2c;
 	std::string field_30;
 	int field_40;
-	byte field_44[0x48 - 0x44];
+	int field_44;
 	int field_48;
 	byte field_4c[0x50 - 0x4c];
 	int field_50;
@@ -469,4 +470,12 @@ int fn_0042a480_object::FUN_0042aa2b()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_40;
+}
+
+// FUNCTION: STARFLEETOP 0x0042aa4b
+int fn_0042a480_object::FUN_0042aa4b()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_44;
 }
