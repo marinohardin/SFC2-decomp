@@ -524,3 +524,13 @@ long tMetaMapHex::fn_0053a3bc( int32 param_1 )
 	guard.Leave();
 	return value;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a414
+int32 tMetaMapHex::fn_0053a414( int32 param_1 )
+{
+	tOptex::tGuard guard( &m_bc );
+	fn_0053a73a_map::iterator it = m_84.find( param_1 );
+	int32 value = ( *it ).second;
+	guard.Leave();
+	return value;
+}
