@@ -51,6 +51,7 @@ public:
     // HYPOTHESIS: a value for one map cell; 0x0043f023 sums it along a line of cells.
     int fn_0043f618(int x, int y);
     virtual void vfunction39(float param_1);
+    virtual void vfunction48(int param_1);
     virtual float vfunction70();
     // HYPOTHESIS: overrides slot 72.
 
@@ -1446,4 +1447,11 @@ float tSensorGroupSystem::vfunction74(float param_1, float param_2)
     }
     vfunction73(ratio, param_2);
     return param_1 - used;
+}
+
+// FUNCTION: STARFLEETOP 0x0043f5e9
+void tSensorGroupSystem::vfunction48(int param_1)
+{
+    tIndividualShipSystem::vfunction48(param_1);
+    fn_0043ee5a();
 }
