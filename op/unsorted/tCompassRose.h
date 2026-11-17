@@ -22,8 +22,12 @@ public:
 	// tMetaMapControl calls it on its compass rose (0x005e3148).
 	void fn_005e2501();
 	void fn_005e2539();
+	// HYPOTHESIS: dispatches the message ids 0x11800..0x11806 to the control; tMetaMapControl
+	// hands it every message (0x005e4358).
+	void fn_005e254f( long *msg );
 
-	unsigned char field_04[ 4 ];
+	// HYPOTHESIS: the control the constructor is handed.
+	tMetaMapControl *field_04;
 };
 
 #endif	// tCompassRose_h

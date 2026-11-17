@@ -745,3 +745,48 @@ int tMetaMapControl::fn_005e4351()
 {
 	return field_1c8;
 }
+
+// FUNCTION: STARFLEETOP 0x005e4358
+void tMetaMapControl::fn_005e4358( long *msg )
+{
+	// HYPOTHESIS: +0x14 of the message holds flags; bit 0 set means the key went down.
+	char down = *(unsigned char *)&msg[ 5 ] & 1;
+	switch ( msg[ 0 ] )
+	{
+	case 0x100:
+		switch ( msg[ 1 ] )
+		{
+		case 0x54:
+		case 0x74:
+			if ( down )
+				fn_005e433c();
+			break;
+		case 0x105:
+			fn_005e4293();
+			break;
+		case 0x106:
+			fn_005e4280();
+			break;
+		case 0x109:
+			fn_005e41ec();
+			break;
+		case 0x10a:
+			fn_005e4236();
+			break;
+		case 0x10b:
+			fn_005e4211();
+			break;
+		case 0x10c:
+			fn_005e425b();
+			break;
+		}
+		break;
+	case 0x10013:
+		fn_005e4426( msg );
+		break;
+	case 0x10017:
+		fn_005e4417( msg );
+		break;
+	}
+	field_180->fn_005e254f( msg );
+}
