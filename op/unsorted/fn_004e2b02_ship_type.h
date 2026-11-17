@@ -237,6 +237,18 @@ public:
     virtual void vfunction57();
     virtual void vfunction58();
     virtual int vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    // HYPOTHESIS: slot 68 (offset 0x110) takes one integer; tShuttleBaySystem's destructor
+    // (0x0044e844) passes 0 to the ship of every ID it holds.
+    virtual void vfunction69(int param_1);
 
     char pad04[0x1c - 0x04];
     // HYPOTHESIS: the ship's own id; tPhaserXBank's 0x004e5958 passes it with the target's id

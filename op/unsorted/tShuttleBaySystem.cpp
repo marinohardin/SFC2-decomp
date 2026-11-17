@@ -1,9 +1,11 @@
 // Unit:      unsorted/tShuttleBaySystem.cpp
 // Functions of tShuttleBaySystem (0x0044e554 to 0x0044f16f); original file unknown.
 #include "unsorted/tShuttleBaySystem.h"
+#include "unsorted/tEntity.h"
+#include "unsorted/fn_004e2b02_ship_type.h"
 
 // FUNCTION: STARFLEETOP 0x0044e554
-int* tShuttleBaySystem::vfunction102()
+tValue<long>* tShuttleBaySystem::vfunction102()
 {
     return &field_a0;
 }
@@ -17,7 +19,7 @@ tValue<long>* tShuttleBaySystem::vfunction103()
 // FUNCTION: STARFLEETOP 0x0044e562
 int tShuttleBaySystem::vfunction104()
 {
-    return field_b8;
+    return field_a0;
 }
 
 // FUNCTION: STARFLEETOP 0x0044e569
@@ -141,8 +143,29 @@ int tShuttleBaySystem::vfunction136(int param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x0044e66f
+// FUNCTION: STARFLEETOP 0x0044e844
 tShuttleBaySystem::~tShuttleBaySystem()
 {
+    int i;
+    for (i = 0; i < 32; i++)
+    {
+        fn_004e2b02_ship_type* ship = gObject_008e1060.fn_0042496f(field_1c8[i]);
+        if (ship)
+            ship->vfunction69(0);
+    }
+    for (i = 0; i < 4; i++)
+    {
+        fn_004e2b02_ship_type* ship = gObject_008e1060.fn_0042496f(field_3a8[i]);
+        if (ship)
+            ship->vfunction69(0);
+    }
+    std::list<tObject_0044e844_item*>::iterator it = field_4f0.begin();
+    while (it != field_4f0.end())
+    {
+        std::list<tObject_0044e844_item*>::iterator cur = it++;
+        delete *cur;
+        field_4f0.erase(cur);
+    }
 }
 
 // FUNCTION: STARFLEETOP 0x0044e68b

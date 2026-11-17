@@ -7,6 +7,16 @@
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tValueBase.h"
 #include <string>
+#include <list>
+#include <vector>
+
+// HYPOTHESIS: the objects the lists at +0x84 and +0x4f0 point to; the destructor deletes each
+// through slot 0, a virtual destructor. Their class is not known.
+class tObject_0044e844_item
+{
+public:
+    virtual ~tObject_0044e844_item();
+};
 
 // HYPOTHESIS: the base is tRepairableShipSystem, as for the other ship systems; the fields
 // between +0x7c and +0xa0 are not recovered.
@@ -17,10 +27,10 @@ public:
     virtual void vfunction100();
     virtual void vfunction101();
     // vftable slot 101; returns the address of field_a0.
-    virtual int* vfunction102();
+    virtual tValue<long>* vfunction102();
     // vftable slot 102; returns the address of field_c4.
     virtual tValue<long>* vfunction103();
-    // vftable slot 103; returns field_b8.
+    // vftable slot 103; returns field_a0's value.
     virtual int vfunction104();
     // vftable slot 104; returns field_bc.
     virtual int vfunction105();
@@ -69,11 +79,15 @@ public:
     // vftable slot 136; returns element param_1 of the array vfunction133 stores into.
     virtual int vfunction136(int param_1);
 
-    char pad7c[0xa0 - 0x7c];
-    // HYPOTHESIS: an object or array held by value; its type is not recovered.
-    int field_a0;
-    char pada4[0xb8 - 0xa4];
-    int field_b8;
+    int field_7c;
+    // HYPOTHESIS: a list of owned objects; the destructor (0x0044e844) destroys it with the
+    // out-of-line list destructor 0x005d6a72, as the one at +0x4f0.
+    std::list<tObject_0044e844_item*> field_80;
+    // HYPOTHESIS: a 0x10-byte vector of 32-bit values; its destructor is 0x00571a7a.
+    std::vector<int> field_8c;
+    int field_9c;
+    // The value object at +0xa4; vfunction104 returns its value.
+    tValue<long> field_a0;
     int field_bc;
     int field_c0;
     // HYPOTHESIS: a tValue<long>: vfunction128 sets its value at +0x18 and calls the notify
@@ -99,15 +113,29 @@ public:
     char pad12c[0x138 - 0x12c];
     // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
     int field_138[1];
-    char pad13c[0x248 - 0x13c];
+    char pad13c[0x1c8 - 0x13c];
+    // HYPOTHESIS: 32 entity IDs; the destructor passes 0 to slot 68 of the ship of each.
+    int field_1c8[32];
     // HYPOTHESIS: an int array indexed by vfunction117; its length is not recovered.
     int field_248[1];
     char pad24c[0x2c8 - 0x24c];
     // HYPOTHESIS: an int array indexed by vfunction110; its length is not recovered.
     int field_2c8[1];
     char pad2cc[0x2d8 - 0x2cc];
-    // HYPOTHESIS: a std::string array indexed by vfunction112; its length is not recovered.
-    std::string field_2d8[1];
+    // A std::string array indexed by vfunction112; the destructor destroys four.
+    std::string field_2d8[4];
+    char pad318[0x3a8 - 0x318];
+    // HYPOTHESIS: 4 entity IDs, treated by the destructor as field_1c8.
+    int field_3a8[4];
+    // HYPOTHESIS: four 0x24-byte value objects whose destructors store tValueBase's vtable;
+    // tMinMaxFloat has that size.
+    tMinMaxFloat field_3b8;
+    tMinMaxFloat field_3dc;
+    tMinMaxFloat field_400;
+    tMinMaxFloat field_424;
+    char pad448[0x4f0 - 0x448];
+    // HYPOTHESIS: a list of owned objects; the destructor deletes each and empties it.
+    std::list<tObject_0044e844_item*> field_4f0;
 };
 
 #endif	// tShuttleBaySystem_h
