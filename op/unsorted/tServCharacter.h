@@ -11,6 +11,8 @@
 class tServCharacter : public nDatabase::tDatabaseObject
 {
 public:
+	// HYPOTHESIS: a flag 0x0056c8d6 queries on; it tests the member at +0x14c.
+	bool fn_00543445() const;
 };
 
 #endif

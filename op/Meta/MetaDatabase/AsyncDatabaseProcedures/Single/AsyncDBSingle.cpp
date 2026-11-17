@@ -58,7 +58,7 @@ public:
 	virtual void vfunction1();
 	virtual void vfunction2( tCampaignInfo* campaignInfo );
 	virtual void vfunction3( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
-	virtual void vfunction4();
+	virtual void vfunction4( std::vector<tServCharacter>* characters );
 	virtual void vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7();
@@ -193,3 +193,43 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3( std::vector<nDat
 		delete *i;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0056c8d6
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction4( std::vector<tServCharacter>* characters )
+{
+	nDatabase::tQuery<tServCharacter> query;
+	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval( &tServCharacter::fn_00543445, true );
+	query.AddEval( &eval );
+	fDatabase->fn_0056f19b( query, characters );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
