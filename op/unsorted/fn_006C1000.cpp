@@ -234,3 +234,19 @@ void fn_006c1820(fn_006c1510_pool *pool, void (*func)(void *, void *), void *arg
 	for (i = 0; i < (int)pool->field_00; i++)
 		func(fn_006c15c0(pool, i), arg);
 }
+
+// HYPOTHESIS: returns the first element for which func returns 0, or 0 when none does.
+// FUNCTION: STARFLEETOP 0x006c1860
+void *fn_006c1860(fn_006c1510_pool *pool, int (*func)(void *, void *), void *arg)
+{
+	int i;
+	void *element;
+
+	for (i = 0; i < (int)pool->field_00; i++)
+	{
+		element = fn_006c15c0(pool, i);
+		if (func(element, arg) == 0)
+			return element;
+	}
+	return 0;
+}
