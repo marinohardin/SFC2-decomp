@@ -321,3 +321,50 @@ std::string __stdcall fn_0040257f(std::string src, char* found)
     }
     return result;
 }
+
+void __cdecl fn_007364c0(char* dst, const char* src);
+
+// HYPOTHESIS: the names and layouts below are guesses from the access pattern.
+struct fn_004026ec_Name : public std::string
+{
+    int fn_0040651e(void* p);
+};
+
+struct fn_004026ec_Entry
+{
+    int pad[2];
+    char data[0xb0];
+};
+
+struct fn_004026ec_Dest
+{
+    char pad[0x14];
+    char m14[4];
+};
+
+class fn_004026ec_Owner
+{
+public:
+    int pad[5];
+    fn_004026ec_Entry* m14;
+    fn_004026ec_Entry* m18;
+    void fn_00402763(fn_004026ec_Dest* d, int a);
+    void fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, int a);
+    char fn_004026ec(fn_004026ec_Name* name, fn_004026ec_Dest* d, int a);
+};
+
+// FUNCTION: STARFLEETOP 0x004026ec
+char fn_004026ec_Owner::fn_004026ec(fn_004026ec_Name* name, fn_004026ec_Dest* d, int a)
+{
+    fn_00402763(d, a);
+    for (fn_004026ec_Entry* e = m14; e != m18; e++)
+    {
+        if (name->fn_0040651e(e->data) == 0)
+        {
+            fn_007364c0(d->m14, name->c_str());
+            fn_004027c8(e, d, a);
+            return 1;
+        }
+    }
+    return 0;
+}

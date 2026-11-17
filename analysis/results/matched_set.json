@@ -163,6 +163,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004026ec": {
+   "name": "FUN_004026ec",
+   "symbol": "?fn_004026ec@fn_004026ec_Owner@@QAEDPAUfn_004026ec_Name@@PAUfn_004026ec_Dest@@H@Z",
+   "unit": "unsorted/fn_00402000.cpp",
+   "size": 119,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
