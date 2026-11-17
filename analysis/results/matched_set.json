@@ -8772,9 +8772,9 @@
    "symbol": "?mMakeFullPath@twDir@@IAEXXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 624,
-   "score": 99.036,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00631840": {
    "name": "twDir::mGetSortName",
