@@ -642,3 +642,33 @@ void fn_004d37d3( long arg1, long arg2 )
 {
 	g_0092e4a0.fn_004d449a( arg1, arg2 );
 }
+
+#include <windows.h>
+#include <string.h>
+
+// FUNCTION: STARFLEETOP 0x004d37e6
+char fn_004d37e6( char* arg1, unsigned int arg2 )
+{
+	char result = 0;
+	if ( OpenClipboard( 0 ) )
+	{
+		HANDLE hMem = GetClipboardData( CF_TEXT );
+		if ( hMem )
+		{
+			char* text = (char*) GlobalLock( hMem );
+			if ( text )
+			{
+				if ( strlen( text ) > arg2 )
+				{
+					return 0;
+				}
+				fn_007364c0( (long) arg1, (long) text );
+				GlobalUnlock( hMem );
+				result = 1;
+			}
+		}
+		CloseClipboard();
+		return result;
+	}
+	return 0;
+}
