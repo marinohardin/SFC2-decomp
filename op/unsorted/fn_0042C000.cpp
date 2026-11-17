@@ -353,3 +353,109 @@ fn_0042c4ac_Node* fn_0042c4ac_Tree::fn_0042c4ac(const fn_0042c4ac_Key& kv) const
 			y = x, x = x->m00_left;
 	return y;
 }
+
+// HYPOTHESIS: the key_compare of the tree of fn_0042c053_Node; the linker folded it with the
+// identical one of fn_0042c360_Tree at 0x0042c8f7.
+bool fn_0042c8f7(const fn_0042c053_Value& left, const fn_0042c053_Value& right);
+
+// HYPOTHESIS: the iterator of the tree of fn_0042c053_Node, returned by value.
+struct fn_0042c4e6_Iterator
+{
+	fn_0042c053_Node* m00_node;
+};
+
+// HYPOTHESIS: the tree of fn_0042c053_Node seen from its insert: head node at +0x04, nil node
+// at +0x08, size at +0x10; its rotations folded with fn_0042c360_Tree's.
+class fn_0042c4e6_Tree
+{
+public:
+	fn_0042c4e6_Iterator fn_0042c4e6(fn_0042c053_Node* x, fn_0042c053_Node* y, const fn_0042c053_Value& v);
+	void fn_00556fd0(fn_0042c053_Node* x);
+	void fn_00558526(fn_0042c053_Node* x);
+
+	char m00_pad[0x4];
+	fn_0042c053_Node* m04_head;
+	fn_0042c053_Node* m08_nil;
+	char m0c_pad[0x4];
+	unsigned int m10_size;
+};
+
+// HYPOTHESIS: the tree's _Insert.
+// FUNCTION: STARFLEETOP 0x0042c4e6
+fn_0042c4e6_Iterator fn_0042c4e6_Tree::fn_0042c4e6(fn_0042c053_Node* x, fn_0042c053_Node* y, const fn_0042c053_Value& v)
+{
+	fn_0042c053_Node* z = (fn_0042c053_Node*)operator new(sizeof(fn_0042c053_Node));
+	z->m28_color = 0;
+	z->m29_isnil = 0;
+	z->m04_parent = y;
+	z->m00_left = m08_nil;
+	z->m08_right = m08_nil;
+	fn_0042c948(&z->m0c_value, &v);
+	++m10_size;
+	if (y == m04_head || x != m08_nil || fn_0042c8f7(v, y->m0c_value))
+	{
+		y->m00_left = z;
+		if (y == m04_head)
+		{
+			m04_head->m04_parent = z;
+			m04_head->m08_right = z;
+		}
+		else if (y == m04_head->m00_left)
+			m04_head->m00_left = z;
+	}
+	else
+	{
+		y->m08_right = z;
+		if (y == m04_head->m08_right)
+			m04_head->m08_right = z;
+	}
+	for (x = z; x != m04_head->m04_parent && x->m04_parent->m28_color == 0; )
+		if (x->m04_parent == x->m04_parent->m04_parent->m00_left)
+		{
+			y = x->m04_parent->m04_parent->m08_right;
+			if (y->m28_color == 0)
+			{
+				x->m04_parent->m28_color = 1;
+				y->m28_color = 1;
+				x->m04_parent->m04_parent->m28_color = 0;
+				x = x->m04_parent->m04_parent;
+			}
+			else
+			{
+				if (x == x->m04_parent->m08_right)
+				{
+					x = x->m04_parent;
+					fn_00556fd0(x);
+				}
+				x->m04_parent->m28_color = 1;
+				x->m04_parent->m04_parent->m28_color = 0;
+				fn_00558526(x->m04_parent->m04_parent);
+			}
+		}
+		else
+		{
+			y = x->m04_parent->m04_parent->m00_left;
+			if (y->m28_color == 0)
+			{
+				x->m04_parent->m28_color = 1;
+				y->m28_color = 1;
+				x->m04_parent->m04_parent->m28_color = 0;
+				x = x->m04_parent->m04_parent;
+			}
+			else
+			{
+				if (x == x->m04_parent->m00_left)
+				{
+					x = x->m04_parent;
+					fn_00558526(x);
+				}
+				x->m04_parent->m28_color = 1;
+				x->m04_parent->m04_parent->m28_color = 0;
+				fn_00556fd0(x->m04_parent->m04_parent);
+			}
+		}
+	m04_head->m04_parent->m28_color = 1;
+	fn_0042c4e6_Iterator it;
+	it.m00_node = z;
+	return it;
+}
