@@ -718,6 +718,8 @@ nDatabase::tQuery<fn_0056fb13_object>::~tQuery()
 void nDatabase::tQuery<fn_0056fb13_object>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // FUNCTION: STARFLEETOP 0x0056fcb9
 nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
+// FUNCTION: STARFLEETOP 0x0056fcc7
+void nDatabase::tQuery<tCampaignInfo>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete
 // here; the casts below stand for the original's static_casts (the base sits at offset 0).
 // HYPOTHESIS: the result container for tMetaMapDesc, as for 0x0056f4df.
@@ -795,7 +797,6 @@ public:
 	virtual void vfunction9();
 	char fn_0056fb13_pad[0x54 - 4];
 };
-
 // HYPOTHESIS: the result container for 0x0056fb13, as for 0x0056f19b.
 class fn_0056fb13_results {
 public:
@@ -805,7 +806,6 @@ public:
 	fn_0056fb13_object *m_first;
 	fn_0056fb13_object *m_last;
 };
-
 // HYPOTHESIS: unlocked variant of the database query, as 0x0056f19b, for another object type.
 class fn_0056fb13_owner {
 public:
