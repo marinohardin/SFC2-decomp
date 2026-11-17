@@ -495,10 +495,7 @@ address	size	symbol	source	modes
 0x004bd5bc	137	fn_004bd5bc()	unsorted/fn_004BD43E.cpp	vc6 guest
 0x004bd645	140	fn_004bd645(tString *)	unsorted/fn_004BD43E.cpp	vc6 guest
 0x004bd6d1	144	fn_004bd6d1(tString *,int)	unsorted/fn_004BD43E.cpp	vc6 guest
-0x004bd782	43	fn_004bd782()	unsorted/fn_004BD43E.cpp	partial
-0x004bd7ce	55	fn_004bd7ce()	unsorted/fn_004BD43E.cpp	partial
 0x004bd805	78	c_004bd805_Object::c_004bd805_Object()	unsorted/fn_004BD43E.cpp	vc6
-0x004bd862	114	c_004bd805_Object::~c_004bd805_Object()	unsorted/fn_004BD43E.cpp	partial
 0x004bd8d4	318	c_004bd805_Object::fn_004bd8d4(tString *,int)	unsorted/fn_004BD43E.cpp	partial
 0x004bda12	24	c_004bd805_Object::fn_004bda12()	unsorted/fn_004BD43E.cpp	vc6 guest
 0x004bda34	10	g_004bd805_Object (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
@@ -732,7 +729,6 @@ address	size	symbol	source	modes
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00544b5c	172	tAuctionItem::tAuctionItem()	unsorted/tAuctionItem.cpp	vc6
 0x00544c08	28	tAuctionItem::`scalar deleting destructor'	unsorted/tAuctionItem.cpp	vc6
-0x00544c24	85	tAuctionItem::~tAuctionItem()	unsorted/tAuctionItem.cpp	partial
 0x00544c79	167	tAuctionItem::tAuctionItem(double,tShip*)	unsorted/tAuctionItem.cpp	vc6
 0x00544d20	44	tAuctionItem::fn_00544d20(const nDatabase::tID&,std::string,int,int,double)	unsorted/tAuctionItem.cpp	vc6 guest
 0x00544db7	175	tAuctionItem::StreamOut(nDataStore::tOutput&) const	unsorted/tAuctionItem.cpp	vc6 guest
