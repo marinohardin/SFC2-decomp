@@ -613,3 +613,29 @@ void fn_006c1f90(fn_006c1ae0_Request *request)
 	request->m34++;
 	sendto(g_0088800c, (char *)request->m48, request->m4c, 0, (struct sockaddr *)&g_00c7cdd8, sizeof(g_00c7cdd8));
 }
+
+extern int g_00c7cbd0;
+extern char g_00c7cbd8[2][256];
+
+// HYPOTHESIS: returns the value that follows "\key\" in a reply, in one of two buffers used in
+// turn so that two results can be held at once.
+// FUNCTION: STARFLEETOP 0x006c1fd0
+char *fn_006c1fd0(char *buffer, const char *key)
+{
+	char search[256] = "\\";
+	char *pos;
+	char *out;
+
+	g_00c7cbd0 ^= 1;
+	strcat(search, key);
+	strcat(search, "\\");
+	pos = strstr(buffer, search);
+	if (pos == 0)
+		return "";
+	pos += strlen(search);
+	out = g_00c7cbd8[g_00c7cbd0];
+	while (*pos != 0 && *pos != '\\')
+		*out++ = *pos++;
+	*out = 0;
+	return g_00c7cbd8[g_00c7cbd0];
+}
