@@ -1,6 +1,42 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSndMgr_Miles.cpp
-// Functions: 0x0050ed7a to 0x0051039b, 44 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
+// (vfunction29 is called through +0x70); the others keep their analysis names.
+class tSndMgr_Miles
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7( long param_1, long param_2 );
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	// HYPOTHESIS: fourth parameter is a byte flag, fifth a volume-like 0..100 value
+	virtual void vfunction29( long param_1, long param_2, char param_3, long param_4 );
+};
+
+// FUNCTION: STARFLEETOP 0x0050ed7a
+void tSndMgr_Miles::vfunction7( long param_1, long param_2 )
+{
+	vfunction29( param_1, param_2, 0, 100 );
+}
