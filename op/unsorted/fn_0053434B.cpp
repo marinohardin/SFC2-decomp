@@ -253,19 +253,21 @@ long fn_005344a3_object::fn_005346d9(long value)
 }
 
 // HYPOTHESIS: a constructor of an object holding a tString, the long it is given and two
-// std::vectors (element types not known), which it then hands the long to 0x005347bd and
+// std::vectors (element types not known; taken as fn_0053440f_object's, since the destructor
+// treats them alike), which it then hands the long to 0x005347bd and
 // 0x005347f4; the owning class is not known.
 class fn_005346f9_object
 {
 public:
     fn_005346f9_object(long value);
+    ~fn_005346f9_object();
     void fn_005347bd(long value);
     void fn_005347f4(long value);
 
     tString field_00;
     long field_28;
-    std::vector< void* > field_2c;
-    std::vector< void* > field_3c;
+    std::vector< fn_00534461_entry* > field_2c;
+    std::vector< fn_00534461_entry* > field_3c;
 };
 
 // FUNCTION: STARFLEETOP 0x005346f9
@@ -274,4 +276,14 @@ fn_005346f9_object::fn_005346f9_object(long value)
     field_28 = value;
     fn_005347bd(value);
     fn_005347f4(value);
+}
+
+// HYPOTHESIS: the destructor calls 0x005ff7ac on both vectors before they are destroyed. That
+// call is declared only on fn_0053440f_object (whose only member is such a vector), hence the
+// casts; the vectors' destructor is 0x00571a7a, as for fn_0053440f_object's vector.
+// FUNCTION: STARFLEETOP 0x0053475f
+fn_005346f9_object::~fn_005346f9_object()
+{
+    ((fn_0053440f_object*)&field_2c)->fn_005ff7ac();
+    ((fn_0053440f_object*)&field_3c)->fn_005ff7ac();
 }
