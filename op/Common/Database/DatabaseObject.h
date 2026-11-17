@@ -24,6 +24,7 @@ class tDatabaseObject : public tAllocatedClass, public nDataStore::tStreamable
 public:
 //Setup
 	tDatabaseObject( iObjectVersion versionNumber = 0 );
+	tDatabaseObject( const tDatabaseObject& copy );
 	virtual ~tDatabaseObject();
 	// HYPOTHESIS: the exe holds this assignment out of line (0x006fa870); derived classes call it.
 	tDatabaseObject& operator=( const tDatabaseObject& other );

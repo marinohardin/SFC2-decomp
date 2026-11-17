@@ -5,6 +5,7 @@
 #include "unsorted/tPoliticalTensionMatrix.h"
 #include "unsorted/tEntity.h"
 #include "Common/Database/DatabaseID.h"
+#include "Common/Database/DatabaseObject.h"
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x0042739e
@@ -395,14 +396,59 @@ void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& a
 	}
 }
 
-// HYPOTHESIS: the element of the vector at 0x3c of tPlayingTeamInfo: 0x434 bytes, copied by
-// 0x00427c1d; class not yet found.
-class tObject_00427c1d
+// HYPOTHESIS: the class named in RTTI; 0x70 bytes, copied out of line (0x00450e04).
+class tDamageState
 {
 public:
-	tObject_00427c1d( const tObject_00427c1d& source );
+	tDamageState( const tDamageState& source );
+	virtual	~tDamageState();
 
-	int8u	field_0x0[0x434];
+	int8u	field_0x4[0x6c];
+};
+
+// HYPOTHESIS: RTTI names this class tStoresState, which is declared only inside
+// Source/states/SupplyDockItem.cpp; until that declaration moves to a header, this is a
+// stand-in of its size (0x20c bytes) for the copy constructor 0x00427db2.
+class tObject_00427db2
+{
+public:
+	tObject_00427db2( const tObject_00427db2& source );
+	virtual	~tObject_00427db2();
+
+	int8u	field_0x4[0x208];
+};
+
+// HYPOTHESIS: the class named in RTTI; 0x124 bytes, copied out of line (0x00427fb2).
+class tOfficerList
+{
+public:
+	tOfficerList( const tOfficerList& source );
+	virtual	~tOfficerList();
+
+	int8u	field_0x4[0x120];
+};
+
+// HYPOTHESIS: the class named in RTTI (vtable 0x00798264), the element of the vector at 0x3c
+// of tPlayingTeamInfo; layout read from its copy constructor at 0x00427c6b.
+class tShip : public nDatabase::tDatabaseObject
+{
+public:
+	tShip( const tShip& source );
+	virtual	~tShip();
+
+	nDatabase::tID		field_0x48;
+	int8u				field_0x58;
+	int32u				field_0x5c;
+	int32u				field_0x60;
+	int32u				field_0x64;
+	int32u				field_0x68;
+	std::string			field_0x6c;
+	int32u				field_0x7c;
+	std::string			field_0x80;
+	tDamageState		field_0x90;
+	tObject_00427db2	field_0x100;
+	tOfficerList		field_0x30c;
+	int32u				field_0x430;
 };
 
 // HYPOTHESIS: the class named in RTTI (vtable 0x00798234); layout read from its copy
@@ -423,7 +469,7 @@ public:
 	int32u				field_0x24;
 	int32u				field_0x28;
 	nDatabase::tID		field_0x2c;
-	std::vector< tObject_00427c1d >	field_0x3c;
+	std::vector< tShip >	field_0x3c;
 	int32u				field_0x4c;
 	int32u				field_0x50;
 	int8u				field_0x54;
@@ -470,7 +516,7 @@ inline tPlayingTeamInfo::~tPlayingTeamInfo()
 // out here, as the one at 0x00427740 is, so that it has source lines here.
 // FUNCTION: STARFLEETOP 0x00427bb2
 template<>
-std::vector< tObject_00427c1d >::vector( const std::vector< tObject_00427c1d >& _X )
+std::vector< tShip >::vector( const std::vector< tShip >& _X )
 	: allocator( _X.allocator )
 {
 	_First = allocator.allocate( _X.size(), (void*)0 );
@@ -482,11 +528,31 @@ std::vector< tObject_00427c1d >::vector( const std::vector< tObject_00427c1d >& 
 // tPlayingTeamInfo, written out so that it has source lines here.
 namespace std
 {
-inline void _Construct( tObject_00427c1d *_P, const tObject_00427c1d& _V );
+inline void _Construct( tShip *_P, const tShip& _V );
 }
 
 // FUNCTION: STARFLEETOP 0x00427c1d
-inline void std::_Construct( tObject_00427c1d *_P, const tObject_00427c1d& _V )
+inline void std::_Construct( tShip *_P, const tShip& _V )
 {
-	new ((void *)_P) tObject_00427c1d( _V );
+	new ((void *)_P) tShip( _V );
+}
+
+// HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
+// FUNCTION: STARFLEETOP 0x00427c6b
+tShip::tShip( const tShip& source )
+	: nDatabase::tDatabaseObject( source ),
+	  field_0x48( source.field_0x48 ),
+	  field_0x58( source.field_0x58 ),
+	  field_0x5c( source.field_0x5c ),
+	  field_0x60( source.field_0x60 ),
+	  field_0x64( source.field_0x64 ),
+	  field_0x68( source.field_0x68 ),
+	  field_0x6c( source.field_0x6c ),
+	  field_0x7c( source.field_0x7c ),
+	  field_0x80( source.field_0x80 ),
+	  field_0x90( source.field_0x90 ),
+	  field_0x100( source.field_0x100 ),
+	  field_0x30c( source.field_0x30c ),
+	  field_0x430( source.field_0x430 )
+{
 }
