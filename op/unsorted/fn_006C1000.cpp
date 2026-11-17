@@ -89,12 +89,12 @@ struct fn_006c1510_pool
 	unsigned long field_04;
 	unsigned long field_08;
 	unsigned long field_0c;
-	unsigned long field_10;
+	void (*field_10)(void *);
 	void *field_14;
 };
 
 // FUNCTION: STARFLEETOP 0x006c1510
-fn_006c1510_pool *fn_006c1510(unsigned long size, unsigned long count, unsigned long param)
+fn_006c1510_pool *fn_006c1510(unsigned long size, unsigned long count, void (*param)(void *))
 {
 	fn_006c1510_pool *pool = (fn_006c1510_pool *)malloc(sizeof(fn_006c1510_pool));
 
@@ -121,4 +121,15 @@ void fn_006c1560(fn_006c1510_pool *pool)
 		fn_006c15a0(pool, i);
 	free(pool->field_14);
 	free(pool);
+}
+
+// HYPOTHESIS: returns the address of element index in the data block.
+void *fn_006c15c0(fn_006c1510_pool *pool, int index);
+
+// HYPOTHESIS: field_10 is a per-element release callback given at creation.
+// FUNCTION: STARFLEETOP 0x006c15a0
+void fn_006c15a0(fn_006c1510_pool *pool, int index)
+{
+	if (pool->field_10 != 0)
+		pool->field_10(fn_006c15c0(pool, index));
 }
