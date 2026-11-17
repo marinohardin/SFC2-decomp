@@ -302,6 +302,7 @@ public:
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
+    char *fn_0060c982(const char *name);
     int m_00;
     int m_04;
     std::vector<int> m_08;
@@ -364,4 +365,19 @@ C_00472518 &C_00472518::operator=(const C_00472518 &other)
 C_00472518 &C_0060c7dc::fn_0060c97e()
 {
     return m_24;
+}
+
+// HYPOTHESIS: finds name among the three strings of each row of m_434 (6 rows of 3) and returns
+// the matching row's string from m_10.
+// FUNCTION: STARFLEETOP 0x0060c982
+char *C_0060c7dc::fn_0060c982(const char *name)
+{
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 3; j++) {
+            tString s(m_24.m_434[i * 3 + j]);
+            if (stricmp(name, s.mCharStr()) == 0)
+                return m_24.m_10[i].mCharStr();
+        }
+    }
+    return 0;
 }
