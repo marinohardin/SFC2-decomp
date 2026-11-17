@@ -210,6 +210,7 @@ public:
 	bool fn_00543af1(std::string text);
 	bool fn_00543b31(int value);
 	bool fn_00543b40(const tHexPoint &point);
+	bool fn_00543b54(const tHexPoint &point);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -808,5 +809,12 @@ bool fn_005430ad_owner::fn_00543b31(int value)
 bool fn_005430ad_owner::fn_00543b40(const tHexPoint &point)
 {
 	m098 = point;
+	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00543b54
+bool fn_005430ad_owner::fn_00543b54(const tHexPoint &point)
+{
+	m0ac = point;
 	return true;
 }
