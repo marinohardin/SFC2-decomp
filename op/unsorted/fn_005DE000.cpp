@@ -69,9 +69,11 @@ class fn_005de28c_Vector
 {
 public:
 	void fn_005de28c(tNewsStory** p, tNewsStory* const* f, tNewsStory* const* l);
+	void fn_005de471(tNewsStory** p, unsigned int m, tNewsStory* const& x);
 	unsigned int size() const;
 	void _Destroy(tNewsStory** f, tNewsStory** l);
 	tNewsStory** _Ucopy(tNewsStory* const* f, tNewsStory* const* l, tNewsStory** p);
+	void _Ufill(tNewsStory** f, unsigned int n, tNewsStory* const& x);
 
 	char m00_allocator[0x4];
 	tNewsStory** m04_first;
@@ -148,6 +150,52 @@ void fn_005de28c_Vector::fn_005de28c(tNewsStory** p, tNewsStory* const* f, tNews
 		_Ucopy(m08_last - m, m08_last, m08_last);
 		fn_005de28c_copy_backward(p, m08_last - m, m08_last);
 		fn_005de28c_copy(f, l, p);
+		m08_last += m;
+	}
+}
+
+// MATCH-ONLY: the library's inline fill helpers, written out for this hand-declared vector.
+inline void fn_005de28c_Vector::_Ufill(tNewsStory** f, unsigned int n, tNewsStory* const& x)
+{
+	for (; 0 < n; --n, ++f)
+		new ((void*)f) tNewsStory*(x);
+}
+
+inline void fn_005de471_fill(tNewsStory** f, tNewsStory** l, tNewsStory* const& x)
+{
+	for (; f != l; ++f)
+		*f = x;
+}
+
+// HYPOTHESIS: the same vector's insert of m copies of x before p.
+// FUNCTION: STARFLEETOP 0x005de471
+void fn_005de28c_Vector::fn_005de471(tNewsStory** p, unsigned int m, tNewsStory* const& x)
+{
+	if ((unsigned int)(m0c_end - m08_last) < m)
+	{
+		unsigned int n = size() + (m < size() ? size() : m);
+		tNewsStory** s = fn_005de28c_Allocate(n, (tNewsStory**)0);
+		tNewsStory** q = _Ucopy(m04_first, p, s);
+		_Ufill(q, m, x);
+		_Ucopy(p, m08_last, q + m);
+		_Destroy(m04_first, m08_last);
+		operator delete(m04_first);
+		m0c_end = s + n;
+		m08_last = s + size() + m;
+		m04_first = s;
+	}
+	else if ((unsigned int)(m08_last - p) < m)
+	{
+		_Ucopy(p, m08_last, p + m);
+		_Ufill(m08_last, m - (m08_last - p), x);
+		fn_005de471_fill(p, m08_last, x);
+		m08_last += m;
+	}
+	else if (0 < m)
+	{
+		_Ucopy(m08_last - m, m08_last, m08_last);
+		fn_005de28c_copy_backward(p, m08_last - m, m08_last);
+		fn_005de471_fill(p, p + m, x);
 		m08_last += m;
 	}
 }
