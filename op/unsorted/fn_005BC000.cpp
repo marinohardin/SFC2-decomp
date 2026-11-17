@@ -1,5 +1,6 @@
 #include "Common/Database/DatabaseID.h"
 #include "unsorted/tHexPoint.h"
+#include <utility>
 
 // FUNCTION: STARFLEETOP 0x005bc012
 int __fastcall FUN_005bc012(int *param_1)
@@ -240,6 +241,12 @@ struct fn_005bc1d5_tree
 		node *_Left;
 		node *_Parent;
 		node *_Right;
+		// HYPOTHESIS: 0x005bc645 destroys the value at +0x0c with 0x005bc091
+		// and reads the colour at +0x48 and the nil flag at +0x49.
+		fn_005bc091_entry _Value;
+		char m40[0x8];
+		char _Color;
+		char _Isnil;
 	};
 	class iterator
 	{
@@ -263,6 +270,15 @@ struct fn_005bc1d5_tree
 	iterator begin() { return (iterator(_Head->_Left)); }
 	iterator end() { return (iterator(_Head)); }
 	unsigned int size() const { return (_Size); }
+	node *&_Root() { return (_Head->_Parent); }
+	node *&_Lmost() { return (_Head->_Left); }
+	node *&_Rmost() { return (_Head->_Right); }
+	static node *_Max(node *_P) { while (!_P->_Right->_Isnil) _P = _P->_Right; return (_P); }
+	static node *_Min(node *_P) { while (!_P->_Left->_Isnil) _P = _P->_Left; return (_P); }
+	// HYPOTHESIS: _Lrotate(node); the code is shared with other trees.
+	void FUN_00556fd0(node *_X);
+	// HYPOTHESIS: _Rrotate(node); the code is shared with other trees.
+	void FUN_00558526(node *_X);
 	// HYPOTHESIS: erase(iterator).
 	iterator FUN_005bc645(iterator _P);
 	// HYPOTHESIS: _Erase(node).
@@ -638,4 +654,108 @@ fn_005bc5a0_tree::_Pairib fn_005bc5a0_tree::FUN_005bc5a0(const nDatabase::tID &_
 	if (_P._Ptr->_Value < _V)
 		return (_Pairib(FUN_005bd0a6(_X, _Y, _V), true));
 	return (_Pairib(_P, false));
+}
+
+// FUNCTION: STARFLEETOP 0x005bc645
+fn_005bc1d5_tree::iterator fn_005bc1d5_tree::FUN_005bc645(iterator _P)
+{
+	node *_X;
+	node *_Y = (_P++)._Ptr;
+	node *_Z = _Y;
+	if (_Y->_Left == _Nil)
+		_X = _Y->_Right;
+	else if (_Y->_Right == _Nil)
+		_X = _Y->_Left;
+	else
+		_Y = _Min(_Y->_Right), _X = _Y->_Right;
+	if (_Y != _Z)
+		{_Z->_Left->_Parent = _Y;
+		_Y->_Left = _Z->_Left;
+		if (_Y == _Z->_Right)
+			_X->_Parent = _Y;
+		else
+			{_X->_Parent = _Y->_Parent;
+			_Y->_Parent->_Left = _X;
+			_Y->_Right = _Z->_Right;
+			_Z->_Right->_Parent = _Y; }
+		if (_Root() == _Z)
+			_Root() = _Y;
+		else if (_Z->_Parent->_Left == _Z)
+			_Z->_Parent->_Left = _Y;
+		else
+			_Z->_Parent->_Right = _Y;
+		_Y->_Parent = _Z->_Parent;
+		std::swap(_Y->_Color, _Z->_Color);
+		_Y = _Z; }
+	else
+		{_X->_Parent = _Y->_Parent;
+		if (_Root() == _Z)
+			_Root() = _X;
+		else if (_Z->_Parent->_Left == _Z)
+			_Z->_Parent->_Left = _X;
+		else
+			_Z->_Parent->_Right = _X;
+		if (_Lmost() != _Z)
+			;
+		else if (_Z->_Right == _Nil)
+			_Lmost() = _Z->_Parent;
+		else
+			_Lmost() = _Min(_X);
+		if (_Rmost() != _Z)
+			;
+		else if (_Z->_Left == _Nil)
+			_Rmost() = _Z->_Parent;
+		else
+			_Rmost() = _Max(_X); }
+	if (_Y->_Color == 1)
+		{while (_X != _Root() && _X->_Color == 1)
+			if (_X == _X->_Parent->_Left)
+				{node *_W = _X->_Parent->_Right;
+				if (_W->_Color == 0)
+					{_W->_Color = 1;
+					_X->_Parent->_Color = 0;
+					FUN_00556fd0(_X->_Parent);
+					_W = _X->_Parent->_Right; }
+				if (_W->_Left->_Color == 1
+					&& _W->_Right->_Color == 1)
+					{_W->_Color = 0;
+					_X = _X->_Parent; }
+				else
+					{if (_W->_Right->_Color == 1)
+						{_W->_Left->_Color = 1;
+						_W->_Color = 0;
+						FUN_00558526(_W);
+						_W = _X->_Parent->_Right; }
+					_W->_Color = _X->_Parent->_Color;
+					_X->_Parent->_Color = 1;
+					_W->_Right->_Color = 1;
+					FUN_00556fd0(_X->_Parent);
+					break; }}
+			else
+				{node *_W = _X->_Parent->_Left;
+				if (_W->_Color == 0)
+					{_W->_Color = 1;
+					_X->_Parent->_Color = 0;
+					FUN_00558526(_X->_Parent);
+					_W = _X->_Parent->_Left; }
+				if (_W->_Right->_Color == 1
+					&& _W->_Left->_Color == 1)
+					{_W->_Color = 0;
+					_X = _X->_Parent; }
+				else
+					{if (_W->_Left->_Color == 1)
+						{_W->_Right->_Color = 1;
+						_W->_Color = 0;
+						FUN_00556fd0(_W);
+						_W = _X->_Parent->_Left; }
+					_W->_Color = _X->_Parent->_Color;
+					_X->_Parent->_Color = 1;
+					_W->_Left->_Color = 1;
+					FUN_00558526(_X->_Parent);
+					break; }}
+		_X->_Color = 1; }
+	(&_Y->_Value)->~fn_005bc091_entry();
+	operator delete(_Y);
+	--_Size;
+	return (_P);
 }
