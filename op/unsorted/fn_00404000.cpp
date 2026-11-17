@@ -628,6 +628,7 @@ public:
     void fn_00404d6e(const std::_Locinfo&);
     void fn_00404dd0(unsigned char);
     char *fn_00404de4(char *, const char *);
+    char fn_00404e0f(unsigned char);
     size_t m08;
     size_t m0c;
     const short *m10;
@@ -682,4 +683,13 @@ char *fn_00404cb2_Ctype::fn_00404de4(char *first, const char *last)
     for (; first != last; ++first)
         *first = fn_0074cdc8(*first, &m08);
     return first;
+}
+
+// HYPOTHESIS: callee 0x0074cfd7 is the sibling library helper of 0x0074cdc8, same arguments.
+extern char __cdecl fn_0074cfd7(int, void *);
+
+// FUNCTION: STARFLEETOP 0x00404e0f
+char fn_00404cb2_Ctype::fn_00404e0f(unsigned char c)
+{
+    return fn_0074cfd7(c, &m08);
 }
