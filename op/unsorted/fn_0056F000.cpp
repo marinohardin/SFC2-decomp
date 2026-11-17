@@ -237,3 +237,63 @@ bool fn_0056f283_owner::operator()(fn_0056f283_target *target)
 	const nDatabase::tID *current = (target->*m_member)();
 	return current->operator==(other) ? true : false;
 }
+
+// HYPOTHESIS: tShip is a database class; its members are not recovered.
+class tShip : public nDatabase::tDatabaseObject {};
+
+// HYPOTHESIS: the result container, likely std::vector<tShip>; its push_back is out of line.
+class fn_0056f2a4_results {
+public:
+	void push_back(const tShip &value);
+};
+
+// HYPOTHESIS: 0x0056f2a4 is the same LockingQueryDB member template as 0x0056f05f,
+// instantiated for tShip; this stand-in for tDatabase mirrors fn_0056f05f_owner.
+class fn_0056f2a4_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void MultiLock(fn_00571a7a_vector *objects, bool mustLockAll);
+	void fn_0056f2a4(const nDatabase::tQuery<tShip> &query, fn_0056f2a4_results *result, bool mustLockAll);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f2a4
+void fn_0056f2a4_owner::fn_0056f2a4(const nDatabase::tQuery<tShip> &query, fn_0056f2a4_results *result, bool mustLockAll)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tShip));
+#line 210
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	bool lockFailed = false;
+	fn_00571a7a_vector holdResult;
+	for (void **i = objects.begin(); i != objects.end() && !lockFailed; i++) {
+		tShip *pObject = static_cast<tShip *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			pObject->AddReference();
+			holdResult.fn_00571a69((void *)pObject);
+		}
+	}
+	guard.Leave();
+	if (holdResult.size() > 0) {
+		MultiLock(&holdResult, mustLockAll);
+		for (void **lockedObject = holdResult.begin(); lockedObject != holdResult.end(); lockedObject++) {
+			if (*lockedObject) {
+				tShip *pObject = static_cast<tShip *>((tDatabaseObject *)*lockedObject);
+				if (!pObject->IsDead())
+					result->push_back(*pObject);
+				pObject->RemoveReference();
+			}
+		}
+	}
+}
