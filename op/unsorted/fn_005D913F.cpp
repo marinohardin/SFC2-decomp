@@ -586,3 +586,21 @@ BOOL fn_005d9a6f(const char *param_1)
     sscanf(buf, "%x", &check);
     return (short)check == (short)((short)(value % 0xffff) ^ (short)0x9249);
 }
+
+// HYPOTHESIS: an object built from a string: the string at +0x00, a dword at +0x10 and a
+// byte at +0x14, both cleared.
+class fn_005d9b26_object
+{
+public:
+    fn_005d9b26_object(const std::string &name);
+
+    std::string m00;
+    long m10;
+    char m14;
+};
+
+// FUNCTION: STARFLEETOP 0x005d9b26
+fn_005d9b26_object::fn_005d9b26_object(const std::string &name)
+    : m00(name), m10(0), m14(0)
+{
+}
