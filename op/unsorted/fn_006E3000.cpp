@@ -404,6 +404,7 @@ class tObject_006e3640
 {
 public:
 	~tObject_006e3640();
+	std::list<tObject_005d6a66>::iterator FUN_006e3750(std::list<tObject_005d6a66>::iterator param_1);
 
 	std::list<tObject_005d6a66> mList;
 };
@@ -509,5 +510,15 @@ fn_0060ac82_tree::iterator tObject_006e36a0::FUN_006e36a0(fn_0060ac82_tree::iter
 	m14.FUN_005d9441(where);
 	entry->FUN_006dbc40();
 	delete entry;
+	return param_1;
+}
+
+// HYPOTHESIS: a member of the list's owner that erases one entry and returns
+// the next, as FUN_006e36a0 does for its tree; the original reloads the next
+// node inside the inlined erase, so the iterator is advanced before it.
+// FUNCTION: STARFLEETOP 0x006e3750
+std::list<tObject_005d6a66>::iterator tObject_006e3640::FUN_006e3750(std::list<tObject_005d6a66>::iterator param_1)
+{
+	mList.erase(param_1++);
 	return param_1;
 }
