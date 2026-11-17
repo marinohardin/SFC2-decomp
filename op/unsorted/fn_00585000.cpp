@@ -885,3 +885,18 @@ int fn_00585c60_owner::fn_00585cb1()
 	fAccess.Leave();
 	return value;
 }
+
+// HYPOTHESIS: a locked accessor returning a std::string member by value.
+class fn_00585ccc_owner {
+public:
+	std::string fn_00585ccc();
+	tOptex fAccess;
+	std::string fText;
+};
+
+// FUNCTION: STARFLEETOP 0x00585ccc
+std::string fn_00585ccc_owner::fn_00585ccc()
+{
+	tOptex::tGuard guard(&fAccess);
+	return fText;
+}
