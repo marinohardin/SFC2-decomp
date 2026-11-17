@@ -91,7 +91,7 @@ fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf* _S)
 class fn_00404184_Locale
 {
 public:
-    fn_00404184_Locale() throw();
+    fn_00404184_Locale();
     std::locale::_Locimp* m0;
 };
 
@@ -453,7 +453,7 @@ template class fn_00404230_ObjT<char>;
 class fn_00404aba_Locale
 {
 public:
-    fn_00404aba_Locale(const fn_00404aba_Locale& other) throw();
+    fn_00404aba_Locale(const fn_00404aba_Locale& other);
     fn_00402b90_Obj* m0;
 };
 
@@ -481,7 +481,7 @@ public:
 class fn_00404ad0_Locale
 {
 public:
-    fn_00404ad0_Locale& fn_00404ad0(const fn_00404ad0_Locale& other) throw();
+    fn_00404ad0_Locale& fn_00404ad0(const fn_00404ad0_Locale& other);
     fn_00404ad0_Impl* m0;
 };
 
