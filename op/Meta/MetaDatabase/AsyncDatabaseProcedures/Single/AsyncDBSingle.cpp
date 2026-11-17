@@ -130,10 +130,10 @@ public:
 	virtual void vfunction56( nDatabase::tID id, bool byCharacterID );
 	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
+	virtual void vfunction59( tShip* ship );	// HYPOTHESIS: a ship, by the pattern of slots 57 and 58; the assertion text decides.
 	fn_0056c414_Database* fDatabase;
 	std::string fField08;	// HYPOTHESIS: the name the database is saved under (0x0056db2a).
-	long fField18;	// HYPOTHESIS: the save interval in turns (0x0056db2a).
-}; };
+	long fField18; }; };	// HYPOTHESIS: the save interval in turns (0x0056db2a).
 // FUNCTION: STARFLEETOP 0x0056c414
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* campaignInfo )
 {
@@ -884,4 +884,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction58( tServCharacter*
 #line 1142
 	validate( character );
 	fDatabase->UnLock( character );
+}
+#line 889
+// FUNCTION: STARFLEETOP 0x0056e74a
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction59( tShip* ship )
+{
+#line 1152
+	validate( ship );
+	fDatabase->UnLock( ship );
 }
