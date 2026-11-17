@@ -130,6 +130,9 @@ public:
 class fn_0054340c_owner : public fn_0054340c_base, public nDataStore::tStreamable
 {
 public:
+	// HYPOTHESIS: 0x0053ffd7 default-constructs an element through an out-of-line constructor
+	// at 0x00541a72 called with one argument of 0; its type and default are guesses.
+	fn_0054340c_owner( long p = 0 );
 	virtual ~fn_0054340c_owner();
 	virtual void vfunction1();
 	virtual void vfunction2();
@@ -720,6 +723,27 @@ tInput& operator>>( tInput& input, std::vector< fn_0053f491_elem >& value )
 	for( int i = 0; i < size; i++ )
 	{
 		fn_0053f491_elem type;
+		input >> type;
+		value.push_back( type );
+	}
+
+	return input;
+}
+
+// FUNCTION: STARFLEETOP 0x0053ffd7
+template<>
+tInput& operator>>( tInput& input, std::vector< fn_0054340c_owner >& value )
+{
+	value.clear();
+
+	int32u size = 0;
+	input.Read( (byte*)&size, sizeof( size ) );
+
+	value.reserve( size );
+
+	for( int i = 0; i < size; i++ )
+	{
+		fn_0054340c_owner type;
 		input >> type;
 		value.push_back( type );
 	}
