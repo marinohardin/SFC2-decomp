@@ -541,3 +541,10 @@ tAllocatedClass* tClassAllocator<tShip>::mAllocate()
 
 	return pClass;
 }
+
+// FUNCTION: STARFLEETOP 0x0054685f
+template<>
+void tClassAllocator<tShip>::mAssignAllocID( iAllocatorID allocID )
+{
+	fAllocID = allocID;
+}
