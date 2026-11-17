@@ -706,3 +706,65 @@ void nDatabase::tQuery<tMetaMapDesc>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
+
+// HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete
+// here; the casts below stand for the original's static_casts (the base sits at offset 0).
+
+// HYPOTHESIS: the result container for tMetaMapDesc, as for 0x0056f4df.
+class fn_0056f9d7_results {
+public:
+	void push_back(const tMetaMapDesc &value);
+	void *m_allocator;
+	tMetaMapDesc *m_first;
+	tMetaMapDesc *m_last;
+};
+
+// HYPOTHESIS: the LockingQueryDB member template of 0x0056f05f, instantiated for tMetaMapDesc.
+class fn_0056f9d7_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void MultiLock(fn_00571a7a_vector *objects, bool mustLockAll);
+	void fn_0056f9d7(const nDatabase::tQuery<tMetaMapDesc> &query, fn_0056f9d7_results *result, bool mustLockAll);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f9d7
+void fn_0056f9d7_owner::fn_0056f9d7(const nDatabase::tQuery<tMetaMapDesc> &query, fn_0056f9d7_results *result, bool mustLockAll)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tMetaMapDesc));
+#line 210 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	bool lockFailed = false;
+	fn_00571a7a_vector holdResult;
+	for (void **i = objects.begin(); i != objects.end() && !lockFailed; i++) {
+		tDatabaseObject *pObject = (tDatabaseObject *)*i;
+		if (query((tMetaMapDesc *)pObject)) {
+			pObject->AddReference();
+			holdResult.fn_00571a69((void *)pObject);
+		}
+	}
+	guard.Leave();
+	if (holdResult.size() > 0) {
+		MultiLock(&holdResult, mustLockAll);
+		for (void **lockedObject = holdResult.begin(); lockedObject != holdResult.end(); lockedObject++) {
+			if (*lockedObject) {
+				tDatabaseObject *pObject = (tDatabaseObject *)*lockedObject;
+				if (!pObject->IsDead())
+					result->push_back(*(tMetaMapDesc *)pObject);
+				pObject->RemoveReference();
+			}
+		}
+	}
+}
