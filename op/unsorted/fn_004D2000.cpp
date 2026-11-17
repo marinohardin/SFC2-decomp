@@ -118,3 +118,35 @@ void fn_004d2206(unsigned long* dst, unsigned long* src)
 	if (dst != 0)
 		*dst = *src;
 }
+
+// HYPOTHESIS: a string-like constructor taking the empty literal; callees unnamed.
+extern "C" unsigned int strlen(const char*);
+
+// HYPOTHESIS: the callees are basic_string::_Tidy (0x005da20a) and basic_string::assign
+// (0x0040428e); a reduced stand-in of the standard class keeps this unit free of <string>.
+namespace std
+{
+	template <class T> struct char_traits;
+	template <class T> class allocator;
+	template <class C, class Tr, class A> class basic_string
+	{
+	public:
+		basic_string();
+		basic_string& assign(const char* s, unsigned int n);
+	private:
+		void _Tidy(bool built);
+		char m_al;
+	};
+}
+
+typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_004d2238_string;
+
+// FUNCTION: STARFLEETOP 0x004d2238
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string()
+{
+	char allocator;
+	m_al = allocator; // HYPOTHESIS: copy of an empty allocator base, uninitialised byte
+	_Tidy(false);
+	assign("", strlen(""));
+}
