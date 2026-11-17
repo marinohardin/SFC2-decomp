@@ -214,6 +214,7 @@ public:
 	void fn_0053a5b2( long param_1, int32 param_2 );
 	// HYPOTHESIS: the same for m_84.
 	void fn_0053a602( long param_1, int32 param_2 );
+	void fn_0053a655( double param_1 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
