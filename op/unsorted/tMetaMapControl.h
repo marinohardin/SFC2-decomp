@@ -17,6 +17,8 @@ struct fn_005e36cd_entry
 	// HYPOTHESIS: 0x005e3935 calls vtable slot 0 on an entry with the control's +0x1c8 and uses
 	// the answer as an index.
 	virtual int vfunction0( int param_1 );
+	// HYPOTHESIS: 0x005e45a0, the vector's destructor, calls 0x005e4638 on each record.
+	~fn_005e36cd_entry();
 
 	unsigned char field_4[ 0x14 - 0x4 ];
 	int field_14;

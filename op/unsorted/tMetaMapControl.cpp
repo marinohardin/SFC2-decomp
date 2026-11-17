@@ -864,3 +864,15 @@ void tMetaMapControl::vfunction43( int param_1 )
 {
 	field_74.fn_0067f090( this, 2, 0 );
 }
+
+// MATCH-ONLY: the library's vector destructor for the records 0x005e32d7 and its neighbours
+// fill; the original is the template in the library header. It is written out here, line for
+// line, so that it has source lines in this unit.
+// FUNCTION: STARFLEETOP 0x005e45a0
+template<>
+std::vector<fn_005e36cd_entry>::~vector()
+{
+	_Destroy( _First, _Last );
+	allocator.deallocate( _First, _End - _First );
+	_First = 0, _Last = 0, _End = 0;
+}
