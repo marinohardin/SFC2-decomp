@@ -153,3 +153,20 @@ unsigned int c_00546027::fn_00546264()
 {
     return fn_005462d7() & 1;
 }
+
+// HYPOTHESIS: the object behind 0x0054626d keeps a flag word at +0x430; its class is not known.
+class c_0054626d
+{
+public:
+    bool fn_0054626d();
+
+    char field_0[0x430];
+    unsigned int field_430_0 : 1;
+    unsigned int field_430_1 : 1;
+};
+
+// FUNCTION: STARFLEETOP 0x0054626d
+bool c_0054626d::fn_0054626d()
+{
+    return field_430_1 ? true : false;
+}
