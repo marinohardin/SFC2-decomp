@@ -138,6 +138,8 @@ public:
 	void fn_004688ee(c_00468677_source *control, const char *name, const char *value);
 	// HYPOTHESIS: a member; it hides the four connection panels.
 	void fn_00468bbb();
+	// HYPOTHESIS: a member; it disables three controls.
+	void fn_00468beb();
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -551,6 +553,14 @@ void tState_GameConnections::fn_00468bbb()
 	fn_004d3340(g_00844ea4);
 	fn_004d3340(g_00844eac);
 	fn_004d3340(g_00844eb4);
+}
+
+// FUNCTION: STARFLEETOP 0x00468beb
+void tState_GameConnections::fn_00468beb()
+{
+	fn_004d34c5(0x10011, 0);
+	fn_004d34c5(0x10024, 0);
+	fn_004d34c5(0x10025, 0);
 }
 
 }
