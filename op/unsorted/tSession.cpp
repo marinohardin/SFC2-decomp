@@ -111,6 +111,7 @@ public:
 	void	fn_00690e70();
 	void	fn_00690fb0();
 	void	fn_00690fc0();
+	void	fn_00691080();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -550,5 +551,13 @@ void tHtmlParser::fn_00690fc0()
 			fn_0068f480();
 	}
 	fn_006910a0( align );
+	f_92 = ' ';
+}
+
+// FUNCTION: STARFLEETOP 0x00691080
+void tHtmlParser::fn_00691080()
+{
+	f_40->fn_0068db60();
+	fn_00691270();
 	f_92 = ' ';
 }
