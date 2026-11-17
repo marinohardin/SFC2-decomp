@@ -2431,6 +2431,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436268": {
+   "name": "tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::tValueCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>",
+   "symbol": "??0?$tCookieManager@VtPathIterator@@VtPathIterParent@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
