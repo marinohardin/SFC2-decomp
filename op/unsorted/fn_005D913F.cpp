@@ -598,6 +598,7 @@ class fn_005d9b26_object
 public:
     fn_005d9b26_object(const std::string &name);
     void fn_005d9b58(const char *param_1);
+    void fn_005d9bb8(const std::string &param_1);
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -619,4 +620,12 @@ void fn_005d9b26_object::fn_005d9b58(const char *param_1)
 {
     m10 = new fn_0046de63_object(param_1, g_00c38970, 0);
     m14 = fn_005d9a6f(param_1) != FALSE;
+}
+
+// FUNCTION: STARFLEETOP 0x005d9bb8
+void fn_005d9b26_object::fn_005d9bb8(const std::string &param_1)
+{
+    m14 = 0;
+    m10 = 0;
+    fn_005d9b58(param_1.c_str());
 }
