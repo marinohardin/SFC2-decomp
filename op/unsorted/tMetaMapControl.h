@@ -20,7 +20,11 @@ struct fn_005e36cd_entry
 {
 	unsigned char field_0[ 0x14 ];
 	int field_14;
-	unsigned char field_18[ 0x4c - 0x18 ];
+	unsigned char field_18[ 0x2c - 0x18 ];
+	// HYPOTHESIS: the point 0x005e374b draws at when it is given none.
+	short field_2c;
+	short field_2e;
+	unsigned char field_30[ 0x4c - 0x30 ];
 	int field_4c;
 	int field_50;
 	unsigned char field_54[ 0x64 - 0x54 ];
@@ -66,8 +70,11 @@ public:
 	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
 	void fn_005e370c( fn_005e36cd_entry *entry, int param_2 );
 	// HYPOTHESIS: 0x005e36cd passes the entry, its second argument, the element of the vector
-	// at +0x1a4 the entry's +0x14 selects, and three -1.
-	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, int param_3, int param_4, int param_5, int param_6 );
+	// at +0x1a4 the entry's +0x14 selects, and three -1. It draws that image at a point (the
+	// entry's own when both are -1) in a colour (0x005e3935's when -1), red, green and blue bytes.
+	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
+	unsigned long fn_005e3935( fn_005e36cd_entry *entry );
+	void fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color );
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
@@ -80,8 +87,8 @@ public:
 	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.
 	std::vector<int> field_184;
 	std::vector<int> field_194;
-	std::vector<int> field_1a4;
-	std::vector<int> field_1b4;
+	std::vector<c_tScrollBar_FieldA8 *> field_1a4;
+	std::vector<c_tScrollBar_FieldA8 *> field_1b4;
 	int field_1c4;
 	int field_1c8;
 	unsigned char field_1cc[ 0x1d4 - 0x1cc ];

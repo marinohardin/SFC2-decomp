@@ -54,6 +54,9 @@ public:
 };
 
 fn_0060a54d_class *fn_00607d61();
+// HYPOTHESIS: makes the drawing colour from red, green and blue (0x005e374b passes the bytes of
+// a 0x00rrggbb value unmasked).
+int fn_00607906( int red, int green, int blue );
 
 // FUNCTION: STARFLEETOP 0x005e3148
 void tMetaMapControl::fn_005e3148( int param_1 )
@@ -284,5 +287,25 @@ void tMetaMapControl::fn_005e370c( fn_005e36cd_entry *entry, int param_2 )
 	if ( field_1b4.size() != 0 )
 	{
 		fn_005e374b( entry, param_2, field_1b4[ entry->field_14 ], -1, -1, -1 );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005e374b
+void tMetaMapControl::fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color )
+{
+	if ( image != 0 )
+	{
+		if ( x == -1 && y == -1 )
+		{
+			x = entry->field_2c;
+			y = entry->field_2e;
+		}
+		if ( color == 0xffffffff )
+		{
+			color = fn_005e3935( entry );
+		}
+		fn_005e3a37( entry, &color );
+		// HYPOTHESIS: param_2 (the value 0x005e32d7 and its siblings pass down) is the draw area.
+		field_14->fn_00675280( image, x, y, (const tRect *)param_2, fn_00607906( color >> 16, color >> 8, color ), 1 );
 	}
 }
