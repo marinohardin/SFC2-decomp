@@ -153,6 +153,7 @@ class tStringMessage : public C_0060c486
 {
 public:
     tStringMessage(int kind, int entry);
+    tStringMessage(int kind, tString &text);
     char m_0c[0x30];
 };
 
@@ -246,4 +247,11 @@ void C_00c3a80c::fn_0060c68a(int entry)
 void C_00c3a80c::fn_0060c6d5(int entry)
 {
     m_10 = fn_0060c675(m_10, new tStringMessage(6, entry));
+}
+
+// FUNCTION: STARFLEETOP 0x0060c720
+// HYPOTHESIS: adds a line of kind 7 holding text at the head of the list at +0x0c.
+void C_00c3a80c::fn_0060c720(tString &text)
+{
+    m_0c = fn_0060c675(m_0c, new tStringMessage(7, text));
 }
