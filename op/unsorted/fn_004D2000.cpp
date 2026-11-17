@@ -453,25 +453,62 @@ void fn_004d2420_holder::fn_004d25af(int value)
 // HYPOTHESIS: the 0x64-byte object at tPanelMgr+0x100 (declared as fn_004d290d_object inside
 // tPanelMgr.cpp, which cannot be included); this reduced copy only carries what its destructor
 // (0x004d2636) touches: a base part, two 0x14-byte parts, then the 0x004d2353 and 0x004d2420 holders.
+// HYPOTHESIS: the three part maps are tree containers; 0x0052aad3 and 0x0052e144 are their
+// iterator increments (two node layouts), the 0x1c-node increment shared by two maps.
+struct fn_tree_node_1c
+{
+	fn_tree_node_1c* m_0x00;
+	char m_0x04[0x18];
+	void* m_0x1c;
+};
+
+struct fn_tree_iterator_1c
+{
+	void fn_0052aad3();
+	fn_tree_node_1c* m_0x00;
+};
+
+struct fn_tree_node_10
+{
+	fn_tree_node_10* m_0x00;
+	char m_0x04[0xc];
+	fn_004d2353_holder* m_0x10;
+};
+
+struct fn_tree_iterator_10
+{
+	void fn_0052e144();
+	fn_tree_node_10* m_0x00;
+};
+
 class fn_00460b03_part
 {
 public:
 	~fn_00460b03_part();
-	char m_0x00[0x14];
+	void fn_004d2bf8();
+	char m_0x00[4];
+	fn_tree_node_10* m_0x04; // head node
+	char m_0x08[0xc];
 };
 
 class fn_00460b3b_part
 {
 public:
 	~fn_00460b3b_part();
-	char m_0x00[0x14];
+	void fn_004d2c0c();
+	char m_0x00[4];
+	fn_tree_node_1c* m_0x04; // head node
+	char m_0x08[0xc];
 };
 
 class fn_00460acb_base
 {
 public:
 	~fn_00460acb_base();
-	char m_0x00[0x14];
+	void fn_004d2be4();
+	char m_0x00[4];
+	fn_tree_node_1c* m_0x04; // head node
+	char m_0x08[0xc];
 };
 
 class fn_004d2636_object : public fn_00460acb_base
@@ -489,6 +526,41 @@ public:
 fn_004d2636_object::~fn_004d2636_object()
 {
 	fn_004d290d();
+}
+
+// FUNCTION: STARFLEETOP 0x004d290d
+void fn_004d2636_object::fn_004d290d()
+{
+	fn_tree_iterator_1c it1;
+	it1.m_0x00 = m_0x04->m_0x00;
+	while (it1.m_0x00 != m_0x04)
+	{
+		fn_004d2265_holder* holder = (fn_004d2265_holder*)it1.m_0x00->m_0x1c;
+		if (holder != 0)
+			delete holder;
+		it1.fn_0052aad3();
+	}
+	fn_004d2be4();
+	fn_tree_iterator_10 it2;
+	it2.m_0x00 = m_0x14.m_0x04->m_0x00;
+	while (it2.m_0x00 != m_0x14.m_0x04)
+	{
+		fn_004d2353_holder* holder = it2.m_0x00->m_0x10;
+		if (holder != 0)
+			delete holder;
+		it2.fn_0052e144();
+	}
+	m_0x14.fn_004d2bf8();
+	fn_tree_iterator_1c it3;
+	it3.m_0x00 = m_0x28.m_0x04->m_0x00;
+	while (it3.m_0x00 != m_0x28.m_0x04)
+	{
+		fn_004d2420_holder* holder = (fn_004d2420_holder*)it3.m_0x00->m_0x1c;
+		if (holder != 0)
+			delete holder;
+		it3.fn_0052aad3();
+	}
+	m_0x28.fn_004d2c0c();
 }
 
 #include "unsorted/tVisObject.h"
