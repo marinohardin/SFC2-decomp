@@ -201,6 +201,8 @@ public:
 	void fn_0053a4ae( int param_1, int param_2 );
 	// HYPOTHESIS: sets the terrain type (the TerrainType column) under the lock.
 	void fn_0053a4fe( int32 param_1 );
+	// HYPOTHESIS: sets the planet type (the PlanetType column) under the lock.
+	void fn_0053a522( int32 param_1 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
