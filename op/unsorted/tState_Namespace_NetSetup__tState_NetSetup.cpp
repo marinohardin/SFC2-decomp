@@ -11,6 +11,7 @@
 #include "unsorted/tNetControl.h"
 #include "unsorted/tApplication.h"
 #include <string.h>
+#include "unsorted/tObject_0092deb4.h"
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
@@ -54,6 +55,7 @@ public:
 
 	void fn_004764bd();
 	void fn_004764ed();
+	bool fn_00476678();
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
 	void fn_00476aee(int value, const char *key);
 	void fn_00477440();
@@ -68,7 +70,8 @@ public:
 	char m12[2];
 	int m14;
 	unsigned char m18;
-	char m19[0x43];
+	char m19[3];
+	tValueI< tString > m1c;
 	tValueI< tString > m5c;
 	char m9c[0x140];
 	int m1dc;
@@ -231,6 +234,16 @@ void tState_NetSetup::fn_004764ed()
 			m11 = 1;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00476678
+bool tState_NetSetup::fn_00476678()
+{
+	tString value = m1c;
+	gObject_0092deb4->vfunction4(value);
+	bool result = gNetControl.fn_004325a9(1);
+	gNetControl.fn_0043289d();
+	return result;
 }
 
 }	// namespace tState_Namespace_NetSetup
