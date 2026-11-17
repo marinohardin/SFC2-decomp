@@ -266,3 +266,31 @@ void fn_0040d924(int* p, fn_0040d63f_Buf& buf)
         buf.fn_0040d867(&b, 1, 0);
     }
 }
+
+// HYPOTHESIS: reader for the encoding written by fn_0040d924.
+// FUNCTION: STARFLEETOP 0x0040d9bf
+void fn_0040d9bf(unsigned int* p, fn_0040d63f_Buf& buf)
+{
+    unsigned char b[4];
+    b[2] = 0;
+    buf.fn_0040d897(&b[3], 1, 0);
+    *p = b[3] & 0x3f;
+    if ((b[3] & 0x40) > 0) {
+        b[2] = 1;
+    }
+    if ((b[3] & 0x80) > 0) {
+        int shift = 0x40;
+        while (1) {
+            buf.fn_0040d897(&b[3], 1, 0);
+            if ((b[3] & 0x80) <= 0) {
+                break;
+            }
+            *p += (b[3] & 0x7f) * shift;
+            shift <<= 7;
+        }
+        *p += (b[3] & 0x7f) * shift;
+    }
+    if (b[2] == 1) {
+        *p = -*p;
+    }
+}
