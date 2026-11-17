@@ -205,7 +205,7 @@ public:
 	virtual void fn_vtbl_34();
 	virtual int fn_vtbl_38( std::vector< c_0043127f_src * > *list, int a, int b );
 	virtual int fn_vtbl_3C();
-	virtual void fn_vtbl_40();
+	virtual bool fn_vtbl_40();	// HYPOTHESIS: 0x00468c49 tests the result in al
 	virtual void fn_vtbl_44();
 	virtual void fn_vtbl_48();
 	virtual void fn_vtbl_4C();
@@ -532,9 +532,9 @@ int tNetControl::fn_004317bd()
 }
 
 // FUNCTION: STARFLEETOP 0x004317c3
-void tNetControl::fn_004317c3()
+bool tNetControl::fn_004317c3()
 {
-	field_8D00->fn_vtbl_40();
+	return field_8D00->fn_vtbl_40();
 }
 
 // FUNCTION: STARFLEETOP 0x004317ce

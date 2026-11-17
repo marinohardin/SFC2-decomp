@@ -44,7 +44,7 @@ public:
 	void fn_00431708();
 	void fn_00431ee0();
 	int fn_004317bd();
-	void fn_004317c3();
+	bool fn_004317c3();	// HYPOTHESIS: returns a flag (tested in al)
 	void fn_004317ce( int a, int b );
 	void fn_004317eb( int a, int b );
 	void fn_00431808( int a );
@@ -60,11 +60,14 @@ public:
 	std::vector< c_004329af_entry > *fn_004329af();
 	void fn_0043258a( int n );
 	bool fn_004325a9( int n );	// HYPOTHESIS: returns a flag (kept in bl)
-	// HYPOTHESIS: the string is passed by reference; the meaning of the int is not known.
-	void fn_004326aa( const tString &s, int n );
+	// HYPOTHESIS: the string is passed by reference, then an optional second string (0x00468c49
+	// passes the modem address, 0x0046860d none); returns a flag (stored from al).
+	bool fn_004326aa( const tString &s, const tString *t );
 	// HYPOTHESIS: (name, value, then three strings); all passed by reference after the first.
 	void fn_004327a7( const char *name, const tString &a, const tString &b, const tString &c, const tString &d );
 	void fn_0043289d();
+	int fn_00431e6e();	// HYPOTHESIS: returns the next connection event, 0 when none
+	void fn_00433c46();
 	void fn_0043290e( const tString &s );	// HYPOTHESIS: the string is passed by reference
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""

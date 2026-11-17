@@ -11,6 +11,7 @@
 #include "unsorted/c_0046aa10_msg.h"
 #include <vector>
 #include "unsorted/tObject_0092deb4.h"
+#include "Tiger/tFormatStr.h"
 
 // The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
 extern char *g_00844e78;
@@ -66,6 +67,17 @@ public:
 	const char *fn_0060f6d0();
 	char m00[0xc];
 };
+
+// HYPOTHESIS: pointers to the names "cCreateGame", "cJoinGame" and "multiplayer".
+extern const char *g_00844eb8;
+extern const char *g_00844ebc;
+extern const char *g_00844e90;
+// HYPOTHESIS: cdecl; the meaning of the arguments is not known.
+void fn_004d34e8(const char *name, const char *group, int n);
+// HYPOTHESIS: the current time, and the modem state's flag and time of its last progress dot.
+extern double g_00c7c148;
+extern char g_0090daa8;
+extern double g_0090dab0;
 
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
@@ -143,6 +155,11 @@ public:
 	// HYPOTHESIS: a member; it enables the controls fn_00468beb disables, the third only for
 	// the control id 0x1001c.
 	void fn_00468c13(int id);
+	// HYPOTHESIS: a member; it polls the modem connection and shows its progress.
+	void fn_00468c49();
+	bool fn_0047685b();
+	void fn_004695c4(const char *name, int n);
+	void fn_00469e0c(const char *name);
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -573,6 +590,106 @@ void tState_GameConnections::fn_00468c13(int id)
 	fn_004d34c5(0x10025, 1);
 	if (id == 0x1001c)
 		fn_004d34c5(0x10011, 1);
+}
+
+// FUNCTION: STARFLEETOP 0x00468c49
+void tState_GameConnections::fn_00468c49()
+{
+	if (g_0090dab0 == 0.0)
+		g_0090dab0 = g_00c7c148;
+
+	if (m1e4 == 0x10009 && !gNetControl.fn_004317c3())
+	{
+		if (!m12[0])
+		{
+			tString address;
+			fn_00468677(m1e0, address);
+			tString number = m11c;
+			m12[0] = gNetControl.fn_004326aa(number, &address);
+		}
+
+		tString status = m5c;
+		tStringGroupTag *tag = new tStringGroupTag("ModemStatus");
+
+		int event;
+		while ((event = gNetControl.fn_00431e6e()) != 0)
+		{
+			switch (event)
+			{
+			case 1:
+				status = tag->mGetString(3);
+				m19 = 1;
+				break;
+			case 2:
+				status += tag->mGetString(1);
+				status += "\n";
+				break;
+			case 3:
+			{
+				tString address;
+				fn_00468677(m1e0, address);
+				tFormatStr format;
+				format.mTag("phoneNum", address.mCharStr());
+				tString text = tag->mGetString(0);
+				tString result;
+				format.mGenFormattedStr(result, text);
+				result += "\n";
+				status = result;
+				break;
+			}
+			case 4:
+				if (!g_0090daa8)
+				{
+					status += tag->mGetString(2);
+					g_0090daa8 = 1;
+				}
+				else
+				{
+					double now = g_00c7c148;
+					if (now > g_0090dab0 + 1000000.0)
+					{
+						status += ".";
+						g_0090dab0 = g_00c7c148;
+					}
+				}
+				break;
+			case 5:
+				status = tag->mGetString(4);
+				m12[0] = 1;
+				fn_004d34e8(g_00844eb8, g_00844eac, 0);
+				fn_004d34e8(g_00844ebc, g_00844eac, 0);
+				fn_004d346f(g_00844ec0, g_00844eac);
+				break;
+			}
+		}
+
+		if (tag)
+			delete tag;
+
+		m5c = status;
+
+		if (m19 && g_00844ec8 >= 0)
+		{
+			g_0090daa8 = 0;
+			g_0090dab0 = 0.0;
+			if (!fn_0047685b())
+			{
+				if (g_00844ec8-- > 0)
+					fn_004695c4("JoinStatus", 0);
+				else
+				{
+					fn_004695c4("JoinStatus", 3);
+					fn_004d34e8(g_00844eb8, g_00844eac, 0);
+					fn_004d34e8(g_00844ebc, g_00844eac, 0);
+					fn_004d346f(g_00844ec0, g_00844eac);
+					gNetControl.fn_00433c46();
+					g_00844ec8 = 10;
+				}
+			}
+			else
+				fn_00469e0c(g_00844e90);
+		}
+	}
 }
 
 }
