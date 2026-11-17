@@ -805,3 +805,12 @@ case_4b:
 	}
 	return result;
 }
+
+#include "unsorted/tShipSystemsExt.h"
+
+// FUNCTION: STARFLEETOP 0x0044c951
+tIndividualShipSystemList* tShipSystemsExt::vfunction171()
+{
+	static fn_0040ce21_type marker("Ask Beck!");
+	return &m04;
+}
