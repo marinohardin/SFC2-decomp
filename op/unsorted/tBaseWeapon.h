@@ -195,7 +195,7 @@ public:
     // HYPOTHESIS: appends a pair of shorts to a list of at most six at offset 0x114.
     virtual bool vfunction128(short param_1, short param_2);
     virtual void vfunction129();
-    virtual void vfunction130();
+    virtual bool vfunction130();
     virtual void vfunction131();
     // HYPOTHESIS: 0x004e28fc tests slot 132 (offset 0x20c) with 0 and reads slot 133
     // (offset 0x210) as a signed status, zero when the weapon may fire.

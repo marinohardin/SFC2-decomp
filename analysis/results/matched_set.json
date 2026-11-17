@@ -6733,6 +6733,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d7fa3": {
+   "name": "tBaseWeapon::vfunction130",
+   "symbol": "?vfunction130@tBaseWeapon@@UAE_NXZ",
+   "unit": "unsorted/tBaseWeapon.cpp",
+   "size": 95,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
