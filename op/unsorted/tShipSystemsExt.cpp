@@ -86,6 +86,7 @@ public:
     virtual int vfunction93();
     virtual int vfunction95();
     virtual int vfunction96();
+    virtual int vfunction97();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -650,4 +651,12 @@ int tShipSystemsExt::vfunction95()
 int tShipSystemsExt::vfunction96()
 {
     return *(int*)( m584 + 0x90 );
+}
+
+// HYPOTHESIS: returns the pointer at +0x94 of the block at m584 (+0x618), the one
+// vfunction79..80 read through.
+// FUNCTION: STARFLEETOP 0x00448a85
+int tShipSystemsExt::vfunction97()
+{
+    return *(int*)( m584 + 0x94 );
 }
