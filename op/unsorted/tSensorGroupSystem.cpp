@@ -50,6 +50,7 @@ public:
     int fn_0043f023(struct vfunction33_result* owner, tObject_0042496f* target);
     // HYPOTHESIS: a value for one map cell; 0x0043f023 sums it along a line of cells.
     int fn_0043f618(int x, int y);
+    virtual void vfunction39(float param_1);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -81,7 +82,9 @@ public:
     char field_18c;
     char pad18d[0x190 - 0x18d];
     float field_190;
-    char pad194[0x1a0 - 0x194];
+    char pad194[0x198 - 0x194];
+    // HYPOTHESIS: time accumulated by 0x0043f1c1 between sensor updates.
+    double field_198;
     // HYPOTHESIS: the entity the owner's slot 11 names, as 0x0043eee8 last found it.
     tPhysicalEntity* field_1a0;
     char pad1a4[0x1d9 - 0x1a4];
@@ -1300,4 +1303,32 @@ int tSensorGroupSystem::fn_0043f023(vfunction33_result* owner, tObject_0042496f*
         }
     }
     return sum;
+}
+
+// FUNCTION: STARFLEETOP 0x0043f1c1
+void tSensorGroupSystem::vfunction39(float param_1)
+{
+    field_50 += param_1;
+    double now = g_00c7c148;
+    if (now - field_48 >= 100000.0)
+    {
+        fn_0090be9c_type* source = g_0090be9c;
+        field_48 = (double)source->vfunction7() / (double)source->field_20 * 100000.0 + now;
+        param_1 = field_50;
+        field_50 = 0.0f;
+        int column = field_80->fn_0043da08();
+        fn_0043e366_part* part = field_80;
+        int value = g_0079bfc0[part->vfunction11() - part->vfunction10()][column][0];
+        field_198 += param_1;
+        field_164 = value;
+        if (field_198 > 0.025f)
+        {
+            field_198 = 0.0;
+            fn_0043ec81();
+        }
+        tObject_0042496f* owner = (tObject_0042496f*)field_2c->vfunction108();
+        if (owner != 0 && owner->vfunction32() == true)
+            fn_0043e09e();
+        fn_0043e201(param_1);
+    }
 }
