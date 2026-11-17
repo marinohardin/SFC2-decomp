@@ -246,6 +246,7 @@ public:
 	void FUN_0042a8b7( int value );
 	std::string FUN_0042a92f();
 	const std::string& FUN_0042a99a();
+	db::tID FUN_0042a9ba();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -440,4 +441,14 @@ const std::string& fn_0042a480_object::FUN_0042a99a()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_1c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a9ba
+db::tID fn_0042a480_object::FUN_0042a9ba()
+{
+	// As in 0x0042a92f, the original keeps no unwind state for the returned tID and its frame is
+	// 8 bytes smaller; this form tracks it, which is the remaining difference.
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_2c;
 }
