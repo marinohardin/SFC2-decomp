@@ -194,7 +194,7 @@ void tMetaMapControl::fn_005e32d7( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( ( it2->field_4c & 0x80 ) || ( it2->field_4c & 0x300 ) )
-			fn_005e37c4( it2, param_1, it2->field_50 );
+			fn_005e37c4( it2, param_1, *(int *)&it2->field_50 );
 	}
 }
 
@@ -225,7 +225,7 @@ void tMetaMapControl::fn_005e33f4( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( ( it2->field_4c & 0x80 ) || ( it2->field_4c & 0x300 ) )
-			fn_005e37d8( it2, param_1, it2->field_50 );
+			fn_005e37d8( it2, param_1, *(int *)&it2->field_50 );
 	}
 }
 
@@ -256,7 +256,7 @@ void tMetaMapControl::fn_005e3511( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( it2->field_14 == 5 )
-			fn_005e37d8( it2, param_1, it2->field_50 );
+			fn_005e37d8( it2, param_1, *(int *)&it2->field_50 );
 	}
 }
 
@@ -898,4 +898,9 @@ std::vector<c_tScrollBar_FieldA8 *>::iterator std::vector<c_tScrollBar_FieldA8 *
 	_Destroy( _S, end() );
 	_Last = _S;
 	return ( _F );
+}
+
+// FUNCTION: STARFLEETOP 0x005e4638
+fn_005e36cd_entry::~fn_005e36cd_entry()
+{
 }

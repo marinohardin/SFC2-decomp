@@ -5,6 +5,8 @@
 #include <vector>
 
 #include "unsorted/tValueBtn.h"
+#include "unsorted/tMetaMapHex.h"
+#include "Common/Database/DatabaseID.h"
 
 class tCompassRose;
 class fn_005eb3c5_class;
@@ -17,12 +19,16 @@ struct fn_005e36cd_entry
 	// HYPOTHESIS: 0x005e3935 calls vtable slot 0 on an entry with the control's +0x1c8 and uses
 	// the answer as an index.
 	virtual int vfunction0( int param_1 );
-	// HYPOTHESIS: 0x005e45a0, the vector's destructor, calls 0x005e4638 on each record.
+	// HYPOTHESIS: 0x005e45a0, the vector's destructor, calls 0x005e4638 on each record. That
+	// code stores no vtable, so the original probably declares no destructor; an implicit one
+	// cannot be claimed, so this declared one (which stores the vtable) stands in for it.
 	~fn_005e36cd_entry();
 
-	unsigned char field_4[ 0x14 - 0x4 ];
+	// The destructor 0x005e4638 destroys a tID here, a tHexPoint at +0x18 and the container of
+	// 0x0053a6cc at +0x50.
+	nDatabase::tID field_4;
 	int field_14;
-	unsigned char field_18[ 0x2c - 0x18 ];
+	tHexPoint field_18;
 	// HYPOTHESIS: the point 0x005e374b draws at when it is given none.
 	short field_2c;
 	short field_2e;
@@ -33,8 +39,9 @@ struct fn_005e36cd_entry
 	int field_44;
 	unsigned char field_48[ 0x4c - 0x48 ];
 	int field_4c;
-	int field_50;
-	unsigned char field_54[ 0x64 - 0x54 ];
+	// HYPOTHESIS: 0x005e32d7 and its siblings read the first dword of this as the colour they
+	// pass on; what lies there is not known.
+	fn_0053a6cc_map field_50;
 };
 
 // HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one
