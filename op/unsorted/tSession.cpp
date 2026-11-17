@@ -111,3 +111,13 @@ fn_0068ff60_Root *fn_00690300( iBasicStringElement *a, tString &b, fn_0068ff60_R
 {
 	return fn_0068ff60( a, b, c, dir );
 }
+
+// FUNCTION: STARFLEETOP 0x00690340
+// HYPOTHESIS: the same wrapper taking the text as a narrow string.
+fn_0068ff60_Root *fn_00690340( char *a, tString &b, fn_0068ff60_Root *c, tDir dir )
+{
+	tString	text;
+
+	text = a;
+	return fn_00690300( text.mWideStr(), b, c, dir );
+}
