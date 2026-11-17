@@ -301,6 +301,7 @@ public:
     void fn_0060ca20();
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
+    C_00472518 &fn_0060c97e();
     int m_00;
     int m_04;
     std::vector<int> m_08;
@@ -356,4 +357,11 @@ C_00472518 &C_00472518::operator=(const C_00472518 &other)
     for (i = 0; i < 18; i++)
         m_434[i] = other.m_434[i];
     return *this;
+}
+
+// HYPOTHESIS: returns the member at +0x24 (lea eax, [ecx+0x24]); reference or pointer is unknown.
+// FUNCTION: STARFLEETOP 0x0060c97e
+C_00472518 &C_0060c7dc::fn_0060c97e()
+{
+    return m_24;
 }
