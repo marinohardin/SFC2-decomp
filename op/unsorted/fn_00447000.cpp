@@ -134,14 +134,25 @@ struct tObject_0044715d_table
 	tObject_0044715d_row field_0x10[7];
 };
 
+// HYPOTHESIS: three counters, each with a maximum, a second value and a current value.
+struct tObject_00447415_limits
+{
+	char field_0x0[0x10c];
+	char field_0x10c[3];
+	char field_0x10f[3];
+	char field_0x112[3];
+};
+
 // HYPOTHESIS: the class owning 0x0044715d is not known; only its table pointer at 0xec is read.
 class c_0044715d
 {
 public:
 	void fn_0044715d(tObject_0042496f *ship);
 	void fn_004472bc(tObject_0042496f *ship);
+	int fn_00447415(int side, int kind);
 
-	char field_0x0[0xec];
+	char field_0x0[0xe8];
+	tObject_00447415_limits *field_0xe8;
 	tObject_0044715d_table *field_0xec;
 };
 
@@ -213,4 +224,46 @@ void c_0044715d::fn_004472bc(tObject_0042496f *ship)
 		}
 		while (i--);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00447415
+int c_0044715d::fn_00447415(int side, int kind)
+{
+	switch (side)
+	{
+	case 0:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[0] = (field_0xe8->field_0x112[0] < 0 || field_0xe8->field_0x112[0] > field_0xe8->field_0x10c[0]) ? 0 : field_0xe8->field_0x112[0];
+		case 1:
+			return field_0xe8->field_0x10f[0];
+		case 2:
+			return field_0xe8->field_0x10c[0];
+		}
+		break;
+	case 1:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[1] = (field_0xe8->field_0x112[1] < 0 || field_0xe8->field_0x112[1] > field_0xe8->field_0x10c[1]) ? 0 : field_0xe8->field_0x112[1];
+		case 1:
+			return field_0xe8->field_0x10f[1];
+		case 2:
+			return field_0xe8->field_0x10c[1];
+		}
+		break;
+	case 2:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[2] = (field_0xe8->field_0x112[2] < 0 || field_0xe8->field_0x112[2] > field_0xe8->field_0x10c[2]) ? 0 : field_0xe8->field_0x112[2];
+		case 1:
+			return field_0xe8->field_0x10f[2];
+		case 2:
+			return field_0xe8->field_0x10c[2];
+		}
+		break;
+	}
+	return 0;
 }
