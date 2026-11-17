@@ -111,3 +111,10 @@ tSingleAccessWrapper_005391b0::~tSingleAccessWrapper_005391b0()
 {
 	Delete();
 }
+
+// FUNCTION: STARFLEETOP 0x004d2206
+void fn_004d2206(unsigned long* dst, unsigned long* src)
+{
+	if (dst != 0)
+		*dst = *src;
+}
