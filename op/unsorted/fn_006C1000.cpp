@@ -133,3 +133,9 @@ void fn_006c15a0(fn_006c1510_pool *pool, int index)
 	if (pool->field_10 != 0)
 		pool->field_10(fn_006c15c0(pool, index));
 }
+
+// FUNCTION: STARFLEETOP 0x006c15c0
+void *fn_006c15c0(fn_006c1510_pool *pool, int index)
+{
+	return (char *)pool->field_14 + pool->field_08 * index;
+}
