@@ -899,3 +899,23 @@ void fn_00460e13_class::str(const std::string &_Newstr)
     _Tidy();
     _Init(_Newstr.c_str(), _Newstr.size(), _Strmode);
 }
+
+// HYPOTHESIS: the tree's value sits after the three links; 0x005f762d is its destructor. The
+// value type is not identified.
+class fn_005f762d_object
+{
+public:
+    ~fn_005f762d_object();
+};
+
+// FUNCTION: STARFLEETOP 0x00460e3e
+void fn_00460acb_class::fn_00460e3e(fn_00460acb_node *x)
+{
+    for (fn_00460acb_node *y = x; y != m_8; x = y)
+    {
+        fn_00460e3e(y->_Right);
+        y = y->_Next;
+        ((fn_005f762d_object *)(x + 1))->~fn_005f762d_object();
+        operator delete(x);
+    }
+}
