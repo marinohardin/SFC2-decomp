@@ -100,6 +100,7 @@ public:
 	int fn_0042753a( int aIndex );
 	void fn_0042755c( int aIndex, int aArg1, int aArg2 );
 	int fn_00427581( int aIndex, int aOther );
+	int fn_004275ae( tID aID, tID aOther );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -148,4 +149,17 @@ int tObject_0042750f::fn_00427581( int aIndex, int aOther )
 	if (aIndex == aOther)
 		return 1;
 	return entry->field_0x10[aOther];
+}
+
+// HYPOTHESIS: 0x00427581 for the teams of the two entities with the IDs; zero when either
+// entity does not exist.
+// FUNCTION: STARFLEETOP 0x004275ae
+int tObject_0042750f::fn_004275ae( tID aID, tID aOther )
+{
+	tEntity *entity = gObject_008e1060.fn_lookup( aID );
+	tEntity *other = gObject_008e1060.fn_lookup( aOther );
+	// MATCH-ONLY: the local makes the first team load into a register before its push, as the
+	// original does; the original likely passed the two teams through an inline helper.
+	tID team;
+	return entity && other ? (team = entity->fTeam, fn_00427581( team, other->fTeam )) : 0;
 }
