@@ -4384,6 +4384,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0049670b": {
+   "name": "FUN_0049670b",
+   "symbol": "?fn_0049670b@fn_004966e7_object@@QAEXXZ",
+   "unit": "unsorted/fn_00496000.cpp",
+   "size": 67,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004b0a39": {
    "name": "tMyHud3D::vfunction2",
    "symbol": "?vfunction2@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z",

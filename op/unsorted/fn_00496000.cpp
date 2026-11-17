@@ -279,14 +279,17 @@ void fn_00496682()
 // HYPOTHESIS: a free function at 0x0069b0e0 returning a float on the FPU stack (a random value).
 float fn_0069b0e0();
 
-// HYPOTHESIS: a two-float record initialised from two draws of fn_0069b0e0.
+// HYPOTHESIS: a record initialised from two draws of fn_0069b0e0; 0x0049670b keeps the
+// fractional part of m00 + m04 * (0x0092f61c - 0x0091a22c) in m08 (a phase).
 class fn_004966e7_object
 {
 public:
 	fn_004966e7_object();
+	void fn_0049670b();
 
 	float m00;
 	float m04;
+	float m08;
 };
 
 // FUNCTION: STARFLEETOP 0x004966e7
@@ -295,4 +298,17 @@ fn_004966e7_object::fn_004966e7_object()
 	m00 = fn_0069b0e0();
 	float r = fn_0069b0e0() * 0.25f;
 	m04 = r + r - 0.25f;
+}
+
+extern float gObject_0092f61c;
+extern float g_0091a22c;
+
+// FUNCTION: STARFLEETOP 0x0049670b
+void fn_004966e7_object::fn_0049670b()
+{
+	float phase = ( gObject_0092f61c - g_0091a22c ) * m04 + m00;
+	float f = phase - (int)phase;
+	m08 = f;
+	if( f < 0.0f )
+		m08 = f + 1.0f;
 }
