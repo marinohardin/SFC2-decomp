@@ -2503,6 +2503,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042ab25": {
+   "name": "FUN_0042ab25",
+   "symbol": "?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 191,
+   "score": 78.5,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

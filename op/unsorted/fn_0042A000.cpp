@@ -187,6 +187,9 @@ public:
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );
 
+		// HYPOTHESIS: a getter returning a tID by value; 0x0042ab25 collects it from each cache.
+		db::tID FUN_005419ed() const;
+
 		db::tID field_0c;
 		byte field_1c[0x24 - 0x1c];
 		std::string field_24;
@@ -256,6 +259,7 @@ public:
 	int FUN_0042aacb();
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr FUN_0042aaeb();
 	tSingleAccessWrapper< fn_005395b2_object >::iPtr FUN_0042ab08();
+	void FUN_0042ab25( std::vector< db::tID >& ids );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -528,4 +532,20 @@ tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr fn_0042a
 tSingleAccessWrapper< fn_005395b2_object >::iPtr fn_0042a480_object::FUN_0042ab08()
 {
 	return field_cc.Lock();
+}
+
+// FUNCTION: STARFLEETOP 0x0042ab25
+void fn_0042a480_object::FUN_0042ab25( std::vector< db::tID >& ids )
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	ids.clear();
+
+	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr caches = FUN_0042aaeb();
+	for( std::vector< tServCharacter::tShipCache >::iterator it = (*caches).begin(); it != (*caches).end(); ++it )
+		ids.push_back( (*it).FUN_005419ed() );
+
+	// The original sets no unwind state after the access pointer's destructor (as in 0x0042a7bf);
+	// its cause is not recovered.
+	caches.Done();
 }
