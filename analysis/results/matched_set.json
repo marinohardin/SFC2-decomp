@@ -5316,8 +5316,8 @@
    "symbol": "?fn_0046a63f@@YADPAVtGameState@@@Z",
    "unit": "unsorted/tGameState.cpp",
    "size": 57,
-   "score": 74.783,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0048612c": {

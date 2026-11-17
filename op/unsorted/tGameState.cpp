@@ -865,14 +865,19 @@ void fn_0046a62d(char *param_1)
 // HYPOTHESIS: fn_0046a6ad tests whether the state can be entered; fn_0046ad85 performs the switch.
 char fn_0046a6ad(tGameState *state);
 // HYPOTHESIS: 0x0046ad85 is a method of the class of the global object at 0x0090db38.
+// HYPOTHESIS: its second argument is a one-pointer object passed by value (the original loads it into a register before the other pushes), built from g_0090db3c.
 class fn_0090db38_owner
 {
 public:
-	void fn_0046ad85(tGameState **state, int a, int *b);
+	struct fn_0046ad85_arg
+	{
+		fn_0046ad85_arg(int p) : m_p(p) {}
+		int m_p;
+	};
+	void fn_0046ad85(tGameState **state, fn_0046ad85_arg a, int *b);
 };
 
 extern fn_0090db38_owner g_0090db38;
-
 
 // FUNCTION: STARFLEETOP 0x0046a63f
 char fn_0046a63f(tGameState *state)
@@ -880,9 +885,7 @@ char fn_0046a63f(tGameState *state)
 	int local = g_0090db44;
 	if (fn_0046a6ad(state) != 0)
 	{
-		tGameState **p = &state;
-		int cur = g_0090db3c;
-		g_0090db38.fn_0046ad85(p, cur, &local);
+		g_0090db38.fn_0046ad85(&state, fn_0090db38_owner::fn_0046ad85_arg(g_0090db3c), &local);
 		return 1;
 	}
 	return 0;
