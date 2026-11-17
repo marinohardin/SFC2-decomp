@@ -15,8 +15,16 @@ typedef	int8u			iTruth;
 class tSFCStream
 {
 public:
+	int8u *mGetReadPtr() const	{ return fGetPtr; }
+	int8u *mGetWritePtr() const	{ return fPutPtr; }
+	int32 mGetReadSize() const { return (int32)(fPutPtr-fGetPtr); }
+	void mSetReadSize(int32 readSize);
 	void mSetVersionNumber( int32 versionNumber );
 	int mGetVersionNumber();
+	void mWriteStringToStream(char *str);
+
+	//Generic Stream function
+	static inline void mIO(void *p, const void *src, int size);
 
 protected:
 	int32 fVersionNumber;
@@ -30,5 +38,17 @@ protected:
 
 	int32 fTabNumber;
 };
+
+inline void tSFCStream::mIO(void *p, const void *src, int size)
+{
+	const int8u	*s = (int8u*)src;
+	int8u		*d = (int8u*)p;
+
+	for (int i=0; i<size; i++)
+	{
+		*d++ = s[0];
+		s++;
+	}
+}
 
 #endif

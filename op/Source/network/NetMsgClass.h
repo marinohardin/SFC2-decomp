@@ -20,6 +20,19 @@ struct tNetMsg
 		kAIChangeTeamRelationshipToWar = 51
 	};
 
+	enum
+	{
+		kSizeInt8		= 1,
+		kSizeInt16		= 2,
+		kSizeInt32		= 4,
+		kSizeInt64		= 8,		// __int64 or double
+		kSizeTPoint3	= 12,		// tPoint3
+
+		kSizeTString	= -1,		// tString
+		kSizeString		= -2,		// single-byte string
+		kSizeSFCStream	= -3		// a tSFCStream
+	};
+
 	struct tMapItem
 	{
 		short fSize;
@@ -29,6 +42,9 @@ struct tNetMsg
 	virtual const tNetMsg::tMapItem *mGetMap(void) const = 0;
 	virtual unsigned int mStreamTo(unsigned char *pStreamBuffer);
 	virtual unsigned int mStreamFrom(const unsigned char *pStreamBuffer);
+
+protected:
+	unsigned int mStream(const void *pStreamBuffer, unsigned char bOutput, tNetMsg *pMsg);
 };
 
 #endif	// NetMsgClass_h

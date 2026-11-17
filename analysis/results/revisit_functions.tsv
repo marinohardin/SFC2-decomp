@@ -114,6 +114,15 @@ address	name	best_score	attempts	last_model	listed	note
 0x00646010	twSoundPart::mInit	99.88	2	sonnet	2026-11-16T13:26:21Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.88%
 0x00651540	tgSoundPart::mCreateCommand	93.10	2	sonnet	2026-11-16T13:51:03Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 93.10%
 0x00651929	FUN_00651929	0.00	2	sonnet	2026-11-16T13:53:33Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0040b6e7	FUN_0040b6e7	0.00	2	sonnet	2026-11-16T16:40:55Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0040c3ba	tMyApp::vfunction2	26.94	2	sonnet	2026-11-16T16:48:29Z	best not above 90% after 2 attempts; best 26.94%
+0x00434195	tNetMsg_Header::~tNetMsg_Header	70.69	2	sonnet	2026-11-16T16:57:30Z	attempt 2 (sonnet) did not raise the best; best 70.69%
+0x00455942	FUN_00455942	99.88	2	sonnet	2026-11-16T17:05:06Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.88%
+0x0065ad80	tChannelGroup::mStopAndClearChannel	0.00	2	sonnet	2026-11-16T18:13:21Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x006b3e10	FUN_006b3e10	65.17	2	sonnet	2026-11-16T22:19:36Z	attempt 2 (sonnet) did not raise the best; best 65.17%
+0x006b3f80	FUN_006b3f80	91.11	2	sonnet	2026-11-16T22:23:57Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 91.11%
+0x006b3ffe	FUN_006b3ffe	0.00	2	sonnet	2026-11-16T22:26:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x006b4540	FUN_006b4540	88.13	2	sonnet	2026-11-16T22:42:46Z	attempt 2 (sonnet) did not raise the best; best 88.13%
 0x006577b0	tAudioFileInfoPart::`scalar_deleting_destructor'	0.00	2	sonnet	2026-11-16T16:26:08Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00657980	tAudioFileInfoPart::mActivate	98.24	2	sonnet	2026-11-16T16:47:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.24%
 0x006580c0	tAudioFileInfoPart::mGetNewAsynchReadInfo	99.94	2	sonnet	2026-11-16T17:30:52Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.94%
@@ -146,3 +155,5 @@ address	name	best_score	attempts	last_model	listed	note
 0x005c488c	FUN_005c488c	87.31	2	opus	2026-11-17T17:09:19Z	attempt 2 (opus) did not raise the best; best 87.31%
 0x005c48a9	FUN_005c48a9	87.31	2	opus	2026-11-17T17:13:17Z	attempt 2 (opus) did not raise the best; best 87.31%
 0x005c48c6	FUN_005c48c6	87.31	2	opus	2026-11-17T17:17:48Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x00413ea8	tPhysicalEntity::vfunction49	99.77	4	opus	2026-11-09T07:59:26Z	all 4 regular attempts used; waits for Fable; best 99.77%
+0x00658ac0	tChannelGroup::mUnload	98.70	4	opus	2026-11-09T07:47:04Z	all 4 regular attempts used; waits for Fable; best 98.70%
