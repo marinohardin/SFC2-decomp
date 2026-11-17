@@ -155,3 +155,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0054385d	FUN_0054385d	99.93	2	sonnet	2026-11-17T16:12:16Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.93%
 0x00543944	FUN_00543944	99.90	2	sonnet	2026-11-17T16:15:56Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.90%
 0x00543c70	tServCharacter::vfunction6_for_tAllocatedClass	99.94	3	opus	2026-11-17T17:08:30Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.94%
+0x005465d5	FUN_005465d5	98.05	2	sonnet	2026-11-17T17:49:13Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.05%
