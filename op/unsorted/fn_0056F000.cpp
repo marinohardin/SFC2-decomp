@@ -886,3 +886,69 @@ void fn_0056fbf5_owner::fn_0056fbf5(const nDatabase::tQuery<fn_0056fbf5_object> 
 	}
 	guard.Leave();
 }
+
+// HYPOTHESIS: tCampaignInfo is a database class; its members are not recovered.
+class tCampaignInfo : public nDatabase::tDatabaseObject {
+public:
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+};
+
+// HYPOTHESIS: the result container for tCampaignInfo, as for 0x0056f4df.
+class fn_0056fcd7_results {
+public:
+	void push_back(const tCampaignInfo &value);
+};
+
+// HYPOTHESIS: the LockingQueryDB member template of 0x0056f05f, instantiated for tCampaignInfo.
+class fn_0056fcd7_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void MultiLock(fn_00571a7a_vector *objects, bool mustLockAll);
+	void fn_0056fcd7(const nDatabase::tQuery<tCampaignInfo> &query, fn_0056fcd7_results *result, bool mustLockAll);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 925 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056fcd7
+void fn_0056fcd7_owner::fn_0056fcd7(const nDatabase::tQuery<tCampaignInfo> &query, fn_0056fcd7_results *result, bool mustLockAll)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tCampaignInfo));
+#line 210 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	bool lockFailed = false;
+	fn_00571a7a_vector holdResult;
+	for (void **i = objects.begin(); i != objects.end() && !lockFailed; i++) {
+		tCampaignInfo *pObject = static_cast<tCampaignInfo *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			pObject->AddReference();
+			holdResult.fn_00571a69((void *)pObject);
+		}
+	}
+	guard.Leave();
+	if (holdResult.size() > 0) {
+		MultiLock(&holdResult, mustLockAll);
+		for (void **lockedObject = holdResult.begin(); lockedObject != holdResult.end(); lockedObject++) {
+			if (*lockedObject) {
+				tCampaignInfo *pObject = static_cast<tCampaignInfo *>((tDatabaseObject *)*lockedObject);
+				if (!pObject->IsDead())
+					result->push_back(*pObject);
+				pObject->RemoveReference();
+			}
+		}
+	}
+}
