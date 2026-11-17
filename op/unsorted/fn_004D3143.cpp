@@ -4,10 +4,13 @@
 
 // HYPOTHESIS: the global at 0x0092e4a0 is an object whose method 0x004d482a takes four
 // longs; its class is not recovered yet.
+class fn_004d3ef7_object;
+
 class fn_004d482a_owner
 {
 public:
 	long fn_004d482a( long arg1, long arg2, long arg3, long arg4 );
+	fn_004d3ef7_object* fn_004d3ef7( long arg1 );
 };
 
 extern fn_004d482a_owner g_0092e4a0;
@@ -20,12 +23,16 @@ long fn_004d315e( long arg1, long arg2, long arg3, long arg4 )
 
 // HYPOTHESIS: the global at 0x009254f8 is the object whose method 0x004bf6b9 takes two longs;
 // its class is declared only inside fn_004D2000.cpp (fn_004cb4a7_target).
+class fn_004d3ef7_object;
+
 class fn_004bf6b9_owner
 {
 public:
 	void fn_004bf6b9( long arg1, long arg2 );
 	void fn_004bf6ea( long arg1 );
 	void fn_004bf74f( long arg1, float arg2 );
+	void fn_004caf1b( fn_004d3ef7_object* arg1 );
+	void fn_004caf40( fn_004d3ef7_object* arg1, long arg2 );
 };
 
 extern fn_004bf6b9_owner g_009254f8;
@@ -46,4 +53,29 @@ void fn_004d318c( long arg1 )
 void fn_004d319b( long arg1, float arg2 )
 {
 	g_009254f8.fn_004bf74f( arg1, arg2 );
+}
+
+// HYPOTHESIS: method 0x004d3ef7 of the global at 0x0092e4a0 looks up an object from a
+// handle; 0x004caf1b and 0x004caf40 are methods on that object (class not recovered yet).
+class fn_004d3ef7_object;
+
+
+// FUNCTION: STARFLEETOP 0x004d31b2
+bool fn_004d31b2( long arg1, long arg2 )
+{
+	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d3ef7( arg1 );
+	bool ok = false;
+	if ( obj != 0 )
+	{
+		if ( arg2 != 0 )
+		{
+			g_009254f8.fn_004caf40( obj, arg2 );
+		}
+		else
+		{
+			g_009254f8.fn_004caf1b( obj );
+		}
+		ok = true;
+	}
+	return ok;
 }
