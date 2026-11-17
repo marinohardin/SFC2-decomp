@@ -833,6 +833,28 @@ fn_0053a73a_map::iterator fn_0053a73a_map::find( const int32& key )
 	return ( p.m_node == m_tree.m_head || key < p.m_node->first ? end() : p );
 }
 
+// FUNCTION: STARFLEETOP 0x0053ab16
+fn_0053a6cc_map::node* fn_0053a6cc_map::tree::fn_0053ab16( node* root, node* parent )
+{
+	node* result = m_nil;
+	if( !root->isnil )
+	{
+		char color = root->color;
+		node* y = (node*)operator new( sizeof( node ) );
+		y->isnil = 0;
+		y->parent = parent;
+		y->color = color;
+		new( (void*)&y->first ) value_type( *(value_type*)&root->first );
+		y->left = m_nil;
+		y->right = m_nil;
+		if( result == m_nil )
+			result = y;
+		y->left = fn_0053ab16( root->left, y );
+		y->right = fn_0053ab16( root->right, y );
+	}
+	return result;
+}
+
 // FUNCTION: STARFLEETOP 0x0053aab4
 void fn_0053a73a_map::tree::fn_0053aab4( const tree& other )
 {
