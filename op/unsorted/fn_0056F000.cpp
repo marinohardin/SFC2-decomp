@@ -707,7 +707,7 @@ void nDatabase::tQuery<tMetaMapDesc>::fn_0056f04f(void *value)
 	m_results.fn_00571a69(value);
 }
 
-class fn_0056fb13_object;
+class fn_0056fb13_object; class tCampaignInfo;
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tPoliticalTensionMatrix> (the vtable named by the
 // exe); fn_0056fb13_object stands for tPoliticalTensionMatrix here.
 // FUNCTION: STARFLEETOP 0x0056fbd7
@@ -716,10 +716,10 @@ nDatabase::tQuery<fn_0056fb13_object>::~tQuery()
 }
 // FUNCTION: STARFLEETOP 0x0056fbe5
 void nDatabase::tQuery<fn_0056fb13_object>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
-#line 720 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056fcb9
+nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
 // HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete
 // here; the casts below stand for the original's static_casts (the base sits at offset 0).
-
 // HYPOTHESIS: the result container for tMetaMapDesc, as for 0x0056f4df.
 class fn_0056f9d7_results {
 public:
