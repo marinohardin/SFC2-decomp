@@ -1,16 +1,27 @@
 #include <stdlib.h>
 #include "Tiger/tstring.h"
+#include "unsorted/tValueBase.h"
 
 // HYPOTHESIS: the array elements at +0x28 are tValueI<tString> (0x40 bytes; 0x0043d344 sits
 // between that class's functions), declared only in Source/states/SupplyDockItem.cpp; this
 // stands in for it until the class moves to a header. 0x0043d344 returns the value by copy.
-class fn_0043d344_object
+// The set step (0x0049629b) assigns the tString at +0x18 and notifies with (3, 0), as
+// tValueI<tString>::operator= does there.
+class fn_0043d344_object : public tValueBase
 {
 public:
 	tString fn_0043d344();
+	fn_0043d344_object &operator=( const tString &value );
 
-	char m00[0x40];
+	tString m18;
 };
+
+inline fn_0043d344_object &fn_0043d344_object::operator=( const tString &value )
+{
+	m18 = value;
+	fn_006712c0( 3, 0 );
+	return *this;
+}
 
 // HYPOTHESIS: the record held at +0x1c0 of the owner of 0x00496253; flag byte at +0x19, six
 // values at +0x1bc.
@@ -28,18 +39,20 @@ public:
 class fn_00496253_object
 {
 public:
+	tString fn_004961be( long val );
 	int fn_00496214( tString s );
 	void fn_00496253();
+	void fn_0049629b( fn_00496253_record *record );
 
 	char m00[0x28];
 	fn_0043d344_object m28[6];
-	char m1a8[0x1c0 - 0x1a8];
+	long m1a8[6];
 	fn_00496253_record *m1c0;
 };
 
-// HYPOTHESIS: `ret 8` with ecx unused; may be a member of an unknown class that ignores this.
+// A member that ignores this: 0x0049629b calls it with this in ecx (`ret 8`).
 // FUNCTION: STARFLEETOP 0x004961be
-tString __stdcall fn_004961be(long val)
+tString fn_00496253_object::fn_004961be(long val)
 {
 	tString s;
 	return s.mAppendInt32s(val, 1);
@@ -64,5 +77,19 @@ void fn_00496253_object::fn_00496253()
 			*value++ = fn_00496214( item++->fn_0043d344() );
 		}
 		while( --count );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0049629b
+void fn_00496253_object::fn_0049629b( fn_00496253_record *record )
+{
+	m1c0 = record;
+	if( record && ( record->m19 & 4 ) )
+	{
+		for( int i = 0; i < 6; i++ )
+		{
+			m1a8[i] = record->m1bc[i];
+			m28[i] = fn_004961be( m1a8[i] );
+		}
 	}
 }
