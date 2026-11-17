@@ -172,3 +172,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005d9e48	FUN_005d9e48	99.47	2	sonnet	2026-11-17T19:51:28Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.47%
 0x005d9f33	FUN_005d9f33	64.43	2	sonnet	2026-11-17T20:02:48Z	best not above 90% after 2 attempts; best 64.43%
 0x005de770	tCallback<tNewsStory*>::scalar_deleting_destructor	11.56	2	sonnet	2026-11-17T20:36:08Z	best not above 90% after 2 attempts; best 11.56%
+0x005de7a9	tCallback<tMetaClientNewsCtlrC::tMenuItem::eType>::scalar_deleting_destructor	8.23	2	sonnet	2026-11-17T20:41:52Z	attempt 2 (sonnet) did not raise the best; best 8.23%
