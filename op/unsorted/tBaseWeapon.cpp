@@ -1,4 +1,6 @@
+#include "unsorted/fn_0040ce21_type.h"
 #include "unsorted/tBaseWeapon.h"
+#include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntity.h"
 
 // HYPOTHESIS: this is tCloakSystem, declared in full only inside unsorted/tCloakSystem.cpp;
@@ -161,4 +163,12 @@ void tBaseWeapon::vfunction103()
 int tBaseWeapon::vfunction107()
 {
     return vfunction85() - field_e8;
+}
+
+// FUNCTION: STARFLEETOP 0x004d76b3
+unsigned tBaseWeapon::mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode)
+{
+    static fn_0040ce21_type marker("tBaseWeapon::mStreamOutSystemSpecificData");
+    // HYPOTHESIS: tBaseWeapon derives from tRepairableShipSystem; its declaration here has no base yet.
+    return ((tRepairableShipSystem*)this)->tRepairableShipSystem::vfunction23((int)&s, aFlags, (int)mode);
 }
