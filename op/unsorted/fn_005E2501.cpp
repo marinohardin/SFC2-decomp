@@ -129,3 +129,6 @@ std::string g_00c38fc8 = "CurrentHexMed";
 // FUNCTION: STARFLEETOP 0x005e2ad2
 // FUNCTION: STARFLEETOP 0x005e2a9f
 std::string g_00c38fb8 = "MetaMediumPlayerIcon";
+
+// FUNCTION: STARFLEETOP 0x005e2af5
+std::string g_00c38fa8 = "space1";
