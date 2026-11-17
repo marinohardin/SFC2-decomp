@@ -1,5 +1,4 @@
 address	name	best_score	attempts	last_model	listed	note
-0x0061bc40	tFileSession::`scalar_deleting_destructor'	99.88	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.88%
 0x0063f5a0	tCoopThreadPart::mSwitchTo	97.78	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.78%
 0x00647e40	tSoundChannelCommand::mDump	97.60	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.60%
 0x0061c290	tFileSession::mDuplicatePath	97.81	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.81%
