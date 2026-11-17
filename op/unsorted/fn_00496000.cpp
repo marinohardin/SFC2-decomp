@@ -269,3 +269,9 @@ void fn_00496651()
 void fn_00496665()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x00496682
+// HYPOTHESIS: 0x00496682 is the start (load of the object address, then a jump) of a global initializer for a tFederationRedicle object; the analysis merged it with the constructor at 0x0049668c (analysis boundary); body is a placeholder.
+void fn_00496682()
+{
+}
