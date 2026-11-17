@@ -19,6 +19,8 @@ public:
     void fn_0043e0ed(int param_1);
     void fn_0043e201(float param_1);
     // HYPOTHESIS: a test on an entity ID; 0x0043e201 asks it for entities other than its owner.
+    // HYPOTHESIS: returns the number of entries of field_1e0 in use.
+    int fn_0043e351();
     char fn_0043eb5f(int aID);
 
     char pad80[0x8c - 0x80];
@@ -184,4 +186,10 @@ void tSensorGroupSystem::fn_0043e201(float param_1)
         if (gObject_008e1060.fn_entity(field_1e0[i]) == 0)
             field_1e0[i] = -1;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0043e351
+int tSensorGroupSystem::fn_0043e351()
+{
+    return field_1d9;
 }
