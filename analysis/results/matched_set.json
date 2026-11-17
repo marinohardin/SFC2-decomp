@@ -883,6 +883,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004066f1": {
+   "name": "FUN_004066f1",
+   "symbol": "?fn_004066f1@@YAPAVfn_00402b90_Obj@@PAV1@@Z",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 78,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
