@@ -36,6 +36,10 @@ public:
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
 
+	bool IsDead();
+	void AddReference();
+	void RemoveReference();
+
 protected:
 	// HYPOTHESIS: a member at 0x006fc200 that derived classes call on a string before writing
 	// it between quotes into the SQL stream; it returns a new string. Not in the SDK header.
