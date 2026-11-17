@@ -660,11 +660,11 @@
   },
   "0x00404b5e": {
    "name": "FUN_00404b5e",
-   "symbol": "?fn_00404b5e@@YAXXZ",
+   "symbol": "?use_facet@std@@YAABV?$ctype@D@1@ABVlocale@1@PBV21@_N@Z",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 200,
-   "score": 1.493,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {

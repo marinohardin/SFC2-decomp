@@ -591,9 +591,27 @@ void fn_00404b1c_Streambuf::fn_00404b1c()
     fn_setp(0, 0), fn_setg(0, 0, 0);
 }
 
-// HYPOTHESIS: the library's use_facet for ctype<char> (locale lookup under a _Lockit, cached
-// fallback facet, bad_cast "missing locale facet"); not yet written, the body is a placeholder.
+// HYPOTHESIS: the library's use_facet for ctype<char>, the out-of-line instantiation of the
+// header template; written here as an explicit specialization with the header's body.
 // FUNCTION: STARFLEETOP 0x00404b5e
-void fn_00404b5e()
+template<> const std::ctype<char>& __cdecl std::use_facet(const std::locale& _L,
+    const std::ctype<char> *, bool _Cfacet)
 {
+    static const std::locale::facet *_Psave = 0;
+    std::_Lockit _Lk;
+    size_t _Id = std::ctype<char>::id;
+    const std::locale::facet *_Pf = _L._Getfacet(_Id, true);
+    if (_Pf != 0)
+        ;
+    else if (!_Cfacet || !_L._Iscloc())
+        throw std::bad_cast("missing locale facet");
+    else if (_Psave == 0)
+        _Pf = _Psave = std::_Tidyfac<std::ctype<char> >::_Save(new std::ctype<char>);
+    else
+        _Pf = _Psave;
+    return (*(const std::ctype<char> *)_Pf);
 }
+
+// HYPOTHESIS: istream::ipfx (in another unit) calls this out-of-line instantiation.
+const std::ctype<char>& (__cdecl *g_fn_00404b5e)(const std::locale&, const std::ctype<char> *, bool)
+    = &std::use_facet;
