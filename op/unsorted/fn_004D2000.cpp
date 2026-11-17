@@ -582,13 +582,6 @@ void fn_004d2636_object::fn_004d290d()
 	m_0x28.fn_004d2c0c();
 }
 
-// HYPOTHESIS: 0x004d29c5 is std::basic_ostream<char>::operator<<(double), a library instantiation;
-// the real body needs the standard headers, so only a placeholder is written here.
-// FUNCTION: STARFLEETOP 0x004d29c5
-void fn_004d29c5()
-{
-}
-
 #include "unsorted/tVisObject.h"
 
 // HYPOTHESIS: RTTI names tVisStateObject (derived from tVisObject); its layout is not recovered yet.
@@ -847,14 +840,6 @@ fn_004d2420_holder* fn_004d27fa_owner::fn_004d288f(const char* text)
 		}
 	}
 	return &m_0x54;
-}
-
-// HYPOTHESIS: 0x004d2a96 is not a function of its own: it is the shared tail of the
-// basic_ostream<char> operator<< at 0x004d29c5 (it reads the caller's frame through ebp/esi and
-// sets the stream state with ios_base::failure), so it cannot be written as a standalone function.
-// FUNCTION: STARFLEETOP 0x004d2a96
-void fn_004d2a96()
-{
 }
 
 // FUNCTION: STARFLEETOP 0x004d2be4
