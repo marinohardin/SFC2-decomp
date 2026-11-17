@@ -161,12 +161,18 @@ public:
     bool fn_0054626d();
 
     char field_0[0x430];
-    unsigned int field_430_0 : 1;
-    unsigned int field_430_1 : 1;
+    struct tFlags430
+    {
+        unsigned char b0 : 1;
+        unsigned char b1 : 1;
+        unsigned char pad[3];
+    } field_430;
 };
 
 // FUNCTION: STARFLEETOP 0x0054626d
 bool c_0054626d::fn_0054626d()
 {
-    return field_430_1 ? true : false;
+    // MATCH-ONLY: the whole-dword copy gives the original's dword load before the byte-wide shift and mask.
+    unsigned int word = *(unsigned int*)&field_430;
+    return ((tFlags430*)&word)->b1;
 }
