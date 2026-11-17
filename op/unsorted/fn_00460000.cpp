@@ -258,15 +258,100 @@ void fn_004602b2_class::fn_00460610()
 
 #include "Common/DateAndTime.h"
 
-// HYPOTHESIS: declared here until its own unit has a header; only the size (0x168, from the
-// stack layout below) and the destructor at 0x0042ceae are known.
-class tCampaignInfo
+#include "Common/Database/DatabaseObject.h"
+
+// HYPOTHESIS: 16-byte members of tCampaignInfo assigned through their own out-of-line
+// assignments (0x0046090a, 0x00604f1d); their types are not identified.
+class fn_0046090a_object
+{
+public:
+    fn_0046090a_object &operator=(const fn_0046090a_object &other);
+
+    char pad_000[0x10];
+};
+
+class fn_00604f1d_object
+{
+public:
+    fn_00604f1d_object &operator=(const fn_00604f1d_object &other);
+
+    char pad_000[0x10];
+};
+
+// HYPOTHESIS: a 0x30-byte member of tCampaignInfo assigned through 0x0045be62.
+class fn_0045be62_object
+{
+public:
+    fn_0045be62_object &operator=(const fn_0045be62_object &other);
+
+    char pad_000[0x30];
+};
+
+// HYPOTHESIS: declared here until its own unit has a header. The size (0x168) comes from the
+// stack layout below, the destructor is at 0x0042ceae, and the members are placed by the
+// assignment at 0x00460736; their names are not known.
+class tCampaignInfo : public nDatabase::tDatabaseObject
 {
 public:
     ~tCampaignInfo();
+    tCampaignInfo &operator=(const tCampaignInfo &other);
+    // HYPOTHESIS: 0x0054a8d4 lies in tCampaignInfo's own code and returns a text member.
+    const std::string &fn_0054a8d4();
 
-    char pad_000[0x168];
+    std::string m_48;
+    std::string m_58;
+    std::string m_68;
+    std::string m_78;
+    std::string m_88;
+    fn_0046090a_object m_98;
+    fn_00604f1d_object m_a8;
+    long m_b8;
+    long m_bc;
+    long m_c0;
+    std::string m_c4;
+    std::string m_d4;
+    std::string m_e4;
+    long m_f4;
+    std::string m_f8;
+    fn_0045be62_object m_108;
+    long m_138;
+    long m_13c;
+    long m_140;
+    long m_144;
+    std::string m_148;
+    std::string m_158;
 };
+
+// HYPOTHESIS: the member-wise assignment the compiler would generate, held out of line.
+// FUNCTION: STARFLEETOP 0x00460736
+tCampaignInfo &tCampaignInfo::operator=(const tCampaignInfo &other)
+{
+    // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
+    (nDatabase::tDatabaseObject &)*this = other;
+    m_48 = other.m_48;
+    m_58 = other.m_58;
+    m_68 = other.m_68;
+    m_78 = other.m_78;
+    m_88 = other.m_88;
+    m_98 = other.m_98;
+    m_a8 = other.m_a8;
+    m_b8 = other.m_b8;
+    m_bc = other.m_bc;
+    m_c0 = other.m_c0;
+    m_c4 = other.m_c4;
+    m_d4 = other.m_d4;
+    m_e4 = other.m_e4;
+    m_f4 = other.m_f4;
+    m_f8 = other.m_f8;
+    m_108 = other.m_108;
+    m_138 = other.m_138;
+    m_13c = other.m_13c;
+    m_140 = other.m_140;
+    m_144 = other.m_144;
+    m_148 = other.m_148;
+    m_158 = other.m_158;
+    return *this;
+}
 
 // HYPOTHESIS: a 20-byte value built from a text and a number; it is copied as plain data.
 class fn_006cf2d0_object
@@ -278,29 +363,21 @@ public:
 };
 
 // HYPOTHESIS: the record built at 0x0045e5f7; its members are placed by their stack offsets.
-class fn_0060a827_object;
 class fn_0045e5f7_object
 {
 public:
     fn_0045e5f7_object();
-    void fn_00460736(fn_0060a827_object *arg);
 
     tCampaignInfo m_000;
     tDateAndTime m_168;
     fn_006cf2d0_object m_178;
 };
 
-class fn_0060a827_object
-{
-public:
-    const std::string &fn_0054a8d4();
-};
-
 // HYPOTHESIS: the argument of 0x0046062e; only these calls on it are known.
 class fn_0046062e_arg
 {
 public:
-    fn_0060a827_object *fn_0060a827();
+    tCampaignInfo *fn_0060a827();
     std::string fn_005db8d3();
     long fn_005db919();
 };
@@ -334,7 +411,7 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
         tDateAndTime now;
         fn_0045e5f7_object record;
         record.m_178 = value;
-        record.fn_00460736(arg->fn_0060a827());
+        record.m_000 = *arg->fn_0060a827();
         record.m_168 = now;
         m_ec.fn_00460c0c(record);
     }
