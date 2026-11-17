@@ -2,6 +2,7 @@
 
 #include "unsorted/fn_0090bed4_Object.h"
 #include "unsorted/tObject_0090be60.h"
+#include "unsorted/tApplication.h"
 
 // HYPOTHESIS: the object 0x00523543 and 0x00523574 return for an ID; tAICaptain.cpp declares
 // what is likely the same class as tObject_004b94dc.
@@ -114,4 +115,19 @@ char fn_0090bed4_Object::fn_0052315a(void *param_1, void *param_2, int param_3)
 		}
 	}
 	return result;
+}
+
+// HYPOTHESIS: the key names of two path settings; the pointers sit at 0x008591f0 and 0x008591f4.
+extern const char *g_p008591f0;
+extern const char *g_p008591f4;
+
+// FUNCTION: STARFLEETOP 0x00523198
+void fn_0090bed4_Object::fn_00523198()
+{
+	int len = g_p008cc580->vfunction9("AI", g_p008591f0, 0, 0, 0);
+	m_16b8 = new char[len + 1];
+	g_p008cc580->vfunction9("AI", g_p008591f0, 0, m_16b8, len);
+	len = g_p008cc580->vfunction9("AI", g_p008591f4, 0, 0, 0);
+	m_16bc = new char[len + 1];
+	g_p008cc580->vfunction9("AI", g_p008591f4, 0, m_16bc, len);
 }

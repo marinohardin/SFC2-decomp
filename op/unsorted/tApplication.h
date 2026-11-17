@@ -39,7 +39,8 @@ public:
 	virtual void vfunction6(const char *, const char *, int);    // +0x14
 	virtual void vfunction7();
 	virtual void vfunction8();
-	virtual void vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
+	// HYPOTHESIS: returns the setting's length; 0x00523198 sizes its buffer by it.
+	virtual int vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
 };
 
 extern fn_008cc580_Settings *g_p008cc580;

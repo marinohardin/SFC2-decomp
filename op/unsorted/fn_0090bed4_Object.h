@@ -35,10 +35,14 @@ public:
 	void fn_00523100();
 	char fn_0052310b(int param_1, int param_2, int param_3);
 	char fn_0052315a(void *param_1, void *param_2, int param_3);
+	void fn_00523198();
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;
-	char m_pad0219[0x16c0 - 0x219];
+	char m_pad0219[0x16b8 - 0x219];
+	// HYPOTHESIS: two path settings 0x00523198 reads into buffers it allocates.
+	char *m_16b8;
+	char *m_16bc;
 	// HYPOTHESIS: IDs that 0x00523027 looks up through 0x00523574.
 	std::list<int> m_16c0;
 };
