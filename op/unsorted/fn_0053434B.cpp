@@ -418,6 +418,8 @@ public:
     fn_00534950_object();
     ~fn_00534950_object();
     void fn_00534ad0();
+    void fn_00534b64();
+    void fn_00534d2a(int kind, fn_00534ac1_entry* row, char* table);
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -506,4 +508,50 @@ void fn_00534950_object::fn_00534ad0()
         strcpy((char*)field_28[row * 200 + column].field_04, record->field_14);
         used[row] = column + 1;
     }
+}
+
+// HYPOTHESIS: tables of unknown type the rows are filled from; 0x00859ec0 and 0x0085a138 serve
+// several rows.
+extern char g_00859ec0[];
+extern char g_00859f20[];
+extern char g_00859f80[];
+extern char g_00859ff0[];
+extern char g_0085a060[];
+extern char g_0085a0d8[];
+extern char g_0085a198[];
+extern char g_0085a1c8[];
+extern char g_0085a1b0[];
+extern char g_0085a1e0[];
+extern char g_0085a138[];
+
+// HYPOTHESIS: the first argument is a kind that does not always equal the row it fills: kinds
+// 8..15 fill rows 9..16, kind 16 fills row 8, kinds 17, 18, 23 and 24 fill rows 22, 17, 21
+// and 23, and kinds 21 and 23 both fill row 21.
+// FUNCTION: STARFLEETOP 0x00534b64
+void fn_00534950_object::fn_00534b64()
+{
+    fn_00534d2a(0, &field_28[0 * 200], g_00859ec0);
+    fn_00534d2a(1, &field_28[1 * 200], g_00859f20);
+    fn_00534d2a(2, &field_28[2 * 200], g_00859f80);
+    fn_00534d2a(3, &field_28[3 * 200], g_00859ff0);
+    fn_00534d2a(5, &field_28[5 * 200], g_0085a060);
+    fn_00534d2a(4, &field_28[4 * 200], g_0085a0d8);
+    fn_00534d2a(16, &field_28[8 * 200], g_0085a198);
+    fn_00534d2a(23, &field_28[21 * 200], g_0085a1c8);
+    fn_00534d2a(17, &field_28[22 * 200], g_0085a1b0);
+    fn_00534d2a(24, &field_28[23 * 200], g_0085a1e0);
+    fn_00534d2a(8, &field_28[9 * 200], g_0085a138);
+    fn_00534d2a(9, &field_28[10 * 200], g_0085a138);
+    fn_00534d2a(10, &field_28[11 * 200], g_0085a138);
+    fn_00534d2a(11, &field_28[12 * 200], g_0085a138);
+    fn_00534d2a(12, &field_28[13 * 200], g_0085a138);
+    fn_00534d2a(13, &field_28[14 * 200], g_0085a138);
+    fn_00534d2a(14, &field_28[15 * 200], g_0085a138);
+    fn_00534d2a(15, &field_28[16 * 200], g_0085a138);
+    fn_00534d2a(18, &field_28[17 * 200], g_00859ec0);
+    fn_00534d2a(6, &field_28[6 * 200], g_00859ec0);
+    fn_00534d2a(7, &field_28[7 * 200], g_00859ec0);
+    fn_00534d2a(19, &field_28[18 * 200], g_00859ec0);
+    fn_00534d2a(20, &field_28[19 * 200], g_00859ec0);
+    fn_00534d2a(21, &field_28[21 * 200], g_00859ec0);
 }
