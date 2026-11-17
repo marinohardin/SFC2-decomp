@@ -529,3 +529,29 @@ fn_00406b63_Obj::fn_00406b63_Obj(const char* s, int a, int b)
     m2c = a;
     m30 = b;
 }
+
+// HYPOTHESIS: a class holding a std::string followed by a flag set to 4 and an int at 0x34; the original type is unknown.
+class fn_00406ba3_Obj
+{
+public:
+    fn_00406ba3_Obj(const char* s, int a);
+    std::string m0;
+    int m10;
+    int m14;
+    int m18;
+    int m1c;
+    int m20;
+    int m24;
+    int m28;
+    int m2c;
+    int m30;
+    int m34;
+};
+
+// FUNCTION: STARFLEETOP 0x00406ba3
+fn_00406ba3_Obj::fn_00406ba3_Obj(const char* s, int a)
+    : m0(s)
+{
+    m10 = 4;
+    m34 = a;
+}
