@@ -1,4 +1,35 @@
 #include "Common/Database/DatabaseID.h"
+#include "unsorted/tMetaMapHex.h"
+#include <vector>
+#include <map>
+
+// HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
+// declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
+// node of its own at +8, the multi flag at +0xc and the size at +0x10. Only the members the
+// rebuilt functions call are declared: the index operator 0x0042b004, the destructor 0x0042b077,
+// the tree's initialisation 0x0042b346 and the copy of another tree's nodes 0x0042b2e4.
+struct fn_0042b004_map
+{
+	typedef std::pair< long, long > key_type;
+	struct node;
+
+	explicit fn_0042b004_map( const std::less< key_type >& pred = std::less< key_type >(), const std::allocator< tHexPoint >& al = std::allocator< tHexPoint >() )
+		: m_alloc( al ), m_comp( pred ), m_multi( false ) { fn_0042b346(); }
+	fn_0042b004_map( const fn_0042b004_map& other )
+		: m_alloc( other.m_alloc ), m_comp( other.m_comp ), m_multi( other.m_multi ) { fn_0042b346(); fn_0042b2e4( other ); }
+	~fn_0042b004_map();
+	void fn_0042b346();
+	void fn_0042b2e4( const fn_0042b004_map& other );
+	tHexPoint& operator[]( const key_type& key );
+
+	std::allocator< tHexPoint > m_alloc;
+	std::less< key_type > m_comp;
+	char	m_pad[2];
+	node*	m_head;
+	node*	m_nil;
+	bool	m_multi;
+	unsigned int	m_size;
+};
 
 // HYPOTHESIS: a member of an unidentified class that returns a one-bit flag kept in
 // bit 8 of the dword at +0x114, read as a bit-field (`shr eax, 8; and al, 1`).
@@ -17,6 +48,8 @@ public:
 	int fn_0054312b();
 	bool fn_00543132();
 	bool fn_0054313e();
+	fn_0042b004_map fn_00543149();
+	tHexPoint fn_005434b1() const;
 
 	char m_pad[0xd0];
 	char m0d0[4];
@@ -95,4 +128,20 @@ bool fn_005430ad_owner::fn_0054313e()
 {
 	// HYPOTHESIS: byte-level read of the flag; shr remains instead of test/setne.
 	return (((unsigned char *)this)[0x114] & 0x80) ? true : false;
+}
+
+// HYPOTHESIS: this class is the one tClientCharacter.cpp declares as tObject_00543551 (both
+// call fn_005434b1 and fn_0054312b). The function maps this hex and its six neighbours by their
+// two coordinates.
+// FUNCTION: STARFLEETOP 0x00543149
+fn_0042b004_map fn_005430ad_owner::fn_00543149()
+{
+	tMetaMapHex hex( false );
+	hex.fn_0053a49c( fn_005434b1() );
+	std::vector< tHexPoint > points = hex.fn_00539ff1( -1, -1 );
+	points.push_back( hex.fn_00539f9c() );
+	fn_0042b004_map result;
+	for ( std::vector< tHexPoint >::iterator it = points.begin(); it != points.end(); it++ )
+		result[ std::pair< long, long >( it->fn_0055f269(), it->fn_005e8f21() ) ] = *it;
+	return result;
 }

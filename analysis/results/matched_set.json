@@ -6994,6 +6994,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x00543149": {
+   "name": "FUN_00543149",
+   "symbol": "?fn_00543149@fn_005430ad_owner@@QAE?AUfn_0042b004_map@@XZ",
+   "unit": "unsorted/fn_00543000.cpp",
+   "size": 331,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
