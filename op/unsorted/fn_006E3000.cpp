@@ -497,7 +497,7 @@ struct fn_0060ac82_tree
 		char _Color;
 		char _Isnil;
 	};
-	class iterator
+	class iterator : public std::_Bidit<node::value, int>
 	{
 	public:
 		iterator() {}
@@ -514,20 +514,73 @@ struct fn_0060ac82_tree
 					_Ptr = _P; }
 			return (*this); }
 		iterator operator++(int) { iterator _Tmp = *this; ++*this; return (_Tmp); }
+		iterator &operator--() { _Dec(); return (*this); }
+		void _Dec()
+			{if (_Ptr->_Color == 0
+				&& _Ptr->_Parent->_Parent == _Ptr)
+				_Ptr = _Ptr->_Right;
+			else if (!_Ptr->_Left->_Isnil)
+				_Ptr = _Max(_Ptr->_Left);
+			else
+				{node *_P;
+				while (_Ptr == (_P = _Ptr->_Parent)->_Left)
+					_Ptr = _P;
+				_Ptr = _P; }}
 		bool operator==(const iterator& _X) const { return (_Ptr == _X._Ptr); }
 		bool operator!=(const iterator& _X) const { return (!(*this == _X)); }
+		node *_Mynode() const { return (_Ptr); }
 		node *_Ptr;
 	};
 
-	char m00[0x4];
+	typedef std::pair<iterator, bool> _Pairib;
+
+	std::less<unsigned long> key_compare;
+	char m01[0x3];
 	node *_Head;
 	node *_Nil;
 	char m0c[0x4];
 	unsigned int _Size;
 
+	static node *_Max(node *_P) { while (!_P->_Right->_Isnil) _P = _P->_Right; return (_P); }
 	static node *_Min(node *_P) { while (!_P->_Left->_Isnil) _P = _P->_Left; return (_P); }
 	iterator begin() { return (iterator(_Head->_Left)); }
 	iterator end() { return (iterator(_Head)); }
+	static node *&_Left(node *_P) { return (_P->_Left); }
+	static node *&_Parent(node *_P) { return (_P->_Parent); }
+	static node *&_Right(node *_P) { return (_P->_Right); }
+	struct _Kfn
+	{
+		const unsigned long &operator()(const node::value& _X) const { return (_X.first); }
+	};
+	static node::value &_Value(node *_P) { return (_P->_Value); }
+	static const unsigned long &_Key(node *_P) { return (_Kfn()(_Value(_P))); }
+	node *&_Root() const { return (_Parent(_Head)); }
+	node *&_Rmost() const { return (_Right(_Head)); }
+	unsigned int size() const { return (_Size); }
+	_Pairib insert(const node::value& _V)
+		{node *_X = _Root();
+		node *_Y = _Head;
+		bool _Ans = true;
+		while (_X != _Nil)
+			{_Y = _X;
+			_Ans = key_compare(_Kfn()(_V), _Key(_X));
+			_X = _Ans ? _Left(_X) : _Right(_X); }
+		if (m0c[0])
+			return (_Pairib(FUN_006e4360(_X, _Y, _V), true));
+		iterator _P = iterator(_Y);
+		if (!_Ans)
+			;
+		else if (_P == begin())
+			return (_Pairib(FUN_006e4360(_X, _Y, _V), true));
+		else
+			--_P;
+		if (key_compare(_Key(_P._Mynode()), _Kfn()(_V)))
+			return (_Pairib(FUN_006e4360(_X, _Y, _V), true));
+		return (_Pairib(_P, false)); }
+	// HYPOTHESIS: insert(iterator, const value_type&).
+	iterator FUN_006e39e0(iterator _P, const node::value& _V);
+	// HYPOTHESIS: _Insert(x, y, value).
+	iterator FUN_006e4360(node *_X, node *_Y, const node::value& _V);
 	// HYPOTHESIS: erase(iterator).
 	iterator FUN_0060ac82(iterator _P);
 	// HYPOTHESIS: find(key).
@@ -652,4 +705,28 @@ bool tObject_006e3830::FUN_006e38a0(const unsigned long& param_1, tObject_006e30
 	fn_0060ac82_tree::iterator inserted = mTree.FUN_006e3cf0(where, fn_0060ac82_tree::node::value(param_1, entry));
 	(*result.first).second = inserted;
 	return true;
+}
+
+// HYPOTHESIS: the SDK STL's _Tree::insert(iterator, const value_type&), with
+// FUN_006e4360 as _Insert; it passes _Head, not the hint, as _X.
+// FUNCTION: STARFLEETOP 0x006e39e0
+fn_0060ac82_tree::iterator fn_0060ac82_tree::FUN_006e39e0(iterator _P, const node::value& _V)
+{
+	if (size() == 0)
+		;
+	else if (_P == begin())
+		{if (key_compare(_Kfn()(_V), _Key(_P._Mynode())))
+			return (FUN_006e4360(_Head, _P._Mynode(), _V)); }
+	else if (_P == end())
+		{if (key_compare(_Key(_Rmost()), _Kfn()(_V)))
+			return (FUN_006e4360(_Nil, _Rmost(), _V)); }
+	else
+		{iterator _Pb = _P;
+		if (key_compare(_Key((--_Pb)._Mynode()), _Kfn()(_V))
+			&& key_compare(_Kfn()(_V), _Key(_P._Mynode())))
+			{if (_Right(_Pb._Mynode()) == _Nil)
+				return (FUN_006e4360(_Nil, _Pb._Mynode(), _V));
+			else
+				return (FUN_006e4360(_Head, _P._Mynode(), _V)); }}
+	return (insert(_V).first);
 }
