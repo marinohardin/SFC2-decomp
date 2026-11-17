@@ -309,3 +309,9 @@ void tMetaMapControl::fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScr
 		field_14->fn_00675280( image, x, y, (const tRect *)param_2, fn_00607906( color >> 16, color >> 8, color ), 1 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e37c4
+void tMetaMapControl::fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 )
+{
+	fn_005e37d8( entry, param_2, param_3 );
+}
