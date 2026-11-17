@@ -192,3 +192,14 @@ tAIData *fn_0090bed4_Object::fn_0052327e(int param_1, char param_2)
 	}
 	return NULL;
 }
+
+// FUNCTION: STARFLEETOP 0x00523344
+// HYPOTHESIS: the table at +0x16dc holds 12-byte entries whose +8 field is an ID, -1 when free.
+void fn_0090bed4_Object::fn_00523344(unsigned char param_1)
+{
+	if (*(int *) &m_16dc[param_1 * 12 + 8] != -1) {
+		m_16d8--;
+		fn_005233cb();
+	}
+	*(int *) &m_16dc[param_1 * 12 + 8] = -1;
+}

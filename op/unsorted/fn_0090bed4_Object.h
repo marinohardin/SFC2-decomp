@@ -41,6 +41,8 @@ public:
 	tAIData *fn_0052327e(int param_1, char param_2);
 	void fn_00523428(unsigned char param_1);
 	char fn_00523370(int param_1, char param_2);
+	void fn_00523344(unsigned char param_1);
+	void fn_005233cb();
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;
@@ -53,7 +55,9 @@ public:
 	char *m_16bc;
 	// HYPOTHESIS: IDs that 0x00523027 looks up through 0x00523574.
 	std::list<int> m_16c0;
-	char m_pad16cc[0x16dc - 0x16cc];
+	char m_pad16cc[0x16d8 - 0x16cc];
+	// HYPOTHESIS: a count of the used entries of the table below.
+	int m_16d8;
 	// HYPOTHESIS: a 100-byte table 0x00523222 fills with 0xff.
 	char m_16dc[100];
 };
