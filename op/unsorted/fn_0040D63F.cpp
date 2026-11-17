@@ -325,3 +325,10 @@ void fn_0040da79(unsigned int* p, fn_0040d63f_Buf& buf)
     }
     *p += (b[3] & 0x7f) * shift;
 }
+
+// FUNCTION: STARFLEETOP 0x0040dac7
+void fn_0040dac7(int* src, fn_0040d63f_Buf& buf)
+{
+    int* p = (int*)src[0];
+    buf.fn_0040d867(&p, 4, 1);
+}
