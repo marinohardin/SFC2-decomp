@@ -100,6 +100,7 @@ public:
 	bool fn_005433dd();
 	bool fn_005433e8();
 	bool fn_005433f4();
+	bool fn_00543400();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -116,6 +117,7 @@ public:
 	unsigned int m114_7 : 1;
 	unsigned int m114_8 : 1;
 	unsigned int m114_9 : 1;
+	unsigned int m114_10 : 1;
 	char m_pad118[0x1c];
 	int m134;
 	int m138;
@@ -266,4 +268,11 @@ bool fn_005430ad_owner::fn_005433e8()
 bool fn_005430ad_owner::fn_005433f4()
 {
 	return m114_3 ? true : false;
+}
+
+// HYPOTHESIS: a seventh one-bit flag, bit 10 of the dword at +0x114.
+// FUNCTION: STARFLEETOP 0x00543400
+bool fn_005430ad_owner::fn_00543400()
+{
+	return m114_10 ? true : false;
 }
