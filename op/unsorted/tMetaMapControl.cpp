@@ -51,6 +51,9 @@ class fn_0060a54d_class
 public:
 	fn_005e5e24_class *fn_0060a54d();
 	fn_004cf594_class *fn_005e488e();
+	// HYPOTHESIS: a list of view labels; 0x005e3ad8 clears it (erase 0x0042500f over its +0x4 and
+	// +0x8) and pushes "Empires View" and "Cartels View" (push_back 0x00424f16).
+	std::vector<tString> *fn_0055e60f();
 };
 
 fn_0060a54d_class *fn_00607d61();
@@ -430,4 +433,14 @@ void tMetaMapControl::fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *colo
 		}
 		*color = (unsigned char)b | ( (unsigned short)(unsigned char)g << 8 ) | ( (unsigned long)(unsigned char)r << 16 );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x005e3ad8
+void tMetaMapControl::fn_005e3ad8()
+{
+	std::vector<tString> *list = fn_00607d61()->fn_0055e60f();
+	list->clear();
+	list->push_back( "Empires View" );
+	list->push_back( "Cartels View" );
+	fn_005e4455();
 }
