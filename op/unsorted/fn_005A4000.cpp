@@ -8,7 +8,10 @@ public:
 	int		fn_005A4173();
 	int		fn_005A418e();
 
-	char		pad[0x20c - sizeof(tOptex)];
+	int		fn_005A41a9();
+
+	char		pad[0x208 - sizeof(tOptex)];
+	int		fValue208;
 	int		fValue20c;
 	char		pad2[0x238 - 0x210];
 	int		fValue;
@@ -28,6 +31,15 @@ int fn_005A4173_Owner::fn_005A418e()
 {
 	Enter();
 	int value = fValue20c;
+	Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005a41a9
+int fn_005A4173_Owner::fn_005A41a9()
+{
+	Enter();
+	int value = fValue208;
 	Leave();
 	return value;
 }
