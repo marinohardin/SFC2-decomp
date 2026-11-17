@@ -902,6 +902,14 @@ tState_GameConnections::~tState_GameConnections()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0046981c
+// HYPOTHESIS: the original calls the out-of-line tValueI<tString> constructor (0x0043d2ef) for
+// the first five value members and expands it inline for m15c and m19c; this build expands all
+// seven, likely an inlining budget of the full original unit.
+tState_GameConnections::tState_GameConnections()
+{
+}
+
 // FUNCTION: STARFLEETOP 0x004696ca
 // FUNCTION: STARFLEETOP 0x004696c0
 tState_GameConnections g_0090d7a0;
