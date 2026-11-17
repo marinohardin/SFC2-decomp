@@ -740,3 +740,26 @@ void fn_0040e46e(char* name, double* value, fn_0040d63f_Buf& buf)
     sscanf(text, format, value);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e4cc
+// HYPOTHESIS: writes a 1, 2 or 4 byte value by size
+void fn_0040e4cc(char* name, int size, void* value, fn_0040d63f_Buf& buf)
+{
+    switch (size) {
+    case 1: {
+        char c = *(char*)value;
+        fn_0040df26(name, &c, buf);
+        break;
+    }
+    case 2: {
+        short s = *(short*)value;
+        fn_0040de7d(name, &s, buf);
+        break;
+    }
+    case 4: {
+        long l = *(long*)value;
+        fn_0040dd45(name, &l, buf);
+        break;
+    }
+    }
+}
+
