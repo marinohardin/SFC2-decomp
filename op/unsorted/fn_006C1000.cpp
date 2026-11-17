@@ -293,3 +293,59 @@ void *fn_006c18f0(const void *key, const void *base, int num, unsigned long widt
 	}
 	return (char *)base + lo * width;
 }
+
+#include <winsock.h>
+
+void fn_006bf560();
+// HYPOTHESIS: the original calls GetTickCount through its import thunk, not the import
+// pointer, so it saw a prototype without dllimport.
+extern "C" DWORD WINAPI GetTickCount(void);
+// HYPOTHESIS: fills a sockaddr_in from a host name (or none, for any address) and a port.
+int fn_006c2120(char *host, unsigned short port, struct sockaddr_in *saddr, struct hostent **hp);
+
+extern SOCKET g_0088800c;
+extern unsigned short g_00c7cbd4;
+extern struct sockaddr_in g_00c7cdd8;
+extern int g_00c7cdec;
+extern int g_00c7cbcc;
+extern int g_00c7cdf0;
+extern int g_00c7cde8;
+extern char g_00c7cbc0[8];
+
+// HYPOTHESIS: opens the UDP socket, binds it to any port, records the bound port, resolves
+// the master address on port 29910 and seeds the random generator.
+// FUNCTION: STARFLEETOP 0x006c1960
+int fn_006c1960(int param)
+{
+	struct sockaddr_in saddr;
+	int saddrlen;
+
+	fn_006bf560();
+	g_0088800c = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (g_0088800c == INVALID_SOCKET)
+		return -1;
+	fn_006c2120(0, 0, &saddr, 0);
+	if (bind(g_0088800c, (struct sockaddr *)&saddr, sizeof(saddr)) == SOCKET_ERROR)
+		return -1;
+	saddrlen = sizeof(saddr);
+	if (getsockname(g_0088800c, (struct sockaddr *)&saddr, &saddrlen) == SOCKET_ERROR)
+		return -1;
+	g_00c7cbd4 = saddr.sin_port;
+	fn_006c2120("key.gamespy.com", 29910, &g_00c7cdd8, 0);
+	g_00c7cdec = 0;
+	g_00c7cbcc = param;
+	g_00c7cdf0 = 0;
+	g_00c7cde8 = 0;
+	// MATCH-ONLY: the original keeps the pending cdecl stack cleanup across this call, which
+	// VC6 does only for a cdecl callee; the original's prototype was likely implicit (cdecl).
+	srand(((DWORD (__cdecl *)(void))GetTickCount)());
+	g_00c7cbc0[0] = 'g';
+	g_00c7cbc0[1] = 'a';
+	g_00c7cbc0[2] = 'm';
+	g_00c7cbc0[3] = 'e';
+	g_00c7cbc0[4] = 's';
+	g_00c7cbc0[5] = 'p';
+	g_00c7cbc0[6] = 'y';
+	g_00c7cbc0[7] = '\0';
+	return 0;
+}
