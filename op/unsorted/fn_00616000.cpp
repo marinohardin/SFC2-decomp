@@ -62,6 +62,30 @@ public:
 	virtual long __stdcall v25();
 	// HYPOTHESIS: slot 26 fits IDirectPlay4::Send (from, to, flags, data, size); "Send failed".
 	virtual long __stdcall Send( int from, int to, int flags, void* pData, unsigned long size );
+	virtual long __stdcall v27();
+	virtual long __stdcall v28();
+	virtual long __stdcall v29();
+	virtual long __stdcall v30();
+	virtual long __stdcall v31();
+	virtual long __stdcall v32();
+	virtual long __stdcall v33();
+	virtual long __stdcall v34();
+	virtual long __stdcall v35();
+	virtual long __stdcall v36();
+	virtual long __stdcall v37();
+	virtual long __stdcall v38();
+	virtual long __stdcall v39();
+	virtual long __stdcall v40();
+	virtual long __stdcall v41();
+	virtual long __stdcall v42();
+	virtual long __stdcall v43();
+	virtual long __stdcall v44();
+	virtual long __stdcall v45();
+	virtual long __stdcall v46();
+	virtual long __stdcall v47();
+	virtual long __stdcall v48();
+	// HYPOTHESIS: slot 49 fits IDirectPlay4::SendEx; "SendEx failed".
+	virtual long __stdcall SendEx( int from, int to, int flags, void* pData, unsigned long size, int priority, int timeout, void* pContext, unsigned long* pMsgID );
 };
 
 // HYPOTHESIS: thrown with the failing result; its constructor is 0x00614460.
@@ -97,6 +121,7 @@ public:
 	void fn_006160a0( int a, int b );
 	long fn_00616150( int a );
 	long fn_006161f0( int to, int from, const void* pData, unsigned long size, int flags, long type );
+	long fn_00616330( int from, int to, int flags, const void* pData, unsigned long size, int priority, int timeout, void* pContext, unsigned long* pMsgID );
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
 	char fPad48[0x104];
@@ -160,6 +185,37 @@ long fn_00616000_DirectPlayHolder::fn_006161f0( int to, int from, const void* pD
 		fn_006123b0( e.v1() );
 	}
 	catch ( fn_00614460_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
+	return hr;
+}
+
+// FUNCTION: STARFLEETOP 0x00616330
+long fn_00616000_DirectPlayHolder::fn_00616330( int from, int to, int flags, const void* pData, unsigned long size, int priority, int timeout, void* pContext, unsigned long* pMsgID )
+{
+	long hr;
+	unsigned long length = size + sizeof( fn_006161f0_Message );
+	fn_006161f0_Message* pMessage = (fn_006161f0_Message*)_alloca( length );
+	pMessage->fType = 1;
+	pMessage->f4 = size;
+	memcpy( pMessage->fData, pData, size );
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		hr = fDirectPlayObject->SendEx( from, to, flags, pMessage, length, priority, timeout, pContext, pMsgID );
+		if ( hr < 0 && hr != 0x8877010e && hr != 0x8000000a )
+		{
+			fn_006123b0( "SendEx failed" );
+			return hr;
+		}
+		if ( f154 == 0 )
+			f154 = g_00c3b62c->fn_00614330();
+		f14c += length;
+		return 0;
+	}
+	catch ( fn_00616000_Error& e )
 	{
 		fn_006123b0( e.v1() );
 	}
