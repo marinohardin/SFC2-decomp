@@ -186,6 +186,7 @@ public:
 	// HYPOTHESIS: the terrain type (the TerrainType column), read under the lock.
 	int32 fn_0053a31c();
 	int32 fn_0053a33c();
+	int32 fn_0053a35c();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
