@@ -155,7 +155,7 @@ public:
 	virtual char vfunction5( long param_1 );
 	virtual char vfunction6();
 	virtual void vfunction7( long param_1, long param_2 );
-	virtual void vfunction8();
+	virtual void vfunction8( long param_1 );
 	virtual void vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
@@ -560,4 +560,28 @@ long tSndMgr_Miles::vfunction29( long param_1, long param_2, char param_3, unsig
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f5f8
+void tSndMgr_Miles::vfunction8( long param_1 )
+{
+	if ( field_2414 )
+	{
+		if ( fn_0050fc33( &param_1 ) )
+			field_10[param_1].field_54 = 1;
+		else
+		{
+			for ( unsigned long i = 1; i < field_4234; i++ )
+			{
+				if ( field_10[i].field_56 && field_f90[i].field_8 == param_1 )
+				{
+					field_10[i].field_56 = 0;
+					field_10[i].field_54 = 1;
+					return;
+				}
+			}
+			if ( fn_0050fc33( &param_1 ) )
+				field_10[param_1].field_54 = 1;
+		}
+	}
 }
