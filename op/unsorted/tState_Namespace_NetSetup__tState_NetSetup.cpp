@@ -87,6 +87,7 @@ public:
 	void fn_00476997(c_00468677_source *control, const char *name, const char *value);
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
 	void fn_00476aee(c_00468677_source *control, const char *key);
+	void fn_00476c64();
 	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
 	void fn_00476d52(int *control, void *source, int id);
 	void fn_00477440();
@@ -424,4 +425,12 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476aee(c_00468677_source *
 	key.mAppendInt32s(entry, 1);
 	if (current)
 		g_p008cc580->vfunction10(name, key.mCharStr(), current->mCharStr());
+}
+
+// FUNCTION: STARFLEETOP 0x00476c64
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c64()
+{
+	fn_004d3340(g_008493b0);
+	fn_004d3340(g_008493b8);
+	fn_004d3340(g_008493c0);
 }
