@@ -219,3 +219,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0061f690	tDirIterator::mFirst	5	fable	100.00	2026-11-17T15:23:13Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 100.00%
 0x00623390	tString::tString	3	fable	91.14	2026-11-17T15:29:13Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.14%
 0x0062d4a0	tTagInfo::mClassifyTagTokens	5	fable	96.89	2026-11-17T15:31:03Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 96.89%
+0x00631860	twDir::mGetDate	3	fable	92.56	2026-11-17T15:46:49Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 92.56%
