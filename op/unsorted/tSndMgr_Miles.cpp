@@ -159,7 +159,7 @@ public:
 	virtual void vfunction9();
 	// HYPOTHESIS: second parameter unused (ret 8, never read)
 	virtual long vfunction10( long param_1, long param_2 );
-	virtual void vfunction11();
+	virtual void vfunction11( long param_1 );
 	virtual void vfunction12();
 	virtual void vfunction13();
 	virtual void vfunction14();
@@ -600,4 +600,15 @@ long tSndMgr_Miles::vfunction10( long param_1, long param_2 )
 	if ( !field_2414 )
 		return 0;
 	return vfunction29( param_1, -1, 0, field_1f20 );
+}
+
+// FUNCTION: STARFLEETOP 0x0050f6b4
+void tSndMgr_Miles::vfunction11( long param_1 )
+{
+	if ( field_2414 )
+	{
+		vfunction12();
+		field_2438.field_10 = field_2438.field_c = vfunction29( param_1, -1, 1, 10 );
+		fn_0050fc33( &field_2438.field_10 );
+	}
 }
