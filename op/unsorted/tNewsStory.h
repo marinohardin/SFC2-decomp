@@ -27,6 +27,7 @@ public:
 		long m10;
 	};
 
+	char fn_00547448() const;
 	char fn_0054744c() const;
 	tDetailTime fn_0054745f() const;
 	fn_0040651e_type* fn_00547450( int ascii ) const;
