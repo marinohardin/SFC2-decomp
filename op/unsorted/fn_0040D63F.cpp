@@ -23,7 +23,7 @@ public:
     fn_0040d63f_Buf* fn_0040d7ae(struct fn_0040d7ae_Point2& p);
     // HYPOTHESIS: 0x0040e6d1 writes a zero-terminated string (it takes strlen + 1).
     void fn_0040e6d1(char* s);
-    void fn_0040e699(int n);
+    int fn_0040e699(char* p);
     // HYPOTHESIS: 0x0040e744 is a member taking a formatted text line.
     void fn_0040e744(char* text);
     // HYPOTHESIS: 0x0040e70f is the read counterpart of 0x0040e744 (fetches a text line).
@@ -230,7 +230,7 @@ void fn_0040d908(char* s, fn_0040d63f_Buf& buf)
 // FUNCTION: STARFLEETOP 0x0040d916
 void fn_0040d916(int n, fn_0040d63f_Buf& buf)
 {
-    buf.fn_0040e699(n);
+    buf.fn_0040e699((char*)n);
 }
 
 // HYPOTHESIS: variable-length encoding of a signed value: sign and low 6 bits in the first byte, then 7 bits per byte.
@@ -849,5 +849,22 @@ void fn_0040e689(fn_0040d63f_Buf& buf)
 void fn_0040e691(fn_0040d63f_Buf& buf)
 {
     buf.m18--;
+}
+
+// HYPOTHESIS: reads bytes until a terminating zero; returns the count read.
+// FUNCTION: STARFLEETOP 0x0040e699
+int fn_0040d63f_Buf::fn_0040e699(char* p)
+{
+    int n = 0;
+    int r;
+    while ((r = fn_0040d897(p, 1, 0)) == 1) {
+        if (*p == 0)
+            break;
+        p++;
+        n++;
+    }
+    if (r == 0 && p != 0)
+        *p = 0;
+    return n;
 }
 
