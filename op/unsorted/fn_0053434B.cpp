@@ -427,6 +427,7 @@ public:
     long fn_00534dfd(int kind, long index);
     long fn_00534e23(int kind, long value);
     void fn_00534e42(int kind, bool reset);
+    void fn_00534e59(int kind, bool reset);
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -637,4 +638,10 @@ long fn_00534950_object::fn_00534e23(int kind, long value)
 void fn_00534950_object::fn_00534e42(int kind, bool reset)
 {
     field_e18c[kind]->fn_0053482b(reset);
+}
+
+// FUNCTION: STARFLEETOP 0x00534e59
+void fn_00534950_object::fn_00534e59(int kind, bool reset)
+{
+    field_e18c[kind]->fn_00534840(reset);
 }
