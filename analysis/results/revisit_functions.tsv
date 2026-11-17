@@ -127,3 +127,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00534855	FUN_00534855	99.39	2	sonnet	2026-11-17T04:23:01Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.39%
 0x00539464	tMetaMapHex::~tMetaMapHex	99.87	3	opus	2026-11-17T05:12:19Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.87%
 0x0053963a	tMetaMapHex::vfunction2_for_tStreamable	54.53	2	sonnet	2026-11-17T06:41:13Z	best not above 90% after 2 attempts; best 54.53%
+0x00539801	tMetaMapHex::vfunction3_for_tStreamable	99.99	2	sonnet	2026-11-17T07:04:02Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.99%
