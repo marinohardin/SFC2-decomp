@@ -285,6 +285,8 @@ class C_0060c7dc
 {
 public:
     C_0060c7dc();
+    ~C_0060c7dc();
+    void fn_0060ca20();
     void fn_0060ca83(int index);
     int m_00;
     int m_04;
@@ -302,4 +304,10 @@ C_0060c7dc::C_0060c7dc()
 {
     m_728 = 0;
     fn_0060ca83(3);
+}
+
+// FUNCTION: STARFLEETOP 0x0060c841
+C_0060c7dc::~C_0060c7dc()
+{
+    fn_0060ca20();
 }
