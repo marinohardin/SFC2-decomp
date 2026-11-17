@@ -153,6 +153,9 @@ struct tObject_00447415_limits
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
+	char field_0x115[0x71];
+	// HYPOTHESIS: a byte per index from +0x186; its length is not known.
+	char field_0x186[3];
 };
 
 // HYPOTHESIS: the class owning 0x0044715d is not known; only its table pointer at 0xec is read.
@@ -166,6 +169,7 @@ public:
 	void fn_004475bc(int kind, int value);
 	int fn_004476cf(int level);
 	int fn_00447740(int level);
+	int fn_004477b1(int index);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -391,4 +395,10 @@ int c_0044715d::fn_00447740(int level)
 	default:
 		return 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004477b1
+int c_0044715d::fn_004477b1(int index)
+{
+	return field_0xe8->field_0x186[index];
 }
