@@ -27,6 +27,14 @@ void fn_004d34c5(int id, bool enable);
 extern char *g_00849398;
 extern char g_008494b8[];
 extern int g_008493d4;
+// HYPOTHESIS: pointers to the names "IPSetup" and "ipEntryField".
+extern const char *g_008493b0;
+extern const char *g_008493b4;
+void fn_004d3331(const char *name);
+void fn_004d3340(const char *name);
+// HYPOTHESIS: returns the control with the given id.
+class c_00468677_source;
+c_00468677_source *fn_004d3446(int id);
 
 namespace tState_Namespace_NetSetup
 {
@@ -56,6 +64,10 @@ public:
 	void fn_004764bd();
 	void fn_004764ed();
 	bool fn_00476678();
+	bool fn_004766f1();
+	// HYPOTHESIS: puts the value into the control under the given key, as
+	// tState_GameConnections::fn_004688ee does.
+	void fn_00476997(int control, const char *name, const char *value);
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
 	void fn_00476aee(int value, const char *key);
 	void fn_00477440();
@@ -244,6 +256,17 @@ bool tState_NetSetup::fn_00476678()
 	bool result = gNetControl.fn_004325a9(1);
 	gNetControl.fn_0043289d();
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004766f1
+bool tState_NetSetup::fn_004766f1()
+{
+	fn_004d3331(g_008493b0);
+	fn_004d3340(g_008493b4);
+	if (m1dc == 0)
+		m1dc = (int)fn_004d3446(0x10012);
+	fn_00476997(m1dc, "IPAddress", m208.mCharStr());
+	return gNetControl.fn_004325a9(2);
 }
 
 }	// namespace tState_Namespace_NetSetup
