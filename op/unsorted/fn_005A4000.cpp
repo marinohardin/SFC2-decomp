@@ -126,8 +126,6 @@ int* fn_005A4173_Owner::fn_005A4257()
 // FUNCTION: STARFLEETOP 0x005a426f
 int* fn_005A4173_Owner::fn_005A426f()
 {
-	int* p = &fValue44;
-	Enter();
-	Leave();
-	return p;
+	tGuard guard(this);
+	return &fValue44;
 }
