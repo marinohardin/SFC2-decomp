@@ -991,6 +991,25 @@ void fn_0040e8a9(tString* str, tSFCStream& buf, unsigned char flags)
     }
 }
 
+// HYPOTHESIS: the two-float counterpart of 0x0040e85e.
+// FUNCTION: STARFLEETOP 0x0040e8f4
+void fn_0040e8f4(tPoint2* p, tSFCStream& buf, unsigned char flags)
+{
+    if (flags & 2) {
+        if (flags & 8) {
+            buf.fn_0040d705((int*)p);
+            return;
+        }
+        fn_0040db7b((int*)p, buf);
+    } else {
+        if (flags & 8) {
+            buf >> *p;
+            return;
+        }
+        fn_0040dbab((float*)p, buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int tSFCStream::fn_0040e70f(char* text)
 {
