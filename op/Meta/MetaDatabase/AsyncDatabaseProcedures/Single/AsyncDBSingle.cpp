@@ -9,7 +9,6 @@
 #include "unsorted/tMetaMapHex.h"
 #include "unsorted/tMissionCompleteResults.h"
 #include <sstream>
-#include <string>
 #include <vector>
 class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
 class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
@@ -63,6 +62,7 @@ public:
 	void fn_0057013d( nDatabase::tQuery<tNewsStory>& query, std::vector<tNewsStory>* result, bool lock );
 	void fn_00570372( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result, bool lock );
 	void fn_005704ae( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result );
+	void fn_00570578( tServCharacter* character, tServCharacter* characterStore );	// HYPOTHESIS: both pointers are characters (assertion texts "character", "characterStore" at 0x0056dbe5).
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
@@ -96,7 +96,7 @@ public:
 	virtual void vfunction23( const tNewsStory::tDetailTime& time, std::vector<tNewsStory>* stories );
 	virtual void vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock );
 	virtual void vfunction25( tCampaignInfo* campaignInfo );
-	virtual void vfunction26();
+	virtual void vfunction26( tServCharacter* character, tServCharacter* characterStore );
 	virtual void vfunction27();
 	virtual void vfunction28();
 	virtual void vfunction29();
@@ -562,4 +562,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction25( tCampaignInfo* 
 	{
 		count++;
 	}
+}
+#line 567
+// FUNCTION: STARFLEETOP 0x0056dbe5
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction26( tServCharacter* character, tServCharacter* characterStore )
+{
+#line 807
+	validate( character );
+	validate( characterStore );
+	fDatabase->fn_00570578( character, characterStore );
 }
