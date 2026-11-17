@@ -553,7 +553,6 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 	// MATCH-ONLY: the struct above stands for the std::vector it has the layout of.
 	return *(fn_005717f7_vector*)&(*it).second;
 }
-
 // HYPOTHESIS: a forwarding member; 0x00571bda takes the object at +8, a constant 1 and the argument.
 class fn_00571a58_inner;
 void __stdcall fn_00571bda(fn_00571a58_inner* inner, int flag, int arg);
@@ -564,6 +563,7 @@ public:
 	fn_00571a58_inner* fn_00571a58_ptr;
 	void fn_00571a58(int arg);
 	void fn_00571a69(int arg);
+	void fn_00571a9a(int arg);
 };
 
 #line 569
@@ -591,4 +591,13 @@ fn_005717f7_vector::~fn_005717f7_vector()
 		;
 	::operator delete(m_first);
 	m_first = 0, m_last = 0, m_end = 0;
+}
+
+// HYPOTHESIS: a forwarding member like 0x00571a58; 0x00571e33 takes the object at +8, a constant 1 and the argument.
+void __stdcall fn_00571e33(fn_00571a58_inner* inner, int flag, int arg);
+
+// FUNCTION: STARFLEETOP 0x00571a9a
+void fn_00571a58_owner::fn_00571a9a(int arg)
+{
+	fn_00571e33(fn_00571a58_ptr, 1, arg);
 }
