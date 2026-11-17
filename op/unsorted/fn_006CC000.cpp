@@ -363,6 +363,19 @@ void fn_006cc7d0(fn_006cc0f0_server *server, char *text)
 	}
 }
 
+// HYPOTHESIS: filters out the reply keys that are not stored with a server entry.
+// FUNCTION: STARFLEETOP 0x006cc860
+int fn_006cc860(char *key)
+{
+	char *skipped[2] = { "queryid", "final" };
+	for (unsigned int i = 0; i < sizeof(skipped) / sizeof(skipped[0]); i++)
+	{
+		if (strcmp(key, skipped[i]) == 0)
+			return 0;
+	}
+	return 1;
+}
+
 int fn_006ccac0(const void *element, int buckets);
 int fn_006ccb00(const void *a, const void *b);
 
