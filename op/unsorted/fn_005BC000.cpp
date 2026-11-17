@@ -759,3 +759,13 @@ fn_005bc1d5_tree::iterator fn_005bc1d5_tree::FUN_005bc645(iterator _P)
 	--_Size;
 	return (_P);
 }
+
+// FUNCTION: STARFLEETOP 0x005bc8b0
+void fn_005bc1d5_tree::FUN_005bc8b0(node *_X)
+{
+	for (node *_Y = _X; _Y != _Nil; _X = _Y)
+		{FUN_005bc8b0(_Y->_Right);
+		_Y = _Y->_Left;
+		(&_X->_Value)->~fn_005bc091_entry();
+		operator delete(_X); }
+}
