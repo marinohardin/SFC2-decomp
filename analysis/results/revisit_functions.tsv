@@ -174,3 +174,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005456f9	FUN_005456f9	0.00	2	sonnet	2026-11-17T15:16:36Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00545705	tAuctionItem::vfunction1_for_tStreamable	0.00	2	sonnet	2026-11-17T15:19:12Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0057a4ab	FUN_0057a4ab	0.00	2	sonnet	2026-11-17T15:26:08Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0057a577	FUN_0057a577	4.82	2	sonnet	2026-11-17T15:28:30Z	best not above 90% after 2 attempts; best 4.82%
