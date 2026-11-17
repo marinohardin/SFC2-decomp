@@ -350,3 +350,11 @@ const char* tMetaMapHex::SQLTableName() const
 	m_bc.Leave();
 	return "MapHex";
 }
+
+// FUNCTION: STARFLEETOP 0x00539ee8
+const char* tMetaMapHex::SQLFieldNames() const
+{
+	m_bc.Enter();
+	m_bc.Leave();
+	return " ( ID, Locked, LockID, X, Y, EmpireControl, CartelControl, TerrainType, PlanetType, StarbaseType, BaseEconomicPoints, CurrentEconomicPoints, EmpireBaseVictoryPoints, CartelBaseVictoryPoints, EmpireCurrentVictoryPoints, CartelCurrentVictoryPoints, BaseSpeedPoints, CurrentSpeedPoints ) ";
+}

@@ -177,6 +177,8 @@ public:
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
+	// HYPOTHESIS: the SDK's SQLFieldNames, the virtual after SQLTableName in tDatabaseObject.
+	virtual const char* SQLFieldNames() const;
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.

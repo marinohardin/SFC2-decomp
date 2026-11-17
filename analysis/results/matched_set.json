@@ -6148,6 +6148,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00539ee8": {
+   "name": "tMetaMapHex::vfunction9_for_tAllocatedClass",
+   "symbol": "?SQLFieldNames@tMetaMapHex@@UBEPBDXZ",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
