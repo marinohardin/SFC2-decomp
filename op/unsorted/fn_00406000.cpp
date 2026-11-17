@@ -194,3 +194,27 @@ int std::string::compare(const std::string& _X) const
 
 // HYPOTHESIS: a caller in the original uses this instantiation.
 int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
+
+// FUNCTION: STARFLEETOP 0x00406540
+// HYPOTHESIS: a pointer holder with an owner flag; Peek() is the callee at 0x00405fdf.
+struct fn_00406540_holder
+{
+    void* m_ptr;
+    char m_flag;
+    void Peek();
+    int fn_00406540(const fn_00406540_holder& other);
+};
+
+int fn_00406540_holder::fn_00406540(const fn_00406540_holder& other)
+{
+    if (m_flag == 0)
+        Peek();
+    if (other.m_flag == 0)
+        ((fn_00406540_holder&)other).Peek();
+    int a = (int)m_ptr;
+    if (!a && !other.m_ptr)
+        return 1;
+    if (a && other.m_ptr)
+        return 1;
+    return 0;
+}
