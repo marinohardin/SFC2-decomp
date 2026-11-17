@@ -36,15 +36,22 @@ public:
 	char fn_0052310b(int param_1, int param_2, int param_3);
 	char fn_0052315a(void *param_1, void *param_2, int param_3);
 	void fn_00523198();
+	void fn_00523222();
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;
-	char m_pad0219[0x16b8 - 0x219];
+	char m_pad0219[0x16b5 - 0x219];
+	// HYPOTHESIS: a flag 0x00523222 sets.
+	char m_16b5;
+	char m_pad16b6[0x16b8 - 0x16b6];
 	// HYPOTHESIS: two path settings 0x00523198 reads into buffers it allocates.
 	char *m_16b8;
 	char *m_16bc;
 	// HYPOTHESIS: IDs that 0x00523027 looks up through 0x00523574.
 	std::list<int> m_16c0;
+	char m_pad16cc[0x16dc - 0x16cc];
+	// HYPOTHESIS: a 100-byte table 0x00523222 fills with 0xff.
+	char m_16dc[100];
 };
 
 extern fn_0090bed4_Object *g_p0090bed4;

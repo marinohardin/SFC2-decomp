@@ -131,3 +131,32 @@ void fn_0090bed4_Object::fn_00523198()
 	m_16bc = new char[len + 1];
 	g_p008cc580->vfunction9("AI", g_p008591f4, 0, m_16bc, len);
 }
+
+// HYPOTHESIS: AI flags that 0x00523222 resets; tAICaptain and tAIHelmOfficer read some of them.
+// 0x0096ea1a and 0x0096ea1c are cleared with 16-bit stores, so they are shorts.
+extern bool g_0096ea15;
+extern bool g_0096ea16;
+extern bool g_0096ea17;
+extern bool g_0096ea18;
+extern bool g_0096ea19;
+extern short g_0096ea1a;
+extern short g_0096ea1c;
+extern char g_0085922a;
+extern char g_b0085922b;
+
+// FUNCTION: STARFLEETOP 0x00523222
+void fn_0090bed4_Object::fn_00523222()
+{
+	fn_00523198();
+	m_16b5 = 1;
+	g_0096ea17 = false;
+	g_0096ea18 = false;
+	g_0096ea19 = false;
+	g_0096ea1a = 0;
+	g_0096ea1c = 0;
+	g_0085922a = 1;
+	g_b0085922b = 1;
+	g_0096ea15 = false;
+	g_0096ea16 = false;
+	memset(m_16dc, 0xff, 100);
+}
