@@ -89,3 +89,6 @@ void fn_005e254f_class::fn_005e254f( long *msg )
 		break;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e2799
+std::string g_00c39048 = "MetaBigShip";
