@@ -11,9 +11,9 @@ class fn_00406887_Base;
 class fn_00402b90_Obj
 {
 public:
-    // HYPOTHESIS: the exception specification of 0x00402b90 as a unit sees it. The caller in
-    // fn_00404000.cpp builds only when the call is known not to throw (that unit defines
-    // fn_00402b90_NOTHROW); the callers in fn_00406000.cpp build only without it.
+    // MATCH-ONLY: fn_00402b90_NOTHROW picks the exception specification. 0x00404184 (in
+    // fn_00404000.cpp, which defines it) matches only with a no-throw call; 0x004066a3,
+    // 0x004066f1, 0x0040673f and 0x0040678d (fn_00406000.cpp) match only without it.
 #ifdef fn_00402b90_NOTHROW
     void fn_00402b90() throw();
 #else

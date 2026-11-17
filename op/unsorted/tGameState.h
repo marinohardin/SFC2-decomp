@@ -5,10 +5,10 @@
 #define tGameState_h 1
 
 // The constructor (0x00469cd7) links the state into a list of every state and numbers it; the
-// destructor (0x00469d19) unlinks it. The vtable at 0x0079ec4c has 19 slots. Only the unit
-// that defines tGameState (it defines tGameState_DECLARE_SLOTS) declares slots 1 to 18: the
-// derived classes, tCampaignState and tPanelMgr, declare their own entries for those slots under
-// other names and signatures, and would clash with these.
+// destructor (0x00469d19) unlinks it. The vtable at 0x0079ec4c has 19 slots.
+// MATCH-ONLY: slots 1 to 18 are declared only where tGameState_DECLARE_SLOTS is defined
+// (tGameState.cpp, whose slot 8, 14, 16, 17 and 18 bodies need them). tCampaignState and tPanelMgr
+// declare those slots themselves under other names and signatures, and only match that way.
 class tView3D;
 
 class tGameState
