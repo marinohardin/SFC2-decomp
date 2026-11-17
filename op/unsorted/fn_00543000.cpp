@@ -94,6 +94,7 @@ public:
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
+	int fn_00543357(const nDatabase::tID &id);
 
 	char m_pad[0xd0];
 	fn_0042b0fd_owner m0d0;
@@ -213,4 +214,16 @@ int fn_005430ad_owner::fn_0054330e(const nDatabase::tID &id)
 void fn_005430ad_owner::fn_0054334a(int flags)
 {
 	m134 |= flags;
+}
+
+// FUNCTION: STARFLEETOP 0x00543357
+int fn_005430ad_owner::fn_00543357(const nDatabase::tID &id)
+{
+	for (nDatabase::tID *entry = m0d0.m_04; entry != m0d0.m_08; entry++)
+		if (*entry == id)
+		{
+			m0d0.fn_00544725( entry );
+			break;
+		}
+	return m0d0.size();
 }

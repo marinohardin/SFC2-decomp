@@ -13,6 +13,7 @@ public:
 	void fn_0042add2( const nDatabase::tID &id );
 	void fn_0053f46d( const nDatabase::tID *first, const nDatabase::tID *last );
 	void fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *first, const nDatabase::tID *last );
+	nDatabase::tID *fn_00544725( nDatabase::tID *pos );
 	// MATCH-ONLY: the original read the size through an inlined accessor.
 	unsigned int size() const
 	{
