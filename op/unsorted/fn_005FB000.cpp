@@ -223,6 +223,154 @@ template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int
 	return ( _Pairib( _P, false ) );
 }
 
+// MATCH-ONLY: the original's library's _Min and _Max, which stop at a node's nil flag (+0x21);
+// the toolchain's compare with a static nil node instead. Left is at +0x0, right at +0x8.
+template<class _Np> inline _Np fn_TreeMin( _Np _P )
+{
+	while ( !*( (char*)*(_Np*)_P + 0x21 ) )
+		_P = *(_Np*)_P;
+	return ( _P );
+}
+
+template<class _Np> inline _Np fn_TreeMax( _Np _P )
+{
+	while ( !*( (char*)*( (_Np*)_P + 2 ) + 0x21 ) )
+		_P = *( (_Np*)_P + 2 );
+	return ( _P );
+}
+
+// The game's out-of-line copy of the library's single-element tree erase, for the tree of 0x005fb259.
+// HYPOTHESIS: the tree is the stand-in map of int to string; 0x005fb11c is its _Destval, 0x00556fd0
+// and 0x00558526 the rotations, 0x0052aad3 the iterator's increment.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb47a
+template<> std::_Tree<int, std::pair<const int, std::string>, std::map<int, std::string>::_Kfn, std::less<int>, std::allocator<std::string> >::iterator std::_Tree<int, std::pair<const int, std::string>, std::map<int, std::string>::_Kfn, std::less<int>, std::allocator<std::string> >::erase( iterator _P )
+{
+	// MATCH-ONLY: the nil node is read from the object (+0x8) and a node's nil flag from +0x21,
+	// where the original's library kept them; the toolchain's xtree has neither.
+	_Nodeptr _X;
+	_Nodeptr _Y = ( _P++ )._Mynode();
+	_Nodeptr _Z = _Y;
+	if ( _Left( _Y ) == *(_Nodeptr*)( (char*)this + 8 ) )
+		_X = _Right( _Y );
+	else if ( _Right( _Y ) == *(_Nodeptr*)( (char*)this + 8 ) )
+		_X = _Left( _Y );
+	else
+		_Y = fn_TreeMin( _Right( _Y ) ), _X = _Right( _Y );
+	if ( _Y != _Z )
+	{
+		_Parent( _Left( _Z ) ) = _Y;
+		_Left( _Y ) = _Left( _Z );
+		if ( _Y == _Right( _Z ) )
+			_Parent( _X ) = _Y;
+		else
+		{
+			_Parent( _X ) = _Parent( _Y );
+			_Left( _Parent( _Y ) ) = _X;
+			_Right( _Y ) = _Right( _Z );
+			_Parent( _Right( _Z ) ) = _Y;
+		}
+		if ( _Root() == _Z )
+			_Root() = _Y;
+		else if ( _Left( _Parent( _Z ) ) == _Z )
+			_Left( _Parent( _Z ) ) = _Y;
+		else
+			_Right( _Parent( _Z ) ) = _Y;
+		_Parent( _Y ) = _Parent( _Z );
+		std::swap( *( (char*)_Y + 0x20 ), *( (char*)_Z + 0x20 ) );
+		_Y = _Z;
+	}
+	else
+	{
+		_Parent( _X ) = _Parent( _Y );
+		if ( _Root() == _Z )
+			_Root() = _X;
+		else if ( _Left( _Parent( _Z ) ) == _Z )
+			_Left( _Parent( _Z ) ) = _X;
+		else
+			_Right( _Parent( _Z ) ) = _X;
+		if ( _Lmost() != _Z )
+			;
+		else if ( _Right( _Z ) == *(_Nodeptr*)( (char*)this + 8 ) )
+			_Lmost() = _Parent( _Z );
+		else
+			_Lmost() = fn_TreeMin( _X );
+		if ( _Rmost() != _Z )
+			;
+		else if ( _Left( _Z ) == *(_Nodeptr*)( (char*)this + 8 ) )
+			_Rmost() = _Parent( _Z );
+		else
+			_Rmost() = fn_TreeMax( _X );
+	}
+	// MATCH-ONLY: the colour is a byte at +0x20 (red 0, black 1) and the size sits at +0x10 in the
+	// original's library.
+	if ( *( (char*)_Y + 0x20 ) == 1 )
+	{
+		for ( ; _X != _Root() && *( (char*)_X + 0x20 ) == 1; _X = _Parent( _X ) )
+			if ( _X == _Left( _Parent( _X ) ) )
+			{
+				_Nodeptr _W = _Right( _Parent( _X ) );
+				if ( *( (char*)_W + 0x20 ) == 0 )
+				{
+					*( (char*)_W + 0x20 ) = 1;
+					*( (char*)_Parent( _X ) + 0x20 ) = 0;
+					_Lrotate( _Parent( _X ) );
+					_W = _Right( _Parent( _X ) );
+				}
+				if ( *( (char*)_Left( _W ) + 0x20 ) == 1 && *( (char*)_Right( _W ) + 0x20 ) == 1 )
+				{
+					*( (char*)_W + 0x20 ) = 0;
+					continue;
+				}
+				else if ( *( (char*)_Right( _W ) + 0x20 ) == 1 )
+				{
+					*( (char*)_Left( _W ) + 0x20 ) = 1;
+					*( (char*)_W + 0x20 ) = 0;
+					_Rrotate( _W );
+					_W = _Right( _Parent( _X ) );
+				}
+				*( (char*)_W + 0x20 ) = *( (char*)_Parent( _X ) + 0x20 );
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Right( _W ) + 0x20 ) = 1;
+				_Lrotate( _Parent( _X ) );
+				break;
+			}
+			else
+			{
+				_Nodeptr _W = _Left( _Parent( _X ) );
+				if ( *( (char*)_W + 0x20 ) == 0 )
+				{
+					*( (char*)_W + 0x20 ) = 1;
+					*( (char*)_Parent( _X ) + 0x20 ) = 0;
+					_Rrotate( _Parent( _X ) );
+					_W = _Left( _Parent( _X ) );
+				}
+				if ( *( (char*)_Right( _W ) + 0x20 ) == 1 && *( (char*)_Left( _W ) + 0x20 ) == 1 )
+				{
+					*( (char*)_W + 0x20 ) = 0;
+					continue;
+				}
+				else if ( *( (char*)_Left( _W ) + 0x20 ) == 1 )
+				{
+					*( (char*)_Right( _W ) + 0x20 ) = 1;
+					*( (char*)_W + 0x20 ) = 0;
+					_Lrotate( _W );
+					_W = _Left( _Parent( _X ) );
+				}
+				*( (char*)_W + 0x20 ) = *( (char*)_Parent( _X ) + 0x20 );
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Left( _W ) + 0x20 ) = 1;
+				_Rrotate( _Parent( _X ) );
+				break;
+			}
+		*( (char*)_X + 0x20 ) = 1;
+	}
+	_Destval( &_Value( _Y ) );
+	_Freenode( _Y );
+	--*(size_type*)( (char*)this + 0x10 );
+	return ( _P );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
