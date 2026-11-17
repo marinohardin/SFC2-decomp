@@ -173,6 +173,7 @@ public:
 	int fn_00447740(int level);
 	int fn_004477b1(int index);
 	void fn_004477c6(int index, char value, char current);
+	int fn_004477f8(int index);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -412,4 +413,10 @@ void c_0044715d::fn_004477c6(int index, char value, char current)
 	field_0xe8->field_0x17e[index] = value;
 	field_0xe8->field_0x182[index] = value;
 	field_0xe8->field_0x186[index] = current;
+}
+
+// FUNCTION: STARFLEETOP 0x004477f8
+int c_0044715d::fn_004477f8(int index)
+{
+	return field_0xe8->field_0x182[index];
 }
