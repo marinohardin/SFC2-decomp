@@ -192,3 +192,24 @@ void fn_0057a66b_vector::fn_0057a66b()
     field_8 = 0;
     field_c = 0;
 }
+
+// HYPOTHESIS: 0x0057a69e is a vector's push_back (insert(end(), 1, x)); last is at +8 and
+// 0x0057a716 is the vector's insert(iterator, n, value). The element type is not identified.
+class fn_0057a69e_value;
+
+class fn_0057a69e_vector {
+public:
+    void fn_0057a69e(const fn_0057a69e_value &value);
+    void fn_0057a716(fn_0057a69e_value *where, unsigned int count, const fn_0057a69e_value &value);
+
+    int field_0;
+    fn_0057a69e_value *field_4;
+    fn_0057a69e_value *field_8;
+    fn_0057a69e_value *field_c;
+};
+
+// FUNCTION: STARFLEETOP 0x0057a69e
+void fn_0057a69e_vector::fn_0057a69e(const fn_0057a69e_value &value)
+{
+    fn_0057a716(field_8, 1, value);
+}
