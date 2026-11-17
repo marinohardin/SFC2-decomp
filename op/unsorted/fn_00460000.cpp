@@ -719,6 +719,7 @@ class CMiniDockFrameWnd
 public:
     CMiniDockFrameWnd(const CMiniDockFrameWnd &other);
     virtual ~CMiniDockFrameWnd();
+    CMiniDockFrameWnd &operator=(const CMiniDockFrameWnd &other);
 
     char pad_004[0x188];
 };
@@ -728,6 +729,7 @@ class fn_00460b73_class
 public:
     fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al);
     ~fn_00460b73_class();
+    CMiniDockFrameWnd *erase(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
     void _Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
 
     std::allocator<CMiniDockFrameWnd> allocator;
@@ -867,4 +869,13 @@ fn_00460acb_iterator fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator first, 
         _Head->_Next = _Head, _Head->_Right = _Head;
         return (begin());
     }
+}
+
+// FUNCTION: STARFLEETOP 0x00460daf
+CMiniDockFrameWnd *fn_00460b73_class::erase(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L)
+{
+    CMiniDockFrameWnd *_S = std::copy(_L, _Last, _F);
+    _Destroy(_S, _Last);
+    _Last = _S;
+    return (_F);
 }
