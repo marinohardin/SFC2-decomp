@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
 // Unit:      unsorted/tSensorGroupSystem.cpp
-// Functions: 0x0043dfd4 to 0x0043f6c3, 43 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// Functions of tSensorGroupSystem (0x0043dfd4 to 0x0043f6c3); original file unknown.
+
+class tSensorGroupSystem
+{
+public:
+    virtual ~tSensorGroupSystem();
+};
+
+// HYPOTHESIS: the base classes and members are not recovered yet; the destructor at
+// 0x0043dff0 destroys several members under an unwind frame and is still to be written.
+// FUNCTION: STARFLEETOP 0x0043dfd4
+tSensorGroupSystem::~tSensorGroupSystem()
+{
+}

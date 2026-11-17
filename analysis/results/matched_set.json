@@ -3079,6 +3079,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0043dfd4": {
+   "name": "tSensorGroupSystem::scalar_deleting_destructor",
+   "symbol": "??_GtSensorGroupSystem@@UAEPAXI@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0043fa4e": {
    "name": "tShieldSystem::vfunction52",
    "symbol": "?vfunction52@tShieldSystem@@UAEXXZ",
