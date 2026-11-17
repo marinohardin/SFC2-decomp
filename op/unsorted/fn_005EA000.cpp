@@ -229,14 +229,22 @@ void tTree_005ea14b::fn_005ea469(tNode *x)
 	}
 }
 
+// HYPOTHESIS: the 0x14-byte value copied by 0x005b6973 is tHexPoint (declared only inside
+// unsorted/tClientCharacter.cpp, so not redeclared here); its members are not recovered.
+class fn_005eaa3f_point {
+public:
+	fn_005eaa3f_point( const fn_005eaa3f_point& other );
+	int m_00[5];
+};
+
 // HYPOTHESIS: a second red-black tree with the same layout as tTree_005ea14b, keyed on
-// an int; the stored value (0x18 bytes, copied through 0x005eaa3f) is not recovered.
+// an int; the stored value (an int and a 0x14-byte point) is copied through 0x005eaa3f.
 // Its rotations are the shared copies at 0x00556fd0 and 0x00558526.
 class tTree_005ea4a1 {
 public:
 	struct tValue {
 		int first;
-		int m_04[5];
+		fn_005eaa3f_point m_04;
 	};
 	struct tNode {
 		tNode *m_left;
@@ -672,4 +680,12 @@ void _Construct( fn_005eaa12_elem* _P, const fn_005eaa12_elem& _V )
 {
 	new ((void *)_P) fn_005eaa12_elem(_V);
 }
+}
+
+// HYPOTHESIS: the library's construct helper held out of line for this value; the placement
+// new and its null test are the library's.
+// FUNCTION: STARFLEETOP 0x005eaa3f
+void fn_005eaa3f(tTree_005ea4a1::tValue *p, const tTree_005ea4a1::tValue &v)
+{
+	new ((void *)p) tTree_005ea4a1::tValue(v);
 }
