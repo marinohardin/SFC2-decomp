@@ -112,10 +112,12 @@ public:
 	bool fn_0054340c();
 	bool fn_00543437();
 	void fn_00543445();
+	int fn_00543455();
 
 	char m_pad[0x48];
 	std::string m048;
-	char m_pad58[0x78];
+	int m058;
+	char m_pad5c[0x74];
 	fn_0042b0fd_owner m0d0;
 	char m0e0[0x10];
 	fn_0042c709_wrapper m0f0;
@@ -311,4 +313,11 @@ bool fn_005430ad_owner::fn_00543437()
 void fn_005430ad_owner::fn_00543445()
 {
 	m14c.fn_005b6a5c(0, 0);
+}
+
+// HYPOTHESIS: the dword at +0x58 is returned as an int; its type is not known yet.
+// FUNCTION: STARFLEETOP 0x00543455
+int fn_005430ad_owner::fn_00543455()
+{
+	return m058;
 }
