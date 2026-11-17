@@ -349,3 +349,15 @@ void fn_0040daf6(int* src, fn_0040d63f_Buf& buf)
     p = (int*)src[2];
     fn_0040dac7((int*)&p, buf);
 }
+
+// FUNCTION: STARFLEETOP 0x0040db38
+void fn_0040db38(float* dst, fn_0040d63f_Buf& buf)
+{
+    float v;
+    fn_0040dae4((int*)&v, buf);
+    dst[0] = v;
+    fn_0040dae4((int*)&v, buf);
+    dst[1] = v;
+    fn_0040dae4((int*)&v, buf);
+    dst[2] = v;
+}
