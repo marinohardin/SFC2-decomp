@@ -1018,3 +1018,164 @@ void *fn_0046a755()
 {
 	return g_00c7c120;
 }
+
+char fn_0069ac50(unsigned int param_1);
+
+// FUNCTION: STARFLEETOP 0x0046a75b
+char fn_0046a75b(unsigned int param_1)
+{
+	if (g_0090db9c != 0)
+		return 0;
+
+	switch (param_1)
+	{
+	case 0x105:
+		param_1 = 0x100;
+		break;
+	case 0x106:
+		param_1 = 0x101;
+		break;
+	case 0x107:
+		param_1 = 0x102;
+		break;
+	case 0x108:
+		param_1 = 0x103;
+		break;
+	case 0x109:
+		param_1 = 0x104;
+		break;
+	case 0x10a:
+		param_1 = 0x105;
+		break;
+	case 0x10b:
+		param_1 = 0x106;
+		break;
+	case 0x10c:
+		param_1 = 0x107;
+		break;
+	case 0x10d:
+		param_1 = 0x108;
+		break;
+	case 0x10e:
+		param_1 = 0x109;
+		break;
+	case 0x10f:
+		param_1 = 0x10a;
+		break;
+	case 0x110:
+		param_1 = 0x10b;
+		break;
+	case 0x111:
+		param_1 = 0x10c;
+		break;
+	case 0x112:
+		param_1 = 0x10d;
+		break;
+	case 0x113:
+		param_1 = 0x10e;
+		break;
+	case 0x114:
+		param_1 = 0x10f;
+		break;
+	case 0x115:
+		param_1 = 0x110;
+		break;
+	case 0x116:
+		param_1 = 0x111;
+		break;
+	case 0x117:
+		param_1 = 0x112;
+		break;
+	case 0x118:
+		param_1 = 0x113;
+		break;
+	case 0x119:
+		param_1 = 0x114;
+		break;
+	case 0x11a:
+		param_1 = 0x115;
+		break;
+	case 0x100:
+		param_1 = 8;
+		break;
+	case 0x101:
+		param_1 = 9;
+		break;
+	case 0x102:
+		param_1 = 0xd;
+		break;
+	case 0x103:
+		param_1 = 0x1b;
+		break;
+	case 0x104:
+		param_1 = 0x20;
+		break;
+	case 0x11b:
+		param_1 = 0x116;
+		break;
+	case 0x11c:
+		param_1 = 0x117;
+		break;
+	case 0x11d:
+		param_1 = 0x118;
+		break;
+	case 0x11e:
+		param_1 = 0x119;
+		break;
+	case 0x11f:
+		param_1 = 0x11a;
+		break;
+	case 0x120:
+		param_1 = 0x11b;
+		break;
+	case 0x121:
+		param_1 = 0x11c;
+		break;
+	case 0x122:
+		param_1 = 0x11d;
+		break;
+	case 0x123:
+		param_1 = 0x11e;
+		break;
+	case 0x124:
+		param_1 = 0x11f;
+		break;
+	case 0x125:
+		param_1 = 0x120;
+		break;
+	case 0x126:
+		param_1 = 0x121;
+		break;
+	case 0x127:
+		param_1 = 0x122;
+		break;
+	case 0x128:
+		param_1 = 0x123;
+		break;
+	case 0x129:
+		param_1 = 0x124;
+		break;
+	case 0x12a:
+		param_1 = 0x125;
+		break;
+	case 0x12b:
+		param_1 = 0x126;
+		break;
+	case 0x12c:
+		param_1 = 0x127;
+		break;
+	case 0x12d:
+		param_1 = 0x128;
+		break;
+	case 0x12e:
+		param_1 = 0x129;
+		break;
+	case 0x12f:
+		param_1 = 0x12a;
+		break;
+	case 0x130:
+		param_1 = 0x12b;
+		break;
+	}
+	return fn_0069ac50(param_1);
+}
