@@ -150,3 +150,18 @@ void fn_00469e34()
 {
 	g_fn_0046995e_owner.fn_0046995e();
 }
+
+// HYPOTHESIS: fn_00469979 is a method of another unidentified class.
+class fn_00469979_owner
+{
+public:
+	void fn_00469979(int param_1);
+};
+
+extern fn_00469979_owner g_fn_00469979_owner;
+
+// FUNCTION: STARFLEETOP 0x00469e3e
+void fn_00469e3e(int param_1)
+{
+	g_fn_00469979_owner.fn_00469979(param_1);
+}
