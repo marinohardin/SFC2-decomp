@@ -6,6 +6,8 @@
 #include <string.h>
 #include <list>
 
+#include "unsorted/tNetControl.h"
+
 // HYPOTHESIS: the thrown type and its context argument are unknown; the owner class is unknown.
 // The context's constructor (0x00619a20) zeroes three longs and a byte.
 class fn_00619a20_Context
@@ -135,6 +137,16 @@ public:
 	void fn_00613f80( void* pDesc );
 };
 
+// HYPOTHESIS: the layout of DirectPlay's DPNAME (size, flags left unwritten, short and long
+// name).
+struct fn_006166c0_Name
+{
+	unsigned long fSize;
+	unsigned long fFlags;
+	const char* fShortName;
+	const char* fLongName;
+};
+
 class fn_00616000_DirectPlayHolder
 {
 public:
@@ -146,6 +158,9 @@ public:
 	long fn_00616470( long* pA, long* pB, void* pData, unsigned long* pSize, int unused );
 	long fn_00616540( fn_00613f80_Target* pTarget );
 	void fn_00616620( void* pDesc );
+	// HYPOTHESIS: a member that leaves this unread; the arguments' class is a guess from the
+	// shared name getter 0x0060f6d0.
+	fn_006166c0_Name fn_006166c0( c_004329af_entry* pShort, c_004329af_entry* pLong );
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
 	char fPad48[0x68];
@@ -312,4 +327,14 @@ void fn_00616000_DirectPlayHolder::fn_00616620( void* pDesc )
 	{
 		fn_006123b0( e.v1() );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006166c0
+fn_006166c0_Name fn_00616000_DirectPlayHolder::fn_006166c0( c_004329af_entry* pShort, c_004329af_entry* pLong )
+{
+	fn_006166c0_Name name;
+	name.fSize = sizeof( fn_006166c0_Name );
+	name.fShortName = pShort->fn_0060f6d0();
+	name.fLongName = pLong->fn_0060f6d0();
+	return name;
 }
