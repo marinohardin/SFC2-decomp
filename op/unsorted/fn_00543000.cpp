@@ -110,6 +110,7 @@ public:
 	std::string fn_00543587() const;
 	char *fn_005435c3();
 	bool fn_005435ca(std::string text);
+	void fn_0054360a();
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -457,4 +458,12 @@ bool fn_005430ad_owner::fn_005435ca(std::string text)
 {
 	m048 = text;
 	return true;
+}
+
+// HYPOTHESIS: clears the two-bit field at bits 5-6 of the dword at +0x114 and sets bit 4.
+// FUNCTION: STARFLEETOP 0x0054360a
+void fn_005430ad_owner::fn_0054360a()
+{
+	m114_5 = 0;
+	m114_4 = 1;
 }
