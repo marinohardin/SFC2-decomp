@@ -485,3 +485,37 @@ fn_00404aba_Locale::fn_00404aba_Locale(const fn_00404aba_Locale& other) throw()
     m0 = other.m0;
     m0->fn_00402b90();
 }
+
+// HYPOTHESIS: std::locale::operator=: release the old implementation, share the new one.
+class fn_00404ad0_Base
+{
+public:
+    virtual ~fn_00404ad0_Base();
+};
+
+class fn_00404ad0_Impl
+{
+public:
+    fn_00404ad0_Base* fn_00402b3a();
+    void fn_00402b90() throw();
+};
+
+class fn_00404ad0_Locale
+{
+public:
+    fn_00404ad0_Locale& fn_00404ad0(const fn_00404ad0_Locale& other) throw();
+    fn_00404ad0_Impl* m0;
+};
+
+// FUNCTION: STARFLEETOP 0x00404ad0
+fn_00404ad0_Locale& fn_00404ad0_Locale::fn_00404ad0(const fn_00404ad0_Locale& other) throw()
+{
+    if (m0 != other.m0)
+    {
+        fn_00404ad0_Base* p = m0->fn_00402b3a();
+        delete p;
+        m0 = other.m0;
+        m0->fn_00402b90();
+    }
+    return *this;
+}
