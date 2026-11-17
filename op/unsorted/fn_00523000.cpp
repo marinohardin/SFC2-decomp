@@ -408,3 +408,26 @@ void tObject_00523644::fn_00523668(int index)
 		m_0000[i - 1] = m_0000[i];
 	m_200--;
 }
+
+// HYPOTHESIS: a member object at +4 whose constructor is 0x00524090; its fields are unknown.
+class tObject_00524090
+{
+public:
+	tObject_00524090();
+};
+
+// HYPOTHESIS: 0x005236d8 is a constructor: an index set to -1, then the member at +4 constructed.
+class tObject_005236d8
+{
+public:
+	tObject_005236d8();
+
+	int m_00;
+	tObject_00524090 m_04;
+};
+
+// FUNCTION: STARFLEETOP 0x005236d8
+tObject_005236d8::tObject_005236d8()
+	: m_00(-1)
+{
+}
