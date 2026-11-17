@@ -1,6 +1,7 @@
 // Functions of the 0x006e3000 page; original file unknown.
 
 #include <windows.h>
+#include <list>
 #include <map>
 #include <string>
 
@@ -387,4 +388,27 @@ tRef_006e15b0 tObject_006e3240::FUN_006e3570()
 	unsigned long length = m0c;
 	FUN_006e3270();
 	return new tObject_006e15b0(data, length, true);
+}
+
+// HYPOTHESIS: the element type of the list FUN_006e3640 frees; its destructor
+// is at 0x005d6a66.
+class tObject_005d6a66
+{
+public:
+	~tObject_005d6a66();
+};
+
+// HYPOTHESIS: FUN_006e3640 is VC6's std::list destructor inlined into the
+// destructor of a class whose first member is the list.
+class tObject_006e3640
+{
+public:
+	~tObject_006e3640();
+
+	std::list<tObject_005d6a66> mList;
+};
+
+// FUNCTION: STARFLEETOP 0x006e3640
+tObject_006e3640::~tObject_006e3640()
+{
 }
