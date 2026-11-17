@@ -5,6 +5,7 @@
 // MATCH-ONLY: the string writer is called out of line (0x0042a116); see the header's note.
 #define DATASTORE_OUT_OF_LINE_WRITE
 #include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/DataStoreInput.h"
 #include "unsorted/tShip.h"
 
 // HYPOTHESIS: layout read from the constructor; the fields between the named ones are not
@@ -21,6 +22,7 @@ public:
 	virtual ~tAuctionItem();
 
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
+	virtual	void StreamIn( nDataStore::tInput& input );
 
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
@@ -82,4 +84,13 @@ void tAuctionItem::StreamOut( nDataStore::tOutput& output ) const
 
 	output << fBool_48;
 	output << fString_4c << fID_5c << fInt_6c << fInt_70 << fDouble_78 << fInt_80 << fInt_84 << fInt_88 << fID_8c << fInt_9c << fInt_a0;
+}
+
+// FUNCTION: STARFLEETOP 0x00544e66
+void tAuctionItem::StreamIn( nDataStore::tInput& input )
+{
+	tDatabaseObject::StreamIn( input );
+
+	input >> fBool_48;
+	input >> fString_4c >> fID_5c >> fInt_6c >> fInt_70 >> fDouble_78 >> fInt_80 >> fInt_84 >> fInt_88 >> fID_8c >> fInt_9c >> fInt_a0;
 }
