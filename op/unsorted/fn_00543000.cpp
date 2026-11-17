@@ -215,6 +215,7 @@ public:
 	bool fn_00543bab(int amount);
 	bool fn_00543bba();
 	void fn_00543bc3(bool flag);
+	void fn_00543bdd(bool flag);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -855,4 +856,19 @@ void fn_005430ad_owner::fn_00543bc3(bool flag)
 		m114_9 = 1;
 	else
 		m114_9 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00543bdd
+void fn_005430ad_owner::fn_00543bdd(bool flag)
+{
+	if (flag)
+	{
+		if (!fn_00543294() && m0ac != fn_005434b1())
+		{
+			m114_7 = 1;
+			fn_00543b54(fn_005434b1());
+		}
+	}
+	else
+		m114_7 = 0;
 }
