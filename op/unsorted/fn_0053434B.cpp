@@ -119,10 +119,13 @@ public:
     // HYPOTHESIS: the argument's first long selects the slot it is handed to.
     void fn_0053455b(long* value);
     int fn_0053456e(char* name);
+    void fn_00534622(long value);
 
     tString field_00;
     long field_28;
     fn_0053440f_object* field_2c[20];
+    // HYPOTHESIS: a long directly after the slots, set by 0x00534622; its type is not known.
+    long field_7c;
 };
 
 // FUNCTION: STARFLEETOP 0x005344a3
@@ -173,4 +176,11 @@ int fn_005344a3_object::fn_0053456e(char* name)
         }
     }
     return -1;
+}
+
+// HYPOTHESIS: a setter on the same object (it follows its members in address order).
+// FUNCTION: STARFLEETOP 0x00534622
+void fn_005344a3_object::fn_00534622(long value)
+{
+    field_7c = value;
 }
