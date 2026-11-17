@@ -102,3 +102,62 @@ void fn_0057a5be_object::fn_0057a5be()
     field_4 = 0;
     field_8 = 0;
 }
+
+// HYPOTHESIS: 0x0057a5f6 is a list's assignment operator in the standard library's shape
+// (node: next, prev, value at +8); the element type, whose assignment is 0x005b63e9, is not
+// identified yet.
+class fn_0057a5f6_value {
+public:
+    fn_0057a5f6_value &operator=(const fn_0057a5f6_value &other);
+};
+
+struct fn_0057a5f6_node {
+    fn_0057a5f6_node *next;
+    fn_0057a5f6_node *prev;
+    fn_0057a5f6_value value;
+};
+
+class fn_0057a5f6_iterator {
+public:
+    fn_0057a5f6_iterator(fn_0057a5f6_node *p) : ptr(p) {}
+    fn_0057a5f6_value &operator*() const { return ptr->value; }
+    fn_0057a5f6_iterator &operator++() { ptr = ptr->next; return *this; }
+    fn_0057a5f6_iterator operator++(int) { fn_0057a5f6_iterator tmp = *this; ++*this; return tmp; }
+    bool operator==(const fn_0057a5f6_iterator &other) const { return ptr == other.ptr; }
+    bool operator!=(const fn_0057a5f6_iterator &other) const { return !(*this == other); }
+
+    fn_0057a5f6_node *ptr;
+};
+
+class fn_0057a5f6_list {
+public:
+    fn_0057a5f6_list &operator=(const fn_0057a5f6_list &other);
+    fn_0057a5f6_iterator begin() const { return fn_0057a5f6_iterator(field_4->next); }
+    fn_0057a5f6_iterator end() const { return fn_0057a5f6_iterator(field_4); }
+    fn_0057a5f6_iterator erase(fn_0057a5f6_iterator where);
+    fn_0057a5f6_iterator insert(fn_0057a5f6_iterator where, const fn_0057a5f6_value &value);
+    void insert(fn_0057a5f6_iterator where, fn_0057a5f6_iterator first, fn_0057a5f6_iterator last)
+        { for (; first != last; ++first) insert(where, *first); }
+    fn_0057a5f6_iterator erase(fn_0057a5f6_iterator first, fn_0057a5f6_iterator last)
+        { while (first != last) erase(first++); return first; }
+
+    int field_0;
+    fn_0057a5f6_node *field_4;
+    int field_8;
+};
+
+// FUNCTION: STARFLEETOP 0x0057a5f6
+fn_0057a5f6_list &fn_0057a5f6_list::operator=(const fn_0057a5f6_list &other)
+{
+    if (this != &other) {
+        fn_0057a5f6_iterator first1 = begin();
+        fn_0057a5f6_iterator last1 = end();
+        fn_0057a5f6_iterator first2 = other.begin();
+        fn_0057a5f6_iterator last2 = other.end();
+        for (; first1 != last1 && first2 != last2; ++first1, ++first2)
+            *first1 = *first2;
+        erase(first1, last1);
+        insert(last1, first2, last2);
+    }
+    return *this;
+}
