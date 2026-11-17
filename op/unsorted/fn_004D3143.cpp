@@ -580,7 +580,7 @@ public:
 	virtual void vfunction6();
 	virtual void vfunction7();
 	virtual void vfunction8();
-	virtual void vfunction9();
+	virtual bool vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
 	virtual void vfunction12();
@@ -618,4 +618,14 @@ void fn_004d3786( tVarButtonGroup* arg1 )
 void fn_004d379f( long arg1 )
 {
 	fn_004d3786( (tVarButtonGroup*) fn_004d3446( arg1 ) );
+}
+
+// FUNCTION: STARFLEETOP 0x004d37b1
+bool fn_004d37b1( tVarButtonGroup* arg1 )
+{
+	if ( arg1 != 0 )
+	{
+		return arg1->vfunction9();
+	}
+	return false;
 }
