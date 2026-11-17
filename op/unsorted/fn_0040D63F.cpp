@@ -954,6 +954,25 @@ void fn_0040e802(int* p, fn_0040d63f_Buf& buf, unsigned char flags)
     }
 }
 
+// HYPOTHESIS: the three-float counterpart of 0x0040e802.
+// FUNCTION: STARFLEETOP 0x0040e85e
+void fn_0040e85e(fn_0040d777_Point3* p, fn_0040d63f_Buf& buf, unsigned char flags)
+{
+    if (flags & 2) {
+        if (flags & 8) {
+            buf.fn_0040d6b7((int*)p);
+            return;
+        }
+        fn_0040daf6((int*)p, buf);
+    } else {
+        if (flags & 8) {
+            buf.fn_0040d777(*p);
+            return;
+        }
+        fn_0040db38((float*)p, buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int fn_0040d63f_Buf::fn_0040e70f(char* text)
 {
