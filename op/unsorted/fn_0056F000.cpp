@@ -722,9 +722,9 @@ nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
 void nDatabase::tQuery<tCampaignInfo>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // FUNCTION: STARFLEETOP 0x0056fedd
 nDatabase::tQuery<tNotify>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
-// HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete
-// here; the casts below stand for the original's static_casts (the base sits at offset 0).
-// HYPOTHESIS: the result container for tMetaMapDesc, as for 0x0056f4df.
+// FUNCTION: STARFLEETOP 0x0056feeb
+void nDatabase::tQuery<tNotify>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
+// HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete here; the casts below stand for the original's static_casts (the base sits at offset 0). The result container for tMetaMapDesc is as for 0x0056f4df.
 class fn_0056f9d7_results {
 public:
 	void push_back(const tMetaMapDesc &value);
