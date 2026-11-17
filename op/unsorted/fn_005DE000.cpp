@@ -211,3 +211,12 @@ tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > CreateCallback( tMetaClient
 {
 	return 	tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >( object, func );
 }
+
+#include "Common/Callback.h"
+
+// MATCH-ONLY: the SDK's template destructor (an empty body), written out as this instance's
+// explicit specialization so that its annotation names the one instance.
+// FUNCTION: STARFLEETOP 0x005de660
+template<>
+tCallback< tNewsStory* >::~tCallback()
+{}
