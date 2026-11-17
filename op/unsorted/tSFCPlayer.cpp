@@ -280,6 +280,7 @@ class tSFCPlayer
 		virtual void vfunction109();
 		virtual void vfunction110();
 		virtual void vfunction111(int *param_1);
+		virtual void vfunction112(int param_1);
 		void fn_004d1220();
 
 	private:
@@ -1405,6 +1406,14 @@ void tSFCPlayer::vfunction111(int *param_1)
 		m_238[i].fn_00445a14((int)&m_3f58[row * 6 + i]);
 		strcpy(m_70[i], m_3418[row * 6 + i].mCharStr());
 	}
+}
+// FUNCTION: STARFLEETOP 0x004d137c
+void tSFCPlayer::vfunction112(int param_1)
+{
+	int row = fn_004d11e9(param_1);
+	for (int i = 0; i < 6; i++)
+		m_3f58[row * 6 + i].fn_00445a14((int)&m_238[i]);
+	vfunction109();
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
