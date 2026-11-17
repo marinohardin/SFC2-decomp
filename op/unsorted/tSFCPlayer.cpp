@@ -59,6 +59,7 @@ class tSFCPlayer
 			void vfunction41(int param_1);
 			int vfunction42();
 			void vfunction43(int param_1);
+			int vfunction44();
 
 	private:
 		char m_04;
@@ -91,6 +92,7 @@ class tSFCPlayer
 			int m_84bc;
 			int m_84c0;
 			char pad_84c4[0x85a4 - 0x84c4];
+
 		tObject_00583828 m_85a4;
 		tObject_00583828 m_85bc;
 };
@@ -134,4 +136,10 @@ int tSFCPlayer::vfunction42()
 void tSFCPlayer::vfunction43(int param_1)
 {
 	m_84c0 = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004cf8a5
+int tSFCPlayer::vfunction44()
+{
+	return m_84c0;
 }
