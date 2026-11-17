@@ -29,6 +29,8 @@ public:
     virtual int vfunction108();
     // vftable slot 108; returns field_f4.
     virtual int vfunction109();
+    // vftable slot 109; returns element param_1 of field_2c8.
+    virtual int vfunction110(int param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -45,6 +47,11 @@ public:
     int field_e8;
     char padec[0xf4 - 0xec];
     int field_f4;
+    // The names above sit 4 bytes below the compiled offsets (field_f4 compiles to +0xf8);
+    // from here on names give the compiled offset.
+    char padfc[0x2c8 - 0xfc];
+    // HYPOTHESIS: an int array indexed by vfunction110; its length is not recovered.
+    int field_2c8[1];
 };
 
 #endif	// tShuttleBaySystem_h
