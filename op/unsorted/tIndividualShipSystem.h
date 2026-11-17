@@ -380,7 +380,8 @@ public:
     virtual void vfunction89();
     // vftable slot 89 (body at 0x0043d541); takes two arguments (ret 8) and returns a float.
     virtual float vfunction90(float param_1, int param_2);
-    virtual void vfunction91();
+    // vftable slot 90 (body at 0x0043d722); takes two arguments (ret 8).
+    virtual void vfunction91(unsigned int param_1, int param_2);
     // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
     virtual void vfunction92(int param_1);
     // HYPOTHESIS: vftable slot 92; returns field_78.

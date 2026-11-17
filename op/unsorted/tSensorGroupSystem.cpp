@@ -62,6 +62,7 @@ public:
     virtual float vfunction74(float param_1, float param_2);
     // HYPOTHESIS: param_2 is not read; the base call passes 0.
     virtual float vfunction90(float param_1, int param_2);
+    virtual void vfunction91(unsigned int param_1, int param_2);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -360,6 +361,8 @@ public:
     virtual void vfunction89();
     // HYPOTHESIS: slot 89; 0x0043f651 passes a float and a zero and drops the float result.
     virtual float vfunction90(float param_1, int param_2);
+    // HYPOTHESIS: slot 90; 0x0043f6c3 passes its two arguments on.
+    virtual void vfunction91(unsigned int param_1, int param_2);
 
     int fn_0043da08();
 };
@@ -1546,4 +1549,16 @@ float tSensorGroupSystem::vfunction90(float param_1, int param_2)
     if (field_88 != 0)
         field_88->vfunction90(param_1, 0);
     return tRepairableShipSystem::vfunction90(param_1, 0);
+}
+
+// FUNCTION: STARFLEETOP 0x0043f6c3
+void tSensorGroupSystem::vfunction91(unsigned int param_1, int param_2)
+{
+    if (field_80 != 0)
+        field_80->vfunction91(param_1, param_2);
+    if (field_84 != 0)
+        field_84->vfunction91(param_1, param_2);
+    if (field_88 != 0)
+        field_88->vfunction91(param_1, param_2);
+    tRepairableShipSystem::vfunction91(param_1, param_2);
 }
