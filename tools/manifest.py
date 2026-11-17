@@ -37,6 +37,11 @@ Only the initializer has a line record in the /FAs listing; the harness and the 
 find the registration (`_$E3` for a unit's first global) and the destructor (`_$E2`) from it
 (`harness/lib/source.symbol_for_annotation`).
 
+A member of a standard-library class that op/ does not declare (`std::string::append`, the
+library's own copy that a game unit compiled from the compiler's headers) is read without its
+class: exact it is `vc6` only, since the guest build has no declaration to take a member pointer
+from; not exact `partial`, a `// STUB:` `stub`.
+
 The scanner reads the original's style of C++ (one declaration per line, braces on their own or
 at the end of a line); what it does not understand it reports rather than guesses:
 
@@ -445,6 +450,12 @@ def symbol_of(f):
     return '%s(%s)%s' % (f['name'], ','.join(f['types']), ' const' if f['const'] else '')
 
 
+def library_member(name, classes):
+    """True for a member of a standard-library class op/ does not declare (`std::string::append`)."""
+    owner = name.rsplit('::', 1)[0] if '::' in name else ''
+    return owner.startswith('std::') and owner not in classes
+
+
 def owner_class(name, classes):
     """The class a qualified function name belongs to, or None for a free function."""
     if '::' not in name:
@@ -586,8 +597,16 @@ def build(game, functions_csv, matched_json=MATCHED, units_tsv=None):
             # Generated from a global's definition or a virtual destructor: nothing in the guest
             # can call it by a C++ name, so it has no entry point; exact, only the object lift
             # takes it.
-            if 'deleting' in f:
+            if 'deleting' in f and not library_member(f['name'], classes):
                 owner_class(f['name'], classes)
+            f['class'], f['static'] = None, False
+            if f['modes'] == 'vc6 guest':
+                f['modes'] = 'vc6'
+            continue
+        if library_member(f['name'], classes):
+            # A member of a library class (an instance the game's units compiled from the
+            # compiler's own headers): exact, only the object lift takes it, since the guest build
+            # has no declaration of the class to take a member pointer from.
             f['class'], f['static'] = None, False
             if f['modes'] == 'vc6 guest':
                 f['modes'] = 'vc6'
