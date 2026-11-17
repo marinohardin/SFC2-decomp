@@ -109,6 +109,16 @@ int fn_0053440f_object::fn_00534461(char* name)
     return -1;
 }
 
+// HYPOTHESIS: a 12-byte entry whose long at +4 indexes the "RaceRanks" strings; the rest is
+// not known.
+class fn_0053462c_entry
+{
+public:
+    long field_00;
+    long field_04;
+    long field_08;
+};
+
 // HYPOTHESIS: a constructor of an object holding a tString, the long it is given and twenty
 // fn_0053440f_object pointers, filled from the last; the owning class is not known.
 class fn_005344a3_object
@@ -119,13 +129,15 @@ public:
     // HYPOTHESIS: the argument's first long selects the slot it is handed to.
     void fn_0053455b(long* value);
     int fn_0053456e(char* name);
-    void fn_00534622(long value);
+    void fn_00534622(fn_0053462c_entry* value);
+    void fn_0053462c(long index);
 
     tString field_00;
     long field_28;
     fn_0053440f_object* field_2c[20];
-    // HYPOTHESIS: a long directly after the slots, set by 0x00534622; its type is not known.
-    long field_7c;
+    // HYPOTHESIS: an array of 12-byte entries directly after the slots, set by 0x00534622 and
+    // indexed by 0x0053462c.
+    fn_0053462c_entry* field_7c;
 };
 
 // FUNCTION: STARFLEETOP 0x005344a3
@@ -180,7 +192,16 @@ int fn_005344a3_object::fn_0053456e(char* name)
 
 // HYPOTHESIS: a setter on the same object (it follows its members in address order).
 // FUNCTION: STARFLEETOP 0x00534622
-void fn_005344a3_object::fn_00534622(long value)
+void fn_005344a3_object::fn_00534622(fn_0053462c_entry* value)
 {
     field_7c = value;
+}
+
+// HYPOTHESIS: looks up the string of the given entry's rank in the "RaceRanks" group; the
+// callee runs on this same object (both start with their tString), so the two classes are
+// probably one class not yet joined.
+// FUNCTION: STARFLEETOP 0x0053462c
+void fn_005344a3_object::fn_0053462c(long index)
+{
+    ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index].field_04);
 }
