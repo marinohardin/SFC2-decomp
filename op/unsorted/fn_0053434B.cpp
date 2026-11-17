@@ -134,6 +134,7 @@ public:
     tString& fn_00534647(long index);
     long fn_00534690(long index);
     long fn_005346a0(long index);
+    long fn_005346d9(long value);
 
     tString field_00;
     long field_28;
@@ -238,4 +239,15 @@ long fn_005344a3_object::fn_005346a0(long index)
             return field_7c[index + i].field_00;
     }
     return 0;
+}
+
+// HYPOTHESIS: counts the entries after the first whose field_00 does not exceed the value,
+// stopping at a field_00 of -1.
+// FUNCTION: STARFLEETOP 0x005346d9
+long fn_005344a3_object::fn_005346d9(long value)
+{
+    int i;
+    for (i = 1; field_7c[i].field_00 != -1 && !(value < field_7c[i].field_00); i++)
+        ;
+    return i - 1;
 }
