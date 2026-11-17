@@ -1,0 +1,196 @@
+//	tShipSystems.h: tShipSystems, the abstract base of a ship's system set.
+// Evidence:  class (RTTI: tShipSystems, vtable 0x0079cf30; original file unknown)
+
+#ifndef tShipSystems_h
+#define tShipSystems_h 1
+
+class tMinMaxFloat;
+template <class T> class tValue;
+class tIndividualShipSystemList;
+class tShipSystemManager;
+class tTacticalStoresManager;
+
+// An interface: tShipSystemsFighter's constructor (0x00444046) stores this vtable before it
+// builds its own members, and every slot is _purecall in the exe's vtable.
+// HYPOTHESIS: no data members and no declared constructor.
+class tShipSystems
+{
+public:
+    // The slot names count from 1: vfunctionN sits at +(N-1)*4 (0x00444654 calls vfunction3
+    // through +0x8 and vfunction2 through +0x4).
+    virtual int vfunction1() = 0;
+    virtual float vfunction2() = 0;
+    virtual float vfunction3() = 0;
+    virtual void vfunction4() = 0;
+    virtual void vfunction5() = 0;
+    virtual void vfunction6() = 0;
+    virtual void vfunction7() = 0;
+    virtual void vfunction8() = 0;
+    virtual void vfunction9() = 0;
+    virtual void vfunction10() = 0;
+    virtual int vfunction11( int param_1, int param_2, int param_3 ) = 0;
+    virtual void vfunction12() = 0;
+    virtual void vfunction13() = 0;
+    virtual void vfunction14() = 0;
+    virtual void vfunction15() = 0;
+    virtual void vfunction16() = 0;
+    virtual void vfunction17() = 0;
+    virtual void vfunction18() = 0;
+    virtual void vfunction19() = 0;
+    virtual void vfunction20() = 0;
+    virtual void vfunction21() = 0;
+    virtual float vfunction22( float param_1 ) = 0;
+    virtual float vfunction23( float param_1 ) = 0;
+    virtual void vfunction24() = 0;
+    virtual void vfunction25() = 0;
+    virtual void vfunction26( float param_1 ) = 0;
+    virtual tMinMaxFloat* vfunction27() = 0;
+    virtual tMinMaxFloat* vfunction28() = 0;
+    virtual tMinMaxFloat* vfunction29() = 0;
+    virtual tMinMaxFloat* vfunction30() = 0;
+    virtual tMinMaxFloat* vfunction31() = 0;
+    virtual tMinMaxFloat* vfunction32() = 0;
+    virtual tMinMaxFloat* vfunction33() = 0;
+    virtual tMinMaxFloat* vfunction34() = 0;
+    virtual tMinMaxFloat* vfunction35() = 0;
+    virtual tMinMaxFloat* vfunction36() = 0;
+    virtual tMinMaxFloat* vfunction37() = 0;
+    virtual tMinMaxFloat* vfunction38() = 0;
+    virtual void vfunction39() = 0;
+    virtual void vfunction40() = 0;
+    virtual tMinMaxFloat* vfunction41() = 0;
+    virtual tValue<float>* vfunction42() = 0;
+    virtual bool vfunction43() = 0;
+    virtual bool vfunction44() = 0;
+    virtual void vfunction45( bool param_1 ) = 0;
+    virtual void vfunction46() = 0;
+    virtual void vfunction47() = 0;
+    virtual void vfunction48() = 0;
+    virtual void vfunction49() = 0;
+    virtual void vfunction50() = 0;
+    virtual float vfunction51( int param_1 ) = 0;
+    virtual void vfunction52() = 0;
+    virtual tShipSystemManager* vfunction53() = 0;
+    virtual tTacticalStoresManager* vfunction54() = 0;
+    virtual void vfunction55() = 0;
+    virtual void vfunction56() = 0;
+    virtual char* vfunction57() = 0;
+    virtual char* vfunction58() = 0;
+    virtual int vfunction59() = 0;
+    virtual int vfunction60() = 0;
+    virtual int vfunction61() = 0;
+    virtual int vfunction62() = 0;
+    virtual int vfunction63() = 0;
+    virtual int vfunction64() = 0;
+    virtual int vfunction65() = 0;
+    virtual int vfunction66() = 0;
+    virtual int vfunction67() = 0;
+    virtual int vfunction68() = 0;
+    virtual int vfunction69() = 0;
+    virtual int vfunction70() = 0;
+    virtual int vfunction71() = 0;
+    virtual int vfunction72() = 0;
+    virtual int vfunction73() = 0;
+    virtual int vfunction74() = 0;
+    virtual int vfunction75() = 0;
+    virtual int vfunction76() = 0;
+    virtual int vfunction77() = 0;
+    virtual int vfunction78() = 0;
+    virtual int vfunction79() = 0;
+    virtual int vfunction80() = 0;
+    virtual int vfunction81() = 0;
+    virtual int vfunction82() = 0;
+    virtual int vfunction83() = 0;
+    virtual int vfunction84() = 0;
+    virtual int vfunction85() = 0;
+    virtual int vfunction86() = 0;
+    virtual int vfunction87() = 0;
+    virtual int vfunction88() = 0;
+    virtual int vfunction89() = 0;
+    virtual int vfunction90() = 0;
+    virtual int vfunction91() = 0;
+    virtual int vfunction92() = 0;
+    virtual int vfunction93() = 0;
+    virtual void vfunction94() = 0;
+    virtual int vfunction95() = 0;
+    virtual int vfunction96() = 0;
+    virtual int vfunction97() = 0;
+    virtual int vfunction98() = 0;
+    virtual int vfunction99() = 0;
+    virtual int vfunction100() = 0;
+    virtual int vfunction101() = 0;
+    virtual int vfunction102() = 0;
+    virtual int vfunction103() = 0;
+    virtual int vfunction104() = 0;
+    virtual int vfunction105() = 0;
+    virtual int vfunction106() = 0;
+    virtual void vfunction107( float param_1 ) = 0;
+    virtual int vfunction108() = 0;
+    virtual float vfunction109( float param_1, int param_2 ) = 0;
+    virtual float vfunction110( int param_1, int param_2 ) = 0;
+    virtual void vfunction111( int param_1 ) = 0;
+    virtual void vfunction112( int param_1, int param_2 ) = 0;
+    virtual float vfunction113() = 0;
+    virtual void vfunction114( float param_1 ) = 0;
+    virtual void vfunction115( float param_1 ) = 0;
+    virtual void vfunction116( float param_1 ) = 0;
+    virtual void vfunction117( float param_1 ) = 0;
+    virtual float vfunction118() = 0;
+    virtual void vfunction119() = 0;
+    virtual float vfunction120() = 0;
+    virtual void vfunction121() = 0;
+    virtual void vfunction122() = 0;
+    virtual tMinMaxFloat* vfunction123() = 0;
+    virtual float vfunction124() = 0;
+    virtual float vfunction125() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns the address of a tMinMaxFloat member.
+    virtual tMinMaxFloat* vfunction126() = 0;
+    virtual void vfunction127( float param_1 ) = 0;
+    virtual void vfunction128( float param_1 ) = 0;
+    virtual void vfunction129( float param_1 ) = 0;
+    virtual void vfunction130( float param_1 ) = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns the address of a tMinMaxFloat member.
+    virtual tMinMaxFloat* vfunction131() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns a float member.
+    virtual float vfunction132() = 0;
+    virtual void vfunction133() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns a float member.
+    virtual float vfunction134() = 0;
+    virtual void vfunction135() = 0;
+    virtual void vfunction136() = 0;
+    virtual void vfunction137() = 0;
+    virtual float vfunction138() = 0;
+    virtual int vfunction139() = 0;
+    virtual int vfunction140() = 0;
+    virtual void vfunction141() = 0;
+    virtual void vfunction142() = 0;
+    virtual void vfunction143() = 0;
+    virtual void vfunction144() = 0;
+    virtual void vfunction145() = 0;
+    virtual int vfunction146(int, int) = 0;
+    virtual tIndividualShipSystemList* vfunction147() = 0;
+    virtual int vfunction148( int param_1 ) = 0;
+    virtual int vfunction149( int param_1 ) = 0;
+    virtual void vfunction150() = 0;
+    virtual void vfunction151() = 0;
+    virtual int* vfunction152( int* param_1 ) = 0;
+    virtual void vfunction153() = 0;
+    virtual void vfunction154( int param_1 ) = 0;
+    virtual void vfunction155() = 0;
+    virtual void vfunction156() = 0;
+    virtual int* vfunction157(int) = 0;
+    virtual void vfunction158() = 0;
+    virtual char vfunction159(int) = 0;
+    virtual void vfunction160() = 0;
+    virtual void vfunction161() = 0;
+    virtual void vfunction162() = 0;
+    virtual void vfunction163() = 0;
+    virtual void vfunction164() = 0;
+    virtual int vfunction165() = 0;
+    virtual void vfunction166( int param_1 ) = 0;
+    virtual void vfunction167() = 0;
+    virtual void vfunction168() = 0;
+    virtual void vfunction169() = 0;
+};
+
+#endif	// tShipSystems_h
