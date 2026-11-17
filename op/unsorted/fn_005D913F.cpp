@@ -569,3 +569,20 @@ std::string fn_005d9901(unsigned int param_1)
         return names[param_1];
     return "UNKNOWN RACE";
 }
+
+// FUNCTION: STARFLEETOP 0x005d9a6f
+BOOL fn_005d9a6f(const char *param_1)
+{
+    char buf[20] = "0x";
+    __int64 value;
+    unsigned int check;
+    strncpy(buf + 2, param_1 + 1, 3);
+    strncpy(buf + 5, param_1 + 5, 4);
+    strncpy(buf + 9, param_1 + 10, 3);
+    buf[12] = 0;
+    sscanf(buf, "%I64x", &value);
+    strncpy(buf + 2, param_1 + 15, 4);
+    buf[6] = 0;
+    sscanf(buf, "%x", &check);
+    return (short)check == (short)((short)(value % 0xffff) ^ (short)0x9249);
+}
