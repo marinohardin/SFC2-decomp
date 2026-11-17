@@ -15,8 +15,7 @@ class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPolit
 class tNotify;	// RTTI names it through nDatabase::tQuery<tNotify>; its layout is not needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
-// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
-class tTurn
+class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
 {
 public:
 	char fPad00[0x48];
@@ -63,6 +62,7 @@ public:
 	void fn_00570372( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result, bool lock );
 	void fn_005704ae( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result );
 	void fn_00570578( tServCharacter* character, tServCharacter* characterStore );	// HYPOTHESIS: both pointers are characters (assertion texts "character", "characterStore" at 0x0056dbe5).
+	void fn_00570618( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result, bool lock );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
@@ -98,7 +98,7 @@ public:
 	virtual void vfunction25( tCampaignInfo* campaignInfo );
 	virtual void vfunction26( tServCharacter* character, tServCharacter* characterStore );
 	virtual void vfunction27( std::vector<tMetaMapHex>* hexes );
-	virtual void vfunction28();
+	virtual void vfunction28( std::vector<tPoliticalTensionMatrix>* matrices );
 	virtual void vfunction29();
 	virtual void vfunction30();
 	virtual void vfunction31();
@@ -578,4 +578,11 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction27( std::vector<tMe
 {
 	nDatabase::tQuery<tMetaMapHex> query;
 	fDatabase->fn_0056f703( query, hexes, true );
+}
+
+// FUNCTION: STARFLEETOP 0x0056dcba
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction28( std::vector<tPoliticalTensionMatrix>* matrices )
+{
+	nDatabase::tQuery<tPoliticalTensionMatrix> query;
+	fDatabase->fn_00570618( query, matrices, true );
 }
