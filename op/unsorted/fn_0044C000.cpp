@@ -188,3 +188,620 @@ void FUN_0044c308(fn_0044c185_object * object)
 		}
 	}
 }
+
+#include "unsorted/fn_0040ce21_type.h"
+#include "unsorted/fn_0090be9c_type.h"
+
+extern double g_0079de48;
+extern float g_0079de40;
+extern double g_00799f68;
+extern double g_0079a148;
+
+// HYPOTHESIS: one ship system as seen by the key handler; vfunction9 is a level,
+// vfunction52 takes the key's argument, vfunction55 is a count, vfunction96 a flag.
+class fn_0044c35d_part
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual int vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52(int level);
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual int vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual void vfunction58();
+	virtual void vfunction59();
+	virtual void vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual void vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual void vfunction67();
+	virtual void vfunction68();
+	virtual void vfunction69();
+	virtual void vfunction70();
+	virtual void vfunction71();
+	virtual void vfunction72();
+	virtual void vfunction73();
+	virtual void vfunction74();
+	virtual void vfunction75();
+	virtual void vfunction76();
+	virtual void vfunction77();
+	virtual void vfunction78();
+	virtual void vfunction79();
+	virtual void vfunction80();
+	virtual void vfunction81();
+	virtual void vfunction82();
+	virtual void vfunction83();
+	virtual void vfunction84();
+	virtual void vfunction85();
+	virtual void vfunction86();
+	virtual void vfunction87();
+	virtual void vfunction88();
+	virtual void vfunction89();
+	virtual void vfunction90();
+	virtual void vfunction91();
+	virtual void vfunction92();
+	virtual void vfunction93();
+	virtual void vfunction94();
+	virtual void vfunction95();
+	virtual char vfunction96();
+};
+
+// HYPOTHESIS: the record behind the slot at +0x5cc (and behind vfunction84).
+class fn_0044c35d_group
+{
+public:
+	char pad00[0x58];
+	fn_0044c35d_part * field_58;
+	fn_0044c35d_part * field_5c;
+	fn_0044c35d_part * field_60;
+	fn_0044c35d_part * field_64;
+	fn_0044c35d_part * field_68;
+	char pad6c[0x80 - 0x6c];
+	fn_0044c35d_part * field_80;
+	fn_0044c35d_part * field_84;
+};
+
+// HYPOTHESIS: the ship object at +0x6ac.
+class fn_0044c35d_ship
+{
+public:
+	char pad00[0x870];
+	int field_870;
+	int FUN_00414f41();
+};
+
+// HYPOTHESIS: the system set that owns the key handler; slots are named by offset / 4.
+class fn_0044c35d_systems
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual void vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual fn_0044c35d_part * vfunction58();
+	virtual fn_0044c35d_part * vfunction59();
+	virtual fn_0044c35d_part * vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual fn_0044c35d_part * vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual void vfunction67();
+	virtual void vfunction68();
+	virtual fn_0044c35d_part * vfunction69();
+	virtual fn_0044c35d_part * vfunction70();
+	virtual fn_0044c35d_part * vfunction71();
+	virtual fn_0044c35d_part * vfunction72();
+	virtual fn_0044c35d_part * vfunction73();
+	virtual fn_0044c35d_part * vfunction74();
+	virtual fn_0044c35d_part * vfunction75();
+	virtual void vfunction76();
+	virtual void vfunction77();
+	virtual void vfunction78();
+	virtual void vfunction79();
+	virtual void vfunction80();
+	virtual void vfunction81();
+	virtual void vfunction82();
+	virtual void vfunction83();
+	virtual fn_0044c35d_group * vfunction84();
+	virtual void vfunction85();
+	virtual fn_0044c35d_part * vfunction86();
+	virtual void vfunction87();
+	virtual void vfunction88();
+	virtual void vfunction89();
+	virtual void vfunction90();
+	virtual void vfunction91();
+	virtual fn_0044c35d_part * vfunction92();
+	virtual void vfunction93();
+	virtual void vfunction94();
+	virtual void vfunction95();
+	virtual void vfunction96();
+	virtual void vfunction97();
+	virtual void vfunction98();
+	virtual fn_0044c35d_part * vfunction99();
+
+	char pad04[0x584 - 0x04];
+	fn_0044c35d_part * field_584[0x4a];
+	fn_0044c35d_ship * field_6ac;
+
+	char FUN_0044c35d(int key, short param_2, char param_3);
+	char FUN_0044d50b(short param_2, char param_3);
+	char FUN_0044d8fe(char param_3);
+	char FUN_0044dd86(char param_3);
+};
+
+// FUNCTION: STARFLEETOP 0x0044c35d
+char fn_0044c35d_systems::FUN_0044c35d(int key, short param_2, char param_3)
+{
+	char result = 0;
+	if (key == 0x4d)
+	{
+		float scaled;
+		if ((scaled = (float)((double)param_2 * g_0079de48)) < g_0079de40)
+		{
+			if (vfunction59() && vfunction59()->vfunction9() > 2)
+			{
+				vfunction59()->vfunction52(param_3);
+				result = 1;
+			}
+			else if (vfunction60() && vfunction60()->vfunction9() > 2)
+			{
+				vfunction60()->vfunction52(param_3);
+				result = 1;
+			}
+			else if (vfunction58() && vfunction58()->vfunction9() > 2)
+			{
+				vfunction58()->vfunction52(param_3);
+				result = 1;
+			}
+		}
+		else
+		{
+			if (vfunction58() && vfunction58()->vfunction9() > 2)
+			{
+				vfunction58()->vfunction52(param_3);
+				result = 1;
+				static fn_0040ce21_type boing("Boing!");
+			}
+			else if (vfunction60() && vfunction60()->vfunction9() > 2)
+			{
+				vfunction60()->vfunction52(param_3);
+				result = 1;
+			}
+			else if (vfunction59() && vfunction59()->vfunction9() > 2)
+			{
+				vfunction59()->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x4a)
+	{
+		fn_0090be9c_type * first = g_0090be9c;
+		int high = (int)((double)first->vfunction7() * g_00799f68 / (double)first->field_20);
+		fn_0090be9c_type * second = g_0090be9c;
+		int low = (int)((double)second->vfunction7() * g_0079a148 / (double)second->field_20);
+		int step = high - low + 2;
+		// MATCH-ONLY: the original enters the 0x4e, 0x4c and 0x4b bodies below directly from here.
+		if (step >= 4 && step <= 6)
+		{
+			goto case_4c;
+		}
+		else if (step >= 8 && step <= 10)
+		{
+			goto case_4b;
+		}
+		else
+		{
+			goto case_4e;
+		}
+	}
+	else if (key == 0x52)
+	{
+		fn_0044c35d_group * group = (fn_0044c35d_group *)field_584[18];
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_58;
+			if (part && part->vfunction9() > 2)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x53)
+	{
+		fn_0044c35d_group * group = (fn_0044c35d_group *)field_584[18];
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_5c;
+			if (part && part->vfunction9() > 2)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x54)
+	{
+		fn_0044c35d_group * group = (fn_0044c35d_group *)field_584[18];
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_60;
+			if (part && part->vfunction9() > 2)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x56)
+	{
+		fn_0044c35d_group * group = (fn_0044c35d_group *)field_584[18];
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_64;
+			if (part && part->vfunction55() > 0)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x55)
+	{
+		fn_0044c35d_group * group = (fn_0044c35d_group *)field_584[18];
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_68;
+			if (part && part->vfunction55() > 0)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x57)
+	{
+		fn_0044c35d_part * part = vfunction63();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0x58 || key == 0x59 || key == 0x5f)
+	{
+		fn_0044c35d_part * part = vfunction63();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0x60)
+	{
+		fn_0044c35d_part * part = vfunction75();
+		if (part && part->vfunction55() > 0 && !part->vfunction96())
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0x5a)
+	{
+		fn_0044c35d_group * group = vfunction84();
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_80;
+			if (part && part->vfunction55() > 0 && !part->vfunction96())
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x5b)
+	{
+		fn_0044c35d_group * group = vfunction84();
+		if (group)
+		{
+			fn_0044c35d_part * part = group->field_84;
+			if (part && part->vfunction55() > 0 && !part->vfunction96())
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+		}
+	}
+	else if (key == 0x5c)
+	{
+		fn_0044c35d_part * part = vfunction69();
+		if (part && part->vfunction55() > 0 && !part->vfunction96())
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0x4f)
+	{
+		fn_0044c35d_part * part = vfunction72();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+		else
+		{
+			part = vfunction74();
+			if (part && part->vfunction55() > 0)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+			else
+			{
+				part = vfunction99();
+				if (part && part->vfunction55() > 0)
+				{
+					part->vfunction52(param_3);
+					result = 1;
+				}
+				else
+				{
+					part = vfunction71();
+					if (part && part->vfunction55() > 0)
+					{
+						part->vfunction52(param_3);
+						result = 1;
+					}
+				}
+			}
+		}
+	}
+	else if (key == 0x50)
+	{
+		fn_0044c35d_part * part = vfunction74();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+		else
+		{
+			part = vfunction99();
+			if (part && part->vfunction55() > 0)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+			else
+			{
+				part = vfunction71();
+				if (part && part->vfunction55() > 0)
+				{
+					part->vfunction52(param_3);
+					result = 1;
+				}
+			}
+		}
+	}
+	else if (key == 0x51)
+	{
+		fn_0044c35d_part * part = vfunction73();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+			static fn_0040ce21_type plink("Plink!");
+		}
+		else
+		{
+			part = vfunction74();
+			if (part && part->vfunction55() > 0)
+			{
+				part->vfunction52(param_3);
+				result = 1;
+			}
+			else
+			{
+				part = vfunction99();
+				if (part && part->vfunction55() > 0)
+				{
+					part->vfunction52(param_3);
+					result = 1;
+				}
+				else
+				{
+					part = vfunction71();
+					if (part && part->vfunction55() > 0)
+					{
+						part->vfunction52(param_3);
+						result = 1;
+					}
+				}
+			}
+		}
+	}
+	else if (key == 0x5d)
+	{
+		fn_0044c35d_part * part = vfunction70();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0x5e)
+	{
+		fn_0044c35d_part * part = vfunction71();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+	}
+	else if (key == 0xc)
+	{
+		fn_0044c35d_part * part = vfunction92();
+		if (part && part->vfunction55() > 0)
+		{
+			part->vfunction52(param_3);
+			result = 1;
+		}
+		else
+		{
+			part = vfunction86();
+			if (part && part->vfunction55() > 0)
+			{
+				int type = field_6ac->field_870;
+				if (type != 0x18 && type != 0x1a)
+				{
+					part->vfunction52(param_3);
+					result = 1;
+					if (field_6ac->FUN_00414f41() < 10)
+					{
+						part->vfunction52(param_3 * 4);
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		if (key >= 0 && key < 0x4a)
+		{
+			if (field_584[key] != 0 && field_584[key]->vfunction55() > 0)
+			{
+				field_584[key]->vfunction52(param_3);
+				result = 1;
+			}
+		}
+		if (key == 0x4e)
+		{
+case_4e:
+			result = FUN_0044d50b(param_2, param_3);
+		}
+		else if (key == 0x4c)
+		{
+case_4c:
+			result = FUN_0044d8fe(param_3);
+		}
+		else if (key == 0x4b)
+		{
+case_4b:
+			result = FUN_0044dd86(param_3);
+		}
+	}
+	return result;
+}

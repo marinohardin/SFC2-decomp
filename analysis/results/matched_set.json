@@ -4969,6 +4969,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044c35d": {
+   "name": "FUN_0044c35d",
+   "symbol": "?FUN_0044c35d@fn_0044c35d_systems@@QAEDHFD@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 1524,
+   "score": 18.645,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
