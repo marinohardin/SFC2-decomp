@@ -820,6 +820,263 @@ address	size	symbol	source	modes
 0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest
 0x004c8a2d	42	tScrollBar::vfunction43(int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest
+0x004cf692	498	tSFCPlayer::tSFCPlayer()	unsorted/tSFCPlayer.cpp	vc6
+0x004cf884	13	tSFCPlayer::vfunction41(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf891	7	tSFCPlayer::vfunction42()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf898	13	tSFCPlayer::vfunction43(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8a5	7	tSFCPlayer::vfunction44()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8ac	13	tSFCPlayer::vfunction45(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8b9	7	tSFCPlayer::vfunction46()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8c0	13	tSFCPlayer::vfunction47(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8cd	7	tSFCPlayer::vfunction48()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8d4	7	tSFCPlayer::vfunction59()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8db	13	tSFCPlayer::vfunction60(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8e8	13	tSFCPlayer::vfunction61(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8f5	7	tSFCPlayer::vfunction62()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf8fc	13	tSFCPlayer::vfunction63(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf909	7	tSFCPlayer::vfunction64()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf910	24	tSFCPlayer::vfunction65(float,float,float)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf928	24	tSFCPlayer::vfunction66(float *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf940	7	tSFCPlayer::vfunction88()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf947	13	tSFCPlayer::vfunction89(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf954	13	tSFCPlayer::vfunction90(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf961	7	tSFCPlayer::vfunction91()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf968	13	tSFCPlayer::vfunction92(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf975	7	tSFCPlayer::vfunction93()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf97c	13	tSFCPlayer::vfunction103(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf989	7	tSFCPlayer::vfunction104()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf990	7	tSFCPlayer::vfunction106()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf997	28	tSFCPlayer::`scalar deleting destructor'	unsorted/tSFCPlayer.cpp	vc6
+0x004cf9b3	19	fn_004cf9b3()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004cf9cb	358	tSFCPlayer::~tSFCPlayer()	unsorted/tSFCPlayer.cpp	partial
+0x004cfb31	1330	tSFCPlayer::vfunction2(tSFCStream &,unsigned mode)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0063	421	tSFCPlayer::vfunction108()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0208	411	tSFCPlayer::vfunction109()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d03a3	129	tSFCPlayer::vfunction3(char *,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0424	146	tSFCPlayer::vfunction4(char *,int,unsigned param_3,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d04b6	62	tSFCPlayer::vfunction110()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d04f4	34	tSFCPlayer::vfunction7(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0516	7	tSFCPlayer::vfunction8()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d051d	24	tSFCPlayer::vfunction58()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0535	15	tSFCPlayer::vfunction9(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0544	63	tSFCPlayer::vfunction79()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0583	108	tSFCPlayer::vfunction80()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d05ef	41	tSFCPlayer::vfunction87()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0618	83	tSFCPlayer::vfunction11(int,unsigned param_2,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d066b	56	tSFCPlayer::vfunction13(tString *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d06a3	36	tSFCPlayer::vfunction12(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d06c7	20	tSFCPlayer::vfunction14(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d06db	38	tSFCPlayer::vfunction15(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0701	181	tSFCPlayer::vfunction16(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d07b6	19	tSFCPlayer::vfunction6()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d07c9	57	tSFCPlayer::vfunction5(tString *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0802	66	tSFCPlayer::vfunction27(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0844	22	tSFCPlayer::vfunction28()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d085a	38	tSFCPlayer::vfunction29(unsigned char)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0880	22	tSFCPlayer::vfunction30()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0896	53	tSFCPlayer::vfunction19(char *,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d08cb	23	tSFCPlayer::vfunction20(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d08e2	31	tSFCPlayer::fn_004d08e2(tString *,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0901	26	tSFCPlayer::vfunction22(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d091b	18	tSFCPlayer::vfunction23(int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d092d	14	tSFCPlayer::vfunction24(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d093b	23	tSFCPlayer::vfunction25(int,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0952	23	tSFCPlayer::vfunction26(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0969	20	tSFCPlayer::vfunction81(int,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d097d	21	tSFCPlayer::vfunction82(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0992	23	tSFCPlayer::vfunction83(int,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d09a9	23	tSFCPlayer::vfunction84(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d09c0	41	tSFCPlayer::vfunction85(int,unsigned param_2)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d09e9	29	tSFCPlayer::vfunction86(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a06	18	tSFCPlayer::vfunction33(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a18	7	tSFCPlayer::vfunction34()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a1f	13	tSFCPlayer::vfunction31(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a2c	7	tSFCPlayer::vfunction32()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a33	13	tSFCPlayer::vfunction35(bool)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a40	7	tSFCPlayer::vfunction36()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a47	13	tSFCPlayer::vfunction39(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a54	7	tSFCPlayer::vfunction40()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a5b	13	tSFCPlayer::vfunction52(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a68	7	tSFCPlayer::vfunction53()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a6f	13	tSFCPlayer::vfunction54(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a7c	7	tSFCPlayer::vfunction55()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a83	13	tSFCPlayer::vfunction56(bool)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0a90	7	tSFCPlayer::vfunction57()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0ab3	70	fn_004d0ab3(int)	unsorted/tSFCPlayer.cpp	partial
+0x004d0af9	47	tSFCPlayer::vfunction38()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0b28	63	tSFCPlayer::fn_004d0b28()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0b67	185	tSFCPlayer::vfunction107(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0c20	40	tSFCPlayer::vfunction105(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0c48	21	tSFCPlayer::fn_004d0c48()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0c5d	89	tSFCPlayer::fn_004d0c5d()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0cb6	84	tSFCPlayer::fn_004d0cb6()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0d0a	70	tSFCPlayer::vfunction94(tObject_004454c1 *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0d50	46	tSFCPlayer::vfunction100(unsigned param_1,int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0d7e	46	tSFCPlayer::vfunction99(tObject_004454c1 *,int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0dac	34	tSFCPlayer::vfunction102(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0dce	25	tSFCPlayer::vfunction101(tObject_004454c1 *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0de7	43	tSFCPlayer::vfunction98()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e12	14	tSFCPlayer::vfunction95(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e20	14	tSFCPlayer::vfunction96(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e2e	67	tSFCPlayer::vfunction97(int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e71	13	tSFCPlayer::vfunction67(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e7e	7	tSFCPlayer::vfunction68()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0e85	49	tSFCPlayer::vfunction69()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1017	56	tSFCPlayer::vfunction72(unsigned param_1,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d104f	36	tSFCPlayer::vfunction73()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1073	141	tSFCPlayer::vfunction74(int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1100	38	tSFCPlayer::vfunction75(int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1126	36	tSFCPlayer::vfunction76()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d114a	33	tSFCPlayer::vfunction77(int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d116b	33	tSFCPlayer::vfunction78(int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d118c	21	tSFCPlayer::vfunction49()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d11a1	36	tSFCPlayer::vfunction50(int *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d11c5	36	tSFCPlayer::vfunction51(int *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d11e9	55	tSFCPlayer::fn_004d11e9(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1220	130	tSFCPlayer::fn_004d1220()	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d12a2	218	tSFCPlayer::vfunction111(int *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d137c	82	tSFCPlayer::vfunction112(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d13ce	123	tSFCPlayer::vfunction113(int,unsigned param_2,int,tString *,tString *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1449	311	tSFCPlayer::vfunction114(fn_004e2b02_ship_type *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d1580	10	tSFCPlayer::vfunction115(char)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d158a	159	tSFCPlayer::vfunction17(int,unsigned param_2)	unsorted/tSFCPlayer.cpp	partial
+0x004d1629	137	tSFCPlayer::vfunction18(int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d2143	42	fn_004d2143_tree::fn_004d2143(const unsigned long&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d216d	59	fn_004d216d_iter::fn_004d216d()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d21a8	47	tSingleAccessWrapper_vector::~tSingleAccessWrapper_vector()	unsorted/fn_004D2000.cpp	partial
+0x004d21d7	47	tSingleAccessWrapper_005391b0::~tSingleAccessWrapper_005391b0()	unsorted/fn_004D2000.cpp	partial
+0x004d2206	17	fn_004d2206(unsigned long*,unsigned long*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2238	45	basic_string()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2265	49	fn_004d2265_holder::~fn_004d2265_holder()	unsorted/fn_004D2000.cpp	vc6
+0x004d2296	74	fn_004d2265_holder::fn_004d2296(int,const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d22e0	57	fn_004d2265_holder::fn_004d22e0()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2319	58	fn_004d2319_holder::fn_004d2319_holder()	unsorted/fn_004D2000.cpp	vc6
+0x004d2353	53	fn_004d2353_holder::~fn_004d2353_holder()	unsorted/fn_004D2000.cpp	vc6
+0x004d2388	83	fn_004d2353_holder::fn_004d2388(int,const char*,int)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d23db	69	fn_004d2353_holder::fn_004d23db()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2420	49	fn_004d2420_holder::~fn_004d2420_holder()	unsorted/fn_004D2000.cpp	vc6
+0x004d2451	139	fn_004d2420_holder::fn_004d2451(const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d24dc	69	fn_004d2420_holder::fn_004d24dc()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2521	82	fn_004d2420_holder::fn_004d2521(const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2573	60	fn_004d2420_holder::fn_004d2573(fn_004d2238_string)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d25af	135	fn_004d2420_holder::fn_004d25af(int)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2636	101	fn_004d2636_object::~fn_004d2636_object()	unsorted/fn_004D2000.cpp	vc6
+0x004d269b	96	fn_004d269b(int,int,char)	unsorted/fn_004D2000.cpp	partial
+0x004d26fb	156	fn_004d26fb_map::fn_004d26fb(int,const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2797	99	fn_004d2797_owner::fn_004d2797(unsigned long,const char*,int)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d27fa	149	fn_004d27fa_owner::fn_004d27fa(const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d288f	126	fn_004d27fa_owner::fn_004d288f(const char*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d290d	184	fn_004d2636_object::fn_004d290d()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2add	111	fn_004d26fb_map::fn_004d2add(const fn_004d2238_string&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2b4c	41	fn_004d2b4c_map::fn_004d2b4c(const unsigned long&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2b75	111	fn_004d2b75_map::fn_004d2b75(const fn_004d2238_string&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2be4	20	fn_00460acb_base::fn_004d2be4()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2bf8	20	fn_00460b03_part::fn_004d2bf8()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2c0c	20	fn_00460b3b_part::fn_004d2c0c()	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2c20	170	fn_004d2c20_map::fn_004d2c20(const fn_004d2c20_key&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2cca	170	fn_004d2cca_map::fn_004d2cca(fn_004d2cca_key*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2d74	330	fn_004d2c20_map::fn_004d2d74(fn_004d2c20_node*,fn_004d2c20_node*,const fn_004d2c20_key&)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d2ebe	330	fn_004d2cca_map::fn_004d2ebe(fn_004d2cca_node*,fn_004d2cca_node*,fn_004d2cca_key*)	unsorted/fn_004D2000.cpp	vc6 guest
+0x004d315e	27	fn_004d315e(long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3179	19	fn_004d3179(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d318c	15	fn_004d318c(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d319b	23	fn_004d319b(long,float)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d31b2	59	fn_004d31b2(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d31ed	69	fn_004d31ed(long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3232	70	fn_004d3232(long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3278	76	fn_004d3278(long,long,long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d32c4	43	fn_004d32c4(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d32ef	23	fn_004d32ef(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3306	43	fn_004d3306(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3331	15	fn_004d3331(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3340	15	fn_004d3340(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d334f	15	fn_004d334f(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d335e	15	fn_004d335e(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d336d	30	fn_004d336d(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d338b	29	fn_004d338b(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d33a8	44	fn_004d33a8(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d33d4	66	fn_004d33d4(long,tString)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3416	24	fn_004d3416(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d342e	24	fn_004d342e(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3446	15	fn_004d3446(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3455	26	fn_004d3455(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d346f	30	fn_004d346f(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d348d	26	fn_004d348d(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d34a7	30	fn_004d34a7(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d34c5	35	fn_004d34c5(long,char)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d34e8	39	fn_004d34e8(long,long,char)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d350f	47	fn_004d350f(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d353e	19	fn_004d353e(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3551	19	fn_004d3551(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3564	23	fn_004d3564(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d357b	23	fn_004d357b(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3592	16	fn_004d3592(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35a2	10	fn_004d35a2()	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35ac	19	fn_004d35ac(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35bf	36	fn_004d35bf(long,char)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35e3	23	fn_004d35e3(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35fa	15	fn_004d35fa(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3609	73	fn_004d3609(fn_004d3609_record*,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3652	197	fn_004d3652(long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d375b	25	fn_004d375b(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3774	18	fn_004d3774(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3786	25	fn_004d3786(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d379f	18	fn_004d379f(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d37b1	16	fn_004d37b1(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d37c1	18	fn_004d37c1(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d37d3	19	fn_004d37d3(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d37e6	93	fn_004d37e6(char*,unsigned int)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3843	98	fn_004d3843(char*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d38a5	56	fn_004d38a5_list::fn_004d38a5()	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d38dd	116	fn_004d38a5_list::fn_004d38dd(iterator,iterator)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3951	56	fn_004d38a5_list::fn_004d3951(int**)	unsorted/fn_004D3143.cpp	partial
+0x004d39aa	44	fn_004d39aa(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d39d6	44	fn_004d39d6(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3a02	294	fn_004d3a02(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3b6a	10	g_0092e4a0 (dynamic initializer)	unsorted/fn_004D3143.cpp	vc6
+0x004d3b74	25	tUIStage::tUIStage()	unsorted/fn_004D3143.cpp	vc6
+0x004d3b8d	18	tStageBase::vfunction32(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d7402	61	tBaseWeapon::vfunction101(int,int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d743f	183	tBaseWeapon::vfunction102()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d74f6	338	tBaseWeapon::fn_004d74f6()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d7648	35	tBaseWeapon::vfunction100()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d766b	48	tBaseWeapon::vfunction103()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d76a0	19	tBaseWeapon::vfunction107()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d76b3	68	tBaseWeapon::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d76f8	18	tBaseWeapon::fn_004d76f8()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d770a	22	tBaseWeapon::vfunction112(float)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d7720	47	tBaseWeapon::vfunction113(float,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d774f	39	tBaseWeapon::vfunction115(float)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d7776	39	tBaseWeapon::vfunction117(float)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d779d	7	tBaseWeapon::vfunction121()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d77a4	7	tBaseWeapon::vfunction119()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d77ab	65	tBaseWeapon::vfunction123(float*)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d77ec	130	tBaseWeapon::vfunction122(fn_004d77ec_type*,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d786e	66	tBaseWeapon::fn_004d786e()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d78b0	58	tBaseWeapon::vfunction128(short,short)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d78ea	1529	tBaseWeapon::vfunction127(int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d7fa3	95	tBaseWeapon::vfunction130()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8002	85	tBaseWeapon::vfunction131(short)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8057	229	tBaseWeapon::vfunction132(int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d813c	27	tBaseWeapon::vfunction62()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8157	12	tBaseWeapon::vfunction63()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8163	57	tBaseWeapon::vfunction80()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d819c	125	tBaseWeapon::vfunction126(float)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8219	130	tBaseWeapon::vfunction76(float,float)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d829b	50	tBaseWeapon::vfunction70()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d82cd	22	tBaseWeapon::fn_004d82cd(float *)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d82e3	24	tBaseWeapon::fn_004d82e3(float *)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d82fb	895	tBaseWeapon::vfunction74(float,float)	unsorted/tBaseWeapon.cpp	partial
+0x004d867a	165	tBaseWeapon::vfunction147()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d871f	19	tBaseWeapon::fn_004d871f(float *,float *)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8732	21	tBaseWeapon::fn_004d8732(int *,int *)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8747	51	tBaseWeapon::vfunction105(int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d877a	105	tBaseWeapon::vfunction135(unsigned char)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d87e3	262	tBaseWeapon::fn_004d87e3(int)	unsorted/tBaseWeapon.cpp	partial
+0x004d88e9	45	fn_004d88e9(const char *)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8916	70	fn_004d8916(int,int,float,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d895c	7	tBaseWeapon::vfunction144()	unsorted/tBaseWeapon.cpp	vc6 guest
+0x004d8963	4	tBaseWeapon::vfunction146()	unsorted/tBaseWeapon.cpp	vc6 guest
 0x004e1e8f	209	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	vc6
 0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest
 0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest

@@ -245,7 +245,7 @@ public:
     virtual void vfunction39();
     virtual void vfunction40();
     virtual void vfunction41();
-    virtual void vfunction42();
+    virtual char* vfunction42();
     virtual void vfunction43();
     virtual void vfunction44();
     virtual void vfunction45();
@@ -284,7 +284,12 @@ public:
     int field_60;
     char pad64[0x180 - 0x64];
     int field_180;
-    char pad184[0xad4 - 0x184];
+    char pad184[0x870 - 0x184];
+    int field_870;
+    char pad874[0x87d - 0x874];
+    // HYPOTHESIS: a string held inline; only its address is taken.
+    char field_87d[1];
+    char pad87e[0xad4 - 0x87e];
     fn_004e2b02_field_ad4_type* field_ad4;
 };
 
