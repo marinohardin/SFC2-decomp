@@ -748,3 +748,45 @@ int c_0044715d::fn_00447d55(int index)
 {
 	return field_0xec->field_0x10[index].field_0x1c;
 }
+
+#include <vector>
+#include "unsorted/tTransporterHoldItem.h"
+
+// MATCH-ONLY: the library's vector assignment for this element type, written out as the
+// instance's explicit specialization so that its annotation names the one instance.
+// FUNCTION: STARFLEETOP 0x00447d69
+template<>
+std::vector< tTransporterHoldItem >& std::vector< tTransporterHoldItem >::operator=( const std::vector< tTransporterHoldItem >& _X )
+{
+	if( this == &_X )
+		;
+	else if( _X.size() <= size() )
+	{
+		iterator _S = std::copy( _X.begin(), _X.end(), _First );
+		_Destroy( _S, _Last );
+		_Last = _First + _X.size();
+	}
+	else if( _X.size() <= capacity() )
+	{
+		const_iterator _S = _X.begin() + size();
+		std::copy( _X.begin(), _S, _First );
+		_Ucopy( _S, _X.end(), _Last );
+		_Last = _First + _X.size();
+	}
+	else
+	{
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_First = allocator.allocate( _X.size(), (void*)0 );
+		_Last = _Ucopy( _X.begin(), _X.end(), _First );
+		_End = _Last;
+	}
+	return *this;
+}
+
+// MATCH-ONLY: the caller of the assignment is not recovered yet (HYPOTHESIS: an assignment
+// operator of a class holding this vector); this use makes the instance emit and is not original code.
+void fn_00447d69_user( std::vector< tTransporterHoldItem >& a, const std::vector< tTransporterHoldItem >& b )
+{
+	a = b;
+}
