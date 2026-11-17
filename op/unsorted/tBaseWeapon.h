@@ -220,6 +220,8 @@ public:
     virtual bool vfunction143();
     virtual int vfunction144();
     virtual void vfunction145(int param_1);
+    virtual int vfunction146();
+    virtual void vfunction147();
     // HYPOTHESIS: members read by vfunction102, placed by offset.
     char pad_04[0x20];
     // HYPOTHESIS: a list of child weapons, walked by vfunction76.

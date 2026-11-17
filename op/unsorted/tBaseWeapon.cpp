@@ -4,6 +4,9 @@
 #include "unsorted/tEntity.h"
 #include "Source/entity/entity_physical.h"
 #include "Tiger/tcglue.h"
+#include "unsorted/fn_0090bed8_type.h"
+extern float g_0079561c;
+extern char g_0090b750;
 extern tEntity *g_008e1090[];
 short fn_0069afc0(float x, float y);
 extern float g_00795620;
@@ -775,6 +778,160 @@ float tBaseWeapon::vfunction76(float param_1, float param_2)
             if (param_1 > field_40)
                 return param_1 - field_40;
             vfunction124(0);
+        }
+    }
+    return param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d82fb
+float tBaseWeapon::vfunction74(float param_1, float param_2)
+{
+    int banks;
+    if (field_45)
+    {
+        float avail = param_1 * param_2;
+        if ((char)vfunction106() > 0)
+        {
+            field_d8 = g_0090bed8.fn_00518603() * field_d4 * param_2;
+            float thresh = g_0090b750 ? field_d8 : 0.0f;
+            banks = (char)vfunction106();
+            float first;
+            if (avail > field_d8)
+                first = field_d8;
+            else
+                first = avail;
+            if (vfunction144() > 0)
+                first = (float)vfunction146() * first;
+            if (vfunction144() == 0)
+                first = 0.0f;
+            int mode = field_e8;
+            if (mode < 1)
+            {
+                if (avail >= thresh)
+                {
+                    float *p = &field_3c;
+                    *p = first + field_3c;
+                    avail = avail - first;
+                    param_1 = param_1 - field_d4;
+                    fn_004d82e3(&param_1);
+                    fn_004d82cd(p);
+                }
+                else
+                {
+                    if (mode < 1)
+                    {
+                        field_3c -= param_2;
+                        if (field_3c < g_0079561c)
+                            field_3c = 0.0f;
+                    }
+                }
+            }
+            if (banks > 1 && avail >= thresh)
+            {
+                if (field_e8 < 2)
+                {
+                    float m;
+                    if (avail > field_d8)
+                        m = field_d8;
+                    else
+                        m = avail;
+                    float *p = &field_dc;
+                    *p = m + *p;
+                    avail = avail - m;
+                    param_1 = param_1 - field_d4;
+                    fn_004d82e3(&param_1);
+                    fn_004d82cd(p);
+                }
+            }
+            else
+            {
+                if (field_e8 < 2)
+                {
+                    field_dc -= param_2;
+                    if (field_dc < g_0079561c)
+                        field_dc = 0.0f;
+                }
+            }
+            if (banks > 2 && avail >= thresh)
+            {
+                if (field_e8 < 3)
+                {
+                    float m;
+                    if (avail > field_d8)
+                        m = field_d8;
+                    else
+                        m = avail;
+                    float *p = &field_e0;
+                    *p = m + *p;
+                    avail = avail - m;
+                    param_1 = param_1 - field_d4;
+                    fn_004d82e3(&param_1);
+                    fn_004d82cd(p);
+                }
+            }
+            else
+            {
+                if (field_e8 < 3)
+                {
+                    field_e0 -= param_2;
+                    if (field_e0 < g_0079561c)
+                        field_e0 = 0.0f;
+                }
+            }
+            if (banks > 3 && avail >= thresh)
+            {
+                if (field_e8 < 4)
+                {
+                    if (field_d8 < avail)
+                        avail = field_d8;
+                    float *p = &field_e4;
+                    *p = avail + *p;
+                    param_1 = param_1 - field_d4;
+                    fn_004d82e3(&param_1);
+                    fn_004d82cd(p);
+                }
+            }
+            else
+            {
+                if (field_e8 < 4)
+                {
+                    field_e4 -= param_2;
+                    if (field_e4 < g_0079561c)
+                        field_e4 = 0.0f;
+                }
+            }
+            vfunction147();
+            if (field_e4 == field_38)
+            {
+                if ((char)field_e8 != 4)
+                    vfunction124(4);
+            }
+            else if (field_e0 == field_38)
+            {
+                if ((char)field_e8 != 3)
+                    vfunction124(3);
+            }
+            else if (field_dc == field_38)
+            {
+                if ((char)field_e8 != 2)
+                    vfunction124(2);
+            }
+            else if (field_3c == field_38)
+            {
+                if ((char)field_e8 != 1)
+                {
+                    field_46 = 1;
+                    vfunction124(1);
+                }
+            }
+            else if ((char)field_e8 != 0)
+            {
+                vfunction124(0);
+            }
+        }
+        else
+        {
+            field_d8 = 0.0f;
         }
     }
     return param_1;
