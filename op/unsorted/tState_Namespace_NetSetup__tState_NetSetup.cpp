@@ -31,9 +31,10 @@ extern int g_008493d4;
 // HYPOTHESIS: pointers to the names "IPSetup" and "ipEntryField".
 extern const char *g_008493b0;
 extern const char *g_008493b4;
-// HYPOTHESIS: pointers to the names "ModemSetup", "modemEntry" and "cCancelGame".
+// HYPOTHESIS: pointers to the names "ModemSetup", "modemEntry", "SerialSetup" and "cCancelGame".
 extern const char *g_008493b8;
 extern const char *g_008493bc;
+extern const char *g_008493c0;
 extern const char *g_008493cc;
 // HYPOTHESIS: a separator character read by fn_004768a5.
 extern char g_008493d0;
@@ -80,6 +81,7 @@ public:
 	bool fn_00476754();
 	void fn_004767f1();
 	void fn_004768a5(c_00468677_source *source, tString &out);
+	bool fn_00476925();
 	// HYPOTHESIS: puts the value into the control under the given key, as
 	// tState_GameConnections::fn_004688ee does.
 	void fn_00476997(int control, const char *name, const char *value);
@@ -110,7 +112,8 @@ public:
 	int m1dc;
 	int m1e0;
 	int m1e4;
-	char m1e8[8];
+	int m1e8;
+	int m1ec;
 	int m1f0;
 	char *m1f4;
 	// HYPOTHESIS: names the state hands to fn_004d32c4 on exit, as in tState_GameConnections.
@@ -350,4 +353,17 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_004768a5(c_00468677_source *
 		else
 			out = *text;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00476925
+bool tState_Namespace_NetSetup::tState_NetSetup::fn_00476925()
+{
+	fn_004d3331(g_008493c0);
+	fn_004d346f(g_008493cc, g_008493c0);
+	bool result = gNetControl.fn_004325a9(4);
+	fn_00476d52(&m1e8, &m15c, 0x1001c);
+	fn_00476d52(&m1ec, &m19c, 0x1001d);
+	m19[2] = 0;
+	m19[1] = 1;
+	return result;
 }
