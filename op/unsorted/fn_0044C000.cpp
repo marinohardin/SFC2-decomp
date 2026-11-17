@@ -1008,3 +1008,13 @@ void tShipSystemsExt::vfunction115( float param_1 )
 		m6ec = m6f0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0044cc85
+void tShipSystemsExt::vfunction116( float param_1 )
+{
+	m6ec -= param_1;
+	if ( m6ec < 0.0f )
+	{
+		m6ec = 0.0f;
+	}
+}
