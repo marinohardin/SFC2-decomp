@@ -134,9 +134,12 @@ namespace std
 		basic_string();
 		~basic_string() { _Tidy(true); }
 		basic_string& assign(const char* s, unsigned int n);
+		const char* c_str() const { return _Ptr != 0 ? _Ptr : _Nullstr(); }
 	private:
+		static const char* _Nullstr() { static const char _C = char(); return &_C; }
 		void _Tidy(bool built);
 		char m_al;
+		char* _Ptr;
 	};
 }
 
@@ -159,6 +162,7 @@ class fn_004d2265_holder
 public:
 	~fn_004d2265_holder();
 	void fn_004d22e0();
+	void fn_004d2296(int dst, const char* text);
 	fn_004d2238_string m_str;
 };
 
@@ -166,4 +170,25 @@ public:
 fn_004d2265_holder::~fn_004d2265_holder()
 {
 	fn_004d22e0();
+}
+
+// HYPOTHESIS: copies text into m_str, then passes the stored text (or the empty literal) with dst on.
+class fn_004cb4a7_target
+{
+public:
+	void fn_004cb4a7(int dst, const char* text);
+};
+
+extern fn_004cb4a7_target g_009254f8;
+
+// FUNCTION: STARFLEETOP 0x004d2296
+void fn_004d2265_holder::fn_004d2296(int dst, const char* text)
+{
+	fn_004d22e0();
+	if (dst != 0 && text != 0)
+	{
+		m_str.assign(text, strlen(text));
+		const char* p = m_str.c_str();
+		g_009254f8.fn_004cb4a7(dst, p);
+	}
 }
