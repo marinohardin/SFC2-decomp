@@ -693,3 +693,46 @@ fn_00571ae6_result fn_00571ae6_tree::fn_00571ae6(const long* value)
 		return fn_00571ae6_result(fn_005727a2(x, y, value).node, true);
 	return fn_00571ae6_result(p.node, false);
 }
+
+void* __cdecl operator new(unsigned int);
+
+struct fn_00571b81_vector {
+	char alloc;
+	long** first;
+	long** last;
+	long** limit;
+	fn_00571b81_vector(const fn_00571b81_vector& x);
+	int size() const
+	{
+		if (first == 0)
+			return 0;
+		return last - first;
+	}
+};
+
+// MATCH-ONLY: the allocator's clamp, inlined by the original
+inline long** fn_00571b81_allocate(int n)
+{
+	if (n < 0)
+		n = 0;
+	return (long**)operator new((unsigned int)n * 4);
+}
+
+// MATCH-ONLY: the uninitialized copy, inlined by the original
+inline long** fn_00571b81_copy(long** f, long** l, long** d)
+{
+	for (; f != l; ++d, ++f)
+		if (d)
+			*d = *f;
+	return d;
+}
+
+// FUNCTION: STARFLEETOP 0x00571b81
+fn_00571b81_vector::fn_00571b81_vector(const fn_00571b81_vector& x)
+{
+	// HYPOTHESIS: a vector of pointers copy constructor
+	alloc = x.alloc;
+	first = fn_00571b81_allocate(x.size());
+	last = fn_00571b81_copy(x.first, x.last, first);
+	limit = last;
+}
