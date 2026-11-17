@@ -597,6 +597,7 @@ class fn_0042adc1_object
 {
 public:
 	void FUN_0042adc1( int value );
+	void FUN_0042add2( int value );
 
 	byte field_00[0x08];
 	int field_08;
@@ -610,4 +611,13 @@ void __stdcall FUN_0042b396( int target, int flag, int value );
 void fn_0042adc1_object::FUN_0042adc1( int value )
 {
 	FUN_0042b396( field_08, 1, value );
+}
+
+// HYPOTHESIS: argument types follow FUN_0042b396; the callee pops its arguments.
+void __stdcall FUN_0042b50c( int target, int flag, int value );
+
+// FUNCTION: STARFLEETOP 0x0042add2
+void fn_0042adc1_object::FUN_0042add2( int value )
+{
+	FUN_0042b50c( field_08, 1, value );
 }
