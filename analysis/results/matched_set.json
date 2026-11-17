@@ -7660,6 +7660,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00546296": {
+   "name": "FUN_00546296",
+   "symbol": "?fn_00546296@c_00546296@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "unit": "unsorted/fn_00546000.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

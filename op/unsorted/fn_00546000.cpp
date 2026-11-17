@@ -239,3 +239,21 @@ int c_0054628e::fn_00546292()
 {
     return field_60;
 }
+
+// HYPOTHESIS: the object behind 0x00546296 keeps a std::string at +0x6c, returned by copy
+// (the allocator byte, the string's reset 0x005da20a and its assign 0x00403b49); its class
+// is not known.
+class c_00546296
+{
+public:
+    std::string fn_00546296() const;
+
+    char field_0[0x6c];
+    std::string field_6c;
+};
+
+// FUNCTION: STARFLEETOP 0x00546296
+std::string c_00546296::fn_00546296() const
+{
+    return field_6c;
+}
