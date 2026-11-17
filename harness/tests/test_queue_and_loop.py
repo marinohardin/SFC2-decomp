@@ -116,7 +116,7 @@ def test_next_skips_exact_functions_and_functions_another_loop_holds():
     assert workqueue.next_entry(queue, attempts, [], tiers, claim=lambda a: False) is None
 
 
-def test_next_chooses_each_function_s_order_by_its_size(tmp_path):
+def test_next_chooses_each_function_s_order_by_its_size():
     tiers = workqueue.Tiers.from_env({})
     queue = [dict(address='0x00401000', name='a', size=40),
              dict(address='0x00401100', name='b', size=300)]

@@ -187,10 +187,11 @@ The best score is the highest of every attempt's result and starting score, so a
 that another branch had already raised is judged against that. Usage-limit stops (`limit`),
 login failures and dry runs never count; failed, no-change, improved, exact, tampered and
 timeout attempts do. Improved attempts are committed, so a later attempt starts from the best source so
-far. `HARNESS_TIERS` replaces the sequence for functions of 128 bytes or more (default
-`opus,opus,opus`), and `HARNESS_SMALL_TIERS` the one for smaller functions (default
-`sonnet,opus,opus`); neither may name Fable. Setting only `HARNESS_TIERS` uses it for every size,
-and `HARNESS_SMALL_BYTES=0` turns the size split off.
+far. `HARNESS_TIERS` (default `opus,opus,opus`) and `HARNESS_SMALL_TIERS` (default
+`sonnet,opus,opus`) replace the two sequences; neither may name Fable. When only `HARNESS_TIERS`
+is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split off. A function
+the queue no longer holds, such as one already on the difficult list, has no known size and is
+judged with the regular sequence.
 
 When a run ends short of 100%, `queue.py record` lists the function, and the loop commits the
 list:
