@@ -186,3 +186,27 @@ bool std::string::_Grow(size_type _N, bool _Trim)
     }
     return (_Copy(_N), true);
 }
+
+// HYPOTHESIS: owner class unknown; layout from the member stores only.
+// HYPOTHESIS: the globals are the library's static locale state, read under a std::_Lockit.
+namespace std { extern const __int64 _Fpz; }
+extern int g_00c81938;
+
+class fn_00403e38_Obj
+{
+public:
+    fn_00403e38_Obj(int param_1);
+    int m0;
+    int m4;
+    __int64 m8;
+    int m10;
+};
+
+// FUNCTION: STARFLEETOP 0x00403e38
+fn_00403e38_Obj::fn_00403e38_Obj(int param_1)
+{
+    m0 = param_1;
+    m8 = std::_Fpz;
+    std::_Lockit lock;
+    m10 = g_00c81938;
+}
