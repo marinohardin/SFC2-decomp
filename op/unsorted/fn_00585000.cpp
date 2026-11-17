@@ -841,8 +841,10 @@ public:
 	int fn_00585c60();
 	int fn_00585c7b();
 	int fn_00585c96();
+	int fn_00585cb1();
 	tOptex fAccess;
-	char fn_00585c60_pad0[0x14c - sizeof(tOptex)];
+	char fn_00585c60_pad0[0x148 - sizeof(tOptex)];
+	int fValue3;
 	int fValue0;
 	int fValue;
 	int fValue2;
@@ -871,6 +873,15 @@ int fn_00585c60_owner::fn_00585c96()
 {
 	fAccess.Enter();
 	int value = fValue0;
+	fAccess.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x00585cb1
+int fn_00585c60_owner::fn_00585cb1()
+{
+	fAccess.Enter();
+	int value = fValue3;
 	fAccess.Leave();
 	return value;
 }
