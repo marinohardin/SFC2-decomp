@@ -172,6 +172,13 @@ public:
 	virtual long __stdcall v11();
 	// HYPOTHESIS: slot 12 fits IDirectPlayLobby::SetConnectionSettings (flags, application, data).
 	virtual long __stdcall SetConnectionSettings( unsigned long flags, unsigned long appId, void* pSettings );
+	virtual long __stdcall v13();
+	virtual long __stdcall v14();
+	virtual long __stdcall v15();
+	virtual long __stdcall v16();
+	virtual long __stdcall v17();
+	// HYPOTHESIS: slot 18 fits IDirectPlayLobby2::WaitForConnectionSettings (flags).
+	virtual long __stdcall WaitForConnectionSettings( unsigned long flags );
 };
 
 // HYPOTHESIS: the address callback 0x00616700 hands to EnumAddress.
@@ -224,6 +231,8 @@ public:
 	// HYPOTHESIS: returns the lobby's connection settings in a buffer the caller frees.
 	long fn_00616b90( unsigned long appId, void** ppSettings );
 	long fn_00616c20( unsigned long appId, void* pSettings );
+	// HYPOTHESIS: a true argument waits for settings; false cancels the wait (DPLWAIT_CANCEL).
+	void fn_00616c50( bool wait );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -561,4 +570,11 @@ long fn_00616000_DirectPlayHolder::fn_00616c20( unsigned long appId, void* pSett
 {
 	fn_00616ac0();
 	return fLobby->SetConnectionSettings( 0, appId, pSettings );
+}
+
+// FUNCTION: STARFLEETOP 0x00616c50
+void fn_00616000_DirectPlayHolder::fn_00616c50( bool wait )
+{
+	fn_00616ac0();
+	fLobby->WaitForConnectionSettings( !wait );
 }
