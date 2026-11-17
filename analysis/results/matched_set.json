@@ -6265,6 +6265,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00571648": {
+   "name": "FUN_00571648",
+   "symbol": "?fn_00571648@fn_00571648_owner@@QAE_NH@Z",
+   "unit": "unsorted/fn_00571000.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

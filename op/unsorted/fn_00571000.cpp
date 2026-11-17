@@ -213,3 +213,21 @@ void fn_00571018_owner::fn_005715f0(long a, fn_00571018_owner* b)
 	}
 	guard.Leave();
 }
+
+// HYPOTHESIS: unrecovered class; +8 holds a callback taking (+0xc + a) in ecx, whose char
+// result is compared with the byte at +0x10. The __fastcall pointer only models that call.
+class fn_00571648_owner {
+public:
+	bool fn_00571648(int a);
+	int fn_00571648_pad[2];
+	char (__fastcall *fn_00571648_func)(int);
+	int fn_00571648_base;
+	char fn_00571648_byte;
+};
+
+// FUNCTION: STARFLEETOP 0x00571648
+bool fn_00571648_owner::fn_00571648(int a)
+{
+	bool same = fn_00571648_func(fn_00571648_base + a) == fn_00571648_byte;
+	return same;
+}
