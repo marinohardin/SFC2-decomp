@@ -1999,6 +1999,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040dceb": {
+   "name": "FUN_0040dceb",
+   "symbol": "?fn_0040dceb@@YAXHPAXPAVfn_0040d63f_Buf@@@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 90,
+   "score": 98.698,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
