@@ -1217,10 +1217,9 @@ void tSFCPlayer::vfunction100(unsigned param_1, int param_2, int param_3, int pa
 // FUNCTION: STARFLEETOP 0x004d0de7
 int tSFCPlayer::vfunction98()
 {
-	if (vfunction58() || m_853c == 0) {
+	if (vfunction58())
 		return 3;
-	}
-	return (m_853c == 1) + 1;
+	return m_853c == 0 ? 3 : (m_853c == 1) + 1;
 }
 
 // FUNCTION: STARFLEETOP 0x004d0dce
