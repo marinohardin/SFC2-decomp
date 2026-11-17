@@ -7741,6 +7741,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00546337": {
+   "name": "FUN_00546337",
+   "symbol": "?fn_00546337@c_00546337@@QAEXABVc_00546337_arg@@@Z",
+   "unit": "unsorted/fn_00546000.cpp",
+   "size": 148,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

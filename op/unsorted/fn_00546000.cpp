@@ -348,3 +348,42 @@ void c_00546027::fn_00546325(int param_1)
 {
     field_90.fn_00450e41(param_1);
 }
+
+// HYPOTHESIS: the object behind 0x00546337 keeps two pairs of 25-byte arrays from +0x9c,
+// the second of each pair the first clamped against the argument's arrays at +0x25 and
+// +0x57; neither class is known.
+class c_00546337_arg
+{
+public:
+    char field_0[0x25];
+    char field_25[0x19];
+    char field_3e[0x57 - 0x3e];
+    char field_57[0x19];
+};
+
+class c_00546337
+{
+public:
+    void fn_00546337(const c_00546337_arg& param_1);
+
+    char field_0[0x9c];
+    char field_9c[0x19];
+    char field_b5[0x19];
+    char field_ce[0x19];
+    char field_e7[0x19];
+};
+
+// FUNCTION: STARFLEETOP 0x00546337
+void c_00546337::fn_00546337(const c_00546337_arg& param_1)
+{
+    int i;
+    for (i = 0; i < 0x19; i++)
+    {
+        // HYPOTHESIS: the minimum is computed twice, as a max(0, min(a, b)) macro expands.
+        field_b5[i] = 0 > (field_9c[i] < param_1.field_25[i] ? field_9c[i] : param_1.field_25[i]) ? 0 : (field_9c[i] < param_1.field_25[i] ? field_9c[i] : param_1.field_25[i]);
+    }
+    for (i = 0; i < 0x19; i++)
+    {
+        field_e7[i] = 0 > (field_ce[i] < param_1.field_57[i] ? field_ce[i] : param_1.field_57[i]) ? 0 : (field_ce[i] < param_1.field_57[i] ? field_ce[i] : param_1.field_57[i]);
+    }
+}
