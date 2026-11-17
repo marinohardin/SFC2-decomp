@@ -696,6 +696,34 @@ void fn_00402c74()
 {
 }
 
+// HYPOTHESIS: container clear of 0xb8-byte elements with a virtual destructor; names are placeholders.
+class fn_00402cf9_Elem
+{
+public:
+    virtual ~fn_00402cf9_Elem();
+    char pad[0xb4];
+};
+class fn_00402cf9_Vec
+{
+public:
+    void fn_00402cf9();
+    int m0;
+    fn_00402cf9_Elem* m4;
+    fn_00402cf9_Elem* m8;
+    fn_00402cf9_Elem* mc;
+};
+// FUNCTION: STARFLEETOP 0x00402cf9
+void fn_00402cf9_Vec::fn_00402cf9()
+{
+    fn_00402cf9_Elem* last = m8;
+    for (fn_00402cf9_Elem* it = m4; it != last; ++it)
+        it->~fn_00402cf9_Elem();
+    operator delete(m4);
+    m4 = 0;
+    m8 = 0;
+    mc = 0;
+}
+
 
 
 
