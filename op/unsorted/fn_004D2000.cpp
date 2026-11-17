@@ -291,6 +291,7 @@ class fn_004d2420_holder
 public:
 	~fn_004d2420_holder();
 	void fn_004d24dc();
+	void fn_004d2451(const char* text);
 	fn_004d2238_string m_str;
 };
 
@@ -298,4 +299,42 @@ public:
 fn_004d2420_holder::~fn_004d2420_holder()
 {
 	fn_004d24dc();
+}
+
+#include "unsorted/tValueBase.h"
+
+// HYPOTHESIS: a stand-in for Tiger's tString (Tiger/tstring.h), which cannot be included here: its <vector> clashes with the
+// reduced basic_string above. Only the layout (0x28 bytes, vtable) and the default constructor
+// (0x006230d0) are used by this unit.
+// MATCH-ONLY: the class must carry Tiger's name so the constructor call binds to tString::tString;
+// the manifest reads a second declaration of tString as an error, so the macro keeps the stand-in's
+// own name in the source text.
+#define fn_004d2451_string tString
+class fn_004d2451_string
+{
+public:
+	fn_004d2451_string();
+	virtual ~fn_004d2451_string();
+protected:
+	char m_rest[0x24];
+};
+
+// HYPOTHESIS: a value object with a string member at +0x18 (0x40 bytes, vtable 0x0079b8a4); name unknown.
+class fn_004d2451_value : public tValueBase
+{
+public:
+	virtual ~fn_004d2451_value();
+	fn_004d2451_string m_name;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2451
+void fn_004d2420_holder::fn_004d2451(const char* text)
+{
+	fn_004d24dc();
+	if (text != 0)
+	{
+		m_str.assign(text, strlen(text));
+		fn_004d2451_value* value = new fn_004d2451_value;
+		g_009254f8.fn_004cb4a7((int)value, m_str.c_str());
+	}
 }
