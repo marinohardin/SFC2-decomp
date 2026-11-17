@@ -553,3 +553,21 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 	// MATCH-ONLY: the struct above stands for the std::vector it has the layout of.
 	return *(fn_005717f7_vector*)&(*it).second;
 }
+
+// HYPOTHESIS: a forwarding member; 0x00571bda takes the object at +8, a constant 1 and the argument.
+class fn_00571a58_inner;
+void __stdcall fn_00571bda(fn_00571a58_inner* inner, int flag, int arg);
+
+class fn_00571a58_owner {
+public:
+	char fn_00571a58_pad[8];
+	fn_00571a58_inner* fn_00571a58_ptr;
+	void fn_00571a58(int arg);
+};
+
+#line 569
+// FUNCTION: STARFLEETOP 0x00571a58
+void fn_00571a58_owner::fn_00571a58(int arg)
+{
+	fn_00571bda(fn_00571a58_ptr, 1, arg);
+}
