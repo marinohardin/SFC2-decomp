@@ -713,3 +713,18 @@ void fn_0042c948(void* dest, const void* src)
 	typedef std::pair< const std::pair< int, int >, tHexPoint > tValue;
 	new (dest) tValue(*(const tValue*)src);
 }
+
+#include "Common/Database/DatabaseID.h"
+
+// The game's out-of-line copy of the library's inline _Construct (<xmemory>) for a database ID:
+// tID's implicit copy constructor, inlined.
+// HYPOTHESIS: used by a std::vector< nDatabase::tID >; the caller is not identified yet.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c91b.
+namespace std
+{
+// FUNCTION: STARFLEETOP 0x0042c986
+template<> void _Construct( nDatabase::tID* _P, const nDatabase::tID& _V )
+{
+	new ((void*)_P) nDatabase::tID(_V);
+}
+};
