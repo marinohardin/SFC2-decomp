@@ -24,12 +24,13 @@ public:
 	// HYPOTHESIS: an inline constructor; 0x0042fef9 stores the file, the vtable and the flag.
 	tStream_BasicFile( tBasicFile *file, bool flag ) : mFile( file ) { field_08 = flag; }
 
+	// HYPOTHESIS: the position and seek helpers 0x0042fef9 calls directly; the vtable at
+	// 0x007959e0 holds them in slots 0 and 1, before mGet and mPut.
+	virtual unsigned long	fn_006a2da0( void );
+	virtual void	fn_006a2db0( unsigned long position );
 	virtual bool	mGet( void *buffer, unsigned long size );
 	virtual bool	mPut( const void *buffer, unsigned long size );
 
-	// HYPOTHESIS: the position, seek and read helpers 0x0042fef9 calls directly.
-	unsigned long	fn_006a2da0( void );
-	void			fn_006a2db0( unsigned long position );
 	void			fn_006a2f80( void *buffer, unsigned long size );
 
 	tBasicFile	*mGetFile( void ) { return mFile; }

@@ -3124,6 +3124,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x004301bd": {
+   "name": "FUN_004301bd",
+   "symbol": "?fn_004301bd@t3DVisual_Model@@QAEXKPAVtStream_BasicFile@@@Z",
+   "unit": "unsorted/t3DVisual_Model.cpp",
+   "size": 44,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

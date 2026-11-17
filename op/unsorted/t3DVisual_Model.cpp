@@ -627,3 +627,13 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 		return false;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004301bd
+void t3DVisual_Model::fn_004301bd(unsigned long size, tStream_BasicFile *stream)
+{
+	if (size != 0)
+	{
+		m154 = new char[size];
+		stream->mGet(m154, size);
+	}
+}
