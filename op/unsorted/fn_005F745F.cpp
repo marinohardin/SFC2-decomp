@@ -35,12 +35,43 @@ public:
 	void FUN_005f7897();
 };
 
-// HYPOTHESIS: the object at +0x18 of fn_005f745f_object; 0x005f7961 takes one argument whose
-// type is not known.
+class fn_005f7961_object;
+
+// HYPOTHESIS: the queued value: one string, copied by a copy constructor the original calls
+// out of line (0x0055fe12); its destructor inlines to _Tidy (0x005da20a).
+struct fn_0055fe12_value
+{
+	fn_0055fe12_value( const fn_0055fe12_value& other );
+
+	std::string field_00;
+	int field_10;
+};
+
+// HYPOTHESIS: a position in fn_005f7961_object: the node at +0x0c and the owner; 0x005f7db6
+// reads the value it points at.
+class fn_005f7db6_iterator
+{
+public:
+	fn_005f7db6_iterator( void* node, fn_005f7961_object* owner )
+		: fNode( node ), fOwner( owner )
+	{
+	}
+	fn_0055fe12_value& FUN_005f7db6();
+
+	void* fNode;
+	fn_005f7961_object* fOwner;
+};
+
+// HYPOTHESIS: the object at +0x18 of fn_005f745f_object, a queue of strings; 0x005f7961 takes
+// one argument whose type is not known, 0x005f7902 drops the front.
 class fn_005f7961_object
 {
 public:
 	void FUN_005f7961( int value );
+	void FUN_005f7902();
+
+	byte field_00[0x0c];
+	void* field_0c;
 };
 
 // HYPOTHESIS: a container guarded by the lock at +0x40; only the members used here are placed.
@@ -50,12 +81,13 @@ public:
 	void FUN_005f745f( int value );
 	fn_005f74a6_entry FUN_005f74a6();
 	void FUN_005f755c( int value );
+	fn_0055fe12_value FUN_005f75a3();
 
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
 	byte field_05[0x18 - 0x05];
 	fn_005f7961_object field_18;
-	byte field_19[0x40 - 0x19];
+	byte field_28[0x40 - 0x28];
 	tOptex field_40;
 };
 
@@ -95,4 +127,16 @@ void fn_005f745f_object::FUN_005f755c( int value )
 	field_18.FUN_005f7961( value );
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005f75a3
+fn_0055fe12_value fn_005f745f_object::FUN_005f75a3()
+{
+	tOptex::tGuard guard( &field_40 );
+
+	fn_005f7db6_iterator front( field_18.field_0c, &field_18 );
+	fn_0055fe12_value value( front.FUN_005f7db6() );
+	field_18.FUN_005f7902();
+
+	return value;
 }
