@@ -724,9 +724,25 @@ void fn_00402cf9_Vec::fn_00402cf9()
     mc = 0;
 }
 
-
-
-
+// HYPOTHESIS: names and the callee's parameter types are placeholders.
+class fn_00402d31_Target
+{
+public:
+    static void __stdcall fn_0040441e(fn_00402d31_Target* p, int a, int b);
+};
+class fn_00402d31_Obj
+{
+public:
+    void fn_00402d31(int a);
+    int m0;
+    int m4;
+    fn_00402d31_Target* m8;
+};
+// FUNCTION: STARFLEETOP 0x00402d31
+void fn_00402d31_Obj::fn_00402d31(int a)
+{
+    fn_00402d31_Target::fn_0040441e(m8, 1, a);
+}
 
 
 
