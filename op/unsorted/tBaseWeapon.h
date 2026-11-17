@@ -210,7 +210,7 @@ public:
     virtual bool vfunction132(int param_1);
     virtual int vfunction133();
     virtual bool vfunction134();
-    virtual float vfunction135(int param_1);
+    virtual float vfunction135(unsigned char param_1);
     virtual void vfunction136();
     virtual void vfunction137();
     virtual bool vfunction138();

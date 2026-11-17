@@ -6877,6 +6877,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d877a": {
+   "name": "tBaseWeapon::vfunction135",
+   "symbol": "?vfunction135@tBaseWeapon@@UAEME@Z",
+   "unit": "unsorted/tBaseWeapon.cpp",
+   "size": 105,
+   "score": 87.583,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
