@@ -605,7 +605,6 @@ address	size	symbol	source	modes
 0x004d0a7c	7	tSFCPlayer::vfunction55()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0a83	13	tSFCPlayer::vfunction56(bool)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0a90	7	tSFCPlayer::vfunction57()	unsorted/tSFCPlayer.cpp	vc6 guest
-0x004d0a97	28	tSFCPlayer::vfunction37(char *)	unsorted/tSFCPlayer.cpp	partial
 0x004d0ab3	70	fn_004d0ab3(int)	unsorted/tSFCPlayer.cpp	partial
 0x004d0af9	47	tSFCPlayer::vfunction38()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0b28	63	tSFCPlayer::fn_004d0b28()	unsorted/tSFCPlayer.cpp	vc6 guest
@@ -626,9 +625,6 @@ address	size	symbol	source	modes
 0x004d0e71	13	tSFCPlayer::vfunction67(int)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0e7e	7	tSFCPlayer::vfunction68()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0e85	49	tSFCPlayer::vfunction69()	unsorted/tSFCPlayer.cpp	vc6 guest
-0x004d0eb6	30	tSFCPlayer::vfunction70(char *)	unsorted/tSFCPlayer.cpp	partial
-0x004d0ed4	141	fn_004d0ed4(tSFCPlayer *,char *)	unsorted/tSFCPlayer.cpp	partial
-0x004d0f61	31	tSFCPlayer::vfunction71()	unsorted/tSFCPlayer.cpp	partial
 0x004d0f80	151	tSFCPlayer::fn_004d0f80(int)	unsorted/tSFCPlayer.cpp	partial
 0x004d1017	56	tSFCPlayer::vfunction72(unsigned param_1,int)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d104f	36	tSFCPlayer::vfunction73()	unsorted/tSFCPlayer.cpp	vc6 guest
