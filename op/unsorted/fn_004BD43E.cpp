@@ -428,3 +428,7 @@ c_004bd805_Entry *c_004bdd0d_Object::fn_004bdf64( int index )
 		pos -= 500;
 	return &field_28[ pos ];
 }
+
+// HYPOTHESIS: the one instance of the second class; 0x004bdf8d is its dynamic initializer.
+// FUNCTION: STARFLEETOP 0x004bdf8d
+c_004bdd0d_Object g_004bdd0d_Object;
