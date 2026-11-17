@@ -6,6 +6,7 @@
 
 class tMinMaxFloat;
 template <class T> class tValue;
+class tIndividualShipSystemList;
 
 // An interface: tShipSystemsFighter's constructor (0x00444046) stores this vtable before it
 // builds its own members, and every slot is _purecall in the exe's vtable.
@@ -160,7 +161,7 @@ public:
     virtual void vfunction144() = 0;
     virtual void vfunction145() = 0;
     virtual int vfunction146(int, int) = 0;
-    virtual void vfunction147() = 0;
+    virtual tIndividualShipSystemList* vfunction147() = 0;
     virtual void vfunction148() = 0;
     virtual void vfunction149() = 0;
     virtual void vfunction150() = 0;
