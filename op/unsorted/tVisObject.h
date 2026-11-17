@@ -100,7 +100,9 @@ public:
 	// HYPOTHESIS: 0x0067d870; the fleet panel's constructor calls it on its fleet form's +0xc with
 	// the form and the form's +0x8 until +0x8 is clear, so it takes a child out of the form.
 	void fn_0067d870( tVisObject *pForm, tVisObject *pChild );
-	virtual void vfunction1();
+	// HYPOTHESIS: slot 0 (0x0046c408) takes one value; tMetaMapControl's constructor
+	// (0x005e2f95) calls it directly with 1.
+	virtual void vfunction1( unsigned int n );
 	virtual void vfunction2();
 	// HYPOTHESIS: +0x8 measures a run of text in a font, -1 for the whole string;
 	// tListBox_Base::vfunction53 (0x004c6af8) asks it of its font.
