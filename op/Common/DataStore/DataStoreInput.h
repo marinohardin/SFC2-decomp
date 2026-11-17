@@ -86,12 +86,14 @@ byte tInput::Get()
 	return fBuffer->Get( fGetPos++ );
 }
 
+#ifndef DATASTORE_OUT_OF_LINE_READ
 void tInput::Read( byte* data, int32 size )
 {
 	fBuffer->Read( data, size, fGetPos );
 
 	fGetPos += size;
 }
+#endif
 
 tInput& tInput::operator>>( std::string& string )
 {

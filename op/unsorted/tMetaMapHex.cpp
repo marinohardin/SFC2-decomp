@@ -1,8 +1,10 @@
 // tBuffer::Write is called out of line (0x0042a0fc).
 #define DATASTORE_OUT_OF_LINE_WRITE
+#define DATASTORE_OUT_OF_LINE_READ
 #include "unsorted/tMetaMapHex.h"
 #include "Common/Settings.h"
 #include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/DataStoreInput.h"
 
 // Inline in the SDK; the unwind code of StreamOut below calls a copy.
 inline tOptex::tGuard::~tGuard()
@@ -154,4 +156,90 @@ void tMetaMapHex::StreamOut( nDataStore::tOutput& output ) const
 	}
 
 	output << m_98 << m_a0;
+}
+
+// FUNCTION: STARFLEETOP 0x00539801
+void tMetaMapHex::StreamIn( nDataStore::tInput& input )
+{
+	tOptex::tGuard guard( &m_bc );
+
+	tDatabaseObject::StreamIn( input );
+
+	int32 x;
+	int32 y;
+	int32 v48;
+	int32 v70;
+	int32 v84;
+	int32 i;
+	int32 j;
+	int32 key;
+	int32 count;
+	int32 value;
+	int32 count2;
+	int32 value2;
+
+	iObjectVersion version = fObjectVersion;
+	fObjectVersion = 1;
+
+	switch( version )
+	{
+		case 0:
+		{
+			input >> x >> y >> v48 >> m_5c >> m_60 >> m_64;
+			input >> m_68 >> m_6c;
+			input >> v70 >> v84;
+			input >> m_98 >> m_a0;
+
+			m_48[0] = v48;
+			m_a8.fn_005b6b62( x, y );
+			m_70[0] = v70;
+			m_84[0] = v84;
+			break;
+		}
+
+		case 1:
+		{
+			// HYPOTHESIS: tHexPoint is a tStreamable; its header does not say so yet.
+			input >> *(nDataStore::tStreamable *)&m_a8;
+
+			input.Read( (byte*)&count, sizeof( count ) );
+			for( i = 0; i < count; i++ )
+			{
+				input.Read( (byte*)&key, sizeof( key ) );
+				input.Read( (byte*)&value, sizeof( value ) );
+				m_48[key] = value;
+			}
+
+			input.Read( (byte*)&m_5c, sizeof( m_5c ) );
+			input.Read( (byte*)&m_60, sizeof( m_60 ) );
+			input.Read( (byte*)&m_64, sizeof( m_64 ) );
+			input.Read( (byte*)&m_68, sizeof( m_68 ) );
+			input.Read( (byte*)&m_6c, sizeof( m_6c ) );
+
+			input.Read( (byte*)&count2, sizeof( count2 ) );
+			for( j = 0; j < count2; j++ )
+			{
+				input >> key;
+				input >> value2;
+				fn_0053a73a_map::value_type entry( key, 0 );
+				fn_0053a73a_map::iterator it = m_70.insert( entry ).first;
+				(*it).second = value2;
+			}
+
+			input >> count2;
+			for( j = 0; j < count2; j++ )
+			{
+				input >> key;
+				input >> value2;
+				fn_0053a73a_map::value_type entry( key, 0 );
+				fn_0053a73a_map::iterator it = m_84.insert( entry ).first;
+				(*it).second = value2;
+			}
+
+			input >> m_98 >> m_a0;
+			break;
+		}
+	}
+
+	guard.Leave();
 }

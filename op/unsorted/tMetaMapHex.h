@@ -64,8 +64,16 @@ struct fn_0053a73a_map
 	fn_0053a73a_map( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
 		: m_tree( al, pred, multi ) {}
 
+	struct value_type
+	{
+		value_type( const int32& k, const int32& v ) : first( k ), second( v ) {}
+		int32	first;
+		int32	second;
+	};
+
 	// HYPOTHESIS: the out-of-line assignment 0x0053a79b.
 	fn_0053a73a_map& operator=( const fn_0053a73a_map& other );
+	std::pair< iterator, bool > insert( const value_type& v );
 	int32& operator[]( const int32& key );
 	iterator begin() const { return iterator( m_tree.m_head->left ); }
 	iterator end() const { return iterator( m_tree.m_head ); }
@@ -127,6 +135,9 @@ struct fn_0053a6cc_map
 
 	// HYPOTHESIS: the out-of-line assignment 0x0053a704.
 	fn_0053a6cc_map& operator=( const fn_0053a6cc_map& other );
+	// HYPOTHESIS: the index operator 0x0053a6a3. tMetaMapHex's StreamIn copies a long key into a
+	// temporary before the call, so the key is an int here.
+	int& operator[]( const int& key );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
 	// HYPOTHESIS: the out-of-line 0x0053a8ff, which tMetaMapHex's StreamOut calls for the first
 	// element; that it is the const begin is a guess.
@@ -162,6 +173,7 @@ public:
 	int32 fn_0053a414( int32 param_1 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
+	virtual void StreamIn( nDataStore::tInput& input );
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.

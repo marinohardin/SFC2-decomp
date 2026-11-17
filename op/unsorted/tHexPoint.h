@@ -15,6 +15,8 @@ public:
 	tHexPoint(int x, int y);
 	~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
+	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
+	void fn_005b6b62(int x, int y);
 	int m_00;
 	int m_04;
 	int m_08;
