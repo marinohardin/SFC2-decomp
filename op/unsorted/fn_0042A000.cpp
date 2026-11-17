@@ -598,6 +598,7 @@ class fn_0042adc1_object
 public:
 	void FUN_0042adc1( int value );
 	void FUN_0042add2( int value );
+	void FUN_0042aff3( int value );
 
 	byte field_00[0x08];
 	int field_08;
@@ -635,4 +636,14 @@ tObject_0042ade3::~tObject_0042ade3()
 	m_10 = 0;
 	operator delete( m_08 );
 	m_08 = 0;
+}
+
+// HYPOTHESIS: argument types follow FUN_0042b396; the callee pops its arguments.
+void __stdcall FUN_0042baff( int target, int flag, int value );
+
+// HYPOTHESIS: same shape as FUN_0042adc1, so the same object type.
+// FUNCTION: STARFLEETOP 0x0042aff3
+void fn_0042adc1_object::FUN_0042aff3( int value )
+{
+	FUN_0042baff( field_08, 1, value );
 }
