@@ -877,3 +877,11 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction57( tAuctionItem* i
 	validate( item );
 	fDatabase->UnLock( item );
 }
+#line 880
+// FUNCTION: STARFLEETOP 0x0056e702
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction58( tServCharacter* character )
+{
+#line 1142
+	validate( character );
+	fDatabase->UnLock( character );
+}
