@@ -55,6 +55,8 @@ public:
     ~fn_0053440f_object();
     // HYPOTHESIS: a member taking no arguments, called first by the destructor.
     void fn_005ff7ac();
+    void fn_00534454(void* value);
+    void fn_00571a69(void* const& value);
 
     std::vector< long > field_00;
 };
@@ -70,18 +72,12 @@ fn_0053440f_object::~fn_0053440f_object()
     fn_005ff7ac();
 }
 
-// HYPOTHESIS: a __thiscall whose object starts with a vector of 32-bit values; it appends its
-// argument through 0x00571a69 (that vector type is declared only inside tPanelMgr.cpp, so the
-// append is declared on this object).
-class fn_00534454_object
-{
-public:
-    void fn_00534454(void* value);
-    void fn_00571a69(void* const& value);
-};
+// HYPOTHESIS: appends its argument to the vector at +0 through 0x00571a69 (that vector type is
+// declared only inside tPanelMgr.cpp, so the append is declared on this object); 0x0053455b
+// calls it on one of the slots of fn_005344a3_object, so it is a member of the slot class.
 
 // FUNCTION: STARFLEETOP 0x00534454
-void fn_00534454_object::fn_00534454(void* value)
+void fn_0053440f_object::fn_00534454(void* value)
 {
     fn_00571a69(value);
 }
@@ -126,6 +122,8 @@ class fn_005344a3_object
 public:
     fn_005344a3_object(long value);
     ~fn_005344a3_object();
+    // HYPOTHESIS: the argument's first long selects the slot it is handed to.
+    void fn_0053455b(long* value);
 
     tString field_00;
     long field_28;
@@ -147,4 +145,10 @@ fn_005344a3_object::~fn_005344a3_object()
     unsigned int n = 20;
     while (n-- > 0)
         delete field_2c[n];
+}
+
+// FUNCTION: STARFLEETOP 0x0053455b
+void fn_005344a3_object::fn_0053455b(long* value)
+{
+    field_2c[*value]->fn_00534454(value);
 }
