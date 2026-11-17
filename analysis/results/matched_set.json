@@ -7561,6 +7561,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00543c70": {
+   "name": "tServCharacter::vfunction6_for_tAllocatedClass",
+   "symbol": "?SQLFillInsertStream@fn_005430ad_owner@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/fn_00543000.cpp",
+   "size": 1248,
+   "score": 99.941,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

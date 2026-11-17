@@ -1,4 +1,6 @@
+#include "Common/Database/DatabaseObject.h"
 #include "Common/Database/DatabaseID.h"
+#include "Common/DataStore/DataStoreOutput.h"
 #include "unsorted/tMetaMapHex.h"
 #include <vector>
 #include <map>
@@ -160,7 +162,7 @@ public:
 // accessors); +0x138 is a count it lowers without going below zero.
 // HYPOTHESIS: +0xd4 and +0xd8 are the begin and end of a container of tIDs whose
 // object starts at +0xd0 (0x005430fa walks them).
-class fn_005430ad_owner
+class fn_005430ad_owner : public nDatabase::tDatabaseObject
 {
 public:
 	bool fn_005430ad();
@@ -216,6 +218,11 @@ public:
 	bool fn_00543bba();
 	void fn_00543bc3(bool flag);
 	void fn_00543bdd(bool flag);
+	// HYPOTHESIS: the exe's slot 6 of this class (0x00543c70) is SQLFillInsertStream.
+	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
+	// HYPOTHESIS: a member of tDatabaseObject (0x006fc200) that returns a string for a string
+	// value; the SQL text writes every string field through it, between quotes.
+	std::string fn_006fc200( std::string value );
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -235,7 +242,6 @@ public:
 	int fn_005434a3();
 	float fn_005434aa();
 
-	char m_pad[0x48];
 	std::string m048;
 	time_t m058;
 	fn_0042c709_wrapper m05c;
@@ -250,9 +256,9 @@ public:
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
 	fn_0042c709_wrapper m0f0;
-	int m108;
-	int m10c;
-	int m110;
+	unsigned int m108;
+	unsigned int m10c;
+	unsigned int m110;
 	unsigned int m114_0 : 1;
 	unsigned int m114_1 : 1;
 	unsigned int m114_2 : 1;
@@ -266,12 +272,12 @@ public:
 	float m118;
 	tHexPoint m11c;
 	int m130;
-	int m134;
+	long m134;
 	int m138;
 	int m13c;
 	int m140;
-	int m144;
-	int m148;
+	long m144;
+	long m148;
 	tHexPoint m14c;
 };
 
@@ -871,4 +877,69 @@ void fn_005430ad_owner::fn_00543bdd(bool flag)
 	}
 	else
 		m114_7 = 0;
+}
+
+// The SDK's inline destructors of the buffer and its writer, expanded into the function below
+// as in the original.
+inline nDataStore::tOutput::~tOutput()
+{
+	Close( fCleanUpBuffer );
+}
+
+inline nDataStore::tBuffer::~tBuffer()
+{
+}
+
+// HYPOTHESIS: the object the SQL stream is turned into after a data store buffer is written to
+// it (0x00573882 takes the stream, the buffer and a flag; 0x00573978 finishes the write).
+class fn_00573882_result
+{
+public:
+	void fn_00573978();
+};
+fn_00573882_result *__stdcall fn_00573882( std::stringstream *SQL, nDataStore::tBuffer *buffer, int flag );
+
+// HYPOTHESIS: the data store's streaming of the two lists and of the tID container; the
+// vector operators are template specialisations in the exe (0x0054491b, 0x0042c80a).
+nDataStore::tOutput &fn_0054491b( nDataStore::tOutput &output, const std::vector< fn_005419e4_entry > &value );
+nDataStore::tOutput &fn_0042c80a( nDataStore::tOutput &output, const std::vector< fn_005419e4_entry > &value );
+nDataStore::tOutput &fn_0053d6fe( nDataStore::tOutput &output, const fn_0042b0fd_owner &value );
+
+// FUNCTION: STARFLEETOP 0x00543c70
+void fn_005430ad_owner::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
+{
+	nDataStore::tBuffer buffer;
+	nDataStore::tOutput output( &buffer );
+
+	tDatabaseObject::SQLFillInsertStream( SQL );
+
+	*SQL << "'" << fn_006fc200( m048 ) << "', " << m058 << ", ";
+
+	fn_0054491b( output, *m05c.Lock() );
+	fn_00573882( SQL, &buffer, 0 )->fn_00573978();
+	buffer.Clear();
+
+	*SQL << "'" << fn_006fc200( m074 ) << "', '" << fn_006fc200( m084 ) << "', " << m094 << ", "
+		<< m098.fn_0055f269() << ", " << m098.fn_005e8f21() << ", " << m0ac.fn_0055f269() << ", "
+		<< m0ac.fn_005e8f21() << ", " << m0c0.GetObjectID() << ", ";
+
+	fn_0053d6fe( output, m0d0 );
+	fn_00573882( SQL, &buffer, 0 )->fn_00573978();
+	buffer.Clear();
+
+	*SQL << "'" << fn_006fc200( m0e0 ) << "', ";
+
+	fn_0042c80a( output, *m0f0.Lock() );
+	fn_00573882( SQL, &buffer, 0 )->fn_00573978();
+	buffer.Clear();
+
+	*SQL << m108 << ", " << m10c << ", " << m110 << ", " << *(long *)( (char *)&m10c + 0x8 ) << ", "
+		<< m118 << ", " << m11c.fn_0055f269() << ", " << m11c.fn_005e8f21() << ", " << m130 << ", "
+		<< m134 << ", " << m138 << ", " << m13c << ", " << m140 << ", " << m144 << ", " << m148 << ", "
+		<< m14c.fn_0055f269() << ", " << m14c.fn_005e8f21() << " )";
+}
+
+inline void nDataStore::tBuffer::Clear()
+{
+	fBuffer.clear();
 }
