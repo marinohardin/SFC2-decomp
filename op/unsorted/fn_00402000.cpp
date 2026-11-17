@@ -767,6 +767,20 @@ void fn_00402d42_Vec::fn_00402d42()
     mc = 0;
 }
 
+// HYPOTHESIS: names and the callee's parameter types are placeholders.
+#include <vector>
+class fn_00402d77_Obj
+{
+public:
+    void fn_00402d77(const std::string& a);
+    std::vector<std::string> m0;
+};
+// FUNCTION: STARFLEETOP 0x00402d77
+void fn_00402d77_Obj::fn_00402d77(const std::string& a)
+{
+    m0.insert(m0.end(), 1, a);
+}
+
 
 
 
