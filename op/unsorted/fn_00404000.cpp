@@ -749,16 +749,16 @@ std::istream& __cdecl fn_00404f00(std::istream& _I, std::string& _X)
     typedef std::ctype<char> _Ctype;
     std::ios_base::iostate _St = std::ios_base::goodbit;
     bool _Chg = false;
-    std::string::size_type _N;
     _X.erase(0, (std::string::size_type)-1);
-    if (_I.ipfx(false))
+    const std::istream::sentry _Ok(_I);
+    if (_Ok)
     {
-        _TRY_IO_BEGIN
         const _Ctype& _Fac = std::use_facet(_I.getloc(), (_Ctype *)0, true);
-        _N = 0 <_I.width() && _I.width() < _X.max_size()
+        _TRY_IO_BEGIN
+        std::string::size_type _N = 0 < _I.width() && _I.width() < _X.max_size()
             ? _I.width() : _X.max_size();
         int _C = _I.rdbuf()->sgetc();
-        for (; 0 < _N; _C = _I.rdbuf()->snextc(), --_N)
+        for (; 0 < --_N; _C = _I.rdbuf()->snextc())
             if (_C == EOF)
             {
                 _St |= std::ios_base::eofbit;

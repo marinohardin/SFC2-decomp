@@ -744,7 +744,7 @@
    "symbol": "?fn_00404f00@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@std@@AAV12@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 201,
-   "score": 23.314,
+   "score": 38.028,
    "exact": false,
    "recorded": "2026-11-17"
   },
