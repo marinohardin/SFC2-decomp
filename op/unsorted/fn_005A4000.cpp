@@ -45,7 +45,8 @@ public:
 	std::string	fString168;
 	std::string	fString178;
 	std::string	fString188;
-	char		pad[0x208 - 0x188 - sizeof(std::string)];
+	std::string	fString198;
+	char		pad[0x208 - 0x198 - sizeof(std::string)];
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
@@ -68,6 +69,7 @@ public:
 	std::string	fn_005A45e2();
 	std::string	fn_005A464b();
 	std::string	fn_005A46b4();
+	std::string	fn_005A4a65();
 	std::string	fn_005A471d();
 	std::string	fn_005A4786();
 	std::string	fn_005A47ef();
@@ -329,4 +331,11 @@ std::string fn_005A4173_Owner::fn_005A49fc()
 {
 	tGuard guard(this);
 	return fString188;
+}
+
+// FUNCTION: STARFLEETOP 0x005a4a65
+std::string fn_005A4173_Owner::fn_005A4a65()
+{
+	tGuard guard(this);
+	return fString198;
 }
