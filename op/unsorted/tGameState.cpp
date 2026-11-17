@@ -890,3 +890,20 @@ char fn_0046a63f(tGameState *state)
 	}
 	return 0;
 }
+
+// HYPOTHESIS: the object has a virtual at slot 1 returning a byte.
+class fn_0046a678_object
+{
+public:
+	virtual void fn_slot0();
+	virtual char fn_slot1();
+};
+
+// FUNCTION: STARFLEETOP 0x0046a678
+char fn_0046a678(fn_0046a678_object *object)
+{
+	char result = 0;
+	if (object != 0)
+		result = object->fn_slot1();
+	return result;
+}
