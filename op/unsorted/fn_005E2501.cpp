@@ -118,5 +118,6 @@ std::string g_00c38ff8 = "EconomyIcon";
 // FUNCTION: STARFLEETOP 0x005e299d
 std::string g_00c38fe8 = "ImpedenceIcon";
 
+// FUNCTION: STARFLEETOP 0x005e2a26
 // FUNCTION: STARFLEETOP 0x005e29f3
 std::string g_00c38fd8 = "CurrentHexIn";
