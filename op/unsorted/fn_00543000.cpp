@@ -140,7 +140,7 @@ public:
 	unsigned int m114_9 : 1;
 	unsigned int m114_10 : 1;
 	float m118;
-	char m_pad11c[0x14];
+	tHexPoint m11c;
 	int m130;
 	int m134;
 	int m138;
@@ -364,4 +364,10 @@ int fn_005430ad_owner::fn_005434a3()
 float fn_005430ad_owner::fn_005434aa()
 {
 	return m118;
+}
+
+// FUNCTION: STARFLEETOP 0x005434b1
+tHexPoint fn_005430ad_owner::fn_005434b1() const
+{
+	return m11c;
 }
