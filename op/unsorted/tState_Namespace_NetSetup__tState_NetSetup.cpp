@@ -745,6 +745,7 @@ tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 
 // HYPOTHESIS: the original's destructor sets no vtable, as VC6's compiler-generated one does
 // (the build with no declared destructor emits exactly its body); written out, VC6 adds the store.
+// FUNCTION: STARFLEETOP 0x00477a13
 // FUNCTION: STARFLEETOP 0x004777f3
 tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
 {
