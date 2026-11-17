@@ -119,20 +119,14 @@ struct fn_005d9281_tree
 // destructor is 0x005d92b9 and whose range erase is 0x005d939d.
 struct fn_005d92b9_object
 {
-    struct node
-    {
-        node *left;
-        node *parent;
-        node *right;
-    };
-    class iterator
-    {
-    public:
-        iterator(node *n) : m_node(n) {}
-        node *m_node;
-    };
+    // HYPOTHESIS: its range erase steps with the same out-of-line increment (0x0052e144) as
+    // fn_005d9281_tree, so the two trees share one node and iterator shape here.
+    typedef fn_005d9281_tree::node node;
+    typedef fn_005d9281_tree::iterator iterator;
     ~fn_005d92b9_object();
     iterator fn_005d939d(iterator first, iterator last);
+    iterator fn_005d9441(iterator where);
+    void fn_005d96ac(node *n);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
     char m_0x00[0x04];
@@ -226,6 +220,26 @@ fn_005d9281_tree::iterator fn_005d9281_tree::fn_005d9329(iterator first, iterato
     else
     {
         fn_005d9411(m_head->parent);
+        m_head->parent = m_nil;
+        m_size = 0;
+        m_head->left = m_head;
+        m_head->right = m_head;
+        return begin();
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x005d939d
+fn_005d92b9_object::iterator fn_005d92b9_object::fn_005d939d(iterator first, iterator last)
+{
+    if (m_size == 0 || first.m_node != m_head->left || last.m_node != m_head)
+    {
+        while (first != last)
+            fn_005d9441(first++);
+        return first;
+    }
+    else
+    {
+        fn_005d96ac(m_head->parent);
         m_head->parent = m_nil;
         m_size = 0;
         m_head->left = m_head;
