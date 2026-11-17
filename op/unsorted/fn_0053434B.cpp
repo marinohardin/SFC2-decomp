@@ -118,3 +118,24 @@ int fn_00534461_object::fn_00534461(char* name)
     }
     return -1;
 }
+
+// HYPOTHESIS: a constructor of an object holding a tString, the long it is given and twenty
+// fn_0053440f_object pointers, filled from the last; the owning class is not known.
+class fn_005344a3_object
+{
+public:
+    fn_005344a3_object(long value);
+
+    tString field_00;
+    long field_28;
+    fn_0053440f_object* field_2c[20];
+};
+
+// FUNCTION: STARFLEETOP 0x005344a3
+fn_005344a3_object::fn_005344a3_object(long value)
+{
+    field_28 = value;
+    unsigned int n = 20;
+    while (n-- > 0)
+        field_2c[n] = new fn_0053440f_object();
+}
