@@ -4222,6 +4222,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044453c": {
+   "name": "tShipSystemsFighter::scalar_deleting_destructor",
+   "symbol": "??_GtShipSystemsFighter@@UAEPAXI@Z",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
