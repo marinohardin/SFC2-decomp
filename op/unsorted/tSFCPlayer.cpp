@@ -235,7 +235,7 @@ class tSFCPlayer
 		virtual void vfunction67(int param_1);
 		virtual int vfunction68();
 		virtual void vfunction69();
-		virtual void vfunction70(char *param_1) = 0;
+		virtual void vfunction70(char *param_1);
 		virtual void vfunction71() = 0;
 		virtual void vfunction72() = 0;
 		virtual void vfunction73() = 0;
@@ -1227,6 +1227,14 @@ void tSFCPlayer::vfunction69()
 			m_61a8[ihull][iclass].fn_004d1c60(&erased, m_61a8[ihull][iclass].begin(), m_61a8[ihull][iclass].end());
 		}
 	}
+}
+// FUNCTION: STARFLEETOP 0x004d0eb6
+void tSFCPlayer::vfunction70(char *param_1)
+{
+	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
+	int fn_local;
+	tShipSpecs specs;
+	fn_local = 0;
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
