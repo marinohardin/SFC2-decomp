@@ -127,7 +127,7 @@ public:
 	virtual void vfunction53( long value, long offset, std::vector<nDatabase::tID>* ids );
 	virtual void vfunction54( tMetaMapHex* hex );
 	virtual void vfunction55( tNewsStory* newsStory );
-	virtual void vfunction56();
+	virtual void vfunction56( nDatabase::tID id, bool byCharacterID );
 	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
 	fn_0056c414_Database* fDatabase;
@@ -852,4 +852,20 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction55( tNewsStory* new
 #line 1100
 	validate( newsStory );
 	fDatabase->RemoveObjectFromDB( newsStory );
+}
+#line 857
+// FUNCTION: STARFLEETOP 0x0056e5f2
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction56( nDatabase::tID id, bool byCharacterID )
+{
+	std::vector<tPreparedMissions> missions;
+	if( id.IsValid() )
+	{
+#line 1116
+		validate_throw( id.IsValid(), nException::tBaseException( "RemovePreparedMissions: Invalid ID", __FILE__, __LINE__ ) );
+		vfunction24( id, byCharacterID, &missions, false );
+		for( std::vector<tPreparedMissions>::iterator i = missions.begin(); i != missions.end(); i++ )
+		{
+			fDatabase->RemoveObjectFromDB( i );
+		}
+	}
 }
