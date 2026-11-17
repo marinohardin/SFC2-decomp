@@ -43,6 +43,8 @@ public:
     char fn_0043e8da();
     char fn_0043e911(int aID);
     void fn_0043ec81();
+    int fn_0043eca6(int param_1);
+    void fn_0043eee8();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -854,4 +856,18 @@ void tSensorGroupSystem::fn_0043ec81()
 {
     // HYPOTHESIS: the owner is an entity; its slot 11 returns its ID.
     field_18c = fn_0043eb5f(((tEntity*)field_2c->vfunction108())->vfunction12());
+}
+
+// HYPOTHESIS: a free function taking a float; its result type is not recovered.
+int fn_0043ecde(float param_1);
+
+// FUNCTION: STARFLEETOP 0x0043eca6
+int tSensorGroupSystem::fn_0043eca6(int param_1)
+{
+    fn_0043eee8();
+    float value = fn_0043e78a(param_1);
+    int result = 0;
+    if (value < 0.0f)
+        result = fn_0043ecde(-value);
+    return result;
 }
