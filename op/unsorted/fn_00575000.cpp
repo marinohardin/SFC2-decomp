@@ -392,3 +392,26 @@ void fn_00575526_owner::fn_00575526(fn_00575526_object** out)
 {
 	*out = new fn_00575526_object(m_d0);
 }
+
+// HYPOTHESIS: the object built by fn_00575569 is unnamed; it has a destructor, so the new-expression carries an EH frame
+class fn_00575569_object
+{
+public:
+	fn_00575569_object(void* arg);
+	~fn_00575569_object();
+	char m_pad[0x48];
+};
+
+class fn_00575569_owner
+{
+public:
+	void fn_00575569(fn_00575569_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x00575569
+void fn_00575569_owner::fn_00575569(fn_00575569_object** out)
+{
+	*out = new fn_00575569_object(m_d0);
+}
