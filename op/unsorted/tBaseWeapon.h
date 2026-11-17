@@ -189,11 +189,22 @@ public:
     virtual void vfunction136();
     virtual void vfunction137();
     virtual bool vfunction138();
+    // HYPOTHESIS: slots 139 to 143 are placeholders that only fix the positions of slots 144
+    // and 145 (offsets 0x240 and 0x244), which slot 103 calls.
+    virtual void vfunction139();
+    virtual void vfunction140();
+    virtual void vfunction141();
+    virtual void vfunction142();
+    virtual void vfunction143();
+    virtual int vfunction144();
+    virtual void vfunction145(int param_1);
     // HYPOTHESIS: members read by vfunction102, placed by offset.
     char pad_04[0x34];
     float field_38;
     float field_3c;
-    char pad_40[0x8c];
+    char pad_40[6];
+    char field_46;
+    char pad_47[0x85];
     int field_cc;
     char pad_d0[0xc];
     float field_dc;
