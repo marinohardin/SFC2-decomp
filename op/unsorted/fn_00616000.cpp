@@ -208,6 +208,8 @@ public:
 class fn_00616700_Entry
 {
 public:
+	// HYPOTHESIS: 0x006187d0 is its destructor; 0x00616fd0 calls it before deleting the entry.
+	~fn_00616700_Entry();
 	char fPad[0x1c];
 	fn_00616700_Provider* fProvider;
 };
@@ -695,4 +697,27 @@ unsigned long fn_00616000_DirectPlayHolder::fn_00616fb0()
 	fn_00616ee0_Caps caps;
 	fn_00616ee0( true, &caps );
 	return caps.fTimeout;
+}
+
+// The analysis ends this function inside its catch block (0x00617066); the bytes up to there
+// match this body, and the epilogue follows.
+// FUNCTION: STARFLEETOP 0x00616fd0
+void fn_00616000_DirectPlayHolder::fn_00616fd0( std::map< long, long >* pProviders )
+{
+	try
+	{
+		if ( pProviders == 0 )
+			throw fn_00616000_Error( "oldMap", fn_00619a20_Context() );
+		std::map< long, long >::iterator it = pProviders->begin();
+		while ( it != pProviders->end() )
+		{
+			if ( ( *it ).second != 0 )
+				delete (fn_00616700_Entry*)( *it ).second;
+			it = pProviders->erase( it );
+		}
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
 }
