@@ -15,8 +15,8 @@ class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cp
 class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
 class tNotify;	// RTTI names it through nDatabase::tQuery<tNotify>; its layout is not needed here.
 #include "unsorted/tNewsStory.h"
-// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at
-// +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
+#include "unsorted/tPreparedMissions.h"
+// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
 class tTurn
 {
 public:
@@ -35,9 +35,8 @@ public:
 	tCurrentTime fField108;
 	char fPad120[0x168 - 0x120];
 };
-// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only
-// inside Common/Database/FileDatabaseMgr.cpp. fn_0056ef05, fn_0056f05f and fn_0056f19b are
-// instances of its member templates (the exe's assertions name Database.h).
+// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp.
+// Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 class fn_0056c414_Database
 {
 public:
@@ -63,12 +62,13 @@ public:
 	void fn_0056fefb( nDatabase::tQuery<tNotify>& query, std::vector<tNotify>* result );
 	void fn_0056ffe3( nDatabase::tQuery<tNewsStory>& query, std::vector<tNewsStory>* result );
 	void fn_0057013d( nDatabase::tQuery<tNewsStory>& query, std::vector<tNewsStory>* result, bool lock );
+	void fn_00570372( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result, bool lock );
+	void fn_005704ae( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result );
 };
-// HYPOTHESIS: returns the server settings; name not known.
-tSettings* fn_005d481f();
+tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
 {
-// HYPOTHESIS: only the slots 0x0056c414 calls carry signatures.
+// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 class tAsyncDatabaseSingle
 {
 public:
@@ -95,7 +95,7 @@ public:
 	virtual void vfunction21( std::vector<tNotify>* notifies );
 	virtual void vfunction22( nDatabase::tID id, std::vector<tNewsStory>* stories );
 	virtual void vfunction23( const tNewsStory::tDetailTime& time, std::vector<tNewsStory>* stories );
-	virtual void vfunction24();
+	virtual void vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock );
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
@@ -509,4 +509,30 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23( const tNewsStor
 	nDatabase::tQuery<tNewsStory> query;
 	nDatabase::tMemberEval<tNewsStory, tNewsStory::tDetailTime, std::less<tNewsStory::tDetailTime> > eval( &tNewsStory::fn_0054745f, time );
 	fDatabase->fn_0057013d( query, stories, false );
+}
+
+// FUNCTION: STARFLEETOP 0x0056d9d3
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock )
+{
+	nDatabase::tMemberEval<tPreparedMissions, nDatabase::tID, std::equal_to<nDatabase::tID> > characterEval( &tPreparedMissions::fn_0053f22f, id );
+	nDatabase::tMemberEval<tPreparedMissions, const nDatabase::tID&, std::equal_to<nDatabase::tID> > idEval( &tPreparedMissions::fn_00572b2b, id );
+	nDatabase::tQuery<tPreparedMissions> query;
+	if( byCharacterID )
+	{
+		query.AddEval( &characterEval );
+	}
+	else
+	{
+		query.AddEval( &idEval );
+	}
+	if( lock )
+	{
+		fDatabase->fn_005704ae( query, queryResult );
+	}
+	else
+	{
+		fDatabase->fn_00570372( query, queryResult, true );
+	}
+#line 766
+	validate( byCharacterID || ( queryResult->size() <= 1 ) );
 }
