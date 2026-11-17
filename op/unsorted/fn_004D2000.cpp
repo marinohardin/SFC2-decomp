@@ -679,12 +679,46 @@ void fn_004d26fb_map::fn_004d26fb(int a, const char* text)
 }
 
 // HYPOTHESIS: a map from an id to fn_004d2353_holder* (operator[] is 0x004d2b4c) at +0x14; name unknown.
+struct fn_004d2b4c_pair
+{
+	unsigned long first;
+	fn_004d2353_holder* second;
+};
+
+struct fn_004d2b4c_node
+{
+	char m_0x00[0xc];
+	fn_004d2b4c_pair m_0x0c;
+};
+
+struct fn_004d2b4c_iterator
+{
+	fn_004d2b4c_node* m_0x00;
+};
+
+struct fn_004d2b4c_insert_result
+{
+	fn_004d2b4c_iterator first;
+	bool second;
+};
+
 class fn_004d2b4c_map
 {
 public:
 	fn_004d2353_holder*& fn_004d2b4c(const unsigned long& key);
+	fn_004d2b4c_insert_result fn_0057f946(const fn_004d2b4c_pair& value);
 	char m_0x00[0xc];
 };
+
+// FUNCTION: STARFLEETOP 0x004d2b4c
+fn_004d2353_holder*& fn_004d2b4c_map::fn_004d2b4c(const unsigned long& key)
+{
+	fn_004d2b4c_pair value;
+	value.first = key;
+	value.second = 0;
+	fn_004d2b4c_insert_result r = fn_0057f946(value);
+	return r.first.m_0x00->m_0x0c.second;
+}
 
 class fn_004d2797_owner
 {
