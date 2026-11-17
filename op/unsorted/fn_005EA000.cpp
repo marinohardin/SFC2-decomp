@@ -757,5 +757,6 @@ fn_005eab05_value::fn_005eab05_value( const fn_005eab05_value& other )
 #include <string>
 
 // HYPOTHESIS: a std::string global at 0x00c391e8 holding the text "MetaMovementGauge".
+// FUNCTION: STARFLEETOP 0x005eabf1
 // FUNCTION: STARFLEETOP 0x005eabbe
 std::string g_00c391e8 = "MetaMovementGauge";
