@@ -316,6 +316,15 @@ tAllocatedClass* tClassAllocator<tAuctionItem>::mAllocate()
 	return pClass;
 }
 
+// MATCH-ONLY: the SDK's template mAssignAllocID, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x00545697
+template<>
+void tClassAllocator<tAuctionItem>::mAssignAllocID( iAllocatorID allocID )
+{
+	fAllocID = allocID;
+}
+
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
 extern double g_007b0c20;
 extern double g_007b0c28;
