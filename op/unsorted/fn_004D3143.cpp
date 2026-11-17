@@ -291,3 +291,13 @@ long fn_004d3446( long arg1 )
 {
 	return g_009254f8.fn_004cb602( arg1 );
 }
+
+// FUNCTION: STARFLEETOP 0x004d3455
+void fn_004d3455( long arg1 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	if ( obj != 0 )
+	{
+		obj->vfunction17();
+	}
+}
