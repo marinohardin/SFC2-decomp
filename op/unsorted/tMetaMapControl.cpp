@@ -34,10 +34,19 @@ public:
 	void fn_005e5e24( int value );
 };
 
+// HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
+class fn_004cf594_class
+{
+public:
+	void fn_004cf594( int param_1 );
+	void fn_004c2288();
+};
+
 class fn_0060a54d_class
 {
 public:
 	fn_005e5e24_class *fn_0060a54d();
+	fn_004cf594_class *fn_005e488e();
 };
 
 fn_0060a54d_class *fn_00607d61();
@@ -108,4 +117,23 @@ void tMetaMapControl::fn_005e31dd( int param_1 )
 		}
 	}
 	fn_00607d61()->fn_0060a54d()->fn_005e5e24( field_1c4 );
+}
+
+// FUNCTION: STARFLEETOP 0x005e326c
+void tMetaMapControl::fn_005e326c( int param_1 )
+{
+	field_1c8 = param_1;
+	fn_004cf594_class *view = fn_00607d61()->fn_005e488e();
+	if ( field_1c8 == 0 )
+	{
+		g_p008cc580->vfunction6( "Meta", "EmpireMapView", 1 );
+		view->fn_004cf594( 0 );
+	}
+	else
+	{
+		g_p008cc580->vfunction6( "Meta", "EmpireMapView", 0 );
+		view->fn_004cf594( 1 );
+	}
+	view->fn_004c2288();
+	fn_0045f4c2();
 }

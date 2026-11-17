@@ -31,7 +31,7 @@ public:
 	void fn_005e3148( int param_1 );
 	void fn_005e31be();
 	void fn_005e31dd( int param_1 );
-	void fn_005e326c( bool param_1 );
+	void fn_005e326c( int param_1 );
 	void fn_005e36a3();
 	void fn_005e3b86();
 
@@ -43,7 +43,8 @@ public:
 	std::vector<int> field_1a4;
 	std::vector<int> field_1b4;
 	int field_1c4;
-	unsigned char field_1c8[ 0x1d4 - 0x1c8 ];
+	int field_1c8;
+	unsigned char field_1cc[ 0x1d4 - 0x1cc ];
 	int field_1d4;
 	int field_1d8;
 	tRect field_1dc;
