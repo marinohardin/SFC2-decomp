@@ -70,3 +70,14 @@ void tIndividualShipSystem::vfunction18(int param_1)
 {
     field_18 = param_1;
 }
+
+// HYPOTHESIS: the next free value for the dword at +0x20 of any ship system.
+extern int g_0090b518;
+
+// FUNCTION: STARFLEETOP 0x00436699
+void tIndividualShipSystem::vfunction19(int param_1)
+{
+    field_20 = param_1;
+    if (param_1 >= g_0090b518)
+        g_0090b518 = param_1 + 1;
+}

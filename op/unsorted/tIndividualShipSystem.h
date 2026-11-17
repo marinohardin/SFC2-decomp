@@ -223,7 +223,9 @@ public:
     virtual void vfunction17();
     // HYPOTHESIS: slot 17; stores its argument in the dword at +0x18.
     virtual void vfunction18(int param_1);
-    virtual void vfunction19();
+    // HYPOTHESIS: slot 18; stores its argument in the dword at +0x20 (read by slot 15) and keeps the global
+    // at 0x0090b518 above every value stored.
+    virtual void vfunction19(int param_1);
     virtual void vfunction20();
     virtual void vfunction21();
     virtual void vfunction22();
