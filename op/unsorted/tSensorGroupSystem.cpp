@@ -52,6 +52,9 @@ public:
     int fn_0043f618(int x, int y);
     virtual void vfunction39(float param_1);
     virtual float vfunction70();
+    // HYPOTHESIS: overrides slot 72, which tIndividualShipSystem.h declares as vfunction73()
+    // with no arguments; the base declaration is shared with other ship systems.
+    virtual float vfunction73(float param_1, float param_2);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -1341,4 +1344,85 @@ void tSensorGroupSystem::vfunction39(float param_1)
 float tSensorGroupSystem::vfunction70()
 {
     return (float)(*(int*)&field_f8.m18 + *(int*)&field_d4.m18);
+}
+
+// FUNCTION: STARFLEETOP 0x0043f2e3
+float tSensorGroupSystem::vfunction73(float param_1, float param_2)
+{
+    field_17c = 0.0f;
+    field_180 = 0.0f;
+    int ecm = (int)field_168;
+    int eccm = (int)field_16c;
+    fn_0043eee8();
+    vfunction33_result* owner = field_2c->vfunction108();
+    tEntity* player = gObject_008e1060.mGetPlayersControledEntity();
+    if ((void*)player == (void*)owner || (owner != 0 && owner->fn_0041021f()))
+    {
+        fn_0043e642(*(int*)&field_d4.m18);
+        fn_0043e6ce(*(int*)&field_f8.m18);
+    }
+    float target = field_184 * param_1;
+    if (target > field_168)
+    {
+        field_168 += param_2 * 4.0f;
+        if (field_168 > target)
+            field_168 = target;
+    }
+    else if (target < field_168)
+    {
+        field_168 -= param_2 * 4.0f;
+        field_168 -= param_2 * 4.0f;
+        if (field_168 < target)
+            field_168 = target;
+    }
+    fn_owner_slot78_result* object = field_2c->vfunction79();
+    fn_owner_slot79_result* other = field_2c->vfunction80();
+    if (object != 0 && other != 0 && other->fn_0043c019() && !((tObject_0042496f*)owner)->vfunction32())
+    {
+        switch (object->vfunction101())
+        {
+        case 1:
+            field_17c += 2.0f;
+            break;
+        case 2:
+            field_17c += 3.0f;
+            break;
+        case 3:
+            field_17c += 4.0f;
+            break;
+        case 4:
+            field_17c += 5.0f;
+            break;
+        case 5:
+            field_17c += 5.0f;
+            break;
+        }
+    }
+    if (g_00967af4->vfunction4())
+        field_17c += 9.0f;
+    field_17c += owner->field_acc;
+    target = field_188 * param_1;
+    if (target > field_16c)
+    {
+        field_16c += param_2 * 4.0f;
+        if (field_16c > target)
+            field_16c = target;
+    }
+    else if (target < field_16c)
+    {
+        field_16c -= param_2 * 4.0f;
+        if (field_16c < target)
+            field_16c = target;
+    }
+    if (ecm != field_168 || eccm != field_16c)
+        vfunction81();
+    tMinMaxFloat* value = &field_8c;
+    value->vfunction3(field_168);
+    value = &field_b0;
+    value->vfunction3(field_16c);
+    fn_0043e853();
+    fn_0043e838();
+    if (param_1 <= 1.0)
+        return 0.0f;
+    return param_1 - 1.0f;
 }

@@ -10,6 +10,10 @@ int __cdecl fn_00453c60(const char* name, int a2, int a3);
 
 struct vfunction33_result
 {
+    // HYPOTHESIS: a truth test; tSensorGroupSystem's 0x0043f2e3 sets its ECM and ECCM when it
+    // holds for the owner.
+    char fn_0041021f();
+
     char pad00[0x1c];
     int field_1c;
     char pad20[0x60 - 0x20];
@@ -25,6 +29,9 @@ struct vfunction33_result
     char pad874[0x944 - 0x874];
     // HYPOTHESIS: a 1-based index read by tShieldGroup to pick its minimum shield level.
     int field_944;
+    char pad948[0xacc - 0x948];
+    // HYPOTHESIS: an integer tSensorGroupSystem's 0x0043f2e3 adds to its environmental ECM.
+    int field_acc;
 };
 
 // HYPOTHESIS: a global object pointer at 0x00967af4 whose vftable slot 3 answers a yes/no
