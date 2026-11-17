@@ -91,6 +91,7 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 }
 
 #include <map>
+#include "unsorted/tMissionCompleteResults.h"
 
 // HYPOTHESIS: a flag word at +0x98 tested by bit index; the class is not known yet.
 class fn_0042a403_object
@@ -101,6 +102,10 @@ public:
 	bool FUN_0042a41a();
 	bool FUN_0042a421( int key0, int key1 );
 	void FUN_0042a709( int key0, int key1 );
+	void FUN_0042a73d();
+	// HYPOTHESIS: returns a map by value whose node value sits at +0x0c with an 8-byte key; the
+	// mapped type is guessed as the 0x14-byte value whose getters 0x0055f269 and 0x005e8f21 it calls.
+	std::map< std::pair< int, int >, tObject_005b69d0 > FUN_0042ac56();
 
 	byte field_00[0x98];
 	unsigned long field_98;
@@ -315,4 +320,15 @@ void fn_0042a480_object::FUN_0042a6fc( bool value )
 void fn_0042a403_object::FUN_0042a709( int key0, int key1 )
 {
 	field_a0[std::pair< int, int >( key0, key1 )] = true;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a73d
+void fn_0042a403_object::FUN_0042a73d()
+{
+	// The original's frame is 4 bytes larger (an unused slot between the map and the iterator);
+	// its cause is not recovered.
+	std::map< std::pair< int, int >, tObject_005b69d0 > entries = FUN_0042ac56();
+
+	for( std::map< std::pair< int, int >, tObject_005b69d0 >::iterator it = entries.begin(); it != entries.end(); ++it )
+		FUN_0042a709( (*it).second.fn_0055f269(), (*it).second.fn_005e8f21() );
 }
