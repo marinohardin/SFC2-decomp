@@ -566,3 +566,16 @@ template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<st
 	fPointerOptex.Enter();
 	return iPtr( fpPointer, this );
 }
+
+// The game's out-of-line copy of the SDK's inline destructor for the wrapper whose Delete is
+// 0x005ff84a (the member at +0xcc of tClientCharacter).
+// HYPOTHESIS: tObject_005391b0 is declared only inside unsorted/tClientCharacter.cpp; it is
+// forward-declared here rather than declared a second time.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
+class tObject_005391b0;
+
+// FUNCTION: STARFLEETOP 0x0042c72f
+template<> tSingleAccessWrapper<tObject_005391b0>::~tSingleAccessWrapper()
+{
+	Delete();
+}
