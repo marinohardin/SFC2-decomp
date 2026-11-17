@@ -150,3 +150,10 @@ std::string tShuttleBaySystem::vfunction112(short param_1)
 {
     return field_2d8[param_1];
 }
+
+// FUNCTION: STARFLEETOP 0x0044e6cb
+void tShuttleBaySystem::vfunction113(short param_1, std::string param_2)
+{
+    field_2d8[param_1] = param_2;
+    vfunction100();
+}

@@ -38,6 +38,8 @@ public:
     virtual void vfunction111(int param_1, int param_2);
     // Returns a copy of element param_1 of field_2d8.
     virtual std::string vfunction112(short param_1);
+    // HYPOTHESIS: vftable slot 113; stores a copy of param_2 into element param_1 of field_2d8.
+    virtual void vfunction113(short param_1, std::string param_2);
     // HYPOTHESIS: the slots between 111 and 116 are not recovered; vfunction116 is the
     // analysis's name. Returns element param_1 of an int array.
     virtual int vfunction116(int param_1);
