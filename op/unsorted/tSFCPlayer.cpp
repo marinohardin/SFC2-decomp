@@ -69,7 +69,6 @@ class tObject_004454c1
 		char fn_00508f68();
 		void fn_0051da3d();
 		void fn_00447b7a(void *param_1);
-		void fn_00445a14(int param_1);
 		int fn_00447d41(int param_1);
 		int fn_00447d55(int param_1);
 		void fn_00447cf9(int param_1, int param_2);
@@ -77,6 +76,7 @@ class tObject_004454c1
 		void fn_00447d29(int param_1, int param_2);
 		void fn_004475bc(int param_1, int param_2);
 		void fn_00447926(int param_1, int param_2);
+		// body at 0x00445a14
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -986,7 +986,7 @@ int tSFCPlayer::vfunction84(unsigned param_1)
 void tSFCPlayer::vfunction85(int param_1, unsigned param_2)
 {
 	if (param_2 < 6 && param_1 != 0)
-		m_238[param_2].fn_00445a14(param_1);
+		m_238[param_2] = *(tObject_004454c1 *)param_1;
 }
 
 // FUNCTION: STARFLEETOP 0x004d09e9
@@ -1377,7 +1377,7 @@ void tSFCPlayer::vfunction111(int *param_1)
 	{
 		m_58[i] = m_3388[row * 6 + i];
 		m_130[i] = m_39b8[row * 6 + i];
-		m_238[i].fn_00445a14((int)&m_3f58[row * 6 + i]);
+		m_238[i] = m_3f58[row * 6 + i];
 		strcpy(m_70[i], m_3418[row * 6 + i].mCharStr());
 	}
 }
@@ -1386,7 +1386,7 @@ void tSFCPlayer::vfunction112(int param_1)
 {
 	int row = fn_004d11e9(param_1);
 	for (int i = 0; i < 6; i++)
-		m_3f58[row * 6 + i].fn_00445a14((int)&m_238[i]);
+		m_3f58[row * 6 + i] = m_238[i];
 	vfunction109();
 }
 // FUNCTION: STARFLEETOP 0x004d13ce
@@ -1430,7 +1430,7 @@ void tSFCPlayer::vfunction17(int param_1, unsigned param_2)
 			m_3388[row * 6 + i] = m_3388[row * 6 + i + 1];
 			m_3418[row * 6 + i] = m_3418[row * 6 + i + 1];
 			m_39b8[row * 6 + i] = m_39b8[row * 6 + i + 1];
-			m_3f58[row * 6 + i].fn_00445a14((int)&m_3f58[row * 6 + i + 1]);
+			m_3f58[row * 6 + i] = m_3f58[row * 6 + i + 1];
 		}
 		m_3370[row]--;
 	}
