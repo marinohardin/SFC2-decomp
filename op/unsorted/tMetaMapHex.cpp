@@ -903,3 +903,14 @@ fn_0053a73a_map::node* fn_0053a73a_map::tree::fn_0053abca( node* root, node* par
 	}
 	return result;
 }
+
+// FUNCTION: STARFLEETOP 0x0053ac4e
+void fn_0053a73a_map::tree::fn_0053ac4e( node* root )
+{
+	for( node* y = root; y != m_nil; root = y )
+	{
+		fn_0053ac4e( y->right );
+		y = y->left;
+		operator delete( root );
+	}
+}

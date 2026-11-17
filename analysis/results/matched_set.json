@@ -6544,6 +6544,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0053ac4e": {
+   "name": "FUN_0053ac4e",
+   "symbol": "?fn_0053ac4e@tree@fn_0053a73a_map@@QAEXPAUnode@2@@Z",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
