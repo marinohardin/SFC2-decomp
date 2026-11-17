@@ -6166,6 +6166,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00539f50": {
+   "name": "FUN_00539f50",
+   "symbol": "?fn_00539f50@tMetaMapHex@@QAEJXZ",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 76,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

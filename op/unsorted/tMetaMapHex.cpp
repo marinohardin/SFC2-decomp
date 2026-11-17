@@ -367,3 +367,12 @@ long tMetaMapHex::fn_00539f04()
 	guard.Leave();
 	return x;
 }
+
+// FUNCTION: STARFLEETOP 0x00539f50
+long tMetaMapHex::fn_00539f50()
+{
+	tOptex::tGuard guard( &m_bc );
+	long y = m_a8.fn_005e8f21();
+	guard.Leave();
+	return y;
+}

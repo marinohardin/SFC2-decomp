@@ -173,6 +173,8 @@ public:
 	int32 fn_0053a414( int32 param_1 );
 	// HYPOTHESIS: the hex point's first coordinate, read under the lock.
 	long fn_00539f04();
+	// HYPOTHESIS: the hex point's second coordinate, read under the lock.
+	long fn_00539f50();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
