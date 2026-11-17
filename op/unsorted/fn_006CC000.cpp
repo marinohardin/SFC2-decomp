@@ -312,3 +312,25 @@ char *fn_006cc6a0(fn_006cc530_record *record, char *text)
 	fn_006bf6a0(record->field_10, &text);
 	return text;
 }
+
+#include <stdlib.h>
+
+// HYPOTHESIS: an address and port parsed from "host:port"; the address is kept in network
+// order as inet_addr returns it, the port as the number written.
+struct fn_006cc6f0_endpoint
+{
+	unsigned long field_00;
+	unsigned short field_04;
+};
+
+// FUNCTION: STARFLEETOP 0x006cc6f0
+void fn_006cc6f0(fn_006cc6f0_endpoint *endpoint, char *text)
+{
+	char *colon = strchr(text, ':');
+	if (colon != 0)
+	{
+		*colon = '\0';
+		endpoint->field_00 = inet_addr(text);
+		endpoint->field_04 = atoi(colon + 1);
+	}
+}
