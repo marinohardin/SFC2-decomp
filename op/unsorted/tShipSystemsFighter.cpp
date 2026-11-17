@@ -123,7 +123,7 @@ public:
     virtual void vfunction105();
     virtual void vfunction106();
     virtual void vfunction107();
-    virtual void vfunction108();
+    virtual int vfunction108();
     virtual void vfunction109();
     virtual void vfunction110();
     virtual void vfunction111();
@@ -648,4 +648,11 @@ int tShipSystemsFighter::vfunction85()
 int tShipSystemsFighter::vfunction87()
 {
     return *(int*)( m5c4 + 0x30 );
+}
+
+// HYPOTHESIS: the return type; the original returns the constructor's argument (+0x6ec).
+// FUNCTION: STARFLEETOP 0x00444504
+int tShipSystemsFighter::vfunction108()
+{
+    return m6ec;
 }
