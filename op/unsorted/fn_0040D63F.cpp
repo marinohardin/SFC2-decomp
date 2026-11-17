@@ -179,19 +179,17 @@ void fn_0040d63f_Buf::fn_0040d867(void* data, int size, int count)
 // FUNCTION: STARFLEETOP 0x0040d897
 int fn_0040d63f_Buf::fn_0040d897(void* data, int size, int count)
 {
-    int left = size;
-    int total = left;
-    if (m16 == 1 || data == 0) {
-        total = 0;
-    } else {
-        char* dst = (char*)data;
-        while (left > 0 && m08 < m0c) {
-            *dst = *m08;
-            m08++;
-            dst++;
-            left--;
-        }
-        total = total - left;
+    int total = size;
+    if (m16 == 1)
+        return 0;
+    if (data == 0)
+        return 0;
+    char* dst = (char*)data;
+    while (size > 0 && m08 < m0c) {
+        *dst = *m08;
+        m08++;
+        dst++;
+        size--;
     }
-    return total;
+    return total - size;
 }
