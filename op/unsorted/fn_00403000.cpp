@@ -227,13 +227,12 @@ bool std::istream::ipfx(bool _Noskip)
         if (!_Noskip && (flags() & skipws))
         {
             const std::ctype<char>& _Fac = std::use_facet(getloc(), (std::ctype<char>*)0, true);
-            int_type _C;
             try
             {
-                // HYPOTHESIS: 0x40 is the blank class bit
-                while ((_C = rdbuf()->sgetc()) != std::char_traits<char>::eof()
-                    && _Fac.is(std::ctype<char>::space | 0x40, std::char_traits<char>::to_char_type(_C)))
-                    rdbuf()->sbumpc();
+                int_type _C = rdbuf()->sgetc();
+                while (!std::char_traits<char>::eq_int_type(std::char_traits<char>::eof(), _C)
+                    && _Fac.is(std::ctype<char>::space, std::char_traits<char>::to_char_type(_C)))
+                    _C = rdbuf()->snextc();
             }
             catch (...)
             {
