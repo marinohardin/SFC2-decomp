@@ -240,6 +240,13 @@ int32u tAuctionItem::fn_00545451( int arg1, const nDatabase::tID& bidder )
 	return fn_005454c1( arg1, nDatabase::tID() );
 }
 
+// HYPOTHESIS: true once the auction has begun and the given turn reaches TurnToClose.
+// FUNCTION: STARFLEETOP 0x00545560
+bool tAuctionItem::fn_00545560( int arg )
+{
+	return fn_00545401() ? arg >= fInt_84 : 0;
+}
+
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
 extern double g_007b0c20;
 extern double g_007b0c28;
