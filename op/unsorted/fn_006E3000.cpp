@@ -160,6 +160,7 @@ class tObject_006e3240
 {
 public:
 	void FUN_006e3240();
+	void FUN_006e3270();
 	void FUN_006e3390(int param_1);
 
 	char m00[0x4];
@@ -179,4 +180,11 @@ void tObject_006e3240::FUN_006e3240()
 	m08 = 0;
 	if (m04 > 0)
 		FUN_006e3390(m04);
+}
+
+// FUNCTION: STARFLEETOP 0x006e3270
+void tObject_006e3240::FUN_006e3270()
+{
+	m10 = 0;
+	FUN_006e3240();
 }
