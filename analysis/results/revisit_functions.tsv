@@ -132,6 +132,22 @@ address	name	best_score	attempts	last_model	listed	note
 0x00668970	tBasicSoundFileManager::mParseAllSoundsFile	1.94	2	sonnet	2026-11-16T21:22:10Z	best not above 90% after 2 attempts; best 1.94%
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004cf9cb	tSFCPlayer::~tSFCPlayer	99.91	2	opus	2026-11-17T04:13:50Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.91%
+0x004d0a97	tSFCPlayer::vfunction37	6.67	2	opus	2026-11-17T06:51:45Z	attempt 2 (opus) did not raise the best; best 6.67%
+0x004d0ab3	FUN_004d0ab3	22.81	2	opus	2026-11-17T07:01:20Z	attempt 2 (opus) did not raise the best; best 22.81%
+0x004d0eb6	tSFCPlayer::vfunction70	23.79	2	opus	2026-11-17T08:13:39Z	attempt 2 (opus) did not raise the best; best 23.79%
+0x004d0ed4	FUN_004d0ed4	7.24	2	opus	2026-11-17T08:26:06Z	attempt 2 (opus) did not raise the best; best 7.24%
+0x004d0f61	tSFCPlayer::vfunction71	27.75	2	opus	2026-11-17T08:45:37Z	attempt 2 (opus) did not raise the best; best 27.75%
+0x004d158a	tSFCPlayer::vfunction17	70.19	2	opus	2026-11-17T10:16:19Z	best not above 90% after 2 attempts; best 70.19%
+0x004d21a8	FUN_004d21a8	54.75	2	opus	2026-11-17T10:25:33Z	attempt 2 (opus) did not raise the best; best 54.75%
+0x004d21d7	FUN_004d21d7	54.75	2	opus	2026-11-17T10:31:15Z	attempt 2 (opus) did not raise the best; best 54.75%
+0x004d269b	FUN_004d269b	27.19	2	opus	2026-11-17T11:09:49Z	attempt 2 (opus) did not raise the best; best 27.19%
+0x004d29c5	FUN_004d29c5	0.62	2	opus	2026-11-17T14:02:53Z	attempt 2 (opus) did not raise the best; best 0.62%
+0x004d2a96	FUN_004d2a96	1.48	2	opus	2026-11-17T14:05:33Z	attempt 2 (opus) did not raise the best; best 1.48%
+0x004d3148	FUN_004d3148	0.00	2	opus	2026-11-17T14:34:14Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x004d3951	FUN_004d3951	99.79	3	opus	2026-11-17T15:24:01Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.79%
+0x004d82fb	tBaseWeapon::vfunction74	56.32	2	opus	2026-11-17T16:40:53Z	best not above 90% after 2 attempts; best 56.32%
+0x004d87e3	FUN_004d87e3	42.48	2	opus	2026-11-17T17:02:21Z	attempt 2 (opus) did not raise the best; best 42.48%
 0x00571018	FUN_00571018	99.96	3	opus	2026-11-17T06:53:17Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x0057118e	FUN_0057118e	99.96	2	opus	2026-11-17T06:59:27Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x00571304	FUN_00571304	99.96	2	opus	2026-11-17T07:05:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable

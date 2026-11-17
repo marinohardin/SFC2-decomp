@@ -275,6 +275,10 @@ public:
     virtual void vfunction61();
     virtual void vfunction62(); // slot 61
     virtual void vfunction63(); // slot 62
+    // HYPOTHESIS: vftable slot 79 (body at 0x00453913). The vftable goes on past slot 62, but
+    // the subclasses declare their own slots from 63 on, so this is declared non-virtual: it is
+    // only called directly (tBaseWeapon::vfunction80).
+    void vfunction80();
 
     char pad04[0x0c - 0x04];
     int field_0c;

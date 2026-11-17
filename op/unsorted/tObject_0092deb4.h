@@ -49,7 +49,7 @@ public:
 	virtual void vfunction29();
 	virtual void vfunction30();
 	virtual void vfunction31();
-	virtual void vfunction32();
+	virtual void vfunction32(int a);
 	// HYPOTHESIS: returns an integer; 0x0051e275 compares it with the value 0x004b94dc returns.
 	virtual int vfunction33();
 	virtual void vfunction34();

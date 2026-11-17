@@ -4,9 +4,13 @@
 #ifndef tBaseWeapon_h
 #define tBaseWeapon_h 1
 
+#include "unsorted/fn_004e20f4_field2c_type.h"
+#include "unsorted/fn_004e2895_field148_type.h"
+
 class tSFCStream;
 class fn_004e2b02_ship_type;
 class tEntity;
+class fn_004d8219_list;
 
 // HYPOTHESIS: the four values the phaser bank constructors (0x004e1e99, 0x004e5325) copy into
 // the bank, read as four ints.
@@ -16,6 +20,16 @@ struct fn_004e1e99_arg
     int field_04;
     int field_08;
     int field_0c;
+};
+
+// HYPOTHESIS: the part at tBaseWeapon offset 0x148; only its method 0x004d7099 is known.
+// HYPOTHESIS: the per-bank table vfunction122 fills; only the methods it calls are known.
+struct fn_004d77ec_type
+{
+    unsigned char fn_005da49d();
+    void fn_004d6f77(unsigned char param_1, float param_2);
+    void fn_004d6f96(unsigned char param_1, float param_2);
+    void fn_004d6fb5(unsigned char param_1, float param_2);
 };
 
 // HYPOTHESIS: tBaseWeapon's constructor (0x004d70eb) takes the first constructor argument.
@@ -46,7 +60,7 @@ public:
     virtual void vfunction14();
     virtual void vfunction15();
     virtual void vfunction16();
-    virtual void vfunction17();
+    virtual int vfunction17();
     // HYPOTHESIS: the slot at offset 0x44 takes the value 0x00453c60 returns.
     virtual void vfunction18(int param_1);
     virtual void vfunction19();
@@ -82,7 +96,7 @@ public:
     virtual void vfunction43();
     virtual void vfunction44();
     virtual void vfunction45();
-    virtual void vfunction46();
+    virtual char vfunction46();
     virtual void vfunction47();
     virtual void vfunction48();
     virtual void vfunction49();
@@ -102,8 +116,8 @@ public:
     virtual void vfunction63();
     // HYPOTHESIS: the slot at offset 0xfc is a test 0x004e28fc makes before firing.
     virtual bool vfunction64();
-    // HYPOTHESIS: the slot at offset 0x104 sets a mode byte; tPhaserXBank's 0x004e562b reads
-    // its argument as a char.
+    // HYPOTHESIS: the slot at offset 0x100 sets a mode byte; tPhaserXBank's 0x004e562b reads
+    // its argument as a char, and 0x004d813c passes it the byte at +0xfc.
     virtual void vfunction65(char param_1);
     virtual void vfunction66();
     virtual void vfunction67(float param_1);
@@ -111,12 +125,19 @@ public:
     virtual void vfunction69(float param_1);
     // HYPOTHESIS: the slot at offset 0x114 returns a float that 0x004e23b5 caps its request at.
     virtual float vfunction70();
+    // HYPOTHESIS: probably a virtual slot; its vtable index is not established.
+    void fn_004d82cd(float *param_1);
+    // HYPOTHESIS: member of tBaseWeapon by neighbourhood; it uses no member.
+    void fn_004d82e3(float *param_1);
+    // HYPOTHESIS: swaps two floats; 0x004d871f.
+    void fn_004d871f(float *param_1, float *param_2);
+    void fn_004d8732(int *param_1, int *param_2);
     virtual void vfunction71();
     virtual void vfunction72();
     virtual void vfunction73();
     virtual float vfunction74(float param_1, float param_2);
     virtual void vfunction75();
-    virtual void vfunction76();
+    virtual float vfunction76(float param_1, float param_2);
     virtual void vfunction77();
     virtual void vfunction78();
     virtual float vfunction79();
@@ -125,7 +146,7 @@ public:
     virtual void vfunction82();
     virtual void vfunction83();
     virtual void vfunction84();
-    virtual void vfunction85();
+    virtual int vfunction85();
     virtual void vfunction86();
     virtual void vfunction87();
     virtual void vfunction88();
@@ -152,7 +173,7 @@ public:
     virtual void vfunction105(int param_1);
     // HYPOTHESIS: the slot at offset 0x1a4 returns the index of the first bank as a char.
     virtual char vfunction106();
-    virtual void vfunction107();
+    virtual int vfunction107();
     virtual void vfunction108();
     virtual float vfunction109();
     virtual float vfunction110();
@@ -160,31 +181,99 @@ public:
     // HYPOTHESIS: slots 112 to 133 are placeholders that only fix the position of slot 134
     // (offset 0x214), a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
     // tPhaserBank overrides at 0x004e25c0.
-    virtual void vfunction112();
-    virtual void vfunction113();
+    virtual void vfunction112(float param_1);
+    virtual float vfunction113(float param_1, int param_2, int param_3);
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
-    virtual void vfunction115();
-    virtual void vfunction116();
-    virtual void vfunction117();
-    virtual void vfunction118();
-    virtual void vfunction119();
+    virtual float vfunction115(float param_1);
+    virtual float vfunction116(unsigned char param_1);
+    virtual float vfunction117(float param_1);
+    virtual float vfunction118(unsigned char param_1);
+    virtual float vfunction119();
     virtual void vfunction120();
-    virtual void vfunction121();
-    virtual void vfunction122();
-    virtual void vfunction123();
-    virtual void vfunction124();
+    virtual int vfunction121();
+    virtual void vfunction122(fn_004d77ec_type* param_1, int param_2, int param_3);
+    virtual void vfunction123(float* param_1);
+    virtual void vfunction124(int param_1);
     virtual void vfunction125();
-    virtual void vfunction126();
-    virtual void vfunction127();
-    virtual void vfunction128();
+    virtual void vfunction126(float param_1);
+    virtual bool vfunction127(int param_1);
+    // HYPOTHESIS: appends a pair of shorts to a list of at most six at offset 0x114.
+    virtual bool vfunction128(short param_1, short param_2);
     virtual void vfunction129();
-    virtual void vfunction130();
-    virtual void vfunction131();
+    virtual bool vfunction130();
+    virtual bool vfunction131(short param_1);
     // HYPOTHESIS: 0x004e28fc tests slot 132 (offset 0x20c) with 0 and reads slot 133
     // (offset 0x210) as a signed status, zero when the weapon may fire.
     virtual bool vfunction132(int param_1);
     virtual int vfunction133();
     virtual bool vfunction134();
+    virtual float vfunction135(unsigned char param_1);
+    virtual int vfunction136(char param_1);
+    virtual void vfunction137();
+    virtual bool vfunction138();
+    // HYPOTHESIS: slots 139 to 143 are placeholders that only fix the positions of slots 144
+    // and 145 (offsets 0x240 and 0x244), which slot 103 calls.
+    virtual void vfunction139();
+    virtual void vfunction140();
+    virtual void vfunction141();
+    virtual void vfunction142();
+    virtual float vfunction143(float param_1, float param_2);
+    virtual int vfunction144();
+    virtual void vfunction145(int param_1);
+    virtual int vfunction146();
+    virtual void vfunction147();
+    // HYPOTHESIS: members read by vfunction102, placed by offset.
+    char pad_04[8];
+    // HYPOTHESIS: a type id that tPhaserBank's 0x004e2aaa switches on, with values 44 to 49.
+    int field_0c;
+    int field_10;
+    char pad_14[0x24 - 0x14];
+    // HYPOTHESIS: a list of child weapons, walked by vfunction76.
+    fn_004d8219_list *field_24;
+    char pad_28[4];
+    // HYPOTHESIS: a weapon object at offset 0x2c whose slot 143 (offset 0x238) 0x004d76f8 forwards to.
+    fn_004e20f4_field2c_type *field_2c;
+    char pad_30[4];
+    float field_34;
+    float field_38;
+    float field_3c;
+    float field_40;
+    char pad_44[1];
+    char field_45;
+    char field_46;
+    char pad_47[0x21];
+    float field_68;
+    char pad_6c[0x5c];
+    short field_c8;
+    char pad_ca[2];
+    int field_cc;
+    int field_d0;
+    float field_d4;
+    float field_d8;
+    float field_dc;
+    float field_e0;
+    float field_e4;
+    int field_e8;
+    int field_ec;
+    char pad_f0[4];
+    float field_f4;
+    int field_f8;
+    char field_fc;
+    char pad_fd[3];
+    int field_100;
+    int field_104;
+    int field_108;
+    char pad_10c[8];
+    int field_114;
+    short field_118[6][2];
+    int field_130;
+    short field_134;
+    char pad_136[0x12];
+    // HYPOTHESIS: a part at offset 0x148 whose method 0x004d7099 takes a float.
+    fn_004e2895_field148_type field_148;
+    // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
+    void fn_004d74f6();
+    bool fn_004d76f8();
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
     int fn_004d87e3(int param_1);
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
