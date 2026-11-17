@@ -85,6 +85,8 @@ public:
 	void fn_0050d8f0( long *param_1, long *param_2, unsigned long *param_3, unsigned long *param_4 );
 	// HYPOTHESIS: stops the music; vfunction22 then clears the two fields after it.
 	void fn_0050d95c( char param_1 );
+	// HYPOTHESIS: a value of the playing music, read by vfunction23.
+	long fn_0050d7d8();
 
 	char pad_0000[0x8];
 	long field_8;
@@ -186,7 +188,7 @@ public:
 	virtual long vfunction20();
 	virtual void vfunction21( long param_1 );
 	virtual void vfunction22( double param_1, char param_2 );
-	virtual void vfunction23();
+	virtual long vfunction23();
 	virtual void vfunction24();
 	virtual void vfunction25();
 	virtual void vfunction26();
@@ -770,4 +772,12 @@ void tSndMgr_Miles::vfunction22( double param_1, char param_2 )
 			field_10[0].field_57 = 1;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050f9af
+long tSndMgr_Miles::vfunction23()
+{
+	if ( field_2414 && vfunction6() )
+		return field_2450.fn_0050d7d8();
+	return -1;
 }
