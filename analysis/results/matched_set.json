@@ -7498,6 +7498,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00585bde": {
+   "name": "FUN_00585bde",
+   "symbol": "?fn_00585bde@fn_00585bde_owner@@QAEXXZ",
+   "unit": "unsorted/fn_00585000.cpp",
+   "size": 130,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

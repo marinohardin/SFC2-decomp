@@ -795,3 +795,42 @@ float fn_00585bbc_owner::fn_00585bbc()
 	fAccess.Leave();
 	return value;
 }
+
+#include <string>
+// Inline in the SDK; Optex.h declares it only.
+inline tOptex::tGuard::~tGuard()
+{
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
+
+// HYPOTHESIS: tSettings is declared only here for now; 0x006f75d0 is the SDK's GetValue.
+class tSettings {
+public:
+	void GetValue(const std::string& key, std::string* out);
+};
+
+// HYPOTHESIS: 0x005d481f returns the game's settings object; its name is not known.
+tSettings* fn_005d481f();
+
+// HYPOTHESIS: a class with a tOptex at +0x0 and a string at +0x14; its name is not known.
+class fn_00585bde_owner {
+public:
+	void fn_00585bde();
+	tOptex fAccess;
+	std::string fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585bde
+void fn_00585bde_owner::fn_00585bde()
+{
+	tOptex::tGuard guard(&fAccess);
+	// MATCH-ONLY: the original releases the guard explicitly after the key temporary is gone
+	// (no state reset before Leave); a block round the body reproduces that.
+	{
+		std::string key("Assets/Paths/Scripts");
+		fn_005d481f()->GetValue(key, &fValue);
+	}
+	guard.Leave();
+}
