@@ -1146,3 +1146,66 @@ bool tShipSystemsExt::vfunction43()
 	}
 	return *(bool*)( system + 0x18c );
 }
+
+#include "unsorted/tEntity.h"
+#include "unsorted/tCloakSystem.h"
+#include "unsorted/tSensorGroupSystem.h"
+
+// HYPOTHESIS: the entity the ship's ID names; slot 31 asks whether it carries a cloak and
+// slot 32 returns that cloak. tPhysicalEntity's shared declaration types neither slot.
+class fn_0044cec6_entity
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual bool vfunction32();
+	virtual tCloakSystem* vfunction33();
+};
+
+// HYPOTHESIS: a weapon range: the sensor group's (slot 85) unless the ship's entity carries
+// a cloak, which then decides it; m6ac is the ship's entity.
+// FUNCTION: STARFLEETOP 0x0044cec6
+float tShipSystemsExt::vfunction109( float param_1, int param_2 )
+{
+	tSensorGroupSystem* sensors = (tSensorGroupSystem*)vfunction85();
+	if ( sensors == 0 )
+	{
+		return param_1 + param_1 + 90.0;
+	}
+	fn_0044cec6_entity* entity = (fn_0044cec6_entity*)gObject_008e1060.fn_004249d3( ( (tEntity*)m6ac )->vfunction12() );
+	if ( entity != 0 && entity->vfunction32() )
+	{
+		tCloakSystem* cloak = entity->vfunction33();
+		return cloak->mDetermineCloakWeaponRange( param_1, param_2 );
+	}
+	return sensors->fn_0043e870( param_1, param_2 );
+}
