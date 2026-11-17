@@ -132,13 +132,13 @@ class tSFCPlayer
 		// ones with no definition here are placeholders, and the slots after 70 are not declared
 		// as virtual yet.
 		virtual void vfunction2(tSFCStream &s, unsigned mode);
-		virtual void vfunction3() = 0;
-		virtual void vfunction4() = 0;
+		virtual void vfunction3(int param_1, int param_2);
+		virtual void vfunction4(int param_1, int param_2, int param_3, int param_4, int param_5) = 0;
 		virtual void vfunction5() = 0;
 		virtual void vfunction6() = 0;
 		virtual void vfunction7() = 0;
 		virtual void vfunction8() = 0;
-		virtual void vfunction9() = 0;
+		virtual void vfunction9(int param_1) = 0;
 		virtual void vfunction10() = 0;
 		virtual void vfunction11() = 0;
 		virtual void vfunction12() = 0;
@@ -200,17 +200,46 @@ class tSFCPlayer
 		virtual void vfunction68() = 0;
 		virtual void vfunction69() = 0;
 		virtual void vfunction70(char *param_1) = 0;
-		int vfunction88();
-		void vfunction89(int param_1);
-		void vfunction90(int param_1);
-		int vfunction91();
-		void vfunction92(int param_1);
-		int vfunction93();
-		void vfunction103(int param_1);
-		int vfunction104();
-		int vfunction106();
-		void vfunction108();
-		void vfunction109();
+		virtual void vfunction71() = 0;
+		virtual void vfunction72() = 0;
+		virtual void vfunction73() = 0;
+		virtual void vfunction74() = 0;
+		virtual void vfunction75() = 0;
+		virtual void vfunction76() = 0;
+		virtual void vfunction77() = 0;
+		virtual void vfunction78() = 0;
+		virtual void vfunction79() = 0;
+		virtual void vfunction80() = 0;
+		virtual void vfunction81() = 0;
+		virtual void vfunction82() = 0;
+		virtual void vfunction83() = 0;
+		virtual void vfunction84() = 0;
+		virtual void vfunction85() = 0;
+		virtual void vfunction86() = 0;
+		virtual void vfunction87() = 0;
+		virtual int vfunction88();
+		virtual void vfunction89(int param_1);
+		virtual void vfunction90(int param_1);
+		virtual int vfunction91();
+		virtual void vfunction92(int param_1);
+		virtual int vfunction93();
+		virtual void vfunction94() = 0;
+		virtual void vfunction95() = 0;
+		virtual void vfunction96() = 0;
+		virtual void vfunction97() = 0;
+		virtual void vfunction98() = 0;
+		virtual void vfunction99() = 0;
+		virtual void vfunction100() = 0;
+		virtual void vfunction101() = 0;
+		virtual void vfunction102() = 0;
+		virtual void vfunction103(int param_1);
+		virtual int vfunction104();
+		virtual void vfunction105(int param_1) = 0;
+		virtual int vfunction106();
+		virtual void vfunction107() = 0;
+		virtual void vfunction108();
+		virtual void vfunction109();
+		virtual void vfunction110() = 0;
 
 	private:
 		bool m_04;
@@ -648,4 +677,22 @@ void tSFCPlayer::vfunction109()
 	m_8520 = m_112c;
 	m_8524 = m_1130;
 	m_8528 = m_1134;
+}
+
+void __stdcall fn_004d1220();
+
+// FUNCTION: STARFLEETOP 0x004d03a3
+void tSFCPlayer::vfunction3(int param_1, int param_2)
+{
+	vfunction9(0);
+	vfunction110();
+	if (param_1 != 0 && param_2 != -1)
+		vfunction4(param_1, param_2, 0, 0, 0);
+	vfunction90(0);
+	vfunction92(0);
+	vfunction103(0);
+	vfunction105(0);
+	vfunction73();
+	vfunction69();
+	fn_004d1220();
 }
