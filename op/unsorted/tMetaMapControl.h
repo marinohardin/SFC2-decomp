@@ -7,6 +7,7 @@
 #include "unsorted/tValueBtn.h"
 
 class tCompassRose;
+class fn_005eb3c5_class;
 
 // HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c,
 // the value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5.
@@ -56,6 +57,11 @@ public:
 	c_tScrollBar_FieldA8 *fn_005eaddc();
 	const tPoint &fn_005eae6e();
 	bool fn_005eae11();
+	// HYPOTHESIS: the RTTI class tMovementArrow (constructor 0x005eac36, 0x6c bytes); 0x005e4089
+	// makes one from the hex pair it fills.
+	fn_005eadc8_class( const fn_005eb3c5_class &pair );
+
+	unsigned char field_4[ 0x6c - 0x4 ];
 };
 
 // HYPOTHESIS: 0x1ec bytes, from the operator new in the factory at 0x005e2f60.
@@ -105,6 +111,7 @@ public:
 	void fn_005e4455();
 	// HYPOTHESIS: draws the map inside the area given; the slot of tObjBase::vfunction8.
 	void vfunction8( const tRect *area );
+	void vfunction30();
 
 	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;
@@ -116,7 +123,8 @@ public:
 	int field_1c4;
 	int field_1c8;
 	unsigned char field_1cc[ 0x1d4 - 0x1cc ];
-	int field_1d4;
+	// HYPOTHESIS: the time of the last update; 0x005e4089 widens it to a double as unsigned.
+	unsigned long field_1d4;
 	int field_1d8;
 	tRect field_1dc;
 	int field_1e4;

@@ -5,6 +5,7 @@
 #include "unsorted/tCompassRose.h"
 #include "unsorted/tApplication.h"
 #include "unsorted/tListBox_Base.h"
+#include "unsorted/tHexPoint.h"
 
 // FUNCTION: STARFLEETOP 0x005e2f95
 tMetaMapControl::tMetaMapControl()
@@ -37,6 +38,8 @@ public:
 	void fn_005e6dea( int param_1, std::vector<fn_005e36cd_entry> &list );
 	// HYPOTHESIS: 0x005e361d hands it its area and the object at +0x17c.
 	void fn_005e7539( const tRect *area, fn_005eadc8_class *object );
+	bool fn_005e5a8f();
+	bool fn_005e5b2d( fn_005eb3c5_class *pair );
 };
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
@@ -596,4 +599,54 @@ void tMetaMapControl::vfunction8( const tRect *area )
 		break;
 	}
 	fn_005e361d( &clipped );
+}
+
+// HYPOTHESIS: 0x30 bytes on the stack of 0x005e4089, two tHexPoint at +0x4 and +0x18 destroyed
+// on the way out; 0x005eb3c5 constructs it and 0x005eb407 tells whether it holds a move.
+class fn_005eb3c5_class
+{
+public:
+	fn_005eb3c5_class();
+	bool fn_005eb407();
+
+	int field_0;
+	tHexPoint field_4;
+	tHexPoint field_18;
+	int field_2c;
+};
+
+// HYPOTHESIS: a double global at 0x00c7c148 holding the current time.
+extern double g_00c7c148;
+// HYPOTHESIS: a double constant at 0x007b5170, the interval between updates.
+extern const double g_007b5170;
+
+// FUNCTION: STARFLEETOP 0x005e4089
+void tMetaMapControl::vfunction30()
+{
+	double now = g_00c7c148;
+	if ( now - field_1d4 < g_007b5170 )
+		return;
+	field_1d4 = now;
+	if ( fn_00607d61()->fn_0060a54d() == 0 )
+		return;
+	if ( fn_00607d61()->fn_0060a54d()->fn_005e5a8f() )
+		fn_0045f4c2();
+	else if ( field_17c != 0 )
+		fn_0045f4c2();
+	else
+	{
+		if ( field_1e8 )
+		{
+			fn_0045f4c2();
+			field_1e8 = false;
+		}
+		field_1e4 = 0;
+	}
+	fn_005eb3c5_class pair;
+	if ( fn_00607d61()->fn_0060a54d()->fn_005e5b2d( &pair ) )
+	{
+		fn_005e36a3();
+		if ( pair.fn_005eb407() )
+			field_17c = new fn_005eadc8_class( pair );
+	}
 }

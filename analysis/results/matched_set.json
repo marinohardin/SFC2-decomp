@@ -8812,6 +8812,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e4089": {
+   "name": "tMetaMapControl::vfunction30_for_tButton",
+   "symbol": "?vfunction30@tMetaMapControl@@QAEXXZ",
+   "unit": "unsorted/tMetaMapControl.cpp",
+   "size": 301,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
