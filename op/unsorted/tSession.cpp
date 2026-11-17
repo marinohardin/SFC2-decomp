@@ -145,3 +145,30 @@ void tHtmlParser::fn_00690400()
 			f_44 = name;
 	}
 }
+
+// HYPOTHESIS: tBrowser (RTTI) is a visual object; only its being polymorphic and derived from
+// tObjBase is known here, from the cast below.
+class tBrowser : public tVisObject
+{
+};
+
+// FUNCTION: STARFLEETOP 0x00690480
+// HYPOTHESIS: finds the first browser in an object's tree, the object first, then its children
+// (+0x24, siblings through +0x4) depth first.
+tBrowser *fn_00690480( tObjBase *object )
+{
+	if ( object )
+	{
+		tBrowser	*browser = dynamic_cast< tBrowser * >( object );
+
+		if ( browser )
+			return browser;
+		for ( tObjBase *child = object->field_24; child; child = child->field_04 )
+		{
+			browser = fn_00690480( child );
+			if ( browser )
+				return browser;
+		}
+	}
+	return 0;
+}
