@@ -189,7 +189,7 @@ public:
 	virtual void vfunction21( long param_1 );
 	virtual void vfunction22( double param_1, char param_2 );
 	virtual long vfunction23();
-	virtual void vfunction24();
+	virtual void vfunction24( long param_1 );
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
@@ -780,4 +780,10 @@ long tSndMgr_Miles::vfunction23()
 	if ( field_2414 && vfunction6() )
 		return field_2450.fn_0050d7d8();
 	return -1;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f9d6
+void tSndMgr_Miles::vfunction24( long param_1 )
+{
+	field_1f14 = param_1;
 }
