@@ -1009,3 +1009,12 @@ void fn_0046a741()
 	if (g_0090db40 != 0)
 		g_0090db38.fn_0046ad61();
 }
+
+// HYPOTHESIS: returns the address of the object at 0x00c7c120.
+extern char g_00c7c120[];
+
+// FUNCTION: STARFLEETOP 0x0046a755
+void *fn_0046a755()
+{
+	return g_00c7c120;
+}
