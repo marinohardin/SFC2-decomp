@@ -496,3 +496,55 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
 // FUNCTION: STARFLEETOP 0x004608f4
 // FUNCTION: STARFLEETOP 0x004608ea
 tState_Namespace_CampaignSelector::tState_CampaignSelector g_0090d158;
+
+// HYPOTHESIS: a list-like container whose nodes start with the next link; 0x00460acb tears it
+// down like the library list's destructor, plus a second block at +8.
+struct fn_00460acb_node
+{
+    fn_00460acb_node *_Next;
+};
+
+// HYPOTHESIS: the container's iterator, a node pointer with a constructor like the library's.
+class fn_00460acb_iterator
+{
+public:
+    fn_00460acb_iterator(fn_00460acb_node *p) : _Ptr(p) {}
+
+    fn_00460acb_node *_Ptr;
+};
+
+class fn_00460acb_class
+{
+public:
+    // HYPOTHESIS: 0x00460c53 erases the nodes in [first, last) and returns the iterator after.
+    fn_00460acb_iterator fn_00460c53(fn_00460acb_iterator first, fn_00460acb_iterator last);
+    fn_00460acb_iterator begin();
+    fn_00460acb_iterator end();
+    void fn_00460acb();
+
+    char pad_000[0x4];
+    fn_00460acb_node *_Head;
+    void *m_8;
+    char pad_00c[0x4];
+    unsigned int _Size;
+};
+
+inline fn_00460acb_iterator fn_00460acb_class::begin()
+{
+    return (fn_00460acb_iterator(_Head->_Next));
+}
+
+inline fn_00460acb_iterator fn_00460acb_class::end()
+{
+    return (fn_00460acb_iterator(_Head));
+}
+
+// FUNCTION: STARFLEETOP 0x00460acb
+void fn_00460acb_class::fn_00460acb()
+{
+    fn_00460c53(begin(), end());
+    operator delete(_Head);
+    _Head = 0, _Size = 0;
+    operator delete(m_8);
+    m_8 = 0;
+}
