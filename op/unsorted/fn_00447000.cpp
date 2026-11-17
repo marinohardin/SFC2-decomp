@@ -149,7 +149,10 @@ struct tObject_00447415_limits
 	short field_0x58[25];
 	short field_0x8a[25];
 	short field_0xbc[25];
-	char field_0xee[0x1e];
+	char field_0xee[0x2];
+	char field_0xf0;
+	char field_0xf1;
+	char field_0xf2[0x1a];
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
@@ -181,6 +184,7 @@ public:
 	int fn_0044780d(int index);
 	std::string fn_00447822(int index);
 	void fn_00447867(int index, std::string value);
+	int fn_004478b5(int level);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -444,4 +448,22 @@ std::string c_0044715d::fn_00447822(int index)
 void c_0044715d::fn_00447867(int index, std::string value)
 {
 	field_0xe8->field_0x18c[index] = value;
+}
+
+// FUNCTION: STARFLEETOP 0x004478b5
+int c_0044715d::fn_004478b5(int level)
+{
+	switch (level)
+	{
+	case 0:
+		return field_0xe8->field_0xf0;
+	case 1:
+		return field_0xe8->field_0xf0 + (field_0xe8->field_0xf1 - field_0xe8->field_0xf0) / 3;
+	case 2:
+		return field_0xe8->field_0xf0 + 2 * (field_0xe8->field_0xf1 - field_0xe8->field_0xf0) / 3;
+	case 3:
+		return field_0xe8->field_0xf1;
+	default:
+		return 0;
+	}
 }
