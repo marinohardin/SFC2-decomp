@@ -203,6 +203,10 @@ public:
 	// HYPOTHESIS: 0x00445a8c and 0x004466ba take the same this and ship as 0x0044715d.
 	void fn_00445a8c(tObject_0042496f *ship);
 	void fn_004466ba(tObject_0042496f *ship);
+	void fn_00447b7a(tObject_0042496f *ship);
+	// HYPOTHESIS: 0x00445fe1 and 0x00446d3d take the same this and ship as 0x004472bc.
+	void fn_00445fe1(tObject_0042496f *ship);
+	void fn_00446d3d(tObject_0042496f *ship);
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -570,4 +574,15 @@ void c_0044715d::fn_00447aa7(tObject_0042496f *ship)
 // FUNCTION: STARFLEETOP 0x00447af2
 void fn_00447af2()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x00447b7a
+void c_0044715d::fn_00447b7a(tObject_0042496f *ship)
+{
+	if (field_0x4 == 1 && stricmp(field_0x5, ship->field_0x87d) == 0)
+	{
+		fn_00445fe1(ship);
+		fn_00446d3d(ship);
+		fn_004472bc(ship);
+	}
 }
