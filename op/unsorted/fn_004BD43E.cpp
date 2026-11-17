@@ -347,3 +347,18 @@ c_004bdd0d_Object::c_004bdd0d_Object()
 c_004bd805_Entry::c_004bd805_Entry()
 {
 }
+
+// HYPOTHESIS: clears the entries; both constructors call it.
+// FUNCTION: STARFLEETOP 0x004bdd67
+void c_004bd805_Object::fn_004bdd67()
+{
+	field_5618 = 0;
+	field_561c = 0;
+	field_5620 = 0;
+	for ( int i = 0; i < 500; i++ )
+	{
+		field_28[ i ].text = "";
+		field_28[ i ].field_28 = 0;
+	}
+	field_5624 = true;
+}
