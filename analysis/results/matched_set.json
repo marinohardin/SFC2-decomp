@@ -6765,8 +6765,8 @@
    "symbol": "?vfunction62@tBaseWeapon@@UAEXXZ",
    "unit": "unsorted/tBaseWeapon.cpp",
    "size": 27,
-   "score": 64.167,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {

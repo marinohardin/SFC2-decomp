@@ -595,7 +595,5 @@ bool tBaseWeapon::vfunction132(int param_1)
 void tBaseWeapon::vfunction62()
 {
     ((tIndividualShipSystem *)this)->tIndividualShipSystem::vfunction62();
-    // HYPOTHESIS: slot 64 takes the byte at +0xfc here; the header declares it without parameters.
-    void (tBaseWeapon::*pfn)(char) = (void (tBaseWeapon::*)(char))&tBaseWeapon::vfunction64;
-    (this->*pfn)(field_fc);
+    vfunction65(field_fc);
 }

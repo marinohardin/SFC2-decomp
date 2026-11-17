@@ -118,8 +118,8 @@ public:
     virtual void vfunction63();
     // HYPOTHESIS: the slot at offset 0xfc is a test 0x004e28fc makes before firing.
     virtual bool vfunction64();
-    // HYPOTHESIS: the slot at offset 0x104 sets a mode byte; tPhaserXBank's 0x004e562b reads
-    // its argument as a char.
+    // HYPOTHESIS: the slot at offset 0x100 sets a mode byte; tPhaserXBank's 0x004e562b reads
+    // its argument as a char, and 0x004d813c passes it the byte at +0xfc.
     virtual void vfunction65(char param_1);
     virtual void vfunction66();
     virtual void vfunction67(float param_1);
