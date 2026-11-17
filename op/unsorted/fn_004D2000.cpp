@@ -74,8 +74,27 @@ void fn_004d216d_iter::fn_004d216d()
 
 #include "Common/Thread/Optex.h"
 
+// HYPOTHESIS: the SDK's tSingleAccessWrapper<std::vector<int> > (declared only inside
+// unsorted/tClientCharacter.cpp); this is its destructor, Delete (0x0042cc05) then the optex member.
+class tSingleAccessWrapper_vector
+{
+public:
+	~tSingleAccessWrapper_vector();
+	void Delete();
+
+protected:
+	void* fpPointer;
+	mutable tOptex fPointerOptex;
+};
+
+// FUNCTION: STARFLEETOP 0x004d21a8
+tSingleAccessWrapper_vector::~tSingleAccessWrapper_vector()
+{
+	Delete();
+}
+
 // HYPOTHESIS: the SDK's tSingleAccessWrapper<tObject_005391b0> (declared only inside
-// unsorted/tClientCharacter.cpp); this is its destructor, Delete then the optex member.
+// unsorted/tClientCharacter.cpp); its Delete is 0x005ff84a.
 class tSingleAccessWrapper_005391b0
 {
 public:
@@ -87,7 +106,7 @@ protected:
 	mutable tOptex fPointerOptex;
 };
 
-// FUNCTION: STARFLEETOP 0x004d21a8
+// FUNCTION: STARFLEETOP 0x004d21d7
 tSingleAccessWrapper_005391b0::~tSingleAccessWrapper_005391b0()
 {
 	Delete();
