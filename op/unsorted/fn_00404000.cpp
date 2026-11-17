@@ -138,3 +138,32 @@ void fn_004041b2_Obj::fn_004041b2()
     m3c = 0;
     m44 &= 0xfffffffe;
 }
+
+// HYPOTHESIS: unknown class; m50 is a state word tested before the lookup.
+class fn_00404230_Item;
+
+class fn_00404230_Obj
+{
+public:
+    fn_00404230_Obj* fn_00404230(unsigned long a, unsigned long b);
+    void fn_0040499a(fn_00404230_Item* item, int n);
+    void fn_00404a0c();
+    char pad0[0x50];
+    unsigned long m50;
+};
+
+fn_00404230_Item* fn_0074c69d(unsigned long a, unsigned long b);
+
+// FUNCTION: STARFLEETOP 0x00404230
+fn_00404230_Obj* fn_00404230_Obj::fn_00404230(unsigned long a, unsigned long b)
+{
+    if (m50 == 0) {
+        fn_00404230_Item* p = fn_0074c69d(a, b);
+        if (p != 0) {
+            this->fn_0040499a(p, 1);
+            this->fn_00404a0c();
+            return this;
+        }
+    }
+    return 0;
+}
