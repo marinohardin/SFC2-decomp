@@ -8,13 +8,32 @@ int __fastcall FUN_005bc012(int *param_1)
 	return *param_1 - 0x2c;
 }
 
-// HYPOTHESIS: a 24-byte element whose destructor is 0x005bb6fc.
+// HYPOTHESIS: a 20-byte element with a virtual destructor in vtable slot 0;
+// 0x005b69b0 is its assignment operator.
+struct fn_005bc249_elem
+{
+	virtual ~fn_005bc249_elem();
+	fn_005bc249_elem &FUN_005b69b0(const fn_005bc249_elem &_X);
+
+	char m04[0x10];
+};
+
+// HYPOTHESIS: a 24-byte element whose destructor is 0x005bb6fc: a dword
+// followed by a fn_005bc249_elem (0x005bce21 assigns it field by field).
 struct fn_005bb6fc_elem
 {
-	char m00[0x18];
+	int m00;
+	fn_005bc249_elem m04;
 
 	void FUN_005bb6fc();
+	fn_005bb6fc_elem &operator=(const fn_005bb6fc_elem &_X)
+		{m00 = _X.m00;
+		m04.FUN_005b69b0(_X.m04);
+		return (*this); }
 };
+
+// HYPOTHESIS: the library's _Construct(_P, _V) for this element.
+void FUN_005bd32e(fn_005bb6fc_elem *_P, const fn_005bb6fc_elem &_V);
 
 // HYPOTHESIS: an STL vector of 24-byte elements (allocator byte at +0,
 // first/last/end at +4/+8/+0xc); this is its _Tidy.
@@ -41,24 +60,49 @@ void fn_005bc018_vector::FUN_005bc018()
 	_First = 0, _Last = 0, _End = 0;
 }
 
-// HYPOTHESIS: takes the owner's +8 field, a flag and a value; the callee
-// pops its own arguments.
-void __stdcall FUN_005bce21(int param_1, int param_2, int param_3);
-
-// HYPOTHESIS: owner object holding a handle at +8.
-struct fn_005bc04b_owner
+// HYPOTHESIS: a second STL vector instance over the same 24-byte element,
+// laid out like fn_005bc018_vector; 0x005bce21 is its insert(_P, _M, _X).
+struct fn_005bce21_vector
 {
-	int m00;
-	int m04;
-	int m08;
+	char m00;
+	fn_005bb6fc_elem *_First;
+	fn_005bb6fc_elem *_Last;
+	fn_005bb6fc_elem *_End;
 
-	void FUN_005bc04b(int param_1);
+	unsigned int size() const
+		{return (_First == 0 ? 0 : _Last - _First); }
+	void _Destroy(fn_005bb6fc_elem *_F, fn_005bb6fc_elem *_L)
+		{for (; _F != _L; ++_F)
+			_F->FUN_005bb6fc(); }
+	fn_005bb6fc_elem *_Ucopy(const fn_005bb6fc_elem *_F, const fn_005bb6fc_elem *_L,
+		fn_005bb6fc_elem *_P)
+		{for (; _F != _L; ++_P, ++_F)
+			FUN_005bd32e(_P, *_F);
+		return (_P); }
+	void _Ufill(fn_005bb6fc_elem *_F, unsigned int _N, const fn_005bb6fc_elem &_X)
+		{for (; 0 < _N; --_N, ++_F)
+			FUN_005bd32e(_F, _X); }
+	// HYPOTHESIS: the library's allocate, fill and copy_backward, inlined.
+	fn_005bb6fc_elem *_Allocate(int _N, fn_005bb6fc_elem *)
+		{if (_N < 0)
+			_N = 0;
+		return ((fn_005bb6fc_elem *)operator new((unsigned int)_N * sizeof (fn_005bb6fc_elem))); }
+	void _Fill(fn_005bb6fc_elem *_F, fn_005bb6fc_elem *_L, const fn_005bb6fc_elem &_X)
+		{for (; _F != _L; ++_F)
+			*_F = _X; }
+	fn_005bb6fc_elem *_Copy_backward(fn_005bb6fc_elem *_F, fn_005bb6fc_elem *_L,
+		fn_005bb6fc_elem *_X)
+		{while (_F != _L)
+			*--_X = *--_L;
+		return (_X); }
+	void FUN_005bc04b(const fn_005bb6fc_elem &_X);
+	void FUN_005bce21(fn_005bb6fc_elem *_P, unsigned int _M, const fn_005bb6fc_elem &_X);
 };
 
 // FUNCTION: STARFLEETOP 0x005bc04b
-void fn_005bc04b_owner::FUN_005bc04b(int param_1)
+void fn_005bce21_vector::FUN_005bc04b(const fn_005bb6fc_elem &_X)
 {
-	FUN_005bce21(m08, 1, param_1);
+	FUN_005bce21(_Last, 1, _X);
 }
 
 // HYPOTHESIS: a record holding a database id and a hex position; the
@@ -309,16 +353,6 @@ fn_005bc1d5_tree::iterator fn_005bc1d5_tree::FUN_005bc1d5(iterator _F, iterator 
 		_Head->_Left = _Head, _Head->_Right = _Head;
 		return (begin()); }
 }
-
-// HYPOTHESIS: a 20-byte element with a virtual destructor in vtable slot 0;
-// 0x005b69b0 is its assignment operator.
-struct fn_005bc249_elem
-{
-	virtual ~fn_005bc249_elem();
-	fn_005bc249_elem &FUN_005b69b0(const fn_005bc249_elem &_X);
-
-	char m04[0x10];
-};
 
 // HYPOTHESIS: an STL vector of 20-byte elements laid out like
 // fn_005bc018_vector.
@@ -945,4 +979,31 @@ void fn_005bc161_tree::FUN_005bcdf1(node *_X)
 		{FUN_005bcdf1(_Y->_Right);
 		_Y = _Y->_Left;
 		operator delete(_X); }
+}
+
+// HYPOTHESIS: the STL vector's insert(_P, _M, _X).
+// FUNCTION: STARFLEETOP 0x005bce21
+void fn_005bce21_vector::FUN_005bce21(fn_005bb6fc_elem *_P, unsigned int _M, const fn_005bb6fc_elem &_X)
+{
+	if ((unsigned int)(_End - _Last) < _M)
+		{unsigned int _N = size() + (_M < size() ? size() : _M);
+		fn_005bb6fc_elem *_S = _Allocate(_N, (fn_005bb6fc_elem *)0);
+		fn_005bb6fc_elem *_Q = _Ucopy(_First, _P, _S);
+		_Ufill(_Q, _M, _X);
+		_Ucopy(_P, _Last, _Q + _M);
+		_Destroy(_First, _Last);
+		operator delete(_First);
+		_End = _S + _N;
+		_Last = _S + size() + _M;
+		_First = _S; }
+	else if ((unsigned int)(_Last - _P) < _M)
+		{_Ucopy(_P, _Last, _P + _M);
+		_Ufill(_Last, _M - (_Last - _P), _X);
+		_Fill(_P, _Last, _X);
+		_Last += _M; }
+	else if (0 < _M)
+		{_Ucopy(_Last - _M, _Last, _Last);
+		_Copy_backward(_P, _Last - _M, _Last);
+		_Fill(_P, _P + _M, _X);
+		_Last += _M; }
 }
