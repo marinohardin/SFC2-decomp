@@ -4609,6 +4609,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004bd782": {
+   "name": "FUN_004bd782",
+   "symbol": "?fn_004bd782@@YAPAVtListBox_News@@XZ",
+   "unit": "unsorted/fn_004BD43E.cpp",
+   "size": 53,
+   "score": 12.105,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x004c265f": {
    "name": "tFleetEntry::tFleetEntry",
    "symbol": "??0tFleetEntry@@QAE@XZ",

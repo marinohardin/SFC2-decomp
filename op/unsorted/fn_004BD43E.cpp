@@ -97,3 +97,10 @@ int fn_004bd6d1( tString *text, int width )
 	}
 	return -1;
 }
+
+// HYPOTHESIS: makes a news list box; the analysis starts it after its EH prologue.
+// FUNCTION: STARFLEETOP 0x004bd782
+tListBox_News *fn_004bd782( void )
+{
+	return new tListBox_News;
+}

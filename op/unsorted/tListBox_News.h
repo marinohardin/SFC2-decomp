@@ -9,6 +9,8 @@
 class tListBox_News : public tListBox_Base
 {
 public:
+	tListBox_News();
+
 	// HYPOTHESIS: the slot at +0x104, the one tListBox_News adds to tListBox_Base's vftable;
 	// 0x004bd534 calls it on the tListBox_News_Session it finds.
 	virtual void vfunction66();
