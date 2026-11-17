@@ -219,6 +219,7 @@ void fn_00571018_owner::fn_005715f0(long a, fn_00571018_owner* b)
 class fn_00571648_owner {
 public:
 	bool fn_00571648(int a);
+	bool fn_0057165f(int a);
 	int fn_00571648_pad[2];
 	char (__fastcall *fn_00571648_func)(int);
 	int fn_00571648_base;
@@ -230,4 +231,11 @@ bool fn_00571648_owner::fn_00571648(int a)
 {
 	bool same = fn_00571648_func(fn_00571648_base + a) == fn_00571648_byte;
 	return same;
+}
+
+// FUNCTION: STARFLEETOP 0x0057165f
+bool fn_00571648_owner::fn_0057165f(int a)
+{
+	bool less = ((int (__fastcall *)(int))fn_00571648_func)(fn_00571648_base + a) < *(int*)&fn_00571648_byte;
+	return less;
 }
