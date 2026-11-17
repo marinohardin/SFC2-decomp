@@ -923,3 +923,31 @@ int tShipSystemsExt::vfunction139()
 	}
 	return count;
 }
+
+#include "unsorted/tESG2.h"
+
+// FUNCTION: STARFLEETOP 0x0044cb6f
+int tShipSystemsExt::vfunction140()
+{
+	int count = 0;
+	for ( int i = 0x31; i < 0x49; i++ )
+	{
+		tBaseWeapon* weapon = ( (tBaseWeapon**)m584 )[i];
+		if ( weapon )
+		{
+			if ( weapon->vfunction64() == true )
+			{
+				if ( weapon->vfunction28() == true )
+				{
+					weapon->vfunction106();
+					tESG2* esg = dynamic_cast<tESG2*>( weapon );
+					if ( esg )
+					{
+						count += esg->fn_004dd414();
+					}
+				}
+			}
+		}
+	}
+	return count;
+}
