@@ -394,3 +394,65 @@ void nDatabase::tQuery<tAuctionItem>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
+
+// HYPOTHESIS: tAuctionItem is a database class; its members are not recovered.
+class tAuctionItem : public nDatabase::tDatabaseObject {};
+
+// HYPOTHESIS: the result container, likely std::vector<tAuctionItem>; its push_back is out of line.
+class fn_0056f4df_results {
+public:
+	void push_back(const tAuctionItem &value);
+};
+
+// HYPOTHESIS: 0x0056f4df is the same LockingQueryDB member template as 0x0056f05f,
+// instantiated for tAuctionItem; this stand-in for tDatabase mirrors fn_0056f05f_owner.
+class fn_0056f4df_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void MultiLock(fn_00571a7a_vector *objects, bool mustLockAll);
+	void fn_0056f4df(const nDatabase::tQuery<tAuctionItem> &query, fn_0056f4df_results *result, bool mustLockAll);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f4df
+void fn_0056f4df_owner::fn_0056f4df(const nDatabase::tQuery<tAuctionItem> &query, fn_0056f4df_results *result, bool mustLockAll)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tAuctionItem));
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 210 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	bool lockFailed = false;
+	fn_00571a7a_vector holdResult;
+	for (void **i = objects.begin(); i != objects.end() && !lockFailed; i++) {
+		tAuctionItem *pObject = static_cast<tAuctionItem *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			pObject->AddReference();
+			holdResult.fn_00571a69((void *)pObject);
+		}
+	}
+	guard.Leave();
+	if (holdResult.size() > 0) {
+		MultiLock(&holdResult, mustLockAll);
+		for (void **lockedObject = holdResult.begin(); lockedObject != holdResult.end(); lockedObject++) {
+			if (*lockedObject) {
+				tAuctionItem *pObject = static_cast<tAuctionItem *>((tDatabaseObject *)*lockedObject);
+				if (!pObject->IsDead())
+					result->push_back(*pObject);
+				pObject->RemoveReference();
+			}
+		}
+	}
+}
