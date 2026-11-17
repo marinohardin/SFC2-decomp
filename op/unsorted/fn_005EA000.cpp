@@ -352,12 +352,6 @@ tTree_005ea4a1::iterator tTree_005ea4a1::fn_005ea4a1(tNode *x, tNode *y, const t
 	return iterator(z);
 }
 
-// HYPOTHESIS: 0x005ea63e is one byte (pop esi), the tail of the routine at 0x005ea5e5; not a function of its own.
-// FUNCTION: STARFLEETOP 0x005ea63e
-void fn_005ea63e()
-{
-}
-
 // HYPOTHESIS: a 0x10-byte member whose copy constructor (0x005e9013) is out of line; its type
 // is not identified.
 class fn_005e9013_member {

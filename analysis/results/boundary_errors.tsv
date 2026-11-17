@@ -38,3 +38,21 @@ address	name	part_of	kind	note
 0x006087b9	fn_006087b9	0x006087af	body-fragment	the analysis names this ~tMemberCallback<tPanelMgr,long>, but it is the body (917 bytes) of the function whose exception-handling prolog is recorded at 0x006087af, so the name is wrong; it runs inside the frame that prolog sets up (it reads [ebp-0x4], [ebp-0xc], and ends with leave) and takes this in ecx.
 0x00608bd1	fn_00608bd1	0x00608bc7	body-fragment	the body of tPanelMgr::vfunction3 (above), recorded apart from its prolog. Placeholder only, not the original code: it holds the address until the analysis records 0x00608bc7 and 0x00608bd1 as one function and vfunction3 takes its annotation.
 0x0075a042	FUN_0075a042	0x00759e80	body-fragment	the 2 bytes the analysis splits off right after tFontDraw::mDrawGlyphClipped (0x00759e80, 450 bytes); padding or the tail of that function, not a function of its own, so it has no source.
+0x004964f9	FUN_004964f9		initializer-fragment	0x004964f9 starts mid-expression inside a static initializer of global floats; it has no source of its own.
+0x0049650d	FUN_0049650d		initializer-fragment	0x0049650d is the tail (fstp to 0x009172a4, pop ecx, ret) of the same initializer as 0x004964f9.
+0x00496529	FUN_00496529		initializer-fragment	0x00496529 starts mid-expression (fstp to 0x009172a8, fld 142.0, call fn_005050e2) inside a static initializer of global floats that begins near 0x00496515.
+0x0049653d	FUN_0049653d		initializer-fragment	0x0049653d is a further slice (fstp to 0x009172ac, fld 63.0) of the initializer that holds 0x00496529.
+0x00496551	FUN_00496551		initializer-fragment	0x00496551 is a further slice (fstp to 0x009172b0, fld 104.0) of the initializer that holds 0x00496529.
+0x00496565	FUN_00496565		initializer-fragment	0x00496565 is the tail (fstp to 0x009172b4, ret) of the initializer that holds 0x00496529.
+0x00496586	FUN_00496586	0x00496572	initializer-fragment	0x00496586 starts mid-expression (fstp to [ebp-8], fld 89.0) inside the function at 0x00496572.
+0x00496597	FUN_00496597	0x00496572	initializer-fragment	0x00496597 starts mid-expression (fstp to [ebp-4], fldz) inside the function at 0x00496572.
+0x004965a4	FUN_004965a4	0x00496572	initializer-fragment	0x004965a4 is the tail (stores to the global vector at 0x00917240, leave, ret) of the function at 0x00496572.
+0x004965d1	FUN_004965d1		initializer-fragment	0x004965d1 starts mid-expression (fstp to 0x009172b8, fld 186.0) inside a static initializer of global floats.
+0x004965e5	FUN_004965e5		initializer-fragment	0x004965e5 is a further slice (fstp to 0x009172bc, fld 80.0) of the initializer that holds 0x004965d1.
+0x004965f9	FUN_004965f9		initializer-fragment	0x004965f9 is a further slice (fstp to 0x009172c0, fld 174.0) of the initializer that holds 0x004965d1.
+0x0049660d	FUN_0049660d		initializer-fragment	0x0049660d is the tail (fstp to 0x009172c4, ret) of the initializer that holds 0x004965d1.
+0x00496629	FUN_00496629		initializer-fragment	0x00496629 starts mid-expression (fstp to 0x009172c8, fld 171.0) inside a static initializer of global floats.
+0x0049663d	FUN_0049663d		initializer-fragment	0x0049663d is a further slice (fstp to 0x009172cc, fld 95.0) of the initializer that holds 0x00496629.
+0x00496651	FUN_00496651		initializer-fragment	0x00496651 is a further slice (fstp to 0x009172d0, fld 159.0) of the initializer that holds 0x00496629.
+0x00496665	FUN_00496665		initializer-fragment	0x00496665 is the tail (fstp to 0x009172d4, ret) of the initializer that holds 0x00496629.
+0x005ea63e	FUN_005ea63e	0x005ea5e5	body-fragment	0x005ea63e is one byte (pop esi), the tail of the routine at 0x005ea5e5; not a function of its own.
