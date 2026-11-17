@@ -24,7 +24,8 @@ public:
 	int			fValue44;
 	char		pad3[0x60 - 0x48];
 	float		fValue60;
-	char		pad[0x208 - 0x64];
+	float		fValue64;
+	char		pad[0x208 - 0x68];
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
@@ -35,6 +36,7 @@ public:
 	float		fn_005A41c4();
 	float		fn_005A41e6();
 	float		fn_005A4238();
+	float		fn_005A4287();
 };
 
 // Inline in the SDK; Optex.h declares it only.
@@ -128,4 +130,13 @@ int* fn_005A4173_Owner::fn_005A426f()
 {
 	tGuard guard(this);
 	return &fValue44;
+}
+
+// FUNCTION: STARFLEETOP 0x005a4287
+float fn_005A4173_Owner::fn_005A4287()
+{
+	Enter();
+	float value = fValue64;
+	Leave();
+	return value;
 }
