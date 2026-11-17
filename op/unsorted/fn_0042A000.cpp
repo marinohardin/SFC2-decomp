@@ -169,17 +169,19 @@ public:
 };
 
 // HYPOTHESIS: this is tClientCharacter (the string at +0x0c and the lock at +0xe4 match its
-// layout), declared only inside unsorted/tClientCharacter.cpp; only the two members used here
-// are placed.
+// layout), declared only inside unsorted/tClientCharacter.cpp; only the members used here are
+// placed. 0x0042a535 assigns a second string at +0x1c under the same lock.
 class fn_0042a480_object
 {
 public:
 	void FUN_0042a480();
 	void FUN_0042a4f7( std::string value );
+	void FUN_0042a535( const std::string& value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
-	byte field_1c[0xe4 - 0x1c];
+	std::string field_1c;
+	byte field_2c[0xe4 - 0x2c];
 	tOptex field_e4;
 };
 
@@ -198,4 +200,14 @@ void fn_0042a480_object::FUN_0042a480()
 void fn_0042a480_object::FUN_0042a4f7( std::string value )
 {
 	field_0c = value;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a535
+void fn_0042a480_object::FUN_0042a535( const std::string& value )
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	field_1c = value;
+
+	guard.Leave();
 }
