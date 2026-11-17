@@ -75,8 +75,21 @@ public:
 	char pad_0000[0xc];
 	// HYPOTHESIS: a byte total and an entry count that vfunction37 lowers after a removal.
 	long field_c;
-	long field_10;
-	char pad_0014[0x4];
+	// HYPOTHESIS: unsigned (vfunction33 compares and divides by it unsigned).
+	unsigned long field_10;
+	// HYPOTHESIS: a dirty flag that vfunction33 sets after reweighting the list below.
+	char field_14;
+	char pad_0015[0x3];
+};
+
+// HYPOTHESIS: a node of a circular list with a sentinel head: next, prev, an id and a weight
+// (vfunction33 walks it).
+struct fn_005d6a72_node
+{
+	fn_005d6a72_node *field_0;
+	fn_005d6a72_node *field_4;
+	long field_8;
+	long field_c;
 };
 
 class fn_005d6a72_object
@@ -84,7 +97,10 @@ class fn_005d6a72_object
 public:
 	~fn_005d6a72_object();
 
-	char pad_0000[0xc];
+	char pad_0000[0x4];
+	// HYPOTHESIS: the sentinel node of a list (a list object whose head pointer sits at +0x4).
+	fn_005d6a72_node *field_4;
+	char pad_0008[0x4];
 	// HYPOTHESIS: an id handed to tSndMgr_Miles::vfunction5 and the channel index it plays on.
 	long field_c;
 	long field_10;
@@ -231,7 +247,7 @@ public:
 	virtual void vfunction30();
 	virtual char vfunction31();
 	virtual long vfunction32( long param_1 );
-	virtual void vfunction33();
+	virtual void vfunction33( long param_1 );
 	virtual void vfunction34( long param_1 );
 	virtual void vfunction35();
 	virtual void vfunction36();
@@ -1199,4 +1215,21 @@ long tSndMgr_Miles::vfunction32( long param_1 )
 	if ( !field_10[param_1].field_20[1] )
 		field_10[param_1].field_20[1] = AIL_mem_alloc_lock( field_10[param_1].field_28 );
 	return field_10[param_1].field_20[0] && field_10[param_1].field_20[1];
+}
+
+// FUNCTION: STARFLEETOP 0x005102ab
+void tSndMgr_Miles::vfunction33( long param_1 )
+{
+	unsigned long step = 25;
+	if ( field_2420.field_10 >= 5 )
+		step = 100;
+	unsigned long share = step / field_2420.field_10;
+	for ( fn_005d6a72_node *node = field_2438.field_4->field_0; node != field_2438.field_4; node = node->field_0 )
+	{
+		if ( node->field_8 == param_1 )
+			node->field_c += step;
+		else
+			node->field_c -= share;
+	}
+	field_2420.field_14 = 1;
 }
