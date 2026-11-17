@@ -55,6 +55,27 @@ template<> std::vector<std::string>::iterator std::vector<std::string>::insert( 
 	return ( begin() + _O );
 }
 
+// The game's out-of-line copy of the library's tree range erase.
+// HYPOTHESIS: the tree is the map of two 4-byte types; the original's library kept a per-instance
+// nil node at +0x8, as for 0x005fb033.
+// FUNCTION: STARFLEETOP 0x005fb14e
+template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::iterator std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::erase( iterator _F, iterator _L )
+{
+	if ( size() == 0 || _F != begin() || _L != end() )
+	{
+		while ( _F != _L )
+			erase( _F++ );
+		return ( _F );
+	}
+	else
+	{
+		_Erase( _Root() );
+		_Root() = _Nil, _Size = 0;
+		_Lmost() = _Head, _Rmost() = _Head;
+		return ( begin() );
+	}
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
