@@ -637,6 +637,21 @@ void std::_Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V )
 	new ((void *)_P) fn_0055fe12_value( _V );
 }
 
+// MATCH-ONLY: the library's _Construct for the node value of the map of vectors (0x005fb06b),
+// written out so that it has source lines here, as for 0x005fba9d.
+// HYPOTHESIS: the pair is std::map<int, std::vector<int> >'s value; 0x0046180d is the vector's
+// copy constructor.
+namespace std
+{
+void _Construct( pair<const int, vector<int> > *_P, const pair<const int, vector<int> >& _V );
+}
+
+// FUNCTION: STARFLEETOP 0x005fbaca
+void std::_Construct( std::pair<const int, std::vector<int> > *_P, const std::pair<const int, std::vector<int> >& _V )
+{
+	new ((void *)_P) std::pair<const int, std::vector<int> >( _V );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
