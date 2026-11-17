@@ -165,3 +165,21 @@ void fn_00469e3e(int param_1)
 {
 	g_fn_00469979_owner.fn_00469979(param_1);
 }
+
+// HYPOTHESIS: the globals at 0x0090db88..0x0090db9c are four values and a flag; types guessed.
+extern int g_0090db88;
+extern int g_0090db8c;
+extern int g_0090db90;
+extern int g_0090db94;
+extern char g_0090db9c;
+
+void fn_0069ab80(int *a, int *b, int c, int d);
+
+// FUNCTION: STARFLEETOP 0x00469e4d
+void fn_00469e4d()
+{
+	if (g_0090db9c == 0)
+	{
+		fn_0069ab80(&g_0090db88, &g_0090db8c, g_0090db90, g_0090db94);
+	}
+}
