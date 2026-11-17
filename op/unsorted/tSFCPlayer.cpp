@@ -28,6 +28,8 @@ void fn_0060e30e(tSFCStream &s, unsigned mode);
 extern double g_008552d0[];
 extern int g_0079ed10;
 extern int g_008552b8[];
+extern int g_0085529c[];
+extern int g_008552b4[];
 class tObject_004454c1;
 // HYPOTHESIS: the class of the global at 0x008f5118 (original name unknown).
 class tObject_008f5118
@@ -72,6 +74,7 @@ class tObject_004454c1
 		int fn_00447d55(int param_1);
 		void fn_00447cf9(int param_1, int param_2);
 		void fn_00447d11(int param_1, int param_2);
+		void fn_00447d29(int param_1, int param_2);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -254,11 +257,11 @@ class tSFCPlayer
 		virtual int vfunction91();
 		virtual void vfunction92(int param_1);
 		virtual int vfunction93();
-		virtual void vfunction94(tObject_004454c1 *param_1) = 0;
+		virtual void vfunction94(tObject_004454c1 *param_1);
 		virtual void vfunction95() = 0;
 		virtual void vfunction96() = 0;
 		virtual void vfunction97() = 0;
-		virtual void vfunction98() = 0;
+		virtual int vfunction98() = 0;
 		virtual void vfunction99() = 0;
 		virtual void vfunction100() = 0;
 		virtual void vfunction101() = 0;
@@ -1179,6 +1182,17 @@ void tSFCPlayer::fn_004d0cb6()
 	m_853c = g_p008cc580->vfunction5("UI", "UIType", 1);
 	g_p0090bed4->fn_00522c86((float)g_008552d0[m_853c]);
 	m_8540 = (char)g_p008cc580->vfunction5("UI", "AutoFilm", 0);
+}
+
+// FUNCTION: STARFLEETOP 0x004d0d0a
+void tSFCPlayer::vfunction94(tObject_004454c1 *param_1)
+{
+	int iType = vfunction98();
+	for (int i = 0; i < 7; i++) {
+		param_1->fn_00447cf9(i, iType);
+		param_1->fn_00447d29(i, g_0085529c[iType]);
+		param_1->fn_00447d11(i, g_008552b4[iType]);
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004d0c48
