@@ -113,3 +113,9 @@ bool tIndividualShipSystem::vfunction46()
         return true;
     return false;
 }
+
+// FUNCTION: STARFLEETOP 0x004366da
+void tIndividualShipSystem::vfunction55(int param_1)
+{
+    vfunction47(param_1 - field_10);
+}
