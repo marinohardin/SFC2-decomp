@@ -185,6 +185,7 @@ public:
 	void fn_004cb4a7(int dst, const char* text);
 	void fn_004cb4f8(const char* text);
 	void fn_004cb56f(int a, const char* text, int b);
+	void fn_004cb5bd(const char* text);
 };
 
 extern fn_004cb4a7_target g_009254f8;
@@ -267,5 +268,18 @@ void fn_004d2353_holder::fn_004d2388(int a, const char* text, int b)
 		m_b = b;
 		const char* p = m_str.c_str();
 		g_009254f8.fn_004cb56f(a, p, b);
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004d23db
+void fn_004d2353_holder::fn_004d23db()
+{
+	if (m_str.m_len != 0)
+	{
+		const char* p = m_str.c_str();
+		g_009254f8.fn_004cb5bd(p);
+		m_str.assign("", strlen(""));
+		m_a = 0;
+		m_b = 0;
 	}
 }
