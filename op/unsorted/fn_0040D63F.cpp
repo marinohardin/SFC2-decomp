@@ -894,6 +894,16 @@ void fn_0040d63f_Buf::fn_0040e744(char* text)
     fn_0040d867(nl, 1, 0);
 }
 
+// HYPOTHESIS: a flag bit selects the writer or the reader of the variable-length encoding.
+// FUNCTION: STARFLEETOP 0x0040e786
+void fn_0040e786(unsigned int* p, fn_0040d63f_Buf& buf, unsigned char flags)
+{
+    if (flags & 2)
+        fn_0040d924((int*)p, buf);
+    else
+        fn_0040d9bf(p, buf);
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int fn_0040d63f_Buf::fn_0040e70f(char* text)
 {
