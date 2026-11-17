@@ -429,3 +429,12 @@ void fn_00406a86()
 {
     g_008949a0.~fn_00406a86_Global();
 }
+
+void fn_00406a9c();
+
+// HYPOTHESIS: arranges at exit the cleanup at 0x00406a9c.
+// FUNCTION: STARFLEETOP 0x00406a90
+void fn_00406a90()
+{
+    atexit(fn_00406a9c);
+}
