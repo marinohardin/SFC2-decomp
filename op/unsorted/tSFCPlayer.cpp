@@ -156,6 +156,8 @@ class tSFCPlayer
 
 		void fn_004d0b28();
 		void fn_004d0c48();
+		void fn_004d0c5d();
+		void fn_004d0cb6();
 		// HYPOTHESIS: the slots up to vfunction70 in the exe's order (vfunctionN is slot N-1); the
 		// ones with no definition here are placeholders, and the slots after 70 are not declared
 		// as virtual yet.
@@ -1159,6 +1161,14 @@ void tSFCPlayer::vfunction105(int param_1)
 {
 	m_8520 = param_1;
 	m_8524 = gObject_0096ed60_rank.fn_0052daa6(m_84b8, param_1);
+}
+
+// FUNCTION: STARFLEETOP 0x004d0c48
+void tSFCPlayer::fn_004d0c48()
+{
+	fn_004d0c5d();
+	fn_004d0cb6();
+	m_04 = true;
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
