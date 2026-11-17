@@ -30,6 +30,8 @@ struct fn_005e36cd_entry
 class fn_005eadc8_class
 {
 public:
+	// HYPOTHESIS: 0x005e36a3 deletes it through vtable slot 0 with 1, a virtual destructor.
+	virtual ~fn_005eadc8_class();
 	void fn_005eadc8();
 	void fn_005eadcd();
 	void fn_005eae34();

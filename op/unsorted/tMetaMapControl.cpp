@@ -256,3 +256,15 @@ void tMetaMapControl::fn_005e361d( const tRect *area )
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e36a3
+void tMetaMapControl::fn_005e36a3()
+{
+	if ( field_17c != 0 )
+	{
+		delete field_17c;
+		field_17c = 0;
+		fn_0045f4c2();
+		field_1e8 = true;
+	}
+}
