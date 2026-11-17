@@ -53,6 +53,7 @@ public:
 	void fn_00469534();
 	void fn_00468297();
 	bool fn_004683ff();
+	bool fn_00468481();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 
@@ -262,6 +263,17 @@ bool tState_GameConnections::fn_004683ff()
 	bool result = gNetControl.fn_004325a9(1);
 	gNetControl.fn_0043258a(1);
 	gNetControl.fn_0043289d();
+	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00468481
+bool tState_GameConnections::fn_00468481()
+{
+	tString value = m1c;
+	gObject_0092deb4->vfunction4(value);
+	bool result = gNetControl.fn_004325a9(2);
+	gNetControl.fn_0043258a(1);
+	gNetControl.fn_0043290e(tString(""));
 	return result;
 }
 

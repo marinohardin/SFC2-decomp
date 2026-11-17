@@ -58,6 +58,7 @@ public:
 	void fn_0043258a( int n );
 	bool fn_004325a9( int n );	// HYPOTHESIS: returns a flag (kept in bl)
 	void fn_0043289d();
+	void fn_0043290e( const tString &s );	// HYPOTHESIS: the string is passed by reference
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
