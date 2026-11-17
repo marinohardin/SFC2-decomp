@@ -296,6 +296,9 @@ public:
     virtual float vfunction68();
     // HYPOTHESIS: slot 68; stores its argument in the dword at +0x34.
     virtual void vfunction69(int param_1);
+    virtual void vfunction70();
+    // HYPOTHESIS: slot 70; stores its argument in the float at +0x40 (tCloakSystem writes it as a float).
+    virtual void vfunction71(float param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;

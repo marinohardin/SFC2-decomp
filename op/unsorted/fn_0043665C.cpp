@@ -180,3 +180,9 @@ void tIndividualShipSystem::vfunction69(int param_1)
 {
     field_34 = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x00436759
+void tIndividualShipSystem::vfunction71(float param_1)
+{
+    field_40 = param_1;
+}
