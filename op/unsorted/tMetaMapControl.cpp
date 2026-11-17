@@ -379,3 +379,31 @@ unsigned char *tMetaMapControl::fn_005e396d( int param_1 )
 {
 	return g_007b5038[ param_1 ];
 }
+
+// HYPOTHESIS: a brightness scale 0x005e397b applies to each colour channel.
+extern float g_007b5098;
+
+// FUNCTION: STARFLEETOP 0x005e397b
+unsigned long tMetaMapControl::fn_005e397b( unsigned char *param_1 )
+{
+	unsigned long r = param_1[ 0 ];
+	unsigned long g = param_1[ 1 ];
+	unsigned long b = param_1[ 2 ];
+	if ( r > 230 || g > 230 || b > 230 )
+	{
+		r += 64;
+		g += 64;
+		b += 64;
+	}
+	if ( r < 5 && g < 5 && b < 5 )
+	{
+		r = g = b = 128;
+	}
+	unsigned long red = (unsigned long)( r * g_007b5098 );
+	unsigned long rr = red > 255 ? 255 : red;
+	unsigned long green = (unsigned long)( g * g_007b5098 );
+	unsigned long gg = green > 255 ? 255 : green;
+	unsigned long blue = (unsigned long)( b * g_007b5098 );
+	unsigned long bb = blue > 255 ? 255 : blue;
+	return (unsigned char)rr | ( (unsigned short)(unsigned char)gg << 8 ) | ( (unsigned long)(unsigned char)bb << 16 );
+}
