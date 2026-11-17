@@ -1,8 +1,10 @@
 // Unit:      unsorted/fn_00616000.cpp
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 
+#include <windows.h>
 #include <malloc.h>
 #include <string.h>
+#include <list>
 
 // HYPOTHESIS: the thrown type and its context argument are unknown; the owner class is unknown.
 // The context's constructor (0x00619a20) zeroes three longs and a byte.
@@ -107,6 +109,15 @@ public:
 };
 extern fn_00614330_Owner* g_00c3b62c;
 
+// HYPOTHESIS: a received message: two longs, the data size, then the data.
+struct fn_00616470_Message
+{
+	long fA;
+	long fB;
+	unsigned long fSize;
+	char fData[4];
+};
+
 // HYPOTHESIS: the sent message: a type, an unwritten long, then the caller's data.
 struct fn_006161f0_Message
 {
@@ -122,12 +133,19 @@ public:
 	long fn_00616150( int a );
 	long fn_006161f0( int to, int from, const void* pData, unsigned long size, int flags, long type );
 	long fn_00616330( int from, int to, int flags, const void* pData, unsigned long size, int priority, int timeout, void* pContext, unsigned long* pMsgID );
+	// HYPOTHESIS: the fifth argument is never read (ret 0x14); its type is unknown.
+	long fn_00616470( long* pA, long* pB, void* pData, unsigned long* pSize, int unused );
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
-	char fPad48[0x104];
+	char fPad48[0x68];
+	// HYPOTHESIS: a std::list of received messages (head at +0xb4, size at +0xb8).
+	std::list<fn_00616470_Message*> fMessages;
+	char fPadBC[0x90];
 	long f14c;
 	long f150;
 	long f154;
+	char fPad158[0x10];
+	CRITICAL_SECTION fMessagesLock;
 };
 
 // FUNCTION: STARFLEETOP 0x006160a0
@@ -220,4 +238,28 @@ long fn_00616000_DirectPlayHolder::fn_00616330( int from, int to, int flags, con
 		fn_006123b0( e.v1() );
 	}
 	return hr;
+}
+
+// FUNCTION: STARFLEETOP 0x00616470
+long fn_00616000_DirectPlayHolder::fn_00616470( long* pA, long* pB, void* pData, unsigned long* pSize, int )
+{
+	if ( fMessages.size() == 0 )
+	{
+		*pSize = 0;
+		return 0;
+	}
+	EnterCriticalSection( &fMessagesLock );
+	fn_00616470_Message* pMessage = fMessages.front();
+	LeaveCriticalSection( &fMessagesLock );
+	*pA = pMessage->fA;
+	*pB = pMessage->fB;
+	unsigned long size = pMessage->fSize;
+	*pSize = size;
+	if ( pData != 0 )
+		memcpy( pData, pMessage->fData, size );
+	delete pMessage;
+	EnterCriticalSection( &fMessagesLock );
+	fMessages.pop_front();
+	LeaveCriticalSection( &fMessagesLock );
+	return 0;
 }
