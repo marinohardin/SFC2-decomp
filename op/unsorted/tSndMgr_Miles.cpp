@@ -77,7 +77,9 @@ public:
 struct fn_0050eea7_sample
 {
 	volatile HSAMPLE field_0;
-	char pad_4[0x10];
+	char pad_4[0xc];
+	char field_10;
+	char pad_11[3];
 	// HYPOTHESIS: three Miles locked buffers, freed with AIL_mem_free_lock.
 	void *field_14;
 	char pad_18[0x8];
@@ -89,7 +91,10 @@ struct fn_0050eea7_sample
 	tBasicFile *field_48;
 	tBasicFile *field_4c;
 	tBasicFile *field_50;
-	char pad_54[0x28];
+	char pad_54;
+	char field_55;
+	char field_56;
+	char pad_57[0x25];
 };
 
 // HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
@@ -131,6 +136,9 @@ public:
 	virtual void vfunction29( long param_1, long param_2, char param_3, long param_4 );
 	virtual void vfunction30();
 	virtual char vfunction31();
+
+	// HYPOTHESIS: maps a sound id to its channel index in place; returns whether it found one.
+	char fn_0050fc33( long *param_1 );
 
 	char pad_0004[0xc];
 	// HYPOTHESIS: 32 channels, the most vfunction28 allows; the shutdown clears 0xf80 bytes.
@@ -354,4 +362,14 @@ void tSndMgr_Miles::vfunction4()
 				AIL_set_sample_volume( field_10[field_2438.field_10].field_0, 0x7f - volume );
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050f2a2
+char tSndMgr_Miles::vfunction5( long param_1 )
+{
+	if ( field_2414 && param_1 && fn_0050fc33( &param_1 ) )
+	{
+		return field_10[param_1].field_10 || field_10[param_1].field_55 || field_10[param_1].field_56;
+	}
+	return 0;
 }
