@@ -5,6 +5,8 @@
 
 #include <string>
 #include <stdio.h>
+#include "Tiger/tstring.h"
+#include "Common/CommandLineArgs.h"
 #include "unsorted/tGLDC.h"
 #include "unsorted/tObject_0040ce21.h"
 
@@ -208,8 +210,8 @@ public:
 fn_0040c28c_object *fn_0040c28c();
 extern fn_0090db70_owner g_0090db70;
 void fn_00464be8();
-void fn_00469ab8(int *a);
-extern int g_0090db48;
+void fn_00469ab8(tString *a);
+extern tString g_0090db48;
 
 // FUNCTION: STARFLEETOP 0x00469e75
 char fn_00469e75(int param_1, int param_2)
@@ -1359,4 +1361,12 @@ char *fn_0046abf2()
 	}
 	sprintf(g_0090dab8, "%dx%d", width, height);
 	return g_0090dab8;
+}
+
+// FUNCTION: STARFLEETOP 0x0046acd5
+void fn_0046acd5(char *param_1)
+{
+	g_0090db48 = param_1;
+	std::string commandLine(g_0090db48.mCharStr(0));
+	tCommandLineArgs::Instance()->Setup(commandLine);
 }
