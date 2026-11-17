@@ -43,6 +43,7 @@ public:
 	char fn_00523370(int param_1, char param_2);
 	void fn_00523344(unsigned char param_1);
 	void fn_005233cb();
+	void fn_00523445(unsigned char param_1, char param_2);
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;

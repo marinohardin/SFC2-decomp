@@ -258,3 +258,46 @@ void fn_0090bed4_Object::fn_00523428(unsigned char param_1)
 	double now = g_0090bef0;
 	*(float *) &m_16dc[param_1 * 12 + 4] = now;
 }
+
+// 0.5f in the exe's data.
+extern float g_007b024c;
+
+// FUNCTION: STARFLEETOP 0x00523445
+// HYPOTHESIS: frees up to param_1 used entries older than half a second, those with the +0
+// flag set first; with param_2 clear, then any old entry.
+void fn_0090bed4_Object::fn_00523445(unsigned char param_1, char param_2)
+{
+	float now = g_0090bef0;
+	unsigned char count = 0;
+	unsigned char freed = 0;
+	unsigned char i;
+	for (i = 0; count < m_16d8; i++) {
+		if (freed >= param_1)
+			return;
+		if (i >= 100)
+			break;
+		if (*(int *) &m_16dc[i * 12 + 8] != -1) {
+			count++;
+			if (m_16dc[i * 12] != 0 && now - *(float *) &m_16dc[i * 12 + 4] > g_007b024c) {
+				fn_00523344(i);
+				freed++;
+			}
+		}
+	}
+	if (freed < param_1 && !param_2) {
+		count = 0;
+		for (i = 0; count < m_16d8; i++) {
+			if (freed >= param_1)
+				return;
+			if (i >= 100)
+				return;
+			if (*(int *) &m_16dc[i * 12 + 8] != -1) {
+				count++;
+				if (now - *(float *) &m_16dc[i * 12 + 4] > g_007b024c) {
+					fn_00523344(i);
+					freed++;
+				}
+			}
+		}
+	}
+}
