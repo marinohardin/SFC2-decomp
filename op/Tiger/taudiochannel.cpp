@@ -32,8 +32,8 @@
 
 
 
-// HYPOTHESIS: the element type of the array at tChannelGroup +0x20 (0x18 bytes, with a
-// vtable). Its class and the virtual at offset 0x68 are not named yet.
+// HYPOTHESIS: the element type of the array at tChannelGroup +0x20 (0x18 bytes, with a vtable;
+// probably tSoundChannelFormat, which mAddSoundChannel takes). Not yet replaced by it.
 class fn_ChannelLink
 {
 public:
@@ -354,7 +354,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel((tSoundChannelFormat*)&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -366,7 +366,7 @@ void tChannelGroup::mLoad(long param_1)
                 index = offset + j;
                 if (index < 0 || field_1c == 0 || field_1c[index].vfn_7c() == -1)
                 {
-                    channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
+                    channel = BindPart(tSoundPart)->mAddSoundChannel((tSoundChannelFormat*)&field_20[j]);
                     field_1c[index].vfn_90(channel);
                 }
             }
@@ -382,7 +382,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel((tSoundChannelFormat*)&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -409,7 +409,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[j].vfn_7c() == -1)
             {
-                channel = BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]);
+                channel = BindPart(tSoundPart)->mAddSoundChannel((tSoundChannelFormat*)&field_20[j]);
                 field_1c[j].vfn_90(channel);
             }
         }
@@ -418,7 +418,7 @@ void tChannelGroup::mLoad(long param_1)
         {
             if (field_1c[offset + j].vfn_7c() == -1)
             {
-                field_1c[offset + j].vfn_90(BindPart(tSoundPart)->mAddSoundChannel(&field_20[j]));
+                field_1c[offset + j].vfn_90(BindPart(tSoundPart)->mAddSoundChannel((tSoundChannelFormat*)&field_20[j]));
             }
         }
     }

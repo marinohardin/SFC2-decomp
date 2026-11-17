@@ -15,17 +15,18 @@ public:
     virtual ~tListMemberWithHandle();
     virtual void mInitListMemberWithHandle();
     virtual void mRemoveFromList();
-    // HYPOTHESIS: the previous member's handle; tDynamicMemoryFreeListViaHandles::
+    // Name from the SDK library symbols at 0x006454b0. Slot +0x0c returns the previous
+    // member's handle (field_04): tDynamicMemoryFreeListViaHandles::
     // mGetPreviousListMemberHandle (0x00626bc0) returns it through this slot.
-    virtual long vfunc_0c();
-    // HYPOTHESIS: the next member's handle; tDynamicMemoryFreeListViaHandles::
+    virtual long mGetPreviousListHandle();
+    // HYPOTHESIS: the next member's handle (field_0c); tDynamicMemoryFreeListViaHandles::
     // mGetNextListMemberHandle (0x00626be0) returns it through this slot.
     virtual long vfunc_10();
-    // HYPOTHESIS: slots +0x14 and +0x18 set the previous and next members' handles, and +0x1c
-    // returns the member's own handle (tDynamicMemoryFreeListViaHandles::mAddToFrontOfList,
-    // 0x00626c60).
-    virtual void vfunc_14(long);
-    virtual void vfunc_18(long);
+    // HYPOTHESIS: slots +0x14 and +0x18 set the previous (field_04, 0x006454c0) and next
+    // (field_0c, 0x006454e0) members' handles, and +0x1c returns the member's own handle
+    // (tDynamicMemoryFreeListViaHandles::mAddToFrontOfList, 0x00626c60).
+    virtual void vfunc_14(long handle);
+    virtual void vfunc_18(long handle);
     virtual long vfunc_1c();
     // HYPOTHESIS: takes the member's handle (0x0066dc50 passes each block's index).
     virtual void vfunc_20(long);
@@ -41,9 +42,49 @@ public:
 };
 
 // The out-of-line copy VC6 emits for the vtable is 0x00645480 (7 bytes; the exe's derived
-// classes share it). It is not claimed here: its unit, Tiger/twSound.cpp, has no code yet.
+// classes share it), placed with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454f0
+// FUNCTION: STARFLEETOP 0x00645480
 inline tListMemberWithHandle::~tListMemberWithHandle()
 {
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x00645490
+inline void tListMemberWithHandle::mInitListMemberWithHandle()
+{
+    field_04 = -1;
+    field_08 = -1;
+    field_0c = -1;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454a0
+inline void tListMemberWithHandle::mRemoveFromList()
+{
+    field_04 = -1;
+    field_08 = -1;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454b0
+inline long tListMemberWithHandle::mGetPreviousListHandle()
+{
+    return field_04;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454c0
+inline void tListMemberWithHandle::vfunc_14(long handle)
+{
+    field_04 = handle;
+}
+
+// HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
+// FUNCTION: STARFLEETOP 0x006454e0
+inline void tListMemberWithHandle::vfunc_18(long handle)
+{
+    field_0c = handle;
 }
 
 // HYPOTHESIS: tSoundMemoryBlock derives from tListMemberWithHandle (the list returns

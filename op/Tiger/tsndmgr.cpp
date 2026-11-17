@@ -1,6 +1,7 @@
 //	tsndmgr.cpp: the sound file manager and its play information.
 
 #include "Tiger/tbasic.h"
+#include "Tiger/tsndmgr.h"
 
 // HYPOTHESIS: declared only as far as the functions below need: the field mSetNextInSequence
 // stores is at 0xbc; the other fields and virtuals are not recovered.
@@ -11,13 +12,6 @@ public:
 
 	char			fUnknown_0004[0xb8];
 	long			field_0xbc;
-};
-
-// HYPOTHESIS: declared only as far as the functions below need.
-class tBasicSoundFileManager
-{
-public:
-	virtual	unsigned long	mGetTrackingIndex	( unsigned long handle );
 };
 
 // FUNCTION: STARFLEETOP 0x006639c0

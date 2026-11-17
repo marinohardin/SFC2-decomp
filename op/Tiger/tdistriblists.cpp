@@ -203,7 +203,7 @@ long tDynamicMemoryFreeListViaHandles::mGetPreviousListMemberHandle(tListMemberW
 {
 	if (aMember == 0)
 		return -1;
-	return aMember->vfunc_0c();
+	return aMember->mGetPreviousListHandle();
 }
 
 // FUNCTION: STARFLEETOP 0x00626be0
@@ -219,7 +219,7 @@ long tDynamicMemoryFreeListViaHandles::mGetPreviousCircularListMemberHandle(tLis
 {
 	if (aMember == 0)
 		return -1;
-	long handle = aMember->vfunc_0c();
+	long handle = aMember->mGetPreviousListHandle();
 	if (handle == -1)
 		handle = vfunction4();
 	return handle;
@@ -242,7 +242,7 @@ unsigned char tDynamicMemoryFreeListViaHandles::mAddToFrontOfList(tListMemberWit
 	if (aMember == 0)
 		return 0;
 	long handle = aMember->vfunc_1c();
-	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+	if (aMember->mGetPreviousListHandle() != -1 || field_0x4 == handle)
 		return 0;
 	aMember->vfunc_14(-1);
 	aMember->vfunc_18(field_0x4);
@@ -261,7 +261,7 @@ unsigned char tDynamicMemoryFreeListViaHandles::mAddToBackOfList(tListMemberWith
 	if (aMember == 0)
 		return 0;
 	long handle = aMember->vfunc_1c();
-	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+	if (aMember->mGetPreviousListHandle() != -1 || field_0x4 == handle)
 		return 0;
 	aMember->vfunc_18(-1);
 	aMember->vfunc_14(field_0x8);
@@ -283,7 +283,7 @@ unsigned char tDynamicMemoryFreeListViaHandles::mInsertAfterListMember(tListMemb
 		return mAddToFrontOfList(aMember);
 	long listHandle = aListMember->vfunc_1c();
 	long handle = aMember->vfunc_1c();
-	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+	if (aMember->mGetPreviousListHandle() != -1 || field_0x4 == handle)
 		return 0;
 	if (field_0x8 == listHandle)
 		return mAddToBackOfList(aMember);
@@ -305,11 +305,11 @@ unsigned char tDynamicMemoryFreeListViaHandles::mInsertBeforeListMember(tListMem
 		return mAddToBackOfList(aMember);
 	long listHandle = aListMember->vfunc_1c();
 	long handle = aMember->vfunc_1c();
-	if (aMember->vfunc_0c() != -1 || field_0x4 == handle)
+	if (aMember->mGetPreviousListHandle() != -1 || field_0x4 == handle)
 		return 0;
 	if (field_0x4 == listHandle)
 		return mAddToFrontOfList(aMember);
-	long previousHandle = aListMember->vfunc_0c();
+	long previousHandle = aListMember->mGetPreviousListHandle();
 	mGetListMemberWithHandleFromHandle(previousHandle)->vfunc_18(handle);
 	aMember->vfunc_18(listHandle);
 	aListMember->vfunc_14(handle);
@@ -325,7 +325,7 @@ unsigned char tDynamicMemoryFreeListViaHandles::mRemoveFromList(tListMemberWithH
 		return 0;
 	long handle = aMember->vfunc_1c();
 	long nextHandle = aMember->vfunc_10();
-	long previousHandle = aMember->vfunc_0c();
+	long previousHandle = aMember->mGetPreviousListHandle();
 	if (field_0x4 == handle)
 		field_0x4 = nextHandle;
 	else if (previousHandle == -1)
