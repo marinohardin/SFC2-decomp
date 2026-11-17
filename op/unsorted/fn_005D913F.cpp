@@ -591,6 +591,8 @@ BOOL fn_005d9a6f(const char *param_1)
     return (short)check == (short)((short)(value % 0xffff) ^ (short)0x9249);
 }
 
+class fn_006ed560_object;
+
 // HYPOTHESIS: an object built from a string: the string at +0x00, a dword at +0x10 and a
 // byte at +0x14, both cleared.
 class fn_005d9b26_object
@@ -600,6 +602,7 @@ public:
     void fn_005d9b58(const char *param_1);
     void fn_005d9bb8(const std::string &param_1);
     std::string fn_005d9be5();
+    void fn_005d9cd3(fn_006ed560_object *param_1) const;
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -644,4 +647,45 @@ std::string fn_005d9b26_object::fn_005d9be5()
     std::string result(buf);
     delete buf;
     return result;
+}
+
+// HYPOTHESIS: a running hash over bytes: two dwords set by its constructor (0x006e1660),
+// fed by 0x006e1680; the result is the two dwords exclusive-ored.
+class fn_006e1660_object
+{
+public:
+    fn_006e1660_object(long param_1, long param_2);
+    void fn_006e1680(const void *data, unsigned int size);
+
+    long m00;
+    long m04;
+};
+
+// HYPOTHESIS: an object 0x006ed560 (763 bytes, in the SDK's code) fills from a byte buffer
+// and its length; its name and purpose are not known.
+class fn_006ed560_object
+{
+public:
+    void fn_006ed560(const unsigned char *data, unsigned int size);
+};
+
+// HYPOTHESIS: hashes the string, then each of its first three characters, keeping two bytes
+// of every running hash in a byte string (the empty-string pointer 0x007b4be4 is a second
+// string instantiation's, so the buffer is not a std::string).
+// FUNCTION: STARFLEETOP 0x005d9cd3
+void fn_005d9b26_object::fn_005d9cd3(fn_006ed560_object *param_1) const
+{
+    fn_006e1660_object hash(0, 0);
+    std::basic_string< unsigned char > key;
+    hash.fn_006e1680(m00.c_str(), m00.size());
+    long value = hash.m04 ^ hash.m00;
+    key.assign((const unsigned char *)&value, 2);
+    for (int i = 0; i < 3 && i < m00.size(); i++)
+    {
+        char c = m00[i];
+        hash.fn_006e1680(&c, 1);
+        value = hash.m04 ^ hash.m00;
+        key.append((const unsigned char *)&value, 2);
+    }
+    param_1->fn_006ed560(key.c_str(), key.size());
 }
