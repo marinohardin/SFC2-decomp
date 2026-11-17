@@ -170,5 +170,6 @@ std::string g_00c38f28 = "blackhole1L";
 // FUNCTION: STARFLEETOP 0x005e2dfb
 std::string g_00c38f18 = "GreyScaleHexL";
 
+// FUNCTION: STARFLEETOP 0x005e2e84
 // FUNCTION: STARFLEETOP 0x005e2e51
 std::string g_00c38f08 = "GreyTinyHex";
