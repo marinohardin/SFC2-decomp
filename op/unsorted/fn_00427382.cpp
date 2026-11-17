@@ -251,3 +251,23 @@ int tObject_0042750f::fn_004276e4( int aIndex, int aValue, int aArg )
 	} while (i--);
 	return sum;
 }
+
+// HYPOTHESIS: 0x00427883 takes three arguments and does not read ecx here, so it is declared
+// as a free __stdcall function, as fn_00426f1a above is written.
+void __stdcall fn_00427883( int aArg1, int aArg2, int aArg3 );
+
+// HYPOTHESIS: an object whose value at +0x8 is passed on to 0x00427883 with 1; class not yet
+// found.
+class tObject_0042772f
+{
+public:
+	void fn_0042772f( int aArg );
+	char pad00[0x8];
+	int field_0x8;
+};
+
+// FUNCTION: STARFLEETOP 0x0042772f
+void tObject_0042772f::fn_0042772f( int aArg )
+{
+	fn_00427883( field_0x8, 1, aArg );
+}
