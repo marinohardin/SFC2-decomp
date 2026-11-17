@@ -1,6 +1,18 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00403000.cpp
-// Functions: 0x00403131 to 0x00403ff1, 40 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <fstream>
+
+// HYPOTHESIS: the library's std::ifstream constructor taking (name, mode), written out as a
+// stand-in class with the same layout (filebuf at +8, virtual ios base at +0x5c).
+class fn_004033ab_Ifstream : public std::istream
+{
+public:
+    fn_004033ab_Ifstream(const char* name, int mode);
+    std::filebuf _Fb;
+};
+
+// FUNCTION: STARFLEETOP 0x004033ab
+fn_004033ab_Ifstream::fn_004033ab_Ifstream(const char* name, int mode)
+    : std::basic_istream<char, std::char_traits<char> >(&_Fb), _Fb()
+{
+    if (_Fb.open(name, mode | in) == 0)
+        setstate(failbit);
+}
