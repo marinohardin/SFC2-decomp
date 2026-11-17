@@ -1,6 +1,18 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00404000.cpp
-// Functions: 0x00404014 to 0x00404fee, 46 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: a counter pair held through pointers at +0x1c and +0x2c; class and name unknown.
+class fn_00404014_Counters
+{
+public:
+    char pad_00[0x1c];
+    int* m_pDown;
+    char pad_20[0x0c];
+    int* m_pUp;
+    int fn_00404014();
+};
+
+// FUNCTION: STARFLEETOP 0x00404014
+int fn_00404014_Counters::fn_00404014()
+{
+    *m_pUp += 1;
+    *m_pDown -= 1;
+    return *m_pDown;
+}

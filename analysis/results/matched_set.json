@@ -478,6 +478,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00404014": {
+   "name": "FUN_00404014",
+   "symbol": "?fn_00404014@fn_00404014_Counters@@QAEHXZ",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
