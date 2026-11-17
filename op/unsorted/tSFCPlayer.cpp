@@ -263,7 +263,7 @@ class tSFCPlayer
 		virtual void vfunction102() = 0;
 		virtual void vfunction103(int param_1);
 		virtual int vfunction104();
-		virtual void vfunction105(int param_1) = 0;
+		virtual void vfunction105(int param_1);
 		virtual int vfunction106();
 		virtual void vfunction107(int param_1);
 		virtual void vfunction108();
@@ -1141,6 +1141,24 @@ void tSFCPlayer::vfunction107(int param_1)
 			} while (count > 0);
 		}
 	}
+}
+
+// HYPOTHESIS: the object at 0x0096ed60 is also declared (with another member) inside
+// tEntityMgr.cpp under another name, which this unit may not share; fn_0052daa6 maps the
+// player's (m_84b8, prestige) pair to a rank. To be merged into one declaration.
+class tRankTable_0096ed60
+{
+public:
+	int fn_0052daa6(int param_1, int param_2);
+};
+
+extern tRankTable_0096ed60 gObject_0096ed60_rank;
+
+// FUNCTION: STARFLEETOP 0x004d0c20
+void tSFCPlayer::vfunction105(int param_1)
+{
+	m_8520 = param_1;
+	m_8524 = gObject_0096ed60_rank.fn_0052daa6(m_84b8, param_1);
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
