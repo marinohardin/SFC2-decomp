@@ -37,3 +37,9 @@ int tShuttleBaySystem::vfunction107()
 {
     return field_dc;
 }
+
+// FUNCTION: STARFLEETOP 0x0044e57e
+int tShuttleBaySystem::vfunction108()
+{
+    return field_e8;
+}
