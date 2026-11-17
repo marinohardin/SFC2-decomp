@@ -16,6 +16,14 @@ class tObject_0044e844_item
 {
 public:
     virtual ~tObject_0044e844_item();
+    // HYPOTHESIS: slot 1 returns a float; 0x0044efae adds it up.
+    virtual float vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    // HYPOTHESIS: slot 6 returns a flag; 0x0044efae skips the entries that set it.
+    virtual bool vfunction7();
 };
 
 // HYPOTHESIS: the entries of the vector at +0x90; 0x0044ec9a fills field_4 up to field_0 and
@@ -115,6 +123,8 @@ public:
     // HYPOTHESIS: the per-frame update in vftable slot 38. The base declares that slot without
     // the float, so this declaration adds a slot; it sits last so it shifts no known slot.
     virtual void vfunction39(float param_1);
+    // vftable slot 71; half of field_dc plus the values of the entries of field_4f0.
+    virtual float vfunction72();
     // HYPOTHESIS: drops the ids in field_80 whose ship still exists and, once it is empty,
     // checks the ships of field_3a8 and field_1c8.
     void fn_0044ea7e();

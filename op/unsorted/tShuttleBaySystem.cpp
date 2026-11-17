@@ -404,3 +404,18 @@ void tShuttleBaySystem::vfunction39(float param_1)
     fn_0044ff32();
     fn_0044f071(param_1);
 }
+
+// HYPOTHESIS: the float constant 0.5 at 0x007959c8.
+extern float g_007959c8;
+
+// FUNCTION: STARFLEETOP 0x0044efae
+float tShuttleBaySystem::vfunction72()
+{
+    float sum = 0.0f;
+    for (std::list<tObject_0044e844_item*>::iterator it = field_4f0.begin(); it != field_4f0.end(); ++it)
+    {
+        if (vfunction35() && !(*it)->vfunction7())
+            sum += (*it)->vfunction2();
+    }
+    return field_c4 * g_007959c8 + sum;
+}

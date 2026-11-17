@@ -261,7 +261,8 @@ public:
     // HYPOTHESIS: slot 32 returns the owning object (an int at +0x1c is read from it).
     virtual struct vfunction33_result* vfunction33();
     virtual void vfunction34();
-    virtual void vfunction35();
+    // HYPOTHESIS: slot 34 returns a flag; tShuttleBaySystem's 0x0044efae tests it.
+    virtual bool vfunction35();
     virtual void vfunction36();
     // HYPOTHESIS: slot 36 takes four ints and returns a value; 0x0043e09e passes (0, 100, 0, 0).
     virtual int vfunction37(int param_1, int param_2, int param_3, int param_4);
