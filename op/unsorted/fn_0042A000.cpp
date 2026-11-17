@@ -182,6 +182,7 @@ public:
 	void FUN_0042a5ff( int value );
 	void FUN_0042a623( int value );
 	void FUN_0042a647( int value );
+	void FUN_0042a66b( int value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -193,7 +194,9 @@ public:
 	int field_48;
 	byte field_4c[0x50 - 0x4c];
 	int field_50;
-	byte field_54[0xe4 - 0x54];
+	byte field_54[0x58 - 0x54];
+	int field_58;
+	byte field_5c[0xe4 - 0x5c];
 	tOptex field_e4;
 };
 
@@ -264,5 +267,13 @@ void fn_0042a480_object::FUN_0042a647( int value )
 {
 	field_e4.Enter();
 	field_50 = value;
+	field_e4.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a66b
+void fn_0042a480_object::FUN_0042a66b( int value )
+{
+	field_e4.Enter();
+	field_58 = value;
 	field_e4.Leave();
 }
