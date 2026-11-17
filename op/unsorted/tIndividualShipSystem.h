@@ -221,7 +221,8 @@ public:
     // HYPOTHESIS: slot 15; returns the dword at +0x20.
     virtual int vfunction16();
     virtual void vfunction17();
-    virtual void vfunction18();
+    // HYPOTHESIS: slot 17; stores its argument in the dword at +0x18.
+    virtual void vfunction18(int param_1);
     virtual void vfunction19();
     virtual void vfunction20();
     virtual void vfunction21();
