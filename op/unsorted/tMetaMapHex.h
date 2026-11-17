@@ -175,6 +175,8 @@ public:
 	long fn_00539f04();
 	// HYPOTHESIS: the hex point's second coordinate, read under the lock.
 	long fn_00539f50();
+	// HYPOTHESIS: a copy of the hex point, taken under the lock.
+	tHexPoint fn_00539f9c();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

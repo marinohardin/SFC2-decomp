@@ -13,6 +13,7 @@ public:
 	tHexPoint();
 	// HYPOTHESIS: the two coordinates; their types are not known.
 	tHexPoint(int x, int y);
+	tHexPoint(const tHexPoint &other);
 	~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
