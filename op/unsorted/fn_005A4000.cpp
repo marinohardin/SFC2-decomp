@@ -28,7 +28,8 @@ public:
 	float		fValue64;
 	std::string	fString68;
 	std::string	fString78;
-	char		pad[0x208 - 0x78 - sizeof(std::string)];
+	std::string	fString88;
+	char		pad[0x208 - 0x88 - sizeof(std::string)];
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
@@ -42,6 +43,7 @@ public:
 	float		fn_005A4287();
 	std::string	fn_005A42a6();
 	std::string	fn_005A4309();
+	std::string	fn_005A436c();
 };
 
 // Inline in the SDK; Optex.h declares it only.
@@ -158,4 +160,11 @@ std::string fn_005A4173_Owner::fn_005A4309()
 {
 	tGuard guard(this);
 	return fString78;
+}
+
+// FUNCTION: STARFLEETOP 0x005a436c
+std::string fn_005A4173_Owner::fn_005A436c()
+{
+	tGuard guard(this);
+	return fString88;
 }
