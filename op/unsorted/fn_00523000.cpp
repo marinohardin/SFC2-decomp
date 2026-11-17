@@ -71,3 +71,18 @@ void fn_0090bed4_Object::fn_00523100()
 {
 	m_218.fn_00520e30();
 }
+
+// HYPOTHESIS: a table of 0x4000 object pointers indexed by ID; its element type is unknown.
+extern void *g_008e1090[0x4000];
+
+// FUNCTION: STARFLEETOP 0x0052310b
+// HYPOTHESIS: a member of this class: ecx passes through untouched to 0x0052315a, which takes
+// three stack arguments like this function (ret 0xc).
+char fn_0090bed4_Object::fn_0052310b(int param_1, int param_2, int param_3)
+{
+	void *p1 = (param_1 < 0 || param_1 >= 0x4000) ? NULL : g_008e1090[param_1];
+	void *p2 = (param_2 < 0 || param_2 >= 0x4000) ? NULL : g_008e1090[param_2];
+	if (p1 == NULL || p2 == NULL)
+		return 0;
+	return fn_0052315a(p1, p2, param_3);
+}

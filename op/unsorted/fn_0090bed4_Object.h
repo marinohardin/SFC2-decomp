@@ -33,6 +33,8 @@ public:
 	tObject_0051c7af *fn_00523543(int param_1);
 	tObject_0051c7af *fn_00523574(int param_1);
 	void fn_00523100();
+	char fn_0052310b(int param_1, int param_2, int param_3);
+	char fn_0052315a(void *param_1, void *param_2, int param_3);
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;
