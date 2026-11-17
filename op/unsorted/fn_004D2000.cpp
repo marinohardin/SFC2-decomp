@@ -629,14 +629,25 @@ inline fn_004d26fb_pair::fn_004d26fb_pair(const fn_004d2238_string& a, fn_004d22
 
 struct fn_004d26fb_node
 {
-	char m_0x00[0x1c];
-	fn_004d2265_holder* m_0x1c;
+	char m_0x00[0xc];
+	fn_004d26fb_pair m_0x0c;
 };
+
+struct fn_004d26fb_iterator
+{
+	fn_004d26fb_pair& operator*() const;
+	fn_004d26fb_node* m_0x00;
+};
+
+inline fn_004d26fb_pair& fn_004d26fb_iterator::operator*() const
+{
+	return m_0x00->m_0x0c;
+}
 
 struct fn_004d26fb_insert_result
 {
-	fn_004d26fb_node* node;
-	bool inserted;};
+	fn_004d26fb_iterator first;
+	bool second;};
 
 class fn_004d26fb_map
 {
@@ -649,9 +660,8 @@ public:
 // FUNCTION: STARFLEETOP 0x004d2add
 fn_004d2265_holder*& fn_004d26fb_map::fn_004d2add(const fn_004d2238_string& key)
 {
-	fn_004d26fb_pair value(key, 0);
-	fn_004d26fb_insert_result result = fn_004d2c20(value);
-	return result.node->m_0x1c;
+	fn_004d26fb_insert_result r = fn_004d2c20(fn_004d26fb_pair(key, 0));
+	return (*r.first).second;
 }
 
 // FUNCTION: STARFLEETOP 0x004d26fb
