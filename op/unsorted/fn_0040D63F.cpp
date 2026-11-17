@@ -5,6 +5,9 @@ public:
     fn_0040d63f_Buf(int size);
     void fn_0040d67d();
     void fn_0040d692();
+    fn_0040d63f_Buf* fn_0040d6b7(int* src);
+    // HYPOTHESIS: 0x0040d867 is a member of this buffer class taking (data, size, count).
+    void fn_0040d867(void* data, int size, int count);
     int m00;
     char* m04;
     char* m08;
@@ -52,4 +55,16 @@ void fn_0040d63f_Buf::fn_0040d692()
         m08 = 0;
         m0c = 0;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0040d6b7
+fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d6b7(int* src)
+{
+    int* p = (int*)src[0];
+    fn_0040d867(&p, 4, 1);
+    p = (int*)src[1];
+    fn_0040d867(&p, 4, 1);
+    p = (int*)src[2];
+    fn_0040d867(&p, 4, 1);
+    return this;
 }
