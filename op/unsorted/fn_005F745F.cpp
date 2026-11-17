@@ -19,6 +19,8 @@ inline tOptex::tGuard::~tGuard()
 // and its destructor inlines to the string's _Tidy (0x005da20a); +0x10 and +0x14 are not known.
 struct fn_005f74a6_entry
 {
+	fn_005f74a6_entry( const fn_005f74a6_entry& other );
+
 	std::string field_00;
 	int field_10;
 	int field_14;
@@ -65,4 +67,11 @@ fn_005f74a6_entry fn_005f745f_object::FUN_005f74a6()
 	field_04.FUN_005f7897();
 
 	return value;
+}
+
+// HYPOTHESIS: the member-wise copy the compiler would generate, written out to be claimed.
+// FUNCTION: STARFLEETOP 0x005f7526
+fn_005f74a6_entry::fn_005f74a6_entry( const fn_005f74a6_entry& other )
+	: field_00( other.field_00 ), field_10( other.field_10 ), field_14( other.field_14 )
+{
 }
