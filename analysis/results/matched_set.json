@@ -2071,6 +2071,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040df66": {
+   "name": "FUN_0040df66",
+   "symbol": "?fn_0040df66@@YAXPAD0AAVfn_0040d63f_Buf@@@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 103,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",

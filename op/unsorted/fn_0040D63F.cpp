@@ -567,3 +567,17 @@ void fn_0040df26(char* name, char* value, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040df66
+void fn_0040df66(char* name, char* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    long n;
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = %ld");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, &n);
+    *value = (char)n;
+}
+
