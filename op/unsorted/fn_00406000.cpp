@@ -361,3 +361,13 @@ void fn_00406921()
     delete p;
     g_0089318c = 0;
 }
+
+// HYPOTHESIS: the same release as 0x00406887, for the object at g_00893190.
+// FUNCTION: STARFLEETOP 0x0040696e
+void fn_0040696e()
+{
+    std::_Lockit lock;
+    fn_00406887_Base* p = g_00893190->fn_00402b3a();
+    delete p;
+    g_00893190 = 0;
+}
