@@ -35,11 +35,13 @@ extern const char *g_008493b4;
 extern const char *g_008493b8;
 extern const char *g_008493bc;
 extern const char *g_008493cc;
+// HYPOTHESIS: a separator character read by fn_004768a5.
+extern char g_008493d0;
 void fn_004d346f(const char *name, const char *group);
 void fn_004d3331(const char *name);
 void fn_004d3340(const char *name);
 // HYPOTHESIS: returns the control with the given id.
-class c_00468677_source;
+#include "unsorted/c_00468677_source.h"
 c_00468677_source *fn_004d3446(int id);
 // HYPOTHESIS: three global strings, 0x28 bytes apart, handed to tNetControl::fn_004327a7.
 extern tString g_00910ac8;
@@ -77,6 +79,7 @@ public:
 	bool fn_004766f1();
 	bool fn_00476754();
 	void fn_004767f1();
+	void fn_004768a5(c_00468677_source *source, tString &out);
 	// HYPOTHESIS: puts the value into the control under the given key, as
 	// tState_GameConnections::fn_004688ee does.
 	void fn_00476997(int control, const char *name, const char *value);
@@ -332,4 +335,19 @@ bool fn_0047685b()
 	int id = gObject_008e1060.mGetNextPlayerID();
 	gObject_0092deb4->vfunction10(id, 0, 0);
 	return result == 0 ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x004768a5
+void tState_Namespace_NetSetup::tState_NetSetup::fn_004768a5(c_00468677_source *source, tString &out)
+{
+	tString *text = source->vfunction68();
+	if (text)
+	{
+		int len = text->mStrLen();
+		int pos = text->find(g_008493d0);
+		if (pos >= 0 && pos < len)
+			out = text->substr(0, pos);
+		else
+			out = *text;
+	}
 }
