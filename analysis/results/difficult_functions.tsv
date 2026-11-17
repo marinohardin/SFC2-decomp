@@ -217,3 +217,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0061ec40	tPath::mCreate	5	fable	99.97	2026-11-17T14:59:35Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
 0x0061f2f0	tVolIterator::mFirst	5	fable	100.00	2026-11-17T15:16:13Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 100.00%
 0x0061f690	tDirIterator::mFirst	5	fable	100.00	2026-11-17T15:23:13Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 100.00%
+0x00623390	tString::tString	3	fable	91.14	2026-11-17T15:29:13Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.14%
