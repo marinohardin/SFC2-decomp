@@ -24,48 +24,48 @@ class twVolume;
 class tDir;
 class twDir;
 
-namespace std
-{
-	template <class _Ty> struct less;
-}
+#include "Tiger/tFSSession.h"
+#include "Tiger/tCountMap.h"
 
-// HYPOTHESIS: the full tCountMap is declared only inside op/Tiger/tgfsys.cpp; this unit needs
-// just the virtual destructor, whose deleting form is the function below.
-template <class tKeyType, class tValueType, class tCompare>
-class tCountMap
-{
-public:
-	tCountMap();
-	virtual ~tCountMap();
+// tCountMap, tValueCountMap and tCookieManager are declared in Tiger/tCountMap.h, as
+// Tiger/tgfsys.cpp uses them too; the pair the maps hold needs the cookie and object types
+// complete, which Tiger/tFSSession.h declares. These lines keep the line numbers.
 
-	void		*fHead;		// +0x04
-	void		*fTail;		// +0x08
-};
-
-// HYPOTHESIS: the full tValueCountMap is declared only inside op/Tiger/tgfsys.cpp, where its
-// leading word is not recovered; the vtable store below shows it is a virtual destructor's.
-template <class tKeyType, class tValueType, class tCompare>
-class tValueCountMap
-{
-public:
-	tValueCountMap() {}
-	virtual ~tValueCountMap();
-
-	tCountMap<tKeyType,tValueType,tCompare>	fMaps[256];		// +0x04
-};
-
-// HYPOTHESIS: the full tCookieManager is declared only inside op/Tiger/tgfsys.cpp. The function
-// below stores the map's vtable at +0x04 after building its 256 maps and then clears +0x00, which
-// is the cookie manager's constructor with tValueCountMap's inlined, not tValueCountMap's own.
-template <class tCookieType, class tObjectType>
-class tCookieManager
-{
-public:
-	tCookieManager();
-
-	int32u											f_00;
-	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
-};
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the destructor body (0x00435e84) is not recovered; empty here.
 // FUNCTION: STARFLEETOP 0x004361cb
