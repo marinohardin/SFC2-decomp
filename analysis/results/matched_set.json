@@ -8074,6 +8074,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e2539": {
+   "name": "FUN_005e2539",
+   "symbol": "?fn_005e2539@@YAXXZ",
+   "unit": "unsorted/fn_005E2501.cpp",
+   "size": 22,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

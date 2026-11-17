@@ -26,3 +26,12 @@ void fn_005e2501_class::fn_005e2501()
 {
 	fn_004d3278( (long) g_00c38dd8.c_str(), 0, 0, 0, 0, vfunction1(), vfunction2() );
 }
+
+// HYPOTHESIS: a free cdecl function of a name; other units pass it image names.
+void fn_004d3306( const char *psz );
+
+// FUNCTION: STARFLEETOP 0x005e2539
+void fn_005e2539()
+{
+	fn_004d3306( g_00c38dd8.c_str() );
+}
