@@ -50,6 +50,18 @@ extern tString g_00910aa0;
 extern tString g_00910a78;
 // HYPOTHESIS: six C strings fn_00476da0 lists in the serial rate control.
 extern char *g_00849550[6];
+// HYPOTHESIS: pointers to the names "cCreateGame", "cJoinGame" and the state fn_00476e72 goes
+// to once connected, as in tState_GameConnections.
+extern const char *g_008493c4;
+extern const char *g_008493c8;
+extern const char *g_008493a8;
+// HYPOTHESIS: cdecl; the meaning of the arguments is not known.
+void fn_004d34e8(const char *name, const char *group, int n);
+// HYPOTHESIS: the current time, and the modem state's flag and time of its last progress dot.
+extern double g_00c7c148;
+extern char g_00910b38;
+extern double g_00910b40;
+#include "Tiger/tFormatStr.h"
 
 namespace tState_Namespace_NetSetup
 {
@@ -82,6 +94,7 @@ public:
 	bool fn_004766f1();
 	bool fn_00476754();
 	void fn_004767f1();
+	bool fn_0047685b();
 	void fn_004768a5(c_00468677_source *source, tString &out);
 	bool fn_00476925();
 	// HYPOTHESIS: puts the value into the control under the given key, as
@@ -95,6 +108,9 @@ public:
 	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
 	void fn_00476d52(c_00468677_source **control, void *source, int id);
 	void fn_00476da0(c_00468677_source **control, int id);
+	void fn_00476e72();
+	void fn_004776d7(const char *name, int n);
+	void fn_00469e0c(const char *name);
 	void fn_00477440();
 	void fn_00477689();
 
@@ -335,10 +351,11 @@ void tState_NetSetup::fn_004767f1()
 
 }	// namespace tState_Namespace_NetSetup
 
-// HYPOTHESIS: a free function; it does not use this. tState_GameConnections calls it.
-// The byte at +0x14 of the entity table is cleared; its member is not declared yet.
+// HYPOTHESIS: a member that does not use this (fn_00476e72 passes this in ecx).
+// tState_GameConnections calls it too. The byte at +0x14 of the entity table is cleared;
+// its member is not declared yet.
 // FUNCTION: STARFLEETOP 0x0047685b
-bool fn_0047685b()
+bool tState_Namespace_NetSetup::tState_NetSetup::fn_0047685b()
 {
 	int result = gNetControl.fn_00431c7f();
 	gObject_008e1060.mSetPlayerNumber(gNetControl.fn_00431c79());
@@ -513,5 +530,105 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476da0(c_00468677_source *
 			(*control)->vfunction54(rate, -1, 0, -1);
 		}
 		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00476e72
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476e72()
+{
+	if (g_00910b40 == 0.0)
+		g_00910b40 = g_00c7c148;
+
+	if (m1f0 == 0x10008 && !gNetControl.fn_004317c3())
+	{
+		if (!m12[0])
+		{
+			tString address;
+			fn_004768a5(m1e4, address);
+			tString number = m11c;
+			m12[0] = gNetControl.fn_004326aa(number, &address);
+		}
+
+		tString status = m5c;
+		tStringGroupTag *tag = new tStringGroupTag("ModemStatus");
+
+		int event;
+		while ((event = gNetControl.fn_00431e6e()) != 0)
+		{
+			switch (event)
+			{
+			case 1:
+				status = tag->mGetString(3);
+				m19[0] = 1;
+				break;
+			case 2:
+				status += tag->mGetString(1);
+				status += "\n";
+				break;
+			case 3:
+			{
+				tString address;
+				fn_004768a5(m1e4, address);
+				tFormatStr format;
+				format.mTag("phoneNum", address.mCharStr());
+				tString text = tag->mGetString(0);
+				tString result;
+				format.mGenFormattedStr(result, text);
+				result += "\n";
+				status = result;
+				break;
+			}
+			case 4:
+				if (!g_00910b38)
+				{
+					status += tag->mGetString(2);
+					g_00910b38 = 1;
+				}
+				else
+				{
+					double now = g_00c7c148;
+					if (now > g_00910b40 + 1000000.0)
+					{
+						status += ".";
+						g_00910b40 = g_00c7c148;
+					}
+				}
+				break;
+			case 5:
+				status = tag->mGetString(4);
+				m12[0] = 1;
+				fn_004d34e8(g_008493c4, g_008493b8, 0);
+				fn_004d34e8(g_008493c8, g_008493b8, 0);
+				fn_004d346f(g_008493cc, g_008493b8);
+				break;
+			}
+		}
+
+		if (tag)
+			delete tag;
+
+		m5c = status;
+
+		if (m19[0] && g_008493d4 >= 0)
+		{
+			g_00910b38 = 0;
+			g_00910b40 = 0.0;
+			if (!fn_0047685b())
+			{
+				if (g_008493d4-- > 0)
+					fn_004776d7("JoinStatus", 0);
+				else
+				{
+					fn_004776d7("JoinStatus", 3);
+					fn_004d34e8(g_008493c4, g_008493b8, 0);
+					fn_004d34e8(g_008493c8, g_008493b8, 0);
+					fn_004d346f(g_008493cc, g_008493b8);
+					gNetControl.fn_00433c46();
+					g_008493d4 = 10;
+				}
+			}
+			else
+				fn_00469e0c(g_008493a8);
+		}
 	}
 }
