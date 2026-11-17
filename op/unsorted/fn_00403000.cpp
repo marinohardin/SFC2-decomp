@@ -26,4 +26,7 @@ fn_004033ab_Ifstream::~fn_004033ab_Ifstream()
 // FUNCTION: STARFLEETOP 0x004034a5
 std::filebuf::~filebuf()
 {
+    if (_Closef)
+        close();
+    delete _Str;
 }
