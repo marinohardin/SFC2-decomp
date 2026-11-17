@@ -881,3 +881,10 @@ void tObject_005237dc::fn_00523afd(tObject_00528a11 *aSelector)
 			remaining = ((tObject_005236ea *)&m_150[((int *)aSelector)[2] * 6 + m_34b4[i]])->fn_005236ea(remaining);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00523c41
+void tObject_005237dc::fn_00523c41(int aMode)
+{
+	if (m_14c != 3)
+		m_14c = aMode;
+}
