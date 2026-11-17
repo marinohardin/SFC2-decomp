@@ -117,15 +117,15 @@ void tGameState::vfunction16(int *param_1)
 }
 
 tGameState *fn_0046a59a();
-bool fn_0046a62d(int param_1);
-bool fn_0046a62d(const char *param_1);
+// HYPOTHESIS: the argument is a state name; slot 17 passes its int argument through as one.
+bool fn_0046a62d(char *param_1);
 
 // FUNCTION: STARFLEETOP 0x00469e0c
 bool tGameState::vfunction17(int param_1)
 {
 	if (fn_0046a59a() != this)
 		return 0;
-	return fn_0046a62d(param_1);
+	return fn_0046a62d((char *)param_1);
 }
 
 // HYPOTHESIS: fn_0046995a is a method of an unidentified class; this passes a global object of it as this.
@@ -878,12 +878,12 @@ tGameState *fn_0046a5f6(char *param_1)
 	return s;
 }
 
-char fn_0046a63f(tGameState *state);
+bool fn_0046a63f(tGameState *state);
 
 // FUNCTION: STARFLEETOP 0x0046a62d
-void fn_0046a62d(char *param_1)
+bool fn_0046a62d(char *param_1)
 {
-	fn_0046a63f(fn_0046a5f6(param_1));
+	return fn_0046a63f(fn_0046a5f6(param_1));
 }
 
 // HYPOTHESIS: fn_0046a6ad tests whether the state can be entered; fn_0046ad85 performs the switch.
@@ -906,7 +906,7 @@ public:
 extern fn_0090db38_owner g_0090db38;
 
 // FUNCTION: STARFLEETOP 0x0046a63f
-char fn_0046a63f(tGameState *state)
+bool fn_0046a63f(tGameState *state)
 {
 	int local = g_0090db44;
 	if (fn_0046a6ad(state) != 0)
