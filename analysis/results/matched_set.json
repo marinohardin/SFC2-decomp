@@ -7273,6 +7273,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0058590a": {
+   "name": "FUN_0058590a",
+   "symbol": "?fn_0058590a@fn_0058590a_owner@@QAEHXZ",
+   "unit": "unsorted/fn_00585000.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
