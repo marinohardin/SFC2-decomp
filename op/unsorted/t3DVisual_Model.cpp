@@ -72,3 +72,10 @@ t3DVisual_Model::t3DVisual_Model()
 	m180 = 0;
 	m184 = 0;
 }
+
+// The destructor proper (0x0042f918, 349 bytes with an EH frame) is not written yet;
+// its body here is empty until it is.
+// FUNCTION: STARFLEETOP 0x0042f8fc
+t3DVisual_Model::~t3DVisual_Model()
+{
+}
