@@ -490,6 +490,8 @@ struct fn_tree_node_10
 
 struct fn_tree_iterator_10
 {
+	fn_tree_iterator_10() {}
+	fn_tree_iterator_10(fn_tree_node_10* p) : m_0x00(p) {}
 	void fn_0052e144();
 	fn_tree_node_10* m_0x00;
 };
@@ -499,6 +501,7 @@ class fn_00460b03_part
 public:
 	~fn_00460b03_part();
 	void fn_004d2bf8();
+	fn_tree_iterator_10 fn_00460cc7(fn_tree_iterator_10 first, fn_tree_iterator_10 last);
 	char m_0x00[4];
 	fn_tree_node_10* m_0x04; // head node
 	char m_0x08[0xc];
@@ -857,4 +860,10 @@ void fn_004d2a96()
 void fn_00460acb_base::fn_004d2be4()
 {
 	fn_00460c53(fn_tree_iterator_1c(m_0x04->m_0x00), fn_tree_iterator_1c(m_0x04));
+}
+
+// FUNCTION: STARFLEETOP 0x004d2bf8
+void fn_00460b03_part::fn_004d2bf8()
+{
+	fn_00460cc7(fn_tree_iterator_10(m_0x04->m_0x00), fn_tree_iterator_10(m_0x04));
 }
