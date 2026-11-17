@@ -39,6 +39,7 @@ public:
     void fn_0043e853();
     // HYPOTHESIS: param_2 is not read.
     float fn_0043e870(float param_1, int param_2);
+    char fn_0043e8da();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -615,4 +616,16 @@ float tSensorGroupSystem::fn_0043e870(float param_1, int param_2)
     if (!field_18c)
         param_1 += param_1;
     return value * 10 + param_1;
+}
+
+// HYPOTHESIS: a byte table laid out like g_0079c080; 0x0043e8da reads the first byte of an
+// entry.
+extern char g_0079bfc0[][12][4];
+
+// FUNCTION: STARFLEETOP 0x0043e8da
+char tSensorGroupSystem::fn_0043e8da()
+{
+    int column = field_80->fn_0043da08();
+    fn_0043e366_part* part = field_80;
+    return g_0079bfc0[part->vfunction11() - part->vfunction10()][column][0];
 }
