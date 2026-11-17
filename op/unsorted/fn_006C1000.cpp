@@ -572,3 +572,22 @@ fn_006c1ae0_Request *fn_006c1e40(char *key)
 	}
 	return 0;
 }
+
+// HYPOTHESIS: answers a status query with whether the named request has finished.
+// FUNCTION: STARFLEETOP 0x006c1ea0
+void fn_006c1ea0(char *buffer, struct sockaddr_in *from)
+{
+	char reply[64];
+	int id;
+	fn_006c1ae0_Request *request;
+	int len;
+
+	id = atoi(fn_006c1fd0(buffer, "skey"));
+	request = fn_006c1e40(fn_006c1fd0(buffer, "cd"));
+	if (request != 0 && request->m38 == 3)
+		len = sprintf(reply, "\\uon\\\\skey\\%d", id);
+	else
+		len = sprintf(reply, "\\uoff\\\\skey\\%d", id);
+	fn_006c20e0(reply, len);
+	sendto(g_0088800c, reply, len, 0, (struct sockaddr *)from, sizeof(*from));
+}
