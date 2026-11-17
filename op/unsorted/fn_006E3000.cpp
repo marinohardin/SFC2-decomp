@@ -806,3 +806,19 @@ fn_006e45b0_tree::_Pairib fn_006e45b0_tree::FUN_006e3bc0(const node::value& _V)
 	bool _Ins = key_compare(_Key(_P._Mynode()), _Kfn()(_V));
 	return (_Pairib(_Ins ? FUN_006e45b0(_X, _Y, _V) : _P, _Ins));
 }
+
+// HYPOTHESIS: a map holding the second tree at +0; its erase(iterator) hands
+// the iterator on to the tree's erase at 0x005d9441.
+class tObject_006e3c80
+{
+public:
+	fn_005d9441_tree::iterator FUN_006e3c80(fn_005d9441_tree::iterator _P);
+
+	fn_005d9441_tree _Tr;
+};
+
+// FUNCTION: STARFLEETOP 0x006e3c80
+fn_005d9441_tree::iterator tObject_006e3c80::FUN_006e3c80(fn_005d9441_tree::iterator _P)
+{
+	return (_Tr.FUN_005d9441(_P));
+}
