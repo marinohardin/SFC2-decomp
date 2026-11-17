@@ -563,6 +563,13 @@ void fn_004d2636_object::fn_004d290d()
 	m_0x28.fn_004d2c0c();
 }
 
+// HYPOTHESIS: 0x004d29c5 is std::basic_ostream<char>::operator<<(double), a library instantiation;
+// the real body needs the standard headers, so only a placeholder is written here.
+// FUNCTION: STARFLEETOP 0x004d29c5
+void fn_004d29c5()
+{
+}
+
 #include "unsorted/tVisObject.h"
 
 // HYPOTHESIS: RTTI names tVisStateObject (derived from tVisObject); its layout is not recovered yet.
