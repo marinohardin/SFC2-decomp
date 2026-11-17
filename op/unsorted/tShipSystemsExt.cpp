@@ -1,6 +1,220 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
 // Unit:      unsorted/tShipSystemsExt.cpp
-// Functions: 0x00448235 to 0x00448bf1, 73 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// Functions of tShipSystemsExt (0x00448235 to 0x00448bf1); original file unknown.
+#include "unsorted/tShipSystems.h"
+#include "unsorted/tValueBase.h"
+#include "unsorted/tIndividualShipSystemList.h"
+#include "unsorted/tShipSystemManager.h"
+#include "unsorted/tTacticalStoresManager.h"
+#include "unsorted/tNetControl.h"
+#include "Tiger/tcglue.h"
+#include <string.h>
+
+extern float g_00799ed0;
+extern float g_0079d528;
+extern float g_007977d0;
+extern float g_007959cc;
+extern float g_0079d524;
+extern double g_0090bef0;
+extern double g_00c7c148;
+
+// HYPOTHESIS: a 0x10-byte element type; the constructor builds four of them at +0x9c4 with
+// the constructor at 0x00401fe6 and the destructor at 0x005f762d. Neither is recovered.
+class c_00401fe6
+{
+public:
+    c_00401fe6();
+    ~c_00401fe6();
+
+    long m00[4];
+};
+
+// HYPOTHESIS: slot 1 of m918, a tValue<float>, takes a float (the exe pushes a float 0); the
+// shared header types that slot as an integer, so this view gives it a float.
+class fn_00448235_value
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2( float param_1 );
+};
+
+// RTTI: tShipSystemsExt : tShipSystems (vtable 0x0079d530, 177 slots).
+// HYPOTHESIS: the overrides are not declared yet; the layout is read from the members the
+// constructor (0x00448235) builds and sets.
+class tShipSystemsExt : public tShipSystems
+{
+public:
+    tShipSystemsExt( unsigned long param_1 );
+    virtual ~tShipSystemsExt();
+
+    tIndividualShipSystemList m04;
+    char m584[0x128];
+    int m6ac;
+    double m6b0;
+    double m6b8;
+    double m6c0;
+    tMinMaxFloat m6c8;
+    float m6ec;
+    float m6f0;
+    tMinMaxFloat m6f4;
+    tMinMaxFloat m718;
+    float m73c;
+    int m740;
+    tMinMaxFloat m744;
+    tMinMaxFloat m768;
+    tMinMaxFloat m78c;
+    tMinMaxFloat m7b0;
+    tMinMaxFloat m7d4;
+    tMinMaxFloat m7f8;
+    tMinMaxFloat m81c;
+    tMinMaxFloat m840;
+    tMinMaxFloat m864;
+    tMinMaxFloat m888;
+    tMinMaxFloat m8ac;
+    tMinMaxFloat m8d0;
+    tMinMaxFloat m8f4;
+    tValue<float> m918;
+    int m934;
+    double m938;
+    char m940;
+    char m941;
+    int m944;
+    int m948;
+    char m94c;
+    char m94d;
+    char m94e;
+    int m950;
+    int m954;
+    int m958;
+    int m95c;
+    int m960;
+    int m964;
+    tShipSystemManager m968;
+    tTacticalStoresManager m984;
+    int m9a0;
+    int m9a4[3];
+    int m9b0;
+    int m9b4;
+    float m9b8;
+    char m9bc[5];
+    char m9c1;
+    c_00401fe6 m9c4[4];
+    char ma04;
+    char ma05;
+    char ma06;
+    char ma07;
+    char ma08;
+    char ma09;
+};
+
+// FUNCTION: STARFLEETOP 0x00448235
+tShipSystemsExt::tShipSystemsExt( unsigned long param_1 )
+{
+    // HYPOTHESIS: the argument; it is stored at +0x6ac and handed to both managers.
+    m6ac = param_1;
+    m6c0 = 0.0;
+
+    tMinMaxFloat* value = &m7b0;
+    value->vfunction3( 0.0f );
+    value = &m744;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m768;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m78c;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m7b0;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m7d4;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m7f8;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m864;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_0079d528 );
+    value->vfunction3( 0.0f );
+    value = &m888;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m840;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m8ac;
+    value->vfunction5( 0.0f );
+    value->vfunction4( 1.0f );
+    value->vfunction3( 0.0f );
+    value = &m8d0;
+    value->vfunction5( 0.0f );
+    value->vfunction4( 1.0f );
+    value->vfunction3( 0.0f );
+    ((fn_00448235_value*)&m918)->vfunction2( 0.0f );
+    value = &m8f4;
+    value->vfunction5( 0.0f );
+    value->vfunction4( 1.0f );
+    value->vfunction3( 0.0f );
+
+    m6ec = 0.0f;
+    m6f0 = 0.0f;
+    value = &m718;
+    value->vfunction3( 0.0f );
+    value = &m6c8;
+    m73c = 0.0f;
+    value->vfunction5( 0.0f );
+    value->vfunction4( 1.0f );
+    value->vfunction3( 1.0f );
+    value = &m6f4;
+    value->vfunction5( 0.0f );
+    value->vfunction4( 1.0f );
+    value->vfunction3( 1.0f );
+    m740 = -1;
+
+    clib::memset( m584, 0, sizeof( m584 ) );
+    m938 = g_0090bef0;
+    m6b0 = g_00c7c148;
+
+    // HYPOTHESIS: the call fills the value through the pointer it is given; the header types
+    // the argument as an integer. The exe reuses the argument's slot for it and converts it
+    // as unsigned.
+    param_1 = 0;
+    gNetControl.fn_00431808( (int)&param_1 );
+    m6b8 = ( param_1 * g_007977d0 + g_007959cc ) * g_0079d524 + g_00c7c148;
+    m944 = 1;
+    m948 = 1;
+    m940 = 0;
+    m941 = 0;
+    m9a0 = 0;
+    memset( m9a4, 0, sizeof( m9a4 ) );
+    m9b8 = 0.0f;
+    m950 = -1;
+    m94c = 0;
+    m9b0 = 0;
+    m9b4 = 0;
+    m94d = 0;
+    m94e = 0;
+    m954 = 0;
+    m95c = 0;
+    m960 = 0;
+    m964 = 0;
+    m968.fn_005e4a72( m6ac );
+    m984.fn_005e4a72( m6ac );
+    memset( m9bc, 5, sizeof( m9bc ) );
+    m9c1 = 1;
+    ma04 = 0;
+    ma05 = 0;
+    ma06 = 0;
+    ma07 = 0;
+    ma08 = 0;
+    ma09 = 0;
+}
