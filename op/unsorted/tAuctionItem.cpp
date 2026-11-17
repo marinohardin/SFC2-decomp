@@ -24,6 +24,8 @@ public:
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
 
+	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
+
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
@@ -35,12 +37,12 @@ protected:
 	int32s fInt_6c;
 	int32s fInt_70;
 	double fDouble_78;
-	int32s fInt_80;
-	int32s fInt_84;
-	int32s fInt_88;
+	int32u fInt_80;
+	int32u fInt_84;
+	int32u fInt_88;
 	nDatabase::tID fID_8c;
-	int32s fInt_9c;
-	int32s fInt_a0;
+	int32u fInt_9c;
+	int32u fInt_a0;
 };
 
 // FUNCTION: STARFLEETOP 0x00544b5c
@@ -93,4 +95,14 @@ void tAuctionItem::StreamIn( nDataStore::tInput& input )
 
 	input >> fBool_48;
 	input >> fString_4c >> fID_5c >> fInt_6c >> fInt_70 >> fDouble_78 >> fInt_80 >> fInt_84 >> fInt_88 >> fID_8c >> fInt_9c >> fInt_a0;
+}
+
+// The two tID::GetObjectID calls reach 0x006fd600, a body the linker shares with another class's
+// one-line accessor; the analysis names that address after the other class.
+// FUNCTION: STARFLEETOP 0x00544f0f
+void tAuctionItem::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
+{
+	tDatabaseObject::SQLFillInsertStream( SQL );
+
+	*SQL << fBool_48 << ", '" << fn_006fc200( fString_4c ) << "', " << fID_5c.GetObjectID() << ", " << fInt_6c << ", " << fInt_70 << ", " << fDouble_78 << ", " << fInt_80 << ", " << fInt_84 << ", " << fInt_88 << ", " << fID_8c.GetObjectID() << ", " << fInt_9c << ", " << fInt_a0 << " )";
 }
