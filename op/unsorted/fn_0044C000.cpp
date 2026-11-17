@@ -1018,3 +1018,17 @@ void tShipSystemsExt::vfunction116( float param_1 )
 		m6ec = 0.0f;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0044ccab
+void tShipSystemsExt::vfunction117( float param_1 )
+{
+	m6ec = param_1;
+	if ( param_1 > m6f0 )
+	{
+		m6ec = m6f0;
+	}
+	if ( m6ec < 0.0f )
+	{
+		m6ec = 0.0f;
+	}
+}
