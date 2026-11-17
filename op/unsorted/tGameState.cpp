@@ -610,3 +610,25 @@ void fn_0046a428()
 	if (state != 0)
 		fn_0046a46a(state);
 }
+
+// HYPOTHESIS: the object returned by 0x004bcfd3 is unnamed; 0x004bd088 is a method on it.
+class tUnnamed_004bcfd3
+{
+public:
+	void fn_004bd088();
+};
+
+tUnnamed_004bcfd3 *fn_004bcfd3();
+
+// FUNCTION: STARFLEETOP 0x0046a46a
+void fn_0046a46a(tGameState *param_1)
+{
+	try
+	{
+		fn_004bcfd3()->fn_004bd088();
+		param_1->vfunction2();
+	}
+	catch (...)
+	{
+	}
+}
