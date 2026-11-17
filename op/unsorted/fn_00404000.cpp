@@ -626,10 +626,27 @@ class fn_00404cb2_Ctype : public std::locale::facet
 public:
     fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs);
     void fn_00404d6e(const std::_Locinfo&);
-    char pad08[8];
+    size_t m08;
+    size_t m0c;
     const short *m10;
     size_t m14;
 };
+
+// HYPOTHESIS: the atexit handler that frees the shared "C" table; defined elsewhere in the exe.
+extern void __cdecl fn_00404dc3();
+
+// FUNCTION: STARFLEETOP 0x00404d6e
+void fn_00404cb2_Ctype::fn_00404d6e(const std::_Locinfo& _Lobj)
+{
+    std::_Lockit _Lk;
+    *(_Ctypevec *)&m08 = _Lobj._Getctype();
+    if (g_00c80334 == 0)
+    {
+        g_00c80334 = m10;
+        atexit(fn_00404dc3);
+        m14 = 0;
+    }
+}
 
 // FUNCTION: STARFLEETOP 0x00404cb2
 fn_00404cb2_Ctype::fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs)
