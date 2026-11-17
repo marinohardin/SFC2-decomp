@@ -233,7 +233,8 @@ public:
     float field_e0;
     float field_e4;
     int field_e8;
-    char pad_ec[0xc];
+    int field_ec;
+    char pad_f0[8];
     int field_f8;
     char pad_fc[0x18];
     int field_114;

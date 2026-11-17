@@ -2,6 +2,10 @@
 #include "unsorted/tBaseWeapon.h"
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntity.h"
+#include "Source/entity/entity_physical.h"
+#include "Tiger/tcglue.h"
+extern tEntity *g_008e1090[];
+short fn_0069afc0(float x, float y);
 extern float g_00795620;
 extern double g_0079de48;
 extern float g_00855984[];
@@ -550,4 +554,32 @@ bool tBaseWeapon::vfunction131(short param_1)
         }
     }
     return false;
+}
+
+// FUNCTION: STARFLEETOP 0x004d8057
+// HYPOTHESIS: the table at 0x008e1090 holds the entity for an ID; param_1 is a
+// target entity, or 0 for the one named by field_ec.
+bool tBaseWeapon::vfunction132(int param_1)
+{
+    tPhysicalEntity *pShip = (tPhysicalEntity *)vfunction33();
+    if (pShip == NULL)
+        return false;
+    tPoint3 position = ((tEntity *)pShip)->fCurrPos;
+    short heading = pShip->field_0x90;
+    tEntity *pTarget = (tEntity *)param_1;
+    if (pTarget == NULL)
+    {
+        if (field_ec < 0 || field_ec >= 0x4000)
+            pTarget = NULL;
+        else
+            pTarget = g_008e1090[field_ec];
+    }
+    if (pTarget == NULL)
+        return false;
+    tPoint3 target = pTarget->fCurrPos;
+    tPoint3 direction;
+    direction = target - position;
+    direction.mNormalize();
+    field_c8 = (heading - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
+    return vfunction130();
 }
