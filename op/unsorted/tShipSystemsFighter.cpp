@@ -62,7 +62,7 @@ public:
     virtual tValue<float>* vfunction42();
     virtual void vfunction43();
     virtual bool vfunction44();
-    virtual void vfunction45();
+    virtual void vfunction45( bool param_1 );
     virtual void vfunction46();
     virtual void vfunction47();
     virtual void vfunction48();
