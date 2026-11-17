@@ -199,3 +199,19 @@ void c_00546278::fn_0054627c(unsigned char param_1)
 {
     field_58 = param_1;
 }
+
+// HYPOTHESIS: the object behind 0x00546286 keeps a byte flag at +0xc3; its class is not known.
+class c_00546286
+{
+public:
+    void fn_00546286();
+
+    char field_0[0xc3];
+    unsigned char field_c3;
+};
+
+// FUNCTION: STARFLEETOP 0x00546286
+void c_00546286::fn_00546286()
+{
+    field_c3 = 0;
+}
