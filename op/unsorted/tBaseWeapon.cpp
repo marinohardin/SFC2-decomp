@@ -979,3 +979,11 @@ void tBaseWeapon::vfunction147()
     if (field_e0 < field_e4)
         fn_004d871f(&field_e0, &field_e4);
 }
+
+// FUNCTION: STARFLEETOP 0x004d871f
+void tBaseWeapon::fn_004d871f(float *param_1, float *param_2)
+{
+    float tmp = *param_1;
+    *param_1 = *param_2;
+    *param_2 = tmp;
+}
