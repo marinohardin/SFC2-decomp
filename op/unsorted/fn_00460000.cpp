@@ -585,3 +585,40 @@ void fn_00460b03_class::fn_00460b03()
     operator delete(m_8);
     m_8 = 0;
 }
+
+// HYPOTHESIS: a third container of the same shape as fn_00460acb_class, with another erase
+// at 0x00460d3b.
+class fn_00460b3b_class
+{
+public:
+    fn_00460acb_iterator fn_00460d3b(fn_00460acb_iterator first, fn_00460acb_iterator last);
+    fn_00460acb_iterator begin();
+    fn_00460acb_iterator end();
+    void fn_00460b3b();
+
+    char pad_000[0x4];
+    fn_00460acb_node *_Head;
+    void *m_8;
+    char pad_00c[0x4];
+    unsigned int _Size;
+};
+
+inline fn_00460acb_iterator fn_00460b3b_class::begin()
+{
+    return (fn_00460acb_iterator(_Head->_Next));
+}
+
+inline fn_00460acb_iterator fn_00460b3b_class::end()
+{
+    return (fn_00460acb_iterator(_Head));
+}
+
+// FUNCTION: STARFLEETOP 0x00460b3b
+void fn_00460b3b_class::fn_00460b3b()
+{
+    fn_00460d3b(begin(), end());
+    operator delete(_Head);
+    _Head = 0, _Size = 0;
+    operator delete(m_8);
+    m_8 = 0;
+}
