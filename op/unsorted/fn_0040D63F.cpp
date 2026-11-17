@@ -15,6 +15,7 @@ public:
     // HYPOTHESIS: 0x0040d897 is the read counterpart of 0x0040d867.
     void fn_0040d897(void* data, int size, int count);
     fn_0040d63f_Buf* fn_0040d777(struct fn_0040d777_Point3& p);
+    fn_0040d63f_Buf* fn_0040d7ae(struct fn_0040d7ae_Point2& p);
     int m00;
     char* m04;
     char* m08;
@@ -110,5 +111,20 @@ fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d777(fn_0040d777_Point3& p)
     fn_0040d897(&p.x, 4, 1);
     fn_0040d897(&p.y, 4, 1);
     fn_0040d897(&p.z, 4, 1);
+    return this;
+}
+
+// HYPOTHESIS: stand-in for tPoint2 (two floats), read member by member.
+struct fn_0040d7ae_Point2
+{
+    float x;
+    float y;
+};
+
+// FUNCTION: STARFLEETOP 0x0040d7ae
+fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d7ae(fn_0040d7ae_Point2& p)
+{
+    fn_0040d897(&p.x, 4, 1);
+    fn_0040d897(&p.y, 4, 1);
     return this;
 }

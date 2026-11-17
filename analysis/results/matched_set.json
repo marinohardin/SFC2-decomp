@@ -1738,6 +1738,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040d7ae": {
+   "name": "tSFCStream::operator>>",
+   "symbol": "?fn_0040d7ae@fn_0040d63f_Buf@@QAEPAV1@AAUfn_0040d7ae_Point2@@@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
