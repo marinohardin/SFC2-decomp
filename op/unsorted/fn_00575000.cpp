@@ -10,6 +10,7 @@ class fn_00575066_object;
 class fn_00575130_object;
 class fn_00575173_object;
 class fn_005751b6_object;
+class fn_005751f9_object;
 
 // HYPOTHESIS: the 0x48-byte object built by fn_005750aa is unnamed
 class fn_005750aa_object
@@ -37,6 +38,7 @@ public:
 	void fn_00575066(fn_00575066_object** out);
 	void fn_00575173(fn_00575173_object** out);
 	void fn_005751b6(fn_005751b6_object** out);
+	void fn_005751f9(fn_005751f9_object** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
@@ -113,4 +115,18 @@ public:
 void fn_00575023_owner::fn_005751b6(fn_005751b6_object** out)
 {
 	*out = new fn_005751b6_object(m_d0);
+}
+
+// HYPOTHESIS: the 0x48-byte object built by fn_005751f9 is unnamed
+class fn_005751f9_object
+{
+public:
+	fn_005751f9_object(void* arg);
+	char m_pad[0x48];
+};
+
+// FUNCTION: STARFLEETOP 0x005751f9
+void fn_00575023_owner::fn_005751f9(fn_005751f9_object** out)
+{
+	*out = new fn_005751f9_object(m_d0);
 }
