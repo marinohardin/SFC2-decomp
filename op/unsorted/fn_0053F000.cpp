@@ -20,3 +20,20 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 {
 	return m_48;
 }
+
+// HYPOTHESIS: the owner of this getter is not known; the body returns the address of
+// a member at 0x58. The class, the member names and the member type are placeholders.
+class fn_0053f25c_owner
+{
+public:
+	char *fn_0053f25c();
+
+	char m_00[0x58];
+	char m_58[4];
+};
+
+// FUNCTION: STARFLEETOP 0x0053f25c
+char *fn_0053f25c_owner::fn_0053f25c()
+{
+	return m_58;
+}
