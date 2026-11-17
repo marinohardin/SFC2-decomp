@@ -500,3 +500,93 @@ unsigned int fn_006cca80(char *s, unsigned int size)
 		hash = hash * 0x9ccf9319 + tolower(*s);
 	return hash % size;
 }
+
+// HYPOTHESIS: a reporting record of 0xf0 bytes: the socket twice, two names, four values
+// passed in, state words, the bound port and a flag.
+struct fn_006ccb20_record
+{
+	SOCKET field_00;
+	SOCKET field_04;
+	char field_08[0x40];
+	char field_48[0x80];
+	unsigned long field_c8;
+	unsigned long field_cc;
+	unsigned long field_d0;
+	unsigned long field_d4;
+	int field_d8;
+	int field_dc;
+	int field_e0;
+	int field_e4;
+	char field_e8;
+	unsigned long field_ec;
+};
+
+void fn_006bf560();
+void fn_006ccf20(char *host, int port, sockaddr_in *address, int param_4);
+int fn_006ccf00(SOCKET s, char *host, int port);
+
+extern fn_006ccb20_record g_00888748;
+extern fn_006ccb20_record *g_00888838;
+
+// HYPOTHESIS: opens a UDP socket bound to the first free port of the hundred from the one
+// given (0 lets the system pick), then fills the record (a new one when the caller asks for
+// it, else the global one) and contacts the master server.
+// FUNCTION: STARFLEETOP 0x006ccb20
+int fn_006ccb20(fn_006ccb20_record **out, char *host, int port, char *param_4, char *param_5, unsigned long param_6, unsigned long param_7, unsigned long param_8, unsigned long param_9, unsigned long param_10)
+{
+	sockaddr_in address;
+	int length;
+	int result;
+	SOCKET s;
+	int last;
+
+	if (out != 0)
+		*out = 0;
+	fn_006bf560();
+	s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (s != INVALID_SOCKET)
+	{
+		last = port + 100;
+		for (; port < last; port++)
+		{
+			fn_006ccf20(host, port, &address, 0);
+			if (address.sin_addr.s_addr == htonl(0x7f000001))
+				address.sin_addr.s_addr = INADDR_ANY;
+			result = bind(s, (sockaddr *)&address, sizeof(address));
+			if (result == 0)
+				break;
+		}
+		if (result != 0)
+			return 2;
+		if (port == 0)
+		{
+			length = sizeof(address);
+			if (getsockname(s, (sockaddr *)&address, &length) != 0)
+				return 2;
+			port = ntohs(address.sin_port);
+		}
+		if (out == 0)
+			g_00888838 = &g_00888748;
+		else
+		{
+			g_00888838 = (fn_006ccb20_record *)malloc(sizeof(fn_006ccb20_record));
+			*out = g_00888838;
+		}
+		strcpy(g_00888838->field_08, param_4);
+		strcpy(g_00888838->field_48, param_5);
+		g_00888838->field_e4 = port;
+		g_00888838->field_d8 = 0;
+		g_00888838->field_04 = s;
+		g_00888838->field_00 = s;
+		g_00888838->field_e0 = 0;
+		g_00888838->field_dc = 1;
+		g_00888838->field_e8 = 1;
+		g_00888838->field_ec = param_10;
+		g_00888838->field_c8 = param_6;
+		g_00888838->field_cc = param_7;
+		g_00888838->field_d4 = param_9;
+		g_00888838->field_d0 = param_8;
+		return fn_006ccf00(s, "master.gamespy.com", 0x6cfc);
+	}
+	return 1;
+}
