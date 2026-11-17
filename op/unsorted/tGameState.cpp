@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
 // Unit:      unsorted/tGameState.cpp
-// Functions: 0x00469cd7 to 0x0046ad4d, 60 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tGameState.h"
+
+// HYPOTHESIS: names; the count of states made so far and the head of the list of all states.
+int g_0090db20;
+tGameState *g_0090db24;
+
+// FUNCTION: STARFLEETOP 0x00469cd7
+tGameState::tGameState()
+{
+	m_08 = g_0090db20++;
+	m_04 = g_0090db24;
+	g_0090db24 = this;
+}
