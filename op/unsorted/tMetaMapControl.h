@@ -7,6 +7,23 @@
 
 class tCompassRose;
 
+// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one
+// to 0x005e381f; the layout is unknown.
+struct fn_005e381f_entry
+{
+	unsigned char field_0[ 0x64 ];
+};
+
+// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c,
+// the value 0x005e37c4 takes at +0x50.
+struct fn_005e36cd_entry
+{
+	unsigned char field_0[ 0x4c ];
+	int field_4c;
+	int field_50;
+	unsigned char field_54[ 0x64 - 0x54 ];
+};
+
 // HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
 class fn_005eadc8_class
 {
@@ -32,7 +49,11 @@ public:
 	void fn_005e31be();
 	void fn_005e31dd( int param_1 );
 	void fn_005e326c( int param_1 );
+	void fn_005e32d7( int param_1 );
 	void fn_005e36a3();
+	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
+	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
+	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
 	void fn_005e3b86();
 
 	fn_005eadc8_class *field_17c;
