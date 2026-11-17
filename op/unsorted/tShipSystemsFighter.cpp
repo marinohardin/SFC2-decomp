@@ -1,10 +1,17 @@
 // Unit:      unsorted/tShipSystemsFighter.cpp
 // Functions of tShipSystemsFighter (0x00444004 to 0x00444723); original file unknown.
 #include "unsorted/tObject_0040ce21.h"
+#include "unsorted/tShipSystems.h"
+#include "unsorted/tValueBase.h"
+#include "unsorted/tIndividualShipSystemList.h"
+#include "Tiger/tcglue.h"
+
+extern float g_00799ed0;
+extern double g_0090bef0;
 
 // HYPOTHESIS: the slots before the destructor are not recovered; 0x00444004 calls the
 // deleting destructor through slot 169 (+0x2a4), so it is declared after 168 others.
-class tShipSystemsFighter
+class tShipSystemsFighter : public tShipSystems
 {
 public:
     virtual void vfunction0();
@@ -176,7 +183,39 @@ public:
     virtual void vfunction166();
     virtual void vfunction167();
     virtual void vfunction168();
+    tShipSystemsFighter( int param_1 );
     virtual ~tShipSystemsFighter();
+
+    // The layout is read from the members the constructor (0x00444046) builds.
+    int m04;
+    int m08;
+    int m0c;
+    int m10;
+    int m14;
+    tMinMaxFloat m18;
+    float m3c;
+    float m40;
+    tIndividualShipSystemList m44;
+    char m5c4[0x128];
+    int m6ec;
+    tMinMaxFloat m6f0;
+    tValue<float> m714;
+    tMinMaxFloat m730;
+    tMinMaxFloat m754;
+    tMinMaxFloat m778;
+    tMinMaxFloat m79c;
+    tMinMaxFloat m7c0;
+    tMinMaxFloat m7e4;
+    int m808;
+    int m80c;
+    int m810;
+    int m814;
+    double m818;
+    int m820;
+    char m824;
+    int m828;
+    short m82c;
+    double m830;
 };
 
 // HYPOTHESIS: the return type; the original only clears eax after deleting the object.
@@ -186,4 +225,65 @@ int tShipSystemsFighter::vfunction1()
     static tObject_0040ce21 marker("Eeeekkk! The Figher Goes Down!");
     delete this;
     return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00444046
+tShipSystemsFighter::tShipSystemsFighter( int param_1 )
+{
+    // HYPOTHESIS: the argument; it is stored at +0x6ec.
+    m6ec = param_1;
+    clib::memset( m5c4, 0, sizeof( m5c4 ) );
+    m820 = 0;
+    m824 = 0;
+    m80c = 8;
+    m810 = 8;
+
+    tMinMaxFloat* value = &m730;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m754;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m778;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m79c;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m7c0;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m7e4;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m18;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    value = &m6f0;
+    value->vfunction5( 0.0f );
+    value->vfunction4( g_00799ed0 );
+    value->vfunction3( 0.0f );
+    tValue<float>* single = &m714;
+    // HYPOTHESIS: the exe passes a float 0 here; the shared header types the slot's argument
+    // as an integer.
+    single->vfunction2( 0 );
+
+    m04 = 0;
+    m08 = 0;
+    m0c = 0;
+    m3c = 0.0f;
+    m10 = 0;
+    m14 = 0;
+    m40 = 0.0f;
+    m828 = -1;
+    m82c = 1;
+    m818 = 0.0;
+    m830 = g_0090bef0;
 }

@@ -9,9 +9,10 @@ class tIndividualShipSystemList
 public:
     // HYPOTHESIS: the constructor starts at 0x00437153; its body is recorded at 0x0043715d.
     tIndividualShipSystemList();
-    // HYPOTHESIS: slots 0..21 are not recovered; slot 22 adds a member (tShieldGroup slot 108);
+    // HYPOTHESIS: slots 1..21 are not recovered; slot 22 adds a member (tShieldGroup slot 108);
     // slot 2 returns the first member and slot 5 the one after its argument (null at the end).
-    virtual void vfunction0();
+    // Slot 0 is the scalar deleting destructor (0x00437424).
+    virtual ~tIndividualShipSystemList();
     virtual void vfunction1();
     virtual class tIndividualShipSystem* vfunction2();
     virtual void vfunction3();
