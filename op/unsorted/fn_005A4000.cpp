@@ -14,10 +14,12 @@ public:
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
-	char		pad2[0x238 - 0x214];
+	float		fValue214;
+	char		pad2[0x238 - 0x218];
 	int		fValue;
 
 	float		fn_005A41c4();
+	float		fn_005A41e6();
 };
 
 // FUNCTION: STARFLEETOP 0x005a4173
@@ -52,6 +54,15 @@ float fn_005A4173_Owner::fn_005A41c4()
 {
 	Enter();
 	float value = fValue210;
+	Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005a41e6
+float fn_005A4173_Owner::fn_005A41e6()
+{
+	Enter();
+	float value = fValue214;
 	Leave();
 	return value;
 }
