@@ -4,6 +4,7 @@
 #include <map>
 #include "Common/Thread/Optex.h"
 #include "unsorted/fn_0042b0fd_owner.h"
+#include <string>
 
 // HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
 // declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
@@ -95,8 +96,11 @@ public:
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
 	int fn_00543357(const nDatabase::tID &id);
+	std::string fn_005433a7() const;
 
-	char m_pad[0xd0];
+	char m_pad[0x48];
+	std::string m048;
+	char m_pad58[0x78];
 	fn_0042b0fd_owner m0d0;
 	char m0e0[0x10];
 	fn_0042c709_wrapper m0f0;
@@ -226,4 +230,12 @@ int fn_005430ad_owner::fn_00543357(const nDatabase::tID &id)
 			break;
 		}
 	return m0d0.size();
+}
+
+// HYPOTHESIS: +0x48 holds a std::string returned by copy (the allocator byte, the
+// string's reset 0x005da20a and its assign 0x00403b49).
+// FUNCTION: STARFLEETOP 0x005433a7
+std::string fn_005430ad_owner::fn_005433a7() const
+{
+	return m048;
 }
