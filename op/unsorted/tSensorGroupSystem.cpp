@@ -811,3 +811,39 @@ char tSensorGroupSystem::fn_0043e911(int aID)
     }
     return 0;
 }
+
+extern double g_00799f68;
+
+// FUNCTION: STARFLEETOP 0x0043eb5f
+char tSensorGroupSystem::fn_0043eb5f(int aID)
+{
+    int column = field_80->fn_0043da08();
+    fn_0043e366_part* part = field_80;
+    char value = g_0079bfc0[part->vfunction11() - part->vfunction10()][column][0];
+    tPhysicalEntity* found = gObject_008e1060.fn_004249c0((tPhysicalEntity*)gObject_008e1060.fn_lookup(aID));
+    bool hidden = false;
+    if (found != 0)
+    {
+        tObject_0042496f* target = (tObject_0042496f*)found;
+        fn_0043e911_state* state = (fn_0043e911_state*)target->field_0xad4->vfunction96();
+        tPhysicalEntity* self = gObject_008e1060.fn_004249d3(field_2c->vfunction108()->field_1c);
+        if (self != 0)
+        {
+            int id = found->fID;
+            if (self->vfunction35(id))
+                return 1;
+        }
+        if (state != 0)
+        {
+            bool flag;
+            int mode = state->vfunction102(&flag);
+            if (!flag && mode == 6)
+                hidden = true;
+        }
+    }
+    fn_0090be9c_type* source = g_0090be9c;
+    char result = value >= (unsigned int)((double)source->vfunction7() * g_00799f68 / (double)source->field_20);
+    if (hidden == true)
+        result = 0;
+    return result;
+}
