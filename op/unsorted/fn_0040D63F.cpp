@@ -16,6 +16,7 @@ public:
     void fn_0040d897(void* data, int size, int count);
     fn_0040d63f_Buf* fn_0040d7d6(tString* str);
     void fn_0040d815();
+    void fn_0040d841();
     fn_0040d63f_Buf* fn_0040d777(struct fn_0040d777_Point3& p);
     fn_0040d63f_Buf* fn_0040d7ae(struct fn_0040d7ae_Point2& p);
     int m00;
@@ -151,4 +152,12 @@ void fn_0040d63f_Buf::fn_0040d815()
     char b = 9;
     for (int i = 0; i < m18; i++)
         fn_0040d867(&b, 1, 0);
+}
+
+// FUNCTION: STARFLEETOP 0x0040d841
+void fn_0040d63f_Buf::fn_0040d841()
+{
+    char b;
+    for (int i = 0; i < m18; i++)
+        fn_0040d897(&b, 1, 0);
 }
