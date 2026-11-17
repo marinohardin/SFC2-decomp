@@ -140,6 +140,9 @@ public:
 	void fn_00468bbb();
 	// HYPOTHESIS: a member; it disables three controls.
 	void fn_00468beb();
+	// HYPOTHESIS: a member; it enables the controls fn_00468beb disables, the third only for
+	// the control id 0x1001c.
+	void fn_00468c13(int id);
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -561,6 +564,15 @@ void tState_GameConnections::fn_00468beb()
 	fn_004d34c5(0x10011, 0);
 	fn_004d34c5(0x10024, 0);
 	fn_004d34c5(0x10025, 0);
+}
+
+// FUNCTION: STARFLEETOP 0x00468c13
+void tState_GameConnections::fn_00468c13(int id)
+{
+	fn_004d34c5(0x10024, 1);
+	fn_004d34c5(0x10025, 1);
+	if (id == 0x1001c)
+		fn_004d34c5(0x10011, 1);
 }
 
 }
