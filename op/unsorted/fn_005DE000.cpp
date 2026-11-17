@@ -337,6 +337,8 @@ void fn_005de731( tMetaClientNewsCtlrC::tMenuItem** range[2], const tMemberCallb
 // instance's explicit specialization so that its annotation names the one instance; the body
 // is the template's.
 namespace std {
+template<>
+void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** );
 // FUNCTION: STARFLEETOP 0x005de905
 template<>
 void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
@@ -373,4 +375,16 @@ void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory*
 		for (_F += _SORT_MAX; _F != _L; ++_F)
 			_Unguarded_insert(_F, *_F, _P); }
 }
+// HYPOTHESIS: the _Sort instance _Sort_0 at 0x005de905 calls; its median and partition
+// helpers follow it at 0x005decc3 and 0x005ded2b.
+// FUNCTION: STARFLEETOP 0x005deaac
+template<>
+void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
+	{for (; _SORT_MAX < _L - _F; )
+		{tNewsStory** _M = _Unguarded_partition(_F, _L, _Median((tNewsStory*)(*_F),
+			(tNewsStory*)(*(_F + (_L - _F) / 2)), (tNewsStory*)(*(_L - 1)), _P), _P);
+		if (_L - _M <= _M - _F)
+			_Sort(_M, _L, _P, (tNewsStory**)0), _L = _M;
+		else
+			_Sort(_F, _M, _P, (tNewsStory**)0), _F = _M; }}
 }
