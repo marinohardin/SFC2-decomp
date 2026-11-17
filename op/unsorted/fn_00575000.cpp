@@ -1103,3 +1103,26 @@ void fn_00575d46_owner::fn_00575d46(fn_00575d46_object** out)
 {
 	*out = new fn_00575d46_object(m_d0);
 }
+
+// HYPOTHESIS: the object built by fn_00575d89 is unnamed; constructor at 0x005671e5, next to nAsyncDatabaseProcedure::tAddPreparedMission's destructor
+class fn_00575d89_object
+{
+public:
+	fn_00575d89_object(void* arg);
+	~fn_00575d89_object();
+	char m_pad[0x48];
+};
+
+class fn_00575d89_owner
+{
+public:
+	void fn_00575d89(fn_00575d89_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x00575d89
+void fn_00575d89_owner::fn_00575d89(fn_00575d89_object** out)
+{
+	*out = new fn_00575d89_object(m_d0);
+}
