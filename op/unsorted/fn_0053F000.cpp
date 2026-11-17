@@ -73,6 +73,7 @@ public:
 	virtual long vfunction12();
 
 	char fn_0054340c();
+	fn_0054340c_owner &operator=( const fn_0054340c_owner &other );
 
 	char m_04[0x15c];
 };
@@ -358,4 +359,21 @@ void fn_0053f522_owner::fn_0053f522( long a, long b )
 {
 	fn_0053fd7e( m_04, m_08 );
 	fn_0053faeb( m_04, a, b );
+}
+
+// HYPOTHESIS: same vector-like class; erases one element like a vector's erase: the
+// elements after it are assigned down one place (0x00541f81 as the element's
+// assignment), the last is destroyed and the end moves back.
+// FUNCTION: STARFLEETOP 0x0053f546
+fn_0054340c_owner *fn_0053f522_owner::fn_0053f546( fn_0054340c_owner *it )
+{
+	fn_0054340c_owner *last = m_08;
+	fn_0054340c_owner *dest = it;
+	for ( fn_0054340c_owner *src = it + 1; src != last; ++dest, ++src )
+		*dest = *src;
+	fn_0054340c_owner *end = m_08;
+	for ( fn_0054340c_owner *p = end - 1; p != end; ++p )
+		p->~fn_0054340c_owner();
+	--m_08;
+	return it;
 }
