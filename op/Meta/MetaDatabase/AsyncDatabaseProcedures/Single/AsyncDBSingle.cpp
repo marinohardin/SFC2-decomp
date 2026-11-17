@@ -66,10 +66,10 @@ public:
 	void fn_00570bb6( tPoliticalTensionMatrix* matrix );
 	void fn_00570d2c( tMetaMapHex* hex );
 	void fn_00570ea2( tMetaMapDesc* description );
+	void fn_00571018( tShip* ship );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
-namespace nAsyncDatabaseProcedure {
-class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
+namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
 	virtual void vfunction1();
@@ -105,7 +105,7 @@ public:
 	virtual void vfunction31( tPoliticalTensionMatrix* matrix );
 	virtual void vfunction32( tMetaMapHex* hex );
 	virtual void vfunction33( tMetaMapDesc* description );
-	virtual void vfunction34();
+	virtual void vfunction34( tShip* ship );
 	virtual void vfunction35( tCampaignInfo* info );
 	virtual void vfunction36();
 	virtual void vfunction37();
@@ -638,4 +638,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction33( tMetaMapDesc* d
 #line 885
 	validate( description );
 	fDatabase->fn_00570ea2( description );
+}
+#line 644
+// HYPOTHESIS: the record type is a guess from the assertion text "ship"; fn_00571018 stores it.
+// FUNCTION: STARFLEETOP 0x0056dec6
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction34( tShip* ship )
+{
+#line 895
+	validate( ship );
+	fDatabase->fn_00571018( ship );
 }
