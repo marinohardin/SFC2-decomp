@@ -124,3 +124,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436006	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:35:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00436022	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::~tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>	0.00	2	sonnet	2026-11-17T03:37:13Z	attempt 2 (sonnet) did not raise the best; best 0.00%
