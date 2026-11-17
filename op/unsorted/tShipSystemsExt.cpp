@@ -46,6 +46,7 @@ public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
     virtual tShipSystemManager* vfunction53();
+    virtual tTacticalStoresManager* vfunction54();
     virtual char* vfunction57();
     virtual char* vfunction58();
     virtual void vfunction107( float param_1 );
@@ -250,4 +251,11 @@ char* tShipSystemsExt::vfunction57()
 tShipSystemManager* tShipSystemsExt::vfunction53()
 {
     return &m968;
+}
+
+// The original returns the address +0x984, the member m984.
+// FUNCTION: STARFLEETOP 0x00448876
+tTacticalStoresManager* tShipSystemsExt::vfunction54()
+{
+    return &m984;
 }

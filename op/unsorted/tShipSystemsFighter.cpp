@@ -71,7 +71,7 @@ public:
     virtual float vfunction51( int param_1 );
     virtual void vfunction52();
     virtual tShipSystemManager* vfunction53();
-    virtual void vfunction54();
+    virtual tTacticalStoresManager* vfunction54();
     virtual void vfunction55();
     virtual void vfunction56();
     virtual char* vfunction57();
