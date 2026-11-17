@@ -83,6 +83,7 @@ public:
 	int vfunction20();
 	int vfunction21();
 	bool vfunction22(int param_1, int param_2);
+	int vfunction23(float time);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -326,4 +327,33 @@ bool t3DVisual_Model::vfunction22(int param_1, int param_2)
 	if (m160[0] != 0)
 		return m160[0]->vfunction7(param_1, param_2);
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fc91
+int t3DVisual_Model::vfunction23(float time)
+{
+	if (m11c <= 1)
+		return 0;
+	if (m120 != -1 && m120 < m11c)
+		return m120;
+	int result = m124;
+	if (time > m128)
+	{
+		for (int i = result + 1; i < m11c; i++)
+		{
+			if (time > m12c[i])
+				result = i;
+			m128 = time;
+		}
+	}
+	else if (time < m128)
+	{
+		for (int i = result - 1; i >= 0; i--)
+		{
+			if (time < m140[i])
+				result = i;
+			m128 = time;
+		}
+	}
+	return result;
 }
