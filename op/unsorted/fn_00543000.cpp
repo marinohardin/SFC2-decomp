@@ -208,6 +208,7 @@ public:
 	void fn_00543ac3(const nDatabase::tID &id);
 	bool fn_00543ae2(int value);
 	bool fn_00543af1(std::string text);
+	bool fn_00543b31(int value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -233,7 +234,7 @@ public:
 	fn_0042c709_wrapper m05c;
 	std::string m074;
 	std::string m084;
-	char m_pad94[0x4];
+	int m094;
 	// HYPOTHESIS: 0x00543a20 resets +0xac with tHexPoint's assignment, so +0x98..+0xc0 holds
 	// two tHexPoints.
 	tHexPoint m098;
@@ -791,5 +792,13 @@ bool fn_005430ad_owner::fn_00543ae2(int value)
 bool fn_005430ad_owner::fn_00543af1(std::string text)
 {
 	m074 = text;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the dword at +0x94; always reports success.
+// FUNCTION: STARFLEETOP 0x00543b31
+bool fn_005430ad_owner::fn_00543b31(int value)
+{
+	m094 = value;
 	return true;
 }
