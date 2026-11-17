@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <string>
+#include "unsorted/tMetaMapHex.h"
 
 // HYPOTHESIS: 0x0046de63 is a non-virtual member called on a held pointer (a release
 // or close); its class is not known yet.
@@ -522,4 +523,34 @@ int fn_005d9859(int param_1)
     if (fn_005d9845(param_1))
         return 0;
     return -1;
+}
+
+// HYPOTHESIS: param_1 is a tMetaMapHex (0x0053a2fc returns its map, 0x0053aa7a is that map's
+// find); a key of -1 falls back to the entry for key 0.
+// FUNCTION: STARFLEETOP 0x005d987d
+void fn_005d987d(tMetaMapHex *param_1, int param_2, float *param_3, int *param_4)
+{
+    if (param_3 || param_4)
+    {
+        std::map< int32, float >::iterator it;
+        int32 key = fn_005d9859(param_2);
+        it = param_1->fn_0053a2fc().find(key);
+        // MATCH-ONLY: the original loads the value with mov before the test, an integer copy;
+        // the map's value type may be a 32-bit integer rather than the float tMetaMapHex.h guesses.
+        int32 value = *(int32 *)&it->second;
+        if (key == -1)
+        {
+            if (param_3)
+                *param_3 = param_1->fn_0053a2fc().find(0)->second;
+            if (param_4)
+                *param_4 = 0;
+        }
+        else
+        {
+            if (param_3)
+                *(int32 *)param_3 = value;
+            if (param_4)
+                *param_4 = key;
+        }
+    }
 }
