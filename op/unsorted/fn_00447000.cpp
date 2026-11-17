@@ -1,3 +1,4 @@
+#include "Tiger/tcglue.h"
 #include "Tiger/tstring.h"
 #include "unsorted/tEntity.h"
 #include <string.h>
@@ -198,8 +199,16 @@ public:
 	void fn_00447926(int kind, int value);
 	int fn_004479b4(int kind);
 	int fn_00447a54(int kind);
+	void fn_00447aa7(tObject_0042496f *ship);
+	// HYPOTHESIS: 0x00445a8c and 0x004466ba take the same this and ship as 0x0044715d.
+	void fn_00445a8c(tObject_0042496f *ship);
+	void fn_004466ba(tObject_0042496f *ship);
 
-	char field_0x0[0xe8];
+	char field_0x0[0x4];
+	char field_0x4;
+	char field_0x5[0x83];
+	int field_0x88;
+	char field_0x8c[0x5c];
 	tObject_00447415_limits *field_0xe8;
 	tObject_0044715d_table *field_0xec;
 };
@@ -541,4 +550,18 @@ int c_0044715d::fn_00447a54(int kind)
 		return field_0xe8->field_0xf7;
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447aa7
+void c_0044715d::fn_00447aa7(tObject_0042496f *ship)
+{
+	if (ship != NULL)
+	{
+		field_0x4 = 1;
+		clib::strcpy(field_0x5, ship->field_0x87d);
+		field_0x88 = ship->field_0x86c;
+		fn_00445a8c(ship);
+		fn_004466ba(ship);
+		fn_0044715d(ship);
+	}
 }

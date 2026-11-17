@@ -609,7 +609,9 @@ public:
 	int field_0x870;
 	// HYPOTHESIS: 0x00515db1 does not stop the ship while it is 1.
 	int field_0x874;
-	char field_0x878[0x1c8];
+	char field_0x878[0x5];
+	// HYPOTHESIS: a name string; 0x00447aa7 copies it.
+	char field_0x87d[0x1c3];
 	// HYPOTHESIS: a state; tAICaptain's constructor tells its helm officer when it is 7.
 	int field_0xa40;
 	char field_0xa44[0x90];
