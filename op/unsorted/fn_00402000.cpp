@@ -623,6 +623,51 @@ void fn_00402b90_Obj::fn_00402b90()
     if (m4 < (unsigned long)-1)
         ++m4;
 }
+// HYPOTHESIS: std::istream::get(char *, streamsize, char) as the library header writes it; the
+// streambuf's sgetc, snextc and sbumpc are out-of-line instances at 0x00402cc1, 0x00402cdf and 0x00403ff1.
+// The analysis ends the function at the jump over its catch funclet.
+class fn_00402bb6_Streambuf
+{
+public:
+    int fn_00402cc1();
+    int fn_00402cdf();
+    int fn_00403ff1();
+};
+
+class fn_00402bb6_Istream : public virtual std::ios
+{
+public:
+    bool fn_00403eda(bool noskip);
+    fn_00402bb6_Istream& fn_00402bb6(char* _S, long _N, char _D);
+    long _Chcount;
+};
+
+// FUNCTION: STARFLEETOP 0x00402bb6
+fn_00402bb6_Istream& fn_00402bb6_Istream::fn_00402bb6(char* _S, long _N, char _D)
+{
+    _Chcount = 0;
+    iostate _St = goodbit;
+    const bool _Ok = fn_00403eda(true);
+    if (_Ok && 0 < _N)
+        {_TRY_IO_BEGIN
+        int _M = (unsigned char)_D;
+        for (int _C = ((fn_00402bb6_Streambuf*)rdbuf())->fn_00402cc1(); ; _C = ((fn_00402bb6_Streambuf*)rdbuf())->fn_00402cdf())
+            if (_C == -1)
+                {_St |= eofbit;
+                break;}
+            else if (_C == _M)
+                {++_Chcount;
+                ((fn_00402bb6_Streambuf*)rdbuf())->fn_00403ff1();
+                break;}
+            else if (--_N <= 0)
+                {_St |= failbit;
+                break;}
+            else
+                {++_Chcount;
+                *_S++ = (char)_C;}
+        _CATCH_IO_END}
+    return (*this);
+}
 
 
 
