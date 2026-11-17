@@ -170,8 +170,8 @@ public:
     virtual void vfunction112(float param_1);
     virtual float vfunction113(float param_1, int param_2, int param_3);
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
-    virtual void vfunction115();
-    virtual void vfunction116();
+    virtual void vfunction115(float param_1);
+    virtual void vfunction116(unsigned char param_1);
     virtual void vfunction117();
     virtual void vfunction118();
     virtual void vfunction119();
