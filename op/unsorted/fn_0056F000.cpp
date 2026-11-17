@@ -380,3 +380,11 @@ bool fn_0056f4aa_owner::fn_0056f4aa(fn_0056f4aa_target *object)
 	bool result = (object->*m8)() == m10;
 	return result;
 }
+
+class tAuctionItem;
+
+// HYPOTHESIS: the destructor of nDatabase::tQuery<tAuctionItem>, as 0x0056f041 is for tServCharacter.
+// FUNCTION: STARFLEETOP 0x0056f4c1
+nDatabase::tQuery<tAuctionItem>::~tQuery()
+{
+}
