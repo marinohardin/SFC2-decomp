@@ -115,6 +115,7 @@ public:
 	void fn_0054361f();
 	void fn_00543634();
 	void fn_00543649(bool flag);
+	void fn_00543671(bool flag);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -498,4 +499,14 @@ void fn_005430ad_owner::fn_00543649(bool flag)
 		m114_1 = 1;
 	else
 		m114_1 = 0;
+}
+
+// HYPOTHESIS: sets or clears bit 2 of the dword at +0x114 (read by fn_005433e8).
+// FUNCTION: STARFLEETOP 0x00543671
+void fn_005430ad_owner::fn_00543671(bool flag)
+{
+	if (flag)
+		m114_2 = 1;
+	else
+		m114_2 = 0;
 }
