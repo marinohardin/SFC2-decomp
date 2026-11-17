@@ -260,6 +260,7 @@ class fn_00469c0a_owner
 {
 public:
 	void fn_00469c0a(int *ev);
+	char fn_00469c84(unsigned int param_1);
 };
 
 class fn_0090db44_object
@@ -1206,4 +1207,13 @@ int fn_0046aa04()
 int fn_0046aa0a()
 {
 	return g_0090db8c;
+}
+
+// HYPOTHESIS: 0x00469c84 is a method of the class of g_fn_00469c0a_owner; its argument type is guessed.
+// FUNCTION: STARFLEETOP 0x0046aa10
+char fn_0046aa10(unsigned int param_1)
+{
+	if (g_0090db9c != 0)
+		return 0;
+	return g_fn_00469c0a_owner.fn_00469c84(param_1);
 }
