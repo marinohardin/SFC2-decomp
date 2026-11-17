@@ -40,3 +40,15 @@ void fn_006c1460(unsigned char *output, int value, unsigned int len)
 {
 	memset(output, value, len);
 }
+
+#include <stdio.h>
+
+// HYPOTHESIS: prints a 16-byte digest as hex text, two characters per byte.
+// FUNCTION: STARFLEETOP 0x006c1490
+void fn_006c1490(unsigned char *digest, char *output)
+{
+	unsigned int i;
+
+	for (i = 0; i < 16; i++, output += 2)
+		sprintf(output, "%02x", digest[i]);
+}
