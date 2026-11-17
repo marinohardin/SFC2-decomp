@@ -109,3 +109,14 @@ void tGameState::vfunction16(int *param_1)
 {
 	*param_1 = 0;
 }
+
+tGameState *fn_0046a59a();
+bool fn_0046a62d(int param_1);
+
+// FUNCTION: STARFLEETOP 0x00469e0c
+bool tGameState::vfunction17(int param_1)
+{
+	if (fn_0046a59a() != this)
+		return 0;
+	return fn_0046a62d(param_1);
+}
