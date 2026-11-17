@@ -434,3 +434,18 @@ void fn_0057ab18( fn_0057a69e_value* _P, const fn_0057a69e_value& _V )
 template<>
 tCallback<fn_0057a96e_info>::~tCallback()
 {}
+
+// HYPOTHESIS: 0x0057abc5 constructs a two-pointer range from two references, the shape of
+// std::pair's constructor held out of line; the range type is not identified.
+struct fn_0057abc5_range {
+    fn_0057abc5_range(const nDatabase::tID* const &first, const nDatabase::tID* const &second);
+
+    const nDatabase::tID* first;
+    const nDatabase::tID* second;
+};
+
+// FUNCTION: STARFLEETOP 0x0057abc5
+fn_0057abc5_range::fn_0057abc5_range(const nDatabase::tID* const &first, const nDatabase::tID* const &second)
+    : first(first), second(second)
+{
+}
