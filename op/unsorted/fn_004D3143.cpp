@@ -16,6 +16,7 @@ public:
 	fn_004d3ef7_object* fn_004d40b1( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6 );
 	fn_004d3ef7_object* fn_004d4728( long arg1, long arg2 );
 	long fn_004d4877( long arg1, long arg2 );
+	void fn_004d48e1( long arg1, long arg2, long arg3 );
 	void fn_004d4a9e( long arg1 );
 	void fn_004d3f45( long arg1, long arg2, long arg3 );
 	void fn_004d459c( long arg1 );
@@ -377,4 +378,10 @@ void fn_004d353e( long arg1, long arg2 )
 long fn_004d3551( long arg1, long arg2 )
 {
 	return g_0092e4a0.fn_004d4877( arg1, arg2 );
+}
+
+// FUNCTION: STARFLEETOP 0x004d3564
+void fn_004d3564( long arg1, long arg2, long arg3 )
+{
+	g_0092e4a0.fn_004d48e1( arg1, arg2, arg3 );
 }
