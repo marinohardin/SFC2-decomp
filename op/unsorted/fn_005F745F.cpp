@@ -34,6 +34,10 @@ public:
 	void FUN_005f77c6( const fn_005f74a6_entry& value );
 	fn_005f74a6_entry& FUN_005f77a7();
 	void FUN_005f7897();
+	~fn_005f77c6_object();
+	// HYPOTHESIS: frees the block map; the original calls 0x005d97c1, a body shared with the
+	// queue in unsorted/fn_005D913F.cpp, whose class is declared only in that unit.
+	void FUN_005d97c1();
 	void FUN_005f7afe( unsigned int count ); // HYPOTHESIS: grows the block map
 
 	byte field_00[0x04];
@@ -321,4 +325,13 @@ void fn_005f77c6_object::FUN_005f7897()
 			field_0c = 0;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f78e9
+fn_005f77c6_object::~fn_005f77c6_object()
+{
+	while ( field_10 != 0 ) {
+		FUN_005f7897();
+	}
+	FUN_005d97c1();
 }
