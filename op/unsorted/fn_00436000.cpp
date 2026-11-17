@@ -9,6 +9,8 @@ class tPath;
 class twPath;
 class tSession;
 class tFSSession;
+class tVolIterator;
+class tVolIterParent;
 
 namespace std
 {
@@ -63,6 +65,13 @@ tCountMap<tPath,twPath,std::less<tPath> >::~tCountMap()
 // FUNCTION: STARFLEETOP 0x004361e7
 template <>
 tCookieManager<tSession,tFSSession>::tCookieManager()
+{
+	f_00 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00436212
+template <>
+tCookieManager<tVolIterator,tVolIterParent>::tCookieManager()
 {
 	f_00 = 0;
 }
