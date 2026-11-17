@@ -1000,6 +1000,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00406a59": {
+   "name": "FUN_00406a59",
+   "symbol": "?fn_00406a59@@YAXXZ",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
