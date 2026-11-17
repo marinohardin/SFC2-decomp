@@ -52,9 +52,10 @@ public:
     int fn_0043f618(int x, int y);
     virtual void vfunction39(float param_1);
     virtual float vfunction70();
-    // HYPOTHESIS: overrides slot 72, which tIndividualShipSystem.h declares as vfunction73()
-    // with no arguments; the base declaration is shared with other ship systems.
+    // HYPOTHESIS: overrides slot 72.
+
     virtual float vfunction73(float param_1, float param_2);
+    virtual float vfunction74(float param_1, float param_2);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -1425,4 +1426,24 @@ float tSensorGroupSystem::vfunction73(float param_1, float param_2)
     if (param_1 <= 1.0)
         return 0.0f;
     return param_1 - 1.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x0043f578
+float tSensorGroupSystem::vfunction74(float param_1, float param_2)
+{
+    float max = vfunction70();
+    float used;
+    if (max < param_1)
+        used = max;
+    else
+        used = param_1;
+    float ratio = 1.0f;
+    if (max != 0.0f)
+    {
+        ratio = used / max;
+        if (ratio > g_007959cc)
+            ratio = 1.0f;
+    }
+    vfunction73(ratio, param_2);
+    return param_1 - used;
 }

@@ -313,10 +313,11 @@ public:
     // HYPOTHESIS: slot 70; stores its argument in the float at +0x40 (tCloakSystem writes it as a float).
     virtual void vfunction71(float param_1);
     virtual void vfunction72();
-    virtual void vfunction73();
+    // HYPOTHESIS: slot 72 takes two floats and returns a float (tSensorGroupSystem's 0x0043f2e3).
+    virtual float vfunction73(float param_1, float param_2);
     // HYPOTHESIS: slot 73 takes two floats; slot 74 passes its float and 0.0.
-    virtual void vfunction74(float param_1, float param_2);
-    virtual void vfunction75(float param_1);
+    virtual float vfunction74(float param_1, float param_2);
+    virtual float vfunction75(float param_1);
     virtual void vfunction76();
     virtual void vfunction77();
     virtual void vfunction78();

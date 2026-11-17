@@ -3403,6 +3403,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0043f578": {
+   "name": "tSensorGroupSystem::vfunction74",
+   "symbol": "?vfunction74@tSensorGroupSystem@@UAEMMM@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 113,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0043fa4e": {
    "name": "tShieldSystem::vfunction52",
    "symbol": "?vfunction52@tShieldSystem@@UAEXXZ",
