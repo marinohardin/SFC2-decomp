@@ -15,3 +15,8 @@ tMetaMapControl::tMetaMapControl()
 	field_1e4 = 0;
 	field_1e8 = false;
 }
+
+// FUNCTION: STARFLEETOP 0x005e3090
+tMetaMapControl::~tMetaMapControl()
+{
+}
