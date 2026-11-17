@@ -2737,6 +2737,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436725": {
+   "name": "tIndividualShipSystem::vfunction61",
+   "symbol": "?vfunction61@tIndividualShipSystem@@UAEXH@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

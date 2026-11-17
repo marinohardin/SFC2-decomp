@@ -281,7 +281,8 @@ public:
     virtual void vfunction58();
     virtual void vfunction59(int param_1);
     virtual void vfunction60();
-    virtual void vfunction61();
+    // HYPOTHESIS: slot 60; stores its argument in the dword at +0x1c.
+    virtual void vfunction61(int param_1);
     virtual void vfunction62(); // slot 61
     virtual void vfunction63(); // slot 62
 
