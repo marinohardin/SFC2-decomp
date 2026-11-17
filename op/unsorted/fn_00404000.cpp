@@ -180,3 +180,16 @@ fn_00404230_Obj* fn_00404230_Obj::fn_00404267()
     }
     return 0;
 }
+
+#include <string>
+
+// FUNCTION: STARFLEETOP 0x0040428e
+std::string& std::string::assign(const char* _S, size_type _N)
+{
+    if (_Grow(_N, true))
+    {
+        std::char_traits<char>::copy(_Ptr, _S, _N);
+        _Eos(_N);
+    }
+    return (*this);
+}

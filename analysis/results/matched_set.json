@@ -550,6 +550,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040428e": {
+   "name": "FUN_0040428e",
+   "symbol": "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 53,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
