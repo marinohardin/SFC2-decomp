@@ -146,7 +146,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 	long startingDate[4];
 	fDatabase->fn_0056ef05( query, &turns, true );
 	int resultSize = turns.size();
-#line 139
+#line 139	// A #line before a validate( ... ) gives its assert the line number the original carries; a #line after it restores this file's own numbering.
 	validate( resultSize <= 1 );
 	if( resultSize > 0 )
 	{
