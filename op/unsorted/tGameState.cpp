@@ -853,3 +853,11 @@ tGameState *fn_0046a5f6(char *param_1)
 	}
 	return s;
 }
+
+void fn_0046a63f(tGameState *state);
+
+// FUNCTION: STARFLEETOP 0x0046a62d
+void fn_0046a62d(char *param_1)
+{
+	fn_0046a63f(fn_0046a5f6(param_1));
+}
