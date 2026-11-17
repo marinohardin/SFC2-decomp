@@ -313,6 +313,8 @@ public:
     virtual void vfunction82();
     // HYPOTHESIS: slot 82; returns the byte at +0x44.
     virtual bool vfunction83();
+    // HYPOTHESIS: slot 83; stores its argument in the byte at +0x44 read by slot 82.
+    virtual void vfunction84(bool param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;

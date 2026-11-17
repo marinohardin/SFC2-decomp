@@ -204,3 +204,9 @@ bool tIndividualShipSystem::vfunction83()
 {
     return field_44;
 }
+
+// FUNCTION: STARFLEETOP 0x00436784
+void tIndividualShipSystem::vfunction84(bool param_1)
+{
+    field_44 = param_1;
+}
