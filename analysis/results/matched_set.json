@@ -9100,6 +9100,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fba36": {
+   "name": "FUN_005fba36",
+   "symbol": "?FUN_005fba36@@YAXABU?$pair@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBV12@@std@@ABV?$tMemberCallback@VtMetaClientChatCtlrC@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 63,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
