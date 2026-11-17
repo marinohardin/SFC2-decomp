@@ -132,6 +132,7 @@ namespace std
 	{
 	public:
 		basic_string();
+		~basic_string() { _Tidy(true); }
 		basic_string& assign(const char* s, unsigned int n);
 	private:
 		void _Tidy(bool built);
@@ -149,4 +150,20 @@ std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_st
 	m_al = allocator; // HYPOTHESIS: copy of an empty allocator base, uninitialised byte
 	_Tidy(false);
 	assign("", strlen(""));
+}
+
+// HYPOTHESIS: a class with a user destructor body (0x004d22e0) and a string member whose
+// destructor (_Tidy(true), 0x005da20a) is inlined.
+class fn_004d2265_holder
+{
+public:
+	~fn_004d2265_holder();
+	void fn_004d22e0();
+	fn_004d2238_string m_str;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2265
+fn_004d2265_holder::~fn_004d2265_holder()
+{
+	fn_004d22e0();
 }
