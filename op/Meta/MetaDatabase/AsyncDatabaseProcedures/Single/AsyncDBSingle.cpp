@@ -117,7 +117,7 @@ public:
 	virtual void vfunction43( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction44( tShip ship );
 	virtual void vfunction45( nDatabase::tDatabaseObject* matrix );
-	virtual void vfunction46();
+	virtual void vfunction46( nDatabase::tDatabaseObject* description );
 	virtual void vfunction47();
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
 	virtual void vfunction49( nDatabase::tDatabaseObject* object );
@@ -764,4 +764,16 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction45( nDatabase::tDat
 	nDatabase::tDatabaseObjectUpdate update( *matrix );
 	fDatabase->UpdateObject( update );
 	fDatabase->fn_005715f0( update.GetUpdateID(), matrix );
+}
+#line 769
+// HYPOTHESIS: the assertion text names the record "description", so it is taken to be a
+// tMetaMapDesc (declared only inside unsorted/tMetaMapDesc.cpp, so held here as its base);
+// it is written back as an update.
+// FUNCTION: STARFLEETOP 0x0056e286
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction46( nDatabase::tDatabaseObject* description )
+{
+#line 1009
+	validate( description );
+	nDatabase::tDatabaseObjectUpdate update( *description );
+	fDatabase->UpdateObject( update );
 }
