@@ -106,3 +106,24 @@ int fn_0040619c(_II& _F, _II& _L, size_t _N, const _E* _S)
     return (_Ans);
 }
 template int fn_0040619c<char, std::istreambuf_iterator<char> >(std::istreambuf_iterator<char>&, std::istreambuf_iterator<char>&, size_t, const char*);
+
+// FUNCTION: STARFLEETOP 0x00406355
+const std::locale::facet* fn_0040678d(const std::locale::facet* pf);
+
+// HYPOTHESIS: the library's use_facet instantiation for collate<char>.
+const std::collate<char>& fn_00406355(const std::locale& _L, const std::collate<char>*, bool _Cfacet)
+{
+    static const std::locale::facet* _Psave = 0;
+    std::_Lockit _Lk;
+    size_t _Id = std::collate<char>::id;
+    const std::locale::facet* _Pf = _L._Getfacet(_Id, true);
+    if (_Pf != 0)
+        ;
+    else if (!_Cfacet || !_L._Iscloc())
+        throw std::bad_cast("missing locale facet");
+    else if (_Psave != 0)
+        _Pf = _Psave;
+    else
+        _Pf = _Psave = fn_0040678d(new std::collate<char>);
+    return *(const std::collate<char>*)_Pf;
+}
