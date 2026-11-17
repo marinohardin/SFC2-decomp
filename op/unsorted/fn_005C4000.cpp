@@ -250,7 +250,9 @@ public:
 	char	pad[0x320 - 4 - sizeof(tOptex)];
 	int		m320;
 	int		m324;
+	int		m328;
 	int FUN_005c4402();
+	int FUN_005c4422();
 };
 
 // FUNCTION: STARFLEETOP 0x005c43e2
@@ -267,6 +269,15 @@ int fn_005c43e2_Holder::FUN_005c4402()
 {
 	m04.Enter();
 	int value = m324;
+	m04.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c4422
+int fn_005c43e2_Holder::FUN_005c4422()
+{
+	m04.Enter();
+	int value = m328;
 	m04.Leave();
 	return value;
 }
