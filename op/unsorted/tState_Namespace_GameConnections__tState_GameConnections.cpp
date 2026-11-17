@@ -846,4 +846,14 @@ void tState_GameConnections::fn_00469534()
 	delete fn_004d35bf(g_00844e70, 0);
 }
 
+// FUNCTION: STARFLEETOP 0x004695c4
+void tState_GameConnections::fn_004695c4(const char *name, int n)
+{
+	tStringGroupTag *tag = new tStringGroupTag((char *)name);
+	m5c = tag->mGetString(n);
+	// HYPOTHESIS: the explicit test stands for a destructor on tStringGroupTag, as in vfunction2.
+	if (tag)
+		delete tag;
+}
+
 }
