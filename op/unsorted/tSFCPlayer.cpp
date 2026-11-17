@@ -210,6 +210,7 @@ class tSFCPlayer
 		int vfunction104();
 		int vfunction106();
 		void vfunction108();
+		void vfunction109();
 
 	private:
 		bool m_04;
@@ -605,4 +606,46 @@ void tSFCPlayer::vfunction108()
 	m_112c = m_8520;
 	m_1130 = m_8524;
 	m_1134 = m_8528;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0208
+void tSFCPlayer::vfunction109()
+{
+	m_84b8 = m_808;
+	m_30 = m_fa4;
+	for (int ishiploop = 0; ishiploop < 6; ishiploop++) {
+		m_40[ishiploop] = m_80c[ishiploop];
+		m_58[ishiploop] = m_824[ishiploop];
+		m_130[ishiploop] = m_8fc[ishiploop];
+		m_220[ishiploop] = m_9ec[ishiploop];
+		m_238[ishiploop] = m_a04[ishiploop];
+		strcpy(m_70[ishiploop], m_83c[ishiploop]);
+	}
+	for (int ievent = 0; ievent < 4; ievent++) {
+		for (int iclass = 0; iclass < 0x14; iclass++)
+			m_8368[ievent][iclass] = m_fa8[ievent][iclass];
+	}
+	for (int imedal = 0; imedal < 4; imedal++) {
+		for (int istatus = 0; istatus < 6; istatus++)
+			m_8544[imedal][istatus] = m_1138[imedal][istatus];
+	}
+	for (int ihull = 0; ihull < 0x12; ihull++) {
+		for (int iclass = 0; iclass < 0x18; iclass++) {
+			tListIterator_004cf9b3 erased;
+			m_61a8[ihull][iclass].fn_004d1c60(&erased, m_61a8[ihull][iclass].begin(), m_61a8[ihull][iclass].end());
+			int count = m_1198[ihull][iclass].size();
+			tListIterator_004cf9b3 it = m_1198[ihull][iclass].begin();
+			while (count-- != 0) {
+				tListIterator_004cf9b3 inserted;
+				m_61a8[ihull][iclass].fn_004d1bcf(&inserted, m_61a8[ihull][iclass].begin(), &it.fpNode->fpValue);
+				it.fn_00450ce5();
+			}
+		}
+	}
+	for (int iscript = 0; iscript < 0x10; iscript++)
+		m_84cc[iscript] = m_10e8[iscript];
+	m_851c = m_1128;
+	m_8520 = m_112c;
+	m_8524 = m_1130;
+	m_8528 = m_1134;
 }
