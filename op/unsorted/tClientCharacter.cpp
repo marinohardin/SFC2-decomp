@@ -131,60 +131,60 @@ inline tObject_0042ade3::tObject_0042ade3(const std::less<int> &pred, const std:
 // The SDK's tSingleAccessWrapper: exclusive access to a pointer. The members at +0xb4 and
 // +0xcc are two instances; the constructor (0x0048589c) and IsValid (0x0058f829) are shared
 // by both, Delete is 0x0042cc05 for the first and 0x005ff84a for the second.
-// The SDK's tAccessPointer: locked access to the pointer of a tSingleAccessWrapper.
-template <typename tnPtrType, typename tnPtrGuard>
-class tAccessPointer {
-public:
-	tAccessPointer(tAccessPointer<tnPtrType, tnPtrGuard> &copy);
-	~tAccessPointer();
-	void Done();
-	tnPtrType &operator*();
+#include "Common/Thread/SingleAccessWrapper.h"
 
-protected:
-	mutable tOptex fAccess;
-	tnPtrType *fPointer;
-	const tnPtrGuard *fPointerGuard;
-};
 
-template <typename tnPtrType, typename tnPtrGuard>
-inline tAccessPointer<tnPtrType, tnPtrGuard>::~tAccessPointer()
-{
-	Done();
-}
 
-template <typename tPtrType>
-class tSingleAccessWrapper {
-public:
-	typedef tAccessPointer<tPtrType, tSingleAccessWrapper> iPtr;
-	typedef tAccessPointer<const tPtrType, tSingleAccessWrapper> iConstPtr;
 
-	tSingleAccessWrapper();
-	tSingleAccessWrapper(tPtrType *pointer);
-	~tSingleAccessWrapper();
-	void SetPointer(tPtrType *copy);
-	void Delete();
-	iPtr Lock();
-	iConstPtr Lock() const;
-	bool IsValid() const;
 
-protected:
-	tPtrType *fpPointer;
-	mutable tOptex fPointerOptex;
-};
 
-template <typename tPtrType>
-inline tSingleAccessWrapper<tPtrType>::~tSingleAccessWrapper()
-{
-	Delete();
-}
 
-template <typename tPtrType>
-inline void tSingleAccessWrapper<tPtrType>::SetPointer(tPtrType *copy)
-{
-	Delete();
 
-	fpPointer = copy;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the 0xd0-byte object the member at +0xcc points to; its constructor at
 // 0x005391b0 takes one argument, passed as 0. Its members are not recovered.

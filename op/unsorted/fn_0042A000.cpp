@@ -156,6 +156,31 @@ bool fn_0042a45f_object::FUN_0042a45f()
 #include <windows.h>
 #include "Common/Thread/Optex.h"
 #include "unsorted/tHexPoint.h"
+#include "Common/Thread/SingleAccessWrapper.h"
+
+// HYPOTHESIS: the 0x434-byte element of the vector 0x0042a7bf copies ship caches from; the
+// tShipCache constructor 0x0054185f takes it by reference. Its class is not known yet.
+class fn_0054185f_ship
+{
+public:
+	byte field_00[0x434];
+};
+
+// HYPOTHESIS: the class whose RTTI is tServCharacter::tShipCache; only the constructor from a
+// ship (0x0054185f) and the destructor (0x0042a863) are known, and the size (0x4c) from the
+// stack frame of 0x0042a7bf.
+class tServCharacter
+{
+public:
+	class tShipCache
+	{
+	public:
+		tShipCache( const fn_0054185f_ship& ship );
+		virtual ~tShipCache();
+
+		byte field_04[0x4c - 0x04];
+	};
+};
 
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
 // out-of-line copy (0x00429a18); the header cannot define it while that unit does.
@@ -195,6 +220,7 @@ public:
 	void FUN_0042a68f( tHexPoint value );
 	void FUN_0042a6ea( const tHexPoint& value );
 	void FUN_0042a6fc( bool value );
+	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -214,7 +240,10 @@ public:
 	byte field_98[0x9c - 0x98];
 	// HYPOTHESIS: the byte flag that 0x0042a41a reads at +0x9c.
 	bool field_9c;
-	byte field_9d[0xe4 - 0x9d];
+	byte field_9d[0xb4 - 0x9d];
+	// HYPOTHESIS: the wrapped ship cache vector; its Lock is 0x0042c709.
+	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > > field_b4;
+	byte field_cc[0xe4 - 0xcc];
 	tOptex field_e4;
 };
 
@@ -339,4 +368,16 @@ void fn_0042a403_object::FUN_0042a73d()
 void fn_0042a403_object::FUN_0042a7b2( unsigned long flags )
 {
 	field_98 = flags;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a7bf
+void fn_0042a480_object::FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships )
+{
+	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr caches = field_b4.Lock();
+
+	(*caches).clear();
+	for( std::vector< fn_0054185f_ship >::const_iterator it = ships.begin(); it != ships.end(); ++it )
+		(*caches).push_back( tServCharacter::tShipCache( *it ) );
+
+	caches.Done();
 }
