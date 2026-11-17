@@ -5,6 +5,7 @@
 #include "unsorted/tEntity.h"
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tMissionMap.h"
+#include "unsorted/MapObject.h"
 
 // HYPOTHESIS: the base is tRepairableShipSystem: the destructor stores vtable 0x00799598 (the
 // one after tMinMaxFloat's) before calling tIndividualShipSystem's. Six 0x24-byte value
@@ -1468,4 +1469,27 @@ void tSensorGroupSystem::vfunction49(int param_1)
 void tSensorGroupSystem::vfunction50(int param_1)
 {
     tIndividualShipSystem::vfunction50(param_1);
+}
+
+// FUNCTION: STARFLEETOP 0x0043f618
+int tSensorGroupSystem::fn_0043f618(int x, int y)
+{
+    int result = 0;
+    const tMapObjectType& data = g_0090b734->mGetMapData(x, y);
+    if (data.fObjectType == kObjectAsteroid)
+    {
+        switch (data.fSubType)
+        {
+        case 0:
+            result = 5;
+            break;
+        case 1:
+            result = 8;
+            break;
+        case 2:
+            result = 10;
+            break;
+        }
+    }
+    return result;
 }
