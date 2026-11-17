@@ -607,14 +607,14 @@ std::locale fn_00402b73_Src::fn_00402b73() const
     return (m20);
 }
 
-// HYPOTHESIS: the reference-count increment of a facet-like object (m4 is its count)
-class fn_00402b90_Obj
-{
-public:
-    void fn_00402b90();
-    unsigned long m0;
-    unsigned long m4;
-};
+// HYPOTHESIS: the reference-count increment of a facet-like object (m4 is its count).
+#include "unsorted/fn_00402b90_Obj.h"
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00402b90
 void fn_00402b90_Obj::fn_00402b90()

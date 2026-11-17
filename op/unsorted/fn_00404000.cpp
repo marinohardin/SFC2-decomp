@@ -95,15 +95,15 @@ public:
     std::locale::_Locimp* m0;
 };
 
-// HYPOTHESIS: the reference-count increment at 0x00402b90 (defined in fn_00402000.cpp as
-// fn_00402b90_Obj::fn_00402b90), seen here as a no-throw call.
-class fn_00402b90_Obj
-{
-public:
-    void fn_00402b90() throw();
-    unsigned long m0;
-    unsigned long m4;
-};
+// HYPOTHESIS: the reference-count increment at 0x00402b90, seen here as a no-throw call.
+#define fn_00402b90_THROW throw()
+#include "unsorted/fn_00402b90_Obj.h"
+
+
+
+
+
+
 
 extern fn_00402b90_Obj* g_00c8032c;
 std::locale::_Locimp* fn_0074c431() throw();
