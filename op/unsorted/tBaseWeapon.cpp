@@ -3,6 +3,7 @@
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntity.h"
 extern float g_00795620;
+extern double g_0079de48;
 // HYPOTHESIS: this is tCloakSystem, declared in full only inside unsorted/tCloakSystem.cpp;
 // this is the one member used here.
 class fn_00438607_class
@@ -234,6 +235,21 @@ void tBaseWeapon::vfunction122(fn_004d77ec_type* param_1, int param_2, int param
             } while (i < param_1->fn_005da49d());
         }
     }
+}
+
+// FUNCTION: STARFLEETOP 0x004d786e
+float tBaseWeapon::fn_004d786e()
+{
+    short a = field_c8;
+    short b = field_134;
+    if (a > 0x1000)
+        a -= 0x2000;
+    if (b > 0x1000)
+        b -= 0x2000;
+    a = a - b;
+    if (a < 0)
+        a = -a;
+    return a * g_0079de48;
 }
 
 // FUNCTION: STARFLEETOP 0x004d77ab

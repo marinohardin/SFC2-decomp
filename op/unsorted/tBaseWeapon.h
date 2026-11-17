@@ -223,7 +223,9 @@ public:
     float field_3c;
     char pad_40[6];
     char field_46;
-    char pad_47[0x85];
+    char pad_47[0x81];
+    short field_c8;
+    char pad_ca[2];
     int field_cc;
     char pad_d0[0xc];
     float field_dc;
@@ -232,7 +234,9 @@ public:
     int field_e8;
     char pad_ec[0xc];
     int field_f8;
-    char pad_fc[0x4c];
+    char pad_fc[0x38];
+    short field_134;
+    char pad_136[0x12];
     // HYPOTHESIS: a part at offset 0x148 whose method 0x004d7099 takes a float.
     fn_004d7099_type field_148;
     // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
