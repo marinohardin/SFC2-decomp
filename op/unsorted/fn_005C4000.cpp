@@ -775,6 +775,7 @@ public:
 	fn_005c478f_Holder* FUN_005c4ca6();
 	fn_005c478f_Holder* FUN_005c4cc6();
 	fn_005c478f_Holder* FUN_005c4ce6();
+	float FUN_005c4d06();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1349,5 +1350,15 @@ fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c4ce6()
 	// MATCH-ONLY: same two-return shape as FUN_005c4c86.
 	if (value)
 		return value;
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c4d06
+float fn_005c478f_Holder::FUN_005c4d06()
+{
+	m04.Enter();
+	// HYPOTHESIS: reads the float at offset 0x2a4 under the lock.
+	float value = *(float*)((char*)this + 0x2a4);
+	m04.Leave();
 	return value;
 }
