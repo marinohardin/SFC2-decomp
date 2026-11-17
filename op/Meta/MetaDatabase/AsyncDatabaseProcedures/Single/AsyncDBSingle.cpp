@@ -67,8 +67,8 @@ public:
 	void fn_00570d2c( tMetaMapHex* hex );
 	void fn_00570ea2( tMetaMapDesc* description );
 	void fn_00571018( tShip* ship );
-};
-tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
+	void fn_0057118e( tNotify* notify );
+}; tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
@@ -107,7 +107,7 @@ public:
 	virtual void vfunction33( tMetaMapDesc* description );
 	virtual void vfunction34( tShip* ship );
 	virtual void vfunction35( tCampaignInfo* info );
-	virtual void vfunction36();
+	virtual void vfunction36( tNotify* notify );
 	virtual void vfunction37();
 	virtual void vfunction38();
 	virtual void vfunction39();
@@ -647,4 +647,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction34( tShip* ship )
 #line 895
 	validate( ship );
 	fDatabase->fn_00571018( ship );
+}
+#line 653
+// HYPOTHESIS: the record type is a guess from the assertion text "notify"; fn_0057118e stores it.
+// FUNCTION: STARFLEETOP 0x0056df0e
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction36( tNotify* notify )
+{
+#line 905
+	validate( notify );
+	fDatabase->fn_0057118e( notify );
 }
