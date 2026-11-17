@@ -671,3 +671,8 @@ fn_005f7a4b_value& fn_005f7efa_iterator::FUN_005f7efa()
 	}
 	return fOwner->field_04[block][index];
 }
+
+// FUNCTION: STARFLEETOP 0x005f7f79
+void FUN_005f7f79()
+{
+}
