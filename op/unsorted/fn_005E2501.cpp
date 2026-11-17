@@ -133,3 +133,6 @@ std::string g_00c38fb8 = "MetaMediumPlayerIcon";
 // FUNCTION: STARFLEETOP 0x005e2b28
 // FUNCTION: STARFLEETOP 0x005e2af5
 std::string g_00c38fa8 = "space1";
+
+// FUNCTION: STARFLEETOP 0x005e2b4b
+std::string g_00c38f98 = "nebula1";
