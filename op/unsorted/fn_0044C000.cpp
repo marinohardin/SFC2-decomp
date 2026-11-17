@@ -1038,3 +1038,22 @@ float tShipSystemsExt::vfunction118()
 {
 	return m6ec;
 }
+
+// HYPOTHESIS: +0x648 holds 24 system pointers; m6f0 becomes the sum over the active ones of
+// slot 10 times slot 67.
+// FUNCTION: STARFLEETOP 0x0044cced
+void tShipSystemsExt::vfunction119()
+{
+	m6f0 = 0.0f;
+	for ( int i = 0; i < 24; i++ )
+	{
+		tIndividualShipSystem* system = ( (tIndividualShipSystem**)( m584 + 0xc4 ) )[i];
+		if ( system != 0 )
+		{
+			if ( system->vfunction27() == true )
+			{
+				m6f0 += system->vfunction11() * system->vfunction68();
+			}
+		}
+	}
+}

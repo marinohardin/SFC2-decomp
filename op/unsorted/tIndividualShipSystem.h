@@ -245,7 +245,8 @@ public:
     virtual unsigned int vfunction24(int param_1, unsigned int param_2, int param_3);
     virtual void vfunction25();
     virtual void vfunction26();
-    virtual void vfunction27();
+    // HYPOTHESIS: slot 26 returns a flag; 0x0044cced compares it with 1.
+    virtual bool vfunction27();
     virtual void vfunction28();
     virtual void vfunction29();
     virtual void vfunction30();
