@@ -176,6 +176,9 @@ public:
 	// HYPOTHESIS: the string is VC6's std::string (data at +4, length at +8,
 	// c_str falling back to the shared empty string).
 	void FUN_006e3480(const std::string& param_1, unsigned char param_2);
+	// HYPOTHESIS: the wide form of FUN_006e3480 (std::wstring, two bytes per
+	// character).
+	void FUN_006e34c0(const std::wstring& param_1, unsigned char param_2);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -297,4 +300,11 @@ void tObject_006e3240::FUN_006e3480(const std::string& param_1, unsigned char pa
 {
 	FUN_006e3440(param_1.size(), param_2);
 	FUN_006e33b0(param_1.c_str(), param_1.size());
+}
+
+// FUNCTION: STARFLEETOP 0x006e34c0
+void tObject_006e3240::FUN_006e34c0(const std::wstring& param_1, unsigned char param_2)
+{
+	FUN_006e3440(param_1.size(), param_2);
+	FUN_006e33b0(param_1.c_str(), param_1.size() * 2);
 }
