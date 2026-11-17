@@ -283,6 +283,7 @@ class tSFCPlayer
 		virtual void vfunction112(int param_1);
 		virtual void vfunction113(int param_1, unsigned param_2, int param_3, tString *param_4, tString *param_5);
 		virtual void vfunction114(fn_004e2b02_ship_type *param_1);
+		virtual void vfunction115(char param_1);
 		void fn_004d1220();
 
 	private:
@@ -1447,6 +1448,8 @@ void tSFCPlayer::vfunction114(fn_004e2b02_ship_type *param_1)
 		}
 	}
 }
+// FUNCTION: STARFLEETOP 0x004d1580
+void tSFCPlayer::vfunction115(char param_1) { m_05 = param_1; }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
 // FUNCTION: STARFLEETOP 0x004d0e20
