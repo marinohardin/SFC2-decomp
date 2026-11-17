@@ -211,6 +211,7 @@ public:
 	bool fn_00543b31(int value);
 	bool fn_00543b40(const tHexPoint &point);
 	bool fn_00543b54(const tHexPoint &point);
+	bool fn_00543b68(std::string text);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -816,5 +817,14 @@ bool fn_005430ad_owner::fn_00543b40(const tHexPoint &point)
 bool fn_005430ad_owner::fn_00543b54(const tHexPoint &point)
 {
 	m0ac = point;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the std::string at +0x84, whose getter sits earlier in this unit;
+// always reports success.
+// FUNCTION: STARFLEETOP 0x00543b68
+bool fn_005430ad_owner::fn_00543b68(std::string text)
+{
+	m084 = text;
 	return true;
 }
