@@ -2494,6 +2494,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042ab08": {
+   "name": "FUN_0042ab08",
+   "symbol": "?FUN_0042ab08@fn_0042a480_object@@QAE?AV?$tAccessPointer@Vfn_005395b2_object@@V?$tSingleAccessWrapper@Vfn_005395b2_object@@@@@@XZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

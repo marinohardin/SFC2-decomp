@@ -255,6 +255,7 @@ public:
 	int FUN_0042aaab();
 	int FUN_0042aacb();
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr FUN_0042aaeb();
+	tSingleAccessWrapper< fn_005395b2_object >::iPtr FUN_0042ab08();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -521,4 +522,10 @@ int fn_0042a480_object::FUN_0042aacb()
 tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr fn_0042a480_object::FUN_0042aaeb()
 {
 	return field_b4.Lock();
+}
+
+// FUNCTION: STARFLEETOP 0x0042ab08
+tSingleAccessWrapper< fn_005395b2_object >::iPtr fn_0042a480_object::FUN_0042ab08()
+{
+	return field_cc.Lock();
 }
