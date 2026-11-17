@@ -182,6 +182,7 @@ class c_00546278
 {
 public:
     unsigned char fn_00546278();
+    void fn_0054627c(unsigned char param_1);
 
     char field_0[0x58];
     unsigned char field_58;
@@ -191,4 +192,10 @@ public:
 unsigned char c_00546278::fn_00546278()
 {
     return field_58;
+}
+
+// FUNCTION: STARFLEETOP 0x0054627c
+void c_00546278::fn_0054627c(unsigned char param_1)
+{
+    field_58 = param_1;
 }
