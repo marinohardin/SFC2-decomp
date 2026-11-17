@@ -951,3 +951,9 @@ int tShipSystemsExt::vfunction140()
 	}
 	return count;
 }
+
+// FUNCTION: STARFLEETOP 0x0044cbd8
+float tShipSystemsExt::vfunction113()
+{
+	return m6c8;
+}
