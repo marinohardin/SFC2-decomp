@@ -919,3 +919,12 @@ void fn_005bc2a0_vector::FUN_005bcb5b(fn_005bc2cd_elem *_P, unsigned int _M, con
 		_Fill(_P, _P + _M, _X);
 		_Last += _M; }
 }
+
+// FUNCTION: STARFLEETOP 0x005bcd91
+void fn_005bc161_tree::FUN_005bcd91(node *_X)
+{
+	for (node *_Y = _X; _Y != _Nil; _X = _Y)
+		{FUN_005bcd91(_Y->_Right);
+		_Y = _Y->_Left;
+		operator delete(_X); }
+}
