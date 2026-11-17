@@ -156,6 +156,8 @@ unsigned long tObject_006e3000::FUN_006e31b0()
 	return wait;
 }
 
+class tRef_006e15b0;
+
 // HYPOTHESIS: a growable buffer; m10 is the block, m08 its capacity and m0c
 // the bytes in use.
 class tObject_006e3240
@@ -182,6 +184,7 @@ public:
 	void FUN_006e3500(int param_1, const void* param_2, int param_3);
 	void FUN_006e3530(int param_1, unsigned char param_2);
 	void FUN_006e3550(int param_1, unsigned short param_2);
+	tRef_006e15b0 FUN_006e3570();
 
 	char m00[0x4];
 	unsigned char m04;
@@ -328,4 +331,60 @@ void tObject_006e3240::FUN_006e3530(int param_1, unsigned char param_2)
 void tObject_006e3240::FUN_006e3550(int param_1, unsigned short param_2)
 {
 	FUN_006e3500(param_1, &param_2, 2);
+}
+
+// HYPOTHESIS: the reference-counted byte block FUN_006e3570 hands out; its
+// constructor at 0x006e15b0 takes the data, the length and an ownership flag.
+class tObject_006e15b0
+{
+public:
+	tObject_006e15b0(const void* data, unsigned long length, bool owned);
+	tObject_006e15b0* fn_addref();
+
+	char m00[0x4];
+	long mRefCount;
+	char m08[0x8];
+};
+
+// HYPOTHESIS: the add half of the reference count; the exe inlines it.
+inline tObject_006e15b0* tObject_006e15b0::fn_addref()
+{
+	::InterlockedIncrement(&mRefCount);
+	return this;
+}
+
+// HYPOTHESIS: the smart pointer returned by value; the exe inlines its
+// constructor.
+class tRef_006e15b0
+{
+public:
+	tRef_006e15b0(tObject_006e15b0* object);
+	~tRef_006e15b0();
+
+	tObject_006e15b0* mPtr;
+};
+
+inline tRef_006e15b0::tRef_006e15b0(tObject_006e15b0* object)
+{
+	mPtr = object ? object->fn_addref() : 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006e3570
+tRef_006e15b0 tObject_006e3240::FUN_006e3570()
+{
+	switch (m04) {
+	case 1:
+		*(unsigned char*)m10 = (unsigned char)m0c;
+		break;
+	case 2:
+		*(unsigned short*)m10 = (unsigned short)m0c;
+		break;
+	case 4:
+		*(unsigned long*)m10 = m0c;
+		break;
+	}
+	char* data = m10;
+	unsigned long length = m0c;
+	FUN_006e3270();
+	return new tObject_006e15b0(data, length, true);
 }
