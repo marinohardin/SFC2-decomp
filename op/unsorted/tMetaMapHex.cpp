@@ -921,3 +921,16 @@ tClassAllocator<tMetaMapHex>::tClassAllocator()
 {
 	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tMetaMapHex ), this );
 }
+
+// MATCH-ONLY: the SDK's template mAllocate, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x0053acba
+template<>
+tAllocatedClass* tClassAllocator<tMetaMapHex>::mAllocate()
+{
+	tMetaMapHex* pClass = new tMetaMapHex( 0 );
+
+	pClass->mSetAllocatorID( fAllocID );
+
+	return pClass;
+}
