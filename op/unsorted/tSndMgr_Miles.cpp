@@ -1,5 +1,6 @@
 #include "unsorted/tSndMgr_Base.h"
 #include "unsorted/ParseSFCSoundTable.h"
+#include "Common/Thread/Thread.h"
 
 // HYPOTHESIS: the member classes below are named after their destructors until evidence names
 // them; sizes come from the member offsets in tSndMgr_Miles.
@@ -33,6 +34,17 @@ public:
 	~fn_0050cb59_object();
 
 	char pad_0000[0x3c8];
+};
+
+// HYPOTHESIS: stands in for a tCallback<long>-derived class (vtable 0x007ab0c0), likely
+// tMilesCallBack or tAILServeCallBack; tCallback is declared only inside ThreadPool.cpp.
+class fn_007ab0c0_object
+{
+public:
+	virtual ~fn_007ab0c0_object() {}
+	virtual void Callback( long result );
+
+	long field_4;
 };
 
 // HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
@@ -84,16 +96,16 @@ public:
 	fn_0050cb59_object field_2450;
 	// HYPOTHESIS: two tThread members (destructor 0x006ff170, size 0xd0c); tThread is declared
 	// only inside Common/Thread/ThreadPool.cpp, so they stay byte arrays until a header holds it.
-	char field_2818[0xd0c];
-	char field_3524[0xd0c];
+	tThread field_2818;
+	tThread field_3524;
 	char field_4230;
 	char pad_4231[3];
 	long field_4234;
 	// HYPOTHESIS: two tCallback<long>-derived members (the destructor resets both to the
 	// tCallback<long> vtable 0x007ab0c0), likely tMilesCallBack and tAILServeCallBack;
 	// tCallback is declared only inside Common/Thread/ThreadPool.cpp.
-	char field_4238[8];
-	char field_4240[8];
+	fn_007ab0c0_object field_4238;
+	fn_007ab0c0_object field_4240;
 };
 
 // FUNCTION: STARFLEETOP 0x0050ed7a
