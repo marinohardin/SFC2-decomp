@@ -240,12 +240,14 @@ bool fn_00571648_owner::fn_0057165f(int a)
 	return less;
 }
 
-// HYPOTHESIS: unrecovered exception-like class: a base with a virtual destructor, two longs
-// at +8 and +0xc, and a std::string at +0x10 copied from the by-value parameter.
+// HYPOTHESIS: unrecovered class pair: a polymorphic base (vtable 0x007b2ba0) whose destructor
+// adds no unwind state, two longs at +8 and +0xc, and in the derived class (vtable 0x007b2b98)
+// a std::string at +0x10 copied from the by-value parameter. The base's virtual slots are not
+// recovered.
 class fn_00571676_base {
 public:
 	fn_00571676_base(long a, long b) : fn_00571676_a(a), fn_00571676_b(b) {}
-	virtual ~fn_00571676_base();
+	virtual void vfunction0();
 	int fn_00571676_base_pad;
 	long fn_00571676_a;
 	long fn_00571676_b;
