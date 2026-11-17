@@ -608,6 +608,24 @@ public:
 		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];	return map[cookie];
 	}
 
+	// HYPOTHESIS: the validity test as a helper taking the found iterator by value, with the
+	// search an inlined mFind in its argument. tPath::mDelete (STARFLEETOP 0x0061ed50) gives the
+	// thrown string its own stack slot ahead of the search's temporary, which this order of
+	// expansion reproduces. The helper's name is not recovered.
+	void fn_0061ed50_mCheck( tMap::iterator it )
+	{
+		if ( it.fNode == 0 || it.fNode->fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+	}
+
+	// MATCH-ONLY: mResolve as tPath::mDelete (STARFLEETOP 0x0061ed50) has it, through the helper
+	// above; the original has one resolve, and this form may be the one behind the others.
+	tObjectType &fn_0061ed50_mResolve( tCookieType &cookie )
+	{
+		fn_0061ed50_mCheck( fValues.fMaps[cookie.fCookie & 0xff].mFind( cookie ) );
+		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
+	}
+
 	int32u											f_00;
 	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
 };
@@ -1057,12 +1075,11 @@ iTruth tPath::mCreate( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mCreate();
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, which gives the original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061ed50
 iTruth tPath::mDelete( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mDelete();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mDelete();
 }
 
 // FUNCTION: STARFLEETOP 0x0061ee60
