@@ -1251,3 +1251,9 @@ void fn_0046aa58()
 	g_0090db38.fn_004adc89();
 	throw tGameStateMgr_QuitException();
 }
+
+// FUNCTION: STARFLEETOP 0x0046aa94
+char fn_0046aa94()
+{
+	return g_0090db9c;
+}
