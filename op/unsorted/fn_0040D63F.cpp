@@ -882,6 +882,18 @@ void fn_0040d63f_Buf::fn_0040e6d1(char* s)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e744
+void fn_0040d63f_Buf::fn_0040e744(char* text)
+{
+    unsigned int len = text ? strlen(text) : 0;
+    if (len > 0)
+        fn_0040d867(text, len, 0);
+    // HYPOTHESIS: the original wrote the newline through an address inside its own argument slot.
+    char* nl = (char*)&text + 3;
+    *nl = '\n';
+    fn_0040d867(nl, 1, 0);
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int fn_0040d63f_Buf::fn_0040e70f(char* text)
 {
