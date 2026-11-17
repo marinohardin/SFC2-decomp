@@ -77,7 +77,7 @@ public:
     virtual int vfunction59();
     virtual int vfunction60();
     virtual int vfunction61();
-    virtual void vfunction62();
+    virtual int vfunction62();
     virtual void vfunction63();
     virtual void vfunction64();
     virtual void vfunction65();
@@ -416,5 +416,16 @@ int tShipSystemsFighter::vfunction61()
     char* p = *(char**)( m5c4 + 0x48 );
     if( p != 0 )
         return *(int*)( p + 0x60 );
+    return 0;
+}
+
+// HYPOTHESIS: the same object as vfunction59 (pointer at m5c4 + 0x48); its +0x64 is
+// returned, or 0 when there is none.
+// FUNCTION: STARFLEETOP 0x0044442b
+int tShipSystemsFighter::vfunction62()
+{
+    char* p = *(char**)( m5c4 + 0x48 );
+    if( p != 0 )
+        return *(int*)( p + 0x64 );
     return 0;
 }
