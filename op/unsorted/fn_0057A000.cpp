@@ -402,3 +402,13 @@ void fn_0057aad9( const tnRange& range, const tnFunction& function )
 }
 
 template void fn_0057aad9( const std::pair< const nDatabase::tID*, const nDatabase::tID* >& range, const tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& >& function );
+
+// HYPOTHESIS: 0x0057ab18 is the library's _Construct for the 0x4c-byte element of 0x0057a66b,
+// held out of line; it copies the 0x48-byte part through 0x00716d70, then the dword at +0x48.
+// MATCH-ONLY: written as a plain function, since an explicit specialization of std::_Construct
+// here never finishes compiling under the original compiler.
+// FUNCTION: STARFLEETOP 0x0057ab18
+void fn_0057ab18( fn_0057a69e_value* _P, const fn_0057a69e_value& _V )
+{
+	new ((void*)_P) fn_0057a69e_value(_V);
+}
