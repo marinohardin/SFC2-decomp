@@ -125,7 +125,7 @@ public:
     virtual void vfunction82();
     virtual void vfunction83();
     virtual void vfunction84();
-    virtual void vfunction85();
+    virtual int vfunction85();
     virtual void vfunction86();
     virtual void vfunction87();
     virtual void vfunction88();
@@ -152,7 +152,7 @@ public:
     virtual void vfunction105(int param_1);
     // HYPOTHESIS: the slot at offset 0x1a4 returns the index of the first bank as a char.
     virtual char vfunction106();
-    virtual void vfunction107();
+    virtual int vfunction107();
     virtual void vfunction108();
     virtual float vfunction109();
     virtual float vfunction110();

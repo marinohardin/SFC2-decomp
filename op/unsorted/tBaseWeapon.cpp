@@ -156,3 +156,9 @@ void tBaseWeapon::vfunction103()
     if (vfunction144() > 0)
         vfunction145(vfunction144() - 1);
 }
+
+// FUNCTION: STARFLEETOP 0x004d76a0
+int tBaseWeapon::vfunction107()
+{
+    return vfunction85() - field_e8;
+}
