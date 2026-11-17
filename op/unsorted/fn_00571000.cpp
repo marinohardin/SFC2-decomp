@@ -304,10 +304,8 @@ bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef fn_
 
 
 
-
-
-
-
+#include <map>
+#include <vector>
 // HYPOTHESIS: a count query on the database: the owner's map (at +0x18) lists the objects of
 // one type; slot 2 of the query object is its predicate. Types and names are not recovered.
 class fn_005717f7_object {
@@ -326,7 +324,9 @@ struct fn_005717f7_vector {
 	void** m_last;
 	void** m_end;
 };
-struct fn_005717f7_map {
+// HYPOTHESIS: the per-type index is a std::map, allocator id to object pointers; 0x005719df is its operator[].
+typedef std::map<long, std::vector<void*> > fn_005717f7_index;
+struct fn_005717f7_map : public fn_005717f7_index {
 	fn_005717f7_vector& fn_005719df(const long& key);
 };
 class fn_005717f7_owner {
@@ -544,4 +544,12 @@ fn_005719c3_object* fn_005719c3_object::fn_005719c3(unsigned char flags)
 	if (flags & 1)
 		::operator delete(this);
 	return this;
+}
+
+// FUNCTION: STARFLEETOP 0x005719df
+fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
+{
+	iterator it = insert(value_type(key, std::vector<void*>())).first;
+	// MATCH-ONLY: the struct above stands for the std::vector<void*> it has the layout of.
+	return *(fn_005717f7_vector*)&(*it).second;
 }
