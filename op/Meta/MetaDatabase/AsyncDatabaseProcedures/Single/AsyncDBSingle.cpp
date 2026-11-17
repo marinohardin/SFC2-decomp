@@ -59,7 +59,7 @@ public:
 	virtual void vfunction2( tCampaignInfo* campaignInfo );
 	virtual void vfunction3( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
 	virtual void vfunction4( std::vector<tServCharacter>* characters );
-	virtual void vfunction5();
+	virtual void vfunction5( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
 	virtual void vfunction6();
 	virtual void vfunction7();
 	virtual void vfunction8();
@@ -103,6 +103,16 @@ public:
 	virtual void vfunction46();
 	virtual void vfunction47();
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual void vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual void vfunction58( tServCharacter* character );
 
 	fn_0056c414_Database* fDatabase;
 };
@@ -201,6 +211,40 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction4( std::vector<tSer
 	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval( &tServCharacter::fn_00543445, true );
 	query.AddEval( &eval );
 	fDatabase->fn_0056f19b( query, characters );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// HYPOTHESIS: reads the characters with vfunction3, keeps those that pass both tests and hands
+// the others to vfunction58 when the read did not lock them.
+// FUNCTION: STARFLEETOP 0x0056c95c
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction5( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock )
+{
+	std::vector<tServCharacter> result;
+	vfunction3( ids, characters, lock );
+	for( std::vector<tServCharacter>::iterator i = characters->begin(); i != characters->end(); i++ )
+	{
+		if( i->fn_005433dd() && i->fn_0054340c() )
+		{
+			result.push_back( *i );
+		}
+		else if( !lock )
+		{
+			vfunction58( i );
+		}
+	}
+	*characters = result;
 }
 
 

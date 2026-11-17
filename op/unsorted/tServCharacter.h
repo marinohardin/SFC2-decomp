@@ -13,6 +13,12 @@ class tServCharacter : public nDatabase::tDatabaseObject
 public:
 	// HYPOTHESIS: a flag 0x0056c8d6 queries on; it tests the member at +0x14c.
 	bool fn_00543445() const;
+	// HYPOTHESIS: two flags 0x0056c95c tests before it keeps a character.
+	bool fn_005433dd() const;
+	bool fn_0054340c() const;
+
+	// HYPOTHESIS: the record is 0x160 bytes (the stride 0x0056c95c walks a vector with).
+	char fPad_48[0x160 - 0x48];
 };
 
 #endif
