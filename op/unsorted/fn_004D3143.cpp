@@ -807,3 +807,13 @@ void fn_004d39aa( long arg1 )
 		flasher->fn_vfunction1( 1 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d39d6
+void fn_004d39d6( long arg1 )
+{
+	tFlasher* flasher = dynamic_cast<tFlasher*>( fn_004d3a02( arg1 ) );
+	if ( flasher != 0 )
+	{
+		flasher->fn_vfunction1( 0 );
+	}
+}
