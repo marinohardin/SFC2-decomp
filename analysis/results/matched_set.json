@@ -8434,6 +8434,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005de7ff": {
+   "name": "tMemberCallback<tMetaClientNewsCtlrC,tMetaClientNewsCtlrC::tMenuItem*>::scalar_deleting_destructor",
+   "symbol": "??_G?$tMemberCallback@VtMetaClientNewsCtlrC@@PAVtMenuItem@1@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_005DE000.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
