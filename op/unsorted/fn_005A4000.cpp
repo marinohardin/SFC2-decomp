@@ -1,4 +1,5 @@
 #include "Common/Thread/Optex.h"
+#include <string>
 
 // HYPOTHESIS: class and member names are not recovered; the object is a tOptex
 // with a member at +0x238 read under the lock.
@@ -25,7 +26,8 @@ public:
 	char		pad3[0x60 - 0x48];
 	float		fValue60;
 	float		fValue64;
-	char		pad[0x208 - 0x68];
+	std::string	fString68;
+	char		pad[0x208 - 0x68 - sizeof(std::string)];
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
@@ -37,6 +39,7 @@ public:
 	float		fn_005A41e6();
 	float		fn_005A4238();
 	float		fn_005A4287();
+	std::string	fn_005A42a6();
 };
 
 // Inline in the SDK; Optex.h declares it only.
@@ -139,4 +142,11 @@ float fn_005A4173_Owner::fn_005A4287()
 	float value = fValue64;
 	Leave();
 	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005a42a6
+std::string fn_005A4173_Owner::fn_005A42a6()
+{
+	tGuard guard(this);
+	return fString68;
 }
