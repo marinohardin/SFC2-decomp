@@ -1087,7 +1087,7 @@ address	size	symbol	source	modes
 0x00645490	13	tListMemberWithHandle::mInitListMemberWithHandle()	Tiger/twSound.cpp	vc6 guest
 0x006454a0	10	tListMemberWithHandle::mRemoveFromList()	Tiger/twSound.cpp	vc6 guest
 0x006454b0	4	tListMemberWithHandle::mGetPreviousListHandle()	Tiger/twSound.cpp	vc6 guest
-0x006454c0	10	tListMemberWithHandle::vfunc_10(long)	Tiger/twSound.cpp	vc6 guest
+0x006454c0	10	tListMemberWithHandle::vfunc_14(long)	Tiger/twSound.cpp	vc6 guest
 0x006454e0	10	tListMemberWithHandle::vfunc_18(long)	Tiger/twSound.cpp	vc6 guest
 0x006454f0	32	tListMemberWithHandle::`scalar deleting destructor'	Tiger/twSound.cpp	vc6
 0x00645510	600	twSoundPart::mAddActiveSoundChannel(tSoundChannelFormat*,tSoundChannel::tFillSelectionFunction&,tSoundChannel::tSelectionFunction&,unsigned long)	Tiger/twSound.cpp	vc6 guest
