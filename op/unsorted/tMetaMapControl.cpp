@@ -170,3 +170,34 @@ void tMetaMapControl::fn_005e32d7( int param_1 )
 			fn_005e37c4( it2, param_1, it2->field_50 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e33f4
+void tMetaMapControl::fn_005e33f4( int param_1 )
+{
+	std::vector<fn_005e381f_entry> list1;
+	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
+	std::vector<fn_005e381f_entry>::iterator it1;
+	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
+	{
+		fn_005e3891( it1, param_1 );
+	}
+
+	std::vector<fn_005e36cd_entry> list2;
+	fn_00607d61()->fn_0060a54d()->fn_005e6dea( param_1, list2 );
+	std::vector<fn_005e36cd_entry>::iterator it2;
+	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
+	{
+		if ( !( it2->field_4c & 0x1 ) )
+			fn_005e36cd( it2, param_1 );
+	}
+	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
+	{
+		if ( it2->field_4c & 0x1 )
+			fn_005e36cd( it2, param_1 );
+	}
+	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
+	{
+		if ( ( it2->field_4c & 0x80 ) || ( it2->field_4c & 0x300 ) )
+			fn_005e37d8( it2, param_1, it2->field_50 );
+	}
+}

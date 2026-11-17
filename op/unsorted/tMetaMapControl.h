@@ -50,10 +50,13 @@ public:
 	void fn_005e31dd( int param_1 );
 	void fn_005e326c( int param_1 );
 	void fn_005e32d7( int param_1 );
+	void fn_005e33f4( int param_1 );
 	void fn_005e36a3();
 	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
+	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
+	void fn_005e3891( fn_005e381f_entry *entry, int param_2 );
 	void fn_005e3b86();
 
 	fn_005eadc8_class *field_17c;
