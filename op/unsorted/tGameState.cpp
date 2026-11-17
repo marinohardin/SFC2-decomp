@@ -632,3 +632,12 @@ void fn_0046a46a(tGameState *param_1)
 	{
 	}
 }
+
+// HYPOTHESIS: the argument is a tView3D (the caller passes one); slot 4 of the state is unnamed.
+// FUNCTION: STARFLEETOP 0x0046a4a8
+void fn_0046a4a8(tView3D *param_1)
+{
+	tGameState *state = fn_0046a59a();
+	if (state != 0)
+		state->vfunction4(param_1);
+}

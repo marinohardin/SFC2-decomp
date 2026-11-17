@@ -7,6 +7,8 @@
 // The constructor (0x00469cd7) links the state into a list of every state and numbers it; the
 // destructor (0x00469d19) unlinks it. Only the slots the derived classes need are declared: the
 // vtable at 0x0079ec4c has 19.
+class tView3D;
+
 class tGameState
 {
 public:
@@ -15,7 +17,7 @@ public:
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
-	virtual void vfunction4();
+	virtual void vfunction4(tView3D *param_1);
 	virtual void vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7();
