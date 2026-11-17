@@ -834,17 +834,54 @@ public:
 // HYPOTHESIS: returns the game's settings object; name and owner not identified.
 tSettings* fn_005d481f();
 
-// HYPOTHESIS: layout only as far as this unit reads it (a 0x168-byte object, RTTI names it, a
-// string at +0x48); constructed from a stream at 0x005486ff.
-class tCampaignInfo
+#include "Common/Database/DatabaseObject.h"
+#include "Common/DateAndTime.h"
+
+// HYPOTHESIS: a 16-byte member of tCampaignInfo destroyed through 0x00402d42; type not identified.
+struct fn_00402d42_Member
+{
+	~fn_00402d42_Member();
+
+	char m00[0x10];
+};
+
+// HYPOTHESIS: a vector-like member of tCampaignInfo destroyed through 0x00571a7a, the destructor
+// tPanelMgr's 32-bit vectors also use; element type not identified.
+struct fn_00571a7a_Vector
+{
+	~fn_00571a7a_Vector();
+
+	char m00[0x10];
+};
+
+// HYPOTHESIS: layout from the destructor 0x0042ceae (a 0x168-byte database object, RTTI names it,
+// strings at +0x48); constructed from a stream at 0x005486ff. Member types beyond the strings are
+// guesses from the destructors called.
+class tCampaignInfo : public nDatabase::tDatabaseObject
 {
 public:
 	tCampaignInfo( std::istream& in );
 	virtual ~tCampaignInfo();
 
-	char m04[0x44];
 	std::string m48;
-	char m58[0x110];
+	std::string m58;
+	std::string m68;
+	std::string m78;
+	std::string m88;
+	fn_00402d42_Member m98;
+	fn_00571a7a_Vector ma8;
+	char mb8[0x0c];
+	std::string mc4;
+	std::string md4;
+	std::string me4;
+	int mf4;
+	std::string mf8;
+	// HYPOTHESIS: a streamable at +0x108 whose destructor reduces to ~tStreamable; taken to be a
+	// date followed by plain fields.
+	tDateAndTime m108;
+	char m118[0x30];
+	std::string m148;
+	std::string m158;
 };
 
 // HYPOTHESIS: an unidentified class whose first member is a string, filled from the campaign file.
@@ -867,4 +904,12 @@ fn_0042cd23_Class::fn_0042cd23_Class()
 	std::ifstream in( path.c_str(), std::ios::in | std::ios::binary );
 	tCampaignInfo info( in );
 	m00 = info.m48;
+}
+
+// HYPOTHESIS: the original declares no destructor. Its compiler-generated one (0x0042ceae)
+// stores no vtable; the harness cannot claim a function with no source line, so this declared
+// one (which stores both vtables, 13 bytes more) stands in for it, as for tCampaignState.
+// FUNCTION: STARFLEETOP 0x0042ceae
+tCampaignInfo::~tCampaignInfo()
+{
 }
