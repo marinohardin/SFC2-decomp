@@ -40,6 +40,10 @@ void fn_004d3340(const char *name);
 // HYPOTHESIS: returns the control with the given id.
 class c_00468677_source;
 c_00468677_source *fn_004d3446(int id);
+// HYPOTHESIS: three global strings, 0x28 bytes apart, handed to tNetControl::fn_004327a7.
+extern tString g_00910ac8;
+extern tString g_00910aa0;
+extern tString g_00910a78;
 
 namespace tState_Namespace_NetSetup
 {
@@ -71,6 +75,7 @@ public:
 	bool fn_00476678();
 	bool fn_004766f1();
 	bool fn_00476754();
+	void fn_004767f1();
 	// HYPOTHESIS: puts the value into the control under the given key, as
 	// tState_GameConnections::fn_004688ee does.
 	void fn_00476997(int control, const char *name, const char *value);
@@ -93,7 +98,11 @@ public:
 	char m19[3];
 	tValueI< tString > m1c;
 	tValueI< tString > m5c;
-	char m9c[0x140];
+	tValueI< tString > m9c;
+	tValueI< tString > mdc;
+	tValueI< tString > m11c;
+	tValueI< tString > m15c;
+	tValueI< tString > m19c;
 	int m1dc;
 	int m1e0;
 	int m1e4;
@@ -285,13 +294,28 @@ bool tState_NetSetup::fn_00476754()
 	fn_004d346f(g_008493cc, g_008493b8);
 	fn_004d34c5(0x10018, 0);
 	bool result = gNetControl.fn_004325a9(3);
-	fn_00476d52(&m1e0, &m9c[0x80], 0x10016);
+	fn_00476d52(&m1e0, &m11c, 0x10016);
 	if (m1e4 == 0)
 		m1e4 = (int)fn_004d3446(0x10017);
 	fn_00476997(m1e4, "ModemAddress", 0);
 	m19[0] = 0;
 	m12[0] = 1;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004767f1
+void tState_NetSetup::fn_004767f1()
+{
+	switch (m1f0)
+	{
+	case 0x10005:
+		gNetControl.fn_004327a7(m15c.m18.mCharStr(), m19c.m18, g_00910ac8, g_00910aa0, g_00910a78);
+		break;
+	case 0x10008:
+		fn_00476aee(m1e4, "ModemAddress");
+		gNetControl.fn_004326aa(m11c.m18, 0);
+		break;
+	}
 }
 
 }	// namespace tState_Namespace_NetSetup
