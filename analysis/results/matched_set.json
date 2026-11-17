@@ -16858,6 +16858,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x00690180": {
+   "name": "FUN_00690180",
+   "symbol": "?fn_00690180@tHtmlParser@@QAEXAAVtString@@PAVfn_0068ff60_Root@@VtDir@@@Z",
+   "unit": "unsorted/tSession.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006a2dc0": {
    "name": "FUN_006a2dc0",
    "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",

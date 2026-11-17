@@ -46,14 +46,15 @@ class tHtmlParser: public tHtmlParserBase
 public:
 	tHtmlParser();
 
-	void	fn_00690180( int a, int b, tDir dir );
+	void	fn_00690180( tString &name, fn_0068ff60_Root *root, tDir dir );
 	fn_0068d830_Item	*fn_00692620( int a );
 
 	tString	f_10;
 	char	pad_10[0x44 - 0x10 - sizeof(tString)];
 	tString	f_44;
 	fn_0068ff60_Root	*f_6c;
-	char	pad_70[0x94 - 0x70];
+	tDir	f_70;
+	char	pad_80[0x94 - 0x80];
 	std::vector<unsigned short>	f_94;
 	std::vector<unsigned short>	f_a4;
 	std::vector<unsigned short>	f_b4;
@@ -61,7 +62,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0068ff60
-fn_0068ff60_Root *fn_0068ff60( int a, int b, int c, tDir dir )
+fn_0068ff60_Root *fn_0068ff60( int a, tString &b, fn_0068ff60_Root *c, tDir dir )
 {
 	tHtmlParser	parser;
 
@@ -79,4 +80,12 @@ fn_0068ff60_Root *fn_0068ff60( int a, int b, int c, tDir dir )
 		delete item;
 
 	return parser.f_6c;
+}
+
+// FUNCTION: STARFLEETOP 0x00690180
+void tHtmlParser::fn_00690180( tString &name, fn_0068ff60_Root *root, tDir dir )
+{
+	f_44 = name;
+	f_6c = root;
+	f_70 = dir;
 }
