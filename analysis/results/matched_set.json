@@ -6076,6 +6076,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d31ed": {
+   "name": "FUN_004d31ed",
+   "symbol": "?fn_004d31ed@@YA_NJJJJJ@Z",
+   "unit": "unsorted/fn_004D3143.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
