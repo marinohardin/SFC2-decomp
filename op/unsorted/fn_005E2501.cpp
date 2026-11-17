@@ -161,3 +161,6 @@ std::string g_00c38f48 = "nebula1L";
 // FUNCTION: STARFLEETOP 0x005e2d82
 // FUNCTION: STARFLEETOP 0x005e2d4f
 std::string g_00c38f38 = "asteroids1L";
+
+// FUNCTION: STARFLEETOP 0x005e2da5
+std::string g_00c38f28 = "blackhole1L";
