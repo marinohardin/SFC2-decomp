@@ -146,6 +146,8 @@ public:
 	iTruth fn_0043bfc1();
 	// HYPOTHESIS: returns a truth value; 0x0051e613 keeps it as a flag.
 	iTruth fn_0043c01d();
+	// HYPOTHESIS: returns a float 0x00523967 adds to its total while 0x0043bfc1 holds.
+	float fn_0043beed();
 };
 
 // HYPOTHESIS: an object returned by slot 89 of the object at 0xad4 of a ship; 0x00515db1
@@ -271,6 +273,7 @@ public:
 class tObject_0042496f_member76;
 class tObject_0042496f_member96;
 class tObject_0042496f_member99;
+class tObject_00523967_member94;
 
 // HYPOTHESIS: a 12-byte value built from a point by a constructor that is not inlined
 // (0x00412f08); 0x004255b5 of the object at 0x008f5170 takes it by value, and tAICaptain's
@@ -334,9 +337,10 @@ public:
 	virtual void vfunction44();
 	virtual void vfunction45();
 	virtual void vfunction46();
-	virtual void vfunction47();
-	virtual void vfunction48();
-	virtual void vfunction49();
+	// HYPOTHESIS: slots 47 to 49 (offsets 0xb8 to 0xc0) return floats 0x00523967 adds up.
+	virtual float vfunction47();
+	virtual float vfunction48();
+	virtual float vfunction49();
 	virtual void vfunction50();
 	virtual void vfunction51();
 	virtual void vfunction52();
@@ -387,7 +391,8 @@ public:
 	virtual void vfunction91();
 	virtual void vfunction92();
 	virtual void vfunction93();
-	virtual void vfunction94();
+	// HYPOTHESIS: slot 94 (offset 0x174) returns an object or null; 0x00523967 reads it.
+	virtual tObject_00523967_member94 *vfunction94();
 	virtual void vfunction95();
 	// HYPOTHESIS: slot 96 (offset 0x17c) returns an object or null; tAICaptain's 0x0051f602
 	// asks it whether the target is hidden.

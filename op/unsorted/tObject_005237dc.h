@@ -62,6 +62,7 @@ public:
 	void fn_00523afd(tObject_00528a11 *aSelector); // HYPOTHESIS: takes the selector 0x0051e613 chose (the object at 0x35c8 of tAICaptain).
 	int fn_005238aa(void *aValue); // HYPOTHESIS: appends to the vector at +0x34cc and returns the index it got.
 	void fn_005238d7(int aColumn, float amount, bool partial, int index, int *pSelector); // HYPOTHESIS: pSelector[2] picks the row; with none, all four rows of the column.
+	float fn_00523967(); // HYPOTHESIS: sums floats the ship's systems report; 0 without the ship.
 
 	float m_00[4];
 	tObject_005237d1 m_10[25];
@@ -69,7 +70,8 @@ public:
 	char m_d9[3];
 	int m_dc[25];
 	int m_140;
-	int m_144;
+	bool m_144; // HYPOTHESIS: set by 0x00523967 when its last term was added.
+	char m_145[3];
 	int m_148;
 	int m_14c;
 	tObject_005236d8 m_150[24];

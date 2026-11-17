@@ -580,3 +580,257 @@ void tObject_005237dc::fn_005238d7(int aColumn, float amount, bool partial, int 
 		}
 	}
 }
+
+// HYPOTHESIS: the object slot 94 of a ship's 0xad4 object returns; slot 108 (offset 0x1ac) tells
+// whether slot 95 (offset 0x178) holds a value to add.
+class tObject_00523967_member94
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual void vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual void vfunction58();
+	virtual void vfunction59();
+	virtual void vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual void vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual void vfunction67();
+	virtual void vfunction68();
+	virtual void vfunction69();
+	virtual void vfunction70();
+	virtual void vfunction71();
+	virtual void vfunction72();
+	virtual void vfunction73();
+	virtual void vfunction74();
+	virtual void vfunction75();
+	virtual void vfunction76();
+	virtual void vfunction77();
+	virtual void vfunction78();
+	virtual void vfunction79();
+	virtual void vfunction80();
+	virtual void vfunction81();
+	virtual void vfunction82();
+	virtual void vfunction83();
+	virtual void vfunction84();
+	virtual void vfunction85();
+	virtual void vfunction86();
+	virtual void vfunction87();
+	virtual void vfunction88();
+	virtual void vfunction89();
+	virtual void vfunction90();
+	virtual void vfunction91();
+	virtual void vfunction92();
+	virtual void vfunction93();
+	virtual void vfunction94();
+	virtual float vfunction95();
+	virtual void vfunction96();
+	virtual void vfunction97();
+	virtual void vfunction98();
+	virtual void vfunction99();
+	virtual void vfunction100();
+	virtual void vfunction101();
+	virtual void vfunction102();
+	virtual void vfunction103();
+	virtual void vfunction104();
+	virtual void vfunction105();
+	virtual void vfunction106();
+	virtual void vfunction107();
+	virtual bool vfunction108();
+};
+
+// HYPOTHESIS: the object slot 96 of a ship's 0xad4 object returns, likely the class tAICaptain.cpp
+// declares as tObject_0042496f_member96 (only there); slot 102 (offset 0x194) returns a count
+// and fills a byte, slot 101 (offset 0x190) an integer to add.
+class tObject_00523967_member96
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual void vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual void vfunction58();
+	virtual void vfunction59();
+	virtual void vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual void vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual void vfunction67();
+	virtual void vfunction68();
+	virtual void vfunction69();
+	virtual void vfunction70();
+	virtual void vfunction71();
+	virtual void vfunction72();
+	virtual void vfunction73();
+	virtual void vfunction74();
+	virtual void vfunction75();
+	virtual void vfunction76();
+	virtual void vfunction77();
+	virtual void vfunction78();
+	virtual void vfunction79();
+	virtual void vfunction80();
+	virtual void vfunction81();
+	virtual void vfunction82();
+	virtual void vfunction83();
+	virtual void vfunction84();
+	virtual void vfunction85();
+	virtual void vfunction86();
+	virtual void vfunction87();
+	virtual void vfunction88();
+	virtual void vfunction89();
+	virtual void vfunction90();
+	virtual void vfunction91();
+	virtual void vfunction92();
+	virtual void vfunction93();
+	virtual void vfunction94();
+	virtual void vfunction95();
+	virtual void vfunction96();
+	virtual void vfunction97();
+	virtual void vfunction98();
+	virtual void vfunction99();
+	virtual void vfunction100();
+	virtual int vfunction101();
+	virtual int vfunction102(char *aOut);
+};
+
+// FUNCTION: STARFLEETOP 0x00523967
+float tObject_005237dc::fn_00523967()
+{
+	tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(m_140);
+	if (ship == NULL)
+		return 0.0f;
+	float total = 0.0f;
+	tObject_00523967_member94 *first = ship->field_0xad4->vfunction94();
+	if (first != NULL && first->vfunction108())
+		total = first->vfunction95();
+	total = ship->field_0xad4->vfunction47() + total;
+	total = ship->field_0xad4->vfunction48() + total;
+	total = ship->field_0xad4->vfunction49() + total;
+	tObject_0043c0f2 *second = ship->field_0xad4->vfunction80();
+	if (second != NULL && second->fn_0043bfc1())
+		total = second->fn_0043beed() + total;
+	tObject_00523967_member96 *third = (tObject_00523967_member96 *)ship->field_0xad4->vfunction96();
+	m_144 = false;
+	if (third != NULL) {
+		char kind;
+		int count = third->vfunction102(&kind);
+		if (count >= 1 && count <= 6) {
+			m_144 = true;
+			return third->vfunction101() + total;
+		}
+	}
+	return total;
+}
