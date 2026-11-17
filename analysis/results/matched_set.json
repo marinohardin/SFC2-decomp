@@ -654,8 +654,8 @@
    "symbol": "?fn_00404b1c@fn_00404b1c_Streambuf@@QAEXXZ",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 66,
-   "score": 19.76,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {

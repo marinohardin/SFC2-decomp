@@ -552,6 +552,8 @@ class fn_00404b1c_Streambuf
 {
 public:
     void fn_00404b1c();
+    void fn_setp(char* f, char* l);
+    void fn_setg(char* b, char* n, char* l);
     int m0;
     char* m4;
     char* m8;
@@ -561,24 +563,30 @@ public:
     char* m18;
     char** m1c;
     char** m20;
-    char* m24;
-    char* m28;
-    char** m2c;
-    char** m30;
+    int m24;
+    int m28;
+    int* m2c;
+    int* m30;
 };
+
+// HYPOTHESIS: the library's setp and setg, inlined into the initialiser.
+inline void fn_00404b1c_Streambuf::fn_setp(char* f, char* l)
+{
+    *m10 = f, *m20 = f;
+    *m30 = l - f;
+}
+
+inline void fn_00404b1c_Streambuf::fn_setg(char* b, char* n, char* l)
+{
+    *mc = b, *m1c = n;
+    *m2c = l - n;
+}
 
 // FUNCTION: STARFLEETOP 0x00404b1c
 void fn_00404b1c_Streambuf::fn_00404b1c()
 {
-    m1c = &m14;
-    m20 = &m18;
-    m2c = &m24;
-    mc = &m4;
-    m30 = &m28;
-    *(m10 = &m8) = 0;
-    *m20 = 0;
-    *m30 = 0;
-    *mc = 0;
-    *m1c = 0;
-    *m2c = 0;
+    mc = &m4, m10 = &m8;
+    m1c = &m14, m20 = &m18;
+    m2c = &m24, m30 = &m28;
+    fn_setp(0, 0), fn_setg(0, 0, 0);
 }
