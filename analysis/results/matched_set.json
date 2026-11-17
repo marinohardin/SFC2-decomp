@@ -3349,6 +3349,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00460b73": {
+   "name": "FUN_00460b73",
+   "symbol": "??0fn_00460b73_class@@QAE@IABVfn_00460b73_element@@ABV?$allocator@Vfn_00460b73_element@@@std@@@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",

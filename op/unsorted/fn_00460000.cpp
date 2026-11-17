@@ -622,3 +622,33 @@ void fn_00460b3b_class::fn_00460b3b()
     operator delete(m_8);
     m_8 = 0;
 }
+
+// HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements; the
+// element type is not identified, and 0x00461406 is its copy constructor.
+class fn_00460b73_element
+{
+public:
+    fn_00460b73_element(const fn_00460b73_element &other);
+
+    char pad_000[0x18c];
+};
+
+class fn_00460b73_class
+{
+public:
+    fn_00460b73_class(unsigned int n, const fn_00460b73_element &v, const std::allocator<fn_00460b73_element> &al);
+
+    std::allocator<fn_00460b73_element> allocator;
+    fn_00460b73_element *_First;
+    fn_00460b73_element *_Last;
+    fn_00460b73_element *_End;
+};
+
+// FUNCTION: STARFLEETOP 0x00460b73
+fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_00460b73_element &v, const std::allocator<fn_00460b73_element> &al)
+    : allocator(al)
+{
+    _First = allocator.allocate(n, (void *)0);
+    std::uninitialized_fill_n(_First, n, v);
+    _Last = _First + n, _End = _Last;
+}
