@@ -1041,6 +1041,9 @@ struct fn_004d2cca_node
 	fn_004d2cca_node* m_0x04;
 	fn_004d2cca_node* m_0x08;
 	fn_004d2cca_key m_0x0c;
+	char m_0x10[0x10];
+	bool m_0x20;
+	bool m_0x21;
 };
 
 struct fn_004d2cca_iterator
@@ -1067,7 +1070,12 @@ public:
 	fn_004d2cca_node* m_0x04;
 	fn_004d2cca_node* m_0x08;
 	bool m_0x0c;
+	int m_0x10;
+	void fn_00556fd0(fn_004d2cca_node* x);
+	void fn_00558526(fn_004d2cca_node* x);
 };
+
+void fn_004d3035(fn_004d2cca_key* dest, fn_004d2cca_key* src);
 
 // FUNCTION: STARFLEETOP 0x004d2cca
 fn_004d2cca_result fn_004d2cca_map::fn_004d2cca(fn_004d2cca_key* value)
@@ -1093,4 +1101,83 @@ fn_004d2cca_result fn_004d2cca_map::fn_004d2cca(fn_004d2cca_key* value)
 	if (j.m_0x00->m_0x0c.fn_0040651e(*value) < 0)
 		return fn_004d2cca_result(fn_004d2ebe(x, y, value), true);
 	return fn_004d2cca_result(j, false);
+}
+
+// FUNCTION: STARFLEETOP 0x004d2ebe
+fn_004d2cca_iterator fn_004d2cca_map::fn_004d2ebe(fn_004d2cca_node* x, fn_004d2cca_node* y, fn_004d2cca_key* value)
+{
+	fn_004d2cca_node* z = new fn_004d2cca_node;
+	z->m_0x20 = false;
+	z->m_0x21 = false;
+	z->m_0x04 = y;
+	z->m_0x00 = m_0x08;
+	z->m_0x08 = m_0x08;
+	fn_004d3035(&z->m_0x0c, value);
+	++m_0x10;
+	if (y == m_0x04 || x != m_0x08 || value->fn_0040651e(y->m_0x0c) < 0)
+	{
+		y->m_0x00 = z;
+		if (y == m_0x04)
+		{
+			m_0x04->m_0x04 = z;
+			m_0x04->m_0x08 = z;
+		}
+		else if (y == m_0x04->m_0x00)
+			m_0x04->m_0x00 = z;
+	}
+	else
+	{
+		y->m_0x08 = z;
+		if (y == m_0x04->m_0x08)
+			m_0x04->m_0x08 = z;
+	}
+	for (x = z; x != m_0x04->m_0x04 && !x->m_0x04->m_0x20; )
+	{
+		if (x->m_0x04 == x->m_0x04->m_0x04->m_0x00)
+		{
+			y = x->m_0x04->m_0x04->m_0x08;
+			if (!y->m_0x20)
+			{
+				x->m_0x04->m_0x20 = true;
+				y->m_0x20 = true;
+				x->m_0x04->m_0x04->m_0x20 = false;
+				x = x->m_0x04->m_0x04;
+			}
+			else
+			{
+				if (x == x->m_0x04->m_0x08)
+				{
+					x = x->m_0x04;
+					fn_00556fd0(x);
+				}
+				x->m_0x04->m_0x20 = true;
+				x->m_0x04->m_0x04->m_0x20 = false;
+				fn_00558526(x->m_0x04->m_0x04);
+			}
+		}
+		else
+		{
+			y = x->m_0x04->m_0x04->m_0x00;
+			if (!y->m_0x20)
+			{
+				x->m_0x04->m_0x20 = true;
+				y->m_0x20 = true;
+				x->m_0x04->m_0x04->m_0x20 = false;
+				x = x->m_0x04->m_0x04;
+			}
+			else
+			{
+				if (x == x->m_0x04->m_0x00)
+				{
+					x = x->m_0x04;
+					fn_00558526(x);
+				}
+				x->m_0x04->m_0x20 = true;
+				x->m_0x04->m_0x04->m_0x20 = false;
+				fn_00556fd0(x->m_0x04->m_0x04);
+			}
+		}
+	}
+	m_0x04->m_0x04->m_0x20 = true;
+	return fn_004d2cca_iterator(z);
 }

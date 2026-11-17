@@ -6022,6 +6022,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d2ebe": {
+   "name": "FUN_004d2ebe",
+   "symbol": "?fn_004d2ebe@fn_004d2cca_map@@QAE?AUfn_004d2cca_iterator@@PAUfn_004d2cca_node@@0PAUfn_004d2cca_key@@@Z",
+   "unit": "unsorted/fn_004D2000.cpp",
+   "size": 330,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
