@@ -28,6 +28,7 @@ std::auto_ptr<C_00c3a7c0> g_00c3a7c0;
 class C_00c3a80c
 {
 public:
+    void fn_0060c68a(int entry);
     void fn_0060c720(tString &text);
 };
 
@@ -82,4 +83,11 @@ void C_0060c1c7::fn_0060c1c7()
     int count = gObject_0096ed60.fn_0052ce1a();
     while (count--)
         fn_0060c3e1(gObject_0096ed60.fn_0052ce67(gObject_0096ed60.fn_0052ce21(count)));
+}
+
+// FUNCTION: STARFLEETOP 0x0060c3e1
+void C_0060c1c7::fn_0060c3e1(int entry)
+{
+    if (entry)
+        g_00c3a80c->fn_0060c68a(entry);
 }
