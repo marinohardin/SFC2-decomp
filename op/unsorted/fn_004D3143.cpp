@@ -273,3 +273,9 @@ void fn_004d33d4( long arg1, tString arg2 )
 		obj->vfunction23( &arg2 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d3416
+void fn_004d3416( long arg1 )
+{
+	fn_004d33a8( arg1, fn_004d338b( arg1 ) + 1 );
+}
