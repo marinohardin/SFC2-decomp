@@ -33,8 +33,7 @@ public:
 	tCurrentTime fField108;
 	char fPad120[0x168 - 0x120];
 };
-// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
-class fn_0056c414_Database
+class fn_0056c414_Database	// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 {
 public:
 	virtual void vfunction1();
@@ -64,6 +63,7 @@ public:
 	void fn_00570578( tServCharacter* character, tServCharacter* characterStore );	// HYPOTHESIS: both pointers are characters (assertion texts "character", "characterStore" at 0x0056dbe5).
 	void fn_00570618( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result, bool lock );
 	void fn_00570754( tCampaignInfo* info );
+	void fn_005708ca( tServCharacter* character );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
@@ -99,7 +99,7 @@ public:
 	virtual void vfunction26( tServCharacter* character, tServCharacter* characterStore );
 	virtual void vfunction27( std::vector<tMetaMapHex>* hexes );
 	virtual void vfunction28( std::vector<tPoliticalTensionMatrix>* matrices );
-	virtual void vfunction29();
+	virtual void vfunction29( tServCharacter* character );
 	virtual void vfunction30();
 	virtual void vfunction31();
 	virtual void vfunction32();
@@ -594,4 +594,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction35( tCampaignInfo* 
 #line 836
 	validate( info );
 	fDatabase->fn_00570754( info );
+}
+#line 599
+// HYPOTHESIS: the record type is a guess from the assertion text "character"; fn_005708ca stores it.
+// FUNCTION: STARFLEETOP 0x0056dd5e
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction29( tServCharacter* character )
+{
+#line 845
+	validate( character );
+	fDatabase->fn_005708ca( character );
 }
