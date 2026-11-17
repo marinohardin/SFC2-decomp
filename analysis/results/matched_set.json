@@ -7840,6 +7840,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005a41c4": {
+   "name": "FUN_005a41c4",
+   "symbol": "?fn_005A41c4@fn_005A4173_Owner@@QAEMXZ",
+   "unit": "unsorted/fn_005A4000.cpp",
+   "size": 34,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

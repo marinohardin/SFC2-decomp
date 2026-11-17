@@ -13,8 +13,11 @@ public:
 	char		pad[0x208 - sizeof(tOptex)];
 	int		fValue208;
 	int		fValue20c;
-	char		pad2[0x238 - 0x210];
+	float		fValue210;
+	char		pad2[0x238 - 0x214];
 	int		fValue;
+
+	float		fn_005A41c4();
 };
 
 // FUNCTION: STARFLEETOP 0x005a4173
@@ -40,6 +43,15 @@ int fn_005A4173_Owner::fn_005A41a9()
 {
 	Enter();
 	int value = fValue208;
+	Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005a41c4
+float fn_005A4173_Owner::fn_005A41c4()
+{
+	Enter();
+	float value = fValue210;
 	Leave();
 	return value;
 }
