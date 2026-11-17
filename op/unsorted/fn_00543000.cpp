@@ -101,6 +101,7 @@ public:
 	bool fn_005433e8();
 	bool fn_005433f4();
 	bool fn_00543400();
+	bool fn_0054340c();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -275,4 +276,10 @@ bool fn_005430ad_owner::fn_005433f4()
 bool fn_005430ad_owner::fn_00543400()
 {
 	return m114_10 ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x0054340c
+bool fn_005430ad_owner::fn_0054340c()
+{
+	return !fn_005433e8() && !fn_005433f4() && !fn_00543400();
 }

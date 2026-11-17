@@ -7084,6 +7084,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0054340c": {
+   "name": "FUN_0054340c",
+   "symbol": "?fn_0054340c@fn_005430ad_owner@@QAE_NXZ",
+   "unit": "unsorted/fn_00543000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
