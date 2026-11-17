@@ -476,3 +476,13 @@ void fn_00616000_DirectPlayHolder::fn_006169e0()
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00616aa0
+void fn_00616000_DirectPlayHolder::fn_00616aa0()
+{
+	if ( fDirectPlayObject != 0 )
+	{
+		fDirectPlayObject->Release();
+		fDirectPlayObject = 0;
+	}
+}
