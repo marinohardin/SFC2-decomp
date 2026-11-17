@@ -1234,3 +1234,17 @@ unsigned int fn_0046aa46()
 		return 0;
 	return g_0090db98;
 }
+
+void fn_004adc89();
+
+// HYPOTHESIS: the thrown object is an uninitialised one-byte local; its type is guessed.
+// FUNCTION: STARFLEETOP 0x0046aa58
+void fn_0046aa58()
+{
+	g_0090db9c = 1;
+	fn_0046a688(g_0090db44);
+	g_0090db44 = 0;
+	fn_004adc89();
+	unsigned char thrown;
+	throw thrown;
+}
