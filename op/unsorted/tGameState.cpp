@@ -1226,3 +1226,11 @@ char fn_0046aa2b(int *param_1)
 		return 0;
 	return g_fn_00469c0a_owner.fn_00469c0a(param_1);
 }
+
+// FUNCTION: STARFLEETOP 0x0046aa46
+unsigned int fn_0046aa46()
+{
+	if (g_0090db9c != 0)
+		return 0;
+	return g_0090db98;
+}
