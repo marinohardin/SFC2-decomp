@@ -230,7 +230,7 @@ public:
 	virtual long vfunction29( long param_1, long param_2, char param_3, unsigned long param_4 );
 	virtual void vfunction30();
 	virtual char vfunction31();
-	virtual void vfunction32( long param_1 );
+	virtual long vfunction32( long param_1 );
 	virtual void vfunction33();
 	virtual void vfunction34( long param_1 );
 	virtual void vfunction35();
@@ -1185,4 +1185,18 @@ char tSndMgr_Miles::fn_0050ffb1( long param_1 )
 	}
 	AIL_load_sample_buffer( field_10[param_1].field_0, buffer, field_10[param_1].field_20[buffer], length );
 	return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x0051024f
+long tSndMgr_Miles::vfunction32( long param_1 )
+{
+	long count = 1;
+	if ( !param_1 )
+		count = 4;
+	field_10[param_1].field_28 = field_2410 * count;
+	if ( !field_10[param_1].field_20[0] )
+		field_10[param_1].field_20[0] = AIL_mem_alloc_lock( field_10[param_1].field_28 );
+	if ( !field_10[param_1].field_20[1] )
+		field_10[param_1].field_20[1] = AIL_mem_alloc_lock( field_10[param_1].field_28 );
+	return field_10[param_1].field_20[0] && field_10[param_1].field_20[1];
 }
