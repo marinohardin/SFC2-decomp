@@ -389,6 +389,7 @@ class tObject_00523644
 {
 public:
 	tObject_00523644();
+	void fn_00523668(int index);
 
 	tObject_005224e8 m_0000[32];
 	int m_200;
@@ -398,4 +399,12 @@ public:
 tObject_00523644::tObject_00523644()
 {
 	m_200 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00523668
+void tObject_00523644::fn_00523668(int index)
+{
+	for (int i = index + 1; i < m_200; i++)
+		m_0000[i - 1] = m_0000[i];
+	m_200--;
 }
