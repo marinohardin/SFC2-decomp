@@ -222,3 +222,9 @@ int fn_006cc480(fn_006cc070_owner *owner)
 	owner->field_98 = 0;
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006cc4f0
+int fn_006cc4f0(fn_006cc070_owner *owner)
+{
+	return fn_006cc900(owner->field_04);
+}
