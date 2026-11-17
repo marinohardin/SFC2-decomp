@@ -732,7 +732,9 @@ public:
 	int		m300;
 	int		m304;
 	int FUN_005c47af();
+	float	m308;
 	int FUN_005c47cf();
+	float FUN_005c47ef();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -758,6 +760,15 @@ int fn_005c478f_Holder::FUN_005c47cf()
 {
 	m04.Enter();
 	int value = m304;
+	m04.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c47ef
+float fn_005c478f_Holder::FUN_005c47ef()
+{
+	m04.Enter();
+	float value = m308;
 	m04.Leave();
 	return value;
 }
