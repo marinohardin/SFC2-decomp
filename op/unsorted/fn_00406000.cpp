@@ -438,3 +438,21 @@ void fn_00406a90()
 {
     atexit(fn_00406a9c);
 }
+
+// HYPOTHESIS: a class holding a std::string followed by two ints; the original type is unknown.
+class fn_00406aa6_Obj
+{
+public:
+    fn_00406aa6_Obj(const char* s, int v);
+    std::string m0;
+    int m10;
+    int m14;
+};
+
+// FUNCTION: STARFLEETOP 0x00406aa6
+fn_00406aa6_Obj::fn_00406aa6_Obj(const char* s, int v)
+    : m0(s)
+{
+    m10 = 0;
+    m14 = v;
+}
