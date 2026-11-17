@@ -75,12 +75,23 @@ public:
 	void* field_0c;
 };
 
+// HYPOTHESIS: the 4-byte value queued at +0x2c of fn_005f745f_object; 0x005f767d returns it
+// through a hidden pointer, so it is not a plain int.
+struct fn_005f7a4b_value
+{
+	fn_005f7a4b_value& operator=( const fn_005f7a4b_value& other );
+
+	int field_00;
+};
+
 // HYPOTHESIS: the object at +0x2c of fn_005f745f_object; 0x005f7a6a takes its argument by
-// reference, its type is not known.
+// reference, its type is not known; 0x005f7a4b reads the front, 0x005f7aeb drops it.
 class fn_005f7a6a_object
 {
 public:
 	void FUN_005f7a6a( const int& value );
+	fn_005f7a4b_value& FUN_005f7a4b();
+	void FUN_005f7aeb();
 };
 
 // HYPOTHESIS: a container guarded by the lock at +0x40; only the members used here are placed.
@@ -92,6 +103,7 @@ public:
 	void FUN_005f755c( int value );
 	fn_0055fe12_value FUN_005f75a3();
 	void FUN_005f7635( int value );
+	fn_005f7a4b_value FUN_005f767d();
 
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
@@ -168,4 +180,17 @@ void fn_005f745f_object::FUN_005f7635( int value )
 	field_2c.FUN_005f7a6a( value );
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005f767d
+fn_005f7a4b_value fn_005f745f_object::FUN_005f767d()
+{
+	// As in 0x005f74a6, the original sets no unwind state before releasing the guard; this form
+	// does, which is the remaining difference.
+	tOptex::tGuard guard( &field_40 );
+
+	fn_005f7a4b_value value( field_2c.FUN_005f7a4b() );
+	field_2c.FUN_005f7aeb();
+
+	return value;
 }
