@@ -147,6 +147,7 @@ bool fn_0042a45f_object::FUN_0042a45f()
 
 #include <windows.h>
 #include "Common/Thread/Optex.h"
+#include "unsorted/tHexPoint.h"
 
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
 // out-of-line copy (0x00429a18); the header cannot define it while that unit does.
@@ -183,6 +184,7 @@ public:
 	void FUN_0042a623( int value );
 	void FUN_0042a647( int value );
 	void FUN_0042a66b( int value );
+	void FUN_0042a68f( tHexPoint value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -196,7 +198,8 @@ public:
 	int field_50;
 	byte field_54[0x58 - 0x54];
 	int field_58;
-	byte field_5c[0xe4 - 0x5c];
+	tHexPoint field_5c;
+	byte field_70[0xe4 - 0x70];
 	tOptex field_e4;
 };
 
@@ -276,4 +279,14 @@ void fn_0042a480_object::FUN_0042a66b( int value )
 	field_e4.Enter();
 	field_58 = value;
 	field_e4.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a68f
+void fn_0042a480_object::FUN_0042a68f( tHexPoint value )
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	field_5c = value;
+
+	guard.Leave();
 }
