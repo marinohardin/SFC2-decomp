@@ -788,3 +788,10 @@ float tBaseWeapon::vfunction70()
         field_34 = (float)(char)vfunction107() * field_d4;
     return field_34;
 }
+
+// FUNCTION: STARFLEETOP 0x004d82cd
+void tBaseWeapon::fn_004d82cd(float *param_1)
+{
+    if (*param_1 > field_38)
+        *param_1 = field_38;
+}

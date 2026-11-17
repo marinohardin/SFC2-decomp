@@ -128,6 +128,8 @@ public:
     virtual void vfunction69(float param_1);
     // HYPOTHESIS: the slot at offset 0x114 returns a float that 0x004e23b5 caps its request at.
     virtual float vfunction70();
+    // HYPOTHESIS: probably a virtual slot; its vtable index is not established.
+    void fn_004d82cd(float *param_1);
     virtual void vfunction71();
     virtual void vfunction72();
     virtual void vfunction73();
