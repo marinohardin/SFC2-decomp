@@ -2557,6 +2557,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040ed42": {
+   "name": "FUN_0040ed42",
+   "symbol": "?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 87,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",

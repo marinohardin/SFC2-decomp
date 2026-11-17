@@ -1215,6 +1215,25 @@ void fn_0040ed22(tSFCStream& buf, unsigned char flags)
     }
 }
 
+#include <string>
+
+// FUNCTION: STARFLEETOP 0x0040ed42
+std::string& std::string::append(const char* _S, size_type _M)
+{
+    if (npos - _Len <= _M)
+        _Xlen();
+    size_type _N;
+    if (0 < _M && _Grow(_N = _Len + _M))
+    {
+        std::char_traits<char>::copy(_Ptr + _Len, _S, _M);
+        _Eos(_N);
+    }
+    return (*this);
+}
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+std::string& (std::string::*g_fn_0040ed42)(const char*, std::string::size_type) = &std::string::append;
+
 // FUNCTION: STARFLEETOP 0x0040e9df
 void fn_0040e9df(long* value, tSFCStream& buf, unsigned char flags, char* name)
 {
