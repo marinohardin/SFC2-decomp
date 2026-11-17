@@ -203,8 +203,15 @@ public:
 	// shared name getter 0x0060f6d0.
 	fn_006166c0_Name fn_006166c0( c_004329af_entry* pShort, c_004329af_entry* pLong );
 	std::vector< c_004329af_entry >* fn_00616700();
+	void fn_006169a0();
+	void fn_00616aa0();
 	void fn_00616ac0();
-	char fPad[0x44];
+	void fn_00616b70();
+	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
+	void fn_00616fd0( std::map< long, long >* pProviders );
+	char fPad[0x18];
+	long f18;
+	char fPad1C[0x28];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
 	fn_00616000_LobbyObject* fLobby;
 	// HYPOTHESIS: the modem addresses EnumAddress fills.
@@ -215,7 +222,9 @@ public:
 	char fPad6C[0x44];
 	// HYPOTHESIS: a std::list of received messages (head at +0xb4, size at +0xb8).
 	std::list<fn_00616470_Message*> fMessages;
-	char fPadBC[0x90];
+	char fPadBC[0x7c];
+	bool f138;
+	char fPad139[0x13];
 	long f14c;
 	long f150;
 	long f154;
@@ -430,4 +439,14 @@ std::vector< c_004329af_entry >* fn_00616000_DirectPlayHolder::fn_00616700()
 			pDirectPlay->Release();
 	}
 	return &fAddresses;
+}
+
+// FUNCTION: STARFLEETOP 0x006169a0
+void fn_00616000_DirectPlayHolder::fn_006169a0()
+{
+	if ( f138 )
+		fn_00616150( f18 );
+	fn_00616aa0();
+	fn_00616b70();
+	fn_00616fd0( &fProviders );
 }
