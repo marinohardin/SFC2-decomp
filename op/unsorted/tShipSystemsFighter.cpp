@@ -161,7 +161,7 @@ public:
     virtual void vfunction143();
     virtual void vfunction144();
     virtual void vfunction145();
-    virtual void vfunction146();
+    virtual int vfunction146(int, int);
     virtual void vfunction147();
     virtual void vfunction148();
     virtual void vfunction149();
@@ -661,4 +661,12 @@ int tShipSystemsFighter::vfunction108()
 tMinMaxFloat* tShipSystemsFighter::vfunction123()
 {
     return &m18;
+}
+
+// HYPOTHESIS: the return and parameter types; the original returns -1 and pops two
+// unused dword arguments.
+// FUNCTION: STARFLEETOP 0x0044450f
+int tShipSystemsFighter::vfunction146(int, int)
+{
+    return -1;
 }
