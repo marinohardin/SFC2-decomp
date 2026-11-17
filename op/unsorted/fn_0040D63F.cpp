@@ -459,30 +459,27 @@ void fn_0040dc96(int size, void* p, fn_0040d63f_Buf& buf)
 }
 
 // FUNCTION: STARFLEETOP 0x0040dceb
-// HYPOTHESIS: the original reads into the bytes of its own third parameter slot (a pointer to the buffer), as the exe does.
-void fn_0040dceb(int size, void* p, fn_0040d63f_Buf* buf)
+void fn_0040dceb(int size, void* p, fn_0040d63f_Buf& buf)
 {
     switch (size) {
-    case 1:
-        fn_0040dc84((unsigned char*)&buf + 3, *buf);
-        {
-            unsigned char* dst = (unsigned char*)p;
-            *dst = ((unsigned char*)&buf)[3];
-        }
-        break;
-    case 2:
-        fn_0040dc4a((short*)((char*)&buf + 2), *buf);
-        {
-            short* dst = (short*)p;
-            *dst = *(short*)((char*)&buf + 2);
-        }
-        break;
-    case 4:
-        fn_0040d9bf((unsigned int*)&buf, *buf);
-        {
-            unsigned int* dst = (unsigned int*)p;
-            *dst = *(unsigned int*)&buf;
-        }
+    case 1: {
+        unsigned char b;
+        fn_0040dc84(&b, buf);
+        *(unsigned char*)p = b;
         break;
     }
+    case 2: {
+        short s;
+        fn_0040dc4a(&s, buf);
+        *(short*)p = s;
+        break;
+    }
+    case 4: {
+        unsigned int v;
+        fn_0040d9bf(&v, buf);
+        *(unsigned int*)p = v;
+        break;
+    }
+    }
 }
+
