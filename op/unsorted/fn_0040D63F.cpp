@@ -4,6 +4,7 @@ class fn_0040d63f_Buf
 public:
     fn_0040d63f_Buf(int size);
     void fn_0040d67d();
+    void fn_0040d692();
     int m00;
     char* m04;
     char* m08;
@@ -39,4 +40,16 @@ void fn_0040d63f_Buf::fn_0040d67d()
     m15 = 0;
     m16 = 0;
     m18 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0040d692
+void fn_0040d63f_Buf::fn_0040d692()
+{
+    if (m04 != 0) {
+        if (m14 == 1)
+            operator delete(m04);
+        m04 = 0;
+        m08 = 0;
+        m0c = 0;
+    }
 }
