@@ -33,6 +33,16 @@ template<> std::vector<int>& std::map<int, std::vector<int> >::operator[]( const
 	return ( ( *_P ).second );
 }
 
+// The game's out-of-line copy of the library's tree destructor for the map of vectors.
+// HYPOTHESIS: as for 0x005fb033, the original's library freed a per-instance nil node at +0x8.
+// FUNCTION: STARFLEETOP 0x005fb0e4
+template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::~_Tree()
+{
+	erase( begin(), end() );
+	_Freenode( _Head );
+	_Head = 0, _Size = 0;
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
