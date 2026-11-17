@@ -109,6 +109,10 @@ public:
 	void FUN_005f7961( const fn_0055fe12_value& value );
 	void FUN_005f7902();
 	void FUN_005f7c9d( unsigned int count ); // HYPOTHESIS: grows the block map
+	~fn_005f7961_object();
+	void FUN_005f7c4b(); // HYPOTHESIS: destroys and drops the last value
+	// HYPOTHESIS: frees the block map; the same shared body as in fn_005f77c6_object.
+	void FUN_005d97c1();
 
 	byte field_00[0x04];
 	fn_0055fe12_value** field_04; // HYPOTHESIS: the map of blocks of 204 values
@@ -378,4 +382,13 @@ void fn_005f7961_object::FUN_005f7961( const fn_0055fe12_value& value )
 		--field_10;
 		throw;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7a32
+fn_005f7961_object::~fn_005f7961_object()
+{
+	while ( field_10 != 0 ) {
+		FUN_005f7c4b();
+	}
+	FUN_005d97c1();
 }
