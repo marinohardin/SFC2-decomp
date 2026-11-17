@@ -135,3 +135,32 @@ fn_005bc10e_elem *fn_005bc10e_vector::FUN_005bc10e(fn_005bc10e_elem *_P, const f
 	FUN_0053bf12(_P, 1, _X);
 	return (_First + (_P - _F));
 }
+
+// HYPOTHESIS: a 4-byte element of another STL vector.
+struct fn_005bc138_elem
+{
+	char m00[0x4];
+};
+
+// HYPOTHESIS: an STL vector of 4-byte elements laid out like
+// fn_005bc018_vector.
+struct fn_005bc138_vector
+{
+	char m00;
+	fn_005bc138_elem *_First;
+	fn_005bc138_elem *_Last;
+	fn_005bc138_elem *_End;
+
+	// HYPOTHESIS: insert(_P, _M, _X).
+	void FUN_00427883(fn_005bc138_elem *_P, unsigned int _M, const fn_005bc138_elem &_X);
+	fn_005bc138_elem *FUN_005bc138(fn_005bc138_elem *_P, const fn_005bc138_elem &_X);
+};
+
+// HYPOTHESIS: the STL vector's insert(_P, _X).
+// FUNCTION: STARFLEETOP 0x005bc138
+fn_005bc138_elem *fn_005bc138_vector::FUN_005bc138(fn_005bc138_elem *_P, const fn_005bc138_elem &_X)
+{
+	fn_005bc138_elem *_F = _First;
+	FUN_00427883(_P, 1, _X);
+	return (_First + (_P - _F));
+}
