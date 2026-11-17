@@ -1094,12 +1094,12 @@ int32u tPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *c
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mWrite( buffer, offset, size, callback );
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, as in tPath::mDelete, which gives the
+// original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061f0c0
 int32u tPath::mFree( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mFree();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mFree();
 }
 
 // FUNCTION: STARFLEETOP 0x0061f1d0

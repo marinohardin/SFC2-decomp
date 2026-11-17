@@ -6612,9 +6612,9 @@
    "symbol": "?mFree@tPath@@QAEKXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 272,
-   "score": 99.966,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061f1d0": {
    "name": "tVolIterator::mAdd",
