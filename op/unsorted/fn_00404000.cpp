@@ -148,6 +148,7 @@ public:
     fn_00404230_Obj* fn_00404230(unsigned long a, unsigned long b);
     void fn_0040499a(fn_00404230_Item* item, int n);
     void fn_00404a0c();
+    fn_00404230_Obj* fn_00404267();
     char pad0[0x50];
     unsigned long m50;
 };
@@ -162,6 +163,18 @@ fn_00404230_Obj* fn_00404230_Obj::fn_00404230(unsigned long a, unsigned long b)
         if (p != 0) {
             this->fn_0040499a(p, 1);
             this->fn_00404a0c();
+            return this;
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00404267
+fn_00404230_Obj* fn_00404230_Obj::fn_00404267()
+{
+    if (m50 != 0) {
+        if (fclose((FILE*)m50) == 0) {
+            this->fn_0040499a(0, 2);
             return this;
         }
     }
