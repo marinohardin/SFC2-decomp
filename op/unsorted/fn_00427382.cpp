@@ -284,3 +284,14 @@ std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension
 	_Last = _Ucopy( _X.begin(), _X.end(), _First );
 	_End = _Last;
 }
+
+// MATCH-ONLY: the library's destructor of the vector at 0x10 of tPoliticalTensionVector, written
+// out here, as the copy constructor above is, so that it has source lines here.
+// FUNCTION: STARFLEETOP 0x004277ae
+template<>
+std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension >::~vector()
+{
+	_Destroy( _First, _Last );
+	allocator.deallocate( _First, _End - _First );
+	_First = 0, _Last = 0, _End = 0;
+}
