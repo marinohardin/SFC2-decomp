@@ -723,3 +723,34 @@ int fn_006ccf20(char *host, int port, sockaddr_in *address, hostent **param_4)
 		*param_4 = entry;
 	return 1;
 }
+
+char fn_006cd070(unsigned char value);
+
+// HYPOTHESIS: encodes length bytes as base64 text, three bytes to four characters, the last
+// group padded with zero bytes; fn_006cd070 maps a 6-bit value to its character.
+// FUNCTION: STARFLEETOP 0x006ccfc0
+void fn_006ccfc0(unsigned char *data, int length, char *text)
+{
+	unsigned char in[3];
+	unsigned char out[4];
+	int i;
+	int n = 0;
+
+	while (n < length)
+	{
+		for (i = 0; i <= 2; i++, n++)
+		{
+			if (n < length)
+				in[i] = *data++;
+			else
+				in[i] = 0;
+		}
+		out[0] = in[0] >> 2;
+		out[1] = ((in[0] & 3) << 4) + (in[1] >> 4);
+		out[2] = ((in[1] & 0xf) << 2) + (in[2] >> 6);
+		out[3] = in[2] & 0x3f;
+		for (i = 0; i <= 3; i++)
+			*text++ = fn_006cd070(out[i]);
+	}
+	*text = 0;
+}
