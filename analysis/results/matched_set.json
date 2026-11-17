@@ -9136,6 +9136,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fbb1f": {
+   "name": "tMemberCallback<tMetaClientChatCtlrC,tChatChannel_const&>::scalar_deleting_destructor",
+   "symbol": "??_G?$tMemberCallback@VtMetaClientChatCtlrC@@ABVtChatChannel@@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

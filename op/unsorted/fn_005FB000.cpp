@@ -572,6 +572,7 @@ tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > CreateCallback( tMe
 // MATCH-ONLY: the SDK's template destructor, written out as this instance's inline explicit
 // specialization so that its annotation names the one instance. Its body (storing the base
 // vtable) is the same as ~tCallback's, which the analysis names at this address.
+// FUNCTION: STARFLEETOP 0x005fbb1f
 // FUNCTION: STARFLEETOP 0x005fb9ca
 template<>
 inline tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& >::~tMemberCallback()
