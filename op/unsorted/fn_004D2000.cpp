@@ -386,32 +386,48 @@ void fn_004d2420_holder::fn_004d2573(fn_004d2238_string s)
 // operator<<(int) 0x0041a2f0 region, str() 0x0042d292, virtual-base destructor 0x00401fd2.
 namespace std
 {
-	template <class C, class Tr> class basic_ios
+	class ios_base
 	{
 	public:
-		~basic_ios() {}
-		char m_ios[0x44];
+		virtual ~ios_base();
+		char m_base[0x38];
+	};
+	template <class C, class Tr> class basic_ios : public ios_base
+	{
+	public:
+		virtual ~basic_ios() {}
+		char m_ios[0x8];
 	};
 	template <class C, class Tr> class basic_istream : virtual public basic_ios<C, Tr>
 	{
 	public:
+		virtual ~basic_istream() {}
 		int m_chcount;
 	};
 	template <class C, class Tr> class basic_ostream : virtual public basic_ios<C, Tr>
 	{
 	public:
+		virtual ~basic_ostream() {}
 		basic_ostream<C, Tr>& operator<<(int v);
 	};
 	template <class C, class Tr> class basic_iostream : public basic_istream<C, Tr>, public basic_ostream<C, Tr>
 	{
+	public:
+		virtual ~basic_iostream() {}
+	};
+	template <class C, class Tr, class A> class basic_stringbuf
+	{
+	public:
+		~basic_stringbuf();
+		char m_buf[0x3c];
 	};
 	template <class C, class Tr, class A> class basic_stringstream : public basic_iostream<C, Tr>
 	{
 	public:
 		basic_stringstream(int mode = 3);
-		~basic_stringstream();
+		virtual ~basic_stringstream() {}
 		basic_string<C, Tr, A> str() const;
-		char m_buf[0x3c];
+		basic_stringbuf<C, Tr, A> _Sb;
 	};
 }
 
