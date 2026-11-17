@@ -589,6 +589,15 @@ void FUN_005fb9d1( const std::pair<const tChatChannel*, const tChatChannel*>& ch
 	std::for_each( channels.first, channels.second, callback );
 }
 
+// MATCH-ONLY: the SDK's template CreateCallback, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x005fba10
+template<>
+tMemberCallback< tMetaClientChatCtlrC, const std::string& > CreateCallback( tMetaClientChatCtlrC* object, void (tMetaClientChatCtlrC::*func)( const std::string& result ) )
+{
+	return tMemberCallback< tMetaClientChatCtlrC, const std::string& >( object, func );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;

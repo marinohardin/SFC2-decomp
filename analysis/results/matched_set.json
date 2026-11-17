@@ -9082,6 +9082,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fba10": {
+   "name": "tMemberCallback<tMetaClientChatCtlrC,std::basic_string<char,std::char_traits<char>,std::allocator<char>_>_const&>::tMemberCallback<tMetaClientChatCtlrC,std::basic_string<char,std::char_traits<char>,std::allocator<char>_>_const&>",
+   "symbol": "?CreateCallback@@YA?AV?$tMemberCallback@VtMetaClientChatCtlrC@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@PAVtMetaClientChatCtlrC@@P82@AEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 31,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
