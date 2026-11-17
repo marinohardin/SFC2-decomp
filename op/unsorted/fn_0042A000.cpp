@@ -244,6 +244,7 @@ public:
 	void FUN_0042a6fc( bool value );
 	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
 	void FUN_0042a8b7( int value );
+	std::string FUN_0042a92f();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -420,4 +421,14 @@ void fn_0042a480_object::FUN_0042a8b7( int value )
 	(*field_cc.Lock()).FUN_005395b2( value );
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a92f
+std::string fn_0042a480_object::FUN_0042a92f()
+{
+	// The original keeps no unwind state for the returned copy (its flag slot is reused for the
+	// guard); this form tracks it, which is the remaining difference.
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_0c;
 }
