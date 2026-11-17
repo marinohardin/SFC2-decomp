@@ -27,7 +27,7 @@ public:
     // HYPOTHESIS: 0x0040e744 is a member taking a formatted text line.
     void fn_0040e744(char* text);
     // HYPOTHESIS: 0x0040e70f is the read counterpart of 0x0040e744 (fetches a text line).
-    void fn_0040e70f(char* text);
+    int fn_0040e70f(char* text);
     int m00;
     char* m04;
     char* m08;
@@ -880,5 +880,18 @@ void fn_0040d63f_Buf::fn_0040e6d1(char* s)
         *z = 0;
         fn_0040d867(z, 1, 0);
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0040e70f
+int fn_0040d63f_Buf::fn_0040e70f(char* text)
+{
+    int n = 0;
+    while (fn_0040d897(text, 1, 0) == 1 && *text != '\n') {
+        text++;
+        n++;
+    }
+    if (text != 0)
+        *text = 0;
+    return n;
 }
 
