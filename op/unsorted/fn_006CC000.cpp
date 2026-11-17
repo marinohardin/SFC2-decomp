@@ -513,7 +513,7 @@ struct fn_006ccb20_record
 	unsigned long field_cc;
 	unsigned long field_d0;
 	unsigned long field_d4;
-	int field_d8;
+	unsigned long field_d8;
 	int field_dc;
 	int field_e0;
 	int field_e4;
@@ -633,5 +633,30 @@ void fn_006ccd60(fn_006ccb20_record *record)
 			g_00c7ea68[length] = 0;
 			fn_006cd230(record, g_00c7ea68, &from);
 		}
+	}
+}
+
+void fn_006cdaa0(fn_006ccb20_record *record, int param_2);
+
+// HYPOTHESIS: the heartbeat: sends again when the last send is older than five minutes, in
+// the future or never happened, and while the counter at +0xe8 runs, every thirty seconds.
+// FUNCTION: STARFLEETOP 0x006cce00
+void fn_006cce00(fn_006ccb20_record *record)
+{
+	unsigned long now = GetTickCount();
+
+	if (record->field_04 == INVALID_SOCKET)
+		return;
+	if (now - record->field_d8 > 300000 || record->field_d8 == 0 || now < record->field_d8)
+	{
+		fn_006cdaa0(record, 0);
+		return;
+	}
+	if (record->field_e8 > 0 && now - record->field_d8 > 30000)
+	{
+		fn_006cdaa0(record, 0);
+		record->field_e8++;
+		if (record->field_e8 > 10)
+			record->field_e8 = 0;
 	}
 }
