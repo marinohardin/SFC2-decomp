@@ -79,6 +79,8 @@ class fn_0053f522_owner
 public:
 	void fn_0053f522( long a, long b );
 	fn_0054340c_owner *fn_0053f546( fn_0054340c_owner *it );
+	void fn_0053f461();
+	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
 
 	long m_00;
 	fn_0054340c_owner *m_04;
@@ -257,4 +259,13 @@ void fn_0053f25c_owner::fn_0053f30f()
 // FUNCTION: STARFLEETOP 0x0053f41a
 void fn_0053f41a()
 {
+}
+
+// HYPOTHESIS: a member of the vector-like class at 0x6c above (ecx passes through
+// unchanged to the callee); hands its own first and last to the range member at
+// 0x0053f5ad, like a clear.
+// FUNCTION: STARFLEETOP 0x0053f461
+void fn_0053f522_owner::fn_0053f461()
+{
+	fn_0053f5ad( m_04, m_08 );
 }
