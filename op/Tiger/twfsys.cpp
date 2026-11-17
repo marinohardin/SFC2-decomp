@@ -560,7 +560,7 @@ tDir twFileSystemPart::mGetSpecialDir(tSession session, eSpecialDir which)
 // HYPOTHESIS: out of line in this unit, as it sits at the end of this unit's code and
 // mGetVolIterator calls it to copy its result.
 // FUNCTION: STARFLEETOP 0x006345b0
-tVolIterator::tVolIterator(const tVolIterator &other): fn_SessionCookie(other)
+tVolIterator::tVolIterator(const tVolIterator &other): tCookie(other)
 {
     fSession = other.fSession;
 }

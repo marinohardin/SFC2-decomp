@@ -16332,9 +16332,9 @@
    "symbol": "?fn_slot28@tFile@@UAE?AVtPath@@XZ",
    "unit": "Tiger/tFile.cpp",
    "size": 64,
-   "score": 99.667,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00757d20": {
    "name": "tFile::mFilePos",
