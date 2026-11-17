@@ -67,7 +67,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00633e80	tDir::tDir	1.63	2	sonnet	2026-11-16T21:04:44Z	attempt 2 (sonnet) did not raise the best; best 1.63%
 0x00633fe0	AsynchIOMain	81.25	2	sonnet	2026-11-16T21:21:40Z	attempt 2 (sonnet) did not raise the best; best 81.25%
 0x006340b0	twIORequest::mProcessRequest	31.08	2	sonnet	2026-11-16T21:37:13Z	best not above 90% after 2 attempts; best 31.08%
-0x00634810	twIORequestQueue::mAdd	99.95	2	sonnet	2026-11-16T22:01:04Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.95%
 0x00634940	twIORequestQueueManager::~twIORequestQueueManager	19.87	2	sonnet	2026-11-16T22:10:29Z	attempt 2 (sonnet) did not raise the best; best 19.87%
 0x00634b50	twIORequestQueueManager::mRequest	68.45	2	sonnet	2026-11-16T22:19:39Z	attempt 2 (sonnet) did not raise the best; best 68.45%
 0x00643b30	twStandardSoundChannel::mAddSoundChannel	30.95	2	sonnet	2026-11-16T11:02:45Z	best not above 90% after 2 attempts; best 30.95%
