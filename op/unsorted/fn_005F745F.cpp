@@ -130,14 +130,47 @@ struct fn_005f7a4b_value
 	int field_00;
 };
 
+class fn_005f7a6a_object;
+
+// HYPOTHESIS: a position in fn_005f7a6a_object, as fn_005f7c17_iterator; 0x005f7efa reads the
+// value it points at.
+class fn_005f7efa_iterator
+{
+public:
+	fn_005f7efa_iterator( int index, fn_005f7a6a_object* owner )
+		: fIndex( index ), fOwner( owner )
+	{
+	}
+	fn_005f7efa_iterator& operator-=( int n )
+	{
+		fIndex -= n;
+		return *this;
+	}
+	fn_005f7efa_iterator operator-( int n ) const
+	{
+		fn_005f7efa_iterator tmp = *this;
+		return tmp -= n;
+	}
+	fn_005f7a4b_value& FUN_005f7efa();
+
+	int fIndex;
+	fn_005f7a6a_object* fOwner;
+};
+
 // HYPOTHESIS: the object at +0x2c of fn_005f745f_object; 0x005f7a6a takes its argument by
-// reference, its type is not known; 0x005f7a4b reads the front, 0x005f7aeb drops it.
+// reference, its type is not known; 0x005f7a4b reads the last value, 0x005f7aeb drops one.
 class fn_005f7a6a_object
 {
 public:
 	void FUN_005f7a6a( const int& value );
 	fn_005f7a4b_value& FUN_005f7a4b();
 	void FUN_005f7aeb();
+
+	byte field_00[0x04];
+	fn_005f7a4b_value** field_04; // HYPOTHESIS: the map of blocks
+	unsigned int field_08; // HYPOTHESIS: the map size
+	unsigned int field_0c; // HYPOTHESIS: the index of the first value
+	unsigned int field_10; // HYPOTHESIS: the value count; 0x005f771b tests it
 };
 
 // HYPOTHESIS: a container guarded by the lock at +0x40; only the members used here are placed.
@@ -158,8 +191,6 @@ public:
 	fn_005f77c6_object field_04;
 	fn_005f7961_object field_18;
 	fn_005f7a6a_object field_2c;
-	byte field_2d[0x3c - 0x2d];
-	int field_3c; // HYPOTHESIS: the entry count of the list at +0x2c; 0x005f771b tests it
 	tOptex field_40;
 };
 
@@ -265,7 +296,7 @@ bool fn_005f745f_object::FUN_005f76f8()
 bool fn_005f745f_object::FUN_005f771b()
 {
 	field_40.Enter();
-	bool empty = field_3c == 0;
+	bool empty = field_2c.field_10 == 0;
 	field_40.Leave();
 	return empty;
 }
@@ -391,4 +422,10 @@ fn_005f7961_object::~fn_005f7961_object()
 		FUN_005f7c4b();
 	}
 	FUN_005d97c1();
+}
+
+// FUNCTION: STARFLEETOP 0x005f7a4b
+fn_005f7a4b_value& fn_005f7a6a_object::FUN_005f7a4b()
+{
+	return (fn_005f7efa_iterator( field_10 + field_0c, this ) - 1).FUN_005f7efa();
 }
