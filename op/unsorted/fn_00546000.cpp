@@ -365,6 +365,7 @@ class c_00546337
 {
 public:
     void fn_00546337(const c_00546337_arg& param_1);
+    void fn_005463cb(float param_1, char param_2);
 
     char field_0[0x9c];
     char field_9c[0x19];
@@ -385,5 +386,25 @@ void c_00546337::fn_00546337(const c_00546337_arg& param_1)
     for (i = 0; i < 0x19; i++)
     {
         field_e7[i] = 0 > (field_ce[i] < param_1.field_57[i] ? field_ce[i] : param_1.field_57[i]) ? 0 : (field_ce[i] < param_1.field_57[i] ? field_ce[i] : param_1.field_57[i]);
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x005463cb
+void c_00546337::fn_005463cb(float param_1, char param_2)
+{
+    int i;
+    for (i = 0; i < 0x19; i++)
+    {
+        // HYPOTHESIS: each entry of the second array moves toward the first by the scaled gap,
+        // at least param_2, as max and min macros expand.
+        char gap = field_9c[i] - field_b5[i];
+        char step = param_2 > (int)(gap * param_1) ? param_2 : (int)(gap * param_1);
+        field_b5[i] = field_9c[i] < step + field_b5[i] ? field_9c[i] : step + field_b5[i];
+    }
+    for (i = 0; i < 0x19; i++)
+    {
+        char gap = field_ce[i] - field_e7[i];
+        char step = param_2 > (int)(gap * param_1) ? param_2 : (int)(gap * param_1);
+        field_e7[i] = field_ce[i] < step + field_e7[i] ? field_ce[i] : step + field_e7[i];
     }
 }
