@@ -497,3 +497,11 @@ void fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query
 	}
 	guard.Leave();
 }
+
+class tMetaMapHex;
+
+// HYPOTHESIS: the destructor of nDatabase::tQuery<tMetaMapHex>, as 0x0056f041 is for tServCharacter.
+// FUNCTION: STARFLEETOP 0x0056f6e5
+nDatabase::tQuery<tMetaMapHex>::~tQuery()
+{
+}
