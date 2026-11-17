@@ -41,7 +41,7 @@ public:
     virtual void vfunction26( float param_1 ) = 0;
     virtual tMinMaxFloat* vfunction27() = 0;
     virtual tMinMaxFloat* vfunction28() = 0;
-    virtual void vfunction29() = 0;
+    virtual tMinMaxFloat* vfunction29() = 0;
     virtual void vfunction30() = 0;
     virtual void vfunction31() = 0;
     virtual void vfunction32() = 0;
