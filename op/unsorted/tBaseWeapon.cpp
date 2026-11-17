@@ -962,3 +962,20 @@ void tBaseWeapon::fn_004d82e3(float *param_1)
     if (*param_1 < 0.0f)
         *param_1 = 0.0f;
 }
+
+// FUNCTION: STARFLEETOP 0x004d867a
+void tBaseWeapon::vfunction147()
+{
+    if (field_3c < field_dc)
+        fn_004d871f(&field_3c, &field_dc);
+    if (field_3c < field_e0)
+        fn_004d871f(&field_3c, &field_e0);
+    if (field_3c < field_e4)
+        fn_004d871f(&field_3c, &field_e4);
+    if (field_dc < field_e0)
+        fn_004d871f(&field_dc, &field_e0);
+    if (field_dc < field_e4)
+        fn_004d871f(&field_dc, &field_e4);
+    if (field_e0 < field_e4)
+        fn_004d871f(&field_e0, &field_e4);
+}
