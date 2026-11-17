@@ -22,3 +22,8 @@ fn_004033ab_Ifstream::fn_004033ab_Ifstream(const char* name, int mode)
 fn_004033ab_Ifstream::~fn_004033ab_Ifstream()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x004034a5
+std::filebuf::~filebuf()
+{
+}

@@ -370,6 +370,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x004034a5": {
+   "name": "std::basic_filebuf<char,std::char_traits<char>_>::~basic_filebuf<char,std::char_traits<char>_>",
+   "symbol": "??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ",
+   "unit": "unsorted/fn_00403000.cpp",
+   "size": 101,
+   "score": 24.969,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
