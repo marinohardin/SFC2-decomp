@@ -668,3 +668,22 @@ void fn_006cce80(fn_006ccb20_record *record)
 		record = g_00888838;
 	fn_006cdaa0(record, 1);
 }
+
+// HYPOTHESIS: shuts the record down: closes both sockets, frees a record that is not the
+// global one and releases Winsock.
+// FUNCTION: STARFLEETOP 0x006ccea0
+void fn_006ccea0(fn_006ccb20_record *record)
+{
+	if (record == 0)
+		record = g_00888838;
+	if (record->field_00 != INVALID_SOCKET)
+		closesocket(record->field_00);
+	if (record->field_04 != INVALID_SOCKET && record->field_04 != record->field_00)
+		closesocket(record->field_04);
+	record->field_04 = INVALID_SOCKET;
+	record->field_00 = INVALID_SOCKET;
+	record->field_d8 = 0;
+	if (record != &g_00888748)
+		free(record);
+	WSACleanup();
+}
