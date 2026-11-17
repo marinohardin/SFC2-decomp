@@ -779,6 +779,7 @@ public:
 	int FUN_005c4d2f();
 	float FUN_005c4d4f();
 	float FUN_005c4d78();
+	float FUN_005c4da1();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1392,6 +1393,16 @@ float fn_005c478f_Holder::FUN_005c4d78()
 	m04.Enter();
 	// HYPOTHESIS: reads the float at offset 0x2b8 under the lock.
 	float value = *(float*)((char*)this + 0x2b8);
+	m04.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c4da1
+float fn_005c478f_Holder::FUN_005c4da1()
+{
+	m04.Enter();
+	// HYPOTHESIS: reads the float at offset 0x2bc under the lock.
+	float value = *(float*)((char*)this + 0x2bc);
 	m04.Leave();
 	return value;
 }
