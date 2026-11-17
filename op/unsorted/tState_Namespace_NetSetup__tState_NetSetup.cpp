@@ -8,6 +8,9 @@
 #include "unsorted/tGameState.h"
 #include "unsorted/c_0046aa10_msg.h"
 #include <vector>
+#include "unsorted/tNetControl.h"
+#include "unsorted/tApplication.h"
+#include <string.h>
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
@@ -15,6 +18,8 @@ void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
 void fn_004d3774(int id);
 void fn_004d32c4(const char *name);
 bool fn_0046a9e2();
+// HYPOTHESIS: enables (1) or disables (0) the control with the given id.
+void fn_004d34c5(int id, bool enable);
 
 // HYPOTHESIS: the name of the screen the state shows, a global handed with it to fn_004d31ed,
 // and a value the state resets to 10 (as tState_GameConnections resets its own).
@@ -55,7 +60,12 @@ public:
 	void fn_00477689();
 
 	unsigned char m0c;
-	char m0d[7];
+	unsigned char m0d;
+	unsigned char m0e;
+	unsigned char m0f;
+	unsigned char m10;
+	unsigned char m11;
+	char m12[2];
 	int m14;
 	unsigned char m18;
 	char m19[0x43];
@@ -169,6 +179,57 @@ void tState_NetSetup::fn_004764bd()
 	case 0x10008:
 		fn_00476aee(m1e4, "ModemAddress");
 		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004764ed
+void tState_NetSetup::fn_004764ed()
+{
+	if (m14 < 0)
+		m14 = g_p008cc580->vfunction7("Network", "SimProtocol", 0);
+
+	gNetControl.fn_00431917();
+	m0d = 0;
+	m0e = 0;
+	m0f = 0;
+	m10 = 0;
+	m11 = 0;
+	fn_004d34c5(0x10006, 1);
+	fn_004d34c5(0x10008, 1);
+	fn_004d34c5(0x10005, 1);
+	fn_004d34c5(0x10004, 1);
+	fn_004d34c5(0x10007, 1);
+
+	for (c_0043257a_node *node = gNetControl.fn_0043257a(); node; node = node->next)
+	{
+		char *name = node->name;
+		if (!strcmp(name, "IPX"))
+		{
+			fn_004d34c5(0x10006, 0);
+			m0f = 1;
+		}
+		else if (!strcmp(name, "Modem"))
+		{
+			fn_004d34c5(0x10008, 0);
+			m0d = 1;
+		}
+		else if (!strcmp(name, "Serial"))
+		{
+			fn_004d34c5(0x10005, 0);
+			m0e = 1;
+		}
+		else if (!strcmp(name, "IP"))
+		{
+			fn_004d34c5(0x10004, 0);
+			fn_004d34c5(0x10007, 0);
+			m10 = 1;
+			m11 = 1;
+		}
+		else if ((!strcmp(name, "MPlayer") && !m14) || (!strcmp(name, "DPSim") && m14))
+		{
+			fn_004d34c5(0x10007, 0);
+			m11 = 1;
+		}
 	}
 }
 
