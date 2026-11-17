@@ -255,3 +255,13 @@ void C_00c3a80c::fn_0060c720(tString &text)
 {
     m_0c = fn_0060c675(m_0c, new tStringMessage(7, text));
 }
+
+// FUNCTION: STARFLEETOP 0x0060c76b
+// HYPOTHESIS: appends the lines of the list at +0x0c to text, one per line.
+void C_00c3a80c::fn_0060c76b(tString &text)
+{
+    for (C_0060c486 *line = m_0c; line; line = line->m_04) {
+        text += line->vfunction1();
+        text += iBasicStringElement('\n');
+    }
+}
