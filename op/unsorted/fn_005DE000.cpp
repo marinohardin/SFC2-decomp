@@ -2,10 +2,14 @@
 
 extern char g_b00c38458;    // "ASCIICharacterSet"
 
-// HYPOTHESIS: an ordering predicate on news stories: by detail time, then by text. It takes
-// no this and pops its two arguments, so it is written as __stdcall.
+// HYPOTHESIS: an ordering predicate on news stories: by detail time, then by text. It pops
+// its two arguments and ignores this; std::sort (0x005de905) calls it as a function object.
+struct fn_005de0cf_Pred
+{
+	bool operator()( tNewsStory* a, tNewsStory* b ) const;
+};
 // FUNCTION: STARFLEETOP 0x005de0cf
-bool __stdcall fn_005de0cf( tNewsStory* a, tNewsStory* b )
+bool fn_005de0cf_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 {
 	bool less;
 	if ( a->fn_0054745f().fn_00546986( b->fn_0054745f() ) )
@@ -317,4 +321,22 @@ inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* >
 void fn_005de731( tMetaClientNewsCtlrC::tMenuItem** range[2], const tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* >& callback )
 {
 	std::for_each( range[0], range[1], callback );
+}
+
+// MATCH-ONLY: the library's template _Sort_0 (std::sort's body), written out as this
+// instance's explicit specialization so that its annotation names the one instance; the body
+// is the template's.
+namespace std {
+// FUNCTION: STARFLEETOP 0x005de905
+template<>
+void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
+{
+	if (_L - _F <= _SORT_MAX)
+		_Insertion_sort(_F, _L, _P);
+	else
+		{_Sort(_F, _L, _P, (tNewsStory**)0);
+		_Insertion_sort(_F, _F + _SORT_MAX, _P);
+		for (_F += _SORT_MAX; _F != _L; ++_F)
+			_Unguarded_insert(_F, *_F, _P); }
+}
 }
