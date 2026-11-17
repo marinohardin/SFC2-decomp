@@ -61,6 +61,7 @@ public:
 	void fn_00523ad3(); // HYPOTHESIS: 0x0051e613 calls it before it chooses a selector; nothing returned is used.
 	void fn_00523afd(tObject_00528a11 *aSelector); // HYPOTHESIS: takes the selector 0x0051e613 chose (the object at 0x35c8 of tAICaptain).
 	int fn_005238aa(void *aValue); // HYPOTHESIS: appends to the vector at +0x34cc and returns the index it got.
+	void fn_005238d7(int aColumn, float amount, bool partial, int index, int *pSelector); // HYPOTHESIS: pSelector[2] picks the row; with none, all four rows of the column.
 
 	float m_00[4];
 	tObject_005237d1 m_10[25];

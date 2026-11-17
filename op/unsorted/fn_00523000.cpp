@@ -566,3 +566,17 @@ int tObject_005237dc::fn_005238aa(void *aValue)
 	m_34cc.fn_00571a69(aValue);
 	return index;
 }
+
+// FUNCTION: STARFLEETOP 0x005238d7
+void tObject_005237dc::fn_005238d7(int aColumn, float amount, bool partial, int index, int *pSelector)
+{
+	// HYPOTHESIS: tObject_005236d8 and tObject_005236ea are one 0x224-byte class (an int, then
+	// 45 entries and their count); 0x0052375c is called on the elements of m_150.
+	if (pSelector) {
+		((tObject_005236ea *)&m_150[pSelector[2] * 6 + aColumn])->fn_0052375c(amount, partial, (tObject_005236ea_Target *)m_34cc.m_04[index]);
+	} else {
+		for (int i = 0; i < 4; i++) {
+			((tObject_005236ea *)&m_150[i * 6 + aColumn])->fn_0052375c(amount, partial, (tObject_005236ea_Target *)m_34cc.m_04[index]);
+		}
+	}
+}
