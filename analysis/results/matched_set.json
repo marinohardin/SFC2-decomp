@@ -2539,6 +2539,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004363a8": {
+   "name": "tSafeArray<tClassTrackingInfo>::~tSafeArray<tClassTrackingInfo>",
+   "symbol": "??1?$tSafeArray@VtClassTrackingInfo@@@@UAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

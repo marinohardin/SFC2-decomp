@@ -4,6 +4,7 @@
 // Profile:   game-release (harness/units.json)
 
 #include "Common/BaseTypes.h"
+#include "unsorted/tSafeArray.h"
 
 class tPath;
 class twPath;
@@ -19,6 +20,7 @@ class tVolume;
 class twVolume;
 class tDir;
 class twDir;
+class tClassTrackingInfo;
 
 namespace std
 {
@@ -205,4 +207,14 @@ tCountMap<tPath,twPath,std::less<tPath> >::tCountMap()
 {
 	fHead = 0;
 	fTail = 0;
+}
+
+// HYPOTHESIS: the generic destructor is defined only inside op/Tiger/tAudioFile.cpp, so this unit
+// writes the game's instance as a specialisation of the same body. The original tail-jumps to an
+// out-of-line copy of mDeleteAll placed after this function.
+// FUNCTION: STARFLEETOP 0x004363a8
+template <>
+tSafeArray<tClassTrackingInfo>::~tSafeArray()
+{
+	mDeleteAll();
 }
