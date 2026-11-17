@@ -843,3 +843,15 @@ long tSndMgr_Miles::fn_0050fa3c( long param_1 )
 		pan = -100;
 	return ( pan * 127 + 12701 ) / 200;
 }
+
+// FUNCTION: STARFLEETOP 0x0050fb04
+unsigned long tSndMgr_Miles::fn_0050fb04( long param_1 )
+{
+	unsigned long count = 0;
+	for ( unsigned long i = 1; i < field_4234; i++ )
+	{
+		if ( ( field_10[i].field_10 || field_10[i].field_55 || field_10[i].field_56 ) && field_10[i].field_c == param_1 )
+			count++;
+	}
+	return count;
+}
