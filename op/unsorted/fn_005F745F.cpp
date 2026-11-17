@@ -676,3 +676,8 @@ fn_005f7a4b_value& fn_005f7efa_iterator::FUN_005f7efa()
 void FUN_005f7f79()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x005f7fd3
+void FUN_005f7fd3()
+{
+}

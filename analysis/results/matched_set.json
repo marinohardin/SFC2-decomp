@@ -8893,6 +8893,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x005f7fd3": {
+   "name": "FUN_005f7fd3",
+   "symbol": "?FUN_005f7fd3@@YAXXZ",
+   "unit": "unsorted/fn_005F745F.cpp",
+   "size": 1,
+   "score": 40.0,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
