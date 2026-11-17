@@ -84,8 +84,7 @@ struct fn_005719df_map {
 // instantiated for tServCharacter: its assertion names Common/DataBase/Database.h, line 210, and
 // slot 10 of the owner's vtable is MultiLock. VC6 cannot instantiate that member template here
 // without its caller, so this class stands in for tDatabase (fAccess at +0x4, fTypeIndex at
-// +0x18) until the header and the caller are rebuilt. The #line below gives the assertion the
-// header's line; its file name stays this unit's (with a file name the build fails).
+// +0x18) until the header and the caller are rebuilt.
 class fn_0056f05f_owner {
 public:
 	virtual void vfunction0();
@@ -109,8 +108,11 @@ void fn_0056f05f_owner::fn_0056f05f(const nDatabase::tQuery<tServCharacter> &que
 {
 	tOptex::tGuard guard(&fAccess);
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tServCharacter));
-#line 210
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 210 "../Common/Database/Database.h"
 	validate(allocID != kInvalidAllocatorID);
+#line 211 "fn_0056F000.cpp"
 	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
 	bool lockFailed = false;
 	fn_00571a7a_vector holdResult;
@@ -151,7 +153,6 @@ public:
 	virtual void vfunction9();
 	char fn_0056f19b_pad[0x160 - 4];
 };
-
 // HYPOTHESIS: the result container for 0x0056f19b; push_back is out of line, the container
 // ends at +0x8 with sizeof(element) == 0x160.
 class fn_0056f19b_results {
@@ -171,18 +172,20 @@ public:
 	tOptex fAccess;
 	fn_005719df_map fTypeIndex;
 };
-
 #line 176
 // FUNCTION: STARFLEETOP 0x0056f19b
 void fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> &query, fn_0056f19b_results *result)
 {
 	tOptex::tGuard guard(&fAccess);
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_0056f19b_object));
-#line 183
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 183 "../Common/Database/Database.h"
 	validate(allocID != kInvalidAllocatorID);
-	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
-	void **i = objects.begin();
-	for (; i != objects.end(); i++) {
+#line 184 "fn_0056F000.cpp"
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	// MATCH-ONLY: fields read directly, as at 0x0056f3e0, give the original's registers.
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
 		fn_0056f19b_object *pObject = (fn_0056f19b_object *)*i;
 		if (query(pObject)) {
 			result->push_back(*pObject);
@@ -191,9 +194,8 @@ void fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> 
 	}
 	guard.Leave();
 }
-
 class tShip;
-
+#line 200
 // FUNCTION: STARFLEETOP 0x0056f265
 nDatabase::tQuery<tShip>::~tQuery()
 {
@@ -204,9 +206,7 @@ void nDatabase::tQuery<tShip>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
-
 #include "Common/Database/DatabaseID.h"
-
 // HYPOTHESIS: a query evaluator holding a pointer to member (address and this adjustment at
 // +8/+0xc) and an ID at +0x10; the original calls the member on the argument and compares.
 // HYPOTHESIS: a two-base class gives the 8-byte pointer to member the exe uses.
@@ -218,9 +218,7 @@ struct fn_0056f283_base_b {
 };
 class fn_0056f283_target : public fn_0056f283_base_a, public fn_0056f283_base_b {
 };
-
 typedef const nDatabase::tID *(fn_0056f283_target::*fn_0056f283_member)();
-
 struct fn_0056f283_owner {
 	int m_0;
 	int m_4;
@@ -279,8 +277,11 @@ void fn_0056f2a4_owner::fn_0056f2a4(const nDatabase::tQuery<tShip> &query, fn_00
 {
 	tOptex::tGuard guard(&fAccess);
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tShip));
-#line 210
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 210 "../Common/Database/Database.h"
 	validate(allocID != kInvalidAllocatorID);
+#line 211 "fn_0056F000.cpp"
 	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
 	bool lockFailed = false;
 	fn_00571a7a_vector holdResult;
@@ -323,7 +324,6 @@ public:
 	tOptex fAccess;
 	fn_005719df_map fTypeIndex;
 };
-
 #line 328
 // FUNCTION: STARFLEETOP 0x0056f3e0
 void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_0056f3e0_results *result)

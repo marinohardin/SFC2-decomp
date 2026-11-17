@@ -5910,18 +5910,18 @@
    "symbol": "?fn_0056f05f@fn_0056f05f_owner@@QAEXABV?$tQuery@VtServCharacter@@@nDatabase@@PAVfn_005406d7_results@@_N@Z",
    "unit": "unsorted/fn_0056F000.cpp",
    "size": 316,
-   "score": 99.953,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0056f19b": {
    "name": "FUN_0056f19b",
    "symbol": "?fn_0056f19b@fn_0056f19b_owner@@QAEXABV?$tQuery@Vfn_0056f19b_object@@@nDatabase@@PAVfn_0056f19b_results@@@Z",
    "unit": "unsorted/fn_0056F000.cpp",
    "size": 202,
-   "score": 99.219,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0056f265": {
    "name": "FUN_0056f265",
@@ -5955,9 +5955,9 @@
    "symbol": "?fn_0056f2a4@fn_0056f2a4_owner@@QAEXABV?$tQuery@VtShip@@@nDatabase@@PAVfn_0056f2a4_results@@_N@Z",
    "unit": "unsorted/fn_0056F000.cpp",
    "size": 316,
-   "score": 99.953,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0056f3e0": {
    "name": "FUN_0056f3e0",
