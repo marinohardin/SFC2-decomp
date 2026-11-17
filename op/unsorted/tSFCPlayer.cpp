@@ -27,6 +27,7 @@ void fn_0040eb6e(float *aValue, tSFCStream &s, unsigned mode, const char *aText)
 void fn_0060e30e(tSFCStream &s, unsigned mode);
 extern double g_008552d0[];
 extern int g_0079ed10;
+extern int g_008552b8[];
 class tObject_004454c1;
 // HYPOTHESIS: the class of the global at 0x008f5118 (original name unknown).
 class tObject_008f5118
@@ -67,6 +68,10 @@ class tObject_004454c1
 		void fn_0051da3d();
 		void fn_00447b7a(void *param_1);
 		void fn_00445a14(int param_1);
+		int fn_00447d41(int param_1);
+		int fn_00447d55(int param_1);
+		void fn_00447cf9(int param_1, int param_2);
+		void fn_00447d11(int param_1, int param_2);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -260,7 +265,7 @@ class tSFCPlayer
 		virtual int vfunction104();
 		virtual void vfunction105(int param_1) = 0;
 		virtual int vfunction106();
-		virtual void vfunction107() = 0;
+		virtual void vfunction107(int param_1);
 		virtual void vfunction108();
 		virtual void vfunction109();
 		virtual void vfunction110();
@@ -1106,6 +1111,36 @@ void tSFCPlayer::fn_004d0b28()
 	m_8520 = 0;
 	m_8524 = 0;
 	m_8528 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0b67
+void tSFCPlayer::vfunction107(int param_1)
+{
+	m_851c += param_1;
+	if (m_851c < 0)
+		m_851c = 0;
+	if (param_1 > 0) {
+		vfunction105(m_8520 + param_1);
+		unsigned count = m_30;
+		if (count-- != 0) {
+			tObject_004454c1 *p = &m_238[count];
+			count++;
+			do {
+				for (int i = 0; i < 7; i++) {
+					int level = p->fn_00447d41(i);
+					if (level <= 3) {
+						int value = p->fn_00447d55(i);
+						value += param_1;
+						if (value >= g_008552b8[level])
+							p->fn_00447cf9(i, level + 1);
+						p->fn_00447d11(i, value);
+					}
+				}
+				count--;
+				p--;
+			} while (count > 0);
+		}
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
