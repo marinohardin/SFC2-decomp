@@ -13,6 +13,7 @@
 #include <string>
 #include "unsorted/tObject_0092deb4.h"
 #include "Tiger/tFormatStr.h"
+#include "unsorted/tGameState.h"
 
 // The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
 extern char *g_00844e78;
@@ -155,11 +156,14 @@ namespace tState_Namespace_GameConnections
 {
 
 // HYPOTHESIS: only the slots rebuilt so far; members placed by their offsets.
-class tState_GameConnections
+class tState_GameConnections : public tGameState
 {
 public:
 	tState_GameConnections();
-	// HYPOTHESIS: slot 0 holds the scalar deleting destructor (0x00469900).
+	// MATCH-ONLY: the exe's destructor (0x004696e0) destroys the members and calls ~tGameState
+	// without storing the vtable first, as only VC6's implicit destructor does; the original
+	// declared none. It is written out so the address can be claimed; it adds that store.
+	// Slot 0 holds the scalar deleting destructor (0x00469900).
 	virtual ~tState_GameConnections();
 	virtual void vfunction1();
 	virtual bool vfunction2();
@@ -212,7 +216,6 @@ public:
 	void fn_00469e0c(const char *name);
 	void fn_00469636();
 
-	char m04[8];
 	unsigned char m0c;
 	unsigned char m0d;
 	unsigned char m0e;
@@ -892,6 +895,11 @@ void tState_GameConnections::fn_00469636()
 		else
 			fn_004695c4("JoinStatus", 1);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004696e0
+tState_GameConnections::~tState_GameConnections()
+{
 }
 
 // FUNCTION: STARFLEETOP 0x004696ca
