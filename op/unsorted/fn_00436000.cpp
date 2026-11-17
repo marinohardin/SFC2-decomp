@@ -93,3 +93,35 @@ tCookieManager<tPathIterator,tPathIterParent>::tCookieManager()
 {
 	f_00 = 0;
 }
+
+// HYPOTHESIS: a singly linked list whose nodes have a virtual destructor and their link at
+// +0x08; neither class is named by the exe.
+class tNode_00436293
+{
+public:
+	virtual ~tNode_00436293();
+
+	int32u			f_04;
+	tNode_00436293	*fNext;		// +0x08
+};
+
+class tList_00436293
+{
+public:
+	void	FUN_00436293();
+
+	int32u			f_00;
+	tNode_00436293	*fHead;		// +0x04
+	tNode_00436293	*fTail;		// +0x08
+};
+
+// FUNCTION: STARFLEETOP 0x00436293
+void tList_00436293::FUN_00436293()
+{
+	tNode_00436293	*node = fHead;
+
+	fHead = node->fNext;
+	if ( fHead == 0 )
+		fTail = 0;
+	delete node;
+}
