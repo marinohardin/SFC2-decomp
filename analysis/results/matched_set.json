@@ -5869,6 +5869,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00534d2a": {
+   "name": "FUN_00534d2a",
+   "symbol": "?fn_00534d2a@fn_00534950_object@@QAEXHPAVfn_00534ac1_entry@@PAD@Z",
+   "unit": "unsorted/fn_0053434B.cpp",
+   "size": 60,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00538cca": {
    "name": "tMetaMapDesc::tMetaMapDesc",
    "symbol": "??0tMetaMapDesc@@QAE@PAPAXK_N@Z",

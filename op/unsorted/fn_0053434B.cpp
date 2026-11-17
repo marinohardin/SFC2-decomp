@@ -555,3 +555,16 @@ void fn_00534950_object::fn_00534b64()
     fn_00534d2a(20, &field_28[19 * 200], g_00859ec0);
     fn_00534d2a(21, &field_28[21 * 200], g_00859ec0);
 }
+
+// HYPOTHESIS: hands the table to the kind's fn_005344a3_object, then each entry of the row up
+// to the first with field_00 -1; the table is taken to be of 12-byte entries.
+// FUNCTION: STARFLEETOP 0x00534d2a
+void fn_00534950_object::fn_00534d2a(int kind, fn_00534ac1_entry* row, char* table)
+{
+    if (kind >= 0)
+    {
+        field_e128[kind]->fn_00534622((fn_0053462c_entry*)table);
+        for (; row->field_00 != -1; row++)
+            field_e128[kind]->fn_0053455b(&row->field_00);
+    }
+}
