@@ -71,3 +71,24 @@ void fn_004d216d_iter::fn_004d216d()
     }
     m00 = y;
 }
+
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: the SDK's tSingleAccessWrapper<tObject_005391b0> (declared only inside
+// unsorted/tClientCharacter.cpp); this is its destructor, Delete then the optex member.
+class tSingleAccessWrapper_005391b0
+{
+public:
+	~tSingleAccessWrapper_005391b0();
+	void Delete();
+
+protected:
+	void* fpPointer;
+	mutable tOptex fPointerOptex;
+};
+
+// FUNCTION: STARFLEETOP 0x004d21a8
+tSingleAccessWrapper_005391b0::~tSingleAccessWrapper_005391b0()
+{
+	Delete();
+}
