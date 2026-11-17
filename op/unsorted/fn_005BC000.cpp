@@ -394,3 +394,37 @@ fn_005bc2cd_elem *fn_005bc2cd_vector::FUN_005bc2cd(fn_005bc2cd_elem *_F, fn_005b
 	_Last = _S;
 	return (_F);
 }
+
+// HYPOTHESIS: a balanced tree whose insert(_V) is 0x0057f946, returning the
+// STL's pair of iterator and bool.
+struct fn_005bc324_tree
+{
+	struct node;
+	struct iterator
+	{
+		node *_Ptr;
+	};
+	struct _Pairib
+	{
+		_Pairib(const iterator &_V1, const bool &_V2) : first(_V1), second(_V2) {}
+		iterator first;
+		bool second;
+	};
+
+	_Pairib FUN_0057f946(const int &_V);
+};
+
+// HYPOTHESIS: a set holding that tree at +0; this is its insert(_X).
+struct fn_005bc324_set
+{
+	fn_005bc324_tree _Tr;
+
+	fn_005bc324_tree::_Pairib FUN_005bc324(const int &_X);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc324
+fn_005bc324_tree::_Pairib fn_005bc324_set::FUN_005bc324(const int &_X)
+{
+	fn_005bc324_tree::_Pairib _Ans = _Tr.FUN_0057f946(_X);
+	return (fn_005bc324_tree::_Pairib(_Ans.first, _Ans.second));
+}
