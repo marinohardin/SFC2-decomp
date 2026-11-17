@@ -2575,6 +2575,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004364b6": {
+   "name": "tBatterySystem::tBatterySystem",
+   "symbol": "??0tBatterySystem@@QAE@HHPAUfn_004364b6_param3@@H@Z",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 279,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

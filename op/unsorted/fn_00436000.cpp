@@ -6,6 +6,8 @@
 #include "Common/BaseTypes.h"
 #include "unsorted/tSafeArray.h"
 #include "Tiger/taudiopriority.h"
+#include "unsorted/tIndividualShipSystem.h"
+#include "unsorted/tValueBase.h"
 
 class tPath;
 class twPath;
@@ -230,4 +232,50 @@ unsigned char tSafeArray<tClassTrackingInfo>::mIsThisIndexValid( unsigned long i
 	if ( realIndex >= f10 )
 		return false;
 	return (short)( index >> 16 ) == (short)f08[realIndex] && f04[realIndex] != NULL;
+}
+
+// HYPOTHESIS: the constructor's third argument; only the two ints at +4 and +8 are read.
+struct fn_004364b6_param3
+{
+	int field_0;
+	int field_4;
+	int field_8;
+};
+
+// RTTI: tBatterySystem : tRepairableShipSystem (vtable 0x007993cc).
+class tBatterySystem : public tRepairableShipSystem
+{
+public:
+	// HYPOTHESIS: four parameters (ret 0x10), as tCloakSystem's; the fourth is unused here.
+	tBatterySystem( int param_1, int param_2, fn_004364b6_param3 *param_3, int param_4 );
+
+	// The base ends at +0x80 (its double at +0x48 rounds its size up to 8).
+	tValue<long> field_80;
+	tMinMaxFloat field_9c;
+	int field_c0;
+	bool field_c4;
+};
+
+// FUNCTION: STARFLEETOP 0x004364b6
+tBatterySystem::tBatterySystem( int param_1, int param_2, fn_004364b6_param3 *param_3, int param_4 )
+{
+	field_78 = 0;
+	field_28 = param_2;
+	// HYPOTHESIS: param_1 is the owning ship.
+	field_2c = (fn_owner_type*)param_1;
+	field_0c = 0x4e;
+	field_1c = 10;
+	vfunction94( 0, -1 );
+	// HYPOTHESIS: dispatched through the vftable, as in tCloakSystem's constructor.
+	tIndividualShipSystem* system = this;
+	system->vfunction49( param_3->field_8 - field_14 );
+	system->vfunction47( param_3->field_4 - field_10 );
+	field_80 = 3;
+	tMinMaxFloat* charge = &field_9c;
+	charge->vfunction3( 0.0f );
+	charge->vfunction5( 0.0f );
+	charge->vfunction4( (float)( field_14 >> 7 ) );
+	field_c0 = 1;
+	field_c4 = false;
+	field_18 = fn_00453c60( "Battery", 10000, 0 );
 }
