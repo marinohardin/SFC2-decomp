@@ -1,4 +1,5 @@
 #include <map>
+#include <string>
 #include <vector>
 
 // The game's out-of-line copy of the library's std::map operator[], for a map of two 4-byte types.
@@ -43,7 +44,19 @@ template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int
 	_Head = 0, _Size = 0;
 }
 
+// The game's out-of-line copy of the library's single-element vector insert, for a 16-byte element.
+// HYPOTHESIS: the element is std::string (16 bytes in this library); 0x00404695 is the counted insert.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb124
+template<> std::vector<std::string>::iterator std::vector<std::string>::insert( iterator _P, const std::string& _X )
+{
+	size_type _O = _P - begin();
+	insert( _P, 1, _X );
+	return ( begin() + _O );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
 template class std::map<int, std::vector<int> >;
+template class std::vector<std::string>;
