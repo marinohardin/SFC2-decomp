@@ -315,3 +315,26 @@ const std::string &fn_004bdcc9()
 {
 	return g_0091f8e0;
 }
+
+// HYPOTHESIS: a second class with the layout of c_004bd805_Object. Its constructor has the same
+// bytes as 0x004bd805, and the exe has both call 0x004bdd67, so the two may share that method
+// through a relation not yet recovered.
+class c_004bdd0d_Object
+{
+public:
+	c_004bdd0d_Object();
+	void fn_004bdd67();
+
+	tString field_0;
+	c_004bd805_Entry field_28[ 500 ];
+	int field_5618;
+	int field_561c;
+	int field_5620;
+	bool field_5624;
+};
+
+// FUNCTION: STARFLEETOP 0x004bdd0d
+c_004bdd0d_Object::c_004bdd0d_Object()
+{
+	fn_004bdd67();
+}
