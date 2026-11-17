@@ -288,6 +288,8 @@ public:
     // HYPOTHESIS: slot 63; returns the flag byte at +0x45.
     virtual bool vfunction64();
     virtual void vfunction65(char param_1);
+    // HYPOTHESIS: slot 65; returns the byte at +0x30 set by slot 64.
+    virtual char vfunction66();
 
     char pad04[0x0c - 0x04];
     int field_0c;
