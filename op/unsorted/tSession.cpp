@@ -121,3 +121,10 @@ fn_0068ff60_Root *fn_00690340( char *a, tString &b, fn_0068ff60_Root *c, tDir di
 	text = a;
 	return fn_00690300( text.mWideStr(), b, c, dir );
 }
+
+// FUNCTION: STARFLEETOP 0x006903f0
+// HYPOTHESIS: a wrapper that passes the root on to fn_006901b0 unchanged.
+fn_0068d830_Item *fn_006903f0( fn_0068ff60_Root *root )
+{
+	return fn_006901b0( root );
+}
