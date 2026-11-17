@@ -33,3 +33,23 @@ void fn_005bc018_vector::FUN_005bc018()
 	operator delete(_First);
 	_First = 0, _Last = 0, _End = 0;
 }
+
+// HYPOTHESIS: takes the owner's +8 field, a flag and a value; the callee
+// pops its own arguments.
+void __stdcall FUN_005bce21(int param_1, int param_2, int param_3);
+
+// HYPOTHESIS: owner object holding a handle at +8.
+struct fn_005bc04b_owner
+{
+	int m00;
+	int m04;
+	int m08;
+
+	void FUN_005bc04b(int param_1);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc04b
+void fn_005bc04b_owner::FUN_005bc04b(int param_1)
+{
+	FUN_005bce21(m08, 1, param_1);
+}
