@@ -112,7 +112,7 @@ public:
 	virtual void vfunction38( int value );
 	virtual void vfunction39();
 	virtual void vfunction40( tAuctionItem item );
-	virtual void vfunction41();
+	virtual void vfunction41( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction42( tServCharacter character );
 	virtual void vfunction43();
 	virtual void vfunction44();
@@ -687,5 +687,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction40( tAuctionItem it
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction42( tServCharacter character )
 {
 	nDatabase::tDatabaseObjectUpdate update( character );
+	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the update comes by value (its destructor runs in the function's unwind funclet) and is applied as it is.
+// FUNCTION: STARFLEETOP 0x0056e05f
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction41( nDatabase::tDatabaseObjectUpdate update )
+{
 	fDatabase->UpdateObject( update );
 }
