@@ -10,7 +10,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00670650	tFontTable::mDone	98.21	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 98.21%
 0x00670950	tFontMgr::mInit	91.55	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 91.55%
 0x006f3a20	tThreadPool::tThreadPool	97.65	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.65%
-0x0061eb30	tPath::mGetSize	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x006f3b40	tThreadPool::~tThreadPool	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x0061ec40	tPath::mCreate	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x006f3d50	tThreadPool::Shutdown	99.94	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.94%
