@@ -408,6 +408,7 @@ struct fn_006c1ae0_Request
 	void (*m40)(unsigned long, int, const char *, unsigned long);
 	char *m44;
 	void *m48;
+	int m4c;
 };
 struct fn_006c1ae0_Entry
 {
@@ -602,4 +603,13 @@ void fn_006c1f30(fn_006c1ae0_Request *request)
 	len = sprintf(buffer, "\\disc\\\\pid\\%d\\cd\\%s\\ip\\%d", g_00c7cbcc, request->m04, request->m2c);
 	fn_006c20e0(buffer, len);
 	sendto(g_0088800c, buffer, len, 0, (struct sockaddr *)&g_00c7cdd8, sizeof(g_00c7cdd8));
+}
+
+// HYPOTHESIS: resends the request's packet and counts the attempt.
+// FUNCTION: STARFLEETOP 0x006c1f90
+void fn_006c1f90(fn_006c1ae0_Request *request)
+{
+	request->m30 = GetTickCount();
+	request->m34++;
+	sendto(g_0088800c, (char *)request->m48, request->m4c, 0, (struct sockaddr *)&g_00c7cdd8, sizeof(g_00c7cdd8));
 }
