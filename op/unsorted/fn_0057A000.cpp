@@ -337,3 +337,17 @@ void tMemberCallback<tnMemberClass,tnResult>::Callback( tnResult result )
 }
 
 template class tMemberCallback<fn_0057a96e_owner, fn_0057a96e_info>;
+
+#include <string>
+
+namespace std {
+
+// HYPOTHESIS: the exe's copy is the library's operator+(const char*, const string&); it is
+// written out here so the claim has a definition in this unit.
+// FUNCTION: STARFLEETOP 0x0057aa2e
+string operator+( const char* _L, const string& _R )
+{
+	// MATCH-ONLY: the exe passes the literal -1 where this library header's default is npos.
+	return string( _L ).append( _R, 0, (size_t)-1 );
+}
+}
