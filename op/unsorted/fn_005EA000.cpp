@@ -689,3 +689,17 @@ void fn_005eaa3f(tTree_005ea4a1::tValue *p, const tTree_005ea4a1::tValue &v)
 {
 	new ((void *)p) tTree_005ea4a1::tValue(v);
 }
+
+#include "unsorted/tMetaMapNormalHex.h"
+
+namespace std {
+
+// HYPOTHESIS: the library's _Construct held out of line for tMetaMapNormalHex; the placement
+// new and its null test are the library's.
+// FUNCTION: STARFLEETOP 0x005eaa77
+template<>
+void _Construct( tMetaMapNormalHex* _P, const tMetaMapNormalHex& _V )
+{
+	new ((void *)_P) tMetaMapNormalHex(_V);
+}
+}
