@@ -227,6 +227,19 @@ inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >::~tMemberCallback()
 
 #include <algorithm>
 
+// MATCH-ONLY: the library's template for_each, written out as this instance's inline explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+namespace std {
+// FUNCTION: STARFLEETOP 0x005de81b
+template<>
+inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > for_each( tNewsStory** _F, tNewsStory** _L, tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > _Op )
+{
+	for (; _F != _L; ++_F)
+		_Op(*_F);
+	return (_Op);
+}
+}
+
 // HYPOTHESIS: applies a member callback to each story of a [first, last) pair of pointers.
 // FUNCTION: STARFLEETOP 0x005de667
 void fn_005de667( tNewsStory** range[2], const tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >& callback )
