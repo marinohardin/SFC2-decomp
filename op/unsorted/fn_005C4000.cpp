@@ -784,6 +784,7 @@ public:
 	float FUN_005c4df3();
 	int FUN_005c4e1c();
 	std::string FUN_005c4e3c();
+	std::string FUN_005c4eaa();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1473,4 +1474,12 @@ std::string fn_005c478f_Holder::FUN_005c4e3c()
 	tOptex::tGuard guard(&m04);
 	// HYPOTHESIS: copies the std::string at offset 0x364 under the lock.
 	return *(std::string*)((char*)this + 0x364);
+}
+
+// FUNCTION: STARFLEETOP 0x005c4eaa
+std::string fn_005c478f_Holder::FUN_005c4eaa()
+{
+	tOptex::tGuard guard(&m04);
+	// HYPOTHESIS: copies the std::string at offset 0x374 under the lock.
+	return *(std::string*)((char*)this + 0x374);
 }
