@@ -20,47 +20,11 @@ public:
     // vftable slot 61
     virtual void vfunction62();
 
-    // HYPOTHESIS: slots 64..80 belong to a base class; they are declared here, in slot order,
-    // because the shared header stops at slot 63 and tCloakSystem declares its own slots
-    // past it. Only slot 80 is called so far.
-    virtual void vfunction65();
-    virtual void vfunction66();
-    virtual void vfunction67();
-    virtual void vfunction68();
-    virtual void vfunction69();
-    virtual void vfunction70();
-    virtual void vfunction71();
-    virtual void vfunction72();
-    virtual void vfunction73();
-    virtual void vfunction74();
-    virtual void vfunction75();
-    virtual void vfunction76();
-    virtual void vfunction77();
-    virtual void vfunction78();
-    virtual void vfunction79();
-    virtual void vfunction80();
-    // vftable slot 80
-    virtual void vfunction81();
-    // HYPOTHESIS: slots 81..107 are declared in slot order; their signatures are unknown
-    // except slot 99 (vfunction100, returns a float) and slot 108 (vfunction109, yes/no).
-    virtual void vfunction82();
-    virtual void vfunction83();
-    virtual void vfunction84();
-    virtual void vfunction85();
-    virtual void vfunction86();
-    virtual void vfunction87();
-    virtual void vfunction88();
-    virtual void vfunction89();
+    // Slots 63..83 are tIndividualShipSystem's (vfunction64..vfunction84) and slots 84..98
+    // tRepairableShipSystem's (vfunction85..vfunction99); slot 80 (vfunction81) is called by
+    // vfunction62. Slots 99..108 are this class's own.
+    // vftable slot 89
     virtual float vfunction90(float param_1, int param_2);
-    virtual void vfunction91();
-    virtual void vfunction92();
-    virtual void vfunction93();
-    virtual void vfunction94();
-    virtual void vfunction95();
-    virtual void vfunction96();
-    virtual void vfunction97();
-    virtual void vfunction98();
-    virtual void vfunction99();
     // vftable slot 99
     virtual float vfunction100();
     virtual void vfunction101();
