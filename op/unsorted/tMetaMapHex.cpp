@@ -478,3 +478,12 @@ int32 tMetaMapHex::fn_0053a31c()
 	m_bc.Leave();
 	return type;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a33c
+int32 tMetaMapHex::fn_0053a33c()
+{
+	m_bc.Enter();
+	int32 type = m_60;
+	m_bc.Leave();
+	return type;
+}

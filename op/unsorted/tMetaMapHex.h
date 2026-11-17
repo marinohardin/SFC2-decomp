@@ -185,6 +185,7 @@ public:
 	bool fn_0053a287( tHexPoint& point, unsigned int param_1, unsigned int param_2 );
 	// HYPOTHESIS: the terrain type (the TerrainType column), read under the lock.
 	int32 fn_0053a31c();
+	int32 fn_0053a33c();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
