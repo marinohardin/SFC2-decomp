@@ -602,3 +602,36 @@ void fn_006ccd40(fn_006ccb20_record *record)
 	fn_006cce00(record);
 	fn_006ccd60(record);
 }
+
+void fn_006cd230(fn_006ccb20_record *record, char *buffer, sockaddr_in *from);
+
+extern char g_00c7ea68[256];
+
+// HYPOTHESIS: drains the record's socket without blocking and hands every datagram to
+// fn_006cd230.
+// FUNCTION: STARFLEETOP 0x006ccd60
+void fn_006ccd60(fn_006ccb20_record *record)
+{
+	fd_set set;
+	sockaddr_in from;
+	int fromlen = sizeof(from);
+	timeval timeout = {0, 0};
+	int result;
+
+	if (record->field_00 == INVALID_SOCKET)
+		return;
+	FD_ZERO(&set);
+	FD_SET(record->field_00, &set);
+	for (;;)
+	{
+		result = select(FD_SETSIZE, &set, 0, 0, &timeout);
+		if (result == SOCKET_ERROR || result == 0)
+			break;
+		int length = recvfrom(record->field_00, g_00c7ea68, sizeof(g_00c7ea68) - 1, 0, (sockaddr *)&from, &fromlen);
+		if (length != SOCKET_ERROR)
+		{
+			g_00c7ea68[length] = 0;
+			fn_006cd230(record, g_00c7ea68, &from);
+		}
+	}
+}
