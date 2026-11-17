@@ -26,6 +26,8 @@ public:
     void fn_0040e699(int n);
     // HYPOTHESIS: 0x0040e744 is a member taking a formatted text line.
     void fn_0040e744(char* text);
+    // HYPOTHESIS: 0x0040e70f is the read counterpart of 0x0040e744 (fetches a text line).
+    void fn_0040e70f(char* text);
     int m00;
     char* m04;
     char* m08;
@@ -494,5 +496,21 @@ void fn_0040dd45(char* name, long* value, fn_0040d63f_Buf& buf)
     buf.fn_0040d815();
     sprintf(text, "%s = %ld", name, *value);
     buf.fn_0040e744(text);
+}
+
+// FUNCTION: STARFLEETOP 0x0040dd83
+extern "C" char* strcpy(char* dst, const char* src);
+extern "C" char* strcat(char* dst, const char* src);
+extern "C" int sscanf(const char* buffer, const char* format, ...);
+
+void fn_0040dd83(char* name, long* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = %ld");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, value);
 }
 
