@@ -24,6 +24,9 @@ public:
 	// HYPOTHESIS: tested by 0x0056c414 before the clock is reset; name not known.
 	bool fn_005c7eac();
 
+	// HYPOTHESIS: an accessor 0x0056d2cd passes to tAuctionItem::fn_00545560; name not known.
+	long fn_0055f269();
+
 	// HYPOTHESIS: 0x0056c414 keeps a 0x18-byte temporary; the members' types are not known.
 	long fField0c;
 	long fField10;

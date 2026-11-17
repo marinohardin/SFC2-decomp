@@ -15,6 +15,13 @@ public:
 	// HYPOTHESIS: a non-virtual accessor that returns the tID held at +0x5c (lea eax, [ecx+0x5c]);
 	// 0x0056d1b7 queries on it.
 	const nDatabase::tID& fn_005455b7() const;
+
+	// HYPOTHESIS: tests the item against the campaign clock; 0x0056d2cd drops the items it fails.
+	bool fn_00545560( long time );
+
+	// HYPOTHESIS: the item is 0xa8 bytes (0x0056d2cd steps its vector by 0xa8); the tID returned
+	// by fn_005455b7 sits at +0x5c. The members' types are not known.
+	char fPad48[0xa8 - 0x48];
 };
 
 #endif

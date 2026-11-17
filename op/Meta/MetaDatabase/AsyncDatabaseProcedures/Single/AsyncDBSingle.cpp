@@ -24,12 +24,15 @@ public:
 class tCampaignInfo
 {
 public:
+	tCampaignInfo();
+	~tCampaignInfo();
 	tCampaignInfo& operator=( const tCampaignInfo& other );
 
 	char fPad00[0xb8];
 	long fFieldB8;
 	char fPadBC[0x108 - 0xbc];
 	tCurrentTime fField108;
+	char fPad120[0x168 - 0x120];
 };
 
 // HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only
@@ -72,7 +75,7 @@ public:
 	virtual void vfunction9( std::vector<nDatabase::tID> ids, std::vector<tShip>* ships, int lock );
 	virtual void vfunction10();
 	virtual void vfunction11( std::vector<nDatabase::tID> ids, std::vector<tAuctionItem>* items, int lock );
-	virtual void vfunction12();
+	virtual void vfunction12( std::vector<tAuctionItem>* items );
 	virtual void vfunction13();
 	virtual void vfunction14();
 	virtual void vfunction15();
@@ -117,7 +120,7 @@ public:
 	virtual void vfunction54();
 	virtual void vfunction55();
 	virtual void vfunction56();
-	virtual void vfunction57();
+	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
 
 	fn_0056c414_Database* fDatabase;
@@ -355,6 +358,26 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction11( std::vector<nDa
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0056d2cd
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12( std::vector<tAuctionItem>* items )
+{
+	nDatabase::tQuery<tAuctionItem> query;
+	fDatabase->fn_0056f4df( query, items, true );
+	tCampaignInfo campaignInfo;
+	vfunction2( &campaignInfo );
+	for( std::vector<tAuctionItem>::iterator i = items->begin(); i != items->end(); )
+	{
+		if( !i->fn_00545560( campaignInfo.fField108.fn_0055f269() ) )
+		{
+			vfunction57( i );
+			i = items->erase( i );
+		}
+		else
+		{
+			i++;
+		}
+	}
+}
 
 
 
