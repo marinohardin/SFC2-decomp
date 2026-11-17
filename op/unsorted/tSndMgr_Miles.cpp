@@ -30,12 +30,14 @@ public:
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual void vfunction28();
+	virtual void vfunction28( long param_1 );
 	// HYPOTHESIS: fourth parameter is a byte flag, fifth a volume-like 0..100 value
 	virtual void vfunction29( long param_1, long param_2, char param_3, long param_4 );
 
 	char pad_0004[0x1f1c];
 	long field_1f20;
+	char pad_1f24[0x2310];
+	long field_4234;
 };
 
 // FUNCTION: STARFLEETOP 0x0050ed7a
@@ -54,4 +56,15 @@ void tSndMgr_Miles::vfunction19( long param_1 )
 long tSndMgr_Miles::vfunction20()
 {
 	return field_1f20;
+}
+
+// FUNCTION: STARFLEETOP 0x0050eda2
+void tSndMgr_Miles::vfunction28( long param_1 )
+{
+	if ( param_1 > 32 )
+		field_4234 = 32;
+	else if ( param_1 < 8 )
+		field_4234 = 8;
+	else
+		field_4234 = param_1;
 }
