@@ -5896,6 +5896,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0056f04f": {
+   "name": "FUN_0056f04f",
+   "symbol": "?fn_0056f04f@?$tQuery@VtServCharacter@@@nDatabase@@QAEXPAX@Z",
+   "unit": "unsorted/fn_0056F000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

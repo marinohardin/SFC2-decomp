@@ -10,6 +10,7 @@ class tServCharacter;
 // declaration carries only the destructor until that type moves to a shared header.
 struct fn_00571a7a_vector {
 	~fn_00571a7a_vector();
+	void fn_00571a69(void *const &value);
 	char m_allocator;
 	void **m_first;
 	void **m_last;
@@ -22,6 +23,7 @@ namespace nDatabase {
 	template <class T> class tQuery {
 	public:
 		virtual ~tQuery();
+		void fn_0056f04f(void *value);
 		fn_00571a7a_vector m_results;
 	};
 }
@@ -29,4 +31,10 @@ namespace nDatabase {
 // FUNCTION: STARFLEETOP 0x0056f041
 nDatabase::tQuery<tServCharacter>::~tQuery()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x0056f04f
+void nDatabase::tQuery<tServCharacter>::fn_0056f04f(void *value)
+{
+	m_results.fn_00571a69(value);
 }
