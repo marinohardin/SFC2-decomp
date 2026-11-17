@@ -1070,3 +1070,14 @@ void tShipSystemsExt::vfunction128( float param_1 )
 	tMinMaxFloat* value = &m718;
 	value->vfunction3( param_1 + value->m18 );
 }
+
+// FUNCTION: STARFLEETOP 0x0044cd7a
+void tShipSystemsExt::vfunction129( float param_1 )
+{
+	tMinMaxFloat* value = &m718;
+	value->vfunction3( value->m18 - param_1 );
+	if ( m718.m18 < 0.0f )
+	{
+		value->vfunction3( 0.0f );
+	}
+}
