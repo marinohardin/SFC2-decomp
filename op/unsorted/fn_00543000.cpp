@@ -109,6 +109,7 @@ public:
 	std::string fn_00543551() const;
 	std::string fn_00543587() const;
 	char *fn_005435c3();
+	bool fn_005435ca(std::string text);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -447,4 +448,13 @@ std::string fn_005430ad_owner::fn_00543587() const
 char *fn_005430ad_owner::fn_005435c3()
 {
 	return m098;
+}
+
+// HYPOTHESIS: the setter for the string at +0x48 (0x005433a7 is its getter); it takes the
+// string by value (ret 0x10) and always reports success.
+// FUNCTION: STARFLEETOP 0x005435ca
+bool fn_005430ad_owner::fn_005435ca(std::string text)
+{
+	m048 = text;
+	return true;
 }
