@@ -870,3 +870,14 @@ void fn_0053a73a_map::tree::fn_0053aab4( const tree& other )
 		_Lmost() = m_head, _Rmost() = m_head;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053ab9a
+void fn_0053a6cc_map::tree::fn_0053ab9a( node* root )
+{
+	for( node* y = root; y != m_nil; root = y )
+	{
+		fn_0053ab9a( y->right );
+		y = y->left;
+		operator delete( root );
+	}
+}
