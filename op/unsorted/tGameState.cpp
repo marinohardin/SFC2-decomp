@@ -1187,3 +1187,11 @@ char fn_0046a9e2()
 		return 0;
 	return fn_0069ac10();
 }
+
+// FUNCTION: STARFLEETOP 0x0046a9f3
+char fn_0046a9f3()
+{
+	if (g_0090db9c != 0)
+		return 0;
+	return fn_0069ac30();
+}
