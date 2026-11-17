@@ -387,6 +387,7 @@ template< typename tnMemberClass, typename tnResult >
 inline tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback()
 {}
 
+// FUNCTION: STARFLEETOP 0x0057ab8c
 template class tCallback< const nDatabase::tID& >;
 
 // HYPOTHESIS: the exe's tCallback<unsigned long> deleting destructor sits after 0x0057ab18;
