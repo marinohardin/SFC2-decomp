@@ -22,21 +22,41 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 	return m_48;
 }
 
+// HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
+// a member function at 0x0053f4c6 taking two dwords. The names are placeholders.
+class fn_0053f4c6_owner
+{
+public:
+	void fn_0053f4c6( long a, long b );
+
+	long m_00;
+};
+
+// HYPOTHESIS: the type of the argument at 0x0053f2a2 is not known; only its dwords at
+// 4 and 8 are read. The names are placeholders.
+struct fn_0053f2a2_arg
+{
+	long m_00;
+	long m_04;
+	long m_08;
+};
+
 // HYPOTHESIS: the owner of this getter is not known; the body returns the address of
 // a member at 0x58. The class, the member names and the member type are placeholders.
 class fn_0053f25c_owner
 {
 public:
-	char *fn_0053f25c();
+	fn_0053f4c6_owner *fn_0053f25c();
 	char fn_0053f260();
 	char *fn_0053f264();
 	char *fn_0053f268();
 	long fn_0053f26c();
 	long fn_0053f273();
 	long fn_0053f27a();
+	void fn_0053f2a2( const fn_0053f2a2_arg &arg );
 
 	char m_00[0x58];
-	char m_58[4];
+	fn_0053f4c6_owner m_58;
 	char m_5c[0x0c];
 	char m_68;
 	char m_69[3];
@@ -50,9 +70,9 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0053f25c
-char *fn_0053f25c_owner::fn_0053f25c()
+fn_0053f4c6_owner *fn_0053f25c_owner::fn_0053f25c()
 {
-	return m_58;
+	return &m_58;
 }
 
 // HYPOTHESIS: the neighbouring getter's owner also holds the byte at 0x68 this one returns.
@@ -103,4 +123,11 @@ long fn_0053f25c_owner::fn_0053f27a()
 void fn_0053f22f_owner::fn_0053f281( nDatabase::tID id )
 {
 	m_48 = id;
+}
+
+// HYPOTHESIS: same owner; forwards two dwords of the argument to the member at 0x58.
+// FUNCTION: STARFLEETOP 0x0053f2a2
+void fn_0053f25c_owner::fn_0053f2a2( const fn_0053f2a2_arg &arg )
+{
+	m_58.fn_0053f4c6( arg.m_04, arg.m_08 );
 }
