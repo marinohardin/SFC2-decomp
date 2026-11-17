@@ -1963,6 +1963,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00427ab7": {
+   "name": "tPlayingTeamInfo::tPlayingTeamInfo",
+   "symbol": "??0tPlayingTeamInfo@@QAE@ABV0@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 195,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",

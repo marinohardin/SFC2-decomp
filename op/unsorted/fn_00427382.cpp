@@ -4,6 +4,7 @@
 #include "unsorted/tCurrentTime.h"
 #include "unsorted/tPoliticalTensionMatrix.h"
 #include "unsorted/tEntity.h"
+#include "Common/Database/DatabaseID.h"
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x0042739e
@@ -394,11 +395,27 @@ void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& a
 	}
 }
 
-// HYPOTHESIS: the class named in RTTI; only its copy constructor (0x00427ab7) is needed here.
-class tPlayingTeamInfo
+// HYPOTHESIS: the class named in RTTI (vtable 0x00798234); layout read from its copy
+// constructor at 0x00427ab7: a string, four scalars, an ID, a vector copied out of line
+// (0x00427bb2, element type not recovered), two scalars and a byte.
+class tPlayingTeamInfo : public nDataStore::tStreamable
 {
 public:
 	tPlayingTeamInfo( const tPlayingTeamInfo& source );
+
+	virtual	void StreamOut( nDataStore::tOutput& output ) const;
+	virtual	void StreamIn( nDataStore::tInput& input );
+
+	std::string			field_0xc;
+	int32u				field_0x1c;
+	int32u				field_0x20;
+	int32u				field_0x24;
+	int32u				field_0x28;
+	nDatabase::tID		field_0x2c;
+	std::vector< int32u >	field_0x3c;
+	int32u				field_0x4c;
+	int32u				field_0x50;
+	int8u				field_0x54;
 };
 
 // MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
@@ -412,4 +429,21 @@ void _Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V );
 void std::_Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V )
 {
 	new ((void *)_P) tPlayingTeamInfo( _V );
+}
+
+// HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
+// FUNCTION: STARFLEETOP 0x00427ab7
+tPlayingTeamInfo::tPlayingTeamInfo( const tPlayingTeamInfo& source )
+	: nDataStore::tStreamable( source ),
+	  field_0xc( source.field_0xc ),
+	  field_0x1c( source.field_0x1c ),
+	  field_0x20( source.field_0x20 ),
+	  field_0x24( source.field_0x24 ),
+	  field_0x28( source.field_0x28 ),
+	  field_0x2c( source.field_0x2c ),
+	  field_0x3c( source.field_0x3c ),
+	  field_0x4c( source.field_0x4c ),
+	  field_0x50( source.field_0x50 ),
+	  field_0x54( source.field_0x54 )
+{
 }
