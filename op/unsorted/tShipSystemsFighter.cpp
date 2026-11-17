@@ -100,7 +100,7 @@ public:
     virtual int vfunction82();
     virtual int vfunction83();
     virtual void vfunction84();
-    virtual void vfunction85();
+    virtual int vfunction85();
     virtual void vfunction86();
     virtual void vfunction87();
     virtual void vfunction88();
@@ -632,4 +632,12 @@ int tShipSystemsFighter::vfunction83()
     if( p != 0 )
         return *(int*)( p + 0x5c );
     return 0;
+}
+
+// HYPOTHESIS: the return type; the original returns the dword at +0x5d8, 0x14 bytes into
+// the block at m5c4.
+// FUNCTION: STARFLEETOP 0x004444f6
+int tShipSystemsFighter::vfunction85()
+{
+    return *(int*)( m5c4 + 0x14 );
 }
