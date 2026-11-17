@@ -3196,6 +3196,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0043e768": {
+   "name": "FUN_0043e768",
+   "symbol": "?fn_0043e768@tSensorGroupSystem@@QAEMXZ",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0043fa4e": {
    "name": "tShieldSystem::vfunction52",
    "symbol": "?vfunction52@tShieldSystem@@UAEXXZ",
