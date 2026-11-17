@@ -197,6 +197,7 @@ public:
 	int fn_004478b5(int level);
 	void fn_00447926(int kind, int value);
 	int fn_004479b4(int kind);
+	int fn_00447a54(int kind);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -521,6 +522,23 @@ int c_0044715d::fn_004479b4(int kind)
 		return field_0xe8->field_0xf5 = (field_0xe8->field_0xf5 < 0 || field_0xe8->field_0xf5 > field_0xe8->field_0xf4) ? 0 : field_0xe8->field_0xf5;
 	case 3:
 		return field_0xe8->field_0xf8 = (field_0xe8->field_0xf8 < 0 || field_0xe8->field_0xf8 > field_0xe8->field_0xf7) ? 0 : field_0xe8->field_0xf8;
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447a54
+int c_0044715d::fn_00447a54(int kind)
+{
+	switch (kind)
+	{
+	case 0:
+		return field_0xe8->field_0xf1;
+	case 1:
+		return field_0xe8->field_0xfa;
+	case 2:
+		return field_0xe8->field_0xf4;
+	case 3:
+		return field_0xe8->field_0xf7;
 	}
 	return 0;
 }
