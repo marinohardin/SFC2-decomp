@@ -235,3 +235,21 @@ fn_004d2319_holder::fn_004d2319_holder()
 	s->_Tidy(false);
 	s->assign("", strlen(""));
 }
+
+// HYPOTHESIS: a sibling of fn_004d2265_holder: a destructor body (0x004d23db) followed by the
+// inlined destruction of a string member at +8.
+class fn_004d2353_holder
+{
+public:
+	~fn_004d2353_holder();
+	void fn_004d23db();
+	int m_a;
+	int m_b;
+	fn_004d2238_string m_str;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2353
+fn_004d2353_holder::~fn_004d2353_holder()
+{
+	fn_004d23db();
+}
