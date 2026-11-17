@@ -7,7 +7,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x0062ceb0	tItemBag::`scalar_deleting_destructor'	99.55	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.55%
 0x0064f250	tgSoundPart::mUpdate	91.43	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 91.43%
 0x0062d4a0	tTagInfo::mClassifyTagTokens	96.89	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 96.89%
-0x0061df40	tDir::mGetSize	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x0061e050	tDir::mExist	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x00670650	tFontTable::mDone	98.21	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 98.21%
 0x0061e160	tDir::mGetPathIterator	99.50	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.50%
