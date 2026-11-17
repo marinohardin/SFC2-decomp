@@ -185,6 +185,7 @@ public:
 	void FUN_0042a647( int value );
 	void FUN_0042a66b( int value );
 	void FUN_0042a68f( tHexPoint value );
+	void FUN_0042a6ea( const tHexPoint& value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -199,7 +200,9 @@ public:
 	byte field_54[0x58 - 0x54];
 	int field_58;
 	tHexPoint field_5c;
-	byte field_70[0xe4 - 0x70];
+	byte field_70[0x84 - 0x70];
+	tHexPoint field_84;
+	byte field_98[0xe4 - 0x98];
 	tOptex field_e4;
 };
 
@@ -289,4 +292,10 @@ void fn_0042a480_object::FUN_0042a68f( tHexPoint value )
 	field_5c = value;
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a6ea
+void fn_0042a480_object::FUN_0042a6ea( const tHexPoint& value )
+{
+	field_84 = value;
 }
