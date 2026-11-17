@@ -17398,6 +17398,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x006e38a0": {
+   "name": "FUN_006e38a0",
+   "symbol": "?FUN_006e38a0@tObject_006e3830@@QAE_NABKABQAVtObject_006e3000_shared@@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 320,
+   "score": 88.0,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x006e7e80": {
    "name": "nTestSim::tSimulator::tSimulator",
    "symbol": "??0tSimulator@nTestSim@@QAE@XZ",

@@ -419,15 +419,25 @@ tObject_006e3640::~tObject_006e3640()
 struct fn_005d9441_tree
 {
 	struct node;
+	struct value_type;
 	class iterator
 	{
 	public:
 		iterator() {}
 		iterator(node *_P) : _Ptr(_P) {}
+		value_type &operator*() const;
 		node *_Ptr;
 	};
 
 	iterator FUN_005d9441(iterator _P);
+	// HYPOTHESIS: insert(const value_type&).
+	std::pair<iterator, bool> FUN_006e3f40(const value_type& _X);
+
+	char m00[0x4];
+	node *_Head;
+	node *_Nil;
+	char m0c[0x4];
+	unsigned int _Size;
 };
 
 // HYPOTHESIS: the entry FUN_006e36a0 frees after calling 0x006dbc40 on it; m04
@@ -435,11 +445,38 @@ struct fn_005d9441_tree
 class tObject_006dbc40
 {
 public:
+	tObject_006dbc40(tObject_006e3000_shared* const& object, fn_005d9441_tree::iterator where);
 	void FUN_006dbc40();
 
-	char m00[0x4];
+	tObject_006e3000_shared* m00;
 	fn_005d9441_tree::iterator m04;
 };
+
+inline tObject_006dbc40::tObject_006dbc40(tObject_006e3000_shared* const& object, fn_005d9441_tree::iterator where)
+	: m00(object ? object->fn_addref() : 0), m04(where)
+{
+}
+
+// HYPOTHESIS: the reference the second tree holds as its key.
+class tRef_006e38a0
+{
+public:
+	tRef_006e38a0(tObject_006e3000_shared* object);
+	~tRef_006e38a0();
+
+	tObject_006e3000_shared* mPtr;
+};
+
+inline tRef_006e38a0::tRef_006e38a0(tObject_006e3000_shared* object)
+{
+	mPtr = object ? object->fn_addref() : 0;
+}
+
+inline tRef_006e38a0::~tRef_006e38a0()
+{
+	if (mPtr != 0)
+		mPtr->fn_release();
+}
 
 // HYPOTHESIS: a balanced tree of the game's STL, with a nil node per tree and
 // the nil flag in each node, keyed by a 4-byte value.
@@ -452,6 +489,8 @@ struct fn_0060ac82_tree
 		node *_Right;
 		struct value
 		{
+			value(const unsigned long& _V1, tObject_006dbc40* const& _V2)
+				: first(_V1), second(_V2) {}
 			unsigned long first;
 			tObject_006dbc40 *second;
 		} _Value;
@@ -491,7 +530,34 @@ struct fn_0060ac82_tree
 	iterator end() { return (iterator(_Head)); }
 	// HYPOTHESIS: erase(iterator).
 	iterator FUN_0060ac82(iterator _P);
+	// HYPOTHESIS: find(key).
+	iterator FUN_006d3a60(const unsigned long& _Kv);
+	// HYPOTHESIS: insert(iterator, const value_type&).
+	iterator FUN_006e3cf0(iterator _P, const node::value& _X);
 };
+
+struct fn_005d9441_tree::value_type
+{
+	value_type(tObject_006e3000_shared* const& _V1, const fn_0060ac82_tree::iterator& _V2)
+		: first(_V1), second(_V2) {}
+	tRef_006e38a0 first;
+	fn_0060ac82_tree::iterator second;
+};
+
+struct fn_005d9441_tree::node
+{
+	node *_Left;
+	node *_Parent;
+	node *_Right;
+	value_type _Value;
+	char _Color;
+	char _Isnil;
+};
+
+inline fn_005d9441_tree::value_type &fn_005d9441_tree::iterator::operator*() const
+{
+	return (_Ptr->_Value);
+}
 
 // HYPOTHESIS: the timer table that tObject_006e3000 holds from +0x30; the
 // second tree starts at +0x14 as its m44 does.
@@ -556,10 +622,10 @@ class tObject_006e3830
 {
 public:
 	void FUN_006e3830(tObject_006e3830& param_1);
-	void FUN_006e38a0(const unsigned long& param_1, tObject_006dbc40* param_2);
+	bool FUN_006e38a0(const unsigned long& param_1, tObject_006e3000_shared* const& param_2);
 
 	fn_0060ac82_tree mTree;
-	char m14[0x14];
+	fn_005d9441_tree m14;
 	char m28;
 };
 
@@ -568,5 +634,22 @@ void tObject_006e3830::FUN_006e3830(tObject_006e3830& param_1)
 {
 	m28 = param_1.m28;
 	for (fn_0060ac82_tree::iterator it = param_1.mTree.begin(); it != param_1.mTree.end(); ++it)
-		FUN_006e38a0((*it).first, (*it).second);
+		FUN_006e38a0((*it).first, (*it).second->m00);
+}
+
+// HYPOTHESIS: m28 allows several entries under one key; each entry also goes
+// into the second tree, keyed by its object, which points back at it.
+// FUNCTION: STARFLEETOP 0x006e38a0
+bool tObject_006e3830::FUN_006e38a0(const unsigned long& param_1, tObject_006e3000_shared* const& param_2)
+{
+	fn_0060ac82_tree::iterator where = mTree.FUN_006d3a60(param_1);
+	if (!m28 && where != mTree.end())
+		return false;
+	std::pair<fn_005d9441_tree::iterator, bool> result = m14.FUN_006e3f40(fn_005d9441_tree::value_type(param_2, mTree.end()));
+	if (!result.second)
+		return false;
+	tObject_006dbc40* entry = new tObject_006dbc40(param_2, result.first);
+	fn_0060ac82_tree::iterator inserted = mTree.FUN_006e3cf0(where, fn_0060ac82_tree::node::value(param_1, entry));
+	(*result.first).second = inserted;
+	return true;
 }
