@@ -51,9 +51,14 @@ bool fn_005de1b8_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 }
 
 // HYPOTHESIS: a third ordering predicate on news stories: by the byte fn_00547448 returns
-// (higher first), then by text.
+// (higher first), then by text. Like 0x005de0cf it ignores this; std::sort (0x005dea09)
+// calls it as a function object.
+struct fn_005de222_Pred
+{
+	bool operator()( tNewsStory* a, tNewsStory* b ) const;
+};
 // FUNCTION: STARFLEETOP 0x005de222
-bool __stdcall fn_005de222( tNewsStory* a, tNewsStory* b )
+bool fn_005de222_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 {
 	bool less;
 	int ascii = g_b00c38458 != 0;
@@ -347,6 +352,18 @@ void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory*
 // FUNCTION: STARFLEETOP 0x005de987
 template<>
 void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** )
+{
+	if (_L - _F <= _SORT_MAX)
+		_Insertion_sort(_F, _L, _P);
+	else
+		{_Sort(_F, _L, _P, (tNewsStory**)0);
+		_Insertion_sort(_F, _F + _SORT_MAX, _P);
+		for (_F += _SORT_MAX; _F != _L; ++_F)
+			_Unguarded_insert(_F, *_F, _P); }
+}
+// FUNCTION: STARFLEETOP 0x005dea09
+template<>
+void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** )
 {
 	if (_L - _F <= _SORT_MAX)
 		_Insertion_sort(_F, _L, _P);
