@@ -10,6 +10,7 @@ class fn_0053f22f_owner
 {
 public:
 	nDatabase::tID fn_0053f22f() const;
+	void fn_0053f281( nDatabase::tID id );
 
 	char m_00[0x48];
 	nDatabase::tID m_48;
@@ -94,4 +95,12 @@ long fn_0053f25c_owner::fn_0053f273()
 long fn_0053f25c_owner::fn_0053f27a()
 {
 	return m_94;
+}
+
+// HYPOTHESIS: the setter paired with the getter at 0x0053f22f; it takes the tID by
+// value and assigns it to the member at 0x48.
+// FUNCTION: STARFLEETOP 0x0053f281
+void fn_0053f22f_owner::fn_0053f281( nDatabase::tID id )
+{
+	m_48 = id;
 }
