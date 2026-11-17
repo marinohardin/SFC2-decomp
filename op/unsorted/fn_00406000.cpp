@@ -195,26 +195,14 @@ int std::string::compare(const std::string& _X) const
 // HYPOTHESIS: a caller in the original uses this instantiation.
 int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
 
+// HYPOTHESIS: the library's istreambuf_iterator<char>::equal instantiation; 0x00405fdf is _Peek.
 // FUNCTION: STARFLEETOP 0x00406540
-// HYPOTHESIS: a pointer holder with an owner flag; Peek() is the callee at 0x00405fdf.
-struct fn_00406540_holder
+template<> bool std::istreambuf_iterator<char>::equal(const std::istreambuf_iterator<char>& _X) const
 {
-    void* m_ptr;
-    char m_flag;
-    void Peek();
-    int fn_00406540(const fn_00406540_holder& other);
-};
-
-int fn_00406540_holder::fn_00406540(const fn_00406540_holder& other)
-{
-    if (m_flag == 0)
-        Peek();
-    if (other.m_flag == 0)
-        ((fn_00406540_holder&)other).Peek();
-    int a = (int)m_ptr;
-    if (!a && !other.m_ptr)
-        return 1;
-    if (a && other.m_ptr)
-        return 1;
-    return 0;
+    if (!_Got)
+        ((std::istreambuf_iterator<char> *)this)->_Peek();
+    if (!_X._Got)
+        ((std::istreambuf_iterator<char> *)&_X)->_Peek();
+    return (_Sbuf == 0 && _X._Sbuf == 0
+        || _Sbuf != 0 && _X._Sbuf != 0);
 }

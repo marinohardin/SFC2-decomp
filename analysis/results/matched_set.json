@@ -840,11 +840,11 @@
   },
   "0x00406540": {
    "name": "FUN_00406540",
-   "symbol": "?fn_00406540@fn_00406540_holder@@QAEHABU1@@Z",
+   "symbol": "?equal@?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@QBE_NABV12@@Z",
    "unit": "unsorted/fn_00406000.cpp",
    "size": 63,
-   "score": 56.25,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
