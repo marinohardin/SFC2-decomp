@@ -101,13 +101,16 @@ struct s_00844fd0_entry
 };
 extern s_00844ed0_entry g_00844ed0[];
 extern s_00844fd0_entry g_00844fd0[];
-extern const char *g_00845018;
+extern const char *g_00845018[];
 extern const char *g_0084501c;
 extern const char *g_00845020;
 extern const char *g_00845024;
 extern const char *g_00845028;
 void fn_004d35e3(const char *name, const char *group, int n);
 void fn_004d35ac(tValueBase *value, const char *name);
+// HYPOTHESIS: unregister a control name, and unbind a value object from a name, returning it.
+void fn_004d35fa(const char *name);
+tValueBase *fn_004d35bf(const char *name, int n);
 
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
@@ -816,7 +819,7 @@ void tState_GameConnections::fn_00469271()
 	m15c = tString("");
 	m19c = tString("");
 
-	fn_004d35ac(&m1c, g_00845018);
+	fn_004d35ac(&m1c, g_00845018[0]);
 	fn_004d35ac(&m5c, g_0084501c);
 	fn_004d35ac(&m9c, g_00845020);
 	fn_004d35ac(&mdc, g_00845024);
@@ -825,6 +828,22 @@ void tState_GameConnections::fn_00469271()
 	for (unsigned int j = 0; j < 6; j++)
 		fn_004d35ac(new tValueI< tString >, g_00844e4c[j]);
 	fn_004d35ac(new tValueI< tString >, g_00844e70);
+}
+
+// FUNCTION: STARFLEETOP 0x00469534
+void tState_GameConnections::fn_00469534()
+{
+	int i;
+	for (i = 0; i < 32; i++)
+		fn_004d35fa(g_00844ed0[i].group);
+	for (i = 0; i < 6; i++)
+		fn_004d35fa(g_00844fd0[i].group);
+	for (i = 0; i < 10; i++)
+		fn_004d35bf(g_00845018[i], 0);
+
+	for (unsigned int j = 0; j < 6; j++)
+		delete fn_004d35bf(g_00844e4c[j], 0);
+	delete fn_004d35bf(g_00844e70, 0);
 }
 
 }
