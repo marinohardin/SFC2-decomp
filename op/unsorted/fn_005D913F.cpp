@@ -445,6 +445,11 @@ class fn_005d97a8_object
 {
 public:
     ~fn_005d97a8_object();
+    void fn_005f7aeb();
+    void fn_005d97c1();
+private:
+    char m_00[0x10];
+    unsigned int m_size;
 };
 
 class fn_005d978b_object
@@ -468,4 +473,12 @@ fn_005d978b_object::~fn_005d978b_object()
 {
     if (m_flag)
         delete m_value;
+}
+
+// FUNCTION: STARFLEETOP 0x005d97a8
+fn_005d97a8_object::~fn_005d97a8_object()
+{
+    while (m_size != 0)
+        fn_005f7aeb();
+    fn_005d97c1();
 }
