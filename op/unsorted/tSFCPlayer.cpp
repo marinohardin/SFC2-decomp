@@ -178,7 +178,7 @@ class tSFCPlayer
 		virtual void vfunction26() = 0;
 		virtual void vfunction27(int param_1);
 		virtual int vfunction28();
-		virtual void vfunction29() = 0;
+		virtual void vfunction29(unsigned char param_1);
 		virtual void vfunction30() = 0;
 		virtual void vfunction31() = 0;
 		virtual void vfunction32() = 0;
@@ -327,7 +327,8 @@ class tSFCPlayer
 		int m_8534;
 		int m_8538;
 		int m_853c;
-		char pad_8540[0x8544 - 0x8540];
+		char m_8540;
+		char pad_8541[0x8544 - 0x8541];
 		int m_8544[4][6];
 
 		tObject_00583828 m_85a4;
@@ -849,6 +850,13 @@ int tSFCPlayer::vfunction28()
 	if (!m_04)
 		fn_004d0c48();
 	return m_853c;
+}
+
+// FUNCTION: STARFLEETOP 0x004d085a
+void tSFCPlayer::vfunction29(unsigned char param_1)
+{
+	m_8540 = param_1;
+	g_p008cc580->vfunction6("UI", "AutoFilm", param_1);
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
