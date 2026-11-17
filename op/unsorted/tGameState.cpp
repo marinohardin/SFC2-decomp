@@ -221,3 +221,27 @@ char fn_00469e75(int param_1, int param_2)
 	fn_0046a62d("startup");
 	return 1;
 }
+
+// HYPOTHESIS: g_0090db44 holds a pointer to an object released through fn_0046a688.
+extern int g_0090db44;
+void fn_0046a688(int param_1);
+
+// HYPOTHESIS: fn_00672f40 is a method of an unidentified class, called on a global object (this = its address).
+class fn_00672f40_owner
+{
+public:
+	void fn_00672f40();
+};
+
+extern fn_00672f40_owner g_fn_00672f40_owner;
+
+// FUNCTION: STARFLEETOP 0x00469ed8
+void fn_00469ed8()
+{
+	if (g_0090db44 != 0)
+	{
+		fn_0046a688(g_0090db44);
+		g_0090db44 = 0;
+	}
+	g_fn_00672f40_owner.fn_00672f40();
+}
