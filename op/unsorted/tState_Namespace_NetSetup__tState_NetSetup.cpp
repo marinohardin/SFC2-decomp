@@ -89,6 +89,7 @@ public:
 	void fn_00476aee(c_00468677_source *control, const char *key);
 	void fn_00476c64();
 	void fn_00476c89();
+	void fn_00476ce5(int id);
 	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
 	void fn_00476d52(c_00468677_source **control, void *source, int id);
 	void fn_00477440();
@@ -447,4 +448,24 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c89()
 	m1ec->vfunction65(0);
 	fn_004d34c5(0x1001e, 0);
 	fn_004d34c5(0x1001f, 0);
+}
+
+// FUNCTION: STARFLEETOP 0x00476ce5
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476ce5(int id)
+{
+	fn_004d34c5(0x1001e, 1);
+	fn_004d34c5(0x1001f, 1);
+	switch (id)
+	{
+	case 0x10018:
+		m1e0->vfunction65(1);
+		fn_004d34c5(0x1000e, 1);
+		break;
+	case 0x1001e:
+		m1e8->vfunction65(1);
+		break;
+	case 0x1001f:
+		m1ec->vfunction65(1);
+		break;
+	}
 }
