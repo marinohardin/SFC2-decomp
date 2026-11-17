@@ -10,6 +10,7 @@
 #include "unsorted/tValueI.h"
 #include "unsorted/c_0046aa10_msg.h"
 #include <vector>
+#include <string>
 #include "unsorted/tObject_0092deb4.h"
 #include "Tiger/tFormatStr.h"
 
@@ -79,6 +80,12 @@ extern double g_00c7c148;
 extern char g_0090daa8;
 extern double g_0090dab0;
 
+// HYPOTHESIS: pointers to state names handed to fn_00469e0c; cdecl helpers.
+extern const char *g_00844e88;
+extern const char *g_00844e9c;
+void fn_0040fa40(const std::string &name, int n);
+void fn_0046aa58();
+
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
 
@@ -125,13 +132,25 @@ namespace tState_Namespace_GameConnections
 class tState_GameConnections
 {
 public:
-	char *vfunction13();
-	bool vfunction2();
-	bool vfunction4();
-	void vfunction15(c_0046aa10_message *msg);
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual bool vfunction2();
+	virtual void vfunction3();
+	virtual bool vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual char *vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15(c_0046aa10_message *msg);
 
 	void fn_004682c7();
-	void fn_00468527();
+	bool fn_00468527();
 	void fn_00469271();
 	void fn_00469534();
 	void fn_00468297();
@@ -159,11 +178,12 @@ public:
 	void fn_00468c49();
 	// HYPOTHESIS: a member; it stores the address field, then runs gNetControl.fn_00431821.
 	void fn_00469096();
+	bool fn_004690a5(int id);
 	bool fn_0047685b();
 	void fn_004695c4(const char *name, int n);
 	void fn_00469e0c(const char *name);
 
-	char m00[0xc];
+	char m04[8];
 	unsigned char m0c;
 	unsigned char m0d;
 	unsigned char m0e;
@@ -390,14 +410,14 @@ bool tState_GameConnections::fn_00468481()
 }
 
 // FUNCTION: STARFLEETOP 0x00468527
-void tState_GameConnections::fn_00468527()
+bool tState_GameConnections::fn_00468527()
 {
 	fn_004d3331(g_00844ea4);
 	fn_004d32c4(g_00844ea8);
 	if (m1dc == 0)
 		m1dc = fn_004d3446(0x10015);
 	fn_004688ee(m1dc, "IPAddress", m1fc.mCharStr());
-	gNetControl.fn_004325a9(2);
+	return gNetControl.fn_004325a9(2);
 }
 
 // FUNCTION: STARFLEETOP 0x0046858a
@@ -699,6 +719,61 @@ void tState_GameConnections::fn_00469096()
 {
 	fn_00468297();
 	gNetControl.fn_00431821();
+}
+
+// FUNCTION: STARFLEETOP 0x004690a5
+bool tState_GameConnections::fn_004690a5(int id)
+{
+	// The original leaves the result unset for 0x1000a and for an unknown id.
+	bool result;
+
+	gNetControl.fn_00433c46();
+	// HYPOTHESIS: the case order is the source order; it decides which case keeps the shared
+	// fn_00469e0c call the compiler merges, and only this order reproduces the original's.
+	switch (id)
+	{
+	case 0x10004:
+		result = fn_00468527();
+		break;
+	case 0x10005:
+		result = fn_004688a9();
+		break;
+	case 0x10006:
+		result = fn_004683ff();
+		fn_00469e0c(g_00844e88);
+		break;
+	case 0x1000a:
+		fn_00469e0c(g_00844e9c);
+		break;
+	case 0x10007:
+		result = fn_00468481();
+		fn_00469e0c(g_00844e88);
+		break;
+	case 0x10008:
+		if (m14 < 0)
+			m14 = g_p008cc580->vfunction7("Network", "SimProtocol", 0);
+		if (m14)
+		{
+			tString value = m1c;
+			gObject_0092deb4->vfunction4(value);
+			result = gNetControl.fn_004325a9(6);
+			gNetControl.fn_0043290e(tString(""));
+			fn_00469e0c(g_00844e88);
+		}
+		else
+		{
+			result = gNetControl.fn_004325a9(5);
+			fn_0040fa40(std::string("http://www.gamespyarcade.com/launch/launch.asp?gamename=strfltcmd2"), 1);
+			vfunction3();
+			gNetControl.fn_00431821();
+			fn_0046aa58();
+		}
+		break;
+	case 0x10009:
+		result = fn_0046858a();
+		break;
+	}
+	return result;
 }
 
 }
