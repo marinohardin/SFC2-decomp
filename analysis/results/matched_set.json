@@ -237,10 +237,10 @@
   },
   "0x00402a26": {
    "name": "FUN_00402a26",
-   "symbol": "?fn_00402a26@@YAXXZ",
+   "symbol": "?fn_00402a26@fn_00402a26_Istream@@QAEAAV1@AAJ@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 155,
-   "score": 0.645,
+   "score": 38.71,
    "exact": false,
    "recorded": "2026-11-16"
   },

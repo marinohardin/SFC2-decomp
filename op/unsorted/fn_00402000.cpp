@@ -524,8 +524,28 @@ fn_004029e8_Obj fn_004029e8_Obj::fn_004029e8(unsigned int pos, unsigned int n) c
     return fn_004029e8_Obj(*this, pos, n);
 }
 
-// HYPOTHESIS: std::ostream::operator<<(long) instantiated out of line; the address is taken so the compiler keeps a copy
-// FUNCTION: STARFLEETOP 0x00402a26
-void fn_00402a26()
+// HYPOTHESIS: std::istream::operator>>(long&) as the library header writes it (num_get's do_get for
+// long sits at vtable +0x18), around ipfx (0x00403eda); the class stands in for basic_istream<char>.
+// The analysis ends the function at the jump over its catch funclet, so the rebuilt tail scores as extra.
+class fn_00402a26_Istream : public virtual std::ios
 {
+public:
+    typedef std::istreambuf_iterator<char, std::char_traits<char> > _Iter;
+    typedef std::num_get<char, _Iter> _Nget;
+    bool fn_00403eda(bool noskip);
+    fn_00402a26_Istream& fn_00402a26(long& x);
+};
+
+// FUNCTION: STARFLEETOP 0x00402a26
+fn_00402a26_Istream& fn_00402a26_Istream::fn_00402a26(long& x)
+{
+    iostate _St = goodbit;
+    const bool _Ok = fn_00403eda(false);
+    if (_Ok)
+        {const _Nget& _Fac = std::use_facet(getloc(), (_Nget *)0, true);
+        _TRY_IO_BEGIN
+        _Fac.get(_Iter(rdbuf()), _Iter(0), *this, _St, x);
+        _CATCH_IO_END}
+    setstate(_St);
+    return (*this);
 }
