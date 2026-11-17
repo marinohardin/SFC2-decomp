@@ -325,7 +325,7 @@ struct fn_005717f7_vector {
 	void** m_end;
 };
 // HYPOTHESIS: the per-type index is a std::map, allocator id to object pointers; 0x005719df is its operator[].
-typedef std::map<long, std::vector<void*> > fn_005717f7_index;
+typedef std::map<long, std::vector<fn_005717f7_object*> > fn_005717f7_index;
 struct fn_005717f7_map : public fn_005717f7_index {
 	fn_005717f7_vector& fn_005719df(const long& key);
 };
@@ -549,7 +549,7 @@ fn_005719c3_object* fn_005719c3_object::fn_005719c3(unsigned char flags)
 // FUNCTION: STARFLEETOP 0x005719df
 fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 {
-	iterator it = insert(value_type(key, std::vector<void*>())).first;
-	// MATCH-ONLY: the struct above stands for the std::vector<void*> it has the layout of.
+	iterator it = insert(value_type(key, std::vector<fn_005717f7_object*>())).first;
+	// MATCH-ONLY: the struct above stands for the std::vector it has the layout of.
 	return *(fn_005717f7_vector*)&(*it).second;
 }

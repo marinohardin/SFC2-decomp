@@ -6441,8 +6441,8 @@
    "symbol": "?fn_005719df@fn_005717f7_map@@QAEAAUfn_005717f7_vector@@ABJ@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 121,
-   "score": 99.756,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x00607faa": {
