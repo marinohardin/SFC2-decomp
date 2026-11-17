@@ -275,3 +275,24 @@ void fn_00496665()
 void fn_00496682()
 {
 }
+
+// HYPOTHESIS: a free function at 0x0069b0e0 returning a float on the FPU stack (a random value).
+float fn_0069b0e0();
+
+// HYPOTHESIS: a two-float record initialised from two draws of fn_0069b0e0.
+class fn_004966e7_object
+{
+public:
+	fn_004966e7_object();
+
+	float m00;
+	float m04;
+};
+
+// FUNCTION: STARFLEETOP 0x004966e7
+fn_004966e7_object::fn_004966e7_object()
+{
+	m00 = fn_0069b0e0();
+	float r = fn_0069b0e0() * 0.25f;
+	m04 = r + r - 0.25f;
+}
