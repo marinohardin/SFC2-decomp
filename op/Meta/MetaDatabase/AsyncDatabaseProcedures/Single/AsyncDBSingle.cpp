@@ -4,6 +4,7 @@
 #include "Common/Database/Query.h"
 #include "unsorted/tCurrentTime.h"
 #include "unsorted/tServCharacter.h"
+#include "unsorted/tShip.h"
 
 #include <sstream>
 #include <string>
@@ -43,6 +44,8 @@ public:
 	void fn_0056ef05( nDatabase::tQuery<tTurn>& query, std::vector<tTurn>* result, bool lock );
 	void fn_0056f05f( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result, bool lock );
 	void fn_0056f19b( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result );
+	void fn_0056f2a4( nDatabase::tQuery<tShip>& query, std::vector<tShip>* result, bool lock );
+	void fn_0056f3e0( nDatabase::tQuery<tShip>& query, std::vector<tShip>* result );
 };
 
 // HYPOTHESIS: returns the server settings; name not known.
@@ -63,7 +66,7 @@ public:
 	virtual void vfunction6();
 	virtual void vfunction7( std::vector<tServCharacter>* characters );
 	virtual void vfunction8( std::vector<tServCharacter>* characters, int lock );
-	virtual void vfunction9();
+	virtual void vfunction9( std::vector<nDatabase::tID> ids, std::vector<tShip>* ships, int lock );
 	virtual void vfunction10();
 	virtual void vfunction11();
 	virtual void vfunction12();
@@ -282,12 +285,33 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction8( std::vector<tSer
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0056ccff
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction9( std::vector<nDatabase::tID> ids, std::vector<tShip>* ships, int lock )
+{
+	std::vector<nDatabase::tEval<tShip>*> evals;
+	nDatabase::tQuery<tShip> query( nDatabase::tQuery<tShip>::kOr );
+	for( std::vector<nDatabase::tID>::iterator id = ids.begin(); id != ids.end(); id++ )
+	{
+		nDatabase::tMemberEval<tShip, const nDatabase::tID&, std::equal_to<nDatabase::tID> >* eval =
+			new nDatabase::tMemberEval<tShip, const nDatabase::tID&, std::equal_to<nDatabase::tID> >( &tShip::GetID, *id );
+		evals.push_back( eval );
+		query.AddEval( eval );
+	}
 
+	if( lock )
+	{
+		fDatabase->fn_0056f3e0( query, ships );
+	}
+	else
+	{
+		fDatabase->fn_0056f2a4( query, ships, true );
+	}
 
-
-
-
-
+	for( std::vector<nDatabase::tEval<tShip>*>::iterator i = evals.begin(); i != evals.end(); i++ )
+	{
+		delete *i;
+	}
+}
 
 
 
