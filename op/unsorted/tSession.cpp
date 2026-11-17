@@ -32,6 +32,7 @@ public:
 	virtual	~fn_0068d830_Item();
 
 	void	fn_0068d830( tRect rect );
+	void	fn_0068db60();
 };
 
 // HYPOTHESIS: the layout is read from the inlined destructor in fn_0068ff60 only. The
@@ -44,7 +45,9 @@ public:
 	char	pad_00[0x04];
 	// HYPOTHESIS: the text fn_006904d0 hands to the browser it finds.
 	char	*f_04;
-	char	pad_08[0x10 - 0x08];
+	// HYPOTHESIS: the read position in the wide text; fn_00690900 reads and steps it.
+	unsigned short	*f_08;
+	char	pad_0c[0x10 - 0x0c];
 };
 
 class tHtmlParser: public tHtmlParserBase
@@ -59,6 +62,12 @@ public:
 	void	fn_0068f6b0( tString &name );
 	void	fn_00690400();
 	void	fn_006904d0();
+	void	fn_00690900();
+	void	fn_006916f0( char size, int b );
+	bool	fn_0068f5c0( tString &name );
+	int	fn_00691fd0();
+	void	fn_0068f480();
+	void	fn_006910a0( int align );
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -68,7 +77,11 @@ public:
 	tString	f_44;
 	fn_0068ff60_Root	*f_6c;
 	tDir	f_70;
-	char	pad_80[0x94 - 0x80];
+	char	pad_80[0x8c - 0x80];
+	// HYPOTHESIS: the current alignment; fn_00690900 passes it on unless an align attribute sets one.
+	unsigned char	f_8c;
+	char	pad_8d[0x92 - 0x8d];
+	unsigned short	f_92;
 	std::vector<unsigned short>	f_94;
 	std::vector<unsigned short>	f_a4;
 	std::vector<unsigned short>	f_b4;
@@ -329,4 +342,32 @@ void tHtmlParser::fn_006904d0()
 		f_40->fn_0068d830( tRect( 0, 0, 200, 300 ) );
 	}
 	f_3c &= ~1;
+}
+
+// FUNCTION: STARFLEETOP 0x00690900
+// HYPOTHESIS: a heading tag (h1 to h6): the digit after the tag name sets the size, an align
+// attribute the alignment; other attributes are skipped.
+void tHtmlParser::fn_00690900()
+{
+	int	level = *f_08 - '0';
+
+	if ( level <= 6 && level >= 1 )
+	{
+		f_08++;
+		f_40->fn_0068db60();
+		fn_006916f0( 7 - level, 0 );
+
+		tString	name;
+		int	align = f_8c;
+
+		while ( fn_0068f5c0( name ) )
+		{
+			if ( name == "align" )
+				align = fn_00691fd0();
+			else
+				fn_0068f480();
+		}
+		fn_006910a0( align );
+		f_92 = ' ';
+	}
 }
