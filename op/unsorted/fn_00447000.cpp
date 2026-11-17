@@ -159,6 +159,9 @@ struct tObject_00447415_limits
 	char field_0x17e[4];
 	char field_0x182[4];
 	char field_0x186[3];
+	char field_0x189[0x3];
+	// HYPOTHESIS: strings indexed alike; the array length is not known.
+	std::string field_0x18c[4];
 };
 
 // HYPOTHESIS: the class owning 0x0044715d is not known; only its table pointer at 0xec is read.
@@ -176,6 +179,7 @@ public:
 	void fn_004477c6(int index, char value, char current);
 	int fn_004477f8(int index);
 	int fn_0044780d(int index);
+	std::string fn_00447822(int index);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -427,4 +431,10 @@ int c_0044715d::fn_004477f8(int index)
 int c_0044715d::fn_0044780d(int index)
 {
 	return field_0xe8->field_0x17a[index];
+}
+
+// FUNCTION: STARFLEETOP 0x00447822
+std::string c_0044715d::fn_00447822(int index)
+{
+	return field_0xe8->field_0x18c[index];
 }
