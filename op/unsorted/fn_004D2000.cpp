@@ -186,9 +186,12 @@ public:
 	virtual ~fn_004cb4f8_result();
 };
 
+class tString;
+
 class fn_004cb4a7_target
 {
 public:
+	void fn_004bf6b9(const char* text, tString& s);
 	void fn_004cb4a7(int dst, const char* text);
 	fn_004cb4f8_result* fn_004cb4f8(const char* text);
 	void fn_004cb56f(int a, const char* text, int b);
@@ -299,6 +302,7 @@ public:
 	~fn_004d2420_holder();
 	void fn_004d24dc();
 	void fn_004d2451(const char* text);
+	void fn_004d2521(const char* text);
 	fn_004d2238_string m_str;
 };
 
@@ -334,6 +338,7 @@ class fn_004d2451_string
 {
 public:
 	fn_004d2451_string();
+	fn_004d2451_string(const char* s);
 	virtual ~fn_004d2451_string();
 protected:
 	char m_rest[0x24];
@@ -357,4 +362,11 @@ void fn_004d2420_holder::fn_004d2451(const char* text)
 		fn_004d2451_value* value = new fn_004d2451_value;
 		g_009254f8.fn_004cb4a7((int)value, m_str.c_str());
 	}
+}
+
+// HYPOTHESIS: builds a temporary tString from text and hands the held string and it to fn_004bf6b9.
+// FUNCTION: STARFLEETOP 0x004d2521
+void fn_004d2420_holder::fn_004d2521(const char* text)
+{
+	g_009254f8.fn_004bf6b9(m_str.c_str(), fn_004d2451_string(text));
 }
