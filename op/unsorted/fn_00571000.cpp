@@ -282,3 +282,21 @@ bool fn_00571676_owner::fn_005716e0(int a)
 		return true;
 	return false;
 }
+// HYPOTHESIS: stands in for tHexPoint (0x14 bytes, copy constructor 0x005b6973, destructor 0x005b6a36), declared only inside unsorted/tClientCharacter.cpp; the symbols differ until it moves to a header.
+class fn_00571734_point {
+public:
+	fn_00571734_point(const fn_00571734_point &other);
+	~fn_00571734_point();
+	int m_00[5];
+};
+// HYPOTHESIS: a second class on the base of 0x00571676 (vtable 0x007b2ba8), holding a tHexPoint at +0x10 copied from the by-value parameter.
+class fn_00571734_owner : public fn_00571676_base {
+public:
+	fn_00571734_owner(long a, long b, fn_00571734_point p);
+	fn_00571734_point fn_00571734_pt;
+};
+// MATCH-ONLY: kept compact so the unit ends before line 303 (0x0057147a's first line record).
+// FUNCTION: STARFLEETOP 0x00571734
+fn_00571734_owner::fn_00571734_owner(long a, long b, fn_00571734_point p)
+	: fn_00571676_base(a, b), fn_00571734_pt(p)
+{}
