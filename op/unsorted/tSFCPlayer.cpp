@@ -188,7 +188,7 @@ class tSFCPlayer
 		virtual int vfunction34();
 		virtual void vfunction35(bool param_1);
 		virtual char vfunction36();
-		virtual void vfunction37() = 0;
+		virtual void vfunction37();
 		virtual void vfunction38() = 0;
 		virtual void vfunction39(int param_1);
 		virtual int vfunction40();
@@ -1056,6 +1056,12 @@ void tSFCPlayer::vfunction56(bool param_1)
 bool tSFCPlayer::vfunction57()
 {
 	return m_8514;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0a97
+void tSFCPlayer::vfunction37()
+{
+	// HYPOTHESIS: the original has a tShipSpecs local (EH frame, constructor 0x0040891d); body not recovered.
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
