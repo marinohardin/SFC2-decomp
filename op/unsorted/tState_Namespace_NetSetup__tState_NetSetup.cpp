@@ -727,3 +727,18 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477440()
 	fn_004d35ac(&m15c, g_0084948c[5]);
 	fn_004d35ac(&m19c, g_0084948c[6]);
 }
+
+void fn_004d35fa(const char *name);
+tValueBase *fn_004d35bf(const char *name, int n);
+
+// FUNCTION: STARFLEETOP 0x00477689
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00477689()
+{
+	int i;
+	for (i = 0; i < 15; i++)
+		fn_004d35fa(g_008493d8[i].group);
+	for (i = 0; i < 5; i++)
+		fn_004d35fa(g_00849450[i].group);
+	for (i = 0; i < 10; i++)
+		fn_004d35bf(g_0084948c[i], 0);
+}
