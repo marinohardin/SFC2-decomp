@@ -742,10 +742,40 @@ void fn_004d2797_owner::fn_004d2797(unsigned long a, const char* text, int b)
 }
 
 // HYPOTHESIS: a map from string to fn_004d2420_holder* (operator[] is 0x004d2b75) at +0x28; name unknown.
+struct fn_004d2b75_pair
+{
+	inline fn_004d2b75_pair(const fn_004d2238_string& a, fn_004d2420_holder* b);
+	fn_004d2238_string first;
+	fn_004d2420_holder* second;
+};
+
+// MATCH-ONLY: the original inlined the pair constructor into its callers.
+inline fn_004d2b75_pair::fn_004d2b75_pair(const fn_004d2238_string& a, fn_004d2420_holder* b) : first(a), second(b)
+{
+}
+
+struct fn_004d2b75_node
+{
+	char m_0x00[0xc];
+	fn_004d2b75_pair m_0x0c;
+};
+
+struct fn_004d2b75_iterator
+{
+	fn_004d2b75_node* m_0x00;
+};
+
+struct fn_004d2b75_insert_result
+{
+	fn_004d2b75_iterator first;
+	bool second;
+};
+
 class fn_004d2b75_map
 {
 public:
 	fn_004d2420_holder*& fn_004d2b75(const fn_004d2238_string& key);
+	fn_004d2b75_insert_result fn_004d2cca(const fn_004d2b75_pair& value);
 	// HYPOTHESIS: the lookup is the map's find (call at 0x004d28d8); a node holds its value at +0x1c.
 	struct fn_node
 	{
@@ -761,6 +791,13 @@ public:
 	char m_0x00[4];
 	fn_node* m_0x04; // end node
 };
+
+// FUNCTION: STARFLEETOP 0x004d2b75
+fn_004d2420_holder*& fn_004d2b75_map::fn_004d2b75(const fn_004d2238_string& key)
+{
+	fn_004d2b75_insert_result r = fn_004d2cca(fn_004d2b75_pair(key, 0));
+	return r.first.m_0x00->m_0x0c.second;
+}
 
 class fn_004d27fa_owner
 {
