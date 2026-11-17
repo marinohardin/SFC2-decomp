@@ -270,3 +270,24 @@ void *fn_006cc530(char **keys, int count, char *text, unsigned long param_4, fn_
 	}
 	return record;
 }
+
+// HYPOTHESIS: the cursor of a strtok-like splitter, kept between calls.
+char *g_00c7ea60;
+
+// FUNCTION: STARFLEETOP 0x006cc640
+char *fn_006cc640(char *text, char separator)
+{
+	if (text != 0)
+		g_00c7ea60 = text;
+	char *start = g_00c7ea60;
+	while (*g_00c7ea60 != '\0' && *g_00c7ea60 != separator)
+		g_00c7ea60++;
+	if (g_00c7ea60 == start)
+		start = 0;
+	if (*g_00c7ea60 != '\0')
+	{
+		*g_00c7ea60 = '\0';
+		g_00c7ea60++;
+	}
+	return start;
+}
