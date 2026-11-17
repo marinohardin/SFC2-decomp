@@ -22,6 +22,8 @@ public:
     // HYPOTHESIS: returns the number of entries of field_1e0 in use.
     int fn_0043e351();
     void fn_0043e359(char param_1);
+    // vftable slot 22; saves or loads the sensor fields.
+    virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
     void vfunction51();
     char fn_0043eb5f(int aID);
 
@@ -36,10 +38,21 @@ public:
     tMinMaxFloat field_f8;
     tMinMaxFloat field_11c;
     tMinMaxFloat field_140;
-    char pad164[0x18c - 0x164];
+    char pad164[0x168 - 0x164];
+    float field_168;
+    float field_16c;
+    float field_170;
+    float field_174;
+    float field_178;
+    float field_17c;
+    float field_180;
+    int field_184;
+    int field_188;
     // HYPOTHESIS: the answer 0x0043e201 uses for its owner's own entities.
     char field_18c;
-    char pad18d[0x1d9 - 0x18d];
+    char pad18d[0x190 - 0x18d];
+    float field_190;
+    char pad194[0x1d9 - 0x194];
     // HYPOTHESIS: the number of entries of field_1e0 in use (read with movsx).
     char field_1d9;
     char pad1da[0x1dc - 0x1da];
@@ -272,4 +285,60 @@ void tSensorGroupSystem::vfunction51()
         field_84->vfunction51();
     if (field_88 != 0 && field_88->vfunction10())
         field_88->vfunction51();
+}
+
+// HYPOTHESIS: field serializers (cdecl): the field, the stream and context passed through,
+// and the field's name; the last two take a value object.
+void __cdecl fn_0040e9df(int* value, int param_1, int param_3, const char* name);
+void __cdecl fn_0040eb35(float* value, int param_1, int param_3, const char* name);
+void __cdecl fn_0040d11a(tMinMaxFloat* value, int param_1, int param_3, const char* name);
+void __cdecl fn_0040d372(tMinMaxFloat* value, int param_1, int param_3, const char* name);
+
+// FUNCTION: STARFLEETOP 0x0043e3d6
+unsigned int tSensorGroupSystem::vfunction23(int param_1, unsigned int param_2, int param_3)
+{
+    if ((param_2 & 0x08) > 0)
+    {
+        param_2 = vfunction24(param_1, param_2, param_3);
+        fn_0040e9df(&field_184, param_1, param_3, "fDesiredECM");
+        fn_0040e9df(&field_188, param_1, param_3, "fDesiredECCM");
+        fn_0040d11a(&field_d4, param_1, param_3, "fDesiredECMStatus");
+        fn_0040d11a(&field_f8, param_1, param_3, "fDesiredECCMStatus");
+        fn_0040d372(&field_8c, param_1, param_3, "fECMStatus");
+        fn_0040d372(&field_b0, param_1, param_3, "fECCMStatus");
+        fn_0040d372(&field_11c, param_1, param_3, "fSensorEffectiveness");
+        fn_0040d372(&field_140, param_1, param_3, "fTargetLock");
+        fn_0040eb35(&field_190, param_1, param_3, "fTotalSensorHealthMultiplier");
+        fn_0040eb35(&field_180, param_1, param_3, "fExternalECCM");
+        fn_0040eb35(&field_17c, param_1, param_3, "fExternalECM");
+        fn_0040eb35(&field_174, param_1, param_3, "fTargetECCM");
+        fn_0040eb35(&field_178, param_1, param_3, "fEnviromentalECM");
+        fn_0040eb35(&field_170, param_1, param_3, "fTargetECM");
+        fn_0040eb35(&field_16c, param_1, param_3, "fECCM");
+        fn_0040eb35(&field_168, param_1, param_3, "fECM");
+    }
+    else if ((param_2 & 0x20) > 0)
+    {
+    }
+    else if ((param_2 & 0x80) > 0)
+    {
+        param_2 = vfunction24(param_1, param_2, param_3);
+        fn_0040eb35(&field_168, param_1, param_3, "fECM");
+        fn_0040eb35(&field_16c, param_1, param_3, "fECCM");
+        fn_0040d11a(&field_d4, param_1, param_3, "fDesiredECMStatus");
+        fn_0040d11a(&field_f8, param_1, param_3, "fDesiredECCMStatus");
+    }
+    else if ((param_2 & 0x40) > 0)
+    {
+        param_2 = vfunction24(param_1, param_2, param_3);
+        fn_0040eb35(&field_168, param_1, param_3, "fECM");
+        fn_0040eb35(&field_16c, param_1, param_3, "fECCM");
+        fn_0040d372(&field_8c, param_1, param_3, "fECMStatus");
+        fn_0040d372(&field_b0, param_1, param_3, "fECCMStatus");
+        fn_0040eb35(&field_180, param_1, param_3, "fExternalECCM");
+        fn_0040eb35(&field_17c, param_1, param_3, "fExternalECM");
+        fn_0040d11a(&field_d4, param_1, param_3, "fDesiredECMStatus");
+        fn_0040d11a(&field_f8, param_1, param_3, "fDesiredECCMStatus");
+    }
+    return param_2;
 }
