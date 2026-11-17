@@ -185,3 +185,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0057ac7e	FUN_0057ac7e	0.00	2	sonnet	2026-11-17T17:09:22Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005ea469	FUN_005ea469	99.79	2	sonnet	2026-11-17T17:17:40Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.79%
 0x005ea63e	FUN_005ea63e	40.00	2	sonnet	2026-11-17T17:24:11Z	best not above 90% after 2 attempts; best 40.00%
+0x005ea7f8	FUN_005ea7f8	54.75	2	sonnet	2026-11-17T17:33:18Z	attempt 2 (sonnet) did not raise the best; best 54.75%
