@@ -215,6 +215,15 @@ public:
 	byte field_00[0x14];
 };
 
+// HYPOTHESIS: the 0xd0-byte object tClientCharacter wraps at +0xcc (tObject_005391b0 in
+// unsorted/tClientCharacter.cpp); only the member 0x0042a8b7 calls is placed, its argument and
+// result types are guesses.
+class fn_005395b2_object
+{
+public:
+	void FUN_005395b2( int value );
+};
+
 // HYPOTHESIS: this is tClientCharacter (the string at +0x0c and the lock at +0xe4 match its
 // layout), declared only inside unsorted/tClientCharacter.cpp; only the members used here are
 // placed. 0x0042a535 and 0x0042a5ad assign strings at +0x1c and +0x30 under the same lock.
@@ -234,6 +243,7 @@ public:
 	void FUN_0042a6ea( const tHexPoint& value );
 	void FUN_0042a6fc( bool value );
 	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
+	void FUN_0042a8b7( int value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -256,7 +266,9 @@ public:
 	byte field_9d[0xb4 - 0x9d];
 	// HYPOTHESIS: the wrapped ship cache vector; its Lock is 0x0042c709.
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > > field_b4;
-	byte field_cc[0xe4 - 0xcc];
+	// HYPOTHESIS: tClientCharacter's wrapper at +0xcc of tObject_005391b0, declared only inside
+	// unsorted/tClientCharacter.cpp; 0x0042a8b7 locks it and calls 0x005395b2 on the object.
+	tSingleAccessWrapper< fn_005395b2_object > field_cc;
 	tOptex field_e4;
 };
 
@@ -398,4 +410,14 @@ void fn_0042a480_object::FUN_0042a7bf( const std::vector< fn_0054185f_ship >& sh
 // FUNCTION: STARFLEETOP 0x0042a863
 tServCharacter::tShipCache::~tShipCache()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x0042a8b7
+void fn_0042a480_object::FUN_0042a8b7( int value )
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	(*field_cc.Lock()).FUN_005395b2( value );
+
+	guard.Leave();
 }
