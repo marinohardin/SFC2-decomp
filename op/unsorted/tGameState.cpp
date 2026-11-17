@@ -1,6 +1,7 @@
 // Unit:      unsorted/tGameState.cpp
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 #include "unsorted/tGameState.h"
+#include "unsorted/tApplication.h"
 
 #include <string>
 
@@ -640,4 +641,43 @@ void fn_0046a4a8(tView3D *param_1)
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
 		state->vfunction4(param_1);
+}
+
+// HYPOTHESIS: slot 5 of the state takes one argument here; the header declares it without one.
+class fn_0046a4bd_state
+{
+public:
+	virtual void v00();
+	virtual void v01();
+	virtual void v02();
+	virtual void v03();
+	virtual void v04();
+	virtual void vfunction5(int param_1);
+};
+
+// HYPOTHESIS: 0x00672f80 is a method of the class of the global at 0x0090db70.
+class fn_0090db70_owner2
+{
+public:
+	void fn_00672f80(int param_1);
+};
+
+extern fn_0090db70_owner2 g_0090db70_2;
+extern unsigned int g_0090dba0;
+// HYPOTHESIS: the key string at 0x008458f4 (its text is not recovered; it is shared with other uses).
+extern char g_sz008458f4[];
+void fn_0046aa9a(int param_1);
+
+// FUNCTION: STARFLEETOP 0x0046a4bd
+void fn_0046a4bd(int param_1)
+{
+	tGameState *state = fn_0046a59a();
+	if (state != 0)
+		((fn_0046a4bd_state *)state)->vfunction5(param_1);
+	if (g_0090e004 == 0)
+		g_0090db70_2.fn_00672f80(param_1);
+	if ((int)g_0090dba0 < 0)
+		g_0090dba0 = g_p008cc580->vfunction5("Debug", g_sz008458f4, 0) != 0;
+	if (g_0090dba0 != 0)
+		fn_0046aa9a(param_1);
 }
