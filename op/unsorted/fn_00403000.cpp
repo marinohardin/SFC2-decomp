@@ -248,3 +248,14 @@ bool std::istream::ipfx(bool _Noskip)
 
 // HYPOTHESIS: a caller in the original uses this out-of-line instantiation.
 bool (std::istream::*g_fn_00403eda)(bool) = &std::istream::ipfx;
+
+// FUNCTION: STARFLEETOP 0x00403ff1
+std::streambuf::int_type std::streambuf::sbumpc()
+{
+    return (gptr() != 0 && gptr() < egptr()
+        ? std::char_traits<char>::to_int_type(*_Gninc())
+        : uflow());
+}
+
+// HYPOTHESIS: a caller in the original uses this out-of-line instantiation.
+std::streambuf::int_type (std::streambuf::*g_fn_00403ff1)() = &std::streambuf::sbumpc;
