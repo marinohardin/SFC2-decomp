@@ -10,12 +10,15 @@ struct tTransporterHoldItem
 	int m_08;
 	int m_0c;
 	int m_10;
-	tTransporterHoldItem& operator=( const tTransporterHoldItem& other )
-	{
-		m_0c = other.m_0c;
-		m_10 = other.m_10;
-		return *this;
-	}
+	tTransporterHoldItem& operator=( const tTransporterHoldItem& other );
 };
+
+// FUNCTION: STARFLEETOP 0x00447f3f
+inline tTransporterHoldItem& tTransporterHoldItem::operator=( const tTransporterHoldItem& other )
+{
+	m_0c = other.m_0c;
+	m_10 = other.m_10;
+	return *this;
+}
 
 #endif

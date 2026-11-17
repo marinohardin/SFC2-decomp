@@ -789,4 +789,8 @@ std::vector< tTransporterHoldItem >& std::vector< tTransporterHoldItem >::operat
 void fn_00447d69_user( std::vector< tTransporterHoldItem >& a, const std::vector< tTransporterHoldItem >& b )
 {
 	a = b;
+	// MATCH-ONLY: the original calls the element assignment out of line from one copy loop of
+	// 0x00447d69 and inlines it in the other; this pointer makes the out-of-line copy emit.
+	tTransporterHoldItem& (tTransporterHoldItem::*assign)( const tTransporterHoldItem& ) = &tTransporterHoldItem::operator=;
+	(a[0].*assign)( b[0] );
 }
