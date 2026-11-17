@@ -22,6 +22,18 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 	return m_48;
 }
 
+// HYPOTHESIS: the class of the member at 0x7c of the owner below is not known; it has
+// a member function at 0x0042b0fd taking two dwords. The names are placeholders.
+class fn_0042b0fd_owner
+{
+public:
+	void fn_0042b0fd( long a, long b );
+
+	long m_00;
+	long m_04;
+	long m_08;
+};
+
 // HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
 // a member function at 0x0053f4c6 taking two dwords. The names are placeholders.
 class fn_0053f4c6_owner
@@ -59,7 +71,7 @@ public:
 	fn_0053f4c6_owner *fn_0053f25c();
 	char fn_0053f260();
 	fn_0053f522_owner *fn_0053f264();
-	char *fn_0053f268();
+	fn_0042b0fd_owner *fn_0053f268();
 	long fn_0053f26c();
 	long fn_0053f273();
 	long fn_0053f27a();
@@ -69,6 +81,7 @@ public:
 	void fn_0053f2d6( long value );
 	void fn_0053f2e3( long value );
 	void fn_0053f2f0( long value );
+	void fn_0053f2fd();
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
@@ -77,8 +90,8 @@ public:
 	char m_69[3];
 	fn_0053f522_owner m_6c;
 	char m_70[0x0c];
-	char m_7c[4];
-	char m_80[0x0c];
+	fn_0042b0fd_owner m_7c;
+	char m_88[4];
 	long m_8c;
 	long m_90;
 	long m_94;
@@ -104,11 +117,11 @@ fn_0053f522_owner *fn_0053f25c_owner::fn_0053f264()
 	return &m_6c;
 }
 
-// HYPOTHESIS: same owner; returns the address of a member at 0x7c of unknown type.
+// HYPOTHESIS: same owner; returns the address of the member at 0x7c.
 // FUNCTION: STARFLEETOP 0x0053f268
-char *fn_0053f25c_owner::fn_0053f268()
+fn_0042b0fd_owner *fn_0053f25c_owner::fn_0053f268()
 {
-	return m_7c;
+	return &m_7c;
 }
 
 // HYPOTHESIS: same owner; returns the dword at 0x8c, type unknown.
@@ -180,4 +193,11 @@ void fn_0053f25c_owner::fn_0053f2e3( long value )
 void fn_0053f25c_owner::fn_0053f2f0( long value )
 {
 	m_94 = value;
+}
+
+// HYPOTHESIS: same owner; passes the member at 0x7c its own dwords at 4 and 8.
+// FUNCTION: STARFLEETOP 0x0053f2fd
+void fn_0053f25c_owner::fn_0053f2fd()
+{
+	m_7c.fn_0042b0fd( m_7c.m_04, m_7c.m_08 );
 }
