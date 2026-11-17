@@ -60,3 +60,77 @@ fn_0046de63_object *fn_005d91cc_object::operator=(fn_0046de63_object *p)
     }
     return p;
 }
+
+// HYPOTHESIS: the object a tree node at 0x005d9200 points to: a counted pointer at +0x00,
+// released by its inlined destructor.
+class fn_005d9200_value
+{
+public:
+    ~fn_005d9200_value();
+
+    fn_0046de63_object *m00;
+};
+
+inline fn_005d9200_value::~fn_005d9200_value()
+{
+    if (m00)
+        m00->FUN_0046de63();
+}
+
+// HYPOTHESIS: a 16-byte balanced tree (a head node at +0x04 whose left link is the first
+// node; each node holds its key at +0x0c and its value at +0x10). Its destructor
+// (0x005d9281) and its iterator's increment (0x0052e144) are called out of line.
+struct fn_005d9281_tree
+{
+    struct node
+    {
+        node *left;
+        node *parent;
+        node *right;
+        long first;
+        fn_005d9200_value *second;
+    };
+    class iterator
+    {
+    public:
+        iterator(node *n) : m_node(n) {}
+        node &operator*() const { return *m_node; }
+        iterator &fn_0052e144();
+        iterator &operator++() { return fn_0052e144(); }
+        bool operator!=(const iterator &other) const { return m_node != other.m_node; }
+        node *m_node;
+    };
+    ~fn_005d9281_tree();
+    iterator begin() { return iterator(m_head->left); }
+    iterator end() { return iterator(m_head); }
+    char m_0x00[0x04];
+    node *m_head;
+    char m_0x08[0x08];
+};
+
+// HYPOTHESIS: a member at +0x14 whose destructor is 0x005d92b9.
+class fn_005d92b9_object
+{
+public:
+    ~fn_005d92b9_object();
+
+    long m00;
+};
+
+// HYPOTHESIS: an object owning a tree of values at +0x00, deleting each value when destroyed.
+class fn_005d9200_object
+{
+public:
+    ~fn_005d9200_object();
+
+    fn_005d9281_tree m00;
+    long m10;
+    fn_005d92b9_object m14;
+};
+
+// FUNCTION: STARFLEETOP 0x005d9200
+fn_005d9200_object::~fn_005d9200_object()
+{
+    for (fn_005d9281_tree::iterator it = m00.begin(); it != m00.end(); ++it)
+        delete (*it).second;
+}
