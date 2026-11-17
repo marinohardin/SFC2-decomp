@@ -31,14 +31,14 @@ class twDir;
 // Tiger/tgfsys.cpp uses them too; the pair the maps hold needs the cookie and object types
 // complete, which Tiger/tFSSession.h declares. These lines keep the line numbers.
 
-//
-//
-//
-//
-//
-//
-//
-//
+// MATCH-ONLY: tBatterySystem's constructor (STARFLEETOP 0x004364b6) has tValueBase's
+// constructor expanded inline and calls tNotifier's (0x004365cd) out of line, where
+// tSupplyDockShipInfo's calls tValueBase's out-of-line copy (0x00436633). The constructor is
+// declared out of line in unsorted/tValueBase.h and defined inline in this unit only.
+inline tValueBase::tValueBase()
+{
+}
+
 //
 //
 //
