@@ -131,6 +131,7 @@ public:
     int fn_0053456e(char* name);
     void fn_00534622(fn_0053462c_entry* value);
     void fn_0053462c(long index);
+    tString& fn_00534647(long index);
 
     tString field_00;
     long field_28;
@@ -204,4 +205,17 @@ void fn_005344a3_object::fn_00534622(fn_0053462c_entry* value)
 void fn_005344a3_object::fn_0053462c(long index)
 {
     ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index].field_04);
+}
+
+// HYPOTHESIS: the entries end with field_00 0x7fffffff; the first entry with field_00 -1
+// starts the run the index counts from. Without one it returns the empty global string.
+// FUNCTION: STARFLEETOP 0x00534647
+tString& fn_005344a3_object::fn_00534647(long index)
+{
+    for (int i = 0; field_7c[i].field_00 != 0x7fffffff; i++)
+    {
+        if (field_7c[i].field_00 == -1)
+            return ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index + i].field_04).field_00;
+    }
+    return g_00c2f3f8;
 }
