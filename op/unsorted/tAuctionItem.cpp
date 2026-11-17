@@ -205,3 +205,9 @@ bool tAuctionItem::fn_00545385( const nDatabase::tID& bidder )
 	fn_00420f3c( 0 );
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00545401
+bool tAuctionItem::fn_00545401() const
+{
+	return fBool_48;
+}
