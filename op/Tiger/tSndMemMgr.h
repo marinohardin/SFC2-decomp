@@ -19,17 +19,17 @@ public:
     // member's handle (field_04): tDynamicMemoryFreeListViaHandles::
     // mGetPreviousListMemberHandle (0x00626bc0) returns it through this slot.
     virtual long mGetPreviousListHandle();
-    // HYPOTHESIS: the next member's handle (field_0c); tDynamicMemoryFreeListViaHandles::
-    // mGetNextListMemberHandle (0x00626be0) returns it through this slot.
+    // Slot +0x10 (0x0067eb10 in the vtable at 0x007b6fbc) returns the next member's handle
+    // (field_08); tDynamicMemoryFreeListViaHandles::mGetNextListMemberHandle (0x00626be0).
     virtual long vfunc_10();
-    // HYPOTHESIS: slots +0x14 and +0x18 set the previous (field_04, 0x006454c0) and next
-    // (field_0c, 0x006454e0) members' handles, and +0x1c returns the member's own handle
-    // (tDynamicMemoryFreeListViaHandles::mAddToFrontOfList, 0x00626c60).
+    // Slots +0x14 (0x006454c0) and +0x18 (0x006454d0, mSetNextListHandle in the SDK library
+    // symbols) set the previous (field_04) and next (field_08) handles; +0x1c (0x006b3350)
+    // returns the member's own handle, field_0c (mAddToFrontOfList, 0x00626c60).
     virtual void vfunc_14(long handle);
     virtual void vfunc_18(long handle);
     virtual long vfunc_1c();
-    // HYPOTHESIS: takes the member's handle (0x0066dc50 passes each block's index).
-    virtual void vfunc_20(long);
+    // Slot +0x20 (0x006454e0) sets the member's own handle, field_0c (0x0066dc50: a block index).
+    virtual void vfunc_20(long handle);
     // Slot +0x24: tSoundMemoryBlock's vtable at 0x007b78cc holds mDump (0x0066db80) here.
     virtual void mDump();
 
@@ -82,7 +82,7 @@ inline void tListMemberWithHandle::vfunc_14(long handle)
 
 // HYPOTHESIS: inline like the destructor; its copy follows it with Tiger/twSound.cpp.
 // FUNCTION: STARFLEETOP 0x006454e0
-inline void tListMemberWithHandle::vfunc_18(long handle)
+inline void tListMemberWithHandle::vfunc_20(long handle)
 {
     field_0c = handle;
 }
