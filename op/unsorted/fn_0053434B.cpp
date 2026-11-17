@@ -420,6 +420,7 @@ public:
     void fn_00534ad0();
     void fn_00534b64();
     void fn_00534d2a(int kind, fn_00534ac1_entry* row, char* table);
+    int fn_00534d66(char* name);
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -567,4 +568,19 @@ void fn_00534950_object::fn_00534d2a(int kind, fn_00534ac1_entry* row, char* tab
         for (; row->field_00 != -1; row++)
             field_e128[kind]->fn_0053455b(&row->field_00);
     }
+}
+
+// HYPOTHESIS: looks the name up in each kind's fn_005344a3_object, last kind first, and
+// returns the first result that is not -1.
+// FUNCTION: STARFLEETOP 0x00534d66
+int fn_00534950_object::fn_00534d66(char* name)
+{
+    int n = 25;
+    while (n--)
+    {
+        int result = field_e128[n]->fn_0053456e(name);
+        if (result != -1)
+            return result;
+    }
+    return -1;
 }
