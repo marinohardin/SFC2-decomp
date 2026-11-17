@@ -38,3 +38,25 @@ fn_005d913f_object::fn_005d913f_object(const fn_005d913f_object &other)
     fn_0046de63_object *p = other.m10;
     m10 = p ? (::InterlockedIncrement(&p->m04), p) : 0;
 }
+
+// HYPOTHESIS: a counted pointer to an fn_0046de63_object held at +0x00; this assigns a
+// raw pointer, taking a reference on the new one and releasing the old.
+class fn_005d91cc_object
+{
+public:
+    fn_0046de63_object *operator=(fn_0046de63_object *p);
+
+    fn_0046de63_object *m00;
+};
+
+// FUNCTION: STARFLEETOP 0x005d91cc
+fn_0046de63_object *fn_005d91cc_object::operator=(fn_0046de63_object *p)
+{
+    if (m00 != p)
+    {
+        if (m00)
+            m00->FUN_0046de63();
+        m00 = p ? (::InterlockedIncrement(&p->m04), p) : 0;
+    }
+    return p;
+}
