@@ -3313,6 +3313,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0046090a": {
+   "name": "FUN_0046090a",
+   "symbol": "??4fn_0046090a_object@@QAEAAV0@ABV0@@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 449,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",

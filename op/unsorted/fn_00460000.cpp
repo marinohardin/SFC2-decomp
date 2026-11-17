@@ -262,13 +262,86 @@ void fn_004602b2_class::fn_00460610()
 
 // HYPOTHESIS: 16-byte members of tCampaignInfo assigned through their own out-of-line
 // assignments (0x0046090a, 0x00604f1d); their types are not identified.
+// HYPOTHESIS: 0x0046090a is the library's vector assignment for 16-byte strings (allocator,
+// first, last, end); the members and helpers below follow that layout.
 class fn_0046090a_object
 {
 public:
     fn_0046090a_object &operator=(const fn_0046090a_object &other);
+    const std::string *begin() const;
+    const std::string *end() const;
+    unsigned int size() const;
+    unsigned int capacity() const;
+    void _Destroy(std::string *first, std::string *last);
+    std::string *_Ucopy(const std::string *first, const std::string *last, std::string *dest);
 
-    char pad_000[0x10];
+    std::allocator<std::string> allocator;
+    std::string *_First;
+    std::string *_Last;
+    std::string *_End;
 };
+
+inline const std::string *fn_0046090a_object::begin() const
+{
+    return (_First);
+}
+
+inline const std::string *fn_0046090a_object::end() const
+{
+    return (_Last);
+}
+
+inline unsigned int fn_0046090a_object::size() const
+{
+    return (_First == 0 ? 0 : _Last - _First);
+}
+
+inline unsigned int fn_0046090a_object::capacity() const
+{
+    return (_First == 0 ? 0 : _End - _First);
+}
+
+inline void fn_0046090a_object::_Destroy(std::string *first, std::string *last)
+{
+    for (; first != last; ++first)
+        allocator.destroy(first);
+}
+
+inline std::string *fn_0046090a_object::_Ucopy(const std::string *first, const std::string *last, std::string *dest)
+{
+    for (; first != last; ++dest, ++first)
+        allocator.construct(dest, *first);
+    return (dest);
+}
+
+// FUNCTION: STARFLEETOP 0x0046090a
+fn_0046090a_object &fn_0046090a_object::operator=(const fn_0046090a_object &other)
+{
+    if (this == &other)
+        ;
+    else if (other.size() <= size())
+    {
+        std::string *s = std::copy(other.begin(), other.end(), _First);
+        _Destroy(s, _Last);
+        _Last = _First + other.size();
+    }
+    else if (other.size() <= capacity())
+    {
+        const std::string *s = other.begin() + size();
+        std::copy(other.begin(), s, _First);
+        _Ucopy(s, other.end(), _Last);
+        _Last = _First + other.size();
+    }
+    else
+    {
+        _Destroy(_First, _Last);
+        allocator.deallocate(_First, _End - _First);
+        _First = allocator.allocate(other.size(), (void *)0);
+        _Last = _Ucopy(other.begin(), other.end(), _First);
+        _End = _Last;
+    }
+    return (*this);
+}
 
 class fn_00604f1d_object
 {
