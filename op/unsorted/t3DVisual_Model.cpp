@@ -131,6 +131,8 @@ public:
 	virtual void vfunction9();
 	// HYPOTHESIS: slot 10 takes four values and returns a bool, as 0x0042febe passes it on.
 	virtual bool vfunction10(int param_1, int param_2, int param_3, int param_4);
+	// HYPOTHESIS: slot 11 takes the one value 0x00430476 passes on.
+	virtual void vfunction11(int param_1);
 };
 
 // HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
@@ -185,6 +187,7 @@ public:
 	void fn_004301e9(unsigned long size, tStream_BasicFile *stream);
 	void fn_004302e8(unsigned long size, tStream_BasicFile *stream);
 	void fn_00430367();
+	void vfunction28(int param_1);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -740,5 +743,15 @@ void t3DVisual_Model::fn_00430367()
 				node->fn_0042f488(&m17c[i]);
 			}
 		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00430476
+void t3DVisual_Model::vfunction28(int param_1)
+{
+	for (int i = 0; i < m11c; i++)
+	{
+		if (m160[i] != 0)
+			m160[i]->vfunction11(param_1);
 	}
 }
