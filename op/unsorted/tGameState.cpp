@@ -875,6 +875,7 @@ public:
 		int m_p;
 	};
 	void fn_0046ad85(tGameState **state, fn_0046ad85_arg a, int *b);
+	void fn_0046ad61();
 };
 
 extern fn_0090db38_owner g_0090db38;
@@ -985,4 +986,19 @@ char fn_0046a6ad(tGameState *state)
 		return 0;
 	g_0090db44 = (int)object;
 	return 1;
+}
+
+// HYPOTHESIS: 0x0046ad61 is a no-argument method of the class of g_0090db38; its result is unused.
+// FUNCTION: STARFLEETOP 0x0046a713
+char fn_0046a713()
+{
+	if (g_0090db40 != 0)
+	{
+		if (fn_0046a6ad((tGameState *)*(int *)(*(int *)(g_0090db3c + 4) + 8)) != 0)
+		{
+			g_0090db38.fn_0046ad61();
+			return 1;
+		}
+	}
+	return 0;
 }
