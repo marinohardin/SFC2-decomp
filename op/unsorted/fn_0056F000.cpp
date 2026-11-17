@@ -1053,3 +1053,48 @@ void fn_0056fefb_owner::fn_0056fefb(const nDatabase::tQuery<tNotify> &query, fn_
 	}
 	guard.Leave();
 }
+
+class tNewsStory : public nDatabase::tDatabaseObject {
+public:
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char fn_0056ffe3_pad[0x38];
+};
+
+class fn_0056ffe3_results {
+public:
+	void push_back(const tNewsStory &value);
+	tNewsStory &back() { return *(m_last - 1); }
+	void *m_allocator;
+	tNewsStory *m_first;
+	tNewsStory *m_last;
+};
+
+class fn_0056ffe3_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &query, fn_0056ffe3_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 1084 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056ffe3
+void fn_0056ffe3_owner::fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &query, fn_0056ffe3_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tNewsStory));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		tNewsStory *pObject = (tNewsStory *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
+}
