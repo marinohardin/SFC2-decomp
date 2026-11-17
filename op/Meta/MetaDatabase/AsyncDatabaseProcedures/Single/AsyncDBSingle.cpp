@@ -81,7 +81,7 @@ public:
 	virtual void vfunction11( std::vector<nDatabase::tID> ids, std::vector<tAuctionItem>* items, int lock );
 	virtual void vfunction12( std::vector<tAuctionItem>* items );
 	virtual void vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock );
-	virtual void vfunction14();
+	virtual void vfunction14( nDatabase::tID id, tServCharacter* character, int lock );
 	virtual void vfunction15();
 	virtual void vfunction16();
 	virtual void vfunction17();
@@ -401,6 +401,20 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13( tObject_005b69d
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0056d48d
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction14( nDatabase::tID id, tServCharacter* character, int lock )
+{
+#line 598
+	validate( character );
+	std::vector<nDatabase::tID> ids;
+	std::vector<tServCharacter> characters;
+	ids.push_back( id );
+	vfunction3( ids, &characters, lock );
+	if( characters.size() == 1 )
+	{
+		*character = characters[0];
+	}
+}
 
 
 
