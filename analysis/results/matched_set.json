@@ -501,8 +501,8 @@
    "symbol": "?fn_00404044@fn_00404044_Vector@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV23@0@Z",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 96,
-   "score": 92.605,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0040aad2": {
