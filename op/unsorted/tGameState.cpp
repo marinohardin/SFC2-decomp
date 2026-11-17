@@ -836,3 +836,20 @@ int fn_0046a5cd()
 	}
 	return 0;
 }
+
+int fn_0040f9ea(char *a, char *b);
+
+// HYPOTHESIS: state virtual slot 0x30 returns a name; fn_0040f9ea compares it with the argument.
+// FUNCTION: STARFLEETOP 0x0046a5f6
+tGameState *fn_0046a5f6(char *param_1)
+{
+	if (g_0090db9c != 0)
+		return 0;
+	tGameState *s = g_0090db24;
+	for (; s; s = s->m_04)
+	{
+		if (fn_0040f9ea(s->vfunction12(), param_1) == 0)
+			break;
+	}
+	return s;
+}

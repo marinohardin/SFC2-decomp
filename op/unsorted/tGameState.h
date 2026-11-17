@@ -25,7 +25,7 @@ public:
 	virtual void vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
-	virtual void vfunction12();
+	virtual char *vfunction12();
 	virtual void vfunction13();
 	virtual bool vfunction14(int param_1);
 	virtual void vfunction15();
