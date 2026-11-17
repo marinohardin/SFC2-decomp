@@ -997,3 +997,14 @@ void tShipSystemsExt::vfunction153()
 		m9a4[0] = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0044cc5d
+void tShipSystemsExt::vfunction115( float param_1 )
+{
+	// HYPOTHESIS: m6f0 caps m6ec.
+	m6ec += param_1;
+	if ( m6ec > m6f0 )
+	{
+		m6ec = m6f0;
+	}
+}
