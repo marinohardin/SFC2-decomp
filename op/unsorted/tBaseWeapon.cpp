@@ -5,7 +5,7 @@
 #include "Source/entity/entity_physical.h"
 #include "Tiger/tcglue.h"
 #include "unsorted/fn_0090bed8_type.h"
-extern float g_0079561c;
+
 extern char g_0090b750;
 extern tEntity *g_008e1090[];
 short fn_0069afc0(float x, float y);
@@ -804,26 +804,22 @@ float tBaseWeapon::vfunction74(float param_1, float param_2)
                 first = (float)vfunction146() * first;
             if (vfunction144() == 0)
                 first = 0.0f;
-            int mode = field_e8;
-            if (mode < 1)
+            if (field_e8 < 1 && avail >= thresh)
             {
-                if (avail >= thresh)
+                float *p = &field_3c;
+                *p = first + field_3c;
+                avail = avail - first;
+                param_1 = param_1 - field_d4;
+                fn_004d82e3(&param_1);
+                fn_004d82cd(p);
+            }
+            else
+            {
+                if (field_e8 < 1)
                 {
-                    float *p = &field_3c;
-                    *p = first + field_3c;
-                    avail = avail - first;
-                    param_1 = param_1 - field_d4;
-                    fn_004d82e3(&param_1);
-                    fn_004d82cd(p);
-                }
-                else
-                {
-                    if (mode < 1)
-                    {
-                        field_3c -= param_2;
-                        if (field_3c < g_0079561c)
-                            field_3c = 0.0f;
-                    }
+                    field_3c -= param_2;
+                    if (field_3c < 0.0f)
+                        field_3c = 0.0f;
                 }
             }
             if (banks > 1 && avail >= thresh)
@@ -848,7 +844,7 @@ float tBaseWeapon::vfunction74(float param_1, float param_2)
                 if (field_e8 < 2)
                 {
                     field_dc -= param_2;
-                    if (field_dc < g_0079561c)
+                    if (field_dc < 0.0f)
                         field_dc = 0.0f;
                 }
             }
@@ -874,18 +870,24 @@ float tBaseWeapon::vfunction74(float param_1, float param_2)
                 if (field_e8 < 3)
                 {
                     field_e0 -= param_2;
-                    if (field_e0 < g_0079561c)
+                    if (field_e0 < 0.0f)
                         field_e0 = 0.0f;
                 }
             }
-            if (banks > 3 && avail >= thresh)
+            // MATCH-ONLY: the original tests banks > 3 (cmp 3; jle) yet keeps 4 in ebx; ">= 4"
+            // is the only form found that makes the compiler keep 4 in a register.
+            if (banks >= 4 && avail >= thresh)
             {
                 if (field_e8 < 4)
                 {
-                    if (field_d8 < avail)
-                        avail = field_d8;
+                    float m;
+                    if (avail > field_d8)
+                        m = field_d8;
+                    else
+                        m = avail;
                     float *p = &field_e4;
-                    *p = avail + *p;
+                    *p = m + *p;
+                    avail = avail - m;
                     param_1 = param_1 - field_d4;
                     fn_004d82e3(&param_1);
                     fn_004d82cd(p);
@@ -896,7 +898,7 @@ float tBaseWeapon::vfunction74(float param_1, float param_2)
                 if (field_e8 < 4)
                 {
                     field_e4 -= param_2;
-                    if (field_e4 < g_0079561c)
+                    if (field_e4 < 0.0f)
                         field_e4 = 0.0f;
                 }
             }
@@ -924,9 +926,10 @@ float tBaseWeapon::vfunction74(float param_1, float param_2)
                     vfunction124(1);
                 }
             }
-            else if ((char)field_e8 != 0)
+            else
             {
-                vfunction124(0);
+                if ((char)field_e8 != 0)
+                    vfunction124(0);
             }
         }
         else
