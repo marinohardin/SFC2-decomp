@@ -35,6 +35,7 @@ public:
     float fn_0043e776();
     float fn_0043e77d();
     float fn_0043e78a(int param_1);
+    void fn_0043e838();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -580,4 +581,11 @@ float tSensorGroupSystem::fn_0043e78a(int param_1)
         }
     }
     return value;
+}
+
+// FUNCTION: STARFLEETOP 0x0043e838
+void tSensorGroupSystem::fn_0043e838()
+{
+    tMinMaxFloat* value = &field_11c;
+    value->vfunction3(fn_0043e77d());
 }
