@@ -554,6 +554,7 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 	return *(fn_005717f7_vector*)&(*it).second;
 }
 class fn_00571a58_inner;
+class fn_00571e33_elem;
 class fn_00571a58_owner {	public:
 	char fn_00571a58_pad[4];
 	fn_00571a58_inner* fn_00571a58_first;
@@ -566,9 +567,10 @@ class fn_00571a58_owner {	public:
 	void fn_00571abc(int arg);
 	unsigned int size() const;
 	void fn_00571bda(fn_00571a58_inner* pos, unsigned int m, const fn_00571a58_inner& x);
+	void fn_00571e33(fn_00571e33_elem* pos, unsigned int m, const fn_00571e33_elem& x);
 	void fn_00571acd(int arg);
 };
-#line 571
+#line 573
 // FUNCTION: STARFLEETOP 0x00571a58
 void fn_00571a58_owner::fn_00571a58(int arg)
 {
@@ -595,13 +597,13 @@ fn_005717f7_vector::~fn_005717f7_vector()
 	m_first = 0, m_last = 0, m_end = 0;
 }
 
-// HYPOTHESIS: a forwarding member like 0x00571a58; 0x00571e33 takes the object at +8, a constant 1 and the argument.
-void __stdcall fn_00571e33(fn_00571a58_inner* inner, int flag, int arg);
+// HYPOTHESIS: a forwarding member like 0x00571a58; the vector at 0x00571e33 has 0x98-byte elements.
+// (the call below passes the object at +8, a constant 1 and the argument.)
 
 // FUNCTION: STARFLEETOP 0x00571a9a
 void fn_00571a58_owner::fn_00571a9a(int arg)
 {
-	fn_00571e33(fn_00571a58_ptr, 1, arg);
+	fn_00571e33((fn_00571e33_elem*)fn_00571a58_ptr, 1, *(fn_00571e33_elem*)arg);
 }
 
 // HYPOTHESIS: a forwarding member like 0x00571a58; 0x005720aa takes the object at +8, a constant 1 and the argument.
@@ -830,5 +832,96 @@ void fn_00571a58_owner::fn_00571bda(fn_00571a58_inner* pos, unsigned int m, cons
 		fn_00571bda_copy_backward(pos, fn_00571a58_ptr - m, fn_00571a58_ptr);
 		fn_00571bda_fill(pos, pos + m, x);
 		fn_00571a58_ptr += m;
+	}
+}
+
+// HYPOTHESIS: the element of the vector at 0x00571e33: a 0x98-byte object with a virtual destructor;
+// its copy constructor is 0x00572965 and its assignment is 0x0053edc7.
+class fn_00571e33_elem {
+public:
+	virtual ~fn_00571e33_elem();
+	fn_00571e33_elem& operator=(const fn_00571e33_elem& other);
+	char fn_00571e33_pad[0x94];
+};
+
+void __cdecl fn_00572965(fn_00571e33_elem* p, const fn_00571e33_elem& v);
+
+// MATCH-ONLY: the allocator's clamp, inlined by the original
+inline fn_00571e33_elem* fn_00571e33_allocate(int n)
+{
+	if (n < 0)
+		n = 0;
+	return (fn_00571e33_elem*)operator new((unsigned int)n * sizeof(fn_00571e33_elem));
+}
+
+// MATCH-ONLY: the library's uninitialized copy, inlined by the original
+inline fn_00571e33_elem* fn_00571e33_ucopy(fn_00571e33_elem* f, fn_00571e33_elem* l, fn_00571e33_elem* d)
+{
+	for (; f != l; ++d, ++f)
+		fn_00572965(d, *f);
+	return d;
+}
+
+// MATCH-ONLY: the library's uninitialized fill, inlined by the original
+inline void fn_00571e33_ufill(fn_00571e33_elem* f, unsigned int n, const fn_00571e33_elem& x)
+{
+	for (; n > 0; --n, ++f)
+		fn_00572965(f, x);
+}
+
+// MATCH-ONLY: the library's fill, inlined by the original
+inline void fn_00571e33_fill(fn_00571e33_elem* f, fn_00571e33_elem* l, const fn_00571e33_elem& x)
+{
+	for (; f != l; ++f)
+		*f = x;
+}
+
+// MATCH-ONLY: the library's destroy loop, inlined by the original
+inline void fn_00571e33_destroy(fn_00571e33_elem* f, fn_00571e33_elem* l)
+{
+	for (; f != l; ++f)
+		f->~fn_00571e33_elem();
+}
+
+// MATCH-ONLY: the library's copy_backward, inlined by the original
+inline void fn_00571e33_copy_backward(fn_00571e33_elem* f, fn_00571e33_elem* l, fn_00571e33_elem* d)
+{
+	while (f != l)
+		*--d = *--l;
+}
+
+// MATCH-ONLY: the library's size(), inlined by the original
+inline unsigned int fn_00571e33_size(fn_00571a58_owner* v)
+{
+	return v->fn_00571a58_first == 0 ? 0 : (fn_00571e33_elem*)v->fn_00571a58_ptr - (fn_00571e33_elem*)v->fn_00571a58_first;
+}
+
+// FUNCTION: STARFLEETOP 0x00571e33
+// HYPOTHESIS: the library's vector::insert(iterator, size_type, const T&) for the 0x98-byte element.
+void fn_00571a58_owner::fn_00571e33(fn_00571e33_elem* pos, unsigned int m, const fn_00571e33_elem& x)
+{
+	fn_00571e33_elem* last = (fn_00571e33_elem*)fn_00571a58_ptr;
+	if ((unsigned int)((fn_00571e33_elem*)fn_00571a58_limit - last) < m) {
+		unsigned int grow = (fn_00571a58_first != 0 && m < fn_00571e33_size(this)) ? fn_00571e33_size(this) : m;
+		unsigned int cnt = grow + fn_00571e33_size(this);
+		fn_00571e33_elem* s = fn_00571e33_allocate(cnt);
+		fn_00571e33_elem* q = fn_00571e33_ucopy((fn_00571e33_elem*)fn_00571a58_first, pos, s);
+		fn_00571e33_ufill(q, m, x);
+		fn_00571e33_ucopy(pos, (fn_00571e33_elem*)fn_00571a58_ptr, q + m);
+		fn_00571e33_destroy((fn_00571e33_elem*)fn_00571a58_first, (fn_00571e33_elem*)fn_00571a58_ptr);
+		operator delete(fn_00571a58_first);
+		fn_00571a58_limit = (fn_00571a58_inner*)(s + cnt);
+		fn_00571a58_ptr = (fn_00571a58_inner*)(s + fn_00571e33_size(this) + m);
+		fn_00571a58_first = (fn_00571a58_inner*)s;
+	} else if ((unsigned int)((fn_00571e33_elem*)fn_00571a58_ptr - pos) < m) {
+		fn_00571e33_ucopy(pos, (fn_00571e33_elem*)fn_00571a58_ptr, pos + m);
+		fn_00571e33_ufill((fn_00571e33_elem*)fn_00571a58_ptr, m - ((fn_00571e33_elem*)fn_00571a58_ptr - pos), x);
+		fn_00571e33_fill(pos, (fn_00571e33_elem*)fn_00571a58_ptr, x);
+		fn_00571a58_ptr = (fn_00571a58_inner*)((fn_00571e33_elem*)fn_00571a58_ptr + m);
+	} else if (0 < m) {
+		fn_00571e33_ucopy((fn_00571e33_elem*)fn_00571a58_ptr - m, (fn_00571e33_elem*)fn_00571a58_ptr, (fn_00571e33_elem*)fn_00571a58_ptr);
+		fn_00571e33_copy_backward(pos, (fn_00571e33_elem*)fn_00571a58_ptr - m, (fn_00571e33_elem*)fn_00571a58_ptr);
+		fn_00571e33_fill(pos, pos + m, x);
+		fn_00571a58_ptr = (fn_00571a58_inner*)((fn_00571e33_elem*)fn_00571a58_ptr + m);
 	}
 }
