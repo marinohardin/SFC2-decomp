@@ -13,3 +13,11 @@ tGameState::tGameState()
 	m_04 = g_0090db24;
 	g_0090db24 = this;
 }
+
+// FUNCTION: STARFLEETOP 0x00469cfd
+// HYPOTHESIS: the body unlinks this state from the list headed at g_0090db24.
+tGameState::~tGameState()
+{
+	if (g_0090db24 == this)
+		g_0090db24 = m_04;
+}
