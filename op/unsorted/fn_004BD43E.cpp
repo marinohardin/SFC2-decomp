@@ -104,3 +104,10 @@ tListBox_News *fn_004bd782( void )
 {
 	return new tListBox_News;
 }
+
+// HYPOTHESIS: makes a news session list box; the analysis starts it after its EH prologue.
+// FUNCTION: STARFLEETOP 0x004bd7ce
+tListBox_News_Session *fn_004bd7ce( void )
+{
+	return new tListBox_News_Session;
+}

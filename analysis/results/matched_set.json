@@ -4618,6 +4618,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x004bd7ce": {
+   "name": "FUN_004bd7ce",
+   "symbol": "?fn_004bd7ce@@YAPAVtListBox_News_Session@@XZ",
+   "unit": "unsorted/fn_004BD43E.cpp",
+   "size": 55,
+   "score": 9.375,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x004c265f": {
    "name": "tFleetEntry::tFleetEntry",
    "symbol": "??0tFleetEntry@@QAE@XZ",
