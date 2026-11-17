@@ -275,6 +275,23 @@ public:
     virtual void vfunction61();
     virtual void vfunction62(); // slot 61
     virtual void vfunction63(); // slot 62
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    virtual void vfunction69();
+    virtual void vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual void vfunction74();
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual void vfunction79();
+    virtual void vfunction80();
 
     char pad04[0x0c - 0x04];
     int field_0c;

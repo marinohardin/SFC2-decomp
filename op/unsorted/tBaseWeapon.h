@@ -229,7 +229,9 @@ public:
     short field_c8;
     char pad_ca[2];
     int field_cc;
-    char pad_d0[0xc];
+    float field_d0;
+    float field_d4;
+    float field_d8;
     float field_dc;
     float field_e0;
     float field_e4;

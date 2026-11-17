@@ -604,3 +604,15 @@ void tBaseWeapon::vfunction63()
     field_45 = 0;
     vfunction80();
 }
+
+// FUNCTION: STARFLEETOP 0x004d8163
+void tBaseWeapon::vfunction80()
+{
+    ((tIndividualShipSystem *)this)->tIndividualShipSystem::vfunction80();
+    field_e8 = 0;
+    field_d4 = 0.0f;
+    field_d8 = 0.0f;
+    field_dc = 0.0f;
+    field_e0 = 0.0f;
+    field_e4 = 0.0f;
+}
