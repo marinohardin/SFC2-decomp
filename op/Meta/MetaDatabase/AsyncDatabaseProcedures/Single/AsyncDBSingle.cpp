@@ -63,12 +63,12 @@ public:
 	void fn_005704ae( nDatabase::tQuery<tPreparedMissions>& query, std::vector<tPreparedMissions>* result );
 	void fn_00570578( tServCharacter* character, tServCharacter* characterStore );	// HYPOTHESIS: both pointers are characters (assertion texts "character", "characterStore" at 0x0056dbe5).
 	void fn_00570618( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result, bool lock );
+	void fn_00570754( tCampaignInfo* info );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
 {
-// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
-class tAsyncDatabaseSingle
+class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
 	virtual void vfunction1();
@@ -105,7 +105,7 @@ public:
 	virtual void vfunction32();
 	virtual void vfunction33();
 	virtual void vfunction34();
-	virtual void vfunction35();
+	virtual void vfunction35( tCampaignInfo* info );
 	virtual void vfunction36();
 	virtual void vfunction37();
 	virtual void vfunction38();
@@ -585,4 +585,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction28( std::vector<tPo
 {
 	nDatabase::tQuery<tPoliticalTensionMatrix> query;
 	fDatabase->fn_00570618( query, matrices, true );
+}
+
+// HYPOTHESIS: the record type is a guess from the assertion text "info"; fn_00570754 stores it.
+// FUNCTION: STARFLEETOP 0x0056dd16
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction35( tCampaignInfo* info )
+{
+#line 836
+	validate( info );
+	fDatabase->fn_00570754( info );
 }
