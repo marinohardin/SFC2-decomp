@@ -1163,6 +1163,14 @@ void tSFCPlayer::vfunction105(int param_1)
 	m_8524 = gObject_0096ed60_rank.fn_0052daa6(m_84b8, param_1);
 }
 
+// FUNCTION: STARFLEETOP 0x004d0c5d
+void tSFCPlayer::fn_004d0c5d()
+{
+	char name[256];
+	g_p008cc580->vfunction9("Network", "PlayerName", "Player1", name, 256);
+	m_08 = name;
+}
+
 // FUNCTION: STARFLEETOP 0x004d0c48
 void tSFCPlayer::fn_004d0c48()
 {
