@@ -279,7 +279,7 @@ public:
     virtual int vfunction56();
     virtual void vfunction57(int param_1);
     virtual void vfunction58();
-    virtual void vfunction59();
+    virtual void vfunction59(int param_1);
     virtual void vfunction60();
     virtual void vfunction61();
     virtual void vfunction62(); // slot 61

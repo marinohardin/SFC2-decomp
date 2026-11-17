@@ -131,3 +131,10 @@ void tIndividualShipSystem::vfunction57(int param_1)
 {
     vfunction49(param_1 - field_14);
 }
+
+// FUNCTION: STARFLEETOP 0x00436704
+void tIndividualShipSystem::vfunction59(int param_1)
+{
+    vfunction57(param_1);
+    vfunction55(param_1);
+}
