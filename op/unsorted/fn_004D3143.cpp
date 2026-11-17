@@ -285,3 +285,9 @@ void fn_004d342e( long arg1 )
 {
 	fn_004d33a8( arg1, fn_004d338b( arg1 ) - 1 );
 }
+
+// FUNCTION: STARFLEETOP 0x004d3446
+long fn_004d3446( long arg1 )
+{
+	return g_009254f8.fn_004cb602( arg1 );
+}
