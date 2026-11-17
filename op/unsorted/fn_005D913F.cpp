@@ -592,6 +592,7 @@ BOOL fn_005d9a6f(const char *param_1)
 }
 
 class fn_006ed560_object;
+class fn_006ee3d0_result;
 
 // HYPOTHESIS: an object built from a string: the string at +0x00, a dword at +0x10 and a
 // byte at +0x14, both cleared.
@@ -603,6 +604,7 @@ public:
     void fn_005d9bb8(const std::string &param_1);
     std::string fn_005d9be5();
     void fn_005d9cd3(fn_006ed560_object *param_1) const;
+    fn_006ee3d0_result fn_005d9db1() const;
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -661,12 +663,29 @@ public:
     long m04;
 };
 
+// HYPOTHESIS: the object 0x006ee3d0 returns by value: one dword, cleared when empty, with a
+// destructor.
+class fn_006ee3d0_result
+{
+public:
+    fn_006ee3d0_result() : m00(0) {}
+    ~fn_006ee3d0_result();
+
+    long m00;
+};
+
 // HYPOTHESIS: an object 0x006ed560 (763 bytes, in the SDK's code) fills from a byte buffer
-// and its length; its name and purpose are not known.
+// and its length; 0x10b4 bytes, built by 0x006ed510, run over a buffer by 0x006ee3d0 and
+// destroyed by 0x005d9e48. Its name and purpose are not known.
 class fn_006ed560_object
 {
 public:
+    fn_006ed560_object();
+    ~fn_006ed560_object();
     void fn_006ed560(const unsigned char *data, unsigned int size);
+    fn_006ee3d0_result fn_006ee3d0(long data, long size);
+
+    char m_0x00[0x10b4];
 };
 
 // HYPOTHESIS: hashes the string, then each of its first three characters, keeping two bytes
@@ -688,4 +707,14 @@ void fn_005d9b26_object::fn_005d9cd3(fn_006ed560_object *param_1) const
         key.append((const unsigned char *)&value, 2);
     }
     param_1->fn_006ed560(key.c_str(), key.size());
+}
+
+// FUNCTION: STARFLEETOP 0x005d9db1
+fn_006ee3d0_result fn_005d9b26_object::fn_005d9db1() const
+{
+    if (!m14)
+        return fn_006ee3d0_result();
+    fn_006ed560_object object;
+    fn_005d9cd3(&object);
+    return object.fn_006ee3d0(m10.m00 ? m10.m00->m08 : 0, m10.m00 ? m10.m00->m0c : 0);
 }
