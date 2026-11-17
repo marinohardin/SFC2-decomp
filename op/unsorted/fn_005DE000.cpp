@@ -346,6 +346,8 @@ void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** 
 template<>
 void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** );
 template<>
+void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** );
+template<>
 tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de0cf_Pred _P );
 template<>
 tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory* _Piv, fn_005de0cf_Pred _P );
@@ -451,4 +453,16 @@ tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory*
 		if (_L <= _F)
 			return (_F);
 		iter_swap(_F, _L); }}
+// HYPOTHESIS: the _Insertion_sort_1 instance _Sort_0 at 0x005de987 calls.
+// FUNCTION: STARFLEETOP 0x005ded73
+template<>
+void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** )
+	{if (_F != _L)
+		for (tNewsStory** _M = _F; ++_M != _L; )
+			{tNewsStory* _V = *_M;
+			if (!_P(_V, *_F))
+				_Unguarded_insert(_M, _V, _P);
+			else
+				{copy_backward(_F, _M, _M + 1);
+				*_F = _V; }}}
 }
