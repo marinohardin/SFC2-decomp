@@ -768,3 +768,12 @@ int t3DVisual_Model::vfunction29(int param_1)
 		return m160[0]->vfunction12();
 	return 0;
 }
+
+// HYPOTHESIS: 0x0042f51a takes the one value 0x004304e4 passes on.
+void fn_0042f51a(int param_1);
+
+// FUNCTION: STARFLEETOP 0x004304e4
+void fn_004304e4(int param_1)
+{
+	fn_0042f51a(param_1);
+}
