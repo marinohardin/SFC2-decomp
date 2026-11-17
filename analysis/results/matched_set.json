@@ -9010,6 +9010,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x005fb3df": {
+   "name": "FUN_005fb3df",
+   "symbol": "?insert@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@2@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 155,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
