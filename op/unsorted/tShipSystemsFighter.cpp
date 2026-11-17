@@ -232,11 +232,12 @@ int tShipSystemsFighter::vfunction1()
     return 0;
 }
 
-// HYPOTHESIS: the body; the destructor (0x00444558) is not matched yet and is taken to destroy
-// only the members and the base.
 // FUNCTION: STARFLEETOP 0x0044453c
+// FUNCTION: STARFLEETOP 0x00444558
 tShipSystemsFighter::~tShipSystemsFighter()
 {
+    tIndividualShipSystemList* list = &m44;
+    list->vfunction24();
 }
 
 // FUNCTION: STARFLEETOP 0x00444046

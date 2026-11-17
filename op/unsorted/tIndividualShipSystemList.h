@@ -20,6 +20,10 @@ public:
     virtual class tIndividualShipSystem* vfunction5(class tIndividualShipSystem* pSystem);
     virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10();
     virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(class tIndividualShipSystem* pSystem);
+    virtual void vfunction23();
+    // HYPOTHESIS: slot 24 (+0x60) is called with no argument by ~tShipSystemsFighter
+    // (0x00444558) before its members are destroyed; a clean-up step.
+    virtual void vfunction24();
     char pad04[0x580 - 4];	// HYPOTHESIS: layout unknown; tShieldGroup allocates 0x580 bytes
 };
 
