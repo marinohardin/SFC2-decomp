@@ -250,3 +250,9 @@ c_005cf073_Object *fn_004bdc4d()
 		g_0091f928 = std::auto_ptr<c_005cf073_Object>( new c_005cf073_Object );
 	return g_0091f928.get();
 }
+
+// FUNCTION: STARFLEETOP 0x004bdcb7
+const std::string &fn_004bdcb7()
+{
+	return g_0091f910;
+}
