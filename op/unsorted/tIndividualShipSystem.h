@@ -304,6 +304,10 @@ public:
     // HYPOTHESIS: slot 73 takes two floats; slot 74 passes its float and 0.0.
     virtual void vfunction74(float param_1, float param_2);
     virtual void vfunction75(float param_1);
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual float vfunction79();
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -323,7 +327,8 @@ public:
     int field_34;
     // HYPOTHESIS: a float; slot 67 returns it with fld, and tBaseWeapon's slot 66 takes a float.
     float field_38;
-    char pad3c[0x40 - 0x3c];
+    // HYPOTHESIS: a float; slot 78 returns it with fld.
+    float field_3c;
     float field_40;
     char pad44[0x45 - 0x44];
     bool field_45;

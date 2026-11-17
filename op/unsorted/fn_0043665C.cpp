@@ -192,3 +192,9 @@ void tIndividualShipSystem::vfunction75(float param_1)
 {
     vfunction74(param_1, 0.0f);
 }
+
+// FUNCTION: STARFLEETOP 0x0043677c
+float tIndividualShipSystem::vfunction79()
+{
+    return field_3c;
+}
