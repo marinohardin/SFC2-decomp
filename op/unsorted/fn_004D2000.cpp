@@ -139,7 +139,9 @@ namespace std
 		static const char* _Nullstr() { static const char _C = char(); return &_C; }
 		void _Tidy(bool built);
 		char m_al;
+	public:
 		char* _Ptr;
+		unsigned int m_len;
 	};
 }
 
@@ -164,6 +166,7 @@ public:
 	void fn_004d22e0();
 	void fn_004d2296(int dst, const char* text);
 	fn_004d2238_string m_str;
+	// m_len is the string's length member (+8), read directly by 0x004d22e0.
 };
 
 // FUNCTION: STARFLEETOP 0x004d2265
@@ -177,9 +180,21 @@ class fn_004cb4a7_target
 {
 public:
 	void fn_004cb4a7(int dst, const char* text);
+	void fn_004cb4f8(const char* text);
 };
 
 extern fn_004cb4a7_target g_009254f8;
+
+// FUNCTION: STARFLEETOP 0x004d22e0
+void fn_004d2265_holder::fn_004d22e0()
+{
+	if (m_str.m_len != 0)
+	{
+		const char* p = m_str.c_str();
+		g_009254f8.fn_004cb4f8(p);
+		m_str.assign("", strlen(""));
+	}
+}
 
 // FUNCTION: STARFLEETOP 0x004d2296
 void fn_004d2265_holder::fn_004d2296(int dst, const char* text)
