@@ -65,3 +65,9 @@ bool fn_0090bed4_Object::fn_005230dd(int param_1, int param_2, int param_3, int 
 		return false;
 	return pObject->fn_0051bf99(param_2, param_3);
 }
+
+// FUNCTION: STARFLEETOP 0x00523100
+void fn_0090bed4_Object::fn_00523100()
+{
+	m_218.fn_00520e30();
+}

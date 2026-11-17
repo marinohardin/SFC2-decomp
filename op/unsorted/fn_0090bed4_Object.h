@@ -10,6 +10,13 @@ class tObject_005235a7;
 class tCommandDestination;
 class tObject_0051c7af;
 
+// HYPOTHESIS: the object at +0x218 of the object below; 0x00523100 forwards to its 0x00520e30.
+// Its size is unknown.
+class tObject_00520e30 {
+public:
+	void fn_00520e30();
+};
+
 // HYPOTHESIS: updated through 0x00522681.
 class fn_0090bed4_Object {
 public:
@@ -25,8 +32,11 @@ public:
 	bool fn_005230dd(int param_1, int param_2, int param_3, int param_4);
 	tObject_0051c7af *fn_00523543(int param_1);
 	tObject_0051c7af *fn_00523574(int param_1);
+	void fn_00523100();
 
-	char m_pad0000[0x16c0];
+	char m_pad0000[0x218];
+	tObject_00520e30 m_218;
+	char m_pad0219[0x16c0 - 0x219];
 	// HYPOTHESIS: IDs that 0x00523027 looks up through 0x00523574.
 	std::list<int> m_16c0;
 };
