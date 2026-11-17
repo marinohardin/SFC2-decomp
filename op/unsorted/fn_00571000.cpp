@@ -239,7 +239,6 @@ bool fn_00571648_owner::fn_0057165f(int a)
 	bool less = ((int (__fastcall *)(int))fn_00571648_func)(fn_00571648_base + a) < *(int*)&fn_00571648_byte;
 	return less;
 }
-
 // HYPOTHESIS: unrecovered class pair: a polymorphic base (vtable 0x007b2ba0) whose destructor
 // adds no unwind state, two longs at +8 and +0xc, and in the derived class (vtable 0x007b2b98)
 // a std::string at +0x10 copied from the by-value parameter. The base's virtual slots are not
@@ -252,7 +251,6 @@ public:
 	long fn_00571676_a;
 	long fn_00571676_b;
 };
-
 class fn_00571676_owner : public fn_00571676_base {
 public:
 	fn_00571676_owner(long a, long b, std::string s);
@@ -265,7 +263,6 @@ fn_00571676_owner::fn_00571676_owner(long a, long b, std::string s)
 	: fn_00571676_base(a, b), fn_00571676_str(s)
 {
 }
-
 // HYPOTHESIS: stand-in for the callee's object type; the call is a thiscall.
 class fn_005716e0_target {
 public:
@@ -299,3 +296,7 @@ fn_00571734_owner::fn_00571734_owner(long a, long b, fn_00571734_point p)
 // FUNCTION: STARFLEETOP 0x00571786
 bool fn_00571734_owner::fn_00571786(int a)
 { typedef fn_00571734_point (fn_005716e0_target::*fn_get_t)(); bool same = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))() == fn_00571734_pt; return same ? true : false; }
+class fn_005717d6_owner : public fn_00571676_base { public: long fn_005717d6_v; bool fn_005717d6(int a); }; char fn_00715ac0(long v);
+// FUNCTION: STARFLEETOP 0x005717d6
+
+bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef void (fn_005716e0_target::*fn_t)(); (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_t*)&fn_00571676_a))(); char r = fn_00715ac0(v); bool same = r != 0; return same ? true : false; }
