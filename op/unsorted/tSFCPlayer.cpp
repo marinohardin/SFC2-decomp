@@ -1,6 +1,7 @@
 #include <string.h>
 #include "Tiger/tstring.h"
 #include "Common/Thread/Optex.h"
+#include "unsorted/tEntity.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tNetControl.h"
 #include "unsorted/tSupplyDockInfo.h"
@@ -57,6 +58,7 @@ class tObject_004454c1
 		tObject_004454c1();
 		~tObject_004454c1();
 		void fn_00447af2(char *s, int v);
+		void fn_00447aa7(void *param_1);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -220,7 +222,7 @@ class tSFCPlayer
 		virtual void vfunction76() = 0;
 		virtual void vfunction77() = 0;
 		virtual void vfunction78() = 0;
-		virtual void vfunction79() = 0;
+		virtual char vfunction79();
 		virtual void vfunction80() = 0;
 		virtual void vfunction81(int param_1, unsigned param_2) = 0;
 		virtual void vfunction82() = 0;
@@ -739,6 +741,20 @@ void tSFCPlayer::vfunction4(char *param_1, int param_2, unsigned param_3, int pa
 		if (param_3 >= (unsigned)m_30)
 			m_30 = param_3 + 1;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004d0544
+char tSFCPlayer::vfunction79()
+{
+	char bResult = 0;
+	for (int i = 0; i < 6; i++) {
+		fn_004e2b02_ship_type *iEntity = gObject_008e1060.fn_0042496f(m_40[i]);
+		if (iEntity != 0) {
+			bResult = 1;
+			m_238[i].fn_00447aa7(iEntity);
+		}
+	}
+	return bResult;
 }
 
 // FUNCTION: STARFLEETOP 0x004d04b6
