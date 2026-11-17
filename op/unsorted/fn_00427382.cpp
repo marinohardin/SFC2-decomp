@@ -273,6 +273,18 @@ void tObject_0042772f::fn_0042772f( const int& aArg )
 	fn_00427883( field_0x8, 1, aArg );
 }
 
+// MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines here.
+namespace std
+{
+inline void _Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V );
+}
+
+// FUNCTION: STARFLEETOP 0x00427a53
+inline void std::_Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V )
+{
+	new ((void *)_P) tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension( _V );
+}
+
 // MATCH-ONLY: the library's copy constructor of the vector at 0x10 of tPoliticalTensionVector,
 // emitted in this unit because the copy constructor above uses it. The original is the
 // template in the library header; it is written out here so that it has source lines here.
