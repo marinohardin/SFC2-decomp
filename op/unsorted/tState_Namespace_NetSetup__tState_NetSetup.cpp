@@ -117,6 +117,7 @@ public:
 	void fn_004772bf();
 	bool fn_004772ce(int id);
 	void fn_004776d7(const char *name, int n);
+	void fn_00477749();
 	void fn_00469e0c(const char *name);
 	void fn_00477440();
 	void fn_00477689();
@@ -700,6 +701,41 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, i
 	m5c = tag->mGetString(n);
 	if (tag)
 		delete tag;
+}
+
+// FUNCTION: STARFLEETOP 0x00477749
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
+{
+	if (m1f0 != 0x10005)
+		return;
+	if (gNetControl.fn_004317c3())
+		return;
+
+	if (!m19[1])
+	{
+		bool ready;
+		int result = gNetControl.fn_00432cce(&ready, 0);
+		if (!ready)
+		{
+			fn_004776d7("JoinStatus", 1);
+			return;
+		}
+		if (!result)
+			m19[1] = 0;
+		else
+		{
+			m19[1] = 1;
+			m19[2] = 1;
+		}
+	}
+
+	if (m19[2])
+	{
+		if (fn_0047685b())
+			fn_00469e0c(g_008493a8);
+		else
+			fn_004776d7("JoinStatus", 1);
+	}
 }
 
 // HYPOTHESIS: the state's control name tables and the names its value objects bind to, as
