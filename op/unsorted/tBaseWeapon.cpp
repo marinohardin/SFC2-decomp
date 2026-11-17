@@ -198,3 +198,9 @@ void tBaseWeapon::vfunction115(float param_1)
 {
     vfunction116(field_148.fn_004d7099(param_1));
 }
+
+// FUNCTION: STARFLEETOP 0x004d7776
+void tBaseWeapon::vfunction117(float param_1)
+{
+    vfunction118(field_148.fn_004d7099(param_1));
+}
