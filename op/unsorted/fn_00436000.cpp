@@ -166,3 +166,11 @@ tCountMap<tVolIterator,tVolIterParent,std::less<tVolIterator> >::tCountMap()
 	fHead = 0;
 	fTail = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00436353
+template <>
+tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator> >::tCountMap()
+{
+	fHead = 0;
+	fTail = 0;
+}
