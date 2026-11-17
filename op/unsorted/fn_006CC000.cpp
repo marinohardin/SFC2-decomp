@@ -431,3 +431,10 @@ char *fn_006cc8f0(fn_006cc0f0_server *server)
 	fn_006cc530_record *record = (fn_006cc530_record *)server;
 	return inet_ntoa(*(in_addr *)&record->field_00);
 }
+
+// HYPOTHESIS: returns a server entry's address in network order.
+// FUNCTION: STARFLEETOP 0x006cc900
+unsigned long fn_006cc900(fn_006cc530_record *record)
+{
+	return record->field_00;
+}
