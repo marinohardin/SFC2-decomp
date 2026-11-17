@@ -6949,6 +6949,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005455e3": {
+   "name": "FUN_005455e3",
+   "symbol": "?fn_005455e3@tAuctionItem@@QAEXK@Z",
+   "unit": "unsorted/tAuctionItem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
