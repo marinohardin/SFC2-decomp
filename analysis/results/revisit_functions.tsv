@@ -134,3 +134,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x004360eb	tValueCountMap<tVolume,twVolume,std::less<tVolume>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:54:34Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436107	tValueCountMap<tVolume,twVolume,std::less<tVolume>_>::~tValueCountMap<tVolume,twVolume,std::less<tVolume>_>	0.00	2	sonnet	2026-11-17T03:56:45Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436123	tCountMap<tVolume,twVolume,std::less<tVolume>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:59:02Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0043613f	tValueCountMap<tDir,twDir,std::less<tDir>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:01:35Z	attempt 2 (sonnet) did not raise the best; best 0.00%
