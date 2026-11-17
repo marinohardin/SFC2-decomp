@@ -556,10 +556,12 @@ public:
     virtual ~fn_00402b22_Base();
 };
 
-class fn_00402b22_Inner
+// HYPOTHESIS: a reference-counted facet; this is its release step
+class fn_00402b22_Inner : public fn_00402b22_Base
 {
 public:
     fn_00402b22_Base* fn_00402b3a();
+    unsigned long m4;
 };
 
 // HYPOTHESIS: an owner that deletes what its first member yields; 0x00402b3a is a method of that member
@@ -578,4 +580,13 @@ void fn_00402b22_Obj::fn_00402b22()
         fn_00402b22_Base* p = m0->fn_00402b3a();
         delete p;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x00402b3a
+fn_00402b22_Base* fn_00402b22_Inner::fn_00402b3a()
+{
+    std::_Lockit lock;
+    if (0 < m4 && m4 < (unsigned long)-1)
+        --m4;
+    return m4 == 0 ? this : 0;
 }

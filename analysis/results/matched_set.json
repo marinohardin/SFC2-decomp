@@ -253,6 +253,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00402b3a": {
+   "name": "FUN_00402b3a",
+   "symbol": "?fn_00402b3a@fn_00402b22_Inner@@QAEPAVfn_00402b22_Base@@XZ",
+   "unit": "unsorted/fn_00402000.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
