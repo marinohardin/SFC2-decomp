@@ -2,6 +2,7 @@
 #include "Tiger/tvectormath.h"
 #include "Tiger/tbasicfile.h"
 #include "dmp3d/common/stream_basicfile.h"
+#include <ctype.h>
 #include <string.h>
 #include <vector>
 
@@ -136,13 +137,19 @@ public:
 class tNode_0042f467
 {
 public:
+	// HYPOTHESIS: 0x0042f421 copies the first length characters of name.
+	tNode_0042f467(const char *name, int length);
 	~tNode_0042f467();
+	// HYPOTHESIS: 0x0042f488 appends the entry's point to the array.
+	void fn_0042f488(tEntry_0042fa82 *entry);
 
 	tNode_0042f467 *mNext;
 	// HYPOTHESIS: a named array of points, as read by 0x0042fb2b.
 	char *mName;
 	tPoint3 *mPoints;
 	unsigned int mCount;
+	// HYPOTHESIS: 0x00430367 allocates 0x14 bytes per node; the last field is not read here.
+	int m10;
 };
 
 class t3DVisual_Model : public t3DVisual
@@ -692,6 +699,45 @@ void t3DVisual_Model::fn_004302e8(unsigned long size, tStream_BasicFile *stream)
 			for (int i = 0; i < m180; i++)
 			{
 				*stream >> m17c[i].mPoint >> m17c[i].mName;
+			}
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00430367
+void t3DVisual_Model::fn_00430367()
+{
+	if (m154 != 0 && m180 != 0)
+	{
+		for (int i = 0; i < m180; i++)
+		{
+			char *name = m154 + m17c[i].mName;
+			if (*name != 0)
+			{
+				int length = 0;
+				char c = *name;
+				while (c != 0)
+				{
+					if (isdigit(c))
+						break;
+					length++;
+					c = name[length];
+				}
+				tNode_0042f467 *node;
+				for (node = m184; node != 0; node = node->mNext)
+				{
+					if (strnicmp(node->mName, name, length) == 0)
+						break;
+				}
+				if (node == 0)
+				{
+					node = new tNode_0042f467(name, length);
+					if (node == 0)
+						continue;
+					node->mNext = m184;
+					m184 = node;
+				}
+				node->fn_0042f488(&m17c[i]);
 			}
 		}
 	}
