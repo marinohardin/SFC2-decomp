@@ -573,3 +573,69 @@ void fn_005bc161_tree::FUN_005bc570(node *_X)
 		_Y = _Y->_Left;
 		operator delete(_X); }
 }
+
+// HYPOTHESIS: a balanced tree of database ids laid out like
+// fn_005bc3de_tree, its value at +0x0c of a node and ordered by
+// tID::operator<; this is its insert(_V).
+struct fn_005bc5a0_tree
+{
+	struct node
+	{
+		node *_Left;
+		node *_Parent;
+		node *_Right;
+		nDatabase::tID _Value;
+	};
+	class iterator
+	{
+	public:
+		iterator() {}
+		iterator(node *_P) : _Ptr(_P) {}
+		// HYPOTHESIS: the iterator's decrement.
+		void FUN_005bd1f0();
+		iterator &operator--() { FUN_005bd1f0(); return (*this); }
+		bool operator==(const iterator &_X) const { return (_Ptr == _X._Ptr); }
+		node *_Ptr;
+	};
+	struct _Pairib
+	{
+		_Pairib(const iterator &_V1, const bool &_V2) : first(_V1), second(_V2) {}
+		iterator first;
+		bool second;
+	};
+
+	char m00[0x4];
+	node *_Head;
+	node *_Nil;
+	bool _Multi;
+	unsigned int _Size;
+
+	iterator begin() { return (iterator(_Head->_Left)); }
+	// HYPOTHESIS: _Insert(_X, _Y, _V).
+	iterator FUN_005bd0a6(node *_X, node *_Y, const nDatabase::tID &_V);
+	_Pairib FUN_005bc5a0(const nDatabase::tID &_V);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc5a0
+fn_005bc5a0_tree::_Pairib fn_005bc5a0_tree::FUN_005bc5a0(const nDatabase::tID &_V)
+{
+	node *_X = _Head->_Parent;
+	node *_Y = _Head;
+	bool _Ans = true;
+	while (_X != _Nil)
+		{_Y = _X;
+		_Ans = _V < _X->_Value;
+		_X = _Ans ? _X->_Left : _X->_Right; }
+	if (_Multi)
+		return (_Pairib(FUN_005bd0a6(_X, _Y, _V), true));
+	iterator _P = iterator(_Y);
+	if (!_Ans)
+		;
+	else if (_P == begin())
+		return (_Pairib(FUN_005bd0a6(_X, _Y, _V), true));
+	else
+		--_P;
+	if (_P._Ptr->_Value < _V)
+		return (_Pairib(FUN_005bd0a6(_X, _Y, _V), true));
+	return (_Pairib(_P, false));
+}
