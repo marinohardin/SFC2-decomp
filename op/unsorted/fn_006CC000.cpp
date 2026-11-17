@@ -660,3 +660,11 @@ void fn_006cce00(fn_006ccb20_record *record)
 			record->field_e8 = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006cce80
+void fn_006cce80(fn_006ccb20_record *record)
+{
+	if (record == 0)
+		record = g_00888838;
+	fn_006cdaa0(record, 1);
+}
