@@ -17,11 +17,15 @@ public:
     virtual int* vfunction102();
     // vftable slot 102; returns the address of field_c4.
     virtual int* vfunction103();
+    // vftable slot 103; returns field_b8.
+    virtual int vfunction104();
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
     int field_a0;
-    char pada4[0xc4 - 0xa4];
+    char pada4[0xb8 - 0xa4];
+    int field_b8;
+    char padbc[0xc4 - 0xbc];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
     int field_c4;
 };
