@@ -1297,3 +1297,9 @@ void fn_0046aa9a(int param_1)
 	dc.vfunction16(2);
 	dc.vfunction22(((fn_0046aa9a_host *)param_1)->fn_0040163a(30, text, -1, 1) - 30);
 }
+
+// FUNCTION: STARFLEETOP 0x0046abb3
+int fn_0046abb3()
+{
+	return g_0090db2c;
+}
