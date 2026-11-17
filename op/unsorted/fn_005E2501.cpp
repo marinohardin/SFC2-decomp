@@ -138,5 +138,6 @@ std::string g_00c38fa8 = "space1";
 // FUNCTION: STARFLEETOP 0x005e2b4b
 std::string g_00c38f98 = "nebula1";
 
+// FUNCTION: STARFLEETOP 0x005e2bd4
 // FUNCTION: STARFLEETOP 0x005e2ba1
 std::string g_00c38f88 = "asteroids1";
