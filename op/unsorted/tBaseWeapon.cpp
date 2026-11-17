@@ -99,3 +99,75 @@ void tBaseWeapon::vfunction102()
         }
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d74f6
+void tBaseWeapon::fn_004d74f6()
+{
+    switch (field_f8)
+    {
+    case 1:
+    case 8:
+    case 21:
+        field_cc += 60;
+        return;
+    case 5:
+    case 58:
+        field_cc += 300;
+        return;
+    case 3:
+    case 42:
+        field_cc += 260;
+        return;
+    case 0:
+    case 29:
+        field_cc += 20;
+        return;
+    case 23:
+    case 37:
+        field_cc += 220;
+        return;
+    case 9:
+    case 15:
+        field_cc += 100;
+        return;
+    case 11:
+        field_cc += 40;
+        return;
+    case 10:
+    case 40:
+        field_cc += 120;
+        return;
+    case 25:
+    case 39:
+        field_cc += 180;
+        return;
+    case 26:
+    case 38:
+        field_cc += 160;
+        return;
+    case 12:
+    case 30:
+        field_cc += 80;
+        return;
+    case 4:
+    case 59:
+        field_cc += 280;
+        return;
+    case 57:
+        field_cc += 320;
+        return;
+    case 2:
+    case 44:
+        field_cc += 140;
+        return;
+    case 19:
+    case 43:
+        field_cc += 240;
+        return;
+    case 24:
+    case 41:
+        field_cc += 200;
+        return;
+    }
+    field_cc += 500;
+}

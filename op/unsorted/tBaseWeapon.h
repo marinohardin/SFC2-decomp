@@ -193,11 +193,17 @@ public:
     char pad_04[0x34];
     float field_38;
     float field_3c;
-    char pad_40[0x9c];
+    char pad_40[0x8c];
+    int field_cc;
+    char pad_d0[0xc];
     float field_dc;
     float field_e0;
     float field_e4;
     int field_e8;
+    char pad_ec[0xc];
+    int field_f8;
+    // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
+    void fn_004d74f6();
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
     int fn_004d87e3(int param_1);
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
