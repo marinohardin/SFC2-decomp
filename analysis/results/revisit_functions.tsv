@@ -138,3 +138,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x004d2a96	FUN_004d2a96	1.48	2	opus	2026-11-17T14:05:33Z	attempt 2 (opus) did not raise the best; best 1.48%
 0x004d3148	FUN_004d3148	0.00	2	opus	2026-11-17T14:34:14Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x004d3951	FUN_004d3951	99.79	3	opus	2026-11-17T15:24:01Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.79%
+0x004d82fb	tBaseWeapon::vfunction74	56.32	2	opus	2026-11-17T16:40:53Z	best not above 90% after 2 attempts; best 56.32%
