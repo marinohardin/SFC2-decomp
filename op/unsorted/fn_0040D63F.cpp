@@ -604,3 +604,17 @@ void fn_0040e034(char* name, unsigned char* value, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e074
+void fn_0040e074(char* name, unsigned char* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    unsigned long n;
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = %lu");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, &n);
+    *value = (unsigned char)n;
+}
+
