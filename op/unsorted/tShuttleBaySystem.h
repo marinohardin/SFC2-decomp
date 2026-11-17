@@ -36,6 +36,8 @@ public:
     // HYPOTHESIS: the slots between 111 and 116 are not recovered; vfunction116 is the
     // analysis's name. Returns element param_1 of an int array.
     virtual int vfunction116(int param_1);
+    // vftable slot 117; returns element param_1 of an int array.
+    virtual int vfunction117(int param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -57,7 +59,10 @@ public:
     char padfc[0x138 - 0xfc];
     // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
     int field_138[1];
-    char pad13c[0x2c8 - 0x13c];
+    char pad13c[0x248 - 0x13c];
+    // HYPOTHESIS: an int array indexed by vfunction117; its length is not recovered.
+    int field_248[1];
+    char pad24c[0x2c8 - 0x24c];
     // HYPOTHESIS: an int array indexed by vfunction110; its length is not recovered.
     int field_2c8[1];
 };
