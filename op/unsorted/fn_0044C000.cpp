@@ -1248,3 +1248,71 @@ void tShipSystemsExt::vfunction39()
 	vfunction173();
 	vfunction177();
 }
+
+#include <stdio.h>
+
+extern char g_0090b4c5;
+
+// HYPOTHESIS: the callee pops its arguments (ret 0xc) and ecx is unused;
+// this may be a member function that does not use this.
+// FUNCTION: STARFLEETOP 0x0044cfc2
+void __stdcall FUN_0044cfc2( int param_1, int param_2, char param_3 )
+{
+	if( !g_0090b4c5 )
+		return;
+
+	FILE* file = fopen( "msDamage.txt", "a+" );
+	if( !file )
+		return;
+
+	const char* name;
+	switch( param_1 )
+	{
+	case 0x00: name = "kBridgeGroupHardPoint"; break;
+	case 0x05: name = "kSensorGroupHardPoint"; break;
+	case 0x08: name = "kHullGroupHardPoint"; break;
+	case 0x0c: name = "kExcessDamageHardPoint"; break;
+	case 0x0d: name = "kTransporterHardPoint"; break;
+	case 0x0e: name = "kTractorHardPoint"; break;
+	case 0x10: name = "kShuttleBayHardPoint"; break;
+	case 0x11: name = "kFighterBayHardPoint"; break;
+	case 0x12: name = "kEngineGroupHardPoint"; break;
+	case 0x18: name = "kBatteryHardPoint"; break;
+	case 0x19: name = "kLabHardPoint"; break;
+	case 0x1a: name = "kBarracksHardPoint"; break;
+	case 0x1b: name = "kCargoHardPoint"; break;
+	case 0x1c: name = "kShieldGroupHardPoint"; break;
+	case 0x23: name = "kArmorHardPoint"; break;
+	case 0x24: name = "kCloakHardPoint"; break;
+	case 0x25: name = "kDamageControlGroupHardPoint"; break;
+	case 0x28: name = "kOfficerGroupHardPoint"; break;
+	case 0x30: name = "kProbeHardPoint"; break;
+	case 0x4a: name = "kAnyWeapon_ForDamageOnly "; break;
+	case 0x4b: name = "kDrone_ForDamageOnly"; break;
+	case 0x4c: name = "kHvyWpn_ForDamageOnly"; break;
+	case 0x4d: name = "kAnyWarp_ForDamageOnly"; break;
+	case 0x4e: name = "kPhaser_ForDamageOnly"; break;
+	case 0x4f: name = "kForwardHull_ForDamageOnly"; break;
+	case 0x50: name = "kCenterHull_ForDamageOnly"; break;
+	case 0x51: name = "kAftHull_ForDamageOnly"; break;
+	case 0x52: name = "kLeftWarp_ForDamageOnly"; break;
+	case 0x53: name = "kRightWarp_ForDamageOnly"; break;
+	case 0x54: name = "kCenterWarp_ForDamageOnly"; break;
+	case 0x55: name = "kAPR_ForDamageOnly"; break;
+	case 0x56: name = "kImpulse_ForDamageOnly"; break;
+	case 0x57: name = "kBridge_ForDamageOnly"; break;
+	case 0x58: name = "kFlagBridge_ForDamageOnly"; break;
+	case 0x59: name = "kEmergencyBridge_ForDamageOnly"; break;
+	case 0x5a: name = "kSensor_ForDamageOnly"; break;
+	case 0x5b: name = "kScanner_ForDamageOnly"; break;
+	case 0x5d: name = "kDamageControl_ForDamageOnly"; break;
+	case 0x5f: name = "kAuxilliaryControl_ForDamageOnly"; break;
+	case 0x60: name = "kTractor_ForDamageOnly"; break;
+	default: name = "No System (Error)"; break;
+	}
+
+	fprintf( file, "System: %s, Die Roll:%d\n", name, param_2 + 2 );
+	if( param_3 )
+		fprintf( file, "Ship destroyed (You sank my BattleShip!)\n" );
+	fclose( file );
+}
