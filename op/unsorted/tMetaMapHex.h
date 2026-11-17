@@ -183,6 +183,8 @@ public:
 	// HYPOTHESIS: a test of a neighbouring hex against the two arguments of fn_00539ff1, which
 	// look like the map's width and height; the original compares them unsigned.
 	bool fn_0053a287( tHexPoint& point, unsigned int param_1, unsigned int param_2 );
+	// HYPOTHESIS: the terrain type (the TerrainType column), read under the lock.
+	int32 fn_0053a31c();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

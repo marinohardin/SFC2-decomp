@@ -469,3 +469,12 @@ std::map< int32, float >& tMetaMapHex::fn_0053a2fc()
 	m_bc.Leave();
 	return ( std::map< int32, float >& )m_48;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a31c
+int32 tMetaMapHex::fn_0053a31c()
+{
+	m_bc.Enter();
+	int32 type = m_5c;
+	m_bc.Leave();
+	return type;
+}
