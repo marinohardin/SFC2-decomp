@@ -120,3 +120,18 @@ bool tGameState::vfunction17(int param_1)
 		return 0;
 	return fn_0046a62d(param_1);
 }
+
+// HYPOTHESIS: fn_0046995a is a method of an unidentified class; this passes a global object of it as this.
+class fn_0046995a_owner
+{
+public:
+	void fn_0046995a();
+};
+
+extern fn_0046995a_owner g_fn_0046995a_owner;
+
+// FUNCTION: STARFLEETOP 0x00469e2a
+void tGameState::vfunction18()
+{
+	g_fn_0046995a_owner.fn_0046995a();
+}
