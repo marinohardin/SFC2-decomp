@@ -141,10 +141,25 @@ void *fn_006c15c0(fn_006c1510_pool *pool, int index)
 }
 
 // HYPOTHESIS: inserts an element at the given index; 0x006c15e0 passes field_00, the end.
-void fn_006c1600(fn_006c1510_pool *pool, void *element, unsigned long index);
+void fn_006c1600(fn_006c1510_pool *pool, void *element, int index);
 
 // FUNCTION: STARFLEETOP 0x006c15e0
 void fn_006c15e0(fn_006c1510_pool *pool, void *element)
 {
 	fn_006c1600(pool, element, pool->field_00);
+}
+
+// HYPOTHESIS: 0x006c1670 grows the data block when it is full; 0x006c16a0 stores the element.
+void fn_006c1670(fn_006c1510_pool *pool);
+void fn_006c16a0(fn_006c1510_pool *pool, void *element, int index);
+
+// FUNCTION: STARFLEETOP 0x006c1600
+void fn_006c1600(fn_006c1510_pool *pool, void *element, int index)
+{
+	if (pool->field_00 == pool->field_04)
+		fn_006c1670(pool);
+	pool->field_00++;
+	if (index < (int)pool->field_00 - 1)
+		memmove(fn_006c15c0(pool, index + 1), fn_006c15c0(pool, index), (pool->field_00 - index - 1) * pool->field_08);
+	fn_006c16a0(pool, element, index);
 }
