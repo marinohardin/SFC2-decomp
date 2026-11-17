@@ -36,6 +36,7 @@ int fn_00404034_Counters::fn_00404034()
 }
 
 #include <string>
+#include <iostream>
 
 // HYPOTHESIS: std::vector<std::string>::erase(first, last); the vector's end pointer sits at +8.
 class fn_00404044_Vector
@@ -67,4 +68,18 @@ std::string* fn_00404044_Vector::fn_00404044(std::string* _F, std::string* _L)
     fn_00404044_Destroy(_S, _Last);
     _Last = _S;
     return _F;
+}
+
+// HYPOTHESIS: the library's std::iostream constructor taking a streambuf, written out as a
+// stand-in class with the same bases.
+class fn_004040a4_Iostream : public std::istream, public std::ostream
+{
+public:
+    fn_004040a4_Iostream(std::streambuf* _S);
+};
+
+// FUNCTION: STARFLEETOP 0x004040a4
+fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf* _S)
+    : std::basic_istream<char, std::char_traits<char> >(_S), std::basic_ostream<char, std::char_traits<char> >(_S, false, false)
+{
 }
