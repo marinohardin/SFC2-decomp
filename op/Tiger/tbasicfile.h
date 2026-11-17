@@ -37,6 +37,9 @@ public:
 	// 0x00627130 to the SDK library's tBasicFile::mDone.
 	static void				mDone( void );
 
+	// Name from the SDK library symbol matched to 0x00627120 (?mInit@tBasicFile@@SAEE@Z).
+	static unsigned char	mInit( unsigned char param_1 );
+
 	// Name from the SDK library symbol matched to 0x00627140.
 	static tBasicFile		*mNewBasicFile( void );
 };

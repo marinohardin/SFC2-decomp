@@ -11,10 +11,17 @@ class tCallback;
 class tThread
 {
 public:
+	// HYPOTHESIS: the enumerators are not known; the name comes from the SDK library symbol
+	// matched to 0x006ff6d0.
+	enum ThreadPriority
+	{
+	};
+
 	tThread();
 	~tThread();
 
 	bool StartWork( tCallback<int32>* workItem, int32 context );
+	void mSetPriority( ThreadPriority priority );
 	void StopThread( int32u timeout );
 
 	bool Working() const;

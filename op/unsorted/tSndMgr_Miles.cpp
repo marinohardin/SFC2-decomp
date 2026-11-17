@@ -1,13 +1,24 @@
 #include "unsorted/tSndMgr_Base.h"
 #include "unsorted/ParseSFCSoundTable.h"
 #include "Common/Thread/Thread.h"
+#include "Tiger/tbasicfile.h"
+#include "unsorted/mss.h"
+
+class tSndMgr_Miles;
+
+// HYPOTHESIS: a free function called before AIL_startup; its role is not known.
+void fn_006f3870();
 
 // HYPOTHESIS: the member classes below are named after their destructors until evidence names
 // them; sizes come from the member offsets in tSndMgr_Miles.
+// HYPOTHESIS: this is tSndZipInfoMgr (size 0x254, mInit at 0x0066c9b0), which is declared only
+// inside Tiger/tbasicsoundfilezip.cpp; it stays a stand-in until a header holds that class.
 class fn_0050cb19_object
 {
 public:
 	~fn_0050cb19_object();
+
+	unsigned char mInit( const char * );
 
 	char pad_0000[0x254];
 };
@@ -33,6 +44,9 @@ class fn_0050cb59_object
 public:
 	~fn_0050cb59_object();
 
+	// HYPOTHESIS: loads the music from a zip and its table
+	void fn_0050d539( tSndMgr_Miles *param_1, const char *param_2, const char *param_3 );
+
 	char pad_0000[0x3c8];
 };
 
@@ -47,13 +61,22 @@ public:
 	long field_4;
 };
 
+// HYPOTHESIS: one sample channel of tSndMgr_Miles (stride 0x7c from +0x10); only the Miles
+// sample handle at its start is known. HYPOTHESIS: the handle is volatile (the original re-reads
+// it after every store and call), as the Miles callbacks touch the channel from their thread.
+struct fn_0050eea7_sample
+{
+	volatile HSAMPLE field_0;
+	char pad_4[0x78];
+};
+
 // HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
 // (vfunction29 is called through +0x70); the others keep their analysis names.
 class tSndMgr_Miles : public tSndMgr_Base
 {
 public:
 	virtual ~tSndMgr_Miles();
-	virtual void vfunction2();
+	virtual char vfunction2( HWND param_1 );
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual void vfunction5();
@@ -85,12 +108,20 @@ public:
 	virtual void vfunction30();
 	virtual char vfunction31();
 
-	char pad_0004[0x1f1c];
+	char pad_0004[0xc];
+	fn_0050eea7_sample field_10[64];
+	char pad_1f10[0x10];
 	long field_1f20;
 	ParseSFCSoundTable field_1f24;
 	fn_0050cb19_object field_1f60;
 	fn_0050cb19_object field_21b4;
-	char pad_2408[0x18];
+	tBasicFile *field_2408;
+	tBasicFile *field_240c;
+	unsigned long field_2410;
+	char field_2414;
+	char pad_2415[3];
+	HDIGDRIVER field_2418;
+	HWND field_241c;
 	fn_0050bcd4_object field_2420;
 	fn_005d6a72_object field_2438;
 	fn_0050cb59_object field_2450;
@@ -147,4 +178,80 @@ char tSndMgr_Miles::vfunction31()
 tSndMgr_Miles::~tSndMgr_Miles()
 {
 	vfunction3();
+}
+
+// FUNCTION: STARFLEETOP 0x0050eea7
+char tSndMgr_Miles::vfunction2( HWND param_1 )
+{
+	// HYPOTHESIS: a static wave format, as the exe keeps it at a fixed address (0x00969330)
+	static PCMWAVEFORMAT format;
+
+	if ( !field_2414 )
+	{
+		field_1f60.mInit( "assets/sound/SFCSounds.zip" );
+		field_21b4.mInit( "assets/sound/SFCVoice.zip" );
+
+		ParseSFCSoundTable *table = &field_1f24;
+		table->vfunction21( &field_1f60, &field_21b4 );
+		table->vfunction1( "assets/sound/sounds.txt" );
+
+		AIL_set_redist_directory( "Drivers\\" );
+		fn_006f3870();
+		field_2414 = AIL_startup() != 0;
+		if ( field_2414 )
+		{
+			format.wf.wFormatTag = WAVE_FORMAT_PCM;
+			format.wf.nChannels = 2;
+			format.wf.nSamplesPerSec = 22050;
+			format.wf.nAvgBytesPerSec = 88200;
+			format.wf.nBlockAlign = 4;
+			format.wBitsPerSample = 16;
+			long result = AIL_waveOutOpen( &field_2418, 0, WAVE_MAPPER, (LPWAVEFORMAT)&format );
+			AIL_last_error();
+			field_2414 = result == 0;
+			if ( field_2418 )
+				AIL_set_DirectSound_HWND( field_2418, param_1 );
+
+			unsigned long i = 0;
+			while ( field_2414 && i < field_4234 )
+			{
+				field_10[i].field_0 = AIL_allocate_sample_handle( field_2418 );
+				if ( field_10[i].field_0 )
+				{
+					AIL_init_sample( field_10[i].field_0 );
+					AIL_set_sample_user_data( field_10[i].field_0, 0, (long)this );
+					AIL_set_sample_user_data( field_10[i].field_0, 1, i );
+				}
+				else
+					field_2414 = 0;
+				i++;
+			}
+
+			if ( field_2414 )
+			{
+				field_2410 = AIL_minimum_sample_buffer_size( field_2418, 22050, DIG_F_STEREO_16 );
+				if ( field_2410 < 0x8000 )
+					field_2410 = 0x8000;
+
+				field_2414 = 0;
+				field_2408 = tBasicFile::mNewBasicFile();
+				if ( field_2408 && tBasicFile::mInit( 1 ) )
+					field_2414 = field_2408->mOpenForRead( "assets/sound/SFCSounds.zip" );
+				field_240c = tBasicFile::mNewBasicFile();
+				if ( field_240c && field_2414 && tBasicFile::mInit( 1 ) )
+					field_240c->mOpenForRead( "assets/sound/SFCVoice.zip" );
+
+				if ( field_2414 )
+					field_2450.fn_0050d539( this, "Assets\\SOUND\\SFCMusic.zip", "assets\\sound\\SFCMusic.txt" );
+			}
+		}
+
+		field_241c = param_1;
+		// HYPOTHESIS: field_4238 is a tCallback<long>-derived member; tCallback is declared only
+		// inside Common/Thread/ThreadPool.cpp, so the stand-in type is passed through a cast.
+		field_2818.StartWork( (tCallback<int32> *)&field_4238, (int32)this );
+		field_2818.mSetPriority( (tThread::ThreadPriority)6 );
+		return field_2414;
+	}
+	return 1;
 }
