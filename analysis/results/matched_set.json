@@ -496,6 +496,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00404044": {
+   "name": "FUN_00404044",
+   "symbol": "?fn_00404044@fn_00404044_Vector@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV23@0@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 96,
+   "score": 92.605,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
