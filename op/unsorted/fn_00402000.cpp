@@ -523,3 +523,9 @@ fn_004029e8_Obj fn_004029e8_Obj::fn_004029e8(unsigned int pos, unsigned int n) c
 {
     return fn_004029e8_Obj(*this, pos, n);
 }
+
+// HYPOTHESIS: std::ostream::operator<<(long) instantiated out of line; the address is taken so the compiler keeps a copy
+// FUNCTION: STARFLEETOP 0x00402a26
+void fn_00402a26()
+{
+}
