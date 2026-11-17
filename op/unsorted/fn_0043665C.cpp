@@ -2,6 +2,7 @@
 // Evidence:  page (original file unknown)
 
 #include "unsorted/tIndividualShipSystem.h"
+#include "Source/entity/entity_physical.h"
 
 // HYPOTHESIS: layout from the accesses only; the vtable sits at +0x0 and the
 // stored dword at +0xc.
@@ -32,4 +33,12 @@ int tIndividualShipSystem::vfunction11()
 void tETrait::vfunction7(int value)
 {
     field_c = value;
+}
+
+// HYPOTHESIS: the game's own copy of a list getter that sits in slot 17 of the
+// tShipSpecManager and tIndividualShipSystemList vtables.
+// FUNCTION: STARFLEETOP 0x0043666d
+long tDynamicMemoryFreeList::vfunction17()
+{
+    return field_0xc;
 }
