@@ -2593,6 +2593,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c0d4": {
+   "name": "FUN_0042c0d4",
+   "symbol": "?fn_0042c0d4@fn_0042c053_Tree@@QAEXPAUfn_0042c053_Node@@@Z",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 56,
+   "score": 99.792,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

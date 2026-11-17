@@ -1,11 +1,19 @@
 // HYPOTHESIS: a red-black tree of the library's map/set: 0x2c-byte nodes with the value at
 // +0x0c, a colour byte at +0x28 and an is-nil byte at +0x29; the head node sits at +0x08.
+// HYPOTHESIS: the node's 0x1c-byte value; fn_0042b0f5 destroys it in place.
+struct fn_0042c053_Value
+{
+	void fn_0042b0f5();
+
+	char m00_data[0x1c];
+};
+
 struct fn_0042c053_Node
 {
 	fn_0042c053_Node* m00_left;
 	fn_0042c053_Node* m04_parent;
 	fn_0042c053_Node* m08_right;
-	char m0c_value[0x1c];
+	fn_0042c053_Value m0c_value;
 	char m28_color;
 	char m29_isnil;
 };
@@ -17,6 +25,7 @@ class fn_0042c053_Tree
 {
 public:
 	fn_0042c053_Node* fn_0042c053(fn_0042c053_Node* x, fn_0042c053_Node* parent);
+	void fn_0042c0d4(fn_0042c053_Node* x);
 
 	char m00_pad[0x8];
 	fn_0042c053_Node* m08_head;
@@ -42,4 +51,17 @@ fn_0042c053_Node* fn_0042c053_Tree::fn_0042c053(fn_0042c053_Node* x, fn_0042c053
 		y->m08_right = fn_0042c053(x->m08_right, y);
 	}
 	return root;
+}
+
+
+// FUNCTION: STARFLEETOP 0x0042c0d4
+void fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node* x)
+{
+	for (fn_0042c053_Node* y = x; y != m08_head; x = y)
+	{
+		fn_0042c0d4(y->m08_right);
+		y = y->m00_left;
+		x->m0c_value.fn_0042b0f5();
+		operator delete(x);
+	}
 }
