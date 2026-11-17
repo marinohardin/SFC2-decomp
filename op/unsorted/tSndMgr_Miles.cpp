@@ -793,3 +793,23 @@ long tSndMgr_Miles::vfunction25()
 {
 	return field_1f14;
 }
+
+// FUNCTION: STARFLEETOP 0x0050f9ea
+long tSndMgr_Miles::fn_0050f9ea( long param_1, long param_2 )
+{
+	float distance = gObject_008e1060.fn_004246ab( param_1, param_2 );
+	if ( distance < 0.0f )
+		return -1;
+	// HYPOTHESIS: a fast float-to-int round: adding 1.5 * 2^23 leaves the rounded value in
+	// the low bits of the float.
+	float round = 127.0f - distance * 0.2857143f + 12582912.0f;
+	long volume = *(short *)&round;
+	if ( volume < 0 )
+	{
+		// MATCH-ONLY: an if/else assigning 0 or 1 folds into setge; the original branches.
+		if ( volume < -50 )
+			return 0;
+		volume = 1;
+	}
+	return volume;
+}
