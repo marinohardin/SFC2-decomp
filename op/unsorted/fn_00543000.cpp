@@ -93,6 +93,7 @@ public:
 	tHexPoint fn_005434b1() const;
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
+	void fn_0054334a(int flags);
 
 	char m_pad[0xd0];
 	fn_0042b0fd_owner m0d0;
@@ -205,4 +206,11 @@ int fn_005430ad_owner::fn_0054330e(const nDatabase::tID &id)
 	if ( !fn_005430fa( id ) )
 		m0d0.fn_0042add2( id );
 	return m0d0.size();
+}
+
+// HYPOTHESIS: +0x134 holds bit flags; this sets the given ones.
+// FUNCTION: STARFLEETOP 0x0054334a
+void fn_005430ad_owner::fn_0054334a(int flags)
+{
+	m134 |= flags;
 }
