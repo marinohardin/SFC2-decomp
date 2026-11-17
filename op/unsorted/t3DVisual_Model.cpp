@@ -133,6 +133,8 @@ public:
 	virtual bool vfunction10(int param_1, int param_2, int param_3, int param_4);
 	// HYPOTHESIS: slot 11 takes the one value 0x00430476 passes on.
 	virtual void vfunction11(int param_1);
+	// HYPOTHESIS: slot 12 returns a value 0x004304ac passes on.
+	virtual int vfunction12();
 };
 
 // HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
@@ -188,6 +190,7 @@ public:
 	void fn_004302e8(unsigned long size, tStream_BasicFile *stream);
 	void fn_00430367();
 	void vfunction28(int param_1);
+	int vfunction29(int param_1);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -754,4 +757,14 @@ void t3DVisual_Model::vfunction28(int param_1)
 		if (m160[i] != 0)
 			m160[i]->vfunction11(param_1);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004304ac
+int t3DVisual_Model::vfunction29(int param_1)
+{
+	if (param_1 < m11c && m160[param_1] != 0)
+		return m160[param_1]->vfunction12();
+	if (m160[0] != 0)
+		return m160[0]->vfunction12();
+	return 0;
 }
