@@ -7,3 +7,9 @@ int* tShuttleBaySystem::vfunction102()
 {
     return &field_a0;
 }
+
+// FUNCTION: STARFLEETOP 0x0044e55b
+int* tShuttleBaySystem::vfunction103()
+{
+    return &field_c4;
+}
