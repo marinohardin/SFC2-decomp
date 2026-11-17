@@ -86,6 +86,7 @@ public:
 	void fn_00426da7();
 	char pad00[0xc4];
 	int field_0xc4;
+	int field_0xc8;
 };
 
 // HYPOTHESIS: the owner of a table of twenty entries at +0x54; class not yet found.
@@ -93,6 +94,7 @@ class tObject_0042750f
 {
 public:
 	int fn_0042750f( int aIndex );
+	int fn_0042753a( int aIndex );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -107,4 +109,15 @@ int tObject_0042750f::fn_0042750f( int aIndex )
 		return 0;
 	entry->fn_00426da7();
 	return entry->field_0xc4;
+}
+
+// HYPOTHESIS: the value at +0xc8 of the table entry; zero for an index out of range or an
+// empty entry.
+// FUNCTION: STARFLEETOP 0x0042753a
+int tObject_0042750f::fn_0042753a( int aIndex )
+{
+	tObject_00426da7 *entry;
+	if (aIndex < 0 || aIndex >= 20 || (entry = field_0x54[aIndex]) == 0)
+		return 0;
+	return entry->field_0xc8;
 }
