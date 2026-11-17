@@ -16,6 +16,11 @@ public:
 	// HYPOTHESIS: virtual; tMetaMapControl's destructor (0x005e30ac) deletes it through slot 0
 	// with a delete flag of 1.
 	virtual ~tCompassRose();
+	virtual long vfunction1();
+	virtual long vfunction2();
+
+	// tMetaMapControl calls it on its compass rose (0x005e3148).
+	void fn_005e2501();
 
 	unsigned char field_04[ 4 ];
 };

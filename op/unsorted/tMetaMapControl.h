@@ -7,6 +7,13 @@
 
 class tCompassRose;
 
+// HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
+class fn_005eadc8_class
+{
+public:
+	void fn_005eadc8();
+};
+
 // HYPOTHESIS: 0x1ec bytes, from the operator new in the factory at 0x005e2f60.
 // vftables 0x007b50b0 (tButton part) and 0x007b50a4 (tVisNotifiee part).
 class tMetaMapControl : public tValueBtn
@@ -18,9 +25,12 @@ public:
 	// slots, so it is the one after the first.
 	virtual void vfunction1();
 
+	void fn_005e3148( int param_1 );
+	void fn_005e326c( bool param_1 );
 	void fn_005e36a3();
+	void fn_005e3b86();
 
-	int field_17c;
+	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;
 	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.
 	std::vector<int> field_184;
