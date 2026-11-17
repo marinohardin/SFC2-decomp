@@ -462,3 +462,17 @@ char *fn_006cc920(fn_006cc0f0_server *server, char *key, char *fallback)
 		return fallback;
 	return pair[1];
 }
+
+// HYPOTHESIS: finds the key/value pair stored under a key of a server entry; the key is first
+// looked up in the shared string table, since pairs hold the interned strings.
+// FUNCTION: STARFLEETOP 0x006cc9a0
+char **fn_006cc9a0(fn_006cc0f0_server *server, char *key)
+{
+	fn_006cc530_record *record = (fn_006cc530_record *)server;
+	char *pair[2];
+	char **found = (char **)fn_006bf750(record->field_10, &key);
+	if (found == 0)
+		return 0;
+	pair[0] = *found;
+	return (char **)fn_006bf750(record->field_0c, pair);
+}
