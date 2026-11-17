@@ -365,3 +365,9 @@ void fn_004d350f( long arg1, long arg2 )
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d353e
+void fn_004d353e( long arg1, long arg2 )
+{
+	g_0092e4a0.fn_004d4728( arg1, arg2 );
+}
