@@ -194,6 +194,9 @@ public:
 	long fn_0053a3bc( int32 param_1 );
 	// HYPOTHESIS: the current speed points (the CurrentSpeedPoints column), read under the lock.
 	double fn_0053a46f();
+	// HYPOTHESIS: sets the hex point without taking the lock; the callee 0x005b69b0 is taken to
+	// be tHexPoint's assignment.
+	void fn_0053a49c( const tHexPoint& point );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

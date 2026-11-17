@@ -543,3 +543,9 @@ double tMetaMapHex::fn_0053a46f()
 	m_bc.Leave();
 	return points;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a49c
+void tMetaMapHex::fn_0053a49c( const tHexPoint& point )
+{
+	m_a8 = point;
+}
