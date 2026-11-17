@@ -862,8 +862,12 @@ fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c48e6()
 {
 	m04.Enter();
 	// HYPOTHESIS: returns the address of the member at offset 0x90, taken under the lock.
-	int value = (int)this;
-	value += 0x90;
+	fn_005c478f_Holder* value = this;
+	value = (fn_005c478f_Holder*)((int)value + 0x90);
 	m04.Leave();
-	return (fn_005c478f_Holder*)value;
+	// MATCH-ONLY: two returns keep the sum in esi before Leave (add esi, 0x90); one return
+	// rematerialises it as lea after the call. The original's real shape is not recovered.
+	if (value)
+		return value;
+	return value;
 }
