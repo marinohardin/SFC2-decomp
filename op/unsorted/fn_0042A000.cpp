@@ -90,6 +90,8 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 	field_84.FUN_005b6a5c( 0, 0 );
 }
 
+#include <map>
+
 // HYPOTHESIS: a flag word at +0x98 tested by bit index; the class is not known yet.
 class fn_0042a403_object
 {
@@ -97,10 +99,14 @@ public:
 	bool FUN_0042a403( int bit );
 	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
 	bool FUN_0042a41a();
+	bool FUN_0042a421( int key0, int key1 );
 
 	byte field_00[0x98];
 	unsigned long field_98;
 	bool field_9c;
+	// HYPOTHESIS: a map from an 8-byte key to a byte flag; the callee 0x0042b1d3 is its find, the
+	// node's value sits at +0x14 and end() is the head pointer at +0xa4. The key type is a guess.
+	std::map< std::pair< int, int >, bool > field_a0;
 };
 
 // FUNCTION: STARFLEETOP 0x0042a403
@@ -113,4 +119,11 @@ bool fn_0042a403_object::FUN_0042a403( int bit )
 bool fn_0042a403_object::FUN_0042a41a()
 {
 	return field_9c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a421
+bool fn_0042a403_object::FUN_0042a421( int key0, int key1 )
+{
+	std::map< std::pair< int, int >, bool >::iterator it = field_a0.find( std::pair< int, int >( key0, key1 ) );
+	return it != field_a0.end() ? (*it).second : false;
 }
