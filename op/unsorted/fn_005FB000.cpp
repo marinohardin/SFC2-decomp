@@ -622,6 +622,21 @@ const std::string* FUN_005fba75( const std::pair<const std::string*, const std::
 	return std::find( strings.first, strings.second, value );
 }
 
+#include "unsorted/fn_0055fe12_value.h"
+
+// MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
+// here; not inline, since nothing in this unit instantiates it.
+namespace std
+{
+void _Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V );
+}
+
+// FUNCTION: STARFLEETOP 0x005fba9d
+void std::_Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V )
+{
+	new ((void *)_P) fn_0055fe12_value( _V );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;

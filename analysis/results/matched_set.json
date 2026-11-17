@@ -9118,6 +9118,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fba9d": {
+   "name": "FUN_005fba9d",
+   "symbol": "?_Construct@std@@YAXPAUfn_0055fe12_value@@ABU2@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 45,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
