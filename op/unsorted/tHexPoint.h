@@ -17,6 +17,10 @@ public:
 	tHexPoint &operator=(const tHexPoint &other);
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
 	void fn_005b6b62(int x, int y);
+	// HYPOTHESIS: the two coordinates in the order tMetaMapHex's SQLFillInsertStream writes
+	// them; the stream takes them as long.
+	long fn_0055f269();
+	long fn_005e8f21();
 	int m_00;
 	int m_04;
 	int m_08;

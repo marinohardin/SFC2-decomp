@@ -96,7 +96,7 @@ struct fn_0053a6cc_map
 		node*	parent;
 		node*	right;
 		int32	first;
-		int32	second;
+		int32u	second;
 		char	color;
 		char	isnil;
 	};
@@ -174,6 +174,7 @@ public:
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
+	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.

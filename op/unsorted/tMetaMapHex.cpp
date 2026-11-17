@@ -243,3 +243,38 @@ void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 
 	guard.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x00539a9e
+void tMetaMapHex::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
+{
+	tOptex::tGuard guard( &m_bc );
+
+	tDatabaseObject::SQLFillInsertStream( SQL );
+
+	*SQL << m_a8.fn_0055f269() << ", " << m_a8.fn_005e8f21() << ", ";
+
+	for( fn_0053a6cc_map::iterator i = m_48.begin(); i != m_48.end(); ++i )
+	{
+		*SQL << (*i).second;
+		*SQL << ", ";
+	}
+
+	*SQL << m_5c << ", " << m_60 << ", " << m_64 << ", " << m_68 << ", " << m_6c << ", ";
+
+	for( fn_0053a73a_map::iterator j = m_70.begin(); j != m_70.end(); ++j )
+	{
+		*SQL << (*j).second;
+		*SQL << ", ";
+	}
+
+	// The original steps the first loop's iterator here, not k (the exe increments its slot).
+	for( fn_0053a73a_map::iterator k = m_84.begin(); k != m_84.end(); ++i )
+	{
+		*SQL << (*k).second;
+		*SQL << ", ";
+	}
+
+	*SQL << m_98 << ", " << m_a0 << " )";
+
+	guard.Leave();
+}

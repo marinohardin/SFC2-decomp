@@ -6121,6 +6121,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00539a9e": {
+   "name": "tMetaMapHex::vfunction6_for_tAllocatedClass",
+   "symbol": "?SQLFillInsertStream@tMetaMapHex@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 484,
+   "score": 6.935,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
