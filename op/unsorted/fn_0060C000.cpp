@@ -297,6 +297,14 @@ public:
     ~C_0060cf03();
 };
 
+// HYPOTHESIS: the class of the vector's elements, whose non-virtual destructor is 0x004729a6;
+// name and members unknown.
+class C_004729a6
+{
+public:
+    ~C_004729a6();
+};
+
 // HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
 // be the class of the global at 0x0090b730, whose callers use 0x0060ca4f..0x0060cac6. The
 // vector's element type is unknown.
@@ -315,12 +323,13 @@ public:
     void fn_0060ca83(int index);
     void fn_0060ca94(int value);
     int fn_0060ca9e();
+    void fn_0060cac6();
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
     char *fn_0060c982(const char *name);
     C_0060cf03 *m_00;
     int m_04;
-    std::vector<int> m_08;
+    std::vector<C_004729a6 *> m_08;
     int m_18;
     int m_1c;
     bool m_20;
@@ -477,4 +486,21 @@ int C_0060c7dc::fn_0060ca9e()
     if (value >= g_0087bfe4[2])
         return (value >= g_0087bfe4[3]) + 2;
     return value >= g_0087bfe4[1];
+}
+
+// HYPOTHESIS: the global at 0x0090b730 is the object of this class that tObject_0090b730.h
+// declares for other units; this function reaches its vector at +0x08 through the global, not
+// through this.
+extern C_0060c7dc g_0090b730;
+
+// HYPOTHESIS: deletes every element of the vector from the last down, erasing each, then erases
+// the whole range.
+// FUNCTION: STARFLEETOP 0x0060cac6
+void C_0060c7dc::fn_0060cac6()
+{
+    while (!g_0090b730.m_08.empty()) {
+        delete g_0090b730.m_08.back();
+        g_0090b730.m_08.erase(g_0090b730.m_08.end() - 1);
+    }
+    g_0090b730.m_08.clear();
 }
