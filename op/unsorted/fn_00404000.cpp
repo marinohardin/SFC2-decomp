@@ -715,3 +715,28 @@ std::ostream& __cdecl fn_00404e8a(std::ostream& os, const std::string& str)
     }
     return os;
 }
+
+// HYPOTHESIS: the library streambuf's sputc: stores into the put area when it has room, else
+// calls the second virtual (overflow). The put pointer sits at +0x20 and the room count at +0x30.
+class fn_00404ece_Streambuf
+{
+public:
+    virtual void fn_vf0();
+    virtual int fn_00404ece_overflow(int c);
+    char pad_04[0x1c];
+    unsigned int* m_ppPut;
+    char pad_24[0x0c];
+    int* m_pRoom;
+    int* fn_00404034();
+    int fn_00404ece(unsigned char c);
+};
+
+// FUNCTION: STARFLEETOP 0x00404ece
+int fn_00404ece_Streambuf::fn_00404ece(unsigned char c)
+{
+    unsigned int put = *m_ppPut;
+    if (put == 0 || put >= *m_pRoom + put)
+        return fn_00404ece_overflow(c);
+    *(unsigned char*)fn_00404034() = c;
+    return c;
+}
