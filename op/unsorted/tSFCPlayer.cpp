@@ -191,7 +191,7 @@ class tSFCPlayer
 		virtual void vfunction37() = 0;
 		virtual void vfunction38() = 0;
 		virtual void vfunction39(int param_1);
-		virtual void vfunction40() = 0;
+		virtual int vfunction40();
 		virtual void vfunction41(int param_1);
 		virtual int vfunction42();
 		virtual void vfunction43(int param_1);
@@ -1014,6 +1014,12 @@ char tSFCPlayer::vfunction36()
 void tSFCPlayer::vfunction39(int param_1)
 {
 	m_84b8 = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0a54
+int tSFCPlayer::vfunction40()
+{
+	return m_84b8;
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
