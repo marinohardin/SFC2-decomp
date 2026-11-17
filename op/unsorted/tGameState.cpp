@@ -2,6 +2,8 @@
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 #include "unsorted/tGameState.h"
 
+#include <string>
+
 // HYPOTHESIS: names; the count of states made so far and the head of the list of all states.
 int g_0090db20;
 tGameState *g_0090db24;
@@ -32,4 +34,13 @@ tGameState::~tGameState()
 		}
 		prev = cur;
 	}
+}
+
+// HYPOTHESIS: a string held at 0x0090db10; this function returns a copy of it by value.
+std::string g_0090db10;
+
+// FUNCTION: STARFLEETOP 0x00469d46
+std::string fn_00469d46()
+{
+	return g_0090db10;
 }
