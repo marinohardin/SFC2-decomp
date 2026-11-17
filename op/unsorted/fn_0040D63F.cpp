@@ -487,9 +487,9 @@ void fn_0040dceb(int size, void* p, tSFCStream& buf)
     }
 }
 
-// FUNCTION: STARFLEETOP 0x0040dd45
 extern "C" int sprintf(char* buffer, const char* format, ...);
 
+// FUNCTION: STARFLEETOP 0x0040dd45
 void fn_0040dd45(char* name, long* value, tSFCStream& buf)
 {
     char text[256];
@@ -498,11 +498,11 @@ void fn_0040dd45(char* name, long* value, tSFCStream& buf)
     buf.fn_0040e744(text);
 }
 
-// FUNCTION: STARFLEETOP 0x0040dd83
 extern "C" char* strcpy(char* dst, const char* src);
 extern "C" char* strcat(char* dst, const char* src);
 extern "C" int sscanf(const char* buffer, const char* format, ...);
 
+// FUNCTION: STARFLEETOP 0x0040dd83
 void fn_0040dd83(char* name, long* value, tSFCStream& buf)
 {
     char format[256];

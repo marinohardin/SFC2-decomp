@@ -49,10 +49,10 @@ bool fn_0040608b(const unsigned char* buf, void* stream, unsigned int count)
     return false;
 }
 
-// FUNCTION: STARFLEETOP 0x004060d8
 const std::locale::facet* fn_0040673f(const std::locale::facet* pf);
 
 // HYPOTHESIS: the original is the library's use_facet instantiation for numpunct<char>.
+// FUNCTION: STARFLEETOP 0x004060d8
 const std::numpunct<char>& fn_004060d8(const std::locale& _L, const std::numpunct<char>*, bool _Cfacet)
 {
     static const std::locale::facet* _Psave = 0;
@@ -107,10 +107,10 @@ int fn_0040619c(_II& _F, _II& _L, size_t _N, const _E* _S)
 }
 template int fn_0040619c<char, std::istreambuf_iterator<char> >(std::istreambuf_iterator<char>&, std::istreambuf_iterator<char>&, size_t, const char*);
 
-// FUNCTION: STARFLEETOP 0x00406355
 const std::locale::facet* fn_0040678d(const std::locale::facet* pf);
 
 // HYPOTHESIS: the library's use_facet instantiation for collate<char>.
+// FUNCTION: STARFLEETOP 0x00406355
 const std::collate<char>& fn_00406355(const std::locale& _L, const std::collate<char>*, bool _Cfacet)
 {
     static const std::locale::facet* _Psave = 0;
@@ -238,7 +238,6 @@ template<> int std::codecvt<char, char, int>::do_length(int&,const char* _F1, co
     return (int)_N;
 }
 
-// FUNCTION: STARFLEETOP 0x004066a3
 // HYPOTHESIS: the base that 0x00402b3a returns from the facet-like object of
 // fn_00402b90_Obj.h; only its destructor is named.
 class fn_00406887_Base
@@ -258,6 +257,7 @@ extern fn_00402b90_Obj* g_00893184;
 void fn_00406887();
 
 // HYPOTHESIS: registers a library-owned facet: remember it, take a reference and arrange its release at exit.
+// FUNCTION: STARFLEETOP 0x004066a3
 fn_00402b90_Obj* fn_004066a3(fn_00402b90_Obj* p)
 {
     std::_Lockit lock;
@@ -267,11 +267,11 @@ fn_00402b90_Obj* fn_004066a3(fn_00402b90_Obj* p)
     return p;
 }
 
-// FUNCTION: STARFLEETOP 0x004066f1
 extern fn_00402b90_Obj* g_00893188;
 void fn_004068d4();
 
 // HYPOTHESIS: the same registration as 0x004066a3, for a second library-owned facet.
+// FUNCTION: STARFLEETOP 0x004066f1
 fn_00402b90_Obj* fn_004066f1(fn_00402b90_Obj* p)
 {
     std::_Lockit lock;
@@ -281,11 +281,11 @@ fn_00402b90_Obj* fn_004066f1(fn_00402b90_Obj* p)
     return p;
 }
 
-// FUNCTION: STARFLEETOP 0x0040673f
 extern fn_00402b90_Obj* g_0089318c;
 void fn_004068e0();
 
 // HYPOTHESIS: the same registration as 0x004066a3, for a third library-owned facet.
+// FUNCTION: STARFLEETOP 0x0040673f
 fn_00402b90_Obj* fn_0040673f(fn_00402b90_Obj* p)
 {
     std::_Lockit lock;
@@ -295,11 +295,11 @@ fn_00402b90_Obj* fn_0040673f(fn_00402b90_Obj* p)
     return p;
 }
 
-// FUNCTION: STARFLEETOP 0x0040678d
 extern fn_00402b90_Obj* g_00893190;
 void fn_004068ec();
 
 // HYPOTHESIS: the same facet registration as 0x004066a3, for a fourth library-owned facet.
+// FUNCTION: STARFLEETOP 0x0040678d
 fn_00402b90_Obj* fn_0040678d(fn_00402b90_Obj* p)
 {
     std::_Lockit lock;
