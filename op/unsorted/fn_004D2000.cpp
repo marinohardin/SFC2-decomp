@@ -134,6 +134,7 @@ namespace std
 	{
 	public:
 		basic_string();
+		inline basic_string(const char* s, char al);
 		~basic_string() { _Tidy(true); }
 		basic_string& assign(const char* s, unsigned int n);
 		const char* c_str() const { return _Ptr != 0 ? _Ptr : _Nullstr(); }
@@ -150,6 +151,14 @@ namespace std
 }
 
 typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_004d2238_string;
+
+// MATCH-ONLY: the original inlined the const char* constructor into its callers.
+inline std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(const char* s, char al)
+{
+	m_al = al;
+	_Tidy(false);
+	assign(s, strlen(s));
+}
 
 // FUNCTION: STARFLEETOP 0x004d2238
 template <>
@@ -511,4 +520,27 @@ bool __stdcall fn_004d269b( int a, int b, char c )
 		}
 	}
 	return p != 0;
+}
+
+// HYPOTHESIS: a map from string to fn_004d2265_holder* (operator[] is 0x004d2add); name unknown.
+class fn_004d26fb_map
+{
+public:
+	void fn_004d26fb(int a, const char* text);
+	fn_004d2265_holder*& fn_004d2add(const fn_004d2238_string& key);
+};
+
+// FUNCTION: STARFLEETOP 0x004d26fb
+void fn_004d26fb_map::fn_004d26fb(int a, const char* text)
+{
+	fn_004d2265_holder* holder = 0;
+	const char* key_text = text;
+	if (a != 0 && key_text != 0)
+	{
+		holder = new fn_004d2265_holder;
+		holder->fn_004d2296(a, text);
+		char allocator;
+		fn_004d2238_string key(text, allocator);
+		fn_004d2add(key) = holder;
+	}
 }
