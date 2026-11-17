@@ -6549,9 +6549,9 @@
    "symbol": "?mGetParentDir@tPath@@QAE?AVtDir@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.505,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061ea20": {
    "name": "tPath::mExist",
