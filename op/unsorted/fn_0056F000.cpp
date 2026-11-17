@@ -239,7 +239,14 @@ bool fn_0056f283_owner::operator()(fn_0056f283_target *target)
 }
 
 // HYPOTHESIS: tShip is a database class; its members are not recovered.
-class tShip : public nDatabase::tDatabaseObject {};
+class tShip : public nDatabase::tDatabaseObject {
+public:
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char tShip_pad[0x434 - 0x48];
+};
 
 // HYPOTHESIS: the result container, likely std::vector<tShip>; its push_back is out of line.
 class fn_0056f2a4_results {
@@ -296,4 +303,43 @@ void fn_0056f2a4_owner::fn_0056f2a4(const nDatabase::tQuery<tShip> &query, fn_00
 			}
 		}
 	}
+}
+
+// HYPOTHESIS: unlocked variant of the database query for a third object type, like 0x0056f19b;
+// the type and its container are not recovered.
+class fn_0056f3e0_results {
+public:
+	void push_back(const tShip &value);
+	tShip &back() { return *(m_last - 1); }
+	void *m_allocator;
+	tShip *m_first;
+	tShip *m_last;
+};
+
+class fn_0056f3e0_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_0056f3e0_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 328
+// FUNCTION: STARFLEETOP 0x0056f3e0
+void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_0056f3e0_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tShip));
+#line 183
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	void **i = objects.begin();
+	for (; i != objects.end(); i++) {
+		tShip *pObject = (tShip *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
 }
