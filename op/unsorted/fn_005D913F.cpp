@@ -432,3 +432,14 @@ void fn_005d92b9_object::fn_005d96ac(node *n)
         operator delete(n);
     }
 }
+
+// HYPOTHESIS: a byte flag and the dword after it, cleared together; owner unknown.
+extern char g_00c38968;
+extern int g_00c3896c;
+
+// FUNCTION: STARFLEETOP 0x005d9750
+void fn_005d9750()
+{
+    g_00c38968 = 0;
+    g_00c3896c = 0;
+}
