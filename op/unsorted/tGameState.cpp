@@ -793,3 +793,15 @@ tGameState *fn_0046a59a()
 		return 0;
 	return (tGameState *)g_0090db44;
 }
+
+// HYPOTHESIS: g_0090db3c points at a structure whose second field (+4) leads to a structure with a value at +8; g_0090db40 is a flag.
+extern int g_0090db3c;
+extern int g_0090db40;
+
+// FUNCTION: STARFLEETOP 0x0046a5ac
+int fn_0046a5ac()
+{
+	if (g_0090db9c == 0 && g_0090db40 != 0)
+		return *(int *)(*(int *)(g_0090db3c + 4) + 8);
+	return 0;
+}
