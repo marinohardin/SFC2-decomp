@@ -368,3 +368,21 @@ char fn_004026ec_Owner::fn_004026ec(fn_004026ec_Name* name, fn_004026ec_Dest* d,
     }
     return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00402763
+void fn_004026ec_Owner::fn_00402763(fn_004026ec_Dest* d, int a)
+{
+    int* p = (int*)d;
+    p[0x398 / 4] = 0;
+    p[0x39c / 4] = 0;
+    p[900 / 4] = 0x3e800000;
+    p[0x620 / 4] = 0x1e;
+    p[0x5d8 / 4] = 100;
+    p[0x628 / 4] = 1;
+    p[0x614 / 4] = 6;
+    p[0x610 / 4] = 6;
+    p[0x380 / 4] = 0;
+    p[0x388 / 4] = 0;
+    p[0x38c / 4] = 0;
+    p[0x10 / 4] = 0x16;
+}
