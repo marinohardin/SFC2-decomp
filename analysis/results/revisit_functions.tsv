@@ -13,7 +13,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f3b40	tThreadPool::~tThreadPool	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
 0x006f3d50	tThreadPool::Shutdown	99.94	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.94%
 0x006f3e50	tThreadPool::ShutdownComplete	99.93	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.93%
-0x0061f2f0	tVolIterator::mFirst	99.95	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.95%
 0x006a4df0	tTexBmp::vfunction3	98.68	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 98.68%
 0x0061f690	tDirIterator::mFirst	99.95	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.95%
 0x006f4be0	tThreadPool::QueueWorkItem	99.95	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.95%
