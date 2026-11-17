@@ -41,6 +41,8 @@ public:
     // HYPOTHESIS: the slots between 117 and 126 are not recovered; vfunction126 is the
     // analysis's name. Stores param_1 into a member.
     virtual void vfunction126(int param_1);
+    // vftable slot 127; returns the member vfunction126 sets.
+    virtual int vfunction127();
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
