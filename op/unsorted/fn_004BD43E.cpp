@@ -224,5 +224,6 @@ public:
 c_0091f928_Object g_0091f928;
 
 // HYPOTHESIS: a std::string global at 0x0091f910 holding the text "Unknown_Failure".
+// FUNCTION: STARFLEETOP 0x004bdaf2
 // FUNCTION: STARFLEETOP 0x004bdabf
 std::string g_0091f910 = "Unknown_Failure";
