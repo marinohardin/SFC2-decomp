@@ -881,3 +881,25 @@ void fn_0053a6cc_map::tree::fn_0053ab9a( node* root )
 		operator delete( root );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053abca
+fn_0053a73a_map::node* fn_0053a73a_map::tree::fn_0053abca( node* root, node* parent )
+{
+	node* result = m_nil;
+	if( !root->isnil )
+	{
+		char color = root->color;
+		node* y = (node*)operator new( sizeof( node ) );
+		y->isnil = 0;
+		y->parent = parent;
+		y->color = color;
+		new( (void*)&y->first ) value_type( *(value_type*)&root->first );
+		y->left = m_nil;
+		y->right = m_nil;
+		if( result == m_nil )
+			result = y;
+		y->left = fn_0053abca( root->left, y );
+		y->right = fn_0053abca( root->right, y );
+	}
+	return result;
+}
