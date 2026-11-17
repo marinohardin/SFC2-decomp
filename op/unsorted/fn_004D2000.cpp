@@ -124,6 +124,8 @@ extern "C" unsigned int strlen(const char*);
 
 // HYPOTHESIS: the callees are basic_string::_Tidy (0x005da20a) and basic_string::assign
 // (0x0040428e); a reduced stand-in of the standard class keeps this unit free of <string>.
+class fn_004d2319_holder;
+
 namespace std
 {
 	template <class T> struct char_traits;
@@ -138,8 +140,9 @@ namespace std
 	private:
 		static const char* _Nullstr() { static const char _C = char(); return &_C; }
 		void _Tidy(bool built);
-		char m_al;
+		friend class ::fn_004d2319_holder;
 	public:
+		char m_al;
 		char* _Ptr;
 		unsigned int m_len;
 	};
@@ -206,4 +209,29 @@ void fn_004d2265_holder::fn_004d2296(int dst, const char* text)
 		const char* p = m_str.c_str();
 		g_009254f8.fn_004cb4a7(dst, p);
 	}
+}
+
+// HYPOTHESIS: a string-like holder whose constructor zeroes its two words, then does what
+// basic_string's constructor does; the callees are the same _Tidy and assign.
+// HYPOTHESIS: the string member's constructor was inlined here (m_al, _Tidy, assign); the
+// member is kept as raw storage so the out-of-line constructor is not called.
+class fn_004d2319_holder
+{
+public:
+	fn_004d2319_holder();
+	int m_a;
+	int m_b;
+	char m_str[12];
+};
+
+// FUNCTION: STARFLEETOP 0x004d2319
+fn_004d2319_holder::fn_004d2319_holder()
+{
+	m_a = 0;
+	m_b = 0;
+	fn_004d2238_string* s = (fn_004d2238_string*)m_str;
+	char allocator;
+	s->m_al = allocator;
+	s->_Tidy(false);
+	s->assign("", strlen(""));
 }
