@@ -448,7 +448,10 @@ public:
     void fn_005f7aeb();
     void fn_005d97c1();
 private:
-    char m_00[0x10];
+    char m_00[0x4];
+    void **m_items;
+    unsigned int m_count;
+    char m_0c[0x4];
     unsigned int m_size;
 };
 
@@ -481,4 +484,14 @@ fn_005d97a8_object::~fn_005d97a8_object()
     while (m_size != 0)
         fn_005f7aeb();
     fn_005d97c1();
+}
+
+// FUNCTION: STARFLEETOP 0x005d97c1
+void fn_005d97a8_object::fn_005d97c1()
+{
+    for (unsigned int i = m_count; i > 0; )
+        operator delete(m_items[--i]);
+    operator delete(m_items);
+    m_count = 0;
+    m_items = 0;
 }
