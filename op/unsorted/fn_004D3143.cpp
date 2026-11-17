@@ -231,6 +231,7 @@ public:
 	virtual void vfunction17();
 	virtual void vfunction18();
 	virtual long vfunction19();
+	virtual void vfunction20( long arg1 );
 };
 
 // FUNCTION: STARFLEETOP 0x004d338b
@@ -240,6 +241,19 @@ long fn_004d338b( long arg1 )
 	long result = -1;
 	if ( obj != 0 )
 	{
+		result = obj->vfunction19();
+	}
+	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004d33a8
+long fn_004d33a8( long arg1, long arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	long result = -1;
+	if ( obj != 0 )
+	{
+		obj->vfunction20( arg2 );
 		result = obj->vfunction19();
 	}
 	return result;
