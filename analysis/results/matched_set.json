@@ -4902,9 +4902,9 @@
    "symbol": "?vfunction3@tState_Campaign@@UAEXXZ",
    "unit": "unsorted/tCampaignState.cpp",
    "size": 410,
-   "score": 95.763,
+   "score": 97.405,
    "exact": false,
-   "recorded": "2026-11-10"
+   "recorded": "2026-11-17"
   },
   "0x0045dbda": {
    "name": "tState_Campaign::vfunction6",
