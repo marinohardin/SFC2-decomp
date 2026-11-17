@@ -2017,6 +2017,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00427db2": {
+   "name": "tStoresState::tStoresState",
+   "symbol": "??0tObject_00427db2@@QAE@ABV0@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 512,
+   "score": 10.952,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
