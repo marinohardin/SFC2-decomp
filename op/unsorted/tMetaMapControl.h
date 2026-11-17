@@ -109,6 +109,7 @@ public:
 	// HYPOTHESIS: looks up the image named by the string, the int selecting one of several.
 	c_tScrollBar_FieldA8 *fn_005e3f82( const std::string &name, int index );
 	void fn_005e41ec();
+	void fn_005e4211();
 	void fn_005e4455();
 	// HYPOTHESIS: draws the map inside the area given; the slot of tObjBase::vfunction8.
 	void vfunction8( const tRect *area );
