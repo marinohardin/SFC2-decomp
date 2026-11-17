@@ -678,3 +678,13 @@ template<> tInput& operator>>( tInput& input, std::vector< tServCharacter::tShip
 }
 
 };
+
+// HYPOTHESIS: the key of fn_0042c360_Value is a pair of ints compared as std::pair's operator<
+// (first, then second).
+// FUNCTION: STARFLEETOP 0x0042c8f7
+bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right)
+{
+	const int* x = (const int*)left.m00_data;
+	const int* y = (const int*)right.m00_data;
+	return x[0] < y[0] || !(y[0] < x[0]) && x[1] < y[1];
+}
