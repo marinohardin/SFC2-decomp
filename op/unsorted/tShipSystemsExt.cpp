@@ -97,6 +97,7 @@ public:
     virtual int vfunction105();
     virtual int vfunction106();
     virtual void vfunction107( float param_1 );
+    virtual int vfunction108();
 
     tIndividualShipSystemList m04;
     char m584[0x128];
@@ -756,4 +757,11 @@ int tShipSystemsExt::vfunction106()
     if( p != 0 )
         return *(int*)( p + 0x70 );
     return 0;
+}
+
+// HYPOTHESIS: the getter for m6ac, the constructor's argument.
+// FUNCTION: STARFLEETOP 0x00448b07
+int tShipSystemsExt::vfunction108()
+{
+    return m6ac;
 }
