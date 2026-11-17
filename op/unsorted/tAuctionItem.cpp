@@ -260,6 +260,12 @@ const nDatabase::tID& tAuctionItem::fn_005455b7() const
 	return fID_5c;
 }
 
+// FUNCTION: STARFLEETOP 0x005455bb
+const nDatabase::tID& tAuctionItem::fn_005455bb() const
+{
+	return fID_8c;
+}
+
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
 extern double g_007b0c20;
 extern double g_007b0c28;
