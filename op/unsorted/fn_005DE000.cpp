@@ -353,6 +353,8 @@ template<>
 tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de1b8_Pred _P );
 template<>
 tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory* _Piv, fn_005de0cf_Pred _P );
+template<>
+tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory* _Piv, fn_005de1b8_Pred _P );
 // FUNCTION: STARFLEETOP 0x005de905
 template<>
 void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
@@ -475,4 +477,16 @@ tNewsStory* _Median( tNewsStory* _X, tNewsStory* _Y, tNewsStory* _Z, fn_005de1b8
 		return (_P(_Y, _Z) ? _Y : _P(_X, _Z) ? _Z : _X);
 	else
 		return (_P(_X, _Z) ? _X : _P(_Y, _Z) ? _Z : _Y); }
+// HYPOTHESIS: the _Unguarded_partition instance _Sort at 0x005deb34 calls.
+// FUNCTION: STARFLEETOP 0x005dee5a
+template<>
+tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory* _Piv, fn_005de1b8_Pred _P )
+	{for (; ; ++_F)
+		{for (; _P(*_F, _Piv); ++_F)
+			;
+		for (; _P(_Piv, *--_L); )
+			;
+		if (_L <= _F)
+			return (_F);
+		iter_swap(_F, _L); }}
 }
