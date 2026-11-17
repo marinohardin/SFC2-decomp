@@ -139,7 +139,7 @@ public:
 	void fn_0053f461();
 	void fn_0053f4ea();
 	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
-	void fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last );
+	fn_0054340c_owner *fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last );
 	void fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_owner *first, const fn_0054340c_owner *last );
 	// MATCH-ONLY: the original read the size through an inlined accessor.
 	unsigned int size() const
@@ -596,4 +596,16 @@ void fn_0053f522_owner::fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_o
 		std::copy( first, last, pos );
 		m_08 += m;
 	}
+}
+
+// HYPOTHESIS: same vector-like class; this member is its range erase: the elements after
+// the range are assigned down (0x00541f81 as the element's assignment), the old tail is
+// destroyed and the last moves back.
+// FUNCTION: STARFLEETOP 0x0053fd7e
+fn_0054340c_owner *fn_0053f522_owner::fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last )
+{
+	fn_0054340c_owner *s = std::copy( last, m_08, first );
+	_Destroy( s, m_08 );
+	m_08 = s;
+	return first;
 }
