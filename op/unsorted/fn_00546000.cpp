@@ -257,3 +257,20 @@ std::string c_00546296::fn_00546296() const
 {
     return field_6c;
 }
+
+// HYPOTHESIS: the object behind 0x005462cc keeps a dword at +0x7c, just past the std::string
+// at +0x6c of 0x00546296's object; nothing yet shows they are one class.
+class c_005462cc
+{
+public:
+    int fn_005462cc();
+
+    char field_0[0x7c];
+    int field_7c;
+};
+
+// FUNCTION: STARFLEETOP 0x005462cc
+int c_005462cc::fn_005462cc()
+{
+    return field_7c;
+}
