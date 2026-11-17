@@ -544,3 +544,18 @@ void fn_0042c69f_Iterator::fn_0042c69f()
 		m00_node = p;
 	}
 }
+
+// The game's out-of-line copy of the SDK's inline destructor for the wrapper whose Delete is
+// 0x0042cc05 (the member at +0xb4 of tClientCharacter).
+// HYPOTHESIS: the wrapped type; the element type of the vector is not recovered.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit; the SDK
+// defines it once in the header. The original stores no -1 state before the member's
+// ~tOptex; this build does.
+#include <vector>
+#include "Common/Thread/SingleAccessWrapper.h"
+
+// FUNCTION: STARFLEETOP 0x0042c6da
+template<> tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper()
+{
+	Delete();
+}
