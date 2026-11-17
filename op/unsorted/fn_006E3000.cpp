@@ -225,3 +225,10 @@ void tObject_006e3240::FUN_006e3370(unsigned long param_1)
 	FUN_006e3320(param_1);
 	m0c = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x006e3390
+void tObject_006e3240::FUN_006e3390(int param_1)
+{
+	FUN_006e32f0(param_1);
+	m0c += param_1;
+}
