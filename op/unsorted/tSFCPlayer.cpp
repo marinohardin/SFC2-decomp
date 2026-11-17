@@ -1286,19 +1286,9 @@ bool tSFCPlayer::vfunction72(unsigned param_1, int param_2)
 // FUNCTION: STARFLEETOP 0x004d104f
 void tSFCPlayer::vfunction73()
 {
-	int *row = &m_8368[3][0x13];
-	for (int i = 4; i > 0; i--)
-	{
-		int *p = row;
-		int j = 0x14;
-		do
-		{
-			*p = 0;
-			j--;
-			p--;
-		} while (j > 0);
-		row -= 0x14;
-	}
+	for (unsigned ievent = 4; ievent-- > 0; )
+		for (unsigned iclass = 0x14; iclass-- > 0; )
+			m_8368[ievent][iclass] = 0;
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
