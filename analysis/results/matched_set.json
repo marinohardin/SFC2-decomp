@@ -2548,6 +2548,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004363b3": {
+   "name": "tSafeArray<tClassTrackingInfo>::scalar_deleting_destructor",
+   "symbol": "??_G?$tSafeArray@VtClassTrackingInfo@@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 34,
+   "score": 85.833,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

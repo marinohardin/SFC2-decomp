@@ -212,6 +212,7 @@ tCountMap<tPath,twPath,std::less<tPath> >::tCountMap()
 // HYPOTHESIS: the generic destructor is defined only inside op/Tiger/tAudioFile.cpp, so this unit
 // writes the game's instance as a specialisation of the same body. The original tail-jumps to an
 // out-of-line copy of mDeleteAll placed after this function.
+// FUNCTION: STARFLEETOP 0x004363b3
 // FUNCTION: STARFLEETOP 0x004363a8
 template <>
 tSafeArray<tClassTrackingInfo>::~tSafeArray()
