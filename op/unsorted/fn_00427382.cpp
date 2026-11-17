@@ -489,14 +489,36 @@ public:
 	tArray_0x18c		field_0x1cc;
 };
 
-// HYPOTHESIS: the class named in RTTI; 0x124 bytes, copied out of line (0x00427fb2).
-class tOfficerList
+// HYPOTHESIS: the class named in RTTI, the element of tOfficerList's array; 0x28 bytes, copied
+// out of line (0x004281ac).
+class tOfficer
+{
+public:
+	tOfficer( const tOfficer& source );
+	virtual	~tOfficer();
+
+	int8u	field_0x4[0x24];
+};
+
+// HYPOTHESIS: the class named in RTTI (vtable 0x007982d0); 0x124 bytes: the streamable base
+// and seven officers, read from its copy constructor at 0x00427fb2.
+class tOfficerList : public nDataStore::tStreamable
 {
 public:
 	tOfficerList( const tOfficerList& source );
 	virtual	~tOfficerList();
 
-	int8u	field_0x4[0x120];
+	virtual	void StreamOut( nDataStore::tOutput& output ) const;
+	virtual	void StreamIn( nDataStore::tInput& input );
+
+	// MATCH-ONLY: the array is wrapped so that the written-out copy constructor can copy it
+	// as the implicit one does.
+	struct tArray_0xc
+	{
+		tOfficer	v[7];
+	};
+
+	tArray_0xc	field_0xc;
 };
 
 // HYPOTHESIS: the class named in RTTI (vtable 0x00798264), the element of the vector at 0x3c
@@ -666,5 +688,15 @@ tObject_00427db2::tObject_00427db2( const tObject_00427db2& source )
 	  field_0x186( source.field_0x186 ),
 	  field_0x18c( source.field_0x18c ),
 	  field_0x1cc( source.field_0x1cc )
+{
+}
+
+// HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out. Left implicit,
+// VC6 builds the original's bytes (the array copied in a loop inside this function), but that
+// copy has no source line to claim; the wrapper's copy here is called out of line instead.
+// FUNCTION: STARFLEETOP 0x00427fb2
+tOfficerList::tOfficerList( const tOfficerList& source )
+	: nDataStore::tStreamable( source ),
+	  field_0xc( source.field_0xc )
 {
 }

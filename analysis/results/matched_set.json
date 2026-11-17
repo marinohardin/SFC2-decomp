@@ -2026,6 +2026,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00427fb2": {
+   "name": "tOfficerList::tOfficerList",
+   "symbol": "??0tOfficerList@@QAE@ABV0@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 104,
+   "score": 1.38,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
