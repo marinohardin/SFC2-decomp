@@ -2,6 +2,9 @@
 // Profile:   game-release (harness/units.json)
 
 #include "unsorted/tListBox_Base.h"
+#include "unsorted/tListBox_News.h"
+
+#include <string>
 
 // FUNCTION: STARFLEETOP 0x004bd443
 int tListBox_Base::fn_004bd443( tString *text, int width )
@@ -27,4 +30,31 @@ int tListBox_Base::fn_004bd443( tString *text, int width )
 			i -= n;
 	}
 	return i;
+}
+
+// HYPOTHESIS: a global std::string; 0x004bd534 reads its pointer at 0x0091f8d4.
+extern std::string g_0091f8d0;
+
+// HYPOTHESIS: looks up what a name identifies (0x00675ec0 follows tCastMgr's constructor).
+int fn_00675ec0( const tString &name );
+
+// HYPOTHESIS: the object at 0x00c690d0; 0x00674750 returns the object of an id.
+class c_00c690d0_Object
+{
+public:
+	tObjBase *fn_00674750( int id );
+};
+
+extern c_00c690d0_Object *g_p00c690d0;
+
+// FUNCTION: STARFLEETOP 0x004bd534
+void fn_004bd534( void )
+{
+	int id = fn_00675ec0( tString( g_0091f8d0.c_str() ) );
+	if ( id )
+	{
+		tListBox_News_Session *list = dynamic_cast< tListBox_News_Session * >( g_p00c690d0 ? g_p00c690d0->fn_00674750( id ) : 0 );
+		if ( list )
+			list->vfunction66();
+	}
 }

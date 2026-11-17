@@ -4573,6 +4573,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x004bd534": {
+   "name": "FUN_004bd534",
+   "symbol": "?fn_004bd534@@YAXXZ",
+   "unit": "unsorted/fn_004BD43E.cpp",
+   "size": 136,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004c265f": {
    "name": "tFleetEntry::tFleetEntry",
    "symbol": "??0tFleetEntry@@QAE@XZ",
