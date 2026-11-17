@@ -6499,6 +6499,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d3951": {
+   "name": "FUN_004d3951",
+   "symbol": "?fn_004d3951@fn_004d38a5_list@@QAEXPAPAH@Z",
+   "unit": "unsorted/fn_004D3143.cpp",
+   "size": 56,
+   "score": 99.583,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",

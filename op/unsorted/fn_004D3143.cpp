@@ -745,6 +745,23 @@ fn_004d38a5_list::iterator fn_004d38a5_list::fn_004d38dd( iterator first, iterat
 	return first;
 }
 
+// FUNCTION: STARFLEETOP 0x004d3951
+void fn_004d38a5_list::fn_004d3951( int** node )
+{
+	int** next = node;
+	if ( node != (int**) m8 )
+	{
+		do
+		{
+			fn_004d3951( (int**) next[2] );
+			next = (int**) *next;
+			( (tString*) ( node + 3 ) )->tString::~tString();
+			::operator delete( node );
+			node = next;
+		} while ( next != (int**) m8 );
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x004d38a5
 void fn_004d38a5_list::fn_004d38a5()
 {
