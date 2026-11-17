@@ -822,3 +822,13 @@ fn_0053a73a_map::iterator fn_0053a73a_map::tree::erase( iterator first, iterator
 		return iterator( m_head->left );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053aa7a
+fn_0053a73a_map::iterator fn_0053a73a_map::find( const int32& key )
+{
+	// MATCH-ONLY: view the container as the library's map< long, long >, whose out-of-line
+	// lower bound 0x004793a8 the exe calls.
+	std::map< long, long >::iterator lb = ( (std::map< long, long > *)this )->lower_bound( key );
+	iterator p( (node *)lb._Mynode() );
+	return ( p.m_node == m_tree.m_head || key < p.m_node->first ? end() : p );
+}
