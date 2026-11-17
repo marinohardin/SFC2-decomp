@@ -1220,3 +1220,13 @@ float tShipSystemsExt::vfunction110( int param_1, int param_2 )
 	}
 	return sensors->fn_0043ed38( param_1, param_2 );
 }
+
+// FUNCTION: STARFLEETOP 0x0044cf69
+void tShipSystemsExt::vfunction111( int param_1 )
+{
+	tSensorGroupSystem* sensors = (tSensorGroupSystem*)vfunction85();
+	if ( sensors != 0 )
+	{
+		sensors->fn_0043eca6( param_1 );
+	}
+}
