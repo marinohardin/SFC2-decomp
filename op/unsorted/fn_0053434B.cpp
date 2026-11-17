@@ -274,6 +274,10 @@ public:
     long field_28;
     std::vector< fn_00534461_entry* > field_2c;
     std::vector< fn_00534461_entry* > field_3c;
+    // HYPOTHESIS: 0x00534950 allocates 0x54 bytes for this object; the last eight are not
+    // touched by the functions known so far.
+    long field_4c;
+    long field_50;
 };
 
 // FUNCTION: STARFLEETOP 0x005346f9
@@ -387,4 +391,40 @@ void fn_005346f9_object::fn_00534903()
     i = field_3c.size();
     while (i--)
         ((fn_00534855_entry*)field_3c[i])->field_04 = 0;
+}
+
+// HYPOTHESIS: a 12-byte entry whose constructor is 0x00534ac1; its members are not known.
+class fn_00534ac1_entry
+{
+public:
+    fn_00534ac1_entry();
+
+    long field_00;
+    long field_04;
+    long field_08;
+};
+
+// HYPOTHESIS: an object holding a tString, 4800 12-byte entries and the owned
+// fn_005344a3_object and fn_005346f9_object instances, each given its own index; the owning
+// class is not known.
+class fn_00534950_object
+{
+public:
+    fn_00534950_object();
+
+    tString field_00;
+    fn_00534ac1_entry field_28[4800];
+    fn_005344a3_object* field_e128[25];
+    fn_005346f9_object* field_e18c[10];
+};
+
+// FUNCTION: STARFLEETOP 0x00534950
+fn_00534950_object::fn_00534950_object()
+{
+    int n = 25;
+    while (n--)
+        field_e128[n] = new fn_005344a3_object(n);
+    n = 10;
+    while (n--)
+        field_e18c[n] = new fn_005346f9_object(n);
 }
