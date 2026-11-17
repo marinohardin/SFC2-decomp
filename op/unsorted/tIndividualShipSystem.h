@@ -354,6 +354,8 @@ public:
     // vftable slot 22; saves or loads the repair fields (body at 0x0043d8b4).
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
     virtual float vfunction87();
+    // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
+    virtual void vfunction92(int param_1);
     // vftable slot 93 (the compiler calls it directly inside a constructor).
     virtual void vfunction94(int param_1, int param_2);
 
