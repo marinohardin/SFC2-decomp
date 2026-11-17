@@ -28,9 +28,14 @@ std::auto_ptr<C_00c3a7c0> g_00c3a7c0;
 class C_00c3a80c
 {
 public:
+    C_00c3a80c();
     ~C_00c3a80c();
     void fn_0060c68a(int entry);
     void fn_0060c720(tString &text);
+    char m_00[0x14];
+    // HYPOTHESIS: the links of the list headed at 0x00c3a810.
+    C_00c3a80c *m_14;
+    C_00c3a80c *m_18;
 };
 
 extern C_00c3a80c *g_00c3a80c;
@@ -103,4 +108,16 @@ void fn_0060c3fa()
     while ((entry = g_00c3a810) != 0)
         delete entry;
     g_00c3a80c = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0060c41e
+// HYPOTHESIS: creates a new object, makes it current and pushes it on the list at 0x00c3a810.
+void fn_0060c41e()
+{
+    g_00c3a80c = new C_00c3a80c;
+    g_00c3a80c->m_14 = g_00c3a810;
+    g_00c3a80c->m_18 = 0;
+    if (g_00c3a810)
+        g_00c3a810->m_18 = g_00c3a80c;
+    g_00c3a810 = g_00c3a80c;
 }
