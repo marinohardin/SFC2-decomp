@@ -740,3 +740,42 @@ int fn_00404ece_Streambuf::fn_00404ece(unsigned char c)
     *(unsigned char*)fn_00404034() = c;
     return c;
 }
+
+// FUNCTION: STARFLEETOP 0x00404f00
+// HYPOTHESIS: the library's operator>>(istream&, string&), written as a plain function.
+std::istream& __cdecl fn_00404f00(std::istream& _I, std::string& _X)
+{
+    using namespace std;
+    typedef std::ctype<char> _Ctype;
+    std::ios_base::iostate _St = std::ios_base::goodbit;
+    bool _Chg = false;
+    std::string::size_type _N;
+    _X.erase(0, (std::string::size_type)-1);
+    if (_I.ipfx(false))
+    {
+        _TRY_IO_BEGIN
+        const _Ctype& _Fac = std::use_facet(_I.getloc(), (_Ctype *)0, true);
+        _N = 0 <_I.width() && _I.width() < _X.max_size()
+            ? _I.width() : _X.max_size();
+        int _C = _I.rdbuf()->sgetc();
+        for (; 0 < _N; _C = _I.rdbuf()->snextc(), --_N)
+            if (_C == EOF)
+            {
+                _St |= std::ios_base::eofbit;
+                break;
+            }
+            else if (_Fac.is(_Ctype::space, (char)_C))
+                break;
+            else
+            {
+                _X.append(1, (char)_C);
+                _Chg = true;
+            }
+        _CATCH_IO_(_I)
+    }
+    _I.width(0);
+    if (!_Chg)
+        _St |= std::ios_base::failbit;
+    _I.setstate(_St);
+    return _I;
+}
