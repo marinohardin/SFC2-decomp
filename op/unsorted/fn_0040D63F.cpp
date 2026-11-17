@@ -399,3 +399,11 @@ void fn_0040dbf8(double* src, fn_0040d63f_Buf& buf)
     float f = (float)*src;
     fn_0040dac7((int*)&f, buf);
 }
+
+// FUNCTION: STARFLEETOP 0x0040dc13
+void fn_0040dc13(double* dst, fn_0040d63f_Buf& buf)
+{
+    float f;
+    fn_0040dae4((int*)&f, buf);
+    *dst = (double)f;
+}
