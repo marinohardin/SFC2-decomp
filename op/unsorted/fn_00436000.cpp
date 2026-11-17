@@ -190,3 +190,11 @@ tCountMap<tVolume,twVolume,std::less<tVolume> >::tCountMap()
 	fHead = 0;
 	fTail = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00436386
+template <>
+tCountMap<tDir,twDir,std::less<tDir> >::tCountMap()
+{
+	fHead = 0;
+	fTail = 0;
+}

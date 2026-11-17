@@ -2521,6 +2521,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436386": {
+   "name": "tCountMap<tDir,twDir,std::less<tDir>_>::tCountMap<tDir,twDir,std::less<tDir>_>",
+   "symbol": "??0?$tCountMap@VtDir@@VtwDir@@U?$less@VtDir@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
