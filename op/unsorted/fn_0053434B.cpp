@@ -132,6 +132,7 @@ public:
     void fn_00534622(fn_0053462c_entry* value);
     void fn_0053462c(long index);
     tString& fn_00534647(long index);
+    long fn_00534690(long index);
 
     tString field_00;
     long field_28;
@@ -218,4 +219,10 @@ tString& fn_005344a3_object::fn_00534647(long index)
             return ((fn_005343b1_object*)this)->fn_005343b1("RaceRanks", field_7c[index + i].field_04).field_00;
     }
     return g_00c2f3f8;
+}
+
+// FUNCTION: STARFLEETOP 0x00534690
+long fn_005344a3_object::fn_00534690(long index)
+{
+    return field_7c[index].field_00;
 }
