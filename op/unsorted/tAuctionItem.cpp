@@ -25,7 +25,6 @@ public:
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
 	virtual const char* SQLFieldNames() const;
-
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
@@ -42,6 +41,7 @@ public:
 	const nDatabase::tID& fn_005455bb() const;
 	int32u fn_005455c2() const;
 	void fn_005455c9( int32u value );
+	void fn_005455d6( int32u value );
 	void fn_005455e3( int32u value );
 	void fn_005455f0( const nDatabase::tID& id );
 	void fn_00420f2f( int value );
@@ -276,6 +276,12 @@ int32u tAuctionItem::fn_005455c2() const
 void tAuctionItem::fn_005455c9( int32u value )
 {
 	fInt_80 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x005455d6
+void tAuctionItem::fn_005455d6( int32u value )
+{
+	fInt_84 = value;
 }
 
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
