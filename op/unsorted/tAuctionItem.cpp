@@ -38,6 +38,7 @@ public:
 	bool fn_00545401() const;
 	void fn_00545405( bool value );
 	bool fn_00545560( int arg );
+	std::string fn_00545581() const;
 	int32u fn_004b94dc() const;
 	const nDatabase::tID& fn_005455bb() const;
 	int32u fn_005455c2() const;
@@ -245,6 +246,12 @@ int32u tAuctionItem::fn_00545451( int arg1, const nDatabase::tID& bidder )
 bool tAuctionItem::fn_00545560( int arg )
 {
 	return fn_00545401() ? arg >= fInt_84 : 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00545581
+std::string tAuctionItem::fn_00545581() const
+{
+	return fString_4c;
 }
 
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
