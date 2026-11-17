@@ -32,6 +32,16 @@ public:
 	long m_00;
 };
 
+// HYPOTHESIS: the class of the member at 0x6c of the owner below is not known; it has
+// a member function at 0x0053f522 taking two dwords. The names are placeholders.
+class fn_0053f522_owner
+{
+public:
+	void fn_0053f522( long a, long b );
+
+	long m_00;
+};
+
 // HYPOTHESIS: the type of the argument at 0x0053f2a2 is not known; only its dwords at
 // 4 and 8 are read. The names are placeholders.
 struct fn_0053f2a2_arg
@@ -48,20 +58,21 @@ class fn_0053f25c_owner
 public:
 	fn_0053f4c6_owner *fn_0053f25c();
 	char fn_0053f260();
-	char *fn_0053f264();
+	fn_0053f522_owner *fn_0053f264();
 	char *fn_0053f268();
 	long fn_0053f26c();
 	long fn_0053f273();
 	long fn_0053f27a();
 	void fn_0053f2a2( const fn_0053f2a2_arg &arg );
 	void fn_0053f2b7( char value );
+	void fn_0053f2c1( const fn_0053f2a2_arg &arg );
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
 	char m_5c[0x0c];
 	char m_68;
 	char m_69[3];
-	char m_6c[4];
+	fn_0053f522_owner m_6c;
 	char m_70[0x0c];
 	char m_7c[4];
 	char m_80[0x0c];
@@ -83,11 +94,11 @@ char fn_0053f25c_owner::fn_0053f260()
 	return m_68;
 }
 
-// HYPOTHESIS: same owner; returns the address of a member at 0x6c of unknown type.
+// HYPOTHESIS: same owner; returns the address of the member at 0x6c.
 // FUNCTION: STARFLEETOP 0x0053f264
-char *fn_0053f25c_owner::fn_0053f264()
+fn_0053f522_owner *fn_0053f25c_owner::fn_0053f264()
 {
-	return m_6c;
+	return &m_6c;
 }
 
 // HYPOTHESIS: same owner; returns the address of a member at 0x7c of unknown type.
@@ -138,4 +149,11 @@ void fn_0053f25c_owner::fn_0053f2a2( const fn_0053f2a2_arg &arg )
 void fn_0053f25c_owner::fn_0053f2b7( char value )
 {
 	m_68 = value;
+}
+
+// HYPOTHESIS: same owner; forwards two dwords of the argument to the member at 0x6c.
+// FUNCTION: STARFLEETOP 0x0053f2c1
+void fn_0053f25c_owner::fn_0053f2c1( const fn_0053f2a2_arg &arg )
+{
+	m_6c.fn_0053f522( arg.m_04, arg.m_08 );
 }
