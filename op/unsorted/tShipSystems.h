@@ -166,7 +166,7 @@ public:
     virtual int vfunction146(int, int) = 0;
     virtual tIndividualShipSystemList* vfunction147() = 0;
     virtual void vfunction148() = 0;
-    virtual void vfunction149() = 0;
+    virtual int vfunction149( int param_1 ) = 0;
     virtual void vfunction150() = 0;
     virtual void vfunction151() = 0;
     virtual int* vfunction152( int* param_1 ) = 0;

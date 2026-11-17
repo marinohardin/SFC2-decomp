@@ -814,3 +814,12 @@ tIndividualShipSystemList* tShipSystemsExt::vfunction171()
 	static fn_0040ce21_type marker("Ask Beck!");
 	return &m04;
 }
+
+// HYPOTHESIS: the block at m584 is a table of 0x4a dwords indexed by slot.
+// FUNCTION: STARFLEETOP 0x0044c984
+int tShipSystemsExt::vfunction149( int param_1 )
+{
+	if ( param_1 < 0 || param_1 >= 0x4a )
+		return 0;
+	return ( (int*)m584 )[param_1];
+}
