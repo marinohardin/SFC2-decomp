@@ -101,6 +101,7 @@ public:
 	fn_0042b004_map fn_00543149();
 	tHexPoint fn_005434b1() const;
 	int fn_005434cf();
+	fn_005b6a5c_owner *fn_005434d6();
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -379,4 +380,10 @@ tHexPoint fn_005430ad_owner::fn_005434b1() const
 int fn_005430ad_owner::fn_005434cf()
 {
 	return m148;
+}
+
+// FUNCTION: STARFLEETOP 0x005434d6
+fn_005b6a5c_owner *fn_005430ad_owner::fn_005434d6()
+{
+	return &m14c;
 }
