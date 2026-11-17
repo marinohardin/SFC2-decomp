@@ -475,6 +475,8 @@ struct fn_0060ac82_tree
 					_Ptr = _P; }
 			return (*this); }
 		iterator operator++(int) { iterator _Tmp = *this; ++*this; return (_Tmp); }
+		bool operator==(const iterator& _X) const { return (_Ptr == _X._Ptr); }
+		bool operator!=(const iterator& _X) const { return (!(*this == _X)); }
 		node *_Ptr;
 	};
 
@@ -495,6 +497,7 @@ class tObject_006e36a0
 {
 public:
 	fn_0060ac82_tree::iterator FUN_006e36a0(fn_0060ac82_tree::iterator param_1);
+	fn_0060ac82_tree::iterator FUN_006e3790(fn_0060ac82_tree::iterator param_1, fn_0060ac82_tree::iterator param_2);
 
 	fn_0060ac82_tree mTimers;
 	fn_005d9441_tree m14;
@@ -521,4 +524,25 @@ std::list<tObject_005d6a66>::iterator tObject_006e3640::FUN_006e3750(std::list<t
 {
 	mList.erase(param_1++);
 	return param_1;
+}
+
+// HYPOTHESIS: erase(first, last) of the timer table, with FUN_006e36a0's body
+// written out for each step.
+// FUNCTION: STARFLEETOP 0x006e3790
+fn_0060ac82_tree::iterator tObject_006e36a0::FUN_006e3790(fn_0060ac82_tree::iterator param_1, fn_0060ac82_tree::iterator param_2)
+{
+	while (param_1 != param_2)
+	{
+		// MATCH-ONLY: the original keeps &m14 in a register across the loop.
+		fn_005d9441_tree* tree = &m14;
+		fn_0060ac82_tree::iterator it = param_1;
+		tObject_006dbc40* entry = (*it).second;
+		mTimers.FUN_0060ac82(it++);
+		fn_005d9441_tree::iterator where = entry->m04;
+		tree->FUN_005d9441(where);
+		entry->FUN_006dbc40();
+		delete entry;
+		param_1 = it;
+	}
+	return (param_1);
 }
