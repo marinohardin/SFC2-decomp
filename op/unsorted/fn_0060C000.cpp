@@ -274,6 +274,7 @@ class C_00472518
 public:
     C_00472518();
     ~C_00472518();
+    void fn_0060c892(int value);
     int m_00;
     char m_04[0x700];
 };
@@ -288,6 +289,7 @@ public:
     ~C_0060c7dc();
     void fn_0060ca20();
     void fn_0060ca83(int index);
+    void fn_0060c883(int value);
     int m_00;
     int m_04;
     std::vector<int> m_08;
@@ -310,4 +312,11 @@ C_0060c7dc::C_0060c7dc()
 C_0060c7dc::~C_0060c7dc()
 {
     fn_0060ca20();
+}
+
+// HYPOTHESIS: forwards to the member at +0x24 (add ecx, 0x24); 0x0060c892 is that class's.
+// FUNCTION: STARFLEETOP 0x0060c883
+void C_0060c7dc::fn_0060c883(int value)
+{
+    m_24.fn_0060c892(value);
 }
