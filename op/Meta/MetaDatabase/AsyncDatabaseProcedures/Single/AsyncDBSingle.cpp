@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
+class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
 // HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes
 // with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock
 // at +0x108. Their other members are not known.
@@ -58,13 +58,14 @@ public:
 	void fn_0056f83f( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result );
 	void fn_0056f909( const nDatabase::tID& id, tMetaMapHex* hex );
 	void fn_0056f961( const nDatabase::tID& id, tShip* ship );
+	void fn_0056f9d7( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result, bool lock );
+	void fn_0056fb13( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
 
 namespace nAsyncDatabaseProcedure
 {
-
 // HYPOTHESIS: only the slots 0x0056c414 calls carry signatures.
 class tAsyncDatabaseSingle
 {
@@ -86,7 +87,7 @@ public:
 	virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
 	virtual bool vfunction16( nDatabase::tID id, tShip* ship );
 	virtual void vfunction17( std::vector<tMetaMapHex>* hexes );
-	virtual void vfunction18();
+	virtual void vfunction18( std::vector<tMetaMapDesc>* descs, int lock );
 	virtual void vfunction19();
 	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, bool lock );
 	virtual void vfunction21();
@@ -127,7 +128,6 @@ public:
 	virtual void vfunction56();
 	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
-
 	fn_0056c414_Database* fDatabase;
 };
 
@@ -446,7 +446,20 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction17( std::vector<tMe
 	nDatabase::tQuery<tMetaMapHex> query;
 	fDatabase->fn_0056f83f( query, hexes );
 }
-
+#line 450
+// FUNCTION: STARFLEETOP 0x0056d6dc
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction18( std::vector<tMetaMapDesc>* descs, int lock )
+{
+	nDatabase::tQuery<tMetaMapDesc> query;
+	if( lock )
+	{
+		fDatabase->fn_0056fb13( query, descs );
+	}
+	else
+	{
+		fDatabase->fn_0056f9d7( query, descs, true );
+	}
+}
 
 
 
