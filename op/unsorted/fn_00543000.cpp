@@ -199,6 +199,7 @@ public:
 	bool fn_005439e4(int value);
 	bool fn_005439f3(int value);
 	bool fn_00543a02(int value);
+	bool fn_00543a11(float value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -722,5 +723,13 @@ bool fn_005430ad_owner::fn_005439f3(int value)
 bool fn_005430ad_owner::fn_00543a02(int value)
 {
 	m110 = value;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the float at +0x118; always reports success.
+// FUNCTION: STARFLEETOP 0x00543a11
+bool fn_005430ad_owner::fn_00543a11(float value)
+{
+	m118 = value;
 	return true;
 }
