@@ -104,6 +104,7 @@ public:
 	fn_005b6a5c_owner *fn_005434d6();
 	fn_0042c709_ptr fn_005434dd() const;
 	fn_0042c709_ptr fn_005434f7() const;
+	int fn_00543514();
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -149,7 +150,8 @@ public:
 	int m130;
 	int m134;
 	int m138;
-	char m_pad13c[0xc];
+	char m_pad13c[0x8];
+	int m144;
 	int m148;
 	fn_005b6a5c_owner m14c;
 };
@@ -403,4 +405,10 @@ fn_0042c709_ptr fn_005430ad_owner::fn_005434dd() const
 fn_0042c709_ptr fn_005430ad_owner::fn_005434f7() const
 {
 	return m0f0.Lock();
+}
+
+// FUNCTION: STARFLEETOP 0x00543514
+int fn_005430ad_owner::fn_00543514()
+{
+	return m144;
 }
