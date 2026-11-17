@@ -327,4 +327,13 @@ void tMemberCallback<tnMemberClass,tnResult>::operator()( tnResult result )
 	(fpMemberClass->*fpMemberFunction)( result );
 }
 
+// HYPOTHESIS: slot 3 is the SDK template's other virtual with the same body; which of
+// Callback and operator() sits at which address is not settled by the bytes.
+// FUNCTION: STARFLEETOP 0x0057a9ce
+template< typename tnMemberClass, typename tnResult >
+void tMemberCallback<tnMemberClass,tnResult>::Callback( tnResult result )
+{
+	(fpMemberClass->*fpMemberFunction)( result );
+}
+
 template class tMemberCallback<fn_0057a96e_owner, fn_0057a96e_info>;
