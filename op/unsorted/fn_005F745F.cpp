@@ -39,6 +39,8 @@ public:
 	// queue in unsorted/fn_005D913F.cpp, whose class is declared only in that unit.
 	void FUN_005d97c1();
 	void FUN_005f7afe( unsigned int count ); // HYPOTHESIS: grows the block map
+	// HYPOTHESIS: reports a length error (the analysis names it for length_error)
+	void FUN_005f7f20();
 
 	byte field_00[0x04];
 	fn_005f74a6_entry** field_04; // HYPOTHESIS: the map of blocks of 170 entries
@@ -458,4 +460,55 @@ void fn_005f7a6a_object::FUN_005f7aeb()
 			field_0c = 0;
 		}
 	}
+}
+
+// MATCH-ONLY: the library's uninitialized copy and fill, which the original inlined.
+inline fn_005f74a6_entry** fn_005f7afe_copy( fn_005f74a6_entry** first, fn_005f74a6_entry** last, fn_005f74a6_entry** dest )
+{
+	for ( ; first != last; ++dest, ++first ) {
+		*dest = *first;
+	}
+	return dest;
+}
+
+// MATCH-ONLY: as fn_005f7afe_copy.
+inline void fn_005f7afe_fill( fn_005f74a6_entry** dest, unsigned int n, fn_005f74a6_entry* value )
+{
+	for ( ; 0 < n; --n, ++dest ) {
+		*dest = value;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7afe
+void fn_005f77c6_object::FUN_005f7afe( unsigned int count )
+{
+	if ( 0x101010 - field_08 < count ) {
+		FUN_005f7f20();
+	}
+	unsigned int inc = field_08 / 2;
+	if ( inc < 8 ) {
+		inc = 8;
+	}
+	if ( count < inc && field_08 <= 0x101010 - inc ) {
+		count = inc;
+	}
+	unsigned int boff = field_0c / 170;
+	int bytes = ( field_08 + count ) * sizeof( fn_005f74a6_entry* );
+	if ( bytes < 0 ) {
+		bytes = 0;
+	}
+	fn_005f74a6_entry** newmap = (fn_005f74a6_entry**) operator new( bytes );
+	fn_005f74a6_entry** p = fn_005f7afe_copy( field_04 + boff, field_04 + field_08, newmap + boff );
+	if ( boff <= count ) {
+		p = fn_005f7afe_copy( field_04, field_04 + boff, p );
+		fn_005f7afe_fill( p, count - boff, 0 );
+		fn_005f7afe_fill( newmap, boff, 0 );
+	} else {
+		fn_005f7afe_copy( field_04, field_04 + count, p );
+		p = fn_005f7afe_copy( field_04 + count, field_04 + boff, newmap );
+		fn_005f7afe_fill( p, count, 0 );
+	}
+	operator delete( field_04 );
+	field_08 += count;
+	field_04 = newmap;
 }
