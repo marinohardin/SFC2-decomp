@@ -167,7 +167,9 @@ struct tObject_00447415_limits
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
-	char field_0x115[0x65];
+	char field_0x115;
+	short field_0x116[25];
+	char field_0x148[0x32];
 	// HYPOTHESIS: four byte arrays indexed alike; their lengths are not known.
 	char field_0x17a[4];
 	char field_0x17e[4];
@@ -207,6 +209,7 @@ public:
 	// HYPOTHESIS: 0x00445fe1 and 0x00446d3d take the same this and ship as 0x004472bc.
 	void fn_00445fe1(tObject_0042496f *ship);
 	void fn_00446d3d(tObject_0042496f *ship);
+	bool fn_00447c61(int kind);
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -651,4 +654,36 @@ void c_00447bbb::fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c)
 		b->fn_004457b7(field_0xe8);
 	if (c)
 		c->fn_004526cb(field_0xec);
+}
+
+// FUNCTION: STARFLEETOP 0x00447c61
+bool c_0044715d::fn_00447c61(int kind)
+{
+	int i = 0;
+	switch (kind)
+	{
+	case 0:
+		for (i = 0; i < 25; i++)
+			if (field_0xe8->field_0x116[i] != -1)
+				return true;
+		break;
+	case 1:
+		if (field_0xe8->field_0x20 != 0)
+			return true;
+		break;
+	case 2:
+		for (i = 0; i < 4; i++)
+			if (fn_0044780d(i))
+				return true;
+		break;
+	case 3:
+		if (fn_004478b5(3))
+			return true;
+		break;
+	case 4:
+		if (fn_004476cf(3) || fn_00447740(3))
+			return true;
+		break;
+	}
+	return false;
 }
