@@ -298,3 +298,26 @@ void __stdcall fn_00402501(std::string& s)
             prevTab = false;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0040257f
+// HYPOTHESIS: splits "text:N" into the text before the colon and sets *found from the
+// digit after it; without a colon, the whole string is the result and *found is true.
+std::string __stdcall fn_0040257f(std::string src, char* found)
+{
+    std::string result("");
+    std::string second;
+    *found = false;
+    int pos = src.find(':');
+    if (pos != std::string::npos && pos > 0)
+    {
+        result.assign(src.substr(0, pos));
+        second.assign(src.substr(pos + 1, 1));
+        *found = atoi(second.c_str());
+    }
+    else if (src.size() > 0)
+    {
+        result.assign(src);
+        *found = true;
+    }
+    return result;
+}
