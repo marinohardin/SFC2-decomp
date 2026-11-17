@@ -226,13 +226,21 @@ bool fn_00406540_Iter::fn_00406540(const fn_00406540_Iter& _X) const
         || _Sbuf != 0 && _X._Sbuf != 0);
 }
 
+// HYPOTHESIS: the library's collate<char> constructor instance (default locale info, _Init
+// inlined), written on a stand-in class of the facet's layout.
+class fn_0040657f_Collate : public std::locale::facet
+{
+public:
+    fn_0040657f_Collate(size_t _R);
+    _Collvec _Coll;
+};
+
 // FUNCTION: STARFLEETOP 0x0040657f
-// HYPOTHESIS: the library's collate<char> constructor instantiation (default locale info, _Init inlined).
-template<> std::collate<char>::collate(size_t _R)
+fn_0040657f_Collate::fn_0040657f_Collate(size_t _R)
     : std::locale::facet(_R)
 {
     std::_Locinfo _Lobj;
-    _Init(_Lobj);
+    _Coll = _Lobj._Getcoll();
 }
 
 // HYPOTHESIS: the library's codecvt<char,char,int>::do_in and do_length instances (identity
