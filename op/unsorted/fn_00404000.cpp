@@ -629,6 +629,7 @@ public:
     void fn_00404dd0(unsigned char);
     char *fn_00404de4(char *, const char *);
     char fn_00404e0f(unsigned char);
+    char *fn_00404e23(char *, const char *);
     size_t m08;
     size_t m0c;
     const short *m10;
@@ -692,4 +693,12 @@ extern char __cdecl fn_0074cfd7(int, void *);
 char fn_00404cb2_Ctype::fn_00404e0f(unsigned char c)
 {
     return fn_0074cfd7(c, &m08);
+}
+
+// FUNCTION: STARFLEETOP 0x00404e23
+char *fn_00404cb2_Ctype::fn_00404e23(char *first, const char *last)
+{
+    for (; first != last; ++first)
+        *first = fn_0074cfd7(*first, &m08);
+    return first;
 }
