@@ -691,3 +691,15 @@ void fn_0040e295(char* name, float* value, fn_0040d63f_Buf& buf)
     value[1] = y;
 }
 
+// FUNCTION: STARFLEETOP 0x0040e306
+void fn_0040e306(tString* name, tString* value, fn_0040d63f_Buf& buf)
+{
+    buf.fn_0040d815();
+    tString line(*name);
+    line += " = ";
+    line += *value;
+    buf.fn_0040d73e(&line);
+    char nl = 10;
+    buf.fn_0040d867(&nl, 1, 0);
+}
+
