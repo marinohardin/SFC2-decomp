@@ -28,11 +28,13 @@ std::auto_ptr<C_00c3a7c0> g_00c3a7c0;
 class C_00c3a80c
 {
 public:
+    ~C_00c3a80c();
     void fn_0060c68a(int entry);
     void fn_0060c720(tString &text);
 };
 
 extern C_00c3a80c *g_00c3a80c;
+extern C_00c3a80c *g_00c3a810;
 
 // HYPOTHESIS: text lookups by key; 0x004cbdae also substitutes a value. Signatures unknown.
 void fn_004cbd87(const char *key, int flags, tString &out);
@@ -90,4 +92,15 @@ void C_0060c1c7::fn_0060c3e1(int entry)
 {
     if (entry)
         g_00c3a80c->fn_0060c68a(entry);
+}
+
+// FUNCTION: STARFLEETOP 0x0060c3fa
+// HYPOTHESIS: 0x00c3a810 heads a list of these objects whose destructor (0x0060c4aa) unlinks
+// each from it; the loop deletes them all, then drops the pointer at 0x00c3a80c.
+void fn_0060c3fa()
+{
+    C_00c3a80c *entry;
+    while ((entry = g_00c3a810) != 0)
+        delete entry;
+    g_00c3a80c = 0;
 }
