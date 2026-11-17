@@ -185,3 +185,9 @@ void fn_00496529()
 void fn_0049653d()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x00496551
+// HYPOTHESIS: 0x00496551 is a mid-function slice (fstp [0x009172b0]; fld 104.0; call fn_005050e2) of the same global float initializer (analysis boundary); body is a placeholder.
+void fn_00496551()
+{
+}
