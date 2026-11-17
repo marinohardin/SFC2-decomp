@@ -74,20 +74,20 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 	// MATCH-ONLY: the original releases the guard explicitly after the tID temporary is gone
 	// (no state reset before Leave); a block round the body reproduces that.
 	{
-#line 152
+	// MATCH-ONLY: the assertions name the original's Database.h (this is that header's member
+	// template); the named #line gives __FILE__ that header, restored after it.
+#line 152 "../Common/Database/Database.h"
 	validate(pObject);
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-
 	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
-
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
-
+#line 161 "fn_00571000.cpp"
 	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
@@ -106,20 +106,20 @@ void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
-#line 152
+	// MATCH-ONLY: the assertions name the original's Database.h (this is that header's member
+	// template); the named #line gives __FILE__ that header, restored after it.
+#line 152 "../Common/Database/Database.h"
 	validate(pObject);
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-
 	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
-
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
-
+#line 161 "fn_00571000.cpp"
 	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
@@ -140,20 +140,20 @@ void fn_00571018_owner::fn_0057118e(fn_00571018_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
-#line 152
+	// MATCH-ONLY: the assertions name the original's Database.h (this is that header's member
+	// template); the named #line gives __FILE__ that header, restored after it.
+#line 152 "../Common/Database/Database.h"
 	validate(pObject);
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-
 	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
-
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
-
+#line 161 "fn_00571000.cpp"
 	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
@@ -173,20 +173,20 @@ void fn_00571018_owner::fn_0057147a(fn_00571018_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
-#line 152
+	// MATCH-ONLY: the assertions name the original's Database.h (this is that header's member
+	// template); the named #line gives __FILE__ that header, restored after it.
+#line 152 "../Common/Database/Database.h"
 	validate(pObject);
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-
 	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
-
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
-
+#line 161 "fn_00571000.cpp"
 	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
