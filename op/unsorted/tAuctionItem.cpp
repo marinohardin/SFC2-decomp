@@ -15,9 +15,9 @@ public:
 	tAuctionItem();
 	// HYPOTHESIS: the double is the item's price or bid; the ship is read from the call order.
 	tAuctionItem( double arg5, tShip* ship );
-	// HYPOTHESIS: the original declares no destructor. The compiler-generated one (0x00544c24)
-	// stores no vtable; an implicit destructor builds byte for byte, but the harness cannot claim
-	// a function with no source line, so this declared one (which stores the vtable) stands in.
+	// MATCH-ONLY: the original declares no destructor; its implicit one is 0x00544c24, left
+	// unclaimed. This declared one is kept only so the scalar deleting destructor 0x00544c08
+	// has a destructor definition to be claimed on.
 	virtual ~tAuctionItem();
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
@@ -74,8 +74,8 @@ tAuctionItem::tAuctionItem()
 	fn_00544d20( nDatabase::tID(), "", 0, 0, 1.0 );
 }
 
+// 0x00544c24, the implicit destructor, is left unclaimed (see the declaration).
 // FUNCTION: STARFLEETOP 0x00544c08
-// FUNCTION: STARFLEETOP 0x00544c24
 tAuctionItem::~tAuctionItem()
 {
 }
