@@ -877,6 +877,7 @@ public:
 	};
 	void fn_0046ad85(tGameState **state, fn_0046ad85_arg a, int *b);
 	void fn_0046ad61();
+	void fn_004adc89();
 };
 
 extern fn_0090db38_owner g_0090db38;
@@ -1235,16 +1236,18 @@ unsigned int fn_0046aa46()
 	return g_0090db98;
 }
 
-void fn_004adc89();
+// HYPOTHESIS: 0x004adc89 is a no-argument method of the class of g_0090db38.
+// The thrown type's name comes from RTTI (descriptor at 0x008458c8); it is an empty class.
+class tGameStateMgr_QuitException
+{
+};
 
-// HYPOTHESIS: the thrown object is an uninitialised one-byte local; its type is guessed.
 // FUNCTION: STARFLEETOP 0x0046aa58
 void fn_0046aa58()
 {
 	g_0090db9c = 1;
 	fn_0046a688(g_0090db44);
 	g_0090db44 = 0;
-	fn_004adc89();
-	unsigned char thrown;
-	throw thrown;
+	g_0090db38.fn_004adc89();
+	throw tGameStateMgr_QuitException();
 }
