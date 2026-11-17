@@ -204,6 +204,7 @@ public:
 	fn_006166c0_Name fn_006166c0( c_004329af_entry* pShort, c_004329af_entry* pLong );
 	std::vector< c_004329af_entry >* fn_00616700();
 	void fn_006169a0();
+	void fn_006169e0();
 	void fn_00616aa0();
 	void fn_00616ac0();
 	void fn_00616b70();
@@ -449,4 +450,29 @@ void fn_00616000_DirectPlayHolder::fn_006169a0()
 	fn_00616aa0();
 	fn_00616b70();
 	fn_00616fd0( &fProviders );
+}
+
+// The analysis ends this function at 0x00616a68, inside the catch block; the exe's bytes run on
+// to 0x00616a96 and match the rest of this body.
+// FUNCTION: STARFLEETOP 0x006169e0
+void fn_00616000_DirectPlayHolder::fn_006169e0()
+{
+	if ( fDirectPlayObject == 0 )
+	{
+		try
+		{
+			long hr = CoCreateInstance( g_007bb118, 0, CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER, g_007bb128, (void**)&fDirectPlayObject );
+			if ( hr < 0 || fDirectPlayObject == 0 )
+				throw fn_00616000_Error( "CoCreateInstance failed", fn_00619a20_Context() );
+		}
+		catch ( fn_00616000_Error& e )
+		{
+			fn_006123b0( e.v1() );
+			if ( fDirectPlayObject != 0 )
+			{
+				fDirectPlayObject->Release();
+				fDirectPlayObject = 0;
+			}
+		}
+	}
 }
