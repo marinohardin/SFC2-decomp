@@ -6,6 +6,7 @@
 #include "unsorted/tServCharacter.h"
 #include "unsorted/tShip.h"
 #include "unsorted/tAuctionItem.h"
+#include "Common/Database/DatabaseObjectUpdate.h"
 #include "unsorted/tMetaMapHex.h"
 #include "unsorted/tMissionCompleteResults.h"
 #include <sstream>
@@ -13,14 +14,10 @@
 class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify; tSettings* fn_005d481f();	// HYPOTHESIS: fn_005d481f returns the server settings; name not known. tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
-class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
-{
-public:
+class tTurn { public:	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
 	char fPad00[0x48];
 	long fField48;
-}; class tCampaignInfo
-{
-public:
+}; class tCampaignInfo { public:
 	tCampaignInfo();
 	~tCampaignInfo();
 	tCampaignInfo& operator=( const tCampaignInfo& other );
@@ -30,12 +27,15 @@ public:
 	tCurrentTime fField108;
 	char fPad120[0x168 - 0x120];
 };
-class fn_0056c414_Database	// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
-{
-public:
+class fn_0056c414_Database { public:	// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3( tTurn* turn );
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void UpdateObject( const nDatabase::tDatabaseObjectUpdate& update, bool unlock = true );	// HYPOTHESIS: slots 3 to 6 stand for the SDK's tDatabase Store and UnLock overloads; UpdateObject is slot 7 there.
 	void fn_0056ef05( nDatabase::tQuery<tTurn>& query, std::vector<tTurn>* result, bool lock );
 	void fn_0056f05f( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result, bool lock );
 	void fn_0056f19b( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result );
@@ -111,7 +111,7 @@ public:
 	virtual void vfunction37( tNewsStory* news );
 	virtual void vfunction38( int value );
 	virtual void vfunction39();
-	virtual void vfunction40();
+	virtual void vfunction40( tAuctionItem item );
 	virtual void vfunction41();
 	virtual void vfunction42();
 	virtual void vfunction43();
@@ -672,4 +672,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction37( tNewsStory* new
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction38( int value )
 {
 	fDatabase->fn_0057147a( value );
+}
+
+// HYPOTHESIS: the item comes by value (ret 0xa8, the item's size) and is written back as an update.
+// FUNCTION: STARFLEETOP 0x0056dfad
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction40( tAuctionItem item )
+{
+	nDatabase::tDatabaseObjectUpdate update( item );
+	fDatabase->UpdateObject( update );
 }
