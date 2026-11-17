@@ -10977,9 +10977,9 @@
    "symbol": "?mGetFirstPlayingCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ",
    "unit": "Tiger/tgSound.cpp",
    "size": 752,
-   "score": 99.36,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0064c1c0": {
    "name": "tSoundChannel::mGetLastSelectionToAttach",

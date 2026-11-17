@@ -1795,8 +1795,7 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
     long skip = 0;
     if (field_0x14c > field_0x100)
         skip = field_0x14c - field_0x100;
-    // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
-    tSoundCommandList* attachments = &field_0xec;
+    tSoundCommandList* attachments = &field_0xec; // HYPOTHESIS: called through its vtable, so a pointer
     tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     while (command != 0 && skip > 0)
     {
@@ -1807,22 +1806,23 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
     long last = field_0x100 + field_0x104 - 1;
     if (field_0x158 < last && field_0x158 >= field_0x14c && field_0x158 >= field_0x100)
         count += field_0x158 - field_0x100 - field_0x104 + 1;
-    if (command == 0)
-        return 0;
+    if (command == 0) return 0;
     tSoundSelection* selection = 0;
     if (command->vfunction16() == 0)
         selection = command->vfunction32();
-    while (count > 0 && selection != 0 && selection->vfunction27() == 0)
+    while (1) // the back edge is a plain jump to the first test: an endless loop left by break
     {
-        command = (tSoundChannelCommand*)attachments->vfunction14(command);
-        if (command == 0)
-            return 0;
-        if (command->vfunction16() == 0)
-            selection = command->vfunction32();
-        count--;
+        if (count > 0 && selection != 0 && selection->vfunction27() == 0)
+        {
+            command = (tSoundChannelCommand*)attachments->vfunction14(command);
+            if (command == 0) return 0;
+            if (command->vfunction16() == 0) selection = command->vfunction32();
+            count--;
+        }
+        else
+            break;
     }
-    if (count == 0)
-        return 0;
+    if (count == 0) return 0;
     return command;
 }
 
