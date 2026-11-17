@@ -252,7 +252,8 @@ public:
     virtual void vfunction40();
     virtual void vfunction41();
     virtual void vfunction42();
-    virtual void vfunction43();
+    // HYPOTHESIS: slot 42; returns the owning ship at +0x2c.
+    virtual fn_owner_type* vfunction43();
     virtual void vfunction44();
     virtual void vfunction45();
     virtual void vfunction46();

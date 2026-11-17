@@ -93,3 +93,9 @@ void tEntity::vfunction15(float aRadius)
 {
     fRadius = aRadius;
 }
+
+// FUNCTION: STARFLEETOP 0x004366bf
+fn_owner_type* tIndividualShipSystem::vfunction43()
+{
+    return field_2c;
+}
