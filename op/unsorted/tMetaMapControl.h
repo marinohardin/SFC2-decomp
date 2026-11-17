@@ -1,6 +1,7 @@
 #ifndef TMETAMAPCONTROL_H
 #define TMETAMAPCONTROL_H
 
+#include <iosfwd>
 #include <vector>
 
 #include "unsorted/tValueBtn.h"
@@ -99,6 +100,8 @@ public:
 	void fn_005e3d73();
 	void fn_005e3e48();
 	void fn_005e3f1d();
+	// HYPOTHESIS: looks up the image named by the string, the int selecting one of several.
+	c_tScrollBar_FieldA8 *fn_005e3f82( const std::string &name, int index );
 	void fn_005e4455();
 
 	fn_005eadc8_class *field_17c;

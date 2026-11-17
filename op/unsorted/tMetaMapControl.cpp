@@ -461,3 +461,39 @@ void tMetaMapControl::fn_005e3b86()
 	fn_005e3e48();
 	fn_005e3f1d();
 }
+
+// Defined in unsorted/fn_005E2501.cpp.
+extern std::string g_00c39048;
+extern std::string g_00c39038;
+extern std::string g_00c39028;
+extern std::string g_00c39018;
+extern std::string g_00c39008;
+extern std::string g_00c38ff8;
+extern std::string g_00c38fe8;
+extern std::string g_00c38fd8;
+extern std::string g_00c38fc8;
+extern std::string g_00c38fb8;
+
+// FUNCTION: STARFLEETOP 0x005e3ba5
+void tMetaMapControl::fn_005e3ba5()
+{
+	field_1a4.assign( 0x18, 0 );
+	field_1a4[ 1 ] = fn_005e3f82( g_00c39038, 0 );
+	field_1a4[ 2 ] = fn_005e3f82( g_00c39028, 0 );
+	field_1a4[ 0 ] = fn_005e3f82( g_00c39018, 0 );
+	field_1a4[ 6 ] = fn_005e3f82( g_00c39048, 0 );
+	field_1a4[ 7 ] = fn_005e3f82( g_00c39048, 1 );
+	field_1a4[ 8 ] = fn_005e3f82( g_00c39048, 2 );
+	field_1a4[ 9 ] = fn_005e3f82( g_00c39048, 3 );
+	field_1a4[ 10 ] = fn_005e3f82( g_00c39048, 4 );
+	field_1a4[ 11 ] = fn_005e3f82( g_00c39048, 5 );
+	field_1a4[ 12 ] = fn_005e3f82( g_00c39048, 6 );
+	field_1a4[ 13 ] = fn_005e3f82( g_00c39048, 7 );
+	field_1a4[ 14 ] = fn_005e3f82( g_00c39048, 8 );
+	field_1a4[ 15 ] = fn_005e3f82( g_00c39008, 0 );
+	field_1a4[ 16 ] = fn_005e3f82( g_00c38ff8, 0 );
+	field_1a4[ 17 ] = fn_005e3f82( g_00c38fe8, 0 );
+	field_1a4[ 3 ] = fn_005e3f82( g_00c38fd8, 0 );
+	field_1a4[ 4 ] = fn_005e3f82( g_00c38fc8, 0 );
+	field_1a4[ 5 ] = fn_005e3f82( g_00c38fb8, 0 );
+}
