@@ -1236,6 +1236,14 @@ void tSFCPlayer::vfunction70(char *param_1)
 	tShipSpecs specs;
 	fn_local = 0;
 }
+// HYPOTHESIS: 0x004d0ed4 is the tail of vfunction70 split off by the analysis; this is a best-effort standalone rendering of it.
+// FUNCTION: STARFLEETOP 0x004d0ed4
+void fn_004d0ed4(tSFCPlayer *self, char *param_1)
+{
+	tShipSpecs specs;
+	if (fn_0040a621((int)param_1, &specs)) {
+	}
+}
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
 // FUNCTION: STARFLEETOP 0x004d0e20
