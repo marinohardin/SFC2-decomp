@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "unsorted/tSndMgr_Base.h"
 #include "unsorted/ParseSFCSoundTable.h"
 #include "Common/Thread/Thread.h"
@@ -19,6 +21,8 @@ public:
 	~fn_0050cb19_object();
 
 	unsigned char mInit( const char * );
+	// HYPOTHESIS: tSndZipInfoMgr::mDone, folded in the exe with tZipInfoMgr::mDone (0x00627f60).
+	void mDone();
 
 	char pad_0000[0x254];
 };
@@ -57,6 +61,8 @@ class fn_007ab0c0_object
 public:
 	virtual ~fn_007ab0c0_object() {}
 	virtual void Callback( long result );
+	// HYPOTHESIS: a third slot (+0x08) that reports whether the callback is still running.
+	virtual char vfunction3();
 
 	long field_4;
 };
@@ -67,7 +73,19 @@ public:
 struct fn_0050eea7_sample
 {
 	volatile HSAMPLE field_0;
-	char pad_4[0x78];
+	char pad_4[0x10];
+	// HYPOTHESIS: three Miles locked buffers, freed with AIL_mem_free_lock.
+	void *field_14;
+	char pad_18[0x8];
+	void *field_20;
+	void *field_24;
+	char pad_28[0x18];
+	long field_40;
+	char pad_44[0x4];
+	tBasicFile *field_48;
+	tBasicFile *field_4c;
+	tBasicFile *field_50;
+	char pad_54[0x28];
 };
 
 // HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
@@ -109,8 +127,9 @@ public:
 	virtual char vfunction31();
 
 	char pad_0004[0xc];
-	fn_0050eea7_sample field_10[64];
-	char pad_1f10[0x10];
+	// HYPOTHESIS: 32 channels, the most vfunction28 allows; the shutdown clears 0xf80 bytes.
+	fn_0050eea7_sample field_10[32];
+	char pad_f90[0xf90];
 	long field_1f20;
 	ParseSFCSoundTable field_1f24;
 	fn_0050cb19_object field_1f60;
@@ -129,8 +148,10 @@ public:
 	// only inside Common/Thread/ThreadPool.cpp, so they stay byte arrays until a header holds it.
 	tThread field_2818;
 	tThread field_3524;
-	char field_4230;
-	char pad_4231[3];
+	// HYPOTHESIS: flags shared with the callback thread (stop request, busy), hence volatile.
+	volatile char field_4230;
+	volatile char field_4231;
+	char pad_4232[2];
 	long field_4234;
 	// HYPOTHESIS: two tCallback<long>-derived members (the destructor resets both to the
 	// tCallback<long> vtable 0x007ab0c0), likely tMilesCallBack and tAILServeCallBack;
@@ -254,4 +275,61 @@ char tSndMgr_Miles::vfunction2( HWND param_1 )
 		return field_2414;
 	}
 	return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f0f7
+void tSndMgr_Miles::vfunction3()
+{
+	field_4230 = 1;
+	while ( field_4231 )
+		Sleep( 10 );
+	while ( field_4240.vfunction3() )
+		Sleep( 10 );
+
+	field_1f60.mDone();
+	field_21b4.mDone();
+
+	for ( int i = 0; field_2414 && i < 32; i++ )
+	{
+		fn_0050eea7_sample *sample = &field_10[i];
+		if ( sample->field_48 )
+		{
+			sample->field_48->mClose();
+			sample->field_48->mDispose();
+			sample->field_48 = 0;
+		}
+		if ( sample->field_4c )
+		{
+			sample->field_4c->mClose();
+			sample->field_4c->mDispose();
+			sample->field_4c = 0;
+		}
+		if ( sample->field_50 )
+		{
+			sample->field_50->mDispose();
+			sample->field_50 = 0;
+		}
+		sample->field_40 = 0;
+		if ( sample->field_0 )
+			AIL_release_sample_handle( sample->field_0 );
+		if ( sample->field_14 )
+			AIL_mem_free_lock( sample->field_14 );
+		if ( sample->field_20 )
+			AIL_mem_free_lock( sample->field_20 );
+		if ( sample->field_24 )
+			AIL_mem_free_lock( sample->field_24 );
+	}
+
+	if ( field_2408 )
+		field_2408->mDispose();
+	if ( field_240c )
+		field_240c->mDispose();
+	field_2408 = 0;
+	field_240c = 0;
+	memset( field_10, 0, sizeof( field_10 ) );
+	if ( field_2418 )
+		AIL_waveOutClose( field_2418 );
+	field_2418 = 0;
+	AIL_shutdown();
+	field_2414 = 0;
 }
