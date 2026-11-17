@@ -48,6 +48,17 @@ public:
 };
 
 class tExtraEnergyRequest;
+
+// HYPOTHESIS: the objects in m_dc: slot 0 takes an amount and returns whether it wants more,
+// slot 1 ends a round, slot 3 returns the amount asked for (-1 for any).
+class tObject_00523e72_Slot
+{
+public:
+	virtual bool vfunction0(float amount);
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual float vfunction3();
+};
 class tObject_00528a11;
 
 // HYPOTHESIS: the part at +0x14 of the object at +0x34dc of tObject_005237dc: slot 3 (offset 0xc)
@@ -84,12 +95,13 @@ public:
 	float fn_00523967(); // HYPOTHESIS: sums floats the ship's systems report; 0 without the ship.
 	void fn_00523c59();
 	float fn_00523e72(float amount); // HYPOTHESIS: serves column 5 and returns what is left.
+	void fn_00523ffd(float amount, bool aFirst);
 
 	float m_00[4];
 	tObject_005237d1 m_10[25];
 	bool m_d8;
 	char m_d9[3];
-	int m_dc[25];
+	tObject_00523e72_Slot *m_dc[25];
 	int m_140;
 	bool m_144; // HYPOTHESIS: set by 0x00523967 when its last term was added.
 	char m_145[3];

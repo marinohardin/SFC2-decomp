@@ -934,3 +934,45 @@ void tObject_005237dc::fn_00523c59()
 		break;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00523e72
+float tObject_005237dc::fn_00523e72(float amount)
+{
+	tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(m_140);
+	if (amount > 0.0f && m_d8 > 0) {
+		if (m_148 == 4)
+			return 0.0f;
+		if (ship->field_0x870 == 0x13)
+			amount = 100.0f;
+		fn_00523ffd(amount, true);
+		bool done = false;
+		while (!done && amount > 0.0f) {
+			float best = -1.0f;
+			char index = -1;
+			for (int i = 0; i < m_d8; i++) {
+				if (m_10[i].m_00 && best < m_10[i].m_04) {
+					best = m_10[i].m_04;
+					index = i;
+				}
+			}
+			if (index >= 0) {
+				float want = m_dc[index]->vfunction3();
+				if (want == -1.0f || amount < want) {
+					m_dc[index]->vfunction0(amount);
+					amount = 0.0f;
+				} else {
+					if (!m_dc[index]->vfunction0(want))
+						m_10[index].m_00 = false;
+					amount -= want;
+				}
+				if (amount != 0.0f)
+					fn_00523ffd(amount, false);
+			} else {
+				done = true;
+			}
+		}
+	}
+	for (int i = 0; i < m_d8; i++)
+		m_dc[i]->vfunction1();
+	return amount;
+}
