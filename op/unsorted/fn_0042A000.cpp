@@ -166,19 +166,32 @@ public:
 	byte field_00[0x434];
 };
 
+#include "Common/Database/DatabaseID.h"
+
 // HYPOTHESIS: the class whose RTTI is tServCharacter::tShipCache; only the constructor from a
 // ship (0x0054185f) and the destructor (0x0042a863) are known, and the size (0x4c) from the
-// stack frame of 0x0042a7bf.
+// stack frame of 0x0042a7bf. The destructor ends in ~tStreamable and destroys an ID at +0x0c
+// and strings at +0x24 and +0x34; the other fields are not known yet.
 class tServCharacter
 {
 public:
-	class tShipCache
+	class tShipCache : public nDataStore::tStreamable
 	{
 	public:
 		tShipCache( const fn_0054185f_ship& ship );
+		// HYPOTHESIS: the original declared no destructor; its implicit one (no vtable store)
+		// builds byte for byte, but the harness cannot claim a function with no source line, so
+		// this declared one (which stores the vtable) stands in for it.
 		virtual ~tShipCache();
 
-		byte field_04[0x4c - 0x04];
+		virtual	void StreamOut( nDataStore::tOutput& output ) const;
+		virtual	void StreamIn( nDataStore::tInput& input );
+
+		db::tID field_0c;
+		byte field_1c[0x24 - 0x1c];
+		std::string field_24;
+		std::string field_34;
+		byte field_44[0x4c - 0x44];
 	};
 };
 
@@ -380,4 +393,9 @@ void fn_0042a480_object::FUN_0042a7bf( const std::vector< fn_0054185f_ship >& sh
 		(*caches).push_back( tServCharacter::tShipCache( *it ) );
 
 	caches.Done();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a863
+tServCharacter::tShipCache::~tShipCache()
+{
 }

@@ -2377,6 +2377,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042a863": {
+   "name": "tServCharacter::tShipCache::~tShipCache",
+   "symbol": "??1tShipCache@tServCharacter@@UAE@XZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 84,
+   "score": 23.158,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
