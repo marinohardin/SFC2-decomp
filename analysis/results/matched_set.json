@@ -4821,8 +4821,8 @@
    "symbol": "?vfunction2@tSFCPlayer@@UAEXAAVtSFCStream@@I@Z",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 1330,
-   "score": 18.431,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x004e1e8f": {

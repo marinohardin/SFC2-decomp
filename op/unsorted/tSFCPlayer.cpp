@@ -56,6 +56,9 @@ class tObject_004cf9b3
 	public:
 		tObject_004cf9b3();
 		~tObject_004cf9b3();
+		int size();
+		tListNode_004cf9b3 *begin();
+		tListNode_004cf9b3 *end();
 
 	public:
 		char m_00[4];
@@ -63,6 +66,23 @@ class tObject_004cf9b3
 		char m_08[8];
 		int m_10;
 };
+
+// HYPOTHESIS: the original inlines these accessors; the list looks like a container whose head
+// node is at +0x04 and whose element count is at +0x10.
+inline int tObject_004cf9b3::size()
+{
+	return m_10;
+}
+
+inline tListNode_004cf9b3 *tObject_004cf9b3::begin()
+{
+	return m_04->fpNext;
+}
+
+inline tListNode_004cf9b3 *tObject_004cf9b3::end()
+{
+	return m_04;
+}
 
 // HYPOTHESIS: the 0xf8-byte object tSFCPlayer allocates first; constructor 0x004292ab.
 class tObject_004292ab
@@ -214,10 +234,10 @@ class tSFCPlayer
 		tString m_39b8[0x24];
 		tObject_004454c1 m_3f58[0x24];
 		char pad_6118[0x61a8 - 0x6118];
-		tObject_004cf9b3 m_61a8[0x1b0];
-		// HYPOTHESIS: the serialization walks 18 * 20 ints from here, which reaches over the members
-		// that follow; only the part up to the next member is declared.
-		int m_8368[0x50];
+		tObject_004cf9b3 m_61a8[0x12][0x18];
+		// HYPOTHESIS: the serialization walks 18 rows of 20 ints from here, which reaches over the
+		// members that follow; only the rows up to the next member are declared.
+		int m_8368[4][0x14];
 		int m_84a8;
 		int m_84ac;
 		int m_84b0;
@@ -454,7 +474,8 @@ void tSFCPlayer::vfunction2(tSFCStream &s, unsigned mode)
 	fn_0040ea18(m_30, s, mode, "fNumOfShips");
 	fn_0040ec85(4, &m_8538, s, mode, "fGameType");
 	fn_0040eb6e(&m_34, s, mode, "fStartPos");
-	for (int ishiploop = 0; ishiploop < 6; ishiploop++) {
+	int ishiploop;
+	for (ishiploop = 0; ishiploop < 6; ishiploop++) {
 		fn_0040e9df(m_40[ishiploop], s, mode, "fShipID[ishiploop]");
 		fn_0040ec85(4, &m_58, s, mode, "fShipType[ishiploop]");
 		fn_0040ecc4(m_70[ishiploop], s, mode, "fShipName[ishiploop]");
@@ -469,56 +490,42 @@ void tSFCPlayer::vfunction2(tSFCStream &s, unsigned mode)
 	fn_0040ea18(m_fa4, s, mode, "fSavedNumOfShips");
 	if (mode == 1)
 		vfunction69();
-	for (int hullType = 0; hullType < 0x1b0; hullType += 0x18) {
+	for (ishiploop = 0; ishiploop < 0x12; ishiploop++) {
 		int count = 0;
 		int cursor;
 		int limit = 0x18;
 		if (s.fn_00423402() == g_0079ed10)
 			limit = 0x14;
-		for (int ishiploop = 0; ishiploop < limit; ishiploop++) {
+		for (int hullType = 0; hullType < limit; hullType++) {
 			if (mode != 1) {
-				// HYPOTHESIS: the original indexes the 0x14-byte elements from the start of the
-				// object (element + 0x61a8 bytes), so the displacement stays out of the index.
-				int *base = (int *)this;
-				cursor = (int)(base + (hullType + ishiploop) * 5);
-				count = *(int *)(cursor + 0x61b8);
+				count = m_61a8[ishiploop][hullType].size();
 				fn_0040e9df(count, s, mode, "localInt");
 				tListIterator_004cf9b3 it;
-				it.fpNode = (*(tListNode_004cf9b3 **)(cursor + 0x61ac))->fpNext;
-				if (it.fpNode != *(tListNode_004cf9b3 **)(cursor + 0x61ac)) {
-					do {
-						fn_0040ecc4(it.fpNode->fpValue, s, mode, "fShipsSeenList[ishiploop][hullType]");
-						it.fn_00450ce5();
-					} while (it.fpNode != *(tListNode_004cf9b3 **)(cursor + 0x61ac));
-				}
+				for (it.fpNode = m_61a8[ishiploop][hullType].begin(); it.fpNode != m_61a8[ishiploop][hullType].end(); it.fn_00450ce5())
+					fn_0040ecc4(it.fpNode->fpValue, s, mode, "fShipsSeenList[ishiploop][hullTypes]");
 			}
 			else {
 				fn_0040e9df(count, s, 1, "localInt");
 				char name[256];
 				name[0] = 0;
 				for (cursor = 0; cursor < count; cursor++) {
-					fn_0040ecc4(name, s, 1, "fShipsSeenList[ishiploop][hullType]");
+					fn_0040ecc4(name, s, 1, "fShipsSeenList[ishiploop][hullTypes]");
 					vfunction70(name);
 				}
 			}
 		}
 	}
-	int *pTotal = m_8368;
-	for (int ievent = 0; ievent < 0x12; ievent++) {
-		for (int iclass = 0; iclass < 0x14; iclass++) {
-			fn_0040e9df(*pTotal, s, mode, "fCareerTotals[ievent][iclass]");
-			pTotal++;
-		}
+	int ievent;
+	for (ievent = 0; ievent < 0x12; ievent++) {
+		for (int iclass = 0; iclass < 0x14; iclass++)
+			fn_0040e9df(m_8368[ievent][iclass], s, mode, "fCareerTotals[ievent][iclass]");
 	}
-	int *pStatus = &m_8544[0][0];
-	for (int ievent2 = 0; ievent2 < 4; ievent2++) {
-		for (int medals = 0; medals < 6; medals++) {
-			fn_0040e9df(*pStatus, s, mode, "fMissionStatus[ievent][medals]");
-			pStatus++;
-		}
+	for (ievent = 0; ievent < 4; ievent++) {
+		for (int medals = 0; medals < 6; medals++)
+			fn_0040e9df(m_8544[ievent][medals], s, mode, "fMissionStatus[ievent][medals]");
 	}
-	for (int ievent3 = 0; ievent3 < 0x10; ievent3++)
-		fn_0040e9df(m_84cc[ievent3], s, mode, "fScriptValues[ievent]");
+	for (ievent = 0; ievent < 0x10; ievent++)
+		fn_0040e9df(m_84cc[ievent], s, mode, "fScriptValues[ievent]");
 	fn_0040e9df(m_84a8, s, mode, "fPlayersNetID");
 	fn_0040ec85(4, &m_84ac, s, mode, "fPlayerType");
 	fn_0040e9df(m_84b0, s, mode, "fPlayerTeam");
@@ -535,9 +542,9 @@ void tSFCPlayer::vfunction2(tSFCStream &s, unsigned mode)
 	fn_0040e9df(m_8520, s, mode, "fCareerPrestige");
 	fn_0040e9df(m_8524, s, mode, "fRankLevel");
 	fn_0040e9df(m_8528, s, mode, "fEliteRank");
-	fn_0040e9df(m_852c, s, mode, "fGameServer");
-	fn_0040ec85(4, &m_8530, s, mode, "fPlayerColor");
-	fn_0040e9df(m_8534, s, mode, "fDifficultyLevel");
+	fn_0040e9df(m_852c, s, mode, "fPing");
+	fn_0040ec85(4, &m_8530, s, mode, "fGameServer");
+	fn_0040e9df(m_8534, s, mode, "fPlayerColor");
 	fn_0040ec85(4, &m_853c, s, mode, "fDifficultyLevel");
 	g_p0090bed4->fn_00522c86((float)g_008552d0[m_853c]);
 	fn_0060e30e(s, mode);
