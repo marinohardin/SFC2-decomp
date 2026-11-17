@@ -893,3 +893,23 @@ int fn_0043ecde(float param_1)
     }
     return result;
 }
+
+// FUNCTION: STARFLEETOP 0x0043ed12
+int fn_0043ed12(int param_1)
+{
+    int result = 0;
+    int i = 2;
+    if (param_1 > 0)
+    {
+        param_1--;
+        result = 1;
+        int square = 4;
+        for (; param_1 > 0; param_1--)
+        {
+            i++;
+            result = square;
+            square = i * i;
+        }
+    }
+    return result;
+}
