@@ -117,10 +117,22 @@ std::string& std::string::erase(size_type _P0, size_type _M)
 // HYPOTHESIS: a caller in the original uses this instantiation.
 std::string& (std::string::*g_fn_00403c99)(std::string::size_type, std::string::size_type) = &std::string::erase;
 
-// FUNCTION: STARFLEETOP 0x00403d05
-std::string::size_type std::string::find(const char* _S, size_type _P, size_type _N) const
+// HYPOTHESIS: the library's string::find(const char*, pos, n) instance, written on a stand-in
+// class of the string's layout (allocator byte, pointer, length, reserve).
+class fn_00403d05_String
 {
-    size_type _Nm;
+public:
+    size_t fn_00403d05(const char* _S, size_t _P, size_t _N) const;
+    char _A;
+    char* _Ptr;
+    size_t _Len;
+    size_t _Res;
+};
+
+// FUNCTION: STARFLEETOP 0x00403d05
+size_t fn_00403d05_String::fn_00403d05(const char* _S, size_t _P, size_t _N) const
+{
+    size_t _Nm;
     if (_N == 0 && _P <= _Len)
         return (_P);
     else if (_P < _Len && _N <= (_Nm = _Len - _P))
@@ -131,7 +143,7 @@ std::string::size_type std::string::find(const char* _S, size_type _P, size_type
             if (std::char_traits<char>::compare(_U, _S, _N) == 0)
                 return (_U - _Ptr);
     }
-    return (npos);
+    return (std::string::npos);
 }
 
 // HYPOTHESIS: a caller in the original uses this instantiation.
@@ -217,45 +229,18 @@ std::istream::istream(std::streambuf* _Strbuf, bool _Isstd)
     init(_Strbuf, _Isstd);
 }
 
-// FUNCTION: STARFLEETOP 0x00403eda
-bool std::istream::ipfx(bool _Noskip)
+// HYPOTHESIS: the library's streambuf::sbumpc instance, written on a stand-in class derived
+// from the stream buffer so that it reaches its protected members.
+class fn_00403ff1_Streambuf : public std::streambuf
 {
-    if (rdstate() == goodbit)
-    {
-        if (tie() != 0)
-            tie()->flush();
-        if (!_Noskip && (flags() & skipws))
-        {
-            const std::ctype<char>& _Fac = std::use_facet(getloc(), (std::ctype<char>*)0, true);
-            try
-            {
-                int_type _C = rdbuf()->sgetc();
-                while (!std::char_traits<char>::eq_int_type(std::char_traits<char>::eof(), _C)
-                    && _Fac.is(std::ctype<char>::space, std::char_traits<char>::to_char_type(_C)))
-                    _C = rdbuf()->snextc();
-            }
-            catch (...)
-            {
-                setstate(badbit, true);
-            }
-        }
-        if (good())
-            return true;
-    }
-    setstate(failbit);
-    return false;
-}
-
-// HYPOTHESIS: a caller in the original uses this out-of-line instantiation.
-bool (std::istream::*g_fn_00403eda)(bool) = &std::istream::ipfx;
+public:
+    int_type fn_00403ff1();
+};
 
 // FUNCTION: STARFLEETOP 0x00403ff1
-std::streambuf::int_type std::streambuf::sbumpc()
+std::streambuf::int_type fn_00403ff1_Streambuf::fn_00403ff1()
 {
     return (gptr() != 0 && gptr() < egptr()
         ? std::char_traits<char>::to_int_type(*_Gninc())
         : uflow());
 }
-
-// HYPOTHESIS: a caller in the original uses this out-of-line instantiation.
-std::streambuf::int_type (std::streambuf::*g_fn_00403ff1)() = &std::streambuf::sbumpc;

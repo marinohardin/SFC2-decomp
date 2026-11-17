@@ -135,7 +135,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00402c74	FUN_00402c74	1.29	2	opus	2026-11-17T06:13:23Z	attempt 2 (opus) did not raise the best; best 1.29%
 0x004033ab	FUN_004033ab	99.84	2	opus	2026-11-17T06:27:54Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.84%
 0x0040345f	FUN_0040345f	99.75	2	opus	2026-11-17T06:33:07Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.75%
-0x00403eda	FUN_00403eda	31.03	2	opus	2026-11-17T07:20:58Z	best not above 90% after 2 attempts; best 31.03%
 0x00403fb0	FUN_00403fb0	0.00	2	opus	2026-11-17T07:23:45Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x00404184	FUN_00404184	99.41	2	opus	2026-11-17T07:59:34Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.41%
 0x004042c3	FUN_004042c3	0.00	2	opus	2026-11-17T08:12:13Z	attempt 2 (opus) did not raise the best; best 0.00%
