@@ -579,3 +579,14 @@ void tHtmlParser::fn_006910a0( int align )
 	f_8c.fn_0068bb00( align );
 	f_40->fn_0068e860( &f_8c, 1 );
 }
+
+// FUNCTION: STARFLEETOP 0x00691270
+void tHtmlParser::fn_00691270()
+{
+	if ( f_a4.size() != 0 )
+	{
+		f_8c.fn_0068bb00( (int)f_a4.back() );
+		f_a4.pop_back();
+		f_40->fn_0068e860( &f_8c, 1 );
+	}
+}
