@@ -99,3 +99,9 @@ fn_owner_type* tIndividualShipSystem::vfunction43()
 {
     return field_2c;
 }
+
+// FUNCTION: STARFLEETOP 0x004366c3
+void tIndividualShipSystem::vfunction45(int param_1)
+{
+    vfunction44(param_1);
+}

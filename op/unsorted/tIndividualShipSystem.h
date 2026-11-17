@@ -254,8 +254,9 @@ public:
     virtual void vfunction42();
     // HYPOTHESIS: slot 42; returns the owning ship at +0x2c.
     virtual fn_owner_type* vfunction43();
-    virtual void vfunction44();
-    virtual void vfunction45();
+    virtual void vfunction44(int param_1);
+    // HYPOTHESIS: slot 44; forwards its argument to slot 43.
+    virtual void vfunction45(int param_1);
     virtual void vfunction46();
     virtual void vfunction47(int value); // slot 46
     // HYPOTHESIS: vftable slot 47; takes an amount of damage off the system's level
