@@ -118,7 +118,7 @@ public:
 	virtual void vfunction44( tShip ship );
 	virtual void vfunction45( nDatabase::tDatabaseObject* matrix );
 	virtual void vfunction46( nDatabase::tDatabaseObject* description );
-	virtual void vfunction47();
+	virtual void vfunction47( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
 	virtual void vfunction49( nDatabase::tDatabaseObject* object );
 	virtual void vfunction50();
@@ -775,5 +775,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction46( nDatabase::tDat
 #line 1009
 	validate( description );
 	nDatabase::tDatabaseObjectUpdate update( *description );
+	fDatabase->UpdateObject( update );
+}
+#line 781
+
+// HYPOTHESIS: the same body as vfunction41 and vfunction43 in another slot.
+// FUNCTION: STARFLEETOP 0x0056e2fd
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction47( nDatabase::tDatabaseObjectUpdate update )
+{
 	fDatabase->UpdateObject( update );
 }
