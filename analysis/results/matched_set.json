@@ -4960,6 +4960,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004d06c7": {
+   "name": "tSFCPlayer::vfunction14",
+   "symbol": "?vfunction14@tSFCPlayer@@UAEHI@Z",
+   "unit": "unsorted/tSFCPlayer.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
