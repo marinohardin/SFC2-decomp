@@ -443,13 +443,30 @@ void fn_0040499a_Obj::fn_0040499a(char** _P, int _M)
     m3c = t;
 }
 
-// FUNCTION: STARFLEETOP 0x00404a0c
-void fn_00404230_Obj::fn_00404a0c()
+// HYPOTHESIS: the stream buffer's codecvt setup (basic_filebuf::_Initcvt in shape); the same
+// object as fn_00404230_Obj. It is a template member: compiled outside a template, VC6 adds an
+// unwind state for the new-expression and tests the bool with cmp, which the original lacks.
+template<class _E> class fn_00404230_ObjT
 {
-    m38 = (std::codecvt<char, char, int>*)&std::use_facet(getloc(), (std::codecvt<char, char, int>*)0, true);
+public:
+    void fn_00404a0c();
+    std::locale getloc() const;
+    char pad0[0x38];
+    std::codecvt<_E, char, int>* m38;
+    char pad3c[0x08];
+    std::basic_string<_E>* m44;
+    char pad48[0x04];
+    std::locale m4c;
+    unsigned long m50;
+};
+// FUNCTION: STARFLEETOP 0x00404a0c
+template<class _E> void fn_00404230_ObjT<_E>::fn_00404a0c()
+{
+    m38 = (std::codecvt<_E, char, int>*)&std::use_facet(getloc(), (std::codecvt<_E, char, int>*)0, true);
     m4c = std::_ADDFAC(m4c, m38);
     if (m38->always_noconv())
         m38 = 0;
     if (m44 == 0)
-        m44 = new std::string;
+        m44 = new std::basic_string<_E>;
 }
+template class fn_00404230_ObjT<char>;

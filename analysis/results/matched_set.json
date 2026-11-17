@@ -615,11 +615,11 @@
   },
   "0x00404a0c": {
    "name": "FUN_00404a0c",
-   "symbol": "?fn_00404a0c@fn_00404230_Obj@@QAEXXZ",
+   "symbol": "?fn_00404a0c@?$fn_00404230_ObjT@D@@QAEXXZ",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 174,
-   "score": 95.061,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
