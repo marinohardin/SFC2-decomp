@@ -6796,6 +6796,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x00545084": {
+   "name": "tAuctionItem::vfunction7_for_tAllocatedClass",
+   "symbol": "?SQLFillUpdateStream@tAuctionItem@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "unit": "unsorted/tAuctionItem.cpp",
+   "size": 413,
+   "score": 99.93,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

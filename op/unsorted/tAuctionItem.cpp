@@ -25,6 +25,7 @@ public:
 	virtual	void StreamIn( nDataStore::tInput& input );
 
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
+	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
@@ -105,4 +106,12 @@ void tAuctionItem::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
 	tDatabaseObject::SQLFillInsertStream( SQL );
 
 	*SQL << fBool_48 << ", '" << fn_006fc200( fString_4c ) << "', " << fID_5c.GetObjectID() << ", " << fInt_6c << ", " << fInt_70 << ", " << fDouble_78 << ", " << fInt_80 << ", " << fInt_84 << ", " << fInt_88 << ", " << fID_8c.GetObjectID() << ", " << fInt_9c << ", " << fInt_a0 << " )";
+}
+
+// FUNCTION: STARFLEETOP 0x00545084
+void tAuctionItem::SQLFillUpdateStream( std::stringstream* SQL, bool lastOne )
+{
+	tDatabaseObject::SQLFillUpdateStream( SQL, lastOne );
+
+	*SQL << "BiddingHasBegun=" << fBool_48 << ", ItemName='" << fn_006fc200( fString_4c ) << "', ItemID=" << fID_5c.GetObjectID() << ", ItemInfo=" << fInt_6c << ", AuctionValue=" << fInt_70 << ", AuctionRate=" << fDouble_78 << ", TurnOpened=" << fInt_80 << ", TurnToClose=" << fInt_84 << ", CurrentBid=" << fInt_88 << ", BidOwnerID=" << fID_8c.GetObjectID() << ", TurnBidMade=" << fInt_9c << ", BidMaximum=" << fInt_a0;
 }
