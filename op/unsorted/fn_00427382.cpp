@@ -108,6 +108,7 @@ public:
 	bool fn_00427623( int aArg, int aIndex );
 	void fn_00427648( int aArg, int aIndex );
 	int fn_00427669( tEntity *aEntity, int aIndex );
+	int fn_00427695( int aIndex, int aValue );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -210,4 +211,14 @@ int tObject_0042750f::fn_00427669( tEntity *aEntity, int aIndex )
 	if (aEntity == 0 || aIndex < 0 || aIndex >= 20 || field_0x54[aIndex] == 0)
 		return 0;
 	return fn_00427581( aIndex, aEntity->fTeam );
+}
+
+// HYPOTHESIS: the first entry for which 0x00427581 of entry aIndex gives aValue; -1 if none.
+// FUNCTION: STARFLEETOP 0x00427695
+int tObject_0042750f::fn_00427695( int aIndex, int aValue )
+{
+	for (int i = 0; i < 20; i++)
+		if (fn_00427581( aIndex, i ) == aValue)
+			return i;
+	return -1;
 }
