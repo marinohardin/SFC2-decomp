@@ -1111,3 +1111,9 @@ int tBaseWeapon::vfunction144()
 {
     return field_d0;
 }
+
+// FUNCTION: STARFLEETOP 0x004d8963
+int tBaseWeapon::vfunction146()
+{
+    return 8;
+}
