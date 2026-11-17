@@ -784,6 +784,9 @@ std::vector< tTransporterHoldItem >& std::vector< tTransporterHoldItem >::operat
 	return *this;
 }
 
+template<>
+void std::vector< tTransporterHoldItem >::push_back( const tTransporterHoldItem& _X );
+
 // MATCH-ONLY: the caller of the assignment is not recovered yet (HYPOTHESIS: an assignment
 // operator of a class holding this vector); this use makes the instance emit and is not original code.
 void fn_00447d69_user( std::vector< tTransporterHoldItem >& a, const std::vector< tTransporterHoldItem >& b )
@@ -793,4 +796,15 @@ void fn_00447d69_user( std::vector< tTransporterHoldItem >& a, const std::vector
 	// 0x00447d69 and inlines it in the other; this pointer makes the out-of-line copy emit.
 	tTransporterHoldItem& (tTransporterHoldItem::*assign)( const tTransporterHoldItem& ) = &tTransporterHoldItem::operator=;
 	(a[0].*assign)( b[0] );
+	// MATCH-ONLY: as above, a use that makes the push_back instance emit.
+	a.push_back( b[0] );
+}
+
+// MATCH-ONLY: the library's push_back for this element type, written out as the instance's
+// explicit specialization; insert( end(), _X ) inlines to insert( _Last, 1, _X ) at 0x00447f65.
+// FUNCTION: STARFLEETOP 0x00447f54
+template<>
+void std::vector< tTransporterHoldItem >::push_back( const tTransporterHoldItem& _X )
+{
+	insert( end(), _X );
 }
