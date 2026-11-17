@@ -392,3 +392,10 @@ void fn_0040dbea(tString* str, fn_0040d63f_Buf& buf)
 {
     buf.fn_0040d7d6(str);
 }
+
+// FUNCTION: STARFLEETOP 0x0040dbf8
+void fn_0040dbf8(double* src, fn_0040d63f_Buf& buf)
+{
+    float f = (float)*src;
+    fn_0040dac7((int*)&f, buf);
+}
