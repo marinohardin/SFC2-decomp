@@ -250,3 +250,18 @@ void *fn_006c1860(fn_006c1510_pool *pool, int (*func)(void *, void *), void *arg
 	}
 	return 0;
 }
+
+// HYPOTHESIS: a linear search over count elements of size bytes from base; returns the first
+// element for which func(arg, element) returns 0, or 0 when none does.
+// FUNCTION: STARFLEETOP 0x006c18a0
+void *fn_006c18a0(void *arg, char *base, int count, int size, int (*func)(void *, void *))
+{
+	int i;
+
+	for (i = 0; i < count; i++)
+	{
+		if (func(arg, base + i * size) == 0)
+			return base + i * size;
+	}
+	return 0;
+}
