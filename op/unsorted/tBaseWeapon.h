@@ -134,6 +134,7 @@ public:
     void fn_004d82e3(float *param_1);
     // HYPOTHESIS: swaps two floats; 0x004d871f.
     void fn_004d871f(float *param_1, float *param_2);
+    void fn_004d8732(int *param_1, int *param_2);
     virtual void vfunction71();
     virtual void vfunction72();
     virtual void vfunction73();
