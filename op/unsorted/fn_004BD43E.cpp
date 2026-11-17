@@ -129,6 +129,7 @@ public:
 	~c_004bd805_Object();
 	void fn_004bdd67();
 	void fn_004bd8d4( tString *text, int value );
+	bool fn_004bda12();
 
 	tString field_0;
 	c_004bd805_Entry field_28[ 500 ];
@@ -189,4 +190,15 @@ void c_004bd805_Object::fn_004bd8d4( tString *text, int value )
 		if ( field_5618 >= 500 )
 			field_5618 = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004bda12
+bool c_004bd805_Object::fn_004bda12()
+{
+	if ( field_5624 == true )
+	{
+		field_5624 = false;
+		return true;
+	}
+	return false;
 }
