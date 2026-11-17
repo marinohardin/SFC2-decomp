@@ -45,6 +45,9 @@ public:
 	void fn_0049629b( fn_00496253_record *record );
 	fn_00496253_object();
 	void fn_0049639c();
+	// HYPOTHESIS: called with this in ecx, the value at +0x28 + 0x40 * i and one of the labels
+	// "influence1".."influence6"; whether it uses this is not known.
+	void fn_00482c00( fn_0043d344_object *value, const char *name );
 
 	char m00[0x28];
 	fn_0043d344_object m28[6];
@@ -125,4 +128,15 @@ fn_00496330_object::fn_00496330_object()
 	fn_004d3592( &m04, g_0084ebf8 );
 	m00 = new fn_00496253_object;
 	m00->fn_0049639c();
+}
+
+// FUNCTION: STARFLEETOP 0x0049639c
+void fn_00496253_object::fn_0049639c()
+{
+	fn_00482c00( &m28[0], "influence1" );
+	fn_00482c00( &m28[1], "influence2" );
+	fn_00482c00( &m28[2], "influence3" );
+	fn_00482c00( &m28[3], "influence4" );
+	fn_00482c00( &m28[4], "influence5" );
+	fn_00482c00( &m28[5], "influence6" );
 }
