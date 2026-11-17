@@ -1,3 +1,6 @@
+#include "Common/Database/DatabaseID.h"
+#include "unsorted/tHexPoint.h"
+
 // FUNCTION: STARFLEETOP 0x005bc012
 int __fastcall FUN_005bc012(int *param_1)
 {
@@ -52,4 +55,19 @@ struct fn_005bc04b_owner
 void fn_005bc04b_owner::FUN_005bc04b(int param_1)
 {
 	FUN_005bce21(m08, 1, param_1);
+}
+
+// HYPOTHESIS: a record holding a database id and a hex position; the
+// destructor stores no vtable, so the id is a member, not a base.
+struct fn_005bc05c_record
+{
+	nDatabase::tID m00;
+	tHexPoint m10;
+
+	~fn_005bc05c_record();
+};
+
+// FUNCTION: STARFLEETOP 0x005bc05c
+fn_005bc05c_record::~fn_005bc05c_record()
+{
 }
