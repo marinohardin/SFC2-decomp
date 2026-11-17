@@ -24,3 +24,12 @@ void fn_006c13f0(unsigned long *output, unsigned char *input, unsigned int len)
 		output[i] = ((unsigned long)input[j]) | (((unsigned long)input[j+1]) << 8) |
 			(((unsigned long)input[j+2]) << 16) | (((unsigned long)input[j+3]) << 24);
 }
+
+#include <string.h>
+
+// HYPOTHESIS: a byte copy for the digest's buffers, written through the memcpy intrinsic.
+// FUNCTION: STARFLEETOP 0x006c1440
+void fn_006c1440(unsigned char *output, unsigned char *input, unsigned int len)
+{
+	memcpy(output, input, len);
+}
