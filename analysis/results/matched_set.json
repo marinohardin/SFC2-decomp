@@ -2206,6 +2206,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0042a41a": {
+   "name": "FUN_0042a41a",
+   "symbol": "?FUN_0042a41a@fn_0042a403_object@@QAE_NXZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

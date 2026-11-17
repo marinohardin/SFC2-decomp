@@ -95,13 +95,22 @@ class fn_0042a403_object
 {
 public:
 	bool FUN_0042a403( int bit );
+	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
+	bool FUN_0042a41a();
 
 	byte field_00[0x98];
 	unsigned long field_98;
+	bool field_9c;
 };
 
 // FUNCTION: STARFLEETOP 0x0042a403
 bool fn_0042a403_object::FUN_0042a403( int bit )
 {
 	return ( field_98 & ( 1 << bit ) ) ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a41a
+bool fn_0042a403_object::FUN_0042a41a()
+{
+	return field_9c;
 }
