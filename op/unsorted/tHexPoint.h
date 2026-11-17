@@ -14,7 +14,9 @@ public:
 	// HYPOTHESIS: the two coordinates; their types are not known.
 	tHexPoint(int x, int y);
 	tHexPoint(const tHexPoint &other);
-	~tHexPoint();
+	// The vector of these destroys each element through vtable slot 0 (0x0053a83f), so the
+	// destructor is virtual and +0x00 is the vtable pointer.
+	virtual ~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
 	void fn_005b6b62(int x, int y);
@@ -22,7 +24,6 @@ public:
 	// them; the stream takes them as long.
 	long fn_0055f269();
 	long fn_005e8f21();
-	int m_00;
 	int m_04;
 	int m_08;
 	int m_0c;

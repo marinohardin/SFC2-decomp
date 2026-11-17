@@ -693,6 +693,7 @@ fn_0053a73a_map& fn_0053a73a_map::operator=( const fn_0053a73a_map& other )
 struct fn_0053a7d1_vector
 {
 	fn_0053a7d1_vector( const fn_0053a7d1_vector& x );
+	void reserve( unsigned int n );
 	std::allocator< tHexPoint > m_alloc;
 	tHexPoint*	m_first;
 	tHexPoint*	m_last;
@@ -717,4 +718,38 @@ fn_0053a7d1_vector::fn_0053a7d1_vector( const fn_0053a7d1_vector& x )
 		fn_0042c9c5( dst, *src );
 	m_last = dst;
 	m_end = dst;
+}
+
+// MATCH-ONLY: the library's uninitialized_copy and _Destroy, inlined by the original; their
+// parameters become the locals the loops keep.
+inline tHexPoint* fn_0053a83f_copy( tHexPoint* first, tHexPoint* last, tHexPoint* dst )
+{
+	for( ; first != last; ++dst, ++first )
+		fn_0042c9c5( dst, *first );
+	return dst;
+}
+
+inline void fn_0053a83f_destroy( tHexPoint* first, tHexPoint* last )
+{
+	for( ; first != last; ++first )
+		first->~tHexPoint();
+}
+
+// FUNCTION: STARFLEETOP 0x0053a83f
+void fn_0053a7d1_vector::reserve( unsigned int n )
+{
+	if( ( m_first == 0 ? 0 : m_end - m_first ) < n )
+	{
+		int count = n;
+		if( count < 0 )
+			count = 0;
+		tHexPoint* s = (tHexPoint*)operator new( count * sizeof( tHexPoint ) );
+		fn_0053a83f_copy( m_first, m_last, s );
+		fn_0053a83f_destroy( m_first, m_last );
+		operator delete( m_first );
+		m_end = s + n;
+		int size = ( m_first == 0 ? 0 : m_last - m_first );
+		m_first = s;
+		m_last = s + size;
+	}
 }
