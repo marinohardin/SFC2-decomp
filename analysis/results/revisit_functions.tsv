@@ -1,7 +1,6 @@
 address	name	best_score	attempts	last_model	listed	note
 0x0063f5a0	tCoopThreadPart::mSwitchTo	97.78	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.78%
 0x00647e40	tSoundChannelCommand::mDump	97.60	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.60%
-0x0061c290	tFileSession::mDuplicatePath	97.81	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.81%
 0x0061c320	FUN_0061c320	95.93	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 95.93%
 0x0064bed0	tSoundChannel::mGetFirstPlayingCommand	99.36	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.36%
 0x0061d200	tVolume::mValid	99.70	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.70%
