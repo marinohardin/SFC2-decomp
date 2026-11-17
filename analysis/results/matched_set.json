@@ -5968,6 +5968,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0056f4aa": {
+   "name": "FUN_0056f4aa",
+   "symbol": "?fn_0056f4aa@fn_0056f4aa_owner@@QAE_NPAVfn_0056f4aa_target@@@Z",
+   "unit": "unsorted/fn_0056F000.cpp",
+   "size": 23,
+   "score": 77.222,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

@@ -347,3 +347,36 @@ void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_00
 	}
 	guard.Leave();
 }
+
+// HYPOTHESIS: the type behind the pointer at +8 and the compared field at +0x10 are not recovered.
+class fn_0056f4aa_base_a {
+public:
+	int a;
+};
+
+class fn_0056f4aa_base_b {
+public:
+	int b;
+};
+
+class fn_0056f4aa_target : public fn_0056f4aa_base_a, public fn_0056f4aa_base_b {
+public:
+	int fn_getter();
+};
+
+class fn_0056f4aa_owner {
+public:
+	bool fn_0056f4aa(fn_0056f4aa_target *object);
+	int m0;
+	int m4;
+	int (fn_0056f4aa_target::*m8)();
+	int m10;
+};
+
+#line 377
+// FUNCTION: STARFLEETOP 0x0056f4aa
+bool fn_0056f4aa_owner::fn_0056f4aa(fn_0056f4aa_target *object)
+{
+	int value = (object->*m8)();
+	return value == m10;
+}
