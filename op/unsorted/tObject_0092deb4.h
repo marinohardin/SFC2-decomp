@@ -62,16 +62,17 @@ public:
 	virtual void vfunction38();
 	// HYPOTHESIS: returns a kind from 0 to 15 (0x004b1ba9 switches on it).
 	virtual int vfunction39();
-	virtual void vfunction40();
+	// HYPOTHESIS: 0x0060c1c7 passes slots 40, 42, 44 and 46 an int it reads from a record.
+	virtual void vfunction40(int n);
 	virtual void vfunction41();
-	virtual void vfunction42();
+	virtual void vfunction42(int n);
 	virtual void vfunction43();
-	virtual void vfunction44();
+	virtual void vfunction44(int n);
 	virtual void vfunction45();
-	virtual void vfunction46();
+	virtual void vfunction46(int n);
 	virtual void vfunction47();
 	virtual void vfunction48();
-	virtual void vfunction49();
+	virtual void vfunction49(const char *text);
 	virtual void vfunction50();
 	virtual void vfunction51();
 	virtual void vfunction52();
@@ -131,7 +132,8 @@ public:
 	virtual void vfunction103();
 	virtual void vfunction104();
 	virtual void vfunction105();
-	virtual void vfunction106();
+	// HYPOTHESIS: 0x0060c1c7 passes the sum of two prestige values.
+	virtual void vfunction106(int n);
 	virtual void vfunction107();
 	virtual void vfunction108();
 	virtual void vfunction109();

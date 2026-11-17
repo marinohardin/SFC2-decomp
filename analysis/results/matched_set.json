@@ -7057,6 +7057,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0060c1c7": {
+   "name": "FUN_0060c1c7",
+   "symbol": "?fn_0060c1c7@C_0060c1c7@@QAEXXZ",
+   "unit": "unsorted/fn_0060C000.cpp",
+   "size": 538,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0061bae0": {
    "name": "tFileSession::tFileSession",
    "symbol": "??0tFileSession@@QAE@XZ",

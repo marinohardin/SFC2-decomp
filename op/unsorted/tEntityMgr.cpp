@@ -532,15 +532,15 @@ public:
 
 
 
-// HYPOTHESIS: the object at 0x0096ed60; fn_0052ca48 takes a text and a flag
-// and returns a value passed on to 0x0092deb4's slot 74.
-class tObject_0096ed60
-{
-public:
-    int32 fn_0052ca48(char *aText, int32 aFlag);
-};
+// The object at 0x0096ed60; fn_0052ca48's value goes on to 0x0092deb4's slot 74.
+#include "unsorted/tObject_0096ed60.h"
 
-extern tObject_0096ed60 gObject_0096ed60;
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00423831
 // HYPOTHESIS: removes and deletes every entity (the marker's text is "Clean
