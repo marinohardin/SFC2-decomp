@@ -27,13 +27,23 @@ class fn_0053f25c_owner
 {
 public:
 	char *fn_0053f25c();
+	char fn_0053f260();
 
 	char m_00[0x58];
 	char m_58[4];
+	char m_5c[0x0c];
+	char m_68;
 };
 
 // FUNCTION: STARFLEETOP 0x0053f25c
 char *fn_0053f25c_owner::fn_0053f25c()
 {
 	return m_58;
+}
+
+// HYPOTHESIS: the neighbouring getter's owner also holds the byte at 0x68 this one returns.
+// FUNCTION: STARFLEETOP 0x0053f260
+char fn_0053f25c_owner::fn_0053f260()
+{
+	return m_68;
 }
