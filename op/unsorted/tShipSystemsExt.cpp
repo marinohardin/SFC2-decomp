@@ -45,6 +45,7 @@ class tShipSystemsExt : public tShipSystems
 public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
+    virtual char* vfunction57();
     virtual char* vfunction58();
     virtual void vfunction107( float param_1 );
 
@@ -233,4 +234,12 @@ void tShipSystemsExt::vfunction107( float param_1 )
 char* tShipSystemsExt::vfunction58()
 {
     return m584 + 0xc4;
+}
+
+// HYPOTHESIS: the return type, as in tShipSystemsFighter::vfunction57; the start of the block
+// at m584.
+// FUNCTION: STARFLEETOP 0x00448868
+char* tShipSystemsExt::vfunction57()
+{
+    return m584;
 }
