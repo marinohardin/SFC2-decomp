@@ -81,3 +81,9 @@ void tIndividualShipSystem::vfunction19(int param_1)
     if (param_1 >= g_0090b518)
         g_0090b518 = param_1 + 1;
 }
+
+// FUNCTION: STARFLEETOP 0x004366b1
+int tEntity::vfunction12()
+{
+    return fTargetID;
+}
