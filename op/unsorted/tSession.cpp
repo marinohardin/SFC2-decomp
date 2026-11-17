@@ -10,6 +10,23 @@
 
 class fn_0068d830_Item;
 
+// HYPOTHESIS: a four-byte value at the parser's +0x84 that fn_00690a60 sets from the item at
+// +0x9c. The store is followed by a reload of the item pointer, which a plain int member does
+// not give; an inline assignment returning *this does, so the member is taken as a small class.
+class fn_00690a60_Value
+{
+public:
+	fn_00690a60_Value	&operator=( int value );
+
+	int	f_00;
+};
+
+inline fn_00690a60_Value &fn_00690a60_Value::operator=( int value )
+{
+	f_00 = value;
+	return *this;
+}
+
 // HYPOTHESIS: the object the parse builds; the parser keeps it at +0x6c and the caller gets it.
 class fn_0068ff60_Root
 {
@@ -37,6 +54,13 @@ public:
 	// HYPOTHESIS: the arguments point into the parser at +0x80 and +0x8c (fn_00690a20).
 	void	fn_0068e7b0( int *a );
 	void	fn_0068e860( unsigned char *a, int b );
+	// HYPOTHESIS: a link target and the browser it opens in (fn_00690a60).
+	void	fn_0068e3f0( tString &href, tString &browser, int c );
+	void	fn_0068e8e0( tString &name );
+
+	char	pad_04[0x9c - 0x04];
+	// HYPOTHESIS: state fn_00690a60 copies into the parser at +0x84; its type is not known.
+	int	f_9c;
 };
 
 // HYPOTHESIS: the layout is read from the inlined destructor in fn_0068ff60 only. The
@@ -76,6 +100,8 @@ public:
 	void	fn_00691ed0();
 	void	fn_00691270();
 	void	fn_00690a20();
+	void	fn_00690a60();
+	void	fn_00691360();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -87,14 +113,16 @@ public:
 	tDir	f_70;
 	// HYPOTHESIS: state fn_00690a20 hands to the item; its type is not known.
 	int	f_80;
-	char	pad_84[0x8c - 0x84];
+	fn_00690a60_Value	f_84;
+	char	pad_88[0x8c - 0x88];
 	// HYPOTHESIS: the current alignment; fn_00690900 passes it on unless an align attribute sets one.
 	unsigned char	f_8c;
 	char	pad_8d[0x92 - 0x8d];
 	unsigned short	f_92;
 	std::vector<unsigned short>	f_94;
 	std::vector<unsigned short>	f_a4;
-	std::vector<unsigned short>	f_b4;
+	// HYPOTHESIS: one entry per open anchor tag, 0 for a link and 1 for a named anchor (fn_00690a60).
+	std::vector<unsigned long>	f_b4;
 	char	pad_c4[0xd8 - 0xc4];
 	// HYPOTHESIS: set, fn_006904d0 does nothing.
 	char	f_d8;
@@ -398,4 +426,50 @@ void tHtmlParser::fn_00690a20()
 	f_40->fn_0068e7b0( &f_80 );
 	f_40->fn_0068e860( &f_8c, 1 );
 	f_92 = ' ';
+}
+
+// FUNCTION: STARFLEETOP 0x00690a60
+// HYPOTHESIS: an anchor tag: with no name attribute it starts a link to href in browser,
+// otherwise it marks a named anchor; f_b4 records which, for the closing tag.
+void tHtmlParser::fn_00690a60()
+{
+	tString	href;
+	tString	browser;
+	tString	name;
+	tString	anchor;
+
+	while ( fn_0068f5c0( name ) )
+	{
+		if ( name == "href" )
+		{
+			if ( fn_0068f660() )
+				fn_0068f6b0( href );
+		}
+		else if ( name == "browser" )
+		{
+			if ( fn_0068f660() )
+				fn_0068f6b0( browser );
+		}
+		else if ( name == "name" )
+		{
+			if ( fn_0068f660() )
+				fn_0068f6b0( anchor );
+		}
+		else
+			fn_0068f480();
+	}
+
+	if ( anchor.mStrLen() == 0 )
+	{
+		fn_00691360();
+		f_84 = f_40->f_9c;
+		f_40->fn_0068e7b0( &f_80 );
+		f_40->fn_0068e3f0( href, browser, 0 );
+		f_b4.push_back( 0 );
+	}
+	else
+	{
+		f_40->fn_0068e8e0( anchor );
+		f_b4.push_back( 1 );
+	}
 }
