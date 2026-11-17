@@ -39,7 +39,39 @@ tMetaMapHex::tMetaMapHex( bool param_1 )
 	}
 }
 
+// The SDK's inline destructor; its body in view lets the compiler see the call cannot throw.
+// HYPOTHESIS: the original took it from the SDK header; here it is repeated as
+// Common/Thread/ThreadPool.cpp and unsorted/tClientCharacter.cpp do.
+inline tOptex::~tOptex()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections && fpSharedInfo != NULL )
+		{
+			::DeleteCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+
+		if( fEvent != NULL )
+		{
+			::CloseHandle( fEvent );
+		}
+
+		if( fFileMapping == NULL )
+		{
+			delete fpSharedInfo;
+		}
+		else
+		{
+			::UnmapViewOfFile( fpSharedInfo );
+			::CloseHandle( fFileMapping );
+		}
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x0053943e
+// FUNCTION: STARFLEETOP 0x00539464
 tMetaMapHex::~tMetaMapHex()
 {
+	m_bc.Enter();
+	m_bc.Leave();
 }
