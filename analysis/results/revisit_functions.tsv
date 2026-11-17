@@ -6,7 +6,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f3d50	tThreadPool::Shutdown	99.94	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.94%
 0x006f3e50	tThreadPool::ShutdownComplete	99.93	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.93%
 0x006f4be0	tThreadPool::QueueWorkItem	99.95	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.95%
-0x006a8930	FUN_006a8930	92.16	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 92.16%
 0x006f53f0	tOSVersion::Instance	99.86	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.86%
 0x00709270	nDatabase::tFileDatabaseMgr::Load	79.66	2	sonnet	2026-11-11T12:40:55Z	attempt 2 (sonnet) did not raise the best; best 79.66%
 0x0062e1c0	twFileSystemPart::mGetVolIterator	0.63	2	sonnet	2026-11-11T12:40:55Z	best not above 90% after 2 attempts; best 0.63%

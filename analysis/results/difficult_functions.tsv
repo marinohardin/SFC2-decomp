@@ -233,3 +233,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x006580c0	tAudioFileInfoPart::mGetNewAsynchReadInfo	3	fable	99.94	2026-11-17T18:13:06Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.94%
 0x00658ac0	tChannelGroup::mUnload	5	fable	98.70	2026-11-17T18:31:52Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 98.70%
 0x0066e6c0	tSoundMemoryBlockManager::mTestBlockIntegrity	5	fable	99.53	2026-11-17T18:39:08Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.53%
+0x006a8930	FUN_006a8930	5	fable	92.52	2026-11-17T19:21:38Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 92.52%
