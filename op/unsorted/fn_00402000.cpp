@@ -323,6 +323,8 @@ std::string __stdcall fn_0040257f(std::string src, char* found)
 }
 
 void __cdecl fn_007364c0(char* dst, const char* src);
+extern char g_0083a3e0[];
+char fn_0040503b(const std::string& self, char* key);
 
 // HYPOTHESIS: the names and layouts below are guesses from the access pattern.
 struct fn_004026ec_Name : public std::string
@@ -340,6 +342,20 @@ struct fn_004026ec_Dest
 {
     char pad[0x14];
     char m14[4];
+    void fn_00407db2(int v);
+    void fn_00407dbf(int v);
+    void fn_00407dcc(int v);
+    void fn_00407dd9(int v);
+    void fn_00407de6(int v);
+    void fn_00407df3(int v);
+};
+
+struct fn_004027c8_Rec
+{
+    int a;
+    int b;
+    int c;
+    char d;
 };
 
 class fn_004026ec_Owner
@@ -385,4 +401,44 @@ void fn_004026ec_Owner::fn_00402763(fn_004026ec_Dest* d, int a)
     p[0x388 / 4] = 0;
     p[0x38c / 4] = 0;
     p[0x10 / 4] = 0x16;
+}
+
+// FUNCTION: STARFLEETOP 0x004027c8
+void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, int a)
+{
+    int n = (char)a;
+    int* pe = (int*)e;
+    int* p = (int*)d;
+    p[0x628 / 4] = n;
+    p[0x570 / 4] = pe[0x20 / 4] * n;
+    p[0x5dc / 4] = pe[0x30 / 4] * n;
+    int* q = &p[0x618 / 4];
+    *q = pe[0x44 / 4] * n;
+    p[0xc / 4] = pe[4 / 4];
+    *q = 6;
+    p[0x5e0 / 4] = pe[0x38 / 4];
+    p[0x5e4 / 4] = 999;
+    fn_007364c0((char*)&p[0x38 / 4], ((std::string*)&pe[0x58 / 4])->c_str());
+    fn_007364c0((char*)&p[0x238 / 4], ((std::string*)&pe[0x8 / 4])->c_str());
+    fn_007364c0((char*)&p[0x138 / 4], ((std::string*)&pe[0x48 / 4])->c_str());
+    if (fn_0040503b(((std::string*)&pe[0x8 / 4])->substr(((std::string*)&pe[0x8 / 4])->size() - 2, std::string::npos), g_0083a3e0))
+        p[0x10 / 4] = 0x17;
+    d->fn_00407db2(pe[0x1c / 4]);
+    d->fn_00407dd9(pe[0x2c / 4]);
+    d->fn_00407de6(pe[0x28 / 4]);
+    d->fn_00407df3(pe[0x18 / 4]);
+    d->fn_00407dbf(pe[0x34 / 4]);
+    d->fn_00407dcc(pe[0x40 / 4]);
+    for (a = 0; a < n; a++)
+    {
+        fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (char)(a * 5);
+        fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68);
+        for (int k = 0; k < 5; k++)
+        {
+            dst[k].a = src[k].a;
+            dst[k].b = src[k].b;
+            dst[k].c = src[k].c;
+            dst[k].d = src[k].d;
+        }
+    }
 }
