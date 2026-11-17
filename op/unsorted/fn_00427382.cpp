@@ -402,6 +402,7 @@ class tPlayingTeamInfo : public nDataStore::tStreamable
 {
 public:
 	tPlayingTeamInfo( const tPlayingTeamInfo& source );
+	virtual	~tPlayingTeamInfo();
 
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
@@ -445,5 +446,12 @@ tPlayingTeamInfo::tPlayingTeamInfo( const tPlayingTeamInfo& source )
 	  field_0x4c( source.field_0x4c ),
 	  field_0x50( source.field_0x50 ),
 	  field_0x54( source.field_0x54 )
+{
+}
+
+// HYPOTHESIS: the implicit destructor, written out; not inlined into the deleting destructor,
+// whose call the linker bound to the copy at 0x0053e638.
+// FUNCTION: STARFLEETOP 0x00427b96
+inline tPlayingTeamInfo::~tPlayingTeamInfo()
 {
 }
