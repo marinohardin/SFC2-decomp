@@ -78,3 +78,33 @@ void fn_006c14c0(unsigned char *input, unsigned int inputLen, char *output)
 	fn_006c09e0(digest, &context);
 	fn_006c1490(digest, output);
 }
+
+#include <stdlib.h>
+
+// HYPOTHESIS: a pool header of fixed-size elements; field meanings are guesses from the
+// function below (element size, a count that defaults to 8, and the data block).
+struct fn_006c1510_pool
+{
+	unsigned long field_00;
+	unsigned long field_04;
+	unsigned long field_08;
+	unsigned long field_0c;
+	unsigned long field_10;
+	void *field_14;
+};
+
+// FUNCTION: STARFLEETOP 0x006c1510
+fn_006c1510_pool *fn_006c1510(unsigned long size, unsigned long count, unsigned long param)
+{
+	fn_006c1510_pool *pool = (fn_006c1510_pool *)malloc(sizeof(fn_006c1510_pool));
+
+	if (count == 0)
+		count = 8;
+	pool->field_08 = size;
+	pool->field_00 = 0;
+	pool->field_04 = count;
+	pool->field_0c = count;
+	pool->field_10 = param;
+	pool->field_14 = malloc(size * count);
+	return pool;
+}
