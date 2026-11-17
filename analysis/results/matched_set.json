@@ -7633,6 +7633,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00523afd": {
+   "name": "FUN_00523afd",
+   "symbol": "?fn_00523afd@tObject_005237dc@@QAEXPAVtObject_00528a11@@@Z",
+   "unit": "unsorted/fn_00523000.cpp",
+   "size": 324,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00538cca": {
    "name": "tMetaMapDesc::tMetaMapDesc",
    "symbol": "??0tMetaMapDesc@@QAE@PAPAXK_N@Z",

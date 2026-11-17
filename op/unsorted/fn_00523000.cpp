@@ -844,3 +844,40 @@ void tObject_005237dc::fn_00523ad3()
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00523afd
+// HYPOTHESIS: the selector and the object 0x005235a7 returns are declared only in tAICaptain.cpp
+// and tFleetEntry.cpp; their +0x8 field (the row) and +0x3a44 flag are read through offsets.
+void tObject_005237dc::fn_00523afd(tObject_00528a11 *aSelector)
+{
+	tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(m_140);
+	int i = 0;
+	if (ship == NULL)
+		return;
+	float remaining = ship->field_0xad4->vfunction2();
+	remaining -= fn_00523967();
+	if (m_144)
+		m_14c = 3;
+	if (m_14c == 0)
+		m_14c = 1;
+	tObject_005235a7 *captain = g_p0090bed4->fn_005235a7(m_140);
+	if (captain != NULL && *((char *)captain + 0x3a44))
+		m_14c = 4;
+	fn_00523c59();
+	if (m_34dc != NULL) {
+		float request = m_34dc->m_14.vfunction3();
+		if (request <= remaining) {
+			m_34dc->m_14.vfunction0(request);
+			m_34dc->m_14.vfunction1();
+			remaining -= request;
+		}
+	}
+	for (; i < m_34b0; i++) {
+		if (remaining <= 0.0f)
+			break;
+		if (m_34b4[i] == 5)
+			remaining = fn_00523e72(remaining);
+		else
+			remaining = ((tObject_005236ea *)&m_150[((int *)aSelector)[2] * 6 + m_34b4[i]])->fn_005236ea(remaining);
+	}
+}

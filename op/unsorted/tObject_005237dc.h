@@ -50,6 +50,25 @@ public:
 class tExtraEnergyRequest;
 class tObject_00528a11;
 
+// HYPOTHESIS: the part at +0x14 of the object at +0x34dc of tObject_005237dc: slot 3 (offset 0xc)
+// returns the amount it asks for, slot 0 takes the amount given, slot 1 follows it.
+class tObject_00523afd_Request
+{
+public:
+	virtual void vfunction0(float amount);
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual float vfunction3();
+};
+
+// HYPOTHESIS: the object at +0x34dc of tObject_005237dc; only the part at +0x14 is known.
+class tObject_00523afd_Owner
+{
+public:
+	char m_00[0x14];
+	tObject_00523afd_Request m_14;
+};
+
 // HYPOTHESIS: the power object at 0xd4 of tAICaptain, 0x34e0 bytes; its constructor (0x005237dc) takes the ship ID and 0x00523a86 adds an energy request to it.
 class tObject_005237dc
 {
@@ -63,6 +82,8 @@ public:
 	int fn_005238aa(void *aValue); // HYPOTHESIS: appends to the vector at +0x34cc and returns the index it got.
 	void fn_005238d7(int aColumn, float amount, bool partial, int index, int *pSelector); // HYPOTHESIS: pSelector[2] picks the row; with none, all four rows of the column.
 	float fn_00523967(); // HYPOTHESIS: sums floats the ship's systems report; 0 without the ship.
+	void fn_00523c59();
+	float fn_00523e72(float amount); // HYPOTHESIS: serves column 5 and returns what is left.
 
 	float m_00[4];
 	tObject_005237d1 m_10[25];
@@ -76,9 +97,9 @@ public:
 	int m_14c;
 	tObject_005236d8 m_150[24];
 	int m_34b0;
-	char m_34b4[0x18];
+	int m_34b4[6]; // HYPOTHESIS: the columns of m_150 in the order 0x00523afd serves them; 5 is special.
 	tObject_005237dc_Vector m_34cc;
-	int m_34dc;
+	tObject_00523afd_Owner *m_34dc;
 };
 
 inline unsigned int tObject_005237dc_Vector::size() const

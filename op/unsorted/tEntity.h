@@ -291,7 +291,7 @@ class tObject_0042496f_member
 {
 public:
 	virtual void vfunction1();
-	virtual void vfunction2();
+	virtual float vfunction2(); // HYPOTHESIS: slot 1 (offset 4) returns the power 0x00523afd shares out.
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual void vfunction5();
