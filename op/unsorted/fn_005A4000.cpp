@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005A4000.cpp
-// Functions: 0x005a4173 to 0x005a4cdb, 37 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: class and member names are not recovered; the object is a tOptex
+// with a member at +0x238 read under the lock.
+class fn_005A4173_Owner : public tOptex
+{
+public:
+	int		fn_005A4173();
+
+	char		pad[0x238 - sizeof(tOptex)];
+	int		fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005a4173
+int fn_005A4173_Owner::fn_005A4173()
+{
+	Enter();
+	int value = fValue;
+	Leave();
+	return value;
+}
