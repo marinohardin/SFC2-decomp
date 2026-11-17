@@ -675,3 +675,15 @@ fn_0053a73a_map::tree::~tree()
 	operator delete( m_nil );
 	m_nil = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a79b
+fn_0053a73a_map& fn_0053a73a_map::operator=( const fn_0053a73a_map& other )
+{
+	if( this != &other )
+	{
+		m_tree.erase( iterator( m_tree.m_head->left ), iterator( m_tree.m_head ) );
+		m_tree.m_comp = other.m_tree.m_comp;
+		m_tree.fn_0053aab4( other.m_tree );
+	}
+	return *this;
+}

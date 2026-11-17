@@ -53,6 +53,8 @@ struct fn_0053a73a_map
 		~tree();
 		// HYPOTHESIS: the out-of-line range erase 0x0053aa06.
 		iterator erase( iterator first, iterator last );
+		// HYPOTHESIS: the out-of-line copy of another tree's nodes 0x0053aab4.
+		void fn_0053aab4( const tree& other );
 		std::allocator< int32 > m_alloc;
 		std::less< int32 > m_comp;
 		char	m_pad[2];
