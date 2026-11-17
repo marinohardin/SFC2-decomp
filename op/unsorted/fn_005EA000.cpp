@@ -498,12 +498,18 @@ void tTree_005ea14b::iterator::fn_005ea7c6()
 // optex) this is an out-of-line copy of the SDK's tSingleAccessWrapper<T>::~tSingleAccessWrapper,
 // with 0x005ea827 as that instance's Delete. The template is declared only inside
 // unsorted/tClientCharacter.cpp, so it is not declared a second time here.
+// HYPOTHESIS: the pointee; only its non-virtual destructor (0x005e45a0) is known.
+class tObject_005e45a0 {
+public:
+	~tObject_005e45a0();
+};
+
 class tObject_005ea7f8 {
 public:
 	~tObject_005ea7f8();
 	void fn_005ea827();
 
-	int *m_00;
+	tObject_005e45a0 *m_00;
 	mutable tOptex m_04;
 };
 
@@ -511,4 +517,15 @@ public:
 tObject_005ea7f8::~tObject_005ea7f8()
 {
 	fn_005ea827();
+}
+
+// FUNCTION: STARFLEETOP 0x005ea827
+void tObject_005ea7f8::fn_005ea827()
+{
+	m_04.Enter();
+	if (m_00 != NULL) {
+		delete m_00;
+		m_00 = NULL;
+	}
+	m_04.Leave();
 }
