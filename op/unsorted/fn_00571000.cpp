@@ -257,10 +257,26 @@ class fn_00571676_owner : public fn_00571676_base {
 public:
 	fn_00571676_owner(long a, long b, std::string s);
 	std::string fn_00571676_str;
+	bool fn_005716e0(int a);
 };
 
 // FUNCTION: STARFLEETOP 0x00571676
 fn_00571676_owner::fn_00571676_owner(long a, long b, std::string s)
 	: fn_00571676_base(a, b), fn_00571676_str(s)
 {
+}
+
+// HYPOTHESIS: stand-in for the callee's object type; the call is a thiscall.
+class fn_005716e0_target {
+public:
+	std::string fn_get();
+};
+
+// FUNCTION: STARFLEETOP 0x005716e0
+// HYPOTHESIS: the long at +8 is a thiscall function pointer returning a std::string, applied to
+// the long at +0xc plus the argument.
+bool fn_00571676_owner::fn_005716e0(int a)
+{
+	typedef std::string (fn_005716e0_target::*fn_get_t)();
+	return (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))().compare(fn_00571676_str) == 0;
 }
