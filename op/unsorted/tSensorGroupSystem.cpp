@@ -51,6 +51,7 @@ public:
     // HYPOTHESIS: a value for one map cell; 0x0043f023 sums it along a line of cells.
     int fn_0043f618(int x, int y);
     virtual void vfunction39(float param_1);
+    virtual float vfunction70();
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -1331,4 +1332,13 @@ void tSensorGroupSystem::vfunction39(float param_1)
             fn_0043e09e();
         fn_0043e201(param_1);
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0043f2cb
+// HYPOTHESIS: the original reads the values at +0x18 of field_f8 and field_d4 as ints and
+// converts their sum with fild; field_d4 and field_f8 may hold integers (0x0043e642 passes
+// them ints), though they share tMinMaxFloat's vftable.
+float tSensorGroupSystem::vfunction70()
+{
+    return (float)(*(int*)&field_f8.m18 + *(int*)&field_d4.m18);
 }
