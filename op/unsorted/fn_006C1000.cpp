@@ -176,3 +176,12 @@ void fn_006c16a0(fn_006c1510_pool *pool, void *element, int index)
 {
 	memcpy(fn_006c15c0(pool, index), element, pool->field_08);
 }
+
+// HYPOTHESIS: removes the element at index, moving the later elements down one place.
+// FUNCTION: STARFLEETOP 0x006c16e0
+void fn_006c16e0(fn_006c1510_pool *pool, int index)
+{
+	if (index < (int)pool->field_00 - 1)
+		memmove(fn_006c15c0(pool, index), fn_006c15c0(pool, index + 1), (pool->field_00 - index - 1) * pool->field_08);
+	pool->field_00--;
+}
