@@ -615,3 +615,35 @@ template<> const std::ctype<char>& __cdecl std::use_facet(const std::locale& _L,
 // HYPOTHESIS: istream::ipfx (in another unit) calls this out-of-line instantiation.
 const std::ctype<char>& (__cdecl *g_fn_00404b5e)(const std::locale&, const std::ctype<char> *, bool)
     = &std::use_facet;
+
+// HYPOTHESIS: the out-of-line copy of the library's ctype<char> constructor, written as a stand-in
+// class because the header defines it in the class; +0x10 is the table, +0x14 the delete flag, and
+// 0x00404d6e is the private _Init taking a _Locinfo.
+extern const short *g_00c80334;
+
+class fn_00404cb2_Ctype : public std::locale::facet
+{
+public:
+    fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs);
+    void fn_00404d6e(const std::_Locinfo&);
+    char pad08[8];
+    const short *m10;
+    size_t m14;
+};
+
+// FUNCTION: STARFLEETOP 0x00404cb2
+fn_00404cb2_Ctype::fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs)
+    : std::locale::facet(_Refs)
+{
+    std::_Lockit _Lk;
+    fn_00404d6e(std::_Locinfo("C"));
+    if (m14)
+    {
+        operator delete((void *)m10);
+        m14 = 0;
+    }
+    if (_Tab == 0)
+        m10 = g_00c80334;
+    else
+        m10 = _Tab, m14 = _Df;
+}
