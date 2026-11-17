@@ -119,6 +119,7 @@ public:
 	void fn_0054368b(bool flag);
 	void fn_005436a5(bool flag);
 	bool fn_005436bf(std::string text);
+	bool fn_00543702(int value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -539,5 +540,13 @@ void fn_005430ad_owner::fn_005436a5(bool flag)
 bool fn_005430ad_owner::fn_005436bf(std::string text)
 {
 	m0e0 = text;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the dword at +0x108 (0x00543495 is its getter); always reports success.
+// FUNCTION: STARFLEETOP 0x00543702
+bool fn_005430ad_owner::fn_00543702(int value)
+{
+	m108 = value;
 	return true;
 }
