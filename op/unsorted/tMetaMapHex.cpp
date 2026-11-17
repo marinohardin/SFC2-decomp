@@ -802,3 +802,23 @@ std::pair< fn_0053a6cc_map::iterator, bool > fn_0053a6cc_map::insert( const valu
 	std::pair< iterator, bool > result = m_tree.insert( v );
 	return std::pair< iterator, bool >( result.first, result.second );
 }
+
+// FUNCTION: STARFLEETOP 0x0053aa06
+fn_0053a73a_map::iterator fn_0053a73a_map::tree::erase( iterator first, iterator last )
+{
+	if( m_size == 0 || first.m_node != m_head->left || last.m_node != m_head )
+	{
+		while( first != last )
+			erase( first++ );
+		return first;
+	}
+	else
+	{
+		fn_0053ac4e( m_head->parent );
+		m_head->parent = m_nil;
+		m_size = 0;
+		m_head->left = m_head;
+		m_head->right = m_head;
+		return iterator( m_head->left );
+	}
+}
