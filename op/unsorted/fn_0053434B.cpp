@@ -287,3 +287,24 @@ fn_005346f9_object::~fn_005346f9_object()
     ((fn_0053440f_object*)&field_2c)->fn_005ff7ac();
     ((fn_0053440f_object*)&field_3c)->fn_005ff7ac();
 }
+
+// HYPOTHESIS: a table of twenty 12-byte entries at 0x0085a298 whose first long is matched
+// against the value; the address of the rest of each entry is appended to the first vector.
+struct fn_005347bd_entry
+{
+    long field_00;
+    fn_00534461_entry field_04;
+};
+
+extern fn_005347bd_entry g_0085a298[20];
+
+// FUNCTION: STARFLEETOP 0x005347bd
+void fn_005346f9_object::fn_005347bd(long value)
+{
+    fn_005347bd_entry* entry = g_0085a298;
+    for (int n = 20; n != 0; n--, entry++)
+    {
+        if (entry->field_00 == value)
+            field_2c.push_back(&entry->field_04);
+    }
+}
