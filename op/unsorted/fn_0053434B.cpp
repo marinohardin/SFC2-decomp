@@ -125,6 +125,7 @@ class fn_005344a3_object
 {
 public:
     fn_005344a3_object(long value);
+    ~fn_005344a3_object();
 
     tString field_00;
     long field_28;
@@ -138,4 +139,12 @@ fn_005344a3_object::fn_005344a3_object(long value)
     unsigned int n = 20;
     while (n-- > 0)
         field_2c[n] = new fn_0053440f_object();
+}
+
+// FUNCTION: STARFLEETOP 0x005344ff
+fn_005344a3_object::~fn_005344a3_object()
+{
+    unsigned int n = 20;
+    while (n-- > 0)
+        delete field_2c[n];
 }
