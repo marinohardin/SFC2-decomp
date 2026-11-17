@@ -435,3 +435,25 @@ void fn_0040dc84(unsigned char* p, fn_0040d63f_Buf& buf)
 {
     buf.fn_0040d897(p, 1, 0);
 }
+
+// FUNCTION: STARFLEETOP 0x0040dc96
+void fn_0040dc96(int size, void* p, fn_0040d63f_Buf& buf)
+{
+    switch (size) {
+    case 1: {
+        unsigned char b = *(unsigned char*)p;
+        fn_0040dc67(&b, buf);
+        break;
+    }
+    case 2: {
+        short s = *(short*)p;
+        fn_0040dc2e(&s, buf);
+        break;
+    }
+    case 4: {
+        int v = *(int*)p;
+        fn_0040d924(&v, buf);
+        break;
+    }
+    }
+}

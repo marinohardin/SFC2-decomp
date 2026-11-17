@@ -1990,6 +1990,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040dc96": {
+   "name": "FUN_0040dc96",
+   "symbol": "?fn_0040dc96@@YAXHPAXAAVfn_0040d63f_Buf@@@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 85,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
