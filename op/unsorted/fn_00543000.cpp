@@ -108,6 +108,7 @@ public:
 	nDatabase::tID fn_0054351b() const;
 	std::string fn_00543551() const;
 	std::string fn_00543587() const;
+	char *fn_005435c3();
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -133,7 +134,8 @@ public:
 	fn_0042c709_wrapper m05c;
 	std::string m074;
 	std::string m084;
-	char m_pad94[0x2c];
+	char m_pad94[0x4];
+	char m098[0x28];
 	nDatabase::tID m0c0;
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
@@ -438,4 +440,11 @@ std::string fn_005430ad_owner::fn_00543551() const
 std::string fn_005430ad_owner::fn_00543587() const
 {
 	return m084;
+}
+
+// HYPOTHESIS: returns the address of a member embedded at +0x98 whose type is not known yet.
+// FUNCTION: STARFLEETOP 0x005435c3
+char *fn_005430ad_owner::fn_005435c3()
+{
+	return m098;
 }
