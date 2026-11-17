@@ -125,3 +125,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x004021b8	FUN_004021b8	59.38	2	opus	2026-11-17T04:10:54Z	attempt 2 (opus) did not raise the best; best 59.38%
 0x00402452	FUN_00402452	13.93	2	opus	2026-11-17T04:30:13Z	attempt 2 (opus) did not raise the best; best 13.93%
+0x004027c8	FUN_004027c8	88.13	2	opus	2026-11-17T04:47:28Z	best not above 90% after 2 attempts; best 88.13%
