@@ -556,3 +556,10 @@ tShip::tShip( const tShip& source )
 	  field_0x430( source.field_0x430 )
 {
 }
+
+// HYPOTHESIS: the implicit destructor, written out; not inlined into the deleting destructor,
+// whose call the linker bound to the copy at 0x0042801a.
+// FUNCTION: STARFLEETOP 0x00427d96
+inline tShip::~tShip()
+{
+}
