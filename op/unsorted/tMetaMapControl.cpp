@@ -40,6 +40,8 @@ public:
 	void fn_005e7539( const tRect *area, fn_005eadc8_class *object );
 	bool fn_005e5a8f();
 	bool fn_005e5b2d( fn_005eb3c5_class *pair );
+	// HYPOTHESIS: 0x005e41ec hands it 1 and the control's rectangle.
+	void fn_005e7778( int param_1, const tRect *area );
 };
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
@@ -657,4 +659,11 @@ void tMetaMapControl::vfunction30()
 // FUNCTION: STARFLEETOP 0x005e41b6
 inline fn_005eb3c5_class::~fn_005eb3c5_class()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x005e41ec
+void tMetaMapControl::fn_005e41ec()
+{
+	fn_00607d61()->fn_0060a54d()->fn_005e7778( 1, &field_34 );
+	fn_0045f4c2();
 }
