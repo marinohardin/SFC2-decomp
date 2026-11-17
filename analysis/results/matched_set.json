@@ -381,11 +381,11 @@
   },
   "0x00403af0": {
    "name": "FUN_00403af0",
-   "symbol": "?append@fn_00403af0_String@@QAEAAV1@ID@Z",
+   "symbol": "?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ID@Z",
    "unit": "unsorted/fn_00403000.cpp",
    "size": 89,
-   "score": 99.722,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0040aad2": {
