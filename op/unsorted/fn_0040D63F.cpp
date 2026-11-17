@@ -789,3 +789,13 @@ void fn_0040e52b(char* name, int size, void* value, fn_0040d63f_Buf& buf)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e591
+void fn_0040e591(char* a, char* b, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    // HYPOTHESIS: the format text is a guess; the string relocation is unverified.
+    sprintf(text, "%s = %s", a, b);
+    buf.fn_0040e744(text);
+}
+
