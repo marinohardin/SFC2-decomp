@@ -232,12 +232,15 @@ int fn_006cc4f0(fn_006cc070_owner *owner)
 // HYPOTHESIS: a key/value record; its table of pairs sits at +0x0c.
 struct fn_006cc530_record
 {
-	unsigned char pad_00[0x0c];
+	unsigned long field_00;
+	unsigned short field_04;
+	short field_06;
+	int field_08;
 	fn_006bf5f0_table *field_0c;
 	fn_006bf5f0_table *field_10;
 };
 
-fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned long param_2, unsigned long param_3, fn_006bf5f0_table *param_4);
+fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned short param_2, int param_3, fn_006bf5f0_table *param_4);
 char *fn_006cc640(char *text, char separator);
 void fn_006cc6f0(fn_006cc530_record *record, char *text);
 char *fn_006cc6a0(fn_006cc530_record *record, char *text);
@@ -333,4 +336,44 @@ void fn_006cc6f0(fn_006cc6f0_endpoint *endpoint, char *text)
 		endpoint->field_00 = inet_addr(text);
 		endpoint->field_04 = atoi(colon + 1);
 	}
+}
+
+int fn_006ccac0(const void *element, int buckets);
+int fn_006ccb00(const void *a, const void *b);
+
+// HYPOTHESIS: creates a server entry: address, port, ping (9999 until measured), query kind,
+// its key/value table and the shared string table; the callee 0x0072eed0 is malloc.
+// FUNCTION: STARFLEETOP 0x006cc730
+fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned short param_2, int param_3, fn_006bf5f0_table *param_4)
+{
+	fn_006cc530_record *record = (fn_006cc530_record *)malloc(sizeof(fn_006cc530_record));
+	record->field_00 = param_1;
+	record->field_04 = param_2;
+	record->field_06 = 9999;
+	record->field_08 = param_3;
+	int buckets;
+	int count;
+	switch (param_3)
+	{
+	case 0:
+		buckets = 4;
+		count = 2;
+		break;
+	case 1:
+		buckets = 6;
+		count = 2;
+		break;
+	case 2:
+	case 3:
+		buckets = 8;
+		count = 2;
+		break;
+	default:
+		buckets = 8;
+		count = 4;
+		break;
+	}
+	record->field_0c = fn_006bf5f0(8, buckets, count, fn_006ccac0, fn_006ccb00, 0);
+	record->field_10 = param_4;
+	return record;
 }
