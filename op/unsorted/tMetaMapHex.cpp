@@ -496,3 +496,12 @@ int32 tMetaMapHex::fn_0053a35c()
 	m_bc.Leave();
 	return type;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a37c
+long tMetaMapHex::fn_0053a37c()
+{
+	m_bc.Enter();
+	long points = m_68;
+	m_bc.Leave();
+	return points;
+}
