@@ -508,3 +508,26 @@ void fn_00575675_owner::fn_00575675(fn_00575675_object** out)
 {
 	*out = new fn_00575675_object(m_d0);
 }
+
+// HYPOTHESIS: the object built by fn_005756b8 is unnamed; same shape as fn_00575675_object, 0x58 bytes
+class fn_005756b8_object
+{
+public:
+	fn_005756b8_object(void* arg);
+	~fn_005756b8_object();
+	char m_pad[0x58];
+};
+
+class fn_005756b8_owner
+{
+public:
+	void fn_005756b8(fn_005756b8_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x005756b8
+void fn_005756b8_owner::fn_005756b8(fn_005756b8_object** out)
+{
+	*out = new fn_005756b8_object(m_d0);
+}
