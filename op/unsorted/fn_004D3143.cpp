@@ -566,3 +566,21 @@ void fn_004d3652( long arg1, long arg2, long arg3, long arg4 )
 		fn_007364d0( arg4, g_0083d2a0[arg2] );
 	}
 }
+
+// HYPOTHESIS: tVarButtonGroup is not declared in a header yet; only the call below is known.
+class tVarButtonGroup
+{
+public:
+	void fn_004b54ba();
+	void vfunction42_for_tVisGroup();
+};
+
+// FUNCTION: STARFLEETOP 0x004d375b
+void fn_004d375b( tVarButtonGroup* arg1 )
+{
+	if ( arg1 != 0 )
+	{
+		arg1->fn_004b54ba();
+		arg1->vfunction42_for_tVisGroup();
+	}
+}
