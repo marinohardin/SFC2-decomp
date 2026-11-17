@@ -98,5 +98,6 @@ std::string g_00c39048 = "MetaBigShip";
 // FUNCTION: STARFLEETOP 0x005e27ef
 std::string g_00c39038 = "MetaMediumPlanet";
 
+// FUNCTION: STARFLEETOP 0x005e2878
 // FUNCTION: STARFLEETOP 0x005e2845
 std::string g_00c39028 = "MetaMediumSB1Icon";
