@@ -377,3 +377,30 @@ void fn_0049674e_object::fn_004967a5()
 		}
 	}
 }
+
+// HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
+// by file name and returns a handle.
+class fn_008cc620_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual long vfunction2( const char *name, long a, long b, long c );
+};
+
+extern fn_008cc620_object *g_008cc620;
+extern char g_009172dc;
+// HYPOTHESIS: three targeting reticle texture handles.
+extern long g_0084ec54[3];
+
+// FUNCTION: STARFLEETOP 0x00496853
+void fn_00496853()
+{
+	if( !g_009172dc )
+	{
+		g_0084ec54[0] = g_008cc620->vfunction2( "assets/textures/TargetingRedicles.bmp", 1, 0, 0 );
+		g_0084ec54[1] = g_008cc620->vfunction2( "assets/textures/TargetingRedicles-noise1.bmp", 1, 0, 0 );
+		g_0084ec54[2] = g_008cc620->vfunction2( "assets/textures/TargetingRedicles-noise2.bmp", 1, 0, 0 );
+	}
+	g_009172dc = 1;
+}
