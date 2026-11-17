@@ -163,6 +163,10 @@ public:
 	virtual long __stdcall v3();
 	virtual long __stdcall v4();
 	virtual long __stdcall EnumAddress( int ( __stdcall *pCallback )( const GUID& guid, unsigned long size, const void* pData, void* pContext ), const void* pAddress, unsigned long size, void* pContext );
+	virtual long __stdcall v6();
+	virtual long __stdcall v7();
+	// HYPOTHESIS: slot 8 fits IDirectPlayLobby::GetConnectionSettings (application, data, size).
+	virtual long __stdcall GetConnectionSettings( unsigned long appId, void* pData, unsigned long* pSize );
 };
 
 // HYPOTHESIS: the address callback 0x00616700 hands to EnumAddress.
@@ -212,6 +216,8 @@ public:
 	void fn_00616aa0();
 	void fn_00616ac0();
 	void fn_00616b70();
+	// HYPOTHESIS: returns the lobby's connection settings in a buffer the caller frees.
+	long fn_00616b90( unsigned long appId, void** ppSettings );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -520,4 +526,26 @@ void fn_00616000_DirectPlayHolder::fn_00616b70()
 		fLobby->Release();
 		fLobby = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00616b90
+long fn_00616000_DirectPlayHolder::fn_00616b90( unsigned long appId, void** ppSettings )
+{
+	unsigned long size = 0;
+	fn_00616ac0();
+	long hr = fLobby->GetConnectionSettings( appId, 0, &size );
+	if ( size != 0 && hr == 0x8877001e )
+	{
+		char* pSettings = new char[size];
+		if ( pSettings == 0 )
+			return hr;
+		hr = fLobby->GetConnectionSettings( appId, pSettings, &size );
+		if ( hr != 0 )
+		{
+			delete [] pSettings;
+			return hr;
+		}
+		*ppSettings = pSettings;
+	}
+	return hr;
 }
