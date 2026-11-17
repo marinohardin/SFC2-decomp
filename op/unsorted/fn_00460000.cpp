@@ -879,3 +879,23 @@ CMiniDockFrameWnd *fn_00460b73_class::erase(CMiniDockFrameWnd *_F, CMiniDockFram
     _Last = _S;
     return (_F);
 }
+
+// HYPOTHESIS: 0x00460e13 is the library's basic_stringbuf<char>::str(const string&): it tidies
+// the buffer (0x004041b2) and initialises it again (0x004048dd) with the mode at +0x44.
+class fn_00460e13_class
+{
+public:
+    void str(const std::string &_Newstr);
+    void _Tidy();
+    void _Init(const char *_S, unsigned int _N, int _M);
+
+    char pad_000[0x44];
+    int _Strmode;
+};
+
+// FUNCTION: STARFLEETOP 0x00460e13
+void fn_00460e13_class::str(const std::string &_Newstr)
+{
+    _Tidy();
+    _Init(_Newstr.c_str(), _Newstr.size(), _Strmode);
+}
