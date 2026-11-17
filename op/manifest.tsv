@@ -729,6 +729,130 @@ address	size	symbol	source	modes
 0x0061f7f0	284	tDirIterator::mNext(tDir)	Tiger/tgfsys.cpp	vc6 guest
 0x0061f910	333	tPathIterator::mAdd(tPath)	Tiger/tgfsys.cpp	partial
 0x0061fa60	248	tPathIterator::mFirst()	Tiger/tgfsys.cpp	vc6 guest
+0x0061fb60	344	tPathIterator::mNext(tPath)	Tiger/tgfsys.cpp	vc6 guest
+0x006230b0	18	tString::mInitInstanceControl()	Tiger/tstring.cpp	vc6 guest
+0x006230d0	44	tString::tString()	Tiger/tstring.cpp	vc6
+0x00623120	128	tString::tString(const char *)	Tiger/tstring.cpp	partial
+0x006231a0	34	tString::tString(const char *)	Tiger/tstring.cpp	vc6
+0x00623260	129	tString::tString(const iBasicStringElement *)	Tiger/tstring.cpp	vc6
+0x006232f0	150	tString::tString(const iBasicStringElement)	Tiger/tstring.cpp	partial
+0x00623390	364	tString::tString(const tString &)	Tiger/tstring.cpp	partial
+0x00623500	121	tString::tString(const iterator &)	Tiger/tstring.cpp	vc6
+0x00623580	113	tString::~tString()	Tiger/tstring.cpp	vc6
+0x00623600	169	tString::mReserve(int32)	Tiger/tstring.cpp	vc6 guest
+0x006236b0	73	tString::mExpansionRoom(int32)	Tiger/tstring.cpp	vc6 guest
+0x00623700	96	tString::mWideStr()	Tiger/tstring.cpp	vc6 guest
+0x00623760	133	tString::mCharStr(char*)	Tiger/tstring.cpp	vc6 guest
+0x006237f0	93	tString::mCopyCharStr(char *,int)	Tiger/tstring.cpp	vc6 guest
+0x00623850	84	tString::mCopyWideStr(iWideChar *,int)	Tiger/tstring.cpp	vc6 guest
+0x006238b0	343	tString::mIncorporateCharList(const iBasicStringElement *,int32)	Tiger/tstring.cpp	vc6 guest
+0x00623a10	354	tString::mIncorporateCharList(const char *,int32)	Tiger/tstring.cpp	vc6 guest
+0x00623b80	42	tString::mEndStrAt(iterator)	Tiger/tstring.cpp	vc6 guest
+0x00623bb0	371	tString::mEndStrAt(int32)	Tiger/tstring.cpp	vc6 guest
+0x00623d30	38	tString::substr(int32)	Tiger/tstring.cpp	vc6 guest
+0x00623d60	356	tString::substr(int32,int32)	Tiger/tstring.cpp	partial
+0x00623ed0	68	tString::operator[](int32)	Tiger/tstring.cpp	vc6 guest
+0x00623f20	28	tString::find(char)	Tiger/tstring.cpp	vc6 guest
+0x00623f40	224	tString::find(const char *,int32)	Tiger/tstring.cpp	partial
+0x00624020	565	tString::find(tString &,int32)	Tiger/tstring.cpp	partial
+0x00624260	224	tString::rfind(const char *,int32)	Tiger/tstring.cpp	partial
+0x00624340	223	tString::rfind(const char *)	Tiger/tstring.cpp	partial
+0x00624420	571	tString::rfind(tString &,int32)	Tiger/tstring.cpp	partial
+0x00624660	37	tString::operator=(const char*)	Tiger/tstring.cpp	partial
+0x00624b60	647	tString::operator+=(const tString &)	Tiger/tstring.cpp	partial
+0x00624df0	301	tString::operator+=(const iBasicStringElement &)	Tiger/tstring.cpp	vc6 guest
+0x00624f20	41	operator==(const tString &,const tString &)	Tiger/tstring.cpp	vc6 guest
+0x00624f50	68	operator<(const tString &,const tString &)	Tiger/tstring.cpp	vc6 guest
+0x00624fa0	219	tString::operator+(const char *)	Tiger/tstring.cpp	partial
+0x00625080	219	tString::operator+=(const char *)	Tiger/tstring.cpp	partial
+0x00625160	39	tString::operator=(const iBasicStringElement*)	Tiger/tstring.cpp	vc6 guest
+0x00625190	125	operator==(const tString &,const char *)	Tiger/tstring.cpp	vc6 guest
+0x00625210	125	operator!=(const tString &,const char *)	Tiger/tstring.cpp	vc6 guest
+0x00625360	17	tString::mGetInt32s()	Tiger/tstring.cpp	vc6 guest
+0x00625380	19	tString::iterator::iterator(const iterator &)	Tiger/tstring.cpp	vc6
+0x006253a0	81	tString::iterator::iterator(int32,tString *)	Tiger/tstring.cpp	vc6
+0x00625400	41	tString::iterator::operator*()	Tiger/tstring.cpp	vc6 guest
+0x00625430	91	tString::iterator::operator+(int32)	Tiger/tstring.cpp	partial
+0x00625490	90	tString::iterator::operator-(int32)	Tiger/tstring.cpp	partial
+0x006254f0	83	tString::iterator::operator++(int)	Tiger/tstring.cpp	partial
+0x00625550	78	tString::iterator::operator--(int)	Tiger/tstring.cpp	partial
+0x006255a0	34	tString::iterator::operator==(const iterator)	Tiger/tstring.cpp	vc6 guest
+0x006255d0	34	tString::iterator::operator!=(const iterator)	Tiger/tstring.cpp	vc6 guest
+0x00625600	34	tString::iterator::operator<(const iterator)	Tiger/tstring.cpp	vc6 guest
+0x00625630	244	tString::mStrChr(iBasicStringElement)	Tiger/tstring.cpp	partial
+0x00625730	177	tString::mStrRChr(iBasicStringElement)	Tiger/tstring.cpp	partial
+0x006257f0	303	tString::mToUpper()	Tiger/tstring.cpp	partial
+0x00625920	71	tString::mStrCmp(const tString &) const	Tiger/tstring.cpp	vc6 guest
+0x00625970	517	tString::mStrICmp(const tString &) const	Tiger/tstring.cpp	partial
+0x00625b80	73	tString::begin()	Tiger/tstring.cpp	partial
+0x00625bd0	69	tString::end()	Tiger/tstring.cpp	partial
+0x00625f30	26	StrLen(const unsigned short *)	Tiger/tstring.cpp	vc6 guest
+0x00625f50	746	NumToString(tString &,int32,int32s)	Tiger/tstring.cpp	partial
+0x00626770	21	tDynamicMemoryFreeList::mGetPreviousListMember(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626790	21	tDynamicMemoryFreeList::mGetNextListMember(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x006267b0	37	tDynamicMemoryFreeList::mGetPreviousCircularListMember(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x006267e0	37	tDynamicMemoryFreeList::mGetNextCircularListMember(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626810	105	tDynamicMemoryFreeList::mAddToFrontOfList(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626880	105	tDynamicMemoryFreeList::mAddToBackOfList(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x006268f0	137	tDynamicMemoryFreeList::mInsertAfterListMember(tListMember *,tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626980	138	tDynamicMemoryFreeList::mInsertBeforeListMember(tListMember *,tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626a10	134	tDynamicMemoryFreeList::mRemoveFromList(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626aa0	39	tDynamicMemoryFreeList::mIsListMember(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626ad0	46	tDynamicMemoryFreeList::mGetZeroIndexedListMemberPosition(tListMember *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626b00	36	tDynamicMemoryFreeList::mGetListMemberAtThisIndex(long)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626b30	27	tDynamicMemoryFreeList::mClearList()	Tiger/tdistriblists.cpp	vc6 guest
+0x00626b50	51	tDynamicMemoryFreeList::mDeleteListMembers()	Tiger/tdistriblists.cpp	vc6 guest
+0x00626b90	37	tDynamicMemoryFreeList::mDumpList()	Tiger/tdistriblists.cpp	vc6 guest
+0x00626bc0	22	tDynamicMemoryFreeListViaHandles::mGetPreviousListMemberHandle(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626be0	22	tDynamicMemoryFreeListViaHandles::mGetNextListMemberHandle(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626c00	39	tDynamicMemoryFreeListViaHandles::mGetPreviousCircularListMemberHandle(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626c30	39	tDynamicMemoryFreeListViaHandles::mGetNextCircularListMemberHandle(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626c60	130	tDynamicMemoryFreeListViaHandles::mAddToFrontOfList(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626cf0	130	tDynamicMemoryFreeListViaHandles::mAddToBackOfList(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626d80	192	tDynamicMemoryFreeListViaHandles::mInsertAfterListMember(tListMemberWithHandle *,tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626e40	189	tDynamicMemoryFreeListViaHandles::mInsertBeforeListMember(tListMemberWithHandle *,tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626f00	165	tDynamicMemoryFreeListViaHandles::mRemoveFromList(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626fb0	63	tDynamicMemoryFreeListViaHandles::mIsListMember(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00626ff0	70	tDynamicMemoryFreeListViaHandles::mGetZeroIndexedListMemberPosition(tListMemberWithHandle *)	Tiger/tdistriblists.cpp	vc6 guest
+0x00627040	58	tDynamicMemoryFreeListViaHandles::mGetListMemberAtThisIndex(long)	Tiger/tdistriblists.cpp	vc6 guest
+0x00627080	32	tDynamicMemoryFreeListViaHandles::mClearList()	Tiger/tdistriblists.cpp	vc6 guest
+0x006270a0	54	tDynamicMemoryFreeListViaHandles::mDeleteListMembers()	Tiger/tdistriblists.cpp	vc6 guest
+0x006270e0	62	tDynamicMemoryFreeListViaHandles::mDumpList()	Tiger/tdistriblists.cpp	vc6 guest
+0x00627180	124	tStrMgrCore::mDone()	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627200	122	tStrMgrCore::mGetStringIndex(const tString &)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627280	96	tStrMgrCore::mGetStringIndex(const char *)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x006272e0	82	tStrMgrCore::mGetString(int)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627340	25	tStrMgrCore::mGetString(const char *)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627360	25	tStrMgrCore::mGetString(const tString &)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627380	86	tStrMgrCore::mGetNumElements(long)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x006273e0	25	tStrMgrCore::mGetNumElements(const char *)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627400	110	tStrMgrCore::mGetRandStr(long)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627470	25	tStrMgrCore::mGetRandStr(const char *)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627490	133	tStrMgrCore::mGetGrpStr(long,long)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627520	32	tStrMgrCore::mGetGrpStr(const char *,int)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627540	136	tStrMgrCore::mIsAnElement(long,long)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x006275d0	32	tStrMgrCore::mIsAnElement(const char *,long)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x006275f0	135	tStrMgrCore::mIsAnElement(long,const tString &)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627680	32	tStrMgrCore::mIsAnElement(const char *,const tString &)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x006276a0	163	tWideCharFile::mGetChar()	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627750	725	tStrMgrCore::mLoadStringFile(tBasicFile &,bool)	Tiger/tStrMgrCore.cpp	partial
+0x00627a30	65	tStrMgrCore::mLoadStringFile(const char *,bool)	Tiger/tStrMgrCore.cpp	vc6 guest
+0x00627f50	16	tZipInfoMgr::tZipInfoMgr()	Tiger/tZipInfoMgr.cpp	vc6
+0x00627f60	57	tZipInfoMgr::mDone()	Tiger/tZipInfoMgr.cpp	vc6 guest
+0x00627fa0	1134	tZipInfoMgr::mInit(const char *)	Tiger/tZipInfoMgr.cpp	partial
+0x00628610	146	tBasicFileZip::mOpenForRead(const char *)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006286b0	45	tBasicFileZip::mOpenForWrite(const char *)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006286e0	15	tBasicFileZip::mIsOpen()	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006286f0	15	tBasicFileZip::mClose()	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628700	36	tBasicFileZip::mEOF()	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628730	96	tBasicFileZip::mRead(void *,unsigned long)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628790	44	tBasicFileZip::mWrite(const void *,unsigned long)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006287c0	28	tBasicFileZip::mFilePos()	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006287e0	28	tBasicFileZip::mFileSize()	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628800	92	tBasicFileZip::mSeekSet(long)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628860	95	tBasicFileZip::mSeekCur(long)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x006288c0	101	tBasicFileZip::mSeekEnd(long)	Tiger/tbasicfilezip.cpp	vc6 guest
+0x00628930	126	_NewBasicFileZip(tZipInfoMgr *)	Tiger/tbasicfilezip.cpp	vc6 guest
 0x006289b0	115	tPart::tPart()	Tiger/tpart.cpp	vc6
 0x00628a50	7	tPart::~tPart()	Tiger/tpart.cpp	vc6
 0x00628a60	445	tPart::mValidateParts()	Tiger/tpart.cpp	vc6 guest
@@ -815,6 +939,68 @@ address	size	symbol	source	modes
 0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
 0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
 0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
+0x0062e7c0	559	twFileSystemPart::mGetNamedVolume(tSession,tString)	Tiger/twfsys.cpp	partial
+0x0062e9f0	835	twFileSystemPart::mGetAppPath(tSession)	Tiger/twfsys.cpp	vc6 guest
+0x0062ed40	183	WinParsePath(tSession,tString &)	Tiger/twfsys.cpp	vc6 guest
+0x0062ee00	472	WinParseDir(tSession,tString &)	Tiger/twfsys.cpp	vc6 guest
+0x0062efe0	2353	WinParseVolume(tSession,tString &)	Tiger/twfsys.cpp	partial
+0x0062f920	390	twFileSystemPart::mDuplicatePath(tSession,tPath)	Tiger/twfsys.cpp	partial
+0x0062fab0	1226	twFileSystemPart::mFileOpenDialog(tSession,tString &,tString &,tDir)	Tiger/twfsys.cpp	partial
+0x0062ff80	49	gCopyWideStr(tString &,iWideChar *)	Tiger/twfsys.cpp	vc6 guest
+0x0062ffc0	625	WinResetCWD()	Tiger/twfsys.cpp	vc6 guest
+0x00630240	748	WinFileOpenDlg(tString &,tString &,tString &)	Tiger/twfsys.cpp	vc6 guest
+0x00630a00	748	fn_00630a00(tString &,tString &,tString &)	Tiger/twfsys.cpp	vc6 guest
+0x00630cf0	120	twFileSystemPart::mPathFromWinString(tSession,tString)	Tiger/twfsys.cpp	vc6 guest
+0x00630d70	305	twFileSystemPart::mWinStringFromPath(tPath)	Tiger/twfsys.cpp	partial
+0x00630eb0	517	twFileSystemPart::mGetSpecialDir(tSession,eSpecialDir)	Tiger/twfsys.cpp	vc6 guest
+0x006310c0	32	twVolume::mGetSortName()	Tiger/tgfsys.cpp	vc6 guest
+0x006310e0	182	twVolume::mGetClusterSize()	Tiger/tgfsys.cpp	vc6 guest
+0x006311a0	177	twVolume::mGetTotalClusters()	Tiger/tgfsys.cpp	vc6 guest
+0x00631260	177	twVolume::mGetFreeClusters()	Tiger/tgfsys.cpp	vc6 guest
+0x00631320	151	twVolume::mGetVolType()	Tiger/tgfsys.cpp	vc6 guest
+0x006313d0	3	twVolume::mIsEjectable()	Tiger/tgfsys.cpp	vc6 guest
+0x006313e0	487	twVolume::mGetRoot()	Tiger/tgfsys.cpp	partial
+0x006315d0	613	twDir::mMakeFullPath()	Tiger/tgfsys.cpp	partial
+0x00631840	32	twDir::mGetSortName()	Tiger/tgfsys.cpp	vc6 guest
+0x00631860	205	twDir::mGetDate()	Tiger/tgfsys.cpp	partial
+0x00631930	49	gCopyCharStr(tString &,char *)	Tiger/tgfsys.cpp	vc6 guest
+0x00631b30	510	twDir::mGetNamedDir(tString &)	Tiger/tgfsys.cpp	partial
+0x00631d30	552	twDir::mGetNamedFile(tString &)	Tiger/tgfsys.cpp	partial
+0x00631f60	209	twDir::mExist()	Tiger/tgfsys.cpp	vc6 guest
+0x00632040	1719	twDir::mGetDirIterator()	Tiger/tgfsys.cpp	partial
+0x00632700	1581	twDir::mGetPathIterator()	Tiger/tgfsys.cpp	partial
+0x00632d30	106	twDir::mCreate()	Tiger/tgfsys.cpp	vc6 guest
+0x00632da0	527	twDir::mDelete()	Tiger/tgfsys.cpp	partial
+0x00632fb0	62	twPath::mEnsureFileClosed()	Tiger/tgfsys.cpp	vc6 guest
+0x00632ff0	619	twPath::mMakeFullPath()	Tiger/tgfsys.cpp	vc6 guest
+0x00633260	32	twPath::mGetSortName()	Tiger/tgfsys.cpp	vc6 guest
+0x00633280	182	twPath::mExist()	Tiger/tgfsys.cpp	vc6 guest
+0x00633340	256	twPath::mGetDate()	Tiger/tgfsys.cpp	vc6 guest
+0x00633440	269	twPath::mGetSize()	Tiger/tgfsys.cpp	vc6 guest
+0x00633550	257	twPath::mCreate()	Tiger/tgfsys.cpp	vc6 guest
+0x00633660	160	twPath::mDelete()	Tiger/tgfsys.cpp	vc6 guest
+0x00633700	108	twPath::mLock()	Tiger/tgfsys.cpp	vc6 guest
+0x00633770	209	twPath::mLock(iTruth)	Tiger/tgfsys.cpp	vc6 guest
+0x00633850	112	twPath::mHide()	Tiger/tgfsys.cpp	vc6 guest
+0x006338c0	209	twPath::mHide(iTruth)	Tiger/tgfsys.cpp	vc6 guest
+0x006339a0	520	twPath::mRead(void *,int32u,int32u,tPathCallback *)	Tiger/tgfsys.cpp	vc6 guest
+0x00633bb0	46	OpenForReadChar(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x00633be0	8	twIORequest::~twIORequest()	Tiger/tgfsys.cpp	vc6
+0x00633bf0	535	twPath::mWrite(void *,int32u,int32u,tPathCallback *)	Tiger/tgfsys.cpp	vc6 guest
+0x00633e10	46	OpenForWriteChar(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x00633e80	53	tDir::tDir(const tDir &)	Tiger/twfsys.cpp	partial
+0x00633ec0	82	twPath::mFree()	Tiger/tgfsys.cpp	vc6 guest
+0x00633f20	185	twPath::mExec(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x00633fe0	208	AsynchIOMain(void *)	Tiger/tgfsys.cpp	partial
+0x006340b0	943	twIORequest::mProcessRequest()	Tiger/tgfsys.cpp	partial
+0x006344a0	128	OpenForWrite(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x00634520	132	OpenForRead(tString &)	Tiger/tgfsys.cpp	vc6 guest
+0x006345b0	53	tVolIterator::tVolIterator(const tVolIterator &)	Tiger/twfsys.cpp	partial
+0x006345f0	381	twIORequestQueue::twIORequestQueue(twQueueName)	Tiger/twfsys.cpp	vc6
+0x00634770	160	twIORequestQueue::~twIORequestQueue()	Tiger/twfsys.cpp	vc6
+0x00634810	302	twIORequestQueue::mAdd(twIORequest)	Tiger/twfsys.cpp	partial
+0x00634940	520	twIORequestQueueManager::~twIORequestQueueManager()	Tiger/twfsys.cpp	partial
+0x00634b50	591	twIORequestQueueManager::mRequest(twIORequest)	Tiger/twfsys.cpp	partial
 0x00637820	111	twClock::mActivate()	Tiger/twclock.cpp	vc6 guest
 0x00637890	85	twClock::mDeactivate()	Tiger/twclock.cpp	vc6 guest
 0x006378f0	117	twClock::mGetMicroseconds()	Tiger/twclock.cpp	vc6 guest
@@ -1192,3 +1378,4 @@ address	size	symbol	source	modes
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest
 0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial
 0x00709270	770	tFileDatabaseMgr::Load(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial
+0x0075a5e0	104	tString::mOSString()	Tiger/tnstring.cpp	vc6 guest
