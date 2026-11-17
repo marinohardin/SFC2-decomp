@@ -61,6 +61,7 @@ public:
     virtual int vfunction68();
     virtual int vfunction69();
     virtual int vfunction70();
+    virtual int vfunction71();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -398,5 +399,16 @@ int tShipSystemsExt::vfunction70()
     char* p = *(char**)( m584 + 0x14 );
     if( p != 0 )
         return *(int*)( p + 0x88 );
+    return 0;
+}
+
+// HYPOTHESIS: the block at m584 holds a pointer at +0x94 (+0x618) to an object whose +0x58 is
+// returned, or 0 when there is none.
+// FUNCTION: STARFLEETOP 0x0044895e
+int tShipSystemsExt::vfunction71()
+{
+    char* p = *(char**)( m584 + 0x94 );
+    if( p != 0 )
+        return *(int*)( p + 0x58 );
     return 0;
 }
