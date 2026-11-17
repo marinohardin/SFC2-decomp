@@ -68,6 +68,8 @@ public:
 	void fn_0043289d();
 	int fn_00431e6e();	// HYPOTHESIS: returns the next connection event, 0 when none
 	void fn_00433c46();
+	// HYPOTHESIS: sets the flag when a result is ready; returns nonzero on success.
+	int fn_00432cce( bool *ready, int n );
 	void fn_0043290e( const tString &s );	// HYPOTHESIS: the string is passed by reference
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""

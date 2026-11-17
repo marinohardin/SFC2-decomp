@@ -208,6 +208,7 @@ public:
 	bool fn_0047685b();
 	void fn_004695c4(const char *name, int n);
 	void fn_00469e0c(const char *name);
+	void fn_00469636();
 
 	char m04[8];
 	unsigned char m0c;
@@ -854,6 +855,41 @@ void tState_GameConnections::fn_004695c4(const char *name, int n)
 	// HYPOTHESIS: the explicit test stands for a destructor on tStringGroupTag, as in vfunction2.
 	if (tag)
 		delete tag;
+}
+
+// FUNCTION: STARFLEETOP 0x00469636
+void tState_GameConnections::fn_00469636()
+{
+	if (m1e4 != 0x10005)
+		return;
+	if (gNetControl.fn_004317c3())
+		return;
+
+	if (!m1a)
+	{
+		bool ready;
+		int result = gNetControl.fn_00432cce(&ready, 0);
+		if (!ready)
+		{
+			fn_004695c4("JoinStatus", 1);
+			return;
+		}
+		if (!result)
+			m1a = 0;
+		else
+		{
+			m1a = 1;
+			m1b = 1;
+		}
+	}
+
+	if (m1b)
+	{
+		if (fn_0047685b())
+			fn_00469e0c(g_00844e90);
+		else
+			fn_004695c4("JoinStatus", 1);
+	}
 }
 
 }
