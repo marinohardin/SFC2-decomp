@@ -409,22 +409,22 @@ void tObject_00523644::fn_00523668(int index)
 	m_200--;
 }
 
-// HYPOTHESIS: a member object at +4 whose constructor is 0x00524090; its fields are unknown.
-class tObject_00524090
-{
-public:
-	tObject_00524090();
-};
+#include "unsorted/tObject_005237dc.h"
 
-// HYPOTHESIS: 0x005236d8 is a constructor: an index set to -1, then the member at +4 constructed.
-class tObject_005236d8
-{
-public:
-	tObject_005236d8();
 
-	int m_00;
-	tObject_00524090 m_04;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x005236d8
 tObject_005236d8::tObject_005236d8()
@@ -520,19 +520,36 @@ tObject_005236ea_Entry::tObject_005236ea_Entry(float amount, bool partial, tObje
 	m_08 = pTarget;
 }
 
-// HYPOTHESIS: 0x005237d1 is a constructor: a flag set, then a float cleared.
-class tObject_005237d1
-{
-public:
-	tObject_005237d1();
-
-	bool m_00;
-	float m_04;
-};
 
 // FUNCTION: STARFLEETOP 0x005237d1
 tObject_005237d1::tObject_005237d1()
 {
 	m_00 = true;
 	m_04 = 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x005237dc
+tObject_005237dc::tObject_005237dc(int aShipID)
+	: m_d8(false)
+	, m_140(aShipID)
+	, m_148(0)
+	, m_14c(0)
+{
+	m_34b0 = 0;
+	m_34cc = false;
+	m_34d0 = 0;
+	m_34d4 = 0;
+	m_34d8 = 0;
+	m_34dc = 0;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 6; j++) {
+			m_150[i * 6 + j].m_00 = j;
+		}
+		m_00[i] = 0.0f;
+	}
+	for (int k = 0; k < 25; k++) {
+		m_dc[k] = 0;
+		m_10[k].m_00 = false;
+		m_10[k].m_04 = 0.0f;
+	}
 }
