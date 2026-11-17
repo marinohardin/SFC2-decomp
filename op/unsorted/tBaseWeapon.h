@@ -4,6 +4,9 @@
 #ifndef tBaseWeapon_h
 #define tBaseWeapon_h 1
 
+#include "unsorted/fn_004e20f4_field2c_type.h"
+#include "unsorted/fn_004e2895_field148_type.h"
+
 class tSFCStream;
 class fn_004e2b02_ship_type;
 class tEntity;
@@ -20,12 +23,6 @@ struct fn_004e1e99_arg
 };
 
 // HYPOTHESIS: the part at tBaseWeapon offset 0x148; only its method 0x004d7099 is known.
-struct fn_004d7099_type
-{
-    char data[4];
-    int fn_004d7099(float param_1);
-};
-
 // HYPOTHESIS: the per-bank table vfunction122 fills; only the methods it calls are known.
 struct fn_004d77ec_type
 {
@@ -211,7 +208,7 @@ public:
     virtual int vfunction133();
     virtual bool vfunction134();
     virtual float vfunction135(unsigned char param_1);
-    virtual void vfunction136();
+    virtual int vfunction136(char param_1);
     virtual void vfunction137();
     virtual bool vfunction138();
     // HYPOTHESIS: slots 139 to 143 are placeholders that only fix the positions of slots 144
@@ -220,18 +217,22 @@ public:
     virtual void vfunction140();
     virtual void vfunction141();
     virtual void vfunction142();
-    virtual bool vfunction143();
+    virtual float vfunction143(float param_1, float param_2);
     virtual int vfunction144();
     virtual void vfunction145(int param_1);
     virtual int vfunction146();
     virtual void vfunction147();
     // HYPOTHESIS: members read by vfunction102, placed by offset.
-    char pad_04[0x20];
+    char pad_04[8];
+    // HYPOTHESIS: a type id that tPhaserBank's 0x004e2aaa switches on, with values 44 to 49.
+    int field_0c;
+    int field_10;
+    char pad_14[0x24 - 0x14];
     // HYPOTHESIS: a list of child weapons, walked by vfunction76.
     fn_004d8219_list *field_24;
     char pad_28[4];
     // HYPOTHESIS: a weapon object at offset 0x2c whose slot 143 (offset 0x238) 0x004d76f8 forwards to.
-    tBaseWeapon *field_2c;
+    fn_004e20f4_field2c_type *field_2c;
     char pad_30[4];
     float field_34;
     float field_38;
@@ -254,24 +255,27 @@ public:
     float field_e4;
     int field_e8;
     int field_ec;
-    char pad_f0[8];
+    char pad_f0[4];
+    float field_f4;
     int field_f8;
     char field_fc;
-    char pad_fd[7];
+    char pad_fd[3];
+    int field_100;
     int field_104;
-    char pad_108[0xc];
+    int field_108;
+    char pad_10c[8];
     int field_114;
     short field_118[6][2];
     int field_130;
     short field_134;
     char pad_136[0x12];
     // HYPOTHESIS: a part at offset 0x148 whose method 0x004d7099 takes a float.
-    fn_004d7099_type field_148;
+    fn_004e2895_field148_type field_148;
     // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
     void fn_004d74f6();
     bool fn_004d76f8();
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
-    int fn_004d87e3();
+    int fn_004d87e3(int param_1);
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
     float fn_004d786e();
     // HYPOTHESIS: a base class's own slot 39 (elapsed time), called directly by 0x004e2b02

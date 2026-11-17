@@ -311,7 +311,7 @@ unsigned tBaseWeapon::mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlag
 bool tBaseWeapon::fn_004d76f8()
 {
     if (field_2c)
-        return field_2c->vfunction143();
+        return field_2c->vfunction142();
     return false;
 }
 
@@ -1046,7 +1046,7 @@ struct fn_004d87e3_target
 extern float g_0079561c;
 
 // FUNCTION: STARFLEETOP 0x004d87e3
-int tBaseWeapon::fn_004d87e3()
+int tBaseWeapon::fn_004d87e3(int param_1)
 {
     fn_004e2b02_ship_type *ship = vfunction33();
     int result;

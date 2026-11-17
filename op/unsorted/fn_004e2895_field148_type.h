@@ -13,6 +13,8 @@ public:
     void fn_0050bfaa();
     void fn_004d6fd4();
     void fn_004d6f22(const void* table, int count);
+    // HYPOTHESIS: takes a float and returns an int; tBaseWeapon calls it on its member at 0x148.
+    int fn_004d7099(float param_1);
 };
 
 #endif // fn_004e2895_field148_type_h
