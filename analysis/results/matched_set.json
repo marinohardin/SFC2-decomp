@@ -2638,6 +2638,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042c632": {
+   "name": "FUN_0042c632",
+   "symbol": "?fn_0042c632@fn_0042c632_Iterator@@QAEXXZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

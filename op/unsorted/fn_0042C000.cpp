@@ -459,3 +459,35 @@ fn_0042c4e6_Iterator fn_0042c4e6_Tree::fn_0042c4e6(fn_0042c053_Node* x, fn_0042c
 	it.m00_node = z;
 	return it;
 }
+
+// HYPOTHESIS: the iterator of a library map/set whose 0x1c-byte node has the layout of
+// fn_0042c360_Node (colour at +0x18, is-nil at +0x19); which tree it belongs to is not known.
+class fn_0042c632_Iterator
+{
+public:
+	void fn_0042c632();
+
+	fn_0042c360_Node* m00_node;
+};
+
+// HYPOTHESIS: the iterator's decrement (_Dec).
+// FUNCTION: STARFLEETOP 0x0042c632
+void fn_0042c632_Iterator::fn_0042c632()
+{
+	if (m00_node->m18_color == 0 && m00_node->m04_parent->m04_parent == m00_node)
+		m00_node = m00_node->m08_right;
+	else if (!m00_node->m00_left->m19_isnil)
+	{
+		fn_0042c360_Node* p = m00_node->m00_left;
+		while (!p->m08_right->m19_isnil)
+			p = p->m08_right;
+		m00_node = p;
+	}
+	else
+	{
+		fn_0042c360_Node* p;
+		while (m00_node == (p = m00_node->m04_parent)->m00_left)
+			m00_node = p;
+		m00_node = p;
+	}
+}
