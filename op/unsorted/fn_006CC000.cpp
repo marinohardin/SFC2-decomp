@@ -522,7 +522,7 @@ struct fn_006ccb20_record
 };
 
 void fn_006bf560();
-void fn_006ccf20(char *host, int port, sockaddr_in *address, int param_4);
+int fn_006ccf20(char *host, int port, sockaddr_in *address, hostent **param_4);
 int fn_006ccf00(SOCKET s, char *host, int port);
 
 extern fn_006ccb20_record g_00888748;
@@ -697,4 +697,29 @@ int fn_006ccf00(SOCKET s, char *host, int port)
 {
 	fn_006ccf20(host, port, &g_00c7ed70, 0);
 	return 0;
+}
+
+// HYPOTHESIS: fills an IPv4 address from a dotted address or a host name and a port; the
+// name is looked up only when inet_addr fails and the text is not the broadcast address.
+// FUNCTION: STARFLEETOP 0x006ccf20
+int fn_006ccf20(char *host, int port, sockaddr_in *address, hostent **param_4)
+{
+	hostent *entry;
+
+	address->sin_family = AF_INET;
+	address->sin_port = htons((unsigned short)port);
+	if (host == 0)
+		address->sin_addr.s_addr = INADDR_ANY;
+	else
+		address->sin_addr.s_addr = inet_addr(host);
+	if (address->sin_addr.s_addr == INADDR_NONE && strcmp(host, "255.255.255.255") != 0)
+	{
+		entry = gethostbyname(host);
+		if (entry == 0)
+			return 0;
+		address->sin_addr.s_addr = *(unsigned long *)entry->h_addr_list[0];
+	}
+	if (param_4 != 0)
+		*param_4 = entry;
+	return 1;
 }
