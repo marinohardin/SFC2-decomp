@@ -273,3 +273,17 @@ fn_00402b90_Obj* fn_004066f1(fn_00402b90_Obj* p)
     atexit(fn_004068d4);
     return p;
 }
+
+// FUNCTION: STARFLEETOP 0x0040673f
+extern fn_00402b90_Obj* g_0089318c;
+void fn_004068e0();
+
+// HYPOTHESIS: the same registration as 0x004066a3, for a third library-owned facet.
+fn_00402b90_Obj* fn_0040673f(fn_00402b90_Obj* p)
+{
+    std::_Lockit lock;
+    g_0089318c = p;
+    p->fn_00402b90();
+    atexit(fn_004068e0);
+    return p;
+}
