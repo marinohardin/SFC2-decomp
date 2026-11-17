@@ -278,3 +278,67 @@ void tMetaMapHex::SQLFillInsertStream( std::stringstream* SQL, bool lastOne )
 
 	guard.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x00539c82
+void tMetaMapHex::SQLFillUpdateStream( std::stringstream* SQL, bool lastOne )
+{
+	tOptex::tGuard guard( &m_bc );
+
+	bool first48 = false;
+	bool first84 = false;
+	bool first70 = false;
+
+	tDatabaseObject::SQLFillUpdateStream( SQL, lastOne );
+
+	*SQL << "X=" << m_a8.fn_0055f269() << ", Y=" << m_a8.fn_005e8f21() << ", EmpireControl=";
+
+	for( fn_0053a6cc_map::iterator i = m_48.begin(); i != m_48.end(); ++i )
+	{
+		if( !first48 )
+		{
+			*SQL << (*i).second;
+			*SQL << ", CartelControl=";
+			first48 = true;
+		}
+		else
+		{
+			*SQL << (*i).second;
+		}
+	}
+
+	*SQL << ", TerrainType=" << m_5c << ", PlanetType=" << m_60 << ", StarBaseType=" << m_64 << ", BaseEconomicPoints=" << m_68 << ", CurrentEconomicPoints=" << m_6c << ", EmpireBaseVictoryPoints=";
+
+	for( fn_0053a73a_map::iterator j = m_70.begin(); j != m_70.end(); ++j )
+	{
+		if( !first70 )
+		{
+			*SQL << (*j).second;
+			*SQL << ", CartelBaseVictoryPoints=";
+			first70 = true;
+		}
+		else
+		{
+			*SQL << (*j).second;
+			*SQL << ", EmpireCurrentVictoryPoints=";
+		}
+	}
+
+	// The original steps the first loop's iterator here, not k, as in SQLFillInsertStream.
+	for( fn_0053a73a_map::iterator k = m_84.begin(); k != m_84.end(); ++i )
+	{
+		if( !first84 )
+		{
+			*SQL << (*k).second;
+			*SQL << ", CartelCurrentVictoryPoints=";
+			first84 = true;
+		}
+		else
+		{
+			*SQL << (*k).second;
+		}
+	}
+
+	*SQL << ", BaseSpeedPoints=" << m_98 << ", CurrentSpeedPoints=" << m_a0;
+
+	guard.Leave();
+}
