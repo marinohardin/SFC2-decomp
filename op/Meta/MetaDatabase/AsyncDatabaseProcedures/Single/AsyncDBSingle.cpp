@@ -35,8 +35,7 @@ public:
 	tCurrentTime fField108;
 	char fPad120[0x168 - 0x120];
 };
-// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp.
-// Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
+// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 class fn_0056c414_Database
 {
 public:
@@ -96,7 +95,7 @@ public:
 	virtual void vfunction22( nDatabase::tID id, std::vector<tNewsStory>* stories );
 	virtual void vfunction23( const tNewsStory::tDetailTime& time, std::vector<tNewsStory>* stories );
 	virtual void vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock );
-	virtual void vfunction25();
+	virtual void vfunction25( tCampaignInfo* campaignInfo );
 	virtual void vfunction26();
 	virtual void vfunction27();
 	virtual void vfunction28();
@@ -131,9 +130,10 @@ public:
 	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
 	fn_0056c414_Database* fDatabase;
+	std::string fField08;	// HYPOTHESIS: the name the database is saved under (0x0056db2a).
+	long fField18;	// HYPOTHESIS: the save interval in turns (0x0056db2a).
 };
 };
-
 // FUNCTION: STARFLEETOP 0x0056c414
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* campaignInfo )
 {
@@ -535,4 +535,31 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24( nDatabase::tID 
 	}
 #line 766
 	validate( byCharacterID || ( queryResult->size() <= 1 ) );
+}
+#line 540
+#include "unsorted/tSFCFileDatabaseMgr.h"
+
+// HYPOTHESIS: reads the campaign record, copies it out and, once the first three calls are past,
+// saves the current database every fField18 turns under the name in fField08.
+// FUNCTION: STARFLEETOP 0x0056db2a
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction25( tCampaignInfo* campaignInfo )
+{
+	std::vector<tCampaignInfo> campaignInfos;
+	vfunction20( &campaignInfos, false );
+	tCampaignInfo* DBcampaignInfo = campaignInfos.begin();
+#line 779
+	validate( DBcampaignInfo );
+	*campaignInfo = *DBcampaignInfo;
+	static unsigned int count = 0;	// HYPOTHESIS: a function-local counter; it could be a global.
+	if( count >= 3 )
+	{
+		if( DBcampaignInfo->fField108.fn_0055f269() % fField18 == 0 )
+		{
+			fn_00576475()->Save( fField08 );
+		}
+	}
+	else
+	{
+		count++;
+	}
 }
