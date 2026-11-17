@@ -7,6 +7,7 @@
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tValueI.h"
 #include "unsorted/c_0046aa10_msg.h"
+#include <vector>
 
 // The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
 extern char *g_00844e78;
@@ -26,6 +27,7 @@ void fn_004be81f(int arg);
 void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
 void fn_004d3179(const char *name, const tString &value);
 void fn_004d3774(int id);
+void fn_004d32c4(const char *name);
 
 namespace tState_Namespace_GameConnections
 {
@@ -36,10 +38,12 @@ class tState_GameConnections
 public:
 	char *vfunction13();
 	bool vfunction2();
+	bool vfunction4();
 
 	void fn_004682c7();
 	void fn_00468527();
 	void fn_00469271();
+	void fn_00469534();
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -54,7 +58,8 @@ public:
 	int m1e0;
 	int m1e4;
 	char *m1e8;
-	char m1ec[0x1fc - 0x1ec];
+	// HYPOTHESIS: names the state hands to fn_004d32c4 on exit; the element type is a guess.
+	std::vector< char * > m1ec;
 	tString m1fc;
 	int m224[6];
 	int m23c;
@@ -129,6 +134,24 @@ bool tState_GameConnections::vfunction2()
 
 	fn_00468527();
 	m1e4 = 0x10004;
+	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x0046691b
+bool tState_GameConnections::vfunction4()
+{
+	static tObject_0040ce21 marker("bye now");
+
+	fn_00469534();
+	fn_004d32c4(m1e8);
+	while (!m1ec.empty())
+	{
+		fn_004d32c4(*(m1ec.end() - 1));
+		m1ec.pop_back();
+	}
+	m1ec.erase(m1ec.begin(), m1ec.end());
+	m1dc = 0;
+	m1e0 = 0;
 	return true;
 }
 
