@@ -309,3 +309,13 @@ int tSFCPlayer::vfunction106()
 tSFCPlayer::~tSFCPlayer()
 {
 }
+
+void __stdcall fn_004d1b74(char *param_1, char *param_2);
+
+// FUNCTION: STARFLEETOP 0x004cf9b3
+void fn_004cf9b3()
+{
+	char local_6;
+	char local_5;
+	fn_004d1b74(&local_6, &local_5);
+}
