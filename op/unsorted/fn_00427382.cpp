@@ -86,6 +86,7 @@ public:
 	void fn_00426da7();
 	void fn_00426ca8( int aArg1, int aArg2 );
 	void fn_00426e40( int aArg1, int aArg2 );
+	void fn_00426e61( int aArg1, int aArg2 );
 	bool fn_00426c23( int aArg );
 	void fn_00426c5e( int aArg );
 	char pad00[0x10];
@@ -109,6 +110,7 @@ public:
 	void fn_00427648( int aArg, int aIndex );
 	int fn_00427669( tEntity *aEntity, int aIndex );
 	int fn_00427695( int aIndex, int aValue );
+	void fn_004276bf( int aIndex, int aArg1, int aArg2 );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -221,4 +223,14 @@ int tObject_0042750f::fn_00427695( int aIndex, int aValue )
 		if (fn_00427581( aIndex, i ) == aValue)
 			return i;
 	return -1;
+}
+
+// HYPOTHESIS: passes both arguments to 0x00426e61 of the table entry; nothing for an index
+// out of range or an empty entry.
+// FUNCTION: STARFLEETOP 0x004276bf
+void tObject_0042750f::fn_004276bf( int aIndex, int aArg1, int aArg2 )
+{
+	tObject_00426da7 *entry;
+	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
+		entry->fn_00426e61( aArg1, aArg2 );
 }
