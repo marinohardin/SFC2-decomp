@@ -32,8 +32,9 @@ void fn_004d3179(const char *name, const tString &value);
 void fn_004d3774(int id);
 void fn_004d32c4(const char *name);
 void fn_004d3331(const char *name);
-// HYPOTHESIS: returns a handle for the control with the given id.
-int fn_004d3446(int id);
+// HYPOTHESIS: returns the control with the given id.
+class c_00468677_source;
+c_00468677_source *fn_004d3446(int id);
 // HYPOTHESIS: pointers to the names "OtherConnectionsTCPIP" and "ipEntryField".
 extern const char *g_00844ea4;
 extern const char *g_00844ea8;
@@ -67,7 +68,9 @@ public:
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
 
-// HYPOTHESIS: an object whose slot 68 (+0x110) returns its text; the class is not known.
+// HYPOTHESIS: an object whose slot 68 (+0x110) returns its text; the class is not known. It is
+// taken to be the address field fn_004d3446 returns: slot 50 (+0xc8) clears it, slot 54 (+0xd8)
+// adds an entry.
 class c_00468677_source
 {
 public:
@@ -84,7 +87,10 @@ public:
 	virtual void vfunction40(); virtual void vfunction41(); virtual void vfunction42(); virtual void vfunction43();
 	virtual void vfunction44(); virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
 	virtual void vfunction48(); virtual void vfunction49(); virtual void vfunction50(); virtual void vfunction51();
-	virtual void vfunction52(); virtual void vfunction53(); virtual void vfunction54(); virtual void vfunction55();
+	virtual void vfunction52(); virtual void vfunction53();
+	// HYPOTHESIS: adds a line of text; the three trailing arguments are not known.
+	virtual void vfunction54(tString &text, int, int, int);
+	virtual void vfunction55();
 	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58(); virtual void vfunction59();
 	virtual void vfunction60(); virtual void vfunction61(); virtual void vfunction62(); virtual void vfunction63();
 	virtual void vfunction64(); virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
@@ -117,9 +123,10 @@ public:
 	void fn_004686f6();
 	bool fn_004688a9();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
-	void fn_00468a45(int value, const char *name);
-	// HYPOTHESIS: hands the address field a named value; the types are guesses.
-	void fn_004688ee(int control, const char *name, const char *value);
+	void fn_00468a45(c_00468677_source *control, const char *name);
+	// HYPOTHESIS: fills the address field from the settings section name, or with value when
+	// the section holds no entries.
+	void fn_004688ee(c_00468677_source *control, const char *name, const char *value);
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -142,8 +149,8 @@ public:
 	tValueI< tString > m11c;
 	tValueI< tString > m15c;
 	tValueI< tString > m19c;
-	int m1dc;
-	int m1e0;
+	c_00468677_source *m1dc;
+	c_00468677_source *m1e0;
 	int m1e4;
 	char *m1e8;
 	// HYPOTHESIS: names the state hands to fn_004d32c4 on exit; the element type is a guess.
@@ -466,6 +473,32 @@ bool tState_GameConnections::fn_004688a9()
 	m1b = 0;
 	m1a = 1;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004688ee
+void tState_GameConnections::fn_004688ee(c_00468677_source *control, const char *name, const char *value)
+{
+	char buffer[49];
+	tString prefix("Entry#");
+	tString key;
+	tString text;
+
+	control->vfunction50();
+	int count = g_p008cc580->vfunction5(name, "NumOfEntries", 0);
+	if (count == 0 && value)
+	{
+		tString entry(value);
+		control->vfunction54(entry, -1, 0, -1);
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		key = prefix;
+		key.mAppendInt32s(i, 1);
+		g_p008cc580->vfunction9(name, key.mCharStr(), "", buffer, sizeof(buffer));
+		text = buffer;
+		control->vfunction54(text, -1, 0, -1);
+	}
 }
 
 }
