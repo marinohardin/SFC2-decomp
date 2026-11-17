@@ -260,6 +260,7 @@ public:
 	int FUN_005c4482();
 	int FUN_005c44a2();
 	int FUN_005c44c2();
+	int FUN_005c44e2(int param_1);
 	int		m340;
 	int		m344;
 	char	pad3[0x34c - 0x348];
@@ -337,4 +338,19 @@ int fn_005c43e2_Holder::FUN_005c44c2()
 	int value = m344;
 	m04.Leave();
 	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c44e2
+int fn_005c43e2_Holder::FUN_005c44e2(int param_1)
+{
+	switch (param_1)
+	{
+	case 0:
+		return FUN_005c4482();
+	case 1:
+		return FUN_005c44a2();
+	case 2:
+		return FUN_005c44c2();
+	}
+	return 1;
 }
