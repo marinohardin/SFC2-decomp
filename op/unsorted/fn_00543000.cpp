@@ -15,6 +15,7 @@ public:
 	char *fn_005430f3();
 	bool fn_005430fa(const nDatabase::tID &id);
 	int fn_0054312b();
+	bool fn_00543132();
 
 	char m_pad[0xd0];
 	char m0d0[4];
@@ -23,6 +24,7 @@ public:
 	char m0dc[0x38];
 	unsigned int m114_0 : 8;
 	unsigned int m114_8 : 1;
+	unsigned int m114_9 : 1;
 	char m_pad118[0x1c];
 	int m134;
 	int m138;
@@ -74,4 +76,11 @@ bool fn_005430ad_owner::fn_005430fa(const nDatabase::tID &id)
 int fn_005430ad_owner::fn_0054312b()
 {
 	return m134;
+}
+
+// HYPOTHESIS: a second one-bit flag, bit 9 of the dword at +0x114.
+// FUNCTION: STARFLEETOP 0x00543132
+bool fn_005430ad_owner::fn_00543132()
+{
+	return m114_9 ? true : false;
 }
