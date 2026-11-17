@@ -188,6 +188,7 @@ public:
 	int32 fn_0053a33c();
 	int32 fn_0053a35c();
 	long fn_0053a37c();
+	long fn_0053a39c();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
