@@ -97,3 +97,9 @@ void tGameState::vfunction8(int *param_1)
 	target->vfunction26(0, 0, 0);
 	target->vfunction29(1, 1);
 }
+
+// FUNCTION: STARFLEETOP 0x00469dfd
+bool tGameState::vfunction14(int param_1)
+{
+	return 1;
+}

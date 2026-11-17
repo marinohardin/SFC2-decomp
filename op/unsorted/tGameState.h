@@ -20,6 +20,12 @@ public:
 	virtual void vfunction6();
 	virtual void vfunction7();
 	virtual void vfunction8(int *param_1);
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual bool vfunction14(int param_1);
 
 	// HYPOTHESIS: the next state in the list (its head at 0x0090db24) and this state's number
 	// (from the count at 0x0090db20).
