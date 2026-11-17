@@ -690,3 +690,39 @@ void fn_00460c0c_class::fn_00460c0c(int v)
 {
     fn_00460ede(m_8, 1, v);
 }
+
+// HYPOTHESIS: 0x00460c1d is the library's vector destructor for 364-byte elements whose
+// destructor is 0x005db882; the element type is not identified.
+class fn_005db882_object
+{
+public:
+    ~fn_005db882_object();
+
+    char pad_000[0x16c];
+};
+
+class fn_00460c1d_class
+{
+public:
+    ~fn_00460c1d_class();
+    void _Destroy(fn_005db882_object *_F, fn_005db882_object *_L);
+
+    std::allocator<fn_005db882_object> allocator;
+    fn_005db882_object *_First;
+    fn_005db882_object *_Last;
+    fn_005db882_object *_End;
+};
+
+inline void fn_00460c1d_class::_Destroy(fn_005db882_object *_F, fn_005db882_object *_L)
+{
+    for (; _F != _L; ++_F)
+        allocator.destroy(_F);
+}
+
+// FUNCTION: STARFLEETOP 0x00460c1d
+fn_00460c1d_class::~fn_00460c1d_class()
+{
+    _Destroy(_First, _Last);
+    allocator.deallocate(_First, _End - _First);
+    _First = 0, _Last = 0, _End = 0;
+}
