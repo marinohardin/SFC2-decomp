@@ -106,6 +106,7 @@ public:
 	fn_0042c709_ptr fn_005434f7() const;
 	int fn_00543514();
 	nDatabase::tID fn_0054351b() const;
+	std::string fn_00543551() const;
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -129,7 +130,8 @@ public:
 	std::string m048;
 	int m058;
 	fn_0042c709_wrapper m05c;
-	char m_pad74[0x4c];
+	std::string m074;
+	char m_pad84[0x3c];
 	nDatabase::tID m0c0;
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
@@ -420,4 +422,11 @@ int fn_005430ad_owner::fn_00543514()
 nDatabase::tID fn_005430ad_owner::fn_0054351b() const
 {
 	return m0c0;
+}
+
+// HYPOTHESIS: +0x74 holds a third std::string, returned by copy like +0x48.
+// FUNCTION: STARFLEETOP 0x00543551
+std::string fn_005430ad_owner::fn_00543551() const
+{
+	return m074;
 }
