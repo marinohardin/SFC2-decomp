@@ -27,6 +27,7 @@ public:
     void vfunction51();
     char fn_0043eb5f(int aID);
     void fn_0043e642(int param_1);
+    void fn_0043e6ce(int param_1);
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -365,6 +366,31 @@ void tSensorGroupSystem::fn_0043e642(int param_1)
                 field_f8.vfunction2(0);
                 field_184 = field_164;
                 field_d4.vfunction2(field_184);
+            }
+        }
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x0043e6ce
+void tSensorGroupSystem::fn_0043e6ce(int param_1)
+{
+    if (param_1 != field_188)
+    {
+        field_188 = param_1;
+        field_f8.vfunction2(param_1);
+        if (field_184 + field_188 > field_164)
+        {
+            if (field_188 <= field_164)
+            {
+                field_184 = field_164 - field_188;
+                field_d4.vfunction2(field_184);
+            }
+            else
+            {
+                field_184 = 0;
+                field_d4.vfunction2(0);
+                field_188 = field_164;
+                field_f8.vfunction2(field_188);
             }
         }
     }
