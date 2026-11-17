@@ -58,6 +58,8 @@ public:
     // HYPOTHESIS: the analysis's name; sets field_a0's value and resets the three 32-entry
     // arrays at +0x148, +0x1c8 and +0x248.
     virtual void vfunction123(long param_1);
+    // HYPOTHESIS: the analysis's name; stores param_1 into field_bc (vfunction105 returns it).
+    virtual void vfunction124(int param_1);
     // HYPOTHESIS: the slots between 117 and 126 are not recovered; vfunction126 is the
     // analysis's name. Stores param_1 into a member.
     virtual void vfunction126(int param_1);

@@ -5536,6 +5536,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044ea1e": {
+   "name": "tShuttleBaySystem::vfunction124",
+   "symbol": "?vfunction124@tShuttleBaySystem@@UAEXH@Z",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
