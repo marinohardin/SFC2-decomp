@@ -2602,6 +2602,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c10c": {
+   "name": "FUN_0042c10c",
+   "symbol": "?fn_0042c10c@fn_0042c10c_Vector@@QAEXPAVfn_0042c10c_Elem@@IABV2@@Z",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 596,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

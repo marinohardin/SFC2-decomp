@@ -65,3 +65,115 @@ void fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node* x)
 		operator delete(x);
 	}
 }
+
+// HYPOTHESIS: the 0x14-byte element of a library vector; it has a virtual destructor (the
+// vector destroys through vtable slot 0) and its assignment is 0x005b69b0, the address
+// unsorted/tHexPoint.h gives tHexPoint's operator=; that header has no virtual destructor, so the
+// two are not yet reconciled.
+class fn_0042c10c_Elem
+{
+public:
+	virtual ~fn_0042c10c_Elem();
+	fn_0042c10c_Elem& operator=(const fn_0042c10c_Elem& other);
+
+	int m04;
+	int m08;
+	int m0c;
+	int m10;
+};
+
+// HYPOTHESIS: constructs an element in place from another (the library's _Construct).
+void fn_0042c9c5(fn_0042c10c_Elem* p, const fn_0042c10c_Elem& v);
+
+// HYPOTHESIS: a library vector of 0x14-byte elements: allocator byte, then first, last, end.
+class fn_0042c10c_Vector
+{
+public:
+	void fn_0042c10c(fn_0042c10c_Elem* p, unsigned int m, const fn_0042c10c_Elem& x);
+	unsigned int size() const;
+	void _Destroy(fn_0042c10c_Elem* f, fn_0042c10c_Elem* l);
+	fn_0042c10c_Elem* _Ucopy(const fn_0042c10c_Elem* f, const fn_0042c10c_Elem* l, fn_0042c10c_Elem* p);
+	void _Ufill(fn_0042c10c_Elem* f, unsigned int n, const fn_0042c10c_Elem& x);
+
+	char m00_allocator[0x4];
+	fn_0042c10c_Elem* m04_first;
+	fn_0042c10c_Elem* m08_last;
+	fn_0042c10c_Elem* m0c_end;
+};
+
+// MATCH-ONLY: the library's inline helpers, written out for this hand-declared vector.
+inline unsigned int fn_0042c10c_Vector::size() const
+{
+	return m04_first == 0 ? 0 : m08_last - m04_first;
+}
+
+inline void fn_0042c10c_Vector::_Destroy(fn_0042c10c_Elem* f, fn_0042c10c_Elem* l)
+{
+	for (; f != l; ++f)
+		f->~fn_0042c10c_Elem();
+}
+
+inline fn_0042c10c_Elem* fn_0042c10c_Vector::_Ucopy(const fn_0042c10c_Elem* f, const fn_0042c10c_Elem* l, fn_0042c10c_Elem* p)
+{
+	for (; f != l; ++p, ++f)
+		fn_0042c9c5(p, *f);
+	return p;
+}
+
+inline void fn_0042c10c_Vector::_Ufill(fn_0042c10c_Elem* f, unsigned int n, const fn_0042c10c_Elem& x)
+{
+	for (; 0 < n; --n, ++f)
+		fn_0042c9c5(f, x);
+}
+
+inline fn_0042c10c_Elem* fn_0042c10c_Allocate(int n, fn_0042c10c_Elem*)
+{
+	if (n < 0)
+		n = 0;
+	return (fn_0042c10c_Elem*)operator new((unsigned int)n * sizeof (fn_0042c10c_Elem));
+}
+
+inline void fn_0042c10c_fill(fn_0042c10c_Elem* f, fn_0042c10c_Elem* l, const fn_0042c10c_Elem& x)
+{
+	for (; f != l; ++f)
+		*f = x;
+}
+
+inline fn_0042c10c_Elem* fn_0042c10c_copy_backward(fn_0042c10c_Elem* f, fn_0042c10c_Elem* l, fn_0042c10c_Elem* x)
+{
+	while (f != l)
+		*--x = *--l;
+	return x;
+}
+
+// FUNCTION: STARFLEETOP 0x0042c10c
+void fn_0042c10c_Vector::fn_0042c10c(fn_0042c10c_Elem* p, unsigned int m, const fn_0042c10c_Elem& x)
+{
+	if ((unsigned int)(m0c_end - m08_last) < m)
+	{
+		unsigned int n = size() + (m < size() ? size() : m);
+		fn_0042c10c_Elem* s = fn_0042c10c_Allocate(n, (fn_0042c10c_Elem*)0);
+		fn_0042c10c_Elem* q = _Ucopy(m04_first, p, s);
+		_Ufill(q, m, x);
+		_Ucopy(p, m08_last, q + m);
+		_Destroy(m04_first, m08_last);
+		operator delete(m04_first);
+		m0c_end = s + n;
+		m08_last = s + size() + m;
+		m04_first = s;
+	}
+	else if ((unsigned int)(m08_last - p) < m)
+	{
+		_Ucopy(p, m08_last, p + m);
+		_Ufill(m08_last, m - (m08_last - p), x);
+		fn_0042c10c_fill(p, m08_last, x);
+		m08_last += m;
+	}
+	else if (0 < m)
+	{
+		_Ucopy(m08_last - m, m08_last, m08_last);
+		fn_0042c10c_copy_backward(p, m08_last - m, m08_last);
+		fn_0042c10c_fill(p, p + m, x);
+		m08_last += m;
+	}
+}
