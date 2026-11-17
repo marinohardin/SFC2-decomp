@@ -600,3 +600,26 @@ void fn_00575781_owner::fn_00575781(fn_00575781_object** out)
 {
 	*out = new fn_00575781_object(m_d0);
 }
+
+// HYPOTHESIS: the object built by fn_005757c4 is unnamed; 0x50 bytes
+class fn_005757c4_object
+{
+public:
+	fn_005757c4_object(void* arg);
+	~fn_005757c4_object();
+	char m_pad[0x50];
+};
+
+class fn_005757c4_owner
+{
+public:
+	void fn_005757c4(fn_005757c4_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x005757c4
+void fn_005757c4_owner::fn_005757c4(fn_005757c4_object** out)
+{
+	*out = new fn_005757c4_object(m_d0);
+}
