@@ -100,6 +100,7 @@ public:
 	bool fn_0054313e();
 	fn_0042b004_map fn_00543149();
 	tHexPoint fn_005434b1() const;
+	int fn_005434cf();
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -144,7 +145,8 @@ public:
 	int m130;
 	int m134;
 	int m138;
-	char m_pad13c[0x10];
+	char m_pad13c[0xc];
+	int m148;
 	fn_005b6a5c_owner m14c;
 };
 
@@ -370,4 +372,11 @@ float fn_005430ad_owner::fn_005434aa()
 tHexPoint fn_005430ad_owner::fn_005434b1() const
 {
 	return m11c;
+}
+
+// HYPOTHESIS: the dword at +0x148 is returned as an int; its type is not known yet.
+// FUNCTION: STARFLEETOP 0x005434cf
+int fn_005430ad_owner::fn_005434cf()
+{
+	return m148;
 }
