@@ -183,7 +183,7 @@ class tSFCPlayer
 		virtual int vfunction15(int param_1);
 		virtual void vfunction16(unsigned param_1);
 		virtual void vfunction17(int param_1, unsigned param_2);
-		virtual void vfunction18() = 0;
+		virtual void vfunction18(int param_1);
 		virtual void vfunction19(char *param_1, unsigned param_2);
 		virtual char *vfunction20(unsigned param_1);
 		virtual void vfunction21(unsigned param_1) = 0;
@@ -1464,12 +1464,20 @@ void tSFCPlayer::vfunction17(int param_1, unsigned param_2)
 		m_3370[row]--;
 	}
 }
-
-
-
-
-
-
+// FUNCTION: STARFLEETOP 0x004d1629
+void tSFCPlayer::vfunction18(int param_1)
+{
+	int row = fn_004d11e9(param_1);
+	m_3358[row] = 0;
+	m_3370[row] = 0;
+	for (int j = 0; j < 6; j++)
+	{
+		m_3388[row * 6 + j] = -1;
+		m_3418[row * 6 + j] = "";
+		m_39b8[row * 6 + j] = "";
+		m_3f58[row * 6 + j].fn_0051da3d();
+	}
+}
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
 // FUNCTION: STARFLEETOP 0x004d0e20
