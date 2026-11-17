@@ -693,6 +693,15 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_004772ce(int id)
 	return result;
 }
 
+// FUNCTION: STARFLEETOP 0x004776d7
+void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, int n)
+{
+	tStringGroupTag *tag = new tStringGroupTag((char *)name);
+	m5c = tag->mGetString(n);
+	if (tag)
+		delete tag;
+}
+
 // HYPOTHESIS: the state's control name tables and the names its value objects bind to, as
 // tState_GameConnections::fn_00469271 registers its own.
 #include "unsorted/s_00844ed0_entry.h"
