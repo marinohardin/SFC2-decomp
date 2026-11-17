@@ -6,6 +6,7 @@
 
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tValueBase.h"
+#include <string>
 
 // HYPOTHESIS: the base is tRepairableShipSystem, as for the other ship systems; the fields
 // between +0x7c and +0xa0 are not recovered.
@@ -35,6 +36,8 @@ public:
     virtual int vfunction110(int param_1);
     // vftable slot 110; stores param_2 into element param_1 of field_2c8.
     virtual void vfunction111(int param_1, int param_2);
+    // Returns a copy of element param_1 of field_2d8.
+    virtual std::string vfunction112(short param_1);
     // HYPOTHESIS: the slots between 111 and 116 are not recovered; vfunction116 is the
     // analysis's name. Returns element param_1 of an int array.
     virtual int vfunction116(int param_1);
@@ -100,6 +103,9 @@ public:
     char pad24c[0x2c8 - 0x24c];
     // HYPOTHESIS: an int array indexed by vfunction110; its length is not recovered.
     int field_2c8[1];
+    char pad2cc[0x2d8 - 0x2cc];
+    // HYPOTHESIS: a std::string array indexed by vfunction112; its length is not recovered.
+    std::string field_2d8[1];
 };
 
 #endif	// tShuttleBaySystem_h
