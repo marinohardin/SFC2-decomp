@@ -315,3 +315,12 @@ void tMetaMapControl::fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int pa
 {
 	fn_005e37d8( entry, param_2, param_3 );
 }
+
+// FUNCTION: STARFLEETOP 0x005e37d8
+void tMetaMapControl::fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 )
+{
+	if ( field_1a4.size() != 0 )
+	{
+		fn_005e374b( entry, param_2, field_1a4[ entry->field_14 ], entry->field_2c, entry->field_2e, param_3 );
+	}
+}
