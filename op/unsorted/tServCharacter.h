@@ -30,6 +30,7 @@ public:
 	public:
 		tShipCache();
 		tShipCache( const fn_0054185f_ship& ship );
+		tShipCache( const tShipCache& other );
 		// HYPOTHESIS: the original declared no destructor; its implicit one (no vtable store)
 		// builds byte for byte, but the harness cannot claim a function with no source line, so
 		// this declared one (which stores the vtable) stands in for it.

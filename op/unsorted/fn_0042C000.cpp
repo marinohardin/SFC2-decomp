@@ -761,3 +761,18 @@ tServCharacter::tShipCache& tServCharacter::tShipCache::operator=( const tShipCa
 	field_48 = other.field_48;
 	return *this;
 }
+
+// HYPOTHESIS: tShipCache's implicit copy constructor, out of line for the copies in
+// vector< tServCharacter::tShipCache >; written memberwise as the compiler generates it.
+// FUNCTION: STARFLEETOP 0x0042ca5f
+tServCharacter::tShipCache::tShipCache( const tShipCache& other )
+	: nDataStore::tStreamable( other ),
+	field_0c( other.field_0c ),
+	field_1c( other.field_1c ),
+	field_20( other.field_20 ),
+	field_24( other.field_24 ),
+	field_34( other.field_34 ),
+	field_44( other.field_44 ),
+	field_48( other.field_48 )
+{
+}
