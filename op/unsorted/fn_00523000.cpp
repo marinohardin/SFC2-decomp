@@ -356,3 +356,21 @@ tObject_005235a7 *fn_0090bed4_Object::fn_005235c8(fn_004e2b02_ship_type *pShip)
 		pResult = pObject->fn_0051c210(pShip);
 	return pResult;
 }
+
+// HYPOTHESIS: two times in seconds, read as doubles; the current one is copied into the other.
+extern double g_00c7c150;
+extern double g_0096e9c0;
+
+// FUNCTION: STARFLEETOP 0x005235e5
+void fn_0090bed4_Object::fn_005235e5(fn_0090bed4_Object *pThis, char param_2, int param_3, int param_4, int param_5)
+{
+	if (pThis->m_16b6 == param_2 && param_3 == 1 && param_4 == 1) {
+		g_0096e9c0 = g_00c7c150;
+		if (pThis->m_1688 != NULL)
+			*pThis->m_1688 = 1;
+		pThis->m_16b6 = -1;
+		pThis->m_168c.fn_00521d73(param_5);
+		if (pThis->m_16b4)
+			pThis->fn_00522f1e();
+	}
+}

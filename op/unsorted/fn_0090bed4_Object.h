@@ -19,6 +19,13 @@ public:
 	void fn_00520e30();
 };
 
+// HYPOTHESIS: the object at +0x168c of the object below; 0x005235e5 hands its last argument
+// to its 0x00521d73. Its size is unknown.
+class tObject_00521d73 {
+public:
+	void fn_00521d73(int param_1);
+};
+
 // HYPOTHESIS: updated through 0x00522681.
 class fn_0090bed4_Object {
 public:
@@ -47,13 +54,24 @@ public:
 	void fn_00523344(unsigned char param_1);
 	void fn_005233cb();
 	void fn_00523445(unsigned char param_1, char param_2);
+	void fn_00522f1e();
+	// HYPOTHESIS: a callback (cdecl, the object passed first) for an event about the ID at +0x16b6.
+	static void fn_005235e5(fn_0090bed4_Object *pThis, char param_2, int param_3, int param_4, int param_5);
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;
-	char m_pad0219[0x16b5 - 0x219];
+	char m_pad0219[0x1688 - 0x219];
+	// HYPOTHESIS: a flag 0x005235e5 raises when it is set.
+	char *m_1688;
+	tObject_00521d73 m_168c;
+	char m_pad168d[0x16b4 - 0x168d];
+	// HYPOTHESIS: 0x005235e5 calls 0x00522f1e when it is set.
+	char m_16b4;
 	// HYPOTHESIS: a flag 0x00523222 sets.
 	char m_16b5;
-	char m_pad16b6[0x16b8 - 0x16b6];
+	// HYPOTHESIS: the ID 0x005235e5 waits for; -1 when none.
+	char m_16b6;
+	char m_pad16b7[0x16b8 - 0x16b7];
 	// HYPOTHESIS: two path settings 0x00523198 reads into buffers it allocates.
 	char *m_16b8;
 	char *m_16bc;
