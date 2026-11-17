@@ -21,5 +21,6 @@ long fn_0053434b_object::fn_0053434b() const
 
 // HYPOTHESIS: a global tString at 0x00c2f3f8; its name is not known. The compiler generates
 // its dynamic initializer (0x00534391, a tail call to the constructor) from this definition.
+// FUNCTION: STARFLEETOP 0x0053439b
 // FUNCTION: STARFLEETOP 0x00534391
 tString g_00c2f3f8;
