@@ -34,6 +34,14 @@ struct tRect
 		bottom	= (short)ey;
 	};
 
+	inline tRect( const tRect &T )
+	{
+		left	= T.left;
+		top		= T.top;
+		right	= T.right;
+		bottom	= T.bottom;
+	}
+
 	inline tRect & operator = ( const tRect &T )
 	{
 		left	= T.left;
