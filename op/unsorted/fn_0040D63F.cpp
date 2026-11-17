@@ -15,6 +15,7 @@ public:
     // HYPOTHESIS: 0x0040d897 is the read counterpart of 0x0040d867.
     int fn_0040d897(void* data, int size, int count);
     void fn_0040d8cf(int n);
+    void fn_0040d8e8(char* p);
     fn_0040d63f_Buf* fn_0040d7d6(tString* str);
     void fn_0040d815();
     void fn_0040d841();
@@ -201,4 +202,14 @@ void fn_0040d63f_Buf::fn_0040d8cf(int n)
     m0c = m08 + n;
     if (m0c > m10)
         m0c = m10;
+}
+
+// FUNCTION: STARFLEETOP 0x0040d8e8
+void fn_0040d63f_Buf::fn_0040d8e8(char* p)
+{
+    m0c = p;
+    if (p > m10)
+        m0c = m10;
+    if (m0c < m08)
+        m0c = m08;
 }
