@@ -834,3 +834,13 @@ float tObject_005237dc::fn_00523967()
 	}
 	return total;
 }
+
+// FUNCTION: STARFLEETOP 0x00523ad3
+void tObject_005237dc::fn_00523ad3()
+{
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 6; j++) {
+			((tObject_005236ea *)&m_150[i * 6 + j])->fn_005237a1();
+		}
+	}
+}
