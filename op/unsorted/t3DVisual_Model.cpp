@@ -111,7 +111,9 @@ public:
 	// HYPOTHESIS: slot 3 takes the object, the entry array at +0x158 and the three values
 	// 0x0042fddb passes on.
 	virtual void vfunction3(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, float param_4, int param_5);
-	virtual void vfunction4();
+	// HYPOTHESIS: slot 4 takes the object, the entry array at +0x158 and the two values
+	// 0x0042fe7e passes on.
+	virtual void vfunction4(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, int param_3, int param_4);
 	// HYPOTHESIS: slot 5 takes the scale 0x0042fbd4 passes on.
 	virtual void vfunction5(float scale);
 	// HYPOTHESIS: slot 6 returns a value 0x0042fc61 passes on.
@@ -140,6 +142,7 @@ public:
 	virtual ~t3DVisual_Model();
 	void vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3);
 	void vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4);
+	void vfunction9(tViewer_0042fd3f *param_1, int param_2, int param_3);
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
 	float vfunction10();
 	bool vfunction11(tPoint3 *out, const char *name);
@@ -464,4 +467,11 @@ void t3DVisual_Model::vfunction8(tViewer_0042fd3f *param_1, float param_2, float
 	}
 	if (m160[index] != 0)
 		m160[index]->vfunction3(param_1, m158, param_2, param_3, param_4);
+}
+
+// FUNCTION: STARFLEETOP 0x0042fe7e
+void t3DVisual_Model::vfunction9(tViewer_0042fd3f *param_1, int param_2, int param_3)
+{
+	if (m160[0] != 0)
+		m160[0]->vfunction4(param_1, m158, param_2, param_3);
 }
