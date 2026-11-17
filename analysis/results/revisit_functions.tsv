@@ -132,4 +132,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00668970	tBasicSoundFileManager::mParseAllSoundsFile	1.94	2	sonnet	2026-11-16T21:22:10Z	best not above 90% after 2 attempts; best 1.94%
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
-0x004295d0	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	99.78	3	fable	2026-11-17T07:00:05Z	attempt 2 (sonnet) did not raise the best; Fable tried; best 99.78%
+0x004295d0	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	99.78	3	fable	2026-11-17T07:08:48Z	attempt 2 (sonnet) did not raise the best; Fable tried; best 99.78%
