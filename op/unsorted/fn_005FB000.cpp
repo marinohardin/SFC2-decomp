@@ -470,6 +470,89 @@ template<> std::_Tree<std::string, std::pair<const std::string, int>, std::map<s
 	return ( iterator( _Z ) );
 }
 
+// The game's out-of-line copy of the library's tree _Insert, for the tree of 0x005fb3df.
+// HYPOTHESIS: the tree is the map of vectors of 0x005fb1e5; 0x005fbaca is the value's copy
+// constructor, 0x00556fd0 and 0x00558526 the rotations.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb867
+template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::iterator std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::_Insert( _Nodeptr _X, _Nodeptr _Y, const _Ty& _V )
+{
+	// MATCH-ONLY: the original's library built the node itself: colour byte at +0x20, nil flag at
+	// +0x21, a per-instance nil node at +0x8 and the size at +0x10.
+	_Nodeptr _Z = (_Nodeptr)allocator._Charalloc( 1 * sizeof ( _Node ) );
+	*( (char*)_Z + 0x20 ) = 0;
+	*( (char*)_Z + 0x21 ) = 0;
+	_Parent( _Z ) = _Y;
+	_Left( _Z ) = *(_Nodeptr*)( (char*)this + 8 );
+	_Right( _Z ) = *(_Nodeptr*)( (char*)this + 8 );
+	_Consval( &_Value( _Z ), _V );
+	++*(size_type*)( (char*)this + 0x10 );
+	if ( _Y == _Head || _X != *(_Nodeptr*)( (char*)this + 8 ) || key_compare( _Kfn()( _V ), _Key( _Y ) ) )
+	{
+		_Left( _Y ) = _Z;
+		if ( _Y == _Head )
+		{
+			_Root() = _Z;
+			_Rmost() = _Z;
+		}
+		else if ( _Y == _Lmost() )
+			_Lmost() = _Z;
+	}
+	else
+	{
+		_Right( _Y ) = _Z;
+		if ( _Y == _Rmost() )
+			_Rmost() = _Z;
+	}
+	for ( _X = _Z; _X != _Root() && *( (char*)_Parent( _X ) + 0x20 ) == 0; )
+		if ( _Parent( _X ) == _Left( _Parent( _Parent( _X ) ) ) )
+		{
+			_Y = _Right( _Parent( _Parent( _X ) ) );
+			if ( *( (char*)_Y + 0x20 ) == 0 )
+			{
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Y + 0x20 ) = 1;
+				*( (char*)_Parent( _Parent( _X ) ) + 0x20 ) = 0;
+				_X = _Parent( _Parent( _X ) );
+			}
+			else
+			{
+				if ( _X == _Right( _Parent( _X ) ) )
+				{
+					_X = _Parent( _X );
+					_Lrotate( _X );
+				}
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Parent( _Parent( _X ) ) + 0x20 ) = 0;
+				_Rrotate( _Parent( _Parent( _X ) ) );
+			}
+		}
+		else
+		{
+			_Y = _Left( _Parent( _Parent( _X ) ) );
+			if ( *( (char*)_Y + 0x20 ) == 0 )
+			{
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Y + 0x20 ) = 1;
+				*( (char*)_Parent( _Parent( _X ) ) + 0x20 ) = 0;
+				_X = _Parent( _Parent( _X ) );
+			}
+			else
+			{
+				if ( _X == _Left( _Parent( _X ) ) )
+				{
+					_X = _Parent( _X );
+					_Rrotate( _X );
+				}
+				*( (char*)_Parent( _X ) + 0x20 ) = 1;
+				*( (char*)_Parent( _Parent( _X ) ) + 0x20 ) = 0;
+				_Lrotate( _Parent( _Parent( _X ) ) );
+			}
+		}
+	*( (char*)_Root() + 0x20 ) = 1;
+	return ( iterator( _Z ) );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
