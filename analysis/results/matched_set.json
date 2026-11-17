@@ -5997,11 +5997,11 @@
   },
   "0x004d2c20": {
    "name": "FUN_004d2c20",
-   "symbol": "?fn_004d2c20@fn_004d2c20_map@@QAE?AUfn_004d2c20_result@@PAUfn_004d2c20_key@@@Z",
+   "symbol": "?fn_004d2c20@fn_004d2c20_map@@QAE?AUfn_004d2c20_result@@ABUfn_004d2c20_key@@@Z",
    "unit": "unsorted/fn_004D2000.cpp",
    "size": 170,
-   "score": 25.743,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {

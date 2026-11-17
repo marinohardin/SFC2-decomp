@@ -878,8 +878,7 @@ void fn_00460b3b_part::fn_004d2c0c()
 // HYPOTHESIS: a red-black tree insert of a unique key (std::set style); key type and names unknown.
 struct fn_004d2c20_key
 {
-	int fn_0040651e(const fn_004d2c20_key* other);
-	int fn_compare_reversed(fn_004d2c20_key* other);
+	int fn_0040651e(const fn_004d2c20_key& other) const;
 };
 
 struct fn_004d2c20_node
@@ -892,6 +891,8 @@ struct fn_004d2c20_node
 
 struct fn_004d2c20_iterator
 {
+	fn_004d2c20_iterator() {}
+	fn_004d2c20_iterator(fn_004d2c20_node* p) : m_0x00(p) {}
 	void fn_0042dcfb();
 	fn_004d2c20_node* m_0x00;
 };
@@ -906,8 +907,8 @@ struct fn_004d2c20_result
 class fn_004d2c20_map
 {
 public:
-	fn_004d2c20_result fn_004d2c20(fn_004d2c20_key* value);
-	fn_004d2c20_iterator* fn_004d2d74(fn_004d2c20_key** v, fn_004d2c20_node* x, fn_004d2c20_node* y, fn_004d2c20_key* value);
+	fn_004d2c20_result fn_004d2c20(const fn_004d2c20_key& value);
+	fn_004d2c20_iterator fn_004d2d74(fn_004d2c20_node* x, fn_004d2c20_node* y, const fn_004d2c20_key& value);
 	char m_0x00[4];
 	fn_004d2c20_node* m_0x04;
 	fn_004d2c20_node* m_0x08;
@@ -915,7 +916,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x004d2c20
-fn_004d2c20_result fn_004d2c20_map::fn_004d2c20(fn_004d2c20_key* value)
+fn_004d2c20_result fn_004d2c20_map::fn_004d2c20(const fn_004d2c20_key& value)
 {
 	fn_004d2c20_node* x = m_0x04->m_0x04;
 	fn_004d2c20_node* y = m_0x04;
@@ -923,23 +924,19 @@ fn_004d2c20_result fn_004d2c20_map::fn_004d2c20(fn_004d2c20_key* value)
 	while (x != m_0x08)
 	{
 		y = x;
-		comp = value->fn_0040651e(&x->m_0x0c) < 0;
-		if (comp)
-			x = x->m_0x00;
-		else
-			x = x->m_0x08;
+		comp = value.fn_0040651e(x->m_0x0c) < 0;
+		x = comp ? x->m_0x00 : x->m_0x08;
 	}
-	fn_004d2c20_iterator j;
 	if (m_0x0c)
-		return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
-	j.m_0x00 = y;
-	if (comp)
-	{
-		if (j.m_0x00 == m_0x04->m_0x00)
-			return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
+		return fn_004d2c20_result(fn_004d2d74(x, y, value), true);
+	fn_004d2c20_iterator j(y);
+	if (!comp)
+		;
+	else if (j.m_0x00 == m_0x04->m_0x00)
+		return fn_004d2c20_result(fn_004d2d74(x, y, value), true);
+	else
 		j.fn_0042dcfb();
-	}
-	if (j.m_0x00->m_0x0c.fn_compare_reversed(value) < 0)
-		return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
+	if (j.m_0x00->m_0x0c.fn_0040651e(value) < 0)
+		return fn_004d2c20_result(fn_004d2d74(x, y, value), true);
 	return fn_004d2c20_result(j, false);
 }
