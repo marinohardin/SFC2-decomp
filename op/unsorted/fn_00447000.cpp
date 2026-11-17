@@ -150,6 +150,7 @@ public:
 	void fn_0044715d(tObject_0042496f *ship);
 	void fn_004472bc(tObject_0042496f *ship);
 	int fn_00447415(int side, int kind);
+	void fn_00447531(int side, int value);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -266,4 +267,27 @@ int c_0044715d::fn_00447415(int side, int kind)
 		break;
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447531
+void c_0044715d::fn_00447531(int side, int value)
+{
+	switch (side)
+	{
+	case 0:
+		if (value < 0 || value > field_0xe8->field_0x10c[0])
+			value = 0;
+		field_0xe8->field_0x112[0] = value;
+		break;
+	case 1:
+		if (value < 0 || value > field_0xe8->field_0x10c[1])
+			value = 0;
+		field_0xe8->field_0x112[1] = value;
+		break;
+	case 2:
+		if (value < 0 || value > field_0xe8->field_0x10c[2])
+			value = 0;
+		field_0xe8->field_0x112[2] = value;
+		break;
+	}
 }
