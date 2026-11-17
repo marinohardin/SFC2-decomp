@@ -205,3 +205,15 @@ void tObject_006e3240::FUN_006e32f0(int param_1)
 		size *= 2;
 	FUN_006e3320(size);
 }
+
+// FUNCTION: STARFLEETOP 0x006e3320
+void tObject_006e3240::FUN_006e3320(unsigned long param_1)
+{
+	if (m08 < param_1) {
+		char* block = new char[param_1];
+		memcpy(block, m10, m0c);
+		delete m10;
+		m10 = block;
+		m08 = param_1;
+	}
+}
