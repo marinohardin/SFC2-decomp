@@ -481,3 +481,88 @@ void fn_004d3609( fn_004d3609_record* arg1, long arg2, long arg3 )
 		fn_004d3652( arg1->m0c, arg1->m10, arg2, arg3 );
 	}
 }
+
+extern char g_0083d5b8[];
+extern char g_0083d508[];
+extern char g_0083d4f8[];
+extern char g_00855730[];
+extern char g_0083d3e8[];
+extern char g_0083d3ec[];
+extern char g_0085572c[];
+extern char g_00855728[];
+extern char g_00855724[];
+extern char g_00855720[];
+extern char g_0085571c[];
+extern char g_00855718[];
+extern char g_0083d3f0[];
+extern char g_0083d4fc[];
+extern char g_00855714[];
+extern char g_0083a70c[];
+extern char g_00855710[];
+extern char* g_0083d2a0[];
+
+// FUNCTION: STARFLEETOP 0x004d3652
+void fn_004d3652( long arg1, long arg2, long arg3, long arg4 )
+{
+	fn_007364c0( arg4, arg3 );
+	// HYPOTHESIS: the range guard reproduces the original's extra bound test before the switch table.
+	if ( arg1 < 25 )
+	switch ( arg1 )
+	{
+	case 0:
+		fn_007364d0( arg4, g_0083d5b8 );
+		break;
+	case 1:
+		fn_007364d0( arg4, g_0083d508 );
+		break;
+	case 2:
+		fn_007364d0( arg4, g_0083d4f8 );
+		break;
+	case 3:
+		fn_007364d0( arg4, g_00855730 );
+		break;
+	case 4:
+		fn_007364d0( arg4, g_0083d3e8 );
+		break;
+	case 5:
+		fn_007364d0( arg4, g_0083d3ec );
+		break;
+	case 6:
+		fn_007364d0( arg4, g_0085572c );
+		break;
+	case 7:
+		fn_007364d0( arg4, g_00855728 );
+		break;
+	case 8:
+		fn_007364d0( arg4, g_00855724 );
+		break;
+	case 9:
+		fn_007364d0( arg4, g_00855720 );
+		break;
+	case 10:
+		fn_007364d0( arg4, g_0085571c );
+		break;
+	case 11:
+		fn_007364d0( arg4, g_00855718 );
+		break;
+	case 12:
+		fn_007364d0( arg4, g_0083d3f0 );
+		break;
+	case 13:
+		fn_007364d0( arg4, g_0083d4fc );
+		break;
+	case 14:
+		fn_007364d0( arg4, g_00855714 );
+		break;
+	case 15:
+		fn_007364d0( arg4, g_0083a70c );
+		break;
+	case 16:
+		fn_007364d0( arg4, g_00855710 );
+		break;
+	}
+	if ( arg2 < 0x2c )
+	{
+		fn_007364d0( arg4, g_0083d2a0[arg2] );
+	}
+}
