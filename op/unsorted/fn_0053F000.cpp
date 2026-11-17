@@ -32,6 +32,7 @@ public:
 	char *fn_0053f268();
 	long fn_0053f26c();
 	long fn_0053f273();
+	long fn_0053f27a();
 
 	char m_00[0x58];
 	char m_58[4];
@@ -44,6 +45,7 @@ public:
 	char m_80[0x0c];
 	long m_8c;
 	long m_90;
+	long m_94;
 };
 
 // FUNCTION: STARFLEETOP 0x0053f25c
@@ -85,4 +87,11 @@ long fn_0053f25c_owner::fn_0053f26c()
 long fn_0053f25c_owner::fn_0053f273()
 {
 	return m_90;
+}
+
+// HYPOTHESIS: same owner; returns the dword at 0x94, type unknown.
+// FUNCTION: STARFLEETOP 0x0053f27a
+long fn_0053f25c_owner::fn_0053f27a()
+{
+	return m_94;
 }
