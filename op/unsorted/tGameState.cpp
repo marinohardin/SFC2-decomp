@@ -1002,3 +1002,10 @@ char fn_0046a713()
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0046a741
+void fn_0046a741()
+{
+	if (g_0090db40 != 0)
+		g_0090db38.fn_0046ad61();
+}
