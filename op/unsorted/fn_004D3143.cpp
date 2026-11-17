@@ -205,3 +205,42 @@ void fn_004d336d( long arg1 )
 		g_0092e4a0.fn_004d4712( result );
 	}
 }
+
+// HYPOTHESIS: the object returned by 0x004cb602 has a virtual method at vtable offset 0x4c
+// (slot 19); the other slots are not recovered, so they are placeholders.
+class fn_004d338b_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual long vfunction19();
+};
+
+// FUNCTION: STARFLEETOP 0x004d338b
+long fn_004d338b( long arg1 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	long result = -1;
+	if ( obj != 0 )
+	{
+		result = obj->vfunction19();
+	}
+	return result;
+}
