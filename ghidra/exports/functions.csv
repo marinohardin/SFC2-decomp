@@ -3268,7 +3268,7 @@ address,size,name,mangled,demangled,name_source,translation_unit,tu_evidence,hea
 0045e558,28,tState_Namespace_CampaignSelector::tState_CampaignSelector::scalar_deleting_destructor,,"tState_CampaignSelector * __thiscall scalar_deleting_destructor(tState_CampaignSelector * this, byte param_1)",rtti-class-recovery,,,,0,,function,
 0045e574,131,FUN_0045e574,,,default,,,,0,,function,eh-prolog-joined
 0045e5f7,67,FUN_0045e5f7,,,default,,,,0,,function,eh-prolog-joined
-0045e63a,56,CMiniDockFrameWnd::~CMiniDockFrameWnd,??1CMiniDockFrameWnd@@UAE@XZ,void __thiscall ~CMiniDockFrameWnd(CMiniDockFrameWnd * this),ghidra-fid-vs,,,,0,,function,eh-prolog-joined
+0045e63a,56,FUN_0045e63a,,,default,,,,0,,function,eh-prolog-joined
 0045e672,5,thunk_FUN_00460acb,,,default,,,,0,,thunk,
 0045e677,5,thunk_FUN_00460b03,,,default,,,,0,,thunk,
 0045e67c,5,thunk_FUN_00460b3b,,,default,,,,0,,thunk,
@@ -13781,7 +13781,7 @@ address,size,name,mangled,demangled,name_source,translation_unit,tu_evidence,hea
 005d3cc3,1285,"tMemberCallback<tServerManager,long>::tMemberCallback<tServerManager,long>",,"tMemberCallback<tServerManager,long> * __thiscall tMemberCallback<tServerManager,long>(tMemberCallback<tServerManager,long> * this)",rtti-class-recovery,,,,0,,function,eh-prolog-joined
 005d41c8,28,tServerManager::scalar_deleting_destructor,,"tServerManager * __thiscall scalar_deleting_destructor(tServerManager * this, byte param_1)",rtti-class-recovery,,,,0,,function,
 005d41e4,139,tServerManager::~tServerManager,,void __thiscall ~tServerManager(void),rtti-class-recovery,,,,0,,function,eh-prolog-joined
-005d426f,28,CMiniDockFrameWnd::`scalar_deleting_destructor',??_GCMiniDockFrameWnd@@UAEPAXI@Z,"void * __thiscall `scalar_deleting_destructor'(CMiniDockFrameWnd * this, uint param_1)",ghidra-fid-vs,,,,1,crt,function,
+005d426f,28,FUN_005d426f,,,default,,,,1,crt,function,
 005d428b,509,FUN_005d428b,,,default,F:\Projects\Taldren\Projects\SFC2_5\Meta\Servers\ServerManager.cpp,assert-path,,0,,function,eh-prolog-joined
 005d4488,18,FUN_005d4488,,,default,F:\Projects\Taldren\Projects\SFC2_5\Meta\Servers\ServerManager.cpp,neighbour,,0,,function,
 005d449a,137,FUN_005d449a,,,default,F:\Projects\Taldren\Projects\SFC2_5\Meta\Servers\ServerManager.cpp,neighbour,,0,,function,eh-prolog-joined
