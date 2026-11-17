@@ -89,6 +89,8 @@ public:
 	void fn_0053f461();
 	void fn_0053f4ea();
 	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
+	void fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last );
+	void fn_0053faeb( fn_0054340c_owner *pos, long first, long last );
 
 	long m_00;
 	fn_0054340c_owner *m_04;
@@ -347,4 +349,13 @@ void fn_0053f522_owner::fn_0053f4ea()
 	m_04 = 0;
 	m_08 = 0;
 	m_0c = 0;
+}
+
+// HYPOTHESIS: same vector-like class; erases its own range at 4..8, then hands the two
+// arguments to 0x0053faeb at its first, like an assign.
+// FUNCTION: STARFLEETOP 0x0053f522
+void fn_0053f522_owner::fn_0053f522( long a, long b )
+{
+	fn_0053fd7e( m_04, m_08 );
+	fn_0053faeb( m_04, a, b );
 }
