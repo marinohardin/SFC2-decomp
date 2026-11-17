@@ -45,6 +45,8 @@ public:
     void fn_0043ec81();
     int fn_0043eca6(int param_1);
     void fn_0043eee8();
+    // HYPOTHESIS: param_2 is not read (the function pops two arguments).
+    float fn_0043ed38(int param_1, int param_2);
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -912,4 +914,38 @@ int fn_0043ed12(int param_1)
         }
     }
     return result;
+}
+
+extern double g_0079a148;
+extern float g_007959cc;
+extern float g_007959c8;
+extern float g_00795bf0;
+
+// FUNCTION: STARFLEETOP 0x0043ed38
+float tSensorGroupSystem::fn_0043ed38(int param_1, int param_2)
+{
+    fn_0043eee8();
+    int value = (int)-(fn_0043e78a(0) + param_1);
+    int level = 0;
+    int limit = 7;
+    int step = 6;
+    if (value > 0)
+    {
+        level = 1;
+        while (value > limit)
+        {
+            limit += step;
+            step += 4;
+            level++;
+        }
+        fn_0090be9c_type* source = g_0090be9c;
+        level -= (int)((double)source->vfunction7() * g_0079a148 / (double)source->field_20);
+    }
+    if (level <= 5)
+        return g_007959cc;
+    if (level <= 7)
+        return g_007959c8;
+    if (level <= 9)
+        return g_00795bf0;
+    return 0.0f;
 }
