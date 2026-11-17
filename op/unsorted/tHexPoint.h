@@ -22,6 +22,8 @@ public:
 	bool operator!=(const tHexPoint &other) const;
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
 	void fn_005b6b62(int x, int y);
+	// HYPOTHESIS: a member taking two arguments, both passed as 0 by 0x00543445.
+	void fn_005b6a5c(int a, int b);
 	// HYPOTHESIS: the two coordinates in the order tMetaMapHex's SQLFillInsertStream writes
 	// them; the stream takes them as long.
 	long fn_0055f269();

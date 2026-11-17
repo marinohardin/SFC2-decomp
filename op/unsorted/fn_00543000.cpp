@@ -144,13 +144,15 @@ public:
 	mutable tOptex fPointerOptex;
 };
 
-// HYPOTHESIS: the object at +0x14c of the class below; 0x005b6a5c is a member taking two
-// arguments, both passed as 0 by 0x00543445. The class is not recovered.
-class fn_005b6a5c_owner
-{
-public:
-	void fn_005b6a5c(int a, int b);
-};
+// HYPOTHESIS: the object at +0x14c of the class below is a tHexPoint: 0x00543ab1 assigns it
+// with tHexPoint's assignment, and 0x005b6a5c sits among tHexPoint's members.
+
+
+
+
+
+
+
 
 // HYPOTHESIS: a member of an unidentified class that returns a one-bit flag kept in
 // bit 8 of the dword at +0x114, read as a bit-field (`shr eax, 8; and al, 1`).
@@ -172,7 +174,7 @@ public:
 	fn_0042b004_map fn_00543149();
 	tHexPoint fn_005434b1() const;
 	int fn_005434cf();
-	fn_005b6a5c_owner *fn_005434d6();
+	tHexPoint *fn_005434d6();
 	fn_0042c709_ptr fn_005434dd() const;
 	fn_0042c709_ptr fn_005434f7() const;
 	int fn_00543514();
@@ -202,6 +204,7 @@ public:
 	bool fn_00543a11(float value);
 	bool fn_00543a20(const tHexPoint &point);
 	void fn_00543aa4(int value);
+	void fn_00543ab1(const tHexPoint &point);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -258,7 +261,7 @@ public:
 	char m_pad140[0x4];
 	int m144;
 	int m148;
-	fn_005b6a5c_owner m14c;
+	tHexPoint m14c;
 };
 
 // FUNCTION: STARFLEETOP 0x005430ad
@@ -493,7 +496,7 @@ int fn_005430ad_owner::fn_005434cf()
 }
 
 // FUNCTION: STARFLEETOP 0x005434d6
-fn_005b6a5c_owner *fn_005430ad_owner::fn_005434d6()
+tHexPoint *fn_005430ad_owner::fn_005434d6()
 {
 	return &m14c;
 }
@@ -756,4 +759,10 @@ bool fn_005430ad_owner::fn_00543a20(const tHexPoint &point)
 void fn_005430ad_owner::fn_00543aa4(int value)
 {
 	m148 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00543ab1
+void fn_005430ad_owner::fn_00543ab1(const tHexPoint &point)
+{
+	m14c = point;
 }
