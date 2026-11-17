@@ -203,3 +203,18 @@ template<> std::basic_ostream<char, std::char_traits<char> >::basic_ostream(std:
     if (_Doinit)
         init(_S, _Isstd);
 }
+
+// HYPOTHESIS: the out-of-line copy of the library's std::ios::init, written as a
+// specialization with the header's body.
+// FUNCTION: STARFLEETOP 0x004043de
+template<> void std::basic_ios<char, std::char_traits<char> >::init(std::streambuf* _S, bool _Isstd)
+{
+    _Sb = _S;
+    _Tiestr = 0;
+    _Fillch = ' ';
+    _Init();
+    if (_Sb == 0)
+        setstate(badbit);
+    if (_Isstd)
+        _Addstd();
+}
