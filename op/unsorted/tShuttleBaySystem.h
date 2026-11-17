@@ -54,6 +54,8 @@ public:
     virtual void vfunction131(int param_1, int param_2);
     // vftable slot 132; stores param_2 into element param_1 of an int array.
     virtual void vfunction132(int param_1, int param_2);
+    // vftable slot 133; stores param_2 into element param_1 of an int array.
+    virtual void vfunction133(int param_1, int param_2);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -79,7 +81,10 @@ public:
     char pad10c[0x118 - 0x10c];
     // HYPOTHESIS: an int array indexed by vfunction132; its length is not recovered.
     int field_118[1];
-    char pad11c[0x138 - 0x11c];
+    char pad11c[0x128 - 0x11c];
+    // HYPOTHESIS: an int array indexed by vfunction133; its length is not recovered.
+    int field_128[1];
+    char pad12c[0x138 - 0x12c];
     // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
     int field_138[1];
     char pad13c[0x248 - 0x13c];
