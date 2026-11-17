@@ -177,3 +177,10 @@ void fn_004064a8(tFighterSpec* _P, const tFighterSpec& _V)
 {
     new ((void*)_P) tFighterSpec(_V);
 }
+
+// HYPOTHESIS: the library allocator's construct() instantiation for std::string.
+// FUNCTION: STARFLEETOP 0x004064d5
+void fn_004064d5(std::string* _P, const std::string& _V)
+{
+    new ((void*)_P) std::string(_V);
+}
