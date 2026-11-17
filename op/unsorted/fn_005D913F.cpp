@@ -504,3 +504,12 @@ unsigned char fn_005d9831(int param_1)
         return 1;
     return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x005d9845
+// HYPOTHESIS: returns a byte truth value, as fn_005d9831 does.
+unsigned char fn_005d9845(int param_1)
+{
+    if (param_1 < 0 || param_1 > 7)
+        return 0;
+    return 1;
+}
