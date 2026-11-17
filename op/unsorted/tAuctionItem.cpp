@@ -211,3 +211,9 @@ bool tAuctionItem::fn_00545401() const
 {
 	return fBool_48;
 }
+
+// FUNCTION: STARFLEETOP 0x00545405
+void tAuctionItem::fn_00545405( bool value )
+{
+	fBool_48 = value;
+}
