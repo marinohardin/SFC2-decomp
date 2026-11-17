@@ -121,7 +121,7 @@ public:
     virtual int vfunction101();
     virtual int vfunction102();
     virtual int vfunction103();
-    virtual void vfunction104();
+    virtual int vfunction104();
     virtual void vfunction105();
     virtual void vfunction106();
     virtual void vfunction107( float param_1 );
