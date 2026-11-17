@@ -590,3 +590,10 @@ void fn_00404b1c_Streambuf::fn_00404b1c()
     m2c = &m24, m30 = &m28;
     fn_setp(0, 0), fn_setg(0, 0, 0);
 }
+
+// HYPOTHESIS: the library's use_facet for ctype<char> (locale lookup under a _Lockit, cached
+// fallback facet, bad_cast "missing locale facet"); not yet written, the body is a placeholder.
+// FUNCTION: STARFLEETOP 0x00404b5e
+void fn_00404b5e()
+{
+}
