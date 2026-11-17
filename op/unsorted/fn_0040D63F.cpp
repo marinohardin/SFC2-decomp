@@ -161,3 +161,17 @@ void fn_0040d63f_Buf::fn_0040d841()
     for (int i = 0; i < m18; i++)
         fn_0040d897(&b, 1, 0);
 }
+
+// FUNCTION: STARFLEETOP 0x0040d867
+void fn_0040d63f_Buf::fn_0040d867(void* data, int size, int count)
+{
+    if (m15 != 1 && data != 0) {
+        char* src = (char*)data;
+        while (size > 0 && m0c < m10) {
+            *m0c = *src;
+            m0c++;
+            src++;
+            size--;
+        }
+    }
+}
