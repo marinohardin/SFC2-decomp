@@ -16,13 +16,15 @@ public:
 	bool fn_005430fa(const nDatabase::tID &id);
 	int fn_0054312b();
 	bool fn_00543132();
+	bool fn_0054313e();
 
 	char m_pad[0xd0];
 	char m0d0[4];
 	nDatabase::tID *m0d4;
 	nDatabase::tID *m0d8;
 	char m0dc[0x38];
-	unsigned int m114_0 : 8;
+	unsigned int m114_0 : 7;
+	unsigned int m114_7 : 1;
 	unsigned int m114_8 : 1;
 	unsigned int m114_9 : 1;
 	char m_pad118[0x1c];
@@ -83,4 +85,13 @@ int fn_005430ad_owner::fn_0054312b()
 bool fn_005430ad_owner::fn_00543132()
 {
 	return m114_9 ? true : false;
+}
+
+// HYPOTHESIS: a third one-bit flag, bit 7 of the dword at +0x114. The original
+// tests it as `test byte ptr [ecx+0x114], 0x80; setne al`; every source form tried
+// (bit-field, mask, byte cast) compiles to a shift instead.
+// FUNCTION: STARFLEETOP 0x0054313e
+bool fn_005430ad_owner::fn_0054313e()
+{
+	return m114_7 ? true : false;
 }
