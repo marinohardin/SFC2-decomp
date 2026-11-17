@@ -198,3 +198,9 @@ class tShip;
 nDatabase::tQuery<tShip>::~tQuery()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0056f273
+void nDatabase::tQuery<tShip>::fn_0056f04f(void *value)
+{
+	m_results.fn_00571a69(value);
+}
