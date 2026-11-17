@@ -4,6 +4,9 @@
 #define TGSTRMGR_H
 
 #include "Tiger/tpart.h"
+#include "Tiger/tstring.h"
+#include <map>
+#include <vector>
 
 class tBasicFile;
 class tString;
@@ -22,6 +25,9 @@ class tString;
 class tStrMgrCore
 {
 	public:
+		// Name from the exe's throw info; its enumerators are not recovered.
+		enum eStrManagerErr {};
+
 		virtual				~tStrMgrCore( void );
 		virtual		void	mDone		( void );
 		virtual		unsigned char	mLoadStringFile	( const char *, bool );
@@ -41,6 +47,19 @@ class tStrMgrCore
 		virtual		unsigned char	mIsAnElement	( const char *, long );
 		virtual		unsigned char	mIsAnElement	( long, const tString & );
 		virtual		unsigned char	mIsAnElement	( const char *, const tString & );
+
+		// HYPOTHESIS: layout from mDone's accesses only: two ordered containers whose
+		// header pointers sit at +0x4 and +0x18, a vector of owned pointers (first/last
+		// at +0x2c/+0x30) and a counter at +0x3c. Key and value types are guesses that
+		// only reproduce the two distinct erase instantiations; the pads fill the
+		// unexplained 4 bytes after each map.
+		std::map<tString, int, less_ss>	fn_00627180_map1;	// type from mGetStringIndex's lower_bound instantiation
+		int						fn_00627180_pad1;
+		std::map<long, long>	fn_00627180_map2;
+		int						fn_00627180_pad2;
+		std::vector<tString *>	fn_00627180_vec;
+		int						fn_00627180_count;
+		unsigned char			fn_00627200_throwOnMiss;	// HYPOTHESIS: byte flag at +0x40; set, a failed lookup throws
 };
 
 // HYPOTHESIS: tgStrManager derives from tPart, and mDone is its first own virtual (vtable
