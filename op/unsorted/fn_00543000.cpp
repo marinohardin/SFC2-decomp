@@ -121,6 +121,7 @@ public:
 	bool fn_005436bf(std::string text);
 	bool fn_00543702(int value);
 	bool fn_00543711(int value);
+	bool fn_00543720(int value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -153,7 +154,7 @@ public:
 	std::string m0e0;
 	fn_0042c709_wrapper m0f0;
 	int m108;
-	char m_pad10c[0x4];
+	int m10c;
 	int m110;
 	unsigned int m114_0 : 1;
 	unsigned int m114_1 : 1;
@@ -339,7 +340,7 @@ bool fn_005430ad_owner::fn_0054340c()
 // FUNCTION: STARFLEETOP 0x00543437
 bool fn_005430ad_owner::fn_00543437()
 {
-	unsigned int v = *(unsigned int*)(m_pad10c + 0x8);
+	unsigned int v = *(unsigned int*)((char*)&m10c + 0x8);
 	unsigned char r = ~v;
 	r >>= 4;
 	r &= 1;
@@ -557,5 +558,13 @@ bool fn_005430ad_owner::fn_00543702(int value)
 bool fn_005430ad_owner::fn_00543711(int value)
 {
 	m130 = value;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the dword at +0x10c; always reports success.
+// FUNCTION: STARFLEETOP 0x00543720
+bool fn_005430ad_owner::fn_00543720(int value)
+{
+	m10c = value;
 	return true;
 }
