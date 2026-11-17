@@ -174,7 +174,8 @@ public:
 	virtual long __stdcall SetConnectionSettings( unsigned long flags, unsigned long appId, void* pSettings );
 	virtual long __stdcall v13();
 	virtual long __stdcall v14();
-	virtual long __stdcall v15();
+	// HYPOTHESIS: slot 15 fits IDirectPlayLobby3::ConnectEx (flags, interface id, interface, outer).
+	virtual long __stdcall ConnectEx( unsigned long flags, const GUID& riid, void** ppInterface, void* pOuter );
 	virtual long __stdcall v16();
 	virtual long __stdcall v17();
 	// HYPOTHESIS: slot 18 fits IDirectPlayLobby2::WaitForConnectionSettings (flags).
@@ -233,6 +234,7 @@ public:
 	long fn_00616c20( unsigned long appId, void* pSettings );
 	// HYPOTHESIS: a true argument waits for settings; false cancels the wait (DPLWAIT_CANCEL).
 	void fn_00616c50( bool wait );
+	long fn_00616c80( unsigned long flags );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -577,4 +579,21 @@ void fn_00616000_DirectPlayHolder::fn_00616c50( bool wait )
 {
 	fn_00616ac0();
 	fLobby->WaitForConnectionSettings( !wait );
+}
+
+// FUNCTION: STARFLEETOP 0x00616c80
+long fn_00616000_DirectPlayHolder::fn_00616c80( unsigned long flags )
+{
+	long hr = 0;
+	try
+	{
+		if ( fLobby == 0 )
+			throw fn_00616000_Error( "fDirectPlayLobby", fn_00619a20_Context() );
+		hr = fLobby->ConnectEx( flags, g_007bb128, (void**)&fDirectPlayObject, 0 );
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
+	return hr;
 }
