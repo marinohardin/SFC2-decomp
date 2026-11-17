@@ -38,7 +38,7 @@ public:
     virtual void vfunction20() = 0;
     virtual void vfunction21() = 0;
     virtual float vfunction22( float param_1 ) = 0;
-    virtual void vfunction23() = 0;
+    virtual float vfunction23( float param_1 ) = 0;
     virtual void vfunction24() = 0;
     virtual void vfunction25() = 0;
     virtual void vfunction26( float param_1 ) = 0;

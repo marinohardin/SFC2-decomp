@@ -40,7 +40,7 @@ public:
     virtual void vfunction20();
     virtual void vfunction21();
     virtual float vfunction22( float param_1 );
-    virtual void vfunction23();
+    virtual float vfunction23( float param_1 );
     virtual void vfunction24();
     virtual void vfunction25();
     virtual void vfunction26( float param_1 );
@@ -751,4 +751,84 @@ float tShipSystemsFighter::vfunction22( float param_1 )
     if( (float)m7e4 == (float)m778 &&(float)m778 != param_1 )
         m818 = g_00c7c148;
     return m7e4.m18;
+}
+
+// HYPOTHESIS: the object stored at +0x6ec by the constructor; vfunction23 calls its slot 54
+// (+0xd8) for a float. Neither the type nor its other slots are recovered.
+class fn_00444723_field6ec_type
+{
+public:
+    virtual void vfunction0();
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual void vfunction10();
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual float vfunction54();
+};
+
+// HYPOTHESIS: the types; the request is capped at 31 (0x00799ed0), handed to m730, m730 is
+// set again to its own value, and the capped request scaled by slot 54 of the object at
+// +0x6ec (1 when that is 0) is passed on to vfunction22.
+// FUNCTION: STARFLEETOP 0x00444723
+float tShipSystemsFighter::vfunction23( float param_1 )
+{
+    static tObject_0040ce21 marker("I want to go this fast Fighter Style!");
+    if( param_1 > g_00799ed0 )
+        param_1 = g_00799ed0;
+    ((fn_00444396_value*)&m730)->vfunction3( param_1 );
+    ((fn_00444396_value*)&m730)->vfunction3( (float)m730 );
+    float scale = ((fn_00444723_field6ec_type*)m6ec)->vfunction54();
+    if( scale == 0.0f )
+        scale = 1;
+    vfunction22( scale * param_1 );
+    return m730.m18;
 }
