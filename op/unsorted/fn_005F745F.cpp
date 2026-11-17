@@ -106,8 +106,9 @@ public:
 class fn_005f7961_object
 {
 public:
-	void FUN_005f7961( int value );
+	void FUN_005f7961( const fn_0055fe12_value& value );
 	void FUN_005f7902();
+	void FUN_005f7c9d( unsigned int count ); // HYPOTHESIS: grows the block map
 
 	byte field_00[0x04];
 	fn_0055fe12_value** field_04; // HYPOTHESIS: the map of blocks of 204 values
@@ -141,7 +142,7 @@ class fn_005f745f_object
 public:
 	void FUN_005f745f( const fn_005f74a6_entry& value );
 	fn_005f74a6_entry FUN_005f74a6();
-	void FUN_005f755c( int value );
+	void FUN_005f755c( const fn_0055fe12_value& value );
 	fn_0055fe12_value FUN_005f75a3();
 	void FUN_005f7635( int value );
 	fn_005f7a4b_value FUN_005f767d();
@@ -187,7 +188,7 @@ fn_005f74a6_entry::fn_005f74a6_entry( const fn_005f74a6_entry& other )
 }
 
 // FUNCTION: STARFLEETOP 0x005f755c
-void fn_005f745f_object::FUN_005f755c( int value )
+void fn_005f745f_object::FUN_005f755c( const fn_0055fe12_value& value )
 {
 	tOptex::tGuard guard( &field_40 );
 
@@ -350,5 +351,31 @@ void fn_005f7961_object::FUN_005f7902()
 		if ( --field_10 == 0 ) {
 			field_0c = 0;
 		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7961
+void fn_005f7961_object::FUN_005f7961( const fn_0055fe12_value& value )
+{
+	if ( (field_0c + field_10) % 204 == 0 && field_08 <= (field_10 + 204) / 204 ) {
+		FUN_005f7c9d( 1 );
+	}
+	unsigned int off = field_0c + field_10;
+	unsigned int block = off / 204;
+	if ( field_08 <= block ) {
+		block -= field_08;
+	}
+	if ( field_04[block] == 0 ) {
+		field_04[block] = (fn_0055fe12_value*) operator new( 204 * sizeof( fn_0055fe12_value ) );
+	}
+	unsigned int index = off % 204;
+	try {
+		++field_10;
+		fn_0055fe12_value* p = field_04[block] + index;
+		new( p ) fn_0055fe12_value( value );
+	} catch ( ... ) {
+		// HYPOTHESIS: as in 0x005f77c6, the original's catch funclet (0x005f7a21) is not known.
+		--field_10;
+		throw;
 	}
 }
