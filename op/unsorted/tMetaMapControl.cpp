@@ -887,3 +887,15 @@ std::vector<fn_005e381f_entry>::~vector()
 	allocator.deallocate( _First, _End - _First );
 	_First = 0, _Last = 0, _End = 0;
 }
+
+// MATCH-ONLY: the library's vector erase for the image pointer vectors, which assign() calls;
+// written out like the destructors above.
+// FUNCTION: STARFLEETOP 0x005e4606
+template<>
+std::vector<c_tScrollBar_FieldA8 *>::iterator std::vector<c_tScrollBar_FieldA8 *>::erase( iterator _F, iterator _L )
+{
+	iterator _S = copy( _L, end(), _F );
+	_Destroy( _S, end() );
+	_Last = _S;
+	return ( _F );
+}
