@@ -122,7 +122,7 @@ public:
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
 	virtual void vfunction49( nDatabase::tDatabaseObject* object );
 	virtual void vfunction50( tAuctionItem* item );
-	virtual void vfunction51();
+	virtual void vfunction51( tServCharacter* character );
 	virtual void vfunction52();
 	virtual void vfunction53();
 	virtual void vfunction54();
@@ -793,4 +793,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction50( tAuctionItem* i
 #line 1028
 	validate( item );
 	fDatabase->RemoveObjectFromDB( item );
+}
+#line 798
+// HYPOTHESIS: the record type is a guess from the assertion text "character"; it is removed from the database.
+// FUNCTION: STARFLEETOP 0x0056e37b
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction51( tServCharacter* character )
+{
+#line 1038
+	validate( character );
+	fDatabase->RemoveObjectFromDB( character );
 }
