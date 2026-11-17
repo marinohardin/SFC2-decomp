@@ -696,3 +696,29 @@ void fn_004d3843( char* arg1 )
 		}
 	}
 }
+
+// HYPOTHESIS: a list-like container; +4 head node, +8 second buffer, +0x10 count.
+struct fn_004d38a5_list
+{
+	int m0;
+	int** m4;
+	void* m8;
+	int mc;
+	int m10;
+	void fn_004d38a5();
+	void fn_004d38dd( int** result, int* first, int** last );
+};
+
+// FUNCTION: STARFLEETOP 0x004d38a5
+void fn_004d38a5_list::fn_004d38a5()
+{
+	int* tmp;
+	int** last = m4;
+	int* first = *last;
+	fn_004d38dd( &tmp, first, last );
+	::operator delete( m4 );
+	m4 = 0;
+	m10 = 0;
+	::operator delete( m8 );
+	m8 = 0;
+}
