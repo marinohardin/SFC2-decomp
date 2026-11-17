@@ -132,6 +132,7 @@ public:
     void fn_0046052c();
     double fn_0046034f();
     void fn_00460539(const std::string &text, const std::string &name);
+    void fn_00460610();
 
     char pad_000[0x2c];
     fn_004d290d_object m_2c;
@@ -218,7 +219,7 @@ double fn_004602b2_class::fn_0046034f()
 
 // HYPOTHESIS: closes the panel whose name 0x0084411c points to (the same call is made from
 // tPanelMgr.cpp).
-void fn_004d32c4(void *arg);
+void fn_004d32c4(const char *arg);
 
 // FUNCTION: STARFLEETOP 0x0046052c
 void fn_004602b2_class::fn_0046052c()
@@ -246,4 +247,11 @@ void fn_004602b2_class::fn_00460539(const std::string &text, const std::string &
         fn_004d31ed(name.c_str(), 0, 0, 0x280, 0x1e0);
         m_94 = name;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x00460610
+void fn_004602b2_class::fn_00460610()
+{
+    m_90 = false;
+    fn_004d32c4(m_94.c_str());
 }
