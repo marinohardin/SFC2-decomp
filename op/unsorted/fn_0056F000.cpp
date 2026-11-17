@@ -611,3 +611,44 @@ void fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query,
 	}
 	guard.Leave();
 }
+#line 615 "fn_0056F000.cpp"
+
+// HYPOTHESIS: a locked lookup through vfunction8 whose result is added to a polymorphic container.
+class fn_0056f909_result {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	void fn_005395b2(void *object);
+};
+
+class fn_0056f909_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void *vfunction8(void *key);
+	void fn_0056f909(void *key, fn_0056f909_result *result);
+	tOptex fAccess;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f909
+void fn_0056f909_owner::fn_0056f909(void *key, fn_0056f909_result *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	result->fn_005395b2(vfunction8(key));
+	result->vfunction9();
+	guard.Leave();
+}
