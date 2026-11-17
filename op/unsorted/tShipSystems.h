@@ -135,7 +135,7 @@ public:
     virtual void vfunction115( float param_1 ) = 0;
     virtual void vfunction116( float param_1 ) = 0;
     virtual void vfunction117( float param_1 ) = 0;
-    virtual void vfunction118() = 0;
+    virtual float vfunction118() = 0;
     virtual void vfunction119() = 0;
     virtual void vfunction120() = 0;
     virtual void vfunction121() = 0;
