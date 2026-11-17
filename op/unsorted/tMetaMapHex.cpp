@@ -136,11 +136,8 @@ void tMetaMapHex::StreamOut( nDataStore::tOutput& output ) const
 		output << (*i).second;
 	}
 
-	output << m_5c;
-	output << m_60;
-	output << m_64;
-	output << m_68;
-	output << m_6c;
+	output << m_5c << m_60 << m_64;
+	output << m_68 << m_6c;
 
 	output << m_70.m_tree.m_size;
 	for( fn_0053a73a_map::iterator j = m_70.begin(); j != m_70.end(); ++j )
