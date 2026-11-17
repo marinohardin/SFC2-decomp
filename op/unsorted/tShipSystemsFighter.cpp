@@ -156,7 +156,7 @@ public:
     virtual void vfunction136();
     virtual void vfunction137();
     virtual float vfunction138();
-    virtual void vfunction139();
+    virtual int vfunction139();
     virtual void vfunction140();
     virtual void vfunction141();
     virtual void vfunction142();
