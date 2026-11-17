@@ -145,7 +145,9 @@ public:
 	std::vector<tCoopThread*>	f_a4;
 	// HYPOTHESIS: one entry per open anchor tag, 0 for a link and 1 for a named anchor (fn_00690a60).
 	std::vector<unsigned long>	f_b4;
-	char	pad_c4[0xd8 - 0xc4];
+	char	pad_c4[0xc8 - 0xc4];
+	short	f_c8;
+	char	pad_ca[0xd8 - 0xca];
 	// HYPOTHESIS: set, fn_006904d0 does nothing.
 	char	f_d8;
 	char	pad_d9[0xdc - 0xd9];
@@ -609,4 +611,12 @@ void tHtmlParser::fn_00691330()
 	fn_00691270();
 	f_40->fn_0068e7b0( &f_80 );
 	f_92 = ' ';
+}
+
+// FUNCTION: STARFLEETOP 0x00691360
+void tHtmlParser::fn_00691360()
+{
+	f_80 |= 0x80000000;
+	f_c8++;
+	f_40->fn_0068e7b0( &f_80 );
 }
