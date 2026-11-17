@@ -597,3 +597,11 @@ void tMetaMapHex::fn_0053a58e( long param_1 )
 	m_6c = param_1;
 	m_bc.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x0053a5b2
+void tMetaMapHex::fn_0053a5b2( long param_1, int32 param_2 )
+{
+	tOptex::tGuard guard( &m_bc );
+	m_70[param_2] = param_1;
+	guard.Leave();
+}

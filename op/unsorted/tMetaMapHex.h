@@ -209,6 +209,9 @@ public:
 	void fn_0053a56a( long param_1 );
 	// HYPOTHESIS: sets the current economic points (the CurrentEconomicPoints column) under the lock.
 	void fn_0053a58e( long param_1 );
+	// HYPOTHESIS: stores the first argument under the key given by the second in m_70, under
+	// the lock.
+	void fn_0053a5b2( long param_1, int32 param_2 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
