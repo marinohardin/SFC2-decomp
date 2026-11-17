@@ -6495,9 +6495,9 @@
    "symbol": "?mGetPathIterator@tDir@@QAE?AVtPathIterator@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.505,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061e280": {
    "name": "tDir::mGetNamedDir",

@@ -595,6 +595,19 @@ public:
 	// 0x00636ad0), defined after the class so that its callers cannot inline it.
 	tObjectType &fn_00636ad0_mResolve( tCookieType &cookie );
 
+	// MATCH-ONLY: mResolve as tDir::mGetPathIterator (STARFLEETOP 0x0061e160) has it, with the
+	// cookie's map held in a local for operator[].
+	tObjectType &fn_0061e160_mResolve( tCookieType &cookie )
+	{
+		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
+		for ( ; it.fNode != 0; it++ )
+			if ( (*it).fKey.fCookie == cookie.fCookie )
+				break;
+		if ( it.fNode == 0 || it.fNode->fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];	return map[cookie];
+	}
+
 	int32u											f_00;
 	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
 };
@@ -641,19 +654,6 @@ public:
 };
 
 // tFileSession is declared in Tiger/tFileSession.h; these lines keep the line numbers.
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -977,11 +977,11 @@ iTruth tDir::mExist( void )
 }
 
 // The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// two with the plain mResolve; holding the cookie's map in a local for operator[] gives its order.
 // FUNCTION: STARFLEETOP 0x0061e160
 tPathIterator tDir::mGetPathIterator( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetPathIterator();
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetPathIterator();
 }
 
 // The original holds this in ebx and the part search's index in ebp, where this build swaps the
