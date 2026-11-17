@@ -940,3 +940,70 @@ fn_004d2c20_result fn_004d2c20_map::fn_004d2c20(const fn_004d2c20_key& value)
 		return fn_004d2c20_result(fn_004d2d74(x, y, value), true);
 	return fn_004d2c20_result(j, false);
 }
+
+// HYPOTHESIS: same unique-key tree insert as 0x004d2c20 with the key passed by value; names unknown.
+struct fn_004d2cca_key
+{
+	int m_0x00;
+	int fn_0040651e(const fn_004d2cca_key& other) const;
+};
+
+struct fn_004d2cca_node
+{
+	fn_004d2cca_node* m_0x00;
+	fn_004d2cca_node* m_0x04;
+	fn_004d2cca_node* m_0x08;
+	fn_004d2cca_key m_0x0c;
+};
+
+struct fn_004d2cca_iterator
+{
+	fn_004d2cca_iterator() {}
+	fn_004d2cca_iterator(fn_004d2cca_node* p) : m_0x00(p) {}
+	void fn_0042dcfb();
+	fn_004d2cca_node* m_0x00;
+};
+
+struct fn_004d2cca_result
+{
+	fn_004d2cca_result(const fn_004d2cca_iterator& a, bool b) : first(a), second(b) {}
+	fn_004d2cca_iterator first;
+	bool second;
+};
+
+class fn_004d2cca_map
+{
+public:
+	fn_004d2cca_result fn_004d2cca(fn_004d2cca_key* value);
+	fn_004d2cca_iterator fn_004d2ebe(fn_004d2cca_node* x, fn_004d2cca_node* y, fn_004d2cca_key* value);
+	char m_0x00[4];
+	fn_004d2cca_node* m_0x04;
+	fn_004d2cca_node* m_0x08;
+	bool m_0x0c;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2cca
+fn_004d2cca_result fn_004d2cca_map::fn_004d2cca(fn_004d2cca_key* value)
+{
+	fn_004d2cca_node* x = m_0x04->m_0x04;
+	fn_004d2cca_node* y = m_0x04;
+	bool comp = true;
+	while (x != m_0x08)
+	{
+		y = x;
+		comp = value->fn_0040651e(x->m_0x0c) < 0;
+		x = comp ? x->m_0x00 : x->m_0x08;
+	}
+	if (m_0x0c)
+		return fn_004d2cca_result(fn_004d2ebe(x, y, value), true);
+	fn_004d2cca_iterator j(y);
+	if (!comp)
+		;
+	else if (j.m_0x00 == m_0x04->m_0x00)
+		return fn_004d2cca_result(fn_004d2ebe(x, y, value), true);
+	else
+		j.fn_0042dcfb();
+	if (j.m_0x00->m_0x0c.fn_0040651e(*value) < 0)
+		return fn_004d2cca_result(fn_004d2ebe(x, y, value), true);
+	return fn_004d2cca_result(j, false);
+}
