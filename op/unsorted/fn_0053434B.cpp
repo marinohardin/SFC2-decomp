@@ -69,3 +69,19 @@ fn_0053440f_object::~fn_0053440f_object()
 {
     fn_005ff7ac();
 }
+
+// HYPOTHESIS: a __thiscall whose object starts with a vector of 32-bit values; it appends its
+// argument through 0x00571a69 (that vector type is declared only inside tPanelMgr.cpp, so the
+// append is declared on this object).
+class fn_00534454_object
+{
+public:
+    void fn_00534454(void* value);
+    void fn_00571a69(void* const& value);
+};
+
+// FUNCTION: STARFLEETOP 0x00534454
+void fn_00534454_object::fn_00534454(void* value)
+{
+    fn_00571a69(value);
+}
