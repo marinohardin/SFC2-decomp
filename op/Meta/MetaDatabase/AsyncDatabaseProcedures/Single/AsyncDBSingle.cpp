@@ -36,7 +36,6 @@ public:
 	tCurrentTime fField108;
 	char fPad120[0x168 - 0x120];
 };
-
 // HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only
 // inside Common/Database/FileDatabaseMgr.cpp. fn_0056ef05, fn_0056f05f and fn_0056f19b are
 // instances of its member templates (the exe's assertions name Database.h).
@@ -61,6 +60,8 @@ public:
 	void fn_0056f9d7( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result, bool lock );
 	void fn_0056fb13( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result );
 	void fn_0056fbf5( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result );
+	void fn_0056fcd7( nDatabase::tQuery<tCampaignInfo>& query, std::vector<tCampaignInfo>* result, bool lock );
+	void fn_0056fe13( nDatabase::tQuery<tCampaignInfo>& query, std::vector<tCampaignInfo>* result );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
@@ -90,7 +91,7 @@ public:
 	virtual void vfunction17( std::vector<tMetaMapHex>* hexes );
 	virtual void vfunction18( std::vector<tMetaMapDesc>* descs, int lock );
 	virtual void vfunction19( std::vector<tPoliticalTensionMatrix>* matrices );
-	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, bool lock );
+	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, int lock );
 	virtual void vfunction21();
 	virtual void vfunction22();
 	virtual void vfunction23();
@@ -131,7 +132,6 @@ public:
 	virtual void vfunction58( tServCharacter* character );
 	fn_0056c414_Database* fDatabase;
 };
-
 };
 
 // FUNCTION: STARFLEETOP 0x0056c414
@@ -466,4 +466,18 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction19( std::vector<tPo
 {
 	nDatabase::tQuery<tPoliticalTensionMatrix> query;
 	fDatabase->fn_0056fbf5( query, matrices );
+}
+
+// FUNCTION: STARFLEETOP 0x0056d7a8
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction20( std::vector<tCampaignInfo>* campaignInfos, int lock )
+{
+	nDatabase::tQuery<tCampaignInfo> query;
+	if( lock )
+	{
+		fDatabase->fn_0056fe13( query, campaignInfos );
+	}
+	else
+	{
+		fDatabase->fn_0056fcd7( query, campaignInfos, true );
+	}
 }
