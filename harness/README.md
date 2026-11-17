@@ -204,8 +204,10 @@ list:
   ended). The queue skips these functions unless `--revisit` (or `HARNESS_TAKE_REVISIT=1`) is
   given. A revisit run starts over and counts only the attempts after `listed`, except for a
   function that was waiting for Fable, which gets its Fable try instead. A revisit that ends
-  exact takes the function off the list; one that ends short again replaces its row, or moves it
-  to `difficult_functions.tsv` once it has had its full chance.
+  exact takes the function off the list. A function gets one revisit run: one that ends short
+  again moves it to `difficult_functions.tsv`, unless it is left waiting for a Fable try that
+  was not allowed, which keeps its row. Listing it again would hand it straight back to the
+  same `--revisit` loop.
 
 The two lists live in each checkout, but the attempt log is shared, so a loop on one branch
 does not see what a loop on another branch listed. `--revisit` therefore also takes a function

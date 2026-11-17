@@ -125,11 +125,13 @@ class Plan:
     full:  over, and the function had every attempt the rule gives it (the regular sequence to
            its end, and Fable when its best qualified). Such a function goes to
            difficult_functions.tsv; one that stopped short goes to revisit_functions.tsv.
-    note:  why the run ended, for the list."""
+    note:  why the run ended, for the list.
+    waits: over, but its best qualifies for a Fable try it has not had (Fable not allowed)."""
 
-    def __init__(self, model=None, role=None, full=False, note='', best=0.0, attempts=0):
+    def __init__(self, model=None, role=None, full=False, note='', best=0.0, attempts=0,
+                 waits=False):
         self.model, self.role, self.full, self.note = model, role, full, note
-        self.best, self.attempts = best, attempts
+        self.best, self.attempts, self.waits = best, attempts, waits
 
 
 def plan(rows, tiers, near=NEAR):
@@ -171,7 +173,7 @@ def plan(rows, tiers, near=NEAR):
     else:
         note = reason
     return Plan(None, full=ran_out and not fable_due, note=f'{note}; best {best:.2f}%',
-                best=best, attempts=n)
+                best=best, attempts=n, waits=fable_due)
 
 
 def size_bucket(size):
@@ -421,7 +423,10 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     if any(r['address'] == a for r in read_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS)):
         return None
     last = rows[-1]
-    if p.full:
+    # A listed function gets one revisit run: if that ends short too, and it is not left
+    # waiting for Fable, it goes to the difficult list. Listing it again would hand it straight
+    # back to the same --revisit loop, which would run it over and over.
+    if p.full or (mine and take_revisit and not p.waits):
         _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
         append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
             address=a, name=entry['name'], attempts=p.attempts, last_model=last['model'],

@@ -211,6 +211,35 @@ def test_a_revisit_run_that_ends_again_replaces_the_row_and_one_with_its_full_ch
     assert (d['attempts'], d['last_model'], d['best_score']) == ('6', 'fable', '96.00')
 
 
+def test_a_fable_try_in_a_revisit_run_is_final_so_the_loop_never_takes_the_function_again(
+        tmp_path):
+    # Stopped early at 99.78% and listed to wait for Fable; a --revisit --allow-fable loop gives
+    # it Fable, which changes nothing. It goes to the difficult list and is not taken again.
+    p = _paths(tmp_path)
+    entry = dict(address=A, name='B::f')
+    for r in (att(1, 'opus', 99.78, 99.78), att(2, 'sonnet', 99.78, 99.78)):
+        workqueue.record(p, entry, r, TIERS)
+    (r,) = workqueue.read_tsv(p.REVISIT, workqueue.REVISIT_FIELDS)
+    assert 'waits for Fable' in r['note']
+    got = workqueue.record(p, entry, att(3, 'fable', 99.78, 99.78), FABLE, take_revisit=True)
+    assert got == 'difficult'
+    assert workqueue.read_tsv(p.REVISIT, workqueue.REVISIT_FIELDS) == []
+    attempts = workqueue.read_tsv(p.ATTEMPTS, workqueue.ATTEMPT_FIELDS)
+    difficult = workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS)
+    assert workqueue.next_entry([entry], attempts, difficult, FABLE, take_revisit=True) is None
+
+
+def test_a_revisit_run_that_stops_short_again_goes_to_the_difficult_list(tmp_path):
+    p = _paths(tmp_path)
+    entry = dict(address=A, name='B::f')
+    for r in (att(1, 'opus', 0, 40), att(2, 'sonnet', 40, 40, 'failed')):
+        workqueue.record(p, entry, r, TIERS)
+    run = [att(3, 'opus', 40, 50), att(4, 'sonnet', 50, 50, 'failed')]
+    got = [workqueue.record(p, entry, r, FABLE, take_revisit=True) for r in run]
+    assert got == [None, 'difficult']
+    assert workqueue.read_tsv(p.REVISIT, workqueue.REVISIT_FIELDS) == []
+
+
 def test_a_revisit_of_a_function_waiting_for_fable_gives_it_fable_or_leaves_it_waiting():
     attempts = [att(1, 'opus', 0, 92), att(2, 'sonnet', 92, 92, 'failed')]
     queue = [dict(address=A, name='B::f')]
