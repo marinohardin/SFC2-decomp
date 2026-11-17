@@ -58,16 +58,40 @@ struct fn_0042b004_map
 // HYPOTHESIS: 0x005419e4 is a bool query on the 0x4c-byte elements of the vector the member
 // at +0xf0 guards; the element type is not recovered.
 // The analysis names its constructor 0x0054185f and destructor 0x0042a863 tShipCache.
-// HYPOTHESIS: the constructor's one argument is a dword whose type is not recovered.
+// HYPOTHESIS: the constructor's argument is the object 0x0054385d also reads a tID from
+// through its virtual function at +0x30.
+class fn_0054385d_source;
 class fn_005419e4_entry
 {
 public:
-	fn_005419e4_entry(int source);
+	fn_005419e4_entry(fn_0054385d_source *source);
+	fn_005419e4_entry &operator=(const fn_005419e4_entry &other);
 	fn_005419e4_entry(const fn_005419e4_entry &other);
 	~fn_005419e4_entry();
 	bool fn_005419e4() const;
 	nDatabase::tID fn_005419ed() const;
 	char m_00[0x4c];
+};
+
+// HYPOTHESIS: the object an entry is built from; its virtual function at +0x30 returns its
+// database identifier, as with the class tClientCharacter.cpp declares as tObject_00543551,
+// which is probably the same class (declared there only, so not shared yet).
+class fn_0054385d_source
+{
+public:
+	virtual void vfunction00();
+	virtual void vfunction04();
+	virtual void vfunction08();
+	virtual void vfunction0c();
+	virtual void vfunction10();
+	virtual void vfunction14();
+	virtual void vfunction18();
+	virtual void vfunction1c();
+	virtual void vfunction20();
+	virtual void vfunction24();
+	virtual void vfunction28();
+	virtual void vfunction2c();
+	virtual const nDatabase::tID &vfunction30() const;
 };
 
 // HYPOTHESIS: the member at +0xf0 is the SDK's tSingleAccessWrapper< std::vector< X > > and
@@ -168,8 +192,9 @@ public:
 	bool fn_00543702(int value);
 	bool fn_00543711(int value);
 	bool fn_00543720(int value);
-	bool fn_0054372f(int source);
+	bool fn_0054372f(fn_0054385d_source *source);
 	void fn_005437a5(const nDatabase::tID &id);
+	void fn_0054385d(fn_0054385d_source *source);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -619,7 +644,7 @@ bool fn_005430ad_owner::fn_00543720(int value)
 
 // HYPOTHESIS: appends an entry built from the argument to the guarded vector at +0xf0.
 // FUNCTION: STARFLEETOP 0x0054372f
-bool fn_005430ad_owner::fn_0054372f(int source)
+bool fn_005430ad_owner::fn_0054372f(fn_0054385d_source *source)
 {
 	(*m0f0.Lock()).push_back(fn_005419e4_entry(source));
 	return true;
@@ -638,5 +663,25 @@ void fn_005430ad_owner::fn_005437a5(const nDatabase::tID &id)
 		else
 			it++;
 	}
+	list.Done();
+}
+
+// HYPOTHESIS: replaces the first entry of the guarded vector at +0xf0 whose tID is the
+// argument's with a new entry built from the argument.
+// FUNCTION: STARFLEETOP 0x0054385d
+void fn_005430ad_owner::fn_0054385d(fn_0054385d_source *source)
+{
+	fn_0042c709_iptr list = m0f0.Lock();
+	std::vector< fn_005419e4_entry >::iterator it;
+	for ( it = (*list).begin(); it != (*list).end(); it++ )
+		if ( it->fn_005419ed() == source->vfunction30() )
+		{
+			fn_005419e4_entry entry( source );
+			*it = entry;
+			break;
+		}
+	// MATCH-ONLY: the original calls operator* once more after the loop and drops the result;
+	// the statement that did so is not recovered.
+	(*list).end();
 	list.Done();
 }
