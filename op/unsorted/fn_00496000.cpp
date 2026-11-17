@@ -161,3 +161,9 @@ void fn_00496330_object::fn_0049647e()
 {
 	m00->fn_00496253();
 }
+
+// FUNCTION: STARFLEETOP 0x004964f9
+// HYPOTHESIS: 0x004964f9 is a mid-function slice (analysis boundary), not a real function; body is a placeholder.
+void fn_004964f9()
+{
+}
