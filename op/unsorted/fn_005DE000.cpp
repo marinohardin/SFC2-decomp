@@ -199,3 +199,15 @@ void fn_005de28c_Vector::fn_005de471(tNewsStory** p, unsigned int m, tNewsStory*
 		m08_last += m;
 	}
 }
+
+#include "Common/MemberCallback.h"
+#include "unsorted/tMetaClientNewsCtlrC.h"
+
+// MATCH-ONLY: the SDK's template CreateCallback, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x005de641
+template<>
+tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > CreateCallback( tMetaClientNewsCtlrC* object, void (tMetaClientNewsCtlrC::*func)( tNewsStory* result ) )
+{
+	return 	tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >( object, func );
+}
