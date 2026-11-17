@@ -629,6 +629,8 @@ class fn_00460b73_element
 {
 public:
     fn_00460b73_element(const fn_00460b73_element &other);
+    // HYPOTHESIS: 0x0045e63a is its destructor.
+    ~fn_00460b73_element();
 
     char pad_000[0x18c];
 };
@@ -637,6 +639,8 @@ class fn_00460b73_class
 {
 public:
     fn_00460b73_class(unsigned int n, const fn_00460b73_element &v, const std::allocator<fn_00460b73_element> &al);
+    ~fn_00460b73_class();
+    void _Destroy(fn_00460b73_element *_F, fn_00460b73_element *_L);
 
     std::allocator<fn_00460b73_element> allocator;
     fn_00460b73_element *_First;
@@ -651,4 +655,19 @@ fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_00460b73_element &
     _First = allocator.allocate(n, (void *)0);
     std::uninitialized_fill_n(_First, n, v);
     _Last = _First + n, _End = _Last;
+}
+
+inline void fn_00460b73_class::_Destroy(fn_00460b73_element *_F, fn_00460b73_element *_L)
+{
+    for (; _F != _L; ++_F)
+        allocator.destroy(_F);
+}
+
+// HYPOTHESIS: 0x00460bd6 is the library's vector destructor for the same elements.
+// FUNCTION: STARFLEETOP 0x00460bd6
+fn_00460b73_class::~fn_00460b73_class()
+{
+    _Destroy(_First, _Last);
+    allocator.deallocate(_First, _End - _First);
+    _First = 0, _Last = 0, _End = 0;
 }
