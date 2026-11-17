@@ -192,3 +192,11 @@ void fn_006c1730(fn_006c1510_pool *pool, int index)
 	fn_006c15a0(pool, index);
 	fn_006c16e0(pool, index);
 }
+
+// HYPOTHESIS: replaces the element at index, releasing the old one first.
+// FUNCTION: STARFLEETOP 0x006c1750
+void fn_006c1750(fn_006c1510_pool *pool, void *element, int index)
+{
+	fn_006c15a0(pool, index);
+	fn_006c16a0(pool, element, index);
+}
