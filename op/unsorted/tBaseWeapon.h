@@ -190,7 +190,7 @@ public:
     virtual void vfunction123(float* param_1);
     virtual void vfunction124(int param_1);
     virtual void vfunction125();
-    virtual void vfunction126();
+    virtual void vfunction126(float param_1);
     virtual bool vfunction127(int param_1);
     // HYPOTHESIS: appends a pair of shorts to a list of at most six at offset 0x114.
     virtual bool vfunction128(short param_1, short param_2);
