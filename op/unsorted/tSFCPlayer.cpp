@@ -190,8 +190,8 @@ class tSFCPlayer
 		virtual int vfunction34();
 		virtual void vfunction35(bool param_1);
 		virtual char vfunction36();
-		virtual void vfunction37();
-		virtual void vfunction38() = 0;
+		virtual int vfunction37(char *param_1);
+		virtual int vfunction38();
 		virtual void vfunction39(int param_1);
 		virtual int vfunction40();
 		virtual void vfunction41(int param_1);
@@ -1061,9 +1061,28 @@ bool tSFCPlayer::vfunction57()
 }
 
 // FUNCTION: STARFLEETOP 0x004d0a97
-void tSFCPlayer::vfunction37()
+int tSFCPlayer::vfunction37(char *param_1)
 {
 	// HYPOTHESIS: the original has a tShipSpecs local (EH frame, constructor 0x0040891d); body not recovered.
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0af9
+int tSFCPlayer::vfunction38()
+{
+	int total = 0;
+	unsigned i = 0;
+	if ((unsigned)m_30 > i)
+	{
+		char *p = m_70[0];
+		do
+		{
+			total += vfunction37(p);
+			i++;
+			p += 0x20;
+		} while (i < (unsigned)m_30);
+	}
+	return total;
 }
 
 // FUNCTION: STARFLEETOP 0x004d0ab3
