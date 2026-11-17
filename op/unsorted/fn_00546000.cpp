@@ -221,13 +221,21 @@ class c_0054628e
 {
 public:
     int fn_0054628e();
+    int fn_00546292();
 
     char field_0[0x5c];
     int field_5c;
+    int field_60;
 };
 
 // FUNCTION: STARFLEETOP 0x0054628e
 int c_0054628e::fn_0054628e()
 {
     return field_5c;
+}
+
+// FUNCTION: STARFLEETOP 0x00546292
+int c_0054628e::fn_00546292()
+{
+    return field_60;
 }
