@@ -687,3 +687,34 @@ fn_0053a73a_map& fn_0053a73a_map::operator=( const fn_0053a73a_map& other )
 	}
 	return *this;
 }
+
+// HYPOTHESIS: the copy constructor of this compiler's std::vector< tHexPoint > (0x14-byte
+// elements); it is written out here so that the out-of-line copy has a definition.
+struct fn_0053a7d1_vector
+{
+	fn_0053a7d1_vector( const fn_0053a7d1_vector& x );
+	std::allocator< tHexPoint > m_alloc;
+	tHexPoint*	m_first;
+	tHexPoint*	m_last;
+	tHexPoint*	m_end;
+};
+
+// HYPOTHESIS: the out-of-line element copy construction 0x0042c9c5 (the library's _Construct).
+void fn_0042c9c5( tHexPoint* dst, const tHexPoint& src );
+
+// FUNCTION: STARFLEETOP 0x0053a7d1
+fn_0053a7d1_vector::fn_0053a7d1_vector( const fn_0053a7d1_vector& x )
+	: m_alloc( x.m_alloc )
+{
+	int count = ( x.m_first != 0 ? x.m_last - x.m_first : 0 );
+	if( count < 0 )
+		count = 0;
+	m_first = (tHexPoint*)operator new( count * sizeof( tHexPoint ) );
+	tHexPoint* last = x.m_last;
+	tHexPoint* src = x.m_first;
+	tHexPoint* dst = m_first;
+	for( ; src != last; ++src, ++dst )
+		fn_0042c9c5( dst, *src );
+	m_last = dst;
+	m_end = dst;
+}
