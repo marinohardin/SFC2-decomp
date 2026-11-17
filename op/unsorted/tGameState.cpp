@@ -1201,3 +1201,9 @@ int fn_0046aa04()
 {
 	return g_0090db88;
 }
+
+// FUNCTION: STARFLEETOP 0x0046aa0a
+int fn_0046aa0a()
+{
+	return g_0090db8c;
+}
