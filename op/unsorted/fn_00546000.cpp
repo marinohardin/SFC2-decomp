@@ -94,6 +94,9 @@ public:
 
     char field_0[0x90];
     c_00451045 field_90;
+    char field_91[0x430 - 0x91];
+    // HYPOTHESIS: the flag word at +0x430 that 0x00546264 tests bit 0 of.
+    unsigned int field_430;
 };
 
 // FUNCTION: STARFLEETOP 0x00546027
@@ -290,4 +293,10 @@ public:
 int* c_005462d0::fn_005462d0()
 {
     return &field_80;
+}
+
+// FUNCTION: STARFLEETOP 0x005462d7
+unsigned int c_00546027::fn_005462d7()
+{
+    return field_430;
 }
