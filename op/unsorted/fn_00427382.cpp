@@ -84,6 +84,7 @@ class tObject_00426da7
 {
 public:
 	void fn_00426da7();
+	void fn_00426ca8( int aArg1, int aArg2 );
 	char pad00[0xc4];
 	int field_0xc4;
 	int field_0xc8;
@@ -95,6 +96,7 @@ class tObject_0042750f
 public:
 	int fn_0042750f( int aIndex );
 	int fn_0042753a( int aIndex );
+	void fn_0042755c( int aIndex, int aArg1, int aArg2 );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -120,4 +122,14 @@ int tObject_0042750f::fn_0042753a( int aIndex )
 	if (aIndex < 0 || aIndex >= 20 || (entry = field_0x54[aIndex]) == 0)
 		return 0;
 	return entry->field_0xc8;
+}
+
+// HYPOTHESIS: passes both arguments to 0x00426ca8 of the table entry; nothing for an index
+// out of range or an empty entry.
+// FUNCTION: STARFLEETOP 0x0042755c
+void tObject_0042750f::fn_0042755c( int aIndex, int aArg1, int aArg2 )
+{
+	tObject_00426da7 *entry;
+	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
+		entry->fn_00426ca8( aArg1, aArg2 );
 }
