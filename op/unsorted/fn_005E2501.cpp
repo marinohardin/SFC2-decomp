@@ -105,3 +105,6 @@ std::string g_00c39028 = "MetaMediumSB1Icon";
 // FUNCTION: STARFLEETOP 0x005e28ce
 // FUNCTION: STARFLEETOP 0x005e289b
 std::string g_00c39018 = "MetaMediumPlayerIcon";
+
+// FUNCTION: STARFLEETOP 0x005e28f1
+std::string g_00c39008 = "DefenseIcon";
