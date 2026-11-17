@@ -158,7 +158,9 @@ namespace tState_Namespace_GameConnections
 class tState_GameConnections
 {
 public:
-	virtual void vfunction0();
+	tState_GameConnections();
+	// HYPOTHESIS: slot 0 holds the scalar deleting destructor (0x00469900).
+	virtual ~tState_GameConnections();
 	virtual void vfunction1();
 	virtual bool vfunction2();
 	virtual void vfunction3();
@@ -891,5 +893,8 @@ void tState_GameConnections::fn_00469636()
 			fn_004695c4("JoinStatus", 1);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004696c0
+tState_GameConnections g_0090d7a0;
 
 }
