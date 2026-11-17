@@ -180,6 +180,8 @@ struct tObject_00447415_limits
 	std::string field_0x18c[4];
 };
 
+class c_00450e41;
+
 // HYPOTHESIS: the class owning 0x0044715d is not known; only its table pointer at 0xec is read.
 class c_0044715d
 {
@@ -212,12 +214,15 @@ public:
 	bool fn_00447c61(int kind);
 	tObject_00447415_limits *fn_00447ce4();
 	tObject_0044715d_table *fn_00447ceb();
+	c_00450e41 *fn_00447cf2();
 
 	char field_0x0[0x4];
 	char field_0x4;
 	char field_0x5[0x83];
 	int field_0x88;
-	char field_0x8c[0x5c];
+	char field_0x8c[0x58];
+	// HYPOTHESIS: the part at 0xe4 is the one 0x00447bbb hands to 0x00450e41.
+	c_00450e41 *field_0xe4;
 	tObject_00447415_limits *field_0xe8;
 	tObject_0044715d_table *field_0xec;
 };
@@ -701,4 +706,10 @@ tObject_00447415_limits *c_0044715d::fn_00447ce4()
 tObject_0044715d_table *c_0044715d::fn_00447ceb()
 {
 	return field_0xec;
+}
+
+// FUNCTION: STARFLEETOP 0x00447cf2
+c_00450e41 *c_0044715d::fn_00447cf2()
+{
+	return field_0xe4;
 }
