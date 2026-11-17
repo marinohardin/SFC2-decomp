@@ -66,7 +66,8 @@ public:
 	virtual unsigned char mIsListMember(tListMemberWithHandle *member);											// 35
 	virtual void vfunction36(long handle);																		// 36
 	virtual long mGetZeroIndexedListMemberPosition(tListMemberWithHandle *member);								// 37
-	virtual void vfunction38();																					// 38
+	// HYPOTHESIS: a truth (the sound channel tests it on its command lists before it is ready).
+	virtual unsigned char vfunction38();																		// 38
 	// HYPOTHESIS: the number of members (0x0066e0f0 tests it before reading the first one).
 	virtual long vfunction39();																					// 39
 	virtual void mClearList();																					// 40

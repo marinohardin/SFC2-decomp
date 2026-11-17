@@ -15,8 +15,8 @@ public:
 	virtual	void	vfunction3	( void );
 	virtual	HWND	vfunction4	( void );
 	virtual	void	vfunction5	( void );
-	virtual	void	vfunction6	( void );
-	virtual	void	vfunction7	( void );
+	virtual	long	vfunction6	( void );
+	virtual	long	vfunction7	( void );
 	virtual	void	vfunction8	( void );
 	virtual	void	vfunction9	( void );
 	virtual	void	vfunction10	( void );
@@ -28,25 +28,7 @@ public:
 
 #include "Tiger/tgSound.h"
 // The sound part's classes are declared in tgSound.h; these lines are kept so line numbers stay.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "Tiger/tvectormath.h"
 
 
 
@@ -174,18 +156,27 @@ public:
 		gSoundSay.mJustSayIt a;									\
 	}
 #define SOUNDSAY2(a)	{ SOUNDSAY(a); SOUNDSAY((" -- %s %d\n", __FILE__, __LINE__)); }
-
 long	gNumBuffersCreated;
 long	gNumBuffersReleased;
 
 class twSoundPart : public tgSoundPart
 {
 public:
-	virtual	void	mDetermineHardwareCaps		( void );
+					twSoundPart					( void );
+	virtual	unsigned char	mDetermineHardwareCaps	( void );
 	virtual	iTruth	mInitDirectSound			( tInitSoundPartInfo* initInfo );
-	// HYPOTHESIS: these are twSoundPart's own virtuals (the SDK library's symbols), declared
-	// after the two above so their slots are unchanged; their own slot order is not recovered.
-	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
+	virtual	void	mDone						( void );
+	virtual	long	mDuplicateSoundChannel		( long channel );
+	virtual	long	mAddActiveSoundChannel		( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData );
+	virtual	long	mAddSoundChannel			( tSoundChannelFormat* format );
+	virtual	unsigned char	mSet3DListener3DPosition	( tPoint3* position );
+	virtual	unsigned char	mSet3DListenerOrientation	( tPoint3* forward, tPoint3* up );
+	virtual	unsigned char	mSet3DListenerVelocity	( tPoint3* velocity );
+	virtual	unsigned char	mSet3DListenerUnitScaleInMeters	( double scale );
+	virtual	long	mGetHardwareInformation		( long info );
+	virtual	iTruth	mInit						( tInitSoundPartInfo* initInfo );
+	// twSoundPart's own virtuals (the SDK library's symbols), vtable order (0x00798a3c, slots 141-160).
+	virtual	unsigned char	mCreatePrimaryBuffer	( void );
 	virtual	long	mGetMinFrequency			( void );
 	virtual	long	mGetMaxFrequency			( void );
 	virtual	long	mGetMaxHwBuffers			( void );
@@ -201,15 +192,20 @@ public:
 	virtual	long	mGetMaxContigFreeHwMemBytes	( void );
 	virtual	long	mGetPlayCpuOverheadSwBuffers	( void );
 	virtual	long	mGetTransferToHardwareRateInKBytesPerSec	( void );
-
-	// HYPOTHESIS: the fields between tgSoundPart's and the DirectSound object are not known.
-	char			fUnknown_0130[0x8];
+	virtual	unsigned char	mCanWeHandle16BitOutput	( void );
+	virtual	unsigned char	mCanWeHandleStereoOutput	( void );
+	virtual	unsigned char	mCanWeHandleMono8BitOutput	( void );
+	virtual	LPDIRECTSOUND*	mDirectSoundObject	( void );
+	// HYPOTHESIS: two DirectSound interfaces mDone releases before the DirectSound object;
+	// the primary buffer and the 3D listener by their order, names and types are not known.
+	LPDIRECTSOUNDBUFFER		fUnknown_0130;
+	LPDIRECTSOUND3DLISTENER	fUnknown_0134;
 	LPDIRECTSOUND	fDirectSound;
 	// The DirectSound capabilities: mDetermineHardwareCaps (0x00645bb0) clears these 0x60
 	// bytes, sets dwSize to 0x60 and passes them to GetCaps. The name is ours.
 	DSCAPS			field_0x13c;
 };
-
+extern twSoundPart*	atwSoundPart;
 // HYPOTHESIS: the original was built against the DirectX 7 headers, whose
 // DSBUFFERDESC is 36 bytes, with guid3DAlgorithm after lpwfxFormat; the
 // compiler's own dsound.h is the DirectX 6 one, 20 bytes. Same fields, in the
@@ -223,7 +219,6 @@ struct DSBUFFERDESC7
 	LPWAVEFORMATEX	lpwfxFormat;
 	GUID			guid3DAlgorithm;
 };
-
 // MATCH-ONLY: the original's line numbers, which its " -- %s %d" messages
 // print; this file's own lines differ. The original's __FILE__ was its full
 // build path, D:\work\QSI\Projects\QSIInc\Tiger\twSound.cpp; naming it here
@@ -334,38 +329,28 @@ iTruth twSoundPart::mInitDirectSound( tInitSoundPartInfo* initInfo )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class twStandardSoundChannel : public tSoundChannel
 {
 public:
+	// HYPOTHESIS: inline; twSoundPart::mDuplicateSoundChannel inlines it.
+					twStandardSoundChannel	( void )	{ mInit(); }
+	// The SDK library names the destructor (0x00646bd0, among the out-of-line inline copies).
+	virtual			~twStandardSoundChannel	( void );
 	virtual	void	mClear	( void );
 	virtual	void	mReset	( iTruth );
 	virtual	iTruth	mPauseChannel	( void );
+	virtual	unsigned char	mPlayChannel	( void );
+	virtual	unsigned char	mSetFrequency	( long );
+	virtual	unsigned char	mSetPan	( long );
+	virtual	unsigned char	mSetVolume	( long );
+	virtual	unsigned char	mStopAndClearChannel	( void );
+	virtual	unsigned char	mStopAndResetChannel	( void );
+	virtual	unsigned char	mSet3DSoundPosition	( tPoint3* );
+	virtual	unsigned char	mSet3DSoundOrientation	( tPoint3* );
+	virtual	unsigned char	mSet3DSoundVelocity	( tPoint3* );
+	virtual	unsigned char	mSet3DSoundCones	( float, long );
+	virtual	unsigned char	mSet3DSoundReferenceDistance	( double );
+	virtual	unsigned char	mSet3DSoundProfile	( t3DSoundProfile* );
 	virtual	void	mDone	( void );
 	virtual	void	mInit	( void );
 
@@ -374,8 +359,8 @@ public:
 	DSBUFFERDESC7		fUnknown_0180;
 	WAVEFORMATEX		fUnknown_01a4;
 	LPDIRECTSOUNDBUFFER	fSoundBuffer;
-	// HYPOTHESIS: a second DirectSound interface on the buffer, released in
-	// mDone before the buffer itself; the 3D buffer by its place.
+	// The buffer's 3D interface: mCreate3DBuffer queries it, mDone releases it
+	// before the buffer itself. The name is not known.
 	LPDIRECTSOUND3DBUFFER	fUnknown_01bc;
 	// HYPOTHESIS: the two pointers and two sizes of the current buffer lock;
 	// fCurrentBufSize1 is named by the original's "Big Trouble" message.
@@ -403,8 +388,23 @@ protected:
 	unsigned char	mDoActiveUpdate	( double );
 	virtual unsigned char	mUpdateBuffersAndSelections	( double );
 	virtual unsigned char	mUpdateAmountPlayed	( void );
+	// HYPOTHESIS: own virtuals follow tSoundChannel's 122 slots; the getter at 125 and mCreate3DBuffer at 128 are called through the vtable.
+	virtual void vfunction122(); virtual void vfunction123(); virtual void vfunction124();
+	virtual LPDIRECTSOUNDBUFFER mGetfDSBuffer();
+	// Slot 126: twSoundPart::mAddActiveSoundChannel calls it through the vtable.
+public:
+	virtual unsigned char	mAddActiveSoundChannel	( tSoundChannelFormat*, long, tFillSelectionFunction&, tSelectionFunction&, unsigned long );
+protected:
+	virtual unsigned char	mRestoreBuffers	( void );
+	virtual unsigned char	mCreate3DBuffer	( void );
+public:
+	virtual unsigned char	mDuplicateSoundChannel	( long, long );
+	virtual unsigned char	mAddSoundChannel	( tSoundChannelFormat*, long );
+	virtual unsigned char	mDoFillSelection	( unsigned char );
+	// HYPOTHESIS: slot not recovered; nothing in this unit calls it through the vtable.
+	virtual void	mDoAllImmediateNonInterruptCommands	( void );
+	virtual	void	mDump	( void );
 };
-
 // MATCH-ONLY: the original's line numbers, as for mInitDirectSound above.
 #line 109
 // FUNCTION: STARFLEETOP 0x00641640
@@ -896,7 +896,7 @@ unsigned char twStandardSoundChannel::mDoActiveUpdate( double time )
 			if( ( status & ( DSBSTATUS_PLAYING | DSBSTATUS_LOOPING ) ) == 0 )
 			{
 				// HYPOTHESIS: slot 104 of the channel; its name is not known.
-				vfunction104();
+				mStopAndResetChannel();
 				gUpdateBuffers = kFalse;
 				return kTrue;
 			}
@@ -939,7 +939,7 @@ unsigned char twStandardSoundChannel::mDoActiveUpdate( double time )
 	tSoundSelection* block = field_0x174( field_0x178, played );
 	if( block == NULL )
 	{
-		vfunction104();
+		mStopAndResetChannel();
 		gUpdateBuffers = kFalse;
 		return kTrue;
 	}
@@ -1014,7 +1014,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 		fSoundBuffer->GetStatus( &status );
 		if( ( status & ( DSBSTATUS_PLAYING | DSBSTATUS_LOOPING ) ) == 0 )
 		{
-			vfunction104();
+			mStopAndResetChannel();
 			gUpdateBuffers = kFalse;
 			return kTrue;
 		}
@@ -1095,9 +1095,9 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 		if( field_0x28 == 0x20 && field_0x168 == field_0x10.vfunction3() )
 		{
 			if( mDoWeRetainSelections() == kTrue )
-				vfunction104();
+				mStopAndResetChannel();
 			else
-				vfunction103();
+				mStopAndClearChannel();
 			if( mLockHardwareForSilence() == kTrue )
 			{
 				mWriteSilence();
@@ -1111,7 +1111,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 	if( mDoWeRetainSelections() == kTrue && mAreWeStreaming() == kTrue && amountLeftToRead == 0
 		&& field_0x168 == mGetBufferLength() && ( field_0x28 == 0x20 || field_0x28 == 0x10 ) )
 	{
-		vfunction104();
+		mStopAndResetChannel();
 		gUpdateBuffers = kFalse;
 		return kTrue;
 	}
@@ -1220,7 +1220,7 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 					}
 				}
 				if( field_0x28 == 0x10 )
-					vfunction99();
+					mPlayChannel();
 			}
 			else
 			{
@@ -1302,10 +1302,10 @@ unsigned char twStandardSoundChannel::mUpdateBuffersAndSelections( double time )
 
 
 
-
 // MATCH-ONLY: the #line directives inside set the original's line numbers for
 // its " -- %s %d" messages (1270, 1295), as for mLockHardware above; the others
 // put this file's own numbering back. They change no code.
+#line 1309
 // FUNCTION: STARFLEETOP 0x006432b0
 unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 {
@@ -1341,7 +1341,7 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 					{
 						selection->vfunction25( amountLeft );
 						field_0x110 -= amountLeft;
-						command = field_0xec.vfunction14( command );
+						command = (tSoundChannelCommand*)field_0xec.vfunction14( command );
 					}
 					continue;
 				}
@@ -1351,7 +1351,7 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 #line 1295
 				SOUNDSAY2(( "Big trouble -- command of this type %ld on attachment list", command->vfunction16() ));
 #line 1390
-				command = field_0xec.vfunction14( command );
+				command = (tSoundChannelCommand*)field_0xec.vfunction14( command );
 				continue;
 			}
 			command = NULL;
@@ -1360,8 +1360,815 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 	return kTrue;
 }
 
-// MATCH-ONLY: puts this file's own line numbering back for the functions below.
-#line 1365
+// MATCH-ONLY: the #line directives put this file's own numbering back, and inside set the
+// original's line number for the " -- %s %d" message (1326). They change no code.
+#line 1366
+// FUNCTION: STARFLEETOP 0x006434e0
+unsigned char twStandardSoundChannel::mCreate3DBuffer( void )
+{
+	if( atwSoundPart->mCreatePrimaryBuffer() != kTrue )
+		return kFalse;
+
+	if( fSoundBuffer == NULL )
+	{
+#line 1326
+		SOUNDSAY2(( "fDSBuffer was NULL" ));
+#line 1377
+		return kFalse;
+	}
+	if( fSoundBuffer->QueryInterface( IID_IDirectSound3DBuffer, (void**)&fUnknown_01bc ) == DS_OK )
+		return kTrue;
+	return kFalse;
+}
+
+// MATCH-ONLY: the #line directives inside set the original's line numbers for its three
+// " -- %s %d" messages (1425, 1430, 1536); the last one puts this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x006435b0
+unsigned char twStandardSoundChannel::mDuplicateSoundChannel( long param_1, long param_2 )
+{
+	twStandardSoundChannel* source = (twStandardSoundChannel*)atgSoundPart->mGetSoundChannelPtrFromHandle( param_1 );
+	if( source == NULL || fSoundBuffer != NULL )
+		return kFalse;
+
+	field_0x10 = *source->mGetSoundChannelFormat();
+	vfunc_20( param_2 );
+	fUnknown_0180.dwFlags			= source->fUnknown_0180.dwFlags;
+	fUnknown_0180.dwBufferBytes		= source->fUnknown_0180.dwBufferBytes;
+	fUnknown_01a4.nChannels			= source->fUnknown_01a4.nChannels;
+	fUnknown_01a4.nSamplesPerSec	= source->fUnknown_01a4.nSamplesPerSec;
+	fUnknown_01a4.wBitsPerSample	= source->fUnknown_01a4.wBitsPerSample;
+	fUnknown_01a4.nBlockAlign		= source->fUnknown_01a4.nBlockAlign;
+	fUnknown_01a4.nAvgBytesPerSec	= source->fUnknown_01a4.nAvgBytesPerSec;
+	LPDIRECTSOUNDBUFFER* buffer = &fSoundBuffer;	// MATCH-ONLY: a store through a pointer keeps the next vtable load after it
+	*buffer = NULL;
+	if( mAreWeStreaming() == kTrue && mAreWe3D() == kTrue )
+	{
+#line 1425
+		SOUNDSAY2(( "3D sounds can not be streaming!!!" ));
+		return kFalse;
+	}
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1430
+		SOUNDSAY2(( "3D channels must be mono!" ));
+		return kFalse;
+	}
+
+	if( mAreWeStatic() )
+	{
+		atwSoundPart->fDirectSound->DuplicateSoundBuffer( source->mGetfDSBuffer(), &fSoundBuffer );
+		field_0x168 = source->mGetAmountThatCanBeAdded();
+	}
+
+	// HYPOTHESIS: set once a streaming buffer was created, the way the selections are
+	// copied below.
+	unsigned char created = kFalse;
+	if( mAreWeStreaming() )
+	{
+		HRESULT err = atwSoundPart->fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&fUnknown_0180, &fSoundBuffer, NULL );
+		field_0x168 = (&field_0x10)->vfunction3();
+		created = kTrue;
+		if( err != DS_OK )
+			return kFalse;
+	}
+
+	gNumBuffersCreated++;
+	if( mAreWe3D() == kTrue )
+	{
+		if( mCreate3DBuffer() != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+	}
+	else
+		fUnknown_01bc = NULL;
+
+	field_0x28 = 4;
+	atgSoundPart->mAddChannelAtHandle( this, param_2 );
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mInit();
+	attributes->mSetFrequency( (&field_0x10)->vfunction7() );
+	field_0x94 = (&field_0x10)->vfunction12();
+	field_0x98 = (&field_0x10)->vfunction13();
+
+	field_0x110 = 0;
+	field_0x164 = 0;
+	field_0x15c = 0;
+	field_0x160 = 0;
+	if( fSoundBuffer && fSoundBuffer->SetCurrentPosition( 0 ) != DS_OK )
+	{
+		mRemoveSoundChannel();
+		return kFalse;
+	}
+
+	if( BindPart( tSoundPart )->vfunction13() == 1 )
+	{
+		if( mDoFillSelection( 0 ) != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+		return kTrue;
+	}
+
+	if( mDoWeRetainSelections() == kTrue )
+	{
+		tSoundCommandList* list = source->mGetAttachmentsList();
+		tSoundChannelCommand* command = (tSoundChannelCommand*)list->vfunction5();
+		tSoundChannelCommand* first = command;
+		while( command )
+		{
+			tSoundSelection* selection = command->vfunction32();
+			command = (tSoundChannelCommand*)list->vfunction14( command );
+			if( selection == NULL )
+				first = command;
+		}
+		while( first )
+		{
+			tSoundSelection* copy = first->vfunction32()->vfunction42();
+			if( created )
+				copy->vfunction20();
+			long handle = atgSoundPart->mCreateCommand( (eSoundChannelCommand)0, copy, 0 );
+			if( handle == -1 )
+			{
+#line 1536
+				SOUNDSAY2(( "Command troubles!" ));
+			}
+			else
+				mAddAttachment( handle );
+			first = (tSoundChannelCommand*)list->vfunction14( first );
+		}
+		mAutoRemoveSelections();
+	}
+	mAutoRemoveChannel();
+	return kTrue;
+}
+
+// MATCH-ONLY: the #line directives inside set the original's line numbers for its five
+// " -- %s %d" messages (1578, 1584, 1590, 1596, 1652); the last one puts this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x00643b30
+unsigned char twStandardSoundChannel::mAddSoundChannel( tSoundChannelFormat* format, long handle )
+{
+	if( format == NULL )
+		return kFalse;
+	if( fSoundBuffer != NULL )
+		return kFalse;
+	LPDIRECTSOUNDBUFFER* buffer = &fSoundBuffer;
+
+	long blockSize = format->vfunction12();
+	long length = format->vfunction3();
+	if( length % blockSize > 0 )
+		format->vfunction2( format->vfunction3() - length % blockSize + format->vfunction12() );
+	field_0x10 = *format;
+	vfunc_20( handle );
+
+	DWORD flags = 0;
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1578
+		SOUNDSAY2(( "3D channels must be mono!\n" ));
+		return kFalse;
+	}
+	if( !mDoWeRetainSelections() && mAreWeLooping() == kTrue )
+	{
+#line 1584
+		SOUNDSAY2(( "Only retained sounds can loop! -- turning off looping" ));
+		(&field_0x10)->vfunction10( (&field_0x10)->vfunction11() - 4 );
+	}
+	if( mAreWeStreaming() == kTrue && mAreWe3D() == kTrue )
+	{
+#line 1590
+		SOUNDSAY2(( "3D sounds can not be streaming!!!" ));
+		return kFalse;
+	}
+	if( !mAreWeStreaming() && !mAreWeStatic() )
+	{
+#line 1596
+		SOUNDSAY2(( "A sound must be static or streaming -- turning static on" ));
+		(&field_0x10)->vfunction10( (&field_0x10)->vfunction11() + 1 );
+	}
+
+	if( !mAreWeFixedFrequency() )
+		flags = DSBCAPS_CTRLFREQUENCY;
+	if( mTryToLocateInHardware() == kTrue )
+		flags |= DSBCAPS_LOCHARDWARE;
+	else if( mTryToLocateInSoftware() == kTrue )
+		flags |= DSBCAPS_LOCSOFTWARE;
+	else if( mAreWeStatic() == kTrue )
+		flags |= DSBCAPS_STATIC;
+	if( mAreWe3D() == kTrue )
+		flags |= DSBCAPS_CTRL3D;
+	if( !mAreWeFixedPan() )
+		flags |= DSBCAPS_CTRLPAN;
+	if( !mAreWeFixedVolume() )
+		flags |= DSBCAPS_CTRLVOLUME;
+	if( mAreWeAGlobalSound() == kTrue )
+		flags |= DSBCAPS_GLOBALFOCUS;
+	fUnknown_0180.dwFlags			= flags;
+	fUnknown_0180.dwBufferBytes		= (&field_0x10)->vfunction3();
+	fUnknown_01a4.nChannels			= (&field_0x10)->vfunction5();
+	fUnknown_01a4.nSamplesPerSec	= (&field_0x10)->vfunction7();
+	fUnknown_01a4.wBitsPerSample	= (&field_0x10)->vfunction9();
+	fUnknown_01a4.nBlockAlign		= (BYTE)(&field_0x10)->vfunction12();
+	fUnknown_01a4.nAvgBytesPerSec	= fUnknown_01a4.nSamplesPerSec * fUnknown_01a4.nBlockAlign;
+
+	if( mAreWe3D() == kTrue && (&field_0x10)->vfunction5() > 1 )
+	{
+#line 1652
+		SOUNDSAY2(( "3D channels must be mono!" ));
+		return kFalse;
+	}
+
+	*buffer = NULL;
+	if( atwSoundPart->fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&fUnknown_0180, buffer, NULL ) != DS_OK )
+		return kFalse;
+
+	gNumBuffersCreated++;
+	if( mAreWe3D() == kTrue )
+	{
+		if( mCreate3DBuffer() != kTrue )
+		{
+			mRemoveSoundChannel();
+			return kFalse;
+		}
+	}
+	else
+		fUnknown_01bc = NULL;
+
+	field_0x28 = 4;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mInit();
+	attributes->mSetFrequency( (&field_0x10)->vfunction7() );
+	field_0x168 = (&field_0x10)->vfunction3();
+	field_0x94 = (&field_0x10)->vfunction12();
+	field_0x98 = (&field_0x10)->vfunction13();
+
+	field_0x110 = 0;
+	field_0x164 = 0;
+	field_0x15c = 0;
+	field_0x160 = 0;
+	if( *buffer )
+		(*buffer)->SetCurrentPosition( 0 );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644110
+unsigned char twStandardSoundChannel::mDoFillSelection( unsigned char param_1 )
+{
+	field_0x15c = 0;
+	if( fSoundBuffer->SetCurrentPosition( 0 ) != DS_OK )
+		return kFalse;
+	field_0x164 = 0;
+
+	tSoundSelection* second = NULL;
+	tSoundSelection* first = field_0x170( field_0x178, param_1, second );
+	if( first == NULL )
+		return kFalse;
+
+	first->vfunction14( kFalse );
+	long total = first->vfunction9();
+	long firstSize = total;
+	long secondSize = 0;
+	void* secondData = NULL;
+	if( second )
+	{
+		second->vfunction14( kFalse );
+		secondSize = second->vfunction9();
+		total += secondSize;
+	}
+
+	if( total != (&field_0x10)->vfunction3() )
+	{
+		AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1735
+		AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+		return kFalse;
+	}
+
+	void* data = first->vfunction22();
+	if( data == NULL )
+	{
+		AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1742
+		AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+		return kFalse;
+	}
+	if( second )
+	{
+		secondData = second->vfunction22();
+		if( secondData == NULL )
+		{
+			AddSoundErrorDuringInterrupt( "Major Trouble!" );
+#line 1751
+			AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+			first->vfunction23();
+			return kFalse;
+		}
+	}
+
+	LPVOID	ptr1;
+	LPVOID	ptr2;
+	DWORD	bytes1;
+	DWORD	bytes2;
+	LPDIRECTSOUNDBUFFER buffer = fSoundBuffer;
+	if( buffer->Lock( 0, (&field_0x10)->vfunction3(), &ptr1, &bytes1, &ptr2, &bytes2, 0 ) == DS_OK && bytes1 == (&field_0x10)->vfunction3() )
+	{
+		memcpy( ptr1, data, firstSize );
+		// The second block is copied at the offset of its own size, as the original does.
+		if( secondData )
+			memcpy( (char*)ptr1 + secondSize, secondData, secondSize );
+		fSoundBuffer->Unlock( ptr1, bytes1, ptr2, bytes2 );
+		first->vfunction23();
+		first->vfunction14( kTrue );
+		if( second )
+		{
+			first->vfunction14( kTrue );	// the original's: first, not second
+			second->vfunction23();
+		}
+		return kTrue;
+	}
+
+	AddSoundErrorDuringInterrupt( "No Lock -- Major Trouble!" );
+#line 1772
+	AddSoundErrorDuringInterrupt( " -- %s %d\n", __FILE__, __LINE__ );
+	first->vfunction23();
+	first->vfunction14( kTrue );
+	if( second )
+	{
+		second->vfunction14( kTrue );
+		second->vfunction23();
+	}
+	return kFalse;
+}
+#line 1705
+
+// FUNCTION: STARFLEETOP 0x00644380
+unsigned char twStandardSoundChannel::mAddActiveSoundChannel( tSoundChannelFormat* format, long handle, tFillSelectionFunction& fill, tSelectionFunction& next, unsigned long userData )
+{
+	field_0x170 = fill;
+	field_0x174 = next;
+	field_0x178 = userData;
+	if( !mAddSoundChannel( format, handle ) )
+		return kFalse;
+	return mDoFillSelection( kFalse );
+}
+
+// FUNCTION: STARFLEETOP 0x006443e0
+unsigned char twStandardSoundChannel::mPlayChannel( void )
+{
+	DWORD status;
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	fUnknown_01e8 = 0;
+	fUnknown_01ec = 0;
+	if( status & DSBSTATUS_BUFFERLOST )
+		mRestoreBuffers();
+	else if( status )
+		return kTrue;
+
+	unsigned char regular = BindPart( tSoundPart )->vfunction13() == 0;
+	if( !gUpdateBuffers && regular )
+	{
+		mLockInData();
+		mUpdateBuffersAndSelections( atgSoundPart->vfunction125() );
+		if( field_0x168 > ( (&field_0x10)->vfunction3() >> 2 ) )
+			return kFalse;
+	}
+	if( fSoundBuffer->SetCurrentPosition( field_0x15c ) != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	if( regular && field_0x168 == (&field_0x10)->vfunction3() )
+	{
+		field_0x28 = 0x10;
+		atgSoundPart->vfunction123( field_0c );
+		return kTrue;
+	}
+
+	mSetPan( mGetPan() );
+	mSetFrequency( mGetFrequency() );
+	HRESULT err;
+	if( mAreWeStreaming() == kTrue || mAreWeLooping() == kTrue )
+		err = fSoundBuffer->Play( 0, 0, DSBPLAY_LOOPING );
+	else
+		err = fSoundBuffer->Play( 0, 0, 0 );
+	if( err != DS_OK )
+	{
+		if( mAutoRemoveChannel() == kTrue )
+			mDone();
+		return kFalse;
+	}
+	field_0x28 = 0x20;
+	atgSoundPart->vfunction123( field_0c );
+	field_0x16c = 0;
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644650
+unsigned char twStandardSoundChannel::mSetFrequency( long frequency )
+{
+	if( mAreWeFixedFrequency() == kTrue )
+		return kFalse;
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	HRESULT err = fSoundBuffer->SetFrequency( (long)( atgSoundPart->vfunction75() * frequency ) );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->mSetFrequency( frequency );
+	return kTrue;
+}
+
+// The SDK library names the table: 101 attenuations in hundredths of a decibel, indexed
+// from -100 (silent) to 0 (full level).
+extern long LinearVolumes[];
+
+// FUNCTION: STARFLEETOP 0x006446c0
+unsigned char twStandardSoundChannel::mSetPan( long pan )
+{
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	long total = atgSoundPart->vfunction76() + pan;
+	if( total < -100 )
+		total = -100;
+	else if( total > 100 )
+		total = 100;
+	long dsPan;
+	if( total <= 0 )
+		dsPan = LinearVolumes[100 + total];
+	else
+		dsPan = -LinearVolumes[100 - total];
+	HRESULT err = fSoundBuffer->SetPan( dsPan );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction4( pan );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644750
+unsigned char twStandardSoundChannel::mSetVolume( long volume )
+{
+	if( fSoundBuffer == NULL )
+		return kFalse;
+	long total = (long)( atgSoundPart->vfunction124() * volume );
+	if( total < 0 )
+		total = 0;
+	else if( total > 100 )
+		total = 100;
+	HRESULT err = fSoundBuffer->SetVolume( LinearVolumes[total] );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction6( volume );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x006447c0
+unsigned char twStandardSoundChannel::mStopAndClearChannel( void )
+{
+	if( field_0x28 == 0x20 )
+	{
+		if( fSoundBuffer == NULL )
+			return kFalse;
+		DWORD status = 0;
+		if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+			return kFalse;
+		if( status == 0 )
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kFalse );
+		}
+		else
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kTrue );
+		}
+		field_0x28 = 4;
+	}
+	else if( field_0x28 == 8 )
+	{
+		mAddFinishCommand( kTrue );
+		field_0x28 = 4;
+	}
+	else if( field_0x28 == 0x10 )
+	{
+		mAddFinishCommand( kFalse );
+		field_0x28 = 4;
+	}
+	mSetUpdateMode( (eSoundChannelUpdateMode)3 );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644860
+unsigned char twStandardSoundChannel::mStopAndResetChannel( void )
+{
+	if( field_0x28 == 0x20 )
+	{
+		if( fSoundBuffer == NULL )
+			return kFalse;
+		DWORD status = 0;
+		if( fSoundBuffer->GetStatus( &status ) != DS_OK )
+			return kFalse;
+		if( status == 0 )
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kFalse );
+		}
+		else
+		{
+			if( fSoundBuffer->Stop() != DS_OK )
+				return kFalse;
+			mAddFinishCommand( kTrue );
+		}
+	}
+	else if( field_0x28 == 8 )
+	{
+		mAddFinishCommand( kTrue );
+	}
+	else if( field_0x28 == 0x10 )
+	{
+		mAddFinishCommand( kFalse );
+	}
+	else
+		return kTrue;
+	field_0x28 = 4;
+	mSetUpdateMode( (eSoundChannelUpdateMode)2 );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644900
+unsigned char twStandardSoundChannel::mSet3DSoundPosition( tPoint3* position )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetPosition( position->x, position->y, position->z, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction12( position );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644970
+unsigned char twStandardSoundChannel::mSet3DSoundOrientation( tPoint3* orientation )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetConeOrientation( orientation->x, orientation->y, orientation->z, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction16( orientation );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x006449c0
+unsigned char twStandardSoundChannel::mSet3DSoundVelocity( tPoint3* velocity )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction20( velocity );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644a10
+unsigned char twStandardSoundChannel::mSet3DSoundCones( float angle, long level )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetConeAngles( 0, (DWORD)( angle * 2 ), DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetConeOutsideVolume( level * -100, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction24( angle );
+	attributes->vfunction26( level );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644aa0
+unsigned char twStandardSoundChannel::mSet3DSoundReferenceDistance( double distance )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	HRESULT err = fUnknown_01bc->SetMinDistance( (float)distance, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction22( distance );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644af0
+unsigned char twStandardSoundChannel::mSet3DSoundProfile( t3DSoundProfile* profile )
+{
+	if( fUnknown_01bc == NULL )
+		return kFalse;
+	tPoint3* position = profile->vfunction5();
+	HRESULT err = fUnknown_01bc->SetPosition( position->x, position->y, position->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	tPoint3* orientation = profile->vfunction9();
+	err = fUnknown_01bc->SetConeOrientation( orientation->x, orientation->y, orientation->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	tPoint3* velocity = profile->vfunction13();
+	err = fUnknown_01bc->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetConeAngles( (DWORD)( profile->vfunction17() * 2 ), 360, DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetMinDistance( (float)profile->vfunction15(), DS3D_DEFERRED );
+	if( err != DS_OK )
+		return kFalse;
+	err = fUnknown_01bc->SetConeOutsideVolume( profile->vfunction19() * -100, DS3D_IMMEDIATE );
+	if( err != DS_OK )
+		return kFalse;
+	tChannelAttributes* attributes = &field_0x30;
+	attributes->vfunction8( profile );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644c30
+unsigned char twStandardSoundChannel::mRestoreBuffers( void )
+{
+	fSoundBuffer->Restore();
+	mReset( kTrue );
+	if( BindPart( tSoundPart )->vfunction13() == 1 )
+		mDoFillSelection( kTrue );
+	else
+		mUpdateBuffersAndSelections( atgSoundPart->vfunction125() );
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00644d10
+void twStandardSoundChannel::mDoAllImmediateNonInterruptCommands( void )
+{
+	tSoundChannelCommand* command = mGetFirstImmediateNonInterruptCommand();
+	while( command && mDoCommand( command ) == kTrue )
+	{
+		tSoundCommandList* list = &field_0xbc;
+		list->mRemoveFromList( command );
+		command->mMakeAvailable();
+		command = mGetFirstImmediateNonInterruptCommand();
+	}
+}
+
+// MATCH-ONLY: the #line directives set the original's line numbers for its " -- %s %d" messages (2361-2369) and then put this file's own numbering back. The field names are the format strings'.
+// FUNCTION: STARFLEETOP 0x00644d60
+void twStandardSoundChannel::mDump( void )
+{
+#line 2361
+	SOUNDSAY2(( "twStandardSoundChannel Dump: " ));
+
+	SOUNDSAY2(( " fBufferDesc: dwSize=%ld,dwFlags=%ld,dwBufferBytes=%ld,dwReserved=%ld,lpwfxFormat=%ld", fUnknown_0180.dwSize, fUnknown_0180.dwFlags, fUnknown_0180.dwBufferBytes, fUnknown_0180.dwReserved, fUnknown_0180.lpwfxFormat ));
+	SOUNDSAY2(( " fWaveFormat: wFormatTag=%ld; nChannels=%ld; nSamplesPerSec=%ld; nAvgBytesPerSec=%ld; nBlockAlign=%ld; wBitsPerSample=%ld; cbSize=%ld", fUnknown_01a4.wFormatTag, fUnknown_01a4.nChannels, fUnknown_01a4.nSamplesPerSec, fUnknown_01a4.nAvgBytesPerSec, fUnknown_01a4.nBlockAlign, fUnknown_01a4.wBitsPerSample, fUnknown_01a4.cbSize ));
+	SOUNDSAY2(( " fDSBuffer = %ld,fDS3DBuffer=%ld", fSoundBuffer, fUnknown_01bc ));
+	SOUNDSAY2(( " fStartPlayPosition = %ld,fStartPosition=%ld,fLastPlayPosition=%ld,fAmountThatCanBeAdded=%ld", field_0x15c, field_0x160, field_0x164, field_0x168 ));
+
+	SOUNDSAY2(( " fCurrentBufPosition1 = %ld,fCurrentBufPosition2=%ld,fCurrentBufSize1=%ld,fCurrentBufSize2=%ld", fUnknown_01c0, fUnknown_01c4, fCurrentBufSize1, fUnknown_01cc ));
+	SOUNDSAY2(( " fStartBufPosition1 = %ld,fStartBufPosition2=%ld,fStartBufSize1=%ld,fStartBufSize2=%ld", fUnknown_01d0, fUnknown_01d4, fUnknown_01d8, fUnknown_01dc ));
+	tSoundChannel::mDump();
+}
+#line 2055
+
+// FUNCTION: STARFLEETOP 0x006452a0
+twSoundPart::twSoundPart( void )
+{
+	atwSoundPart = this;
+}
+
+// MATCH-ONLY: the #line directives inside set the original's line number for its __LINE__
+// (2387) and then put this file's own numbering back. They change no code.
+// FUNCTION: STARFLEETOP 0x006452c0
+long twSoundPart::mDuplicateSoundChannel( long channel )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return -1;
+
+#line 2387
+	if( xAttemptToGainControl( __FILE__, __LINE__, 0, 0 ) == kFalse )
+		return 0;
+
+	long handle = mFindAvailableSoundChannelHandle();
+	if( handle < 0 )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	twStandardSoundChannel* soundChannel = new twStandardSoundChannel;
+	if( soundChannel == NULL )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	if( soundChannel->mDuplicateSoundChannel( channel, handle ) != kTrue )
+	{
+		mReleaseControl();
+		delete soundChannel;
+		return -1;
+	}
+	mReleaseControl();
+	return handle;
+}
+
+// MATCH-ONLY: the #line directives set the original's line numbers (2419, 2436), as for mDuplicateSoundChannel above.
+// FUNCTION: STARFLEETOP 0x00645510
+long twSoundPart::mAddActiveSoundChannel( tSoundChannelFormat* format, tSoundChannel::tFillSelectionFunction& fill, tSoundChannel::tSelectionFunction& next, unsigned long userData )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return -1;
+
+#line 2419
+	if( xAttemptToGainControl( __FILE__, __LINE__, 0, 0 ) == kFalse )
+		return 0;
+
+	long handle = mFindAvailableSoundChannelHandle();
+	if( handle < 0 )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	twStandardSoundChannel* soundChannel = new twStandardSoundChannel;
+	if( soundChannel == NULL )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	if( soundChannel->mAddActiveSoundChannel( format, handle, fill, next, userData ) != kTrue )
+	{
+		mReleaseControl();
+		delete soundChannel;
+		return -1;
+	}
+	mAddChannelAtHandle( soundChannel, handle );
+#line 2436
+	SOUNDSAY2(( "adding active chanel at %ld", handle ));
+	mReleaseControl();
+	return handle;
+}
+long	gNumDuplicatesCreated;	// HYPOTHESIS: the SDK library's name for 0x00c64790 (one vote, from this function)
+#line 2136
+// FUNCTION: STARFLEETOP 0x00645770
+long twSoundPart::mAddSoundChannel( tSoundChannelFormat* format )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return -1;
+
+#line 2454
+	if( xAttemptToGainControl( __FILE__, __LINE__, 0, 0 ) == kFalse )
+		return 0;
+
+	long handle = mFindAvailableSoundChannelHandle();
+	if( handle < 0 )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	twStandardSoundChannel* soundChannel = new twStandardSoundChannel;
+	gNumDuplicatesCreated++;
+	if( soundChannel == NULL )
+	{
+		mReleaseControl();
+		return -1;
+	}
+
+	if( soundChannel->mAddSoundChannel( format, handle ) != kTrue )
+	{
+		mReleaseControl();
+		delete soundChannel;
+		return -1;
+	}
+	mAddChannelAtHandle( soundChannel, handle );
+	mReleaseControl();
+	return handle;
+}
+#line 2172
 
 // The getters below each return one DSCAPS field. Six of their addresses carry other classes'
 // names in the analysis (identical bodies); the names here are the SDK library's twSoundPart
@@ -1370,6 +2177,59 @@ unsigned char twStandardSoundChannel::mUpdateAmountPlayed( void )
 LPDIRECTSOUND*	twSoundPart::mDirectSoundObject( void )
 {
 	return &fDirectSound;
+}
+
+// MATCH-ONLY: the #line directives set the original's line numbers (2498, 2517) and then put this file's own numbering back.
+// FUNCTION: STARFLEETOP 0x00645950
+void twSoundPart::mDone( void )
+{
+	tgSoundPart::mDone();
+#line 2498
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0134 )
+	{
+		fUnknown_0134->Release();
+		fUnknown_0134 = NULL;
+	}
+	if( fUnknown_0130 )
+	{
+		fUnknown_0130->Release();
+		fUnknown_0130 = NULL;
+	}
+	if( fDirectSound )
+	{
+		fDirectSound->Release();
+		fDirectSound = NULL;
+	}
+	SOUNDSAY(( "Finishing up: Number created=%ld,numberReleased=%ld", gNumBuffersCreated, gNumBuffersReleased ));
+#line 2517
+	SOUNDSAY(( " -- %s %d\n", __FILE__, __LINE__ ));
+	mReleaseControl();
+}
+#line 2210
+
+// FUNCTION: STARFLEETOP 0x00645a80
+unsigned char	twSoundPart::mCanWeHandle16BitOutput( void )
+{
+	if( ( field_0x13c.dwFlags & DSCAPS_PRIMARY16BIT ) > 0 )
+		return kTrue;
+	return kFalse;
+}
+
+// FUNCTION: STARFLEETOP 0x00645a90
+unsigned char	twSoundPart::mCanWeHandleStereoOutput( void )
+{
+	if( ( field_0x13c.dwFlags & DSCAPS_PRIMARYSTEREO ) > 0 )
+		return kTrue;
+	return kFalse;
+}
+
+// FUNCTION: STARFLEETOP 0x00645aa0
+unsigned char	twSoundPart::mCanWeHandleMono8BitOutput( void )
+{
+	if( ( field_0x13c.dwFlags & DSCAPS_PRIMARY8BIT ) > 0 && ( field_0x13c.dwFlags & DSCAPS_PRIMARYMONO ) > 0 )
+		return kTrue;
+	return kFalse;
 }
 
 // FUNCTION: STARFLEETOP 0x00645ac0
@@ -1460,4 +2320,176 @@ long	twSoundPart::mGetPlayCpuOverheadSwBuffers( void )
 long	twSoundPart::mGetTransferToHardwareRateInKBytesPerSec( void )
 {
 	return field_0x13c.dwUnlockTransferRateHwBuffers;
+}
+
+// FUNCTION: STARFLEETOP 0x00645bb0
+unsigned char	twSoundPart::mDetermineHardwareCaps( void )
+{
+	memset( &field_0x13c, 0, sizeof( field_0x13c ) );
+	field_0x13c.dwSize = sizeof( field_0x13c );
+	if( fDirectSound->GetCaps( &field_0x13c ) == DS_OK )
+		return kTrue;
+	return kFalse;
+}
+
+// FUNCTION: STARFLEETOP 0x00645be0
+unsigned char	twSoundPart::mCreatePrimaryBuffer( void )
+{
+	if( fUnknown_0130 )
+		return kTrue;
+	DSBUFFERDESC7	desc = { 0 };
+	memset( &desc, 0, sizeof( desc ) );
+	desc.dwSize			= sizeof( desc );
+	desc.dwFlags		= DSBCAPS_PRIMARYBUFFER | DSBCAPS_CTRL3D;
+	desc.dwBufferBytes	= 0;
+	if( fDirectSound->CreateSoundBuffer( (LPDSBUFFERDESC)&desc, &fUnknown_0130, NULL ) != DS_OK )
+		return kFalse;
+	gNumBuffersCreated++;
+	if( fUnknown_0130->QueryInterface( IID_IDirectSound3DListener, (void**)&fUnknown_0134 ) != DS_OK )
+		return kFalse;
+	return kTrue;
+}
+
+// MATCH-ONLY: the #line directive sets the original's line number for its __LINE__ (2824), as for mDuplicateSoundChannel above.
+// FUNCTION: STARFLEETOP 0x00645d90
+unsigned char	twSoundPart::mSet3DListener3DPosition( tPoint3* position )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2824
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetPosition( position->x, position->y, position->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSet3DPosition( position );
+	mReleaseControl();
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00645e20
+unsigned char	twSoundPart::mSet3DListenerOrientation( tPoint3* forward, tPoint3* up )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2843
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetOrientation( forward->x, forward->y, forward->z, up->x, up->y, up->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSetForwardDirection( forward );
+	profile->mSetUpDirection( up );
+	mReleaseControl();
+	return kTrue;
+}
+// MATCH-ONLY: the #line directives put this file's own numbering back and set the original's line number for its __LINE__ (2869), as for mDuplicateSoundChannel above.
+#line 2401
+// FUNCTION: STARFLEETOP 0x00645ed0
+unsigned char	twSoundPart::mSet3DListenerVelocity( tPoint3* velocity )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2869
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSetVelocity( velocity );
+	mReleaseControl();
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00645f60
+unsigned char	twSoundPart::mSet3DListenerUnitScaleInMeters( double scale )
+{
+	if( field_0x114.field_0x4[2] != 1 )
+		return kFalse;
+#line 2891
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	if( fUnknown_0130 == NULL )
+	{
+		if( mCreatePrimaryBuffer() != kTrue )
+		{
+			mReleaseControl();
+			return kFalse;
+		}
+	}
+	fUnknown_0134->SetDistanceFactor( (float)scale, DS3D_IMMEDIATE );
+	t3DListenerProfile* profile = &field_0x68;
+	profile->mSetUnitScaleInMeters( scale );
+	mReleaseControl();
+	return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00645ff0
+long	twSoundPart::mGetHardwareInformation( long info )
+{
+	if( field_0x114.field_0x4[2] != 0 )
+		return 1;
+	return -0x40;
+}
+
+// FUNCTION: STARFLEETOP 0x00646010
+iTruth	twSoundPart::mInit( tInitSoundPartInfo* initInfo )
+{
+	if( tgSoundPart::mInit( initInfo ) != kTrue )
+		return kFalse;
+#line 3032
+	xAttemptToGainControl( __FILE__, __LINE__, 0, 1 );
+	fUnknown_0130 = NULL;
+	fUnknown_0134 = NULL;
+	fDirectSound = NULL;
+	if( initInfo->vfunction4() == NULL || mInitDirectSound( initInfo ) == kFalse )
+	{
+		field_0x114.field_0x4[2] = 4;
+		mReleaseControl();
+		return kFalse;
+	}
+	switch( initInfo->vfunction6() )
+	{
+		case 1:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_MONO );
+			break;
+		case 4:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_QUAD );
+			break;
+		case 8:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_SURROUND );
+			break;
+		case 16:
+			fDirectSound->SetSpeakerConfig( DSSPEAKER_HEADPHONE );
+			break;
+		case 2:
+			if( initInfo->vfunction7() < 7 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_MIN ) );
+			else if( initInfo->vfunction7() < 15 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_NARROW ) );
+			else if( initInfo->vfunction7() < 60 )
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_WIDE ) );
+			else
+				fDirectSound->SetSpeakerConfig( DSSPEAKER_COMBINED( DSSPEAKER_STEREO, DSSPEAKER_GEOMETRY_MAX ) );
+			break;
+	}
+	mReleaseControl();
+	return kTrue;
 }

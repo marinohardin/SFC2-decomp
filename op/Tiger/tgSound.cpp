@@ -32,10 +32,10 @@ void PrintOutBufferedErrors()
     mNumberOfErrors = 0;
 }
 // MATCH-ONLY: tgSound.h now declares the classes that stood here; the lines are kept so line numbers stay.
-// HYPOTHESIS: tMemoryPart is declared with its part binding (claimed at 0x004133d3) in another unit; it is restated here only as far
-// as tChannelGroupManagerPart::mIsReady needs it. The exe's data names put the Test_ function of this unit's binding copy
+// HYPOTHESIS: tMemoryPart's binding is claimed at 0x004133d3 in another unit; tChannelGroupManagerPart::mIsReady
+// needs only its declaration. The exe's data names put the Test_ function of this unit's binding copy
 // (0x0064fc00; cache 0x008e0b54, type descriptor 0x0083c608) on tMemoryPart, not tSoundPart; it is not claimed here.
-class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); };
+#include "unsorted/tMemoryPart.h"
 
 // The scalar deleting destructor the compiler generates from the virtual ~tSoundChannelList is 0x0064fbc0.
 inline tSoundChannelList::~tSoundChannelList()
@@ -993,12 +993,12 @@ tSoundChannelCommand* tSoundChannel::mGetFirstAttachment()
 {
     // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
     tSoundCommandList* attachments = &field_0xec;
-    tSoundChannelCommand* command = attachments->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     if (command && command->vfunction16() && command->vfunction16() != 24)
     {
         SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
     }
-    return attachments->vfunction5();
+    return (tSoundChannelCommand*)attachments->vfunction5();
 }
 
 // MATCH-ONLY: the original reports its error on line 1363 through __LINE__; the code that sat
@@ -1042,7 +1042,7 @@ iTruth tSoundChannel::mFadeToStopAndResetNow(double timeToTake)
                     atgSoundPart->vfunction122();
                 }
             }
-            long command = atgSoundPart->mCreateCommand(24, 0, 0);
+            long command = atgSoundPart->mCreateCommand((eSoundChannelCommand)24, 0, 0);
             mAddAttachment(command);
         }
         return 1;
@@ -1088,7 +1088,7 @@ iTruth tSoundChannel::mFadeToStopAndClearNow(double timeToTake)
                     atgSoundPart->vfunction122();
                 }
             }
-            long command = atgSoundPart->mCreateCommand(24, 0, 0);
+            long command = atgSoundPart->mCreateCommand((eSoundChannelCommand)24, 0, 0);
             mAddAttachment(command);
         }
         return 1;
@@ -1290,7 +1290,7 @@ void tSoundChannel::mDone()
         return;
     }
     mSetUpdateMode((eSoundChannelUpdateMode)4);
-    vfunction103();
+    mStopAndClearChannel();
     mClearAll();
     if (field_0xfc == 4)
         atgSoundPart->vfunction123(field_0c);
@@ -1324,7 +1324,7 @@ void tSoundChannel::mClearCommands()
         {
             mSetFinishSoundCallback(command->vfunction28());
             mSetUserData(command->mGetUserData());
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1336,19 +1336,19 @@ void tSoundChannel::mClearCommands()
                 field_0x90(field_0x8c, 1);
                 atgSoundPart->vfunction122();
             }
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
         else if (command->vfunction16() == 24)
         {
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = 0;
         }
         else
         {
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1360,7 +1360,7 @@ void tSoundChannel::mClearCommands()
         {
             mSetFinishSoundCallback(command->vfunction28());
             mSetUserData(command->mGetUserData());
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
@@ -1372,19 +1372,19 @@ void tSoundChannel::mClearCommands()
                 field_0x90(field_0x8c, 1);
                 atgSoundPart->vfunction122();
             }
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
         else if (command->vfunction16() == 24)
         {
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = 0;
         }
         else
         {
-            (&field_0xdc)->vfunction33(command);
+            (&field_0xdc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstImmediateCommand();
         }
@@ -1458,7 +1458,7 @@ long tSoundChannel::mGetTotalBytesLeftToPlay()
     tSoundCommandList* attachments = &field_0xec;
     long handle = attachments->vfunction3();
     long total = 0;
-    tSoundChannelCommand* command = attachments->vfunction1(handle);
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
     while (command != 0)
     {
         if (command->vfunction16() == 0)
@@ -1473,7 +1473,7 @@ long tSoundChannel::mGetTotalBytesLeftToPlay()
             SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
         }
         handle = attachments->vfunction9(handle);
-        command = attachments->vfunction1(handle);
+        command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
     }
     return total;
 }
@@ -1519,7 +1519,7 @@ void tSoundChannel::mClearAllCommands()
                     atgSoundPart->vfunction122();
                 }
             }
-            (&field_0xcc)->vfunction33(command);
+            (&field_0xcc)->mRemoveFromList(command);
             command->mMakeAvailable();
             command = mGetFirstDelayedCommand();
         }
@@ -1541,7 +1541,7 @@ void tSoundChannel::mClearAllCommands()
                 atgSoundPart->vfunction122();
             }
         }
-        (&field_0xdc)->vfunction33(command);
+        (&field_0xdc)->mRemoveFromList(command);
         command->mMakeAvailable();
         command = mGetFirstImmediateCommand();
     }
@@ -1575,13 +1575,13 @@ void tSoundChannel::mClearAttachments()
     {
         if (command->vfunction16() == 24)
         {
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             command->mMakeAvailable();
             break;
         }
         else
         {
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             tSoundSelection* selection = command->vfunction32();
             if (selection != 0)
             {
@@ -1599,8 +1599,8 @@ void tSoundChannel::mClearAttachments()
                 command = mGetFirstDelayedCommand();
                 while (command != 0)
                 {
-                    (&field_0xcc)->vfunction33(command);
-                    (&field_0xdc)->vfunction27(command);
+                    (&field_0xcc)->mRemoveFromList(command);
+                    (&field_0xdc)->mAddToBackOfList(command);
                     command = mGetFirstDelayedCommand();
                 }
             }
@@ -1649,7 +1649,7 @@ void tSoundChannel::mClearAllAttachments()
     tSoundChannelCommand* command = mGetFirstAttachment();
     while (command != 0)
     {
-        (&field_0xec)->vfunction33(command);
+        (&field_0xec)->mRemoveFromList(command);
         tSoundSelection* selection = command->vfunction32();
         if (selection != 0)
         {
@@ -1666,8 +1666,8 @@ void tSoundChannel::mClearAllAttachments()
             command = mGetFirstDelayedCommand();
             while (command != 0)
             {
-                (&field_0xcc)->vfunction33(command);
-                (&field_0xdc)->vfunction27(command);
+                (&field_0xcc)->mRemoveFromList(command);
+                (&field_0xdc)->mAddToBackOfList(command);
                 command = mGetFirstDelayedCommand();
             }
         }
@@ -1797,10 +1797,10 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
         skip = field_0x14c - field_0x100;
     // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
     tSoundCommandList* attachments = &field_0xec;
-    tSoundChannelCommand* command = attachments->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     while (command != 0 && skip > 0)
     {
-        command = attachments->vfunction14(command);
+        command = (tSoundChannelCommand*)attachments->vfunction14(command);
         skip--;
         count--;
     }
@@ -1814,7 +1814,7 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
         selection = command->vfunction32();
     while (count > 0 && selection != 0 && selection->vfunction27() == 0)
     {
-        command = attachments->vfunction14(command);
+        command = (tSoundChannelCommand*)attachments->vfunction14(command);
         if (command == 0)
             return 0;
         if (command->vfunction16() == 0)
@@ -1894,7 +1894,7 @@ iTruth tSoundChannel::mCleanupSelections()
     if (mDoWeRetainSelections() == 1)
         return 1;
     mUpdateAmountPlayed();
-    tSoundChannelCommand* command = (&field_0xec)->vfunction5();
+    tSoundChannelCommand* command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
     long played = field_0x100;
     while (command != 0)
     {
@@ -1906,25 +1906,25 @@ iTruth tSoundChannel::mCleanupSelections()
             tSoundChannelCommand* delayed = mGetFirstDelayedCommand();
             while (delayed != 0 && delayed->vfunction14() <= played && mDoCommand(delayed) == 1)
             {
-                (&field_0xcc)->vfunction33(delayed);
+                (&field_0xcc)->mRemoveFromList(delayed);
                 delayed->mMakeAvailable();
                 delayed = mGetFirstDelayedCommand();
             }
             if (mDoWeAutoRemoveSelections() == 1)
                 selection->vfunction39();
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             selection->vfunction2();
             field_0x104--;
             command->mMakeAvailable();
             field_0x100++;
-            command = (&field_0xec)->vfunction5();
+            command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
             if (command == 0)
             {
                 field_0x108 = -1;
                 delayed = mGetFirstDelayedCommand();
                 while (delayed != 0 && mDoCommand(delayed) == 1)
                 {
-                    (&field_0xcc)->vfunction33(delayed);
+                    (&field_0xcc)->mRemoveFromList(delayed);
                     delayed->mMakeAvailable();
                     delayed = mGetFirstDelayedCommand();
                     // MATCH-ONLY: the loop test already covers this; it gives the original's
@@ -1941,18 +1941,18 @@ iTruth tSoundChannel::mCleanupSelections()
 #line 2658
                 SOUND_ERROR(("Big trouble -- command of this type %ld on attachment list", command->vfunction16())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
             }
-            (&field_0xec)->vfunction33(command);
+            (&field_0xec)->mRemoveFromList(command);
             field_0x104--;
             command->mMakeAvailable();
             field_0x100++;
-            command = (&field_0xec)->vfunction5();
+            command = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
             if (command == 0)
             {
                 field_0x108 = -1;
                 tSoundChannelCommand* delayed = mGetFirstDelayedCommand();
                 while (delayed != 0 && mDoCommand(delayed) == 1)
                 {
-                    (&field_0xcc)->vfunction33(delayed);
+                    (&field_0xcc)->mRemoveFromList(delayed);
                     delayed->mMakeAvailable();
                     delayed = mGetFirstDelayedCommand();
                 }
@@ -2085,7 +2085,7 @@ void tSoundChannel::mReset(iTruth param_1)
     if (atgSoundPart->vfunction13() == 1)
     {
         if (mAreWeStreaming() == 1)
-            vfunction32(0);
+            mDoFillSelection(0);
     }
     else
     {
@@ -2107,7 +2107,7 @@ void tSoundChannel::mReset(iTruth param_1)
             long handle = (&field_0xec)->vfunction3();
             if (attachments->vfunction39() > 0)
             {
-                tSoundChannelCommand* command = attachments->vfunction1(handle);
+                tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 while (command != 0)
                 {
                     if (command->vfunction16() == 0)
@@ -2128,12 +2128,12 @@ void tSoundChannel::mReset(iTruth param_1)
                     field_0x168 = mGetBufferLength();
                     attachments = &field_0xec;
                     handle = attachments->vfunction9(handle);
-                    command = attachments->vfunction1(handle);
+                    command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 }
             }
             else
             {
-                tSoundChannelCommand* command = attachments->vfunction1(handle);
+                tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->mGetListMemberWithHandleFromHandle(handle);
                 if (command != 0)
                 {
                     if (param_1 == 1)
@@ -2220,9 +2220,9 @@ void tSoundChannel::mDump()
 {
 #line 2985
     SOUND_ERROR(("tSoundChannel: Channel %ld Status =%ld, UpdateMode=%ld, ", field_0c, field_0x28, field_0xfc)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    (&field_0x10)->vfunction26();
+    (&field_0x10)->mDump();
     ((tListMemberWithHandle*)this)->tListMemberWithHandle::mDump();
-    (&field_0x30)->vfunction29();
+    (&field_0x30)->mDump();
     (&field_0xcc)->vfunction42();
     (&field_0xdc)->vfunction42();
     (&field_0xbc)->vfunction42();
@@ -2323,11 +2323,11 @@ iTruth tSoundChannel::mUpdateRegular(double time)
     {
         if (time >= field_0x120)
         {
-            vfunction102(fFadeVolume);
+            mSetVolume(fFadeVolume);
             if (field_0x118 == 2)
-                vfunction104();
+                mStopAndResetChannel();
             else if (field_0x118 == 3)
-                vfunction103();
+                mStopAndClearChannel();
             field_0x118 = 0;
         }
         else
@@ -2341,13 +2341,13 @@ iTruth tSoundChannel::mUpdateRegular(double time)
             if (change < 0)
                 change = -change;
             if (newVolume == fFadeVolume || change > 0)
-                vfunction102(newVolume);
+                mSetVolume(newVolume);
             if (newVolume == fFadeVolume)
             {
                 if (field_0x118 == 2)
-                    vfunction104();
+                    mStopAndResetChannel();
                 else if (field_0x118 == 3)
-                    vfunction103();
+                    mStopAndClearChannel();
                 field_0x118 = 0;
             }
         }
@@ -2364,7 +2364,7 @@ iTruth tSoundChannel::mUpdateRegular(double time)
     tSoundChannelCommand* command = mGetFirstImmediateCommand();
     while (command != 0 && mDoCommand(command) == 1)
     {
-        (&field_0xdc)->vfunction33(command);
+        (&field_0xdc)->mRemoveFromList(command);
         command->mMakeAvailable();
         command = mGetFirstImmediateCommand();
     }
@@ -2489,7 +2489,7 @@ iTruth tSoundChannel::mUpdateAtInterrupt(double time)
         {
             if (mDoCommand(command) == kTrue)
             {
-                (&field_0xdc)->vfunction33(command);
+                (&field_0xdc)->mRemoveFromList(command);
                 command->mMakeAvailable();
                 command = mGetFirstImmediateCommand();
             }
@@ -2558,46 +2558,46 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
                 field_0x128 = 0.0;
             else
                 field_0x128 = (double)(command->vfunction22() - fFadeVolume) / (field_0x120 - now);
-            vfunction102((long)((field_0x120 - now) * field_0x128) + fFadeVolume);
+            mSetVolume((long)((field_0x120 - now) * field_0x128) + fFadeVolume);
             return kTrue;
         }
-        vfunction102(command->vfunction22());
+        mSetVolume(command->vfunction22());
         return kTrue;
     case 6:
-        vfunction101(command->mGetPan());
+        mSetPan(command->mGetPan());
         return kTrue;
     case 8:
-        vfunction111(command->mGet3DSoundProfile());
+        mSet3DSoundProfile(command->mGet3DSoundProfile());
         return kTrue;
     case 1:
-        return vfunction99();
+        return mPlayChannel();
     case 2:
-        vfunction98();
+        mPauseChannel();
         return kTrue;
     case 3:
-        vfunction104();
+        mStopAndResetChannel();
         return kTrue;
     case 4:
-        vfunction103();
+        mStopAndClearChannel();
         return kTrue;
     case 5:
         field_0x98 = command->vfunction18() * field_0x94;
-        vfunction100(command->vfunction18());
+        mSetFrequency(command->vfunction18());
         return kTrue;
     case 14:
-        vfunction106(command->mGet3DSoundPosition());
+        mSet3DSoundPosition(command->mGet3DSoundPosition());
         return kTrue;
     case 15:
-        vfunction107(command->mGet3DSoundOrientation());
+        mSet3DSoundOrientation(command->mGet3DSoundOrientation());
         return kTrue;
     case 16:
-        vfunction109(command->mGet3DSoundConeAngleForNoAttenuation(), command->mGet3DSoundConeAttenuationLevel());
+        mSet3DSoundCones(command->mGet3DSoundConeAngleForNoAttenuation(), command->mGet3DSoundConeAttenuationLevel());
         return kTrue;
     case 17:
-        vfunction108(command->mGet3DSoundVelocity());
+        mSet3DSoundVelocity(command->mGet3DSoundVelocity());
         return kTrue;
     case 18:
-        vfunction110(command->mGet3DSoundReferenceDistance());
+        mSet3DSoundReferenceDistance(command->mGet3DSoundReferenceDistance());
         return kTrue;
     case 12:
     {
@@ -2623,7 +2623,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
             if (atgSoundPart->vfunction13() == 0 && !mDoWeRetainSelections() && mAreWeStatic() == kTrue)
             {
                 field_0x168 = mGetBufferLength();
-                tSoundChannelCommand* attachment = (&field_0xec)->vfunction5();
+                tSoundChannelCommand* attachment = (tSoundChannelCommand*)(&field_0xec)->vfunction5();
                 if (attachment->vfunction16() == 0)
                 {
                     tSoundSelection* selection = attachment->vfunction32();
@@ -2700,9 +2700,9 @@ void tSoundChannel::mAddFinishCommand(iTruth param_1)
             // (finished) or 13 (not finished), which mDoCommand runs later.
             long command;
             if (param_1 == kTrue)
-                command = atgSoundPart->mCreateCommand(12, (long)field_0x90, (long)&field_0x8c);
+                command = atgSoundPart->mCreateCommand((eSoundChannelCommand)12, (void*)field_0x90, &field_0x8c);
             else
-                command = atgSoundPart->mCreateCommand(13, (long)field_0x90, (long)&field_0x8c);
+                command = atgSoundPart->mCreateCommand((eSoundChannelCommand)13, (void*)field_0x90, &field_0x8c);
             if (command == -1) // the exe queues the command only when creating it failed (byte-exact)
                 mAddImmediateNonInterruptCommandCommand(command);
         }
@@ -3438,4 +3438,1682 @@ tSoundChannel* tgSoundPart::mGetSoundChannelPtrFromHandle(long handle)
     if (handle >= 0 && handle < field_0x1c && field_0x18 != 0)
         return field_0x18[handle];
     return 0;
+}
+
+// HYPOTHESIS: the timer response's state (0x120) is 1 while the part runs; every channel in the
+// table (0x18, size 0x1c, count 0x20) is played under the part's lock.
+// FUNCTION: STARFLEETOP 0x00651300
+unsigned char tgSoundPart::mPlayAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4480
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mPlayChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+
+// HYPOTHESIS: channel slot 52 returns the channel's state; 8 is paused, so those channels play again.
+// FUNCTION: STARFLEETOP 0x00651370
+unsigned char tgSoundPart::mResumeAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4504
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0 && channel->vfunction52() == 8)
+                field_0x18[i]->mPlayChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x006513f0
+unsigned char tgSoundPart::mStopAndResetAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4529
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mStopAndResetChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+
+#line 3506 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00651460
+unsigned char tgSoundPart::mStopAndClearAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4553
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mStopAndClearChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x006514d0
+unsigned char tgSoundPart::mPauseAllChannels()
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4582
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 > 0)
+    {
+        for (long i = 0; i < field_0x1c; i++)
+        {
+            tSoundChannel* channel = field_0x18[i];
+            if (channel != 0)
+                channel->mPauseChannel();
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+
+#line 3548 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// HYPOTHESIS: the two data pointers carry the command's arguments; most commands read one value
+// through the first, the paired commands a second value through the second.
+// FUNCTION: STARFLEETOP 0x00651540
+long tgSoundPart::mCreateCommand(eSoundChannelCommand command, void* data1, void* data2)
+{
+    long handle = mFindAvailableSoundChannelCommandPtrAndReturnAHandle();
+    tSoundChannelCommand* commandPtr = mGetSoundChannelCommandPtrFromHandle(handle);
+    if (commandPtr == 0)
+    {
+#line 4620
+        SOUND_ERROR(("Error: Ran out of commands!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return -1;
+    }
+    commandPtr->mSetSoundChannelCommand(command);
+    switch (command)
+    {
+    case 24:
+        commandPtr->mSetSoundSelection(0);
+        break;
+    case 0:
+        commandPtr->mSetSoundSelection((tSoundSelection*)data1);
+        break;
+    case 5:
+        commandPtr->mSetFrequency(*(long*)data1);
+        break;
+    case 6:
+        commandPtr->mSetPan(*(long*)data1);
+        break;
+    case 7:
+        commandPtr->mSetVolume(*(long*)data1);
+        break;
+    case 11:
+    case 12:
+    case 13:
+        commandPtr->mSetFinishSoundCallback((void (*)(unsigned long, iTruth))data1);
+        commandPtr->mSetUserData(*(long*)data2);
+        break;
+    case 10:
+        commandPtr->mSetChannelAttributes((tChannelAttributes*)data1);
+        break;
+    case 19:
+        commandPtr->mSetPriority(*(long*)data1);
+        break;
+    case 8:
+        commandPtr->mSet3DSoundProfile((t3DSoundProfile*)data1);
+        break;
+    case 14:
+        commandPtr->mSet3DSoundPosition((tPoint3*)data1);
+        break;
+    case 15:
+        commandPtr->mSet3DSoundOrientation((tPoint3*)data1);
+        break;
+    case 17:
+        commandPtr->mSet3DSoundVelocity((tPoint3*)data1);
+        break;
+    case 16:
+        commandPtr->mSet3DSoundConeAngleForNoAttenuation(*(float*)data1);
+        commandPtr->mSet3DSoundConeAttenuationLevel(*(long*)data2);
+        break;
+    case 18:
+        commandPtr->mSet3DSoundReferenceDistance(*(double*)data1);
+        break;
+    case 20:
+        commandPtr->mSetUpdateSoundPositionFunction((void (*)(unsigned long, long))data1);
+        commandPtr->mSetUserPositionContext(*(long*)data2);
+        break;
+    case 21:
+        commandPtr->mSetMillisecondsBetweenUpdates(*(double*)data1);
+        break;
+    case 22:
+        commandPtr->mSetDelayImmediateCommandsUntilThisTime(*(double*)data1);
+        break;
+    case 23:
+        commandPtr->mSetTimeToTake(*(double*)data1);
+        commandPtr->mSetFinalVolume(*(long*)data2);
+        break;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 9:
+        break;
+    default:
+#line 4706
+        SOUND_ERROR(("Adding Command That doesn't exist!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return -1;
+    }
+    return handle;
+}
+
+#line 3638 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00651990
+unsigned char tgSoundPart::mAttachSoundToChannel(long channel, tSoundSelection* selection)
+{
+    if (vfunction13() == 1)
+    {
+#line 4731
+        SOUND_ERROR(("mAttachSoundToChannel not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return 1;
+    }
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+    if (selection == 0)
+        return 0;
+#line 4741
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)0, selection, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddAttachment(handle);
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00651b40
+unsigned char tgSoundPart::mPlayChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4771
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)1, 0, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddImmediateCommand(handle);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00651bf0
+unsigned char tgSoundPart::mPauseChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4801
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)2, 0, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddImmediateCommand(handle);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00651ca0
+unsigned char tgSoundPart::mStopAndResetChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4832
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)3, 0, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddImmediateCommand(handle);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00651d50
+unsigned char tgSoundPart::mStopAndClearChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4863
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)4, 0, 0);
+    if (handle == -1)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mAddImmediateCommand(handle);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00651e00
+unsigned char tgSoundPart::mSetFrequency(long channel, long frequency, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4893
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeFixedFrequency() == 1)
+    {
+#line 4901
+        SOUND_ERROR(("you are trying to change the frequency of a fixed Frequency Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        mReleaseControl();
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)5, &frequency, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 4918
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x006520e0
+unsigned char tgSoundPart::mSetPan(long channel, long pan, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4942
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeFixedPan() == 1)
+    {
+#line 4950
+        SOUND_ERROR(("you are trying to change the pan of a fixed pan Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        // The original returns here without releasing control (mSetFrequency releases it).
+        return 0;
+    }
+    long handle = mCreateCommand((eSoundChannelCommand)6, &pan, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 4967
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x006523b0
+unsigned char tgSoundPart::mAddDelayCommand(long channel, double delay, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 4990
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)22, &delay, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5009
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652580
+unsigned char tgSoundPart::mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5033
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)20, &function, (void*)data);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5052
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    handle = mCreateCommand((eSoundChannelCommand)21, &interval, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1)
+        channelPtr->mAddImmediateCommand(handle);
+    else
+    {
+        if (vfunction13() == 1)
+        {
+#line 5071
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+            return 1;
+        }
+        channelPtr->mAddDelayedCommand(handle);
+    }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652890
+unsigned char tgSoundPart::mAddUpdateListenerPositionFunction(void (*function)(unsigned long), long data, double interval)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5095
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x28 = function;
+    field_0x2c = data;
+    field_0x38 = interval * 1000.0;
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x006528f0
+unsigned char tgSoundPart::mFadeToStopAndResetNow(long channel, double timeToTake)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5118
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mFadeToStopAndResetNow(timeToTake);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652990
+unsigned char tgSoundPart::mFadeToStopAndClearNow(long channel, double timeToTake)
+{
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+#line 5143
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0)
+    {
+        mReleaseControl();
+        return 0;
+    }
+    channelPtr->mFadeToStopAndClearNow(timeToTake);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652a30
+unsigned char tgSoundPart::mFadeToVolume(long channel, long volume, double timeToTake, unsigned char immediate)
+{   // MATCH-ONLY: compact (as the functions from 0x00651e00 on) so the unit stays under 4021 lines; past that, the #line numbers of the functions from 0x006501c0 on take this claim (claims pair by physical line).
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5168
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeFixedVolume() == 1) {
+#line 5176
+        SOUND_ERROR(("you are trying to change the volume of a fixed Volume Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; } // no mReleaseControl here, as in mSetPan
+    long handle = mCreateCommand((eSoundChannelCommand)23, &timeToTake, &volume);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5192
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00652d00
+unsigned char tgSoundPart::mSetVolume(long channel, long volume, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5216
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeFixedVolume() == 1) {
+#line 5224
+        SOUND_ERROR(("you are trying to change the volume of a fixed Volume Channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; } // no mReleaseControl here, as in mSetPan
+    long handle = mCreateCommand((eSoundChannelCommand)7, &volume, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5240
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4009 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00652fd0
+unsigned char tgSoundPart::mSetPriority(long channel, long priority, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5264
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)19, &priority, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5283
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4028 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006531a0
+unsigned char tgSoundPart::mSetFinishFunction(long channel, void (* const function)(unsigned long, unsigned char), long data, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5307
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)11, function, &data);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5326
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4048 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653370
+unsigned char tgSoundPart::mSetChannelAttributes(long channel, tChannelAttributes* attributes, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (attributes == 0) return 0;
+#line 5352
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)10, attributes, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5371
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4070 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653550
+unsigned char tgSoundPart::mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (profile == 0) return 0;
+#line 5398
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5406
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)8, profile, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5423
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+
+// HYPOTHESIS: the file and line of the caller that holds control (0x00c64798, 0x00c6695c).
+static char g_00c64798[256];
+static long g_00c6695c;
+
+#line 4098 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653830
+iTruth tgSoundPart::xAttemptToGainControl(char* file, long line, unsigned char a, long b)
+{
+    if (a == kTrue)
+    {
+        if (field_0x128 == kTrue) return kFalse;
+        if (field_0xc8 > 0) return kFalse;
+        iTruth result = field_0xcc.mAcquire();
+        if (result == kTrue)
+        {
+            strcpy(g_00c64798, file);
+            g_00c6695c = line;
+        }
+        return result;
+    }
+    if (field_0xc8 > 0 && b == 1)
+    {
+        if (field_0xcc.fLock != 1)
+        {
+#line 5488
+            SOUND_ERROR(("callback mode without control -- ouch!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return kTrue;
+        }
+        return kTrue;
+    }
+    long count = 0;
+    while (field_0xcc.mAcquire() == kFalse)
+    {
+        count++;
+        fSomeoneIsWaitingForControl = 1;
+    }
+    fSomeoneIsWaitingForControl = 0;
+    if (count == 10000)
+    {
+#line 5510
+        AddSoundErrorDuringInterrupt("Warning -- Lock up controlled by %s %ld asking is %s %ld", g_00c64798, g_00c6695c, file, line); AddSoundErrorDuringInterrupt(" -- %s %d\n", __FILE__, __LINE__);
+    }
+    strcpy(g_00c64798, file);
+    g_00c6695c = line;
+    return kTrue;
+}
+
+// FUNCTION: STARFLEETOP 0x00653a60
+void tgSoundPart::mReleaseControl()
+{
+    if (field_0xc8 == 0)
+        field_0xcc.mRelease();
+}
+#line 4147 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00653a80
+unsigned char tgSoundPart::mSet3DSoundPosition(long channel, tPoint3* position, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (position == 0) return 0;
+#line 5553
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5561
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)14, position, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5578
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+// FUNCTION: STARFLEETOP 0x00653d60
+unsigned char tgSoundPart::mSet3DSoundOrientation(long channel, tPoint3* orientation, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (orientation == 0) return 0;
+#line 5603
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5611
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)15, orientation, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5628
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+// FUNCTION: STARFLEETOP 0x00654040
+unsigned char tgSoundPart::mSet3DSoundVelocity(long channel, tPoint3* velocity, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+    if (velocity == 0) return 0;
+#line 5653
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5661
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)17, velocity, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5678
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4217 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654320
+unsigned char tgSoundPart::mSet3DSoundCones(long channel, float angle, long level, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5703
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5711
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)16, &angle, &level);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5728
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4240 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006545f0
+unsigned char tgSoundPart::mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5752
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWe3D() == 0) {
+#line 5760
+        SOUND_ERROR(("We are not a 3D channel!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    long handle = mCreateCommand((eSoundChannelCommand)18, &distance, 0);
+    if (handle == -1) { mReleaseControl(); return 0; }
+    if (immediate == 1) channelPtr->mAddImmediateCommand(handle);
+    else {
+        if (vfunction13() == 1) {
+#line 5777
+            SOUND_ERROR(("immediate must be kTrue!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+        channelPtr->mAddDelayedCommand(handle); }
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl(); return 1;
+}
+#line 4263 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006548c0
+unsigned char tgSoundPart::mPlaySpecialLoop(long channel, long param_2, long param_3, long param_4, long param_5)
+{
+#line 5800
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mPlaySpecialLoop not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5808
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mPlaySpecialLoop(param_2, param_3, param_4, param_5);
+    mReleaseControl(); return result;
+}
+#line 4278 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654a40
+unsigned char tgSoundPart::mEndSpecialLoop(long channel)
+{
+#line 5830
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mEndSpecialLoop not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5838
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mEndSpecialLoop();
+    mReleaseControl(); return result;
+}
+#line 4293 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654bb0
+unsigned char tgSoundPart::mAddGetNextAttachmentFunction(long channel, void (*function)(unsigned long, long), long data, double interval)
+{
+#line 5859
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mAddGetNextAttachmentFunction not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 1; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5867
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mAddGetNextAttachmentFunction(function, data, interval);
+    mReleaseControl(); return result;
+}
+#line 4308 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654d30
+long tgSoundPart::mGetNumberCurrentlyPlaying()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5891
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long count = 0;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && channelPtr->vfunction52() == 32)
+            count++;
+    }
+    mReleaseControl();
+    return count;
+}
+#line 4325 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654db0
+unsigned char tgSoundPart::mDoWeAutoRemoveChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5919
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mDoWeAutoRemoveChannel();
+    mReleaseControl(); return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00654e20
+unsigned char tgSoundPart::mWeAutoRemoveChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5942
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (!channelPtr->mDoWeAutoRemoveChannel())
+    {
+        long type = channelPtr->mGetSoundType();
+        channelPtr->mSetSoundType(type + 0x1000);
+    }
+    mReleaseControl(); return 1;
+}
+#line 4353 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654eb0
+unsigned char tgSoundPart::mWeDoNotAutoRemoveChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 5972
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mDoWeAutoRemoveChannel() == 1)
+    {
+        long type = channelPtr->mGetSoundType();
+        type -= 0x1000;
+        channelPtr->mSetSoundType(type);
+    }
+    mReleaseControl(); return 1;
+}
+#line 4369 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654f40
+unsigned char tgSoundPart::mDoWeAutoRemoveSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6004
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mDoWeAutoRemoveSelections();
+    mReleaseControl(); return result;
+}
+#line 4381 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00654fb0
+unsigned char tgSoundPart::mWeAutoRemoveSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6027
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (!channelPtr->mDoWeAutoRemoveSelections())
+    {
+        long type = channelPtr->mGetSoundType();
+        channelPtr->mSetSoundType(type + 0x2000);
+    }
+    mReleaseControl(); return 1;
+}
+#line 4398 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655040
+unsigned char tgSoundPart::mWeDoNotAutoRemoveSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6057
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mDoWeAutoRemoveSelections() == 1)
+    {
+        long type = channelPtr->mGetSoundType();
+        type -= 0x2000;
+        channelPtr->mSetSoundType(type);
+    }
+    mReleaseControl(); return 1;
+}
+#line 4415 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006550d0
+unsigned char tgSoundPart::mDoWeRetainSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6090
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char result = channelPtr->mDoWeRetainSelections();
+    mReleaseControl(); return result;
+}
+#line 4426 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655140
+unsigned char tgSoundPart::mWeRetainSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6113
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (!channelPtr->mDoWeRetainSelections())
+    {
+        long type = channelPtr->mGetSoundType();
+        channelPtr->mSetSoundType(type + 0x800);
+    }
+    mReleaseControl(); return 1;
+}
+#line 4442 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006551d0
+unsigned char tgSoundPart::mWeDoNotRetainSelections(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6143
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mDoWeRetainSelections() == 1)
+    {
+        long type = channelPtr->mGetSoundType();
+        type -= 0x800;
+        channelPtr->mSetSoundType(type);
+    }
+    mReleaseControl(); return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00655260
+unsigned char tgSoundPart::mSetGlobalFrequency(float frequency)
+{
+#line 6169
+    SOUND_ERROR(("tgSoundPart mSetGlobalFrequency %f", frequency)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6176
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x60 = frequency;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedFrequency())
+        {
+            long channelFrequency = channelPtr->mGetFrequency();
+            long command = mCreateCommand((eSoundChannelCommand)5, &channelFrequency, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+#line 4484 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655440
+unsigned char tgSoundPart::mSetGlobalPan(long pan)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6221
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    field_0x50 = pan;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedPan())
+        {
+            long channelPan = channelPtr->mGetPan();
+            long command = mCreateCommand((eSoundChannelCommand)7, &channelPan, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+#line 4508 // MATCH-ONLY: the #line directives above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655550
+unsigned char tgSoundPart::mSetGlobalVolume(long volume)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6267
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long globalVolume = volume;
+    if (volume > 100) globalVolume = 100;
+    else if (volume < 0) globalVolume = 0;
+    field_0x54 = globalVolume;
+    field_0x58 = globalVolume * 0.01;
+    for (long handle = field_0x40.vfunction3(); handle != -1; handle = field_0x40.vfunction9(handle))
+    {
+        tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+        if (channelPtr != 0 && !channelPtr->mAreWeFixedVolume())
+        {
+            long channelVolume = channelPtr->mGetVolume();
+            long command = mCreateCommand((eSoundChannelCommand)7, &channelVolume, 0);
+            if (command == -1) { mReleaseControl(); return 0; }
+            channelPtr->mAddImmediateNonInterruptCommandCommand(command);
+            channelPtr->mUpdateRegular(vfunction125());
+        }
+    }
+    mReleaseControl();
+    return 1;
+}
+#line 4535 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655680
+eSoundChannelStatus tgSoundPart::mGetChannelStatus(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return (eSoundChannelStatus)-1;
+#line 6320
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return (eSoundChannelStatus)-1; }
+    eSoundChannelStatus status = channelPtr->vfunction52();
+    mReleaseControl();
+    return status;
+}
+#line 4548 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006556f0
+long tgSoundPart::mTotalBytesLeftToPlay(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6346
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long bytes = channelPtr->mGetTotalBytesLeftToPlay();
+    mReleaseControl();
+    return bytes;
+}
+#line 4561 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655760
+double tgSoundPart::mTotalNumberOfSecondsLeftToPlay(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6371
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    double seconds = channelPtr->mGetTotalNumberOfSecondsLeftToPlay();
+    mReleaseControl();
+    return seconds;
+}
+#line 4574 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006557f0
+long tgSoundPart::mNumberOfAttachmentsQueuedUp(long channel)
+{
+#line 6393
+    if (vfunction13() == 1) {
+        SOUND_ERROR(("mNumberOfAttachmentsQueuedUp not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__)); return 0; }
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6401
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long count = channelPtr->mGetNumberOfAttachments();
+    mReleaseControl();
+    return count;
+}
+#line 4590 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655960
+long tgSoundPart::mGetFrequency(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6427
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long frequency = channelPtr->mGetFrequency();
+    mReleaseControl();
+    return frequency;
+}
+#line 4602 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006559d0
+long tgSoundPart::mGetPan(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6451
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long pan = channelPtr->mGetPan();
+    mReleaseControl();
+    return pan;
+}
+#line 4615 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655a40
+long tgSoundPart::mGetVolume(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6475
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long volume = channelPtr->mGetVolume();
+    mReleaseControl();
+    return volume;
+}
+#line 4628 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655ab0
+tChannelAttributes* tgSoundPart::mGetChannelAttributes(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6500
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tChannelAttributes* attributes = channelPtr->mGetChannelAttributes();
+    mReleaseControl();
+    return attributes;
+}
+#line 4641 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655b20
+t3DSoundProfile* tgSoundPart::mGet3DSoundProfile(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6525
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    t3DSoundProfile* profile = channelPtr->mGet3DSoundProfile();
+    mReleaseControl();
+    return profile;
+}
+#line 4654 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655b90
+tPoint3* tgSoundPart::mGet3DSoundPosition(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6550
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tPoint3* position = channelPtr->mGet3DSoundPosition();
+    mReleaseControl();
+    return position;
+}
+#line 4667 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655c00
+tPoint3* tgSoundPart::mGet3DSoundOrientation(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6575
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tPoint3* orientation = channelPtr->mGet3DSoundOrientation();
+    mReleaseControl();
+    return orientation;
+}
+#line 4680 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655c70
+tPoint3* tgSoundPart::mGet3DSoundVelocity(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6601
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tPoint3* velocity = channelPtr->mGet3DSoundVelocity();
+    mReleaseControl();
+    return velocity;
+}
+#line 4693 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655ce0
+double tgSoundPart::mGet3DSoundReferenceDistance(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6625
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    double distance = channelPtr->mGet3DSoundReferenceDistance();
+    mReleaseControl();
+    return distance;
+}
+#line 4706 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655d70
+float tgSoundPart::mGet3DSoundConeAngleForNoAttenuation(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6649
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    float angle = channelPtr->mGet3DSoundConeAngleForNoAttenuation();
+    mReleaseControl();
+    return angle;
+}
+#line 4719 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655df0
+long tgSoundPart::mGet3DSoundConeAttenuationLevel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6673
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long level = channelPtr->mGet3DSoundConeAttenuationLevel();
+    mReleaseControl();
+    return level;
+}
+#line 4732 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655e60
+long tgSoundPart::mGetChannelPriority(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6696
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    long priority = channelPtr->mGetChannelPriority();
+    mReleaseControl();
+    return priority;
+}
+#line 4745 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655ed0
+tSoundChannelFormat* tgSoundPart::mGetSoundChannelFormat(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6720
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    tSoundChannelFormat* format = channelPtr->mGetSoundChannelFormat();
+    mReleaseControl();
+    return format;
+}
+#line 4759 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655f40
+unsigned char tgSoundPart::mAreWeLooping(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6744
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char looping = channelPtr->mAreWeLooping();
+    mReleaseControl();
+    return looping;
+}
+#line 4772 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00655fb0
+unsigned char tgSoundPart::mAreWeStreaming(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6768
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char streaming = channelPtr->mAreWeStreaming();
+    mReleaseControl();
+    return streaming;
+}
+#line 4785 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656020
+unsigned char tgSoundPart::mAreWe3D(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6792
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char threeD = channelPtr->mAreWe3D();
+    mReleaseControl();
+    return threeD;
+}
+#line 4798 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656090
+unsigned char tgSoundPart::mAreWeStatic(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6816
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char isStatic = channelPtr->mAreWeStatic();
+    mReleaseControl();
+    return isStatic;
+}
+#line 4811 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656100
+unsigned char tgSoundPart::mAreWeFixedFrequency(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6840
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char fixedFrequency = channelPtr->mAreWeFixedFrequency();
+    mReleaseControl();
+    return fixedFrequency;
+}
+#line 4835 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656170
+unsigned char tgSoundPart::mAreWeARecordingChannel(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6864
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char recordingChannel = channelPtr->mAreWeARecordingChannel();
+    mReleaseControl();
+    return recordingChannel;
+}
+#line 4848 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006561e0
+unsigned char tgSoundPart::mTryToLocateInHardware(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6888
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char locatedInHardware = channelPtr->mTryToLocateInHardware();
+    mReleaseControl();
+    return locatedInHardware;
+}
+#line 4849 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656250
+unsigned char tgSoundPart::mTryToLocateInSoftware(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6912
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char locatedInSoftware = channelPtr->mTryToLocateInSoftware();
+    mReleaseControl();
+    return locatedInSoftware;
+}
+#line 4862 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006562c0
+unsigned char tgSoundPart::mAreWeFixedPan(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6936
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char fixedPan = channelPtr->mAreWeFixedPan();
+    mReleaseControl();
+    return fixedPan;
+}
+#line 4876 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656330
+unsigned char tgSoundPart::mIsChannelActive(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6959
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char active = channelPtr->mAreWeStillActive();
+    mReleaseControl();
+    return active;
+}
+#line 4889 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006563a0
+unsigned char tgSoundPart::mAreWeFixedVolume(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 6982
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char fixedVolume = channelPtr->mAreWeFixedVolume();
+    mReleaseControl();
+    return fixedVolume;
+}
+#line 4902 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656410
+unsigned char tgSoundPart::mAreWeAGlobalSound(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7006
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    unsigned char globalSound = channelPtr->mAreWeAGlobalSound();
+    mReleaseControl();
+    return globalSound;
+}
+#line 4914 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656480
+t3DListenerProfile* tgSoundPart::mGet3DListener()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7030
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    return &field_0x68;
+}
+#line 4927 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656590
+tPoint3* tgSoundPart::mGet3DListener3DPosition()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7046
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGet3DPosition();
+}
+#line 4940 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006566a0
+tPoint3* tgSoundPart::mGet3DListenerForwardDirection()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7062
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGetForwardDirection();
+}
+#line 4953 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006567b0
+tPoint3* tgSoundPart::mGet3DListenerUpDirection()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7078
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGetUpDirection();
+}
+#line 4966 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006568c0
+tPoint3* tgSoundPart::mGet3DListenerVelocity()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7094
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGetVelocity();
+}
+#line 4979 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006569d0
+double tgSoundPart::mGet3DListenerUnitScaleInMeters()
+{
+    if (field_0x114.field_0x4[2] == 1)
+    {
+        SOUND_ERROR(("Sound was not initialized!"));
+#line 7110
+        SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    }
+    t3DListenerProfile* listener = &field_0x68;
+    return listener->mGetUnitScaleInMeters();
+}
+#line 4992 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00656ae0
+void tgSoundPart::mDump(long channel)
+{
+    if (field_0x114.field_0x4[2] != 1) return;
+#line 7126
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(channel);
+    if (channelPtr == 0) { mReleaseControl(); return; }
+    channelPtr->mDump();
+    mReleaseControl();
+}
+// FUNCTION: STARFLEETOP 0x00656b40
+void tgSoundPart::mDump()
+{
+#line 7144
+    SOUND_ERROR(("tgSoundPart Dump: fSoundChannelCommands = %ld,fMaxNumberOfSoundChannelCommands=%ld,fNextSoundChannelCommandToTry=%ld", field_0xc, field_0x10, field_0x14)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" fSoundChannels = %ld,fMaxNumberOfSoundChannels=%ld,fActualNumberOfSoundChannels=%ld", field_0x18, field_0x1c, field_0x20)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" fStatus = %ld,fInitialized=%ld", field_0x114.field_0x4[1], field_0x114.field_0x4[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR((" ActiveChannels:")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    tSoundChannelList* channels = &field_0x40; channels->vfunction42();
+    SOUND_ERROR((" 3DListenerProfile:")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    t3DListenerProfile* listener = &field_0x68; listener->mDump();
+    SOUND_ERROR(("  GlobalPan=%ld, GlobalVolume=%ld, VolumePercent=%f,Freq=%f", field_0x50, field_0x54, field_0x58, field_0x60)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("  RecordingChannelHandle=%ld, InterruptMode=%ld,fCurrentTime=%f,fSoundPartGetTimeFunction=%ld END", field_0xa8, field_0x128, field_0xb8, field_0xb0)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+}
+#line 5018 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00657240
+unsigned char tgSoundPart::mPauseRecordChannel()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7166
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)2, 0, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddImmediateCommand(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+// FUNCTION: STARFLEETOP 0x00657310
+unsigned char tgSoundPart::mRecordChannel()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7198
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)1, 0, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddImmediateCommand(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+// FUNCTION: STARFLEETOP 0x006573e0
+unsigned char tgSoundPart::mStopAndClearRecordChannel()
+{
+    if (field_0x114.field_0x4[2] != 1) return 0;
+#line 7229
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)4, 0, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddImmediateCommand(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
+}
+#line 5070 // MATCH-ONLY: the #line directive in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x006574b0
+unsigned char tgSoundPart::mRemoveRecordChannel()
+{
+#line 7259
+    if (!xAttemptToGainControl(__FILE__, __LINE__, 0, 0)) return 0;
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    channelPtr->mRemoveSoundChannel();
+    mReleaseControl();
+    mUpdate();
+#line 7277
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    if (field_0x20 == 0)
+    {
+        field_0x1c = 0;
+        delete[] field_0x18;
+        field_0x18 = 0;
+    }
+    mReleaseControl();
+    return 1;
+}
+#line 5094 // MATCH-ONLY: the #line directives in the function above shifted the listing, so the line is reset here.
+// FUNCTION: STARFLEETOP 0x00657580
+unsigned char tgSoundPart::mAttachSoundToRecordChannel(tSoundSelection* selection)
+{
+    if (vfunction13() == 1)
+    {
+#line 7303
+        SOUND_ERROR(("mAttachSoundToRecordChannel not supported in active mode!")); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+        return 1;
+    }
+    if (field_0x114.field_0x4[2] != 1)
+        return 0;
+    if (selection == 0)
+        return 0;
+#line 7311
+    xAttemptToGainControl(__FILE__, __LINE__, 0, 1);
+    long handle = field_0xa8;
+    tSoundChannel* channelPtr = mGetSoundChannelPtrFromHandle(handle);
+    if (channelPtr == 0) { mReleaseControl(); return 0; }
+    if (channelPtr->mAreWeARecordingChannel() != 1) { mReleaseControl(); return 0; }
+    long command = mCreateCommand((eSoundChannelCommand)0, selection, 0);
+    if (command == -1) { mReleaseControl(); return 0; }
+    channelPtr->mAddAttachment(command);
+    channelPtr->mUpdateRegular(vfunction125());
+    mReleaseControl();
+    return 1;
 }

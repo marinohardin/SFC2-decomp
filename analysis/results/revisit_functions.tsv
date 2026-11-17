@@ -50,4 +50,13 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f53f0	tOSVersion::Instance	99.86	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.86%
 0x00709270	nDatabase::tFileDatabaseMgr::Load	79.66	2	sonnet	2026-11-11T12:40:55Z	attempt 2 (sonnet) did not raise the best; best 79.66%
 0x0062e1c0	twFileSystemPart::mGetVolIterator	0.63	2	sonnet	2026-11-11T12:40:55Z	best not above 90% after 2 attempts; best 0.63%
+0x00643b30	twStandardSoundChannel::mAddSoundChannel	30.95	2	sonnet	2026-11-16T11:02:45Z	best not above 90% after 2 attempts; best 30.95%
+0x00644110	twStandardSoundChannel::mDoFillSelection	84.79	2	sonnet	2026-11-16T11:11:37Z	best not above 90% after 2 attempts; best 84.79%
+0x00644750	twStandardSoundChannel::mSetVolume	99.49	2	sonnet	2026-11-16T11:33:27Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.49%
+0x00645c80	twSoundPart::mAdjust3DListener	0.00	2	sonnet	2026-11-16T12:59:31Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00645cd2	FUN_00645cd2	0.00	2	sonnet	2026-11-16T13:06:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00646010	twSoundPart::mInit	99.88	2	sonnet	2026-11-16T13:26:21Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.88%
+0x00651540	tgSoundPart::mCreateCommand	93.10	2	sonnet	2026-11-16T13:51:03Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 93.10%
+0x00651929	FUN_00651929	0.00	2	sonnet	2026-11-16T13:53:33Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
