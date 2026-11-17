@@ -174,3 +174,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005de770	tCallback<tNewsStory*>::scalar_deleting_destructor	11.56	2	sonnet	2026-11-17T20:36:08Z	best not above 90% after 2 attempts; best 11.56%
 0x005de7a9	tCallback<tMetaClientNewsCtlrC::tMenuItem::eType>::scalar_deleting_destructor	8.23	2	sonnet	2026-11-17T20:41:52Z	attempt 2 (sonnet) did not raise the best; best 8.23%
 0x005de7e2	tCallback<tMetaClientNewsCtlrC::tMenuItem*>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T20:47:40Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005deaac	FUN_005deaac	99.84	2	sonnet	2026-11-17T20:58:35Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.84%
