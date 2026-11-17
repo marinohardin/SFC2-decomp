@@ -373,3 +373,13 @@ char tSndMgr_Miles::vfunction5( long param_1 )
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0050f2ec
+char tSndMgr_Miles::vfunction6()
+{
+	if ( !field_2414 )
+	{
+		return 0;
+	}
+	return field_10[0].field_10;
+}
