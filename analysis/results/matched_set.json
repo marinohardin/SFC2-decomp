@@ -8299,6 +8299,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005de28c": {
+   "name": "FUN_005de28c",
+   "symbol": "?fn_005de28c@fn_005de28c_Vector@@QAEXPAPAVtNewsStory@@PBQAV2@1@Z",
+   "unit": "unsorted/fn_005DE000.cpp",
+   "size": 485,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
