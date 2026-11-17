@@ -45,6 +45,7 @@ class tShipSystemsExt : public tShipSystems
 public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
+    virtual void vfunction26( float param_1 );
     virtual tShipSystemManager* vfunction53();
     virtual tTacticalStoresManager* vfunction54();
     virtual char* vfunction57();
@@ -764,4 +765,10 @@ int tShipSystemsExt::vfunction106()
 int tShipSystemsExt::vfunction108()
 {
     return m6ac;
+}
+
+// FUNCTION: STARFLEETOP 0x00448b0e
+void tShipSystemsExt::vfunction26( float param_1 )
+{
+    m744.vfunction3( param_1 );
 }
