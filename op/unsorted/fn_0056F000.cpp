@@ -388,3 +388,9 @@ class tAuctionItem;
 nDatabase::tQuery<tAuctionItem>::~tQuery()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0056f4cf
+void nDatabase::tQuery<tAuctionItem>::fn_0056f04f(void *value)
+{
+	m_results.fn_00571a69(value);
+}
