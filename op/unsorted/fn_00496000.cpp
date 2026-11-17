@@ -312,3 +312,36 @@ void fn_004966e7_object::fn_0049670b()
 	if( f < 0.0f )
 		m08 = f + 1.0f;
 }
+
+// HYPOTHESIS: a record with a byte at +0x00, a float at +0x04 and two draws of fn_0069b0e0;
+// m08 is moved away from zero by 0.35.
+class fn_0049674e_object
+{
+public:
+	fn_0049674e_object();
+
+	unsigned char m00;
+	float m04;
+	float m08;
+	float m0c;
+};
+
+// HYPOTHESIS: two float globals read at run time; their difference is about 0.025 (Ghidra's
+// 0.025000006) and 0x007a08e8 holds 0.35, so 0x007a08e4 is likely 0.375 (a maximum and a minimum).
+extern float g_007a08e4;
+extern float g_007a08e8;
+
+// FUNCTION: STARFLEETOP 0x0049674e
+fn_0049674e_object::fn_0049674e_object()
+{
+	m00 = 0;
+	m04 = 0.0f;
+	float range = g_007a08e4 - g_007a08e8;
+	m0c = fn_0069b0e0();
+	float r = fn_0069b0e0() * range;
+	m08 = r + r - range;
+	if( m08 > 0.0f )
+		m08 += g_007a08e8;
+	else
+		m08 -= g_007a08e8;
+}
