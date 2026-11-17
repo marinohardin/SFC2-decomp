@@ -77,6 +77,7 @@ class tState_NetSetup : public tGameState
 {
 public:
 	tState_NetSetup();
+	virtual ~tState_NetSetup();
 	virtual void vfunction1();
 	virtual bool vfunction2();
 	virtual void vfunction3();
@@ -741,6 +742,13 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
 // FUNCTION: STARFLEETOP 0x004777dd
 // FUNCTION: STARFLEETOP 0x004777d3
 tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
+
+// HYPOTHESIS: the original's destructor sets no vtable, as VC6's compiler-generated one does
+// (the build with no declared destructor emits exactly its body); written out, VC6 adds the store.
+// FUNCTION: STARFLEETOP 0x004777f3
+tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
+{
+}
 
 // HYPOTHESIS: the state's control name tables and the names its value objects bind to, as
 // tState_GameConnections::fn_00469271 registers its own.
