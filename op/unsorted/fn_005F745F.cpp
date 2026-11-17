@@ -31,13 +31,16 @@ struct fn_005f74a6_entry
 class fn_005f77c6_object
 {
 public:
-	void FUN_005f77c6( int value );
+	void FUN_005f77c6( const fn_005f74a6_entry& value );
 	fn_005f74a6_entry& FUN_005f77a7();
 	void FUN_005f7897();
+	void FUN_005f7afe( unsigned int count ); // HYPOTHESIS: grows the block map
 
-	byte field_00[0x0c];
-	int field_0c; // HYPOTHESIS: the index of the first entry
-	int field_10; // HYPOTHESIS: the entry count; 0x005f76d5 tests it
+	byte field_00[0x04];
+	fn_005f74a6_entry** field_04; // HYPOTHESIS: the map of blocks of 170 entries
+	unsigned int field_08; // HYPOTHESIS: the map size
+	unsigned int field_0c; // HYPOTHESIS: the index of the first entry
+	unsigned int field_10; // HYPOTHESIS: the entry count; 0x005f76d5 tests it
 };
 
 // HYPOTHESIS: a position in fn_005f77c6_object: an index and the owner; 0x005f77a7 builds one
@@ -129,7 +132,7 @@ public:
 class fn_005f745f_object
 {
 public:
-	void FUN_005f745f( int value );
+	void FUN_005f745f( const fn_005f74a6_entry& value );
 	fn_005f74a6_entry FUN_005f74a6();
 	void FUN_005f755c( int value );
 	fn_0055fe12_value FUN_005f75a3();
@@ -150,7 +153,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x005f745f
-void fn_005f745f_object::FUN_005f745f( int value )
+void fn_005f745f_object::FUN_005f745f( const fn_005f74a6_entry& value )
 {
 	tOptex::tGuard guard( &field_40 );
 
@@ -274,4 +277,31 @@ fn_0055fe12_value::fn_0055fe12_value( const std::string& value, int a )
 fn_005f74a6_entry& fn_005f77c6_object::FUN_005f77a7()
 {
 	return (fn_005f7c17_iterator( field_10 + field_0c, this ) - 1).FUN_005f7c17();
+}
+
+// FUNCTION: STARFLEETOP 0x005f77c6
+void fn_005f77c6_object::FUN_005f77c6( const fn_005f74a6_entry& value )
+{
+	if ( (field_0c + field_10) % 170 == 0 && field_08 <= (field_10 + 170) / 170 ) {
+		FUN_005f7afe( 1 );
+	}
+	unsigned int off = field_0c + field_10;
+	unsigned int block = off / 170;
+	if ( field_08 <= block ) {
+		block -= field_08;
+	}
+	if ( field_04[block] == 0 ) {
+		field_04[block] = (fn_005f74a6_entry*) operator new( 170 * sizeof( fn_005f74a6_entry ) );
+	}
+	unsigned int index = off % 170;
+	try {
+		++field_10;
+		fn_005f74a6_entry* p = field_04[block] + index;
+		new( p ) fn_005f74a6_entry( value );
+	} catch ( ... ) {
+		// HYPOTHESIS: the original's catch funclet (0x005f7886) is 17 bytes, the size of a member
+		// call through this, not of this decrement; its callee is not known.
+		--field_10;
+		throw;
+	}
 }
