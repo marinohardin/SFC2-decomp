@@ -237,6 +237,7 @@ public:
 	virtual void vfunction21();
 	virtual void vfunction22();
 	virtual void vfunction23( tString* arg1 );
+	void fn_0067ce90();
 };
 
 // FUNCTION: STARFLEETOP 0x004d338b
@@ -309,5 +310,15 @@ void fn_004d346f( long arg1, long arg2 )
 	if ( obj != 0 )
 	{
 		obj->vfunction17();
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004d348d
+void fn_004d348d( long arg1 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	if ( obj != 0 )
+	{
+		obj->fn_0067ce90();
 	}
 }
