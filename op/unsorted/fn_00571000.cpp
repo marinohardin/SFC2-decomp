@@ -2,7 +2,7 @@
 // Functions: 0x00571018 to 0x00571e33, 37 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 // Profile:   game-release (harness/units.json)
-
+#include <string>
 #include <typeinfo>
 #include "Common/Thread/Optex.h"
 #include "Common/DynamicAllocator.h"
@@ -238,4 +238,27 @@ bool fn_00571648_owner::fn_0057165f(int a)
 {
 	bool less = ((int (__fastcall *)(int))fn_00571648_func)(fn_00571648_base + a) < *(int*)&fn_00571648_byte;
 	return less;
+}
+
+// HYPOTHESIS: unrecovered exception-like class: a base with a virtual destructor, two longs
+// at +8 and +0xc, and a std::string at +0x10 copied from the by-value parameter.
+class fn_00571676_base {
+public:
+	fn_00571676_base(long a, long b) : fn_00571676_a(a), fn_00571676_b(b) {}
+	virtual ~fn_00571676_base();
+	int fn_00571676_base_pad;
+	long fn_00571676_a;
+	long fn_00571676_b;
+};
+
+class fn_00571676_owner : public fn_00571676_base {
+public:
+	fn_00571676_owner(long a, long b, std::string s);
+	std::string fn_00571676_str;
+};
+
+// FUNCTION: STARFLEETOP 0x00571676
+fn_00571676_owner::fn_00571676_owner(long a, long b, std::string s)
+	: fn_00571676_base(a, b), fn_00571676_str(s)
+{
 }

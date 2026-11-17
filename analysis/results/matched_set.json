@@ -6283,6 +6283,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00571676": {
+   "name": "FUN_00571676",
+   "symbol": "??0fn_00571676_owner@@QAE@JJV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "unsorted/fn_00571000.cpp",
+   "size": 106,
+   "score": 12.406,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
