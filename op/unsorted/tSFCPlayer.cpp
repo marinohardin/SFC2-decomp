@@ -2,6 +2,7 @@
 #include "Tiger/tstring.h"
 #include "Common/Thread/Optex.h"
 #include "unsorted/tObject_0092deb4.h"
+#include "unsorted/tNetControl.h"
 #include "unsorted/tSupplyDockInfo.h"
 #include "unsorted/sfcstreams.h"
 #include "unsorted/fn_0090bed4_Object.h"
@@ -198,7 +199,7 @@ class tSFCPlayer
 		virtual void vfunction55() = 0;
 		virtual void vfunction56() = 0;
 		virtual void vfunction57() = 0;
-		virtual void vfunction58() = 0;
+		virtual bool vfunction58();
 		virtual int vfunction59();
 		virtual void vfunction60(int param_1);
 		virtual void vfunction61(int param_1);
@@ -703,6 +704,16 @@ void tSFCPlayer::vfunction7(int param_1)
 int tSFCPlayer::vfunction8()
 {
 	return m_8538;
+}
+
+// FUNCTION: STARFLEETOP 0x004d051d
+bool tSFCPlayer::vfunction58()
+{
+	// MATCH-ONLY: the original builds the flag with a conditional increment.
+	bool bResult = false;
+	if (gNetControl.fn_004326a4() != 8)
+		bResult++;
+	return bResult;
 }
 
 // FUNCTION: STARFLEETOP 0x004d0424
