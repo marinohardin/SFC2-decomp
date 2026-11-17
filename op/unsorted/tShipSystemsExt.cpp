@@ -45,6 +45,7 @@ class tShipSystemsExt : public tShipSystems
 public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
+    virtual char* vfunction58();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -224,4 +225,12 @@ tShipSystemsExt::tShipSystemsExt( unsigned long param_1 )
 void tShipSystemsExt::vfunction107( float param_1 )
 {
     m7f8.vfunction3( param_1 );
+}
+
+// HYPOTHESIS: the return type, as in tShipSystemsFighter::vfunction58; the original returns
+// the address +0x648, 0xc4 bytes into the block at m584 that the constructor clears as one.
+// FUNCTION: STARFLEETOP 0x00448861
+char* tShipSystemsExt::vfunction58()
+{
+    return m584 + 0xc4;
 }
