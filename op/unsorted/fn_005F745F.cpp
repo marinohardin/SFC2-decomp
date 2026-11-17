@@ -27,7 +27,7 @@ struct fn_005f74a6_entry
 	int field_14;
 };
 
-// HYPOTHESIS: a queue of entries: 0x005f77a7 reads the front, 0x005f7897 drops it.
+// HYPOTHESIS: a queue of entries: 0x005f77a7 reads the last entry, 0x005f7897 destroys and drops it.
 class fn_005f77c6_object
 {
 public:
@@ -303,5 +303,22 @@ void fn_005f77c6_object::FUN_005f77c6( const fn_005f74a6_entry& value )
 		// call through this, not of this decrement; its callee is not known.
 		--field_10;
 		throw;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7897
+void fn_005f77c6_object::FUN_005f7897()
+{
+	if ( field_10 != 0 ) {
+		unsigned int off = field_0c + field_10 - 1;
+		unsigned int block = off / 170;
+		if ( field_08 <= block ) {
+			block -= field_08;
+		}
+		fn_005f74a6_entry* p = field_04[block] + off % 170;
+		p->~fn_005f74a6_entry();
+		if ( --field_10 == 0 ) {
+			field_0c = 0;
+		}
 	}
 }
