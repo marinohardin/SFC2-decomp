@@ -15369,9 +15369,9 @@
    "symbol": "?mDone@tFontTable@@IAEXXZ",
    "unit": "Tiger/tFontmgr.cpp",
    "size": 192,
-   "score": 98.214,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00670710": {
    "name": "tFontTable::mMakeGlyph",

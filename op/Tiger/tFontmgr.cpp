@@ -256,17 +256,17 @@ void tFontTable::mDone(void)
     }
     int i;
     for (i = 0; i < 256; i++) {
-        tCharInfo** page = field_2c[i];
-        if (page) {
-            for (int j = 0; j < 256; j++) {
-                if (page[j])
-                    delete page[j];
+        if (field_2c[i] != NULL) {
+            tCharInfo** page = field_2c[i];
+            if (page != NULL) { // HYPOTHESIS: the null test a delete of a page type with an inline destructor makes
+                for (int j = 0; j < 256; j++) {
+                    if (page[j])
+                        delete page[j];
+                }
+                delete[] page;
             }
-            delete[] page;
+            field_2c[i] = NULL;
         }
-        // HYPOTHESIS: the original clears the slot inside the if (its branch skips the
-        // store); clearing it unconditionally is equivalent and comes closer.
-        field_2c[i] = NULL;
     }
     // HYPOTHESIS: the reset is inlined here, so the original spelled out what
     // mResetDataMembers does (or had an inline copy of it) rather than calling it.
