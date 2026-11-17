@@ -102,6 +102,7 @@ public:
 	bool fn_005433f4();
 	bool fn_00543400();
 	bool fn_0054340c();
+	bool fn_00543437();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -114,7 +115,8 @@ public:
 	unsigned int m114_1 : 1;
 	unsigned int m114_2 : 1;
 	unsigned int m114_3 : 1;
-	unsigned int m114_4 : 3;
+	unsigned int m114_4 : 1;
+	unsigned int m114_5 : 2;
 	unsigned int m114_7 : 1;
 	unsigned int m114_8 : 1;
 	unsigned int m114_9 : 1;
@@ -282,4 +284,10 @@ bool fn_005430ad_owner::fn_00543400()
 bool fn_005430ad_owner::fn_0054340c()
 {
 	return !fn_005433e8() && !fn_005433f4() && !fn_00543400();
+}
+
+// FUNCTION: STARFLEETOP 0x00543437
+bool fn_005430ad_owner::fn_00543437()
+{
+	return !m114_4;
 }
