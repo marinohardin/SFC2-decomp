@@ -13,6 +13,7 @@
 #include <vector>
 class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
 class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
+class tNotify;	// RTTI names it through nDatabase::tQuery<tNotify>; its layout is not needed here.
 // HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes
 // with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock
 // at +0x108. Their other members are not known.
@@ -22,7 +23,6 @@ public:
 	char fPad00[0x48];
 	long fField48;
 };
-
 class tCampaignInfo
 {
 public:
@@ -45,7 +45,6 @@ public:
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3( tTurn* turn );
-
 	void fn_0056ef05( nDatabase::tQuery<tTurn>& query, std::vector<tTurn>* result, bool lock );
 	void fn_0056f05f( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result, bool lock );
 	void fn_0056f19b( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result );
@@ -62,6 +61,7 @@ public:
 	void fn_0056fbf5( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result );
 	void fn_0056fcd7( nDatabase::tQuery<tCampaignInfo>& query, std::vector<tCampaignInfo>* result, bool lock );
 	void fn_0056fe13( nDatabase::tQuery<tCampaignInfo>& query, std::vector<tCampaignInfo>* result );
+	void fn_0056fefb( nDatabase::tQuery<tNotify>& query, std::vector<tNotify>* result );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
@@ -92,7 +92,7 @@ public:
 	virtual void vfunction18( std::vector<tMetaMapDesc>* descs, int lock );
 	virtual void vfunction19( std::vector<tPoliticalTensionMatrix>* matrices );
 	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, int lock );
-	virtual void vfunction21();
+	virtual void vfunction21( std::vector<tNotify>* notifies );
 	virtual void vfunction22();
 	virtual void vfunction23();
 	virtual void vfunction24();
@@ -480,4 +480,11 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction20( std::vector<tCa
 	{
 		fDatabase->fn_0056fcd7( query, campaignInfos, true );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0056d81a
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction21( std::vector<tNotify>* notifies )
+{
+	nDatabase::tQuery<tNotify> query;
+	fDatabase->fn_0056fefb( query, notifies );
 }
