@@ -309,3 +309,19 @@ void fn_0040da33(unsigned int* p, fn_0040d63f_Buf& buf)
     b = (unsigned char)v;
     buf.fn_0040d867(&b, 1, 0);
 }
+
+// HYPOTHESIS: unsigned reader for the encoding written by fn_0040da33.
+// FUNCTION: STARFLEETOP 0x0040da79
+void fn_0040da79(unsigned int* p, fn_0040d63f_Buf& buf)
+{
+    unsigned char b[4];
+    int shift = 1;
+    buf.fn_0040d897(&b[3], 1, 0);
+    *p = 0;
+    while ((b[3] & 0x80) > 0) {
+        *p += (b[3] & 0x7f) * shift;
+        shift <<= 7;
+        buf.fn_0040d897(&b[3], 1, 0);
+    }
+    *p += (b[3] & 0x7f) * shift;
+}
