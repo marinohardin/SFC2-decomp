@@ -145,6 +145,7 @@ namespace std
 		char m_al;
 		char* _Ptr;
 		unsigned int m_len;
+		unsigned int m_res;
 	};
 }
 
@@ -303,6 +304,7 @@ public:
 	void fn_004d24dc();
 	void fn_004d2451(const char* text);
 	void fn_004d2521(const char* text);
+	void fn_004d2573(fn_004d2238_string s);
 	fn_004d2238_string m_str;
 };
 
@@ -369,4 +371,11 @@ void fn_004d2420_holder::fn_004d2451(const char* text)
 void fn_004d2420_holder::fn_004d2521(const char* text)
 {
 	g_009254f8.fn_004bf6b9(m_str.c_str(), fn_004d2451_string(text));
+}
+
+// HYPOTHESIS: takes a string by value (the standard layout is 16 bytes; the callee destroys it).
+// FUNCTION: STARFLEETOP 0x004d2573
+void fn_004d2420_holder::fn_004d2573(fn_004d2238_string s)
+{
+	fn_004d2521(s.c_str());
 }
