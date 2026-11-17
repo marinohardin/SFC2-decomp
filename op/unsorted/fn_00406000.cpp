@@ -853,8 +853,8 @@ void fn_00406c9b()
     g_00893698.fn_00406add_Obj::fn_00406add_Obj("Shield 3 _ 5", (int)fn_0040a7fd, 3, 5);
     g_008936d0.fn_00406add_Obj::fn_00406add_Obj("Shield 4", (int)fn_0040a7fd, 4, 0);
     g_00893708.fn_00406b63_Obj::fn_00406b63_Obj("Cloak", (int)fn_0040764e, 0);
-    g_00893740.fn_00406aa6_Obj::fn_00406aa6_Obj("ESG", (int)fn_0040a834);
-    g_00893778.fn_00406aa6_Obj::fn_00406aa6_Obj("Lab", (int)fn_0040a870);
+    g_00893740.fn_00406aa6_Obj::fn_00406aa6_Obj("Num", (int)fn_0040a834);
+    g_00893778.fn_00406aa6_Obj::fn_00406aa6_Obj("Arc", (int)fn_0040a870);
     g_008937b0.fn_00406add_Obj::fn_00406add_Obj("Heavy Weapon 1", (int)fn_0040a84b, 1, 0);
     g_008937e8.fn_00406add_Obj::fn_00406add_Obj("Heavy Weapon 2", (int)fn_0040a84b, 2, 0);
     g_00893820.fn_00406add_Obj::fn_00406add_Obj("Heavy Weapon 3", (int)fn_0040a84b, 3, 0);
@@ -886,8 +886,8 @@ void fn_00406c9b()
     g_00893dd0.fn_00406b63_Obj::fn_00406b63_Obj("Nuclear Mine Base", (int)fn_00407682, 0);
     g_00893e08.fn_00406b63_Obj::fn_00406b63_Obj("Nuclear Mine Max", (int)fn_0040768f, 0);
     g_00893e40.fn_00406b63_Obj::fn_00406b63_Obj("Drone Control", (int)fn_00407863, 0);
-    g_00893e78.fn_00406b63_Obj::fn_00406b63_Obj("ADD 6", (int)fn_0040769c, 0);
-    g_00893eb0.fn_00406b63_Obj::fn_00406b63_Obj("ADD 12", (int)fn_004076a9, 0);
+    g_00893e78.fn_00406b63_Obj::fn_00406b63_Obj("ADD_6", (int)fn_0040769c, 0);
+    g_00893eb0.fn_00406b63_Obj::fn_00406b63_Obj("ADD_12", (int)fn_004076a9, 0);
     g_00893ee8.fn_00406b63_Obj::fn_00406b63_Obj("Shuttles Size", (int)fn_004076b6, 0);
     g_00893f20.fn_00406b63_Obj::fn_00406b63_Obj("Launch Rate", (int)fn_004076c3, 0);
     g_00893f58.fn_00406b63_Obj::fn_00406b63_Obj("General Base", (int)fn_004076d0, 0);
@@ -916,7 +916,7 @@ void fn_00406c9b()
     g_00894460.fn_00406aa6_Obj::fn_00406aa6_Obj("R_L_Warp", (int)fn_0040a921);
     g_00894498.fn_00406b63_Obj::fn_00406b63_Obj("C_Warp", (int)fn_00407793, 0);
     g_008944d0.fn_00406b63_Obj::fn_00406b63_Obj("Impulse", (int)fn_004077c7, 0);
-    g_00894508.fn_00406b63_Obj::fn_00406b63_Obj("APR", (int)fn_004077d4, 0);
+    g_00894508.fn_00406b63_Obj::fn_00406b63_Obj("Apr", (int)fn_004077d4, 0);
     g_00894540.fn_00406b63_Obj::fn_00406b63_Obj("Battery", (int)fn_004077e1, 0);
     g_00894578.fn_00406b63_Obj::fn_00406b63_Obj("Bridge", (int)fn_004077ee, 0);
     g_008945b0.fn_00406b63_Obj::fn_00406b63_Obj("Security", (int)fn_004077fb, 0);
@@ -934,7 +934,7 @@ void fn_00406c9b()
     g_00894850.fn_00406b23_Obj::fn_00406b23_Obj("Ship Cost", (int)fn_004078a4, 0.0f);
     g_00894888.fn_00406ba3_Obj::fn_00406ba3_Obj("Refit Base Class", (int)fn_004078b1);
     g_008948c0.fn_00406ba3_Obj::fn_00406ba3_Obj("Geometry", (int)fn_0040756e);
-    g_008948f8.fn_00406ba3_Obj::fn_00406ba3_Obj("Fid", (int)fn_00407580);
+    g_008948f8.fn_00406ba3_Obj::fn_00406ba3_Obj("UI", (int)fn_00407580);
     g_00894930.fn_00406ba3_Obj::fn_00406ba3_Obj("Full Name", (int)fn_00407595);
     g_00894968.fn_00406ba3_Obj::fn_00406ba3_Obj("refits", (int)fn_004075aa);
 }

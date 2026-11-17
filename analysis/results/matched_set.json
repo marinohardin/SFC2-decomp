@@ -1095,8 +1095,8 @@
    "symbol": "?fn_00406c9b@@YAXXZ",
    "unit": "unsorted/fn_00406000.cpp",
    "size": 2241,
-   "score": 22.939,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
