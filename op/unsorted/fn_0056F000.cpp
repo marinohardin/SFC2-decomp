@@ -1005,3 +1005,51 @@ void fn_0056fe13_owner::fn_0056fe13(const nDatabase::tQuery<fn_0056fe13_object> 
 	}
 	guard.Leave();
 }
+
+// HYPOTHESIS: unlocked variant of the database query for tNotify, like 0x0056f3e0; tNotify stays
+// incomplete here, so the casts stand for the original's static_casts.
+// HYPOTHESIS: tNotify is a database class; its members are not recovered.
+class tNotify : public nDatabase::tDatabaseObject {
+public:
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char fn_0056fefb_pad[0x40];
+};
+
+class fn_0056fefb_results {
+public:
+	void push_back(const tNotify &value);
+	tNotify &back() { return *(m_last - 1); }
+	void *m_allocator;
+	tNotify *m_first;
+	tNotify *m_last;
+};
+
+class fn_0056fefb_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056fefb(const nDatabase::tQuery<tNotify> &query, fn_0056fefb_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 1038 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056fefb
+void fn_0056fefb_owner::fn_0056fefb(const nDatabase::tQuery<tNotify> &query, fn_0056fefb_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tNotify));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		tNotify *pObject = (tNotify *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
+}
