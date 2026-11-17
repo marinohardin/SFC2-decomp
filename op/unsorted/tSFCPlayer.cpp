@@ -9,6 +9,8 @@
 #include "unsorted/sfcstreams.h"
 #include "unsorted/fn_0090bed4_Object.h"
 #include "unsorted/fn_004e2b02_ship_type.h"
+#include "unsorted/tShipSpecs.h"
+char fn_0040a621(int param_1, tShipSpecs *param_2);
 
 void fn_0040e689(tSFCStream &s);
 void fn_0040e691(tSFCStream &s);
@@ -1062,6 +1064,13 @@ bool tSFCPlayer::vfunction57()
 void tSFCPlayer::vfunction37()
 {
 	// HYPOTHESIS: the original has a tShipSpecs local (EH frame, constructor 0x0040891d); body not recovered.
+}
+
+// FUNCTION: STARFLEETOP 0x004d0ab3
+int fn_004d0ab3(int param_1)
+{
+	tShipSpecs specs;
+	return fn_0040a621(param_1, &specs) ? specs.m_5dc : 0;
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
