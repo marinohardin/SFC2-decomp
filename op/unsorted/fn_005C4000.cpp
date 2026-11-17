@@ -496,3 +496,25 @@ int fn_005c45e7_Holder::FUN_005c45e7()
 	m04.Leave();
 	return value;
 }
+
+// HYPOTHESIS: the owning class is not recovered; the value read under the lock sits at
+// offset 0x2d4.
+class fn_005c4607_Holder
+{
+public:
+	int FUN_005c4607();
+
+	int		m00;
+	tOptex	m04;
+	char	pad[0x2d4 - 4 - sizeof(tOptex)];
+	int		m2d4;
+};
+
+// FUNCTION: STARFLEETOP 0x005c4607
+int fn_005c4607_Holder::FUN_005c4607()
+{
+	m04.Enter();
+	int value = m2d4;
+	m04.Leave();
+	return value;
+}
