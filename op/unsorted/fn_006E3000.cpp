@@ -154,3 +154,29 @@ unsigned long tObject_006e3000::FUN_006e31b0()
 	}
 	return wait;
 }
+
+// HYPOTHESIS: a buffer owner; m10 is the block, m08 and m0c its bounds.
+class tObject_006e3240
+{
+public:
+	void FUN_006e3240();
+	void FUN_006e3390(int param_1);
+
+	char m00[0x4];
+	unsigned char m04;
+	char m05[0x3];
+	char* m08;
+	char* m0c;
+	char* m10;
+};
+
+// FUNCTION: STARFLEETOP 0x006e3240
+void tObject_006e3240::FUN_006e3240()
+{
+	delete m10;
+	m10 = 0;
+	m0c = 0;
+	m08 = 0;
+	if (m04 > 0)
+		FUN_006e3390(m04);
+}
