@@ -621,3 +621,18 @@ void fn_0042adc1_object::FUN_0042add2( int value )
 {
 	FUN_0042b50c( field_08, 1, value );
 }
+
+// HYPOTHESIS: unsorted/tClientCharacter.cpp still holds its own copy of this class; it should
+// include unsorted/tObject_0042ade3.h instead once that unit is open for edits.
+#include "unsorted/tObject_0042ade3.h"
+
+// FUNCTION: STARFLEETOP 0x0042ade3
+tObject_0042ade3::~tObject_0042ade3()
+{
+	fn_0042b15f( iterator( *m_04 ), iterator( m_04 ) );
+	operator delete( m_04 );
+	m_04 = 0;
+	m_10 = 0;
+	operator delete( m_08 );
+	m_08 = 0;
+}
