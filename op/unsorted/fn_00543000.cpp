@@ -117,6 +117,7 @@ public:
 	int fn_00543495();
 	int fn_0054349c();
 	int fn_005434a3();
+	float fn_005434aa();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -138,7 +139,8 @@ public:
 	unsigned int m114_8 : 1;
 	unsigned int m114_9 : 1;
 	unsigned int m114_10 : 1;
-	char m_pad118[0x18];
+	float m118;
+	char m_pad11c[0x14];
 	int m130;
 	int m134;
 	int m138;
@@ -355,4 +357,11 @@ int fn_005430ad_owner::fn_0054349c()
 int fn_005430ad_owner::fn_005434a3()
 {
 	return m110;
+}
+
+// HYPOTHESIS: the dword at +0x118 is a float (read with fld).
+// FUNCTION: STARFLEETOP 0x005434aa
+float fn_005430ad_owner::fn_005434aa()
+{
+	return m118;
 }
