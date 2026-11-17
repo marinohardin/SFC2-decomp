@@ -128,3 +128,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x004d0ab3	FUN_004d0ab3	22.81	2	opus	2026-11-17T07:01:20Z	attempt 2 (opus) did not raise the best; best 22.81%
 0x004d0eb6	tSFCPlayer::vfunction70	23.79	2	opus	2026-11-17T08:13:39Z	attempt 2 (opus) did not raise the best; best 23.79%
 0x004d0ed4	FUN_004d0ed4	7.24	2	opus	2026-11-17T08:26:06Z	attempt 2 (opus) did not raise the best; best 7.24%
+0x004d0f61	tSFCPlayer::vfunction71	27.75	2	opus	2026-11-17T08:45:37Z	attempt 2 (opus) did not raise the best; best 27.75%
