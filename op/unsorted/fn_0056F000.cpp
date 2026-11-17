@@ -332,10 +332,11 @@ void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_00
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tShip));
 #line 183
 	validate(allocID != kInvalidAllocatorID);
-	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
-	void **i = objects.begin();
-	for (; i != objects.end(); i++) {
-		tShip *pObject = (tShip *)*i;
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	// MATCH-ONLY: the SDK iterates begin() to end(); through the inline accessors the build
+	// swaps esi and edi, the fields read directly give the original's registers.
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		const tShip *pObject = static_cast<const tShip *>((tDatabaseObject *)*i);
 		if (query(pObject)) {
 			result->push_back(*pObject);
 			result->back().vfunction9();
