@@ -54,7 +54,8 @@ public:
 	virtual long __stdcall v11();
 	virtual long __stdcall v12();
 	virtual long __stdcall v13();
-	virtual long __stdcall v14();
+	// HYPOTHESIS: slot 14 fits IDirectPlay4::GetCaps (caps, flags).
+	virtual long __stdcall GetCaps( void* pCaps, unsigned long flags );
 	virtual long __stdcall v15();
 	virtual long __stdcall v16();
 	virtual long __stdcall v17();
@@ -213,6 +214,13 @@ public:
 
 // HYPOTHESIS: the player data 0x00616d30 reads (0x24 bytes); the implicit assignment copies
 // the members one by one and the trailing bytes in a loop.
+// HYPOTHESIS: a DPCAPS (the size field is 0x28).
+struct fn_00616ee0_Caps
+{
+	unsigned long fSize;
+	char fData[0x24];
+};
+
 struct fn_00616d30_Data
 {
 	long fA;
@@ -251,6 +259,8 @@ public:
 	long fn_00616c80( unsigned long flags );
 	long fn_00616d30( int player, fn_00616d30_Data* pData );
 	void fn_00616e30( int player, fn_00616d30_Data* pData );
+	// HYPOTHESIS: a true argument asks for the guaranteed caps (DPGETCAPS_GUARANTEED).
+	long fn_00616ee0( bool guaranteed, fn_00616ee0_Caps* pCaps );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -652,4 +662,26 @@ void fn_00616000_DirectPlayHolder::fn_00616e30( int player, fn_00616d30_Data* pD
 	{
 		fn_006123b0( e.v1() );
 	}
+}
+
+// The analysis ends this function before its catch block (0x00616f7c); the bytes up to there
+// match this body. HYPOTHESIS: the result is returned (both calls load the object once); the
+// catch path's return value is not seen.
+// FUNCTION: STARFLEETOP 0x00616ee0
+long fn_00616000_DirectPlayHolder::fn_00616ee0( bool guaranteed, fn_00616ee0_Caps* pCaps )
+{
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		pCaps->fSize = sizeof( fn_00616ee0_Caps );
+		if ( guaranteed )
+			return fDirectPlayObject->GetCaps( pCaps, 1 );
+		return fDirectPlayObject->GetCaps( pCaps, 0 );
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
+	return 0;
 }
