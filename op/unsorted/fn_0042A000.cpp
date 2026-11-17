@@ -252,6 +252,7 @@ public:
 	int FUN_0042aa4b();
 	int FUN_0042aa6b();
 	int FUN_0042aa8b();
+	int FUN_0042aaab();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -496,4 +497,12 @@ int fn_0042a480_object::FUN_0042aa8b()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_4c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042aaab
+int fn_0042a480_object::FUN_0042aaab()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_50;
 }
