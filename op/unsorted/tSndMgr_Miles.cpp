@@ -165,7 +165,7 @@ public:
 	virtual void vfunction14( long param_1, long param_2 );
 	virtual long vfunction15( long param_1, long param_2 );
 	virtual void vfunction16( long param_1, long param_2, long param_3 );
-	virtual void vfunction17();
+	virtual void vfunction17( long param_1 );
 	virtual void vfunction18();
 	virtual void vfunction19( long param_1 );
 	virtual long vfunction20();
@@ -197,7 +197,10 @@ public:
 	fn_0050eea7_sample field_10[32];
 	// HYPOTHESIS: a second bank of 32 channels, for sounds found in the voice zip.
 	fn_0050eea7_sample field_f90[32];
-	char pad_1f10[0x10];
+	char pad_1f10[0x8];
+	// HYPOTHESIS: master volume, 0..100 (vfunction17 scales it to Miles' 0..127)
+	long field_1f18;
+	char pad_1f1c[0x4];
 	long field_1f20;
 	ParseSFCSoundTable field_1f24;
 	fn_0050cb19_object field_1f60;
@@ -679,4 +682,12 @@ void tSndMgr_Miles::vfunction16( long param_1, long param_2, long param_3 )
 		vfunction7( 0x15, param_3 );
 		break;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050f81e
+void tSndMgr_Miles::vfunction17( long param_1 )
+{
+	field_1f18 = param_1;
+	if ( field_2414 )
+		AIL_set_digital_master_volume( field_2418, param_1 * 127 / 100 );
 }
