@@ -64,6 +64,8 @@ struct fn_0053a73a_map
 	fn_0053a73a_map( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
 		: m_tree( al, pred, multi ) {}
 
+	// HYPOTHESIS: the out-of-line assignment 0x0053a79b.
+	fn_0053a73a_map& operator=( const fn_0053a73a_map& other );
 	int32& operator[]( const int32& key );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
 	iterator end() { return iterator( m_tree.m_head ); }
@@ -123,6 +125,8 @@ struct fn_0053a6cc_map
 	fn_0053a6cc_map( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
 		: m_tree( al, pred, multi ) {}
 
+	// HYPOTHESIS: the out-of-line assignment 0x0053a704.
+	fn_0053a6cc_map& operator=( const fn_0053a6cc_map& other );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
 	iterator end() { return iterator( m_tree.m_head ); }
 

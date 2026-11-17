@@ -84,3 +84,25 @@ tMetaMapHex::~tMetaMapHex()
 	m_bc.Enter();
 	m_bc.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x005395b2
+tMetaMapHex& tMetaMapHex::operator=( const tMetaMapHex& other )
+{
+	if( this != &other )
+	{
+		tDatabaseObject::operator=( other );
+		m_48 = other.m_48;
+		m_5c = other.m_5c;
+		m_60 = other.m_60;
+		m_64 = other.m_64;
+		m_68 = other.m_68;
+		m_6c = other.m_6c;
+		m_70 = other.m_70;
+		m_84 = other.m_84;
+		m_98 = other.m_98;
+		m_a0 = other.m_a0;
+		m_a8 = other.m_a8;
+	}
+
+	return *this;
+}
