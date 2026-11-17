@@ -6,6 +6,7 @@
 #include "unsorted/tEntity.h"
 #include "Common/Database/DatabaseID.h"
 #include "Common/Database/DatabaseObject.h"
+#include <new>
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x0042739e
@@ -511,14 +512,9 @@ public:
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
 
-	// MATCH-ONLY: the array is wrapped so that the written-out copy constructor can copy it
-	// as the implicit one does.
-	struct tArray_0xc
-	{
-		tOfficer	v[7];
-	};
-
-	tArray_0xc	field_0xc;
+	// MATCH-ONLY: raw storage for seven tOfficer, copied element by element in the constructor;
+	// the original's array member has no source form that VC6 copies inline.
+	int8u	field_0xc[7 * 0x28];
 };
 
 // HYPOTHESIS: the class named in RTTI (vtable 0x00798264), the element of the vector at 0x3c
@@ -696,7 +692,8 @@ tObject_00427db2::tObject_00427db2( const tObject_00427db2& source )
 // copy has no source line to claim; the wrapper's copy here is called out of line instead.
 // FUNCTION: STARFLEETOP 0x00427fb2
 tOfficerList::tOfficerList( const tOfficerList& source )
-	: nDataStore::tStreamable( source ),
-	  field_0xc( source.field_0xc )
+	: nDataStore::tStreamable( source )
 {
+	for ( int i = 0; i < 7; i++ )
+		new ( &field_0xc[i * 0x28] ) tOfficer( ( (const tOfficer *)source.field_0xc )[i] );
 }
