@@ -251,3 +251,10 @@ void fn_0053f25c_owner::fn_0053f30f()
 			++it;
 	}
 }
+
+// HYPOTHESIS: not a function of its own; the exception tail of 0x0053f34e (stream operator
+// with sentry and catch). Placeholder until that function is written.
+// FUNCTION: STARFLEETOP 0x0053f41a
+void fn_0053f41a()
+{
+}

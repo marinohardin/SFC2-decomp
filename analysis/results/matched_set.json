@@ -6733,6 +6733,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0053f41a": {
+   "name": "FUN_0053f41a",
+   "symbol": "?fn_0053f41a@@YAXXZ",
+   "unit": "unsorted/fn_0053F000.cpp",
+   "size": 71,
+   "score": 1.481,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
