@@ -216,7 +216,8 @@ public:
     virtual void vfunction13();
     // HYPOTHESIS: slot 13; says whether the type index at +0xc is in the range 0..0x35.
     virtual bool vfunction14();
-    virtual void vfunction15();
+    // HYPOTHESIS: slot 14; says whether the type index at +0xc is 0x36.
+    virtual bool vfunction15();
     virtual void vfunction16();
     virtual void vfunction17();
     virtual void vfunction18();

@@ -50,3 +50,11 @@ bool tIndividualShipSystem::vfunction14()
         return false;
     return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00436683
+bool tIndividualShipSystem::vfunction15()
+{
+    if (field_0c == 0x36)
+        return true;
+    return false;
+}
