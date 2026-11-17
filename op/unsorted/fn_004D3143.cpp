@@ -672,3 +672,27 @@ char fn_004d37e6( char* arg1, unsigned int arg2 )
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x004d3843
+void fn_004d3843( char* arg1 )
+{
+	if ( arg1 )
+	{
+		HGLOBAL hMem = GlobalAlloc( GMEM_DDESHARE, strlen( arg1 ) );
+		if ( hMem )
+		{
+			char* text = (char*) GlobalLock( hMem );
+			if ( text )
+			{
+				fn_007364c0( (long) text, (long) arg1 );
+				GlobalUnlock( hMem );
+				if ( OpenClipboard( 0 ) )
+				{
+					EmptyClipboard();
+					SetClipboardData( CF_TEXT, hMem );
+					CloseClipboard();
+				}
+			}
+		}
+	}
+}
