@@ -126,14 +126,30 @@ class c_004bd805_Object
 {
 public:
 	c_004bd805_Object();
+	~c_004bd805_Object();
 	void fn_004bdd67();
 
 	tString field_0;
 	c_004bd805_Entry field_28[ 500 ];
+	int field_5618;
+	int field_561c;
 };
 
 // FUNCTION: STARFLEETOP 0x004bd805
 c_004bd805_Object::c_004bd805_Object()
 {
 	fn_004bdd67();
+}
+
+// HYPOTHESIS: the destructor; the analysis starts it after its EH prologue.
+// FUNCTION: STARFLEETOP 0x004bd862
+c_004bd805_Object::~c_004bd805_Object()
+{
+	field_5618 = 0;
+	field_561c = 0;
+	for ( int i = 0; i < 500; i++ )
+	{
+		field_28[ i ].text = "";
+		field_28[ i ].field_28 = 0;
+	}
 }
