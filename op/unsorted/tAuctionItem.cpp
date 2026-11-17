@@ -22,7 +22,6 @@ public:
 	virtual ~tAuctionItem();
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
-
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
@@ -39,6 +38,7 @@ public:
 	void fn_00545405( bool value );
 	bool fn_00545560( int arg );
 	std::string fn_00545581() const;
+	const nDatabase::tID& fn_005455b7() const;
 	int32u fn_004b94dc() const;
 	const nDatabase::tID& fn_005455bb() const;
 	int32u fn_005455c2() const;
@@ -252,6 +252,12 @@ bool tAuctionItem::fn_00545560( int arg )
 std::string tAuctionItem::fn_00545581() const
 {
 	return fString_4c;
+}
+
+// FUNCTION: STARFLEETOP 0x005455b7
+const nDatabase::tID& tAuctionItem::fn_005455b7() const
+{
+	return fID_5c;
 }
 
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
