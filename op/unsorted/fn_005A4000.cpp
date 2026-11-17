@@ -50,6 +50,24 @@ public:
 	std::string	fn_005A443e();
 };
 
+// Inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is claimed in
+// tClientCharacter.cpp. With the body in view the compiler knows Leave cannot throw (it calls
+// only C functions), so the string getters below keep no unwind state for their return value.
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
+		} else {
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
+		}
+	}
+}
+
 // Inline in the SDK; Optex.h declares it only.
 inline tOptex::tGuard::~tGuard()
 {
