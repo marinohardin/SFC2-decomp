@@ -780,8 +780,8 @@
    "symbol": "?fn_0040619c@@YAHAAV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@0IPBD@Z",
    "unit": "unsorted/fn_00406000.cpp",
    "size": 441,
-   "score": 92.068,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {

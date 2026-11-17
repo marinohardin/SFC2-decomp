@@ -72,7 +72,8 @@ const std::numpunct<char>& fn_004060d8(const std::locale& _L, const std::numpunc
 
 // FUNCTION: STARFLEETOP 0x0040619c
 // HYPOTHESIS: the library's _Getloctxt instantiation for istreambuf_iterator<char>.
-int fn_0040619c(std::istreambuf_iterator<char>& _F, std::istreambuf_iterator<char>& _L, size_t _N, const char* _S)
+template<class _E, class _II>
+int fn_0040619c(_II& _F, _II& _L, size_t _N, const _E* _S)
 {
     for (size_t _I = 0; _S[_I] != (char)0; ++_I)
         if (_S[_I] == _S[0])
@@ -104,3 +105,4 @@ int fn_0040619c(std::istreambuf_iterator<char>& _F, std::istreambuf_iterator<cha
     }
     return (_Ans);
 }
+template int fn_0040619c<char, std::istreambuf_iterator<char> >(std::istreambuf_iterator<char>&, std::istreambuf_iterator<char>&, size_t, const char*);
