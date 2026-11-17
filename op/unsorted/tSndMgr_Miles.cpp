@@ -868,3 +868,30 @@ long tSndMgr_Miles::fn_0050fb3e( unsigned long param_1, long param_2 )
 	}
 	return found;
 }
+
+// FUNCTION: STARFLEETOP 0x0050fba4
+long tSndMgr_Miles::fn_0050fba4( long param_1, char *param_2 )
+{
+	unsigned long i;
+	for ( i = 1; i < field_4234; i++ )
+	{
+		if ( !field_10[i].field_10 && !field_10[i].field_3c && !field_10[i].field_55 && !field_10[i].field_56 )
+		{
+			*param_2 = 0;
+			return i;
+		}
+	}
+	long found = -1;
+	for ( i = 1; i < field_4234; i++ )
+	{
+		if ( field_10[i].field_64 < param_1 && !field_10[i].field_55 && !field_10[i].field_56 )
+		{
+			if ( found == -1 )
+				*param_2 = 1;
+			else if ( field_10[i].field_64 >= field_10[found].field_64 )
+				continue;
+			found = i;
+		}
+	}
+	return found;
+}
