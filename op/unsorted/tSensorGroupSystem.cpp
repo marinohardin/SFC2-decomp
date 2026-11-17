@@ -26,6 +26,7 @@ public:
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
     void vfunction51();
     char fn_0043eb5f(int aID);
+    void fn_0043e642(int param_1);
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -38,7 +39,8 @@ public:
     tMinMaxFloat field_f8;
     tMinMaxFloat field_11c;
     tMinMaxFloat field_140;
-    char pad164[0x168 - 0x164];
+    // HYPOTHESIS: the total ECM and ECCM 0x0043e642 shares between field_184 and field_188.
+    int field_164;
     float field_168;
     float field_16c;
     float field_170;
@@ -341,4 +343,29 @@ unsigned int tSensorGroupSystem::vfunction23(int param_1, unsigned int param_2, 
         fn_0040d11a(&field_f8, param_1, param_3, "fDesiredECCMStatus");
     }
     return param_2;
+}
+
+// FUNCTION: STARFLEETOP 0x0043e642
+void tSensorGroupSystem::fn_0043e642(int param_1)
+{
+    if (param_1 != field_184)
+    {
+        field_184 = param_1;
+        field_d4.vfunction2(param_1);
+        if (field_184 + field_188 > field_164)
+        {
+            if (field_184 <= field_164)
+            {
+                field_188 = field_164 - field_184;
+                field_f8.vfunction2(field_188);
+            }
+            else
+            {
+                field_188 = 0;
+                field_f8.vfunction2(0);
+                field_184 = field_164;
+                field_d4.vfunction2(field_184);
+            }
+        }
+    }
 }

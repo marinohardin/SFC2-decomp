@@ -34,7 +34,8 @@ template <class T>
 class tValue : public tValueBase
 {
 public:
-	virtual void vfunction2();
+	// HYPOTHESIS: takes one integer; 0x0043e642 passes an int member to it on a tMinMaxFloat.
+	virtual void vfunction2( long param_1 );
 	// HYPOTHESIS: the set step, as tValueI<tString>'s: assign, then notify with (3, 0).
 	tValue &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
 
