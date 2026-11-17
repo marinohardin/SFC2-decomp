@@ -24,6 +24,8 @@ public:
 // FUNCTION: STARFLEETOP 0x0060c159
 std::auto_ptr<C_00c3a7c0> g_00c3a7c0;
 
+class C_0060c486;
+
 // HYPOTHESIS: the object the pointer at 0x00c3a80c holds; 0x0060c720 takes a line of text.
 class C_00c3a80c
 {
@@ -32,7 +34,13 @@ public:
     ~C_00c3a80c();
     void fn_0060c68a(int entry);
     void fn_0060c720(tString &text);
-    char m_00[0x14];
+    void fn_0060c486(C_0060c486 *owner);
+    // HYPOTHESIS: five owners the destructor frees through 0x0060c486.
+    C_0060c486 *m_00;
+    C_0060c486 *m_04;
+    C_0060c486 *m_08;
+    C_0060c486 *m_0c;
+    C_0060c486 *m_10;
     // HYPOTHESIS: the links of the list headed at 0x00c3a810.
     C_00c3a80c *m_14;
     C_00c3a80c *m_18;
@@ -138,12 +146,29 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0060c486
-// HYPOTHESIS: __stdcall from the original's ret 4; perhaps a callback.
-void __stdcall fn_0060c486(C_0060c486 *owner)
+// HYPOTHESIS: a member of C_00c3a80c that does not use this; its destructor passes this in ecx.
+void C_00c3a80c::fn_0060c486(C_0060c486 *owner)
 {
     if (owner) {
         while (owner->m_04)
             delete owner->m_04;
         delete owner;
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0060c4aa
+// HYPOTHESIS: unlinks itself from the list headed at 0x00c3a810, then frees its five owners.
+C_00c3a80c::~C_00c3a80c()
+{
+    if (m_14)
+        m_14->m_18 = m_18;
+    if (!m_18)
+        g_00c3a810 = m_14;
+    else
+        m_18->m_14 = m_14;
+    fn_0060c486(m_00);
+    fn_0060c486(m_04);
+    fn_0060c486(m_08);
+    fn_0060c486(m_0c);
+    fn_0060c486(m_10);
 }
