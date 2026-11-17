@@ -729,3 +729,80 @@ fn_0060ac82_tree::iterator fn_0060ac82_tree::FUN_006e39e0(iterator _P, const nod
 				return (FUN_006e4360(_Head, _P._Mynode(), _V)); }}
 	return (insert(_V).first);
 }
+
+// HYPOTHESIS: another instantiation of the same tree, keyed by an unsigned
+// 4-byte value at +0xc; its _Insert is FUN_006e45b0 and its iterator's _Dec is
+// the shared out-of-line copy at 0x006d40d0. The mapped type is not known.
+struct fn_006e45b0_tree
+{
+	struct node
+	{
+		node *_Left;
+		node *_Parent;
+		node *_Right;
+		struct value
+		{
+			unsigned long first;
+			long second;
+		} _Value;
+		char _Color;
+		char _Isnil;
+	};
+	class iterator
+	{
+	public:
+		iterator() {}
+		iterator(node *_P) : _Ptr(_P) {}
+		void _Dec();
+		bool operator==(const iterator& _X) const { return (_Ptr == _X._Ptr); }
+		node *_Mynode() const { return (_Ptr); }
+		node *_Ptr;
+	};
+
+	typedef std::pair<iterator, bool> _Pairib;
+
+	std::less<unsigned long> key_compare;
+	char m01[0x3];
+	node *_Head;
+	node *_Nil;
+	char m0c[0x4];
+	unsigned int _Size;
+
+	iterator begin() { return (iterator(_Head->_Left)); }
+	static node *&_Left(node *_P) { return (_P->_Left); }
+	static node *&_Parent(node *_P) { return (_P->_Parent); }
+	static node *&_Right(node *_P) { return (_P->_Right); }
+	struct _Kfn
+	{
+		const unsigned long &operator()(const node::value& _X) const { return (_X.first); }
+	};
+	static const unsigned long &_Key(node *_P) { return (_Kfn()(_P->_Value)); }
+	node *&_Root() const { return (_Parent(_Head)); }
+	// HYPOTHESIS: insert(const value_type&).
+	_Pairib FUN_006e3bc0(const node::value& _V);
+	// HYPOTHESIS: _Insert(x, y, value).
+	iterator FUN_006e45b0(node *_X, node *_Y, const node::value& _V);
+};
+
+// FUNCTION: STARFLEETOP 0x006e3bc0
+fn_006e45b0_tree::_Pairib fn_006e45b0_tree::FUN_006e3bc0(const node::value& _V)
+{
+	node *_X = _Root();
+	node *_Y = _Head;
+	bool _Ans = true;
+	while (_X != _Nil)
+		{_Y = _X;
+		_Ans = key_compare(_Kfn()(_V), _Key(_X));
+		_X = _Ans ? _Left(_X) : _Right(_X); }
+	if (m0c[0])
+		return (_Pairib(FUN_006e45b0(_X, _Y, _V), true));
+	iterator _P = iterator(_Y);
+	if (!_Ans)
+		;
+	else if (_P == begin())
+		return (_Pairib(FUN_006e45b0(_X, _Y, _V), true));
+	else
+		_P._Dec();
+	bool _Ins = key_compare(_Key(_P._Mynode()), _Kfn()(_V));
+	return (_Pairib(_Ins ? FUN_006e45b0(_X, _Y, _V) : _P, _Ins));
+}

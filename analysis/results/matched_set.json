@@ -17416,6 +17416,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x006e3bc0": {
+   "name": "FUN_006e3bc0",
+   "symbol": "?FUN_006e3bc0@fn_006e45b0_tree@@QAE?AU?$pair@Viterator@fn_006e45b0_tree@@_N@std@@ABUvalue@node@1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 192,
+   "score": 52.271,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x006e7e80": {
    "name": "nTestSim::tSimulator::tSimulator",
    "symbol": "??0tSimulator@nTestSim@@QAE@XZ",
