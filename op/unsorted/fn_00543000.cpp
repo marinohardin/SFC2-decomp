@@ -102,6 +102,7 @@ public:
 	tHexPoint fn_005434b1() const;
 	int fn_005434cf();
 	fn_005b6a5c_owner *fn_005434d6();
+	fn_0042c709_ptr fn_005434dd() const;
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -124,7 +125,8 @@ public:
 	char m_pad[0x48];
 	std::string m048;
 	int m058;
-	char m_pad5c[0x74];
+	fn_0042c709_wrapper m05c;
+	char m_pad74[0x5c];
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
 	fn_0042c709_wrapper m0f0;
@@ -386,4 +388,12 @@ int fn_005430ad_owner::fn_005434cf()
 fn_005b6a5c_owner *fn_005430ad_owner::fn_005434d6()
 {
 	return &m14c;
+}
+
+// HYPOTHESIS: +0x5c is a second guarded vector of the same wrapper type as +0xf0 (both lock
+// through 0x0042c709); its element type is not recovered.
+// FUNCTION: STARFLEETOP 0x005434dd
+fn_0042c709_ptr fn_005430ad_owner::fn_005434dd() const
+{
+	return m05c.Lock();
 }
