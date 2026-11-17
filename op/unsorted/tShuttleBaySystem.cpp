@@ -180,3 +180,15 @@ void tShuttleBaySystem::vfunction113(short param_1, std::string param_2)
     field_2d8[param_1] = param_2;
     vfunction100();
 }
+
+// FUNCTION: STARFLEETOP 0x0044e9d8
+void tShuttleBaySystem::vfunction123(long param_1)
+{
+    field_a0 = param_1;
+    for (int i = 0; i < 32; i++)
+    {
+        field_1c8[i] = -1;
+        field_248[i] = 0;
+        field_148[i] = i < field_a0;
+    }
+}

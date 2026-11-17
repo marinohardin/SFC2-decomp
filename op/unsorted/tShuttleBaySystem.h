@@ -55,6 +55,9 @@ public:
     virtual int vfunction116(int param_1);
     // vftable slot 117; returns element param_1 of an int array.
     virtual int vfunction117(int param_1);
+    // HYPOTHESIS: the analysis's name; sets field_a0's value and resets the three 32-entry
+    // arrays at +0x148, +0x1c8 and +0x248.
+    virtual void vfunction123(long param_1);
     // HYPOTHESIS: the slots between 117 and 126 are not recovered; vfunction126 is the
     // analysis's name. Stores param_1 into a member.
     virtual void vfunction126(int param_1);
@@ -113,7 +116,9 @@ public:
     char pad12c[0x138 - 0x12c];
     // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
     int field_138[1];
-    char pad13c[0x1c8 - 0x13c];
+    char pad13c[0x148 - 0x13c];
+    // HYPOTHESIS: 32 flags; vfunction123 sets the first field_a0 of them.
+    int field_148[32];
     // HYPOTHESIS: 32 entity IDs; the destructor passes 0 to slot 68 of the ship of each.
     int field_1c8[32];
     // HYPOTHESIS: an int array indexed by vfunction117; its length is not recovered.
