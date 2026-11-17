@@ -161,3 +161,34 @@ fn_0057a5f6_list &fn_0057a5f6_list::operator=(const fn_0057a5f6_list &other)
     }
     return *this;
 }
+
+// HYPOTHESIS: 0x0057a66b is a vector's tidy (first +4, last +8, end +0xc) over 0x4c-byte
+// elements whose destructor is 0x00579ad8; the element type is not identified yet.
+class fn_0057a66b_value {
+public:
+    ~fn_0057a66b_value();
+
+    char field_0[0x4c];
+};
+
+class fn_0057a66b_vector {
+public:
+    void fn_0057a66b();
+
+    int field_0;
+    fn_0057a66b_value *field_4;
+    fn_0057a66b_value *field_8;
+    fn_0057a66b_value *field_c;
+};
+
+// FUNCTION: STARFLEETOP 0x0057a66b
+void fn_0057a66b_vector::fn_0057a66b()
+{
+    fn_0057a66b_value *last = field_8;
+    for (fn_0057a66b_value *p = field_4; p != last; ++p)
+        p->~fn_0057a66b_value();
+    operator delete(field_4);
+    field_4 = 0;
+    field_8 = 0;
+    field_c = 0;
+}
