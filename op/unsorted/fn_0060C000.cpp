@@ -290,6 +290,13 @@ public:
     tString m_434[18];
 };
 
+// HYPOTHESIS: the class whose destructor is 0x0060cf03; name and members unknown.
+class C_0060cf03
+{
+public:
+    ~C_0060cf03();
+};
+
 // HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
 // be the class of the global at 0x0090b730, whose callers use 0x0060ca4f..0x0060cac6. The
 // vector's element type is unknown.
@@ -303,7 +310,7 @@ public:
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
     char *fn_0060c982(const char *name);
-    int m_00;
+    C_0060cf03 *m_00;
     int m_04;
     std::vector<int> m_08;
     int m_18;
@@ -380,4 +387,16 @@ char *C_0060c7dc::fn_0060c982(const char *name)
         }
     }
     return 0;
+}
+
+// HYPOTHESIS: deletes the object at +0x00, whose class has the non-virtual destructor
+// 0x0060cf03, and clears +0x00 and +0x04.
+// FUNCTION: STARFLEETOP 0x0060ca20
+void C_0060c7dc::fn_0060ca20()
+{
+    if (m_00 != 0) {
+        delete m_00;
+        m_00 = 0;
+        m_04 = 0;
+    }
 }
