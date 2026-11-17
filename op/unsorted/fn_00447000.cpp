@@ -217,6 +217,7 @@ public:
 	c_00450e41 *fn_00447cf2();
 	void fn_00447cf9(int index, int value);
 	void fn_00447d11(int index, int value);
+	void fn_00447d29(int index, int value);
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -726,4 +727,10 @@ void c_0044715d::fn_00447cf9(int index, int value)
 void c_0044715d::fn_00447d11(int index, int value)
 {
 	field_0xec->field_0x10[index].field_0x1c = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d29
+void c_0044715d::fn_00447d29(int index, int value)
+{
+	field_0xec->field_0x10[index].field_0x20 = value;
 }
