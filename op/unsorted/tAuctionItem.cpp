@@ -46,6 +46,8 @@ public:
 	void fn_00420f2f( int value );
 	void fn_00420f3c( int32u value );
 	bool fn_00545385( const nDatabase::tID& bidder );
+	// HYPOTHESIS: returns int (push 1; pop eax), not bool.
+	int fn_0054540f( const nDatabase::tID& bidder );
 protected:
 	bool fBool_48;
 	std::string fString_4c;
@@ -216,4 +218,14 @@ bool tAuctionItem::fn_00545401() const
 void tAuctionItem::fn_00545405( bool value )
 {
 	fBool_48 = value;
+}
+
+// HYPOTHESIS: true when the given bidder holds the leading bid.
+// FUNCTION: STARFLEETOP 0x0054540f
+int tAuctionItem::fn_0054540f( const nDatabase::tID& bidder )
+{
+	if ( bidder.IsValid() && fn_005455bb().IsValid() && bidder == fn_005455bb() )
+		return 1;
+
+	return 0;
 }
