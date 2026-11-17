@@ -6432,9 +6432,9 @@
    "symbol": "?mGetSortName@tVolume@@QAE?AVtString@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 544,
-   "score": 98.925,
+   "score": 99.925,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-17"
   },
   "0x0061dad0": {
    "name": "tVolume::mGetRoot",

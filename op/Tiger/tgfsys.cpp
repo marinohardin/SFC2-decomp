@@ -526,10 +526,12 @@ public:
 	}
 
 	// MATCH-ONLY: mResolve as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0) has it, with the
-	// search's comparison taken as a truth value and operator[] expanded inline.
+	// bucket index held in a local for the search (the original folds the index's increment into
+	// the lea), the comparison taken as a truth value and operator[] expanded inline.
 	tObjectType &fn_0061d8b0_mResolve( tCookieType &cookie )
 	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
+		int32u	index = cookie.fCookie & 0xff;
+		tMap::iterator it( fValues.fMaps[index].fHead );
 
 		for ( ; it.fNode != 0; it++ )
 			if ( !( (*it).fKey != cookie ) )
@@ -917,8 +919,8 @@ tString &tVolume::mGetName( void )
 }
 
 // The original frame is 4 bytes larger than this build's, as in tVolume::mGetName: the thrown
-// string and operator++'s result have separate slots there. The original computes the first
-// bucket's address with the index's increment folded into the lea; neither is recovered.
+// string and operator++'s result have separate slots there. The slot is not recovered; the
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061d8b0
 tString tVolume::mGetSortName( void )
 {
@@ -991,8 +993,8 @@ tDir tDir::mGetNamedDir( tString &name )
 }
 
 // The resolve has operator[] expanded inline, as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0)
-// has it. As there, the original frame is 4 bytes larger and the first bucket's address has the
-// index's increment folded into the lea; neither is recovered.
+// has it. As there, the original frame is 4 bytes larger; the extra slot is not recovered. The
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061e3a0
 tPath tDir::mGetNamedFile( tString &name )
 {
