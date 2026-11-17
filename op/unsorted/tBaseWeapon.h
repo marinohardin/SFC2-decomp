@@ -255,7 +255,9 @@ public:
     char pad_f0[8];
     int field_f8;
     char field_fc;
-    char pad_fd[0x17];
+    char pad_fd[7];
+    int field_104;
+    char pad_108[0xc];
     int field_114;
     short field_118[6][2];
     int field_130;

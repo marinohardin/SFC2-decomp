@@ -995,3 +995,11 @@ void tBaseWeapon::fn_004d8732(int *param_1, int *param_2)
     *param_1 = *param_2;
     *param_2 = tmp;
 }
+
+// FUNCTION: STARFLEETOP 0x004d8747
+void tBaseWeapon::vfunction105(int param_1)
+{
+    field_104 = param_1;
+    vfunction57((field_104 + 1) * 0x80);
+    vfunction55((field_104 + 1) * 0x80);
+}
