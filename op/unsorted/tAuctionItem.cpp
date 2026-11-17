@@ -2,6 +2,7 @@
 
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Database/DatabaseID.h"
+#include "unsorted/tShip.h"
 
 // HYPOTHESIS: layout read from the constructor; the fields between the named ones are not
 // identified yet.
@@ -9,6 +10,8 @@ class tAuctionItem : public nDatabase::tDatabaseObject
 {
 public:
 	tAuctionItem();
+	// HYPOTHESIS: the double is the item's price or bid; the ship is read from the call order.
+	tAuctionItem( double arg5, tShip* ship );
 	// HYPOTHESIS: the original declares no destructor. The compiler-generated one (0x00544c24)
 	// stores no vtable; an implicit destructor builds byte for byte, but the harness cannot claim
 	// a function with no source line, so this declared one (which stores the vtable) stands in.
@@ -35,4 +38,10 @@ tAuctionItem::tAuctionItem()
 // FUNCTION: STARFLEETOP 0x00544c24
 tAuctionItem::~tAuctionItem()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x00544c79
+tAuctionItem::tAuctionItem( double arg5, tShip* ship )
+{
+	fn_00544d20( ship->vfunction12(), ship->fn_00546296(), ship->fn_00410223(), ship->fn_00410223(), arg5 );
 }
