@@ -115,7 +115,7 @@ public:
 	virtual void vfunction41( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction42( tServCharacter character );
 	virtual void vfunction43();
-	virtual void vfunction44();
+	virtual void vfunction44( tShip ship );
 	virtual void vfunction45();
 	virtual void vfunction46();
 	virtual void vfunction47();
@@ -694,5 +694,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction42( tServCharacter 
 // FUNCTION: STARFLEETOP 0x0056e05f
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction41( nDatabase::tDatabaseObjectUpdate update )
 {
+	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the ship comes by value (its destructor runs at the end) and is written back as an update.
+// FUNCTION: STARFLEETOP 0x0056e095
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction44( tShip ship )
+{
+	nDatabase::tDatabaseObjectUpdate update( ship );
 	fDatabase->UpdateObject( update );
 }
