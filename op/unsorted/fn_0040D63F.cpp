@@ -618,3 +618,12 @@ void fn_0040e074(char* name, unsigned char* value, fn_0040d63f_Buf& buf)
     *value = (unsigned char)n;
 }
 
+// FUNCTION: STARFLEETOP 0x0040e0db
+void fn_0040e0db(char* name, float* value, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    sprintf(text, "%s = %f", name, (double)*value);
+    buf.fn_0040e744(text);
+}
+
