@@ -4,6 +4,7 @@
 #include "unsorted/ParseSFCSoundTable.h"
 #include "Common/Thread/Thread.h"
 #include "Tiger/tbasicfile.h"
+#include "Tiger/tZipInfoMgr.h"
 #include "unsorted/mss.h"
 
 class tSndMgr_Miles;
@@ -15,16 +16,15 @@ void fn_006f3870();
 // them; sizes come from the member offsets in tSndMgr_Miles.
 // HYPOTHESIS: this is tSndZipInfoMgr (size 0x254, mInit at 0x0066c9b0), which is declared only
 // inside Tiger/tbasicsoundfilezip.cpp; it stays a stand-in until a header holds that class.
-class fn_0050cb19_object
+class fn_0050cb19_object : public tZipInfoMgr
 {
 public:
 	~fn_0050cb19_object();
 
 	unsigned char mInit( const char * );
-	// HYPOTHESIS: tSndZipInfoMgr::mDone, folded in the exe with tZipInfoMgr::mDone (0x00627f60).
-	void mDone();
+	// HYPOTHESIS: mDone is inherited; the exe folds tSndZipInfoMgr::mDone with tZipInfoMgr::mDone.
 
-	char pad_0000[0x254];
+	char pad_0110[0x254 - 0x110];
 };
 
 class fn_0050bcd4_object
