@@ -426,18 +426,50 @@ struct fn_005d9441_tree
 		iterator() {}
 		iterator(node *_P) : _Ptr(_P) {}
 		value_type &operator*() const;
+		// HYPOTHESIS: the shared out-of-line copy of _Dec.
+		void FUN_006d40d0();
+		bool operator==(const iterator& _X) const { return (_Ptr == _X._Ptr); }
+		node *_Mynode() const { return (_Ptr); }
 		node *_Ptr;
 	};
 
+	typedef std::pair<iterator, bool> _Pairib;
+
 	iterator FUN_005d9441(iterator _P);
 	// HYPOTHESIS: insert(const value_type&).
-	std::pair<iterator, bool> FUN_006e3f40(const value_type& _X);
+	_Pairib FUN_006e3f40(const value_type& _V);
+	// HYPOTHESIS: _Insert(x, y, value); the code is shared with other trees.
+	iterator FUN_006e45b0(node *_X, node *_Y, const value_type& _V);
+	// HYPOTHESIS: _Buynode(parent, colour); the code is shared with other trees.
+	node *FUN_00613bc0(node *_Parg, char _Carg);
+	// HYPOTHESIS: _Lrotate(node); the code is shared with other trees.
+	void FUN_00556fd0(node *_X);
+	// HYPOTHESIS: _Rrotate(node); the code is shared with other trees.
+	void FUN_00558526(node *_X);
 
-	char m00[0x4];
+	// HYPOTHESIS: the key is the reference's pointer, compared unsigned.
+	std::less<tObject_006e3000_shared*> key_compare;
+	char m01[0x3];
 	node *_Head;
 	node *_Nil;
 	char m0c[0x4];
 	unsigned int _Size;
+
+	enum _Redbl {_Red, _Black};
+	iterator begin();
+	static node *&_Left(node *_P);
+	static node *&_Parent(node *_P);
+	static node *&_Right(node *_P);
+	static char &_Color(node *_P);
+	static value_type &_Value(node *_P);
+	static tObject_006e3000_shared* const &_Key(node *_P);
+	struct _Kfn
+	{
+		tObject_006e3000_shared* const &operator()(const value_type& _X) const;
+	};
+	node *&_Root() const { return (_Parent(_Head)); }
+	node *&_Lmost() const { return (_Left(_Head)); }
+	node *&_Rmost() const { return (_Right(_Head)); }
 };
 
 // HYPOTHESIS: the entry FUN_006e36a0 frees after calling 0x006dbc40 on it; m04
@@ -628,6 +660,19 @@ inline fn_005d9441_tree::value_type &fn_005d9441_tree::iterator::operator*() con
 	return (_Ptr->_Value);
 }
 
+inline fn_005d9441_tree::iterator fn_005d9441_tree::begin() { return (iterator(_Head->_Left)); }
+inline fn_005d9441_tree::node *&fn_005d9441_tree::_Left(node *_P) { return (_P->_Left); }
+inline fn_005d9441_tree::node *&fn_005d9441_tree::_Parent(node *_P) { return (_P->_Parent); }
+inline fn_005d9441_tree::node *&fn_005d9441_tree::_Right(node *_P) { return (_P->_Right); }
+inline char &fn_005d9441_tree::_Color(node *_P) { return (_P->_Color); }
+inline fn_005d9441_tree::value_type &fn_005d9441_tree::_Value(node *_P) { return (_P->_Value); }
+inline tObject_006e3000_shared* const &fn_005d9441_tree::_Kfn::operator()(const value_type& _X) const { return (_X.first.mPtr); }
+inline tObject_006e3000_shared* const &fn_005d9441_tree::_Key(node *_P) { return (_Kfn()(_Value(_P))); }
+
+// HYPOTHESIS: the STL's _Construct(pointer, value); the code is shared with
+// other trees.
+void FUN_006e4860(fn_005d9441_tree::value_type *_P, const fn_005d9441_tree::value_type& _V);
+
 // HYPOTHESIS: the timer table that tObject_006e3000 holds from +0x30; the
 // second tree starts at +0x14 as its m44 does.
 class tObject_006e36a0
@@ -683,6 +728,16 @@ fn_0060ac82_tree::iterator tObject_006e36a0::FUN_006e3790(fn_0060ac82_tree::iter
 	}
 	return (param_1);
 }
+
+// HYPOTHESIS: a map holding the second tree at +0; its erase(iterator) hands
+// the iterator on to the tree's erase at 0x005d9441.
+class tObject_006e3c80
+{
+public:
+	fn_005d9441_tree::iterator FUN_006e3c80(fn_005d9441_tree::iterator _P);
+
+	fn_005d9441_tree _Tr;
+};
 
 // HYPOTHESIS: an object holding a tree of the same layout as the timer table
 // and a flag at +0x28; FUN_006e3830 copies another one into it entry by entry,
@@ -824,16 +879,6 @@ fn_006e45b0_tree::_Pairib fn_006e45b0_tree::FUN_006e3bc0(const node::value& _V)
 	return (_Pairib(_Ins ? FUN_006e45b0(_X, _Y, _V) : _P, _Ins));
 }
 
-// HYPOTHESIS: a map holding the second tree at +0; its erase(iterator) hands
-// the iterator on to the tree's erase at 0x005d9441.
-class tObject_006e3c80
-{
-public:
-	fn_005d9441_tree::iterator FUN_006e3c80(fn_005d9441_tree::iterator _P);
-
-	fn_005d9441_tree _Tr;
-};
-
 // FUNCTION: STARFLEETOP 0x006e3c80
 fn_005d9441_tree::iterator tObject_006e3c80::FUN_006e3c80(fn_005d9441_tree::iterator _P)
 {
@@ -914,4 +959,79 @@ fn_0060ac82_tree::iterator fn_0060ac82_tree::FUN_006e3cf0(iterator _P, const nod
 			else
 				return (FUN_006e4360(_Head, _P._Mynode(), _V)); }}
 	return (FUN_006e4150(_V).first);
+}
+
+// HYPOTHESIS: the SDK STL's _Tree::insert(const value_type&) of the second
+// tree, with the first _Insert inlined and the last kept out of line.
+// FUNCTION: STARFLEETOP 0x006e3f40
+fn_005d9441_tree::_Pairib fn_005d9441_tree::FUN_006e3f40(const value_type& _V)
+{
+	node *_X = _Root();
+	node *_Y = _Head;
+	bool _Ans = true;
+	while (_X != _Nil)
+		{_Y = _X;
+		_Ans = key_compare(_Kfn()(_V), _Key(_X));
+		_X = _Ans ? _Left(_X) : _Right(_X); }
+	if (m0c[0])
+		{// MATCH-ONLY: _Insert(_X, _Y, _V) written out; the original inlined
+		// this call alone.
+		node *_Z = FUN_00613bc0(_Y, _Red);
+		_Left(_Z) = _Nil, _Right(_Z) = _Nil;
+		FUN_006e4860(&_Value(_Z), _V);
+		++_Size;
+		if (_Y == _Head || _X != _Nil
+			|| key_compare(_Kfn()(_V), _Key(_Y)))
+			{_Left(_Y) = _Z;
+			if (_Y == _Head)
+				{_Root() = _Z;
+				_Rmost() = _Z; }
+			else if (_Y == _Lmost())
+				_Lmost() = _Z; }
+		else
+			{_Right(_Y) = _Z;
+			if (_Y == _Rmost())
+				_Rmost() = _Z; }
+		for (_X = _Z; _X != _Root()
+			&& _Color(_Parent(_X)) == _Red; )
+			if (_Parent(_X) == _Left(_Parent(_Parent(_X))))
+				{_Y = _Right(_Parent(_Parent(_X)));
+				if (_Color(_Y) == _Red)
+					{_Color(_Parent(_X)) = _Black;
+					_Color(_Y) = _Black;
+					_Color(_Parent(_Parent(_X))) = _Red;
+					_X = _Parent(_Parent(_X)); }
+				else
+					{if (_X == _Right(_Parent(_X)))
+						{_X = _Parent(_X);
+						FUN_00556fd0(_X); }
+					_Color(_Parent(_X)) = _Black;
+					_Color(_Parent(_Parent(_X))) = _Red;
+					FUN_00558526(_Parent(_Parent(_X))); }}
+			else
+				{_Y = _Left(_Parent(_Parent(_X)));
+				if (_Color(_Y) == _Red)
+					{_Color(_Parent(_X)) = _Black;
+					_Color(_Y) = _Black;
+					_Color(_Parent(_Parent(_X))) = _Red;
+					_X = _Parent(_Parent(_X)); }
+				else
+					{if (_X == _Left(_Parent(_X)))
+						{_X = _Parent(_X);
+						FUN_00558526(_X); }
+					_Color(_Parent(_X)) = _Black;
+					_Color(_Parent(_Parent(_X))) = _Red;
+					FUN_00556fd0(_Parent(_Parent(_X))); }}
+		_Color(_Root()) = _Black;
+		return (_Pairib(iterator(_Z), true)); }
+	iterator _P = iterator(_Y);
+	if (!_Ans)
+		;
+	else if (_P == begin())
+		return (_Pairib(FUN_006e45b0(_X, _Y, _V), true));
+	else
+		_P.FUN_006d40d0();
+	if (key_compare(_Key(_P._Mynode()), _Kfn()(_V)))
+		return (_Pairib(FUN_006e45b0(_X, _Y, _V), true));
+	return (_Pairib(_P, false));
 }
