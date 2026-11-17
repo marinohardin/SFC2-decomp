@@ -7,6 +7,16 @@
 
 class tMetaClientNewsCtlrC
 {
+public:
+	// HYPOTHESIS: tMenuItem and eType are named by the analysis of the callback instance at
+	// 0x005de6a6; the enumerators are not known yet.
+	class tMenuItem
+	{
+	public:
+		enum eType
+		{
+		};
+	};
 };
 
 #endif
