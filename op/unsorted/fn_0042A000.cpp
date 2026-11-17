@@ -66,3 +66,26 @@ tInput& tInput::operator>>( std::string& string )
 	return *this;
 }
 }
+
+// HYPOTHESIS: the callee tests the fields at +0x0c and +0x10 against its two arguments and
+// returns a bool, like the position classes near it; neither class's name is known yet.
+class fn_005b6a5c_object
+{
+public:
+	bool FUN_005b6a5c( int param_1, int param_2 );
+};
+
+class fn_0042a3f3_object
+{
+public:
+	void FUN_0042a3f3();
+
+	byte field_00[0x84];
+	fn_005b6a5c_object field_84;
+};
+
+// FUNCTION: STARFLEETOP 0x0042a3f3
+void fn_0042a3f3_object::FUN_0042a3f3()
+{
+	field_84.FUN_005b6a5c( 0, 0 );
+}
