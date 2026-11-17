@@ -39,6 +39,7 @@ public:
 	tPairib fn_005ea14b(const std::pair<int, int> &v);
 	iterator fn_005ea63f(tNode *x, tNode *y, const std::pair<int, int> &v);
 	iterator fn_005ea1fe(iterator p);
+	void fn_005ea469(tNode *x);
 	void fn_00556fd0(tNode *x);
 	void fn_00558526(tNode *x);
 	// HYPOTHESIS: leftmost and rightmost helpers inlined into erase; their own form (a
@@ -213,4 +214,16 @@ tTree_005ea14b::iterator tTree_005ea14b::fn_005ea1fe(iterator p)
 	operator delete(y);
 	--m_size;
 	return p;
+}
+
+// FUNCTION: STARFLEETOP 0x005ea469
+void tTree_005ea14b::fn_005ea469(tNode *x)
+{
+	for (tNode *y = x; y != m_nil; x = y)
+	{
+		fn_005ea469(y->m_right);
+		y = y->m_left;
+		(&x->m_value)->~tValue();
+		operator delete(x);
+	}
 }
