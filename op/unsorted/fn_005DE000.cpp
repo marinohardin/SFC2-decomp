@@ -257,3 +257,12 @@ void fn_005de6cc( tMetaClientNewsCtlrC::tMenuItem::eType* range[2], const tMembe
 {
 	std::for_each( range[0], range[1], callback );
 }
+
+// MATCH-ONLY: the SDK's template CreateCallback, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x005de70b
+template<>
+tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > CreateCallback( tMetaClientNewsCtlrC* object, void (tMetaClientNewsCtlrC::*func)( tMetaClientNewsCtlrC::tMenuItem* result ) )
+{
+	return 	tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* >( object, func );
+}
