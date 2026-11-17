@@ -205,6 +205,7 @@ public:
 	bool fn_00543a20(const tHexPoint &point);
 	void fn_00543aa4(int value);
 	void fn_00543ab1(const tHexPoint &point);
+	void fn_00543ac3(const nDatabase::tID &id);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -765,4 +766,11 @@ void fn_005430ad_owner::fn_00543aa4(int value)
 void fn_005430ad_owner::fn_00543ab1(const tHexPoint &point)
 {
 	m14c = point;
+}
+
+// HYPOTHESIS: the setter for the tID at +0xc0, whose getter is 0x0054351b.
+// FUNCTION: STARFLEETOP 0x00543ac3
+void fn_005430ad_owner::fn_00543ac3(const nDatabase::tID &id)
+{
+	m0c0 = id;
 }
