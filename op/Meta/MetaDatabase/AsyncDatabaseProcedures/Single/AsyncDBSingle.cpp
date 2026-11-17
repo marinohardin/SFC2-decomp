@@ -14,7 +14,7 @@
 class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
 class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
 class tNotify;	// RTTI names it through nDatabase::tQuery<tNotify>; its layout is not needed here.
-class tNewsStory;	// Declared in unsorted/tNewsStory.h, included before 0x0056d874.
+#include "unsorted/tNewsStory.h"
 // HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at
 // +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
 class tTurn
@@ -62,10 +62,10 @@ public:
 	void fn_0056fe13( nDatabase::tQuery<tCampaignInfo>& query, std::vector<tCampaignInfo>* result );
 	void fn_0056fefb( nDatabase::tQuery<tNotify>& query, std::vector<tNotify>* result );
 	void fn_0056ffe3( nDatabase::tQuery<tNewsStory>& query, std::vector<tNewsStory>* result );
+	void fn_0057013d( nDatabase::tQuery<tNewsStory>& query, std::vector<tNewsStory>* result, bool lock );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
-
 namespace nAsyncDatabaseProcedure
 {
 // HYPOTHESIS: only the slots 0x0056c414 calls carry signatures.
@@ -94,7 +94,7 @@ public:
 	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, int lock );
 	virtual void vfunction21( std::vector<tNotify>* notifies );
 	virtual void vfunction22( nDatabase::tID id, std::vector<tNewsStory>* stories );
-	virtual void vfunction23();
+	virtual void vfunction23( const tNewsStory::tDetailTime& time, std::vector<tNewsStory>* stories );
 	virtual void vfunction24();
 	virtual void vfunction25();
 	virtual void vfunction26();
@@ -501,4 +501,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction22( nDatabase::tID 
 		query.AddEval( &eval );
 	}
 	fDatabase->fn_0056ffe3( query, stories );
+}
+
+// FUNCTION: STARFLEETOP 0x0056d91b
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23( const tNewsStory::tDetailTime& time, std::vector<tNewsStory>* stories )
+{
+	nDatabase::tQuery<tNewsStory> query;
+	nDatabase::tMemberEval<tNewsStory, tNewsStory::tDetailTime, std::less<tNewsStory::tDetailTime> > eval( &tNewsStory::fn_0054745f, time );
+	fDatabase->fn_0057013d( query, stories, false );
 }
