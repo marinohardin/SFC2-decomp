@@ -142,15 +142,13 @@ void	tPagingMechanism::mClosePage( tPagingBlock* page )
 		}
 	}
 
-	tPagingBlock*	newer = page->fNewer;
-	tPagingBlock*	older = page->fOlder;
-	if ( newer == NULL )
+	if ( page->fNewer == NULL )
 	{
-		fLastPage = (char*)older;
+		fLastPage = (char*)page->fOlder;
 	}
 	else
 	{
-		newer->fOlder = older;
+		page->fNewer->fOlder = page->fOlder;
 	}
 	if ( page->fOlder != NULL )
 	{

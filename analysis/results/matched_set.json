@@ -9420,9 +9420,9 @@
    "symbol": "?mClosePage@tPagingMechanism@@IAEXPAVtPagingBlock@@@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 688,
-   "score": 98.878,
+   "score": 99.024,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-17"
   },
   "0x0063c0b0": {
    "name": "tPagingMechanism::mDeactivate",
