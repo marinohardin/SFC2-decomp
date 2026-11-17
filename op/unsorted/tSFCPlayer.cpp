@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSFCPlayer.cpp
-// Functions: 0x004cf692 to 0x004d1629, 126 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+class tSFCPlayer
+{
+	public:
+		virtual ~tSFCPlayer();
+};
+
+// FUNCTION: STARFLEETOP 0x004cf692
+tSFCPlayer::~tSFCPlayer()
+{
+}
