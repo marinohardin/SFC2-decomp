@@ -223,3 +223,14 @@ int fn_006c1780(fn_006c1510_pool *pool, const void *key, int (*compare)(const vo
 		return -1;
 	return ((int)result - (int)pool->field_14) / (int)pool->field_08;
 }
+
+// HYPOTHESIS: calls func on every element with a caller-supplied argument.
+// FUNCTION: STARFLEETOP 0x006c1820
+void fn_006c1820(fn_006c1510_pool *pool, void (*func)(void *, void *), void *arg)
+{
+	int i;
+
+	// HYPOTHESIS: the original compares the count signed (jl), so field_00 may be an int.
+	for (i = 0; i < (int)pool->field_00; i++)
+		func(fn_006c15c0(pool, i), arg);
+}
