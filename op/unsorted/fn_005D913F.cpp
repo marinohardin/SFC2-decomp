@@ -420,3 +420,15 @@ fn_005d92b9_object::iterator fn_005d92b9_object::fn_005d9441(iterator where)
     --m_size;
     return where;
 }
+
+// FUNCTION: STARFLEETOP 0x005d96ac
+void fn_005d92b9_object::fn_005d96ac(node *n)
+{
+    for (node *p = n; p != m_nil; n = p)
+    {
+        fn_005d96ac(p->right);
+        p = p->left;
+        ((fn_005d6a66_value *)&n->first)->fn_005d6a66();
+        operator delete(n);
+    }
+}
