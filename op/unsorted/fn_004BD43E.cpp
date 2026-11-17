@@ -227,3 +227,7 @@ c_0091f928_Object g_0091f928;
 // FUNCTION: STARFLEETOP 0x004bdaf2
 // FUNCTION: STARFLEETOP 0x004bdabf
 std::string g_0091f910 = "Unknown_Failure";
+
+// HYPOTHESIS: a std::string global at 0x0091f900 holding the text "Log_on_name_not_found".
+// FUNCTION: STARFLEETOP 0x004bdb25
+std::string g_0091f900 = "Log_on_name_not_found";
