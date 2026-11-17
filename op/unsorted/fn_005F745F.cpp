@@ -34,6 +34,35 @@ public:
 	void FUN_005f77c6( int value );
 	fn_005f74a6_entry& FUN_005f77a7();
 	void FUN_005f7897();
+
+	byte field_00[0x0c];
+	int field_0c; // HYPOTHESIS: the index of the first entry
+	int field_10; // HYPOTHESIS: the entry count; 0x005f76d5 tests it
+};
+
+// HYPOTHESIS: a position in fn_005f77c6_object: an index and the owner; 0x005f77a7 builds one
+// past the last entry and steps it back, 0x005f7c17 reads the entry it points at.
+class fn_005f7c17_iterator
+{
+public:
+	fn_005f7c17_iterator( int index, fn_005f77c6_object* owner )
+		: fIndex( index ), fOwner( owner )
+	{
+	}
+	fn_005f7c17_iterator& operator-=( int n )
+	{
+		fIndex -= n;
+		return *this;
+	}
+	fn_005f7c17_iterator operator-( int n ) const
+	{
+		fn_005f7c17_iterator tmp = *this;
+		return tmp -= n;
+	}
+	fn_005f74a6_entry& FUN_005f7c17();
+
+	int fIndex;
+	fn_005f77c6_object* fOwner;
 };
 
 class fn_005f7961_object;
@@ -112,8 +141,6 @@ public:
 
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
-	byte field_05[0x14 - 0x05];
-	int field_14; // HYPOTHESIS: the entry count of the queue at +0x04; 0x005f76d5 tests it
 	fn_005f7961_object field_18;
 	int field_28; // HYPOTHESIS: the entry count of the list at +0x18; 0x005f76f8 tests it
 	fn_005f7a6a_object field_2c;
@@ -206,7 +233,7 @@ fn_005f7a4b_value fn_005f745f_object::FUN_005f767d()
 bool fn_005f745f_object::FUN_005f76d5()
 {
 	field_40.Enter();
-	bool empty = field_14 == 0;
+	bool empty = field_04.field_10 == 0;
 	field_40.Leave();
 	return empty;
 }
@@ -241,4 +268,10 @@ fn_005f74a6_entry::fn_005f74a6_entry( const std::string& value, int a, int b )
 fn_0055fe12_value::fn_0055fe12_value( const std::string& value, int a )
 	: field_00( value ), field_10( a )
 {
+}
+
+// FUNCTION: STARFLEETOP 0x005f77a7
+fn_005f74a6_entry& fn_005f77c6_object::FUN_005f77a7()
+{
+	return (fn_005f7c17_iterator( field_10 + field_0c, this ) - 1).FUN_005f7c17();
 }
