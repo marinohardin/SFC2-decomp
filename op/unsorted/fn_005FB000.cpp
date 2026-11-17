@@ -176,6 +176,22 @@ template<> void std::_Tree<std::string, std::pair<const std::string, int>, std::
 	}
 }
 
+// The game's out-of-line copy of the library's recursive tree erase, for a tree with a trivial value.
+// HYPOTHESIS: the tree is the map of two 4-byte types of 0x005fb14e; the value needs no destructor.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb3af
+template<> void std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::_Erase( _Nodeptr _X )
+{
+	while ( _X != _Nil )
+	{
+		_Erase( _Right( _X ) );
+		_Nodeptr _Y = _Left( _X );
+		_Destval( &_Value( _X ) );
+		_Freenode( _X );
+		_X = _Y;
+	}
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;

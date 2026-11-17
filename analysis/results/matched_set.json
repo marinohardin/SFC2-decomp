@@ -9001,6 +9001,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x005fb3af": {
+   "name": "FUN_005fb3af",
+   "symbol": "?_Erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 48,
+   "score": 24.348,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
