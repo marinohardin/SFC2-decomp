@@ -9163,6 +9163,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fbbc1": {
+   "name": "FUN_005fbbc1",
+   "symbol": "?for_each@std@@YA?AV?$tMemberCallback@VtMetaClientChatCtlrC@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0V2@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

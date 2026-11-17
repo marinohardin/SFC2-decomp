@@ -664,6 +664,17 @@ tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > std::for_each( cons
 	return (_Op);
 }
 
+// MATCH-ONLY: the library's for_each, written out as the explicit specialization that
+// 0x005fba36 calls, as for 0x005fbb74.
+// FUNCTION: STARFLEETOP 0x005fbbc1
+template<>
+tMemberCallback< tMetaClientChatCtlrC, const std::string& > std::for_each( const std::string* _F, const std::string* _L, tMemberCallback< tMetaClientChatCtlrC, const std::string& > _Op )
+{
+	for (; _F != _L; ++_F)
+		_Op(*_F);
+	return (_Op);
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
