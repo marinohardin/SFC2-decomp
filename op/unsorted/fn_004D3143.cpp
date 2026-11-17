@@ -449,3 +449,35 @@ void fn_004d35fa( long arg1 )
 {
 	g_009254f8.fn_004cb5bd( arg1 );
 }
+
+// HYPOTHESIS: arg1 points to a record with two longs at +0xc/+0x10 and a name string at +0x138;
+// its class is not recovered yet.
+class fn_004d3609_record
+{
+public:
+	char pad_00[0xc];
+	long m0c;
+	long m10;
+	char pad_14[0x138 - 0x14];
+	char m138[1];
+};
+
+void fn_007364c0( long arg1, long arg2 );
+void fn_007364d0( long arg1, char* arg2 );
+void fn_004d3652( long arg1, long arg2, long arg3, long arg4 );
+
+// FUNCTION: STARFLEETOP 0x004d3609
+void fn_004d3609( fn_004d3609_record* arg1, long arg2, long arg3 )
+{
+	fn_007364c0( arg3, arg2 );
+	if ( arg1 != 0 )
+	{
+		char* name = arg1->m138;
+		if ( name != 0 && *name != 0 )
+		{
+			fn_007364d0( arg3, name );
+			return;
+		}
+		fn_004d3652( arg1->m0c, arg1->m10, arg2, arg3 );
+	}
+}
