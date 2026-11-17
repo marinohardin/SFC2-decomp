@@ -48,8 +48,8 @@ bool fn_0040608b(const unsigned char* buf, void* stream, unsigned int count)
     }
     return false;
 }
-
-const std::locale::facet* fn_0040673f(const std::locale::facet* pf);
+class fn_00402b90_Obj;
+fn_00402b90_Obj* fn_0040673f(fn_00402b90_Obj* p);
 
 // HYPOTHESIS: the original is the library's use_facet instantiation for numpunct<char>.
 // FUNCTION: STARFLEETOP 0x004060d8
@@ -66,7 +66,7 @@ const std::numpunct<char>& fn_004060d8(const std::locale& _L, const std::numpunc
     else if (_Psave != 0)
         _Pf = _Psave;
     else
-        _Pf = _Psave = fn_0040673f(new std::numpunct<char>);
+        _Pf = _Psave = (const std::locale::facet*)fn_0040673f((fn_00402b90_Obj*)new std::numpunct<char>);
     return *(const std::numpunct<char>*)_Pf;
 }
 
@@ -107,7 +107,7 @@ int fn_0040619c(_II& _F, _II& _L, size_t _N, const _E* _S)
 }
 template int fn_0040619c<char, std::istreambuf_iterator<char> >(std::istreambuf_iterator<char>&, std::istreambuf_iterator<char>&, size_t, const char*);
 
-const std::locale::facet* fn_0040678d(const std::locale::facet* pf);
+fn_00402b90_Obj* fn_0040678d(fn_00402b90_Obj* p);
 
 // HYPOTHESIS: the library's use_facet instantiation for collate<char>.
 // FUNCTION: STARFLEETOP 0x00406355
@@ -124,7 +124,7 @@ const std::collate<char>& fn_00406355(const std::locale& _L, const std::collate<
     else if (_Psave != 0)
         _Pf = _Psave;
     else
-        _Pf = _Psave = fn_0040678d(new std::collate<char>);
+        _Pf = _Psave = (const std::locale::facet*)fn_0040678d((fn_00402b90_Obj*)new std::collate<char>);
     return *(const std::collate<char>*)_Pf;
 }
 
