@@ -645,8 +645,8 @@
    "symbol": "?fn_00404aff@fn_00404aff_Ios@@QBE?AVfn_00404aff_Locale@@XZ",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 29,
-   "score": 21.2,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {

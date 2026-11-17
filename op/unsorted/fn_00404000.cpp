@@ -529,6 +529,7 @@ public:
         m0 = other.m0;
         m0->fn_00402b90();
     }
+    ~fn_00404aff_Locale();
     fn_00404ad0_Impl* m0;
 };
 
