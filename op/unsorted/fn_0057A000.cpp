@@ -387,6 +387,13 @@ template< typename tnMemberClass, typename tnResult >
 inline tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback()
 {}
 
+// HYPOTHESIS: fn_0057a96e_owner stands in for tChooseMission; the destructor is written as its
+// own definition so the deleting destructor's claim has a line of its own.
+// FUNCTION: STARFLEETOP 0x0057aba9
+template<>
+inline tMemberCallback<fn_0057a96e_owner, const nDatabase::tID&>::~tMemberCallback()
+{}
+
 // FUNCTION: STARFLEETOP 0x0057ab8c
 template class tCallback< const nDatabase::tID& >;
 

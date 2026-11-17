@@ -7399,6 +7399,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0057aba9": {
+   "name": "tMemberCallback<nAsyncMissionProcedures::tChooseMission,nDatabase::tID_const&>::scalar_deleting_destructor",
+   "symbol": "??_G?$tMemberCallback@Vfn_0057a96e_owner@@ABVtID@nDatabase@@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_0057A000.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
