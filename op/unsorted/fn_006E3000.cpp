@@ -164,6 +164,7 @@ public:
 	void FUN_006e3270();
 	void FUN_006e32f0(int param_1);
 	void FUN_006e3320(unsigned long param_1);
+	void FUN_006e3370(unsigned long param_1);
 	void FUN_006e3390(int param_1);
 
 	char m00[0x4];
@@ -216,4 +217,11 @@ void tObject_006e3240::FUN_006e3320(unsigned long param_1)
 		m10 = block;
 		m08 = param_1;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006e3370
+void tObject_006e3240::FUN_006e3370(unsigned long param_1)
+{
+	FUN_006e3320(param_1);
+	m0c = param_1;
 }
