@@ -31,6 +31,8 @@ public:
     virtual int vfunction109();
     // vftable slot 109; returns element param_1 of field_2c8.
     virtual int vfunction110(int param_1);
+    // vftable slot 110; stores param_2 into element param_1 of field_2c8.
+    virtual void vfunction111(int param_1, int param_2);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
