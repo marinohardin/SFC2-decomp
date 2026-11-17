@@ -206,3 +206,14 @@ bool c_004bd805_Object::fn_004bda12()
 // FUNCTION: STARFLEETOP 0x004bda3e
 // FUNCTION: STARFLEETOP 0x004bda34
 c_004bd805_Object g_004bd805_Object;
+
+// HYPOTHESIS: a flag byte and a counter, cleared together; their use is not known yet.
+extern bool g_0091f928;
+extern int g_0091f92c;
+
+// FUNCTION: STARFLEETOP 0x004bda7f
+void fn_004bda7f()
+{
+	g_0091f928 = false;
+	g_0091f92c = 0;
+}
