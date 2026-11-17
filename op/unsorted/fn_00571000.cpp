@@ -494,3 +494,20 @@ fn_0057196f_object* fn_0057196f_object::fn_0057196f(unsigned char flags)
 		::operator delete(this);
 	return this;
 }
+
+// HYPOTHESIS: the body of a scalar deleting destructor, written as a function: 0x0056fedd is the
+// destructor body, flag bit 0 asks for operator delete.
+class fn_0057198b_object {
+public:
+	void fn_0056fedd();
+	fn_0057198b_object* fn_0057198b(unsigned char flags);
+};
+
+// FUNCTION: STARFLEETOP 0x0057198b
+fn_0057198b_object* fn_0057198b_object::fn_0057198b(unsigned char flags)
+{
+	fn_0056fedd();
+	if (flags & 1)
+		::operator delete(this);
+	return this;
+}
