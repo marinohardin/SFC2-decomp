@@ -393,14 +393,15 @@ void fn_005346f9_object::fn_00534903()
         ((fn_00534855_entry*)field_3c[i])->field_04 = 0;
 }
 
-// HYPOTHESIS: a 12-byte entry whose constructor is 0x00534ac1; its members are not known.
+// HYPOTHESIS: a 12-byte entry whose constructor is 0x00534ac1; the owner's destructor treats
+// the entries as rows of 200 ended by a field_00 of -1 and frees the block at field_04.
 class fn_00534ac1_entry
 {
 public:
     fn_00534ac1_entry();
 
     long field_00;
-    long field_04;
+    void* field_04;
     long field_08;
 };
 
@@ -411,6 +412,7 @@ class fn_00534950_object
 {
 public:
     fn_00534950_object();
+    ~fn_00534950_object();
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -427,4 +429,31 @@ fn_00534950_object::fn_00534950_object()
     n = 10;
     while (n--)
         field_e18c[n] = new fn_005346f9_object(n);
+}
+
+// FUNCTION: STARFLEETOP 0x00534a06
+fn_00534950_object::~fn_00534950_object()
+{
+    int j = 0;
+    int i = 0;
+    while (i < 4800)
+    {
+        if (field_28[i + j].field_00 == -1 || !field_28[i + j].field_04)
+        {
+            j = 0;
+            i += 200;
+        }
+        else
+        {
+            delete field_28[i + j].field_04;
+            field_28[i + j].field_04 = 0;
+            j++;
+        }
+    }
+    unsigned int n = 25;
+    while (n-- > 0)
+        delete field_e128[n];
+    n = 10;
+    while (n-- > 0)
+        delete field_e18c[n];
 }
