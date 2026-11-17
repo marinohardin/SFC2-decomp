@@ -110,3 +110,45 @@ std::string fn_004601db_class::fn_00460216(const std::string &arg)
     m_ac = m_ac + "\n" + arg;
     return m_ac;
 }
+
+#include <time.h>
+#include "unsorted/fn_004d290d_object.h"
+
+// HYPOTHESIS: a free function that takes a panel name and a rectangle (the same call is made
+// from tPanelMgr.cpp); 0x0084411c holds a pointer to the panel name "Big Yes No".
+void fn_004d31ed(void *arg, int a, int b, int width, int height);
+extern void *g_0084411c;
+
+// HYPOTHESIS: the owning class is not identified; members are named by offset. The text at
+// +0xbc is a std::string (assigned through std::string::assign at 0x00403b49), and the
+// times at +0xd0 and +0xd8 are doubles.
+class fn_004602b2_class
+{
+public:
+    void fn_004602b2(const std::string &text, int seconds, bool exit);
+    void fn_0046052c();
+    double fn_0046034f();
+
+    char pad_000[0x2c];
+    fn_004d290d_object m_2c;
+    char pad_090[0xbc - 0x90];
+    std::string m_bc;
+    char pad_0cc[0xd0 - 0xcc];
+    double m_d0;
+    double m_d8;
+    long m_e0;
+};
+
+// FUNCTION: STARFLEETOP 0x004602b2
+void fn_004602b2_class::fn_004602b2(const std::string &text, int seconds, bool exit)
+{
+    m_bc = text;
+    m_d0 = time(0);
+    m_e0 = 0;
+    m_d8 = seconds;
+    fn_0046052c();
+    fn_004d31ed(g_0084411c, 0, 0, 0x280, 0x1e0);
+    m_2c.fn_004d269b(g_0084411c, "AcceptYesNo", false);
+    m_2c.fn_004d269b(g_0084411c, "ExitYesNo", exit);
+    fn_0046034f();
+}
