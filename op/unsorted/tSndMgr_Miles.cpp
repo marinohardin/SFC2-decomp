@@ -221,7 +221,7 @@ public:
 	volatile char field_4230;
 	volatile char field_4231;
 	char pad_4232[2];
-	long field_4234;
+	unsigned long field_4234;
 	// HYPOTHESIS: two tCallback<long>-derived members (the destructor resets both to the
 	// tCallback<long> vtable 0x007ab0c0), likely tMilesCallBack and tAILServeCallBack;
 	// tCallback is declared only inside Common/Thread/ThreadPool.cpp.
@@ -584,4 +584,11 @@ void tSndMgr_Miles::vfunction8( long param_1 )
 				field_10[param_1].field_54 = 1;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050f66f
+void tSndMgr_Miles::vfunction9()
+{
+	for ( unsigned short i = 1; i < field_4234; i++ )
+		field_10[i].field_54 = 1;
 }
