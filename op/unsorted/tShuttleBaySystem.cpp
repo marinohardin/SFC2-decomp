@@ -474,3 +474,9 @@ void tShuttleBaySystem::fn_0044f071(float param_1)
             ++it;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0044f161
+int tShuttleBaySystem::vfunction114(int param_1)
+{
+    return field_3a8[param_1];
+}
