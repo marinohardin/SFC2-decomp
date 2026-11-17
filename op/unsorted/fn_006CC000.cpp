@@ -78,7 +78,7 @@ int fn_006cc0b0(const char *text, int length, int count)
 
 void fn_006cc7d0(fn_006cc0f0_server *server, char *text);
 int fn_006cc900(fn_006c1510_pool *pool);
-void fn_006cc420(fn_006cc070_owner *owner);
+int fn_006cc420(fn_006cc070_owner *owner);
 void fn_006cb8e0(fn_006cc070_owner *owner, int param_1);
 char *fn_006cc8f0(fn_006cc0f0_server *server);
 unsigned short fn_006cc910(fn_006cc0f0_server *server);
@@ -176,5 +176,13 @@ int fn_006cc0f0(fn_006cc070_owner *owner)
 			owner->field_08[i].field_08 = GetTickCount();
 		}
 	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006cc420
+int fn_006cc420(fn_006cc070_owner *owner)
+{
+	for (int i = 0; i < owner->field_6c; i++)
+		closesocket(owner->field_08[i].field_00);
 	return 0;
 }
