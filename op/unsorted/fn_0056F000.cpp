@@ -204,3 +204,36 @@ void nDatabase::tQuery<tShip>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
+
+#include "Common/Database/DatabaseID.h"
+
+// HYPOTHESIS: a query evaluator holding a pointer to member (address and this adjustment at
+// +8/+0xc) and an ID at +0x10; the original calls the member on the argument and compares.
+// HYPOTHESIS: a two-base class gives the 8-byte pointer to member the exe uses.
+struct fn_0056f283_base_a {
+	int m_a;
+};
+struct fn_0056f283_base_b {
+	int m_b;
+};
+class fn_0056f283_target : public fn_0056f283_base_a, public fn_0056f283_base_b {
+};
+
+typedef const nDatabase::tID *(fn_0056f283_target::*fn_0056f283_member)();
+
+struct fn_0056f283_owner {
+	int m_0;
+	int m_4;
+	fn_0056f283_member m_member;
+	const nDatabase::tID *m_id;
+	bool operator()(fn_0056f283_target *target);
+};
+
+// FUNCTION: STARFLEETOP 0x0056f283
+bool fn_0056f283_owner::operator()(fn_0056f283_target *target)
+{
+	const nDatabase::tID *id = m_id;
+	const nDatabase::tID &other = *id;
+	const nDatabase::tID *current = (target->*m_member)();
+	return current->operator==(other) ? true : false;
+}
