@@ -2620,6 +2620,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042c4ac": {
+   "name": "FUN_0042c4ac",
+   "symbol": "?fn_0042c4ac@fn_0042c4ac_Tree@@QBEPAUfn_0042c4ac_Node@@ABUfn_0042c4ac_Key@@@Z",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 58,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

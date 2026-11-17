@@ -300,3 +300,56 @@ fn_0042c360_Iterator fn_0042c360_Tree::fn_0042c360(fn_0042c360_Node* x, fn_0042c
 	it.m00_node = z;
 	return it;
 }
+
+// HYPOTHESIS: the key of another library map/set: a pair of ints compared as std::pair's
+// operator< (first, then second), inlined into the tree's lower bound.
+struct fn_0042c4ac_Key
+{
+	int first;
+	int second;
+};
+
+// MATCH-ONLY: stands for the inlined key_compare; the original's name is not known.
+inline bool operator<(const fn_0042c4ac_Key& x, const fn_0042c4ac_Key& y)
+{
+	return x.first < y.first || !(y.first < x.first) && x.second < y.second;
+}
+
+// HYPOTHESIS: the tree's 0x1c-byte node, key at +0x0c.
+struct fn_0042c4ac_Node
+{
+	fn_0042c4ac_Node* m00_left;
+	fn_0042c4ac_Node* m04_parent;
+	fn_0042c4ac_Node* m08_right;
+	fn_0042c4ac_Key m0c_key;
+	int m14_mapped;
+	char m18_color;
+	char m19_isnil;
+};
+
+// HYPOTHESIS: the tree: head node at +0x04, nil node at +0x08, size at +0x10.
+class fn_0042c4ac_Tree
+{
+public:
+	fn_0042c4ac_Node* fn_0042c4ac(const fn_0042c4ac_Key& kv) const;
+
+	char m00_pad[0x4];
+	fn_0042c4ac_Node* m04_head;
+	fn_0042c4ac_Node* m08_nil;
+	char m0c_pad[0x4];
+	unsigned int m10_size;
+};
+
+// HYPOTHESIS: the tree's lower bound (first node whose key is not less than kv).
+// FUNCTION: STARFLEETOP 0x0042c4ac
+fn_0042c4ac_Node* fn_0042c4ac_Tree::fn_0042c4ac(const fn_0042c4ac_Key& kv) const
+{
+	fn_0042c4ac_Node* x = m04_head->m04_parent;
+	fn_0042c4ac_Node* y = m04_head;
+	while (x != m08_nil)
+		if (x->m0c_key < kv)
+			x = x->m08_right;
+		else
+			y = x, x = x->m00_left;
+	return y;
+}
