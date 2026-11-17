@@ -630,3 +630,15 @@ void fn_00571a58_owner::fn_00571acd(int arg)
 {
 	fn_0057253a(fn_00571a58_ptr, 1, arg);
 }
+
+// HYPOTHESIS: the destructor of the map's value_type (long key, vector at +4), which destroys the vector.
+struct fn_00571ade_pair {
+	long first;
+	fn_005717f7_vector second;
+	~fn_00571ade_pair();
+};
+
+// FUNCTION: STARFLEETOP 0x00571ade
+fn_00571ade_pair::~fn_00571ade_pair()
+{
+}
