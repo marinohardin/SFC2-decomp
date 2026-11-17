@@ -54,11 +54,11 @@ public:
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x160 bytes with a vtable, a byte test at 0x0054340c and a virtual in slot 12.
-// The names are placeholders.
+// Slot 0 is the virtual destructor (0x0053f4ea calls it with 0). The names are placeholders.
 class fn_0054340c_owner
 {
 public:
-	virtual void vfunction0();
+	virtual ~fn_0054340c_owner();
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
@@ -87,6 +87,7 @@ public:
 	void fn_0053f522( long a, long b );
 	fn_0054340c_owner *fn_0053f546( fn_0054340c_owner *it );
 	void fn_0053f461();
+	void fn_0053f4ea();
 	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
 
 	long m_00;
@@ -331,4 +332,19 @@ void fn_0053f4c6_owner::fn_0053f4c6( long a, long b )
 {
 	fn_0053fa94( m_04, m_08 );
 	fn_0053f834( m_04, a, b );
+}
+
+// HYPOTHESIS: a member of the vector-like class at 0x6c above; destroys every element,
+// frees the block and clears the three pointers, like a vector's tidy.
+// FUNCTION: STARFLEETOP 0x0053f4ea
+void fn_0053f522_owner::fn_0053f4ea()
+{
+	fn_0054340c_owner *last = m_08;
+	fn_0054340c_owner *first = m_04;
+	for ( ; first != last; ++first )
+		first->~fn_0054340c_owner();
+	operator delete( m_04 );
+	m_04 = 0;
+	m_08 = 0;
+	m_0c = 0;
 }
