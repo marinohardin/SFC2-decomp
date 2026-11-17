@@ -64,6 +64,11 @@ struct tPoint2
 	union	{ float y; float v; };
 };
 
+struct tPoint4
+{
+	float x, y, z, w;
+};
+
 // As the SDK declares it.
 const double kPi = 3.14159265358979323846;
 
@@ -126,6 +131,7 @@ public:
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);
 	void mTransform(tPoint3 &p) const;
+	void mTransform(tPoint4 &out, const tPoint3 &in) const;
 	void mTransform3x3(tPoint3 &p) const;
 };
 

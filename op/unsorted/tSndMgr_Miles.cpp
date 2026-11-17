@@ -7,6 +7,7 @@
 #include "Tiger/tZipInfoMgr.h"
 #include "unsorted/mss.h"
 #include "unsorted/tEntity.h"
+#include "Source/entity/entity_physical.h"
 #include "unsorted/fn_0090be9c_type.h"
 #include "unsorted/fn_00c7c120_Object.h"
 
@@ -29,6 +30,13 @@ public:
 };
 
 extern tObject_00918888 *gObject_00918888;
+
+// HYPOTHESIS: the camera's view and projection matrices and the left and right edges of the
+// screen; fn_0050fa3c projects an entity with them to pan its sound.
+extern tMatrix gMatrix_0092f5b8;
+extern tMatrix gMatrix_0092f528;
+extern long g_00918100;
+extern long g_00918108;
 
 // HYPOTHESIS: a free function called before AIL_startup; its role is not known.
 void fn_006f3870();
@@ -812,4 +820,26 @@ long tSndMgr_Miles::fn_0050f9ea( long param_1, long param_2 )
 		volume = 1;
 	}
 	return volume;
+}
+
+// FUNCTION: STARFLEETOP 0x0050fa3c
+long tSndMgr_Miles::fn_0050fa3c( long param_1 )
+{
+	tPhysicalEntity *entity = gObject_008e1060.fn_00424a24( gObject_008e1060.fn_lookup( param_1 ) );
+	if ( !entity )
+		return 0;
+	tPoint3 position = entity->vfunction29( tPoint3( 0.0f, 0.0f, 0.0f ), true );
+	gMatrix_0092f5b8.mTransform( position );
+	tPoint4 screen;
+	gMatrix_0092f528.mTransform( screen, position );
+	long center = ( g_00918100 + g_00918108 ) >> 1;
+	long half = g_00918108 - center;
+	if ( half == 0 )
+		return 0;
+	long pan = ( 1.0f / screen.w * screen.x - center ) * 100.0f / half;
+	if ( pan > 100 )
+		pan = 100;
+	if ( pan < -100 )
+		pan = -100;
+	return ( pan * 127 + 12701 ) / 200;
 }

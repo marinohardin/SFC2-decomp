@@ -666,6 +666,9 @@ public:
 	bool fn_004235f0(int aID);
 	// HYPOTHESIS: looks an entity up by an ID that 0x00413ea8 gets from vfunction12.
 	tPhysicalEntity *fn_004249d3(int aID);
+	// HYPOTHESIS: the cast tEntityMgr::fn_00424a24; tSndMgr_Miles::fn_0050fa3c calls slot 29 of
+	// the result as a tPhysicalEntity.
+	tPhysicalEntity *fn_00424a24(tEntity *aEntity);
 	// HYPOTHESIS: returns the entity that owns the one given; 0x00413ea8 compares its team.
 	tPhysicalEntity *fn_004249c0(tPhysicalEntity *aEntity);
 	// HYPOTHESIS: returns the first entity of a list linked through 0x8; 0x00413f59 walks it.
