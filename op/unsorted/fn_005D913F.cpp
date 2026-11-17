@@ -433,13 +433,23 @@ void fn_005d92b9_object::fn_005d96ac(node *n)
     }
 }
 
-// HYPOTHESIS: a byte flag and the dword after it, cleared together; owner unknown.
-extern char g_00c38968;
-extern int g_00c3896c;
-
-// FUNCTION: STARFLEETOP 0x005d9750
-void fn_005d9750()
+// HYPOTHESIS: a global at 0x00c38968 holding a byte flag and the dword after it, both cleared
+// by an inline constructor; its destructor (0x005d978b) tests the flag before releasing the
+// dword, like an owning pointer. The type's name is not known. The original's atexit destructor
+// (0x005d976b) is guarded by a bit at 0x00c38960, which a plain global does not produce; it
+// may have been a static data member of a template.
+class fn_005d978b_object
 {
-    g_00c38968 = 0;
-    g_00c3896c = 0;
-}
+public:
+    fn_005d978b_object() : m_flag(0), m_value(0) {}
+    ~fn_005d978b_object();
+private:
+    char m_flag;
+    int m_value;
+};
+
+// The compiler generates from this definition the dynamic initializer (0x005d9750, the inline
+// constructor expanded) and the atexit registration of the destructor (0x005d975f).
+// FUNCTION: STARFLEETOP 0x005d975f
+// FUNCTION: STARFLEETOP 0x005d9750
+fn_005d978b_object g_00c38968;
