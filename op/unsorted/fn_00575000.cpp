@@ -212,3 +212,25 @@ void fn_00575308_owner::fn_00575308(fn_00575308_object** out)
 {
 	*out = new fn_00575308_object(m_d0);
 }
+
+// HYPOTHESIS: the 0x234-byte object built by fn_0057534e is unnamed; its destructor is tBmpSurf's (0x0072eea0) or a related one
+class fn_0057534e_object
+{
+public:
+	fn_0057534e_object(void* arg);
+	char m_pad[0x234];
+};
+
+class fn_0057534e_owner
+{
+public:
+	void fn_0057534e(fn_0057534e_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x0057534e
+void fn_0057534e_owner::fn_0057534e(fn_0057534e_object** out)
+{
+	*out = new fn_0057534e_object(m_d0);
+}
