@@ -1,4 +1,4 @@
-#include <string>
+#include <locale>
 
 // FUNCTION: STARFLEETOP 0x00406003
 std::string& std::string::append(const std::string& _X, size_type _P, size_type _M)
@@ -47,4 +47,25 @@ bool fn_0040608b(const unsigned char* buf, void* stream, unsigned int count)
         } while (--n != 0);
     }
     return false;
+}
+
+// FUNCTION: STARFLEETOP 0x004060d8
+const std::locale::facet* fn_0040673f(const std::locale::facet* pf);
+
+// HYPOTHESIS: the original is the library's use_facet instantiation for numpunct<char>.
+const std::numpunct<char>& fn_004060d8(const std::locale& _L, const std::numpunct<char>*, bool _Cfacet)
+{
+    static const std::locale::facet* _Psave = 0;
+    std::_Lockit _Lk;
+    size_t _Id = std::numpunct<char>::id;
+    const std::locale::facet* _Pf = _L._Getfacet(_Id, true);
+    if (_Pf != 0)
+        ;
+    else if (!_Cfacet || !_L._Iscloc())
+        throw std::bad_cast("missing locale facet");
+    else if (_Psave != 0)
+        _Pf = _Psave;
+    else
+        _Pf = _Psave = fn_0040673f(new std::numpunct<char>);
+    return *(const std::numpunct<char>*)_Pf;
 }
