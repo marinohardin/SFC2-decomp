@@ -396,12 +396,23 @@ void nDatabase::tQuery<tAuctionItem>::fn_0056f04f(void *value)
 }
 
 // HYPOTHESIS: tAuctionItem is a database class; its members are not recovered.
-class tAuctionItem : public nDatabase::tDatabaseObject {};
+class tAuctionItem : public nDatabase::tDatabaseObject {
+public:
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char tAuctionItem_pad[0xa8 - 0x48];
+};
 
 // HYPOTHESIS: the result container, likely std::vector<tAuctionItem>; its push_back is out of line.
 class fn_0056f4df_results {
 public:
 	void push_back(const tAuctionItem &value);
+	tAuctionItem &back() { return *(m_last - 1); }
+	void *m_allocator;
+	tAuctionItem *m_first;
+	tAuctionItem *m_last;
 };
 
 // HYPOTHESIS: 0x0056f4df is the same LockingQueryDB member template as 0x0056f05f,
@@ -455,4 +466,34 @@ void fn_0056f4df_owner::fn_0056f4df(const nDatabase::tQuery<tAuctionItem> &query
 			}
 		}
 	}
+}
+
+// HYPOTHESIS: unlocked variant of the database query for tAuctionItem, like 0x0056f3e0;
+// the result container is the one of 0x0056f4df.
+class fn_0056f61b_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query, fn_0056f4df_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 482
+// FUNCTION: STARFLEETOP 0x0056f61b
+void fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query, fn_0056f4df_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tAuctionItem));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+#line 489 "fn_0056F000.cpp"
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		const tAuctionItem *pObject = static_cast<const tAuctionItem *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
 }
