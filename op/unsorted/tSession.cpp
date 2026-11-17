@@ -110,6 +110,7 @@ public:
 	void	fn_00690de0();
 	void	fn_00690e70();
 	void	fn_00690fb0();
+	void	fn_00690fc0();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -529,4 +530,25 @@ void tHtmlParser::fn_00690e70()
 void tHtmlParser::fn_00690fb0()
 {
 	f_40->fn_0068e530();
+}
+
+// FUNCTION: STARFLEETOP 0x00690fc0
+// HYPOTHESIS: a paragraph tag: like fn_00690900 without the size, an align attribute sets the
+// alignment; other attributes are skipped.
+void tHtmlParser::fn_00690fc0()
+{
+	f_40->fn_0068db60();
+
+	tString	name;
+	int	align = f_8c;
+
+	while ( fn_0068f5c0( name ) )
+	{
+		if ( name == "align" )
+			align = fn_00691fd0();
+		else
+			fn_0068f480();
+	}
+	fn_006910a0( align );
+	f_92 = ' ';
 }
