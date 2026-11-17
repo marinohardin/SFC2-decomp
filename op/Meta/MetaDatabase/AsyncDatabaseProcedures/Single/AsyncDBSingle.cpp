@@ -1,6 +1,9 @@
 #include "Common/Exceptions/Validate.h"
 #include "Common/Settings.h"
+#include "Common/Database/DatabaseID.h"
+#include "Common/Database/Query.h"
 #include "unsorted/tCurrentTime.h"
+#include "unsorted/tServCharacter.h"
 
 #include <sstream>
 #include <string>
@@ -27,26 +30,9 @@ public:
 	tCurrentTime fField108;
 };
 
-namespace nDatabase
-{
-
-template< class T > class tEval;
-
-// HYPOTHESIS: the layout (a vector at +4, a long at +0x14) is read from 0x0056c414.
-template< class T > class tQuery
-{
-public:
-	tQuery() : fField14( 0 ) {}
-	virtual ~tQuery() {}
-
-	std::vector< tEval<T>* > fField04;
-	long fField14;
-};
-
-};
-
 // HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only
-// inside Common/Database/FileDatabaseMgr.cpp.
+// inside Common/Database/FileDatabaseMgr.cpp. fn_0056ef05, fn_0056f05f and fn_0056f19b are
+// instances of its member templates (the exe's assertions name Database.h).
 class fn_0056c414_Database
 {
 public:
@@ -55,6 +41,8 @@ public:
 	virtual void vfunction3( tTurn* turn );
 
 	void fn_0056ef05( nDatabase::tQuery<tTurn>& query, std::vector<tTurn>* result, bool lock );
+	void fn_0056f05f( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result, bool lock );
+	void fn_0056f19b( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result );
 };
 
 // HYPOTHESIS: returns the server settings; name not known.
@@ -69,7 +57,7 @@ class tAsyncDatabaseSingle
 public:
 	virtual void vfunction1();
 	virtual void vfunction2( tCampaignInfo* campaignInfo );
-	virtual void vfunction3();
+	virtual void vfunction3( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
@@ -174,4 +162,34 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 	}
 
 	*campaignInfo = *DBcampaignInfo;
+}
+
+// HYPOTHESIS: the parameters' meaning is read from the code: a query that matches any of the
+// IDs, run with fn_0056f19b when the flag is set and with fn_0056f05f otherwise.
+// FUNCTION: STARFLEETOP 0x0056c7c0
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock )
+{
+	std::vector<nDatabase::tEval<tServCharacter>*> evals;
+	nDatabase::tQuery<tServCharacter> query( nDatabase::tQuery<tServCharacter>::kOr );
+	for( std::vector<nDatabase::tID>::iterator id = ids.begin(); id != ids.end(); id++ )
+	{
+		nDatabase::tMemberEval<tServCharacter, const nDatabase::tID&, std::equal_to<nDatabase::tID> >* eval =
+			new nDatabase::tMemberEval<tServCharacter, const nDatabase::tID&, std::equal_to<nDatabase::tID> >( &tServCharacter::GetID, *id );
+		evals.push_back( eval );
+		query.AddEval( eval );
+	}
+
+	if( lock )
+	{
+		fDatabase->fn_0056f19b( query, characters );
+	}
+	else
+	{
+		fDatabase->fn_0056f05f( query, characters, true );
+	}
+
+	for( std::vector<nDatabase::tEval<tServCharacter>*>::iterator i = evals.begin(); i != evals.end(); i++ )
+	{
+		delete *i;
+	}
 }
