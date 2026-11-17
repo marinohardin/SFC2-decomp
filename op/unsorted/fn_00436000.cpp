@@ -219,3 +219,15 @@ tSafeArray<tClassTrackingInfo>::~tSafeArray()
 {
 	mDeleteAll();
 }
+
+// HYPOTHESIS: the handle check of the same array, out of line after mDeleteAll; the layout and
+// the signed 16-bit use-count compare match tSafeArray's other inlined checks. No symbol names it.
+// FUNCTION: STARFLEETOP 0x00436449
+template <>
+unsigned char tSafeArray<tClassTrackingInfo>::mIsThisIndexValid( unsigned long index )
+{
+	unsigned long realIndex = index & 0xffff;
+	if ( realIndex >= f10 )
+		return false;
+	return (short)( index >> 16 ) == (short)f08[realIndex] && f04[realIndex] != NULL;
+}
