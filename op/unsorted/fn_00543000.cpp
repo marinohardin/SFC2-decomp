@@ -93,5 +93,6 @@ bool fn_005430ad_owner::fn_00543132()
 // FUNCTION: STARFLEETOP 0x0054313e
 bool fn_005430ad_owner::fn_0054313e()
 {
-	return m114_7 ? true : false;
+	// HYPOTHESIS: byte-level read of the flag; shr remains instead of test/setne.
+	return (((unsigned char *)this)[0x114] & 0x80) ? true : false;
 }
