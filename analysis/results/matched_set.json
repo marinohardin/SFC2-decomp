@@ -2467,6 +2467,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436306": {
+   "name": "tValueCountMap<tPath,twPath,std::less<tPath>_>::tValueCountMap<tPath,twPath,std::less<tPath>_>",
+   "symbol": "??0?$tCookieManager@VtPath@@VtwPath@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

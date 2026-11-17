@@ -143,3 +143,10 @@ tCookieManager<tDir,twDir>::tCookieManager()
 {
 	f_00 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00436306
+template <>
+tCookieManager<tPath,twPath>::tCookieManager()
+{
+	f_00 = 0;
+}
