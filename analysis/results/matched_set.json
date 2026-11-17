@@ -4983,8 +4983,8 @@
    "symbol": "?vfunction16@tSFCPlayer@@UAEXI@Z",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 181,
-   "score": 41.529,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x004e1e8f": {

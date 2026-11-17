@@ -838,12 +838,13 @@ void tSFCPlayer::vfunction16(unsigned param_1)
 {
 	if (param_1 < (unsigned)m_30) {
 		for (unsigned i = param_1; i < 5; i++) {
-			m_40[i] = m_40[i + 1];
-			m_58[i] = m_58[i + 1];
-			strcpy(m_70[i], m_70[i + 1]);
-			m_130[i] = m_130[i + 1];
-			m_220[i] = m_220[i + 1];
-			m_238[i] = m_238[i + 1];
+			unsigned next = i + 1;
+			m_40[i] = m_40[next];
+			m_58[i] = m_58[next];
+			strcpy(m_70[i], m_70[next]);
+			m_130[i] = m_130[next];
+			m_220[i] = m_220[next];
+			m_238[i] = m_238[next];
 		}
 		m_30--;
 	}
