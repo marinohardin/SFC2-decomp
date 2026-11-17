@@ -16,7 +16,10 @@ struct vfunction33_result
 
     char pad00[0x1c];
     int field_1c;
-    char pad20[0x60 - 0x20];
+    char pad20[0x5d - 0x20];
+    // HYPOTHESIS: a flag; tShuttleBaySystem's 0x0044ea7e skips its recall step while it is set.
+    bool field_5d;
+    char pad5e[0x60 - 0x5e];
     // HYPOTHESIS: a fleet ID; 0x0043e0ed passes it to fn_004274f4.
     int field_60;
     char pad64[0x110 - 0x64];

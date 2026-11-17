@@ -5563,6 +5563,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044ea7e": {
+   "name": "FUN_0044ea7e",
+   "symbol": "?fn_0044ea7e@tShuttleBaySystem@@QAEXXZ",
+   "unit": "unsorted/tShuttleBaySystem.cpp",
+   "size": 540,
+   "score": 79.815,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",

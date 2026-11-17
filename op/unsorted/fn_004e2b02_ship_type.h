@@ -4,6 +4,23 @@
 #ifndef fn_004e2b02_ship_type_h
 #define fn_004e2b02_ship_type_h 1
 
+// HYPOTHESIS: the object slot 86 of the object below returns; tShuttleBaySystem's 0x0044ea7e
+// reads a count from its slot 9.
+class fn_004e2b02_ad4_slot86_result
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual int vfunction10();
+};
+
 // HYPOTHESIS: the object at offset 0xad4 of the ship 0x004e2b02 reads; slot 43 (offset 0xac)
 // and slot 160 (offset 0x280) are two tests on it. Its class is not known.
 class fn_004e2b02_field_ad4_type
@@ -95,7 +112,8 @@ public:
     virtual void vfunction84();
     virtual void vfunction85();
     virtual void vfunction86();
-    virtual void vfunction87();
+    // HYPOTHESIS: slot 86 may return null (0x0044ea7e tests it once).
+    virtual fn_004e2b02_ad4_slot86_result* vfunction87();
     virtual void vfunction88();
     virtual void vfunction89();
     virtual void vfunction90();
@@ -170,6 +188,13 @@ public:
     virtual void vfunction159();
     virtual void vfunction160();
     virtual bool vfunction161();
+    virtual void vfunction162();
+    virtual void vfunction163();
+    virtual void vfunction164();
+    // HYPOTHESIS: slots 164 and 165 read and set an owner id; 0x0044ea7e sets it to the
+    // shuttle bay owner's id when they differ.
+    virtual int vfunction165();
+    virtual void vfunction166(int param_1);
 };
 
 // HYPOTHESIS: the ship that slot 32 of a ship system returns, as 0x004e2b02 reads it: slot 31
@@ -201,7 +226,8 @@ public:
     virtual void vfunction21();
     virtual void vfunction22();
     virtual void vfunction23();
-    virtual void vfunction24();
+    // HYPOTHESIS: slot 23 returns a float that 0x0044ea7e compares with a constant.
+    virtual float vfunction24();
     virtual void vfunction25();
     virtual void vfunction26();
     virtual void vfunction27();

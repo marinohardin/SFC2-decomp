@@ -52,11 +52,19 @@ public:
     virtual std::string vfunction112(short param_1);
     // HYPOTHESIS: vftable slot 113; stores a copy of param_2 into element param_1 of field_2d8.
     virtual void vfunction113(short param_1, std::string param_2);
-    // HYPOTHESIS: the slots between 111 and 116 are not recovered; vfunction116 is the
-    // analysis's name. Returns element param_1 of an int array.
+    virtual void vfunction114();
+    virtual void vfunction115();
+    // vftable slot 115; returns element param_1 of an int array.
     virtual int vfunction116(int param_1);
-    // vftable slot 117; returns element param_1 of an int array.
+    // vftable slot 116; returns element param_1 of an int array.
     virtual int vfunction117(int param_1);
+    virtual void vfunction118();
+    virtual void vfunction119();
+    // HYPOTHESIS: slots 119 and 120 take an index and field_4cc; 0x0044ea7e calls slot 119 for
+    // the four entries of field_3a8 and slot 120 for the 32 of field_1c8.
+    virtual void vfunction120(int param_1, int param_2);
+    virtual void vfunction121(int param_1, int param_2);
+    virtual void vfunction122();
     // HYPOTHESIS: the analysis's name; sets field_a0's value and resets the three 32-entry
     // arrays at +0x148, +0x1c8 and +0x248.
     virtual void vfunction123(long param_1);
@@ -87,11 +95,17 @@ public:
     virtual int vfunction135(int param_1);
     // vftable slot 136; returns element param_1 of the array vfunction133 stores into.
     virtual int vfunction136(int param_1);
+    // HYPOTHESIS: drops the ids in field_80 whose ship still exists and, once it is empty,
+    // checks the ships of field_3a8 and field_1c8.
+    void fn_0044ea7e();
+    // HYPOTHESIS: takes an index into field_3a8 and a state; 0x0044ea7e passes 4.
+    void fn_0044fb1f(int param_1, int param_2);
 
     int field_7c;
     // HYPOTHESIS: a list of owned objects; the destructor (0x0044e844) destroys it with the
     // out-of-line list destructor 0x005d6a72, as the one at +0x4f0.
-    std::list<tObject_0044e844_item*> field_80;
+    // 0x0044ea7e passes its elements to the entity lookup: entity ids.
+    std::list<int> field_80;
     // HYPOTHESIS: a 0x10-byte vector of 32-bit values; its destructor is 0x00571a7a.
     std::vector<int> field_8c;
     int field_9c;
@@ -120,9 +134,9 @@ public:
     // HYPOTHESIS: an int array indexed by vfunction133; its length is not recovered.
     int field_128[1];
     char pad12c[0x138 - 0x12c];
-    // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
-    int field_138[1];
-    char pad13c[0x148 - 0x13c];
+    // HYPOTHESIS: four ints, one per entry of field_3a8, indexed by vfunction116; 0x0044ea7e
+    // stores a count from each ship into it.
+    int field_138[4];
     // HYPOTHESIS: 32 flags; vfunction123 sets the first field_a0 of them.
     int field_148[32];
     // HYPOTHESIS: 32 entity IDs; the destructor passes 0 to slot 68 of the ship of each.
@@ -144,7 +158,10 @@ public:
     tMinMaxFloat field_3dc;
     tMinMaxFloat field_400;
     tMinMaxFloat field_424;
-    char pad448[0x4d8 - 0x448];
+    char pad448[0x4cc - 0x448];
+    // HYPOTHESIS: passed with an index to slots 119 and 120 by 0x0044ea7e.
+    int field_4cc;
+    char pad4d0[0x4d8 - 0x4d0];
     // HYPOTHESIS: four weights; vfunction17 multiplies field_e8, field_f4, field_a0's value and
     // field_c4's value by them.
     int field_4d8;
