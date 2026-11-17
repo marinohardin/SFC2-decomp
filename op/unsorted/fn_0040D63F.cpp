@@ -811,3 +811,10 @@ void fn_0040e5cd(char* a, char* b, fn_0040d63f_Buf& buf)
     strcpy(b, text + strlen(format));
 }
 
+// FUNCTION: STARFLEETOP 0x0040e631
+void fn_0040e631(char* text, fn_0040d63f_Buf& buf)
+{
+    buf.fn_0040d815();
+    buf.fn_0040e744(text);
+}
+
