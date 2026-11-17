@@ -581,3 +581,17 @@ void fn_0040df66(char* name, char* value, fn_0040d63f_Buf& buf)
     *value = (char)n;
 }
 
+// FUNCTION: STARFLEETOP 0x0040dfcd
+void fn_0040dfcd(char* name, unsigned char* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    unsigned long n;
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = %lu");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, &n);
+    *value = (unsigned char)n;
+}
+
