@@ -512,6 +512,7 @@ class fn_00460b3b_part
 public:
 	~fn_00460b3b_part();
 	void fn_004d2c0c();
+	fn_tree_iterator_1c fn_00460d3b(fn_tree_iterator_1c first, fn_tree_iterator_1c last);
 	char m_0x00[4];
 	fn_tree_node_1c* m_0x04; // head node
 	char m_0x08[0xc];
@@ -866,4 +867,10 @@ void fn_00460acb_base::fn_004d2be4()
 void fn_00460b03_part::fn_004d2bf8()
 {
 	fn_00460cc7(fn_tree_iterator_10(m_0x04->m_0x00), fn_tree_iterator_10(m_0x04));
+}
+
+// FUNCTION: STARFLEETOP 0x004d2c0c
+void fn_00460b3b_part::fn_004d2c0c()
+{
+	fn_00460d3b(fn_tree_iterator_1c(m_0x04->m_0x00), fn_tree_iterator_1c(m_0x04));
 }
