@@ -180,3 +180,9 @@ bool tBaseWeapon::fn_004d76f8()
         return field_2c->vfunction143();
     return false;
 }
+
+// FUNCTION: STARFLEETOP 0x004d770a
+void tBaseWeapon::vfunction112(float param_1)
+{
+    field_148.fn_004d7099(param_1);
+}

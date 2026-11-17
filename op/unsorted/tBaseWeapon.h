@@ -18,6 +18,13 @@ struct fn_004e1e99_arg
     int field_0c;
 };
 
+// HYPOTHESIS: the part at tBaseWeapon offset 0x148; only its method 0x004d7099 is known.
+struct fn_004d7099_type
+{
+    char data[4];
+    void fn_004d7099(float param_1);
+};
+
 // HYPOTHESIS: tBaseWeapon's constructor (0x004d70eb) takes the first constructor argument.
 // Its bases (tRepairableShipSystem, tIndividualShipSystem, tListMember) are declared only
 // inside game/unsorted/tCloakSystem.cpp, so they are not repeated here.
@@ -160,7 +167,7 @@ public:
     // HYPOTHESIS: slots 112 to 133 are placeholders that only fix the position of slot 134
     // (offset 0x214), a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
     // tPhaserBank overrides at 0x004e25c0.
-    virtual void vfunction112();
+    virtual void vfunction112(float param_1);
     virtual void vfunction113();
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
     virtual void vfunction115();
@@ -216,6 +223,9 @@ public:
     int field_e8;
     char pad_ec[0xc];
     int field_f8;
+    char pad_fc[0x4c];
+    // HYPOTHESIS: a part at offset 0x148 whose method 0x004d7099 takes a float.
+    fn_004d7099_type field_148;
     // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
     void fn_004d74f6();
     bool fn_004d76f8();
