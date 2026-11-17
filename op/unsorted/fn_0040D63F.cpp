@@ -1,3 +1,5 @@
+#include "Tiger/tstring.h"
+
 // HYPOTHESIS: a buffer-like class; the constructor allocates param_1 bytes and sets up a cursor.
 class fn_0040d63f_Buf
 {
@@ -7,6 +9,7 @@ public:
     void fn_0040d692();
     fn_0040d63f_Buf* fn_0040d6b7(int* src);
     fn_0040d63f_Buf* fn_0040d705(int* src);
+    fn_0040d63f_Buf* fn_0040d73e(tString* str);
     // HYPOTHESIS: 0x0040d867 is a member of this buffer class taking (data, size, count).
     void fn_0040d867(void* data, int size, int count);
     int m00;
@@ -77,5 +80,15 @@ fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d705(int* src)
     fn_0040d867(&p, 4, 1);
     p = (int*)src[1];
     fn_0040d867(&p, 4, 1);
+    return this;
+}
+
+// FUNCTION: STARFLEETOP 0x0040d73e
+fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d73e(tString* str)
+{
+    iBasicStringElement* p = str->mWideStr();
+    int len = str->mStrLen();
+    for (int i = 0; i < len + 1; i++)
+        fn_0040d867(&p[i], 2, 1);
     return this;
 }
