@@ -115,6 +115,7 @@ public:
 	// HYPOTHESIS: copies the text after the separator g_00844ec4, or all of it; types are guesses.
 	void fn_00468677(c_00468677_source *source, tString &out);
 	void fn_004686f6();
+	bool fn_004688a9();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 	// HYPOTHESIS: hands the address field a named value; the types are guesses.
@@ -130,7 +131,9 @@ public:
 	char m12[2];
 	int m14;
 	unsigned char m18;
-	char m19[0x1c - 0x19];
+	unsigned char m19;
+	unsigned char m1a;
+	unsigned char m1b;
 	tValueI< tString > m1c;
 	tValueI< tString > m5c;
 	// HYPOTHESIS: four more value objects, as the strings at +0x134 and +0x174 suggest.
@@ -366,7 +369,7 @@ bool tState_GameConnections::fn_0046858a()
 	if (m1e0 == 0)
 		m1e0 = fn_004d3446(0x1001b);
 	fn_004688ee(m1e0, "ModemAddress", 0);
-	m19[0] = 0;
+	m19 = 0;
 	m12[0] = 1;
 	return result;
 }
@@ -451,6 +454,18 @@ void tState_GameConnections::fn_004686f6()
 			}
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004688a9
+bool tState_GameConnections::fn_004688a9()
+{
+	fn_004d3331(g_00844eb4);
+	fn_004d346f(g_00844ec0, g_00844eb4);
+	bool result = gNetControl.fn_004325a9(4);
+	fn_004686f6();
+	m1b = 0;
+	m1a = 1;
+	return result;
 }
 
 }
