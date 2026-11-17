@@ -64,6 +64,7 @@ public:
 	bool vfunction11(tPoint3 *out, const char *name);
 	int vfunction12();
 	bool vfunction13(tPoint3 *out, const char *name, unsigned int index);
+	unsigned int vfunction14(const char *name);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -230,4 +231,18 @@ bool t3DVisual_Model::vfunction13(tPoint3 *out, const char *name, unsigned int i
 		}
 	}
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fb9c
+unsigned int t3DVisual_Model::vfunction14(const char *name)
+{
+	if (name != 0 && *name != 0)
+	{
+		for (tNode_0042f467 *node = m184; node != 0; node = node->mNext)
+		{
+			if (stricmp(node->mName, name) == 0)
+				return node->mCount;
+		}
+	}
+	return 0;
 }
