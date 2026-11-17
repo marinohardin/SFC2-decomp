@@ -60,7 +60,7 @@ public:
     virtual void vfunction40() = 0;
     virtual tMinMaxFloat* vfunction41() = 0;
     virtual tValue<float>* vfunction42() = 0;
-    virtual void vfunction43() = 0;
+    virtual bool vfunction43() = 0;
     virtual bool vfunction44() = 0;
     virtual void vfunction45( bool param_1 ) = 0;
     virtual void vfunction46() = 0;

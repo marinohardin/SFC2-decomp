@@ -141,6 +141,7 @@ public:
     virtual tMinMaxFloat* vfunction38();
     virtual tMinMaxFloat* vfunction41();
     virtual tValue<float>* vfunction42();
+    virtual bool vfunction43();
     virtual bool vfunction44();
     virtual void vfunction45( bool param_1 );
     virtual tShipSystemManager* vfunction53();

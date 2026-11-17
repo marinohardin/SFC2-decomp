@@ -60,7 +60,7 @@ public:
     virtual void vfunction40();
     virtual tMinMaxFloat* vfunction41();
     virtual tValue<float>* vfunction42();
-    virtual void vfunction43();
+    virtual bool vfunction43();
     virtual bool vfunction44();
     virtual void vfunction45( bool param_1 );
     virtual void vfunction46();
@@ -148,10 +148,10 @@ public:
     virtual void vfunction128();
     virtual void vfunction129();
     virtual void vfunction130();
-    virtual void vfunction131();
+    virtual tMinMaxFloat* vfunction131();
     virtual float vfunction132();
     virtual void vfunction133();
-    virtual void vfunction134();
+    virtual float vfunction134();
     virtual void vfunction135();
     virtual void vfunction136();
     virtual void vfunction137();

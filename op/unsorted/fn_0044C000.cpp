@@ -1133,3 +1133,16 @@ float tShipSystemsExt::vfunction134()
 {
 	return m73c;
 }
+
+// HYPOTHESIS: slot 85 returns a pointer to an object with a bool flag at +0x18c; its type is
+// not recovered, so the flag is read through the int the slot is declared with.
+// FUNCTION: STARFLEETOP 0x0044ceb0
+bool tShipSystemsExt::vfunction43()
+{
+	int system = vfunction85();
+	if ( system == 0 )
+	{
+		return false;
+	}
+	return *(bool*)( system + 0x18c );
+}
