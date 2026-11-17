@@ -924,6 +924,16 @@ void fn_0040e7c4(short* p, fn_0040d63f_Buf& buf, unsigned char flags)
         fn_0040dc4a(p, buf);
 }
 
+// HYPOTHESIS: unsigned char counterpart of fn_0040e7c4.
+// FUNCTION: STARFLEETOP 0x0040e7e3
+void fn_0040e7e3(unsigned char* p, fn_0040d63f_Buf& buf, unsigned char flags)
+{
+    if (flags & 2)
+        fn_0040dc67(p, buf);
+    else
+        fn_0040dc84(p, buf);
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int fn_0040d63f_Buf::fn_0040e70f(char* text)
 {
