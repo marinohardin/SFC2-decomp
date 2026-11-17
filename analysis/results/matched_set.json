@@ -2512,6 +2512,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040ec4c": {
+   "name": "FUN_0040ec4c",
+   "symbol": "?fn_0040ec4c@@YAXPANAAVtSFCStream@@EPAD@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
