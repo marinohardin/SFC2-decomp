@@ -149,7 +149,13 @@ public:
     void fn_0040499a(fn_00404230_Item* item, int n);
     void fn_00404a0c();
     fn_00404230_Obj* fn_00404267();
-    char pad0[0x50];
+    std::locale getloc() const;
+    char pad0[0x38];
+    std::codecvt<char, char, int>* m38;
+    char pad3c[0x08];
+    std::string* m44;
+    char pad48[0x04];
+    std::locale m4c;
     unsigned long m50;
 };
 
@@ -435,4 +441,15 @@ void fn_0040499a_Obj::fn_0040499a(char** _P, int _M)
     int t = g_00c81934;
     m38 = 0;
     m3c = t;
+}
+
+// FUNCTION: STARFLEETOP 0x00404a0c
+void fn_00404230_Obj::fn_00404a0c()
+{
+    m38 = (std::codecvt<char, char, int>*)&std::use_facet(getloc(), (std::codecvt<char, char, int>*)0, true);
+    m4c = std::_ADDFAC(m4c, m38);
+    if (m38->always_noconv())
+        m38 = 0;
+    if (m44 == 0)
+        m44 = new std::string;
 }
