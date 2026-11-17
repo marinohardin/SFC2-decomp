@@ -120,7 +120,7 @@ public:
 	virtual void vfunction46();
 	virtual void vfunction47();
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
-	virtual void vfunction49();
+	virtual void vfunction49( nDatabase::tDatabaseObject* object );
 	virtual void vfunction50();
 	virtual void vfunction51();
 	virtual void vfunction52();
@@ -743,4 +743,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction48( tCampaignInfo* 
 	nDatabase::tDatabaseObjectUpdate update( *campaignInfo );
 	fDatabase->UpdateObject( update );
 	nSwitch::tSwitch::fn_00713b20()->fn_00714020( fn_005d27f1()->fn_005d3679().Get(), 0, campaignInfo );
+}
+
+// HYPOTHESIS: the record comes by pointer and is written back as an update; its type is not known.
+// FUNCTION: STARFLEETOP 0x0056e1b3
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction49( nDatabase::tDatabaseObject* object )
+{
+	nDatabase::tDatabaseObjectUpdate update( *object );
+	fDatabase->UpdateObject( update );
 }
