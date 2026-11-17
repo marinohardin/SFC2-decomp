@@ -738,7 +738,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
 			fn_004776d7("JoinStatus", 1);
 	}
 }
-
+// FUNCTION: STARFLEETOP 0x004777dd
 // FUNCTION: STARFLEETOP 0x004777d3
 tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 
