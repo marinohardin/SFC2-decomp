@@ -95,3 +95,24 @@ std::string& std::string::insert(size_type _P0, size_type _M, char _C)
 
 // HYPOTHESIS: a caller in the original uses this instantiation.
 std::string& (std::string::*g_fn_00403c1a)(std::string::size_type, std::string::size_type, char) = &std::string::insert;
+
+// FUNCTION: STARFLEETOP 0x00403c99
+std::string& std::string::erase(size_type _P0, size_type _M)
+{
+    if (_Len < _P0)
+        _Xran();
+    if (_Len - _P0 < _M)
+        _M = _Len - _P0;
+    if (0 < _M)
+    {
+        _Freeze();
+        std::char_traits<char>::move(_Ptr + _P0, _Ptr + _P0 + _M, _Len - _P0 - _M);
+        size_type _N;
+        if (_Grow(_N = _Len - _M))
+            _Eos(_N);
+    }
+    return (*this);
+}
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+std::string& (std::string::*g_fn_00403c99)(std::string::size_type, std::string::size_type) = &std::string::erase;
