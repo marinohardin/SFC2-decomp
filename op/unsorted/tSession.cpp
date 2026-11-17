@@ -68,6 +68,9 @@ public:
 	int	fn_00691fd0();
 	void	fn_0068f480();
 	void	fn_006910a0( int align );
+	void	fn_006909f0();
+	void	fn_00691ed0();
+	void	fn_00691270();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -370,4 +373,13 @@ void tHtmlParser::fn_00690900()
 		fn_006910a0( align );
 		f_92 = ' ';
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006909f0
+void tHtmlParser::fn_006909f0()
+{
+	f_40->fn_0068db60();
+	fn_00691ed0();
+	fn_00691270();
+	f_92 = ' ';
 }
