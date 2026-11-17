@@ -175,6 +175,7 @@ class fn_0042a480_object
 {
 public:
 	void FUN_0042a480();
+	void FUN_0042a4f7( std::string value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -191,4 +192,10 @@ void fn_0042a480_object::FUN_0042a480()
 	field_0c = value.FUN_006cf6a0();
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a4f7
+void fn_0042a480_object::FUN_0042a4f7( std::string value )
+{
+	field_0c = value;
 }
