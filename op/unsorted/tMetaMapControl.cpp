@@ -519,3 +519,25 @@ void tMetaMapControl::fn_005e3d73()
 		field_184[ i + 18 ] = fn_005e3f82( g_00c38f28, i );
 	field_184[ 24 ] = fn_005e3f82( g_00c38f18, 0 );
 }
+
+extern std::string g_00c38fa8;
+extern std::string g_00c38f98;
+extern std::string g_00c38f88;
+extern std::string g_00c38f78;
+extern std::string g_00c38f68;
+
+// FUNCTION: STARFLEETOP 0x005e3e48
+void tMetaMapControl::fn_005e3e48()
+{
+	int i;
+	field_194.assign( 0x19, 0 );
+	for ( i = 0; i < 6; i++ )
+		field_194[ i ] = fn_005e3f82( g_00c38fa8, i );
+	for ( i = 0; i < 6; i++ )
+		field_194[ i + 12 ] = fn_005e3f82( g_00c38f98, i );
+	for ( i = 0; i < 6; i++ )
+		field_194[ i + 6 ] = fn_005e3f82( g_00c38f88, i );
+	for ( i = 0; i < 6; i++ )
+		field_194[ i + 18 ] = fn_005e3f82( g_00c38f78, i );
+	field_194[ 24 ] = fn_005e3f82( g_00c38f68, 0 );
+}
