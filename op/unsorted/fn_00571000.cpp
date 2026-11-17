@@ -57,11 +57,12 @@ public:
 class fn_00571018_owner {
 public:
 	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7(); virtual long vfunction8(long a); virtual void vfunction9();
-	void AddObjectToDBIndex(fn_00571018_object* pActualObject, iAllocatorID allocID);
+	void AddObjectToDBIndex(fn_00571018_object* pActualObject, iAllocatorID allocID); void fn_0054e4dc(long a);
 	void fn_00571018(fn_00571018_object* pObject);
 	void fn_0057118e(fn_00571018_object* pObject);
 	void fn_00571304(fn_00571018_object* pObject);
-	void fn_0057147a(fn_00571018_object* pObject); void fn_005715f0(long a, fn_00571018_owner* b); void fn_0054e4dc(long a);
+	void fn_0057147a(fn_00571018_object* pObject);
+	void fn_005715f0(long a, fn_00571018_owner* b);
 	tOptex fAccess;
 	char fn_00571018_pad[0x40 - 4 - sizeof(tOptex)];
 	fn_00571018_storage* fDatabaseStorage;
@@ -90,7 +91,6 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 #line 161 "fn_00571000.cpp"
 	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
-
 	pActualObject->SetLockID(0);
 
 	AddObjectToDBIndex(pActualObject, allocID);
@@ -268,7 +268,6 @@ class fn_005716e0_target {
 public:
 	std::string fn_get();
 };
-
 // FUNCTION: STARFLEETOP 0x005716e0
 // HYPOTHESIS: the long at +8 is a thiscall function pointer returning a std::string, applied to
 // the long at +0xc plus the argument.
@@ -287,22 +286,23 @@ public:	fn_00571734_point(const fn_00571734_point &other);
 // HYPOTHESIS: a second class on the base of 0x00571676 (vtable 0x007b2ba8), holding a tHexPoint at +0x10 copied from the by-value parameter.
 class fn_00571734_owner : public fn_00571676_base {
 public:	fn_00571734_owner(long a, long b, fn_00571734_point p);
-	fn_00571734_point fn_00571734_pt;	bool fn_00571786(int a); };
-// MATCH-ONLY: kept compact so the unit ends before line 303 (0x0057147a's first line record).
+	fn_00571734_point fn_00571734_pt;
+	bool fn_00571786(int a);
+};
 // FUNCTION: STARFLEETOP 0x00571734
 fn_00571734_owner::fn_00571734_owner(long a, long b, fn_00571734_point p)
 	: fn_00571676_base(a, b), fn_00571734_pt(p)
 {}
 // FUNCTION: STARFLEETOP 0x00571786
 bool fn_00571734_owner::fn_00571786(int a)
-{ typedef fn_00571734_point (fn_005716e0_target::*fn_get_t)(); bool same = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))() == fn_00571734_pt; return same ? true : false; }
-class fn_00715ac0_object { public: char fn_00715ac0(long v); }; class fn_005717d6_owner : public fn_00571676_base { public: long fn_005717d6_v; bool fn_005717d6(int a); };
+{ typedef fn_00571734_point (fn_005716e0_target::*fn_get_t)(); bool same = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))() == fn_00571734_pt; return same ? true : false; } class fn_00715ac0_object { public: char fn_00715ac0(long v); };
+class fn_005717d6_owner : public fn_00571676_base {
+public:	long fn_005717d6_v;
+	bool fn_005717d6(int a);
+};
 // FUNCTION: STARFLEETOP 0x005717d6
 // HYPOTHESIS: the getter returns an object pointer and 0x00715ac0 is a thiscall on it.
 bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef fn_00715ac0_object* (fn_005716e0_target::*fn_t)(); fn_00715ac0_object* o = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_t*)&fn_00571676_a))(); char r = o->fn_00715ac0(v); bool same = r != 0; return same ? true : false; }
-
-
-
 #include <map>
 #include <vector>
 // HYPOTHESIS: a count query on the database: the owner's map (at +0x18) lists the objects of
@@ -555,8 +555,8 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 }
 class fn_00571a58_inner;
 class fn_00571e33_elem;
-class fn_00571a58_owner {	public:
-	char fn_00571a58_pad[4];
+class fn_00571a58_owner {
+public:	char fn_00571a58_pad[4];
 	fn_00571a58_inner* fn_00571a58_first;
 	fn_00571a58_inner* fn_00571a58_ptr;
 	fn_00571a58_inner* fn_00571a58_limit;
