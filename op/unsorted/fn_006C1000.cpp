@@ -52,3 +52,29 @@ void fn_006c1490(unsigned char *digest, char *output)
 	for (i = 0; i < 16; i++, output += 2)
 		sprintf(output, "%02x", digest[i]);
 }
+
+// HYPOTHESIS: an 88-byte digest context (four state words, a two-word bit count and a
+// 64-byte block buffer), as the callees below use it.
+struct fn_006c0900_ctx
+{
+	unsigned long state[4];
+	unsigned long count[2];
+	unsigned char buffer[64];
+};
+
+void fn_006c0900(fn_006c0900_ctx *context);
+void fn_006c0930(fn_006c0900_ctx *context, unsigned char *input, unsigned int inputLen);
+void fn_006c09e0(unsigned char *digest, fn_006c0900_ctx *context);
+
+// HYPOTHESIS: digests a buffer and writes the digest as 32 hex characters.
+// FUNCTION: STARFLEETOP 0x006c14c0
+void fn_006c14c0(unsigned char *input, unsigned int inputLen, char *output)
+{
+	fn_006c0900_ctx context;
+	unsigned char digest[16];
+
+	fn_006c0900(&context);
+	fn_006c0930(&context, input, inputLen);
+	fn_006c09e0(digest, &context);
+	fn_006c1490(digest, output);
+}
