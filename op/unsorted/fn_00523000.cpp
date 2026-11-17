@@ -558,3 +558,11 @@ tObject_005237dc::tObject_005237dc(int aShipID)
 tObject_005237dc::~tObject_005237dc()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x005238aa
+int tObject_005237dc::fn_005238aa(void *aValue)
+{
+	int index = m_34cc.size();
+	m_34cc.fn_00571a69(aValue);
+	return index;
+}

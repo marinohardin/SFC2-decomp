@@ -37,12 +37,14 @@ class tObject_005237dc_Vector
 {
 public:
 	~tObject_005237dc_Vector();
+	void fn_00571a69(void *const &value); // HYPOTHESIS: the append tPanelMgr's vectors use
+	unsigned int size() const;
 
 	bool m_00;
 	char m_01[3];
-	int m_04;
-	int m_08;
-	int m_0c;
+	void **m_04;
+	void **m_08;
+	void **m_0c;
 };
 
 class tExtraEnergyRequest;
@@ -58,6 +60,7 @@ public:
 	void fn_00523c41(int aMode); // HYPOTHESIS: takes a mode; 0x0051e454 passes 2 while the ship is in a formation, else 0.
 	void fn_00523ad3(); // HYPOTHESIS: 0x0051e613 calls it before it chooses a selector; nothing returned is used.
 	void fn_00523afd(tObject_00528a11 *aSelector); // HYPOTHESIS: takes the selector 0x0051e613 chose (the object at 0x35c8 of tAICaptain).
+	int fn_005238aa(void *aValue); // HYPOTHESIS: appends to the vector at +0x34cc and returns the index it got.
 
 	float m_00[4];
 	tObject_005237d1 m_10[25];
@@ -74,5 +77,10 @@ public:
 	tObject_005237dc_Vector m_34cc;
 	int m_34dc;
 };
+
+inline unsigned int tObject_005237dc_Vector::size() const
+{
+	return m_04 == 0 ? 0 : m_08 - m_04;
+}
 
 #endif
