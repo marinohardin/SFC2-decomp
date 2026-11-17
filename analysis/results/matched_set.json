@@ -6193,6 +6193,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0056ffc5": {
+   "name": "FUN_0056ffc5",
+   "symbol": "??1?$tQuery@VtNewsStory@@@nDatabase@@UAE@XZ",
+   "unit": "unsorted/fn_0056F000.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
