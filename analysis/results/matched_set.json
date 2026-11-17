@@ -2872,6 +2872,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042ccfa": {
+   "name": "FUN_0042ccfa",
+   "symbol": "_$E26",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

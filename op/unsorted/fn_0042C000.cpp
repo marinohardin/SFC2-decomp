@@ -817,5 +817,6 @@ std::string g_008f5330 = "@";
 
 // HYPOTHESIS: a global std::string at 0x008f5318 initialised from the literal at 0x0083e2ac; its
 // users and name are not identified.
+// FUNCTION: STARFLEETOP 0x0042ccfa
 // FUNCTION: STARFLEETOP 0x0042ccc7
 std::string g_008f5318 = "@@";
