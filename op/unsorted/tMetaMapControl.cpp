@@ -572,3 +572,28 @@ c_tScrollBar_FieldA8 *tMetaMapControl::fn_005e3f82( const std::string &name, int
 	assert( found );
 	return g_00c69100.fn_00677380( found->field_128[ index ] );
 }
+
+// FUNCTION: STARFLEETOP 0x005e3fdd
+void tMetaMapControl::vfunction8( const tRect *area )
+{
+	tObjBase::vfunction8( area );
+	tRect clipped( field_34.left, field_34.top, field_34.right, field_34.bottom );
+	clipped.mClip( area );
+	field_1dc = *area;
+	field_1e4 = (int)&field_1dc;	// HYPOTHESIS: +0x1e4 points at the area kept at +0x1dc.
+	// HYPOTHESIS: the int the three drawing passes hand down is this clipped area (0x005e374b
+	// reads it as one).
+	switch ( field_1c4 )
+	{
+	case 0:
+		fn_005e32d7( (int)&clipped );
+		break;
+	case 1:
+		fn_005e33f4( (int)&clipped );
+		break;
+	case 2:
+		fn_005e3511( (int)&clipped );
+		break;
+	}
+	fn_005e361d( &clipped );
+}

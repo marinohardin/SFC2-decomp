@@ -130,7 +130,9 @@ public:
 	virtual int vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7( int x, int y );	// HYPOTHESIS: places the object at a position (the fleet entry's 0x004c2f74)
-	virtual void vfunction8();
+	// HYPOTHESIS: +0x1c draws the object inside the area given (0x0067d040); tMetaMapControl's
+	// override (0x005e3fdd) calls it first with its own area.
+	virtual void vfunction8( const tRect *area );
 	virtual void vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
