@@ -40,6 +40,31 @@ long fn_004d315e( long arg1, long arg2, long arg3, long arg4 )
 	return g_0092e4a0.fn_004d482a( arg1, arg2, arg3, arg4 );
 }
 
+// HYPOTHESIS: tMainStage's layout is not recovered; only its constructor (0x004d3b9f) and
+// polymorphism are known from this derived constructor.
+class tMainStage
+{
+public:
+	tMainStage();
+	virtual void vfunction0();
+};
+
+// HYPOTHESIS: tUIStage's members up to 0x53c are not recovered.
+class tUIStage : public tMainStage
+{
+public:
+	tUIStage();
+	virtual void vfunction0();
+	char pad_04[0x53c - 4];
+	long m53c;
+};
+
+// FUNCTION: STARFLEETOP 0x004d3b74
+tUIStage::tUIStage()
+{
+	m53c = 0;
+}
+
 // HYPOTHESIS: the global at 0x009254f8 is the object whose method 0x004bf6b9 takes two longs;
 // its class is declared only inside fn_004D2000.cpp (fn_004cb4a7_target).
 class fn_004d3ef7_object;
