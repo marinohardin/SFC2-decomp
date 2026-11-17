@@ -147,6 +147,8 @@ bool fn_0040233b_Object::fn_0040233b(std::string text, int arg)
 
 // HYPOTHESIS: an object with two int members at +0x20 and +0x24 whose change
 // triggers three helper calls; the helpers are not written yet.
+class fn_00402407_A;
+
 class fn_004023bb_Sub
 {
 public:
@@ -154,12 +156,43 @@ public:
     int m04;
     int m08;
     void fn_00404044(int a, int b);
+    void fn_00402d77(fn_00402407_A* item);
 };
+
+// HYPOTHESIS: element of the 0xb8-byte records held between m14 and m18.
+class fn_00402407_A
+{
+public:
+    char m00[0x30];
+};
+
+class fn_00402407_B
+{
+public:
+    char m00[0x70];
+};
+
+class fn_00402407_Item
+{
+public:
+    int m00;
+    int m04;
+    fn_00402407_A m08;
+    int m38;
+    char m3c[0xc];
+    fn_00402407_B m48;
+};
+
+extern char g_0083a3dc[];
+char fn_0040503b(fn_00402407_B* self, char* key);
 
 class fn_004023bb_Object
 {
 public:
-    char m00[0x20];
+    char m00[0x14];
+    fn_00402407_Item* m14;
+    fn_00402407_Item* m18;
+    char m1c[4];
     int m20;
     int m24;
     fn_004023bb_Sub m28;
@@ -178,4 +211,17 @@ fn_004023bb_Sub* fn_004023bb_Object::fn_004023bb(int a, int b)
     fn_00402407(a, b);
     fn_00402452(a, b);
     return sub;
+}
+
+// FUNCTION: STARFLEETOP 0x00402407
+void fn_004023bb_Object::fn_00402407(int a, int b)
+{
+    for (fn_00402407_Item* it = m14; it != m18; it++)
+    {
+        if (b >= it->m38 && a == it->m04)
+        {
+            if (!fn_0040503b(&it->m48, g_0083a3dc))
+                m28.fn_00402d77(&it->m08);
+        }
+    }
 }
