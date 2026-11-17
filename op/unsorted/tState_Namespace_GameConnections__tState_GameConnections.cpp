@@ -61,14 +61,14 @@ extern const char *g_00844eb4;
 // HYPOTHESIS: a pointer to the name "GameConnectionsSelect".
 extern const char *g_00844ea0;
 void fn_004d3564(const char *psz1, const char *psz2, int n);
-// HYPOTHESIS: an entry of the port list fn_004329af returns; 0x0060f6d0 returns its name.
-// tNetControl.cpp declares a class with the same getter only inside that unit.
-class c_004329af_entry
-{
-public:
-	const char *fn_0060f6d0();
-	char m00[0xc];
-};
+// c_004329af_entry is declared in unsorted/tNetControl.h.
+
+
+
+
+
+
+
 
 // HYPOTHESIS: pointers to the names "cCreateGame", "cJoinGame" and "multiplayer".
 extern const char *g_00844eb8;

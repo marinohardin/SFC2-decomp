@@ -48,6 +48,8 @@ c_00468677_source *fn_004d3446(int id);
 extern tString g_00910ac8;
 extern tString g_00910aa0;
 extern tString g_00910a78;
+// HYPOTHESIS: six C strings fn_00476da0 lists in the serial rate control.
+extern char *g_00849550[6];
 
 namespace tState_Namespace_NetSetup
 {
@@ -481,5 +483,35 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476d52(c_00468677_source *
 		fn_00476da0(&found, id);
 		found->vfunction67(1, source);
 		*control = found;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00476da0
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476da0(c_00468677_source **control, int id)
+{
+	(*control)->vfunction50();
+	switch (id)
+	{
+	case 0x10016:
+	case 0x1001c:
+		{
+			std::vector< c_004329af_entry > *ports = gNetControl.fn_004329af();
+			if (ports)
+			{
+				for (c_004329af_entry *entry = ports->begin(); entry != ports->end(); entry++)
+				{
+					tString name(entry->fn_0060f6d0());
+					(*control)->vfunction54(name, -1, 0, -1);
+				}
+			}
+		}
+		break;
+	case 0x1001d:
+		for (int i = 0; i < 6; i++)
+		{
+			tString rate(g_00849550[i]);
+			(*control)->vfunction54(rate, -1, 0, -1);
+		}
+		break;
 	}
 }

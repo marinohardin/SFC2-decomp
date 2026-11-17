@@ -12,7 +12,15 @@ class c_tNetControl_8D00;
 class c_0043127f_node;
 struct tNetMsg;
 struct c_tNetControl_8CC4_entry;	// HYPOTHESIS: defined in tNetControl.cpp, its only user
-class c_004329af_entry;
+
+// HYPOTHESIS: an entry of the port list fn_004329af returns; 0x0060f6d0 returns its name.
+// tNetControl.cpp declares a class with the same getter only inside that unit.
+class c_004329af_entry
+{
+public:
+	const char *fn_0060f6d0();
+	char m00[0xc];
+};
 
 // HYPOTHESIS: a node of the list fn_0043257a returns: the next node, then a name the game
 // state compares with protocol names.
