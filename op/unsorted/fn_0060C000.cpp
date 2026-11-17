@@ -274,9 +274,20 @@ class C_00472518
 public:
     C_00472518();
     ~C_00472518();
-    void fn_0060c892(int value);
+    C_00472518 &operator=(const C_00472518 &other);
+    // HYPOTHESIS: the layout follows the copy at 0x0060c892; member meanings are unknown.
     int m_00;
-    char m_04[0x700];
+    int m_04;
+    int m_08;
+    int m_0c;
+    tString m_10[6];
+    int m_100;
+    int m_104[6];
+    int m_11c[6];
+    int m_134[6];
+    int m_14c[6];
+    tString m_164[18];
+    tString m_434[18];
 };
 
 // HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
@@ -289,7 +300,7 @@ public:
     ~C_0060c7dc();
     void fn_0060ca20();
     void fn_0060ca83(int index);
-    void fn_0060c883(int value);
+    void fn_0060c883(const C_00472518 &value);
     int m_00;
     int m_04;
     std::vector<int> m_08;
@@ -316,7 +327,33 @@ C_0060c7dc::~C_0060c7dc()
 
 // HYPOTHESIS: forwards to the member at +0x24 (add ecx, 0x24); 0x0060c892 is that class's.
 // FUNCTION: STARFLEETOP 0x0060c883
-void C_0060c7dc::fn_0060c883(int value)
+void C_0060c7dc::fn_0060c883(const C_00472518 &value)
 {
-    m_24.fn_0060c892(value);
+    m_24 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x0060c892
+C_00472518 &C_00472518::operator=(const C_00472518 &other)
+{
+    int i;
+    m_00 = other.m_00;
+    m_04 = other.m_04;
+    m_08 = other.m_08;
+    m_0c = other.m_0c;
+    for (i = 0; i < 6; i++)
+        m_10[i] = other.m_10[i];
+    m_100 = other.m_100;
+    for (i = 0; i < 6; i++)
+        m_104[i] = other.m_104[i];
+    for (i = 0; i < 6; i++)
+        m_11c[i] = other.m_11c[i];
+    for (i = 0; i < 6; i++)
+        m_134[i] = other.m_134[i];
+    for (i = 0; i < 6; i++)
+        m_14c[i] = other.m_14c[i];
+    for (i = 0; i < 18; i++)
+        m_164[i] = other.m_164[i];
+    for (i = 0; i < 18; i++)
+        m_434[i] = other.m_434[i];
+    return *this;
 }
