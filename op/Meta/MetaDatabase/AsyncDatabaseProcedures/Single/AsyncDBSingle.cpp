@@ -85,7 +85,7 @@ public:
 	virtual void vfunction14( nDatabase::tID id, tServCharacter* character, int lock );
 	virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
 	virtual bool vfunction16( nDatabase::tID id, tShip* ship );
-	virtual void vfunction17();
+	virtual void vfunction17( std::vector<tMetaMapHex>* hexes );
 	virtual void vfunction18();
 	virtual void vfunction19();
 	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, bool lock );
@@ -436,6 +436,15 @@ bool nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction16( nDatabase::tID 
 	validate( ship );
 	fDatabase->fn_0056f961( id, ship );
 	return true;
+}
+#line 441
+// FUNCTION: STARFLEETOP 0x0056d64f
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction17( std::vector<tMetaMapHex>* hexes )
+{
+#line 636
+	validate( hexes );
+	nDatabase::tQuery<tMetaMapHex> query;
+	fDatabase->fn_0056f83f( query, hexes );
 }
 
 
