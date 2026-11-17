@@ -236,3 +236,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x006a8930	FUN_006a8930	5	fable	92.52	2026-11-17T19:21:38Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 92.52%
 0x006b3f80	FUN_006b3f80	3	fable	91.11	2026-11-17T19:23:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.11%
 0x006f53f0	tOSVersion::Instance	5	fable	99.86	2026-11-17T19:32:07Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.86%
+0x007586c0	tBufFile::mRead	4	fable	98.30	2026-11-17T20:05:48Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 98.30%
