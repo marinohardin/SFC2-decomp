@@ -12,6 +12,7 @@
 class tShuttleBaySystem : public tRepairableShipSystem
 {
 public:
+    virtual ~tShuttleBaySystem();
     virtual void vfunction100();
     virtual void vfunction101();
     // vftable slot 101; returns the address of field_a0.
