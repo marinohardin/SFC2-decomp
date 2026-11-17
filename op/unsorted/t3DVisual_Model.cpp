@@ -48,6 +48,10 @@ public:
 	~tNode_0042f467();
 
 	tNode_0042f467 *mNext;
+	// HYPOTHESIS: a named array of points, as read by 0x0042fb2b.
+	char *mName;
+	tPoint3 *mPoints;
+	unsigned int mCount;
 };
 
 class t3DVisual_Model : public t3DVisual
@@ -59,6 +63,7 @@ public:
 	float vfunction10();
 	bool vfunction11(tPoint3 *out, const char *name);
 	int vfunction12();
+	bool vfunction13(tPoint3 *out, const char *name, unsigned int index);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -204,4 +209,25 @@ bool t3DVisual_Model::vfunction11(tPoint3 *out, const char *name)
 int t3DVisual_Model::vfunction12()
 {
 	return m180;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fb2b
+bool t3DVisual_Model::vfunction13(tPoint3 *out, const char *name, unsigned int index)
+{
+	if (out == 0 || name == 0 || *name == 0)
+		return false;
+	out->x = 0.0f;
+	out->y = 0.0f;
+	out->z = 0.0f;
+	for (tNode_0042f467 *node = m184; node != 0; node = node->mNext)
+	{
+		if (stricmp(node->mName, name) == 0)
+		{
+			if (index >= node->mCount)
+				return false;
+			*out = node->mPoints[index];
+			return true;
+		}
+	}
+	return false;
 }
