@@ -730,3 +730,12 @@ void tMetaMapControl::fn_005e4315( int param_1 )
 	}
 	fn_0045f4c2();
 }
+
+// FUNCTION: STARFLEETOP 0x005e433c
+void tMetaMapControl::fn_005e433c()
+{
+	if ( field_1c8 == 0 )
+		fn_005e326c( true );
+	else
+		fn_005e326c( false );
+}
