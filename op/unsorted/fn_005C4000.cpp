@@ -754,6 +754,7 @@ public:
 	fn_005c478f_Holder* FUN_005c4a06();
 	fn_005c478f_Holder* FUN_005c4a26();
 	fn_005c478f_Holder* FUN_005c4a46();
+	fn_005c478f_Holder* FUN_005c4a66();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1032,6 +1033,20 @@ fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c4a46()
 	value = (fn_005c478f_Holder*)((int)value + 0x140);
 	m04.Leave();
 	// MATCH-ONLY: same two-return shape as FUN_005c4a26 to keep the sum in esi across Leave.
+	if (value)
+		return value;
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c4a66
+fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c4a66()
+{
+	m04.Enter();
+	// HYPOTHESIS: returns the address of the member at offset 0x150, taken under the lock.
+	fn_005c478f_Holder* value = this;
+	value = (fn_005c478f_Holder*)((int)value + 0x150);
+	m04.Leave();
+	// MATCH-ONLY: same two-return shape as FUN_005c4a46 to keep the sum in esi across Leave.
 	if (value)
 		return value;
 	return value;
