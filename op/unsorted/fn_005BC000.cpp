@@ -790,3 +790,81 @@ void fn_005bc1d5_tree::FUN_005bc8e8()
 	_Lmost() = _Head, _Rmost() = _Head;
 	_Size = 0;
 }
+
+// HYPOTHESIS: a 32-byte element of another STL vector; 0x005aae47 is its
+// destructor and 0x005ab4d9 its assignment.
+struct fn_005bc938_elem
+{
+	char m00[0x20];
+
+	void FUN_005aae47();
+	fn_005bc938_elem &FUN_005ab4d9(const fn_005bc938_elem &_X);
+};
+
+// HYPOTHESIS: the library's _Construct(_P, _V) for this element.
+void FUN_005ab4ac(fn_005bc938_elem *_P, const fn_005bc938_elem &_V);
+
+// HYPOTHESIS: an STL vector of 32-byte elements laid out like
+// fn_005bc018_vector.
+struct fn_005bc938_vector
+{
+	char m00;
+	fn_005bc938_elem *_First;
+	fn_005bc938_elem *_Last;
+	fn_005bc938_elem *_End;
+
+	unsigned int size() const
+		{return (_First == 0 ? 0 : _Last - _First); }
+	void _Destroy(fn_005bc938_elem *_F, fn_005bc938_elem *_L)
+		{for (; _F != _L; ++_F)
+			_F->FUN_005aae47(); }
+	fn_005bc938_elem *_Ucopy(const fn_005bc938_elem *_F, const fn_005bc938_elem *_L,
+		fn_005bc938_elem *_P)
+		{for (; _F != _L; ++_P, ++_F)
+			FUN_005ab4ac(_P, *_F);
+		return (_P); }
+	void _Ufill(fn_005bc938_elem *_F, unsigned int _N, const fn_005bc938_elem &_X)
+		{for (; 0 < _N; --_N, ++_F)
+			FUN_005ab4ac(_F, _X); }
+	// HYPOTHESIS: the library's allocate, fill and copy_backward, inlined.
+	fn_005bc938_elem *_Allocate(int _N, fn_005bc938_elem *)
+		{if (_N < 0)
+			_N = 0;
+		return ((fn_005bc938_elem *)operator new((unsigned int)_N * sizeof (fn_005bc938_elem))); }
+	void _Fill(fn_005bc938_elem *_F, fn_005bc938_elem *_L, const fn_005bc938_elem &_X)
+		{for (; _F != _L; ++_F)
+			_F->FUN_005ab4d9(_X); }
+	fn_005bc938_elem *_Copy_backward(fn_005bc938_elem *_F, fn_005bc938_elem *_L,
+		fn_005bc938_elem *_X)
+		{while (_F != _L)
+			(--_X)->FUN_005ab4d9(*--_L);
+		return (_X); }
+	void FUN_005bc938(fn_005bc938_elem *_P, unsigned int _M, const fn_005bc938_elem &_X);
+};
+
+// HYPOTHESIS: the STL vector's insert(_P, _M, _X).
+// FUNCTION: STARFLEETOP 0x005bc938
+void fn_005bc938_vector::FUN_005bc938(fn_005bc938_elem *_P, unsigned int _M, const fn_005bc938_elem &_X)
+{
+	if ((unsigned int)(_End - _Last) < _M)
+		{unsigned int _N = size() + (_M < size() ? size() : _M);
+		fn_005bc938_elem *_S = _Allocate(_N, (fn_005bc938_elem *)0);
+		fn_005bc938_elem *_Q = _Ucopy(_First, _P, _S);
+		_Ufill(_Q, _M, _X);
+		_Ucopy(_P, _Last, _Q + _M);
+		_Destroy(_First, _Last);
+		operator delete(_First);
+		_End = _S + _N;
+		_Last = _S + size() + _M;
+		_First = _S; }
+	else if ((unsigned int)(_Last - _P) < _M)
+		{_Ucopy(_P, _Last, _P + _M);
+		_Ufill(_Last, _M - (_Last - _P), _X);
+		_Fill(_P, _Last, _X);
+		_Last += _M; }
+	else if (0 < _M)
+		{_Ucopy(_Last - _M, _Last, _Last);
+		_Copy_backward(_P, _Last - _M, _Last);
+		_Fill(_P, _P + _M, _X);
+		_Last += _M; }
+}
