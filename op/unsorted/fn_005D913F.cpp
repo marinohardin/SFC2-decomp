@@ -606,6 +606,7 @@ public:
     std::string fn_005d9be5();
     void fn_005d9cd3(fn_006ed560_object *param_1) const;
     fn_006ee3d0_result fn_005d9db1() const;
+    char fn_005d9f33(HKEY root) const;
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -664,16 +665,22 @@ public:
     long m04;
 };
 
-// HYPOTHESIS: the object 0x006ee3d0 returns by value: one dword, cleared when empty, with a
-// destructor.
+// HYPOTHESIS: the object 0x006ee3d0 returns by value: a counted pointer to an
+// fn_0046de63_object, cleared when empty and released by its inlined destructor (0x005d9f33).
 class fn_006ee3d0_result
 {
 public:
     fn_006ee3d0_result() : m00(0) {}
     ~fn_006ee3d0_result();
 
-    long m00;
+    fn_0046de63_object *m00;
 };
+
+inline fn_006ee3d0_result::~fn_006ee3d0_result()
+{
+    if (m00)
+        m00->FUN_0046de63();
+}
 
 // HYPOTHESIS: the object 0x006ee740 returns by value: a counted pointer to an
 // fn_0046de63_object, released by its inlined destructor. It may be the same type as
@@ -762,4 +769,40 @@ char fn_005d9b26_object::fn_005d9e88(const unsigned char *data, unsigned int siz
     if (r.m00)
         return fn_005d9b58((const char *)r.m00->m08);
     return 0;
+}
+
+// HYPOTHESIS: a registry key: 0x006e1db0 opens the key named by the string under a root key,
+// 0x006e1e30 closes it, the byte at +0x08 is set while it is open and 0x006e22f0 writes a
+// named binary value. The two trailing flags are not known.
+class fn_006e1db0_object
+{
+public:
+    fn_006e1db0_object(HKEY root, const std::string &path, bool param_3, bool param_4);
+    ~fn_006e1db0_object();
+    char fn_006e22f0(const std::string &name, long data, long size);
+
+    char m_0x00[0x08];
+    char m08;
+    char m_0x09[0x23];
+};
+
+// HYPOTHESIS: the registry path the key is stored under.
+extern const char *g_00874874;
+
+// HYPOTHESIS: stores the keyed data under this object's name in the registry; returns whether
+// it was written.
+// FUNCTION: STARFLEETOP 0x005d9f33
+char fn_005d9b26_object::fn_005d9f33(HKEY root) const
+{
+    if (!m14)
+        return 0;
+    fn_006e1db0_object key(root, g_00874874, true, true);
+    char result = 0;
+    if (key.m08)
+    {
+        fn_006ee3d0_result r = fn_005d9db1();
+        if (r.m00)
+            result = key.fn_006e22f0(m00, r.m00->m08, r.m00->m0c);
+    }
+    return result;
 }
