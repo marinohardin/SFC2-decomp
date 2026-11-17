@@ -179,7 +179,7 @@ public:
 	nDatabase::tID fn_0054351b() const;
 	std::string fn_00543551() const;
 	std::string fn_00543587() const;
-	char *fn_005435c3();
+	tHexPoint *fn_005435c3();
 	bool fn_005435ca(std::string text);
 	void fn_0054360a();
 	void fn_0054361f();
@@ -200,6 +200,7 @@ public:
 	bool fn_005439f3(int value);
 	bool fn_00543a02(int value);
 	bool fn_00543a11(float value);
+	bool fn_00543a20(const tHexPoint &point);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -226,7 +227,10 @@ public:
 	std::string m074;
 	std::string m084;
 	char m_pad94[0x4];
-	char m098[0x28];
+	// HYPOTHESIS: 0x00543a20 resets +0xac with tHexPoint's assignment, so +0x98..+0xc0 holds
+	// two tHexPoints.
+	tHexPoint m098;
+	tHexPoint m0ac;
 	nDatabase::tID m0c0;
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
@@ -536,9 +540,9 @@ std::string fn_005430ad_owner::fn_00543587() const
 
 // HYPOTHESIS: returns the address of a member embedded at +0x98 whose type is not known yet.
 // FUNCTION: STARFLEETOP 0x005435c3
-char *fn_005430ad_owner::fn_005435c3()
+tHexPoint *fn_005430ad_owner::fn_005435c3()
 {
-	return m098;
+	return &m098;
 }
 
 // HYPOTHESIS: the setter for the string at +0x48 (0x005433a7 is its getter); it takes the
@@ -731,5 +735,17 @@ bool fn_005430ad_owner::fn_00543a02(int value)
 bool fn_005430ad_owner::fn_00543a11(float value)
 {
 	m118 = value;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the point at +0x11c; a new point resets the one at +0xac.
+// FUNCTION: STARFLEETOP 0x00543a20
+bool fn_005430ad_owner::fn_00543a20(const tHexPoint &point)
+{
+	if (point != fn_005434b1())
+	{
+		m11c = point;
+		m0ac = tHexPoint(-1, -1);
+	}
 	return true;
 }

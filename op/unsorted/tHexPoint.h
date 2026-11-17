@@ -18,6 +18,8 @@ public:
 	// destructor is virtual and +0x00 is the vtable pointer.
 	virtual ~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
+	// HYPOTHESIS: 0x005b69d7, called by 0x00543a20 before it stores a new point.
+	bool operator!=(const tHexPoint &other) const;
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
 	void fn_005b6b62(int x, int y);
 	// HYPOTHESIS: the two coordinates in the order tMetaMapHex's SQLFillInsertStream writes
