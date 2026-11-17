@@ -45,6 +45,7 @@ class tShipSystemsExt : public tShipSystems
 public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
+    virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
     char m584[0x128];
@@ -217,4 +218,10 @@ tShipSystemsExt::tShipSystemsExt( unsigned long param_1 )
     ma07 = 0;
     ma08 = 0;
     ma09 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00448847
+void tShipSystemsExt::vfunction107( float param_1 )
+{
+    m7f8.vfunction3( param_1 );
 }
