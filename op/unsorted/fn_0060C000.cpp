@@ -121,3 +121,29 @@ void fn_0060c41e()
         g_00c3a810->m_18 = g_00c3a80c;
     g_00c3a810 = g_00c3a80c;
 }
+
+// HYPOTHESIS: an owner whose first child sits at +0x04; deleting a child unlinks it, so the
+// loop below empties the list. Both classes are deleted through vtable slot 0. Names unknown.
+class C_0060c486_child
+{
+public:
+    virtual ~C_0060c486_child();
+};
+
+class C_0060c486
+{
+public:
+    virtual ~C_0060c486();
+    C_0060c486_child *m_04;
+};
+
+// FUNCTION: STARFLEETOP 0x0060c486
+// HYPOTHESIS: __stdcall from the original's ret 4; perhaps a callback.
+void __stdcall fn_0060c486(C_0060c486 *owner)
+{
+    if (owner) {
+        while (owner->m_04)
+            delete owner->m_04;
+        delete owner;
+    }
+}
