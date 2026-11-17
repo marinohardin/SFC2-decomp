@@ -168,7 +168,10 @@ public:
     virtual void vfunction7(long volume);
     // HYPOTHESIS: slot 8 records the whole 3D profile (twStandardSoundChannel::mSet3DSoundProfile passes it the profile it set).
     virtual void vfunction8(t3DSoundProfile* profile);
-    virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+    // HYPOTHESIS: slot 9 is the profile getter; overloaded setters sit in reverse order before
+    // each getter (position 10-13, orientation 14-17, velocity 18-21), leaving slot 9 to it.
+    virtual t3DSoundProfile* mGet3DSoundProfile();
+    virtual void vfunction10(); virtual void vfunction11();
     // HYPOTHESIS: slot 12 records the 3D position (twStandardSoundChannel::mSet3DSoundPosition passes it the position it set).
     virtual void vfunction12(tPoint3* position);
     virtual void vfunction13();
@@ -582,8 +585,12 @@ public:
     virtual eSoundChannelStatus mGetChannelStatus(long channel);
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual long mGetHardwareInformation(long info);
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
     virtual long mTotalBytesLeftToPlay(long channel);
-    virtual double mTotalNumberOfSecondsLeftToPlay(long channel); virtual long mNumberOfAttachmentsQueuedUp(long channel);
+    // HYPOTHESIS: returns double; tChannelGroup's caller (exe symbol returns double) keeps the result on the FPU stack.
+    virtual double mTotalNumberOfSecondsLeftToPlay(long channel);
+    // The SDK library's symbol for tgSoundPart's override gives the signature.
+    virtual long mNumberOfAttachmentsQueuedUp(long channel);
     virtual long mGetFrequency(long channel);
     virtual long mGetPan(long channel);
     virtual long mGetVolume(long channel);
@@ -596,16 +603,27 @@ public:
     virtual long mGet3DSoundConeAttenuationLevel(long channel);
     virtual long mGetChannelPriority(long channel);
     virtual tSoundChannelFormat* mGetSoundChannelFormat(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeLooping(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeStreaming(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWe3D(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeStatic(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeFixedFrequency(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeARecordingChannel(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mTryToLocateInHardware(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mTryToLocateInSoftware(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeFixedPan(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeFixedVolume(long channel);
+    // HYPOTHESIS: takes the channel and returns a truth, as tChannelGroup's caller uses it.
     virtual unsigned char mAreWeAGlobalSound(long channel);
     // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
     // multiplies the channel's frequency by it.
