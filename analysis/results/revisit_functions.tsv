@@ -132,13 +132,10 @@ address	name	best_score	attempts	last_model	listed	note
 0x00668970	tBasicSoundFileManager::mParseAllSoundsFile	1.94	2	sonnet	2026-11-16T21:22:10Z	best not above 90% after 2 attempts; best 1.94%
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
-0x0056f05f	FUN_0056f05f	99.95	3	opus	2026-11-17T04:13:02Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.95%
-0x0056f19b	FUN_0056f19b	99.22	2	opus	2026-11-17T04:22:02Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.22%
-0x0056f2a4	FUN_0056f2a4	99.95	2	opus	2026-11-17T04:30:51Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.95%
-0x00571018	FUN_00571018	99.79	3	opus	2026-11-17T06:53:17Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.79%
-0x0057118e	FUN_0057118e	99.79	2	opus	2026-11-17T06:59:27Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.79%
-0x00571304	FUN_00571304	99.79	2	opus	2026-11-17T07:05:14Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.79%
-0x0057147a	FUN_0057147a	99.79	2	opus	2026-11-17T07:10:14Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.79%
+0x00571018	FUN_00571018	99.96	3	opus	2026-11-17T06:53:17Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x0057118e	FUN_0057118e	99.96	2	opus	2026-11-17T06:59:27Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x00571304	FUN_00571304	99.96	2	opus	2026-11-17T07:05:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x0057147a	FUN_0057147a	99.96	2	opus	2026-11-17T07:10:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x00571676	FUN_00571676	70.47	2	opus	2026-11-17T07:33:01Z	best not above 90% after 2 attempts; best 70.47%
 0x005716e0	FUN_005716e0	66.18	2	opus	2026-11-17T07:41:07Z	best not above 90% after 2 attempts; best 66.18%
 0x00585ccc	FUN_00585ccc	29.86	2	opus	2026-11-17T14:26:23Z	attempt 2 (opus) did not raise the best; best 29.86%
