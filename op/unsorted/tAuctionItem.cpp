@@ -239,3 +239,46 @@ int32u tAuctionItem::fn_00545451( int arg1, const nDatabase::tID& bidder )
 
 	return fn_005454c1( arg1, nDatabase::tID() );
 }
+
+// HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
+extern double g_007b0c20;
+extern double g_007b0c28;
+extern double g_007b0c30;
+
+// FUNCTION: STARFLEETOP 0x005454c1
+int32u tAuctionItem::fn_005454c1( int arg1, const nDatabase::tID& bidder )
+{
+	int32u bid;
+	if ( fn_0054540f( bidder ) )
+		bid = fn_005455c2();
+	else
+		bid = fn_004b94dc();
+
+	switch ( arg1 )
+	{
+	case 0:
+		if ( !fn_00545401() )
+			bid = fn_004b94dc();
+		break;
+	case 2:
+		bid += 5;
+		break;
+	case 3:
+		bid += 10;
+		break;
+	case 4:
+		bid = bid * g_007b0c20;
+		break;
+	case 5:
+		bid = bid * g_007b0c28;
+		break;
+	case 6:
+		bid = bid * g_007b0c30;
+		break;
+	default:
+		bid += 1;
+		break;
+	}
+
+	return bid;
+}
