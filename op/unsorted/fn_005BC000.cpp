@@ -71,3 +71,26 @@ struct fn_005bc05c_record
 fn_005bc05c_record::~fn_005bc05c_record()
 {
 }
+
+// HYPOTHESIS: an id and hex position pair laid out like fn_005bc05c_record
+// but with a compiler-generated destructor: the original inlines its
+// destruction into 0x005bc091 while 0x005bc05c stays out of line.
+struct fn_005bc091_value
+{
+	nDatabase::tID m00;
+	tHexPoint m10;
+};
+
+// HYPOTHESIS: a database id followed by an id and hex position pair.
+struct fn_005bc091_entry
+{
+	nDatabase::tID m00;
+	fn_005bc091_value m10;
+
+	~fn_005bc091_entry();
+};
+
+// FUNCTION: STARFLEETOP 0x005bc091
+fn_005bc091_entry::~fn_005bc091_entry()
+{
+}
