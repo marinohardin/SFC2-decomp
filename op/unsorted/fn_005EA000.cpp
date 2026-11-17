@@ -1,4 +1,5 @@
 #include <algorithm>
+#include "Common/Thread/Optex.h"
 
 // HYPOTHESIS: a red-black tree keyed on std::pair<int, int>. Its layout differs from the
 // compiler's own std::map (head at +4, nil node per instance at +8, multi flag at +0xc),
@@ -491,4 +492,23 @@ void tTree_005ea14b::iterator::fn_005ea7c6()
 		if (m_node->m_right != p)
 			m_node = p;
 	}
+}
+
+// HYPOTHESIS: by its layout (a pointer at +0, a tOptex at +4) and its body (Delete, then the
+// optex) this is an out-of-line copy of the SDK's tSingleAccessWrapper<T>::~tSingleAccessWrapper,
+// with 0x005ea827 as that instance's Delete. The template is declared only inside
+// unsorted/tClientCharacter.cpp, so it is not declared a second time here.
+class tObject_005ea7f8 {
+public:
+	~tObject_005ea7f8();
+	void fn_005ea827();
+
+	int *m_00;
+	mutable tOptex m_04;
+};
+
+// FUNCTION: STARFLEETOP 0x005ea7f8
+tObject_005ea7f8::~tObject_005ea7f8()
+{
+	fn_005ea827();
 }
