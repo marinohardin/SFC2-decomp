@@ -85,6 +85,7 @@ class tObject_00426da7
 public:
 	void fn_00426da7();
 	void fn_00426ca8( int aArg1, int aArg2 );
+	void fn_00426e40( int aArg1, int aArg2 );
 	char pad00[0x10];
 	int field_0x10[20];
 	char pad60[0x64];
@@ -101,6 +102,7 @@ public:
 	void fn_0042755c( int aIndex, int aArg1, int aArg2 );
 	int fn_00427581( int aIndex, int aOther );
 	int fn_004275ae( tID aID, tID aOther );
+	void fn_004275fe( int aIndex, int aArg1, int aArg2 );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -162,4 +164,14 @@ int tObject_0042750f::fn_004275ae( tID aID, tID aOther )
 	// original does; the original likely passed the two teams through an inline helper.
 	tID team;
 	return entity && other ? (team = entity->fTeam, fn_00427581( team, other->fTeam )) : 0;
+}
+
+// HYPOTHESIS: passes both arguments to 0x00426e40 of the table entry; nothing for an index
+// out of range or an empty entry.
+// FUNCTION: STARFLEETOP 0x004275fe
+void tObject_0042750f::fn_004275fe( int aIndex, int aArg1, int aArg2 )
+{
+	tObject_00426da7 *entry;
+	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
+		entry->fn_00426e40( aArg1, aArg2 );
 }
