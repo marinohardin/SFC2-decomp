@@ -523,3 +523,15 @@ void fn_0040dde1(char* name, unsigned long* value, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040de1f
+void fn_0040de1f(char* name, unsigned long* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = %lu");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, value);
+}
+
