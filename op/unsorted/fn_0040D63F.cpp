@@ -407,3 +407,10 @@ void fn_0040dc13(double* dst, fn_0040d63f_Buf& buf)
     fn_0040dae4((int*)&f, buf);
     *dst = (double)f;
 }
+
+// FUNCTION: STARFLEETOP 0x0040dc2e
+void fn_0040dc2e(short* p, fn_0040d63f_Buf& buf)
+{
+    int v = *p;
+    fn_0040d924(&v, buf);
+}
