@@ -163,3 +163,10 @@ void fn_006c1600(fn_006c1510_pool *pool, void *element, int index)
 		memmove(fn_006c15c0(pool, index + 1), fn_006c15c0(pool, index), (pool->field_00 - index - 1) * pool->field_08);
 	fn_006c16a0(pool, element, index);
 }
+
+// FUNCTION: STARFLEETOP 0x006c1670
+void fn_006c1670(fn_006c1510_pool *pool)
+{
+	pool->field_04 += pool->field_0c;
+	pool->field_14 = realloc(pool->field_14, pool->field_08 * pool->field_04);
+}
