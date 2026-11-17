@@ -47,6 +47,7 @@ public:
     void fn_0043eee8();
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
+    int fn_0043edd8();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -948,4 +949,94 @@ float tSensorGroupSystem::fn_0043ed38(int param_1, int param_2)
     if (level <= 9)
         return g_00795bf0;
     return 0.0f;
+}
+
+// HYPOTHESIS: the owner slot 32 returns, seen as an object whose slot 58 (offset 0xe8) returns
+// a count; 0x0043edd8 adds 6 while it is positive. The shared vfunction33_result has no vftable.
+class fn_0043edd8_owner
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual void vfunction10();
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55();
+    virtual void vfunction56();
+    virtual void vfunction57();
+    virtual void vfunction58();
+    virtual int vfunction59(); // slot 58
+};
+
+// FUNCTION: STARFLEETOP 0x0043edd8
+int tSensorGroupSystem::fn_0043edd8()
+{
+    fn_0043eee8();
+    int low = (int)field_174;
+    int high = (int)(field_17c + field_168);
+    if (((fn_0043edd8_owner*)vfunction33())->vfunction59() > 0)
+        high += 6;
+    int diff = high - low;
+    if (high <= 0)
+        return 0;
+    if (diff >= 25)
+        return 5;
+    else if (diff >= 16)
+        return 4;
+    else if (diff >= 9)
+        return 3;
+    else if (diff >= 4)
+        return 2;
+    else if (diff >= 1)
+        return 1;
+    return 0;
 }
