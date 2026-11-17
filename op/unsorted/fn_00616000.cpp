@@ -61,7 +61,8 @@ public:
 	// HYPOTHESIS: slot 18 fits IDirectPlay4::GetPlayerAddress (player, data, size).
 	virtual long __stdcall GetPlayerAddress( int player, void* pData, unsigned long* pSize );
 	virtual long __stdcall v19();
-	virtual long __stdcall v20();
+	// HYPOTHESIS: slot 20 fits IDirectPlay4::GetPlayerData (player, data, size, flags).
+	virtual long __stdcall GetPlayerData( int player, void* pData, unsigned long* pSize, unsigned long flags );
 	virtual long __stdcall v21();
 	// HYPOTHESIS: slot 22 fits IDirectPlay4::GetSessionDesc (data, size); 0x8877001e is DPERR_BUFFERTOOSMALL.
 	virtual long __stdcall GetSessionDesc( void* pData, unsigned long* pSize );
@@ -209,6 +210,18 @@ public:
 	fn_00616700_Provider* fProvider;
 };
 
+// HYPOTHESIS: the player data 0x00616d30 reads (0x24 bytes); the implicit assignment copies
+// the members one by one and the trailing bytes in a loop.
+struct fn_00616d30_Data
+{
+	long fA;
+	char fB;
+	c_004329af_entry fC;
+	long fD;
+	long fE;
+	char fF[6];
+};
+
 class fn_00616000_DirectPlayHolder
 {
 public:
@@ -235,6 +248,7 @@ public:
 	// HYPOTHESIS: a true argument waits for settings; false cancels the wait (DPLWAIT_CANCEL).
 	void fn_00616c50( bool wait );
 	long fn_00616c80( unsigned long flags );
+	long fn_00616d30( int player, fn_00616d30_Data* pData );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -590,6 +604,31 @@ long fn_00616000_DirectPlayHolder::fn_00616c80( unsigned long flags )
 		if ( fLobby == 0 )
 			throw fn_00616000_Error( "fDirectPlayLobby", fn_00619a20_Context() );
 		hr = fLobby->ConnectEx( flags, g_007bb128, (void**)&fDirectPlayObject, 0 );
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
+	return hr;
+}
+
+// The analysis ends this function at 0x00616e19, inside the catch block; the bytes up to there
+// match this body, and the epilogue follows.
+// FUNCTION: STARFLEETOP 0x00616d30
+long fn_00616000_DirectPlayHolder::fn_00616d30( int player, fn_00616d30_Data* pData )
+{
+	long hr;
+	unsigned long size;
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		hr = fDirectPlayObject->GetPlayerData( player, 0, &size, 0 );
+		if ( size > sizeof( fn_00616d30_Data ) )
+			return 0x8877001e;
+		fn_00616d30_Data* pBuffer = (fn_00616d30_Data*)_alloca( size );
+		hr = fDirectPlayObject->GetPlayerData( player, pBuffer, &size, 0 );
+		*pData = *pBuffer;
 	}
 	catch ( fn_00616000_Error& e )
 	{
