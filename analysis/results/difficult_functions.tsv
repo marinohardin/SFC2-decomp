@@ -212,3 +212,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0061e3a0	tDir::mGetNamedFile	5	fable	99.92	2026-11-17T11:43:54Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.92%
 0x0061e5c0	tDir::mDelete	5	fable	99.97	2026-11-17T14:13:50Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
 0x0061e6d0	tPath::mGetName	5	fable	99.97	2026-11-17T14:23:18Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061ea20	tPath::mExist	5	fable	99.97	2026-11-17T14:37:29Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
