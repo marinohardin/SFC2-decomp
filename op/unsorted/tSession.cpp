@@ -52,6 +52,9 @@ public:
 	void	fn_00690180( tString &name, fn_0068ff60_Root *root, tDir dir );
 	// HYPOTHESIS: the argument is the wide text to parse (fn_006901b0 passes mWideStr()).
 	fn_0068d830_Item	*fn_00692620( iBasicStringElement *text );
+	bool	fn_0068f660();
+	void	fn_0068f6b0( tString &name );
+	void	fn_00690400();
 
 	tString	f_10;
 	char	pad_10[0x44 - 0x10 - sizeof(tString)];
@@ -127,4 +130,18 @@ fn_0068ff60_Root *fn_00690340( char *a, tString &b, fn_0068ff60_Root *c, tDir di
 fn_0068d830_Item *fn_006903f0( fn_0068ff60_Root *root )
 {
 	return fn_006901b0( root );
+}
+
+// FUNCTION: STARFLEETOP 0x00690400
+// HYPOTHESIS: both callees take this in ecx, so they are taken as members of the same class.
+void tHtmlParser::fn_00690400()
+{
+	if ( fn_0068f660() )
+	{
+		tString	name;
+
+		fn_0068f6b0( name );
+		if ( f_44.mStrLen() == 0 )
+			f_44 = name;
+	}
 }
