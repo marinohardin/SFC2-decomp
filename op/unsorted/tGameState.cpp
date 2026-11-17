@@ -1,5 +1,6 @@
 // Unit:      unsorted/tGameState.cpp
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
+#define tGameState_DECLARE_SLOTS
 #include "unsorted/tGameState.h"
 #include "unsorted/tApplication.h"
 
