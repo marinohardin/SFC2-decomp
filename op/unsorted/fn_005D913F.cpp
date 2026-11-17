@@ -607,6 +607,7 @@ public:
     void fn_005d9cd3(fn_006ed560_object *param_1) const;
     fn_006ee3d0_result fn_005d9db1() const;
     char fn_005d9f33(HKEY root) const;
+    char fn_005d9ffe(HKEY root);
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -780,6 +781,8 @@ public:
     fn_006e1db0_object(HKEY root, const std::string &path, bool param_3, bool param_4);
     ~fn_006e1db0_object();
     char fn_006e22f0(const std::string &name, long data, long size);
+    // HYPOTHESIS: reads a named binary value into the counted result; 0 on success.
+    long fn_006e2190(const std::string &name, fn_006ee3d0_result *out);
 
     char m_0x00[0x08];
     char m08;
@@ -806,4 +809,20 @@ char fn_005d9b26_object::fn_005d9f33(HKEY root) const
             result = key.fn_006e22f0(m00, r.m00->m08, r.m00->m0c);
     }
     return result;
+}
+
+// HYPOTHESIS: the inverse of fn_005d9f33: reads the keyed data stored under this object's name
+// back from the registry and checks it; returns whether it checks.
+// FUNCTION: STARFLEETOP 0x005d9ffe
+char fn_005d9b26_object::fn_005d9ffe(HKEY root)
+{
+    if (m00.empty())
+        return 0;
+    fn_006e1db0_object key(root, g_00874874, false, true);
+    if (!key.m08)
+        return 0;
+    fn_006ee3d0_result r;
+    if (key.fn_006e2190(m00, &r) != 0)
+        return 0;
+    return fn_005d9e88(r.m00 ? (const unsigned char *)r.m00->m08 : 0, r.m00 ? r.m00->m0c : 0);
 }
