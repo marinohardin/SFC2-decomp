@@ -549,3 +549,33 @@ fn_00402a26_Istream& fn_00402a26_Istream::fn_00402a26(long& x)
     setstate(_St);
     return (*this);
 }
+
+class fn_00402b22_Base
+{
+public:
+    virtual ~fn_00402b22_Base();
+};
+
+class fn_00402b22_Inner
+{
+public:
+    fn_00402b22_Base* fn_00402b3a();
+};
+
+// HYPOTHESIS: an owner that deletes what its first member yields; 0x00402b3a is a method of that member
+class fn_00402b22_Obj
+{
+public:
+    void fn_00402b22();
+    fn_00402b22_Inner* m0;
+};
+
+// FUNCTION: STARFLEETOP 0x00402b22
+void fn_00402b22_Obj::fn_00402b22()
+{
+    if (m0 != 0)
+    {
+        fn_00402b22_Base* p = m0->fn_00402b3a();
+        delete p;
+    }
+}
