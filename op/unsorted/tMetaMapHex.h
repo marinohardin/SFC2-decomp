@@ -177,6 +177,11 @@ public:
 	long fn_00539f50();
 	// HYPOTHESIS: a copy of the hex point, taken under the lock.
 	tHexPoint fn_00539f9c();
+	// HYPOTHESIS: the six hexes around this one; when both arguments are set, only those
+	// fn_0053a287 accepts.
+	std::vector< tHexPoint > fn_00539ff1( int param_1, int param_2 );
+	// HYPOTHESIS: a test of a neighbouring hex against the two arguments of fn_00539ff1.
+	bool fn_0053a287( tHexPoint& point, int param_1, int param_2 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

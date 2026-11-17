@@ -383,3 +383,65 @@ tHexPoint tMetaMapHex::fn_00539f9c()
 	tOptex::tGuard guard( &m_bc );
 	return m_a8;
 }
+
+// FUNCTION: STARFLEETOP 0x00539ff1
+std::vector< tHexPoint > tMetaMapHex::fn_00539ff1( int param_1, int param_2 )
+{
+	tOptex::tGuard guard( &m_bc );
+
+	bool check = true;
+	if( param_1 == -1 || param_2 == -1 )
+	{
+		check = false;
+	}
+
+	std::vector< tHexPoint > result;
+	result.reserve( 6 );
+
+	int x = m_a8.fn_0055f269();
+	int y = m_a8.fn_005e8f21();
+	int offset = 0;
+	if( x % 2 == 0 )
+	{
+		offset = -1;
+	}
+
+	int left = x - 1;
+	tHexPoint point( left, y + offset );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	point = tHexPoint( x, y - 1 );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	point = tHexPoint( x + 1, y + offset );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	point = tHexPoint( x + 1, y + offset + 1 );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	point = tHexPoint( x, y + 1 );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	point = tHexPoint( left, y + offset + 1 );
+	if( !check || fn_0053a287( point, param_1, param_2 ) )
+	{
+		result.push_back( point );
+	}
+
+	return result;
+}
