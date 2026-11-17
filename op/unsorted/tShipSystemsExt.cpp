@@ -156,6 +156,7 @@ public:
     virtual tMinMaxFloat* vfunction36();
     virtual tMinMaxFloat* vfunction37();
     virtual tMinMaxFloat* vfunction38();
+    virtual tMinMaxFloat* vfunction41();
     virtual tShipSystemManager* vfunction53();
     virtual tTacticalStoresManager* vfunction54();
     virtual char* vfunction57();
@@ -972,4 +973,10 @@ float tShipSystemsExt::vfunction3()
     if ( m5cc != 0 )
         return m5cc->vfunction87();
     return 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x00448bdc
+tMinMaxFloat* tShipSystemsExt::vfunction41()
+{
+    return &m8f4;
 }
