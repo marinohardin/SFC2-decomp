@@ -52,8 +52,10 @@ def main(argv):
     if cmd == 'sweep':
         exact = {k for k, v in matched.load(paths.MATCHED_SET)['functions'].items()
                  if v.get('exact')}
+        sizes = ({e['address']: e['size'] for e in workqueue.load_queue(paths.QUEUE)}
+                 if os.path.exists(paths.QUEUE) else {})
         got = workqueue.sweep(paths, tiers, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
-                              exact)
+                              exact, sizes)
         for a, where in sorted(got.items()):
             print(f'INFO  {a} -> {where}')
         listed = sum(1 for w in got.values() if w != 'cleared')
@@ -123,7 +125,8 @@ def main(argv):
         return 0
     if cmd == 'record':
         row = json.loads(args[0])
-        entry = {'address': row['address'], 'name': row.get('name', '')}
+        size = next((e['size'] for e in q if e['address'] == row['address']), None)
+        entry = {'address': row['address'], 'name': row.get('name', ''), 'size': size}
         where = workqueue.record(paths, entry, row, tiers, take_revisit)
         if where in ('difficult', 'revisit'):
             print(f'INFO  {row["address"]} listed in {where}_functions.tsv')

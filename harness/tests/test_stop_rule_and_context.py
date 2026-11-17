@@ -23,8 +23,11 @@ def att(n, model, before, after, outcome=None, address=A):
                 outcome=outcome, score_before=f'{before:.2f}', score_after=f'{after:.2f}')
 
 
-TIERS = workqueue.Tiers()                       # opus, sonnet, opus; Fable not allowed
-FABLE = workqueue.Tiers(allow_fable=True)
+# The stop rule is the same whatever the order; these tests use one fixed order, the one the
+# loop ran before it chose models by size.
+ORDER = ['opus', 'sonnet', 'opus']
+TIERS = workqueue.Tiers(ORDER)                  # Fable not allowed
+FABLE = workqueue.Tiers(ORDER, allow_fable=True)
 
 
 # --- the stop rule ----------------------------------------------------------------------------
