@@ -84,9 +84,9 @@ public:
 	bool fn_00476925();
 	// HYPOTHESIS: puts the value into the control under the given key, as
 	// tState_GameConnections::fn_004688ee does.
-	void fn_00476997(int control, const char *name, const char *value);
+	void fn_00476997(c_00468677_source *control, const char *name, const char *value);
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
-	void fn_00476aee(int value, const char *key);
+	void fn_00476aee(c_00468677_source *control, const char *key);
 	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
 	void fn_00476d52(int *control, void *source, int id);
 	void fn_00477440();
@@ -109,9 +109,9 @@ public:
 	tValueI< tString > m11c;
 	tValueI< tString > m15c;
 	tValueI< tString > m19c;
-	int m1dc;
+	c_00468677_source *m1dc;
 	int m1e0;
-	int m1e4;
+	c_00468677_source *m1e4;
 	int m1e8;
 	int m1ec;
 	int m1f0;
@@ -288,7 +288,7 @@ bool tState_NetSetup::fn_004766f1()
 	fn_004d3331(g_008493b0);
 	fn_004d3340(g_008493b4);
 	if (m1dc == 0)
-		m1dc = (int)fn_004d3446(0x10012);
+		m1dc = fn_004d3446(0x10012);
 	fn_00476997(m1dc, "IPAddress", m208.mCharStr());
 	return gNetControl.fn_004325a9(2);
 }
@@ -303,7 +303,7 @@ bool tState_NetSetup::fn_00476754()
 	bool result = gNetControl.fn_004325a9(3);
 	fn_00476d52(&m1e0, &m11c, 0x10016);
 	if (m1e4 == 0)
-		m1e4 = (int)fn_004d3446(0x10017);
+		m1e4 = fn_004d3446(0x10017);
 	fn_00476997(m1e4, "ModemAddress", 0);
 	m19[0] = 0;
 	m12[0] = 1;
@@ -366,4 +366,30 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_00476925()
 	m19[2] = 0;
 	m19[1] = 1;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00476997
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476997(c_00468677_source *control, const char *name, const char *value)
+{
+	char buffer[49];
+	tString prefix("Entry#");
+	tString key;
+	tString text;
+
+	control->vfunction50();
+	int count = g_p008cc580->vfunction5(name, "NumOfEntries", 0);
+	if (count == 0 && value)
+	{
+		tString entry(value);
+		control->vfunction54(entry, -1, 0, -1);
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		key = prefix;
+		key.mAppendInt32s(i, 1);
+		g_p008cc580->vfunction9(name, key.mCharStr(), "", buffer, sizeof(buffer));
+		text = buffer;
+		control->vfunction54(text, -1, 0, -1);
+	}
 }
