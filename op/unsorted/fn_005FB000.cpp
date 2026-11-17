@@ -653,6 +653,17 @@ void std::_Construct( std::pair<const int, std::vector<int> > *_P, const std::pa
 	new ((void *)_P) std::pair<const int, std::vector<int> >( _V );
 }
 
+// MATCH-ONLY: the library's for_each, written out as the explicit specialization that
+// 0x005fb9d1 calls so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x005fbb74
+template<>
+tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > std::for_each( const tChatChannel* _F, const tChatChannel* _L, tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > _Op )
+{
+	for (; _F != _L; ++_F)
+		_Op(*_F);
+	return (_Op);
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
