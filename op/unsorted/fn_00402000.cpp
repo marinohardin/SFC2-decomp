@@ -626,9 +626,19 @@ void fn_00402b90_Obj::fn_00402b90()
 // HYPOTHESIS: std::istream::get(char *, streamsize, char) as the library header writes it; the
 // streambuf's sgetc, snextc and sbumpc are out-of-line instances at 0x00402cc1, 0x00402cdf and 0x00403ff1.
 // The analysis ends the function at the jump over its catch funclet.
+// HYPOTHESIS: layout of the library streambuf (vtable slot 4 is underflow; m1c/m2c are the get-area pointer cells)
 class fn_00402bb6_Streambuf
 {
 public:
+    virtual void fn_v0();
+    virtual void fn_v1();
+    virtual void fn_v2();
+    virtual void fn_v3();
+    virtual int fn_underflow();
+    char pad[0x18];
+    unsigned char** m1c;
+    char pad2[0xc];
+    int* m2c;
     int fn_00402cc1();
     int fn_00402cdf();
     int fn_00403ff1();
@@ -667,6 +677,12 @@ fn_00402bb6_Istream& fn_00402bb6_Istream::fn_00402bb6(char* _S, long _N, char _D
                 *_S++ = (char)_C;}
         _CATCH_IO_END}
     return (*this);
+}
+
+// FUNCTION: STARFLEETOP 0x00402cc1
+int fn_00402bb6_Streambuf::fn_00402cc1()
+{
+    return (*m1c != 0 && *m1c < *m1c + *m2c ? (int)**m1c : fn_underflow());
 }
 // HYPOTHESIS: tail of fn_00402bb6 after its catch funclet (reads that frame); no source form of its own.
 // FUNCTION: STARFLEETOP 0x00402c74
