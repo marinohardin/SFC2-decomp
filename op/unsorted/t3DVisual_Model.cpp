@@ -45,6 +45,8 @@ class t3DVisual_Model : public t3DVisual
 public:
 	t3DVisual_Model();
 	virtual ~t3DVisual_Model();
+	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
+	float vfunction10();
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -156,4 +158,10 @@ t3DVisual_Model::~t3DVisual_Model()
 		g_008f5974 = mNext;
 	if (mNext != 0)
 		mNext->mPrev = mPrev;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fa75
+float t3DVisual_Model::vfunction10()
+{
+	return m178 * m118;
 }
