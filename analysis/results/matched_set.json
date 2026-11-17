@@ -2908,6 +2908,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042f858": {
+   "name": "t3DVisual_Model::t3DVisual_Model_Constructor_or_Destructor",
+   "symbol": "??0t3DVisual_Model@@QAE@XZ",
+   "unit": "unsorted/t3DVisual_Model.cpp",
+   "size": 164,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
