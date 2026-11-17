@@ -259,3 +259,18 @@ void tRepairableShipSystem::vfunction94(int param_1, int param_2)
         field_70 = param_1 * 0.0078125f;
     }
 }
+
+// HYPOTHESIS: a double constant of the exe added to field_60; its value is not read yet.
+extern double g_00799728;
+
+// FUNCTION: STARFLEETOP 0x00436838
+float tRepairableShipSystem::vfunction95()
+{
+    float result = field_60 + g_00799728;
+    field_74 = 0;
+    field_58 = 0;
+    field_5c = 0;
+    field_60 = 0.0f;
+    vfunction62();
+    return result;
+}
