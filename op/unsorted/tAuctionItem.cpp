@@ -9,6 +9,9 @@ class tAuctionItem : public nDatabase::tDatabaseObject
 {
 public:
 	tAuctionItem();
+	// HYPOTHESIS: the original declares no destructor. The compiler-generated one (0x00544c24)
+	// stores no vtable; an implicit destructor builds byte for byte, but the harness cannot claim
+	// a function with no source line, so this declared one (which stores the vtable) stands in.
 	virtual ~tAuctionItem();
 
 	// HYPOTHESIS: the two integer arguments' types and meaning are unknown.
@@ -29,6 +32,7 @@ tAuctionItem::tAuctionItem()
 }
 
 // FUNCTION: STARFLEETOP 0x00544c08
+// FUNCTION: STARFLEETOP 0x00544c24
 tAuctionItem::~tAuctionItem()
 {
 }
