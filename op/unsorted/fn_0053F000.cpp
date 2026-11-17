@@ -5,6 +5,8 @@
 #include "Common/Database/DatabaseID.h"
 #include <xmemory>
 #include "Common/DynamicAllocator.h"
+#include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/Streamable.h"
 
 #include "unsorted/tPreparedMissions.h"
 
@@ -60,15 +62,19 @@ public:
 };
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
-// 0x74 bytes with a virtual destructor in slot 0. The names are placeholders.
-class fn_0053f491_elem
+// 0x74 bytes with a virtual destructor in slot 0, streamed out one by one as tStreamable
+// by 0x0053fe75. The names are placeholders.
+class fn_0053f491_elem : public nDataStore::tStreamable
 {
 public:
 	virtual ~fn_0053f491_elem();
 	fn_0053f491_elem( const fn_0053f491_elem &other );
 	fn_0053f491_elem &operator=( const fn_0053f491_elem &other );
 
-	char m_04[0x70];
+	virtual void StreamOut( nDataStore::tOutput& output ) const;
+	virtual void StreamIn( nDataStore::tInput& input );
+
+	char m_0c[0x68];
 };
 
 // HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
@@ -643,3 +649,27 @@ void tClassAllocator<tPreparedMissions>::mAssignAllocID( iAllocatorID allocID )
 {
 	fAllocID = allocID;
 }
+
+// MATCH-ONLY: the SDK's template stream operator for vectors, written out as this instance's
+// explicit specialization so that its annotation names the one instance; the body is the template's.
+namespace nDataStore
+{
+
+// FUNCTION: STARFLEETOP 0x0053fe75
+template<>
+tOutput& operator<<( tOutput& output, const std::vector< fn_0053f491_elem >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< fn_0053f491_elem >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
+}
+
+};

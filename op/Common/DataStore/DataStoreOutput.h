@@ -1,6 +1,6 @@
 //	DataStoreOutput.h
-//	Writes values into a data store buffer. Declarations follow the SDK's header, without its
-//	template stream operators for the standard containers, which no matched code uses yet. The
+//	Writes values into a data store buffer. Declarations follow the SDK's header; of its template
+//	stream operators for the standard containers only the vector one is used by matched code. The
 //	original defines the inline functions in DataStoreOutput.cpp, which the header includes; here
 //	they follow the class, and only the ones matched code uses are defined yet.
 //	MATCH-ONLY: operator<<( const std::string& ), defined inline here and inlined by
@@ -49,6 +49,9 @@ public:
 
 	inline void Put( byte data );
 	inline void Write( const byte* data, int32 size );
+
+	template< class tType >
+	friend tOutput& operator<<( tOutput& output, const std::vector< tType >& value );
 
 	inline tOutput& operator<<( tOutput& (*func)( tOutput& input ) );
 	inline tOutput& operator<<( const tBuffer& buffer );
@@ -121,6 +124,22 @@ tOutput& tOutput::operator<<( double value )
 	Write( (const byte*)&value, sizeof( value ) );
 
 	return *this;
+}
+
+template< class tType >
+tOutput& operator<<( tOutput& output, const std::vector< tType >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< tType >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
 }
 
 };
