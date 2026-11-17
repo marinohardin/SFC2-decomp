@@ -145,3 +145,6 @@ std::string g_00c38f88 = "asteroids1";
 // FUNCTION: STARFLEETOP 0x005e2c2a
 // FUNCTION: STARFLEETOP 0x005e2bf7
 std::string g_00c38f78 = "blackhole1";
+
+// FUNCTION: STARFLEETOP 0x005e2c4d
+std::string g_00c38f68 = "GreyScaleHex";
