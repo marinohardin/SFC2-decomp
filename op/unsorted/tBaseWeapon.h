@@ -222,7 +222,8 @@ public:
     char pad_30[8];
     float field_38;
     float field_3c;
-    char pad_40[6];
+    char pad_40[5];
+    char field_45;
     char field_46;
     char pad_47[0x81];
     short field_c8;
