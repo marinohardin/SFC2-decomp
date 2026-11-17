@@ -716,3 +716,11 @@ fn_004d2420_holder* fn_004d27fa_owner::fn_004d288f(const char* text)
 	}
 	return &m_0x54;
 }
+
+// HYPOTHESIS: 0x004d2a96 is not a function of its own: it is the shared tail of the
+// basic_ostream<char> operator<< at 0x004d29c5 (it reads the caller's frame through ebp/esi and
+// sets the stream state with ios_base::failure), so it cannot be written as a standalone function.
+// FUNCTION: STARFLEETOP 0x004d2a96
+void fn_004d2a96()
+{
+}
