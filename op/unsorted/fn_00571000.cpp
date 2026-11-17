@@ -60,6 +60,7 @@ public:
 	void AddObjectToDBIndex(fn_00571018_object* pActualObject, iAllocatorID allocID);
 	void fn_00571018(fn_00571018_object* pObject);
 	void fn_0057118e(fn_00571018_object* pObject);
+	void fn_00571304(fn_00571018_object* pObject);
 	tOptex fAccess;
 	char fn_00571018_pad[0x40 - 4 - sizeof(tOptex)];
 	fn_00571018_storage* fDatabaseStorage;
@@ -71,6 +72,38 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 	tOptex::tGuard guard(&fAccess);
 	// MATCH-ONLY: the original releases the guard explicitly after the tID temporary is gone
 	// (no state reset before Leave); a block round the body reproduces that.
+	{
+#line 152
+	validate(pObject);
+	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
+#line 154
+	validate(allocID != kInvalidAllocatorID);
+
+	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
+#line 157
+	validate(pActualObject);
+	*pActualObject = *pObject;
+
+#line 160
+	validate(pActualObject->GetID().IsValid() == false);
+
+	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	pActualObject->AttachToDB(newID);
+
+	pActualObject->SetLockID(0);
+
+	AddObjectToDBIndex(pActualObject, allocID);
+
+	*pObject = *pActualObject;
+	}
+	guard.Leave();
+}
+
+// HYPOTHESIS: a third instantiation of the same member template, for another database object type.
+// FUNCTION: STARFLEETOP 0x00571304
+void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
+{
+	tOptex::tGuard guard(&fAccess);
 	{
 #line 152
 	validate(pObject);
