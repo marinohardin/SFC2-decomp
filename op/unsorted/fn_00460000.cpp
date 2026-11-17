@@ -436,12 +436,13 @@ public:
 };
 
 // HYPOTHESIS: the record built at 0x0045e5f7; its members are placed by their stack offsets.
-class fn_0045e5f7_object
+// The name is the analysis's label for its destructor 0x0045e63a (virtual, so the record
+// derives from tCampaignInfo; a scalar deleting destructor at 0x005d426f carries the same name).
+class CMiniDockFrameWnd : public tCampaignInfo
 {
 public:
-    fn_0045e5f7_object();
+    CMiniDockFrameWnd();
 
-    tCampaignInfo m_000;
     tDateAndTime m_168;
     fn_006cf2d0_object m_178;
 };
@@ -459,7 +460,7 @@ public:
 class fn_00460c0c_list
 {
 public:
-    void fn_00460c0c(const fn_0045e5f7_object &record);
+    void fn_00460c0c(const CMiniDockFrameWnd &record);
 };
 
 extern char *g_00844064;
@@ -482,9 +483,10 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
     {
         fn_006cf2d0_object value(arg->fn_005db8d3(), arg->fn_005db919());
         tDateAndTime now;
-        fn_0045e5f7_object record;
+        CMiniDockFrameWnd record;
         record.m_178 = value;
-        record.m_000 = *arg->fn_0060a827();
+        // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
+        (tCampaignInfo &)record = *arg->fn_0060a827();
         record.m_168 = now;
         m_ec.fn_00460c0c(record);
     }
@@ -711,26 +713,23 @@ void fn_00460b3b_class::fn_00460b3b()
     m_8 = 0;
 }
 
-// HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements; the
-// element type is CMiniDockFrameWnd (the function list names its destructor 0x0045e63a), and
-// 0x00461406 is its copy constructor.
-class CMiniDockFrameWnd
-{
-public:
-    CMiniDockFrameWnd(const CMiniDockFrameWnd &other);
-    virtual ~CMiniDockFrameWnd();
-    CMiniDockFrameWnd &operator=(const CMiniDockFrameWnd &other);
-
-    char pad_004[0x188];
-};
-
+// HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements. The
+// elements are the records 0x0046062e builds: 0x00460ede assigns them member by member
+// (0x00460736, 0x0053e29e, then 20 bytes), 0x0045e63a and 0x0046146c are the compiler's
+// destructor and assignment held out of line, and 0x00461406 is the library's _Construct.
 class fn_00460b73_class
 {
 public:
     fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al);
     ~fn_00460b73_class();
+    CMiniDockFrameWnd *end();
+    unsigned int size() const;
+    void push_back(const CMiniDockFrameWnd &_X);
+    void insert(CMiniDockFrameWnd *_P, unsigned int _M, const CMiniDockFrameWnd &_X);
     CMiniDockFrameWnd *erase(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
     void _Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
+    CMiniDockFrameWnd *_Ucopy(const CMiniDockFrameWnd *_F, const CMiniDockFrameWnd *_L, CMiniDockFrameWnd *_P);
+    void _Ufill(CMiniDockFrameWnd *_F, unsigned int _N, const CMiniDockFrameWnd &_X);
 
     std::allocator<CMiniDockFrameWnd> allocator;
     CMiniDockFrameWnd *_First;
@@ -762,23 +761,34 @@ fn_00460b73_class::~fn_00460b73_class()
     _First = 0, _Last = 0, _End = 0;
 }
 
-// HYPOTHESIS: 0x00460c0c forwards the member at +8 to 0x00460ede with a constant 1; the callee
-// pops its own three arguments, so it is __stdcall.
-void __stdcall fn_00460ede(void *p, int n, int v);
-
-class fn_00460c0c_class
+inline CMiniDockFrameWnd *fn_00460b73_class::end()
 {
-public:
-    void fn_00460c0c(int v);
+    return (_Last);
+}
 
-    char pad_000[0x8];
-    void *m_8;
-};
+inline unsigned int fn_00460b73_class::size() const
+{
+    return (_First == 0 ? 0 : _Last - _First);
+}
 
+inline CMiniDockFrameWnd *fn_00460b73_class::_Ucopy(const CMiniDockFrameWnd *_F, const CMiniDockFrameWnd *_L, CMiniDockFrameWnd *_P)
+{
+    for (; _F != _L; ++_P, ++_F)
+        allocator.construct(_P, *_F);
+    return (_P);
+}
+
+inline void fn_00460b73_class::_Ufill(CMiniDockFrameWnd *_F, unsigned int _N, const CMiniDockFrameWnd &_X)
+{
+    for (; 0 < _N; --_N, ++_F)
+        allocator.construct(_F, _X);
+}
+
+// HYPOTHESIS: 0x00460c0c is the library's push_back on the same vector: insert at end().
 // FUNCTION: STARFLEETOP 0x00460c0c
-void fn_00460c0c_class::fn_00460c0c(int v)
+void fn_00460b73_class::push_back(const CMiniDockFrameWnd &_X)
 {
-    fn_00460ede(m_8, 1, v);
+    insert(end(), 1, _X);
 }
 
 // HYPOTHESIS: 0x00460c1d is the library's vector destructor for 364-byte elements whose
@@ -940,5 +950,38 @@ void fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *x)
         y = y->_Next;
         ((fn_005f762d_object *)(x + 1))->~fn_005f762d_object();
         operator delete(x);
+    }
+}
+
+// HYPOTHESIS: 0x00460ede is the library's vector insert of _M copies of _X before _P.
+// FUNCTION: STARFLEETOP 0x00460ede
+void fn_00460b73_class::insert(CMiniDockFrameWnd *_P, unsigned int _M, const CMiniDockFrameWnd &_X)
+{
+    if (_End - _Last < _M)
+    {
+        unsigned int _N = size() + (_M < size() ? size() : _M);
+        CMiniDockFrameWnd *_S = allocator.allocate(_N, (void *)0);
+        CMiniDockFrameWnd *_Q = _Ucopy(_First, _P, _S);
+        _Ufill(_Q, _M, _X);
+        _Ucopy(_P, _Last, _Q + _M);
+        _Destroy(_First, _Last);
+        allocator.deallocate(_First, _End - _First);
+        _End = _S + _N;
+        _Last = _S + size() + _M;
+        _First = _S;
+    }
+    else if (_Last - _P < _M)
+    {
+        _Ucopy(_P, _Last, _P + _M);
+        _Ufill(_Last, _M - (_Last - _P), _X);
+        std::fill(_P, _Last, _X);
+        _Last += _M;
+    }
+    else if (0 < _M)
+    {
+        _Ucopy(_Last - _M, _Last, _Last);
+        std::copy_backward(_P, _Last - _M, _Last);
+        std::fill(_P, _P + _M, _X);
+        _Last += _M;
     }
 }

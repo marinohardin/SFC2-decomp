@@ -3457,6 +3457,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x00460ede": {
+   "name": "FUN_00460ede",
+   "symbol": "?insert@fn_00460b73_class@@QAEXPAVCMiniDockFrameWnd@@IABV2@@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 646,
+   "score": 91.579,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
