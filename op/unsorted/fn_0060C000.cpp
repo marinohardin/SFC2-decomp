@@ -307,6 +307,7 @@ public:
     ~C_0060c7dc();
     void fn_0060ca20();
     void fn_0060ca42(int value);
+    int fn_0060ca4f();
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
@@ -406,4 +407,10 @@ void C_0060c7dc::fn_0060ca20()
 void C_0060c7dc::fn_0060ca42(int value)
 {
     m_728 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x0060ca4f
+int C_0060c7dc::fn_0060ca4f()
+{
+    return m_728;
 }
