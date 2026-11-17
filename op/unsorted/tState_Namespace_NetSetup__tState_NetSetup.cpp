@@ -692,3 +692,38 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_004772ce(int id)
 	}
 	return result;
 }
+
+// HYPOTHESIS: the state's control name tables and the names its value objects bind to, as
+// tState_GameConnections::fn_00469271 registers its own.
+#include "unsorted/s_00844ed0_entry.h"
+extern s_00844ed0_entry g_008493d8[];
+extern s_00844fd0_entry g_00849450[];
+extern const char *g_0084948c[];
+void fn_004d35e3(const char *name, const char *group, int n);
+void fn_004d35ac(tValueBase *value, const char *name);
+
+// FUNCTION: STARFLEETOP 0x00477440
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00477440()
+{
+	int i;
+	for (i = 0; i < 15; i++)
+		fn_004d35e3(g_008493d8[i].name, g_008493d8[i].group, 0);
+	for (i = 0; i < 5; i++)
+		fn_004d35e3(g_00849450[i].name, g_00849450[i].group, g_00849450[i].n);
+
+	m1c = tString("");
+	m5c = tString("");
+	m9c = tString("");
+	mdc = tString("");
+	m11c = tString("");
+	m15c = tString("");
+	m19c = tString("");
+
+	fn_004d35ac(&m1c, g_0084948c[0]);
+	fn_004d35ac(&m5c, g_0084948c[1]);
+	fn_004d35ac(&m9c, g_0084948c[2]);
+	fn_004d35ac(&mdc, g_0084948c[3]);
+	fn_004d35ac(&m11c, g_0084948c[4]);
+	fn_004d35ac(&m15c, g_0084948c[5]);
+	fn_004d35ac(&m19c, g_0084948c[6]);
+}

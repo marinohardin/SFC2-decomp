@@ -89,17 +89,17 @@ void fn_0046aa58();
 
 // HYPOTHESIS: tables of control names fn_00469271 registers with fn_004d35e3; cdecl helpers
 // whose meaning is not known. fn_004d35ac binds a value object to a control name.
-struct s_00844ed0_entry
-{
-	const char *name;
-	const char *group;
-};
-struct s_00844fd0_entry
-{
-	const char *name;
-	const char *group;
-	int n;
-};
+#include "unsorted/s_00844ed0_entry.h"
+
+
+
+
+
+
+
+
+
+
 extern s_00844ed0_entry g_00844ed0[];
 extern s_00844fd0_entry g_00844fd0[];
 extern const char *g_00845018[];
