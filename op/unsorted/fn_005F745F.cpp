@@ -42,6 +42,7 @@ class fn_005f7961_object;
 struct fn_0055fe12_value
 {
 	fn_0055fe12_value( const fn_0055fe12_value& other );
+	~fn_0055fe12_value();
 
 	std::string field_00;
 	int field_10;
@@ -139,4 +140,11 @@ fn_0055fe12_value fn_005f745f_object::FUN_005f75a3()
 	field_18.FUN_005f7902();
 
 	return value;
+}
+
+// HYPOTHESIS: the destructor the compiler would generate; the original has an out-of-line copy
+// for the unwind of 0x005f75a3.
+// FUNCTION: STARFLEETOP 0x005f762d
+inline fn_0055fe12_value::~fn_0055fe12_value()
+{
 }
