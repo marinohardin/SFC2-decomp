@@ -148,7 +148,7 @@ class tSFCPlayer
 		virtual void vfunction5() = 0;
 		virtual void vfunction6() = 0;
 		virtual void vfunction7(int param_1);
-		virtual void vfunction8() = 0;
+		virtual int vfunction8();
 		virtual void vfunction9(int param_1) = 0;
 		virtual int vfunction10() = 0;
 		virtual void vfunction11() = 0;
@@ -697,6 +697,12 @@ void tSFCPlayer::vfunction7(int param_1)
 	m_8538 = param_1;
 	if (param_1 != 5)
 		gObject_0092deb4->vfunction32(0);
+}
+
+// FUNCTION: STARFLEETOP 0x004d0516
+int tSFCPlayer::vfunction8()
+{
+	return m_8538;
 }
 
 // FUNCTION: STARFLEETOP 0x004d0424
