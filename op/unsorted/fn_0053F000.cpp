@@ -68,6 +68,7 @@ public:
 	void fn_0053f2c1( const fn_0053f2a2_arg &arg );
 	void fn_0053f2d6( long value );
 	void fn_0053f2e3( long value );
+	void fn_0053f2f0( long value );
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
@@ -172,4 +173,11 @@ void fn_0053f25c_owner::fn_0053f2d6( long value )
 void fn_0053f25c_owner::fn_0053f2e3( long value )
 {
 	m_90 = value;
+}
+
+// HYPOTHESIS: same owner; the setter paired with the getter of the dword at 0x94.
+// FUNCTION: STARFLEETOP 0x0053f2f0
+void fn_0053f25c_owner::fn_0053f2f0( long value )
+{
+	m_94 = value;
 }
