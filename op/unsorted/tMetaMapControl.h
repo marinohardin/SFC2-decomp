@@ -11,13 +11,19 @@ class tCompassRose;
 // the value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5.
 struct fn_005e36cd_entry
 {
-	unsigned char field_0[ 0x14 ];
+	// HYPOTHESIS: 0x005e3935 calls vtable slot 0 on an entry with the control's +0x1c8 and uses
+	// the answer as an index.
+	virtual int vfunction0( int param_1 );
+
+	unsigned char field_4[ 0x14 - 0x4 ];
 	int field_14;
 	unsigned char field_18[ 0x2c - 0x18 ];
 	// HYPOTHESIS: the point 0x005e374b draws at when it is given none.
 	short field_2c;
 	short field_2e;
-	unsigned char field_30[ 0x4c - 0x30 ];
+	unsigned char field_30[ 0x40 - 0x30 ];
+	bool field_40;
+	unsigned char field_41[ 0x4c - 0x41 ];
 	int field_4c;
 	int field_50;
 	unsigned char field_54[ 0x64 - 0x54 ];
@@ -75,6 +81,8 @@ public:
 	// entry's own when both are -1) in a colour (0x005e3935's when -1), red, green and blue bytes.
 	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
 	unsigned long fn_005e3935( fn_005e36cd_entry *entry );
+	unsigned long fn_005e396d( int param_1 );
+	unsigned long fn_005e397b( unsigned long param_1 );
 	void fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color );
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );

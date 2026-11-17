@@ -355,3 +355,18 @@ void tMetaMapControl::fn_005e3903( fn_005e381f_entry *entry, int param_2 )
 		fn_005e374b( entry, param_2, field_1b4[ 0 ], -1, -1, -1 );
 	}
 }
+
+// HYPOTHESIS: a table of colours 0x005e3935 indexes when the entry's +0x40 flag is clear.
+extern unsigned long g_00c39058[];
+
+// FUNCTION: STARFLEETOP 0x005e3935
+unsigned long tMetaMapControl::fn_005e3935( fn_005e36cd_entry *entry )
+{
+	int index = entry->vfunction0( field_1c8 );
+	unsigned long color;
+	if ( entry->field_40 )
+		color = fn_005e397b( fn_005e396d( index ) );
+	else
+		color = g_00c39058[ index ];
+	return color;
+}
