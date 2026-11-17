@@ -299,6 +299,11 @@ public:
     virtual void vfunction70();
     // HYPOTHESIS: slot 70; stores its argument in the float at +0x40 (tCloakSystem writes it as a float).
     virtual void vfunction71(float param_1);
+    virtual void vfunction72();
+    virtual void vfunction73();
+    // HYPOTHESIS: slot 73 takes two floats; slot 74 passes its float and 0.0.
+    virtual void vfunction74(float param_1, float param_2);
+    virtual void vfunction75(float param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;
