@@ -4033,6 +4033,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004777d3": {
+   "name": "FUN_004777d3",
+   "symbol": "_$E6",
+   "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
