@@ -624,32 +624,32 @@ void fn_00460b3b_class::fn_00460b3b()
 }
 
 // HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements; the
-// element type is not identified, and 0x00461406 is its copy constructor.
-class fn_00460b73_element
+// element type is CMiniDockFrameWnd (the function list names its destructor 0x0045e63a), and
+// 0x00461406 is its copy constructor.
+class CMiniDockFrameWnd
 {
 public:
-    fn_00460b73_element(const fn_00460b73_element &other);
-    // HYPOTHESIS: 0x0045e63a is its destructor.
-    ~fn_00460b73_element();
+    CMiniDockFrameWnd(const CMiniDockFrameWnd &other);
+    virtual ~CMiniDockFrameWnd();
 
-    char pad_000[0x18c];
+    char pad_004[0x188];
 };
 
 class fn_00460b73_class
 {
 public:
-    fn_00460b73_class(unsigned int n, const fn_00460b73_element &v, const std::allocator<fn_00460b73_element> &al);
+    fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al);
     ~fn_00460b73_class();
-    void _Destroy(fn_00460b73_element *_F, fn_00460b73_element *_L);
+    void _Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
 
-    std::allocator<fn_00460b73_element> allocator;
-    fn_00460b73_element *_First;
-    fn_00460b73_element *_Last;
-    fn_00460b73_element *_End;
+    std::allocator<CMiniDockFrameWnd> allocator;
+    CMiniDockFrameWnd *_First;
+    CMiniDockFrameWnd *_Last;
+    CMiniDockFrameWnd *_End;
 };
 
 // FUNCTION: STARFLEETOP 0x00460b73
-fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_00460b73_element &v, const std::allocator<fn_00460b73_element> &al)
+fn_00460b73_class::fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al)
     : allocator(al)
 {
     _First = allocator.allocate(n, (void *)0);
@@ -657,10 +657,10 @@ fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_00460b73_element &
     _Last = _First + n, _End = _Last;
 }
 
-inline void fn_00460b73_class::_Destroy(fn_00460b73_element *_F, fn_00460b73_element *_L)
+inline void fn_00460b73_class::_Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L)
 {
     for (; _F != _L; ++_F)
-        allocator.destroy(_F);
+        _F->CMiniDockFrameWnd::~CMiniDockFrameWnd();
 }
 
 // HYPOTHESIS: 0x00460bd6 is the library's vector destructor for the same elements.
