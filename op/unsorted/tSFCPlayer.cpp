@@ -182,7 +182,7 @@ class tSFCPlayer
 		virtual int vfunction14(unsigned param_1);
 		virtual int vfunction15(int param_1);
 		virtual void vfunction16(unsigned param_1);
-		virtual void vfunction17() = 0;
+		virtual void vfunction17(int param_1, unsigned param_2);
 		virtual void vfunction18() = 0;
 		virtual void vfunction19(char *param_1, unsigned param_2);
 		virtual char *vfunction20(unsigned param_1);
@@ -1450,6 +1450,25 @@ void tSFCPlayer::vfunction114(fn_004e2b02_ship_type *param_1)
 }
 // FUNCTION: STARFLEETOP 0x004d1580
 void tSFCPlayer::vfunction115(char param_1) { m_05 = param_1; }
+// FUNCTION: STARFLEETOP 0x004d158a
+void tSFCPlayer::vfunction17(int param_1, unsigned param_2)
+{
+	int row = fn_004d11e9(param_1);
+	if (param_2 < (unsigned)m_3370[row]) {
+		if (param_2 < 5) {
+			int idx = row * 6 + param_2;
+			int n = 5 - param_2;
+			do {
+				m_3388[idx] = m_3388[idx + 1];
+				m_3418[idx] = m_3418[idx + 1];
+				m_39b8[idx] = m_39b8[idx + 1];
+				m_3f58[idx].fn_00445a14((int)&m_3f58[idx + 1]);
+				idx++;
+			} while (--n != 0);
+		}
+		m_3370[row]--;
+	}
+}
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
 // FUNCTION: STARFLEETOP 0x004d0e20
