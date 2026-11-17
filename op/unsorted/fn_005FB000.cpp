@@ -10,6 +10,17 @@ template<> int& std::map<int, int>::operator[]( const int& _Kv )
 	return ( ( *_P ).second );
 }
 
+// The game's out-of-line copy of the library's tree destructor for the same map.
+// HYPOTHESIS: the original's library kept a per-instance nil node at +0x8 and the size at +0x10,
+// and freed the nil node here; the toolchain's xtree keeps a static nil, so that tail differs.
+// FUNCTION: STARFLEETOP 0x005fb033
+template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::~_Tree()
+{
+	erase( begin(), end() );
+	_Freenode( _Head );
+	_Head = 0, _Size = 0;
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
