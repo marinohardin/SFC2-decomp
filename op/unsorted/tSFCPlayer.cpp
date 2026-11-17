@@ -59,6 +59,8 @@ class tObject_004454c1
 		~tObject_004454c1();
 		void fn_00447af2(char *s, int v);
 		void fn_00447aa7(void *param_1);
+		char fn_00508f68();
+		void fn_00447b7a(void *param_1);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -223,7 +225,7 @@ class tSFCPlayer
 		virtual void vfunction77() = 0;
 		virtual void vfunction78() = 0;
 		virtual char vfunction79();
-		virtual void vfunction80() = 0;
+		virtual char vfunction80();
 		virtual void vfunction81(int param_1, unsigned param_2) = 0;
 		virtual void vfunction82() = 0;
 		virtual void vfunction83(int param_1, unsigned param_2) = 0;
@@ -258,6 +260,7 @@ class tSFCPlayer
 
 	private:
 		bool m_04;
+		char m_05;
 		tString m_08;
 		int m_30;
 		float m_34;
@@ -752,6 +755,21 @@ char tSFCPlayer::vfunction79()
 		if (iEntity != 0) {
 			bResult = 1;
 			m_238[i].fn_00447aa7(iEntity);
+		}
+	}
+	return bResult;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0583
+char tSFCPlayer::vfunction80()
+{
+	char bResult = 0;
+	for (unsigned i = 0; i < (unsigned)m_30; i++) {
+		fn_004e2b02_ship_type *iEntity = gObject_008e1060.fn_0042496f(m_40[i]);
+		if (iEntity != 0 && m_238[i].fn_00508f68() != 0) {
+			bResult = 1;
+			if (m_05 != 0)
+				m_238[i].fn_00447b7a(iEntity);
 		}
 	}
 	return bResult;
