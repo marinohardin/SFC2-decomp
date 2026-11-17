@@ -283,3 +283,29 @@ void fn_004d2353_holder::fn_004d23db()
 		m_b = 0;
 	}
 }
+
+// HYPOTHESIS: a function holding one unwinding local: call fn_004d24dc on this under state 0,
+// then call fn_005da20a(1) on this once the local is gone.
+class fn_004d2420_part
+{
+public:
+	~fn_004d2420_part();
+};
+
+class fn_004d2420_holder
+{
+public:
+	void fn_004d24dc();
+	void fn_005da20a(int a);
+	void fn_004d2420();
+};
+
+// FUNCTION: STARFLEETOP 0x004d2420
+void fn_004d2420_holder::fn_004d2420()
+{
+	{
+		fn_004d2420_part guard;
+		fn_004d24dc();
+	}
+	fn_005da20a(1);
+}
