@@ -585,14 +585,50 @@ void fn_00460acb_class::fn_00460acb()
     m_8 = 0;
 }
 
+// HYPOTHESIS: the second container's iterator; its increment is 0x0052e144.
+class fn_00460b03_iterator
+{
+public:
+    fn_00460b03_iterator(fn_00460acb_node *p) : _Ptr(p) {}
+    fn_00460b03_iterator operator++(int);
+    bool operator==(const fn_00460b03_iterator &x) const;
+    bool operator!=(const fn_00460b03_iterator &x) const;
+    void fn_0052e144();
+
+    fn_00460acb_node *_Ptr;
+};
+
+inline fn_00460b03_iterator fn_00460b03_iterator::operator++(int)
+{
+    fn_00460b03_iterator _Tmp = *this;
+    fn_0052e144();
+    return (_Tmp);
+}
+
+inline bool fn_00460b03_iterator::operator==(const fn_00460b03_iterator &x) const
+{
+    return (_Ptr == x._Ptr);
+}
+
+inline bool fn_00460b03_iterator::operator!=(const fn_00460b03_iterator &x) const
+{
+    return (!(*this == x));
+}
+
 // HYPOTHESIS: a second container of the same shape as fn_00460acb_class, with another erase
 // at 0x00460cc7.
 class fn_00460b03_class
 {
 public:
-    fn_00460acb_iterator fn_00460cc7(fn_00460acb_iterator first, fn_00460acb_iterator last);
-    fn_00460acb_iterator begin();
-    fn_00460acb_iterator end();
+    // HYPOTHESIS: 0x00460cc7 erases the nodes in [first, last) and returns the iterator after.
+    fn_00460b03_iterator fn_00460cc7(fn_00460b03_iterator first, fn_00460b03_iterator last);
+    // HYPOTHESIS: 0x0060ac82 is the library's erase of one node.
+    fn_00460b03_iterator fn_0060ac82(fn_00460b03_iterator p);
+    // HYPOTHESIS: 0x00460e76 is the library's recursive _Erase of a subtree.
+    void fn_00460e76(fn_00460acb_node *x);
+    fn_00460b03_iterator begin();
+    fn_00460b03_iterator end();
+    unsigned int size() const;
     void fn_00460b03();
 
     char pad_000[0x4];
@@ -602,14 +638,19 @@ public:
     unsigned int _Size;
 };
 
-inline fn_00460acb_iterator fn_00460b03_class::begin()
+inline fn_00460b03_iterator fn_00460b03_class::begin()
 {
-    return (fn_00460acb_iterator(_Head->_Next));
+    return (fn_00460b03_iterator(_Head->_Next));
 }
 
-inline fn_00460acb_iterator fn_00460b03_class::end()
+inline fn_00460b03_iterator fn_00460b03_class::end()
 {
-    return (fn_00460acb_iterator(_Head));
+    return (fn_00460b03_iterator(_Head));
+}
+
+inline unsigned int fn_00460b03_class::size() const
+{
+    return (_Size);
 }
 
 // FUNCTION: STARFLEETOP 0x00460b03
@@ -775,6 +816,24 @@ fn_00460acb_iterator fn_00460acb_class::fn_00460c53(fn_00460acb_iterator first, 
     else
     {
         fn_00460e3e(_Head->_Parent);
+        _Head->_Parent = (fn_00460acb_node *)m_8, _Size = 0;
+        _Head->_Next = _Head, _Head->_Right = _Head;
+        return (begin());
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x00460cc7
+fn_00460b03_iterator fn_00460b03_class::fn_00460cc7(fn_00460b03_iterator first, fn_00460b03_iterator last)
+{
+    if (size() == 0 || first != begin() || last != end())
+    {
+        while (first != last)
+            fn_0060ac82(first++);
+        return (first);
+    }
+    else
+    {
+        fn_00460e76(_Head->_Parent);
         _Head->_Parent = (fn_00460acb_node *)m_8, _Size = 0;
         _Head->_Next = _Head, _Head->_Right = _Head;
         return (begin());
