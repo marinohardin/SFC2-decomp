@@ -103,6 +103,8 @@ public:
 	bool FUN_0042a421( int key0, int key1 );
 	void FUN_0042a709( int key0, int key1 );
 	void FUN_0042a73d();
+	// HYPOTHESIS: sets the whole flag word that 0x0042a403 tests.
+	void FUN_0042a7b2( unsigned long flags );
 	// HYPOTHESIS: returns a map by value whose node value sits at +0x0c with an 8-byte key; the
 	// mapped type is guessed as the 0x14-byte value whose getters 0x0055f269 and 0x005e8f21 it calls.
 	std::map< std::pair< int, int >, tObject_005b69d0 > FUN_0042ac56();
@@ -331,4 +333,10 @@ void fn_0042a403_object::FUN_0042a73d()
 
 	for( std::map< std::pair< int, int >, tObject_005b69d0 >::iterator it = entries.begin(); it != entries.end(); ++it )
 		FUN_0042a709( (*it).second.fn_0055f269(), (*it).second.fn_005e8f21() );
+}
+
+// FUNCTION: STARFLEETOP 0x0042a7b2
+void fn_0042a403_object::FUN_0042a7b2( unsigned long flags )
+{
+	field_98 = flags;
 }
