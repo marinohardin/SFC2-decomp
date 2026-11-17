@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <string>
 #include "unsorted/tMetaMapHex.h"
+#include "Common/Settings.h"
 
 // HYPOTHESIS: 0x0046de63 is a non-virtual member called on a held pointer (a release
 // or close); its class is not known yet.
@@ -553,4 +554,18 @@ void fn_005d987d(tMetaMapHex *param_1, int param_2, float *param_3, int *param_4
                 *param_4 = key;
         }
     }
+}
+
+// HYPOTHESIS: returns the game's settings object; its name and owner are not known.
+tSettings *fn_0040c868();
+
+// FUNCTION: STARFLEETOP 0x005d9901
+std::string fn_005d9901(unsigned int param_1)
+{
+    std::string unused;
+    std::vector< std::string > names;
+    fn_0040c868()->GetList("RaceNames/FullEmpireNames", &names, 0);
+    if (names.size() > param_1)
+        return names[param_1];
+    return "UNKNOWN RACE";
 }

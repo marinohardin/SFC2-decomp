@@ -823,13 +823,13 @@ std::string g_008f5318 = "@@";
 
 #include <fstream>
 
-// HYPOTHESIS: the SDK's settings class (GetValue at 0x006f75d0 by SDK library match); declared
-// here with the one member this unit uses until a shared header exists.
-class tSettings
-{
-public:
-	void GetValue( const std::string& name, std::string* value );
-};
+#include "Common/Settings.h"
+
+
+
+
+
+
 
 // HYPOTHESIS: returns the game's settings object; name and owner not identified.
 tSettings* fn_005d481f();
