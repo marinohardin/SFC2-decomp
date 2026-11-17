@@ -807,3 +807,26 @@ void fn_005759dc_owner::fn_005759dc(fn_005759dc_object** out)
 {
 	*out = new fn_005759dc_object(m_d0);
 }
+
+// HYPOTHESIS: the 0x48-byte object built by fn_00575a1f is unnamed; it has a destructor, so the new-expression carries an EH frame
+class fn_00575a1f_object
+{
+public:
+	fn_00575a1f_object(void* arg);
+	~fn_00575a1f_object();
+	char m_pad[0x48];
+};
+
+class fn_00575a1f_owner
+{
+public:
+	void fn_00575a1f(fn_00575a1f_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x00575a1f
+void fn_00575a1f_owner::fn_00575a1f(fn_00575a1f_object** out)
+{
+	*out = new fn_00575a1f_object(m_d0);
+}
