@@ -343,6 +343,8 @@ template<>
 void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** );
 template<>
 void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** );
+template<>
+void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** );
 // FUNCTION: STARFLEETOP 0x005de905
 template<>
 void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
@@ -413,4 +415,16 @@ void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** 
 			_Sort(_M, _L, _P, (tNewsStory**)0), _L = _M;
 		else
 			_Sort(_F, _M, _P, (tNewsStory**)0), _F = _M; }}
+// HYPOTHESIS: the _Insertion_sort_1 instance _Sort_0 at 0x005de905 calls.
+// FUNCTION: STARFLEETOP 0x005dec44
+template<>
+void _Insertion_sort_1( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
+	{if (_F != _L)
+		for (tNewsStory** _M = _F; ++_M != _L; )
+			{tNewsStory* _V = *_M;
+			if (!_P(_V, *_F))
+				_Unguarded_insert(_M, _V, _P);
+			else
+				{copy_backward(_F, _M, _M + 1);
+				*_F = _V; }}}
 }
