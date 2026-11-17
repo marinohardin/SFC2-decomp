@@ -6,11 +6,13 @@
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tValueI.h"
 #include "unsorted/tGameState.h"
+#include <vector>
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
 void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
 void fn_004d3774(int id);
+void fn_004d32c4(const char *name);
 
 // HYPOTHESIS: the name of the screen the state shows, a global handed with it to fn_004d31ed,
 // and a value the state resets to 10 (as tState_GameConnections resets its own).
@@ -43,6 +45,7 @@ public:
 
 	void fn_004764ed();
 	void fn_00477440();
+	void fn_00477689();
 
 	unsigned char m0c;
 	char m0d[7];
@@ -57,7 +60,8 @@ public:
 	char m1e8[8];
 	int m1f0;
 	char *m1f4;
-	char m1f8[0x10];
+	// HYPOTHESIS: names the state hands to fn_004d32c4 on exit, as in tState_GameConnections.
+	std::vector< char * > m1f8;
 	tString m208;
 };
 
@@ -98,6 +102,25 @@ bool tState_NetSetup::vfunction2()
 	m1e4 = 0;
 
 	fn_004d3774(0x10020);
+	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00475201
+bool tState_NetSetup::vfunction4()
+{
+	static tObject_0040ce21 marker("bye now");
+
+	fn_00477689();
+	fn_004d32c4(m1f4);
+	while (!m1f8.empty())
+	{
+		fn_004d32c4(*(m1f8.end() - 1));
+		m1f8.pop_back();
+	}
+	m1f8.erase(m1f8.begin(), m1f8.end());
+	m1dc = 0;
+	m1e0 = 0;
+	m1e4 = 0;
 	return true;
 }
 
