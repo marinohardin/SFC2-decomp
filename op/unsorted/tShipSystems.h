@@ -71,7 +71,7 @@ public:
     virtual void vfunction55() = 0;
     virtual void vfunction56() = 0;
     virtual char* vfunction57() = 0;
-    virtual void vfunction58() = 0;
+    virtual char* vfunction58() = 0;
     virtual void vfunction59() = 0;
     virtual void vfunction60() = 0;
     virtual void vfunction61() = 0;

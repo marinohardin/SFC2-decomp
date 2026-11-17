@@ -73,7 +73,7 @@ public:
     virtual void vfunction55();
     virtual void vfunction56();
     virtual char* vfunction57();
-    virtual void vfunction58();
+    virtual char* vfunction58();
     virtual void vfunction59();
     virtual void vfunction60();
     virtual void vfunction61();
@@ -375,4 +375,13 @@ float tShipSystemsFighter::vfunction51( int )
 char* tShipSystemsFighter::vfunction57()
 {
     return m5c4;
+}
+
+// HYPOTHESIS: the return type; the original returns the address +0x688, 0xc4 bytes into the
+// block at m5c4 that the constructor clears as one, so m5c4 is likely a structure with a
+// member there.
+// FUNCTION: STARFLEETOP 0x004443f1
+char* tShipSystemsFighter::vfunction58()
+{
+    return m5c4 + 0xc4;
 }
