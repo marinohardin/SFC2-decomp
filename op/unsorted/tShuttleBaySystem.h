@@ -60,6 +60,8 @@ public:
     virtual int vfunction134(int param_1);
     // vftable slot 135; returns element param_1 of the array vfunction132 stores into.
     virtual int vfunction135(int param_1);
+    // vftable slot 136; returns element param_1 of the array vfunction133 stores into.
+    virtual int vfunction136(int param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.

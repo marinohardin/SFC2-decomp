@@ -133,3 +133,9 @@ int tShuttleBaySystem::vfunction135(int param_1)
 {
     return field_118[param_1];
 }
+
+// FUNCTION: STARFLEETOP 0x0044e661
+int tShuttleBaySystem::vfunction136(int param_1)
+{
+    return field_128[param_1];
+}
