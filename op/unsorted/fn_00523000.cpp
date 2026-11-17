@@ -301,3 +301,22 @@ void fn_0090bed4_Object::fn_00523445(unsigned char param_1, char param_2)
 		}
 	}
 }
+
+// HYPOTHESIS: the team list 0x00426f1a returns (tObject_0090be60.h types it as a vector);
+// 0x00426e18 returns an ID from it, likely its leader's.
+class tObject_00426e18
+{
+public:
+	int fn_00426e18();
+};
+
+// FUNCTION: STARFLEETOP 0x00523543
+tObject_0051c7af *fn_0090bed4_Object::fn_00523543(int param_1)
+{
+	if (gObject_0090be60 != NULL) {
+		tObject_00426e18 *pList = (tObject_00426e18 *) gObject_0090be60->fn_00426f1a(param_1);
+		if (pList != NULL)
+			return fn_00523574(pList->fn_00426e18());
+	}
+	return NULL;
+}
