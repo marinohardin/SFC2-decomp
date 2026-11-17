@@ -88,6 +88,8 @@ public:
     // that they belong to this class is a guess.
     unsigned int fn_00546264();
     unsigned int fn_005462d7();
+    // HYPOTHESIS: 0x005462de returns the address of +0x90, the member 0x00546027 calls through.
+    c_00451045* fn_005462de();
     const c_00427db2& fn_005462e5();
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
@@ -299,4 +301,10 @@ int* c_005462d0::fn_005462d0()
 unsigned int c_00546027::fn_005462d7()
 {
     return field_430;
+}
+
+// FUNCTION: STARFLEETOP 0x005462de
+c_00451045* c_00546027::fn_005462de()
+{
+    return &field_90;
 }
