@@ -1,6 +1,27 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005D913F.cpp
-// Functions: 0x005d913f to 0x005d9ffe, 41 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <string>
+
+// HYPOTHESIS: 0x0046de63 is a non-virtual member called on a held pointer (a release
+// or close); its class is not known yet.
+class fn_0046de63_object
+{
+public:
+    void FUN_0046de63();
+};
+
+// HYPOTHESIS: an object holding a std::string at +0x00 (its destructor is the inlined
+// _Tidy(true) at the end) and a pointer at +0x10.
+class fn_005d913f_object
+{
+public:
+    ~fn_005d913f_object();
+
+    std::string m00;
+    fn_0046de63_object *m10;
+};
+
+// FUNCTION: STARFLEETOP 0x005d913f
+fn_005d913f_object::~fn_005d913f_object()
+{
+    if (m10)
+        m10->FUN_0046de63();
+}
