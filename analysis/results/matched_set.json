@@ -15972,9 +15972,9 @@
    "symbol": "?QueueWorkItem@tThreadPool@@QAEXPAV?$tCallback@J@@J@Z",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 608,
-   "score": 99.949,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f53f0": {
    "name": "tOSVersion::Instance",
