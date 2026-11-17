@@ -732,3 +732,30 @@ void fn_0046a549(int *param_1)
 	if (state != 0)
 		state->vfunction8(param_1);
 }
+
+int g_0090db98;
+
+// HYPOTHESIS: slot 9 of the state takes one argument here; the header declares it without one.
+class fn_0046a55e_state
+{
+public:
+	virtual void v00();
+	virtual void v01();
+	virtual void v02();
+	virtual void v03();
+	virtual void v04();
+	virtual void v05();
+	virtual void v06();
+	virtual void v07();
+	virtual void v08();
+	virtual void vfunction9(int param_1);
+};
+
+// FUNCTION: STARFLEETOP 0x0046a55e
+void fn_0046a55e(int param_1)
+{
+	g_0090db98 = param_1;
+	tGameState *state = fn_0046a59a();
+	if (state != 0)
+		((fn_0046a55e_state *)state)->vfunction9(param_1);
+}
