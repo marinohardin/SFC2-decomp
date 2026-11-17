@@ -34,6 +34,14 @@ public:
 	float		fn_005A4238();
 };
 
+// Inline in the SDK; Optex.h declares it only.
+inline tOptex::tGuard::~tGuard()
+{
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x005a4173
 int fn_005A4173_Owner::fn_005A4173()
 {
@@ -108,9 +116,6 @@ float fn_005A4173_Owner::fn_005A4238()
 // FUNCTION: STARFLEETOP 0x005a4257
 int* fn_005A4173_Owner::fn_005A4257()
 {
-	int* p = &fValue34;
-	Enter();
-	p = &fValue34;
-	Leave();
-	return p;
+	tGuard guard(this);
+	return &fValue34;
 }
