@@ -12,6 +12,9 @@ public:
     fn_0040d63f_Buf* fn_0040d73e(tString* str);
     // HYPOTHESIS: 0x0040d867 is a member of this buffer class taking (data, size, count).
     void fn_0040d867(void* data, int size, int count);
+    // HYPOTHESIS: 0x0040d897 is the read counterpart of 0x0040d867.
+    void fn_0040d897(void* data, int size, int count);
+    fn_0040d63f_Buf* fn_0040d777(struct fn_0040d777_Point3& p);
     int m00;
     char* m04;
     char* m08;
@@ -90,5 +93,22 @@ fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d73e(tString* str)
     int len = str->mStrLen();
     for (int i = 0; i < len + 1; i++)
         fn_0040d867(&p[i], 2, 1);
+    return this;
+}
+
+// HYPOTHESIS: stand-in for tPoint3 (three floats), read member by member.
+struct fn_0040d777_Point3
+{
+    float x;
+    float y;
+    float z;
+};
+
+// FUNCTION: STARFLEETOP 0x0040d777
+fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d777(fn_0040d777_Point3& p)
+{
+    fn_0040d897(&p.x, 4, 1);
+    fn_0040d897(&p.y, 4, 1);
+    fn_0040d897(&p.z, 4, 1);
     return this;
 }
