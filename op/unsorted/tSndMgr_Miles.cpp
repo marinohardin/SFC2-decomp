@@ -40,7 +40,11 @@ class fn_005d6a72_object
 public:
 	~fn_005d6a72_object();
 
-	char pad_0000[0x18];
+	char pad_0000[0xc];
+	// HYPOTHESIS: an id handed to tSndMgr_Miles::vfunction5 and the channel index it plays on.
+	long field_c;
+	long field_10;
+	char pad_0014[0x4];
 };
 
 class fn_0050cb59_object
@@ -97,8 +101,10 @@ public:
 	virtual char vfunction2( HWND param_1 );
 	virtual void vfunction3();
 	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
+	// HYPOTHESIS: vfunction5 tests whether a sound id is playing, vfunction6 a general state; both
+	// return a byte flag (vfunction4 tests al after each call).
+	virtual char vfunction5( long param_1 );
+	virtual char vfunction6();
 	virtual void vfunction7( long param_1, long param_2 );
 	virtual void vfunction8();
 	virtual void vfunction9();
@@ -332,4 +338,20 @@ void tSndMgr_Miles::vfunction3()
 	field_2418 = 0;
 	AIL_shutdown();
 	field_2414 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f24d
+void tSndMgr_Miles::vfunction4()
+{
+	if ( field_2414 )
+	{
+		long volume = 0;
+		if ( vfunction6() )
+			volume = AIL_sample_volume( field_10[0].field_0 );
+		if ( field_2438.field_c )
+		{
+			if ( vfunction5( field_2438.field_c ) )
+				AIL_set_sample_volume( field_10[field_2438.field_10].field_0, 0x7f - volume );
+		}
+	}
 }

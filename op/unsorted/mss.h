@@ -25,6 +25,8 @@ __declspec( dllimport ) void		__stdcall AIL_release_sample_handle( HSAMPLE S );
 __declspec( dllimport ) void		__stdcall AIL_mem_free_lock( void *ptr );
 __declspec( dllimport ) void		__stdcall AIL_waveOutClose( HDIGDRIVER drvr );
 __declspec( dllimport ) void		__stdcall AIL_shutdown( void );
+__declspec( dllimport ) long		__stdcall AIL_sample_volume( HSAMPLE S );
+__declspec( dllimport ) void		__stdcall AIL_set_sample_volume( HSAMPLE S, long volume );
 }
 
 #define DIG_F_STEREO_16		3
