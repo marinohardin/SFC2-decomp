@@ -768,3 +768,58 @@ void fn_0056f9d7_owner::fn_0056f9d7(const nDatabase::tQuery<tMetaMapDesc> &query
 		}
 	}
 }
+
+// HYPOTHESIS: a third database object type (0x54 bytes, vtable slot 9 called on each collected
+// copy); the type and its name are not recovered.
+class fn_0056fb13_object {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char fn_0056fb13_pad[0x54 - 4];
+};
+
+// HYPOTHESIS: the result container for 0x0056fb13, as for 0x0056f19b.
+class fn_0056fb13_results {
+public:
+	void push_back(const fn_0056fb13_object &value);
+	fn_0056fb13_object &back() { return *(m_last - 1); }
+	void *m_allocator;
+	fn_0056fb13_object *m_first;
+	fn_0056fb13_object *m_last;
+};
+
+// HYPOTHESIS: unlocked variant of the database query, as 0x0056f19b, for another object type.
+class fn_0056fb13_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056fb13(const nDatabase::tQuery<fn_0056fb13_object> &query, fn_0056fb13_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 809 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056fb13
+void fn_0056fb13_owner::fn_0056fb13(const nDatabase::tQuery<fn_0056fb13_object> &query, fn_0056fb13_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_0056fb13_object));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		fn_0056fb13_object *pObject = (fn_0056fb13_object *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
+}

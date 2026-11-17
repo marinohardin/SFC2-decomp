@@ -6094,6 +6094,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0056fb13": {
+   "name": "FUN_0056fb13",
+   "symbol": "?fn_0056fb13@fn_0056fb13_owner@@QAEXABV?$tQuery@Vfn_0056fb13_object@@@nDatabase@@PAVfn_0056fb13_results@@@Z",
+   "unit": "unsorted/fn_0056F000.cpp",
+   "size": 196,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
