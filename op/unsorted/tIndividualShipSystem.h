@@ -353,7 +353,16 @@ public:
     tRepairableShipSystem();
     // vftable slot 22; saves or loads the repair fields (body at 0x0043d8b4).
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
+    // HYPOTHESIS: slots 84, 85 and 87..90 are declared here, in slot order, so that slot 93
+    // is vfunction94; their signatures are unknown.
+    virtual void vfunction85();
+    virtual void vfunction86();
+    // vftable slot 86
     virtual float vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    virtual void vfunction90();
+    virtual void vfunction91();
     // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
     virtual void vfunction92(int param_1);
     // HYPOTHESIS: vftable slot 92; returns field_78.

@@ -3,6 +3,7 @@
 
 #include "unsorted/tIndividualShipSystem.h"
 #include "Source/entity/entity_physical.h"
+#include "unsorted/tIndividualShipSystemList.h"
 
 // HYPOTHESIS: layout from the accesses only; the vtable sits at +0x0 and the
 // stored dword at +0xc.
@@ -241,4 +242,20 @@ void tRepairableShipSystem::vfunction92(int param_1)
 int tRepairableShipSystem::vfunction93()
 {
     return field_78;
+}
+
+// HYPOTHESIS: a group passes the call on to each member; the members are repairable systems.
+// FUNCTION: STARFLEETOP 0x004367d7
+void tRepairableShipSystem::vfunction94(int param_1, int param_2)
+{
+    if (vfunction46() == true)
+    {
+        for (tIndividualShipSystem* system = field_24->vfunction2(); system; system = field_24->vfunction5(system))
+            ((tRepairableShipSystem*)system)->vfunction94(param_1, param_2);
+    }
+    else if (field_0c == param_2 || param_2 == -1)
+    {
+        field_6c = param_1;
+        field_70 = param_1 * 0.0078125f;
+    }
 }
