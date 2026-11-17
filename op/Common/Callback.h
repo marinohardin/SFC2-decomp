@@ -17,4 +17,8 @@ public:
 	virtual void Callback( tnResult result ) = 0;
 };
 
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
 #endif

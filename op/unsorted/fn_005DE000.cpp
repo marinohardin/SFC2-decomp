@@ -214,9 +214,20 @@ tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > CreateCallback( tMetaClient
 
 #include "Common/Callback.h"
 
-// MATCH-ONLY: the SDK's template destructor (an empty body), written out as this instance's
-// explicit specialization so that its annotation names the one instance.
+// MATCH-ONLY: the SDK's template destructor, written out as this instance's inline explicit
+// specialization so that its annotation names the one instance. The out-of-line copy is the
+// one the deleting destructor and for_each's unwinding call; its body (storing the base
+// vtable) is the same as ~tCallback's, which the analysis names at this address.
 // FUNCTION: STARFLEETOP 0x005de660
 template<>
-tCallback< tNewsStory* >::~tCallback()
+inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >::~tMemberCallback()
 {}
+
+#include <algorithm>
+
+// HYPOTHESIS: applies a member callback to each story of a [first, last) pair of pointers.
+// FUNCTION: STARFLEETOP 0x005de667
+void fn_005de667( tNewsStory** range[2], const tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >& callback )
+{
+	std::for_each( range[0], range[1], callback );
+}

@@ -2,13 +2,13 @@
 #define MemberCallback_h
 
 // tMemberCallback, after the SDK's header of the same name.
-// HYPOTHESIS: in the SDK it derives from tCallback<tnResult>, which is declared so far only
-// inside Common/Thread/ThreadPool.cpp; the base is left out here until it has a header. Its
-// only state is the vtable pointer, so the layout is the same.
+
+#include "Common/Callback.h"
 
 // CLASS PURPOSE: Used to a call a member function when a callback is complete
 template< typename tnMemberClass, typename tnResult >
-class tMemberCallback
+class tMemberCallback :
+	public tCallback<tnResult>
 {
 public:
 //Types
@@ -32,6 +32,10 @@ template< typename tnMemberClass, typename tnResult >
 tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
 	fpMemberClass( pMemberClass ),
 	fpMemberFunction( pMemberFunction )
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback<tnMemberClass,tnResult>()
 {}
 
 // Helper functions
