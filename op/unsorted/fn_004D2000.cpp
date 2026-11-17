@@ -179,11 +179,18 @@ fn_004d2265_holder::~fn_004d2265_holder()
 }
 
 // HYPOTHESIS: copies text into m_str, then passes the stored text (or the empty literal) with dst on.
+// HYPOTHESIS: the object found by fn_004cb4f8; deleted through its virtual destructor.
+class fn_004cb4f8_result
+{
+public:
+	virtual ~fn_004cb4f8_result();
+};
+
 class fn_004cb4a7_target
 {
 public:
 	void fn_004cb4a7(int dst, const char* text);
-	void fn_004cb4f8(const char* text);
+	fn_004cb4f8_result* fn_004cb4f8(const char* text);
 	void fn_004cb56f(int a, const char* text, int b);
 	void fn_004cb5bd(const char* text);
 };
@@ -294,6 +301,19 @@ public:
 	void fn_004d2451(const char* text);
 	fn_004d2238_string m_str;
 };
+
+// FUNCTION: STARFLEETOP 0x004d24dc
+void fn_004d2420_holder::fn_004d24dc()
+{
+	if (m_str.m_len != 0)
+	{
+		const char* p = m_str.c_str();
+		fn_004cb4f8_result* r = g_009254f8.fn_004cb4f8(p);
+		if (r != 0)
+			delete r;
+		m_str.assign("", strlen(""));
+	}
+}
 
 // FUNCTION: STARFLEETOP 0x004d2420
 fn_004d2420_holder::~fn_004d2420_holder()
