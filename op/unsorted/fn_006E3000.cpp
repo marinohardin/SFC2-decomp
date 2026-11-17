@@ -155,19 +155,22 @@ unsigned long tObject_006e3000::FUN_006e31b0()
 	return wait;
 }
 
-// HYPOTHESIS: a buffer owner; m10 is the block, m08 and m0c its bounds.
+// HYPOTHESIS: a growable buffer; m10 is the block, m08 its capacity and m0c
+// the bytes in use.
 class tObject_006e3240
 {
 public:
 	void FUN_006e3240();
 	void FUN_006e3270();
+	void FUN_006e32f0(int param_1);
+	void FUN_006e3320(unsigned long param_1);
 	void FUN_006e3390(int param_1);
 
 	char m00[0x4];
 	unsigned char m04;
 	char m05[0x3];
-	char* m08;
-	char* m0c;
+	unsigned long m08;
+	unsigned long m0c;
 	char* m10;
 };
 
@@ -187,4 +190,18 @@ void tObject_006e3240::FUN_006e3270()
 {
 	m10 = 0;
 	FUN_006e3240();
+}
+
+// FUNCTION: STARFLEETOP 0x006e32f0
+void tObject_006e3240::FUN_006e32f0(int param_1)
+{
+	unsigned long needed = m0c + param_1;
+	if (needed <= m08)
+		return;
+	int size = m08;
+	if (size < 0x20)
+		size = 0x20;
+	while (size < (int)needed)
+		size *= 2;
+	FUN_006e3320(size);
 }
