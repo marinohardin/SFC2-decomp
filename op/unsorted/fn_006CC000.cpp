@@ -13,6 +13,7 @@ extern "C" DWORD WINAPI GetTickCount(void);
 void *fn_006c15c0(fn_006c1510_pool *pool, int index);
 
 struct fn_006cc0f0_server;
+struct fn_006bf5f0_table;
 
 // HYPOTHESIS: one query slot per socket: the server it waits on, when it was sent and where to.
 struct fn_006cc0f0_slot
@@ -48,10 +49,11 @@ struct fn_006cc070_owner
 	fn_006cc0f0_callback field_78;
 	unsigned long field_7c;
 	unsigned char pad_80[0x94 - 0x80];
-	unsigned long field_94;
+	fn_006bf5f0_table *field_94;
+	int field_98;
 };
 
-void *fn_006cc530(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, unsigned long param_5);
+void *fn_006cc530(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, fn_006bf5f0_table *param_5);
 
 // FUNCTION: STARFLEETOP 0x006cc070
 void *fn_006cc070(fn_006cc070_owner *owner, unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4)
@@ -192,5 +194,31 @@ int fn_006cc460(fn_006cc070_owner *owner)
 {
 	if (owner->field_00 != 0)
 		owner->field_74 = 1;
+	return 0;
+}
+
+void fn_006c1560(fn_006c1510_pool *pool);
+fn_006c1510_pool *fn_006c1510(unsigned long size, unsigned long count, void (*param)(void *));
+void fn_006cc510(void *element);
+
+// HYPOTHESIS: 0x006bf5f0 builds a hashed table (element size, bucket count, a third size and
+// three callbacks: hash, compare, free); 0x006bf660 frees it. Kept opaque here.
+void fn_006bf660(fn_006bf5f0_table *table);
+fn_006bf5f0_table *fn_006bf5f0(int size, int buckets, int count, int (*hash)(const void *, int), int (*compare)(const void *, const void *), void (*release)(void *));
+int fn_006cca60(const void *element, int buckets);
+int fn_006ccae0(const void *a, const void *b);
+void fn_006ccb10(void *element);
+
+// HYPOTHESIS: resets the owner's lists while it is idle (field_00 == 0); returns 4 when busy.
+// FUNCTION: STARFLEETOP 0x006cc480
+int fn_006cc480(fn_006cc070_owner *owner)
+{
+	if (owner->field_00 != 0)
+		return 4;
+	fn_006c1560(owner->field_04);
+	owner->field_04 = fn_006c1510(4, 0x40, fn_006cc510);
+	fn_006bf660(owner->field_94);
+	owner->field_94 = fn_006bf5f0(4, 500, 4, fn_006cca60, fn_006ccae0, fn_006ccb10);
+	owner->field_98 = 0;
 	return 0;
 }
