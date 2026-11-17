@@ -73,6 +73,14 @@ public:
 	mutable tOptex fPointerOptex;
 };
 
+// HYPOTHESIS: the object at +0x14c of the class below; 0x005b6a5c is a member taking two
+// arguments, both passed as 0 by 0x00543445. The class is not recovered.
+class fn_005b6a5c_owner
+{
+public:
+	void fn_005b6a5c(int a, int b);
+};
+
 // HYPOTHESIS: a member of an unidentified class that returns a one-bit flag kept in
 // bit 8 of the dword at +0x114, read as a bit-field (`shr eax, 8; and al, 1`).
 // HYPOTHESIS: 0x005430d3 works on the same object (it sits next to the bit-field
@@ -103,6 +111,7 @@ public:
 	bool fn_00543400();
 	bool fn_0054340c();
 	bool fn_00543437();
+	void fn_00543445();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -124,6 +133,8 @@ public:
 	char m_pad118[0x1c];
 	int m134;
 	int m138;
+	char m_pad13c[0x10];
+	fn_005b6a5c_owner m14c;
 };
 
 // FUNCTION: STARFLEETOP 0x005430ad
@@ -294,4 +305,10 @@ bool fn_005430ad_owner::fn_00543437()
 	r >>= 4;
 	r &= 1;
 	return r;
+}
+
+// FUNCTION: STARFLEETOP 0x00543445
+void fn_005430ad_owner::fn_00543445()
+{
+	m14c.fn_005b6a5c(0, 0);
 }
