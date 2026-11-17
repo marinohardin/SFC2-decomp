@@ -599,3 +599,13 @@ template<> tAccessPointer<tObject_005391b0, tSingleAccessWrapper<tObject_005391b
 {
 	Done();
 }
+
+// The game's out-of-line copy of the SDK's inline tAccessPointer destructor.
+// HYPOTHESIS: the instantiation is the const pointer of the vector wrapper, which
+// tObject_00543551::fn_005434f7 returns; Done (0x005f4352) is shared through identical code folding.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
+// FUNCTION: STARFLEETOP 0x0042c7b4
+template<> tAccessPointer<const std::vector<int>, tSingleAccessWrapper<std::vector<int> > >::~tAccessPointer()
+{
+	Done();
+}
