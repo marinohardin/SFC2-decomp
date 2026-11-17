@@ -984,12 +984,12 @@ tPathIterator tDir::mGetPathIterator( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetPathIterator();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e280
 tDir tDir::mGetNamedDir( tString &name )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetNamedDir( name );
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetNamedDir( name );
 }
 
 // The resolve has operator[] expanded inline, as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0)

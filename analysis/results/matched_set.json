@@ -6504,9 +6504,9 @@
    "symbol": "?mGetNamedDir@tDir@@QAE?AV1@AAVtString@@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.516,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061e3a0": {
    "name": "tDir::mGetNamedFile",
