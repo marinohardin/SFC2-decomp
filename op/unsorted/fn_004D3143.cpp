@@ -12,6 +12,7 @@ public:
 	long fn_004d482a( long arg1, long arg2, long arg3, long arg4 );
 	fn_004d3ef7_object* fn_004d3ef7( long arg1 );
 	fn_004d3ef7_object* fn_004d4a02( long arg1, long arg2, long arg3, long arg4 );
+	fn_004d3ef7_object* fn_004d42e6( long arg1, long arg2, long arg3, long arg4 );
 };
 
 extern fn_004d482a_owner g_0092e4a0;
@@ -99,4 +100,22 @@ bool fn_004d31ed( long arg1, long arg2, long arg3, long arg4, long arg5 )
 		ok = true;
 	}
 	return ok;
+}
+
+// FUNCTION: STARFLEETOP 0x004d3232
+fn_004d3ef7_object* fn_004d3232( long arg1, long arg2, long arg3, long arg4, long arg5 )
+{
+	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d42e6( arg1, arg2, arg3, arg4 );
+	if ( obj != 0 )
+	{
+		if ( arg5 != 0 )
+		{
+			g_009254f8.fn_004caf40( obj, arg5 );
+		}
+		else
+		{
+			g_009254f8.fn_004caf1b( obj );
+		}
+	}
+	return obj;
 }
