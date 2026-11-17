@@ -47,7 +47,10 @@ public:
 	virtual void vfunction14();
 	virtual void vfunction15(c_0046aa10_message *msg);
 
+	void fn_004764bd();
 	void fn_004764ed();
+	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
+	void fn_00476aee(int value, const char *key);
 	void fn_00477440();
 	void fn_00477689();
 
@@ -151,6 +154,20 @@ void tState_NetSetup::vfunction15(c_0046aa10_message *msg)
 		break;
 	case 0x103:
 		msg->id = 0x102;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004764bd
+void tState_NetSetup::fn_004764bd()
+{
+	switch (m1f0)
+	{
+	case 0x10004:
+		fn_00476aee(m1dc, "IPAddress");
+		break;
+	case 0x10008:
+		fn_00476aee(m1e4, "ModemAddress");
 		break;
 	}
 }
