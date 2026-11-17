@@ -137,7 +137,19 @@ struct tObject_0044715d_table
 // HYPOTHESIS: three counters, each with a maximum, a second value and a current value.
 struct tObject_00447415_limits
 {
-	char field_0x0[0x10c];
+	char field_0x0[0x1a];
+	char field_0x1a;
+	char field_0x1b;
+	short field_0x1c;
+	char field_0x1e[0x2];
+	short field_0x20;
+	short field_0x22;
+	short field_0x24;
+	short field_0x26[25];
+	short field_0x58[25];
+	short field_0x8a[25];
+	short field_0xbc[25];
+	char field_0xee[0x1e];
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
@@ -151,6 +163,7 @@ public:
 	void fn_004472bc(tObject_0042496f *ship);
 	int fn_00447415(int side, int kind);
 	void fn_00447531(int side, int value);
+	void fn_004475bc(int kind, int value);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -288,6 +301,56 @@ void c_0044715d::fn_00447531(int side, int value)
 		if (value < 0 || value > field_0xe8->field_0x10c[2])
 			value = 0;
 		field_0xe8->field_0x112[2] = value;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004475bc
+void c_0044715d::fn_004475bc(int kind, int value)
+{
+	int i;
+
+	switch (kind)
+	{
+	case 0:
+		field_0xe8->field_0x1a = value;
+		break;
+	case 1:
+		field_0xe8->field_0x1b = value;
+		break;
+	case 2:
+		field_0xe8->field_0x1c = value;
+		break;
+	case 3:
+		field_0xe8->field_0x22 = value;
+		for (i = 0; i < 25; i++)
+		{
+			if (field_0xe8->field_0xbc[i] != 0)
+			{
+				int n = value;
+				if (value > field_0xe8->field_0x8a[i])
+					n = field_0xe8->field_0x8a[i];
+				field_0xe8->field_0x26[i] = n;
+				value -= n;
+			}
+		}
+		break;
+	case 4:
+		field_0xe8->field_0x24 = value;
+		for (i = 0; i < 25; i++)
+		{
+			if (field_0xe8->field_0xbc[i] != 0)
+			{
+				int n = value;
+				if (value > field_0xe8->field_0x8a[i] * (field_0xe8->field_0x1c + 1) * field_0xe8->field_0xbc[i] - field_0xe8->field_0x26[i])
+					n = field_0xe8->field_0x8a[i] * (field_0xe8->field_0x1c + 1) * field_0xe8->field_0xbc[i] - field_0xe8->field_0x26[i];
+				value -= n;
+				field_0xe8->field_0x58[i] = n;
+			}
+		}
+		break;
+	case 5:
+		field_0xe8->field_0x20 = value;
 		break;
 	}
 }
