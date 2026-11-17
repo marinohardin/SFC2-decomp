@@ -21,6 +21,14 @@ void fn_0040eb6e(float *aValue, tSFCStream &s, unsigned mode, const char *aText)
 void fn_0060e30e(tSFCStream &s, unsigned mode);
 extern double g_008552d0[];
 extern int g_0079ed10;
+class tObject_004454c1;
+// HYPOTHESIS: the class of the global at 0x008f5118 (original name unknown).
+class tObject_008f5118
+{
+	public:
+		unsigned fn_00424d46(char *s, unsigned i);
+};
+extern tObject_008f5118 g_008f5118;
 
 // HYPOTHESIS: a node of the list a 0x14-byte element holds; the value is at +0xc.
 struct tListNode_004cf9b3
@@ -45,6 +53,7 @@ class tObject_004454c1
 	public:
 		tObject_004454c1();
 		~tObject_004454c1();
+		void fn_00447af2(char *s, int v);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -132,8 +141,8 @@ class tSFCPlayer
 		// ones with no definition here are placeholders, and the slots after 70 are not declared
 		// as virtual yet.
 		virtual void vfunction2(tSFCStream &s, unsigned mode);
-		virtual void vfunction3(int param_1, int param_2);
-		virtual void vfunction4(int param_1, int param_2, int param_3, int param_4, int param_5) = 0;
+		virtual void vfunction3(char *param_1, int param_2);
+		virtual void vfunction4(char *param_1, int param_2, unsigned param_3, int param_4, int param_5);
 		virtual void vfunction5() = 0;
 		virtual void vfunction6() = 0;
 		virtual void vfunction7() = 0;
@@ -148,13 +157,13 @@ class tSFCPlayer
 		virtual void vfunction16() = 0;
 		virtual void vfunction17() = 0;
 		virtual void vfunction18() = 0;
-		virtual void vfunction19() = 0;
+		virtual void vfunction19(char *param_1, unsigned param_2) = 0;
 		virtual void vfunction20() = 0;
-		virtual void vfunction21() = 0;
+		virtual void vfunction21(unsigned param_1) = 0;
 		virtual void vfunction22() = 0;
 		virtual void vfunction23() = 0;
 		virtual void vfunction24() = 0;
-		virtual void vfunction25() = 0;
+		virtual void vfunction25(int param_1, unsigned param_2) = 0;
 		virtual void vfunction26() = 0;
 		virtual void vfunction27() = 0;
 		virtual void vfunction28() = 0;
@@ -210,9 +219,9 @@ class tSFCPlayer
 		virtual void vfunction78() = 0;
 		virtual void vfunction79() = 0;
 		virtual void vfunction80() = 0;
-		virtual void vfunction81() = 0;
+		virtual void vfunction81(int param_1, unsigned param_2) = 0;
 		virtual void vfunction82() = 0;
-		virtual void vfunction83() = 0;
+		virtual void vfunction83(int param_1, unsigned param_2) = 0;
 		virtual void vfunction84() = 0;
 		virtual void vfunction85() = 0;
 		virtual void vfunction86() = 0;
@@ -223,7 +232,7 @@ class tSFCPlayer
 		virtual int vfunction91();
 		virtual void vfunction92(int param_1);
 		virtual int vfunction93();
-		virtual void vfunction94() = 0;
+		virtual void vfunction94(tObject_004454c1 *param_1) = 0;
 		virtual void vfunction95() = 0;
 		virtual void vfunction96() = 0;
 		virtual void vfunction97() = 0;
@@ -680,8 +689,26 @@ void tSFCPlayer::vfunction109()
 	m_8528 = m_1134;
 }
 
+// FUNCTION: STARFLEETOP 0x004d0424
+void tSFCPlayer::vfunction4(char *param_1, int param_2, unsigned param_3, int param_4, int param_5)
+{
+	if (param_3 < 6) {
+		vfunction19(param_1, param_3);
+		if (param_2 != -1)
+			vfunction81(param_2, param_3);
+		vfunction83(0, param_3);
+		vfunction25(param_5, param_3);
+		vfunction21(g_008f5118.fn_00424d46(param_1, param_3));
+		tObject_004454c1 *pEntry = &m_238[param_3];
+		pEntry->fn_00447af2(param_1, param_4);
+		vfunction94(pEntry);
+		if (param_3 >= (unsigned)m_30)
+			m_30 = param_3 + 1;
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x004d03a3
-void tSFCPlayer::vfunction3(int param_1, int param_2)
+void tSFCPlayer::vfunction3(char *param_1, int param_2)
 {
 	vfunction9(0);
 	vfunction110();
