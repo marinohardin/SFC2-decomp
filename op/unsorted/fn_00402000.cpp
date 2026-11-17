@@ -668,7 +668,11 @@ fn_00402bb6_Istream& fn_00402bb6_Istream::fn_00402bb6(char* _S, long _N, char _D
         _CATCH_IO_END}
     return (*this);
 }
-
+// HYPOTHESIS: tail of fn_00402bb6 after its catch funclet (reads that frame); no source form of its own.
+// FUNCTION: STARFLEETOP 0x00402c74
+void fn_00402c74()
+{
+}
 
 
 
