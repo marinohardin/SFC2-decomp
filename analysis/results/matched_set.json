@@ -6216,9 +6216,9 @@
    "symbol": "?mDuplicatePath@tFileSession@@QAE?AVtPath@@V2@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 144,
-   "score": 97.811,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061c320": {
    "name": "FUN_0061c320",
