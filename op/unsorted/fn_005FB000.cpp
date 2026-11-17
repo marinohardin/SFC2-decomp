@@ -577,6 +577,18 @@ template<>
 inline tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& >::~tMemberCallback()
 {}
 
+#include <algorithm>
+#include <utility>
+#include "unsorted/tChatChannel.h"
+
+// HYPOTHESIS: the first argument holds the first and past-the-end channel at +0 and +4; it is
+// written as a pair of pointers, the toolchain's vector keeping its first element at +4.
+// FUNCTION: STARFLEETOP 0x005fb9d1
+void FUN_005fb9d1( const std::pair<const tChatChannel*, const tChatChannel*>& channels, const tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& >& callback )
+{
+	std::for_each( channels.first, channels.second, callback );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
