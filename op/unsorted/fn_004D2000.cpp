@@ -284,28 +284,18 @@ void fn_004d2353_holder::fn_004d23db()
 	}
 }
 
-// HYPOTHESIS: a function holding one unwinding local: call fn_004d24dc on this under state 0,
-// then call fn_005da20a(1) on this once the local is gone.
-class fn_004d2420_part
-{
-public:
-	~fn_004d2420_part();
-};
-
+// HYPOTHESIS: a sibling of fn_004d2265_holder: a destructor body (0x004d24dc) followed by the
+// inlined destruction of a string member at +0.
 class fn_004d2420_holder
 {
 public:
+	~fn_004d2420_holder();
 	void fn_004d24dc();
-	void fn_005da20a(int a);
-	void fn_004d2420();
+	fn_004d2238_string m_str;
 };
 
 // FUNCTION: STARFLEETOP 0x004d2420
-void fn_004d2420_holder::fn_004d2420()
+fn_004d2420_holder::~fn_004d2420_holder()
 {
-	{
-		fn_004d2420_part guard;
-		fn_004d24dc();
-	}
-	fn_005da20a(1);
+	fn_004d24dc();
 }
