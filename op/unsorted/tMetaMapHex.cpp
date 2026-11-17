@@ -934,3 +934,12 @@ tAllocatedClass* tClassAllocator<tMetaMapHex>::mAllocate()
 
 	return pClass;
 }
+
+// MATCH-ONLY: the SDK's template mAssignAllocID, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x0053ad07
+template<>
+void tClassAllocator<tMetaMapHex>::mAssignAllocID( iAllocatorID allocID )
+{
+	fAllocID = allocID;
+}

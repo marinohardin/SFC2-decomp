@@ -6571,6 +6571,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0053ad07": {
+   "name": "tClassAllocator<tMetaMapHex>::vfunction3",
+   "symbol": "?mAssignAllocID@?$tClassAllocator@VtMetaMapHex@@@@MAEXJ@Z",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
