@@ -25,7 +25,7 @@ public:
     virtual void vfunction8();
     virtual void vfunction9();
     virtual void vfunction10();
-    virtual void vfunction11();
+    virtual int vfunction11( int param_1, int param_2, int param_3 );
     virtual void vfunction12();
     virtual void vfunction13();
     virtual void vfunction14();
@@ -286,4 +286,11 @@ tShipSystemsFighter::tShipSystemsFighter( int param_1 )
     m82c = 1;
     m818 = 0.0;
     m830 = g_0090bef0;
+}
+
+// HYPOTHESIS: the types; the original clears eax and pops three dword arguments.
+// FUNCTION: STARFLEETOP 0x00444391
+int tShipSystemsFighter::vfunction11( int, int, int )
+{
+    return 0;
 }

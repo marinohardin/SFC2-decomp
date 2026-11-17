@@ -21,7 +21,7 @@ public:
     virtual void vfunction8() = 0;
     virtual void vfunction9() = 0;
     virtual void vfunction10() = 0;
-    virtual void vfunction11() = 0;
+    virtual int vfunction11( int param_1, int param_2, int param_3 ) = 0;
     virtual void vfunction12() = 0;
     virtual void vfunction13() = 0;
     virtual void vfunction14() = 0;
