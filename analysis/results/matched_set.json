@@ -865,6 +865,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004065ed": {
+   "name": "FUN_004065ed",
+   "symbol": "?do_length@?$codecvt@DDH@std@@MBEHAAHPBD1I@Z",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 21,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

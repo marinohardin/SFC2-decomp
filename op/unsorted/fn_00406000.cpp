@@ -227,3 +227,13 @@ template<> std::codecvt_base::result std::codecvt<char, char, int>::do_in(int&, 
 
 // HYPOTHESIS: a caller in the original instantiates the facet, which emits its vtable and do_in.
 std::codecvt<char, char, int> g_fn_004065d3;
+
+// FUNCTION: STARFLEETOP 0x004065ed
+// HYPOTHESIS: the library's codecvt<char,char,int>::do_length instantiation (identity conversion, min of available and requested).
+template<> int std::codecvt<char, char, int>::do_length(int&,const char* _F1, const char* _L1, size_t _N2) const
+{
+    size_t _N = _L1 - _F1;
+    if (_N2 < _N)
+        _N = _N2;
+    return (int)_N;
+}
