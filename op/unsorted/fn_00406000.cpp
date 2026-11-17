@@ -154,3 +154,12 @@ std::locale fn_00406419(std::locale _L, int _X)
     size_t _Id = g_00c80338.fn_00404c82(2);
     return *((fn_00406419_Loc*)&_L)->fn_0074c78e(_X, _Id);
 }
+
+const std::ctype<char>& fn_00404b5e(const std::locale&, const std::ctype<char>*, bool);
+
+// HYPOTHESIS: the library's isdigit(char, locale) instantiation (ctype mask 4 is _DIGIT).
+// FUNCTION: STARFLEETOP 0x00406487
+bool fn_00406487(char _C, const std::locale& _L)
+{
+    return fn_00404b5e(_L, 0, true).is(std::ctype_base::digit, _C);
+}
