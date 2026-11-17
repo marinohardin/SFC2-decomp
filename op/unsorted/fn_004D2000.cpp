@@ -874,3 +874,72 @@ void fn_00460b3b_part::fn_004d2c0c()
 {
 	fn_00460d3b(fn_tree_iterator_1c(m_0x04->m_0x00), fn_tree_iterator_1c(m_0x04));
 }
+
+// HYPOTHESIS: a red-black tree insert of a unique key (std::set style); key type and names unknown.
+struct fn_004d2c20_key
+{
+	int fn_0040651e(const fn_004d2c20_key* other);
+	int fn_compare_reversed(fn_004d2c20_key* other);
+};
+
+struct fn_004d2c20_node
+{
+	fn_004d2c20_node* m_0x00;
+	fn_004d2c20_node* m_0x04;
+	fn_004d2c20_node* m_0x08;
+	fn_004d2c20_key m_0x0c;
+};
+
+struct fn_004d2c20_iterator
+{
+	void fn_0042dcfb();
+	fn_004d2c20_node* m_0x00;
+};
+
+struct fn_004d2c20_result
+{
+	fn_004d2c20_result(const fn_004d2c20_iterator& a, bool b) : first(a), second(b) {}
+	fn_004d2c20_iterator first;
+	bool second;
+};
+
+class fn_004d2c20_map
+{
+public:
+	fn_004d2c20_result fn_004d2c20(fn_004d2c20_key* value);
+	fn_004d2c20_iterator* fn_004d2d74(fn_004d2c20_key** v, fn_004d2c20_node* x, fn_004d2c20_node* y, fn_004d2c20_key* value);
+	char m_0x00[4];
+	fn_004d2c20_node* m_0x04;
+	fn_004d2c20_node* m_0x08;
+	bool m_0x0c;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2c20
+fn_004d2c20_result fn_004d2c20_map::fn_004d2c20(fn_004d2c20_key* value)
+{
+	fn_004d2c20_node* x = m_0x04->m_0x04;
+	fn_004d2c20_node* y = m_0x04;
+	bool comp = true;
+	while (x != m_0x08)
+	{
+		y = x;
+		comp = value->fn_0040651e(&x->m_0x0c) < 0;
+		if (comp)
+			x = x->m_0x00;
+		else
+			x = x->m_0x08;
+	}
+	fn_004d2c20_iterator j;
+	if (m_0x0c)
+		return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
+	j.m_0x00 = y;
+	if (comp)
+	{
+		if (j.m_0x00 == m_0x04->m_0x00)
+			return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
+		j.fn_0042dcfb();
+	}
+	if (j.m_0x00->m_0x0c.fn_compare_reversed(value) < 0)
+		return fn_004d2c20_result(*fn_004d2d74(&value, x, y, value), true);
+	return fn_004d2c20_result(j, false);
+}
