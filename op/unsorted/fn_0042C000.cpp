@@ -820,3 +820,51 @@ std::string g_008f5330 = "@";
 // FUNCTION: STARFLEETOP 0x0042ccfa
 // FUNCTION: STARFLEETOP 0x0042ccc7
 std::string g_008f5318 = "@@";
+
+#include <fstream>
+
+// HYPOTHESIS: the SDK's settings class (GetValue at 0x006f75d0 by SDK library match); declared
+// here with the one member this unit uses until a shared header exists.
+class tSettings
+{
+public:
+	void GetValue( const std::string& name, std::string* value );
+};
+
+// HYPOTHESIS: returns the game's settings object; name and owner not identified.
+tSettings* fn_005d481f();
+
+// HYPOTHESIS: layout only as far as this unit reads it (a 0x168-byte object, RTTI names it, a
+// string at +0x48); constructed from a stream at 0x005486ff.
+class tCampaignInfo
+{
+public:
+	tCampaignInfo( std::istream& in );
+	virtual ~tCampaignInfo();
+
+	char m04[0x44];
+	std::string m48;
+	char m58[0x110];
+};
+
+// HYPOTHESIS: an unidentified class whose first member is a string, filled from the campaign file.
+class fn_0042cd23_Class
+{
+public:
+	fn_0042cd23_Class();
+
+	std::string m00;
+};
+
+// FUNCTION: STARFLEETOP 0x0042cd23
+fn_0042cd23_Class::fn_0042cd23_Class()
+{
+	std::string path;
+	fn_005d481f()->GetValue( "Assets/Paths/Campaigns", &path );
+	std::string file;
+	fn_005d481f()->GetValue( "ServerSetup/Settings/CampaignFile", &file );
+	path += file;
+	std::ifstream in( path.c_str(), std::ios::in | std::ios::binary );
+	tCampaignInfo info( in );
+	m00 = info.m48;
+}

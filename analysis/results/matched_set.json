@@ -2881,6 +2881,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042cd23": {
+   "name": "FUN_0042cd23",
+   "symbol": "??0fn_0042cd23_Class@@QAE@XZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 395,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
