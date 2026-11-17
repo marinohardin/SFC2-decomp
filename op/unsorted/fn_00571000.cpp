@@ -564,9 +564,10 @@ public:
 	void fn_00571a58(int arg);
 	void fn_00571a69(int arg);
 	void fn_00571a9a(int arg);
+	void fn_00571aab(int arg);
 };
 
-#line 569
+#line 570
 // FUNCTION: STARFLEETOP 0x00571a58
 void fn_00571a58_owner::fn_00571a58(int arg)
 {
@@ -600,4 +601,13 @@ void __stdcall fn_00571e33(fn_00571a58_inner* inner, int flag, int arg);
 void fn_00571a58_owner::fn_00571a9a(int arg)
 {
 	fn_00571e33(fn_00571a58_ptr, 1, arg);
+}
+
+// HYPOTHESIS: a forwarding member like 0x00571a58; 0x005720aa takes the object at +8, a constant 1 and the argument.
+void __stdcall fn_005720aa(fn_00571a58_inner* inner, int flag, int arg);
+
+// FUNCTION: STARFLEETOP 0x00571aab
+void fn_00571a58_owner::fn_00571aab(int arg)
+{
+	fn_005720aa(fn_00571a58_ptr, 1, arg);
 }
