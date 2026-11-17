@@ -1,6 +1,23 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp
-// Functions: 0x00466674 to 0x00469900, 32 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// Functions of tState_Namespace_GameConnections::tState_GameConnections (RTTI); the
+// original file is not known.
+
+// The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
+extern char *g_00844e78;
+
+namespace tState_Namespace_GameConnections
+{
+
+// HYPOTHESIS: only the slot rebuilt so far; the full layout is not known yet.
+class tState_GameConnections
+{
+public:
+	char *vfunction13();
+};
+
+// FUNCTION: STARFLEETOP 0x00466674
+char *tState_GameConnections::vfunction13()
+{
+	return g_00844e78;
+}
+
+}
