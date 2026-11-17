@@ -43,6 +43,8 @@ public:
 	int fn_00496214( tString s );
 	void fn_00496253();
 	void fn_0049629b( fn_00496253_record *record );
+	fn_00496253_object();
+	void fn_0049639c();
 
 	char m00[0x28];
 	fn_0043d344_object m28[6];
@@ -92,4 +94,35 @@ void fn_00496253_object::fn_0049629b( fn_00496253_record *record )
 			m28[i] = fn_004961be( m1a8[i] );
 		}
 	}
+}
+
+// HYPOTHESIS: the member at +0x4 of the owner of 0x00496330: constructed by 0x0047f864 and
+// destroyed on unwind.
+class fn_0047f864_object
+{
+public:
+	fn_0047f864_object();
+	~fn_0047f864_object();
+};
+
+extern char g_0084ebf8[];
+void fn_004d3592( fn_0047f864_object *object, char *value );
+
+// HYPOTHESIS: the class of 0x00496330, which allocates a 0x1c4-byte object (the size of
+// fn_00496253_object) with the constructor 0x004960ba.
+class fn_00496330_object
+{
+public:
+	fn_00496330_object();
+
+	fn_00496253_object *m00;
+	fn_0047f864_object m04;
+};
+
+// FUNCTION: STARFLEETOP 0x00496330
+fn_00496330_object::fn_00496330_object()
+{
+	fn_004d3592( &m04, g_0084ebf8 );
+	m00 = new fn_00496253_object;
+	m00->fn_0049639c();
 }
