@@ -6337,6 +6337,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0050edc5": {
+   "name": "tSndMgr_Miles::vfunction31",
+   "symbol": "?vfunction31@tSndMgr_Miles@@UAEDXZ",
+   "unit": "unsorted/tSndMgr_Miles.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00513e90": {
    "name": "tAIWeaponOfficer::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tAIWeaponOfficer@@QAEPAV1@E@Z",
