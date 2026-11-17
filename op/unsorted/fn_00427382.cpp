@@ -51,6 +51,7 @@ class tObject_00426bac
 {
 public:
 	bool fn_00426bac(int aValue);
+	int fn_00426bcc();
 };
 
 // HYPOTHESIS: 0x00426f1a never reads ecx here (tObject_0090be60.h declares it a member), so
@@ -67,4 +68,12 @@ bool __stdcall fn_004274b8( tID aID, int aValue )
 	if (entity && (list = fn_00426f1a( entity->fTeam )) != 0)
 		return list->fn_00426bac( aValue );
 	return false;
+}
+
+// HYPOTHESIS: 0x00426bcc of the team's list, or zero when the team has no list.
+// FUNCTION: STARFLEETOP 0x004274f4
+int __stdcall fn_004274f4( tID aTeam )
+{
+	tObject_00426bac *list = fn_00426f1a( aTeam );
+	return list ? list->fn_00426bcc() : 0;
 }
