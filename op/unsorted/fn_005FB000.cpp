@@ -86,6 +86,26 @@ template<> std::map<int, int>::_Pairib std::map<int, int>::insert( const value_t
 	return ( _Pairib( _Ans.first, _Ans.second ) );
 }
 
+// The game's out-of-line copy of the library's tree range erase, for another tree.
+// HYPOTHESIS: the tree is the map of vectors; 0x005fb3af is its _Erase.
+// FUNCTION: STARFLEETOP 0x005fb1e5
+template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::iterator std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::erase( iterator _F, iterator _L )
+{
+	if ( size() == 0 || _F != begin() || _L != end() )
+	{
+		while ( _F != _L )
+			erase( _F++ );
+		return ( _F );
+	}
+	else
+	{
+		_Erase( _Root() );
+		_Root() = _Nil, _Size = 0;
+		_Lmost() = _Head, _Rmost() = _Head;
+		return ( begin() );
+	}
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
