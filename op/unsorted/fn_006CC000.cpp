@@ -186,3 +186,11 @@ int fn_006cc420(fn_006cc070_owner *owner)
 		closesocket(owner->field_08[i].field_00);
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006cc460
+int fn_006cc460(fn_006cc070_owner *owner)
+{
+	if (owner->field_00 != 0)
+		owner->field_74 = 1;
+	return 0;
+}
