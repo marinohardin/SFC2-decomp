@@ -1,5 +1,5 @@
 #include "Common/Thread/Optex.h"
-
+#include <string>
 // HYPOTHESIS: the owning class is not recovered; the function enters and leaves the tOptex
 // held at offset 4 of its object.
 class fn_005c427c_Owner
@@ -783,6 +783,7 @@ public:
 	float FUN_005c4dca();
 	float FUN_005c4df3();
 	int FUN_005c4e1c();
+	std::string FUN_005c4e3c();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1438,4 +1439,20 @@ int fn_005c478f_Holder::FUN_005c4e1c()
 	int value = *(int*)((char*)this + 0x2e8);
 	m04.Leave();
 	return value;
+}
+
+// Inline in the SDK; Optex.h declares it only.
+inline tOptex::tGuard::~tGuard()
+{
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005c4e3c
+std::string fn_005c478f_Holder::FUN_005c4e3c()
+{
+	tOptex::tGuard guard(&m04);
+	// HYPOTHESIS: copies the std::string at offset 0x364 under the lock.
+	return std::string(*(std::string*)((char*)this + 0x364));
 }
