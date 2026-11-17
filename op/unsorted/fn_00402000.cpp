@@ -271,3 +271,30 @@ void fn_004023bb_Object::fn_00402452(int a, int b)
         }
     }
 }
+
+// HYPOTHESIS: a string helper taking the string on the stack (callee pops it); a second
+// tab directly after a tab gets a '0' inserted before it.
+// FUNCTION: STARFLEETOP 0x00402501
+void __stdcall fn_00402501(std::string& s)
+{
+    s.reserve(s.capacity() * 2);
+    std::string::iterator it = s.begin();
+    bool prevTab = false;
+    for (; it != s.end(); it++)
+    {
+        if (*it == '\t')
+        {
+            if (prevTab)
+            {
+                s.insert(it, '0');
+                it++;
+                if (it == s.end())
+                    return;
+            }
+            else
+                prevTab = true;
+        }
+        else
+            prevTab = false;
+    }
+}

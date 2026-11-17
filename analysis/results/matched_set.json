@@ -145,6 +145,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00402501": {
+   "name": "FUN_00402501",
+   "symbol": "?fn_00402501@@YGXAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "unsorted/fn_00402000.cpp",
+   "size": 126,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
