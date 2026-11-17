@@ -341,6 +341,8 @@ template<>
 void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** );
 template<>
 void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** );
+template<>
+void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** );
 // FUNCTION: STARFLEETOP 0x005de905
 template<>
 void _Sort_0( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** )
@@ -393,6 +395,17 @@ void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de0cf_Pred _P, tNewsStory** 
 // FUNCTION: STARFLEETOP 0x005deb34
 template<>
 void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de1b8_Pred _P, tNewsStory** )
+	{for (; _SORT_MAX < _L - _F; )
+		{tNewsStory** _M = _Unguarded_partition(_F, _L, _Median((tNewsStory*)(*_F),
+			(tNewsStory*)(*(_F + (_L - _F) / 2)), (tNewsStory*)(*(_L - 1)), _P), _P);
+		if (_L - _M <= _M - _F)
+			_Sort(_M, _L, _P, (tNewsStory**)0), _L = _M;
+		else
+			_Sort(_F, _M, _P, (tNewsStory**)0), _F = _M; }}
+// HYPOTHESIS: the _Sort instance _Sort_0 at 0x005dea09 calls.
+// FUNCTION: STARFLEETOP 0x005debbc
+template<>
+void _Sort( tNewsStory** _F, tNewsStory** _L, fn_005de222_Pred _P, tNewsStory** )
 	{for (; _SORT_MAX < _L - _F; )
 		{tNewsStory** _M = _Unguarded_partition(_F, _L, _Median((tNewsStory*)(*_F),
 			(tNewsStory*)(*(_F + (_L - _F) / 2)), (tNewsStory*)(*(_L - 1)), _P), _P);
