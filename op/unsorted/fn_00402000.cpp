@@ -474,3 +474,25 @@ fn_00402987_Obj::fn_00402987_Obj(const fn_00402987_Obj& x)
     fn_005da20a(false);
     fn_00403b49(x, 0, g_00795648);
 }
+
+class fn_004029b1_Obj
+{
+public:
+    void fn_00403d87();
+    void fn_00403c1a(unsigned int, unsigned int, char);
+    char* fn_004029b1(char*, char);
+    char m0;
+    char* m4;
+};
+
+// HYPOTHESIS: this is the std::string insert(iterator, char); 0x00403d87 is begin and 0x00403c1a is insert(pos, n, c)
+// FUNCTION: STARFLEETOP 0x004029b1
+char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
+{
+    fn_00403d87();
+    unsigned int d = p - m4;
+    unsigned int pos = p ? d : 0;
+    fn_00403c1a(pos, 1, c);
+    fn_00403d87();
+    return m4 + pos;
+}
