@@ -90,16 +90,23 @@ void fn_0046018d_class::fn_0046018d()
 class fn_004601db_class
 {
 public:
-    std::string fn_004601db(long arg);
-    std::string fn_00460216(long arg);
+    std::string fn_004601db(const std::string &arg);
+    std::string fn_00460216(const std::string &arg);
 
     char pad_000[0xac];
     std::string m_ac;
 };
 
 // FUNCTION: STARFLEETOP 0x004601db
-std::string fn_004601db_class::fn_004601db(long arg)
+std::string fn_004601db_class::fn_004601db(const std::string &arg)
 {
     m_ac = "";
     return fn_00460216(arg);
+}
+
+// FUNCTION: STARFLEETOP 0x00460216
+std::string fn_004601db_class::fn_00460216(const std::string &arg)
+{
+    m_ac = m_ac + "\n" + arg;
+    return m_ac;
 }
