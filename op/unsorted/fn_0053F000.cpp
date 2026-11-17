@@ -4,6 +4,10 @@
 
 #include "Common/Database/DatabaseID.h"
 #include <xmemory>
+#include "Common/DynamicAllocator.h"
+
+// HYPOTHESIS: tPreparedMissions (named by RTTI) is not declared yet; only its type_info is used here.
+class tPreparedMissions;
 
 // HYPOTHESIS: the owner of this by-value getter is not known; the body copies a
 // tID held at 0x48 into the return slot. The class and the member names are placeholders.
@@ -608,4 +612,11 @@ fn_0054340c_owner *fn_0053f522_owner::fn_0053fd7e( fn_0054340c_owner *first, fn_
 	_Destroy( s, m_08 );
 	m_08 = s;
 	return first;
+}
+
+// FUNCTION: STARFLEETOP 0x0053fde1
+template<>
+tClassAllocator<tPreparedMissions>::tClassAllocator()
+{
+	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tPreparedMissions ), this );
 }
