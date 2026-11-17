@@ -304,3 +304,10 @@ float tRepairableShipSystem::vfunction98()
     }
     return vfunction95();
 }
+
+// FUNCTION: STARFLEETOP 0x004368b7
+void tRepairableShipSystem::vfunction99(int param_1, int param_2)
+{
+    field_5c = param_1;
+    field_58 = param_2;
+}
