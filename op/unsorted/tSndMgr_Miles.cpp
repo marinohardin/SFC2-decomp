@@ -71,10 +71,13 @@ public:
 
 	// HYPOTHESIS: removes an id from the set; returns whether it was held (vfunction37).
 	char fn_0050bcf6( long param_1 );
+	// HYPOTHESIS: the stored size of an id (vfunction36 subtracts it from field_c after a removal).
+	long fn_0050bd4a( long param_1 );
 
 	char pad_0000[0xc];
 	// HYPOTHESIS: a byte total and an entry count that vfunction37 lowers after a removal.
-	long field_c;
+	// HYPOTHESIS: unsigned (vfunction36 compares it with jbe).
+	unsigned long field_c;
 	// HYPOTHESIS: unsigned (vfunction33 compares and divides by it unsigned).
 	unsigned long field_10;
 	// HYPOTHESIS: a dirty flag that vfunction33 sets after reweighting the list below.
@@ -251,7 +254,8 @@ public:
 	virtual void vfunction33( long param_1 );
 	virtual void vfunction34( long param_1 );
 	virtual void vfunction35();
-	virtual void vfunction36();
+	// HYPOTHESIS: returns whether the total in field_2420 is within its limit.
+	virtual char vfunction36();
 	virtual void vfunction37( long param_1 );
 
 	// HYPOTHESIS: maps a sound id to its channel index in place; returns whether it found one.
@@ -1287,4 +1291,37 @@ void tSndMgr_Miles::vfunction35()
 			field_2420.field_14 = swapped;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0051039b
+char tSndMgr_Miles::vfunction36()
+{
+	if ( field_2420.field_c <= 0x271000 )
+		return 1;
+	vfunction35();
+	for ( fn_005d6a72_node *node = field_2438.field_4->field_0; node != field_2438.field_4; node = node->field_0 )
+	{
+		char found = 0;
+		for ( unsigned short i = 1; i < field_4234 && !found; i++ )
+			found = field_10[i].field_8 == node->field_8;
+		if ( !found )
+		{
+			long size = field_2420.fn_0050bd4a( node->field_8 );
+			if ( field_2420.fn_0050bcf6( node->field_8 ) )
+			{
+				// HYPOTHESIS: a list erase returning the next node, which the loop then steps past.
+				fn_005d6a72_node *erased = node;
+				node = node->field_0;
+				field_2420.field_c -= size;
+				field_2420.field_10--;
+				erased->field_4->field_0 = erased->field_0;
+				erased->field_0->field_4 = erased->field_4;
+				operator delete( erased );
+				field_2438.field_8--;
+			}
+			if ( field_2420.field_c <= 0x271000 )
+				return 1;
+		}
+	}
+	return 0;
 }
