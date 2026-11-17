@@ -310,6 +310,7 @@ class tMemberCallback
 public:
 	typedef void (tnMemberClass::*iMemberFunction)( tnResult result );
 
+	tMemberCallback( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction );
 	virtual ~tMemberCallback();
 
 	virtual void Callback( tnResult result );
@@ -351,3 +352,25 @@ string operator+( const char* _L, const string& _R )
 	return string( _L ).append( _R, 0, (size_t)-1 );
 }
 }
+
+namespace nDatabase {
+class tID;
+}
+
+template< typename tnMemberClass, typename tnResult >
+inline tMemberCallback<tnMemberClass,tnResult>::tMemberCallback( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+// HYPOTHESIS: the analysis names 0x0057aab3 the tMemberCallback<tChooseMission,const tID&>
+// constructor, but the object comes in as a hidden return pointer: the SDK's CreateCallback
+// helper with the constructor inlined. fn_0057a96e_owner stands in for tChooseMission.
+// FUNCTION: STARFLEETOP 0x0057aab3
+template< typename tParam, typename tClass >
+tMemberCallback< tClass, tParam > CreateCallback( tClass* object, void (tClass::*func)( tParam result ) )
+{
+	return 	tMemberCallback< tClass, tParam >( object, func );
+}
+
+template tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& > CreateCallback( fn_0057a96e_owner* object, void (fn_0057a96e_owner::*func)( const nDatabase::tID& result ) );
