@@ -55,9 +55,14 @@ public:
 	char *m_16bc;
 	// HYPOTHESIS: IDs that 0x00523027 looks up through 0x00523574.
 	std::list<int> m_16c0;
-	char m_pad16cc[0x16d8 - 0x16cc];
+	char m_pad16cc[0x16d0 - 0x16cc];
+	// HYPOTHESIS: a factor and two settings 0x005233cb picks from the count below.
+	float m_16d0;
+	char m_16d4;
+	char m_16d5;
+	char m_pad16d6[0x16d8 - 0x16d6];
 	// HYPOTHESIS: a count of the used entries of the table below.
-	int m_16d8;
+	unsigned int m_16d8;
 	// HYPOTHESIS: a 100-byte table 0x00523222 fills with 0xff.
 	char m_16dc[100];
 };

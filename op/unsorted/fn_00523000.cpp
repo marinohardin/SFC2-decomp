@@ -223,3 +223,27 @@ char fn_0090bed4_Object::fn_00523370(int param_1, char param_2)
 	}
 	return -1;
 }
+
+// 0.1f, 0.25f and 0.75f in the exe's data.
+extern float g_007b0248;
+extern float g_007b0244;
+extern float g_007b0240;
+
+// FUNCTION: STARFLEETOP 0x005233cb
+// HYPOTHESIS: sets three tiers from the count at +0x16d8.
+void fn_0090bed4_Object::fn_005233cb()
+{
+	if (m_16d8 >= 90) {
+		m_16d0 = g_007b0248;
+		m_16d4 = 5;
+		m_16d5 = 0;
+	} else if (m_16d8 >= 75) {
+		m_16d0 = g_007b0244;
+		m_16d4 = 3;
+		m_16d5 = 0;
+	} else if (m_16d8 >= 50) {
+		m_16d0 = g_007b0240;
+		m_16d4 = 1;
+		m_16d5 = 1;
+	}
+}
