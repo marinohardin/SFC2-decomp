@@ -2,6 +2,7 @@
 #include "unsorted/tMetaMapHex.h"
 #include <vector>
 #include <map>
+#include "Common/Thread/Optex.h"
 
 // HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
 // declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
@@ -31,6 +32,45 @@ struct fn_0042b004_map
 	unsigned int	m_size;
 };
 
+// HYPOTHESIS: 0x005419e4 is a bool query on the 0x4c-byte elements of the vector the member
+// at +0xf0 guards; the element type is not recovered.
+class fn_005419e4_entry
+{
+public:
+	bool fn_005419e4() const;
+	char m_00[0x4c];
+};
+
+// HYPOTHESIS: the member at +0xf0 is the SDK's tSingleAccessWrapper< std::vector< X > > and
+// the lock below its iConstPtr (the SDK's tAccessPointer). Both templates are declared only
+// inside unsorted/tClientCharacter.cpp, so they are written here under names of their own
+// until they move to a shared header: Lock 0x0042c709, operator* 0x00604259, Done 0x005f4352.
+class fn_0042c709_ptr
+{
+public:
+	~fn_0042c709_ptr();
+	void Done();
+	const std::vector< fn_005419e4_entry > &operator*();
+
+	mutable tOptex fAccess;
+	const std::vector< fn_005419e4_entry > *fPointer;
+	const void *fPointerGuard;
+};
+
+inline fn_0042c709_ptr::~fn_0042c709_ptr()
+{
+	Done();
+}
+
+class fn_0042c709_wrapper
+{
+public:
+	fn_0042c709_ptr Lock() const;
+
+	std::vector< fn_005419e4_entry > *fpPointer;
+	mutable tOptex fPointerOptex;
+};
+
 // HYPOTHESIS: a member of an unidentified class that returns a one-bit flag kept in
 // bit 8 of the dword at +0x114, read as a bit-field (`shr eax, 8; and al, 1`).
 // HYPOTHESIS: 0x005430d3 works on the same object (it sits next to the bit-field
@@ -50,12 +90,15 @@ public:
 	bool fn_0054313e();
 	fn_0042b004_map fn_00543149();
 	tHexPoint fn_005434b1() const;
+	bool fn_00543294() const;
 
 	char m_pad[0xd0];
 	char m0d0[4];
 	nDatabase::tID *m0d4;
 	nDatabase::tID *m0d8;
-	char m0dc[0x38];
+	char m0dc[0x14];
+	fn_0042c709_wrapper m0f0;
+	char m108[0xc];
 	unsigned int m114_0 : 7;
 	unsigned int m114_7 : 1;
 	unsigned int m114_8 : 1;
@@ -144,4 +187,14 @@ fn_0042b004_map fn_005430ad_owner::fn_00543149()
 	for ( std::vector< tHexPoint >::iterator it = points.begin(); it != points.end(); it++ )
 		result[ std::pair< long, long >( it->fn_0055f269(), it->fn_005e8f21() ) ] = *it;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00543294
+bool fn_005430ad_owner::fn_00543294() const
+{
+	fn_0042c709_ptr list = m0f0.Lock();
+	for ( std::vector< fn_005419e4_entry >::const_iterator it = (*list).begin(); it != (*list).end(); it++ )
+		if ( it->fn_005419e4() )
+			return true;
+	return false;
 }
