@@ -5,6 +5,7 @@
 #include "unsorted/tApplication.h"
 #include "unsorted/tAIData.h"
 #include "unsorted/tEntity.h"
+#include "unsorted/fn_004e2b02_ship_type.h"
 
 // HYPOTHESIS: the object 0x00523543 and 0x00523574 return for an ID; tAICaptain.cpp declares
 // what is likely the same class as tObject_004b94dc.
@@ -15,6 +16,8 @@ public:
 	void fn_0051c7af(int param_1);
 	void fn_0051c7e3(int param_1);
 	bool fn_0051bf99(int param_1, int param_2);
+	// HYPOTHESIS: returns the object for the ship (0x005235c8 passes its result through).
+	tObject_005235a7 *fn_0051c210(fn_004e2b02_ship_type *pShip);
 };
 
 // FUNCTION: STARFLEETOP 0x00523027
@@ -340,5 +343,16 @@ tObject_005235a7 *fn_0090bed4_Object::fn_005235a7(int param_1)
 	tObject_005235a7 *pResult = (tObject_005235a7 *) pShip;
 	if (pShip != NULL)
 		pResult = fn_005235c8(pShip);
+	return pResult;
+}
+
+// FUNCTION: STARFLEETOP 0x005235c8
+tObject_005235a7 *fn_0090bed4_Object::fn_005235c8(fn_004e2b02_ship_type *pShip)
+{
+	tObject_0051c7af *pObject = fn_00523543(pShip->field_60);
+	// MATCH-ONLY: the null path returns the lookup's own (null) result; a literal NULL adds xor eax, eax.
+	tObject_005235a7 *pResult = (tObject_005235a7 *) pObject;
+	if (pObject != NULL)
+		pResult = pObject->fn_0051c210(pShip);
 	return pResult;
 }
