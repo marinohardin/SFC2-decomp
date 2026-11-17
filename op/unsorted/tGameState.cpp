@@ -52,3 +52,48 @@ void fn_00469d7b(const std::string& s)
 {
 	g_0090db10.assign(s, 0, std::string::npos);
 }
+
+// HYPOTHESIS: param_1 is an object of an unidentified class; only the two virtual slots called
+// (0x68 and 0x74) are known, and the argument types are guesses.
+class fn_00469ddd_target
+{
+public:
+	virtual void v00();
+	virtual void v01();
+	virtual void v02();
+	virtual void v03();
+	virtual void v04();
+	virtual void v05();
+	virtual void v06();
+	virtual void v07();
+	virtual void v08();
+	virtual void v09();
+	virtual void v0a();
+	virtual void v0b();
+	virtual void v0c();
+	virtual void v0d();
+	virtual void v0e();
+	virtual void v0f();
+	virtual void v10();
+	virtual void v11();
+	virtual void v12();
+	virtual void v13();
+	virtual void v14();
+	virtual void v15();
+	virtual void v16();
+	virtual void v17();
+	virtual void v18();
+	virtual void v19();
+	virtual void vfunction26(int a, int b, int c);
+	virtual void v1b();
+	virtual void v1c();
+	virtual void vfunction29(int a, int b);
+};
+
+// FUNCTION: STARFLEETOP 0x00469ddd
+void tGameState::vfunction8(int *param_1)
+{
+	fn_00469ddd_target *target = (fn_00469ddd_target *)param_1;
+	target->vfunction26(0, 0, 0);
+	target->vfunction29(1, 1);
+}
