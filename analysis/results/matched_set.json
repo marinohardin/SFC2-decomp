@@ -5658,8 +5658,8 @@
    "symbol": "?vfunction114@tSFCPlayer@@UAEXPAVfn_004e2b02_ship_type@@@Z",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 311,
-   "score": 91.124,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {

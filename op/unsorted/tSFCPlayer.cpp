@@ -1437,14 +1437,9 @@ void tSFCPlayer::vfunction114(fn_004e2b02_ship_type *param_1)
 		int id = ship->field_870;
 		tString name(ship->vfunction42());
 		tString label(ship->field_87d);
-		tString *pNames = m_3418;
-		int *pIds = m_3388;
-		int *pCount = m_3370;
-		for (int i = 0; i < 6; i++, pNames += 6, pIds += 6, pCount++) {
-			int *pId = pIds;
-			tString *pName = pNames;
-			for (unsigned j = 0; j < (unsigned)*pCount; j++, pId++, pName++) {
-				if (*pId == id && pName[0x24] == name && *pName == label) {
+		for (int i = 0; i < 6; i++) {
+			for (unsigned j = 0; j < (unsigned)m_3370[i]; j++) {
+				if (m_3388[i * 6 + j] == id && m_39b8[i * 6 + j] == name && m_3418[i * 6 + j] == label) {
 					m_3f58[i * 6 + j].fn_00447b7a(ship);
 					return;
 				}
