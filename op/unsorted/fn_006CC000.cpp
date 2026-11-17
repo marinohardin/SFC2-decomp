@@ -53,10 +53,10 @@ struct fn_006cc070_owner
 	int field_98;
 };
 
-void *fn_006cc530(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, fn_006bf5f0_table *param_5);
+void *fn_006cc530(char **keys, int count, char *text, unsigned long param_4, fn_006bf5f0_table *param_5);
 
 // FUNCTION: STARFLEETOP 0x006cc070
-void *fn_006cc070(fn_006cc070_owner *owner, unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4)
+void *fn_006cc070(fn_006cc070_owner *owner, char **param_1, int param_2, char *param_3, unsigned long param_4)
 {
 	void *item = fn_006cc530(param_1, param_2, param_3, param_4, owner->field_94);
 	fn_006c15e0(owner->field_04, &item);
@@ -227,4 +227,46 @@ int fn_006cc480(fn_006cc070_owner *owner)
 int fn_006cc4f0(fn_006cc070_owner *owner)
 {
 	return fn_006cc900(owner->field_04);
+}
+
+// HYPOTHESIS: a key/value record; its table of pairs sits at +0x0c.
+struct fn_006cc530_record
+{
+	unsigned char pad_00[0x0c];
+	fn_006bf5f0_table *field_0c;
+};
+
+fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned long param_2, unsigned long param_3, fn_006bf5f0_table *param_4);
+char *fn_006cc640(char *text, char separator);
+void fn_006cc6f0(fn_006cc530_record *record, char *text);
+char *fn_006cc6a0(fn_006cc530_record *record, char *text);
+void fn_006bf6a0(fn_006bf5f0_table *table, void *element);
+
+extern char g_008886f8[];
+
+// FUNCTION: STARFLEETOP 0x006cc530
+void *fn_006cc530(char **keys, int count, char *text, unsigned long param_4, fn_006bf5f0_table *param_5)
+{
+	int i = 0;
+	char *pair[2];
+	fn_006cc530_record *record = fn_006cc730(0, 0, param_4, param_5);
+	char *value = fn_006cc640(text + 1, '\\');
+	while (i < count)
+	{
+		char *key = keys[i];
+		if (value == 0)
+			value = "";
+		if (strcmp(key, g_008886f8) == 0)
+			fn_006cc6f0(record, value);
+		else
+		{
+			pair[0] = fn_006cc6a0(record, key);
+			pair[1] = fn_006cc6a0(record, value);
+			fn_006bf6a0(record->field_0c, pair);
+		}
+		i++;
+		if (i < count)
+			value = fn_006cc640(0, '\\');
+	}
+	return record;
 }
