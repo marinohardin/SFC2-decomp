@@ -240,6 +240,7 @@ class tSFCPlayer
 		virtual void vfunction108();
 		virtual void vfunction109();
 		virtual void vfunction110() = 0;
+		void fn_004d1220();
 
 	private:
 		bool m_04;
@@ -678,8 +679,6 @@ void tSFCPlayer::vfunction109()
 	m_8524 = m_1130;
 	m_8528 = m_1134;
 }
-
-void __stdcall fn_004d1220();
 
 // FUNCTION: STARFLEETOP 0x004d03a3
 void tSFCPlayer::vfunction3(int param_1, int param_2)
