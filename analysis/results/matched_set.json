@@ -2719,6 +2719,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c7df": {
+   "name": "FUN_0042c7df",
+   "symbol": "??1?$tAccessPointer@$$CBVtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 43,
+   "score": 50.294,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
