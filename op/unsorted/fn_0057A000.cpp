@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_0057A000.cpp
-// Functions: 0x0057a481 to 0x0057ac7e, 31 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the owning class of these 7-byte member-address getters is not known yet;
+// the getter returns the address of a member at +0x340.
+class fn_0057a481_object {
+public:
+    char *fn_0057a481();
+
+    char field_0[0x340];
+    char field_340;
+};
+
+// FUNCTION: STARFLEETOP 0x0057a481
+char *fn_0057a481_object::fn_0057a481()
+{
+    return &field_340;
+}
