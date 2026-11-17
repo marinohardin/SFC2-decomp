@@ -172,3 +172,19 @@ char FUN_0044c276(fn_0044c185_vec3 * point, fn_0044c185_object * object, const c
 	while (index != start);
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0044c308
+void FUN_0044c308(fn_0044c185_object * object)
+{
+	fn_0044c185_frame frame;
+	if (FUN_0044c276(&frame.pos, object, "HardPoint"))
+	{
+		fn_0044c185_trait * trait = (fn_0044c185_trait *)FUN_0040fe6c("tETrait_ElectricSpark");
+		if (trait != 0)
+		{
+			float scale = 1.0f;
+			trait->vfunction4(1, &frame, &scale);
+			object->vfunction18(trait);
+		}
+	}
+}
