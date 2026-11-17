@@ -5,6 +5,7 @@
 // HYPOTHESIS: the global at 0x0092e4a0 is an object whose method 0x004d482a takes four
 // longs; its class is not recovered yet.
 class fn_004d3ef7_object;
+class fn_004d3a02_src;
 
 class fn_004d482a_owner
 {
@@ -22,7 +23,7 @@ public:
 	void fn_004d459c( long arg1 );
 	void fn_004d45e6( long arg1 );
 	void fn_004d4630( long arg1 );
-	void fn_004d4687( long arg1 );
+	fn_004d3a02_src* fn_004d4687( long arg1 );
 	void fn_004d46e3( long arg1 );
 	void fn_004d4712( long arg1 );
 	void fn_004d4996( long arg1, long arg2, long arg3 );
@@ -816,4 +817,93 @@ void fn_004d39d6( long arg1 )
 	{
 		flasher->fn_vfunction1( 0 );
 	}
+}
+
+// HYPOTHESIS: the lookup tables and the two target classes are not recovered; the five
+// lookups run in turn until one yields an object of the wanted class.
+class fn_004d3a02_src
+{
+public:
+	virtual void fn_vfunction0();
+};
+
+class fn_004d3a02_srcB
+{
+public:
+	virtual void fn_vfunction0();
+};
+
+class fn_00674750_owner
+{
+public:
+	fn_004d3a02_src* fn_00674750( fn_004d3a02_src* arg1 );
+};
+
+class fn_004bec6b_owner
+{
+public:
+	fn_004d3a02_srcB* fn_004bec6b( long arg1 );
+};
+
+class fn_004bf152_owner
+{
+public:
+	fn_004d3a02_srcB* fn_004bf152( long arg1 );
+};
+
+class fn_00685a90_owner
+{
+public:
+	fn_004d3a02_src* fn_00685a90( const tString& arg1 );
+};
+
+extern fn_00674750_owner* g_00c690d0;
+extern fn_004bec6b_owner* g_0092df08;
+extern fn_004bec6b_owner* g_0092df04;
+extern fn_004bf152_owner* g_0092df0c;
+extern fn_00685a90_owner* g_0092df10;
+
+// FUNCTION: STARFLEETOP 0x004d3a02
+tFlasher* fn_004d3a02( long arg1 )
+{
+	fn_004d3a02_src* found = g_0092e4a0.fn_004d4687( arg1 );
+	if ( g_00c690d0 != 0 )
+	{
+		found = g_00c690d0->fn_00674750( found );
+	}
+	else
+	{
+		found = 0;
+	}
+	tFlasher* result = dynamic_cast<tFlasher*>( found );
+	if ( result == 0 )
+	{
+		if ( g_0092df08 != 0 )
+		{
+			result = dynamic_cast<tFlasher*>( g_0092df08->fn_004bec6b( arg1 ) );
+		}
+		if ( result == 0 )
+		{
+			if ( g_0092df04 != 0 )
+			{
+				result = dynamic_cast<tFlasher*>( g_0092df04->fn_004bec6b( arg1 ) );
+			}
+			if ( result == 0 )
+			{
+				if ( g_0092df0c != 0 )
+				{
+					result = dynamic_cast<tFlasher*>( g_0092df0c->fn_004bf152( arg1 ) );
+				}
+				if ( result == 0 )
+				{
+					if ( g_0092df10 != 0 )
+					{
+						tString name( (const char*) arg1 );
+						result = dynamic_cast<tFlasher*>( g_0092df10->fn_00685a90( name ) );
+					}
+				}
+			}
+		}
+	}
+	return result;
 }
