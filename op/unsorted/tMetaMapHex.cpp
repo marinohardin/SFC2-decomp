@@ -759,3 +759,23 @@ fn_0053a6cc_map::iterator fn_0053a6cc_map::begin() const
 {
 	return iterator( m_tree.m_head->left );
 }
+
+// FUNCTION: STARFLEETOP 0x0053a90d
+fn_0053a6cc_map::iterator fn_0053a6cc_map::tree::erase( iterator first, iterator last )
+{
+	if( m_size == 0 || first.m_node != m_head->left || last.m_node != m_head )
+	{
+		while( first != last )
+			erase( first++ );
+		return first;
+	}
+	else
+	{
+		fn_0053ab9a( m_head->parent );
+		m_head->parent = m_nil;
+		m_size = 0;
+		m_head->left = m_head;
+		m_head->right = m_head;
+		return iterator( m_head->left );
+	}
+}

@@ -114,6 +114,7 @@ struct fn_0053a6cc_map
 		node& operator*() const { return *m_node; }
 		iterator& fn_0052e144();
 		iterator& operator++() { return fn_0052e144(); }
+		iterator operator++( int ) { iterator tmp = *this; ++*this; return tmp; }
 		bool operator!=( const iterator& other ) const { return m_node != other.m_node; }
 		node* m_node;
 	};
@@ -128,6 +129,10 @@ struct fn_0053a6cc_map
 		~tree();
 		// HYPOTHESIS: the out-of-line range erase 0x0053a90d.
 		iterator erase( iterator first, iterator last );
+		// HYPOTHESIS: the out-of-line single erase 0x0060ac82.
+		iterator erase( iterator where );
+		// HYPOTHESIS: the out-of-line subtree erase 0x0053ab9a.
+		void fn_0053ab9a( node* root );
 		// HYPOTHESIS: the out-of-line copy of another tree's nodes 0x0053a981.
 		void fn_0053a981( const tree& other );
 		std::allocator< int32 > m_alloc;
