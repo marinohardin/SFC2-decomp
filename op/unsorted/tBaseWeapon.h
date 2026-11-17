@@ -176,7 +176,7 @@ public:
     virtual void vfunction118(unsigned char param_1);
     virtual void vfunction119();
     virtual void vfunction120();
-    virtual void vfunction121();
+    virtual int vfunction121();
     virtual void vfunction122();
     virtual void vfunction123();
     virtual void vfunction124(int param_1);
