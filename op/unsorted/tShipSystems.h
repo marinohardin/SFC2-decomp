@@ -120,7 +120,7 @@ public:
     virtual int vfunction100() = 0;
     virtual int vfunction101() = 0;
     virtual int vfunction102() = 0;
-    virtual void vfunction103() = 0;
+    virtual int vfunction103() = 0;
     virtual void vfunction104() = 0;
     virtual void vfunction105() = 0;
     virtual void vfunction106() = 0;
