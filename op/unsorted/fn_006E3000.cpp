@@ -377,10 +377,10 @@ tRef_006e15b0 tObject_006e3240::FUN_006e3570()
 		*(unsigned char*)m10 = (unsigned char)m0c;
 		break;
 	case 2:
-		*(unsigned short*)m10 = (unsigned short)m0c;
+		{ unsigned short v = (unsigned short)m0c; *(unsigned short*)m10 = v; }
 		break;
 	case 4:
-		*(unsigned long*)m10 = m0c;
+		{ unsigned long v = m0c; *(unsigned long*)m10 = v; }
 		break;
 	}
 	char* data = m10;

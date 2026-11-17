@@ -17349,8 +17349,8 @@
    "symbol": "?FUN_006e3570@tObject_006e3240@@QAE?AVtRef_006e15b0@@XZ",
    "unit": "unsorted/fn_006E3000.cpp",
    "size": 208,
-   "score": 99.394,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x006e7e80": {
