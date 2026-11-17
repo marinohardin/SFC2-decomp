@@ -555,3 +555,18 @@ fn_00406ba3_Obj::fn_00406ba3_Obj(const char* s, int a)
     m10 = 4;
     m34 = a;
 }
+
+// HYPOTHESIS: a class holding a std::string first; the original type is unknown.
+class fn_00406bdd_Obj
+{
+public:
+    bool fn_00406bdd(const char* s);
+    std::string m0;
+};
+
+// FUNCTION: STARFLEETOP 0x00406bdd
+bool fn_00406bdd_Obj::fn_00406bdd(const char* s)
+{
+    bool equal = m0.compare(s) == 0;
+    return equal;
+}
