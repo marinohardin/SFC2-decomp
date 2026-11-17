@@ -2,15 +2,25 @@
 // Functions: 0x004d3143 to 0x004d3b8d, 61 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 
-// HYPOTHESIS: the global at 0x0092e4a0 is an object whose method 0x004d482a takes four
-// longs; its class is not recovered yet.
 class fn_004d3ef7_object;
 class tVisObject;
 
-class fn_004d482a_owner
+// HYPOTHESIS: tMainStage's layout is not recovered; only its constructor (0x004d3b9f) and
+// polymorphism are known from this derived constructor.
+class tMainStage
 {
 public:
-	fn_004d482a_owner();
+	tMainStage();
+	virtual void vfunction0();
+};
+
+// HYPOTHESIS: tUIStage's members up to 0x53c are not recovered. The global at 0x0092e4a0 is
+// one (its initializer calls the constructor 0x004d3b74); the methods' names are not recovered.
+class tUIStage : public tMainStage
+{
+public:
+	tUIStage();
+	virtual void vfunction0();
 	long fn_004d482a( long arg1, long arg2, long arg3, long arg4 );
 	fn_004d3ef7_object* fn_004d3ef7( long arg1 );
 	fn_004d3ef7_object* fn_004d4a02( long arg1, long arg2, long arg3, long arg4 );
@@ -29,35 +39,18 @@ public:
 	void fn_004d4712( long arg1 );
 	void fn_004d4996( long arg1, long arg2, long arg3 );
 	void fn_004d449a( long arg1, long arg2 );
+	char pad_04[0x53c - 4];
+	long m53c;
 };
 
 // FUNCTION: STARFLEETOP 0x004d3b6a
-fn_004d482a_owner g_0092e4a0;
+tUIStage g_0092e4a0;
 
 // FUNCTION: STARFLEETOP 0x004d315e
 long fn_004d315e( long arg1, long arg2, long arg3, long arg4 )
 {
 	return g_0092e4a0.fn_004d482a( arg1, arg2, arg3, arg4 );
 }
-
-// HYPOTHESIS: tMainStage's layout is not recovered; only its constructor (0x004d3b9f) and
-// polymorphism are known from this derived constructor.
-class tMainStage
-{
-public:
-	tMainStage();
-	virtual void vfunction0();
-};
-
-// HYPOTHESIS: tUIStage's members up to 0x53c are not recovered.
-class tUIStage : public tMainStage
-{
-public:
-	tUIStage();
-	virtual void vfunction0();
-	char pad_04[0x53c - 4];
-	long m53c;
-};
 
 // FUNCTION: STARFLEETOP 0x004d3b74
 tUIStage::tUIStage()
