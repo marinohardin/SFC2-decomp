@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00575000.cpp
-// Functions: 0x00575023 to 0x00575fe4, 61 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the 0x48-byte object built here, and the owner holding the value at +0xd0, are unnamed
+class fn_0057430c_object
+{
+public:
+	fn_0057430c_object(void* arg);
+	char m_pad[0x48];
+};
+
+class fn_00575023_owner
+{
+public:
+	void fn_00575023(fn_0057430c_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x00575023
+void fn_00575023_owner::fn_00575023(fn_0057430c_object** out)
+{
+	*out = new fn_0057430c_object(m_d0);
+}
