@@ -7,13 +7,6 @@
 
 class tCompassRose;
 
-// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one
-// to 0x005e381f; the layout is unknown.
-struct fn_005e381f_entry
-{
-	unsigned char field_0[ 0x64 ];
-};
-
 // HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c,
 // the value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5.
 struct fn_005e36cd_entry
@@ -28,6 +21,14 @@ struct fn_005e36cd_entry
 	int field_4c;
 	int field_50;
 	unsigned char field_54[ 0x64 - 0x54 ];
+};
+
+// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one
+// to 0x005e381f, which passes them to 0x005e374b and reads +0x14 and +0x2c like the records
+// above; so the same layout is assumed. 0x005e381f calls 0x005e488e on one for a point.
+struct fn_005e381f_entry : public fn_005e36cd_entry
+{
+	const tPoint &fn_005e488e();
 };
 
 // HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
@@ -85,7 +86,7 @@ public:
 	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;
 	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.
-	std::vector<int> field_184;
+	std::vector<c_tScrollBar_FieldA8 *> field_184;
 	std::vector<int> field_194;
 	std::vector<c_tScrollBar_FieldA8 *> field_1a4;
 	std::vector<c_tScrollBar_FieldA8 *> field_1b4;
