@@ -19,6 +19,7 @@ public:
 	void fn_004d3f45( long arg1, long arg2, long arg3 );
 	void fn_004d459c( long arg1 );
 	void fn_004d45e6( long arg1 );
+	void fn_004d4630( long arg1 );
 };
 
 extern fn_004d482a_owner g_0092e4a0;
@@ -171,4 +172,10 @@ void fn_004d3306( long arg1 )
 void fn_004d3331( long arg1 )
 {
 	g_0092e4a0.fn_004d45e6( arg1 );
+}
+
+// FUNCTION: STARFLEETOP 0x004d3340
+void fn_004d3340( long arg1 )
+{
+	g_0092e4a0.fn_004d4630( arg1 );
 }
