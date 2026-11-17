@@ -534,3 +534,12 @@ int32 tMetaMapHex::fn_0053a414( int32 param_1 )
 	guard.Leave();
 	return value;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a46f
+double tMetaMapHex::fn_0053a46f()
+{
+	m_bc.Enter();
+	double points = m_a0;
+	m_bc.Leave();
+	return points;
+}

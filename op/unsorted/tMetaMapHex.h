@@ -192,6 +192,8 @@ public:
 	long fn_0053a37c();
 	long fn_0053a39c();
 	long fn_0053a3bc( int32 param_1 );
+	// HYPOTHESIS: the current speed points (the CurrentSpeedPoints column), read under the lock.
+	double fn_0053a46f();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
