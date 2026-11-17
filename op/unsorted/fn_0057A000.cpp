@@ -287,8 +287,8 @@ void tMemberCallback<tnMemberClass,tnResult>::operator()( tnResult result )
 	(fpMemberClass->*fpMemberFunction)( result );
 }
 
-// HYPOTHESIS: slot 3 is the SDK template's other virtual with the same body; which of
-// Callback and operator() sits at which address is not settled by the bytes.
+// HYPOTHESIS: slot 3 is the SDK template's other virtual with the same body.
+// HYPOTHESIS: the bodies are identical, so which of 0x0057a96e and 0x0057a9ce is operator() and which Callback is a guess from their order.
 // FUNCTION: STARFLEETOP 0x0057a9ce
 template< typename tnMemberClass, typename tnResult >
 void tMemberCallback<tnMemberClass,tnResult>::Callback( tnResult result )
