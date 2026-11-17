@@ -50,14 +50,17 @@ public:
 class tExtraEnergyRequest;
 
 // HYPOTHESIS: the objects in m_dc: slot 0 takes an amount and returns whether it wants more,
-// slot 1 ends a round, slot 3 returns the amount asked for (-1 for any).
+// slot 1 ends a round, slot 3 returns the amount asked for (-1 for any); 0x00523ffd adds slots 4
+// and 5 for an entry's weight and checks slot 2 against the amount on offer.
 class tObject_00523e72_Slot
 {
 public:
 	virtual bool vfunction0(float amount);
 	virtual void vfunction1();
-	virtual void vfunction2();
+	virtual float vfunction2();
 	virtual float vfunction3();
+	virtual float vfunction4();
+	virtual float vfunction5();
 };
 class tObject_00528a11;
 

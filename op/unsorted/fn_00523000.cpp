@@ -976,3 +976,20 @@ float tObject_005237dc::fn_00523e72(float amount)
 		m_dc[i]->vfunction1();
 	return amount;
 }
+
+// FUNCTION: STARFLEETOP 0x00523ffd
+void tObject_005237dc::fn_00523ffd(float amount, bool aFirst)
+{
+	for (int i = 0; i < m_d8; i++) {
+		if (aFirst || m_10[i].m_00) {
+			float weight = m_dc[i]->vfunction4();
+			weight = m_dc[i]->vfunction5() + weight;
+			m_10[i].m_04 = weight;
+			float b = m_dc[i]->vfunction2();
+			if (weight <= 0.0f || b < 0.0f || b > amount)
+				m_10[i].m_00 = false;
+			else
+				m_10[i].m_00 = true;
+		}
+	}
+}
