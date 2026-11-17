@@ -226,3 +226,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0063be00	tPagingMechanism::mClosePage	4	fable	99.02	2026-11-17T16:24:14Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.02%
 0x0063d2b0	tPagingMechanism::mDelHandle	3	fable	97.45	2026-11-17T16:53:08Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 97.45%
 0x0063f5a0	tCoopThreadPart::mSwitchTo	5	fable	97.78	2026-11-17T16:55:45Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 97.78%
+0x00646010	twSoundPart::mInit	3	fable	99.88	2026-11-17T17:07:11Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.88%
