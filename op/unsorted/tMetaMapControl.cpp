@@ -69,3 +69,43 @@ void tMetaMapControl::fn_005e31be()
 		field_17c->fn_005eadcd();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e31dd
+void tMetaMapControl::fn_005e31dd( int param_1 )
+{
+	int state = field_1c4;
+	if ( state == 2 )
+	{
+		if ( param_1 == 1 )
+		{
+			field_1c4 = 1;
+			if ( field_17c != 0 )
+			{
+				field_17c->fn_005eae34();
+			}
+		}
+	}
+	else if ( state == 1 )
+	{
+		if ( param_1 == -1 )
+		{
+			field_1c4 = 2;
+			if ( field_17c != 0 )
+			{
+				field_17c->fn_005eae4a();
+			}
+		}
+		if ( param_1 == 1 )
+		{
+			field_1c4 = 0;
+		}
+	}
+	else if ( state == 0 )
+	{
+		if ( param_1 == -1 )
+		{
+			field_1c4 = 1;
+		}
+	}
+	fn_00607d61()->fn_0060a54d()->fn_005e5e24( field_1c4 );
+}

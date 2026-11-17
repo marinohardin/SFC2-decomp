@@ -13,6 +13,8 @@ class fn_005eadc8_class
 public:
 	void fn_005eadc8();
 	void fn_005eadcd();
+	void fn_005eae34();
+	void fn_005eae4a();
 };
 
 // HYPOTHESIS: 0x1ec bytes, from the operator new in the factory at 0x005e2f60.
@@ -28,6 +30,7 @@ public:
 
 	void fn_005e3148( int param_1 );
 	void fn_005e31be();
+	void fn_005e31dd( int param_1 );
 	void fn_005e326c( bool param_1 );
 	void fn_005e36a3();
 	void fn_005e3b86();
