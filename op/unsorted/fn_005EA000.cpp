@@ -718,3 +718,12 @@ void fn_005eaaa4(tTree_005ea63f::tValue *p, const tTree_005ea63f::tValue &v)
 {
 	new ((void *)p) tTree_005ea63f::tValue(v);
 }
+
+// FUNCTION: STARFLEETOP 0x005eaae2
+template<>
+inline tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::~tMemberCallback()
+{}
+
+// HYPOTHESIS: the original unit built this callback, which emitted its vtable and deleting
+// destructor here; the constructor's use is not identified, so an explicit instantiation does it.
+template class tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>;
