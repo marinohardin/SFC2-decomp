@@ -246,7 +246,8 @@ public:
     virtual void vfunction34();
     virtual void vfunction35();
     virtual void vfunction36();
-    virtual void vfunction37();
+    // HYPOTHESIS: slot 36 takes four ints and returns a value; 0x0043e09e passes (0, 100, 0, 0).
+    virtual int vfunction37(int param_1, int param_2, int param_3, int param_4);
     virtual void vfunction38();
     virtual void vfunction39();
     virtual void vfunction40();
