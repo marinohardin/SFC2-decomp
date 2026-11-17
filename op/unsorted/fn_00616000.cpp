@@ -58,7 +58,8 @@ public:
 	virtual long __stdcall v19();
 	virtual long __stdcall v20();
 	virtual long __stdcall v21();
-	virtual long __stdcall v22();
+	// HYPOTHESIS: slot 22 fits IDirectPlay4::GetSessionDesc (data, size); 0x8877001e is DPERR_BUFFERTOOSMALL.
+	virtual long __stdcall GetSessionDesc( void* pData, unsigned long* pSize );
 	virtual long __stdcall v23();
 	virtual long __stdcall v24();
 	virtual long __stdcall v25();
@@ -126,6 +127,13 @@ struct fn_006161f0_Message
 	char fData[4];
 };
 
+// HYPOTHESIS: 0x00616540 hands the session description it read to this member function.
+class fn_00613f80_Target
+{
+public:
+	void fn_00613f80( void* pDesc );
+};
+
 class fn_00616000_DirectPlayHolder
 {
 public:
@@ -135,6 +143,7 @@ public:
 	long fn_00616330( int from, int to, int flags, const void* pData, unsigned long size, int priority, int timeout, void* pContext, unsigned long* pMsgID );
 	// HYPOTHESIS: the fifth argument is never read (ret 0x14); its type is unknown.
 	long fn_00616470( long* pA, long* pB, void* pData, unsigned long* pSize, int unused );
+	long fn_00616540( fn_00613f80_Target* pTarget );
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
 	char fPad48[0x68];
@@ -262,4 +271,28 @@ long fn_00616000_DirectPlayHolder::fn_00616470( long* pA, long* pB, void* pData,
 	fMessages.pop_front();
 	LeaveCriticalSection( &fMessagesLock );
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00616540
+long fn_00616000_DirectPlayHolder::fn_00616540( fn_00613f80_Target* pTarget )
+{
+	long hr;
+	unsigned long size = 0;
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		hr = fDirectPlayObject->GetSessionDesc( 0, &size );
+		if ( hr == 0x8877001e && size != 0 )
+		{
+			void* pDesc = _alloca( size );
+			hr = fDirectPlayObject->GetSessionDesc( pDesc, &size );
+			pTarget->fn_00613f80( pDesc );
+		}
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
+	return hr;
 }

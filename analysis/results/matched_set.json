@@ -7381,6 +7381,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00616540": {
+   "name": "FUN_00616540",
+   "symbol": "?fn_00616540@fn_00616000_DirectPlayHolder@@QAEJPAVfn_00613f80_Target@@@Z",
+   "unit": "unsorted/fn_00616000.cpp",
+   "size": 159,
+   "score": 67.712,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0061bae0": {
    "name": "tFileSession::tFileSession",
    "symbol": "??0tFileSession@@QAE@XZ",
