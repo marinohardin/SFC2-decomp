@@ -341,3 +341,9 @@ tTree_005ea4a1::iterator tTree_005ea4a1::fn_005ea4a1(tNode *x, tNode *y, const t
 	m_head->m_parent->m_color = 1;
 	return iterator(z);
 }
+
+// HYPOTHESIS: 0x005ea63e is one byte (pop esi), the tail of the routine at 0x005ea5e5; not a function of its own.
+// FUNCTION: STARFLEETOP 0x005ea63e
+void fn_005ea63e()
+{
+}
