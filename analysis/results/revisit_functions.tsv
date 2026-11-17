@@ -153,3 +153,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x004965a4	FUN_004965a4	12.50	2	sonnet	2026-11-17T09:52:51Z	attempt 2 (sonnet) did not raise the best; best 12.50%
 0x004965d1	FUN_004965d1	10.00	2	sonnet	2026-11-17T09:55:55Z	attempt 2 (sonnet) did not raise the best; best 10.00%
 0x004965e5	FUN_004965e5	10.00	2	sonnet	2026-11-17T09:57:52Z	attempt 2 (sonnet) did not raise the best; best 10.00%
+0x004965f9	FUN_004965f9	10.00	2	sonnet	2026-11-17T10:00:37Z	attempt 2 (sonnet) did not raise the best; best 10.00%
