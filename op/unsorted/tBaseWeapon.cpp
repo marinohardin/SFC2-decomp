@@ -1080,3 +1080,18 @@ int tBaseWeapon::fn_004d87e3()
     }
     return result;
 }
+
+#include <stdio.h>
+
+// HYPOTHESIS: the mode string at 0x0083bc38 and the second call as fprintf are guesses.
+extern char g_0083bc38[];
+
+// FUNCTION: STARFLEETOP 0x004d88e9
+void fn_004d88e9(const char *param_1)
+{
+    FILE *file = fopen("WeaponDamage.txt", g_0083bc38);
+    if (file != NULL) {
+        fprintf(file, param_1);
+        fclose(file);
+    }
+}
