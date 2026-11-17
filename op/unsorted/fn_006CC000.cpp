@@ -21,3 +21,18 @@ void *fn_006cc070(fn_006cc070_owner *owner, unsigned long param_1, unsigned long
 	fn_006c15e0(owner->field_04, &item);
 	return item;
 }
+
+// FUNCTION: STARFLEETOP 0x006cc0b0
+int fn_006cc0b0(const char *text, int length, int count)
+{
+	const char *p = text;
+	while (count != 0 && p != text + length)
+	{
+		if (*p == '\\')
+			count--;
+		p++;
+	}
+	if (count == 0)
+		return p - text;
+	return -1;
+}
