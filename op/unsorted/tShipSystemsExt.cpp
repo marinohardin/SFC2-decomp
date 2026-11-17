@@ -49,6 +49,7 @@ public:
     virtual tTacticalStoresManager* vfunction54();
     virtual char* vfunction57();
     virtual char* vfunction58();
+    virtual int vfunction59();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -258,4 +259,15 @@ tShipSystemManager* tShipSystemsExt::vfunction53()
 tTacticalStoresManager* tShipSystemsExt::vfunction54()
 {
     return &m984;
+}
+
+// HYPOTHESIS: as tShipSystemsFighter::vfunction59; the block at m584 holds a pointer at +0x48
+// (+0x5cc) to an object whose +0x58 is returned, or 0 when there is none.
+// FUNCTION: STARFLEETOP 0x0044887d
+int tShipSystemsExt::vfunction59()
+{
+    char* p = *(char**)( m584 + 0x48 );
+    if( p != 0 )
+        return *(int*)( p + 0x58 );
+    return 0;
 }
