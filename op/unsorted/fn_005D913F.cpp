@@ -600,7 +600,8 @@ class fn_005d9b26_object
 {
 public:
     fn_005d9b26_object(const std::string &name);
-    void fn_005d9b58(const char *param_1);
+    char fn_005d9b58(const char *param_1);
+    char fn_005d9e88(const unsigned char *data, unsigned int size);
     void fn_005d9bb8(const std::string &param_1);
     std::string fn_005d9be5();
     void fn_005d9cd3(fn_006ed560_object *param_1) const;
@@ -622,10 +623,10 @@ fn_005d9b26_object::fn_005d9b26_object(const std::string &name)
 extern unsigned long g_00c38970;
 
 // FUNCTION: STARFLEETOP 0x005d9b58
-void fn_005d9b26_object::fn_005d9b58(const char *param_1)
+char fn_005d9b26_object::fn_005d9b58(const char *param_1)
 {
     m10 = new fn_0046de63_object(param_1, g_00c38970, 0);
-    m14 = fn_005d9a6f(param_1) != FALSE;
+    return m14 = fn_005d9a6f(param_1) != FALSE;
 }
 
 // FUNCTION: STARFLEETOP 0x005d9bb8
@@ -674,6 +675,23 @@ public:
     long m00;
 };
 
+// HYPOTHESIS: the object 0x006ee740 returns by value: a counted pointer to an
+// fn_0046de63_object, released by its inlined destructor. It may be the same type as
+// fn_006ee3d0_result.
+class fn_006ee740_result
+{
+public:
+    ~fn_006ee740_result();
+
+    fn_0046de63_object *m00;
+};
+
+inline fn_006ee740_result::~fn_006ee740_result()
+{
+    if (m00)
+        m00->FUN_0046de63();
+}
+
 // HYPOTHESIS: an object 0x006ed560 (763 bytes, in the SDK's code) fills from a byte buffer
 // and its length; 0x10b4 bytes, built by 0x006ed510, run over a buffer by 0x006ee3d0 and
 // destroyed by 0x005d9e48. Its name and purpose are not known.
@@ -684,6 +702,7 @@ public:
     ~fn_006ed560_object();
     void fn_006ed560(const unsigned char *data, unsigned int size);
     fn_006ee3d0_result fn_006ee3d0(long data, long size);
+    fn_006ee740_result fn_006ee740(const unsigned char *data, unsigned int size);
 
     char m_0x00[0x1048];
     // HYPOTHESIS: two byte strings, destroyed by 0x005d9e48 through 0x005da20a (_Tidy).
@@ -726,4 +745,21 @@ fn_006ee3d0_result fn_005d9b26_object::fn_005d9db1() const
 // FUNCTION: STARFLEETOP 0x005d9e48
 fn_006ed560_object::~fn_006ed560_object()
 {
+}
+
+// HYPOTHESIS: the inverse of fn_005d9db1: runs the keyed object over the data and keeps the
+// result, returning whether it checks.
+// FUNCTION: STARFLEETOP 0x005d9e88
+char fn_005d9b26_object::fn_005d9e88(const unsigned char *data, unsigned int size)
+{
+    m14 = 0;
+    m10 = 0;
+    if (!data)
+        return 0;
+    fn_006ed560_object object;
+    fn_005d9cd3(&object);
+    fn_006ee740_result r = object.fn_006ee740(data, size);
+    if (r.m00)
+        return fn_005d9b58((const char *)r.m00->m08);
+    return 0;
 }
