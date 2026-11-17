@@ -370,3 +370,12 @@ unsigned long tMetaMapControl::fn_005e3935( fn_005e36cd_entry *entry )
 		color = g_00c39058[ index ];
 	return color;
 }
+
+// HYPOTHESIS: a table of three-byte colours (red, green, blue) 0x005e396d indexes.
+extern unsigned char g_007b5038[][ 3 ];
+
+// FUNCTION: STARFLEETOP 0x005e396d
+unsigned char *tMetaMapControl::fn_005e396d( int param_1 )
+{
+	return g_007b5038[ param_1 ];
+}

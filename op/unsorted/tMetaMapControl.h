@@ -81,8 +81,8 @@ public:
 	// entry's own when both are -1) in a colour (0x005e3935's when -1), red, green and blue bytes.
 	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
 	unsigned long fn_005e3935( fn_005e36cd_entry *entry );
-	unsigned long fn_005e396d( int param_1 );
-	unsigned long fn_005e397b( unsigned long param_1 );
+	unsigned char *fn_005e396d( int param_1 );
+	unsigned long fn_005e397b( unsigned char *param_1 );
 	void fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color );
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
