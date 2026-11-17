@@ -436,12 +436,12 @@ public:
 };
 
 // HYPOTHESIS: the record built at 0x0045e5f7; its members are placed by their stack offsets.
-// The name is the analysis's label for its destructor 0x0045e63a (virtual, so the record
-// derives from tCampaignInfo; a scalar deleting destructor at 0x005d426f carries the same name).
-class CMiniDockFrameWnd : public tCampaignInfo
+// Named by its destructor 0x0045e63a (virtual, so the record derives from tCampaignInfo; its
+// scalar deleting destructor is 0x005d426f). Neither the exe nor the SDK names the class.
+class fn_0045e63a_record : public tCampaignInfo
 {
 public:
-    CMiniDockFrameWnd();
+    fn_0045e63a_record();
 
     tDateAndTime m_168;
     fn_006cf2d0_object m_178;
@@ -460,7 +460,7 @@ public:
 class fn_00460c0c_list
 {
 public:
-    void fn_00460c0c(const CMiniDockFrameWnd &record);
+    void fn_00460c0c(const fn_0045e63a_record &record);
 };
 
 extern char *g_00844064;
@@ -483,7 +483,7 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
     {
         fn_006cf2d0_object value(arg->fn_005db8d3(), arg->fn_005db919());
         tDateAndTime now;
-        CMiniDockFrameWnd record;
+        fn_0045e63a_record record;
         record.m_178 = value;
         // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
         (tCampaignInfo &)record = *arg->fn_0060a827();
@@ -720,25 +720,25 @@ void fn_00460b3b_class::fn_00460b3b()
 class fn_00460b73_class
 {
 public:
-    fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al);
+    fn_00460b73_class(unsigned int n, const fn_0045e63a_record &v, const std::allocator<fn_0045e63a_record> &al);
     ~fn_00460b73_class();
-    CMiniDockFrameWnd *end();
+    fn_0045e63a_record *end();
     unsigned int size() const;
-    void push_back(const CMiniDockFrameWnd &_X);
-    void insert(CMiniDockFrameWnd *_P, unsigned int _M, const CMiniDockFrameWnd &_X);
-    CMiniDockFrameWnd *erase(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
-    void _Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L);
-    CMiniDockFrameWnd *_Ucopy(const CMiniDockFrameWnd *_F, const CMiniDockFrameWnd *_L, CMiniDockFrameWnd *_P);
-    void _Ufill(CMiniDockFrameWnd *_F, unsigned int _N, const CMiniDockFrameWnd &_X);
+    void push_back(const fn_0045e63a_record &_X);
+    void insert(fn_0045e63a_record *_P, unsigned int _M, const fn_0045e63a_record &_X);
+    fn_0045e63a_record *erase(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
+    void _Destroy(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
+    fn_0045e63a_record *_Ucopy(const fn_0045e63a_record *_F, const fn_0045e63a_record *_L, fn_0045e63a_record *_P);
+    void _Ufill(fn_0045e63a_record *_F, unsigned int _N, const fn_0045e63a_record &_X);
 
-    std::allocator<CMiniDockFrameWnd> allocator;
-    CMiniDockFrameWnd *_First;
-    CMiniDockFrameWnd *_Last;
-    CMiniDockFrameWnd *_End;
+    std::allocator<fn_0045e63a_record> allocator;
+    fn_0045e63a_record *_First;
+    fn_0045e63a_record *_Last;
+    fn_0045e63a_record *_End;
 };
 
 // FUNCTION: STARFLEETOP 0x00460b73
-fn_00460b73_class::fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v, const std::allocator<CMiniDockFrameWnd> &al)
+fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_0045e63a_record &v, const std::allocator<fn_0045e63a_record> &al)
     : allocator(al)
 {
     _First = allocator.allocate(n, (void *)0);
@@ -746,10 +746,10 @@ fn_00460b73_class::fn_00460b73_class(unsigned int n, const CMiniDockFrameWnd &v,
     _Last = _First + n, _End = _Last;
 }
 
-inline void fn_00460b73_class::_Destroy(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L)
+inline void fn_00460b73_class::_Destroy(fn_0045e63a_record *_F, fn_0045e63a_record *_L)
 {
     for (; _F != _L; ++_F)
-        _F->CMiniDockFrameWnd::~CMiniDockFrameWnd();
+        _F->fn_0045e63a_record::~fn_0045e63a_record();
 }
 
 // HYPOTHESIS: 0x00460bd6 is the library's vector destructor for the same elements.
@@ -761,7 +761,7 @@ fn_00460b73_class::~fn_00460b73_class()
     _First = 0, _Last = 0, _End = 0;
 }
 
-inline CMiniDockFrameWnd *fn_00460b73_class::end()
+inline fn_0045e63a_record *fn_00460b73_class::end()
 {
     return (_Last);
 }
@@ -771,14 +771,14 @@ inline unsigned int fn_00460b73_class::size() const
     return (_First == 0 ? 0 : _Last - _First);
 }
 
-inline CMiniDockFrameWnd *fn_00460b73_class::_Ucopy(const CMiniDockFrameWnd *_F, const CMiniDockFrameWnd *_L, CMiniDockFrameWnd *_P)
+inline fn_0045e63a_record *fn_00460b73_class::_Ucopy(const fn_0045e63a_record *_F, const fn_0045e63a_record *_L, fn_0045e63a_record *_P)
 {
     for (; _F != _L; ++_P, ++_F)
         allocator.construct(_P, *_F);
     return (_P);
 }
 
-inline void fn_00460b73_class::_Ufill(CMiniDockFrameWnd *_F, unsigned int _N, const CMiniDockFrameWnd &_X)
+inline void fn_00460b73_class::_Ufill(fn_0045e63a_record *_F, unsigned int _N, const fn_0045e63a_record &_X)
 {
     for (; 0 < _N; --_N, ++_F)
         allocator.construct(_F, _X);
@@ -786,7 +786,7 @@ inline void fn_00460b73_class::_Ufill(CMiniDockFrameWnd *_F, unsigned int _N, co
 
 // HYPOTHESIS: 0x00460c0c is the library's push_back on the same vector: insert at end().
 // FUNCTION: STARFLEETOP 0x00460c0c
-void fn_00460b73_class::push_back(const CMiniDockFrameWnd &_X)
+void fn_00460b73_class::push_back(const fn_0045e63a_record &_X)
 {
     insert(end(), 1, _X);
 }
@@ -882,9 +882,9 @@ fn_00460acb_iterator fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator first, 
 }
 
 // FUNCTION: STARFLEETOP 0x00460daf
-CMiniDockFrameWnd *fn_00460b73_class::erase(CMiniDockFrameWnd *_F, CMiniDockFrameWnd *_L)
+fn_0045e63a_record *fn_00460b73_class::erase(fn_0045e63a_record *_F, fn_0045e63a_record *_L)
 {
-    CMiniDockFrameWnd *_S = std::copy(_L, _Last, _F);
+    fn_0045e63a_record *_S = std::copy(_L, _Last, _F);
     _Destroy(_S, _Last);
     _Last = _S;
     return (_F);
@@ -955,13 +955,13 @@ void fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *x)
 
 // HYPOTHESIS: 0x00460ede is the library's vector insert of _M copies of _X before _P.
 // FUNCTION: STARFLEETOP 0x00460ede
-void fn_00460b73_class::insert(CMiniDockFrameWnd *_P, unsigned int _M, const CMiniDockFrameWnd &_X)
+void fn_00460b73_class::insert(fn_0045e63a_record *_P, unsigned int _M, const fn_0045e63a_record &_X)
 {
     if (_End - _Last < _M)
     {
         unsigned int _N = size() + (_M < size() ? size() : _M);
-        CMiniDockFrameWnd *_S = allocator.allocate(_N, (void *)0);
-        CMiniDockFrameWnd *_Q = _Ucopy(_First, _P, _S);
+        fn_0045e63a_record *_S = allocator.allocate(_N, (void *)0);
+        fn_0045e63a_record *_Q = _Ucopy(_First, _P, _S);
         _Ufill(_Q, _M, _X);
         _Ucopy(_P, _Last, _Q + _M);
         _Destroy(_First, _Last);

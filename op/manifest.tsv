@@ -374,19 +374,19 @@ address	size	symbol	source	modes
 0x00460acb	56	fn_00460acb_class::fn_00460acb()	unsorted/fn_00460000.cpp	vc6 guest
 0x00460b03	56	fn_00460b03_class::fn_00460b03()	unsorted/fn_00460000.cpp	vc6 guest
 0x00460b3b	56	fn_00460b3b_class::fn_00460b3b()	unsorted/fn_00460000.cpp	vc6 guest
-0x00460b73	99	fn_00460b73_class::fn_00460b73_class(unsigned int,const CMiniDockFrameWnd &,const std::allocator<CMiniDockFrameWnd> &)	unsorted/fn_00460000.cpp	vc6
+0x00460b73	99	fn_00460b73_class::fn_00460b73_class(unsigned int,const fn_0045e63a_record &,const std::allocator<fn_0045e63a_record> &)	unsorted/fn_00460000.cpp	vc6
 0x00460bd6	54	fn_00460b73_class::~fn_00460b73_class()	unsorted/fn_00460000.cpp	vc6
-0x00460c0c	17	fn_00460b73_class::push_back(const CMiniDockFrameWnd &)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460c0c	17	fn_00460b73_class::push_back(const fn_0045e63a_record &)	unsorted/fn_00460000.cpp	vc6 guest
 0x00460c1d	54	fn_00460c1d_class::~fn_00460c1d_class()	unsorted/fn_00460000.cpp	vc6
 0x00460c53	116	fn_00460acb_class::fn_00460c53(fn_00460acb_iterator,fn_00460acb_iterator)	unsorted/fn_00460000.cpp	vc6 guest
 0x00460cc7	116	fn_00460b03_class::fn_00460cc7(fn_00460b03_iterator,fn_00460b03_iterator)	unsorted/fn_00460000.cpp	vc6 guest
 0x00460d3b	116	fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator,fn_00460acb_iterator)	unsorted/fn_00460000.cpp	vc6 guest
-0x00460daf	100	fn_00460b73_class::erase(CMiniDockFrameWnd *,CMiniDockFrameWnd *)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460daf	100	fn_00460b73_class::erase(fn_0045e63a_record *,fn_0045e63a_record *)	unsorted/fn_00460000.cpp	vc6 guest
 0x00460e13	43	fn_00460e13_class::str(const std::string &)	unsorted/fn_00460000.cpp	vc6 guest
 0x00460e3e	56	fn_00460acb_class::fn_00460e3e(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
 0x00460e76	48	fn_00460b03_class::fn_00460e76(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
 0x00460ea6	56	fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
-0x00460ede	646	fn_00460b73_class::insert(CMiniDockFrameWnd *,unsigned int,const CMiniDockFrameWnd &)	unsorted/fn_00460000.cpp	partial
+0x00460ede	646	fn_00460b73_class::insert(fn_0045e63a_record *,unsigned int,const fn_0045e63a_record &)	unsorted/fn_00460000.cpp	partial
 0x0047ebca	1171	tState_SingleCampaignSelector::fn_0047ebca()	Source/states/SingleCampaignSelector.cpp	vc6 guest
 0x0048612c	126	tSupplyDockItem::tSupplyDockItem(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
 0x004861aa	54	tSupplyDockItem::vfunction1()	Source/states/SupplyDockItem.cpp	vc6 guest

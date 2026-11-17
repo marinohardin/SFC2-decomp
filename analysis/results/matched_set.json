@@ -3414,7 +3414,7 @@
   },
   "0x00460daf": {
    "name": "FUN_00460daf",
-   "symbol": "?erase@fn_00460b73_class@@QAEPAVCMiniDockFrameWnd@@PAV2@0@Z",
+   "symbol": "?erase@fn_00460b73_class@@QAEPAVfn_0045e63a_record@@PAV2@0@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 100,
    "score": 100.0,
@@ -3459,7 +3459,7 @@
   },
   "0x00460ede": {
    "name": "FUN_00460ede",
-   "symbol": "?insert@fn_00460b73_class@@QAEXPAVCMiniDockFrameWnd@@IABV2@@Z",
+   "symbol": "?insert@fn_00460b73_class@@QAEXPAVfn_0045e63a_record@@IABV2@@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 646,
    "score": 91.579,
