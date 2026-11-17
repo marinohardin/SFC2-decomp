@@ -54,6 +54,7 @@ public:
 	long fn_0053f273();
 	long fn_0053f27a();
 	void fn_0053f2a2( const fn_0053f2a2_arg &arg );
+	void fn_0053f2b7( char value );
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
@@ -130,4 +131,11 @@ void fn_0053f22f_owner::fn_0053f281( nDatabase::tID id )
 void fn_0053f25c_owner::fn_0053f2a2( const fn_0053f2a2_arg &arg )
 {
 	m_58.fn_0053f4c6( arg.m_04, arg.m_08 );
+}
+
+// HYPOTHESIS: same owner; the setter paired with the getter of the byte at 0x68.
+// FUNCTION: STARFLEETOP 0x0053f2b7
+void fn_0053f25c_owner::fn_0053f2b7( char value )
+{
+	m_68 = value;
 }
