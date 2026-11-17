@@ -702,3 +702,16 @@ char *fn_00404cb2_Ctype::fn_00404e23(char *first, const char *last)
         *first = fn_0074cfd7(*first, &m08);
     return first;
 }
+
+// HYPOTHESIS: the library's string insertion: writes each character of the string through the
+// helper at 0x00404ece (the stream's per-character put), stopping when it reports failure.
+// FUNCTION: STARFLEETOP 0x00404e8a
+std::ostream& __cdecl fn_00404e8a(std::ostream& os, const std::string& str)
+{
+    for (size_t i = 0; i < str.size(); ++i)
+    {
+        if (os.rdbuf()->sputc(str[i]) == EOF)
+            break;
+    }
+    return os;
+}

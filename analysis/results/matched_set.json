@@ -721,6 +721,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00404e8a": {
+   "name": "FUN_00404e8a",
+   "symbol": "?fn_00404e8a@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 68,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
