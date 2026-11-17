@@ -195,6 +195,7 @@ public:
 	bool fn_0054372f(fn_0054385d_source *source);
 	void fn_005437a5(const nDatabase::tID &id);
 	void fn_0054385d(fn_0054385d_source *source);
+	bool fn_00543944(const nDatabase::tID &id) const;
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -684,4 +685,14 @@ void fn_005430ad_owner::fn_0054385d(fn_0054385d_source *source)
 	// the statement that did so is not recovered.
 	(*list).end();
 	list.Done();
+}
+
+// FUNCTION: STARFLEETOP 0x00543944
+bool fn_005430ad_owner::fn_00543944(const nDatabase::tID &id) const
+{
+	fn_0042c709_ptr list = m0f0.Lock();
+	for ( std::vector< fn_005419e4_entry >::const_iterator it = (*list).begin(); it != (*list).end(); it++ )
+		if ( it->fn_005419ed() == id )
+			return true;
+	return false;
 }
