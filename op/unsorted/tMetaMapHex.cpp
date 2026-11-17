@@ -19,7 +19,7 @@ tMetaMapHex::tMetaMapHex( bool param_1 )
 	: tDatabaseObject( 1 ), m_5c( 0 ), m_60( 0 ), m_64( 0 ), m_68( 0 ), m_6c( 0 ),
 	  m_98( 0.0 ), m_a0( 0.0 ), m_a8( 0, 0 ), m_bc( fn_005d4c97()->DefaultThreadObjectUse() )
 {
-	for( fn_0053a73a_map::iterator it = m_48.begin(); it != m_48.end(); ++it )
+	for( fn_0053a6cc_map::iterator it = m_48.begin(); it != m_48.end(); ++it )
 		(*it).second = 23;
 
 	if( param_1 )

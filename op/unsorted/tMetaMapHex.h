@@ -67,6 +67,57 @@ inline fn_0053a73a_map::fn_0053a73a_map( const std::less< int32 >& pred, const s
 {
 }
 
+// HYPOTHESIS: m_48's container is another instantiation of the same tree (its destructor is the
+// separate copy 0x0053a6cc); the value type is probably int where the others hold long.
+struct fn_0053a6cc_map
+{
+	struct node
+	{
+		node*	left;
+		node*	parent;
+		node*	right;
+		int32	first;
+		int32	second;
+		char	color;
+		char	isnil;
+	};
+
+	class iterator
+	{
+	public:
+		iterator( node* n ) : m_node( n ) {}
+		node& operator*() const { return *m_node; }
+		iterator& fn_0052e144();
+		iterator& operator++() { return fn_0052e144(); }
+		bool operator!=( const iterator& other ) const { return m_node != other.m_node; }
+		node* m_node;
+	};
+
+	class tree
+	{
+	public:
+		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al );
+		~tree();
+		char	m_00[4];
+		node*	m_head;
+		node*	m_nil;
+		bool	m_multi;
+		int32u	m_size;
+	};
+
+	explicit fn_0053a6cc_map( const std::less< int32 >& pred = std::less< int32 >(), const std::allocator< int32 >& al = std::allocator< int32 >() );
+
+	iterator begin() { return iterator( m_tree.m_head->left ); }
+	iterator end() { return iterator( m_tree.m_head ); }
+
+	tree m_tree;
+};
+
+inline fn_0053a6cc_map::fn_0053a6cc_map( const std::less< int32 >& pred, const std::allocator< int32 >& al )
+	: m_tree( pred, false, al )
+{
+}
+
 // HYPOTHESIS: a database object; tBattles::StreamOut passes it to the tStreamable output
 // operator with the base at offset 8, as for tDatabaseObject.
 class tMetaMapHex : public nDatabase::tDatabaseObject
@@ -87,7 +138,7 @@ public:
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.
-	fn_0053a73a_map m_48;
+	fn_0053a6cc_map m_48;
 	int32 m_5c;
 	int32 m_60;
 	int32 m_64;
