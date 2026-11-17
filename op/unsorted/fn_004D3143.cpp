@@ -934,3 +934,28 @@ tFlasher* fn_004d3a02( long arg1 )
 	}
 	return result;
 }
+
+class fn_00694150_owner
+{
+public:
+	void fn_00694150( long arg1 );
+};
+
+extern char g_fn_00694150_base[];
+
+// HYPOTHESIS: tStageBase's layout is not recovered; only this slot is known.
+class tStageBase
+{
+public:
+	void vfunction32( long arg1 );
+	char pad_00[0x464];
+	fn_00694150_owner m464;
+};
+
+// HYPOTHESIS: the original adds an absolute address to this before the call; the real
+// form (class layout of tStageBase) is not recovered.
+// FUNCTION: STARFLEETOP 0x004d3b8d
+void tStageBase::vfunction32( long arg1 )
+{
+	m464.fn_00694150( arg1 );
+}
