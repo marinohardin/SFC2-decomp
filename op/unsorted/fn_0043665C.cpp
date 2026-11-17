@@ -210,3 +210,17 @@ void tIndividualShipSystem::vfunction84(bool param_1)
 {
     field_44 = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x0043678e
+tRepairableShipSystem::tRepairableShipSystem()
+{
+    field_70 = 0.0f;
+    field_6c = 0;
+    field_74 = 0;
+    field_60 = 0.0f;
+    field_58 = 0;
+    field_5c = 0;
+    field_64 = 1.0f;
+    field_78 = 0;
+    field_68 = 0.0f;
+}

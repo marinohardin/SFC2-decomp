@@ -342,22 +342,9 @@ public:
     char pad46[0x48 - 0x46];
     double field_48;
     float field_50;
+    // The double at +0x48 aligns the class to 8, so derived members start at +0x58:
+    // tRepairableShipSystem's constructor stores its own fields from +0x58 on.
     char pad54[0x58 - 0x54];
-    // HYPOTHESIS: saved by tShieldGroup as "fTrueOnline".
-    bool field_58;
-    bool field_59;
-    char pad5a[0x5c - 0x5a];
-    // HYPOTHESIS: tShieldGroup's six member shields (tShieldSystem, declared in its own unit),
-    // one per facing; null when the facing has none.
-    tShieldSystem* field_5c;
-    tShieldSystem* field_60;
-    tShieldSystem* field_64;
-    tShieldSystem* field_68;
-    tShieldSystem* field_6c;
-    tShieldSystem* field_70;
-    // HYPOTHESIS: saved by tShieldGroup as "fReinforcementCapacitor"; a base field because
-    // the base's alignment (the double at +0x48) puts derived members at +0x78.
-    float field_74;
 };
 
 class tRepairableShipSystem : public tIndividualShipSystem
@@ -369,8 +356,17 @@ public:
     // vftable slot 93 (the compiler calls it directly inside a constructor).
     virtual void vfunction94(int param_1, int param_2);
 
-    // HYPOTHESIS: tRepairableShipSystem's first field; tShieldGroup, a direct
-    // tIndividualShipSystem, keeps a float of its own at this offset.
+    // HYPOTHESIS: types follow the constructor's stores (fstp for floats, a register for the
+    // rest); the meanings are not known.
+    int field_58;
+    int field_5c;
+    float field_60;
+    // HYPOTHESIS: a factor; the constructor sets it to 1.0.
+    float field_64;
+    float field_68;
+    int field_6c;
+    float field_70;
+    int field_74;
     int field_78;
 };
 

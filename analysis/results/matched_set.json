@@ -2845,6 +2845,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0043678e": {
+   "name": "tRepairableShipSystem::tRepairableShipSystem",
+   "symbol": "??0tRepairableShipSystem@@QAE@XZ",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 55,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",

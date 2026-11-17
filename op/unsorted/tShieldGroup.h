@@ -90,6 +90,19 @@ public:
     // slot, are not known.
     tShieldSystem* fn_00441226(int param_1);
 
+    // HYPOTHESIS: saved as "fTrueOnline".
+    bool field_58;
+    bool field_59;
+    char pad5a[0x5c - 0x5a];
+    // HYPOTHESIS: the six member shields, one per facing; null when the facing has none.
+    tShieldSystem* field_5c;
+    tShieldSystem* field_60;
+    tShieldSystem* field_64;
+    tShieldSystem* field_68;
+    tShieldSystem* field_6c;
+    tShieldSystem* field_70;
+    // HYPOTHESIS: saved as "fReinforcementCapacitor".
+    float field_74;
     // HYPOTHESIS: saved as "fTotalDesiredEnergy".
     float field_78;
     // HYPOTHESIS: saved as "fRequestedChargePerTurn".
