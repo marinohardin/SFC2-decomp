@@ -10,31 +10,35 @@ extern "C" bool gOverrideItalicFonts;
 
 #include "Tiger/tFontmgr.h"
 
-enum eTypeface {};
-enum eFontStyle {};
-enum ePointSize {};
+#include "Tiger/tUniFont.h"
 
-class tUniFont {
-public:
-    tUniFont(eTypeface, eFontStyle, ePointSize);
-    virtual ~tUniFont() {}
-    void* scalar_deleting_destructor(unsigned char);
-    void mSetFontID(ulong);
-    const tCharInfo* mGetCharInfo(unsigned short) const;
-    void mChangePtSize(ePointSize);
-    void mSetFont(eTypeface, eFontStyle, ePointSize);
-    const ulong mGetCharWidth(unsigned short) const;
-    const ulong mGetTextWidth(const unsigned short*) const;
-    const ulong mGetFontHeight(unsigned short) const;
 
-    eTypeface mTypeface;   // HYPOTHESIS: name
-    eFontStyle mStyle;     // HYPOTHESIS: name
-    ePointSize mPointSize; // HYPOTHESIS: name
-    ulong mFontID; // HYPOTHESIS: name
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x0066c270
-void tUniFont::mSetFontID(ulong id)
+void tUniFont::mSetFontID(unsigned long id)
 {
     mFontID = id;
     // The original tests with | rather than &, so these conditions are always true.

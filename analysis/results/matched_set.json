@@ -9046,11 +9046,407 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00637ec0": {
+   "name": "twMemoryPart::mDeactivate",
+   "symbol": "?mDeactivate@twMemoryPart@@UAEXXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 608,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638120": {
+   "name": "twMemoryPart::mAddMemory",
+   "symbol": "?mAddMemory@twMemoryPart@@IAEEXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006383a0": {
+   "name": "twMemoryPart::mNewBlock",
+   "symbol": "?mNewBlock@twMemoryPart@@UAEPAXJJPAD@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638500": {
+   "name": "twMemoryPart::mResizeBlock",
+   "symbol": "?mResizeBlock@twMemoryPart@@UAEPAXPAXJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 816,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638830": {
+   "name": "twMemoryPart::mDuplicateBlock",
+   "symbol": "?mDuplicateBlock@twMemoryPart@@UAEPAXPAX@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 656,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638ac0": {
+   "name": "twMemoryPart::mDelBlock",
+   "symbol": "?mDelBlock@twMemoryPart@@UAEEPAX@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 800,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638de0": {
+   "name": "twMemoryPart::mCheckForBoundsErrors",
+   "symbol": "?mCheckForBoundsErrors@twMemoryPart@@UAEEXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00638e30": {
+   "name": "twMemoryPart::mNewHandle",
+   "symbol": "?mNewHandle@twMemoryPart@@UAEJJJPAD@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 1248,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00639310": {
+   "name": "twMemoryPart::mNewHandleZeroIt",
+   "symbol": "?mNewHandleZeroIt@twMemoryPart@@UAEJJJPAD@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 1248,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006397f0": {
+   "name": "twMemoryPart::mResizeHandle",
+   "symbol": "?mResizeHandle@twMemoryPart@@UAEJJJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 784,
+   "score": 99.951,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00639b00": {
+   "name": "twMemoryPart::mDuplicateHandle",
+   "symbol": "?mDuplicateHandle@twMemoryPart@@UAEJJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 656,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00639d90": {
+   "name": "twMemoryPart::mResizeHandleZeroIt",
+   "symbol": "?mResizeHandleZeroIt@twMemoryPart@@UAEJJJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 784,
+   "score": 99.951,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a0a0": {
+   "name": "twMemoryPart::mDelHandle",
+   "symbol": "?mDelHandle@twMemoryPart@@UAEEJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 928,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a440": {
+   "name": "twMemoryPart::mLockHandle",
+   "symbol": "?mLockHandle@twMemoryPart@@UAEPAXJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a540": {
+   "name": "twMemoryPart::mUnlockHandle",
+   "symbol": "?mUnlockHandle@twMemoryPart@@UAEEJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 624,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a7b0": {
+   "name": "twMemoryPart::mRemoveAllLocksOnHandle",
+   "symbol": "?mRemoveAllLocksOnHandle@twMemoryPart@@UAEEJ@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 288,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a8d0": {
+   "name": "twMemoryPart::mLargestBlockAvailable",
+   "symbol": "?mLargestBlockAvailable@twMemoryPart@@UAEJXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0063a900": {
    "name": "twMemoryPart::mCheckMemory",
    "symbol": "?mCheckMemory@twMemoryPart@@UAEEPAX0@Z",
    "unit": "Tiger/twmemory.cpp",
    "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063a910": {
+   "name": "twMemoryBlock::mCheckForBoundsError",
+   "symbol": "?mCheckForBoundsError@twMemoryBlock@@IAEFXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 900,
+   "score": 35.543,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063aca0": {
+   "name": "twMemoryBlock::mAllocate",
+   "symbol": "?mAllocate@twMemoryBlock@@IAEPAXJPADK@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 576,
+   "score": 98.948,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063aee0": {
+   "name": "twMemoryBlock::mReallocate",
+   "symbol": "?mReallocate@twMemoryBlock@@IAEPAXJK@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 1152,
+   "score": 87.547,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063b360": {
+   "name": "twMemoryBlock::mFree",
+   "symbol": "?mFree@twMemoryBlock@@IAEEE@Z",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 912,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063b6f0": {
+   "name": "twMemoryBlock::mLock",
+   "symbol": "?mLock@twMemoryBlock@@IAEPAXXZ",
+   "unit": "Tiger/twmemory.cpp",
+   "size": 432,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063b8a0": {
+   "name": "tPagingMechanism::mAddPage",
+   "symbol": "?mAddPage@tPagingMechanism@@IAEEXZ",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 1376,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063be00": {
+   "name": "tPagingMechanism::mClosePage",
+   "symbol": "?mClosePage@tPagingMechanism@@IAEXPAVtPagingBlock@@@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 688,
+   "score": 98.878,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c0b0": {
+   "name": "tPagingMechanism::mDeactivate",
+   "symbol": "?mDeactivate@tPagingMechanism@@QAEXXZ",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c0d0": {
+   "name": "tPagingBlock::mGetIndexWhereToAddThisMuchSpace",
+   "symbol": "?mGetIndexWhereToAddThisMuchSpace@tPagingBlock@@IAEJJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 416,
+   "score": 90.203,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c270": {
+   "name": "tPagingMechanism::mNewHandle",
+   "symbol": "?mNewHandle@tPagingMechanism@@UAEJJJPAD@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 528,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c480": {
+   "name": "tPagingMechanism::mNewHandleZeroIt",
+   "symbol": "?mNewHandleZeroIt@tPagingMechanism@@UAEHJJPAD@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c4a0": {
+   "name": "tPagingMechanism::mNewBlock",
+   "symbol": "?mNewBlock@tPagingMechanism@@UAEPAXJJPAD@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063c6d0": {
+   "name": "tPagingMechanism::mGetPtrsFromHandle",
+   "symbol": "?mGetPtrsFromHandle@tPagingMechanism@@UAEEJAAPAVtPagingBlock@@AAPAEAAJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 896,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063ca50": {
+   "name": "tPagingMechanism::mGetHandleFromPointer",
+   "symbol": "?mGetHandleFromPointer@tPagingMechanism@@UAEJPAX@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 496,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063cc40": {
+   "name": "tPagingMechanism::mLockHandle",
+   "symbol": "?mLockHandle@tPagingMechanism@@UAEPAXJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063cd30": {
+   "name": "tPagingMechanism::mUnlockHandle",
+   "symbol": "?vfunction12@tPagingMechanism@@UAEEJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063ce10": {
+   "name": "tPagingMechanism::mRemoveAllLocksOnHandle",
+   "symbol": "?vfunction13@tPagingMechanism@@UAEEJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063cf00": {
+   "name": "tPagingBlock::mCheckForBoundsError",
+   "symbol": "?mCheckForBoundsError@tPagingBlock@@QAEEJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 448,
+   "score": 79.2,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063d0c0": {
+   "name": "tPagingMechanism::mIsThisAPagingPointer",
+   "symbol": "?mIsThisAPagingPointer@tPagingMechanism@@UAEEPAX@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063d0f0": {
+   "name": "tPagingMechanism::mCheckForBoundsErrors",
+   "symbol": "?mCheckForBoundsErrors@tPagingMechanism@@UAEEXZ",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063d160": {
+   "name": "tPagingMechanism::mDelBlock",
+   "symbol": "?mDelBlock@tPagingMechanism@@UAEEPAX@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063d2b0": {
+   "name": "tPagingMechanism::mDelHandle",
+   "symbol": "?mDelHandle@tPagingMechanism@@UAEEJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 1552,
+   "score": 97.188,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063d8c0": {
+   "name": "tPagingMechanism::mResizeHandle",
+   "symbol": "?mResizeHandle@tPagingMechanism@@UAEJJJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 2960,
+   "score": 25.981,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0063e450": {
+   "name": "tPagingMechanism::mDuplicateHandle",
+   "symbol": "?mDuplicateHandle@tPagingMechanism@@UAEJJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 1360,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063e9a0": {
+   "name": "tPagingMechanism::mResizeHandleZeroIt",
+   "symbol": "?mResizeHandleZeroIt@tPagingMechanism@@UAEJJJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063e9c0": {
+   "name": "tPagingMechanism::mResizeBlock",
+   "symbol": "?mResizeBlock@tPagingMechanism@@UAEPAXPAXJ@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 592,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0063ec10": {
+   "name": "tPagingMechanism::mDuplicateBlock",
+   "symbol": "?mDuplicateBlock@tPagingMechanism@@UAEPAXPAX@Z",
+   "unit": "Tiger/tpaging.cpp",
+   "size": 432,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-16"
@@ -14949,6 +15345,609 @@
    "score": 79.659,
    "exact": false,
    "recorded": "2026-11-09"
+  },
+  "0x00757250": {
+   "name": "tFile::gGetPath",
+   "symbol": "?gGetPath@tFile@@SA?AVtPath@@VtString@@VtDir@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757310": {
+   "name": "tFile::mInit",
+   "symbol": "?mInit@tFile@@SAXXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 756,
+   "score": 8.468,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00757610": {
+   "name": "gFileDeInit",
+   "symbol": "?gFileDeInit@@YAXXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757630": {
+   "name": "tSession::~tSession",
+   "symbol": "??0tFile@@QAE@XZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757650": {
+   "name": "tFile::`scalar_deleting_destructor'",
+   "symbol": "??_GtFile@@UAEPAXI@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757670": {
+   "name": "tFile::~tFile",
+   "symbol": "??1tFile@@UAE@XZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007576d0": {
+   "name": "tFile::mIsOpen",
+   "symbol": "?mIsOpen@tFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757700": {
+   "name": "tFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tFile@@UAEEPBDE@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757770": {
+   "name": "tFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tFile@@UAEEAAVtString@@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007577d0": {
+   "name": "tFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tFile@@UAEEVtPath@@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757880": {
+   "name": "tFile::mSearchOpen",
+   "symbol": "?mSearchOpen@tFile@@UAE?AVtPath@@AAVtString@@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 368,
+   "score": 87.261,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00757bb0": {
+   "name": "tFile::mClose",
+   "symbol": "?mClose@tFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757be0": {
+   "name": "tFile::mRead",
+   "symbol": "?mRead@tFile@@UAEJPAXJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757c30": {
+   "name": "tFile::mSeekCur",
+   "symbol": "?mSeekCur@tFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757c70": {
+   "name": "tFile::mSeekSet",
+   "symbol": "?mSeekSet@tFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757ca0": {
+   "name": "tFile::mSeekEnd",
+   "symbol": "?mSeekEnd@tFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757ce0": {
+   "name": "tFile::vfunction28",
+   "symbol": "?fn_slot28@tFile@@UAE?AVtPath@@XZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 99.667,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00757d20": {
+   "name": "tFile::mFilePos",
+   "symbol": "?mFilePos@tFile@@UAEJXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757d40": {
+   "name": "tFile::mGetLength",
+   "symbol": "?mGetLength@tFile@@UAEJXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757d60": {
+   "name": "tFile::mEOF",
+   "symbol": "?mEOF@tFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757d80": {
+   "name": "tFile::mOpenForWriteAppend",
+   "symbol": "?mOpenForWriteAppend@tFile@@UAEEAAVtString@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 256,
+   "score": 99.939,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00757e80": {
+   "name": "tFile::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tFile@@UAEEPBDE@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00757ef0": {
+   "name": "tFile::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tFile@@UAEEAAVtString@@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 256,
+   "score": 99.942,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x007581d0": {
+   "name": "tFile::mWrite",
+   "symbol": "?mWrite@tFile@@UAEJPBXJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758240": {
+   "name": "tFile::mGetFile",
+   "symbol": "?mGetFile@tFile@@UAEEEPBD0@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007582d0": {
+   "name": "tFile::mGetFile",
+   "symbol": "?mGetFile@tFile@@UAEEEAAVtString@@0@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758390": {
+   "name": "tBufFile::tBufFile",
+   "symbol": "??0tBufFile@@QAE@K@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 97,
+   "score": 48.375,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00758400": {
+   "name": "tBufFile::`scalar_deleting_destructor'",
+   "symbol": "??_GtBufFile@@UAEPAXI@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758420": {
+   "name": "tBufFile::~tBufFile",
+   "symbol": "??1tBufFile@@UAE@XZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007584d0": {
+   "name": "tBufFile::mGetFile",
+   "symbol": "?mGetFile@tBufFile@@UAEEEPBD0@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758510": {
+   "name": "tBufFile::mSearchOpen",
+   "symbol": "?mSearchOpen@tBufFile@@UAE?AVtPath@@AAVtString@@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007585c0": {
+   "name": "tBufFile::mIsOpen",
+   "symbol": "?mIsOpen@tBufFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007585d0": {
+   "name": "tBufFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tBufFile@@UAEEPBD@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758600": {
+   "name": "tBufFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tBufFile@@UAEEAAVtString@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758630": {
+   "name": "tBufFile::mOpenForRead",
+   "symbol": "?mOpenForRead@tBufFile@@UAEEVtPath@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007586b0": {
+   "name": "tBufFile::mClose",
+   "symbol": "?mClose@tBufFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007586c0": {
+   "name": "tBufFile::mRead",
+   "symbol": "?mRead@tBufFile@@UAEJPAXJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 224,
+   "score": 98.302,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x007587a0": {
+   "name": "tFile::mReadLong",
+   "symbol": "?mReadLong@tFile@@UAEEPAJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007587c0": {
+   "name": "tFile::mReadShort",
+   "symbol": "?mReadShort@tFile@@UAEEPAF@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007587e0": {
+   "name": "tFile::mReadByte",
+   "symbol": "?mReadByte@tFile@@UAEEPAE@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758800": {
+   "name": "tBufFile::mSeekCur",
+   "symbol": "?mSeekCur@tBufFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758890": {
+   "name": "tBufFile::mSeekSet",
+   "symbol": "?mSeekSet@tBufFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758920": {
+   "name": "tBufFile::mSeekEnd",
+   "symbol": "?mSeekEnd@tBufFile@@UAEEJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007589b0": {
+   "name": "tBufFile::mFilePos",
+   "symbol": "?mFilePos@tBufFile@@UAEJXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007589c0": {
+   "name": "tBufFile::mGetLength",
+   "symbol": "?mGetLength@tBufFile@@UAEJXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007589d0": {
+   "name": "tBufFile::mEOF",
+   "symbol": "?mEOF@tBufFile@@UAEEXZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007589f0": {
+   "name": "tBufFile::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tBufFile@@UAEEPBD@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758a30": {
+   "name": "tBufFile::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tBufFile@@UAEEAAVtString@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758a70": {
+   "name": "tBufFile::mOpenForWrite",
+   "symbol": "?mOpenForWrite@tBufFile@@UAEEVtPath@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758af0": {
+   "name": "tBufFile::mWrite",
+   "symbol": "?mWrite@tBufFile@@UAEJPBXJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758b50": {
+   "name": "tFile::mWriteLong",
+   "symbol": "?mWriteLong@tFile@@UAEEPBJ@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758b70": {
+   "name": "tFile::mWriteShort",
+   "symbol": "?mWriteShort@tFile@@UAEEPBF@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758b90": {
+   "name": "tFile::mWriteByte",
+   "symbol": "?mWriteByte@tFile@@UAEEPBE@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758bb0": {
+   "name": "tBufFile::mGetPath",
+   "symbol": "?mGetPath@tBufFile@@UAE?AVtPath@@XZ",
+   "unit": "Tiger/tFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758bd0": {
+   "name": "tBufFile::mSearchOpen",
+   "symbol": "?mSearchOpen@tBufFile@@UAE?AVtPath@@V2@E@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758c90": {
+   "name": "tBufFile::mGetFile",
+   "symbol": "?mGetFile@tBufFile@@UAEEEAAVtString@@0@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758cd0": {
+   "name": "tStream::operator<<",
+   "symbol": "??6tStream@@QAEAAV0@ABVtString@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758d60": {
+   "name": "tStream::operator>>",
+   "symbol": "??5tStream@@QAEAAV0@ABVtString@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758e00": {
+   "name": "tFileStream::mSetPos",
+   "symbol": "?mSetPos@tFileStream@@UAEXK@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758e30": {
+   "name": "tFileStream::mGet",
+   "symbol": "?mGet@tFileStream@@UAEAAVtStream@@PAXK@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758e70": {
+   "name": "tFileStream::mPut",
+   "symbol": "?mPut@tFileStream@@UAEAAVtStream@@PAXK@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00758eb0": {
+   "name": "tParsePath::mGetPathOrDir",
+   "symbol": "?mGetPathOrDir@tParsePath@@IAEXPAVtPath@@PAVtDir@@VtString@@V3@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 1552,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x007594c0": {
+   "name": "tParsePath::mGetPath",
+   "symbol": "?mGetPath@tParsePath@@QAE?AVtPath@@VtString@@VtDir@@@Z",
+   "unit": "Tiger/tFile.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00759e80": {
+   "name": "tFontDraw::mDrawGlyphClipped",
+   "symbol": "?mDrawGlyphClipped@tFontDraw@@SAPAXABUtGLRectI@@HHIIJPAXABUtCharInfo@@@Z",
+   "unit": "Tiger/tfontDraw.cpp",
+   "size": 450,
+   "score": 65.361,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0075a042": {
+   "name": "FUN_0075a042",
+   "symbol": "?fn_0075a042@@YAXXZ",
+   "unit": "Tiger/tfontDraw.cpp",
+   "size": 16,
+   "score": 5.714,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0075a080": {
+   "name": "tFontDraw::mDrawString",
+   "symbol": "?mDrawString@tFontDraw@@SAXIJPAXABUtGLRectI@@HHIPBGAAVtUniFont@@PAU2@EH@Z",
+   "unit": "Tiger/tfontDraw.cpp",
+   "size": 448,
+   "score": 84.757,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0075a240": {
+   "name": "tFontDraw::mDrawString",
+   "symbol": "?mDrawString@tFontDraw@@SAXIJPAXABUtGLRectI@@HHIPBGAAVtUniFont@@HW4eFontDrawFmt@1@PAU2@EH@Z",
+   "unit": "Tiger/tfontDraw.cpp",
+   "size": 928,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0075a5e0": {
    "name": "tString::mOSString",
