@@ -85,16 +85,23 @@ public:
 	virtual void vfunction32(); virtual void vfunction33(); virtual void vfunction34(); virtual void vfunction35();
 	virtual void vfunction36(); virtual void vfunction37(); virtual void vfunction38(); virtual void vfunction39();
 	virtual void vfunction40(); virtual void vfunction41(); virtual void vfunction42(); virtual void vfunction43();
-	virtual void vfunction44(); virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
+	// HYPOTHESIS: returns the number of entries.
+	virtual int vfunction44();
+	virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
 	virtual void vfunction48(); virtual void vfunction49(); virtual void vfunction50(); virtual void vfunction51();
 	virtual void vfunction52(); virtual void vfunction53();
 	// HYPOTHESIS: adds a line of text; the three trailing arguments are not known.
 	virtual void vfunction54(tString &text, int, int, int);
 	virtual void vfunction55();
-	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58(); virtual void vfunction59();
+	// HYPOTHESIS: returns the text of the entry at the given index.
+	virtual tString *vfunction56(int index);
+	virtual void vfunction57(); virtual void vfunction58(); virtual void vfunction59();
 	virtual void vfunction60(); virtual void vfunction61(); virtual void vfunction62(); virtual void vfunction63();
 	virtual void vfunction64(); virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
 	virtual tString *vfunction68();
+	virtual void vfunction69();
+	// HYPOTHESIS: returns the index of the selected entry.
+	virtual int vfunction70();
 };
 
 namespace tState_Namespace_GameConnections
@@ -499,6 +506,38 @@ void tState_GameConnections::fn_004688ee(c_00468677_source *control, const char 
 		text = buffer;
 		control->vfunction54(text, -1, 0, -1);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00468a45
+void tState_GameConnections::fn_00468a45(c_00468677_source *control, const char *name)
+{
+	tString prefix("Entry#");
+	tString key;
+	tString text;
+
+	int count = control->vfunction44();
+	g_p008cc580->vfunction6(name, "NumOfEntries", count);
+	int entry = 0;
+	int selected = control->vfunction70();
+	tString *current = control->vfunction68();
+
+	for (int i = count - 1; i >= 0; i--)
+	{
+		if (i == selected)
+			continue;
+		key = prefix;
+		key.mAppendInt32s(entry, 1);
+		tString *item = control->vfunction56(i);
+		text = *item;
+		if (item)
+			g_p008cc580->vfunction10(name, key.mCharStr(), text.mCharStr());
+		entry++;
+	}
+
+	key = prefix;
+	key.mAppendInt32s(entry, 1);
+	if (current)
+		g_p008cc580->vfunction10(name, key.mCharStr(), current->mCharStr());
 }
 
 }

@@ -43,6 +43,8 @@ public:
 	virtual int vfunction7(const char *, const char *, int);    // +0x18
 	virtual void vfunction8();
 	virtual void vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
+	// HYPOTHESIS: stores a named string setting (section, key, value) like +0x14.
+	virtual void vfunction10(const char *, const char *, const char *);    // +0x24
 };
 
 extern fn_008cc580_Settings *g_p008cc580;
