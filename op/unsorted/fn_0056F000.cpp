@@ -236,15 +236,15 @@ bool fn_0056f283_owner::operator()(fn_0056f283_target *target)
 	return current->operator==(other) ? true : false;
 }
 
-// HYPOTHESIS: tShip is a database class; its members are not recovered.
-class tShip : public nDatabase::tDatabaseObject {
-public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	char tShip_pad[0x434 - 0x48];
-};
+#include "unsorted/tShip.h"
+//
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the result container, likely std::vector<tShip>; its push_back is out of line.
 class fn_0056f2a4_results {
@@ -395,15 +395,15 @@ void nDatabase::tQuery<tAuctionItem>::fn_0056f04f(void *value)
 	m_results.fn_00571a69(value);
 }
 
-// HYPOTHESIS: tAuctionItem is a database class; its members are not recovered.
-class tAuctionItem : public nDatabase::tDatabaseObject {
-public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	char tAuctionItem_pad[0xa8 - 0x48];
-};
+#include "unsorted/tAuctionItem.h"
+//
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the result container, likely std::vector<tAuctionItem>; its push_back is out of line.
 class fn_0056f4df_results {
@@ -877,14 +877,14 @@ void fn_0056fbf5_owner::fn_0056fbf5(const nDatabase::tQuery<fn_0056fbf5_object> 
 	guard.Leave();
 }
 
-// HYPOTHESIS: tCampaignInfo is a database class; its members are not recovered.
-class tCampaignInfo : public nDatabase::tDatabaseObject {
-public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-};
+#include "unsorted/tCampaignInfo.h"
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the result container for tCampaignInfo, as for 0x0056f4df.
 class fn_0056fcd7_results {

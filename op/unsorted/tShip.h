@@ -30,6 +30,10 @@ public:
 	// HYPOTHESIS: a four-byte member getter; identical getters fold to this address.
 	int fn_00410223() const;
 	std::string fn_00546296() const;
+
+	// HYPOTHESIS: the members are not recovered; the size (0x434) is the element size of the
+	// query results that copy tShip by value (0x0056f2a4, 0x0056f3e0).
+	char tShip_pad[0x434 - 0x48];
 };
 
 #endif
