@@ -392,3 +392,11 @@ void fn_004d357b( long arg1, long arg2, long arg3 )
 {
 	g_0092e4a0.fn_004d4996( arg1, arg2, arg3 );
 }
+
+void fn_00671d80( long arg1, long arg2 );
+
+// FUNCTION: STARFLEETOP 0x004d3592
+void fn_004d3592( long arg1, long arg2 )
+{
+	fn_00671d80( arg1, arg2 );
+}
