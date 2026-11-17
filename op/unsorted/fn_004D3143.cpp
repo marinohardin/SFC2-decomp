@@ -301,3 +301,13 @@ void fn_004d3455( long arg1 )
 		obj->vfunction17();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d346f
+void fn_004d346f( long arg1, long arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_0092e4a0.fn_004d4728( arg2, arg1 );
+	if ( obj != 0 )
+	{
+		obj->vfunction17();
+	}
+}
