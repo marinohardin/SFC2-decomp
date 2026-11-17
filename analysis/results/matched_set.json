@@ -8956,6 +8956,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x005fb1c2": {
+   "name": "FUN_005fb1c2",
+   "symbol": "?insert@?$map@HHU?$less@H@std@@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBHH@2@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

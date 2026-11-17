@@ -76,6 +76,16 @@ template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, 
 	}
 }
 
+// The game's out-of-line copy of the library's std::map insert, for the map of two 4-byte types.
+// HYPOTHESIS: the map is the one of 0x005fb00a; 0x0057f946 is its tree's insert.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb1c2
+template<> std::map<int, int>::_Pairib std::map<int, int>::insert( const value_type& _X )
+{
+	_Imp::_Pairib _Ans = _Tr.insert( _X );
+	return ( _Pairib( _Ans.first, _Ans.second ) );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
