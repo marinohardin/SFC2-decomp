@@ -447,13 +447,10 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
 class fn_00402967_Obj
 {
 public:
-    void fn_00401c9c();
+    fn_00402967_Obj();
+    ~fn_00402967_Obj();
 };
 
-extern fn_00402967_Obj g_fn_00402967_Obj;
-
+// FUNCTION: STARFLEETOP 0x00402971
 // FUNCTION: STARFLEETOP 0x00402967
-void fn_00402967()
-{
-    g_fn_00402967_Obj.fn_00401c9c();
-}
+fn_00402967_Obj g_fn_00402967_Obj;
