@@ -91,6 +91,9 @@ public:
     // HYPOTHESIS: 0x005462de returns the address of +0x90, the member 0x00546027 calls through.
     c_00451045* fn_005462de();
     const c_00427db2& fn_005462e5();
+    // HYPOTHESIS: 0x005462ec returns the address of +0x30c, the member after field_100;
+    // its type and that it belongs to this class are guesses.
+    char* fn_005462ec();
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -316,4 +319,10 @@ c_00451045* c_00546027::fn_005462de()
 const c_00427db2& c_00546027::fn_005462e5()
 {
     return field_100;
+}
+
+// FUNCTION: STARFLEETOP 0x005462ec
+char* c_00546027::fn_005462ec()
+{
+    return field_30c;
 }
