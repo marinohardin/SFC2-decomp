@@ -599,6 +599,7 @@ public:
     fn_005d9b26_object(const std::string &name);
     void fn_005d9b58(const char *param_1);
     void fn_005d9bb8(const std::string &param_1);
+    std::string fn_005d9be5();
 
     std::string m00;
     fn_005d91cc_object m10;
@@ -628,4 +629,19 @@ void fn_005d9b26_object::fn_005d9bb8(const std::string &param_1)
     m14 = 0;
     m10 = 0;
     fn_005d9b58(param_1.c_str());
+}
+
+// HYPOTHESIS: copies the held object's data (its +0x08, g_00c38970 bytes long) out as a
+// string; an empty string when nothing is held.
+// FUNCTION: STARFLEETOP 0x005d9be5
+std::string fn_005d9b26_object::fn_005d9be5()
+{
+    if (m10.m00 == 0)
+        return "";
+    char *buf = new char[g_00c38970 + 1];
+    buf[g_00c38970] = 0;
+    strncpy(buf, m10.m00 ? (const char *)m10.m00->m08 : 0, g_00c38970);
+    std::string result(buf);
+    delete buf;
+    return result;
 }
