@@ -83,3 +83,35 @@ fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf* _S)
     : std::basic_istream<char, std::char_traits<char> >(_S), std::basic_ostream<char, std::char_traits<char> >(_S, false, false)
 {
 }
+
+// HYPOTHESIS: the out-of-line copy of the library's inline std::locale default constructor (the
+// header defines it in the class, so it cannot be redefined); written out as a stand-in class.
+// m0 is the implementation pointer, taken from std::locale::_Init at 0x0074c431; the global at
+// 0x00c8032c is std::locale::_Locimp::_Global.
+class fn_00404184_Locale
+{
+public:
+    fn_00404184_Locale();
+    std::locale::_Locimp* m0;
+};
+
+// HYPOTHESIS: the reference-count increment at 0x00402b90 (defined in fn_00402000.cpp as
+// fn_00402b90_Obj::fn_00402b90), seen here as a no-throw call.
+class fn_00402b90_Obj
+{
+public:
+    void fn_00402b90() throw();
+    unsigned long m0;
+    unsigned long m4;
+};
+
+extern fn_00402b90_Obj* g_00c8032c;
+std::locale::_Locimp* fn_0074c431() throw();
+
+// FUNCTION: STARFLEETOP 0x00404184
+fn_00404184_Locale::fn_00404184_Locale()
+{
+    m0 = fn_0074c431();
+    std::_Lockit lock;
+    g_00c8032c->fn_00402b90();
+}
