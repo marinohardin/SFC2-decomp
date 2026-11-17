@@ -8380,6 +8380,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005de72a": {
+   "name": "tCallback<tMetaClientNewsCtlrC::tMenuItem*>::~tCallback<tMetaClientNewsCtlrC::tMenuItem*>",
+   "symbol": "??1?$tMemberCallback@VtMetaClientNewsCtlrC@@PAVtMenuItem@1@@@UAE@XZ",
+   "unit": "unsorted/fn_005DE000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
