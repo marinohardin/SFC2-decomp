@@ -21,3 +21,22 @@ bool __stdcall fn_005de0cf( tNewsStory* a, tNewsStory* b )
 	}
 	return less;
 }
+
+// HYPOTHESIS: a second ordering predicate on news stories: by the byte fn_0054744c returns
+// (higher first), then by text.
+// FUNCTION: STARFLEETOP 0x005de1b8
+bool __stdcall fn_005de1b8( tNewsStory* a, tNewsStory* b )
+{
+	bool less;
+	int ascii = g_b00c38458 != 0;
+	if ( a->fn_0054744c() == b->fn_0054744c() )
+	{
+		fn_0040651e_type* text = b->fn_00547450( ascii );
+		less = text->fn_0040651e( a->fn_00547450( ascii ) ) < 0;
+	}
+	else
+	{
+		less = a->fn_0054744c() > b->fn_0054744c();
+	}
+	return less;
+}
