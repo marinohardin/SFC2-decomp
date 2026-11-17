@@ -3106,6 +3106,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042febe": {
+   "name": "t3DVisual_Model::vfunction25",
+   "symbol": "?fn_0042febe@t3DVisual_Model@@QAE_NHHHHPAPAUtEntry_0042f918@@@Z",
+   "unit": "unsorted/t3DVisual_Model.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
