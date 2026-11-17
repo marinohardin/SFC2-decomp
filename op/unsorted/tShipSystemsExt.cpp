@@ -129,6 +129,8 @@ public:
     virtual void vfunction83();
     virtual void vfunction84();
     virtual float vfunction85();
+    virtual void vfunction86();
+    virtual float vfunction87();
 };
 
 // RTTI: tShipSystemsExt : tShipSystems (vtable 0x0079d530, 177 slots).
@@ -140,6 +142,7 @@ public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
     virtual float vfunction2();
+    virtual float vfunction3();
     virtual void vfunction26( float param_1 );
     virtual tMinMaxFloat* vfunction27();
     virtual tMinMaxFloat* vfunction28();
@@ -960,5 +963,13 @@ float tShipSystemsExt::vfunction2()
 {
     if ( m5cc != 0 )
         return m5cc->vfunction85();
+    return 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x00448bc3
+float tShipSystemsExt::vfunction3()
+{
+    if ( m5cc != 0 )
+        return m5cc->vfunction87();
     return 0.0f;
 }
