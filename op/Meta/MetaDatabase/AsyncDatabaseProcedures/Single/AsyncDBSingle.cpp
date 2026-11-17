@@ -65,10 +65,10 @@ public:
 	void fn_005708ca( tServCharacter* character );
 	void fn_00570a40( tAuctionItem* item );
 	void fn_00570bb6( tPoliticalTensionMatrix* matrix );
+	void fn_00570d2c( tMetaMapHex* hex );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
-namespace nAsyncDatabaseProcedure
-{
+namespace nAsyncDatabaseProcedure {
 class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
@@ -103,7 +103,7 @@ public:
 	virtual void vfunction29( tServCharacter* character );
 	virtual void vfunction30( tAuctionItem* item );
 	virtual void vfunction31( tPoliticalTensionMatrix* matrix );
-	virtual void vfunction32();
+	virtual void vfunction32( tMetaMapHex* hex );
 	virtual void vfunction33();
 	virtual void vfunction34();
 	virtual void vfunction35( tCampaignInfo* info );
@@ -621,4 +621,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction31( tPoliticalTensi
 #line 865
 	validate( matrix );
 	fDatabase->fn_00570bb6( matrix );
+}
+#line 626
+// FUNCTION: STARFLEETOP 0x0056de36
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction32( tMetaMapHex* hex )
+{
+#line 875
+	validate( hex );
+	fDatabase->fn_00570d2c( hex );
 }
