@@ -84,6 +84,10 @@ public:
     double fn_00546027(int param_1, int param_2);
     int fn_0054603d(double param_1);
     int fn_0054606f(double param_1, double param_2, c_0045139e param_3);
+    // HYPOTHESIS: 0x00546264 and 0x005462d7 sit next to 0x005462e5 and take this in ecx;
+    // that they belong to this class is a guess.
+    unsigned int fn_00546264();
+    unsigned int fn_005462d7();
     const c_00427db2& fn_005462e5();
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
@@ -142,4 +146,10 @@ int c_00546027::fn_0054606f(double param_1, double param_2, c_0045139e param_3)
     }
 
     return total - local_24 + sum + local_1c + local_28 + local_20;
+}
+
+// FUNCTION: STARFLEETOP 0x00546264
+unsigned int c_00546027::fn_00546264()
+{
+    return fn_005462d7() & 1;
 }
