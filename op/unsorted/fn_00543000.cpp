@@ -5,6 +5,7 @@
 #include "Common/Thread/Optex.h"
 #include "unsorted/fn_0042b0fd_owner.h"
 #include <string>
+#include <time.h>
 
 // HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
 // declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
@@ -113,6 +114,7 @@ public:
 	void fn_0054360a();
 	void fn_0054361f();
 	void fn_00543634();
+	void fn_00543649(bool flag);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -134,7 +136,7 @@ public:
 
 	char m_pad[0x48];
 	std::string m048;
-	int m058;
+	time_t m058;
 	fn_0042c709_wrapper m05c;
 	std::string m074;
 	std::string m084;
@@ -484,4 +486,16 @@ void fn_005430ad_owner::fn_00543634()
 {
 	m114_4 = 0;
 	m114_5 = 2;
+}
+
+// HYPOTHESIS: stamps +0x58 with the current time (0x007390fa is the CRT's time) and sets or
+// clears bit 1 of the dword at +0x114.
+// FUNCTION: STARFLEETOP 0x00543649
+void fn_005430ad_owner::fn_00543649(bool flag)
+{
+	time(&m058);
+	if (flag)
+		m114_1 = 1;
+	else
+		m114_1 = 0;
 }
