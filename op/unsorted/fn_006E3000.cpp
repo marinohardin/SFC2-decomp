@@ -412,3 +412,102 @@ public:
 tObject_006e3640::~tObject_006e3640()
 {
 }
+
+// HYPOTHESIS: the second tree of the timer table; FUN_006e36a0 only hands its
+// iterator to erase(iterator) at 0x005d9441.
+struct fn_005d9441_tree
+{
+	struct node;
+	class iterator
+	{
+	public:
+		iterator() {}
+		iterator(node *_P) : _Ptr(_P) {}
+		node *_Ptr;
+	};
+
+	iterator FUN_005d9441(iterator _P);
+};
+
+// HYPOTHESIS: the entry FUN_006e36a0 frees after calling 0x006dbc40 on it; m04
+// is its place in the second tree. It may be tObject_006e3000_entry.
+class tObject_006dbc40
+{
+public:
+	void FUN_006dbc40();
+
+	char m00[0x4];
+	fn_005d9441_tree::iterator m04;
+};
+
+// HYPOTHESIS: a balanced tree of the game's STL, with a nil node per tree and
+// the nil flag in each node, keyed by a 4-byte value.
+struct fn_0060ac82_tree
+{
+	struct node
+	{
+		node *_Left;
+		node *_Parent;
+		node *_Right;
+		struct value
+		{
+			unsigned long first;
+			tObject_006dbc40 *second;
+		} _Value;
+		char _Color;
+		char _Isnil;
+	};
+	class iterator
+	{
+	public:
+		iterator() {}
+		iterator(node *_P) : _Ptr(_P) {}
+		node::value &operator*() const { return (_Ptr->_Value); }
+		iterator &operator++()
+			{if (!_Ptr->_Right->_Isnil)
+				_Ptr = _Min(_Ptr->_Right);
+			else
+				{node *_P;
+				while (_Ptr == (_P = _Ptr->_Parent)->_Right)
+					_Ptr = _P;
+				if (_Ptr->_Right != _P)
+					_Ptr = _P; }
+			return (*this); }
+		iterator operator++(int) { iterator _Tmp = *this; ++*this; return (_Tmp); }
+		node *_Ptr;
+	};
+
+	char m00[0x4];
+	node *_Head;
+	node *_Nil;
+	char m0c[0x4];
+	unsigned int _Size;
+
+	static node *_Min(node *_P) { while (!_P->_Left->_Isnil) _P = _P->_Left; return (_P); }
+	// HYPOTHESIS: erase(iterator).
+	iterator FUN_0060ac82(iterator _P);
+};
+
+// HYPOTHESIS: the timer table that tObject_006e3000 holds from +0x30; the
+// second tree starts at +0x14 as its m44 does.
+class tObject_006e36a0
+{
+public:
+	fn_0060ac82_tree::iterator FUN_006e36a0(fn_0060ac82_tree::iterator param_1);
+
+	fn_0060ac82_tree mTimers;
+	fn_005d9441_tree m14;
+};
+
+// FUNCTION: STARFLEETOP 0x006e36a0
+fn_0060ac82_tree::iterator tObject_006e36a0::FUN_006e36a0(fn_0060ac82_tree::iterator param_1)
+{
+	tObject_006dbc40* entry = (*param_1).second;
+	mTimers.FUN_0060ac82(param_1++);
+	// MATCH-ONLY: the copy loads m04 before the return slot's address.
+	fn_005d9441_tree::iterator where = entry->m04;
+	m14.FUN_005d9441(where);
+	entry->FUN_006dbc40();
+	delete entry;
+	return param_1;
+}
