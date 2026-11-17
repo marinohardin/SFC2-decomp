@@ -289,15 +289,6 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
-  "0x00402c74": {
-   "name": "FUN_00402c74",
-   "symbol": "?fn_00402c74@@YAXXZ",
-   "unit": "unsorted/fn_00402000.cpp",
-   "size": 77,
-   "score": 1.29,
-   "exact": false,
-   "recorded": "2026-11-16"
-  },
   "0x00402cc1": {
    "name": "FUN_00402cc1",
    "symbol": "?fn_00402cc1@fn_00402bb6_Streambuf@@QAEHXZ",

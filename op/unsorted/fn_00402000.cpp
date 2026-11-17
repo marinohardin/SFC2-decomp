@@ -690,11 +690,6 @@ int fn_00402bb6_Streambuf::fn_00402cdf()
 {
     return (fn_00403ff1() == -1 ? -1 : fn_00402cc1());
 }
-// HYPOTHESIS: tail of fn_00402bb6 after its catch funclet (reads that frame); no source form of its own.
-// FUNCTION: STARFLEETOP 0x00402c74
-void fn_00402c74()
-{
-}
 
 // HYPOTHESIS: container clear of 0xb8-byte elements with a virtual destructor; names are placeholders.
 class fn_00402cf9_Elem
