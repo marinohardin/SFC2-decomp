@@ -393,3 +393,23 @@ void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& a
 		field_0x8 += aCount;
 	}
 }
+
+// HYPOTHESIS: the class named in RTTI; only its copy constructor (0x00427ab7) is needed here.
+class tPlayingTeamInfo
+{
+public:
+	tPlayingTeamInfo( const tPlayingTeamInfo& source );
+};
+
+// MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
+// here; not inline, since nothing in this unit instantiates it.
+namespace std
+{
+void _Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V );
+}
+
+// FUNCTION: STARFLEETOP 0x00427a8a
+void std::_Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V )
+{
+	new ((void *)_P) tPlayingTeamInfo( _V );
+}

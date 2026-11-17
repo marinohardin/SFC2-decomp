@@ -1954,6 +1954,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00427a8a": {
+   "name": "FUN_00427a8a",
+   "symbol": "?_Construct@std@@YAXPAVtPlayingTeamInfo@@ABV2@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 45,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
