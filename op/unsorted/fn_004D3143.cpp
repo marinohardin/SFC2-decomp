@@ -629,3 +629,9 @@ bool fn_004d37b1( tVarButtonGroup* arg1 )
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x004d37c1
+bool fn_004d37c1( long arg1 )
+{
+	return fn_004d37b1( (tVarButtonGroup*) fn_004d3446( arg1 ) );
+}
