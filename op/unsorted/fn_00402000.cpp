@@ -496,3 +496,25 @@ char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
     fn_00403d87();
     return m4 + pos;
 }
+
+class fn_004029e8_Obj
+{
+public:
+    fn_004029e8_Obj* fn_004029e8(fn_004029e8_Obj* dst, unsigned int pos, unsigned int n);
+    void fn_005da20a(bool);
+    void fn_00403b49(const fn_004029e8_Obj&, unsigned int, unsigned int);
+    char m0;
+};
+
+// HYPOTHESIS: a std::string substring constructor; the first byte stored is read from the stack argument's own bytes
+// FUNCTION: STARFLEETOP 0x004029e8
+fn_004029e8_Obj* fn_004029e8_Obj::fn_004029e8(fn_004029e8_Obj* dst, unsigned int pos, unsigned int n)
+{
+    char c = ((char*)&dst)[3];
+    unsigned int tmp = 0;
+    unsigned int* q = &tmp;
+    dst->m0 = c;
+    dst->fn_005da20a(false);
+    dst->fn_00403b49(*this, pos, n);
+    return dst;
+}
