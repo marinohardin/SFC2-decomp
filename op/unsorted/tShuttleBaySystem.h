@@ -21,9 +21,13 @@ public:
     virtual void vfunction3();
     virtual void vfunction4();
     virtual void vfunction5();
-    virtual void vfunction6();
+    // HYPOTHESIS: slot 5 advances the entry by the elapsed time and returns a state;
+    // 0x0044f071 drops the entries that return 100.
+    virtual short vfunction6(float param_1);
     // HYPOTHESIS: slot 6 returns a flag; 0x0044efae skips the entries that set it.
     virtual bool vfunction7();
+    // HYPOTHESIS: slot 7 returns a kind, 1 to 4; 0x0044f071 maps it to a message.
+    virtual int vfunction8();
 };
 
 // HYPOTHESIS: the entries of the vector at +0x90; 0x0044ec9a fills field_4 up to field_0 and

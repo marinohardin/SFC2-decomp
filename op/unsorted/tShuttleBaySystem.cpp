@@ -3,6 +3,7 @@
 #include "unsorted/tShuttleBaySystem.h"
 #include "unsorted/tEntity.h"
 #include "unsorted/fn_004e2b02_ship_type.h"
+#include "unsorted/fn_0096d5d8_Object.h"
 
 // FUNCTION: STARFLEETOP 0x0044e554
 tValue<long>* tShuttleBaySystem::vfunction102()
@@ -430,4 +431,46 @@ float tShuttleBaySystem::vfunction76(float param_1, int param_2)
             sum += (*it)->vfunction2();
     }
     return param_1 - sum - field_c4 * g_007959c8;
+}
+
+// FUNCTION: STARFLEETOP 0x0044f071
+void tShuttleBaySystem::fn_0044f071(float param_1)
+{
+    std::list<tObject_0044e844_item*>::iterator it = field_4f0.begin();
+    while (it != field_4f0.end())
+    {
+        short state = (*it)->vfunction6(param_1);
+        int kind = (*it)->vfunction8();
+        if (state == 100)
+        {
+            delete *it;
+            it = field_4f0.erase(it);
+            if (vfunction35())
+            {
+                int message = -1;
+                switch (kind)
+                {
+                case 1:
+                    g_0084b47c->vfunction7(0x7e, -1);
+                    message = 3;
+                    break;
+                case 2:
+                    g_0084b47c->vfunction7(0x7e, -1);
+                    message = 4;
+                    break;
+                case 3:
+                    g_0084b47c->vfunction7(0x7e, -1);
+                    message = 2;
+                    break;
+                case 4:
+                    g_0084b47c->vfunction7(0x7e, -1);
+                    message = 5;
+                    break;
+                }
+                g_p0096d5d8->fn_00510a85(message);
+            }
+        }
+        else
+            ++it;
+    }
 }
