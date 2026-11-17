@@ -108,3 +108,17 @@ fn_006c1510_pool *fn_006c1510(unsigned long size, unsigned long count, unsigned 
 	pool->field_14 = malloc(size * count);
 	return pool;
 }
+
+// HYPOTHESIS: releases each element (0x006c15a0), then the data block and the header.
+void fn_006c15a0(fn_006c1510_pool *pool, int index);
+
+// FUNCTION: STARFLEETOP 0x006c1560
+void fn_006c1560(fn_006c1510_pool *pool)
+{
+	int i;
+
+	for (i = 0; i < (int)pool->field_00; i++)
+		fn_006c15a0(pool, i);
+	free(pool->field_14);
+	free(pool);
+}
