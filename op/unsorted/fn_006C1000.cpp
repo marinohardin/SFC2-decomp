@@ -558,3 +558,17 @@ void fn_006c1da0(char *buffer, int ok)
 		request->m44 = strdup(fn_006c1fd0(buffer, "errmsg"));
 	}
 }
+
+// HYPOTHESIS: finds the pending request whose key matches.
+// FUNCTION: STARFLEETOP 0x006c1e40
+fn_006c1ae0_Request *fn_006c1e40(char *key)
+{
+	fn_006c1ae0_Entry *entry;
+
+	for (entry = (fn_006c1ae0_Entry *)g_00c7cdec; entry != 0; entry = entry->m04)
+	{
+		if (strcmp(key, entry->m00->m04) == 0)
+			return entry->m00;
+	}
+	return 0;
+}

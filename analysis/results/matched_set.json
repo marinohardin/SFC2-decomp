@@ -16840,6 +16840,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x006c1e40": {
+   "name": "FUN_006c1e40",
+   "symbol": "?fn_006c1e40@@YAPAUfn_006c1ae0_Request@@PAD@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",
    "symbol": "?mGetVersionNumber@tSFCStream@@QAEHXZ",
