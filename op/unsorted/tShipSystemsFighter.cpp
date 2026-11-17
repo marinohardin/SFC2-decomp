@@ -44,7 +44,7 @@ public:
     virtual tMinMaxFloat* vfunction27();
     virtual tMinMaxFloat* vfunction28();
     virtual tMinMaxFloat* vfunction29();
-    virtual void vfunction30();
+    virtual tMinMaxFloat* vfunction30();
     virtual void vfunction31();
     virtual void vfunction32();
     virtual void vfunction33();
@@ -331,4 +331,11 @@ tMinMaxFloat* tShipSystemsFighter::vfunction28()
 tMinMaxFloat* tShipSystemsFighter::vfunction29()
 {
     return &m778;
+}
+
+// HYPOTHESIS: the return type; the original returns the address of m79c.
+// FUNCTION: STARFLEETOP 0x004443c5
+tMinMaxFloat* tShipSystemsFighter::vfunction30()
+{
+    return &m79c;
 }
