@@ -1095,3 +1095,13 @@ void fn_004d88e9(const char *param_1)
         fclose(file);
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d8916
+void fn_004d8916(int param_1, int param_2, float param_3, int param_4, int param_5)
+{
+    FILE *file = fopen("WeaponDamage.txt", g_0083bc38);
+    if (file != NULL) {
+        fprintf(file, "%s fired from # %d at # %d at %f ticks away and did %d points of damage \n", param_5, param_1, param_2, (double)param_3, param_4);
+        fclose(file);
+    }
+}
