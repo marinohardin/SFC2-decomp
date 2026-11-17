@@ -20,6 +20,7 @@ inline tOptex::tGuard::~tGuard()
 struct fn_005f74a6_entry
 {
 	fn_005f74a6_entry( const fn_005f74a6_entry& other );
+	fn_005f74a6_entry( const std::string& value, int a, int b );
 
 	std::string field_00;
 	int field_10;
@@ -225,4 +226,11 @@ bool fn_005f745f_object::FUN_005f771b()
 	bool empty = field_3c == 0;
 	field_40.Leave();
 	return empty;
+}
+
+// HYPOTHESIS: builds an entry from a string and the two values at +0x10 and +0x14.
+// FUNCTION: STARFLEETOP 0x005f773e
+fn_005f74a6_entry::fn_005f74a6_entry( const std::string& value, int a, int b )
+	: field_00( value ), field_10( a ), field_14( b )
+{
 }
