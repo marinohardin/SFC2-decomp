@@ -215,6 +215,7 @@ public:
 	// 0x0055f269 and 0x005e8f21 read from each; the map's values are assigned by tHexPoint's
 	// operator= (0x005b69b0).
 	std::map< std::pair< int, int >, tHexPoint > FUN_0042ac56();
+	int FUN_0042ada1();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -580,4 +581,12 @@ std::map< std::pair< int, int >, tHexPoint > fn_0042a480_object::FUN_0042ac56()
 		result[std::pair< int, int >( (*it).fn_0055f269(), (*it).fn_005e8f21() )] = *it;
 
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0042ada1
+int fn_0042a480_object::FUN_0042ada1()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_58;
 }
