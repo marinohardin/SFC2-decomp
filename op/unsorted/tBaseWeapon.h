@@ -22,7 +22,7 @@ struct fn_004e1e99_arg
 struct fn_004d7099_type
 {
     char data[4];
-    void fn_004d7099(float param_1);
+    int fn_004d7099(float param_1);
 };
 
 // HYPOTHESIS: tBaseWeapon's constructor (0x004d70eb) takes the first constructor argument.
@@ -168,7 +168,7 @@ public:
     // (offset 0x214), a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
     // tPhaserBank overrides at 0x004e25c0.
     virtual void vfunction112(float param_1);
-    virtual void vfunction113();
+    virtual float vfunction113(float param_1, int param_2, int param_3);
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
     virtual void vfunction115();
     virtual void vfunction116();
