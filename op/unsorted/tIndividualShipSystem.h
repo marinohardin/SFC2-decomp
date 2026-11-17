@@ -276,7 +276,7 @@ public:
     // (tShieldGroup slot 88 passes each shield at most its current level).
     virtual void vfunction48(int param_1);
     virtual void vfunction49(int value); // slot 48
-    virtual void vfunction50();
+    virtual void vfunction50(int param_1);
     virtual void vfunction51();
     // vftable slot 51; tIndividualShipSystem's own body is at 0x0043d66b.
     virtual void vfunction52();

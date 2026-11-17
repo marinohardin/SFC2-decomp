@@ -53,6 +53,7 @@ public:
     virtual void vfunction39(float param_1);
     virtual void vfunction48(int param_1);
     virtual void vfunction49(int param_1);
+    virtual void vfunction50(int param_1);
     virtual float vfunction70();
     // HYPOTHESIS: overrides slot 72.
 
@@ -1461,4 +1462,10 @@ void tSensorGroupSystem::vfunction48(int param_1)
 void tSensorGroupSystem::vfunction49(int param_1)
 {
     tIndividualShipSystem::vfunction49(param_1);
+}
+
+// FUNCTION: STARFLEETOP 0x0043f60c
+void tSensorGroupSystem::vfunction50(int param_1)
+{
+    tIndividualShipSystem::vfunction50(param_1);
 }
