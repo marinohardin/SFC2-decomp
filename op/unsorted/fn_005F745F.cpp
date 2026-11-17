@@ -170,6 +170,8 @@ public:
 	fn_005f7a4b_value& FUN_005f7a4b();
 	void FUN_005f7aeb();
 	void FUN_005f7dea( unsigned int count ); // HYPOTHESIS: grows the block map
+	// HYPOTHESIS: reports a length error (the analysis names it for length_error)
+	void FUN_005f7fd4();
 
 	byte field_00[0x04];
 	fn_005f7a4b_value** field_04; // HYPOTHESIS: the map of blocks
@@ -605,4 +607,55 @@ fn_0055fe12_value& fn_005f7db6_iterator::FUN_005f7db6()
 		block -= fOwner->field_08;
 	}
 	return fOwner->field_04[block][index];
+}
+
+// MATCH-ONLY: the library's uninitialized copy and fill, which the original inlined.
+inline fn_005f7a4b_value** fn_005f7dea_copy( fn_005f7a4b_value** first, fn_005f7a4b_value** last, fn_005f7a4b_value** dest )
+{
+	for ( ; first != last; ++dest, ++first ) {
+		*dest = *first;
+	}
+	return dest;
+}
+
+// MATCH-ONLY: as fn_005f7dea_copy.
+inline void fn_005f7dea_fill( fn_005f7a4b_value** dest, unsigned int n, fn_005f7a4b_value* value )
+{
+	for ( ; 0 < n; --n, ++dest ) {
+		*dest = value;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7dea
+void fn_005f7a6a_object::FUN_005f7dea( unsigned int count )
+{
+	if ( 0xfffff - field_08 < count ) {
+		FUN_005f7fd4();
+	}
+	unsigned int inc = field_08 / 2;
+	if ( inc < 8 ) {
+		inc = 8;
+	}
+	if ( count < inc && field_08 <= 0xfffff - inc ) {
+		count = inc;
+	}
+	unsigned int boff = field_0c / 1024;
+	int bytes = ( field_08 + count ) * sizeof( fn_005f7a4b_value* );
+	if ( bytes < 0 ) {
+		bytes = 0;
+	}
+	fn_005f7a4b_value** newmap = (fn_005f7a4b_value**) operator new( bytes );
+	fn_005f7a4b_value** p = fn_005f7dea_copy( field_04 + boff, field_04 + field_08, newmap + boff );
+	if ( boff <= count ) {
+		p = fn_005f7dea_copy( field_04, field_04 + boff, p );
+		fn_005f7dea_fill( p, count - boff, 0 );
+		fn_005f7dea_fill( newmap, boff, 0 );
+	} else {
+		fn_005f7dea_copy( field_04, field_04 + count, p );
+		p = fn_005f7dea_copy( field_04 + count, field_04 + boff, newmap );
+		fn_005f7dea_fill( p, count, 0 );
+	}
+	operator delete( field_04 );
+	field_04 = newmap;
+	field_08 += count;
 }
