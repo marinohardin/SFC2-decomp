@@ -130,6 +130,8 @@ public:
     virtual float vfunction70();
     // HYPOTHESIS: probably a virtual slot; its vtable index is not established.
     void fn_004d82cd(float *param_1);
+    // HYPOTHESIS: member of tBaseWeapon by neighbourhood; it uses no member.
+    void fn_004d82e3(float *param_1);
     virtual void vfunction71();
     virtual void vfunction72();
     virtual void vfunction73();

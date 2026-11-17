@@ -795,3 +795,10 @@ void tBaseWeapon::fn_004d82cd(float *param_1)
     if (*param_1 > field_38)
         *param_1 = field_38;
 }
+
+// FUNCTION: STARFLEETOP 0x004d82e3
+void tBaseWeapon::fn_004d82e3(float *param_1)
+{
+    if (*param_1 < 0.0f)
+        *param_1 = 0.0f;
+}
