@@ -4,6 +4,9 @@
 #include "unsorted/tApplication.h"
 
 #include <string>
+#include <stdio.h>
+#include "unsorted/tGLDC.h"
+#include "unsorted/tObject_0040ce21.h"
 
 // HYPOTHESIS: names; the count of states made so far and the head of the list of all states.
 int g_0090db20;
@@ -668,6 +671,23 @@ extern unsigned int g_0090dba0;
 // HYPOTHESIS: the key string at 0x008458f4 (its text is not recovered; it is shared with other uses).
 extern char g_sz008458f4[];
 void fn_0046aa9a(int param_1);
+extern float g_007962f8;
+extern int g_0090bf08;
+extern unsigned int g_0079ec40;
+extern unsigned int g_0079ec44;
+// HYPOTHESIS: the object returned by fn_0046a755 carries a float at +0x38 (frames per second).
+class fn_0046aa9a_stats
+{
+public:
+	char m_pad[0x38];
+	float field_38;
+};
+// HYPOTHESIS: the host window object the overlay measures text with.
+class fn_0046aa9a_host
+{
+public:
+	int fn_0040163a(int param_1, char *param_2, int param_3, int param_4);
+};
 
 // FUNCTION: STARFLEETOP 0x0046a4bd
 void fn_0046a4bd(int param_1)
@@ -1256,4 +1276,24 @@ void fn_0046aa58()
 char fn_0046aa94()
 {
 	return g_0090db9c;
+}
+
+// FUNCTION: STARFLEETOP 0x0046aa9a
+void fn_0046aa9a(int param_1)
+{
+	tGLDC dc;
+	unsigned int saved;
+	char text[80];
+	dc.vfunction2((int *)param_1);
+	static tObject_0040ce21 report("Show me your frames.");
+	fn_0046aa9a_stats *stats = (fn_0046aa9a_stats *)fn_0046a755();
+	float rate = stats->field_38;
+	rate *= g_007962f8;
+	int fps = (int)rate;
+	sprintf(text, "FPS: %3d.%d[%d]", fps / 10, fps % 10, g_0090bf08);
+	dc.vfunction9(&saved, &g_0079ec40);
+	dc.vfunction10(&saved, &g_0079ec44);
+	dc.vfunction13(1);
+	dc.vfunction16(2);
+	dc.vfunction22(((fn_0046aa9a_host *)param_1)->fn_0040163a(30, text, -1, 1) - 30);
 }
