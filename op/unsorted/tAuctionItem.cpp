@@ -20,13 +20,13 @@ public:
 	// stores no vtable; an implicit destructor builds byte for byte, but the harness cannot claim
 	// a function with no source line, so this declared one (which stores the vtable) stands in.
 	virtual ~tAuctionItem();
-
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
 
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
+	virtual const char* SQLFieldNames() const;
 
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
@@ -120,4 +120,13 @@ void tAuctionItem::SQLFillUpdateStream( std::stringstream* SQL, bool lastOne )
 const char* tAuctionItem::SQLTableName() const
 {
 	return "BidItem";
+}
+
+// HYPOTHESIS: slot 9 of the table is SQLFieldNames, the virtual that follows SQLTableName in
+// tDatabaseObject (as in tMetaMapDesc). The text (at 0x0085c284) is read from the exe.
+// FUNCTION: STARFLEETOP 0x00545227
+const char* tAuctionItem::SQLFieldNames() const
+{
+	return " ( ID, Locked, LockID, BiddingHasBegun, ItemName, ItemID, ItemInfo, AuctionValue, "
+		"AuctionRate, TurnOpened, TurnToClose, CurrentBid, BidOwnerID, TurnBidMade, BidMaximum ) ";
 }
