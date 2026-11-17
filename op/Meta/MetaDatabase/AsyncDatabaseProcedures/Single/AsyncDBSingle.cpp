@@ -17,11 +17,11 @@ class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify; tSettings* fn_
 class tTurn { public:	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
 	char fPad00[0x48];
 	long fField48;
-}; class tCampaignInfo { public:
+}; class tCampaignInfo : public nDatabase::tDatabaseObject { public:	// HYPOTHESIS: a database object: 0x0056e124 builds an update from it and streams it from +8.
 	tCampaignInfo();
 	~tCampaignInfo();
 	tCampaignInfo& operator=( const tCampaignInfo& other );
-	char fPad00[0xb8];
+	char fPad48[0xb8 - 0x48];
 	long fFieldB8;
 	char fPadBC[0x108 - 0xbc];
 	tCurrentTime fField108;
@@ -710,4 +710,37 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction44( tShip ship )
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDatabaseObjectUpdate update )
 {
 	fDatabase->UpdateObject( update );
+}
+
+#include "Common/SmartPtr.h"
+
+// HYPOTHESIS: fn_005d3679 (which reads the text "*~Server~*") returns, held by a smart pointer,
+// the reference-counted object the switch sends to; its tRefCount sits at +0xc, after what is
+// taken to be a tStreamable. fn_005d27f1 returns the object fn_005d3679 is called on. Their
+// classes and names are not known.
+class tObject_005d3679 : public nDataStore::tStreamable, public tRefCount
+{
+};
+class tObject_005d27f1
+{
+public:
+	tSmartPtr<tObject_005d3679> fn_005d3679();
+};
+tObject_005d27f1* fn_005d27f1();
+// HYPOTHESIS: fn_00713b20 returns the switch (its assertion reads fSwitch); fn_00714020 streams
+// an object to the destination. nSwitch::tSwitch is not declared elsewhere yet.
+namespace nSwitch { class tSwitch
+{
+public:
+	static tSwitch* fn_00713b20();
+	void fn_00714020( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
+}; };
+
+// HYPOTHESIS: writes the campaign record back and sends it on to the server.
+// FUNCTION: STARFLEETOP 0x0056e124
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction48( tCampaignInfo* campaignInfo )
+{
+	nDatabase::tDatabaseObjectUpdate update( *campaignInfo );
+	fDatabase->UpdateObject( update );
+	nSwitch::tSwitch::fn_00713b20()->fn_00714020( fn_005d27f1()->fn_005d3679().Get(), 0, campaignInfo );
 }
