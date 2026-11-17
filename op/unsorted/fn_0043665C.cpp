@@ -42,3 +42,11 @@ long tDynamicMemoryFreeList::vfunction17()
 {
     return field_0xc;
 }
+
+// FUNCTION: STARFLEETOP 0x00436671
+bool tIndividualShipSystem::vfunction14()
+{
+    if (field_0c < 0 || field_0c > 0x35)
+        return false;
+    return true;
+}
