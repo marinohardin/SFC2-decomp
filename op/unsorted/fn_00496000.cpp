@@ -215,3 +215,9 @@ void fn_00496586()
 void fn_00496597()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x004965a4
+// HYPOTHESIS: 0x004965a4 is the tail (stores of [ebp-4], st0, [ebp-8] to the global vector at 0x00917240; leave; ret) of the function at 0x00496572 (analysis boundary); body is a placeholder.
+void fn_004965a4()
+{
+}
