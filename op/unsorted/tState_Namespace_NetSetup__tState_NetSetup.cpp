@@ -30,6 +30,11 @@ extern int g_008493d4;
 // HYPOTHESIS: pointers to the names "IPSetup" and "ipEntryField".
 extern const char *g_008493b0;
 extern const char *g_008493b4;
+// HYPOTHESIS: pointers to the names "ModemSetup", "modemEntry" and "cCancelGame".
+extern const char *g_008493b8;
+extern const char *g_008493bc;
+extern const char *g_008493cc;
+void fn_004d346f(const char *name, const char *group);
 void fn_004d3331(const char *name);
 void fn_004d3340(const char *name);
 // HYPOTHESIS: returns the control with the given id.
@@ -65,11 +70,14 @@ public:
 	void fn_004764ed();
 	bool fn_00476678();
 	bool fn_004766f1();
+	bool fn_00476754();
 	// HYPOTHESIS: puts the value into the control under the given key, as
 	// tState_GameConnections::fn_004688ee does.
 	void fn_00476997(int control, const char *name, const char *value);
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
 	void fn_00476aee(int value, const char *key);
+	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
+	void fn_00476d52(int *control, void *source, int id);
 	void fn_00477440();
 	void fn_00477689();
 
@@ -267,6 +275,23 @@ bool tState_NetSetup::fn_004766f1()
 		m1dc = (int)fn_004d3446(0x10012);
 	fn_00476997(m1dc, "IPAddress", m208.mCharStr());
 	return gNetControl.fn_004325a9(2);
+}
+
+// FUNCTION: STARFLEETOP 0x00476754
+bool tState_NetSetup::fn_00476754()
+{
+	fn_004d3331(g_008493b8);
+	fn_004d3340(g_008493bc);
+	fn_004d346f(g_008493cc, g_008493b8);
+	fn_004d34c5(0x10018, 0);
+	bool result = gNetControl.fn_004325a9(3);
+	fn_00476d52(&m1e0, &m9c[0x80], 0x10016);
+	if (m1e4 == 0)
+		m1e4 = (int)fn_004d3446(0x10017);
+	fn_00476997(m1e4, "ModemAddress", 0);
+	m19[0] = 0;
+	m12[0] = 1;
+	return result;
 }
 
 }	// namespace tState_Namespace_NetSetup
