@@ -126,3 +126,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x004cf9cb	tSFCPlayer::~tSFCPlayer	99.91	2	opus	2026-11-17T04:13:50Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.91%
 0x004d0a97	tSFCPlayer::vfunction37	6.67	2	opus	2026-11-17T06:51:45Z	attempt 2 (opus) did not raise the best; best 6.67%
 0x004d0ab3	FUN_004d0ab3	22.81	2	opus	2026-11-17T07:01:20Z	attempt 2 (opus) did not raise the best; best 22.81%
+0x004d0eb6	tSFCPlayer::vfunction70	23.79	2	opus	2026-11-17T08:13:39Z	attempt 2 (opus) did not raise the best; best 23.79%
