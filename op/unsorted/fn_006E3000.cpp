@@ -170,6 +170,7 @@ public:
 	void FUN_006e33f0(unsigned char param_1);
 	void FUN_006e3400(bool param_1);
 	void FUN_006e3420(unsigned short param_1);
+	void FUN_006e3430(unsigned long param_1);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -262,4 +263,10 @@ void tObject_006e3240::FUN_006e3400(bool param_1)
 void tObject_006e3240::FUN_006e3420(unsigned short param_1)
 {
 	FUN_006e33b0(&param_1, 2);
+}
+
+// FUNCTION: STARFLEETOP 0x006e3430
+void tObject_006e3240::FUN_006e3430(unsigned long param_1)
+{
+	FUN_006e33b0(&param_1, 4);
 }
