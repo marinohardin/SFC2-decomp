@@ -876,3 +876,14 @@ std::vector<fn_005e36cd_entry>::~vector()
 	allocator.deallocate( _First, _End - _First );
 	_First = 0, _Last = 0, _End = 0;
 }
+
+// MATCH-ONLY: the library's vector destructor for the records 0x005e6aeb fills, written out
+// like the one above.
+// FUNCTION: STARFLEETOP 0x005e45d3
+template<>
+std::vector<fn_005e381f_entry>::~vector()
+{
+	_Destroy( _First, _Last );
+	allocator.deallocate( _First, _End - _First );
+	_First = 0, _Last = 0, _End = 0;
+}

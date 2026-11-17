@@ -42,6 +42,8 @@ struct fn_005e36cd_entry
 // above; so the same layout is assumed. 0x005e381f calls 0x005e488e on one for a point.
 struct fn_005e381f_entry : public fn_005e36cd_entry
 {
+	// HYPOTHESIS: 0x005e45d3, the vector's destructor, calls 0x005e0d50 on each record.
+	~fn_005e381f_entry();
 	const tPoint &fn_005e488e();
 };
 
