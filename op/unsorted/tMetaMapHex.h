@@ -197,6 +197,8 @@ public:
 	// HYPOTHESIS: sets the hex point without taking the lock; the callee 0x005b69b0 is taken to
 	// be tHexPoint's assignment.
 	void fn_0053a49c( const tHexPoint& point );
+	// HYPOTHESIS: stores a value under a key in m_48, under the lock.
+	void fn_0053a4ae( int param_1, int param_2 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

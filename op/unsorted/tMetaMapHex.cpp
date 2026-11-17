@@ -549,3 +549,11 @@ void tMetaMapHex::fn_0053a49c( const tHexPoint& point )
 {
 	m_a8 = point;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a4ae
+void tMetaMapHex::fn_0053a4ae( int param_1, int param_2 )
+{
+	tOptex::tGuard guard( &m_bc );
+	m_48[param_1] = param_2;
+	guard.Leave();
+}
