@@ -45,6 +45,8 @@ public:
     void fn_0043ec81();
     int fn_0043eca6(int param_1);
     void fn_0043eee8();
+    // HYPOTHESIS: the result is an integer 0x0043eee8 converts to float.
+    int fn_0043f023(struct vfunction33_result* owner, tObject_0042496f* target);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -76,7 +78,10 @@ public:
     char field_18c;
     char pad18d[0x190 - 0x18d];
     float field_190;
-    char pad194[0x1d9 - 0x194];
+    char pad194[0x1a0 - 0x194];
+    // HYPOTHESIS: the entity the owner's slot 11 names, as 0x0043eee8 last found it.
+    tPhysicalEntity* field_1a0;
+    char pad1a4[0x1d9 - 0x1a4];
     // HYPOTHESIS: the number of entries of field_1e0 in use (read with movsx).
     char field_1d9;
     char pad1da[0x1dc - 0x1da];
@@ -1069,6 +1074,136 @@ void tSensorGroupSystem::fn_0043ee5a()
             ((fn_0043ee5a_value*)&field_b0)->vfunction3(field_16c);
             field_184 = field_164;
             ((fn_0043ee5a_value*)&field_8c)->vfunction3(field_168);
+        }
+    }
+}
+
+// HYPOTHESIS: the object at 0xad4 of a ship, seen from 0x0043eee8: slot 84 (offset 0x150)
+// returns the ship's sensor system, on which it calls this class's readers.
+class fn_0043eee8_member
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual void vfunction10();
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55();
+    virtual void vfunction56();
+    virtual void vfunction57();
+    virtual void vfunction58();
+    virtual void vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    virtual void vfunction69();
+    virtual void vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual void vfunction74();
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual void vfunction79();
+    virtual void vfunction80(); // slot 79
+    virtual void vfunction81();
+    virtual void vfunction82();
+    virtual void vfunction83();
+    virtual void vfunction84();
+    virtual tSensorGroupSystem* vfunction85(); // slot 84
+};
+
+// FUNCTION: STARFLEETOP 0x0043eee8
+void tSensorGroupSystem::fn_0043eee8()
+{
+    vfunction33_result* owner = field_2c->vfunction108();
+    tPhysicalEntity* found = gObject_008e1060.fn_004249c0((tPhysicalEntity*)gObject_008e1060.fn_lookup(((tEntity*)owner)->vfunction12()));
+    if (field_1a0 != found)
+        fn_0043ec81();
+    field_1a0 = found;
+    if (found != 0)
+    {
+        tObject_0042496f* target = (tObject_0042496f*)found;
+        tSensorGroupSystem* sensors = ((fn_0043eee8_member*)target->field_0xad4)->vfunction85();
+        ((fn_0043eee8_member*)target->field_0xad4)->vfunction80();
+        if (!target->fn_00419c87() && sensors != 0)
+        {
+            field_170 = sensors->fn_0043e76f() + sensors->fn_0043e75a();
+            if (((fn_0043edd8_owner*)target)->vfunction59() != -1)
+                field_170 += 6.0f;
+            field_174 = sensors->fn_0043e776() + sensors->fn_0043e761();
+            field_178 = (float)fn_0043f023(owner, target);
+        }
+        else
+        {
+            if (target->field_0x870 == 0x16)
+            {
+                field_170 = 2.0f;
+                field_174 = 2.0f;
+            }
+            else
+            {
+                field_170 = 0.0f;
+                field_174 = 0.0f;
+            }
+            field_178 = (float)fn_0043f023(owner, target);
         }
     }
 }
