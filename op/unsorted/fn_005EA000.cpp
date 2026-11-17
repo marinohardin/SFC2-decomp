@@ -461,3 +461,19 @@ tTree_005ea63f::iterator tTree_005ea63f::fn_005ea63f(tNode *x, tNode *y, const t
 	m_head->m_parent->m_color = 1;
 	return iterator(z);
 }
+
+// FUNCTION: STARFLEETOP 0x005ea78b
+void tTree_005ea14b::iterator::fn_005ea78b()
+{
+	if (m_node->m_color == 0 && m_node->m_parent->m_parent == m_node)
+		m_node = m_node->m_right;
+	else if (!m_node->m_left->m_isnil)
+		m_node = Max(m_node->m_left);
+	else
+	{
+		tNode *p;
+		while (m_node == (p = m_node->m_parent)->m_left)
+			m_node = p;
+		m_node = p;
+	}
+}
