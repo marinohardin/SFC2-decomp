@@ -185,3 +185,10 @@ void fn_006c16e0(fn_006c1510_pool *pool, int index)
 		memmove(fn_006c15c0(pool, index), fn_006c15c0(pool, index + 1), (pool->field_00 - index - 1) * pool->field_08);
 	pool->field_00--;
 }
+
+// FUNCTION: STARFLEETOP 0x006c1730
+void fn_006c1730(fn_006c1510_pool *pool, int index)
+{
+	fn_006c15a0(pool, index);
+	fn_006c16e0(pool, index);
+}
