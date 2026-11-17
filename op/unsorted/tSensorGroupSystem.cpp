@@ -34,6 +34,7 @@ public:
     float fn_0043e76f();
     float fn_0043e776();
     float fn_0043e77d();
+    float fn_0043e78a(int param_1);
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -436,4 +437,147 @@ float tSensorGroupSystem::fn_0043e776()
 float tSensorGroupSystem::fn_0043e77d()
 {
     return field_168 - field_174;
+}
+
+// HYPOTHESIS: the object the owner's slot 78 returns; slot 100 returns a level from 1 to 5.
+class fn_owner_slot78_result
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual void vfunction10();
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55();
+    virtual void vfunction56();
+    virtual void vfunction57();
+    virtual void vfunction58();
+    virtual void vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    virtual void vfunction69();
+    virtual void vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual void vfunction74();
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual void vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    virtual void vfunction83();
+    virtual void vfunction84();
+    virtual void vfunction85();
+    virtual void vfunction86();
+    virtual void vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    virtual void vfunction90();
+    virtual void vfunction91();
+    virtual void vfunction92();
+    virtual void vfunction93();
+    virtual void vfunction94();
+    virtual void vfunction95();
+    virtual void vfunction96();
+    virtual void vfunction97();
+    virtual void vfunction98();
+    virtual void vfunction99();
+    virtual void vfunction100();
+    virtual int vfunction101(); // slot 100
+};
+
+// HYPOTHESIS: the object the owner's slot 79 returns; only its method at 0x0043c019 is known.
+class fn_owner_slot79_result
+{
+public:
+    char fn_0043c019();
+};
+
+// FUNCTION: STARFLEETOP 0x0043e78a
+float tSensorGroupSystem::fn_0043e78a(int param_1)
+{
+    float value;
+    if (param_1 == 0)
+        value = field_16c - field_170 + field_178;
+    else
+        value = field_16c - field_178;
+    fn_owner_slot78_result* object = field_2c->vfunction79();
+    fn_owner_slot79_result* other = field_2c->vfunction80();
+    if (object != 0 && other != 0 && other->fn_0043c019())
+    {
+        switch (object->vfunction101())
+        {
+        case 1:
+            return value - 6.0f;
+        case 2:
+            return value - 5.0f;
+        case 3:
+            return value - 4.0f;
+        case 4:
+            return value - 3.0f;
+        case 5:
+            return value - 1.0f;
+        }
+    }
+    return value;
 }

@@ -38,7 +38,7 @@ public:
     virtual bool vfunction4(); // slot 3
 };
 extern fn_00967af4_type* g_00967af4;
-
+class fn_owner_slot78_result; class fn_owner_slot79_result;
 // HYPOTHESIS: the owning ship; vftable slot 43 answers a yes/no question and slot 107 returns
 // an object with an id at +0x1c.
 class fn_owner_type
@@ -122,8 +122,8 @@ public:
     virtual void vfunction76();
     virtual void vfunction77();
     virtual void vfunction78();
-    virtual void vfunction79();
-    virtual void vfunction80();
+    virtual fn_owner_slot78_result* vfunction79(); // slot 78, may be null
+    virtual fn_owner_slot79_result* vfunction80(); // slot 79, may be null
     virtual void vfunction81();
     virtual void vfunction82();
     virtual void vfunction83();
