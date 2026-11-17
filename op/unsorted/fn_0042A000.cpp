@@ -260,6 +260,7 @@ public:
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr FUN_0042aaeb();
 	tSingleAccessWrapper< fn_005395b2_object >::iPtr FUN_0042ab08();
 	void FUN_0042ab25( std::vector< db::tID >& ids );
+	tHexPoint FUN_0042abe4();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -548,4 +549,14 @@ void fn_0042a480_object::FUN_0042ab25( std::vector< db::tID >& ids )
 	// The original sets no unwind state after the access pointer's destructor (as in 0x0042a7bf);
 	// its cause is not recovered.
 	caches.Done();
+}
+
+// FUNCTION: STARFLEETOP 0x0042abe4
+tHexPoint fn_0042a480_object::FUN_0042abe4()
+{
+	// As in 0x0042a92f, the original keeps no unwind state for the returned copy (its flag slot is
+	// reused for the guard); this form tracks it, which is the remaining difference.
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_5c;
 }
