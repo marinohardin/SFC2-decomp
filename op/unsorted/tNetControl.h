@@ -73,6 +73,8 @@ public:
 	void fn_0043290e( const tString &s );	// HYPOTHESIS: the string is passed by reference
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""
+	int fn_00431c7f();	// HYPOTHESIS: 0x0047685b tests the result against zero
+	int fn_00431c79();	// HYPOTHESIS: 0x0047685b passes the result as the player number
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
 	void mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, double aTime);
 	// HYPOTHESIS: (message, command, player, destination, time); sends to one player's entry

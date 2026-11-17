@@ -12,6 +12,7 @@
 #include "unsorted/tApplication.h"
 #include <string.h>
 #include "unsorted/tObject_0092deb4.h"
+#include "unsorted/tEntity.h"
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
@@ -319,3 +320,16 @@ void tState_NetSetup::fn_004767f1()
 }
 
 }	// namespace tState_Namespace_NetSetup
+
+// HYPOTHESIS: a free function; it does not use this. tState_GameConnections calls it.
+// The byte at +0x14 of the entity table is cleared; its member is not declared yet.
+// FUNCTION: STARFLEETOP 0x0047685b
+bool fn_0047685b()
+{
+	int result = gNetControl.fn_00431c7f();
+	gObject_008e1060.mSetPlayerNumber(gNetControl.fn_00431c79());
+	gObject_008e1060.fField00[0x14] = 0;
+	int id = gObject_008e1060.mGetNextPlayerID();
+	gObject_0092deb4->vfunction10(id, 0, 0);
+	return result == 0 ? true : false;
+}
