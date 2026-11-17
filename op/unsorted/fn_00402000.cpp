@@ -122,3 +122,8 @@ void fn_004021d1_Holder::fn_004021d1(const fn_004021d1_Record* rec)
     }
     m08 = ~m0c->m04;
 }
+
+// FUNCTION: STARFLEETOP 0x0040233b
+void fn_0040233b()
+{
+}

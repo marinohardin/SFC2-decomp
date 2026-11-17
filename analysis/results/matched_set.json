@@ -109,6 +109,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0040233b": {
+   "name": "FUN_0040233b",
+   "symbol": "?fn_0040233b@@YAXXZ",
+   "unit": "unsorted/fn_00402000.cpp",
+   "size": 128,
+   "score": 0.952,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
