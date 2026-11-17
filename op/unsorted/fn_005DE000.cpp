@@ -249,3 +249,11 @@ tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > 
 template<>
 inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType >::~tMemberCallback()
 {}
+
+// HYPOTHESIS: applies a member callback to each menu item type of a [first, last) pair of
+// pointers.
+// FUNCTION: STARFLEETOP 0x005de6cc
+void fn_005de6cc( tMetaClientNewsCtlrC::tMenuItem::eType* range[2], const tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType >& callback )
+{
+	std::for_each( range[0], range[1], callback );
+}
