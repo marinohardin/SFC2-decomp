@@ -167,3 +167,9 @@ void fn_00496330_object::fn_0049647e()
 void fn_004964f9()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0049650d
+// HYPOTHESIS: 0x0049650d is the tail (fstp [0x009172a4]; pop ecx; ret) of the same initializer as 0x004964f9 (analysis boundary); body is a placeholder.
+void fn_0049650d()
+{
+}
