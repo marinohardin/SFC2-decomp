@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      dmp3d/glFont/tGLFont.cpp
-// Functions: 0x006b32c0 to 0x006b32c0, 1 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// HYPOTHESIS: layout from the one member read here; the class has a vtable at +0 and the
+// reference count at +4. The member name is ours.
+class tGLFontEx
+{
+public:
+    virtual long mAddRef();
+
+    long mRefCount;
+};
+
+// FUNCTION: STARFLEETOP 0x006b32c0
+long tGLFontEx::mAddRef()
+{
+    return ++mRefCount;
+}

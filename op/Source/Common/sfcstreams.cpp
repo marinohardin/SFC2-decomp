@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Source/Common/sfcstreams.cpp
-// Functions: 0x006729e0 to 0x006729e0, 1 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+//	sfcstreams.cpp
+//
+//	The byte stream the game archives and sends its data through.
+//
+
+#include "unsorted/sfcstreams.h"
+
+// FUNCTION: STARFLEETOP 0x006729e0
+void TextStreamCompress(char *text, tSFCStream &s)
+{
+	s.mWriteStringToStream(text);
+}
