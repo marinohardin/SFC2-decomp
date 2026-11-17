@@ -571,6 +571,19 @@ void fn_004d3652( long arg1, long arg2, long arg3, long arg4 )
 class tVarButtonGroup
 {
 public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
 	void fn_004b54ba();
 	void vfunction42_for_tVisGroup();
 };
@@ -589,4 +602,14 @@ void fn_004d375b( tVarButtonGroup* arg1 )
 void fn_004d3774( long arg1 )
 {
 	fn_004d375b( (tVarButtonGroup*) fn_004d3446( arg1 ) );
+}
+
+// FUNCTION: STARFLEETOP 0x004d3786
+void fn_004d3786( tVarButtonGroup* arg1 )
+{
+	if ( arg1 != 0 )
+	{
+		arg1->vfunction12();
+		arg1->vfunction42_for_tVisGroup();
+	}
 }
