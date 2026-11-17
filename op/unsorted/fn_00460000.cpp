@@ -212,3 +212,13 @@ double fn_004602b2_class::fn_0046034f()
     }
     return remaining;
 }
+
+// HYPOTHESIS: closes the panel whose name 0x0084411c points to (the same call is made from
+// tPanelMgr.cpp).
+void fn_004d32c4(void *arg);
+
+// FUNCTION: STARFLEETOP 0x0046052c
+void fn_004602b2_class::fn_0046052c()
+{
+    fn_004d32c4(g_0084411c);
+}
