@@ -126,7 +126,7 @@ public:
 	virtual void vfunction52( tShip* ship );
 	virtual void vfunction53( long value, long offset, std::vector<nDatabase::tID>* ids );
 	virtual void vfunction54( tMetaMapHex* hex );
-	virtual void vfunction55();
+	virtual void vfunction55( tNewsStory* newsStory );
 	virtual void vfunction56();
 	virtual void vfunction57( tAuctionItem* item );
 	virtual void vfunction58( tServCharacter* character );
@@ -844,4 +844,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction54( tMetaMapHex* he
 #line 1090
 	validate( hex );
 	fDatabase->RemoveObjectFromDB( hex );
+}
+#line 849
+// FUNCTION: STARFLEETOP 0x0056e5aa
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction55( tNewsStory* newsStory )
+{
+#line 1100
+	validate( newsStory );
+	fDatabase->RemoveObjectFromDB( newsStory );
 }
