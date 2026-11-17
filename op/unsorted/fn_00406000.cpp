@@ -371,3 +371,15 @@ void fn_0040696e()
     delete p;
     g_00893190 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x004069bb
+char* fn_004069bb(const char* s)
+{
+    unsigned int n = strlen(s) + 1;
+    char* p = new char[n];
+    char* d = p;
+    for (; n > 0; n--) {
+        *d++ = *s++;
+    }
+    return p;
+}
