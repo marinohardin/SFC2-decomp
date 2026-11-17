@@ -112,6 +112,7 @@ class fn_00496330_object
 public:
 	fn_00496330_object();
 	~fn_00496330_object();
+	void fn_00496462( fn_00496253_record *record );
 
 	fn_00496253_object *m00;
 	// constructed by 0x0047f864 (tReconnector::tReconnector)
@@ -145,4 +146,11 @@ fn_00496330_object::~fn_00496330_object()
 		delete m00;
 		m00 = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00496462
+void fn_00496330_object::fn_00496462( fn_00496253_record *record )
+{
+	m00->fn_0049629b( record );
+	m04.fn_00671880( m00 );
 }
