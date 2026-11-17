@@ -599,19 +599,20 @@ public:
 
 // HYPOTHESIS: the classes of the members 0x00447bbb hands its arguments to are not known;
 // 0x004457b7 is also declared in Source/states/SupplyDockItem.cpp under another stand-in name.
-class c_00450e41
+// 0x00447c21 calls the same members the other way round, so the parts share the argument base.
+class c_00450e41 : public c_00447bbb_arg
 {
 public:
 	void fn_00450e41(c_00447bbb_arg *arg);
 };
 
-class c_004457b7
+class c_004457b7 : public c_00447bbb_arg
 {
 public:
 	void fn_004457b7(c_00447bbb_arg *arg);
 };
 
-class c_004526cb
+class c_004526cb : public c_00447bbb_arg
 {
 public:
 	void fn_004526cb(c_00447bbb_arg *arg);
@@ -622,6 +623,7 @@ class c_00447bbb
 {
 public:
 	void fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_arg *c);
+	void fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c);
 
 	char field_0x0[0xe4];
 	c_00450e41 *field_0xe4;
@@ -638,4 +640,15 @@ void c_00447bbb::fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_ar
 		field_0xe8->fn_004457b7(b);
 	if (c && c->vfunction4())
 		field_0xec->fn_004526cb(c);
+}
+
+// FUNCTION: STARFLEETOP 0x00447c21
+void c_00447bbb::fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c)
+{
+	if (a)
+		a->fn_00450e41(field_0xe4);
+	if (b)
+		b->fn_004457b7(field_0xe8);
+	if (c)
+		c->fn_004526cb(field_0xec);
 }
