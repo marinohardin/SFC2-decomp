@@ -223,7 +223,8 @@ public:
     char pad_28[4];
     // HYPOTHESIS: a weapon object at offset 0x2c whose slot 143 (offset 0x238) 0x004d76f8 forwards to.
     tBaseWeapon *field_2c;
-    char pad_30[8];
+    char pad_30[4];
+    float field_34;
     float field_38;
     float field_3c;
     float field_40;

@@ -779,3 +779,12 @@ float tBaseWeapon::vfunction76(float param_1, float param_2)
     }
     return param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x004d829b
+float tBaseWeapon::vfunction70()
+{
+    field_34 = 0.0f;
+    if (field_45)
+        field_34 = (float)(char)vfunction107() * field_d4;
+    return field_34;
+}
