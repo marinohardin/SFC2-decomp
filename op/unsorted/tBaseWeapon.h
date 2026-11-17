@@ -61,7 +61,8 @@ public:
     virtual void vfunction26();
     // HYPOTHESIS: the slot at offset 0x68 is a test tShipSystemsExt's 0x0044c9bb compares with true.
     virtual bool vfunction27();
-    virtual void vfunction28();
+    // HYPOTHESIS: the slot at offset 0x6c is a test tShipSystemsExt's 0x0044cab9 compares with true.
+    virtual bool vfunction28();
     virtual void vfunction29();
     virtual void vfunction30();
     virtual void vfunction31();

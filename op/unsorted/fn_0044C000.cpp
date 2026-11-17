@@ -881,3 +881,24 @@ float tShipSystemsExt::vfunction125()
 	}
 	return total;
 }
+
+// FUNCTION: STARFLEETOP 0x0044cab9
+float tShipSystemsExt::vfunction138()
+{
+	float total = 0.0f;
+	for ( int i = 0x31; i < 0x49; i++ )
+	{
+		tBaseWeapon* weapon = ( (tBaseWeapon**)m584 )[i];
+		if ( weapon )
+		{
+			if ( weapon->vfunction64() == true )
+			{
+				if ( weapon->vfunction28() == true )
+				{
+					total += weapon->vfunction68() * weapon->vfunction106();
+				}
+			}
+		}
+	}
+	return total;
+}

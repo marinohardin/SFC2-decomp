@@ -142,7 +142,7 @@ public:
     virtual void vfunction122();
     virtual tMinMaxFloat* vfunction123();
     virtual float vfunction124();
-    virtual void vfunction125();
+    virtual float vfunction125();
     virtual void vfunction126();
     virtual void vfunction127();
     virtual void vfunction128();
@@ -155,7 +155,7 @@ public:
     virtual void vfunction135();
     virtual void vfunction136();
     virtual void vfunction137();
-    virtual void vfunction138();
+    virtual float vfunction138();
     virtual void vfunction139();
     virtual void vfunction140();
     virtual void vfunction141();

@@ -5023,6 +5023,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044cab9": {
+   "name": "tShipSystemsExt::vfunction138",
+   "symbol": "?vfunction138@tShipSystemsExt@@UAEMXZ",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 108,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
