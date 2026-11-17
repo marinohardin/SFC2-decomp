@@ -1173,6 +1173,14 @@ void tSFCPlayer::fn_004d0c5d()
 	m_08 = name;
 }
 
+// FUNCTION: STARFLEETOP 0x004d0cb6
+void tSFCPlayer::fn_004d0cb6()
+{
+	m_853c = g_p008cc580->vfunction5("UI", "UIType", 1);
+	g_p0090bed4->fn_00522c86((float)g_008552d0[m_853c]);
+	m_8540 = (char)g_p008cc580->vfunction5("UI", "AutoFilm", 0);
+}
+
 // FUNCTION: STARFLEETOP 0x004d0c48
 void tSFCPlayer::fn_004d0c48()
 {
