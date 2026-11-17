@@ -296,7 +296,7 @@ fn_00571734_owner::fn_00571734_owner(long a, long b, fn_00571734_point p)
 // FUNCTION: STARFLEETOP 0x00571786
 bool fn_00571734_owner::fn_00571786(int a)
 { typedef fn_00571734_point (fn_005716e0_target::*fn_get_t)(); bool same = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))() == fn_00571734_pt; return same ? true : false; }
-class fn_005717d6_owner : public fn_00571676_base { public: long fn_005717d6_v; bool fn_005717d6(int a); }; char fn_00715ac0(long v);
+class fn_00715ac0_object { public: char fn_00715ac0(long v); }; class fn_005717d6_owner : public fn_00571676_base { public: long fn_005717d6_v; bool fn_005717d6(int a); };
 // FUNCTION: STARFLEETOP 0x005717d6
-
-bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef void (fn_005716e0_target::*fn_t)(); (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_t*)&fn_00571676_a))(); char r = fn_00715ac0(v); bool same = r != 0; return same ? true : false; }
+// HYPOTHESIS: the getter returns an object pointer and 0x00715ac0 is a thiscall on it.
+bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef fn_00715ac0_object* (fn_005716e0_target::*fn_t)(); fn_00715ac0_object* o = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_t*)&fn_00571676_a))(); char r = o->fn_00715ac0(v); bool same = r != 0; return same ? true : false; }
