@@ -2370,11 +2370,11 @@
   },
   "0x0040e85e": {
    "name": "FUN_0040e85e",
-   "symbol": "?fn_0040e85e@@YAXPAUfn_0040d777_Point3@@AAVfn_0040d63f_Buf@@E@Z",
+   "symbol": "?fn_0040e85e@@YAXPAUtPoint3@@AAVtSFCStream@@E@Z",
    "unit": "unsorted/fn_0040D63F.cpp",
    "size": 75,
-   "score": 99.828,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040f86c": {
