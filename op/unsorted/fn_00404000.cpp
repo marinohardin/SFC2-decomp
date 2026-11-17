@@ -115,3 +115,26 @@ fn_00404184_Locale::fn_00404184_Locale()
     std::_Lockit lock;
     g_00c8032c->fn_00402b90();
 }
+
+// HYPOTHESIS: a locked-state owner; m0c points to a pointer to the lock object released by the
+// call at 0x0072eec0, m3c is cleared and bit 0 of m44 marks "held". The real class is unknown.
+class fn_004041b2_Obj
+{
+public:
+    void fn_004041b2();
+    char pad0[0xc];
+    void** m0c;
+    char pad10[0x2c];
+    unsigned long m3c;
+    unsigned long m40;
+    unsigned long m44;
+};
+
+// FUNCTION: STARFLEETOP 0x004041b2
+void fn_004041b2_Obj::fn_004041b2()
+{
+    if (m44 & 1)
+        operator delete(*m0c);
+    m3c = 0;
+    m44 &= 0xfffffffe;
+}
