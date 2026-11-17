@@ -289,5 +289,9 @@ bool fn_005430ad_owner::fn_0054340c()
 // FUNCTION: STARFLEETOP 0x00543437
 bool fn_005430ad_owner::fn_00543437()
 {
-	return !m114_4;
+	unsigned int v = *(unsigned int*)(m108 + 0xc);
+	unsigned char r = ~v;
+	r >>= 4;
+	r &= 1;
+	return r;
 }
