@@ -156,3 +156,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0042fef9	FUN_0042fef9	86.28	2	sonnet	2026-11-17T15:22:02Z	attempt 2 (sonnet) did not raise the best; best 86.28%
 0x004301aa	FUN_004301aa	0.00	2	sonnet	2026-11-17T15:23:48Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0050edcc	tSndMgr_Miles::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T15:45:23Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0050eea7	tSndMgr_Miles::vfunction2	99.94	2	sonnet	2026-11-17T15:58:14Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.94%
