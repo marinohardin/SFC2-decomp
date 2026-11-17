@@ -4557,11 +4557,11 @@
   },
   "0x004cf692": {
    "name": "tSFCPlayer::~tSFCPlayer",
-   "symbol": "??1tSFCPlayer@@UAE@XZ",
+   "symbol": "??0tSFCPlayer@@QAE@XZ",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 498,
-   "score": 0.94,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x004e1e8f": {
