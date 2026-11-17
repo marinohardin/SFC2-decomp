@@ -639,3 +639,12 @@ void fn_0040e11e(char* name, float* value, fn_0040d63f_Buf& buf)
     sscanf(text, format, value);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e17c
+void fn_0040e17c(char* name, float* value, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    sprintf(text, "%s = x=%f y=%f z=%f", name, (double)value[0], (double)value[1], (double)value[2]);
+    buf.fn_0040e744(text);
+}
+
