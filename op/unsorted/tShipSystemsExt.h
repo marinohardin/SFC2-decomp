@@ -196,6 +196,7 @@ public:
     virtual int vfunction106();
     virtual void vfunction107( float param_1 );
     virtual int vfunction108();
+    virtual float vfunction124();
     virtual int vfunction148( int param_1 );
     virtual int vfunction149( int param_1 );
     // HYPOTHESIS: a slot this class adds after the destructor; it returns the member list m04.

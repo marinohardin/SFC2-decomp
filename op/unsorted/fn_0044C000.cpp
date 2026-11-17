@@ -807,6 +807,8 @@ case_4b:
 }
 
 #include "unsorted/tShipSystemsExt.h"
+#include "unsorted/tIndividualShipSystem.h"
+#include "unsorted/tBaseWeapon.h"
 
 // FUNCTION: STARFLEETOP 0x0044c951
 tIndividualShipSystemList* tShipSystemsExt::vfunction171()
@@ -831,4 +833,25 @@ int tShipSystemsExt::vfunction148( int param_1 )
 	if ( param_1 < 0x31 || param_1 >= 0x49 )
 		return 0;
 	return ( (int*)m584 )[param_1];
+}
+
+// FUNCTION: STARFLEETOP 0x0044c9bb
+float tShipSystemsExt::vfunction124()
+{
+	float total = 0.0f;
+	for ( int i = 0x3b; i < 0x49; i++ )
+	{
+		tBaseWeapon* weapon = dynamic_cast<tBaseWeapon*>( ( (tIndividualShipSystem**)m584 )[i] );
+		if ( weapon )
+		{
+			if ( weapon->vfunction64() == true )
+			{
+				if ( weapon->vfunction27() == true )
+				{
+					total += weapon->vfunction68() * weapon->vfunction106();
+				}
+			}
+		}
+	}
+	return total;
 }

@@ -59,7 +59,8 @@ public:
     // slots 0x004e20f4 calls: offsets 0xd8, 0xe0, 0x100, 0x108 and 0x110.
     virtual void vfunction25();
     virtual void vfunction26();
-    virtual void vfunction27();
+    // HYPOTHESIS: the slot at offset 0x68 is a test tShipSystemsExt's 0x0044c9bb compares with true.
+    virtual bool vfunction27();
     virtual void vfunction28();
     virtual void vfunction29();
     virtual void vfunction30();
@@ -107,7 +108,8 @@ public:
     virtual void vfunction65(char param_1);
     virtual void vfunction66();
     virtual void vfunction67(float param_1);
-    virtual void vfunction68();
+    // HYPOTHESIS: the slot at offset 0x10c returns a float that 0x0044c9bb weighs by slot 106.
+    virtual float vfunction68();
     virtual void vfunction69(float param_1);
     // HYPOTHESIS: the slot at offset 0x114 returns a float that 0x004e23b5 caps its request at.
     virtual float vfunction70();
