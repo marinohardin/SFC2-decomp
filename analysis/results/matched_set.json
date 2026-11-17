@@ -100,6 +100,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004021d1": {
+   "name": "FUN_004021d1",
+   "symbol": "?fn_004021d1@fn_004021d1_Holder@@QAEXPBUfn_004021d1_Record@@@Z",
+   "unit": "unsorted/fn_00402000.cpp",
+   "size": 362,
+   "score": 99.191,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
