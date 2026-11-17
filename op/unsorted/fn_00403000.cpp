@@ -216,3 +216,36 @@ std::istream::istream(std::streambuf* _Strbuf, bool _Isstd)
 {
     init(_Strbuf, _Isstd);
 }
+
+// FUNCTION: STARFLEETOP 0x00403eda
+bool std::istream::ipfx(bool _Noskip)
+{
+    if (rdstate() == goodbit)
+    {
+        if (tie() != 0)
+            tie()->flush();
+        if (!_Noskip && (flags() & skipws))
+        {
+            const std::ctype<char>& _Fac = std::use_facet(getloc(), (std::ctype<char>*)0, true);
+            int_type _C;
+            try
+            {
+                // HYPOTHESIS: 0x40 is the blank class bit
+                while ((_C = rdbuf()->sgetc()) != std::char_traits<char>::eof()
+                    && _Fac.is(std::ctype<char>::space | 0x40, std::char_traits<char>::to_char_type(_C)))
+                    rdbuf()->sbumpc();
+            }
+            catch (...)
+            {
+                setstate(badbit, true);
+            }
+        }
+        if (good())
+            return true;
+    }
+    setstate(failbit);
+    return false;
+}
+
+// HYPOTHESIS: a caller in the original uses this out-of-line instantiation.
+bool (std::istream::*g_fn_00403eda)(bool) = &std::istream::ipfx;
