@@ -11,6 +11,9 @@
 class tServCharacter : public nDatabase::tDatabaseObject
 {
 public:
+	// HYPOTHESIS: the exe holds the destructor out of line (0x00541d4f); 0x0056e006 calls it.
+	virtual ~tServCharacter();
+
 	// HYPOTHESIS: a flag 0x0056c8d6 queries on; it tests the member at +0x14c.
 	bool fn_00543445() const;
 	// HYPOTHESIS: two flags 0x0056c95c tests before it keeps a character.

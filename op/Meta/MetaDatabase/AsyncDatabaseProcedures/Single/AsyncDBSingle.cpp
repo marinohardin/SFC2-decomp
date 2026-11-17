@@ -113,7 +113,7 @@ public:
 	virtual void vfunction39();
 	virtual void vfunction40( tAuctionItem item );
 	virtual void vfunction41();
-	virtual void vfunction42();
+	virtual void vfunction42( tServCharacter character );
 	virtual void vfunction43();
 	virtual void vfunction44();
 	virtual void vfunction45();
@@ -679,5 +679,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction38( int value )
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction40( tAuctionItem item )
 {
 	nDatabase::tDatabaseObjectUpdate update( item );
+	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the character comes by value (its destructor runs at the end) and is written back as an update.
+// FUNCTION: STARFLEETOP 0x0056e006
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction42( tServCharacter character )
+{
+	nDatabase::tDatabaseObjectUpdate update( character );
 	fDatabase->UpdateObject( update );
 }
