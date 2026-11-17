@@ -72,7 +72,7 @@ public:
     virtual void vfunction54();
     virtual void vfunction55();
     virtual void vfunction56();
-    virtual void vfunction57();
+    virtual char* vfunction57();
     virtual void vfunction58();
     virtual void vfunction59();
     virtual void vfunction60();
@@ -368,4 +368,11 @@ tValue<float>* tShipSystemsFighter::vfunction42()
 float tShipSystemsFighter::vfunction51( int )
 {
     return g_007959cc;
+}
+
+// HYPOTHESIS: the return type; the original returns the address of m5c4.
+// FUNCTION: STARFLEETOP 0x004443ea
+char* tShipSystemsFighter::vfunction57()
+{
+    return m5c4;
 }
