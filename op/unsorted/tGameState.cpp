@@ -1370,3 +1370,17 @@ void fn_0046acd5(char *param_1)
 	std::string commandLine(g_0090db48.mCharStr(0));
 	tCommandLineArgs::Instance()->Setup(commandLine);
 }
+
+// HYPOTHESIS: a state class overriding the event slot (Ghidra files it under tGameState).
+class fn_0046ad4d_owner
+{
+public:
+	void fn_0046ad4d(int *param_1);
+};
+
+// FUNCTION: STARFLEETOP 0x0046ad4d
+void fn_0046ad4d_owner::fn_0046ad4d(int *param_1)
+{
+	if (*param_1 == 0x102)
+		fn_0046aa58();
+}
