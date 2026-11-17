@@ -1981,6 +1981,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00427bb2": {
+   "name": "FUN_00427bb2",
+   "symbol": "??0?$vector@VtObject_00427c1d@@V?$allocator@VtObject_00427c1d@@@std@@@std@@QAE@ABV01@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 107,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",

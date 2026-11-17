@@ -395,9 +395,19 @@ void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& a
 	}
 }
 
+// HYPOTHESIS: the element of the vector at 0x3c of tPlayingTeamInfo: 0x434 bytes, copied by
+// 0x00427c1d; class not yet found.
+class tObject_00427c1d
+{
+public:
+	tObject_00427c1d( const tObject_00427c1d& source );
+
+	int8u	field_0x0[0x434];
+};
+
 // HYPOTHESIS: the class named in RTTI (vtable 0x00798234); layout read from its copy
 // constructor at 0x00427ab7: a string, four scalars, an ID, a vector copied out of line
-// (0x00427bb2, element type not recovered), two scalars and a byte.
+// (0x00427bb2), two scalars and a byte.
 class tPlayingTeamInfo : public nDataStore::tStreamable
 {
 public:
@@ -413,7 +423,7 @@ public:
 	int32u				field_0x24;
 	int32u				field_0x28;
 	nDatabase::tID		field_0x2c;
-	std::vector< int32u >	field_0x3c;
+	std::vector< tObject_00427c1d >	field_0x3c;
 	int32u				field_0x4c;
 	int32u				field_0x50;
 	int8u				field_0x54;
@@ -454,4 +464,16 @@ tPlayingTeamInfo::tPlayingTeamInfo( const tPlayingTeamInfo& source )
 // FUNCTION: STARFLEETOP 0x00427b96
 inline tPlayingTeamInfo::~tPlayingTeamInfo()
 {
+}
+
+// MATCH-ONLY: the library's copy constructor of the vector at 0x3c of tPlayingTeamInfo, written
+// out here, as the one at 0x00427740 is, so that it has source lines here.
+// FUNCTION: STARFLEETOP 0x00427bb2
+template<>
+std::vector< tObject_00427c1d >::vector( const std::vector< tObject_00427c1d >& _X )
+	: allocator( _X.allocator )
+{
+	_First = allocator.allocate( _X.size(), (void*)0 );
+	_Last = _Ucopy( _X.begin(), _X.end(), _First );
+	_End = _Last;
 }
