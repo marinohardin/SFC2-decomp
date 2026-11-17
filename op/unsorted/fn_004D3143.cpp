@@ -322,3 +322,13 @@ void fn_004d348d( long arg1 )
 		obj->fn_0067ce90();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d34a7
+void fn_004d34a7( long arg1, long arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_0092e4a0.fn_004d4728( arg2, arg1 );
+	if ( obj != 0 )
+	{
+		obj->fn_0067ce90();
+	}
+}
