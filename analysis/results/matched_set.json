@@ -5907,10 +5907,10 @@
   },
   "0x0056f05f": {
    "name": "FUN_0056f05f",
-   "symbol": "?fn_0056f05f@fn_0056f05f_owner@@QAEXPAVfn_0056f05f_filter@@PAVfn_0056f05f_sink@@H@Z",
+   "symbol": "?fn_0056f05f@fn_0056f05f_owner@@QAEXABV?$tQuery@VtServCharacter@@@nDatabase@@PAVfn_005406d7_results@@_N@Z",
    "unit": "unsorted/fn_0056F000.cpp",
    "size": 316,
-   "score": 17.279,
+   "score": 99.953,
    "exact": false,
    "recorded": "2026-11-16"
   },
