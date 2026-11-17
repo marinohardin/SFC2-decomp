@@ -314,7 +314,8 @@ class tSFCPlayer
 		int m_1138[4][6];
 		tObject_004cf9b3 m_1198[0x12][0x18];
 		int m_3358[6];
-		char pad_3370[0x3418 - 0x3370];
+		int m_3370[6];
+		int m_3388[0x24];
 		tString m_3418[0x24];
 		tString m_39b8[0x24];
 		tObject_004454c1 m_3f58[0x24];
@@ -1372,6 +1373,22 @@ int tSFCPlayer::fn_004d11e9(int param_1)
 	}
 	m_3358[free_slot] = param_1;
 	return free_slot;
+}
+// FUNCTION: STARFLEETOP 0x004d1220
+void tSFCPlayer::fn_004d1220()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		m_3358[i] = 0;
+		m_3370[i] = 0;
+		for (int j = 0; j < 6; j++)
+		{
+			m_3388[i * 6 + j] = -1;
+			m_3418[i * 6 + j] = "";
+			m_39b8[i * 6 + j] = "";
+			m_3f58[i * 6 + j].fn_0051da3d();
+		}
+	}
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
