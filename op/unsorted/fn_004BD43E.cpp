@@ -203,5 +203,6 @@ bool c_004bd805_Object::fn_004bda12()
 	return false;
 }
 
+// FUNCTION: STARFLEETOP 0x004bda3e
 // FUNCTION: STARFLEETOP 0x004bda34
 c_004bd805_Object g_004bd805_Object;
