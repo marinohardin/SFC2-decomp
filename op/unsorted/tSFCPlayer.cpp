@@ -57,6 +57,7 @@ class tSFCPlayer
 		void fn_004d0b28();
 			// HYPOTHESIS: a virtual in slot 41 in the exe; only the other slots are missing here.
 			void vfunction41(int param_1);
+			int vfunction42();
 
 	private:
 		char m_04;
@@ -87,7 +88,8 @@ class tSFCPlayer
 		int m_84a8;
 		char pad_84ac[0x84bc - 0x84ac];
 			int m_84bc;
-			char pad_84c0[0x85a4 - 0x84c0];
+			int m_84c0;
+			char pad_84c4[0x85a4 - 0x84c4];
 		tObject_00583828 m_85a4;
 		tObject_00583828 m_85bc;
 };
@@ -119,4 +121,10 @@ tSFCPlayer::tSFCPlayer()
 void tSFCPlayer::vfunction41(int param_1)
 {
 	m_84bc = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004cf891
+int tSFCPlayer::vfunction42()
+{
+	return m_84bc;
 }
