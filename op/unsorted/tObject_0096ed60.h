@@ -31,6 +31,12 @@ class tObject_0096ed60
 public:
 	// HYPOTHESIS: takes a text and a flag; tEntityMgr passes the value on to 0x0092deb4's slot 74.
 	int32 fn_0052ca48(char *aText, int32 aFlag);
+	// HYPOTHESIS: 0x0052ca48 returns with ret 4, so it takes the text alone, as 0x0060cb1b
+	// calls it; the form above, used by tEntityMgr, is likely wrong (its 1 may belong to the
+	// outer call) and waits for that unit.
+	int32 fn_0052ca48(char *aText);
+	// HYPOTHESIS: takes a team and its race (0x0060cb1b); the result is not used there.
+	void fn_0052c64e(int32 aTeam, int32 aRace);
 	C_0052ccf9 *fn_0052ccf9();
 	// HYPOTHESIS: the mission title; 0x0060c51d copies it into a tString.
 	tString &fn_0052cd2f();

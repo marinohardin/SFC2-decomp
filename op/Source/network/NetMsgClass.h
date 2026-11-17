@@ -17,7 +17,10 @@ struct tNetMsg
 		kAdjustSpeedAbs = 1,
 		kDamage = 15,
 		kKillEntity = 21,
-		kAIChangeTeamRelationshipToWar = 51
+		kAIChangeTeamRelationshipToWar = 51,
+		kTeamScriptDescription = 65,
+		kShipScriptDescription = 66,
+		kTeamReady = 67
 	};
 
 	enum

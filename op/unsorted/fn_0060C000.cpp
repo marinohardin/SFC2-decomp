@@ -4,8 +4,10 @@
 #include <stdio.h>
 #include <vector>
 
+#include "Source/network/NetMsgClass.h"
 #include "Tiger/tstring.h"
 #include "unsorted/fn_0090bed8_type.h"
+#include "unsorted/tNetControl.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tObject_0096ed60.h"
 
@@ -57,7 +59,20 @@ extern C_00c3a80c *g_00c3a810;
 // HYPOTHESIS: text lookups by key; 0x004cbdae also substitutes a value. Signatures unknown.
 void fn_004cbd87(const char *key, int flags, tString &out);
 void fn_004cbdae(const char *key, int flags, const char *tag, const tString &value, tString &out);
-int fn_0060e11e();
+// HYPOTHESIS: the object 0x0060e11e returns; 0x0060cb1b looks a team up in it through
+// 0x0052a2b5 and reads the record's +0x184.
+class C_0052a2b5
+{
+public:
+    char m_00[0x184];
+    int m_184;
+};
+class C_0060e11e
+{
+public:
+    C_0052a2b5 *fn_0052a2b5(int team);
+};
+C_0060e11e *fn_0060e11e();
 // HYPOTHESIS: stores a text under a name; also declared in the GameConnections state's unit.
 void fn_004d3179(const char *name, const tString &value);
 
@@ -299,10 +314,61 @@ public:
 
 // HYPOTHESIS: the class of the vector's elements, whose non-virtual destructor is 0x004729a6;
 // name and members unknown.
+// HYPOTHESIS: an entry of the six at +0x40, one per ship (0x0060cb1b sends the strings and the
+// id as a tNetMsg_kShipScriptDescription when m_00 is set).
+struct C_004729a6_ship
+{
+    bool m_00;
+    int m_04;
+    tString m_08;
+    tString m_30;
+    int m_58;
+};
+
+// HYPOTHESIS: the class of the vector's elements, whose non-virtual destructor is 0x004729a6;
+// name unknown. 0x0060cb1b reads a team description from it.
 class C_004729a6
 {
 public:
     ~C_004729a6();
+    char m_00[0x2c];
+    int m_2c;
+    int m_30;
+    int m_34;
+    int m_38;
+    int m_3c;
+    C_004729a6_ship m_40[6];
+};
+
+// HYPOTHESIS: the field names follow the SDK's tTeamScriptDescription, whose order the stores
+// at 0x0060cb1b follow.
+struct tNetMsg_kTeamScriptDescription: public tNetMsg
+{
+    virtual const tNetMsg::tMapItem *mGetMap(void) const;
+    int fTeam;
+    int fRace;
+    iTruth fHumanControlled;
+    int fTeamActorID;
+    int fTeamTag;
+};
+
+// HYPOTHESIS: the field names follow the SDK's tShipScriptDescription; the constructor is
+// 0x0045c242.
+struct tNetMsg_kShipScriptDescription: public tNetMsg
+{
+    tNetMsg_kShipScriptDescription();
+    virtual const tNetMsg::tMapItem *mGetMap(void) const;
+    int fTeamID;
+    tString fClassName;
+    int fClassType;
+    tString fCustomName;
+    int fMetaDatabaseID;
+};
+
+struct tNetMsg_kTeamReady: public tNetMsg
+{
+    virtual const tNetMsg::tMapItem *mGetMap(void) const;
+    int fTeam;
 };
 
 // HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
@@ -324,6 +390,7 @@ public:
     void fn_0060ca94(int value);
     int fn_0060ca9e();
     void fn_0060cac6();
+    void fn_0060cb1b();
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
     char *fn_0060c982(const char *name);
@@ -503,4 +570,42 @@ void C_0060c7dc::fn_0060cac6()
         g_0090b730.m_08.erase(g_0090b730.m_08.end() - 1);
     }
     g_0090b730.m_08.clear();
+}
+
+// HYPOTHESIS: sends every team's description, its ships' descriptions and a ready message to
+// the other machines, deleting each team from the last down, then empties the vector.
+// FUNCTION: STARFLEETOP 0x0060cb1b
+void C_0060c7dc::fn_0060cb1b()
+{
+    while (!g_0090b730.m_08.empty()) {
+        C_004729a6 *team = g_0090b730.m_08.back();
+        C_0060e11e *teams = fn_0060e11e();
+        int id = team->m_2c;
+        C_0052a2b5 *record = teams->fn_0052a2b5(id);
+        tNetMsg_kTeamScriptDescription teamMsg;
+        teamMsg.fTeam = id;
+        teamMsg.fHumanControlled = false;
+        teamMsg.fTeamActorID = team->m_30;
+        teamMsg.fRace = team->m_38;
+        teamMsg.fTeamTag = record->m_184;
+        gObject_0096ed60.fn_0052c64e(id, team->m_38);
+        gNetControl.mQueueMsg(&teamMsg, tNetMsg::kTeamScriptDescription, -1, -1.0);
+        for (int i = 0; i < 6; i++) {
+            if (team->m_40[i].m_00) {
+                tNetMsg_kShipScriptDescription shipMsg;
+                shipMsg.fTeamID = id;
+                shipMsg.fClassName = team->m_40[i].m_08;
+                shipMsg.fClassType = gObject_0096ed60.fn_0052ca48(shipMsg.fClassName.mCharStr());
+                shipMsg.fCustomName = team->m_40[i].m_30;
+                shipMsg.fMetaDatabaseID = team->m_40[i].m_58;
+                gNetControl.mQueueMsg(&shipMsg, tNetMsg::kShipScriptDescription, -1, -1.0);
+            }
+        }
+        tNetMsg_kTeamReady readyMsg;
+        readyMsg.fTeam = id;
+        gNetControl.mQueueMsg(&readyMsg, tNetMsg::kTeamReady, gNetControl.fn_004324ab(), -1, -1.0);
+        delete team;
+        g_0090b730.m_08.erase(g_0090b730.m_08.end() - 1);
+    }
+    g_0090b730.m_08.erase(g_0090b730.m_08.begin(), g_0090b730.m_08.end());
 }

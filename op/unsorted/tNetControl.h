@@ -59,6 +59,7 @@ public:
 	void fn_004321fd( int n );
 	bool fn_00432597();	// HYPOTHESIS: returns a flag (tested in al)
 	int fn_004326a4();
+	int fn_004324ab();	// HYPOTHESIS: 0x0060cb1b passes the result as the player number
 	void fn_00431821();
 	bool fn_0043268d();	// HYPOTHESIS: returns a flag (tested in al)
 	void fn_00432f5a();
