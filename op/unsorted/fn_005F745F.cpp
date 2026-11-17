@@ -115,6 +115,8 @@ public:
 	void FUN_005f7c4b(); // HYPOTHESIS: destroys and drops the last value
 	// HYPOTHESIS: frees the block map; the same shared body as in fn_005f77c6_object.
 	void FUN_005d97c1();
+	// HYPOTHESIS: reports a length error (the analysis names it for length_error)
+	void FUN_005f7f7a();
 
 	byte field_00[0x04];
 	fn_0055fe12_value** field_04; // HYPOTHESIS: the map of blocks of 204 values
@@ -540,4 +542,55 @@ void fn_005f7961_object::FUN_005f7c4b()
 			field_0c = 0;
 		}
 	}
+}
+
+// MATCH-ONLY: the library's uninitialized copy and fill, which the original inlined.
+inline fn_0055fe12_value** fn_005f7c9d_copy( fn_0055fe12_value** first, fn_0055fe12_value** last, fn_0055fe12_value** dest )
+{
+	for ( ; first != last; ++dest, ++first ) {
+		*dest = *first;
+	}
+	return dest;
+}
+
+// MATCH-ONLY: as fn_005f7c9d_copy.
+inline void fn_005f7c9d_fill( fn_0055fe12_value** dest, unsigned int n, fn_0055fe12_value* value )
+{
+	for ( ; 0 < n; --n, ++dest ) {
+		*dest = value;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005f7c9d
+void fn_005f7961_object::FUN_005f7c9d( unsigned int count )
+{
+	if ( 0x101010 - field_08 < count ) {
+		FUN_005f7f7a();
+	}
+	unsigned int inc = field_08 / 2;
+	if ( inc < 8 ) {
+		inc = 8;
+	}
+	if ( count < inc && field_08 <= 0x101010 - inc ) {
+		count = inc;
+	}
+	unsigned int boff = field_0c / 204;
+	int bytes = ( field_08 + count ) * sizeof( fn_0055fe12_value* );
+	if ( bytes < 0 ) {
+		bytes = 0;
+	}
+	fn_0055fe12_value** newmap = (fn_0055fe12_value**) operator new( bytes );
+	fn_0055fe12_value** p = fn_005f7c9d_copy( field_04 + boff, field_04 + field_08, newmap + boff );
+	if ( boff <= count ) {
+		p = fn_005f7c9d_copy( field_04, field_04 + boff, p );
+		fn_005f7c9d_fill( p, count - boff, 0 );
+		fn_005f7c9d_fill( newmap, boff, 0 );
+	} else {
+		fn_005f7c9d_copy( field_04, field_04 + count, p );
+		p = fn_005f7c9d_copy( field_04 + count, field_04 + boff, newmap );
+		fn_005f7c9d_fill( p, count, 0 );
+	}
+	operator delete( field_04 );
+	field_08 += count;
+	field_04 = newmap;
 }
