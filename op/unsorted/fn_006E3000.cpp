@@ -179,6 +179,7 @@ public:
 	// HYPOTHESIS: the wide form of FUN_006e3480 (std::wstring, two bytes per
 	// character).
 	void FUN_006e34c0(const std::wstring& param_1, unsigned char param_2);
+	void FUN_006e3500(int param_1, const void* param_2, int param_3);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -307,4 +308,10 @@ void tObject_006e3240::FUN_006e34c0(const std::wstring& param_1, unsigned char p
 {
 	FUN_006e3440(param_1.size(), param_2);
 	FUN_006e33b0(param_1.c_str(), param_1.size() * 2);
+}
+
+// FUNCTION: STARFLEETOP 0x006e3500
+void tObject_006e3240::FUN_006e3500(int param_1, const void* param_2, int param_3)
+{
+	memcpy(m10 + param_1, param_2, param_3);
 }
