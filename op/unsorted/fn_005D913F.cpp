@@ -513,3 +513,13 @@ unsigned char fn_005d9845(int param_1)
         return 0;
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x005d9859
+int fn_005d9859(int param_1)
+{
+    if (fn_005d9831(param_1))
+        return 1;
+    if (fn_005d9845(param_1))
+        return 0;
+    return -1;
+}
