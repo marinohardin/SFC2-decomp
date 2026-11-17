@@ -166,7 +166,7 @@ public:
 	virtual long vfunction15( long param_1, long param_2 );
 	virtual void vfunction16( long param_1, long param_2, long param_3 );
 	virtual void vfunction17( long param_1 );
-	virtual void vfunction18();
+	virtual long vfunction18();
 	virtual void vfunction19( long param_1 );
 	virtual long vfunction20();
 	virtual void vfunction21();
@@ -690,4 +690,10 @@ void tSndMgr_Miles::vfunction17( long param_1 )
 	field_1f18 = param_1;
 	if ( field_2414 )
 		AIL_set_digital_master_volume( field_2418, param_1 * 127 / 100 );
+}
+
+// FUNCTION: STARFLEETOP 0x0050f84c
+long tSndMgr_Miles::vfunction18()
+{
+	return field_1f18;
 }
