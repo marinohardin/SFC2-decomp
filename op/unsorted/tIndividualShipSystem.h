@@ -211,7 +211,7 @@ public:
     virtual void vfunction8();
     virtual void vfunction9();
     virtual void vfunction10();
-    virtual void vfunction11();
+    virtual int vfunction11();
     virtual void vfunction12();
     virtual void vfunction13();
     virtual void vfunction14();
