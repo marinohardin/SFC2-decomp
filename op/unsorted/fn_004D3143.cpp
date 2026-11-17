@@ -22,6 +22,7 @@ public:
 	void fn_004d4630( long arg1 );
 	void fn_004d4687( long arg1 );
 	void fn_004d46e3( long arg1 );
+	void fn_004d4712( long arg1 );
 };
 
 extern fn_004d482a_owner g_0092e4a0;
@@ -45,6 +46,7 @@ public:
 	void fn_004caf1b( fn_004d3ef7_object* arg1 );
 	void fn_004caf40( fn_004d3ef7_object* arg1, long arg2 );
 	void fn_004cb0ab( fn_004d3ef7_object* arg1 );
+	long fn_004cb602( long arg1 );
 };
 
 extern fn_004bf6b9_owner g_009254f8;
@@ -192,4 +194,14 @@ void fn_004d334f( long arg1 )
 void fn_004d335e( long arg1 )
 {
 	g_0092e4a0.fn_004d46e3( arg1 );
+}
+
+// FUNCTION: STARFLEETOP 0x004d336d
+void fn_004d336d( long arg1 )
+{
+	long result = g_009254f8.fn_004cb602( arg1 );
+	if ( result != 0 )
+	{
+		g_0092e4a0.fn_004d4712( result );
+	}
 }
