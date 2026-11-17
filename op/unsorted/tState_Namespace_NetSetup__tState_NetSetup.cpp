@@ -799,3 +799,11 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477689()
 	for (i = 0; i < 10; i++)
 		fn_004d35bf(g_0084948c[i], 0);
 }
+
+// HYPOTHESIS: as in tState_GameConnections, the original calls the out-of-line tValueI<tString>
+// constructor (0x0043d2ef) for m1c to m11c and expands it inline for m15c and m19c (EH states
+// 1-5 then 5-8, m1f8 9, m208 10); this build expands all seven.
+// FUNCTION: STARFLEETOP 0x0047792f
+tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup()
+{
+}
