@@ -309,6 +309,7 @@ public:
     void fn_0060ca42(int value);
     int fn_0060ca4f();
     bool fn_0060ca56();
+    bool fn_0060ca6c();
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
@@ -420,6 +421,14 @@ int C_0060c7dc::fn_0060ca4f()
 bool C_0060c7dc::fn_0060ca56()
 {
     if (m_728 == 4 || m_728 == 5)
+        return true;
+    return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0060ca6c
+bool C_0060c7dc::fn_0060ca6c()
+{
+    if (m_728 == 1)
         return true;
     return false;
 }
