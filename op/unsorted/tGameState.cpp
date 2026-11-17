@@ -968,22 +968,21 @@ extern int g_0090db2c;
 char fn_0046a6ad(tGameState *state)
 {
 	fn_0046a6ad_object *object = (fn_0046a6ad_object *)state;
-	if (g_0090db9c == 0 && object != 0)
+	if (g_0090db9c != 0)
+		return 0;
+	if (object == 0)
+		return 0;
+	if (g_0090db44 != 0)
 	{
-		if (g_0090db44 != 0)
-		{
-			if (((fn_0046a6ad_object *)g_0090db44)->fn_slot13(object) == 0)
-				return 0;
-			if (g_0090db44 != 0 && fn_0046a688(g_0090db44) == 0)
-				return 0;
-		}
-		g_0090db2c = object->fn_slot18();
-		g_0090db44 = 0;
-		if (fn_0046a678((fn_0046a678_object *)object) != 0)
-		{
-			g_0090db44 = (int)object;
-			return 1;
-		}
+		if (((fn_0046a6ad_object *)g_0090db44)->fn_slot13(object) == 0)
+			return 0;
+		if (g_0090db44 != 0 && fn_0046a688(g_0090db44) == 0)
+			return 0;
 	}
-	return 0;
+	g_0090db2c = object->fn_slot18();
+	g_0090db44 = 0;
+	if (fn_0046a678((fn_0046a678_object *)object) == 0)
+		return 0;
+	g_0090db44 = (int)object;
+	return 1;
 }
