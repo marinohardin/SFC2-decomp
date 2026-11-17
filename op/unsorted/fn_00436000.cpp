@@ -15,6 +15,8 @@ class tDirIterator;
 class tDirIterParent;
 class tPathIterator;
 class tPathIterParent;
+class tVolume;
+class twVolume;
 
 namespace std
 {
@@ -124,4 +126,11 @@ void tList_00436293::FUN_00436293()
 	if ( fHead == 0 )
 		fTail = 0;
 	delete node;
+}
+
+// FUNCTION: STARFLEETOP 0x004362b0
+template <>
+tCookieManager<tVolume,twVolume>::tCookieManager()
+{
+	f_00 = 0;
 }
