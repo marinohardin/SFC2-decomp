@@ -3,6 +3,9 @@
 
 #include "Common/DataStore/Streamable.h"
 #include "Common/Database/DatabaseID.h"
+#include "Common/DynamicAllocator.h"
+
+class tShip;
 
 // HYPOTHESIS: a 0x10-byte member of c_0045139e at +0x48; 0x0045275f destroys it.
 class c_0045275f
@@ -518,4 +521,12 @@ void c_00546296::fn_005467b0(const std::string& param_1)
 void c_00546027::fn_005467ca(unsigned int param_1)
 {
     field_430 = param_1;
+}
+
+// HYPOTHESIS: tShip is not declared in this tree yet; typeid needs only its name here.
+// FUNCTION: STARFLEETOP 0x005467d7
+template<>
+tClassAllocator<tShip>::tClassAllocator()
+{
+	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tShip ), this );
 }
