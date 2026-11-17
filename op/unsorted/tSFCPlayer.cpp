@@ -236,7 +236,7 @@ class tSFCPlayer
 		virtual int vfunction68();
 		virtual void vfunction69();
 		virtual void vfunction70(char *param_1);
-		virtual void vfunction71() = 0;
+		virtual void vfunction71();
 		virtual void vfunction72() = 0;
 		virtual void vfunction73() = 0;
 		virtual void vfunction74() = 0;
@@ -1243,6 +1243,12 @@ void fn_004d0ed4(tSFCPlayer *self, char *param_1)
 	tShipSpecs specs;
 	if (fn_0040a621((int)param_1, &specs)) {
 	}
+}
+// FUNCTION: STARFLEETOP 0x004d0f61
+void tSFCPlayer::vfunction71()
+{
+	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
+	tShipSpecs specs;
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
