@@ -255,3 +255,87 @@ void fn_004602b2_class::fn_00460610()
     m_90 = false;
     fn_004d32c4(m_94.c_str());
 }
+
+#include "Common/DateAndTime.h"
+
+// HYPOTHESIS: declared here until its own unit has a header; only the size (0x168, from the
+// stack layout below) and the destructor at 0x0042ceae are known.
+class tCampaignInfo
+{
+public:
+    ~tCampaignInfo();
+
+    char pad_000[0x168];
+};
+
+// HYPOTHESIS: a 20-byte value built from a text and a number; it is copied as plain data.
+class fn_006cf2d0_object
+{
+public:
+    fn_006cf2d0_object(const std::string &text, long value);
+
+    char pad_000[0x14];
+};
+
+// HYPOTHESIS: the record built at 0x0045e5f7; its members are placed by their stack offsets.
+class fn_0060a827_object;
+class fn_0045e5f7_object
+{
+public:
+    fn_0045e5f7_object();
+    void fn_00460736(fn_0060a827_object *arg);
+
+    tCampaignInfo m_000;
+    tDateAndTime m_168;
+    fn_006cf2d0_object m_178;
+};
+
+class fn_0060a827_object
+{
+public:
+    const std::string &fn_0054a8d4();
+};
+
+// HYPOTHESIS: the argument of 0x0046062e; only these calls on it are known.
+class fn_0046062e_arg
+{
+public:
+    fn_0060a827_object *fn_0060a827();
+    std::string fn_005db8d3();
+    long fn_005db919();
+};
+
+// HYPOTHESIS: the member at +0xec of the owning class keeps the records.
+class fn_00460c0c_list
+{
+public:
+    void fn_00460c0c(const fn_0045e5f7_object &record);
+};
+
+extern char *g_00844064;
+
+class fn_0046062e_class
+{
+public:
+    void fn_0046062e(fn_0046062e_arg *arg);
+
+    char pad_000[0xec];
+    fn_00460c0c_list m_ec;
+};
+
+// FUNCTION: STARFLEETOP 0x0046062e
+void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
+{
+    const char *name = g_00844064;
+    const std::string &text = arg->fn_0060a827()->fn_0054a8d4();
+    if (text == name)
+    {
+        fn_006cf2d0_object value(arg->fn_005db8d3(), arg->fn_005db919());
+        tDateAndTime now;
+        fn_0045e5f7_object record;
+        record.m_178 = value;
+        record.fn_00460736(arg->fn_0060a827());
+        record.m_168 = now;
+        m_ec.fn_00460c0c(record);
+    }
+}
