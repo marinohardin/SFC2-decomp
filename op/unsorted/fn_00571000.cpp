@@ -56,12 +56,12 @@ public:
 // its caller.
 class fn_00571018_owner {
 public:
-	virtual void vfunction0();
+	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7(); virtual long vfunction8(long a); virtual void vfunction9();
 	void AddObjectToDBIndex(fn_00571018_object* pActualObject, iAllocatorID allocID);
 	void fn_00571018(fn_00571018_object* pObject);
 	void fn_0057118e(fn_00571018_object* pObject);
 	void fn_00571304(fn_00571018_object* pObject);
-	void fn_0057147a(fn_00571018_object* pObject);
+	void fn_0057147a(fn_00571018_object* pObject); void fn_005715f0(long a, fn_00571018_owner* b); void fn_0054e4dc(long a);
 	tOptex fAccess;
 	char fn_00571018_pad[0x40 - 4 - sizeof(tOptex)];
 	fn_00571018_storage* fDatabaseStorage;
@@ -195,6 +195,21 @@ void fn_00571018_owner::fn_0057147a(fn_00571018_object* pObject)
 	AddObjectToDBIndex(pActualObject, allocID);
 
 	*pObject = *pActualObject;
+	}
+	guard.Leave();
+}
+
+#line 202
+// FUNCTION: STARFLEETOP 0x005715f0
+// HYPOTHESIS: the second parameter is another object of the same stand-in class; its type,
+// the callee 0x0054e4dc and the virtual slots 8 and 9 are not recovered.
+void fn_00571018_owner::fn_005715f0(long a, fn_00571018_owner* b)
+{
+	tOptex::tGuard guard(&fAccess);
+	{
+	long r = vfunction8(a);
+	b->fn_0054e4dc(r);
+	b->vfunction9();
 	}
 	guard.Leave();
 }
