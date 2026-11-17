@@ -304,3 +304,8 @@ int tSFCPlayer::vfunction106()
 {
 	return m_8520;
 }
+
+// FUNCTION: STARFLEETOP 0x004cf997
+tSFCPlayer::~tSFCPlayer()
+{
+}
