@@ -172,6 +172,7 @@ class tSFCPlayer
 		virtual char *vfunction20(unsigned param_1);
 		virtual void vfunction21(unsigned param_1) = 0;
 		virtual int vfunction22(unsigned param_1) = 0;
+			void fn_004d08e2(tString *param_1, unsigned param_2);
 		virtual void vfunction23() = 0;
 		virtual void vfunction24() = 0;
 		virtual void vfunction25(int param_1, unsigned param_2) = 0;
@@ -880,6 +881,15 @@ char *tSFCPlayer::vfunction20(unsigned param_1)
 	if (param_1 < 6)
 		return m_70[param_1];
 	return 0;
+}
+
+// HYPOTHESIS: a virtual slot of the exe's analysis (vfunction21), but it takes two arguments
+// while the caller in vfunction4 reaches its slot with one, so it is declared non-virtual here.
+// FUNCTION: STARFLEETOP 0x004d08e2
+void tSFCPlayer::fn_004d08e2(tString *param_1, unsigned param_2)
+{
+	if (param_2 < 6)
+		m_130[param_2] = *param_1;
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
