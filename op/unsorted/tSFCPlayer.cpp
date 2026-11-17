@@ -245,7 +245,7 @@ class tSFCPlayer
 		virtual int vfunction75(int param_1, int param_2);
 		virtual void vfunction76();
 		virtual void vfunction77(int param_1, int param_2, int param_3);
-		virtual void vfunction78() = 0;
+		virtual int vfunction78(int param_1, int param_2);
 		virtual char vfunction79();
 		virtual char vfunction80();
 		virtual void vfunction81(int param_1, unsigned param_2);
@@ -1331,6 +1331,13 @@ void tSFCPlayer::vfunction77(int param_1, int param_2, int param_3)
 {
 	if (param_2 < 6)
 		m_8544[param_1][param_2] = param_3;
+}
+// FUNCTION: STARFLEETOP 0x004d116b
+int tSFCPlayer::vfunction78(int param_1, int param_2)
+{
+	if (param_2 < 6)
+		return m_8544[param_1][param_2];
+	return 0;
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
