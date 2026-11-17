@@ -70,7 +70,7 @@ public:
     virtual void vfunction50();
     virtual float vfunction51( int param_1 );
     virtual void vfunction52();
-    virtual void vfunction53();
+    virtual tShipSystemManager* vfunction53();
     virtual void vfunction54();
     virtual void vfunction55();
     virtual void vfunction56();

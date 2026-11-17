@@ -45,6 +45,7 @@ class tShipSystemsExt : public tShipSystems
 public:
     tShipSystemsExt( unsigned long param_1 );
     virtual ~tShipSystemsExt();
+    virtual tShipSystemManager* vfunction53();
     virtual char* vfunction57();
     virtual char* vfunction58();
     virtual void vfunction107( float param_1 );
@@ -242,4 +243,11 @@ char* tShipSystemsExt::vfunction58()
 char* tShipSystemsExt::vfunction57()
 {
     return m584;
+}
+
+// The original returns the address +0x968, the member m968.
+// FUNCTION: STARFLEETOP 0x0044886f
+tShipSystemManager* tShipSystemsExt::vfunction53()
+{
+    return &m968;
 }
