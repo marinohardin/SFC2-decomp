@@ -8,6 +8,7 @@
 #include "unsorted/mss.h"
 #include "unsorted/tEntity.h"
 #include "unsorted/fn_0090be9c_type.h"
+#include "unsorted/fn_00c7c120_Object.h"
 
 class tSndMgr_Miles;
 
@@ -82,8 +83,13 @@ public:
 	void fn_0050d5ec( long param_1, char *param_2 );
 	// HYPOTHESIS: the current track's playback rate, sample format, type flags and ADPCM block size.
 	void fn_0050d8f0( long *param_1, long *param_2, unsigned long *param_3, unsigned long *param_4 );
+	// HYPOTHESIS: stops the music; vfunction22 then clears the two fields after it.
+	void fn_0050d95c( char param_1 );
 
-	char pad_0000[0x3c8];
+	char pad_0000[0x8];
+	long field_8;
+	long field_c;
+	char pad_0010[0x3c8 - 0x10];
 };
 
 // HYPOTHESIS: stands in for a tCallback<long>-derived class (vtable 0x007ab0c0), likely
@@ -134,7 +140,10 @@ struct fn_0050eea7_sample
 	volatile char field_55;
 	volatile char field_56;
 	volatile char field_57;
-	char pad_58[0xc];
+	// HYPOTHESIS: a fade length in milliseconds, a counter and its start time (vfunction22).
+	volatile long field_58;
+	volatile long field_5c;
+	volatile long field_60;
 	long field_64;
 	char field_68;
 	char pad_69[0x3];
@@ -176,7 +185,7 @@ public:
 	virtual void vfunction19( long param_1 );
 	virtual long vfunction20();
 	virtual void vfunction21( long param_1 );
-	virtual void vfunction22();
+	virtual void vfunction22( double param_1, char param_2 );
 	virtual void vfunction23();
 	virtual void vfunction24();
 	virtual void vfunction25();
@@ -734,6 +743,31 @@ void tSndMgr_Miles::vfunction21( long param_1 )
 			field_10[0].field_78 = 1;
 			field_10[0].field_10 = 1;
 			field_10[0].field_3c = 1;
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050f92b
+void tSndMgr_Miles::vfunction22( double param_1, char param_2 )
+{
+	if ( field_2414 )
+	{
+		if ( param_2 )
+		{
+			fn_0050cb59_object *music = &field_2450;
+			music->fn_0050d95c( 1 );
+			music->field_8 = 0;
+			music->field_c = 0;
+			field_10[0].field_54 = 1;
+		}
+		else if ( param_1 < 0.1 )
+			field_2450.fn_0050d95c( 1 );
+		else if ( !field_10[0].field_57 )
+		{
+			field_10[0].field_58 = param_1 * 1000.0;
+			field_10[0].field_5c = 0;
+			field_10[0].field_60 = g_00c7c120.fn_006a0d50();
+			field_10[0].field_57 = 1;
 		}
 	}
 }
