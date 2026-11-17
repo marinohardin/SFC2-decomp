@@ -8,8 +8,10 @@ public:
 	bool fn_005430ad();
 	void fn_005430b9(bool flag);
 	void fn_005430d3(int amount);
+	char *fn_005430f3();
 
-	char m_pad[0x114];
+	char m_pad[0xd0];
+	char m0d0[0x44];
 	unsigned int m114_0 : 8;
 	unsigned int m114_8 : 1;
 	char m_pad118[0x20];
@@ -38,4 +40,12 @@ void fn_005430ad_owner::fn_005430d3(int amount)
 		m138 -= amount;
 	else
 		m138 = 0;
+}
+
+// HYPOTHESIS: 0x005430f3 works on the same object; it returns the address of a
+// member embedded at +0xd0 whose type is not known yet.
+// FUNCTION: STARFLEETOP 0x005430f3
+char *fn_005430ad_owner::fn_005430f3()
+{
+	return m0d0;
 }
