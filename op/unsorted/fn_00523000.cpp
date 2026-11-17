@@ -536,10 +536,10 @@ tObject_005237dc::tObject_005237dc(int aShipID)
 	, m_14c(0)
 {
 	m_34b0 = 0;
-	m_34cc = false;
-	m_34d0 = 0;
-	m_34d4 = 0;
-	m_34d8 = 0;
+	m_34cc.m_00 = false;
+	m_34cc.m_04 = 0;
+	m_34cc.m_08 = 0;
+	m_34cc.m_0c = 0;
 	m_34dc = 0;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 6; j++) {
@@ -552,4 +552,9 @@ tObject_005237dc::tObject_005237dc(int aShipID)
 		m_10[k].m_00 = false;
 		m_10[k].m_04 = 0.0f;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0052389f
+tObject_005237dc::~tObject_005237dc()
+{
 }

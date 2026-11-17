@@ -30,6 +30,21 @@ public:
 	float m_04;
 };
 
+// HYPOTHESIS: the 16-byte member at +0x34cc, laid out like a VC6 vector of 32-bit values (an
+// allocator byte, then first, last and end-of-storage pointers); destroyed through 0x00571a7a,
+// the destructor tPanelMgr's and tCampaignInfo's vectors use (each declared only in its own .cpp).
+class tObject_005237dc_Vector
+{
+public:
+	~tObject_005237dc_Vector();
+
+	bool m_00;
+	char m_01[3];
+	int m_04;
+	int m_08;
+	int m_0c;
+};
+
 class tExtraEnergyRequest;
 class tObject_00528a11;
 
@@ -56,11 +71,7 @@ public:
 	tObject_005236d8 m_150[24];
 	int m_34b0;
 	char m_34b4[0x18];
-	bool m_34cc;
-	char m_34cd[3];
-	int m_34d0;
-	int m_34d4;
-	int m_34d8;
+	tObject_005237dc_Vector m_34cc;
 	int m_34dc;
 };
 
