@@ -46,6 +46,9 @@ public:
 	void fn_00468527();
 	void fn_00469271();
 	void fn_00469534();
+	void fn_00468297();
+	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
+	void fn_00468a45(int value, const char *name);
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -180,6 +183,20 @@ void tState_GameConnections::vfunction15(c_0046aa10_message *msg)
 		break;
 	case 0x103:
 		msg->id = 0x102;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00468297
+void tState_GameConnections::fn_00468297()
+{
+	switch (m1e4)
+	{
+	case 0x10004:
+		fn_00468a45(m1dc, "IPAddress");
+		break;
+	case 0x10009:
+		fn_00468a45(m1e0, "ModemAddress");
 		break;
 	}
 }
