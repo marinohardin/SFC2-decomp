@@ -377,6 +377,6 @@ public:
 // FUNCTION: STARFLEETOP 0x0056f4aa
 bool fn_0056f4aa_owner::fn_0056f4aa(fn_0056f4aa_target *object)
 {
-	int value = (object->*m8)();
-	return value == m10;
+	bool result = (object->*m8)() == m10;
+	return result;
 }
