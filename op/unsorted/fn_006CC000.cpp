@@ -446,3 +446,19 @@ int fn_006cc910(fn_006cc0f0_server *server)
 	fn_006cc530_record *record = (fn_006cc530_record *)server;
 	return record->field_04;
 }
+
+char **fn_006cc9a0(fn_006cc0f0_server *server, char *key);
+
+// HYPOTHESIS: returns the value stored under a key of a server entry, or the default given;
+// the "hostaddr" key is answered from the address itself.
+// FUNCTION: STARFLEETOP 0x006cc920
+char *fn_006cc920(fn_006cc0f0_server *server, char *key, char *fallback)
+{
+	char **pair;
+	if (strcmp(key, "hostaddr") == 0)
+		return fn_006cc8f0(server);
+	pair = fn_006cc9a0(server, key);
+	if (pair == 0)
+		return fallback;
+	return pair[1];
+}

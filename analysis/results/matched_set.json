@@ -17047,6 +17047,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x006cc920": {
+   "name": "FUN_006cc920",
+   "symbol": "?fn_006cc920@@YAPADPAUfn_006cc0f0_server@@PAD1@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",
    "symbol": "?mGetVersionNumber@tSFCStream@@QAEHXZ",
