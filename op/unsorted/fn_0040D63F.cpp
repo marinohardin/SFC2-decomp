@@ -1204,6 +1204,17 @@ void fn_0040ecfd(char* text, tSFCStream& buf, unsigned char flags)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040ed22
+void fn_0040ed22(tSFCStream& buf, unsigned char flags)
+{
+    if (flags & 4) {
+        if (flags & 2)
+            fn_0040e65f(buf);
+        else
+            fn_0040e675(buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e9df
 void fn_0040e9df(long* value, tSFCStream& buf, unsigned char flags, char* name)
 {
