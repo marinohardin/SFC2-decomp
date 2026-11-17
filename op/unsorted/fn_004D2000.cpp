@@ -777,7 +777,7 @@ class fn_004d2b75_map
 public:
 	fn_004d2420_holder*& fn_004d2b75(const fn_004d2238_string& key);
 	fn_004d2b75_insert_result fn_004d2cca(const fn_004d2b75_pair& value);
-	// HYPOTHESIS: the lookup is the map's find (call at 0x004d28d8); a node holds its value at +0x1c.
+	// HYPOTHESIS: the lookup is the map's find (0x005d0e94, called at 0x004d28d8); a node holds its value at +0x1c.
 	struct fn_node
 	{
 		char m_0x00[0x1c];
@@ -788,7 +788,7 @@ public:
 		fn_iterator() {}
 		fn_node* m_0x00;
 	};
-	fn_iterator fn_find(const fn_004d2238_string& key);
+	fn_iterator fn_005d0e94(const fn_004d2238_string& key);
 	char m_0x00[4];
 	fn_node* m_0x04; // end node
 };
@@ -831,7 +831,7 @@ fn_004d2420_holder* fn_004d27fa_owner::fn_004d288f(const char* text)
 	if (text != 0)
 	{
 		char allocator;
-		fn_004d2b75_map::fn_iterator it = m_0x28.fn_find(fn_004d2238_string(text, allocator));
+		fn_004d2b75_map::fn_iterator it = m_0x28.fn_005d0e94(fn_004d2238_string(text, allocator));
 		if (it.m_0x00 != m_0x28.m_0x04)
 		{
 			fn_004d2420_holder* found = it.m_0x00->m_0x1c;
