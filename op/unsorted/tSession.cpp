@@ -19,6 +19,9 @@ public:
 
 	char	pad_00[0x34];
 	tRect	f_34;
+	char	pad_3c[0x68 - 0x3c];
+	// HYPOTHESIS: a string whose wide text fn_006901b0 hands to the parser.
+	tString	f_68;
 };
 
 // HYPOTHESIS: the parse result returned by tHtmlParser::fn_00692620; deleted through its
@@ -47,7 +50,8 @@ public:
 	tHtmlParser();
 
 	void	fn_00690180( tString &name, fn_0068ff60_Root *root, tDir dir );
-	fn_0068d830_Item	*fn_00692620( int a );
+	// HYPOTHESIS: the argument is the wide text to parse (fn_006901b0 passes mWideStr()).
+	fn_0068d830_Item	*fn_00692620( iBasicStringElement *text );
 
 	tString	f_10;
 	char	pad_10[0x44 - 0x10 - sizeof(tString)];
@@ -62,7 +66,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0068ff60
-fn_0068ff60_Root *fn_0068ff60( int a, tString &b, fn_0068ff60_Root *c, tDir dir )
+fn_0068ff60_Root *fn_0068ff60( iBasicStringElement *a, tString &b, fn_0068ff60_Root *c, tDir dir )
 {
 	tHtmlParser	parser;
 
@@ -88,4 +92,14 @@ void tHtmlParser::fn_00690180( tString &name, fn_0068ff60_Root *root, tDir dir )
 	f_44 = name;
 	f_6c = root;
 	f_70 = dir;
+}
+
+// FUNCTION: STARFLEETOP 0x006901b0
+fn_0068d830_Item *fn_006901b0( fn_0068ff60_Root *root )
+{
+	tHtmlParser	parser;
+	tDir	dir;
+
+	parser.fn_00690180( tString( "" ), root, dir );
+	return parser.fn_00692620( root->f_68.mWideStr() );
 }
