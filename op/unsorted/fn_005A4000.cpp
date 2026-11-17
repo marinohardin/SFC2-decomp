@@ -31,7 +31,8 @@ public:
 	std::string	fString88;
 	std::string	fString98;
 	std::string	fStringA8;
-	char		pad[0x208 - 0xa8 - sizeof(std::string)];
+	std::string	fStringB8;
+	char		pad[0x208 - 0xb8 - sizeof(std::string)];
 	int		fValue208;
 	int		fValue20c;
 	float		fValue210;
@@ -48,6 +49,7 @@ public:
 	std::string	fn_005A436c();
 	std::string	fn_005A43d5();
 	std::string	fn_005A443e();
+	std::string	fn_005A44a7();
 };
 
 // Inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is claimed in
@@ -203,4 +205,11 @@ std::string fn_005A4173_Owner::fn_005A443e()
 {
 	tGuard guard(this);
 	return fStringA8;
+}
+
+// FUNCTION: STARFLEETOP 0x005a44a7
+std::string fn_005A4173_Owner::fn_005A44a7()
+{
+	tGuard guard(this);
+	return fStringB8;
 }
