@@ -99,15 +99,15 @@ int fn_004bd6d1( tString *text, int width )
 	return -1;
 }
 
-// HYPOTHESIS: makes a news list box; the analysis starts it after its EH prologue.
-// FUNCTION: STARFLEETOP 0x004bd782
+// HYPOTHESIS: makes a news list box.
+// Unclaimed: it starts at 0x004bd778; the analysis splits it at 0x004bd782 (a boundary error).
 tListBox_News *fn_004bd782( void )
 {
 	return new tListBox_News;
 }
 
-// HYPOTHESIS: makes a news session list box; the analysis starts it after its EH prologue.
-// FUNCTION: STARFLEETOP 0x004bd7ce
+// HYPOTHESIS: makes a news session list box.
+// Unclaimed: it starts at 0x004bd7c4; the analysis splits it at 0x004bd7ce (a boundary error).
 tListBox_News_Session *fn_004bd7ce( void )
 {
 	return new tListBox_News_Session;
@@ -148,8 +148,8 @@ c_004bd805_Object::c_004bd805_Object()
 	fn_004bdd67();
 }
 
-// HYPOTHESIS: the destructor; the analysis starts it after its EH prologue.
-// FUNCTION: STARFLEETOP 0x004bd862
+// HYPOTHESIS: the destructor.
+// Unclaimed: it starts at 0x004bd858; the analysis splits it at 0x004bd862 (a boundary error).
 c_004bd805_Object::~c_004bd805_Object()
 {
 	field_5618 = 0;

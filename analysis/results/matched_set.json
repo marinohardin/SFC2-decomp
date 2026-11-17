@@ -4438,24 +4438,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x004bd782": {
-   "name": "FUN_004bd782",
-   "symbol": "?fn_004bd782@@YAPAVtListBox_News@@XZ",
-   "unit": "unsorted/fn_004BD43E.cpp",
-   "size": 53,
-   "score": 12.105,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
-  "0x004bd7ce": {
-   "name": "FUN_004bd7ce",
-   "symbol": "?fn_004bd7ce@@YAPAVtListBox_News_Session@@XZ",
-   "unit": "unsorted/fn_004BD43E.cpp",
-   "size": 55,
-   "score": 9.375,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x004bd805": {
    "name": "FUN_004bd805",
    "symbol": "??0c_004bd805_Object@@QAE@XZ",
@@ -4463,15 +4445,6 @@
    "size": 78,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x004bd862": {
-   "name": "FUN_004bd862",
-   "symbol": "??1c_004bd805_Object@@QAE@XZ",
-   "unit": "unsorted/fn_004BD43E.cpp",
-   "size": 114,
-   "score": 10.054,
-   "exact": false,
    "recorded": "2026-11-17"
   },
   "0x004bd8d4": {

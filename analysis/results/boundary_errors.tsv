@@ -57,3 +57,6 @@ address	name	part_of	kind	note
 0x00496665	FUN_00496665		initializer-fragment	0x00496665 is the tail (fstp to 0x009172d4, ret) of the initializer that holds 0x00496629.
 0x005ea63e	FUN_005ea63e	0x005ea5e5	body-fragment	0x005ea63e is one byte (pop esi), the tail of the routine at 0x005ea5e5; not a function of its own.
 0x0057a577	FUN_0057a577	0x0057a4ab	body-fragment	0x0057a577 is the resume point after the catch block at 0x0057a552 (which returns it in eax) inside 0x0057a4ab, not a function of its own.
+0x004bd782	FUN_004bd782	0x004bd778	body-fragment	0x004bd782 follows the exception prolog (mov eax, <handler>; call __EH_prolog) at 0x004bd778, where the function that makes a news list box starts. Body kept in op/, unclaimed, as the function at 0x004bd778.
+0x004bd7ce	FUN_004bd7ce	0x004bd7c4	body-fragment	0x004bd7ce follows the exception prolog at 0x004bd7c4, where the function that makes a news session list box starts. Body kept in op/, unclaimed, as the function at 0x004bd7c4.
+0x004bd862	FUN_004bd862	0x004bd858	body-fragment	0x004bd862 follows the exception prolog at 0x004bd858, where the destructor of the 0x004bd805 object starts. Body kept in op/, unclaimed, as the function at 0x004bd858.
