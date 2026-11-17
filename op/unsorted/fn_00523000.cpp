@@ -320,3 +320,13 @@ tObject_0051c7af *fn_0090bed4_Object::fn_00523543(int param_1)
 	}
 	return NULL;
 }
+
+// FUNCTION: STARFLEETOP 0x00523574
+// HYPOTHESIS: the table entry is returned only when bit 0x800 of its +0x18 field is set.
+tObject_0051c7af *fn_0090bed4_Object::fn_00523574(int param_1)
+{
+	void *pObject = (param_1 < 0 || param_1 >= 0x4000) ? NULL : g_008e1090[param_1];
+	if (pObject == NULL)
+		return NULL;
+	return (*(unsigned long *) ((char *) pObject + 0x18) & 0x800) ? (tObject_0051c7af *) pObject : NULL;
+}
