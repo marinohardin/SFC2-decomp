@@ -6670,6 +6670,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005bc404": {
+   "name": "FUN_005bc404",
+   "symbol": "?FUN_005bc404@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
