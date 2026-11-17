@@ -376,3 +376,15 @@ void fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >* list, bo
     ((fn_00534855_entry*)(*list)[i])->field_04 = 1;
     ((fn_005343b1_object*)this)->fn_005343b1(group, ((fn_00534855_entry*)(*list)[i])->field_00);
 }
+
+// HYPOTHESIS: clears the taken mark of every entry in both vectors, last to first.
+// FUNCTION: STARFLEETOP 0x00534903
+void fn_005346f9_object::fn_00534903()
+{
+    int i = field_2c.size();
+    while (i--)
+        ((fn_00534855_entry*)field_2c[i])->field_04 = 0;
+    i = field_3c.size();
+    while (i--)
+        ((fn_00534855_entry*)field_3c[i])->field_04 = 0;
+}
