@@ -18,7 +18,7 @@ public:
     virtual void vfunction0();
     virtual int vfunction1();
     virtual float vfunction2();
-    virtual void vfunction3();
+    virtual float vfunction3();
     virtual void vfunction4();
     virtual void vfunction5();
     virtual void vfunction6();
@@ -531,6 +531,8 @@ public:
     virtual void vfunction82();
     virtual void vfunction83();
     virtual float vfunction84();
+    virtual void vfunction85();
+    virtual float vfunction86();
 };
 
 // HYPOTHESIS: the return type; the original returns the float from slot 84 of the object at
@@ -541,5 +543,16 @@ float tShipSystemsFighter::vfunction2()
     fn_0044444d_field60c_type* p = *(fn_0044444d_field60c_type**)( m5c4 + 0x48 );
     if( p != 0 )
         return p->vfunction84();
+    return 0.0f;
+}
+
+// HYPOTHESIS: the return type; the same object as vfunction2, whose slot 86 (+0x158) is taken
+// to return a float.
+// FUNCTION: STARFLEETOP 0x00444466
+float tShipSystemsFighter::vfunction3()
+{
+    fn_0044444d_field60c_type* p = *(fn_0044444d_field60c_type**)( m5c4 + 0x48 );
+    if( p != 0 )
+        return p->vfunction86();
     return 0.0f;
 }
