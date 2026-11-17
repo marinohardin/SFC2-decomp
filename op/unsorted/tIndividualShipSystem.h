@@ -218,7 +218,8 @@ public:
     virtual bool vfunction14();
     // HYPOTHESIS: slot 14; says whether the type index at +0xc is 0x36.
     virtual bool vfunction15();
-    virtual void vfunction16();
+    // HYPOTHESIS: slot 15; returns the dword at +0x20.
+    virtual int vfunction16();
     virtual void vfunction17();
     virtual void vfunction18();
     virtual void vfunction19();
@@ -284,7 +285,7 @@ public:
     int field_14;
     int field_18;
     int field_1c;
-    char pad20[0x24 - 0x20];
+    int field_20;
     // HYPOTHESIS: the group's list of member systems; tShieldGroup's constructor allocates it.
     class tIndividualShipSystemList* field_24;
     int field_28;
