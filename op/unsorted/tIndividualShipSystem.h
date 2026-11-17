@@ -223,7 +223,8 @@ public:
     virtual void vfunction7(tListMember *aMember);
     virtual void vfunction8();
     virtual void vfunction9();
-    virtual void vfunction10();
+    // HYPOTHESIS: slot 9 returns an int; tShuttleBaySystem's 0x0044edc8 tests it for > 0.
+    virtual int vfunction10();
     virtual int vfunction11();
     virtual void vfunction12();
     virtual void vfunction13();
@@ -296,7 +297,8 @@ public:
     // reads each shield's through it).
     virtual int vfunction56();
     virtual void vfunction57(int param_1);
-    virtual void vfunction58();
+    // HYPOTHESIS: slot 57 returns an int; tShuttleBaySystem's 0x0044edc8 divides by it.
+    virtual int vfunction58();
     virtual void vfunction59(int param_1);
     virtual void vfunction60();
     // HYPOTHESIS: slot 60; stores its argument in the dword at +0x1c.

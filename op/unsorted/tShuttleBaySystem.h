@@ -112,6 +112,9 @@ public:
     virtual int vfunction135(int param_1);
     // vftable slot 136; returns element param_1 of the array vfunction133 stores into.
     virtual int vfunction136(int param_1);
+    // HYPOTHESIS: the per-frame update in vftable slot 38. The base declares that slot without
+    // the float, so this declaration adds a slot; it sits last so it shifts no known slot.
+    virtual void vfunction39(float param_1);
     // HYPOTHESIS: drops the ids in field_80 whose ship still exists and, once it is empty,
     // checks the ships of field_3a8 and field_1c8.
     void fn_0044ea7e();
@@ -120,6 +123,13 @@ public:
     // HYPOTHESIS: advances two timers of each entry of field_8c by param_1; once both are full,
     // stores the entry's value into the first free slot whose name it finds, then drops it.
     void fn_0044ec9a(float param_1);
+    // HYPOTHESIS: tRepairableShipSystem's non-virtual update step, taking the elapsed time.
+    void fn_0043d696(float elapsed);
+    void fn_0044f071(float param_1);
+    void fn_0044f17d(int param_1);
+    void fn_0044f222(int param_1);
+    void fn_0044ff32();
+    void fn_004507b2();
 
     int field_7c;
     // HYPOTHESIS: a list of owned objects; the destructor (0x0044e844) destroys it with the
@@ -182,7 +192,10 @@ public:
     char pad448[0x4cc - 0x448];
     // HYPOTHESIS: passed with an index to slots 119 and 120 by 0x0044ea7e.
     int field_4cc;
-    char pad4d0[0x4d8 - 0x4d0];
+    char pad4d0[0x4d4 - 0x4d0];
+    // HYPOTHESIS: a flag; 0x0044edc8 calls fn_004507b2 while it is set.
+    bool field_4d4;
+    char pad4d5[0x4d8 - 0x4d5];
     // HYPOTHESIS: four weights; vfunction17 multiplies field_e8, field_f4, field_a0's value and
     // field_c4's value by them.
     int field_4d8;

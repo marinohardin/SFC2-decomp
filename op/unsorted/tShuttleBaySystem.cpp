@@ -328,3 +328,79 @@ void tShuttleBaySystem::fn_0044ec9a(float param_1)
 tObject_0044ec9a_item::~tObject_0044ec9a_item()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0044edc8
+void tShuttleBaySystem::vfunction39(float param_1)
+{
+    fn_0043d696(param_1);
+    if (field_4d4 && vfunction10() > 0)
+        fn_004507b2();
+    field_50 += param_1;
+    double now = g_00c7c148;
+    if (now - field_48 < 100000.0 && param_1 < 1.0f)
+        return;
+    fn_0090be9c_type* source = g_0090be9c;
+    field_48 = (double)source->vfunction7() / (double)source->field_20 * 100000.0 + now;
+    param_1 = field_50;
+    field_50 = 0.0f;
+    fn_0044ea7e();
+    fn_0044ec9a(param_1);
+    int total = vfunction58();
+    if (total != 0 && vfunction10() > 0)
+    {
+        int count = (int)((float)field_10 / total * field_9c);
+        if (count < 1)
+            count = 1;
+        if (count > 0)
+        {
+            tMinMaxFloat* value = &field_3b8;
+            value->vfunction3(param_1 + value->m18);
+            if (count > 1)
+            {
+                value = &field_3dc;
+                value->vfunction3(param_1 + value->m18);
+                if (count > 2)
+                {
+                    value = &field_400;
+                    value->vfunction3(param_1 + value->m18);
+                    if (count > 3)
+                    {
+                        value = &field_424;
+                        value->vfunction3(param_1 + value->m18);
+                    }
+                    else
+                        field_424.vfunction3(0.0f);
+                }
+                else
+                {
+                    field_400.vfunction3(0.0f);
+                    field_424.vfunction3(0.0f);
+                }
+            }
+            else
+            {
+                field_3dc.vfunction3(0.0f);
+                field_400.vfunction3(0.0f);
+                field_424.vfunction3(0.0f);
+            }
+        }
+        else
+        {
+            field_3b8.vfunction3(0.0f);
+            field_3dc.vfunction3(0.0f);
+            field_400.vfunction3(0.0f);
+            field_424.vfunction3(0.0f);
+        }
+    }
+    else
+    {
+        field_3b8.vfunction3(0.0f);
+        field_3dc.vfunction3(0.0f);
+        field_400.vfunction3(0.0f);
+        field_424.vfunction3(0.0f);
+    }
+    fn_0044f17d(0);
+    fn_0044f222(0);
+    fn_0044ff32();
+    fn_0044f071(param_1);
+}
