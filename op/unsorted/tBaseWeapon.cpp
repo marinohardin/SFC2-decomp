@@ -216,3 +216,14 @@ float tBaseWeapon::vfunction119()
 {
     return g_00795620;
 }
+
+// FUNCTION: STARFLEETOP 0x004d77ab
+void tBaseWeapon::vfunction123(float* param_1)
+{
+    if (param_1 != 0)
+    {
+        *(char*)param_1 = vfunction106();
+        for (int i = 0; i < *(unsigned char*)param_1; i++)
+            param_1[i + 1] = vfunction135(i);
+    }
+}

@@ -178,7 +178,7 @@ public:
     virtual void vfunction120();
     virtual int vfunction121();
     virtual void vfunction122();
-    virtual void vfunction123();
+    virtual void vfunction123(float* param_1);
     virtual void vfunction124(int param_1);
     virtual void vfunction125();
     virtual void vfunction126();
@@ -192,7 +192,7 @@ public:
     virtual bool vfunction132(int param_1);
     virtual int vfunction133();
     virtual bool vfunction134();
-    virtual void vfunction135();
+    virtual float vfunction135(int param_1);
     virtual void vfunction136();
     virtual void vfunction137();
     virtual bool vfunction138();
