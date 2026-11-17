@@ -93,3 +93,21 @@ long fn_00585769_owner::fn_00585769()
 	fAccess.Leave();
 	return value;
 }
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x178; its name is not recovered.
+class fn_00585781_owner {
+public:
+	float fn_00585781();
+	tOptex fAccess;
+	char fn_00585781_pad0[0x178 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585781
+float fn_00585781_owner::fn_00585781()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
