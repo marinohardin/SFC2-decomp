@@ -292,3 +292,34 @@ void tShuttleBaySystem::fn_0044ea7e()
         }
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0044ec9a
+void tShuttleBaySystem::fn_0044ec9a(float param_1)
+{
+    std::vector<tObject_0044ec9a_item*>::iterator it = field_8c.begin();
+    while (it != field_8c.end())
+    {
+        (*it)->field_4 += param_1;
+        if ((*it)->field_4 > (*it)->field_0)
+            (*it)->field_4 = (*it)->field_0;
+        (*it)->field_c += param_1;
+        if ((*it)->field_c > (*it)->field_8)
+            (*it)->field_c = (*it)->field_8;
+        if ((*it)->field_4 == (*it)->field_0 && (*it)->field_c == (*it)->field_8)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (field_108[i] <= 0 && field_3a8[i] <= 0 && field_2d8[i].size() != 0
+                    && field_2d8[i].find((*it)->field_18) != std::string::npos)
+                {
+                    field_108[i] = (*it)->field_14;
+                    break;
+                }
+            }
+            delete *it;
+            it = field_8c.erase(it);
+        }
+        else
+            ++it;
+    }
+}

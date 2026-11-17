@@ -18,6 +18,23 @@ public:
     virtual ~tObject_0044e844_item();
 };
 
+// HYPOTHESIS: the entries of the vector at +0x90; 0x0044ec9a fills field_4 up to field_0 and
+// field_c up to field_8, then looks for field_18 in the names of field_2d8 and stores field_14.
+// Its destructor is 0x0044edbd. Its class is not known.
+class tObject_0044ec9a_item
+{
+public:
+    ~tObject_0044ec9a_item();
+
+    float field_0;
+    float field_4;
+    float field_8;
+    float field_c;
+    int field_10;
+    int field_14;
+    std::string field_18;
+};
+
 // HYPOTHESIS: the base is tRepairableShipSystem, as for the other ship systems; the fields
 // between +0x7c and +0xa0 are not recovered.
 class tShuttleBaySystem : public tRepairableShipSystem
@@ -100,14 +117,18 @@ public:
     void fn_0044ea7e();
     // HYPOTHESIS: takes an index into field_3a8 and a state; 0x0044ea7e passes 4.
     void fn_0044fb1f(int param_1, int param_2);
+    // HYPOTHESIS: advances two timers of each entry of field_8c by param_1; once both are full,
+    // stores the entry's value into the first free slot whose name it finds, then drops it.
+    void fn_0044ec9a(float param_1);
 
     int field_7c;
     // HYPOTHESIS: a list of owned objects; the destructor (0x0044e844) destroys it with the
     // out-of-line list destructor 0x005d6a72, as the one at +0x4f0.
     // 0x0044ea7e passes its elements to the entity lookup: entity ids.
     std::list<int> field_80;
-    // HYPOTHESIS: a 0x10-byte vector of 32-bit values; its destructor is 0x00571a7a.
-    std::vector<int> field_8c;
+    // HYPOTHESIS: a 0x10-byte vector of owned pointers; its destructor is 0x00571a7a.
+    // 0x0044ec9a deletes and erases its entries.
+    std::vector<tObject_0044ec9a_item*> field_8c;
     int field_9c;
     // The value object at +0xa4; vfunction104 returns its value.
     tValue<long> field_a0;
