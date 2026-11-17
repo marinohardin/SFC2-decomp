@@ -871,3 +871,25 @@ int tSensorGroupSystem::fn_0043eca6(int param_1)
         result = fn_0043ecde(-value);
     return result;
 }
+
+extern float g_0079bfb8;
+
+// FUNCTION: STARFLEETOP 0x0043ecde
+int fn_0043ecde(float param_1)
+{
+    // 1.5 * 2^23: adding it leaves the rounded value in the low bits.
+    param_1 += g_0079bfb8;
+    int n = (short&)param_1;
+    int result = 0;
+    int i = 2;
+    if (n >= 1)
+    {
+        result = 1;
+        while (n >= i * i)
+        {
+            i++;
+            result++;
+        }
+    }
+    return result;
+}
