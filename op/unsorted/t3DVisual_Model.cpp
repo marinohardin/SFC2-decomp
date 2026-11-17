@@ -1,17 +1,46 @@
-// HYPOTHESIS: t3DVisual is the base named by RTTI; its constructor links each visual
-// into the list headed at 0x008f5974. Member names are not known.
-// HYPOTHESIS: the original stores only one vtable and stores it after m04, so the
-// list linking is written in this constructor rather than in an inlined base one.
-// HYPOTHESIS: a non-polymorphic base holding m04; the original stores m04 before the
-// vtable, which only a base constructor run first explains. Its name is not known.
-class tBase_0042f858
+#include "unsorted/t3DVisual.h"
+
+// HYPOTHESIS: each visual is linked into the list headed at 0x008f5974. Member names
+// are not known.
+// HYPOTHESIS: m04 is t3DVisual's; the original stores it before the only vtable store,
+// which the inlined base constructor explains once its own vtable store is dropped.
+
+// HYPOTHESIS: the object at 0x008cc620 releases a handle through its second slot.
+class tMgr_008cc620
 {
 public:
-	tBase_0042f858() { m04 = 1; }
-	int m04;
+	virtual void vfunction1();
+	virtual void vfunction2(int handle);
 };
 
-class t3DVisual_Model : public tBase_0042f858
+// HYPOTHESIS: one 0x24-byte entry of the array at +0x158.
+struct tEntry_0042f918
+{
+	unsigned char mFlags;
+	char m01[0x13];
+	int m14;
+	int m18;
+	int m1c;
+	int m20;
+};
+
+// HYPOTHESIS: the polymorphic objects owned at +0x160.
+class tPart_0042f918
+{
+public:
+	virtual ~tPart_0042f918();
+};
+
+// HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
+class tNode_0042f467
+{
+public:
+	~tNode_0042f467();
+
+	tNode_0042f467 *mNext;
+};
+
+class t3DVisual_Model : public t3DVisual
 {
 public:
 	t3DVisual_Model();
@@ -29,15 +58,15 @@ public:
 	float m128;
 	float m12c[5];
 	float m140[5];
-	int m154;
-	int m158;
+	char *m154;
+	tEntry_0042f918 *m158;
 	int m15c;
-	int m160[5];
+	tPart_0042f918 *m160[5];
 	int m174;
 	float m178;
-	int m17c;
+	char *m17c;
 	int m180;
-	int m184;
+	tNode_0042f467 *m184;
 };
 
 extern t3DVisual_Model *g_008f5974;
@@ -73,9 +102,58 @@ t3DVisual_Model::t3DVisual_Model()
 	m184 = 0;
 }
 
-// The destructor proper (0x0042f918, 349 bytes with an EH frame) is not written yet;
-// its body here is empty until it is.
+extern tMgr_008cc620 *g_008cc620;
+
 // FUNCTION: STARFLEETOP 0x0042f8fc
+// FUNCTION: STARFLEETOP 0x0042f918
 t3DVisual_Model::~t3DVisual_Model()
 {
+	if (m154 != 0)
+	{
+		for (int i = 0; i < m15c; i++)
+		{
+			tEntry_0042f918 *entry = &m158[i];
+			if (entry->m14 != 0)
+				g_008cc620->vfunction2(entry->m14);
+			if ((entry->mFlags & 0x20) && entry->m1c != 0)
+				g_008cc620->vfunction2(entry->m1c);
+		}
+	}
+	for (int j = 0; j < 5; j++)
+	{
+		if (m160[j] != 0)
+		{
+			delete m160[j];
+			m160[j] = 0;
+		}
+	}
+	if (m154 != 0)
+	{
+		delete m154;
+		m154 = 0;
+	}
+	if (m158 != 0)
+	{
+		delete m158;
+		m158 = 0;
+		m15c = 0;
+	}
+	if (m17c != 0)
+	{
+		delete m17c;
+		m17c = 0;
+		m180 = 0;
+	}
+	while (m184 != 0)
+	{
+		tNode_0042f467 *next = m184->mNext;
+		delete m184;
+		m184 = next;
+	}
+	if (mPrev != 0)
+		mPrev->mNext = mNext;
+	else
+		g_008f5974 = mNext;
+	if (mNext != 0)
+		mNext->mPrev = mPrev;
 }
