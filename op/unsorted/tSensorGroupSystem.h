@@ -53,7 +53,7 @@ public:
     void fn_0043f71b(int param_1, int param_2);
     void fn_0043eee8();
     // HYPOTHESIS: the result is an integer 0x0043eee8 converts to float.
-    int fn_0043f023(struct vfunction33_result* owner, tObject_0042496f* target);
+    int fn_0043f023(vfunction33_result* owner, tObject_0042496f* target);
     // HYPOTHESIS: a value for one map cell; 0x0043f023 sums it along a line of cells.
     int fn_0043f618(int x, int y);
     virtual void vfunction39(float param_1);
