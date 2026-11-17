@@ -58,6 +58,7 @@ public:
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
 	float vfunction10();
 	bool vfunction11(tPoint3 *out, const char *name);
+	int vfunction12();
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -197,4 +198,10 @@ bool t3DVisual_Model::vfunction11(tPoint3 *out, const char *name)
 		}
 	}
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fb24
+int t3DVisual_Model::vfunction12()
+{
+	return m180;
 }
