@@ -318,3 +318,32 @@ fn_005bc249_elem *fn_005bc249_vector::FUN_005bc249(fn_005bc249_elem *_F, fn_005b
 	_Last = _S;
 	return (_F);
 }
+
+// HYPOTHESIS: a 44-byte element of another STL vector.
+struct fn_005bc2a0_elem
+{
+	char m00[0x2c];
+};
+
+// HYPOTHESIS: an STL vector of 44-byte elements laid out like
+// fn_005bc018_vector.
+struct fn_005bc2a0_vector
+{
+	char m00;
+	fn_005bc2a0_elem *_First;
+	fn_005bc2a0_elem *_Last;
+	fn_005bc2a0_elem *_End;
+
+	// HYPOTHESIS: insert(_P, _M, _X).
+	void FUN_005bcb5b(fn_005bc2a0_elem *_P, unsigned int _M, const fn_005bc2a0_elem &_X);
+	fn_005bc2a0_elem *FUN_005bc2a0(fn_005bc2a0_elem *_P, const fn_005bc2a0_elem &_X);
+};
+
+// HYPOTHESIS: the STL vector's insert(_P, _X).
+// FUNCTION: STARFLEETOP 0x005bc2a0
+fn_005bc2a0_elem *fn_005bc2a0_vector::FUN_005bc2a0(fn_005bc2a0_elem *_P, const fn_005bc2a0_elem &_X)
+{
+	fn_005bc2a0_elem *_F = _First;
+	FUN_005bcb5b(_P, 1, _X);
+	return (_First + (_P - _F));
+}
