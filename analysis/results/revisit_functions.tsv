@@ -57,7 +57,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00630530	twFileSystemPart::mFileSaveDialog	0.00	2	sonnet	2026-11-16T17:06:07Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00630d70	twFileSystemPart::mWinStringFromPath	5.02	2	sonnet	2026-11-16T17:10:55Z	attempt 2 (sonnet) did not raise the best; best 5.02%
 0x006313e0	twVolume::mGetRoot	18.87	2	sonnet	2026-11-16T17:38:02Z	attempt 2 (sonnet) did not raise the best; best 18.87%
-0x006315d0	twDir::mMakeFullPath	99.04	3	opus	2026-11-16T17:59:37Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.04%
 0x00631860	twDir::mGetDate	92.56	2	sonnet	2026-11-16T18:12:21Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 92.56%
 0x00631970	twDir::mGetSize	0.00	2	sonnet	2026-11-16T18:39:21Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00631b30	twDir::mGetNamedDir	22.24	2	sonnet	2026-11-16T18:50:33Z	attempt 2 (sonnet) did not raise the best; best 22.24%
