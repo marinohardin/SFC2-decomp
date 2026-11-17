@@ -1,4 +1,6 @@
 #include "unsorted/t3DVisual.h"
+#include "Tiger/tvectormath.h"
+#include <string.h>
 
 // HYPOTHESIS: each visual is linked into the list headed at 0x008f5974. Member names
 // are not known.
@@ -24,6 +26,14 @@ struct tEntry_0042f918
 	int m20;
 };
 
+// HYPOTHESIS: one 0x10-byte entry of the array at +0x17c: a point and the offset of its
+// name in the string block at +0x154.
+struct tEntry_0042fa82
+{
+	tPoint3 mPoint;
+	int mName;
+};
+
 // HYPOTHESIS: the polymorphic objects owned at +0x160.
 class tPart_0042f918
 {
@@ -47,6 +57,7 @@ public:
 	virtual ~t3DVisual_Model();
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
 	float vfunction10();
+	bool vfunction11(tPoint3 *out, const char *name);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -66,7 +77,7 @@ public:
 	tPart_0042f918 *m160[5];
 	int m174;
 	float m178;
-	char *m17c;
+	tEntry_0042fa82 *m17c;
 	int m180;
 	tNode_0042f467 *m184;
 };
@@ -164,4 +175,26 @@ t3DVisual_Model::~t3DVisual_Model()
 float t3DVisual_Model::vfunction10()
 {
 	return m178 * m118;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fa82
+bool t3DVisual_Model::vfunction11(tPoint3 *out, const char *name)
+{
+	if (out == 0)
+		return false;
+	out->x = 0.0f;
+	out->y = 0.0f;
+	out->z = 0.0f;
+	if (name == 0 || m154 == 0)
+		return false;
+	for (int i = 0; i < m180; i++)
+	{
+		tEntry_0042fa82 *entry = &m17c[i];
+		if (stricmp(m154 + entry->mName, name) == 0)
+		{
+			*out = entry->mPoint * m178;
+			return true;
+		}
+	}
+	return false;
 }
