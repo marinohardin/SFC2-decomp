@@ -21,14 +21,21 @@ def _load():
 pc = _load()
 
 
-def _progress(exact_pct=1.25, functional_pct=0.5, named_pct=7.5, exact=()):
-    st = {'exact': {'pct_bytes': exact_pct}, 'functional': {'pct_bytes': functional_pct}}
+def _progress(exact_pct=1.25, partial_pct=0.5, named_pct=7.5, exact=()):
+    st = {'exact': {'pct_bytes': exact_pct}, 'functional': {'pct_bytes': 0.0},
+          'partial': {'pct_bytes': partial_pct}}
     return {'scopes': {'game': {'status': st, 'named_real_symbol': {'pct_functions': named_pct}}},
             'exact': list(exact), 'functional': []}
 
 
-def test_badges_are_the_game_scope_figures_with_functional_including_exact():
-    assert pc.badge_values(_progress()) == (1.25, 1.75, 7.5)
+def test_badges_are_the_game_scope_exact_partial_and_named_figures():
+    assert pc.badge_values(_progress()) == (1.25, 0.5, 7.5)
+
+
+def test_a_progress_json_without_partial_shows_partial_as_zero():
+    old = _progress()
+    del old['scopes']['game']['status']['partial']
+    assert pc.badge_values(old) == (1.25, 0.0, 7.5)
 
 
 def test_badge_shows_label_and_value_and_fits_the_value():
@@ -116,7 +123,7 @@ def test_running_twice_writes_the_same_files(tmp_path):
             str(tmp_path / 'functions.csv'), '--units', str(tmp_path / 'UNITS.tsv'),
             '--matched-set', str(tmp_path / 'matched.json'),
             '--funclets', str(tmp_path / 'funclets.tsv')]
-    names = ['badge-exact.svg', 'badge-functional.svg', 'badge-named.svg', 'treemap.svg']
+    names = ['badge-exact.svg', 'badge-named.svg', 'badge-partial.svg', 'treemap.svg']
     pc.main(args + ['--out', str(tmp_path / 'a')])
     pc.main(args + ['--out', str(tmp_path / 'b')])
     for n in names:
@@ -165,5 +172,5 @@ def test_warns_when_the_matched_set_is_ahead_of_progress_or_units_miss_game_code
 def test_not_started_writes_three_badges_and_no_treemap(tmp_path):
     assert pc.main(['--not-started', '--out', str(tmp_path)]) == 0
     assert sorted(p.name for p in tmp_path.iterdir()) == [
-        'badge-exact.svg', 'badge-functional.svg', 'badge-named.svg']
+        'badge-exact.svg', 'badge-named.svg', 'badge-partial.svg']
     assert 'Exact: not started' in (tmp_path / 'badge-exact.svg').read_text()

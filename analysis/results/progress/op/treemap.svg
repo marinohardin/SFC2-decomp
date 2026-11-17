@@ -317,12 +317,12 @@
 <rect x="764.5" y="28.0" width="24.7" height="23.9" fill="#333633"><title>unsorted/tSurface.cpp: 0.0% of 2,749 bytes</title></rect>
 <rect x="789.2" y="28.0" width="24.7" height="23.9" fill="#333633"><title>unsorted/fn_00446000.cpp: 0.0% of 2,747 bytes</title></rect>
 <rect x="813.9" y="28.0" width="24.6" height="23.9" fill="#333633"><title>unsorted/fn_00735000.cpp: 0.0% of 2,744 bytes</title></rect>
-<rect x="838.5" y="28.0" width="24.6" height="23.9" fill="#375c37"><title>unsorted/tClientCharacter.cpp: 42.5% of 2,737 bytes</title></rect>
+<rect x="838.5" y="28.0" width="24.6" height="23.9" fill="#396f39"><title>unsorted/tClientCharacter.cpp: 63.8% of 2,737 bytes</title></rect>
 <rect x="863.1" y="28.0" width="24.5" height="23.9" fill="#333633"><title>unsorted/fn_004BD43E.cpp: 0.0% of 2,723 bytes</title></rect>
 <rect x="887.5" y="28.0" width="24.4" height="23.9" fill="#333633"><title>unsorted/tDataBaseHandler.cpp: 0.0% of 2,719 bytes</title></rect>
 <rect x="912.0" y="28.0" width="24.4" height="23.9" fill="#333633"><title>unsorted/fn_004D1000.cpp: 0.0% of 2,713 bytes</title></rect>
 <rect x="936.3" y="28.0" width="24.3" height="23.9" fill="#333633"><title>unsorted/fn_005EA000.cpp: 0.0% of 2,706 bytes</title></rect>
-<rect x="960.6" y="28.0" width="24.2" height="23.9" fill="#365236"><title>unsorted/fn_00429000.cpp: 30.9% of 2,698 bytes</title></rect>
+<rect x="960.6" y="28.0" width="24.2" height="23.9" fill="#386238"><title>unsorted/fn_00429000.cpp: 49.5% of 2,698 bytes</title></rect>
 <rect x="438.4" y="51.9" width="24.7" height="23.4" fill="#333633"><title>unsorted/tMetaClientPlayerListPanel.cpp: 0.0% of 2,692 bytes</title></rect>
 <rect x="463.1" y="51.9" width="24.6" height="23.4" fill="#333633"><title>unsorted/fn_00717000.cpp: 0.0% of 2,684 bytes</title></rect>
 <rect x="487.7" y="51.9" width="24.4" height="23.4" fill="#333633"><title>unsorted/fn_005778C8.cpp: 0.0% of 2,664 bytes</title></rect>
@@ -421,7 +421,7 @@
 <rect x="483.0" y="160.9" width="21.6" height="21.2" fill="#333633"><title>unsorted/fn_00723700.cpp: 0.0% of 2,128 bytes</title></rect>
 <rect x="483.0" y="182.1" width="21.6" height="21.1" fill="#333633"><title>unsorted/tFx_Tractor.cpp: 0.0% of 2,126 bytes</title></rect>
 <rect x="483.0" y="203.2" width="21.6" height="21.1" fill="#333633"><title>unsorted/fn_005FF000.cpp: 0.0% of 2,118 bytes</title></rect>
-<rect x="483.0" y="224.2" width="21.6" height="21.0" fill="#3d8f3d"><title>unsorted/tNetControl.cpp: 100.0% of 2,114 bytes</title></rect>
+<rect x="483.0" y="224.2" width="21.6" height="21.0" fill="#00d000"><title>unsorted/tNetControl.cpp: 100.0% of 2,114 bytes</title></rect>
 <rect x="483.0" y="245.3" width="21.6" height="21.0" fill="#333633"><title>unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp: 0.0% of 2,111 bytes</title></rect>
 <rect x="483.0" y="266.2" width="21.6" height="20.9" fill="#333633"><title>unsorted/fn_005B6A41.cpp: 0.0% of 2,106 bytes</title></rect>
 <rect x="483.0" y="287.2" width="21.6" height="20.9" fill="#333633"><title>unsorted/tNewsStory.cpp: 0.0% of 2,104 bytes</title></rect>
@@ -445,7 +445,7 @@
 <rect x="568.8" y="97.2" width="21.3" height="20.8" fill="#333633"><title>unsorted/fn_0057A000.cpp: 0.0% of 2,057 bytes</title></rect>
 <rect x="590.1" y="97.2" width="21.3" height="20.8" fill="#333633"><title>unsorted/fn_00721000.cpp: 0.0% of 2,053 bytes</title></rect>
 <rect x="611.3" y="97.2" width="21.3" height="20.8" fill="#333633"><title>unsorted/nSwitch__tObjectDirectory.cpp: 0.0% of 2,052 bytes</title></rect>
-<rect x="632.6" y="97.2" width="21.2" height="20.8" fill="#375c37"><title>unsorted/tFleetPanel.cpp: 42.4% of 2,051 bytes</title></rect>
+<rect x="632.6" y="97.2" width="21.2" height="20.8" fill="#3b7c3b"><title>unsorted/tFleetPanel.cpp: 79.1% of 2,051 bytes</title></rect>
 <rect x="653.8" y="97.2" width="21.1" height="20.8" fill="#333633"><title>unsorted/fn_006B5000.cpp: 0.0% of 2,042 bytes</title></rect>
 <rect x="675.0" y="97.2" width="21.0" height="20.8" fill="#333633"><title>unsorted/twPath.cpp: 0.0% of 2,026 bytes</title></rect>
 <rect x="695.9" y="97.2" width="20.9" height="20.8" fill="#333633"><title>unsorted/fn_00678270.cpp: 0.0% of 2,015 bytes</title></rect>
@@ -983,7 +983,7 @@
 <rect x="669.0" y="524.6" width="12.5" height="12.5" fill="#333633"><title>unsorted/tDataValidatorS.cpp: 0.0% of 726 bytes</title></rect>
 <rect x="669.0" y="537.1" width="12.5" height="12.5" fill="#333633"><title>unsorted/tFx_Fissure.cpp: 0.0% of 725 bytes</title></rect>
 <rect x="669.0" y="549.6" width="12.5" height="12.5" fill="#333633"><title>unsorted/fn_00410000.cpp: 0.0% of 724 bytes</title></rect>
-<rect x="669.0" y="562.1" width="12.5" height="12.3" fill="#3b7f3b"><title>unsorted/tEntity.cpp: 81.6% of 717 bytes</title></rect>
+<rect x="669.0" y="562.1" width="12.5" height="12.3" fill="#00d000"><title>unsorted/tEntity.cpp: 100.0% of 717 bytes</title></rect>
 <rect x="669.0" y="574.4" width="12.5" height="12.3" fill="#333633"><title>unsorted/tMetaClientChatCtlrC.cpp: 0.0% of 717 bytes</title></rect>
 <rect x="669.0" y="586.7" width="12.5" height="12.3" fill="#333633"><title>unsorted/fn_006A8000.cpp: 0.0% of 713 bytes</title></rect>
 <rect x="681.5" y="295.5" width="12.4" height="12.4" fill="#333633"><title>unsorted/fn_0058DDA5.cpp: 0.0% of 712 bytes</title></rect>
@@ -3050,9 +3050,9 @@
 <g><title>Tiger</title>
 <rect x="986.9" y="1.0" width="140.4" height="101.1" fill="#396d39"><title>Tiger/tgSound.cpp: 61.8% of 66,700 bytes</title></rect>
 <rect x="1127.3" y="1.0" width="71.7" height="101.1" fill="#364c36"><title>Tiger/taudiochannel.cpp: 25.1% of 34,053 bytes</title></rect>
-<rect x="986.9" y="102.1" width="85.6" height="81.8" fill="#333633"><title>Tiger/tsndmgr.cpp: 0.0% of 32,932 bytes</title></rect>
+<rect x="986.9" y="102.1" width="85.6" height="81.8" fill="#333633"><title>Tiger/tsndmgr.cpp: 0.1% of 32,932 bytes</title></rect>
 <rect x="1072.5" y="102.1" width="74.8" height="81.8" fill="#333633"><title>Tiger/twfsys.cpp: 0.0% of 28,763 bytes</title></rect>
-<rect x="1147.3" y="102.1" width="51.7" height="81.8" fill="#375737"><title>Tiger/twSound.cpp: 36.6% of 19,892 bytes</title></rect>
+<rect x="1147.3" y="102.1" width="51.7" height="81.8" fill="#375737"><title>Tiger/twSound.cpp: 37.2% of 19,892 bytes</title></rect>
 <rect x="986.9" y="183.9" width="50.7" height="69.7" fill="#3d8b3d"><title>Tiger/tgfsys.cpp: 95.9% of 16,619 bytes</title></rect>
 <rect x="986.9" y="253.6" width="50.7" height="64.2" fill="#333633"><title>Tiger/twmemory.cpp: 0.0% of 15,295 bytes</title></rect>
 <rect x="1037.6" y="183.9" width="55.4" height="51.6" fill="#333633"><title>Tiger/tpaging.cpp: 0.0% of 13,420 bytes</title></rect>

@@ -112,13 +112,7 @@ struct fn_0060a951_container {
     char m_0x08[0x08];
 };
 
-// HYPOTHESIS: the object fn_004d290d_object::fn_004d288f returns; two of its functions are known,
-// one taking a std::string by value (0x004d2573) and one taking a pointer (0x004d2521).
-class fn_004d288f_object {
-public:
-    void fn_004d2573(std::string text);
-    void fn_004d2521(const void *arg);
-};
+#include "unsorted/fn_004d288f_object.h"
 
 // HYPOTHESIS: the member at tPanelMgr+0x100; it is taken to end before the flag at +0x164 that
 // fn_00608bd1 reads. Only its functions 0x004d290d (no argument), 0x004d288f (looks up an object
@@ -488,14 +482,7 @@ void tPanelMgr::fn_006086e9()
     m_0x204.fn_0060ac16();
 }
 
-// HYPOTHESIS: the global object at 0x0090b730; only the one non-virtual function called here
-// (0x0060cac6) is known.
-class tObject_0090b730 {
-public:
-    void fn_0060cac6();
-};
-
-extern tObject_0090b730 gObject_0090b730;
+#include "unsorted/tObject_0090b730.h"
 // HYPOTHESIS: calls slots 86 and 109 of the object at 0x0092deb4, then slot 15 for every index
 // below its slot 9 count, from the last down to the first, then the function of the global object
 // at 0x0090b730. It does not use this.
