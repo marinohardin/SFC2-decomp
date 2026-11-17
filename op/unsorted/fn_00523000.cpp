@@ -461,17 +461,24 @@ public:
 // FUNCTION: STARFLEETOP 0x005236ea
 float tObject_005236ea::fn_005236ea(float amount)
 {
-	tObject_005236ea_Entry *pEntry = m_04;
-	for (int i = 0; i < m_220 && amount > 0.0f; i++, pEntry++) {
-		if (amount < pEntry->m_00) {
-			if (!pEntry->m_04) {
-				pEntry->m_08->vfunction0(amount);
-				amount = 0.0f;
+	int i = 0;
+	if (0 < m_220) {
+		tObject_005236ea_Entry *pEntry = m_04;
+		do {
+			if (amount <= 0.0f)
+				break;
+			if (amount < pEntry->m_00) {
+				if (!pEntry->m_04) {
+					pEntry->m_08->vfunction0(amount);
+					amount = 0.0f;
+				}
+			} else {
+				pEntry->m_08->vfunction0(pEntry->m_00);
+				amount -= pEntry->m_00;
 			}
-		} else {
-			pEntry->m_08->vfunction0(pEntry->m_00);
-			amount -= pEntry->m_00;
-		}
+			i++;
+			pEntry++;
+		} while (i < m_220);
 	}
 	return amount;
 }
