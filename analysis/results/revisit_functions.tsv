@@ -148,3 +148,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0047792f	tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup	28.15	2	sonnet	2026-11-17T15:28:02Z	attempt 2 (sonnet) did not raise the best; best 28.15%
 0x0060c675	FUN_0060c675	94.29	2	sonnet	2026-11-17T15:52:04Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 94.29%
 0x006160a0	FUN_006160a0	40.64	2	sonnet	2026-11-17T16:32:37Z	best not above 90% after 2 attempts; best 40.64%
+0x00616150	FUN_00616150	56.41	2	sonnet	2026-11-17T16:37:15Z	attempt 2 (sonnet) did not raise the best; best 56.41%
