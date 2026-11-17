@@ -33,6 +33,10 @@ public:
 
 	void	fn_0068d830( tRect rect );
 	void	fn_0068db60();
+	void	fn_0068db40( int a );
+	// HYPOTHESIS: the arguments point into the parser at +0x80 and +0x8c (fn_00690a20).
+	void	fn_0068e7b0( int *a );
+	void	fn_0068e860( unsigned char *a, int b );
 };
 
 // HYPOTHESIS: the layout is read from the inlined destructor in fn_0068ff60 only. The
@@ -71,6 +75,7 @@ public:
 	void	fn_006909f0();
 	void	fn_00691ed0();
 	void	fn_00691270();
+	void	fn_00690a20();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -80,7 +85,9 @@ public:
 	tString	f_44;
 	fn_0068ff60_Root	*f_6c;
 	tDir	f_70;
-	char	pad_80[0x8c - 0x80];
+	// HYPOTHESIS: state fn_00690a20 hands to the item; its type is not known.
+	int	f_80;
+	char	pad_84[0x8c - 0x84];
 	// HYPOTHESIS: the current alignment; fn_00690900 passes it on unless an align attribute sets one.
 	unsigned char	f_8c;
 	char	pad_8d[0x92 - 0x8d];
@@ -381,5 +388,14 @@ void tHtmlParser::fn_006909f0()
 	f_40->fn_0068db60();
 	fn_00691ed0();
 	fn_00691270();
+	f_92 = ' ';
+}
+
+// FUNCTION: STARFLEETOP 0x00690a20
+void tHtmlParser::fn_00690a20()
+{
+	f_40->fn_0068db40( 1 );
+	f_40->fn_0068e7b0( &f_80 );
+	f_40->fn_0068e860( &f_8c, 1 );
 	f_92 = ' ';
 }
