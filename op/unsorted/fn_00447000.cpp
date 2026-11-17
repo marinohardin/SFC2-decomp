@@ -107,12 +107,12 @@ public:
 	virtual void vfunction97();
 	virtual void vfunction98();
 	virtual void vfunction99();
-	virtual void vfunction100();
+	virtual void vfunction100(int);
 	virtual int vfunction101();
-	virtual void vfunction102();
+	virtual void vfunction102(int);
 	virtual int vfunction103();
 	virtual int vfunction104();
-	virtual void vfunction105();
+	virtual void vfunction105(const tString &);
 	virtual tString *vfunction106();
 };
 
@@ -139,6 +139,7 @@ class c_0044715d
 {
 public:
 	void fn_0044715d(tObject_0042496f *ship);
+	void fn_004472bc(tObject_0042496f *ship);
 
 	char field_0x0[0xec];
 	tObject_0044715d_table *field_0xec;
@@ -174,6 +175,40 @@ void c_0044715d::fn_0044715d(tObject_0042496f *ship)
 				field_0xec->field_0x10[i].field_0x18 = system->vfunction101();
 				field_0xec->field_0x10[i].field_0x1c = system->vfunction103();
 				field_0xec->field_0x10[i].field_0x20 = system->vfunction104();
+			}
+		}
+		while (i--);
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004472bc
+void c_0044715d::fn_004472bc(tObject_0042496f *ship)
+{
+	if (ship && ship->field_0xad4)
+	{
+		int i = 6;
+		do
+		{
+			tObject_0044715d_system *system = NULL;
+			if (i == 1)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction77();
+			if (i == 0)
+				system = ship->field_0xad4->vfunction79();
+			if (i == 5)
+				system = ship->field_0xad4->vfunction78();
+			if (i == 4)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction80();
+			if (i == 3)
+				system = ship->field_0xad4->vfunction81();
+			if (i == 2)
+				system = ship->field_0xad4->vfunction83();
+			if (i == 6)
+				system = ship->field_0xad4->vfunction82();
+			if (system)
+			{
+				system->vfunction105(tString(field_0xec->field_0x10[i].field_0x8.c_str()));
+				system->vfunction100(field_0xec->field_0x10[i].field_0x18);
+				system->vfunction102(field_0xec->field_0x10[i].field_0x1c);
 			}
 		}
 		while (i--);
