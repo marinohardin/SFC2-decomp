@@ -311,6 +311,7 @@ public:
     bool fn_0060ca56();
     bool fn_0060ca6c();
     char *fn_0060ca77();
+    bool fn_0060ca7d();
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
@@ -441,4 +442,12 @@ extern char *g_0087bfc4;
 char *C_0060c7dc::fn_0060ca77()
 {
     return g_0087bfc4;
+}
+
+extern bool g_0087bfdc;
+
+// FUNCTION: STARFLEETOP 0x0060ca7d
+bool C_0060c7dc::fn_0060ca7d()
+{
+    return g_0087bfdc;
 }
