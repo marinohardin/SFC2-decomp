@@ -17,15 +17,23 @@ public:
 	// a function with no source line, so this declared one (which stores the vtable) stands in.
 	virtual ~tAuctionItem();
 
-	// HYPOTHESIS: the two integer arguments' types and meaning are unknown.
+	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
+	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
 
 protected:
-	char fPad_48[0x4];
+	bool fBool_48;
 	std::string fString_4c;
 	nDatabase::tID fID_5c;
-	char fPad_6c[0x20];
+	int fInt_6c;
+	int fInt_70;
+	double fDouble_78;
+	int fInt_80;
+	int fInt_84;
+	int fInt_88;
 	nDatabase::tID fID_8c;
+	int fInt_9c;
+	int fInt_a0;
 };
 
 // FUNCTION: STARFLEETOP 0x00544b5c
@@ -44,4 +52,20 @@ tAuctionItem::~tAuctionItem()
 tAuctionItem::tAuctionItem( double arg5, tShip* ship )
 {
 	fn_00544d20( ship->vfunction12(), ship->fn_00546296(), ship->fn_00410223(), ship->fn_00410223(), arg5 );
+}
+
+// FUNCTION: STARFLEETOP 0x00544d20
+void tAuctionItem::fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 )
+{
+	fBool_48 = false;
+	fString_4c = name;
+	fID_5c = id;
+	fInt_6c = arg3;
+	fInt_70 = arg4;
+	fDouble_78 = arg5;
+	fInt_80 = 0;
+	fInt_84 = 0;
+	fInt_88 = arg4 * arg5;
+	fInt_9c = 0;
+	fInt_a0 = 0;
 }
