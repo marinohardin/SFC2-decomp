@@ -455,6 +455,7 @@ class tObject_005236ea
 public:
 	float fn_005236ea(float amount);
 	void fn_0052375c(float amount, bool partial, tObject_005236ea_Target *pTarget);
+	void fn_005237a1();
 
 	int m_00;
 	tObject_005236ea_Entry m_04[45];
@@ -494,4 +495,10 @@ void tObject_005236ea::fn_0052375c(float amount, bool partial, tObject_005236ea_
 		m_04[m_220] = entry;
 		m_220++;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x005237a1
+void tObject_005236ea::fn_005237a1()
+{
+	m_220 = 0;
 }
