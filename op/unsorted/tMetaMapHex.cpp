@@ -753,3 +753,9 @@ void fn_0053a7d1_vector::reserve( unsigned int n )
 		m_last = s + size;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053a8ff
+fn_0053a6cc_map::iterator fn_0053a6cc_map::begin() const
+{
+	return iterator( m_tree.m_head->left );
+}
