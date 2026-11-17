@@ -309,3 +309,73 @@ template<> void std::vector<std::string>::insert(iterator _P, size_type _M, cons
 
 // MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
 void (std::vector<std::string>::*fn_00404695_Insert)(std::vector<std::string>::iterator, std::vector<std::string>::size_type, const std::string&) = &std::vector<std::string>::insert;
+
+// HYPOTHESIS: the buffer setup of a string-stream buffer; the pointers at +0x0c to +0x30 are the
+// streambuf's get and put area pointers, held by address.
+class fn_004048dd_Buf
+{
+public:
+    void fn_004048dd(char* _G, int _N, int _Mode);
+    char pad0[0x0c];
+    char** m0c;
+    char** m10;
+    char pad14[0x08];
+    char** m1c;
+    char** m20;
+    char pad24[0x08];
+    char** m2c;
+    char** m30;
+    char pad34[0x04];
+    char* m38;
+    char* m3c;
+    int m40;
+    int m44;
+};
+
+void* fn_007365b0(void* dst, const void* src, unsigned int n);
+
+// FUNCTION: STARFLEETOP 0x004048dd
+void fn_004048dd_Buf::fn_004048dd(char* _G, int _N, int _Mode)
+{
+    m38 = 0;
+    m3c = 0;
+    m40 = 0x20;
+    m44 = _Mode;
+    if (_N == 0 || (_Mode & 6) == 6)
+    {
+        *m0c = 0;
+        *m1c = 0;
+        *m2c = 0;
+        *m10 = 0;
+        *m20 = 0;
+        *m30 = 0;
+    }
+    else
+    {
+        int n = _N;
+        if (n < 0)
+            n = 0;
+        char* p = (char*)operator new(n);
+        fn_007365b0(p, _G, _N);
+        m3c = p + _N;
+        if ((m44 & 4) == 0)
+        {
+            *m0c = p;
+            *m1c = p;
+            *m2c = (char*)_N;
+        }
+        if ((m44 & 2) == 0)
+        {
+            *m10 = p;
+            *m20 = p;
+            *m30 = (char*)_N;
+            if (*m1c == 0)
+            {
+                *m0c = p;
+                *m1c = p;
+                *m2c = 0;
+            }
+        }
+        m44 |= 1;
+    }
+}

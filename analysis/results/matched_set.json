@@ -595,6 +595,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x004048dd": {
+   "name": "FUN_004048dd",
+   "symbol": "?fn_004048dd@fn_004048dd_Buf@@QAEXPADHH@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 189,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
