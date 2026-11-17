@@ -214,6 +214,7 @@ public:
 	bool fn_00543b68(std::string text);
 	bool fn_00543bab(int amount);
 	bool fn_00543bba();
+	void fn_00543bc3(bool flag);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -845,4 +846,13 @@ bool fn_005430ad_owner::fn_00543bba()
 {
 	m140++;
 	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00543bc3
+void fn_005430ad_owner::fn_00543bc3(bool flag)
+{
+	if (flag)
+		m114_9 = 1;
+	else
+		m114_9 = 0;
 }
