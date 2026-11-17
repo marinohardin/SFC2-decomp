@@ -196,3 +196,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00455942	FUN_00455942	3	fable	99.88	2026-11-17T07:37:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.88%
 0x00413ea8	tPhysicalEntity::vfunction49	5	fable	99.77	2026-11-17T07:47:13Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.77%
 0x0061d200	tVolume::mValid	5	fable	99.70	2026-11-17T08:17:30Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d2f0	tDir::mValid	5	fable	99.70	2026-11-17T08:28:31Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
