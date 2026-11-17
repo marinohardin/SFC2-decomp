@@ -206,6 +206,8 @@ void fn_004d336d( long arg1 )
 	}
 }
 
+#include "Tiger/tstring.h"
+
 // HYPOTHESIS: the object returned by 0x004cb602 has a virtual method at vtable offset 0x4c
 // (slot 19); the other slots are not recovered, so they are placeholders.
 class fn_004d338b_object
@@ -232,6 +234,9 @@ public:
 	virtual void vfunction18();
 	virtual long vfunction19();
 	virtual void vfunction20( long arg1 );
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23( tString* arg1 );
 };
 
 // FUNCTION: STARFLEETOP 0x004d338b
@@ -257,4 +262,14 @@ long fn_004d33a8( long arg1, long arg2 )
 		result = obj->vfunction19();
 	}
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004d33d4
+void fn_004d33d4( long arg1, tString arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	if ( obj != 0 )
+	{
+		obj->vfunction23( &arg2 );
+	}
 }
