@@ -75,7 +75,7 @@ class fn_0053f4c6_owner
 {
 public:
 	void fn_0053f4c6( long a, long b );
-	void fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last );
+	fn_0053f491_elem *fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last );
 	void fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_elem *first, const fn_0053f491_elem *last );
 	// MATCH-ONLY: the original read the size through an inlined accessor.
 	unsigned int size() const
@@ -531,4 +531,16 @@ void fn_0053f4c6_owner::fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_el
 		std::copy( first, last, pos );
 		m_08 += m;
 	}
+}
+
+// HYPOTHESIS: same vector-like class; this member is its range erase: the elements after
+// the range are assigned down (0x005400e7 as the element's assignment), the old tail is
+// destroyed and the last moves back.
+// FUNCTION: STARFLEETOP 0x0053fa94
+fn_0053f491_elem *fn_0053f4c6_owner::fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last )
+{
+	fn_0053f491_elem *s = std::copy( last, m_08, first );
+	_Destroy( s, m_08 );
+	m_08 = s;
+	return first;
 }

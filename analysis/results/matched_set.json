@@ -6832,6 +6832,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0053fa94": {
+   "name": "FUN_0053fa94",
+   "symbol": "?fn_0053fa94@fn_0053f4c6_owner@@QAEPAVfn_0053f491_elem@@PAV2@0@Z",
+   "unit": "unsorted/fn_0053F000.cpp",
+   "size": 87,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
