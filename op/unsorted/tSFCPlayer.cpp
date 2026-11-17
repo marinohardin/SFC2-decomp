@@ -282,6 +282,7 @@ class tSFCPlayer
 		virtual void vfunction111(int *param_1);
 		virtual void vfunction112(int param_1);
 		virtual void vfunction113(int param_1, unsigned param_2, int param_3, tString *param_4, tString *param_5);
+		virtual void vfunction114(fn_004e2b02_ship_type *param_1);
 		void fn_004d1220();
 
 	private:
@@ -1427,6 +1428,29 @@ void tSFCPlayer::vfunction113(int param_1, unsigned param_2, int param_3, tStrin
 	m_39b8[idx] = *param_5;
 	m_3418[idx] = *param_4;
 	m_3f58[idx].fn_00447af2(param_4->mCharStr(), 0);
+}
+// FUNCTION: STARFLEETOP 0x004d1449
+void tSFCPlayer::vfunction114(fn_004e2b02_ship_type *param_1)
+{
+	fn_004e2b02_ship_type *ship = gObject_008e1060.fn_0042496f(param_1->field_1c);
+	if (ship) {
+		int id = ship->field_870;
+		tString name(ship->vfunction42());
+		tString label(ship->field_87d);
+		tString *pNames = m_3418;
+		int *pIds = m_3388;
+		int *pCount = m_3370;
+		for (int i = 0; i < 6; i++, pNames += 6, pIds += 6, pCount++) {
+			int *pId = pIds;
+			tString *pName = pNames;
+			for (unsigned j = 0; j < (unsigned)*pCount; j++, pId++, pName++) {
+				if (*pId == id && pName[0x24] == name && *pName == label) {
+					m_3f58[i * 6 + j].fn_00447b7a(ship);
+					return;
+				}
+			}
+		}
+	}
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
