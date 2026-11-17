@@ -1,3 +1,4 @@
+#include <string.h>
 #include "Tiger/tstring.h"
 #include "Common/Thread/Optex.h"
 #include "unsorted/tObject_0092deb4.h"
@@ -44,6 +45,7 @@ class tObject_004454c1
 	public:
 		tObject_004454c1();
 		~tObject_004454c1();
+		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
 		char m_00[0xf0];
@@ -56,9 +58,11 @@ class tObject_004cf9b3
 	public:
 		tObject_004cf9b3();
 		~tObject_004cf9b3();
+		void fn_004d1c60(tListIterator_004cf9b3 *result, tListIterator_004cf9b3 first, tListIterator_004cf9b3 last);
+		void fn_004d1bcf(tListIterator_004cf9b3 *result, tListIterator_004cf9b3 position, char **value);
 		int size();
-		tListNode_004cf9b3 *begin();
-		tListNode_004cf9b3 *end();
+		tListIterator_004cf9b3 begin();
+		tListIterator_004cf9b3 end();
 
 	public:
 		char m_00[4];
@@ -74,14 +78,18 @@ inline int tObject_004cf9b3::size()
 	return m_10;
 }
 
-inline tListNode_004cf9b3 *tObject_004cf9b3::begin()
+inline tListIterator_004cf9b3 tObject_004cf9b3::begin()
 {
-	return m_04->fpNext;
+	tListIterator_004cf9b3 i;
+	i.fpNode = m_04->fpNext;
+	return i;
 }
 
-inline tListNode_004cf9b3 *tObject_004cf9b3::end()
+inline tListIterator_004cf9b3 tObject_004cf9b3::end()
 {
-	return m_04;
+	tListIterator_004cf9b3 i;
+	i.fpNode = m_04;
+	return i;
 }
 
 // HYPOTHESIS: the 0xf8-byte object tSFCPlayer allocates first; constructor 0x004292ab.
@@ -201,6 +209,7 @@ class tSFCPlayer
 		void vfunction103(int param_1);
 		int vfunction104();
 		int vfunction106();
+		void vfunction108();
 
 	private:
 		bool m_04;
@@ -210,25 +219,29 @@ class tSFCPlayer
 		float m_38;
 		float m_3c;
 		int m_40[6];
-		int m_58;
-		char pad_5c[0x70 - 0x5c];
+		int m_58[6];
 		char m_70[6][0x20];
 		tString m_130[6];
 		int m_220[6];
 		tObject_004454c1 m_238[6];
 		char pad_7d8[0x7f0 - 0x7d8];
 		int m_7f0[6];
-		char pad_808[0x80c - 0x808];
+		int m_808;
 		int m_80c[6];
-		int m_824;
-		char pad_828[0x83c - 0x828];
+		int m_824[6];
 		char m_83c[6][0x20];
 		tString m_8fc[6];
 		int m_9ec[6];
 		tObject_004454c1 m_a04[6];
 		int m_fa4;
-		char pad_fa8[0x1198 - 0xfa8];
-		tObject_004cf9b3 m_1198[0x1b0];
+		int m_fa8[4][0x14];
+		int m_10e8[16];
+		int m_1128;
+		int m_112c;
+		int m_1130;
+		int m_1134;
+		int m_1138[4][6];
+		tObject_004cf9b3 m_1198[0x12][0x18];
 		char pad_3358[0x3418 - 0x3358];
 		tString m_3418[0x24];
 		tString m_39b8[0x24];
@@ -242,7 +255,8 @@ class tSFCPlayer
 		int m_84ac;
 		int m_84b0;
 		bool m_84b4;
-		char pad_84b5[0x84bc - 0x84b5];
+		char pad_84b5[0x84b8 - 0x84b5];
+		int m_84b8;
 		int m_84bc;
 		int m_84c0;
 		int m_84c4;
@@ -501,7 +515,7 @@ void tSFCPlayer::vfunction2(tSFCStream &s, unsigned mode)
 				count = m_61a8[ishiploop][hullType].size();
 				fn_0040e9df(count, s, mode, "localInt");
 				tListIterator_004cf9b3 it;
-				for (it.fpNode = m_61a8[ishiploop][hullType].begin(); it.fpNode != m_61a8[ishiploop][hullType].end(); it.fn_00450ce5())
+				for (it.fpNode = m_61a8[ishiploop][hullType].m_04->fpNext; it.fpNode != m_61a8[ishiploop][hullType].m_04; it.fn_00450ce5())
 					fn_0040ecc4(it.fpNode->fpValue, s, mode, "fShipsSeenList[ishiploop][hullTypes]");
 			}
 			else {
@@ -549,4 +563,46 @@ void tSFCPlayer::vfunction2(tSFCStream &s, unsigned mode)
 	g_p0090bed4->fn_00522c86((float)g_008552d0[m_853c]);
 	fn_0060e30e(s, mode);
 	fn_0040e691(s);
+}
+
+// FUNCTION: STARFLEETOP 0x004d0063
+void tSFCPlayer::vfunction108()
+{
+	m_808 = m_84b8;
+	m_fa4 = m_30;
+	for (int ishiploop = 0; ishiploop < 6; ishiploop++) {
+		m_80c[ishiploop] = m_40[ishiploop];
+		m_824[ishiploop] = m_58[ishiploop];
+		m_8fc[ishiploop] = m_130[ishiploop];
+		m_9ec[ishiploop] = m_220[ishiploop];
+		m_a04[ishiploop] = m_238[ishiploop];
+		strcpy(m_83c[ishiploop], m_70[ishiploop]);
+	}
+	for (int ievent = 0; ievent < 4; ievent++) {
+		for (int iclass = 0; iclass < 0x14; iclass++)
+			m_fa8[ievent][iclass] = m_8368[ievent][iclass];
+	}
+	for (int imedal = 0; imedal < 4; imedal++) {
+		for (int istatus = 0; istatus < 6; istatus++)
+			m_1138[imedal][istatus] = m_8544[imedal][istatus];
+	}
+	for (int ihull = 0; ihull < 0x12; ihull++) {
+		for (int iclass = 0; iclass < 0x18; iclass++) {
+			tListIterator_004cf9b3 erased;
+			m_1198[ihull][iclass].fn_004d1c60(&erased, m_1198[ihull][iclass].begin(), m_1198[ihull][iclass].end());
+			int count = m_61a8[ihull][iclass].size();
+			tListIterator_004cf9b3 it = m_61a8[ihull][iclass].begin();
+			while (count-- != 0) {
+				tListIterator_004cf9b3 inserted;
+				m_1198[ihull][iclass].fn_004d1bcf(&inserted, m_61a8[ihull][iclass].begin(), &it.fpNode->fpValue);
+				it.fn_00450ce5();
+			}
+		}
+	}
+	for (int iscript = 0; iscript < 0x10; iscript++)
+		m_10e8[iscript] = m_84cc[iscript];
+	m_1128 = m_851c;
+	m_112c = m_8520;
+	m_1130 = m_8524;
+	m_1134 = m_8528;
 }
