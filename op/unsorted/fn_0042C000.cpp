@@ -806,3 +806,10 @@ template<> void tSingleAccessWrapper<std::vector<int> >::Delete()
 	}
 	fPointerOptex.Leave();
 }
+
+#include <string>
+
+// HYPOTHESIS: a global std::string at 0x008f5330 initialised from the literal at 0x0083e2a8; its
+// users and name are not identified.
+// FUNCTION: STARFLEETOP 0x0042cc61
+std::string g_008f5330 = "@";
