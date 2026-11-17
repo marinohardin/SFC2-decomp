@@ -4,6 +4,7 @@
 #include "unsorted/tObject_0090be60.h"
 #include "unsorted/tApplication.h"
 #include "unsorted/tAIData.h"
+#include "unsorted/tEntity.h"
 
 // HYPOTHESIS: the object 0x00523543 and 0x00523574 return for an ID; tAICaptain.cpp declares
 // what is likely the same class as tObject_004b94dc.
@@ -329,4 +330,15 @@ tObject_0051c7af *fn_0090bed4_Object::fn_00523574(int param_1)
 	if (pObject == NULL)
 		return NULL;
 	return (*(unsigned long *) ((char *) pObject + 0x18) & 0x800) ? (tObject_0051c7af *) pObject : NULL;
+}
+
+// FUNCTION: STARFLEETOP 0x005235a7
+tObject_005235a7 *fn_0090bed4_Object::fn_005235a7(int param_1)
+{
+	fn_004e2b02_ship_type *pShip = gObject_008e1060.fn_0042496f(param_1);
+	// MATCH-ONLY: the null path returns the lookup's own (null) result; a literal NULL adds xor eax, eax.
+	tObject_005235a7 *pResult = (tObject_005235a7 *) pShip;
+	if (pShip != NULL)
+		pResult = fn_005235c8(pShip);
+	return pResult;
 }

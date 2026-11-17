@@ -7,6 +7,7 @@
 #include <list>
 
 class tObject_005235a7;
+class fn_004e2b02_ship_type;
 class tCommandDestination;
 class tObject_0051c7af;
 class tAIData;
@@ -26,6 +27,8 @@ public:
 	// entity's +0x64 is set.
 	void fn_005229b9(class tEntity *pEntity);
 	tObject_005235a7 *fn_005235a7(int param_1);
+	// HYPOTHESIS: takes the ship 0x005235a7 looks up and returns the object for it.
+	tObject_005235a7 *fn_005235c8(fn_004e2b02_ship_type *pShip);
 	// HYPOTHESIS: hands the fleet with this ID a new command destination, as 0x004c3815 calls it.
 	void fn_00522bdf(int param_1, tCommandDestination *pDestination);
 	bool fn_00523027(int param_1, int param_2);
