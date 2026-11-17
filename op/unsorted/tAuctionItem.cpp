@@ -46,8 +46,12 @@ public:
 	void fn_00420f2f( int value );
 	void fn_00420f3c( int32u value );
 	bool fn_00545385( const nDatabase::tID& bidder );
-	// HYPOTHESIS: returns int (push 1; pop eax), not bool.
-	int fn_0054540f( const nDatabase::tID& bidder );
+	// HYPOTHESIS: returns bool; the caller 0x00545451 tests al.
+	bool fn_0054540f( const nDatabase::tID& bidder );
+	// HYPOTHESIS: the first argument's type and meaning are unknown; it is passed through to
+	// fn_005454c1.
+	int32u fn_00545451( int arg1, const nDatabase::tID& bidder );
+	int32u fn_005454c1( int arg1, const nDatabase::tID& bidder );
 protected:
 	bool fBool_48;
 	std::string fString_4c;
@@ -222,10 +226,16 @@ void tAuctionItem::fn_00545405( bool value )
 
 // HYPOTHESIS: true when the given bidder holds the leading bid.
 // FUNCTION: STARFLEETOP 0x0054540f
-int tAuctionItem::fn_0054540f( const nDatabase::tID& bidder )
+bool tAuctionItem::fn_0054540f( const nDatabase::tID& bidder )
 {
-	if ( bidder.IsValid() && fn_005455bb().IsValid() && bidder == fn_005455bb() )
-		return 1;
+	return bidder.IsValid() && fn_005455bb().IsValid() && bidder == fn_005455bb();
+}
 
-	return 0;
+// FUNCTION: STARFLEETOP 0x00545451
+int32u tAuctionItem::fn_00545451( int arg1, const nDatabase::tID& bidder )
+{
+	if ( fn_0054540f( bidder ) )
+		return fn_005454c1( arg1, bidder ) - fn_005455c2();
+
+	return fn_005454c1( arg1, nDatabase::tID() );
 }
