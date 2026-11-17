@@ -558,3 +558,12 @@ void fn_0040debd(char* name, short* value, fn_0040d63f_Buf& buf)
     *value = (short)n;
 }
 
+// FUNCTION: STARFLEETOP 0x0040df26
+void fn_0040df26(char* name, char* value, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    sprintf(text, "%s = %ld", name, (int)*value);
+    buf.fn_0040e744(text);
+}
+
