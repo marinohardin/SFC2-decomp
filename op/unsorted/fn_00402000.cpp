@@ -744,28 +744,23 @@ void fn_00402d31_Obj::fn_00402d31(int a)
     fn_00402d31_Target::fn_0040441e(m8, 1, a);
 }
 
-// HYPOTHESIS: container clear of 0x10-byte elements; names are placeholders.
-class fn_00402d42_Elem
-{
-public:
-    void fn_005da20a(bool a);
-    char pad[0x10];
-};
+// HYPOTHESIS: clear of a container of std::string (the inlined ~basic_string calls _Tidy(true)); names are placeholders.
 class fn_00402d42_Vec
 {
 public:
     void fn_00402d42();
     int m0;
-    fn_00402d42_Elem* m4;
-    fn_00402d42_Elem* m8;
-    fn_00402d42_Elem* mc;
+    std::string* m4;
+    std::string* m8;
+    std::string* mc;
 };
+
 // FUNCTION: STARFLEETOP 0x00402d42
 void fn_00402d42_Vec::fn_00402d42()
 {
-    fn_00402d42_Elem* last = m8;
-    for (fn_00402d42_Elem* it = m4; it != last; ++it)
-        it->fn_005da20a(true);
+    std::string* last = m8;
+    for (std::string* it = m4; it != last; ++it)
+        it->~basic_string();
     operator delete(m4);
     m4 = 0;
     m8 = 0;
