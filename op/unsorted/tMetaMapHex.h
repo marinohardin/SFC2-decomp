@@ -212,6 +212,8 @@ public:
 	// HYPOTHESIS: stores the first argument under the key given by the second in m_70, under
 	// the lock.
 	void fn_0053a5b2( long param_1, int32 param_2 );
+	// HYPOTHESIS: the same for m_84.
+	void fn_0053a602( long param_1, int32 param_2 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
