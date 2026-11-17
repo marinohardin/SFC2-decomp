@@ -29,6 +29,7 @@ public:
 		};
 
 		tPoliticalTensionVector( const tPoliticalTensionVector& source );
+		virtual ~tPoliticalTensionVector();
 
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );

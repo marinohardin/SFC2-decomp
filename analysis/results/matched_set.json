@@ -1765,6 +1765,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0042743e": {
+   "name": "tPoliticalTensionMatrix::tPoliticalTensionVector::~tPoliticalTensionVector",
+   "symbol": "??1tPoliticalTensionVector@tPoliticalTensionMatrix@@UAE@XZ",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 53,
+   "score": 62.053,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",

@@ -25,3 +25,11 @@ tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector( const
 	  field_0x10( source.field_0x10 )
 {
 }
+
+// HYPOTHESIS: the original declares no destructor; its compiler-generated one stores no
+// vtable. That one has no source line to claim, so this declared one (which stores the
+// vtable) stands in for it.
+// FUNCTION: STARFLEETOP 0x0042743e
+tPoliticalTensionMatrix::tPoliticalTensionVector::~tPoliticalTensionVector()
+{
+}
