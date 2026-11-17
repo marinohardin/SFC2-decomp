@@ -2503,6 +2503,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436364": {
+   "name": "tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>::tCountMap<tPathIterator,tPathIterParent,std::less<tPathIterator>_>",
+   "symbol": "??0?$tCountMap@VtPathIterator@@VtPathIterParent@@U?$less@VtPathIterator@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
