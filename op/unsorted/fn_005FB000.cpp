@@ -553,6 +553,20 @@ template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int
 	return ( iterator( _Z ) );
 }
 
+#include "Common/MemberCallback.h"
+#include "unsorted/tMetaClientChatCtlrC.h"
+
+class tChatChannel;
+
+// MATCH-ONLY: the SDK's template CreateCallback, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x005fb9ab
+template<>
+tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > CreateCallback( tMetaClientChatCtlrC* object, void (tMetaClientChatCtlrC::*func)( const tChatChannel& result ) )
+{
+	return tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& >( object, func );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
