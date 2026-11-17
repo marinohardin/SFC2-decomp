@@ -584,3 +584,9 @@ void fn_004d375b( tVarButtonGroup* arg1 )
 		arg1->vfunction42_for_tVisGroup();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d3774
+void fn_004d3774( long arg1 )
+{
+	fn_004d375b( (tVarButtonGroup*) fn_004d3446( arg1 ) );
+}
