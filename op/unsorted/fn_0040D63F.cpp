@@ -973,6 +973,24 @@ void fn_0040e85e(tPoint3* p, tSFCStream& buf, unsigned char flags)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e8a9
+void fn_0040e8a9(tString* str, tSFCStream& buf, unsigned char flags)
+{
+    if (flags & 2) {
+        if (flags & 8) {
+            buf.fn_0040d73e(str);
+            return;
+        }
+        fn_0040dbdc(str, buf);
+    } else {
+        if (flags & 8) {
+            buf.fn_0040d7d6(str);
+            return;
+        }
+        fn_0040dbea(str, buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int tSFCStream::fn_0040e70f(char* text)
 {
