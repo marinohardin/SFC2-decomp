@@ -238,6 +238,14 @@ inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > for_each( tNewsStory
 		_Op(*_F);
 	return (_Op);
 }
+// FUNCTION: STARFLEETOP 0x005de869
+template<>
+inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > for_each( tMetaClientNewsCtlrC::tMenuItem::eType* _F, tMetaClientNewsCtlrC::tMenuItem::eType* _L, tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > _Op )
+{
+	for (; _F != _L; ++_F)
+		_Op(*_F);
+	return (_Op);
+}
 }
 
 // HYPOTHESIS: applies a member callback to each story of a [first, last) pair of pointers.
