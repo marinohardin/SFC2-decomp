@@ -6,8 +6,7 @@
 #include <xmemory>
 #include "Common/DynamicAllocator.h"
 
-// HYPOTHESIS: tPreparedMissions (named by RTTI) is not declared yet; only its type_info is used here.
-class tPreparedMissions;
+#include "unsorted/tPreparedMissions.h"
 
 // HYPOTHESIS: the owner of this by-value getter is not known; the body copies a
 // tID held at 0x48 into the return slot. The class and the member names are placeholders.
@@ -619,4 +618,18 @@ template<>
 tClassAllocator<tPreparedMissions>::tClassAllocator()
 {
 	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tPreparedMissions ), this );
+}
+
+// MATCH-ONLY: the SDK's template mAllocate, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+
+// FUNCTION: STARFLEETOP 0x0053fe1d
+template<>
+tAllocatedClass* tClassAllocator<tPreparedMissions>::mAllocate()
+{
+	tPreparedMissions* pClass = new tPreparedMissions();
+
+	pClass->mSetAllocatorID( fAllocID );
+
+	return pClass;
 }
