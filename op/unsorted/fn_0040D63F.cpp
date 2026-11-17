@@ -868,3 +868,17 @@ int fn_0040d63f_Buf::fn_0040e699(char* p)
     return n;
 }
 
+// FUNCTION: STARFLEETOP 0x0040e6d1
+void fn_0040d63f_Buf::fn_0040e6d1(char* s)
+{
+    unsigned int len = s ? strlen(s) + 1 : 0;
+    if (len > 0) {
+        fn_0040d867(s, len, 0);
+    } else {
+        // HYPOTHESIS: the original wrote a lone zero byte through an address inside its own argument slot.
+        char* z = (char*)&s + 3;
+        *z = 0;
+        fn_0040d867(z, 1, 0);
+    }
+}
+
