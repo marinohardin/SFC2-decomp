@@ -95,6 +95,10 @@ public:
 	void fn_005e3891( fn_005e381f_entry *entry, int param_2 );
 	void fn_005e3903( fn_005e381f_entry *entry, int param_2 );
 	void fn_005e3b86();
+	void fn_005e3ba5();
+	void fn_005e3d73();
+	void fn_005e3e48();
+	void fn_005e3f1d();
 	void fn_005e4455();
 
 	fn_005eadc8_class *field_17c;
