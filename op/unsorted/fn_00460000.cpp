@@ -669,8 +669,14 @@ class fn_00460b3b_class
 {
 public:
     fn_00460acb_iterator fn_00460d3b(fn_00460acb_iterator first, fn_00460acb_iterator last);
+    // HYPOTHESIS: the one-node erase shares 0x0055dd78 with fn_00460acb_class (identical bodies
+    // folded by the linker).
+    fn_00460acb_iterator fn_0055dd78(fn_00460acb_iterator p);
+    // HYPOTHESIS: 0x00460ea6 is the library's recursive _Erase of a subtree.
+    void fn_00460ea6(fn_00460acb_node *x);
     fn_00460acb_iterator begin();
     fn_00460acb_iterator end();
+    unsigned int size() const;
     void fn_00460b3b();
 
     char pad_000[0x4];
@@ -688,6 +694,11 @@ inline fn_00460acb_iterator fn_00460b3b_class::begin()
 inline fn_00460acb_iterator fn_00460b3b_class::end()
 {
     return (fn_00460acb_iterator(_Head));
+}
+
+inline unsigned int fn_00460b3b_class::size() const
+{
+    return (_Size);
 }
 
 // FUNCTION: STARFLEETOP 0x00460b3b
@@ -834,6 +845,24 @@ fn_00460b03_iterator fn_00460b03_class::fn_00460cc7(fn_00460b03_iterator first, 
     else
     {
         fn_00460e76(_Head->_Parent);
+        _Head->_Parent = (fn_00460acb_node *)m_8, _Size = 0;
+        _Head->_Next = _Head, _Head->_Right = _Head;
+        return (begin());
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x00460d3b
+fn_00460acb_iterator fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator first, fn_00460acb_iterator last)
+{
+    if (size() == 0 || first != begin() || last != end())
+    {
+        while (first != last)
+            fn_0055dd78(first++);
+        return (first);
+    }
+    else
+    {
+        fn_00460ea6(_Head->_Parent);
         _Head->_Parent = (fn_00460acb_node *)m_8, _Size = 0;
         _Head->_Next = _Head, _Head->_Right = _Head;
         return (begin());

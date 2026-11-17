@@ -3403,6 +3403,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00460d3b": {
+   "name": "FUN_00460d3b",
+   "symbol": "?fn_00460d3b@fn_00460b3b_class@@QAE?AVfn_00460acb_iterator@@V2@0@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
