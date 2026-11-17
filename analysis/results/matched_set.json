@@ -105,8 +105,8 @@
    "symbol": "?fn_004021d1@fn_004021d1_Holder@@QAEXPBUfn_004021d1_Record@@@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 362,
-   "score": 99.191,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0040aad2": {

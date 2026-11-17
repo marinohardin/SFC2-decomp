@@ -96,7 +96,6 @@ void fn_004021d1_Holder::fn_004021d1(const fn_004021d1_Record* rec)
         m0c = new fn_004021d1_Checksum;
         m0c->m04 = -1;
     }
-    const int* p = (const int*)rec;
     m0c->Update(&rec->m04, 4);
     m0c->Update(&rec->m18, 4);
     m0c->Update(&rec->m1c, 4);
@@ -110,13 +109,12 @@ void fn_004021d1_Holder::fn_004021d1(const fn_004021d1_Record* rec)
     m0c->Update(&rec->m3c, 4);
     m0c->Update(&rec->m40, 4);
     m0c->Update(&rec->m44, 4);
-    const fn_004021d1_Item* item = rec->items;
     for (int i = 0; i < 5; i++)
     {
-        int a = item[i].a;
-        int b = item[i].b;
-        int c = item[i].c;
-        char d = item[i].d;
+        int a = rec->items[i].a;
+        int b = rec->items[i].b;
+        int c = rec->items[i].c;
+        char d = rec->items[i].d;
         m0c->Update(&a, 4);
         m0c->Update(&b, 4);
         m0c->Update(&c, 4);
