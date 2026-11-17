@@ -934,6 +934,26 @@ void fn_0040e7e3(unsigned char* p, fn_0040d63f_Buf& buf, unsigned char flags)
         fn_0040dc84(p, buf);
 }
 
+// HYPOTHESIS: bit 8 selects a raw four-byte transfer instead of the helper.
+// FUNCTION: STARFLEETOP 0x0040e802
+void fn_0040e802(int* p, fn_0040d63f_Buf& buf, unsigned char flags)
+{
+    if (flags & 2) {
+        if (flags & 8) {
+            p = (int*)*p;
+            buf.fn_0040d867(&p, 4, 1);
+            return;
+        }
+        fn_0040dac7(p, buf);
+    } else {
+        if (flags & 8) {
+            buf.fn_0040d897(p, 4, 1);
+            return;
+        }
+        fn_0040dae4(p, buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int fn_0040d63f_Buf::fn_0040e70f(char* text)
 {
