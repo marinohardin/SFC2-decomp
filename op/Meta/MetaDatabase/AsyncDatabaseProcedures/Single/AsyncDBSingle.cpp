@@ -33,7 +33,7 @@ class fn_0056c414_Database { public:	// HYPOTHESIS: the database held at +4; pro
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
-	virtual void vfunction7();
+	virtual void UnLock( nDatabase::tDatabaseObject* pObject );	// HYPOTHESIS: slot 6; VC6 lists the SDK's UnLock overloads in reverse, so the pointer form comes last.
 	virtual void UpdateObject( const nDatabase::tDatabaseObjectUpdate& update, bool unlock = true );	// HYPOTHESIS: slots 3 to 6 stand for the SDK's tDatabase Store and UnLock overloads; UpdateObject is slot 7 there.
 	void fn_0056ef05( nDatabase::tQuery<tTurn>& query, std::vector<tTurn>* result, bool lock );
 	void fn_0056f05f( nDatabase::tQuery<tServCharacter>& query, std::vector<tServCharacter>* result, bool lock );
@@ -868,4 +868,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction56( nDatabase::tID 
 			fDatabase->RemoveObjectFromDB( i );
 		}
 	}
+}
+#line 872
+// FUNCTION: STARFLEETOP 0x0056e6ba
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction57( tAuctionItem* item )
+{
+#line 1132
+	validate( item );
+	fDatabase->UnLock( item );
 }
