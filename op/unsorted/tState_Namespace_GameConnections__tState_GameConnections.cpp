@@ -896,7 +896,7 @@ void tState_GameConnections::fn_00469636()
 			fn_004695c4("JoinStatus", 1);
 	}
 }
-
+// FUNCTION: STARFLEETOP 0x00469900
 // FUNCTION: STARFLEETOP 0x004696e0
 tState_GameConnections::~tState_GameConnections()
 {

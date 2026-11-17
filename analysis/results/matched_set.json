@@ -3781,6 +3781,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x00469900": {
+   "name": "tState_Namespace_GameConnections::tState_GameConnections::scalar_deleting_destructor",
+   "symbol": "??_GtState_GameConnections@tState_Namespace_GameConnections@@UAEPAXI@Z",
+   "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
