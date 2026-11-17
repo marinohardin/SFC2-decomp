@@ -193,3 +193,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00708820	nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr	4	opus	44.29	2026-11-09T13:37:52Z	not exact after 4 attempts
 0x007090b0	nDatabase::tFileDatabaseMgr::New	4	opus	30.38	2026-11-09T15:13:10Z	not exact after 4 attempts
 0x004295d0	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	21	fable	99.78	2026-11-17T07:31:33Z	not exact after 21 attempts: Fable tried 7 times in a revisit loop; best 99.78%
+0x00455942	FUN_00455942	3	fable	99.88	2026-11-17T07:37:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.88%
