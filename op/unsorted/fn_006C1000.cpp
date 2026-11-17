@@ -33,3 +33,10 @@ void fn_006c1440(unsigned char *output, unsigned char *input, unsigned int len)
 {
 	memcpy(output, input, len);
 }
+
+// HYPOTHESIS: a byte fill for the digest's buffers, written through the memset intrinsic.
+// FUNCTION: STARFLEETOP 0x006c1460
+void fn_006c1460(unsigned char *output, int value, unsigned int len)
+{
+	memset(output, value, len);
+}
