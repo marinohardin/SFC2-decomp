@@ -157,6 +157,8 @@ public:
 	void fn_00468c13(int id);
 	// HYPOTHESIS: a member; it polls the modem connection and shows its progress.
 	void fn_00468c49();
+	// HYPOTHESIS: a member; it stores the address field, then runs gNetControl.fn_00431821.
+	void fn_00469096();
 	bool fn_0047685b();
 	void fn_004695c4(const char *name, int n);
 	void fn_00469e0c(const char *name);
@@ -690,6 +692,13 @@ void tState_GameConnections::fn_00468c49()
 				fn_00469e0c(g_00844e90);
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00469096
+void tState_GameConnections::fn_00469096()
+{
+	fn_00468297();
+	gNetControl.fn_00431821();
 }
 
 }
