@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "Tiger/tstring.h"
 #include "unsorted/tValueBase.h"
+#include "unsorted/tReconnector.h"
 
 // HYPOTHESIS: the array elements at +0x28 are tValueI<tString> (0x40 bytes; 0x0043d344 sits
 // between that class's functions), declared only in Source/states/SupplyDockItem.cpp; this
@@ -35,10 +36,12 @@ public:
 };
 
 // HYPOTHESIS: the owner of 0x00496214 and 0x00496253 (0x00496253 calls 0x00496214 with this in
-// ecx); its class is not known, possibly tEntityConnector, whose functions precede these.
+// ecx); its class is not known, possibly tEntityConnector, whose functions precede these
+// (0x1c4 bytes, constructor 0x004960ba, virtual destructor 0x00496179).
 class fn_00496253_object
 {
 public:
+	virtual ~fn_00496253_object();
 	tString fn_004961be( long val );
 	int fn_00496214( tString s );
 	void fn_00496253();
@@ -49,7 +52,7 @@ public:
 	// "influence1".."influence6"; whether it uses this is not known.
 	void fn_00482c00( fn_0043d344_object *value, const char *name );
 
-	char m00[0x28];
+	char m04[0x28 - 0x04];
 	fn_0043d344_object m28[6];
 	long m1a8[6];
 	fn_00496253_record *m1c0;
@@ -99,17 +102,8 @@ void fn_00496253_object::fn_0049629b( fn_00496253_record *record )
 	}
 }
 
-// HYPOTHESIS: the member at +0x4 of the owner of 0x00496330: constructed by 0x0047f864 and
-// destroyed on unwind.
-class fn_0047f864_object
-{
-public:
-	fn_0047f864_object();
-	~fn_0047f864_object();
-};
-
 extern char g_0084ebf8[];
-void fn_004d3592( fn_0047f864_object *object, char *value );
+void fn_004d3592( tReconnector *object, char *value );
 
 // HYPOTHESIS: the class of 0x00496330, which allocates a 0x1c4-byte object (the size of
 // fn_00496253_object) with the constructor 0x004960ba.
@@ -117,9 +111,11 @@ class fn_00496330_object
 {
 public:
 	fn_00496330_object();
+	~fn_00496330_object();
 
 	fn_00496253_object *m00;
-	fn_0047f864_object m04;
+	// constructed by 0x0047f864 (tReconnector::tReconnector)
+	tReconnector m04;
 };
 
 // FUNCTION: STARFLEETOP 0x00496330
@@ -139,4 +135,14 @@ void fn_00496253_object::fn_0049639c()
 	fn_00482c00( &m28[3], "influence4" );
 	fn_00482c00( &m28[4], "influence5" );
 	fn_00482c00( &m28[5], "influence6" );
+}
+
+// FUNCTION: STARFLEETOP 0x0049640b
+fn_00496330_object::~fn_00496330_object()
+{
+	if( m00 )
+	{
+		delete m00;
+		m00 = 0;
+	}
 }
