@@ -632,6 +632,12 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 	unsigned char*	entry;
 	long	index;
 	char	message[ 256 ];
+	long	c;
+	long	f;
+	long	start;
+	long	i;
+	long	e;
+	long	g;
 
 	if ( !mGetPtrsFromHandle( handle, page, entry, index ) )
 	{
@@ -677,7 +683,7 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 		{
 			if ( index == 0 )
 			{
-				long	c = page->fSizes[ n ];
+				c = page->fSizes[ n ];
 				page->fSizes[ n - 1 ] = 0;
 				page->fSizes[ n ] = 0;
 				page->fSizes[ 0 ] = (unsigned short)( c + n );
@@ -694,7 +700,7 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 			else
 			{
 				long	d = page->fSizes[ index - 1 ];
-				long	f = page->fSizes[ end ];
+				f = page->fSizes[ end ];
 				page->fSizes[ index ] = 0;
 				page->fSizes[ index + n - 1 ] = 0;
 				page->fSizes[ index - 1 ] = 0;
@@ -709,8 +715,9 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 			{
 				page->fSizes[ 0 ] = n;
 				page->fSizes[ n - 1 ] = n;
-				page->fSizes[ n ] = (unsigned short)( a - n );
-				page->fSizes[ a - 1 ] = (unsigned short)( a - n );
+				g = a - n;
+				page->fSizes[ n ] = (unsigned short)g;
+				page->fSizes[ a - 1 ] = (unsigned short)g;
 			}
 			else
 			{
@@ -730,8 +737,10 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 		{
 			page->fSizes[ index ] = n;
 			page->fSizes[ index + n - 1 ] = n;
-			page->fSizes[ index - 1 ] = (unsigned short)( b - n );
-			page->fSizes[ index + n - b ] = (unsigned short)( b - n );
+			g = b - n;
+			page->fSizes[ index - 1 ] = (unsigned short)g;
+			i = index + n - b;
+			page->fSizes[ i ] = (unsigned short)g;
 		}
 		else
 		{
@@ -739,15 +748,16 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 			page->fSizes[ end - 1 ] = 0;
 			page->fSizes[ index + n ] = 0;
 			page->fSizes[ index - 1 ] = (unsigned short)( b - n );
-			page->fSizes[ index + n - b ] = (unsigned short)( b - n );
+			start = index + n - b;
+			page->fSizes[ start ] = (unsigned short)( b - n );
 			page->fSizes[ index ] = (unsigned short)( c + n );
 			page->fSizes[ index + n + c - 1 ] = (unsigned short)( c + n );
 		}
 	}
 	else
 	{
-		long	start = 0;
-		long	i = page->fSizes[ 0 ];
+		start = 0;
+		i = page->fSizes[ 0 ];
 		if ( i <= index )
 		{
 			do
@@ -756,13 +766,13 @@ unsigned char	tPagingMechanism::mDelHandle( long handle )
 				i += page->fSizes[ i ];
 			} while ( i <= index );
 		}
-		long	f = page->fSizes[ start ];
-		long	e = index - start;
+		f = page->fSizes[ start ];
+		e = index - start;
 		page->fSizes[ index - 1 ] = (unsigned short)e;
 		page->fSizes[ start ] = (unsigned short)e;
 		page->fSizes[ index ] = n;
 		page->fSizes[ index + n - 1 ] = n;
-		long	g = f - e - n;
+		g = f - e - n;
 		page->fSizes[ index + n ] = (unsigned short)g;
 		page->fSizes[ start + f - 1 ] = (unsigned short)g;
 	}

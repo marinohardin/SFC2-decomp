@@ -9555,9 +9555,9 @@
    "symbol": "?mDelHandle@tPagingMechanism@@UAEEJ@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 1552,
-   "score": 97.188,
+   "score": 97.451,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-17"
   },
   "0x0063d8c0": {
    "name": "tPagingMechanism::mResizeHandle",
