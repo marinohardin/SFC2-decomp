@@ -91,7 +91,7 @@ fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf* _S)
 class fn_00404184_Locale
 {
 public:
-    fn_00404184_Locale();
+    fn_00404184_Locale() throw();
     std::locale::_Locimp* m0;
 };
 
@@ -109,7 +109,7 @@ extern fn_00402b90_Obj* g_00c8032c;
 std::locale::_Locimp* fn_0074c431() throw();
 
 // FUNCTION: STARFLEETOP 0x00404184
-fn_00404184_Locale::fn_00404184_Locale()
+fn_00404184_Locale::fn_00404184_Locale() throw()
 {
     m0 = fn_0074c431();
     std::_Lockit lock;
@@ -378,4 +378,61 @@ void fn_004048dd_Buf::fn_004048dd(char* _G, int _N, int _Mode)
         }
         m44 |= 1;
     }
+}
+
+// HYPOTHESIS: a stream buffer's area-pointer setup; +0x4c holds a locale object (constructed by
+// 0x00404184, released by 0x00402b22), +0x50 the area base, 0x00404b1c resets the buffer state.
+class fn_0040499a_Obj
+{
+public:
+    void fn_0040499a(char** _P, int _M);
+    void fn_00404b1c();
+    char pad0[0x0c];
+    char** m0c;
+    char** m10;
+    char pad14[0x08];
+    char** m1c;
+    char** m20;
+    char pad24[0x08];
+    char** m2c;
+    char** m30;
+    char pad34[0x04];
+    int m38;
+    int m3c;
+    int m40;
+    int m44;
+    bool m48;
+    char pad49[0x03];
+    std::locale m4c;
+    char** m50;
+};
+
+extern int g_00c81934;
+
+// FUNCTION: STARFLEETOP 0x0040499a
+void fn_0040499a_Obj::fn_0040499a(char** _P, int _M)
+{
+    m48 = _M == 1;
+    if (_M == 0)
+    {
+        m4c.~locale();
+        if (&m4c != 0)
+            new (&m4c) std::locale;
+        m44 = 0;
+    }
+    fn_00404b1c();
+    if (_P != 0)
+    {
+        m1c = _P;
+        m0c = _P + 2;
+        m10 = _P + 2;
+        m20 = _P;
+        m2c = _P + 1;
+        m30 = _P + 1;
+    }
+    m50 = _P;
+    m40 = g_00c81934;
+    int t = g_00c81934;
+    m38 = 0;
+    m3c = t;
 }

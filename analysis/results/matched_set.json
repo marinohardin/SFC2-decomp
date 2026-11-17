@@ -604,6 +604,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040499a": {
+   "name": "FUN_0040499a",
+   "symbol": "?fn_0040499a@fn_0040499a_Obj@@QAEXPAPADH@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 114,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
