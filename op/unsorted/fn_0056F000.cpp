@@ -515,14 +515,23 @@ void nDatabase::tQuery<tMetaMapHex>::fn_0056f04f(void *value)
 // HYPOTHESIS: tMetaMapHex is a database class; its members are not recovered.
 class tMetaMapHex : public nDatabase::tDatabaseObject {
 public:
-	char tMetaMapHex_pad[0x20];
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char tMetaMapHex_pad[0xd0 - 0x48];
 };
 
 // HYPOTHESIS: the result container for tMetaMapHex, as for 0x0056f4df.
 class fn_0056f703_results {
 public:
 	void push_back(const tMetaMapHex &value);
+	tMetaMapHex &back() { return *(m_last - 1); }
+	void *m_allocator;
+	tMetaMapHex *m_first;
+	tMetaMapHex *m_last;
 };
+typedef fn_0056f703_results fn_0056f83f_results;
 
 // HYPOTHESIS: 0x0056f703 is the same LockingQueryDB member template as 0x0056f05f,
 // instantiated for tMetaMapHex; this stand-in for tDatabase mirrors fn_0056f05f_owner.
@@ -573,4 +582,32 @@ void fn_0056f703_owner::fn_0056f703(const nDatabase::tQuery<tMetaMapHex> &query,
 			}
 		}
 	}
+}
+
+// HYPOTHESIS: unlocked variant of the database query for tMetaMapHex, like 0x0056f61b.
+class fn_0056f83f_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query, fn_0056f83f_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f83f
+void fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query, fn_0056f83f_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tMetaMapHex));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+#line 602 "fn_0056F000.cpp"
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		const tMetaMapHex *pObject = static_cast<const tMetaMapHex *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
 }
