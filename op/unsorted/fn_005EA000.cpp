@@ -719,7 +719,14 @@ void fn_005eaaa4(tTree_005ea63f::tValue *p, const tTree_005ea63f::tValue &v)
 	new ((void *)p) tTree_005ea63f::tValue(v);
 }
 
+template< typename tnResult >
+inline tCallback<tnResult>::~tCallback()
+{}
+
+// HYPOTHESIS: the analysis names 0x005eaafe ~tCallback by the vtable it stores, but it is the
+// deleting destructor's callee: this destructor with ~tCallback inlined, the first store dropped.
 // FUNCTION: STARFLEETOP 0x005eaae2
+// FUNCTION: STARFLEETOP 0x005eaafe
 template<>
 inline tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::~tMemberCallback()
 {}
