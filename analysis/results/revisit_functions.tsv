@@ -3,7 +3,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00647e40	tSoundChannelCommand::mDump	97.60	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.60%
 0x0064bed0	tSoundChannel::mGetFirstPlayingCommand	99.36	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.36%
 0x0066e6c0	tSoundMemoryBlockManager::mTestBlockIntegrity	99.53	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.53%
-0x0061d5c0	tDirIterator::mValid	99.70	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.70%
 0x0066f040	AsynchSoundIOMain	100.00	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 100.00%
 0x0061d6b0	tPathIterator::mValid	99.70	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.70%
 0x0061d7a0	tVolume::mGetName	99.97	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.97%
