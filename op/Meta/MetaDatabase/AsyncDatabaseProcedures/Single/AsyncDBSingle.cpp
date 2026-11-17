@@ -61,7 +61,7 @@ public:
 	virtual void vfunction4( std::vector<tServCharacter>* characters );
 	virtual void vfunction5( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
 	virtual void vfunction6();
-	virtual void vfunction7();
+	virtual void vfunction7( std::vector<tServCharacter>* characters );
 	virtual void vfunction8();
 	virtual void vfunction9();
 	virtual void vfunction10();
@@ -247,7 +247,20 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction5( std::vector<nDat
 	*characters = result;
 }
 
-
+// FUNCTION: STARFLEETOP 0x0056cb3b
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction7( std::vector<tServCharacter>* characters )
+{
+	nDatabase::tQuery<tServCharacter> query;
+	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval1( &tServCharacter::fn_005433e8, true );
+	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval2( &tServCharacter::fn_005433f4, false );
+	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval3( &tServCharacter::fn_00543400, false );
+	nDatabase::tMemberEval<tServCharacter, bool, std::equal_to<bool> > eval4( &tServCharacter::fn_005433dd, true );
+	query.AddEval( &eval1 );
+	query.AddEval( &eval2 );
+	query.AddEval( &eval3 );
+	query.AddEval( &eval4 );
+	fDatabase->fn_0056f05f( query, characters, false );
+}
 
 
 

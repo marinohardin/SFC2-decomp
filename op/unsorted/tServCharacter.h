@@ -16,6 +16,10 @@ public:
 	// HYPOTHESIS: two flags 0x0056c95c tests before it keeps a character.
 	bool fn_005433dd() const;
 	bool fn_0054340c() const;
+	// HYPOTHESIS: three more flags 0x0056cb3b queries on.
+	bool fn_005433e8() const;
+	bool fn_005433f4() const;
+	bool fn_00543400() const;
 
 	// HYPOTHESIS: the record is 0x160 bytes (the stride 0x0056c95c walks a vector with).
 	char fPad_48[0x160 - 0x48];
