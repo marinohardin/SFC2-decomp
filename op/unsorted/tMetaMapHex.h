@@ -171,6 +171,8 @@ public:
 	std::map< int32, float >& fn_0053a2fc();
 	// HYPOTHESIS: a number per index; tBattles::SQLFillInsertStream writes it for 0 and 1.
 	int32 fn_0053a414( int32 param_1 );
+	// HYPOTHESIS: the hex point's first coordinate, read under the lock.
+	long fn_00539f04();
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );

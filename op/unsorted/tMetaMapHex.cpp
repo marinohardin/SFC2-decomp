@@ -358,3 +358,12 @@ const char* tMetaMapHex::SQLFieldNames() const
 	m_bc.Leave();
 	return " ( ID, Locked, LockID, X, Y, EmpireControl, CartelControl, TerrainType, PlanetType, StarbaseType, BaseEconomicPoints, CurrentEconomicPoints, EmpireBaseVictoryPoints, CartelBaseVictoryPoints, EmpireCurrentVictoryPoints, CartelCurrentVictoryPoints, BaseSpeedPoints, CurrentSpeedPoints ) ";
 }
+
+// FUNCTION: STARFLEETOP 0x00539f04
+long tMetaMapHex::fn_00539f04()
+{
+	tOptex::tGuard guard( &m_bc );
+	long x = m_a8.fn_0055f269();
+	guard.Leave();
+	return x;
+}
