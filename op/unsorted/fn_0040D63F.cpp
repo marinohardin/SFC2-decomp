@@ -763,3 +763,29 @@ void fn_0040e4cc(char* name, int size, void* value, fn_0040d63f_Buf& buf)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e52b
+// HYPOTHESIS: reads a 1, 2 or 4 byte value by size
+void fn_0040e52b(char* name, int size, void* value, fn_0040d63f_Buf& buf)
+{
+    switch (size) {
+    case 1: {
+        char c;
+        fn_0040df66(name, &c, buf);
+        *(char*)value = c;
+        break;
+    }
+    case 2: {
+        short s;
+        fn_0040debd(name, &s, buf);
+        *(short*)value = s;
+        break;
+    }
+    case 4: {
+        long l;
+        fn_0040dd83(name, &l, buf);
+        *(long*)value = l;
+        break;
+    }
+    }
+}
+
