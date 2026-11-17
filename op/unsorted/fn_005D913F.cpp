@@ -495,3 +495,12 @@ void fn_005d97a8_object::fn_005d97c1()
     m_count = 0;
     m_items = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x005d9831
+// HYPOTHESIS: returns a byte truth value; mov al, 1 / xor al, al rules out bool's eax forms.
+unsigned char fn_005d9831(int param_1)
+{
+    if (param_1 >= 8 && param_1 <= 15)
+        return 1;
+    return 0;
+}
