@@ -562,24 +562,29 @@ bool tBaseWeapon::vfunction131(short param_1)
 bool tBaseWeapon::vfunction132(int param_1)
 {
     tPhysicalEntity *pShip = (tPhysicalEntity *)vfunction33();
-    if (pShip == NULL)
-        return false;
-    tPoint3 position = ((tEntity *)pShip)->fCurrPos;
-    short heading = pShip->field_0x90;
-    tEntity *pTarget = (tEntity *)param_1;
-    if (pTarget == NULL)
+    if (pShip != NULL)
     {
-        if (field_ec < 0 || field_ec >= 0x4000)
-            pTarget = NULL;
-        else
-            pTarget = g_008e1090[field_ec];
+        tPoint3 position(pShip->fCurrPos);
+        short heading = pShip->field_0x90;
+        tEntity *pTarget = (tEntity *)param_1;
+        if (pTarget == NULL)
+        {
+            if (field_ec < 0 || field_ec >= 0x4000)
+                pTarget = NULL;
+            else
+                pTarget = g_008e1090[field_ec];
+        }
+        tPoint3 target(0.0f, 0.0f, 0.0f);
+        if (pTarget != NULL)
+        {
+            target = pTarget->fCurrPos;
+            tPoint3 direction;
+            direction = target - position;
+            direction.mNormalize();
+            field_c8 = (heading - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
+            if (vfunction130())
+                return true;
+        }
     }
-    if (pTarget == NULL)
-        return false;
-    tPoint3 target = pTarget->fCurrPos;
-    tPoint3 direction;
-    direction = target - position;
-    direction.mNormalize();
-    field_c8 = (heading - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
-    return vfunction130();
+    return false;
 }
