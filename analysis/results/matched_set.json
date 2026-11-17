@@ -11746,6 +11746,159 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00657770": {
+   "name": "tAudioFileInfoPart::tAudioFileInfoPart",
+   "symbol": "??0tAudioFileInfoPart@@QAE@XZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006577d0": {
+   "name": "tAudioFileInfoPart::~tAudioFileInfoPart",
+   "symbol": "??1tAudioFileInfoPart@@UAE@XZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 416,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657970": {
+   "name": "tAudioPriorityManagerPart::mIsReady",
+   "symbol": "?mIsReady@tAudioPriorityManagerPart@@UAEEXZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657980": {
+   "name": "tAudioFileInfoPart::mActivate",
+   "symbol": "?mActivate@tAudioFileInfoPart@@UAEXXZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 480,
+   "score": 98.24,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00657b60": {
+   "name": "tAudioFileInfoPart::mDeactivate",
+   "symbol": "?mDeactivate@tAudioFileInfoPart@@UAEXXZ",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 400,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657cf0": {
+   "name": "tAudioFileInfoPart::mAttachToThisChannel",
+   "symbol": "?vfn_48@tAudioFileInfoPart@@UAEEJJJ@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657d20": {
+   "name": "tAudioFileInfoPart::mGetNumberOfSamples",
+   "symbol": "?mGetNumberOfSamples@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657d40": {
+   "name": "tAudioFileInfoPart::mGetNumberOfSelectionPerSound",
+   "symbol": "?mGetNumberOfSelectionPerSound@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657d60": {
+   "name": "tAudioFileInfoPart::mGetTotalSizeInBytes",
+   "symbol": "?mGetTotalSizeInBytes@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657d80": {
+   "name": "tAudioFileInfoPart::mGetTotalDataSizeInBytes",
+   "symbol": "?mGetTotalDataSizeInBytes@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657da0": {
+   "name": "tAudioFileInfoPart::mGetDepth",
+   "symbol": "?mGetDepth@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657dc0": {
+   "name": "tAudioFileInfoPart::mGetLinkDepth",
+   "symbol": "?mGetLinkDepth@tAudioFileInfoPart@@UAEJK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00657de0": {
+   "name": "tAudioFileInfoPart::mAddSoundFile",
+   "symbol": "?mAddSoundFile@tAudioFileInfoPart@@UAEKAAVtBasicAudioFile@@@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 656,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00658070": {
+   "name": "tAudioFileInfoPart::mDeleteSoundFile",
+   "symbol": "?mDeleteSoundFile@tAudioFileInfoPart@@UAEXK@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006580c0": {
+   "name": "tAudioFileInfoPart::mGetNewAsynchReadInfo",
+   "symbol": "?mGetNewAsynchReadInfo@tAudioFileInfoPart@@UAEJKJ@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 464,
+   "score": 99.94,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00658290": {
+   "name": "tAudioFileInfoPart::mGetAsynchReadInfo",
+   "symbol": "?mGetAsynchReadInfo@tAudioFileInfoPart@@UAEPAUtAsynchReadInfo@@J@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006582c0": {
+   "name": "tAudioFileInfoPart::mFreeAsynchReadInfo",
+   "symbol": "?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z",
+   "unit": "Tiger/tAudioFile.cpp",
+   "size": 576,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006587f0": {
    "name": "tChannelGroup::mDump",
    "symbol": "?mDump@tChannelGroup@@UAEXKJ@Z",
@@ -12223,6 +12376,60 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00663720": {
+   "name": "mystrequivalent",
+   "symbol": "?mystrequivalent@@YAEPAD0@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663780": {
+   "name": "mystrequivalentN",
+   "symbol": "?mystrequivalentN@@YAEPAD0J@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006637f0": {
+   "name": "tAFPlayInfo::mGetRandomFrequency",
+   "symbol": "?mGetRandomFrequency@tAFPlayInfo@@UAEJXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663850": {
+   "name": "tAFPlayInfo::mGetRandomVolume",
+   "symbol": "?mGetRandomVolume@tAFPlayInfo@@UAEJXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006638a0": {
+   "name": "tAFPlayInfo::mGetAcualIndexOffsetIfRandom",
+   "symbol": "?mGetAcualIndexOffsetIfRandom@tAFPlayInfo@@UAEJXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006638e0": {
+   "name": "tAFPlayInfo::mAddClass",
+   "symbol": "?mAddClass@tAFPlayInfo@@UAEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006639c0": {
    "name": "tAFPlayInfo::mSetNextInSequence",
    "symbol": "?mSetNextInSequence@tAFPlayInfo@@UAEXJ@Z",
@@ -12232,11 +12439,857 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x006639d0": {
+   "name": "tAFPlayInfo::mInit",
+   "symbol": "?mInit@tAFPlayInfo@@UAEXJPAD00JJJJNNKKEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663ae0": {
+   "name": "tAFPlayInfo::operator=",
+   "symbol": "??4tAFPlayInfo@@QAEAAV0@AAV0@@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663c40": {
+   "name": "tAFPlayInfo::mIsThisInThisThreshold",
+   "symbol": "?mIsThisInThisThreshold@tAFPlayInfo@@UAEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663ce0": {
+   "name": "tAFPlayInfo::mIsThisInThisGroup",
+   "symbol": "?mIsThisInThisGroup@tAFPlayInfo@@UAEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 160,
+   "score": 87.538,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00663d80": {
+   "name": "tBasicSoundFileManager::tBasicSoundFileManager",
+   "symbol": "??0tBasicSoundFileManager@@QAE@XZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663e60": {
+   "name": "tBasicSoundFileManager::`scalar_deleting_destructor'",
+   "symbol": "??_GtBasicSoundFileManager@@UAEPAXI@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663e80": {
+   "name": "tBasicSoundFileManager::~tBasicSoundFileManager",
+   "symbol": "??1tBasicSoundFileManager@@UAE@XZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00663ee0": {
+   "name": "tBasicSoundFileManager::mAdjustGlobalVolume",
+   "symbol": "?mAdjustGlobalVolume@tBasicSoundFileManager@@UAEXXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664050": {
+   "name": "tBasicSoundFileManager::mUpdateAllSounds",
+   "symbol": "?mUpdateAllSounds@tBasicSoundFileManager@@UAEXXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006640a0": {
+   "name": "tBasicSoundFileManager::mUpdateTest",
+   "symbol": "?mUpdateTest@tBasicSoundFileManager@@QAEXXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 1990,
+   "score": 0.165,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00664870": {
    "name": "tBasicSoundFileManager::mGetTrackingIndex",
    "symbol": "?mGetTrackingIndex@tBasicSoundFileManager@@UAEKK@Z",
    "unit": "Tiger/tsndmgr.cpp",
    "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664880": {
+   "name": "tBasicSoundFileManager::mGetTrackingOffset",
+   "symbol": "?mGetTrackingOffset@tBasicSoundFileManager@@UAEGK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664890": {
+   "name": "tBasicSoundFileManager::mValidTrackingNumber",
+   "symbol": "?mValidTrackingNumber@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006648c0": {
+   "name": "tBasicSoundFileManager::mClearTrackingNumber",
+   "symbol": "?mClearTrackingNumber@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664910": {
+   "name": "tBasicSoundFileManager::mNewTrackingNumber",
+   "symbol": "?mNewTrackingNumber@tBasicSoundFileManager@@UAEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664a50": {
+   "name": "tBasicSoundFileManager::mAddRegisteredAudioType",
+   "symbol": "?mAddRegisteredAudioType@tBasicSoundFileManager@@UAEEPADP6AK0JJJPAVtSoundChannelFormat@@JPAX@ZP6AKKJ@ZJJ2J@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664b00": {
+   "name": "tBasicSoundFileManager::mStop",
+   "symbol": "?mStop@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664bd0": {
+   "name": "tBasicSoundFileManager::mAttachSoundToChannel",
+   "symbol": "?mAttachSoundToChannel@tBasicSoundFileManager@@UAEEKPAVtSoundSelection@@@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664cb0": {
+   "name": "tBasicSoundFileManager::mAttachFileToChannel",
+   "symbol": "?mAttachFileToChannel@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664d90": {
+   "name": "tBasicSoundFileManager::mResumeChannel",
+   "symbol": "?mResumeChannel@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664e70": {
+   "name": "tBasicSoundFileManager::mPauseChannel",
+   "symbol": "?mPauseChannel@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00664f50": {
+   "name": "tBasicSoundFileManager::mStopAndResetChannel",
+   "symbol": "?mStopAndResetChannel@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665030": {
+   "name": "tBasicSoundFileManager::mStopAndClearChannel",
+   "symbol": "?mStopAndClearChannel@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665110": {
+   "name": "tBasicSoundFileManager::mSetFrequency",
+   "symbol": "?mSetFrequency@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006651f0": {
+   "name": "tBasicSoundFileManager::mSetPan",
+   "symbol": "?mSetPan@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006652d0": {
+   "name": "tBasicSoundFileManager::mSetVolume",
+   "symbol": "?mSetVolume@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006653b0": {
+   "name": "tBasicSoundFileManager::mSetFinishFunction",
+   "symbol": "?mSetFinishFunction@tBasicSoundFileManager@@UAEEKQ6AXKE@ZJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006654a0": {
+   "name": "tBasicSoundFileManager::mAddUpdateSoundPositionFunction",
+   "symbol": "?mAddUpdateSoundPositionFunction@tBasicSoundFileManager@@UAEEKP6AXKJ@ZJNJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006655a0": {
+   "name": "tBasicSoundFileManager::mAddDelayCommand",
+   "symbol": "?mAddDelayCommand@tBasicSoundFileManager@@UAEEKNJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665690": {
+   "name": "tBasicSoundFileManager::mPlaySpecialLoop",
+   "symbol": "?mPlaySpecialLoop@tBasicSoundFileManager@@UAEEKJJJJJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665780": {
+   "name": "tBasicSoundFileManager::mEndSpecialLoop",
+   "symbol": "?mEndSpecialLoop@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665860": {
+   "name": "tBasicSoundFileManager::mAddGetNextAttachmentFunction",
+   "symbol": "?mAddGetNextAttachmentFunction@tBasicSoundFileManager@@UAEEKP6AXKJ@ZJNJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665950": {
+   "name": "tBasicSoundFileManager::mSetChannelAttributes",
+   "symbol": "?mSetChannelAttributes@tBasicSoundFileManager@@UAEEKPAVtChannelAttributes@@@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665a30": {
+   "name": "tBasicSoundFileManager::mSet3DSoundProfile",
+   "symbol": "?mSet3DSoundProfile@tBasicSoundFileManager@@UAEEKPAVt3DSoundProfile@@@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665b10": {
+   "name": "tBasicSoundFileManager::mSet3DSoundPosition",
+   "symbol": "?mSet3DSoundPosition@tBasicSoundFileManager@@UAEEKPAUtPoint3@@@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665bf0": {
+   "name": "tBasicSoundFileManager::mSet3DSoundOrientation",
+   "symbol": "?mSet3DSoundOrientation@tBasicSoundFileManager@@UAEEKPAUtPoint3@@JE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665ce0": {
+   "name": "tBasicSoundFileManager::mSet3DSoundVelocity",
+   "symbol": "?mSet3DSoundVelocity@tBasicSoundFileManager@@UAEEKPAUtPoint3@@JE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665dd0": {
+   "name": "tBasicSoundFileManager::mSet3DSoundCones",
+   "symbol": "?mSet3DSoundCones@tBasicSoundFileManager@@UAEEKMJJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665ec0": {
+   "name": "tBasicSoundFileManager::mSet3DSoundReferenceDistance",
+   "symbol": "?mSet3DSoundReferenceDistance@tBasicSoundFileManager@@UAEEKNJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00665fb0": {
+   "name": "tBasicSoundFileManager::mGetChannelAttributes",
+   "symbol": "?mGetChannelAttributes@tBasicSoundFileManager@@UAEPAVtChannelAttributes@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666090": {
+   "name": "tBasicSoundFileManager::mGet3DSoundProfile",
+   "symbol": "?mGet3DSoundProfile@tBasicSoundFileManager@@UAEPAVt3DSoundProfile@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666170": {
+   "name": "tBasicSoundFileManager::mGet3DSoundPosition",
+   "symbol": "?mGet3DSoundPosition@tBasicSoundFileManager@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666250": {
+   "name": "tBasicSoundFileManager::mGet3DSoundOrientation",
+   "symbol": "?mGet3DSoundOrientation@tBasicSoundFileManager@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666330": {
+   "name": "tBasicSoundFileManager::mGet3DSoundVelocity",
+   "symbol": "?mGet3DSoundVelocity@tBasicSoundFileManager@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666410": {
+   "name": "tBasicSoundFileManager::mGet3DSoundReferenceDistance",
+   "symbol": "?mGet3DSoundReferenceDistance@tBasicSoundFileManager@@UAENKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006664f0": {
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAngleForNoAttenuation",
+   "symbol": "?mGet3DSoundConeAngleForNoAttenuation@tBasicSoundFileManager@@UAEMKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006665d0": {
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAttenuationLevel",
+   "symbol": "?mGet3DSoundConeAttenuationLevel@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006666b0": {
+   "name": "tBasicSoundFileManager::mTotalBytesLeftToPlay",
+   "symbol": "?mTotalBytesLeftToPlay@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666790": {
+   "name": "tBasicSoundFileManager::mTotalNumberOfSecondsLeftToPlay",
+   "symbol": "?mTotalNumberOfSecondsLeftToPlay@tBasicSoundFileManager@@UAENKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666870": {
+   "name": "tBasicSoundFileManager::mNumberOfAttachmentsQueuedUp",
+   "symbol": "?mNumberOfAttachmentsQueuedUp@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666950": {
+   "name": "tBasicSoundFileManager::mGetSoundChannelFormat",
+   "symbol": "?mGetSoundChannelFormat@tBasicSoundFileManager@@UAEPAVtSoundChannelFormat@@KJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666a30": {
+   "name": "tBasicSoundFileManager::mAreWeLooping",
+   "symbol": "?mAreWeLooping@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666b10": {
+   "name": "tBasicSoundFileManager::mAreWeStreaming",
+   "symbol": "?mAreWeStreaming@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666bf0": {
+   "name": "tBasicSoundFileManager::mAreWe3D",
+   "symbol": "?mAreWe3D@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666cd0": {
+   "name": "tBasicSoundFileManager::mAreWeStatic",
+   "symbol": "?mAreWeStatic@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666db0": {
+   "name": "tBasicSoundFileManager::mAreWeFixedFrequency",
+   "symbol": "?mAreWeFixedFrequency@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666e90": {
+   "name": "tBasicSoundFileManager::mAreWeARecordingChannel",
+   "symbol": "?mAreWeARecordingChannel@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00666f70": {
+   "name": "tBasicSoundFileManager::mTryToLocateInHardware",
+   "symbol": "?mTryToLocateInHardware@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667050": {
+   "name": "tBasicSoundFileManager::mTryToLocateInSoftware",
+   "symbol": "?mTryToLocateInSoftware@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667130": {
+   "name": "tBasicSoundFileManager::mAreWeFixedPan",
+   "symbol": "?mAreWeFixedPan@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667210": {
+   "name": "tBasicSoundFileManager::mAreWeFixedVolume",
+   "symbol": "?mAreWeFixedVolume@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006672f0": {
+   "name": "tBasicSoundFileManager::mAreWeAGlobalSound",
+   "symbol": "?mAreWeAGlobalSound@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006673d0": {
+   "name": "tBasicSoundFileManager::mDoWeRetainSelections",
+   "symbol": "?mDoWeRetainSelections@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006674b0": {
+   "name": "tBasicSoundFileManager::mDump",
+   "symbol": "?mDump@tBasicSoundFileManager@@UAEXKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667590": {
+   "name": "tBasicSoundFileManager::mSetPriority",
+   "symbol": "?mSetPriority@tBasicSoundFileManager@@UAEEKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667670": {
+   "name": "tBasicSoundFileManager::mGetChannelPriority",
+   "symbol": "?mGetChannelPriority@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667750": {
+   "name": "tBasicSoundFileManager::mGetFrequency",
+   "symbol": "?mGetFrequency@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667830": {
+   "name": "tBasicSoundFileManager::mGetPan",
+   "symbol": "?mGetPan@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667910": {
+   "name": "tBasicSoundFileManager::mGetVolume",
+   "symbol": "?mGetVolume@tBasicSoundFileManager@@UAEJKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006679f0": {
+   "name": "tBasicSoundFileManager::mFadeToVolume",
+   "symbol": "?mFadeToVolume@tBasicSoundFileManager@@UAEEKJNJE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667ae0": {
+   "name": "tBasicSoundFileManager::mFadeToStopAndResetNow",
+   "symbol": "?mFadeToStopAndResetNow@tBasicSoundFileManager@@UAEEKNJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667bd0": {
+   "name": "tBasicSoundFileManager::mFadeToStopAndClearNow",
+   "symbol": "?mFadeToStopAndClearNow@tBasicSoundFileManager@@UAEEKNJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667cc0": {
+   "name": "tBasicSoundFileManager::mUpdatePosition",
+   "symbol": "?mUpdatePosition@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667cf0": {
+   "name": "tBasicSoundFileManager::mFinishSound",
+   "symbol": "?mFinishSound@tBasicSoundFileManager@@UAEXKE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667dd0": {
+   "name": "tBasicSoundFileManager::mGetNextAttachment",
+   "symbol": "?mGetNextAttachment@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667e00": {
+   "name": "tBasicSoundFileManager::mSetGetNextAttachmentFunction",
+   "symbol": "?mSetGetNextAttachmentFunction@tBasicSoundFileManager@@UAEXKP6AXKJ@Z@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00667e20": {
+   "name": "tBasicSoundFileManager::mDoDefaultNextAttachment",
+   "symbol": "?mDoDefaultNextAttachment@tBasicSoundFileManager@@UAEXK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 816,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668150": {
+   "name": "tBasicSoundFileManager::mIsSoundPlaying",
+   "symbol": "?mIsSoundPlaying@tBasicSoundFileManager@@UAEEK@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668230": {
+   "name": "tBasicSoundFileManager::mGetStatus",
+   "symbol": "?mGetStatus@tBasicSoundFileManager@@QAE?AW4eSoundChannelStatus@@K@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668310": {
+   "name": "tBasicSoundFileManager::mGetRegisteredNumber",
+   "symbol": "?mGetRegisteredNumber@tBasicSoundFileManager@@UAEJPAD@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006683a0": {
+   "name": "tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition",
+   "symbol": "?mSetAFPlayInfoAtThisPosition@tBasicSoundFileManager@@UAEEJJJJPAD00JJJJNNEEJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 528,
+   "score": 47.662,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x006685b0": {
+   "name": "tBasicSoundFileManager::mCloseAllSoundsInGroup",
+   "symbol": "?mCloseAllSoundsInGroup@tBasicSoundFileManager@@UAEXJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668640": {
+   "name": "tBasicSoundFileManager::mCloseAllSoundsNotInThreshold",
+   "symbol": "?mCloseAllSoundsNotInThreshold@tBasicSoundFileManager@@UAEXJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006686d0": {
+   "name": "tBasicSoundFileManager::mCloseAllSounds",
+   "symbol": "?mCloseAllSounds@tBasicSoundFileManager@@UAEXXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668740": {
+   "name": "tBasicSoundFileManager::mCloseFile",
+   "symbol": "?mCloseFile@tBasicSoundFileManager@@UAEXJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 560,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00668970": {
+   "name": "tBasicSoundFileManager::mParseAllSoundsFile",
+   "symbol": "?mParseAllSoundsFile@tBasicSoundFileManager@@UAEXPADJJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 8752,
+   "score": 1.943,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0066ac50": {
+   "name": "tBasicSoundFileManager::mGetNextToken",
+   "symbol": "?mGetNextToken@tBasicSoundFileManager@@UAEPACPADPBDJPAJD@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066ad40": {
+   "name": "tBasicSoundFileManager::mReadInFileAsString",
+   "symbol": "?mReadInFileAsString@tBasicSoundFileManager@@UAEPACPADJPAJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 944,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b0f0": {
+   "name": "tChannelGroupManagerPart::mIsReady",
+   "symbol": "?mIsReady@tBasicSoundFileManager@@UAEEXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b110": {
+   "name": "tBasicSoundFileManager::mDeactivate",
+   "symbol": "?mDeactivate@tBasicSoundFileManager@@UAEXXZ",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b150": {
+   "name": "DefaultSndMgrUpdatePositionFunction",
+   "symbol": "?DefaultSndMgrUpdatePositionFunction@@YAXKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b1e0": {
+   "name": "DefaultSndMgrFinishFunction",
+   "symbol": "?DefaultSndMgrFinishFunction@@YAXKE@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b270": {
+   "name": "DefaultNextAttachmentFunction",
+   "symbol": "?DefaultNextAttachmentFunction@@YAXKJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b300": {
+   "name": "tBasicSoundFileManager::mSetNextInSequence",
+   "symbol": "?mSetNextInSequence@tBasicSoundFileManager@@UAEXJJ@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0066b330": {
+   "name": "tBasicSoundFileManager::mPlay",
+   "symbol": "?mPlay@tBasicSoundFileManager@@UAEKJJNJJJJP6AXJKE@ZP6AXKJ@Z@Z",
+   "unit": "Tiger/tsndmgr.cpp",
+   "size": 1968,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-16"

@@ -43,13 +43,13 @@ long tClassTrackingInfo::mGetPriority( void )
 // FUNCTION: STARFLEETOP 0x00661570
 unsigned char tClassTrackingInfo::mAreWeValid( void )
 {
-	// HYPOTHESIS: the meaning of status 0x10 and the names of slots 8 and 19 are not recovered.
+	// HYPOTHESIS: the meaning of status 0x10 is not recovered.
 	if ( BindPart( tBasicSoundFileManager )->mGetStatus( f08 ) == 0x10 )
 	{
-		BindPart( tBasicSoundFileManager )->vfunction19( f08 );
+		BindPart( tBasicSoundFileManager )->mStop( f08 );
 		return false;
 	}
-	return BindPart( tBasicSoundFileManager )->vfunction8( f08 );
+	return BindPart( tBasicSoundFileManager )->mValidTrackingNumber( f08 );
 }
 
 // FUNCTION: STARFLEETOP 0x00661700

@@ -8,11 +8,13 @@
 
 // HYPOTHESIS: the layout follows the reads in tAudioPriorityManagerPart::mAreWeAllowedToPlay
 // (0x00661fa0): the item table, a 16-bit use count per slot (the high half of a handle), the
-// number of items and the table's size. Member names are not known.
+// number of items and the table's size. Member names are not known. The inlined constructor
+// in tAudioFileInfoPart's (0x00657770) sets the grow step at +0x14 to 0x40.
 template < class T >
 class tSafeArray
 {
 	public:
+		inline		tSafeArray( void );
 		virtual		~tSafeArray( void );
 
 		T *				mGetItemAtThisIndex		( unsigned long );
@@ -32,8 +34,22 @@ class tSafeArray
 		inline	T *				mPeekItem		( unsigned long );
 		inline	void			mClearItem		( unsigned long );
 		// HYPOTHESIS: tAudioPriorityManagerPart::mClose (0x00662540) inlines the release of every
-		// item, when the array owns them, and of both tables; the name is this project's own.
+		// item, when the array owns them, and of both tables; so do the destructor and
+		// tAudioFileInfoPart::mDeactivate (0x00657b60). The name is this project's own.
 		inline	void			mDeleteAll		( void );
+		// HYPOTHESIS: puts an item in a free slot (growing both tables by the grow step when
+		// full), bumps the slot's use count and returns (count << 16) + slot. Inlined, growth
+		// included, into tAudioFileInfoPart::mAddSoundFile (0x00657de0); defined in
+		// Tiger/tindexedarray.h. The name is this project's own.
+		unsigned long	fn_Add	( T * );
+		// HYPOTHESIS: the item a handle names, or 0 when the handle is out of range or its use
+		// count is stale, compared as a signed 16-bit value. Defined in Tiger/tAudioFile.cpp; the
+		// name is this project's own.
+		T *				fn_Get	( unsigned long );
+		// HYPOTHESIS: deletes the item a handle names when its use count is current. Inlined
+		// into tAudioFileInfoPart::mDeleteSoundFile (0x00658070); defined in Tiger/tAudioFile.cpp.
+		// The name is this project's own.
+		void			fn_Remove	( unsigned long );
 
 	protected:
 		unsigned long	mGetIndexFromRealIndex	( unsigned long );
@@ -50,6 +66,17 @@ class tSafeArray
 		long			f14;
 		unsigned char	f18;
 };
+
+template < class T >
+inline tSafeArray< T >::tSafeArray( void )
+{
+	f18 = 1;
+	f04 = 0;
+	f08 = 0;
+	f0c = 0;
+	f10 = 0;
+	f14 = 0x40;
+}
 
 template < class T >
 inline unsigned long tSafeArray< T >::mFirstItemIndex( void )

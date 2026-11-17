@@ -469,19 +469,20 @@ long tChannelGroup::mAddDuplicate(unsigned long param_1)
     return -1;
 }
 
-// HYPOTHESIS: the audio file part bound by name through its part cache (at 0x00c669d0). Only
-// the virtual at offset 0x48 is used here: it attaches a file to a channel for a link index
-// and returns false on failure. Its name is not recovered.
-class tAudioFileInfoPart : public tPart
-{
-public:
-    GenAbstractBinding(tAudioFileInfoPart);
+// MATCH-ONLY: Tiger/tAudioFile.h now declares tAudioFileInfoPart; the lines are kept so line
+// numbers stay.
+#include "Tiger/tAudioFile.h"
 
-    virtual void vfn_18(); virtual void vfn_1c(); virtual void vfn_20(); virtual void vfn_24();
-    virtual void vfn_28(); virtual void vfn_2c(); virtual void vfn_30(); virtual void vfn_34();
-    virtual void vfn_38(); virtual void vfn_3c(); virtual void vfn_40(); virtual void vfn_44();
-    virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
-};
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00659540
 unsigned char tChannelGroup::mAttachFileToChannel(unsigned long param_1, long param_2)
