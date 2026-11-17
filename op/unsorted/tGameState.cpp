@@ -195,6 +195,7 @@ class fn_0040c28c_object
 public:
 	int fn_006fe8a0(int);
 	int fn_0069aa00(int);
+	int fn_0069a940();
 };
 
 class fn_0090db70_owner
@@ -1302,4 +1303,10 @@ void fn_0046aa9a(int param_1)
 int fn_0046abb3()
 {
 	return g_0090db2c;
+}
+
+// FUNCTION: STARFLEETOP 0x0046abb9
+int fn_0046abb9()
+{
+	return fn_0040c28c()->fn_0069a940();
 }
