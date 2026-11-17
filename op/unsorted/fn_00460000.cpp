@@ -671,3 +671,22 @@ fn_00460b73_class::~fn_00460b73_class()
     allocator.deallocate(_First, _End - _First);
     _First = 0, _Last = 0, _End = 0;
 }
+
+// HYPOTHESIS: 0x00460c0c forwards the member at +8 to 0x00460ede with a constant 1; the callee
+// pops its own three arguments, so it is __stdcall.
+void __stdcall fn_00460ede(void *p, int n, int v);
+
+class fn_00460c0c_class
+{
+public:
+    void fn_00460c0c(int v);
+
+    char pad_000[0x8];
+    void *m_8;
+};
+
+// FUNCTION: STARFLEETOP 0x00460c0c
+void fn_00460c0c_class::fn_00460c0c(int v)
+{
+    fn_00460ede(m_8, 1, v);
+}
