@@ -779,3 +779,19 @@ fn_0053a6cc_map::iterator fn_0053a6cc_map::tree::erase( iterator first, iterator
 		return iterator( m_head->left );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053a981
+void fn_0053a6cc_map::tree::fn_0053a981( const tree& other )
+{
+	_Root() = fn_0053ab16( other._Root(), m_head );
+	m_size = other.m_size;
+	if( _Root() != m_nil )
+	{
+		_Lmost() = _Min( _Root() );
+		_Rmost() = _Max( _Root() );
+	}
+	else
+	{
+		_Lmost() = m_head, _Rmost() = m_head;
+	}
+}

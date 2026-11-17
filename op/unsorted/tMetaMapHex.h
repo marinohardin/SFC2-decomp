@@ -135,6 +135,15 @@ struct fn_0053a6cc_map
 		void fn_0053ab9a( node* root );
 		// HYPOTHESIS: the out-of-line copy of another tree's nodes 0x0053a981.
 		void fn_0053a981( const tree& other );
+		// HYPOTHESIS: the out-of-line copy of a subtree 0x0053ab16 (the library's _Copy).
+		node* fn_0053ab16( node* root, node* parent );
+		// MATCH-ONLY: the library's inline _Min and _Max, inlined into the copy.
+		static node* _Min( node* p ) { while( !p->left->isnil ) p = p->left; return p; }
+		static node* _Max( node* p ) { while( !p->right->isnil ) p = p->right; return p; }
+		// MATCH-ONLY: the library's inline accessors of the head node.
+		node*& _Root() const { return m_head->parent; }
+		node*& _Lmost() const { return m_head->left; }
+		node*& _Rmost() const { return m_head->right; }
 		std::allocator< int32 > m_alloc;
 		std::less< int32 > m_comp;
 		char	m_pad[2];
