@@ -3439,6 +3439,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x00460e76": {
+   "name": "FUN_00460e76",
+   "symbol": "?fn_00460e76@fn_00460b03_class@@QAEXPAUfn_00460acb_node@@@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",

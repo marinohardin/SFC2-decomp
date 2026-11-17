@@ -919,3 +919,14 @@ void fn_00460acb_class::fn_00460e3e(fn_00460acb_node *x)
         operator delete(x);
     }
 }
+
+// FUNCTION: STARFLEETOP 0x00460e76
+void fn_00460b03_class::fn_00460e76(fn_00460acb_node *x)
+{
+    for (fn_00460acb_node *y = x; y != m_8; x = y)
+    {
+        fn_00460e76(y->_Right);
+        y = y->_Next;
+        operator delete(x);
+    }
+}
