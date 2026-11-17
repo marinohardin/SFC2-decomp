@@ -1,23 +1,135 @@
 // Functions of tState_Namespace_GameConnections::tState_GameConnections (RTTI); the
 // original file is not known.
 
+#include "Tiger/tstring.h"
+#include "Tiger/tstringtag.h"
+#include "unsorted/tNetControl.h"
+#include "unsorted/tObject_0040ce21.h"
+#include "unsorted/tValueI.h"
+#include "unsorted/c_0046aa10_msg.h"
+
 // The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
 extern char *g_00844e78;
+
+// HYPOTHESIS: tables of names the state hands to fn_004d3179; their contents are not known.
+extern const char *g_00844e34[];
+extern const char *g_00844e4c[];
+extern const char *g_00844e64[];
+extern const char *g_00844e70;
+extern int g_00844ec8;
+
+// HYPOTHESIS: a global whose address is passed to fn_004d31ed; its type is not known.
+extern char g_00845040[];
+
+// HYPOTHESIS: cdecl functions; their names are not known.
+void fn_004be81f(int arg);
+void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
+void fn_004d3179(const char *name, const tString &value);
+void fn_004d3774(int id);
 
 namespace tState_Namespace_GameConnections
 {
 
-// HYPOTHESIS: only the slot rebuilt so far; the full layout is not known yet.
+// HYPOTHESIS: only the slots rebuilt so far; members placed by their offsets.
 class tState_GameConnections
 {
 public:
 	char *vfunction13();
+	bool vfunction2();
+
+	void fn_004682c7();
+	void fn_00468527();
+	void fn_00469271();
+
+	char m00[0xc];
+	unsigned char m0c;
+	char m0d[0x14 - 0xd];
+	int m14;
+	unsigned char m18;
+	char m19[0x5c - 0x19];
+	tValueI< tString > m5c;
+	char m9c[0x19c - 0x9c];
+	tValueI< tString > m19c;
+	int m1dc;
+	int m1e0;
+	int m1e4;
+	char *m1e8;
+	char m1ec[0x1fc - 0x1ec];
+	tString m1fc;
+	int m224[6];
+	int m23c;
 };
 
 // FUNCTION: STARFLEETOP 0x00466674
 char *tState_GameConnections::vfunction13()
 {
 	return g_00844e78;
+}
+
+// FUNCTION: STARFLEETOP 0x0046667a
+bool tState_GameConnections::vfunction2()
+{
+	{
+		c_0046aa10_message msg;
+		while (fn_0046aa10(&msg))
+			;
+	}
+
+	static tObject_0040ce21 marker("who wants play");
+
+	fn_004be81f(0);
+	m18 = 0;
+	fn_00469271();
+	m1e8 = g_00844e78;
+	fn_004d31ed(g_00844e78, 1, g_00845040, 640, 480);
+
+	tStringGroupTag *tag = new tStringGroupTag("trnasEntry");
+	m5c = tag->mGetString(0);
+	// HYPOTHESIS: the original tests the pointer before both deletes; an explicit test, as a
+	// destructor on tStringGroupTag would change tIntTag::mGetString's frame.
+	if (tag)
+		delete tag;
+
+	tStringGroupTag *tag2 = new tStringGroupTag("LAN");
+	m1fc = tag2->mGetString(0);
+	if (tag2)
+		delete tag2;
+
+	m14 = -1;
+	fn_004682c7();
+	g_00844ec8 = 10;
+	m1e4 = -1;
+	m0c = 0;
+	m1dc = 0;
+	m1e0 = 0;
+
+	for (unsigned int i = 0; i < 6; i++)
+	{
+		tString text(g_00844e34[m224[i]]);
+		fn_004d3179(g_00844e4c[i], text);
+	}
+
+	{
+		tString text(g_00844e34[0]);
+		m19c = text;
+	}
+	{
+		tString text(g_00844e64[m23c]);
+		fn_004d3179(g_00844e70, text);
+	}
+
+	fn_004d3774(0x10032);
+
+	if (gNetControl.fn_0043456f() || gNetControl.fn_0043457d() != "")
+	{
+		c_0046aa10_message send;
+		send.id = 0x10004;
+		fn_0046aa2b(&send);
+	}
+
+	fn_00468527();
+	m1e4 = 0x10004;
+	return true;
 }
 
 }

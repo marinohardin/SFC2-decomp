@@ -44,6 +44,8 @@ public:
 	void fn_00431821();
 	bool fn_0043268d();	// HYPOTHESIS: returns a flag (tested in al)
 	void fn_00432f5a();
+	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
+	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
 	void mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, double aTime);
 	// HYPOTHESIS: (message, command, player, destination, time); sends to one player's entry
