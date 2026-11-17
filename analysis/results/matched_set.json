@@ -1810,6 +1810,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040d908": {
+   "name": "FUN_0040d908",
+   "symbol": "?fn_0040d908@@YAXPAX@Z",
+   "unit": "unsorted/fn_0040D63F.cpp",
+   "size": 14,
+   "score": 55.0,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",

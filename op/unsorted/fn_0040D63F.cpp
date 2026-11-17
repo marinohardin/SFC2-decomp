@@ -213,3 +213,11 @@ void fn_0040d63f_Buf::fn_0040d8e8(char* p)
     if (m0c < m08)
         m0c = m08;
 }
+
+void fn_0040e6d1(void* p);
+
+// FUNCTION: STARFLEETOP 0x0040d908
+void fn_0040d908(void* p)
+{
+    fn_0040e6d1(p);
+}
