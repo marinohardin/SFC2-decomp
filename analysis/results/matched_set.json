@@ -7075,15 +7075,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x0057a577": {
-   "name": "FUN_0057a577",
-   "symbol": "?fn_0057a577@@YAPAXXZ",
-   "unit": "unsorted/fn_0057A000.cpp",
-   "size": 71,
-   "score": 4.815,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x0057a5be": {
    "name": "FUN_0057a5be",
    "symbol": "?fn_0057a5be@fn_0057a5be_object@@QAEXXZ",

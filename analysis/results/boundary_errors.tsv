@@ -56,3 +56,4 @@ address	name	part_of	kind	note
 0x00496651	FUN_00496651		initializer-fragment	0x00496651 is a further slice (fstp to 0x009172d0, fld 159.0) of the initializer that holds 0x00496629.
 0x00496665	FUN_00496665		initializer-fragment	0x00496665 is the tail (fstp to 0x009172d4, ret) of the initializer that holds 0x00496629.
 0x005ea63e	FUN_005ea63e	0x005ea5e5	body-fragment	0x005ea63e is one byte (pop esi), the tail of the routine at 0x005ea5e5; not a function of its own.
+0x0057a577	FUN_0057a577	0x0057a4ab	body-fragment	0x0057a577 is the resume point after the catch block at 0x0057a552 (which returns it in eax) inside 0x0057a4ab, not a function of its own.
