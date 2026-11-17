@@ -437,7 +437,16 @@ void fn_005d92b9_object::fn_005d96ac(node *n)
 // by an inline constructor; its destructor (0x005d978b) tests the flag before releasing the
 // dword, like an owning pointer. The type's name is not known. The original's atexit destructor
 // (0x005d976b) is guarded by a bit at 0x00c38960, which a plain global does not produce; it
-// may have been a static data member of a template.
+// may have been a static data member of a template. The flag and pointer pair, cleared together
+// and deleted only while the flag is set, has the shape of the standard library's auto_ptr.
+// HYPOTHESIS: the pointee's destructor is 0x005d97a8 (reached through the jump at 0x005d9786);
+// tCampaignState.cpp assigns that address to its c_0045dece, declared only in that unit.
+class fn_005d97a8_object
+{
+public:
+    ~fn_005d97a8_object();
+};
+
 class fn_005d978b_object
 {
 public:
@@ -445,7 +454,7 @@ public:
     ~fn_005d978b_object();
 private:
     char m_flag;
-    int m_value;
+    fn_005d97a8_object *m_value;
 };
 
 // The compiler generates from this definition the dynamic initializer (0x005d9750, the inline
@@ -453,3 +462,10 @@ private:
 // FUNCTION: STARFLEETOP 0x005d975f
 // FUNCTION: STARFLEETOP 0x005d9750
 fn_005d978b_object g_00c38968;
+
+// FUNCTION: STARFLEETOP 0x005d978b
+fn_005d978b_object::~fn_005d978b_object()
+{
+    if (m_flag)
+        delete m_value;
+}
