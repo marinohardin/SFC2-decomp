@@ -9,6 +9,7 @@ class tAuctionItem : public nDatabase::tDatabaseObject
 {
 public:
 	tAuctionItem();
+	virtual ~tAuctionItem();
 
 	// HYPOTHESIS: the two integer arguments' types and meaning are unknown.
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
@@ -25,4 +26,9 @@ protected:
 tAuctionItem::tAuctionItem()
 {
 	fn_00544d20( nDatabase::tID(), "", 0, 0, 1.0 );
+}
+
+// FUNCTION: STARFLEETOP 0x00544c08
+tAuctionItem::~tAuctionItem()
+{
 }
