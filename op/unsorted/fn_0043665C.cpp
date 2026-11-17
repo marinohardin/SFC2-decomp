@@ -236,3 +236,9 @@ void tRepairableShipSystem::vfunction92(int param_1)
 {
     field_78 = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x004367d3
+int tRepairableShipSystem::vfunction93()
+{
+    return field_78;
+}

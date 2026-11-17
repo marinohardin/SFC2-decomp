@@ -356,6 +356,8 @@ public:
     virtual float vfunction87();
     // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
     virtual void vfunction92(int param_1);
+    // HYPOTHESIS: vftable slot 92; returns field_78.
+    virtual int vfunction93();
     // vftable slot 93 (the compiler calls it directly inside a constructor).
     virtual void vfunction94(int param_1, int param_2);
 
