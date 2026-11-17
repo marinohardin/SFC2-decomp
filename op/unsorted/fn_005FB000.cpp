@@ -602,11 +602,11 @@ tMemberCallback< tMetaClientChatCtlrC, const std::string& > CreateCallback( tMet
 // MATCH-ONLY: the SDK's template destructor, written out as this instance's inline explicit
 // specialization so that its annotation names the one instance. Its body (storing the base
 // vtable) is the same as ~tCallback's, which the analysis names at this address.
+// FUNCTION: STARFLEETOP 0x005fbb58
 // FUNCTION: STARFLEETOP 0x005fba2f
 template<>
 inline tMemberCallback< tMetaClientChatCtlrC, const std::string& >::~tMemberCallback()
 {}
-
 // HYPOTHESIS: as for 0x005fb9d1, the first argument holds the first and past-the-end string at
 // +0 and +4; it is written as a pair of pointers.
 // FUNCTION: STARFLEETOP 0x005fba36
