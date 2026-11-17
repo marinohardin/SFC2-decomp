@@ -33,6 +33,7 @@ public:
     C_00c3a80c();
     ~C_00c3a80c();
     void fn_0060c68a(int entry);
+    void fn_0060c6d5(int entry);
     void fn_0060c720(tString &text);
     void fn_0060c486(C_0060c486 *owner);
     void fn_0060c51d(bool debriefing);
@@ -238,4 +239,11 @@ C_0060c486 *C_00c3a80c::fn_0060c675(C_0060c486 *next, C_0060c486 *node)
 void C_00c3a80c::fn_0060c68a(int entry)
 {
     m_08 = fn_0060c675(m_08, new tStringMessage(5, entry));
+}
+
+// FUNCTION: STARFLEETOP 0x0060c6d5
+// HYPOTHESIS: adds a line of kind 6 for entry at the head of the list at +0x10.
+void C_00c3a80c::fn_0060c6d5(int entry)
+{
+    m_10 = fn_0060c675(m_10, new tStringMessage(6, entry));
 }
