@@ -26,6 +26,7 @@ public:
 	void fn_004d46e3( long arg1 );
 	void fn_004d4712( long arg1 );
 	void fn_004d4996( long arg1, long arg2, long arg3 );
+	void fn_004d449a( long arg1, long arg2 );
 };
 
 extern fn_004d482a_owner g_0092e4a0;
@@ -634,4 +635,10 @@ bool fn_004d37b1( tVarButtonGroup* arg1 )
 bool fn_004d37c1( long arg1 )
 {
 	return fn_004d37b1( (tVarButtonGroup*) fn_004d3446( arg1 ) );
+}
+
+// FUNCTION: STARFLEETOP 0x004d37d3
+void fn_004d37d3( long arg1, long arg2 )
+{
+	g_0092e4a0.fn_004d449a( arg1, arg2 );
 }
