@@ -245,6 +245,7 @@ public:
 	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
 	void FUN_0042a8b7( int value );
 	std::string FUN_0042a92f();
+	const std::string& FUN_0042a99a();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -431,4 +432,12 @@ std::string fn_0042a480_object::FUN_0042a92f()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_0c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a99a
+const std::string& fn_0042a480_object::FUN_0042a99a()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_1c;
 }
