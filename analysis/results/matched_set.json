@@ -4951,6 +4951,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044c276": {
+   "name": "FUN_0044c276",
+   "symbol": "?FUN_0044c276@@YADPAUfn_0044c185_vec3@@PAVfn_0044c185_object@@PBD@Z",
+   "unit": "unsorted/fn_0044C000.cpp",
+   "size": 146,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
