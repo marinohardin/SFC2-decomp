@@ -319,6 +319,7 @@ class fn_0049674e_object
 {
 public:
 	fn_0049674e_object();
+	void fn_004967a5();
 
 	unsigned char m00;
 	float m04;
@@ -344,4 +345,35 @@ fn_0049674e_object::fn_0049674e_object()
 		m08 += g_007a08e8;
 	else
 		m08 -= g_007a08e8;
+}
+
+// HYPOTHESIS: 0x007a08ec holds 5.0 (a period in seconds); 0x0085366c is the previous frame's time.
+extern float g_007a08ec;
+extern float g_0085366c;
+
+// FUNCTION: STARFLEETOP 0x004967a5
+void fn_0049674e_object::fn_004967a5()
+{
+	if( gObject_0092f61c - m04 > g_007a08ec )
+	{
+		m04 = gObject_0092f61c - fn_0069b0e0() * g_007a08ec;
+		m00 = !m00;
+	}
+	if( !m00 )
+	{
+		float range = g_007a08e4 - g_007a08e8;
+		m0c += ( gObject_0092f61c - g_0085366c ) * m08;
+		if( m0c < 0.0f )
+		{
+			m0c = 0.0f;
+			m08 = fn_0069b0e0() * range;
+			m08 += g_007a08e8;
+		}
+		else if( m0c > 1.0f )
+		{
+			m0c = 1.0f;
+			m08 = -( fn_0069b0e0() * range );
+			m08 -= g_007a08e8;
+		}
+	}
 }
