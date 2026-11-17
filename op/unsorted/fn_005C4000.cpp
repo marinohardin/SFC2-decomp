@@ -1,6 +1,19 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005C4000.cpp
-// Functions: 0x005c427c to 0x005c4ff4, 94 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: the owning class is not recovered; the function enters and leaves the tOptex
+// held at offset 4 of its object.
+class fn_005c427c_Owner
+{
+public:
+	void FUN_005c427c();
+
+	int		m00;
+	tOptex	m04;
+};
+
+// FUNCTION: STARFLEETOP 0x005c427c
+void fn_005c427c_Owner::FUN_005c427c()
+{
+	m04.Enter();
+	m04.Leave();
+}
