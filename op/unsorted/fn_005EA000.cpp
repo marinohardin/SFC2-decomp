@@ -606,3 +606,21 @@ tObject_005ea978::~tObject_005ea978()
 {
 	fn_005f4352();
 }
+
+// HYPOTHESIS: the same body as 0x005ea978 (same Done at 0x005f4352, same tOptex destructor),
+// so the other of the const and non-const tAccessPointer instantiations.
+class tObject_005ea9a3 {
+public:
+	~tObject_005ea9a3();
+	void fn_005f4352();
+
+	mutable tOptex m_00;
+	const void *m_04;
+	const void *m_08;
+};
+
+// FUNCTION: STARFLEETOP 0x005ea9a3
+tObject_005ea9a3::~tObject_005ea9a3()
+{
+	fn_005f4352();
+}
