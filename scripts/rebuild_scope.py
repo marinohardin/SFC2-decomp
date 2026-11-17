@@ -13,8 +13,16 @@ import sys
 
 # Paths that never reach a compile, a score or a gate. A pattern without a slash matches the file
 # name in any folder; one with a slash matches the whole path from the repository root.
+# Images are never read by a build. The progress output is written by scripts/progress.py and
+# tools/progress_chart.py and read back only from the base branch, by the progress gate, which runs
+# whatever this says; the rebuild never reads it.
 DOC_ONLY = (
     '*.md',
+    '*.svg',
+    '*.png',
+    '*.jpg',
+    '*.gif',
+    'analysis/results/progress/*',
     'docs/*',
     '.claude/*',
     '.github/pull_request_template.md',
