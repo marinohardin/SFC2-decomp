@@ -182,13 +182,13 @@ template<> void std::_Tree<std::string, std::pair<const std::string, int>, std::
 // FUNCTION: STARFLEETOP 0x005fb3af
 template<> void std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::_Erase( _Nodeptr _X )
 {
-	while ( _X != _Nil )
+	// MATCH-ONLY: the nil node is read from the object (+0x8), where the original's library kept it.
+	for ( _Nodeptr _Y = _X; _Y != *(_Nodeptr*)( (char*)this + 8 ); _X = _Y )
 	{
-		_Erase( _Right( _X ) );
-		_Nodeptr _Y = _Left( _X );
+		_Erase( _Right( _Y ) );
+		_Y = _Left( _Y );
 		_Destval( &_Value( _X ) );
 		_Freenode( _X );
-		_X = _Y;
 	}
 }
 
