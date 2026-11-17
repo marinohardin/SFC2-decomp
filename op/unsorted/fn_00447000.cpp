@@ -153,8 +153,10 @@ struct tObject_00447415_limits
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
-	char field_0x115[0x71];
-	// HYPOTHESIS: a byte per index from +0x186; its length is not known.
+	char field_0x115[0x69];
+	// HYPOTHESIS: three byte arrays indexed alike; their lengths are not known.
+	char field_0x17e[4];
+	char field_0x182[4];
 	char field_0x186[3];
 };
 
@@ -170,6 +172,7 @@ public:
 	int fn_004476cf(int level);
 	int fn_00447740(int level);
 	int fn_004477b1(int index);
+	void fn_004477c6(int index, char value, char current);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -401,4 +404,12 @@ int c_0044715d::fn_00447740(int level)
 int c_0044715d::fn_004477b1(int index)
 {
 	return field_0xe8->field_0x186[index];
+}
+
+// FUNCTION: STARFLEETOP 0x004477c6
+void c_0044715d::fn_004477c6(int index, char value, char current)
+{
+	field_0xe8->field_0x17e[index] = value;
+	field_0xe8->field_0x182[index] = value;
+	field_0xe8->field_0x186[index] = current;
 }
