@@ -274,3 +274,11 @@ float tRepairableShipSystem::vfunction95()
     vfunction62();
     return result;
 }
+
+// FUNCTION: STARFLEETOP 0x00436865
+bool tRepairableShipSystem::vfunction96()
+{
+    if ((field_5c & 0x10) == 0x10)
+        return true;
+    return false;
+}
