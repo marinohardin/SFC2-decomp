@@ -239,7 +239,7 @@ template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M,
 {
     if (_End - _Last < _M)
     {
-        size_type _N = (_M < size() ? size() : _M) + size();
+        size_type _N = size() + (_M < size() ? size() : _M);
         iterator _S = allocator.allocate(_N, (void *)0);
         iterator _Q = _Ucopy(_First, _P, _S);
         _Ufill(_Q, _M, _X);
@@ -247,7 +247,7 @@ template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M,
         _Destroy(_First, _Last);
         allocator.deallocate(_First, _End - _First);
         _End = _S + _N;
-        _Last = _S + (size() + _M);
+        _Last = _S + size() + _M;
         _First = _S;
     }
     else if (_Last - _P < _M)
@@ -259,10 +259,10 @@ template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M,
     }
     else if (0 < _M)
     {
-        iterator _Oend = _Last;
-        _Last = _Ucopy(_Oend - _M, _Oend, _Last);
-        copy_backward(_P, _Oend - _M, _Oend);
+        _Ucopy(_Last - _M, _Last, _Last);
+        copy_backward(_P, _Last - _M, _Last);
         fill(_P, _P + _M, _X);
+        _Last += _M;
     }
 }
 

@@ -582,8 +582,8 @@
    "symbol": "?insert@?$vector@Vfn_0040441e_Elem@@V?$allocator@Vfn_0040441e_Elem@@@std@@@std@@QAEXPAVfn_0040441e_Elem@@IABV3@@Z",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 631,
-   "score": 21.194,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
