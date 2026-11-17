@@ -226,7 +226,7 @@ char fn_00469e75(int param_1, int param_2)
 
 // HYPOTHESIS: g_0090db44 holds a pointer to an object released through fn_0046a688.
 extern int g_0090db44;
-void fn_0046a688(int param_1);
+char fn_0046a688(int param_1);
 
 // HYPOTHESIS: fn_00672f40 is a method of an unidentified class, called on a global object (this = its address).
 class fn_00672f40_owner
@@ -905,5 +905,34 @@ char fn_0046a678(fn_0046a678_object *object)
 	char result = 0;
 	if (object != 0)
 		result = object->fn_slot1();
+	return result;
+}
+
+// HYPOTHESIS: the object has a virtual at slot 3 (offset 0xc); the three globals are cleared after it is called.
+class fn_0046a688_object
+{
+public:
+	virtual void fn_slot0();
+	virtual void fn_slot1();
+	virtual void fn_slot2();
+	virtual char fn_slot3();
+};
+
+extern int g_0090dfb0;
+extern int g_0090dfb4;
+extern int g_0090dfb8;
+
+// FUNCTION: STARFLEETOP 0x0046a688
+char fn_0046a688(int param_1)
+{
+	fn_0046a688_object *object = (fn_0046a688_object *)param_1;
+	char result = 0;
+	if (object != 0)
+	{
+		result = object->fn_slot3();
+		g_0090dfb8 = 0;
+		g_0090dfb4 = 0;
+		g_0090dfb0 = 0;
+	}
 	return result;
 }
