@@ -310,6 +310,7 @@ public:
     int fn_0060ca4f();
     bool fn_0060ca56();
     bool fn_0060ca6c();
+    char *fn_0060ca77();
     void fn_0060ca83(int index);
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
@@ -431,4 +432,13 @@ bool C_0060c7dc::fn_0060ca6c()
     if (m_728 == 1)
         return true;
     return false;
+}
+
+// HYPOTHESIS: 0x0087bfc4 holds a pointer to the version string "2.5.5.2".
+extern char *g_0087bfc4;
+
+// FUNCTION: STARFLEETOP 0x0060ca77
+char *C_0060c7dc::fn_0060ca77()
+{
+    return g_0087bfc4;
 }
