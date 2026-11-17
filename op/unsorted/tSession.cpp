@@ -108,6 +108,7 @@ public:
 	void	fn_00691360();
 	void	fn_00691390();
 	void	fn_00690de0();
+	void	fn_00690e70();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -495,4 +496,30 @@ void tHtmlParser::fn_00690de0()
 		}
 		f_b4.pop_back();
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00690e70
+void tHtmlParser::fn_00690e70()
+{
+	tString	href;
+	tString	browser;
+	tString	name;
+
+	while ( fn_0068f5c0( name ) )
+	{
+		if ( name == "href" )
+		{
+			if ( fn_0068f660() )
+				fn_0068f6b0( href );
+		}
+		else if ( name == "browser" )
+		{
+			if ( fn_0068f660() )
+				fn_0068f6b0( browser );
+		}
+		else
+			fn_0068f480();
+	}
+
+	f_40->fn_0068e3f0( href, browser, 1 );
 }
