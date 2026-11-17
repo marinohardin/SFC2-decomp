@@ -17,6 +17,9 @@ public:
     void fn_0043e09e();
     // HYPOTHESIS: adds an entity ID to the list at +0x1e0.
     void fn_0043e0ed(int param_1);
+    void fn_0043e201(float param_1);
+    // HYPOTHESIS: a test on an entity ID; 0x0043e201 asks it for entities other than its owner.
+    char fn_0043eb5f(int aID);
 
     char pad80[0x8c - 0x80];
     tMinMaxFloat field_8c;
@@ -25,10 +28,15 @@ public:
     tMinMaxFloat field_f8;
     tMinMaxFloat field_11c;
     tMinMaxFloat field_140;
-    char pad164[0x1d9 - 0x164];
+    char pad164[0x18c - 0x164];
+    // HYPOTHESIS: the answer 0x0043e201 uses for its owner's own entities.
+    char field_18c;
+    char pad18d[0x1d9 - 0x18d];
     // HYPOTHESIS: the number of entries of field_1e0 in use (read with movsx).
     char field_1d9;
-    char pad1da[0x1e0 - 0x1da];
+    char pad1da[0x1dc - 0x1da];
+    // HYPOTHESIS: time accumulated by 0x0043e201.
+    float field_1dc;
     // HYPOTHESIS: twelve entity IDs; 0x0043e09e looks each up in the entity table.
     int field_1e0[12];
 };
@@ -48,7 +56,7 @@ public:
     virtual void vfunction9();
     virtual void vfunction10();
     virtual void vfunction11();
-    virtual void vfunction12();
+    virtual int vfunction12(); // slot 11
     virtual void vfunction13();
     virtual void vfunction14();
     virtual void vfunction15();
@@ -140,5 +148,40 @@ void tSensorGroupSystem::fn_0043e0ed(int param_1)
         for (i = 0; i < field_1d9 - 1; i++)
             field_1e0[i] = field_1e0[i + 1];
         field_1e0[i] = param_1;
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x0043e201
+void tSensorGroupSystem::fn_0043e201(float param_1)
+{
+    field_1dc += param_1;
+    vfunction33_result* owner = field_2c->vfunction108();
+    if (gObject_008e1060.fn_004235f0(owner->field_1c) && gObject_0090be60->fn_004274f4(owner->field_60) == 0)
+    {
+        // HYPOTHESIS: the owner is an entity; its slot 11 returns its ID.
+        int ownerID = ((tEntity*)owner)->vfunction12();
+        int i;
+        for (i = 0; i < field_1d9 - 1; i++)
+        {
+            fn_0043e09e_entity* entity = (fn_0043e09e_entity*)gObject_008e1060.fn_004249d3(field_1e0[i]);
+            if (entity != 0)
+            {
+                bool known = entity->vfunction12() == ownerID ? field_18c != 0 : fn_0043eb5f(entity->vfunction12()) != 0;
+                if (!known && field_1dc > 0.05f && g_0090be9c->fn_004105b4() <= 0.02f)
+                {
+                    field_1dc = 0.0f;
+                    entity->vfunction27(vfunction37(0, 100, 0, 0));
+                    field_1e0[i] = field_1e0[i + 1];
+                    field_1e0[i + 1] = -1;
+                }
+            }
+            else
+            {
+                field_1e0[i] = field_1e0[i + 1];
+                field_1e0[i + 1] = -1;
+            }
+        }
+        if (gObject_008e1060.fn_entity(field_1e0[i]) == 0)
+            field_1e0[i] = -1;
     }
 }
