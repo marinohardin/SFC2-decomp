@@ -65,3 +65,40 @@ void *fn_0057a577()
 {
     return 0;
 }
+
+// HYPOTHESIS: 0x0057a5be is a list's clear: member +4 is the sentinel node, +8 the count;
+// the node callee and the deallocator are not identified yet.
+struct fn_0057a5be_node {
+    fn_0057a5be_node *next;
+};
+
+struct fn_0057a5be_alloc {
+    int field_0;
+};
+
+void fn_00583342(fn_0057a5be_alloc *alloc, fn_0057a5be_node *node);
+
+class fn_0057a5be_object {
+public:
+    void fn_0057a5be();
+
+    int field_0;
+    fn_0057a5be_node *field_4;
+    int field_8;
+};
+
+// FUNCTION: STARFLEETOP 0x0057a5be
+void fn_0057a5be_object::fn_0057a5be()
+{
+    fn_0057a5be_alloc alloc;
+    fn_0057a5be_node *head = field_4;
+    fn_0057a5be_node *node = head->next;
+    while (node != head) {
+        fn_0057a5be_node *cur = node;
+        node = node->next;
+        fn_00583342(&alloc, cur);
+    }
+    delete field_4;
+    field_4 = 0;
+    field_8 = 0;
+}
