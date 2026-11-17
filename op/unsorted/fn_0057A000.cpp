@@ -304,8 +304,11 @@ struct fn_0057a96e_info {
 class fn_0057a96e_owner {
 };
 
+#include "Common/Callback.h"
+
 template< typename tnMemberClass, typename tnResult >
 class tMemberCallback
+	: public tCallback<tnResult>
 {
 public:
 	typedef void (tnMemberClass::*iMemberFunction)( tnResult result );
@@ -375,11 +378,27 @@ tMemberCallback< tClass, tParam > CreateCallback( tClass* object, void (tClass::
 
 template tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& > CreateCallback( fn_0057a96e_owner* object, void (fn_0057a96e_owner::*func)( const nDatabase::tID& result ) );
 
-#include "Common/Callback.h"
-
 // FUNCTION: STARFLEETOP 0x0057aad2
 template< typename tnResult >
-tCallback<tnResult>::~tCallback()
+inline tCallback<tnResult>::~tCallback()
+{}
+
+template< typename tnMemberClass, typename tnResult >
+inline tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback()
 {}
 
 template class tCallback< const nDatabase::tID& >;
+
+#include "Common/Database/DatabaseID.h"
+
+// HYPOTHESIS: the analysis names 0x0057aad9 a tCallback constructor, but it is a free function
+// that hands a range's two iterators and a copy of the callback to std::for_each (0x0057abdb).
+// The range type is not identified; a pair of tID pointers stands in for it.
+// FUNCTION: STARFLEETOP 0x0057aad9
+template< typename tnRange, typename tnFunction >
+void fn_0057aad9( const tnRange& range, const tnFunction& function )
+{
+	std::for_each( range.first, range.second, function );
+}
+
+template void fn_0057aad9( const std::pair< const nDatabase::tID*, const nDatabase::tID* >& range, const tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& >& function );
