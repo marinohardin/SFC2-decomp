@@ -167,7 +167,7 @@ public:
     virtual void vfunction149();
     virtual void vfunction150();
     virtual void vfunction151();
-    virtual void vfunction152();
+    virtual int* vfunction152( int* param_1 );
     virtual void vfunction153();
     virtual void vfunction154();
     virtual void vfunction155();
@@ -675,4 +675,13 @@ int tShipSystemsFighter::vfunction146(int, int)
 tIndividualShipSystemList* tShipSystemsFighter::vfunction147()
 {
     return &m44;
+}
+
+// HYPOTHESIS: the return and parameter types; the original stores 3 through the argument
+// and returns the address of the first member.
+// FUNCTION: STARFLEETOP 0x00444519
+int* tShipSystemsFighter::vfunction152( int* param_1 )
+{
+    *param_1 = 3;
+    return &m04;
 }

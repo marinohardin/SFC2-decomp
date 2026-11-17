@@ -166,7 +166,7 @@ public:
     virtual void vfunction149() = 0;
     virtual void vfunction150() = 0;
     virtual void vfunction151() = 0;
-    virtual void vfunction152() = 0;
+    virtual int* vfunction152( int* param_1 ) = 0;
     virtual void vfunction153() = 0;
     virtual void vfunction154() = 0;
     virtual void vfunction155() = 0;
