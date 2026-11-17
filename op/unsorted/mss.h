@@ -32,6 +32,9 @@ __declspec( dllimport ) void		__stdcall AIL_set_sample_playback_rate( HSAMPLE S,
 __declspec( dllimport ) void		__stdcall AIL_set_sample_type( HSAMPLE S, long format, unsigned long flags );
 __declspec( dllimport ) void		__stdcall AIL_set_sample_adpcm_block_size( HSAMPLE S, unsigned long blocksize );
 __declspec( dllimport ) void		__stdcall AIL_set_sample_pan( HSAMPLE S, long pan );
+__declspec( dllimport ) void		__stdcall AIL_end_sample( HSAMPLE S );
+__declspec( dllimport ) long		__stdcall AIL_sample_buffer_ready( HSAMPLE S );
+__declspec( dllimport ) void		__stdcall AIL_load_sample_buffer( HSAMPLE S, unsigned long buff_num, void *buffer, unsigned long len );
 }
 
 #define DIG_F_STEREO_16		3

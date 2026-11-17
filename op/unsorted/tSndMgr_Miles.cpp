@@ -105,6 +105,8 @@ public:
 	void fn_0050d95c( char param_1 );
 	// HYPOTHESIS: a value of the playing music, read by vfunction23.
 	long fn_0050d7d8();
+	// HYPOTHESIS: fills a buffer with the next music data, sets *param_3 to its length; zero at the end.
+	char fn_0050d7ed( void *param_1, unsigned long param_2, unsigned long *param_3, long param_4 );
 
 	char pad_0000[0x8];
 	long field_8;
@@ -142,18 +144,20 @@ struct fn_0050eea7_sample
 	// HYPOTHESIS: the size and file offset of the data in its zip, and the play handle.
 	unsigned long field_18;
 	long field_1c;
-	void *field_20;
-	void *field_24;
-	char pad_28[0x4];
+	// HYPOTHESIS: the two stream buffers Miles plays in turn, and their size (fn_0050ffb1).
+	void *field_20[2];
+	volatile unsigned long field_28;
 	// HYPOTHESIS: volatile, as fn_0050fc69 rereads it after its store.
 	volatile unsigned long field_2c;
 	// HYPOTHESIS: the data chunk's size twice and its file position (fn_0050fc69).
 	// HYPOTHESIS: signed (vfunction37 tests it with jle) and volatile, shared with the
 	// callback thread (vfunction37 reads it only after forming the channel's address).
 	volatile long field_30;
-	unsigned long field_34;
-	unsigned long field_38;
-	char field_3c;
+	// HYPOTHESIS: the loop length and start, and the playing flag, are volatile: fn_0050ffb1
+	// rereads them and stores the flag with a plain mov.
+	volatile unsigned long field_34;
+	volatile unsigned long field_38;
+	volatile char field_3c;
 	char pad_3d[0x3];
 	tBasicFile *field_40;
 	char field_44;
@@ -167,7 +171,8 @@ struct fn_0050eea7_sample
 	volatile char field_56;
 	volatile char field_57;
 	// HYPOTHESIS: a fade length in milliseconds, a counter and its start time (vfunction22).
-	volatile long field_58;
+	// HYPOTHESIS: the length is unsigned (fn_0050ffb1 compares and divides by it unsigned).
+	volatile unsigned long field_58;
 	volatile long field_5c;
 	volatile long field_60;
 	// HYPOTHESIS: the channel's priority; fn_0050fb3e compares it unsigned and rereads it.
@@ -243,6 +248,8 @@ public:
 	long fn_0050fba4( long param_1, char *param_2 );
 	// HYPOTHESIS: reads a channel's wave header from its file and sets up the Miles sample.
 	char fn_0050fc69( long param_1, long param_2 );
+	// HYPOTHESIS: refills a streaming channel's next Miles buffer; returns whether it still plays.
+	char fn_0050ffb1( long param_1 );
 
 	char pad_0004[0xc];
 	// HYPOTHESIS: 32 channels, the most vfunction28 allows; the shutdown clears 0xf80 bytes.
@@ -441,10 +448,10 @@ void tSndMgr_Miles::vfunction3()
 			AIL_release_sample_handle( sample->field_0 );
 		if ( sample->field_14 )
 			AIL_mem_free_lock( sample->field_14 );
-		if ( sample->field_20 )
-			AIL_mem_free_lock( sample->field_20 );
-		if ( sample->field_24 )
-			AIL_mem_free_lock( sample->field_24 );
+		if ( sample->field_20[0] )
+			AIL_mem_free_lock( sample->field_20[0] );
+		if ( sample->field_20[1] )
+			AIL_mem_free_lock( sample->field_20[1] );
 	}
 
 	if ( field_2408 )
@@ -1066,4 +1073,116 @@ void tSndMgr_Miles::vfunction37( long param_1 )
 	field_10[param_1].field_57 = 0;
 	field_10[param_1].field_30 = 0;
 	field_10[param_1].field_40 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0050ffb1
+char tSndMgr_Miles::fn_0050ffb1( long param_1 )
+{
+	if ( field_10[param_1].field_30 == -1 )
+		return 0;
+	if ( field_10[param_1].field_57 )
+	{
+		long volume;
+		if ( field_10[param_1].field_78 )
+			volume = field_1f14 * 127 / 100;
+		else
+			volume = field_10[param_1].field_6c;
+		long now = g_00c7c120.fn_006a0d50();
+		field_10[param_1].field_5c += now - field_10[param_1].field_60;
+		if ( field_10[param_1].field_5c < field_10[param_1].field_58 )
+		{
+			unsigned long faded = ( field_10[param_1].field_58 - field_10[param_1].field_5c ) * volume / field_10[param_1].field_58;
+			field_10[param_1].field_60 = now;
+			AIL_set_sample_volume( field_10[param_1].field_0, faded );
+		}
+		else
+		{
+			vfunction37( param_1 );
+			AIL_end_sample( field_10[param_1].field_0 );
+			if ( field_10[param_1].field_78 )
+			{
+				field_2450.field_8 = 0;
+				field_2450.field_c = 0;
+			}
+			return 0;
+		}
+	}
+	long buffer = AIL_sample_buffer_ready( field_10[param_1].field_0 );
+	if ( buffer == -1 )
+		return 1;
+	unsigned long length;
+	if ( field_10[param_1].field_78 )
+	{
+		if ( field_10[param_1].field_54 )
+		{
+			vfunction37( param_1 );
+			field_2450.field_8 = 0;
+			field_2450.field_c = 0;
+			AIL_end_sample( field_10[param_1].field_0 );
+			return 0;
+		}
+		if ( !field_2450.fn_0050d7ed( field_10[param_1].field_20[buffer], field_10[param_1].field_28, &length, 0 ) )
+		{
+			AIL_load_sample_buffer( field_10[param_1].field_0, buffer, field_10[param_1].field_20[buffer], 0 );
+			field_10[param_1].field_3c = 0;
+			return 0;
+		}
+		if ( !field_10[param_1].field_57 )
+			AIL_set_sample_volume( field_10[param_1].field_0, field_1f14 * 127 / 100 );
+	}
+	else
+	{
+		if ( field_10[param_1].field_54 )
+		{
+			vfunction37( param_1 );
+			AIL_end_sample( field_10[param_1].field_0 );
+			return 0;
+		}
+		if ( field_10[param_1].field_30 > 0 )
+		{
+			length = field_10[param_1].field_30;
+			if ( length > field_10[param_1].field_28 )
+				length = field_10[param_1].field_28;
+			if ( !field_10[param_1].field_40->mSeekSet( field_10[param_1].field_2c ) || length != field_10[param_1].field_40->mRead( field_10[param_1].field_20[buffer], length ) )
+			{
+				vfunction37( param_1 );
+				AIL_end_sample( field_10[param_1].field_0 );
+				return 0;
+			}
+			field_10[param_1].field_2c = field_10[param_1].field_40->mFilePos();
+			field_10[param_1].field_30 -= length;
+		}
+		else
+		{
+			length = 0;
+			field_10[param_1].field_30 = -1;
+		}
+		while ( field_10[param_1].field_68 && !field_10[param_1].field_30 )
+		{
+			unsigned long count = field_10[param_1].field_34;
+			field_10[param_1].field_30 = field_10[param_1].field_34;
+			if ( count > field_10[param_1].field_28 - length )
+				count = field_10[param_1].field_28 - length;
+			if ( !field_10[param_1].field_40->mSeekSet( field_10[param_1].field_38 ) )
+			{
+				vfunction37( param_1 );
+				AIL_end_sample( field_10[param_1].field_0 );
+				return 0;
+			}
+			if ( count )
+			{
+				if ( count != field_10[param_1].field_40->mRead( (char *)field_10[param_1].field_20[buffer] + length, count ) )
+				{
+					vfunction37( param_1 );
+					AIL_end_sample( field_10[param_1].field_0 );
+					return 0;
+				}
+				field_10[param_1].field_2c = field_10[param_1].field_40->mFilePos();
+				field_10[param_1].field_30 -= count;
+			}
+			length += count;
+		}
+	}
+	AIL_load_sample_buffer( field_10[param_1].field_0, buffer, field_10[param_1].field_20[buffer], length );
+	return 1;
 }
