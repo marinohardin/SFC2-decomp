@@ -57,10 +57,14 @@ public:
 	// HYPOTHESIS: a link target and the browser it opens in (fn_00690a60).
 	void	fn_0068e3f0( tString &href, tString &browser, int c );
 	void	fn_0068e8e0( tString &name );
+	void	fn_0068e530();
 
 	char	pad_04[0x9c - 0x04];
 	// HYPOTHESIS: state fn_00690a60 copies into the parser at +0x84; its type is not known.
 	int	f_9c;
+	char	pad_a0[0xa4 - 0xa0];
+	// HYPOTHESIS: state fn_00690de0 restores into the parser at +0x84 when a link closes.
+	int	f_a4;
 };
 
 // HYPOTHESIS: the layout is read from the inlined destructor in fn_0068ff60 only. The
@@ -102,6 +106,8 @@ public:
 	void	fn_00690a20();
 	void	fn_00690a60();
 	void	fn_00691360();
+	void	fn_00691390();
+	void	fn_00690de0();
 
 	tString	f_10;
 	char	pad_10[0x3c - 0x10 - sizeof(tString)];
@@ -471,5 +477,22 @@ void tHtmlParser::fn_00690a60()
 	{
 		f_40->fn_0068e8e0( anchor );
 		f_b4.push_back( 1 );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00690de0
+// HYPOTHESIS: the closing anchor tag: a link (entry 0 in f_b4) ends here; the entry is dropped.
+void tHtmlParser::fn_00690de0()
+{
+	if ( !f_b4.empty() )
+	{
+		if ( f_b4.back() == 0 )
+		{
+			fn_00691390();
+			f_84 = f_40->f_a4;
+			f_40->fn_0068e7b0( &f_80 );
+			f_40->fn_0068e530();
+		}
+		f_b4.pop_back();
 	}
 }
