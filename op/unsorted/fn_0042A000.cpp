@@ -4,6 +4,7 @@
 
 #define DATASTORE_OUT_OF_LINE_GET
 #define DATASTORE_OUT_OF_LINE_BUFFER_GET
+#define DATASTORE_OUT_OF_LINE_READ
 #include "Common/DataStore/DataStoreInput.h"
 
 namespace nDataStore {
@@ -31,5 +32,17 @@ byte tBuffer::Get( iPos getPos ) const
 	}
 
 	return fBuffer[getPos];
+}
+
+// MATCH-ONLY: as for Get above, this pointer is the use that makes the compiler emit Read's
+// out-of-line copy (0x0042a377).
+void (tInput::*gEmitInputRead)( byte*, int32 ) = &tInput::Read;
+
+// FUNCTION: STARFLEETOP 0x0042a377
+void tInput::Read( byte* data, int32 size )
+{
+	fBuffer->Read( data, size, fGetPos );
+
+	fGetPos += size;
 }
 }

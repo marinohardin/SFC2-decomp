@@ -7,6 +7,8 @@
 //	and only the ones matched code uses are defined yet.
 //	MATCH-ONLY: tInput::Get is left out where DATASTORE_OUT_OF_LINE_GET is defined:
 //	unsorted/fn_0042A000.cpp holds the copy the compiler emitted out of line (0x0042a309).
+//	tInput::Read is left out where DATASTORE_OUT_OF_LINE_READ is defined, for the same reason
+//	(0x0042a377).
 //
 #if !defined( DataStoreInput_h )
 #define DataStoreInput_h
@@ -90,12 +92,14 @@ byte tInput::Get()
 }
 #endif
 
+#ifndef DATASTORE_OUT_OF_LINE_READ
 void tInput::Read( byte* data, int32 size )
 {
 	fBuffer->Read( data, size, fGetPos );
 
 	fGetPos += size;
 }
+#endif
 
 tInput& tInput::operator>>( std::string& string )
 {
