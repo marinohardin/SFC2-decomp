@@ -194,15 +194,15 @@ float tBaseWeapon::vfunction113(float param_1, int param_2, int param_3)
 }
 
 // FUNCTION: STARFLEETOP 0x004d774f
-void tBaseWeapon::vfunction115(float param_1)
+float tBaseWeapon::vfunction115(float param_1)
 {
-    vfunction116(field_148.fn_004d7099(param_1));
+    return vfunction116(field_148.fn_004d7099(param_1));
 }
 
 // FUNCTION: STARFLEETOP 0x004d7776
-void tBaseWeapon::vfunction117(float param_1)
+float tBaseWeapon::vfunction117(float param_1)
 {
-    vfunction118(field_148.fn_004d7099(param_1));
+    return vfunction118(field_148.fn_004d7099(param_1));
 }
 
 // FUNCTION: STARFLEETOP 0x004d779d
@@ -215,6 +215,25 @@ int tBaseWeapon::vfunction121()
 float tBaseWeapon::vfunction119()
 {
     return g_00795620;
+}
+
+// FUNCTION: STARFLEETOP 0x004d77ec
+void tBaseWeapon::vfunction122(fn_004d77ec_type* param_1, int param_2, int param_3)
+{
+    if (param_1 != 0)
+    {
+        unsigned char i = 0;
+        if (param_1->fn_005da49d() > 0)
+        {
+            do
+            {
+                param_1->fn_004d6f77(i, vfunction114(i, param_2, param_3));
+                param_1->fn_004d6f96(i, vfunction118(i));
+                param_1->fn_004d6fb5(i, vfunction116(i));
+                i++;
+            } while (i < param_1->fn_005da49d());
+        }
+    }
 }
 
 // FUNCTION: STARFLEETOP 0x004d77ab

@@ -25,6 +25,15 @@ struct fn_004d7099_type
     int fn_004d7099(float param_1);
 };
 
+// HYPOTHESIS: the per-bank table vfunction122 fills; only the methods it calls are known.
+struct fn_004d77ec_type
+{
+    unsigned char fn_005da49d();
+    void fn_004d6f77(unsigned char param_1, float param_2);
+    void fn_004d6f96(unsigned char param_1, float param_2);
+    void fn_004d6fb5(unsigned char param_1, float param_2);
+};
+
 // HYPOTHESIS: tBaseWeapon's constructor (0x004d70eb) takes the first constructor argument.
 // Its bases (tRepairableShipSystem, tIndividualShipSystem, tListMember) are declared only
 // inside game/unsorted/tCloakSystem.cpp, so they are not repeated here.
@@ -170,14 +179,14 @@ public:
     virtual void vfunction112(float param_1);
     virtual float vfunction113(float param_1, int param_2, int param_3);
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
-    virtual void vfunction115(float param_1);
-    virtual void vfunction116(unsigned char param_1);
-    virtual void vfunction117(float param_1);
-    virtual void vfunction118(unsigned char param_1);
+    virtual float vfunction115(float param_1);
+    virtual float vfunction116(unsigned char param_1);
+    virtual float vfunction117(float param_1);
+    virtual float vfunction118(unsigned char param_1);
     virtual float vfunction119();
     virtual void vfunction120();
     virtual int vfunction121();
-    virtual void vfunction122();
+    virtual void vfunction122(fn_004d77ec_type* param_1, int param_2, int param_3);
     virtual void vfunction123(float* param_1);
     virtual void vfunction124(int param_1);
     virtual void vfunction125();
