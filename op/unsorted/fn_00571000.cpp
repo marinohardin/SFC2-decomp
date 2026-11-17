@@ -278,5 +278,7 @@ public:
 bool fn_00571676_owner::fn_005716e0(int a)
 {
 	typedef std::string (fn_005716e0_target::*fn_get_t)();
-	return (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))().compare(fn_00571676_str) == 0;
+	if ((((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_get_t*)&fn_00571676_a))() == fn_00571676_str)
+		return true;
+	return false;
 }
