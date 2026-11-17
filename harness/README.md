@@ -154,14 +154,20 @@ its file, which `loop.sh` sets, so a selection left from an earlier run restrict
 
 ### Model tiers and the stop rule
 
-A function's run, by its counted attempts:
+A function's run, by its counted attempts. The first model depends on the function's size in
+the original: Sonnet builds a function under 128 bytes (`HARNESS_SMALL_BYTES`), where it lands
+about as often as Opus for half the cost; Opus builds anything larger, and a function of unknown
+size.
 
-| Attempt | Model | Role |
-| --- | --- | --- |
-| 1 | Opus | Build: write the function from the original instructions |
-| 2 | Sonnet | Fix round: close the differences left in the committed near match |
-| 3 | Opus | Build again, with what the earlier attempts left |
-| after the run | Fable | One time-boxed try, only for a best of at least 90%, only with `--allow-fable` |
+| Attempt | Under 128 bytes | 128 bytes or more | Role |
+| --- | --- | --- | --- |
+| 1 | Sonnet | Opus | Build: write the function from the original instructions |
+| 2 | Opus | Opus | Fix round: close the differences left in the committed near match |
+| 3 | Opus | Opus | Build again, with what the earlier attempts left |
+| after the run | Fable | Fable | One time-boxed try, only for a best of at least 90%, only with `--allow-fable` |
+
+Attempt 2 is always a fix round, whatever its model; a later attempt is a fix round only when
+its model is Sonnet or Fable.
 
 The stop rule (`plan` in `lib/workqueue.py`) usually ends a run sooner:
 
@@ -181,8 +187,11 @@ The best score is the highest of every attempt's result and starting score, so a
 that another branch had already raised is judged against that. Usage-limit stops (`limit`),
 login failures and dry runs never count; failed, no-change, improved, exact, tampered and
 timeout attempts do. Improved attempts are committed, so a later attempt starts from the best source so
-far. `HARNESS_TIERS` replaces the regular sequence (for example `opus,sonnet`) and may not name
-Fable.
+far. `HARNESS_TIERS` (default `opus,opus,opus`) and `HARNESS_SMALL_TIERS` (default
+`sonnet,opus,opus`) replace the two sequences; neither may name Fable. When only `HARNESS_TIERS`
+is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split off. A function
+the queue no longer holds, such as one already on the difficult list, has no known size and is
+judged with the regular sequence.
 
 When a run ends short of 100%, `queue.py record` lists the function, and the loop commits the
 list:
@@ -196,8 +205,10 @@ list:
   ended). The queue skips these functions unless `--revisit` (or `HARNESS_TAKE_REVISIT=1`) is
   given. A revisit run starts over and counts only the attempts after `listed`, except for a
   function that was waiting for Fable, which gets its Fable try instead. A revisit that ends
-  exact takes the function off the list; one that ends short again replaces its row, or moves it
-  to `difficult_functions.tsv` once it has had its full chance.
+  exact takes the function off the list. A function gets one revisit run: one that ends short
+  again moves it to `difficult_functions.tsv`, unless it is left waiting for a Fable try that
+  was not allowed, which keeps its row. Listing it again would hand it straight back to the
+  same `--revisit` loop.
 
 The two lists live in each checkout, but the attempt log is shared, so a loop on one branch
 does not see what a loop on another branch listed. `--revisit` therefore also takes a function
@@ -429,7 +440,8 @@ Hooks.
 
 ## Limits and open points
 
-- **Fable tier.** Opus builds, Sonnet does one fix round, Opus tries once more; Fable gets one
+- **Fable tier.** Sonnet (under 128 bytes) or Opus builds, Opus does one fix round and tries
+  once more; Fable gets one
   time-boxed try at a near match (best at least 90%) and only when explicitly enabled
   (`--allow-fable`); it is off by default.
 - **Unverified relocations** are accepted when used consistently, because most data symbols have

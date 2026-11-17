@@ -178,11 +178,11 @@ class tAudioPriorityManagerPart : public tPart
 		long			f10;
 		long			f14;
 		// HYPOTHESIS: the tracking records in use, by handle, and the records themselves, from
-		// mAreWeAllowedToPlay (0x00661fa0); the field at +0x34 is not known. The count
-		// of 256 records and the cursor after them come from mGetNextAvailableClassTrackingInfo
-		// (0x00662400).
+		// mAreWeAllowedToPlay (0x00661fa0); the array ends at +0x38 (its last field, at +0x34, is
+		// not known). The count of 256 records and the cursor after them come from
+		// mGetNextAvailableClassTrackingInfo (0x00662400).
 		tSafeArray< tClassTrackingInfo >	f18;
-		long			f34;
+		// (+0x34 is the array's field_1c.)
 		tClassTrackingInfo	f38[ 256 ];
 		long			f2438;
 

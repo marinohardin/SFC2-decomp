@@ -12,16 +12,41 @@ from conftest import make_pe
 from harness.lib import coff, loopio, matched, workqueue
 
 
-def test_tiers_default_to_opus_build_one_sonnet_fix_round_then_opus():
+def test_tiers_by_default_sonnet_builds_a_small_function_opus_a_larger_one_then_opus():
     t = workqueue.Tiers.from_env({})
-    assert [t.model(n) for n in range(4)] == ['opus', 'sonnet', 'opus', None]
-    assert [t.role(n, t.model(n)) for n in range(3)] == ['build', 'fix', 'build']
-    assert t.cap == 3
+    small, large = t.for_size(127), t.for_size(128)
+    assert [small.model(n) for n in range(4)] == ['sonnet', 'opus', 'opus', None]
+    assert [large.model(n) for n in range(4)] == ['opus', 'opus', 'opus', None]
+    assert [small.role(n, small.model(n)) for n in range(3)] == ['build', 'fix', 'build']
+    assert [large.role(n, large.model(n)) for n in range(3)] == ['build', 'fix', 'build']
+    assert small.cap == large.cap == 3
+    # A size that is unknown, zero or not a number runs the regular order.
+    for size in (None, 0, '', 'x'):
+        assert t.for_size(size).model(0) == 'opus'
+
+
+def test_the_size_line_and_both_orders_come_from_the_environment():
+    t = workqueue.Tiers.from_env({'HARNESS_SMALL_BYTES': '64'})
+    assert (t.for_size(63).model(0), t.for_size(64).model(0)) == ('sonnet', 'opus')
+    off = workqueue.Tiers.from_env({'HARNESS_SMALL_BYTES': '0'})
+    assert off.for_size(10).model(0) == 'opus'
+    # HARNESS_TIERS alone sets one order for every size, as before sizes mattered.
+    one = workqueue.Tiers.from_env({'HARNESS_TIERS': 'sonnet,opus,opus'})
+    assert one.for_size(10).regular == one.for_size(5000).regular == ['sonnet', 'opus', 'opus']
+    both = workqueue.Tiers.from_env({'HARNESS_TIERS': 'opus,sonnet',
+                                     'HARNESS_SMALL_TIERS': 'sonnet'})
+    assert (both.for_size(10).regular, both.for_size(500).regular) == \
+        (['sonnet'], ['opus', 'sonnet'])
+    with pytest.raises(ValueError):
+        workqueue.Tiers.from_env({'HARNESS_SMALL_TIERS': 'fable'})
 
 
 def test_fable_comes_after_the_default_tiers_and_only_when_enabled():
     t = workqueue.Tiers.from_env({'HARNESS_ALLOW_FABLE': '1'})
-    assert [t.model(n) for n in range(5)] == ['opus', 'sonnet', 'opus', 'fable', None]
+    assert [t.for_size(40).model(n) for n in range(5)] == \
+        ['sonnet', 'opus', 'opus', 'fable', None]
+    assert [t.for_size(400).model(n) for n in range(5)] == \
+        ['opus', 'opus', 'opus', 'fable', None]
     assert t.role(3, 'fable') == 'fix'
     assert 'fable' not in workqueue.Tiers.from_env({'HARNESS_ALLOW_FABLE': 'yes'}).sequence
     with pytest.raises(ValueError):
@@ -82,13 +107,28 @@ def test_function_is_moved_to_difficult_after_every_regular_attempt(tmp_path):
 
 
 def test_next_skips_exact_functions_and_functions_another_loop_holds():
-    tiers = workqueue.Tiers()
+    tiers = workqueue.Tiers(['opus', 'sonnet', 'opus'])
     queue = [dict(address=a, name=a) for a in ('0x00401000', '0x00401010', '0x00401020')]
     attempts = [dict(address='0x00401000', outcome='exact'),
                 dict(address='0x00401020', outcome='improved')]
     nxt = workqueue.next_entry(queue, attempts, [], tiers, claim=lambda a: a != '0x00401010')
     assert (nxt['address'], nxt['model'], nxt['role']) == ('0x00401020', 'sonnet', 'fix')
     assert workqueue.next_entry(queue, attempts, [], tiers, claim=lambda a: False) is None
+
+
+def test_next_chooses_each_function_s_order_by_its_size():
+    tiers = workqueue.Tiers.from_env({})
+    queue = [dict(address='0x00401000', name='a', size=40),
+             dict(address='0x00401100', name='b', size=300)]
+    nxt = workqueue.next_entry(queue, [], [], tiers)
+    assert (nxt['address'], nxt['model'], nxt['role']) == ('0x00401000', 'sonnet', 'build')
+    nxt = workqueue.next_entry(queue, [], [], tiers, claim=lambda a: a != '0x00401000')
+    assert (nxt['address'], nxt['model'], nxt['role']) == ('0x00401100', 'opus', 'build')
+    # The second attempt of a small function is Opus, in a fix round.
+    first = dict(time='2026-11-10T00:01:00Z', address='0x00401000', name='a', model='sonnet',
+                 outcome='improved', score_before='0.00', score_after='60.00')
+    nxt = workqueue.next_entry(queue, [first], [], tiers)
+    assert (nxt['model'], nxt['role'], nxt['attempts']) == ('opus', 'fix', 1)
 
 
 def test_a_claim_is_held_by_one_checkout_until_released(tmp_path):
