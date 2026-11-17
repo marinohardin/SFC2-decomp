@@ -624,7 +624,7 @@ template<> tAccessPointer<const tObject_005391b0, tSingleAccessWrapper<tObject_0
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "unsorted/tServCharacter.h"
-
+template<> void std::vector< tServCharacter::tShipCache >::reserve( size_type _N );
 namespace nDataStore
 {
 // The SDK's stream operator for a vector, declared as a friend of tOutput in its header and
@@ -775,4 +775,20 @@ tServCharacter::tShipCache::tShipCache( const tShipCache& other )
 	field_44( other.field_44 ),
 	field_48( other.field_48 )
 {
+}
+
+// The game's out-of-line copy of the library's vector::reserve (<vector>) for the ship caches of
+// tServCharacter, called by the stream operator 0x0042c863.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c91b.
+// FUNCTION: STARFLEETOP 0x0042cb45
+template<> void std::vector< tServCharacter::tShipCache >::reserve( size_type _N )
+{
+	if (capacity() < _N)
+		{iterator _S = allocator.allocate(_N, (void *)0);
+		_Ucopy(_First, _Last, _S);
+		_Destroy(_First, _Last);
+		allocator.deallocate(_First, _End - _First);
+		_End = _S + _N;
+		_Last = _S + size();
+		_First = _S; }
 }
