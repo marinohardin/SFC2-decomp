@@ -113,7 +113,17 @@ public:
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x160 bytes with a vtable, a byte test at 0x0054340c and a virtual in slot 12.
 // Slot 0 is the virtual destructor (0x0053f4ea calls it with 0). The names are placeholders.
-class fn_0054340c_owner
+// HYPOTHESIS: 0x0053fece streams each element as the tStreamable at 8, so the element has a
+// polymorphic 8-byte primary base (vtable and one dword) and tStreamable as its second base.
+class fn_0054340c_base
+{
+public:
+	virtual ~fn_0054340c_base();
+
+	long m_04;
+};
+
+class fn_0054340c_owner : public fn_0054340c_base, public nDataStore::tStreamable
 {
 public:
 	virtual ~fn_0054340c_owner();
@@ -133,7 +143,10 @@ public:
 	char fn_0054340c();
 	fn_0054340c_owner &operator=( const fn_0054340c_owner &other );
 
-	char m_04[0x15c];
+	virtual void StreamOut( nDataStore::tOutput& output ) const;
+	virtual void StreamIn( nDataStore::tInput& input );
+
+	char m_14[0x14c];
 };
 
 // HYPOTHESIS: the class of the member at 0x6c of the owner below is not known; it has
@@ -663,6 +676,23 @@ tOutput& operator<<( tOutput& output, const std::vector< fn_0053f491_elem >& val
 	output.Write( (const byte*)&size, sizeof( size ) );
 
 	for( std::vector< fn_0053f491_elem >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
+}
+
+// FUNCTION: STARFLEETOP 0x0053fece
+template<>
+tOutput& operator<<( tOutput& output, const std::vector< fn_0054340c_owner >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< fn_0054340c_owner >::const_iterator i = value.begin();
 		 i != value.end();
 		 i++ )
 	{
