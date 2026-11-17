@@ -303,6 +303,19 @@ tClassAllocator<tAuctionItem>::tClassAllocator()
 	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tAuctionItem ), this );
 }
 
+// MATCH-ONLY: the SDK's template mAllocate, written out as this instance's explicit
+// specialization so that its annotation names the one instance; the body is the template's.
+// FUNCTION: STARFLEETOP 0x0054564b
+template<>
+tAllocatedClass* tClassAllocator<tAuctionItem>::mAllocate()
+{
+	tAuctionItem* pClass = new tAuctionItem();
+
+	pClass->mSetAllocatorID( fAllocID );
+
+	return pClass;
+}
+
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
 extern double g_007b0c20;
 extern double g_007b0c28;
