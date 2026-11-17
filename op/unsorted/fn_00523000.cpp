@@ -888,3 +888,49 @@ void tObject_005237dc::fn_00523c41(int aMode)
 	if (m_14c != 3)
 		m_14c = aMode;
 }
+
+// FUNCTION: STARFLEETOP 0x00523c59
+void tObject_005237dc::fn_00523c59()
+{
+	if (m_14c == 0)
+		return;
+	if (m_148 == m_14c)
+		return;
+	m_148 = m_14c;
+	m_14c = 0;
+	m_34b0 = 0;
+	switch (m_148) {
+	case 1:
+		m_34b4[m_34b0++] = 4;
+		m_34b4[m_34b0++] = 0;
+		m_34b4[m_34b0++] = 1;
+		m_34b4[m_34b0++] = 3;
+		m_34b4[m_34b0++] = 2;
+		m_34b4[m_34b0++] = 5;
+		break;
+	case 2:
+		m_34b4[m_34b0++] = 4;
+		m_34b4[m_34b0++] = 3;
+		m_34b4[m_34b0++] = 0;
+		m_34b4[m_34b0++] = 1;
+		m_34b4[m_34b0++] = 5;
+		m_34b4[m_34b0++] = 2;
+		break;
+	case 3:
+		m_34b4[m_34b0++] = 1;
+		m_34b4[m_34b0++] = 2;
+		m_34b4[m_34b0++] = 4;
+		m_34b4[m_34b0++] = 0;
+		m_34b4[m_34b0++] = 3;
+		m_34b4[m_34b0++] = 5;
+		break;
+	case 4:
+		m_34b4[m_34b0++] = 4;
+		m_34b4[m_34b0++] = 5;
+		m_34b4[m_34b0++] = 3;
+		m_34b4[m_34b0++] = 0;
+		m_34b4[m_34b0++] = 1;
+		m_34b4[m_34b0++] = 2;
+		break;
+	}
+}
