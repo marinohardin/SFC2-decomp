@@ -75,7 +75,7 @@ public:
 	virtual int vfunction12();
 	virtual void vfunction13(tID aID);
 	virtual float vfunction14();
-	virtual void vfunction15();
+	virtual void vfunction15(float aRadius);
 	virtual void vfunction16();
 	virtual void vfunction17();
 	// HYPOTHESIS: returns an int; tAICaptain's override (0x0051e09a) returns a constant.

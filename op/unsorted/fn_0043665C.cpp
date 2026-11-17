@@ -87,3 +87,9 @@ int tEntity::vfunction12()
 {
     return fTargetID;
 }
+
+// FUNCTION: STARFLEETOP 0x004366b5
+void tEntity::vfunction15(float aRadius)
+{
+    fRadius = aRadius;
+}

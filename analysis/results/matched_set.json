@@ -2665,6 +2665,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004366b5": {
+   "name": "tEntity::vfunction15",
+   "symbol": "?vfunction15@tEntity@@UAEXM@Z",
+   "unit": "unsorted/fn_0043665C.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
