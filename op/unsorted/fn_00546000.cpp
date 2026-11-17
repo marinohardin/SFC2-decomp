@@ -122,6 +122,7 @@ public:
     void fn_00546492(c_00427db2& param_1);
     void fn_005465d5(float param_1, int param_2);
     void fn_00546787(int param_1);
+    void fn_005467ca(unsigned int param_1);
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -510,4 +511,11 @@ void c_00546296::fn_00546799(const std::string& param_1)
 void c_00546296::fn_005467b0(const std::string& param_1)
 {
     field_80 = param_1;
+}
+
+// HYPOTHESIS: the setter of the flag word 0x005462d7 returns.
+// FUNCTION: STARFLEETOP 0x005467ca
+void c_00546027::fn_005467ca(unsigned int param_1)
+{
+    field_430 = param_1;
 }
