@@ -511,3 +511,11 @@ tObject_005236ea_Entry::tObject_005236ea_Entry()
 	m_08 = 0;
 	m_00 = 0.0f;
 }
+
+// FUNCTION: STARFLEETOP 0x005237b8
+tObject_005236ea_Entry::tObject_005236ea_Entry(float amount, bool partial, tObject_005236ea_Target *pTarget)
+{
+	m_00 = amount;
+	m_04 = partial;
+	m_08 = pTarget;
+}
