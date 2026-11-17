@@ -278,51 +278,14 @@ void fn_0057a69e_vector::fn_0057a716(fn_0057a69e_value *where, unsigned int coun
 
 // HYPOTHESIS: the analysis names 0x0057a96e
 // tMemberCallback<nAsyncMissionProcedures::tChooseMission,nSwitch::tAddress::tStatusChangeInfo>
-// slot 2, the SDK template's operator(). tCallback<> is declared only inside
-// Common/Thread/ThreadPool.cpp, and neither tChooseMission nor tAddress is declared yet, so
-// the base is left out and both classes stand in as fn_0057a96e_* types here.
-// tStatusChangeInfo is 12 bytes: a smart pointer to an object whose tRefCount sits at +0xc,
-// then two dwords.
-class fn_0057a96e_base {
-public:
-    virtual ~fn_0057a96e_base();
-
-    int field_4;
-    int field_8;
-};
-
-class fn_0057a96e_target : public fn_0057a96e_base, public tRefCount {
-};
-
-struct fn_0057a96e_info {
-    // HYPOTHESIS: a tConstSmartPtr; a tSmartPtr leaves the generated copy out of line.
-    tConstSmartPtr<fn_0057a96e_target> field_0;
-    int field_4;
-    int field_8;
-};
+// slot 2, the SDK template's operator(). Neither tChooseMission nor tAddress is declared yet,
+// so both classes stand in as fn_0057a96e_* types here.
+#include "unsorted/fn_0057a96e_info.h"
 
 class fn_0057a96e_owner {
 };
 
-#include "Common/Callback.h"
-
-template< typename tnMemberClass, typename tnResult >
-class tMemberCallback
-	: public tCallback<tnResult>
-{
-public:
-	typedef void (tnMemberClass::*iMemberFunction)( tnResult result );
-
-	tMemberCallback( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction );
-	virtual ~tMemberCallback();
-
-	virtual void Callback( tnResult result );
-	virtual void operator()( tnResult result );
-
-protected:
-	tnMemberClass* fpMemberClass;
-	iMemberFunction fpMemberFunction;
-};
+#include "Common/MemberCallback.h"
 
 // FUNCTION: STARFLEETOP 0x0057a96e
 template< typename tnMemberClass, typename tnResult >

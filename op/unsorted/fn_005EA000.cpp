@@ -563,3 +563,19 @@ void tObject_005ea858::fn_005ea887()
 	}
 	m_04.Leave();
 }
+
+#include "Common/MemberCallback.h"
+#include "unsorted/fn_0057a96e_info.h"
+
+// HYPOTHESIS: tMetaClientMapPanel is not declared yet; the original saw the whole class, and
+// its member pointer is one dword, so the class has single inheritance.
+// fn_0057a96e_info stands in for nSwitch::tAddress::tStatusChangeInfo.
+// MATCH-ONLY: __single_inheritance gives a forward declaration that member pointer form.
+class __single_inheritance tMetaClientMapPanel;
+
+// FUNCTION: STARFLEETOP 0x005ea8b8
+template<>
+void tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::operator()( fn_0057a96e_info result )
+{
+	(fpMemberClass->*fpMemberFunction)( result );
+}
