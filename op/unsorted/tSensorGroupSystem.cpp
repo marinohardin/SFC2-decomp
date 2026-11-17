@@ -33,6 +33,7 @@ public:
     float fn_0043e768();
     float fn_0043e76f();
     float fn_0043e776();
+    float fn_0043e77d();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -429,4 +430,10 @@ float tSensorGroupSystem::fn_0043e76f()
 float tSensorGroupSystem::fn_0043e776()
 {
     return field_180;
+}
+
+// FUNCTION: STARFLEETOP 0x0043e77d
+float tSensorGroupSystem::fn_0043e77d()
+{
+    return field_168 - field_174;
 }
