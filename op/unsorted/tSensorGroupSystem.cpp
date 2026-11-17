@@ -21,6 +21,7 @@ public:
     // HYPOTHESIS: a test on an entity ID; 0x0043e201 asks it for entities other than its owner.
     // HYPOTHESIS: returns the number of entries of field_1e0 in use.
     int fn_0043e351();
+    void fn_0043e359(char param_1);
     char fn_0043eb5f(int aID);
 
     char pad80[0x8c - 0x80];
@@ -192,4 +193,10 @@ void tSensorGroupSystem::fn_0043e201(float param_1)
 int tSensorGroupSystem::fn_0043e351()
 {
     return field_1d9;
+}
+
+// FUNCTION: STARFLEETOP 0x0043e359
+void tSensorGroupSystem::fn_0043e359(char param_1)
+{
+    field_1d9 = param_1;
 }
