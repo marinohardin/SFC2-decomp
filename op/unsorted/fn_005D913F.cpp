@@ -685,7 +685,11 @@ public:
     void fn_006ed560(const unsigned char *data, unsigned int size);
     fn_006ee3d0_result fn_006ee3d0(long data, long size);
 
-    char m_0x00[0x10b4];
+    char m_0x00[0x1048];
+    // HYPOTHESIS: two byte strings, destroyed by 0x005d9e48 through 0x005da20a (_Tidy).
+    std::basic_string< unsigned char > m1048;
+    std::basic_string< unsigned char > m1058;
+    char m_0x1068[0x4c];
 };
 
 // HYPOTHESIS: hashes the string, then each of its first three characters, keeping two bytes
@@ -717,4 +721,9 @@ fn_006ee3d0_result fn_005d9b26_object::fn_005d9db1() const
     fn_006ed560_object object;
     fn_005d9cd3(&object);
     return object.fn_006ee3d0(m10.m00 ? m10.m00->m08 : 0, m10.m00 ? m10.m00->m0c : 0);
+}
+
+// FUNCTION: STARFLEETOP 0x005d9e48
+fn_006ed560_object::~fn_006ed560_object()
+{
 }
