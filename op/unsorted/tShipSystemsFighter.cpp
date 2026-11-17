@@ -58,10 +58,10 @@ public:
     virtual tMinMaxFloat* vfunction38();
     virtual void vfunction39();
     virtual void vfunction40();
-    virtual void vfunction41();
+    virtual tMinMaxFloat* vfunction41();
     virtual tValue<float>* vfunction42();
     virtual void vfunction43();
-    virtual void vfunction44();
+    virtual bool vfunction44();
     virtual void vfunction45();
     virtual void vfunction46();
     virtual void vfunction47();

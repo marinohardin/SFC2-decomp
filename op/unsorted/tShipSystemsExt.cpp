@@ -158,6 +158,7 @@ public:
     virtual tMinMaxFloat* vfunction38();
     virtual tMinMaxFloat* vfunction41();
     virtual tValue<float>* vfunction42();
+    virtual bool vfunction44();
     virtual tShipSystemManager* vfunction53();
     virtual tTacticalStoresManager* vfunction54();
     virtual char* vfunction57();
@@ -244,7 +245,7 @@ public:
     int m934;
     double m938;
     char m940;
-    char m941;
+    bool m941;
     int m944;
     int m948;
     char m94c;
@@ -986,4 +987,10 @@ tMinMaxFloat* tShipSystemsExt::vfunction41()
 tValue<float>* tShipSystemsExt::vfunction42()
 {
     return &m918;
+}
+
+// FUNCTION: STARFLEETOP 0x00448bea
+bool tShipSystemsExt::vfunction44()
+{
+    return m941;
 }
