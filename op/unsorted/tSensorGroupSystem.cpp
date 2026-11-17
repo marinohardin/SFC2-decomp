@@ -60,6 +60,8 @@ public:
 
     virtual float vfunction73(float param_1, float param_2);
     virtual float vfunction74(float param_1, float param_2);
+    // HYPOTHESIS: param_2 is not read; the base call passes 0.
+    virtual float vfunction90(float param_1, int param_2);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -318,6 +320,46 @@ public:
     virtual void vfunction49();
     virtual void vfunction50();
     virtual void vfunction51(); // slot 50
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55();
+    virtual void vfunction56();
+    virtual void vfunction57();
+    virtual void vfunction58();
+    virtual void vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    virtual void vfunction69();
+    virtual void vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual void vfunction74();
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual void vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    virtual void vfunction83();
+    virtual void vfunction84();
+    virtual void vfunction85();
+    virtual void vfunction86();
+    virtual void vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    // HYPOTHESIS: slot 89; 0x0043f651 passes a float and a zero and drops the float result.
+    virtual float vfunction90(float param_1, int param_2);
 
     int fn_0043da08();
 };
@@ -1492,4 +1534,16 @@ int tSensorGroupSystem::fn_0043f618(int x, int y)
         }
     }
     return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0043f651
+float tSensorGroupSystem::vfunction90(float param_1, int param_2)
+{
+    if (field_80 != 0)
+        field_80->vfunction90(param_1, 0);
+    if (field_84 != 0)
+        field_84->vfunction90(param_1, 0);
+    if (field_88 != 0)
+        field_88->vfunction90(param_1, 0);
+    return tRepairableShipSystem::vfunction90(param_1, 0);
 }

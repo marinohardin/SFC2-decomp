@@ -51,7 +51,7 @@ public:
     virtual void vfunction87();
     virtual void vfunction88();
     virtual void vfunction89();
-    virtual void vfunction90();
+    virtual float vfunction90(float param_1, int param_2);
     virtual void vfunction91();
     virtual void vfunction92();
     virtual void vfunction93();

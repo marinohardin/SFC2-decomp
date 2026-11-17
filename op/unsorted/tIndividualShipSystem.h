@@ -378,7 +378,8 @@ public:
     virtual float vfunction87();
     virtual void vfunction88();
     virtual void vfunction89();
-    virtual void vfunction90();
+    // vftable slot 89 (body at 0x0043d541); takes two arguments (ret 8) and returns a float.
+    virtual float vfunction90(float param_1, int param_2);
     virtual void vfunction91();
     // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
     virtual void vfunction92(int param_1);
