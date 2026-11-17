@@ -207,13 +207,18 @@ bool c_004bd805_Object::fn_004bda12()
 // FUNCTION: STARFLEETOP 0x004bda34
 c_004bd805_Object g_004bd805_Object;
 
-// HYPOTHESIS: a flag byte and a counter, cleared together; their use is not known yet.
-extern bool g_0091f928;
-extern int g_0091f92c;
-
-// FUNCTION: STARFLEETOP 0x004bda7f
-void fn_004bda7f()
+// HYPOTHESIS: a global object at 0x0091f928 holding a flag byte and a counter; its inline
+// constructor clears both (0x004bda7f) and its destructor is registered with atexit (0x004bda8e).
+class c_0091f928_Object
 {
-	g_0091f928 = false;
-	g_0091f92c = 0;
-}
+public:
+	c_0091f928_Object() { field_0 = false; field_4 = 0; }
+	~c_0091f928_Object();
+
+	bool field_0;
+	int field_4;
+};
+
+// FUNCTION: STARFLEETOP 0x004bda8e
+// FUNCTION: STARFLEETOP 0x004bda7f
+c_0091f928_Object g_0091f928;
