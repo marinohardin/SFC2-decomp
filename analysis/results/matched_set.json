@@ -10149,9 +10149,9 @@
    "symbol": "?mSetVolume@twStandardSoundChannel@@UAEEJ@Z",
    "unit": "Tiger/twSound.cpp",
    "size": 112,
-   "score": 99.487,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006447c0": {
    "name": "twStandardSoundChannel::mStopAndClearChannel",
