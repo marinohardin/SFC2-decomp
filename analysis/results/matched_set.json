@@ -17065,6 +17065,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x006913d0": {
+   "name": "FUN_006913d0",
+   "symbol": "?fn_006913d0@tHtmlParser@@QAEXXZ",
+   "unit": "unsorted/tSession.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006a2dc0": {
    "name": "FUN_006a2dc0",
    "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",
