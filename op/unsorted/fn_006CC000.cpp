@@ -83,7 +83,7 @@ int fn_006cc900(fn_006c1510_pool *pool);
 int fn_006cc420(fn_006cc070_owner *owner);
 void fn_006cb8e0(fn_006cc070_owner *owner, int param_1);
 char *fn_006cc8f0(fn_006cc0f0_server *server);
-unsigned short fn_006cc910(fn_006cc0f0_server *server);
+int fn_006cc910(fn_006cc0f0_server *server);
 
 extern char *g_00888600[];
 extern int g_007b9cc8[];
@@ -437,4 +437,12 @@ char *fn_006cc8f0(fn_006cc0f0_server *server)
 unsigned long fn_006cc900(fn_006cc530_record *record)
 {
 	return record->field_00;
+}
+
+// HYPOTHESIS: returns a server entry's port.
+// FUNCTION: STARFLEETOP 0x006cc910
+int fn_006cc910(fn_006cc0f0_server *server)
+{
+	fn_006cc530_record *record = (fn_006cc530_record *)server;
+	return record->field_04;
 }
