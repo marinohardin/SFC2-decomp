@@ -2,7 +2,7 @@
 #include "unsorted/tBaseWeapon.h"
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntity.h"
-
+extern float g_00795620;
 // HYPOTHESIS: this is tCloakSystem, declared in full only inside unsorted/tCloakSystem.cpp;
 // this is the one member used here.
 class fn_00438607_class
@@ -209,4 +209,10 @@ void tBaseWeapon::vfunction117(float param_1)
 int tBaseWeapon::vfunction121()
 {
     return (int)&field_148;
+}
+
+// FUNCTION: STARFLEETOP 0x004d77a4
+float tBaseWeapon::vfunction119()
+{
+    return g_00795620;
 }
