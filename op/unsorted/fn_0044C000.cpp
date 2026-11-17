@@ -855,3 +855,29 @@ float tShipSystemsExt::vfunction124()
 	}
 	return total;
 }
+
+// HYPOTHESIS: slots 0x31..0x48 of the table at m584 (vfunction148's range) hold weapons; the
+// original reads them without a cast check.
+// FUNCTION: STARFLEETOP 0x0044ca3f
+float tShipSystemsExt::vfunction125()
+{
+	float total = 0.0f;
+	for ( int i = 0x31; i < 0x49; i++ )
+	{
+		tBaseWeapon* weapon = ( (tBaseWeapon**)m584 )[i];
+		if ( weapon )
+		{
+			if ( weapon->vfunction64() == true )
+			{
+				if ( weapon->vfunction27() == true )
+				{
+					if ( weapon->vfunction134() == false )
+					{
+						total += weapon->vfunction68() * weapon->vfunction106();
+					}
+				}
+			}
+		}
+	}
+	return total;
+}
