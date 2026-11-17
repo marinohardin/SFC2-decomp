@@ -190,3 +190,25 @@ void fn_005752c5_owner::fn_005752c5(fn_005752c5_object** out)
 {
 	*out = new fn_005752c5_object(m_d0);
 }
+
+// HYPOTHESIS: the 0xa0-byte object built by fn_00575308 is unnamed
+class fn_00575308_object
+{
+public:
+	fn_00575308_object(void* arg);
+	char m_pad[0xa0];
+};
+
+class fn_00575308_owner
+{
+public:
+	void fn_00575308(fn_00575308_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x00575308
+void fn_00575308_owner::fn_00575308(fn_00575308_object** out)
+{
+	*out = new fn_00575308_object(m_d0);
+}
