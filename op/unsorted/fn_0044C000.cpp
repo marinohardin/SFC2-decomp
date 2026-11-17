@@ -1109,3 +1109,21 @@ float tShipSystemsExt::vfunction132()
 {
 	return m718;
 }
+
+// FUNCTION: STARFLEETOP 0x0044ce2a
+void tShipSystemsExt::vfunction133()
+{
+	m73c = 0.0f;
+	for ( int i = 0; i < 24; i++ )
+	{
+		tIndividualShipSystem* system = ( (tIndividualShipSystem**)( m584 + 0xc4 ) )[i];
+		if ( system != 0 )
+		{
+			if ( system->vfunction28() == true )
+			{
+				m73c += system->vfunction11() * system->vfunction68();
+			}
+		}
+	}
+	m718.vfunction4( m73c );
+}

@@ -247,7 +247,8 @@ public:
     virtual void vfunction26();
     // HYPOTHESIS: slot 26 returns a flag; 0x0044cced compares it with 1.
     virtual bool vfunction27();
-    virtual void vfunction28();
+    // HYPOTHESIS: slot 27 returns a flag; 0x0044ce2a compares it with 1.
+    virtual bool vfunction28();
     virtual void vfunction29();
     virtual void vfunction30();
     virtual void vfunction31();
