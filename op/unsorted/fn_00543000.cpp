@@ -118,6 +118,7 @@ public:
 	void fn_00543671(bool flag);
 	void fn_0054368b(bool flag);
 	void fn_005436a5(bool flag);
+	bool fn_005436bf(std::string text);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -531,4 +532,12 @@ void fn_005430ad_owner::fn_005436a5(bool flag)
 		m114_10 = 1;
 	else
 		m114_10 = 0;
+}
+
+// HYPOTHESIS: the setter for the string at +0xe0 (0x00543459 is its getter), shaped like 0x005435ca.
+// FUNCTION: STARFLEETOP 0x005436bf
+bool fn_005430ad_owner::fn_005436bf(std::string text)
+{
+	m0e0 = text;
+	return true;
 }
