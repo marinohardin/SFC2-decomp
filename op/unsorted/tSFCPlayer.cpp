@@ -64,6 +64,7 @@ class tObject_004454c1
 		char fn_00508f68();
 		void fn_0051da3d();
 		void fn_00447b7a(void *param_1);
+		void fn_00445a14(int param_1);
 		tObject_004454c1 &operator=(const tObject_004454c1 &other);
 
 	private:
@@ -235,7 +236,7 @@ class tSFCPlayer
 		virtual int vfunction82(unsigned param_1);
 		virtual void vfunction83(int param_1, unsigned param_2);
 		virtual int vfunction84(unsigned param_1);
-		virtual void vfunction85() = 0;
+		virtual void vfunction85(int param_1, unsigned param_2);
 		virtual void vfunction86() = 0;
 		virtual void vfunction87();
 		virtual int vfunction88();
@@ -955,6 +956,13 @@ int tSFCPlayer::vfunction84(unsigned param_1)
 	if (param_1 < 6)
 		return m_220[param_1];
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004d09c0
+void tSFCPlayer::vfunction85(int param_1, unsigned param_2)
+{
+	if (param_2 < 6 && param_1 != 0)
+		m_238[param_2].fn_00445a14(param_1);
 }
 
 // FUNCTION: STARFLEETOP 0x004d07c9
