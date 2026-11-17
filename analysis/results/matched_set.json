@@ -3214,6 +3214,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00447ce4": {
+   "name": "FUN_00447ce4",
+   "symbol": "?fn_00447ce4@c_0044715d@@QAEPAUtObject_00447415_limits@@XZ",
+   "unit": "unsorted/fn_00447000.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004557ee": {
    "name": "FUN_004557ee",
    "symbol": "?fn_004557ee@tObject_004557ee@@QAEXH@Z",

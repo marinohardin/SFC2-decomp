@@ -210,6 +210,7 @@ public:
 	void fn_00445fe1(tObject_0042496f *ship);
 	void fn_00446d3d(tObject_0042496f *ship);
 	bool fn_00447c61(int kind);
+	tObject_00447415_limits *fn_00447ce4();
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -686,4 +687,11 @@ bool c_0044715d::fn_00447c61(int kind)
 		break;
 	}
 	return false;
+}
+
+// HYPOTHESIS: 0x00447ce4 reads the same table pointer at 0xe8 as the functions above.
+// FUNCTION: STARFLEETOP 0x00447ce4
+tObject_00447415_limits *c_0044715d::fn_00447ce4()
+{
+	return field_0xe8;
 }
