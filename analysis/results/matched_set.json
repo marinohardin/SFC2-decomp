@@ -5131,6 +5131,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004d0992": {
+   "name": "tSFCPlayer::vfunction83",
+   "symbol": "?vfunction83@tSFCPlayer@@UAEXHI@Z",
+   "unit": "unsorted/tSFCPlayer.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
