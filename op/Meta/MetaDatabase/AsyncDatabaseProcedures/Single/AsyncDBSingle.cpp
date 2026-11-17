@@ -84,7 +84,7 @@ public:
 	virtual void vfunction10();
 	virtual void vfunction11( std::vector<nDatabase::tID> ids, std::vector<tAuctionItem>* items, int lock );
 	virtual void vfunction12( std::vector<tAuctionItem>* items );
-	virtual void vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock );
+	virtual void vfunction13( tHexPoint point, std::vector<tMetaMapHex>* hexes, int lock );
 	virtual void vfunction14( nDatabase::tID id, tServCharacter* character, int lock );
 	virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
 	virtual bool vfunction16( nDatabase::tID id, tShip* ship );
@@ -385,7 +385,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12( std::vector<tAu
 }
 
 // FUNCTION: STARFLEETOP 0x0056d3a0
-void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock )
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13( tHexPoint point, std::vector<tMetaMapHex>* hexes, int lock )
 {
 	nDatabase::tQuery<tMetaMapHex> query;
 	nDatabase::tMemberEval<tMetaMapHex, long, std::equal_to<long> > eval1( &tMetaMapHex::fn_00539f04, point.fn_0055f269() );
