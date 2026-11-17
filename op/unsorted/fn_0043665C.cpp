@@ -164,7 +164,13 @@ char tIndividualShipSystem::vfunction66()
 }
 
 // FUNCTION: STARFLEETOP 0x00436741
-void tIndividualShipSystem::vfunction67(int param_1)
+void tIndividualShipSystem::vfunction67(float param_1)
 {
     field_38 = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x0043674b
+float tIndividualShipSystem::vfunction68()
+{
+    return field_38;
 }

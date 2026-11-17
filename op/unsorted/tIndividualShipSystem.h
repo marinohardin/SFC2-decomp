@@ -291,7 +291,9 @@ public:
     // HYPOTHESIS: slot 65; returns the byte at +0x30 set by slot 64.
     virtual char vfunction66();
     // HYPOTHESIS: slot 66; stores its argument in the dword at +0x38.
-    virtual void vfunction67(int param_1);
+    virtual void vfunction67(float param_1);
+    // HYPOTHESIS: slot 67; returns the float at +0x38 stored by slot 66.
+    virtual float vfunction68();
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -308,7 +310,8 @@ public:
     // HYPOTHESIS: a byte set by slot 64 (vfunction65).
     char field_30;
     char pad31[0x38 - 0x31];
-    int field_38;
+    // HYPOTHESIS: a float; slot 67 returns it with fld, and tBaseWeapon's slot 66 takes a float.
+    float field_38;
     char pad3c[0x40 - 0x3c];
     float field_40;
     char pad44[0x45 - 0x44];
