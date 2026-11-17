@@ -17016,8 +17016,8 @@
    "symbol": "?fn_006910a0@tHtmlParser@@QAEXH@Z",
    "unit": "unsorted/tSession.cpp",
    "size": 464,
-   "score": 99.971,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x006a2dc0": {

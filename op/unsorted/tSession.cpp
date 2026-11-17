@@ -29,7 +29,7 @@ inline fn_00690a60_Value &fn_00690a60_Value::operator=( int value )
 
 // HYPOTHESIS: the alignment at the parser's +0x8c; fn_006910a0 sets it through the out-of-line
 // fn_0068bb00 with the object's address in ecx, so it is taken as a small class.
-class fn_0068bb00_Value
+class tCoopThread; class fn_0068bb00_Value
 {
 public:
 	void	fn_0068bb00( int align );
@@ -140,7 +140,7 @@ public:
 	char	pad_8d[0x92 - 0x8d];
 	unsigned short	f_92;
 	std::vector<unsigned short>	f_94;
-	std::vector<unsigned long>	f_a4;
+	std::vector<tCoopThread*>	f_a4;
 	// HYPOTHESIS: one entry per open anchor tag, 0 for a link and 1 for a named anchor (fn_00690a60).
 	std::vector<unsigned long>	f_b4;
 	char	pad_c4[0xd8 - 0xc4];
@@ -575,7 +575,7 @@ void tHtmlParser::fn_00691080()
 // FUNCTION: STARFLEETOP 0x006910a0
 void tHtmlParser::fn_006910a0( int align )
 {
-	f_a4.push_back( f_8c.f_00 );
+	f_a4.push_back( (tCoopThread*)f_8c.f_00 );
 	f_8c.fn_0068bb00( align );
 	f_40->fn_0068e860( &f_8c, 1 );
 }
