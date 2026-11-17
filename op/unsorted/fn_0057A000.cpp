@@ -389,6 +389,13 @@ inline tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback()
 
 template class tCallback< const nDatabase::tID& >;
 
+// HYPOTHESIS: the exe's tCallback<unsigned long> deleting destructor sits after 0x0057ab18;
+// its destructor is written here as its own definition so the claim has a line of its own.
+// FUNCTION: STARFLEETOP 0x0057ab52
+template<>
+tCallback<unsigned long>::~tCallback()
+{}
+
 #include "Common/Database/DatabaseID.h"
 
 // HYPOTHESIS: the analysis names 0x0057aad9 a tCallback constructor, but it is a free function
