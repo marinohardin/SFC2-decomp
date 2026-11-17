@@ -227,7 +227,7 @@ public:
 	virtual void vfunction11();
 	virtual void vfunction12();
 	virtual void vfunction13();
-	virtual void vfunction14();
+	virtual void vfunction14( bool arg1 );
 	virtual void vfunction15();
 	virtual void vfunction16();
 	virtual void vfunction17();
@@ -330,5 +330,15 @@ void fn_004d34a7( long arg1, long arg2 )
 	if ( obj != 0 )
 	{
 		obj->fn_0067ce90();
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004d34c5
+void fn_004d34c5( long arg1, char arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	if ( obj != 0 )
+	{
+		obj->vfunction14( arg2 != 0 );
 	}
 }
