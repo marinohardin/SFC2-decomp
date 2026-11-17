@@ -196,8 +196,8 @@ public:
 	int fn_006fe8a0(int);
 	int fn_0069aa00(int);
 	int fn_0069a940();
+	int fn_0069a970();
 };
-
 class fn_0090db70_owner
 {
 public:
@@ -1309,4 +1309,10 @@ int fn_0046abb3()
 int fn_0046abb9()
 {
 	return fn_0040c28c()->fn_0069a940();
+}
+
+// FUNCTION: STARFLEETOP 0x0046abc5
+int fn_0046abc5()
+{
+	return fn_0040c28c()->fn_0069a970();
 }
