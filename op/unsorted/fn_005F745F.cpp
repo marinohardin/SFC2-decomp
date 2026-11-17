@@ -43,6 +43,7 @@ class fn_005f7961_object;
 struct fn_0055fe12_value
 {
 	fn_0055fe12_value( const fn_0055fe12_value& other );
+	fn_0055fe12_value( const std::string& value, int a );
 	~fn_0055fe12_value();
 
 	std::string field_00;
@@ -232,5 +233,12 @@ bool fn_005f745f_object::FUN_005f771b()
 // FUNCTION: STARFLEETOP 0x005f773e
 fn_005f74a6_entry::fn_005f74a6_entry( const std::string& value, int a, int b )
 	: field_00( value ), field_10( a ), field_14( b )
+{
+}
+
+// HYPOTHESIS: builds a value from a string and the value at +0x10.
+// FUNCTION: STARFLEETOP 0x005f7776
+fn_0055fe12_value::fn_0055fe12_value( const std::string& value, int a )
+	: field_00( value ), field_10( a )
 {
 }
