@@ -167,6 +167,7 @@ public:
 	void FUN_006e3370(unsigned long param_1);
 	void FUN_006e3390(int param_1);
 	void FUN_006e33b0(const void* param_1, int param_2);
+	void FUN_006e33f0(unsigned char param_1);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -240,4 +241,10 @@ void tObject_006e3240::FUN_006e33b0(const void* param_1, int param_2)
 	FUN_006e32f0(param_2);
 	memcpy(m10 + m0c, param_1, param_2);
 	m0c += param_2;
+}
+
+// FUNCTION: STARFLEETOP 0x006e33f0
+void tObject_006e3240::FUN_006e33f0(unsigned char param_1)
+{
+	FUN_006e33b0(&param_1, 1);
 }
