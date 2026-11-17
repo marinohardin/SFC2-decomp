@@ -528,3 +528,26 @@ bool tBaseWeapon::vfunction130()
     }
     return false;
 }
+
+// FUNCTION: STARFLEETOP 0x004d8002
+bool tBaseWeapon::vfunction131(short param_1)
+{
+    for (int i = 0; i < field_130; i++)
+    {
+        short lo = field_118[i][0];
+        short hi = field_118[i][1];
+        if (lo < hi)
+        {
+            if (param_1 >= lo && param_1 <= hi)
+                return true;
+        }
+        else
+        {
+            if (param_1 >= lo && param_1 <= 0x2000)
+                return true;
+            if (param_1 >= 0 && param_1 <= hi)
+                return true;
+        }
+    }
+    return false;
+}

@@ -196,7 +196,7 @@ public:
     virtual bool vfunction128(short param_1, short param_2);
     virtual void vfunction129();
     virtual bool vfunction130();
-    virtual void vfunction131();
+    virtual bool vfunction131(short param_1);
     // HYPOTHESIS: 0x004e28fc tests slot 132 (offset 0x20c) with 0 and reads slot 133
     // (offset 0x210) as a signed status, zero when the weapon may fire.
     virtual bool vfunction132(int param_1);
