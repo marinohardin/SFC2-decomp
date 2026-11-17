@@ -91,10 +91,10 @@ public:
 extern fn_0090bf18_Object g_0090bf18;
 
 // The zip information manager (its SDK name, tZipInfoMgr::mDone); the instance at 0x008e0678.
-class tZipInfoMgr {
-public:
-	void mDone();
-};
+#include "Tiger/tZipInfoMgr.h"
+
+
+
 
 extern tZipInfoMgr g_008e0678;
 

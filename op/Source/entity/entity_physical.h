@@ -112,28 +112,30 @@ public:
 	virtual ~tDynamicMemoryFreeList() { mClearList(); }
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
-	virtual void vfunction4();
-	virtual void mGetPreviousListMember();
-	virtual void *mGetNextListMember(void *aMember);
-	virtual void mGetPreviousCircularListMember();
-	virtual void mGetNextCircularListMember();
-	virtual void mGetListMemberAtThisIndex();
-	virtual void mAddToFrontOfList();
-	virtual void mAddToBackOfList(void *aMember);
-	virtual void mInsertAfterListMember();
-	virtual void mInsertBeforeListMember();
-	virtual void mRemoveFromList(void *aMember);
-	virtual void mIsListMember();
+	virtual tListMember *vfunction4();	// HYPOTHESIS: the last member; 0x006267b0 wraps to it
+	virtual tListMember *mGetPreviousListMember(tListMember *aMember);
+	virtual tListMember *mGetNextListMember(tListMember *aMember);
+	virtual tListMember *mGetPreviousCircularListMember(tListMember *aMember);
+	virtual tListMember *mGetNextCircularListMember(tListMember *aMember);
+	virtual tListMember *mGetListMemberAtThisIndex(long index);
+	virtual unsigned char mAddToFrontOfList(tListMember *aMember);
+	virtual unsigned char mAddToBackOfList(tListMember *aMember);
+	virtual unsigned char mInsertAfterListMember(tListMember *aListMember, tListMember *aMember);
+	virtual unsigned char mInsertBeforeListMember(tListMember *aMember, tListMember *aListMember);
+	virtual unsigned char mRemoveFromList(tListMember *aMember);
+	virtual unsigned char mIsListMember(tListMember *aMember);
 	virtual void vfunction16();
 	virtual void vfunction17();
-	virtual void mGetZeroIndexedListMemberPosition();
+	virtual long mGetZeroIndexedListMemberPosition(tListMember *aMember);
 	virtual void mClearList();
 	virtual void mDeleteListMembers();
 	virtual void vfunction21();
 	virtual void mDumpList();
 
-	// HYPOTHESIS: the 12 bytes after the vftable pointer; their layout is not recovered.
-	char field_0x4[0xc];
+	// HYPOTHESIS: first member, last member and member count, from mAddToFrontOfList (0x00626810).
+	tListMember *field_0x4;
+	tListMember *field_0x8;
+	long field_0xc;
 };
 
 class tPhysicalEntity: public tEntity

@@ -1,7 +1,7 @@
 //	tstring.h: tString, Tiger's wide character string.
 //
 //	Declarations follow the SDK's header. Not declared yet: the inline operator!= and the
-//	less_ss and less_ps comparators, whose bodies no unit here uses yet, and the members of
+//	less_ps comparator, whose bodies no unit here uses yet, and the members of
 //	tString::iterator that no unit here uses yet. The original also
 //	includes tlearn.h, tcglue.h, tigerstl.h and tBag.h here; nothing below needs them yet.
 
@@ -14,6 +14,7 @@
 #include "Tiger/tstringdefs.h"
 
 #include <vector>
+#include <functional>
 #include <iosfwd>	// std::string, without the locale statics <string> brings in
 
 class tItemBag;
@@ -56,6 +57,8 @@ class tString
 	public:
 		class 	iterator;
 		friend 	iterator;
+		// MATCH-ONLY: the original (/Ob2) inlines operator= and the constructors into NumToString; written out there, they need this access.
+		friend void NumToString(tString &destStr, int32 data, int32s minDigits);
 
 		tString(const char *s);
 		tString(const char *s, int32u length);
@@ -129,8 +132,8 @@ class tString
 		iBasicStringElement&	operator[](int32 n);
 		int32 					size() const;
 		int32					find(char);
-		int32					find(tString&, int32 startPos = 0);
-		int32					rfind(tString&, int32 startPos);
+		int32					find(tString &, int32 startPos = 0);
+		int32					rfind(tString &, int32 startPos);
 		int32					find(const char *, int32 startPos = 0);
 		int32					rfind(const char *, int32 startPos);
 		int32					rfind(const char *);
@@ -143,14 +146,19 @@ class tString
 		// Only the members a unit here uses are declared.
 		class iterator
 		{
+			friend tString;
+
 			public:
 				iterator();
+				iterator(int32 index, tString *s);
 				iterator(const iterator &i);
 
 				iBasicStringElement&	operator*();
 				iterator				operator+(int32 n);
 				iterator				operator-(int32 n);
 				iterator				operator++(int);
+				iterator				operator++();
+				iterator				operator--(int);
 				iTruth					operator==(const iterator i);
 				iTruth					operator!=(const iterator i);
 				iTruth					operator<(const iterator i);
@@ -159,6 +167,12 @@ class tString
 				int32		fIndex;
 				tString		*fString;
 		};
+};
+
+class less_ss : public std::binary_function<const tString&, const tString&, bool>
+{	public:
+	bool operator () (const tString& x, const tString& y)
+		const 	{	return (x.mStrCmp(y) < 0); }
 };
 
 int32 StringToNum(char *str);

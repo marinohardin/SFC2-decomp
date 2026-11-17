@@ -2,15 +2,17 @@
 
 // The original includes the file system part headers here. The unit map has no place for them
 // yet, so the declarations this unit needs from them are kept here.
+#include <windows.h>
 #include "Tiger/tsay.h"
 #include "Tiger/tstring.h"
 #include "Tiger/tgfsys.h"
 
-// HYPOTHESIS: a date value returned by value; its layout is not recovered.
+// HYPOTHESIS: a date value returned by value, one signed 64-bit word, as twDir::mGetDate
+// (STARFLEETOP 0x00631860) sign-extends both halves of the file time into it.
 class tDate
 {
 public:
-	int32u	f_00[2];
+	__int64	f_00;
 };
 
 // HYPOTHESIS: the enumerators are not recovered.
@@ -18,44 +20,14 @@ enum eSpecialDir
 {
 };
 
-
-// HYPOTHESIS: a queue of 12 bytes, a vtable pointer and two words cleared by the constructor, as
-// tFSSession::tFSSession stores them; the class is named by the exe, its members are not.
-// HYPOTHESIS: the queue links nodes of 12 bytes, a vtable pointer, the queued item's address and
-// the next node, as tQueue::pop (STARFLEETOP 0x006202c0) and tFSSession::~tFSSession read them;
-// the node class and its members are not named by the exe.
-template <class tType>
-class tQueue
+// HYPOTHESIS: named by the exe through twVolume::mGetVolType's symbol; the enumerators are not
+// recovered. mGetVolType maps removable to 0, fixed and RAM disks to 1, CD-ROM to 2, remote to 3.
+enum eVolType
 {
-public:
-	class fn_QueueNode
-	{
-	public:
-		virtual ~fn_QueueNode();
-
-		tType			*fItem;		// +0x04
-		fn_QueueNode	*fNext;		// +0x08
-	};
-
-	tQueue() { f_04 = 0; f_08 = 0; }
-	virtual ~tQueue();
-
-	// HYPOTHESIS: out of line in the exe, as tSession::mAddCookie calls it.
-	void push( tType &item );
-
-	void pop()
-	{
-		fn_QueueNode	*node = f_04;
-
-		f_04 = node->fNext;
-		if ( f_04 == 0 )
-			f_08 = 0;
-		delete node;
-	}
-
-	fn_QueueNode	*f_04;	// head
-	fn_QueueNode	*f_08;	// tail
 };
+
+
+#include "unsorted/tQueue.h"
 
 // HYPOTHESIS: the objects the iterator cookies resolve to; their layouts are not recovered.
 // HYPOTHESIS: 0x28 bytes, as tVolIterator::mValid reads the map pair's count at +0x3c.
@@ -79,6 +51,10 @@ public:
 class tDirIterParent
 {
 public:
+	// Out of line in the exe (STARFLEETOP 0x0061ba80, 0x00634f20).
+	tDirIterParent();
+	~tDirIterParent();
+
 	int32u	mAdd( tDir dir );
 	// HYPOTHESIS: out of line, as tDirIterator::mNext (STARFLEETOP 0x0061f7f0) calls it with the
 	// directory passed by value and returns its result, like tVolIterParent::mNext.
@@ -96,11 +72,18 @@ public:
 class tPathIterParent
 {
 public:
+	// Out of line in the exe (STARFLEETOP 0x0061bab0, 0x00634f50).
+	tPathIterParent();
+	~tPathIterParent();
+
 	int32u	mAdd( tPath path );
 	// HYPOTHESIS: out of line, as tPathIterator::mFirst (STARFLEETOP 0x0061fa60) calls it on the
 	// resolved parent and returns its result, where the volume and directory iterators have it
 	// expanded inline.
 	tPath	mFirst( void );
+	// HYPOTHESIS: out of line, as tPathIterator::mNext (STARFLEETOP 0x0061fb60) calls it with the
+	// path passed by value and returns its result, like tVolIterParent::mNext.
+	tPath	mNext( tPath path );
 
 	int32u	f_00[10];
 };
@@ -173,13 +156,13 @@ public:
 	virtual tString	&mGetName( void );
 	// HYPOTHESIS: the second virtual, as tVolume::mGetSortName calls it.
 	virtual tString	mGetSortName( void );
-	// HYPOTHESIS: the volume queries the exe names for twVolume, in address order; the two slots
-	// after them are not recovered.
+	// HYPOTHESIS: the volume queries the exe names for twVolume, in address order; the slot
+	// after them is not recovered.
 	virtual int32u	mGetClusterSize( void );
 	virtual int32u	mGetTotalClusters( void );
 	virtual int32u	mGetFreeClusters( void );
-	virtual int32u	mGetVolType( void );
-	virtual void	fn_twVolume_slot6( void );
+	virtual eVolType	mGetVolType( void );
+	virtual iTruth	mIsEjectable( void );
 	virtual void	fn_twVolume_slot7( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tVolume::mGetRoot (STARFLEETOP 0x0061dad0)
 	// calls it through that slot on the resolved volume.
@@ -188,7 +171,16 @@ public:
 	twVolume();
 	~twVolume();
 
-	int32u	f_04[36];
+	// HYPOTHESIS: the volume's own cookie at +0x34, which mGetRoot passes to the root directory as
+	// its parent volume; the members before it are not recovered.
+	tString	f_04;
+	int32u	f_2c;
+	int32u	f_30;
+	tVolume	f_34;
+	// HYPOTHESIS: the sort name copied by mGetSortName from +0x44; later members not recovered.
+	tString	f_44;
+	// HYPOTHESIS: the volume's root path, which mGetClusterSize hands to the system.
+	tString	f_6c;
 };
 
 // HYPOTHESIS: 0xb4 bytes, as tDir::mValid reads the directory map pair's count at +0xc8.
@@ -198,24 +190,24 @@ public:
 	// HYPOTHESIS: the first virtual, as tDir::mGetName (STARFLEETOP 0x0061dbf0) calls it through
 	// the vtable's first slot on the resolved directory.
 	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second slot is not recovered.
-	virtual void	fn_twDir_slot1( void );
+	// HYPOTHESIS: the second virtual, as twVolume has its mGetSortName there.
+	virtual tString	mGetSortName( void );
 	// HYPOTHESIS: the third virtual (vtable +0x08), as tDir::mGetParentVol (STARFLEETOP
 	// 0x0061dd00) calls it through that slot on the resolved directory.
 	virtual tVolume	mGetParentVol( void );
 	// HYPOTHESIS: the fourth virtual (vtable +0x0c), as tDir::mGetParentDir (STARFLEETOP
 	// 0x0061de20) calls it through that slot on the resolved directory.
 	virtual tDir	mGetParentDir( void );
-	// HYPOTHESIS: the fifth slot is not recovered.
-	virtual void	fn_twDir_slot4( void );
+	// HYPOTHESIS: the fifth slot, by the exe's symbol for twDir::mGetDate (STARFLEETOP 0x00631860).
+	virtual tDate	mGetDate( void );
 	// HYPOTHESIS: the sixth virtual (vtable +0x14), as tDir::mGetSize (STARFLEETOP 0x0061df40)
 	// calls it through that slot on the resolved directory.
 	virtual int32u	mGetSize( void );
 	// HYPOTHESIS: the seventh virtual (vtable +0x18), as tDir::mExist (STARFLEETOP 0x0061e050)
 	// calls it through that slot on the resolved directory.
 	virtual iTruth	mExist( void );
-	// HYPOTHESIS: the eighth slot is not recovered.
-	virtual void	fn_twDir_slot7( void );
+	// The eighth slot, by the exe's symbol for twDir::mGetDirIterator (STARFLEETOP 0x00632040).
+	virtual tDirIterator	mGetDirIterator( void );
 	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tDir::mGetPathIterator (STARFLEETOP
 	// 0x0061e160) calls it through that slot on the resolved directory.
 	virtual tPathIterator	mGetPathIterator( void );
@@ -225,8 +217,8 @@ public:
 	// HYPOTHESIS: the eleventh virtual (vtable +0x28), as tDir::mGetNamedFile (STARFLEETOP
 	// 0x0061e3a0) calls it through that slot on the resolved directory.
 	virtual tPath	mGetNamedFile( tString &name );
-	// HYPOTHESIS: the twelfth slot is not recovered.
-	virtual void	fn_twDir_slot11( void );
+	// The twelfth slot, by the exe's symbol for twDir::mCreate (STARFLEETOP 0x00632d30).
+	virtual iTruth	mCreate( void );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tDir::mDelete (STARFLEETOP 0x0061e5c0)
 	// calls it through that slot on the resolved directory.
 	virtual iTruth	mDelete( void );
@@ -234,20 +226,48 @@ public:
 	// HYPOTHESIS: out of line, as tDir::mGetNamedFile calls both on the default value its inline
 	// map lookup builds.
 	twDir();
+	// HYPOTHESIS: the name, the parent volume and the parent directory, as twVolume::mGetRoot
+	// (STARFLEETOP 0x006313e0) passes them; the argument names are not recovered.
+	twDir( const tString &name, tVolume volume, tDir parent );
 	~twDir();
 
-	int32u	f_04[44];
+
+protected:
+	void	mMakeFullPath( void );
+
+public:
+	// HYPOTHESIS: the parent volume at +0x04 and the parent directory at +0x14, as
+	// twDir::mMakeFullPath (STARFLEETOP 0x006315d0) reads them; the name at +0x24 and the full
+	// path built from it at +0x8c. The words at +0x4c and +0x50 and the strings at +0x64 are not
+	// recovered.
+	tVolume	f_04;
+	tDir	f_14;
+	tString	f_24;
+	int32u	f_4c;
+	int32u	f_50;
+	tDir	f_54;
+	tString	f_64;
+	tString	f_8c;
+};
+
+// HYPOTHESIS: the platform-independent path twPath derives from, named by the exe's RTTI; its
+// virtuals and members are not recovered, so twPath declares the slots itself. mCookie
+// (STARFLEETOP 0x00634ea0) is named by the exe's symbol.
+class tgPath
+{
+public:
+	tPath	mCookie( tPath &cookie );
 };
 
 // HYPOTHESIS: 0xac bytes, as tPath::mValid reads the path map pair's count at +0xc0.
-class twPath
+class twPath: public tgPath
 {
 public:
 	// HYPOTHESIS: the first virtual, as tPath::mGetName (STARFLEETOP 0x0061e6d0) calls it through
 	// the vtable's first slot on the resolved path.
 	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second slot is not recovered.
-	virtual void	fn_twPath_slot1( void );
+	// The second slot, by the exe's symbol for twPath::mGetSortName (STARFLEETOP 0x00633260).
+	virtual tString	mGetSortName( void );
 	// HYPOTHESIS: the third virtual (vtable +0x08), as tPath::mGetParentDir (STARFLEETOP
 	// 0x0061e900) calls it through that slot on the resolved path.
 	virtual tDir	mGetParentDir( void );
@@ -266,22 +286,53 @@ public:
 	// HYPOTHESIS: the eighth virtual (vtable +0x1c), as tPath::mDelete (STARFLEETOP 0x0061ed50)
 	// calls it through that slot on the resolved path.
 	virtual iTruth	mDelete( void );
-	// HYPOTHESIS: the ninth to twelfth slots are not recovered.
-	virtual void	fn_twPath_slot8( void );
-	virtual void	fn_twPath_slot9( void );
-	virtual void	fn_twPath_slot10( void );
-	virtual void	fn_twPath_slot11( void );
+	// HYPOTHESIS: the ninth virtual (vtable +0x20), as its body follows mDelete's; the name is
+	// the exe's symbol for STARFLEETOP 0x00633700, and the tenth (+0x24) is the exe's symbol for
+	// STARFLEETOP 0x00633770, the eleventh (+0x28) for 0x00633850 and the twelfth (+0x2c) for 0x006338c0.
+	virtual iTruth	mLock( void );
+	virtual iTruth	mLock( iTruth lock );
+	virtual iTruth	mHide( void );
+	virtual iTruth	mHide( iTruth hide );
 	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tPath::mRead (STARFLEETOP 0x0061ee60)
 	// calls it through that slot on the resolved path.
-	virtual int32u	mRead( void *buffer, int32u offset, int32u size, class tPathCallback *callback );
+	virtual int32u	mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	// HYPOTHESIS: the fourteenth virtual (vtable +0x34), as tPath::mWrite (STARFLEETOP 0x0061ef90)
 	// calls it through that slot on the resolved path.
-	virtual int32u	mWrite( void *buffer, int32u offset, int32u size, class tPathCallback *callback );
+	virtual int32u	mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	// HYPOTHESIS: the fifteenth virtual (vtable +0x38), as tPath::mFree (STARFLEETOP 0x0061f0c0)
 	// calls it through that slot on the resolved path.
 	virtual int32u	mFree( void );
+	// HYPOTHESIS: the sixteenth virtual, as its body follows mFree's; named by the exe's symbol.
+	virtual iTruth	mExec( tString &args );
 
-	int32u	f_04[42];
+	// HYPOTHESIS: out of line, as twDir::mGetNamedFile (STARFLEETOP 0x00631d30) calls it with the
+	// name and the directory the path lies in; ~twPath is expanded inline there.
+	twPath( const tString &name, tDir dir );
+	// HYPOTHESIS: inline, as twDir::mGetPathIterator (STARFLEETOP 0x00632700) has it expanded:
+	// the twPath vtable store, the call to mFree and the members' destructors.
+	~twPath() { mFree(); }
+
+	// HYPOTHESIS: protected, by the exe's symbol, with twIORequest::mProcessRequest (STARFLEETOP
+	// 0x006340b0) calling it as a friend.
+	friend class twIORequest;
+protected:
+	void	mEnsureFileClosed( void );
+	void	mMakeFullPath( void );
+
+public:
+
+	// HYPOTHESIS: the directory the path lies in at +0x04, the name at +0x14 and the directory's
+	// word copied into +0x40; the cookie at +0x44 and the strings at +0x54 and +0x7c, the file
+	// handle at +0xa4 and its count at +0xa8 are read by the inline destructor only.
+	tDir	f_04;
+	tString	f_14;
+	int32u	f_3c;
+	int32u	f_40;
+	tPath	f_44;
+	tString	f_54;
+	tString	f_7c;
+	void	*f_a4;
+	int32	f_a8;
 };
 
 namespace std
@@ -417,6 +468,9 @@ public:
 	typedef tCountMap<tKeyType,tValueType,tCompare>	tMap;
 
 	tMap	&mResolve( tKeyType &key );
+	// Out of line in the exe (STARFLEETOP 0x00636fd0 and 0x00636fb0), named by its symbols.
+	int32u		count( tKeyType &key );
+	tValueType	&operator[]( tKeyType &key );
 
 	int32u	f_00;
 	tMap	fMaps[256];		// +0x04
@@ -503,22 +557,54 @@ public:
 	// differently from fn_0061c070_mResolve is not recovered.
 	tObjectType &fn_0061f910_mResolve( tCookieType &cookie )
 	{
-		tMap::iterator it = fValues.fMaps[cookie.fCookie & 0xff].find( cookie );
-
-		if ( it.fNode == fValues.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
+		tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	&values = fValues;	tMap::iterator it = values.fMaps[cookie.fCookie & 0xff].find( cookie );
+		if ( it.fNode == values.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
 			throw "Use of invalid cookie to resolve an item";
-		return fValues.mResolve( cookie )[cookie];
+		tMap	&map = values.mResolve( cookie );	return map[cookie];
 	}
+
+	// MATCH-ONLY: mResolve as twDir::mMakeFullPath (STARFLEETOP 0x006315d0) has it, with the
+	// bucket index held in a local for the search, the comparison taken as a truth value, the
+	// found iterator copied before it is tested and operator[] out of line.
+	tObjectType &fn_006315d0_mResolve( tCookieType &cookie )
+	{
+		int32u	index = cookie.fCookie & 0xff;
+		tMap::iterator it( fValues.fMaps[index].fHead );
+		for ( ; it.fNode != 0; it++ )
+			if ( !( (*it).fKey != cookie ) )
+				break;
+		tMap::iterator found = it;
+		if ( found.fNode == 0 || (*found).fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];
+		return map[cookie];
+	}
+
+	// MATCH-ONLY: mResolve as twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) has it for a
+	// read, with the value map's out-of-line count and operator[].
+	tObjectType &fn_006340b0_mResolve( tCookieType &cookie )
+	{
+		if ( fValues.count( cookie ) == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		return fValues[cookie];
+	}
+
+	// MATCH-ONLY: the out-of-line mResolve of tCookieManager<tPath,twPath> (STARFLEETOP
+	// 0x00636ad0), defined after the class so that its callers cannot inline it.
+	tObjectType &fn_00636ad0_mResolve( tCookieType &cookie );
 
 	int32u											f_00;
 	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
 };
+
 
 template <class tVolumeType, class tDirType, class tPathType>
 class tFileSystemCookieManager
 {
 public:
 	tFSSession	*mResolve( tSession &session );
+	// Out of line in the exe (STARFLEETOP 0x006357d0), as twDir::mGetPathIterator calls it.
+	tPath	mMake( tPathType &path );
 
 	// HYPOTHESIS: each removal lowers the count tFileSession::tFileSession raises, then removes the
 	// cookie from its manager, as tFSSession::~tFSSession has them; these overloads are not named
@@ -1082,6 +1168,16 @@ tPath tPathIterator::mFirst( void )
 	return parent.mFirst();
 }
 
+// The original resolves with fn_0061f910_mResolve's form, as tPathIterator::mAdd does; the map
+// reference local there orders the resolve before operator[]'s argument push.
+// FUNCTION: STARFLEETOP 0x0061fb60
+tPath tPathIterator::mNext( tPath path )
+{
+	tPathIterParent	&parent = BindPart( tFSCookiePart )->fFSCookies.fPathIterCookies.fn_0061f910_mResolve( *this );
+
+	return parent.mNext( path );
+}
+
 // MATCH-ONLY: the original has ~tFileSession both inlined into the scalar deleting destructor and
 // emitted out of line at 0x0061bdd0. An inline destructor gets an out-of-line copy when an
 // exception unwind path calls it, as it does for this local; the original caller is not recovered.
@@ -1093,3 +1189,1096 @@ void fn_use_file_session( void )
 	session.mValid();
 }
 
+// FUNCTION: STARFLEETOP 0x006310c0
+tString twVolume::mGetSortName( void )
+{
+	return f_44;
+}
+
+// HYPOTHESIS: the buffers the root is copied into for the system calls, as in twfsys.cpp; their
+// names are not recovered.
+extern char g_00c3caec[MAX_PATH];
+extern iWideChar g_00c3cbf0[MAX_PATH];
+
+// FUNCTION: STARFLEETOP 0x006310e0
+int32u twVolume::mGetClusterSize( void )
+{
+	DWORD	sectorsPerCluster;
+	DWORD	bytesPerSector;
+	DWORD	freeClusters;
+	DWORD	totalClusters;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	if ( !GetDiskFreeSpaceW( g_00c3cbf0, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			if ( !GetDiskFreeSpaceA( g_00c3caec, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+				throw "Error in system getting cluster size";
+		}
+		else
+			throw "Error in system getting cluster size";
+	}
+	return sectorsPerCluster * bytesPerSector;
+}
+
+// FUNCTION: STARFLEETOP 0x006311a0
+int32u twVolume::mGetTotalClusters( void )
+{
+	DWORD	sectorsPerCluster;
+	DWORD	bytesPerSector;
+	DWORD	freeClusters;
+	DWORD	totalClusters;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	if ( !GetDiskFreeSpaceW( g_00c3cbf0, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			if ( !GetDiskFreeSpaceA( g_00c3caec, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+				throw "Error in system getting cluster size";
+		}
+		else
+			throw "Error in system getting cluster size";
+	}
+	return totalClusters;
+}
+
+// FUNCTION: STARFLEETOP 0x00631260
+int32u twVolume::mGetFreeClusters( void )
+{
+	DWORD	sectorsPerCluster;
+	DWORD	bytesPerSector;
+	DWORD	freeClusters;
+	DWORD	totalClusters;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	if ( !GetDiskFreeSpaceW( g_00c3cbf0, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			if ( !GetDiskFreeSpaceA( g_00c3caec, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters ) )
+				throw "Error in system getting cluster size";
+		}
+		else
+			throw "Error in system getting cluster size";
+	}
+	return freeClusters;
+}
+
+// FUNCTION: STARFLEETOP 0x00631320
+eVolType twVolume::mGetVolType( void )
+{
+	UINT	driveType;
+
+	f_6c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	driveType = GetDriveTypeW( g_00c3cbf0 );
+	if ( ( driveType == DRIVE_UNKNOWN || driveType == DRIVE_NO_ROOT_DIR ) && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		f_6c.mCopyCharStr( g_00c3caec, MAX_PATH );
+		driveType = GetDriveTypeA( g_00c3caec );
+	}
+	switch ( driveType )
+	{
+		case DRIVE_REMOVABLE:
+			return (eVolType)0;
+		case DRIVE_FIXED:
+		case DRIVE_RAMDISK:
+			return (eVolType)1;
+		case DRIVE_REMOTE:
+			return (eVolType)3;
+		case DRIVE_CDROM:
+			return (eVolType)2;
+		default:
+			throw "Error in system getting vol type";
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x006313d0
+iTruth twVolume::mIsEjectable( void )
+{
+	return 0;
+}
+
+// HYPOTHESIS: the original expands ~twDir inline here (three tString destructors, no vtable
+// store) and copies the made cookie into the directory at +0x34 and once more through the
+// out-of-line tCookie copy before returning it; that tail is not recovered. ~twDir stays out of
+// line because tDir::mGetNamedFile (STARFLEETOP 0x0061e3a0) calls it so.
+// FUNCTION: STARFLEETOP 0x006313e0
+tDir twVolume::mGetRoot( void )
+{
+	tString	name( "" );
+	tDir	parent;
+	twDir	dir( name, f_34, parent );
+
+	dir.f_50 = f_30;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	tDir	result = part->fFSCookies.fDirCookies.mMake( dir );
+	return result;
+	return part->fFSCookies.fDirCookies.mMake( dir );
+}
+
+// FUNCTION: STARFLEETOP 0x006315d0
+void twDir::mMakeFullPath( void )
+{
+	f_8c = f_24;
+	tDir	dir( f_14 );
+
+	while ( dir.mValid() )
+	{
+		tString	name( dir.mGetName() );
+
+		if ( name.mStrLen() )
+		{
+			name += "\\";
+			name += f_8c;
+			f_8c = name;
+		}
+		dir = dir.mGetParentDir();
+	}
+
+	tString	root( BindPart( tFSCookiePart )->fFSCookies.fVolumeCookies.fn_006315d0_mResolve( f_04 ).f_6c );
+
+	root += f_8c;
+	f_8c = root;
+}
+
+// FUNCTION: STARFLEETOP 0x00631840
+tString twDir::mGetSortName( void )
+{
+	return f_64;
+}
+
+// HYPOTHESIS: out of line in twfsys.cpp (STARFLEETOP 0x0062ff80) and later in this unit
+// (STARFLEETOP 0x00631930); a null buffer selects the shared system buffer.
+iWideChar *gCopyWideStr(tString &str, iWideChar *buffer);
+char *gCopyCharStr(tString &str, char *buffer);
+
+// FUNCTION: STARFLEETOP 0x00631860
+tDate twDir::mGetDate( void )
+{
+	tDate	date;
+
+	date.f_00 = 0;
+	if ( mExist() )
+	{
+		tString		&path = f_8c;
+		HANDLE		file;
+		FILETIME	writeTime;
+
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0 );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			file = CreateFileA( gCopyCharStr( path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0 );
+		}
+		if ( GetFileTime( file, 0, 0, &writeTime ) )
+		{
+			date.f_00 = ( (__int64)(long)writeTime.dwHighDateTime << 32 ) | (long)writeTime.dwLowDateTime;
+			CloseHandle( file );
+		}
+		else
+			throw "Failed to get file time";
+	}
+	return date;
+}
+
+// FUNCTION: STARFLEETOP 0x00631930
+char *gCopyCharStr(tString &str, char *buffer)
+{
+	if ( buffer )
+	{
+		str.mCopyCharStr( buffer, MAX_PATH );
+		return buffer;
+	}
+	str.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return g_00c3caec;
+}
+
+// HYPOTHESIS: as in twVolume::mGetRoot, the original expands ~twDir inline and, after storing the
+// made cookie at +0x54, copies it once more through the out-of-line tCookie copy into a 16-byte
+// temporary; that tail is not recovered.
+// FUNCTION: STARFLEETOP 0x00631b30
+tDir twDir::mGetNamedDir( tString &name )
+{
+	if ( name == "" )
+		throw "You cannot get a named object without giving a valid name!";
+	twDir	dir( name, f_04, f_54 );
+
+	dir.f_50 = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	tDir	result = part->fFSCookies.fDirCookies.mMake( dir );
+	dir.f_54 = result;
+	return result;
+}
+
+// HYPOTHESIS: the original builds a path for the name in this directory, makes its cookie and
+// returns the cookie handed back through tPath's own cookie lookup; ~twPath is expanded inline.
+// FUNCTION: STARFLEETOP 0x00631d30
+tPath twDir::mGetNamedFile( tString &name )
+{
+	if ( name == "" )
+		throw "You cannot get a named object without giving a valid name!";
+	twPath	path( name, f_54 );
+
+	path.f_40 = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	tPath	made = part->fFSCookies.fPathCookies.mMake( path );
+	tPath	result = made;
+	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00631f60
+iTruth twDir::mExist( void )
+{
+	iTruth	exists = false;
+
+	if ( f_24 == "" && !(&f_14)->mValid() && (&f_04)->mValid() )
+		return true;
+
+	struct { WIN32_FIND_DATAW w; char pad[0x1b0]; }	wide;	// MATCH-ONLY: 0x1b0 unused bytes the original's frame holds
+	WIN32_FIND_DATAA	data;
+	HANDLE	find;
+
+	f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wide.w );
+	if ( find != INVALID_HANDLE_VALUE )
+	{
+		if ( wide.w.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+			exists = true;
+	}
+	else if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+		find = FindFirstFileA( g_00c3caec, &data );
+		if ( find != INVALID_HANDLE_VALUE )
+		{
+			if ( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+				exists = true;
+		}
+	}
+	FindClose( find );
+	return exists;
+}
+
+// HYPOTHESIS: the original expands ~twDir inline in both loops, assigns the made cookie through
+// the out-of-line tDir::operator= (STARFLEETOP 0x00636080), copies +0x54 once more through the
+// out-of-line tDir copy (STARFLEETOP 0x00633e80) and copies cookies through the out-of-line
+// tCookie copy (STARFLEETOP 0x00407c5b); the header has those inline, so they are not recovered.
+// The word the directory's +0x50 is copied into is the iterator parent's +0x14.
+// FUNCTION: STARFLEETOP 0x00632040
+tDirIterator twDir::mGetDirIterator( void )
+{
+	tDirIterParent	parent;
+
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	parent.f_10[1] = f_50;
+	part->fFSCookies.f_04++;
+	tDirIterator	iter = part->fFSCookies.fDirIterCookies.mMake( parent );
+
+	tString	path( f_8c );
+
+	// HYPOTHESIS: the wide copy whose buffer is tested before the separator check is gCopyWideStr
+	// with no buffer, expanded inline.
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	iWideChar	*wideName = g_00c3cbf0;
+	if ( wideName && path[path.mStrLen() - 1] != '\\' )
+		path += "\\";
+	path += "*.*";
+
+	WIN32_FIND_DATAA	data;
+	WIN32_FIND_DATAW	wide;
+	HANDLE	find;
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wide );
+	if ( find == INVALID_HANDLE_VALUE )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path.mCopyCharStr( g_00c3caec, MAX_PATH );
+			find = FindFirstFileA( g_00c3caec, &data );
+			if ( find != INVALID_HANDLE_VALUE )
+			{
+				do
+				{
+					if ( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+					{
+						tString	name( data.cFileName );
+
+						if ( !( name == "." ) && !( name == ".." ) )
+						{
+							twDir	dir( name, f_04, f_54 );
+
+							dir.f_50 = f_50;
+							tFSCookiePart	*part = BindPart( tFSCookiePart );
+							part->fFSCookies.f_04++;
+							tDir	made = part->fFSCookies.fDirCookies.mMake( dir );
+							dir.f_54 = made;
+							tDir	self( dir.f_54 );
+							iter.mAdd( made );
+						}
+					}
+				} while ( FindNextFileA( find, &data ) );
+			}
+		}
+	}
+	else
+	{
+		do
+		{
+			if ( wide.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+			{
+				tString	name( wide.cFileName );
+
+				if ( !( name == "." ) && !( name == ".." ) )
+				{
+					twDir	dir( name, f_04, f_54 );
+
+					dir.f_50 = f_50;
+					tFSCookiePart	*part = BindPart( tFSCookiePart );
+					part->fFSCookies.f_04++;
+					tDir	made = part->fFSCookies.fDirCookies.mMake( dir );
+					dir.f_54 = made;
+					tDir	self( dir.f_54 );
+					iter.mAdd( made );
+				}
+			}
+		} while ( FindNextFileW( find, &wide ) );
+	}
+	FindClose( find );
+	return iter;
+}
+
+// HYPOTHESIS: as in mGetDirIterator, the original copies the directory and path cookies through
+// the out-of-line tCookie copy (STARFLEETOP 0x00407c5b) and keeps this in a stack slot; those
+// are not recovered. The word the directory's +0x50 is copied into is the iterator parent's +0x14.
+// FUNCTION: STARFLEETOP 0x00632700
+tPathIterator twDir::mGetPathIterator( void )
+{
+	tPathIterParent	parent;
+
+	parent.f_00[5] = f_50;
+	tFSCookiePart	*part = BindPart( tFSCookiePart );
+	part->fFSCookies.f_04++;
+	tPathIterator	iter = part->fFSCookies.fPathIterCookies.mMake( parent );
+
+	tString	path( f_8c );
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	iWideChar	*wideName = g_00c3cbf0;
+	if ( wideName && path[path.mStrLen() - 1] != '\\' )
+		path += "\\";
+	path += "*.*";
+
+	WIN32_FIND_DATAA	data;
+	WIN32_FIND_DATAW	wide;
+	HANDLE	find;
+
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	find = FindFirstFileW( g_00c3cbf0, &wide );
+	if ( find == INVALID_HANDLE_VALUE )
+	{
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path.mCopyCharStr( g_00c3caec, MAX_PATH );
+			find = FindFirstFileA( g_00c3caec, &data );
+			if ( find != INVALID_HANDLE_VALUE )
+			{
+				do
+				{
+					if ( !( data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) )
+					{
+						tString	name( data.cFileName );
+						twPath	file( name, f_54 );
+
+						file.f_40 = f_50;
+						tPath	made = BindPart( tFSCookiePart )->fFSCookies.mMake( file );
+						tPath	cookie = file.mCookie( made );
+						iter.mAdd( cookie );
+					}
+				} while ( FindNextFileA( find, &data ) );
+			}
+		}
+	}
+	else
+	{
+		do
+		{
+			if ( !( wide.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) )
+			{
+				tString	name( wide.cFileName );
+				twPath	file( name, f_54 );
+
+				file.f_40 = f_50;
+				tPath	made = BindPart( tFSCookiePart )->fFSCookies.mMake( file );
+				tPath	cookie = file.mCookie( made );
+				iter.mAdd( cookie );
+			}
+		} while ( FindNextFileW( find, &wide ) );
+	}
+	FindClose( find );
+	return iter;
+}
+
+// FUNCTION: STARFLEETOP 0x00632d30
+iTruth twDir::mCreate( void )
+{
+	iTruth	created = false;
+
+	if ( !mExist() )
+	{
+		f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		created = CreateDirectoryW( g_00c3cbf0, NULL );
+		if ( !created && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			created = CreateDirectoryA( g_00c3caec, NULL );
+		}
+	}
+	return created;
+}
+
+// HYPOTHESIS: the original expands tSession's constructor inline in all four cookie
+// constructions; this build calls it out of line in three of them while both loops are present.
+// FUNCTION: STARFLEETOP 0x00632da0
+iTruth twDir::mDelete( void )
+{
+	iTruth	deleted = false;
+
+	if ( mExist() )
+	{
+		{
+			tPathIterator	files = mGetPathIterator();
+			tPath	file;
+			for ( file = files.mFirst(); file.mValid(); file = files.mNext( file ) )
+				file.mDelete();
+		}
+		{
+			tDirIterator	dirs = mGetDirIterator();
+			tDir	dir;
+			for ( dir = dirs.mFirst(); dir.mValid(); dir = dirs.mNext( dir ) )
+				dir.mDelete();
+		}
+
+		f_8c.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		deleted = RemoveDirectoryW( g_00c3cbf0 );
+		if ( !deleted && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			f_8c.mCopyCharStr( g_00c3caec, MAX_PATH );
+			deleted = RemoveDirectoryA( g_00c3caec );
+		}
+	}
+	return deleted;
+}
+
+// FUNCTION: STARFLEETOP 0x00632fb0
+void twPath::mEnsureFileClosed( void )
+{
+	if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+	{
+		if ( f_a4 != INVALID_HANDLE_VALUE )
+			CloseHandle( f_a4 );
+		f_a4 = INVALID_HANDLE_VALUE;
+		f_a8 = 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00632ff0
+void twPath::mMakeFullPath( void )
+{
+	f_7c = f_14;
+	tDir	dir( f_04 );
+
+	while ( dir.mValid() )
+	{
+		tString	name( dir.mGetName() );
+
+		if ( name.mStrLen() )
+		{
+			name += "\\";
+			name += f_7c;
+			f_7c = name;
+		}
+		dir = dir.mGetParentDir();
+	}
+
+	tVolume	volume = f_04.mGetParentVol();
+	tString	root( BindPart( tFSCookiePart )->fFSCookies.fVolumeCookies.fn_006315d0_mResolve( volume ).f_6c );
+
+	root += f_7c;
+	f_7c = root;
+}
+
+// FUNCTION: STARFLEETOP 0x00633260
+tString twPath::mGetSortName( void )
+{
+	return f_54;
+}
+
+// FUNCTION: STARFLEETOP 0x00633280
+iTruth twPath::mExist( void )
+{
+	if ( f_a8 < 1 )
+	{
+		HANDLE	file;
+		tString	*path = &f_7c;
+		SetLastError( 0 );
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		file =CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			file = CreateFileA( g_00c3caec, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		}
+		f_a4 = file;
+		f_a8 = 1;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	// MATCH-ONLY: the original returns setne al without clearing eax, as a bool result does.
+	bool	exists = f_a4 != INVALID_HANDLE_VALUE;
+	return exists;
+}
+
+// FUNCTION: STARFLEETOP 0x00633340
+tDate twPath::mGetDate( void )
+{
+	tDate	date;
+
+	date.f_00 = 0;
+	if ( mExist() )
+	{
+		if ( f_a8 < 1 )
+		{
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				if ( file )
+					CloseHandle( file );
+				file = CreateFileA( gCopyCharStr( *path, 0 ), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 1;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		FILETIME	writeTime;
+		if ( GetFileTime( f_a4, 0, 0, &writeTime ) )
+			date.f_00 = ( (__int64)(long)writeTime.dwHighDateTime << 32 ) | (long)writeTime.dwLowDateTime;
+		else
+			throw "Failed to get file time";
+	}
+	return date;
+}
+
+// FUNCTION: STARFLEETOP 0x00633440
+int32u twPath::mGetSize( void )
+{
+	int32u	size = 0;
+
+	if ( mExist() )
+	{
+		if ( f_a8 < 1 )
+		{
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				if ( file )
+					CloseHandle( file );
+				path->mCopyCharStr( g_00c3caec, MAX_PATH );
+				file = CreateFileA( g_00c3caec, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 1;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		DWORD	high = 0;
+		DWORD	low = GetFileSize( f_a4, &high );
+		if ( low == 0xffffffff && GetLastError() != NO_ERROR )
+			throw "Failed to get file size";
+		if ( high != 0 )
+			low = 0xffffffff;
+		size = low;
+	}
+	return size;
+}
+
+// FUNCTION: STARFLEETOP 0x00633550
+iTruth twPath::mCreate( void )
+{
+	iTruth	created = false;
+
+	if ( !mExist() )
+	{
+		if ( f_a8 < 3 )
+		{
+			if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+			{
+				if ( f_a4 != INVALID_HANDLE_VALUE )
+					CloseHandle( f_a4 );
+				f_a4 = INVALID_HANDLE_VALUE;
+				f_a8 = 0;
+			}
+			HANDLE	file;
+			tString	*path = &f_7c;
+			SetLastError( 0 );
+			path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+			file = CreateFileW( g_00c3cbf0, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+			if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+			{
+				CloseHandle( file );
+				path->mCopyCharStr( g_00c3caec, MAX_PATH );
+				file = CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+			}
+			f_a4 = file;
+			f_a8 = 3;
+			if ( file == INVALID_HANDLE_VALUE )
+				f_a8 = 0;
+		}
+		created = f_a4 != INVALID_HANDLE_VALUE;
+	}
+	return created;
+}
+
+// FUNCTION: STARFLEETOP 0x00633660
+iTruth twPath::mDelete( void )
+{
+	iTruth	deleted = false;
+
+	if ( mExist() )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		deleted = DeleteFileW( g_00c3cbf0 );
+		if ( !deleted && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			deleted = DeleteFileA( g_00c3caec );
+		}
+	}
+	return deleted;
+}
+
+// FUNCTION: STARFLEETOP 0x00633700
+iTruth twPath::mLock( void )
+{
+	iTruth	locked = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		locked = GetFileAttributesW( g_00c3cbf0 ) & FILE_ATTRIBUTE_READONLY;
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			locked = GetFileAttributesA( g_00c3caec ) & FILE_ATTRIBUTE_READONLY;
+		}
+	}
+	return locked;
+}
+
+// FUNCTION: STARFLEETOP 0x00633770
+iTruth twPath::mLock( iTruth lock )
+{
+	iTruth	done = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		DWORD	attributes = GetFileAttributesW( g_00c3cbf0 );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			attributes = GetFileAttributesA( g_00c3caec );
+		}
+		if ( lock )
+			attributes |= FILE_ATTRIBUTE_READONLY;
+		else
+			attributes &= ~FILE_ATTRIBUTE_READONLY;
+		SetLastError( 0 );
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		done = SetFileAttributesW( g_00c3cbf0, attributes );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			done = SetFileAttributesA( g_00c3caec, attributes );
+		}
+	}
+	return done;
+}
+
+// FUNCTION: STARFLEETOP 0x00633850
+iTruth twPath::mHide( void )
+{
+	iTruth	hidden = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		hidden = ( GetFileAttributesW( g_00c3cbf0 ) & FILE_ATTRIBUTE_HIDDEN ) != 0;
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			hidden = ( GetFileAttributesA( g_00c3caec ) & FILE_ATTRIBUTE_HIDDEN ) != 0;
+		}
+	}
+	return hidden;
+}
+
+// FUNCTION: STARFLEETOP 0x006338c0
+iTruth twPath::mHide( iTruth hide )
+{
+	iTruth	done = false;
+
+	if ( mExist() )
+	{
+		SetLastError( 0 );
+		tString	*path = &f_7c;
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		DWORD	attributes = GetFileAttributesW( g_00c3cbf0 );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			attributes = GetFileAttributesA( g_00c3caec );
+		}
+		if ( hide )
+			attributes |= FILE_ATTRIBUTE_HIDDEN;
+		else
+			attributes &= ~FILE_ATTRIBUTE_HIDDEN;
+		SetLastError( 0 );
+		path->mCopyWideStr( g_00c3cbf0, MAX_PATH );
+		done = SetFileAttributesW( g_00c3cbf0, attributes );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			path->mCopyCharStr( g_00c3caec, MAX_PATH );
+			done = SetFileAttributesA( g_00c3caec, attributes );
+		}
+	}
+	return done;
+}
+
+#include "unsorted/twIORequest.h"
+
+// Named by the SDK library's symbol; defined below.
+void *OpenForReadChar( tString &path );
+
+// Named by the exe's symbol.
+extern twIORequestQueueManager	*gAsynchManager;
+
+// FUNCTION: STARFLEETOP 0x006339a0
+int32u twPath::mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback )
+{
+	if ( f_a8 < 2 )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		HANDLE	file;
+		tString	*path = &f_7c;
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( *path, 0 ), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			if ( file )
+				CloseHandle( file );
+			file = OpenForReadChar( *path );
+		}
+		f_a4 = file;
+		f_a8 = 2;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	if ( callback )
+	{
+		// HYPOTHESIS: 0 is the read request.
+		gAsynchManager->mRequest( twIORequest( fn_twIORequestType_0, f_44, buffer, offset, size, callback ) );
+	}
+	else
+	{
+		if ( SetFilePointer( f_a4, offset, NULL, FILE_BEGIN ) == 0xffffffff )
+			throw "Bad seek.";
+		DWORD	read;
+		if ( !ReadFile( f_a4, buffer, size, &read, NULL ) )
+		{
+			if ( GetLastError() != ERROR_HANDLE_EOF )
+				throw "Error reading from file.";
+		}
+		else if ( read != size )
+			throw "Incorrect number of bytes read from file.";
+	}
+	return size;
+}
+
+// FUNCTION: STARFLEETOP 0x00633bb0
+void *OpenForReadChar( tString &path )
+{
+	path.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return CreateFileA( g_00c3caec, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+}
+
+// HYPOTHESIS: inline, as twPath::mRead leaves no call to it; the copy here only sets the tPath
+// member's vtable pointer.
+// FUNCTION: STARFLEETOP 0x00633be0
+inline twIORequest::~twIORequest()
+{
+}
+
+// Named by the SDK library's symbol; defined below.
+void *OpenForWriteChar( tString &path );
+
+// FUNCTION: STARFLEETOP 0x00633bf0
+int32u twPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback )
+{
+	if ( f_a8 < 3 )
+	{
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+		HANDLE	file;
+		tString	*path = &f_7c;
+		SetLastError( 0 );
+		file = CreateFileW( gCopyWideStr( *path, 0 ), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+		if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+		{
+			CloseHandle( file );
+			file = OpenForWriteChar( *path );
+		}
+		f_a4 = file;
+		f_a8 = 3;
+		if ( file == INVALID_HANDLE_VALUE )
+			f_a8 = 0;
+	}
+	if ( f_a4 == INVALID_HANDLE_VALUE )
+	{
+		if ( mLock() )
+			throw "File is locked and cannot be opened for writing";
+		throw "Unable to open file for write.";
+	}
+	if ( callback )
+	{
+		// HYPOTHESIS: 1 is the write request.
+		gAsynchManager->mRequest( twIORequest( fn_twIORequestType_1, f_44, buffer, offset, size, callback ) );
+	}
+	else
+	{
+		SetFilePointer( f_a4, offset, NULL, FILE_BEGIN );
+		DWORD	written;
+		if ( !WriteFile( f_a4, buffer, size, &written, NULL ) )
+			throw "Error writing to file.";
+		if ( written != size )
+			throw "Incorrect number of bytes written to file.";
+	}
+	return size;
+}
+
+// FUNCTION: STARFLEETOP 0x00633e10
+void *OpenForWriteChar( tString &path )
+{
+	path.mCopyCharStr( g_00c3caec, MAX_PATH );
+	return CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+}
+
+// FUNCTION: STARFLEETOP 0x00633ec0
+int32u twPath::mFree( void )
+{
+	if ( f_a4 != INVALID_HANDLE_VALUE )
+	{
+		FlushFileBuffers( f_a4 );
+		if ( f_a8 > 0 || f_a4 != INVALID_HANDLE_VALUE )
+		{
+			if ( f_a4 != INVALID_HANDLE_VALUE )
+				CloseHandle( f_a4 );
+			f_a4 = INVALID_HANDLE_VALUE;
+			f_a8 = 0;
+		}
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00633f20
+iTruth twPath::mExec( tString &args )
+{
+	tString	command( '"' );
+	command += f_7c;
+	command += "\" ";
+	command += args;
+	command.mCopyCharStr( g_00c3caec, MAX_PATH );
+	if ( (int32s)WinExec( g_00c3caec, SW_SHOW ) < 32 )
+		return false;
+	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00633fe0
+unsigned long AsynchIOMain( void *data )
+{
+	twIORequestQueue	*queue = (twIORequestQueue *)data;
+	for ( ;; )
+	{
+		if ( queue->fn_00633fe0_IsEmpty() )
+		{
+			WaitForSingleObject( queue->f_18, INFINITE );
+			queue->f_14 = 0;
+			ReleaseMutex( queue->f_18 );
+			WaitForSingleObject( queue->f_04, INFINITE );
+		}
+		WaitForSingleObject( queue->f_18, INFINITE );
+		if ( queue->f_14 == -1 )
+			break;
+		ReleaseMutex( queue->f_18 );
+		while ( !queue->fn_00633fe0_IsEmpty() )
+		{
+			queue->f_08.f_04->fItem->mProcessRequest();
+			WaitForSingleObject( queue->f_18, INFINITE );
+			queue->f_08.pop();
+			ReleaseMutex( queue->f_18 );
+		}
+	}
+	delete queue;
+	return 0;
+}
+
+// Named by the exe's symbols; defined after mProcessRequest.
+void *OpenForWrite( tString &path );
+void *OpenForRead( tString &path );
+
+template <>
+twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie );
+
+// FUNCTION: STARFLEETOP 0x006340b0
+void twIORequest::mProcessRequest( void )
+{
+	BOOL	done;
+	DWORD	transferred;
+	try
+	{
+		switch ( f_00 )
+		{
+			case fn_twIORequestType_0:
+			{
+				twPath	&path = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_006340b0_mResolve( f_04 );
+				if ( path.f_a8 < 2 )
+				{
+					path.mEnsureFileClosed();
+					path.f_a4 = OpenForRead( path.f_7c );
+					path.f_a8 = 2;
+					if ( path.f_a4 == INVALID_HANDLE_VALUE )
+						path.f_a8 = 0;
+				}
+				HANDLE	file = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_006340b0_mResolve( f_04 ).f_a4;
+				SetFilePointer( file, f_18, NULL, FILE_BEGIN );
+				done = ReadFile( file, f_14, f_1c, &transferred, NULL );
+				break;
+			}
+			case fn_twIORequestType_1:
+			{
+				// MATCH-ONLY: the original calls mResolve out of line here (STARFLEETOP 0x00636ad0).
+				twPath	&path = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_00636ad0_mResolve( f_04 );
+
+				if ( path.f_a8 < 3 )
+				{
+					path.mEnsureFileClosed();
+					path.f_a4 = OpenForWrite( path.f_7c );
+					path.f_a8 = 3;
+					if ( path.f_a4 == INVALID_HANDLE_VALUE )
+						path.f_a8 = 0;
+				}
+				HANDLE	file = BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_00636ad0_mResolve( f_04 ).f_a4;
+				SetFilePointer( file, f_18, NULL, FILE_BEGIN );
+				done = WriteFile( file, f_14, f_1c, &transferred, NULL );
+				break;
+			}
+		}
+		if ( !done )
+			throw "Error in asynchronous I/O.";
+		if ( transferred != f_1c )
+			throw "Incorrect number of bytes transferred.";
+		if ( f_20 )
+			f_20->fn_006340b0_vfunction0( f_04, 0, transferred );
+	}
+	catch ( ... )
+	{
+		if ( f_20 )
+			f_20->fn_006340b0_vfunction0( f_04, 1, 0 );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x006344a0
+void *OpenForWrite( tString &path )
+{
+	HANDLE	file;
+	SetLastError( 0 );
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	file = CreateFileW( g_00c3cbf0, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+	if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		CloseHandle( file );
+		path.mCopyCharStr( g_00c3caec, MAX_PATH );
+		file = CreateFileA( g_00c3caec, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL );
+	}
+	return file;
+}
+
+// FUNCTION: STARFLEETOP 0x00634520
+void *OpenForRead( tString &path )
+{
+	HANDLE	file;
+	SetLastError( 0 );
+	path.mCopyWideStr( g_00c3cbf0, MAX_PATH );
+	file = CreateFileW( g_00c3cbf0, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+	if ( GetLastError() == ERROR_CALL_NOT_IMPLEMENTED )
+	{
+		if ( file )
+			CloseHandle( file );
+		path.mCopyCharStr( g_00c3caec, MAX_PATH );
+		file = CreateFileA( g_00c3caec, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL );
+	}
+	return file;
+}
+
+template <>
+twPath &tCookieManager<tPath,twPath>::fn_00636ad0_mResolve( tPath &cookie )
+{
+	if ( fValues.count( cookie ) == 0 )
+		throw "Use of invalid cookie to resolve an item";
+	return fValues[cookie];
+}

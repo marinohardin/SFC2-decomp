@@ -50,6 +50,62 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f53f0	tOSVersion::Instance	99.86	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 99.86%
 0x00709270	nDatabase::tFileDatabaseMgr::Load	79.66	2	sonnet	2026-11-11T12:40:55Z	attempt 2 (sonnet) did not raise the best; best 79.66%
 0x0062e1c0	twFileSystemPart::mGetVolIterator	0.63	2	sonnet	2026-11-11T12:40:55Z	best not above 90% after 2 attempts; best 0.63%
+0x00623100	tString::`scalar_deleting_destructor'	0.00	2	sonnet	2026-11-16T10:44:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00623120	tString::tString	56.07	2	sonnet	2026-11-16T10:50:33Z	best not above 90% after 2 attempts; best 56.07%
+0x006232f0	tString::tString	89.78	2	sonnet	2026-11-16T10:55:53Z	attempt 2 (sonnet) did not raise the best; best 89.78%
+0x00623390	tString::tString	91.14	2	sonnet	2026-11-16T10:59:34Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 91.14%
+0x00623d60	tString::substr	15.78	2	sonnet	2026-11-16T11:34:26Z	attempt 2 (sonnet) did not raise the best; best 15.78%
+0x00623f40	tString::find	9.48	2	sonnet	2026-11-16T11:39:48Z	attempt 2 (sonnet) did not raise the best; best 9.48%
+0x00624020	tString::find	16.43	2	sonnet	2026-11-16T11:50:39Z	best not above 90% after 2 attempts; best 16.43%
+0x00624260	tString::rfind	9.48	2	sonnet	2026-11-16T11:53:22Z	attempt 2 (sonnet) did not raise the best; best 9.48%
+0x00624340	tString::rfind	59.61	2	sonnet	2026-11-16T11:55:54Z	best not above 90% after 2 attempts; best 59.61%
+0x00624420	tString::rfind	16.31	2	sonnet	2026-11-16T12:01:08Z	best not above 90% after 2 attempts; best 16.31%
+0x00624660	tString::operator=	26.75	2	sonnet	2026-11-16T12:05:18Z	attempt 2 (sonnet) did not raise the best; best 26.75%
+0x00624690	tString::operator=	0.00	2	sonnet	2026-11-16T12:15:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x006248b0	tString::operator+	0.00	2	sonnet	2026-11-16T12:21:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00624b60	tString::operator+=	22.30	2	sonnet	2026-11-16T12:28:38Z	attempt 2 (sonnet) did not raise the best; best 22.30%
+0x00624fa0	tString::operator+	8.96	2	sonnet	2026-11-16T12:40:58Z	attempt 2 (sonnet) did not raise the best; best 8.96%
+0x00625080	tString::operator+=	8.96	2	sonnet	2026-11-16T12:44:03Z	attempt 2 (sonnet) did not raise the best; best 8.96%
+0x00625290	tString::mAppendInt32s	0.00	2	sonnet	2026-11-16T12:51:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00625430	tString::iterator::operator+	20.57	2	sonnet	2026-11-16T13:01:50Z	attempt 2 (sonnet) did not raise the best; best 20.57%
+0x00625490	tString::iterator::operator-	25.74	2	sonnet	2026-11-16T13:05:01Z	best not above 90% after 2 attempts; best 25.74%
+0x006254f0	tString::iterator::operator++	72.31	2	sonnet	2026-11-16T13:08:17Z	best not above 90% after 2 attempts; best 72.31%
+0x00625550	tString::iterator::operator--	68.48	2	sonnet	2026-11-16T13:12:13Z	attempt 2 (sonnet) did not raise the best; best 68.48%
+0x00625630	tString::mStrChr	54.75	2	sonnet	2026-11-16T13:32:13Z	attempt 2 (sonnet) did not raise the best; best 54.75%
+0x00625730	tString::mStrRChr	20.98	2	sonnet	2026-11-16T13:36:39Z	attempt 2 (sonnet) did not raise the best; best 20.98%
+0x006257f0	tString::mToUpper	41.71	2	sonnet	2026-11-16T13:44:16Z	attempt 2 (sonnet) did not raise the best; best 41.71%
+0x00625970	tString::mStrICmp	13.03	2	sonnet	2026-11-16T13:53:06Z	attempt 2 (sonnet) did not raise the best; best 13.03%
+0x00625b80	tString::begin	31.37	2	sonnet	2026-11-16T13:58:51Z	attempt 2 (sonnet) did not raise the best; best 31.37%
+0x00625bd0	tString::end	23.33	2	sonnet	2026-11-16T14:04:40Z	attempt 2 (sonnet) did not raise the best; best 23.33%
+0x00625c20	StringToNum	0.00	2	sonnet	2026-11-16T14:10:38Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00625f50	NumToString	13.07	2	sonnet	2026-11-16T14:17:41Z	attempt 2 (sonnet) did not raise the best; best 13.07%
+0x00627750	tStrMgrCore::mLoadStringFile	20.92	2	sonnet	2026-11-16T15:16:57Z	attempt 2 (sonnet) did not raise the best; best 20.92%
+0x00627fa0	tZipInfoMgr::mInit	36.83	2	sonnet	2026-11-16T15:34:08Z	attempt 2 (sonnet) did not raise the best; best 36.83%
+0x00628a30	tPart::scalar_deleting_destructor	0.00	2	sonnet	2026-11-16T15:48:32Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00628ec0	tAtomicLock::scalar_deleting_destructor	0.00	2	sonnet	2026-11-16T15:52:06Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0062e7c0	twFileSystemPart::mGetNamedVolume	8.07	2	sonnet	2026-11-16T16:26:35Z	best not above 90% after 2 attempts; best 8.07%
+0x0062efe0	WinParseVolume	5.21	2	sonnet	2026-11-16T16:42:25Z	attempt 2 (sonnet) did not raise the best; best 5.21%
+0x0062f920	twFileSystemPart::mDuplicatePath	28.47	2	sonnet	2026-11-16T16:44:51Z	attempt 2 (sonnet) did not raise the best; best 28.47%
+0x0062fab0	twFileSystemPart::mFileOpenDialog	2.01	2	sonnet	2026-11-16T16:52:10Z	best not above 90% after 2 attempts; best 2.01%
+0x00630530	twFileSystemPart::mFileSaveDialog	0.00	2	sonnet	2026-11-16T17:06:07Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00630d70	twFileSystemPart::mWinStringFromPath	5.02	2	sonnet	2026-11-16T17:10:55Z	attempt 2 (sonnet) did not raise the best; best 5.02%
+0x006313e0	twVolume::mGetRoot	18.87	2	sonnet	2026-11-16T17:38:02Z	attempt 2 (sonnet) did not raise the best; best 18.87%
+0x006315d0	twDir::mMakeFullPath	99.04	3	opus	2026-11-16T17:59:37Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.04%
+0x00631860	twDir::mGetDate	92.56	2	sonnet	2026-11-16T18:12:21Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 92.56%
+0x00631970	twDir::mGetSize	0.00	2	sonnet	2026-11-16T18:39:21Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00631b30	twDir::mGetNamedDir	22.24	2	sonnet	2026-11-16T18:50:33Z	attempt 2 (sonnet) did not raise the best; best 22.24%
+0x00631d30	twDir::mGetNamedFile	2.83	2	sonnet	2026-11-16T19:11:22Z	best not above 90% after 2 attempts; best 2.83%
+0x00632040	twDir::mGetDirIterator	12.65	2	sonnet	2026-11-16T19:32:23Z	attempt 2 (sonnet) did not raise the best; best 12.65%
+0x00632700	twDir::mGetPathIterator	12.46	2	sonnet	2026-11-16T19:43:57Z	attempt 2 (sonnet) did not raise the best; best 12.46%
+0x00632da0	twDir::mDelete	18.44	2	sonnet	2026-11-16T20:01:38Z	attempt 2 (sonnet) did not raise the best; best 18.44%
+0x00633e40	tVolume::tVolume	0.00	2	sonnet	2026-11-16T21:00:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00633e80	tDir::tDir	1.63	2	sonnet	2026-11-16T21:04:44Z	attempt 2 (sonnet) did not raise the best; best 1.63%
+0x00633fe0	AsynchIOMain	81.25	2	sonnet	2026-11-16T21:21:40Z	attempt 2 (sonnet) did not raise the best; best 81.25%
+0x006340b0	twIORequest::mProcessRequest	31.08	2	sonnet	2026-11-16T21:37:13Z	best not above 90% after 2 attempts; best 31.08%
+0x006345b0	tVolIterator::tVolIterator	99.61	2	sonnet	2026-11-16T21:44:59Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.61%
+0x00634810	twIORequestQueue::mAdd	99.95	2	sonnet	2026-11-16T22:01:04Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.95%
+0x00634940	twIORequestQueueManager::~twIORequestQueueManager	19.87	2	sonnet	2026-11-16T22:10:29Z	attempt 2 (sonnet) did not raise the best; best 19.87%
+0x00634b50	twIORequestQueueManager::mRequest	68.45	2	sonnet	2026-11-16T22:19:39Z	attempt 2 (sonnet) did not raise the best; best 68.45%
 0x00643b30	twStandardSoundChannel::mAddSoundChannel	30.95	2	sonnet	2026-11-16T11:02:45Z	best not above 90% after 2 attempts; best 30.95%
 0x00644110	twStandardSoundChannel::mDoFillSelection	84.79	2	sonnet	2026-11-16T11:11:37Z	best not above 90% after 2 attempts; best 84.79%
 0x00644750	twStandardSoundChannel::mSetVolume	99.49	2	sonnet	2026-11-16T11:33:27Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.49%
