@@ -393,3 +393,104 @@ void fn_006c1a90()
 		delete entry;
 	}
 }
+
+// HYPOTHESIS: a pending request; field meanings are guesses from the polling routine below.
+struct fn_006c1ae0_Request
+{
+	unsigned long m00;
+	char m04[0x2c];
+	unsigned long m30;
+	int m34;
+	int m38;
+	unsigned long m3c;
+	void (*m40)(unsigned long, int, const char *, unsigned long);
+	char *m44;
+	void *m48;
+};
+struct fn_006c1ae0_Entry
+{
+	fn_006c1ae0_Request *m00;
+	fn_006c1ae0_Entry *m04;
+	fn_006c1ae0_Entry *m08;
+};
+
+extern char g_00c7c7c0[];
+void fn_006c20e0(char *buffer, int length);
+void fn_006c1c70(char *buffer, struct sockaddr_in *from);
+void fn_006c1f90(fn_006c1ae0_Request *request);
+void fn_006c21d0(fn_006c1ae0_Entry *entry, int *list);
+
+// HYPOTHESIS: polls the UDP socket for replies and ages the pending requests.
+// FUNCTION: STARFLEETOP 0x006c1ae0
+void fn_006c1ae0()
+{
+	fd_set set;
+	struct timeval timeout;
+	struct sockaddr_in saddr;
+	int saddrlen;
+	int len;
+	fn_006c1ae0_Entry *entry;
+	fn_006c1ae0_Entry *next;
+	fn_006c1ae0_Request *request;
+	const char *text;
+
+	saddrlen = sizeof(saddr);
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 0;
+	set.fd_array[0] = g_0088800c;
+	set.fd_count = 1;
+	while (1)
+	{
+		len = select(0x40, &set, 0, 0, &timeout);
+		if (len == -1)
+			break;
+		if (len == 0)
+			break;
+		len = recvfrom(g_0088800c, g_00c7c7c0, 0x3ff, 0, (struct sockaddr *)&saddr, &saddrlen);
+		if (len != -1)
+		{
+			g_00c7c7c0[len] = 0;
+			fn_006c20e0(g_00c7c7c0, len);
+			fn_006c1c70(g_00c7c7c0, &saddr);
+		}
+	}
+	for (entry = (fn_006c1ae0_Entry *)g_00c7cdec; entry != 0; entry = entry->m04)
+	{
+		request = entry->m00;
+		switch (request->m38)
+		{
+		case 0:
+			if (GetTickCount() < request->m30 + 2000)
+				break;
+			if (request->m34 <= 2)
+			{
+				fn_006c1f90(request);
+				break;
+			}
+		case 1:
+			text = "Validated";
+			if (request->m38 != 1)
+				text = "Validation Timeout";
+			request->m40(request->m00, 1, text, request->m3c);
+			entry->m00->m38 = 3;
+			delete entry->m00->m48;
+			entry->m00->m48 = 0;
+			break;
+		case 2:
+			next = entry;
+			entry = entry->m08;
+			fn_006c21d0(next, &g_00c7cde8);
+			request = next->m00;
+			text = request->m44;
+			if (text == 0)
+				text = "";
+			request->m40(request->m00, 0, text, request->m3c);
+			delete next->m00->m48;
+			if (next->m00->m44 != 0)
+				delete next->m00->m44;
+			delete next->m00;
+			delete next;
+			break;
+		}
+	}
+}
