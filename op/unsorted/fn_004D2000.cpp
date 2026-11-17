@@ -479,3 +479,36 @@ fn_004d2636_object::~fn_004d2636_object()
 {
 	fn_004d290d();
 }
+
+#include "unsorted/tVisObject.h"
+
+// HYPOTHESIS: RTTI names tVisStateObject (derived from tVisObject); its layout is not recovered yet.
+class tVisStateObject : public tVisObject
+{
+};
+
+// HYPOTHESIS: the global at 0x0092e4a0 is an object whose method 0x004d4728 finds a tVisObject
+// from the second argument; its class is not recovered yet.
+class fn_004d4728_owner
+{
+public:
+	tVisObject* fn_004d4728( int a );
+};
+
+extern fn_004d4728_owner g_0092e4a0;
+
+// FUNCTION: STARFLEETOP 0x004d269b
+bool __stdcall fn_004d269b( int a, int b, char c )
+{
+	tVisStateObject* p = 0;
+	if ( a && b )
+	{
+		p = dynamic_cast<tVisStateObject*>( g_0092e4a0.fn_004d4728( b ) );
+		if ( p )
+		{
+			p->vfunction13();
+			p->vfunction15( c == 0 );
+		}
+	}
+	return p != 0;
+}
