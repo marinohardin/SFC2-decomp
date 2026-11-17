@@ -14,6 +14,7 @@ public:
 	void fn_005430d3(int amount);
 	char *fn_005430f3();
 	bool fn_005430fa(const nDatabase::tID &id);
+	int fn_0054312b();
 
 	char m_pad[0xd0];
 	char m0d0[4];
@@ -22,7 +23,8 @@ public:
 	char m0dc[0x38];
 	unsigned int m114_0 : 8;
 	unsigned int m114_8 : 1;
-	char m_pad118[0x20];
+	char m_pad118[0x1c];
+	int m134;
 	int m138;
 };
 
@@ -65,4 +67,11 @@ bool fn_005430ad_owner::fn_005430fa(const nDatabase::tID &id)
 		if (*entry == id)
 			return true;
 	return false;
+}
+
+// HYPOTHESIS: the dword at +0x134 is returned as an int; its type is not known yet.
+// FUNCTION: STARFLEETOP 0x0054312b
+int fn_005430ad_owner::fn_0054312b()
+{
+	return m134;
 }
