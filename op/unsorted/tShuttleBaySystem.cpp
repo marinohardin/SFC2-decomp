@@ -204,3 +204,11 @@ void tShuttleBaySystem::vfunction125(int param_1)
 {
     field_c0 = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x0044ea38
+int tShuttleBaySystem::vfunction17()
+{
+    int value = tIndividualShipSystem::vfunction17();
+    return field_4e0 * field_a0 + field_4e4 * field_c4 + value
+        + field_4dc * field_f4 + field_4d8 * field_e8;
+}

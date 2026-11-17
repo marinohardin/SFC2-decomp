@@ -24,6 +24,8 @@ class tShuttleBaySystem : public tRepairableShipSystem
 {
 public:
     virtual ~tShuttleBaySystem();
+    // vftable slot 16; adds four products of member pairs to the base's value.
+    virtual int vfunction17();
     virtual void vfunction100();
     virtual void vfunction101();
     // vftable slot 101; returns the address of field_a0.
@@ -142,7 +144,14 @@ public:
     tMinMaxFloat field_3dc;
     tMinMaxFloat field_400;
     tMinMaxFloat field_424;
-    char pad448[0x4f0 - 0x448];
+    char pad448[0x4d8 - 0x448];
+    // HYPOTHESIS: four weights; vfunction17 multiplies field_e8, field_f4, field_a0's value and
+    // field_c4's value by them.
+    int field_4d8;
+    int field_4dc;
+    int field_4e0;
+    int field_4e4;
+    char pad4e8[0x4f0 - 0x4e8];
     // HYPOTHESIS: a list of owned objects; the destructor deletes each and empties it.
     std::list<tObject_0044e844_item*> field_4f0;
 };

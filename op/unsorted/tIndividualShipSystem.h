@@ -230,7 +230,8 @@ public:
     virtual bool vfunction15();
     // HYPOTHESIS: slot 15; returns the dword at +0x20.
     virtual int vfunction16();
-    virtual void vfunction17();
+    // HYPOTHESIS: slot 16 returns an int; tShuttleBaySystem's override adds to it.
+    virtual int vfunction17();
     // HYPOTHESIS: slot 17; stores its argument in the dword at +0x18.
     virtual void vfunction18(int param_1);
     // HYPOTHESIS: slot 18; stores its argument in the dword at +0x20 (read by slot 15) and keeps the global
