@@ -8965,6 +8965,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e4470": {
+   "name": "tMetaMapControl::vfunction31_for_tButton",
+   "symbol": "?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z",
+   "unit": "unsorted/tMetaMapControl.cpp",
+   "size": 193,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

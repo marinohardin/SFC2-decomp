@@ -8,6 +8,7 @@
 
 class tCompassRose;
 class fn_005eb3c5_class;
+struct c_tListBox_Base_Event;
 
 // HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c,
 // the value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5.
@@ -126,6 +127,7 @@ public:
 	// HYPOTHESIS: draws the map inside the area given; the slot of tObjBase::vfunction8.
 	void vfunction8( const tRect *area );
 	void vfunction30();
+	bool vfunction31( c_tListBox_Base_Event *event );
 
 	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;

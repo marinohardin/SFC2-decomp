@@ -10,12 +10,18 @@
 // HYPOTHESIS: tVisNotifiee is declared there for now; it would move to a header of its own.
 #include "unsorted/tFleetEntry.h"
 
+struct c_tListBox_Base_Event;
+
 // HYPOTHESIS: tControl and tVisStateObject sit between tVisObject and tButton; their members are
 // not recovered, so tButton is declared on tVisObject and filled to +0x110, where tValueBtn's
 // tVisNotifiee part starts (tMetaMapControl's constructor sets a second vftable there).
 class tButton : public tVisObject
 {
 public:
+	// HYPOTHESIS: tControl's handler (0x00685c80, slot +0x7c) that tButton inherits;
+	// tMetaMapControl::vfunction31 (0x005e4470) ends by calling it directly.
+	bool vfunction31( c_tListBox_Base_Event *event );
+
 	unsigned char field_64[ 0x110 - 0x64 ];
 };
 

@@ -112,7 +112,7 @@ public:
 	virtual ~tListBox_Base();
 	// Slots 12 to 41 are not called by the functions rebuilt so far.
 	virtual void vfunction13();
-	virtual void vfunction14();
+	virtual bool vfunction14();
 	virtual void vfunction15();
 	virtual void vfunction16();
 	virtual void vfunction17();

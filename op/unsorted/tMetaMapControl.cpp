@@ -45,6 +45,11 @@ public:
 	// HYPOTHESIS: 0x005e42a6 hands the hex point 0x005e5d7a returns (by value) to 0x005e5c72.
 	tHexPoint fn_005e5d7a();
 	void fn_005e5c72( const tHexPoint &point );
+	// HYPOTHESIS: 0x005e4470 hands these the mouse point and the control's rectangle; the
+	// last also sets the flag that asks for a redraw.
+	void fn_005e7f60( const tPoint *point, const tRect *area );
+	void fn_005e800f( const tPoint *point, const tRect *area );
+	void fn_005e620c( const tPoint *point, const tRect *area, bool *redraw );
 };
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
@@ -819,4 +824,37 @@ void tMetaMapControl::fn_005e4455()
 void tMetaMapControl::fn_005e4468()
 {
 	field_1e8 = true;
+}
+
+// FUNCTION: STARFLEETOP 0x005e4470
+bool tMetaMapControl::vfunction31( c_tListBox_Base_Event *event )
+{
+	fn_005e5e24_class *map = fn_00607d61()->fn_0060a54d();
+	if ( vfunction14() || ( field_40 & 1 ) == 0 || map == 0 )
+		return false;
+
+	bool redraw = false;
+	{
+		tPoint point( event->field_04, event->field_08 );
+		if ( event->field_00 == 1 )
+		{
+			map->fn_005e7f60( &point, &field_34 );
+			redraw = true;
+		}
+		else if ( event->field_00 == 6 )
+		{
+			map->fn_005e800f( &point, &field_34 );
+			redraw = true;
+		}
+		else if ( event->field_00 == 2 )
+		{
+			fn_005e42a6();
+			redraw = true;
+		}
+		else
+			map->fn_005e620c( &point, &field_34, &redraw );
+	}
+	if ( redraw )
+		fn_0045f4c2();
+	return tButton::vfunction31( event );
 }
