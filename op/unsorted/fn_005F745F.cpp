@@ -594,3 +594,15 @@ void fn_005f7961_object::FUN_005f7c9d( unsigned int count )
 	field_08 += count;
 	field_04 = newmap;
 }
+
+// FUNCTION: STARFLEETOP 0x005f7db6
+fn_0055fe12_value& fn_005f7db6_iterator::FUN_005f7db6()
+{
+	unsigned int off = fIndex;
+	unsigned int block = off / 204;
+	unsigned int index = off - block * 204;
+	if ( fOwner->field_08 <= block ) {
+		block -= fOwner->field_08;
+	}
+	return fOwner->field_04[block][index];
+}
