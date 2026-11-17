@@ -154,7 +154,8 @@ public:
     // HYPOTHESIS: the return type; tShipSystemsExt returns a float member.
     virtual float vfunction132() = 0;
     virtual void vfunction133() = 0;
-    virtual void vfunction134() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns a float member.
+    virtual float vfunction134() = 0;
     virtual void vfunction135() = 0;
     virtual void vfunction136() = 0;
     virtual void vfunction137() = 0;

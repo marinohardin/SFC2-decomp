@@ -1127,3 +1127,9 @@ void tShipSystemsExt::vfunction133()
 	}
 	m718.vfunction4( m73c );
 }
+
+// FUNCTION: STARFLEETOP 0x0044cea9
+float tShipSystemsExt::vfunction134()
+{
+	return m73c;
+}
