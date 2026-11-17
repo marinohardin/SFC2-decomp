@@ -44,6 +44,8 @@ public:
     void fn_0045154e(c_004280f1* info);
     long fn_004517e1();
     long fn_00451a8b();
+    void fn_0045189f(long count);
+    short fn_00451c45();
     double fn_00451aa6(c_0045139e* rates);
 
     char field_c[0xd8];
@@ -107,6 +109,7 @@ public:
     void fn_00546325(int param_1);
     void fn_00546480(int param_1);
     void fn_00546492(c_00427db2& param_1);
+    void fn_005465d5(float param_1, int param_2);
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -439,4 +442,35 @@ void c_00546027::fn_00546492(c_00427db2& param_1)
     field_100.field_112[2] = 0 > (field_100.field_10c[2] < param_1.field_112[2] ? field_100.field_10c[2] : param_1.field_112[2]) ? 0 : (field_100.field_10c[2] < param_1.field_112[2] ? field_100.field_10c[2] : param_1.field_112[2]);
     field_100.field_112[0] = 0 > (field_100.field_10c[0] < param_1.field_112[0] ? field_100.field_10c[0] : param_1.field_112[0]) ? 0 : (field_100.field_10c[0] < param_1.field_112[0] ? field_100.field_10c[0] : param_1.field_112[0]);
     field_100.field_112[1] = 0 > (field_100.field_10c[1] < param_1.field_112[1] ? field_100.field_10c[1] : param_1.field_112[1]) ? 0 : (field_100.field_10c[1] < param_1.field_112[1] ? field_100.field_10c[1] : param_1.field_112[1]);
+}
+
+// FUNCTION: STARFLEETOP 0x005465d5
+void c_00546027::fn_005465d5(float param_1, int param_2)
+{
+    // HYPOTHESIS: each current count moves toward its maximum by the scaled gap, at least
+    // param_2, as max and min macros expand; the missile count gains nothing past its maximum.
+    int step = (int)((field_100.field_f1 - field_100.field_f2) * param_1);
+    step = param_2 > step ? param_2 : step;
+    field_100.field_f2 = step + field_100.field_f2 < field_100.field_f1 ? step + field_100.field_f2 : field_100.field_f1;
+    int gap = (int)((field_100.fn_0055e60f()->fn_00451c45() - field_100.fn_0055e60f()->fn_00451a8b()) * param_1);
+    int count = param_2 > gap ? param_2 : gap;
+    if (field_100.fn_0055e60f()->fn_00451a8b() + count > field_100.fn_0055e60f()->fn_00451c45())
+        count = 0;
+    field_100.fn_0055e60f()->fn_0045189f(count);
+    for (int i = 0; i < 4; i++)
+    {
+        step = (int)((field_100.field_17a[i] - field_100.field_182[i]) * param_1);
+        step = param_2 > step ? param_2 : step;
+        field_100.field_182[i] = step + field_100.field_182[i] < field_100.field_17a[i] ? step + field_100.field_182[i] : field_100.field_17a[i];
+    }
+    step = (int)((field_100.field_10c[2] - field_100.field_112[2]) * param_1);
+    step = param_2 > step ? param_2 : step;
+    step += field_100.field_112[2];
+    field_100.field_112[2] = step < field_100.field_10c[2] ? step : field_100.field_10c[2];
+    step = (int)((field_100.field_10c[0] - field_100.field_112[0]) * param_1);
+    step = param_2 > step ? param_2 : step;
+    field_100.field_112[0] = step + field_100.field_112[0] < field_100.field_10c[0] ? step + field_100.field_112[0] : field_100.field_10c[0];
+    step = (int)((field_100.field_10c[1] - field_100.field_112[1]) * param_1);
+    step = param_2 > step ? param_2 : step;
+    field_100.field_112[1] = step + field_100.field_112[1] < field_100.field_10c[1] ? step + field_100.field_112[1] : field_100.field_10c[1];
 }
