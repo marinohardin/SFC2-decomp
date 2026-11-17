@@ -10,8 +10,7 @@
 #include "unsorted/tMissionCompleteResults.h"
 #include <sstream>
 #include <vector>
-class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
-class tPoliticalTensionMatrix; class tNotify;	// RTTI names both through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>; their layouts are not needed here.
+class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify;	// HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
 class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
@@ -66,6 +65,7 @@ public:
 	void fn_00570a40( tAuctionItem* item );
 	void fn_00570bb6( tPoliticalTensionMatrix* matrix );
 	void fn_00570d2c( tMetaMapHex* hex );
+	void fn_00570ea2( tMetaMapDesc* description );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure {
@@ -104,7 +104,7 @@ public:
 	virtual void vfunction30( tAuctionItem* item );
 	virtual void vfunction31( tPoliticalTensionMatrix* matrix );
 	virtual void vfunction32( tMetaMapHex* hex );
-	virtual void vfunction33();
+	virtual void vfunction33( tMetaMapDesc* description );
 	virtual void vfunction34();
 	virtual void vfunction35( tCampaignInfo* info );
 	virtual void vfunction36();
@@ -629,4 +629,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction32( tMetaMapHex* he
 #line 875
 	validate( hex );
 	fDatabase->fn_00570d2c( hex );
+}
+#line 634
+// HYPOTHESIS: the record type is a guess from the assertion text "description"; fn_00570ea2 stores it.
+// FUNCTION: STARFLEETOP 0x0056de7e
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction33( tMetaMapDesc* description )
+{
+#line 885
+	validate( description );
+	fDatabase->fn_00570ea2( description );
 }
