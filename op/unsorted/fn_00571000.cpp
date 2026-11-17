@@ -344,8 +344,11 @@ long fn_005717f7_owner::fn_005717f7(fn_005717f7_query& query)
 	tOptex::tGuard guard(&fAccess);
 	long count = 0;
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_005717f7_object));
-#line 306
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 306 "../Common/Database/Database.h"
 	validate(allocID != kInvalidAllocatorID);
+#line 349 "fn_00571000.cpp"
 	fn_005717f7_vector& objects = fTypeIndex.fn_005719df(allocID);
 	for (void** i = objects.m_first; i != objects.m_last; i++) {
 		fn_005717f7_object* pObject = (fn_005717f7_object*)*i;

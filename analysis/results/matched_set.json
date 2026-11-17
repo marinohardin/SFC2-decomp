@@ -6333,8 +6333,8 @@
    "symbol": "?fn_005717f7@fn_005717f7_owner@@QAEJAAVfn_005717f7_query@@@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 180,
-   "score": 99.917,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x00607faa": {
