@@ -642,3 +642,54 @@ struct fn_00571ade_pair {
 fn_00571ade_pair::~fn_00571ade_pair()
 {
 }
+
+// HYPOTHESIS: the library's tree node (left, parent, right, key at +0xc) and the unique-key
+// insert of the map above; the iterator decrement is 0x0042dcfb, the node insertion 0x005727a2.
+struct fn_00571ae6_node {
+	fn_00571ae6_node* left;
+	fn_00571ae6_node* parent;
+	fn_00571ae6_node* right;
+	long key;
+};
+struct fn_00571ae6_iter {
+	fn_00571ae6_node* node;
+	void fn_0042dcfb();
+};
+struct fn_00571ae6_result {
+	fn_00571ae6_node* node;
+	bool inserted;
+	fn_00571ae6_result(fn_00571ae6_node* n, bool i) : node(n), inserted(i) {}
+};
+struct fn_00571ae6_tree {
+	int pad;
+	fn_00571ae6_node* head;
+	fn_00571ae6_node* nil;
+	bool multi;
+	fn_00571ae6_result fn_00571ae6(const long* value);
+	fn_00571ae6_iter fn_005727a2(fn_00571ae6_node* x, fn_00571ae6_node* y, const long* value);
+};
+
+// FUNCTION: STARFLEETOP 0x00571ae6
+fn_00571ae6_result fn_00571ae6_tree::fn_00571ae6(const long* value)
+{
+	fn_00571ae6_node* x = head->parent;
+	fn_00571ae6_node* y = head;
+	bool addLeft = true;
+	while (x != nil) {
+		y = x;
+		addLeft = *value < x->key;
+		x = addLeft ? x->left : x->right;
+	}
+	if (multi)
+		return fn_00571ae6_result(fn_005727a2(x, y, value).node, true);
+	fn_00571ae6_iter p;
+	p.node = y;
+	if (addLeft) {
+		if (p.node == head->left)
+			return fn_00571ae6_result(fn_005727a2(x, y, value).node, true);
+		p.fn_0042dcfb();
+	}
+	if (p.node->key < *value)
+		return fn_00571ae6_result(fn_005727a2(x, y, value).node, true);
+	return fn_00571ae6_result(p.node, false);
+}
