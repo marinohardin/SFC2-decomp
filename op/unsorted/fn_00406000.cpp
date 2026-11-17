@@ -392,3 +392,10 @@ void fn_00406a35()
 {
     atexit(fn_004bd431);
 }
+
+// HYPOTHESIS: arranges at exit the cleanup that Ghidra labels tApp3dBase::vfunction5, unconfirmed.
+// FUNCTION: STARFLEETOP 0x00406a41
+void fn_00406a41()
+{
+    atexit(fn_004bd431);
+}
