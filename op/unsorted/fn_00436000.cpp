@@ -150,3 +150,11 @@ tCookieManager<tPath,twPath>::tCookieManager()
 {
 	f_00 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00436331
+template <>
+tCountMap<tSession,tFSSession,std::less<tSession> >::tCountMap()
+{
+	fHead = 0;
+	fTail = 0;
+}
