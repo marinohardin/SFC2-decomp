@@ -196,6 +196,7 @@ public:
 	void fn_005437a5(const nDatabase::tID &id);
 	void fn_0054385d(fn_0054385d_source *source);
 	bool fn_00543944(const nDatabase::tID &id) const;
+	bool fn_005439e4(int value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -695,4 +696,12 @@ bool fn_005430ad_owner::fn_00543944(const nDatabase::tID &id) const
 		if ( it->fn_005419ed() == id )
 			return true;
 	return false;
+}
+
+// HYPOTHESIS: the setter for the dword at +0x138; always reports success.
+// FUNCTION: STARFLEETOP 0x005439e4
+bool fn_005430ad_owner::fn_005439e4(int value)
+{
+	m138 = value;
+	return true;
 }
