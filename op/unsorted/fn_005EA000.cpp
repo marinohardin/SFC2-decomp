@@ -234,6 +234,7 @@ void tTree_005ea14b::fn_005ea469(tNode *x)
 class fn_005eaa3f_point {
 public:
 	fn_005eaa3f_point( const fn_005eaa3f_point& other );
+	~fn_005eaa3f_point();
 	int m_00[5];
 };
 
@@ -734,3 +735,21 @@ inline tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::~tMemberCallback()
 // HYPOTHESIS: the original unit built this callback, which emitted its vtable and deleting
 // destructor here; the constructor's use is not identified, so an explicit instantiation does it.
 template class tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>;
+
+// HYPOTHESIS: a 0x30-byte value, an int, two tHexPoints (the stand-in above) and an int, whose
+// member-wise copy constructor is held out of line at 0x005eab05; its type is not identified.
+class fn_005eab05_value {
+public:
+	fn_005eab05_value( const fn_005eab05_value& other );
+
+	int m_00;
+	fn_005eaa3f_point m_04;
+	fn_005eaa3f_point m_18;
+	int m_2c;
+};
+
+// FUNCTION: STARFLEETOP 0x005eab05
+fn_005eab05_value::fn_005eab05_value( const fn_005eab05_value& other )
+	: m_00(other.m_00), m_04(other.m_04), m_18(other.m_18), m_2c(other.m_2c)
+{
+}
