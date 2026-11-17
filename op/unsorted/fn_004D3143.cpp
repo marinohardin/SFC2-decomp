@@ -697,6 +697,15 @@ void fn_004d3843( char* arg1 )
 	}
 }
 
+// HYPOTHESIS: the value a node holds at +0xc, with a tString first. Its implicit destructor
+// is the 5-byte out-of-line copy at 0x004bd853 that jumps to tString::~tString; the second
+// member's type is not known.
+struct fn_004d38a5_value
+{
+	tString mKey;
+	int mValue;
+};
+
 // HYPOTHESIS: a list-like container; +4 head node, +8 second buffer, +0x10 count.
 struct fn_004d38a5_list
 {
@@ -755,7 +764,7 @@ void fn_004d38a5_list::fn_004d3951( int** node )
 		{
 			fn_004d3951( (int**) next[2] );
 			next = (int**) *next;
-			( (tString*) ( node + 3 ) )->tString::~tString();
+			( (fn_004d38a5_value*) ( node + 3 ) )->~fn_004d38a5_value();
 			::operator delete( node );
 			node = next;
 		} while ( next != (int**) m8 );
