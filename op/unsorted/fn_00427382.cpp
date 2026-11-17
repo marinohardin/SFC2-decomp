@@ -44,3 +44,27 @@ tID __stdcall fn_0042748f( tID aID )
 	tEntity *entity = gObject_008e1060.fn_lookup( aID );
 	return entity ? entity->fTeam : -1;
 }
+
+// HYPOTHESIS: the list 0x00426f1a returns for a team, likely the class tEntity.cpp declares
+// locally as tObject_00426b63; 0x00426bac tests a value against it.
+class tObject_00426bac
+{
+public:
+	bool fn_00426bac(int aValue);
+};
+
+// HYPOTHESIS: 0x00426f1a never reads ecx here (tObject_0090be60.h declares it a member), so
+// it is declared as a free __stdcall function, as fn_0042748f above is written.
+tObject_00426bac * __stdcall fn_00426f1a( tID aTeam );
+
+// HYPOTHESIS: whether the team list of the entity with the ID passes 0x00426bac for the
+// value; false when there is no such entity or list.
+// FUNCTION: STARFLEETOP 0x004274b8
+bool __stdcall fn_004274b8( tID aID, int aValue )
+{
+	tEntity *entity = gObject_008e1060.fn_lookup( aID );
+	tObject_00426bac *list;
+	if (entity && (list = fn_00426f1a( entity->fTeam )) != 0)
+		return list->fn_00426bac( aValue );
+	return false;
+}
