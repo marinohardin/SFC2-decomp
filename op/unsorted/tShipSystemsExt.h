@@ -139,6 +139,7 @@ public:
     virtual tMinMaxFloat* vfunction36();
     virtual tMinMaxFloat* vfunction37();
     virtual tMinMaxFloat* vfunction38();
+    virtual void vfunction39();
     virtual tMinMaxFloat* vfunction41();
     virtual tValue<float>* vfunction42();
     virtual bool vfunction43();
@@ -229,6 +230,13 @@ public:
     virtual void vfunction154( int param_1 );
     // HYPOTHESIS: a slot this class adds after the destructor; it returns the member list m04.
     virtual tIndividualShipSystemList* vfunction171();
+    // HYPOTHESIS: slots 172-177 take no arguments and return nothing; 0x0044cfa1 calls 173, 174 and 177.
+    virtual void vfunction172();
+    virtual void vfunction173();
+    virtual void vfunction174();
+    virtual void vfunction175();
+    virtual void vfunction176();
+    virtual void vfunction177();
 
     tIndividualShipSystemList m04;
     char m584[0x48];

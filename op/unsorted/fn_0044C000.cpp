@@ -1240,3 +1240,11 @@ void tShipSystemsExt::vfunction112( int param_1, int param_2 )
 		sensors->fn_0043f71b( param_1, param_2 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0044cfa1
+void tShipSystemsExt::vfunction39()
+{
+	vfunction174();
+	vfunction173();
+	vfunction177();
+}

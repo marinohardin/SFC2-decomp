@@ -145,9 +145,9 @@ public:
     virtual float vfunction125();
     virtual tMinMaxFloat* vfunction126();
     virtual void vfunction127( float param_1 );
-    virtual void vfunction128();
-    virtual void vfunction129();
-    virtual void vfunction130();
+    virtual void vfunction128( float param_1 );
+    virtual void vfunction129( float param_1 );
+    virtual void vfunction130( float param_1 );
     virtual tMinMaxFloat* vfunction131();
     virtual float vfunction132();
     virtual void vfunction133();
