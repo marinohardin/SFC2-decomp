@@ -9,6 +9,7 @@
 class tObject_005235a7;
 class tCommandDestination;
 class tObject_0051c7af;
+class tAIData;
 
 // HYPOTHESIS: the object at +0x218 of the object below; 0x00523100 forwards to its 0x00520e30.
 // Its size is unknown.
@@ -37,6 +38,9 @@ public:
 	char fn_0052315a(void *param_1, void *param_2, int param_3);
 	void fn_00523198();
 	void fn_00523222();
+	tAIData *fn_0052327e(int param_1, char param_2);
+	void fn_00523428(unsigned char param_1);
+	char fn_00523370(int param_1, char param_2);
 
 	char m_pad0000[0x218];
 	tObject_00520e30 m_218;

@@ -3,6 +3,7 @@
 #include "unsorted/fn_0090bed4_Object.h"
 #include "unsorted/tObject_0090be60.h"
 #include "unsorted/tApplication.h"
+#include "unsorted/tAIData.h"
 
 // HYPOTHESIS: the object 0x00523543 and 0x00523574 return for an ID; tAICaptain.cpp declares
 // what is likely the same class as tObject_004b94dc.
@@ -159,4 +160,35 @@ void fn_0090bed4_Object::fn_00523222()
 	g_0096ea15 = false;
 	g_0096ea16 = false;
 	memset(m_16dc, 0xff, 100);
+}
+
+// HYPOTHESIS: the objects in the table at 0x008e1090 (likely entities): 0x005915ea returns
+// their AI data, 0x00410239 hands them a new one.
+class tObject_005915ea
+{
+public:
+	tAIData *fn_005915ea();
+	void fn_00410239(tAIData *pData);
+};
+
+// FUNCTION: STARFLEETOP 0x0052327e
+tAIData *fn_0090bed4_Object::fn_0052327e(int param_1, char param_2)
+{
+	tObject_005915ea *pObject = (param_1 < 0 || param_1 >= 0x4000) ? NULL : (tObject_005915ea *) g_008e1090[param_1];
+	if (pObject != NULL) {
+		tAIData *pData = pObject->fn_005915ea();
+		if (pData != NULL) {
+			fn_00523428(pData->m_10);
+			if (!param_2 && m_16dc[pData->m_10 * 12] != 0)
+				m_16dc[pData->m_10 * 12] = 0;
+			return pData;
+		}
+		char slot = fn_00523370(param_1, param_2);
+		if (slot != -1) {
+			pData = new tAIData(slot, param_1);
+			pObject->fn_00410239(pData);
+			return pData;
+		}
+	}
+	return NULL;
 }
