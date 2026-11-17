@@ -13,7 +13,7 @@ public:
     // HYPOTHESIS: 0x0040d867 is a member of this buffer class taking (data, size, count).
     void fn_0040d867(void* data, int size, int count);
     // HYPOTHESIS: 0x0040d897 is the read counterpart of 0x0040d867.
-    void fn_0040d897(void* data, int size, int count);
+    int fn_0040d897(void* data, int size, int count);
     fn_0040d63f_Buf* fn_0040d7d6(tString* str);
     void fn_0040d815();
     void fn_0040d841();
@@ -174,4 +174,24 @@ void fn_0040d63f_Buf::fn_0040d867(void* data, int size, int count)
             size--;
         }
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0040d897
+int fn_0040d63f_Buf::fn_0040d897(void* data, int size, int count)
+{
+    int left = size;
+    int total = left;
+    if (m16 == 1 || data == 0) {
+        total = 0;
+    } else {
+        char* dst = (char*)data;
+        while (left > 0 && m08 < m0c) {
+            *dst = *m08;
+            m08++;
+            dst++;
+            left--;
+        }
+        total = total - left;
+    }
+    return total;
 }
