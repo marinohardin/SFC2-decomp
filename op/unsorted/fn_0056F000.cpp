@@ -498,7 +498,7 @@ void fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query
 	guard.Leave();
 }
 
-class tMetaMapHex;
+#include "unsorted/tMetaMapHex.h"
 
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tMetaMapHex>, as 0x0056f041 is for tServCharacter.
 // FUNCTION: STARFLEETOP 0x0056f6e5
@@ -511,16 +511,6 @@ void nDatabase::tQuery<tMetaMapHex>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
-
-// HYPOTHESIS: tMetaMapHex is a database class; its members are not recovered.
-class tMetaMapHex : public nDatabase::tDatabaseObject {
-public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	char tMetaMapHex_pad[0xd0 - 0x48];
-};
 
 // HYPOTHESIS: the result container for tMetaMapHex, as for 0x0056f4df.
 class fn_0056f703_results {
@@ -611,7 +601,7 @@ void fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query,
 	}
 	guard.Leave();
 }
-#line 615 "fn_0056F000.cpp"
+#line 605 "fn_0056F000.cpp"
 
 // HYPOTHESIS: a locked lookup through vfunction8 whose result is added to a polymorphic container.
 class fn_0056f909_result {
