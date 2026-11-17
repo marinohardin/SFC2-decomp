@@ -29,7 +29,7 @@ class tTurn { public:	// HYPOTHESIS: the record classes below are read from 0x00
 class fn_0056c414_Database { public:	// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 	virtual void vfunction1();
 	virtual void vfunction2();
-	virtual void vfunction3( tTurn* turn );
+	virtual void RemoveObjectFromDB( nDatabase::tDatabaseObject* pObject );	// HYPOTHESIS: slot 2 of the SDK's tDatabase.
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
@@ -121,7 +121,7 @@ public:
 	virtual void vfunction47( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
 	virtual void vfunction49( nDatabase::tDatabaseObject* object );
-	virtual void vfunction50();
+	virtual void vfunction50( tAuctionItem* item );
 	virtual void vfunction51();
 	virtual void vfunction52();
 	virtual void vfunction53();
@@ -151,7 +151,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 	if( resultSize > 0 )
 	{
 		turn = turns[0].fField48;
-		fDatabase->vfunction3( &turns[0] );
+		fDatabase->RemoveObjectFromDB( (nDatabase::tDatabaseObject*) &turns[0] );	// HYPOTHESIS: tTurn is a database object (0x48-byte base); its base is not declared yet.
 	}
 	std::vector<tCampaignInfo> campaignInfos;
 	vfunction20( &campaignInfos, true );
@@ -784,4 +784,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction46( nDatabase::tDat
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction47( nDatabase::tDatabaseObjectUpdate update )
 {
 	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the record type is a guess from the assertion text "item"; it is removed from the database.
+// FUNCTION: STARFLEETOP 0x0056e333
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction50( tAuctionItem* item )
+{
+#line 1028
+	validate( item );
+	fDatabase->RemoveObjectFromDB( item );
 }
