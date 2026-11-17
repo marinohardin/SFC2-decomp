@@ -4182,9 +4182,9 @@
    "symbol": "??1tListBox_Base@@UAE@XZ",
    "unit": "unsorted/tListBox_Base.cpp",
    "size": 135,
-   "score": 99.865,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c6225": {
    "name": "tListBox_Base::vfunction8",
