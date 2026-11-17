@@ -265,3 +265,31 @@ void *fn_006c18a0(void *arg, char *base, int count, int size, int (*func)(void *
 	}
 	return 0;
 }
+
+// HYPOTHESIS: a binary search over num elements of width bytes from base; sets *found when
+// compare(element, key) returns 0 and returns the first position not below key.
+// FUNCTION: STARFLEETOP 0x006c18f0
+void *fn_006c18f0(const void *key, const void *base, int num, unsigned long width, int (*compare)(const void *, const void *), int *found)
+{
+	int lo = 0;
+	int hi = num - 1;
+	int mid;
+	int result;
+
+	*found = 0;
+	while (lo <= hi)
+	{
+		mid = (lo + hi) >> 1;
+		result = compare((char *)base + mid * width, key);
+		if (result == 0)
+		{
+			*found = 1;
+			hi = mid - 1;
+		}
+		else if (result < 0)
+			lo = mid + 1;
+		else
+			hi = mid - 1;
+	}
+	return (char *)base + lo * width;
+}

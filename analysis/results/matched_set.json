@@ -16777,6 +16777,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x006c18f0": {
+   "name": "FUN_006c18f0",
+   "symbol": "?fn_006c18f0@@YAPAXPBX0HKP6AH00@ZPAH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",
    "symbol": "?mGetVersionNumber@tSFCStream@@QAEHXZ",
