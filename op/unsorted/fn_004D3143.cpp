@@ -10,6 +10,7 @@ class fn_004d3a02_src;
 class fn_004d482a_owner
 {
 public:
+	fn_004d482a_owner();
 	long fn_004d482a( long arg1, long arg2, long arg3, long arg4 );
 	fn_004d3ef7_object* fn_004d3ef7( long arg1 );
 	fn_004d3ef7_object* fn_004d4a02( long arg1, long arg2, long arg3, long arg4 );
@@ -30,7 +31,8 @@ public:
 	void fn_004d449a( long arg1, long arg2 );
 };
 
-extern fn_004d482a_owner g_0092e4a0;
+// FUNCTION: STARFLEETOP 0x004d3b6a
+fn_004d482a_owner g_0092e4a0;
 
 // FUNCTION: STARFLEETOP 0x004d315e
 long fn_004d315e( long arg1, long arg2, long arg3, long arg4 )
