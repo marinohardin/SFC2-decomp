@@ -45,8 +45,15 @@ struct fn_0053a73a_map
 	{
 	public:
 		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al );
+		// MATCH-ONLY: the copy constructor of tMetaMapHex has this tree constructor inline where
+		// the other constructor calls it; the second form stands for that.
+		tree( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
+			: m_alloc( al ), m_comp( pred ), m_multi( multi ) { fn_0042511e(); }
+		void fn_0042511e();
 		~tree();
-		char	m_00[4];
+		std::allocator< int32 > m_alloc;
+		std::less< int32 > m_comp;
+		char	m_pad[2];
 		node*	m_head;
 		node*	m_nil;
 		bool	m_multi;
@@ -54,6 +61,8 @@ struct fn_0053a73a_map
 	};
 
 	explicit fn_0053a73a_map( const std::less< int32 >& pred = std::less< int32 >(), const std::allocator< int32 >& al = std::allocator< int32 >() );
+	fn_0053a73a_map( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
+		: m_tree( al, pred, multi ) {}
 
 	int32& operator[]( const int32& key );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
@@ -97,8 +106,13 @@ struct fn_0053a6cc_map
 	{
 	public:
 		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al );
+		tree( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
+			: m_alloc( al ), m_comp( pred ), m_multi( multi ) { fn_0042511e(); }
+		void fn_0042511e();
 		~tree();
-		char	m_00[4];
+		std::allocator< int32 > m_alloc;
+		std::less< int32 > m_comp;
+		char	m_pad[2];
 		node*	m_head;
 		node*	m_nil;
 		bool	m_multi;
@@ -106,6 +120,8 @@ struct fn_0053a6cc_map
 	};
 
 	explicit fn_0053a6cc_map( const std::less< int32 >& pred = std::less< int32 >(), const std::allocator< int32 >& al = std::allocator< int32 >() );
+	fn_0053a6cc_map( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
+		: m_tree( al, pred, multi ) {}
 
 	iterator begin() { return iterator( m_tree.m_head->left ); }
 	iterator end() { return iterator( m_tree.m_head ); }
@@ -126,6 +142,8 @@ public:
 	// HYPOTHESIS: the constructor tests its one argument as a byte; when it is set, the hex
 	// takes its values from the HexValues settings. tBattles passes 0.
 	tMetaMapHex( bool param_1 );
+	// HYPOTHESIS: the copy constructor (0x005394f4): builds the members, then assigns.
+	tMetaMapHex( const tMetaMapHex& other );
 	~tMetaMapHex();
 	// HYPOTHESIS: an out-of-line assignment; tBattles::operator= calls it for both copies.
 	tMetaMapHex& operator=( const tMetaMapHex& other );

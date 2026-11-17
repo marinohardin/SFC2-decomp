@@ -39,6 +39,15 @@ tMetaMapHex::tMetaMapHex( bool param_1 )
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x005394f4
+tMetaMapHex::tMetaMapHex( const tMetaMapHex& other )
+	: m_48( std::allocator< int32 >(), std::less< int32 >(), false ),
+	  m_70( std::allocator< int32 >(), std::less< int32 >(), false ),
+	  m_84( std::allocator< int32 >(), std::less< int32 >(), false )
+{
+	*this = other;
+}
+
 // The SDK's inline destructor; its body in view lets the compiler see the call cannot throw.
 // HYPOTHESIS: the original took it from the SDK header; here it is repeated as
 // Common/Thread/ThreadPool.cpp and unsorted/tClientCharacter.cpp do.
