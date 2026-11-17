@@ -104,11 +104,12 @@ class tObject_006e3000
 {
 public:
 	void FUN_006e3000();
+	unsigned long FUN_006e31b0();
 
 	char m00[0x18];
 	CRITICAL_SECTION mSection;
 	tTimerMap_006e3000 mTimers;
-	char m40[0x4];
+	long m40;
 	tIndexMap_006e3000 m44;
 	char m54[0x8];
 	tTimerMap_006e3000 m5c;
@@ -140,4 +141,16 @@ void tObject_006e3000::FUN_006e3000()
 		delete entry;
 		it = next;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006e31b0
+unsigned long tObject_006e3000::FUN_006e31b0()
+{
+	tLock_006e3000 lock(&mSection);
+	unsigned long wait = 9 - mLastTick;
+	if (m40 != 0) {
+		tTimerMap_006e3000::iterator first = mTimers.begin();
+		wait = (*first).first <= mLastTick ? 0 : (*first).first - mLastTick;
+	}
+	return wait;
 }
