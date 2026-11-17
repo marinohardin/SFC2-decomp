@@ -82,3 +82,24 @@ void fn_0046018d_class::fn_0046018d()
     }
     gObject_0090b730.fn_0060ca42(0);
 }
+
+#include <string>
+
+// HYPOTHESIS: the owning class is not identified; the text at +0xac is a std::string
+// (assigned through std::string::assign at 0x0040428e).
+class fn_004601db_class
+{
+public:
+    std::string fn_004601db(long arg);
+    std::string fn_00460216(long arg);
+
+    char pad_000[0xac];
+    std::string m_ac;
+};
+
+// FUNCTION: STARFLEETOP 0x004601db
+std::string fn_004601db_class::fn_004601db(long arg)
+{
+    m_ac = "";
+    return fn_00460216(arg);
+}
