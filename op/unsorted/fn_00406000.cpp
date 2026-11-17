@@ -184,3 +184,13 @@ void fn_004064d5(std::string* _P, const std::string& _V)
 {
     new ((void*)_P) std::string(_V);
 }
+
+// HYPOTHESIS: the library's compare(const string&) instantiation.
+// FUNCTION: STARFLEETOP 0x0040651e
+int std::string::compare(const std::string& _X) const
+{
+    return (compare(0, _Len, _X.c_str(), _X.size()));
+}
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
