@@ -80,7 +80,8 @@ public:
 	// HYPOTHESIS: takes one argument; tState_NetSetup::fn_00476c89 passes 0.
 	virtual void vfunction65(int arg);
 	virtual void vfunction66();
-	virtual void vfunction67();
+	// HYPOTHESIS: takes a flag and a source; tState_NetSetup::fn_00476d52 passes 1 and a setting.
+	virtual void vfunction67(int flag, void *source);
 	virtual tString *vfunction68();
 	virtual void vfunction69();
 	// HYPOTHESIS: returns the index of the selected entry.
