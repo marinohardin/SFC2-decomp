@@ -627,6 +627,7 @@ public:
     fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs);
     void fn_00404d6e(const std::_Locinfo&);
     void fn_00404dd0(unsigned char);
+    char *fn_00404de4(char *, const char *);
     size_t m08;
     size_t m0c;
     const short *m10;
@@ -667,10 +668,18 @@ fn_00404cb2_Ctype::fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs)
 }
 
 // HYPOTHESIS: callee 0x0074cdc8 is a library helper taking a flag and the facet's _Ctypevec at +8.
-extern void __cdecl fn_0074cdc8(int, void *);
+extern char __cdecl fn_0074cdc8(int, void *);
 
 // FUNCTION: STARFLEETOP 0x00404dd0
 void fn_00404cb2_Ctype::fn_00404dd0(unsigned char flag)
 {
     fn_0074cdc8(flag, &m08);
+}
+
+// FUNCTION: STARFLEETOP 0x00404de4
+char *fn_00404cb2_Ctype::fn_00404de4(char *first, const char *last)
+{
+    for (; first != last; ++first)
+        *first = fn_0074cdc8(*first, &m08);
+    return first;
 }

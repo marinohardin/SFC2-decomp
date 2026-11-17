@@ -694,6 +694,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00404de4": {
+   "name": "FUN_00404de4",
+   "symbol": "?fn_00404de4@fn_00404cb2_Ctype@@QAEPADPADPBD@Z",
+   "unit": "unsorted/fn_00404000.cpp",
+   "size": 43,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
