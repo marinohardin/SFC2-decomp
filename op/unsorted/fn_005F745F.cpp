@@ -86,18 +86,18 @@ struct fn_0055fe12_value
 	int field_10;
 };
 
-// HYPOTHESIS: a position in fn_005f7961_object: the node at +0x0c and the owner; 0x005f7db6
+// HYPOTHESIS: a position in fn_005f7961_object: an index and the owner; 0x005f7db6
 // reads the value it points at.
 class fn_005f7db6_iterator
 {
 public:
-	fn_005f7db6_iterator( void* node, fn_005f7961_object* owner )
-		: fNode( node ), fOwner( owner )
+	fn_005f7db6_iterator( unsigned int index, fn_005f7961_object* owner )
+		: fIndex( index ), fOwner( owner )
 	{
 	}
 	fn_0055fe12_value& FUN_005f7db6();
 
-	void* fNode;
+	unsigned int fIndex;
 	fn_005f7961_object* fOwner;
 };
 
@@ -109,8 +109,11 @@ public:
 	void FUN_005f7961( int value );
 	void FUN_005f7902();
 
-	byte field_00[0x0c];
-	void* field_0c;
+	byte field_00[0x04];
+	fn_0055fe12_value** field_04; // HYPOTHESIS: the map of blocks of 204 values
+	unsigned int field_08; // HYPOTHESIS: the map size
+	unsigned int field_0c; // HYPOTHESIS: the index of the first value
+	unsigned int field_10; // HYPOTHESIS: the value count; 0x005f76f8 tests it
 };
 
 // HYPOTHESIS: the 4-byte value queued at +0x2c of fn_005f745f_object; 0x005f767d returns it
@@ -149,7 +152,6 @@ public:
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
 	fn_005f7961_object field_18;
-	int field_28; // HYPOTHESIS: the entry count of the list at +0x18; 0x005f76f8 tests it
 	fn_005f7a6a_object field_2c;
 	byte field_2d[0x3c - 0x2d];
 	int field_3c; // HYPOTHESIS: the entry count of the list at +0x2c; 0x005f771b tests it
@@ -249,7 +251,7 @@ bool fn_005f745f_object::FUN_005f76d5()
 bool fn_005f745f_object::FUN_005f76f8()
 {
 	field_40.Enter();
-	bool empty = field_28 == 0;
+	bool empty = field_18.field_10 == 0;
 	field_40.Leave();
 	return empty;
 }
@@ -334,4 +336,19 @@ fn_005f77c6_object::~fn_005f77c6_object()
 		FUN_005f7897();
 	}
 	FUN_005d97c1();
+}
+
+// FUNCTION: STARFLEETOP 0x005f7902
+void fn_005f7961_object::FUN_005f7902()
+{
+	if ( field_10 != 0 ) {
+		fn_0055fe12_value* p = field_04[field_0c / 204] + field_0c % 204;
+		p->~fn_0055fe12_value();
+		if ( field_08 * 204 <= ++field_0c ) {
+			field_0c = 0;
+		}
+		if ( --field_10 == 0 ) {
+			field_0c = 0;
+		}
+	}
 }
