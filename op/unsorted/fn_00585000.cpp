@@ -201,3 +201,21 @@ int fn_0058581d_owner::fn_0058581d()
 	fAccess.Leave();
 	return value;
 }
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x2c; its name is not recovered.
+class fn_00585835_owner {
+public:
+	int fn_00585835();
+	tOptex fAccess;
+	char fn_00585835_pad0[0x2c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585835
+int fn_00585835_owner::fn_00585835()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
