@@ -6,8 +6,28 @@
 #include "Tiger/tbasicfile.h"
 #include "Tiger/tZipInfoMgr.h"
 #include "unsorted/mss.h"
+#include "unsorted/tEntity.h"
+#include "unsorted/fn_0090be9c_type.h"
 
 class tSndMgr_Miles;
+
+// HYPOTHESIS: the object at 0x00918888, which tMyHud3D.cpp declares inside that unit; only
+// slot 8 (offset 0x20) is called, returning a game state.
+class tObject_00918888
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual int vfunction8();
+};
+
+extern tObject_00918888 *gObject_00918888;
 
 // HYPOTHESIS: a free function called before AIL_startup; its role is not known.
 void fn_006f3870();
@@ -23,6 +43,11 @@ public:
 
 	unsigned char mInit( const char * );
 	// HYPOTHESIS: mDone is inherited; the exe folds tSndZipInfoMgr::mDone with tZipInfoMgr::mDone.
+
+	// HYPOTHESIS: the entry type is tSndZipEntry, laid out as tZipEntry.
+	typedef tZipInfoMgr::tZipEntry tEntry;
+	// HYPOTHESIS: tSndZipInfoMgr's lookup of a name in its directory, as tZipInfoMgr::mFindEntry.
+	const tEntry *fn_0066cec0( const char * ) const;
 
 	char pad_0110[0x254 - 0x110];
 };
@@ -44,7 +69,6 @@ public:
 	// HYPOTHESIS: an id handed to tSndMgr_Miles::vfunction5 and the channel index it plays on.
 	long field_c;
 	long field_10;
-	char pad_0014[0x4];
 };
 
 class fn_0050cb59_object
@@ -77,24 +101,44 @@ public:
 struct fn_0050eea7_sample
 {
 	volatile HSAMPLE field_0;
-	char pad_4[0xc];
+	char pad_4[0x4];
+	// HYPOTHESIS: the sound id and the table entry vfunction29 plays.
+	long field_8;
+	long field_c;
 	char field_10;
 	char pad_11[3];
 	// HYPOTHESIS: three Miles locked buffers, freed with AIL_mem_free_lock.
 	void *field_14;
-	char pad_18[0x8];
+	// HYPOTHESIS: the size and file offset of the data in its zip, and the play handle.
+	unsigned long field_18;
+	long field_1c;
 	void *field_20;
 	void *field_24;
-	char pad_28[0x18];
+	char pad_28[0x4];
+	unsigned long field_2c;
+	char pad_30[0x10];
 	long field_40;
-	char pad_44[0x4];
+	char field_44;
+	char pad_45[0x3];
 	tBasicFile *field_48;
 	tBasicFile *field_4c;
 	tBasicFile *field_50;
-	char pad_54;
-	char field_55;
-	char field_56;
-	char pad_57[0x25];
+	// HYPOTHESIS: state flags shared with the callback thread, hence volatile.
+	volatile char field_54;
+	volatile char field_55;
+	volatile char field_56;
+	volatile char field_57;
+	char pad_58[0xc];
+	long field_64;
+	char field_68;
+	char pad_69[0x3];
+	// HYPOTHESIS: volume (0..127), pan (64 centred) and a start offset.
+	long field_6c;
+	long field_70;
+	long field_74;
+	char field_78;
+	char field_79;
+	char pad_7a[0x2];
 };
 
 // HYPOTHESIS: slot layout from the analysis' vtable numbering, which counts from 1
@@ -133,17 +177,26 @@ public:
 	virtual void vfunction27();
 	virtual void vfunction28( long param_1 );
 	// HYPOTHESIS: fourth parameter is a byte flag, fifth a volume-like 0..100 value
-	virtual void vfunction29( long param_1, long param_2, char param_3, long param_4 );
+	virtual long vfunction29( long param_1, long param_2, char param_3, unsigned long param_4 );
 	virtual void vfunction30();
 	virtual char vfunction31();
 
 	// HYPOTHESIS: maps a sound id to its channel index in place; returns whether it found one.
 	char fn_0050fc33( long *param_1 );
+	// HYPOTHESIS: helpers of vfunction29: a volume for a group and an entity id, a pan for a
+	// group, a group's channel count, and two channel searches returning -1 when none is free.
+	long fn_0050f9ea( long param_1, long param_2 );
+	long fn_0050fa3c( long param_1 );
+	unsigned long fn_0050fb04( long param_1 );
+	long fn_0050fb3e( long param_1, long param_2 );
+	long fn_0050fba4( long param_1, char *param_2 );
 
 	char pad_0004[0xc];
 	// HYPOTHESIS: 32 channels, the most vfunction28 allows; the shutdown clears 0xf80 bytes.
 	fn_0050eea7_sample field_10[32];
-	char pad_f90[0xf90];
+	// HYPOTHESIS: a second bank of 32 channels, for sounds found in the voice zip.
+	fn_0050eea7_sample field_f90[32];
+	char pad_1f10[0x10];
 	long field_1f20;
 	ParseSFCSoundTable field_1f24;
 	fn_0050cb19_object field_1f60;
@@ -157,6 +210,8 @@ public:
 	HWND field_241c;
 	fn_0050bcd4_object field_2420;
 	fn_005d6a72_object field_2438;
+	// HYPOTHESIS: counts the sounds started; vfunction29 returns it as the play handle.
+	long field_244c;
 	fn_0050cb59_object field_2450;
 	// HYPOTHESIS: two tThread members (destructor 0x006ff170, size 0xd0c); tThread is declared
 	// only inside Common/Thread/ThreadPool.cpp, so they stay byte arrays until a header holds it.
@@ -382,4 +437,127 @@ char tSndMgr_Miles::vfunction6()
 		return 0;
 	}
 	return field_10[0].field_10;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f2fc
+long tSndMgr_Miles::vfunction29( long param_1, long param_2, char param_3, unsigned long param_4 )
+{
+	if ( !field_2414 )
+		return 0;
+
+	ParseSFCSoundTable *table = &field_1f24;
+	unsigned long low;
+	unsigned long high;
+	if ( table->vfunction17( param_1, &low, &high ) )
+		param_4 = high * 127 / 100;
+
+	unsigned long volume;
+	long pan = 64;
+	if ( ( param_1 < 1400 || param_1 > 5000 ) && param_2 > 0 )
+	{
+		// HYPOTHESIS: the original holds the entity id in the volume's local (one frame slot for
+		// both; a separate local takes another slot).
+		volume = -1;
+		if ( gObject_00918888->vfunction8() == 3 || gObject_00918888->vfunction8() == 4 )
+		{
+			if ( gObject_008e1060.fn_00424946() )
+			{
+				volume = gObject_008e1060.fn_00424946()->vfunction12();
+				if ( !gObject_008e1060.fn_lookup( volume ) )
+					volume = gObject_008e1060.fn_00525081();
+			}
+		}
+		else
+			volume = gObject_008e1060.fn_00525081();
+
+		long level = fn_0050f9ea( param_2, volume );
+		if ( level < 0 )
+			volume = param_4;
+		else
+			volume = level * param_4 / 127;
+		pan = fn_0050fa3c( param_2 );
+	}
+	else
+		volume = param_4 * 127 / 100;
+
+	long start = 0;
+	if ( table->vfunction16( param_1, &low, &high ) )
+	{
+		fn_0090be9c_type *source = g_0090be9c;
+		double ratio = (double)source->vfunction7() / (double)source->field_20;
+		start = (long)( ( high - low ) * ratio + low );
+	}
+
+	const char *name = table->vfunction11( param_1 );
+	if ( name )
+	{
+		char fromSounds = 1;
+		const fn_0050cb19_object::tEntry *entry = field_1f60.fn_0066cec0( name );
+		if ( !entry )
+		{
+			entry = field_21b4.fn_0066cec0( name );
+			fromSounds = 0;
+		}
+		// HYPOTHESIS: the rest sits in its own block; the frame shows the name's slot shared with
+		// locals declared after it.
+		if ( entry )
+		{
+			long priority = table->vfunction15( param_1 );
+			long group = table->vfunction18( param_1 );
+			char replace;
+			unsigned long limit = table->vfunction19( group, &replace );
+			long index;
+			char second;
+			if ( !limit || fn_0050fb04( group ) < limit )
+				index = fn_0050fba4( priority, &second );
+			else
+			{
+				if ( !replace )
+					return 0;
+				index = fn_0050fb3e( priority, group );
+			}
+
+			if ( index != -1 )
+			{
+				field_244c++;
+				// HYPOTHESIS: volatile, as the Miles callbacks read the channel; the stores keep
+				// their order.
+				volatile fn_0050eea7_sample *sample;
+				if ( second )
+					sample = &field_f90[index];
+				else
+					sample = &field_10[index];
+				sample->field_8 = param_1;
+				sample->field_c = group;
+				sample->field_18 = entry->field_8;
+				sample->field_2c = entry->field_4;
+				sample->field_1c = field_244c;
+				if ( param_3 )
+					sample->field_68 = 1;
+				else
+					sample->field_68 = table->vfunction13( param_1 );
+				sample->field_64 = priority;
+				sample->field_6c = volume;
+				sample->field_70 = pan;
+				sample->field_74 = start;
+				sample->field_56 = 0;
+				sample->field_55 = 0;
+				sample->field_54 = 0;
+				sample->field_57 = 0;
+				sample->field_79 = 0;
+				sample->field_78 = 0;
+				field_10[index].field_56 = 0;
+				field_10[index].field_55 = 0;
+				field_10[index].field_54 = 0;
+				field_10[index].field_57 = 0;
+				field_10[index].field_44 = fromSounds;
+				if ( second )
+					field_10[index].field_56 = 1;
+				else
+					field_10[index].field_55 = 1;
+				return field_244c;
+			}
+		}
+	}
+	return 0;
 }

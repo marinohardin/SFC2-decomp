@@ -21,15 +21,17 @@ public:
 	virtual void vfunction8();
 	virtual void vfunction9();
 	virtual void vfunction10();
-	virtual void vfunction11();
+	// HYPOTHESIS: slots 11 to 19 take a sound id; tSndMgr_Miles::vfunction29 (0x0050f2fc) reads
+	// from them the file name, a looping flag, a priority, two ranges and a group with its limit.
+	virtual const char *vfunction11( long param_1 );
 	virtual void vfunction12();
-	virtual void vfunction13();
+	virtual char vfunction13( long param_1 );
 	virtual void vfunction14();
-	virtual void vfunction15();
-	virtual void vfunction16();
-	virtual void vfunction17();
-	virtual void vfunction18();
-	virtual void vfunction19();
+	virtual long vfunction15( long param_1 );
+	virtual char vfunction16( long param_1, unsigned long *param_2, unsigned long *param_3 );
+	virtual char vfunction17( long param_1, unsigned long *param_2, unsigned long *param_3 );
+	virtual long vfunction18( long param_1 );
+	virtual unsigned long vfunction19( long param_1, char *param_2 );
 	virtual void vfunction20();
 	// HYPOTHESIS: takes the two zip directories of tSndMgr_Miles (sounds, voice)
 	virtual void vfunction21( void *param_1, void *param_2 );

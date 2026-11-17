@@ -677,6 +677,8 @@ public:
 
 	// HYPOTHESIS: returns an entity ID; 0x00421ea9 compares it with its ship's fID.
 	int fn_00525081();
+	// HYPOTHESIS: the entity the player controls (tEntityMgr::mGetPlayersControledEntity).
+	tEntity *fn_00424946();
 	// HYPOTHESIS: takes the ID 0x004c3784 passes; its result is not used there.
 	int fn_004248b5(int aValue);
 	// fn_0042496f is also the lookup tMyHud3D::vfunction9 (0x004b26e4) makes; it reads the
