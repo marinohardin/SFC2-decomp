@@ -503,3 +503,29 @@ fn_00406b23_Obj::fn_00406b23_Obj(const char* s, int a, int b)
     m24 = a;
     m28 = b;
 }
+
+// HYPOTHESIS: a class holding a std::string followed by a flag set to 3 and two ints at 0x2c and 0x30; the original type is unknown.
+class fn_00406b63_Obj
+{
+public:
+    fn_00406b63_Obj(const char* s, int a, int b);
+    std::string m0;
+    int m10;
+    int m14;
+    int m18;
+    int m1c;
+    int m20;
+    int m24;
+    int m28;
+    int m2c;
+    int m30;
+};
+
+// FUNCTION: STARFLEETOP 0x00406b63
+fn_00406b63_Obj::fn_00406b63_Obj(const char* s, int a, int b)
+    : m0(s)
+{
+    m10 = 3;
+    m2c = a;
+    m30 = b;
+}
