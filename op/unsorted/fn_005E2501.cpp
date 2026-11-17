@@ -177,3 +177,6 @@ std::string g_00c38f08 = "GreyTinyHex";
 // FUNCTION: STARFLEETOP 0x005e2eda
 // FUNCTION: STARFLEETOP 0x005e2ea7
 std::string g_00c38ef8 = "GreyTinyHexP";
+
+// FUNCTION: STARFLEETOP 0x005e2efd
+std::string g_00c38ee8 = "GreyTinyHexSB";
