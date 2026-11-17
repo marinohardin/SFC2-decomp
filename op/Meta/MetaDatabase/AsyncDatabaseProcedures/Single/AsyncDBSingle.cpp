@@ -56,8 +56,8 @@ public:
 	void fn_0056f61b( nDatabase::tQuery<tAuctionItem>& query, std::vector<tAuctionItem>* result );
 	void fn_0056f703( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result, bool lock );
 	void fn_0056f83f( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result );
+	void fn_0056f909( const nDatabase::tID& id, tMetaMapHex* hex );
 };
-
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
 
@@ -82,7 +82,7 @@ public:
 	virtual void vfunction12( std::vector<tAuctionItem>* items );
 	virtual void vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock );
 	virtual void vfunction14( nDatabase::tID id, tServCharacter* character, int lock );
-	virtual void vfunction15();
+	virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void vfunction18();
@@ -415,10 +415,16 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction14( nDatabase::tID 
 		*character = characters[0];
 	}
 }
-
-
-
-
+#line 419
+// HYPOTHESIS: fn_0056f909 reads the hex with that ID; the third argument, unread, is taken to be
+// the lock flag of the neighbouring slots.
+// FUNCTION: STARFLEETOP 0x0056d573
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock )
+{
+#line 615
+	validate( hex );
+	fDatabase->fn_0056f909( id, hex );
+}
 
 
 
