@@ -1327,3 +1327,36 @@ void fn_0046abd1(int *param_1, int *param_2)
 		*param_2 = fn_0046abc5();
 	}
 }
+
+extern char g_0090dab8[];
+
+// FUNCTION: STARFLEETOP 0x0046abf2
+char *fn_0046abf2()
+{
+	int width;
+	int height;
+	fn_0046abd1(&width, &height);
+	if (width <= 640 || height <= 480) {
+		return "640x480";
+	}
+	if (width <= 800 || height <= 600) {
+		return "800x600";
+	}
+	if (width <= 960 || height <= 720) {
+		return "960x720";
+	}
+	if (width <= 1024 || height <= 768) {
+		return "1024x768";
+	}
+	if (width <= 1152 || height <= 864) {
+		return "1152x864";
+	}
+	if (width <= 1280 || height <= 1024) {
+		return "1280x1024";
+	}
+	if (width <= 1600 || height <= 1200) {
+		return "1600x1200";
+	}
+	sprintf(g_0090dab8, "%dx%d", width, height);
+	return g_0090dab8;
+}
