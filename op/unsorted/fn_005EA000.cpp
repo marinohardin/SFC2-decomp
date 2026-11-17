@@ -347,3 +347,117 @@ tTree_005ea4a1::iterator tTree_005ea4a1::fn_005ea4a1(tNode *x, tNode *y, const t
 void fn_005ea63e()
 {
 }
+
+// HYPOTHESIS: a third red-black tree with the layout of tTree_005ea4a1; the stored value (0x18 bytes, constructed through 0x005eaaa4) is not recovered, and its keys
+// are ordered by the comparison at 0x0042c8f7.
+class tTree_005ea63f {
+public:
+	struct tValue {
+		int m_00[6];
+	};
+	struct tNode {
+		tNode *m_left;
+		tNode *m_parent;
+		tNode *m_right;
+		tValue m_value;
+		char m_color;
+		char m_isnil;
+	};
+	class iterator {
+	public:
+		iterator(tNode *node) : m_node(node) {}
+		tNode *m_node;
+	};
+
+	iterator fn_005ea63f(tNode *x, tNode *y, const tValue &v);
+	void fn_00556fd0(tNode *x);
+	void fn_00558526(tNode *x);
+
+	int m_00;
+	tNode *m_head;
+	tNode *m_nil;
+	bool m_multi;
+	int m_size;
+};
+
+// HYPOTHESIS: the library's construct helper, left out of line; copies v into p.
+void fn_005eaaa4(tTree_005ea63f::tValue *p, const tTree_005ea63f::tValue &v);
+// HYPOTHESIS: the key comparison, true when a orders before b.
+bool fn_0042c8f7(const tTree_005ea63f::tValue &a, const tTree_005ea63f::tValue &b);
+
+// FUNCTION: STARFLEETOP 0x005ea63f
+tTree_005ea63f::iterator tTree_005ea63f::fn_005ea63f(tNode *x, tNode *y, const tValue &v)
+{
+	tNode *z = (tNode *)operator new(sizeof (tNode));
+	z->m_parent = y;
+	z->m_color = 0;
+	z->m_isnil = 0;
+	z->m_left = m_nil;
+	z->m_right = m_nil;
+	fn_005eaaa4(&z->m_value, v);
+	++m_size;
+	if (y == m_head || x != m_nil || fn_0042c8f7(v, y->m_value))
+	{
+		y->m_left = z;
+		if (y == m_head)
+		{
+			m_head->m_parent = z;
+			m_head->m_right = z;
+		}
+		else if (y == m_head->m_left)
+			m_head->m_left = z;
+	}
+	else
+	{
+		y->m_right = z;
+		if (y == m_head->m_right)
+			m_head->m_right = z;
+	}
+	for (x = z; x != m_head->m_parent && x->m_parent->m_color == 0; )
+		if (x->m_parent == x->m_parent->m_parent->m_left)
+		{
+			y = x->m_parent->m_parent->m_right;
+			if (y->m_color == 0)
+			{
+				x->m_parent->m_color = 1;
+				y->m_color = 1;
+				x->m_parent->m_parent->m_color = 0;
+				x = x->m_parent->m_parent;
+			}
+			else
+			{
+				if (x == x->m_parent->m_right)
+				{
+					x = x->m_parent;
+					fn_00556fd0(x);
+				}
+				x->m_parent->m_color = 1;
+				x->m_parent->m_parent->m_color = 0;
+				fn_00558526(x->m_parent->m_parent);
+			}
+		}
+		else
+		{
+			y = x->m_parent->m_parent->m_left;
+			if (y->m_color == 0)
+			{
+				x->m_parent->m_color = 1;
+				y->m_color = 1;
+				x->m_parent->m_parent->m_color = 0;
+				x = x->m_parent->m_parent;
+			}
+			else
+			{
+				if (x == x->m_parent->m_left)
+				{
+					x = x->m_parent;
+					fn_00558526(x);
+				}
+				x->m_parent->m_color = 1;
+				x->m_parent->m_parent->m_color = 0;
+				fn_00556fd0(x->m_parent->m_parent);
+			}
+		}
+	m_head->m_parent->m_color = 1;
+	return iterator(z);
+}
