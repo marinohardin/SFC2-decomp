@@ -109,6 +109,7 @@ public:
 	void fn_00476d52(c_00468677_source **control, void *source, int id);
 	void fn_00476da0(c_00468677_source **control, int id);
 	void fn_00476e72();
+	void fn_004772bf();
 	void fn_004776d7(const char *name, int n);
 	void fn_00469e0c(const char *name);
 	void fn_00477440();
@@ -631,4 +632,11 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476e72()
 				fn_00469e0c(g_008493a8);
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004772bf
+void tState_Namespace_NetSetup::tState_NetSetup::fn_004772bf()
+{
+	fn_004764bd();
+	gNetControl.fn_00431821();
 }

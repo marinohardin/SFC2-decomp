@@ -3979,6 +3979,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x004772bf": {
+   "name": "FUN_004772bf",
+   "symbol": "?fn_004772bf@tState_NetSetup@tState_Namespace_NetSetup@@QAEXXZ",
+   "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
