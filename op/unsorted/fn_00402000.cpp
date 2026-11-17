@@ -1,6 +1,24 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00402000.cpp
-// Functions: 0x004021b8 to 0x00402fe2, 48 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <ios>
+
+// HYPOTHESIS: a stream holder whose ifstream part sits at +0x5c. The exe calls
+// ~basic_ifstream (0x0040345f) on that part, then ~basic_ios (0x00402a1b) on the same.
+class fn_004021b8_Part
+{
+public:
+    void fn_0040345f();
+};
+
+class fn_004021b8_Stream
+{
+public:
+    char pad[0x5c];
+    void fn_004021b8();
+};
+
+// FUNCTION: STARFLEETOP 0x004021b8
+void fn_004021b8_Stream::fn_004021b8()
+{
+    std::basic_ios<char>* p = (std::basic_ios<char>*)(pad + 0x5c);
+    ((fn_004021b8_Part*)p)->fn_0040345f();
+    p->~basic_ios();
+}
