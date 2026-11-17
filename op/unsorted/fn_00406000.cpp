@@ -237,3 +237,25 @@ template<> int std::codecvt<char, char, int>::do_length(int&,const char* _F1, co
         _N = _N2;
     return (int)_N;
 }
+
+// FUNCTION: STARFLEETOP 0x004066a3
+// HYPOTHESIS: the facet-like object whose reference count 0x00402b90 increments; declared in
+// full only in fn_00402000.cpp, so only the member used here is named.
+class fn_00402b90_Obj
+{
+public:
+    void fn_00402b90();
+};
+
+extern fn_00402b90_Obj* g_00893184;
+void fn_00406887();
+
+// HYPOTHESIS: registers a library-owned facet: remember it, take a reference and arrange its release at exit.
+fn_00402b90_Obj* fn_004066a3(fn_00402b90_Obj* p)
+{
+    std::_Lockit lock;
+    g_00893184 = p;
+    p->fn_00402b90();
+    atexit(fn_00406887);
+    return p;
+}
