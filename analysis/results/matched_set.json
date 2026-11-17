@@ -1738,6 +1738,15 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x00427382": {
+   "name": "tMatchedMission::scalar_deleting_destructor",
+   "symbol": "??_GtMatchedMission@@UAEPAXI@Z",
+   "unit": "unsorted/tMatchedMission.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
