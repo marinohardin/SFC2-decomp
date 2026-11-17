@@ -247,3 +247,14 @@ fn_005d92b9_object::iterator fn_005d92b9_object::fn_005d939d(iterator first, ite
         return begin();
     }
 }
+
+// FUNCTION: STARFLEETOP 0x005d9411
+void fn_005d9281_tree::fn_005d9411(node *n)
+{
+    for (node *p = n; p != m_nil; n = p)
+    {
+        fn_005d9411(p->right);
+        p = p->left;
+        operator delete(n);
+    }
+}
