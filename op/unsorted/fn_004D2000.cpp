@@ -475,6 +475,8 @@ struct fn_tree_node_1c
 
 struct fn_tree_iterator_1c
 {
+	fn_tree_iterator_1c() {}
+	fn_tree_iterator_1c(fn_tree_node_1c* p) : m_0x00(p) {}
 	void fn_0052aad3();
 	fn_tree_node_1c* m_0x00;
 };
@@ -516,7 +518,9 @@ class fn_00460acb_base
 {
 public:
 	~fn_00460acb_base();
+	// HYPOTHESIS: the tree's clear(), erase(begin(), end()); 0x00460c53 is the range erase.
 	void fn_004d2be4();
+	fn_tree_iterator_1c fn_00460c53(fn_tree_iterator_1c first, fn_tree_iterator_1c last);
 	char m_0x00[4];
 	fn_tree_node_1c* m_0x04; // head node
 	char m_0x08[0xc];
@@ -849,29 +853,8 @@ void fn_004d2a96()
 {
 }
 
-// HYPOTHESIS: a container whose header node sits at +4; the call builds an iterator from the
-// first node (the header's first link) and the header.
-struct fn_004d2be4_node
-{
-	fn_004d2be4_node* m_0x00;
-};
-
-struct fn_004d2be4_iterator
-{
-	fn_004d2be4_iterator(fn_004d2be4_node* node, fn_004d2be4_node* header);
-};
-
-class fn_004d2be4_map
-{
-public:
-	void fn_004d2be4();
-	char m_0x00[4];
-	fn_004d2be4_node* m_0x04;
-};
-
 // FUNCTION: STARFLEETOP 0x004d2be4
-void fn_004d2be4_map::fn_004d2be4()
+void fn_00460acb_base::fn_004d2be4()
 {
-	fn_004d2be4_node* header = m_0x04;
-	fn_004d2be4_iterator it(header->m_0x00, header);
+	fn_00460c53(fn_tree_iterator_1c(m_0x04->m_0x00), fn_tree_iterator_1c(m_0x04));
 }

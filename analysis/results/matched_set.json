@@ -5970,11 +5970,11 @@
   },
   "0x004d2be4": {
    "name": "FUN_004d2be4",
-   "symbol": "?fn_004d2be4@fn_004d2be4_map@@QAEXXZ",
+   "symbol": "?fn_004d2be4@fn_00460acb_base@@QAEXXZ",
    "unit": "unsorted/fn_004D2000.cpp",
    "size": 20,
-   "score": 45.0,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {
