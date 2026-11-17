@@ -52,6 +52,7 @@ public:
 	long fn_004cb602( long arg1 );
 	void fn_004cb12a();
 	void fn_004cb4a7( long arg1, long arg2 );
+	class fn_004d35bf_object* fn_004cb4f8( long arg1 );
 };
 
 extern fn_004bf6b9_owner g_009254f8;
@@ -413,4 +414,24 @@ void fn_004d35a2()
 void fn_004d35ac( long arg1, long arg2 )
 {
 	g_009254f8.fn_004cb4a7( arg1, arg2 );
+}
+
+// HYPOTHESIS: the object found by 0x004cb4f8 is deleted through its virtual destructor
+// (slot 0 called with 1); the class is not recovered yet.
+class fn_004d35bf_object
+{
+public:
+	virtual ~fn_004d35bf_object();
+};
+
+// FUNCTION: STARFLEETOP 0x004d35bf
+fn_004d35bf_object* fn_004d35bf( long arg1, char arg2 )
+{
+	fn_004d35bf_object* obj = g_009254f8.fn_004cb4f8( arg1 );
+	if ( arg2 != 0 && obj != 0 )
+	{
+		delete obj;
+		obj = 0;
+	}
+	return obj;
 }
