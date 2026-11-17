@@ -96,7 +96,7 @@ public:
 };
 
 // HYPOTHESIS: the reference-count increment at 0x00402b90, seen here as a no-throw call.
-#define fn_00402b90_THROW throw()
+#define fn_00402b90_NOTHROW
 #include "unsorted/fn_00402b90_Obj.h"
 
 
