@@ -134,3 +134,60 @@ void fn_0056f05f_owner::fn_0056f05f(const nDatabase::tQuery<tServCharacter> &que
 		}
 	}
 }
+
+// HYPOTHESIS: a second database object type (0x160 bytes, vtable slot 9 called on each
+// collected copy); the type and its name are not recovered.
+class fn_0056f19b_object {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char fn_0056f19b_pad[0x160 - 4];
+};
+
+// HYPOTHESIS: the result container for 0x0056f19b; push_back is out of line, the container
+// ends at +0x8 with sizeof(element) == 0x160.
+class fn_0056f19b_results {
+public:
+	void push_back(const fn_0056f19b_object &value);
+	fn_0056f19b_object &back() { return *(m_last - 1); }
+	void *m_allocator;
+	fn_0056f19b_object *m_first;
+	fn_0056f19b_object *m_last;
+};
+
+// HYPOTHESIS: unlocked variant of the database query of 0x0056f05f, for another object type.
+class fn_0056f19b_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> &query, fn_0056f19b_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 176
+// FUNCTION: STARFLEETOP 0x0056f19b
+void fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> &query, fn_0056f19b_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_0056f19b_object));
+#line 183
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	void **i = objects.begin();
+	for (; i != objects.end(); i++) {
+		fn_0056f19b_object *pObject = (fn_0056f19b_object *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
+}
