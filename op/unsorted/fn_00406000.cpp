@@ -185,24 +185,43 @@ void fn_004064d5(std::string* _P, const std::string& _V)
     new ((void*)_P) std::string(_V);
 }
 
-// HYPOTHESIS: the library's compare(const string&) instantiation.
-// FUNCTION: STARFLEETOP 0x0040651e
-int std::string::compare(const std::string& _X) const
+// HYPOTHESIS: the library's string::compare(const string&) instance, written on a stand-in
+// class of the string's layout; it calls the library's compare at 0x004067db.
+class fn_0040651e_String
 {
-    return (compare(0, _Len, _X.c_str(), _X.size()));
+public:
+    int fn_0040651e(const std::string& _X) const;
+    char _A;
+    char* _Ptr;
+    size_t _Len;
+    size_t _Res;
+};
+
+// FUNCTION: STARFLEETOP 0x0040651e
+int fn_0040651e_String::fn_0040651e(const std::string& _X) const
+{
+    return (((const std::string*)this)->compare(0, _Len, _X.c_str(), _X.size()));
 }
 
-// HYPOTHESIS: a caller in the original uses this instantiation.
-int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
+// HYPOTHESIS: the library's istreambuf_iterator<char>::equal instance, written on a stand-in
+// class of the iterator's layout; 0x00405fdf is _Peek.
+class fn_00406540_Iter
+{
+public:
+    bool fn_00406540(const fn_00406540_Iter& _X) const;
+    char fn_00405fdf();
+    std::streambuf* _Sbuf;
+    bool _Got;
+    char _Val;
+};
 
-// HYPOTHESIS: the library's istreambuf_iterator<char>::equal instantiation; 0x00405fdf is _Peek.
 // FUNCTION: STARFLEETOP 0x00406540
-template<> bool std::istreambuf_iterator<char>::equal(const std::istreambuf_iterator<char>& _X) const
+bool fn_00406540_Iter::fn_00406540(const fn_00406540_Iter& _X) const
 {
     if (!_Got)
-        ((std::istreambuf_iterator<char> *)this)->_Peek();
+        ((fn_00406540_Iter *)this)->fn_00405fdf();
     if (!_X._Got)
-        ((std::istreambuf_iterator<char> *)&_X)->_Peek();
+        ((fn_00406540_Iter *)&_X)->fn_00405fdf();
     return (_Sbuf == 0 && _X._Sbuf == 0
         || _Sbuf != 0 && _X._Sbuf != 0);
 }
@@ -216,21 +235,25 @@ template<> std::collate<char>::collate(size_t _R)
     _Init(_Lobj);
 }
 
+// HYPOTHESIS: the library's codecvt<char,char,int>::do_in and do_length instances (identity
+// conversion), written on a stand-in class; do_in returns noconv.
+class fn_004065d3_Codecvt
+{
+public:
+    std::codecvt_base::result fn_004065d3(int&, const char* _F1, const char*, const char*& _M1, char* _F2, char*, char*& _M2) const;
+    int fn_004065ed(int&, const char* _F1, const char* _L1, size_t _N2) const;
+};
+
 // FUNCTION: STARFLEETOP 0x004065d3
-// HYPOTHESIS: the library's codecvt<char,char,int>::do_in instantiation (identity conversion, returns noconv).
-template<> std::codecvt_base::result std::codecvt<char, char, int>::do_in(int&, const char* _F1, const char*, const char*& _M1, char* _F2, char*, char*& _M2) const
+std::codecvt_base::result fn_004065d3_Codecvt::fn_004065d3(int&, const char* _F1, const char*, const char*& _M1, char* _F2, char*, char*& _M2) const
 {
     _M1 = _F1;
     _M2 = _F2;
-    return (noconv);
+    return (std::codecvt_base::noconv);
 }
 
-// HYPOTHESIS: a caller in the original instantiates the facet, which emits its vtable and do_in.
-std::codecvt<char, char, int> g_fn_004065d3;
-
 // FUNCTION: STARFLEETOP 0x004065ed
-// HYPOTHESIS: the library's codecvt<char,char,int>::do_length instantiation (identity conversion, min of available and requested).
-template<> int std::codecvt<char, char, int>::do_length(int&,const char* _F1, const char* _L1, size_t _N2) const
+int fn_004065d3_Codecvt::fn_004065ed(int&, const char* _F1, const char* _L1, size_t _N2) const
 {
     size_t _N = _L1 - _F1;
     if (_N2 < _N)
@@ -309,26 +332,56 @@ fn_00402b90_Obj* fn_0040678d(fn_00402b90_Obj* p)
     return p;
 }
 
+// HYPOTHESIS: the library's string::compare(pos, n, const char*, m) instance, written on a
+// stand-in class of the string's layout (allocator byte, pointer, length, reserve).
+class fn_004067db_String
+{
+public:
+    int fn_004067db(size_t _P0, size_t _N0, const char* _S, size_t _M) const;
+    char _A;
+    char* _Ptr;
+    size_t _Len;
+    size_t _Res;
+    static const char* _Psum(const char* _P, size_t _N)
+        {return (_P == 0 ? 0 : _P + _N); }
+};
+
 // FUNCTION: STARFLEETOP 0x004067db
-int std::string::compare(size_type _P0, size_type _N0, const char* _S, size_type _M) const
+int fn_004067db_String::fn_004067db(size_t _P0, size_t _N0, const char* _S, size_t _M) const
 {
     if (_Len < _P0)
-        _Xran();
+        std::_Xran();
     if (_Len - _P0 < _N0)
         _N0 = _Len - _P0;
-    size_type _Ans = std::char_traits<char>::compare(_Psum(_Ptr, _P0), _S, _N0 < _M ? _N0 : _M);
+    size_t _Ans = std::char_traits<char>::compare(_Psum(_Ptr, _P0), _S, _N0 < _M ? _N0 : _M);
     return (_Ans != 0 ? _Ans : _N0 < _M ? -1 : _N0 != _M);
 }
 
+// HYPOTHESIS: the library's numpunct<char>::_Init instance, written on a stand-in class of
+// the facet's layout (vtable and reference count, then grouping, the two separators and the
+// two names).
+class fn_0040683e_Numpunct
+{
+public:
+    void fn_0040683e(const std::_Locinfo& _Lobj);
+    void* m_00;
+    size_t m_04;
+    const char* _Gr;
+    char _Dp;
+    char _Ks;
+    const char* _Nf;
+    const char* _Nt;
+};
+
 // FUNCTION: STARFLEETOP 0x0040683e
-void std::numpunct<char>::_Init(const std::_Locinfo& _Lobj)
+void fn_0040683e_Numpunct::fn_0040683e(const std::_Locinfo& _Lobj)
 {
     const lconv* _Ptr = _Lobj._Getlconv();
     _Dp = _Ptr->decimal_point[0];
     _Ks = _Ptr->thousands_sep[0];
-    _Gr = _Maklocstr(_Ptr->grouping, (char*)0);
-    _Nf = _Maklocstr("false", (char*)0);
-    _Nt = _Maklocstr("true", (char*)0);
+    _Gr = std::_Maklocstr(_Ptr->grouping, (char*)0);
+    _Nf = std::_Maklocstr("false", (char*)0);
+    _Nt = std::_Maklocstr("true", (char*)0);
 }
 
 // HYPOTHESIS: the library's cleanup of the classic locale pointer; 0x00402b3a is the
