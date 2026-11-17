@@ -39,6 +39,12 @@ class tPart_0042f918
 {
 public:
 	virtual ~tPart_0042f918();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	// HYPOTHESIS: slot 5 takes the scale 0x0042fbd4 passes on.
+	virtual void vfunction5(float scale);
 };
 
 // HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
@@ -65,6 +71,7 @@ public:
 	int vfunction12();
 	bool vfunction13(tPoint3 *out, const char *name, unsigned int index);
 	unsigned int vfunction14(const char *name);
+	void vfunction15(float scale);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -245,4 +252,15 @@ unsigned int t3DVisual_Model::vfunction14(const char *name)
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fbd4
+void t3DVisual_Model::vfunction15(float scale)
+{
+	m178 = scale;
+	for (int i = 0; i < m11c; i++)
+	{
+		if (m160[i] != 0)
+			m160[i]->vfunction5(scale);
+	}
 }
