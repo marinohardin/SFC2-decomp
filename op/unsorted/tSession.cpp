@@ -620,3 +620,13 @@ void tHtmlParser::fn_00691360()
 	f_c8++;
 	f_40->fn_0068e7b0( &f_80 );
 }
+
+// FUNCTION: STARFLEETOP 0x00691390
+void tHtmlParser::fn_00691390()
+{
+	if ( f_c8 == 1 )
+		f_80 &= 0x7fffffff;
+	if ( f_c8 != 0 )
+		f_c8--;
+	f_40->fn_0068e7b0( &f_80 );
+}
