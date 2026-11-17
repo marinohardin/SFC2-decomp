@@ -34,13 +34,80 @@ struct tEntry_0042fa82
 	int mName;
 };
 
+// HYPOTHESIS: the object 0x0042fd3f is given; slots 55 and 58 return matrices.
+class tViewer_0042fd3f
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual tMatrix *vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual tMatrix *vfunction58();
+};
+
 // HYPOTHESIS: the polymorphic objects owned at +0x160.
 class tPart_0042f918
 {
 public:
 	virtual ~tPart_0042f918();
 	virtual void vfunction1();
-	virtual void vfunction2();
+	// HYPOTHESIS: slot 2 takes the object, the entry array at +0x158 and the two values
+	// 0x0042fd3f passes on.
+	virtual void vfunction2(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, int param_4);
 	virtual void vfunction3();
 	virtual void vfunction4();
 	// HYPOTHESIS: slot 5 takes the scale 0x0042fbd4 passes on.
@@ -69,6 +136,7 @@ class t3DVisual_Model : public t3DVisual
 public:
 	t3DVisual_Model();
 	virtual ~t3DVisual_Model();
+	void vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3);
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
 	float vfunction10();
 	bool vfunction11(tPoint3 *out, const char *name);
@@ -356,4 +424,23 @@ int t3DVisual_Model::vfunction23(float time)
 		}
 	}
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fd3f
+void t3DVisual_Model::vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3)
+{
+	int index = 0;
+	if (m120 != -1)
+		index = m120;
+	else if (m11c > 1)
+	{
+		tMatrix *matrix = param_1->vfunction58();
+		tPoint3 point(matrix->mGetItem(0, 3), matrix->mGetItem(1, 3), matrix->mGetItem(2, 3));
+		param_1->vfunction55()->mTransform(point);
+		// HYPOTHESIS: 0x0069b250 is the point's dot product with itself (the squared length).
+		index = vfunction23(point * point);
+		m124 = index;
+	}
+	if (m160[index] != 0)
+		m160[index]->vfunction2(param_1, m158, param_2, param_3);
 }
