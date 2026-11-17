@@ -57,6 +57,7 @@ public:
 	void fn_0056f703( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result, bool lock );
 	void fn_0056f83f( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result );
 	void fn_0056f909( const nDatabase::tID& id, tMetaMapHex* hex );
+	void fn_0056f961( const nDatabase::tID& id, tShip* ship );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
@@ -83,7 +84,7 @@ public:
 	virtual void vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock );
 	virtual void vfunction14( nDatabase::tID id, tServCharacter* character, int lock );
 	virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
-	virtual void vfunction16();
+	virtual bool vfunction16( nDatabase::tID id, tShip* ship );
 	virtual void vfunction17();
 	virtual void vfunction18();
 	virtual void vfunction19();
@@ -425,8 +426,17 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction15( nDatabase::tID 
 	validate( hex );
 	fDatabase->fn_0056f909( id, hex );
 }
+#line 430
+// HYPOTHESIS: fn_0056f961 reads the ship with that ID; the assertion text names it "ship".
 
-
+// FUNCTION: STARFLEETOP 0x0056d5e0
+bool nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction16( nDatabase::tID id, tShip* ship )
+{
+#line 625
+	validate( ship );
+	fDatabase->fn_0056f961( id, ship );
+	return true;
+}
 
 
 

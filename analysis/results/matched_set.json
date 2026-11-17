@@ -6130,6 +6130,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0056d5e0": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction16",
+   "symbol": "?vfunction16@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAE_NVtID@nDatabase@@PAVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 111,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
