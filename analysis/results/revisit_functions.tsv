@@ -146,3 +146,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0043e911	FUN_0043e911	83.97	2	sonnet	2026-11-17T07:32:16Z	attempt 2 (sonnet) did not raise the best; best 83.97%
 0x0043f023	FUN_0043f023	84.66	2	sonnet	2026-11-17T08:28:59Z	attempt 2 (sonnet) did not raise the best; best 84.66%
 0x00444046	tShipSystemsFighter::tShipSystemsFighter	5.88	2	sonnet	2026-11-17T09:45:06Z	attempt 2 (sonnet) did not raise the best; best 5.88%
+0x00448235	tShipSystemsExt::tShipSystemsExt	52.71	2	sonnet	2026-11-17T11:05:46Z	best not above 90% after 2 attempts; best 52.71%
