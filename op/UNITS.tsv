@@ -423,10 +423,8 @@ unsorted/fn_0045D8CA.cpp	0x0045d8ca	0x0045d942	3	page	game-release
 unsorted/tState_Campaign.cpp	0x0045d95d	0x0045d9ee	3	class	game-release	
 unsorted/tCampaignState.cpp	0x0045da31	0x0045deac	14	class	game-release	
 unsorted/fn_0045DEC8.cpp	0x0045dec8	0x0045df74	4	page	game-release	
-unsorted/fn_0045E000.cpp	0x0045e01d	0x0045e5f7	18	page	game-release	
-unsorted/CMiniDockFrameWnd.cpp	0x0045e63a	0x0045e63a	1	class	game-release	
-unsorted/fn_0045E672.cpp	0x0045e672	0x0045e67c	3	page	game-release	
-unsorted/tState_Namespace_CampaignSelector__tState_CampaignSelector.cpp	0x0045e681	0x0045f25e	5	class	game-release	
+unsorted/fn_0045E000.cpp	0x0045e01d	0x0045e38f	14	page	game-release	
+unsorted/tState_Namespace_CampaignSelector__tState_CampaignSelector.cpp	0x0045e40a	0x0045f25e	13	class	game-release	
 unsorted/fn_0045F000.cpp	0x0045f264	0x0045fecc	13	page	game-release	
 unsorted/fn_00460000.cpp	0x00460175	0x00460ede	30	page	game-release	
 unsorted/fn_00461000.cpp	0x00461164	0x004614b5	14	page	game-release	
