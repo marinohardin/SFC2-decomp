@@ -75,3 +75,23 @@ std::string& std::string::assign(const std::string& _X, size_type _P, size_type 
 
 // HYPOTHESIS: a caller in the original (e.g. string::operator=) references this instantiation.
 std::string& (std::string::*g_fn_00403b49)(const std::string&, std::string::size_type, std::string::size_type) = &std::string::assign;
+
+// FUNCTION: STARFLEETOP 0x00403c1a
+std::string& std::string::insert(size_type _P0, size_type _M, char _C)
+{
+    if (_Len < _P0)
+        _Xran();
+    if (npos - _Len <= _M)
+        _Xlen();
+    size_type _N;
+    if (0 < _M && _Grow(_N = _Len + _M))
+    {
+        std::char_traits<char>::move(_Ptr + _P0 + _M, _Ptr + _P0, _Len - _P0);
+        std::char_traits<char>::assign(_Ptr + _P0, _M, _C);
+        _Eos(_N);
+    }
+    return (*this);
+}
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+std::string& (std::string::*g_fn_00403c1a)(std::string::size_type, std::string::size_type, char) = &std::string::insert;

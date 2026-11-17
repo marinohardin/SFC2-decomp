@@ -397,6 +397,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00403c1a": {
+   "name": "FUN_00403c1a",
+   "symbol": "?insert@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@IID@Z",
+   "unit": "unsorted/fn_00403000.cpp",
+   "size": 127,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
