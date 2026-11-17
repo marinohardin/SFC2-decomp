@@ -705,6 +705,9 @@ struct fn_004d38a5_list
 	{
 		iterator() {}
 		iterator( int** p ) : mPtr( p ) {}
+		void fn_004253c2();
+		bool operator==( const iterator& o ) const { return mPtr == o.mPtr; }
+		bool operator!=( const iterator& o ) const { return mPtr != o.mPtr; }
 		int** mPtr;
 	};
 	int m0;
@@ -714,7 +717,33 @@ struct fn_004d38a5_list
 	int m10;
 	void fn_004d38a5();
 	iterator fn_004d38dd( iterator first, iterator last );
+	void fn_004d3951( int** node );
+	iterator fn_004cb68b( iterator it );
 };
+
+// FUNCTION: STARFLEETOP 0x004d38dd
+fn_004d38a5_list::iterator fn_004d38a5_list::fn_004d38dd( iterator first, iterator last )
+{
+	if ( m10 != 0 && first.mPtr == (int**) *m4 && last.mPtr == m4 )
+	{
+		fn_004d3951( (int**) m4[1] );
+		m4[1] = (int*) m8;
+		m10 = 0;
+		*m4 = (int*) m4;
+		m4[2] = (int*) m4;
+		first = iterator( (int**) *m4 );
+	}
+	else
+	{
+		while ( first != last )
+		{
+			iterator it = first;
+			first.fn_004253c2();
+			fn_004cb68b( it );
+		}
+	}
+	return first;
+}
 
 // FUNCTION: STARFLEETOP 0x004d38a5
 void fn_004d38a5_list::fn_004d38a5()
