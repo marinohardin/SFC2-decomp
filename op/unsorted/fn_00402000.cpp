@@ -590,3 +590,28 @@ fn_00402b22_Base* fn_00402b22_Inner::fn_00402b3a()
         --m4;
     return m4 == 0 ? this : 0;
 }
+
+class fn_00402b73_Item
+{
+public:
+    void fn_00402b90();
+};
+
+class fn_00402b73_Src
+{
+public:
+    fn_00402b73_Item** fn_00402b73(fn_00402b73_Item** out);
+    char pad[0x20];
+    fn_00402b73_Item* m20;
+};
+
+// FUNCTION: STARFLEETOP 0x00402b73
+fn_00402b73_Item** fn_00402b73_Src::fn_00402b73(fn_00402b73_Item** out)
+{
+    // HYPOTHESIS: the original keeps a zeroed local here
+    fn_00402b73_Item* p = m20;
+    volatile int pending = 0;
+    *out = p;
+    p->fn_00402b90();
+    return out;
+}
