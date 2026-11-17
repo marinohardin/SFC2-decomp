@@ -34,6 +34,11 @@ public:
 	void fn_005eadcd();
 	void fn_005eae34();
 	void fn_005eae4a();
+	// HYPOTHESIS: 0x005e361d draws the image 0x005eaddc returns at the point (two shorts)
+	// 0x005eae6e returns, and calls 0x005e36a3 when 0x005eae11 answers false.
+	c_tScrollBar_FieldA8 *fn_005eaddc();
+	const tPoint &fn_005eae6e();
+	bool fn_005eae11();
 };
 
 // HYPOTHESIS: 0x1ec bytes, from the operator new in the factory at 0x005e2f60.
@@ -54,6 +59,7 @@ public:
 	void fn_005e32d7( int param_1 );
 	void fn_005e33f4( int param_1 );
 	void fn_005e3511( int param_1 );
+	void fn_005e361d( const tRect *area );
 	void fn_005e36a3();
 	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
 	void fn_005e370c( fn_005e36cd_entry *entry, int param_2 );

@@ -34,6 +34,8 @@ public:
 	void fn_005e5e24( int value );
 	void fn_005e6aeb( int param_1, std::vector<fn_005e381f_entry> &list );
 	void fn_005e6dea( int param_1, std::vector<fn_005e36cd_entry> &list );
+	// HYPOTHESIS: 0x005e361d hands it its area and the object at +0x17c.
+	void fn_005e7539( const tRect *area, fn_005eadc8_class *object );
 };
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
@@ -230,5 +232,27 @@ void tMetaMapControl::fn_005e3511( int param_1 )
 	{
 		if ( it2->field_14 == 5 )
 			fn_005e37d8( it2, param_1, it2->field_50 );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005e361d
+void tMetaMapControl::fn_005e361d( const tRect *area )
+{
+	if ( field_17c != 0 )
+	{
+		fn_00607d61()->fn_0060a54d()->fn_005e7539( area, field_17c );
+		if ( field_1c4 != 2 )
+		{
+			c_tScrollBar_FieldA8 *image = field_17c->fn_005eaddc();
+			tPoint point = field_17c->fn_005eae6e();
+			if ( image != 0 )
+			{
+				field_14->fn_00675280( image, point.x, point.y, area, 0, 1 );
+			}
+		}
+		if ( !field_17c->fn_005eae11() )
+		{
+			fn_005e36a3();
+		}
 	}
 }

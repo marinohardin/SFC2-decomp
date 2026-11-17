@@ -77,6 +77,23 @@ struct tRect
 
 #endif	// tbasic_tRect_h
 
+// tPoint from the SDK's tbasic.h, kept here for the same reason as tRect.
+#ifndef	tbasic_tPoint_h
+#define	tbasic_tPoint_h	1
+
+struct tPoint
+{
+	short	x;
+	short	y;
+
+	tPoint() {}
+
+	tPoint( short _x, short _y ) : x( _x ), y( _y ) {}
+	tPoint( const tPoint& point ) : x( point.x ), y( point.y ) {}
+};
+
+#endif	// tbasic_tPoint_h
+
 struct c_tListBox_Base_Item;
 struct c_tScrollBar_FieldA8;
 
