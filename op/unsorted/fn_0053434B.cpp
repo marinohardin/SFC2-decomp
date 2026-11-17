@@ -263,6 +263,8 @@ public:
     ~fn_005346f9_object();
     void fn_005347bd(long value);
     void fn_005347f4(long value);
+    void fn_0053482b(long index);
+    void fn_00534855(std::vector< fn_00534461_entry* >* list, long index, char* group);
 
     tString field_00;
     long field_28;
@@ -322,4 +324,12 @@ void fn_005346f9_object::fn_005347f4(long value)
         if (entry->field_00 == value)
             field_3c.push_back(&entry->field_04);
     }
+}
+
+// HYPOTHESIS: looks the entry up in the first vector under the "SunNames" string group; the
+// callee runs on this same object (ecx is passed through), its return type is not known.
+// FUNCTION: STARFLEETOP 0x0053482b
+void fn_005346f9_object::fn_0053482b(long index)
+{
+    fn_00534855(&field_2c, index, "SunNames");
 }
