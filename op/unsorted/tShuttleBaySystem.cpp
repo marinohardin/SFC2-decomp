@@ -9,7 +9,7 @@ int* tShuttleBaySystem::vfunction102()
 }
 
 // FUNCTION: STARFLEETOP 0x0044e55b
-int* tShuttleBaySystem::vfunction103()
+tValue<long>* tShuttleBaySystem::vfunction103()
 {
     return &field_c4;
 }
@@ -35,7 +35,7 @@ int tShuttleBaySystem::vfunction106()
 // FUNCTION: STARFLEETOP 0x0044e577
 int tShuttleBaySystem::vfunction107()
 {
-    return field_dc;
+    return field_c4;
 }
 
 // FUNCTION: STARFLEETOP 0x0044e57e
@@ -84,4 +84,10 @@ void tShuttleBaySystem::vfunction126(int param_1)
 int tShuttleBaySystem::vfunction127()
 {
     return field_104;
+}
+
+// FUNCTION: STARFLEETOP 0x0044e5dc
+void tShuttleBaySystem::vfunction128(long param_1)
+{
+    field_c4 = param_1;
 }

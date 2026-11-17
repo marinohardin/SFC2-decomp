@@ -5,6 +5,7 @@
 #define tShuttleBaySystem_h 1
 
 #include "unsorted/tIndividualShipSystem.h"
+#include "unsorted/tValueBase.h"
 
 // HYPOTHESIS: the base is tRepairableShipSystem, as for the other ship systems; the fields
 // between +0x7c and +0xa0 are not recovered.
@@ -16,14 +17,14 @@ public:
     // vftable slot 101; returns the address of field_a0.
     virtual int* vfunction102();
     // vftable slot 102; returns the address of field_c4.
-    virtual int* vfunction103();
+    virtual tValue<long>* vfunction103();
     // vftable slot 103; returns field_b8.
     virtual int vfunction104();
     // vftable slot 104; returns field_bc.
     virtual int vfunction105();
     // vftable slot 105; returns field_c0.
     virtual int vfunction106();
-    // vftable slot 106; returns field_dc.
+    // vftable slot 106; returns field_c4's value.
     virtual int vfunction107();
     // vftable slot 107; returns field_e8.
     virtual int vfunction108();
@@ -43,6 +44,8 @@ public:
     virtual void vfunction126(int param_1);
     // vftable slot 127; returns the member vfunction126 sets.
     virtual int vfunction127();
+    // vftable slot 128; sets field_c4's value.
+    virtual void vfunction128(long param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -51,10 +54,9 @@ public:
     int field_b8;
     int field_bc;
     int field_c0;
-    // HYPOTHESIS: an object or array held by value; its type is not recovered.
-    int field_c4;
-    char padc8[0xdc - 0xc8];
-    int field_dc;
+    // HYPOTHESIS: a tValue<long>: vfunction128 sets its value at +0x18 and calls the notify
+    // step (0x006712c0) with (3, 0), the shape of tValue's assignment.
+    tValue<long> field_c4;
     char pade0[0xe8 - 0xe0];
     int field_e8;
     char padec[0xf4 - 0xec];
