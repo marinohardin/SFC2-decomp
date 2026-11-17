@@ -6,6 +6,7 @@ class fn_004033ab_Ifstream : public std::istream
 {
 public:
     fn_004033ab_Ifstream(const char* name, int mode);
+    ~fn_004033ab_Ifstream();
     std::filebuf _Fb;
 };
 
@@ -15,4 +16,9 @@ fn_004033ab_Ifstream::fn_004033ab_Ifstream(const char* name, int mode)
 {
     if (_Fb.open(name, mode | in) == 0)
         setstate(failbit);
+}
+
+// FUNCTION: STARFLEETOP 0x0040345f
+fn_004033ab_Ifstream::~fn_004033ab_Ifstream()
+{
 }
