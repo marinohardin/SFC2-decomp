@@ -700,3 +700,16 @@ template<> void _Construct( tServCharacter::tShipCache* _P, const tServCharacter
 	new ((void*)_P) tServCharacter::tShipCache(_V);
 }
 };
+
+#include <utility>
+#include "unsorted/tHexPoint.h"
+
+// HYPOTHESIS: the library's _Construct for the 0x1c-byte value of fn_0042c053_Tree, taken to be
+// the std::map< std::pair< int, int >, tHexPoint > that fn_0042a480_object::FUN_0042ac56 returns:
+// two ints copied, then tHexPoint's copy constructor at +8.
+// FUNCTION: STARFLEETOP 0x0042c948
+void fn_0042c948(void* dest, const void* src)
+{
+	typedef std::pair< const std::pair< int, int >, tHexPoint > tValue;
+	new (dest) tValue(*(const tValue*)src);
+}
