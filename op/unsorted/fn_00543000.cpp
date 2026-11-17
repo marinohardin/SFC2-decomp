@@ -66,6 +66,7 @@ public:
 	fn_005419e4_entry(const fn_005419e4_entry &other);
 	~fn_005419e4_entry();
 	bool fn_005419e4() const;
+	nDatabase::tID fn_005419ed() const;
 	char m_00[0x4c];
 };
 
@@ -168,6 +169,7 @@ public:
 	bool fn_00543711(int value);
 	bool fn_00543720(int value);
 	bool fn_0054372f(int source);
+	void fn_005437a5(const nDatabase::tID &id);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -621,4 +623,20 @@ bool fn_005430ad_owner::fn_0054372f(int source)
 {
 	(*m0f0.Lock()).push_back(fn_005419e4_entry(source));
 	return true;
+}
+
+// HYPOTHESIS: removes every entry of the guarded vector at +0xf0 whose tID equals the argument.
+// FUNCTION: STARFLEETOP 0x005437a5
+void fn_005430ad_owner::fn_005437a5(const nDatabase::tID &id)
+{
+	fn_0042c709_iptr list = m0f0.Lock();
+	std::vector< fn_005419e4_entry >::iterator it = (*list).begin();
+	while ( it != (*list).end() )
+	{
+		if ( it->fn_005419ed() == id )
+			it = (*list).erase( it );
+		else
+			it++;
+	}
+	list.Done();
 }
