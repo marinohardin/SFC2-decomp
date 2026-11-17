@@ -191,3 +191,9 @@ void fn_0049653d()
 void fn_00496551()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x00496565
+// HYPOTHESIS: 0x00496565 is the tail (fstp [0x009172b4]; ret) of the same global float initializer (analysis boundary); body is a placeholder.
+void fn_00496565()
+{
+}
