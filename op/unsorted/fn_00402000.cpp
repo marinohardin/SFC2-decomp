@@ -497,24 +497,29 @@ char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
     return m4 + pos;
 }
 
+struct fn_004029e8_Alloc
+{
+};
+
 class fn_004029e8_Obj
 {
 public:
-    fn_004029e8_Obj* fn_004029e8(fn_004029e8_Obj* dst, unsigned int pos, unsigned int n);
+    fn_004029e8_Obj(const fn_004029e8_Obj& x, unsigned int pos, unsigned int n, const fn_004029e8_Alloc& a = fn_004029e8_Alloc())
+        : m0(a)
+    {
+        fn_005da20a(false);
+        fn_00403b49(x, pos, n);
+    }
+    ~fn_004029e8_Obj();
+    fn_004029e8_Obj fn_004029e8(unsigned int pos, unsigned int n) const;
     void fn_005da20a(bool);
     void fn_00403b49(const fn_004029e8_Obj&, unsigned int, unsigned int);
-    char m0;
+    fn_004029e8_Alloc m0;
 };
 
-// HYPOTHESIS: a std::string substring constructor; the first byte stored is read from the stack argument's own bytes
+// HYPOTHESIS: std::string::substr(pos, n), returning basic_string(*this, pos, n); m0 is the allocator copied from a default temporary
 // FUNCTION: STARFLEETOP 0x004029e8
-fn_004029e8_Obj* fn_004029e8_Obj::fn_004029e8(fn_004029e8_Obj* dst, unsigned int pos, unsigned int n)
+fn_004029e8_Obj fn_004029e8_Obj::fn_004029e8(unsigned int pos, unsigned int n) const
 {
-    char c = ((char*)&dst)[3];
-    unsigned int tmp = 0;
-    unsigned int* q = &tmp;
-    dst->m0 = c;
-    dst->fn_005da20a(false);
-    dst->fn_00403b49(*this, pos, n);
-    return dst;
+    return fn_004029e8_Obj(*this, pos, n);
 }

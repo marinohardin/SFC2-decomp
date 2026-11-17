@@ -228,10 +228,10 @@
   },
   "0x004029e8": {
    "name": "FUN_004029e8",
-   "symbol": "?fn_004029e8@fn_004029e8_Obj@@QAEPAV1@PAV1@II@Z",
+   "symbol": "?fn_004029e8@fn_004029e8_Obj@@QBE?AV1@II@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 51,
-   "score": 32.619,
+   "score": 99.565,
    "exact": false,
    "recorded": "2026-11-16"
   },
