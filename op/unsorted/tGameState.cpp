@@ -112,6 +112,7 @@ void tGameState::vfunction16(int *param_1)
 
 tGameState *fn_0046a59a();
 bool fn_0046a62d(int param_1);
+bool fn_0046a62d(const char *param_1);
 
 // FUNCTION: STARFLEETOP 0x00469e0c
 bool tGameState::vfunction17(int param_1)
@@ -182,4 +183,41 @@ void fn_00469e4d()
 	{
 		fn_0069ab80(&g_0090db88, &g_0090db8c, g_0090db90, g_0090db94);
 	}
+}
+
+// HYPOTHESIS: the object returned by fn_0040c28c and the global at 0x0090db70 are of unidentified classes.
+class fn_0040c28c_object
+{
+public:
+	int fn_006fe8a0(int);
+	int fn_0069aa00(int);
+};
+
+class fn_0090db70_owner
+{
+public:
+	char fn_00672b60(fn_0040c28c_object *, int);
+};
+
+fn_0040c28c_object *fn_0040c28c();
+extern fn_0090db70_owner g_0090db70;
+void fn_00464be8();
+void fn_00469ab8(int *a);
+extern int g_0090db48;
+
+// FUNCTION: STARFLEETOP 0x00469e75
+char fn_00469e75(int param_1, int param_2)
+{
+	fn_0040c28c_object *obj = fn_0040c28c();
+	int a = obj->fn_006fe8a0(1);
+	int b = obj->fn_0069aa00(a);
+	if (g_0090db70.fn_00672b60(obj, b) == 0)
+		return 0;
+	g_0090db9c = 0;
+	g_0090db90 = param_1;
+	g_0090db94 = param_2;
+	fn_00464be8();
+	fn_00469ab8(&g_0090db48);
+	fn_0046a62d("startup");
+	return 1;
 }
