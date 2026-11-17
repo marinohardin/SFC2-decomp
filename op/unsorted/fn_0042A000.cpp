@@ -100,6 +100,7 @@ public:
 	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
 	bool FUN_0042a41a();
 	bool FUN_0042a421( int key0, int key1 );
+	void FUN_0042a709( int key0, int key1 );
 
 	byte field_00[0x98];
 	unsigned long field_98;
@@ -308,4 +309,10 @@ void fn_0042a480_object::FUN_0042a6ea( const tHexPoint& value )
 void fn_0042a480_object::FUN_0042a6fc( bool value )
 {
 	field_9c = value;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a709
+void fn_0042a403_object::FUN_0042a709( int key0, int key1 )
+{
+	field_a0[std::pair< int, int >( key0, key1 )] = true;
 }
