@@ -636,3 +636,13 @@ int32u& fn_0053a6cc_map::operator[]( const int& key )
 	std::pair< iterator, bool > result = insert( value_type( key, int32u() ) );
 	return (*result.first).second;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a6cc
+fn_0053a6cc_map::tree::~tree()
+{
+	erase( iterator( m_head->left ), iterator( m_head ) );
+	operator delete( m_head );
+	m_head = 0, m_size = 0;
+	operator delete( m_nil );
+	m_nil = 0;
+}

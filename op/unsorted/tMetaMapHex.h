@@ -122,6 +122,8 @@ struct fn_0053a6cc_map
 			: m_alloc( al ), m_comp( pred ), m_multi( multi ) { fn_0042511e(); }
 		void fn_0042511e();
 		~tree();
+		// HYPOTHESIS: the out-of-line range erase 0x0053a90d.
+		iterator erase( iterator first, iterator last );
 		std::allocator< int32 > m_alloc;
 		std::less< int32 > m_comp;
 		char	m_pad[2];
