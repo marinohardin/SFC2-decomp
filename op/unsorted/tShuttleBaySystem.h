@@ -60,6 +60,8 @@ public:
     virtual void vfunction123(long param_1);
     // HYPOTHESIS: the analysis's name; stores param_1 into field_bc (vfunction105 returns it).
     virtual void vfunction124(int param_1);
+    // HYPOTHESIS: the analysis's name; stores param_1 into field_c0 (vfunction106 returns it).
+    virtual void vfunction125(int param_1);
     // HYPOTHESIS: the slots between 117 and 126 are not recovered; vfunction126 is the
     // analysis's name. Stores param_1 into a member.
     virtual void vfunction126(int param_1);
