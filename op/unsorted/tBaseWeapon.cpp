@@ -262,3 +262,14 @@ void tBaseWeapon::vfunction123(float* param_1)
             param_1[i + 1] = vfunction135(i);
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d78b0
+bool tBaseWeapon::vfunction128(short param_1, short param_2)
+{
+    if (field_130 >= 6)
+        return false;
+    field_118[field_130][0] = param_1;
+    field_118[field_130][1] = param_2;
+    field_130++;
+    return true;
+}

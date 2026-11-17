@@ -192,7 +192,8 @@ public:
     virtual void vfunction125();
     virtual void vfunction126();
     virtual void vfunction127();
-    virtual void vfunction128();
+    // HYPOTHESIS: appends a pair of shorts to a list of at most six at offset 0x114.
+    virtual bool vfunction128(short param_1, short param_2);
     virtual void vfunction129();
     virtual void vfunction130();
     virtual void vfunction131();
@@ -234,7 +235,9 @@ public:
     int field_e8;
     char pad_ec[0xc];
     int field_f8;
-    char pad_fc[0x38];
+    char pad_fc[0x1c];
+    short field_118[6][2];
+    int field_130;
     short field_134;
     char pad_136[0x12];
     // HYPOTHESIS: a part at offset 0x148 whose method 0x004d7099 takes a float.
