@@ -268,3 +268,44 @@ template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M,
 
 // MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
 void (std::vector<fn_0040441e_Elem>::*fn_0040441e_Insert)(std::vector<fn_0040441e_Elem>::iterator, std::vector<fn_0040441e_Elem>::size_type, const fn_0040441e_Elem&) = &std::vector<fn_0040441e_Elem>::insert;
+
+// HYPOTHESIS: std::vector<std::string>::insert(pos, n, x), the out-of-line copy of the library's
+// member, written as a specialization with the header's body.
+// FUNCTION: STARFLEETOP 0x00404695
+template<> void std::vector<std::string>::insert(iterator _P, size_type _M, const std::string& _X)
+{
+    if (_End - _Last < _M)
+    {
+        size_type _N = size() + (_M < size() ? size() : _M);
+        iterator _S = allocator.allocate(_N, (void *)0);
+        iterator _Q = _Ucopy(_First, _P, _S);
+        _Ufill(_Q, _M, _X);
+        _Ucopy(_P, _Last, _Q + _M);
+        _Destroy(_First, _Last);
+        allocator.deallocate(_First, _End - _First);
+        _End = _S + _N;
+        _Last = _S + size() + _M;
+        _First = _S;
+    }
+    else
+    {
+        if (_Last - _P < _M)
+        {
+            _Ucopy(_P, _Last, _P + _M);
+            _Ufill(_Last, _M - (_Last - _P), _X);
+            fill(_P, _Last, _X);
+        }
+        else if (0 < _M)
+        {
+            _Ucopy(_Last - _M, _Last, _Last);
+            copy_backward(_P, _Last - _M, _Last);
+            fill(_P, _P + _M, _X);
+        }
+        else
+            return;
+        _Last += _M;
+    }
+}
+
+// MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
+void (std::vector<std::string>::*fn_00404695_Insert)(std::vector<std::string>::iterator, std::vector<std::string>::size_type, const std::string&) = &std::vector<std::string>::insert;
