@@ -15,6 +15,8 @@ public:
 
     // HYPOTHESIS: called first in the destructor; a cleanup step.
     void fn_0043e09e();
+    // HYPOTHESIS: adds an entity ID to the list at +0x1e0.
+    void fn_0043e0ed(int param_1);
 
     char pad80[0x8c - 0x80];
     tMinMaxFloat field_8c;
@@ -23,7 +25,10 @@ public:
     tMinMaxFloat field_f8;
     tMinMaxFloat field_11c;
     tMinMaxFloat field_140;
-    char pad164[0x1e0 - 0x164];
+    char pad164[0x1d9 - 0x164];
+    // HYPOTHESIS: the number of entries of field_1e0 in use (read with movsx).
+    char field_1d9;
+    char pad1da[0x1e0 - 0x1da];
     // HYPOTHESIS: twelve entity IDs; 0x0043e09e looks each up in the entity table.
     int field_1e0[12];
 };
@@ -78,5 +83,62 @@ void tSensorGroupSystem::fn_0043e09e()
         fn_0043e09e_entity* entity = (fn_0043e09e_entity*)gObject_008e1060.fn_004249d3(field_1e0[i]);
         if (entity != 0)
             entity->vfunction27(vfunction37(0, 100, 0, 0));
+    }
+}
+
+// HYPOTHESIS: the object fn_004274f4 returns; tFleetEntry.cpp declares it as tObject_004274f4
+// (only in that unit), whose fn_005254c2 this function calls with an entity ID.
+class fn_004274f4_result
+{
+public:
+    void fn_005254c2(int param_1);
+};
+
+// HYPOTHESIS: the object the pointer at 0x0096908c names; tFleetEntry.cpp and tFleetPanel.cpp
+// declare it in their own units. Slot 5 plays a sound by name with a volume.
+class fn_0096908c_type
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6(const char* name, const char* param_2, float param_3); // slot 5
+};
+extern fn_0096908c_type* g_0096908c;
+extern const char g_sz0079bfbc[];
+extern float g_00795bf0;
+
+// FUNCTION: STARFLEETOP 0x0043e0ed
+void tSensorGroupSystem::fn_0043e0ed(int param_1)
+{
+    vfunction33_result* owner = field_2c->vfunction108();
+    if (gObject_008e1060.fn_004235f0(owner->field_1c))
+    {
+        fn_004274f4_result* orders = (fn_004274f4_result*)gObject_0090be60->fn_004274f4(owner->field_60);
+        if (orders != 0)
+        {
+            orders->fn_005254c2(param_1);
+            return;
+        }
+        int i;
+        for (i = 0; i < field_1d9; i++)
+        {
+            if (field_1e0[i] == -1)
+            {
+                field_1e0[i] = param_1;
+                return;
+            }
+        }
+        int id = field_2c->vfunction108()->field_1c;
+        if (gObject_008e1060.fn_00525081() == id)
+            g_0096908c->vfunction6("MissileLost", g_sz0079bfbc, g_00795bf0);
+        fn_0043e09e_entity* entity = (fn_0043e09e_entity*)gObject_008e1060.fn_004249d3(field_1e0[0]);
+        if (entity != 0)
+            entity->vfunction27(vfunction37(0, 100, 0, 0));
+        for (i = 0; i < field_1d9 - 1; i++)
+            field_1e0[i] = field_1e0[i + 1];
+        field_1e0[i] = param_1;
     }
 }

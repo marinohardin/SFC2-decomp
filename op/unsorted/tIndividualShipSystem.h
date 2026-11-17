@@ -12,7 +12,10 @@ struct vfunction33_result
 {
     char pad00[0x1c];
     int field_1c;
-    char pad20[0x110 - 0x20];
+    char pad20[0x60 - 0x20];
+    // HYPOTHESIS: a fleet ID; 0x0043e0ed passes it to fn_004274f4.
+    int field_60;
+    char pad64[0x110 - 0x64];
     bool field_110;
     char pad111[0x86c - 0x111];
     // HYPOTHESIS: a kind or index read by tShieldSystem to pick a sound event.
