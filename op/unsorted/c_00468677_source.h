@@ -77,7 +77,8 @@ public:
 	virtual void vfunction62();
 	virtual void vfunction63();
 	virtual void vfunction64();
-	virtual void vfunction65();
+	// HYPOTHESIS: takes one argument; tState_NetSetup::fn_00476c89 passes 0.
+	virtual void vfunction65(int arg);
 	virtual void vfunction66();
 	virtual void vfunction67();
 	virtual tString *vfunction68();

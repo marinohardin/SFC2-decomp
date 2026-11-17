@@ -88,8 +88,9 @@ public:
 	// HYPOTHESIS: stores an address setting under the given key; callee pops its arguments.
 	void fn_00476aee(c_00468677_source *control, const char *key);
 	void fn_00476c64();
+	void fn_00476c89();
 	// HYPOTHESIS: fills the control kept at the first pointer from the second; callee pops.
-	void fn_00476d52(int *control, void *source, int id);
+	void fn_00476d52(c_00468677_source **control, void *source, int id);
 	void fn_00477440();
 	void fn_00477689();
 
@@ -111,10 +112,12 @@ public:
 	tValueI< tString > m15c;
 	tValueI< tString > m19c;
 	c_00468677_source *m1dc;
-	int m1e0;
+	// HYPOTHESIS: m1e0, m1e8 and m1ec are controls of the same kind as m1dc (fn_00476c89 calls
+	// slot 65 on them).
+	c_00468677_source *m1e0;
 	c_00468677_source *m1e4;
-	int m1e8;
-	int m1ec;
+	c_00468677_source *m1e8;
+	c_00468677_source *m1ec;
 	int m1f0;
 	char *m1f4;
 	// HYPOTHESIS: names the state hands to fn_004d32c4 on exit, as in tState_GameConnections.
@@ -433,4 +436,15 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c64()
 	fn_004d3340(g_008493b0);
 	fn_004d3340(g_008493b8);
 	fn_004d3340(g_008493c0);
+}
+
+// FUNCTION: STARFLEETOP 0x00476c89
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c89()
+{
+	m1e0->vfunction65(0);
+	fn_004d34c5(0x1000e, 0);
+	m1e8->vfunction65(0);
+	m1ec->vfunction65(0);
+	fn_004d34c5(0x1001e, 0);
+	fn_004d34c5(0x1001f, 0);
 }
