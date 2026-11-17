@@ -106,8 +106,30 @@ template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int
 	}
 }
 
+// The game's out-of-line copy of the library's tree range erase, for a third tree.
+// HYPOTHESIS: the tree's type is not known; a map of int to string stands in. 0x005fb6e5 is its _Erase,
+// 0x005fb47a its single-element erase.
+// FUNCTION: STARFLEETOP 0x005fb259
+template<> std::_Tree<int, std::pair<const int, std::string>, std::map<int, std::string>::_Kfn, std::less<int>, std::allocator<std::string> >::iterator std::_Tree<int, std::pair<const int, std::string>, std::map<int, std::string>::_Kfn, std::less<int>, std::allocator<std::string> >::erase( iterator _F, iterator _L )
+{
+	if ( size() == 0 || _F != begin() || _L != end() )
+	{
+		while ( _F != _L )
+			erase( _F++ );
+		return ( _F );
+	}
+	else
+	{
+		_Erase( _Root() );
+		_Root() = _Nil, _Size = 0;
+		_Lmost() = _Head, _Rmost() = _Head;
+		return ( begin() );
+	}
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
 template class std::map<int, std::vector<int> >;
 template class std::vector<std::string>;
+template class std::map<int, std::string>;
