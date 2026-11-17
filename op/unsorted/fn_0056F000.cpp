@@ -692,3 +692,11 @@ void fn_0056f961_owner::fn_0056f961(void *key, fn_0056f961_result *result)
 	result->vfunction9();
 	guard.Leave();
 }
+
+class tMetaMapDesc;
+
+// HYPOTHESIS: the destructor of nDatabase::tQuery<tMetaMapDesc>, as 0x0056f041 is for tServCharacter.
+// FUNCTION: STARFLEETOP 0x0056f9b9
+nDatabase::tQuery<tMetaMapDesc>::~tQuery()
+{
+}
