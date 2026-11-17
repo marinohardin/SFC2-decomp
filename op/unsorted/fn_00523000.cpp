@@ -86,3 +86,32 @@ char fn_0090bed4_Object::fn_0052310b(int param_1, int param_2, int param_3)
 		return 0;
 	return fn_0052315a(p1, p2, param_3);
 }
+
+// HYPOTHESIS: tAICaptain (declared only in tAICaptain.cpp) is what 0x0051c1f3 returns.
+class tObject_0051e3ac
+{
+public:
+	bool fn_0051e3ac(int param_1, int param_2);
+};
+
+class tObject_0051c1f3
+{
+public:
+	tObject_0051e3ac *fn_0051c1f3(int param_1);
+};
+
+// FUNCTION: STARFLEETOP 0x0052315a
+// HYPOTHESIS: the two arguments are objects whose +0x60 and +0x1c fields are IDs.
+char fn_0090bed4_Object::fn_0052315a(void *param_1, void *param_2, int param_3)
+{
+	char result = 0;
+	tObject_0051c1f3 *pObject = (tObject_0051c1f3 *) fn_00523543(*(int *) ((char *) param_1 + 0x60));
+	if (pObject != NULL) {
+		tObject_0051e3ac *pCaptain = pObject->fn_0051c1f3(*(int *) ((char *) param_1 + 0x1c));
+		if (pCaptain != NULL) {
+			int id = *(int *) ((char *) param_2 + 0x1c);
+			result = pCaptain->fn_0051e3ac(id, param_3);
+		}
+	}
+	return result;
+}
