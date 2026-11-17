@@ -6,6 +6,7 @@
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tValueI.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/c_0046aa10_msg.h"
 #include <vector>
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
@@ -13,6 +14,7 @@ void fn_004be81f(int arg);
 void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
 void fn_004d3774(int id);
 void fn_004d32c4(const char *name);
+bool fn_0046a9e2();
 
 // HYPOTHESIS: the name of the screen the state shows, a global handed with it to fn_004d31ed,
 // and a value the state resets to 10 (as tState_GameConnections resets its own).
@@ -42,6 +44,8 @@ public:
 	virtual void vfunction12();
 	// HYPOTHESIS: returns the state's name.
 	virtual char *vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15(c_0046aa10_message *msg);
 
 	void fn_004764ed();
 	void fn_00477440();
@@ -122,6 +126,33 @@ bool tState_NetSetup::vfunction4()
 	m1e0 = 0;
 	m1e4 = 0;
 	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x00476453
+void tState_NetSetup::vfunction15(c_0046aa10_message *msg)
+{
+	switch (msg->m_04)
+	{
+	case 'C':
+	case 'c':
+		if (fn_0046a9e2())
+			msg->id = 0x10003;
+		break;
+	case 'V':
+	case 'v':
+		if (fn_0046a9e2())
+			msg->id = 0x10002;
+		break;
+	case 0x101:
+		msg->id = 0x10023;
+		break;
+	case 0x102:
+		fn_004d3774(0x10020);
+		break;
+	case 0x103:
+		msg->id = 0x102;
+		break;
+	}
 }
 
 }	// namespace tState_Namespace_NetSetup
