@@ -3,6 +3,7 @@
 #include "Tiger/tbasicfile.h"
 #include "dmp3d/common/stream_basicfile.h"
 #include <string.h>
+#include <vector>
 
 // HYPOTHESIS: each visual is linked into the list headed at 0x008f5974. Member names
 // are not known.
@@ -20,6 +21,9 @@ public:
 // HYPOTHESIS: one 0x24-byte entry of the array at +0x158.
 struct tEntry_0042f918
 {
+	// HYPOTHESIS: an empty constructor; 0x004301e9's new[] keeps the count of its elided loop.
+	tEntry_0042f918() {}
+
 	unsigned char mFlags;
 	char m01[0x13];
 	int m14;
@@ -635,5 +639,31 @@ void t3DVisual_Model::fn_004301bd(unsigned long size, tStream_BasicFile *stream)
 	{
 		m154 = new char[size];
 		stream->mGet(m154, size);
+	}
+}
+
+// HYPOTHESIS: reads one entry of the array at +0x158 from the stream.
+void fn_0042de34(tStream_BasicFile *stream, tEntry_0042f918 *entry);
+
+// FUNCTION: STARFLEETOP 0x004301e9
+void t3DVisual_Model::fn_004301e9(unsigned long size, tStream_BasicFile *stream)
+{
+	std::vector<tEntry_0042f918> entries;
+	unsigned long start = stream->fn_006a2da0();
+	while (stream->fn_006a2da0() - start < size)
+	{
+		tEntry_0042f918 entry;
+		fn_0042de34(stream, &entry);
+		entries.push_back(entry);
+	}
+	m15c = entries.size();
+	if (m15c != 0)
+		m158 = new tEntry_0042f918[m15c];
+	else
+		m158 = 0;
+	if (m158 != 0)
+	{
+		for (unsigned int i = 0; i < entries.size(); i++)
+			m158[i] = entries[i];
 	}
 }
