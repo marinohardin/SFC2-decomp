@@ -1332,3 +1332,21 @@ int fn_00585f75_owner::fn_00585f75()
 	fAccess.Leave();
 	return value;
 }
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x90; its name is not known.
+class fn_00585f90_owner {
+public:
+	int fn_00585f90();
+	tOptex fAccess;
+	char fn_00585f90_pad0[0x90 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f90
+int fn_00585f90_owner::fn_00585f90()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
