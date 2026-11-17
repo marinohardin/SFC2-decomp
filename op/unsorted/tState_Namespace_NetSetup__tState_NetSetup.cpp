@@ -393,3 +393,35 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476997(c_00468677_source *
 		control->vfunction54(text, -1, 0, -1);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00476aee
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00476aee(c_00468677_source *control, const char *name)
+{
+	tString prefix("Entry#");
+	tString key;
+	tString text;
+
+	int count = control->vfunction44();
+	g_p008cc580->vfunction6(name, "NumOfEntries", count);
+	int entry = 0;
+	int selected = control->vfunction70();
+	tString *current = control->vfunction68();
+
+	for (int i = count - 1; i >= 0; i--)
+	{
+		if (i == selected)
+			continue;
+		key = prefix;
+		key.mAppendInt32s(entry, 1);
+		tString *line = control->vfunction56(i);
+		text = *line;
+		if (line)
+			g_p008cc580->vfunction10(name, key.mCharStr(), text.mCharStr());
+		entry++;
+	}
+
+	key = prefix;
+	key.mAppendInt32s(entry, 1);
+	if (current)
+		g_p008cc580->vfunction10(name, key.mCharStr(), current->mCharStr());
+}
