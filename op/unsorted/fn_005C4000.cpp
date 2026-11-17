@@ -1441,6 +1441,24 @@ int fn_005c478f_Holder::FUN_005c4e1c()
 	return value;
 }
 
+// Inline in the SDK; Optex.h declares it only. The out-of-line copy is claimed in
+// tClientCharacter.cpp. Its body only calls C functions, so the compiler knows it cannot throw
+// and the string below needs no unwind state of its own.
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
+		} else {
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
+		}
+	}
+}
+
 // Inline in the SDK; Optex.h declares it only.
 inline tOptex::tGuard::~tGuard()
 {
@@ -1454,5 +1472,5 @@ std::string fn_005c478f_Holder::FUN_005c4e3c()
 {
 	tOptex::tGuard guard(&m04);
 	// HYPOTHESIS: copies the std::string at offset 0x364 under the lock.
-	return std::string(*(std::string*)((char*)this + 0x364));
+	return *(std::string*)((char*)this + 0x364);
 }
