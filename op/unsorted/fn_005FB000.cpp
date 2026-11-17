@@ -598,6 +598,14 @@ tMemberCallback< tMetaClientChatCtlrC, const std::string& > CreateCallback( tMet
 	return tMemberCallback< tMetaClientChatCtlrC, const std::string& >( object, func );
 }
 
+// MATCH-ONLY: the SDK's template destructor, written out as this instance's inline explicit
+// specialization so that its annotation names the one instance. Its body (storing the base
+// vtable) is the same as ~tCallback's, which the analysis names at this address.
+// FUNCTION: STARFLEETOP 0x005fba2f
+template<>
+inline tMemberCallback< tMetaClientChatCtlrC, const std::string& >::~tMemberCallback()
+{}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
