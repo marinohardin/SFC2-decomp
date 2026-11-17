@@ -524,3 +524,20 @@ fn_005f74a6_entry& fn_005f7c17_iterator::FUN_005f7c17()
 	}
 	return fOwner->field_04[block][index];
 }
+
+// FUNCTION: STARFLEETOP 0x005f7c4b
+void fn_005f7961_object::FUN_005f7c4b()
+{
+	if ( field_10 != 0 ) {
+		unsigned int off = field_0c + field_10 - 1;
+		unsigned int block = off / 204;
+		if ( field_08 <= block ) {
+			block -= field_08;
+		}
+		fn_0055fe12_value* p = field_04[block] + off % 204;
+		p->~fn_0055fe12_value();
+		if ( --field_10 == 0 ) {
+			field_0c = 0;
+		}
+	}
+}
