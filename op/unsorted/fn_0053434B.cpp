@@ -308,3 +308,18 @@ void fn_005346f9_object::fn_005347bd(long value)
             field_2c.push_back(&entry->field_04);
     }
 }
+
+// HYPOTHESIS: a second table of twenty entries at 0x0085a388, right after the first, whose
+// matches are appended to the second vector.
+extern fn_005347bd_entry g_0085a388[20];
+
+// FUNCTION: STARFLEETOP 0x005347f4
+void fn_005346f9_object::fn_005347f4(long value)
+{
+    fn_005347bd_entry* entry = g_0085a388;
+    for (int n = 20; n != 0; n--, entry++)
+    {
+        if (entry->field_00 == value)
+            field_3c.push_back(&entry->field_04);
+    }
+}
