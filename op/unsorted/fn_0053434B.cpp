@@ -2,6 +2,7 @@
 // Functions: 0x0053434b to 0x00534e70 (op/UNITS.tsv); original file unknown.
 
 #include "Tiger/tstring.h"
+#include "Tiger/tstringtag.h"
 
 // HYPOTHESIS: owning class unknown; only the long at +0x44 is evidenced.
 class fn_0053434b_object
@@ -24,3 +25,22 @@ long fn_0053434b_object::fn_0053434b() const
 // FUNCTION: STARFLEETOP 0x0053439b
 // FUNCTION: STARFLEETOP 0x00534391
 tString g_00c2f3f8;
+
+// HYPOTHESIS: a __thiscall on an object whose first member is a tString and which returns
+// itself; the owning class is not known.
+class fn_005343b1_object
+{
+public:
+    fn_005343b1_object& fn_005343b1(char* spec, long index);
+
+    tString field_00;
+};
+
+// FUNCTION: STARFLEETOP 0x005343b1
+fn_005343b1_object& fn_005343b1_object::fn_005343b1(char* spec, long index)
+{
+    tStringGroupTag* group = new tStringGroupTag(spec);
+    field_00 = group->mGetString(index);
+    delete group;
+    return *this;
+}
