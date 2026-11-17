@@ -71,3 +71,16 @@ int fn_004bd5bc( void )
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x004bd645
+int fn_004bd645( tString *text )
+{
+	int id = fn_00675ec0( tString( g_0091f8d0.c_str() ) );
+	if ( id )
+	{
+		tListBox_Base *list = dynamic_cast< tListBox_Base * >( g_p00c690d0 ? g_p00c690d0->fn_00674750( id ) : 0 );
+		if ( list )
+			return list->fn_004be24a( text );
+	}
+	return 0;
+}
