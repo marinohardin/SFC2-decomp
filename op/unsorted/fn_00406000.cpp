@@ -163,3 +163,17 @@ bool fn_00406487(char _C, const std::locale& _L)
 {
     return fn_00404b5e(_L, 0, true).is(std::ctype_base::digit, _C);
 }
+
+// HYPOTHESIS: tFighterSpec is declared only here; the argument is its copy source.
+class tFighterSpec
+{
+public:
+    tFighterSpec(const tFighterSpec&);
+};
+
+// HYPOTHESIS: the library allocator's construct() instantiation for tFighterSpec.
+// FUNCTION: STARFLEETOP 0x004064a8
+void fn_004064a8(tFighterSpec* _P, const tFighterSpec& _V)
+{
+    new ((void*)_P) tFighterSpec(_V);
+}
