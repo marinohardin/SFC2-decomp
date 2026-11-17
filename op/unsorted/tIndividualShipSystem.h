@@ -204,10 +204,10 @@ public:
     // vftable slots 1..45, not yet identified
     virtual void vfunction2();
     virtual void vfunction3();
-    virtual void vfunction4();
-    virtual void vfunction5();
-    virtual void vfunction6();
-    virtual void vfunction7();
+    virtual tListMember *vfunction4();
+    virtual tListMember *vfunction5();
+    virtual void vfunction6(tListMember *aMember);
+    virtual void vfunction7(tListMember *aMember);
     virtual void vfunction8();
     virtual void vfunction9();
     virtual void vfunction10();
