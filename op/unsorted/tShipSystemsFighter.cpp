@@ -103,7 +103,7 @@ public:
     virtual int vfunction83();
     virtual int vfunction84();
     virtual int vfunction85();
-    virtual void vfunction86();
+    virtual int vfunction86();
     virtual int vfunction87();
     virtual void vfunction88();
     virtual void vfunction89();
