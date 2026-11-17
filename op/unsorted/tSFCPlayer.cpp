@@ -237,6 +237,7 @@ class tSFCPlayer
 		virtual void vfunction69();
 		virtual void vfunction70(char *param_1);
 		virtual void vfunction71();
+		char fn_004d0f80(int param_1);
 		virtual void vfunction72() = 0;
 		virtual void vfunction73() = 0;
 		virtual void vfunction74() = 0;
@@ -1249,6 +1250,23 @@ void tSFCPlayer::vfunction71()
 {
 	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
 	tShipSpecs specs;
+}
+// HYPOTHESIS: 0x004d0f80 is the tail of vfunction71 split off by the analysis; the callee at 0x00599af1 is a lookup in the list; its signature is a guess.
+void fn_00599af1(int *result, char **key);
+// FUNCTION: STARFLEETOP 0x004d0f80
+char tSFCPlayer::fn_004d0f80(int param_1)
+{
+	char found = 0;
+	tShipSpecs specs;
+	if (fn_0040a621(param_1, &specs) && specs.m_0c != -2 && specs.m_0c < 0x12 && specs.m_10 != -1 && specs.m_10 < 0x18) {
+		char *key = specs.m_14;
+		int node = (int)m_61a8[specs.m_0c][specs.m_10].m_04;
+		int result;
+		fn_00599af1(&result, &key);
+		if (result != node)
+			found = 1;
+	}
+	return found;
 }
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }

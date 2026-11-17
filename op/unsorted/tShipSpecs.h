@@ -7,7 +7,10 @@ class tShipSpecs
 	public:
 		tShipSpecs();
 		~tShipSpecs();
-		char m_00[0x5dc];
+		char m_00[0xc];
+		int m_0c;
+		int m_10;
+		char m_14[0x5dc - 0x14];
 		int m_5dc;
 		char m_5e0[0x6ac - 0x5e0];
 };
