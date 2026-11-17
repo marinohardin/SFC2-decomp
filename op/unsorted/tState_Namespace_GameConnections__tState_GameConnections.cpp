@@ -86,6 +86,29 @@ extern const char *g_00844e9c;
 void fn_0040fa40(const std::string &name, int n);
 void fn_0046aa58();
 
+// HYPOTHESIS: tables of control names fn_00469271 registers with fn_004d35e3; cdecl helpers
+// whose meaning is not known. fn_004d35ac binds a value object to a control name.
+struct s_00844ed0_entry
+{
+	const char *name;
+	const char *group;
+};
+struct s_00844fd0_entry
+{
+	const char *name;
+	const char *group;
+	int n;
+};
+extern s_00844ed0_entry g_00844ed0[];
+extern s_00844fd0_entry g_00844fd0[];
+extern const char *g_00845018;
+extern const char *g_0084501c;
+extern const char *g_00845020;
+extern const char *g_00845024;
+extern const char *g_00845028;
+void fn_004d35e3(const char *name, const char *group, int n);
+void fn_004d35ac(tValueBase *value, const char *name);
+
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
 
@@ -774,6 +797,34 @@ bool tState_GameConnections::fn_004690a5(int id)
 		break;
 	}
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x00469271
+void tState_GameConnections::fn_00469271()
+{
+	int i;
+	for (i = 0; i < 32; i++)
+		fn_004d35e3(g_00844ed0[i].name, g_00844ed0[i].group, 0);
+	for (i = 0; i < 6; i++)
+		fn_004d35e3(g_00844fd0[i].name, g_00844fd0[i].group, g_00844fd0[i].n);
+
+	m1c = tString("");
+	m5c = tString("");
+	m9c = tString("");
+	mdc = tString("");
+	m11c = tString("");
+	m15c = tString("");
+	m19c = tString("");
+
+	fn_004d35ac(&m1c, g_00845018);
+	fn_004d35ac(&m5c, g_0084501c);
+	fn_004d35ac(&m9c, g_00845020);
+	fn_004d35ac(&mdc, g_00845024);
+	fn_004d35ac(&m11c, g_00845028);
+
+	for (unsigned int j = 0; j < 6; j++)
+		fn_004d35ac(new tValueI< tString >, g_00844e4c[j]);
+	fn_004d35ac(new tValueI< tString >, g_00844e70);
 }
 
 }
