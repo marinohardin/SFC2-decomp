@@ -74,6 +74,7 @@ public:
 	void vfunction15(float scale);
 	float vfunction16();
 	int vfunction17(int index);
+	void vfunction18();
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -280,4 +281,10 @@ int t3DVisual_Model::vfunction17(int index)
 		return m124;
 	m120 = index;
 	return index;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fc40
+void t3DVisual_Model::vfunction18()
+{
+	m120 = -1;
 }
