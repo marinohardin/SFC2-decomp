@@ -43,8 +43,13 @@ class fn_0053f4c6_owner
 {
 public:
 	void fn_0053f4c6( long a, long b );
+	void fn_0053fa94( long first, long last );
+	void fn_0053f834( long pos, long first, long last );
 
 	long m_00;
+	long m_04;
+	long m_08;
+	long m_0c;
 };
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
@@ -122,7 +127,6 @@ public:
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
-	char m_5c[0x0c];
 	char m_68;
 	char m_69[3];
 	fn_0053f522_owner m_6c;
@@ -317,4 +321,14 @@ void fn_0053f491_owner::fn_0053f491()
 	m_04 = 0;
 	m_08 = 0;
 	m_0c = 0;
+}
+
+// HYPOTHESIS: a member of the class at 0x58 above (ecx passes through to both callees);
+// erases its own range at 4..8, then hands the two arguments to 0x0053f834 at its first,
+// like an assign.
+// FUNCTION: STARFLEETOP 0x0053f4c6
+void fn_0053f4c6_owner::fn_0053f4c6( long a, long b )
+{
+	fn_0053fa94( m_04, m_08 );
+	fn_0053f834( m_04, a, b );
 }
