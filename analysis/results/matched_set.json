@@ -1833,8 +1833,8 @@
    "symbol": "?fn_0040d924@@YAXPAHAAVfn_0040d63f_Buf@@@Z",
    "unit": "unsorted/fn_0040D63F.cpp",
    "size": 155,
-   "score": 20.317,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040f86c": {

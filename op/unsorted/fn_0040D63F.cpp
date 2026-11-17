@@ -233,33 +233,36 @@ void fn_0040d916(int n, fn_0040d63f_Buf& buf)
 // FUNCTION: STARFLEETOP 0x0040d924
 void fn_0040d924(int* p, fn_0040d63f_Buf& buf)
 {
-    int zero = 0;
     unsigned int v = *p;
-    unsigned char b;
-    if ((int)v < zero) {
+    unsigned char first;
+    if ((int)v < 0) {
         v = -(int)v;
-        if (v >= 0x40) {
-            b = (unsigned char)v | 0xc0;
-            goto multi;
+        if (v < 0x40) {
+            unsigned char b = (unsigned char)v | 0x40;
+            buf.fn_0040d867(&b, 1, 0);
+            return;
         }
-        b = (unsigned char)v | 0x40;
+        first = (unsigned char)v | 0xc0;
     } else {
-        if (v >= 0x40) {
-            b = ((unsigned char)v & 0x3f) | 0x80;
-            goto multi;
+        if (v < 0x40) {
+            unsigned char b = (unsigned char)v;
+            buf.fn_0040d867(&b, 1, 0);
+            return;
+        }
+        first = ((unsigned char)v & 0x3f) | 0x80;
+    }
+    // MATCH-ONLY: the block scope lets b share the dead parameter's stack slot with the
+    // single-byte cases' b, as the original's [ebp+0xb] does.
+    {
+        unsigned char b = first;
+        buf.fn_0040d867(&b, 1, 0);
+        v >>= 6;
+        while (v >= 0x80) {
+            b = (unsigned char)v | 0x80;
+            buf.fn_0040d867(&b, 1, 0);
+            v >>= 7;
         }
         b = (unsigned char)v;
+        buf.fn_0040d867(&b, 1, 0);
     }
-    buf.fn_0040d867(&b, 1, zero);
-    return;
-multi:
-    buf.fn_0040d867(&b, 1, zero);
-    v >>= 6;
-    while (v >= 0x80) {
-        b = (unsigned char)v | 0x80;
-        buf.fn_0040d867(&b, 1, zero);
-        v >>= 7;
-    }
-    b = (unsigned char)v;
-    buf.fn_0040d867(&b, 1, zero);
 }
