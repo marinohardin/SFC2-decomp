@@ -29,6 +29,8 @@ class fn_0042b0fd_owner
 public:
 	void fn_0042b0fd( long a, long b );
 	void fn_0042add2( long value );
+	void fn_0053f46d( long first, long last );
+	void fn_0053f5d9( long pos, long first, long last );
 
 	long m_00;
 	long m_04;
@@ -268,4 +270,14 @@ void fn_0053f41a()
 void fn_0053f522_owner::fn_0053f461()
 {
 	fn_0053f5ad( m_04, m_08 );
+}
+
+// HYPOTHESIS: a member of the class at 0x7c above (ecx passes through to both callees);
+// erases its own range at 4..8, then hands the two arguments to 0x0053f5d9 at its first,
+// like an assign.
+// FUNCTION: STARFLEETOP 0x0053f46d
+void fn_0042b0fd_owner::fn_0053f46d( long first, long last )
+{
+	fn_0042b0fd( m_04, m_08 );
+	fn_0053f5d9( m_04, first, last );
 }
