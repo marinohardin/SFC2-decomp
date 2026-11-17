@@ -1004,27 +1004,25 @@ void tBaseWeapon::vfunction105(int param_1)
     vfunction55((field_104 + 1) * 0x80);
 }
 
-extern float g_0079561c;
+
 
 // FUNCTION: STARFLEETOP 0x004d877a
 float tBaseWeapon::vfunction135(unsigned char param_1)
 {
+    // HYPOTHESIS: the original leaves value unset for an index above 3; VC6 gives it the
+    // argument's stack slot, which the original reads as a float in that case.
     float value;
-    // HYPOTHESIS: the original's fallthrough value is the argument slot read as a float.
-    unsigned char sel = param_1;
-    if (sel == 0) {
+    if (param_1 == 0) {
         value = field_38 - field_3c;
-    } else if (sel == 1) {
+    } else if (param_1 == 1) {
         value = field_38 - field_dc;
-    } else if (sel == 2) {
+    } else if (param_1 == 2) {
         value = field_38 - field_e0;
-    } else if (sel == 3) {
+    } else if (param_1 == 3) {
         value = field_38 - field_e4;
-    } else {
-        value = (float)param_1;
     }
-    if (field_d4 == g_0079561c) {
-        return g_0079561c;
+    if (field_d4 == 0.0f) {
+        return 0.0f;
     }
     return value / field_d4;
 }
