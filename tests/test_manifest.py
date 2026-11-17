@@ -238,6 +238,28 @@ def test_a_template_base_is_read_by_its_template_name(tmp_path):
     assert classes['tTestEval']['bases'] == ['std::unary_function']
 
 
+def test_a_library_member_is_lifted_only(tmp_path):
+    # The library's own copy of a std:: member: no declaration of its class in op/, so no guest
+    # entry point; exact, the object lift takes it.
+    source = SOURCE + ('\n// FUNCTION: STARFLEETOP 0x00401500\n'
+                       'std::string& std::string::append( const std::string& other )\n{\n\treturn *this;\n}\n')
+    game, csv = make_tree(tmp_path, source=source)
+    csv.write_text(CSV + '00401500,40,std::string::append,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'][4] == 'vc6'
+    assert 'sub_00401500' not in (tmp_path / 'out' / 'override.cpp').read_text()
+
+
+def test_an_undeclared_game_class_is_still_refused(tmp_path, capsys):
+    source = SOURCE + ('\n// FUNCTION: STARFLEETOP 0x00401500\n'
+                       'int32 tMissing::mCount()\n{\n\treturn 0;\n}\n')
+    game, csv = make_tree(tmp_path, source=source)
+    csv.write_text(CSV + '00401500,8,tMissing::mCount,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 2
+    assert 'no declaration of class tMissing' in capsys.readouterr().err
+
+
 def test_signatures_are_read_from_definition_heads():
     assert manifest.parse_signature('int32 X::Y::operator==( const char* raw_name ) const') == (
         'int32', 'X::Y::operator==', ('const char*',), ('raw_name',), True, None)
