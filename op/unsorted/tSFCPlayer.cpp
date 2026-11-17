@@ -92,6 +92,7 @@ class tObject_004cf9b3
 		~tObject_004cf9b3();
 		void fn_004d1c60(tListIterator_004cf9b3 *result, tListIterator_004cf9b3 first, tListIterator_004cf9b3 last);
 		void fn_004d1bcf(tListIterator_004cf9b3 *result, tListIterator_004cf9b3 position, char **value);
+		void fn_00599af1(tListIterator_004cf9b3 *result, char **key);
 		int size();
 		tListIterator_004cf9b3 begin();
 		tListIterator_004cf9b3 end();
@@ -1251,20 +1252,27 @@ void tSFCPlayer::vfunction71()
 	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
 	tShipSpecs specs;
 }
-// HYPOTHESIS: 0x004d0f80 is the tail of vfunction71 split off by the analysis; the callee at 0x00599af1 is a lookup in the list; its signature is a guess.
-void fn_00599af1(int *result, char **key);
+// HYPOTHESIS: 0x004d0f80 is the tail of vfunction71 split off by the analysis. In the original
+// bytes 0x0040a621 is called with ecx = 0x008949a0 and cleans its own arguments, so it is a
+// member of the object at 0x008949a0; 0x00599af1 is called on the list element (a lookup).
+class tObject_008949a0
+{
+	public:
+		bool fn_0040a621(int param_1, tShipSpecs *param_2);
+};
+extern tObject_008949a0 g_008949a0;
 // FUNCTION: STARFLEETOP 0x004d0f80
 char tSFCPlayer::fn_004d0f80(int param_1)
 {
-	char found = 0;
+	bool found = false;
 	tShipSpecs specs;
-	if (fn_0040a621(param_1, &specs) && specs.m_0c != -2 && specs.m_0c < 0x12 && specs.m_10 != -1 && specs.m_10 < 0x18) {
+	if (g_008949a0.fn_0040a621(param_1, &specs) &&specs.m_0c != -2 && specs.m_0c < 0x12 && specs.m_10 != -1 && specs.m_10 < 0x18) {
 		char *key = specs.m_14;
-		int node = (int)m_61a8[specs.m_0c][specs.m_10].m_04;
-		int result;
-		fn_00599af1(&result, &key);
-		if (result != node)
-			found = 1;
+		tListNode_004cf9b3 *node = m_61a8[specs.m_0c][specs.m_10].m_04;
+		tListIterator_004cf9b3 it;
+		m_61a8[specs.m_0c][specs.m_10].fn_00599af1(&it, &key);
+		if (it.fpNode != node)
+			found = true;
 	}
 	return found;
 }
