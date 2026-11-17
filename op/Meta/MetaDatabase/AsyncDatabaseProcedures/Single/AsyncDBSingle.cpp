@@ -6,6 +6,8 @@
 #include "unsorted/tServCharacter.h"
 #include "unsorted/tShip.h"
 #include "unsorted/tAuctionItem.h"
+#include "unsorted/tMetaMapHex.h"
+#include "unsorted/tMissionCompleteResults.h"
 
 #include <sstream>
 #include <string>
@@ -52,6 +54,8 @@ public:
 	void fn_0056f3e0( nDatabase::tQuery<tShip>& query, std::vector<tShip>* result );
 	void fn_0056f4df( nDatabase::tQuery<tAuctionItem>& query, std::vector<tAuctionItem>* result, bool lock );
 	void fn_0056f61b( nDatabase::tQuery<tAuctionItem>& query, std::vector<tAuctionItem>* result );
+	void fn_0056f703( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result, bool lock );
+	void fn_0056f83f( nDatabase::tQuery<tMetaMapHex>& query, std::vector<tMetaMapHex>* result );
 };
 
 // HYPOTHESIS: returns the server settings; name not known.
@@ -76,7 +80,7 @@ public:
 	virtual void vfunction10();
 	virtual void vfunction11( std::vector<nDatabase::tID> ids, std::vector<tAuctionItem>* items, int lock );
 	virtual void vfunction12( std::vector<tAuctionItem>* items );
-	virtual void vfunction13();
+	virtual void vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock );
 	virtual void vfunction14();
 	virtual void vfunction15();
 	virtual void vfunction16();
@@ -379,9 +383,23 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12( std::vector<tAu
 	}
 }
 
-
-
-
+// FUNCTION: STARFLEETOP 0x0056d3a0
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13( tObject_005b69d0 point, std::vector<tMetaMapHex>* hexes, int lock )
+{
+	nDatabase::tQuery<tMetaMapHex> query;
+	nDatabase::tMemberEval<tMetaMapHex, long, std::equal_to<long> > eval1( &tMetaMapHex::fn_00539f04, point.fn_0055f269() );
+	nDatabase::tMemberEval<tMetaMapHex, long, std::equal_to<long> > eval2( &tMetaMapHex::fn_00539f50, point.fn_005e8f21() );
+	query.AddEval( &eval1 );
+	query.AddEval( &eval2 );
+	if( lock )
+	{
+		fDatabase->fn_0056f83f( query, hexes );
+	}
+	else
+	{
+		fDatabase->fn_0056f703( query, hexes, true );
+	}
+}
 
 
 

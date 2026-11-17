@@ -14,6 +14,8 @@
 class tObject_005b69d0
 {
 public:
+	// HYPOTHESIS: the destructor at 0x005b6a36; 0x0056d3a0 takes one by value.
+	~tObject_005b69d0();
 	tObject_005b69d0& operator=( const tObject_005b69d0& other );
 
 	// HYPOTHESIS: two numbers that tBattles::SQLFillInsertStream writes; their meaning is not
