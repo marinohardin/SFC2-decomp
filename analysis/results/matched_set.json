@@ -847,6 +847,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040657f": {
+   "name": "FUN_0040657f",
+   "symbol": "??0?$collate@D@std@@QAE@I@Z",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

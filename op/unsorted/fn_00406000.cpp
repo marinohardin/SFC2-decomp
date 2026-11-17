@@ -206,3 +206,12 @@ template<> bool std::istreambuf_iterator<char>::equal(const std::istreambuf_iter
     return (_Sbuf == 0 && _X._Sbuf == 0
         || _Sbuf != 0 && _X._Sbuf != 0);
 }
+
+// FUNCTION: STARFLEETOP 0x0040657f
+// HYPOTHESIS: the library's collate<char> constructor instantiation (default locale info, _Init inlined).
+template<> std::collate<char>::collate(size_t _R)
+    : std::locale::facet(_R)
+{
+    std::_Locinfo _Lobj;
+    _Init(_Lobj);
+}
