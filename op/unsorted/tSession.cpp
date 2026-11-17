@@ -126,6 +126,7 @@ public:
 	// HYPOTHESIS: a parser member; fn_006914f0 calls it with this still in ecx.
 	int	fn_0068fd00();
 	void	fn_006914f0();
+	void	fn_00691510();
 	void	fn_00690de0();
 	void	fn_00690e70();
 	void	fn_00690fb0();
@@ -690,5 +691,12 @@ void tHtmlParser::fn_006914a0()
 void tHtmlParser::fn_006914f0()
 {
 	f_88 = fn_0068fd00();
+	f_40->fn_0068e7b0( &f_80 );
+}
+
+// FUNCTION: STARFLEETOP 0x00691510
+void tHtmlParser::fn_00691510()
+{
+	f_88 = 0;
 	f_40->fn_0068e7b0( &f_80 );
 }
