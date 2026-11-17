@@ -626,6 +626,7 @@ class fn_00404cb2_Ctype : public std::locale::facet
 public:
     fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs);
     void fn_00404d6e(const std::_Locinfo&);
+    void fn_00404dd0(unsigned char);
     size_t m08;
     size_t m0c;
     const short *m10;
@@ -663,4 +664,13 @@ fn_00404cb2_Ctype::fn_00404cb2_Ctype(const short *_Tab, bool _Df, size_t _Refs)
         m10 = g_00c80334;
     else
         m10 = _Tab, m14 = _Df;
+}
+
+// HYPOTHESIS: callee 0x0074cdc8 is a library helper taking a flag and the facet's _Ctypevec at +8.
+extern void __cdecl fn_0074cdc8(int, void *);
+
+// FUNCTION: STARFLEETOP 0x00404dd0
+void fn_00404cb2_Ctype::fn_00404dd0(unsigned char flag)
+{
+    fn_0074cdc8(flag, &m08);
 }
