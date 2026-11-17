@@ -207,6 +207,7 @@ public:
 	void fn_00543ab1(const tHexPoint &point);
 	void fn_00543ac3(const nDatabase::tID &id);
 	bool fn_00543ae2(int value);
+	bool fn_00543af1(std::string text);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -782,5 +783,13 @@ void fn_005430ad_owner::fn_00543ac3(const nDatabase::tID &id)
 bool fn_005430ad_owner::fn_00543ae2(int value)
 {
 	m144 = value;
+	return true;
+}
+
+// HYPOTHESIS: the setter for the std::string at +0x74; always reports success.
+// FUNCTION: STARFLEETOP 0x00543af1
+bool fn_005430ad_owner::fn_00543af1(std::string text)
+{
+	m074 = text;
 	return true;
 }
