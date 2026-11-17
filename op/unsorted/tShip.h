@@ -8,6 +8,7 @@
 #define tShip_h
 
 #include <iosfwd>
+#include <string>
 
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Database/DatabaseID.h"

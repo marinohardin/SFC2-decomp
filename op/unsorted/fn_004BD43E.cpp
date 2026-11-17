@@ -254,14 +254,6 @@ private:
 };
 
 
-// FUNCTION: STARFLEETOP 0x004bdccf
-template<class _Ty>
-c_auto_ptr<_Ty>::~c_auto_ptr()
-{
-	if ( _Owns )
-		delete _Ptr;
-}
-
 // FUNCTION: STARFLEETOP 0x004bda8e
 // FUNCTION: STARFLEETOP 0x004bda7f
 c_auto_ptr<c_005cf073_Object> g_0091f928;
@@ -316,6 +308,14 @@ const std::string &fn_004bdcc3()
 const std::string &fn_004bdcc9()
 {
 	return g_0091f8e0;
+}
+
+// FUNCTION: STARFLEETOP 0x004bdccf
+template<class _Ty>
+c_auto_ptr<_Ty>::~c_auto_ptr()
+{
+	if ( _Owns )
+		delete _Ptr;
 }
 
 // HYPOTHESIS: a second class with the layout of c_004bd805_Object. Its constructor has the same

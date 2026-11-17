@@ -281,68 +281,6 @@ void fn_004602b2_class::fn_00460610()
 //
 //
 
-inline const std::string *fn_0046090a_object::begin() const
-{
-    return (_First);
-}
-
-inline const std::string *fn_0046090a_object::end() const
-{
-    return (_Last);
-}
-
-inline unsigned int fn_0046090a_object::size() const
-{
-    return (_First == 0 ? 0 : _Last - _First);
-}
-
-inline unsigned int fn_0046090a_object::capacity() const
-{
-    return (_First == 0 ? 0 : _End - _First);
-}
-
-inline void fn_0046090a_object::_Destroy(std::string *first, std::string *last)
-{
-    for (; first != last; ++first)
-        allocator.destroy(first);
-}
-
-inline std::string *fn_0046090a_object::_Ucopy(const std::string *first, const std::string *last, std::string *dest)
-{
-    for (; first != last; ++dest, ++first)
-        allocator.construct(dest, *first);
-    return (dest);
-}
-
-// FUNCTION: STARFLEETOP 0x0046090a
-fn_0046090a_object &fn_0046090a_object::operator=(const fn_0046090a_object &other)
-{
-    if (this == &other)
-        ;
-    else if (other.size() <= size())
-    {
-        std::string *s = std::copy(other.begin(), other.end(), _First);
-        _Destroy(s, _Last);
-        _Last = _First + other.size();
-    }
-    else if (other.size() <= capacity())
-    {
-        const std::string *s = other.begin() + size();
-        std::copy(other.begin(), s, _First);
-        _Ucopy(s, other.end(), _Last);
-        _Last = _First + other.size();
-    }
-    else
-    {
-        _Destroy(_First, _Last);
-        allocator.deallocate(_First, _End - _First);
-        _First = allocator.allocate(other.size(), (void *)0);
-        _Last = _Ucopy(other.begin(), other.end(), _First);
-        _End = _Last;
-    }
-    return (*this);
-}
-
 //
 //
 //
@@ -394,37 +332,6 @@ fn_0046090a_object &fn_0046090a_object::operator=(const fn_0046090a_object &othe
 //
 //
 //
-
-// HYPOTHESIS: the member-wise assignment the compiler would generate, held out of line.
-// FUNCTION: STARFLEETOP 0x00460736
-tCampaignInfo &tCampaignInfo::operator=(const tCampaignInfo &other)
-{
-    // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
-    (nDatabase::tDatabaseObject &)*this = other;
-    m_48 = other.m_48;
-    m_58 = other.m_58;
-    m_68 = other.m_68;
-    m_78 = other.m_78;
-    m_88 = other.m_88;
-    m_98 = other.m_98;
-    m_a8 = other.m_a8;
-    m_b8 = other.m_b8;
-    m_bc = other.m_bc;
-    m_c0 = other.m_c0;
-    m_c4 = other.m_c4;
-    m_d4 = other.m_d4;
-    m_e4 = other.m_e4;
-    m_f4 = other.m_f4;
-    m_f8 = other.m_f8;
-    m_108 = other.m_108;
-    m_138 = other.m_138;
-    m_13c = other.m_13c;
-    m_140 = other.m_140;
-    m_144 = other.m_144;
-    m_148 = other.m_148;
-    m_158 = other.m_158;
-    return *this;
-}
 
 // HYPOTHESIS: a 20-byte value built from a text and a number; it is copied as plain data.
 class fn_006cf2d0_object
@@ -492,12 +399,105 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
     }
 }
 
+// HYPOTHESIS: the member-wise assignment the compiler would generate, held out of line.
+// FUNCTION: STARFLEETOP 0x00460736
+tCampaignInfo &tCampaignInfo::operator=(const tCampaignInfo &other)
+{
+    // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
+    (nDatabase::tDatabaseObject &)*this = other;
+    m_48 = other.m_48;
+    m_58 = other.m_58;
+    m_68 = other.m_68;
+    m_78 = other.m_78;
+    m_88 = other.m_88;
+    m_98 = other.m_98;
+    m_a8 = other.m_a8;
+    m_b8 = other.m_b8;
+    m_bc = other.m_bc;
+    m_c0 = other.m_c0;
+    m_c4 = other.m_c4;
+    m_d4 = other.m_d4;
+    m_e4 = other.m_e4;
+    m_f4 = other.m_f4;
+    m_f8 = other.m_f8;
+    m_108 = other.m_108;
+    m_138 = other.m_138;
+    m_13c = other.m_13c;
+    m_140 = other.m_140;
+    m_144 = other.m_144;
+    m_148 = other.m_148;
+    m_158 = other.m_158;
+    return *this;
+}
+
 #include "unsorted/tState_CampaignSelector.h"
 
 // HYPOTHESIS: the state's one instance; its initializer follows this unit's code.
 // FUNCTION: STARFLEETOP 0x004608f4
 // FUNCTION: STARFLEETOP 0x004608ea
 tState_Namespace_CampaignSelector::tState_CampaignSelector g_0090d158;
+
+inline const std::string *fn_0046090a_object::begin() const
+{
+    return (_First);
+}
+
+inline const std::string *fn_0046090a_object::end() const
+{
+    return (_Last);
+}
+
+inline unsigned int fn_0046090a_object::size() const
+{
+    return (_First == 0 ? 0 : _Last - _First);
+}
+
+inline unsigned int fn_0046090a_object::capacity() const
+{
+    return (_First == 0 ? 0 : _End - _First);
+}
+
+inline void fn_0046090a_object::_Destroy(std::string *first, std::string *last)
+{
+    for (; first != last; ++first)
+        allocator.destroy(first);
+}
+
+inline std::string *fn_0046090a_object::_Ucopy(const std::string *first, const std::string *last, std::string *dest)
+{
+    for (; first != last; ++dest, ++first)
+        allocator.construct(dest, *first);
+    return (dest);
+}
+
+// FUNCTION: STARFLEETOP 0x0046090a
+fn_0046090a_object &fn_0046090a_object::operator=(const fn_0046090a_object &other)
+{
+    if (this == &other)
+        ;
+    else if (other.size() <= size())
+    {
+        std::string *s = std::copy(other.begin(), other.end(), _First);
+        _Destroy(s, _Last);
+        _Last = _First + other.size();
+    }
+    else if (other.size() <= capacity())
+    {
+        const std::string *s = other.begin() + size();
+        std::copy(other.begin(), s, _First);
+        _Ucopy(s, other.end(), _Last);
+        _Last = _First + other.size();
+    }
+    else
+    {
+        _Destroy(_First, _Last);
+        allocator.deallocate(_First, _End - _First);
+        _First = allocator.allocate(other.size(), (void *)0);
+        _Last = _Ucopy(other.begin(), other.end(), _First);
+        _End = _Last;
+    }
+    return (*this);
+}
 
 // HYPOTHESIS: a list-like container whose nodes start with the next link; 0x00460acb tears it
 // down like the library list's destructor, plus a second block at +8.

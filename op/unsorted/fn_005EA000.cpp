@@ -654,8 +654,9 @@ public:
 
 namespace std {
 
-// HYPOTHESIS: 0x005ea9ce is the library's find_if held out of line for this predicate; it is
-// written out here so the claim has a definition in this unit.
+// MATCH-ONLY: serves 0x005ea9ce, the library's find_if held out of line for this predicate. The
+// plain form is an implicit instance of the library header's template, with no line in this
+// unit for the claim; this explicit specialization carries the template's body.
 // FUNCTION: STARFLEETOP 0x005ea9ce
 template<>
 fn_005ea9ce_elem* find_if( fn_005ea9ce_elem* _F, fn_005ea9ce_elem* _L, fn_005ea9ce_pred _P )
@@ -676,8 +677,9 @@ public:
 
 namespace std {
 
-// HYPOTHESIS: 0x005eaa12 is the library's _Construct held out of line for this element; the
-// placement new and its null test are the library's.
+// MATCH-ONLY: serves 0x005eaa12, the library's _Construct held out of line for this element. The
+// plain form is an implicit instance of the library header's template, with no line in this
+// unit for the claim; this explicit specialization carries the template's body.
 // FUNCTION: STARFLEETOP 0x005eaa12
 template<>
 void _Construct( fn_005eaa12_elem* _P, const fn_005eaa12_elem& _V )
@@ -698,8 +700,9 @@ void fn_005eaa3f(tTree_005ea4a1::tValue *p, const tTree_005ea4a1::tValue &v)
 
 namespace std {
 
-// HYPOTHESIS: the library's _Construct held out of line for tMetaMapNormalHex; the placement
-// new and its null test are the library's.
+// MATCH-ONLY: serves 0x005eaa77, the library's _Construct held out of line for tMetaMapNormalHex.
+// The plain form is an implicit instance of the library header's template, with no line in this
+// unit for the claim; this explicit specialization carries the template's body.
 // FUNCTION: STARFLEETOP 0x005eaa77
 template<>
 void _Construct( tMetaMapNormalHex* _P, const tMetaMapNormalHex& _V )
