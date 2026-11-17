@@ -16,10 +16,19 @@ public:
 	char m_pad[0x48];
 };
 
+// HYPOTHESIS: the 0x48-byte object built by fn_005750ed is unnamed
+class fn_005750ed_object
+{
+public:
+	fn_005750ed_object(void* arg);
+	char m_pad[0x48];
+};
+
 class fn_00575023_owner
 {
 public:
 	void fn_005750aa(fn_005750aa_object** out);
+	void fn_005750ed(fn_005750ed_object** out);
 	void fn_00575023(fn_0057430c_object** out);
 	void fn_00575066(fn_00575066_object** out);
 	char m_pad[0xd0];
@@ -50,4 +59,10 @@ void fn_00575023_owner::fn_00575066(fn_00575066_object** out)
 void fn_00575023_owner::fn_005750aa(fn_005750aa_object** out)
 {
 	*out = new fn_005750aa_object(m_d0);
+}
+
+// FUNCTION: STARFLEETOP 0x005750ed
+void fn_00575023_owner::fn_005750ed(fn_005750ed_object** out)
+{
+	*out = new fn_005750ed_object(m_d0);
 }
