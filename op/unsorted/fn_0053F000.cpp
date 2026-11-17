@@ -3,6 +3,7 @@
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 
 #include "Common/Database/DatabaseID.h"
+#include <xmemory>
 
 // HYPOTHESIS: the owner of this by-value getter is not known; the body copies a
 // tID held at 0x48 into the return slot. The class and the member names are placeholders.
@@ -376,4 +377,42 @@ fn_0054340c_owner *fn_0053f522_owner::fn_0053f546( fn_0054340c_owner *it )
 		p->~fn_0054340c_owner();
 	--m_08;
 	return it;
+}
+
+// HYPOTHESIS: a vector-like class of bytes (first at 4, last at 8, end at 0xc); this
+// member erases a range like a vector's erase: the bytes after it are copied down, the
+// (trivial) destroy loop over the old tail leaves only a dead read, and the last moves
+// back. The layout (an allocator, then first, last, end) is VC6's std::vector<char>,
+// so 0x0053f461 above, which hands its own first and last here, is likely this class's
+// clear rather than a member of the 0x160-byte container. The names are placeholders.
+class fn_0053f5ad_owner
+{
+public:
+	char *fn_0053f5ad( char *first, char *last );
+	// MATCH-ONLY: the original read the last through an inlined accessor.
+	char *end()
+	{
+		return m_08;
+	}
+	// MATCH-ONLY: the original inlined a destroy loop over the old tail; for bytes it
+	// leaves only the dead store of the end into the argument slot.
+	void fn_0053f5ad_destroy( char *first, char *last )
+	{
+		for ( ; first != last; ++first )
+			m_00.destroy( first );
+	}
+
+	std::allocator<char> m_00;
+	char *m_04;
+	char *m_08;
+	char *m_0c;
+};
+
+// FUNCTION: STARFLEETOP 0x0053f5ad
+char *fn_0053f5ad_owner::fn_0053f5ad( char *first, char *last )
+{
+	char *s = std::copy( last, end(), first );
+	fn_0053f5ad_destroy( s, end() );
+	m_08 = s;
+	return first;
 }
