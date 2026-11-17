@@ -695,3 +695,10 @@ void tMetaMapControl::fn_005e4280()
 	fn_005e31dd( 1 );
 	fn_0045f4c2();
 }
+
+// FUNCTION: STARFLEETOP 0x005e4293
+void tMetaMapControl::fn_005e4293()
+{
+	fn_005e31dd( -1 );
+	fn_0045f4c2();
+}
