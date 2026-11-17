@@ -259,7 +259,7 @@ public:
 class fn_00469c0a_owner
 {
 public:
-	void fn_00469c0a(int *ev);
+	char fn_00469c0a(int *ev);
 	char fn_00469c84(unsigned int param_1);
 };
 
@@ -1216,4 +1216,13 @@ char fn_0046aa10(unsigned int param_1)
 	if (g_0090db9c != 0)
 		return 0;
 	return g_fn_00469c0a_owner.fn_00469c84(param_1);
+}
+
+// HYPOTHESIS: the owner's method returns a char; argument type guessed.
+// FUNCTION: STARFLEETOP 0x0046aa2b
+char fn_0046aa2b(int *param_1)
+{
+	if (g_0090db9c != 0)
+		return 0;
+	return g_fn_00469c0a_owner.fn_00469c0a(param_1);
 }
