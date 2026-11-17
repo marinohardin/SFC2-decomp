@@ -8389,6 +8389,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e2d2c": {
+   "name": "FUN_005e2d2c",
+   "symbol": "_$E96",
+   "unit": "unsorted/fn_005E2501.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

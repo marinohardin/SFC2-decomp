@@ -154,5 +154,6 @@ std::string g_00c38f68 = "GreyScaleHex";
 // FUNCTION: STARFLEETOP 0x005e2ca3
 std::string g_00c38f58 = "space1L";
 
+// FUNCTION: STARFLEETOP 0x005e2d2c
 // FUNCTION: STARFLEETOP 0x005e2cf9
 std::string g_00c38f48 = "nebula1L";
