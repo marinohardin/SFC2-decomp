@@ -648,3 +648,21 @@ void fn_0040e17c(char* name, float* value, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e1cf
+void fn_0040e1cf(char* name, float* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    float z;
+    float x;
+    float y;
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = x=%f y=%f z=%f");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, &x, &y, &z);
+    value[0] = x;
+    value[1] = y;
+    value[2] = z;
+}
+
