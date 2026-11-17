@@ -244,7 +244,7 @@ public:
 	fn_004d2319_holder();
 	int m_a;
 	int m_b;
-	char m_str[12];
+	char m_str[16];
 };
 
 // FUNCTION: STARFLEETOP 0x004d2319
@@ -542,5 +542,34 @@ void fn_004d26fb_map::fn_004d26fb(int a, const char* text)
 		char allocator;
 		fn_004d2238_string key(text, allocator);
 		fn_004d2add(key) = holder;
+	}
+}
+
+// HYPOTHESIS: a map from an id to fn_004d2353_holder* (operator[] is 0x004d2b4c) at +0x14; name unknown.
+class fn_004d2b4c_map
+{
+public:
+	fn_004d2353_holder*& fn_004d2b4c(const unsigned long& key);
+	char m_0x00[0xc];
+};
+
+class fn_004d2797_owner
+{
+public:
+	void fn_004d2797(unsigned long a, const char* text, int b);
+	char m_0x00[0x14];
+	fn_004d2b4c_map m_0x14;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2797
+void fn_004d2797_owner::fn_004d2797(unsigned long a, const char* text, int b)
+{
+	fn_004d2353_holder* holder = 0;
+	if (text != 0)
+	{
+		// HYPOTHESIS: fn_004d2319_holder is the constructor of fn_004d2353_holder.
+		holder = (fn_004d2353_holder*)new fn_004d2319_holder;
+		holder->fn_004d2388(a, text, b);
+		m_0x14.fn_004d2b4c(a) = holder;
 	}
 }
