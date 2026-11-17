@@ -46,6 +46,8 @@ public:
     virtual int vfunction127();
     // vftable slot 128; sets field_c4's value.
     virtual void vfunction128(long param_1);
+    // vftable slot 129; stores param_1 into field_e8.
+    virtual void vfunction129(int param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
