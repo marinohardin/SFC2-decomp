@@ -38,6 +38,9 @@ public:
     virtual int vfunction116(int param_1);
     // vftable slot 117; returns element param_1 of an int array.
     virtual int vfunction117(int param_1);
+    // HYPOTHESIS: the slots between 117 and 126 are not recovered; vfunction126 is the
+    // analysis's name. Stores param_1 into a member.
+    virtual void vfunction126(int param_1);
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -56,7 +59,10 @@ public:
     int field_f4;
     // The names above sit 4 bytes below the compiled offsets (field_f4 compiles to +0xf8);
     // from here on names give the compiled offset.
-    char padfc[0x138 - 0xfc];
+    char padfc[0x104 - 0xfc];
+    // Set by vfunction126.
+    int field_104;
+    char pad108[0x138 - 0x108];
     // HYPOTHESIS: an int array indexed by vfunction116; its length is not recovered.
     int field_138[1];
     char pad13c[0x248 - 0x13c];
