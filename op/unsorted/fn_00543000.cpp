@@ -206,6 +206,7 @@ public:
 	void fn_00543aa4(int value);
 	void fn_00543ab1(const tHexPoint &point);
 	void fn_00543ac3(const nDatabase::tID &id);
+	bool fn_00543ae2(int value);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -773,4 +774,13 @@ void fn_005430ad_owner::fn_00543ab1(const tHexPoint &point)
 void fn_005430ad_owner::fn_00543ac3(const nDatabase::tID &id)
 {
 	m0c0 = id;
+}
+
+// HYPOTHESIS: the setter for the dword at +0x144, whose getter sits earlier in this unit;
+// always reports success.
+// FUNCTION: STARFLEETOP 0x00543ae2
+bool fn_005430ad_owner::fn_00543ae2(int value)
+{
+	m144 = value;
+	return true;
 }
