@@ -8,11 +8,11 @@
 #include "unsorted/tAuctionItem.h"
 #include "unsorted/tMetaMapHex.h"
 #include "unsorted/tMissionCompleteResults.h"
-
 #include <sstream>
 #include <string>
 #include <vector>
 class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
+class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
 // HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes
 // with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock
 // at +0x108. Their other members are not known.
@@ -60,6 +60,7 @@ public:
 	void fn_0056f961( const nDatabase::tID& id, tShip* ship );
 	void fn_0056f9d7( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result, bool lock );
 	void fn_0056fb13( nDatabase::tQuery<tMetaMapDesc>& query, std::vector<tMetaMapDesc>* result );
+	void fn_0056fbf5( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result );
 };
 // HYPOTHESIS: returns the server settings; name not known.
 tSettings* fn_005d481f();
@@ -88,7 +89,7 @@ public:
 	virtual bool vfunction16( nDatabase::tID id, tShip* ship );
 	virtual void vfunction17( std::vector<tMetaMapHex>* hexes );
 	virtual void vfunction18( std::vector<tMetaMapDesc>* descs, int lock );
-	virtual void vfunction19();
+	virtual void vfunction19( std::vector<tPoliticalTensionMatrix>* matrices );
 	virtual void vfunction20( std::vector<tCampaignInfo>* campaignInfos, bool lock );
 	virtual void vfunction21();
 	virtual void vfunction22();
@@ -152,7 +153,6 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 		turn = turns[0].fField48;
 		fDatabase->vfunction3( &turns[0] );
 	}
-
 	std::vector<tCampaignInfo> campaignInfos;
 	vfunction20( &campaignInfos, true );
 	tCampaignInfo* DBcampaignInfo = campaignInfos.begin();
@@ -461,5 +461,9 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction18( std::vector<tMe
 	}
 }
 
-
-
+// FUNCTION: STARFLEETOP 0x0056d74e
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction19( std::vector<tPoliticalTensionMatrix>* matrices )
+{
+	nDatabase::tQuery<tPoliticalTensionMatrix> query;
+	fDatabase->fn_0056fbf5( query, matrices );
+}
