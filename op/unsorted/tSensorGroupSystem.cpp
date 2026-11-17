@@ -29,6 +29,7 @@ public:
     void fn_0043e642(int param_1);
     void fn_0043e6ce(int param_1);
     float fn_0043e75a();
+    float fn_0043e761();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -401,4 +402,10 @@ void tSensorGroupSystem::fn_0043e6ce(int param_1)
 float tSensorGroupSystem::fn_0043e75a()
 {
     return field_168;
+}
+
+// FUNCTION: STARFLEETOP 0x0043e761
+float tSensorGroupSystem::fn_0043e761()
+{
+    return field_16c;
 }
