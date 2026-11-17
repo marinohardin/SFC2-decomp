@@ -66,6 +66,7 @@ public:
     virtual int vfunction73();
     virtual int vfunction74();
     virtual int vfunction75();
+    virtual int vfunction76();
     virtual int vfunction77();
     virtual int vfunction78();
     virtual int vfunction79();
@@ -594,4 +595,10 @@ int tShipSystemsExt::vfunction88()
 int tShipSystemsExt::vfunction89()
 {
     return *(int*)( m584 + 0x40 );
+}
+
+// FUNCTION: STARFLEETOP 0x00448a54
+int tShipSystemsExt::vfunction76()
+{
+    return *(int*)( m584 + 0x38 );
 }
