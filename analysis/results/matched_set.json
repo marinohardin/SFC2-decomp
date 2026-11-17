@@ -264,11 +264,11 @@
   },
   "0x00402b73": {
    "name": "FUN_00402b73",
-   "symbol": "?fn_00402b73@fn_00402b73_Src@@QAEPAPAVfn_00402b73_Item@@PAPAV2@@Z",
+   "symbol": "?fn_00402b73@fn_00402b73_Src@@QBE?AVlocale@std@@XZ",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 29,
-   "score": 50.0,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x0040aad2": {

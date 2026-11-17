@@ -591,27 +591,28 @@ fn_00402b22_Base* fn_00402b22_Inner::fn_00402b3a()
     return m4 == 0 ? this : 0;
 }
 
-class fn_00402b73_Item
-{
-public:
-    void fn_00402b90();
-};
-
+// HYPOTHESIS: std::ios_base::getloc; m20 is its locale member, returned by
+// value, so the copy constructor calls the locale's reference increment
 class fn_00402b73_Src
 {
 public:
-    fn_00402b73_Item** fn_00402b73(fn_00402b73_Item** out);
+    std::locale fn_00402b73() const;
     char pad[0x20];
-    fn_00402b73_Item* m20;
+    std::locale m20;
 };
 
 // FUNCTION: STARFLEETOP 0x00402b73
-fn_00402b73_Item** fn_00402b73_Src::fn_00402b73(fn_00402b73_Item** out)
+std::locale fn_00402b73_Src::fn_00402b73() const
 {
-    // HYPOTHESIS: the original keeps a zeroed local here
-    fn_00402b73_Item* p = m20;
-    volatile int pending = 0;
-    *out = p;
-    p->fn_00402b90();
-    return out;
+    return (m20);
 }
+
+
+
+
+
+
+
+
+
+
