@@ -667,3 +667,32 @@ void t3DVisual_Model::fn_004301e9(unsigned long size, tStream_BasicFile *stream)
 			m158[i] = entries[i];
 	}
 }
+
+// HYPOTHESIS: stream extraction operators. The point reader 0x0042ddc1 returns the stream,
+// and the int reader is inlined: the original takes the int's address before calling the
+// point reader, as an inline operator's argument would be.
+tStream_BasicFile &operator>>(tStream_BasicFile &stream, tPoint3 &point);
+
+// MATCH-ONLY: inlined in the original, so it has no address of its own.
+inline tStream_BasicFile &operator>>(tStream_BasicFile &stream, int &value)
+{
+	stream.fn_006a2f80(&value, 4);
+	return stream;
+}
+
+// FUNCTION: STARFLEETOP 0x004302e8
+void t3DVisual_Model::fn_004302e8(unsigned long size, tStream_BasicFile *stream)
+{
+	m180 = size / sizeof(tEntry_0042fa82);
+	if (m180 != 0)
+	{
+		m17c = new tEntry_0042fa82[m180];
+		if (m17c != 0)
+		{
+			for (int i = 0; i < m180; i++)
+			{
+				*stream >> m17c[i].mPoint >> m17c[i].mName;
+			}
+		}
+	}
+}
