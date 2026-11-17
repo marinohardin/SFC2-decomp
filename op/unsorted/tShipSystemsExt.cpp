@@ -7,6 +7,7 @@
 #include "unsorted/tTacticalStoresManager.h"
 #include "unsorted/tNetControl.h"
 #include "Tiger/tcglue.h"
+#include "unsorted/tObject_0040ce21.h"
 #include <string.h>
 
 extern float g_00799ed0;
@@ -54,6 +55,7 @@ public:
     virtual tMinMaxFloat* vfunction32();
     virtual tMinMaxFloat* vfunction33();
     virtual tMinMaxFloat* vfunction34();
+    virtual tMinMaxFloat* vfunction35();
     virtual tMinMaxFloat* vfunction37();
     virtual tMinMaxFloat* vfunction38();
     virtual tShipSystemManager* vfunction53();
@@ -841,4 +843,11 @@ tMinMaxFloat* tShipSystemsExt::vfunction37()
 tMinMaxFloat* tShipSystemsExt::vfunction38()
 {
     return &m888;
+}
+
+// FUNCTION: STARFLEETOP 0x00448b6e
+tMinMaxFloat* tShipSystemsExt::vfunction35()
+{
+    static tObject_0040ce21 marker("How are you.");
+    return &m8ac;
 }
