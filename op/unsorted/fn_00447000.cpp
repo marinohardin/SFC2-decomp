@@ -216,6 +216,7 @@ public:
 	tObject_0044715d_table *fn_00447ceb();
 	c_00450e41 *fn_00447cf2();
 	void fn_00447cf9(int index, int value);
+	void fn_00447d11(int index, int value);
 
 	char field_0x0[0x4];
 	char field_0x4;
@@ -719,4 +720,10 @@ c_00450e41 *c_0044715d::fn_00447cf2()
 void c_0044715d::fn_00447cf9(int index, int value)
 {
 	field_0xec->field_0x10[index].field_0x18 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d11
+void c_0044715d::fn_00447d11(int index, int value)
+{
+	field_0xec->field_0x10[index].field_0x1c = value;
 }
