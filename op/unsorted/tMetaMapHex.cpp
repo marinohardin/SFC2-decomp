@@ -38,3 +38,8 @@ tMetaMapHex::tMetaMapHex( bool param_1 )
 		m_84[1] = m_70[1] = g_00c38470[0];
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053943e
+tMetaMapHex::~tMetaMapHex()
+{
+}

@@ -6067,6 +6067,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0053943e": {
+   "name": "tMetaMapHex::scalar_deleting_destructor",
+   "symbol": "??_GtMetaMapHex@@UAEPAXI@Z",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
