@@ -352,6 +352,9 @@ class tRepairableShipSystem : public tIndividualShipSystem
 {
 public:
     tRepairableShipSystem();
+    // Inline: tSensorGroupSystem's destructor (0x0043dff0) stores this class's vftable
+    // (0x00799598) and then calls tIndividualShipSystem's.
+    virtual ~tRepairableShipSystem() {}
     // vftable slot 22; saves or loads the repair fields (body at 0x0043d8b4).
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
     // HYPOTHESIS: slots 84, 85 and 87..90 are declared here, in slot order, so that slot 93
