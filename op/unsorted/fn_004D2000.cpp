@@ -310,6 +310,7 @@ void fn_004d2353_holder::fn_004d23db()
 class fn_004d2420_holder
 {
 public:
+	fn_004d2420_holder(); // HYPOTHESIS: out of line at 0x004d2238, as for fn_004d2265_holder
 	~fn_004d2420_holder();
 	void fn_004d24dc();
 	void fn_004d2451(const char* text);
@@ -571,5 +572,34 @@ void fn_004d2797_owner::fn_004d2797(unsigned long a, const char* text, int b)
 		holder = (fn_004d2353_holder*)new fn_004d2319_holder;
 		holder->fn_004d2388(a, text, b);
 		m_0x14.fn_004d2b4c(a) = holder;
+	}
+}
+
+// HYPOTHESIS: a map from string to fn_004d2420_holder* (operator[] is 0x004d2b75) at +0x28; name unknown.
+class fn_004d2b75_map
+{
+public:
+	fn_004d2420_holder*& fn_004d2b75(const fn_004d2238_string& key);
+};
+
+class fn_004d27fa_owner
+{
+public:
+	void fn_004d27fa(const char* text);
+	char m_0x00[0x28];
+	fn_004d2b75_map m_0x28;
+};
+
+// FUNCTION: STARFLEETOP 0x004d27fa
+void fn_004d27fa_owner::fn_004d27fa(const char* text)
+{
+	fn_004d2420_holder* holder = 0;
+	if (text != 0)
+	{
+		holder = new fn_004d2420_holder;
+		holder->fn_004d2451(text);
+		char allocator;
+		fn_004d2238_string key(text, allocator);
+		m_0x28.fn_004d2b75(key) = holder;
 	}
 }
