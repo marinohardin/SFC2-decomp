@@ -44,3 +44,9 @@ std::string fn_00469d46()
 {
 	return g_0090db10;
 }
+
+// FUNCTION: STARFLEETOP 0x00469d7b
+void fn_00469d7b(const std::string& s)
+{
+	g_0090db10.assign(s, 0, std::string::npos);
+}
