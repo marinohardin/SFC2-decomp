@@ -2,6 +2,7 @@
 // Functions with no unit or class evidence on the 4 KB page 0x00546000; original file unknown.
 
 #include "Common/DataStore/Streamable.h"
+#include "Common/Database/DatabaseID.h"
 
 // HYPOTHESIS: a 0x10-byte member of c_0045139e at +0x48; 0x0045275f destroys it.
 class c_0045275f
@@ -194,8 +195,11 @@ class c_00546278
 public:
     unsigned char fn_00546278();
     void fn_0054627c(unsigned char param_1);
+    void fn_005462f3(const nDatabase::tID& param_1);
 
-    char field_0[0x58];
+    char field_0[0x48];
+    // HYPOTHESIS: the database ID 0x005462f3 copies in; 0x10 bytes up to field_58.
+    nDatabase::tID field_48;
     unsigned char field_58;
 };
 
@@ -325,4 +329,12 @@ const c_00427db2& c_00546027::fn_005462e5()
 char* c_00546027::fn_005462ec()
 {
     return field_30c;
+}
+
+// FUNCTION: STARFLEETOP 0x005462f3
+void c_00546278::fn_005462f3(const nDatabase::tID& param_1)
+{
+    field_48 = param_1;
+    if (field_48.IsValid())
+        fn_0054627c(0);
 }
