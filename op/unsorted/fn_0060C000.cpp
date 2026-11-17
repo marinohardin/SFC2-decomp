@@ -314,6 +314,7 @@ public:
     bool fn_0060ca7d();
     void fn_0060ca83(int index);
     void fn_0060ca94(int value);
+    int fn_0060ca9e();
     void fn_0060c883(const C_00472518 &value);
     C_00472518 &fn_0060c97e();
     char *fn_0060c982(const char *name);
@@ -466,4 +467,14 @@ void C_0060c7dc::fn_0060ca83(int index)
 void C_0060c7dc::fn_0060ca94(int value)
 {
     m_18 = value;
+}
+
+// HYPOTHESIS: returns which band of the g_0087bfe4 table m_18 falls in (0..3).
+// FUNCTION: STARFLEETOP 0x0060ca9e
+int C_0060c7dc::fn_0060ca9e()
+{
+    int value = m_18;
+    if (value >= g_0087bfe4[2])
+        return (value >= g_0087bfe4[3]) + 2;
+    return value >= g_0087bfe4[1];
 }
