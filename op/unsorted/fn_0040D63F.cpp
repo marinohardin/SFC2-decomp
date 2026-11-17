@@ -1030,6 +1030,15 @@ void fn_0040e93f(double* p, tSFCStream& buf, unsigned char flags)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e99d
+void fn_0040e99d(int size, void* p, tSFCStream& buf, unsigned char flags)
+{
+    if (flags & 2)
+        fn_0040dc96(size, p, buf);
+    else
+        fn_0040dceb(size, p, buf);
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int tSFCStream::fn_0040e70f(char* text)
 {
