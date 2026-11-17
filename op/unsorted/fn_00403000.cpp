@@ -209,3 +209,10 @@ std::fpos<int>::fpos(std::streamoff _O)
     _Lockit _Lk;
     _State = _Stz;
 }
+
+// FUNCTION: STARFLEETOP 0x00403e72
+std::istream::istream(std::streambuf* _Strbuf, bool _Isstd)
+    : _Chcount(0)
+{
+    init(_Strbuf, _Isstd);
+}
