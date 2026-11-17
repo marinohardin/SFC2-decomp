@@ -1316,3 +1316,14 @@ int fn_0046abc5()
 {
 	return fn_0040c28c()->fn_0069a970();
 }
+
+// FUNCTION: STARFLEETOP 0x0046abd1
+void fn_0046abd1(int *param_1, int *param_2)
+{
+	if (param_1 != 0) {
+		*param_1 = fn_0046abb9();
+	}
+	if (param_2 != 0) {
+		*param_2 = fn_0046abc5();
+	}
+}
