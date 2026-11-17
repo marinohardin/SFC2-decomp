@@ -3,6 +3,7 @@
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/tEntity.h"
+#include "Source/entity/entity_physical.h"
 
 // HYPOTHESIS: the base is tRepairableShipSystem: the destructor stores vtable 0x00799598 (the
 // one after tMinMaxFloat's) before calling tIndividualShipSystem's. Six 0x24-byte value
@@ -40,6 +41,7 @@ public:
     // HYPOTHESIS: param_2 is not read.
     float fn_0043e870(float param_1, int param_2);
     char fn_0043e8da();
+    char fn_0043e911(int aID);
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -628,4 +630,184 @@ char tSensorGroupSystem::fn_0043e8da()
     int column = field_80->fn_0043da08();
     fn_0043e366_part* part = field_80;
     return g_0079bfc0[part->vfunction11() - part->vfunction10()][column][0];
+}
+
+// HYPOTHESIS: what slot 95 (offset 0x17c) of a ship's object at 0xad4 returns; tAICaptain.cpp
+// declares it in its own unit as tObject_0042496f_member96. Slot 101 (offset 0x194) returns a
+// state and sets the flag it is given.
+class fn_0043e911_state
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual void vfunction10();
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51();
+    virtual void vfunction52();
+    virtual void vfunction53();
+    virtual void vfunction54();
+    virtual void vfunction55();
+    virtual void vfunction56();
+    virtual void vfunction57();
+    virtual void vfunction58();
+    virtual void vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    virtual void vfunction69();
+    virtual void vfunction70();
+    virtual void vfunction71();
+    virtual void vfunction72();
+    virtual void vfunction73();
+    virtual void vfunction74();
+    virtual void vfunction75();
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual void vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    virtual void vfunction83();
+    virtual void vfunction84();
+    virtual void vfunction85();
+    virtual void vfunction86();
+    virtual void vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    virtual void vfunction90();
+    virtual void vfunction91();
+    virtual void vfunction92();
+    virtual void vfunction93();
+    virtual void vfunction94();
+    virtual void vfunction95();
+    virtual void vfunction96();
+    virtual void vfunction97();
+    virtual void vfunction98();
+    virtual void vfunction99();
+    virtual void vfunction100();
+    virtual void vfunction101();
+    virtual int vfunction102(bool* flag); // slot 101
+};
+
+// FUNCTION: STARFLEETOP 0x0043e911
+char tSensorGroupSystem::fn_0043e911(int aID)
+{
+    tObject_0042496f* ship = (tObject_0042496f*)gObject_008e1060.fn_0042496f(aID);
+    vfunction33_result* owner = field_2c->vfunction108();
+    float range = 1000.0f;
+    float strength = 0.0f;
+    int level = field_80->vfunction10() / field_80->vfunction11() * 6;
+    if (ship != 0)
+    {
+        strength = ship->vfunction63() * 0.1f;
+        if (owner != 0)
+            range = gObject_008e1060.fn_004246e4((tEntity*)owner, (tEntity*)ship) * 0.1f;
+    }
+    tPhysicalEntity* found = gObject_008e1060.fn_004249c0((tPhysicalEntity*)gObject_008e1060.fn_lookup(aID));
+    if (found != 0)
+    {
+        tObject_0042496f* target = (tObject_0042496f*)found;
+        fn_0043e911_state* state = (fn_0043e911_state*)target->field_0xad4->vfunction96();
+        tPhysicalEntity* self = gObject_008e1060.fn_004249d3(field_2c->vfunction108()->field_1c);
+        if (self != 0 && self->vfunction35(found->fID))
+            return 1;
+        if (state != 0)
+        {
+            bool flag;
+            int mode = state->vfunction102(&flag);
+            if (!flag && mode == 6)
+            {
+                int rangeLevel;
+                if (range < 1.0f)
+                    rangeLevel = -1;
+                else if (range < 5.0f)
+                    rangeLevel = 0;
+                else if (range < 11.0f)
+                    rangeLevel = 1;
+                else if (range < 16.0f)
+                    rangeLevel = 2;
+                else if (range < 21.0f)
+                    rangeLevel = 3;
+                else if (range < 31.0f)
+                    rangeLevel = 4;
+                else if (range < 41.0f)
+                    rangeLevel = 5;
+                else
+                    rangeLevel = 6;
+                int strengthLevel;
+                if (strength < 1.0f)
+                    strengthLevel = -2;
+                else if (strength < 5.0f)
+                    strengthLevel = 0;
+                else if (strength < 9.0f)
+                    strengthLevel = 1;
+                else if (strength < 13.0f)
+                    strengthLevel = 2;
+                else if (strength < 16.0f)
+                    strengthLevel = 3;
+                else if (strength < 18.0f)
+                    strengthLevel = 4;
+                else if (strength < 19.0f)
+                    strengthLevel = 5;
+                else
+                    strengthLevel = 6;
+                if (level - rangeLevel - 4 + strengthLevel >= 2)
+                    return 1;
+            }
+        }
+    }
+    return 0;
 }
