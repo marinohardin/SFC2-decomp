@@ -36,6 +36,7 @@ public:
     void fn_0060c720(tString &text);
     void fn_0060c486(C_0060c486 *owner);
     void fn_0060c51d(bool debriefing);
+    void fn_0060c675(C_0060c486 *next, C_0060c486 *node);
     void fn_0060c76b(tString &text);
     // HYPOTHESIS: five owners the destructor frees through 0x0060c486.
     C_0060c486 *m_00;
@@ -142,6 +143,7 @@ public:
     virtual ~C_0060c486();
     virtual tString &vfunction1();
     C_0060c486 *m_04;
+    C_0060c486 *m_08;
 };
 
 // FUNCTION: STARFLEETOP 0x0060c486
@@ -209,4 +211,14 @@ void C_00c3a80c::fn_0060c51d(bool debriefing)
     text = "";
     fn_0060c76b(text);
     fn_004d3179(debriefing ? "DebriefingPersonalData" : "PersonalData", text);
+}
+
+// FUNCTION: STARFLEETOP 0x0060c675
+// HYPOTHESIS: a member of C_00c3a80c that does not use this (ret 8, like 0x0060c486); it links
+// node before next, so a node keeps its previous link at +0x08.
+void C_00c3a80c::fn_0060c675(C_0060c486 *next, C_0060c486 *node)
+{
+    node->m_04 = next;
+    if (next)
+        next->m_08 = node;
 }
