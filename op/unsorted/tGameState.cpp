@@ -587,7 +587,7 @@ void fn_0046a2d4(unsigned int param_1)
 }
 
 // HYPOTHESIS: the globals at 0x0090dba4 and 0x0090dba8 are a pending flag and a mode value; types guessed.
-extern char g_0090dba4;
+extern bool g_0090dba4;
 extern int g_0090dba8;
 
 void fn_0046a46a(tGameState *param_1);
@@ -598,10 +598,13 @@ void fn_0046a428()
 	if (g_0090db9c != 0)
 		return;
 
-	if (g_0090dba4 != 0)
+	if (g_0090dba4)
 	{
-		g_0090dba4 = 0;
-		g_fn_00469979_owner.fn_00469979(g_0090dba8 == 0);
+		g_0090dba4 = false;
+		if (g_0090dba8 == 0)
+			g_fn_00469979_owner.fn_00469979(1);
+		else
+			g_fn_00469979_owner.fn_00469979(0);
 	}
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
