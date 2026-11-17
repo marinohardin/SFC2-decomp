@@ -180,7 +180,7 @@ public:
     virtual void vfunction163() = 0;
     virtual void vfunction164() = 0;
     virtual int vfunction165() = 0;
-    virtual void vfunction166() = 0;
+    virtual void vfunction166( int param_1 ) = 0;
     virtual void vfunction167() = 0;
     virtual void vfunction168() = 0;
 };

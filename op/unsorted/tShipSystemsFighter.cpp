@@ -183,7 +183,7 @@ public:
     virtual void vfunction163();
     virtual void vfunction164();
     virtual int vfunction165();
-    virtual void vfunction166();
+    virtual void vfunction166( int param_1 );
     virtual void vfunction167();
     virtual void vfunction168();
     tShipSystemsFighter( int param_1 );
@@ -727,4 +727,10 @@ int* tShipSystemsFighter::vfunction157( int )
 int tShipSystemsFighter::vfunction165()
 {
     return m828;
+}
+
+// FUNCTION: STARFLEETOP 0x00444647
+void tShipSystemsFighter::vfunction166( int param_1 )
+{
+    m828 = param_1;
 }
