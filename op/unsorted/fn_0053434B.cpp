@@ -85,3 +85,36 @@ void fn_00534454_object::fn_00534454(void* value)
 {
     fn_00571a69(value);
 }
+
+int fn_0040f9ea(char *a, char *b);
+
+// HYPOTHESIS: an element whose name string sits at +4; its class is not known.
+class fn_00534461_entry
+{
+public:
+    void* field_00;
+    char* field_04;
+};
+
+// HYPOTHESIS: an object whose first member is a vector of entry pointers; this searches it from
+// the back for the entry of the given name (0x0040f9ea compares two strings, 0 when equal) and
+// returns its index, or -1.
+class fn_00534461_object
+{
+public:
+    int fn_00534461(char* name);
+
+    std::vector< fn_00534461_entry* > field_00;
+};
+
+// FUNCTION: STARFLEETOP 0x00534461
+int fn_00534461_object::fn_00534461(char* name)
+{
+    int i = field_00.size();
+    while (i-- != 0)
+    {
+        if (fn_0040f9ea(field_00[i]->field_04, name) == 0)
+            return i;
+    }
+    return -1;
+}
