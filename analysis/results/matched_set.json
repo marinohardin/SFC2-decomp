@@ -775,6 +775,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040619c": {
+   "name": "FUN_0040619c",
+   "symbol": "?fn_0040619c@@YAHAAV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@ABV12@IPBD@Z",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 441,
+   "score": 28.429,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
