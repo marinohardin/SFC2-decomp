@@ -119,6 +119,8 @@ struct fn_0053a6cc_map
 		node* m_node;
 	};
 
+	struct value_type;
+
 	class tree
 	{
 	public:
@@ -137,6 +139,8 @@ struct fn_0053a6cc_map
 		void fn_0053a981( const tree& other );
 		// HYPOTHESIS: the out-of-line copy of a subtree 0x0053ab16 (the library's _Copy).
 		node* fn_0053ab16( node* root, node* parent );
+		// HYPOTHESIS: the out-of-line tree insert 0x0057f946.
+		std::pair< iterator, bool > insert( const value_type& v );
 		// MATCH-ONLY: the library's inline _Min and _Max, inlined into the copy.
 		static node* _Min( node* p ) { while( !p->left->isnil ) p = p->left; return p; }
 		static node* _Max( node* p ) { while( !p->right->isnil ) p = p->right; return p; }
@@ -167,7 +171,7 @@ struct fn_0053a6cc_map
 		int32u	second;
 	};
 
-	// HYPOTHESIS: the out-of-line insert 0x0057f946.
+	// HYPOTHESIS: the out-of-line insert 0x0053a9e3, which calls the tree's.
 	std::pair< iterator, bool > insert( const value_type& v );
 	// HYPOTHESIS: the index operator 0x0053a6a3. tMetaMapHex's StreamIn copies a long key into a
 	// temporary before the call, so the key is an int here.

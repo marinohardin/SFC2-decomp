@@ -795,3 +795,10 @@ void fn_0053a6cc_map::tree::fn_0053a981( const tree& other )
 		_Lmost() = m_head, _Rmost() = m_head;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053a9e3
+std::pair< fn_0053a6cc_map::iterator, bool > fn_0053a6cc_map::insert( const value_type& v )
+{
+	std::pair< iterator, bool > result = m_tree.insert( v );
+	return std::pair< iterator, bool >( result.first, result.second );
+}
