@@ -85,6 +85,7 @@ public:
     virtual int vfunction92();
     virtual int vfunction93();
     virtual int vfunction95();
+    virtual int vfunction96();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -642,4 +643,11 @@ int tShipSystemsExt::vfunction93()
 int tShipSystemsExt::vfunction95()
 {
     return *(int*)( m584 + 0x8c );
+}
+
+// HYPOTHESIS: returns the dword at +0x90 of the block at m584 (+0x614) as an integer.
+// FUNCTION: STARFLEETOP 0x00448a7e
+int tShipSystemsExt::vfunction96()
+{
+    return *(int*)( m584 + 0x90 );
 }
