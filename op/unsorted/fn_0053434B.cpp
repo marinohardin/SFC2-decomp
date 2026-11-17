@@ -264,6 +264,7 @@ public:
     void fn_005347bd(long value);
     void fn_005347f4(long value);
     void fn_0053482b(long index);
+    void fn_00534840(long index);
     void fn_00534855(std::vector< fn_00534461_entry* >* list, long index, char* group);
 
     tString field_00;
@@ -332,4 +333,11 @@ void fn_005346f9_object::fn_005347f4(long value)
 void fn_005346f9_object::fn_0053482b(long index)
 {
     fn_00534855(&field_2c, index, "SunNames");
+}
+
+// HYPOTHESIS: as 0x0053482b, for the second vector under the "PlanetNames" string group.
+// FUNCTION: STARFLEETOP 0x00534840
+void fn_005346f9_object::fn_00534840(long index)
+{
+    fn_00534855(&field_3c, index, "PlanetNames");
 }
