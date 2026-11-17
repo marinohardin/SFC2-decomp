@@ -781,3 +781,29 @@ void fn_004d38a5_list::fn_004d38a5()
 	::operator delete( m8 );
 	m8 = 0;
 }
+
+// HYPOTHESIS: tFlasher's layout is not recovered; only its polymorphism and vtable slot 1 are
+// known from this caller. 0x004d3a02 returns a polymorphic object for a handle.
+class fn_004d3a02_object
+{
+public:
+	virtual void fn_vfunction0();
+};
+
+class tFlasher : public fn_004d3a02_object
+{
+public:
+	virtual void fn_vfunction1( int arg1 );
+};
+
+tFlasher* fn_004d3a02( long arg1 );
+
+// FUNCTION: STARFLEETOP 0x004d39aa
+void fn_004d39aa( long arg1 )
+{
+	tFlasher* flasher = dynamic_cast<tFlasher*>( fn_004d3a02( arg1 ) );
+	if ( flasher != 0 )
+	{
+		flasher->fn_vfunction1( 1 );
+	}
+}
