@@ -215,3 +215,15 @@ template<> std::collate<char>::collate(size_t _R)
     std::_Locinfo _Lobj;
     _Init(_Lobj);
 }
+
+// FUNCTION: STARFLEETOP 0x004065d3
+// HYPOTHESIS: the library's codecvt<char,char,int>::do_in instantiation (identity conversion, returns noconv).
+template<> std::codecvt_base::result std::codecvt<char, char, int>::do_in(int&, const char* _F1, const char*, const char*& _M1, char* _F2, char*, char*& _M2) const
+{
+    _M1 = _F1;
+    _M2 = _F2;
+    return (noconv);
+}
+
+// HYPOTHESIS: a caller in the original instantiates the facet, which emits its vtable and do_in.
+std::codecvt<char, char, int> g_fn_004065d3;
