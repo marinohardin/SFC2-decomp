@@ -554,5 +554,6 @@ class tNewsStory;
 // HYPOTHESIS: the SDK's allocator idiom (tClassAllocator<tX> gXAllocator;) for the news story
 // class; the global sits at 0x00c384dc and its constructor is 0x00547492. Its initializer lies
 // in this page, before tNewsStory's own code; the unit split may belong one file further.
+// FUNCTION: STARFLEETOP 0x005468e1
 // FUNCTION: STARFLEETOP 0x005468d7
 tClassAllocator<tNewsStory> g_00c384dc;
