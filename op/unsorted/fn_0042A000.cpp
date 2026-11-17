@@ -89,3 +89,19 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 {
 	field_84.FUN_005b6a5c( 0, 0 );
 }
+
+// HYPOTHESIS: a flag word at +0x98 tested by bit index; the class is not known yet.
+class fn_0042a403_object
+{
+public:
+	bool FUN_0042a403( int bit );
+
+	byte field_00[0x98];
+	unsigned long field_98;
+};
+
+// FUNCTION: STARFLEETOP 0x0042a403
+bool fn_0042a403_object::FUN_0042a403( int bit )
+{
+	return ( field_98 & ( 1 << bit ) ) ? true : false;
+}
