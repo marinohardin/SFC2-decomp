@@ -48,6 +48,7 @@ public:
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
+    void fn_0043ee5a();
 
     // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
     // slot 50; their type is not recovered.
@@ -1039,4 +1040,35 @@ int tSensorGroupSystem::fn_0043edd8()
     else if (diff >= 1)
         return 1;
     return 0;
+}
+
+// HYPOTHESIS: 0x0043ee5a pushes a float to slot 2 of field_8c and field_b0, while 0x0043e642
+// pushes an int to the same slot of field_d4; all six share tMinMaxFloat's vftable, so the
+// slot's real parameter type is not settled. This view gives slot 2 a float.
+class fn_0043ee5a_value
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3(float param_1); // slot 2
+};
+
+// FUNCTION: STARFLEETOP 0x0043ee5a
+void tSensorGroupSystem::fn_0043ee5a()
+{
+    if (field_184 + field_188 > field_164)
+    {
+        if (field_184 <= field_164)
+        {
+            field_188 = (int)(field_164 - field_168);
+            ((fn_0043ee5a_value*)&field_b0)->vfunction3(field_16c);
+        }
+        else
+        {
+            field_188 = 0;
+            ((fn_0043ee5a_value*)&field_b0)->vfunction3(field_16c);
+            field_184 = field_164;
+            ((fn_0043ee5a_value*)&field_8c)->vfunction3(field_168);
+        }
+    }
 }
