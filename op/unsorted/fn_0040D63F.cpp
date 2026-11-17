@@ -719,3 +719,12 @@ void fn_0040e37a(tString* name, tString* value, fn_0040d63f_Buf& buf)
     buf.fn_0040d897(&nl, 1, 0);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e42b
+void fn_0040e42b(char* name, double* value, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    sprintf(text, "%s = %lf", name, *value);
+    buf.fn_0040e744(text);
+}
+
