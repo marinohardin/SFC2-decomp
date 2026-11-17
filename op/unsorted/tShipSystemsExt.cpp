@@ -56,6 +56,7 @@ public:
     virtual tMinMaxFloat* vfunction33();
     virtual tMinMaxFloat* vfunction34();
     virtual tMinMaxFloat* vfunction35();
+    virtual tMinMaxFloat* vfunction36();
     virtual tMinMaxFloat* vfunction37();
     virtual tMinMaxFloat* vfunction38();
     virtual tShipSystemManager* vfunction53();
@@ -850,4 +851,10 @@ tMinMaxFloat* tShipSystemsExt::vfunction35()
 {
     static tObject_0040ce21 marker("How are you.");
     return &m8ac;
+}
+
+// FUNCTION: STARFLEETOP 0x00448ba3
+tMinMaxFloat* tShipSystemsExt::vfunction36()
+{
+    return &m8d0;
 }
