@@ -1092,6 +1092,22 @@ int fn_004d0ab3(int param_1)
 	return fn_0040a621(param_1, &specs) ? specs.m_5dc : 0;
 }
 
+// FUNCTION: STARFLEETOP 0x004d0b28
+void tSFCPlayer::fn_004d0b28()
+{
+	m_04 = false;
+	m_30 = 0;
+	m_8538 = 0;
+	m_84b0 = 0;
+	m_84ac = 0;
+	m_84b4 = false;
+	m_852c = 0;
+	m_851c = 0;
+	m_8520 = 0;
+	m_8524 = 0;
+	m_8528 = 0;
+}
+
 // FUNCTION: STARFLEETOP 0x004d07c9
 void tSFCPlayer::vfunction5(tString *param_1)
 {
