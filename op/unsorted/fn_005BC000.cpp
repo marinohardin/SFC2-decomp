@@ -937,3 +937,12 @@ void fn_005bc161_tree::FUN_005bcdc1(node *_X)
 		_Y = _Y->_Left;
 		operator delete(_X); }
 }
+
+// FUNCTION: STARFLEETOP 0x005bcdf1
+void fn_005bc161_tree::FUN_005bcdf1(node *_X)
+{
+	for (node *_Y = _X; _Y != _Nil; _X = _Y)
+		{FUN_005bcdf1(_Y->_Right);
+		_Y = _Y->_Left;
+		operator delete(_X); }
+}
