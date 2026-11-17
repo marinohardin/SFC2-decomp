@@ -20,13 +20,14 @@
 # Ignored files under the judging directories (harness/, toolchain/, analysis/, ghidra/,
 # scripts/, oracle/) are removed before scoring, so nothing planted there can run.
 #
-# Models and the stop rule (harness/README.md, "Model tiers"): attempt 1 Opus builds, attempt 2
-# Sonnet fixes the near match, attempt 3 Opus. From attempt 2 on, an attempt that does not raise
-# the best score ends the run, and after two attempts so does a best of 90% or less. Fable gets
-# one time-boxed try at a function whose best is at least 90%, and only with --allow-fable. A run
-# that ends short of 100% lists the function in analysis/results/revisit_functions.tsv (or
-# difficult_functions.tsv when it had every attempt), which the loop commits; the queue skips
-# revisit-listed functions unless --revisit is given.
+# Models and the stop rule (harness/README.md, "Model tiers"): attempt 1 builds (Sonnet for a
+# function under 128 bytes, Opus otherwise), attempt 2 Opus fixes the near match, attempt 3 Opus
+# builds again. From attempt 2 on, an attempt that does not raise the best score ends the run,
+# and after two attempts so does a best of 90% or less. Fable gets one time-boxed try at a
+# function whose best is at least 90%, and only with --allow-fable. A run that ends short of
+# 100% lists the function in analysis/results/revisit_functions.tsv (or difficult_functions.tsv
+# when it had every attempt), which the loop commits; the queue skips revisit-listed functions
+# unless --revisit is given.
 #
 # Runs under the owner's Claude Max login: it aborts if ANTHROPIC_API_KEY (or another variable
 # that would switch billing) is set. Run it in its own worktree on a grind/ or feature/ branch.
@@ -58,7 +59,8 @@
 # scripted stand-in agent. With the real claude, `claude auth status` must show a subscription
 # login before the first round.
 #
-# Environment: HARNESS_TIERS (opus,sonnet,opus), HARNESS_NEAR (90), HARNESS_ALLOW_FABLE (0),
+# Environment: HARNESS_TIERS (opus,opus,opus), HARNESS_SMALL_TIERS (sonnet,opus,opus),
+# HARNESS_SMALL_BYTES (128; 0: one order for every size), HARNESS_NEAR (90), HARNESS_ALLOW_FABLE (0),
 # HARNESS_FABLE_TRIES (1), HARNESS_FABLE_MAX_TURNS (30), HARNESS_FABLE_TIMEOUT (1800 s),
 # HARNESS_MAX_TURNS (60), HARNESS_SESSION_TIMEOUT (0: none), HARNESS_LEAN_INSTRUCTIONS,
 # HARNESS_NO_LEAN (0), HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000),

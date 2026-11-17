@@ -17,6 +17,8 @@ public:
 	bool vfunction19(int);
 
 	void fn_0069a880(int, int);
+	// HYPOTHESIS: sets the window title; tMyApp::vfunction2 passes "Starfleet Command".
+	void fn_0069a9a0(const char *);
 	int fn_0069a940();
 	int fn_0069a970();
 	int fn_0069aa00();

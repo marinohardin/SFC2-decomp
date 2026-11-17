@@ -32,7 +32,11 @@ SOLVED_SAMPLE = 200
 ADDRESS = re.compile(r'^(0x)?[0-9A-Fa-f]{1,8}$')
 
 
-DEFAULT_TIERS = ('opus', 'sonnet', 'opus')
+# Model order by function size (harness/README.md, "Model tiers"): Sonnet builds a function of
+# fewer than SMALL_BYTES bytes, Opus builds anything larger, and Opus takes every later attempt.
+DEFAULT_TIERS = ('opus', 'opus', 'opus')
+DEFAULT_SMALL_TIERS = ('sonnet', 'opus', 'opus')
+SMALL_BYTES = 128
 # A function's run goes on past two attempts only while its best score is above this, and Fable
 # is offered only to a function whose best is at least this (harness/README.md, "Model tiers").
 NEAR = float(os.environ.get('HARNESS_NEAR', 90.0))
@@ -40,25 +44,48 @@ EPSILON = 1e-6
 
 
 class Tiers:
-    """Model by attempt. Opus builds (attempt 1), Sonnet does one fix round on what Opus left
-    (attempt 2), Opus tries once more (attempt 3); the stop rule (`plan`) usually ends a run
-    sooner. Fable comes only after the run, only for a near match, and only when explicitly
-    allowed (HARNESS_ALLOW_FABLE=1 or loop.sh --allow-fable). HARNESS_TIERS replaces the default
-    sequence, e.g. "opus,sonnet"."""
+    """Model by attempt, chosen by the function's size. A function of fewer than `small_bytes`
+    bytes runs the `small` sequence (Sonnet builds, then Opus, then Opus); any other the regular
+    one (Opus three times). The stop rule (`plan`) usually ends a run sooner. Fable comes only
+    after the run, only for a near match, and only when explicitly allowed
+    (HARNESS_ALLOW_FABLE=1 or loop.sh --allow-fable).
 
-    def __init__(self, sequence=DEFAULT_TIERS, fable=1, allow_fable=False):
+    HARNESS_TIERS replaces the regular sequence, e.g. "opus,sonnet", and HARNESS_SMALL_TIERS the
+    small one; HARNESS_TIERS alone sets the order for every size, as it did before sizes
+    mattered. HARNESS_SMALL_BYTES (128) moves the line; 0 turns it off. `for_size` gives the
+    sequence one function runs; a Tiers built without `small` has one sequence for all."""
+
+    def __init__(self, sequence=DEFAULT_TIERS, fable=1, allow_fable=False, small=None,
+                 small_bytes=0):
         self.regular = list(sequence)
+        self.small = list(small) if small else list(self.regular)
+        self.small_bytes = small_bytes if small else 0
         self.fable = fable
         self.allow_fable = allow_fable
         self.sequence = self.regular + (['fable'] * fable if allow_fable else [])
 
     @classmethod
     def from_env(cls, env=os.environ):
-        seq = [m.strip() for m in env.get('HARNESS_TIERS', '').split(',') if m.strip()]
-        if 'fable' in seq:
-            raise ValueError('HARNESS_TIERS may not name fable; use HARNESS_ALLOW_FABLE=1')
-        return cls(seq or DEFAULT_TIERS, int(env.get('HARNESS_FABLE_TRIES', 1)),
-                   env.get('HARNESS_ALLOW_FABLE') == '1')
+        def seq(var):
+            out = [m.strip() for m in env.get(var, '').split(',') if m.strip()]
+            if 'fable' in out:
+                raise ValueError(f'{var} may not name fable; use HARNESS_ALLOW_FABLE=1')
+            return out
+        regular, small = seq('HARNESS_TIERS'), seq('HARNESS_SMALL_TIERS')
+        if regular and not small:
+            small = regular
+        return cls(regular or DEFAULT_TIERS, int(env.get('HARNESS_FABLE_TRIES', 1)),
+                   env.get('HARNESS_ALLOW_FABLE') == '1', small or DEFAULT_SMALL_TIERS,
+                   int(env.get('HARNESS_SMALL_BYTES', SMALL_BYTES)))
+
+    def for_size(self, size):
+        """The tiers one function runs: the small sequence below `small_bytes`, the regular one
+        otherwise, and the regular one when its size is unknown."""
+        try:
+            small = 0 < int(size) < self.small_bytes
+        except (TypeError, ValueError):
+            small = False
+        return Tiers(self.small if small else self.regular, self.fable, self.allow_fable)
 
     @property
     def cap(self):
@@ -71,8 +98,11 @@ class Tiers:
     @staticmethod
     def role(attempts, model):
         """What the session is for: building the function, or fixing the near match left by
-        an earlier attempt."""
-        return 'build' if attempts == 0 or model not in ('sonnet', 'fable') else 'fix'
+        an earlier attempt. The second attempt is always a fix round, whichever model takes it;
+        a later Sonnet or Fable attempt is one too."""
+        if attempts == 0:
+            return 'build'
+        return 'fix' if attempts == 1 or model in ('sonnet', 'fable') else 'build'
 
 
 def _score(v):
@@ -95,11 +125,13 @@ class Plan:
     full:  over, and the function had every attempt the rule gives it (the regular sequence to
            its end, and Fable when its best qualified). Such a function goes to
            difficult_functions.tsv; one that stopped short goes to revisit_functions.tsv.
-    note:  why the run ended, for the list."""
+    note:  why the run ended, for the list.
+    waits: over, but its best qualifies for a Fable try it has not had (Fable not allowed)."""
 
-    def __init__(self, model=None, role=None, full=False, note='', best=0.0, attempts=0):
+    def __init__(self, model=None, role=None, full=False, note='', best=0.0, attempts=0,
+                 waits=False):
         self.model, self.role, self.full, self.note = model, role, full, note
-        self.best, self.attempts = best, attempts
+        self.best, self.attempts, self.waits = best, attempts, waits
 
 
 def plan(rows, tiers, near=NEAR):
@@ -141,7 +173,7 @@ def plan(rows, tiers, near=NEAR):
     else:
         note = reason
     return Plan(None, full=ran_out and not fable_due, note=f'{note}; best {best:.2f}%',
-                best=best, attempts=n)
+                best=best, attempts=n, waits=fable_due)
 
 
 def size_bucket(size):
@@ -325,10 +357,12 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
     done = {r['address'] for r in attempts if r['outcome'] == 'exact'}
     given_up = {r['address'] for r in difficult}
     listed = {r['address']: r.get('listed', '') for r in revisit}
+    whole = tiers
     for e in queue:
         a = e['address']
         if a in given_up or a in done or (a in listed and not take_revisit):
             continue
+        tiers = whole.for_size(e.get('size'))
         if a not in listed and take_revisit:
             rows = unlisted_run(attempts, a, tiers)
         else:
@@ -365,6 +399,7 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     'cleared' (exact: taken off the revisit list) or None (its run goes on, or it is listed
     already)."""
     a = entry['address']
+    tiers = tiers.for_size(entry.get('size'))
     attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
     revisit = read_tsv(paths_.REVISIT, REVISIT_FIELDS)
     mine = [r for r in revisit if r['address'] == a]
@@ -388,7 +423,10 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     if any(r['address'] == a for r in read_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS)):
         return None
     last = rows[-1]
-    if p.full:
+    # A listed function gets one revisit run: if that ends short too, and it is not left
+    # waiting for Fable, it goes to the difficult list. Listing it again would hand it straight
+    # back to the same --revisit loop, which would run it over and over.
+    if p.full or (mine and take_revisit and not p.waits):
         _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
         append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
             address=a, name=entry['name'], attempts=p.attempts, last_model=last['model'],
@@ -410,12 +448,15 @@ def record(paths_, entry, row, tiers, take_revisit=False):
     return settle(paths_, entry, tiers, row['time'], take_revisit)
 
 
-def sweep(paths_, tiers, now, exact=frozenset()):
+def sweep(paths_, tiers, now, exact=frozenset(), sizes=None):
     """Settle every function with counted attempts whose run the stop rule has ended but that
     is on no list yet: those whose attempts were logged before the rule existed. `exact` holds
     the addresses matched_set.json records exact: a function matched outside the loop (by hand,
     or in a later batch) has no exact attempt in the log, so it is never listed, and is taken
-    off either list if it is on one. Returns {address: 'difficult' | 'revisit' | 'cleared'}."""
+    off either list if it is on one. `sizes` ({address: bytes}) picks each function's model
+    order; a function without one runs the regular order. Returns
+    {address: 'difficult' | 'revisit' | 'cleared'}."""
+    sizes = sizes or {}
     attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
     exact = {a.lower() for a in exact}
     names, out = {}, {}
@@ -428,7 +469,7 @@ def sweep(paths_, tiers, now, exact=frozenset()):
         if r['outcome'] in COUNTED and r['address'].lower() not in exact:
             names.setdefault(r['address'], r['name'])
     for a, name in names.items():
-        got = settle(paths_, dict(address=a, name=name), tiers, now)
+        got = settle(paths_, dict(address=a, name=name, size=sizes.get(a)), tiers, now)
         if got in ('difficult', 'revisit'):
             out[a] = got
     return out

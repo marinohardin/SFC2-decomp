@@ -229,6 +229,15 @@ def test_what_the_scanner_cannot_read_is_refused(tmp_path, capsys, header, sourc
     assert message in capsys.readouterr().err
 
 
+def test_a_template_base_is_read_by_its_template_name(tmp_path):
+    header = HEADER + ('\ntemplate< class tClass >\nclass tTestEval : public std::unary_function< tClass*, bool >\n'
+                       '{\npublic:\n\tint32 fValue;\n};\n')
+    game, csv = make_tree(tmp_path, header=header)
+    assert run(tmp_path, game, csv) == 0
+    _, classes = manifest.scan(str(game))
+    assert classes['tTestEval']['bases'] == ['std::unary_function']
+
+
 def test_signatures_are_read_from_definition_heads():
     assert manifest.parse_signature('int32 X::Y::operator==( const char* raw_name ) const') == (
         'int32', 'X::Y::operator==', ('const char*',), ('raw_name',), True, None)

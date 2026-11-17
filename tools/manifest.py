@@ -107,7 +107,8 @@ SOURCES = ('.cpp', '.c', '.h', '.inl')
 COLUMNS = ('address', 'size', 'symbol', 'source', 'modes')
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
 CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+)\s*(?::\s*(.*?))?\s*(\{)?\s*$')
-BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)$')
+# A base, `[access] [virtual] Name[< args >]`; a template base is recorded by its template's name.
+BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)\s*(?:<.*>)?$')
 IDENT = re.compile(r'[A-Za-z_]\w*$')
 CONVENTIONS = ('__stdcall', '__fastcall', '__pascal')
 # A global object's definition: `[static] Type[<...>][*&] Name[[N]] [= value];`, no parameter list.

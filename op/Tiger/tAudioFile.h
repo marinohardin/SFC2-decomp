@@ -40,8 +40,7 @@ public:
     virtual tBasicAudioFile *mGetBasicAudioFile(unsigned long param_1);
     virtual unsigned char vfn_48(long param_1, long param_2, long param_3);
 
-    tSafeArray<tBasicAudioFile> field_0c;
-    long field_28;
+    tSafeArray<tBasicAudioFile> field_0c; // 0x20 bytes: its constructor also clears +0x28
     tStandardMemoryArray<tAsynchReadInfo> *field_2c;
 };
 

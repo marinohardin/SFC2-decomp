@@ -15,10 +15,10 @@ public:
 	__int64	f_00;
 };
 
-// HYPOTHESIS: the enumerators are not recovered.
-enum eSpecialDir
-{
-};
+// tFileSession and eSpecialDir are declared in their own header, as tFile.cpp uses them too;
+// the next lines keep this file's line numbers.
+//
+#include "Tiger/tFileSession.h"
 
 // HYPOTHESIS: named by the exe through twVolume::mGetVolType's symbol; the enumerators are not
 // recovered. mGetVolType maps removable to 0, fixed and RAM disks to 1, CD-ROM to 2, remote to 3.
@@ -637,28 +637,28 @@ public:
 	tFileSystemCookieManager<twVolume,twDir,twPath>	fFSCookies;		// +0x0c
 };
 
-class tFileSession
-{
-public:
-	tFileSession();
-	virtual ~tFileSession();
-
-	virtual iTruth	mValid( void );
-	virtual void	mInvalidate( void );
-
-	tVolume		mGetNamedVolume( tString &name );
-	tPath		mGetAppPath( void );
-	tDir		mGetSpecialDir( eSpecialDir dir );
-	tPath		mDuplicatePath( tPath path );
-	// HYPOTHESIS: the argument names are not recovered.
-	tPath		mFileOpenDialog( tString &prompt, tString &filter );
-	// HYPOTHESIS: the argument names are not recovered.
-	tPath		mFileSaveDialog( tString &prompt, tString &filter );
-
-	// HYPOTHESIS: +0x04 is not written by the constructor; its meaning is not recovered.
-	int32u		f_04;
-	tSession	fSession;
-};
+// tFileSession is declared in Tiger/tFileSession.h; these lines keep the line numbers.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // FUNCTION: STARFLEETOP 0x0061bae0
 tFileSession::tFileSession()

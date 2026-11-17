@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-16T18:30:47Z",
+ "generated_at": "2026-11-17T04:19:10Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "bb8e4ac9111f5b0e7821f4781c35528f703d3ccf641d49f11c47d80e5ff2b386"
+   "sha256": "736367d8fa9c36e54a159053d1859184ddf289c25fb5b3336d0a23087fed72f4"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "ec5c77985a2cd588c70eb1a2328244b4b1e9ed99dff66af7799fdce9c5137bc6"
+   "sha256": "23f098d7fde366689f73a31047c6054612d8bf5e8e0b21c64320bab520dfd741"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 1008,
-     "pct_functions": 4.3691,
-     "function_bytes": 168870,
-     "funclet_bytes": 2142,
-     "bytes": 171012,
-     "pct_bytes": 4.9229,
-     "pct_text": 4.558
+     "functions": 1672,
+     "pct_functions": 7.2472,
+     "function_bytes": 311563,
+     "funclet_bytes": 3568,
+     "bytes": 315131,
+     "pct_bytes": 9.0715,
+     "pct_text": 8.3992
     },
     "functional": {
      "functions": 0,
@@ -102,13 +102,13 @@
      "pct_text": 0.0
     },
     "partial": {
-     "functions": 114,
-     "pct_functions": 0.4941,
-     "function_bytes": 62447,
-     "funclet_bytes": 1978,
-     "bytes": 64425,
-     "pct_bytes": 1.8546,
-     "pct_text": 1.7171
+     "functions": 199,
+     "pct_functions": 0.8626,
+     "function_bytes": 117644,
+     "funclet_bytes": 4131,
+     "bytes": 121775,
+     "pct_bytes": 3.5055,
+     "pct_text": 3.2457
     },
     "lifted": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 21949,
-     "pct_functions": 95.1368,
-     "function_bytes": 3074983,
-     "funclet_bytes": 163421,
-     "bytes": 3238404,
-     "pct_bytes": 93.2226,
-     "pct_text": 86.3129
+     "functions": 21200,
+     "pct_functions": 91.8903,
+     "function_bytes": 2877093,
+     "funclet_bytes": 159842,
+     "bytes": 3036935,
+     "pct_bytes": 87.423,
+     "pct_text": 80.9431
     }
    },
    "named": {
@@ -187,12 +187,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 1008,
-     "pct_functions": 4.5479,
-     "function_bytes": 168870,
-     "funclet_bytes": 2142,
-     "bytes": 171012,
-     "pct_bytes": 5.1343
+     "functions": 1672,
+     "pct_functions": 7.5438,
+     "function_bytes": 311563,
+     "funclet_bytes": 3568,
+     "bytes": 315131,
+     "pct_bytes": 9.4611
     },
     "functional": {
      "functions": 0,
@@ -203,12 +203,12 @@
      "pct_bytes": 0.0
     },
     "partial": {
-     "functions": 114,
-     "pct_functions": 0.5143,
-     "function_bytes": 62447,
-     "funclet_bytes": 1978,
-     "bytes": 64425,
-     "pct_bytes": 1.9342
+     "functions": 199,
+     "pct_functions": 0.8979,
+     "function_bytes": 117644,
+     "funclet_bytes": 4131,
+     "bytes": 121775,
+     "pct_bytes": 3.656
     },
     "lifted": {
      "functions": 0,
@@ -219,12 +219,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 21042,
-     "pct_functions": 94.9377,
-     "function_bytes": 2940127,
-     "funclet_bytes": 155236,
-     "bytes": 3095363,
-     "pct_bytes": 92.9315
+     "functions": 20293,
+     "pct_functions": 91.5584,
+     "function_bytes": 2742237,
+     "funclet_bytes": 151657,
+     "bytes": 2893894,
+     "pct_bytes": 86.8829
     }
    },
    "named": {
@@ -1019,6 +1019,10 @@
    "name": "tEntityMgr::vfunction1"
   },
   {
+   "address": "00426ca8",
+   "name": "FUN_00426ca8"
+  },
+  {
    "address": "004296c8",
    "name": "FUN_004296c8"
   },
@@ -1145,6 +1149,14 @@
   {
    "address": "00431808",
    "name": "tNetControl::vfunction4"
+  },
+  {
+   "address": "0043405f",
+   "name": "tNetMsg_Header::~tNetMsg_Header"
+  },
+  {
+   "address": "00434a14",
+   "name": "FUN_00434a14"
   },
   {
    "address": "00435391",
@@ -1543,6 +1555,38 @@
    "name": "tShieldGroup::vfunction96"
   },
   {
+   "address": "004557ee",
+   "name": "FUN_004557ee"
+  },
+  {
+   "address": "00455897",
+   "name": "FUN_00455897"
+  },
+  {
+   "address": "004558e4",
+   "name": "FUN_004558e4"
+  },
+  {
+   "address": "004558fb",
+   "name": "FUN_004558fb"
+  },
+  {
+   "address": "004559b7",
+   "name": "FUN_004559b7"
+  },
+  {
+   "address": "00455a1a",
+   "name": "FUN_00455a1a"
+  },
+  {
+   "address": "00455a40",
+   "name": "FUN_00455a40"
+  },
+  {
+   "address": "00455a59",
+   "name": "FUN_00455a59"
+  },
+  {
    "address": "0045da31",
    "name": "tCampaignState::vfunction4"
   },
@@ -1581,6 +1625,266 @@
   {
    "address": "0045deac",
    "name": "tCampaignState::scalar_deleting_destructor"
+  },
+  {
+   "address": "0047ebca",
+   "name": "FUN_0047ebca"
+  },
+  {
+   "address": "0048612c",
+   "name": "tSupplyDockItem::~tSupplyDockItem"
+  },
+  {
+   "address": "004861aa",
+   "name": "tSupplyDockItem::vfunction1"
+  },
+  {
+   "address": "004861e0",
+   "name": "tSupplyDockItem::vfunction2"
+  },
+  {
+   "address": "004861ef",
+   "name": "tSupplyDockItem::vfunction6"
+  },
+  {
+   "address": "004861f4",
+   "name": "tSupplyDockItem::vfunction8"
+  },
+  {
+   "address": "0048620a",
+   "name": "tSupplyDockItem::vfunction11"
+  },
+  {
+   "address": "00486211",
+   "name": "tSupplyDockShuttles::tSupplyDockShuttles"
+  },
+  {
+   "address": "00486296",
+   "name": "tSupplyDockShuttles::vfunction3"
+  },
+  {
+   "address": "004863f5",
+   "name": "tSupplyDockShuttles::vfunction4"
+  },
+  {
+   "address": "0048641f",
+   "name": "tSupplyDockShuttles::vfunction7"
+  },
+  {
+   "address": "0048644c",
+   "name": "tSupplyDockShuttles::vfunction9"
+  },
+  {
+   "address": "00486457",
+   "name": "tSupplyDockShuttles::vfunction10"
+  },
+  {
+   "address": "00486462",
+   "name": "tSupplyDockShuttles::vfunction11"
+  },
+  {
+   "address": "0048646d",
+   "name": "tSupplyDockShuttles::vfunction12"
+  },
+  {
+   "address": "0048649e",
+   "name": "tSupplyDockShuttles::vfunction13"
+  },
+  {
+   "address": "004864cf",
+   "name": "tSupplyDockShuttles::vfunction14"
+  },
+  {
+   "address": "00486500",
+   "name": "FUN_00486500"
+  },
+  {
+   "address": "0048650a",
+   "name": "FUN_0048650a"
+  },
+  {
+   "address": "0048652a",
+   "name": "FUN_0048652a"
+  },
+  {
+   "address": "00486534",
+   "name": "FUN_00486534"
+  },
+  {
+   "address": "00486554",
+   "name": "FUN_00486554"
+  },
+  {
+   "address": "0048655e",
+   "name": "FUN_0048655e"
+  },
+  {
+   "address": "00486574",
+   "name": "tSupplyDockMissiles::tSupplyDockMissiles"
+  },
+  {
+   "address": "004866c4",
+   "name": "tSupplyDockMissiles::vfunction3"
+  },
+  {
+   "address": "004869a1",
+   "name": "tSupplyDockMissiles::vfunction4"
+  },
+  {
+   "address": "004869bc",
+   "name": "tSupplyDockMissiles::vfunction7"
+  },
+  {
+   "address": "00486a11",
+   "name": "tSupplyDockMissiles::vfunction9"
+  },
+  {
+   "address": "00486a1d",
+   "name": "tSupplyDockMissiles::vfunction10"
+  },
+  {
+   "address": "00486a25",
+   "name": "tSupplyDockMissiles::vfunction11"
+  },
+  {
+   "address": "00486a31",
+   "name": "tSupplyDockMissiles::vfunction12"
+  },
+  {
+   "address": "00486a63",
+   "name": "tSupplyDockMissiles::vfunction13"
+  },
+  {
+   "address": "00486a71",
+   "name": "tSupplyDockMissiles::vfunction14"
+  },
+  {
+   "address": "00486aa1",
+   "name": "FUN_00486aa1"
+  },
+  {
+   "address": "00486ad5",
+   "name": "FUN_00486ad5"
+  },
+  {
+   "address": "00486b8a",
+   "name": "FUN_00486b8a"
+  },
+  {
+   "address": "00486bf2",
+   "name": "tSupplyDockFighters::tSupplyDockFighters"
+  },
+  {
+   "address": "00486cfc",
+   "name": "tSupplyDockFighters::vfunction1"
+  },
+  {
+   "address": "00486d32",
+   "name": "tSupplyDockFighters::vfunction20"
+  },
+  {
+   "address": "00486d56",
+   "name": "tSupplyDockFighters::vfunction2"
+  },
+  {
+   "address": "00486d80",
+   "name": "tSupplyDockFighters::vfunction3"
+  },
+  {
+   "address": "00486f6d",
+   "name": "tSupplyDockFighters::vfunction6"
+  },
+  {
+   "address": "00486f8c",
+   "name": "tSupplyDockItem::vfunction5"
+  },
+  {
+   "address": "00486fac",
+   "name": "FUN_00486fac"
+  },
+  {
+   "address": "00486fd6",
+   "name": "tSupplyDockFighters::vfunction15"
+  },
+  {
+   "address": "00486fed",
+   "name": "tSupplyDockFighters::vfunction16"
+  },
+  {
+   "address": "00486ffc",
+   "name": "tSupplyDockFighters::vfunction17"
+  },
+  {
+   "address": "0048701a",
+   "name": "tSupplyDockFighters::vfunction18"
+  },
+  {
+   "address": "00487091",
+   "name": "tSupplyDockFighters::vfunction7"
+  },
+  {
+   "address": "0048719b",
+   "name": "FUN_0048719b"
+  },
+  {
+   "address": "00487236",
+   "name": "FUN_00487236"
+  },
+  {
+   "address": "004872d2",
+   "name": "tSupplyDockMisc::tSupplyDockMisc"
+  },
+  {
+   "address": "004873a2",
+   "name": "tSupplyDockMisc::vfunction1"
+  },
+  {
+   "address": "004873ea",
+   "name": "tSupplyDockMisc::vfunction2"
+  },
+  {
+   "address": "0048740a",
+   "name": "tSupplyDockMisc::vfunction3"
+  },
+  {
+   "address": "0048761d",
+   "name": "tSupplyDockMisc::vfunction4"
+  },
+  {
+   "address": "0048763e",
+   "name": "tSupplyDockMisc::vfunction6"
+  },
+  {
+   "address": "0048765d",
+   "name": "tSupplyDockMisc::vfunction7"
+  },
+  {
+   "address": "004876ae",
+   "name": "FUN_004876ae"
+  },
+  {
+   "address": "004876bf",
+   "name": "FUN_004876bf"
+  },
+  {
+   "address": "004876d0",
+   "name": "FUN_004876d0"
+  },
+  {
+   "address": "004876df",
+   "name": "FUN_004876df"
+  },
+  {
+   "address": "0048771a",
+   "name": "FUN_0048771a"
+  },
+  {
+   "address": "00487757",
+   "name": "FUN_00487757"
+  },
+  {
+   "address": "00487784",
+   "name": "tSupplyDockShipInfo::tSupplyDockShipInfo"
   },
   {
    "address": "0048bd4d",
@@ -2587,6 +2891,14 @@
    "name": "tPanelMgr::vfunction13"
   },
   {
+   "address": "0060b6d0",
+   "name": "FUN_0060b6d0"
+  },
+  {
+   "address": "0060b715",
+   "name": "FUN_0060b715"
+  },
+  {
    "address": "0061bae0",
    "name": "tFileSession::tFileSession"
   },
@@ -2689,6 +3001,398 @@
   {
    "address": "0061fa60",
    "name": "tPathIterator::mFirst"
+  },
+  {
+   "address": "0061fb60",
+   "name": "tPathIterator::mNext"
+  },
+  {
+   "address": "006230b0",
+   "name": "tString::mInitInstanceControl"
+  },
+  {
+   "address": "006230d0",
+   "name": "tString::tString"
+  },
+  {
+   "address": "006231a0",
+   "name": "tInstanceStringControl::~tInstanceStringControl"
+  },
+  {
+   "address": "00623260",
+   "name": "tString::tString"
+  },
+  {
+   "address": "00623500",
+   "name": "tString::tString"
+  },
+  {
+   "address": "00623580",
+   "name": "tString::~tString"
+  },
+  {
+   "address": "00623600",
+   "name": "tString::mReserve"
+  },
+  {
+   "address": "006236b0",
+   "name": "tString::mExpansionRoom"
+  },
+  {
+   "address": "00623700",
+   "name": "tString::mWideStr"
+  },
+  {
+   "address": "00623760",
+   "name": "tString::mCharStr"
+  },
+  {
+   "address": "006237f0",
+   "name": "tString::mCopyCharStr"
+  },
+  {
+   "address": "00623850",
+   "name": "tString::mCopyWideStr"
+  },
+  {
+   "address": "006238b0",
+   "name": "tString::mIncorporateCharList"
+  },
+  {
+   "address": "00623a10",
+   "name": "tString::mIncorporateCharList"
+  },
+  {
+   "address": "00623b80",
+   "name": "tString::mEndStrAt"
+  },
+  {
+   "address": "00623bb0",
+   "name": "tString::mEndStrAt"
+  },
+  {
+   "address": "00623d30",
+   "name": "tString::substr"
+  },
+  {
+   "address": "00623ed0",
+   "name": "tString::operator[]"
+  },
+  {
+   "address": "00623f20",
+   "name": "tString::find"
+  },
+  {
+   "address": "00624df0",
+   "name": "tString::operator+="
+  },
+  {
+   "address": "00624f20",
+   "name": "operator=="
+  },
+  {
+   "address": "00624f50",
+   "name": "operator<"
+  },
+  {
+   "address": "00625160",
+   "name": "tString::operator="
+  },
+  {
+   "address": "00625190",
+   "name": "operator=="
+  },
+  {
+   "address": "00625210",
+   "name": "operator!="
+  },
+  {
+   "address": "00625360",
+   "name": "tString::mGetInt32s"
+  },
+  {
+   "address": "00625380",
+   "name": "tString::iterator::iterator"
+  },
+  {
+   "address": "006253a0",
+   "name": "tString::iterator::iterator"
+  },
+  {
+   "address": "00625400",
+   "name": "tString::iterator::operator*"
+  },
+  {
+   "address": "006255a0",
+   "name": "tString::iterator::operator=="
+  },
+  {
+   "address": "006255d0",
+   "name": "tString::iterator::operator!="
+  },
+  {
+   "address": "00625600",
+   "name": "tString::iterator::operator<"
+  },
+  {
+   "address": "00625920",
+   "name": "tString::mStrCmp"
+  },
+  {
+   "address": "00625f30",
+   "name": "StrLen"
+  },
+  {
+   "address": "00626770",
+   "name": "tDynamicMemoryFreeList::mGetPreviousListMember"
+  },
+  {
+   "address": "00626790",
+   "name": "tDynamicMemoryFreeList::mGetNextListMember"
+  },
+  {
+   "address": "006267b0",
+   "name": "tDynamicMemoryFreeList::mGetPreviousCircularListMember"
+  },
+  {
+   "address": "006267e0",
+   "name": "tDynamicMemoryFreeList::mGetNextCircularListMember"
+  },
+  {
+   "address": "00626810",
+   "name": "tDynamicMemoryFreeList::mAddToFrontOfList"
+  },
+  {
+   "address": "00626880",
+   "name": "tDynamicMemoryFreeList::mAddToBackOfList"
+  },
+  {
+   "address": "006268f0",
+   "name": "tDynamicMemoryFreeList::mInsertAfterListMember"
+  },
+  {
+   "address": "00626980",
+   "name": "tDynamicMemoryFreeList::mInsertBeforeListMember"
+  },
+  {
+   "address": "00626a10",
+   "name": "tDynamicMemoryFreeList::mRemoveFromList"
+  },
+  {
+   "address": "00626aa0",
+   "name": "tDynamicMemoryFreeList::mIsListMember"
+  },
+  {
+   "address": "00626ad0",
+   "name": "tDynamicMemoryFreeList::mGetZeroIndexedListMemberPosition"
+  },
+  {
+   "address": "00626b00",
+   "name": "tDynamicMemoryFreeList::mGetListMemberAtThisIndex"
+  },
+  {
+   "address": "00626b30",
+   "name": "tDynamicMemoryFreeList::mClearList"
+  },
+  {
+   "address": "00626b50",
+   "name": "tDynamicMemoryFreeList::mDeleteListMembers"
+  },
+  {
+   "address": "00626b90",
+   "name": "tDynamicMemoryFreeList::mDumpList"
+  },
+  {
+   "address": "00626bc0",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetPreviousListMemberHandle"
+  },
+  {
+   "address": "00626be0",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetNextListMemberHandle"
+  },
+  {
+   "address": "00626c00",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetPreviousCircularListMemberHandle"
+  },
+  {
+   "address": "00626c30",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetNextCircularListMemberHandle"
+  },
+  {
+   "address": "00626c60",
+   "name": "tDynamicMemoryFreeListViaHandles::mAddToFrontOfList"
+  },
+  {
+   "address": "00626cf0",
+   "name": "tDynamicMemoryFreeListViaHandles::mAddToBackOfList"
+  },
+  {
+   "address": "00626d80",
+   "name": "tDynamicMemoryFreeListViaHandles::mInsertAfterListMember"
+  },
+  {
+   "address": "00626e40",
+   "name": "tDynamicMemoryFreeListViaHandles::mInsertBeforeListMember"
+  },
+  {
+   "address": "00626f00",
+   "name": "tDynamicMemoryFreeListViaHandles::mRemoveFromList"
+  },
+  {
+   "address": "00626fb0",
+   "name": "tDynamicMemoryFreeListViaHandles::mIsListMember"
+  },
+  {
+   "address": "00626ff0",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetZeroIndexedListMemberPosition"
+  },
+  {
+   "address": "00627040",
+   "name": "tDynamicMemoryFreeListViaHandles::mGetListMemberAtThisIndex"
+  },
+  {
+   "address": "00627080",
+   "name": "tDynamicMemoryFreeListViaHandles::mClearList"
+  },
+  {
+   "address": "006270a0",
+   "name": "tDynamicMemoryFreeListViaHandles::mDeleteListMembers"
+  },
+  {
+   "address": "006270e0",
+   "name": "tDynamicMemoryFreeListViaHandles::mDumpList"
+  },
+  {
+   "address": "00627180",
+   "name": "tStrMgrCore::mDone"
+  },
+  {
+   "address": "00627200",
+   "name": "tStrMgrCore::mGetStringIndex"
+  },
+  {
+   "address": "00627280",
+   "name": "tStrMgrCore::mGetStringIndex"
+  },
+  {
+   "address": "006272e0",
+   "name": "tStrMgrCore::mGetString"
+  },
+  {
+   "address": "00627340",
+   "name": "tStrMgrCore::mGetString"
+  },
+  {
+   "address": "00627360",
+   "name": "tStrMgrCore::mGetString"
+  },
+  {
+   "address": "00627380",
+   "name": "tStrMgrCore::mGetNumElements"
+  },
+  {
+   "address": "006273e0",
+   "name": "tStrMgrCore::mGetNumElements"
+  },
+  {
+   "address": "00627400",
+   "name": "tStrMgrCore::mGetRandStr"
+  },
+  {
+   "address": "00627470",
+   "name": "tStrMgrCore::mGetRandStr"
+  },
+  {
+   "address": "00627490",
+   "name": "tStrMgrCore::mGetGrpStr"
+  },
+  {
+   "address": "00627520",
+   "name": "tStrMgrCore::mGetGrpStr"
+  },
+  {
+   "address": "00627540",
+   "name": "tStrMgrCore::mIsAnElement"
+  },
+  {
+   "address": "006275d0",
+   "name": "tStrMgrCore::mIsAnElement"
+  },
+  {
+   "address": "006275f0",
+   "name": "tStrMgrCore::mIsAnElement"
+  },
+  {
+   "address": "00627680",
+   "name": "tStrMgrCore::mIsAnElement"
+  },
+  {
+   "address": "006276a0",
+   "name": "tWideCharFile::mGetChar"
+  },
+  {
+   "address": "00627a30",
+   "name": "tStrMgrCore::mLoadStringFile"
+  },
+  {
+   "address": "00627f50",
+   "name": "tZipInfoMgr::tZipInfoMgr"
+  },
+  {
+   "address": "00627f60",
+   "name": "tZipInfoMgr::mDone"
+  },
+  {
+   "address": "00628610",
+   "name": "tBasicFileZipNamespace::tBasicFileZip::mOpenForRead"
+  },
+  {
+   "address": "006286b0",
+   "name": "tBasicSoundFileZip::mOpenForWrite"
+  },
+  {
+   "address": "006286e0",
+   "name": "tBasicSoundFileZip::mIsOpen"
+  },
+  {
+   "address": "006286f0",
+   "name": "tBasicSoundFileZip::mClose"
+  },
+  {
+   "address": "00628700",
+   "name": "tBasicSoundFileZip::mEOF"
+  },
+  {
+   "address": "00628730",
+   "name": "tBasicSoundFileZip::mRead"
+  },
+  {
+   "address": "00628790",
+   "name": "tBasicSoundFileZip::mWrite"
+  },
+  {
+   "address": "006287c0",
+   "name": "tBasicSoundFileZip::mFilePos"
+  },
+  {
+   "address": "006287e0",
+   "name": "tBasicSoundFileZip::mFileSize"
+  },
+  {
+   "address": "00628800",
+   "name": "tBasicSoundFileZip::mSeekSet"
+  },
+  {
+   "address": "00628860",
+   "name": "tBasicSoundFileZip::mSeekCur"
+  },
+  {
+   "address": "006288c0",
+   "name": "tBasicSoundFileZip::mSeekEnd"
+  },
+  {
+   "address": "00628930",
+   "name": "_NewBasicFileZip"
   },
   {
    "address": "006289b0",
@@ -2999,8 +3703,340 @@
    "name": "tStringGroupTag::mGetString"
   },
   {
+   "address": "0062e9f0",
+   "name": "twFileSystemPart::mGetAppPath"
+  },
+  {
+   "address": "0062ed40",
+   "name": "WinParsePath"
+  },
+  {
+   "address": "0062ee00",
+   "name": "WinParseDir"
+  },
+  {
+   "address": "0062ff80",
+   "name": "gCopyWideStr"
+  },
+  {
+   "address": "0062ffc0",
+   "name": "WinResetCWD"
+  },
+  {
+   "address": "00630240",
+   "name": "FUN_00630240"
+  },
+  {
+   "address": "00630a00",
+   "name": "FUN_00630a00"
+  },
+  {
+   "address": "00630cf0",
+   "name": "twFileSystemPart::mPathFromWinString"
+  },
+  {
+   "address": "00630eb0",
+   "name": "twFileSystemPart::mGetSpecialDir"
+  },
+  {
+   "address": "006310c0",
+   "name": "twVolume::mGetSortName"
+  },
+  {
+   "address": "006310e0",
+   "name": "twVolume::mGetClusterSize"
+  },
+  {
+   "address": "006311a0",
+   "name": "twVolume::mGetTotalClusters"
+  },
+  {
+   "address": "00631260",
+   "name": "twVolume::mGetFreeClusters"
+  },
+  {
+   "address": "00631320",
+   "name": "twVolume::mGetVolType"
+  },
+  {
+   "address": "006313d0",
+   "name": "twVolume::vfunction7"
+  },
+  {
+   "address": "00631840",
+   "name": "twDir::mGetSortName"
+  },
+  {
+   "address": "00631930",
+   "name": "gCopyCharStr"
+  },
+  {
+   "address": "00631f60",
+   "name": "twDir::mExist"
+  },
+  {
+   "address": "00632d30",
+   "name": "twDir::mCreate"
+  },
+  {
+   "address": "00632fb0",
+   "name": "twPath::mEnsureFileClosed"
+  },
+  {
+   "address": "00632ff0",
+   "name": "twPath::mMakeFullPath"
+  },
+  {
+   "address": "00633260",
+   "name": "twPath::mGetSortName"
+  },
+  {
+   "address": "00633280",
+   "name": "twPath::mExist"
+  },
+  {
+   "address": "00633340",
+   "name": "twPath::mGetDate"
+  },
+  {
+   "address": "00633440",
+   "name": "twPath::mGetSize"
+  },
+  {
+   "address": "00633550",
+   "name": "twPath::mCreate"
+  },
+  {
+   "address": "00633660",
+   "name": "twPath::mDelete"
+  },
+  {
+   "address": "00633700",
+   "name": "twPath::mLock"
+  },
+  {
+   "address": "00633770",
+   "name": "twPath::mLock"
+  },
+  {
+   "address": "00633850",
+   "name": "twPath::mHide"
+  },
+  {
+   "address": "006338c0",
+   "name": "twPath::mHide"
+  },
+  {
+   "address": "006339a0",
+   "name": "twPath::mRead"
+  },
+  {
+   "address": "00633bb0",
+   "name": "OpenForReadChar"
+  },
+  {
+   "address": "00633be0",
+   "name": "tPath::~tPath"
+  },
+  {
+   "address": "00633bf0",
+   "name": "twPath::mWrite"
+  },
+  {
+   "address": "00633e10",
+   "name": "OpenForWriteChar"
+  },
+  {
+   "address": "00633ec0",
+   "name": "twPath::mFree"
+  },
+  {
+   "address": "00633f20",
+   "name": "twPath::mExec"
+  },
+  {
+   "address": "006344a0",
+   "name": "OpenForWrite"
+  },
+  {
+   "address": "00634520",
+   "name": "OpenForRead"
+  },
+  {
+   "address": "006345f0",
+   "name": "twIORequestQueue::twIORequestQueue"
+  },
+  {
+   "address": "00634770",
+   "name": "twIORequestQueue::~twIORequestQueue"
+  },
+  {
+   "address": "00637820",
+   "name": "twClock::mActivate"
+  },
+  {
+   "address": "00637890",
+   "name": "twClock::mDeactivate"
+  },
+  {
+   "address": "006378f0",
+   "name": "twClock::mGetMicroseconds"
+  },
+  {
+   "address": "00637970",
+   "name": "twClock::mSetTimer"
+  },
+  {
+   "address": "00637a50",
+   "name": "twClock::mSetTimer"
+  },
+  {
+   "address": "00637b20",
+   "name": "twClock::mForgetTimer"
+  },
+  {
+   "address": "00637ba0",
+   "name": "twClock::mTimerReceiver"
+  },
+  {
+   "address": "00637ec0",
+   "name": "twMemoryPart::mDeactivate"
+  },
+  {
+   "address": "00638120",
+   "name": "twMemoryPart::mAddMemory"
+  },
+  {
+   "address": "006383a0",
+   "name": "twMemoryPart::mNewBlock"
+  },
+  {
+   "address": "00638500",
+   "name": "twMemoryPart::mResizeBlock"
+  },
+  {
+   "address": "00638830",
+   "name": "twMemoryPart::mDuplicateBlock"
+  },
+  {
+   "address": "00638ac0",
+   "name": "twMemoryPart::mDelBlock"
+  },
+  {
+   "address": "00638de0",
+   "name": "twMemoryPart::mCheckForBoundsErrors"
+  },
+  {
+   "address": "00638e30",
+   "name": "twMemoryPart::mNewHandle"
+  },
+  {
+   "address": "00639310",
+   "name": "twMemoryPart::mNewHandleZeroIt"
+  },
+  {
+   "address": "00639b00",
+   "name": "twMemoryPart::mDuplicateHandle"
+  },
+  {
+   "address": "0063a0a0",
+   "name": "twMemoryPart::mDelHandle"
+  },
+  {
+   "address": "0063a440",
+   "name": "twMemoryPart::mLockHandle"
+  },
+  {
+   "address": "0063a540",
+   "name": "twMemoryPart::mUnlockHandle"
+  },
+  {
+   "address": "0063a7b0",
+   "name": "twMemoryPart::mRemoveAllLocksOnHandle"
+  },
+  {
+   "address": "0063a8d0",
+   "name": "twMemoryPart::mLargestBlockAvailable"
+  },
+  {
    "address": "0063a900",
    "name": "twMemoryPart::mCheckMemory"
+  },
+  {
+   "address": "0063b360",
+   "name": "twMemoryBlock::mFree"
+  },
+  {
+   "address": "0063b6f0",
+   "name": "twMemoryBlock::mLock"
+  },
+  {
+   "address": "0063b8a0",
+   "name": "tPagingMechanism::mAddPage"
+  },
+  {
+   "address": "0063c0b0",
+   "name": "tPagingMechanism::mDeactivate"
+  },
+  {
+   "address": "0063c270",
+   "name": "tPagingMechanism::mNewHandle"
+  },
+  {
+   "address": "0063c480",
+   "name": "tPagingMechanism::mNewHandleZeroIt"
+  },
+  {
+   "address": "0063c4a0",
+   "name": "tPagingMechanism::mNewBlock"
+  },
+  {
+   "address": "0063c6d0",
+   "name": "tPagingMechanism::mGetPtrsFromHandle"
+  },
+  {
+   "address": "0063ca50",
+   "name": "tPagingMechanism::mGetHandleFromPointer"
+  },
+  {
+   "address": "0063cc40",
+   "name": "tPagingMechanism::mLockHandle"
+  },
+  {
+   "address": "0063cd30",
+   "name": "tPagingMechanism::mUnlockHandle"
+  },
+  {
+   "address": "0063ce10",
+   "name": "tPagingMechanism::mRemoveAllLocksOnHandle"
+  },
+  {
+   "address": "0063d0c0",
+   "name": "tPagingMechanism::mIsThisAPagingPointer"
+  },
+  {
+   "address": "0063d0f0",
+   "name": "tPagingMechanism::mCheckForBoundsErrors"
+  },
+  {
+   "address": "0063d160",
+   "name": "tPagingMechanism::mDelBlock"
+  },
+  {
+   "address": "0063e450",
+   "name": "tPagingMechanism::mDuplicateHandle"
+  },
+  {
+   "address": "0063e9a0",
+   "name": "tPagingMechanism::mResizeHandleZeroIt"
+  },
+  {
+   "address": "0063e9c0",
+   "name": "tPagingMechanism::mResizeBlock"
+  },
+  {
+   "address": "0063ec10",
+   "name": "tPagingMechanism::mDuplicateBlock"
   },
   {
    "address": "0063edd0",
@@ -3183,8 +4219,136 @@
    "name": "twStandardSoundChannel::mUpdateAmountPlayed"
   },
   {
+   "address": "006434e0",
+   "name": "twStandardSoundChannel::mCreate3DBuffer"
+  },
+  {
+   "address": "006435b0",
+   "name": "twStandardSoundChannel::mDuplicateSoundChannel"
+  },
+  {
+   "address": "00644380",
+   "name": "twStandardSoundChannel::mAddActiveSoundChannel"
+  },
+  {
+   "address": "006443e0",
+   "name": "twStandardSoundChannel::mPlayChannel"
+  },
+  {
+   "address": "00644650",
+   "name": "twStandardSoundChannel::mSetFrequency"
+  },
+  {
+   "address": "006446c0",
+   "name": "twStandardSoundChannel::mSetPan"
+  },
+  {
+   "address": "006447c0",
+   "name": "twStandardSoundChannel::mStopAndClearChannel"
+  },
+  {
+   "address": "00644860",
+   "name": "twStandardSoundChannel::mStopAndResetChannel"
+  },
+  {
+   "address": "00644900",
+   "name": "twStandardSoundChannel::mSet3DSoundPosition"
+  },
+  {
+   "address": "00644970",
+   "name": "twStandardSoundChannel::mSet3DSoundOrientation"
+  },
+  {
+   "address": "006449c0",
+   "name": "twStandardSoundChannel::mSet3DSoundVelocity"
+  },
+  {
+   "address": "00644a10",
+   "name": "twStandardSoundChannel::mSet3DSoundCones"
+  },
+  {
+   "address": "00644aa0",
+   "name": "twStandardSoundChannel::mSet3DSoundReferenceDistance"
+  },
+  {
+   "address": "00644af0",
+   "name": "twStandardSoundChannel::mSet3DSoundProfile"
+  },
+  {
+   "address": "00644c30",
+   "name": "twStandardSoundChannel::mRestoreBuffers"
+  },
+  {
+   "address": "00644d10",
+   "name": "twStandardSoundChannel::mDoAllImmediateNonInterruptCommands"
+  },
+  {
+   "address": "00644d60",
+   "name": "twStandardSoundChannel::mDump"
+  },
+  {
+   "address": "006452a0",
+   "name": "twSoundPart::twSoundPart"
+  },
+  {
+   "address": "006452c0",
+   "name": "twSoundPart::mDuplicateSoundChannel"
+  },
+  {
+   "address": "00645480",
+   "name": "tListMemberWithHandle::~tListMemberWithHandle"
+  },
+  {
+   "address": "00645490",
+   "name": "tListMemberWithHandle::mInitListMemberWithHandle"
+  },
+  {
+   "address": "006454a0",
+   "name": "tListMemberWithHandle::mRemoveFromList"
+  },
+  {
+   "address": "006454b0",
+   "name": "tListMemberWithHandle::vfunction4"
+  },
+  {
+   "address": "006454c0",
+   "name": "tListMemberWithHandle::vfunction6"
+  },
+  {
+   "address": "006454e0",
+   "name": "tListMemberWithHandle::vfunction9"
+  },
+  {
+   "address": "006454f0",
+   "name": "tListMemberWithHandle::scalar_deleting_destructor"
+  },
+  {
+   "address": "00645510",
+   "name": "twSoundPart::mAddActiveSoundChannel"
+  },
+  {
+   "address": "00645770",
+   "name": "twSoundPart::mAddSoundChannel"
+  },
+  {
    "address": "00645940",
    "name": "twSoundPart::mDirectSoundObject"
+  },
+  {
+   "address": "00645950",
+   "name": "twSoundPart::mDone"
+  },
+  {
+   "address": "00645a80",
+   "name": "twSoundPart::mCanWeHandle16BitOutput"
+  },
+  {
+   "address": "00645a90",
+   "name": "twSoundPart::mCanWeHandleStereoOutput"
+  },
+  {
+   "address": "00645aa0",
+   "name": "twSoundPart::mCanWeHandleMono8BitOutput"
   },
   {
    "address": "00645ac0",
@@ -3245,6 +4409,34 @@
   {
    "address": "00645ba0",
    "name": "twSoundPart::mGetTransferToHardwareRateInKBytesPerSec"
+  },
+  {
+   "address": "00645bb0",
+   "name": "twSoundPart::mDetermineHardwareCaps"
+  },
+  {
+   "address": "00645be0",
+   "name": "twSoundPart::mCreatePrimaryBuffer"
+  },
+  {
+   "address": "00645d90",
+   "name": "twSoundPart::mSet3DListener3DPosition"
+  },
+  {
+   "address": "00645e20",
+   "name": "twSoundPart::mSet3DListenerOrientation"
+  },
+  {
+   "address": "00645ed0",
+   "name": "twSoundPart::mSet3DListenerVelocity"
+  },
+  {
+   "address": "00645f60",
+   "name": "twSoundPart::mSet3DListenerUnitScaleInMeters"
+  },
+  {
+   "address": "00645ff0",
+   "name": "twSoundPart::mGetHardwareInformation"
   },
   {
    "address": "00646ce0",
@@ -3631,6 +4823,418 @@
    "name": "tgSoundPart::mGetSoundChannelPtrFromHandle"
   },
   {
+   "address": "00651300",
+   "name": "tgSoundPart::mPlayAllChannels"
+  },
+  {
+   "address": "00651370",
+   "name": "tgSoundPart::mResumeAllChannels"
+  },
+  {
+   "address": "006513f0",
+   "name": "tgSoundPart::mStopAndResetAllChannels"
+  },
+  {
+   "address": "00651460",
+   "name": "tgSoundPart::mStopAndClearAllChannels"
+  },
+  {
+   "address": "006514d0",
+   "name": "tgSoundPart::mPauseAllChannels"
+  },
+  {
+   "address": "00651990",
+   "name": "tgSoundPart::mAttachSoundToChannel"
+  },
+  {
+   "address": "00651b40",
+   "name": "tgSoundPart::mPlayChannel"
+  },
+  {
+   "address": "00651bf0",
+   "name": "tgSoundPart::mPauseChannel"
+  },
+  {
+   "address": "00651ca0",
+   "name": "tgSoundPart::mStopAndResetChannel"
+  },
+  {
+   "address": "00651d50",
+   "name": "tgSoundPart::mStopAndClearChannel"
+  },
+  {
+   "address": "00651e00",
+   "name": "tgSoundPart::mSetFrequency"
+  },
+  {
+   "address": "006520e0",
+   "name": "tgSoundPart::mSetPan"
+  },
+  {
+   "address": "006523b0",
+   "name": "tgSoundPart::mAddDelayCommand"
+  },
+  {
+   "address": "00652580",
+   "name": "tgSoundPart::mAddUpdateSoundPositionFunction"
+  },
+  {
+   "address": "00652890",
+   "name": "tgSoundPart::mAddUpdateListenerPositionFunction"
+  },
+  {
+   "address": "006528f0",
+   "name": "tgSoundPart::mFadeToStopAndResetNow"
+  },
+  {
+   "address": "00652990",
+   "name": "tgSoundPart::mFadeToStopAndClearNow"
+  },
+  {
+   "address": "00652a30",
+   "name": "tgSoundPart::mFadeToVolume"
+  },
+  {
+   "address": "00652d00",
+   "name": "tgSoundPart::mSetVolume"
+  },
+  {
+   "address": "00652fd0",
+   "name": "tgSoundPart::mSetPriority"
+  },
+  {
+   "address": "006531a0",
+   "name": "tgSoundPart::mSetFinishFunction"
+  },
+  {
+   "address": "00653370",
+   "name": "tgSoundPart::mSetChannelAttributes"
+  },
+  {
+   "address": "00653550",
+   "name": "tgSoundPart::mSet3DSoundProfile"
+  },
+  {
+   "address": "00653830",
+   "name": "tgSoundPart::xAttemptToGainControl"
+  },
+  {
+   "address": "00653a60",
+   "name": "tgSoundPart::mReleaseControl"
+  },
+  {
+   "address": "00653a80",
+   "name": "tgSoundPart::mSet3DSoundPosition"
+  },
+  {
+   "address": "00653d60",
+   "name": "tgSoundPart::mSet3DSoundOrientation"
+  },
+  {
+   "address": "00654040",
+   "name": "tgSoundPart::mSet3DSoundVelocity"
+  },
+  {
+   "address": "00654320",
+   "name": "tgSoundPart::mSet3DSoundCones"
+  },
+  {
+   "address": "006545f0",
+   "name": "tgSoundPart::mSet3DSoundReferenceDistance"
+  },
+  {
+   "address": "006548c0",
+   "name": "tgSoundPart::mPlaySpecialLoop"
+  },
+  {
+   "address": "00654a40",
+   "name": "tgSoundPart::mEndSpecialLoop"
+  },
+  {
+   "address": "00654bb0",
+   "name": "tgSoundPart::mAddGetNextAttachmentFunction"
+  },
+  {
+   "address": "00654d30",
+   "name": "tgSoundPart::mGetNumberCurrentlyPlaying"
+  },
+  {
+   "address": "00654db0",
+   "name": "tgSoundPart::mDoWeAutoRemoveChannel"
+  },
+  {
+   "address": "00654e20",
+   "name": "tgSoundPart::mWeAutoRemoveChannel"
+  },
+  {
+   "address": "00654eb0",
+   "name": "tgSoundPart::mWeDoNotAutoRemoveChannel"
+  },
+  {
+   "address": "00654f40",
+   "name": "tgSoundPart::mDoWeAutoRemoveSelections"
+  },
+  {
+   "address": "00654fb0",
+   "name": "tgSoundPart::mWeAutoRemoveSelections"
+  },
+  {
+   "address": "00655040",
+   "name": "tgSoundPart::mWeDoNotAutoRemoveSelections"
+  },
+  {
+   "address": "006550d0",
+   "name": "tgSoundPart::mDoWeRetainSelections"
+  },
+  {
+   "address": "00655140",
+   "name": "tgSoundPart::mWeRetainSelections"
+  },
+  {
+   "address": "006551d0",
+   "name": "tgSoundPart::mWeDoNotRetainSelections"
+  },
+  {
+   "address": "00655260",
+   "name": "tgSoundPart::mSetGlobalFrequency"
+  },
+  {
+   "address": "00655440",
+   "name": "tgSoundPart::mSetGlobalPan"
+  },
+  {
+   "address": "00655550",
+   "name": "tgSoundPart::mSetGlobalVolume"
+  },
+  {
+   "address": "00655680",
+   "name": "tgSoundPart::mGetChannelStatus"
+  },
+  {
+   "address": "006556f0",
+   "name": "tgSoundPart::mTotalBytesLeftToPlay"
+  },
+  {
+   "address": "00655760",
+   "name": "tgSoundPart::mTotalNumberOfSecondsLeftToPlay"
+  },
+  {
+   "address": "006557f0",
+   "name": "tgSoundPart::mNumberOfAttachmentsQueuedUp"
+  },
+  {
+   "address": "00655960",
+   "name": "tgSoundPart::mGetFrequency"
+  },
+  {
+   "address": "006559d0",
+   "name": "tgSoundPart::mGetPan"
+  },
+  {
+   "address": "00655a40",
+   "name": "tgSoundPart::mGetVolume"
+  },
+  {
+   "address": "00655ab0",
+   "name": "tgSoundPart::mGetChannelAttributes"
+  },
+  {
+   "address": "00655b20",
+   "name": "tgSoundPart::mGet3DSoundProfile"
+  },
+  {
+   "address": "00655b90",
+   "name": "tgSoundPart::mGet3DSoundPosition"
+  },
+  {
+   "address": "00655c00",
+   "name": "tgSoundPart::mGet3DSoundOrientation"
+  },
+  {
+   "address": "00655c70",
+   "name": "tgSoundPart::mGet3DSoundVelocity"
+  },
+  {
+   "address": "00655ce0",
+   "name": "tgSoundPart::mGet3DSoundReferenceDistance"
+  },
+  {
+   "address": "00655d70",
+   "name": "tgSoundPart::mGet3DSoundConeAngleForNoAttenuation"
+  },
+  {
+   "address": "00655df0",
+   "name": "tgSoundPart::mGet3DSoundConeAttenuationLevel"
+  },
+  {
+   "address": "00655e60",
+   "name": "tgSoundPart::mGetChannelPriority"
+  },
+  {
+   "address": "00655ed0",
+   "name": "tgSoundPart::mGetSoundChannelFormat"
+  },
+  {
+   "address": "00655f40",
+   "name": "tgSoundPart::mAreWeLooping"
+  },
+  {
+   "address": "00655fb0",
+   "name": "tgSoundPart::mAreWeStreaming"
+  },
+  {
+   "address": "00656020",
+   "name": "tgSoundPart::mAreWe3D"
+  },
+  {
+   "address": "00656090",
+   "name": "tgSoundPart::mAreWeStatic"
+  },
+  {
+   "address": "00656100",
+   "name": "tgSoundPart::mAreWeFixedFrequency"
+  },
+  {
+   "address": "00656170",
+   "name": "tgSoundPart::mAreWeARecordingChannel"
+  },
+  {
+   "address": "006561e0",
+   "name": "tgSoundPart::mTryToLocateInHardware"
+  },
+  {
+   "address": "00656250",
+   "name": "tgSoundPart::mTryToLocateInSoftware"
+  },
+  {
+   "address": "006562c0",
+   "name": "tgSoundPart::mAreWeFixedPan"
+  },
+  {
+   "address": "00656330",
+   "name": "tgSoundPart::mIsChannelActive"
+  },
+  {
+   "address": "006563a0",
+   "name": "tgSoundPart::mAreWeFixedVolume"
+  },
+  {
+   "address": "00656410",
+   "name": "tgSoundPart::mAreWeAGlobalSound"
+  },
+  {
+   "address": "00656480",
+   "name": "tgSoundPart::mGet3DListener"
+  },
+  {
+   "address": "00656590",
+   "name": "tgSoundPart::mGet3DListener3DPosition"
+  },
+  {
+   "address": "006566a0",
+   "name": "tgSoundPart::mGet3DListenerForwardDirection"
+  },
+  {
+   "address": "006567b0",
+   "name": "tgSoundPart::mGet3DListenerUpDirection"
+  },
+  {
+   "address": "006568c0",
+   "name": "tgSoundPart::mGet3DListenerVelocity"
+  },
+  {
+   "address": "006569d0",
+   "name": "tgSoundPart::mGet3DListenerUnitScaleInMeters"
+  },
+  {
+   "address": "00656ae0",
+   "name": "tgSoundPart::mDump"
+  },
+  {
+   "address": "00656b40",
+   "name": "tgSoundPart::mDump"
+  },
+  {
+   "address": "00657240",
+   "name": "tgSoundPart::mPauseRecordChannel"
+  },
+  {
+   "address": "00657310",
+   "name": "tgSoundPart::mRecordChannel"
+  },
+  {
+   "address": "006573e0",
+   "name": "tgSoundPart::mStopAndClearRecordChannel"
+  },
+  {
+   "address": "006574b0",
+   "name": "tgSoundPart::mRemoveRecordChannel"
+  },
+  {
+   "address": "00657580",
+   "name": "tgSoundPart::mAttachSoundToRecordChannel"
+  },
+  {
+   "address": "00657770",
+   "name": "tAudioFileInfoPart::tAudioFileInfoPart"
+  },
+  {
+   "address": "006577d0",
+   "name": "tAudioFileInfoPart::~tAudioFileInfoPart"
+  },
+  {
+   "address": "00657970",
+   "name": "tAudioPriorityManagerPart::mIsReady"
+  },
+  {
+   "address": "00657b60",
+   "name": "tAudioFileInfoPart::mDeactivate"
+  },
+  {
+   "address": "00657cf0",
+   "name": "tAudioFileInfoPart::mAttachToThisChannel"
+  },
+  {
+   "address": "00657d20",
+   "name": "tAudioFileInfoPart::mGetNumberOfSamples"
+  },
+  {
+   "address": "00657d40",
+   "name": "tAudioFileInfoPart::mGetNumberOfSelectionPerSound"
+  },
+  {
+   "address": "00657d60",
+   "name": "tAudioFileInfoPart::mGetTotalSizeInBytes"
+  },
+  {
+   "address": "00657d80",
+   "name": "tAudioFileInfoPart::mGetTotalDataSizeInBytes"
+  },
+  {
+   "address": "00657da0",
+   "name": "tAudioFileInfoPart::mGetDepth"
+  },
+  {
+   "address": "00657dc0",
+   "name": "tAudioFileInfoPart::mGetLinkDepth"
+  },
+  {
+   "address": "00657de0",
+   "name": "tAudioFileInfoPart::mAddSoundFile"
+  },
+  {
+   "address": "00658070",
+   "name": "tAudioFileInfoPart::mDeleteSoundFile"
+  },
+  {
+   "address": "00658290",
+   "name": "tAudioFileInfoPart::mGetAsynchReadInfo"
+  },
+  {
+   "address": "006582c0",
+   "name": "tAudioFileInfoPart::mFreeAsynchReadInfo"
+  },
+  {
    "address": "006587f0",
    "name": "tChannelGroup::mDump"
   },
@@ -3691,12 +5295,788 @@
    "name": "tChannelGroup::mPauseChannel"
   },
   {
+   "address": "0065b0d0",
+   "name": "tChannelGroup::mSetFrequency"
+  },
+  {
+   "address": "0065b390",
+   "name": "tChannelGroup::mSetPan"
+  },
+  {
+   "address": "0065b650",
+   "name": "tChannelGroup::mSetVolume"
+  },
+  {
+   "address": "0065b910",
+   "name": "tChannelGroup::mSetPriority"
+  },
+  {
+   "address": "0065bbd0",
+   "name": "tChannelGroup::mSetFinishFunction"
+  },
+  {
+   "address": "0065be70",
+   "name": "tChannelGroup::mSetChannelAttributes"
+  },
+  {
+   "address": "0065c130",
+   "name": "tChannelGroup::mSet3DSoundProfile"
+  },
+  {
+   "address": "0065c3f0",
+   "name": "tChannelGroup::mSet3DSoundPosition"
+  },
+  {
+   "address": "0065c6b0",
+   "name": "tChannelGroup::mSet3DSoundOrientation"
+  },
+  {
+   "address": "0065c970",
+   "name": "tChannelGroup::mSet3DSoundVelocity"
+  },
+  {
+   "address": "0065cc30",
+   "name": "tChannelGroup::mSet3DSoundCones"
+  },
+  {
+   "address": "0065cf10",
+   "name": "tChannelGroup::mSet3DSoundReferenceDistance"
+  },
+  {
+   "address": "0065d1f0",
+   "name": "tChannelGroup::mGetFrequency"
+  },
+  {
+   "address": "0065d2a0",
+   "name": "tChannelGroup::mGetPan"
+  },
+  {
+   "address": "0065d350",
+   "name": "tChannelGroup::mGetVolume"
+  },
+  {
+   "address": "0065d400",
+   "name": "tChannelGroup::mGetChannelAttributes"
+  },
+  {
+   "address": "0065d4b0",
+   "name": "tChannelGroup::mGet3DSoundProfile"
+  },
+  {
+   "address": "0065d560",
+   "name": "tChannelGroup::mGet3DSoundPosition"
+  },
+  {
+   "address": "0065d610",
+   "name": "tChannelGroup::mGet3DSoundOrientation"
+  },
+  {
+   "address": "0065d6c0",
+   "name": "tChannelGroup::mGet3DSoundVelocity"
+  },
+  {
+   "address": "0065d770",
+   "name": "tChannelGroup::mGet3DSoundReferenceDistance"
+  },
+  {
+   "address": "0065d820",
+   "name": "tChannelGroup::mGet3DSoundConeAngleForNoAttenuation"
+  },
+  {
+   "address": "0065d8d0",
+   "name": "tChannelGroup::mGet3DSoundConeAttenuationLevel"
+  },
+  {
+   "address": "0065d980",
+   "name": "tChannelGroup::mGetChannelPriority"
+  },
+  {
+   "address": "0065da30",
+   "name": "tChannelGroup::mGetChannelStatus"
+  },
+  {
+   "address": "0065dcb0",
+   "name": "tChannelGroup::mTotalBytesLeftToPlay"
+  },
+  {
+   "address": "0065df30",
+   "name": "tChannelGroup::mTotalNumberOfSecondsLeftToPlay"
+  },
+  {
+   "address": "0065e1d0",
+   "name": "tChannelGroup::mNumberOfAttachmentsQueuedUp"
+  },
+  {
+   "address": "0065e450",
+   "name": "tChannelGroup::mGetSoundChannelFormat"
+  },
+  {
+   "address": "0065e580",
+   "name": "tChannelGroup::mDoWeRetainSelections"
+  },
+  {
+   "address": "0065e6b0",
+   "name": "tChannelGroup::mAreWeLooping"
+  },
+  {
+   "address": "0065e7e0",
+   "name": "tChannelGroup::mAreWeStreaming"
+  },
+  {
+   "address": "0065e910",
+   "name": "tChannelGroup::mAreWe3D"
+  },
+  {
+   "address": "0065ea40",
+   "name": "tChannelGroup::mAreWeStatic"
+  },
+  {
+   "address": "0065eb70",
+   "name": "tChannelGroup::mAreWeFixedFrequency"
+  },
+  {
+   "address": "0065eca0",
+   "name": "tChannelGroup::mAreWeARecordingChannel"
+  },
+  {
+   "address": "0065edd0",
+   "name": "tChannelGroup::mTryToLocateInHardware"
+  },
+  {
+   "address": "0065ef00",
+   "name": "tChannelGroup::mTryToLocateInSoftware"
+  },
+  {
+   "address": "0065f030",
+   "name": "tChannelGroup::mAreWeFixedPan"
+  },
+  {
+   "address": "0065f160",
+   "name": "tChannelGroup::mAreWeFixedVolume"
+  },
+  {
+   "address": "0065f290",
+   "name": "tChannelGroup::mAreWeAGlobalSound"
+  },
+  {
+   "address": "0065f3c0",
+   "name": "tChannelGroup::mAddUpdateSoundPositionFunction"
+  },
+  {
+   "address": "0065f680",
+   "name": "tChannelGroup::mAddDelayCommand"
+  },
+  {
+   "address": "0065f940",
+   "name": "tChannelGroup::mFadeToVolume"
+  },
+  {
+   "address": "0065fbf0",
+   "name": "tChannelGroup::mFadeToStopAndResetNow"
+  },
+  {
+   "address": "0065fe90",
+   "name": "tChannelGroup::mFadeToStopAndClearNow"
+  },
+  {
+   "address": "00660130",
+   "name": "tChannelGroup::mPlaySpecialLoop"
+  },
+  {
+   "address": "006603e0",
+   "name": "tChannelGroup::mEndSpecialLoop"
+  },
+  {
+   "address": "00660660",
+   "name": "tChannelGroup::mAddGetNextAttachmentFunction"
+  },
+  {
+   "address": "00660910",
+   "name": "tChannelGroupManagerPart::tChannelGroupManagerPart"
+  },
+  {
+   "address": "00660950",
+   "name": "tChannelGroupManagerPart::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00660970",
+   "name": "tChannelGroupManagerPart::~tChannelGroupManagerPart"
+  },
+  {
+   "address": "00660b20",
+   "name": "tChannelGroupManagerPart::mAddChannelGroup"
+  },
+  {
+   "address": "00660c50",
+   "name": "tChannelGroupManagerPart::mDeleteChannelGroup"
+  },
+  {
+   "address": "00660cd0",
+   "name": "tChannelGroupManagerPart::mRemoveChannelGroupOwner"
+  },
+  {
+   "address": "00660d60",
+   "name": "tAudioFileInfoPart::mGetBasicAudioFile"
+  },
+  {
+   "address": "00660da0",
+   "name": "tChannelGroupManagerPart::mIsReady"
+  },
+  {
+   "address": "00660dc0",
+   "name": "tChannelGroupManagerPart::mDeactivate"
+  },
+  {
+   "address": "00660f30",
+   "name": "tChannelGroupManagerPart::mAttachFileToGroup"
+  },
+  {
+   "address": "00660f60",
+   "name": "tChannelGroupManagerPart::mAttachFileToChannel"
+  },
+  {
+   "address": "00660f90",
+   "name": "tChannelGroupManagerPart::mKillRetainedMode"
+  },
+  {
+   "address": "00660fb0",
+   "name": "tChannelGroupManagerPart::mClearAttachments"
+  },
+  {
+   "address": "00661300",
+   "name": "tClassTrackingInfo::mSet"
+  },
+  {
+   "address": "00661400",
+   "name": "tClassTrackingInfo::mSetAvailable"
+  },
+  {
+   "address": "006614e0",
+   "name": "tClassTrackingInfo::mGetPriority"
+  },
+  {
+   "address": "00661570",
+   "name": "tClassTrackingInfo::mAreWeValid"
+  },
+  {
+   "address": "00661700",
+   "name": "tClassTrackingInfo::mFadeToStop"
+  },
+  {
+   "address": "006617a0",
+   "name": "tAudioPriorityManagerPart::mGetAudioFileClassPtrFromHandle"
+  },
+  {
+   "address": "006617c0",
+   "name": "tAudioPriorityManagerPart::mGetAudioFileClassHandleFromReference"
+  },
+  {
+   "address": "00661810",
+   "name": "tAudioPriorityManagerPart::mNewAudioFileClass"
+  },
+  {
+   "address": "00661e90",
+   "name": "tAudioPriorityManagerPart::mRemoveClass"
+  },
+  {
+   "address": "00661eb0",
+   "name": "tAudioPriorityManagerPart::mReleaseAudioFileClassPtr"
+  },
+  {
+   "address": "00661f30",
+   "name": "tAudioFileClass::~tAudioFileClass"
+  },
+  {
+   "address": "00661f60",
+   "name": "tAudioPriorityManagerPart::mSetAudioFileClass"
+  },
+  {
+   "address": "00662400",
+   "name": "tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo"
+  },
+  {
+   "address": "006624b0",
+   "name": "tAudioPriorityManagerPart::mWeHaveStoppedPlaying"
+  },
+  {
+   "address": "00662510",
+   "name": "tAudioPriorityManagerPart::mIsReady"
+  },
+  {
+   "address": "00662520",
+   "name": "tAudioPriorityManagerPart::mActivate"
+  },
+  {
+   "address": "00662530",
+   "name": "tAudioPriorityManagerPart::mDeactivate"
+  },
+  {
+   "address": "00662540",
+   "name": "tAudioPriorityManagerPart::mClose"
+  },
+  {
+   "address": "006626c0",
+   "name": "tAudioPriorityManagerPart::mNewAudioFileClass"
+  },
+  {
+   "address": "00662730",
+   "name": "tAudioPriorityManagerPart::mIsHigherPriority"
+  },
+  {
+   "address": "00662770",
+   "name": "tAudioPriorityManagerPart::mIsFirstHigherPriorityThanSecond"
+  },
+  {
+   "address": "006627d0",
+   "name": "tHandleList::mInit"
+  },
+  {
+   "address": "006628b0",
+   "name": "tHandleList::tHandleList"
+  },
+  {
+   "address": "00662980",
+   "name": "tHandleList::mGetFirstHandle"
+  },
+  {
+   "address": "00662990",
+   "name": "tHandleList::mGetThisHandle"
+  },
+  {
+   "address": "006629b0",
+   "name": "tHandleList::mGetLastHandle"
+  },
+  {
+   "address": "006629c0",
+   "name": "tHandleList::mAddToFrontOfList"
+  },
+  {
+   "address": "00662aa0",
+   "name": "tHandleList::mAddToBackOfList"
+  },
+  {
+   "address": "00662b70",
+   "name": "tHandleList::mRemoveFromList"
+  },
+  {
+   "address": "00662bc0",
+   "name": "tHandleList::mIsHandle"
+  },
+  {
+   "address": "00662bf0",
+   "name": "tHandleList::mGetZeroIndexedHandlePosition"
+  },
+  {
+   "address": "00662c20",
+   "name": "tClassActiveChannelList::mInsertHandle"
+  },
+  {
+   "address": "00662dc0",
+   "name": "tAudioFileClass::mRemoveHandle"
+  },
+  {
+   "address": "00662e90",
+   "name": "tAudioFileClass::mAddHandle"
+  },
+  {
+   "address": "00662f60",
+   "name": "tAudioFileClass::mDoWeMeetSpaceConstraints"
+  },
+  {
+   "address": "006631a0",
+   "name": "tAudioFileClass::mSet"
+  },
+  {
+   "address": "00663720",
+   "name": "mystrequivalent"
+  },
+  {
+   "address": "00663780",
+   "name": "mystrequivalentN"
+  },
+  {
+   "address": "006637f0",
+   "name": "tAFPlayInfo::mGetRandomFrequency"
+  },
+  {
+   "address": "00663850",
+   "name": "tAFPlayInfo::mGetRandomVolume"
+  },
+  {
+   "address": "006638a0",
+   "name": "tAFPlayInfo::mGetAcualIndexOffsetIfRandom"
+  },
+  {
+   "address": "006638e0",
+   "name": "tAFPlayInfo::mAddClass"
+  },
+  {
    "address": "006639c0",
    "name": "tAFPlayInfo::mSetNextInSequence"
   },
   {
+   "address": "006639d0",
+   "name": "tAFPlayInfo::mInit"
+  },
+  {
+   "address": "00663ae0",
+   "name": "tAFPlayInfo::operator="
+  },
+  {
+   "address": "00663c40",
+   "name": "tAFPlayInfo::mIsThisInThisThreshold"
+  },
+  {
+   "address": "00663d80",
+   "name": "tBasicSoundFileManager::tBasicSoundFileManager"
+  },
+  {
+   "address": "00663e60",
+   "name": "tBasicSoundFileManager::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00663e80",
+   "name": "tBasicSoundFileManager::~tBasicSoundFileManager"
+  },
+  {
+   "address": "00663ee0",
+   "name": "tBasicSoundFileManager::mAdjustGlobalVolume"
+  },
+  {
+   "address": "00664050",
+   "name": "tBasicSoundFileManager::mUpdateAllSounds"
+  },
+  {
    "address": "00664870",
    "name": "tBasicSoundFileManager::mGetTrackingIndex"
+  },
+  {
+   "address": "00664880",
+   "name": "tBasicSoundFileManager::mGetTrackingOffset"
+  },
+  {
+   "address": "00664890",
+   "name": "tBasicSoundFileManager::mValidTrackingNumber"
+  },
+  {
+   "address": "006648c0",
+   "name": "tBasicSoundFileManager::mClearTrackingNumber"
+  },
+  {
+   "address": "00664910",
+   "name": "tBasicSoundFileManager::mNewTrackingNumber"
+  },
+  {
+   "address": "00664a50",
+   "name": "tBasicSoundFileManager::mAddRegisteredAudioType"
+  },
+  {
+   "address": "00664b00",
+   "name": "tBasicSoundFileManager::mStop"
+  },
+  {
+   "address": "00664bd0",
+   "name": "tBasicSoundFileManager::mAttachSoundToChannel"
+  },
+  {
+   "address": "00664cb0",
+   "name": "tBasicSoundFileManager::mAttachFileToChannel"
+  },
+  {
+   "address": "00664d90",
+   "name": "tBasicSoundFileManager::mResumeChannel"
+  },
+  {
+   "address": "00664e70",
+   "name": "tBasicSoundFileManager::mPauseChannel"
+  },
+  {
+   "address": "00664f50",
+   "name": "tBasicSoundFileManager::mStopAndResetChannel"
+  },
+  {
+   "address": "00665030",
+   "name": "tBasicSoundFileManager::mStopAndClearChannel"
+  },
+  {
+   "address": "00665110",
+   "name": "tBasicSoundFileManager::mSetFrequency"
+  },
+  {
+   "address": "006651f0",
+   "name": "tBasicSoundFileManager::mSetPan"
+  },
+  {
+   "address": "006652d0",
+   "name": "tBasicSoundFileManager::mSetVolume"
+  },
+  {
+   "address": "006653b0",
+   "name": "tBasicSoundFileManager::mSetFinishFunction"
+  },
+  {
+   "address": "006654a0",
+   "name": "tBasicSoundFileManager::mAddUpdateSoundPositionFunction"
+  },
+  {
+   "address": "006655a0",
+   "name": "tBasicSoundFileManager::mAddDelayCommand"
+  },
+  {
+   "address": "00665690",
+   "name": "tBasicSoundFileManager::mPlaySpecialLoop"
+  },
+  {
+   "address": "00665780",
+   "name": "tBasicSoundFileManager::mEndSpecialLoop"
+  },
+  {
+   "address": "00665860",
+   "name": "tBasicSoundFileManager::mAddGetNextAttachmentFunction"
+  },
+  {
+   "address": "00665950",
+   "name": "tBasicSoundFileManager::mSetChannelAttributes"
+  },
+  {
+   "address": "00665a30",
+   "name": "tBasicSoundFileManager::mSet3DSoundProfile"
+  },
+  {
+   "address": "00665b10",
+   "name": "tBasicSoundFileManager::mSet3DSoundPosition"
+  },
+  {
+   "address": "00665bf0",
+   "name": "tBasicSoundFileManager::mSet3DSoundOrientation"
+  },
+  {
+   "address": "00665ce0",
+   "name": "tBasicSoundFileManager::mSet3DSoundVelocity"
+  },
+  {
+   "address": "00665dd0",
+   "name": "tBasicSoundFileManager::mSet3DSoundCones"
+  },
+  {
+   "address": "00665ec0",
+   "name": "tBasicSoundFileManager::mSet3DSoundReferenceDistance"
+  },
+  {
+   "address": "00665fb0",
+   "name": "tBasicSoundFileManager::mGetChannelAttributes"
+  },
+  {
+   "address": "00666090",
+   "name": "tBasicSoundFileManager::mGet3DSoundProfile"
+  },
+  {
+   "address": "00666170",
+   "name": "tBasicSoundFileManager::mGet3DSoundPosition"
+  },
+  {
+   "address": "00666250",
+   "name": "tBasicSoundFileManager::mGet3DSoundOrientation"
+  },
+  {
+   "address": "00666330",
+   "name": "tBasicSoundFileManager::mGet3DSoundVelocity"
+  },
+  {
+   "address": "00666410",
+   "name": "tBasicSoundFileManager::mGet3DSoundReferenceDistance"
+  },
+  {
+   "address": "006664f0",
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAngleForNoAttenuation"
+  },
+  {
+   "address": "006665d0",
+   "name": "tBasicSoundFileManager::mGet3DSoundConeAttenuationLevel"
+  },
+  {
+   "address": "006666b0",
+   "name": "tBasicSoundFileManager::mTotalBytesLeftToPlay"
+  },
+  {
+   "address": "00666790",
+   "name": "tBasicSoundFileManager::mTotalNumberOfSecondsLeftToPlay"
+  },
+  {
+   "address": "00666870",
+   "name": "tBasicSoundFileManager::mNumberOfAttachmentsQueuedUp"
+  },
+  {
+   "address": "00666950",
+   "name": "tBasicSoundFileManager::mGetSoundChannelFormat"
+  },
+  {
+   "address": "00666a30",
+   "name": "tBasicSoundFileManager::mAreWeLooping"
+  },
+  {
+   "address": "00666b10",
+   "name": "tBasicSoundFileManager::mAreWeStreaming"
+  },
+  {
+   "address": "00666bf0",
+   "name": "tBasicSoundFileManager::mAreWe3D"
+  },
+  {
+   "address": "00666cd0",
+   "name": "tBasicSoundFileManager::mAreWeStatic"
+  },
+  {
+   "address": "00666db0",
+   "name": "tBasicSoundFileManager::mAreWeFixedFrequency"
+  },
+  {
+   "address": "00666e90",
+   "name": "tBasicSoundFileManager::mAreWeARecordingChannel"
+  },
+  {
+   "address": "00666f70",
+   "name": "tBasicSoundFileManager::mTryToLocateInHardware"
+  },
+  {
+   "address": "00667050",
+   "name": "tBasicSoundFileManager::mTryToLocateInSoftware"
+  },
+  {
+   "address": "00667130",
+   "name": "tBasicSoundFileManager::mAreWeFixedPan"
+  },
+  {
+   "address": "00667210",
+   "name": "tBasicSoundFileManager::mAreWeFixedVolume"
+  },
+  {
+   "address": "006672f0",
+   "name": "tBasicSoundFileManager::mAreWeAGlobalSound"
+  },
+  {
+   "address": "006673d0",
+   "name": "tBasicSoundFileManager::mDoWeRetainSelections"
+  },
+  {
+   "address": "006674b0",
+   "name": "tBasicSoundFileManager::mDump"
+  },
+  {
+   "address": "00667590",
+   "name": "tBasicSoundFileManager::mSetPriority"
+  },
+  {
+   "address": "00667670",
+   "name": "tBasicSoundFileManager::mGetChannelPriority"
+  },
+  {
+   "address": "00667750",
+   "name": "tBasicSoundFileManager::mGetFrequency"
+  },
+  {
+   "address": "00667830",
+   "name": "tBasicSoundFileManager::mGetPan"
+  },
+  {
+   "address": "00667910",
+   "name": "tBasicSoundFileManager::mGetVolume"
+  },
+  {
+   "address": "006679f0",
+   "name": "tBasicSoundFileManager::mFadeToVolume"
+  },
+  {
+   "address": "00667ae0",
+   "name": "tBasicSoundFileManager::mFadeToStopAndResetNow"
+  },
+  {
+   "address": "00667bd0",
+   "name": "tBasicSoundFileManager::mFadeToStopAndClearNow"
+  },
+  {
+   "address": "00667cc0",
+   "name": "tBasicSoundFileManager::mUpdatePosition"
+  },
+  {
+   "address": "00667cf0",
+   "name": "tBasicSoundFileManager::mFinishSound"
+  },
+  {
+   "address": "00667dd0",
+   "name": "tBasicSoundFileManager::mGetNextAttachment"
+  },
+  {
+   "address": "00667e00",
+   "name": "tBasicSoundFileManager::mSetGetNextAttachmentFunction"
+  },
+  {
+   "address": "00667e20",
+   "name": "tBasicSoundFileManager::mDoDefaultNextAttachment"
+  },
+  {
+   "address": "00668150",
+   "name": "tBasicSoundFileManager::mIsSoundPlaying"
+  },
+  {
+   "address": "00668230",
+   "name": "tBasicSoundFileManager::mGetStatus"
+  },
+  {
+   "address": "00668310",
+   "name": "tBasicSoundFileManager::mGetRegisteredNumber"
+  },
+  {
+   "address": "006685b0",
+   "name": "tBasicSoundFileManager::mCloseAllSoundsInGroup"
+  },
+  {
+   "address": "00668640",
+   "name": "tBasicSoundFileManager::mCloseAllSoundsNotInThreshold"
+  },
+  {
+   "address": "006686d0",
+   "name": "tBasicSoundFileManager::mCloseAllSounds"
+  },
+  {
+   "address": "00668740",
+   "name": "tBasicSoundFileManager::mCloseFile"
+  },
+  {
+   "address": "0066ac50",
+   "name": "tBasicSoundFileManager::mGetNextToken"
+  },
+  {
+   "address": "0066ad40",
+   "name": "tBasicSoundFileManager::mReadInFileAsString"
+  },
+  {
+   "address": "0066b0f0",
+   "name": "tChannelGroupManagerPart::mIsReady"
+  },
+  {
+   "address": "0066b110",
+   "name": "tBasicSoundFileManager::mDeactivate"
+  },
+  {
+   "address": "0066b150",
+   "name": "DefaultSndMgrUpdatePositionFunction"
+  },
+  {
+   "address": "0066b1e0",
+   "name": "DefaultSndMgrFinishFunction"
+  },
+  {
+   "address": "0066b270",
+   "name": "DefaultNextAttachmentFunction"
+  },
+  {
+   "address": "0066b300",
+   "name": "tBasicSoundFileManager::mSetNextInSequence"
+  },
+  {
+   "address": "0066b330",
+   "name": "tBasicSoundFileManager::mPlay"
   },
   {
    "address": "0066be30",
@@ -4151,6 +6531,10 @@
    "name": "_GetCharHeight"
   },
   {
+   "address": "006729e0",
+   "name": "TextStreamCompress"
+  },
+  {
    "address": "006a2dc0",
    "name": "FUN_006a2dc0"
   },
@@ -4229,6 +6613,46 @@
   {
    "address": "006a94d0",
    "name": "D3DUtil_InitViewport"
+  },
+  {
+   "address": "006abe00",
+   "name": "FUN_006abe00"
+  },
+  {
+   "address": "006ad410",
+   "name": "GetDXVersion"
+  },
+  {
+   "address": "006b32c0",
+   "name": "tGLFontEx::mAddRef"
+  },
+  {
+   "address": "006b32d0",
+   "name": "tChannelAttributes::mGet3DSoundProfile"
+  },
+  {
+   "address": "006b32e0",
+   "name": "t3DListenerProfile::mGet3DPosition"
+  },
+  {
+   "address": "006b4010",
+   "name": "FUN_006b4010"
+  },
+  {
+   "address": "006b4090",
+   "name": "FUN_006b4090"
+  },
+  {
+   "address": "006b4350",
+   "name": "FUN_006b4350"
+  },
+  {
+   "address": "006b4360",
+   "name": "FUN_006b4360"
+  },
+  {
+   "address": "006b4460",
+   "name": "FUN_006b4460"
   },
   {
    "address": "006d2800",
@@ -4337,6 +6761,238 @@
   {
    "address": "00709060",
    "name": "nDatabase::tFileDatabaseMgr::GetDBInfo"
+  },
+  {
+   "address": "00757250",
+   "name": "tFile::gGetPath"
+  },
+  {
+   "address": "00757610",
+   "name": "gFileDeInit"
+  },
+  {
+   "address": "00757630",
+   "name": "tSession::~tSession"
+  },
+  {
+   "address": "00757650",
+   "name": "tFile::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00757670",
+   "name": "tFile::~tFile"
+  },
+  {
+   "address": "007576d0",
+   "name": "tFile::mIsOpen"
+  },
+  {
+   "address": "00757700",
+   "name": "tFile::mOpenForRead"
+  },
+  {
+   "address": "00757770",
+   "name": "tFile::mOpenForRead"
+  },
+  {
+   "address": "007577d0",
+   "name": "tFile::mOpenForRead"
+  },
+  {
+   "address": "00757bb0",
+   "name": "tFile::mClose"
+  },
+  {
+   "address": "00757be0",
+   "name": "tFile::mRead"
+  },
+  {
+   "address": "00757c30",
+   "name": "tFile::mSeekCur"
+  },
+  {
+   "address": "00757c70",
+   "name": "tFile::mSeekSet"
+  },
+  {
+   "address": "00757ca0",
+   "name": "tFile::mSeekEnd"
+  },
+  {
+   "address": "00757d20",
+   "name": "tFile::mFilePos"
+  },
+  {
+   "address": "00757d40",
+   "name": "tFile::mGetLength"
+  },
+  {
+   "address": "00757d60",
+   "name": "tFile::mEOF"
+  },
+  {
+   "address": "00757e80",
+   "name": "tFile::mOpenForWrite"
+  },
+  {
+   "address": "007581d0",
+   "name": "tFile::mWrite"
+  },
+  {
+   "address": "00758240",
+   "name": "tFile::mGetFile"
+  },
+  {
+   "address": "007582d0",
+   "name": "tFile::mGetFile"
+  },
+  {
+   "address": "00758400",
+   "name": "tBufFile::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00758420",
+   "name": "tBufFile::~tBufFile"
+  },
+  {
+   "address": "007584d0",
+   "name": "tBufFile::mGetFile"
+  },
+  {
+   "address": "00758510",
+   "name": "tBufFile::mSearchOpen"
+  },
+  {
+   "address": "007585c0",
+   "name": "tBufFile::mIsOpen"
+  },
+  {
+   "address": "007585d0",
+   "name": "tBufFile::mOpenForRead"
+  },
+  {
+   "address": "00758600",
+   "name": "tBufFile::mOpenForRead"
+  },
+  {
+   "address": "00758630",
+   "name": "tBufFile::mOpenForRead"
+  },
+  {
+   "address": "007586b0",
+   "name": "tBufFile::mClose"
+  },
+  {
+   "address": "007587a0",
+   "name": "tFile::mReadLong"
+  },
+  {
+   "address": "007587c0",
+   "name": "tFile::mReadShort"
+  },
+  {
+   "address": "007587e0",
+   "name": "tFile::mReadByte"
+  },
+  {
+   "address": "00758800",
+   "name": "tBufFile::mSeekCur"
+  },
+  {
+   "address": "00758890",
+   "name": "tBufFile::mSeekSet"
+  },
+  {
+   "address": "00758920",
+   "name": "tBufFile::mSeekEnd"
+  },
+  {
+   "address": "007589b0",
+   "name": "tBufFile::mFilePos"
+  },
+  {
+   "address": "007589c0",
+   "name": "tBufFile::mGetLength"
+  },
+  {
+   "address": "007589d0",
+   "name": "tBufFile::mEOF"
+  },
+  {
+   "address": "007589f0",
+   "name": "tBufFile::mOpenForWrite"
+  },
+  {
+   "address": "00758a30",
+   "name": "tBufFile::mOpenForWrite"
+  },
+  {
+   "address": "00758a70",
+   "name": "tBufFile::mOpenForWrite"
+  },
+  {
+   "address": "00758af0",
+   "name": "tBufFile::mWrite"
+  },
+  {
+   "address": "00758b50",
+   "name": "tFile::mWriteLong"
+  },
+  {
+   "address": "00758b70",
+   "name": "tFile::mWriteShort"
+  },
+  {
+   "address": "00758b90",
+   "name": "tFile::mWriteByte"
+  },
+  {
+   "address": "00758bb0",
+   "name": "tBufFile::mGetPath"
+  },
+  {
+   "address": "00758bd0",
+   "name": "tBufFile::mSearchOpen"
+  },
+  {
+   "address": "00758c90",
+   "name": "tBufFile::mGetFile"
+  },
+  {
+   "address": "00758cd0",
+   "name": "tStream::operator<<"
+  },
+  {
+   "address": "00758d60",
+   "name": "tStream::operator>>"
+  },
+  {
+   "address": "00758e00",
+   "name": "tFileStream::mSetPos"
+  },
+  {
+   "address": "00758e30",
+   "name": "tFileStream::mGet"
+  },
+  {
+   "address": "00758e70",
+   "name": "tFileStream::mPut"
+  },
+  {
+   "address": "00758eb0",
+   "name": "tParsePath::mGetPathOrDir"
+  },
+  {
+   "address": "007594c0",
+   "name": "tParsePath::mGetPath"
+  },
+  {
+   "address": "0075a240",
+   "name": "tFontDraw::mDrawString"
+  },
+  {
+   "address": "0075a5e0",
+   "name": "tString::mOSString"
   }
  ],
  "functional": [],
@@ -4376,6 +7032,10 @@
   {
    "address": "0040be9b",
    "name": "tSfcMouseMgr_Ex::vfunction2"
+  },
+  {
+   "address": "0040c3ba",
+   "name": "tMyApp::vfunction2"
   },
   {
    "address": "0040f15a",
@@ -4430,8 +7090,16 @@
    "name": "tClientCharacter::vfunction3"
   },
   {
+   "address": "00434195",
+   "name": "tNetMsg_Header::~tNetMsg_Header"
+  },
+  {
    "address": "0044140c",
    "name": "tShieldGroup::vfunction89"
+  },
+  {
+   "address": "00455942",
+   "name": "FUN_00455942"
   },
   {
    "address": "0045da40",
@@ -4622,6 +7290,110 @@
    "name": "tPathIterator::mAdd"
   },
   {
+   "address": "00623120",
+   "name": "tString::tString"
+  },
+  {
+   "address": "006232f0",
+   "name": "tString::tString"
+  },
+  {
+   "address": "00623390",
+   "name": "tString::tString"
+  },
+  {
+   "address": "00623d60",
+   "name": "tString::substr"
+  },
+  {
+   "address": "00623f40",
+   "name": "tString::find"
+  },
+  {
+   "address": "00624020",
+   "name": "tString::find"
+  },
+  {
+   "address": "00624260",
+   "name": "tString::rfind"
+  },
+  {
+   "address": "00624340",
+   "name": "tString::rfind"
+  },
+  {
+   "address": "00624420",
+   "name": "tString::rfind"
+  },
+  {
+   "address": "00624660",
+   "name": "tString::operator="
+  },
+  {
+   "address": "00624b60",
+   "name": "tString::operator+="
+  },
+  {
+   "address": "00624fa0",
+   "name": "tString::operator+"
+  },
+  {
+   "address": "00625080",
+   "name": "tString::operator+="
+  },
+  {
+   "address": "00625430",
+   "name": "tString::iterator::operator+"
+  },
+  {
+   "address": "00625490",
+   "name": "tString::iterator::operator-"
+  },
+  {
+   "address": "006254f0",
+   "name": "tString::iterator::operator++"
+  },
+  {
+   "address": "00625550",
+   "name": "tString::iterator::operator--"
+  },
+  {
+   "address": "00625630",
+   "name": "tString::mStrChr"
+  },
+  {
+   "address": "00625730",
+   "name": "tString::mStrRChr"
+  },
+  {
+   "address": "006257f0",
+   "name": "tString::mToUpper"
+  },
+  {
+   "address": "00625970",
+   "name": "tString::mStrICmp"
+  },
+  {
+   "address": "00625b80",
+   "name": "tString::begin"
+  },
+  {
+   "address": "00625bd0",
+   "name": "tString::end"
+  },
+  {
+   "address": "00625f50",
+   "name": "NumToString"
+  },
+  {
+   "address": "00627750",
+   "name": "tStrMgrCore::mLoadStringFile"
+  },
+  {
+   "address": "00627fa0",
+   "name": "tZipInfoMgr::mInit"
+  },
+  {
    "address": "00629720",
    "name": "twDebugPart::mSendLine"
   },
@@ -4658,6 +7430,126 @@
    "name": "twFileSystemPart::mGetVolIterator"
   },
   {
+   "address": "0062e7c0",
+   "name": "twFileSystemPart::mGetNamedVolume"
+  },
+  {
+   "address": "0062efe0",
+   "name": "WinParseVolume"
+  },
+  {
+   "address": "0062f920",
+   "name": "twFileSystemPart::mDuplicatePath"
+  },
+  {
+   "address": "0062fab0",
+   "name": "twFileSystemPart::mFileOpenDialog"
+  },
+  {
+   "address": "00630d70",
+   "name": "twFileSystemPart::mWinStringFromPath"
+  },
+  {
+   "address": "006313e0",
+   "name": "twVolume::mGetRoot"
+  },
+  {
+   "address": "006315d0",
+   "name": "twDir::mMakeFullPath"
+  },
+  {
+   "address": "00631860",
+   "name": "twDir::mGetDate"
+  },
+  {
+   "address": "00631b30",
+   "name": "twDir::mGetNamedDir"
+  },
+  {
+   "address": "00631d30",
+   "name": "twDir::mGetNamedFile"
+  },
+  {
+   "address": "00632040",
+   "name": "twDir::mGetDirIterator"
+  },
+  {
+   "address": "00632700",
+   "name": "twDir::mGetPathIterator"
+  },
+  {
+   "address": "00632da0",
+   "name": "twDir::mDelete"
+  },
+  {
+   "address": "00633e80",
+   "name": "tDir::tDir"
+  },
+  {
+   "address": "00633fe0",
+   "name": "AsynchIOMain"
+  },
+  {
+   "address": "006340b0",
+   "name": "twIORequest::mProcessRequest"
+  },
+  {
+   "address": "006345b0",
+   "name": "tVolIterator::tVolIterator"
+  },
+  {
+   "address": "00634810",
+   "name": "twIORequestQueue::mAdd"
+  },
+  {
+   "address": "00634940",
+   "name": "twIORequestQueueManager::~twIORequestQueueManager"
+  },
+  {
+   "address": "00634b50",
+   "name": "twIORequestQueueManager::mRequest"
+  },
+  {
+   "address": "006397f0",
+   "name": "twMemoryPart::mResizeHandle"
+  },
+  {
+   "address": "00639d90",
+   "name": "twMemoryPart::mResizeHandleZeroIt"
+  },
+  {
+   "address": "0063a910",
+   "name": "twMemoryBlock::mCheckForBoundsError"
+  },
+  {
+   "address": "0063aca0",
+   "name": "twMemoryBlock::mAllocate"
+  },
+  {
+   "address": "0063aee0",
+   "name": "twMemoryBlock::mReallocate"
+  },
+  {
+   "address": "0063be00",
+   "name": "tPagingMechanism::mClosePage"
+  },
+  {
+   "address": "0063c0d0",
+   "name": "tPagingBlock::mGetIndexWhereToAddThisMuchSpace"
+  },
+  {
+   "address": "0063cf00",
+   "name": "tPagingBlock::mCheckForBoundsError"
+  },
+  {
+   "address": "0063d2b0",
+   "name": "tPagingMechanism::mDelHandle"
+  },
+  {
+   "address": "0063d8c0",
+   "name": "tPagingMechanism::mResizeHandle"
+  },
+  {
    "address": "0063f5a0",
    "name": "tCoopThreadPart::mSwitchTo"
   },
@@ -4686,6 +7578,22 @@
    "name": "twStandardSoundChannel::mUpdateBuffersAndSelections"
   },
   {
+   "address": "00643b30",
+   "name": "twStandardSoundChannel::mAddSoundChannel"
+  },
+  {
+   "address": "00644110",
+   "name": "twStandardSoundChannel::mDoFillSelection"
+  },
+  {
+   "address": "00644750",
+   "name": "twStandardSoundChannel::mSetVolume"
+  },
+  {
+   "address": "00646010",
+   "name": "twSoundPart::mInit"
+  },
+  {
    "address": "00647e40",
    "name": "tSoundChannelCommand::mDump"
   },
@@ -4698,8 +7606,40 @@
    "name": "tgSoundPart::mUpdate"
   },
   {
+   "address": "00651540",
+   "name": "tgSoundPart::mCreateCommand"
+  },
+  {
+   "address": "00657980",
+   "name": "tAudioFileInfoPart::mActivate"
+  },
+  {
+   "address": "006580c0",
+   "name": "tAudioFileInfoPart::mGetNewAsynchReadInfo"
+  },
+  {
    "address": "00658ac0",
    "name": "tChannelGroup::mUnload"
+  },
+  {
+   "address": "00661fa0",
+   "name": "tAudioPriorityManagerPart::mAreWeAllowedToPlay"
+  },
+  {
+   "address": "00663ce0",
+   "name": "tAFPlayInfo::mIsThisInThisGroup"
+  },
+  {
+   "address": "006640a0",
+   "name": "tBasicSoundFileManager::mUpdateTest"
+  },
+  {
+   "address": "006683a0",
+   "name": "tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition"
+  },
+  {
+   "address": "00668970",
+   "name": "tBasicSoundFileManager::mParseAllSoundsFile"
   },
   {
    "address": "0066c9b0",
@@ -4736,6 +7676,18 @@
   {
    "address": "006a8930",
    "name": "FUN_006a8930"
+  },
+  {
+   "address": "006b3e10",
+   "name": "FUN_006b3e10"
+  },
+  {
+   "address": "006b3f80",
+   "name": "FUN_006b3f80"
+  },
+  {
+   "address": "006b4540",
+   "name": "FUN_006b4540"
   },
   {
    "address": "006f3a20",
@@ -4796,6 +7748,50 @@
   {
    "address": "00709270",
    "name": "nDatabase::tFileDatabaseMgr::Load"
+  },
+  {
+   "address": "00757310",
+   "name": "tFile::mInit"
+  },
+  {
+   "address": "00757880",
+   "name": "tFile::mSearchOpen"
+  },
+  {
+   "address": "007579f0",
+   "name": "tFile::mSearchOpen"
+  },
+  {
+   "address": "00757ce0",
+   "name": "tFile::vfunction28"
+  },
+  {
+   "address": "00757d80",
+   "name": "tFile::mOpenForWriteAppend"
+  },
+  {
+   "address": "00757ef0",
+   "name": "tFile::mOpenForWrite"
+  },
+  {
+   "address": "00757ff0",
+   "name": "tFile::mOpenForWrite"
+  },
+  {
+   "address": "00758390",
+   "name": "tBufFile::tBufFile"
+  },
+  {
+   "address": "007586c0",
+   "name": "tBufFile::mRead"
+  },
+  {
+   "address": "00759e80",
+   "name": "tFontDraw::mDrawGlyphClipped"
+  },
+  {
+   "address": "0075a080",
+   "name": "tFontDraw::mDrawString"
   }
  ]
 }

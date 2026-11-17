@@ -2949,13 +2949,13 @@ tgSoundPart::tgSoundPart()
     atgSoundPart = this;
 }
 
-// HYPOTHESIS: tChannelGroupManagerPart is declared only as far as this function needs it. It waits
-// for the memory, clock and debug parts: the SDK libraries' data names give the cache pointer
-// (0x008e0b54) and type descriptor (0x0083c608) of the first Test_ function (0x0064fc00) to
-// tMemoryPart, and the other two are 0x00640580 and 0x00640640.
-class tChannelGroupManagerPart : public tPart {
-public: virtual iTruth mIsReady();
-};
+// It waits for the memory, clock and debug parts: the SDK libraries' data names give the cache
+// pointer (0x008e0b54) and type descriptor (0x0083c608) of the first Test_ function (0x0064fc00)
+// to tMemoryPart, and the other two are 0x00640580 and 0x00640640.
+#include "unsorted/tChannelGroupManagerPart.h"
+
+
+
 // FUNCTION: STARFLEETOP 0x0064fbe0
 iTruth tChannelGroupManagerPart::mIsReady()
 {
