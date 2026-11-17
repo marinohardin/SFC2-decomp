@@ -69,7 +69,14 @@ class fn_0050bcd4_object
 public:
 	~fn_0050bcd4_object();
 
-	char pad_0000[0x18];
+	// HYPOTHESIS: removes an id from the set; returns whether it was held (vfunction37).
+	char fn_0050bcf6( long param_1 );
+
+	char pad_0000[0xc];
+	// HYPOTHESIS: a byte total and an entry count that vfunction37 lowers after a removal.
+	long field_c;
+	long field_10;
+	char pad_0014[0x4];
 };
 
 class fn_005d6a72_object
@@ -141,7 +148,9 @@ struct fn_0050eea7_sample
 	// HYPOTHESIS: volatile, as fn_0050fc69 rereads it after its store.
 	volatile unsigned long field_2c;
 	// HYPOTHESIS: the data chunk's size twice and its file position (fn_0050fc69).
-	unsigned long field_30;
+	// HYPOTHESIS: signed (vfunction37 tests it with jle) and volatile, shared with the
+	// callback thread (vfunction37 reads it only after forming the channel's address).
+	volatile long field_30;
 	unsigned long field_34;
 	unsigned long field_38;
 	char field_3c;
@@ -217,6 +226,11 @@ public:
 	virtual void vfunction30();
 	virtual char vfunction31();
 	virtual void vfunction32( long param_1 );
+	virtual void vfunction33();
+	virtual void vfunction34( long param_1 );
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37( long param_1 );
 
 	// HYPOTHESIS: maps a sound id to its channel index in place; returns whether it found one.
 	char fn_0050fc33( long *param_1 );
@@ -1010,4 +1024,46 @@ void fn_0050feb2( tBasicFile *param_1, unsigned short param_2 )
 		param_1->mRead( buffer, count );
 		param_2 -= count;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0050fef5
+void tSndMgr_Miles::vfunction37( long param_1 )
+{
+	if ( field_10[param_1].field_30 > 0 && field_10[param_1].field_4c )
+	{
+		field_10[param_1].field_4c->mClose();
+		field_10[param_1].field_4c->mDispose();
+		field_10[param_1].field_4c = 0;
+		if ( field_2420.fn_0050bcf6( field_10[param_1].field_8 ) )
+		{
+			vfunction34( field_10[param_1].field_8 );
+			field_2420.field_c -= field_10[param_1].field_18;
+			field_2420.field_10--;
+		}
+	}
+	if ( field_10[param_1].field_48 )
+	{
+		field_10[param_1].field_48->mClose();
+		field_10[param_1].field_48->mDispose();
+		field_10[param_1].field_48 = 0;
+	}
+	if ( field_10[param_1].field_4c )
+	{
+		field_10[param_1].field_4c->mClose();
+		field_10[param_1].field_4c->mDispose();
+		field_10[param_1].field_4c = 0;
+	}
+	if ( field_10[param_1].field_50 )
+	{
+		field_10[param_1].field_50->mDispose();
+		field_10[param_1].field_50 = 0;
+	}
+	field_10[param_1].field_79 = 0;
+	field_10[param_1].field_78 = 0;
+	field_10[param_1].field_56 = 0;
+	field_10[param_1].field_55 = 0;
+	field_10[param_1].field_54 = 0;
+	field_10[param_1].field_57 = 0;
+	field_10[param_1].field_30 = 0;
+	field_10[param_1].field_40 = 0;
 }
