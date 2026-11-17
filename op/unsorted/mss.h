@@ -28,6 +28,9 @@ __declspec( dllimport ) void		__stdcall AIL_shutdown( void );
 __declspec( dllimport ) long		__stdcall AIL_sample_volume( HSAMPLE S );
 __declspec( dllimport ) void		__stdcall AIL_set_sample_volume( HSAMPLE S, long volume );
 __declspec( dllimport ) void		__stdcall AIL_set_digital_master_volume( HDIGDRIVER dig, long master_volume );
+__declspec( dllimport ) void		__stdcall AIL_set_sample_playback_rate( HSAMPLE S, long playback_rate );
+__declspec( dllimport ) void		__stdcall AIL_set_sample_type( HSAMPLE S, long format, unsigned long flags );
+__declspec( dllimport ) void		__stdcall AIL_set_sample_adpcm_block_size( HSAMPLE S, unsigned long blocksize );
 }
 
 #define DIG_F_STEREO_16		3

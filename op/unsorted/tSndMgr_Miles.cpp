@@ -78,6 +78,10 @@ public:
 
 	// HYPOTHESIS: loads the music from a zip and its table
 	void fn_0050d539( tSndMgr_Miles *param_1, const char *param_2, const char *param_3 );
+	// HYPOTHESIS: looks up a music track; sets *param_2 when found.
+	void fn_0050d5ec( long param_1, char *param_2 );
+	// HYPOTHESIS: the current track's playback rate, sample format, type flags and ADPCM block size.
+	void fn_0050d8f0( long *param_1, long *param_2, unsigned long *param_3, unsigned long *param_4 );
 
 	char pad_0000[0x3c8];
 };
@@ -116,7 +120,9 @@ struct fn_0050eea7_sample
 	void *field_24;
 	char pad_28[0x4];
 	unsigned long field_2c;
-	char pad_30[0x10];
+	char pad_30[0xc];
+	char field_3c;
+	char pad_3d[0x3];
 	long field_40;
 	char field_44;
 	char pad_45[0x3];
@@ -169,7 +175,7 @@ public:
 	virtual long vfunction18();
 	virtual void vfunction19( long param_1 );
 	virtual long vfunction20();
-	virtual void vfunction21();
+	virtual void vfunction21( long param_1 );
 	virtual void vfunction22();
 	virtual void vfunction23();
 	virtual void vfunction24();
@@ -181,6 +187,7 @@ public:
 	virtual long vfunction29( long param_1, long param_2, char param_3, unsigned long param_4 );
 	virtual void vfunction30();
 	virtual char vfunction31();
+	virtual void vfunction32( long param_1 );
 
 	// HYPOTHESIS: maps a sound id to its channel index in place; returns whether it found one.
 	char fn_0050fc33( long *param_1 );
@@ -197,7 +204,9 @@ public:
 	fn_0050eea7_sample field_10[32];
 	// HYPOTHESIS: a second bank of 32 channels, for sounds found in the voice zip.
 	fn_0050eea7_sample field_f90[32];
-	char pad_1f10[0x8];
+	char pad_1f10[0x4];
+	// HYPOTHESIS: music volume, 0..100 (vfunction21 scales it to Miles' 0..127)
+	long field_1f14;
 	// HYPOTHESIS: master volume, 0..100 (vfunction17 scales it to Miles' 0..127)
 	long field_1f18;
 	char pad_1f1c[0x4];
@@ -696,4 +705,35 @@ void tSndMgr_Miles::vfunction17( long param_1 )
 long tSndMgr_Miles::vfunction18()
 {
 	return field_1f18;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f853
+void tSndMgr_Miles::vfunction21( long param_1 )
+{
+	if ( field_2414 )
+	{
+		char found = 0;
+		field_2450.fn_0050d5ec( param_1, &found );
+		if ( found || !field_10[0].field_10 )
+		{
+			AIL_init_sample( field_10[0].field_0 );
+			vfunction32( 0 );
+			long rate;
+			unsigned long flags;
+			unsigned long blockSize;
+			field_2450.fn_0050d8f0( &rate, &param_1, &flags, &blockSize );
+			AIL_set_sample_playback_rate( field_10[0].field_0, rate );
+			AIL_set_sample_type( field_10[0].field_0, param_1, flags );
+			AIL_set_sample_volume( field_10[0].field_0, field_1f14 * 127 / 100 );
+			if ( param_1 == 7 || param_1 == 5 )
+				AIL_set_sample_adpcm_block_size( field_10[0].field_0, blockSize );
+			field_10[0].field_56 = 0;
+			field_10[0].field_54 = 0;
+			field_10[0].field_57 = 0;
+			field_10[0].field_64 = 1000;
+			field_10[0].field_78 = 1;
+			field_10[0].field_10 = 1;
+			field_10[0].field_3c = 1;
+		}
+	}
 }
