@@ -4888,6 +4888,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004bdf97": {
+   "name": "FUN_004bdf97",
+   "symbol": "_$E48",
+   "unit": "unsorted/fn_004BD43E.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004c265f": {
    "name": "tFleetEntry::tFleetEntry",
    "symbol": "??0tFleetEntry@@QAE@XZ",
