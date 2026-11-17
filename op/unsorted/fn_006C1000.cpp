@@ -349,3 +349,15 @@ int fn_006c1960(int param)
 	g_00c7cbc0[7] = '\0';
 	return 0;
 }
+
+void fn_006c1a90();
+
+// HYPOTHESIS: closes the UDP socket opened by fn_006c1960 and shuts down Winsock.
+// FUNCTION: STARFLEETOP 0x006c1a70
+void fn_006c1a70()
+{
+	fn_006c1a90();
+	closesocket(g_0088800c);
+	g_0088800c = INVALID_SOCKET;
+	WSACleanup();
+}
