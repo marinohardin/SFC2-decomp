@@ -984,3 +984,16 @@ void tShipSystemsExt::vfunction154( int param_1 )
 	// HYPOTHESIS: the constructor clears +0x9a4..+0x9af as one block; this is its first int.
 	m9a4[0] += param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x0044cc27
+void tShipSystemsExt::vfunction153()
+{
+	// HYPOTHESIS: m9a4 holds a three-entry history that shifts when m944 changes.
+	if ( m948 != m944 )
+	{
+		m948 = m944;
+		m9a4[2] = m9a4[1];
+		m9a4[1] = m9a4[0];
+		m9a4[0] = 0;
+	}
+}
