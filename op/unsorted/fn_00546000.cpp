@@ -176,3 +176,19 @@ bool c_0054626d::fn_0054626d()
     unsigned int word = *(unsigned int*)&field_430;
     return ((tFlags430*)&word)->b1;
 }
+
+// HYPOTHESIS: the object behind 0x00546278 keeps a byte at +0x58; its class is not known.
+class c_00546278
+{
+public:
+    unsigned char fn_00546278();
+
+    char field_0[0x58];
+    unsigned char field_58;
+};
+
+// FUNCTION: STARFLEETOP 0x00546278
+unsigned char c_00546278::fn_00546278()
+{
+    return field_58;
+}
