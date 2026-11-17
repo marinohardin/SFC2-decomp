@@ -165,6 +165,7 @@ public:
 	void FUN_005f7a6a( const int& value );
 	fn_005f7a4b_value& FUN_005f7a4b();
 	void FUN_005f7aeb();
+	void FUN_005f7dea( unsigned int count ); // HYPOTHESIS: grows the block map
 
 	byte field_00[0x04];
 	fn_005f7a4b_value** field_04; // HYPOTHESIS: the map of blocks
@@ -428,4 +429,23 @@ fn_005f7961_object::~fn_005f7961_object()
 fn_005f7a4b_value& fn_005f7a6a_object::FUN_005f7a4b()
 {
 	return (fn_005f7efa_iterator( field_10 + field_0c, this ) - 1).FUN_005f7efa();
+}
+
+// FUNCTION: STARFLEETOP 0x005f7a6a
+void fn_005f7a6a_object::FUN_005f7a6a( const int& value )
+{
+	if ( (field_0c + field_10) % 1024 == 0 && field_08 <= (field_10 + 1024) / 1024 ) {
+		FUN_005f7dea( 1 );
+	}
+	unsigned int off = field_0c + field_10;
+	unsigned int block = off / 1024;
+	if ( field_08 <= block ) {
+		block -= field_08;
+	}
+	if ( field_04[block] == 0 ) {
+		field_04[block] = (fn_005f7a4b_value*) operator new( 1024 * sizeof( fn_005f7a4b_value ) );
+	}
+	++field_10;
+	int* p = (int*) ( field_04[block] + off % 1024 );
+	new( p ) int( value );
 }
