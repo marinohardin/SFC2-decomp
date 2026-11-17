@@ -132,3 +132,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00402a26	FUN_00402a26	38.71	2	opus	2026-11-17T05:11:47Z	best not above 90% after 2 attempts; best 38.71%
 0x00402ae6	FUN_00402ae6	0.00	2	opus	2026-11-17T05:14:14Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x00402bb6	FUN_00402bb6	15.52	2	opus	2026-11-17T06:07:31Z	attempt 2 (opus) did not raise the best; best 15.52%
+0x00402c74	FUN_00402c74	1.29	2	opus	2026-11-17T06:13:23Z	attempt 2 (opus) did not raise the best; best 1.29%
