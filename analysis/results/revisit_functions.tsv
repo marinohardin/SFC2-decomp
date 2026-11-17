@@ -159,3 +159,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0050eea7	tSndMgr_Miles::vfunction2	99.94	2	sonnet	2026-11-17T15:58:14Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.94%
 0x005102ab	tSndMgr_Miles::vfunction33	77.24	2	sonnet	2026-11-17T17:14:16Z	attempt 2 (sonnet) did not raise the best; best 77.24%
 0x0052315a	FUN_0052315a	91.25	3	opus	2026-11-17T17:36:52Z	attempt 3 (opus) did not raise the best; waits for Fable; best 91.25%
+0x0052327e	FUN_0052327e	48.70	2	sonnet	2026-11-17T17:48:18Z	attempt 2 (sonnet) did not raise the best; best 48.70%
