@@ -2836,6 +2836,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042cc05": {
+   "name": "FUN_0042cc05",
+   "symbol": "?Delete@?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAEXXZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 49,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

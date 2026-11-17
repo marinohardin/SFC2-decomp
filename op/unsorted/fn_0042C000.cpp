@@ -792,3 +792,17 @@ template<> void std::vector< tServCharacter::tShipCache >::reserve( size_type _N
 		_Last = _S + size();
 		_First = _S; }
 }
+
+// The game's out-of-line copy of the SDK's Delete for the wrapper of 0x0042c6da.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
+// FUNCTION: STARFLEETOP 0x0042cc05
+template<> void tSingleAccessWrapper<std::vector<int> >::Delete()
+{
+	fPointerOptex.Enter();
+	if( fpPointer )
+	{
+		delete fpPointer;
+		fpPointer = NULL;
+	}
+	fPointerOptex.Leave();
+}
