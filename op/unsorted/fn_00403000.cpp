@@ -30,3 +30,42 @@ std::filebuf::~filebuf()
         close();
     delete _Str;
 }
+
+#include <string.h>
+
+// HYPOTHESIS: the library's std::string::append(size_type, char), written out as a stand-in
+// class with the same layout (allocator at +0, pointer at +4, length at +8, reserve at +0xc).
+namespace std
+{
+void _Xlen();
+}
+
+class fn_00403af0_String
+{
+public:
+    fn_00403af0_String& append(unsigned int n, char c);
+    bool _Grow(unsigned int n, bool trim);
+    static const unsigned int npos;
+    char _Alloc;
+    char* _Ptr;
+    unsigned int _Len;
+    unsigned int _Res;
+};
+
+// FUNCTION: STARFLEETOP 0x00403af0
+fn_00403af0_String& fn_00403af0_String::append(unsigned int n, char c)
+{
+    if (npos - _Len <= n)
+        std::_Xlen();
+    if (n > 0)
+    {
+        unsigned int newLen = n + _Len;
+        if (_Grow(newLen, false))
+        {
+            memset(_Ptr + _Len, c, n);
+            _Len = newLen;
+            _Ptr[newLen] = 0;
+        }
+    }
+    return *this;
+}
