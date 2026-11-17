@@ -9438,9 +9438,9 @@
    "symbol": "?mGetIndexWhereToAddThisMuchSpace@tPagingBlock@@IAEJJ@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 416,
-   "score": 90.203,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0063c270": {
    "name": "tPagingMechanism::mNewHandle",

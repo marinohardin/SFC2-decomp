@@ -211,7 +211,7 @@ long	tPagingBlock::mGetIndexWhereToAddThisMuchSpace( long size )
 		before = fSizes[ index - 1 ];
 	}
 	long	avail = fSizes[ index ];
-	if ( size < avail )
+	if ( avail > size )
 	{
 		long	rest = avail - size;
 		fSizes[ index + size ] = (unsigned short)rest;
@@ -222,40 +222,45 @@ long	tPagingBlock::mGetIndexWhereToAddThisMuchSpace( long size )
 			fSizes[ index ] = 0;
 			fSizes[ index + size - 1 ] = (unsigned short)( size + before );
 			fSizes[ index - before ] = (unsigned short)( size + before );
-			return index;
 		}
-		fSizes[ index ] = (unsigned short)size;
-		fSizes[ index + size - 1 ] = (unsigned short)size;
-		return index;
+		else
+		{
+			fSizes[ index ] = (unsigned short)size;
+			fSizes[ index + size - 1 ] = (unsigned short)size;
+		}
 	}
-	long	after = 0;
-	if ( index + avail < 0xfc )
+	else
 	{
-		after = fSizes[ index + avail ];
+		long	after = 0;
+		if ( index + avail < 0xfc )
+		{
+			after = fSizes[ index + avail ];
+		}
+		if ( index == 0 )
+		{
+			long	next = fSizes[ size ];
+			fSizes[ size - 1 ] = 0;
+			fSizes[ size ] = 0;
+			fSizes[ 0 ] = (unsigned short)( next + size );
+			fSizes[ next + size - 1 ] = (unsigned short)( next + size );
+		}
+		else if ( index == 0xfc - size )
+		{
+			fSizes[ index - 1 ] = 0;
+			fSizes[ index ] = 0;
+			fSizes[ size + index - 1 ] = (unsigned short)( before + size );
+			fSizes[ index - before ] = (unsigned short)( before + size );
+		}
+		else
+		{
+			fSizes[ index ] = 0;
+			fSizes[ index + size - 1 ] = 0;
+			fSizes[ index + size ] = 0;
+			fSizes[ index - 1 ] = 0;
+			fSizes[ index - before ] = (unsigned short)( after + before + size );
+			fSizes[ after + index + size - 1 ] = (unsigned short)( after + before + size );
+		}
 	}
-	if ( index == 0 )
-	{
-		long	next = fSizes[ size ];
-		fSizes[ size - 1 ] = 0;
-		fSizes[ size ] = 0;
-		fSizes[ 0 ] = (unsigned short)( next + size );
-		fSizes[ next + size - 1 ] = (unsigned short)( next + size );
-		return 0;
-	}
-	if ( index == 0xfc - size )
-	{
-		fSizes[ index - 1 ] = 0;
-		fSizes[ index ] = 0;
-		fSizes[ size + index - 1 ] = (unsigned short)( before + size );
-		fSizes[ index - before ] = (unsigned short)( before + size );
-		return index;
-	}
-	fSizes[ index ] = 0;
-	fSizes[ index + size - 1 ] = 0;
-	fSizes[ index + size ] = 0;
-	fSizes[ index - 1 ] = 0;
-	fSizes[ index - before ] = (unsigned short)( after + before + size );
-	fSizes[ after + index + size - 1 ] = (unsigned short)( after + before + size );
 	return index;
 }
 
