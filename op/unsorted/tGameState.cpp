@@ -724,3 +724,11 @@ void fn_0046a534(int param_1)
 	if (state != 0)
 		((fn_0046a534_state *)state)->vfunction7(param_1);
 }
+
+// FUNCTION: STARFLEETOP 0x0046a549
+void fn_0046a549(int *param_1)
+{
+	tGameState *state = fn_0046a59a();
+	if (state != 0)
+		state->vfunction8(param_1);
+}
