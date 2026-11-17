@@ -5883,8 +5883,8 @@
    "symbol": "?fn_004d26fb@fn_004d26fb_map@@QAEXHPBD@Z",
    "unit": "unsorted/fn_004D2000.cpp",
    "size": 156,
-   "score": 1.083,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {

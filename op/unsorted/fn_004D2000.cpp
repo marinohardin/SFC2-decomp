@@ -175,6 +175,7 @@ std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_st
 class fn_004d2265_holder
 {
 public:
+	fn_004d2265_holder(); // HYPOTHESIS: out of line at 0x004d2238 (its use of the return value shows it)
 	~fn_004d2265_holder();
 	void fn_004d22e0();
 	void fn_004d2296(int dst, const char* text);
@@ -534,8 +535,7 @@ public:
 void fn_004d26fb_map::fn_004d26fb(int a, const char* text)
 {
 	fn_004d2265_holder* holder = 0;
-	const char* key_text = text;
-	if (a != 0 && key_text != 0)
+	if (a != 0 && text != 0)
 	{
 		holder = new fn_004d2265_holder;
 		holder->fn_004d2296(a, text);
