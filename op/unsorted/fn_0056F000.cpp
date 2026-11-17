@@ -652,3 +652,43 @@ void fn_0056f909_owner::fn_0056f909(void *key, fn_0056f909_result *result)
 	result->vfunction9();
 	guard.Leave();
 }
+
+// HYPOTHESIS: same locked lookup as fn_0056f909, on another owner and result class.
+class fn_0056f961_result {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	void fn_0045d230(void *object);
+};
+
+class fn_0056f961_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void *vfunction8(void *key);
+	void fn_0056f961(void *key, fn_0056f961_result *result);
+	tOptex fAccess;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f961
+void fn_0056f961_owner::fn_0056f961(void *key, fn_0056f961_result *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	result->fn_0045d230(vfunction8(key));
+	result->vfunction9();
+	guard.Leave();
+}
