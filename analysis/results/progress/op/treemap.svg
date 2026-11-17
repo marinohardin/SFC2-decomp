@@ -3048,17 +3048,17 @@
 <rect x="983.9" y="598.6" width="1.0" height="0.4" fill="#333633"><title>unsorted/fn_006A2000.cpp: 0.0% of 2 bytes</title></rect>
 </g>
 <g><title>Tiger</title>
-<rect x="986.9" y="1.0" width="140.4" height="101.1" fill="#396d39"><title>Tiger/tgSound.cpp: 61.8% of 66,700 bytes</title></rect>
-<rect x="1127.3" y="1.0" width="71.7" height="101.1" fill="#364c36"><title>Tiger/taudiochannel.cpp: 25.1% of 34,053 bytes</title></rect>
-<rect x="986.9" y="102.1" width="85.6" height="81.8" fill="#333633"><title>Tiger/tsndmgr.cpp: 0.1% of 32,932 bytes</title></rect>
-<rect x="1072.5" y="102.1" width="74.8" height="81.8" fill="#333633"><title>Tiger/twfsys.cpp: 0.0% of 28,763 bytes</title></rect>
-<rect x="1147.3" y="102.1" width="51.7" height="81.8" fill="#375737"><title>Tiger/twSound.cpp: 37.2% of 19,892 bytes</title></rect>
-<rect x="986.9" y="183.9" width="50.7" height="69.7" fill="#3d8b3d"><title>Tiger/tgfsys.cpp: 95.9% of 16,619 bytes</title></rect>
-<rect x="986.9" y="253.6" width="50.7" height="64.2" fill="#333633"><title>Tiger/twmemory.cpp: 0.0% of 15,295 bytes</title></rect>
-<rect x="1037.6" y="183.9" width="55.4" height="51.6" fill="#333633"><title>Tiger/tpaging.cpp: 0.0% of 13,420 bytes</title></rect>
-<rect x="1037.6" y="235.5" width="55.4" height="47.8" fill="#333633"><title>Tiger/tstring.cpp: 0.0% of 12,430 bytes</title></rect>
-<rect x="1037.6" y="283.2" width="55.4" height="34.6" fill="#333633"><title>Tiger/tFile.cpp: 0.0% of 8,996 bytes</title></rect>
-<rect x="1093.0" y="183.9" width="41.0" height="39.9" fill="#333633"><title>Tiger/taudiopriority.cpp: 0.0% of 7,689 bytes</title></rect>
+<rect x="986.9" y="1.0" width="140.4" height="101.1" fill="#3d8e3d"><title>Tiger/tgSound.cpp: 99.2% of 66,700 bytes</title></rect>
+<rect x="1127.3" y="1.0" width="71.7" height="101.1" fill="#3c8a3c"><title>Tiger/taudiochannel.cpp: 94.8% of 34,053 bytes</title></rect>
+<rect x="986.9" y="102.1" width="85.6" height="81.8" fill="#3a723a"><title>Tiger/tsndmgr.cpp: 67.0% of 32,932 bytes</title></rect>
+<rect x="1072.5" y="102.1" width="74.8" height="81.8" fill="#386138"><title>Tiger/twfsys.cpp: 48.1% of 28,763 bytes</title></rect>
+<rect x="1147.3" y="102.1" width="51.7" height="81.8" fill="#3c833c"><title>Tiger/twSound.cpp: 86.7% of 19,892 bytes</title></rect>
+<rect x="986.9" y="183.9" width="50.7" height="69.7" fill="#3d8d3d"><title>Tiger/tgfsys.cpp: 98.0% of 16,619 bytes</title></rect>
+<rect x="986.9" y="253.6" width="50.7" height="64.2" fill="#3c873c"><title>Tiger/twmemory.cpp: 91.0% of 15,295 bytes</title></rect>
+<rect x="1037.6" y="183.9" width="55.4" height="51.6" fill="#3b7f3b"><title>Tiger/tpaging.cpp: 82.4% of 13,420 bytes</title></rect>
+<rect x="1037.6" y="235.5" width="55.4" height="47.8" fill="#375c37"><title>Tiger/tstring.cpp: 42.9% of 12,430 bytes</title></rect>
+<rect x="1037.6" y="283.2" width="55.4" height="34.6" fill="#3b7d3b"><title>Tiger/tFile.cpp: 79.9% of 8,996 bytes</title></rect>
+<rect x="1093.0" y="183.9" width="41.0" height="39.9" fill="#3c833c"><title>Tiger/taudiopriority.cpp: 86.6% of 7,689 bytes</title></rect>
 <rect x="1133.9" y="183.9" width="33.7" height="39.9" fill="#3c823c"><title>Tiger/Twdebug.cpp: 85.9% of 6,324 bytes</title></rect>
 <rect x="1167.6" y="183.9" width="31.4" height="39.9" fill="#3b7d3b"><title>Tiger/tgthread.cpp: 79.6% of 5,888 bytes</title></rect>
 <rect x="1093.0" y="223.8" width="34.5" height="33.9" fill="#3d8b3d"><title>Tiger/tFormatStr.cpp: 96.0% of 5,493 bytes</title></rect>
@@ -3066,16 +3066,16 @@
 <rect x="1093.0" y="290.3" width="34.5" height="27.6" fill="#3d8f3d"><title>Tiger/tSndMemMgr.cpp: 99.9% of 4,470 bytes</title></rect>
 <rect x="1127.5" y="223.8" width="38.4" height="24.4" fill="#3d8b3d"><title>Tiger/tinifile.cpp: 95.2% of 4,413 bytes</title></rect>
 <rect x="1165.9" y="223.8" width="33.1" height="24.4" fill="#3c8a3c"><title>Tiger/tFontmgr.cpp: 94.6% of 3,798 bytes</title></rect>
-<rect x="1127.5" y="248.3" width="26.4" height="27.5" fill="#333633"><title>Tiger/tAudioFile.cpp: 0.0% of 3,414 bytes</title></rect>
+<rect x="1127.5" y="248.3" width="26.4" height="27.5" fill="#3d8e3d"><title>Tiger/tAudioFile.cpp: 98.9% of 3,414 bytes</title></rect>
 <rect x="1127.5" y="275.8" width="26.4" height="24.0" fill="#386538"><title>Tiger/twthread.cpp: 52.8% of 2,981 bytes</title></rect>
-<rect x="1127.5" y="299.8" width="26.4" height="18.0" fill="#333633"><title>Tiger/tdistriblists.cpp: 0.0% of 2,238 bytes</title></rect>
-<rect x="1153.9" y="248.3" width="25.0" height="19.0" fill="#333633"><title>Tiger/tStrMgrCore.cpp: 0.0% of 2,228 bytes</title></rect>
-<rect x="1178.9" y="248.3" width="20.1" height="19.0" fill="#333633"><title>Tiger/tfontDraw.cpp: 0.0% of 1,796 bytes</title></rect>
+<rect x="1127.5" y="299.8" width="26.4" height="18.0" fill="#00d000"><title>Tiger/tdistriblists.cpp: 100.0% of 2,238 bytes</title></rect>
+<rect x="1153.9" y="248.3" width="25.0" height="19.0" fill="#3a773a"><title>Tiger/tStrMgrCore.cpp: 72.6% of 2,228 bytes</title></rect>
+<rect x="1178.9" y="248.3" width="20.1" height="19.0" fill="#3c843c"><title>Tiger/tfontDraw.cpp: 87.5% of 1,796 bytes</title></rect>
 <rect x="1153.9" y="267.3" width="15.7" height="18.0" fill="#3c823c"><title>Tiger/tbasicsoundfilezip.cpp: 85.2% of 1,329 bytes</title></rect>
-<rect x="1169.6" y="267.3" width="15.4" height="18.0" fill="#333633"><title>Tiger/tZipInfoMgr.cpp: 0.0% of 1,307 bytes</title></rect>
+<rect x="1169.6" y="267.3" width="15.4" height="18.0" fill="#375a37"><title>Tiger/tZipInfoMgr.cpp: 40.4% of 1,307 bytes</title></rect>
 <rect x="1185.0" y="267.3" width="14.0" height="18.0" fill="#3d8d3d"><title>Tiger/tpart.cpp: 97.3% of 1,189 bytes</title></rect>
-<rect x="1153.9" y="285.3" width="12.3" height="17.1" fill="#333633"><title>Tiger/twclock.cpp: 0.0% of 985 bytes</title></rect>
-<rect x="1153.9" y="302.4" width="12.3" height="15.4" fill="#333633"><title>Tiger/tbasicfilezip.cpp: 0.0% of 886 bytes</title></rect>
+<rect x="1153.9" y="285.3" width="12.3" height="17.1" fill="#00d000"><title>Tiger/twclock.cpp: 100.0% of 985 bytes</title></rect>
+<rect x="1153.9" y="302.4" width="12.3" height="15.4" fill="#00d000"><title>Tiger/tbasicfilezip.cpp: 100.0% of 886 bytes</title></rect>
 <rect x="1166.2" y="285.3" width="11.3" height="16.3" fill="#00d000"><title>Tiger/tstringtag.cpp: 100.0% of 863 bytes</title></rect>
 <rect x="1166.2" y="301.6" width="11.3" height="16.2" fill="#3c8a3c"><title>Tiger/tsay.cpp: 94.7% of 857 bytes</title></rect>
 <rect x="1177.4" y="285.3" width="11.8" height="15.1" fill="#00d000"><title>Tiger/tbasicfilecrt.cpp: 100.0% of 837 bytes</title></rect>
@@ -3086,7 +3086,7 @@
 <rect x="1188.8" y="307.6" width="5.3" height="5.5" fill="#00d000"><title>Tiger/tsequence.cpp: 100.0% of 137 bytes</title></rect>
 <rect x="1194.1" y="307.6" width="4.9" height="5.5" fill="#3a783a"><title>Tiger/tatomic.cpp: 74.4% of 125 bytes</title></rect>
 <rect x="1188.8" y="313.1" width="5.5" height="4.7" fill="#00d000"><title>Tiger/tcglue.cpp: 100.0% of 123 bytes</title></rect>
-<rect x="1194.3" y="313.1" width="4.7" height="4.7" fill="#333633"><title>Tiger/tnstring.cpp: 0.0% of 104 bytes</title></rect>
+<rect x="1194.3" y="313.1" width="4.7" height="4.7" fill="#00d000"><title>Tiger/tnstring.cpp: 100.0% of 104 bytes</title></rect>
 </g>
 <g><title>Meta/Servers</title>
 <rect x="986.9" y="319.8" width="44.0" height="43.4" fill="#333633"><title>Meta/Servers/Mission/AsynchMissionProcedures/AsyncMissionProcedures_ChooseMissionProcedure.cpp: 0.0% of 9,101 bytes</title></rect>
@@ -3309,45 +3309,45 @@
 </g>
 <g><title>dmp3d</title>
 <rect x="1095.7" y="526.8" width="42.7" height="33.6" fill="#3d8c3d"><title>dmp3d/common/texBmp.cpp: 97.0% of 7,138 bytes</title></rect>
-<rect x="1095.7" y="560.4" width="28.4" height="21.5" fill="#333633"><title>dmp3d/glsurface/tDDSurfMgr.cpp: 0.0% of 3,047 bytes</title></rect>
+<rect x="1095.7" y="560.4" width="28.4" height="21.5" fill="#3c873c"><title>dmp3d/glsurface/tDDSurfMgr.cpp: 90.6% of 3,047 bytes</title></rect>
 <rect x="1095.7" y="581.9" width="28.4" height="17.1" fill="#3d8d3d"><title>dmp3d/dx6/d3dframe.cpp: 97.4% of 2,425 bytes</title></rect>
 <rect x="1124.2" y="560.4" width="14.2" height="17.9" fill="#3c883c"><title>dmp3d/d3d/d3dViewMgr_Tex.cpp: 92.2% of 1,266 bytes</title></rect>
-<rect x="1124.2" y="578.2" width="14.2" height="13.0" fill="#333633"><title>dmp3d/dx6/getdxver.cpp: 0.0% of 924 bytes</title></rect>
+<rect x="1124.2" y="578.2" width="14.2" height="13.0" fill="#00d000"><title>dmp3d/dx6/getdxver.cpp: 100.0% of 924 bytes</title></rect>
 <rect x="1124.2" y="591.2" width="6.6" height="7.8" fill="#00d000"><title>dmp3d/common/stream_basicfile.cpp: 100.0% of 254 bytes</title></rect>
-<rect x="1130.7" y="591.2" width="7.7" height="4.6" fill="#333633"><title>dmp3d/view3d/drawPoly.cpp: 0.0% of 176 bytes</title></rect>
+<rect x="1130.7" y="591.2" width="7.7" height="4.6" fill="#00d000"><title>dmp3d/view3d/drawPoly.cpp: 100.0% of 176 bytes</title></rect>
 <rect x="1130.7" y="595.9" width="7.2" height="3.1" fill="#00d000"><title>dmp3d/dx6/d3dutil.cpp: 100.0% of 112 bytes</title></rect>
-<rect x="1137.9" y="595.9" width="0.5" height="3.1" fill="#333633"><title>dmp3d/glFont/tGLFont.cpp: 0.0% of 8 bytes</title></rect>
+<rect x="1137.9" y="595.9" width="0.5" height="3.1" fill="#00d000"><title>dmp3d/glFont/tGLFont.cpp: 100.0% of 8 bytes</title></rect>
 </g>
 <g><title>Source/states</title>
-<rect x="1140.4" y="526.8" width="49.7" height="27.3" fill="#333633"><title>Source/states/SupplyDockItem.cpp: 0.0% of 6,961 bytes</title></rect>
-<rect x="1190.1" y="526.8" width="8.9" height="27.3" fill="#333633"><title>Source/states/SingleCampaignSelector.cpp: 0.0% of 1,244 bytes</title></rect>
+<rect x="1140.4" y="526.8" width="49.7" height="27.3" fill="#3d8f3d"><title>Source/states/SupplyDockItem.cpp: 99.9% of 6,961 bytes</title></rect>
+<rect x="1190.1" y="526.8" width="8.9" height="27.3" fill="#00d000"><title>Source/states/SingleCampaignSelector.cpp: 100.0% of 1,244 bytes</title></rect>
 </g>
 <g><title>Meta/WON</title>
 <rect x="1140.4" y="556.0" width="39.0" height="21.3" fill="#333633"><title>Meta/WON/WONInterSwitchConnection.cpp: 0.0% of 4,418 bytes</title></rect>
 </g>
 <g><title>Source/entity</title>
 <rect x="1140.4" y="579.3" width="37.5" height="19.7" fill="#3d8f3d"><title>Source/entity/entity_physical.cpp: 100.0% of 3,957 bytes</title></rect>
-<rect x="1177.9" y="579.3" width="1.5" height="19.7" fill="#333633"><title>Source/entity/team.cpp: 0.0% of 160 bytes</title></rect>
+<rect x="1177.9" y="579.3" width="1.5" height="19.7" fill="#00d000"><title>Source/entity/team.cpp: 100.0% of 160 bytes</title></rect>
 </g>
 <g><title>Source/app</title>
 <rect x="1181.4" y="556.0" width="11.9" height="16.6" fill="#333633"><title>Source/app/sfcMouseMgr_Ex.cpp: 0.0% of 1,143 bytes</title></rect>
-<rect x="1193.4" y="556.0" width="5.6" height="16.6" fill="#333633"><title>Source/app/shellApp.cpp: 0.0% of 539 bytes</title></rect>
+<rect x="1193.4" y="556.0" width="5.6" height="16.6" fill="#364e36"><title>Source/app/shellApp.cpp: 26.9% of 539 bytes</title></rect>
 </g>
 <g><title>Source/network</title>
-<rect x="1181.4" y="574.6" width="10.4" height="11.9" fill="#333633"><title>Source/network/NetMsgClass.cpp: 0.0% of 747 bytes</title></rect>
-<rect x="1191.9" y="574.6" width="7.1" height="11.9" fill="#333633"><title>Source/network/netcon.cpp: 0.0% of 511 bytes</title></rect>
+<rect x="1181.4" y="574.6" width="10.4" height="11.9" fill="#00d000"><title>Source/network/NetMsgClass.cpp: 100.0% of 747 bytes</title></rect>
+<rect x="1191.9" y="574.6" width="7.1" height="11.9" fill="#3c853c"><title>Source/network/netcon.cpp: 88.5% of 511 bytes</title></rect>
 </g>
 <g><title>Source/shipsys</title>
-<rect x="1181.4" y="588.5" width="12.1" height="10.5" fill="#333633"><title>Source/shipsys/tractor.cpp: 0.0% of 818 bytes</title></rect>
+<rect x="1181.4" y="588.5" width="12.1" height="10.5" fill="#3d8f3d"><title>Source/shipsys/tractor.cpp: 100.0% of 818 bytes</title></rect>
 </g>
 <g><title>Source/TokenizedStrings</title>
-<rect x="1195.5" y="588.5" width="3.5" height="9.6" fill="#333633"><title>Source/TokenizedStrings/ResponseStrings.cpp: 0.0% of 292 bytes</title></rect>
+<rect x="1195.5" y="588.5" width="3.5" height="9.6" fill="#00d000"><title>Source/TokenizedStrings/ResponseStrings.cpp: 100.0% of 292 bytes</title></rect>
 </g>
 <g><title>Source/Common</title>
-<rect x="1195.5" y="600.0" width="0.0" height="0.0" fill="#333633"><title>Source/Common/sfcstreams.cpp: 0.0% of 16 bytes</title></rect>
+<rect x="1195.5" y="600.0" width="0.0" height="0.0" fill="#00d000"><title>Source/Common/sfcstreams.cpp: 100.0% of 16 bytes</title></rect>
 </g>
 <g><title>Source/Scripting</title>
-<rect x="1199.2" y="600.0" width="0.0" height="0.0" fill="#333633"><title>Source/Scripting/ScriptMapData.cpp: 0.0% of 8 bytes</title></rect>
+<rect x="1199.2" y="600.0" width="0.0" height="0.0" fill="#00d000"><title>Source/Scripting/ScriptMapData.cpp: 100.0% of 8 bytes</title></rect>
 </g>
 </g>
 <g fill="none" stroke="#5a625a" stroke-width="1">

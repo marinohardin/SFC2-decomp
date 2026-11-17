@@ -40,3 +40,4 @@ address	name	part_of	kind	note
 0x00402c74	FUN_00402c74	0x00402bb6	body-fragment	0x00402c74 is the tail of fn_00402bb6 after its catch funclet (it reads that frame); it has no source of its own.
 0x00403eda	FUN_00403eda		library-instance	The library's basic_istream<char>::ipfx(bool) instance (rdstate test, tie flush, whitespace skip through the ctype facet in a try block). Its claim is removed from op/; it has no source of its own there.
 0x00404695	FUN_00404695		library-instance	The library's vector<string>::insert(pos, n, x) instance (grow and copy, or shift and fill). Its claim is removed from op/; it has no source of its own there.
+0x0075a042	FUN_0075a042	0x00759e80	body-fragment	the 2 bytes the analysis splits off right after tFontDraw::mDrawGlyphClipped (0x00759e80, 450 bytes); padding or the tail of that function, not a function of its own, so it has no source.

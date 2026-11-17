@@ -23,6 +23,20 @@ def test_documentation_alone_skips_the_rebuild():
     ]) == 'skip'
 
 
+def test_images_and_progress_output_alone_skip_the_rebuild():
+    assert rebuild_scope.classify([
+        'analysis/results/progress/op/PROGRESS.md',
+        'analysis/results/progress/op/progress.json',
+        'analysis/results/progress/op/badge-exact.svg',
+        'analysis/results/progress/op/treemap.svg',
+        'analysis/results/progress/op/eh_funclet_parents.tsv',
+        'analysis/results/progress/eaw/progress.json',
+        'docs/images/frame.png',
+        'op/notes/menu.jpg',
+        'screens/loop.gif',
+    ]) == 'skip'
+
+
 def test_any_source_tool_or_result_change_keeps_the_rebuild():
     for path in (
         'op/Common/DynamicAllocator.cpp',
@@ -32,6 +46,10 @@ def test_any_source_tool_or_result_change_keeps_the_rebuild():
         'toolchain/Dockerfile',
         'tools/manifest.py',
         'analysis/results/matched_set.json',
+        'analysis/results/boundary_errors.tsv',
+        'analysis/results/progress.json',
+        'tools/progress_chart.py',
+        'scripts/progress.py',
         'ghidra/exports/functions.csv',
         'scripts/check.sh',
         'tests/test_manifest.py',

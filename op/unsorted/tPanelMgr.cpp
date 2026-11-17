@@ -114,16 +114,7 @@ struct fn_0060a951_container {
 
 #include "unsorted/fn_004d288f_object.h"
 
-// HYPOTHESIS: the member at tPanelMgr+0x100; it is taken to end before the flag at +0x164 that
-// fn_00608bd1 reads. Only its functions 0x004d290d (no argument), 0x004d288f (looks up an object
-// by a pointer key) and 0x004d269b (two globals and a flag) are known.
-struct fn_004d290d_object {
-    ~fn_004d290d_object();	// 0x004d2636
-    void fn_004d290d();
-    fn_004d288f_object *fn_004d288f(const void *key);
-    void fn_004d269b(void *a, void *b, bool flag);
-    char m_0x00[0x64];
-};
+#include "unsorted/fn_004d290d_object.h"
 
 // HYPOTHESIS: a 20-byte element of the vector at tPanelMgr+0x280; only its function 0x0060b3b0
 // (taking no argument) is known.
