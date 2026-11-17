@@ -35,6 +35,8 @@ public:
     void fn_0060c68a(int entry);
     void fn_0060c720(tString &text);
     void fn_0060c486(C_0060c486 *owner);
+    void fn_0060c51d(bool debriefing);
+    void fn_0060c76b(tString &text);
     // HYPOTHESIS: five owners the destructor frees through 0x0060c486.
     C_0060c486 *m_00;
     C_0060c486 *m_04;
@@ -52,7 +54,9 @@ extern C_00c3a80c *g_00c3a810;
 // HYPOTHESIS: text lookups by key; 0x004cbdae also substitutes a value. Signatures unknown.
 void fn_004cbd87(const char *key, int flags, tString &out);
 void fn_004cbdae(const char *key, int flags, const char *tag, const tString &value, tString &out);
-void fn_0060e11e();
+int fn_0060e11e();
+// HYPOTHESIS: stores a text under a name; also declared in the GameConnections state's unit.
+void fn_004d3179(const char *name, const tString &value);
 
 // HYPOTHESIS: the class of 0x0060c1c7 and 0x0060c3e1; its name is unknown.
 class C_0060c1c7
@@ -130,19 +134,14 @@ void fn_0060c41e()
     g_00c3a810 = g_00c3a80c;
 }
 
-// HYPOTHESIS: an owner whose first child sits at +0x04; deleting a child unlinks it, so the
-// loop below empties the list. Both classes are deleted through vtable slot 0. Names unknown.
-class C_0060c486_child
-{
-public:
-    virtual ~C_0060c486_child();
-};
-
+// HYPOTHESIS: a node of a singly linked list, next at +0x04; deleting a node unlinks it, so
+// the loop below empties the list. Slot 1 returns the node's text (0x0060c51d). Name unknown.
 class C_0060c486
 {
 public:
     virtual ~C_0060c486();
-    C_0060c486_child *m_04;
+    virtual tString &vfunction1();
+    C_0060c486 *m_04;
 };
 
 // FUNCTION: STARFLEETOP 0x0060c486
@@ -183,4 +182,31 @@ C_00c3a80c::C_00c3a80c()
     m_08 = 0;
     m_0c = 0;
     m_10 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0060c51d
+// HYPOTHESIS: publishes the briefing (or debriefing) texts: title, the two lists of lines and
+// the personal data.
+void C_00c3a80c::fn_0060c51d(bool debriefing)
+{
+    tString text("");
+    if (fn_0060e11e()) {
+        tString title(gObject_0096ed60.fn_0052cd2f());
+        fn_004d3179(debriefing ? "DebriefingMissionTitle" : "MissionTitle", title);
+    }
+    C_0060c486 *line;
+    for (line = m_08; line; line = line->m_04) {
+        text += line->vfunction1();
+        text += iBasicStringElement('\n');
+    }
+    fn_004d3179(debriefing ? "DebriefingText" : "BriefingText", text);
+    text = "";
+    for (line = m_10; line; line = line->m_04) {
+        text += line->vfunction1();
+        text += iBasicStringElement('\n');
+    }
+    fn_004d3179(debriefing ? "DebriefingMapArea" : "MapArea", text);
+    text = "";
+    fn_0060c76b(text);
+    fn_004d3179(debriefing ? "DebriefingPersonalData" : "PersonalData", text);
 }
