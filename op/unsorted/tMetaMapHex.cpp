@@ -445,3 +445,17 @@ std::vector< tHexPoint > tMetaMapHex::fn_00539ff1( int param_1, int param_2 )
 
 	return result;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a287
+bool tMetaMapHex::fn_0053a287( tHexPoint& point, unsigned int param_1, unsigned int param_2 )
+{
+	tOptex::tGuard guard( &m_bc );
+	bool result = false;
+	if( point.fn_0055f269() >= 0 && point.fn_005e8f21() >= 0 &&
+		point.fn_0055f269() < param_1 && point.fn_005e8f21() < param_2 )
+	{
+		result = true;
+	}
+	guard.Leave();
+	return result;
+}
