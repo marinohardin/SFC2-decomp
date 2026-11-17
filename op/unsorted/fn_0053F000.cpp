@@ -281,3 +281,40 @@ void fn_0042b0fd_owner::fn_0053f46d( long first, long last )
 	fn_0042b0fd( m_04, m_08 );
 	fn_0053f5d9( m_04, first, last );
 }
+
+// HYPOTHESIS: the element type of the container below is not known; elements are
+// 0x74 bytes with a virtual destructor in slot 0. The names are placeholders.
+class fn_0053f491_elem
+{
+public:
+	virtual ~fn_0053f491_elem();
+
+	char m_04[0x70];
+};
+
+// HYPOTHESIS: a vector-like class (first at 4, last at 8, end at 0xc) of the elements
+// above; this member destroys every element, frees the block and clears the three
+// pointers, like a vector's tidy. The names are placeholders.
+class fn_0053f491_owner
+{
+public:
+	void fn_0053f491();
+
+	long m_00;
+	fn_0053f491_elem *m_04;
+	fn_0053f491_elem *m_08;
+	fn_0053f491_elem *m_0c;
+};
+
+// FUNCTION: STARFLEETOP 0x0053f491
+void fn_0053f491_owner::fn_0053f491()
+{
+	fn_0053f491_elem *last = m_08;
+	fn_0053f491_elem *first = m_04;
+	for ( ; first != last; ++first )
+		first->~fn_0053f491_elem();
+	operator delete( m_04 );
+	m_04 = 0;
+	m_08 = 0;
+	m_0c = 0;
+}
