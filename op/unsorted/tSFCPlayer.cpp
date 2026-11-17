@@ -1082,13 +1082,6 @@ bool tSFCPlayer::vfunction57()
 	return m_8514;
 }
 
-// FUNCTION: STARFLEETOP 0x004d0a97
-int tSFCPlayer::vfunction37(char *param_1)
-{
-	// HYPOTHESIS: the original has a tShipSpecs local (EH frame, constructor 0x0040891d); body not recovered.
-	return 0;
-}
-
 // FUNCTION: STARFLEETOP 0x004d0af9
 int tSFCPlayer::vfunction38()
 {
@@ -1237,28 +1230,6 @@ void tSFCPlayer::vfunction69()
 			m_61a8[ihull][iclass].fn_004d1c60(&erased, m_61a8[ihull][iclass].begin(), m_61a8[ihull][iclass].end());
 		}
 	}
-}
-// FUNCTION: STARFLEETOP 0x004d0eb6
-void tSFCPlayer::vfunction70(char *param_1)
-{
-	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
-	int fn_local;
-	tShipSpecs specs;
-	fn_local = 0;
-}
-// HYPOTHESIS: 0x004d0ed4 is the tail of vfunction70 split off by the analysis; this is a best-effort standalone rendering of it.
-// FUNCTION: STARFLEETOP 0x004d0ed4
-void fn_004d0ed4(tSFCPlayer *self, char *param_1)
-{
-	tShipSpecs specs;
-	if (fn_0040a621((int)param_1, &specs)) {
-	}
-}
-// FUNCTION: STARFLEETOP 0x004d0f61
-void tSFCPlayer::vfunction71()
-{
-	// HYPOTHESIS: the exe boundary cuts this function after the tShipSpecs constructor; the rest of the body is not recovered.
-	tShipSpecs specs;
 }
 // HYPOTHESIS: 0x004d0f80 is the tail of vfunction71 split off by the analysis. In the original
 // bytes 0x0040a621 is called with ecx = 0x008949a0 and cleans its own arguments, so it is a
