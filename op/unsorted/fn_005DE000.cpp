@@ -218,6 +218,7 @@ tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > CreateCallback( tMetaClient
 // specialization so that its annotation names the one instance. The out-of-line copy is the
 // one the deleting destructor and for_each's unwinding call; its body (storing the base
 // vtable) is the same as ~tCallback's, which the analysis names at this address.
+// FUNCTION: STARFLEETOP 0x005de770
 // FUNCTION: STARFLEETOP 0x005de660
 template<>
 inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >::~tMemberCallback()

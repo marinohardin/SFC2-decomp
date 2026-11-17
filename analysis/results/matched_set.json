@@ -8398,6 +8398,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005de770": {
+   "name": "tCallback<tNewsStory*>::scalar_deleting_destructor",
+   "symbol": "??_G?$tMemberCallback@VtMetaClientNewsCtlrC@@PAVtNewsStory@@@@UAEPAXI@Z",
+   "unit": "unsorted/fn_005DE000.cpp",
+   "size": 29,
+   "score": 11.562,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
