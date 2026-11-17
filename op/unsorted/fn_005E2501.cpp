@@ -121,3 +121,6 @@ std::string g_00c38fe8 = "ImpedenceIcon";
 // FUNCTION: STARFLEETOP 0x005e2a26
 // FUNCTION: STARFLEETOP 0x005e29f3
 std::string g_00c38fd8 = "CurrentHexIn";
+
+// FUNCTION: STARFLEETOP 0x005e2a49
+std::string g_00c38fc8 = "CurrentHexMed";
