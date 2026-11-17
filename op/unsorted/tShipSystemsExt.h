@@ -207,6 +207,7 @@ public:
     virtual int vfunction140();
     virtual int vfunction148( int param_1 );
     virtual int vfunction149( int param_1 );
+    virtual void vfunction154( int param_1 );
     // HYPOTHESIS: a slot this class adds after the destructor; it returns the member list m04.
     virtual tIndividualShipSystemList* vfunction171();
 

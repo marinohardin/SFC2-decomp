@@ -977,3 +977,10 @@ void tShipSystemsExt::vfunction127( float param_1 )
 	tMinMaxFloat* value = &m6f4;
 	value->vfunction3( param_1 );
 }
+
+// FUNCTION: STARFLEETOP 0x0044cc1a
+void tShipSystemsExt::vfunction154( int param_1 )
+{
+	// HYPOTHESIS: the constructor clears +0x9a4..+0x9af as one block; this is its first int.
+	m9a4[0] += param_1;
+}

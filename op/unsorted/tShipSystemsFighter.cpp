@@ -171,7 +171,7 @@ public:
     virtual void vfunction151();
     virtual int* vfunction152( int* param_1 );
     virtual void vfunction153();
-    virtual void vfunction154();
+    virtual void vfunction154( int param_1 );
     virtual void vfunction155();
     virtual void vfunction156();
     virtual int* vfunction157( int );
