@@ -210,10 +210,24 @@ template<> std::basic_ostream<char, std::char_traits<char> >::basic_ostream(std:
         init(_S, _Isstd);
 }
 
-// HYPOTHESIS: the out-of-line copy of the library's std::ios::init, written as a
-// specialization with the header's body.
+// HYPOTHESIS: the out-of-line copy of the library's std::ios::init, written on a stand-in
+// class derived from ios_base (for its protected members) with basic_ios's own fields after it.
+class fn_004043de_Ios : public std::ios_base
+{
+public:
+    void fn_004043de(std::streambuf* _S, bool _Isstd);
+    // HYPOTHESIS: basic_ios's own inline clear and setstate, which add badbit without a buffer.
+    void clear(iostate _St = goodbit, bool _Ex = false)
+        {ios_base::clear((iostate)(_Sb == 0 ? (int)_St | (int)badbit : (int)_St), _Ex); }
+    void setstate(iostate _St, bool _Ex = false)
+        {if (_St != goodbit) clear((iostate)((int)rdstate() | (int)_St), _Ex); }
+    std::streambuf* _Sb;
+    std::ostream* _Tiestr;
+    char _Fillch;
+};
+
 // FUNCTION: STARFLEETOP 0x004043de
-template<> void std::basic_ios<char, std::char_traits<char> >::init(std::streambuf* _S, bool _Isstd)
+void fn_004043de_Ios::fn_004043de(std::streambuf* _S, bool _Isstd)
 {
     _Sb = _S;
     _Tiestr = 0;
@@ -240,8 +254,16 @@ public:
     char pad_04[0xb4];
 };
 
+// HYPOTHESIS: the vector's insert written on a stand-in class derived from the vector, for its
+// protected members and helpers.
+class fn_0040441e_Vector : public std::vector<fn_0040441e_Elem>
+{
+public:
+    void fn_0040441e(iterator _P, size_type _M, const fn_0040441e_Elem& _X);
+};
+
 // FUNCTION: STARFLEETOP 0x0040441e
-template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M, const fn_0040441e_Elem& _X)
+void fn_0040441e_Vector::fn_0040441e(iterator _P, size_type _M, const fn_0040441e_Elem& _X)
 {
     if (_End - _Last < _M)
     {
@@ -260,61 +282,17 @@ template<> void std::vector<fn_0040441e_Elem>::insert(iterator _P, size_type _M,
     {
         _Ucopy(_P, _Last, _P + _M);
         _Ufill(_Last, _M - (_Last - _P), _X);
-        fill(_P, _Last, _X);
+        std::fill(_P, _Last, _X);
         _Last += _M;
     }
     else if (0 < _M)
     {
         _Ucopy(_Last - _M, _Last, _Last);
-        copy_backward(_P, _Last - _M, _Last);
-        fill(_P, _P + _M, _X);
+        std::copy_backward(_P, _Last - _M, _Last);
+        std::fill(_P, _P + _M, _X);
         _Last += _M;
     }
 }
-
-// MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
-void (std::vector<fn_0040441e_Elem>::*fn_0040441e_Insert)(std::vector<fn_0040441e_Elem>::iterator, std::vector<fn_0040441e_Elem>::size_type, const fn_0040441e_Elem&) = &std::vector<fn_0040441e_Elem>::insert;
-
-// HYPOTHESIS: std::vector<std::string>::insert(pos, n, x), the out-of-line copy of the library's
-// member, written as a specialization with the header's body.
-// FUNCTION: STARFLEETOP 0x00404695
-template<> void std::vector<std::string>::insert(iterator _P, size_type _M, const std::string& _X)
-{
-    if (_End - _Last < _M)
-    {
-        size_type _N = size() + (_M < size() ? size() : _M);
-        iterator _S = allocator.allocate(_N, (void *)0);
-        iterator _Q = _Ucopy(_First, _P, _S);
-        _Ufill(_Q, _M, _X);
-        _Ucopy(_P, _Last, _Q + _M);
-        _Destroy(_First, _Last);
-        allocator.deallocate(_First, _End - _First);
-        _End = _S + _N;
-        _Last = _S + size() + _M;
-        _First = _S;
-    }
-    else
-    {
-        if (_Last - _P < _M)
-        {
-            _Ucopy(_P, _Last, _P + _M);
-            _Ufill(_Last, _M - (_Last - _P), _X);
-            fill(_P, _Last, _X);
-        }
-        else if (0 < _M)
-        {
-            _Ucopy(_Last - _M, _Last, _Last);
-            copy_backward(_P, _Last - _M, _Last);
-            fill(_P, _P + _M, _X);
-        }
-        else
-            return;
-        _Last += _M;
-    }
-}
-
-// MATCH-ONLY: the original's callers take this out-of-line copy; nothing in this unit calls it.
-void (std::vector<std::string>::*fn_00404695_Insert)(std::vector<std::string>::iterator, std::vector<std::string>::size_type, const std::string&) = &std::vector<std::string>::insert;
 
 // HYPOTHESIS: the buffer setup of a string-stream buffer; the pointers at +0x0c to +0x30 are the
 // streambuf's get and put area pointers, held by address.
@@ -592,9 +570,9 @@ void fn_00404b1c_Streambuf::fn_00404b1c()
 }
 
 // HYPOTHESIS: the library's use_facet for ctype<char>, the out-of-line instantiation of the
-// header template; written here as an explicit specialization with the header's body.
+// header template; written here as a plain function with the header's body.
 // FUNCTION: STARFLEETOP 0x00404b5e
-template<> const std::ctype<char>& __cdecl std::use_facet(const std::locale& _L,
+const std::ctype<char>& __cdecl fn_00404b5e(const std::locale& _L,
     const std::ctype<char> *, bool _Cfacet)
 {
     static const std::locale::facet *_Psave = 0;
@@ -611,10 +589,6 @@ template<> const std::ctype<char>& __cdecl std::use_facet(const std::locale& _L,
         _Pf = _Psave;
     return (*(const std::ctype<char> *)_Pf);
 }
-
-// HYPOTHESIS: istream::ipfx (in another unit) calls this out-of-line instantiation.
-const std::ctype<char>& (__cdecl *g_fn_00404b5e)(const std::locale&, const std::ctype<char> *, bool)
-    = &std::use_facet;
 
 // HYPOTHESIS: the out-of-line copy of the library's ctype<char> constructor, written as a stand-in
 // class because the header defines it in the class; +0x10 is the table, +0x14 the delete flag, and

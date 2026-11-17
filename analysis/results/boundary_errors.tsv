@@ -39,3 +39,4 @@ address	name	part_of	kind	note
 0x00608bd1	fn_00608bd1	0x00608bc7	body-fragment	the body of tPanelMgr::vfunction3 (above), recorded apart from its prolog. Placeholder only, not the original code: it holds the address until the analysis records 0x00608bc7 and 0x00608bd1 as one function and vfunction3 takes its annotation.
 0x00402c74	FUN_00402c74	0x00402bb6	body-fragment	0x00402c74 is the tail of fn_00402bb6 after its catch funclet (it reads that frame); it has no source of its own.
 0x00403eda	FUN_00403eda		library-instance	The library's basic_istream<char>::ipfx(bool) instance (rdstate test, tie flush, whitespace skip through the ctype facet in a try block). Its claim is removed from op/; it has no source of its own there.
+0x00404695	FUN_00404695		library-instance	The library's vector<string>::insert(pos, n, x) instance (grow and copy, or shift and fill). Its claim is removed from op/; it has no source of its own there.
