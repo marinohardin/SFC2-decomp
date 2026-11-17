@@ -6832,6 +6832,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00545385": {
+   "name": "FUN_00545385",
+   "symbol": "?fn_00545385@tAuctionItem@@QAE_NABVtID@nDatabase@@@Z",
+   "unit": "unsorted/tAuctionItem.cpp",
+   "size": 124,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

@@ -45,6 +45,7 @@ public:
 	void fn_005455f0( const nDatabase::tID& id );
 	void fn_00420f2f( int value );
 	void fn_00420f3c( int32u value );
+	bool fn_00545385( const nDatabase::tID& bidder );
 protected:
 	bool fBool_48;
 	std::string fString_4c;
@@ -190,4 +191,17 @@ lead:
 	fn_00420f2f( arg2 );
 	fn_00420f3c( bid );
 	return 2;
+}
+
+// HYPOTHESIS: withdraws the leading bid unless the given bidder holds it.
+// FUNCTION: STARFLEETOP 0x00545385
+bool tAuctionItem::fn_00545385( const nDatabase::tID& bidder )
+{
+	if ( !fn_005455bb().IsValid() || fn_005455bb() == bidder )
+		return false;
+
+	fn_005455f0( nDatabase::tID() );
+	fn_00420f2f( 0 );
+	fn_00420f3c( 0 );
+	return true;
 }
