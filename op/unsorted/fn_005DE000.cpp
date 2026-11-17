@@ -249,6 +249,7 @@ tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > 
 // ~tCallback's, which the analysis names at this address.
 // HYPOTHESIS: 0x005de7a9 is tCallback's own deleting destructor (~tCallback inlined); it sits
 // here, as 0x005de770 does above, until a template destructor in a header can claim it.
+// FUNCTION: STARFLEETOP 0x005de7c6
 // FUNCTION: STARFLEETOP 0x005de7a9
 // FUNCTION: STARFLEETOP 0x005de6c5
 template<>
