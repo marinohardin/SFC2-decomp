@@ -7,7 +7,6 @@
 #include "Common/DataStore/DataStoreOutput.h"
 #include "Common/DataStore/DataStoreInput.h"
 #include "unsorted/tShip.h"
-
 // HYPOTHESIS: layout read from the constructor; the fields between the named ones are not
 // identified yet.
 class tAuctionItem : public nDatabase::tDatabaseObject
@@ -42,6 +41,7 @@ public:
 	int32u fn_004b94dc() const;
 	const nDatabase::tID& fn_005455bb() const;
 	int32u fn_005455c2() const;
+	void fn_005455c9( int32u value );
 	void fn_005455e3( int32u value );
 	void fn_005455f0( const nDatabase::tID& id );
 	void fn_00420f2f( int value );
@@ -270,6 +270,12 @@ const nDatabase::tID& tAuctionItem::fn_005455bb() const
 int32u tAuctionItem::fn_005455c2() const
 {
 	return fInt_a0;
+}
+
+// FUNCTION: STARFLEETOP 0x005455c9
+void tAuctionItem::fn_005455c9( int32u value )
+{
+	fInt_80 = value;
 }
 
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
