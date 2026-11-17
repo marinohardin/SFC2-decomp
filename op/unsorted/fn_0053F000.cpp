@@ -140,9 +140,26 @@ public:
 	void fn_0053f4ea();
 	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
 	void fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last );
-	void fn_0053faeb( fn_0054340c_owner *pos, long first, long last );
+	void fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_owner *first, const fn_0054340c_owner *last );
+	// MATCH-ONLY: the original read the size through an inlined accessor.
+	unsigned int size() const
+	{
+		return ( m_04 == 0 ? 0 : m_08 - m_04 );
+	}
+	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
+	void _Destroy( fn_0054340c_owner *first, fn_0054340c_owner *last )
+	{
+		for( ; first != last; ++first )
+			m_00.destroy( first );
+	}
+	fn_0054340c_owner *_Ucopy( const fn_0054340c_owner *first, const fn_0054340c_owner *last, fn_0054340c_owner *dst )
+	{
+		for( ; first != last; ++dst, ++first )
+			m_00.construct( dst, *first );
+		return dst;
+	}
 
-	long m_00;
+	std::allocator< fn_0054340c_owner > m_00;
 	fn_0054340c_owner *m_04;
 	fn_0054340c_owner *m_08;
 	fn_0054340c_owner *m_0c;
@@ -397,7 +414,7 @@ void fn_0053f522_owner::fn_0053f4ea()
 void fn_0053f522_owner::fn_0053f522( long a, long b )
 {
 	fn_0053fd7e( m_04, m_08 );
-	fn_0053faeb( m_04, a, b );
+	fn_0053faeb( m_04, (const fn_0054340c_owner *)a, (const fn_0054340c_owner *)b );
 }
 
 // HYPOTHESIS: same vector-like class; erases one element like a vector's erase: the
@@ -543,4 +560,40 @@ fn_0053f491_elem *fn_0053f4c6_owner::fn_0053fa94( fn_0053f491_elem *first, fn_00
 	_Destroy( s, m_08 );
 	m_08 = s;
 	return first;
+}
+
+// HYPOTHESIS: the vector-like class at 0x6c above is this compiler's std::vector of the
+// 0x160-byte elements (fn_0054340c_owner); this member is its range insert.
+// FUNCTION: STARFLEETOP 0x0053faeb
+void fn_0053f522_owner::fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_owner *first, const fn_0054340c_owner *last )
+{
+	unsigned int m = 0;
+	std::_Distance( first, last, m );
+	if( (unsigned int)( m_0c - m_08 ) < m )
+	{
+		unsigned int n = size() + ( m < size() ? size() : m );
+		fn_0054340c_owner *s = m_00.allocate( n, (void *)0 );
+		fn_0054340c_owner *q = _Ucopy( m_04, pos, s );
+		q = _Ucopy( first, last, q );
+		_Ucopy( pos, m_08, q );
+		_Destroy( m_04, m_08 );
+		m_00.deallocate( m_04, m_0c - m_04 );
+		m_0c = s + n;
+		m_08 = s + size() + m;
+		m_04 = s;
+	}
+	else if( (unsigned int)( m_08 - pos ) < m )
+	{
+		_Ucopy( pos, m_08, pos + m );
+		_Ucopy( first + ( m_08 - pos ), last, m_08 );
+		std::copy( first, first + ( m_08 - pos ), pos );
+		m_08 += m;
+	}
+	else if( 0 < m )
+	{
+		_Ucopy( m_08 - m, m_08, m_08 );
+		std::copy_backward( pos, m_08 - m, m_08 );
+		std::copy( first, last, pos );
+		m_08 += m;
+	}
 }
