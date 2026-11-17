@@ -215,3 +215,19 @@ void c_00546286::fn_00546286()
 {
     field_c3 = 0;
 }
+
+// HYPOTHESIS: the object behind 0x0054628e keeps a dword at +0x5c; its class is not known.
+class c_0054628e
+{
+public:
+    int fn_0054628e();
+
+    char field_0[0x5c];
+    int field_5c;
+};
+
+// FUNCTION: STARFLEETOP 0x0054628e
+int c_0054628e::fn_0054628e()
+{
+    return field_5c;
+}
