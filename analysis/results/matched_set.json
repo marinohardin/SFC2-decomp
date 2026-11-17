@@ -6967,6 +6967,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0054560f": {
+   "name": "tClassAllocator<tAuctionItem>::tClassAllocator<tAuctionItem>",
+   "symbol": "??0?$tClassAllocator@VtAuctionItem@@@@QAE@XZ",
+   "unit": "unsorted/tAuctionItem.cpp",
+   "size": 60,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

@@ -296,6 +296,13 @@ void tAuctionItem::fn_005455f0( const nDatabase::tID& id )
 	fID_8c = id;
 }
 
+// FUNCTION: STARFLEETOP 0x0054560f
+template<>
+tClassAllocator<tAuctionItem>::tClassAllocator()
+{
+	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tAuctionItem ), this );
+}
+
 // HYPOTHESIS: the three bid multipliers are doubles at fixed exe addresses.
 extern double g_007b0c20;
 extern double g_007b0c28;
