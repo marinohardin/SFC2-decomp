@@ -11,6 +11,8 @@ class tSession;
 class tFSSession;
 class tVolIterator;
 class tVolIterParent;
+class tDirIterator;
+class tDirIterParent;
 
 namespace std
 {
@@ -72,6 +74,13 @@ tCookieManager<tSession,tFSSession>::tCookieManager()
 // FUNCTION: STARFLEETOP 0x00436212
 template <>
 tCookieManager<tVolIterator,tVolIterParent>::tCookieManager()
+{
+	f_00 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0043623d
+template <>
+tCookieManager<tDirIterator,tDirIterParent>::tCookieManager()
 {
 	f_00 = 0;
 }
