@@ -139,3 +139,12 @@ void *fn_006c15c0(fn_006c1510_pool *pool, int index)
 {
 	return (char *)pool->field_14 + pool->field_08 * index;
 }
+
+// HYPOTHESIS: inserts an element at the given index; 0x006c15e0 passes field_00, the end.
+void fn_006c1600(fn_006c1510_pool *pool, void *element, unsigned long index);
+
+// FUNCTION: STARFLEETOP 0x006c15e0
+void fn_006c15e0(fn_006c1510_pool *pool, void *element)
+{
+	fn_006c1600(pool, element, pool->field_00);
+}
