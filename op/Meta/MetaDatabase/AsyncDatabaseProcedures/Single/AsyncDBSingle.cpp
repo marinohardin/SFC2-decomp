@@ -124,7 +124,7 @@ public:
 	virtual void vfunction50( tAuctionItem* item );
 	virtual void vfunction51( tServCharacter* character );
 	virtual void vfunction52( tShip* ship );
-	virtual void vfunction53();
+	virtual void vfunction53( long value, long offset, std::vector<nDatabase::tID>* ids );
 	virtual void vfunction54();
 	virtual void vfunction55();
 	virtual void vfunction56();
@@ -811,4 +811,28 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction52( tShip* ship )
 #line 1048
 	validate( ship );
 	fDatabase->RemoveObjectFromDB( ship );
+}
+#line 816
+// HYPOTHESIS: reads the ships whose flag fn_00546278 is clear, whose fn_0055658b ID is not set
+// and whose fn_005462cc value is below the difference of the first two arguments; each one's ID
+// goes to the vector and the ship is removed with vfunction52.
+// FUNCTION: STARFLEETOP 0x0056e40b
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction53( long value, long offset, std::vector<nDatabase::tID>* ids )
+{
+	nDatabase::tID noID;
+	long limit = value - offset;
+	nDatabase::tQuery<tShip> query;
+	nDatabase::tMemberEval<tShip, bool, std::equal_to<bool> > eval1( &tShip::fn_00546278, false );
+	nDatabase::tMemberEval<tShip, const nDatabase::tID&, std::equal_to<nDatabase::tID> > eval2( &tShip::fn_0055658b, noID );
+	nDatabase::tMemberEval<tShip, long, std::less<long> > eval3( &tShip::fn_005462cc, limit );
+	query.AddEval( &eval1 );
+	query.AddEval( &eval2 );
+	query.AddEval( &eval3 );
+	std::vector<tShip> ships;
+	fDatabase->fn_0056f2a4( query, &ships, false );
+	for( std::vector<tShip>::iterator i = ships.begin(); i != ships.end(); i++ )
+	{
+		ids->push_back( i->GetID() );
+		vfunction52( i );
+	}
 }
