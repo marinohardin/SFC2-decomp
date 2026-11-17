@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <stdio.h>
+#include <vector>
 
 #include "Tiger/tstring.h"
 #include "unsorted/fn_0090bed8_type.h"
@@ -264,4 +265,41 @@ void C_00c3a80c::fn_0060c76b(tString &text)
         text += line->vfunction1();
         text += iBasicStringElement('\n');
     }
+}
+
+// HYPOTHESIS: the class at +0x24 of C_0060c7dc, built by 0x00472518 (0x704 bytes); name and
+// members unknown.
+class C_00472518
+{
+public:
+    C_00472518();
+    ~C_00472518();
+    int m_00;
+    char m_04[0x700];
+};
+
+// HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
+// be the class of the global at 0x0090b730, whose callers use 0x0060ca4f..0x0060cac6. The
+// vector's element type is unknown.
+class C_0060c7dc
+{
+public:
+    C_0060c7dc();
+    void fn_0060ca83(int index);
+    int m_00;
+    int m_04;
+    std::vector<int> m_08;
+    int m_18;
+    int m_1c;
+    bool m_20;
+    C_00472518 m_24;
+    int m_728;
+};
+
+// FUNCTION: STARFLEETOP 0x0060c7dc
+C_0060c7dc::C_0060c7dc()
+    : m_00(0), m_04(0), m_18(0), m_1c(1), m_20(true)
+{
+    m_728 = 0;
+    fn_0060ca83(3);
 }
