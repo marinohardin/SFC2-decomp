@@ -157,7 +157,6 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0062c130	tINISimpleNamespace::tINIFileSimple::mInit	4	opus	87.31	2026-11-09T10:06:04Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 87.31%
 0x0062c510	tINISimpleNamespace::tINIFileSimple::mFlush	4	opus	81.58	2026-11-09T10:11:35Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 81.58%
 0x0062c670	tINIFile::mNewINIFile	4	opus	78.91	2026-11-09T10:22:43Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 78.91%
-0x0062ceb0	tItemBag::`scalar_deleting_destructor'	4	opus	99.55	2026-11-09T10:49:29Z	not exact after 4 attempts
 0x0062d3c0	tTagInfo::mParseTagTokenList	4	opus	66.01	2026-11-09T11:08:52Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 66.01%
 0x0062d691	FUN_0062d691	4	opus	5.00	2026-11-09T11:25:55Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 5.00%
 0x0062d8d0	tIntTag::mGetString	4	opus	76.93	2026-11-09T14:29:51Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 76.93%
@@ -179,7 +178,6 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0066c390	tUniFont::tUniFont	4	opus	0.00	2026-11-09T08:13:05Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
 0x0066c650	tSay::`scalar_deleting_destructor'	4	opus	8.33	2026-11-09T08:34:07Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 8.33%
 0x0066c9b0	tSndZipInfoMgr::mInit	4	opus	84.56	2026-11-09T08:51:06Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 84.56%
-0x0066f040	AsynchSoundIOMain	4	opus	100.00	2026-11-09T10:25:04Z	not exact after 4 attempts
 0x0066f0d4	FUN_0066f0d4	4	opus	16.67	2026-11-09T10:28:53Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 16.67%
 0x00670cc0	tTextFontFileIO::mOpenForRead	4	opus	0.00	2026-11-09T12:38:40Z	not exact after 4 attempts: attempt 4 (opus) did not raise the best; best 0.00%
 0x00670d20	tTextFontFileIO::~tTextFontFileIO	4	opus	26.25	2026-11-09T12:54:35Z	not exact after 4 attempts: best not above 90% after 4 attempts; best 26.25%
