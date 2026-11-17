@@ -438,3 +438,44 @@ void fn_004d2420_holder::fn_004d25af(int value)
 	stream << value;
 	fn_004d2521(stream.str().c_str());
 }
+
+// HYPOTHESIS: the 0x64-byte object at tPanelMgr+0x100 (declared as fn_004d290d_object inside
+// tPanelMgr.cpp, which cannot be included); this reduced copy only carries what its destructor
+// (0x004d2636) touches: a base part, two 0x14-byte parts, then the 0x004d2353 and 0x004d2420 holders.
+class fn_00460b03_part
+{
+public:
+	~fn_00460b03_part();
+	char m_0x00[0x14];
+};
+
+class fn_00460b3b_part
+{
+public:
+	~fn_00460b3b_part();
+	char m_0x00[0x14];
+};
+
+class fn_00460acb_base
+{
+public:
+	~fn_00460acb_base();
+	char m_0x00[0x14];
+};
+
+class fn_004d2636_object : public fn_00460acb_base
+{
+public:
+	~fn_004d2636_object();
+	void fn_004d290d();
+	fn_00460b03_part m_0x14;
+	fn_00460b3b_part m_0x28;
+	fn_004d2353_holder m_0x3c;
+	fn_004d2420_holder m_0x54;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2636
+fn_004d2636_object::~fn_004d2636_object()
+{
+	fn_004d290d();
+}
