@@ -167,6 +167,7 @@ fn_0057a5f6_list &fn_0057a5f6_list::operator=(const fn_0057a5f6_list &other)
 // is a 0x48-byte part whose assignment is 0x00716ff0, then a dword at +0x48 (from 0x0057a6af).
 class fn_0057a66b_part {
 public:
+    fn_0057a66b_part(const fn_0057a66b_part &other);
     fn_0057a66b_part &operator=(const fn_0057a66b_part &other);
 
     char field_0[0x48];
@@ -205,12 +206,13 @@ void fn_0057a66b_vector::fn_0057a66b()
 
 // HYPOTHESIS: 0x0057a69e is a vector's push_back (insert(end(), 1, x)); last is at +8 and
 // 0x0057a716 is the vector's insert(iterator, n, value). The element type is not identified.
-class fn_0057a69e_value;
+typedef fn_0057a66b_value fn_0057a69e_value;
 
 class fn_0057a69e_vector {
 public:
     void fn_0057a69e(const fn_0057a69e_value &value);
     void fn_0057a716(fn_0057a69e_value *where, unsigned int count, const fn_0057a69e_value &value);
+    unsigned int size() const { return field_4 == 0 ? 0 : field_8 - field_4; }
 
     int field_0;
     fn_0057a69e_value *field_4;
@@ -236,4 +238,38 @@ fn_0057a66b_value *fn_0057a66b_vector::fn_0057a6af(fn_0057a66b_value *first, fn_
         p->~fn_0057a66b_value();
     field_8 = dest;
     return first;
+}
+
+#include <memory>
+
+// HYPOTHESIS: 0x0057a716 is the vector's insert(where, count, value) in the standard
+// library's shape; the element is the 0x4c-byte value of 0x0057a66b, copy-constructed by
+// 0x0057ab18.
+// FUNCTION: STARFLEETOP 0x0057a716
+void fn_0057a69e_vector::fn_0057a716(fn_0057a69e_value *where, unsigned int count, const fn_0057a69e_value &value)
+{
+    if ((unsigned int)(field_c - field_8) < count) {
+        unsigned int n = size() + (count < size() ? size() : count);
+        fn_0057a69e_value *s = std::_Allocate((int)n, (fn_0057a69e_value *)0);
+        fn_0057a69e_value *q = std::uninitialized_copy(field_4, where, s);
+        std::uninitialized_fill_n(q, count, value);
+        std::uninitialized_copy(where, field_8, q + count);
+        fn_0057a69e_value *last = field_8;
+        for (fn_0057a69e_value *p = field_4; p != last; ++p)
+            std::_Destroy(p);
+        operator delete(field_4);
+        field_c = s + n;
+        field_8 = s + size() + count;
+        field_4 = s;
+    } else if ((unsigned int)(field_8 - where) < count) {
+        std::uninitialized_copy(where, field_8, where + count);
+        std::uninitialized_fill_n(field_8, count - (field_8 - where), value);
+        std::fill(where, field_8, value);
+        field_8 += count;
+    } else if (0 < count) {
+        std::uninitialized_copy(field_8 - count, field_8, field_8);
+        std::copy_backward(where, field_8 - count, field_8);
+        std::fill(where, where + count, value);
+        field_8 += count;
+    }
 }
