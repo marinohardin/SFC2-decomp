@@ -137,6 +137,8 @@ public:
 	virtual int vfunction12();
 	// HYPOTHESIS: slot 13 returns the float 0x004304ef passes on.
 	virtual float vfunction13();
+	// HYPOTHESIS: slot 14 returns the float 0x00430505 passes on.
+	virtual float vfunction14();
 };
 
 // HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
@@ -194,6 +196,7 @@ public:
 	void vfunction28(int param_1);
 	int vfunction29(int param_1);
 	float vfunction26();
+	float vfunction27();
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -786,5 +789,13 @@ float t3DVisual_Model::vfunction26()
 {
 	if (m160[0] != 0)
 		return m160[0]->vfunction13();
+	return 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x00430505
+float t3DVisual_Model::vfunction27()
+{
+	if (m160[0] != 0)
+		return m160[0]->vfunction14();
 	return 0.0f;
 }
