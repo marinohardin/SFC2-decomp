@@ -654,3 +654,22 @@ fn_005ea9ce_elem* find_if( fn_005ea9ce_elem* _F, fn_005ea9ce_elem* _L, fn_005ea9
 	return (_F);
 }
 }
+
+// HYPOTHESIS: an element whose copy constructor (0x005e4cd5) is out of line; its type is not
+// identified.
+class fn_005eaa12_elem {
+public:
+	fn_005eaa12_elem( const fn_005eaa12_elem& other );
+};
+
+namespace std {
+
+// HYPOTHESIS: 0x005eaa12 is the library's _Construct held out of line for this element; the
+// placement new and its null test are the library's.
+// FUNCTION: STARFLEETOP 0x005eaa12
+template<>
+void _Construct( fn_005eaa12_elem* _P, const fn_005eaa12_elem& _V )
+{
+	new ((void *)_P) fn_005eaa12_elem(_V);
+}
+}
