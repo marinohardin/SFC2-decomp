@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include "Common/Thread/Optex.h"
+#include "unsorted/fn_0042b0fd_owner.h"
 
 // HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
 // declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
@@ -83,7 +84,7 @@ public:
 	bool fn_005430ad();
 	void fn_005430b9(bool flag);
 	void fn_005430d3(int amount);
-	char *fn_005430f3();
+	fn_0042b0fd_owner *fn_005430f3();
 	bool fn_005430fa(const nDatabase::tID &id);
 	int fn_0054312b();
 	bool fn_00543132();
@@ -91,12 +92,11 @@ public:
 	fn_0042b004_map fn_00543149();
 	tHexPoint fn_005434b1() const;
 	bool fn_00543294() const;
+	int fn_0054330e(const nDatabase::tID &id);
 
 	char m_pad[0xd0];
-	char m0d0[4];
-	nDatabase::tID *m0d4;
-	nDatabase::tID *m0d8;
-	char m0dc[0x14];
+	fn_0042b0fd_owner m0d0;
+	char m0e0[0x10];
 	fn_0042c709_wrapper m0f0;
 	char m108[0xc];
 	unsigned int m114_0 : 7;
@@ -135,15 +135,15 @@ void fn_005430ad_owner::fn_005430d3(int amount)
 // HYPOTHESIS: 0x005430f3 works on the same object; it returns the address of a
 // member embedded at +0xd0 whose type is not known yet.
 // FUNCTION: STARFLEETOP 0x005430f3
-char *fn_005430ad_owner::fn_005430f3()
+fn_0042b0fd_owner *fn_005430ad_owner::fn_005430f3()
 {
-	return m0d0;
+	return &m0d0;
 }
 
 // FUNCTION: STARFLEETOP 0x005430fa
 bool fn_005430ad_owner::fn_005430fa(const nDatabase::tID &id)
 {
-	for (nDatabase::tID *entry = m0d4; entry != m0d8; entry++)
+	for (nDatabase::tID *entry = m0d0.m_04; entry != m0d0.m_08; entry++)
 		if (*entry == id)
 			return true;
 	return false;
@@ -197,4 +197,12 @@ bool fn_005430ad_owner::fn_00543294() const
 		if ( it->fn_005419e4() )
 			return true;
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0054330e
+int fn_005430ad_owner::fn_0054330e(const nDatabase::tID &id)
+{
+	if ( !fn_005430fa( id ) )
+		m0d0.fn_0042add2( id );
+	return m0d0.size();
 }

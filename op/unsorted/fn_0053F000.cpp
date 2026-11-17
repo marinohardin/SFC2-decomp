@@ -29,38 +29,37 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 	return m_48;
 }
 
-// HYPOTHESIS: the class of the member at 0x7c of the owner below is not known; it has
-// a member function at 0x0042b0fd taking two dwords. The names are placeholders.
-class fn_0042b0fd_owner
-{
-public:
-	void fn_0042b0fd( nDatabase::tID *a, nDatabase::tID *b );
-	void fn_0042add2( long value );
-	void fn_0053f46d( const nDatabase::tID *first, const nDatabase::tID *last );
-	void fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *first, const nDatabase::tID *last );
-	// MATCH-ONLY: the original read the size through an inlined accessor.
-	unsigned int size() const
-	{
-		return ( m_04 == 0 ? 0 : m_08 - m_04 );
-	}
-	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
-	void _Destroy( nDatabase::tID *first, nDatabase::tID *last )
-	{
-		for( ; first != last; ++first )
-			m_00.destroy( first );
-	}
-	nDatabase::tID *_Ucopy( const nDatabase::tID *first, const nDatabase::tID *last, nDatabase::tID *dst )
-	{
-		for( ; first != last; ++dst, ++first )
-			m_00.construct( dst, *first );
-		return dst;
-	}
+// The class of the member at 0x7c of the owner below is declared in a shared header.
+#include "unsorted/fn_0042b0fd_owner.h"
 
-	std::allocator< nDatabase::tID > m_00;
-	nDatabase::tID *m_04;
-	nDatabase::tID *m_08;
-	nDatabase::tID *m_0c;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x74 bytes with a virtual destructor in slot 0, streamed out one by one as tStreamable
@@ -145,7 +144,7 @@ public:
 	virtual void vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
-	virtual long vfunction12();
+	virtual const nDatabase::tID &vfunction12(); // HYPOTHESIS: the tID handed to 0x0042add2
 
 	char fn_0054340c();
 	fn_0054340c_owner &operator=( const fn_0054340c_owner &other );
