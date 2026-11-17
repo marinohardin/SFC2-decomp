@@ -228,3 +228,38 @@ void fn_0040d916(int n, fn_0040d63f_Buf& buf)
 {
     buf.fn_0040e699(n);
 }
+
+// HYPOTHESIS: variable-length encoding of a signed value: sign and low 6 bits in the first byte, then 7 bits per byte.
+// FUNCTION: STARFLEETOP 0x0040d924
+void fn_0040d924(int* p, fn_0040d63f_Buf& buf)
+{
+    int zero = 0;
+    unsigned int v = *p;
+    unsigned char b;
+    if ((int)v < zero) {
+        v = -(int)v;
+        if (v >= 0x40) {
+            b = (unsigned char)v | 0xc0;
+            goto multi;
+        }
+        b = (unsigned char)v | 0x40;
+    } else {
+        if (v >= 0x40) {
+            b = ((unsigned char)v & 0x3f) | 0x80;
+            goto multi;
+        }
+        b = (unsigned char)v;
+    }
+    buf.fn_0040d867(&b, 1, zero);
+    return;
+multi:
+    buf.fn_0040d867(&b, 1, zero);
+    v >>= 6;
+    while (v >= 0x80) {
+        b = (unsigned char)v | 0x80;
+        buf.fn_0040d867(&b, 1, zero);
+        v >>= 7;
+    }
+    b = (unsigned char)v;
+    buf.fn_0040d867(&b, 1, zero);
+}
