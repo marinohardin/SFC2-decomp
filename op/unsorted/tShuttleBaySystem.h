@@ -83,7 +83,8 @@ public:
     virtual void vfunction113(short param_1, std::string param_2);
     // vftable slot 113; returns element param_1 of field_3a8.
     virtual int vfunction114(int param_1);
-    virtual void vfunction115();
+    // vftable slot 114; returns element param_1 of field_1c8.
+    virtual int vfunction115(int param_1);
     // vftable slot 115; returns element param_1 of an int array.
     virtual int vfunction116(int param_1);
     // vftable slot 116; returns element param_1 of an int array.
