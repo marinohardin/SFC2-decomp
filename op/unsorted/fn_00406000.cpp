@@ -71,55 +71,36 @@ const std::numpunct<char>& fn_004060d8(const std::locale& _L, const std::numpunc
 }
 
 // FUNCTION: STARFLEETOP 0x0040619c
-// HYPOTHESIS: a pattern matcher over an input stream iterator; the first character of the
-// pattern is the escape that introduces a one-character class.
-int fn_0040619c(std::istreambuf_iterator<char>& _First, const std::istreambuf_iterator<char>& _Last, unsigned int _N, const char* _Pat)
+// HYPOTHESIS: the library's _Getloctxt instantiation for istreambuf_iterator<char>.
+int fn_0040619c(std::istreambuf_iterator<char>& _F, std::istreambuf_iterator<char>& _L, size_t _N, const char* _S)
 {
-    for (const char* _Q = _Pat; *_Q != 0; ++_Q)
-        if (*_Q == *_Pat)
+    for (size_t _I = 0; _S[_I] != (char)0; ++_I)
+        if (_S[_I] == _S[0])
             ++_N;
-    std::string _Str;
-    _Str.reserve(_N);
-    unsigned int _Cnt = 1;
-    int _Res = -2;
-    bool _Found = false;
-    for (;;)
+    std::string _Str(_N, '\0');
+    int _Ans = -2;
+    for (size_t _J = 1; ; ++_J, ++_F, _Ans = -1)
     {
-        _Found = false;
-        unsigned int _I;
-        unsigned int _J = 0;
-        for (_I = 0; _I < _N; ++_I)
+        bool _Pfx = false;
+        size_t _I = 0, _K = 0;
+        for (; _K < _N; ++_K)
         {
-            while (_Pat[_J] != 0 && _Pat[_J] != *_Pat)
-                ++_J;
-            if (_Str[_I] != 0)
+            for (; _S[_I] != (char)0 && _S[_I] != _S[0]; ++_I)
+                ;
+            if (_Str[_K] != '\0')
+                _I += _Str[_K];
+            else if (_S[_I += _J] == _S[0] || _S[_I] == (char)0)
             {
-                _J += _Str[_I];
+                _Str[_K] = _J < 127 ? _J : 127;
+                _Ans = _K;
             }
+            else if (_F == _L || _S[_I] != *_F)
+                _Str[_K] = _J < 127 ? _J : 127;
             else
-            {
-                _J += _Cnt;
-                if (_Pat[_J] != *_Pat && _Pat[_J] != 0)
-                {
-                    if (!_First.equal(_Last) && *_First == _Pat[_J])
-                    {
-                        _Found = true;
-                        continue;
-                    }
-                    _Cnt = _Cnt < 0x7f ? _Cnt : 0x7f;
-                }
-                else
-                {
-                    _Cnt = _Cnt < 0x7f ? _Cnt : 0x7f;
-                    _Res = _I;
-                }
-            }
+                _Pfx = true;
         }
-        if (!_Found || _First.equal(_Last))
+        if (!_Pfx || _F == _L)
             break;
-        ++_Cnt;
-        ++_First;
-        _Res = -1;
     }
-    return _Res;
+    return (_Ans);
 }
