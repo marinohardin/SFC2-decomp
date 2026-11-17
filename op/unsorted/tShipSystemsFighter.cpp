@@ -40,7 +40,7 @@ public:
     virtual void vfunction23();
     virtual void vfunction24();
     virtual void vfunction25();
-    virtual void vfunction26();
+    virtual void vfunction26( float param_1 );
     virtual void vfunction27();
     virtual void vfunction28();
     virtual void vfunction29();
@@ -293,4 +293,21 @@ tShipSystemsFighter::tShipSystemsFighter( int param_1 )
 int tShipSystemsFighter::vfunction11( int, int, int )
 {
     return 0;
+}
+
+// HYPOTHESIS: the exe pushes a float to slot 2 of m754, a tMinMaxFloat; the shared header
+// types that slot as an integer (0x0043e642 passes an int), so this view gives it a float.
+class fn_00444396_value
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3( float param_1 ); // slot 2
+};
+
+// HYPOTHESIS: the parameter is a float; it is loaded with fld and forwarded.
+// FUNCTION: STARFLEETOP 0x00444396
+void tShipSystemsFighter::vfunction26( float param_1 )
+{
+    ((fn_00444396_value*)&m754)->vfunction3( param_1 );
 }
