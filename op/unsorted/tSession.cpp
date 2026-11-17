@@ -114,6 +114,7 @@ public:
 	void	fn_00691ed0();
 	void	fn_00691270();
 	void	fn_006912f0();
+	void	fn_00691330();
 	void	fn_00690a20();
 	void	fn_00690a60();
 	void	fn_00691360();
@@ -599,4 +600,13 @@ void tHtmlParser::fn_006912f0()
 	fn_006910a0( 1 );
 	f_40->fn_0068e7b0( &f_80 );
 	f_40->fn_0068e860( &f_8c, 1 );
+}
+
+// FUNCTION: STARFLEETOP 0x00691330
+void tHtmlParser::fn_00691330()
+{
+	f_40->fn_0068db40( 0 );
+	fn_00691270();
+	f_40->fn_0068e7b0( &f_80 );
+	f_92 = ' ';
 }
