@@ -825,3 +825,10 @@ void fn_0040e648(char* text, fn_0040d63f_Buf& buf)
     buf.fn_0040e70f(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e65f
+void fn_0040e65f(fn_0040d63f_Buf& buf)
+{
+    char c = 0;
+    buf.fn_0040e744(&c);
+}
+
