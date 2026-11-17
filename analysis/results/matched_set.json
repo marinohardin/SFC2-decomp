@@ -5689,6 +5689,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d2143": {
+   "name": "FUN_004d2143",
+   "symbol": "?fn_004d2143@fn_004d2143_tree@@QAEPAUfn_004d2143_node@@ABK@Z",
+   "unit": "unsorted/fn_004D2000.cpp",
+   "size": 42,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
