@@ -64,6 +64,7 @@ public:
 	void fn_00570754( tCampaignInfo* info );
 	void fn_005708ca( tServCharacter* character );
 	void fn_00570a40( tAuctionItem* item );
+	void fn_00570bb6( tPoliticalTensionMatrix* matrix );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
@@ -101,7 +102,7 @@ public:
 	virtual void vfunction28( std::vector<tPoliticalTensionMatrix>* matrices );
 	virtual void vfunction29( tServCharacter* character );
 	virtual void vfunction30( tAuctionItem* item );
-	virtual void vfunction31();
+	virtual void vfunction31( tPoliticalTensionMatrix* matrix );
 	virtual void vfunction32();
 	virtual void vfunction33();
 	virtual void vfunction34();
@@ -132,8 +133,7 @@ public:
 	fn_0056c414_Database* fDatabase;
 	std::string fField08;	// HYPOTHESIS: the name the database is saved under (0x0056db2a).
 	long fField18;	// HYPOTHESIS: the save interval in turns (0x0056db2a).
-};
-};
+}; };
 // FUNCTION: STARFLEETOP 0x0056c414
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* campaignInfo )
 {
@@ -612,4 +612,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction30( tAuctionItem* i
 #line 855
 	validate( item );
 	fDatabase->fn_00570a40( item );
+}
+#line 618
+// HYPOTHESIS: the record type is a guess from the assertion text "matrix"; fn_00570bb6 stores it.
+// FUNCTION: STARFLEETOP 0x0056ddee
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction31( tPoliticalTensionMatrix* matrix )
+{
+#line 865
+	validate( matrix );
+	fDatabase->fn_00570bb6( matrix );
 }
