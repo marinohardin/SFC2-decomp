@@ -154,7 +154,8 @@ struct fn_0050eea7_sample
 	volatile long field_58;
 	volatile long field_5c;
 	volatile long field_60;
-	long field_64;
+	// HYPOTHESIS: the channel's priority; fn_0050fb3e compares it unsigned and rereads it.
+	volatile unsigned long field_64;
 	char field_68;
 	char pad_69[0x3];
 	// HYPOTHESIS: volume (0..127), pan (64 centred) and a start offset.
@@ -215,7 +216,7 @@ public:
 	long fn_0050f9ea( long param_1, long param_2 );
 	long fn_0050fa3c( long param_1 );
 	unsigned long fn_0050fb04( long param_1 );
-	long fn_0050fb3e( long param_1, long param_2 );
+	long fn_0050fb3e( unsigned long param_1, long param_2 );
 	long fn_0050fba4( long param_1, char *param_2 );
 
 	char pad_0004[0xc];
@@ -854,4 +855,16 @@ unsigned long tSndMgr_Miles::fn_0050fb04( long param_1 )
 			count++;
 	}
 	return count;
+}
+
+// FUNCTION: STARFLEETOP 0x0050fb3e
+long tSndMgr_Miles::fn_0050fb3e( unsigned long param_1, long param_2 )
+{
+	long found = -1;
+	for ( unsigned long i = 0; i < field_4234; i++ )
+	{
+		if ( field_10[i].field_c == param_2 && field_10[i].field_64 <= param_1 && !field_10[i].field_56 && ( found == -1 || field_10[i].field_64 <= field_10[found].field_64 ) )
+			found = i;
+	}
+	return found;
 }
