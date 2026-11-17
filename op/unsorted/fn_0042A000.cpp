@@ -590,3 +590,24 @@ int fn_0042a480_object::FUN_0042ada1()
 
 	return field_58;
 }
+
+// HYPOTHESIS: an object holding a pointer at +0x08 that 0x0042b396 takes as its first
+// argument; neither the class nor its members are known yet.
+class fn_0042adc1_object
+{
+public:
+	void FUN_0042adc1( int value );
+
+	byte field_00[0x08];
+	int field_08;
+};
+
+// HYPOTHESIS: argument types are guesses from the one call below; the callee pops its
+// arguments, so it is __stdcall.
+void __stdcall FUN_0042b396( int target, int flag, int value );
+
+// FUNCTION: STARFLEETOP 0x0042adc1
+void fn_0042adc1_object::FUN_0042adc1( int value )
+{
+	FUN_0042b396( field_08, 1, value );
+}
