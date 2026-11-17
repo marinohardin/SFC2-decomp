@@ -570,3 +570,62 @@ bool fn_00406bdd_Obj::fn_00406bdd(const char* s)
     bool equal = m0.compare(s) == 0;
     return equal;
 }
+
+// HYPOTHESIS: the first argument is an object with two parsing members (0x00408393, 0x00408365); the original type is unknown.
+class fn_00406c05_Source
+{
+public:
+    float fn_00408393(const char* s, float def);
+    int fn_00408365(const char* s, int def);
+    int m0;
+};
+
+// HYPOTHESIS: the callbacks' receiver class is unknown.
+class fn_00406c05_Target
+{
+public:
+    int m0;
+};
+
+typedef bool (fn_00406c05_Source::*fn_00406c05_Cb0)(int, const char*);
+typedef bool (fn_00406c05_Source::*fn_00406c05_Cb1)(int, const char*, int, int);
+typedef void (fn_00406c05_Target::*fn_00406c05_Cb2)(float);
+typedef void (fn_00406c05_Target::*fn_00406c05_Cb3)(int);
+typedef void (fn_00406c05_Target::*fn_00406c05_Cb4)(const char*);
+
+// HYPOTHESIS: a class holding a std::string, a kind selector and callbacks taking parsed arguments; the original type is unknown.
+class fn_00406c05_Obj
+{
+public:
+    bool fn_00406c05(fn_00406c05_Source* a, fn_00406c05_Target* b, const char* s);
+    std::string m0;
+    int m10;
+    fn_00406c05_Cb0 m14;
+    fn_00406c05_Cb1 m18;
+    int m1c;
+    int m20;
+    fn_00406c05_Cb2 m24;
+    float m28;
+    fn_00406c05_Cb3 m2c;
+    int m30;
+    fn_00406c05_Cb4 m34;
+};
+
+// FUNCTION: STARFLEETOP 0x00406c05
+bool fn_00406c05_Obj::fn_00406c05(fn_00406c05_Source* a, fn_00406c05_Target* b, const char* s)
+{
+    if (m10 == 0) {
+        return (a->*m14)((int)b, s);
+    } else if (m10 == 1) {
+        return (a->*m18)((int)b, s, m1c, m20);
+    } else if (m10 == 2) {
+        (b->*m24)(a->fn_00408393(s, m28));
+    } else if (m10 == 3) {
+        (b->*m2c)(a->fn_00408365(s, m30));
+    } else if (m10 == 4) {
+        (b->*m34)(s);
+    } else {
+        return false;
+    }
+    return true;
+}
