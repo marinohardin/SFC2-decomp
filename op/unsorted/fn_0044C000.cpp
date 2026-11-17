@@ -970,3 +970,10 @@ tMinMaxFloat* tShipSystemsExt::vfunction126()
 {
 	return &m6f4;
 }
+
+// FUNCTION: STARFLEETOP 0x0044cc00
+void tShipSystemsExt::vfunction127( float param_1 )
+{
+	tMinMaxFloat* value = &m6f4;
+	value->vfunction3( param_1 );
+}
