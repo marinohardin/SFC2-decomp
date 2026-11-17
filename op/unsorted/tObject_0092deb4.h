@@ -4,6 +4,8 @@
 #ifndef tObject_0092deb4_h
 #define tObject_0092deb4_h 1
 
+class tString;
+
 // HYPOTHESIS: vfunctionN is slot N of its vftable (offset 4 * N). Only the slots the rebuilt
 // functions call have known signatures; their meanings are not known unless a comment says so.
 class tObject_0092deb4
@@ -14,7 +16,8 @@ public:
 	// HYPOTHESIS: argument types unknown; tState_Campaign passes an entry of its list and -1.
 	virtual void vfunction2(void *entry, int n);
 	virtual void vfunction3();
-	virtual void vfunction4();
+	// HYPOTHESIS: takes a string; tState_GameConnections passes a copy of a value it holds.
+	virtual void vfunction4(const tString &value);
 	// HYPOTHESIS: returns the player's name; tState_Campaign stores it as "PlayerName1".
 	virtual const char *vfunction5();
 	virtual void vfunction6();

@@ -16,6 +16,9 @@ public:
 	// HYPOTHESIS: the set step; the original assigns the value, notifies with (3, 0), and
 	// only then destroys the temporary it was given.
 	tValueI &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
+	// HYPOTHESIS: a conversion returning a copy of the value (0x0043d344 for tValueI<tString>);
+	// the caller copies the returned temporary once more, as a conversion does under VC6.
+	operator T();
 
 	T m18;
 };

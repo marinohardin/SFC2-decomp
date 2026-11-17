@@ -10,6 +10,7 @@
 #include "unsorted/tValueI.h"
 #include "unsorted/c_0046aa10_msg.h"
 #include <vector>
+#include "unsorted/tObject_0092deb4.h"
 
 // The state's name: a pointer to the string "GameConnections" (exe 0x00844e78).
 extern char *g_00844e78;
@@ -51,6 +52,7 @@ public:
 	void fn_00469271();
 	void fn_00469534();
 	void fn_00468297();
+	bool fn_004683ff();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 
@@ -64,7 +66,8 @@ public:
 	char m12[2];
 	int m14;
 	unsigned char m18;
-	char m19[0x5c - 0x19];
+	char m19[0x1c - 0x19];
+	tValueI< tString > m1c;
 	tValueI< tString > m5c;
 	char m9c[0x19c - 0x9c];
 	tValueI< tString > m19c;
@@ -249,6 +252,17 @@ void tState_GameConnections::fn_004682c7()
 			m11 = 1;
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004683ff
+bool tState_GameConnections::fn_004683ff()
+{
+	tString value = m1c;
+	gObject_0092deb4->vfunction4(value);
+	bool result = gNetControl.fn_004325a9(1);
+	gNetControl.fn_0043258a(1);
+	gNetControl.fn_0043289d();
+	return result;
 }
 
 }

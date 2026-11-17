@@ -55,6 +55,9 @@ public:
 	void fn_00432f5a();
 	void fn_00431917();
 	c_0043257a_node *fn_0043257a();
+	void fn_0043258a( int n );
+	bool fn_004325a9( int n );	// HYPOTHESIS: returns a flag (kept in bl)
+	void fn_0043289d();
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
