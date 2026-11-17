@@ -154,7 +154,7 @@ public:
 	// return a byte flag (vfunction4 tests al after each call).
 	virtual char vfunction5( long param_1 );
 	virtual char vfunction6();
-	virtual void vfunction7( long param_1, long param_2 );
+	virtual long vfunction7( long param_1, long param_2 );
 	virtual void vfunction8( long param_1 );
 	virtual void vfunction9();
 	// HYPOTHESIS: second parameter unused (ret 8, never read)
@@ -163,7 +163,7 @@ public:
 	virtual void vfunction12();
 	virtual void vfunction13( long param_1 );
 	virtual void vfunction14( long param_1, long param_2 );
-	virtual void vfunction15();
+	virtual long vfunction15( long param_1, long param_2 );
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void vfunction18();
@@ -231,9 +231,9 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0050ed7a
-void tSndMgr_Miles::vfunction7( long param_1, long param_2 )
+long tSndMgr_Miles::vfunction7( long param_1, long param_2 )
 {
-	vfunction29( param_1, param_2, 0, 100 );
+	return vfunction29( param_1, param_2, 0, 100 );
 }
 
 // FUNCTION: STARFLEETOP 0x0050ed8e
@@ -637,4 +637,25 @@ void tSndMgr_Miles::vfunction14( long param_1, long param_2 )
 {
 	vfunction7( 0x2e, param_2 );
 	vfunction8( param_1 );
+}
+
+// FUNCTION: STARFLEETOP 0x0050f75c
+long tSndMgr_Miles::vfunction15( long param_1, long param_2 )
+{
+	switch ( param_1 )
+	{
+	case 0:
+		vfunction7( 10, param_2 );
+		return vfunction7( 0xb, param_2 );
+	case 1:
+		vfunction7( 0xd, param_2 );
+		return vfunction7( 0xe, param_2 );
+	case 2:
+		vfunction7( 0x10, param_2 );
+		return vfunction7( 0x11, param_2 );
+	case 3:
+		vfunction7( 0x13, param_2 );
+		return vfunction7( 0x14, param_2 );
+	}
+	return 0;
 }
