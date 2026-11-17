@@ -513,3 +513,34 @@ void fn_0042c632_Iterator::fn_0042c66d()
 			m00_node = p;
 	}
 }
+
+// HYPOTHESIS: the iterator of the tree of fn_0042c053_Node (colour at +0x28, is-nil at +0x29).
+class fn_0042c69f_Iterator
+{
+public:
+	void fn_0042c69f();
+
+	fn_0042c053_Node* m00_node;
+};
+
+// HYPOTHESIS: the iterator's decrement (_Dec).
+// FUNCTION: STARFLEETOP 0x0042c69f
+void fn_0042c69f_Iterator::fn_0042c69f()
+{
+	if (m00_node->m28_color == 0 && m00_node->m04_parent->m04_parent == m00_node)
+		m00_node = m00_node->m08_right;
+	else if (!m00_node->m00_left->m29_isnil)
+	{
+		fn_0042c053_Node* p = m00_node->m00_left;
+		while (!p->m08_right->m29_isnil)
+			p = p->m08_right;
+		m00_node = p;
+	}
+	else
+	{
+		fn_0042c053_Node* p;
+		while (m00_node == (p = m00_node->m04_parent)->m00_left)
+			m00_node = p;
+		m00_node = p;
+	}
+}
