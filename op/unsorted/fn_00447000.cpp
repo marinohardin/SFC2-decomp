@@ -180,6 +180,7 @@ public:
 	int fn_004477f8(int index);
 	int fn_0044780d(int index);
 	std::string fn_00447822(int index);
+	void fn_00447867(int index, std::string value);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -437,4 +438,10 @@ int c_0044715d::fn_0044780d(int index)
 std::string c_0044715d::fn_00447822(int index)
 {
 	return field_0xe8->field_0x18c[index];
+}
+
+// FUNCTION: STARFLEETOP 0x00447867
+void c_0044715d::fn_00447867(int index, std::string value)
+{
+	field_0xe8->field_0x18c[index] = value;
 }
