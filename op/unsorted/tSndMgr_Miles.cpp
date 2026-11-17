@@ -100,7 +100,8 @@ public:
 	char pad_0000[0x4];
 	// HYPOTHESIS: the sentinel node of a list (a list object whose head pointer sits at +0x4).
 	fn_005d6a72_node *field_4;
-	char pad_0008[0x4];
+	// HYPOTHESIS: the list's node count (vfunction34 lowers it after unlinking a node).
+	long field_8;
 	// HYPOTHESIS: an id handed to tSndMgr_Miles::vfunction5 and the channel index it plays on.
 	long field_c;
 	long field_10;
@@ -1232,4 +1233,21 @@ void tSndMgr_Miles::vfunction33( long param_1 )
 			node->field_c -= share;
 	}
 	field_2420.field_14 = 1;
+}
+
+// FUNCTION: STARFLEETOP 0x005102f8
+void tSndMgr_Miles::vfunction34( long param_1 )
+{
+	fn_005d6a72_node *head = field_2438.field_4;
+	for ( fn_005d6a72_node *node = head->field_0; node != head; node = node->field_0 )
+	{
+		if ( node->field_8 == param_1 )
+		{
+			node->field_4->field_0 = node->field_0;
+			node->field_0->field_4 = node->field_4;
+			operator delete( node );
+			field_2438.field_8--;
+			return;
+		}
+	}
 }
