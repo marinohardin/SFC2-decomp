@@ -11,6 +11,9 @@ class tNotifier
 public:
 	virtual ~tNotifier();
 
+	// HYPOTHESIS: called with (3, 0) right after a value object's value is set; a notify step.
+	void fn_006712c0( long arg1, long arg2 );
+
 	char m_04[0x14];
 };
 
@@ -19,6 +22,7 @@ public:
 class tValueBase : public tNotifier
 {
 public:
+	tValueBase();
 	virtual ~tValueBase() {}
 };
 

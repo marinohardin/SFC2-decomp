@@ -14,7 +14,7 @@ Reads, all from the repository:
 
 Writes into analysis/results/progress/op/ (or --out):
   badge-exact.svg       game code rebuilt byte-exact, % of game code bytes
-  badge-functional.svg  game code rebuilt exact or functionally verified, % of game code bytes
+  badge-partial.svg     game code claimed and scored but not yet exact, % of game code bytes
   badge-named.svg       game functions named from a real symbol, % of game functions
   treemap.svg           one rectangle per unit, area = its game code bytes (EH funclets counted
                         with their parent function, as in progress.py), grouped by top-level
@@ -51,13 +51,15 @@ BADGE_VALUE = '#347abe'
 # --- inputs ------------------------------------------------------------------------------------
 
 def badge_values(progress):
-    """(exact, exact + functional, named) percentages for the game-only scope."""
+    """(exact, partial, named) percentages for the game-only scope.
+
+    Partial is claimed and scored but not exact; a progress.json older than schema 3 has none."""
     g = progress['scopes']['game']
     st = g['status']
     exact = st['exact']['pct_bytes']
-    functional = st['exact']['pct_bytes'] + st['functional']['pct_bytes']
+    partial = st.get('partial', {}).get('pct_bytes', 0.0)
     named = g['named_real_symbol']['pct_functions']
-    return exact, functional, named
+    return exact, partial, named
 
 
 def _addresses(entries):
@@ -296,7 +298,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.not_started:
         os.makedirs(a.out, exist_ok=True)
-        for name, label in (('exact', 'Exact'), ('functional', 'Functional'), ('named', 'Named')):
+        for name, label in (('exact', 'Exact'), ('partial', 'Partial'), ('named', 'Named')):
             write(os.path.join(a.out, f'badge-{name}.svg'),
                   badge_svg(label, 'not started'))
         print(f'not started -> {a.out}')
@@ -307,15 +309,15 @@ def main(argv=None):
     if os.path.exists(a.matched_set):
         with open(a.matched_set) as f:
             matched = json.load(f)
-    exact, functional, named = badge_values(progress)
+    exact, partial, named = badge_values(progress)
     os.makedirs(a.out, exist_ok=True)
-    for name, label, v in (('exact', 'Exact', exact), ('functional', 'Functional', functional),
+    for name, label, v in (('exact', 'Exact', exact), ('partial', 'Partial', partial),
                            ('named', 'Named', named)):
         write(os.path.join(a.out, f'badge-{name}.svg'), badge_svg(label, f'{v:.2f}%'))
     units = read_units(a.functions, a.units, progress, matched, read_funclet_parents(a.funclets))
     write(os.path.join(a.out, 'treemap.svg'), treemap_svg(units))
     done = sum(1 for u in units if u[4])
-    print(f'exact {exact:.2f}%  functional {functional:.2f}%  named {named:.2f}%  '
+    print(f'exact {exact:.2f}%  partial {partial:.2f}%  named {named:.2f}%  '
           f'units {len(units)} ({done} complete) -> {a.out}')
     for w in warnings(progress, matched, sum(u[2] for u in units)):
         print('warning: ' + w, file=sys.stderr)

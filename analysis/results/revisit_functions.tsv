@@ -106,3 +106,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00634810	twIORequestQueue::mAdd	99.95	2	sonnet	2026-11-16T22:01:04Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.95%
 0x00634940	twIORequestQueueManager::~twIORequestQueueManager	19.87	2	sonnet	2026-11-16T22:10:29Z	attempt 2 (sonnet) did not raise the best; best 19.87%
 0x00634b50	twIORequestQueueManager::mRequest	68.45	2	sonnet	2026-11-16T22:19:39Z	attempt 2 (sonnet) did not raise the best; best 68.45%
+0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%

@@ -343,6 +343,70 @@ address	size	symbol	source	modes
 0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	vc6
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
+0x0048612c	126	tSupplyDockItem::tSupplyDockItem(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
+0x004861aa	54	tSupplyDockItem::vfunction1()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004861e0	15	tSupplyDockItem::vfunction2()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004861ef	5	tSupplyDockItem::vfunction6()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004861f4	22	tSupplyDockItem::vfunction8(void *,bool)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048620a	7	tSupplyDockItem::vfunction11()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486211	125	tSupplyDockShuttles::tSupplyDockShuttles(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
+0x00486296	351	tSupplyDockShuttles::vfunction3()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004863f5	42	tSupplyDockShuttles::vfunction4()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048641f	45	tSupplyDockShuttles::vfunction7(long *)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048644c	11	tSupplyDockShuttles::vfunction9()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486457	11	tSupplyDockShuttles::vfunction10()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486462	11	tSupplyDockShuttles::vfunction11()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048646d	49	tSupplyDockShuttles::vfunction12()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048649e	49	tSupplyDockShuttles::vfunction13(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004864cf	39	tSupplyDockShuttles::vfunction14(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486500	10	g_009157c8 (dynamic initializer)	Source/states/SupplyDockItem.cpp	vc6
+0x0048650a	12	g_009157c8 (atexit registration)	Source/states/SupplyDockItem.cpp	vc6
+0x0048652a	10	g_009157a8 (dynamic initializer)	Source/states/SupplyDockItem.cpp	vc6
+0x00486534	12	g_009157a8 (atexit registration)	Source/states/SupplyDockItem.cpp	vc6
+0x00486554	10	g_00915788 (dynamic initializer)	Source/states/SupplyDockItem.cpp	vc6
+0x0048655e	12	g_00915788 (atexit registration)	Source/states/SupplyDockItem.cpp	vc6
+0x00486574	336	tSupplyDockMissiles::tSupplyDockMissiles(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
+0x004866c4	733	tSupplyDockMissiles::vfunction3()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004869a1	27	tSupplyDockMissiles::vfunction4()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004869bc	85	tSupplyDockMissiles::vfunction7(long *)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a11	12	tSupplyDockMissiles::vfunction9()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a1d	8	tSupplyDockMissiles::vfunction10()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a25	12	tSupplyDockMissiles::vfunction11()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a31	50	tSupplyDockMissiles::vfunction12()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a63	14	tSupplyDockMissiles::vfunction13(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486a71	48	tSupplyDockMissiles::vfunction14(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486aa1	52	tSupplyDockMissiles::fn_00486aa1(bool)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486ad5	181	tSupplyDockMissiles::fn_00486ad5(bool)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486b8a	104	tSupplyDockMissiles::fn_00486b8a(bool)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486bf2	266	tSupplyDockFighters::tSupplyDockFighters(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
+0x00486cfc	54	tSupplyDockFighters::vfunction1()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486d32	36	tSupplyDockFighters::vfunction20(long,long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486d56	42	tSupplyDockFighters::vfunction2()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486d80	493	tSupplyDockFighters::vfunction3()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486f6d	31	tSupplyDockFighters::vfunction6()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486f8c	32	tSupplyDockItem::vfunction5(fn_004457b7_object *)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486fac	42	tSupplyDockFighters::fn_00486fac(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486fd6	23	tSupplyDockFighters::vfunction15(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486fed	15	tSupplyDockFighters::vfunction16(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00486ffc	30	tSupplyDockFighters::vfunction17(const std::string &)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048701a	119	tSupplyDockFighters::vfunction18(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00487091	234	tSupplyDockFighters::vfunction7(long *)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048719b	155	tSupplyDockFighters::fn_0048719b(std::string)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00487236	156	tSupplyDockFighters::fn_00487236(std::string)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004872d2	208	tSupplyDockMisc::tSupplyDockMisc(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
+0x004873a2	72	tSupplyDockMisc::vfunction1()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004873ea	32	tSupplyDockMisc::vfunction2()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048740a	531	tSupplyDockMisc::vfunction3()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048761d	33	tSupplyDockMisc::vfunction4()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048763e	31	tSupplyDockMisc::vfunction6()	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048765d	81	tSupplyDockMisc::vfunction7(long *)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004876ae	17	tSupplyDockMisc::fn_004876ae(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004876bf	17	tSupplyDockMisc::fn_004876bf(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004876d0	15	tSupplyDockMisc::fn_004876d0(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x004876df	59	tSupplyDockMisc::fn_004876df(long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x0048771a	61	tSupplyDockMisc::fn_0048771a(long,long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00487757	45	tSupplyDockMisc::fn_00487757(long,long)	Source/states/SupplyDockItem.cpp	vc6 guest
+0x00487784	1017	tSupplyDockShipInfo::tSupplyDockShipInfo(long,long,long,long,long,long,long,const char *,const char *,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
 0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	vc6
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	vc6
@@ -751,6 +815,13 @@ address	size	symbol	source	modes
 0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
 0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
 0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
+0x00637820	111	twClock::mActivate()	Tiger/twclock.cpp	vc6 guest
+0x00637890	85	twClock::mDeactivate()	Tiger/twclock.cpp	vc6 guest
+0x006378f0	117	twClock::mGetMicroseconds()	Tiger/twclock.cpp	vc6 guest
+0x00637970	210	twClock::mSetTimer(long,long,tTimerResponse *,long)	Tiger/twclock.cpp	vc6 guest
+0x00637a50	203	twClock::mSetTimer(long,long,tTimerResponse *)	Tiger/twclock.cpp	vc6 guest
+0x00637b20	115	twClock::mForgetTimer(tTimerResponse *)	Tiger/twclock.cpp	vc6 guest
+0x00637ba0	144	twClock::mTimerReceiver(UINT,UINT,DWORD,DWORD,DWORD)	Tiger/twclock.cpp	vc6 guest
 0x0063a900	5	twMemoryPart::mCheckMemory(void*,void*)	Tiger/twmemory.cpp	vc6 guest
 0x0063edd0	171	tCoopThreadPart::mSetTime()	Tiger/tgthread.cpp	vc6 guest
 0x0063ee80	7	tCoopThreadPart::mGetTime()	Tiger/tgthread.cpp	vc6 guest
