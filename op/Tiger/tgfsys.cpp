@@ -1017,12 +1017,12 @@ tString &tPath::mGetName( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetName();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e7e0
 tDate tPath::mGetDate( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetDate();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061e160_mResolve( *this ).mGetDate();
 }
 
 // The original holds this in ebx and the part search's index in ebp, where this build swaps the
