@@ -2530,6 +2530,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00436397": {
+   "name": "tCountMap<tPath,twPath,std::less<tPath>_>::tCountMap<tPath,twPath,std::less<tPath>_>",
+   "symbol": "??0?$tCountMap@VtPath@@VtwPath@@U?$less@VtPath@@@std@@@@QAE@XZ",
+   "unit": "unsorted/fn_00436000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004381e4": {
    "name": "tCloakSystem::tCloakSystem",
    "symbol": "??0tCloakSystem@@QAE@HHHH@Z",
