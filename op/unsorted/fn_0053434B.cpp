@@ -44,3 +44,19 @@ fn_005343b1_object& fn_005343b1_object::fn_005343b1(char* spec, long index)
     delete group;
     return *this;
 }
+
+// HYPOTHESIS: a constructor of an object whose first member is a std::vector (the allocator byte
+// copied from an uninitialised default argument, then three zeroed pointers); the owning class
+// and the element type are not known.
+class fn_0053440f_object
+{
+public:
+    fn_0053440f_object();
+
+    std::vector< long > field_00;
+};
+
+// FUNCTION: STARFLEETOP 0x0053440f
+fn_0053440f_object::fn_0053440f_object()
+{
+}
