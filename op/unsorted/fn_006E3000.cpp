@@ -487,6 +487,8 @@ struct fn_0060ac82_tree
 	unsigned int _Size;
 
 	static node *_Min(node *_P) { while (!_P->_Left->_Isnil) _P = _P->_Left; return (_P); }
+	iterator begin() { return (iterator(_Head->_Left)); }
+	iterator end() { return (iterator(_Head)); }
 	// HYPOTHESIS: erase(iterator).
 	iterator FUN_0060ac82(iterator _P);
 };
@@ -545,4 +547,26 @@ fn_0060ac82_tree::iterator tObject_006e36a0::FUN_006e3790(fn_0060ac82_tree::iter
 		param_1 = it;
 	}
 	return (param_1);
+}
+
+// HYPOTHESIS: an object holding a tree of the same layout as the timer table
+// and a flag at +0x28; FUN_006e3830 copies another one into it entry by entry,
+// FUN_006e38a0 taking each key by reference and its value.
+class tObject_006e3830
+{
+public:
+	void FUN_006e3830(tObject_006e3830& param_1);
+	void FUN_006e38a0(const unsigned long& param_1, tObject_006dbc40* param_2);
+
+	fn_0060ac82_tree mTree;
+	char m14[0x14];
+	char m28;
+};
+
+// FUNCTION: STARFLEETOP 0x006e3830
+void tObject_006e3830::FUN_006e3830(tObject_006e3830& param_1)
+{
+	m28 = param_1.m28;
+	for (fn_0060ac82_tree::iterator it = param_1.mTree.begin(); it != param_1.mTree.end(); ++it)
+		FUN_006e38a0((*it).first, (*it).second);
 }
