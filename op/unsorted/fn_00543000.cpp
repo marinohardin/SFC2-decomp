@@ -113,13 +113,14 @@ public:
 	bool fn_00543437();
 	void fn_00543445();
 	int fn_00543455();
+	std::string fn_00543459() const;
 
 	char m_pad[0x48];
 	std::string m048;
 	int m058;
 	char m_pad5c[0x74];
 	fn_0042b0fd_owner m0d0;
-	char m0e0[0x10];
+	std::string m0e0;
 	fn_0042c709_wrapper m0f0;
 	char m108[0xc];
 	unsigned int m114_0 : 1;
@@ -320,4 +321,11 @@ void fn_005430ad_owner::fn_00543445()
 int fn_005430ad_owner::fn_00543455()
 {
 	return m058;
+}
+
+// HYPOTHESIS: +0xe0 holds a second std::string, returned by copy like +0x48.
+// FUNCTION: STARFLEETOP 0x00543459
+std::string fn_005430ad_owner::fn_00543459() const
+{
+	return m0e0;
 }
