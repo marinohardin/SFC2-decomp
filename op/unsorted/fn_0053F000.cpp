@@ -29,6 +29,7 @@ public:
 	char *fn_0053f25c();
 	char fn_0053f260();
 	char *fn_0053f264();
+	char *fn_0053f268();
 
 	char m_00[0x58];
 	char m_58[4];
@@ -36,6 +37,8 @@ public:
 	char m_68;
 	char m_69[3];
 	char m_6c[4];
+	char m_70[0x0c];
+	char m_7c[4];
 };
 
 // FUNCTION: STARFLEETOP 0x0053f25c
@@ -56,4 +59,11 @@ char fn_0053f25c_owner::fn_0053f260()
 char *fn_0053f25c_owner::fn_0053f264()
 {
 	return m_6c;
+}
+
+// HYPOTHESIS: same owner; returns the address of a member at 0x7c of unknown type.
+// FUNCTION: STARFLEETOP 0x0053f268
+char *fn_0053f25c_owner::fn_0053f268()
+{
+	return m_7c;
 }
