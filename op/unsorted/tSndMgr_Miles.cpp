@@ -164,7 +164,7 @@ public:
 	virtual void vfunction13( long param_1 );
 	virtual void vfunction14( long param_1, long param_2 );
 	virtual long vfunction15( long param_1, long param_2 );
-	virtual void vfunction16();
+	virtual void vfunction16( long param_1, long param_2, long param_3 );
 	virtual void vfunction17();
 	virtual void vfunction18();
 	virtual void vfunction19( long param_1 );
@@ -658,4 +658,25 @@ long tSndMgr_Miles::vfunction15( long param_1, long param_2 )
 		return vfunction7( 0x14, param_2 );
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0050f7d3
+void tSndMgr_Miles::vfunction16( long param_1, long param_2, long param_3 )
+{
+	vfunction8( param_1 );
+	switch ( param_2 )
+	{
+	case 0:
+		vfunction7( 0xc, param_3 );
+		break;
+	case 1:
+		vfunction7( 0xf, param_3 );
+		break;
+	case 2:
+		vfunction7( 0x12, param_3 );
+		break;
+	case 3:
+		vfunction7( 0x15, param_3 );
+		break;
+	}
 }
