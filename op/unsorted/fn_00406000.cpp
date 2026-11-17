@@ -301,3 +301,14 @@ fn_00402b90_Obj* fn_0040678d(fn_00402b90_Obj* p)
     atexit(fn_004068ec);
     return p;
 }
+
+// FUNCTION: STARFLEETOP 0x004067db
+int std::string::compare(size_type _P0, size_type _N0, const char* _S, size_type _M) const
+{
+    if (_Len < _P0)
+        _Xran();
+    if (_Len - _P0 < _N0)
+        _N0 = _Len - _P0;
+    size_type _Ans = std::char_traits<char>::compare(_Psum(_Ptr, _P0), _S, _N0 < _M ? _N0 : _M);
+    return (_Ans != 0 ? _Ans : _N0 < _M ? -1 : _N0 != _M);
+}

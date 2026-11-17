@@ -910,6 +910,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004067db": {
+   "name": "FUN_004067db",
+   "symbol": "?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHIIPBDI@Z",
+   "unit": "unsorted/fn_00406000.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
