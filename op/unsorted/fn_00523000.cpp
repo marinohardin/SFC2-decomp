@@ -11,6 +11,7 @@ public:
 	void fn_0051c76f(int param_1, int param_2);
 	void fn_0051c7af(int param_1);
 	void fn_0051c7e3(int param_1);
+	bool fn_0051bf99(int param_1, int param_2);
 };
 
 // FUNCTION: STARFLEETOP 0x00523027
@@ -53,4 +54,14 @@ bool fn_0090bed4_Object::fn_00523086(int param_1, int param_2)
 		}
 	}
 	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x005230dd
+// HYPOTHESIS: the fourth argument is unused here (ret 0x10); its type is unknown.
+bool fn_0090bed4_Object::fn_005230dd(int param_1, int param_2, int param_3, int param_4)
+{
+	tObject_0051c7af *pObject = fn_00523543(param_1);
+	if (pObject == NULL)
+		return false;
+	return pObject->fn_0051bf99(param_2, param_3);
 }
