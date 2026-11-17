@@ -2530,6 +2530,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0042ac56": {
+   "name": "FUN_0042ac56",
+   "symbol": "?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 331,
+   "score": 99.709,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

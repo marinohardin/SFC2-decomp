@@ -91,71 +91,10 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 }
 
 #include <map>
-#include "unsorted/tMissionCompleteResults.h"
-
-// HYPOTHESIS: a flag word at +0x98 tested by bit index; the class is not known yet.
-class fn_0042a403_object
-{
-public:
-	bool FUN_0042a403( int bit );
-	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
-	bool FUN_0042a41a();
-	bool FUN_0042a421( int key0, int key1 );
-	void FUN_0042a709( int key0, int key1 );
-	void FUN_0042a73d();
-	// HYPOTHESIS: sets the whole flag word that 0x0042a403 tests.
-	void FUN_0042a7b2( unsigned long flags );
-	// HYPOTHESIS: returns a map by value whose node value sits at +0x0c with an 8-byte key; the
-	// mapped type is guessed as the 0x14-byte value whose getters 0x0055f269 and 0x005e8f21 it calls.
-	std::map< std::pair< int, int >, tObject_005b69d0 > FUN_0042ac56();
-
-	byte field_00[0x98];
-	unsigned long field_98;
-	bool field_9c;
-	// HYPOTHESIS: a map from an 8-byte key to a byte flag; the callee 0x0042b1d3 is its find, the
-	// node's value sits at +0x14 and end() is the head pointer at +0xa4. The key type is a guess.
-	std::map< std::pair< int, int >, bool > field_a0;
-};
-
-// FUNCTION: STARFLEETOP 0x0042a403
-bool fn_0042a403_object::FUN_0042a403( int bit )
-{
-	return ( field_98 & ( 1 << bit ) ) ? true : false;
-}
-
-// FUNCTION: STARFLEETOP 0x0042a41a
-bool fn_0042a403_object::FUN_0042a41a()
-{
-	return field_9c;
-}
-
-// FUNCTION: STARFLEETOP 0x0042a421
-bool fn_0042a403_object::FUN_0042a421( int key0, int key1 )
-{
-	std::map< std::pair< int, int >, bool >::iterator it = field_a0.find( std::pair< int, int >( key0, key1 ) );
-	return it != field_a0.end() ? (*it).second : false;
-}
-
-// HYPOTHESIS: both calls go through the same object to an int getter at 0x0042aa4b; the
-// class is not known yet.
-class fn_0042a45f_object
-{
-public:
-	bool FUN_0042a45f();
-	int FUN_0042aa4b();
-};
-
-// FUNCTION: STARFLEETOP 0x0042a45f
-bool fn_0042a45f_object::FUN_0042a45f()
-{
-	if( FUN_0042aa4b() >= 8 && FUN_0042aa4b() <= 15 )
-		return true;
-	return false;
-}
-
 #include <windows.h>
 #include "Common/Thread/Optex.h"
 #include "unsorted/tHexPoint.h"
+#include "unsorted/tMetaMapHex.h"
 #include "Common/Thread/SingleAccessWrapper.h"
 
 // HYPOTHESIS: the 0x434-byte element of the vector 0x0042a7bf copies ship caches from; the
@@ -230,9 +169,15 @@ public:
 // HYPOTHESIS: this is tClientCharacter (the string at +0x0c and the lock at +0xe4 match its
 // layout), declared only inside unsorted/tClientCharacter.cpp; only the members used here are
 // placed. 0x0042a535 and 0x0042a5ad assign strings at +0x1c and +0x30 under the same lock.
+// 0x0042ac56 calls 0x0042abe4 on the object 0x0042a73d passes, so the flag and map members
+// below belong to the same class.
 class fn_0042a480_object
 {
 public:
+	bool FUN_0042a403( int bit );
+	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
+	bool FUN_0042a41a();
+	bool FUN_0042a421( int key0, int key1 );
 	void FUN_0042a480();
 	void FUN_0042a4f7( std::string value );
 	void FUN_0042a535( const std::string& value );
@@ -245,6 +190,10 @@ public:
 	void FUN_0042a68f( tHexPoint value );
 	void FUN_0042a6ea( const tHexPoint& value );
 	void FUN_0042a6fc( bool value );
+	void FUN_0042a709( int key0, int key1 );
+	void FUN_0042a73d();
+	// HYPOTHESIS: sets the whole flag word that 0x0042a403 tests.
+	void FUN_0042a7b2( unsigned long flags );
 	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
 	void FUN_0042a8b7( int value );
 	std::string FUN_0042a92f();
@@ -262,6 +211,10 @@ public:
 	void FUN_0042ab25( std::vector< db::tID >& ids );
 	tHexPoint FUN_0042abe4();
 	const tHexPoint& FUN_0042ac36();
+	// HYPOTHESIS: the hex points around the one 0x0042abe4 returns, keyed by the two numbers
+	// 0x0055f269 and 0x005e8f21 read from each; the map's values are assigned by tHexPoint's
+	// operator= (0x005b69b0).
+	std::map< std::pair< int, int >, tHexPoint > FUN_0042ac56();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -279,10 +232,16 @@ public:
 	// HYPOTHESIS: a second hex point, sized by the gap to +0x84; 0x0042ac36 returns it.
 	tHexPoint field_70;
 	tHexPoint field_84;
-	byte field_98[0x9c - 0x98];
+	// HYPOTHESIS: a flag word tested by bit index.
+	unsigned long field_98;
 	// HYPOTHESIS: the byte flag that 0x0042a41a reads at +0x9c.
 	bool field_9c;
-	byte field_9d[0xb4 - 0x9d];
+	// HYPOTHESIS: a map from an 8-byte key to a byte flag; the callee 0x0042b1d3 is its find, the
+	// node's value sits at +0x14 and end() is the head pointer at +0xa4. The key type is a guess.
+	std::map< std::pair< int, int >, bool > field_a0;
+	// HYPOTHESIS: the original's maps are 0x14 bytes (0x0042ac56 copies _Multi at +0x0c), as in the
+	// SDK's STL, whose tree also holds a _Nil pointer; this unit's 0x10-byte map leaves this gap.
+	byte field_b0[0xb4 - 0xb0];
 	// HYPOTHESIS: the wrapped ship cache vector; its Lock is 0x0042c709.
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > > field_b4;
 	// HYPOTHESIS: tClientCharacter's wrapper at +0xcc of tObject_005391b0, declared only inside
@@ -290,6 +249,42 @@ public:
 	tSingleAccessWrapper< fn_005395b2_object > field_cc;
 	tOptex field_e4;
 };
+
+// FUNCTION: STARFLEETOP 0x0042a403
+bool fn_0042a480_object::FUN_0042a403( int bit )
+{
+	return ( field_98 & ( 1 << bit ) ) ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a41a
+bool fn_0042a480_object::FUN_0042a41a()
+{
+	return field_9c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a421
+bool fn_0042a480_object::FUN_0042a421( int key0, int key1 )
+{
+	std::map< std::pair< int, int >, bool >::iterator it = field_a0.find( std::pair< int, int >( key0, key1 ) );
+	return it != field_a0.end() ? (*it).second : false;
+}
+
+// HYPOTHESIS: both calls go through the same object to an int getter at 0x0042aa4b; the
+// class is not known yet.
+class fn_0042a45f_object
+{
+public:
+	bool FUN_0042a45f();
+	int FUN_0042aa4b();
+};
+
+// FUNCTION: STARFLEETOP 0x0042a45f
+bool fn_0042a45f_object::FUN_0042a45f()
+{
+	if( FUN_0042aa4b() >= 8 && FUN_0042aa4b() <= 15 )
+		return true;
+	return false;
+}
 
 // FUNCTION: STARFLEETOP 0x0042a480
 void fn_0042a480_object::FUN_0042a480()
@@ -392,24 +387,24 @@ void fn_0042a480_object::FUN_0042a6fc( bool value )
 }
 
 // FUNCTION: STARFLEETOP 0x0042a709
-void fn_0042a403_object::FUN_0042a709( int key0, int key1 )
+void fn_0042a480_object::FUN_0042a709( int key0, int key1 )
 {
 	field_a0[std::pair< int, int >( key0, key1 )] = true;
 }
 
 // FUNCTION: STARFLEETOP 0x0042a73d
-void fn_0042a403_object::FUN_0042a73d()
+void fn_0042a480_object::FUN_0042a73d()
 {
 	// The original's frame is 4 bytes larger (an unused slot between the map and the iterator);
 	// its cause is not recovered.
-	std::map< std::pair< int, int >, tObject_005b69d0 > entries = FUN_0042ac56();
+	std::map< std::pair< int, int >, tHexPoint > entries = FUN_0042ac56();
 
-	for( std::map< std::pair< int, int >, tObject_005b69d0 >::iterator it = entries.begin(); it != entries.end(); ++it )
+	for( std::map< std::pair< int, int >, tHexPoint >::iterator it = entries.begin(); it != entries.end(); ++it )
 		FUN_0042a709( (*it).second.fn_0055f269(), (*it).second.fn_005e8f21() );
 }
 
 // FUNCTION: STARFLEETOP 0x0042a7b2
-void fn_0042a403_object::FUN_0042a7b2( unsigned long flags )
+void fn_0042a480_object::FUN_0042a7b2( unsigned long flags )
 {
 	field_98 = flags;
 }
@@ -569,4 +564,20 @@ const tHexPoint& fn_0042a480_object::FUN_0042ac36()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_70;
+}
+
+// FUNCTION: STARFLEETOP 0x0042ac56
+std::map< std::pair< int, int >, tHexPoint > fn_0042a480_object::FUN_0042ac56()
+{
+	tMetaMapHex hex( 0 );
+	hex.fn_0053a49c( FUN_0042abe4() );
+
+	std::vector< tHexPoint > points = hex.fn_00539ff1( -1, -1 );
+	points.push_back( hex.fn_00539f9c() );
+
+	std::map< std::pair< int, int >, tHexPoint > result;
+	for( std::vector< tHexPoint >::iterator it = points.begin(); it != points.end(); ++it )
+		result[std::pair< int, int >( (*it).fn_0055f269(), (*it).fn_005e8f21() )] = *it;
+
+	return result;
 }

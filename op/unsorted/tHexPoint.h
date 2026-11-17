@@ -10,6 +10,10 @@ public:
 	tHexPoint(const tHexPoint &other);
 	~tHexPoint();
 	tHexPoint &operator=(const tHexPoint &other);
+	// HYPOTHESIS: two numbers that key a hex point in 0x0042ac56's map (first, second); their
+	// meaning is not known.
+	int fn_0055f269();
+	int fn_005e8f21();
 	int m_00;
 	int m_04;
 	int m_08;
