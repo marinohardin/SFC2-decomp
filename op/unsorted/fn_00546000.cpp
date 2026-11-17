@@ -40,6 +40,8 @@ public:
     virtual void StreamOut(nDataStore::tOutput& output) const;
     virtual void StreamIn(nDataStore::tInput& input);
 
+    // HYPOTHESIS: 0x0045154e copies another missile info into this one.
+    void fn_0045154e(c_004280f1* info);
     long fn_004517e1();
     long fn_00451a8b();
     double fn_00451aa6(c_0045139e* rates);
@@ -62,10 +64,12 @@ public:
     char field_f0;
     char field_f1;
     char field_f2;
-    char field_f3[0x1c];
+    char field_f3[0x19];
+    char field_10c[3];
     char field_10f[3];
     char field_112[3];
-    char field_115[0x69];
+    char field_115[0x65];
+    char field_17a[4];
     char field_17e[4];
     char field_182[4];
     char field_186[6];
@@ -102,6 +106,7 @@ public:
     char* fn_005462ec();
     void fn_00546325(int param_1);
     void fn_00546480(int param_1);
+    void fn_00546492(c_00427db2& param_1);
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -416,4 +421,22 @@ void c_00546337::fn_005463cb(float param_1, char param_2)
 void c_00546027::fn_00546480(int param_1)
 {
     field_100.fn_004457b7(param_1);
+}
+
+// HYPOTHESIS: copies a stores state into this one, clamping current counts to this one's
+// maximums; the argument is non-const only because fn_0055e60f is declared non-const.
+// FUNCTION: STARFLEETOP 0x00546492
+void c_00546027::fn_00546492(c_00427db2& param_1)
+{
+    field_100.field_f2 = 0 > (field_100.field_f1 < param_1.field_f2 ? field_100.field_f1 : param_1.field_f2) ? 0 : (field_100.field_f1 < param_1.field_f2 ? field_100.field_f1 : param_1.field_f2);
+    field_100.fn_0055e60f()->fn_0045154e(param_1.fn_0055e60f());
+    for (int i = 0; i < 4; i++)
+    {
+        field_100.field_182[i] = param_1.field_182[i] < field_100.field_17a[i] ? param_1.field_182[i] : field_100.field_17a[i];
+        field_100.field_186[i] = param_1.field_186[i];
+        field_100.field_18c[i] = param_1.field_18c[i];
+    }
+    field_100.field_112[2] = 0 > (field_100.field_10c[2] < param_1.field_112[2] ? field_100.field_10c[2] : param_1.field_112[2]) ? 0 : (field_100.field_10c[2] < param_1.field_112[2] ? field_100.field_10c[2] : param_1.field_112[2]);
+    field_100.field_112[0] = 0 > (field_100.field_10c[0] < param_1.field_112[0] ? field_100.field_10c[0] : param_1.field_112[0]) ? 0 : (field_100.field_10c[0] < param_1.field_112[0] ? field_100.field_10c[0] : param_1.field_112[0]);
+    field_100.field_112[1] = 0 > (field_100.field_10c[1] < param_1.field_112[1] ? field_100.field_10c[1] : param_1.field_112[1]) ? 0 : (field_100.field_10c[1] < param_1.field_112[1] ? field_100.field_10c[1] : param_1.field_112[1]);
 }
