@@ -805,11 +805,11 @@ inline tOptex::tGuard::~tGuard()
 	}
 }
 
-// HYPOTHESIS: tSettings is declared only here for now; 0x006f75d0 is the SDK's GetValue.
-class tSettings {
-public:
-	void GetValue(const std::string& key, std::string* out);
-};
+// tSettings is the SDK's class (Common/Settings.h); 0x006f75d0 is its GetValue, matched
+// by signature from the SDK library.
+#include "Common/Settings.h"
+
+
 
 // HYPOTHESIS: 0x005d481f returns the game's settings object; its name is not known.
 tSettings* fn_005d481f();
