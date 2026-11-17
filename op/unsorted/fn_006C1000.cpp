@@ -400,7 +400,7 @@ struct fn_006c1ae0_Request
 	unsigned long m00;
 	char m04[0x24];
 	int m28;
-	char m2c[4];
+	unsigned long m2c;
 	unsigned long m30;
 	int m34;
 	int m38;
@@ -590,4 +590,16 @@ void fn_006c1ea0(char *buffer, struct sockaddr_in *from)
 		len = sprintf(reply, "\\uoff\\\\skey\\%d", id);
 	fn_006c20e0(reply, len);
 	sendto(g_0088800c, reply, len, 0, (struct sockaddr *)from, sizeof(*from));
+}
+
+// HYPOTHESIS: tells the key server that the request's player has disconnected.
+// FUNCTION: STARFLEETOP 0x006c1f30
+void fn_006c1f30(fn_006c1ae0_Request *request)
+{
+	char buffer[512];
+	int len;
+
+	len = sprintf(buffer, "\\disc\\\\pid\\%d\\cd\\%s\\ip\\%d", g_00c7cbcc, request->m04, request->m2c);
+	fn_006c20e0(buffer, len);
+	sendto(g_0088800c, buffer, len, 0, (struct sockaddr *)&g_00c7cdd8, sizeof(g_00c7cdd8));
 }
