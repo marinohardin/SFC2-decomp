@@ -247,3 +247,14 @@ void fn_0090bed4_Object::fn_005233cb()
 		m_16d5 = 1;
 	}
 }
+
+// HYPOTHESIS: a time in seconds, read as a double (tAICaptain.cpp uses it the same way).
+extern double g_0090bef0;
+
+// FUNCTION: STARFLEETOP 0x00523428
+// HYPOTHESIS: stamps the entry's +4 field with the current time.
+void fn_0090bed4_Object::fn_00523428(unsigned char param_1)
+{
+	double now = g_0090bef0;
+	*(float *) &m_16dc[param_1 * 12 + 4] = now;
+}
