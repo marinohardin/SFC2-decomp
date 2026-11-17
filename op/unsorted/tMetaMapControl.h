@@ -18,6 +18,8 @@ public:
 	// slots, so it is the one after the first.
 	virtual void vfunction1();
 
+	void fn_005e36a3();
+
 	int field_17c;
 	tCompassRose *field_180;
 	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.

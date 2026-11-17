@@ -17,6 +17,10 @@ tMetaMapControl::tMetaMapControl()
 }
 
 // FUNCTION: STARFLEETOP 0x005e3090
+// FUNCTION: STARFLEETOP 0x005e30ac
 tMetaMapControl::~tMetaMapControl()
 {
+	fn_005e36a3();
+	delete field_180;
+	field_180 = 0;
 }
