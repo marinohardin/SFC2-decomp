@@ -586,3 +586,56 @@ void c_0044715d::fn_00447b7a(tObject_0042496f *ship)
 		fn_004472bc(ship);
 	}
 }
+
+// HYPOTHESIS: the three arguments of 0x00447bbb share only a test in slot 3 (offset 0xc).
+class c_00447bbb_arg
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual bool vfunction4();
+};
+
+// HYPOTHESIS: the classes of the members 0x00447bbb hands its arguments to are not known;
+// 0x004457b7 is also declared in Source/states/SupplyDockItem.cpp under another stand-in name.
+class c_00450e41
+{
+public:
+	void fn_00450e41(c_00447bbb_arg *arg);
+};
+
+class c_004457b7
+{
+public:
+	void fn_004457b7(c_00447bbb_arg *arg);
+};
+
+class c_004526cb
+{
+public:
+	void fn_004526cb(c_00447bbb_arg *arg);
+};
+
+// HYPOTHESIS: the class owning 0x00447bbb is not known; it holds three parts at 0xe4-0xec.
+class c_00447bbb
+{
+public:
+	void fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_arg *c);
+
+	char field_0x0[0xe4];
+	c_00450e41 *field_0xe4;
+	c_004457b7 *field_0xe8;
+	c_004526cb *field_0xec;
+};
+
+// FUNCTION: STARFLEETOP 0x00447bbb
+void c_00447bbb::fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_arg *c)
+{
+	if (a && a->vfunction4())
+		field_0xe4->fn_00450e41(a);
+	if (b && b->vfunction4())
+		field_0xe8->fn_004457b7(b);
+	if (c && c->vfunction4())
+		field_0xec->fn_004526cb(c);
+}
