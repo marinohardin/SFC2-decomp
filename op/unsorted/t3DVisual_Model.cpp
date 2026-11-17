@@ -45,6 +45,8 @@ public:
 	virtual void vfunction4();
 	// HYPOTHESIS: slot 5 takes the scale 0x0042fbd4 passes on.
 	virtual void vfunction5(float scale);
+	// HYPOTHESIS: slot 6 returns a value 0x0042fc61 passes on.
+	virtual int vfunction6();
 };
 
 // HYPOTHESIS: the node list at +0x184; its destructor is 0x0042f467.
@@ -77,6 +79,7 @@ public:
 	void vfunction18();
 	int vfunction19();
 	int vfunction20();
+	int vfunction21();
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -304,4 +307,12 @@ int t3DVisual_Model::vfunction20()
 	if (result == -1)
 		result = m124;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fc61
+int t3DVisual_Model::vfunction21()
+{
+	if (m160[0] != 0)
+		return m160[0]->vfunction6();
+	return 0;
 }
