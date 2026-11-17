@@ -24,6 +24,8 @@ public:
     // HYPOTHESIS: 0x0040e6d1 writes a zero-terminated string (it takes strlen + 1).
     void fn_0040e6d1(char* s);
     void fn_0040e699(int n);
+    // HYPOTHESIS: 0x0040e744 is a member taking a formatted text line.
+    void fn_0040e744(char* text);
     int m00;
     char* m04;
     char* m08;
@@ -481,5 +483,16 @@ void fn_0040dceb(int size, void* p, fn_0040d63f_Buf& buf)
         break;
     }
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0040dd45
+extern "C" int sprintf(char* buffer, const char* format, ...);
+
+void fn_0040dd45(char* name, long* value, fn_0040d63f_Buf& buf)
+{
+    char text[256];
+    buf.fn_0040d815();
+    sprintf(text, "%s = %ld", name, *value);
+    buf.fn_0040e744(text);
 }
 
