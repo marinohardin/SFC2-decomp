@@ -308,6 +308,11 @@ public:
     virtual void vfunction77();
     virtual void vfunction78();
     virtual float vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    // HYPOTHESIS: slot 82; returns the byte at +0x44.
+    virtual bool vfunction83();
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -330,7 +335,7 @@ public:
     // HYPOTHESIS: a float; slot 78 returns it with fld.
     float field_3c;
     float field_40;
-    char pad44[0x45 - 0x44];
+    bool field_44;
     bool field_45;
     char pad46[0x48 - 0x46];
     double field_48;
