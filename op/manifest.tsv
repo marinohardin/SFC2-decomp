@@ -930,6 +930,351 @@ address	size	symbol	source	modes
 0x00548395	60	tClassAllocator()	unsorted/tBattles.cpp	vc6 guest
 0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
+0x0056f041	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f04f	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f05f	316	fn_0056f05f_owner::fn_0056f05f(const nDatabase::tQuery<tServCharacter> &,fn_005406d7_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f19b	202	fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> &,fn_0056f19b_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f265	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f273	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f283	33	fn_0056f283_owner::operator()(fn_0056f283_target *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f2a4	316	fn_0056f2a4_owner::fn_0056f2a4(const nDatabase::tQuery<tShip> &,fn_0056f2a4_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f3e0	202	fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &,fn_0056f3e0_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f4aa	23	fn_0056f4aa_owner::fn_0056f4aa(fn_0056f4aa_target *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f4c1	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f4cf	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f4df	316	fn_0056f4df_owner::fn_0056f4df(const nDatabase::tQuery<tAuctionItem> &,fn_0056f4df_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f61b	202	fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &,fn_0056f4df_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f6e5	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f6f3	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f703	316	fn_0056f703_owner::fn_0056f703(const nDatabase::tQuery<tMetaMapHex> &,fn_0056f703_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f83f	202	fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &,fn_0056f83f_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f909	88	fn_0056f909_owner::fn_0056f909(void *,fn_0056f909_result *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f961	88	fn_0056f961_owner::fn_0056f961(void *,fn_0056f961_result *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f9b9	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f9c7	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056f9d7	316	fn_0056f9d7_owner::fn_0056f9d7(const nDatabase::tQuery<tMetaMapDesc> &,fn_0056f9d7_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fb13	196	fn_0056fb13_owner::fn_0056fb13(const nDatabase::tQuery<fn_0056fb13_object> &,fn_0056fb13_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fbd7	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fbe5	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fbf5	196	fn_0056fbf5_owner::fn_0056fbf5(const nDatabase::tQuery<fn_0056fbf5_object> &,fn_0056fbf5_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fcb9	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fcc7	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fcd7	316	fn_0056fcd7_owner::fn_0056fcd7(const nDatabase::tQuery<tCampaignInfo> &,fn_0056fcd7_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fe13	202	fn_0056fe13_owner::fn_0056fe13(const nDatabase::tQuery<fn_0056fe13_object> &,fn_0056fe13_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fedd	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056feeb	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056fefb	202	fn_0056fefb_owner::fn_0056fefb(const nDatabase::tQuery<tNotify> &,fn_0056fefb_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056ffc5	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056ffd3	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x0056ffe3	196	fn_0056ffe3_owner::fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &,fn_0056ffe3_results *)	unsorted/fn_0056F000.cpp	vc6 guest
+0x00571018	374	fn_00571018_owner::fn_00571018(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial
+0x0057118e	374	fn_00571018_owner::fn_0057118e(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial
+0x00571304	374	fn_00571018_owner::fn_00571304(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial
+0x0057147a	374	fn_00571018_owner::fn_0057147a(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial
+0x005715f0	88	fn_00571018_owner::fn_005715f0(long,fn_00571018_owner*)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571648	23	fn_00571648_owner::fn_00571648(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x0057165f	23	fn_00571648_owner::fn_0057165f(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571676	106	fn_00571676_owner::fn_00571676_owner(long,long,std::string)	unsorted/fn_00571000.cpp	partial
+0x005716e0	84	fn_00571676_owner::fn_005716e0(int)	unsorted/fn_00571000.cpp	partial
+0x00571734	82	fn_00571734_owner::fn_00571734_owner(long,long,fn_00571734_point)	unsorted/fn_00571000.cpp	vc6
+0x00571786	80	fn_00571734_owner::fn_00571786(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x005717d6	33	fn_005717d6_owner::fn_005717d6(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x005717f7	180	fn_005717f7_owner::fn_005717f7(fn_005717f7_query&)	unsorted/fn_00571000.cpp	vc6 guest
+0x005718ab	28	fn_005718ab_object::fn_005718ab(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005718c7	28	fn_005718c7_object::fn_005718c7(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005718e3	28	fn_005718e3_object::fn_005718e3(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005718ff	28	fn_005718ff_object::fn_005718ff(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x0057191b	28	fn_0057191b_object::fn_0057191b(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571937	28	fn_00571937_object::fn_00571937(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571953	28	fn_00571953_object::fn_00571953(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x0057196f	28	fn_0057196f_object::fn_0057196f(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x0057198b	28	fn_0057198b_object::fn_0057198b(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005719a7	28	fn_005719a7_object::fn_005719a7(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005719c3	28	fn_005719c3_object::fn_005719c3(unsigned char)	unsorted/fn_00571000.cpp	vc6 guest
+0x005719df	121	fn_005717f7_map::fn_005719df(const long&)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571a58	17	fn_00571a58_owner::fn_00571a58(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571a69	17	fn_00571a58_owner::fn_00571a69(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571a7a	32	fn_005717f7_vector::~fn_005717f7_vector()	unsorted/fn_00571000.cpp	vc6
+0x00571a9a	17	fn_00571a58_owner::fn_00571a9a(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571aab	17	fn_00571a58_owner::fn_00571aab(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571abc	17	fn_00571a58_owner::fn_00571abc(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571acd	17	fn_00571a58_owner::fn_00571acd(int)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571ade	8	fn_00571ade_pair::~fn_00571ade_pair()	unsorted/fn_00571000.cpp	vc6
+0x00571ae6	155	fn_00571ae6_tree::fn_00571ae6(const long*)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571b81	89	fn_00571b81_vector::fn_00571b81_vector(const fn_00571b81_vector&)	unsorted/fn_00571000.cpp	vc6
+0x00571bda	601	fn_00571a58_owner::fn_00571bda(fn_00571a58_inner*,unsigned int,const fn_00571a58_inner&)	unsorted/fn_00571000.cpp	vc6 guest
+0x00571e33	631	fn_00571a58_owner::fn_00571e33(fn_00571e33_elem*,unsigned int,const fn_00571e33_elem&)	unsorted/fn_00571000.cpp	vc6 guest
+0x00575023	67	fn_00575023_owner::fn_00575023(fn_0057430c_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575066	68	fn_00575023_owner::fn_00575066(fn_00575066_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005750aa	67	fn_00575023_owner::fn_005750aa(fn_005750aa_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005750ed	67	fn_00575023_owner::fn_005750ed(fn_005750ed_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575130	67	fn_00575023_owner::fn_00575130(fn_00575130_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575173	67	fn_00575023_owner::fn_00575173(fn_00575173_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005751b6	67	fn_00575023_owner::fn_005751b6(fn_005751b6_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005751f9	67	fn_00575023_owner::fn_005751f9(fn_005751f9_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057523c	70	fn_00575023_owner::fn_0057523c(fn_0057523c_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575282	67	fn_00575282_owner::fn_00575282(fn_00575282_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005752c5	67	fn_005752c5_owner::fn_005752c5(fn_005752c5_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575308	70	fn_00575308_owner::fn_00575308(fn_00575308_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057534e	70	fn_0057534e_owner::fn_0057534e(fn_0057534e_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575394	67	fn_00575394_owner::fn_00575394(fn_00575394_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005753d7	67	fn_005753d7_owner::fn_005753d7(fn_005753d7_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057541a	67	fn_0057541a_owner::fn_0057541a(fn_0057541a_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057545d	67	fn_0057545d_owner::fn_0057545d(fn_0057545d_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005754a0	67	fn_005754a0_owner::fn_005754a0(fn_005754a0_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005754e3	67	fn_005754e3_owner::fn_005754e3(fn_005754e3_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575526	67	fn_00575526_owner::fn_00575526(fn_00575526_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575569	67	fn_00575569_owner::fn_00575569(fn_00575569_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005755ac	67	fn_005755ac_owner::fn_005755ac(fn_005755ac_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005755ef	67	fn_005755ef_owner::fn_005755ef(fn_005755ef_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575632	67	fn_00575632_owner::fn_00575632(fn_00575632_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575675	67	fn_00575675_owner::fn_00575675(fn_00575675_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005756b8	67	fn_005756b8_owner::fn_005756b8(fn_005756b8_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005756fb	67	fn_005756fb_owner::fn_005756fb(fn_005756fb_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057573e	67	fn_0057573e_owner::fn_0057573e(fn_0057573e_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575781	67	fn_00575781_owner::fn_00575781(fn_00575781_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005757c4	67	fn_005757c4_owner::fn_005757c4(fn_005757c4_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575807	67	fn_00575807_owner::fn_00575807(fn_00575807_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057584a	67	fn_0057584a_owner::fn_0057584a(fn_0057584a_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057588d	67	fn_0057588d_owner::fn_0057588d(fn_0057588d_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005758d0	67	fn_005758d0_owner::fn_005758d0(fn_005758d0_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575913	67	fn_00575913_owner::fn_00575913(fn_00575913_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575956	67	fn_00575956_owner::fn_00575956(fn_00575956_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575999	67	fn_00575999_owner::fn_00575999(fn_00575999_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005759dc	67	fn_005759dc_owner::fn_005759dc(fn_005759dc_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575a1f	67	fn_00575a1f_owner::fn_00575a1f(fn_00575a1f_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575a62	67	fn_00575a62_owner::fn_00575a62(fn_00575a62_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575aa5	67	fn_00575aa5_owner::fn_00575aa5(fn_00575aa5_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575ae8	67	fn_00575ae8_owner::fn_00575ae8(fn_00575ae8_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575b2b	67	fn_00575b2b_owner::fn_00575b2b(fn_00575b2b_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575b6e	67	fn_00575b6e_owner::fn_00575b6e(fn_00575b6e_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575bb1	67	fn_00575bb1_owner::fn_00575bb1(fn_00575bb1_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575bf4	67	fn_00575bf4_owner::fn_00575bf4(fn_00575bf4_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575c37	67	fn_00575c37_owner::fn_00575c37(fn_00575c37_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575c7a	70	fn_00575c7a_owner::fn_00575c7a(fn_00575c7a_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575cc0	67	fn_00575cc0_owner::fn_00575cc0(fn_00575cc0_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575d03	67	fn_00575d03_owner::fn_00575d03(fn_00575d03_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575d46	67	fn_00575d46_owner::fn_00575d46(fn_00575d46_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575d89	67	fn_00575d89_owner::fn_00575d89(fn_00575d89_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575dcc	67	fn_00575dcc_owner::fn_00575dcc(fn_00575dcc_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575e0f	67	fn_00575e0f_owner::fn_00575e0f(fn_00575e0f_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575e52	67	fn_00575e52_owner::fn_00575e52(fn_00575e52_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575e95	67	fn_00575e95_owner::fn_00575e95(fn_00575e95_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575ed8	67	fn_00575ed8_owner::fn_00575ed8(fn_00575ed8_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575f1b	67	fn_00575f1b_owner::fn_00575f1b(fn_00575f1b_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575f5e	67	fn_00575f5e_owner::fn_00575f5e(fn_00575f5e_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575fa1	67	fn_00575fa1_owner::fn_00575fa1(fn_00575fa1_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575fe4	67	fn_00575fe4_owner::fn_00575fe4(fn_00575fe4_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005856fd	27	fn_005856fd_owner::fn_005856fd()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585718	27	fn_00585718_owner::fn_00585718()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585733	27	fn_00585733_owner::fn_00585733()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058574e	27	fn_0058574e_owner::fn_0058574e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585769	24	fn_00585769_owner::fn_00585769()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585781	34	fn_00585781_owner::fn_00585781()	unsorted/fn_00585000.cpp	vc6 guest
+0x005857a3	34	fn_005857a3_owner::fn_005857a3()	unsorted/fn_00585000.cpp	vc6 guest
+0x005857c5	34	fn_005857c5_owner::fn_005857c5()	unsorted/fn_00585000.cpp	vc6 guest
+0x005857e7	27	fn_005857e7_owner::fn_005857e7()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585802	27	fn_00585802_owner::fn_00585802()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058581d	24	fn_0058581d_owner::fn_0058581d()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585835	24	fn_00585835_owner::fn_00585835()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058584d	27	fn_0058584d_owner::fn_0058584d()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585868	27	fn_00585868_owner::fn_00585868()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585883	27	fn_00585883_owner::fn_00585883()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058589e	27	fn_0058589e_owner::fn_0058589e()	unsorted/fn_00585000.cpp	vc6 guest
+0x005858b9	27	fn_005858b9_owner::fn_005858b9()	unsorted/fn_00585000.cpp	vc6 guest
+0x005858d4	27	fn_005858d4_owner::fn_005858d4()	unsorted/fn_00585000.cpp	vc6 guest
+0x005858ef	27	fn_005858ef_owner::fn_005858ef()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058590a	27	fn_0058590a_owner::fn_0058590a()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585925	27	fn_00585925_owner::fn_00585925()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585940	27	fn_00585940_owner::fn_00585940()	unsorted/fn_00585000.cpp	vc6 guest
+0x0058595b	27	fn_0058595b_owner::fn_0058595b()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585976	27	fn_00585976_owner::fn_00585976()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585991	27	fn_00585991_owner::fn_00585991()	unsorted/fn_00585000.cpp	vc6 guest
+0x005859ac	27	fn_005859ac_owner::fn_005859ac()	unsorted/fn_00585000.cpp	vc6 guest
+0x005859c7	27	fn_005859c7_owner::fn_005859c7()	unsorted/fn_00585000.cpp	vc6 guest
+0x005859e2	27	fn_005859e2_owner::fn_005859e2()	unsorted/fn_00585000.cpp	vc6 guest
+0x005859fd	27	fn_005859fd_owner::fn_005859fd()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a18	27	fn_00585a18_owner::fn_00585a18()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a33	27	fn_00585a33_owner::fn_00585a33()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a4e	27	fn_00585a4e_owner::fn_00585a4e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a69	27	fn_00585a69_owner::fn_00585a69()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a84	27	fn_00585a84_owner::fn_00585a84()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585a9f	27	fn_00585a9f_owner::fn_00585a9f()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585aba	34	fn_00585aba_owner::fn_00585aba()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585adc	34	fn_00585adc_owner::fn_00585adc()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585afe	34	fn_00585afe_owner::fn_00585afe()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585b20	34	fn_00585b20_owner::fn_00585b20()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585b42	27	fn_00585b42_owner::fn_00585b42()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585b5d	27	fn_00585b5d_owner::fn_00585b5d()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585b78	34	fn_00585b78_owner::fn_00585b78()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585b9a	34	fn_00585b9a_owner::fn_00585b9a()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585bbc	34	fn_00585bbc_owner::fn_00585bbc()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585bde	130	fn_00585bde_owner::fn_00585bde()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585c60	27	fn_00585c60_owner::fn_00585c60()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585c7b	27	fn_00585c60_owner::fn_00585c7b()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585c96	27	fn_00585c60_owner::fn_00585c96()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585cb1	27	fn_00585c60_owner::fn_00585cb1()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585ccc	99	fn_00585ccc_owner::fn_00585ccc()	unsorted/fn_00585000.cpp	partial
+0x00585d2f	31	fn_00585d2f_owner::fn_00585d2f()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585d4e	24	fn_00585d4e_owner::fn_00585d4e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585d66	24	fn_00585d66_owner::fn_00585d66()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585d7e	24	fn_00585d7e_owner::fn_00585d7e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585d96	24	fn_00585d96_owner::fn_00585d96()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585dae	24	fn_00585dae_owner::fn_00585dae()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585dc6	24	fn_00585dc6_owner::fn_00585dc6()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585dde	24	fn_00585dde_owner::fn_00585dde()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585df6	24	fn_00585df6_owner::fn_00585df6()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e0e	24	fn_00585e0e_owner::fn_00585e0e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e26	24	fn_00585e26_owner::fn_00585e26()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e3e	24	fn_00585e3e_owner::fn_00585e3e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e56	24	fn_00585e56_owner::fn_00585e56()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e6e	24	fn_00585e6e_owner::fn_00585e6e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e86	24	fn_00585e86_owner::fn_00585e86()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585e9e	24	fn_00585e9e_owner::fn_00585e9e()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585eb6	24	fn_00585eb6_owner::fn_00585eb6()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585ece	24	fn_00585ece_owner::fn_00585ece()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585ee6	31	fn_00585ee6_owner::fn_00585ee6()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f05	31	fn_00585f05_owner::fn_00585f05()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f24	27	fn_00585f24_owner::fn_00585f24()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f3f	27	fn_00585f3f_owner::fn_00585f3f()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f5a	27	fn_00585f5a_owner::fn_00585f5a()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f75	27	fn_00585f75_owner::fn_00585f75()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585f90	27	fn_00585f90_owner::fn_00585f90()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585fab	27	fn_00585fab_owner::fn_00585fab()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585fc6	27	fn_00585fc6_owner::fn_00585fc6()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585fe1	27	fn_00585fe1_owner::fn_00585fe1()	unsorted/fn_00585000.cpp	vc6 guest
+0x00585ffc	27	fn_00585ffc_owner::fn_00585ffc()	unsorted/fn_00585000.cpp	vc6 guest
+0x005a4173	27	fn_005A4173_Owner::fn_005A4173()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a418e	27	fn_005A4173_Owner::fn_005A418e()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a41a9	27	fn_005A4173_Owner::fn_005A41a9()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a41c4	34	fn_005A4173_Owner::fn_005A41c4()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a41e6	34	fn_005A4173_Owner::fn_005A41e6()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4208	24	fn_005A4173_Owner::fn_005A4208()	unsorted/fn_005A4000.cpp	partial
+0x005a4220	24	fn_005A4173_Owner::fn_005A4220()	unsorted/fn_005A4000.cpp	partial
+0x005a4238	31	fn_005A4173_Owner::fn_005A4238()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4257	24	fn_005A4173_Owner::fn_005A4257()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a426f	24	fn_005A4173_Owner::fn_005A426f()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4287	31	fn_005A4173_Owner::fn_005A4287()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a42a6	99	fn_005A4173_Owner::fn_005A42a6()	unsorted/fn_005A4000.cpp	partial
+0x005a4309	99	fn_005A4173_Owner::fn_005A4309()	unsorted/fn_005A4000.cpp	partial
+0x005a436c	105	fn_005A4173_Owner::fn_005A436c()	unsorted/fn_005A4000.cpp	partial
+0x005a43d5	105	fn_005A4173_Owner::fn_005A43d5()	unsorted/fn_005A4000.cpp	partial
+0x005a443e	105	fn_005A4173_Owner::fn_005A443e()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a44a7	105	fn_005A4173_Owner::fn_005A44a7()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4510	105	fn_005A4173_Owner::fn_005A4510()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4579	105	fn_005A4173_Owner::fn_005A4579()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a45e2	105	fn_005A4173_Owner::fn_005A45e2()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a464b	105	fn_005A4173_Owner::fn_005A464b()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a46b4	105	fn_005A4173_Owner::fn_005A46b4()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a471d	105	fn_005A4173_Owner::fn_005A471d()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4786	105	fn_005A4173_Owner::fn_005A4786()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a47ef	105	fn_005A4173_Owner::fn_005A47ef()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4858	105	fn_005A4173_Owner::fn_005A4858()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a48c1	105	fn_005A4173_Owner::fn_005A48c1()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a492a	105	fn_005A4173_Owner::fn_005A492a()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4993	105	fn_005A4173_Owner::fn_005A4993()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a49fc	105	fn_005A4173_Owner::fn_005A49fc()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4a65	105	fn_005A4173_Owner::fn_005A4a65()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4ace	105	fn_005A4173_Owner::fn_005A4ace()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4b37	105	fn_005A4173_Owner::fn_005A4b37()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4ba0	105	fn_005A4173_Owner::fn_005A4ba0()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4c09	105	fn_005A4173_Owner::fn_005A4c09()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4c72	105	fn_005A4173_Owner::fn_005A4c72()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4cdb	105	fn_005A4173_Owner::fn_005A4cdb()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005c427c	20	fn_005c427c_Owner::FUN_005c427c()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4290	32	fn_005c4290_Holder::FUN_005c4290()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c42b0	32	fn_005c42b0_Holder::FUN_005c42b0()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c42d0	32	fn_005c42d0_Holder::FUN_005c42d0()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c42f0	41	fn_005c42f0_Holder::FUN_005c42f0()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4319	41	fn_005c4319_Holder::FUN_005c4319()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4342	32	fn_005c4342_Holder::FUN_005c4342()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4362	32	fn_005c4362_Holder::FUN_005c4362()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4382	32	fn_005c4382_Holder::FUN_005c4382()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c43a2	32	fn_005c43a2_Holder::FUN_005c43a2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c43c2	32	fn_005c43c2_Holder::FUN_005c43c2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c43e2	32	fn_005c43e2_Holder::FUN_005c43e2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4402	32	fn_005c43e2_Holder::FUN_005c4402()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4422	32	fn_005c43e2_Holder::FUN_005c4422()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4442	32	fn_005c43e2_Holder::FUN_005c4442()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4462	32	fn_005c43e2_Holder::FUN_005c4462()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4482	32	fn_005c43e2_Holder::FUN_005c4482()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c44a2	32	fn_005c43e2_Holder::FUN_005c44a2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c44c2	32	fn_005c43e2_Holder::FUN_005c44c2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c44e2	42	fn_005c43e2_Holder::FUN_005c44e2(int)	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c450c	41	fn_005c43e2_Holder::FUN_005c450c()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4535	41	fn_005c4535_Holder::FUN_005c4535()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c455e	41	fn_005c455e_Holder::FUN_005c455e()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4587	32	fn_005c4587_Holder::FUN_005c4587()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c45a7	32	fn_005c45a7_Holder::FUN_005c45a7()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c45c7	32	fn_005c45c7_Holder::FUN_005c45c7()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c45e7	32	fn_005c45e7_Holder::FUN_005c45e7()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4607	32	fn_005c4607_Holder::FUN_005c4607()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4627	41	fn_005c4627_Holder::FUN_005c4627()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4650	41	fn_005c4650_Holder::FUN_005c4650()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4679	41	fn_005c4679_Holder::FUN_005c4679()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c46a2	41	fn_005c46a2_Holder::FUN_005c46a2()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c46cb	41	fn_005c46cb_Holder::FUN_005c46cb()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c46f4	41	fn_005c46f4_Holder::FUN_005c46f4()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c471d	41	fn_005c471d_Holder::FUN_005c471d()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4746	41	fn_005c4746_Holder::FUN_005c4746()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c476f	32	fn_005c476f_Holder::FUN_005c476f()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c478f	32	fn_005c478f_Holder::FUN_005c478f()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c47af	32	fn_005c478f_Holder::FUN_005c47af()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c47cf	32	fn_005c478f_Holder::FUN_005c47cf()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c47ef	41	fn_005c478f_Holder::FUN_005c47ef()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4818	29	fn_005c478f_Holder::FUN_005c4818()	unsorted/fn_005C4000.cpp	partial
+0x005c4835	29	fn_005c478f_Holder::FUN_005c4835()	unsorted/fn_005C4000.cpp	partial
+0x005c4852	29	fn_005c478f_Holder::FUN_005c4852()	unsorted/fn_005C4000.cpp	partial
+0x005c486f	29	fn_005c478f_Holder::FUN_005c486f()	unsorted/fn_005C4000.cpp	partial
+0x005c488c	29	fn_005c478f_Holder::FUN_005c488c()	unsorted/fn_005C4000.cpp	partial
+0x005c48a9	29	fn_005c478f_Holder::FUN_005c48a9()	unsorted/fn_005C4000.cpp	partial
+0x005c48c6	32	fn_005c478f_Holder::FUN_005c48c6()	unsorted/fn_005C4000.cpp	partial
+0x005c48e6	32	fn_005c478f_Holder::FUN_005c48e6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4906	32	fn_005c478f_Holder::FUN_005c4906()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4926	32	fn_005c478f_Holder::FUN_005c4926()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4946	32	fn_005c478f_Holder::FUN_005c4946()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4966	32	fn_005c478f_Holder::FUN_005c4966()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4986	32	fn_005c478f_Holder::FUN_005c4986()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c49a6	32	fn_005c478f_Holder::FUN_005c49a6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c49c6	32	fn_005c478f_Holder::FUN_005c49c6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c49e6	32	fn_005c478f_Holder::FUN_005c49e6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4a06	32	fn_005c478f_Holder::FUN_005c4a06()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4a26	32	fn_005c478f_Holder::FUN_005c4a26()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4a46	32	fn_005c478f_Holder::FUN_005c4a46()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4a66	32	fn_005c478f_Holder::FUN_005c4a66()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4a86	32	fn_005c478f_Holder::FUN_005c4a86()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4aa6	32	fn_005c478f_Holder::FUN_005c4aa6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ac6	32	fn_005c478f_Holder::FUN_005c4ac6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ae6	32	fn_005c478f_Holder::FUN_005c4ae6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4b06	32	fn_005c478f_Holder::FUN_005c4b06()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4b26	32	fn_005c478f_Holder::FUN_005c4b26()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4b46	32	fn_005c478f_Holder::FUN_005c4b46()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4b66	32	fn_005c478f_Holder::FUN_005c4b66()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4b86	32	fn_005c478f_Holder::FUN_005c4b86()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ba6	32	fn_005c478f_Holder::FUN_005c4ba6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4bc6	32	fn_005c478f_Holder::FUN_005c4bc6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4be6	32	fn_005c478f_Holder::FUN_005c4be6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4c06	32	fn_005c478f_Holder::FUN_005c4c06()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4c26	32	fn_005c478f_Holder::FUN_005c4c26()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4c46	32	fn_005c478f_Holder::FUN_005c4c46()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4c66	32	fn_005c478f_Holder::FUN_005c4c66()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4c86	32	fn_005c478f_Holder::FUN_005c4c86()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ca6	32	fn_005c478f_Holder::FUN_005c4ca6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4cc6	32	fn_005c478f_Holder::FUN_005c4cc6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ce6	32	fn_005c478f_Holder::FUN_005c4ce6()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4d06	41	fn_005c478f_Holder::FUN_005c4d06()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4d2f	32	fn_005c478f_Holder::FUN_005c4d2f()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4d4f	41	fn_005c478f_Holder::FUN_005c4d4f()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4d78	41	fn_005c478f_Holder::FUN_005c4d78()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4da1	41	fn_005c478f_Holder::FUN_005c4da1()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4dca	41	fn_005c478f_Holder::FUN_005c4dca()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4df3	41	fn_005c478f_Holder::FUN_005c4df3()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4e1c	32	fn_005c478f_Holder::FUN_005c4e1c()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4e3c	110	fn_005c478f_Holder::FUN_005c4e3c()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4eaa	110	fn_005c478f_Holder::FUN_005c4eaa()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4f18	110	fn_005c478f_Holder::FUN_005c4f18()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4f86	110	fn_005c478f_Holder::FUN_005c4f86()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005c4ff4	110	fn_005c478f_Holder::FUN_005c4ff4()	unsorted/fn_005C4000.cpp	vc6 guest
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
 0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	vc6
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest

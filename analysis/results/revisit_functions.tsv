@@ -149,5 +149,25 @@ address	name	best_score	attempts	last_model	listed	note
 0x004d3951	FUN_004d3951	99.79	3	opus	2026-11-17T15:24:01Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.79%
 0x004d82fb	tBaseWeapon::vfunction74	56.32	2	opus	2026-11-17T16:40:53Z	best not above 90% after 2 attempts; best 56.32%
 0x004d87e3	FUN_004d87e3	42.48	2	opus	2026-11-17T17:02:21Z	attempt 2 (opus) did not raise the best; best 42.48%
+0x00571018	FUN_00571018	99.96	3	opus	2026-11-17T06:53:17Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x0057118e	FUN_0057118e	99.96	2	opus	2026-11-17T06:59:27Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x00571304	FUN_00571304	99.96	2	opus	2026-11-17T07:05:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x0057147a	FUN_0057147a	99.96	2	opus	2026-11-17T07:10:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
+0x00571676	FUN_00571676	70.47	2	opus	2026-11-17T07:33:01Z	best not above 90% after 2 attempts; best 70.47%
+0x005716e0	FUN_005716e0	66.18	2	opus	2026-11-17T07:41:07Z	best not above 90% after 2 attempts; best 66.18%
+0x00585ccc	FUN_00585ccc	29.86	2	opus	2026-11-17T14:26:23Z	attempt 2 (opus) did not raise the best; best 29.86%
+0x005a4208	FUN_005a4208	25.88	2	opus	2026-11-17T14:59:05Z	attempt 2 (opus) did not raise the best; best 25.88%
+0x005a4220	FUN_005a4220	25.88	2	opus	2026-11-17T15:05:35Z	attempt 2 (opus) did not raise the best; best 25.88%
+0x005a42a6	FUN_005a42a6	29.86	2	opus	2026-11-17T15:24:01Z	attempt 2 (opus) did not raise the best; best 29.86%
+0x005a4309	FUN_005a4309	29.86	2	opus	2026-11-17T15:31:05Z	attempt 2 (opus) did not raise the best; best 29.86%
+0x005a436c	FUN_005a436c	29.86	2	opus	2026-11-17T15:37:49Z	attempt 2 (opus) did not raise the best; best 29.86%
+0x005a43d5	FUN_005a43d5	29.86	2	opus	2026-11-17T15:46:05Z	attempt 2 (opus) did not raise the best; best 29.86%
+0x005c4818	FUN_005c4818	87.31	2	opus	2026-11-17T16:46:17Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c4835	FUN_005c4835	87.31	2	opus	2026-11-17T16:52:07Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c4852	FUN_005c4852	87.31	2	opus	2026-11-17T16:56:44Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c486f	FUN_005c486f	87.31	2	opus	2026-11-17T17:03:15Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c488c	FUN_005c488c	87.31	2	opus	2026-11-17T17:09:19Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c48a9	FUN_005c48a9	87.31	2	opus	2026-11-17T17:13:17Z	attempt 2 (opus) did not raise the best; best 87.31%
+0x005c48c6	FUN_005c48c6	87.31	2	opus	2026-11-17T17:17:48Z	attempt 2 (opus) did not raise the best; best 87.31%
 0x00413ea8	tPhysicalEntity::vfunction49	99.77	4	opus	2026-11-09T07:59:26Z	all 4 regular attempts used; waits for Fable; best 99.77%
 0x00658ac0	tChannelGroup::mUnload	98.70	4	opus	2026-11-09T07:47:04Z	all 4 regular attempts used; waits for Fable; best 98.70%
