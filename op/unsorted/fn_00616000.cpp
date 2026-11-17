@@ -73,7 +73,8 @@ public:
 	virtual long __stdcall Send( int from, int to, int flags, void* pData, unsigned long size );
 	virtual long __stdcall v27();
 	virtual long __stdcall v28();
-	virtual long __stdcall v29();
+	// HYPOTHESIS: slot 29 fits IDirectPlay4::SetPlayerData (player, data, size, flags).
+	virtual long __stdcall SetPlayerData( int player, void* pData, unsigned long size, unsigned long flags );
 	virtual long __stdcall v30();
 	// HYPOTHESIS: slot 31 fits IDirectPlay4::SetSessionDesc (data, flags).
 	virtual long __stdcall SetSessionDesc( void* pDesc, unsigned long flags );
@@ -249,6 +250,7 @@ public:
 	void fn_00616c50( bool wait );
 	long fn_00616c80( unsigned long flags );
 	long fn_00616d30( int player, fn_00616d30_Data* pData );
+	void fn_00616e30( int player, fn_00616d30_Data* pData );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -635,4 +637,19 @@ long fn_00616000_DirectPlayHolder::fn_00616d30( int player, fn_00616d30_Data* pD
 		fn_006123b0( e.v1() );
 	}
 	return hr;
+}
+
+// FUNCTION: STARFLEETOP 0x00616e30
+void fn_00616000_DirectPlayHolder::fn_00616e30( int player, fn_00616d30_Data* pData )
+{
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		fDirectPlayObject->SetPlayerData( player, pData, sizeof( fn_00616d30_Data ), 2 );
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
 }
