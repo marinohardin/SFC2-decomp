@@ -3,8 +3,12 @@
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 // Profile:   game-release (harness/units.json)
 
+#include "Common/BaseTypes.h"
+
 class tPath;
 class twPath;
+class tSession;
+class tFSSession;
 
 namespace std
 {
@@ -17,7 +21,36 @@ template <class tKeyType, class tValueType, class tCompare>
 class tCountMap
 {
 public:
+	tCountMap();
 	virtual ~tCountMap();
+
+	void		*fHead;		// +0x04
+	void		*fTail;		// +0x08
+};
+
+// HYPOTHESIS: the full tValueCountMap is declared only inside op/Tiger/tgfsys.cpp, where its
+// leading word is not recovered; the vtable store below shows it is a virtual destructor's.
+template <class tKeyType, class tValueType, class tCompare>
+class tValueCountMap
+{
+public:
+	tValueCountMap() {}
+	virtual ~tValueCountMap();
+
+	tCountMap<tKeyType,tValueType,tCompare>	fMaps[256];		// +0x04
+};
+
+// HYPOTHESIS: the full tCookieManager is declared only inside op/Tiger/tgfsys.cpp. The function
+// below stores the map's vtable at +0x04 after building its 256 maps and then clears +0x00, which
+// is the cookie manager's constructor with tValueCountMap's inlined, not tValueCountMap's own.
+template <class tCookieType, class tObjectType>
+class tCookieManager
+{
+public:
+	tCookieManager();
+
+	int32u											f_00;
+	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
 };
 
 // HYPOTHESIS: the destructor body (0x00435e84) is not recovered; empty here.
@@ -25,4 +58,11 @@ public:
 template <>
 tCountMap<tPath,twPath,std::less<tPath> >::~tCountMap()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x004361e7
+template <>
+tCookieManager<tSession,tFSSession>::tCookieManager()
+{
+	f_00 = 0;
 }
