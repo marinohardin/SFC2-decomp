@@ -55,6 +55,8 @@ extern tString g_0090d9e8;
 
 // HYPOTHESIS: a pointer to the name "OtherConnectionsSerialPort".
 extern const char *g_00844eb4;
+// HYPOTHESIS: a pointer to the name "GameConnectionsSelect".
+extern const char *g_00844ea0;
 void fn_004d3564(const char *psz1, const char *psz2, int n);
 // HYPOTHESIS: an entry of the port list fn_004329af returns; 0x0060f6d0 returns its name.
 // tNetControl.cpp declares a class with the same getter only inside that unit.
@@ -134,6 +136,8 @@ public:
 	// HYPOTHESIS: fills the address field from the settings section name, or with value when
 	// the section holds no entries.
 	void fn_004688ee(c_00468677_source *control, const char *name, const char *value);
+	// HYPOTHESIS: a member; it hides the four connection panels.
+	void fn_00468bbb();
 
 	char m00[0xc];
 	unsigned char m0c;
@@ -538,6 +542,15 @@ void tState_GameConnections::fn_00468a45(c_00468677_source *control, const char 
 	key.mAppendInt32s(entry, 1);
 	if (current)
 		g_p008cc580->vfunction10(name, key.mCharStr(), current->mCharStr());
+}
+
+// FUNCTION: STARFLEETOP 0x00468bbb
+void tState_GameConnections::fn_00468bbb()
+{
+	fn_004d3340(g_00844ea0);
+	fn_004d3340(g_00844ea4);
+	fn_004d3340(g_00844eac);
+	fn_004d3340(g_00844eb4);
 }
 
 }
