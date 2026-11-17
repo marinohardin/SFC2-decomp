@@ -163,17 +163,27 @@ fn_0057a5f6_list &fn_0057a5f6_list::operator=(const fn_0057a5f6_list &other)
 }
 
 // HYPOTHESIS: 0x0057a66b is a vector's tidy (first +4, last +8, end +0xc) over 0x4c-byte
-// elements whose destructor is 0x00579ad8; the element type is not identified yet.
+// elements whose destructor is 0x00579ad8; the element type is not identified yet. The element
+// is a 0x48-byte part whose assignment is 0x00716ff0, then a dword at +0x48 (from 0x0057a6af).
+class fn_0057a66b_part {
+public:
+    fn_0057a66b_part &operator=(const fn_0057a66b_part &other);
+
+    char field_0[0x48];
+};
+
 class fn_0057a66b_value {
 public:
     ~fn_0057a66b_value();
 
-    char field_0[0x4c];
+    fn_0057a66b_part field_0;
+    int field_48;
 };
 
 class fn_0057a66b_vector {
 public:
     void fn_0057a66b();
+    fn_0057a66b_value *fn_0057a6af(fn_0057a66b_value *first, fn_0057a66b_value *last);
 
     int field_0;
     fn_0057a66b_value *field_4;
@@ -212,4 +222,18 @@ public:
 void fn_0057a69e_vector::fn_0057a69e(const fn_0057a69e_value &value)
 {
     fn_0057a716(field_8, 1, value);
+}
+
+#include <algorithm>
+
+// HYPOTHESIS: 0x0057a6af is the same vector's erase(first, last).
+// FUNCTION: STARFLEETOP 0x0057a6af
+fn_0057a66b_value *fn_0057a66b_vector::fn_0057a6af(fn_0057a66b_value *first, fn_0057a66b_value *last)
+{
+    fn_0057a66b_value *dest = std::copy(last, field_8, first);
+    fn_0057a66b_value *old = field_8;
+    for (fn_0057a66b_value *p = dest; p != old; ++p)
+        p->~fn_0057a66b_value();
+    field_8 = dest;
+    return first;
 }
