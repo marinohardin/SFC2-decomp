@@ -823,3 +823,12 @@ int tShipSystemsExt::vfunction149( int param_1 )
 		return 0;
 	return ( (int*)m584 )[param_1];
 }
+
+// HYPOTHESIS: the same table as vfunction149, read only for slots 0x31..0x48.
+// FUNCTION: STARFLEETOP 0x0044c99f
+int tShipSystemsExt::vfunction148( int param_1 )
+{
+	if ( param_1 < 0x31 || param_1 >= 0x49 )
+		return 0;
+	return ( (int*)m584 )[param_1];
+}
