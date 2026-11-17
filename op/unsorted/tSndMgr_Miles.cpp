@@ -42,7 +42,7 @@ extern long g_00918108;
 void fn_006f3870();
 
 // HYPOTHESIS: skips a number of bytes in a file (fn_0050fc69 passes over wave chunks with it).
-void fn_0050feb2( tBasicFile *param_1, unsigned long param_2 );
+void fn_0050feb2( tBasicFile *param_1, unsigned short param_2 );
 
 // HYPOTHESIS: the member classes below are named after their destructors until evidence names
 // them; sizes come from the member offsets in tSndMgr_Miles.
@@ -995,4 +995,19 @@ char tSndMgr_Miles::fn_0050fc69( long param_1, long param_2 )
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0050feb2
+void fn_0050feb2( tBasicFile *param_1, unsigned short param_2 )
+{
+	char buffer[512];
+
+	while ( param_2 )
+	{
+		unsigned long count = param_2;
+		if ( count > 512 )
+			count = 512;
+		param_1->mRead( buffer, count );
+		param_2 -= count;
+	}
 }

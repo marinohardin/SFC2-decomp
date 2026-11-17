@@ -6616,6 +6616,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0050feb2": {
+   "name": "FUN_0050feb2",
+   "symbol": "?fn_0050feb2@@YAXPAVtBasicFile@@G@Z",
+   "unit": "unsorted/tSndMgr_Miles.cpp",
+   "size": 67,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00513e90": {
    "name": "tAIWeaponOfficer::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tAIWeaponOfficer@@QAEPAV1@E@Z",
