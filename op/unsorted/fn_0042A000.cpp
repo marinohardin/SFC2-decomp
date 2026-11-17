@@ -253,6 +253,7 @@ public:
 	int FUN_0042aa6b();
 	int FUN_0042aa8b();
 	int FUN_0042aaab();
+	int FUN_0042aacb();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -264,7 +265,7 @@ public:
 	int field_48;
 	int field_4c;
 	int field_50;
-	byte field_54[0x58 - 0x54];
+	int field_54;
 	int field_58;
 	tHexPoint field_5c;
 	byte field_70[0x84 - 0x70];
@@ -505,4 +506,12 @@ int fn_0042a480_object::FUN_0042aaab()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_50;
+}
+
+// FUNCTION: STARFLEETOP 0x0042aacb
+int fn_0042a480_object::FUN_0042aacb()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_54;
 }
