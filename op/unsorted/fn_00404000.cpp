@@ -519,3 +519,29 @@ fn_00404ad0_Locale& fn_00404ad0_Locale::fn_00404ad0(const fn_00404ad0_Locale& ot
     }
     return *this;
 }
+
+// HYPOTHESIS: std::ios_base::getloc: return a copy of the stream's locale (at +0x34).
+class fn_00404aff_Locale
+{
+public:
+    fn_00404aff_Locale(const fn_00404aff_Locale& other) throw()
+    {
+        m0 = other.m0;
+        m0->fn_00402b90();
+    }
+    fn_00404ad0_Impl* m0;
+};
+
+class fn_00404aff_Ios
+{
+public:
+    fn_00404aff_Locale fn_00404aff() const;
+    char m0[0x34];
+    fn_00404aff_Locale m34;
+};
+
+// FUNCTION: STARFLEETOP 0x00404aff
+fn_00404aff_Locale fn_00404aff_Ios::fn_00404aff() const
+{
+    return m34;
+}
