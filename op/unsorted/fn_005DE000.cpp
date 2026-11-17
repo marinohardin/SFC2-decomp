@@ -240,3 +240,12 @@ tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > 
 {
 	return 	tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType >( object, func );
 }
+
+// MATCH-ONLY: the SDK's template destructor, written out as this instance's inline explicit
+// specialization so that its annotation names the one instance. The out-of-line copy is the
+// one the deleting destructor calls; its body (storing the base vtable) is the same as
+// ~tCallback's, which the analysis names at this address.
+// FUNCTION: STARFLEETOP 0x005de6c5
+template<>
+inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType >::~tMemberCallback()
+{}
