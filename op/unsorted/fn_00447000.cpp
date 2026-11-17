@@ -808,3 +808,38 @@ void std::vector< tTransporterHoldItem >::push_back( const tTransporterHoldItem&
 {
 	insert( end(), _X );
 }
+
+// MATCH-ONLY: the library's fill insert for this element type, written out as the instance's
+// explicit specialization so that its annotation names the one instance.
+// FUNCTION: STARFLEETOP 0x00447f65
+template<>
+void std::vector< tTransporterHoldItem >::insert( iterator _P, size_type _M, const tTransporterHoldItem& _X )
+{
+	if( _End - _Last < _M )
+	{
+		size_type _N = size() + ( _M < size() ? size() : _M );
+		iterator _S = allocator.allocate( _N, (void*)0 );
+		iterator _Q = _Ucopy( _First, _P, _S );
+		_Ufill( _Q, _M, _X );
+		_Ucopy( _P, _Last, _Q + _M );
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_End = _S + _N;
+		_Last = _S + size() + _M;
+		_First = _S;
+	}
+	else if( _Last - _P < _M )
+	{
+		_Ucopy( _P, _Last, _P + _M );
+		_Ufill( _Last, _M - ( _Last - _P ), _X );
+		std::fill( _P, _Last, _X );
+		_Last += _M;
+	}
+	else if( 0 < _M )
+	{
+		_Ucopy( _Last - _M, _Last, _Last );
+		std::copy_backward( _P, _Last - _M, _Last );
+		std::fill( _P, _P + _M, _X );
+		_Last += _M;
+	}
+}

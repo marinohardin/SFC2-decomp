@@ -3313,6 +3313,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00447f65": {
+   "name": "FUN_00447f65",
+   "symbol": "?insert@?$vector@UtTransporterHoldItem@@V?$allocator@UtTransporterHoldItem@@@std@@@std@@QAEXPAUtTransporterHoldItem@@IABU3@@Z",
+   "unit": "unsorted/fn_00447000.cpp",
+   "size": 616,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x004557ee": {
    "name": "FUN_004557ee",
    "symbol": "?fn_004557ee@tObject_004557ee@@QAEXH@Z",
