@@ -833,3 +833,56 @@ void fn_0056fb13_owner::fn_0056fb13(const nDatabase::tQuery<fn_0056fb13_object> 
 	}
 	guard.Leave();
 }
+
+// HYPOTHESIS: another unlocked database query, as 0x0056fb13, for a further object type that
+// is not recovered.
+class fn_0056fbf5_object {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	char fn_0056fbf5_pad[0x60 - 4];
+};
+
+class fn_0056fbf5_results {
+public:
+	void push_back(const fn_0056fbf5_object &value);
+	fn_0056fbf5_object &back() { return *(m_last - 1); }
+	void *m_allocator;
+	fn_0056fbf5_object *m_first;
+	fn_0056fbf5_object *m_last;
+};
+
+class fn_0056fbf5_owner {
+public:
+	virtual void vfunction0();
+	void fn_0056fbf5(const nDatabase::tQuery<fn_0056fbf5_object> &query, fn_0056fbf5_results *result);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+#line 871 "fn_0056F000.cpp"
+// FUNCTION: STARFLEETOP 0x0056fbf5
+void fn_0056fbf5_owner::fn_0056fbf5(const nDatabase::tQuery<fn_0056fbf5_object> &query, fn_0056fbf5_results *result)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_0056fbf5_object));
+#line 183 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	for (void *const *i = objects.m_first; i != objects.m_last; i++) {
+		fn_0056fbf5_object *pObject = (fn_0056fbf5_object *)*i;
+		if (query(pObject)) {
+			result->push_back(*pObject);
+			result->back().vfunction9();
+		}
+	}
+	guard.Leave();
+}
