@@ -114,7 +114,7 @@ public:
 	virtual void vfunction40( tAuctionItem item );
 	virtual void vfunction41( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction42( tServCharacter character );
-	virtual void vfunction43();
+	virtual void vfunction43( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction44( tShip ship );
 	virtual void vfunction45();
 	virtual void vfunction46();
@@ -702,5 +702,12 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction41( nDatabase::tDat
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction44( tShip ship )
 {
 	nDatabase::tDatabaseObjectUpdate update( ship );
+	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the same body as vfunction41 in another slot; what tells the two apart is not known.
+// FUNCTION: STARFLEETOP 0x0056e0ee
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDatabaseObjectUpdate update )
+{
 	fDatabase->UpdateObject( update );
 }
