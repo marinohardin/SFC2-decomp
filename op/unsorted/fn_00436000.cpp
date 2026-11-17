@@ -5,6 +5,7 @@
 
 #include "Common/BaseTypes.h"
 #include "unsorted/tSafeArray.h"
+#include "Tiger/taudiopriority.h"
 
 class tPath;
 class twPath;
@@ -20,7 +21,6 @@ class tVolume;
 class twVolume;
 class tDir;
 class twDir;
-class tClassTrackingInfo;
 
 namespace std
 {

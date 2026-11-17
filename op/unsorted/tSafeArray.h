@@ -159,7 +159,11 @@ inline void tSafeArray< T >::mClearItem( unsigned long index )
 	}
 }
 
+// HYPOTHESIS: the analysis names this address ~tClassTrackingInfo, but the body is the release
+// of the array's items and tables that ~tSafeArray<tClassTrackingInfo> (0x004363a8) tail-jumps to;
+// the inline call is left out of line there.
 template < class T >
+// FUNCTION: STARFLEETOP 0x004363d5
 inline void tSafeArray< T >::mDeleteAll( void )
 {
 	if ( f18 == true )
