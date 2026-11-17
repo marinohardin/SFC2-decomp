@@ -579,3 +579,10 @@ void tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::operator()( fn_0057a
 {
 	(fpMemberClass->*fpMemberFunction)( result );
 }
+
+// FUNCTION: STARFLEETOP 0x005ea918
+template<>
+void tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::Callback( fn_0057a96e_info result )
+{
+	(fpMemberClass->*fpMemberFunction)( result );
+}
