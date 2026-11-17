@@ -148,3 +148,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0042c7b4	FUN_0042c7b4	50.29	2	sonnet	2026-11-17T11:20:32Z	attempt 2 (sonnet) did not raise the best; best 50.29%
 0x0042c7df	FUN_0042c7df	50.29	2	sonnet	2026-11-17T11:23:58Z	attempt 2 (sonnet) did not raise the best; best 50.29%
 0x0042ceae	tCampaignInfo::~tCampaignInfo	16.08	2	sonnet	2026-11-17T14:21:51Z	attempt 2 (sonnet) did not raise the best; best 16.08%
+0x0042cfaf	FUN_0042cfaf	0.00	2	sonnet	2026-11-17T14:28:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
