@@ -358,3 +358,20 @@ long fn_005717f7_owner::fn_005717f7(fn_005717f7_query& query)
 	guard.Leave();
 	return count;
 }
+
+// HYPOTHESIS: the body of a scalar deleting destructor, written as a function: 0x0056eee7 is the
+// destructor body, flag bit 0 asks for operator delete.
+class fn_005718ab_object {
+public:
+	void fn_0056eee7();
+	fn_005718ab_object* fn_005718ab(unsigned char flags);
+};
+#line 369
+// FUNCTION: STARFLEETOP 0x005718ab
+fn_005718ab_object* fn_005718ab_object::fn_005718ab(unsigned char flags)
+{
+	fn_0056eee7();
+	if (flags & 1)
+		::operator delete(this);
+	return this;
+}
