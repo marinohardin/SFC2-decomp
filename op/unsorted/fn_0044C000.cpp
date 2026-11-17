@@ -1081,3 +1081,19 @@ void tShipSystemsExt::vfunction129( float param_1 )
 		value->vfunction3( 0.0f );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0044cdbc
+void tShipSystemsExt::vfunction130( float param_1 )
+{
+	tMinMaxFloat* value = &m718;
+	value->vfunction3( param_1 );
+	if ( *value > m6f0 )
+	{
+		value->vfunction3( m6f0 );
+	}
+	// HYPOTHESIS: the exe tests m6ec here, not m718's value.
+	if ( m6ec < 0.0f )
+	{
+		value->vfunction3( 0.0f );
+	}
+}
