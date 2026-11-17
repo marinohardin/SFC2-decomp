@@ -25,6 +25,9 @@ struct fn_005bc018_vector
 	fn_005bb6fc_elem *_End;
 
 	void FUN_005bc018();
+	// HYPOTHESIS: insert(_P, _M, _X).
+	void FUN_0053bcbe(fn_005bb6fc_elem *_P, unsigned int _M, const fn_005bb6fc_elem &_X);
+	fn_005bb6fc_elem *FUN_005bc0de(fn_005bb6fc_elem *_P, const fn_005bb6fc_elem &_X);
 };
 
 // FUNCTION: STARFLEETOP 0x005bc018
@@ -93,4 +96,13 @@ struct fn_005bc091_entry
 // FUNCTION: STARFLEETOP 0x005bc091
 fn_005bc091_entry::~fn_005bc091_entry()
 {
+}
+
+// HYPOTHESIS: the STL vector's insert(_P, _X).
+// FUNCTION: STARFLEETOP 0x005bc0de
+fn_005bb6fc_elem *fn_005bc018_vector::FUN_005bc0de(fn_005bb6fc_elem *_P, const fn_005bb6fc_elem &_X)
+{
+	fn_005bb6fc_elem *_F = _First;
+	FUN_0053bcbe(_P, 1, _X);
+	return (_First + (_P - _F));
 }
