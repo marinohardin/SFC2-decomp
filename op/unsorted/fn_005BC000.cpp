@@ -512,3 +512,19 @@ fn_005bc161_tree::iterator fn_005bc161_tree::FUN_005bc404(iterator _F, iterator 
 		_Head->_Left = _Head, _Head->_Right = _Head;
 		return (begin()); }
 }
+
+// HYPOTHESIS: another set over the same tree type (its insert(_V) is again
+// 0x0057f946); this is its insert(_X).
+struct fn_005bc478_set
+{
+	fn_005bc324_tree _Tr;
+
+	fn_005bc324_tree::_Pairib FUN_005bc478(const int &_X);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc478
+fn_005bc324_tree::_Pairib fn_005bc478_set::FUN_005bc478(const int &_X)
+{
+	fn_005bc324_tree::_Pairib _Ans = _Tr.FUN_0057f946(_X);
+	return (fn_005bc324_tree::_Pairib(_Ans.first, _Ans.second));
+}
