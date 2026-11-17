@@ -282,3 +282,11 @@ bool tRepairableShipSystem::vfunction96()
         return true;
     return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00436870
+bool tRepairableShipSystem::vfunction97()
+{
+    if (field_5c != 0 && (field_5c & ~0x10) != 0)
+        return true;
+    return false;
+}

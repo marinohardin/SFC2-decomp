@@ -373,6 +373,8 @@ public:
     virtual float vfunction95();
     // vftable slot 95; tests bit 0x10 of field_5c.
     virtual bool vfunction96();
+    // vftable slot 96; tests field_5c for bits other than 0x10.
+    virtual bool vfunction97();
 
     // HYPOTHESIS: types follow the constructor's stores (fstp for floats, a register for the
     // rest); the meanings are not known.
