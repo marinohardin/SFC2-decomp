@@ -352,3 +352,16 @@ void fn_004d34e8( long arg1, long arg2, char arg3 )
 		obj->vfunction14( arg3 != 0 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004d350f
+void fn_004d350f( long arg1, long arg2 )
+{
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
+	if ( obj != 0 )
+	{
+		if ( arg2 != obj->vfunction19() )
+		{
+			obj->vfunction20( arg2 );
+		}
+	}
+}
