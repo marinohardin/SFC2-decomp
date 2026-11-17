@@ -65,6 +65,9 @@ public:
 	void fn_005e36a3();
 	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
 	void fn_005e370c( fn_005e36cd_entry *entry, int param_2 );
+	// HYPOTHESIS: 0x005e36cd passes the entry, its second argument, the element of the vector
+	// at +0x1a4 the entry's +0x14 selects, and three -1.
+	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, int param_3, int param_4, int param_5, int param_6 );
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
