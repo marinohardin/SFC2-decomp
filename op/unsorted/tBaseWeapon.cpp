@@ -561,10 +561,11 @@ bool tBaseWeapon::vfunction131(short param_1)
 // target entity, or 0 for the one named by field_ec.
 bool tBaseWeapon::vfunction132(int param_1)
 {
+    tPoint3 position;
     tPhysicalEntity *pShip = (tPhysicalEntity *)vfunction33();
     if (pShip != NULL)
     {
-        tPoint3 position(pShip->fCurrPos);
+        position = pShip->fCurrPos;
         short heading = pShip->field_0x90;
         tEntity *pTarget = (tEntity *)param_1;
         if (pTarget == NULL)

@@ -6756,8 +6756,8 @@
    "symbol": "?vfunction132@tBaseWeapon@@UAE_NH@Z",
    "unit": "unsorted/tBaseWeapon.cpp",
    "size": 229,
-   "score": 97.938,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x004e1e8f": {
