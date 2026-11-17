@@ -621,6 +621,7 @@ template<> tAccessPointer<const tObject_005391b0, tSingleAccessWrapper<tObject_0
 }
 
 #include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "unsorted/tServCharacter.h"
 
@@ -649,6 +650,31 @@ template<> tOutput& operator<<( tOutput& output, const std::vector< tServCharact
 	}
 
 	return output;
+}
+
+// The SDK's stream operator for a vector, defined in DataStoreInput.cpp.
+template< class tType >
+tInput& operator>>( tInput& input, std::vector< tType >& value );
+
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c80a.
+// FUNCTION: STARFLEETOP 0x0042c863
+template<> tInput& operator>>( tInput& input, std::vector< tServCharacter::tShipCache >& value )
+{
+	value.clear();
+
+	int32u size = 0;
+	input.Read( (byte*)&size, sizeof( size ) );
+
+	value.reserve( size );
+
+	for( int i = 0; i < size; i++ )
+	{
+		tServCharacter::tShipCache type;
+		input >> type;
+		value.push_back( type );
+	}
+
+	return input;
 }
 
 };

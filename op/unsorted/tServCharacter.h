@@ -28,6 +28,7 @@ public:
 	class tShipCache : public nDataStore::tStreamable
 	{
 	public:
+		tShipCache();
 		tShipCache( const fn_0054185f_ship& ship );
 		// HYPOTHESIS: the original declared no destructor; its implicit one (no vtable store)
 		// builds byte for byte, but the harness cannot claim a function with no source line, so
