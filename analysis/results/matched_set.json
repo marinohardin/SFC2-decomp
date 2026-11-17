@@ -6562,6 +6562,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00575066": {
+   "name": "FUN_00575066",
+   "symbol": "?fn_00575066@fn_00575023_owner@@QAEXPAPAVfn_00575066_object@@@Z",
+   "unit": "unsorted/fn_00575000.cpp",
+   "size": 68,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

@@ -6,16 +6,33 @@ public:
 	char m_pad[0x48];
 };
 
+class fn_00575066_object;
+
 class fn_00575023_owner
 {
 public:
 	void fn_00575023(fn_0057430c_object** out);
+	void fn_00575066(fn_00575066_object** out);
 	char m_pad[0xd0];
 	void* m_d0;
+};
+
+// HYPOTHESIS: the 0x4c-byte object built by fn_00575066 is unnamed; its constructor takes the value at +0xd0 and the owner
+class fn_00575066_object
+{
+public:
+	fn_00575066_object(void* arg, fn_00575023_owner* owner);
+	char m_pad[0x4c];
 };
 
 // FUNCTION: STARFLEETOP 0x00575023
 void fn_00575023_owner::fn_00575023(fn_0057430c_object** out)
 {
 	*out = new fn_0057430c_object(m_d0);
+}
+
+// FUNCTION: STARFLEETOP 0x00575066
+void fn_00575023_owner::fn_00575066(fn_00575066_object** out)
+{
+	*out = new fn_00575066_object(m_d0, this);
 }
