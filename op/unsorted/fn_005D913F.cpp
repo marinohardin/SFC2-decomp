@@ -175,3 +175,38 @@ fn_005d92b9_object::~fn_005d92b9_object()
     operator delete(m_nil);
     m_nil = 0;
 }
+
+// HYPOTHESIS: a doubly linked list of fn_005d913f_object values (an allocator byte at +0x00,
+// its head node at +0x04, its size at +0x08; each node holds next, prev, then the value).
+struct fn_005d92f1_list
+{
+    struct node
+    {
+        node *next;
+        node *prev;
+        fn_005d913f_object value;
+    };
+    class iterator
+    {
+    public:
+        iterator(node *n) : m_node(n) {}
+        iterator operator++(int) { iterator tmp = *this; m_node = m_node->next; return tmp; }
+        node *m_node;
+    };
+    iterator erase(iterator where);
+    char m_0x00[0x04];
+    node *m_head;
+    long m_size;
+};
+
+// FUNCTION: STARFLEETOP 0x005d92f1
+fn_005d92f1_list::iterator fn_005d92f1_list::erase(iterator where)
+{
+    node *s = (where++).m_node;
+    s->prev->next = s->next;
+    s->next->prev = s->prev;
+    (&s->value)->~fn_005d913f_object();
+    operator delete(s);
+    --m_size;
+    return where;
+}
