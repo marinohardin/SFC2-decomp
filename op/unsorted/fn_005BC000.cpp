@@ -347,3 +347,50 @@ fn_005bc2a0_elem *fn_005bc2a0_vector::FUN_005bc2a0(fn_005bc2a0_elem *_P, const f
 	FUN_005bcb5b(_P, 1, _X);
 	return (_First + (_P - _F));
 }
+
+// HYPOTHESIS: a 44-byte element with a virtual destructor in vtable slot 0;
+// 0x005b676a is its assignment operator.
+struct fn_005bc2cd_elem
+{
+	virtual ~fn_005bc2cd_elem();
+	fn_005bc2cd_elem &FUN_005b676a(const fn_005bc2cd_elem &_X);
+
+	char m04[0x28];
+};
+
+// HYPOTHESIS: an STL vector of 44-byte elements laid out like
+// fn_005bc018_vector.
+struct fn_005bc2cd_vector
+{
+	char m00;
+	fn_005bc2cd_elem *_First;
+	fn_005bc2cd_elem *_Last;
+	fn_005bc2cd_elem *_End;
+
+	fn_005bc2cd_elem *FUN_005bc2cd(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L);
+};
+
+// MATCH-ONLY: the STL's copy(_F, _L, _X) and _Destroy(_F, _L), written out
+// for this element because its assignment operator is not yet named.
+inline fn_005bc2cd_elem *fn_005bc2cd_copy(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L, fn_005bc2cd_elem *_X)
+{
+	for (; _F != _L; ++_X, ++_F)
+		_X->FUN_005b676a(*_F);
+	return (_X);
+}
+
+inline void fn_005bc2cd_Destroy(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L)
+{
+	for (; _F != _L; ++_F)
+		_F->~fn_005bc2cd_elem();
+}
+
+// HYPOTHESIS: the STL vector's erase(_F, _L).
+// FUNCTION: STARFLEETOP 0x005bc2cd
+fn_005bc2cd_elem *fn_005bc2cd_vector::FUN_005bc2cd(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L)
+{
+	fn_005bc2cd_elem *_S = fn_005bc2cd_copy(_L, _Last, _F);
+	fn_005bc2cd_Destroy(_S, _Last);
+	_Last = _S;
+	return (_F);
+}
