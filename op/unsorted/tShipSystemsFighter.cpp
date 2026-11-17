@@ -10,6 +10,7 @@
 extern float g_00799ed0;
 extern double g_0090bef0;
 extern float g_007959cc;
+extern int g_008e0cd0;
 
 // HYPOTHESIS: the slots before the destructor are not recovered; 0x00444004 calls the
 // deleting destructor through slot 169 (+0x2a4), so it is declared after 168 others.
@@ -173,7 +174,7 @@ public:
     virtual void vfunction154();
     virtual void vfunction155();
     virtual void vfunction156();
-    virtual void vfunction157();
+    virtual int* vfunction157( int );
     virtual void vfunction158();
     virtual char vfunction159(int);
     virtual void vfunction160();
@@ -711,4 +712,12 @@ char tShipSystemsFighter::vfunction159(int)
 // FUNCTION: STARFLEETOP 0x0044452e
 void tShipSystemsFighter::vfunction172( int, std::string )
 {
+}
+
+// HYPOTHESIS: the types; the original returns the address of the global at 0x008e0cd0 and
+// pops one unused dword argument.
+// FUNCTION: STARFLEETOP 0x00444638
+int* tShipSystemsFighter::vfunction157( int )
+{
+    return &g_008e0cd0;
 }
