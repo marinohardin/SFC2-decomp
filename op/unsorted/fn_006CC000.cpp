@@ -590,3 +590,15 @@ int fn_006ccb20(fn_006ccb20_record **out, char *host, int port, char *param_4, c
 	}
 	return 1;
 }
+
+void fn_006cce00(fn_006ccb20_record *record);
+void fn_006ccd60(fn_006ccb20_record *record);
+
+// FUNCTION: STARFLEETOP 0x006ccd40
+void fn_006ccd40(fn_006ccb20_record *record)
+{
+	if (record == 0)
+		record = g_00888838;
+	fn_006cce00(record);
+	fn_006ccd60(record);
+}
