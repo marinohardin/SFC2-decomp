@@ -47,6 +47,10 @@ extern const char *g_00844ec0;
 void fn_004d3340(const char *name);
 // HYPOTHESIS: the second argument is the group's name, as here; cdecl.
 void fn_004d346f(const char *name, const char *group);
+// HYPOTHESIS: three global strings, 0x28 bytes apart, handed to tNetControl::fn_004327a7.
+extern tString g_0090da38;
+extern tString g_0090da10;
+extern tString g_0090d9e8;
 
 namespace tState_Namespace_GameConnections
 {
@@ -68,6 +72,7 @@ public:
 	bool fn_004683ff();
 	bool fn_00468481();
 	bool fn_0046858a();
+	void fn_0046860d();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 	// HYPOTHESIS: hands the address field a named value; the types are guesses.
@@ -86,7 +91,11 @@ public:
 	char m19[0x1c - 0x19];
 	tValueI< tString > m1c;
 	tValueI< tString > m5c;
-	char m9c[0x19c - 0x9c];
+	// HYPOTHESIS: four more value objects, as the strings at +0x134 and +0x174 suggest.
+	tValueI< tString > m9c;
+	tValueI< tString > mdc;
+	tValueI< tString > m11c;
+	tValueI< tString > m15c;
 	tValueI< tString > m19c;
 	int m1dc;
 	int m1e0;
@@ -318,6 +327,21 @@ bool tState_GameConnections::fn_0046858a()
 	m19[0] = 0;
 	m12[0] = 1;
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0046860d
+void tState_GameConnections::fn_0046860d()
+{
+	switch (m1e4)
+	{
+	case 0x10005:
+		gNetControl.fn_004327a7(m15c.m18.mCharStr(), m19c.m18, g_0090da38, g_0090da10, g_0090d9e8);
+		break;
+	case 0x10009:
+		fn_00468a45(m1e0, "ModemAddress");
+		gNetControl.fn_004326aa(m11c.m18, 0);
+		break;
+	}
 }
 
 }

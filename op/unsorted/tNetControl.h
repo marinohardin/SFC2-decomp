@@ -57,6 +57,10 @@ public:
 	c_0043257a_node *fn_0043257a();
 	void fn_0043258a( int n );
 	bool fn_004325a9( int n );	// HYPOTHESIS: returns a flag (kept in bl)
+	// HYPOTHESIS: the string is passed by reference; the meaning of the int is not known.
+	void fn_004326aa( const tString &s, int n );
+	// HYPOTHESIS: (name, value, then three strings); all passed by reference after the first.
+	void fn_004327a7( const char *name, const tString &a, const tString &b, const tString &c, const tString &d );
 	void fn_0043289d();
 	void fn_0043290e( const tString &s );	// HYPOTHESIS: the string is passed by reference
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
