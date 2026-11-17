@@ -786,6 +786,7 @@ public:
 	std::string FUN_005c4e3c();
 	std::string FUN_005c4eaa();
 	std::string FUN_005c4f18();
+	std::string FUN_005c4f86();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -1490,4 +1491,11 @@ std::string fn_005c478f_Holder::FUN_005c4f18()
 {
 	tOptex::tGuard guard(&m04);
 	return *(std::string*)((char*)this + 0x384);
+}
+
+// FUNCTION: STARFLEETOP 0x005c4f86
+std::string fn_005c478f_Holder::FUN_005c4f86()
+{
+	tOptex::tGuard guard(&m04);
+	return *(std::string*)((char*)this + 0x394);
 }
