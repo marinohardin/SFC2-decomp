@@ -22,9 +22,14 @@ public:
     // HYPOTHESIS: returns the number of entries of field_1e0 in use.
     int fn_0043e351();
     void fn_0043e359(char param_1);
+    void vfunction51();
     char fn_0043eb5f(int aID);
 
-    char pad80[0x8c - 0x80];
+    // HYPOTHESIS: three objects 0x0043e366 asks a yes/no question (slot 9) and then calls at
+    // slot 50; their type is not recovered.
+    class fn_0043e366_part* field_80;
+    class fn_0043e366_part* field_84;
+    class fn_0043e366_part* field_88;
     tMinMaxFloat field_8c;
     tMinMaxFloat field_b0;
     tMinMaxFloat field_d4;
@@ -199,4 +204,72 @@ int tSensorGroupSystem::fn_0043e351()
 void tSensorGroupSystem::fn_0043e359(char param_1)
 {
     field_1d9 = param_1;
+}
+
+// HYPOTHESIS: the type of field_80, field_84 and field_88.
+class fn_0043e366_part
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual int vfunction10(); // slot 9
+    virtual void vfunction11();
+    virtual void vfunction12();
+    virtual void vfunction13();
+    virtual void vfunction14();
+    virtual void vfunction15();
+    virtual void vfunction16();
+    virtual void vfunction17();
+    virtual void vfunction18();
+    virtual void vfunction19();
+    virtual void vfunction20();
+    virtual void vfunction21();
+    virtual void vfunction22();
+    virtual void vfunction23();
+    virtual void vfunction24();
+    virtual void vfunction25();
+    virtual void vfunction26();
+    virtual void vfunction27();
+    virtual void vfunction28();
+    virtual void vfunction29();
+    virtual void vfunction30();
+    virtual void vfunction31();
+    virtual void vfunction32();
+    virtual void vfunction33();
+    virtual void vfunction34();
+    virtual void vfunction35();
+    virtual void vfunction36();
+    virtual void vfunction37();
+    virtual void vfunction38();
+    virtual void vfunction39();
+    virtual void vfunction40();
+    virtual void vfunction41();
+    virtual void vfunction42();
+    virtual void vfunction43();
+    virtual void vfunction44();
+    virtual void vfunction45();
+    virtual void vfunction46();
+    virtual void vfunction47();
+    virtual void vfunction48();
+    virtual void vfunction49();
+    virtual void vfunction50();
+    virtual void vfunction51(); // slot 50
+};
+
+// FUNCTION: STARFLEETOP 0x0043e366
+void tSensorGroupSystem::vfunction51()
+{
+    if (field_80 != 0 && field_80->vfunction10())
+        field_80->vfunction51();
+    if (field_84 != 0 && field_84->vfunction10())
+        field_84->vfunction51();
+    if (field_88 != 0 && field_88->vfunction10())
+        field_88->vfunction51();
 }
