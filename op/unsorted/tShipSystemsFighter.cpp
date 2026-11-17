@@ -182,7 +182,7 @@ public:
     virtual void vfunction162();
     virtual void vfunction163();
     virtual void vfunction164();
-    virtual void vfunction165();
+    virtual int vfunction165();
     virtual void vfunction166();
     virtual void vfunction167();
     virtual void vfunction168();
@@ -720,4 +720,11 @@ void tShipSystemsFighter::vfunction172( int, std::string )
 int* tShipSystemsFighter::vfunction157( int )
 {
     return &g_008e0cd0;
+}
+
+// HYPOTHESIS: the return type; the original returns the dword at +0x828.
+// FUNCTION: STARFLEETOP 0x00444640
+int tShipSystemsFighter::vfunction165()
+{
+    return m828;
 }

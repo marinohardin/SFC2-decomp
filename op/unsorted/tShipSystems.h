@@ -179,7 +179,7 @@ public:
     virtual void vfunction162() = 0;
     virtual void vfunction163() = 0;
     virtual void vfunction164() = 0;
-    virtual void vfunction165() = 0;
+    virtual int vfunction165() = 0;
     virtual void vfunction166() = 0;
     virtual void vfunction167() = 0;
     virtual void vfunction168() = 0;
