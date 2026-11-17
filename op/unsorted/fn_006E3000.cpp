@@ -180,6 +180,7 @@ public:
 	// character).
 	void FUN_006e34c0(const std::wstring& param_1, unsigned char param_2);
 	void FUN_006e3500(int param_1, const void* param_2, int param_3);
+	void FUN_006e3530(int param_1, unsigned char param_2);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -314,4 +315,10 @@ void tObject_006e3240::FUN_006e34c0(const std::wstring& param_1, unsigned char p
 void tObject_006e3240::FUN_006e3500(int param_1, const void* param_2, int param_3)
 {
 	memcpy(m10 + param_1, param_2, param_3);
+}
+
+// FUNCTION: STARFLEETOP 0x006e3530
+void tObject_006e3240::FUN_006e3530(int param_1, unsigned char param_2)
+{
+	FUN_006e3500(param_1, &param_2, 1);
 }
