@@ -1,4 +1,5 @@
 #include "Tiger/tstring.h"
+#include "Common/Thread/Optex.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tSupplyDockInfo.h"
 
@@ -43,10 +44,17 @@ class tObject_00583828
 	public:
 		tObject_00583828(void *object);
 		~tObject_00583828();
+		void Delete();
 
 	private:
-		char m_00[0x18];
+		void *fpPointer;
+		tOptex fPointerOptex;
 };
+
+inline tObject_00583828::~tObject_00583828()
+{
+	Delete();
+}
 
 class tSFCPlayer
 {
@@ -306,8 +314,11 @@ int tSFCPlayer::vfunction106()
 }
 
 // FUNCTION: STARFLEETOP 0x004cf997
+// FUNCTION: STARFLEETOP 0x004cf9cb
 tSFCPlayer::~tSFCPlayer()
 {
+	fn_004d0b28();
+	m_85a4.Delete();
 }
 
 void __stdcall fn_004d1b74(char *param_1, char *param_2);
