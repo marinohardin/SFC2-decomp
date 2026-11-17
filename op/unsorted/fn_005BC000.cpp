@@ -218,3 +218,56 @@ fn_005bc161_tree::iterator fn_005bc161_tree::FUN_005bc161(iterator _F, iterator 
 		_Head->_Left = _Head, _Head->_Right = _Head;
 		return (begin()); }
 }
+
+// HYPOTHESIS: another balanced tree laid out like fn_005bc161_tree, with
+// its own iterator increment; this is its erase(first, last).
+struct fn_005bc1d5_tree
+{
+	struct node
+	{
+		node *_Left;
+		node *_Parent;
+		node *_Right;
+	};
+	class iterator
+	{
+	public:
+		iterator() {}
+		iterator(node *_P) : _Ptr(_P) {}
+		// HYPOTHESIS: the iterator's increment.
+		iterator &FUN_005bd22b();
+		iterator operator++(int) { iterator _Tmp = *this; FUN_005bd22b(); return (_Tmp); }
+		bool operator==(const iterator &_X) const { return (_Ptr == _X._Ptr); }
+		bool operator!=(const iterator &_X) const { return (!(*this == _X)); }
+		node *_Ptr;
+	};
+
+	char m00[0x4];
+	node *_Head;
+	node *_Nil;
+	char m0c[0x4];
+	unsigned int _Size;
+
+	iterator begin() { return (iterator(_Head->_Left)); }
+	iterator end() { return (iterator(_Head)); }
+	unsigned int size() const { return (_Size); }
+	// HYPOTHESIS: erase(iterator).
+	iterator FUN_005bc645(iterator _P);
+	// HYPOTHESIS: _Erase(node).
+	void FUN_005bc8b0(node *_X);
+	iterator FUN_005bc1d5(iterator _F, iterator _L);
+};
+
+// FUNCTION: STARFLEETOP 0x005bc1d5
+fn_005bc1d5_tree::iterator fn_005bc1d5_tree::FUN_005bc1d5(iterator _F, iterator _L)
+{
+	if (size() == 0 || _F != begin() || _L != end())
+		{while (_F != _L)
+			FUN_005bc645(_F++);
+		return (_F); }
+	else
+		{FUN_005bc8b0(_Head->_Parent);
+		_Head->_Parent = _Nil, _Size = 0;
+		_Head->_Left = _Head, _Head->_Right = _Head;
+		return (begin()); }
+}
