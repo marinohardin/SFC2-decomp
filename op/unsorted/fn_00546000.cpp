@@ -76,6 +76,9 @@ class c_00451045
 {
 public:
     double fn_00451045(int param_1, int param_2);
+    // HYPOTHESIS: 0x00450e41 is called on the member at +0x90; its return and parameter
+    // types are unknown.
+    void fn_00450e41(int param_1);
 };
 
 // HYPOTHESIS: the class that owns 0x00546027; only the member at +0x90 is known.
@@ -95,6 +98,7 @@ public:
     // HYPOTHESIS: 0x005462ec returns the address of +0x30c, the member after field_100;
     // its type and that it belongs to this class are guesses.
     char* fn_005462ec();
+    void fn_00546325(int param_1);
     // HYPOTHESIS: 0x00410223 is called on the same object; it may belong to a base class.
     int fn_00410223();
 
@@ -337,4 +341,10 @@ void c_00546278::fn_005462f3(const nDatabase::tID& param_1)
     field_48 = param_1;
     if (field_48.IsValid())
         fn_0054627c(0);
+}
+
+// FUNCTION: STARFLEETOP 0x00546325
+void c_00546027::fn_00546325(int param_1)
+{
+    field_90.fn_00450e41(param_1);
 }
