@@ -150,3 +150,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0044c35d	FUN_0044c35d	18.64	2	sonnet	2026-11-17T15:44:03Z	best not above 90% after 2 attempts; best 18.64%
 0x0044cdbc	tShipSystemsExt::vfunction130	81.08	2	sonnet	2026-11-17T16:25:33Z	attempt 2 (sonnet) did not raise the best; best 81.08%
 0x0044e722	tShuttleBaySystem::vfunction100	0.00	2	sonnet	2026-11-17T17:24:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0044e793	FUN_0044e793	0.00	2	sonnet	2026-11-17T17:27:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
