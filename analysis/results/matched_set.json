@@ -1747,6 +1747,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0042739e": {
+   "name": "nStoredProcedureArguments::tTransactionUpdateStoresRequest::tTransactionUpdateStoresRequest",
+   "symbol": "??0tCurrentTime@@QAE@ABV0@@Z",
+   "unit": "unsorted/fn_00427382.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
