@@ -278,6 +278,7 @@ public:
 	virtual void v0c();
 	virtual void v0d();
 	virtual void vfunction15(int *ev);
+	virtual void vfunction16(int *ev);
 };
 
 extern fn_006735e0_owner g_fn_006735e0_owner;
@@ -489,6 +490,37 @@ void fn_00469ef9(unsigned int param_1)
 	if (g_0090db44 != 0)
 	{
 		((fn_0090db44_object *)g_0090db44)->vfunction15(ev);
+		if (ev[0] == 0)
+			return;
+	}
+	g_fn_00469c0a_owner.fn_00469c0a(ev);
+}
+
+// FUNCTION: STARFLEETOP 0x0046a2d4
+void fn_0046a2d4(unsigned int param_1)
+{
+	if (g_0090db9c != 0)
+		return;
+
+	g_fn_006735e0_owner.fn_006735e0(param_1);
+
+	int flags = 0;
+	if (fn_0069ac10())
+		flags = 1;
+	if (fn_0069ac30())
+		flags |= 2;
+
+	// HYPOTHESIS: same eight-int event record as fn_00469ef9, type 0x101.
+	int ev[8];
+	ev[0] = 0x101;
+	ev[1] = param_1;
+	ev[5] = flags;
+	ev[6] = 0;
+	ev[7] = 0;
+	fn_0069ab80(&ev[6], &ev[7], g_0090db90, g_0090db94);
+	if (g_0090db44 != 0)
+	{
+		((fn_0090db44_object *)g_0090db44)->vfunction16(ev);
 		if (ev[0] == 0)
 			return;
 	}
