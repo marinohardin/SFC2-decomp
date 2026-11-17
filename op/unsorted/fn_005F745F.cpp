@@ -75,6 +75,14 @@ public:
 	void* field_0c;
 };
 
+// HYPOTHESIS: the object at +0x2c of fn_005f745f_object; 0x005f7a6a takes its argument by
+// reference, its type is not known.
+class fn_005f7a6a_object
+{
+public:
+	void FUN_005f7a6a( const int& value );
+};
+
 // HYPOTHESIS: a container guarded by the lock at +0x40; only the members used here are placed.
 class fn_005f745f_object
 {
@@ -83,12 +91,15 @@ public:
 	fn_005f74a6_entry FUN_005f74a6();
 	void FUN_005f755c( int value );
 	fn_0055fe12_value FUN_005f75a3();
+	void FUN_005f7635( int value );
 
 	byte field_00[0x04];
 	fn_005f77c6_object field_04;
 	byte field_05[0x18 - 0x05];
 	fn_005f7961_object field_18;
-	byte field_28[0x40 - 0x28];
+	byte field_28[0x2c - 0x28];
+	fn_005f7a6a_object field_2c;
+	byte field_2d[0x40 - 0x2d];
 	tOptex field_40;
 };
 
@@ -147,4 +158,14 @@ fn_0055fe12_value fn_005f745f_object::FUN_005f75a3()
 // FUNCTION: STARFLEETOP 0x005f762d
 inline fn_0055fe12_value::~fn_0055fe12_value()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x005f7635
+void fn_005f745f_object::FUN_005f7635( int value )
+{
+	tOptex::tGuard guard( &field_40 );
+
+	field_2c.FUN_005f7a6a( value );
+
+	guard.Leave();
 }
