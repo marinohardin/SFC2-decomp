@@ -8911,6 +8911,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005e4351": {
+   "name": "FUN_005e4351",
+   "symbol": "?fn_005e4351@tMetaMapControl@@QAEHXZ",
+   "unit": "unsorted/tMetaMapControl.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
