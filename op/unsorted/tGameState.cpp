@@ -37,6 +37,7 @@ tGameState::~tGameState()
 }
 
 // HYPOTHESIS: a string held at 0x0090db10; this function returns a copy of it by value.
+// FUNCTION: STARFLEETOP 0x00469db4
 // FUNCTION: STARFLEETOP 0x00469d9c
 std::string g_0090db10;
 
