@@ -17299,6 +17299,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x006e3480": {
+   "name": "FUN_006e3480",
+   "symbol": "?FUN_006e3480@tObject_006e3240@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006e7e80": {
    "name": "nTestSim::tSimulator::tSimulator",
    "symbol": "??0tSimulator@nTestSim@@QAE@XZ",

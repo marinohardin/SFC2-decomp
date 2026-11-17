@@ -2,6 +2,7 @@
 
 #include <windows.h>
 #include <map>
+#include <string>
 
 // HYPOTHESIS: a scoped critical-section lock that counts how often it holds the
 // section; the destructor leaves it once per count.
@@ -172,6 +173,9 @@ public:
 	void FUN_006e3420(unsigned short param_1);
 	void FUN_006e3430(unsigned long param_1);
 	void FUN_006e3440(unsigned long param_1, unsigned char param_2);
+	// HYPOTHESIS: the string is VC6's std::string (data at +4, length at +8,
+	// c_str falling back to the shared empty string).
+	void FUN_006e3480(const std::string& param_1, unsigned char param_2);
 
 	char m00[0x4];
 	unsigned char m04;
@@ -286,4 +290,11 @@ void tObject_006e3240::FUN_006e3440(unsigned long param_1, unsigned char param_2
 		FUN_006e3430(param_1);
 		break;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006e3480
+void tObject_006e3240::FUN_006e3480(const std::string& param_1, unsigned char param_2)
+{
+	FUN_006e3440(param_1.size(), param_2);
+	FUN_006e33b0(param_1.c_str(), param_1.size());
 }
