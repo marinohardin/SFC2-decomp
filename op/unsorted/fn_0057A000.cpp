@@ -419,3 +419,10 @@ void fn_0057ab18( fn_0057a69e_value* _P, const fn_0057a69e_value& _V )
 {
 	new ((void*)_P) fn_0057a69e_value(_V);
 }
+
+// HYPOTHESIS: the tCallback<tStatusChangeInfo> deleting destructor follows 0x0057ab52;
+// fn_0057a96e_info stands in for nSwitch::tAddress::tStatusChangeInfo.
+// FUNCTION: STARFLEETOP 0x0057ab6f
+template<>
+tCallback<fn_0057a96e_info>::~tCallback()
+{}
