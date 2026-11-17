@@ -305,6 +305,7 @@ public:
 	void fn_004d2451(const char* text);
 	void fn_004d2521(const char* text);
 	void fn_004d2573(fn_004d2238_string s);
+	void fn_004d25af(int value);
 	fn_004d2238_string m_str;
 };
 
@@ -378,4 +379,46 @@ void fn_004d2420_holder::fn_004d2521(const char* text)
 void fn_004d2420_holder::fn_004d2573(fn_004d2238_string s)
 {
 	fn_004d2521(s.c_str());
+}
+
+// HYPOTHESIS: a reduced stand-in for std::stringstream (keeps this unit free of <sstream>, which
+// clashes with the reduced basic_string above). Callees: constructor 0x00402d88,
+// operator<<(int) 0x0041a2f0 region, str() 0x0042d292, virtual-base destructor 0x00401fd2.
+namespace std
+{
+	template <class C, class Tr> class basic_ios
+	{
+	public:
+		~basic_ios() {}
+		char m_ios[0x44];
+	};
+	template <class C, class Tr> class basic_istream : virtual public basic_ios<C, Tr>
+	{
+	public:
+		int m_chcount;
+	};
+	template <class C, class Tr> class basic_ostream : virtual public basic_ios<C, Tr>
+	{
+	public:
+		basic_ostream<C, Tr>& operator<<(int v);
+	};
+	template <class C, class Tr> class basic_iostream : public basic_istream<C, Tr>, public basic_ostream<C, Tr>
+	{
+	};
+	template <class C, class Tr, class A> class basic_stringstream : public basic_iostream<C, Tr>
+	{
+	public:
+		basic_stringstream(int mode = 3);
+		~basic_stringstream();
+		basic_string<C, Tr, A> str() const;
+		char m_buf[0x3c];
+	};
+}
+
+// FUNCTION: STARFLEETOP 0x004d25af
+void fn_004d2420_holder::fn_004d25af(int value)
+{
+	std::basic_stringstream<char, std::char_traits<char>, std::allocator<char> > stream;
+	stream << value;
+	fn_004d2521(stream.str().c_str());
 }
