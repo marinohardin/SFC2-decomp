@@ -287,6 +287,7 @@ public:
     virtual void vfunction63(); // slot 62
     // HYPOTHESIS: slot 63; returns the flag byte at +0x45.
     virtual bool vfunction64();
+    virtual void vfunction65(char param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -300,7 +301,9 @@ public:
     int field_28;
     // HYPOTHESIS: the owning ship (set from the constructor's first argument).
     class fn_owner_type* field_2c;
-    char pad30[0x40 - 0x30];
+    // HYPOTHESIS: a byte set by slot 64 (vfunction65).
+    char field_30;
+    char pad31[0x40 - 0x31];
     float field_40;
     char pad44[0x45 - 0x44];
     bool field_45;
