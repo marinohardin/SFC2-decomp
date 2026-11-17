@@ -112,13 +112,31 @@ struct fn_005d9281_tree
     long m_size;
 };
 
-// HYPOTHESIS: a member at +0x14 whose destructor is 0x005d92b9.
-class fn_005d92b9_object
+// HYPOTHESIS: a member at +0x14, a second 20-byte balanced tree of the same shape whose
+// destructor is 0x005d92b9 and whose range erase is 0x005d939d.
+struct fn_005d92b9_object
 {
-public:
+    struct node
+    {
+        node *left;
+        node *parent;
+        node *right;
+    };
+    class iterator
+    {
+    public:
+        iterator(node *n) : m_node(n) {}
+        node *m_node;
+    };
     ~fn_005d92b9_object();
-
-    long m00;
+    iterator fn_005d939d(iterator first, iterator last);
+    iterator begin() { return iterator(m_head->left); }
+    iterator end() { return iterator(m_head); }
+    char m_0x00[0x04];
+    node *m_head;
+    node *m_nil;
+    char m_0x0c[0x04];
+    long m_size;
 };
 
 // HYPOTHESIS: an object owning a tree of values at +0x00, deleting each value when destroyed.
@@ -142,6 +160,16 @@ fn_005d9200_object::~fn_005d9200_object()
 fn_005d9281_tree::~fn_005d9281_tree()
 {
     fn_005d9329(begin(), end());
+    operator delete(m_head);
+    m_head = 0, m_size = 0;
+    operator delete(m_nil);
+    m_nil = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x005d92b9
+fn_005d92b9_object::~fn_005d92b9_object()
+{
+    fn_005d939d(begin(), end());
     operator delete(m_head);
     m_head = 0, m_size = 0;
     operator delete(m_nil);
