@@ -12,6 +12,7 @@ class c_tNetControl_8D00;
 class c_0043127f_node;
 struct tNetMsg;
 struct c_tNetControl_8CC4_entry;	// HYPOTHESIS: defined in tNetControl.cpp, its only user
+class c_004329af_entry;
 
 // HYPOTHESIS: a node of the list fn_0043257a returns: the next node, then a name the game
 // state compares with protocol names.
@@ -55,6 +56,8 @@ public:
 	void fn_00432f5a();
 	void fn_00431917();
 	c_0043257a_node *fn_0043257a();
+	// HYPOTHESIS: returns a vector of 0xc-byte entries, each named by a C string ("COM%d").
+	std::vector< c_004329af_entry > *fn_004329af();
 	void fn_0043258a( int n );
 	bool fn_004325a9( int n );	// HYPOTHESIS: returns a flag (kept in bl)
 	// HYPOTHESIS: the string is passed by reference; the meaning of the int is not known.

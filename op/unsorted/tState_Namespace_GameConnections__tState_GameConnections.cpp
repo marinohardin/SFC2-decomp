@@ -39,7 +39,7 @@ extern const char *g_00844ea4;
 extern const char *g_00844ea8;
 bool fn_0046a9e2();
 // HYPOTHESIS: enables (1) or disables (0) the control with the given id.
-void fn_004d34c5(int id, int enable);
+void fn_004d34c5(int id, bool enable);
 // HYPOTHESIS: pointers to the names "OtherConnectionsModem", "modemEntry" and "cCancelGame".
 extern const char *g_00844eac;
 extern const char *g_00844eb0;
@@ -51,6 +51,18 @@ void fn_004d346f(const char *name, const char *group);
 extern tString g_0090da38;
 extern tString g_0090da10;
 extern tString g_0090d9e8;
+
+// HYPOTHESIS: a pointer to the name "OtherConnectionsSerialPort".
+extern const char *g_00844eb4;
+void fn_004d3564(const char *psz1, const char *psz2, int n);
+// HYPOTHESIS: an entry of the port list fn_004329af returns; 0x0060f6d0 returns its name.
+// tNetControl.cpp declares a class with the same getter only inside that unit.
+class c_004329af_entry
+{
+public:
+	const char *fn_0060f6d0();
+	char m00[0xc];
+};
 
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;
@@ -102,6 +114,7 @@ public:
 	void fn_0046860d();
 	// HYPOTHESIS: copies the text after the separator g_00844ec4, or all of it; types are guesses.
 	void fn_00468677(c_00468677_source *source, tString &out);
+	void fn_004686f6();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 	// HYPOTHESIS: hands the address field a named value; the types are guesses.
@@ -385,6 +398,58 @@ void tState_GameConnections::fn_00468677(c_00468677_source *source, tString &out
 			out = text->substr(pos + 1);
 		else
 			out = *text;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004686f6
+void tState_GameConnections::fn_004686f6()
+{
+	bool free[6];
+	free[0] = true;
+	free[1] = true;
+	free[2] = true;
+	free[3] = true;
+	free[4] = true;
+	free[5] = true;
+	char port[10] = "";
+
+	std::vector< c_004329af_entry > *ports = gNetControl.fn_004329af();
+	if (ports)
+	{
+		for (c_004329af_entry *entry = ports->begin(); entry != ports->end(); entry++)
+		{
+			for (int i = 0; i < 6; i++)
+			{
+				sprintf(port, "COM%d", i + 1);
+				if (!strcmp(entry->fn_0060f6d0(), port))
+				{
+					free[i] = false;
+					break;
+				}
+			}
+		}
+
+		int first = -1;
+		for (int i = 0; i < 6; i++)
+		{
+			if (first < 0 && !free[i])
+				first = i + 1;
+			fn_004d34c5(0x10036 + i, free[i]);
+		}
+
+		if (first > -1)
+		{
+			fn_004d3564(g_00844eb4, "OtherConnectionsSerialRadio", first);
+			sprintf(port, "COM%d", first);
+			{
+				tString text(port);
+				m15c = text;
+			}
+			{
+				tString text(g_00844e34[m224[0]]);
+				m19c = text;
+			}
+		}
 	}
 }
 
