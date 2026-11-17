@@ -16876,6 +16876,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00690300": {
+   "name": "tSession::~tSession",
+   "symbol": "?fn_00690300@@YAPAVfn_0068ff60_Root@@PAGAAVtString@@PAV1@VtDir@@@Z",
+   "unit": "unsorted/tSession.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006a2dc0": {
    "name": "FUN_006a2dc0",
    "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",

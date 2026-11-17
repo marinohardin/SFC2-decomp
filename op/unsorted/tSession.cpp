@@ -103,3 +103,11 @@ fn_0068d830_Item *fn_006901b0( fn_0068ff60_Root *root )
 	parser.fn_00690180( tString( "" ), root, dir );
 	return parser.fn_00692620( root->f_68.mWideStr() );
 }
+
+// FUNCTION: STARFLEETOP 0x00690300
+// HYPOTHESIS: a wrapper with fn_0068ff60's parameters that passes them on unchanged; the
+// argument types are taken from fn_0068ff60.
+fn_0068ff60_Root *fn_00690300( iBasicStringElement *a, tString &b, fn_0068ff60_Root *c, tDir dir )
+{
+	return fn_0068ff60( a, b, c, dir );
+}
