@@ -46,3 +46,32 @@ std::string& std::string::append(size_type _M, char _C)
     }
     return (*this);
 }
+
+// FUNCTION: STARFLEETOP 0x00403b49
+std::string& std::string::assign(const std::string& _X, size_type _P, size_type _M)
+{
+    if (_X.size() < _P)
+        _Xran();
+    size_type _N = _X.size() - _P;
+    if (_M < _N)
+        _N = _M;
+    if (this == &_X)
+        erase((size_type)(_P + _N)), erase(0, _P);
+    else if (0 < _N && _N == _X.size() && _Refcnt(_X.c_str()) < (char)_FROZEN) // MATCH-ONLY: the exe compares the byte against -1 as a signed int
+    {
+        _Tidy(true);
+        _Ptr = (char*)_X.c_str();
+        _Len = _X.size();
+        _Res = _X.capacity();
+        ++_Refcnt(_Ptr);
+    }
+    else if (_Grow(_N, true))
+    {
+        std::char_traits<char>::copy(_Ptr, &_X.c_str()[_P], _N);
+        _Eos(_N);
+    }
+    return (*this);
+}
+
+// HYPOTHESIS: a caller in the original (e.g. string::operator=) references this instantiation.
+std::string& (std::string::*g_fn_00403b49)(const std::string&, std::string::size_type, std::string::size_type) = &std::string::assign;
