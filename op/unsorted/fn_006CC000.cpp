@@ -490,3 +490,13 @@ int fn_006cc9e0(fn_006cc0f0_server *server, char *key, int fallback)
 		return fallback;
 	return atoi(pair[1]);
 }
+
+// HYPOTHESIS: a case-insensitive string hash reduced to a table of the given size.
+// FUNCTION: STARFLEETOP 0x006cca80
+unsigned int fn_006cca80(char *s, unsigned int size)
+{
+	unsigned int hash = 0;
+	for (; *s; s++)
+		hash = hash * 0x9ccf9319 + tolower(*s);
+	return hash % size;
+}
