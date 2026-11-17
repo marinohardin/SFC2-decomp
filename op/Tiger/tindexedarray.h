@@ -10,7 +10,8 @@
 // HYPOTHESIS: layout from the constructor inlined into tAudioFileInfoPart::mActivate
 // (0x00657980): an item block, a count, a grow step of 0x40, a default item copied into every
 // new slot, and one byte per slot set to 1. The field names are not recovered. The allocation
-// goes through tMemoryPart, which the including unit declares.
+// goes through tMemoryPart, which the including unit declares. The constructor sizes the
+// blocks through the grow function: only that form gives 0x00657980 its exact epilogue.
 template <class T>
 class	tStandardMemoryArray
 {
@@ -54,15 +55,7 @@ inline tStandardMemoryArray<T>::tStandardMemoryArray( long aSize )
 	field_2c = -1;
 	field_28 = NULL;
 
-#line 263
-	field_08 = (T *) BindPart(tMemoryPart)->mAllocate( aSize * sizeof(T), __LINE__, __FILE__ );
-	field_28 = (int8u *) BindPart(tMemoryPart)->mAllocate( aSize, __LINE__, __FILE__ );
-
-	for ( ; field_10 < aSize; field_10++ )
-	{
-		field_08[field_10] = field_18;
-		field_28[field_10] = 1;
-	}
+	fn_Grow( aSize );
 }
 
 template <class T>
