@@ -75,6 +75,8 @@ struct fn_0053a73a_map
 	fn_0053a73a_map& operator=( const fn_0053a73a_map& other );
 	std::pair< iterator, bool > insert( const value_type& v );
 	int32& operator[]( const int32& key );
+	// HYPOTHESIS: the out-of-line lookup 0x0053aa7a, taken to be the map's find.
+	iterator find( const int32& key );
 	iterator begin() const { return iterator( m_tree.m_head->left ); }
 	iterator end() const { return iterator( m_tree.m_head ); }
 
@@ -189,6 +191,7 @@ public:
 	int32 fn_0053a35c();
 	long fn_0053a37c();
 	long fn_0053a39c();
+	long fn_0053a3bc( int32 param_1 );
 
 	virtual void StreamOut( nDataStore::tOutput& output ) const;
 	virtual void StreamIn( nDataStore::tInput& input );
