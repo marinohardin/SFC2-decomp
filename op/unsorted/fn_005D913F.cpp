@@ -90,6 +90,8 @@ struct fn_005d9281_tree
         node *right;
         long first;
         fn_005d9200_value *second;
+        char color; // red 0, black 1
+        char isnil;
     };
     class iterator
     {
@@ -127,6 +129,10 @@ struct fn_005d92b9_object
     iterator fn_005d939d(iterator first, iterator last);
     iterator fn_005d9441(iterator where);
     void fn_005d96ac(node *n);
+    void fn_00556fd0(node *n);
+    static node *fn_min(node *p);
+    static node *fn_max(node *p);
+    void fn_00558526(node *n);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
     char m_0x00[0x04];
@@ -257,4 +263,160 @@ void fn_005d9281_tree::fn_005d9411(node *n)
         p = p->left;
         operator delete(n);
     }
+}
+
+// HYPOTHESIS: the value a node of fn_005d92b9_object holds at +0x0c; 0x005d6a66 destroys it
+// in place.
+class fn_005d6a66_value
+{
+public:
+    void fn_005d6a66();
+};
+
+// MATCH-ONLY: the leftmost and rightmost node searches, inlined into the erase below.
+inline fn_005d92b9_object::node *fn_005d92b9_object::fn_min(node *p)
+{
+    while (!p->left->isnil)
+        p = p->left;
+    return p;
+}
+
+inline fn_005d92b9_object::node *fn_005d92b9_object::fn_max(node *p)
+{
+    while (!p->right->isnil)
+        p = p->right;
+    return p;
+}
+
+// HYPOTHESIS: the library's red-black tree erase; 0x00556fd0 and 0x00558526 are its left
+// and right rotations.
+// FUNCTION: STARFLEETOP 0x005d9441
+fn_005d92b9_object::iterator fn_005d92b9_object::fn_005d9441(iterator where)
+{
+    node *x;
+    node *z = (where++).m_node;
+    node *y = z;
+    if (y->left == m_nil)
+        x = y->right;
+    else if (y->right == m_nil)
+        x = y->left;
+    else
+    {
+        y = fn_min(y->right);
+        x = y->right;
+    }
+    if (y != z)
+    {
+        z->left->parent = y;
+        y->left = z->left;
+        if (y == z->right)
+            x->parent = y;
+        else
+        {
+            x->parent = y->parent;
+            y->parent->left = x;
+            y->right = z->right;
+            z->right->parent = y;
+        }
+        if (m_head->parent == z)
+            m_head->parent = y;
+        else if (z->parent->left == z)
+            z->parent->left = y;
+        else
+            z->parent->right = y;
+        y->parent = z->parent;
+        char c = y->color;
+        y->color = z->color;
+        z->color = c;
+        y = z;
+    }
+    else
+    {
+        x->parent = y->parent;
+        if (m_head->parent == z)
+            m_head->parent = x;
+        else if (z->parent->left == z)
+            z->parent->left = x;
+        else
+            z->parent->right = x;
+        if (m_head->left != z)
+            ;
+        else if (z->right == m_nil)
+            m_head->left = z->parent;
+        else
+            m_head->left = fn_min(x);
+        if (m_head->right != z)
+            ;
+        else if (z->left == m_nil)
+            m_head->right = z->parent;
+        else
+            m_head->right = fn_max(x);
+    }
+    if (y->color == 1)
+    {
+        for (; x != m_head->parent && x->color == 1; x = x->parent)
+        {
+            if (x == x->parent->left)
+            {
+                node *w = x->parent->right;
+                if (w->color == 0)
+                {
+                    w->color = 1;
+                    x->parent->color = 0;
+                    fn_00556fd0(x->parent);
+                    w = x->parent->right;
+                }
+                if (w->left->color == 1 && w->right->color == 1)
+                    w->color = 0;
+                else
+                {
+                    if (w->right->color == 1)
+                    {
+                        w->left->color = 1;
+                        w->color = 0;
+                        fn_00558526(w);
+                        w = x->parent->right;
+                    }
+                    w->color = x->parent->color;
+                    x->parent->color = 1;
+                    w->right->color = 1;
+                    fn_00556fd0(x->parent);
+                    break;
+                }
+            }
+            else
+            {
+                node *w = x->parent->left;
+                if (w->color == 0)
+                {
+                    w->color = 1;
+                    x->parent->color = 0;
+                    fn_00558526(x->parent);
+                    w = x->parent->left;
+                }
+                if (w->right->color == 1 && w->left->color == 1)
+                    w->color = 0;
+                else
+                {
+                    if (w->left->color == 1)
+                    {
+                        w->right->color = 1;
+                        w->color = 0;
+                        fn_00556fd0(w);
+                        w = x->parent->left;
+                    }
+                    w->color = x->parent->color;
+                    x->parent->color = 1;
+                    w->left->color = 1;
+                    fn_00558526(x->parent);
+                    break;
+                }
+            }
+        }
+        x->color = 1;
+    }
+    ((fn_005d6a66_value *)&y->first)->fn_005d6a66();
+    operator delete(y);
+    --m_size;
+    return where;
 }
