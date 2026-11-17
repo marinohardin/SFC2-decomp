@@ -41,6 +41,9 @@ extern long g_00918108;
 // HYPOTHESIS: a free function called before AIL_startup; its role is not known.
 void fn_006f3870();
 
+// HYPOTHESIS: skips a number of bytes in a file (fn_0050fc69 passes over wave chunks with it).
+void fn_0050feb2( tBasicFile *param_1, unsigned long param_2 );
+
 // HYPOTHESIS: the member classes below are named after their destructors until evidence names
 // them; sizes come from the member offsets in tSndMgr_Miles.
 // HYPOTHESIS: this is tSndZipInfoMgr (size 0x254, mInit at 0x0066c9b0), which is declared only
@@ -135,11 +138,15 @@ struct fn_0050eea7_sample
 	void *field_20;
 	void *field_24;
 	char pad_28[0x4];
-	unsigned long field_2c;
-	char pad_30[0xc];
+	// HYPOTHESIS: volatile, as fn_0050fc69 rereads it after its store.
+	volatile unsigned long field_2c;
+	// HYPOTHESIS: the data chunk's size twice and its file position (fn_0050fc69).
+	unsigned long field_30;
+	unsigned long field_34;
+	unsigned long field_38;
 	char field_3c;
 	char pad_3d[0x3];
-	long field_40;
+	tBasicFile *field_40;
 	char field_44;
 	char pad_45[0x3];
 	tBasicFile *field_48;
@@ -161,9 +168,11 @@ struct fn_0050eea7_sample
 	// HYPOTHESIS: volume (0..127), pan (64 centred) and a start offset.
 	long field_6c;
 	long field_70;
-	long field_74;
+	// HYPOTHESIS: a playback rate overriding the file's; volatile, as fn_0050fc69 rereads it.
+	volatile long field_74;
 	char field_78;
-	char field_79;
+	// HYPOTHESIS: set when the channel's data is IMA ADPCM; volatile, as fn_0050fc69 rereads it.
+	volatile char field_79;
 	char pad_7a[0x2];
 };
 
@@ -218,6 +227,8 @@ public:
 	unsigned long fn_0050fb04( long param_1 );
 	long fn_0050fb3e( unsigned long param_1, long param_2 );
 	long fn_0050fba4( long param_1, char *param_2 );
+	// HYPOTHESIS: reads a channel's wave header from its file and sets up the Miles sample.
+	char fn_0050fc69( long param_1, long param_2 );
 
 	char pad_0004[0xc];
 	// HYPOTHESIS: 32 channels, the most vfunction28 allows; the shutdown clears 0xf80 bytes.
@@ -908,4 +919,80 @@ long tSndMgr_Miles::fn_0050fba4( long param_1, char *param_2 )
 		}
 	}
 	return found;
+}
+
+// FUNCTION: STARFLEETOP 0x0050fc69
+char tSndMgr_Miles::fn_0050fc69( long param_1, long param_2 )
+{
+	char id[5] = "1234";
+	unsigned long size;
+	unsigned short format;
+	unsigned short channels;
+	long rate;
+	long bytesPerSec;
+	unsigned short blockAlign;
+	unsigned short bits;
+
+	field_10[param_1].field_40->mRead( id, 4 );
+	field_10[param_1].field_40->mRead( &size, 4 );
+	if ( !strcmp( id, "RIFF" ) )
+	{
+		field_10[param_1].field_40->mRead( id, 4 );
+		param_2 -= 12;
+		if ( !strcmp( id, "WAVE" ) )
+		{
+			while ( param_2 > 8 )
+			{
+				field_10[param_1].field_40->mRead( id, 4 );
+				field_10[param_1].field_40->mRead( &size, 4 );
+				param_2 -= 8 + size;
+				if ( !strcmp( id, "fmt " ) )
+				{
+					field_10[param_1].field_40->mRead( &format, 2 );
+					if ( format != 1 && format != 0x11 )
+						return 0;
+					field_10[param_1].field_40->mRead( &channels, 2 );
+					field_10[param_1].field_40->mRead( &rate, 4 );
+					field_10[param_1].field_40->mRead( &bytesPerSec, 4 );
+					field_10[param_1].field_40->mRead( &blockAlign, 2 );
+					field_10[param_1].field_40->mRead( &bits, 2 );
+					if ( size > 16 )
+						fn_0050feb2( field_10[param_1].field_40, size - 16 );
+				}
+				else if ( !strcmp( id, "data" ) )
+				{
+					field_10[param_1].field_2c = field_10[param_1].field_40->mFilePos();
+					field_10[param_1].field_38 = field_10[param_1].field_2c;
+					field_10[param_1].field_34 = size;
+					field_10[param_1].field_30 = size;
+					field_10[param_1].field_79 = format == 0x11;
+					if ( !field_10[param_1].field_74 )
+						AIL_set_sample_playback_rate( field_10[param_1].field_0, rate );
+					else
+						AIL_set_sample_playback_rate( field_10[param_1].field_0, field_10[param_1].field_74 );
+					long type;
+					if ( field_10[param_1].field_79 )
+						type = channels == 2 ? 7 : 5;
+					else if ( channels == 2 && bits == 16 )
+						type = 3;
+					else if ( channels == 1 && bits == 16 )
+						type = 1;
+					else if ( channels == 2 && bits == 8 )
+						type = 2;
+					else
+						type = 0;
+					AIL_set_sample_type( field_10[param_1].field_0, type, bits != 8 );
+					if ( field_10[param_1].field_79 )
+						AIL_set_sample_adpcm_block_size( field_10[param_1].field_0, blockAlign );
+					AIL_set_sample_volume( field_10[param_1].field_0, field_10[param_1].field_6c );
+					AIL_set_sample_pan( field_10[param_1].field_0, field_10[param_1].field_70 );
+					field_10[param_1].field_3c = 1;
+					return 1;
+				}
+				else
+					fn_0050feb2( field_10[param_1].field_40, size );
+			}
+		}
+	}
+	return 0;
 }
