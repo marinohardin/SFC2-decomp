@@ -36,6 +36,10 @@ public:
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
 
+	bool IsDead();
+	void AddReference();
+	void RemoveReference();
+
 protected:
 //Fields
 	// HYPOTHESIS: fAccess, fID, fAlive, fReferenceCount, fLockEvent and fLockID fill
