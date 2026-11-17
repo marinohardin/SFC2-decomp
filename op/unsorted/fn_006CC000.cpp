@@ -476,3 +476,17 @@ char **fn_006cc9a0(fn_006cc0f0_server *server, char *key)
 	pair[0] = *found;
 	return (char **)fn_006bf750(record->field_0c, pair);
 }
+
+// HYPOTHESIS: returns the value stored under a key of a server entry as a number, or the
+// default given; the "ping" key is answered from the measured ping itself.
+// FUNCTION: STARFLEETOP 0x006cc9e0
+int fn_006cc9e0(fn_006cc0f0_server *server, char *key, int fallback)
+{
+	char **pair;
+	if (strcmp(key, "ping") == 0)
+		return fn_006cc8e0((fn_006cc530_record *)server);
+	pair = fn_006cc9a0(server, key);
+	if (pair == 0)
+		return fallback;
+	return atoi(pair[1]);
+}
