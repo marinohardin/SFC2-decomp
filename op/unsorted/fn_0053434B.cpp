@@ -645,3 +645,22 @@ void fn_00534950_object::fn_00534e59(int kind, bool reset)
 {
     field_e18c[kind]->fn_00534840(reset);
 }
+
+// HYPOTHESIS: owning class unknown; only the pointer at +8 is evidenced. The call to
+// 0x0043463f pushes three arguments, leaves ecx as it is and does not clean the stack, so it
+// is taken to be a member of the same class called on this.
+class fn_00534e70_object
+{
+public:
+    void fn_0043463f(void* target, long flag, long value);
+    void fn_00534e70(long value);
+
+    char field_00[8];
+    void* field_08;
+};
+
+// FUNCTION: STARFLEETOP 0x00534e70
+void fn_00534e70_object::fn_00534e70(long value)
+{
+    fn_0043463f(field_08, 1, value);
+}
