@@ -56,6 +56,7 @@ public:
     virtual int vfunction63();
     virtual int vfunction64();
     virtual int vfunction65();
+    virtual int vfunction66();
     virtual void vfunction107( float param_1 );
 
     tIndividualShipSystemList m04;
@@ -340,5 +341,15 @@ int tShipSystemsExt::vfunction65()
     char* p = *(char**)m584;
     if( p != 0 )
         return *(int*)( p + 0xb4 );
+    return 0;
+}
+
+// HYPOTHESIS: as vfunction64, returning the object's +0xb8.
+// FUNCTION: STARFLEETOP 0x004488fa
+int tShipSystemsExt::vfunction66()
+{
+    char* p = *(char**)m584;
+    if( p != 0 )
+        return *(int*)( p + 0xb8 );
     return 0;
 }
