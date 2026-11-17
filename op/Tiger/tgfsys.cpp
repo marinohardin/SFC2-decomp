@@ -613,6 +613,7 @@ public:
 	void mRemove( tPath &cookie )			{ f_04--; fPathCookies.mRemove( cookie ); }
 	void mRemove( tVolIterator &cookie )	{ f_04--; fVolIterCookies.mRemove( cookie ); }
 	void mRemove( tDirIterator &cookie )	{ f_04--; fDirIterCookies.mRemove( cookie ); }
+	void mRemove( tSession &cookie )		{ f_04--; fSessionCookies.mRemove( cookie ); }
 	void mRemove( tPathIterator &cookie )	{ f_04--; fPathIterCookies.mRemove( cookie ); }
 
 	// HYPOTHESIS: f_04 is the count tFileSession::tFileSession raises; f_00 is not recovered. The
@@ -658,7 +659,6 @@ public:
 //
 //
 //
-//
 
 // FUNCTION: STARFLEETOP 0x0061bae0
 tFileSession::tFileSession()
@@ -679,9 +679,9 @@ tFileSession::tFileSession()
 // FUNCTION: STARFLEETOP 0x0061bdd0
 inline tFileSession::~tFileSession()
 {
-	tFSCookiePart	*part = BindPart( tFSCookiePart );
-	part->fFSCookies.f_04--;
-	part->fFSCookies.fSessionCookies.mRemove( fSession );
+	BindPart( tFSCookiePart )->fFSCookies.mRemove( fSession );
+
+
 }
 
 // FUNCTION: STARFLEETOP 0x0061bf50
