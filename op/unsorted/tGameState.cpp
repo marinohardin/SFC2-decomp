@@ -128,53 +128,40 @@ bool tGameState::vfunction17(int param_1)
 	return fn_0046a62d((char *)param_1);
 }
 
-// HYPOTHESIS: fn_0046995a is a method of an unidentified class; this passes a global object of it as this.
-class fn_0046995a_owner
+// HYPOTHESIS: the global at 0x0090db88 is an object of an unidentified class: 0x0046995a,
+// 0x0046995e and 0x00469979 are called with it as this, and its first int is read on its own
+// (0x0046aa04, and 0x00469e4d passes its address). Member names and types are guessed.
+class fn_0090db88_owner
 {
 public:
 	void fn_0046995a();
+	void fn_0046995e();
+	void fn_00469979(int param_1);
+
+	int m_00;
 };
 
-extern fn_0046995a_owner g_fn_0046995a_owner;
+extern fn_0090db88_owner g_0090db88;
 
 // FUNCTION: STARFLEETOP 0x00469e2a
 void tGameState::vfunction18()
 {
-	g_fn_0046995a_owner.fn_0046995a();
+	g_0090db88.fn_0046995a();
 }
-
-// HYPOTHESIS: fn_0046995e is the next method of the same unidentified class.
-class fn_0046995e_owner
-{
-public:
-	void fn_0046995e();
-};
-
-extern fn_0046995e_owner g_fn_0046995e_owner;
 
 // FUNCTION: STARFLEETOP 0x00469e34
 void fn_00469e34()
 {
-	g_fn_0046995e_owner.fn_0046995e();
+	g_0090db88.fn_0046995e();
 }
-
-// HYPOTHESIS: fn_00469979 is a method of another unidentified class.
-class fn_00469979_owner
-{
-public:
-	void fn_00469979(int param_1);
-};
-
-extern fn_00469979_owner g_fn_00469979_owner;
 
 // FUNCTION: STARFLEETOP 0x00469e3e
 void fn_00469e3e(int param_1)
 {
-	g_fn_00469979_owner.fn_00469979(param_1);
+	g_0090db88.fn_00469979(param_1);
 }
 
-// HYPOTHESIS: the globals at 0x0090db88..0x0090db9c are four values and a flag; types guessed.
-extern int g_0090db88;
+// HYPOTHESIS: the globals at 0x0090db8c..0x0090db9c are three values and a flag; types guessed.
 extern int g_0090db8c;
 extern int g_0090db90;
 extern int g_0090db94;
@@ -187,11 +174,13 @@ void fn_00469e4d()
 {
 	if (g_0090db9c == 0)
 	{
-		fn_0069ab80(&g_0090db88, &g_0090db8c, g_0090db90, g_0090db94);
+		fn_0069ab80(&g_0090db88.m_00, &g_0090db8c, g_0090db90, g_0090db94);
 	}
 }
 
-// HYPOTHESIS: the object returned by fn_0040c28c and the global at 0x0090db70 are of unidentified classes.
+// HYPOTHESIS: the object returned by fn_0040c28c and the global at 0x0090db70 are of unidentified
+// classes. 0x00672b60, 0x006734e0, 0x006735e0, 0x00672f40 and 0x00672f80 are called with the
+// global as this.
 class fn_0040c28c_object
 {
 public:
@@ -205,6 +194,9 @@ class fn_0090db70_owner
 public:
 	char fn_00672b60(fn_0040c28c_object *, int);
 	void fn_006734e0(int, int, int, int);
+	void fn_006735e0(unsigned int param_1);
+	void fn_00672f40();
+	void fn_00672f80(int param_1);
 };
 
 fn_0040c28c_object *fn_0040c28c();
@@ -234,15 +226,6 @@ char fn_00469e75(int param_1, int param_2)
 extern int g_0090db44;
 char fn_0046a688(int param_1);
 
-// HYPOTHESIS: fn_00672f40 is a method of an unidentified class, called on a global object (this = its address).
-class fn_00672f40_owner
-{
-public:
-	void fn_00672f40();
-};
-
-extern fn_00672f40_owner g_fn_00672f40_owner;
-
 // FUNCTION: STARFLEETOP 0x00469ed8
 void fn_00469ed8()
 {
@@ -251,17 +234,11 @@ void fn_00469ed8()
 		fn_0046a688(g_0090db44);
 		g_0090db44 = 0;
 	}
-	g_fn_00672f40_owner.fn_00672f40();
+	g_0090db70.fn_00672f40();
 }
 
-// HYPOTHESIS: methods of the unidentified classes of the globals at 0x0090db70 and 0x0090dbb0,
-// the object held in g_0090db44 (only its slot at 0x38 is known), and the flag at 0x0090e004.
-class fn_006735e0_owner
-{
-public:
-	void fn_006735e0(unsigned int param_1);
-};
-
+// HYPOTHESIS: methods of the unidentified class of the global at 0x0090dbb0, the object held
+// in g_0090db44 (only its slot at 0x38 is known), and the flag at 0x0090e004.
 class fn_00469c0a_owner
 {
 public:
@@ -291,7 +268,6 @@ public:
 	virtual void vfunction17(int *ev);
 };
 
-extern fn_006735e0_owner g_fn_006735e0_owner;
 extern fn_00469c0a_owner g_fn_00469c0a_owner;
 extern char g_0090e004;
 bool fn_0069ac10();
@@ -478,7 +454,7 @@ void fn_00469ef9(unsigned int param_1)
 		break;
 	}
 	if (special)
-		g_fn_006735e0_owner.fn_006735e0(param_1);
+		g_0090db70.fn_006735e0(param_1);
 
 	int flags = 0;
 	if (fn_0069ac10())
@@ -569,7 +545,7 @@ void fn_0046a2d4(unsigned int param_1)
 	if (g_0090db9c != 0)
 		return;
 
-	g_fn_006735e0_owner.fn_006735e0(param_1);
+	g_0090db70.fn_006735e0(param_1);
 
 	int flags = 0;
 	if (fn_0069ac10())
@@ -610,9 +586,9 @@ void fn_0046a428()
 	{
 		g_0090dba4 = false;
 		if (g_0090dba8 == 0)
-			g_fn_00469979_owner.fn_00469979(1);
+			g_0090db88.fn_00469979(1);
 		else
-			g_fn_00469979_owner.fn_00469979(0);
+			g_0090db88.fn_00469979(0);
 	}
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
@@ -662,14 +638,6 @@ public:
 	virtual void vfunction5(int param_1);
 };
 
-// HYPOTHESIS: 0x00672f80 is a method of the class of the global at 0x0090db70.
-class fn_0090db70_owner2
-{
-public:
-	void fn_00672f80(int param_1);
-};
-
-extern fn_0090db70_owner2 g_0090db70_2;
 extern unsigned int g_0090dba0;
 // HYPOTHESIS: the key string at 0x008458f4 (its text is not recovered; it is shared with other uses).
 extern char g_sz008458f4[];
@@ -699,7 +667,7 @@ void fn_0046a4bd(int param_1)
 	if (state != 0)
 		((fn_0046a4bd_state *)state)->vfunction5(param_1);
 	if (g_0090e004 == 0)
-		g_0090db70_2.fn_00672f80(param_1);
+		g_0090db70.fn_00672f80(param_1);
 	if ((int)g_0090dba0 < 0)
 		g_0090dba0 = g_p008cc580->vfunction5("Debug", g_sz008458f4, 0) != 0;
 	if (g_0090dba0 != 0)
@@ -1224,7 +1192,7 @@ char fn_0046a9f3()
 // FUNCTION: STARFLEETOP 0x0046aa04
 int fn_0046aa04()
 {
-	return g_0090db88;
+	return g_0090db88.m_00;
 }
 
 // FUNCTION: STARFLEETOP 0x0046aa0a
