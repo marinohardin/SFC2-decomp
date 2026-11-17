@@ -374,3 +374,12 @@ tMemberCallback< tClass, tParam > CreateCallback( tClass* object, void (tClass::
 }
 
 template tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& > CreateCallback( fn_0057a96e_owner* object, void (fn_0057a96e_owner::*func)( const nDatabase::tID& result ) );
+
+#include "Common/Callback.h"
+
+// FUNCTION: STARFLEETOP 0x0057aad2
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
+template class tCallback< const nDatabase::tID& >;
