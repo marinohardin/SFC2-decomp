@@ -742,6 +742,7 @@ public:
 	fn_005c478f_Holder* FUN_005c488c();
 	fn_005c478f_Holder* FUN_005c48a9();
 	fn_005c478f_Holder* FUN_005c48c6();
+	fn_005c478f_Holder* FUN_005c48e6();
 };
 
 // FUNCTION: STARFLEETOP 0x005c478f
@@ -854,4 +855,15 @@ fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c48c6()
 	p += 0x20;
 	m04.Leave();
 	return (fn_005c478f_Holder*)p;
+}
+
+// FUNCTION: STARFLEETOP 0x005c48e6
+fn_005c478f_Holder* fn_005c478f_Holder::FUN_005c48e6()
+{
+	m04.Enter();
+	// HYPOTHESIS: returns the address of the member at offset 0x90, taken under the lock.
+	int value = (int)this;
+	value += 0x90;
+	m04.Leave();
+	return (fn_005c478f_Holder*)value;
 }
