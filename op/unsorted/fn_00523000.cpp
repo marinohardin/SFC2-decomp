@@ -519,3 +519,20 @@ tObject_005236ea_Entry::tObject_005236ea_Entry(float amount, bool partial, tObje
 	m_04 = partial;
 	m_08 = pTarget;
 }
+
+// HYPOTHESIS: 0x005237d1 is a constructor: a flag set, then a float cleared.
+class tObject_005237d1
+{
+public:
+	tObject_005237d1();
+
+	bool m_00;
+	float m_04;
+};
+
+// FUNCTION: STARFLEETOP 0x005237d1
+tObject_005237d1::tObject_005237d1()
+{
+	m_00 = true;
+	m_04 = 0.0f;
+}
