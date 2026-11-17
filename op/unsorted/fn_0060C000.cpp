@@ -451,3 +451,12 @@ bool C_0060c7dc::fn_0060ca7d()
 {
     return g_0087bfdc;
 }
+
+// HYPOTHESIS: a table of int values at 0x0087bfe4, indexed by the argument.
+extern int g_0087bfe4[];
+
+// FUNCTION: STARFLEETOP 0x0060ca83
+void C_0060c7dc::fn_0060ca83(int index)
+{
+    m_18 = g_0087bfe4[index];
+}
