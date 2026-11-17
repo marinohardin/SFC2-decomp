@@ -28,6 +28,7 @@ class fn_0042b0fd_owner
 {
 public:
 	void fn_0042b0fd( long a, long b );
+	void fn_0042add2( long value );
 
 	long m_00;
 	long m_04;
@@ -44,14 +45,45 @@ public:
 	long m_00;
 };
 
+// HYPOTHESIS: the element type of the container below is not known; elements are
+// 0x160 bytes with a vtable, a byte test at 0x0054340c and a virtual in slot 12.
+// The names are placeholders.
+class fn_0054340c_owner
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual long vfunction12();
+
+	char fn_0054340c();
+
+	char m_04[0x15c];
+};
+
 // HYPOTHESIS: the class of the member at 0x6c of the owner below is not known; it has
-// a member function at 0x0053f522 taking two dwords. The names are placeholders.
+// a member function at 0x0053f522 taking two dwords and looks like a vector of the
+// elements above (first at 4, last at 8) with an erase at 0x0053f546. The names are
+// placeholders.
 class fn_0053f522_owner
 {
 public:
 	void fn_0053f522( long a, long b );
+	fn_0054340c_owner *fn_0053f546( fn_0054340c_owner *it );
 
 	long m_00;
+	fn_0054340c_owner *m_04;
+	fn_0054340c_owner *m_08;
+	fn_0054340c_owner *m_0c;
 };
 
 // HYPOTHESIS: the type of the argument at 0x0053f2a2 is not known; only its dwords at
@@ -82,6 +114,7 @@ public:
 	void fn_0053f2e3( long value );
 	void fn_0053f2f0( long value );
 	void fn_0053f2fd();
+	void fn_0053f30f();
 
 	char m_00[0x58];
 	fn_0053f4c6_owner m_58;
@@ -89,7 +122,6 @@ public:
 	char m_68;
 	char m_69[3];
 	fn_0053f522_owner m_6c;
-	char m_70[0x0c];
 	fn_0042b0fd_owner m_7c;
 	char m_88[4];
 	long m_8c;
@@ -200,4 +232,22 @@ void fn_0053f25c_owner::fn_0053f2f0( long value )
 void fn_0053f25c_owner::fn_0053f2fd()
 {
 	m_7c.fn_0042b0fd( m_7c.m_04, m_7c.m_08 );
+}
+
+// HYPOTHESIS: same owner; erases every element of the container at 0x6c whose test at
+// 0x0054340c is true, after handing its slot-12 value to the member at 0x7c.
+// FUNCTION: STARFLEETOP 0x0053f30f
+void fn_0053f25c_owner::fn_0053f30f()
+{
+	fn_0054340c_owner *it = m_6c.m_04;
+	while ( it != m_6c.m_08 )
+	{
+		if ( it->fn_0054340c() )
+		{
+			m_7c.fn_0042add2( it->vfunction12() );
+			it = m_6c.fn_0053f546( it );
+		}
+		else
+			++it;
+	}
 }
