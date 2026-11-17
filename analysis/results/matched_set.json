@@ -2166,8 +2166,8 @@
    "symbol": "?fn_0040e306@@YAXPAVtString@@0AAVfn_0040d63f_Buf@@@Z",
    "unit": "unsorted/fn_0040D63F.cpp",
    "size": 116,
-   "score": 99.455,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040f86c": {

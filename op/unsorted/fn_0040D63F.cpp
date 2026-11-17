@@ -699,7 +699,10 @@ void fn_0040e306(tString* name, tString* value, fn_0040d63f_Buf& buf)
     line += " = ";
     line += *value;
     buf.fn_0040d73e(&line);
-    char nl = 10;
-    buf.fn_0040d867(&nl, 1, 0);
+    // MATCH-ONLY: the block scope lets nl share the dead parameter's slot, as the original's [ebp+0xb] does.
+    {
+        char nl = 10;
+        buf.fn_0040d867(&nl, 1, 0);
+    }
 }
 
