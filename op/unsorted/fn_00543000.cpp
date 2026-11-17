@@ -98,6 +98,7 @@ public:
 	int fn_00543357(const nDatabase::tID &id);
 	std::string fn_005433a7() const;
 	bool fn_005433dd();
+	bool fn_005433e8();
 
 	char m_pad[0x48];
 	std::string m048;
@@ -108,7 +109,8 @@ public:
 	char m108[0xc];
 	unsigned int m114_0 : 1;
 	unsigned int m114_1 : 1;
-	unsigned int m114_2 : 5;
+	unsigned int m114_2 : 1;
+	unsigned int m114_3 : 4;
 	unsigned int m114_7 : 1;
 	unsigned int m114_8 : 1;
 	unsigned int m114_9 : 1;
@@ -248,4 +250,11 @@ std::string fn_005430ad_owner::fn_005433a7() const
 bool fn_005430ad_owner::fn_005433dd()
 {
 	return m114_1 ? true : false;
+}
+
+// HYPOTHESIS: a fifth one-bit flag, bit 2 of the dword at +0x114.
+// FUNCTION: STARFLEETOP 0x005433e8
+bool fn_005430ad_owner::fn_005433e8()
+{
+	return m114_2 ? true : false;
 }
