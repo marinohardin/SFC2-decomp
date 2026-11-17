@@ -619,3 +619,36 @@ template<> tAccessPointer<const tObject_005391b0, tSingleAccessWrapper<tObject_0
 {
 	Done();
 }
+
+#include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/Streamable.h"
+#include "unsorted/tServCharacter.h"
+
+namespace nDataStore
+{
+// The SDK's stream operator for a vector, declared as a friend of tOutput in its header and
+// defined in DataStoreOutput.cpp.
+template< class tType >
+tOutput& operator<<( tOutput& output, const std::vector< tType >& value );
+
+// The game's instantiation for the ship caches of tServCharacter.
+// HYPOTHESIS: the element is tServCharacter::tShipCache, the only 0x4c-byte streamable known;
+// the call to the tStreamable operator does not tell the element type apart.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
+// FUNCTION: STARFLEETOP 0x0042c80a
+template<> tOutput& operator<<( tOutput& output, const std::vector< tServCharacter::tShipCache >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< tServCharacter::tShipCache >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
+}
+
+};

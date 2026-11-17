@@ -2728,6 +2728,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c80a": {
+   "name": "FUN_0042c80a",
+   "symbol": "??6nDataStore@@YAAAVtOutput@0@AAV10@ABV?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@@Z",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

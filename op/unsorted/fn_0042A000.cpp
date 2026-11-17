@@ -97,45 +97,45 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 #include "unsorted/tMetaMapHex.h"
 #include "Common/Thread/SingleAccessWrapper.h"
 
-// HYPOTHESIS: the 0x434-byte element of the vector 0x0042a7bf copies ship caches from; the
-// tShipCache constructor 0x0054185f takes it by reference. Its class is not known yet.
-class fn_0054185f_ship
-{
-public:
-	byte field_00[0x434];
-};
+// tServCharacter::tShipCache and the ship it is made from are declared in the shared header,
+// which unsorted/fn_0042C000.cpp also includes.
+#include "unsorted/tServCharacter.h"
 
-#include "Common/Database/DatabaseID.h"
 
-// HYPOTHESIS: the class whose RTTI is tServCharacter::tShipCache; only the constructor from a
-// ship (0x0054185f) and the destructor (0x0042a863) are known, and the size (0x4c) from the
-// stack frame of 0x0042a7bf. The destructor ends in ~tStreamable and destroys an ID at +0x0c
-// and strings at +0x24 and +0x34; the other fields are not known yet.
-class tServCharacter
-{
-public:
-	class tShipCache : public nDataStore::tStreamable
-	{
-	public:
-		tShipCache( const fn_0054185f_ship& ship );
-		// HYPOTHESIS: the original declared no destructor; its implicit one (no vtable store)
-		// builds byte for byte, but the harness cannot claim a function with no source line, so
-		// this declared one (which stores the vtable) stands in for it.
-		virtual ~tShipCache();
 
-		virtual	void StreamOut( nDataStore::tOutput& output ) const;
-		virtual	void StreamIn( nDataStore::tInput& input );
 
-		// HYPOTHESIS: a getter returning a tID by value; 0x0042ab25 collects it from each cache.
-		db::tID FUN_005419ed() const;
 
-		db::tID field_0c;
-		byte field_1c[0x24 - 0x1c];
-		std::string field_24;
-		std::string field_34;
-		byte field_44[0x4c - 0x44];
-	};
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
 // out-of-line copy (0x00429a18); the header cannot define it while that unit does.
