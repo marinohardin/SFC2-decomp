@@ -413,3 +413,19 @@ void fn_00406a59()
 {
     atexit(fn_004bd431);
 }
+
+// HYPOTHESIS: runs the destructor (0x00407c92) of the global at 0x008949a0 at exit; the
+// class is declared in another unit and unnamed here.
+class fn_00406a86_Global
+{
+public:
+    ~fn_00406a86_Global();
+};
+
+extern fn_00406a86_Global g_008949a0;
+
+// FUNCTION: STARFLEETOP 0x00406a86
+void fn_00406a86()
+{
+    g_008949a0.~fn_00406a86_Global();
+}
