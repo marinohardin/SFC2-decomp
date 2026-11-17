@@ -12524,8 +12524,8 @@
    "name": "tBasicSoundFileManager::mUpdateTest",
    "symbol": "?mUpdateTest@tBasicSoundFileManager@@QAEXXZ",
    "unit": "Tiger/tsndmgr.cpp",
-   "size": 2000,
-   "score": 18.302,
+   "size": 1990,
+   "score": 0.165,
    "exact": false,
    "recorded": "2026-11-16"
   },
