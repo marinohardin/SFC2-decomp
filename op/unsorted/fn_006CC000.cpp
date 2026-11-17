@@ -415,3 +415,10 @@ fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned short param_2, i
 	record->field_10 = param_4;
 	return record;
 }
+
+// HYPOTHESIS: returns a server entry's ping.
+// FUNCTION: STARFLEETOP 0x006cc8e0
+int fn_006cc8e0(fn_006cc530_record *record)
+{
+	return record->field_06;
+}
