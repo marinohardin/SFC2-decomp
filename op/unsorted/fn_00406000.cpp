@@ -383,3 +383,12 @@ char* fn_004069bb(const char* s)
     }
     return p;
 }
+
+void fn_004bd431();
+
+// HYPOTHESIS: arranges at exit the cleanup at 0x004bd431 (Ghidra labels it tApp3dBase::vfunction5, unconfirmed).
+// FUNCTION: STARFLEETOP 0x00406a35
+void fn_00406a35()
+{
+    atexit(fn_004bd431);
+}
