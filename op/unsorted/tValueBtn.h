@@ -12,6 +12,14 @@
 
 struct c_tListBox_Base_Event;
 
+// HYPOTHESIS: the object at tButton +0x74; size and members unknown. 0x0067f090 lies in the SDK
+// library range.
+class c_tButton_Field74
+{
+public:
+	void fn_0067f090( tVisObject *object, int param_2, int param_3 );
+};
+
 // HYPOTHESIS: tControl and tVisStateObject sit between tVisObject and tButton; their members are
 // not recovered, so tButton is declared on tVisObject and filled to +0x110, where tValueBtn's
 // tVisNotifiee part starts (tMetaMapControl's constructor sets a second vftable there).
@@ -22,7 +30,11 @@ public:
 	// tMetaMapControl::vfunction31 (0x005e4470) ends by calling it directly.
 	bool vfunction31( c_tListBox_Base_Event *event );
 
-	unsigned char field_64[ 0x110 - 0x64 ];
+	unsigned char field_64[ 0x74 - 0x64 ];
+	// HYPOTHESIS: an object held in place at +0x74; tMetaMapControl::vfunction43 (0x005e4531)
+	// calls 0x0067f090 on it with the control, 2 and 0.
+	c_tButton_Field74 field_74;
+	unsigned char field_75[ 0x110 - 0x75 ];
 };
 
 // HYPOTHESIS: the class whose type descriptor is at 0x00853a08. tFleetEntry.cpp still declares a

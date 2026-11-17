@@ -858,3 +858,9 @@ bool tMetaMapControl::vfunction31( c_tListBox_Base_Event *event )
 		fn_0045f4c2();
 	return tButton::vfunction31( event );
 }
+
+// FUNCTION: STARFLEETOP 0x005e4531
+void tMetaMapControl::vfunction43( int param_1 )
+{
+	field_74.fn_0067f090( this, 2, 0 );
+}

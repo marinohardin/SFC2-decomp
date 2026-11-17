@@ -128,6 +128,7 @@ public:
 	void vfunction8( const tRect *area );
 	void vfunction30();
 	bool vfunction31( c_tListBox_Base_Event *event );
+	void vfunction43( int param_1 );
 
 	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;
