@@ -415,3 +415,27 @@ void fn_00575569_owner::fn_00575569(fn_00575569_object** out)
 {
 	*out = new fn_00575569_object(m_d0);
 }
+
+// HYPOTHESIS: the object built by fn_005755ac is unnamed (constructor at 0x00562f5f, next to
+// nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs's destructor); it has a destructor, so the new-expression carries an EH frame
+class fn_005755ac_object
+{
+public:
+	fn_005755ac_object(void* arg);
+	~fn_005755ac_object();
+	char m_pad[0x48];
+};
+
+class fn_005755ac_owner
+{
+public:
+	void fn_005755ac(fn_005755ac_object** out);
+	char m_pad[0xd0];
+	void* m_d0;
+};
+
+// FUNCTION: STARFLEETOP 0x005755ac
+void fn_005755ac_owner::fn_005755ac(fn_005755ac_object** out)
+{
+	*out = new fn_005755ac_object(m_d0);
+}
