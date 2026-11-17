@@ -144,3 +144,51 @@ bool fn_0042a45f_object::FUN_0042a45f()
 		return true;
 	return false;
 }
+
+#include <windows.h>
+#include "Common/Thread/Optex.h"
+
+// MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
+// out-of-line copy (0x00429a18); the header cannot define it while that unit does.
+inline tOptex::tGuard::~tGuard()
+{
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
+
+// HYPOTHESIS: a 0x14-byte value with no destructor, made by the static 0x006cf310 and turned into
+// a string by 0x006cf6a0; neither the class nor its members are known yet.
+class fn_006cf310_object
+{
+public:
+	static fn_006cf310_object FUN_006cf310();
+	std::string FUN_006cf6a0() const;
+
+	byte field_00[0x14];
+};
+
+// HYPOTHESIS: this is tClientCharacter (the string at +0x0c and the lock at +0xe4 match its
+// layout), declared only inside unsorted/tClientCharacter.cpp; only the two members used here
+// are placed.
+class fn_0042a480_object
+{
+public:
+	void FUN_0042a480();
+
+	byte field_00[0x0c];
+	std::string field_0c;
+	byte field_1c[0xe4 - 0x1c];
+	tOptex field_e4;
+};
+
+// FUNCTION: STARFLEETOP 0x0042a480
+void fn_0042a480_object::FUN_0042a480()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	fn_006cf310_object value = fn_006cf310_object::FUN_006cf310();
+	field_0c = value.FUN_006cf6a0();
+
+	guard.Leave();
+}
