@@ -275,3 +275,10 @@ tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > Create
 template<>
 inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* >::~tMemberCallback()
 {}
+
+// HYPOTHESIS: applies a member callback to each menu item of a [first, last) pair of pointers.
+// FUNCTION: STARFLEETOP 0x005de731
+void fn_005de731( tMetaClientNewsCtlrC::tMenuItem** range[2], const tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* >& callback )
+{
+	std::for_each( range[0], range[1], callback );
+}
