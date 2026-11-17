@@ -172,3 +172,11 @@ unsigned tBaseWeapon::mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlag
     // HYPOTHESIS: tBaseWeapon derives from tRepairableShipSystem; its declaration here has no base yet.
     return ((tRepairableShipSystem*)this)->tRepairableShipSystem::vfunction23((int)&s, aFlags, (int)mode);
 }
+
+// FUNCTION: STARFLEETOP 0x004d76f8
+bool tBaseWeapon::fn_004d76f8()
+{
+    if (field_2c)
+        return field_2c->vfunction143();
+    return false;
+}

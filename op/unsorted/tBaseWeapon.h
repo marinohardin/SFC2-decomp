@@ -195,11 +195,14 @@ public:
     virtual void vfunction140();
     virtual void vfunction141();
     virtual void vfunction142();
-    virtual void vfunction143();
+    virtual bool vfunction143();
     virtual int vfunction144();
     virtual void vfunction145(int param_1);
     // HYPOTHESIS: members read by vfunction102, placed by offset.
-    char pad_04[0x34];
+    char pad_04[0x28];
+    // HYPOTHESIS: a weapon object at offset 0x2c whose slot 143 (offset 0x238) 0x004d76f8 forwards to.
+    tBaseWeapon *field_2c;
+    char pad_30[8];
     float field_38;
     float field_3c;
     char pad_40[6];
@@ -215,6 +218,7 @@ public:
     int field_f8;
     // HYPOTHESIS: adds a per-type amount (field_f8 is the type) to field_cc.
     void fn_004d74f6();
+    bool fn_004d76f8();
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
     int fn_004d87e3(int param_1);
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
