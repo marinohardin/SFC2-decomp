@@ -61,6 +61,11 @@ void fn_004d34e8(const char *name, const char *group, int n);
 extern double g_00c7c148;
 extern char g_00910b38;
 extern double g_00910b40;
+// HYPOTHESIS: the state fn_004772ce goes to after starting the chosen protocol.
+extern const char *g_008493a0;
+// HYPOTHESIS: cdecl; opens the web page or launches the program file (its strings name both).
+void fn_00434830(const char *url, const char *file);
+void fn_0046aa58();
 #include "Tiger/tFormatStr.h"
 
 namespace tState_Namespace_NetSetup
@@ -110,6 +115,7 @@ public:
 	void fn_00476da0(c_00468677_source **control, int id);
 	void fn_00476e72();
 	void fn_004772bf();
+	bool fn_004772ce(int id);
 	void fn_004776d7(const char *name, int n);
 	void fn_00469e0c(const char *name);
 	void fn_00477440();
@@ -639,4 +645,50 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_004772bf()
 {
 	fn_004764bd();
 	gNetControl.fn_00431821();
+}
+
+// FUNCTION: STARFLEETOP 0x004772ce
+bool tState_Namespace_NetSetup::tState_NetSetup::fn_004772ce(int id)
+{
+	// The original leaves the result unset for an unknown id.
+	bool result;
+
+	gNetControl.fn_00433c46();
+	switch (id)
+	{
+	case 0x10004:
+		result = fn_004766f1();
+		break;
+	case 0x10005:
+		result = fn_00476925();
+		break;
+	case 0x10006:
+		result = fn_00476678();
+		fn_00469e0c(g_008493a0);
+		break;
+	case 0x10007:
+		if (m14 < 0)
+			m14 = g_p008cc580->vfunction7("Network", "SimProtocol", 0);
+		if (m14)
+		{
+			tString value = m1c;
+			gObject_0092deb4->vfunction4(value);
+			result = gNetControl.fn_004325a9(6);
+			gNetControl.fn_0043290e(tString(""));
+			fn_00469e0c(g_008493a0);
+		}
+		else
+		{
+			result = gNetControl.fn_004325a9(5);
+			fn_00434830("http://www.mplayer.com/mic/sfc.html", "sfc.mpi");
+			vfunction3();
+			gNetControl.fn_00431821();
+			fn_0046aa58();
+		}
+		break;
+	case 0x10008:
+		result = fn_00476754();
+		break;
+	}
+	return result;
 }
