@@ -4,6 +4,8 @@
 #include "Tiger/tstring.h"
 #include "Tiger/tstringtag.h"
 #include "unsorted/tNetControl.h"
+#include "unsorted/tApplication.h"
+#include <string.h>
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tValueI.h"
 #include "unsorted/c_0046aa10_msg.h"
@@ -29,6 +31,8 @@ void fn_004d3179(const char *name, const tString &value);
 void fn_004d3774(int id);
 void fn_004d32c4(const char *name);
 bool fn_0046a9e2();
+// HYPOTHESIS: enables (1) or disables (0) the control with the given id.
+void fn_004d34c5(int id, int enable);
 
 namespace tState_Namespace_GameConnections
 {
@@ -52,7 +56,12 @@ public:
 
 	char m00[0xc];
 	unsigned char m0c;
-	char m0d[0x14 - 0xd];
+	unsigned char m0d;
+	unsigned char m0e;
+	unsigned char m0f;
+	unsigned char m10;
+	unsigned char m11;
+	char m12[2];
 	int m14;
 	unsigned char m18;
 	char m19[0x5c - 0x19];
@@ -198,6 +207,47 @@ void tState_GameConnections::fn_00468297()
 	case 0x10009:
 		fn_00468a45(m1e0, "ModemAddress");
 		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004682c7
+void tState_GameConnections::fn_004682c7()
+{
+	if (m14 < 0)
+		m14 = g_p008cc580->vfunction7("Network", "SimProtocol", 0);
+
+	gNetControl.fn_00431917();
+	m0d = 0;
+	m0e = 0;
+	m0f = 0;
+	m10 = 0;
+	m11 = 0;
+	fn_004d34c5(0x10006, 1);
+	fn_004d34c5(0x10007, 1);
+	fn_004d34c5(0x10004, 1);
+	fn_004d34c5(0x10008, 1);
+
+	for (c_0043257a_node *node = gNetControl.fn_0043257a(); node; node = node->next)
+	{
+		char *name = node->name;
+		if (!strcmp(name, "IPX"))
+		{
+			fn_004d34c5(0x10006, 0);
+			m0f = 1;
+		}
+		else if (!strcmp(name, "IP"))
+		{
+			fn_004d34c5(0x10007, 0);
+			fn_004d34c5(0x10004, 0);
+			fn_004d34c5(0x10008, 0);
+			m10 = 1;
+			m11 = 1;
+		}
+		else if ((!strcmp(name, "MPlayer") && !m14) || (!strcmp(name, "DPSim") && m14))
+		{
+			fn_004d34c5(0x10008, 0);
+			m11 = 1;
+		}
 	}
 }
 

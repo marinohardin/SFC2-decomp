@@ -12,6 +12,15 @@ class c_tNetControl_8D00;
 class c_0043127f_node;
 struct tNetMsg;
 struct c_tNetControl_8CC4_entry;	// HYPOTHESIS: defined in tNetControl.cpp, its only user
+
+// HYPOTHESIS: a node of the list fn_0043257a returns: the next node, then a name the game
+// state compares with protocol names.
+struct c_0043257a_node
+{
+	c_0043257a_node *next;
+	char *name;
+};
+
 class tNetControl
 {
 public:
@@ -44,6 +53,8 @@ public:
 	void fn_00431821();
 	bool fn_0043268d();	// HYPOTHESIS: returns a flag (tested in al)
 	void fn_00432f5a();
+	void fn_00431917();
+	c_0043257a_node *fn_0043257a();
 	bool fn_0043456f();	// HYPOTHESIS: returns a flag (tested in al)
 	tString &fn_0043457d();	// HYPOTHESIS: returns a string compared with ""
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.

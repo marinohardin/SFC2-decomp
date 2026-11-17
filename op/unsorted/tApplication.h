@@ -39,7 +39,8 @@ public:
 	virtual void vfunction4();
 	virtual int vfunction5(const char *, const char *, int);    // +0x10
 	virtual void vfunction6(const char *, const char *, int);    // +0x14
-	virtual void vfunction7();
+	// HYPOTHESIS: reads a named setting (section, key, default) like +0x10.
+	virtual int vfunction7(const char *, const char *, int);    // +0x18
 	virtual void vfunction8();
 	virtual void vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
 };
