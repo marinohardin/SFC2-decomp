@@ -263,8 +263,9 @@ public:
 	int FUN_005c44e2(int param_1);
 	int		m340;
 	int		m344;
-	char	pad3[0x34c - 0x348];
+	float	m348;
 	int		m34c;
+	float FUN_005c450c();
 	int FUN_005c4462();
 };
 
@@ -353,4 +354,13 @@ int fn_005c43e2_Holder::FUN_005c44e2(int param_1)
 		return FUN_005c44c2();
 	}
 	return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x005c450c
+float fn_005c43e2_Holder::FUN_005c450c()
+{
+	m04.Enter();
+	float value = m348;
+	m04.Leave();
+	return value;
 }
