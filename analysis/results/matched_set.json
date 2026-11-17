@@ -5361,8 +5361,8 @@
    "symbol": "?fn_004d0c5d@tSFCPlayer@@QAEXXZ",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 89,
-   "score": 10.145,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-16"
   },
   "0x004e1e8f": {

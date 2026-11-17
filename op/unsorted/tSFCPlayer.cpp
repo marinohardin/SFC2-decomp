@@ -1167,7 +1167,9 @@ void tSFCPlayer::vfunction105(int param_1)
 void tSFCPlayer::fn_004d0c5d()
 {
 	char name[256];
-	g_p008cc580->vfunction9("Network", "PlayerName", "Player1", name, 256);
+	// HYPOTHESIS: a first call with no buffer returns the setting's length.
+	int length = g_p008cc580->vfunction9("Network", "PlayerName", "Player1", 0, 0);
+	g_p008cc580->vfunction9("Network", "PlayerName", "Player1", name, length);
 	m_08 = name;
 }
 
