@@ -73,6 +73,7 @@ public:
 	unsigned int vfunction14(const char *name);
 	void vfunction15(float scale);
 	float vfunction16();
+	int vfunction17(int index);
 
 	int m08;
 	t3DVisual_Model *mNext;
@@ -270,4 +271,13 @@ void t3DVisual_Model::vfunction15(float scale)
 float t3DVisual_Model::vfunction16()
 {
 	return m178;
+}
+
+// FUNCTION: STARFLEETOP 0x0042fc1f
+int t3DVisual_Model::vfunction17(int index)
+{
+	if (index < 0 || index >= m11c)
+		return m124;
+	m120 = index;
+	return index;
 }
