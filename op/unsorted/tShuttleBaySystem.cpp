@@ -419,3 +419,15 @@ float tShuttleBaySystem::vfunction72()
     }
     return field_c4 * g_007959c8 + sum;
 }
+
+// FUNCTION: STARFLEETOP 0x0044f00c
+float tShuttleBaySystem::vfunction76(float param_1, int param_2)
+{
+    float sum = 0.0f;
+    for (std::list<tObject_0044e844_item*>::iterator it = field_4f0.begin(); it != field_4f0.end(); ++it)
+    {
+        if (vfunction35() && !(*it)->vfunction7())
+            sum += (*it)->vfunction2();
+    }
+    return param_1 - sum - field_c4 * g_007959c8;
+}

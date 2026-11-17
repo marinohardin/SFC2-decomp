@@ -125,6 +125,9 @@ public:
     virtual void vfunction39(float param_1);
     // vftable slot 71; half of field_dc plus the values of the entries of field_4f0.
     virtual float vfunction72();
+    // HYPOTHESIS: vftable slot 75, as tCloakSystem's (float, int) override; param_1 less the values
+    // of the entries of field_4f0 and half of field_c4's value. The int is unread (ret 8).
+    virtual float vfunction76(float param_1, int param_2);
     // HYPOTHESIS: drops the ids in field_80 whose ship still exists and, once it is empty,
     // checks the ships of field_3a8 and field_1c8.
     void fn_0044ea7e();
