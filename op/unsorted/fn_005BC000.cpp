@@ -564,3 +564,12 @@ fn_005bc50f_record::fn_005bc50f_record(const fn_005bc50f_record &other)
 	: m00(other.m00), m10(other.m10), m24(other.m24), m28(other.m28)
 {
 }
+
+// FUNCTION: STARFLEETOP 0x005bc570
+void fn_005bc161_tree::FUN_005bc570(node *_X)
+{
+	for (node *_Y = _X; _Y != _Nil; _X = _Y)
+		{FUN_005bc570(_Y->_Right);
+		_Y = _Y->_Left;
+		operator delete(_X); }
+}
