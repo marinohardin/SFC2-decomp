@@ -58,3 +58,10 @@ char *fn_0057a481_object::fn_0057a4a4()
 {
     return &field_1e4;
 }
+
+// HYPOTHESIS: 0x0057a577 is the tail of a larger stream function that shares its parent frame; the parent is not rebuilt yet.
+// FUNCTION: STARFLEETOP 0x0057a577
+void *fn_0057a577()
+{
+    return 0;
+}
