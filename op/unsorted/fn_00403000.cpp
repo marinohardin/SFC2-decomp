@@ -136,3 +136,12 @@ std::string::size_type std::string::find(const char* _S, size_type _P, size_type
 
 // HYPOTHESIS: a caller in the original uses this instantiation.
 std::string::size_type (std::string::*g_fn_00403d05)(const char*, std::string::size_type, std::string::size_type) const = &std::string::find;
+
+// FUNCTION: STARFLEETOP 0x00403d87
+void std::string::_Freeze()
+{
+    if (_Ptr != 0 && _Refcnt(_Ptr) != 0)
+        _Grow(_Len);
+    if (_Ptr != 0)
+        _Refcnt(_Ptr) = 0;
+}
