@@ -174,7 +174,7 @@ public:
     virtual void vfunction156();
     virtual void vfunction157();
     virtual void vfunction158();
-    virtual void vfunction159();
+    virtual char vfunction159(int);
     virtual void vfunction160();
     virtual void vfunction161();
     virtual void vfunction162();
@@ -684,4 +684,12 @@ int* tShipSystemsFighter::vfunction152( int* param_1 )
 {
     *param_1 = 3;
     return &m04;
+}
+
+// HYPOTHESIS: the return and parameter types; the original returns 5 in al and pops one
+// unused dword argument.
+// FUNCTION: STARFLEETOP 0x00444529
+char tShipSystemsFighter::vfunction159(int)
+{
+    return 5;
 }
