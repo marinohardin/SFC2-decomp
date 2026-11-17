@@ -234,6 +234,7 @@ struct fn_006cc530_record
 {
 	unsigned char pad_00[0x0c];
 	fn_006bf5f0_table *field_0c;
+	fn_006bf5f0_table *field_10;
 };
 
 fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned long param_2, unsigned long param_3, fn_006bf5f0_table *param_4);
@@ -295,4 +296,19 @@ char *fn_006cc640(char *text, char separator)
 		g_00c7ea60++;
 	}
 	return start;
+}
+
+void *fn_006bf750(fn_006bf5f0_table *table, void *element);
+
+// HYPOTHESIS: interns a string in the record's string table at +0x10; 0x0073a6a6 is taken
+// to be _strdup.
+// FUNCTION: STARFLEETOP 0x006cc6a0
+char *fn_006cc6a0(fn_006cc530_record *record, char *text)
+{
+	char **found = (char **)fn_006bf750(record->field_10, &text);
+	if (found != 0)
+		return *found;
+	text = _strdup(text);
+	fn_006bf6a0(record->field_10, &text);
+	return text;
 }
