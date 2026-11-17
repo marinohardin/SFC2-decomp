@@ -848,3 +848,30 @@ fn_004d2420_holder* fn_004d27fa_owner::fn_004d288f(const char* text)
 void fn_004d2a96()
 {
 }
+
+// HYPOTHESIS: a container whose header node sits at +4; the call builds an iterator from the
+// first node (the header's first link) and the header.
+struct fn_004d2be4_node
+{
+	fn_004d2be4_node* m_0x00;
+};
+
+struct fn_004d2be4_iterator
+{
+	fn_004d2be4_iterator(fn_004d2be4_node* node, fn_004d2be4_node* header);
+};
+
+class fn_004d2be4_map
+{
+public:
+	void fn_004d2be4();
+	char m_0x00[4];
+	fn_004d2be4_node* m_0x04;
+};
+
+// FUNCTION: STARFLEETOP 0x004d2be4
+void fn_004d2be4_map::fn_004d2be4()
+{
+	fn_004d2be4_node* header = m_0x04;
+	fn_004d2be4_iterator it(header->m_0x00, header);
+}
