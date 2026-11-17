@@ -323,3 +323,8 @@ void tShuttleBaySystem::fn_0044ec9a(float param_1)
             ++it;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0044edbd
+tObject_0044ec9a_item::~tObject_0044ec9a_item()
+{
+}
