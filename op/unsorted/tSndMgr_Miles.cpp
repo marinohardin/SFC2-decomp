@@ -612,3 +612,15 @@ void tSndMgr_Miles::vfunction11( long param_1 )
 		fn_0050fc33( &field_2438.field_10 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0050f6f0
+void tSndMgr_Miles::vfunction12()
+{
+	if ( field_2414 )
+	{
+		if ( field_2438.field_c )
+			vfunction8( field_2438.field_c );
+		field_2438.field_c = 0;
+		field_2438.field_10 = -1;
+	}
+}
