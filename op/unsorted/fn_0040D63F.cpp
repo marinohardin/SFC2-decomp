@@ -675,3 +675,19 @@ void fn_0040e24a(char* name, float* value, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e295
+void fn_0040e295(char* name, float* value, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    float x;
+    float y;
+    buf.fn_0040d841();
+    strcpy(format, name);
+    strcat(format, " = x=%f y=%f");
+    buf.fn_0040e70f(text);
+    sscanf(text, format, &x, &y);
+    value[0] = x;
+    value[1] = y;
+}
+
