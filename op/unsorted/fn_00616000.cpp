@@ -69,7 +69,8 @@ public:
 	virtual long __stdcall v28();
 	virtual long __stdcall v29();
 	virtual long __stdcall v30();
-	virtual long __stdcall v31();
+	// HYPOTHESIS: slot 31 fits IDirectPlay4::SetSessionDesc (data, flags).
+	virtual long __stdcall SetSessionDesc( void* pDesc, unsigned long flags );
 	virtual long __stdcall v32();
 	virtual long __stdcall v33();
 	virtual long __stdcall v34();
@@ -144,6 +145,7 @@ public:
 	// HYPOTHESIS: the fifth argument is never read (ret 0x14); its type is unknown.
 	long fn_00616470( long* pA, long* pB, void* pData, unsigned long* pSize, int unused );
 	long fn_00616540( fn_00613f80_Target* pTarget );
+	void fn_00616620( void* pDesc );
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
 	char fPad48[0x68];
@@ -295,4 +297,19 @@ long fn_00616000_DirectPlayHolder::fn_00616540( fn_00613f80_Target* pTarget )
 		fn_006123b0( e.v1() );
 	}
 	return hr;
+}
+
+// FUNCTION: STARFLEETOP 0x00616620
+void fn_00616000_DirectPlayHolder::fn_00616620( void* pDesc )
+{
+	try
+	{
+		if ( fDirectPlayObject == 0 )
+			throw fn_00616000_Error( "fDirectPlayObject", fn_00619a20_Context() );
+		fDirectPlayObject->SetSessionDesc( pDesc, 0 );
+	}
+	catch ( fn_00616000_Error& e )
+	{
+		fn_006123b0( e.v1() );
+	}
 }
