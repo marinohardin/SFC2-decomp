@@ -27,6 +27,16 @@ inline fn_00690a60_Value &fn_00690a60_Value::operator=( int value )
 	return *this;
 }
 
+// HYPOTHESIS: the alignment at the parser's +0x8c; fn_006910a0 sets it through the out-of-line
+// fn_0068bb00 with the object's address in ecx, so it is taken as a small class.
+class fn_0068bb00_Value
+{
+public:
+	void	fn_0068bb00( int align );
+
+	unsigned char	f_00;
+};
+
 // HYPOTHESIS: the object the parse builds; the parser keeps it at +0x6c and the caller gets it.
 class fn_0068ff60_Root
 {
@@ -53,7 +63,7 @@ public:
 	void	fn_0068db40( int a );
 	// HYPOTHESIS: the arguments point into the parser at +0x80 and +0x8c (fn_00690a20).
 	void	fn_0068e7b0( int *a );
-	void	fn_0068e860( unsigned char *a, int b );
+	void	fn_0068e860( fn_0068bb00_Value *a, int b );
 	// HYPOTHESIS: a link target and the browser it opens in (fn_00690a60).
 	void	fn_0068e3f0( tString &href, tString &browser, int c );
 	void	fn_0068e8e0( tString &name );
@@ -126,11 +136,11 @@ public:
 	fn_00690a60_Value	f_84;
 	char	pad_88[0x8c - 0x88];
 	// HYPOTHESIS: the current alignment; fn_00690900 passes it on unless an align attribute sets one.
-	unsigned char	f_8c;
+	fn_0068bb00_Value	f_8c;
 	char	pad_8d[0x92 - 0x8d];
 	unsigned short	f_92;
 	std::vector<unsigned short>	f_94;
-	std::vector<unsigned short>	f_a4;
+	std::vector<unsigned long>	f_a4;
 	// HYPOTHESIS: one entry per open anchor tag, 0 for a link and 1 for a named anchor (fn_00690a60).
 	std::vector<unsigned long>	f_b4;
 	char	pad_c4[0xd8 - 0xc4];
@@ -406,7 +416,7 @@ void tHtmlParser::fn_00690900()
 		fn_006916f0( 7 - level, 0 );
 
 		tString	name;
-		int	align = f_8c;
+		int	align = f_8c.f_00;
 
 		while ( fn_0068f5c0( name ) )
 		{
@@ -541,7 +551,7 @@ void tHtmlParser::fn_00690fc0()
 	f_40->fn_0068db60();
 
 	tString	name;
-	int	align = f_8c;
+	int	align = f_8c.f_00;
 
 	while ( fn_0068f5c0( name ) )
 	{
@@ -560,4 +570,12 @@ void tHtmlParser::fn_00691080()
 	f_40->fn_0068db60();
 	fn_00691270();
 	f_92 = ' ';
+}
+
+// FUNCTION: STARFLEETOP 0x006910a0
+void tHtmlParser::fn_006910a0( int align )
+{
+	f_a4.push_back( f_8c.f_00 );
+	f_8c.fn_0068bb00( align );
+	f_40->fn_0068e860( &f_8c, 1 );
 }
