@@ -7,6 +7,26 @@
 #include <string>
 #include <time.h>
 
+// The SDK's inline tOptex destructor, the same body tClientCharacter.cpp claims as the game's
+// copy (0x004296c8). With its body in view the compiler sets no unwind state before calling it
+// from an inlined tAccessPointer destructor, as the original does at 0x0054372f.
+// HYPOTHESIS: it belongs in Common/Thread/Optex.h, shared by both units, once they can move.
+inline tOptex::~tOptex()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
+
 // HYPOTHESIS: a map from a hex's two coordinates to the hex point. Like the maps tMetaMapHex.h
 // declares, it is not this compiler's own std::map (0x10 bytes) but a 0x14-byte tree with a nil
 // node of its own at +8, the multi flag at +0xc and the size at +0x10. Only the members the
@@ -37,9 +57,14 @@ struct fn_0042b004_map
 
 // HYPOTHESIS: 0x005419e4 is a bool query on the 0x4c-byte elements of the vector the member
 // at +0xf0 guards; the element type is not recovered.
+// The analysis names its constructor 0x0054185f and destructor 0x0042a863 tShipCache.
+// HYPOTHESIS: the constructor's one argument is a dword whose type is not recovered.
 class fn_005419e4_entry
 {
 public:
+	fn_005419e4_entry(int source);
+	fn_005419e4_entry(const fn_005419e4_entry &other);
+	~fn_005419e4_entry();
 	bool fn_005419e4() const;
 	char m_00[0x4c];
 };
@@ -65,9 +90,29 @@ inline fn_0042c709_ptr::~fn_0042c709_ptr()
 	Done();
 }
 
+// HYPOTHESIS: the wrapper's non-const lock (the SDK's iPtr); it shares Lock 0x0042c709,
+// operator* 0x00604259 and Done 0x005f4352 with the const one through identical code folding.
+class fn_0042c709_iptr
+{
+public:
+	~fn_0042c709_iptr();
+	void Done();
+	std::vector< fn_005419e4_entry > &operator*();
+
+	mutable tOptex fAccess;
+	std::vector< fn_005419e4_entry > *fPointer;
+	const void *fPointerGuard;
+};
+
+inline fn_0042c709_iptr::~fn_0042c709_iptr()
+{
+	Done();
+}
+
 class fn_0042c709_wrapper
 {
 public:
+	fn_0042c709_iptr Lock();
 	fn_0042c709_ptr Lock() const;
 
 	std::vector< fn_005419e4_entry > *fpPointer;
@@ -122,6 +167,7 @@ public:
 	bool fn_00543702(int value);
 	bool fn_00543711(int value);
 	bool fn_00543720(int value);
+	bool fn_0054372f(int source);
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -566,5 +612,13 @@ bool fn_005430ad_owner::fn_00543711(int value)
 bool fn_005430ad_owner::fn_00543720(int value)
 {
 	m10c = value;
+	return true;
+}
+
+// HYPOTHESIS: appends an entry built from the argument to the guarded vector at +0xf0.
+// FUNCTION: STARFLEETOP 0x0054372f
+bool fn_005430ad_owner::fn_0054372f(int source)
+{
+	(*m0f0.Lock()).push_back(fn_005419e4_entry(source));
 	return true;
 }
