@@ -1,12 +1,15 @@
 // HYPOTHESIS: the owning class of these 7-byte member-address getters is not known yet;
-// the getters return the address of members at +0x340, +0x3b4 and +0x4e8.
+// the getters return the address of members at +0x340, +0x3b4, +0x4e8 and +0x260.
 class fn_0057a481_object {
 public:
     char *fn_0057a481();
     char *fn_0057a488();
     char *fn_0057a48f();
+    char *fn_0057a496();
 
-    char field_0[0x340];
+    char field_0[0x260];
+    char field_260;
+    char field_261[0x340 - 0x261];
     char field_340;
     char field_341[0x3b4 - 0x341];
     char field_3b4;
@@ -30,4 +33,10 @@ char *fn_0057a481_object::fn_0057a488()
 char *fn_0057a481_object::fn_0057a48f()
 {
     return &field_4e8;
+}
+
+// FUNCTION: STARFLEETOP 0x0057a496
+char *fn_0057a481_object::fn_0057a496()
+{
+    return &field_260;
 }
