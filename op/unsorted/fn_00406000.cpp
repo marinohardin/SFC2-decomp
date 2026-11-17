@@ -614,18 +614,22 @@ public:
 // FUNCTION: STARFLEETOP 0x00406c05
 bool fn_00406c05_Obj::fn_00406c05(fn_00406c05_Source* a, fn_00406c05_Target* b, const char* s)
 {
+    bool result;
     if (m10 == 0) {
-        return (a->*m14)((int)b, s);
+        result = (a->*m14)((int)b, s);
     } else if (m10 == 1) {
-        return (a->*m18)((int)b, s, m1c, m20);
+        result = (a->*m18)((int)b, s, m1c, m20);
     } else if (m10 == 2) {
         (b->*m24)(a->fn_00408393(s, m28));
+        result = true;
     } else if (m10 == 3) {
         (b->*m2c)(a->fn_00408365(s, m30));
+        result = true;
     } else if (m10 == 4) {
         (b->*m34)(s);
+        result = true;
     } else {
-        return false;
+        result = false;
     }
-    return true;
+    return result;
 }

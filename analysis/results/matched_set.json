@@ -1086,8 +1086,8 @@
    "symbol": "?fn_00406c05@fn_00406c05_Obj@@QAE_NPAVfn_00406c05_Source@@PAVfn_00406c05_Target@@PBD@Z",
    "unit": "unsorted/fn_00406000.cpp",
    "size": 140,
-   "score": 82.807,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-17"
   },
   "0x0040aad2": {
