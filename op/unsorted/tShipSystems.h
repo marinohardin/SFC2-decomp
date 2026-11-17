@@ -143,7 +143,8 @@ public:
     virtual tMinMaxFloat* vfunction123() = 0;
     virtual float vfunction124() = 0;
     virtual float vfunction125() = 0;
-    virtual void vfunction126() = 0;
+    // HYPOTHESIS: the return type; tShipSystemsExt returns the address of a tMinMaxFloat member.
+    virtual tMinMaxFloat* vfunction126() = 0;
     virtual void vfunction127() = 0;
     virtual void vfunction128() = 0;
     virtual void vfunction129() = 0;
