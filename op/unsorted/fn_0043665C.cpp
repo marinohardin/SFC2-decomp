@@ -105,3 +105,11 @@ void tIndividualShipSystem::vfunction45(int param_1)
 {
     vfunction44(param_1);
 }
+
+// FUNCTION: STARFLEETOP 0x004366d2
+bool tIndividualShipSystem::vfunction46()
+{
+    if (field_24 != 0)
+        return true;
+    return false;
+}

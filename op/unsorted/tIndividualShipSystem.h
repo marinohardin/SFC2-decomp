@@ -257,7 +257,8 @@ public:
     virtual void vfunction44(int param_1);
     // HYPOTHESIS: slot 44; forwards its argument to slot 43.
     virtual void vfunction45(int param_1);
-    virtual void vfunction46();
+    // HYPOTHESIS: slot 45; says whether the system is in a list (pointer at +0x24 set).
+    virtual bool vfunction46();
     virtual void vfunction47(int value); // slot 46
     // HYPOTHESIS: vftable slot 47; takes an amount of damage off the system's level
     // (tShieldGroup slot 88 passes each shield at most its current level).
