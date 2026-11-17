@@ -192,3 +192,5 @@ address	name	best_score	attempts	last_model	listed	note
 0x005eab90	FUN_005eab90	0.00	2	sonnet	2026-11-17T18:08:01Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005eab9c	FUN_005eab9c	0.00	2	sonnet	2026-11-17T18:12:42Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005eaba8	FUN_005eaba8	0.00	2	sonnet	2026-11-17T18:15:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x00413ea8	tPhysicalEntity::vfunction49	99.77	4	opus	2026-11-09T07:59:26Z	all 4 regular attempts used; waits for Fable; best 99.77%
+0x00658ac0	tChannelGroup::mUnload	98.70	4	opus	2026-11-09T07:47:04Z	all 4 regular attempts used; waits for Fable; best 98.70%
