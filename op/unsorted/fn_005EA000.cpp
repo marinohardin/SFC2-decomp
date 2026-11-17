@@ -477,3 +477,18 @@ void tTree_005ea14b::iterator::fn_005ea78b()
 		m_node = p;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005ea7c6
+void tTree_005ea14b::iterator::fn_005ea7c6()
+{
+	if (!m_node->m_right->m_isnil)
+		m_node = Min(m_node->m_right);
+	else
+	{
+		tNode *p;
+		while (m_node == (p = m_node->m_parent)->m_right)
+			m_node = p;
+		if (m_node->m_right != p)
+			m_node = p;
+	}
+}
