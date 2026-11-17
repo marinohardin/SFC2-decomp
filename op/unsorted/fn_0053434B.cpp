@@ -4,6 +4,9 @@
 #include "Tiger/tstring.h"
 #include "Tiger/tstringtag.h"
 #include "unsorted/fn_0090be9c_type.h"
+#include "unsorted/tMissionCompleteResults.h"
+#include <stdlib.h>
+#include <string.h>
 
 // HYPOTHESIS: owning class unknown; only the long at +0x44 is evidenced.
 class fn_0053434b_object
@@ -414,6 +417,7 @@ class fn_00534950_object
 public:
     fn_00534950_object();
     ~fn_00534950_object();
+    void fn_00534ad0();
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -465,4 +469,41 @@ fn_00534ac1_entry::fn_00534ac1_entry()
     field_00 = -1;
     field_04 = 0;
     field_08 = 1.0f;
+}
+
+// HYPOTHESIS: a record of the global list at 0x008949a0: the row it belongs to at +0x0c, a
+// name at +0x14 and a long at +0x34; the rest is not known.
+struct fn_0040a699_record
+{
+    char field_00[0x0c];
+    long field_0c;
+    char field_10[4];
+    char field_14[0x20];
+    long field_34;
+};
+
+// HYPOTHESIS: the global at 0x008949a0 is of the type whose count (0x005e8f21) tBattles reads.
+extern tObject_005b69d0 g_008949a0;
+
+// HYPOTHESIS: fills the entries row by row from the records of the global list: each record's
+// long and a copy of its name go to the next free column of its row.
+// FUNCTION: STARFLEETOP 0x00534ad0
+void fn_00534950_object::fn_00534ad0()
+{
+    int i;
+    int used[24];
+    for (i = 0; i < 24; i++)
+        used[i] = 0;
+    for (i = 0; i < g_008949a0.fn_005e8f21(); i++)
+    {
+        fn_0040a699_record* record = g_008949a0.fn_0040a699(i);
+        if (!record)
+            return;
+        int row = record->field_0c;
+        int column = used[row];
+        field_28[row * 200 + column].field_00 = record->field_34;
+        field_28[row * 200 + column].field_04 = malloc(strlen(record->field_14) + 1);
+        strcpy((char*)field_28[row * 200 + column].field_04, record->field_14);
+        used[row] = column + 1;
+    }
 }

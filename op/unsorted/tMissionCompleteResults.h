@@ -9,6 +9,8 @@
 #include "Common/DataStore/Streamable.h"
 #include <vector>
 
+struct fn_0040a699_record;
+
 // HYPOTHESIS: the member at 0x0c of tMissionCompleteResults; 0x14 bytes, assigned by an
 // out-of-line operator= at 0x005b69d0. Its real type is not known.
 class tObject_005b69d0
@@ -20,6 +22,8 @@ public:
 	// known.
 	int32 fn_0055f269();
 	int32 fn_005e8f21();
+	// HYPOTHESIS: returns the record of the given index, or 0; fn_0053434B.cpp reads it.
+	fn_0040a699_record* fn_0040a699( int32 index );
 
 	int32u fPad_00[0x5];
 };
