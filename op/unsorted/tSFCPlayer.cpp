@@ -4,6 +4,7 @@
 #include "unsorted/tEntity.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tNetControl.h"
+#include "unsorted/tApplication.h"
 #include "unsorted/tSupplyDockInfo.h"
 #include "unsorted/sfcstreams.h"
 #include "unsorted/fn_0090bed4_Object.h"
@@ -153,7 +154,7 @@ class tSFCPlayer
 		virtual void vfunction2(tSFCStream &s, unsigned mode);
 		virtual void vfunction3(char *param_1, int param_2);
 		virtual void vfunction4(char *param_1, int param_2, unsigned param_3, int param_4, int param_5);
-		virtual void vfunction5() = 0;
+		virtual void vfunction5(tString *param_1);
 		virtual void *vfunction6();
 		virtual void vfunction7(int param_1);
 		virtual int vfunction8();
@@ -832,6 +833,13 @@ int tSFCPlayer::vfunction15(int param_1)
 			return i;
 	}
 	return -1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d07c9
+void tSFCPlayer::vfunction5(tString *param_1)
+{
+	m_08 = *param_1;
+	g_p008cc580->vfunction10("Network", "PlayerName", m_08.mCharStr());
 }
 
 // FUNCTION: STARFLEETOP 0x004d07b6

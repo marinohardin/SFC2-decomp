@@ -40,6 +40,7 @@ public:
 	virtual void vfunction7();
 	virtual void vfunction8();
 	virtual void vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
+	virtual void vfunction10(const char *, const char *, const char *);    // +0x24, stores a named string setting
 };
 
 extern fn_008cc580_Settings *g_p008cc580;
