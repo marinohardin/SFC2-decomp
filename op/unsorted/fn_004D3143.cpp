@@ -50,6 +50,7 @@ public:
 	void fn_004caf40( fn_004d3ef7_object* arg1, long arg2 );
 	void fn_004cb0ab( fn_004d3ef7_object* arg1 );
 	long fn_004cb602( long arg1 );
+	void fn_004cb56f( long arg1, long arg2, long arg3 );
 	void fn_004cb12a();
 	void fn_004cb4a7( long arg1, long arg2 );
 	class fn_004d35bf_object* fn_004cb4f8( long arg1 );
@@ -434,4 +435,10 @@ fn_004d35bf_object* fn_004d35bf( long arg1, char arg2 )
 		obj = 0;
 	}
 	return obj;
+}
+
+// FUNCTION: STARFLEETOP 0x004d35e3
+void fn_004d35e3( long arg1, long arg2, long arg3 )
+{
+	g_009254f8.fn_004cb56f( arg1, arg2, arg3 );
 }
