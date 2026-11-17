@@ -75,3 +75,21 @@ long fn_0058574e_owner::fn_0058574e()
 	fAccess.Leave();
 	return value;
 }
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a long at +0x30; its name is not recovered.
+class fn_00585769_owner {
+public:
+	long fn_00585769();
+	tOptex fAccess;
+	char fn_00585769_pad0[0x30 - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585769
+long fn_00585769_owner::fn_00585769()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
