@@ -67,8 +67,8 @@ struct fn_0053a73a_map
 	// HYPOTHESIS: the out-of-line assignment 0x0053a79b.
 	fn_0053a73a_map& operator=( const fn_0053a73a_map& other );
 	int32& operator[]( const int32& key );
-	iterator begin() { return iterator( m_tree.m_head->left ); }
-	iterator end() { return iterator( m_tree.m_head ); }
+	iterator begin() const { return iterator( m_tree.m_head->left ); }
+	iterator end() const { return iterator( m_tree.m_head ); }
 
 	tree m_tree;
 };
@@ -128,7 +128,10 @@ struct fn_0053a6cc_map
 	// HYPOTHESIS: the out-of-line assignment 0x0053a704.
 	fn_0053a6cc_map& operator=( const fn_0053a6cc_map& other );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
-	iterator end() { return iterator( m_tree.m_head ); }
+	// HYPOTHESIS: the out-of-line 0x0053a8ff, which tMetaMapHex's StreamOut calls for the first
+	// element; that it is the const begin is a guess.
+	iterator begin() const;
+	iterator end() const { return iterator( m_tree.m_head ); }
 
 	tree m_tree;
 };
@@ -158,6 +161,8 @@ public:
 	// HYPOTHESIS: a number per index; tBattles::SQLFillInsertStream writes it for 0 and 1.
 	int32 fn_0053a414( int32 param_1 );
 
+	virtual void StreamOut( nDataStore::tOutput& output ) const;
+
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.
 	fn_0053a6cc_map m_48;
@@ -171,7 +176,7 @@ public:
 	double m_98;
 	double m_a0;
 	tHexPoint m_a8;
-	tOptex m_bc;
+	mutable tOptex m_bc;
 };
 
 #endif

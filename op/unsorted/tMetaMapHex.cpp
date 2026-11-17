@@ -1,5 +1,17 @@
+// tBuffer::Write is called out of line (0x0042a0fc).
+#define DATASTORE_OUT_OF_LINE_WRITE
 #include "unsorted/tMetaMapHex.h"
 #include "Common/Settings.h"
+#include "Common/DataStore/DataStoreOutput.h"
+
+// Inline in the SDK; the unwind code of StreamOut below calls a copy.
+inline tOptex::tGuard::~tGuard()
+{
+	if( fNeedToLeave )
+	{
+		fOptex->Leave();
+	}
+}
 
 // HYPOTHESIS: returns the thread state whose default use the optex takes (it is passed to
 // tThreadState::SetCurThreadState elsewhere); the name is not known.
@@ -105,4 +117,44 @@ tMetaMapHex& tMetaMapHex::operator=( const tMetaMapHex& other )
 	}
 
 	return *this;
+}
+
+// FUNCTION: STARFLEETOP 0x0053963a
+void tMetaMapHex::StreamOut( nDataStore::tOutput& output ) const
+{
+	tOptex::tGuard guard( &m_bc );
+
+	tDatabaseObject::StreamOut( output );
+
+	// HYPOTHESIS: tHexPoint is a tStreamable; its header does not say so yet.
+	output << *(const nDataStore::tStreamable *)&m_a8;
+
+	output << m_48.m_tree.m_size;
+	for( fn_0053a6cc_map::iterator i = m_48.begin(); i != m_48.end(); ++i )
+	{
+		output << (*i).first;
+		output << (*i).second;
+	}
+
+	output << m_5c;
+	output << m_60;
+	output << m_64;
+	output << m_68;
+	output << m_6c;
+
+	output << m_70.m_tree.m_size;
+	for( fn_0053a73a_map::iterator j = m_70.begin(); j != m_70.end(); ++j )
+	{
+		output << (*j).first;
+		output << (*j).second;
+	}
+
+	output << m_84.m_tree.m_size;
+	for( fn_0053a73a_map::iterator k = m_84.begin(); k != m_84.end(); ++k )
+	{
+		output << (*k).first;
+		output << (*k).second;
+	}
+
+	output << m_98 << m_a0;
 }

@@ -6103,6 +6103,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x0053963a": {
+   "name": "tMetaMapHex::vfunction2_for_tStreamable",
+   "symbol": "?StreamOut@tMetaMapHex@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "unsorted/tMetaMapHex.cpp",
+   "size": 455,
+   "score": 54.343,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

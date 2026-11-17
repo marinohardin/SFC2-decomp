@@ -102,6 +102,27 @@ tOutput& tOutput::operator<<( bool value )
 	return *this;
 }
 
+tOutput& tOutput::operator<<( int32u value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( int32s value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( double value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+
 };
 
 #endif
