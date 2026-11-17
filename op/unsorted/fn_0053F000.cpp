@@ -6,6 +6,7 @@
 #include <xmemory>
 #include "Common/DynamicAllocator.h"
 #include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 
 #include "unsorted/tPreparedMissions.h"
@@ -64,9 +65,12 @@ public:
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x74 bytes with a virtual destructor in slot 0, streamed out one by one as tStreamable
 // by 0x0053fe75. The names are placeholders.
+// HYPOTHESIS: the element is tMissionProfile; 0x0053ff43 default-constructs one through
+// 0x0053d35e and destroys it through 0x0053d423, both known by that name.
 class fn_0053f491_elem : public nDataStore::tStreamable
 {
 public:
+	fn_0053f491_elem();
 	virtual ~fn_0053f491_elem();
 	fn_0053f491_elem( const fn_0053f491_elem &other );
 	fn_0053f491_elem &operator=( const fn_0053f491_elem &other );
@@ -700,6 +704,27 @@ tOutput& operator<<( tOutput& output, const std::vector< fn_0054340c_owner >& va
 	}
 
 	return output;
+}
+
+// FUNCTION: STARFLEETOP 0x0053ff43
+template<>
+tInput& operator>>( tInput& input, std::vector< fn_0053f491_elem >& value )
+{
+	value.clear();
+
+	int32u size = 0;
+	input.Read( (byte*)&size, sizeof( size ) );
+
+	value.reserve( size );
+
+	for( int i = 0; i < size; i++ )
+	{
+		fn_0053f491_elem type;
+		input >> type;
+		value.push_back( type );
+	}
+
+	return input;
 }
 
 };

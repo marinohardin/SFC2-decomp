@@ -6904,6 +6904,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0053ff43": {
+   "name": "FUN_0053ff43",
+   "symbol": "??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@Vfn_0053f491_elem@@V?$allocator@Vfn_0053f491_elem@@@std@@@std@@@Z",
+   "unit": "unsorted/fn_0053F000.cpp",
+   "size": 148,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",
