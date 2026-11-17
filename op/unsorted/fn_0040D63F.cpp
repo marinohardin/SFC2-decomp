@@ -14,6 +14,7 @@ public:
     void fn_0040d867(void* data, int size, int count);
     // HYPOTHESIS: 0x0040d897 is the read counterpart of 0x0040d867.
     void fn_0040d897(void* data, int size, int count);
+    fn_0040d63f_Buf* fn_0040d7d6(tString* str);
     fn_0040d63f_Buf* fn_0040d777(struct fn_0040d777_Point3& p);
     fn_0040d63f_Buf* fn_0040d7ae(struct fn_0040d7ae_Point2& p);
     int m00;
@@ -126,5 +127,19 @@ fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d7ae(fn_0040d7ae_Point2& p)
 {
     fn_0040d897(&p.x, 4, 1);
     fn_0040d897(&p.y, 4, 1);
+    return this;
+}
+
+// FUNCTION: STARFLEETOP 0x0040d7d6
+fn_0040d63f_Buf* fn_0040d63f_Buf::fn_0040d7d6(tString* str)
+{
+    iBasicStringElement c;
+    *str = "";
+    for (;;) {
+        fn_0040d897(&c, 2, 1);
+        if (c == 0)
+            break;
+        *str += c;
+    }
     return this;
 }
