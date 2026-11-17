@@ -261,6 +261,7 @@ public:
 	tSingleAccessWrapper< fn_005395b2_object >::iPtr FUN_0042ab08();
 	void FUN_0042ab25( std::vector< db::tID >& ids );
 	tHexPoint FUN_0042abe4();
+	const tHexPoint& FUN_0042ac36();
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -275,7 +276,8 @@ public:
 	int field_54;
 	int field_58;
 	tHexPoint field_5c;
-	byte field_70[0x84 - 0x70];
+	// HYPOTHESIS: a second hex point, sized by the gap to +0x84; 0x0042ac36 returns it.
+	tHexPoint field_70;
 	tHexPoint field_84;
 	byte field_98[0x9c - 0x98];
 	// HYPOTHESIS: the byte flag that 0x0042a41a reads at +0x9c.
@@ -559,4 +561,12 @@ tHexPoint fn_0042a480_object::FUN_0042abe4()
 	tOptex::tGuard guard( &field_e4 );
 
 	return field_5c;
+}
+
+// FUNCTION: STARFLEETOP 0x0042ac36
+const tHexPoint& fn_0042a480_object::FUN_0042ac36()
+{
+	tOptex::tGuard guard( &field_e4 );
+
+	return field_70;
 }

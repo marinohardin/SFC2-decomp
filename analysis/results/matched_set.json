@@ -2521,6 +2521,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042ac36": {
+   "name": "FUN_0042ac36",
+   "symbol": "?FUN_0042ac36@fn_0042a480_object@@QAEABVtHexPoint@@XZ",
+   "unit": "unsorted/fn_0042A000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
