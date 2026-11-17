@@ -284,6 +284,16 @@ struct fn_005bc1d5_tree
 	// HYPOTHESIS: _Erase(node).
 	void FUN_005bc8b0(node *_X);
 	iterator FUN_005bc1d5(iterator _F, iterator _L);
+	// HYPOTHESIS: _Buynode(parent, colour); this tree's copy also clears the
+	// nil flag.
+	node *_Buynode(node *_Parg, char _Carg)
+		{node *_S = (node *)operator new(sizeof (node));
+		_S->_Parent = _Parg;
+		_S->_Color = _Carg;
+		_S->_Isnil = 0;
+		return (_S); }
+	// HYPOTHESIS: _Init(), with a nil node per tree.
+	void FUN_005bc8e8();
 };
 
 // FUNCTION: STARFLEETOP 0x005bc1d5
@@ -768,4 +778,15 @@ void fn_005bc1d5_tree::FUN_005bc8b0(node *_X)
 		_Y = _Y->_Left;
 		(&_X->_Value)->~fn_005bc091_entry();
 		operator delete(_X); }
+}
+
+// FUNCTION: STARFLEETOP 0x005bc8e8
+void fn_005bc1d5_tree::FUN_005bc8e8()
+{
+	_Nil = _Buynode(0, 1);
+	_Nil->_Isnil = 1;
+	_Nil->_Left = 0, _Nil->_Right = 0;
+	_Head = _Buynode(_Nil, 0);
+	_Lmost() = _Head, _Rmost() = _Head;
+	_Size = 0;
 }
