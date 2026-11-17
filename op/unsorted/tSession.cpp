@@ -68,6 +68,8 @@ public:
 	void	fn_0068e3f0( tString &href, tString &browser, int c );
 	void	fn_0068e8e0( tString &name );
 	void	fn_0068e530();
+	// HYPOTHESIS: an image named by src, placed by align, looked up in dir (fn_00691530).
+	void	fn_0068e560( tString &src, int align, tDir dir );
 
 	char	pad_04[0x9c - 0x04];
 	// HYPOTHESIS: state fn_00690a60 copies into the parser at +0x84; its type is not known.
@@ -102,6 +104,8 @@ public:
 	fn_0068d830_Item	*fn_00692620( iBasicStringElement *text );
 	bool	fn_0068f660();
 	void	fn_0068f6b0( tString &name );
+	// HYPOTHESIS: reads an attribute value like fn_0068f6b0; fn_00691530 uses it for align.
+	void	fn_0068f630( tString &value );
 	void	fn_00690400();
 	void	fn_006904d0();
 	void	fn_00690900();
@@ -127,6 +131,7 @@ public:
 	int	fn_0068fd00();
 	void	fn_006914f0();
 	void	fn_00691510();
+	void	fn_00691530();
 	void	fn_00690de0();
 	void	fn_00690e70();
 	void	fn_00690fb0();
@@ -699,4 +704,44 @@ void tHtmlParser::fn_00691510()
 {
 	f_88 = 0;
 	f_40->fn_0068e7b0( &f_80 );
+}
+
+// FUNCTION: STARFLEETOP 0x00691530
+// HYPOTHESIS: an image tag: a src attribute names the image, an align attribute places it
+// (2 by default); the image is added only when a src was given.
+void tHtmlParser::fn_00691530()
+{
+	tString	name;
+	tString	src;
+	int	align = 2;
+	bool	haveSrc = false;
+
+	while ( fn_0068f5c0( name ) )
+	{
+		if ( name == "src" )
+		{
+			if ( !fn_0068f660() )
+				return;
+			fn_0068f6b0( src );
+			haveSrc = true;
+		}
+		else if ( name == "align" )
+		{
+			tString	value;
+
+			if ( fn_0068f660() )
+			{
+				fn_0068f630( value );
+				if ( value == "top" )
+					align = 1;
+				else if ( value == "middle" )
+					align = 0;
+			}
+		}
+		else
+			fn_0068f480();
+	}
+
+	if ( haveSrc )
+		f_40->fn_0068e560( src, align, f_70 );
 }
