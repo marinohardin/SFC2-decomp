@@ -122,6 +122,7 @@ public:
 	void fn_005e4417( long *msg );
 	void fn_005e4426( long *msg );
 	void fn_005e4455();
+	void fn_005e4468();
 	// HYPOTHESIS: draws the map inside the area given; the slot of tObjBase::vfunction8.
 	void vfunction8( const tRect *area );
 	void vfunction30();
