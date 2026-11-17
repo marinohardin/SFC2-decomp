@@ -327,6 +327,7 @@ public:
 	c_004bdd0d_Object();
 	~c_004bdd0d_Object();
 	void fn_004bdd67();
+	void fn_004bde26( tString *text, int value );
 
 	tString field_0;
 	c_004bd805_Entry field_28[ 500 ];
@@ -374,5 +375,45 @@ c_004bdd0d_Object::~c_004bdd0d_Object()
 	{
 		field_28[ i ].text = "";
 		field_28[ i ].field_28 = 0;
+	}
+}
+
+// HYPOTHESIS: the list box width, a text's width and the split position, as 0x004bd5bc,
+// 0x004bd645 and 0x004bd6d1 give them for the first class.
+int fn_004be4df( void );
+int fn_004be55e( tString *text );
+int fn_004be5e0( tString *text, int width );
+
+// HYPOTHESIS: adds a text to the entries, as 0x004bd8d4 does for the first class.
+// FUNCTION: STARFLEETOP 0x004bde26
+void c_004bdd0d_Object::fn_004bde26( tString *text, int value )
+{
+	field_5624 = true;
+	int width = fn_004be4df();
+	int textWidth = fn_004be55e( text );
+	if ( field_561c >= 500 )
+		field_561c = 0;
+	if ( textWidth < width )
+	{
+		field_28[ field_561c ].text = *text;
+		field_28[ field_561c ].field_28 = value;
+		field_561c++;
+	}
+	else
+	{
+		int split = fn_004be5e0( text, width );
+		field_28[ field_561c ].text = text->substr( 0, split );
+		field_28[ field_561c ].field_28 = value;
+		field_561c++;
+		if ( split > 0 )
+			fn_004bde26( &text->substr( split, text->mStrLen() - split ), value );
+	}
+	field_5620++;
+	if ( field_5620 > 500 )
+	{
+		field_5620 = 500;
+		field_5618++;
+		if ( field_5618 >= 500 )
+			field_5618 = 0;
 	}
 }
