@@ -10,7 +10,6 @@
 #include "unsorted/tMetaMapHex.h"
 #include "unsorted/tMissionCompleteResults.h"
 #include <sstream>
-#include <vector>
 class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify; tSettings* fn_005d481f();	// HYPOTHESIS: fn_005d481f returns the server settings; name not known. tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
@@ -69,6 +68,7 @@ class fn_0056c414_Database { public:	// HYPOTHESIS: the database held at +4; pro
 	void fn_0057118e( tNotify* notify );
 	void fn_00571304( tNewsStory* news );
 	void fn_0057147a( int value );	// HYPOTHESIS: one dword argument; its type is not known.
+	void fn_005715f0( const nDatabase::tID& id, nDatabase::tDatabaseObject* object );	// HYPOTHESIS: handed an update's ID and the record; what it does is not known.
 }; namespace nAsyncDatabaseProcedure { class tAsyncDatabaseSingle	// HYPOTHESIS: only the slots that rebuilt functions call or define carry signatures.
 {
 public:
@@ -116,7 +116,7 @@ public:
 	virtual void vfunction42( tServCharacter character );
 	virtual void vfunction43( nDatabase::tDatabaseObjectUpdate update );
 	virtual void vfunction44( tShip ship );
-	virtual void vfunction45();
+	virtual void vfunction45( nDatabase::tDatabaseObject* matrix );
 	virtual void vfunction46();
 	virtual void vfunction47();
 	virtual void vfunction48( tCampaignInfo* campaignInfo );
@@ -751,4 +751,17 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction49( nDatabase::tDat
 {
 	nDatabase::tDatabaseObjectUpdate update( *object );
 	fDatabase->UpdateObject( update );
+}
+
+// HYPOTHESIS: the assertion text names the record "matrix", so it is taken to be a
+// tPoliticalTensionMatrix (declared nowhere yet); it is written back as an update and
+// fn_005715f0 is then handed the update's ID and the record.
+// FUNCTION: STARFLEETOP 0x0056e1fb
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction45( nDatabase::tDatabaseObject* matrix )
+{
+#line 997
+	validate( matrix );
+	nDatabase::tDatabaseObjectUpdate update( *matrix );
+	fDatabase->UpdateObject( update );
+	fDatabase->fn_005715f0( update.GetUpdateID(), matrix );
 }
