@@ -7219,6 +7219,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0054351b": {
+   "name": "nDatabase::tID::tID",
+   "symbol": "?fn_0054351b@fn_005430ad_owner@@QBE?AVtID@nDatabase@@XZ",
+   "unit": "unsorted/fn_00543000.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00547b57": {
    "name": "tBattles::tBattles",
    "symbol": "??0tBattles@@QAE@XZ",

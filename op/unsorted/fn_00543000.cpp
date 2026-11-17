@@ -105,6 +105,7 @@ public:
 	fn_0042c709_ptr fn_005434dd() const;
 	fn_0042c709_ptr fn_005434f7() const;
 	int fn_00543514();
+	nDatabase::tID fn_0054351b() const;
 	bool fn_00543294() const;
 	int fn_0054330e(const nDatabase::tID &id);
 	void fn_0054334a(int flags);
@@ -128,7 +129,8 @@ public:
 	std::string m048;
 	int m058;
 	fn_0042c709_wrapper m05c;
-	char m_pad74[0x5c];
+	char m_pad74[0x4c];
+	nDatabase::tID m0c0;
 	fn_0042b0fd_owner m0d0;
 	std::string m0e0;
 	fn_0042c709_wrapper m0f0;
@@ -411,4 +413,11 @@ fn_0042c709_ptr fn_005430ad_owner::fn_005434f7() const
 int fn_005430ad_owner::fn_00543514()
 {
 	return m144;
+}
+
+// The copy writes the tStreamable vtable, then tID's (0x00798244): the member at +0xc0 is a tID.
+// FUNCTION: STARFLEETOP 0x0054351b
+nDatabase::tID fn_005430ad_owner::fn_0054351b() const
+{
+	return m0c0;
 }
