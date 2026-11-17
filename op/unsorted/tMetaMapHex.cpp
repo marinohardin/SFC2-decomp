@@ -832,3 +832,19 @@ fn_0053a73a_map::iterator fn_0053a73a_map::find( const int32& key )
 	iterator p( (node *)lb._Mynode() );
 	return ( p.m_node == m_tree.m_head || key < p.m_node->first ? end() : p );
 }
+
+// FUNCTION: STARFLEETOP 0x0053aab4
+void fn_0053a73a_map::tree::fn_0053aab4( const tree& other )
+{
+	_Root() = fn_0053abca( other._Root(), m_head );
+	m_size = other.m_size;
+	if( _Root() != m_nil )
+	{
+		_Lmost() = _Min( _Root() );
+		_Rmost() = _Max( _Root() );
+	}
+	else
+	{
+		_Lmost() = m_head, _Rmost() = m_head;
+	}
+}
