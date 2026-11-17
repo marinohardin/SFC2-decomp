@@ -449,3 +449,13 @@ void fn_005f7a6a_object::FUN_005f7a6a( const int& value )
 	int* p = (int*) ( field_04[block] + off % 1024 );
 	new( p ) int( value );
 }
+
+// FUNCTION: STARFLEETOP 0x005f7aeb
+void fn_005f7a6a_object::FUN_005f7aeb()
+{
+	if ( field_10 != 0 ) {
+		if ( --field_10 == 0 ) {
+			field_0c = 0;
+		}
+	}
+}
