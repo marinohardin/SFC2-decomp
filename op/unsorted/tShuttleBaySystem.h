@@ -23,6 +23,8 @@ public:
     virtual int vfunction105();
     // vftable slot 105; returns field_c0.
     virtual int vfunction106();
+    // vftable slot 106; returns field_dc.
+    virtual int vfunction107();
 
     char pad7c[0xa0 - 0x7c];
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
@@ -33,6 +35,8 @@ public:
     int field_c0;
     // HYPOTHESIS: an object or array held by value; its type is not recovered.
     int field_c4;
+    char padc8[0xdc - 0xc8];
+    int field_dc;
 };
 
 #endif	// tShuttleBaySystem_h
