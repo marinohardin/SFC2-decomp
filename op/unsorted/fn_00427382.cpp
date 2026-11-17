@@ -87,6 +87,7 @@ public:
 	void fn_00426ca8( int aArg1, int aArg2 );
 	void fn_00426e40( int aArg1, int aArg2 );
 	bool fn_00426c23( int aArg );
+	void fn_00426c5e( int aArg );
 	char pad00[0x10];
 	int field_0x10[20];
 	char pad60[0x64];
@@ -105,6 +106,7 @@ public:
 	int fn_004275ae( tID aID, tID aOther );
 	void fn_004275fe( int aIndex, int aArg1, int aArg2 );
 	bool fn_00427623( int aArg, int aIndex );
+	void fn_00427648( int aArg, int aIndex );
 	char pad00[0x54];
 	tObject_00426da7 *field_0x54[20];
 };
@@ -187,4 +189,14 @@ bool tObject_0042750f::fn_00427623( int aArg, int aIndex )
 	if (aIndex < 0 || aIndex >= 20 || (entry = field_0x54[aIndex]) == 0)
 		return false;
 	return entry->fn_00426c23( aArg );
+}
+
+// HYPOTHESIS: 0x00426c5e of the table entry for the argument; nothing for an index out of
+// range or an empty entry.
+// FUNCTION: STARFLEETOP 0x00427648
+void tObject_0042750f::fn_00427648( int aArg, int aIndex )
+{
+	tObject_00426da7 *entry;
+	if (aIndex >= 0 && aIndex < 20 && (entry = field_0x54[aIndex]) != 0)
+		entry->fn_00426c5e( aArg );
 }
