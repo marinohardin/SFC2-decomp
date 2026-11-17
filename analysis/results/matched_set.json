@@ -6463,6 +6463,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00571a7a": {
+   "name": "FUN_00571a7a",
+   "symbol": "??1fn_005717f7_vector@@QAE@XZ",
+   "unit": "unsorted/fn_00571000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",

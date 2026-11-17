@@ -303,7 +303,6 @@ bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef fn_
 
 
 
-
 #include <map>
 #include <vector>
 // HYPOTHESIS: a count query on the database: the owner's map (at +0x18) lists the objects of
@@ -319,6 +318,7 @@ public:
 	virtual bool operator()(fn_005717f7_object* pObject);
 };
 struct fn_005717f7_vector {
+	~fn_005717f7_vector();
 	void* m_allocator;
 	void** m_first;
 	void** m_last;
@@ -580,4 +580,15 @@ void __stdcall fn_005de471(fn_00571a58_inner* inner, int flag, int arg);
 void fn_00571a58_owner::fn_00571a69(int arg)
 {
 	fn_005de471(fn_00571a58_ptr, 1, arg);
+}
+
+// HYPOTHESIS: the out-of-line destructor of the std::vector the struct above stands for; the body
+// is the library's ~vector with the pointer elements' empty destroy loop written out.
+// FUNCTION: STARFLEETOP 0x00571a7a
+fn_005717f7_vector::~fn_005717f7_vector()
+{
+	for (void** i = m_first; i != m_last; ++i)
+		;
+	::operator delete(m_first);
+	m_first = 0, m_last = 0, m_end = 0;
 }
