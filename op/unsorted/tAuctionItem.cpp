@@ -26,11 +26,11 @@ public:
 
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
+	virtual const char* SQLTableName() const;
 
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
-
 protected:
 	bool fBool_48;
 	std::string fString_4c;
@@ -114,4 +114,10 @@ void tAuctionItem::SQLFillUpdateStream( std::stringstream* SQL, bool lastOne )
 	tDatabaseObject::SQLFillUpdateStream( SQL, lastOne );
 
 	*SQL << "BiddingHasBegun=" << fBool_48 << ", ItemName='" << fn_006fc200( fString_4c ) << "', ItemID=" << fID_5c.GetObjectID() << ", ItemInfo=" << fInt_6c << ", AuctionValue=" << fInt_70 << ", AuctionRate=" << fDouble_78 << ", TurnOpened=" << fInt_80 << ", TurnToClose=" << fInt_84 << ", CurrentBid=" << fInt_88 << ", BidOwnerID=" << fID_8c.GetObjectID() << ", TurnBidMade=" << fInt_9c << ", BidMaximum=" << fInt_a0;
+}
+
+// FUNCTION: STARFLEETOP 0x00545221
+const char* tAuctionItem::SQLTableName() const
+{
+	return "BidItem";
 }
