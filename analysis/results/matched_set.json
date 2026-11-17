@@ -2674,6 +2674,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c709": {
+   "name": "FUN_0042c709",
+   "symbol": "?Lock@?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE?AV?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@XZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",

@@ -559,3 +559,10 @@ template<> tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper()
 {
 	Delete();
 }
+
+// FUNCTION: STARFLEETOP 0x0042c709
+template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<std::vector<int> >::Lock()
+{
+	fPointerOptex.Enter();
+	return iPtr( fpPointer, this );
+}
