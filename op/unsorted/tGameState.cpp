@@ -103,3 +103,9 @@ bool tGameState::vfunction14(int param_1)
 {
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00469e02
+void tGameState::vfunction16(int *param_1)
+{
+	*param_1 = 0;
+}
