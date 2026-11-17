@@ -87,7 +87,7 @@ public:
 	tCompassRose *field_180;
 	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.
 	std::vector<c_tScrollBar_FieldA8 *> field_184;
-	std::vector<int> field_194;
+	std::vector<c_tScrollBar_FieldA8 *> field_194;
 	std::vector<c_tScrollBar_FieldA8 *> field_1a4;
 	std::vector<c_tScrollBar_FieldA8 *> field_1b4;
 	int field_1c4;
