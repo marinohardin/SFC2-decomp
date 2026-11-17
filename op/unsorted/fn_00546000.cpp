@@ -274,3 +274,20 @@ int c_005462cc::fn_005462cc()
 {
     return field_7c;
 }
+
+// HYPOTHESIS: returns the address of a member at +0x80, likely of the same object as
+// 0x005462cc's; the member's type is not known yet.
+class c_005462d0
+{
+public:
+    int* fn_005462d0();
+
+    char field_0[0x80];
+    int field_80;
+};
+
+// FUNCTION: STARFLEETOP 0x005462d0
+int* c_005462d0::fn_005462d0()
+{
+    return &field_80;
+}
