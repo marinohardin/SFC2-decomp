@@ -658,3 +658,10 @@ fn_0053a6cc_map& fn_0053a6cc_map::operator=( const fn_0053a6cc_map& other )
 	}
 	return *this;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a73a
+int32& fn_0053a73a_map::operator[]( const int32& key )
+{
+	std::pair< iterator, bool > result = insert( value_type( key, int32() ) );
+	return (*result.first).second;
+}
