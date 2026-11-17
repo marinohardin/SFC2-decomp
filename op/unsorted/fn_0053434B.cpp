@@ -52,6 +52,9 @@ class fn_0053440f_object
 {
 public:
     fn_0053440f_object();
+    ~fn_0053440f_object();
+    // HYPOTHESIS: a member taking no arguments, called first by the destructor.
+    void fn_005ff7ac();
 
     std::vector< long > field_00;
 };
@@ -59,4 +62,10 @@ public:
 // FUNCTION: STARFLEETOP 0x0053440f
 fn_0053440f_object::fn_0053440f_object()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x00534425
+fn_0053440f_object::~fn_0053440f_object()
+{
+    fn_005ff7ac();
 }
