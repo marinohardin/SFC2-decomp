@@ -466,6 +466,7 @@ class fn_0042c632_Iterator
 {
 public:
 	void fn_0042c632();
+	void fn_0042c66d();
 
 	fn_0042c360_Node* m00_node;
 };
@@ -489,5 +490,26 @@ void fn_0042c632_Iterator::fn_0042c632()
 		while (m00_node == (p = m00_node->m04_parent)->m00_left)
 			m00_node = p;
 		m00_node = p;
+	}
+}
+
+// HYPOTHESIS: the iterator's increment (_Inc).
+// FUNCTION: STARFLEETOP 0x0042c66d
+void fn_0042c632_Iterator::fn_0042c66d()
+{
+	if (!m00_node->m08_right->m19_isnil)
+	{
+		fn_0042c360_Node* p = m00_node->m08_right;
+		while (!p->m00_left->m19_isnil)
+			p = p->m00_left;
+		m00_node = p;
+	}
+	else
+	{
+		fn_0042c360_Node* p;
+		while (m00_node == (p = m00_node->m04_parent)->m08_right)
+			m00_node = p;
+		if (m00_node->m08_right != p)
+			m00_node = p;
 	}
 }
