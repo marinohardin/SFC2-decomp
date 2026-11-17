@@ -5,6 +5,8 @@
 //	containers and tInterlockedScalar, which no matched code uses yet. The original defines the
 //	inline functions in DataStoreInput.cpp, which the header includes; here they follow the class,
 //	and only the ones matched code uses are defined yet.
+//	MATCH-ONLY: tInput::Get is left out where DATASTORE_OUT_OF_LINE_GET is defined:
+//	unsorted/fn_0042A000.cpp holds the copy the compiler emitted out of line (0x0042a309).
 //
 #if !defined( DataStoreInput_h )
 #define DataStoreInput_h
@@ -81,10 +83,12 @@ protected:
 	const tBuffer* fBuffer;
 };
 
+#ifndef DATASTORE_OUT_OF_LINE_GET
 byte tInput::Get()
 {
 	return fBuffer->Get( fGetPos++ );
 }
+#endif
 
 void tInput::Read( byte* data, int32 size )
 {
