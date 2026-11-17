@@ -194,3 +194,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005fb377	FUN_005fb377	5.95	2	sonnet	2026-11-17T23:04:35Z	attempt 2 (sonnet) did not raise the best; best 5.95%
 0x005fb3af	FUN_005fb3af	99.77	3	opus	2026-11-17T23:09:32Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.77%
 0x005fb6e5	FUN_005fb6e5	99.79	2	sonnet	2026-11-17T23:19:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.79%
+0x005fbb02	tCallback<tChatChannel_const&>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T23:42:48Z	attempt 2 (sonnet) did not raise the best; best 0.00%
