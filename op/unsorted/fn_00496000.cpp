@@ -1,6 +1,9 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00496000.cpp
-// Functions: 0x004961be to 0x00496853, 36 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Tiger/tstring.h"
+
+// HYPOTHESIS: `ret 8` with ecx unused; may be a member of an unknown class that ignores this.
+// FUNCTION: STARFLEETOP 0x004961be
+tString __stdcall fn_004961be(long val)
+{
+	tString s;
+	return s.mAppendInt32s(val, 1);
+}
