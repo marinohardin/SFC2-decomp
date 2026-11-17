@@ -328,6 +328,7 @@ public:
 	~c_004bdd0d_Object();
 	void fn_004bdd67();
 	void fn_004bde26( tString *text, int value );
+	c_004bd805_Entry *fn_004bdf64( int index );
 
 	tString field_0;
 	c_004bd805_Entry field_28[ 500 ];
@@ -416,4 +417,14 @@ void c_004bdd0d_Object::fn_004bde26( tString *text, int value )
 		if ( field_5618 >= 500 )
 			field_5618 = 0;
 	}
+}
+
+// HYPOTHESIS: the entry at a position counted from the oldest one, wrapping at 500.
+// FUNCTION: STARFLEETOP 0x004bdf64
+c_004bd805_Entry *c_004bdd0d_Object::fn_004bdf64( int index )
+{
+	int pos = field_5618 + index;
+	if ( pos >= 500 )
+		pos -= 500;
+	return &field_28[ pos ];
 }
