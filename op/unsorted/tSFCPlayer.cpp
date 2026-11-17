@@ -1455,20 +1455,21 @@ void tSFCPlayer::vfunction17(int param_1, unsigned param_2)
 {
 	int row = fn_004d11e9(param_1);
 	if (param_2 < (unsigned)m_3370[row]) {
-		if (param_2 < 5) {
-			int idx = row * 6 + param_2;
-			int n = 5 - param_2;
-			do {
-				m_3388[idx] = m_3388[idx + 1];
-				m_3418[idx] = m_3418[idx + 1];
-				m_39b8[idx] = m_39b8[idx + 1];
-				m_3f58[idx].fn_00445a14((int)&m_3f58[idx + 1]);
-				idx++;
-			} while (--n != 0);
+		for (unsigned i = param_2; i < 5; i++) {
+			m_3388[row * 6 + i] = m_3388[row * 6 + i + 1];
+			m_3418[row * 6 + i] = m_3418[row * 6 + i + 1];
+			m_39b8[row * 6 + i] = m_39b8[row * 6 + i + 1];
+			m_3f58[row * 6 + i].fn_00445a14((int)&m_3f58[row * 6 + i + 1]);
 		}
 		m_3370[row]--;
 	}
 }
+
+
+
+
+
+
 // FUNCTION: STARFLEETOP 0x004d0e12
 int tSFCPlayer::vfunction95(int param_1) { return g_0085529c[param_1]; }
 // FUNCTION: STARFLEETOP 0x004d0e20
