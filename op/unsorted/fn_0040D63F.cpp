@@ -799,3 +799,15 @@ void fn_0040e591(char* a, char* b, fn_0040d63f_Buf& buf)
     buf.fn_0040e744(text);
 }
 
+// FUNCTION: STARFLEETOP 0x0040e5cd
+void fn_0040e5cd(char* a, char* b, fn_0040d63f_Buf& buf)
+{
+    char format[256];
+    char text[256];
+    buf.fn_0040d841();
+    strcpy(format, a);
+    strcat(format, " = ");
+    buf.fn_0040e70f(text);
+    strcpy(b, text + strlen(format));
+}
+
