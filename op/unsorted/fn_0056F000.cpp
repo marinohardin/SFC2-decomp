@@ -330,8 +330,11 @@ void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_00
 {
 	tOptex::tGuard guard(&fAccess);
 	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tShip));
-#line 183
+	// MATCH-ONLY: the assertion names the original's Database.h (the body is that header's
+	// member template); the named #line gives __FILE__ that header until it is rebuilt there.
+#line 183 "../Common/Database/Database.h"
 	validate(allocID != kInvalidAllocatorID);
+#line 184 "fn_0056F000.cpp"
 	const fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
 	// MATCH-ONLY: the SDK iterates begin() to end(); through the inline accessors the build
 	// swaps esi and edi, the fields read directly give the original's registers.
