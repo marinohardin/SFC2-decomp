@@ -186,6 +186,7 @@ public:
 	void FUN_0042a66b( int value );
 	void FUN_0042a68f( tHexPoint value );
 	void FUN_0042a6ea( const tHexPoint& value );
+	void FUN_0042a6fc( bool value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
@@ -202,7 +203,10 @@ public:
 	tHexPoint field_5c;
 	byte field_70[0x84 - 0x70];
 	tHexPoint field_84;
-	byte field_98[0xe4 - 0x98];
+	byte field_98[0x9c - 0x98];
+	// HYPOTHESIS: the byte flag that 0x0042a41a reads at +0x9c.
+	bool field_9c;
+	byte field_9d[0xe4 - 0x9d];
 	tOptex field_e4;
 };
 
@@ -298,4 +302,10 @@ void fn_0042a480_object::FUN_0042a68f( tHexPoint value )
 void fn_0042a480_object::FUN_0042a6ea( const tHexPoint& value )
 {
 	field_84 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x0042a6fc
+void fn_0042a480_object::FUN_0042a6fc( bool value )
+{
+	field_9c = value;
 }
