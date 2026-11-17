@@ -687,3 +687,14 @@ void fn_006ccea0(fn_006ccb20_record *record)
 		free(record);
 	WSACleanup();
 }
+
+extern sockaddr_in g_00c7ed70;
+
+// HYPOTHESIS: resolves the master server's address into the global one; the socket is not
+// used.
+// FUNCTION: STARFLEETOP 0x006ccf00
+int fn_006ccf00(SOCKET s, char *host, int port)
+{
+	fn_006ccf20(host, port, &g_00c7ed70, 0);
+	return 0;
+}
