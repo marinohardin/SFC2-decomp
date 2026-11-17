@@ -3,6 +3,7 @@
 
 #include "Tiger/tstring.h"
 #include "Tiger/tstringtag.h"
+#include "unsorted/fn_0090be9c_type.h"
 
 // HYPOTHESIS: owning class unknown; only the long at +0x44 is evidenced.
 class fn_0053434b_object
@@ -263,9 +264,11 @@ public:
     ~fn_005346f9_object();
     void fn_005347bd(long value);
     void fn_005347f4(long value);
-    void fn_0053482b(long index);
-    void fn_00534840(long index);
-    void fn_00534855(std::vector< fn_00534461_entry* >* list, long index, char* group);
+    void fn_0053482b(bool reset);
+    void fn_00534840(bool reset);
+    void fn_00534855(std::vector< fn_00534461_entry* >* list, bool reset, char* group);
+    // HYPOTHESIS: takes no arguments; 0x00534855 calls it on this object before a pick.
+    void fn_00534903();
 
     tString field_00;
     long field_28;
@@ -330,14 +333,46 @@ void fn_005346f9_object::fn_005347f4(long value)
 // HYPOTHESIS: looks the entry up in the first vector under the "SunNames" string group; the
 // callee runs on this same object (ecx is passed through), its return type is not known.
 // FUNCTION: STARFLEETOP 0x0053482b
-void fn_005346f9_object::fn_0053482b(long index)
+void fn_005346f9_object::fn_0053482b(bool reset)
 {
-    fn_00534855(&field_2c, index, "SunNames");
+    fn_00534855(&field_2c, reset, "SunNames");
 }
 
 // HYPOTHESIS: as 0x0053482b, for the second vector under the "PlanetNames" string group.
 // FUNCTION: STARFLEETOP 0x00534840
-void fn_005346f9_object::fn_00534840(long index)
+void fn_005346f9_object::fn_00534840(bool reset)
 {
-    fn_00534855(&field_3c, index, "PlanetNames");
+    fn_00534855(&field_3c, reset, "PlanetNames");
+}
+
+// HYPOTHESIS: the entries of these two vectors hold a string index at +0 and a byte at +4
+// that marks a name as taken.
+struct fn_00534855_entry
+{
+    long field_00;
+    char field_04;
+};
+
+// HYPOTHESIS: picks a random entry of the list (from the global at 0x0090be9c), steps on to
+// the first entry not yet taken (clearing the start one when all are taken), marks it taken and
+// loads its string from the given group. The flag first calls 0x00534903.
+// FUNCTION: STARFLEETOP 0x00534855
+void fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >* list, bool reset, char* group)
+{
+    if (reset)
+        fn_00534903();
+    int count = list->size();
+    fn_0090be9c_type* source = g_0090be9c;
+    int start = (int)((double)source->vfunction7() * count / (double)source->field_20);
+    int i = start;
+    while (((fn_00534855_entry*)(*list)[i])->field_04)
+    {
+        i++;
+        if (i >= count)
+            i = 0;
+        if (i == start)
+            ((fn_00534855_entry*)(*list)[i])->field_04 = 0;
+    }
+    ((fn_00534855_entry*)(*list)[i])->field_04 = 1;
+    ((fn_005343b1_object*)this)->fn_005343b1(group, ((fn_00534855_entry*)(*list)[i])->field_00);
 }
