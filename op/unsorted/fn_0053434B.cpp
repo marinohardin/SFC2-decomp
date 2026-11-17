@@ -45,6 +45,14 @@ fn_005343b1_object& fn_005343b1_object::fn_005343b1(char* spec, long index)
     return *this;
 }
 
+// HYPOTHESIS: an element whose name string sits at +4; its class is not known.
+class fn_00534461_entry
+{
+public:
+    void* field_00;
+    char* field_04;
+};
+
 // HYPOTHESIS: a constructor of an object whose first member is a std::vector (the allocator byte
 // copied from an uninitialised default argument, then three zeroed pointers); the owning class
 // and the element type are not known.
@@ -57,8 +65,9 @@ public:
     void fn_005ff7ac();
     void fn_00534454(void* value);
     void fn_00571a69(void* const& value);
+    int fn_00534461(char* name);
 
-    std::vector< long > field_00;
+    std::vector< fn_00534461_entry* > field_00;
 };
 
 // FUNCTION: STARFLEETOP 0x0053440f
@@ -84,27 +93,12 @@ void fn_0053440f_object::fn_00534454(void* value)
 
 int fn_0040f9ea(char *a, char *b);
 
-// HYPOTHESIS: an element whose name string sits at +4; its class is not known.
-class fn_00534461_entry
-{
-public:
-    void* field_00;
-    char* field_04;
-};
-
-// HYPOTHESIS: an object whose first member is a vector of entry pointers; this searches it from
-// the back for the entry of the given name (0x0040f9ea compares two strings, 0 when equal) and
-// returns its index, or -1.
-class fn_00534461_object
-{
-public:
-    int fn_00534461(char* name);
-
-    std::vector< fn_00534461_entry* > field_00;
-};
+// HYPOTHESIS: searches the vector from the back for the entry of the given name (0x0040f9ea
+// compares two strings, 0 when equal) and returns its index, or -1. It is a member of the slot
+// class because 0x0053456e calls it on the slots of fn_005344a3_object.
 
 // FUNCTION: STARFLEETOP 0x00534461
-int fn_00534461_object::fn_00534461(char* name)
+int fn_0053440f_object::fn_00534461(char* name)
 {
     int i = field_00.size();
     while (i-- != 0)
@@ -124,6 +118,7 @@ public:
     ~fn_005344a3_object();
     // HYPOTHESIS: the argument's first long selects the slot it is handed to.
     void fn_0053455b(long* value);
+    int fn_0053456e(char* name);
 
     tString field_00;
     long field_28;
@@ -151,4 +146,31 @@ fn_005344a3_object::~fn_005344a3_object()
 void fn_005344a3_object::fn_0053455b(long* value)
 {
     field_2c[*value]->fn_00534454(value);
+}
+
+// HYPOTHESIS: returns the slot holding an entry of the given name; when field_28 is 16 it
+// tries the name with a "2" appended as well. Returns -1 when no slot has it.
+// FUNCTION: STARFLEETOP 0x0053456e
+int fn_005344a3_object::fn_0053456e(char* name)
+{
+    unsigned int n = 20;
+    while (n != 0)
+    {
+        n--;
+        if (field_2c[n]->fn_00534461(name) != -1)
+            return n;
+    }
+    if (field_28 == 16)
+    {
+        tString alt(name);
+        alt.mAppendInt32s(2);
+        n = 20;
+        while (n != 0)
+        {
+            n--;
+            if (field_2c[n]->fn_00534461(alt.mCharStr()) != -1)
+                return n;
+        }
+    }
+    return -1;
 }
