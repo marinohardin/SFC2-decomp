@@ -706,8 +706,8 @@ void nDatabase::tQuery<tMetaMapDesc>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
-
-class fn_0056fb13_object; class tCampaignInfo;
+class fn_0056fb13_object; class tCampaignInfo; class tNotify;
+template class nDatabase::tQuery<tNotify>;	// MATCH-ONLY: stands in for the use by the query at 0x0056fefb, not written yet
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tPoliticalTensionMatrix> (the vtable named by the
 // exe); fn_0056fb13_object stands for tPoliticalTensionMatrix here.
 // FUNCTION: STARFLEETOP 0x0056fbd7
@@ -720,6 +720,8 @@ void nDatabase::tQuery<fn_0056fb13_object>::fn_0056f04f(void *value) { m_results
 nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
 // FUNCTION: STARFLEETOP 0x0056fcc7
 void nDatabase::tQuery<tCampaignInfo>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
+// FUNCTION: STARFLEETOP 0x0056fedd
+nDatabase::tQuery<tNotify>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
 // HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete
 // here; the casts below stand for the original's static_casts (the base sits at offset 0).
 // HYPOTHESIS: the result container for tMetaMapDesc, as for 0x0056f4df.
@@ -729,9 +731,7 @@ public:
 	void *m_allocator;
 	tMetaMapDesc *m_first;
 	tMetaMapDesc *m_last;
-};
-
-// HYPOTHESIS: the LockingQueryDB member template of 0x0056f05f, instantiated for tMetaMapDesc.
+}; // HYPOTHESIS: the LockingQueryDB member template of 0x0056f05f, instantiated for tMetaMapDesc.
 class fn_0056f9d7_owner {
 public:
 	virtual void vfunction0();
