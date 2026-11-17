@@ -167,6 +167,11 @@ public:
 	virtual long __stdcall v7();
 	// HYPOTHESIS: slot 8 fits IDirectPlayLobby::GetConnectionSettings (application, data, size).
 	virtual long __stdcall GetConnectionSettings( unsigned long appId, void* pData, unsigned long* pSize );
+	virtual long __stdcall v9();
+	virtual long __stdcall v10();
+	virtual long __stdcall v11();
+	// HYPOTHESIS: slot 12 fits IDirectPlayLobby::SetConnectionSettings (flags, application, data).
+	virtual long __stdcall SetConnectionSettings( unsigned long flags, unsigned long appId, void* pSettings );
 };
 
 // HYPOTHESIS: the address callback 0x00616700 hands to EnumAddress.
@@ -218,6 +223,7 @@ public:
 	void fn_00616b70();
 	// HYPOTHESIS: returns the lobby's connection settings in a buffer the caller frees.
 	long fn_00616b90( unsigned long appId, void** ppSettings );
+	long fn_00616c20( unsigned long appId, void* pSettings );
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -548,4 +554,11 @@ long fn_00616000_DirectPlayHolder::fn_00616b90( unsigned long appId, void** ppSe
 		*ppSettings = pSettings;
 	}
 	return hr;
+}
+
+// FUNCTION: STARFLEETOP 0x00616c20
+long fn_00616000_DirectPlayHolder::fn_00616c20( unsigned long appId, void* pSettings )
+{
+	fn_00616ac0();
+	return fLobby->SetConnectionSettings( 0, appId, pSettings );
 }
