@@ -586,3 +586,23 @@ void tMemberCallback<tMetaClientMapPanel,fn_0057a96e_info>::Callback( fn_0057a96
 {
 	(fpMemberClass->*fpMemberFunction)( result );
 }
+
+// HYPOTHESIS: by its layout (a tOptex at +0) and its body (Done, then the optex) this is an
+// out-of-line copy of the SDK's tAccessPointer<T, G>::~tAccessPointer, with 0x005f4352 as
+// its Done. The template is declared only inside unsorted/tClientCharacter.cpp, so it is not
+// declared a second time here.
+class tObject_005ea978 {
+public:
+	~tObject_005ea978();
+	void fn_005f4352();
+
+	mutable tOptex m_00;
+	void *m_04;
+	const void *m_08;
+};
+
+// FUNCTION: STARFLEETOP 0x005ea978
+tObject_005ea978::~tObject_005ea978()
+{
+	fn_005f4352();
+}
