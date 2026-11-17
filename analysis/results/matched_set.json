@@ -16386,9 +16386,9 @@
    "symbol": "?mOpenForWrite@tFile@@UAEEAAVtString@@E@Z",
    "unit": "Tiger/tFile.cpp",
    "size": 256,
-   "score": 99.942,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x007581d0": {
    "name": "tFile::mWrite",
