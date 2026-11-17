@@ -239,7 +239,6 @@ class tSFCPlayer
 		virtual void vfunction69();
 		virtual void vfunction70(char *param_1);
 		virtual void vfunction71();
-		char fn_004d0f80(int param_1);
 		virtual bool vfunction72(unsigned param_1, int param_2);
 		virtual void vfunction73();
 		virtual void vfunction74(int param_1, int param_2, int param_3);
@@ -1230,30 +1229,6 @@ void tSFCPlayer::vfunction69()
 			m_61a8[ihull][iclass].fn_004d1c60(&erased, m_61a8[ihull][iclass].begin(), m_61a8[ihull][iclass].end());
 		}
 	}
-}
-// HYPOTHESIS: 0x004d0f80 is the tail of vfunction71 split off by the analysis. In the original
-// bytes 0x0040a621 is called with ecx = 0x008949a0 and cleans its own arguments, so it is a
-// member of the object at 0x008949a0; 0x00599af1 is called on the list element (a lookup).
-class tObject_008949a0
-{
-	public:
-		bool fn_0040a621(int param_1, tShipSpecs *param_2);
-};
-extern tObject_008949a0 g_008949a0;
-// FUNCTION: STARFLEETOP 0x004d0f80
-char tSFCPlayer::fn_004d0f80(int param_1)
-{
-	bool found = false;
-	tShipSpecs specs;
-	if (g_008949a0.fn_0040a621(param_1, &specs) &&specs.m_0c != -2 && specs.m_0c < 0x12 && specs.m_10 != -1 && specs.m_10 < 0x18) {
-		char *key = specs.m_14;
-		tListNode_004cf9b3 *node = m_61a8[specs.m_0c][specs.m_10].m_04;
-		tListIterator_004cf9b3 it;
-		m_61a8[specs.m_0c][specs.m_10].fn_00599af1(&it, &key);
-		if (it.fpNode != node)
-			found = true;
-	}
-	return found;
 }
 // FUNCTION: STARFLEETOP 0x004d1017
 bool tSFCPlayer::vfunction72(unsigned param_1, int param_2)

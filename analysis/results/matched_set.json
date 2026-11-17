@@ -5608,15 +5608,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x004d0f80": {
-   "name": "FUN_004d0f80",
-   "symbol": "?fn_004d0f80@tSFCPlayer@@QAEDH@Z",
-   "unit": "unsorted/tSFCPlayer.cpp",
-   "size": 151,
-   "score": 9.173,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x004d1017": {
    "name": "tSFCPlayer::vfunction72",
    "symbol": "?vfunction72@tSFCPlayer@@UAE_NIH@Z",
