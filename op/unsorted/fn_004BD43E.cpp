@@ -239,5 +239,6 @@ std::string g_0091f900 = "Log_on_name_not_found";
 std::string g_0091f8f0 = "Already_Logged_on";
 
 // HYPOTHESIS: a std::string global at 0x0091f8e0 holding the text "Character_name_invalid".
+// FUNCTION: STARFLEETOP 0x004bdc24
 // FUNCTION: STARFLEETOP 0x004bdbf1
 std::string g_0091f8e0 = "Character_name_invalid";
