@@ -505,3 +505,9 @@ class tMetaMapHex;
 nDatabase::tQuery<tMetaMapHex>::~tQuery()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0056f6f3
+void nDatabase::tQuery<tMetaMapHex>::fn_0056f04f(void *value)
+{
+	m_results.fn_00571a69(value);
+}
