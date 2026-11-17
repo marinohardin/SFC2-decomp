@@ -13,13 +13,16 @@ public:
 	int*		fn_005A4208();
 	int*		fn_005A4220();
 	int*		fn_005A4257();
+	int*		fn_005A426f();
 
 	int			fValue14;
 	char		pad0[0x24 - sizeof(tOptex) - 4];
 	int			fValue24;
 	char		pad4[0x34 - 0x28];
 	int			fValue34;
-	char		pad3[0x60 - 0x38];
+	char		pad5[0x44 - 0x38];
+	int			fValue44;
+	char		pad3[0x60 - 0x48];
 	float		fValue60;
 	char		pad[0x208 - 0x64];
 	int		fValue208;
@@ -118,4 +121,13 @@ int* fn_005A4173_Owner::fn_005A4257()
 {
 	tGuard guard(this);
 	return &fValue34;
+}
+
+// FUNCTION: STARFLEETOP 0x005a426f
+int* fn_005A4173_Owner::fn_005A426f()
+{
+	int* p = &fValue44;
+	Enter();
+	Leave();
+	return p;
 }
