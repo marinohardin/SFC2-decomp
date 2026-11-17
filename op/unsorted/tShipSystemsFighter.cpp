@@ -8,6 +8,7 @@
 
 extern float g_00799ed0;
 extern double g_0090bef0;
+extern float g_007959cc;
 
 // HYPOTHESIS: the slots before the destructor are not recovered; 0x00444004 calls the
 // deleting destructor through slot 169 (+0x2a4), so it is declared after 168 others.
@@ -65,7 +66,7 @@ public:
     virtual void vfunction48();
     virtual void vfunction49();
     virtual void vfunction50();
-    virtual void vfunction51();
+    virtual float vfunction51( int param_1 );
     virtual void vfunction52();
     virtual void vfunction53();
     virtual void vfunction54();
@@ -359,4 +360,12 @@ tMinMaxFloat* tShipSystemsFighter::vfunction31()
 tValue<float>* tShipSystemsFighter::vfunction42()
 {
     return &m714;
+}
+
+// HYPOTHESIS: the types; the original loads the float at 0x007959cc and pops one dword
+// argument it does not read.
+// FUNCTION: STARFLEETOP 0x004443e1
+float tShipSystemsFighter::vfunction51( int )
+{
+    return g_007959cc;
 }

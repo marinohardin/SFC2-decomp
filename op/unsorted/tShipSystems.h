@@ -64,7 +64,7 @@ public:
     virtual void vfunction48() = 0;
     virtual void vfunction49() = 0;
     virtual void vfunction50() = 0;
-    virtual void vfunction51() = 0;
+    virtual float vfunction51( int param_1 ) = 0;
     virtual void vfunction52() = 0;
     virtual void vfunction53() = 0;
     virtual void vfunction54() = 0;
