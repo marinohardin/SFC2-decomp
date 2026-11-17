@@ -869,6 +869,20 @@ long tSndMgr_Miles::fn_0050fb3e( unsigned long param_1, long param_2 )
 	return found;
 }
 
+// FUNCTION: STARFLEETOP 0x0050fc33
+char tSndMgr_Miles::fn_0050fc33( long *param_1 )
+{
+	for ( unsigned long i = 1; i < field_4234; i++ )
+	{
+		if ( field_10[i].field_1c == *param_1 )
+		{
+			*param_1 = i;
+			return 1;
+		}
+	}
+	return 0;
+}
+
 // FUNCTION: STARFLEETOP 0x0050fba4
 long tSndMgr_Miles::fn_0050fba4( long param_1, char *param_2 )
 {
