@@ -8,10 +8,13 @@
 class fn_0046de63_object
 {
 public:
+    fn_0046de63_object(const char *data, unsigned long size, int param_3);
     void FUN_0046de63();
 
     long m00;
     long m04; // HYPOTHESIS: a reference count, raised with InterlockedIncrement on copy
+    long m08;
+    long m0c;
 };
 
 // HYPOTHESIS: an object holding a std::string at +0x00 (its destructor is the inlined
@@ -46,6 +49,7 @@ fn_005d913f_object::fn_005d913f_object(const fn_005d913f_object &other)
 class fn_005d91cc_object
 {
 public:
+    fn_005d91cc_object() : m00(0) {}
     fn_0046de63_object *operator=(fn_0046de63_object *p);
 
     fn_0046de63_object *m00;
@@ -593,14 +597,26 @@ class fn_005d9b26_object
 {
 public:
     fn_005d9b26_object(const std::string &name);
+    void fn_005d9b58(const char *param_1);
 
     std::string m00;
-    long m10;
+    fn_005d91cc_object m10;
     char m14;
 };
 
 // FUNCTION: STARFLEETOP 0x005d9b26
 fn_005d9b26_object::fn_005d9b26_object(const std::string &name)
-    : m00(name), m10(0), m14(0)
+    : m00(name), m10(), m14(0)
 {
+}
+
+// HYPOTHESIS: the length passed with the data to 0x006e15b0, the 16-byte counted object's
+// constructor.
+extern unsigned long g_00c38970;
+
+// FUNCTION: STARFLEETOP 0x005d9b58
+void fn_005d9b26_object::fn_005d9b58(const char *param_1)
+{
+    m10 = new fn_0046de63_object(param_1, g_00c38970, 0);
+    m14 = fn_005d9a6f(param_1) != FALSE;
 }
