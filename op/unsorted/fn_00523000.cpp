@@ -203,3 +203,23 @@ void fn_0090bed4_Object::fn_00523344(unsigned char param_1)
 	}
 	*(int *) &m_16dc[param_1 * 12 + 8] = -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00523370
+// HYPOTHESIS: takes the first free entry of the table at +0x16dc for the ID and returns its
+// index; -1 when the ID is -1 or the table is full.
+char fn_0090bed4_Object::fn_00523370(int param_1, char param_2)
+{
+	if (param_1 != -1) {
+		for (int i = 0; i < 100; i++) {
+			if (*(int *) &m_16dc[i * 12 + 8] == -1) {
+				m_16d8++;
+				fn_005233cb();
+				*(int *) &m_16dc[i * 12 + 8] = param_1;
+				m_16dc[i * 12] = param_2;
+				fn_00523428(i);
+				return i;
+			}
+		}
+	}
+	return -1;
+}
