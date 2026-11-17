@@ -3,6 +3,7 @@
 
 #include "unsorted/tCurrentTime.h"
 #include "unsorted/tPoliticalTensionMatrix.h"
+#include "unsorted/tEntity.h"
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x0042739e
@@ -32,4 +33,14 @@ tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector( const
 // FUNCTION: STARFLEETOP 0x0042743e
 tPoliticalTensionMatrix::tPoliticalTensionVector::~tPoliticalTensionVector()
 {
+}
+
+// HYPOTHESIS: the team of the entity with the ID, or -1 when there is no such entity. It
+// clears its argument on return and never reads ecx: a __stdcall function, or a member of a
+// class not yet found that does not use this.
+// FUNCTION: STARFLEETOP 0x0042748f
+tID __stdcall fn_0042748f( tID aID )
+{
+	tEntity *entity = gObject_008e1060.fn_lookup( aID );
+	return entity ? entity->fTeam : -1;
 }
