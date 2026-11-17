@@ -854,10 +854,36 @@ tGameState *fn_0046a5f6(char *param_1)
 	return s;
 }
 
-void fn_0046a63f(tGameState *state);
+char fn_0046a63f(tGameState *state);
 
 // FUNCTION: STARFLEETOP 0x0046a62d
 void fn_0046a62d(char *param_1)
 {
 	fn_0046a63f(fn_0046a5f6(param_1));
+}
+
+// HYPOTHESIS: fn_0046a6ad tests whether the state can be entered; fn_0046ad85 performs the switch.
+char fn_0046a6ad(tGameState *state);
+// HYPOTHESIS: 0x0046ad85 is a method of the class of the global object at 0x0090db38.
+class fn_0090db38_owner
+{
+public:
+	void fn_0046ad85(tGameState **state, int a, int *b);
+};
+
+extern fn_0090db38_owner g_0090db38;
+
+
+// FUNCTION: STARFLEETOP 0x0046a63f
+char fn_0046a63f(tGameState *state)
+{
+	int local = g_0090db44;
+	if (fn_0046a6ad(state) != 0)
+	{
+		tGameState **p = &state;
+		int cur = g_0090db3c;
+		g_0090db38.fn_0046ad85(p, cur, &local);
+		return 1;
+	}
+	return 0;
 }

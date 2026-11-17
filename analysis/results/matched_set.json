@@ -5311,6 +5311,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0046a63f": {
+   "name": "FUN_0046a63f",
+   "symbol": "?fn_0046a63f@@YADPAVtGameState@@@Z",
+   "unit": "unsorted/tGameState.cpp",
+   "size": 57,
+   "score": 74.783,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0048612c": {
    "name": "tSupplyDockItem::~tSupplyDockItem",
    "symbol": "??0tSupplyDockItem@@QAE@JJJJJ@Z",
