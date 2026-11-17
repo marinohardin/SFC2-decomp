@@ -125,7 +125,7 @@ public:
 	virtual void vfunction51( tServCharacter* character );
 	virtual void vfunction52( tShip* ship );
 	virtual void vfunction53( long value, long offset, std::vector<nDatabase::tID>* ids );
-	virtual void vfunction54();
+	virtual void vfunction54( tMetaMapHex* hex );
 	virtual void vfunction55();
 	virtual void vfunction56();
 	virtual void vfunction57( tAuctionItem* item );
@@ -835,4 +835,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction53( long value, lon
 		ids->push_back( i->GetID() );
 		vfunction52( i );
 	}
+}
+#line 840
+// HYPOTHESIS: the record type is a guess from the assertion text "hex"; it is removed from the database.
+// FUNCTION: STARFLEETOP 0x0056e562
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction54( tMetaMapHex* hex )
+{
+#line 1090
+	validate( hex );
+	fDatabase->RemoveObjectFromDB( hex );
 }
