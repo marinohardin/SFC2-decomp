@@ -40,6 +40,13 @@ extern const char *g_00844ea8;
 bool fn_0046a9e2();
 // HYPOTHESIS: enables (1) or disables (0) the control with the given id.
 void fn_004d34c5(int id, int enable);
+// HYPOTHESIS: pointers to the names "OtherConnectionsModem", "modemEntry" and "cCancelGame".
+extern const char *g_00844eac;
+extern const char *g_00844eb0;
+extern const char *g_00844ec0;
+void fn_004d3340(const char *name);
+// HYPOTHESIS: the second argument is the group's name, as here; cdecl.
+void fn_004d346f(const char *name, const char *group);
 
 namespace tState_Namespace_GameConnections
 {
@@ -60,6 +67,7 @@ public:
 	void fn_00468297();
 	bool fn_004683ff();
 	bool fn_00468481();
+	bool fn_0046858a();
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 	// HYPOTHESIS: hands the address field a named value; the types are guesses.
@@ -294,6 +302,22 @@ void tState_GameConnections::fn_00468527()
 		m1dc = fn_004d3446(0x10015);
 	fn_004688ee(m1dc, "IPAddress", m1fc.mCharStr());
 	gNetControl.fn_004325a9(2);
+}
+
+// FUNCTION: STARFLEETOP 0x0046858a
+bool tState_GameConnections::fn_0046858a()
+{
+	fn_004d3331(g_00844eac);
+	fn_004d3340(g_00844eb0);
+	fn_004d346f(g_00844ec0, g_00844eac);
+	fn_004d34c5(0x1001c, 0);
+	bool result = gNetControl.fn_004325a9(3);
+	if (m1e0 == 0)
+		m1e0 = fn_004d3446(0x1001b);
+	fn_004688ee(m1e0, "ModemAddress", 0);
+	m19[0] = 0;
+	m12[0] = 1;
+	return result;
 }
 
 }
