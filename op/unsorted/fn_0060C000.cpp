@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_0060C000.cpp
-// Functions: 0x0060c159 to 0x0060cb1b, 33 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// Functions of page 0x0060c000 with no unit or class evidence; original file unknown.
+
+// HYPOTHESIS: a byte (cleared with a byte-sized and) and a 32-bit global; names unknown.
+extern char g_00c3a7c0;
+extern long g_00c3a7c4;
+
+// FUNCTION: STARFLEETOP 0x0060c159
+void fn_0060c159()
+{
+    g_00c3a7c0 = 0;
+    g_00c3a7c4 = 0;
+}
