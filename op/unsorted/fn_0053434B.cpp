@@ -402,7 +402,8 @@ public:
 
     long field_00;
     void* field_04;
-    long field_08;
+    // HYPOTHESIS: a float; the constructor stores 1.0f (0x3f800000) here.
+    float field_08;
 };
 
 // HYPOTHESIS: an object holding a tString, 4800 12-byte entries and the owned
@@ -456,4 +457,12 @@ fn_00534950_object::~fn_00534950_object()
     n = 10;
     while (n-- > 0)
         delete field_e18c[n];
+}
+
+// FUNCTION: STARFLEETOP 0x00534ac1
+fn_00534ac1_entry::fn_00534ac1_entry()
+{
+    field_00 = -1;
+    field_04 = 0;
+    field_08 = 1.0f;
 }
