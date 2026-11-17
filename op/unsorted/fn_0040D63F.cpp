@@ -21,6 +21,8 @@ public:
     void fn_0040d841();
     fn_0040d63f_Buf* fn_0040d777(struct fn_0040d777_Point3& p);
     fn_0040d63f_Buf* fn_0040d7ae(struct fn_0040d7ae_Point2& p);
+    // HYPOTHESIS: 0x0040e6d1 writes a zero-terminated string (it takes strlen + 1).
+    void fn_0040e6d1(char* s);
     int m00;
     char* m04;
     char* m08;
@@ -214,10 +216,8 @@ void fn_0040d63f_Buf::fn_0040d8e8(char* p)
         m0c = m08;
 }
 
-void fn_0040e6d1(void* p);
-
 // FUNCTION: STARFLEETOP 0x0040d908
-void fn_0040d908(void* p)
+void fn_0040d908(char* s, fn_0040d63f_Buf& buf)
 {
-    fn_0040e6d1(p);
+    buf.fn_0040e6d1(s);
 }
