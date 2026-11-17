@@ -456,3 +456,26 @@ fn_00406aa6_Obj::fn_00406aa6_Obj(const char* s, int v)
     m10 = 0;
     m14 = v;
 }
+
+// HYPOTHESIS: a class holding a std::string followed by a flag set to 1 and three ints; the original type is unknown.
+class fn_00406add_Obj
+{
+public:
+    fn_00406add_Obj(const char* s, int a, int b, int c);
+    std::string m0;
+    int m10;
+    int m14;
+    int m18;
+    int m1c;
+    int m20;
+};
+
+// FUNCTION: STARFLEETOP 0x00406add
+fn_00406add_Obj::fn_00406add_Obj(const char* s, int a, int b, int c)
+    : m0(s)
+{
+    m10 = 1;
+    m18 = a;
+    m1c = b;
+    m20 = c;
+}
