@@ -53,6 +53,10 @@ class fn_004cf594_class
 public:
 	void fn_004cf594( int param_1 );
 	void fn_004c2288();
+
+	char pad_00[ 0x18 ];
+	// HYPOTHESIS: the view state 0x005e4426 passes on to fn_005e4315.
+	int field_18;
 };
 
 class fn_0060a54d_class
@@ -795,4 +799,12 @@ void tMetaMapControl::fn_005e4358( long *msg )
 void tMetaMapControl::fn_005e4417( long *msg )
 {
 	fn_00607d61()->fn_005e488e();
+}
+
+// FUNCTION: STARFLEETOP 0x005e4426
+void tMetaMapControl::fn_005e4426( long *msg )
+{
+	fn_004cf594_class *view = fn_00607d61()->fn_005e488e();
+	view->fn_004cf594( msg[ 1 ] );
+	fn_005e4315( view->field_18 );
 }
