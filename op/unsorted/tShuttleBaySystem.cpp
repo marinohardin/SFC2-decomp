@@ -109,3 +109,9 @@ void tShuttleBaySystem::vfunction131(int param_1, int param_2)
 {
     field_108[param_1] = param_2;
 }
+
+// FUNCTION: STARFLEETOP 0x0044e621
+void tShuttleBaySystem::vfunction132(int param_1, int param_2)
+{
+    field_118[param_1] = param_2;
+}
