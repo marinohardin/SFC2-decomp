@@ -607,6 +607,7 @@ class fn_005eb3c5_class
 {
 public:
 	fn_005eb3c5_class();
+	~fn_005eb3c5_class();
 	bool fn_005eb407();
 
 	int field_0;
@@ -649,4 +650,11 @@ void tMetaMapControl::vfunction30()
 		if ( pair.fn_005eb407() )
 			field_17c = new fn_005eadc8_class( pair );
 	}
+}
+
+// HYPOTHESIS: inline, since 0x005e4089 destroys its local member by member; this out-of-line
+// copy (two tHexPoint destructors under its own unwind frame) serves the unwind path.
+// FUNCTION: STARFLEETOP 0x005e41b6
+inline fn_005eb3c5_class::~fn_005eb3c5_class()
+{
 }
