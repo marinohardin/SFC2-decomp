@@ -420,5 +420,6 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
 #include "unsorted/tState_CampaignSelector.h"
 
 // HYPOTHESIS: the state's one instance; its initializer follows this unit's code.
+// FUNCTION: STARFLEETOP 0x004608f4
 // FUNCTION: STARFLEETOP 0x004608ea
 tState_Namespace_CampaignSelector::tState_CampaignSelector g_0090d158;

@@ -3304,6 +3304,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x004608f4": {
+   "name": "FUN_004608f4",
+   "symbol": "_$E19",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
