@@ -127,9 +127,42 @@ template<> std::_Tree<int, std::pair<const int, std::string>, std::map<int, std:
 	}
 }
 
+// The game's out-of-line copy of the library's tree insert, for a tree keyed by a string.
+// HYPOTHESIS: the key is std::string (0x0040651e is its compare) and the mapped type, which this
+// function does not show, is int. 0x0042dcfb is the iterator's decrement, 0x005fb71d its _Insert.
+// The original's library kept a per-instance nil node at +0x8 and _Multi at +0xc, as for 0x005fb033;
+// the toolchain's xtree keeps a static nil, so the loop test and the _Multi test differ.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
+// FUNCTION: STARFLEETOP 0x005fb2cd
+template<> std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::_Pairib std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::insert( const value_type& _V )
+{
+	_Nodeptr _X = _Root();
+	_Nodeptr _Y = _Head;
+	bool _Ans = true;
+	while ( _X != _Nil )
+	{
+		_Y = _X;
+		_Ans = key_compare( _Kfn()( _V ), _Key( _X ) );
+		_X = _Ans ? _Left( _X ) : _Right( _X );
+	}
+	if ( _Multi )
+		return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+	iterator _P = iterator( _Y );
+	if ( !_Ans )
+		;
+	else if ( _P == begin() )
+		return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+	else
+		--_P;
+	if ( key_compare( _Key( _P._Mynode() ), _Kfn()( _V ) ) )
+		return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+	return ( _Pairib( _P, false ) );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
 template class std::map<int, std::vector<int> >;
 template class std::vector<std::string>;
 template class std::map<int, std::string>;
+template class std::map<std::string, int>;
