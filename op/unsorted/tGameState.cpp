@@ -245,3 +245,252 @@ void fn_00469ed8()
 	}
 	g_fn_00672f40_owner.fn_00672f40();
 }
+
+// HYPOTHESIS: methods of the unidentified classes of the globals at 0x0090db70 and 0x0090dbb0,
+// the object held in g_0090db44 (only its slot at 0x38 is known), and the flag at 0x0090e004.
+class fn_006735e0_owner
+{
+public:
+	void fn_006735e0(unsigned int param_1);
+};
+
+class fn_00469c0a_owner
+{
+public:
+	void fn_00469c0a(int *ev);
+};
+
+class fn_0090db44_object
+{
+public:
+	virtual void v00();
+	virtual void v01();
+	virtual void v02();
+	virtual void v03();
+	virtual void v04();
+	virtual void v05();
+	virtual void v06();
+	virtual void v07();
+	virtual void v08();
+	virtual void v09();
+	virtual void v0a();
+	virtual void v0b();
+	virtual void v0c();
+	virtual void v0d();
+	virtual void vfunction15(int *ev);
+};
+
+extern fn_006735e0_owner g_fn_006735e0_owner;
+extern fn_00469c0a_owner g_fn_00469c0a_owner;
+extern char g_0090e004;
+bool fn_0069ac10();
+bool fn_0069ac30();
+
+// FUNCTION: STARFLEETOP 0x00469ef9
+void fn_00469ef9(unsigned int param_1)
+{
+	if (g_0090db9c != 0)
+		return;
+
+	unsigned int key = param_1;
+	bool special = false;
+	switch (key)
+	{
+	case 8:
+		key = 0x100;
+		break;
+	case 9:
+		key = 0x101;
+		break;
+	case 0xd:
+		key = 0x102;
+		break;
+	case 0x1b:
+		key = 0x103;
+		break;
+	case 0x20:
+		key = 0x104;
+		break;
+	case 0x100:
+		key = 0x105;
+		special = true;
+		break;
+	case 0x101:
+		key = 0x106;
+		special = true;
+		break;
+	case 0x102:
+		key = 0x107;
+		special = true;
+		break;
+	case 0x103:
+		key = 0x108;
+		special = true;
+		break;
+	case 0x104:
+		key = 0x109;
+		special = true;
+		break;
+	case 0x105:
+		key = 0x10a;
+		special = true;
+		break;
+	case 0x106:
+		key = 0x10b;
+		special = true;
+		break;
+	case 0x107:
+		key = 0x10c;
+		special = true;
+		break;
+	case 0x108:
+		key = 0x10d;
+		special = true;
+		break;
+	case 0x109:
+		key = 0x10e;
+		special = true;
+		break;
+	case 0x10a:
+		key = 0x10f;
+		special = true;
+		break;
+	case 0x10b:
+		key = 0x110;
+		special = true;
+		break;
+	case 0x10c:
+		key = 0x111;
+		special = true;
+		break;
+	case 0x10d:
+		key = 0x112;
+		special = true;
+		break;
+	case 0x10e:
+		key = 0x113;
+		special = true;
+		break;
+	case 0x10f:
+		key = 0x114;
+		special = true;
+		break;
+	case 0x110:
+		key = 0x115;
+		special = true;
+		break;
+	case 0x111:
+		key = 0x116;
+		special = true;
+		break;
+	case 0x112:
+		key = 0x117;
+		special = true;
+		break;
+	case 0x113:
+		key = 0x118;
+		special = true;
+		break;
+	case 0x114:
+		key = 0x119;
+		special = true;
+		break;
+	case 0x115:
+		key = 0x11a;
+		special = true;
+		break;
+	case 0x116:
+		key = 0x11b;
+		break;
+	case 0x117:
+		key = 0x11c;
+		break;
+	case 0x118:
+		key = 0x11d;
+		break;
+	case 0x119:
+		key = 0x11e;
+		break;
+	case 0x11a:
+		key = 0x11f;
+		break;
+	case 0x11b:
+		key = 0x120;
+		break;
+	case 0x11c:
+		key = 0x121;
+		break;
+	case 0x11d:
+		key = 0x122;
+		break;
+	case 0x11e:
+		key = 0x123;
+		break;
+	case 0x11f:
+		key = 0x124;
+		break;
+	case 0x120:
+		key = 0x125;
+		break;
+	case 0x121:
+		key = 0x126;
+		break;
+	case 0x122:
+		key = 0x127;
+		break;
+	case 0x123:
+		key = 0x128;
+		break;
+	case 0x124:
+		key = 0x129;
+		break;
+	case 0x125:
+		key = 0x12a;
+		break;
+	case 0x126:
+		key = 0x12b;
+		break;
+	case 0x127:
+		key = 0x12c;
+		break;
+	case 0x128:
+		key = 0x12d;
+		break;
+	case 0x129:
+		key = 0x12e;
+		break;
+	case 0x12a:
+		key = 0x12f;
+		break;
+	case 0x12b:
+		key = 0x130;
+		break;
+	}
+	if (special)
+		g_fn_006735e0_owner.fn_006735e0(param_1);
+
+	int flags = 0;
+	if (fn_0069ac10())
+		flags = 1;
+	if (fn_0069ac30())
+		flags |= 2;
+	if (param_1 == 8 && fn_0069ac10() && fn_0069ac30())
+		g_0090e004 = g_0090e004 == 0;
+
+	// HYPOTHESIS: an eight-int event record; slot 0 the type, 1 the key, 5 the modifier flags,
+	// 6 and 7 the values fn_0069ab80 fills.
+	int ev[8];
+	ev[0] = 0x100;
+	ev[1] = key;
+	ev[5] = flags;
+	ev[6] = 0;
+	ev[7] = 0;
+	fn_0069ab80(&ev[6], &ev[7], g_0090db90, g_0090db94);
+	if (g_0090db44 != 0)
+	{
+		((fn_0090db44_object *)g_0090db44)->vfunction15(ev);
+		if (ev[0] == 0)
+			return;
+	}
+	g_fn_00469c0a_owner.fn_00469c0a(ev);
+}
