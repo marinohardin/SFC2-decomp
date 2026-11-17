@@ -5,9 +5,9 @@
 
 // HYPOTHESIS: the DirectDraw objects are used through their C interface (explicit this
 // argument, stdcall slots), as the exe's calls show. Only the slots the method calls are
-// named, in vtable order.
+// named, in vtable order. (The class named tDDSurface in the RTTI is unsorted/tDDSurface.h.)
 struct tDDPalette;
-struct tDDSurface;
+struct tDDSurfaceIface;
 struct tDDraw;
 
 struct tDDPaletteVtbl
@@ -26,20 +26,20 @@ struct tDDPalette
 	tDDPaletteVtbl	*lpVtbl;
 };
 
-struct tDDSurfaceVtbl
+struct tDDSurfaceIfaceVtbl
 {
-	long	( __stdcall *QueryInterface )( tDDSurface *self, const void *iid, void **out );
+	long	( __stdcall *QueryInterface )( tDDSurfaceIface *self, const void *iid, void **out );
 	void	*slot_04;
-	unsigned long ( __stdcall *Release )( tDDSurface *self );
+	unsigned long ( __stdcall *Release )( tDDSurfaceIface *self );
 	void	*slot_0c[17];
-	long	( __stdcall *GetPalette )( tDDSurface *self, tDDPalette **out );	// +0x50
+	long	( __stdcall *GetPalette )( tDDSurfaceIface *self, tDDPalette **out );	// +0x50
 	void	*slot_54[10];
-	long	( __stdcall *SetPalette )( tDDSurface *self, tDDPalette *palette );	// +0x7c
+	long	( __stdcall *SetPalette )( tDDSurfaceIface *self, tDDPalette *palette );	// +0x7c
 };
 
-struct tDDSurface
+struct tDDSurfaceIface
 {
-	tDDSurfaceVtbl	*lpVtbl;
+	tDDSurfaceIfaceVtbl	*lpVtbl;
 };
 
 struct tDDrawVtbl
@@ -50,7 +50,7 @@ struct tDDrawVtbl
 	void	*slot_0c;
 	void	*slot_10;
 	long	( __stdcall *CreatePalette )( tDDraw *self, unsigned long flags, const unsigned char *entries, tDDPalette **out, void *outer );	// +0x14
-	long	( __stdcall *CreateSurface )( tDDraw *self, const void *desc, tDDSurface **out, void *outer );	// +0x18
+	long	( __stdcall *CreateSurface )( tDDraw *self, const void *desc, tDDSurfaceIface **out, void *outer );	// +0x18
 };
 
 struct tDDraw
@@ -91,13 +91,13 @@ public:
 	char				field_04[0x70];	// HYPOTHESIS: the face is 0x74 bytes (the slot allocation is 0xf8)
 	tTexFace( void );
 	bool				fn_006a12a2( void );
-	void				fn_006a79f5( tDDSurface *surf, void *desc, int flag );
+	void				fn_006a79f5( tDDSurfaceIface *surf, void *desc, int flag );
 };
 
 struct tTexSlot
 {
-	tDDSurface	*surface;		// +0x00
-	tDDSurface	*texture;		// +0x04
+	tDDSurfaceIface	*surface;		// +0x00
+	tDDSurfaceIface	*texture;		// +0x04
 	unsigned long	desc[0x1f];	// +0x08: the surface description
 	tTexFace	face;			// +0x84
 
@@ -162,7 +162,7 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 			{
 				if ( palette && fmt->field_34 == 1 )
 				{
-					tDDSurface *surf = slots[index]->surface;
+					tDDSurfaceIface *surf = slots[index]->surface;
 					tDDPalette *pal = 0;
 					surf->lpVtbl->GetPalette( surf, &pal );
 					if ( pal )
@@ -220,8 +220,8 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 	desc[0x1b] = 0x10;
 	desc[0x1e] = 0;
 
-	tDDSurface *surf = 0;
-	tDDSurface *tex = 0;
+	tDDSurfaceIface *surf = 0;
+	tDDSurfaceIface *tex = 0;
 	tDDraw *dd = fn_0069d6df();
 	long hr = dd->lpVtbl->CreateSurface( dd, desc, &surf, 0 );
 	if ( hr )

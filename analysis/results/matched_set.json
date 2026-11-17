@@ -451,6 +451,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040c3ba": {
+   "name": "tMyApp::vfunction2",
+   "symbol": "?vfunction2@tMyApp@@QAE_NXZ",
+   "unit": "Source/app/shellApp.cpp",
+   "size": 264,
+   "score": 26.94,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0040c5e6": {
    "name": "tMyApp::vfunction3",
    "symbol": "?vfunction3@tMyApp@@QAE_NXZ",
@@ -1738,6 +1747,15 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x00426ca8": {
+   "name": "FUN_00426ca8",
+   "symbol": "?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z",
+   "unit": "Source/entity/team.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
@@ -2061,6 +2079,33 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x0043405f": {
+   "name": "tNetMsg_Header::~tNetMsg_Header",
+   "symbol": "?mQueueMsg@tNetControl@@QAEXPAUtNetMsg@@HHN@Z",
+   "unit": "Source/network/netcon.cpp",
+   "size": 310,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00434195": {
+   "name": "tNetMsg_Header::~tNetMsg_Header",
+   "symbol": "?mQueueMsg@tNetControl@@QAEXPAUtNetMsg@@HHHN@Z",
+   "unit": "Source/network/netcon.cpp",
+   "size": 201,
+   "score": 70.69,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x00434a14": {
+   "name": "FUN_00434a14",
+   "symbol": "?mStream@tNetMsg@@IAEIPBXEPAU1@@Z",
+   "unit": "Source/network/NetMsgClass.cpp",
+   "size": 747,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x00435391": {
    "name": "tDynamicMemoryFreeListViaHandles::vfunction3",
@@ -2962,6 +3007,87 @@
    "exact": false,
    "recorded": "2026-11-10"
   },
+  "0x004557ee": {
+   "name": "FUN_004557ee",
+   "symbol": "?fn_004557ee@tObject_004557ee@@QAEXH@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 169,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00455897": {
+   "name": "FUN_00455897",
+   "symbol": "?fn_00455897@tObject_00455897@@QAEXXZ",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004558e4": {
+   "name": "FUN_004558e4",
+   "symbol": "?fn_004558e4@tObject_00455897@@QAEXH@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x004558fb": {
+   "name": "FUN_004558fb",
+   "symbol": "?fn_004558fb@tObject_00455897@@QAEXH@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 71,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00455942": {
+   "name": "FUN_00455942",
+   "symbol": "?fn_00455942@tObject_00455897@@QAEXPAVtObject_0045565f@@H@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 117,
+   "score": 99.884,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x004559b7": {
+   "name": "FUN_004559b7",
+   "symbol": "?fn_004559b7@tObject_00455897@@QAEXHH@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00455a1a": {
+   "name": "FUN_00455a1a",
+   "symbol": "?fn_00455a1a@tObject_00455897@@QAEXHHH@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00455a40": {
+   "name": "FUN_00455a40",
+   "symbol": "?fn_00455a40@tObject_00455897@@QAEPAVtObject_0045565f@@H@Z",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00455a59": {
+   "name": "FUN_00455a59",
+   "symbol": "?fn_00455a59@tObject_00455897@@QAEPAVtObject_0045565f@@XZ",
+   "unit": "Source/shipsys/tractor.cpp",
+   "size": 199,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
@@ -3069,6 +3195,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-10"
+  },
+  "0x0047ebca": {
+   "name": "FUN_0047ebca",
+   "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
+   "unit": "Source/states/SingleCampaignSelector.cpp",
+   "size": 1171,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0048612c": {
    "name": "tSupplyDockItem::~tSupplyDockItem",
@@ -6003,6 +6138,24 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-10"
+  },
+  "0x0060b6d0": {
+   "name": "FUN_0060b6d0",
+   "symbol": "?fn_0060b6d0@c_0060b6d0@@QAEXH@Z",
+   "unit": "Source/TokenizedStrings/ResponseStrings.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0060b715": {
+   "name": "FUN_0060b715",
+   "symbol": "?fn_0060b715@c_0060b6d0@@QAEXXZ",
+   "unit": "Source/TokenizedStrings/ResponseStrings.cpp",
+   "size": 223,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0061bae0": {
    "name": "tFileSession::tFileSession",
@@ -12439,6 +12592,564 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0065b0d0": {
+   "name": "tChannelGroup::mSetFrequency",
+   "symbol": "?mSetFrequency@tChannelGroup@@UAEEKJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065b390": {
+   "name": "tChannelGroup::mSetPan",
+   "symbol": "?mSetPan@tChannelGroup@@UAEEKJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065b650": {
+   "name": "tChannelGroup::mSetVolume",
+   "symbol": "?mSetVolume@tChannelGroup@@UAEEKJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065b910": {
+   "name": "tChannelGroup::mSetPriority",
+   "symbol": "?mSetPriority@tChannelGroup@@UAEEKJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065bbd0": {
+   "name": "tChannelGroup::mSetFinishFunction",
+   "symbol": "?mSetFinishFunction@tChannelGroup@@UAEEKQ6AXKE@ZJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065be70": {
+   "name": "tChannelGroup::mSetChannelAttributes",
+   "symbol": "?mSetChannelAttributes@tChannelGroup@@UAEEKPAVtChannelAttributes@@JE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065c130": {
+   "name": "tChannelGroup::mSet3DSoundProfile",
+   "symbol": "?mSet3DSoundProfile@tChannelGroup@@UAEEKPAVt3DSoundProfile@@JE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065c3f0": {
+   "name": "tChannelGroup::mSet3DSoundPosition",
+   "symbol": "?mSet3DSoundPosition@tChannelGroup@@UAEEKPAUtPoint3@@JE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065c6b0": {
+   "name": "tChannelGroup::mSet3DSoundOrientation",
+   "symbol": "?mSet3DSoundOrientation@tChannelGroup@@UAEEKPAUtPoint3@@JE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065c970": {
+   "name": "tChannelGroup::mSet3DSoundVelocity",
+   "symbol": "?mSet3DSoundVelocity@tChannelGroup@@UAEEKPAUtPoint3@@JE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065cc30": {
+   "name": "tChannelGroup::mSet3DSoundCones",
+   "symbol": "?mSet3DSoundCones@tChannelGroup@@UAEEKMJJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 736,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065cf10": {
+   "name": "tChannelGroup::mSet3DSoundReferenceDistance",
+   "symbol": "?mSet3DSoundReferenceDistance@tChannelGroup@@UAEEKNJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 736,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d1f0": {
+   "name": "tChannelGroup::mGetFrequency",
+   "symbol": "?mGetFrequency@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d2a0": {
+   "name": "tChannelGroup::mGetPan",
+   "symbol": "?mGetPan@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d350": {
+   "name": "tChannelGroup::mGetVolume",
+   "symbol": "?mGetVolume@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d400": {
+   "name": "tChannelGroup::mGetChannelAttributes",
+   "symbol": "?mGetChannelAttributes@tChannelGroup@@UAEPAVtChannelAttributes@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d4b0": {
+   "name": "tChannelGroup::mGet3DSoundProfile",
+   "symbol": "?mGet3DSoundProfile@tChannelGroup@@UAEPAVt3DSoundProfile@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d560": {
+   "name": "tChannelGroup::mGet3DSoundPosition",
+   "symbol": "?mGet3DSoundPosition@tChannelGroup@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d610": {
+   "name": "tChannelGroup::mGet3DSoundOrientation",
+   "symbol": "?mGet3DSoundOrientation@tChannelGroup@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d6c0": {
+   "name": "tChannelGroup::mGet3DSoundVelocity",
+   "symbol": "?mGet3DSoundVelocity@tChannelGroup@@UAEPAUtPoint3@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d770": {
+   "name": "tChannelGroup::mGet3DSoundReferenceDistance",
+   "symbol": "?mGet3DSoundReferenceDistance@tChannelGroup@@UAENKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d820": {
+   "name": "tChannelGroup::mGet3DSoundConeAngleForNoAttenuation",
+   "symbol": "?mGet3DSoundConeAngleForNoAttenuation@tChannelGroup@@UAEMKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d8d0": {
+   "name": "tChannelGroup::mGet3DSoundConeAttenuationLevel",
+   "symbol": "?mGet3DSoundConeAttenuationLevel@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065d980": {
+   "name": "tChannelGroup::mGetChannelPriority",
+   "symbol": "?mGetChannelPriority@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065da30": {
+   "name": "tChannelGroup::mGetChannelStatus",
+   "symbol": "?mGetChannelStatus@tChannelGroup@@UAE?AW4eSoundChannelStatus@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065dcb0": {
+   "name": "tChannelGroup::mTotalBytesLeftToPlay",
+   "symbol": "?mTotalBytesLeftToPlay@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065df30": {
+   "name": "tChannelGroup::mTotalNumberOfSecondsLeftToPlay",
+   "symbol": "?mTotalNumberOfSecondsLeftToPlay@tChannelGroup@@UAENKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e1d0": {
+   "name": "tChannelGroup::mNumberOfAttachmentsQueuedUp",
+   "symbol": "?mNumberOfAttachmentsQueuedUp@tChannelGroup@@UAEJKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e450": {
+   "name": "tChannelGroup::mGetSoundChannelFormat",
+   "symbol": "?mGetSoundChannelFormat@tChannelGroup@@UAEPAVtSoundChannelFormat@@KJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e580": {
+   "name": "tChannelGroup::mDoWeRetainSelections",
+   "symbol": "?mDoWeRetainSelections@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e6b0": {
+   "name": "tChannelGroup::mAreWeLooping",
+   "symbol": "?mAreWeLooping@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e7e0": {
+   "name": "tChannelGroup::mAreWeStreaming",
+   "symbol": "?mAreWeStreaming@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065e910": {
+   "name": "tChannelGroup::mAreWe3D",
+   "symbol": "?mAreWe3D@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065ea40": {
+   "name": "tChannelGroup::mAreWeStatic",
+   "symbol": "?mAreWeStatic@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065eb70": {
+   "name": "tChannelGroup::mAreWeFixedFrequency",
+   "symbol": "?mAreWeFixedFrequency@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065eca0": {
+   "name": "tChannelGroup::mAreWeARecordingChannel",
+   "symbol": "?mAreWeARecordingChannel@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065edd0": {
+   "name": "tChannelGroup::mTryToLocateInHardware",
+   "symbol": "?mTryToLocateInHardware@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065ef00": {
+   "name": "tChannelGroup::mTryToLocateInSoftware",
+   "symbol": "?mTryToLocateInSoftware@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f030": {
+   "name": "tChannelGroup::mAreWeFixedPan",
+   "symbol": "?mAreWeFixedPan@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f160": {
+   "name": "tChannelGroup::mAreWeFixedVolume",
+   "symbol": "?mAreWeFixedVolume@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f290": {
+   "name": "tChannelGroup::mAreWeAGlobalSound",
+   "symbol": "?mAreWeAGlobalSound@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f3c0": {
+   "name": "tChannelGroup::mAddUpdateSoundPositionFunction",
+   "symbol": "?mAddUpdateSoundPositionFunction@tChannelGroup@@UAEEKP6AXKJ@ZJNJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f680": {
+   "name": "tChannelGroup::mAddDelayCommand",
+   "symbol": "?mAddDelayCommand@tChannelGroup@@UAEEKNJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065f940": {
+   "name": "tChannelGroup::mFadeToVolume",
+   "symbol": "?mFadeToVolume@tChannelGroup@@UAEEKJNJE@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 688,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065fbf0": {
+   "name": "tChannelGroup::mFadeToStopAndResetNow",
+   "symbol": "?mFadeToStopAndResetNow@tChannelGroup@@UAEEKNJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0065fe90": {
+   "name": "tChannelGroup::mFadeToStopAndClearNow",
+   "symbol": "?mFadeToStopAndClearNow@tChannelGroup@@UAEEKNJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 672,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660130": {
+   "name": "tChannelGroup::mPlaySpecialLoop",
+   "symbol": "?mPlaySpecialLoop@tChannelGroup@@UAEEKJJJJJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 688,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006603e0": {
+   "name": "tChannelGroup::mEndSpecialLoop",
+   "symbol": "?mEndSpecialLoop@tChannelGroup@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 640,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660660": {
+   "name": "tChannelGroup::mAddGetNextAttachmentFunction",
+   "symbol": "?mAddGetNextAttachmentFunction@tChannelGroup@@UAEEKP6AXKJ@ZJNJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 688,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660910": {
+   "name": "tChannelGroupManagerPart::tChannelGroupManagerPart",
+   "symbol": "??0tChannelGroupManagerPart@@QAE@XZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660950": {
+   "name": "tChannelGroupManagerPart::`scalar_deleting_destructor'",
+   "symbol": "??_GtChannelGroupManagerPart@@UAEPAXI@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660970": {
+   "name": "tChannelGroupManagerPart::~tChannelGroupManagerPart",
+   "symbol": "??1tChannelGroupManagerPart@@UAE@XZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 432,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660b20": {
+   "name": "tChannelGroupManagerPart::mAddChannelGroup",
+   "symbol": "?mAddChannelGroup@tChannelGroupManagerPart@@UAEKAAVtChannelGroup@@@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660c50": {
+   "name": "tChannelGroupManagerPart::mDeleteChannelGroup",
+   "symbol": "?mDeleteChannelGroup@tChannelGroupManagerPart@@UAEEK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660cd0": {
+   "name": "tChannelGroupManagerPart::mRemoveChannelGroupOwner",
+   "symbol": "?mRemoveChannelGroupOwner@tChannelGroupManagerPart@@UAEEK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660d60": {
+   "name": "tAudioFileInfoPart::mGetBasicAudioFile",
+   "symbol": "?mGetBasicAudioFile@tAudioFileInfoPart@@UAEPAVtBasicAudioFile@@K@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660da0": {
+   "name": "tChannelGroupManagerPart::mIsReady",
+   "symbol": "?mIsReady@tChannelGroupManagerPart@@UAEEXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660dc0": {
+   "name": "tChannelGroupManagerPart::mDeactivate",
+   "symbol": "?mDeactivate@tChannelGroupManagerPart@@UAEXXZ",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660f30": {
+   "name": "tChannelGroupManagerPart::mAttachFileToGroup",
+   "symbol": "?mAttachFileToGroup@tChannelGroupManagerPart@@UAEEKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660f60": {
+   "name": "tChannelGroupManagerPart::mAttachFileToChannel",
+   "symbol": "?mAttachFileToChannel@tChannelGroupManagerPart@@UAEEKKJ@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660f90": {
+   "name": "tChannelGroupManagerPart::mKillRetainedMode",
+   "symbol": "?mKillRetainedMode@tChannelGroupManagerPart@@UAEEK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x00660fb0": {
+   "name": "tChannelGroupManagerPart::mClearAttachments",
+   "symbol": "?mClearAttachments@tChannelGroupManagerPart@@UAEEK@Z",
+   "unit": "Tiger/taudiochannel.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x00661300": {
    "name": "tClassTrackingInfo::mSet",
    "symbol": "?mSet@tClassTrackingInfo@@UAEXKKJJPAJ@Z",
@@ -14743,6 +15454,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x006729e0": {
+   "name": "TextStreamCompress",
+   "symbol": "?TextStreamCompress@@YAXPADAAVtSFCStream@@@Z",
+   "unit": "Source/Common/sfcstreams.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
   "0x006a2dc0": {
    "name": "FUN_006a2dc0",
    "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",
@@ -14967,6 +15687,123 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x006abe00": {
+   "name": "FUN_006abe00",
+   "symbol": "?mAssertVtxCache@tView3DExt@@QAEXH@Z",
+   "unit": "dmp3d/view3d/drawPoly.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006ad410": {
+   "name": "GetDXVersion",
+   "symbol": "?GetDXVersion@@YAXPAK0@Z",
+   "unit": "dmp3d/dx6/getdxver.cpp",
+   "size": 928,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b32c0": {
+   "name": "tGLFontEx::mAddRef",
+   "symbol": "?mAddRef@tGLFontEx@@UAEJXZ",
+   "unit": "dmp3d/glFont/tGLFont.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b32d0": {
+   "name": "tChannelAttributes::mGet3DSoundProfile",
+   "symbol": "?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ",
+   "unit": "Source/Scripting/ScriptMapData.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b32e0": {
+   "name": "t3DListenerProfile::mGet3DPosition",
+   "symbol": "?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ",
+   "unit": "Source/Scripting/ScriptMapData.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b3e10": {
+   "name": "FUN_006b3e10",
+   "symbol": "?fn_006b3e10@tDDSurfMgr@@QAE_NXZ",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 273,
+   "score": 65.169,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x006b3f80": {
+   "name": "FUN_006b3f80",
+   "symbol": "?fn_006b3f80@@YAXPAVtDDSurfMgr@@JPBDH1ZZ",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 126,
+   "score": 91.111,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4010": {
+   "name": "FUN_006b4010",
+   "symbol": "?fn_006b4010@@YA_NPAVtDDSurfMgr@@JPBDH1ZZ",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4090": {
+   "name": "FUN_006b4090",
+   "symbol": "?fn_006b4090@tDDSurfMgr@@QAE_NHHHHH_N0HPAUHWND__@@H@Z",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 704,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4350": {
+   "name": "FUN_006b4350",
+   "symbol": "??1t00c7c608Guard@@QAE@XZ",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4360": {
+   "name": "FUN_006b4360",
+   "symbol": "?mSetDisplayMode@tDDSurfMgr@@QAE_NHHH@Z",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4460": {
+   "name": "FUN_006b4460",
+   "symbol": "?mRestoreDisplayMode@tDDSurfMgr@@QAE_NXZ",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x006b4540": {
+   "name": "FUN_006b4540",
+   "symbol": "?mInitBuffers@tDDSurfMgr@@QAE_NH@Z",
+   "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
+   "size": 1170,
+   "score": 88.131,
+   "exact": false,
+   "recorded": "2026-11-16"
   },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",

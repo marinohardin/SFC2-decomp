@@ -45,7 +45,10 @@ public:
 	bool fn_0043268d();	// HYPOTHESIS: returns a flag (tested in al)
 	void fn_00432f5a();
 	// HYPOTHESIS: (message, command, destination, time); 0x00413541 passes 0.0 as the time.
-	int mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, double aTime);
+	void mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, double aTime);
+	// HYPOTHESIS: (message, command, player, destination, time); sends to one player's entry
+	// at 0x008f5b48 instead of every player.
+	void mQueueMsg(tNetMsg *aMsg, int aCommand, int aPlayer, int aDestination, double aTime);
 
 	// HYPOTHESIS: field types are from the constructor's stores only; names are unknown.
 	// The double at +0x8d38 aligns the class to 8, so the vfptr slot is padded to +0x8.
