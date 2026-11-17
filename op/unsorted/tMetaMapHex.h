@@ -137,9 +137,19 @@ struct fn_0053a6cc_map
 
 	// HYPOTHESIS: the out-of-line assignment 0x0053a704.
 	fn_0053a6cc_map& operator=( const fn_0053a6cc_map& other );
+
+	struct value_type
+	{
+		value_type( const int32& k, const int32u& v ) : first( k ), second( v ) {}
+		int32	first;
+		int32u	second;
+	};
+
+	// HYPOTHESIS: the out-of-line insert 0x0057f946.
+	std::pair< iterator, bool > insert( const value_type& v );
 	// HYPOTHESIS: the index operator 0x0053a6a3. tMetaMapHex's StreamIn copies a long key into a
 	// temporary before the call, so the key is an int here.
-	int& operator[]( const int& key );
+	int32u& operator[]( const int& key );
 	iterator begin() { return iterator( m_tree.m_head->left ); }
 	// HYPOTHESIS: the out-of-line 0x0053a8ff, which tMetaMapHex's StreamOut calls for the first
 	// element; that it is the const begin is a guess.

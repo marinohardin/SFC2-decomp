@@ -629,3 +629,10 @@ void tMetaMapHex::fn_0053a67c( double param_1 )
 	m_a0 = param_1;
 	m_bc.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x0053a6a3
+int32u& fn_0053a6cc_map::operator[]( const int& key )
+{
+	std::pair< iterator, bool > result = insert( value_type( key, int32u() ) );
+	return (*result.first).second;
+}
