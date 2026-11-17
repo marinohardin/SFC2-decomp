@@ -111,3 +111,29 @@ tListBox_News_Session *fn_004bd7ce( void )
 {
 	return new tListBox_News_Session;
 }
+
+// HYPOTHESIS: an entry of 0x2c bytes; 0x004bdd5b builds it with tString's default
+// constructor and 0x004bd853 destroys it by jumping to tString's destructor.
+struct c_004bd805_Entry
+{
+	tString text;
+	int field_28;
+};
+
+// HYPOTHESIS: a class of no known name holding a string and 500 entries; its constructor
+// at 0x004bd805 is the only evidence so far.
+class c_004bd805_Object
+{
+public:
+	c_004bd805_Object();
+	void fn_004bdd67();
+
+	tString field_0;
+	c_004bd805_Entry field_28[ 500 ];
+};
+
+// FUNCTION: STARFLEETOP 0x004bd805
+c_004bd805_Object::c_004bd805_Object()
+{
+	fn_004bdd67();
+}
