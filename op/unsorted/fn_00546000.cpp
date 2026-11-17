@@ -289,6 +289,8 @@ class c_00546296
 {
 public:
     std::string fn_00546296() const;
+    // HYPOTHESIS: 0x00546799 assigns the string at +0x6c; that it belongs to this class is a guess.
+    void fn_00546799(const std::string& param_1);
 
     char field_0[0x6c];
     std::string field_6c;
@@ -491,4 +493,10 @@ void c_00546027::fn_005465d5(float param_1, int param_2)
 void c_00546027::fn_00546787(int param_1)
 {
     field_30c.fn_004526cb(param_1);
+}
+
+// FUNCTION: STARFLEETOP 0x00546799
+void c_00546296::fn_00546799(const std::string& param_1)
+{
+    field_6c = param_1;
 }
