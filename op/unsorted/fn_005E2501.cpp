@@ -181,3 +181,11 @@ std::string g_00c38ef8 = "GreyTinyHexP";
 // FUNCTION: STARFLEETOP 0x005e2f30
 // FUNCTION: STARFLEETOP 0x005e2efd
 std::string g_00c38ee8 = "GreyTinyHexSB";
+
+#include "unsorted/tMetaMapControl.h"
+
+// FUNCTION: STARFLEETOP 0x005e2f60
+tMetaMapControl *fn_005e2f60()
+{
+	return new tMetaMapControl;
+}
