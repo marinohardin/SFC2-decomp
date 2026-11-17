@@ -1,7 +1,7 @@
 // Unit:      unsorted/fn_0042A000.cpp
 // Functions: 0x0042a309 to 0x0042aff3, 50 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-
+#define DATASTORE_OUT_OF_LINE_READ_STRING
 #define DATASTORE_OUT_OF_LINE_GET
 #define DATASTORE_OUT_OF_LINE_BUFFER_GET
 #define DATASTORE_OUT_OF_LINE_READ
@@ -44,5 +44,25 @@ void tInput::Read( byte* data, int32 size )
 	fBuffer->Read( data, size, fGetPos );
 
 	fGetPos += size;
+}
+
+// MATCH-ONLY: as for Get above, this pointer is the use that makes the compiler emit the string
+// reader's out-of-line copy (0x0042a397).
+tInput& (tInput::*gEmitInputReadString)( std::string& ) = &tInput::operator>>;
+
+// FUNCTION: STARFLEETOP 0x0042a397
+tInput& tInput::operator>>( std::string& string )
+{
+	string.erase();
+
+	int32u size = 0;
+	Read( (byte*)&size, sizeof( size ) );
+
+	for( int32u i = 0; i < size; i++ )
+	{
+		string += Get();
+	}
+
+	return *this;
 }
 }
