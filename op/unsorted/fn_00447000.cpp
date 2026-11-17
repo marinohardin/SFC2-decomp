@@ -152,7 +152,17 @@ struct tObject_00447415_limits
 	char field_0xee[0x2];
 	char field_0xf0;
 	char field_0xf1;
-	char field_0xf2[0x1a];
+	char field_0xf2;
+	char field_0xf3;
+	char field_0xf4;
+	char field_0xf5;
+	char field_0xf6;
+	char field_0xf7;
+	char field_0xf8;
+	char field_0xf9;
+	char field_0xfa;
+	char field_0xfb;
+	char field_0xfc[0x10];
 	char field_0x10c[3];
 	char field_0x10f[3];
 	char field_0x112[3];
@@ -185,6 +195,7 @@ public:
 	std::string fn_00447822(int index);
 	void fn_00447867(int index, std::string value);
 	int fn_004478b5(int level);
+	void fn_00447926(int kind, int value);
 
 	char field_0x0[0xe8];
 	tObject_00447415_limits *field_0xe8;
@@ -465,5 +476,33 @@ int c_0044715d::fn_004478b5(int level)
 		return field_0xe8->field_0xf1;
 	default:
 		return 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00447926
+void c_0044715d::fn_00447926(int kind, int value)
+{
+	switch (kind)
+	{
+	case 0:
+		if (value > field_0xe8->field_0xf1)
+			value = field_0xe8->field_0xf1;
+		field_0xe8->field_0xf2 = value;
+		break;
+	case 1:
+		if (value > field_0xe8->field_0xfa)
+			value = field_0xe8->field_0xfa;
+		field_0xe8->field_0xfb = value;
+		break;
+	case 2:
+		if (value > field_0xe8->field_0xf4)
+			value = field_0xe8->field_0xf4;
+		field_0xe8->field_0xf5 = value;
+		break;
+	case 3:
+		if (value > field_0xe8->field_0xf7)
+			value = field_0xe8->field_0xf7;
+		field_0xe8->field_0xf8 = value;
+		break;
 	}
 }
