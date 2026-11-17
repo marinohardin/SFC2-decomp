@@ -808,3 +808,9 @@ void tMetaMapControl::fn_005e4426( long *msg )
 	view->fn_004cf594( msg[ 1 ] );
 	fn_005e4315( view->field_18 );
 }
+
+// FUNCTION: STARFLEETOP 0x005e4455
+void tMetaMapControl::fn_005e4455()
+{
+	fn_00607d61()->fn_005e488e()->fn_004c2288();
+}
