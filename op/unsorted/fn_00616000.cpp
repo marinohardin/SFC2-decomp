@@ -170,6 +170,9 @@ int __stdcall fn_0061a2c0( const GUID& guid, unsigned long size, const void* pDa
 // HYPOTHESIS: the class id and interface id 0x00616700 creates the temporary interface with.
 extern const GUID g_007bb118;
 extern const GUID g_007bb128;
+// HYPOTHESIS: the class id and interface id of the lobby object 0x00616ac0 creates.
+extern const GUID g_007bb0b8;
+extern const GUID g_007bb0c8;
 
 // HYPOTHESIS: 0x00618920 returns +0x1c (the connection data); 0x00618d60 copies the entries
 // of a vector into its own vector at +0x70.
@@ -484,5 +487,26 @@ void fn_00616000_DirectPlayHolder::fn_00616aa0()
 	{
 		fDirectPlayObject->Release();
 		fDirectPlayObject = 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00616ac0
+void fn_00616000_DirectPlayHolder::fn_00616ac0()
+{
+	if ( fLobby == 0 )
+	{
+		try
+		{
+			long hr = CoCreateInstance( g_007bb0b8, 0, CLSCTX_INPROC_SERVER, g_007bb0c8, (void**)&fLobby );
+			if ( hr < 0 || fLobby == 0 )
+				throw fn_00616000_Error( "CoCreateInstance failed", fn_00619a20_Context() );
+		}
+		catch ( fn_00616000_Error& e )
+		{
+			fn_006123b0( e.v1() );
+			// HYPOTHESIS: 0x00616b70 releases the lobby object, as 0x00616aa0 releases the
+			// DirectPlay object; the original passes this past the analysis's end.
+			fn_00616b70();
+		}
 	}
 }
