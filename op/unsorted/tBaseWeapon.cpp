@@ -4,6 +4,7 @@
 #include "unsorted/tEntity.h"
 extern float g_00795620;
 extern double g_0079de48;
+extern float g_00855984[];
 // HYPOTHESIS: this is tCloakSystem, declared in full only inside unsorted/tCloakSystem.cpp;
 // this is the one member used here.
 class fn_00438607_class
@@ -271,5 +272,236 @@ bool tBaseWeapon::vfunction128(short param_1, short param_2)
     field_118[field_130][0] = param_1;
     field_118[field_130][1] = param_2;
     field_130++;
+    return true;
+}
+
+// FUNCTION: STARFLEETOP 0x004d78ea
+bool tBaseWeapon::vfunction127(int param_1)
+{
+    field_114 = param_1;
+    if (field_130 >= 6)
+        return false;
+    vfunction18((int)(vfunction17() * g_00855984[param_1]));
+    switch (param_1)
+    {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 0x15:
+        vfunction128(0, 0x2000);
+        field_134 = 0;
+        field_cc = 4;
+        break;
+    case 8:
+        vfunction128(0x1aaa, 0x555);
+        field_134 = 0;
+        field_cc = 0xc;
+        break;
+    case 9:
+        vfunction128(0x1f1c, 0x10e3);
+        field_134 = 0x800;
+        field_cc = 8;
+        break;
+    case 0xa:
+        vfunction128(0x1f1c, 0xaaa);
+        field_134 = 0x555;
+        field_cc = 0xc;
+        break;
+    case 0xb:
+        vfunction128(0x1555, 0xe3);
+        field_134 = 0x1aaa;
+        field_cc = 0xc;
+        break;
+    case 0x22:
+        vfunction128(0x1f1c, 0xaaa);
+        vfunction128(0xf1c, 0x10e3);
+        field_134 = 0x555;
+        field_cc = 0xc;
+        break;
+    case 0x21:
+        vfunction128(0x1555, 0xe3);
+        vfunction128(0xf1c, 0x10e3);
+        field_134 = 0x1aaa;
+        field_cc = 0xc;
+        break;
+    case 0xc:
+        vfunction128(0x1800, 0x800);
+        field_134 = 0;
+        field_cc = 8;
+        break;
+    case 0xd:
+        vfunction128(0x800, 0x1800);
+        field_134 = 0x1000;
+        field_cc = 8;
+        break;
+    case 0xe:
+        vfunction128(0xf1c, 0xe3);
+        field_134 = 0x1800;
+        field_cc = 8;
+        break;
+    case 0xf:
+        vfunction128(0x1555, 0xaaa);
+        field_134 = 0;
+        field_cc = 6;
+        break;
+    case 0x10:
+        vfunction128(0x555, 0x1aaa);
+        field_134 = 0x1000;
+        field_cc = 6;
+        break;
+    case 0x11:
+        vfunction128(0x555, 0x10e3);
+        field_134 = 0xaaa;
+        field_cc = 0xc;
+        break;
+    case 0x12:
+        vfunction128(0xf1c, 0x1aaa);
+        field_134 = 0x1555;
+        field_cc = 0xc;
+        break;
+    case 0x1d:
+        vfunction128(0x1d55, 0xd55);
+        field_134 = 0x555;
+        field_cc = 8;
+        break;
+    case 0x13:
+        vfunction128(0x1aaa, 0xaaa);
+        field_134 = 0x2aa;
+        field_cc = 8;
+        break;
+    case 0x1e:
+        vfunction128(0x12aa, 0x2aa);
+        field_134 = 0x1aaa;
+        field_cc = 8;
+        break;
+    case 0x14:
+        vfunction128(0x1555, 0x555);
+        field_134 = 0x1d55;
+        field_cc = 8;
+        break;
+    case 0x16:
+        vfunction128(0x1f1c, 0xaaa);
+        vfunction128(0xf1c, 0x1aaa);
+        field_134 = 0x1555;
+        field_cc = 6;
+        break;
+    case 0x17:
+        vfunction128(0x1555, 0xe3);
+        vfunction128(0x555, 0x10e3);
+        field_134 = 0x1aaa;
+        field_cc = 6;
+        break;
+    case 0x18:
+        vfunction128(0x1800, 0xaaa);
+        field_134 = 0x155;
+        field_cc = 7;
+        break;
+    case 0x19:
+        vfunction128(0x1555, 0x800);
+        field_134 = 0x1eaa;
+        field_cc = 7;
+        break;
+    case 0x1a:
+        vfunction128(0xaaa, 0x1555);
+        field_134 = 0x1000;
+        field_cc = 0xc;
+        break;
+    case 0x1b:
+        vfunction128(0x1f1c, 0x1555);
+        field_134 = 0xaaa;
+        field_cc = 6;
+        break;
+    case 0x1c:
+        vfunction128(0xaaa, 0xe3);
+        field_134 = 0x1555;
+        field_cc = 6;
+        break;
+    case 0x1f:
+        vfunction128(0x555, 0x1555);
+        field_134 = 0xd55;
+        field_cc = 8;
+        break;
+    case 0x20:
+        vfunction128(0xaaa, 0x1aaa);
+        field_134 = 0x12aa;
+        field_cc = 8;
+        break;
+    case 0x24:
+        vfunction128(0x1555, 0xaaa);
+        vfunction128(0xf1c, 0x10e3);
+        field_134 = 0;
+        field_cc = 6;
+        break;
+    case 0x23:
+        vfunction128(0x1aaa, 0x555);
+        vfunction128(0xaaa, 0x1555);
+        field_134 = 0;
+        field_cc = 6;
+        break;
+    case 0x25:
+        vfunction128(0x1f1c, 0xe3);
+        field_134 = 0;
+        field_cc = 0xc;
+        break;
+    case 0x26:
+        vfunction128(0x1f8e, 0x71);
+        field_134 = 0;
+        field_cc = 0xc;
+        break;
+    case 0x27:
+        vfunction128(0x555, 0xaaa);
+        vfunction128(0x1555, 0x1aaa);
+        field_134 = 0;
+        field_cc = 8;
+        break;
+    case 0x29:
+        vfunction128(0xd55, 0x1d55);
+        field_134 = 0x1555;
+        field_cc = 9;
+        break;
+    case 0x28:
+        vfunction128(0x2aa, 0x12aa);
+        field_134 = 0xaaa;
+        field_cc = 9;
+        break;
+    case 0x2b:
+        vfunction128(0x1000, 0x555);
+        field_134 = 0x1aaa;
+        field_cc = 6;
+        break;
+    case 0x2a:
+        vfunction128(0x1aaa, 0x1000);
+        field_134 = 0x555;
+        field_cc = 6;
+        break;
+    case 0x2c:
+        vfunction128(0x1555, 0x555);
+        vfunction128(0xf1c, 0x10e3);
+        field_134 = 0x1d55;
+        field_cc = 7;
+        break;
+    case 0x2d:
+        vfunction128(0x1aaa, 0xaaa);
+        vfunction128(0xf1c, 0x10e3);
+        field_134 = 0x2aa;
+        field_cc = 7;
+        break;
+    case 0x2e:
+        vfunction128(0x1555, 0x1aaa);
+        field_134 = 0x1800;
+        field_cc = 0xa;
+        break;
+    case 0x2f:
+        vfunction128(0x555, 0xaaa);
+        field_134 = 0x800;
+        field_cc = 0xa;
+        break;
+    default:
+        vfunction128(0, 0x2000);
+        field_134 = 0;
+        field_cc = 0xc;
+        break;
+    }
     return true;
 }

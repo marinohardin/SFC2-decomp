@@ -62,7 +62,7 @@ public:
     virtual void vfunction14();
     virtual void vfunction15();
     virtual void vfunction16();
-    virtual void vfunction17();
+    virtual int vfunction17();
     // HYPOTHESIS: the slot at offset 0x44 takes the value 0x00453c60 returns.
     virtual void vfunction18(int param_1);
     virtual void vfunction19();
@@ -191,7 +191,7 @@ public:
     virtual void vfunction124(int param_1);
     virtual void vfunction125();
     virtual void vfunction126();
-    virtual void vfunction127();
+    virtual bool vfunction127(int param_1);
     // HYPOTHESIS: appends a pair of shorts to a list of at most six at offset 0x114.
     virtual bool vfunction128(short param_1, short param_2);
     virtual void vfunction129();
@@ -235,7 +235,8 @@ public:
     int field_e8;
     char pad_ec[0xc];
     int field_f8;
-    char pad_fc[0x1c];
+    char pad_fc[0x18];
+    int field_114;
     short field_118[6][2];
     int field_130;
     short field_134;
