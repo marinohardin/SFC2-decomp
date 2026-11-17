@@ -179,13 +179,15 @@ public:
 	void FUN_0042a535( const std::string& value );
 	bool FUN_0042a587( int value );
 	void FUN_0042a5ad( const std::string& value );
+	void FUN_0042a5ff( int value );
 
 	byte field_00[0x0c];
 	std::string field_0c;
 	std::string field_1c;
 	int field_2c;
 	std::string field_30;
-	byte field_40[0xe4 - 0x40];
+	int field_40;
+	byte field_44[0xe4 - 0x44];
 	tOptex field_e4;
 };
 
@@ -233,4 +235,12 @@ void fn_0042a480_object::FUN_0042a5ad( const std::string& value )
 	field_30 = value;
 
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x0042a5ff
+void fn_0042a480_object::FUN_0042a5ff( int value )
+{
+	field_e4.Enter();
+	field_40 = value;
+	field_e4.Leave();
 }
