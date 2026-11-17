@@ -15,7 +15,7 @@ class tShipSystems
 public:
     virtual void vfunction0() = 0;
     virtual int vfunction1() = 0;
-    virtual void vfunction2() = 0;
+    virtual float vfunction2() = 0;
     virtual void vfunction3() = 0;
     virtual void vfunction4() = 0;
     virtual void vfunction5() = 0;

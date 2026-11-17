@@ -4060,6 +4060,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0044444d": {
+   "name": "tShipSystemsFighter::vfunction2",
+   "symbol": "?vfunction2@tShipSystemsFighter@@UAEMXZ",
+   "unit": "unsorted/tShipSystemsFighter.cpp",
+   "size": 25,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0045da31": {
    "name": "tCampaignState::vfunction4",
    "symbol": "?vfunction4@tCampaignState@@UAE_NXZ",
