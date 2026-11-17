@@ -109,7 +109,7 @@ extern fn_00402b90_Obj* g_00c8032c;
 std::locale::_Locimp* fn_0074c431() throw();
 
 // FUNCTION: STARFLEETOP 0x00404184
-fn_00404184_Locale::fn_00404184_Locale() throw()
+fn_00404184_Locale::fn_00404184_Locale()
 {
     m0 = fn_0074c431();
     std::_Lockit lock;
@@ -480,7 +480,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x00404aba
-fn_00404aba_Locale::fn_00404aba_Locale(const fn_00404aba_Locale& other) throw()
+fn_00404aba_Locale::fn_00404aba_Locale(const fn_00404aba_Locale& other)
 {
     m0 = other.m0;
     m0->fn_00402b90();
@@ -508,7 +508,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x00404ad0
-fn_00404ad0_Locale& fn_00404ad0_Locale::fn_00404ad0(const fn_00404ad0_Locale& other) throw()
+fn_00404ad0_Locale& fn_00404ad0_Locale::fn_00404ad0(const fn_00404ad0_Locale& other)
 {
     if (m0 != other.m0)
     {
