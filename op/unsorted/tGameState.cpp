@@ -805,3 +805,34 @@ int fn_0046a5ac()
 		return *(int *)(*(int *)(g_0090db3c + 4) + 8);
 	return 0;
 }
+
+// HYPOTHESIS: the object at +8 of the structure reached through g_0090db3c is of an unidentified class; only virtual slot 0x30 is known.
+class fn_0046a5cd_target
+{
+public:
+	virtual int v00();
+	virtual int v01();
+	virtual int v02();
+	virtual int v03();
+	virtual int v04();
+	virtual int v05();
+	virtual int v06();
+	virtual int v07();
+	virtual int v08();
+	virtual int v09();
+	virtual int v0a();
+	virtual int v0b();
+	virtual int v0c();
+};
+
+// FUNCTION: STARFLEETOP 0x0046a5cd
+int fn_0046a5cd()
+{
+	if (g_0090db9c == 0 && g_0090db40 != 0)
+	{
+		fn_0046a5cd_target *p = *(fn_0046a5cd_target **)(*(int *)(g_0090db3c + 4) + 8);
+		if (p)
+			return p->v0c();
+	}
+	return 0;
+}
