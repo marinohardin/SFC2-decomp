@@ -52,6 +52,33 @@ extern tString g_0090da38;
 extern tString g_0090da10;
 extern tString g_0090d9e8;
 
+// HYPOTHESIS: a separator character read by fn_00468677.
+extern char g_00844ec4;
+
+// HYPOTHESIS: an object whose slot 68 (+0x110) returns its text; the class is not known.
+class c_00468677_source
+{
+public:
+	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2(); virtual void vfunction3();
+	virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7();
+	virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+	virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15();
+	virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
+	virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26(); virtual void vfunction27();
+	virtual void vfunction28(); virtual void vfunction29(); virtual void vfunction30(); virtual void vfunction31();
+	virtual void vfunction32(); virtual void vfunction33(); virtual void vfunction34(); virtual void vfunction35();
+	virtual void vfunction36(); virtual void vfunction37(); virtual void vfunction38(); virtual void vfunction39();
+	virtual void vfunction40(); virtual void vfunction41(); virtual void vfunction42(); virtual void vfunction43();
+	virtual void vfunction44(); virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
+	virtual void vfunction48(); virtual void vfunction49(); virtual void vfunction50(); virtual void vfunction51();
+	virtual void vfunction52(); virtual void vfunction53(); virtual void vfunction54(); virtual void vfunction55();
+	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58(); virtual void vfunction59();
+	virtual void vfunction60(); virtual void vfunction61(); virtual void vfunction62(); virtual void vfunction63();
+	virtual void vfunction64(); virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
+	virtual tString *vfunction68();
+};
+
 namespace tState_Namespace_GameConnections
 {
 
@@ -73,6 +100,8 @@ public:
 	bool fn_00468481();
 	bool fn_0046858a();
 	void fn_0046860d();
+	// HYPOTHESIS: copies the text after the separator g_00844ec4, or all of it; types are guesses.
+	void fn_00468677(c_00468677_source *source, tString &out);
 	// HYPOTHESIS: a member taking the address field and its name; the types are guesses.
 	void fn_00468a45(int value, const char *name);
 	// HYPOTHESIS: hands the address field a named value; the types are guesses.
@@ -341,6 +370,21 @@ void tState_GameConnections::fn_0046860d()
 		fn_00468a45(m1e0, "ModemAddress");
 		gNetControl.fn_004326aa(m11c.m18, 0);
 		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00468677
+void tState_GameConnections::fn_00468677(c_00468677_source *source, tString &out)
+{
+	tString *text = source->vfunction68();
+	if (text)
+	{
+		int len = text->mStrLen();
+		int pos = text->find(g_00844ec4);
+		if (pos >= 0 && pos < len)
+			out = text->substr(pos + 1);
+		else
+			out = *text;
 	}
 }
 
