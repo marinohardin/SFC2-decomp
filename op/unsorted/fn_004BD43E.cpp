@@ -325,6 +325,7 @@ class c_004bdd0d_Object
 {
 public:
 	c_004bdd0d_Object();
+	~c_004bdd0d_Object();
 	void fn_004bdd67();
 
 	tString field_0;
@@ -361,4 +362,17 @@ void c_004bd805_Object::fn_004bdd67()
 		field_28[ i ].field_28 = 0;
 	}
 	field_5624 = true;
+}
+
+// HYPOTHESIS: the destructor; it clears the entries as 0x004bd862 does.
+// FUNCTION: STARFLEETOP 0x004bddaa
+c_004bdd0d_Object::~c_004bdd0d_Object()
+{
+	field_5618 = 0;
+	field_561c = 0;
+	for ( int i = 0; i < 500; i++ )
+	{
+		field_28[ i ].text = "";
+		field_28[ i ].field_28 = 0;
+	}
 }
