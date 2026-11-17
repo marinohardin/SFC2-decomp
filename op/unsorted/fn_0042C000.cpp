@@ -177,3 +177,126 @@ void fn_0042c10c_Vector::fn_0042c10c(fn_0042c10c_Elem* p, unsigned int m, const 
 		m08_last += m;
 	}
 }
+
+// HYPOTHESIS: the 0x0c-byte value (key first) of another library map/set.
+struct fn_0042c360_Value
+{
+	char m00_data[0xc];
+};
+
+// HYPOTHESIS: its 0x1c-byte red-black tree node: colour byte at +0x18 (red 0, black 1) and an
+// is-nil byte at +0x19.
+struct fn_0042c360_Node
+{
+	fn_0042c360_Node* m00_left;
+	fn_0042c360_Node* m04_parent;
+	fn_0042c360_Node* m08_right;
+	fn_0042c360_Value m0c_value;
+	char m18_color;
+	char m19_isnil;
+};
+
+// HYPOTHESIS: constructs a node value in place from another (copy construction).
+void fn_0042c9b1(void* dest, const fn_0042c360_Value& src);
+// HYPOTHESIS: the tree's key_compare (key less-than).
+bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right);
+
+// HYPOTHESIS: the tree's iterator, returned by value.
+struct fn_0042c360_Iterator
+{
+	fn_0042c360_Node* m00_node;
+};
+
+// HYPOTHESIS: the tree: head node at +0x04, nil node at +0x08, size at +0x10.
+class fn_0042c360_Tree
+{
+public:
+	fn_0042c360_Iterator fn_0042c360(fn_0042c360_Node* x, fn_0042c360_Node* y, const fn_0042c360_Value& v);
+	void fn_00556fd0(fn_0042c360_Node* x);
+	void fn_00558526(fn_0042c360_Node* x);
+
+	char m00_pad[0x4];
+	fn_0042c360_Node* m04_head;
+	fn_0042c360_Node* m08_nil;
+	char m0c_pad[0x4];
+	unsigned int m10_size;
+};
+
+// FUNCTION: STARFLEETOP 0x0042c360
+fn_0042c360_Iterator fn_0042c360_Tree::fn_0042c360(fn_0042c360_Node* x, fn_0042c360_Node* y, const fn_0042c360_Value& v)
+{
+	fn_0042c360_Node* z = (fn_0042c360_Node*)operator new(sizeof(fn_0042c360_Node));
+	z->m18_color = 0;
+	z->m19_isnil = 0;
+	z->m04_parent = y;
+	z->m00_left = m08_nil;
+	z->m08_right = m08_nil;
+	fn_0042c9b1(&z->m0c_value, v);
+	++m10_size;
+	if (y == m04_head || x != m08_nil || fn_0042c8f7(v, y->m0c_value))
+	{
+		y->m00_left = z;
+		if (y == m04_head)
+		{
+			m04_head->m04_parent = z;
+			m04_head->m08_right = z;
+		}
+		else if (y == m04_head->m00_left)
+			m04_head->m00_left = z;
+	}
+	else
+	{
+		y->m08_right = z;
+		if (y == m04_head->m08_right)
+			m04_head->m08_right = z;
+	}
+	for (x = z; x != m04_head->m04_parent && x->m04_parent->m18_color == 0; )
+		if (x->m04_parent == x->m04_parent->m04_parent->m00_left)
+		{
+			y = x->m04_parent->m04_parent->m08_right;
+			if (y->m18_color == 0)
+			{
+				x->m04_parent->m18_color = 1;
+				y->m18_color = 1;
+				x->m04_parent->m04_parent->m18_color = 0;
+				x = x->m04_parent->m04_parent;
+			}
+			else
+			{
+				if (x == x->m04_parent->m08_right)
+				{
+					x = x->m04_parent;
+					fn_00556fd0(x);
+				}
+				x->m04_parent->m18_color = 1;
+				x->m04_parent->m04_parent->m18_color = 0;
+				fn_00558526(x->m04_parent->m04_parent);
+			}
+		}
+		else
+		{
+			y = x->m04_parent->m04_parent->m00_left;
+			if (y->m18_color == 0)
+			{
+				x->m04_parent->m18_color = 1;
+				y->m18_color = 1;
+				x->m04_parent->m04_parent->m18_color = 0;
+				x = x->m04_parent->m04_parent;
+			}
+			else
+			{
+				if (x == x->m04_parent->m00_left)
+				{
+					x = x->m04_parent;
+					fn_00558526(x);
+				}
+				x->m04_parent->m18_color = 1;
+				x->m04_parent->m04_parent->m18_color = 0;
+				fn_00556fd0(x->m04_parent->m04_parent);
+			}
+		}
+	m04_head->m04_parent->m18_color = 1;
+	fn_0042c360_Iterator it;
+	it.m00_node = z;
+	return it;
+}
