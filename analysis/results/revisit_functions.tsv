@@ -1,7 +1,6 @@
 address	name	best_score	attempts	last_model	listed	note
 0x0066f040	AsynchSoundIOMain	100.00	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 100.00%
 0x0062ceb0	tItemBag::`scalar_deleting_destructor'	99.55	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.55%
-0x00670650	tFontTable::mDone	98.21	4	opus	2026-11-11T12:40:55Z	all 4 regular attempts used; waits for Fable; best 98.21%
 0x00670950	tFontMgr::mInit	91.55	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 91.55%
 0x006f3a20	tThreadPool::tThreadPool	97.65	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 97.65%
 0x006f3b40	tThreadPool::~tThreadPool	99.97	4	opus	2026-11-11T12:40:55Z	attempt 4 (opus) did not raise the best; waits for Fable; best 99.97%
