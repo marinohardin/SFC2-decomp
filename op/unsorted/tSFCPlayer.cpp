@@ -7,6 +7,7 @@
 #include "unsorted/tSupplyDockInfo.h"
 #include "unsorted/sfcstreams.h"
 #include "unsorted/fn_0090bed4_Object.h"
+#include "unsorted/fn_004e2b02_ship_type.h"
 
 void fn_0040e689(tSFCStream &s);
 void fn_0040e691(tSFCStream &s);
@@ -157,7 +158,7 @@ class tSFCPlayer
 		virtual int vfunction8();
 		virtual void vfunction9(unsigned param_1);
 		virtual int vfunction10() = 0;
-		virtual void vfunction11() = 0;
+		virtual void vfunction11(int param_1, unsigned param_2, int param_3);
 		virtual void vfunction12() = 0;
 		virtual void vfunction13() = 0;
 		virtual void vfunction14() = 0;
@@ -774,6 +775,23 @@ char tSFCPlayer::vfunction80()
 		}
 	}
 	return bResult;
+}
+
+// FUNCTION: STARFLEETOP 0x004d0618
+void tSFCPlayer::vfunction11(int param_1, unsigned param_2, int param_3)
+{
+	if (param_2 < 6) {
+		m_40[param_2] = param_1;
+		if (gObject_008e1060.fn_004235f0(param_1)) {
+			if (param_2 == 0) {
+				gObject_008e1060.fn_004248b5(m_40[0]);
+			} else {
+				fn_004e2b02_ship_type *iEntity = gObject_008e1060.fn_0042496f(param_1);
+				if (iEntity != 0)
+					iEntity->vfunction16();
+			}
+		}
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004d05ef
