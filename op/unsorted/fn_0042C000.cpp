@@ -688,3 +688,15 @@ bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right)
 	const int* y = (const int*)right.m00_data;
 	return x[0] < y[0] || !(y[0] < x[0]) && x[1] < y[1];
 }
+
+// The game's out-of-line copy of the library's inline _Construct (<xmemory>) for the ship caches
+// of tServCharacter, which vector<tShipCache> uses to copy an element into place.
+// MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c80a.
+namespace std
+{
+// FUNCTION: STARFLEETOP 0x0042c91b
+template<> void _Construct( tServCharacter::tShipCache* _P, const tServCharacter::tShipCache& _V )
+{
+	new ((void*)_P) tServCharacter::tShipCache(_V);
+}
+};
