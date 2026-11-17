@@ -737,3 +737,11 @@ void fn_0042c9b1(void* dest, const void* src)
 	struct tValue { int m00; int m04; int m08; };
 	new (dest) tValue(*(const tValue*)src);
 }
+
+// HYPOTHESIS: the library's _Construct for a tHexPoint element (its copy constructor at
+// 0x005b6973); the container and its caller are not identified.
+// FUNCTION: STARFLEETOP 0x0042c9c5
+void fn_0042c9c5(tHexPoint* dest, const tHexPoint& src)
+{
+	new ((void*)dest) tHexPoint(src);
+}
