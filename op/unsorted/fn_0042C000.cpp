@@ -728,3 +728,12 @@ template<> void _Construct( nDatabase::tID* _P, const nDatabase::tID& _V )
 	new ((void*)_P) nDatabase::tID(_V);
 }
 };
+
+// HYPOTHESIS: the library's _Construct for a 12-byte element copied as three dwords (the implicit
+// copy constructor of a three-member struct); the element type and its caller are not identified.
+// FUNCTION: STARFLEETOP 0x0042c9b1
+void fn_0042c9b1(void* dest, const void* src)
+{
+	struct tValue { int m00; int m04; int m08; };
+	new (dest) tValue(*(const tValue*)src);
+}
