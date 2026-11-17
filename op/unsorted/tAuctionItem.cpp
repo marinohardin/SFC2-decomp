@@ -1,6 +1,28 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tAuctionItem.cpp
-// Functions: 0x00544b5c to 0x00545705, 34 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <string>
+
+#include "Common/Database/DatabaseObject.h"
+#include "Common/Database/DatabaseID.h"
+
+// HYPOTHESIS: layout read from the constructor; the fields between the named ones are not
+// identified yet.
+class tAuctionItem : public nDatabase::tDatabaseObject
+{
+public:
+	tAuctionItem();
+
+	// HYPOTHESIS: the two integer arguments' types and meaning are unknown.
+	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );
+
+protected:
+	char fPad_48[0x4];
+	std::string fString_4c;
+	nDatabase::tID fID_5c;
+	char fPad_6c[0x20];
+	nDatabase::tID fID_8c;
+};
+
+// FUNCTION: STARFLEETOP 0x00544b5c
+tAuctionItem::tAuctionItem()
+{
+	fn_00544d20( nDatabase::tID(), "", 0, 0, 1.0 );
+}
