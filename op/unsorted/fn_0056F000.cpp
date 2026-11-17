@@ -191,3 +191,10 @@ void fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> 
 	}
 	guard.Leave();
 }
+
+class tShip;
+
+// FUNCTION: STARFLEETOP 0x0056f265
+nDatabase::tQuery<tShip>::~tQuery()
+{
+}
