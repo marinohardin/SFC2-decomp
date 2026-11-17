@@ -259,8 +259,10 @@ public:
 	int		m33c;
 	int FUN_005c4482();
 	int FUN_005c44a2();
+	int FUN_005c44c2();
 	int		m340;
-	char	pad3[0x34c - 0x344];
+	int		m344;
+	char	pad3[0x34c - 0x348];
 	int		m34c;
 	int FUN_005c4462();
 };
@@ -324,6 +326,15 @@ int fn_005c43e2_Holder::FUN_005c44a2()
 {
 	m04.Enter();
 	int value = m340;
+	m04.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x005c44c2
+int fn_005c43e2_Holder::FUN_005c44c2()
+{
+	m04.Enter();
+	int value = m344;
 	m04.Leave();
 	return value;
 }
