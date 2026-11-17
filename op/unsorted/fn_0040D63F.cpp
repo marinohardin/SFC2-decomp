@@ -706,3 +706,16 @@ void fn_0040e306(tString* name, tString* value, fn_0040d63f_Buf& buf)
     }
 }
 
+// FUNCTION: STARFLEETOP 0x0040e37a
+void fn_0040e37a(tString* name, tString* value, fn_0040d63f_Buf& buf)
+{
+    buf.fn_0040d841();
+    tString line(*name);
+    line += " = ";
+    tString text;
+    buf.fn_0040d7d6(&text);
+    *value = text.substr(line.mStrLen());
+    char nl;
+    buf.fn_0040d897(&nl, 1, 0);
+}
+
