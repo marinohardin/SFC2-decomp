@@ -1010,6 +1010,26 @@ void fn_0040e8f4(tPoint2* p, tSFCStream& buf, unsigned char flags)
     }
 }
 
+// HYPOTHESIS: the double counterpart of 0x0040e8f4.
+// FUNCTION: STARFLEETOP 0x0040e93f
+void fn_0040e93f(double* p, tSFCStream& buf, unsigned char flags)
+{
+    if (flags & 2) {
+        if (flags & 8) {
+            double d = *p;
+            buf.fn_0040d867(&d, 8, 1);
+            return;
+        }
+        fn_0040dbf8(p, buf);
+    } else {
+        if (flags & 8) {
+            buf.fn_0040d897(p, 8, 1);
+            return;
+        }
+        fn_0040dc13(p, buf);
+    }
+}
+
 // FUNCTION: STARFLEETOP 0x0040e70f
 int tSFCStream::fn_0040e70f(char* text)
 {
