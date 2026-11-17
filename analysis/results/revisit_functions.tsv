@@ -158,3 +158,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006e39e0	FUN_006e39e0	83.22	2	sonnet	2026-11-17T18:05:54Z	best not above 90% after 2 attempts; best 83.22%
 0x006e3ba0	FUN_006e3ba0	0.00	2	sonnet	2026-11-17T18:11:41Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x006e3bc0	FUN_006e3bc0	52.27	2	sonnet	2026-11-17T18:19:05Z	attempt 2 (sonnet) did not raise the best; best 52.27%
+0x006e3ca0	FUN_006e3ca0	0.00	2	sonnet	2026-11-17T18:25:51Z	attempt 2 (sonnet) did not raise the best; best 0.00%
