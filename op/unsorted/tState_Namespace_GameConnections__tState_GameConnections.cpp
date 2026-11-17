@@ -894,6 +894,7 @@ void tState_GameConnections::fn_00469636()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x004696ca
 // FUNCTION: STARFLEETOP 0x004696c0
 tState_GameConnections g_0090d7a0;
 
