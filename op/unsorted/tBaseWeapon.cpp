@@ -139,3 +139,11 @@ void tBaseWeapon::fn_004d74f6()
     default: field_cc += 500; break;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d7648
+void tBaseWeapon::vfunction100()
+{
+    vfunction55(0);
+    vfunction63();
+    vfunction80();
+}
