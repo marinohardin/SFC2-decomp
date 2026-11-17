@@ -22,7 +22,7 @@ void tCompassRose::fn_005e2501()
 void fn_004d3306( const char *psz );
 
 // FUNCTION: STARFLEETOP 0x005e2539
-void fn_005e2539()
+void tCompassRose::fn_005e2539()
 {
 	fn_004d3306( g_00c38dd8.c_str() );
 }

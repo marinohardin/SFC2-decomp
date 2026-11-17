@@ -21,6 +21,7 @@ public:
 
 	// tMetaMapControl calls it on its compass rose (0x005e3148).
 	void fn_005e2501();
+	void fn_005e2539();
 
 	unsigned char field_04[ 4 ];
 };

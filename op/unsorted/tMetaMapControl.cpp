@@ -59,3 +59,13 @@ void tMetaMapControl::fn_005e3148( int param_1 )
 		field_17c->fn_005eadc8();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005e31be
+void tMetaMapControl::fn_005e31be()
+{
+	field_180->fn_005e2539();
+	if ( field_17c != 0 )
+	{
+		field_17c->fn_005eadcd();
+	}
+}
