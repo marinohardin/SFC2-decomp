@@ -204,14 +204,14 @@ extern tDir* g_00c808bc;
 extern tDir* g_00c808c0;
 
 // HYPOTHESIS: an object at 0x00c80924 whose first virtual accepts a name.
-class tFileFallback
+class tObject_00c80924
 {
 public:
 	virtual unsigned char	fn_slot0( tString& name );
 	// HYPOTHESIS: the second virtual takes a path by value, as mSearchOpen( tPath ) calls it.
 	virtual unsigned char	fn_slot1( tPath path );
 };
-extern tFileFallback* g_00c80924;
+extern tObject_00c80924* g_00c80924;
 
 // FUNCTION: STARFLEETOP 0x00757880
 tPath tFile::mSearchOpen( tString& name, unsigned char flag )
