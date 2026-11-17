@@ -424,6 +424,7 @@ public:
     tString& fn_00534d93(int kind, long index);
     tString& fn_00534db5(int kind, long index);
     long fn_00534dde(int kind, long index);
+    long fn_00534dfd(int kind, long index);
 
     tString field_00;
     fn_00534ac1_entry field_28[4800];
@@ -611,5 +612,13 @@ long fn_00534950_object::fn_00534dde(int kind, long index)
 {
     if (kind >= 0)
         return field_e128[kind]->fn_00534690(index);
+    return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00534dfd
+long fn_00534950_object::fn_00534dfd(int kind, long index)
+{
+    if (kind >= 0 && index > 0)
+        return field_e128[kind]->fn_005346a0(index);
     return 0;
 }
