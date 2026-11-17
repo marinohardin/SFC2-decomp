@@ -380,3 +380,9 @@ void fn_0040dbab(float* dst, fn_0040d63f_Buf& buf)
     fn_0040dae4((int*)&v, buf);
     dst[1] = v;
 }
+
+// FUNCTION: STARFLEETOP 0x0040dbdc
+void fn_0040dbdc(tString* str, fn_0040d63f_Buf& buf)
+{
+    buf.fn_0040d73e(str);
+}
