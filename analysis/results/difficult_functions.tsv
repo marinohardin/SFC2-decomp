@@ -206,3 +206,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0061dad0	tVolume::mGetRoot	5	fable	99.50	2026-11-17T10:17:49Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
 0x0061dbf0	tDir::mGetName	5	fable	99.97	2026-11-17T10:31:43Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
 0x0061dd00	tDir::mGetParentVol	5	fable	99.50	2026-11-17T10:41:14Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
+0x0061de20	tDir::mGetParentDir	5	fable	99.50	2026-11-17T10:55:02Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
