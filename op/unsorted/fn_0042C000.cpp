@@ -913,3 +913,26 @@ fn_0042cd23_Class::fn_0042cd23_Class()
 tCampaignInfo::~tCampaignInfo()
 {
 }
+
+#include <sstream>
+
+// HYPOTHESIS: an unidentified class whose member 0x0042d079 returns a string by value.
+class fn_0042cfd9_Class
+{
+public:
+	std::string fn_0042cfd9( const std::string& prefix, int unused );
+	std::string fn_0042d079();
+};
+
+// HYPOTHESIS: the second parameter is never read (ret 0xc with a hidden return pointer); its type
+// is not known.
+// The original calls the string inserter out of line (0x00404e8a, a sputc loop over the string as
+// the SDK's STL writes it); the compiler's own <string> inserter writes c_str() and is inlined, so
+// this build cannot match until the SDK's STL headers are on the include path.
+// FUNCTION: STARFLEETOP 0x0042cfd9
+std::string fn_0042cfd9_Class::fn_0042cfd9( const std::string& prefix, int unused )
+{
+	std::stringstream ss;
+	ss << prefix << fn_0042d079();
+	return ss.str();
+}

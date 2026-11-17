@@ -2899,6 +2899,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042cfd9": {
+   "name": "FUN_0042cfd9",
+   "symbol": "?fn_0042cfd9@fn_0042cfd9_Class@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@H@Z",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 160,
+   "score": 33.067,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00431044": {
    "name": "tNetControl::~tNetControl",
    "symbol": "??0tNetControl@@QAE@XZ",
