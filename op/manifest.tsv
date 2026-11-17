@@ -776,7 +776,7 @@ address	size	symbol	source	modes
 0x004d8732	21	tBaseWeapon::fn_004d8732(int *,int *)	unsorted/tBaseWeapon.cpp	vc6 guest
 0x004d8747	51	tBaseWeapon::vfunction105(int)	unsorted/tBaseWeapon.cpp	vc6 guest
 0x004d877a	105	tBaseWeapon::vfunction135(unsigned char)	unsorted/tBaseWeapon.cpp	vc6 guest
-0x004d87e3	262	tBaseWeapon::fn_004d87e3()	unsorted/tBaseWeapon.cpp	partial
+0x004d87e3	262	tBaseWeapon::fn_004d87e3(int)	unsorted/tBaseWeapon.cpp	partial
 0x004d88e9	45	fn_004d88e9(const char *)	unsorted/tBaseWeapon.cpp	vc6 guest
 0x004d8916	70	fn_004d8916(int,int,float,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest
 0x004d895c	7	tBaseWeapon::vfunction144()	unsorted/tBaseWeapon.cpp	vc6 guest
