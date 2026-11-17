@@ -341,9 +341,7 @@ public:
     }
     virtual unsigned char mOpenForRead(const char* name)
     {
-        if (field_0 == 0)
-            return 0;
-        field_0->mClose();
+        mClose();
         if (field_0 == 0 || !field_0->mOpenForRead(name))
             return 0;
         field_30c = 0;
@@ -528,14 +526,15 @@ tFontMgr::eInitStatus tFontMgr::mInit(void)
             field_0 = kInitFailed;
             return kInitFailed;
         }
-        field_0 = kInitialized;
-        return kInitialized;
+    } else {
+        mDone();
+        field_0 = kInitFailed;
+        return kInitFailed;
     }
-
-    mDone();
-    field_0 = kInitFailed;
-    return kInitFailed;
+    field_0 = kInitialized;
+    return kInitialized;
 }
+
 
 // FUNCTION: STARFLEETOP 0x00670d50
 void tFontMgr::mDone(void)

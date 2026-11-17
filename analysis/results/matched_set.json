@@ -15396,9 +15396,9 @@
    "symbol": "?mInit@tFontMgr@@QAE?AW4eInitStatus@1@XZ",
    "unit": "Tiger/tFontmgr.cpp",
    "size": 848,
-   "score": 91.546,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00670ca0": {
    "name": "tFontFileIO::~tFontFileIO",
