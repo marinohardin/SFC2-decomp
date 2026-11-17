@@ -361,3 +361,35 @@ void fn_006c1a70()
 	g_0088800c = INVALID_SOCKET;
 	WSACleanup();
 }
+
+// HYPOTHESIS: an entry of the pending list; its first member owns a block with a buffer at
+// +0x48.
+struct fn_006c1a90_Block
+{
+	char m00[0x48];
+	void *m48;
+};
+struct fn_006c1a90_Entry
+{
+	fn_006c1a90_Block *m00;
+};
+
+void fn_006c1f30(fn_006c1a90_Block *block);
+void fn_006c21d0(fn_006c1a90_Entry *entry, int *list);
+
+// HYPOTHESIS: empties the pending list, freeing every entry and the block it owns.
+// FUNCTION: STARFLEETOP 0x006c1a90
+void fn_006c1a90()
+{
+	fn_006c1a90_Entry *entry;
+
+	while ((entry = (fn_006c1a90_Entry *)g_00c7cdec) != 0)
+	{
+		fn_006c1f30(entry->m00);
+		fn_006c21d0(entry, &g_00c7cde8);
+		if (entry->m00->m48 != 0)
+			delete entry->m00->m48;
+		delete entry->m00;
+		delete entry;
+	}
+}
