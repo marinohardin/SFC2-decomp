@@ -589,3 +589,11 @@ void tMetaMapHex::fn_0053a56a( long param_1 )
 	m_68 = param_1;
 	m_bc.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x0053a58e
+void tMetaMapHex::fn_0053a58e( long param_1 )
+{
+	m_bc.Enter();
+	m_6c = param_1;
+	m_bc.Leave();
+}
