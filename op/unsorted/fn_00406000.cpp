@@ -127,3 +127,30 @@ const std::collate<char>& fn_00406355(const std::locale& _L, const std::collate<
         _Pf = _Psave = fn_0040678d(new std::collate<char>);
     return *(const std::collate<char>*)_Pf;
 }
+
+// HYPOTHESIS: a locale-valued helper of the library; the types below only name what the
+// instructions call (0x00404c82 id lookup, 0x0074c78e facet lookup on the locale argument).
+class fn_00406419_Id
+{
+public:
+    size_t fn_00404c82(int);
+};
+
+extern fn_00406419_Id g_00c80338;
+
+class fn_00406419_Loc
+{
+public:
+    fn_00406419_Loc(const fn_00406419_Loc&);
+    ~fn_00406419_Loc();
+    const std::locale* fn_0074c78e(int, size_t);
+    std::locale m0;
+};
+
+// FUNCTION: STARFLEETOP 0x00406419
+std::locale fn_00406419(std::locale _L, int _X)
+{
+    std::_Lockit _T;
+    size_t _Id = g_00c80338.fn_00404c82(2);
+    return *((fn_00406419_Loc*)&_L)->fn_0074c78e(_X, _Id);
+}
