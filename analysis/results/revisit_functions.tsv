@@ -180,3 +180,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0057ab52	tCallback<unsigned_long>::scalar_deleting_destructor	8.23	2	sonnet	2026-11-17T16:42:44Z	best not above 90% after 2 attempts; best 8.23%
 0x0057ab6f	tCallback<nSwitch::tAddress::tStatusChangeInfo>::scalar_deleting_destructor	8.23	2	sonnet	2026-11-17T16:47:48Z	attempt 2 (sonnet) did not raise the best; best 8.23%
 0x0057ab8c	tCallback<nDatabase::tID_const&>::scalar_deleting_destructor	19.71	2	sonnet	2026-11-17T16:52:36Z	best not above 90% after 2 attempts; best 19.71%
+0x0057ac66	FUN_0057ac66	0.00	2	sonnet	2026-11-17T17:02:05Z	attempt 2 (sonnet) did not raise the best; best 0.00%
