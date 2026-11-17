@@ -494,3 +494,38 @@ void fn_006c1ae0()
 		}
 	}
 }
+
+void fn_006c1da0(char *buffer, int ok);
+void fn_006c1ea0(char *buffer, struct sockaddr_in *from);
+
+// HYPOTHESIS: dispatches a received reply on the key between its first two backslashes. The
+// three key literals (0x00888040, 0x00888038, 0x00888030) are below the string dump's length
+// limit and were not read back; their sizes fit the 4/8/8-byte slots.
+// FUNCTION: STARFLEETOP 0x006c1c70
+void fn_006c1c70(char *buffer, struct sockaddr_in *from)
+{
+	char key[32];
+	char *end;
+	int len;
+
+	key[0] = 0;
+	if (buffer[0] == '\\')
+	{
+		end = strchr(buffer + 1, '\\');
+		len = end - buffer;
+		if (len <= 32)
+		{
+			strncpy(key, buffer + 1, len - 1);
+			key[len - 1] = 0;
+		}
+		if (key[0] != 0)
+		{
+			if (strcmp(key, "uok") == 0)
+				fn_006c1da0(buffer, 1);
+			else if (strcmp(key, "unok") == 0)
+				fn_006c1da0(buffer, 0);
+			else if (strcmp(key, "ison") == 0)
+				fn_006c1ea0(buffer, from);
+		}
+	}
+}
