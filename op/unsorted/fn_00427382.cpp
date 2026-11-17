@@ -477,3 +477,16 @@ std::vector< tObject_00427c1d >::vector( const std::vector< tObject_00427c1d >& 
 	_Last = _Ucopy( _X.begin(), _X.end(), _First );
 	_End = _Last;
 }
+
+// MATCH-ONLY: the library's _Construct for one element of the vector at 0x3c of
+// tPlayingTeamInfo, written out so that it has source lines here.
+namespace std
+{
+inline void _Construct( tObject_00427c1d *_P, const tObject_00427c1d& _V );
+}
+
+// FUNCTION: STARFLEETOP 0x00427c1d
+inline void std::_Construct( tObject_00427c1d *_P, const tObject_00427c1d& _V )
+{
+	new ((void *)_P) tObject_00427c1d( _V );
+}
