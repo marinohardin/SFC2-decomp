@@ -197,3 +197,9 @@ void fn_00496551()
 void fn_00496565()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x00496572
+// HYPOTHESIS: 0x00496572 is a separate small function (frame, fld 187.0, call fn_005050e2); the real body is not recovered, so this is a placeholder.
+void fn_00496572()
+{
+}
