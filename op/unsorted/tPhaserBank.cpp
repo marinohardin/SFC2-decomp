@@ -587,7 +587,7 @@ int tPhaserBank::vfunction136(char param_1)
     bool fired = false;
     int result;
     int count = 0;
-    while ((result = fn_004d87e3(0)) == 0x200)
+    while ((result = fn_004d87e3()) == 0x200)
     {
         if (!vfunction134())
         {

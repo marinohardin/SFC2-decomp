@@ -240,7 +240,9 @@ public:
     char pad_44[1];
     char field_45;
     char field_46;
-    char pad_47[0x81];
+    char pad_47[0x21];
+    float field_68;
+    char pad_6c[0x5c];
     short field_c8;
     char pad_ca[2];
     int field_cc;
@@ -269,7 +271,7 @@ public:
     void fn_004d74f6();
     bool fn_004d76f8();
     // HYPOTHESIS: a status that 0x004e28fc compares with 0x200 (ready) before each shot.
-    int fn_004d87e3(int param_1);
+    int fn_004d87e3();
     // HYPOTHESIS: a float that 0x004e28fc passes to 0x004e3b3e when a bank fires.
     float fn_004d786e();
     // HYPOTHESIS: a base class's own slot 39 (elapsed time), called directly by 0x004e2b02

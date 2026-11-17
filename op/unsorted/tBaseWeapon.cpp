@@ -1026,3 +1026,57 @@ float tBaseWeapon::vfunction135(unsigned char param_1)
     }
     return value / field_d4;
 }
+
+#include "unsorted/tObject_0090be60.h"
+#include "unsorted/fn_004e2b02_ship_type.h"
+
+// HYPOTHESIS: the entity the weapon's target id names, as 0x004d87e3 reads it.
+struct fn_004d87e3_target
+{
+    char pad_00[0x18];
+    unsigned char field_18;
+    char pad_19[0x60 - 0x19];
+    int field_60;
+    char pad_64[0x1bc - 0x64];
+    int field_1bc;
+};
+
+#include "unsorted/tObject_008f5170.h"
+
+extern float g_0079561c;
+
+// FUNCTION: STARFLEETOP 0x004d87e3
+int tBaseWeapon::fn_004d87e3()
+{
+    fn_004e2b02_ship_type *ship = vfunction33();
+    int result;
+    if (ship == NULL || field_68 > g_0079561c)
+    {
+        result = 0x20;
+    }
+    else
+    {
+      if ((field_f8 >= 8 && field_f8 <= 0xe) || !fn_004d76f8())
+      {
+        fn_004d87e3_target *target;
+        if (field_ec < 0 || field_ec >= 0x4000)
+            target = NULL;
+        else
+            target = (fn_004d87e3_target *)g_008e1090[field_ec];
+        if (ship->vfunction32() || target == NULL)
+            return 0x100;
+        if ((!(target->field_18 & 4) || target->field_1bc < 0 || target->field_1bc > 4 ||
+             (field_f8 >= 8 && field_f8 <= 0xc)) &&
+            gObject_008f5170.fn_00425a18(target, ship, 1))
+        {
+            if (ship->field_60 == target->field_60 ||
+                gObject_0090be60->fn_00427581(ship->field_60, target->field_60) == 2 ||
+                gObject_0090be60->fn_00427581(ship->field_60, target->field_60) == 3)
+                return 0x80;
+            return 0x200;
+        }
+      }
+      result = 0x40;
+    }
+    return result;
+}

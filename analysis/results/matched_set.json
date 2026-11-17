@@ -6886,6 +6886,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004d87e3": {
+   "name": "FUN_004d87e3",
+   "symbol": "?fn_004d87e3@tBaseWeapon@@QAEHXZ",
+   "unit": "unsorted/tBaseWeapon.cpp",
+   "size": 262,
+   "score": 42.482,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x004e1e8f": {
    "name": "tPhaserBank::tPhaserBank",
    "symbol": "??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z",
