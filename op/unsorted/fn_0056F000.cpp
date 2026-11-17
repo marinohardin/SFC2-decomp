@@ -511,3 +511,66 @@ void nDatabase::tQuery<tMetaMapHex>::fn_0056f04f(void *value)
 {
 	m_results.fn_00571a69(value);
 }
+
+// HYPOTHESIS: tMetaMapHex is a database class; its members are not recovered.
+class tMetaMapHex : public nDatabase::tDatabaseObject {
+public:
+	char tMetaMapHex_pad[0x20];
+};
+
+// HYPOTHESIS: the result container for tMetaMapHex, as for 0x0056f4df.
+class fn_0056f703_results {
+public:
+	void push_back(const tMetaMapHex &value);
+};
+
+// HYPOTHESIS: 0x0056f703 is the same LockingQueryDB member template as 0x0056f05f,
+// instantiated for tMetaMapHex; this stand-in for tDatabase mirrors fn_0056f05f_owner.
+class fn_0056f703_owner {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void MultiLock(fn_00571a7a_vector *objects, bool mustLockAll);
+	void fn_0056f703(const nDatabase::tQuery<tMetaMapHex> &query, fn_0056f703_results *result, bool mustLockAll);
+	tOptex fAccess;
+	fn_005719df_map fTypeIndex;
+};
+
+// FUNCTION: STARFLEETOP 0x0056f703
+void fn_0056f703_owner::fn_0056f703(const nDatabase::tQuery<tMetaMapHex> &query, fn_0056f703_results *result, bool mustLockAll)
+{
+	tOptex::tGuard guard(&fAccess);
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(tMetaMapHex));
+#line 210 "../Common/Database/Database.h"
+	validate(allocID != kInvalidAllocatorID);
+	fn_00571a7a_vector &objects = fTypeIndex.fn_005719df(allocID);
+	bool lockFailed = false;
+	fn_00571a7a_vector holdResult;
+	for (void **i = objects.begin(); i != objects.end() && !lockFailed; i++) {
+		tMetaMapHex *pObject = static_cast<tMetaMapHex *>((tDatabaseObject *)*i);
+		if (query(pObject)) {
+			pObject->AddReference();
+			holdResult.fn_00571a69((void *)pObject);
+		}
+	}
+	guard.Leave();
+	if (holdResult.size() > 0) {
+		MultiLock(&holdResult, mustLockAll);
+		for (void **lockedObject = holdResult.begin(); lockedObject != holdResult.end(); lockedObject++) {
+			if (*lockedObject) {
+				tMetaMapHex *pObject = static_cast<tMetaMapHex *>((tDatabaseObject *)*lockedObject);
+				if (!pObject->IsDead())
+					result->push_back(*pObject);
+				pObject->RemoveReference();
+			}
+		}
+	}
+}
