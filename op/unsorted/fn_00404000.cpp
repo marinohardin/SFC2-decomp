@@ -546,3 +546,39 @@ fn_00404aff_Locale fn_00404aff_Ios::fn_00404aff() const
 {
     return m34;
 }
+
+// HYPOTHESIS: std::streambuf initialiser: each area pointer pair points at its own slots, then is cleared.
+class fn_00404b1c_Streambuf
+{
+public:
+    void fn_00404b1c();
+    int m0;
+    char* m4;
+    char* m8;
+    char** mc;
+    char** m10;
+    char* m14;
+    char* m18;
+    char** m1c;
+    char** m20;
+    char* m24;
+    char* m28;
+    char** m2c;
+    char** m30;
+};
+
+// FUNCTION: STARFLEETOP 0x00404b1c
+void fn_00404b1c_Streambuf::fn_00404b1c()
+{
+    m1c = &m14;
+    m20 = &m18;
+    m2c = &m24;
+    mc = &m4;
+    m30 = &m28;
+    *(m10 = &m8) = 0;
+    *m20 = 0;
+    *m30 = 0;
+    *mc = 0;
+    *m1c = 0;
+    *m2c = 0;
+}
