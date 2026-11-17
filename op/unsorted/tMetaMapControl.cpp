@@ -54,6 +54,7 @@ public:
 	// HYPOTHESIS: a list of view labels; 0x005e3ad8 clears it (erase 0x0042500f over its +0x4 and
 	// +0x8) and pushes "Empires View" and "Cartels View" (push_back 0x00424f16).
 	std::vector<tString> *fn_0055e60f();
+	void fn_0060a672();
 };
 
 fn_0060a54d_class *fn_00607d61();
@@ -442,5 +443,12 @@ void tMetaMapControl::fn_005e3ad8()
 	list->clear();
 	list->push_back( "Empires View" );
 	list->push_back( "Cartels View" );
+	fn_005e4455();
+}
+
+// FUNCTION: STARFLEETOP 0x005e3b6e
+void tMetaMapControl::fn_005e3b6e()
+{
+	fn_00607d61()->fn_0060a672();
 	fn_005e4455();
 }

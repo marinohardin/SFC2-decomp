@@ -88,6 +88,7 @@ public:
 	unsigned long fn_005e397b( unsigned char *param_1 );
 	void fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color );
 	void fn_005e3ad8();
+	void fn_005e3b6e();
 	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
 	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
