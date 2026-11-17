@@ -98,11 +98,14 @@ struct fn_005d9281_tree
         node &operator*() const { return *m_node; }
         iterator &fn_0052e144();
         iterator &operator++() { return fn_0052e144(); }
+        iterator operator++(int) { iterator tmp = *this; ++*this; return tmp; }
         bool operator!=(const iterator &other) const { return m_node != other.m_node; }
         node *m_node;
     };
     ~fn_005d9281_tree();
     iterator fn_005d9329(iterator first, iterator last);
+    iterator fn_0060ac82(iterator where);
+    void fn_005d9411(node *n);
     iterator begin() { return iterator(m_head->left); }
     iterator end() { return iterator(m_head); }
     char m_0x00[0x04];
@@ -209,4 +212,24 @@ fn_005d92f1_list::iterator fn_005d92f1_list::erase(iterator where)
     operator delete(s);
     --m_size;
     return where;
+}
+
+// FUNCTION: STARFLEETOP 0x005d9329
+fn_005d9281_tree::iterator fn_005d9281_tree::fn_005d9329(iterator first, iterator last)
+{
+    if (m_size == 0 || first.m_node != m_head->left || last.m_node != m_head)
+    {
+        while (first != last)
+            fn_0060ac82(first++);
+        return first;
+    }
+    else
+    {
+        fn_005d9411(m_head->parent);
+        m_head->parent = m_nil;
+        m_size = 0;
+        m_head->left = m_head;
+        m_head->right = m_head;
+        return begin();
+    }
 }
