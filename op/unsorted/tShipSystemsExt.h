@@ -203,6 +203,7 @@ public:
     virtual void vfunction117( float param_1 );
     virtual float vfunction118();
     virtual void vfunction119();
+    virtual float vfunction120();
     virtual float vfunction124();
     virtual float vfunction125();
     virtual tMinMaxFloat* vfunction126();
