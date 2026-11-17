@@ -3367,6 +3367,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0043f023": {
+   "name": "FUN_0043f023",
+   "symbol": "?fn_0043f023@tSensorGroupSystem@@QAEHPAUvfunction33_result@@PAVtObject_0042496f@@@Z",
+   "unit": "unsorted/tSensorGroupSystem.cpp",
+   "size": 414,
+   "score": 84.656,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x0043fa4e": {
    "name": "tShieldSystem::vfunction52",
    "symbol": "?vfunction52@tShieldSystem@@UAEXXZ",

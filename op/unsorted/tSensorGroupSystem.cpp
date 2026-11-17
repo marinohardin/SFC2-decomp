@@ -4,6 +4,7 @@
 #include "unsorted/tValueBase.h"
 #include "unsorted/tEntity.h"
 #include "Source/entity/entity_physical.h"
+#include "unsorted/tMissionMap.h"
 
 // HYPOTHESIS: the base is tRepairableShipSystem: the destructor stores vtable 0x00799598 (the
 // one after tMinMaxFloat's) before calling tIndividualShipSystem's. Six 0x24-byte value
@@ -47,6 +48,8 @@ public:
     void fn_0043eee8();
     // HYPOTHESIS: the result is an integer 0x0043eee8 converts to float.
     int fn_0043f023(struct vfunction33_result* owner, tObject_0042496f* target);
+    // HYPOTHESIS: a value for one map cell; 0x0043f023 sums it along a line of cells.
+    int fn_0043f618(int x, int y);
     // HYPOTHESIS: param_2 is not read (the function pops two arguments).
     float fn_0043ed38(int param_1, int param_2);
     int fn_0043edd8();
@@ -1206,4 +1209,95 @@ void tSensorGroupSystem::fn_0043eee8()
             field_178 = (float)fn_0043f023(owner, target);
         }
     }
+}
+
+// HYPOTHESIS: sums fn_0043f618 over the map cells on a line from the owner's cell to the
+// target's; 0x0043eee8 stores the result as a float.
+// FUNCTION: STARFLEETOP 0x0043f023
+int tSensorGroupSystem::fn_0043f023(vfunction33_result* owner, tObject_0042496f* target)
+{
+    int sum = 0;
+    if (owner == 0 || target == 0 || (void*)owner == (void*)target)
+        return 0;
+    tPoint3 from = ((tEntity*)owner)->fCurrPos;
+    tPoint3 to = target->field_0x34;
+    unsigned int x1, y1, x2, y2, t;
+    tMapPoint cell = g_0090b734->m3DToMapPoint(from);
+    x1 = cell.x;
+    y1 = cell.y;
+    cell = g_0090b734->m3DToMapPoint(to);
+    y2 = cell.y;
+    x2 = cell.x;
+    if (y2 < y1)
+    {
+        t = x1;
+        x1 = x2;
+        x2 = t;
+        t = y1;
+        y1 = y2;
+        y2 = t;
+    }
+    int dy = y2 - y1;
+    int dx = x2 - x1;
+    int i;
+    if (dx == 0)
+    {
+        for (i = 0; i < dy + 1; i++)
+        {
+            sum += fn_0043f618(x1, y1);
+            y1++;
+        }
+    }
+    else if (dy == 0)
+    {
+        if (x1 > x2)
+        {
+            t = x1;
+            x1 = x2;
+            x2 = t;
+        }
+        int count = x2 - x1 + 1;
+        for (i = 0; i < count; i++)
+        {
+            sum += fn_0043f618(x1, y1);
+            x1++;
+        }
+    }
+    else
+    {
+        int adx = dx;
+        int stepX;
+        if (adx > 0)
+            stepX = 1;
+        else
+        {
+            stepX = -1;
+            adx = -adx;
+        }
+        int steps;
+        if (dy > adx)
+            steps = dy;
+        else
+            steps = adx;
+        int errX = steps >> 1;
+        int errY = errX;
+        i = steps + 1;
+        while (i-- > 0)
+        {
+            errX += adx;
+            if (errX > steps)
+            {
+                errX -= steps;
+                x1 += stepX;
+            }
+            errY += dy;
+            if (errY > steps)
+            {
+                errY -= steps;
+                y1++;
+            }
+            sum += fn_0043f618(x1, y1);
+        }
+    }
+    return sum;
 }
