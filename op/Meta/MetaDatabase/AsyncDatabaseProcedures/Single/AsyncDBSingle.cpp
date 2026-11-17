@@ -11,8 +11,7 @@
 #include <sstream>
 #include <vector>
 class tMetaMapDesc;	// HYPOTHESIS: declared only inside unsorted/tMetaMapDesc.cpp; its name is enough here.
-class tPoliticalTensionMatrix;	// RTTI names it through nDatabase::tQuery<tPoliticalTensionMatrix>; its layout is not needed here.
-class tNotify;	// RTTI names it through nDatabase::tQuery<tNotify>; its layout is not needed here.
+class tPoliticalTensionMatrix; class tNotify;	// RTTI names both through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>; their layouts are not needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
 class tTurn	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
@@ -64,6 +63,7 @@ public:
 	void fn_00570618( nDatabase::tQuery<tPoliticalTensionMatrix>& query, std::vector<tPoliticalTensionMatrix>* result, bool lock );
 	void fn_00570754( tCampaignInfo* info );
 	void fn_005708ca( tServCharacter* character );
+	void fn_00570a40( tAuctionItem* item );
 };
 tSettings* fn_005d481f();	// HYPOTHESIS: returns the server settings; name not known.
 namespace nAsyncDatabaseProcedure
@@ -100,7 +100,7 @@ public:
 	virtual void vfunction27( std::vector<tMetaMapHex>* hexes );
 	virtual void vfunction28( std::vector<tPoliticalTensionMatrix>* matrices );
 	virtual void vfunction29( tServCharacter* character );
-	virtual void vfunction30();
+	virtual void vfunction30( tAuctionItem* item );
 	virtual void vfunction31();
 	virtual void vfunction32();
 	virtual void vfunction33();
@@ -603,4 +603,13 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction29( tServCharacter*
 #line 845
 	validate( character );
 	fDatabase->fn_005708ca( character );
+}
+#line 608
+// HYPOTHESIS: the record type is a guess from the assertion text "item"; fn_00570a40 stores it.
+// FUNCTION: STARFLEETOP 0x0056dda6
+void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction30( tAuctionItem* item )
+{
+#line 855
+	validate( item );
+	fDatabase->fn_00570a40( item );
 }
