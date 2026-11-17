@@ -138,3 +138,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00447b11	FUN_00447b11	0.00	2	sonnet	2026-11-17T07:26:22Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00447d69	FUN_00447d69	94.27	3	opus	2026-11-17T08:02:47Z	attempt 3 (opus) did not raise the best; waits for Fable; best 94.27%
 0x004669bc	tState_Namespace_GameConnections::tState_GameConnections::vfunction3	0.00	2	sonnet	2026-11-17T08:41:30Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004682c7	FUN_004682c7	99.24	2	sonnet	2026-11-17T08:53:31Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.24%
