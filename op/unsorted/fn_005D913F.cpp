@@ -794,10 +794,11 @@ extern const char *g_00874874;
 // FUNCTION: STARFLEETOP 0x005d9f33
 char fn_005d9b26_object::fn_005d9f33(HKEY root) const
 {
-    if (!m14)
+    // MATCH-ONLY: the original compares m14 with a zero byte held in a register; the form is a guess.
+    char result = 0;
+    if (m14 == result)
         return 0;
     fn_006e1db0_object key(root, g_00874874, true, true);
-    char result = 0;
     if (key.m08)
     {
         fn_006ee3d0_result r = fn_005d9db1();
