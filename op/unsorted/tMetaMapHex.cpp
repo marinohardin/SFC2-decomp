@@ -914,3 +914,10 @@ void fn_0053a73a_map::tree::fn_0053ac4e( node* root )
 		operator delete( root );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0053ac7e
+template<>
+tClassAllocator<tMetaMapHex>::tClassAllocator()
+{
+	tDynamicAllocator::Instance()->mAddToAllocList( typeid( tMetaMapHex ), this );
+}
