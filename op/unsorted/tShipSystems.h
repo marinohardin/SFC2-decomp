@@ -92,7 +92,7 @@ public:
     virtual void vfunction76() = 0;
     virtual int vfunction77() = 0;
     virtual int vfunction78() = 0;
-    virtual void vfunction79() = 0;
+    virtual int vfunction79() = 0;
     virtual void vfunction80() = 0;
     virtual void vfunction81() = 0;
     virtual void vfunction82() = 0;
