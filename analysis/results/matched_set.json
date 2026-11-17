@@ -7921,6 +7921,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x005a4309": {
+   "name": "FUN_005a4309",
+   "symbol": "?fn_005A4309@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "unit": "unsorted/fn_005A4000.cpp",
+   "size": 99,
+   "score": 29.86,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
