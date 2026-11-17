@@ -158,7 +158,8 @@ class fn_00616000_LobbyObject
 public:
 	virtual long __stdcall v0();
 	virtual long __stdcall v1();
-	virtual long __stdcall v2();
+	// HYPOTHESIS: slot 2 fits IUnknown::Release.
+	virtual unsigned long __stdcall Release();
 	virtual long __stdcall v3();
 	virtual long __stdcall v4();
 	virtual long __stdcall EnumAddress( int ( __stdcall *pCallback )( const GUID& guid, unsigned long size, const void* pData, void* pContext ), const void* pAddress, unsigned long size, void* pContext );
@@ -508,5 +509,15 @@ void fn_00616000_DirectPlayHolder::fn_00616ac0()
 			// DirectPlay object; the original passes this past the analysis's end.
 			fn_00616b70();
 		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00616b70
+void fn_00616000_DirectPlayHolder::fn_00616b70()
+{
+	if ( fLobby != 0 )
+	{
+		fLobby->Release();
+		fLobby = 0;
 	}
 }
