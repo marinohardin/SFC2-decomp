@@ -139,3 +139,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00436177	tCountMap<tDir,twDir,std::less<tDir>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:06:44Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436193	tValueCountMap<tPath,twPath,std::less<tPath>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T04:08:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x004361af	tValueCountMap<tPath,twPath,std::less<tPath>_>::~tValueCountMap<tPath,twPath,std::less<tPath>_>	0.00	2	sonnet	2026-11-17T04:11:12Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x004363b3	tSafeArray<tClassTrackingInfo>::scalar_deleting_destructor	85.83	2	sonnet	2026-11-17T04:33:42Z	attempt 2 (sonnet) did not raise the best; best 85.83%
