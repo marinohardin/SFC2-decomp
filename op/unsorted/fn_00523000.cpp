@@ -442,6 +442,7 @@ public:
 // HYPOTHESIS: a 12-byte entry: the amount it takes, a flag that refuses part amounts, its receiver.
 struct tObject_005236ea_Entry
 {
+	tObject_005236ea_Entry();
 	tObject_005236ea_Entry(float amount, bool partial, tObject_005236ea_Target *pTarget);
 
 	float m_00;
@@ -501,4 +502,12 @@ void tObject_005236ea::fn_0052375c(float amount, bool partial, tObject_005236ea_
 void tObject_005236ea::fn_005237a1()
 {
 	m_220 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x005237a9
+tObject_005236ea_Entry::tObject_005236ea_Entry()
+{
+	m_04 = false;
+	m_08 = 0;
+	m_00 = 0.0f;
 }
