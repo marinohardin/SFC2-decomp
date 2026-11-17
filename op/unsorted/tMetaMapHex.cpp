@@ -342,3 +342,11 @@ void tMetaMapHex::SQLFillUpdateStream( std::stringstream* SQL, bool lastOne )
 
 	guard.Leave();
 }
+
+// FUNCTION: STARFLEETOP 0x00539ecc
+const char* tMetaMapHex::SQLTableName() const
+{
+	m_bc.Enter();
+	m_bc.Leave();
+	return "MapHex";
+}

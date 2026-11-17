@@ -176,6 +176,7 @@ public:
 	virtual void StreamIn( nDataStore::tInput& input );
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
+	virtual const char* SQLTableName() const;
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds. The
 	// member types follow the constructor.
