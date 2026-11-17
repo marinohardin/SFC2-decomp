@@ -1120,6 +1120,18 @@ void fn_0040eb35(float* value, tSFCStream& buf, unsigned char flags, char* name)
         fn_0040e802((int*)value, buf, flags);
 }
 
+// FUNCTION: STARFLEETOP 0x0040eb6e
+void fn_0040eb6e(tPoint3* value, tSFCStream& buf, unsigned char flags, char* name)
+{
+    if (flags & 4) {
+        if (flags & 2)
+            fn_0040e17c(name, (float*)value, buf);
+        else
+            fn_0040e1cf(name, (float*)value, buf);
+    } else
+        fn_0040e85e(value, buf, flags);
+}
+
 // FUNCTION: STARFLEETOP 0x0040e9df
 void fn_0040e9df(long* value, tSFCStream& buf, unsigned char flags, char* name)
 {
