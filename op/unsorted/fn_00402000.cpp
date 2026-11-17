@@ -144,3 +144,38 @@ bool fn_0040233b_Object::fn_0040233b(std::string text, int arg)
         result = fn_004026ec(parsed, arg, count);
     return result;
 }
+
+// HYPOTHESIS: an object with two int members at +0x20 and +0x24 whose change
+// triggers three helper calls; the helpers are not written yet.
+class fn_004023bb_Sub
+{
+public:
+    int m00;
+    int m04;
+    int m08;
+    void fn_00404044(int a, int b);
+};
+
+class fn_004023bb_Object
+{
+public:
+    char m00[0x20];
+    int m20;
+    int m24;
+    fn_004023bb_Sub m28;
+    void fn_00402407(int a, int b);
+    void fn_00402452(int a, int b);
+    fn_004023bb_Sub* fn_004023bb(int a, int b);
+};
+
+// FUNCTION: STARFLEETOP 0x004023bb
+fn_004023bb_Sub* fn_004023bb_Object::fn_004023bb(int a, int b)
+{
+    if (a == m24 && m20 == b)
+        return &m28;
+    fn_004023bb_Sub* sub = &m28;
+    sub->fn_00404044(sub->m04, sub->m08);
+    fn_00402407(a, b);
+    fn_00402452(a, b);
+    return sub;
+}
