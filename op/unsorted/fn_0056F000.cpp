@@ -700,3 +700,9 @@ class tMetaMapDesc;
 nDatabase::tQuery<tMetaMapDesc>::~tQuery()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0056f9c7
+void nDatabase::tQuery<tMetaMapDesc>::fn_0056f04f(void *value)
+{
+	m_results.fn_00571a69(value);
+}
