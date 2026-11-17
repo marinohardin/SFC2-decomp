@@ -422,3 +422,10 @@ void fn_0040dc4a(short* p, fn_0040d63f_Buf& buf)
     fn_0040d9bf(&v, buf);
     *p = (short)v;
 }
+
+// FUNCTION: STARFLEETOP 0x0040dc67
+void fn_0040dc67(unsigned char* p, fn_0040d63f_Buf& buf)
+{
+    unsigned char b = *p;
+    buf.fn_0040d867(&b, 1, 0);
+}
