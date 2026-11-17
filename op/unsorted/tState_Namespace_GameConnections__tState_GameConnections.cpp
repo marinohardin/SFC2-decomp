@@ -28,6 +28,7 @@ void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
 void fn_004d3179(const char *name, const tString &value);
 void fn_004d3774(int id);
 void fn_004d32c4(const char *name);
+bool fn_0046a9e2();
 
 namespace tState_Namespace_GameConnections
 {
@@ -39,6 +40,7 @@ public:
 	char *vfunction13();
 	bool vfunction2();
 	bool vfunction4();
+	void vfunction15(c_0046aa10_message *msg);
 
 	void fn_004682c7();
 	void fn_00468527();
@@ -153,6 +155,33 @@ bool tState_GameConnections::vfunction4()
 	m1dc = 0;
 	m1e0 = 0;
 	return true;
+}
+
+// FUNCTION: STARFLEETOP 0x0046822d
+void tState_GameConnections::vfunction15(c_0046aa10_message *msg)
+{
+	switch (msg->m_04)
+	{
+	case 'C':
+	case 'c':
+		if (fn_0046a9e2())
+			msg->id = 0x10003;
+		break;
+	case 'V':
+	case 'v':
+		if (fn_0046a9e2())
+			msg->id = 0x10002;
+		break;
+	case 0x101:
+		msg->id = 0x10035;
+		break;
+	case 0x102:
+		fn_004d3774(0x10032);
+		break;
+	case 0x103:
+		msg->id = 0x102;
+		break;
+	}
 }
 
 }
