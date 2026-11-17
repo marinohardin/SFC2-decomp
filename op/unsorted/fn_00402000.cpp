@@ -1,5 +1,6 @@
 #include <ios>
 #include <string>
+#include <string.h>
 
 // HYPOTHESIS: a stream holder whose ifstream part sits at +0x5c. The exe calls
 // ~basic_ifstream (0x0040345f) on that part, then ~basic_ios (0x00402a1b) on the same.
@@ -157,6 +158,7 @@ public:
     int m08;
     void fn_00404044(int a, int b);
     void fn_00402d77(fn_00402407_A* item);
+    void fn_00402d77(const std::string& name);
 };
 
 // HYPOTHESIS: element of the 0xb8-byte records held between m14 and m18.
@@ -222,6 +224,50 @@ void fn_004023bb_Object::fn_00402407(int a, int b)
         {
             if (!fn_0040503b(&it->m48, g_0083a3dc))
                 m28.fn_00402d77(&it->m08);
+        }
+    }
+}
+
+// HYPOTHESIS: the global at 0x008949a0 is a list of 0x5e8-byte records; 0x005e8f21 counts
+// them and 0x0040a699 fetches one by index (or 0).
+struct fn_00402452_Record
+{
+    char m00[0xc];
+    int m0c;
+    char m10[4];
+    char m14[0x20];
+    int m34;
+    char m38[0x5a8];
+    int m5e0;
+};
+
+class fn_00402452_List
+{
+public:
+    int fn_005e8f21();
+    fn_00402452_Record* fn_0040a699(int index);
+};
+
+extern fn_00402452_List g_008949a0;
+
+// FUNCTION: STARFLEETOP 0x00402452
+void fn_004023bb_Object::fn_00402452(int a, int b)
+{
+    for (int i = 0; i < g_008949a0.fn_005e8f21(); i++)
+    {
+        fn_00402452_Record* rec = g_008949a0.fn_0040a699(i);
+        if (rec && rec->m34 == 1)
+        {
+            int t = rec->m5e0;
+            if (b >= t)
+            {
+                int id = rec->m0c;
+                if (a == id)
+                {
+                    const char* name = rec->m14;
+                    m28.fn_00402d77(std::string(name));
+                }
+            }
         }
     }
 }
