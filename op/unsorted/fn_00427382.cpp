@@ -252,22 +252,23 @@ int tObject_0042750f::fn_004276e4( int aIndex, int aValue, int aArg )
 	return sum;
 }
 
-// HYPOTHESIS: 0x00427883 takes three arguments and does not read ecx here, so it is declared
-// as a free __stdcall function, as fn_00426f1a above is written.
-void __stdcall fn_00427883( int aArg1, int aArg2, int aArg3 );
-
-// HYPOTHESIS: an object whose value at +0x8 is passed on to 0x00427883 with 1; class not yet
-// found.
+// HYPOTHESIS: the layout is that of the library's vector of four-byte values (allocator,
+// first, last, end): 0x0042772f is its push_back and 0x00427883 its insert of a count of
+// copies. Neither has a caller in this unit, so they are written as members of this class.
 class tObject_0042772f
 {
 public:
-	void fn_0042772f( int aArg );
-	char pad00[0x8];
-	int field_0x8;
+	void fn_0042772f( const int& aArg );
+	void fn_00427883( int *aPos, unsigned int aCount, const int& aValue );
+	unsigned int fn_size() const;
+	char pad00[0x4];
+	int *field_0x4;
+	int *field_0x8;
+	int *field_0xc;
 };
 
 // FUNCTION: STARFLEETOP 0x0042772f
-void tObject_0042772f::fn_0042772f( int aArg )
+void tObject_0042772f::fn_0042772f( const int& aArg )
 {
 	fn_00427883( field_0x8, 1, aArg );
 }
@@ -294,4 +295,89 @@ std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension
 	_Destroy( _First, _Last );
 	allocator.deallocate( _First, _End - _First );
 	_First = 0, _Last = 0, _End = 0;
+}
+
+// MATCH-ONLY: the library vector's helpers (_Ucopy, _Ufill, _Allocate, fill, copy_backward,
+// _Destroy, deallocate, size), which the
+// original inlines into 0x00427883; written for this class, unclaimed.
+inline int *fn_copyConstruct( int *aFirst, int *aLast, int *aDest )
+{
+	for (; aFirst != aLast; ++aDest, ++aFirst)
+		new ((void *)aDest) int( *aFirst );
+	return aDest;
+}
+
+inline void fn_fillConstruct( int *aFirst, unsigned int aCount, const int& aValue )
+{
+	for (; 0 < aCount; --aCount, ++aFirst)
+		new ((void *)aFirst) int( aValue );
+}
+
+inline int *fn_allocate( int aCount )
+{
+	if (aCount < 0)
+		aCount = 0;
+	return (int *)operator new( (unsigned int)aCount * sizeof(int) );
+}
+
+inline void fn_fill( int *aFirst, int *aLast, const int& aValue )
+{
+	for (; aFirst != aLast; ++aFirst)
+		*aFirst = aValue;
+}
+
+inline int *fn_copyBackward( int *aFirst, int *aLast, int *aDest )
+{
+	while (aFirst != aLast)
+		*--aDest = *--aLast;
+	return aDest;
+}
+
+inline void fn_destroy( int *aFirst, int *aLast )
+{
+	for (; aFirst != aLast; ++aFirst)
+		;
+}
+
+inline void fn_deallocate( void *aPointer, unsigned int )
+{
+	operator delete( aPointer );
+}
+
+inline unsigned int tObject_0042772f::fn_size() const
+{
+	return field_0x4 == 0 ? 0 : field_0x8 - field_0x4;
+}
+
+// HYPOTHESIS: the library's vector insert of aCount copies of aValue at aPos.
+// FUNCTION: STARFLEETOP 0x00427883
+void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& aValue )
+{
+	if ((unsigned int)(field_0xc - field_0x8) < aCount)
+	{
+		unsigned int n = fn_size() + (aCount < fn_size() ? fn_size() : aCount);
+		int *s = fn_allocate( n );
+		int *q = fn_copyConstruct( field_0x4, aPos, s );
+		fn_fillConstruct( q, aCount, aValue );
+		fn_copyConstruct( aPos, field_0x8, q + aCount );
+		fn_destroy( field_0x4, field_0x8 );
+		fn_deallocate( field_0x4, field_0xc - field_0x4 );
+		field_0xc = s + n;
+		field_0x8 = s + fn_size() + aCount;
+		field_0x4 = s;
+	}
+	else if ((unsigned int)(field_0x8 - aPos) < aCount)
+	{
+		fn_copyConstruct( aPos, field_0x8, aPos + aCount );
+		fn_fillConstruct( field_0x8, aCount - (field_0x8 - aPos), aValue );
+		fn_fill( aPos, field_0x8, aValue );
+		field_0x8 += aCount;
+	}
+	else if (0 < aCount)
+	{
+		fn_copyConstruct( field_0x8 - aCount, field_0x8, field_0x8 );
+		fn_copyBackward( aPos, field_0x8 - aCount, field_0x8 );
+		fn_fill( aPos, aPos + aCount, aValue );
+		field_0x8 += aCount;
+	}
 }
