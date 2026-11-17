@@ -218,7 +218,9 @@ public:
 struct fn_00616ee0_Caps
 {
 	unsigned long fSize;
-	char fData[0x24];
+	char fData[0x20];
+	// HYPOTHESIS: DPCAPS's dwTimeout, the field 0x00616fb0 returns.
+	unsigned long fTimeout;
 };
 
 struct fn_00616d30_Data
@@ -261,6 +263,7 @@ public:
 	void fn_00616e30( int player, fn_00616d30_Data* pData );
 	// HYPOTHESIS: a true argument asks for the guaranteed caps (DPGETCAPS_GUARANTEED).
 	long fn_00616ee0( bool guaranteed, fn_00616ee0_Caps* pCaps );
+	unsigned long fn_00616fb0();
 	// HYPOTHESIS: takes the provider map; the parameter type is a guess.
 	void fn_00616fd0( std::map< long, long >* pProviders );
 	char fPad[0x18];
@@ -684,4 +687,12 @@ long fn_00616000_DirectPlayHolder::fn_00616ee0( bool guaranteed, fn_00616ee0_Cap
 		fn_006123b0( e.v1() );
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00616fb0
+unsigned long fn_00616000_DirectPlayHolder::fn_00616fb0()
+{
+	fn_00616ee0_Caps caps;
+	fn_00616ee0( true, &caps );
+	return caps.fTimeout;
 }
