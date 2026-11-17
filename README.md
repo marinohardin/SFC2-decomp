@@ -9,7 +9,7 @@ place and never write to it.
 
 ## Orion Pirates (2.5.5.2)
 
-![Exact](analysis/results/progress/op/badge-exact.svg) ![Named](analysis/results/progress/op/badge-named.svg)
+![Exact](analysis/results/progress/op/badge-exact.svg) ![Partial](analysis/results/progress/op/badge-partial.svg) ![Named](analysis/results/progress/op/badge-named.svg)
 
 ![Progress treemap](analysis/results/progress/op/treemap.svg)
 
@@ -20,11 +20,13 @@ game-only ones in [PROGRESS.md](analysis/results/progress/op/PROGRESS.md):
 
 - **Exact:** game code rebuilt byte for byte with the original compiler, as a share of game code
   bytes.
+- **Partial:** game code written and scored but not yet byte-exact, as a share of game code bytes.
+  A consumer still runs the original's code for it.
 - **Named:** game functions with a real symbol, as a share of game functions.
 
 ## Empires at War
 
-![Exact](analysis/results/progress/eaw/badge-exact.svg) ![Named](analysis/results/progress/eaw/badge-named.svg)
+![Exact](analysis/results/progress/eaw/badge-exact.svg) ![Partial](analysis/results/progress/eaw/badge-partial.svg) ![Named](analysis/results/progress/eaw/badge-named.svg)
 
 Not started. Orion Pirates is built on Empires at War, and most of their engine code is the same;
 `eaw/README.md` says how that code will be shared.

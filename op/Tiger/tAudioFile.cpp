@@ -2,10 +2,10 @@
 
 #include "Tiger/tAudioFile.h"
 
-// HYPOTHESIS: tMemoryPart is declared with its part binding (claimed at 0x004133d3) inside another
-// unit; it is restated here only as far as the array destructor needs it (slot 10, offset 0x28,
-// frees a block).
-class tMemoryPart : public tPart { public: tMemoryPart() {} GenAbstractBinding(tMemoryPart); virtual void vfunction6(); virtual void *mAllocate(int aSize, int aLine, const char *aFile); virtual void *vfunction8(void *aBlock, int aSize); virtual void vfunction9(); virtual void vfunction10(void *aBlock); };
+// HYPOTHESIS: tMemoryPart is declared with its binding (claimed at 0x004133d3) in another unit;
+// unsorted/tMemoryPart.h, which unsorted/tSafeArray.h includes, restates it for the Tiger units:
+// slot 8 (offset 0x20) reallocates a block, slot 10 (offset 0x28) frees one.
+#include "unsorted/tMemoryPart.h"
 
 // MATCH-ONLY: included by its bare name so that its __FILE__ is short enough for the harness to
 // pair with the original's build path; the other includes are paths from the op/ root.
@@ -69,42 +69,11 @@ public:
 };
 
 template <class T>
-inline void tSafeArray<T>::fn_Clear()
-{
-    if (field_18 == 1)
-    {
-        for (long i = 0; field_0c > 0 && i < field_10; i++)
-        {
-            if (((T **)field_04)[i])
-            {
-                delete ((T **)field_04)[i];
-                ((T **)field_04)[i] = 0;
-                field_0c--;
-            }
-        }
-    }
-    if (field_04)
-    {
-        tMemoryPart *mem = BindPart(tMemoryPart);
-        mem->vfunction10(field_04);
-        field_04 = 0;
-    }
-    if (field_08)
-    {
-        tMemoryPart *mem = BindPart(tMemoryPart);
-        mem->vfunction10((void *)field_08);
-        field_08 = 0;
-    }
-    field_0c = 0;
-    field_10 = 0;
-}
-
-template <class T>
 inline T *tSafeArray<T>::fn_Get(unsigned long aHandle)
 {
     unsigned long index = aHandle & 0xffff;
-    if (index < (unsigned long) field_10 && (short) (aHandle >> 16) == ((short *) field_08)[index])
-        return ((T **) field_04)[index];
+    if (index < (unsigned long) f10 && (short) (aHandle >> 16) == ((short *) f08)[index])
+        return ((T **) f04)[index];
     return 0;
 }
 
@@ -113,16 +82,16 @@ inline void tSafeArray<T>::fn_Remove(unsigned long aHandle)
 {
     if (fn_Get(aHandle))
     {
-        delete ((T **) field_04)[aHandle & 0xffff];
-        ((T **) field_04)[aHandle & 0xffff] = 0;
-        field_0c--;
+        delete ((T **) f04)[aHandle & 0xffff];
+        ((T **) f04)[aHandle & 0xffff] = 0;
+        f0c--;
     }
 }
 
 template <class T>
 inline tSafeArray<T>::~tSafeArray()
 {
-    fn_Clear();
+    mDeleteAll();
 }
 
 // FUNCTION: STARFLEETOP 0x00657770
@@ -172,7 +141,7 @@ void tAudioFileInfoPart::mActivate()
 // FUNCTION: STARFLEETOP 0x00657b60
 void tAudioFileInfoPart::mDeactivate()
 {
-    field_0c.fn_Clear();
+    field_0c.mDeleteAll();
     if (field_2c)
     {
         delete field_2c;

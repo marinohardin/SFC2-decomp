@@ -343,6 +343,70 @@ address	size	symbol	source	modes
 0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	vc6
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
+0x0048612c	126	tSupplyDockItem::tSupplyDockItem(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
+0x004861aa	54	tSupplyDockItem::vfunction1()	Source/states/SupplyDockItem.cpp	partial
+0x004861e0	15	tSupplyDockItem::vfunction2()	Source/states/SupplyDockItem.cpp	partial
+0x004861ef	5	tSupplyDockItem::vfunction6()	Source/states/SupplyDockItem.cpp	partial
+0x004861f4	22	tSupplyDockItem::vfunction8(void *,bool)	Source/states/SupplyDockItem.cpp	partial
+0x0048620a	7	tSupplyDockItem::vfunction11()	Source/states/SupplyDockItem.cpp	partial
+0x00486211	125	tSupplyDockShuttles::tSupplyDockShuttles(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
+0x00486296	351	tSupplyDockShuttles::vfunction3()	Source/states/SupplyDockItem.cpp	partial
+0x004863f5	42	tSupplyDockShuttles::vfunction4()	Source/states/SupplyDockItem.cpp	partial
+0x0048641f	45	tSupplyDockShuttles::vfunction7(long *)	Source/states/SupplyDockItem.cpp	partial
+0x0048644c	11	tSupplyDockShuttles::vfunction9()	Source/states/SupplyDockItem.cpp	partial
+0x00486457	11	tSupplyDockShuttles::vfunction10()	Source/states/SupplyDockItem.cpp	partial
+0x00486462	11	tSupplyDockShuttles::vfunction11()	Source/states/SupplyDockItem.cpp	partial
+0x0048646d	49	tSupplyDockShuttles::vfunction12()	Source/states/SupplyDockItem.cpp	partial
+0x0048649e	49	tSupplyDockShuttles::vfunction13(long)	Source/states/SupplyDockItem.cpp	partial
+0x004864cf	39	tSupplyDockShuttles::vfunction14(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486500	10	g_009157c8 (dynamic initializer)	Source/states/SupplyDockItem.cpp	partial
+0x0048650a	12	g_009157c8 (atexit registration)	Source/states/SupplyDockItem.cpp	partial
+0x0048652a	10	g_009157a8 (dynamic initializer)	Source/states/SupplyDockItem.cpp	partial
+0x00486534	12	g_009157a8 (atexit registration)	Source/states/SupplyDockItem.cpp	partial
+0x00486554	10	g_00915788 (dynamic initializer)	Source/states/SupplyDockItem.cpp	partial
+0x0048655e	12	g_00915788 (atexit registration)	Source/states/SupplyDockItem.cpp	partial
+0x00486574	336	tSupplyDockMissiles::tSupplyDockMissiles(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
+0x004866c4	733	tSupplyDockMissiles::vfunction3()	Source/states/SupplyDockItem.cpp	partial
+0x004869a1	27	tSupplyDockMissiles::vfunction4()	Source/states/SupplyDockItem.cpp	partial
+0x004869bc	85	tSupplyDockMissiles::vfunction7(long *)	Source/states/SupplyDockItem.cpp	partial
+0x00486a11	12	tSupplyDockMissiles::vfunction9()	Source/states/SupplyDockItem.cpp	partial
+0x00486a1d	8	tSupplyDockMissiles::vfunction10()	Source/states/SupplyDockItem.cpp	partial
+0x00486a25	12	tSupplyDockMissiles::vfunction11()	Source/states/SupplyDockItem.cpp	partial
+0x00486a31	50	tSupplyDockMissiles::vfunction12()	Source/states/SupplyDockItem.cpp	partial
+0x00486a63	14	tSupplyDockMissiles::vfunction13(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486a71	48	tSupplyDockMissiles::vfunction14(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486aa1	52	tSupplyDockMissiles::fn_00486aa1(bool)	Source/states/SupplyDockItem.cpp	partial
+0x00486ad5	181	tSupplyDockMissiles::fn_00486ad5(bool)	Source/states/SupplyDockItem.cpp	partial
+0x00486b8a	104	tSupplyDockMissiles::fn_00486b8a(bool)	Source/states/SupplyDockItem.cpp	partial
+0x00486bf2	266	tSupplyDockFighters::tSupplyDockFighters(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
+0x00486cfc	54	tSupplyDockFighters::vfunction1()	Source/states/SupplyDockItem.cpp	partial
+0x00486d32	36	tSupplyDockFighters::vfunction20(long,long)	Source/states/SupplyDockItem.cpp	partial
+0x00486d56	42	tSupplyDockFighters::vfunction2()	Source/states/SupplyDockItem.cpp	partial
+0x00486d80	493	tSupplyDockFighters::vfunction3()	Source/states/SupplyDockItem.cpp	partial
+0x00486f6d	31	tSupplyDockFighters::vfunction6()	Source/states/SupplyDockItem.cpp	partial
+0x00486f8c	32	tSupplyDockItem::vfunction5(fn_004457b7_object *)	Source/states/SupplyDockItem.cpp	partial
+0x00486fac	42	tSupplyDockFighters::fn_00486fac(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486fd6	23	tSupplyDockFighters::vfunction15(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486fed	15	tSupplyDockFighters::vfunction16(long)	Source/states/SupplyDockItem.cpp	partial
+0x00486ffc	30	tSupplyDockFighters::vfunction17(const std::string &)	Source/states/SupplyDockItem.cpp	partial
+0x0048701a	119	tSupplyDockFighters::vfunction18(long)	Source/states/SupplyDockItem.cpp	partial
+0x00487091	234	tSupplyDockFighters::vfunction7(long *)	Source/states/SupplyDockItem.cpp	partial
+0x0048719b	155	tSupplyDockFighters::fn_0048719b(std::string)	Source/states/SupplyDockItem.cpp	partial
+0x00487236	156	tSupplyDockFighters::fn_00487236(std::string)	Source/states/SupplyDockItem.cpp	partial
+0x004872d2	208	tSupplyDockMisc::tSupplyDockMisc(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
+0x004873a2	72	tSupplyDockMisc::vfunction1()	Source/states/SupplyDockItem.cpp	partial
+0x004873ea	32	tSupplyDockMisc::vfunction2()	Source/states/SupplyDockItem.cpp	partial
+0x0048740a	531	tSupplyDockMisc::vfunction3()	Source/states/SupplyDockItem.cpp	partial
+0x0048761d	33	tSupplyDockMisc::vfunction4()	Source/states/SupplyDockItem.cpp	partial
+0x0048763e	31	tSupplyDockMisc::vfunction6()	Source/states/SupplyDockItem.cpp	partial
+0x0048765d	81	tSupplyDockMisc::vfunction7(long *)	Source/states/SupplyDockItem.cpp	partial
+0x004876ae	17	tSupplyDockMisc::fn_004876ae(long)	Source/states/SupplyDockItem.cpp	partial
+0x004876bf	17	tSupplyDockMisc::fn_004876bf(long)	Source/states/SupplyDockItem.cpp	partial
+0x004876d0	15	tSupplyDockMisc::fn_004876d0(long)	Source/states/SupplyDockItem.cpp	partial
+0x004876df	59	tSupplyDockMisc::fn_004876df(long)	Source/states/SupplyDockItem.cpp	partial
+0x0048771a	61	tSupplyDockMisc::fn_0048771a(long,long)	Source/states/SupplyDockItem.cpp	partial
+0x00487757	45	tSupplyDockMisc::fn_00487757(long,long)	Source/states/SupplyDockItem.cpp	partial
+0x00487784	1017	tSupplyDockShipInfo::tSupplyDockShipInfo(long,long,long,long,long,long,long,const char *,const char *,long,long,long,long)	Source/states/SupplyDockItem.cpp	partial
 0x0048bd4d	755	tFleetPanel::tFleetPanel(tObject_0048bd57_arg *)	unsorted/tFleetPanel.cpp	vc6
 0x0048c040	28	tFleetPanel::scalar_deleting_destructor(unsigned char)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c05c	335	tFleetPanel::~tFleetPanel()	unsorted/tFleetPanel.cpp	vc6
@@ -751,6 +815,13 @@ address	size	symbol	source	modes
 0x0062dfa0	265	tStringGroupTag::mGetNumElements()	Tiger/tstringtag.cpp	vc6 guest
 0x0062e0b0	270	tStringGroupTag::mGetString(long)	Tiger/tstringtag.cpp	vc6 guest
 0x0062e1c0	1527	twFileSystemPart::mGetVolIterator(tSession)	Tiger/twfsys.cpp	partial
+0x00637820	111	twClock::mActivate()	Tiger/twclock.cpp	partial
+0x00637890	85	twClock::mDeactivate()	Tiger/twclock.cpp	partial
+0x006378f0	117	twClock::mGetMicroseconds()	Tiger/twclock.cpp	partial
+0x00637970	210	twClock::mSetTimer(long,long,tTimerResponse *,long)	Tiger/twclock.cpp	partial
+0x00637a50	203	twClock::mSetTimer(long,long,tTimerResponse *)	Tiger/twclock.cpp	partial
+0x00637b20	115	twClock::mForgetTimer(tTimerResponse *)	Tiger/twclock.cpp	partial
+0x00637ba0	144	twClock::mTimerReceiver(UINT,UINT,DWORD,DWORD,DWORD)	Tiger/twclock.cpp	partial
 0x0063a900	5	twMemoryPart::mCheckMemory(void*,void*)	Tiger/twmemory.cpp	vc6 guest
 0x0063edd0	171	tCoopThreadPart::mSetTime()	Tiger/tgthread.cpp	vc6 guest
 0x0063ee80	7	tCoopThreadPart::mGetTime()	Tiger/tgthread.cpp	vc6 guest
@@ -804,7 +875,42 @@ address	size	symbol	source	modes
 0x00642630	843	twStandardSoundChannel::mDoActiveUpdate(double)	Tiger/twSound.cpp	partial
 0x00642980	2341	twStandardSoundChannel::mUpdateBuffersAndSelections(double)	Tiger/twSound.cpp	partial
 0x006432b0	560	twStandardSoundChannel::mUpdateAmountPlayed()	Tiger/twSound.cpp	vc6 guest
+0x006434e0	201	twStandardSoundChannel::mCreate3DBuffer()	Tiger/twSound.cpp	vc6 guest
+0x006435b0	1408	twStandardSoundChannel::mDuplicateSoundChannel(long,long)	Tiger/twSound.cpp	vc6 guest
+0x00643b30	1496	twStandardSoundChannel::mAddSoundChannel(tSoundChannelFormat*,long)	Tiger/twSound.cpp	partial
+0x00644110	624	twStandardSoundChannel::mDoFillSelection(unsigned char)	Tiger/twSound.cpp	partial
+0x00644380	81	twStandardSoundChannel::mAddActiveSoundChannel(tSoundChannelFormat*,long,tFillSelectionFunction&,tSelectionFunction&,unsigned long)	Tiger/twSound.cpp	vc6 guest
+0x006443e0	624	twStandardSoundChannel::mPlayChannel()	Tiger/twSound.cpp	vc6 guest
+0x00644650	107	twStandardSoundChannel::mSetFrequency(long)	Tiger/twSound.cpp	vc6 guest
+0x006446c0	142	twStandardSoundChannel::mSetPan(long)	Tiger/twSound.cpp	vc6 guest
+0x00644750	110	twStandardSoundChannel::mSetVolume(long)	Tiger/twSound.cpp	partial
+0x006447c0	160	twStandardSoundChannel::mStopAndClearChannel()	Tiger/twSound.cpp	vc6 guest
+0x00644860	160	twStandardSoundChannel::mStopAndResetChannel()	Tiger/twSound.cpp	vc6 guest
+0x00644900	72	twStandardSoundChannel::mSet3DSoundPosition(tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x00644970	72	twStandardSoundChannel::mSet3DSoundOrientation(tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x006449c0	72	twStandardSoundChannel::mSet3DSoundVelocity(tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x00644a10	132	twStandardSoundChannel::mSet3DSoundCones(float,long)	Tiger/twSound.cpp	vc6 guest
+0x00644aa0	70	twStandardSoundChannel::mSet3DSoundReferenceDistance(double)	Tiger/twSound.cpp	vc6 guest
+0x00644af0	318	twStandardSoundChannel::mSet3DSoundProfile(t3DSoundProfile*)	Tiger/twSound.cpp	vc6 guest
+0x00644c30	224	twStandardSoundChannel::mRestoreBuffers()	Tiger/twSound.cpp	vc6 guest
+0x00644d10	72	twStandardSoundChannel::mDoAllImmediateNonInterruptCommands()	Tiger/twSound.cpp	vc6 guest
+0x00644d60	1337	twStandardSoundChannel::mDump()	Tiger/twSound.cpp	vc6 guest
+0x006452a0	24	twSoundPart::twSoundPart()	Tiger/twSound.cpp	vc6
+0x006452c0	436	twSoundPart::mDuplicateSoundChannel(long)	Tiger/twSound.cpp	vc6 guest
+0x00645480	7	tListMemberWithHandle::~tListMemberWithHandle()	Tiger/twSound.cpp	vc6
+0x00645490	13	tListMemberWithHandle::mInitListMemberWithHandle()	Tiger/twSound.cpp	vc6 guest
+0x006454a0	10	tListMemberWithHandle::mRemoveFromList()	Tiger/twSound.cpp	vc6 guest
+0x006454b0	4	tListMemberWithHandle::mGetPreviousListHandle()	Tiger/twSound.cpp	vc6 guest
+0x006454c0	10	tListMemberWithHandle::vfunc_10(long)	Tiger/twSound.cpp	vc6 guest
+0x006454e0	10	tListMemberWithHandle::vfunc_18(long)	Tiger/twSound.cpp	vc6 guest
+0x006454f0	32	tListMemberWithHandle::`scalar deleting destructor'	Tiger/twSound.cpp	vc6
+0x00645510	600	twSoundPart::mAddActiveSoundChannel(tSoundChannelFormat*,tSoundChannel::tFillSelectionFunction&,tSoundChannel::tSelectionFunction&,unsigned long)	Tiger/twSound.cpp	vc6 guest
+0x00645770	464	twSoundPart::mAddSoundChannel(tSoundChannelFormat*)	Tiger/twSound.cpp	vc6 guest
 0x00645940	7	twSoundPart::mDirectSoundObject()	Tiger/twSound.cpp	vc6 guest
+0x00645950	290	twSoundPart::mDone()	Tiger/twSound.cpp	vc6 guest
+0x00645a80	11	twSoundPart::mCanWeHandle16BitOutput()	Tiger/twSound.cpp	vc6 guest
+0x00645a90	11	twSoundPart::mCanWeHandleStereoOutput()	Tiger/twSound.cpp	vc6 guest
+0x00645aa0	20	twSoundPart::mCanWeHandleMono8BitOutput()	Tiger/twSound.cpp	vc6 guest
 0x00645ac0	7	twSoundPart::mGetMinFrequency()	Tiger/twSound.cpp	vc6 guest
 0x00645ad0	7	twSoundPart::mGetMaxFrequency()	Tiger/twSound.cpp	vc6 guest
 0x00645ae0	7	twSoundPart::mGetMaxHwBuffers()	Tiger/twSound.cpp	vc6 guest
@@ -820,6 +926,14 @@ address	size	symbol	source	modes
 0x00645b80	7	twSoundPart::mGetMaxContigFreeHwMemBytes()	Tiger/twSound.cpp	vc6 guest
 0x00645b90	7	twSoundPart::mGetPlayCpuOverheadSwBuffers()	Tiger/twSound.cpp	vc6 guest
 0x00645ba0	7	twSoundPart::mGetTransferToHardwareRateInKBytesPerSec()	Tiger/twSound.cpp	vc6 guest
+0x00645bb0	48	twSoundPart::mDetermineHardwareCaps()	Tiger/twSound.cpp	vc6 guest
+0x00645be0	150	twSoundPart::mCreatePrimaryBuffer()	Tiger/twSound.cpp	vc6 guest
+0x00645d90	139	twSoundPart::mSet3DListener3DPosition(tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x00645e20	169	twSoundPart::mSet3DListenerOrientation(tPoint3*,tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x00645ed0	139	twSoundPart::mSet3DListenerVelocity(tPoint3*)	Tiger/twSound.cpp	vc6 guest
+0x00645f60	139	twSoundPart::mSet3DListenerUnitScaleInMeters(double)	Tiger/twSound.cpp	vc6 guest
+0x00645ff0	19	twSoundPart::mGetHardwareInformation(long)	Tiger/twSound.cpp	vc6 guest
+0x00646010	427	twSoundPart::mInit(tInitSoundPartInfo*)	Tiger/twSound.cpp	partial
 0x00646ce0	48	AddSoundErrorDuringInterrupt(const char*,...)	Tiger/tgSound.cpp	vc6 guest
 0x00646d10	70	PrintOutBufferedErrors()	Tiger/tgSound.cpp	vc6 guest
 0x00646d60	270	GetSilenceData(long)	Tiger/tgSound.cpp	vc6 guest
@@ -919,6 +1033,112 @@ address	size	symbol	source	modes
 0x00650fc0	87	tSoundChannelCommand::`vector deleting destructor'	Tiger/tgSound.cpp	vc6
 0x00651020	702	tgSoundPart::mSetNumberOfSoundChannels(long)	Tiger/tgSound.cpp	vc6 guest
 0x006512e0	31	tgSoundPart::mGetSoundChannelPtrFromHandle(long)	Tiger/tgSound.cpp	vc6 guest
+0x00651300	98	tgSoundPart::mPlayAllChannels()	Tiger/tgSound.cpp	vc6 guest
+0x00651370	117	tgSoundPart::mResumeAllChannels()	Tiger/tgSound.cpp	vc6 guest
+0x006513f0	98	tgSoundPart::mStopAndResetAllChannels()	Tiger/tgSound.cpp	vc6 guest
+0x00651460	98	tgSoundPart::mStopAndClearAllChannels()	Tiger/tgSound.cpp	vc6 guest
+0x006514d0	98	tgSoundPart::mPauseAllChannels()	Tiger/tgSound.cpp	vc6 guest
+0x00651540	1001	tgSoundPart::mCreateCommand(eSoundChannelCommand,void*,void*)	Tiger/tgSound.cpp	partial
+0x00651990	421	tgSoundPart::mAttachSoundToChannel(long,tSoundSelection*)	Tiger/tgSound.cpp	vc6 guest
+0x00651b40	173	tgSoundPart::mPlayChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00651bf0	173	tgSoundPart::mPauseChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00651ca0	173	tgSoundPart::mStopAndResetChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00651d50	173	tgSoundPart::mStopAndClearChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00651e00	732	tgSoundPart::mSetFrequency(long,long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x006520e0	711	tgSoundPart::mSetPan(long,long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x006523b0	458	tgSoundPart::mAddDelayCommand(long,double,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00652580	780	tgSoundPart::mAddUpdateSoundPositionFunction(long,void (*function)(unsigned long, long),long,double,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00652890	85	tgSoundPart::mAddUpdateListenerPositionFunction(void (*function)(unsigned long),long,double)	Tiger/tgSound.cpp	vc6 guest
+0x006528f0	147	tgSoundPart::mFadeToStopAndResetNow(long,double)	Tiger/tgSound.cpp	vc6 guest
+0x00652990	147	tgSoundPart::mFadeToStopAndClearNow(long,double)	Tiger/tgSound.cpp	vc6 guest
+0x00652a30	715	tgSoundPart::mFadeToVolume(long,long,double,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00652d00	711	tgSoundPart::mSetVolume(long,long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00652fd0	458	tgSoundPart::mSetPriority(long,long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x006531a0	462	tgSoundPart::mSetFinishFunction(long,void (* const function)(unsigned long, unsigned char),long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00653370	471	tgSoundPart::mSetChannelAttributes(long,tChannelAttributes*,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00653550	731	tgSoundPart::mSet3DSoundProfile(long,t3DSoundProfile*,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00653830	557	tgSoundPart::xAttemptToGainControl(char*,long,unsigned char,long)	Tiger/tgSound.cpp	vc6 guest
+0x00653a60	22	tgSoundPart::mReleaseControl()	Tiger/tgSound.cpp	vc6 guest
+0x00653a80	731	tgSoundPart::mSet3DSoundPosition(long,tPoint3*,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00653d60	731	tgSoundPart::mSet3DSoundOrientation(long,tPoint3*,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00654040	731	tgSoundPart::mSet3DSoundVelocity(long,tPoint3*,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x00654320	715	tgSoundPart::mSet3DSoundCones(long,float,long,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x006545f0	711	tgSoundPart::mSet3DSoundReferenceDistance(long,double,unsigned char)	Tiger/tgSound.cpp	vc6 guest
+0x006548c0	379	tgSoundPart::mPlaySpecialLoop(long,long,long,long,long)	Tiger/tgSound.cpp	vc6 guest
+0x00654a40	359	tgSoundPart::mEndSpecialLoop(long)	Tiger/tgSound.cpp	vc6 guest
+0x00654bb0	382	tgSoundPart::mAddGetNextAttachmentFunction(long,void (*function)(unsigned long, long),long,double)	Tiger/tgSound.cpp	vc6 guest
+0x00654d30	126	tgSoundPart::mGetNumberCurrentlyPlaying()	Tiger/tgSound.cpp	vc6 guest
+0x00654db0	107	tgSoundPart::mDoWeAutoRemoveChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00654e20	139	tgSoundPart::mWeAutoRemoveChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00654eb0	139	tgSoundPart::mWeDoNotAutoRemoveChannel(long)	Tiger/tgSound.cpp	vc6 guest
+0x00654f40	107	tgSoundPart::mDoWeAutoRemoveSelections(long)	Tiger/tgSound.cpp	partial
+0x00654fb0	139	tgSoundPart::mWeAutoRemoveSelections(long)	Tiger/tgSound.cpp	partial
+0x00655040	139	tgSoundPart::mWeDoNotAutoRemoveSelections(long)	Tiger/tgSound.cpp	partial
+0x006550d0	107	tgSoundPart::mDoWeRetainSelections(long)	Tiger/tgSound.cpp	partial
+0x00655140	139	tgSoundPart::mWeRetainSelections(long)	Tiger/tgSound.cpp	partial
+0x006551d0	139	tgSoundPart::mWeDoNotRetainSelections(long)	Tiger/tgSound.cpp	partial
+0x00655260	470	tgSoundPart::mSetGlobalFrequency(float)	Tiger/tgSound.cpp	partial
+0x00655440	258	tgSoundPart::mSetGlobalPan(long)	Tiger/tgSound.cpp	partial
+0x00655550	297	tgSoundPart::mSetGlobalVolume(long)	Tiger/tgSound.cpp	partial
+0x00655680	109	tgSoundPart::mGetChannelStatus(long)	Tiger/tgSound.cpp	partial
+0x006556f0	107	tgSoundPart::mTotalBytesLeftToPlay(long)	Tiger/tgSound.cpp	partial
+0x00655760	129	tgSoundPart::mTotalNumberOfSecondsLeftToPlay(long)	Tiger/tgSound.cpp	partial
+0x006557f0	363	tgSoundPart::mNumberOfAttachmentsQueuedUp(long)	Tiger/tgSound.cpp	partial
+0x00655960	107	tgSoundPart::mGetFrequency(long)	Tiger/tgSound.cpp	partial
+0x006559d0	107	tgSoundPart::mGetPan(long)	Tiger/tgSound.cpp	partial
+0x00655a40	107	tgSoundPart::mGetVolume(long)	Tiger/tgSound.cpp	partial
+0x00655ab0	107	tgSoundPart::mGetChannelAttributes(long)	Tiger/tgSound.cpp	partial
+0x00655b20	107	tgSoundPart::mGet3DSoundProfile(long)	Tiger/tgSound.cpp	partial
+0x00655b90	107	tgSoundPart::mGet3DSoundPosition(long)	Tiger/tgSound.cpp	partial
+0x00655c00	107	tgSoundPart::mGet3DSoundOrientation(long)	Tiger/tgSound.cpp	partial
+0x00655c70	107	tgSoundPart::mGet3DSoundVelocity(long)	Tiger/tgSound.cpp	partial
+0x00655ce0	129	tgSoundPart::mGet3DSoundReferenceDistance(long)	Tiger/tgSound.cpp	partial
+0x00655d70	117	tgSoundPart::mGet3DSoundConeAngleForNoAttenuation(long)	Tiger/tgSound.cpp	partial
+0x00655df0	107	tgSoundPart::mGet3DSoundConeAttenuationLevel(long)	Tiger/tgSound.cpp	partial
+0x00655e60	107	tgSoundPart::mGetChannelPriority(long)	Tiger/tgSound.cpp	partial
+0x00655ed0	107	tgSoundPart::mGetSoundChannelFormat(long)	Tiger/tgSound.cpp	partial
+0x00655f40	107	tgSoundPart::mAreWeLooping(long)	Tiger/tgSound.cpp	partial
+0x00655fb0	107	tgSoundPart::mAreWeStreaming(long)	Tiger/tgSound.cpp	partial
+0x00656020	107	tgSoundPart::mAreWe3D(long)	Tiger/tgSound.cpp	partial
+0x00656090	107	tgSoundPart::mAreWeStatic(long)	Tiger/tgSound.cpp	partial
+0x00656100	107	tgSoundPart::mAreWeFixedFrequency(long)	Tiger/tgSound.cpp	partial
+0x00656170	107	tgSoundPart::mAreWeARecordingChannel(long)	Tiger/tgSound.cpp	partial
+0x006561e0	107	tgSoundPart::mTryToLocateInHardware(long)	Tiger/tgSound.cpp	partial
+0x00656250	107	tgSoundPart::mTryToLocateInSoftware(long)	Tiger/tgSound.cpp	partial
+0x006562c0	107	tgSoundPart::mAreWeFixedPan(long)	Tiger/tgSound.cpp	partial
+0x00656330	107	tgSoundPart::mIsChannelActive(long)	Tiger/tgSound.cpp	partial
+0x006563a0	107	tgSoundPart::mAreWeFixedVolume(long)	Tiger/tgSound.cpp	partial
+0x00656410	107	tgSoundPart::mAreWeAGlobalSound(long)	Tiger/tgSound.cpp	partial
+0x00656480	258	tgSoundPart::mGet3DListener()	Tiger/tgSound.cpp	partial
+0x00656590	270	tgSoundPart::mGet3DListener3DPosition()	Tiger/tgSound.cpp	partial
+0x006566a0	270	tgSoundPart::mGet3DListenerForwardDirection()	Tiger/tgSound.cpp	partial
+0x006567b0	270	tgSoundPart::mGet3DListenerUpDirection()	Tiger/tgSound.cpp	partial
+0x006568c0	270	tgSoundPart::mGet3DListenerVelocity()	Tiger/tgSound.cpp	partial
+0x006569d0	270	tgSoundPart::mGet3DListenerUnitScaleInMeters()	Tiger/tgSound.cpp	partial
+0x00656ae0	88	tgSoundPart::mDump(long)	Tiger/tgSound.cpp	partial
+0x00656b40	1777	tgSoundPart::mDump()	Tiger/tgSound.cpp	partial
+0x00657240	196	tgSoundPart::mPauseRecordChannel()	Tiger/tgSound.cpp	partial
+0x00657310	196	tgSoundPart::mRecordChannel()	Tiger/tgSound.cpp	partial
+0x006573e0	196	tgSoundPart::mStopAndClearRecordChannel()	Tiger/tgSound.cpp	partial
+0x006574b0	202	tgSoundPart::mRemoveRecordChannel()	Tiger/tgSound.cpp	partial
+0x00657580	481	tgSoundPart::mAttachSoundToRecordChannel(tSoundSelection*)	Tiger/tgSound.cpp	partial
+0x00657770	56	tAudioFileInfoPart::tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6
+0x006577d0	412	tAudioFileInfoPart::~tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6
+0x00657970	11	tAudioPriorityManagerPart::mIsReady()	Tiger/tAudioFile.cpp	vc6 guest
+0x00657980	475	tAudioFileInfoPart::mActivate()	Tiger/tAudioFile.cpp	partial
+0x00657b60	389	tAudioFileInfoPart::mDeactivate()	Tiger/tAudioFile.cpp	vc6 guest
+0x00657cf0	42	tAudioFileInfoPart::vfn_48(long,long,long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657d20	32	tAudioFileInfoPart::mGetNumberOfSamples(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657d40	32	tAudioFileInfoPart::mGetNumberOfSelectionPerSound(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657d60	32	tAudioFileInfoPart::mGetTotalSizeInBytes(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657d80	32	tAudioFileInfoPart::mGetTotalDataSizeInBytes(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657da0	32	tAudioFileInfoPart::mGetDepth(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657dc0	32	tAudioFileInfoPart::mGetLinkDepth(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x00657de0	646	tAudioFileInfoPart::mAddSoundFile(tBasicAudioFile &)	Tiger/tAudioFile.cpp	vc6 guest
+0x00658070	79	tAudioFileInfoPart::mDeleteSoundFile(unsigned long)	Tiger/tAudioFile.cpp	vc6 guest
+0x006580c0	456	tAudioFileInfoPart::mGetNewAsynchReadInfo(unsigned long,long)	Tiger/tAudioFile.cpp	partial
+0x00658290	46	tAudioFileInfoPart::mGetAsynchReadInfo(long)	Tiger/tAudioFile.cpp	vc6 guest
+0x006582c0	561	tAudioFileInfoPart::mFreeAsynchReadInfo(long)	Tiger/tAudioFile.cpp	vc6 guest
 0x006587f0	147	tChannelGroup::mDump(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x00658890	253	tChannelGroup::mDump()	Tiger/taudiochannel.cpp	vc6 guest
 0x006589f0	197	tChannelGroup::mClose()	Tiger/taudiochannel.cpp	vc6 guest
@@ -935,8 +1155,145 @@ address	size	symbol	source	modes
 0x0065a0f0	640	tChannelGroup::mAttachSoundToChannel(unsigned long,tSoundSelection *,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x0065a370	1103	tChannelGroup::mPlayChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
 0x0065a7c0	624	tChannelGroup::mPauseChannel(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest
+0x00661300	244	tClassTrackingInfo::mSet(unsigned long,unsigned long,long,long,long *)	Tiger/taudiopriority.cpp	partial
+0x00661400	218	tClassTrackingInfo::mSetAvailable()	Tiger/taudiopriority.cpp	partial
+0x006614e0	138	tClassTrackingInfo::mGetPriority()	Tiger/taudiopriority.cpp	partial
+0x00661570	390	tClassTrackingInfo::mAreWeValid()	Tiger/taudiopriority.cpp	partial
+0x00661700	153	tClassTrackingInfo::mFadeToStop()	Tiger/taudiopriority.cpp	partial
+0x006617a0	27	tAudioPriorityManagerPart::mGetAudioFileClassPtrFromHandle(long)	Tiger/taudiopriority.cpp	partial
+0x006617c0	69	tAudioPriorityManagerPart::mGetAudioFileClassHandleFromReference(long)	Tiger/taudiopriority.cpp	partial
+0x00661810	1663	tAudioPriorityManagerPart::mNewAudioFileClass()	Tiger/taudiopriority.cpp	partial
+0x00661e90	27	tAudioPriorityManagerPart::mRemoveClass(long)	Tiger/taudiopriority.cpp	partial
+0x00661eb0	118	tAudioPriorityManagerPart::mReleaseAudioFileClassPtr(long)	Tiger/taudiopriority.cpp	partial
+0x00661f30	41	tAudioPriorityManagerPart::mReleaseAudioFileClassPtr(long)	Tiger/taudiopriority.cpp	partial
+0x00661f60	49	tAudioPriorityManagerPart::mSetAudioFileClass(long,long,long,eAudioPreemptType,double)	Tiger/taudiopriority.cpp	partial
+0x00661fa0	1108	tAudioPriorityManagerPart::mAreWeAllowedToPlay(unsigned long,long,long,long,long *,unsigned long &,double &)	Tiger/taudiopriority.cpp	partial
+0x00662400	171	tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo()	Tiger/taudiopriority.cpp	partial
+0x006624b0	96	tAudioPriorityManagerPart::mWeHaveStoppedPlaying(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662510	11	tAudioPriorityManagerPart::mIsReady()	Tiger/taudiopriority.cpp	partial
+0x00662520	12	tAudioPriorityManagerPart::mActivate()	Tiger/taudiopriority.cpp	partial
+0x00662530	5	tAudioPriorityManagerPart::mDeactivate()	Tiger/taudiopriority.cpp	partial
+0x00662540	381	tAudioPriorityManagerPart::mClose()	Tiger/taudiopriority.cpp	partial
+0x006626c0	108	tAudioPriorityManagerPart::mNewAudioFileClass(long,long,eAudioPreemptType,double)	Tiger/taudiopriority.cpp	partial
+0x00662730	51	tAudioPriorityManagerPart::mIsHigherPriority(long,long,eAudioPreemptType)	Tiger/taudiopriority.cpp	partial
+0x00662770	82	tAudioPriorityManagerPart::mIsFirstHigherPriorityThanSecond(unsigned long,unsigned long)	Tiger/taudiopriority.cpp	partial
+0x006627d0	209	tHandleList::mInit(long)	Tiger/taudiopriority.cpp	partial
+0x006628b0	203	tHandleList::tHandleList(long)	Tiger/taudiopriority.cpp	partial
+0x00662980	16	tHandleList::mGetFirstHandle()	Tiger/taudiopriority.cpp	partial
+0x00662990	27	tHandleList::mGetThisHandle(long)	Tiger/taudiopriority.cpp	partial
+0x006629b0	16	tHandleList::mGetLastHandle()	Tiger/taudiopriority.cpp	partial
+0x006629c0	224	tHandleList::mAddToFrontOfList(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662aa0	208	tHandleList::mAddToBackOfList(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662b70	66	tHandleList::mRemoveFromList(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662bc0	41	tHandleList::mIsHandle(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662bf0	36	tHandleList::mGetZeroIndexedHandlePosition(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662c20	407	tClassActiveChannelList::mInsertHandle(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662dc0	208	tAudioFileClass::mRemoveHandle(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662e90	208	tAudioFileClass::mAddHandle(unsigned long)	Tiger/taudiopriority.cpp	partial
+0x00662f60	566	tAudioFileClass::mDoWeMeetSpaceConstraints(long,long,double &)	Tiger/taudiopriority.cpp	partial
+0x006631a0	48	tAudioFileClass::mSet(long,long,eAudioPreemptType,double)	Tiger/taudiopriority.cpp	partial
+0x00663720	90	mystrequivalent(char *,char *)	Tiger/tsndmgr.cpp	vc6 guest
+0x00663780	111	mystrequivalentN(char *,char *,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006637f0	83	tAFPlayInfo::mGetRandomFrequency()	Tiger/tsndmgr.cpp	vc6 guest
+0x00663850	73	tAFPlayInfo::mGetRandomVolume()	Tiger/tsndmgr.cpp	vc6 guest
+0x006638a0	53	tAFPlayInfo::mGetAcualIndexOffsetIfRandom()	Tiger/tsndmgr.cpp	vc6 guest
+0x006638e0	220	tAFPlayInfo::mAddClass(long)	Tiger/tsndmgr.cpp	vc6 guest
 0x006639c0	13	tAFPlayInfo::mSetNextInSequence(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006639d0	270	tAFPlayInfo::mInit(long,char *,char *,char *,long,long,long,long,double,double,unsigned long,unsigned long,unsigned char,unsigned char,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00663ae0	345	tAFPlayInfo::operator=(tAFPlayInfo &)	Tiger/tsndmgr.cpp	vc6 guest
+0x00663c40	158	tAFPlayInfo::mIsThisInThisThreshold(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00663ce0	153	tAFPlayInfo::mIsThisInThisGroup(long)	Tiger/tsndmgr.cpp	partial
+0x00663d80	209	tBasicSoundFileManager::tBasicSoundFileManager()	Tiger/tsndmgr.cpp	vc6
+0x00663e60	30	tBasicSoundFileManager::`scalar deleting destructor'	Tiger/tsndmgr.cpp	vc6
+0x00663e80	92	tBasicSoundFileManager::~tBasicSoundFileManager()	Tiger/tsndmgr.cpp	vc6
+0x00663ee0	355	tBasicSoundFileManager::mAdjustGlobalVolume()	Tiger/tsndmgr.cpp	vc6 guest
+0x00664050	68	tBasicSoundFileManager::mUpdateAllSounds()	Tiger/tsndmgr.cpp	vc6 guest
+0x006640a0	1990	tBasicSoundFileManager::mUpdateTest()	Tiger/tsndmgr.cpp	partial
 0x00664870	12	tBasicSoundFileManager::mGetTrackingIndex(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664880	10	tBasicSoundFileManager::mGetTrackingOffset(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664890	42	tBasicSoundFileManager::mValidTrackingNumber(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006648c0	71	tBasicSoundFileManager::mClearTrackingNumber(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664910	314	tBasicSoundFileManager::mNewTrackingNumber(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664a50	162	tBasicSoundFileManager::mAddRegisteredAudioType(char *,unsigned long (*func1)( char *, long, long, long, tSoundChannelFormat *, long, void * ),unsigned long (*func2)( unsigned long, long ),long,long,void *,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664b00	204	tBasicSoundFileManager::mStop(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664bd0	218	tBasicSoundFileManager::mAttachSoundToChannel(unsigned long,tSoundSelection *)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664cb0	216	tBasicSoundFileManager::mAttachFileToChannel(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664d90	213	tBasicSoundFileManager::mResumeChannel(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664e70	213	tBasicSoundFileManager::mPauseChannel(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00664f50	213	tBasicSoundFileManager::mStopAndResetChannel(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665030	213	tBasicSoundFileManager::mStopAndClearChannel(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665110	220	tBasicSoundFileManager::mSetFrequency(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006651f0	220	tBasicSoundFileManager::mSetPan(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006652d0	220	tBasicSoundFileManager::mSetVolume(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006653b0	225	tBasicSoundFileManager::mSetFinishFunction(unsigned long,void (* const function)( unsigned long, unsigned char ),long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006654a0	244	tBasicSoundFileManager::mAddUpdateSoundPositionFunction(unsigned long,void (* function)( unsigned long, long ),long,double,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x006655a0	234	tBasicSoundFileManager::mAddDelayCommand(unsigned long,double,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665690	239	tBasicSoundFileManager::mPlaySpecialLoop(unsigned long,long,long,long,long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665780	219	tBasicSoundFileManager::mEndSpecialLoop(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665860	239	tBasicSoundFileManager::mAddGetNextAttachmentFunction(unsigned long,void (* function)( unsigned long, long ),long,double,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665950	220	tBasicSoundFileManager::mSetChannelAttributes(unsigned long,tChannelAttributes *)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665a30	220	tBasicSoundFileManager::mSet3DSoundProfile(unsigned long,t3DSoundProfile *)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665b10	220	tBasicSoundFileManager::mSet3DSoundPosition(unsigned long,tPoint3 *)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665bf0	226	tBasicSoundFileManager::mSet3DSoundOrientation(unsigned long,tPoint3 *,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665ce0	226	tBasicSoundFileManager::mSet3DSoundVelocity(unsigned long,tPoint3 *,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665dd0	231	tBasicSoundFileManager::mSet3DSoundCones(unsigned long,float,long,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665ec0	231	tBasicSoundFileManager::mSet3DSoundReferenceDistance(unsigned long,double,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00665fb0	216	tBasicSoundFileManager::mGetChannelAttributes(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666090	216	tBasicSoundFileManager::mGet3DSoundProfile(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666170	216	tBasicSoundFileManager::mGet3DSoundPosition(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666250	216	tBasicSoundFileManager::mGet3DSoundOrientation(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666330	216	tBasicSoundFileManager::mGet3DSoundVelocity(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666410	220	tBasicSoundFileManager::mGet3DSoundReferenceDistance(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006664f0	223	tBasicSoundFileManager::mGet3DSoundConeAngleForNoAttenuation(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006665d0	219	tBasicSoundFileManager::mGet3DSoundConeAttenuationLevel(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006666b0	219	tBasicSoundFileManager::mTotalBytesLeftToPlay(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666790	223	tBasicSoundFileManager::mTotalNumberOfSecondsLeftToPlay(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666870	219	tBasicSoundFileManager::mNumberOfAttachmentsQueuedUp(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666950	219	tBasicSoundFileManager::mGetSoundChannelFormat(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666a30	219	tBasicSoundFileManager::mAreWeLooping(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666b10	219	tBasicSoundFileManager::mAreWeStreaming(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666bf0	219	tBasicSoundFileManager::mAreWe3D(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666cd0	219	tBasicSoundFileManager::mAreWeStatic(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666db0	219	tBasicSoundFileManager::mAreWeFixedFrequency(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666e90	219	tBasicSoundFileManager::mAreWeARecordingChannel(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00666f70	219	tBasicSoundFileManager::mTryToLocateInHardware(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667050	219	tBasicSoundFileManager::mTryToLocateInSoftware(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667130	219	tBasicSoundFileManager::mAreWeFixedPan(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667210	219	tBasicSoundFileManager::mAreWeFixedVolume(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006672f0	219	tBasicSoundFileManager::mAreWeAGlobalSound(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006673d0	219	tBasicSoundFileManager::mDoWeRetainSelections(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006674b0	210	tBasicSoundFileManager::mDump(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667590	220	tBasicSoundFileManager::mSetPriority(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667670	222	tBasicSoundFileManager::mGetChannelPriority(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667750	219	tBasicSoundFileManager::mGetFrequency(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667830	219	tBasicSoundFileManager::mGetPan(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667910	219	tBasicSoundFileManager::mGetVolume(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006679f0	239	tBasicSoundFileManager::mFadeToVolume(unsigned long,long,double,long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667ae0	229	tBasicSoundFileManager::mFadeToStopAndResetNow(unsigned long,double,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667bd0	229	tBasicSoundFileManager::mFadeToStopAndClearNow(unsigned long,double,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667cc0	48	tBasicSoundFileManager::mUpdatePosition(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667cf0	215	tBasicSoundFileManager::mFinishSound(unsigned long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667dd0	48	tBasicSoundFileManager::mGetNextAttachment(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00667e00	30	tBasicSoundFileManager::mSetGetNextAttachmentFunction(unsigned long,void (* function)( unsigned long, long ))	Tiger/tsndmgr.cpp	vc6 guest
+0x00667e20	807	tBasicSoundFileManager::mDoDefaultNextAttachment(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00668150	222	tBasicSoundFileManager::mIsSoundPlaying(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00668230	217	tBasicSoundFileManager::mGetStatus(unsigned long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00668310	138	tBasicSoundFileManager::mGetRegisteredNumber(char *)	Tiger/tsndmgr.cpp	vc6 guest
+0x006683a0	527	tBasicSoundFileManager::mSetAFPlayInfoAtThisPosition(long,long,long,long,char *,char *,char *,long,long,long,long,double,double,unsigned char,unsigned char,long)	Tiger/tsndmgr.cpp	partial
+0x006685b0	129	tBasicSoundFileManager::mCloseAllSoundsInGroup(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00668640	129	tBasicSoundFileManager::mCloseAllSoundsNotInThreshold(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x006686d0	105	tBasicSoundFileManager::mCloseAllSounds()	Tiger/tsndmgr.cpp	vc6 guest
+0x00668740	560	tBasicSoundFileManager::mCloseFile(long)	Tiger/tsndmgr.cpp	vc6 guest
+0x00668970	8752	tBasicSoundFileManager::mParseAllSoundsFile(char *,long,long)	Tiger/tsndmgr.cpp	partial
+0x0066ac50	239	tBasicSoundFileManager::mGetNextToken(char *,const char *,long,long *,char)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066ad40	930	tBasicSoundFileManager::mReadInFileAsString(char *,long,long *)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b0f0	31	tBasicSoundFileManager::mIsReady()	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b110	59	tBasicSoundFileManager::mDeactivate()	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b150	144	DefaultSndMgrUpdatePositionFunction(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b1e0	144	DefaultSndMgrFinishFunction(unsigned long,unsigned char)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b270	144	DefaultNextAttachmentFunction(unsigned long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b300	33	tBasicSoundFileManager::mSetNextInSequence(long,long)	Tiger/tsndmgr.cpp	vc6 guest
+0x0066b330	1961	tBasicSoundFileManager::mPlay(long,long,double,long,long,long,long,void (*finish)( long, unsigned long, unsigned char ),void (*nextAttachment)( unsigned long, long ))	Tiger/tsndmgr.cpp	vc6 guest
 0x0066be30	5	tgStrManager::mDeactivate()	Tiger/tgStrMgr.cpp	vc6 guest
 0x0066be50	9	tgStrManager::mDone()	Tiger/tgStrMgr.cpp	vc6 guest
 0x0066be60	22	tgStrManager::mLoadStringFile(const char *,bool)	Tiger/tgStrMgr.cpp	vc6 guest

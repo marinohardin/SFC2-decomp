@@ -22,13 +22,14 @@ tMouseMgr_Base *tMouseMgr_Base::scalar_deleting_destructor(unsigned char flags)
 
 // tTimerResponse: the callback interface twClock::mSetTimer takes (SDK
 // symbol). Its first virtual is what a timer calls when it fires.
-// HYPOTHESIS: slot 0 takes no arguments and returns nothing; its name is not
-// known, so it is named after this override.
-class tTimerResponse {
-public:
-    virtual void fn_0040bd8d() = 0;
-    long m_4; // HYPOTHESIS: a field of the base sits at +4
-};
+#include "Tiger/tTimerResponse.h"
+
+
+
+
+
+
+
 
 class tMouseMgr_Ex : public tMouseMgr_Base {
 public:

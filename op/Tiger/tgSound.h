@@ -370,16 +370,16 @@ public:
     virtual long mGetFrequency();
     virtual long mGetPan();
     virtual long mGetVolume();
-    virtual void mGetChannelPriority();
-    virtual void mGetChannelAttributes();
-    virtual void mGet3DSoundProfile();
-    virtual void mGet3DSoundPosition();
-    virtual void mGet3DSoundOrientation();
-    virtual void mGet3DSoundVelocity();
-    virtual void mGet3DSoundReferenceDistance();
-    virtual void mGet3DSoundConeAngleForNoAttenuation();
-    virtual void mGet3DSoundConeAttenuationLevel();
-    virtual long vfunction52();
+    virtual long mGetChannelPriority();
+    virtual tChannelAttributes* mGetChannelAttributes();
+    virtual t3DSoundProfile* mGet3DSoundProfile();
+    virtual tPoint3* mGet3DSoundPosition();
+    virtual tPoint3* mGet3DSoundOrientation();
+    virtual tPoint3* mGet3DSoundVelocity();
+    virtual double mGet3DSoundReferenceDistance();
+    virtual float mGet3DSoundConeAngleForNoAttenuation();
+    virtual long mGet3DSoundConeAttenuationLevel();
+    virtual eSoundChannelStatus vfunction52();
     virtual tSoundChannelFormat* mGetSoundChannelFormat();
     virtual long mGetBufferLength();
     virtual void mGetNumChannels();
@@ -397,13 +397,13 @@ public:
     virtual void mSetFinishSoundCallback(long callback);
     virtual long mGetTotalBytesLeftToPlay();
     virtual double mGetTotalNumberOfSecondsLeftToPlay();
-    virtual void mGetNumberOfAttachments();
+    virtual long mGetNumberOfAttachments();
     virtual iTruth mAreWeLooping();
     virtual iTruth mAreWeStreaming();
     virtual iTruth mAreWe3D();
     virtual iTruth mAreWeStatic();
     virtual iTruth mAreWeFixedFrequency();
-    virtual void mAreWeARecordingChannel();
+    virtual iTruth mAreWeARecordingChannel();
     virtual iTruth mTryToLocateInHardware();
     virtual iTruth mTryToLocateInSoftware();
     virtual iTruth mAreWeFixedPan();
@@ -569,38 +569,57 @@ public:
     virtual unsigned char mSet3DSoundCones(long channel, float angle, long level, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate);
-    virtual void mSetGlobalFrequency();
-    virtual void mSetGlobalPan();
-    // HYPOTHESIS: tBasicSoundFileManager::mAdjustGlobalVolume passes it the scaled global volume as a long.
-    virtual void mSetGlobalVolume(long volume);
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mSetGlobalFrequency(float frequency);
+    virtual unsigned char mSetGlobalPan(long pan);
+    virtual unsigned char mSetGlobalVolume(long volume);
     virtual void mAdjust3DListener();
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual unsigned char mSet3DListener3DPosition(tPoint3* position);
     virtual unsigned char mSet3DListenerOrientation(tPoint3* forward, tPoint3* up);
     virtual unsigned char mSet3DListenerVelocity(tPoint3* velocity);
     virtual unsigned char mSet3DListenerUnitScaleInMeters(double scale);
-    virtual long mGetChannelStatus(long channel);
+    virtual eSoundChannelStatus mGetChannelStatus(long channel);
     // The SDK library's symbol for twSoundPart's override gives the signature.
     virtual long mGetHardwareInformation(long info);
-    virtual void mTotalBytesLeftToPlay(); virtual void mTotalNumberOfSecondsLeftToPlay(); virtual void mNumberOfAttachmentsQueuedUp();
-    virtual void mGetFrequency(); virtual void mGetPan(); virtual void mGetVolume(); virtual void mGetChannelAttributes();
-    virtual void mGet3DSoundProfile(); virtual void mGet3DSoundPosition(); virtual void mGet3DSoundOrientation(); virtual void mGet3DSoundVelocity();
-    virtual void mGet3DSoundReferenceDistance(); virtual void mGet3DSoundConeAngleForNoAttenuation(); virtual void mGet3DSoundConeAttenuationLevel(); virtual void mGetChannelPriority();
-    virtual void mGetSoundChannelFormat(); virtual void mAreWeLooping(); virtual void mAreWeStreaming(); virtual void mAreWe3D();
-    virtual void mAreWeStatic(); virtual void mAreWeFixedFrequency(); virtual void mAreWeARecordingChannel(); virtual void mTryToLocateInHardware();
-    virtual void mTryToLocateInSoftware(); virtual void mAreWeFixedPan(); virtual void mAreWeFixedVolume(); virtual void mAreWeAGlobalSound();
+    virtual long mTotalBytesLeftToPlay(long channel);
+    virtual double mTotalNumberOfSecondsLeftToPlay(long channel); virtual long mNumberOfAttachmentsQueuedUp(long channel);
+    virtual long mGetFrequency(long channel);
+    virtual long mGetPan(long channel);
+    virtual long mGetVolume(long channel);
+    virtual tChannelAttributes* mGetChannelAttributes(long channel);
+    virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
+    virtual tPoint3* mGet3DSoundPosition(long channel); virtual tPoint3* mGet3DSoundOrientation(long channel);
+    virtual tPoint3* mGet3DSoundVelocity(long channel);
+    virtual double mGet3DSoundReferenceDistance(long channel);
+    virtual float mGet3DSoundConeAngleForNoAttenuation(long channel);
+    virtual long mGet3DSoundConeAttenuationLevel(long channel);
+    virtual long mGetChannelPriority(long channel);
+    virtual tSoundChannelFormat* mGetSoundChannelFormat(long channel);
+    virtual unsigned char mAreWeLooping(long channel);
+    virtual unsigned char mAreWeStreaming(long channel);
+    virtual unsigned char mAreWe3D(long channel);
+    virtual unsigned char mAreWeStatic(long channel);
+    virtual unsigned char mAreWeFixedFrequency(long channel);
+    virtual unsigned char mAreWeARecordingChannel(long channel);
+    virtual unsigned char mTryToLocateInHardware(long channel);
+    virtual unsigned char mTryToLocateInSoftware(long channel);
+    virtual unsigned char mAreWeFixedPan(long channel);
+    virtual unsigned char mAreWeFixedVolume(long channel);
+    virtual unsigned char mAreWeAGlobalSound(long channel);
     // HYPOTHESIS: slot 75 returns the global frequency factor; twStandardSoundChannel::mSetFrequency
     // multiplies the channel's frequency by it.
     virtual double vfunction75();
     // HYPOTHESIS: slot 76 returns the global pan, which twStandardSoundChannel::mSetPan adds to the channel's.
     virtual long vfunction76();
-    virtual void vfunction77(); virtual void mGet3DListener();
-    virtual void mGet3DListener3DPosition(); virtual void mGet3DListenerForwardDirection(); virtual void mGet3DListenerUpDirection(); virtual void mGet3DListenerVelocity();
-    virtual void mGet3DListenerUnitScaleInMeters();
+    virtual void vfunction77();
+    virtual t3DListenerProfile* mGet3DListener();
+    virtual tPoint3* mGet3DListener3DPosition(); virtual tPoint3* mGet3DListenerForwardDirection(); virtual tPoint3* mGet3DListenerUpDirection(); virtual tPoint3* mGet3DListenerVelocity();
+    virtual double mGet3DListenerUnitScaleInMeters();
     // Slots 84 and 85 are mDump(int) and mDump(); VC6 lays overloads out in reverse
     // declaration order.
     virtual void mDump();
-    virtual void mDump(int level);
+    virtual void mDump(long channel);
     virtual void mUpdate();
     virtual unsigned char mAddUpdateSoundPositionFunction(long channel, void (*function)(unsigned long, long), long data, double interval, unsigned char immediate);
     // The exe's symbol for tgSoundPart's override gives the signature.
@@ -623,17 +642,22 @@ public:
     // The exe's symbols for tgSoundPart's overrides give the signatures.
     virtual long mGetNumberCurrentlyPlaying();
     virtual unsigned char mDoWeRetainSelections(long channel);
-    virtual void mWeRetainSelections();
-    virtual void mWeDoNotRetainSelections(long channel);
+    virtual unsigned char mWeRetainSelections(long channel);
+    virtual unsigned char mWeDoNotRetainSelections(long channel);
     // The exe's symbol for tgSoundPart's override gives the signature.
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeDoNotAutoRemoveChannel(long channel);
-    virtual void mDoWeAutoRemoveSelections();
-    virtual void mWeAutoRemoveSelections(); virtual void mWeDoNotAutoRemoveSelections();
+    virtual unsigned char mDoWeAutoRemoveSelections(long channel);
+    virtual unsigned char mWeAutoRemoveSelections(long channel);
+    virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
     virtual unsigned char mIsChannelActive(long channel);
-    virtual void vfunction108(); virtual void mRemoveRecordChannel(); virtual void mAttachSoundToRecordChannel(); virtual void mRecordChannel();
-    virtual void mPauseRecordChannel(); virtual void mStopAndClearRecordChannel();
+    virtual void vfunction108(); virtual unsigned char mRemoveRecordChannel(); virtual unsigned char mAttachSoundToRecordChannel(tSoundSelection* selection);
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mRecordChannel();
+    // The exe's symbol for tgSoundPart's override gives the signature.
+    virtual unsigned char mPauseRecordChannel();
+    virtual unsigned char mStopAndClearRecordChannel();
 };
 
 // HYPOTHESIS: a part like tClockPart: tPart's virtuals fill slots 0-5 and its fields 0x4-0xb, so
@@ -678,9 +702,18 @@ public:
     virtual unsigned char mAddGetNextAttachmentFunction(long channel, void (*function)(unsigned long, long), long data, double interval);
     virtual long mGetNumberCurrentlyPlaying();
     virtual unsigned char mDoWeRetainSelections(long channel);
+    virtual unsigned char mWeRetainSelections(long channel);
+    virtual unsigned char mWeDoNotRetainSelections(long channel);
     virtual unsigned char mDoWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeAutoRemoveChannel(long channel);
     virtual unsigned char mWeDoNotAutoRemoveChannel(long channel);
+    virtual unsigned char mDoWeAutoRemoveSelections(long channel);
+    virtual unsigned char mWeAutoRemoveSelections(long channel);
+    virtual unsigned char mWeDoNotAutoRemoveSelections(long channel);
+    virtual unsigned char mIsChannelActive(long channel);
+    virtual unsigned char mSetGlobalFrequency(float frequency);
+    virtual unsigned char mSetGlobalPan(long pan);
+    virtual unsigned char mSetGlobalVolume(long volume);
     // With mSet3DSoundProfile declared alone, mSetNumberOfSoundChannelCommands swaps two stack
     // slots; declaring mSet3DSoundPosition as well, as the original class does, restores them.
     virtual unsigned char mSet3DSoundProfile(long channel, t3DSoundProfile* profile, unsigned char immediate);
@@ -689,6 +722,54 @@ public:
     virtual unsigned char mSet3DSoundVelocity(long channel, tPoint3* velocity, unsigned char immediate);
     virtual unsigned char mSet3DSoundCones(long channel, float angle, long level, unsigned char immediate);
     virtual unsigned char mSet3DSoundReferenceDistance(long channel, double distance, unsigned char immediate);
+    virtual eSoundChannelStatus mGetChannelStatus(long channel);
+    virtual long mTotalBytesLeftToPlay(long channel);
+    // The SDK library's symbols for these overrides give the signatures. Declaring the first alone
+    // makes mSetNumberOfSoundChannelCommands swap two stack slots; with the next two it does not.
+    virtual double mTotalNumberOfSecondsLeftToPlay(long channel);
+    virtual long mNumberOfAttachmentsQueuedUp(long channel);
+    virtual long mGetFrequency(long channel);
+    virtual long mGetPan(long channel);
+    virtual long mGetVolume(long channel);
+    virtual tChannelAttributes* mGetChannelAttributes(long channel);
+    // Declaring mGet3DSoundProfile without mGet3DSoundPosition swaps the same two stack slots in
+    // mSetNumberOfSoundChannelCommands again.
+    virtual t3DSoundProfile* mGet3DSoundProfile(long channel);
+    virtual tPoint3* mGet3DSoundPosition(long channel);
+    virtual tPoint3* mGet3DSoundOrientation(long channel);
+    virtual tPoint3* mGet3DSoundVelocity(long channel);
+    virtual double mGet3DSoundReferenceDistance(long channel);
+    virtual float mGet3DSoundConeAngleForNoAttenuation(long channel);
+    virtual long mGet3DSoundConeAttenuationLevel(long channel);
+    virtual long mGetChannelPriority(long channel);
+    virtual tSoundChannelFormat* mGetSoundChannelFormat(long channel);
+    virtual unsigned char mAreWeLooping(long channel);
+    virtual unsigned char mAreWeStreaming(long channel);
+    virtual unsigned char mAreWe3D(long channel);
+    virtual unsigned char mAreWeStatic(long channel);
+    virtual unsigned char mAreWeFixedFrequency(long channel);
+    virtual unsigned char mAreWeARecordingChannel(long channel);
+    virtual unsigned char mTryToLocateInHardware(long channel);
+    virtual unsigned char mTryToLocateInSoftware(long channel);
+    virtual unsigned char mAreWeFixedPan(long channel);
+    virtual unsigned char mAreWeFixedVolume(long channel);
+    virtual unsigned char mAreWeAGlobalSound(long channel);
+    virtual t3DListenerProfile* mGet3DListener();
+    virtual tPoint3* mGet3DListener3DPosition();
+    virtual tPoint3* mGet3DListenerForwardDirection();
+    virtual tPoint3* mGet3DListenerUpDirection();
+    virtual tPoint3* mGet3DListenerVelocity();
+    virtual double mGet3DListenerUnitScaleInMeters();
+    virtual void mDump();
+    // The SDK library's symbol (?mDump@tgSoundPart@@UAEXJ@Z) gives the parameter type.
+    virtual void mDump(long channel);
+    // The exe's symbol (?mRemoveRecordChannel@tgSoundPart@@UAEEXZ) gives the return type.
+    virtual unsigned char mRemoveRecordChannel();
+    // The exe's symbol (?mAttachSoundToRecordChannel@tgSoundPart@@UAEEPAVtSoundSelection@@@Z) gives the signature.
+    virtual unsigned char mAttachSoundToRecordChannel(tSoundSelection* selection);
+    virtual unsigned char mPauseRecordChannel();
+    virtual unsigned char mRecordChannel();
+    virtual unsigned char mStopAndClearRecordChannel();
     // HYPOTHESIS: slots 114 and 115 take and release the part between the game and the sound
     // interrupt; xAttemptToGainControl passes the caller's file and line.
     // The exe's symbol gives the parameter types: (char*, long, unsigned char, long).

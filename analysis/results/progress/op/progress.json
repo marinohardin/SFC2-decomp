@@ -1,6 +1,6 @@
 {
- "schema": 2,
- "generated_at": "2026-11-16T05:01:14Z",
+ "schema": 3,
+ "generated_at": "2026-11-16T18:30:47Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,12 +41,17 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "cdf3f1462c4abb57bbbf6c4083a51eb1b3088c6852a37e6ac305318778badac9"
+   "sha256": "bb8e4ac9111f5b0e7821f4781c35528f703d3ccf641d49f11c47d80e5ff2b386"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
    "present": false,
    "sha256": null
+  },
+  "manifest": {
+   "path": "op/manifest.tsv",
+   "present": true,
+   "sha256": "ec5c77985a2cd588c70eb1a2328244b4b1e9ed99dff66af7799fdce9c5137bc6"
   }
  },
  "function_kinds": {
@@ -79,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 982,
-     "pct_functions": 4.2564,
-     "function_bytes": 165565,
-     "funclet_bytes": 1764,
-     "bytes": 167329,
-     "pct_bytes": 4.8168,
-     "pct_text": 4.4598
+     "functions": 1008,
+     "pct_functions": 4.3691,
+     "function_bytes": 168870,
+     "funclet_bytes": 2142,
+     "bytes": 171012,
+     "pct_bytes": 4.9229,
+     "pct_text": 4.558
     },
     "functional": {
      "functions": 0,
@@ -95,6 +100,15 @@
      "bytes": 0,
      "pct_bytes": 0.0,
      "pct_text": 0.0
+    },
+    "partial": {
+     "functions": 114,
+     "pct_functions": 0.4941,
+     "function_bytes": 62447,
+     "funclet_bytes": 1978,
+     "bytes": 64425,
+     "pct_bytes": 1.8546,
+     "pct_text": 1.7171
     },
     "lifted": {
      "functions": 0,
@@ -106,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 22089,
-     "pct_functions": 95.7436,
-     "function_bytes": 3140735,
-     "funclet_bytes": 165777,
-     "bytes": 3306512,
-     "pct_bytes": 95.1832,
-     "pct_text": 88.1282
+     "functions": 21949,
+     "pct_functions": 95.1368,
+     "function_bytes": 3074983,
+     "funclet_bytes": 163421,
+     "bytes": 3238404,
+     "pct_bytes": 93.2226,
+     "pct_text": 86.3129
     }
    },
    "named": {
@@ -173,12 +187,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 982,
-     "pct_functions": 4.4306,
-     "function_bytes": 165565,
-     "funclet_bytes": 1764,
-     "bytes": 167329,
-     "pct_bytes": 5.0237
+     "functions": 1008,
+     "pct_functions": 4.5479,
+     "function_bytes": 168870,
+     "funclet_bytes": 2142,
+     "bytes": 171012,
+     "pct_bytes": 5.1343
     },
     "functional": {
      "functions": 0,
@@ -187,6 +201,14 @@
      "funclet_bytes": 0,
      "bytes": 0,
      "pct_bytes": 0.0
+    },
+    "partial": {
+     "functions": 114,
+     "pct_functions": 0.5143,
+     "function_bytes": 62447,
+     "funclet_bytes": 1978,
+     "bytes": 64425,
+     "pct_bytes": 1.9342
     },
     "lifted": {
      "functions": 0,
@@ -197,12 +219,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 21182,
-     "pct_functions": 95.5694,
-     "function_bytes": 3005879,
-     "funclet_bytes": 157592,
-     "bytes": 3163471,
-     "pct_bytes": 94.9763
+     "functions": 21042,
+     "pct_functions": 94.9377,
+     "function_bytes": 2940127,
+     "funclet_bytes": 155236,
+     "bytes": 3095363,
+     "pct_bytes": 92.9315
     }
    },
    "named": {
@@ -603,6 +625,10 @@
   {
    "address": "0040ffad",
    "name": "tEntity::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040ffc9",
+   "name": "tEntity::~tEntity"
   },
   {
    "address": "0041004d",
@@ -1013,6 +1039,14 @@
    "name": "FUN_00429a18"
   },
   {
+   "address": "00429a26",
+   "name": "tClientCharacter::tClientCharacter"
+  },
+  {
+   "address": "00429bb2",
+   "name": "FUN_00429bb2"
+  },
+  {
    "address": "0042a0fc",
    "name": "FUN_0042a0fc"
   },
@@ -1055,6 +1089,10 @@
   {
    "address": "0043124e",
    "name": "FUN_0043124e"
+  },
+  {
+   "address": "00431275",
+   "name": "FUN_00431275"
   },
   {
    "address": "004314c2",
@@ -1545,6 +1583,10 @@
    "name": "tCampaignState::scalar_deleting_destructor"
   },
   {
+   "address": "0048bd4d",
+   "name": "tFleetPanel::tFleetPanel"
+  },
+  {
    "address": "0048c040",
    "name": "tFleetPanel::scalar_deleting_destructor"
   },
@@ -1685,6 +1727,10 @@
    "name": "tFleetEntry::vfunction50_for_tVisGroup"
   },
   {
+   "address": "004c3524",
+   "name": "FUN_004c3524"
+  },
+  {
    "address": "004c36e0",
    "name": "FUN_004c36e0"
   },
@@ -1703,6 +1749,10 @@
   {
    "address": "004c38cc",
    "name": "tFleetEntry::vfunction51_for_tVisGroup"
+  },
+  {
+   "address": "004c3a2c",
+   "name": "FUN_004c3a2c"
   },
   {
    "address": "004c6225",
@@ -2949,6 +2999,10 @@
    "name": "tStringGroupTag::mGetString"
   },
   {
+   "address": "0063a900",
+   "name": "twMemoryPart::mCheckMemory"
+  },
+  {
    "address": "0063edd0",
    "name": "tCoopThreadPart::mSetTime"
   },
@@ -3127,6 +3181,70 @@
   {
    "address": "006432b0",
    "name": "twStandardSoundChannel::mUpdateAmountPlayed"
+  },
+  {
+   "address": "00645940",
+   "name": "twSoundPart::mDirectSoundObject"
+  },
+  {
+   "address": "00645ac0",
+   "name": "twSoundPart::mGetMinFrequency"
+  },
+  {
+   "address": "00645ad0",
+   "name": "twSoundPart::mGetMaxFrequency"
+  },
+  {
+   "address": "00645ae0",
+   "name": "twSoundPart::mGetMaxHwBuffers"
+  },
+  {
+   "address": "00645af0",
+   "name": "twSoundPart::mGetMaxHwStaticBuffers"
+  },
+  {
+   "address": "00645b00",
+   "name": "tShipInfo::mGetRace"
+  },
+  {
+   "address": "00645b10",
+   "name": "twSoundPart::mGetMaxHw3DBuffers"
+  },
+  {
+   "address": "00645b20",
+   "name": "tShipInfo::mGetShipID"
+  },
+  {
+   "address": "00645b30",
+   "name": "twSoundPart::mGetFreeHwStaticBuffers"
+  },
+  {
+   "address": "00645b40",
+   "name": "tShipInfo::mGetStartPositionIndex"
+  },
+  {
+   "address": "00645b50",
+   "name": "twSoundPart::mGetFreeHw3DBuffers"
+  },
+  {
+   "address": "00645b60",
+   "name": "tShipInfo::mGetShipBPV"
+  },
+  {
+   "address": "00645b70",
+   "name": "twSoundPart::mGetFreeHwMemBytes"
+  },
+  {
+   "address": "00645b80",
+   "name": "tShipInfo::mGetCallbackID"
+  },
+  {
+   "address": "00645b90",
+   "name": "tShipInfo::mGetCustomID"
+  },
+  {
+   "address": "00645ba0",
+   "name": "twSoundPart::mGetTransferToHardwareRateInKBytesPerSec"
   },
   {
    "address": "00646ce0",
@@ -3571,6 +3689,14 @@
   {
    "address": "0065a7c0",
    "name": "tChannelGroup::mPauseChannel"
+  },
+  {
+   "address": "006639c0",
+   "name": "tAFPlayInfo::mSetNextInSequence"
+  },
+  {
+   "address": "00664870",
+   "name": "tBasicSoundFileManager::mGetTrackingIndex"
   },
   {
    "address": "0066be30",
@@ -4213,5 +4339,463 @@
    "name": "nDatabase::tFileDatabaseMgr::GetDBInfo"
   }
  ],
- "functional": []
+ "functional": [],
+ "partial": [
+  {
+   "address": "0040ab74",
+   "name": "tSfcApp3d::vfunction12"
+  },
+  {
+   "address": "0040ac19",
+   "name": "FUN_0040ac19"
+  },
+  {
+   "address": "0040ac4a",
+   "name": "FUN_0040ac4a"
+  },
+  {
+   "address": "0040ac84",
+   "name": "FUN_0040ac84"
+  },
+  {
+   "address": "0040acb6",
+   "name": "FUN_0040acb6"
+  },
+  {
+   "address": "0040ad0b",
+   "name": "FUN_0040ad0b"
+  },
+  {
+   "address": "0040ad35",
+   "name": "tSfcApp3d::vfunction21"
+  },
+  {
+   "address": "0040bdb1",
+   "name": "tMouseMgr_Ex::~tMouseMgr_Ex"
+  },
+  {
+   "address": "0040be9b",
+   "name": "tSfcMouseMgr_Ex::vfunction2"
+  },
+  {
+   "address": "0040f15a",
+   "name": "tSphere::vfunction2"
+  },
+  {
+   "address": "0040f86c",
+   "name": "FUN_0040f86c"
+  },
+  {
+   "address": "00413ea8",
+   "name": "tPhysicalEntity::vfunction49"
+  },
+  {
+   "address": "0042192f",
+   "name": "tEntityControlShip::tEntityControlShip"
+  },
+  {
+   "address": "00421ea9",
+   "name": "tEntityControlShip::vfunction13"
+  },
+  {
+   "address": "004235f0",
+   "name": "FUN_004235f0"
+  },
+  {
+   "address": "00423b3b",
+   "name": "FUN_00423b3b"
+  },
+  {
+   "address": "0042402d",
+   "name": "FUN_0042402d"
+  },
+  {
+   "address": "004295d0",
+   "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem"
+  },
+  {
+   "address": "0042984d",
+   "name": "FUN_0042984d"
+  },
+  {
+   "address": "00429d06",
+   "name": "FUN_00429d06"
+  },
+  {
+   "address": "00429f0d",
+   "name": "tClientCharacter::vfunction2"
+  },
+  {
+   "address": "0042a165",
+   "name": "tClientCharacter::vfunction3"
+  },
+  {
+   "address": "0044140c",
+   "name": "tShieldGroup::vfunction89"
+  },
+  {
+   "address": "0045da40",
+   "name": "tState_Campaign::vfunction3"
+  },
+  {
+   "address": "0045ddf7",
+   "name": "tState_Campaign::~tState_Campaign"
+  },
+  {
+   "address": "004b0e1b",
+   "name": "FUN_004b0e1b"
+  },
+  {
+   "address": "004c619e",
+   "name": "tListBox_Chat_Session::~tListBox_Chat_Session"
+  },
+  {
+   "address": "004c71fc",
+   "name": "tListBox_Select::vfunction44"
+  },
+  {
+   "address": "004c8780",
+   "name": "tScrollBar::vfunction37"
+  },
+  {
+   "address": "004e24b0",
+   "name": "tPhaserBank::vfunction135"
+  },
+  {
+   "address": "004e572e",
+   "name": "tPhaserXBank::vfunction135"
+  },
+  {
+   "address": "0051460b",
+   "name": "tAIWeaponOfficer::vfunction16_for_tAIOfficer"
+  },
+  {
+   "address": "0051dae7",
+   "name": "tAICaptain::tAICaptain"
+  },
+  {
+   "address": "0051e454",
+   "name": "tAICaptain::vfunction3"
+  },
+  {
+   "address": "0051e613",
+   "name": "FUN_0051e613"
+  },
+  {
+   "address": "0051feca",
+   "name": "FUN_0051feca"
+  },
+  {
+   "address": "00547e67",
+   "name": "tBattles::vfunction6_for_tAllocatedClass"
+  },
+  {
+   "address": "0061bc40",
+   "name": "tFileSession::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "0061c290",
+   "name": "tFileSession::mDuplicatePath"
+  },
+  {
+   "address": "0061c320",
+   "name": "FUN_0061c320"
+  },
+  {
+   "address": "0061ca60",
+   "name": "tFSSession::mDuplicatePath"
+  },
+  {
+   "address": "0061d200",
+   "name": "tVolume::mValid"
+  },
+  {
+   "address": "0061d2f0",
+   "name": "tDir::mValid"
+  },
+  {
+   "address": "0061d3e0",
+   "name": "tPath::mValid"
+  },
+  {
+   "address": "0061d4d0",
+   "name": "tVolIterator::mValid"
+  },
+  {
+   "address": "0061d5c0",
+   "name": "tDirIterator::mValid"
+  },
+  {
+   "address": "0061d6b0",
+   "name": "tPathIterator::mValid"
+  },
+  {
+   "address": "0061d7a0",
+   "name": "tVolume::mGetName"
+  },
+  {
+   "address": "0061d8b0",
+   "name": "tVolume::mGetSortName"
+  },
+  {
+   "address": "0061dad0",
+   "name": "tVolume::mGetRoot"
+  },
+  {
+   "address": "0061dbf0",
+   "name": "tDir::mGetName"
+  },
+  {
+   "address": "0061dd00",
+   "name": "tDir::mGetParentVol"
+  },
+  {
+   "address": "0061de20",
+   "name": "tDir::mGetParentDir"
+  },
+  {
+   "address": "0061df40",
+   "name": "tDir::mGetSize"
+  },
+  {
+   "address": "0061e050",
+   "name": "tDir::mExist"
+  },
+  {
+   "address": "0061e160",
+   "name": "tDir::mGetPathIterator"
+  },
+  {
+   "address": "0061e280",
+   "name": "tDir::mGetNamedDir"
+  },
+  {
+   "address": "0061e3a0",
+   "name": "tDir::mGetNamedFile"
+  },
+  {
+   "address": "0061e5c0",
+   "name": "tDir::mDelete"
+  },
+  {
+   "address": "0061e6d0",
+   "name": "tPath::mGetName"
+  },
+  {
+   "address": "0061e7e0",
+   "name": "tPath::mGetDate"
+  },
+  {
+   "address": "0061e900",
+   "name": "tPath::mGetParentDir"
+  },
+  {
+   "address": "0061ea20",
+   "name": "tPath::mExist"
+  },
+  {
+   "address": "0061eb30",
+   "name": "tPath::mGetSize"
+  },
+  {
+   "address": "0061ec40",
+   "name": "tPath::mCreate"
+  },
+  {
+   "address": "0061ed50",
+   "name": "tPath::mDelete"
+  },
+  {
+   "address": "0061f0c0",
+   "name": "tPath::mFree"
+  },
+  {
+   "address": "0061f2f0",
+   "name": "tVolIterator::mFirst"
+  },
+  {
+   "address": "0061f690",
+   "name": "tDirIterator::mFirst"
+  },
+  {
+   "address": "0061f910",
+   "name": "tPathIterator::mAdd"
+  },
+  {
+   "address": "00629720",
+   "name": "twDebugPart::mSendLine"
+  },
+  {
+   "address": "00629c40",
+   "name": "tWinDbg::mWndProc"
+  },
+  {
+   "address": "0062c130",
+   "name": "tINISimpleNamespace::tINIFileSimple::mInit"
+  },
+  {
+   "address": "0062c510",
+   "name": "tINISimpleNamespace::tINIFileSimple::mFlush"
+  },
+  {
+   "address": "0062c670",
+   "name": "tINIFile::mNewINIFile"
+  },
+  {
+   "address": "0062d3c0",
+   "name": "tTagInfo::mParseTagTokenList"
+  },
+  {
+   "address": "0062d4a0",
+   "name": "tTagInfo::mClassifyTagTokens"
+  },
+  {
+   "address": "0062d8d0",
+   "name": "tIntTag::mGetString"
+  },
+  {
+   "address": "0062e1c0",
+   "name": "twFileSystemPart::mGetVolIterator"
+  },
+  {
+   "address": "0063f5a0",
+   "name": "tCoopThreadPart::mSwitchTo"
+  },
+  {
+   "address": "0063fd10",
+   "name": "tCoopThreadPart::mDoSleep"
+  },
+  {
+   "address": "00640b40",
+   "name": "twNativeThread::mGotoThread"
+  },
+  {
+   "address": "00640db0",
+   "name": "twCoopThreadPart::mCoopRun"
+  },
+  {
+   "address": "006420a0",
+   "name": "twStandardSoundChannel::mWriteData"
+  },
+  {
+   "address": "00642630",
+   "name": "twStandardSoundChannel::mDoActiveUpdate"
+  },
+  {
+   "address": "00642980",
+   "name": "twStandardSoundChannel::mUpdateBuffersAndSelections"
+  },
+  {
+   "address": "00647e40",
+   "name": "tSoundChannelCommand::mDump"
+  },
+  {
+   "address": "0064bed0",
+   "name": "tSoundChannel::mGetFirstPlayingCommand"
+  },
+  {
+   "address": "0064f250",
+   "name": "tgSoundPart::mUpdate"
+  },
+  {
+   "address": "00658ac0",
+   "name": "tChannelGroup::mUnload"
+  },
+  {
+   "address": "0066c9b0",
+   "name": "tSndZipInfoMgr::mInit"
+  },
+  {
+   "address": "0066e6c0",
+   "name": "tSoundMemoryBlockManager::mTestBlockIntegrity"
+  },
+  {
+   "address": "00670650",
+   "name": "tFontTable::mDone"
+  },
+  {
+   "address": "00670950",
+   "name": "tFontMgr::mInit"
+  },
+  {
+   "address": "006a4df0",
+   "name": "tTexBmp::vfunction3"
+  },
+  {
+   "address": "006a5a20",
+   "name": "tTexBmp::vfunction7"
+  },
+  {
+   "address": "006a5f50",
+   "name": "tTexBmp::vfunction5"
+  },
+  {
+   "address": "006a62f0",
+   "name": "FUN_006a62f0"
+  },
+  {
+   "address": "006a8930",
+   "name": "FUN_006a8930"
+  },
+  {
+   "address": "006f3a20",
+   "name": "tThreadPool::tThreadPool"
+  },
+  {
+   "address": "006f3b40",
+   "name": "tThreadPool::~tThreadPool"
+  },
+  {
+   "address": "006f3d50",
+   "name": "tThreadPool::Shutdown"
+  },
+  {
+   "address": "006f3e50",
+   "name": "tThreadPool::ShutdownComplete"
+  },
+  {
+   "address": "006f41e0",
+   "name": "tThreadPool::Heartbeat"
+  },
+  {
+   "address": "006f4440",
+   "name": "tThreadPool::EmptyWorkQue"
+  },
+  {
+   "address": "006f4be0",
+   "name": "tThreadPool::QueueWorkItem"
+  },
+  {
+   "address": "006f53f0",
+   "name": "tOSVersion::Instance"
+  },
+  {
+   "address": "00708140",
+   "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamIn"
+  },
+  {
+   "address": "00708330",
+   "name": "FUN_00708330"
+  },
+  {
+   "address": "00708490",
+   "name": "FUN_00708490"
+  },
+  {
+   "address": "007085f0",
+   "name": "FUN_007085f0"
+  },
+  {
+   "address": "00708820",
+   "name": "nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr"
+  },
+  {
+   "address": "007090b0",
+   "name": "nDatabase::tFileDatabaseMgr::New"
+  },
+  {
+   "address": "00709270",
+   "name": "nDatabase::tFileDatabaseMgr::Load"
+  }
+ ]
 }
