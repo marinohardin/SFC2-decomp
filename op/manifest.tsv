@@ -1774,7 +1774,6 @@ address	size	symbol	source	modes
 0x00758eb0	1548	tParsePath::mGetPathOrDir(tPath*,tDir*,tString,tDir)	Tiger/tFile.cpp	vc6 guest
 0x007594c0	245	tParsePath::mGetPath(tString,tDir)	Tiger/tFile.cpp	vc6 guest
 0x00759e80	450	tFontDraw::mDrawGlyphClipped(const tGLRectI&,int,int,unsigned int,unsigned int,long,void*,const tCharInfo&)	Tiger/tfontDraw.cpp	partial
-0x0075a042	2	fn_0075a042()	Tiger/tfontDraw.cpp	partial
 0x0075a080	437	tFontDraw::mDrawString(unsigned int,long,void*,const tGLRectI&,int,int,unsigned int,const unsigned short*,tUniFont&,tGLRectI*,unsigned char,int)	Tiger/tfontDraw.cpp	partial
 0x0075a240	907	tFontDraw::mDrawString(unsigned int,long,void*,const tGLRectI&,int,int,unsigned int,const unsigned short*,tUniFont&,int,eFontDrawFmt,tGLRectI*,unsigned char,int)	Tiger/tfontDraw.cpp	vc6 guest
 0x0075a5e0	104	tString::mOSString()	Tiger/tnstring.cpp	vc6 guest

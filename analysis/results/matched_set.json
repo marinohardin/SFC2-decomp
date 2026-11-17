@@ -15922,15 +15922,6 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
-  "0x0075a042": {
-   "name": "FUN_0075a042",
-   "symbol": "?fn_0075a042@@YAXXZ",
-   "unit": "Tiger/tfontDraw.cpp",
-   "size": 16,
-   "score": 5.714,
-   "exact": false,
-   "recorded": "2026-11-16"
-  },
   "0x0075a080": {
    "name": "tFontDraw::mDrawString",
    "symbol": "?mDrawString@tFontDraw@@SAXIJPAXABUtGLRectI@@HHIPBGAAVtUniFont@@PAU2@EH@Z",

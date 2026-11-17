@@ -365,8 +365,8 @@ found:
     }
 }
 
-// HYPOTHESIS: not a real function; these two bytes (mov edi,edi) lie inside mDrawGlyphClipped's range and are probably mis-split data.
-// FUNCTION: STARFLEETOP 0x0075a042
-void fn_0075a042()
-{
-}
+// 0x0075a042 is not a function: these bytes follow mDrawGlyphClipped (0x00759e80, 450 bytes)
+// and are listed in analysis/results/boundary_errors.tsv. The lines below keep this unit's
+// line numbers.
+//
+//
