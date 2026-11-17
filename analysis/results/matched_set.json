@@ -3583,6 +3583,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00468527": {
+   "name": "FUN_00468527",
+   "symbol": "?fn_00468527@tState_GameConnections@tState_Namespace_GameConnections@@QAEXXZ",
+   "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",
