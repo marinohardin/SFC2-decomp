@@ -123,6 +123,9 @@ public:
 	void	fn_00691410();
 	void	fn_00691460();
 	void	fn_006914a0();
+	// HYPOTHESIS: a parser member; fn_006914f0 calls it with this still in ecx.
+	int	fn_0068fd00();
+	void	fn_006914f0();
 	void	fn_00690de0();
 	void	fn_00690e70();
 	void	fn_00690fb0();
@@ -140,7 +143,8 @@ public:
 	// HYPOTHESIS: state fn_00690a20 hands to the item; its type is not known.
 	int	f_80;
 	fn_00690a60_Value	f_84;
-	char	pad_88[0x8c - 0x88];
+	// HYPOTHESIS: the value fn_006914f0 takes from fn_0068fd00; its type is not known.
+	int	f_88;
 	// HYPOTHESIS: the current alignment; fn_00690900 passes it on unless an align attribute sets one.
 	fn_0068bb00_Value	f_8c;
 	char	pad_8d[0x92 - 0x8d];
@@ -679,5 +683,12 @@ void tHtmlParser::fn_006914a0()
 	}
 	if ( f_c6 != 0 )
 		f_c6--;
+	f_40->fn_0068e7b0( &f_80 );
+}
+
+// FUNCTION: STARFLEETOP 0x006914f0
+void tHtmlParser::fn_006914f0()
+{
+	f_88 = fn_0068fd00();
 	f_40->fn_0068e7b0( &f_80 );
 }
