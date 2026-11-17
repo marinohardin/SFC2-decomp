@@ -99,7 +99,7 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 	}
 	guard.Leave();
 }
-
+#line 102
 // HYPOTHESIS: a third instantiation of the same member template, for another database object type.
 // FUNCTION: STARFLEETOP 0x00571304
 void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
@@ -132,7 +132,7 @@ void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
 	guard.Leave();
 }
 
-#line 101
+#line 136
 // HYPOTHESIS: a second instantiation of the same member template as 0x00571018, for another
 // database object type; names are not recovered.
 // FUNCTION: STARFLEETOP 0x0057118e
@@ -166,7 +166,7 @@ void fn_00571018_owner::fn_0057118e(fn_00571018_object* pObject)
 	guard.Leave();
 }
 
-#line 300
+#line 170
 // HYPOTHESIS: a fourth instantiation of the same member template, for another database object type.
 // FUNCTION: STARFLEETOP 0x0057147a
 void fn_00571018_owner::fn_0057147a(fn_00571018_object* pObject)
@@ -300,3 +300,58 @@ class fn_00715ac0_object { public: char fn_00715ac0(long v); }; class fn_005717d
 // FUNCTION: STARFLEETOP 0x005717d6
 // HYPOTHESIS: the getter returns an object pointer and 0x00715ac0 is a thiscall on it.
 bool fn_005717d6_owner::fn_005717d6(int a) { long v = fn_005717d6_v; typedef fn_00715ac0_object* (fn_005716e0_target::*fn_t)(); fn_00715ac0_object* o = (((fn_005716e0_target*)(fn_00571676_b + a))->*(*(fn_t*)&fn_00571676_a))(); char r = o->fn_00715ac0(v); bool same = r != 0; return same ? true : false; }
+
+
+
+
+
+
+
+
+// HYPOTHESIS: a count query on the database: the owner's map (at +0x18) lists the objects of
+// one type; slot 2 of the query object is its predicate. Types and names are not recovered.
+class fn_005717f7_object {
+public:
+	virtual void vfunction0();
+};
+class fn_005717f7_query {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual bool operator()(fn_005717f7_object* pObject);
+};
+struct fn_005717f7_vector {
+	void* m_allocator;
+	void** m_first;
+	void** m_last;
+	void** m_end;
+};
+struct fn_005717f7_map {
+	fn_005717f7_vector& fn_005719df(const long& key);
+};
+class fn_005717f7_owner {
+public:
+	virtual void vfunction0();
+	long fn_005717f7(fn_005717f7_query& query);
+	tOptex fAccess;
+	// the map follows the optex directly (+0x18)
+	fn_005717f7_map fTypeIndex;
+};
+#line 340
+// FUNCTION: STARFLEETOP 0x005717f7
+long fn_005717f7_owner::fn_005717f7(fn_005717f7_query& query)
+{
+	tOptex::tGuard guard(&fAccess);
+	long count = 0;
+	long allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(fn_005717f7_object));
+#line 306
+	validate(allocID != kInvalidAllocatorID);
+	fn_005717f7_vector& objects = fTypeIndex.fn_005719df(allocID);
+	for (void** i = objects.m_first; i != objects.m_last; i++) {
+		fn_005717f7_object* pObject = (fn_005717f7_object*)*i;
+		if (query(pObject))
+			count++;
+	}
+	guard.Leave();
+	return count;
+}
