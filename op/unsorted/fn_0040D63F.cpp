@@ -294,3 +294,18 @@ void fn_0040d9bf(unsigned int* p, fn_0040d63f_Buf& buf)
         *p = -*p;
     }
 }
+
+// HYPOTHESIS: unsigned variant of the writer fn_0040d924, 7 bits per byte.
+// FUNCTION: STARFLEETOP 0x0040da33
+void fn_0040da33(unsigned int* p, fn_0040d63f_Buf& buf)
+{
+    unsigned char b;
+    unsigned int v = *p;
+    while (v >= 0x80) {
+        b = (unsigned char)v | 0x80;
+        buf.fn_0040d867(&b, 1, 0);
+        v >>= 7;
+    }
+    b = (unsigned char)v;
+    buf.fn_0040d867(&b, 1, 0);
+}
