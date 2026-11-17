@@ -574,9 +574,8 @@ struct fn_0060ac82_tree
 			return (_Pairib(FUN_006e4360(_X, _Y, _V), true));
 		else
 			--_P;
-		if (key_compare(_Key(_P._Mynode()), _Kfn()(_V)))
-			return (_Pairib(FUN_006e4360(_X, _Y, _V), true));
-		return (_Pairib(_P, false)); }
+		bool _Ins = key_compare(_Key(_P._Mynode()), _Kfn()(_V));
+		return (_Pairib(_Ins ? FUN_006e4360(_X, _Y, _V) : _P, _Ins)); }
 	// HYPOTHESIS: insert(iterator, const value_type&).
 	iterator FUN_006e39e0(iterator _P, const node::value& _V);
 	// HYPOTHESIS: _Insert(x, y, value).
