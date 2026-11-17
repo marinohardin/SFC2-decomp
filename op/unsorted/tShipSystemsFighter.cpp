@@ -138,7 +138,7 @@ public:
     virtual void vfunction120();
     virtual void vfunction121();
     virtual void vfunction122();
-    virtual void vfunction123();
+    virtual tMinMaxFloat* vfunction123();
     virtual void vfunction124();
     virtual void vfunction125();
     virtual void vfunction126();
@@ -655,4 +655,10 @@ int tShipSystemsFighter::vfunction87()
 int tShipSystemsFighter::vfunction108()
 {
     return m6ec;
+}
+
+// FUNCTION: STARFLEETOP 0x0044450b
+tMinMaxFloat* tShipSystemsFighter::vfunction123()
+{
+    return &m18;
 }
