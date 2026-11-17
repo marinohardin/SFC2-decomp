@@ -145,3 +145,44 @@ void std::string::_Freeze()
     if (_Ptr != 0)
         _Refcnt(_Ptr) = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00403dae
+bool std::string::_Grow(size_type _N, bool _Trim)
+{
+    if (max_size() < _N)
+        _Xlen();
+    if (_Trim)
+        _Len = 0;
+    else if (_N < _Len)
+        _Len = _N;
+    if (_Ptr == 0 || _Refcnt(_Ptr) == 0)
+    {
+        if (_N == 0)
+        {
+            if (_Trim)
+            {
+                _Tidy(true);
+                return (false);
+            }
+            if (_Ptr == 0)
+                return (false);
+            _Len = 0;
+            _Eos(0);
+            return (false);
+        }
+        if (_Trim)
+        {
+            if (_Res <= 0x1f && _Res >= _N)
+                return (true);
+            _Tidy(true);
+        }
+        else if (_Res >= _N)
+            return (true);
+    }
+    else if (_N == 0)
+    {
+        _Tidy(true);
+        return (false);
+    }
+    return (_Copy(_N), true);
+}
