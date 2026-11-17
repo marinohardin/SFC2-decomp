@@ -470,3 +470,18 @@ template<class _E> void fn_00404230_ObjT<_E>::fn_00404a0c()
         m44 = new std::basic_string<_E>;
 }
 template class fn_00404230_ObjT<char>;
+
+// HYPOTHESIS: std::locale's copy constructor: share the implementation and bump its count.
+class fn_00404aba_Locale
+{
+public:
+    fn_00404aba_Locale(const fn_00404aba_Locale& other) throw();
+    fn_00402b90_Obj* m0;
+};
+
+// FUNCTION: STARFLEETOP 0x00404aba
+fn_00404aba_Locale::fn_00404aba_Locale(const fn_00404aba_Locale& other) throw()
+{
+    m0 = other.m0;
+    m0->fn_00402b90();
+}
