@@ -6225,9 +6225,9 @@
    "symbol": "?mFileOpenDialog@tFileSession@@QAE?AVtPath@@AAVtString@@0@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 96,
-   "score": 95.931,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061c380": {
    "name": "FUN_0061c380",
