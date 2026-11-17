@@ -246,7 +246,7 @@ public:
     short field_c8;
     char pad_ca[2];
     int field_cc;
-    float field_d0;
+    int field_d0;
     float field_d4;
     float field_d8;
     float field_dc;

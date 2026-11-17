@@ -1105,3 +1105,9 @@ void fn_004d8916(int param_1, int param_2, float param_3, int param_4, int param
         fclose(file);
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d895c
+int tBaseWeapon::vfunction144()
+{
+    return field_d0;
+}
