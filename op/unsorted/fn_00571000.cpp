@@ -68,7 +68,9 @@ public:
 void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
-
+	// MATCH-ONLY: the original releases the guard explicitly after the tID temporary is gone
+	// (no state reset before Leave); a block round the body reproduces that.
+	{
 #line 152
 	validate(pObject);
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
@@ -83,15 +85,14 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
 
-	{
-		const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
-		pActualObject->AttachToDB(newID);
+	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	pActualObject->AttachToDB(newID);
 
-		pActualObject->SetLockID(0);
+	pActualObject->SetLockID(0);
 
-		AddObjectToDBIndex(pActualObject, allocID);
+	AddObjectToDBIndex(pActualObject, allocID);
 
-		*pObject = *pActualObject;
+	*pObject = *pActualObject;
 	}
 	guard.Leave();
 }
