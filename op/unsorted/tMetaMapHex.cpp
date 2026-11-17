@@ -459,3 +459,13 @@ bool tMetaMapHex::fn_0053a287( tHexPoint& point, unsigned int param_1, unsigned 
 	guard.Leave();
 	return result;
 }
+
+// FUNCTION: STARFLEETOP 0x0053a2fc
+std::map< int32, float >& tMetaMapHex::fn_0053a2fc()
+{
+	// HYPOTHESIS: m_48 is the map tBattles looks up; its declared stand-in type differs from the
+	// std::map the header returns, so the reference is converted here.
+	m_bc.Enter();
+	m_bc.Leave();
+	return ( std::map< int32, float >& )m_48;
+}
