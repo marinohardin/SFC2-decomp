@@ -5,6 +5,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <list>
+#include <map>
 
 #include "unsorted/tNetControl.h"
 
@@ -40,7 +41,8 @@ class fn_00616000_DirectPlayObject
 public:
 	virtual long __stdcall v0();
 	virtual long __stdcall v1();
-	virtual long __stdcall v2();
+	// HYPOTHESIS: slot 2 fits IUnknown::Release.
+	virtual unsigned long __stdcall Release();
 	virtual long __stdcall v3();
 	virtual long __stdcall v4();
 	virtual long __stdcall v5();
@@ -56,7 +58,8 @@ public:
 	virtual long __stdcall v15();
 	virtual long __stdcall v16();
 	virtual long __stdcall v17();
-	virtual long __stdcall v18();
+	// HYPOTHESIS: slot 18 fits IDirectPlay4::GetPlayerAddress (player, data, size).
+	virtual long __stdcall GetPlayerAddress( int player, void* pData, unsigned long* pSize );
 	virtual long __stdcall v19();
 	virtual long __stdcall v20();
 	virtual long __stdcall v21();
@@ -79,7 +82,8 @@ public:
 	virtual long __stdcall v35();
 	virtual long __stdcall v36();
 	virtual long __stdcall v37();
-	virtual long __stdcall v38();
+	// HYPOTHESIS: slot 38 fits IDirectPlay4::InitializeConnection (connection, flags).
+	virtual long __stdcall InitializeConnection( void* pConnection, unsigned long flags );
 	virtual long __stdcall v39();
 	virtual long __stdcall v40();
 	virtual long __stdcall v41();
@@ -147,6 +151,43 @@ struct fn_006166c0_Name
 	const char* fLongName;
 };
 
+// HYPOTHESIS: a DirectPlay lobby COM interface; slot 5 fits IDirectPlayLobby::EnumAddress
+// (callback, address, size, context).
+class fn_00616000_LobbyObject
+{
+public:
+	virtual long __stdcall v0();
+	virtual long __stdcall v1();
+	virtual long __stdcall v2();
+	virtual long __stdcall v3();
+	virtual long __stdcall v4();
+	virtual long __stdcall EnumAddress( int ( __stdcall *pCallback )( const GUID& guid, unsigned long size, const void* pData, void* pContext ), const void* pAddress, unsigned long size, void* pContext );
+};
+
+// HYPOTHESIS: the address callback 0x00616700 hands to EnumAddress.
+int __stdcall fn_0061a2c0( const GUID& guid, unsigned long size, const void* pData, void* pContext );
+
+// HYPOTHESIS: the class id and interface id 0x00616700 creates the temporary interface with.
+extern const GUID g_007bb118;
+extern const GUID g_007bb128;
+
+// HYPOTHESIS: 0x00618920 returns +0x1c (the connection data); 0x00618d60 copies the entries
+// of a vector into its own vector at +0x70.
+class fn_00616700_Provider
+{
+public:
+	void* fn_00618920();
+	void fn_00618d60( std::vector< c_004329af_entry >* pEntries );
+};
+
+// HYPOTHESIS: the value kept in the map under key 3 (the modem); +0x1c holds its provider.
+class fn_00616700_Entry
+{
+public:
+	char fPad[0x1c];
+	fn_00616700_Provider* fProvider;
+};
+
 class fn_00616000_DirectPlayHolder
 {
 public:
@@ -161,9 +202,17 @@ public:
 	// HYPOTHESIS: a member that leaves this unread; the arguments' class is a guess from the
 	// shared name getter 0x0060f6d0.
 	fn_006166c0_Name fn_006166c0( c_004329af_entry* pShort, c_004329af_entry* pLong );
+	std::vector< c_004329af_entry >* fn_00616700();
+	void fn_00616ac0();
 	char fPad[0x44];
 	fn_00616000_DirectPlayObject* fDirectPlayObject;
-	char fPad48[0x68];
+	fn_00616000_LobbyObject* fLobby;
+	// HYPOTHESIS: the modem addresses EnumAddress fills.
+	std::vector< c_004329af_entry > fAddresses;
+	// HYPOTHESIS: the insert at 0x006135a0 is map<long, long>'s (an SDK match); the values are
+	// read as pointers.
+	std::map< long, long > fProviders;
+	char fPad6C[0x44];
 	// HYPOTHESIS: a std::list of received messages (head at +0xb4, size at +0xb8).
 	std::list<fn_00616470_Message*> fMessages;
 	char fPadBC[0x90];
@@ -337,4 +386,48 @@ fn_006166c0_Name fn_00616000_DirectPlayHolder::fn_006166c0( c_004329af_entry* pS
 	name.fShortName = pShort->fn_0060f6d0();
 	name.fLongName = pLong->fn_0060f6d0();
 	return name;
+}
+
+// FUNCTION: STARFLEETOP 0x00616700
+std::vector< c_004329af_entry >* fn_00616000_DirectPlayHolder::fn_00616700()
+{
+	unsigned long size = 0;
+	fn_00616000_DirectPlayObject* pDirectPlay = 0;
+	fAddresses.clear();
+	try
+	{
+		long hr = CoCreateInstance( g_007bb118, 0, CLSCTX_ALL, g_007bb128, (void**)&pDirectPlay );
+		if ( hr < 0 )
+			throw fn_00614460_Error( hr, "Fail to create temp DP Interface", fn_00619a20_Context() );
+		fn_00616700_Entry* pEntry = (fn_00616700_Entry*)fProviders[3];
+		hr = pDirectPlay->InitializeConnection( pEntry->fProvider->fn_00618920(), 0 );
+		if ( hr < 0 )
+			throw fn_00614460_Error( hr, "Fail Init Modem SP", fn_00619a20_Context() );
+		void* pAddress = 0;
+		hr = pDirectPlay->GetPlayerAddress( 0, 0, &size );
+		if ( hr == 0x8877001e )
+			pAddress = _alloca( size );
+		else if ( hr < 0 )
+			throw fn_00614460_Error( hr, "GetPlayerAddress size", fn_00619a20_Context() );
+		if ( pAddress != 0 )
+		{
+			long result = pDirectPlay->GetPlayerAddress( 0, pAddress, &size );
+			if ( result < 0 )
+				throw fn_00614460_Error( result, "GetPlayerAddress", fn_00619a20_Context() );
+			fn_00616ac0();
+			hr = fLobby->EnumAddress( fn_0061a2c0, pAddress, size, &fAddresses );
+			if ( hr < 0 )
+				throw fn_00614460_Error( hr, "EnumAddress for modem failed", fn_00619a20_Context() );
+		}
+		pEntry->fProvider->fn_00618d60( &fAddresses );
+		fProviders[3] = (long)pEntry;
+		pDirectPlay->Release();
+	}
+	catch ( fn_00614460_Error& e )
+	{
+		fn_006123b0( e.v1() );
+		if ( pDirectPlay != 0 )
+			pDirectPlay->Release();
+	}
+	return &fAddresses;
 }

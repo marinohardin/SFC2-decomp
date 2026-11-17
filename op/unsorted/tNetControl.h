@@ -15,11 +15,15 @@ struct c_tNetControl_8CC4_entry;	// HYPOTHESIS: defined in tNetControl.cpp, its 
 
 // HYPOTHESIS: an entry of the port list fn_004329af returns; 0x0060f6d0 returns its name.
 // tNetControl.cpp declares a class with the same getter only inside that unit.
+// HYPOTHESIS: 0x00616700 destroys the entries through slot 0 of a vtable and assigns them with
+// 0x0060f790.
 class c_004329af_entry
 {
 public:
+	virtual ~c_004329af_entry();
+	c_004329af_entry &operator=( const c_004329af_entry &other );
 	const char *fn_0060f6d0();
-	char m00[0xc];
+	char m04[0x8];
 };
 
 // HYPOTHESIS: a node of the list fn_0043257a returns: the next node, then a name the game
