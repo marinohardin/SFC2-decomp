@@ -3259,6 +3259,15 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
+  "0x00460539": {
+   "name": "FUN_00460539",
+   "symbol": "?fn_00460539@fn_004602b2_class@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "unit": "unsorted/fn_00460000.cpp",
+   "size": 215,
+   "score": 32.936,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
   "0x0047ebca": {
    "name": "FUN_0047ebca",
    "symbol": "?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ",

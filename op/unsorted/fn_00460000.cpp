@@ -119,8 +119,8 @@ std::string fn_004601db_class::fn_00460216(const std::string &arg)
 
 // HYPOTHESIS: a free function that takes a panel name and a rectangle (the same call is made
 // from tPanelMgr.cpp); 0x0084411c holds a pointer to the panel name "Big Yes No".
-void fn_004d31ed(void *arg, int a, int b, int width, int height);
-extern void *g_0084411c;
+void fn_004d31ed(const char *arg, int a, int b, int width, int height);
+extern char *g_0084411c;
 
 // HYPOTHESIS: the owning class is not identified; members are named by offset. The text at
 // +0xbc is a std::string (assigned through std::string::assign at 0x00403b49), and the
@@ -131,10 +131,13 @@ public:
     void fn_004602b2(const std::string &text, int seconds, bool exit);
     void fn_0046052c();
     double fn_0046034f();
+    void fn_00460539(const std::string &text, const std::string &name);
 
     char pad_000[0x2c];
     fn_004d290d_object m_2c;
-    char pad_090[0xbc - 0x90];
+    bool m_90;
+    std::string m_94;
+    char pad_0a4[0xbc - 0xa4];
     std::string m_bc;
     char pad_0cc[0xd0 - 0xcc];
     double m_d0;
@@ -221,4 +224,26 @@ void fn_004d32c4(void *arg);
 void fn_004602b2_class::fn_0046052c()
 {
     fn_004d32c4(g_0084411c);
+}
+
+// HYPOTHESIS: 0x00844120 holds a pointer to a panel name, like 0x0084411c; 0x008443c0 is passed
+// by address (as in tPanelMgr.cpp).
+extern char *g_00844120;
+extern const char g_008443c0[];
+
+// FUNCTION: STARFLEETOP 0x00460539
+void fn_004602b2_class::fn_00460539(const std::string &text, const std::string &name)
+{
+    m_90 = true;
+    if (name.empty())
+    {
+        fn_004d31ed(g_00844120, 0, 0, 0x280, 0x1e0);
+        m_2c.fn_004d288f(g_008443c0)->fn_004d2573(text);
+        m_94 = g_00844120;
+    }
+    else
+    {
+        fn_004d31ed(name.c_str(), 0, 0, 0x280, 0x1e0);
+        m_94 = name;
+    }
 }
