@@ -529,3 +529,20 @@ void tObject_005ea7f8::fn_005ea827()
 	}
 	m_04.Leave();
 }
+
+// HYPOTHESIS: a second out-of-line tSingleAccessWrapper<T>::~tSingleAccessWrapper (same layout and
+// body as 0x005ea7f8), with 0x005ea887 as that instance's Delete; the pointee is not recovered.
+class tObject_005ea858 {
+public:
+	~tObject_005ea858();
+	void fn_005ea887();
+
+	void *m_00;
+	mutable tOptex m_04;
+};
+
+// FUNCTION: STARFLEETOP 0x005ea858
+tObject_005ea858::~tObject_005ea858()
+{
+	fn_005ea887();
+}
