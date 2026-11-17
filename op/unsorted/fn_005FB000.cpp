@@ -614,6 +614,14 @@ void FUN_005fba36( const std::pair<const std::string*, const std::string*>& stri
 	std::for_each( strings.first, strings.second, callback );
 }
 
+// HYPOTHESIS: as for 0x005fba36, the first argument holds the first and past-the-end string at
+// +0 and +4; it is written as a pair of pointers.
+// FUNCTION: STARFLEETOP 0x005fba75
+const std::string* FUN_005fba75( const std::pair<const std::string*, const std::string*>& strings, const std::string& value )
+{
+	return std::find( strings.first, strings.second, value );
+}
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;

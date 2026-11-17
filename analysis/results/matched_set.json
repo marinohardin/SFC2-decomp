@@ -9109,6 +9109,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fba75": {
+   "name": "FUN_005fba75",
+   "symbol": "?FUN_005fba75@@YAPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABU?$pair@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBV12@@2@ABV12@@Z",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
