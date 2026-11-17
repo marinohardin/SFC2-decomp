@@ -117,6 +117,8 @@ tListBox_News_Session *fn_004bd7ce( void )
 // constructor and 0x004bd853 destroys it by jumping to tString's destructor.
 struct c_004bd805_Entry
 {
+	c_004bd805_Entry();
+
 	tString text;
 	int field_28;
 };
@@ -337,4 +339,11 @@ public:
 c_004bdd0d_Object::c_004bdd0d_Object()
 {
 	fn_004bdd67();
+}
+
+// HYPOTHESIS: the entry's constructor, which only builds its string; the vector constructor
+// of field_28 calls it for each entry.
+// FUNCTION: STARFLEETOP 0x004bdd5b
+c_004bd805_Entry::c_004bd805_Entry()
+{
 }
