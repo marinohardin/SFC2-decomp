@@ -332,6 +332,14 @@ struct fn_004026ec_Name : public std::string
     int fn_0040651e(void* p);
 };
 
+struct fn_004027c8_Rec
+{
+    int a;
+    int b;
+    int c;
+    char d;
+};
+
 struct fn_004026ec_Entry
 {
     int pad[2];
@@ -348,14 +356,6 @@ struct fn_004026ec_Dest
     void fn_00407dd9(int v);
     void fn_00407de6(int v);
     void fn_00407df3(int v);
-};
-
-struct fn_004027c8_Rec
-{
-    int a;
-    int b;
-    int c;
-    char d;
 };
 
 class fn_004026ec_Owner
@@ -407,6 +407,7 @@ void fn_004026ec_Owner::fn_00402763(fn_004026ec_Dest* d, int a)
 void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, int a)
 {
     int n = (char)a;
+    int i;
     int* pe = (int*)e;
     int* p = (int*)d;
     p[0x628 / 4] = n;
@@ -429,9 +430,9 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     d->fn_00407df3(pe[0x18 / 4]);
     d->fn_00407dbf(pe[0x34 / 4]);
     d->fn_00407dcc(pe[0x40 / 4]);
-    for (a = 0; a < n; a++)
+    for (i = 0; i < n; i++)
     {
-        fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (char)(a * 5);
+        fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (char)(i * 5);
         fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68);
         for (int k = 0; k < 5; k++)
         {
