@@ -268,3 +268,9 @@ const std::string &fn_004bdcc3()
 {
 	return g_0091f8f0;
 }
+
+// FUNCTION: STARFLEETOP 0x004bdcc9
+const std::string &fn_004bdcc9()
+{
+	return g_0091f8e0;
+}
