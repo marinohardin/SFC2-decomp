@@ -35,6 +35,8 @@ public:
 		// this declared one (which stores the vtable) stands in for it.
 		virtual ~tShipCache();
 
+		tShipCache& operator=( const tShipCache& other );
+
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );
 
@@ -42,10 +44,12 @@ public:
 		db::tID FUN_005419ed() const;
 
 		db::tID field_0c;
-		byte field_1c[0x24 - 0x1c];
+		int field_1c;
+		int field_20;
 		std::string field_24;
 		std::string field_34;
-		byte field_44[0x4c - 0x44];
+		int field_44;
+		int field_48;
 	};
 };
 

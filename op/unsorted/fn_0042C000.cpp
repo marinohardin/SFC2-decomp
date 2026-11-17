@@ -745,3 +745,19 @@ void fn_0042c9c5(tHexPoint* dest, const tHexPoint& src)
 {
 	new ((void*)dest) tHexPoint(src);
 }
+
+// HYPOTHESIS: tShipCache's implicit assignment operator, out of line for the copies in
+// vector< tServCharacter::tShipCache >; written memberwise as the compiler generates it.
+// FUNCTION: STARFLEETOP 0x0042c9f2
+tServCharacter::tShipCache& tServCharacter::tShipCache::operator=( const tShipCache& other )
+{
+	(nDataStore::tStreamable&)*this = other;
+	field_0c = other.field_0c;
+	field_1c = other.field_1c;
+	field_20 = other.field_20;
+	field_24 = other.field_24;
+	field_34 = other.field_34;
+	field_44 = other.field_44;
+	field_48 = other.field_48;
+	return *this;
+}
