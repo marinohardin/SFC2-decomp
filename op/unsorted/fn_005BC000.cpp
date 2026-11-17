@@ -357,35 +357,6 @@ fn_005bc249_elem *fn_005bc249_vector::FUN_005bc249(fn_005bc249_elem *_F, fn_005b
 	return (_F);
 }
 
-// HYPOTHESIS: a 44-byte element of another STL vector.
-struct fn_005bc2a0_elem
-{
-	char m00[0x2c];
-};
-
-// HYPOTHESIS: an STL vector of 44-byte elements laid out like
-// fn_005bc018_vector.
-struct fn_005bc2a0_vector
-{
-	char m00;
-	fn_005bc2a0_elem *_First;
-	fn_005bc2a0_elem *_Last;
-	fn_005bc2a0_elem *_End;
-
-	// HYPOTHESIS: insert(_P, _M, _X).
-	void FUN_005bcb5b(fn_005bc2a0_elem *_P, unsigned int _M, const fn_005bc2a0_elem &_X);
-	fn_005bc2a0_elem *FUN_005bc2a0(fn_005bc2a0_elem *_P, const fn_005bc2a0_elem &_X);
-};
-
-// HYPOTHESIS: the STL vector's insert(_P, _X).
-// FUNCTION: STARFLEETOP 0x005bc2a0
-fn_005bc2a0_elem *fn_005bc2a0_vector::FUN_005bc2a0(fn_005bc2a0_elem *_P, const fn_005bc2a0_elem &_X)
-{
-	fn_005bc2a0_elem *_F = _First;
-	FUN_005bcb5b(_P, 1, _X);
-	return (_First + (_P - _F));
-}
-
 // HYPOTHESIS: a 44-byte element with a virtual destructor in vtable slot 0;
 // 0x005b676a is its assignment operator.
 struct fn_005bc2cd_elem
@@ -395,6 +366,59 @@ struct fn_005bc2cd_elem
 
 	char m04[0x28];
 };
+
+// HYPOTHESIS: the library's _Construct(_P, _V) for this element.
+void FUN_005bd2ea(fn_005bc2cd_elem *_P, const fn_005bc2cd_elem &_V);
+
+// HYPOTHESIS: an STL vector of 44-byte elements laid out like
+// fn_005bc018_vector; the insert at 0x005bcb5b assigns with 0x005b676a, so
+// its element is fn_005bc2cd_elem.
+struct fn_005bc2a0_vector
+{
+	char m00;
+	fn_005bc2cd_elem *_First;
+	fn_005bc2cd_elem *_Last;
+	fn_005bc2cd_elem *_End;
+
+	unsigned int size() const
+		{return (_First == 0 ? 0 : _Last - _First); }
+	void _Destroy(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L)
+		{for (; _F != _L; ++_F)
+			_F->~fn_005bc2cd_elem(); }
+	fn_005bc2cd_elem *_Ucopy(const fn_005bc2cd_elem *_F, const fn_005bc2cd_elem *_L,
+		fn_005bc2cd_elem *_P)
+		{for (; _F != _L; ++_P, ++_F)
+			FUN_005bd2ea(_P, *_F);
+		return (_P); }
+	void _Ufill(fn_005bc2cd_elem *_F, unsigned int _N, const fn_005bc2cd_elem &_X)
+		{for (; 0 < _N; --_N, ++_F)
+			FUN_005bd2ea(_F, _X); }
+	// HYPOTHESIS: the library's allocate, fill and copy_backward, inlined.
+	fn_005bc2cd_elem *_Allocate(int _N, fn_005bc2cd_elem *)
+		{if (_N < 0)
+			_N = 0;
+		return ((fn_005bc2cd_elem *)operator new((unsigned int)_N * sizeof (fn_005bc2cd_elem))); }
+	void _Fill(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L, const fn_005bc2cd_elem &_X)
+		{for (; _F != _L; ++_F)
+			_F->FUN_005b676a(_X); }
+	fn_005bc2cd_elem *_Copy_backward(fn_005bc2cd_elem *_F, fn_005bc2cd_elem *_L,
+		fn_005bc2cd_elem *_X)
+		{while (_F != _L)
+			(--_X)->FUN_005b676a(*--_L);
+		return (_X); }
+	// HYPOTHESIS: insert(_P, _M, _X).
+	void FUN_005bcb5b(fn_005bc2cd_elem *_P, unsigned int _M, const fn_005bc2cd_elem &_X);
+	fn_005bc2cd_elem *FUN_005bc2a0(fn_005bc2cd_elem *_P, const fn_005bc2cd_elem &_X);
+};
+
+// HYPOTHESIS: the STL vector's insert(_P, _X).
+// FUNCTION: STARFLEETOP 0x005bc2a0
+fn_005bc2cd_elem *fn_005bc2a0_vector::FUN_005bc2a0(fn_005bc2cd_elem *_P, const fn_005bc2cd_elem &_X)
+{
+	fn_005bc2cd_elem *_F = _First;
+	FUN_005bcb5b(_P, 1, _X);
+	return (_First + (_P - _F));
+}
 
 // HYPOTHESIS: an STL vector of 44-byte elements laid out like
 // fn_005bc018_vector.
@@ -850,6 +874,33 @@ void fn_005bc938_vector::FUN_005bc938(fn_005bc938_elem *_P, unsigned int _M, con
 		{unsigned int _N = size() + (_M < size() ? size() : _M);
 		fn_005bc938_elem *_S = _Allocate(_N, (fn_005bc938_elem *)0);
 		fn_005bc938_elem *_Q = _Ucopy(_First, _P, _S);
+		_Ufill(_Q, _M, _X);
+		_Ucopy(_P, _Last, _Q + _M);
+		_Destroy(_First, _Last);
+		operator delete(_First);
+		_End = _S + _N;
+		_Last = _S + size() + _M;
+		_First = _S; }
+	else if ((unsigned int)(_Last - _P) < _M)
+		{_Ucopy(_P, _Last, _P + _M);
+		_Ufill(_Last, _M - (_Last - _P), _X);
+		_Fill(_P, _Last, _X);
+		_Last += _M; }
+	else if (0 < _M)
+		{_Ucopy(_Last - _M, _Last, _Last);
+		_Copy_backward(_P, _Last - _M, _Last);
+		_Fill(_P, _P + _M, _X);
+		_Last += _M; }
+}
+
+// HYPOTHESIS: the STL vector's insert(_P, _M, _X).
+// FUNCTION: STARFLEETOP 0x005bcb5b
+void fn_005bc2a0_vector::FUN_005bcb5b(fn_005bc2cd_elem *_P, unsigned int _M, const fn_005bc2cd_elem &_X)
+{
+	if ((unsigned int)(_End - _Last) < _M)
+		{unsigned int _N = size() + (_M < size() ? size() : _M);
+		fn_005bc2cd_elem *_S = _Allocate(_N, (fn_005bc2cd_elem *)0);
+		fn_005bc2cd_elem *_Q = _Ucopy(_First, _P, _S);
 		_Ufill(_Q, _M, _X);
 		_Ucopy(_P, _Last, _Q + _M);
 		_Destroy(_First, _Last);
