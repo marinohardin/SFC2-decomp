@@ -623,6 +623,47 @@ address	size	symbol	source	modes
 0x00520004	139	tAICaptain::fn_00520004(float,unsigned char,char *)	unsorted/tAICaptain.cpp	vc6 guest
 0x0052008f	57	tAICaptain::fn_0052008f()	unsorted/tAICaptain.cpp	vc6 guest
 0x005200c8	2058	tAICaptain::vfunction4(tObject_00413ac3_arg *)	unsorted/tAICaptain.cpp	vc6 guest
+0x0053434b	4	fn_0053434b_object::fn_0053434b() const	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534391	10	g_00c2f3f8 (dynamic initializer)	unsorted/fn_0053434B.cpp	vc6
+0x0053439b	12	g_00c2f3f8 (atexit registration)	unsorted/fn_0053434B.cpp	vc6
+0x005343b1	94	fn_005343b1_object::fn_005343b1(char*,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x0053440f	22	fn_0053440f_object::fn_0053440f_object()	unsorted/fn_0053434B.cpp	vc6
+0x00534425	47	fn_0053440f_object::~fn_0053440f_object()	unsorted/fn_0053434B.cpp	vc6
+0x00534454	13	fn_0053440f_object::fn_00534454(void*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534461	66	fn_0053440f_object::fn_00534461(char*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x005344a3	92	fn_005344a3_object::fn_005344a3_object(long)	unsorted/fn_0053434B.cpp	partial
+0x005344ff	66	fn_005344a3_object::~fn_005344a3_object()	unsorted/fn_0053434B.cpp	vc6
+0x0053455b	19	fn_005344a3_object::fn_0053455b(long*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x0053456e	180	fn_005344a3_object::fn_0053456e(char*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534622	10	fn_005344a3_object::fn_00534622(fn_0053462c_entry*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x0053462c	27	fn_005344a3_object::fn_0053462c(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534647	73	fn_005344a3_object::fn_00534647(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534690	16	fn_005344a3_object::fn_00534690(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x005346a0	57	fn_005344a3_object::fn_005346a0(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x005346d9	32	fn_005344a3_object::fn_005346d9(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x005346f9	102	fn_005346f9_object::fn_005346f9_object(long)	unsorted/fn_0053434B.cpp	vc6
+0x0053475f	94	fn_005346f9_object::~fn_005346f9_object()	unsorted/fn_0053434B.cpp	vc6
+0x005347bd	55	fn_005346f9_object::fn_005347bd(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x005347f4	55	fn_005346f9_object::fn_005347f4(long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x0053482b	21	fn_005346f9_object::fn_0053482b(bool)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534840	21	fn_005346f9_object::fn_00534840(bool)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534855	174	fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >*,bool,char*)	unsorted/fn_0053434B.cpp	partial
+0x00534903	77	fn_005346f9_object::fn_00534903()	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534950	182	fn_00534950_object::fn_00534950_object()	unsorted/fn_0053434B.cpp	vc6
+0x00534a06	187	fn_00534950_object::~fn_00534950_object()	unsorted/fn_0053434B.cpp	vc6
+0x00534ac1	15	fn_00534ac1_entry::fn_00534ac1_entry()	unsorted/fn_0053434B.cpp	vc6
+0x00534ad0	148	fn_00534950_object::fn_00534ad0()	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534b64	454	fn_00534950_object::fn_00534b64()	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534d2a	60	fn_00534950_object::fn_00534d2a(int,fn_00534ac1_entry*,char*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534d66	45	fn_00534950_object::fn_00534d66(char*)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534d93	34	fn_00534950_object::fn_00534d93(int,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534db5	41	fn_00534950_object::fn_00534db5(int,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534dde	31	fn_00534950_object::fn_00534dde(int,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534dfd	38	fn_00534950_object::fn_00534dfd(int,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534e23	31	fn_00534950_object::fn_00534e23(int,long)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534e42	1	fn_00534950_object::fn_00534e42(int,bool)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534e59	23	fn_00534950_object::fn_00534e59(int,bool)	unsorted/fn_0053434B.cpp	vc6 guest
+0x00534e70	17	fn_00534e70_object::fn_00534e70(long)	unsorted/fn_0053434B.cpp	vc6 guest
 0x00538cca	54	tMetaMapDesc::tMetaMapDesc(void**,int32u,bool)	unsorted/tMetaMapDesc.cpp	vc6
 0x00538d00	63	tMetaMapDesc::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00538d3f	102	tMetaMapDesc::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapDesc.cpp	vc6 guest
@@ -634,6 +675,206 @@ address	size	symbol	source	modes
 0x00538fc1	73	mAllocate()	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x0053900a	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x005391b0	654	tMetaMapHex::tMetaMapHex(bool)	unsorted/tMetaMapHex.cpp	vc6
+0x0053943e	28	tMetaMapHex::`scalar deleting destructor'	unsorted/tMetaMapHex.cpp	vc6
+0x00539464	144	tMetaMapHex::~tMetaMapHex()	unsorted/tMetaMapHex.cpp	partial
+0x005394f4	190	tMetaMapHex::tMetaMapHex(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6
+0x005395b2	136	tMetaMapHex::operator=(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053963a	455	tMetaMapHex::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapHex.cpp	partial
+0x00539801	669	tMetaMapHex::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapHex.cpp	partial
+0x00539a9e	484	tMetaMapHex::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tMetaMapHex.cpp	partial
+0x00539c82	586	tMetaMapHex::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tMetaMapHex.cpp	partial
+0x00539ecc	28	tMetaMapHex::SQLTableName() const	unsorted/tMetaMapHex.cpp	vc6 guest
+0x00539ee8	28	tMetaMapHex::SQLFieldNames() const	unsorted/tMetaMapHex.cpp	vc6 guest
+0x00539f04	76	tMetaMapHex::fn_00539f04()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x00539f50	76	tMetaMapHex::fn_00539f50()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x00539f9c	85	tMetaMapHex::fn_00539f9c()	unsorted/tMetaMapHex.cpp	partial
+0x00539ff1	662	tMetaMapHex::fn_00539ff1(int,int)	unsorted/tMetaMapHex.cpp	partial
+0x0053a287	117	tMetaMapHex::fn_0053a287(tHexPoint&,unsigned int,unsigned int)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a2fc	32	tMetaMapHex::fn_0053a2fc()	unsorted/tMetaMapHex.cpp	partial
+0x0053a31c	32	tMetaMapHex::fn_0053a31c()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a33c	32	tMetaMapHex::fn_0053a33c()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a35c	32	tMetaMapHex::fn_0053a35c()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a37c	32	tMetaMapHex::fn_0053a37c()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a39c	32	tMetaMapHex::fn_0053a39c()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a3bc	88	tMetaMapHex::fn_0053a3bc(int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a414	91	tMetaMapHex::fn_0053a414(int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a46f	45	tMetaMapHex::fn_0053a46f()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a49c	18	tMetaMapHex::fn_0053a49c(const tHexPoint&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a4ae	80	tMetaMapHex::fn_0053a4ae(int,int)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a4fe	36	tMetaMapHex::fn_0053a4fe(int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a522	36	tMetaMapHex::fn_0053a522(int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a546	36	tMetaMapHex::fn_0053a546(int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a56a	36	tMetaMapHex::fn_0053a56a(long)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a58e	36	tMetaMapHex::fn_0053a58e(long)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a5b2	80	tMetaMapHex::fn_0053a5b2(long,int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a602	83	tMetaMapHex::fn_0053a602(long,int32)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a655	39	tMetaMapHex::fn_0053a655(double)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a67c	39	tMetaMapHex::fn_0053a67c(double)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a6a3	41	fn_0053a6cc_map::operator[](const int&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a6cc	56	fn_0053a6cc_map::tree::~tree()	unsorted/tMetaMapHex.cpp	vc6
+0x0053a704	54	fn_0053a6cc_map::operator=(const fn_0053a6cc_map&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a73a	41	fn_0053a73a_map::operator[](const int32&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a763	56	fn_0053a73a_map::tree::~tree()	unsorted/tMetaMapHex.cpp	vc6
+0x0053a79b	54	fn_0053a73a_map::operator=(const fn_0053a73a_map&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a7d1	110	fn_0053a7d1_vector::fn_0053a7d1_vector(const fn_0053a7d1_vector&)	unsorted/tMetaMapHex.cpp	partial
+0x0053a83f	192	fn_0053a7d1_vector::reserve(unsigned int)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a8ff	14	fn_0053a6cc_map::begin() const	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a90d	116	fn_0053a6cc_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a981	98	fn_0053a6cc_map::tree::fn_0053a981(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a9e3	35	fn_0053a6cc_map::insert(const value_type&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053aa06	116	fn_0053a73a_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053aa7a	58	fn_0053a73a_map::find(const int32&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053aab4	98	fn_0053a73a_map::tree::fn_0053aab4(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053ab16	132	fn_0053a6cc_map::tree::fn_0053ab16(node*,node*)	unsorted/tMetaMapHex.cpp	partial
+0x0053ab9a	48	fn_0053a6cc_map::tree::fn_0053ab9a(node*)	unsorted/tMetaMapHex.cpp	partial
+0x0053abca	132	fn_0053a73a_map::tree::fn_0053abca(node*,node*)	unsorted/tMetaMapHex.cpp	partial
+0x0053ac4e	48	fn_0053a73a_map::tree::fn_0053ac4e(node*)	unsorted/tMetaMapHex.cpp	partial
+0x0053ac7e	60	tClassAllocator()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053acba	77	mAllocate()	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053ad07	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053f22f	45	fn_0053f22f_owner::fn_0053f22f() const	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f25c	4	fn_0053f25c_owner::fn_0053f25c()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f260	4	fn_0053f25c_owner::fn_0053f260()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f264	4	fn_0053f25c_owner::fn_0053f264()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f268	4	fn_0053f25c_owner::fn_0053f268()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f26c	7	fn_0053f25c_owner::fn_0053f26c()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f273	7	fn_0053f25c_owner::fn_0053f273()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f27a	7	fn_0053f25c_owner::fn_0053f27a()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f281	33	fn_0053f22f_owner::fn_0053f281(nDatabase::tID)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2a2	21	fn_0053f25c_owner::fn_0053f2a2(const fn_0053f2a2_arg &)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2b7	10	fn_0053f25c_owner::fn_0053f2b7(char)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2c1	21	fn_0053f25c_owner::fn_0053f2c1(const fn_0053f2a2_arg &)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2d6	13	fn_0053f25c_owner::fn_0053f2d6(long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2e3	13	fn_0053f25c_owner::fn_0053f2e3(long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2f0	13	fn_0053f25c_owner::fn_0053f2f0(long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f2fd	18	fn_0053f25c_owner::fn_0053f2fd()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f30f	63	fn_0053f25c_owner::fn_0053f30f()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f461	12	fn_0053f522_owner::fn_0053f461()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f46d	36	fn_0042b0fd_owner::fn_0053f46d(const nDatabase::tID *,const nDatabase::tID *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f491	53	fn_0053f491_owner::fn_0053f491()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f4c6	36	fn_0053f4c6_owner::fn_0053f4c6(long,long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f4ea	56	fn_0053f522_owner::fn_0053f4ea()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f522	36	fn_0053f522_owner::fn_0053f522(long,long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f546	103	fn_0053f522_owner::fn_0053f546(fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f5ad	44	fn_0053f5ad_owner::fn_0053f5ad(char *,char *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f5d9	603	fn_0042b0fd_owner::fn_0053f5d9(nDatabase::tID *,const nDatabase::tID *,const nDatabase::tID *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f834	608	fn_0053f4c6_owner::fn_0053f834(fn_0053f491_elem *,const fn_0053f491_elem *,const fn_0053f491_elem *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fa94	87	fn_0053f4c6_owner::fn_0053fa94(fn_0053f491_elem *,fn_0053f491_elem *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053faeb	659	fn_0053f522_owner::fn_0053faeb(fn_0054340c_owner *,const fn_0054340c_owner *,const fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fd7e	99	fn_0053f522_owner::fn_0053fd7e(fn_0054340c_owner *,fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fde1	60	tClassAllocator()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fe1d	76	mAllocate()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fe69	12	mAssignAllocID(iAllocatorID)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fe75	89	operator<<(tOutput&,const std::vector< fn_0053f491_elem >&)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fece	117	operator<<(tOutput&,const std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053ff43	148	operator>>(tInput&,std::vector< fn_0053f491_elem >&)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053ffd7	182	operator>>(tInput&,std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest
+0x005430ad	12	fn_005430ad_owner::fn_005430ad()	unsorted/fn_00543000.cpp	vc6 guest
+0x005430b9	26	fn_005430ad_owner::fn_005430b9(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x005430d3	32	fn_005430ad_owner::fn_005430d3(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x005430f3	7	fn_005430ad_owner::fn_005430f3()	unsorted/fn_00543000.cpp	vc6 guest
+0x005430fa	49	fn_005430ad_owner::fn_005430fa(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
+0x0054312b	7	fn_005430ad_owner::fn_0054312b()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543132	12	fn_005430ad_owner::fn_00543132()	unsorted/fn_00543000.cpp	vc6 guest
+0x0054313e	11	fn_005430ad_owner::fn_0054313e()	unsorted/fn_00543000.cpp	partial
+0x00543149	331	fn_005430ad_owner::fn_00543149()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543294	122	fn_005430ad_owner::fn_00543294() const	unsorted/fn_00543000.cpp	partial
+0x0054330e	60	fn_005430ad_owner::fn_0054330e(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
+0x0054334a	13	fn_005430ad_owner::fn_0054334a(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543357	80	fn_005430ad_owner::fn_00543357(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
+0x005433a7	54	fn_005430ad_owner::fn_005433a7() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005433dd	11	fn_005430ad_owner::fn_005433dd()	unsorted/fn_00543000.cpp	partial
+0x005433e8	12	fn_005430ad_owner::fn_005433e8()	unsorted/fn_00543000.cpp	partial
+0x005433f4	12	fn_005430ad_owner::fn_005433f4()	unsorted/fn_00543000.cpp	partial
+0x00543400	12	fn_005430ad_owner::fn_00543400()	unsorted/fn_00543000.cpp	vc6 guest
+0x0054340c	43	fn_005430ad_owner::fn_0054340c()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543437	14	fn_005430ad_owner::fn_00543437()	unsorted/fn_00543000.cpp	partial
+0x00543445	16	fn_005430ad_owner::fn_00543445()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543455	4	fn_005430ad_owner::fn_00543455()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543459	60	fn_005430ad_owner::fn_00543459() const	unsorted/fn_00543000.cpp	vc6 guest
+0x00543495	7	fn_005430ad_owner::fn_00543495()	unsorted/fn_00543000.cpp	vc6 guest
+0x0054349c	7	fn_005430ad_owner::fn_0054349c()	unsorted/fn_00543000.cpp	vc6 guest
+0x005434a3	7	fn_005430ad_owner::fn_005434a3()	unsorted/fn_00543000.cpp	vc6 guest
+0x005434aa	7	fn_005430ad_owner::fn_005434aa()	unsorted/fn_00543000.cpp	vc6 guest
+0x005434b1	30	fn_005430ad_owner::fn_005434b1() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005434cf	7	fn_005430ad_owner::fn_005434cf()	unsorted/fn_00543000.cpp	vc6 guest
+0x005434d6	7	fn_005430ad_owner::fn_005434d6()	unsorted/fn_00543000.cpp	vc6 guest
+0x005434dd	26	fn_005430ad_owner::fn_005434dd() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005434f7	29	fn_005430ad_owner::fn_005434f7() const	unsorted/fn_00543000.cpp	vc6 guest
+0x00543514	7	fn_005430ad_owner::fn_00543514()	unsorted/fn_00543000.cpp	vc6 guest
+0x0054351b	54	fn_005430ad_owner::fn_0054351b() const	unsorted/fn_00543000.cpp	vc6 guest
+0x00543551	54	fn_005430ad_owner::fn_00543551() const	unsorted/fn_00543000.cpp	vc6 guest
+0x00543587	60	fn_005430ad_owner::fn_00543587() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005435c3	7	fn_005430ad_owner::fn_005435c3()	unsorted/fn_00543000.cpp	vc6 guest
+0x005435ca	64	fn_005430ad_owner::fn_005435ca(std::string)	unsorted/fn_00543000.cpp	vc6 guest
+0x0054360a	21	fn_005430ad_owner::fn_0054360a()	unsorted/fn_00543000.cpp	vc6 guest
+0x0054361f	21	fn_005430ad_owner::fn_0054361f()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543634	21	fn_005430ad_owner::fn_00543634()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543649	40	fn_005430ad_owner::fn_00543649(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543671	26	fn_005430ad_owner::fn_00543671(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x0054368b	26	fn_005430ad_owner::fn_0054368b(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x005436a5	26	fn_005430ad_owner::fn_005436a5(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x005436bf	67	fn_005430ad_owner::fn_005436bf(std::string)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543702	15	fn_005430ad_owner::fn_00543702(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543711	15	fn_005430ad_owner::fn_00543711(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543720	15	fn_005430ad_owner::fn_00543720(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x0054372f	118	fn_005430ad_owner::fn_0054372f(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial
+0x005437a5	184	fn_005430ad_owner::fn_005437a5(const nDatabase::tID &)	unsorted/fn_00543000.cpp	partial
+0x0054385d	231	fn_005430ad_owner::fn_0054385d(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial
+0x00543944	160	fn_005430ad_owner::fn_00543944(const nDatabase::tID &) const	unsorted/fn_00543000.cpp	partial
+0x005439e4	15	fn_005430ad_owner::fn_005439e4(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x005439f3	15	fn_005430ad_owner::fn_005439f3(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543a02	15	fn_005430ad_owner::fn_00543a02(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543a11	15	fn_005430ad_owner::fn_00543a11(float)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543a20	132	fn_005430ad_owner::fn_00543a20(const tHexPoint &)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543aa4	13	fn_005430ad_owner::fn_00543aa4(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543ab1	18	fn_005430ad_owner::fn_00543ab1(const tHexPoint &)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543ac3	31	fn_005430ad_owner::fn_00543ac3(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543ae2	15	fn_005430ad_owner::fn_00543ae2(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543af1	64	fn_005430ad_owner::fn_00543af1(std::string)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543b31	15	fn_005430ad_owner::fn_00543b31(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543b40	20	fn_005430ad_owner::fn_00543b40(const tHexPoint &)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543b54	20	fn_005430ad_owner::fn_00543b54(const tHexPoint &)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543b68	67	fn_005430ad_owner::fn_00543b68(std::string)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543bab	15	fn_005430ad_owner::fn_00543bab(int)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543bba	9	fn_005430ad_owner::fn_00543bba()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543bc3	26	fn_005430ad_owner::fn_00543bc3(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543bdd	147	fn_005430ad_owner::fn_00543bdd(bool)	unsorted/fn_00543000.cpp	vc6 guest
+0x00543c70	1248	fn_005430ad_owner::SQLFillInsertStream(std::stringstream*,bool)	unsorted/fn_00543000.cpp	partial
+0x00546027	22	c_00546027::fn_00546027(int,int)	unsorted/fn_00546000.cpp	vc6 guest
+0x0054603d	50	c_00546027::fn_0054603d(double)	unsorted/fn_00546000.cpp	vc6 guest
+0x0054606f	501	c_00546027::fn_0054606f(double,double,c_0045139e)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546264	9	c_00546027::fn_00546264()	unsorted/fn_00546000.cpp	vc6 guest
+0x0054626d	11	c_0054626d::fn_0054626d()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546278	4	c_00546278::fn_00546278()	unsorted/fn_00546000.cpp	vc6 guest
+0x0054627c	10	c_00546278::fn_0054627c(unsigned char)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546286	8	c_00546286::fn_00546286()	unsorted/fn_00546000.cpp	vc6 guest
+0x0054628e	4	c_0054628e::fn_0054628e()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546292	4	c_0054628e::fn_00546292()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546296	54	c_00546296::fn_00546296() const	unsorted/fn_00546000.cpp	vc6 guest
+0x005462cc	4	c_005462cc::fn_005462cc()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462d0	7	c_005462d0::fn_005462d0()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462d7	7	c_00546027::fn_005462d7()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462de	7	c_00546027::fn_005462de()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462e5	7	c_00546027::fn_005462e5()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462ec	7	c_00546027::fn_005462ec()	unsorted/fn_00546000.cpp	vc6 guest
+0x005462f3	50	c_00546278::fn_005462f3(const nDatabase::tID&)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546325	18	c_00546027::fn_00546325(int)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546337	148	c_00546337::fn_00546337(const c_00546337_arg&)	unsorted/fn_00546000.cpp	vc6 guest
+0x005463cb	181	c_00546337::fn_005463cb(float,char)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546480	18	c_00546027::fn_00546480(int)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546492	323	c_00546027::fn_00546492(c_00427db2&)	unsorted/fn_00546000.cpp	vc6 guest
+0x005465d5	434	c_00546027::fn_005465d5(float,int)	unsorted/fn_00546000.cpp	partial
+0x00546787	18	c_00546027::fn_00546787(int)	unsorted/fn_00546000.cpp	vc6 guest
+0x00546799	23	c_00546296::fn_00546799(const std::string&)	unsorted/fn_00546000.cpp	vc6 guest
+0x005467b0	26	c_00546296::fn_005467b0(const std::string&)	unsorted/fn_00546000.cpp	vc6 guest
+0x005467ca	13	c_00546027::fn_005467ca(unsigned int)	unsorted/fn_00546000.cpp	vc6 guest
+0x005467d7	60	tClassAllocator()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546813	76	mAllocate()	unsorted/fn_00546000.cpp	vc6 guest
+0x0054685f	12	mAssignAllocID(iAllocatorID)	unsorted/fn_00546000.cpp	vc6 guest
+0x005468d7	10	g_00c384dc (dynamic initializer)	unsorted/fn_00546000.cpp	vc6
+0x005468e1	12	g_00c384dc (atexit registration)	unsorted/fn_00546000.cpp	vc6
 0x00547b57	110	tBattles::tBattles()	unsorted/tBattles.cpp	vc6
 0x00547bc5	28	tBattles::scalar_deleting_destructor(unsigned char)	unsorted/tBattles.cpp	vc6 guest
 0x00547be1	126	tBattles::tBattles(const tBattles&)	unsorted/tBattles.cpp	vc6
@@ -657,6 +898,111 @@ address	size	symbol	source	modes
 0x00548395	60	tClassAllocator()	unsorted/tBattles.cpp	vc6 guest
 0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
+0x005e2501	56	tCompassRose::fn_005e2501()	unsorted/fn_005E2501.cpp	vc6 guest
+0x005e2539	22	tCompassRose::fn_005e2539()	unsorted/fn_005E2501.cpp	vc6 guest
+0x005e254f	102	tCompassRose::fn_005e254f(long *)	unsorted/fn_005E2501.cpp	vc6 guest
+0x005e2799	51	g_00c39048 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e27cc	12	g_00c39048 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e27ef	51	g_00c39038 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2822	12	g_00c39038 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2845	51	g_00c39028 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2878	12	g_00c39028 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e289b	51	g_00c39018 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e28ce	12	g_00c39018 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e28f1	51	g_00c39008 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2924	12	g_00c39008 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2947	51	g_00c38ff8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e297a	12	g_00c38ff8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e299d	51	g_00c38fe8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e29d0	12	g_00c38fe8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e29f3	51	g_00c38fd8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2a26	12	g_00c38fd8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2a49	51	g_00c38fc8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2a7c	12	g_00c38fc8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2a9f	51	g_00c38fb8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2ad2	12	g_00c38fb8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2af5	51	g_00c38fa8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2b28	12	g_00c38fa8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2b4b	51	g_00c38f98 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2b7e	12	g_00c38f98 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2ba1	51	g_00c38f88 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2bd4	12	g_00c38f88 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2bf7	51	g_00c38f78 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2c2a	12	g_00c38f78 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2c4d	51	g_00c38f68 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2c80	12	g_00c38f68 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2ca3	51	g_00c38f58 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2cd6	12	g_00c38f58 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2cf9	51	g_00c38f48 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2d2c	12	g_00c38f48 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2d4f	51	g_00c38f38 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2d82	12	g_00c38f38 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2da5	51	g_00c38f28 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2dd8	12	g_00c38f28 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2dfb	51	g_00c38f18 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2e2e	12	g_00c38f18 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2e51	51	g_00c38f08 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2e84	12	g_00c38f08 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2ea7	51	g_00c38ef8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2eda	12	g_00c38ef8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2efd	51	g_00c38ee8 (dynamic initializer)	unsorted/fn_005E2501.cpp	vc6
+0x005e2f30	12	g_00c38ee8 (atexit registration)	unsorted/fn_005E2501.cpp	vc6
+0x005e2f60	53	fn_005e2f60()	unsorted/fn_005E2501.cpp	vc6 guest
+0x005e2f95	251	tMetaMapControl::tMetaMapControl()	unsorted/tMetaMapControl.cpp	vc6
+0x005e3090	28	tMetaMapControl::`scalar deleting destructor'	unsorted/tMetaMapControl.cpp	vc6
+0x005e30ac	156	tMetaMapControl::~tMetaMapControl()	unsorted/tMetaMapControl.cpp	vc6
+0x005e3148	118	tMetaMapControl::fn_005e3148(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e31be	31	tMetaMapControl::fn_005e31be()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e31dd	143	tMetaMapControl::fn_005e31dd(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e326c	107	tMetaMapControl::fn_005e326c(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e32d7	285	tMetaMapControl::fn_005e32d7(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e33f4	285	tMetaMapControl::fn_005e33f4(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3511	268	tMetaMapControl::fn_005e3511(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e361d	134	tMetaMapControl::fn_005e361d(const tRect *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e36a3	42	tMetaMapControl::fn_005e36a3()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e36cd	63	tMetaMapControl::fn_005e36cd(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e370c	63	tMetaMapControl::fn_005e370c(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e374b	121	tMetaMapControl::fn_005e374b(fn_005e36cd_entry *,int,c_tScrollBar_FieldA8 *,int,int,unsigned long)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e37c4	20	tMetaMapControl::fn_005e37c4(fn_005e36cd_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e37d8	71	tMetaMapControl::fn_005e37d8(fn_005e36cd_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e381f	114	tMetaMapControl::fn_005e381f(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3891	114	tMetaMapControl::fn_005e3891(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3903	50	tMetaMapControl::fn_005e3903(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3935	56	tMetaMapControl::fn_005e3935(fn_005e36cd_entry *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e396d	14	tMetaMapControl::fn_005e396d(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e397b	188	tMetaMapControl::fn_005e397b(unsigned char *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3a37	161	tMetaMapControl::fn_005e3a37(fn_005e36cd_entry *,unsigned long *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3ad8	150	tMetaMapControl::fn_005e3ad8()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3b6e	24	tMetaMapControl::fn_005e3b6e()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3b86	31	tMetaMapControl::fn_005e3b86()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3ba5	462	tMetaMapControl::fn_005e3ba5()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3d73	213	tMetaMapControl::fn_005e3d73()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3e48	213	tMetaMapControl::fn_005e3e48()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3f1d	101	tMetaMapControl::fn_005e3f1d()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3f82	91	tMetaMapControl::fn_005e3f82(const std::string &,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3fdd	172	tMetaMapControl::vfunction8(const tRect *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4089	301	tMetaMapControl::vfunction30()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e41b6	54	fn_005eb3c5_class::~fn_005eb3c5_class()	unsorted/tMetaMapControl.cpp	vc6
+0x005e41ec	37	tMetaMapControl::fn_005e41ec()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4211	37	tMetaMapControl::fn_005e4211()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4236	37	tMetaMapControl::fn_005e4236()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e425b	37	tMetaMapControl::fn_005e425b()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4280	19	tMetaMapControl::fn_005e4280()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4293	19	tMetaMapControl::fn_005e4293()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e42a6	111	tMetaMapControl::fn_005e42a6()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4315	39	tMetaMapControl::fn_005e4315(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e433c	21	tMetaMapControl::fn_005e433c()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4351	7	tMetaMapControl::fn_005e4351()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4358	191	tMetaMapControl::fn_005e4358(long *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4417	15	tMetaMapControl::fn_005e4417(long *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4426	47	tMetaMapControl::fn_005e4426(long *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4455	19	tMetaMapControl::fn_005e4455()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4468	8	tMetaMapControl::fn_005e4468()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4531	16	tMetaMapControl::vfunction43(int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e45d3	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e4606	50	erase(iterator,iterator)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
 0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	vc6
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
