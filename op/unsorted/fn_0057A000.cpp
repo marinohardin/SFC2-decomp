@@ -369,26 +369,26 @@ void fn_0057ab18( fn_0057a69e_value* _P, const fn_0057a69e_value& _V )
 	new ((void*)_P) fn_0057a69e_value(_V);
 }
 
-// MATCH-ONLY: serves 0x0057ab52, the tCallback<unsigned long> scalar deleting destructor. The
-// template's destructor has no line of its own for this instance, and the harness finds a
-// deleting destructor only through the destructor it sits on, so this explicit specialization
-// gives it one. Declared inline, VC6 inlines it into the deleting destructor, which then
-// matches the exe; but the harness reads inlined deleting destructors only from headers, so it
-// stays out of line and the claim is an honest partial (8.2%). 0x0057ab8c, the tCallback<const
-// tID&> one, is not claimed: its only destructor definition is the template's, which holds
-// 0x0057aad2, and a specialization there regresses 0x0057aad2.
-// FUNCTION: STARFLEETOP 0x0057ab52
-template<>
-tCallback<unsigned long>::~tCallback()
-{}
-
-// MATCH-ONLY: serves 0x0057ab6f, the tCallback<tStatusChangeInfo> scalar deleting destructor,
-// for the same reason as 0x0057ab52 above, and stays an honest partial (8.2%) the same way.
-// fn_0057a96e_info stands in for nSwitch::tAddress::tStatusChangeInfo.
-// FUNCTION: STARFLEETOP 0x0057ab6f
-template<>
-tCallback<fn_0057a96e_info>::~tCallback()
-{}
+// HYPOTHESIS: 0x0057ab52 and 0x0057ab6f, the tCallback<unsigned long> and tCallback<tStatusChangeInfo>
+// scalar deleting destructors (and 0x0057ab8c), wait for the harness to read inlined destructors from .cpp units.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // MATCH-ONLY: serves 0x0057aba9, the tMemberCallback<tChooseMission,const tID&> scalar deleting
 // destructor. The template's destructor has no line of its own for this instance, so this

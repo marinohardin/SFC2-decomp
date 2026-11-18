@@ -13357,24 +13357,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x0057ab52": {
-   "name": "tCallback<unsigned_long>::scalar_deleting_destructor",
-   "symbol": "??_G?$tCallback@K@@UAEPAXI@Z",
-   "unit": "unsorted/fn_0057A000.cpp",
-   "size": 29,
-   "score": 8.235,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
-  "0x0057ab6f": {
-   "name": "tCallback<nSwitch::tAddress::tStatusChangeInfo>::scalar_deleting_destructor",
-   "symbol": "??_G?$tCallback@Ufn_0057a96e_info@@@@UAEPAXI@Z",
-   "unit": "unsorted/fn_0057A000.cpp",
-   "size": 29,
-   "score": 8.235,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x0057aba9": {
    "name": "tMemberCallback<nAsyncMissionProcedures::tChooseMission,nDatabase::tID_const&>::scalar_deleting_destructor",
    "symbol": "??_G?$tMemberCallback@Vfn_0057a96e_owner@@ABVtID@nDatabase@@@@UAEPAXI@Z",

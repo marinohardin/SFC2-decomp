@@ -1487,8 +1487,6 @@ address	size	symbol	source	modes
 0x0057aad2	7	~tCallback()	unsorted/fn_0057A000.cpp	vc6 guest
 0x0057aad9	63	fn_0057aad9(const tnRange&,const tnFunction&)	unsorted/fn_0057A000.cpp	vc6 guest
 0x0057ab18	58	fn_0057ab18(fn_0057a69e_value*,const fn_0057a69e_value&)	unsorted/fn_0057A000.cpp	vc6 guest
-0x0057ab52	29	~tCallback()	unsorted/fn_0057A000.cpp	partial
-0x0057ab6f	29	~tCallback()	unsorted/fn_0057A000.cpp	partial
 0x0057aba9	28	~tMemberCallback()	unsorted/fn_0057A000.cpp	vc6 guest
 0x0057abc5	22	fn_0057abc5_range::fn_0057abc5_range(const nDatabase::tID* const &,const nDatabase::tID* const &)	unsorted/fn_0057A000.cpp	vc6
 0x0057abdb	77	for_each(const nDatabase::tID*,const nDatabase::tID*,tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& >)	unsorted/fn_0057A000.cpp	vc6 guest
