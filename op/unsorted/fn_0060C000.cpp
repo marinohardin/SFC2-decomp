@@ -282,7 +282,7 @@ void C_00c3a80c::fn_0060c76b(tString &text)
     }
 }
 
-// HYPOTHESIS: the class at +0x24 of C_0060c7dc, built by 0x00472518 (0x704 bytes); name and
+// HYPOTHESIS: the class at +0x24 of tObject_0090b730, built by 0x00472518 (0x704 bytes); name and
 // members unknown.
 class C_00472518
 {
@@ -371,14 +371,14 @@ struct tNetMsg_kTeamReady: public tNetMsg
     int fTeam;
 };
 
-// HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It may
-// be the class of the global at 0x0090b730, whose callers use 0x0060ca4f..0x0060cac6. The
-// vector's element type is unknown.
-class C_0060c7dc
+// HYPOTHESIS: the class 0x0060c7dc constructs; 0x0060ca83 stores a table entry at +0x18. It is
+// the class of the global at 0x0090b730: other units call 0x0060ca42..0x0060cac6 on that global
+// (unsorted/tObject_0090b730.h), and 0x0060cac6 reaches the vector through it.
+class tObject_0090b730
 {
 public:
-    C_0060c7dc();
-    ~C_0060c7dc();
+    tObject_0090b730();
+    ~tObject_0090b730();
     void fn_0060ca20();
     void fn_0060ca42(int value);
     int fn_0060ca4f();
@@ -405,7 +405,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0060c7dc
-C_0060c7dc::C_0060c7dc()
+tObject_0090b730::tObject_0090b730()
     : m_00(0), m_04(0), m_18(0), m_1c(1), m_20(true)
 {
     m_728 = 0;
@@ -413,14 +413,14 @@ C_0060c7dc::C_0060c7dc()
 }
 
 // FUNCTION: STARFLEETOP 0x0060c841
-C_0060c7dc::~C_0060c7dc()
+tObject_0090b730::~tObject_0090b730()
 {
     fn_0060ca20();
 }
 
 // HYPOTHESIS: forwards to the member at +0x24 (add ecx, 0x24); 0x0060c892 is that class's.
 // FUNCTION: STARFLEETOP 0x0060c883
-void C_0060c7dc::fn_0060c883(const C_00472518 &value)
+void tObject_0090b730::fn_0060c883(const C_00472518 &value)
 {
     m_24 = value;
 }
@@ -453,7 +453,7 @@ C_00472518 &C_00472518::operator=(const C_00472518 &other)
 
 // HYPOTHESIS: returns the member at +0x24 (lea eax, [ecx+0x24]); reference or pointer is unknown.
 // FUNCTION: STARFLEETOP 0x0060c97e
-C_00472518 &C_0060c7dc::fn_0060c97e()
+C_00472518 &tObject_0090b730::fn_0060c97e()
 {
     return m_24;
 }
@@ -461,7 +461,7 @@ C_00472518 &C_0060c7dc::fn_0060c97e()
 // HYPOTHESIS: finds name among the three strings of each row of m_434 (6 rows of 3) and returns
 // the matching row's string from m_10.
 // FUNCTION: STARFLEETOP 0x0060c982
-char *C_0060c7dc::fn_0060c982(const char *name)
+char *tObject_0090b730::fn_0060c982(const char *name)
 {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 3; j++) {
@@ -476,7 +476,7 @@ char *C_0060c7dc::fn_0060c982(const char *name)
 // HYPOTHESIS: deletes the object at +0x00, whose class has the non-virtual destructor
 // 0x0060cf03, and clears +0x00 and +0x04.
 // FUNCTION: STARFLEETOP 0x0060ca20
-void C_0060c7dc::fn_0060ca20()
+void tObject_0090b730::fn_0060ca20()
 {
     if (m_00 != 0) {
         delete m_00;
@@ -486,19 +486,19 @@ void C_0060c7dc::fn_0060ca20()
 }
 
 // FUNCTION: STARFLEETOP 0x0060ca42
-void C_0060c7dc::fn_0060ca42(int value)
+void tObject_0090b730::fn_0060ca42(int value)
 {
     m_728 = value;
 }
 
 // FUNCTION: STARFLEETOP 0x0060ca4f
-int C_0060c7dc::fn_0060ca4f()
+int tObject_0090b730::fn_0060ca4f()
 {
     return m_728;
 }
 
 // FUNCTION: STARFLEETOP 0x0060ca56
-bool C_0060c7dc::fn_0060ca56()
+bool tObject_0090b730::fn_0060ca56()
 {
     if (m_728 == 4 || m_728 == 5)
         return true;
@@ -506,7 +506,7 @@ bool C_0060c7dc::fn_0060ca56()
 }
 
 // FUNCTION: STARFLEETOP 0x0060ca6c
-bool C_0060c7dc::fn_0060ca6c()
+bool tObject_0090b730::fn_0060ca6c()
 {
     if (m_728 == 1)
         return true;
@@ -517,7 +517,7 @@ bool C_0060c7dc::fn_0060ca6c()
 extern char *g_0087bfc4;
 
 // FUNCTION: STARFLEETOP 0x0060ca77
-char *C_0060c7dc::fn_0060ca77()
+char *tObject_0090b730::fn_0060ca77()
 {
     return g_0087bfc4;
 }
@@ -525,7 +525,7 @@ char *C_0060c7dc::fn_0060ca77()
 extern bool g_0087bfdc;
 
 // FUNCTION: STARFLEETOP 0x0060ca7d
-bool C_0060c7dc::fn_0060ca7d()
+bool tObject_0090b730::fn_0060ca7d()
 {
     return g_0087bfdc;
 }
@@ -534,20 +534,20 @@ bool C_0060c7dc::fn_0060ca7d()
 extern int g_0087bfe4[];
 
 // FUNCTION: STARFLEETOP 0x0060ca83
-void C_0060c7dc::fn_0060ca83(int index)
+void tObject_0090b730::fn_0060ca83(int index)
 {
     m_18 = g_0087bfe4[index];
 }
 
 // FUNCTION: STARFLEETOP 0x0060ca94
-void C_0060c7dc::fn_0060ca94(int value)
+void tObject_0090b730::fn_0060ca94(int value)
 {
     m_18 = value;
 }
 
 // HYPOTHESIS: returns which band of the g_0087bfe4 table m_18 falls in (0..3).
 // FUNCTION: STARFLEETOP 0x0060ca9e
-int C_0060c7dc::fn_0060ca9e()
+int tObject_0090b730::fn_0060ca9e()
 {
     int value = m_18;
     if (value >= g_0087bfe4[2])
@@ -555,30 +555,30 @@ int C_0060c7dc::fn_0060ca9e()
     return value >= g_0087bfe4[1];
 }
 
-// HYPOTHESIS: the global at 0x0090b730 is the object of this class that tObject_0090b730.h
-// declares for other units; this function reaches its vector at +0x08 through the global, not
-// through this.
-extern C_0060c7dc g_0090b730;
+// The global at 0x0090b730, the object of this class that tObject_0090b730.h declares for
+// other units; this function reaches its vector at +0x08 through the global, not through this.
+
+extern tObject_0090b730 gObject_0090b730;
 
 // HYPOTHESIS: deletes every element of the vector from the last down, erasing each, then erases
 // the whole range.
 // FUNCTION: STARFLEETOP 0x0060cac6
-void C_0060c7dc::fn_0060cac6()
+void tObject_0090b730::fn_0060cac6()
 {
-    while (!g_0090b730.m_08.empty()) {
-        delete g_0090b730.m_08.back();
-        g_0090b730.m_08.erase(g_0090b730.m_08.end() - 1);
+    while (!gObject_0090b730.m_08.empty()) {
+        delete gObject_0090b730.m_08.back();
+        gObject_0090b730.m_08.erase(gObject_0090b730.m_08.end() - 1);
     }
-    g_0090b730.m_08.clear();
+    gObject_0090b730.m_08.clear();
 }
 
 // HYPOTHESIS: sends every team's description, its ships' descriptions and a ready message to
 // the other machines, deleting each team from the last down, then empties the vector.
 // FUNCTION: STARFLEETOP 0x0060cb1b
-void C_0060c7dc::fn_0060cb1b()
+void tObject_0090b730::fn_0060cb1b()
 {
-    while (!g_0090b730.m_08.empty()) {
-        C_004729a6 *team = g_0090b730.m_08.back();
+    while (!gObject_0090b730.m_08.empty()) {
+        C_004729a6 *team = gObject_0090b730.m_08.back();
         C_0060e11e *teams = fn_0060e11e();
         int id = team->m_2c;
         C_0052a2b5 *record = teams->fn_0052a2b5(id);
@@ -605,7 +605,7 @@ void C_0060c7dc::fn_0060cb1b()
         readyMsg.fTeam = id;
         gNetControl.mQueueMsg(&readyMsg, tNetMsg::kTeamReady, gNetControl.fn_004324ab(), -1, -1.0);
         delete team;
-        g_0090b730.m_08.erase(g_0090b730.m_08.end() - 1);
+        gObject_0090b730.m_08.erase(gObject_0090b730.m_08.end() - 1);
     }
-    g_0090b730.m_08.erase(g_0090b730.m_08.begin(), g_0090b730.m_08.end());
+    gObject_0090b730.m_08.erase(gObject_0090b730.m_08.begin(), gObject_0090b730.m_08.end());
 }
