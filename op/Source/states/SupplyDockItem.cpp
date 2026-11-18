@@ -412,8 +412,8 @@ tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long 
 
 #include "unsorted/tObject_0090b730.h"
 
-// HYPOTHESIS: a free cdecl function of a name and the base's +0x04; its unit is not written yet.
-void fn_004d346f( const char *name, long arg2 );
+// fn_004d346f takes a name and the base's +0x04 as its group.
+#include "unsorted/fn_004D3143.h"
 // HYPOTHESIS: two names at fixed data addresses; their text is not known here.
 extern const char g_0084bff4[];
 extern const char g_0084bfe4[];
@@ -466,8 +466,8 @@ void tSupplyDockMissiles::vfunction3()
 	g_00915788.m18 = m7c->fn_00451c2d() - 1;
 	g_00915788.fn_006712c0( 3, 0 );
 
-	fn_004d346f( g_0084bff4, m04 );
-	fn_004d346f( g_0084bfe4, m04 );
+	fn_004d346f( g_0084bff4, (const char *) m04 );
+	fn_004d346f( g_0084bfe4, (const char *) m04 );
 }
 
 // FUNCTION: STARFLEETOP 0x004869a1
@@ -699,9 +699,9 @@ void tSupplyDockFighters::vfunction20( long arg1, long arg2 )
 	((fn_004479b4_object *) m74)->fn_004477c6( arg2, arg1, ((fn_004479b4_object *) m74)->fn_004477b1( arg2 ) );
 }
 
-// HYPOTHESIS: a free cdecl function of a name, the counterpart of fn_004d3306; other units pass
-// it a name string.
-void fn_004d3340( long arg1 );
+
+
+
 // The four fighter bay names, "CC_FighterBay1" first.
 extern const char *g_0084bbc0[];
 
@@ -710,7 +710,7 @@ void tSupplyDockFighters::vfunction2()
 {
 	for( int i = 3; i > -1; i-- )
 	{
-		fn_004d3340( (long) g_0084bbc0[i] );
+		fn_004d3340( g_0084bbc0[i] );
 		fn_004d3306( (long) g_0084bbc0[i] );
 	}
 }

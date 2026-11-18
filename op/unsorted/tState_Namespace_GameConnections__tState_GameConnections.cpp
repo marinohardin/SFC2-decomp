@@ -30,27 +30,27 @@ extern char g_00845040[];
 
 // HYPOTHESIS: cdecl functions; their names are not known.
 void fn_004be81f(int arg);
-void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
-void fn_004d3179(const char *name, const tString &value);
-void fn_004d3774(int id);
-void fn_004d32c4(const char *name);
-void fn_004d3331(const char *name);
-// HYPOTHESIS: returns the control with the given id.
-class c_00468677_source;
-c_00468677_source *fn_004d3446(int id);
+#include "unsorted/fn_004D3143.h"
+
+
+
+
+
+
+
 // HYPOTHESIS: pointers to the names "OtherConnectionsTCPIP" and "ipEntryField".
 extern const char *g_00844ea4;
 extern const char *g_00844ea8;
 bool fn_0046a9e2();
-// HYPOTHESIS: enables (1) or disables (0) the control with the given id.
-void fn_004d34c5(int id, bool enable);
+
+
 // HYPOTHESIS: pointers to the names "OtherConnectionsModem", "modemEntry" and "cCancelGame".
 extern const char *g_00844eac;
 extern const char *g_00844eb0;
 extern const char *g_00844ec0;
-void fn_004d3340(const char *name);
-// HYPOTHESIS: the second argument is the group's name, as here; cdecl.
-void fn_004d346f(const char *name, const char *group);
+
+
+
 // HYPOTHESIS: three global strings, 0x28 bytes apart, handed to tNetControl::fn_004327a7.
 extern tString g_0090da38;
 extern tString g_0090da10;
@@ -107,11 +107,11 @@ extern const char *g_0084501c;
 extern const char *g_00845020;
 extern const char *g_00845024;
 extern const char *g_00845028;
-void fn_004d35e3(const char *name, const char *group, int n);
-void fn_004d35ac(tValueBase *value, const char *name);
-// HYPOTHESIS: unregister a control name, and unbind a value object from a name, returning it.
-void fn_004d35fa(const char *name);
-tValueBase *fn_004d35bf(const char *name, int n);
+
+
+
+
+
 
 // HYPOTHESIS: a separator character read by fn_00468677.
 extern char g_00844ec4;

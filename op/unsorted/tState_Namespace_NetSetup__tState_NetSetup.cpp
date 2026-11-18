@@ -16,12 +16,12 @@
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
-void fn_004d31ed(const char *name, int arg, void *p, int width, int height);
-void fn_004d3774(int id);
-void fn_004d32c4(const char *name);
+#include "unsorted/fn_004D3143.h"
+
+
 bool fn_0046a9e2();
-// HYPOTHESIS: enables (1) or disables (0) the control with the given id.
-void fn_004d34c5(int id, bool enable);
+
+
 
 // HYPOTHESIS: the name of the screen the state shows, a global handed with it to fn_004d31ed,
 // and a value the state resets to 10 (as tState_GameConnections resets its own).
@@ -38,12 +38,12 @@ extern const char *g_008493c0;
 extern const char *g_008493cc;
 // HYPOTHESIS: a separator character read by fn_004768a5.
 extern char g_008493d0;
-void fn_004d346f(const char *name, const char *group);
-void fn_004d3331(const char *name);
-void fn_004d3340(const char *name);
-// HYPOTHESIS: returns the control with the given id.
+
+
+
+
 #include "unsorted/c_00468677_source.h"
-c_00468677_source *fn_004d3446(int id);
+
 // HYPOTHESIS: three global strings, 0x28 bytes apart, handed to tNetControl::fn_004327a7.
 extern tString g_00910ac8;
 extern tString g_00910aa0;
@@ -702,8 +702,8 @@ bool tState_NetSetup::fn_004772ce(int id)
 extern s_00844ed0_entry g_008493d8[];
 extern s_00844fd0_entry g_00849450[];
 extern const char *g_0084948c[];
-void fn_004d35e3(const char *name, const char *group, int n);
-void fn_004d35ac(tValueBase *value, const char *name);
+
+
 
 // FUNCTION: STARFLEETOP 0x00477440
 void tState_NetSetup::fn_00477440()
@@ -731,8 +731,8 @@ void tState_NetSetup::fn_00477440()
 	fn_004d35ac(&m19c, g_0084948c[6]);
 }
 
-void fn_004d35fa(const char *name);
-tValueBase *fn_004d35bf(const char *name, int n);
+
+
 
 // FUNCTION: STARFLEETOP 0x00477689
 void tState_NetSetup::fn_00477689()

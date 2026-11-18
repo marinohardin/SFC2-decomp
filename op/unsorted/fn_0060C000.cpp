@@ -73,8 +73,8 @@ public:
     C_0052a2b5 *fn_0052a2b5(int team);
 };
 C_0060e11e *fn_0060e11e();
-// HYPOTHESIS: stores a text under a name; also declared in the GameConnections state's unit.
-void fn_004d3179(const char *name, const tString &value);
+
+#include "unsorted/fn_004D3143.h"
 
 // HYPOTHESIS: the class of 0x0060c1c7 and 0x0060c3e1; its name is unknown.
 class C_0060c1c7
