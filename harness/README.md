@@ -9,6 +9,7 @@ from everything that judges; scores only go up.
 | `build-and-verify.sh <fn>` | The only judge. Compiles the function's unit, diffs it against the original bytes, refuses any score below `matched_set.json`. Read-only |
 | `update-matched-set.sh <fn>` | The only writer of `matched_set.json`. Takes no score: it verifies the function itself and records an improvement |
 | `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address |
+| `../analysis/results/reloc_baseline.tsv` | Known relocations of exact functions that name another symbol than the claim at their target (step 8 of `build-and-verify.sh`) |
 | `units.json` | Compile profile per unit of the rebuilt tree (flags, compiler, include order) |
 | `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps `difficult_functions.tsv` |
 | `../analysis/results/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human |
@@ -81,12 +82,35 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
    line naming both, exit 2): the native build links one definition per name, so one of them
    names the wrong callee, global or method. Labels, compiler statics and literal constants are
    resolved per unit and compared within one. `--all` checks every recorded function this way.
+8. Checks that every REL32 / DIR32 relocation of an exact function that reaches a claimed
+   function (an address in `matched_set.json`, or one scored in the run) names the symbol that
+   claim defines (`report_claim_symbols` in `lib/verify.py`). The byte match masks the field,
+   so a call through a stand-in class name or signature scores exact, but a consumer linking the
+   exact objects (manifest mode `vc6`) is left with an unresolved external. The claim's symbol
+   is the one the run's rebuild of its unit defines; a matched-set `symbol` field is only a
+   fallback, because it is rewritten only when a score improves and can be stale after a rename.
+   A break against a rebuilt symbol is an `ERROR` line naming the function, the relocation
+   offset, the symbol, the exe address and the claimed symbol, and fails the run (exit 2); one
+   against a recorded symbol only (a single-function run that did not build the target's unit)
+   is a `WARN` line, and `--all`, which rebuilds every claim, decides. Targets nothing claims
+   (library and CRT code) are not checked. A legitimate case, such as two identical functions
+   the linker folded into one address, is listed in the baseline too.
+
+   **The relocation baseline** (`analysis/results/reloc_baseline.tsv`, `HARNESS_RELOC_BASELINE`):
+   the breaks known when the check came in, one row each (`function`, `offset`, `symbol`,
+   `target`, `claimed`), matched by function, symbol and target (the offset is for the reader).
+   A listed break is tolerated, with one `INFO` line counting them; a row whose break is gone is
+   a `WARN` line asking for its removal (under `--all` every row, otherwise only the rows of the
+   exact functions scored), so the list only shrinks. Every `--all` run writes the breaks it found,
+   in the same format, to `reloc_breaks.tsv` in its build folder; the baseline is only ever
+   replaced from such a file by the integrator, never extended to let a new break through.
 
 Output is a few lines, each tagged `OK`, `ERROR` or `INFO`, then a `RESULT` line; for a function
 that is not exact, the first differing instructions side by side and the path of a full
 side-by-side listing. A failed compile says `BUILD HAS FAILED` with the compiler's errors.
 Exit status: 0 nothing regressed, 1 a recorded function scored lower (or lost its source, or its
-unit no longer builds), 2 the claimed function could not be built or scored.
+unit no longer builds), 2 the claimed function could not be built or scored, or step 7 or 8
+found a symbol that the exact functions use wrongly.
 
 `--base <file or git ref>` also holds the run to another copy of the matched set, compared by
 original address: a file, or `analysis/results/matched_set.json` at a git ref (read with
