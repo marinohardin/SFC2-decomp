@@ -57,31 +57,31 @@ class tListIterator_004cf9b3
 		void fn_00450ce5();
 };
 
-// The 0xf0-byte element of four member arrays; constructor 0x004454c1, destructor 0x004459be,
-// which RTTI names tShipSystemMask::~tShipSystemMask.
-class tShipSystemMask
-{
-	public:
-		tShipSystemMask();
-		~tShipSystemMask();
-		void fn_00447af2(char *s, int v);
-		void fn_00447aa7(tObject_0042496f *param_1);
-		char fn_00508f68();
-		void fn_0051da3d();
-		void fn_00447b7a(tObject_0042496f *param_1);
-		int fn_00447d41(int param_1);
-		int fn_00447d55(int param_1);
-		void fn_00447cf9(int param_1, int param_2);
-		void fn_00447d11(int param_1, int param_2);
-		void fn_00447d29(int param_1, int param_2);
-		void fn_004475bc(int param_1, int param_2);
-		void fn_00447926(int param_1, int param_2);
-		// body at 0x00445a14
-		tShipSystemMask &operator=(const tShipSystemMask &other);
+#include "unsorted/tShipSystemMask.h"
 
-	private:
-		char m_00[0xf0];
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the 0x14-byte element of two 0x1b0-element member arrays; constructor
 // 0x004cf9b3, destructor 0x004cf9c6 (original name unknown).

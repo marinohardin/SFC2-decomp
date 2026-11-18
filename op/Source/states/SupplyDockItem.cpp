@@ -91,33 +91,33 @@ double tSupplyDockItem::vfunction11()
 	return 0.0;
 }
 #include <string>
-struct tObject_00447415_limits;
+#include "unsorted/tShipSystemMask.h"
 
-// The object the base keeps at +0x74 ("mask"): the methods are tShipSystemMask's (fn_00447000.cpp).
-class tShipSystemMask
-{
-public:
-	int fn_004479b4( int arg1 );
-	void fn_00447926( int arg1, int arg2 );
-	int fn_00447a54( int arg1 );
-	tObject_00447415_limits *fn_00447ce4();
-	int fn_004477f8( int arg1 );
-	int fn_0044780d( int arg1 );
-	std::string fn_00447822( int arg1 );
-	int fn_004477b1( int arg1 );
-	void fn_004477c6( int arg1, char arg2, char arg3 );
-	void fn_00447867( int arg1, std::string name );
-	int fn_00447415( int arg1, int arg2 );
-	void fn_00447531( int arg1, int arg2 );
-	// HYPOTHESIS: tSupplyDockShipInfo holds one at +0x6c (0xf0 bytes) and builds it with 0x004455d7,
-	// which sits between tShipSystemMask's deleting destructor and its destructor.
-	tShipSystemMask( long arg1, long arg2, long arg3, long arg4 );
-	~tShipSystemMask();
-	int fn_004478b5( int arg1 );
-	bool fn_00447c61( int arg1 );
 
-	char m00[0xf0];
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
 class tSupplyDockShuttles : public tSupplyDockItem
@@ -341,8 +341,8 @@ public:
 	};
 };
 
-// HYPOTHESIS: the object 0x00447ce4 returns when called on the base's +0x74 object.
-struct tObject_00447415_limits
+// HYPOTHESIS: a view of the tObject_00447415_limits 0x00447ce4 returns, as this unit uses it.
+class fn_00447ce4_object
 {
 public:
 	tStoresState::tMissileInfo *fn_0055e60f();
@@ -404,7 +404,7 @@ tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long 
 	m10.fn_004d26fb( &g_009157c8, g_0084bb74 );
 	m10.fn_004d26fb( &g_009157a8, g_0084bb78 );
 	m10.fn_004d26fb( &g_00915788, g_0084bb7c );
-	m7c = ((tShipSystemMask *) m74)->fn_00447ce4()->fn_0055e60f();
+	m7c = ((fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4())->fn_0055e60f();
 	m7c->m0c = true;
 	m7c->m0d = true;
 	m80.fn_0045154e( m7c );
@@ -757,13 +757,13 @@ long tSupplyDockFighters::vfunction6()
 class fn_004457b7_object
 {
 public:
-	void fn_004457b7( tObject_00447415_limits *object );
+	void fn_004457b7( fn_00447ce4_object *object );
 };
 
 // FUNCTION: STARFLEETOP 0x00486f8c
 void tSupplyDockItem::vfunction5( fn_004457b7_object *target )
 {
-	target->fn_004457b7( ((tShipSystemMask *) m74)->fn_00447ce4() );
+	target->fn_004457b7( (fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4() );
 	vfunction6();
 }
 
@@ -776,7 +776,7 @@ void tSupplyDockFighters::fn_00486fac( long i )
 // FUNCTION: STARFLEETOP 0x00486fd6
 long tSupplyDockFighters::vfunction15( long i )
 {
-	return ((tShipSystemMask *) m74)->fn_00447ce4()->m17a[i];
+	return ((fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4())->m17a[i];
 }
 
 // FUNCTION: STARFLEETOP 0x00486fed
