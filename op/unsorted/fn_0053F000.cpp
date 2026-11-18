@@ -357,12 +357,12 @@ void fn_0053f25c_owner::fn_0053f30f()
 	}
 }
 
-// HYPOTHESIS: not a function of its own; the exception tail of 0x0053f34e (stream operator
-// with sentry and catch). Placeholder until that function is written.
-// FUNCTION: STARFLEETOP 0x0053f41a
-void fn_0053f41a()
-{
-}
+// 0x0053f41a is not a function of its own: it is the code 0x0053f34e (stream operator with
+// sentry and catch) runs after its catch block, in that function's frame, and is listed in
+// analysis/results/boundary_errors.tsv.
+//
+//
+//
 
 // HYPOTHESIS: a member of the vector-like class at 0x6c above (ecx passes through
 // unchanged to the callee); hands its own first and last to the range member at

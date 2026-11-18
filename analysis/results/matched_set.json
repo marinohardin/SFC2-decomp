@@ -6733,15 +6733,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x0053f41a": {
-   "name": "FUN_0053f41a",
-   "symbol": "?fn_0053f41a@@YAXXZ",
-   "unit": "unsorted/fn_0053F000.cpp",
-   "size": 71,
-   "score": 1.481,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x0053f461": {
    "name": "FUN_0053f461",
    "symbol": "?fn_0053f461@fn_0053f522_owner@@QAEXXZ",
@@ -9008,15 +8999,6 @@
    "size": 50,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x005e4638": {
-   "name": "FUN_005e4638",
-   "symbol": "??1fn_005e36cd_entry@@QAE@XZ",
-   "unit": "unsorted/tMetaMapControl.cpp",
-   "size": 75,
-   "score": 39.76,
-   "exact": false,
    "recorded": "2026-11-17"
   },
   "0x00607faa": {

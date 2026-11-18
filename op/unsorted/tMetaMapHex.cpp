@@ -53,15 +53,6 @@ tMetaMapHex::tMetaMapHex( bool param_1 )
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x005394f4
-tMetaMapHex::tMetaMapHex( const tMetaMapHex& other )
-	: m_48( std::allocator< int32 >(), std::less< int32 >(), false ),
-	  m_70( std::allocator< int32 >(), std::less< int32 >(), false ),
-	  m_84( std::allocator< int32 >(), std::less< int32 >(), false )
-{
-	*this = other;
-}
-
 // The SDK's inline destructor; its body in view lets the compiler see the call cannot throw.
 // HYPOTHESIS: the original took it from the SDK header; here it is repeated as
 // Common/Thread/ThreadPool.cpp and unsorted/tClientCharacter.cpp do.
@@ -97,6 +88,15 @@ tMetaMapHex::~tMetaMapHex()
 {
 	m_bc.Enter();
 	m_bc.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005394f4
+tMetaMapHex::tMetaMapHex( const tMetaMapHex& other )
+	: m_48( std::allocator< int32 >(), std::less< int32 >(), false ),
+	  m_70( std::allocator< int32 >(), std::less< int32 >(), false ),
+	  m_84( std::allocator< int32 >(), std::less< int32 >(), false )
+{
+	*this = other;
 }
 
 // FUNCTION: STARFLEETOP 0x005395b2
@@ -833,6 +833,22 @@ fn_0053a73a_map::iterator fn_0053a73a_map::find( const int32& key )
 	return ( p.m_node == m_tree.m_head || key < p.m_node->first ? end() : p );
 }
 
+// FUNCTION: STARFLEETOP 0x0053aab4
+void fn_0053a73a_map::tree::fn_0053aab4( const tree& other )
+{
+	_Root() = fn_0053abca( other._Root(), m_head );
+	m_size = other.m_size;
+	if( _Root() != m_nil )
+	{
+		_Lmost() = _Min( _Root() );
+		_Rmost() = _Max( _Root() );
+	}
+	else
+	{
+		_Lmost() = m_head, _Rmost() = m_head;
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x0053ab16
 fn_0053a6cc_map::node* fn_0053a6cc_map::tree::fn_0053ab16( node* root, node* parent )
 {
@@ -853,22 +869,6 @@ fn_0053a6cc_map::node* fn_0053a6cc_map::tree::fn_0053ab16( node* root, node* par
 		y->right = fn_0053ab16( root->right, y );
 	}
 	return result;
-}
-
-// FUNCTION: STARFLEETOP 0x0053aab4
-void fn_0053a73a_map::tree::fn_0053aab4( const tree& other )
-{
-	_Root() = fn_0053abca( other._Root(), m_head );
-	m_size = other.m_size;
-	if( _Root() != m_nil )
-	{
-		_Lmost() = _Min( _Root() );
-		_Rmost() = _Max( _Root() );
-	}
-	else
-	{
-		_Lmost() = m_head, _Rmost() = m_head;
-	}
 }
 
 // FUNCTION: STARFLEETOP 0x0053ab9a

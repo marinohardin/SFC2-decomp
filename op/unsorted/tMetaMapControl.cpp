@@ -900,7 +900,7 @@ std::vector<c_tScrollBar_FieldA8 *>::iterator std::vector<c_tScrollBar_FieldA8 *
 	return ( _F );
 }
 
-// FUNCTION: STARFLEETOP 0x005e4638
-fn_005e36cd_entry::~fn_005e36cd_entry()
-{
-}
+// 0x005e4638, next in address order, is fn_005e36cd_entry's implicit destructor: the
+// compiler generates it from the class (tMetaMapControl.h), so it is not written here.
+//
+//

@@ -20,9 +20,9 @@ struct fn_005e36cd_entry
 	// the answer as an index.
 	virtual int vfunction0( int param_1 );
 	// HYPOTHESIS: 0x005e45a0, the vector's destructor, calls 0x005e4638 on each record. That
-	// code stores no vtable, so the original probably declares no destructor; an implicit one
-	// cannot be claimed, so this declared one (which stores the vtable) stands in for it.
-	~fn_005e36cd_entry();
+	// code stores no vtable, so the original declares no destructor: 0x005e4638 is the
+	// implicit one the compiler generates, and is left unclaimed.
+	//
 
 	// The destructor 0x005e4638 destroys a tID here, a tHexPoint at +0x18 and the container of
 	// 0x0053a6cc at +0x50.
