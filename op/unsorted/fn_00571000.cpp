@@ -553,23 +553,23 @@ fn_005717f7_vector& fn_005717f7_map::fn_005719df(const long& key)
 	// MATCH-ONLY: the struct above stands for the std::vector it has the layout of.
 	return *(fn_005717f7_vector*)&(*it).second;
 }
-class fn_00571a58_inner;
-class fn_00571e33_elem;
-class fn_00571a58_owner {
-public:	char fn_00571a58_pad[4];
-	fn_00571a58_inner* fn_00571a58_first;
-	fn_00571a58_inner* fn_00571a58_ptr;
-	fn_00571a58_inner* fn_00571a58_limit;
-	void fn_00571a58(int arg);
-	void fn_00571a69(int arg);
-	void fn_00571a9a(int arg);
-	void fn_00571aab(int arg);
-	void fn_00571abc(int arg);
-	unsigned int size() const;
-	void fn_00571bda(fn_00571a58_inner* pos, unsigned int m, const fn_00571a58_inner& x);
-	void fn_00571e33(fn_00571e33_elem* pos, unsigned int m, const fn_00571e33_elem& x);
-	void fn_00571acd(int arg);
-};
+// The forwarding owner below is declared in fn_00571a58_owner.h, which fn_0053434B.cpp shares.
+#include "unsorted/fn_00571a58_owner.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #line 573
 // FUNCTION: STARFLEETOP 0x00571a58
 void fn_00571a58_owner::fn_00571a58(int arg)

@@ -7,6 +7,8 @@
 #include "unsorted/tMissionCompleteResults.h"
 #include <stdlib.h>
 #include <string.h>
+#include "unsorted/fn_005717f7_vector.h"
+#include "unsorted/fn_00571a58_owner.h"
 
 // HYPOTHESIS: owning class unknown; only the long at +0x44 is evidenced.
 class fn_0053434b_object
@@ -57,6 +59,13 @@ public:
     char* field_04;
 };
 
+// MATCH-ONLY: the library vector of entry pointers that the fn_005717f7_vector members below
+// stand for (their destructor is the folded 0x00571a7a); its size, index and push_back are used.
+inline std::vector< fn_00534461_entry* >& fn_00534461_entries(fn_005717f7_vector& v)
+{
+    return *(std::vector< fn_00534461_entry* >*)&v;
+}
+
 // HYPOTHESIS: a constructor of an object whose first member is a std::vector (the allocator byte
 // copied from an uninitialised default argument, then three zeroed pointers); the owning class
 // and the element type are not known.
@@ -68,10 +77,9 @@ public:
     // HYPOTHESIS: a member taking no arguments, called first by the destructor.
     void fn_005ff7ac();
     void fn_00534454(void* value);
-    void fn_00571a69(void* const& value);
     int fn_00534461(char* name);
 
-    std::vector< fn_00534461_entry* > field_00;
+    fn_005717f7_vector field_00;
 };
 
 // FUNCTION: STARFLEETOP 0x0053440f
@@ -85,14 +93,14 @@ fn_0053440f_object::~fn_0053440f_object()
     fn_005ff7ac();
 }
 
-// HYPOTHESIS: appends its argument to the vector at +0 through 0x00571a69 (that vector type is
-// declared only inside tPanelMgr.cpp, so the append is declared on this object); 0x0053455b
+// HYPOTHESIS: appends its argument to the vector at +0 through 0x00571a69, claimed as
+// fn_00571a58_owner's (the folded push_back of every pointer vector); 0x0053455b
 // calls it on one of the slots of fn_005344a3_object, so it is a member of the slot class.
 
 // FUNCTION: STARFLEETOP 0x00534454
 void fn_0053440f_object::fn_00534454(void* value)
 {
-    fn_00571a69(value);
+    ((fn_00571a58_owner*)&field_00)->fn_00571a69((int)&value);
 }
 
 int fn_0040f9ea(char *a, char *b);
@@ -104,10 +112,10 @@ int fn_0040f9ea(char *a, char *b);
 // FUNCTION: STARFLEETOP 0x00534461
 int fn_0053440f_object::fn_00534461(char* name)
 {
-    int i = field_00.size();
+    int i = fn_00534461_entries(field_00).size();
     while (i-- != 0)
     {
-        if (fn_0040f9ea(field_00[i]->field_04, name) == 0)
+        if (fn_0040f9ea(fn_00534461_entries(field_00)[i]->field_04, name) == 0)
             return i;
     }
     return -1;
@@ -275,8 +283,8 @@ public:
 
     tString field_00;
     long field_28;
-    std::vector< fn_00534461_entry* > field_2c;
-    std::vector< fn_00534461_entry* > field_3c;
+    fn_005717f7_vector field_2c;
+    fn_005717f7_vector field_3c;
     // HYPOTHESIS: 0x00534950 allocates 0x54 bytes for this object; the last eight are not
     // touched by the functions known so far.
     long field_4c;
@@ -318,7 +326,7 @@ void fn_005346f9_object::fn_005347bd(long value)
     for (int n = 20; n != 0; n--, entry++)
     {
         if (entry->field_00 == value)
-            field_2c.push_back(&entry->field_04);
+            fn_00534461_entries(field_2c).push_back(&entry->field_04);
     }
 }
 
@@ -333,7 +341,7 @@ void fn_005346f9_object::fn_005347f4(long value)
     for (int n = 20; n != 0; n--, entry++)
     {
         if (entry->field_00 == value)
-            field_3c.push_back(&entry->field_04);
+            fn_00534461_entries(field_3c).push_back(&entry->field_04);
     }
 }
 
@@ -342,14 +350,14 @@ void fn_005346f9_object::fn_005347f4(long value)
 // FUNCTION: STARFLEETOP 0x0053482b
 void fn_005346f9_object::fn_0053482b(bool reset)
 {
-    fn_00534855(&field_2c, reset, "SunNames");
+    fn_00534855(&fn_00534461_entries(field_2c), reset, "SunNames");
 }
 
 // HYPOTHESIS: as 0x0053482b, for the second vector under the "PlanetNames" string group.
 // FUNCTION: STARFLEETOP 0x00534840
 void fn_005346f9_object::fn_00534840(bool reset)
 {
-    fn_00534855(&field_3c, reset, "PlanetNames");
+    fn_00534855(&fn_00534461_entries(field_3c), reset, "PlanetNames");
 }
 
 // HYPOTHESIS: the entries of these two vectors hold a string index at +0 and a byte at +4
@@ -388,12 +396,12 @@ void fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >* list, bo
 // FUNCTION: STARFLEETOP 0x00534903
 void fn_005346f9_object::fn_00534903()
 {
-    int i = field_2c.size();
+    int i = fn_00534461_entries(field_2c).size();
     while (i--)
-        ((fn_00534855_entry*)field_2c[i])->field_04 = 0;
-    i = field_3c.size();
+        ((fn_00534855_entry*)fn_00534461_entries(field_2c)[i])->field_04 = 0;
+    i = fn_00534461_entries(field_3c).size();
     while (i--)
-        ((fn_00534855_entry*)field_3c[i])->field_04 = 0;
+        ((fn_00534855_entry*)fn_00534461_entries(field_3c)[i])->field_04 = 0;
 }
 
 // HYPOTHESIS: a 12-byte entry whose constructor is 0x00534ac1; the owner's destructor treats
