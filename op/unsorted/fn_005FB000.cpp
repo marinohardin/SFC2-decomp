@@ -680,7 +680,8 @@ tMemberCallback< tMetaClientChatCtlrC, const std::string& > std::for_each( const
 // FUNCTION: STARFLEETOP 0x005fbe4a
 std::string g_s00c39a70("MetaChatBar");
 
-// HYPOTHESIS: a global byte string; its dynamic initializer.
+// HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
+// FUNCTION: STARFLEETOP 0x005fbee3
 // FUNCTION: STARFLEETOP 0x005fbeb0
 std::string g_s00c39a58("MetaChat");
 
