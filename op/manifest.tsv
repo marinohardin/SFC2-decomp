@@ -1642,7 +1642,6 @@ address	size	symbol	source	modes
 0x0053a981	98	fn_0053a6cc_map::tree::fn_0053a981(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a9e3	35	fn_0053a6cc_map::insert(const value_type&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053aa06	116	fn_0053a73a_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest
-0x0053aa7a	58	fn_0053a73a_map::find(const int32&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053aab4	98	fn_0053a73a_map::tree::fn_0053aab4(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053ab16	132	fn_0053a6cc_map::tree::fn_0053ab16(node*,node*)	unsorted/tMetaMapHex.cpp	partial
 0x0053ab9a	48	fn_0053a6cc_map::tree::fn_0053ab9a(node*)	unsorted/tMetaMapHex.cpp	partial
@@ -1651,7 +1650,7 @@ address	size	symbol	source	modes
 0x0053ac7e	60	tClassAllocator()	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053acba	77	mAllocate()	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053ad07	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapHex.cpp	vc6 guest
-0x0053f22f	45	fn_0053f22f_owner::fn_0053f22f() const	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f22f	45	tPreparedMissions::fn_0053f22f() const	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f25c	4	fn_0053f25c_owner::fn_0053f25c()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f260	4	fn_0053f25c_owner::fn_0053f260()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f264	4	fn_0053f25c_owner::fn_0053f264()	unsorted/fn_0053F000.cpp	vc6 guest
@@ -1672,7 +1671,6 @@ address	size	symbol	source	modes
 0x0053f46d	36	fn_0042b0fd_owner::fn_0053f46d(const nDatabase::tID *,const nDatabase::tID *)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f491	53	fn_0053f491_owner::fn_0053f491()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f4c6	36	assign(const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f4ea	56	fn_0053f522_owner::fn_0053f4ea()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f522	36	assign(const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f546	103	erase(iterator)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f5ad	44	fn_0053f5ad_owner::fn_0053f5ad(char *,char *)	unsorted/fn_0053F000.cpp	vc6 guest
@@ -1702,13 +1700,13 @@ address	size	symbol	source	modes
 0x0054334a	13	fn_005430ad_owner::fn_0054334a(int)	unsorted/fn_00543000.cpp	vc6 guest
 0x00543357	80	fn_005430ad_owner::fn_00543357(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
 0x005433a7	54	fn_005430ad_owner::fn_005433a7() const	unsorted/fn_00543000.cpp	vc6 guest
-0x005433dd	11	fn_005430ad_owner::fn_005433dd()	unsorted/fn_00543000.cpp	partial
-0x005433e8	12	fn_005430ad_owner::fn_005433e8()	unsorted/fn_00543000.cpp	partial
-0x005433f4	12	fn_005430ad_owner::fn_005433f4()	unsorted/fn_00543000.cpp	partial
-0x00543400	12	fn_005430ad_owner::fn_00543400()	unsorted/fn_00543000.cpp	vc6 guest
-0x0054340c	43	fn_005430ad_owner::fn_0054340c()	unsorted/fn_00543000.cpp	vc6 guest
+0x005433dd	11	tServCharacter::fn_005433dd() const	unsorted/fn_00543000.cpp	partial
+0x005433e8	12	tServCharacter::fn_005433e8() const	unsorted/fn_00543000.cpp	partial
+0x005433f4	12	tServCharacter::fn_005433f4() const	unsorted/fn_00543000.cpp	partial
+0x00543400	12	tServCharacter::fn_00543400() const	unsorted/fn_00543000.cpp	vc6 guest
+0x0054340c	43	tServCharacter::fn_0054340c() const	unsorted/fn_00543000.cpp	vc6 guest
 0x00543437	14	fn_005430ad_owner::fn_00543437()	unsorted/fn_00543000.cpp	partial
-0x00543445	16	fn_005430ad_owner::fn_00543445()	unsorted/fn_00543000.cpp	vc6 guest
+0x00543445	16	tServCharacter::fn_00543445() const	unsorted/fn_00543000.cpp	vc6 guest
 0x00543455	4	fn_005430ad_owner::fn_00543455()	unsorted/fn_00543000.cpp	vc6 guest
 0x00543459	60	fn_005430ad_owner::fn_00543459() const	unsorted/fn_00543000.cpp	vc6 guest
 0x00543495	7	fn_005430ad_owner::fn_00543495()	unsorted/fn_00543000.cpp	vc6 guest
@@ -1794,14 +1792,14 @@ address	size	symbol	source	modes
 0x0054606f	501	c_00546027::fn_0054606f(double,double,c_0045139e)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546264	9	c_00546027::fn_00546264()	unsorted/fn_00546000.cpp	vc6 guest
 0x0054626d	11	c_0054626d::fn_0054626d()	unsorted/fn_00546000.cpp	vc6 guest
-0x00546278	4	c_00546278::fn_00546278()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546278	4	tShip::fn_00546278() const	unsorted/fn_00546000.cpp	vc6 guest
 0x0054627c	10	c_00546278::fn_0054627c(unsigned char)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546286	8	c_00546286::fn_00546286()	unsorted/fn_00546000.cpp	vc6 guest
 0x0054628e	4	c_0054628e::fn_0054628e()	unsorted/fn_00546000.cpp	vc6 guest
 0x00546292	4	c_0054628e::fn_00546292()	unsorted/fn_00546000.cpp	vc6 guest
-0x00546296	54	c_00546296::fn_00546296() const	unsorted/fn_00546000.cpp	vc6 guest
-0x005462cc	4	c_005462cc::fn_005462cc()	unsorted/fn_00546000.cpp	vc6 guest
-0x005462d0	7	c_005462d0::fn_005462d0()	unsorted/fn_00546000.cpp	vc6 guest
+0x00546296	54	tShip::fn_00546296() const	unsorted/fn_00546000.cpp	vc6 guest
+0x005462cc	4	tShip::fn_005462cc() const	unsorted/fn_00546000.cpp	vc6 guest
+0x005462d0	7	tAIHelmOfficer::fn_005462d0()	unsorted/fn_00546000.cpp	vc6 guest
 0x005462d7	7	c_00546027::fn_005462d7()	unsorted/fn_00546000.cpp	vc6 guest
 0x005462de	7	c_00546027::fn_005462de()	unsorted/fn_00546000.cpp	vc6 guest
 0x005462e5	7	c_00546027::fn_005462e5()	unsorted/fn_00546000.cpp	vc6 guest
