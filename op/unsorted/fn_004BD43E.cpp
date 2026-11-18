@@ -319,14 +319,13 @@ c_auto_ptr<_Ty>::~c_auto_ptr()
 }
 
 // HYPOTHESIS: a second class with the layout of c_004bd805_Object. Its constructor has the same
-// bytes as 0x004bd805, and the exe has both call 0x004bdd67, so the two may share that method
-// through a relation not yet recovered.
+// bytes as 0x004bd805, and the exe has both call 0x004bdd67 on their own object, so the two may
+// share that method through a relation not yet recovered.
 class c_004bdd0d_Object
 {
 public:
 	c_004bdd0d_Object();
 	~c_004bdd0d_Object();
-	void fn_004bdd67();
 	void fn_004bde26( tString *text, int value );
 	c_004bd805_Entry *fn_004bdf64( int index );
 
@@ -341,7 +340,9 @@ public:
 // FUNCTION: STARFLEETOP 0x004bdd0d
 c_004bdd0d_Object::c_004bdd0d_Object()
 {
-	fn_004bdd67();
+	// HYPOTHESIS: the exe calls c_004bd805_Object's 0x004bdd67 with this object; the relation
+	// between the classes is not recovered, so the call goes through the shared layout.
+	( (c_004bd805_Object *)this )->fn_004bdd67();
 }
 
 // HYPOTHESIS: the entry's constructor, which only builds its string; the vector constructor
