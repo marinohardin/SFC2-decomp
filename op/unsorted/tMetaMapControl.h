@@ -59,6 +59,12 @@ struct fn_005e381f_entry : public fn_005e374b_entry
 	nDatabase::tID field_54;
 };
 
+// MATCH-ONLY: the two record vectors' destructors (0x005e45a0, 0x005e45d3) are written out as
+// explicit specializations in unsorted/tMetaMapControl.cpp; declared here so that every unit
+// that destroys one calls them out of line.
+template<> std::vector<fn_005e36cd_entry>::~vector();
+template<> std::vector<fn_005e381f_entry>::~vector();
+
 // HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
 class fn_005eadc8_class
 {
