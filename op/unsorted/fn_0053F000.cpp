@@ -61,6 +61,40 @@ nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x74 bytes with a virtual destructor in slot 0, streamed out one by one as tStreamable
 // by 0x0053fe75. The names are placeholders.
@@ -80,38 +114,14 @@ public:
 	char m_0c[0x68];
 };
 
-// HYPOTHESIS: the class of the member at 0x58 of the owner below is not known; it has
-// a member function at 0x0053f4c6 taking two dwords and looks like this compiler's
-// std::vector of the 0x74-byte elements above. The names are placeholders.
-class fn_0053f4c6_owner
-{
-public:
-	void fn_0053f4c6( long a, long b );
-	fn_0053f491_elem *fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last );
-	void fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_elem *first, const fn_0053f491_elem *last );
-	// MATCH-ONLY: the original read the size through an inlined accessor.
-	unsigned int size() const
-	{
-		return ( m_04 == 0 ? 0 : m_08 - m_04 );
-	}
-	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
-	void _Destroy( fn_0053f491_elem *first, fn_0053f491_elem *last )
-	{
-		for( ; first != last; ++first )
-			m_00.destroy( first );
-	}
-	fn_0053f491_elem *_Ucopy( const fn_0053f491_elem *first, const fn_0053f491_elem *last, fn_0053f491_elem *dst )
-	{
-		for( ; first != last; ++dst, ++first )
-			m_00.construct( dst, *first );
-		return dst;
-	}
-
-	std::allocator< fn_0053f491_elem > m_00;
-	fn_0053f491_elem *m_04;
-	fn_0053f491_elem *m_08;
-	fn_0053f491_elem *m_0c;
-};
+// HYPOTHESIS: the member at 0x58 of the owner below is this compiler's std::vector of the
+// 0x74-byte elements above: its assign (0x0053f4c6), range insert (0x0053f834) and range erase
+// (0x0053fa94) are claimed below, and the stream operators at 0x0053fe75 and 0x0053ff43 call them.
+// MATCH-ONLY: the three are written out as this instance's explicit specializations, declared
+// here before their first use so that the callers call them out of line.
+template<> void std::vector< fn_0053f491_elem >::assign( const_iterator _F, const_iterator _L );
+template<> void std::vector< fn_0053f491_elem >::insert( iterator _P, const_iterator _F, const_iterator _L );
+template<> std::vector< fn_0053f491_elem >::iterator std::vector< fn_0053f491_elem >::erase( iterator _F, iterator _L );
 
 // HYPOTHESIS: the element type of the container below is not known; elements are
 // 0x160 bytes with a vtable, a byte test at 0x0054340c and a virtual in slot 12.
@@ -155,39 +165,25 @@ public:
 	char m_14[0x14c];
 };
 
-// HYPOTHESIS: the class of the member at 0x6c of the owner below is not known; it has
-// a member function at 0x0053f522 taking two dwords and looks like a vector of the
-// elements above (first at 4, last at 8) with an erase at 0x0053f546. The names are
-// placeholders.
+// HYPOTHESIS: the member at 0x6c of the owner below is this compiler's std::vector of the
+// elements above: its assign (0x0053f522), single erase (0x0053f546), range insert (0x0053faeb)
+// and range erase (0x0053fd7e) are claimed below, and the stream operators at 0x0053fece and
+// 0x0053ffd7 call them.
+// MATCH-ONLY: the four are written out as this instance's explicit specializations, declared
+// here before their first use so that the callers call them out of line.
+template<> void std::vector< fn_0054340c_owner >::assign( const_iterator _F, const_iterator _L );
+template<> std::vector< fn_0054340c_owner >::iterator std::vector< fn_0054340c_owner >::erase( iterator _P );
+template<> void std::vector< fn_0054340c_owner >::insert( iterator _P, const_iterator _F, const_iterator _L );
+template<> std::vector< fn_0054340c_owner >::iterator std::vector< fn_0054340c_owner >::erase( iterator _F, iterator _L );
+
+// HYPOTHESIS: a vector-like class of the elements above (first at 4, last at 8, end at 0xc)
+// with a tidy at 0x0053f4ea; nothing in this unit calls it. The names are placeholders.
 class fn_0053f522_owner
 {
 public:
-	void fn_0053f522( long a, long b );
-	fn_0054340c_owner *fn_0053f546( fn_0054340c_owner *it );
-	void fn_0053f461();
 	void fn_0053f4ea();
-	fn_0054340c_owner *fn_0053f5ad( fn_0054340c_owner *first, fn_0054340c_owner *last );
-	fn_0054340c_owner *fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last );
-	void fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_owner *first, const fn_0054340c_owner *last );
-	// MATCH-ONLY: the original read the size through an inlined accessor.
-	unsigned int size() const
-	{
-		return ( m_04 == 0 ? 0 : m_08 - m_04 );
-	}
-	// MATCH-ONLY: the library's element destroy and uninitialized copy, inlined by the original.
-	void _Destroy( fn_0054340c_owner *first, fn_0054340c_owner *last )
-	{
-		for( ; first != last; ++first )
-			m_00.destroy( first );
-	}
-	fn_0054340c_owner *_Ucopy( const fn_0054340c_owner *first, const fn_0054340c_owner *last, fn_0054340c_owner *dst )
-	{
-		for( ; first != last; ++dst, ++first )
-			m_00.construct( dst, *first );
-		return dst;
-	}
 
-	std::allocator< fn_0054340c_owner > m_00;
+	long m_00;
 	fn_0054340c_owner *m_04;
 	fn_0054340c_owner *m_08;
 	fn_0054340c_owner *m_0c;
@@ -207,9 +203,9 @@ struct fn_0053f2a2_arg
 class fn_0053f25c_owner
 {
 public:
-	fn_0053f4c6_owner *fn_0053f25c();
+	std::vector< fn_0053f491_elem > *fn_0053f25c();
 	char fn_0053f260();
-	fn_0053f522_owner *fn_0053f264();
+	std::vector< fn_0054340c_owner > *fn_0053f264();
 	fn_0042b0fd_owner *fn_0053f268();
 	long fn_0053f26c();
 	long fn_0053f273();
@@ -224,10 +220,10 @@ public:
 	void fn_0053f30f();
 
 	char m_00[0x58];
-	fn_0053f4c6_owner m_58;
+	std::vector< fn_0053f491_elem > m_58;
 	char m_68;
 	char m_69[3];
-	fn_0053f522_owner m_6c;
+	std::vector< fn_0054340c_owner > m_6c;
 	fn_0042b0fd_owner m_7c;
 	long m_8c;
 	long m_90;
@@ -235,7 +231,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0053f25c
-fn_0053f4c6_owner *fn_0053f25c_owner::fn_0053f25c()
+std::vector< fn_0053f491_elem > *fn_0053f25c_owner::fn_0053f25c()
 {
 	return &m_58;
 }
@@ -249,7 +245,7 @@ char fn_0053f25c_owner::fn_0053f260()
 
 // HYPOTHESIS: same owner; returns the address of the member at 0x6c.
 // FUNCTION: STARFLEETOP 0x0053f264
-fn_0053f522_owner *fn_0053f25c_owner::fn_0053f264()
+std::vector< fn_0054340c_owner > *fn_0053f25c_owner::fn_0053f264()
 {
 	return &m_6c;
 }
@@ -294,7 +290,7 @@ void fn_0053f22f_owner::fn_0053f281( nDatabase::tID id )
 // FUNCTION: STARFLEETOP 0x0053f2a2
 void fn_0053f25c_owner::fn_0053f2a2( const fn_0053f2a2_arg &arg )
 {
-	m_58.fn_0053f4c6( arg.m_04, arg.m_08 );
+	m_58.assign( (const fn_0053f491_elem *)arg.m_04, (const fn_0053f491_elem *)arg.m_08 );
 }
 
 // HYPOTHESIS: same owner; the setter paired with the getter of the byte at 0x68.
@@ -308,7 +304,7 @@ void fn_0053f25c_owner::fn_0053f2b7( char value )
 // FUNCTION: STARFLEETOP 0x0053f2c1
 void fn_0053f25c_owner::fn_0053f2c1( const fn_0053f2a2_arg &arg )
 {
-	m_6c.fn_0053f522( arg.m_04, arg.m_08 );
+	m_6c.assign( (const fn_0054340c_owner *)arg.m_04, (const fn_0054340c_owner *)arg.m_08 );
 }
 
 // HYPOTHESIS: same owner; the setter paired with the getter of the dword at 0x8c.
@@ -344,13 +340,13 @@ void fn_0053f25c_owner::fn_0053f2fd()
 // FUNCTION: STARFLEETOP 0x0053f30f
 void fn_0053f25c_owner::fn_0053f30f()
 {
-	fn_0054340c_owner *it = m_6c.m_04;
-	while ( it != m_6c.m_08 )
+	fn_0054340c_owner *it = m_6c.begin();
+	while ( it != m_6c.end() )
 	{
 		if ( it->fn_0054340c() )
 		{
 			m_7c.fn_0042add2( it->vfunction12() );
-			it = m_6c.fn_0053f546( it );
+			it = m_6c.erase( it );
 		}
 		else
 			++it;
@@ -364,11 +360,38 @@ void fn_0053f25c_owner::fn_0053f30f()
 //
 //
 
-// HYPOTHESIS: a member of the vector-like class at 0x6c above (ecx passes through
-// unchanged to the callee); hands its own first and last to the range member at
-// 0x0053f5ad, like a clear.
+// HYPOTHESIS: a vector-like class of bytes (first at 4, last at 8, end at 0xc); its layout
+// (an allocator, then first, last, end) is VC6's std::vector<char>, and the two members
+// below look like its clear (0x0053f461) and range erase (0x0053f5ad). Nothing in this unit
+// uses the class, so it is written as a class of its own. The names are placeholders.
+class fn_0053f5ad_owner
+{
+public:
+	void fn_0053f461();
+	char *fn_0053f5ad( char *first, char *last );
+	// MATCH-ONLY: the original read the last through an inlined accessor.
+	char *end()
+	{
+		return m_08;
+	}
+	// MATCH-ONLY: the original inlined a destroy loop over the old tail; for bytes it
+	// leaves only the dead store of the end into the argument slot.
+	void fn_0053f5ad_destroy( char *first, char *last )
+	{
+		for ( ; first != last; ++first )
+			m_00.destroy( first );
+	}
+
+	std::allocator<char> m_00;
+	char *m_04;
+	char *m_08;
+	char *m_0c;
+};
+
+// HYPOTHESIS: ecx passes through unchanged to the callee; hands its own first and last
+// to the range erase at 0x0053f5ad, like a clear.
 // FUNCTION: STARFLEETOP 0x0053f461
-void fn_0053f522_owner::fn_0053f461()
+void fn_0053f5ad_owner::fn_0053f461()
 {
 	fn_0053f5ad( m_04, m_08 );
 }
@@ -410,18 +433,17 @@ void fn_0053f491_owner::fn_0053f491()
 	m_0c = 0;
 }
 
-// HYPOTHESIS: a member of the class at 0x58 above (ecx passes through to both callees);
-// erases its own range at 4..8, then hands the two arguments to 0x0053f834 at its first,
-// like an assign.
+// HYPOTHESIS: the vector at 0x58 above; its assign erases its own range, then inserts the
+// two arguments at its first.
 // FUNCTION: STARFLEETOP 0x0053f4c6
-void fn_0053f4c6_owner::fn_0053f4c6( long a, long b )
+template<>
+void std::vector< fn_0053f491_elem >::assign( const_iterator _F, const_iterator _L )
 {
-	fn_0053fa94( m_04, m_08 );
-	// HYPOTHESIS: the two dwords are the first and last of another vector of the same elements.
-	fn_0053f834( m_04, (const fn_0053f491_elem *)a, (const fn_0053f491_elem *)b );
+	erase( begin(), end() );
+	insert( begin(), _F, _L );
 }
 
-// HYPOTHESIS: a member of the vector-like class at 0x6c above; destroys every element,
+// HYPOTHESIS: a member of the vector-like class declared above; destroys every element,
 // frees the block and clears the three pointers, like a vector's tidy.
 // FUNCTION: STARFLEETOP 0x0053f4ea
 void fn_0053f522_owner::fn_0053f4ea()
@@ -436,61 +458,37 @@ void fn_0053f522_owner::fn_0053f4ea()
 	m_0c = 0;
 }
 
-// HYPOTHESIS: same vector-like class; erases its own range at 4..8, then hands the two
-// arguments to 0x0053faeb at its first, like an assign.
+// HYPOTHESIS: the vector at 0x6c above; its assign erases its own range, then inserts the
+// two arguments at its first.
 // FUNCTION: STARFLEETOP 0x0053f522
-void fn_0053f522_owner::fn_0053f522( long a, long b )
+template<>
+void std::vector< fn_0054340c_owner >::assign( const_iterator _F, const_iterator _L )
 {
-	fn_0053fd7e( m_04, m_08 );
-	fn_0053faeb( m_04, (const fn_0054340c_owner *)a, (const fn_0054340c_owner *)b );
+	erase( begin(), end() );
+	insert( begin(), _F, _L );
 }
 
-// HYPOTHESIS: same vector-like class; erases one element like a vector's erase: the
+// HYPOTHESIS: same vector; this member is its single erase: the
 // elements after it are assigned down one place (0x00541f81 as the element's
 // assignment), the last is destroyed and the end moves back.
 // FUNCTION: STARFLEETOP 0x0053f546
-fn_0054340c_owner *fn_0053f522_owner::fn_0053f546( fn_0054340c_owner *it )
+template<>
+std::vector< fn_0054340c_owner >::iterator std::vector< fn_0054340c_owner >::erase( iterator _P )
 {
-	fn_0054340c_owner *last = m_08;
-	fn_0054340c_owner *dest = it;
-	for ( fn_0054340c_owner *src = it + 1; src != last; ++dest, ++src )
+	fn_0054340c_owner *last = _Last;
+	fn_0054340c_owner *dest = _P;
+	for ( fn_0054340c_owner *src = _P + 1; src != last; ++dest, ++src )
 		*dest = *src;
-	fn_0054340c_owner *end = m_08;
-	for ( fn_0054340c_owner *p = end - 1; p != end; ++p )
+	fn_0054340c_owner *e = _Last;
+	for ( fn_0054340c_owner *p = e - 1; p != e; ++p )
 		p->~fn_0054340c_owner();
-	--m_08;
-	return it;
+	--_Last;
+	return _P;
 }
 
-// HYPOTHESIS: a vector-like class of bytes (first at 4, last at 8, end at 0xc); this
-// member erases a range like a vector's erase: the bytes after it are copied down, the
-// (trivial) destroy loop over the old tail leaves only a dead read, and the last moves
-// back. The layout (an allocator, then first, last, end) is VC6's std::vector<char>,
-// so 0x0053f461 above, which hands its own first and last here, is likely this class's
-// clear rather than a member of the 0x160-byte container. The names are placeholders.
-class fn_0053f5ad_owner
-{
-public:
-	char *fn_0053f5ad( char *first, char *last );
-	// MATCH-ONLY: the original read the last through an inlined accessor.
-	char *end()
-	{
-		return m_08;
-	}
-	// MATCH-ONLY: the original inlined a destroy loop over the old tail; for bytes it
-	// leaves only the dead store of the end into the argument slot.
-	void fn_0053f5ad_destroy( char *first, char *last )
-	{
-		for ( ; first != last; ++first )
-			m_00.destroy( first );
-	}
-
-	std::allocator<char> m_00;
-	char *m_04;
-	char *m_08;
-	char *m_0c;
-};
-
+// HYPOTHESIS: the byte class above; erases a range like a vector's erase: the bytes after
+// it are copied down, the (trivial) destroy loop over the old tail leaves only a dead
+// read, and the last moves back.
 // FUNCTION: STARFLEETOP 0x0053f5ad
 char *fn_0053f5ad_owner::fn_0053f5ad( char *first, char *last )
 {
@@ -539,102 +537,104 @@ void fn_0042b0fd_owner::fn_0053f5d9( nDatabase::tID *pos, const nDatabase::tID *
 	}
 }
 
-// HYPOTHESIS: the class at 0x58 above is this compiler's std::vector of the 0x74-byte
-// elements above (fn_0053f491_elem); this member is its range insert.
+// HYPOTHESIS: the vector at 0x58 above; this member is its range insert.
 // FUNCTION: STARFLEETOP 0x0053f834
-void fn_0053f4c6_owner::fn_0053f834( fn_0053f491_elem *pos, const fn_0053f491_elem *first, const fn_0053f491_elem *last )
+template<>
+void std::vector< fn_0053f491_elem >::insert( iterator pos, const_iterator first, const_iterator last )
 {
 	unsigned int m = 0;
 	std::_Distance( first, last, m );
-	if( (unsigned int)( m_0c - m_08 ) < m )
+	if( (unsigned int)( _End - _Last ) < m )
 	{
 		unsigned int n = size() + ( m < size() ? size() : m );
 		int count = n;
 		if( count < 0 )
 			count = 0;
-		fn_0053f491_elem *s = m_00.allocate( n, (void *)0 );
-		fn_0053f491_elem *q = _Ucopy( m_04, pos, s );
+		fn_0053f491_elem *s = allocator.allocate( n, (void *)0 );
+		fn_0053f491_elem *q = _Ucopy( _First, pos, s );
 		q = _Ucopy( first, last, q );
-		_Ucopy( pos, m_08, q );
-		_Destroy( m_04, m_08 );
-		m_00.deallocate( m_04, m_0c - m_04 );
-		m_0c = s + n;
-		m_08 = s + size() + m;
-		m_04 = s;
+		_Ucopy( pos, _Last, q );
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_End = s + n;
+		_Last = s + size() + m;
+		_First = s;
 	}
-	else if( (unsigned int)( m_08 - pos ) < m )
+	else if( (unsigned int)( _Last - pos ) < m )
 	{
-		_Ucopy( pos, m_08, pos + m );
-		_Ucopy( first + ( m_08 - pos ), last, m_08 );
-		std::copy( first, first + ( m_08 - pos ), pos );
-		m_08 += m;
+		_Ucopy( pos, _Last, pos + m );
+		_Ucopy( first + ( _Last - pos ), last, _Last );
+		std::copy( first, first + ( _Last - pos ), pos );
+		_Last += m;
 	}
 	else if( 0 < m )
 	{
-		_Ucopy( m_08 - m, m_08, m_08 );
-		std::copy_backward( pos, m_08 - m, m_08 );
+		_Ucopy( _Last - m, _Last, _Last );
+		std::copy_backward( pos, _Last - m, _Last );
 		std::copy( first, last, pos );
-		m_08 += m;
+		_Last += m;
 	}
 }
 
-// HYPOTHESIS: same vector-like class; this member is its range erase: the elements after
+// HYPOTHESIS: same vector; this member is its range erase: the elements after
 // the range are assigned down (0x005400e7 as the element's assignment), the old tail is
 // destroyed and the last moves back.
 // FUNCTION: STARFLEETOP 0x0053fa94
-fn_0053f491_elem *fn_0053f4c6_owner::fn_0053fa94( fn_0053f491_elem *first, fn_0053f491_elem *last )
+template<>
+std::vector< fn_0053f491_elem >::iterator std::vector< fn_0053f491_elem >::erase( iterator first, iterator last )
 {
-	fn_0053f491_elem *s = std::copy( last, m_08, first );
-	_Destroy( s, m_08 );
-	m_08 = s;
+	fn_0053f491_elem *s = std::copy( last, _Last, first );
+	_Destroy( s, _Last );
+	_Last = s;
 	return first;
 }
 
-// HYPOTHESIS: the vector-like class at 0x6c above is this compiler's std::vector of the
-// 0x160-byte elements (fn_0054340c_owner); this member is its range insert.
+// HYPOTHESIS: the vector at 0x6c above; this member is its range insert.
 // FUNCTION: STARFLEETOP 0x0053faeb
-void fn_0053f522_owner::fn_0053faeb( fn_0054340c_owner *pos, const fn_0054340c_owner *first, const fn_0054340c_owner *last )
+template<>
+void std::vector< fn_0054340c_owner >::insert( iterator pos, const_iterator first, const_iterator last )
 {
 	unsigned int m = 0;
 	std::_Distance( first, last, m );
-	if( (unsigned int)( m_0c - m_08 ) < m )
+	if( (unsigned int)( _End - _Last ) < m )
 	{
 		unsigned int n = size() + ( m < size() ? size() : m );
-		fn_0054340c_owner *s = m_00.allocate( n, (void *)0 );
-		fn_0054340c_owner *q = _Ucopy( m_04, pos, s );
+		fn_0054340c_owner *s = allocator.allocate( n, (void *)0 );
+		fn_0054340c_owner *q = _Ucopy( _First, pos, s );
 		q = _Ucopy( first, last, q );
-		_Ucopy( pos, m_08, q );
-		_Destroy( m_04, m_08 );
-		m_00.deallocate( m_04, m_0c - m_04 );
-		m_0c = s + n;
-		m_08 = s + size() + m;
-		m_04 = s;
+		_Ucopy( pos, _Last, q );
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_End = s + n;
+		_Last = s + size() + m;
+		_First = s;
 	}
-	else if( (unsigned int)( m_08 - pos ) < m )
+	else if( (unsigned int)( _Last - pos ) < m )
 	{
-		_Ucopy( pos, m_08, pos + m );
-		_Ucopy( first + ( m_08 - pos ), last, m_08 );
-		std::copy( first, first + ( m_08 - pos ), pos );
-		m_08 += m;
+		_Ucopy( pos, _Last, pos + m );
+		_Ucopy( first + ( _Last - pos ), last, _Last );
+		std::copy( first, first + ( _Last - pos ), pos );
+		_Last += m;
 	}
 	else if( 0 < m )
 	{
-		_Ucopy( m_08 - m, m_08, m_08 );
-		std::copy_backward( pos, m_08 - m, m_08 );
+		_Ucopy( _Last - m, _Last, _Last );
+		std::copy_backward( pos, _Last - m, _Last );
 		std::copy( first, last, pos );
-		m_08 += m;
+		_Last += m;
 	}
 }
 
-// HYPOTHESIS: same vector-like class; this member is its range erase: the elements after
+// HYPOTHESIS: same vector; this member is its range erase: the elements after
 // the range are assigned down (0x00541f81 as the element's assignment), the old tail is
 // destroyed and the last moves back.
 // FUNCTION: STARFLEETOP 0x0053fd7e
-fn_0054340c_owner *fn_0053f522_owner::fn_0053fd7e( fn_0054340c_owner *first, fn_0054340c_owner *last )
+template<>
+std::vector< fn_0054340c_owner >::iterator std::vector< fn_0054340c_owner >::erase( iterator first, iterator last )
 {
-	fn_0054340c_owner *s = std::copy( last, m_08, first );
-	_Destroy( s, m_08 );
-	m_08 = s;
+	fn_0054340c_owner *s = std::copy( last, _Last, first );
+	_Destroy( s, _Last );
+	_Last = s;
 	return first;
 }
 
