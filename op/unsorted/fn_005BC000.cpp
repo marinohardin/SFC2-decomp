@@ -555,30 +555,30 @@ fn_005bc324_tree::_Pairib fn_005bc3bb_set::FUN_005bc3bb(const int &_X)
 	return (fn_005bc324_tree::_Pairib(_Ans.first, _Ans.second));
 }
 
-// HYPOTHESIS: another balanced tree laid out like fn_005bc161_tree, with an
-// empty allocator at +0x00, the key compare at +0x01 and _Multi at +0x0c;
-// this is its _Tree(_Parg, _Marg, _Al) constructor.
-struct fn_005bc3de_tree
-{
-	struct node;
-	struct _Pr
-	{
-	};
-	struct _A
-	{
-	};
+// The tree is declared in fn_005bc3de_tree.h, which tMetaMapHex.h includes as well.
+#include "unsorted/fn_005bc3de_tree.h"
 
-	fn_005bc3de_tree(const _Pr &_Parg, bool _Marg, const _A &_Al);
-	// HYPOTHESIS: _Init().
-	void FUN_0042511e();
 
-	_A allocator;
-	_Pr key_compare;
-	node *_Head;
-	node *_Nil;
-	bool _Multi;
-	unsigned int _Size;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x005bc3de
 fn_005bc3de_tree::fn_005bc3de_tree(const _Pr &_Parg, bool _Marg, const _A &_Al)

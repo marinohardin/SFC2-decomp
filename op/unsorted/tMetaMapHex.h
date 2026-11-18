@@ -9,6 +9,7 @@
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Thread/Optex.h"
 #include "unsorted/tHexPoint.h"
+#include "unsorted/fn_005bc3de_tree.h"
 #include <map>
 
 // HYPOTHESIS: the 0x14-byte container tMetaMapHex holds three of, keyed by an int with one
@@ -45,7 +46,13 @@ struct fn_0053a73a_map
 	class tree
 	{
 	public:
-		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al );
+		// MATCH-ONLY: the out-of-line constructor is 0x005bc3de, shared by every tree of this
+		// layout and claimed as fn_005bc3de_tree's (fn_005bc3de_tree.h), so this calls it.
+		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al )
+		{
+			( (fn_005bc3de_tree*)this )->fn_005bc3de_tree::fn_005bc3de_tree(
+				*(const fn_005bc3de_tree::_Pr*)&pred, multi, *(const fn_005bc3de_tree::_A*)&al );
+		}
 		// MATCH-ONLY: the copy constructor of tMetaMapHex has this tree constructor inline where
 		// the other constructor calls it; the second form stands for that.
 		tree( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
@@ -138,7 +145,13 @@ struct fn_0053a6cc_map
 	class tree
 	{
 	public:
-		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al );
+		// MATCH-ONLY: the out-of-line constructor is 0x005bc3de, shared by every tree of this
+		// layout and claimed as fn_005bc3de_tree's (fn_005bc3de_tree.h), so this calls it.
+		tree( const std::less< int32 >& pred, bool multi, const std::allocator< int32 >& al )
+		{
+			( (fn_005bc3de_tree*)this )->fn_005bc3de_tree::fn_005bc3de_tree(
+				*(const fn_005bc3de_tree::_Pr*)&pred, multi, *(const fn_005bc3de_tree::_A*)&al );
+		}
 		tree( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
 			: m_alloc( al ), m_comp( pred ), m_multi( multi ) { fn_0042511e(); }
 		void fn_0042511e();
