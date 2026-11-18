@@ -146,7 +146,7 @@ inline c_0046aa10_msg::c_0046aa10_msg()
 // HYPOTHESIS: cdecl functions; their names are not known.
 bool fn_0046aa10(c_0046aa10_msg *msg);
 void fn_0046aa58();
-void fn_0046a62d(const char *name);
+bool fn_0046a62d(char *name);
 void fn_0046a713();
 
 // HYPOTHESIS: an 8-byte iterator over c_0045dece: a position and its owner. fn_005f7efa
