@@ -66,21 +66,21 @@ void fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node* x)
 	}
 }
 
-// HYPOTHESIS: the 0x14-byte element of a library vector; it has a virtual destructor (the
-// vector destroys through vtable slot 0) and its assignment is 0x005b69b0, the address
-// unsorted/tHexPoint.h gives tHexPoint's operator=; that header has no virtual destructor, so the
-// two are not yet reconciled.
-class fn_0042c10c_Elem
-{
-public:
-	virtual ~fn_0042c10c_Elem();
-	fn_0042c10c_Elem& operator=(const fn_0042c10c_Elem& other);
+// The 0x14-byte element of the library vector below is tHexPoint: the vector destroys it
+// through vtable slot 0 (its virtual destructor) and assigns it with 0x005b69b0, tHexPoint's
+// operator=. The name is kept for the members written against it.
+#include "unsorted/tHexPoint.h"
+typedef tHexPoint fn_0042c10c_Elem;
 
-	int m04;
-	int m08;
-	int m0c;
-	int m10;
-};
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: constructs an element in place from another (the library's _Construct).
 void fn_0042c9c5(fn_0042c10c_Elem* p, const fn_0042c10c_Elem& v);
@@ -197,7 +197,7 @@ struct fn_0042c360_Node
 };
 
 // HYPOTHESIS: constructs a node value in place from another (copy construction).
-void fn_0042c9b1(void* dest, const fn_0042c360_Value& src);
+void fn_0042c9b1(void* dest, const void* src);
 // HYPOTHESIS: the tree's key_compare (key less-than).
 bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right);
 
@@ -231,7 +231,7 @@ fn_0042c360_Iterator fn_0042c360_Tree::fn_0042c360(fn_0042c360_Node* x, fn_0042c
 	z->m04_parent = y;
 	z->m00_left = m08_nil;
 	z->m08_right = m08_nil;
-	fn_0042c9b1(&z->m0c_value, v);
+	fn_0042c9b1(&z->m0c_value, &v);
 	++m10_size;
 	if (y == m04_head || x != m08_nil || fn_0042c8f7(v, y->m0c_value))
 	{
@@ -678,6 +678,7 @@ template<> tInput& operator>>( tInput& input, std::vector< tServCharacter::tShip
 }
 
 };
+
 
 // HYPOTHESIS: the key of fn_0042c360_Value is a pair of ints compared as std::pair's operator<
 // (first, then second).

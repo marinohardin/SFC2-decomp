@@ -178,6 +178,7 @@ public:
 	// HYPOTHESIS: the adjacent byte getter at 0x0042a41a reads the same object.
 	bool FUN_0042a41a();
 	bool FUN_0042a421( int key0, int key1 );
+	bool FUN_0042a45f();
 	void FUN_0042a480();
 	void FUN_0042a4f7( std::string value );
 	void FUN_0042a535( const std::string& value );
@@ -270,17 +271,16 @@ bool fn_0042a480_object::FUN_0042a421( int key0, int key1 )
 	return it != field_a0.end() ? (*it).second : false;
 }
 
-// HYPOTHESIS: both calls go through the same object to an int getter at 0x0042aa4b; the
-// class is not known yet.
-class fn_0042a45f_object
-{
-public:
-	bool FUN_0042a45f();
-	int FUN_0042aa4b();
-};
+// Both calls go through this object to its int getter at 0x0042aa4b, so 0x0042a45f is a
+// member of the same class.
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x0042a45f
-bool fn_0042a45f_object::FUN_0042a45f()
+bool fn_0042a480_object::FUN_0042a45f()
 {
 	if( FUN_0042aa4b() >= 8 && FUN_0042aa4b() <= 15 )
 		return true;
@@ -624,8 +624,8 @@ void fn_0042adc1_object::FUN_0042add2( int value )
 	FUN_0042b50c( field_08, 1, value );
 }
 
-// HYPOTHESIS: unsorted/tClientCharacter.cpp still holds its own copy of this class; it should
-// include unsorted/tObject_0042ade3.h instead once that unit is open for edits.
+// The class is shared with unsorted/tClientCharacter.cpp, which includes the same header.
+
 #include "unsorted/tObject_0042ade3.h"
 
 // FUNCTION: STARFLEETOP 0x0042ade3
