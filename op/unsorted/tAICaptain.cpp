@@ -627,7 +627,7 @@ bool tAICaptain::fn_0051e3ac(int aID, int aValue)
 		}
 	}
 	tObject_0051e3ac_entry entry(aID, aValue);
-	entry.fRelation = gObject_0090be60->fn_0042750a(aID);
+	entry.fRelation = gObject_0090be60->fn_0042748f(aID);
 	entry.fFlag = true;
 	field_0x3a34->push_back(entry);
 	return true;
