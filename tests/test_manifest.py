@@ -238,6 +238,31 @@ def test_a_template_base_is_read_by_its_template_name(tmp_path):
     assert classes['tTestEval']['bases'] == ['std::unary_function']
 
 
+def test_a_nested_struct_defined_outside_its_class_is_its_own_class(tmp_path):
+    header = HEADER + ('\nclass tTestTree\n{\npublic:\n\tstruct tNode;\n\tint32 fSize;\n};\n'
+                       'struct tTestTree::tNode\n{\n\tint32 fKey;\n};\n')
+    game, csv = make_tree(tmp_path, header=header)
+    assert run(tmp_path, game, csv) == 0
+    _, classes = manifest.scan(str(game))
+    assert classes['tTestTree::tNode']['bases'] == []
+    assert classes['tTestTree']['bases'] == []
+
+
+def test_a_class_opened_with_its_namespace_is_qualified_by_it(tmp_path):
+    header = HEADER + ('\nclass tTestFirst\n{\n\tint32 fValue;\n}; namespace nTest { class tTestSecond\n'
+                       '{\npublic:\n\tint32 mCount();\n};\n}\n')
+    source = SOURCE + ('\n// FUNCTION: STARFLEETOP 0x00401500\n'
+                       'int32 nTest::tTestSecond::mCount()\n{\n\treturn 0;\n}\n')
+    game, csv = make_tree(tmp_path, header=header, source=source)
+    csv.write_text(CSV + '00401500,8,nTest::tTestSecond::mCount,,,default,,,,0,,function,\n')
+    assert run(tmp_path, game, csv) == 0
+    _, classes = manifest.scan(str(game))
+    assert 'nTest::tTestSecond' in classes
+    assert 'tTestFirst::tTestSecond' not in classes
+    rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    assert rows['0x00401500'][2] == 'nTest::tTestSecond::mCount()'
+
+
 def test_a_library_member_is_lifted_only(tmp_path):
     # The library's own copy of a std:: member: no declaration of its class in op/, so no guest
     # entry point; exact, the object lift takes it.
