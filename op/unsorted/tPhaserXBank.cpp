@@ -94,17 +94,17 @@ public:
     // HYPOTHESIS: slots 135 to 148 are placeholders that only fix the position of slot 149
     // (offset 0x250), which 0x004e55e9 calls with 0; slot 148 is the one 0x004e558a fills.
     virtual float vfunction135(unsigned char param_1);
-    virtual void vfunction136();
+    virtual int vfunction136(char param_1);
     virtual void vfunction137();
-    virtual void vfunction138();
+    virtual bool vfunction138();
     virtual void vfunction139();
     virtual void vfunction140();
     virtual void vfunction141();
     virtual void vfunction142();
     virtual float vfunction143(float param_1, float param_2);
-    virtual void vfunction144();
-    virtual void vfunction145();
-    virtual void vfunction146();
+    virtual int vfunction144();
+    virtual void vfunction145(int param_1);
+    virtual int vfunction146();
     virtual void vfunction147();
     virtual void vfunction148();
     // HYPOTHESIS: the recovery time left for one bank, as tPhaserBank's 0x004e2243.
@@ -114,29 +114,8 @@ public:
     virtual float vfunction116(unsigned char param_1);
     virtual float vfunction118(unsigned char param_1);
 
-    char pad04[0x10 - 0x04];
-    // HYPOTHESIS: a signed state that 0x004e58ec requires to be non-negative.
-    int field_10;
-    char pad14[0x2c - 0x14];
-    fn_004e20f4_field2c_type* field_2c;
-    char pad30[0x38 - 0x30];
-    // HYPOTHESIS: a float the constructor sets to 2.0.
-    float field_38;
-    char pad3c[0xec - 0x3c];
-    // HYPOTHESIS: the target's ID, as tPhaserBank's field_ec.
-    int field_ec;
-    char padf0[0xf4 - 0xf0];
-    float field_f4;
-    int field_f8;
-    // HYPOTHESIS: a mode byte set by vfunction65 (0x004e562b); 12 is a mode it does not leave.
-    char field_fc;
-    char padfd[0x100 - 0xfd];
-    int field_100;
-    int field_104;
-    int field_108;
-    char pad10c[0x148 - 0x10c];
-    fn_004e2895_field148_type field_148;
-    char pad149[0x470 - 0x149];
+    // Offsets 0x04 to 0x14b are tBaseWeapon's members.
+    char pad14c[0x470 - 0x14c];
     float field_470[4];
     bool field_480;
     char pad481[0x484 - 0x481];

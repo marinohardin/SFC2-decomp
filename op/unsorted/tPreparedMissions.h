@@ -1,16 +1,27 @@
-#ifndef TPREPAREDMISSIONS_H
-#define TPREPAREDMISSIONS_H
+//	tPreparedMissions.h: tPreparedMissions, a character's prepared missions as the server's database holds them.
+
+#if !defined( tPreparedMissions_h )
+#define tPreparedMissions_h
+
+#pragma once
 
 #include "Common/Database/DatabaseObject.h"
 
-// HYPOTHESIS: a database object like its neighbours (tMetaMapDesc, tBattles); its allocator
-// news 0x98 bytes and sets the allocator ID on it. Members past the base are not known yet.
+// The class and its base are the exe's RTTI (tPreparedMissions, nDatabase::tQuery<tPreparedMissions>,
+// nDatabase::tMemberEval<tPreparedMissions,nDatabase::tID,...>). 0x0056d9d3 steps a vector of them
+// by 0x98 bytes. Its own members are not known yet.
 class tPreparedMissions : public nDatabase::tDatabaseObject
 {
 public:
+	// HYPOTHESIS: its allocator news 0x98 bytes and constructs it out of line.
 	tPreparedMissions();
+	// HYPOTHESIS: a non-virtual accessor that returns a tID by value; 0x0056d9d3 queries on it.
+	nDatabase::tID fn_0053f22f() const;
+	// HYPOTHESIS: a non-virtual accessor that returns a tID; 0x0056d9d3 queries on it. The exe
+	// shares its 5-byte body with tNewsStory's accessor at the same address.
+	const nDatabase::tID& fn_00572b2b() const;
 
-	char fPad_48[0x50];
+	char fPad48[0x98 - 0x48];
 };
 
 #endif

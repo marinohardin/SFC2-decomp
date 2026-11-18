@@ -312,14 +312,14 @@ inline tPerformanceCounter::tPerformanceCounter()
 
 
 
-template< typename tnResult >
-class tCallback
-{
-public:
-	virtual ~tCallback();
+#include "Common/Callback.h"
 
-	virtual void Callback( tnResult result ) = 0;
-};
+
+
+
+
+
+
 
 namespace nLog
 {

@@ -59,17 +59,6 @@ extern LONG (*OS_InterlockedCompareExchange)(LPLONG Destination, LONG Exchange, 
 
 #include "unsorted/tHexPoint.h"
 
-
-
-
-
-
-
-
-
-
-
-
 // HYPOTHESIS: a 0x14-byte member type with an out-of-line destructor at 0x0042ade3.
 // HYPOTHESIS: a tree-like container: the constructor copies an empty allocator object to +0
 // and an empty comparison object to +1, clears the flag at +0xc and calls 0x0042baaf on

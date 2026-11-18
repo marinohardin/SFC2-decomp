@@ -75,7 +75,7 @@ public:
 	virtual int vfunction12();
 	virtual void vfunction13(tID aID);
 	virtual float vfunction14();
-	virtual void vfunction15();
+	virtual void vfunction15(float aRadius);
 	virtual void vfunction16();
 	virtual void vfunction17();
 	// HYPOTHESIS: returns an int; tAICaptain's override (0x0051e09a) returns a constant.
@@ -692,6 +692,7 @@ public:
 	tObject_0042496f *fn_004249de(int aID);
 	bool fn_004235f0(tID aID);	// HYPOTHESIS: a test on the entity with the ID (0x00413614)
 	tID mGetNextPlayerID();	// 0x004239d6
+	tEntity *mGetPlayersControledEntity(void);	// 0x00424946
 	void mAddEntity(tEntity *pNew);	// 0x00423749
 
 	char fField00[0x30];                  // +0x00

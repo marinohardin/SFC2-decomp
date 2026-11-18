@@ -10,9 +10,19 @@ int __cdecl fn_00453c60(const char* name, int a2, int a3);
 
 struct vfunction33_result
 {
+    // HYPOTHESIS: a truth test; tSensorGroupSystem's 0x0043f2e3 sets its ECM and ECCM when it
+    // holds for the owner.
+    char fn_0041021f();
+
     char pad00[0x1c];
     int field_1c;
-    char pad20[0x110 - 0x20];
+    char pad20[0x5d - 0x20];
+    // HYPOTHESIS: a flag; tShuttleBaySystem's 0x0044ea7e skips its recall step while it is set.
+    bool field_5d;
+    char pad5e[0x60 - 0x5e];
+    // HYPOTHESIS: a fleet ID; 0x0043e0ed passes it to fn_004274f4.
+    int field_60;
+    char pad64[0x110 - 0x64];
     bool field_110;
     char pad111[0x86c - 0x111];
     // HYPOTHESIS: a kind or index read by tShieldSystem to pick a sound event.
@@ -22,6 +32,9 @@ struct vfunction33_result
     char pad874[0x944 - 0x874];
     // HYPOTHESIS: a 1-based index read by tShieldGroup to pick its minimum shield level.
     int field_944;
+    char pad948[0xacc - 0x948];
+    // HYPOTHESIS: an integer tSensorGroupSystem's 0x0043f2e3 adds to its environmental ECM.
+    int field_acc;
 };
 
 // HYPOTHESIS: a global object pointer at 0x00967af4 whose vftable slot 3 answers a yes/no
@@ -35,7 +48,7 @@ public:
     virtual bool vfunction4(); // slot 3
 };
 extern fn_00967af4_type* g_00967af4;
-
+class fn_owner_slot78_result; class fn_owner_slot79_result;
 // HYPOTHESIS: the owning ship; vftable slot 43 answers a yes/no question and slot 107 returns
 // an object with an id at +0x1c.
 class fn_owner_type
@@ -119,8 +132,8 @@ public:
     virtual void vfunction76();
     virtual void vfunction77();
     virtual void vfunction78();
-    virtual void vfunction79();
-    virtual void vfunction80();
+    virtual fn_owner_slot78_result* vfunction79(); // slot 78, may be null
+    virtual fn_owner_slot79_result* vfunction80(); // slot 79, may be null
     virtual void vfunction81();
     virtual void vfunction82();
     virtual void vfunction83();
@@ -210,16 +223,24 @@ public:
     virtual void vfunction7(tListMember *aMember);
     virtual void vfunction8();
     virtual void vfunction9();
-    virtual void vfunction10();
-    virtual void vfunction11();
+    // HYPOTHESIS: slot 9 returns an int; tShuttleBaySystem's 0x0044edc8 tests it for > 0.
+    virtual int vfunction10();
+    virtual int vfunction11();
     virtual void vfunction12();
     virtual void vfunction13();
-    virtual void vfunction14();
-    virtual void vfunction15();
-    virtual void vfunction16();
-    virtual void vfunction17();
-    virtual void vfunction18();
-    virtual void vfunction19();
+    // HYPOTHESIS: slot 13; says whether the type index at +0xc is in the range 0..0x35.
+    virtual bool vfunction14();
+    // HYPOTHESIS: slot 14; says whether the type index at +0xc is 0x36.
+    virtual bool vfunction15();
+    // HYPOTHESIS: slot 15; returns the dword at +0x20.
+    virtual int vfunction16();
+    // HYPOTHESIS: slot 16 returns an int; tShuttleBaySystem's override adds to it.
+    virtual int vfunction17();
+    // HYPOTHESIS: slot 17; stores its argument in the dword at +0x18.
+    virtual void vfunction18(int param_1);
+    // HYPOTHESIS: slot 18; stores its argument in the dword at +0x20 (read by slot 15) and keeps the global
+    // at 0x0090b518 above every value stored.
+    virtual void vfunction19(int param_1);
     virtual void vfunction20();
     virtual void vfunction21();
     virtual void vfunction22();
@@ -229,8 +250,10 @@ public:
     virtual unsigned int vfunction24(int param_1, unsigned int param_2, int param_3);
     virtual void vfunction25();
     virtual void vfunction26();
-    virtual void vfunction27();
-    virtual void vfunction28();
+    // HYPOTHESIS: slot 26 returns a flag; 0x0044cced compares it with 1.
+    virtual bool vfunction27();
+    // HYPOTHESIS: slot 27 returns a flag; 0x0044ce2a compares it with 1.
+    virtual bool vfunction28();
     virtual void vfunction29();
     virtual void vfunction30();
     virtual void vfunction31();
@@ -238,24 +261,30 @@ public:
     // HYPOTHESIS: slot 32 returns the owning object (an int at +0x1c is read from it).
     virtual struct vfunction33_result* vfunction33();
     virtual void vfunction34();
-    virtual void vfunction35();
+    // HYPOTHESIS: slot 34 returns a flag; tShuttleBaySystem's 0x0044efae tests it.
+    virtual bool vfunction35();
     virtual void vfunction36();
-    virtual void vfunction37();
+    // HYPOTHESIS: slot 36 takes four ints and returns a value; 0x0043e09e passes (0, 100, 0, 0).
+    virtual int vfunction37(int param_1, int param_2, int param_3, int param_4);
     virtual void vfunction38();
     virtual void vfunction39();
     virtual void vfunction40();
     virtual void vfunction41();
     virtual void vfunction42();
-    virtual void vfunction43();
-    virtual void vfunction44();
-    virtual void vfunction45();
-    virtual void vfunction46();
+    // HYPOTHESIS: slot 42; returns the owning ship at +0x2c.
+    virtual fn_owner_type* vfunction43();
+    // HYPOTHESIS: slot 43; returns a system looked up by its argument (0x00436884 uses the result).
+    virtual tIndividualShipSystem* vfunction44(int param_1);
+    // HYPOTHESIS: slot 44; forwards its argument to slot 43.
+    virtual void vfunction45(int param_1);
+    // HYPOTHESIS: slot 45; says whether the system is in a list (pointer at +0x24 set).
+    virtual bool vfunction46();
     virtual void vfunction47(int value); // slot 46
     // HYPOTHESIS: vftable slot 47; takes an amount of damage off the system's level
     // (tShieldGroup slot 88 passes each shield at most its current level).
     virtual void vfunction48(int param_1);
     virtual void vfunction49(int value); // slot 48
-    virtual void vfunction50();
+    virtual void vfunction50(int param_1);
     virtual void vfunction51();
     // vftable slot 51; tIndividualShipSystem's own body is at 0x0043d66b.
     virtual void vfunction52();
@@ -269,12 +298,47 @@ public:
     // reads each shield's through it).
     virtual int vfunction56();
     virtual void vfunction57(int param_1);
-    virtual void vfunction58();
-    virtual void vfunction59();
+    // HYPOTHESIS: slot 57 returns an int; tShuttleBaySystem's 0x0044edc8 divides by it.
+    virtual int vfunction58();
+    virtual void vfunction59(int param_1);
     virtual void vfunction60();
-    virtual void vfunction61();
+    // HYPOTHESIS: slot 60; stores its argument in the dword at +0x1c.
+    virtual void vfunction61(int param_1);
     virtual void vfunction62(); // slot 61
     virtual void vfunction63(); // slot 62
+    // HYPOTHESIS: slot 63; returns the flag byte at +0x45.
+    virtual bool vfunction64();
+    virtual void vfunction65(char param_1);
+    // HYPOTHESIS: slot 65; returns the byte at +0x30 set by slot 64.
+    virtual char vfunction66();
+    // HYPOTHESIS: slot 66; stores its argument in the dword at +0x38.
+    virtual void vfunction67(float param_1);
+    // HYPOTHESIS: slot 67; returns the float at +0x38 stored by slot 66.
+    virtual float vfunction68();
+    // HYPOTHESIS: slot 68; stores its argument in the dword at +0x34.
+    virtual void vfunction69(int param_1);
+    // HYPOTHESIS: slot 69 returns a float (tSensorGroupSystem's 0x0043f2cb returns a sum).
+    virtual float vfunction70();
+    // HYPOTHESIS: slot 70; stores its argument in the float at +0x40 (tCloakSystem writes it as a float).
+    virtual void vfunction71(float param_1);
+    // HYPOTHESIS: slot 71 returns a float, as tCloakSystem's override (0x0043894d) does.
+    virtual float vfunction72();
+    // HYPOTHESIS: slot 72 takes two floats and returns a float (tSensorGroupSystem's 0x0043f2e3).
+    virtual float vfunction73(float param_1, float param_2);
+    // HYPOTHESIS: slot 73 takes two floats; slot 74 passes its float and 0.0.
+    virtual float vfunction74(float param_1, float param_2);
+    virtual float vfunction75(float param_1);
+    virtual void vfunction76();
+    virtual void vfunction77();
+    virtual void vfunction78();
+    virtual float vfunction79();
+    virtual void vfunction80();
+    virtual void vfunction81();
+    virtual void vfunction82();
+    // HYPOTHESIS: slot 82; returns the byte at +0x44.
+    virtual bool vfunction83();
+    // HYPOTHESIS: slot 83; stores its argument in the byte at +0x44 read by slot 82.
+    virtual void vfunction84(bool param_1);
 
     char pad04[0x0c - 0x04];
     int field_0c;
@@ -282,48 +346,80 @@ public:
     int field_14;
     int field_18;
     int field_1c;
-    char pad20[0x24 - 0x20];
+    int field_20;
     // HYPOTHESIS: the group's list of member systems; tShieldGroup's constructor allocates it.
     class tIndividualShipSystemList* field_24;
     int field_28;
     // HYPOTHESIS: the owning ship (set from the constructor's first argument).
     class fn_owner_type* field_2c;
-    char pad30[0x40 - 0x30];
+    // HYPOTHESIS: a byte set by slot 64 (vfunction65).
+    char field_30;
+    char pad31[0x34 - 0x31];
+    int field_34;
+    // HYPOTHESIS: a float; slot 67 returns it with fld, and tBaseWeapon's slot 66 takes a float.
+    float field_38;
+    // HYPOTHESIS: a float; slot 78 returns it with fld.
+    float field_3c;
     float field_40;
-    char pad44[0x45 - 0x44];
+    bool field_44;
     bool field_45;
     char pad46[0x48 - 0x46];
     double field_48;
     float field_50;
+    // The double at +0x48 aligns the class to 8, so derived members start at +0x58:
+    // tRepairableShipSystem's constructor stores its own fields from +0x58 on.
     char pad54[0x58 - 0x54];
-    // HYPOTHESIS: saved by tShieldGroup as "fTrueOnline".
-    bool field_58;
-    bool field_59;
-    char pad5a[0x5c - 0x5a];
-    // HYPOTHESIS: tShieldGroup's six member shields (tShieldSystem, declared in its own unit),
-    // one per facing; null when the facing has none.
-    tShieldSystem* field_5c;
-    tShieldSystem* field_60;
-    tShieldSystem* field_64;
-    tShieldSystem* field_68;
-    tShieldSystem* field_6c;
-    tShieldSystem* field_70;
-    // HYPOTHESIS: saved by tShieldGroup as "fReinforcementCapacitor"; a base field because
-    // the base's alignment (the double at +0x48) puts derived members at +0x78.
-    float field_74;
 };
 
 class tRepairableShipSystem : public tIndividualShipSystem
 {
 public:
     tRepairableShipSystem();
+    // Inline: tSensorGroupSystem's destructor (0x0043dff0) stores this class's vftable
+    // (0x00799598) and then calls tIndividualShipSystem's.
+    virtual ~tRepairableShipSystem() {}
     // vftable slot 22; saves or loads the repair fields (body at 0x0043d8b4).
     virtual unsigned int vfunction23(int param_1, unsigned int param_2, int param_3);
+    // HYPOTHESIS: slots 84, 85 and 87..90 are declared here, in slot order, so that slot 93
+    // is vfunction94; their signatures are unknown.
+    virtual void vfunction85();
+    virtual void vfunction86();
+    // vftable slot 86
+    virtual float vfunction87();
+    virtual void vfunction88();
+    virtual void vfunction89();
+    // vftable slot 89 (body at 0x0043d541); takes two arguments (ret 8) and returns a float.
+    virtual float vfunction90(float param_1, int param_2);
+    // vftable slot 90 (body at 0x0043d722); takes two arguments (ret 8).
+    virtual void vfunction91(unsigned int param_1, int param_2);
+    // HYPOTHESIS: vftable slot 91; stores its argument into field_78.
+    virtual void vfunction92(int param_1);
+    // HYPOTHESIS: vftable slot 92; returns field_78.
+    virtual int vfunction93();
     // vftable slot 93 (the compiler calls it directly inside a constructor).
     virtual void vfunction94(int param_1, int param_2);
+    // vftable slot 94
+    virtual float vfunction95();
+    // vftable slot 95; tests bit 0x10 of field_5c.
+    virtual bool vfunction96();
+    // vftable slot 96; tests field_5c for bits other than 0x10.
+    virtual bool vfunction97();
+    // vftable slot 97; returns slot 94's float.
+    virtual float vfunction98();
+    // vftable slot 98; stores its arguments into field_5c and field_58.
+    virtual void vfunction99(int param_1, int param_2);
 
-    // HYPOTHESIS: tRepairableShipSystem's first field; tShieldGroup, a direct
-    // tIndividualShipSystem, keeps a float of its own at this offset.
+    // HYPOTHESIS: types follow the constructor's stores (fstp for floats, a register for the
+    // rest); the meanings are not known.
+    int field_58;
+    int field_5c;
+    float field_60;
+    // HYPOTHESIS: a factor; the constructor sets it to 1.0.
+    float field_64;
+    float field_68;
+    int field_6c;
+    float field_70;
+    int field_74;
     int field_78;
 };
 

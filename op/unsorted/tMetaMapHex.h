@@ -223,10 +223,10 @@ public:
 	std::map< int32, float >& fn_0053a2fc();
 	// HYPOTHESIS: a number per index; tBattles::SQLFillInsertStream writes it for 0 and 1.
 	int32 fn_0053a414( int32 param_1 );
-	// HYPOTHESIS: the hex point's first coordinate, read under the lock.
-	long fn_00539f04();
-	// HYPOTHESIS: the hex point's second coordinate, read under the lock.
-	long fn_00539f50();
+	// HYPOTHESIS: the hex point's two coordinates, read under the lock; 0x0056d3a0 queries the
+	// database on both, so they are const accessors.
+	long fn_00539f04() const;
+	long fn_00539f50() const;
 	// HYPOTHESIS: a copy of the hex point, taken under the lock.
 	tHexPoint fn_00539f9c();
 	// HYPOTHESIS: the six hexes around this one; when both arguments are set, only those

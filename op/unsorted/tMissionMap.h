@@ -3,6 +3,7 @@
 #define tMissionMap_h
 
 struct tPoint3;
+class tMapObjectType;
 
 struct tMapPoint
 {
@@ -26,6 +27,8 @@ public:
 	tPoint3 mConvertLocation(tMapPoint);
 	// screen to map location conversion
 	tMapPoint m3DToMapPoint(tPoint3 LocationIn3D);
+
+	const tMapObjectType& mGetMapData(long x, long y);
 
 	// returns map width and height
 	static tMapPoint mGetMapDimension(void) { return fMapSize; }

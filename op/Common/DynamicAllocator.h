@@ -54,6 +54,8 @@ public:
 
 	void mAddToAllocList( const type_info& type, tAllocator* alloc );
 
+	tAllocatedClass* mAllocateClass( iAllocatorID typeAllocID );
+
 	iAllocatorID mGetAllocatorID( const type_info& type );
 	iAllocatorID mGetAllocatorID( const char* raw_name );
 

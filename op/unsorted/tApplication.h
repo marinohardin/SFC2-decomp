@@ -17,6 +17,8 @@ public:
 	bool vfunction19(int);
 
 	void fn_0069a880(int, int);
+	// HYPOTHESIS: sets the window title; tMyApp::vfunction2 passes "Starfleet Command".
+	void fn_0069a9a0(const char *);
 	int fn_0069a940();
 	int fn_0069a970();
 	int fn_0069aa00();
@@ -39,7 +41,8 @@ public:
 	virtual void vfunction6(const char *, const char *, int);    // +0x14
 	virtual void vfunction7();
 	virtual void vfunction8();
-	virtual void vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
+	virtual int vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
+	virtual void vfunction10(const char *, const char *, const char *);    // +0x24, stores a named string setting
 };
 
 extern fn_008cc580_Settings *g_p008cc580;
