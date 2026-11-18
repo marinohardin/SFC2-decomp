@@ -9996,9 +9996,9 @@
    "symbol": "??1tListBox_Base@@UAE@XZ",
    "unit": "unsorted/tListBox_Base.cpp",
    "size": 135,
-   "score": 99.865,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x004c6225": {
    "name": "tListBox_Base::vfunction8",
@@ -21984,9 +21984,9 @@
    "symbol": "??_GtFileSession@@UAEPAXI@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 400,
-   "score": 99.881,
-   "exact": false,
-   "recorded": "2026-11-08"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
   },
   "0x0061bdd0": {
    "name": "tFileSession::~tFileSession",
@@ -22029,18 +22029,18 @@
    "symbol": "?mDuplicatePath@tFileSession@@QAE?AVtPath@@V2@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 144,
-   "score": 97.811,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061c320": {
    "name": "FUN_0061c320",
    "symbol": "?mFileOpenDialog@tFileSession@@QAE?AVtPath@@AAVtString@@0@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 96,
-   "score": 95.931,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061c380": {
    "name": "FUN_0061c380",
@@ -22245,9 +22245,9 @@
    "symbol": "?mGetSortName@tVolume@@QAE?AVtString@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 544,
-   "score": 98.925,
+   "score": 99.925,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-17"
   },
   "0x0061dad0": {
    "name": "tVolume::mGetRoot",
@@ -22308,18 +22308,18 @@
    "symbol": "?mGetPathIterator@tDir@@QAE?AVtPathIterator@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.505,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061e280": {
    "name": "tDir::mGetNamedDir",
    "symbol": "?mGetNamedDir@tDir@@QAE?AV1@AAVtString@@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.516,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061e3a0": {
    "name": "tDir::mGetNamedFile",
@@ -22353,18 +22353,18 @@
    "symbol": "?mGetDate@tPath@@QAE?AVtDate@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.505,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061e900": {
    "name": "tPath::mGetParentDir",
    "symbol": "?mGetParentDir@tPath@@QAE?AVtDir@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 288,
-   "score": 99.505,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061ea20": {
    "name": "tPath::mExist",
@@ -22398,9 +22398,9 @@
    "symbol": "?mDelete@tPath@@QAEEXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 272,
-   "score": 99.966,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061ee60": {
    "name": "tPath::mRead",
@@ -22425,9 +22425,9 @@
    "symbol": "?mFree@tPath@@QAEKXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 272,
-   "score": 99.966,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0061f1d0": {
    "name": "tVolIterator::mAdd",
@@ -24585,9 +24585,9 @@
    "symbol": "?mMakeFullPath@twDir@@IAEXXZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 624,
-   "score": 99.036,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00631840": {
    "name": "twDir::mGetSortName",
@@ -25098,9 +25098,9 @@
    "symbol": "?mResizeHandle@twMemoryPart@@UAEJJJ@Z",
    "unit": "Tiger/twmemory.cpp",
    "size": 784,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00639b00": {
    "name": "twMemoryPart::mDuplicateHandle",
@@ -25116,9 +25116,9 @@
    "symbol": "?mResizeHandleZeroIt@twMemoryPart@@UAEJJJ@Z",
    "unit": "Tiger/twmemory.cpp",
    "size": 784,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0063a0a0": {
    "name": "twMemoryPart::mDelHandle",
@@ -25233,9 +25233,9 @@
    "symbol": "?mClosePage@tPagingMechanism@@IAEXPAVtPagingBlock@@@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 688,
-   "score": 98.878,
+   "score": 99.024,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-17"
   },
   "0x0063c0b0": {
    "name": "tPagingMechanism::mDeactivate",
@@ -25251,9 +25251,9 @@
    "symbol": "?mGetIndexWhereToAddThisMuchSpace@tPagingBlock@@IAEJJ@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 416,
-   "score": 90.203,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0063c270": {
    "name": "tPagingMechanism::mNewHandle",
@@ -25368,9 +25368,9 @@
    "symbol": "?mDelHandle@tPagingMechanism@@UAEEJ@Z",
    "unit": "Tiger/tpaging.cpp",
    "size": 1552,
-   "score": 97.188,
+   "score": 97.451,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-17"
   },
   "0x0063d8c0": {
    "name": "tPagingMechanism::mResizeHandle",
@@ -25962,9 +25962,9 @@
    "symbol": "?mSetVolume@twStandardSoundChannel@@UAEEJ@Z",
    "unit": "Tiger/twSound.cpp",
    "size": 112,
-   "score": 99.487,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006447c0": {
    "name": "twStandardSoundChannel::mStopAndClearChannel",
@@ -26790,9 +26790,9 @@
    "symbol": "?mGetFirstPlayingCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ",
    "unit": "Tiger/tgSound.cpp",
    "size": 752,
-   "score": 99.36,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x0064c1c0": {
    "name": "tSoundChannel::mGetLastSelectionToAttach",
@@ -28140,9 +28140,9 @@
    "symbol": "?mActivate@tAudioFileInfoPart@@UAEXXZ",
    "unit": "Tiger/tAudioFile.cpp",
    "size": 480,
-   "score": 98.24,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00657b60": {
    "name": "tAudioFileInfoPart::mDeactivate",
@@ -31182,9 +31182,9 @@
    "symbol": "?mDone@tFontTable@@IAEXXZ",
    "unit": "Tiger/tFontmgr.cpp",
    "size": 192,
-   "score": 98.214,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00670710": {
    "name": "tFontTable::mMakeGlyph",
@@ -31209,9 +31209,9 @@
    "symbol": "?mInit@tFontMgr@@QAE?AW4eInitStatus@1@XZ",
    "unit": "Tiger/tFontmgr.cpp",
    "size": 848,
-   "score": 91.546,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x00670ca0": {
    "name": "tFontFileIO::~tFontFileIO",
@@ -31308,9 +31308,9 @@
    "symbol": "?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 3120,
-   "score": 98.684,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006a5a20": {
    "name": "tTexBmp::vfunction7",
@@ -31479,9 +31479,9 @@
    "symbol": "?fn_006a8930@tD3DViewMgr@@QAEPAVtTexFace@@HPAUtTexFormat@@HHPAE@Z",
    "unit": "dmp3d/d3d/d3dViewMgr_Tex.cpp",
    "size": 1180,
-   "score": 92.156,
+   "score": 92.519,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-17"
   },
   "0x006a94a0": {
    "name": "D3DUtil_InitSurfaceDesc",
@@ -32505,18 +32505,18 @@
    "symbol": "??0tThreadPool@@AAE@XZ",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 288,
-   "score": 97.647,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f3b40": {
    "name": "tThreadPool::~tThreadPool",
    "symbol": "??1tThreadPool@@AAE@XZ",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 512,
-   "score": 99.971,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f3d40": {
    "name": "tThreadPool::Startup",
@@ -32532,18 +32532,18 @@
    "symbol": "?Shutdown@tThreadPool@@QAEXK@Z",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 256,
-   "score": 99.941,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f3e50": {
    "name": "tThreadPool::ShutdownComplete",
    "symbol": "?ShutdownComplete@tThreadPool@@QAE_NXZ",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 224,
-   "score": 99.933,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f3f30": {
    "name": "tThreadPool::SetMaxThreads",
@@ -32640,9 +32640,9 @@
    "symbol": "?QueueWorkItem@tThreadPool@@QAEXPAV?$tCallback@J@@J@Z",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 608,
-   "score": 99.949,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
   },
   "0x006f53f0": {
    "name": "tOSVersion::Instance",

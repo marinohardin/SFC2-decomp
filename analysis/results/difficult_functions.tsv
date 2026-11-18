@@ -192,3 +192,48 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x007085f0	FUN_007085f0	4	opus	40.40	2026-11-09T13:28:49Z	not exact after 4 attempts
 0x00708820	nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr	4	opus	44.29	2026-11-09T13:37:52Z	not exact after 4 attempts
 0x007090b0	nDatabase::tFileDatabaseMgr::New	4	opus	30.38	2026-11-09T15:13:10Z	not exact after 4 attempts
+0x004295d0	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	21	fable	99.78	2026-11-17T07:31:33Z	not exact after 21 attempts: Fable tried 7 times in a revisit loop; best 99.78%
+0x00455942	FUN_00455942	3	fable	99.88	2026-11-17T07:37:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.88%
+0x00413ea8	tPhysicalEntity::vfunction49	5	fable	99.77	2026-11-17T07:47:13Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.77%
+0x0061d200	tVolume::mValid	5	fable	99.70	2026-11-17T08:17:30Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d2f0	tDir::mValid	5	fable	99.70	2026-11-17T08:28:31Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d3e0	tPath::mValid	5	fable	99.70	2026-11-17T08:44:39Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d4d0	tVolIterator::mValid	5	fable	99.70	2026-11-17T09:27:57Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d5c0	tDirIterator::mValid	5	fable	99.70	2026-11-17T09:41:39Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d6b0	tPathIterator::mValid	5	fable	99.70	2026-11-17T09:49:09Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.70%
+0x0061d7a0	tVolume::mGetName	5	fable	99.97	2026-11-17T09:58:14Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.97%
+0x0061d8b0	tVolume::mGetSortName	5	fable	99.92	2026-11-17T10:07:34Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.92%
+0x0061dad0	tVolume::mGetRoot	5	fable	99.50	2026-11-17T10:17:49Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
+0x0061dbf0	tDir::mGetName	5	fable	99.97	2026-11-17T10:31:43Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061dd00	tDir::mGetParentVol	5	fable	99.50	2026-11-17T10:41:14Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
+0x0061de20	tDir::mGetParentDir	5	fable	99.50	2026-11-17T10:55:02Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.50%
+0x0061df40	tDir::mGetSize	5	fable	99.97	2026-11-17T11:06:20Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061e050	tDir::mExist	5	fable	99.97	2026-11-17T11:16:48Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061e3a0	tDir::mGetNamedFile	5	fable	99.92	2026-11-17T11:43:54Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.92%
+0x0061e5c0	tDir::mDelete	5	fable	99.97	2026-11-17T14:13:50Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061e6d0	tPath::mGetName	5	fable	99.97	2026-11-17T14:23:18Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061ea20	tPath::mExist	5	fable	99.97	2026-11-17T14:37:29Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061eb30	tPath::mGetSize	5	fable	99.97	2026-11-17T14:47:49Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061ec40	tPath::mCreate	5	fable	99.97	2026-11-17T14:59:35Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.97%
+0x0061f2f0	tVolIterator::mFirst	5	fable	100.00	2026-11-17T15:16:13Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 100.00%
+0x0061f690	tDirIterator::mFirst	5	fable	100.00	2026-11-17T15:23:13Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 100.00%
+0x00623390	tString::tString	3	fable	91.14	2026-11-17T15:29:13Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.14%
+0x0062d4a0	tTagInfo::mClassifyTagTokens	5	fable	96.89	2026-11-17T15:31:03Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 96.89%
+0x00631860	twDir::mGetDate	3	fable	92.56	2026-11-17T15:46:49Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 92.56%
+0x006345b0	tVolIterator::tVolIterator	3	fable	99.61	2026-11-17T15:52:37Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.61%
+0x00634810	twIORequestQueue::mAdd	3	fable	100.00	2026-11-17T16:02:50Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 100.00%
+0x0063aca0	twMemoryBlock::mAllocate	4	fable	98.95	2026-11-17T16:18:20Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 98.95%
+0x0063be00	tPagingMechanism::mClosePage	4	fable	99.02	2026-11-17T16:24:14Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.02%
+0x0063d2b0	tPagingMechanism::mDelHandle	3	fable	97.45	2026-11-17T16:53:08Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 97.45%
+0x0063f5a0	tCoopThreadPart::mSwitchTo	5	fable	97.78	2026-11-17T16:55:45Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 97.78%
+0x00646010	twSoundPart::mInit	3	fable	99.88	2026-11-17T17:07:11Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.88%
+0x00647e40	tSoundChannelCommand::mDump	5	fable	97.60	2026-11-17T17:18:05Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 97.60%
+0x0064f250	tgSoundPart::mUpdate	5	fable	91.43	2026-11-17T17:51:08Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 91.43%
+0x00651540	tgSoundPart::mCreateCommand	3	fable	93.10	2026-11-17T18:03:18Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 93.10%
+0x006580c0	tAudioFileInfoPart::mGetNewAsynchReadInfo	3	fable	99.94	2026-11-17T18:13:06Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.94%
+0x00658ac0	tChannelGroup::mUnload	5	fable	98.70	2026-11-17T18:31:52Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 98.70%
+0x0066e6c0	tSoundMemoryBlockManager::mTestBlockIntegrity	5	fable	99.53	2026-11-17T18:39:08Z	not exact after 5 attempts: attempt 4 (opus) did not raise the best; Fable tried; best 99.53%
+0x006a8930	FUN_006a8930	5	fable	92.52	2026-11-17T19:21:38Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 92.52%
+0x006b3f80	FUN_006b3f80	3	fable	91.11	2026-11-17T19:23:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.11%
+0x006f53f0	tOSVersion::Instance	5	fable	99.86	2026-11-17T19:32:07Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.86%
+0x007586c0	tBufFile::mRead	4	fable	98.30	2026-11-17T20:05:48Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 98.30%

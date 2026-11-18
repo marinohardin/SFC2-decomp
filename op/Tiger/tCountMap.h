@@ -209,10 +209,12 @@ public:
 	}
 
 	// MATCH-ONLY: mResolve as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0) has it, with the
-	// search's comparison taken as a truth value and operator[] expanded inline.
+	// bucket index held in a local for the search (the original folds the index's increment into
+	// the lea), the comparison taken as a truth value and operator[] expanded inline.
 	tObjectType &fn_0061d8b0_mResolve( tCookieType &cookie )
 	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
+		int32u	index = cookie.fCookie & 0xff;
+		tMap::iterator it( fValues.fMaps[index].fHead );
 
 		for ( ; it.fNode != 0; it++ )
 			if ( !( (*it).fKey != cookie ) )
@@ -275,6 +277,37 @@ public:
 	// MATCH-ONLY: the out-of-line mResolve of tCookieManager<tPath,twPath> (STARFLEETOP
 	// 0x00636ad0), defined after the class so that its callers cannot inline it.
 	tObjectType &fn_00636ad0_mResolve( tCookieType &cookie );
+
+	// MATCH-ONLY: mResolve as tDir::mGetPathIterator (STARFLEETOP 0x0061e160) has it, with the
+	// cookie's map held in a local for operator[].
+	tObjectType &fn_0061e160_mResolve( tCookieType &cookie )
+	{
+		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
+		for ( ; it.fNode != 0; it++ )
+			if ( (*it).fKey.fCookie == cookie.fCookie )
+				break;
+		if ( it.fNode == 0 || it.fNode->fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];	return map[cookie];
+	}
+
+	// HYPOTHESIS: the validity test as a helper taking the found iterator by value, with the
+	// search an inlined mFind in its argument. tPath::mDelete (STARFLEETOP 0x0061ed50) gives the
+	// thrown string its own stack slot ahead of the search's temporary, which this order of
+	// expansion reproduces. The helper's name is not recovered.
+	void fn_0061ed50_mCheck( tMap::iterator it )
+	{
+		if ( it.fNode == 0 || it.fNode->fCount == 0 )
+			throw "Use of invalid cookie to resolve an item";
+	}
+
+	// MATCH-ONLY: mResolve as tPath::mDelete (STARFLEETOP 0x0061ed50) has it, through the helper
+	// above; the original has one resolve, and this form may be the one behind the others.
+	tObjectType &fn_0061ed50_mResolve( tCookieType &cookie )
+	{
+		fn_0061ed50_mCheck( fValues.fMaps[cookie.fCookie & 0xff].mFind( cookie ) );
+		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
+	}
 
 	int32u											f_00;
 	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
