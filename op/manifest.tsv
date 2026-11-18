@@ -694,36 +694,36 @@ address	size	symbol	source	modes
 0x00444647	13	tShipSystemsFighter::vfunction166(int)	unsorted/tShipSystemsFighter.cpp	vc6 guest
 0x00444654	206	tShipSystemsFighter::vfunction22(float)	unsorted/tShipSystemsFighter.cpp	vc6 guest
 0x00444723	170	tShipSystemsFighter::vfunction23(float)	unsorted/tShipSystemsFighter.cpp	vc6 guest
-0x0044715d	351	c_0044715d::fn_0044715d(tObject_0042496f *)	unsorted/fn_00447000.cpp	partial
-0x004472bc	345	c_0044715d::fn_004472bc(tObject_0042496f *)	unsorted/fn_00447000.cpp	partial
-0x00447415	284	c_0044715d::fn_00447415(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447531	139	c_0044715d::fn_00447531(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x004475bc	275	c_0044715d::fn_004475bc(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x004476cf	113	c_0044715d::fn_004476cf(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447740	113	c_0044715d::fn_00447740(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x004477b1	21	c_0044715d::fn_004477b1(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x004477c6	50	c_0044715d::fn_004477c6(int,char,char)	unsorted/fn_00447000.cpp	vc6 guest
-0x004477f8	21	c_0044715d::fn_004477f8(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x0044780d	21	c_0044715d::fn_0044780d(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447822	69	c_0044715d::fn_00447822(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447867	78	c_0044715d::fn_00447867(int,std::string)	unsorted/fn_00447000.cpp	vc6 guest
-0x004478b5	113	c_0044715d::fn_004478b5(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447926	142	c_0044715d::fn_00447926(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x004479b4	160	c_0044715d::fn_004479b4(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447a54	83	c_0044715d::fn_00447a54(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447aa7	75	c_0044715d::fn_00447aa7(tObject_0042496f *)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447b7a	65	c_0044715d::fn_00447b7a(tObject_0042496f *)	unsorted/fn_00447000.cpp	vc6 guest
+0x0044715d	351	tShipSystemMask::fn_0044715d(tObject_0042496f *)	unsorted/fn_00447000.cpp	partial
+0x004472bc	345	tShipSystemMask::fn_004472bc(tObject_0042496f *)	unsorted/fn_00447000.cpp	partial
+0x00447415	284	tShipSystemMask::fn_00447415(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447531	139	tShipSystemMask::fn_00447531(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x004475bc	275	tShipSystemMask::fn_004475bc(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x004476cf	113	tShipSystemMask::fn_004476cf(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447740	113	tShipSystemMask::fn_00447740(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x004477b1	21	tShipSystemMask::fn_004477b1(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x004477c6	50	tShipSystemMask::fn_004477c6(int,char,char)	unsorted/fn_00447000.cpp	vc6 guest
+0x004477f8	21	tShipSystemMask::fn_004477f8(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x0044780d	21	tShipSystemMask::fn_0044780d(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447822	69	tShipSystemMask::fn_00447822(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447867	78	tShipSystemMask::fn_00447867(int,std::string)	unsorted/fn_00447000.cpp	vc6 guest
+0x004478b5	113	tShipSystemMask::fn_004478b5(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447926	142	tShipSystemMask::fn_00447926(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x004479b4	160	tShipSystemMask::fn_004479b4(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447a54	83	tShipSystemMask::fn_00447a54(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447aa7	75	tShipSystemMask::fn_00447aa7(tObject_0042496f *)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447b7a	65	tShipSystemMask::fn_00447b7a(tObject_0042496f *)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447bbb	102	c_00447bbb::fn_00447bbb(c_00447bbb_arg *,c_00447bbb_arg *,c_00447bbb_arg *)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447c21	64	c_00447bbb::fn_00447c21(c_00450e41 *,c_004457b7 *,c_004526cb *)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447c61	131	c_0044715d::fn_00447c61(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447ce4	7	c_0044715d::fn_00447ce4()	unsorted/fn_00447000.cpp	vc6 guest
-0x00447ceb	7	c_0044715d::fn_00447ceb()	unsorted/fn_00447000.cpp	vc6 guest
-0x00447cf2	7	c_0044715d::fn_00447cf2()	unsorted/fn_00447000.cpp	vc6 guest
-0x00447cf9	24	c_0044715d::fn_00447cf9(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447d11	24	c_0044715d::fn_00447d11(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447d29	24	c_0044715d::fn_00447d29(int,int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447d41	20	c_0044715d::fn_00447d41(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447d55	20	c_0044715d::fn_00447d55(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447c61	131	tShipSystemMask::fn_00447c61(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447ce4	7	tShipSystemMask::fn_00447ce4()	unsorted/fn_00447000.cpp	vc6 guest
+0x00447ceb	7	tShipSystemMask::fn_00447ceb()	unsorted/fn_00447000.cpp	vc6 guest
+0x00447cf2	7	tShipSystemMask::fn_00447cf2()	unsorted/fn_00447000.cpp	vc6 guest
+0x00447cf9	24	tShipSystemMask::fn_00447cf9(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447d11	24	tShipSystemMask::fn_00447d11(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447d29	24	tShipSystemMask::fn_00447d29(int,int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447d41	20	tShipSystemMask::fn_00447d41(int)	unsorted/fn_00447000.cpp	vc6 guest
+0x00447d55	20	tShipSystemMask::fn_00447d55(int)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447d69	470	operator=(const std::vector< tTransporterHoldItem >&)	unsorted/fn_00447000.cpp	partial
 0x00447f3f	21	tTransporterHoldItem::operator=(const tTransporterHoldItem&)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447f54	17	push_back(const tTransporterHoldItem&)	unsorted/fn_00447000.cpp	vc6 guest
@@ -969,7 +969,7 @@ address	size	symbol	source	modes
 0x00469ddd	32	tGameState::vfunction8(int *)	unsorted/tGameState.cpp	vc6 guest
 0x00469dfd	5	tGameState::vfunction14(int)	unsorted/tGameState.cpp	vc6 guest
 0x00469e02	10	tGameState::vfunction16(int *)	unsorted/tGameState.cpp	vc6 guest
-0x00469e0c	30	tGameState::vfunction17(int)	unsorted/tGameState.cpp	vc6 guest
+0x00469e0c	30	tGameState::fn_00469e0c(const char *)	unsorted/tGameState.cpp	vc6 guest
 0x00469e2a	10	tGameState::vfunction18()	unsorted/tGameState.cpp	vc6 guest
 0x00469e34	10	fn_00469e34()	unsorted/tGameState.cpp	vc6 guest
 0x00469e3e	15	fn_00469e3e(int)	unsorted/tGameState.cpp	vc6 guest
@@ -1005,8 +1005,8 @@ address	size	symbol	source	modes
 0x0046a9f3	17	fn_0046a9f3()	unsorted/tGameState.cpp	vc6 guest
 0x0046aa04	6	fn_0046aa04()	unsorted/tGameState.cpp	vc6 guest
 0x0046aa0a	6	fn_0046aa0a()	unsorted/tGameState.cpp	vc6 guest
-0x0046aa10	27	fn_0046aa10(unsigned int)	unsorted/tGameState.cpp	vc6 guest
-0x0046aa2b	27	fn_0046aa2b(int *)	unsorted/tGameState.cpp	vc6 guest
+0x0046aa10	27	fn_0046aa10(c_0046aa10_message *)	unsorted/tGameState.cpp	vc6 guest
+0x0046aa2b	27	fn_0046aa2b(c_0046aa10_message *)	unsorted/tGameState.cpp	vc6 guest
 0x0046aa46	18	fn_0046aa46()	unsorted/tGameState.cpp	vc6 guest
 0x0046aa58	60	fn_0046aa58()	unsorted/tGameState.cpp	vc6 guest
 0x0046aa94	6	fn_0046aa94()	unsorted/tGameState.cpp	vc6 guest
@@ -1352,11 +1352,11 @@ address	size	symbol	source	modes
 0x004d0c48	21	tSFCPlayer::fn_004d0c48()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0c5d	89	tSFCPlayer::fn_004d0c5d()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0cb6	84	tSFCPlayer::fn_004d0cb6()	unsorted/tSFCPlayer.cpp	vc6 guest
-0x004d0d0a	70	tSFCPlayer::vfunction94(tObject_004454c1 *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0d0a	70	tSFCPlayer::vfunction94(tShipSystemMask *)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0d50	46	tSFCPlayer::vfunction100(unsigned param_1,int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
-0x004d0d7e	46	tSFCPlayer::vfunction99(tObject_004454c1 *,int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0d7e	46	tSFCPlayer::vfunction99(tShipSystemMask *,int,int,int)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0dac	34	tSFCPlayer::vfunction102(unsigned param_1)	unsorted/tSFCPlayer.cpp	vc6 guest
-0x004d0dce	25	tSFCPlayer::vfunction101(tObject_004454c1 *)	unsorted/tSFCPlayer.cpp	vc6 guest
+0x004d0dce	25	tSFCPlayer::vfunction101(tShipSystemMask *)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0de7	43	tSFCPlayer::vfunction98()	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0e12	14	tSFCPlayer::vfunction95(int)	unsorted/tSFCPlayer.cpp	vc6 guest
 0x004d0e20	14	tSFCPlayer::vfunction96(int)	unsorted/tSFCPlayer.cpp	vc6 guest
@@ -1420,18 +1420,18 @@ address	size	symbol	source	modes
 0x004d2d74	330	fn_004d2c20_map::fn_004d2d74(fn_004d2c20_node*,fn_004d2c20_node*,const fn_004d2c20_key&)	unsorted/fn_004D2000.cpp	vc6 guest
 0x004d2ebe	330	fn_004d2cca_map::fn_004d2ebe(fn_004d2cca_node*,fn_004d2cca_node*,fn_004d2cca_key*)	unsorted/fn_004D2000.cpp	vc6 guest
 0x004d315e	27	fn_004d315e(long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3179	19	fn_004d3179(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3179	19	fn_004d3179(const char*,const tString&)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d318c	15	fn_004d318c(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d319b	23	fn_004d319b(long,float)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d31b2	59	fn_004d31b2(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d31ed	69	fn_004d31ed(long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d31ed	69	fn_004d31ed(const char*,int,void*,int,int)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3232	70	fn_004d3232(long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3278	76	fn_004d3278(long,long,long,long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d32c4	43	fn_004d32c4(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d32c4	43	fn_004d32c4(const char*)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d32ef	23	fn_004d32ef(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3306	43	fn_004d3306(long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3331	15	fn_004d3331(long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3340	15	fn_004d3340(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3331	15	fn_004d3331(const char*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3340	15	fn_004d3340(const char*)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d334f	15	fn_004d334f(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d335e	15	fn_004d335e(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d336d	30	fn_004d336d(long)	unsorted/fn_004D3143.cpp	vc6 guest
@@ -1440,28 +1440,28 @@ address	size	symbol	source	modes
 0x004d33d4	66	fn_004d33d4(long,tString)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3416	24	fn_004d3416(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d342e	24	fn_004d342e(long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3446	15	fn_004d3446(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3446	15	fn_004d3446(int)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3455	26	fn_004d3455(long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d346f	30	fn_004d346f(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d346f	30	fn_004d346f(const char*,const char*)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d348d	26	fn_004d348d(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d34a7	30	fn_004d34a7(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d34c5	35	fn_004d34c5(long,char)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d34c5	35	fn_004d34c5(int,bool)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d34e8	39	fn_004d34e8(long,long,char)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d350f	47	fn_004d350f(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d353e	19	fn_004d353e(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3551	19	fn_004d3551(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3564	23	fn_004d3564(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3564	23	fn_004d3564(const char*,const char*,int)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d357b	23	fn_004d357b(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3592	16	fn_004d3592(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d35a2	10	fn_004d35a2()	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d35ac	19	fn_004d35ac(long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d35bf	36	fn_004d35bf(long,char)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d35e3	23	fn_004d35e3(long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d35fa	15	fn_004d35fa(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35ac	19	fn_004d35ac(tValueBase*,const char*)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35bf	36	fn_004d35bf(const char*,bool)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35e3	23	fn_004d35e3(const char*,const char*,int)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d35fa	15	fn_004d35fa(const char*)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3609	73	fn_004d3609(fn_004d3609_record*,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3652	197	fn_004d3652(long,long,long,long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d375b	25	fn_004d375b(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
-0x004d3774	18	fn_004d3774(long)	unsorted/fn_004D3143.cpp	vc6 guest
+0x004d3774	18	fn_004d3774(int)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d3786	25	fn_004d3786(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d379f	18	fn_004d379f(long)	unsorted/fn_004D3143.cpp	vc6 guest
 0x004d37b1	16	fn_004d37b1(tVarButtonGroup*)	unsorted/fn_004D3143.cpp	vc6 guest
@@ -2206,24 +2206,24 @@ address	size	symbol	source	modes
 0x0060c6d5	75	C_00c3a80c::fn_0060c6d5(int)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c720	75	C_00c3a80c::fn_0060c720(tString &)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c76b	57	C_00c3a80c::fn_0060c76b(tString &)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060c7dc	101	C_0060c7dc::C_0060c7dc()	unsorted/fn_0060C000.cpp	vc6
-0x0060c841	66	C_0060c7dc::~C_0060c7dc()	unsorted/fn_0060C000.cpp	vc6
-0x0060c883	15	C_0060c7dc::fn_0060c883(const C_00472518 &)	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060c7dc	101	tObject_0090b730::tObject_0090b730()	unsorted/fn_0060C000.cpp	vc6
+0x0060c841	66	tObject_0090b730::~tObject_0090b730()	unsorted/fn_0060C000.cpp	vc6
+0x0060c883	15	tObject_0090b730::fn_0060c883(const C_00472518 &)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c892	236	C_00472518::operator=(const C_00472518 &)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060c97e	4	C_0060c7dc::fn_0060c97e()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060c982	158	C_0060c7dc::fn_0060c982(const char *)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca20	34	C_0060c7dc::fn_0060ca20()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca42	13	C_0060c7dc::fn_0060ca42(int)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca4f	7	C_0060c7dc::fn_0060ca4f()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca56	22	C_0060c7dc::fn_0060ca56()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca6c	11	C_0060c7dc::fn_0060ca6c()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca77	6	C_0060c7dc::fn_0060ca77()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca7d	6	C_0060c7dc::fn_0060ca7d()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca83	17	C_0060c7dc::fn_0060ca83(int)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca94	10	C_0060c7dc::fn_0060ca94(int)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060ca9e	40	C_0060c7dc::fn_0060ca9e()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060cac6	85	C_0060c7dc::fn_0060cac6()	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060cb1b	472	C_0060c7dc::fn_0060cb1b()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060c97e	4	tObject_0090b730::fn_0060c97e()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060c982	158	tObject_0090b730::fn_0060c982(const char *)	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca20	34	tObject_0090b730::fn_0060ca20()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca42	13	tObject_0090b730::fn_0060ca42(int)	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca4f	7	tObject_0090b730::fn_0060ca4f()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca56	22	tObject_0090b730::fn_0060ca56()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca6c	11	tObject_0090b730::fn_0060ca6c()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca77	6	tObject_0090b730::fn_0060ca77()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca7d	6	tObject_0090b730::fn_0060ca7d()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca83	17	tObject_0090b730::fn_0060ca83(int)	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca94	10	tObject_0090b730::fn_0060ca94(int)	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060ca9e	40	tObject_0090b730::fn_0060ca9e()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060cac6	85	tObject_0090b730::fn_0060cac6()	unsorted/fn_0060C000.cpp	vc6 guest
+0x0060cb1b	472	tObject_0090b730::fn_0060cb1b()	unsorted/fn_0060C000.cpp	vc6 guest
 0x006160a0	116	fn_00616000_DirectPlayHolder::fn_006160a0(int,int)	unsorted/fn_00616000.cpp	partial
 0x00616150	112	fn_00616000_DirectPlayHolder::fn_00616150(int)	unsorted/fn_00616000.cpp	partial
 0x006161f0	245	fn_00616000_DirectPlayHolder::fn_006161f0(int,int,const void*,unsigned long,int,long)	unsorted/fn_00616000.cpp	partial
