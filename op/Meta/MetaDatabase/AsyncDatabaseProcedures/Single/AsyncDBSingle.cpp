@@ -13,19 +13,19 @@
 class tMetaMapDesc; class tPoliticalTensionMatrix; class tNotify; tSettings* fn_005d481f();	// HYPOTHESIS: fn_005d481f returns the server settings; name not known. tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp; RTTI names the other two through nDatabase::tQuery<tPoliticalTensionMatrix> and nDatabase::tQuery<tNotify>. Only the names are needed here.
 #include "unsorted/tNewsStory.h"
 #include "unsorted/tPreparedMissions.h"
-class tTurn { public:	// HYPOTHESIS: the record classes below are read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48; tCampaignInfo holds the starting date index at +0xb8 and the clock at +0x108. Their other members are not known.
+class tTurn { public:	// HYPOTHESIS: the record class below is read from 0x0056c414 only: tTurn is 0x4c bytes with the turn at +0x48. Its other members are not known.
 	char fPad00[0x48];
 	long fField48;
-}; class tCampaignInfo : public nDatabase::tDatabaseObject { public:	// HYPOTHESIS: a database object: 0x0056e124 builds an update from it and streams it from +8.
-	tCampaignInfo();
-	~tCampaignInfo();
-	tCampaignInfo& operator=( const tCampaignInfo& other );
-	char fPad48[0xb8 - 0x48];
-	long fFieldB8;
-	char fPadBC[0x108 - 0xbc];
-	tCurrentTime fField108;
-	char fPad120[0x168 - 0x120];
 };
+#include "unsorted/tCampaignInfo.h"
+// 0x0056c414 reads tCampaignInfo's starting date index at +0xb8 (m_b8) and its clock at +0x108
+// (m_108); 0x0056e124 builds an update from it and streams it from +8.
+//
+//
+//
+//
+//
+//
 class fn_0056c414_Database { public:	// HYPOTHESIS: the database held at +4; probably nDatabase::tDatabase, which is declared only inside Common/Database/FileDatabaseMgr.cpp. Its fn_ members are instances of its member templates (the exe's assertions name Database.h).
 	virtual void vfunction1();
 	virtual void vfunction2();
@@ -158,7 +158,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 	tCampaignInfo* DBcampaignInfo = campaignInfos.begin();
 #line 154
 	validate( DBcampaignInfo );
-	if( turn > -1 || !DBcampaignInfo->fField108.fn_005c7eac() )
+	if( turn > -1 || !DBcampaignInfo->m_108.fn_005c7eac() )
 	{
 		campaignInfos.erase( campaignInfos.begin(), campaignInfos.end() );
 		vfunction20( &campaignInfos, false );
@@ -178,10 +178,10 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2( tCampaignInfo* c
 
 		if( turn == -1 )
 		{
-			turn = startingDate[DBcampaignInfo->fFieldB8] * turnsPerYear;
+			turn = startingDate[DBcampaignInfo->m_b8] * turnsPerYear;
 		}
-		tCurrentTime currentTime( turn, turnsPerYear, milliSecondsPerTurn, baseYear, startingDate[0], startingDate[1], startingDate[2], startingDate[3] );
-		DBcampaignInfo->fField108 = currentTime;
+		{ tCurrentTime currentTime( turn, turnsPerYear, milliSecondsPerTurn, baseYear, startingDate[0], startingDate[1], startingDate[2], startingDate[3] );
+		DBcampaignInfo->m_108 = currentTime; }
 		vfunction48( DBcampaignInfo );
 	}
 
@@ -372,7 +372,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12( std::vector<tAu
 	vfunction2( &campaignInfo );
 	for( std::vector<tAuctionItem>::iterator i = items->begin(); i != items->end(); )
 	{
-		if( !i->fn_00545560( campaignInfo.fField108.fn_0055f269() ) )
+		if( !i->fn_00545560( campaignInfo.m_108.fn_0055f269() ) )
 		{
 			vfunction57( i );
 			i = items->erase( i );
@@ -553,7 +553,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction25( tCampaignInfo* 
 	static unsigned int count = 0;	// HYPOTHESIS: a function-local counter; it could be a global.
 	if( count >= 3 )
 	{
-		if( DBcampaignInfo->fField108.fn_0055f269() % fField18 == 0 )
+		if( DBcampaignInfo->m_108.fn_0055f269() % fField18 == 0 )
 		{
 			fn_00576475()->Save( fField08 );
 		}

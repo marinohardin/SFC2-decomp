@@ -30,6 +30,10 @@ public:
 	const nDatabase::tID& fn_00572b2b() const;
 	// HYPOTHESIS: a non-virtual accessor that returns the story's time; 0x0056d91b queries on it.
 	tDetailTime fn_0054745f() const;
+
+	// HYPOTHESIS: the record is 0x80 bytes (0x0056ffe3 steps back one element by 0x80). The
+	// members are not recovered.
+	char fPad_48[0x80 - 0x48];
 };
 
 #endif

@@ -27,10 +27,14 @@ public:
 	// HYPOTHESIS: an accessor 0x0056d2cd passes to tAuctionItem::fn_00545560; name not known.
 	long fn_0055f269();
 
-	// HYPOTHESIS: 0x0056c414 keeps a 0x18-byte temporary; the members' types are not known.
+	// HYPOTHESIS: the assignment 0x0045be62 copies 0x30 bytes: five longs from +0xc and four
+	// more from +0x20 in a loop, likely the four starting dates. The members' names are not known.
 	long fField0c;
 	long fField10;
 	long fField14;
+	long fField18;
+	long fField1c;
+	long fField20[4];
 };
 
 #endif

@@ -52,9 +52,9 @@ void nDatabase::tQuery<tServCharacter>::fn_0056f04f(void *value)
 	m_results.fn_00571a69(value);
 }
 
-// HYPOTHESIS: a database class (0x0056f05f queries the database for it); its members are not
-// recovered.
-class tServCharacter : public nDatabase::tDatabaseObject {};
+// The database class 0x0056f05f queries for (0x0056c95c steps a vector of them by 0x160
+// bytes).
+#include "unsorted/tServCharacter.h"
 
 using nDatabase::tDatabaseObject;
 
@@ -342,7 +342,7 @@ void fn_0056f3e0_owner::fn_0056f3e0(const nDatabase::tQuery<tShip> &query, fn_00
 		const tShip *pObject = static_cast<const tShip *>((tDatabaseObject *)*i);
 		if (query(pObject)) {
 			result->push_back(*pObject);
-			result->back().vfunction9();
+			result->back().MakeReadOnly();
 		}
 	}
 	guard.Leave();
@@ -492,7 +492,7 @@ void fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query
 		const tAuctionItem *pObject = static_cast<const tAuctionItem *>((tDatabaseObject *)*i);
 		if (query(pObject)) {
 			result->push_back(*pObject);
-			result->back().vfunction9();
+			result->back().MakeReadOnly();
 		}
 	}
 	guard.Leave();
@@ -596,7 +596,7 @@ void fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query,
 		const tMetaMapHex *pObject = static_cast<const tMetaMapHex *>((tDatabaseObject *)*i);
 		if (query(pObject)) {
 			result->push_back(*pObject);
-			result->back().vfunction9();
+			result->back().MakeReadOnly();
 		}
 	}
 	guard.Leave();
@@ -1001,10 +1001,10 @@ void fn_0056fe13_owner::fn_0056fe13(const nDatabase::tQuery<fn_0056fe13_object> 
 // HYPOTHESIS: tNotify is a database class; its members are not recovered.
 class tNotify : public nDatabase::tDatabaseObject {
 public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
+	// The exe's tDatabaseObject slots end with MakeReadOnly at slot 9, which the query below
+	// calls on each copy; the class adds no virtual of its own that the rebuilt code needs.
+	//
+	//
 	char fn_0056fefb_pad[0x40];
 };
 
@@ -1038,20 +1038,20 @@ void fn_0056fefb_owner::fn_0056fefb(const nDatabase::tQuery<tNotify> &query, fn_
 		tNotify *pObject = (tNotify *)*i;
 		if (query(pObject)) {
 			result->push_back(*pObject);
-			result->back().vfunction9();
+			result->back().MakeReadOnly();
 		}
 	}
 	guard.Leave();
 }
 
-class tNewsStory : public nDatabase::tDatabaseObject {
-public:
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	char fn_0056ffe3_pad[0x38];
-};
+// tNewsStory is declared in its own header. The query below calls MakeReadOnly, slot 9 of
+// tDatabaseObject's table, on each copy it collects.
+//
+//
+//
+//
+//
+#include "unsorted/tNewsStory.h"
 
 class fn_0056ffe3_results {
 public:
@@ -1083,7 +1083,7 @@ void fn_0056ffe3_owner::fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &query, 
 		tNewsStory *pObject = (tNewsStory *)*i;
 		if (query(pObject)) {
 			result->push_back(*pObject);
-			result->back().vfunction9();
+			result->back().MakeReadOnly();
 		}
 	}
 	guard.Leave();
