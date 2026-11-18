@@ -34,8 +34,8 @@ class fn_005e5e24_class
 {
 public:
 	void fn_005e5e24( int value );
-	void fn_005e6aeb( int param_1, std::vector<fn_005e381f_entry> &list );
-	void fn_005e6dea( int param_1, std::vector<fn_005e36cd_entry> &list );
+	void fn_005e6aeb( int param_1, std::vector<fn_005e36cd_entry> &list );
+	void fn_005e6dea( int param_1, std::vector<fn_005e381f_entry> &list );
 	// HYPOTHESIS: 0x005e361d hands it its area and the object at +0x17c.
 	void fn_005e7539( const tRect *area, fn_005eadc8_class *object );
 	bool fn_005e5a8f();
@@ -170,17 +170,17 @@ void tMetaMapControl::fn_005e326c( int param_1 )
 // FUNCTION: STARFLEETOP 0x005e32d7
 void tMetaMapControl::fn_005e32d7( int param_1 )
 {
-	std::vector<fn_005e381f_entry> list1;
+	std::vector<fn_005e36cd_entry> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e381f_entry>::iterator it1;
+	std::vector<fn_005e36cd_entry>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e381f( it1, param_1 );
 	}
 
-	std::vector<fn_005e36cd_entry> list2;
+	std::vector<fn_005e381f_entry> list2;
 	fn_00607d61()->fn_0060a54d()->fn_005e6dea( param_1, list2 );
-	std::vector<fn_005e36cd_entry>::iterator it2;
+	std::vector<fn_005e381f_entry>::iterator it2;
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( !( it2->field_4c & 0x1 ) )
@@ -194,24 +194,24 @@ void tMetaMapControl::fn_005e32d7( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( ( it2->field_4c & 0x80 ) || ( it2->field_4c & 0x300 ) )
-			fn_005e37c4( it2, param_1, *(int *)&it2->field_50 );
+			fn_005e37c4( it2, param_1, it2->field_50 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e33f4
 void tMetaMapControl::fn_005e33f4( int param_1 )
 {
-	std::vector<fn_005e381f_entry> list1;
+	std::vector<fn_005e36cd_entry> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e381f_entry>::iterator it1;
+	std::vector<fn_005e36cd_entry>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e3891( it1, param_1 );
 	}
 
-	std::vector<fn_005e36cd_entry> list2;
+	std::vector<fn_005e381f_entry> list2;
 	fn_00607d61()->fn_0060a54d()->fn_005e6dea( param_1, list2 );
-	std::vector<fn_005e36cd_entry>::iterator it2;
+	std::vector<fn_005e381f_entry>::iterator it2;
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( !( it2->field_4c & 0x1 ) )
@@ -225,24 +225,24 @@ void tMetaMapControl::fn_005e33f4( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( ( it2->field_4c & 0x80 ) || ( it2->field_4c & 0x300 ) )
-			fn_005e37d8( it2, param_1, *(int *)&it2->field_50 );
+			fn_005e37d8( it2, param_1, it2->field_50 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e3511
 void tMetaMapControl::fn_005e3511( int param_1 )
 {
-	std::vector<fn_005e381f_entry> list1;
+	std::vector<fn_005e36cd_entry> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e381f_entry>::iterator it1;
+	std::vector<fn_005e36cd_entry>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e3903( it1, param_1 );
 	}
 
-	std::vector<fn_005e36cd_entry> list2;
+	std::vector<fn_005e381f_entry> list2;
 	fn_00607d61()->fn_0060a54d()->fn_005e6dea( param_1, list2 );
-	std::vector<fn_005e36cd_entry>::iterator it2;
+	std::vector<fn_005e381f_entry>::iterator it2;
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( !( it2->field_4c & 0x1 ) )
@@ -256,7 +256,7 @@ void tMetaMapControl::fn_005e3511( int param_1 )
 	for ( it2 = list2.begin(); it2 != list2.end(); it2++ )
 	{
 		if ( it2->field_14 == 5 )
-			fn_005e37d8( it2, param_1, *(int *)&it2->field_50 );
+			fn_005e37d8( it2, param_1, it2->field_50 );
 	}
 }
 
@@ -295,7 +295,7 @@ void tMetaMapControl::fn_005e36a3()
 }
 
 // FUNCTION: STARFLEETOP 0x005e36cd
-void tMetaMapControl::fn_005e36cd( fn_005e36cd_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e36cd( fn_005e381f_entry *entry, int param_2 )
 {
 	if ( field_1a4.size() != 0 )
 	{
@@ -304,7 +304,7 @@ void tMetaMapControl::fn_005e36cd( fn_005e36cd_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e370c
-void tMetaMapControl::fn_005e370c( fn_005e36cd_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e370c( fn_005e381f_entry *entry, int param_2 )
 {
 	if ( field_1b4.size() != 0 )
 	{
@@ -313,7 +313,7 @@ void tMetaMapControl::fn_005e370c( fn_005e36cd_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e374b
-void tMetaMapControl::fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color )
+void tMetaMapControl::fn_005e374b( fn_005e374b_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color )
 {
 	if ( image != 0 )
 	{
@@ -333,13 +333,13 @@ void tMetaMapControl::fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScr
 }
 
 // FUNCTION: STARFLEETOP 0x005e37c4
-void tMetaMapControl::fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 )
+void tMetaMapControl::fn_005e37c4( fn_005e381f_entry *entry, int param_2, int param_3 )
 {
 	fn_005e37d8( entry, param_2, param_3 );
 }
 
 // FUNCTION: STARFLEETOP 0x005e37d8
-void tMetaMapControl::fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 )
+void tMetaMapControl::fn_005e37d8( fn_005e381f_entry *entry, int param_2, int param_3 )
 {
 	if ( field_1a4.size() != 0 )
 	{
@@ -348,7 +348,7 @@ void tMetaMapControl::fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int pa
 }
 
 // FUNCTION: STARFLEETOP 0x005e381f
-void tMetaMapControl::fn_005e381f( fn_005e381f_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e381f( fn_005e36cd_entry *entry, int param_2 )
 {
 	if ( field_184.size() != 0 )
 	{
@@ -359,7 +359,7 @@ void tMetaMapControl::fn_005e381f( fn_005e381f_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e3891
-void tMetaMapControl::fn_005e3891( fn_005e381f_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e3891( fn_005e36cd_entry *entry, int param_2 )
 {
 	if ( field_194.size() != 0 )
 	{
@@ -370,7 +370,7 @@ void tMetaMapControl::fn_005e3891( fn_005e381f_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e3903
-void tMetaMapControl::fn_005e3903( fn_005e381f_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e3903( fn_005e36cd_entry *entry, int param_2 )
 {
 	if ( field_1b4.size() != 0 )
 	{
@@ -382,7 +382,7 @@ void tMetaMapControl::fn_005e3903( fn_005e381f_entry *entry, int param_2 )
 extern unsigned long g_00c39058[];
 
 // FUNCTION: STARFLEETOP 0x005e3935
-unsigned long tMetaMapControl::fn_005e3935( fn_005e36cd_entry *entry )
+unsigned long tMetaMapControl::fn_005e3935( fn_005e374b_entry *entry )
 {
 	int index = entry->vfunction0( field_1c8 );
 	unsigned long color;
@@ -434,7 +434,7 @@ unsigned long tMetaMapControl::fn_005e397b( unsigned char *param_1 )
 extern float g_007b509c;
 
 // FUNCTION: STARFLEETOP 0x005e3a37
-void tMetaMapControl::fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color )
+void tMetaMapControl::fn_005e3a37( fn_005e374b_entry *entry, unsigned long *color )
 {
 	if ( color )
 	{
@@ -865,8 +865,8 @@ void tMetaMapControl::vfunction43( int param_1 )
 	field_74.fn_0067f090( this, 2, 0 );
 }
 
-// MATCH-ONLY: the library's vector destructor for the records 0x005e32d7 and its neighbours
-// fill; the original is the template in the library header. It is written out here, line for
+// MATCH-ONLY: the library's vector destructor for the records 0x005e6aeb fills (destroyed
+// second by 0x005e32d7 and its neighbours); the original is the template in the library header. It is written out here, line for
 // line, so that it has source lines in this unit.
 // FUNCTION: STARFLEETOP 0x005e45a0
 template<>
@@ -877,8 +877,8 @@ std::vector<fn_005e36cd_entry>::~vector()
 	_First = 0, _Last = 0, _End = 0;
 }
 
-// MATCH-ONLY: the library's vector destructor for the records 0x005e6aeb fills, written out
-// like the one above.
+// MATCH-ONLY: the library's vector destructor for the records 0x005e6dea fills (destroyed
+// first), written out like the one above.
 // FUNCTION: STARFLEETOP 0x005e45d3
 template<>
 std::vector<fn_005e381f_entry>::~vector()

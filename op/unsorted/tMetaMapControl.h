@@ -12,20 +12,14 @@ class tCompassRose;
 class fn_005eb3c5_class;
 struct c_tListBox_Base_Event;
 
-// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c,
-// the value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5.
-struct fn_005e36cd_entry
+// HYPOTHESIS: the first 0x50 bytes the two 0x64-byte record types below share: 0x005e374b
+// draws either kind, reading +0x14, +0x2c, +0x40 and +0x44 and calling vtable slot 0.
+struct fn_005e374b_entry
 {
 	// HYPOTHESIS: 0x005e3935 calls vtable slot 0 on an entry with the control's +0x1c8 and uses
 	// the answer as an index.
 	virtual int vfunction0( int param_1 );
-	// HYPOTHESIS: 0x005e45a0, the vector's destructor, calls 0x005e4638 on each record. That
-	// code stores no vtable, so the original declares no destructor: 0x005e4638 is the
-	// implicit one the compiler generates, and is left unclaimed.
-	//
 
-	// The destructor 0x005e4638 destroys a tID here, a tHexPoint at +0x18 and the container of
-	// 0x0053a6cc at +0x50.
 	nDatabase::tID field_4;
 	int field_14;
 	tHexPoint field_18;
@@ -39,19 +33,29 @@ struct fn_005e36cd_entry
 	int field_44;
 	unsigned char field_48[ 0x4c - 0x48 ];
 	int field_4c;
-	// HYPOTHESIS: 0x005e32d7 and its siblings read the first dword of this as the colour they
-	// pass on; what lies there is not known.
+};
+
+// HYPOTHESIS: the records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one to
+// 0x005e381f, which calls 0x005e488e on one for a point. 0x005e45a0, the vector's destructor,
+// calls 0x005e4638 on each record; that code stores no vtable and destroys the container of
+// 0x0053a6cc at +0x50, the tHexPoint at +0x18 and the tID at +0x4, so the original declares no
+// destructor: 0x005e4638 is the implicit one the compiler generates, and is left unclaimed.
+struct fn_005e36cd_entry : public fn_005e374b_entry
+{
+	const tPoint &fn_005e488e();
+
 	fn_0053a6cc_map field_50;
 };
 
-// HYPOTHESIS: 0x64-byte records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one
-// to 0x005e381f, which passes them to 0x005e374b and reads +0x14 and +0x2c like the records
-// above; so the same layout is assumed. 0x005e381f calls 0x005e488e on one for a point.
-struct fn_005e381f_entry : public fn_005e36cd_entry
+// HYPOTHESIS: the records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c, the
+// value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5. 0x005e45d3, the vector's
+// destructor, calls 0x005e0d50 on each record; that code stores no vtable and destroys a tID at
+// +0x54, the tHexPoint at +0x18 and the tID at +0x4, so it is the implicit destructor too.
+struct fn_005e381f_entry : public fn_005e374b_entry
 {
-	// HYPOTHESIS: 0x005e45d3, the vector's destructor, calls 0x005e0d50 on each record.
-	~fn_005e381f_entry();
-	const tPoint &fn_005e488e();
+	// HYPOTHESIS: 0x005e32d7 and its siblings pass this on as the colour.
+	int field_50;
+	nDatabase::tID field_54;
 };
 
 // HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
@@ -96,23 +100,23 @@ public:
 	void fn_005e3511( int param_1 );
 	void fn_005e361d( const tRect *area );
 	void fn_005e36a3();
-	void fn_005e36cd( fn_005e36cd_entry *entry, int param_2 );
-	void fn_005e370c( fn_005e36cd_entry *entry, int param_2 );
+	void fn_005e36cd( fn_005e381f_entry *entry, int param_2 );
+	void fn_005e370c( fn_005e381f_entry *entry, int param_2 );
 	// HYPOTHESIS: 0x005e36cd passes the entry, its second argument, the element of the vector
 	// at +0x1a4 the entry's +0x14 selects, and three -1. It draws that image at a point (the
 	// entry's own when both are -1) in a colour (0x005e3935's when -1), red, green and blue bytes.
-	void fn_005e374b( fn_005e36cd_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
-	unsigned long fn_005e3935( fn_005e36cd_entry *entry );
+	void fn_005e374b( fn_005e374b_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
+	unsigned long fn_005e3935( fn_005e374b_entry *entry );
 	unsigned char *fn_005e396d( int param_1 );
 	unsigned long fn_005e397b( unsigned char *param_1 );
-	void fn_005e3a37( fn_005e36cd_entry *entry, unsigned long *color );
+	void fn_005e3a37( fn_005e374b_entry *entry, unsigned long *color );
 	void fn_005e3ad8();
 	void fn_005e3b6e();
-	void fn_005e37c4( fn_005e36cd_entry *entry, int param_2, int param_3 );
-	void fn_005e37d8( fn_005e36cd_entry *entry, int param_2, int param_3 );
-	void fn_005e381f( fn_005e381f_entry *entry, int param_2 );
-	void fn_005e3891( fn_005e381f_entry *entry, int param_2 );
-	void fn_005e3903( fn_005e381f_entry *entry, int param_2 );
+	void fn_005e37c4( fn_005e381f_entry *entry, int param_2, int param_3 );
+	void fn_005e37d8( fn_005e381f_entry *entry, int param_2, int param_3 );
+	void fn_005e381f( fn_005e36cd_entry *entry, int param_2 );
+	void fn_005e3891( fn_005e36cd_entry *entry, int param_2 );
+	void fn_005e3903( fn_005e36cd_entry *entry, int param_2 );
 	void fn_005e3b86();
 	void fn_005e3ba5();
 	void fn_005e3d73();
