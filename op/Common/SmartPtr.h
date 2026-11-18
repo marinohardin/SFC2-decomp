@@ -103,14 +103,45 @@ public:
 };
 
 
+////////////////////////////////////////////////////////////////////////////////
+// Template functions for SmartPtr
+//
+////////////////////////////////////////////////////////////////////////////////
+
 template <class tnPtr >
-tConstSmartPtr<tnPtr>::~tConstSmartPtr<tnPtr>()
+inline tConstSmartPtr<tnPtr>::tConstSmartPtr<tnPtr>( const tnPtr* pObject ) :
+	fObject( const_cast< tnPtr* >( pObject ) )
+{
+	if( fObject )
+	{
+		fObject->AddRef();
+	}
+}
+
+template <class tnPtr >
+inline tConstSmartPtr<tnPtr>::tConstSmartPtr<tnPtr>( const tConstSmartPtr<tnPtr>& copy ) :
+	fObject( const_cast< tnPtr* >( copy.Get() ) )
+{
+	if( fObject )
+	{
+		fObject->AddRef();
+	}
+}
+
+template <class tnPtr >
+inline tConstSmartPtr<tnPtr>::~tConstSmartPtr<tnPtr>()
 {
 	// Release the reference
 	if( fObject != NULL )
 	{
 		fObject->Release();
 	}
+}
+
+template <class tnPtr >
+inline const tnPtr* tConstSmartPtr<tnPtr>::Get() const
+{
+	return fObject;
 }
 
 template <class tnPtr >

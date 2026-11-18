@@ -303,7 +303,7 @@ start,end,functions,bytes,named_before,named_after
 0042748f,00427a52,21,1476,00427473 tPoliticalTensionMatrix::tPoliticalTensionVector::scalar_deleting_destructor,00427a53 tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension::tPoliticalTension
 004be0d0,004be735,14,1473,004bdffc tListBox_BigChat_Session::vfunction44,004be736 tListBox_Chat_Session::scalar_deleting_destructor
 005c764f,005c7c07,12,1465,"005c75dc tMemberCallback<tMetaClientChatCtlrC,unsigned_long>::scalar_deleting_destructor",005c7c29 tClockWatchdog::tClockWatchdog
-005d428b,005d4888,12,1464,005d426f CMiniDockFrameWnd::`scalar_deleting_destructor',005d4889 tServerSettings::tServerSettings
+005d428b,005d4888,12,1464,005d426f FUN_005d426f,005d4889 tServerSettings::tServerSettings
 0045849e,00458b09,25,1457,00457fb4 tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed,00458b0c tNetMsg_Header::~tNetMsg_Header
 006d85d0,006d8b83,3,1456,006d84e0 WONAPI::GetCertOp::vfunction7,006d8b90 WONAPI::GetCertOp::vfunction5
 00459a48,0045a1ac,6,1454,00459a42 tNetMsg_kSendDropInPlayerInfo::vfunction1,0045a1ad tNetMsg_kCreateShipFromSpec::~tNetMsg_kCreateShipFromSpec
@@ -1120,7 +1120,7 @@ start,end,functions,bytes,named_before,named_after
 004546e1,004547a8,2,200,004546d8 tTractorSystem::vfunction62,004547a9 tTractorSystem::vfunction63
 00672850,006729cb,11,200,00672800 std::_Construct,006729e0 TextStreamCompress
 0074db8f,0074dc55,2,199,"0074db84 std::basic_ios<unsigned_short,std::char_traits<unsigned_short>_>::~basic_ios<unsigned_short,std::char_traits<unsigned_short>_>","0074dc56 std::basic_filebuf<unsigned_short,std::char_traits<unsigned_short>_>::basic_filebuf<unsigned_short,std::char_traits<unsigned_short>_>"
-0045e574,0045e639,2,198,0045e558 tState_Namespace_CampaignSelector::tState_CampaignSelector::scalar_deleting_destructor,0045e63a CMiniDockFrameWnd::~CMiniDockFrameWnd
+0045e574,0045e639,2,198,0045e558 tState_Namespace_CampaignSelector::tState_CampaignSelector::scalar_deleting_destructor,0045e63a FUN_0045e63a
 0046d2aa,0046d36f,1,198,0046d2a4 tState_MetaLogon::vfunction13_for_tGameState,0046d370 tState_MetaLogon::vfunction1_for_tStatusAccess
 00737a93,00737b58,3,198,00737a77 __non_rtti_object::scalar_deleting_destructor,00737b59 bad_typeid::bad_typeid
 00412146,00412209,1,196,004120ea tEntity_Corpses::vfunction3,00412222 tEntity_DustCloud::tEntity_DustCloud

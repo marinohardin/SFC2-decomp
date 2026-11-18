@@ -52,7 +52,15 @@ public:
 //Accessors
 	virtual const tID&			GetID() const;
 
+	bool IsDead();
+	void AddReference();
+	void RemoveReference();
+
 protected:
+	// HYPOTHESIS: a member at 0x006fc200 that derived classes call on a string before writing
+	// it between quotes into the SQL stream; it returns a new string. Not in the SDK header.
+	std::string fn_006fc200( std::string text );
+
 //Fields
 	// HYPOTHESIS: fAccess, fID, fAlive, fReferenceCount, fLockEvent and fLockID fill
 	// 0x14 to 0x48; derived classes' first members sit at 0x48 (tMetaMapDesc).

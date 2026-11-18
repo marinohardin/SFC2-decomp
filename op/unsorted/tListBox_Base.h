@@ -109,7 +109,7 @@ public:
 	// Slots 12 to 41 are not called by the functions rebuilt so far.
 	virtual void vfunction13();
 	virtual void vfunction14();
-	virtual void vfunction15();
+	virtual void vfunction15( bool a );
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void vfunction18();
@@ -196,6 +196,13 @@ public:
 	// HYPOTHESIS: works out the items one page holds and the last first-visible item from the
 	// list box's height, and passes the range to its tScrollBar.
 	void fn_004c69b8( int a );
+	// HYPOTHESIS: the index where a text too wide for the list box breaks, at the last space
+	// before it; -1 when the text fits (0x004bd443). The owner class may be a derived list box.
+	int fn_004bd443( tString *text, int width );
+	// HYPOTHESIS: the width a line of text may take (0x004be23f).
+	int fn_004be23f();
+	// HYPOTHESIS: the width of a text in the list box's font (0x004be24a).
+	int fn_004be24a( tString *text );
 
 	// HYPOTHESIS: field types and names unknown; +0x6c and +0x70 are the item count and first
 	// visible item (0x004c6225).

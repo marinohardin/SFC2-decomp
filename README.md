@@ -1,3 +1,5 @@
+<img width="1280" height="640" alt="sfc2-decomp-card-green" src="https://github.com/user-attachments/assets/1384ae98-5f63-454c-816a-b36963838f22" />
+
 # SFC2-decomp
 
 A matching decompilation of **Star Trek: Starfleet Command II**: the game's code recovered as
@@ -6,6 +8,8 @@ with the original compiler.
 
 No game file is in this repository. You bring your own retail install; the tools read it in
 place and never write to it.
+
+
 
 ## Orion Pirates (2.5.5.2)
 

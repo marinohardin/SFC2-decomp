@@ -9,9 +9,21 @@ class tIndividualShipSystemList
 public:
     // HYPOTHESIS: the constructor starts at 0x00437153; its body is recorded at 0x0043715d.
     tIndividualShipSystemList();
-    // HYPOTHESIS: slots 0..21 are not recovered; slot 22 adds a member (tShieldGroup slot 108).
-    virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10();
+    // HYPOTHESIS: slots 1..21 are not recovered; slot 22 adds a member (tShieldGroup slot 108);
+    // slot 2 returns the first member and slot 5 the one after its argument (null at the end).
+    // Slot 0 is the scalar deleting destructor (0x00437424).
+    virtual ~tIndividualShipSystemList();
+    virtual void vfunction1();
+    virtual class tIndividualShipSystem* vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual class tIndividualShipSystem* vfunction5(class tIndividualShipSystem* pSystem);
+    virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8(); virtual void vfunction9(); virtual void vfunction10();
     virtual void vfunction11(); virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(class tIndividualShipSystem* pSystem);
+    virtual void vfunction23();
+    // HYPOTHESIS: slot 24 (+0x60) is called with no argument by ~tShipSystemsFighter
+    // (0x00444558) before its members are destroyed; a clean-up step.
+    virtual void vfunction24();
     char pad04[0x580 - 4];	// HYPOTHESIS: layout unknown; tShieldGroup allocates 0x580 bytes
 };
 
