@@ -111,7 +111,10 @@ MODULE = 'STARFLEETOP'
 SOURCES = ('.cpp', '.c', '.h', '.inl')
 COLUMNS = ('address', 'size', 'symbol', 'source', 'modes')
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
-CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+)\s*(?::\s*(.*?))?\s*(\{)?\s*$')
+CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+(?:::\w+)*)\s*(?::(?!:)\s*(.*?))?\s*(\{)?\s*$')
+# A class opened on the line that opens its namespace, after the close of the class above:
+# `}; namespace nName { class tName`. The namespace qualifies the class.
+NAMESPACE_CLASS = re.compile(r'^\s*((?:\}\s*;?\s*)*)namespace\s+(\w+)\s*\{\s*((?:class|struct)\s.*)$')
 # A base, `[access] [virtual] Name[< args >]`; a template base is recorded by its template's name.
 BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)\s*(?:<.*>)?$')
 IDENT = re.compile(r'[A-Za-z_]\w*$')
@@ -249,7 +252,7 @@ def scan(game):
 def scan_file(path, rel, functions, classes):
     lines = read_lines(path)
     pending_vtable = None
-    stack = []          # open braces: ('class', record) or ('other', None)
+    stack = []          # open braces: ('class', record), ('namespace', {'name': ...}) or ('other', None)
     i = 0
     while i < len(lines):
         raw = lines[i]
@@ -287,9 +290,17 @@ def scan_file(path, rel, functions, classes):
             i += 1
             continue
         code = strip_code(raw)
+        nm = NAMESPACE_CLASS.match(code)
+        if nm:
+            for _ in range(nm.group(1).count('}')):
+                if not stack:
+                    raise ManifestError('%s:%d: unbalanced braces' % (rel, i + 1))
+                stack.pop()
+            stack.append(('namespace', {'name': nm.group(2)}))
+            code = nm.group(3)
         cm = CLASS.match(code)
         if cm and (cm.group(3) or (i + 1 < len(lines) and strip_code(lines[i + 1]).strip() == '{')):
-            outer = [r for k, r in stack if k == 'class']
+            outer = [r for k, r in stack if k in ('class', 'namespace')]
             qual = '::'.join([r['name'] for r in outer] + [cm.group(1)])
             bases = [b for b in split_top(cm.group(2) or '')]
             record = {'name': qual, 'file': rel, 'bases': [], 'members': [], 'vtable': None}
