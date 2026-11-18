@@ -866,6 +866,36 @@ address	size	symbol	source	modes
 0x0045ddf7	71	tCampaignState::~tCampaignState()	unsorted/tCampaignState.cpp	partial
 0x0045de5a	82	tCampaignState::tCampaignState()	unsorted/tCampaignState.cpp	vc6
 0x0045deac	28	tCampaignState::scalar_deleting_destructor(unsigned char)	unsorted/tCampaignState.cpp	vc6 guest
+0x00460175	24	fn_00460175()	unsorted/fn_00460000.cpp	vc6 guest
+0x0046018d	78	fn_0046018d_class::fn_0046018d()	unsorted/fn_00460000.cpp	vc6 guest
+0x004601db	59	fn_004601db_class::fn_004601db(const std::string &)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460216	156	fn_004601db_class::fn_00460216(const std::string &)	unsorted/fn_00460000.cpp	vc6 guest
+0x004602b2	157	fn_004602b2_class::fn_004602b2(const std::string &,int,bool)	unsorted/fn_00460000.cpp	vc6 guest
+0x0046034f	477	fn_004602b2_class::fn_0046034f()	unsorted/fn_00460000.cpp	partial
+0x0046052c	13	fn_004602b2_class::fn_0046052c()	unsorted/fn_00460000.cpp	vc6 guest
+0x00460539	215	fn_004602b2_class::fn_00460539(const std::string &,const std::string &)	unsorted/fn_00460000.cpp	partial
+0x00460610	30	fn_004602b2_class::fn_00460610()	unsorted/fn_00460000.cpp	vc6 guest
+0x0046062e	264	fn_0046062e_class::fn_0046062e(fn_0046062e_arg *)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460736	426	tCampaignInfo::operator=(const tCampaignInfo &)	unsorted/fn_00460000.cpp	vc6 guest
+0x004608ea	10	g_0090d158 (dynamic initializer)	unsorted/fn_00460000.cpp	vc6
+0x004608f4	12	g_0090d158 (atexit registration)	unsorted/fn_00460000.cpp	vc6
+0x0046090a	449	fn_0046090a_object::operator=(const fn_0046090a_object &)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460acb	56	fn_00460acb_class::fn_00460acb()	unsorted/fn_00460000.cpp	vc6 guest
+0x00460b03	56	fn_00460b03_class::fn_00460b03()	unsorted/fn_00460000.cpp	vc6 guest
+0x00460b3b	56	fn_00460b3b_class::fn_00460b3b()	unsorted/fn_00460000.cpp	vc6 guest
+0x00460b73	99	fn_00460b73_class::fn_00460b73_class(unsigned int,const fn_0045e63a_record &,const std::allocator<fn_0045e63a_record> &)	unsorted/fn_00460000.cpp	vc6
+0x00460bd6	54	fn_00460b73_class::~fn_00460b73_class()	unsorted/fn_00460000.cpp	vc6
+0x00460c0c	17	fn_00460b73_class::push_back(const fn_0045e63a_record &)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460c1d	54	fn_00460c1d_class::~fn_00460c1d_class()	unsorted/fn_00460000.cpp	vc6
+0x00460c53	116	fn_00460acb_class::fn_00460c53(fn_00460acb_iterator,fn_00460acb_iterator)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460cc7	116	fn_00460b03_class::fn_00460cc7(fn_00460b03_iterator,fn_00460b03_iterator)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460d3b	116	fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator,fn_00460acb_iterator)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460daf	100	fn_00460b73_class::erase(fn_0045e63a_record *,fn_0045e63a_record *)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460e13	43	fn_00460e13_class::str(const std::string &)	unsorted/fn_00460000.cpp	vc6 guest
+0x00460e3e	56	fn_00460acb_class::fn_00460e3e(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
+0x00460e76	48	fn_00460b03_class::fn_00460e76(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
+0x00460ea6	56	fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial
+0x00460ede	646	fn_00460b73_class::insert(fn_0045e63a_record *,unsigned int,const fn_0045e63a_record &)	unsorted/fn_00460000.cpp	partial
 0x00469cd7	38	tGameState::tGameState()	unsorted/tGameState.cpp	vc6
 0x00469cfd	28	tGameState::`scalar deleting destructor'	unsorted/tGameState.cpp	vc6
 0x00469d19	45	tGameState::~tGameState()	unsorted/tGameState.cpp	vc6
@@ -998,6 +1028,20 @@ address	size	symbol	source	modes
 0x0048c3a6	65	tFleetPanel::vfunction3(int *)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c3e7	49	tFleetPanel::vfunction6(float,int,int)	unsorted/tFleetPanel.cpp	vc6 guest
 0x0048c418	276	tFleetPanel::vfunction4()	unsorted/tFleetPanel.cpp	vc6 guest
+0x004961be	86	fn_00496253_object::fn_004961be(long)	unsorted/fn_00496000.cpp	vc6 guest
+0x00496214	63	fn_00496253_object::fn_00496214(tString)	unsorted/fn_00496000.cpp	vc6 guest
+0x00496253	72	fn_00496253_object::fn_00496253()	unsorted/fn_00496000.cpp	partial
+0x0049629b	149	fn_00496253_object::fn_0049629b(fn_00496253_record *)	unsorted/fn_00496000.cpp	vc6 guest
+0x00496330	108	fn_00496330_object::fn_00496330_object()	unsorted/fn_00496000.cpp	vc6
+0x0049639c	111	fn_00496253_object::fn_0049639c()	unsorted/fn_00496000.cpp	vc6 guest
+0x0049640b	87	fn_00496330_object::~fn_00496330_object()	unsorted/fn_00496000.cpp	vc6
+0x00496462	28	fn_00496330_object::fn_00496462(fn_00496253_record *)	unsorted/fn_00496000.cpp	vc6 guest
+0x0049647e	7	fn_00496330_object::fn_0049647e()	unsorted/fn_00496000.cpp	vc6 guest
+0x004966e7	36	fn_004966e7_object::fn_004966e7_object()	unsorted/fn_00496000.cpp	vc6
+0x0049670b	67	fn_004966e7_object::fn_0049670b()	unsorted/fn_00496000.cpp	vc6 guest
+0x0049674e	87	fn_0049674e_object::fn_0049674e_object()	unsorted/fn_00496000.cpp	vc6
+0x004967a5	174	fn_0049674e_object::fn_004967a5()	unsorted/fn_00496000.cpp	vc6 guest
+0x00496853	95	fn_00496853()	unsorted/fn_00496000.cpp	vc6 guest
 0x004b0a39	994	tMyHud3D::vfunction2(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b0e1b	1372	fn_004b0e1b(tObject_00413ac3_arg *,int,tObject_00852448 *,int,float,bool)	unsorted/tMyHud3D.cpp	partial
 0x004b14aa	48	fn_004b14aa(int)	unsorted/tMyHud3D.cpp	vc6 guest
@@ -1014,6 +1058,40 @@ address	size	symbol	source	modes
 0x004b2ae6	112	tMatrix::tMatrix(const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float)	unsorted/tMyHud3D.cpp	vc6
 0x004b2b56	301	tMyHud3D::vfunction11(int,int,char,int)	unsorted/tMyHud3D.cpp	vc6 guest
 0x004b2c83	24	tMyHud3D::vfunction10(int)	unsorted/tMyHud3D.cpp	vc6 guest
+0x004bd443	241	tListBox_Base::fn_004bd443(tString *,int)	unsorted/fn_004BD43E.cpp	partial
+0x004bd534	136	fn_004bd534()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bd5bc	137	fn_004bd5bc()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bd645	140	fn_004bd645(tString *)	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bd6d1	144	fn_004bd6d1(tString *,int)	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bd805	78	c_004bd805_Object::c_004bd805_Object()	unsorted/fn_004BD43E.cpp	vc6
+0x004bd8d4	318	c_004bd805_Object::fn_004bd8d4(tString *,int)	unsorted/fn_004BD43E.cpp	partial
+0x004bda12	24	c_004bd805_Object::fn_004bda12()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bda34	10	g_004bd805_Object (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bda3e	12	g_004bd805_Object (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bda7f	15	g_0091f928 (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bda8e	12	g_0091f928 (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdabf	51	g_0091f910 (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdaf2	12	g_0091f910 (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdb25	51	g_0091f900 (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdb58	12	g_0091f900 (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdb8b	51	g_0091f8f0 (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdbbe	12	g_0091f8f0 (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdbf1	51	g_0091f8e0 (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdc24	12	g_0091f8e0 (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdc4d	106	fn_004bdc4d()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdcb7	6	fn_004bdcb7()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdcbd	6	fn_004bdcbd()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdcc3	6	fn_004bdcc3()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdcc9	6	fn_004bdcc9()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdccf	29	~c_auto_ptr()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdd0d	78	c_004bdd0d_Object::c_004bdd0d_Object()	unsorted/fn_004BD43E.cpp	vc6
+0x004bdd5b	12	c_004bd805_Entry::c_004bd805_Entry()	unsorted/fn_004BD43E.cpp	vc6
+0x004bdd67	67	c_004bd805_Object::fn_004bdd67()	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bddaa	124	c_004bdd0d_Object::~c_004bdd0d_Object()	unsorted/fn_004BD43E.cpp	vc6
+0x004bde26	318	c_004bdd0d_Object::fn_004bde26(tString *,int)	unsorted/fn_004BD43E.cpp	partial
+0x004bdf64	31	c_004bdd0d_Object::fn_004bdf64(int)	unsorted/fn_004BD43E.cpp	vc6 guest
+0x004bdf8d	10	g_004bdd0d_Object (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6
+0x004bdf97	12	g_004bdd0d_Object (atexit registration)	unsorted/fn_004BD43E.cpp	vc6
 0x004c265f	147	tFleetEntry::tFleetEntry()	unsorted/tFleetEntry.cpp	vc6
 0x004c26f2	13	tFleetEntry::vfunction49_for_tVisGroup(tFleetPanel *)	unsorted/tFleetEntry.cpp	vc6 guest
 0x004c26ff	28	tFleetEntry::scalar_deleting_destructor(unsigned char)	unsorted/tFleetEntry.cpp	vc6 guest
@@ -1474,6 +1552,35 @@ address	size	symbol	source	modes
 0x00538fc1	73	mAllocate()	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x0053900a	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapDesc.cpp	vc6 guest
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest
+0x00544b5c	172	tAuctionItem::tAuctionItem()	unsorted/tAuctionItem.cpp	vc6
+0x00544c08	28	tAuctionItem::`scalar deleting destructor'	unsorted/tAuctionItem.cpp	vc6
+0x00544c79	167	tAuctionItem::tAuctionItem(double,tShip*)	unsorted/tAuctionItem.cpp	vc6
+0x00544d20	44	tAuctionItem::fn_00544d20(const nDatabase::tID&,std::string,int,int,double)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00544db7	175	tAuctionItem::StreamOut(nDataStore::tOutput&) const	unsorted/tAuctionItem.cpp	vc6 guest
+0x00544e66	169	tAuctionItem::StreamIn(nDataStore::tInput&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00544f0f	373	tAuctionItem::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tAuctionItem.cpp	partial
+0x00545084	413	tAuctionItem::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tAuctionItem.cpp	partial
+0x00545221	6	tAuctionItem::SQLTableName() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545227	6	tAuctionItem::SQLFieldNames() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x0054522d	344	tAuctionItem::fn_0054522d(const nDatabase::tID&,int,int32u,nDatabase::tID&,int32u*)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545385	124	tAuctionItem::fn_00545385(const nDatabase::tID&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545401	4	tAuctionItem::fn_00545401() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545405	10	tAuctionItem::fn_00545405(bool)	unsorted/tAuctionItem.cpp	vc6 guest
+0x0054540f	66	tAuctionItem::fn_0054540f(const nDatabase::tID&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545451	112	tAuctionItem::fn_00545451(int,const nDatabase::tID&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x005454c1	159	tAuctionItem::fn_005454c1(int,const nDatabase::tID&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545560	33	tAuctionItem::fn_00545560(int)	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545581	54	tAuctionItem::fn_00545581() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455b7	4	tAuctionItem::fn_005455b7() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455bb	7	tAuctionItem::fn_005455bb() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455c2	7	tAuctionItem::fn_005455c2() const	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455c9	13	tAuctionItem::fn_005455c9(int32u)	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455d6	13	tAuctionItem::fn_005455d6(int32u)	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455e3	13	tAuctionItem::fn_005455e3(int32u)	unsorted/tAuctionItem.cpp	vc6 guest
+0x005455f0	31	tAuctionItem::fn_005455f0(const nDatabase::tID&)	unsorted/tAuctionItem.cpp	vc6 guest
+0x0054560f	60	tClassAllocator()	unsorted/tAuctionItem.cpp	vc6 guest
+0x0054564b	76	mAllocate()	unsorted/tAuctionItem.cpp	vc6 guest
+0x00545697	12	mAssignAllocID(iAllocatorID)	unsorted/tAuctionItem.cpp	vc6 guest
 0x00547b57	110	tBattles::tBattles()	unsorted/tBattles.cpp	vc6
 0x00547bc5	28	tBattles::scalar_deleting_destructor(unsigned char)	unsorted/tBattles.cpp	vc6 guest
 0x00547be1	126	tBattles::tBattles(const tBattles&)	unsorted/tBattles.cpp	vc6
@@ -1632,6 +1739,28 @@ address	size	symbol	source	modes
 0x00575f5e	67	fn_00575f5e_owner::fn_00575f5e(fn_00575f5e_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575fa1	67	fn_00575fa1_owner::fn_00575fa1(fn_00575fa1_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575fe4	67	fn_00575fe4_owner::fn_00575fe4(fn_00575fe4_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x0057a481	7	fn_0057a481_object::fn_0057a481()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a488	7	fn_0057a481_object::fn_0057a488()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a48f	7	fn_0057a481_object::fn_0057a48f()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a496	7	fn_0057a481_object::fn_0057a496()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a49d	7	fn_0057a481_object::fn_0057a49d()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a4a4	7	fn_0057a481_object::fn_0057a4a4()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a5be	56	fn_0057a5be_object::fn_0057a5be()	unsorted/fn_0057A000.cpp	partial
+0x0057a5f6	117	fn_0057a5f6_list::operator=(const fn_0057a5f6_list &)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a66b	51	fn_0057a66b_vector::fn_0057a66b()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a69e	17	fn_0057a69e_vector::fn_0057a69e(const fn_0057a69e_value &)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a6af	103	fn_0057a66b_vector::fn_0057a6af(fn_0057a66b_value *,fn_0057a66b_value *)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a716	600	fn_0057a69e_vector::fn_0057a716(fn_0057a69e_value *,unsigned int,const fn_0057a69e_value &)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a96e	96	operator()(tnResult)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057a9ce	96	Callback(tnResult)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057aa2e	133	operator+(const char*,const string&)	unsorted/fn_0057A000.cpp	partial
+0x0057aab3	31	CreateCallback(tClass*,void (tClass::*func)( tParam result ))	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057aad2	7	~tCallback()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057aad9	63	fn_0057aad9(const tnRange&,const tnFunction&)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057ab18	58	fn_0057ab18(fn_0057a69e_value*,const fn_0057a69e_value&)	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057aba9	28	~tMemberCallback()	unsorted/fn_0057A000.cpp	vc6 guest
+0x0057abc5	22	fn_0057abc5_range::fn_0057abc5_range(const nDatabase::tID* const &,const nDatabase::tID* const &)	unsorted/fn_0057A000.cpp	vc6
+0x0057abdb	77	for_each(const nDatabase::tID*,const nDatabase::tID*,tMemberCallback< fn_0057a96e_owner, const nDatabase::tID& >)	unsorted/fn_0057A000.cpp	vc6 guest
 0x005856fd	27	fn_005856fd_owner::fn_005856fd()	unsorted/fn_00585000.cpp	vc6 guest
 0x00585718	27	fn_00585718_owner::fn_00585718()	unsorted/fn_00585000.cpp	vc6 guest
 0x00585733	27	fn_00585733_owner::fn_00585733()	unsorted/fn_00585000.cpp	vc6 guest
@@ -1842,6 +1971,31 @@ address	size	symbol	source	modes
 0x005c4f18	110	fn_005c478f_Holder::FUN_005c4f18()	unsorted/fn_005C4000.cpp	vc6 guest
 0x005c4f86	110	fn_005c478f_Holder::FUN_005c4f86()	unsorted/fn_005C4000.cpp	vc6 guest
 0x005c4ff4	110	fn_005c478f_Holder::FUN_005c4ff4()	unsorted/fn_005C4000.cpp	vc6 guest
+0x005ea14b	179	tTree_005ea14b::fn_005ea14b(const std::pair<int, int> &)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea1fe	619	tTree_005ea14b::fn_005ea1fe(iterator)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea469	56	tTree_005ea14b::fn_005ea469(tNode *)	unsorted/fn_005EA000.cpp	partial
+0x005ea4a1	324	tTree_005ea4a1::fn_005ea4a1(tNode *,tNode *,const tValue &)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea63f	332	tTree_005ea63f::fn_005ea63f(tNode *,tNode *,const tValue &)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea78b	59	tTree_005ea14b::iterator::fn_005ea78b()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea7c6	50	tTree_005ea14b::iterator::fn_005ea7c6()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea7f8	47	tObject_005ea7f8::~tObject_005ea7f8()	unsorted/fn_005EA000.cpp	partial
+0x005ea827	49	tObject_005ea7f8::fn_005ea827()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea858	47	tObject_005ea858::~tObject_005ea858()	unsorted/fn_005EA000.cpp	partial
+0x005ea887	49	tObject_005ea858::fn_005ea887()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea8b8	96	operator()(fn_0057a96e_info)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea918	96	Callback(fn_0057a96e_info)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005ea978	43	tObject_005ea978::~tObject_005ea978()	unsorted/fn_005EA000.cpp	partial
+0x005ea9a3	43	tObject_005ea9a3::~tObject_005ea9a3()	unsorted/fn_005EA000.cpp	partial
+0x005ea9ce	68	find_if(fn_005ea9ce_elem*,fn_005ea9ce_elem*,fn_005ea9ce_pred)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaa12	45	_Construct(fn_005eaa12_elem*,const fn_005eaa12_elem&)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaa3f	56	fn_005eaa3f(tTree_005ea4a1::tValue *,const tTree_005ea4a1::tValue &)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaa77	45	_Construct(tMetaMapNormalHex*,const tMetaMapNormalHex&)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaaa4	62	fn_005eaaa4(tTree_005ea63f::tValue *,const tTree_005ea63f::tValue &)	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaae2	28	~tMemberCallback()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eaafe	7	~tMemberCallback()	unsorted/fn_005EA000.cpp	vc6 guest
+0x005eab05	77	fn_005eab05_value::fn_005eab05_value(const fn_005eab05_value&)	unsorted/fn_005EA000.cpp	vc6
+0x005eabbe	51	g_00c391e8 (dynamic initializer)	unsorted/fn_005EA000.cpp	vc6
+0x005eabf1	12	g_00c391e8 (atexit registration)	unsorted/fn_005EA000.cpp	vc6
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest
 0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	vc6
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest
