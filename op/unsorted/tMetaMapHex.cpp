@@ -823,7 +823,7 @@ fn_0053a73a_map::iterator fn_0053a73a_map::tree::erase( iterator first, iterator
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x0053aa7a
+// Not claimed: 0x0053aa7a is shared with tListBox_Base's std::map< int, ... >::find (0x004c6d35).
 fn_0053a73a_map::iterator fn_0053a73a_map::find( const int32& key )
 {
 	// MATCH-ONLY: view the container as the library's map< long, long >, whose out-of-line
