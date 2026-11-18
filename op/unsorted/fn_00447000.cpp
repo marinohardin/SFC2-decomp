@@ -182,8 +182,8 @@ struct tObject_00447415_limits
 
 class c_00450e41;
 
-// HYPOTHESIS: the class owning 0x0044715d is not known; only its table pointer at 0xec is read.
-class c_0044715d
+// The 0xf0-byte object tSFCPlayer keeps in arrays; RTTI names its destructor (0x004459be).
+class tShipSystemMask
 {
 public:
 	void fn_0044715d(tObject_0042496f *ship);
@@ -233,7 +233,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0044715d
-void c_0044715d::fn_0044715d(tObject_0042496f *ship)
+void tShipSystemMask::fn_0044715d(tObject_0042496f *ship)
 {
 	if (ship && ship->field_0xad4)
 	{
@@ -269,7 +269,7 @@ void c_0044715d::fn_0044715d(tObject_0042496f *ship)
 }
 
 // FUNCTION: STARFLEETOP 0x004472bc
-void c_0044715d::fn_004472bc(tObject_0042496f *ship)
+void tShipSystemMask::fn_004472bc(tObject_0042496f *ship)
 {
 	if (ship && ship->field_0xad4)
 	{
@@ -303,7 +303,7 @@ void c_0044715d::fn_004472bc(tObject_0042496f *ship)
 }
 
 // FUNCTION: STARFLEETOP 0x00447415
-int c_0044715d::fn_00447415(int side, int kind)
+int tShipSystemMask::fn_00447415(int side, int kind)
 {
 	switch (side)
 	{
@@ -345,7 +345,7 @@ int c_0044715d::fn_00447415(int side, int kind)
 }
 
 // FUNCTION: STARFLEETOP 0x00447531
-void c_0044715d::fn_00447531(int side, int value)
+void tShipSystemMask::fn_00447531(int side, int value)
 {
 	switch (side)
 	{
@@ -368,7 +368,7 @@ void c_0044715d::fn_00447531(int side, int value)
 }
 
 // FUNCTION: STARFLEETOP 0x004475bc
-void c_0044715d::fn_004475bc(int kind, int value)
+void tShipSystemMask::fn_004475bc(int kind, int value)
 {
 	int i;
 
@@ -418,7 +418,7 @@ void c_0044715d::fn_004475bc(int kind, int value)
 }
 
 // FUNCTION: STARFLEETOP 0x004476cf
-int c_0044715d::fn_004476cf(int level)
+int tShipSystemMask::fn_004476cf(int level)
 {
 	switch (level)
 	{
@@ -436,7 +436,7 @@ int c_0044715d::fn_004476cf(int level)
 }
 
 // FUNCTION: STARFLEETOP 0x00447740
-int c_0044715d::fn_00447740(int level)
+int tShipSystemMask::fn_00447740(int level)
 {
 	switch (level)
 	{
@@ -454,13 +454,13 @@ int c_0044715d::fn_00447740(int level)
 }
 
 // FUNCTION: STARFLEETOP 0x004477b1
-int c_0044715d::fn_004477b1(int index)
+int tShipSystemMask::fn_004477b1(int index)
 {
 	return field_0xe8->field_0x186[index];
 }
 
 // FUNCTION: STARFLEETOP 0x004477c6
-void c_0044715d::fn_004477c6(int index, char value, char current)
+void tShipSystemMask::fn_004477c6(int index, char value, char current)
 {
 	field_0xe8->field_0x17e[index] = value;
 	field_0xe8->field_0x182[index] = value;
@@ -468,31 +468,31 @@ void c_0044715d::fn_004477c6(int index, char value, char current)
 }
 
 // FUNCTION: STARFLEETOP 0x004477f8
-int c_0044715d::fn_004477f8(int index)
+int tShipSystemMask::fn_004477f8(int index)
 {
 	return field_0xe8->field_0x182[index];
 }
 
 // FUNCTION: STARFLEETOP 0x0044780d
-int c_0044715d::fn_0044780d(int index)
+int tShipSystemMask::fn_0044780d(int index)
 {
 	return field_0xe8->field_0x17a[index];
 }
 
 // FUNCTION: STARFLEETOP 0x00447822
-std::string c_0044715d::fn_00447822(int index)
+std::string tShipSystemMask::fn_00447822(int index)
 {
 	return field_0xe8->field_0x18c[index];
 }
 
 // FUNCTION: STARFLEETOP 0x00447867
-void c_0044715d::fn_00447867(int index, std::string value)
+void tShipSystemMask::fn_00447867(int index, std::string value)
 {
 	field_0xe8->field_0x18c[index] = value;
 }
 
 // FUNCTION: STARFLEETOP 0x004478b5
-int c_0044715d::fn_004478b5(int level)
+int tShipSystemMask::fn_004478b5(int level)
 {
 	switch (level)
 	{
@@ -510,7 +510,7 @@ int c_0044715d::fn_004478b5(int level)
 }
 
 // FUNCTION: STARFLEETOP 0x00447926
-void c_0044715d::fn_00447926(int kind, int value)
+void tShipSystemMask::fn_00447926(int kind, int value)
 {
 	switch (kind)
 	{
@@ -538,7 +538,7 @@ void c_0044715d::fn_00447926(int kind, int value)
 }
 
 // FUNCTION: STARFLEETOP 0x004479b4
-int c_0044715d::fn_004479b4(int kind)
+int tShipSystemMask::fn_004479b4(int kind)
 {
 	switch (kind)
 	{
@@ -555,7 +555,7 @@ int c_0044715d::fn_004479b4(int kind)
 }
 
 // FUNCTION: STARFLEETOP 0x00447a54
-int c_0044715d::fn_00447a54(int kind)
+int tShipSystemMask::fn_00447a54(int kind)
 {
 	switch (kind)
 	{
@@ -572,7 +572,7 @@ int c_0044715d::fn_00447a54(int kind)
 }
 
 // FUNCTION: STARFLEETOP 0x00447aa7
-void c_0044715d::fn_00447aa7(tObject_0042496f *ship)
+void tShipSystemMask::fn_00447aa7(tObject_0042496f *ship)
 {
 	if (ship != NULL)
 	{
@@ -585,14 +585,14 @@ void c_0044715d::fn_00447aa7(tObject_0042496f *ship)
 	}
 }
 
-// HYPOTHESIS: 0x00447af2 is a member of c_0044715d that runs to 0x00447b79 (EH frame, a stack
+// HYPOTHESIS: 0x00447af2 is a member of tShipSystemMask that runs to 0x00447b79 (EH frame, a stack
 // tShipSpecs, then 0x00447aa7 on the ship it builds); the analysis stops it after 31 bytes, at
 // 0x00447b11, so it is left unclaimed until that boundary is corrected.
 //
 //
 
 // FUNCTION: STARFLEETOP 0x00447b7a
-void c_0044715d::fn_00447b7a(tObject_0042496f *ship)
+void tShipSystemMask::fn_00447b7a(tObject_0042496f *ship)
 {
 	if (field_0x4 == 1 && stricmp(field_0x5, ship->field_0x87d) == 0)
 	{
@@ -669,7 +669,7 @@ void c_00447bbb::fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c)
 }
 
 // FUNCTION: STARFLEETOP 0x00447c61
-bool c_0044715d::fn_00447c61(int kind)
+bool tShipSystemMask::fn_00447c61(int kind)
 {
 	int i = 0;
 	switch (kind)
@@ -702,49 +702,49 @@ bool c_0044715d::fn_00447c61(int kind)
 
 // HYPOTHESIS: 0x00447ce4 reads the same table pointer at 0xe8 as the functions above.
 // FUNCTION: STARFLEETOP 0x00447ce4
-tObject_00447415_limits *c_0044715d::fn_00447ce4()
+tObject_00447415_limits *tShipSystemMask::fn_00447ce4()
 {
 	return field_0xe8;
 }
 
 // FUNCTION: STARFLEETOP 0x00447ceb
-tObject_0044715d_table *c_0044715d::fn_00447ceb()
+tObject_0044715d_table *tShipSystemMask::fn_00447ceb()
 {
 	return field_0xec;
 }
 
 // FUNCTION: STARFLEETOP 0x00447cf2
-c_00450e41 *c_0044715d::fn_00447cf2()
+c_00450e41 *tShipSystemMask::fn_00447cf2()
 {
 	return field_0xe4;
 }
 
 // FUNCTION: STARFLEETOP 0x00447cf9
-void c_0044715d::fn_00447cf9(int index, int value)
+void tShipSystemMask::fn_00447cf9(int index, int value)
 {
 	field_0xec->field_0x10[index].field_0x18 = value;
 }
 
 // FUNCTION: STARFLEETOP 0x00447d11
-void c_0044715d::fn_00447d11(int index, int value)
+void tShipSystemMask::fn_00447d11(int index, int value)
 {
 	field_0xec->field_0x10[index].field_0x1c = value;
 }
 
 // FUNCTION: STARFLEETOP 0x00447d29
-void c_0044715d::fn_00447d29(int index, int value)
+void tShipSystemMask::fn_00447d29(int index, int value)
 {
 	field_0xec->field_0x10[index].field_0x20 = value;
 }
 
 // FUNCTION: STARFLEETOP 0x00447d41
-int c_0044715d::fn_00447d41(int index)
+int tShipSystemMask::fn_00447d41(int index)
 {
 	return field_0xec->field_0x10[index].field_0x18;
 }
 
 // FUNCTION: STARFLEETOP 0x00447d55
-int c_0044715d::fn_00447d55(int index)
+int tShipSystemMask::fn_00447d55(int index)
 {
 	return field_0xec->field_0x10[index].field_0x1c;
 }

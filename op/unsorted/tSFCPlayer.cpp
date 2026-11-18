@@ -30,7 +30,7 @@ extern int g_0079ed10;
 extern int g_008552b8[];
 extern int g_0085529c[];
 extern int g_008552b4[];
-class tObject_004454c1;
+class tShipSystemMask;
 // HYPOTHESIS: the class of the global at 0x008f5118 (original name unknown).
 class tObject_008f5118
 {
@@ -57,18 +57,18 @@ class tListIterator_004cf9b3
 		void fn_00450ce5();
 };
 
-// HYPOTHESIS: the 0xf0-byte element of four member arrays; constructor 0x004454c1, destructor
-// 0x004459be (original name unknown).
-class tObject_004454c1
+// The 0xf0-byte element of four member arrays; constructor 0x004454c1, destructor 0x004459be,
+// which RTTI names tShipSystemMask::~tShipSystemMask.
+class tShipSystemMask
 {
 	public:
-		tObject_004454c1();
-		~tObject_004454c1();
+		tShipSystemMask();
+		~tShipSystemMask();
 		void fn_00447af2(char *s, int v);
-		void fn_00447aa7(void *param_1);
+		void fn_00447aa7(tObject_0042496f *param_1);
 		char fn_00508f68();
 		void fn_0051da3d();
-		void fn_00447b7a(void *param_1);
+		void fn_00447b7a(tObject_0042496f *param_1);
 		int fn_00447d41(int param_1);
 		int fn_00447d55(int param_1);
 		void fn_00447cf9(int param_1, int param_2);
@@ -77,7 +77,7 @@ class tObject_004454c1
 		void fn_004475bc(int param_1, int param_2);
 		void fn_00447926(int param_1, int param_2);
 		// body at 0x00445a14
-		tObject_004454c1 &operator=(const tObject_004454c1 &other);
+		tShipSystemMask &operator=(const tShipSystemMask &other);
 
 	private:
 		char m_00[0xf0];
@@ -253,7 +253,7 @@ class tSFCPlayer
 		virtual void vfunction83(int param_1, unsigned param_2);
 		virtual int vfunction84(unsigned param_1);
 		virtual void vfunction85(int param_1, unsigned param_2);
-		virtual tObject_004454c1 *vfunction86(unsigned param_1);
+		virtual tShipSystemMask *vfunction86(unsigned param_1);
 		virtual void vfunction87();
 		virtual int vfunction88();
 		virtual void vfunction89(int param_1);
@@ -261,14 +261,14 @@ class tSFCPlayer
 		virtual int vfunction91();
 		virtual void vfunction92(int param_1);
 		virtual int vfunction93();
-		virtual void vfunction94(tObject_004454c1 *param_1);
+		virtual void vfunction94(tShipSystemMask *param_1);
 		virtual int vfunction95(int param_1);
 		virtual int vfunction96(int param_1);
 		virtual int vfunction97(int param_1, int param_2);
 		virtual int vfunction98();
-		virtual void vfunction99(tObject_004454c1 *param_1, int param_2, int param_3, int param_4);
+		virtual void vfunction99(tShipSystemMask *param_1, int param_2, int param_3, int param_4);
 		virtual void vfunction100(unsigned param_1, int param_2, int param_3, int param_4);
-		virtual void vfunction101(tObject_004454c1 *param_1);
+		virtual void vfunction101(tShipSystemMask *param_1);
 		virtual void vfunction102(unsigned param_1);
 		virtual void vfunction103(int param_1);
 		virtual int vfunction104();
@@ -298,7 +298,7 @@ class tSFCPlayer
 		char m_70[6][0x20];
 		tString m_130[6];
 		int m_220[6];
-		tObject_004454c1 m_238[6];
+		tShipSystemMask m_238[6];
 		int m_7d8[6];
 		int m_7f0[6];
 		int m_808;
@@ -307,7 +307,7 @@ class tSFCPlayer
 		char m_83c[6][0x20];
 		tString m_8fc[6];
 		int m_9ec[6];
-		tObject_004454c1 m_a04[6];
+		tShipSystemMask m_a04[6];
 		int m_fa4;
 		int m_fa8[4][0x14];
 		int m_10e8[16];
@@ -322,7 +322,7 @@ class tSFCPlayer
 		int m_3388[0x24];
 		tString m_3418[0x24];
 		tString m_39b8[0x24];
-		tObject_004454c1 m_3f58[0x24];
+		tShipSystemMask m_3f58[0x24];
 		char pad_6118[0x61a8 - 0x6118];
 		tObject_004cf9b3 m_61a8[0x12][0x18];
 		// HYPOTHESIS: the serialization walks 18 rows of 20 ints from here, which reaches over the
@@ -768,7 +768,7 @@ void tSFCPlayer::vfunction4(char *param_1, int param_2, unsigned param_3, int pa
 		vfunction83(0, param_3);
 		vfunction25(param_5, param_3);
 		vfunction21(g_008f5118.fn_00424d46(param_1, param_3));
-		tObject_004454c1 *pEntry = &m_238[param_3];
+		tShipSystemMask *pEntry = &m_238[param_3];
 		pEntry->fn_00447af2(param_1, param_4);
 		vfunction94(pEntry);
 		if (param_3 >= (unsigned)m_30)
@@ -784,7 +784,7 @@ char tSFCPlayer::vfunction79()
 		fn_004e2b02_ship_type *iEntity = gObject_008e1060.fn_0042496f(m_40[i]);
 		if (iEntity != 0) {
 			bResult = 1;
-			m_238[i].fn_00447aa7(iEntity);
+			m_238[i].fn_00447aa7((tObject_0042496f *)iEntity);
 		}
 	}
 	return bResult;
@@ -799,7 +799,7 @@ char tSFCPlayer::vfunction80()
 		if (iEntity != 0 && m_238[i].fn_00508f68() != 0) {
 			bResult = 1;
 			if (m_05 != 0)
-				m_238[i].fn_00447b7a(iEntity);
+				m_238[i].fn_00447b7a((tObject_0042496f *)iEntity);
 		}
 	}
 	return bResult;
@@ -985,11 +985,11 @@ int tSFCPlayer::vfunction84(unsigned param_1)
 void tSFCPlayer::vfunction85(int param_1, unsigned param_2)
 {
 	if (param_2 < 6 && param_1 != 0)
-		m_238[param_2] = *(tObject_004454c1 *)param_1;
+		m_238[param_2] = *(tShipSystemMask *)param_1;
 }
 
 // FUNCTION: STARFLEETOP 0x004d09e9
-tObject_004454c1 *tSFCPlayer::vfunction86(unsigned param_1)
+tShipSystemMask *tSFCPlayer::vfunction86(unsigned param_1)
 {
 	if (param_1 < 6)
 		return &m_238[param_1];
@@ -1132,7 +1132,7 @@ void tSFCPlayer::vfunction107(int param_1)
 		vfunction105(m_8520 + param_1);
 		unsigned count = m_30;
 		if (count-- != 0) {
-			tObject_004454c1 *p = &m_238[count];
+			tShipSystemMask *p = &m_238[count];
 			count++;
 			do {
 				for (int i = 0; i < 7; i++) {
@@ -1189,7 +1189,7 @@ void tSFCPlayer::fn_004d0cb6()
 }
 
 // FUNCTION: STARFLEETOP 0x004d0d0a
-void tSFCPlayer::vfunction94(tObject_004454c1 *param_1)
+void tSFCPlayer::vfunction94(tShipSystemMask *param_1)
 {
 	int iType = vfunction98();
 	for (int i = 0; i < 7; i++) {
@@ -1200,7 +1200,7 @@ void tSFCPlayer::vfunction94(tObject_004454c1 *param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x004d0d7e
-void tSFCPlayer::vfunction99(tObject_004454c1 *param_1, int param_2, int param_3, int param_4)
+void tSFCPlayer::vfunction99(tShipSystemMask *param_1, int param_2, int param_3, int param_4)
 {
 	param_1->fn_004475bc(0, param_2);
 	param_1->fn_004475bc(1, param_3);
@@ -1210,7 +1210,7 @@ void tSFCPlayer::vfunction99(tObject_004454c1 *param_1, int param_2, int param_3
 // FUNCTION: STARFLEETOP 0x004d0d50
 void tSFCPlayer::vfunction100(unsigned param_1, int param_2, int param_3, int param_4)
 {
-	tObject_004454c1 *p = vfunction86(param_1);
+	tShipSystemMask *p = vfunction86(param_1);
 	if (p != 0) {
 		vfunction99(p, param_2, param_3, param_4);
 	}
@@ -1387,7 +1387,7 @@ void tSFCPlayer::vfunction114(fn_004e2b02_ship_type *param_1)
 		for (int i = 0; i < 6; i++) {
 			for (unsigned j = 0; j < (unsigned)m_3370[i]; j++) {
 				if (m_3388[i * 6 + j] == id && m_39b8[i * 6 + j] == name && m_3418[i * 6 + j] == label) {
-					m_3f58[i * 6 + j].fn_00447b7a(ship);
+					m_3f58[i * 6 + j].fn_00447b7a((tObject_0042496f *)ship);
 					return;
 				}
 			}
@@ -1450,7 +1450,7 @@ int tSFCPlayer::vfunction98()
 }
 
 // FUNCTION: STARFLEETOP 0x004d0dce
-void tSFCPlayer::vfunction101(tObject_004454c1 *param_1)
+void tSFCPlayer::vfunction101(tShipSystemMask *param_1)
 {
 	for (int i = 0; i <= 3; i++) {
 		param_1->fn_00447926(i, 0);
@@ -1460,7 +1460,7 @@ void tSFCPlayer::vfunction101(tObject_004454c1 *param_1)
 // FUNCTION: STARFLEETOP 0x004d0dac
 void tSFCPlayer::vfunction102(unsigned param_1)
 {
-	tObject_004454c1 *p = vfunction86(param_1);
+	tShipSystemMask *p = vfunction86(param_1);
 	if (p != 0) {
 		vfunction101(p);
 	}
