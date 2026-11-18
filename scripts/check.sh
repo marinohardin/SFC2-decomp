@@ -7,8 +7,11 @@
 #   2. the hotspot list and CODEOWNERS agree
 #   3. the PORT: lines in op/ (listed, never a failure) and the SFCOP_FIX sites there (a failure:
 #      a fix to game code never goes in op/)
-#   4. the progress gate: no function loses its status (scripts/progress.py)
-#   5. the matched-set gate: no score drops below the base branch's. With the install and the
+#   4. the claims in op/: empty bodies, fragment claims, address order and stray files, each
+#      break not in analysis/results/lint_baseline.tsv a failure, and so is a stale baseline row
+#      (tools/lint_claims.py)
+#   5. the progress gate: no function loses its status (scripts/progress.py)
+#   6. the matched-set gate: no score drops below the base branch's. With the install and the
 #      compiler image, every matched function is rebuilt (harness/build-and-verify.sh), unless
 #      every changed file is documentation (scripts/rebuild_scope.py); otherwise only the
 #      recorded scores are compared
@@ -49,6 +52,13 @@ EOF
 echo "== PORT: lines in op/ (SFCOP_FIX sites there fail)"
 if [ -d op ]; then
     python3 scripts/port_footprint.py --no-fix-sites op
+else
+    skip "no op/ tree yet"
+fi
+
+echo "== claims in op/ (tools/lint_claims.py; breaks not in its baseline fail)"
+if [ -d op ]; then
+    python3 tools/lint_claims.py
 else
     skip "no op/ tree yet"
 fi

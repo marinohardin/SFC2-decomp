@@ -8,21 +8,7 @@
 #include "port/types.h"
 #include "Common/DataStore/Streamable.h"
 #include <vector>
-
-// HYPOTHESIS: the member at 0x0c of tMissionCompleteResults; 0x14 bytes, assigned by an
-// out-of-line operator= at 0x005b69d0. Its real type is not known.
-class tObject_005b69d0
-{
-public:
-	tObject_005b69d0& operator=( const tObject_005b69d0& other );
-
-	// HYPOTHESIS: two numbers that tBattles::SQLFillInsertStream writes; their meaning is not
-	// known.
-	int32 fn_0055f269();
-	int32 fn_005e8f21();
-
-	int32u fPad_00[0x5];
-};
+#include "unsorted/tHexPoint.h"
 
 // HYPOTHESIS: the element of the vector at 0x20 of tMissionCompleteResults: 0x58 bytes with a
 // virtual destructor, an out-of-line copy constructor (reached through std::_Construct at
@@ -52,7 +38,8 @@ public:
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
 
-	tObject_005b69d0 m_0c;
+	// Assigned by tHexPoint's out-of-line operator= (0x005b69d0).
+	tHexPoint m_0c;
 	// The exe's assignment calls std::vector's operator= (0x005481bd) for it.
 	std::vector< tObject_0053d20b > m_20;
 };

@@ -25,6 +25,9 @@ public:
 	std::map< int32, float >& fn_0053a2fc();
 	// HYPOTHESIS: a number per index; tBattles::SQLFillInsertStream writes it for 0 and 1.
 	int32 fn_0053a414( int32 param_1 );
+	// HYPOTHESIS: the hex's two coordinates; 0x0056d3a0 queries the database on both.
+	long fn_00539f04() const;
+	long fn_00539f50() const;
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds.
 	char fPad_48[0x88];

@@ -9,6 +9,7 @@ from everything that judges; scores only go up.
 | `build-and-verify.sh <fn>` | The only judge. Compiles the function's unit, diffs it against the original bytes, refuses any score below `matched_set.json`. Read-only |
 | `update-matched-set.sh <fn>` | The only writer of `matched_set.json`. Takes no score: it verifies the function itself and records an improvement |
 | `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address |
+| `../analysis/results/reloc_baseline.tsv` | Known relocations of exact functions that name another symbol than the claim at their target (step 8 of `build-and-verify.sh`) |
 | `units.json` | Compile profile per unit of the rebuilt tree (flags, compiler, include order) |
 | `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps `difficult_functions.tsv` |
 | `../analysis/results/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human |
@@ -81,12 +82,35 @@ harness/build-and-verify.sh --all --base origin/develop   # and hold it to the b
    line naming both, exit 2): the native build links one definition per name, so one of them
    names the wrong callee, global or method. Labels, compiler statics and literal constants are
    resolved per unit and compared within one. `--all` checks every recorded function this way.
+8. Checks that every REL32 / DIR32 relocation of an exact function that reaches a claimed
+   function (an address in `matched_set.json`, or one scored in the run) names the symbol that
+   claim defines (`report_claim_symbols` in `lib/verify.py`). The byte match masks the field,
+   so a call through a stand-in class name or signature scores exact, but a consumer linking the
+   exact objects (manifest mode `vc6`) is left with an unresolved external. The claim's symbol
+   is the one the run's rebuild of its unit defines; a matched-set `symbol` field is only a
+   fallback, because it is rewritten only when a score improves and can be stale after a rename.
+   A break against a rebuilt symbol is an `ERROR` line naming the function, the relocation
+   offset, the symbol, the exe address and the claimed symbol, and fails the run (exit 2); one
+   against a recorded symbol only (a single-function run that did not build the target's unit)
+   is a `WARN` line, and `--all`, which rebuilds every claim, decides. Targets nothing claims
+   (library and CRT code) are not checked. A legitimate case, such as two identical functions
+   the linker folded into one address, is listed in the baseline too.
+
+   **The relocation baseline** (`analysis/results/reloc_baseline.tsv`, `HARNESS_RELOC_BASELINE`):
+   the breaks known when the check came in, one row each (`function`, `offset`, `symbol`,
+   `target`, `claimed`), matched by function, symbol and target (the offset is for the reader).
+   A listed break is tolerated, with one `INFO` line counting them; a row whose break is gone is
+   a `WARN` line asking for its removal (under `--all` every row, otherwise only the rows of the
+   exact functions scored), so the list only shrinks. Every `--all` run writes the breaks it found,
+   in the same format, to `reloc_breaks.tsv` in its build folder; the baseline is only ever
+   replaced from such a file by the integrator, never extended to let a new break through.
 
 Output is a few lines, each tagged `OK`, `ERROR` or `INFO`, then a `RESULT` line; for a function
 that is not exact, the first differing instructions side by side and the path of a full
 side-by-side listing. A failed compile says `BUILD HAS FAILED` with the compiler's errors.
 Exit status: 0 nothing regressed, 1 a recorded function scored lower (or lost its source, or its
-unit no longer builds), 2 the claimed function could not be built or scored.
+unit no longer builds), 2 the claimed function could not be built or scored, or step 7 or 8
+found a symbol that the exact functions use wrongly.
 
 `--base <file or git ref>` also holds the run to another copy of the matched set, compared by
 original address: a file, or `analysis/results/matched_set.json` at a git ref (read with
@@ -154,14 +178,20 @@ its file, which `loop.sh` sets, so a selection left from an earlier run restrict
 
 ### Model tiers and the stop rule
 
-A function's run, by its counted attempts:
+A function's run, by its counted attempts. The first model depends on the function's size in
+the original: Sonnet builds a function under 128 bytes (`HARNESS_SMALL_BYTES`), where it lands
+about as often as Opus for half the cost; Opus builds anything larger, and a function of unknown
+size.
 
-| Attempt | Model | Role |
-| --- | --- | --- |
-| 1 | Opus | Build: write the function from the original instructions |
-| 2 | Sonnet | Fix round: close the differences left in the committed near match |
-| 3 | Opus | Build again, with what the earlier attempts left |
-| after the run | Fable | One time-boxed try, only for a best of at least 90%, only with `--allow-fable` |
+| Attempt | Under 128 bytes | 128 bytes or more | Role |
+| --- | --- | --- | --- |
+| 1 | Sonnet | Opus | Build: write the function from the original instructions |
+| 2 | Opus | Opus | Fix round: close the differences left in the committed near match |
+| 3 | Opus | Opus | Build again, with what the earlier attempts left |
+| after the run | Fable | Fable | One time-boxed try, only for a best of at least 90%, only with `--allow-fable` |
+
+Attempt 2 is always a fix round, whatever its model; a later attempt is a fix round only when
+its model is Sonnet or Fable.
 
 The stop rule (`plan` in `lib/workqueue.py`) usually ends a run sooner:
 
@@ -181,8 +211,11 @@ The best score is the highest of every attempt's result and starting score, so a
 that another branch had already raised is judged against that. Usage-limit stops (`limit`),
 login failures and dry runs never count; failed, no-change, improved, exact, tampered and
 timeout attempts do. Improved attempts are committed, so a later attempt starts from the best source so
-far. `HARNESS_TIERS` replaces the regular sequence (for example `opus,sonnet`) and may not name
-Fable.
+far. `HARNESS_TIERS` (default `opus,opus,opus`) and `HARNESS_SMALL_TIERS` (default
+`sonnet,opus,opus`) replace the two sequences; neither may name Fable. When only `HARNESS_TIERS`
+is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split off. A function
+the queue no longer holds, such as one already on the difficult list, has no known size and is
+judged with the regular sequence.
 
 When a run ends short of 100%, `queue.py record` lists the function, and the loop commits the
 list:
@@ -431,7 +464,8 @@ Hooks.
 
 ## Limits and open points
 
-- **Fable tier.** Opus builds, Sonnet does one fix round, Opus tries once more; Fable gets one
+- **Fable tier.** Sonnet (under 128 bytes) or Opus builds, Opus does one fix round and tries
+  once more; Fable gets one
   time-boxed try at a near match (best at least 90%) and only when explicitly enabled
   (`--allow-fable`); it is off by default.
 - **Unverified relocations** are accepted when used consistently, because most data symbols have
