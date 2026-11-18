@@ -8,7 +8,7 @@
 #include "unsorted/fn_0042b0fd_owner.h"
 #include <string>
 #include <time.h>
-
+#include "unsorted/tServCharacter.h"
 // The SDK's inline tOptex destructor, the same body tClientCharacter.cpp claims as the game's
 // copy (0x004296c8). With its body in view the compiler sets no unwind state before calling it
 // from an inlined tAccessPointer destructor, as the original does at 0x0054372f.
@@ -228,13 +228,13 @@ public:
 	void fn_0054334a(int flags);
 	int fn_00543357(const nDatabase::tID &id);
 	std::string fn_005433a7() const;
-	bool fn_005433dd();
-	bool fn_005433e8();
-	bool fn_005433f4();
-	bool fn_00543400();
-	bool fn_0054340c();
+	// 0x005433dd, 0x005433e8, 0x005433f4, 0x00543400, 0x0054340c and 0x00543445 are tServCharacter's
+	// (AsyncDBSingle calls them on that class); they read this layout through a cast.
+
+
+
 	bool fn_00543437();
-	void fn_00543445();
+
 	int fn_00543455();
 	std::string fn_00543459() const;
 	int fn_00543495();
@@ -409,34 +409,34 @@ std::string fn_005430ad_owner::fn_005433a7() const
 
 // HYPOTHESIS: a fourth one-bit flag, bit 1 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x005433dd
-bool fn_005430ad_owner::fn_005433dd()
+bool tServCharacter::fn_005433dd() const
 {
-	return m114_1 ? true : false;
+	return ((const fn_005430ad_owner *)this)->m114_1 ? true : false;
 }
 
 // HYPOTHESIS: a fifth one-bit flag, bit 2 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x005433e8
-bool fn_005430ad_owner::fn_005433e8()
+bool tServCharacter::fn_005433e8() const
 {
-	return m114_2 ? true : false;
+	return ((const fn_005430ad_owner *)this)->m114_2 ? true : false;
 }
 
 // HYPOTHESIS: a sixth one-bit flag, bit 3 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x005433f4
-bool fn_005430ad_owner::fn_005433f4()
+bool tServCharacter::fn_005433f4() const
 {
-	return m114_3 ? true : false;
+	return ((const fn_005430ad_owner *)this)->m114_3 ? true : false;
 }
 
 // HYPOTHESIS: a seventh one-bit flag, bit 10 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x00543400
-bool fn_005430ad_owner::fn_00543400()
+bool tServCharacter::fn_00543400() const
 {
-	return m114_10 ? true : false;
+	return ((const fn_005430ad_owner *)this)->m114_10 ? true : false;
 }
 
 // FUNCTION: STARFLEETOP 0x0054340c
-bool fn_005430ad_owner::fn_0054340c()
+bool tServCharacter::fn_0054340c() const
 {
 	return !fn_005433e8() && !fn_005433f4() && !fn_00543400();
 }
@@ -452,9 +452,9 @@ bool fn_005430ad_owner::fn_00543437()
 }
 
 // FUNCTION: STARFLEETOP 0x00543445
-void fn_005430ad_owner::fn_00543445()
+bool tServCharacter::fn_00543445() const
 {
-	m14c.fn_005b6a5c(0, 0);
+	return ((fn_005430ad_owner *)this)->m14c.fn_005b6a5c(0, 0);
 }
 
 // HYPOTHESIS: the dword at +0x58 is returned as an int; its type is not known yet.

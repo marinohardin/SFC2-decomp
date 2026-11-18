@@ -23,8 +23,9 @@ public:
 	bool operator!=(const tHexPoint &other) const;
 	// HYPOTHESIS: sets the two coordinates (tMetaMapHex's StreamIn, old version).
 	void fn_005b6b62(int x, int y);
-	// HYPOTHESIS: a member taking two arguments, both passed as 0 by 0x00543445.
-	void fn_005b6a5c(int a, int b);
+	// HYPOTHESIS: a member taking two arguments, both passed as 0 by 0x00543445,
+	// which returns its result as tServCharacter's bool.
+	bool fn_005b6a5c(int a, int b);
 	// HYPOTHESIS: two numbers that tMetaMapHex's and tBattles's SQLFillInsertStream write and
 	// tAsyncDatabaseSingle::vfunction13 matches against a hex; the stream takes them as long.
 	long fn_0055f269() const;
