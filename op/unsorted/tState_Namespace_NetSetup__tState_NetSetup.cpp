@@ -360,12 +360,12 @@ void tState_NetSetup::fn_004767f1()
 }
 
 }	// namespace tState_Namespace_NetSetup
-
+using tState_Namespace_NetSetup::tState_NetSetup;	// the definitions below name the class unqualified
 // HYPOTHESIS: a member that does not use this (fn_00476e72 passes this in ecx).
 // tState_GameConnections calls it too. The byte at +0x14 of the entity table is cleared;
 // its member is not declared yet.
 // FUNCTION: STARFLEETOP 0x0047685b
-bool tState_Namespace_NetSetup::tState_NetSetup::fn_0047685b()
+bool tState_NetSetup::fn_0047685b()
 {
 	int result = gNetControl.fn_00431c7f();
 	gObject_008e1060.mSetPlayerNumber(gNetControl.fn_00431c79());
@@ -376,7 +376,7 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_0047685b()
 }
 
 // FUNCTION: STARFLEETOP 0x004768a5
-void tState_Namespace_NetSetup::tState_NetSetup::fn_004768a5(c_00468677_source *source, tString &out)
+void tState_NetSetup::fn_004768a5(c_00468677_source *source, tString &out)
 {
 	tString *text = source->vfunction68();
 	if (text)
@@ -391,7 +391,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_004768a5(c_00468677_source *
 }
 
 // FUNCTION: STARFLEETOP 0x00476925
-bool tState_Namespace_NetSetup::tState_NetSetup::fn_00476925()
+bool tState_NetSetup::fn_00476925()
 {
 	fn_004d3331(g_008493c0);
 	fn_004d346f(g_008493cc, g_008493c0);
@@ -404,7 +404,7 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_00476925()
 }
 
 // FUNCTION: STARFLEETOP 0x00476997
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476997(c_00468677_source *control, const char *name, const char *value)
+void tState_NetSetup::fn_00476997(c_00468677_source *control, const char *name, const char *value)
 {
 	char buffer[49];
 	tString prefix("Entry#");
@@ -430,7 +430,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476997(c_00468677_source *
 }
 
 // FUNCTION: STARFLEETOP 0x00476aee
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476aee(c_00468677_source *control, const char *name)
+void tState_NetSetup::fn_00476aee(c_00468677_source *control, const char *name)
 {
 	tString prefix("Entry#");
 	tString key;
@@ -462,7 +462,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476aee(c_00468677_source *
 }
 
 // FUNCTION: STARFLEETOP 0x00476c64
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c64()
+void tState_NetSetup::fn_00476c64()
 {
 	fn_004d3340(g_008493b0);
 	fn_004d3340(g_008493b8);
@@ -470,7 +470,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c64()
 }
 
 // FUNCTION: STARFLEETOP 0x00476c89
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c89()
+void tState_NetSetup::fn_00476c89()
 {
 	m1e0->vfunction65(0);
 	fn_004d34c5(0x1000e, 0);
@@ -481,7 +481,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476c89()
 }
 
 // FUNCTION: STARFLEETOP 0x00476ce5
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476ce5(int id)
+void tState_NetSetup::fn_00476ce5(int id)
 {
 	fn_004d34c5(0x1001e, 1);
 	fn_004d34c5(0x1001f, 1);
@@ -501,7 +501,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476ce5(int id)
 }
 
 // FUNCTION: STARFLEETOP 0x00476d52
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476d52(c_00468677_source **control, void *source, int id)
+void tState_NetSetup::fn_00476d52(c_00468677_source **control, void *source, int id)
 {
 	c_00468677_source *found = fn_004d3446(id);
 	if (found)
@@ -514,7 +514,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476d52(c_00468677_source *
 }
 
 // FUNCTION: STARFLEETOP 0x00476da0
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476da0(c_00468677_source **control, int id)
+void tState_NetSetup::fn_00476da0(c_00468677_source **control, int id)
 {
 	(*control)->vfunction50();
 	switch (id)
@@ -544,7 +544,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476da0(c_00468677_source *
 }
 
 // FUNCTION: STARFLEETOP 0x00476e72
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00476e72()
+void tState_NetSetup::fn_00476e72()
 {
 	if (g_00910b40 == 0.0)
 		g_00910b40 = g_00c7c148;
@@ -644,14 +644,14 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00476e72()
 }
 
 // FUNCTION: STARFLEETOP 0x004772bf
-void tState_Namespace_NetSetup::tState_NetSetup::fn_004772bf()
+void tState_NetSetup::fn_004772bf()
 {
 	fn_004764bd();
 	gNetControl.fn_00431821();
 }
 
 // FUNCTION: STARFLEETOP 0x004772ce
-bool tState_Namespace_NetSetup::tState_NetSetup::fn_004772ce(int id)
+bool tState_NetSetup::fn_004772ce(int id)
 {
 	// The original leaves the result unset for an unknown id.
 	bool result;
@@ -706,7 +706,7 @@ void fn_004d35e3(const char *name, const char *group, int n);
 void fn_004d35ac(tValueBase *value, const char *name);
 
 // FUNCTION: STARFLEETOP 0x00477440
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00477440()
+void tState_NetSetup::fn_00477440()
 {
 	int i;
 	for (i = 0; i < 15; i++)
@@ -735,7 +735,7 @@ void fn_004d35fa(const char *name);
 tValueBase *fn_004d35bf(const char *name, int n);
 
 // FUNCTION: STARFLEETOP 0x00477689
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00477689()
+void tState_NetSetup::fn_00477689()
 {
 	int i;
 	for (i = 0; i < 15; i++)
@@ -747,7 +747,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477689()
 }
 
 // FUNCTION: STARFLEETOP 0x004776d7
-void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, int n)
+void tState_NetSetup::fn_004776d7(const char *name, int n)
 {
 	tStringGroupTag *tag = new tStringGroupTag((char *)name);
 	m5c = tag->mGetString(n);
@@ -756,7 +756,7 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, i
 }
 
 // FUNCTION: STARFLEETOP 0x00477749
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
+void tState_NetSetup::fn_00477749()
 {
 	if (m1f0 != 0x10005)
 		return;
@@ -797,7 +797,7 @@ tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 // deleting one: the original's sets no vtable, as VC6's compiler-generated one does (the build
 // with no declared destructor emits exactly its body); written out, VC6 adds the store.
 // FUNCTION: STARFLEETOP 0x00477a13
-tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
+tState_NetSetup::~tState_NetSetup()
 {
 }
 
@@ -805,6 +805,6 @@ tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
 // constructor (0x0043d2ef) for m1c to m11c and expands it inline for m15c and m19c (EH states
 // 1-5 then 5-8, m1f8 9, m208 10); this build expands all seven, so 0x0047792f is left
 // unclaimed.
-tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup()
+tState_NetSetup::tState_NetSetup()
 {
 }

@@ -7,8 +7,6 @@
 #include "unsorted/tValueBase.h"
 
 // RTTI names the class tValueI<tString>; vtable 0x0079b8a4, the value at +0x18.
-// HYPOTHESIS: Source/states/SupplyDockItem.cpp still holds its own copy of this template; the
-// two are the same declaration and belong here once that unit includes this header.
 template< class T >
 class tValueI : public tValueBase
 {

@@ -1064,17 +1064,17 @@ void tSupplyDockMisc::fn_00487757( long i, long count )
 
 #include "unsorted/fn_004d288f_object.h"
 
-// RTTI names the class tValueI<tString>; vtable 0x0079b8a4, the value at +0x18.
-template< class T >
-class tValueI : public tValueBase
-{
-public:
-	// HYPOTHESIS: the set step; the original assigns the value, notifies with (3, 0), and
-	// only then destroys the temporary it was given.
-	tValueI &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
+// tValueI<tString> (vtable 0x0079b8a4, the value at +0x18).
+#include "unsorted/tValueI.h"
 
-	T m18;
-};
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: vtable 0x0079fdc0 has one slot (0x00487f84); layout from the constructor's stores.
 class tSupplyDockShipInfo
