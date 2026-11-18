@@ -3324,13 +3324,13 @@ address	size	symbol	source	modes
 0x00757c30	56	tFile::mSeekCur(long)	Tiger/tFile.cpp	vc6 guest
 0x00757c70	43	tFile::mSeekSet(long)	Tiger/tFile.cpp	vc6 guest
 0x00757ca0	51	tFile::mSeekEnd(long)	Tiger/tFile.cpp	vc6 guest
-0x00757ce0	61	tFile::fn_slot28()	Tiger/tFile.cpp	vc6 guest
+0x00757ce0	61	tFile::fn_slot28()	Tiger/tFile.cpp	partial
 0x00757d20	25	tFile::mFilePos()	Tiger/tFile.cpp	vc6 guest
 0x00757d40	25	tFile::mGetLength()	Tiger/tFile.cpp	vc6 guest
 0x00757d60	22	tFile::mEOF()	Tiger/tFile.cpp	vc6 guest
-0x00757d80	243	tFile::mOpenForWriteAppend(tString&)	Tiger/tFile.cpp	vc6 guest
+0x00757d80	243	tFile::mOpenForWriteAppend(tString&)	Tiger/tFile.cpp	partial
 0x00757e80	106	tFile::mOpenForWrite(const char*,unsigned char)	Tiger/tFile.cpp	vc6 guest
-0x00757ef0	249	tFile::mOpenForWrite(tString&,unsigned char)	Tiger/tFile.cpp	vc6 guest
+0x00757ef0	249	tFile::mOpenForWrite(tString&,unsigned char)	Tiger/tFile.cpp	partial
 0x00757ff0	478	tFile::mOpenForWrite(tPath,unsigned char)	Tiger/tFile.cpp	partial
 0x007581d0	109	tFile::mWrite(const void*,long)	Tiger/tFile.cpp	vc6 guest
 0x00758240	141	tFile::mGetFile(unsigned char,const char*,const char*)	Tiger/tFile.cpp	vc6 guest
