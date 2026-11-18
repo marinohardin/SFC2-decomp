@@ -598,7 +598,7 @@ void tAICaptain::fn_0051e33f(tShipCommand *param_1)
 // FUNCTION: STARFLEETOP 0x0051e37d
 tPoint3 tAICaptain::fn_0051e37d()
 {
-	return field_0x3810.fn_005462db();
+	return field_0x3810.fn_005462d0();
 }
 
 // FUNCTION: STARFLEETOP 0x0051e3a1

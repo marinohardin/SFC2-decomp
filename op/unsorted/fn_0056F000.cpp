@@ -603,7 +603,8 @@ void fn_0056f83f_owner::fn_0056f83f(const nDatabase::tQuery<tMetaMapHex> &query,
 }
 #line 605 "fn_0056F000.cpp"
 
-// HYPOTHESIS: a locked lookup through vfunction8 whose result is added to a polymorphic container.
+// HYPOTHESIS: a locked lookup through vfunction8 whose result is copied into a tMetaMapHex
+// (0x0056d573 passes one; 0x005395b2 is tMetaMapHex::operator=).
 class fn_0056f909_result {
 public:
 	virtual void vfunction0();
@@ -616,7 +617,6 @@ public:
 	virtual void vfunction7();
 	virtual void vfunction8();
 	virtual void vfunction9();
-	void fn_005395b2(void *object);
 };
 
 class fn_0056f909_owner {
@@ -638,7 +638,7 @@ public:
 void fn_0056f909_owner::fn_0056f909(void *key, fn_0056f909_result *result)
 {
 	tOptex::tGuard guard(&fAccess);
-	result->fn_005395b2(vfunction8(key));
+	*(tMetaMapHex *)result = *(const tMetaMapHex *)vfunction8(key);
 	result->vfunction9();
 	guard.Leave();
 }

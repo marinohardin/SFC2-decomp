@@ -248,3 +248,41 @@ address	name	best_score	attempts	last_model	listed	note
 0x005eab90	FUN_005eab90	0.00	2	sonnet	2026-11-17T18:08:01Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005eab9c	FUN_005eab9c	0.00	2	sonnet	2026-11-17T18:12:42Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005eaba8	FUN_005eaba8	0.00	2	sonnet	2026-11-17T18:15:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005344a3	FUN_005344a3	99.86	2	sonnet	2026-11-17T03:53:37Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.86%
+0x00534855	FUN_00534855	99.39	2	sonnet	2026-11-17T04:23:01Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.39%
+0x00539464	tMetaMapHex::~tMetaMapHex	99.87	3	opus	2026-11-17T05:12:19Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.87%
+0x0053963a	tMetaMapHex::vfunction2_for_tStreamable	54.53	2	sonnet	2026-11-17T06:41:13Z	best not above 90% after 2 attempts; best 54.53%
+0x00539801	tMetaMapHex::vfunction3_for_tStreamable	99.99	2	sonnet	2026-11-17T07:04:02Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.99%
+0x00539a9e	tMetaMapHex::vfunction6_for_tAllocatedClass	6.93	2	sonnet	2026-11-17T07:21:28Z	attempt 2 (sonnet) did not raise the best; best 6.93%
+0x00539c82	tMetaMapHex::vfunction7_for_tAllocatedClass	33.57	2	sonnet	2026-11-17T07:34:29Z	attempt 2 (sonnet) did not raise the best; best 33.57%
+0x00539f9c	FUN_00539f9c	32.33	2	sonnet	2026-11-17T07:57:09Z	attempt 2 (sonnet) did not raise the best; best 32.33%
+0x00539ff1	FUN_00539ff1	95.53	2	sonnet	2026-11-17T08:13:48Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 95.53%
+0x0053a2fc	FUN_0053a2fc	87.31	2	sonnet	2026-11-17T08:28:56Z	attempt 2 (sonnet) did not raise the best; best 87.31%
+0x0053a7d1	FUN_0053a7d1	83.14	2	sonnet	2026-11-17T09:56:56Z	best not above 90% after 2 attempts; best 83.14%
+0x0053ab16	FUN_0053ab16	99.81	2	sonnet	2026-11-17T10:20:37Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.81%
+0x0053ab9a	FUN_0053ab9a	99.77	2	sonnet	2026-11-17T10:25:43Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
+0x0053abca	FUN_0053abca	99.81	2	sonnet	2026-11-17T10:30:24Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.81%
+0x0053ac4e	FUN_0053ac4e	99.77	2	sonnet	2026-11-17T10:35:15Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
+0x0053ad51	FUN_0053ad51	0.00	2	sonnet	2026-11-17T10:49:09Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0053ad5d	FUN_0053ad5d	0.00	2	sonnet	2026-11-17T10:53:22Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0053ad69	FUN_0053ad69	0.00	2	sonnet	2026-11-17T10:56:47Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0053ad75	tMetaMapHex::vfunction1_for_tStreamable	0.00	2	sonnet	2026-11-17T10:59:26Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0053f34e	FUN_0053f34e	0.00	2	sonnet	2026-11-17T11:21:18Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x0054313e	FUN_0054313e	60.00	2	sonnet	2026-11-17T14:36:11Z	best not above 90% after 2 attempts; best 60.00%
+0x00543294	FUN_00543294	75.54	2	sonnet	2026-11-17T14:46:56Z	attempt 2 (sonnet) did not raise the best; best 75.54%
+0x005433dd	FUN_005433dd	98.75	2	sonnet	2026-11-17T14:57:38Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.75%
+0x005433e8	FUN_005433e8	98.75	2	sonnet	2026-11-17T15:01:43Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.75%
+0x005433f4	FUN_005433f4	98.75	2	sonnet	2026-11-17T15:05:49Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.75%
+0x00543437	FUN_00543437	98.00	3	opus	2026-11-17T15:18:49Z	attempt 3 (opus) did not raise the best; waits for Fable; best 98.00%
+0x0054372f	FUN_0054372f	99.86	2	sonnet	2026-11-17T16:00:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.86%
+0x005437a5	FUN_005437a5	99.91	2	sonnet	2026-11-17T16:04:28Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.91%
+0x0054385d	FUN_0054385d	99.93	2	sonnet	2026-11-17T16:12:16Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.93%
+0x00543944	FUN_00543944	99.90	2	sonnet	2026-11-17T16:15:56Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.90%
+0x00543c70	tServCharacter::vfunction6_for_tAllocatedClass	99.94	3	opus	2026-11-17T17:08:30Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.94%
+0x005465d5	FUN_005465d5	98.05	2	sonnet	2026-11-17T17:49:13Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 98.05%
+0x005468a9	FUN_005468a9	0.00	2	sonnet	2026-11-17T18:02:43Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005468b5	FUN_005468b5	0.00	2	sonnet	2026-11-17T18:05:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005468c1	FUN_005468c1	0.00	2	sonnet	2026-11-17T18:09:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005e4541	FUN_005e4541	0.00	2	sonnet	2026-11-17T20:16:07Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x005e4638	FUN_005e4638	39.76	2	sonnet	2026-11-17T20:30:08Z	attempt 2 (sonnet) did not raise the best; best 39.76%
+0x005e469e	tMetaMapControl::vfunction2_for_tVisNotifiee	0.00	2	sonnet	2026-11-17T20:33:39Z	attempt 2 (sonnet) did not raise the best; best 0.00%

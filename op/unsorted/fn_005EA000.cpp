@@ -510,11 +510,11 @@ void tTree_005ea14b::iterator::fn_005ea7c6()
 // optex) this is an out-of-line copy of the SDK's tSingleAccessWrapper<T>::~tSingleAccessWrapper,
 // with 0x005ea827 as that instance's Delete. The template is declared only inside
 // unsorted/tClientCharacter.cpp, so it is not declared a second time here.
-// HYPOTHESIS: the pointee; only its non-virtual destructor (0x005e45a0) is known.
-class tObject_005e45a0 {
-public:
-	~tObject_005e45a0();
-};
+// HYPOTHESIS: the pointee is the vector of tMetaMapControl's records whose destructor is
+// 0x005e45a0 (claimed in unsorted/tMetaMapControl.cpp).
+#include "unsorted/tMetaMapControl.h"
+typedef std::vector<fn_005e36cd_entry> tObject_005e45a0;
+
 
 class tObject_005ea7f8 {
 public:
@@ -544,11 +544,11 @@ void tObject_005ea7f8::fn_005ea827()
 
 // HYPOTHESIS: a second out-of-line tSingleAccessWrapper<T>::~tSingleAccessWrapper (same layout and
 // body as 0x005ea7f8), with 0x005ea887 as that instance's Delete.
-// HYPOTHESIS: the pointee; only its non-virtual destructor (0x005e45d3) is known.
-class tObject_005e45d3 {
-public:
-	~tObject_005e45d3();
-};
+// HYPOTHESIS: the pointee is the vector of tMetaMapControl's other records, whose destructor
+// is 0x005e45d3.
+typedef std::vector<fn_005e381f_entry> tObject_005e45d3;
+
+
 
 class tObject_005ea858 {
 public:

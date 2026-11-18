@@ -77,6 +77,23 @@ struct tRect
 
 #endif	// tbasic_tRect_h
 
+// tPoint from the SDK's tbasic.h, kept here for the same reason as tRect.
+#ifndef	tbasic_tPoint_h
+#define	tbasic_tPoint_h	1
+
+struct tPoint
+{
+	short	x;
+	short	y;
+
+	tPoint() {}
+
+	tPoint( short _x, short _y ) : x( _x ), y( _y ) {}
+	tPoint( const tPoint& point ) : x( point.x ), y( point.y ) {}
+};
+
+#endif	// tbasic_tPoint_h
+
 struct c_tListBox_Base_Item;
 struct c_tScrollBar_FieldA8;
 
@@ -100,7 +117,9 @@ public:
 	// HYPOTHESIS: 0x0067d870; the fleet panel's constructor calls it on its fleet form's +0xc with
 	// the form and the form's +0x8 until +0x8 is clear, so it takes a child out of the form.
 	void fn_0067d870( tVisObject *pForm, tVisObject *pChild );
-	virtual void vfunction1();
+	// HYPOTHESIS: slot 0 (0x0046c408) takes one value; tMetaMapControl's constructor
+	// (0x005e2f95) calls it directly with 1.
+	virtual void vfunction1( unsigned int n );
 	virtual void vfunction2();
 	// HYPOTHESIS: +0x8 measures a run of text in a font, -1 for the whole string;
 	// tListBox_Base::vfunction53 (0x004c6af8) asks it of its font.
@@ -111,12 +130,14 @@ public:
 	virtual int vfunction5();
 	virtual void vfunction6();
 	virtual void vfunction7( int x, int y );	// HYPOTHESIS: places the object at a position (the fleet entry's 0x004c2f74)
-	virtual void vfunction8();
+	// HYPOTHESIS: +0x1c draws the object inside the area given (0x0067d040); tMetaMapControl's
+	// override (0x005e3fdd) calls it first with its own area.
+	virtual void vfunction8( const tRect *area );
 	virtual void vfunction9();
 	virtual void vfunction10();
 	virtual void vfunction11();
 	virtual void vfunction12();	// +0x2c
-	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
+	virtual void vfunction13(); virtual bool vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
 	// HYPOTHESIS: field types and names unknown; +0x34 is the object's rectangle. The constructor
 	// (0x0067cb70) sets +0x4 to +0x5c, so these are tObjBase's.
 	// HYPOTHESIS: +0x4 and +0x8 link the objects beside this one, one each way (0x004c692a walks
