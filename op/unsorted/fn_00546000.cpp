@@ -5,6 +5,7 @@
 #include "Common/Database/DatabaseID.h"
 #include "Common/DynamicAllocator.h"
 #include "unsorted/tShip.h"
+#include "unsorted/tAIHelmOfficer.h"
 
 // HYPOTHESIS: a 0x10-byte member of c_0045139e at +0x48; 0x0045275f destroys it.
 class c_0045275f
@@ -219,11 +220,12 @@ bool c_0054626d::fn_0054626d()
     return ((tFlags430*)&word)->b1;
 }
 
-// HYPOTHESIS: the object behind 0x00546278 keeps a byte at +0x58; its class is not known.
+// HYPOTHESIS: the object behind 0x00546278 keeps a byte at +0x58; 0x0056e40b queries tShip by
+// that getter, so it is tShip, whose members are not recovered: this class gives the layout.
 class c_00546278
 {
 public:
-    unsigned char fn_00546278();
+    // 0x00546278, the getter of this byte, is tShip's (below).
     void fn_0054627c(unsigned char param_1);
     void fn_005462f3(const nDatabase::tID& param_1);
 
@@ -234,9 +236,9 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x00546278
-unsigned char c_00546278::fn_00546278()
+bool tShip::fn_00546278() const
 {
-    return field_58;
+    return *(const bool*)&((const c_00546278*)this)->field_58;
 }
 
 // FUNCTION: STARFLEETOP 0x0054627c
@@ -291,7 +293,7 @@ int c_0054628e::fn_00546292()
 class c_00546296
 {
 public:
-    std::string fn_00546296() const;
+    // 0x00546296, the getter of this string, is tShip's (below).
     // HYPOTHESIS: 0x00546799 assigns the string at +0x6c; that it belongs to this class is a guess.
     void fn_00546799(const std::string& param_1);
     void fn_005467b0(const std::string& param_1);
@@ -305,43 +307,43 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x00546296
-std::string c_00546296::fn_00546296() const
+std::string tShip::fn_00546296() const
 {
-    return field_6c;
+    return ((const c_00546296*)this)->field_6c;
 }
 
 // HYPOTHESIS: the object behind 0x005462cc keeps a dword at +0x7c, just past the std::string
-// at +0x6c of 0x00546296's object; nothing yet shows they are one class.
+// at +0x6c of 0x00546296's object; 0x0056e40b queries tShip by both getters, so both are tShip's.
 class c_005462cc
 {
 public:
-    int fn_005462cc();
+    // 0x005462cc, the getter of this dword, is tShip's (below).
 
     char field_0[0x7c];
     int field_7c;
 };
 
 // FUNCTION: STARFLEETOP 0x005462cc
-int c_005462cc::fn_005462cc()
+long tShip::fn_005462cc() const
 {
-    return field_7c;
+    return ((const c_005462cc*)this)->field_7c;
 }
 
-// HYPOTHESIS: returns the address of a member at +0x80, likely of the same object as
-// 0x005462cc's; the member's type is not known yet.
+// HYPOTHESIS: returns the address of a member at +0x80. tAICaptain's 0x0051e37d calls it on its
+// helm officer for a tPoint3 (tAIHelmOfficer's +0x80); identical getters fold to this address.
 class c_005462d0
 {
 public:
-    int* fn_005462d0();
+    // 0x005462d0, which returns this member's address, is tAIHelmOfficer's (below).
 
     char field_0[0x80];
     int field_80;
 };
 
 // FUNCTION: STARFLEETOP 0x005462d0
-int* c_005462d0::fn_005462d0()
+const tPoint3 &tAIHelmOfficer::fn_005462d0()
 {
-    return &field_80;
+    return field_0x80;
 }
 
 // FUNCTION: STARFLEETOP 0x005462d7
