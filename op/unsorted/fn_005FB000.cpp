@@ -685,6 +685,10 @@ std::string g_s00c39a70("MetaChatBar");
 // FUNCTION: STARFLEETOP 0x005fbeb0
 std::string g_s00c39a58("MetaChat");
 
+// HYPOTHESIS: a global byte string; its dynamic initializer.
+// FUNCTION: STARFLEETOP 0x005fbf16
+std::string g_s00c39a48("BigAssChat");
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;

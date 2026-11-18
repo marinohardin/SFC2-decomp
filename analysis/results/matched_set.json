@@ -9208,6 +9208,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005fbf16": {
+   "name": "FUN_005fbf16",
+   "symbol": "_$E32",
+   "unit": "unsorted/fn_005FB000.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x00607faa": {
    "name": "tPanelMgr::scalar_deleting_destructor",
    "symbol": "?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z",
