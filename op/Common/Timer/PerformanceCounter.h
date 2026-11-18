@@ -36,6 +36,6 @@ inline int32u tPerformanceCounter::GetElapsedMicroseconds() const
 }
 
 #include "Common/Exceptions/Validate.h"
-#include "Common/Timer/PerformanceCounter.cpp"
+#include "Common/Timer/PerformanceCounter.inl"
 
 #endif

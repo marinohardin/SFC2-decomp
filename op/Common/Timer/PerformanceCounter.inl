@@ -1,4 +1,4 @@
-// Common/Timer/PerformanceCounter.cpp
+// Common/Timer/PerformanceCounter.inl
 //
 // HYPOTHESIS: the inline members of tPerformanceCounter, included by PerformanceCounter.h; the
 // constructor's check names this file and line 44.
