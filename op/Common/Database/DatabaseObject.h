@@ -13,6 +13,7 @@
 #include "port/types.h"
 #include "Common/DynamicAllocator.h"
 #include "Common/DataStore/Streamable.h"
+#include "Common/Database/DatabaseID.h"
 
 namespace nDatabase
 {
@@ -31,10 +32,25 @@ public:
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
 
+// STL Helper operators for use with sort() and unique() and find_if()
+	virtual bool operator< ( const tDatabaseObject& obj );
+	virtual bool operator== ( const tDatabaseObject& obj );
+
 // SQL Operations
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
+	virtual const char* SQLFieldNames() const;
+
+//Operations
+	virtual void MakeReadOnly();
+	virtual void SetID( const tID& id );
+	// HYPOTHESIS: the SDK's parameter type is tDatabase::iLockID, a typedef of int32u; tDatabase
+	// is declared only inside Common/Database/FileDatabaseMgr.cpp.
+	virtual void SetLockID( const int32u id );
+
+//Accessors
+	virtual const tID&			GetID() const;
 
 	bool IsDead();
 	void AddReference();

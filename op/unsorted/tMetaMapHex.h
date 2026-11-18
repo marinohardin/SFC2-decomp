@@ -20,18 +20,14 @@ public:
 	// HYPOTHESIS: an out-of-line assignment; tBattles::operator= calls it for both copies.
 	tMetaMapHex& operator=( const tMetaMapHex& other );
 
-	// HYPOTHESIS: vtable slots 6 to 9, after tDatabaseObject's; the database query at
-	// 0x0056f83f calls slot 9 on each copy it collects. Their names are not recovered.
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-
 	// HYPOTHESIS: returns a map that tBattles::SQLFillInsertStream looks up with the keys 0
 	// and 1; the key and value types are guesses from how the values are streamed.
 	std::map< int32, float >& fn_0053a2fc();
 	// HYPOTHESIS: a number per index; tBattles::SQLFillInsertStream writes it for 0 and 1.
 	int32 fn_0053a414( int32 param_1 );
+	// HYPOTHESIS: the hex's two coordinates; 0x0056d3a0 queries the database on both.
+	long fn_00539f04() const;
+	long fn_00539f50() const;
 
 	// HYPOTHESIS: 0xd0 bytes in all, the distance between the two copies tBattles holds.
 	char fPad_48[0x88];
