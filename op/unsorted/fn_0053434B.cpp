@@ -485,14 +485,14 @@ fn_00534ac1_entry::fn_00534ac1_entry()
 // name at +0x14 and a long at +0x34; the rest is not known.
 struct fn_0040a699_record
 {
-    char field_00[0x0c];
-    long field_0c;
-    char field_10[4];
-    char field_14[0x20];
-    long field_34;
+    char field_00[0x0c]; long field_0c; char field_10[4]; char field_14[0x20]; long field_34;
 };
-
-// HYPOTHESIS: the global at 0x008949a0 is of the type whose count (0x005e8f21) tBattles reads.
+// HYPOTHESIS: the global list at 0x008949a0, of the type whose count (0x005e8f21) tBattles
+// reads; 0x0040a699 returns the record of the given index, or 0. Its real type is not known.
+class tObject_005b69d0
+{
+public: int32 fn_005e8f21(); fn_0040a699_record* fn_0040a699( int32 index ); int32u fPad_00[0x5];
+};
 extern tObject_005b69d0 g_008949a0;
 
 // HYPOTHESIS: fills the entries row by row from the records of the global list: each record's
