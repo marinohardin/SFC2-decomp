@@ -2,7 +2,7 @@
 // Evidence:  class; the SDK library's symbols name every member (tgsound.h in the original)
 #ifndef t3DListenerProfile_h
 #define t3DListenerProfile_h 1
-#include "unsorted/tEntity.h"   // tPoint3, in its copy of the SDK's tvectormath.h
+#include "Tiger/tvectormath.h"   // tPoint3
 // The virtual functions in vtable order (0x00798f44), which is the order of the SDK library's
 // vtable for the class; MSVC places overloads in reverse declaration order. The two by-value
 // setters of each vector compile to the same bytes, so the exe holds one body for both slots.
