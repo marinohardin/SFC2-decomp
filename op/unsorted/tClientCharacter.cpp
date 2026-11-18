@@ -175,15 +175,15 @@ inline void tSingleAccessWrapper<tPtrType>::SetPointer(tPtrType *copy)
 	fpPointer = copy;
 }
 
-// HYPOTHESIS: the 0xd0-byte object the member at +0xcc points to; its constructor at
-// 0x005391b0 takes one argument, passed as 0. Its members are not recovered.
+// HYPOTHESIS: the 0xd0-byte object the member at +0xcc points to is a tMetaMapHex, built by
+// 0x005391b0 with 0; the guarded pointer keeps this stand-in for it until its users move.
 class tObject_005391b0 {
 public:
 	tObject_005391b0(int arg = 0);
 	tObject_005391b0 &operator=(const tObject_005391b0 &other);
 	char m_00[0xd0];
 };
-
+#include "unsorted/tMetaMapHex.h"
 #include "Common/Database/DatabaseID.h"
 
 
@@ -411,7 +411,7 @@ tClientCharacter::tClientCharacter(const tClientCharacter &other)
 		m_b4.SetPointer(new std::vector<int>);
 	}
 	if (!m_cc.IsValid()) {
-		m_cc.SetPointer(new tObject_005391b0);
+		m_cc.SetPointer((tObject_005391b0 *)new tMetaMapHex(false));
 	}
 	fn_0042984d(other);
 	guard.Leave();
@@ -423,7 +423,7 @@ tClientCharacter::tClientCharacter(const tClientCharacter &other)
 // FUNCTION: STARFLEETOP 0x00429bb2
 tClientCharacter::tClientCharacter(const tObject_00543551 *source)
 	: m_b4(new std::vector<int>)
-	, m_cc(new tObject_005391b0)
+	, m_cc((tObject_005391b0 *)new tMetaMapHex(false))
 {
 	tOptex::tGuard guard(&m_e4);
 	fn_00429d06(source);

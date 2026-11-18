@@ -68,9 +68,9 @@ public:
 	void fn_00517e85();
 	// HYPOTHESIS: takes the formation; tAICaptain's 0x0051f184 passes its new one.
 	void fn_00517edc(tObject_00525081 *aFormation);
-	// HYPOTHESIS: returns a point by reference; tAICaptain's 0x0051e37d copies it out. Its
-	// address lies far from the officer's other methods, so it may belong to a base.
-	const tPoint3 &fn_005462db();
+	// HYPOTHESIS: returns a point by reference (0x005462d0); tAICaptain's 0x0051e37d copies it
+	// out. It is one folded copy of a getter of +0x80, far from the officer's other methods.
+	const tPoint3 &fn_005462d0();
 	virtual float vfunction3_for_tPriorityPowerRequest(int *param_1, int param_2, float param_3);
 
 

@@ -20,6 +20,8 @@
 class tShip : public nDatabase::tDatabaseObject
 {
 public:
+	// HYPOTHESIS: its allocator news 0x434 bytes and constructs it with 0x00545737.
+	tShip();
 	// HYPOTHESIS: the exe holds the destructor out of line (0x0042801a); 0x0056e095 calls it.
 	virtual ~tShip();
 

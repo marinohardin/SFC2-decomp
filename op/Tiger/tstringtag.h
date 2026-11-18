@@ -18,7 +18,7 @@ private:
     long m10;
 };
 
-// HYPOTHESIS: 0x14 bytes, the size 0x0046667a allocates with new; the group's text at +0 and,
+// HYPOTHESIS: 0x14 bytes, allocated with new at 0x0046667a and 0x005343b1; the group's text at +0 and,
 // like tStringTag, a word at +0x10 that starts at -1. Field names are ours
 class tStringGroupTag {
 public:

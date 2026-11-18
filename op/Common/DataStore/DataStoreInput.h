@@ -1,8 +1,8 @@
 //	DataStoreInput.h
 //
 //	Reads values out of a data store buffer.
-//	Declarations follow the SDK's header, without its template stream operators for the standard
-//	containers and tInterlockedScalar, which no matched code uses yet. The original defines the
+//	Declarations follow the SDK's header; of its template stream operators for the standard
+//	containers and tInterlockedScalar only the vector one is used by matched code. The original defines the
 //	inline functions in DataStoreInput.cpp, which the header includes; here they follow the class,
 //	and only the ones matched code uses are defined yet.
 //
@@ -56,6 +56,9 @@ public:
 
 	inline void Rewind();
 
+	template< class tType >
+	friend tInput& operator>>( tInput& input, std::vector< tType >& value );
+
 	inline tInput& operator>>( tInput& (*func)( tInput& input ) );
 	inline tInput& operator>>( tBuffer& buffer );
 	inline tInput& operator>>( std::string& string );
@@ -86,12 +89,14 @@ byte tInput::Get()
 	return fBuffer->Get( fGetPos++ );
 }
 
+#ifndef DATASTORE_OUT_OF_LINE_READ
 void tInput::Read( byte* data, int32 size )
 {
 	fBuffer->Read( data, size, fGetPos );
 
 	fGetPos += size;
 }
+#endif
 
 tInput& tInput::operator>>( std::string& string )
 {
@@ -113,6 +118,26 @@ tInput& tInput::operator>>( bool& value )
 	value = (bool)Get();
 
 	return *this;
+}
+
+template< class tType >
+tInput& operator>>( tInput& input, std::vector< tType >& value )
+{
+	value.clear();
+
+	int32u size = 0;
+	input.Read( (byte*)&size, sizeof( size ) );
+
+	value.reserve( size );
+
+	for( int i = 0; i < size; i++ )
+	{
+		tType type;
+		input >> type;
+		value.push_back( type );
+	}
+
+	return input;
 }
 
 };

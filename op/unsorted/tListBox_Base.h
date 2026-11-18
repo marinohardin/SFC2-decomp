@@ -47,6 +47,8 @@ struct c_00677060_Result
 	unsigned char field_00[ 0x04 - 0x00 ];
 	int field_04;	// HYPOTHESIS: an id; tScrollBar::mLoad (0x004c878a) passes it to 0x006770a0
 	tString field_08;
+	unsigned char field_30[ 0x128 - 0x30 ];
+	int *field_128;	// HYPOTHESIS: ids by index; tMetaMapControl::fn_005e3f82 passes one to 0x00677380
 };
 
 struct c_tScrollBar_FieldA8;
@@ -61,6 +63,8 @@ public:
 	void fn_006773e0( int id );
 	// HYPOTHESIS: returns the image of an id, or 0 (tScrollBar::mLoad, 0x004c878a).
 	c_tScrollBar_FieldA8 *fn_006770a0( int id );
+	// HYPOTHESIS: returns the image of an id (tMetaMapControl::fn_005e3f82, 0x005e3f82).
+	c_tScrollBar_FieldA8 *fn_00677380( int id );
 };
 
 extern c_00c69100_Object g_00c69100;
@@ -108,7 +112,7 @@ public:
 	virtual ~tListBox_Base();
 	// Slots 12 to 41 are not called by the functions rebuilt so far.
 	virtual void vfunction13();
-	virtual void vfunction14();
+	virtual bool vfunction14();
 	virtual void vfunction15( bool a );
 	virtual void vfunction16();
 	virtual void vfunction17();

@@ -17,7 +17,13 @@ public:
 		kUseThreadObject,
 	};
 
+	virtual ~tThreadState();
+
 	static void SetCurThreadState( tThreadState* );
+
+	virtual void SetDefaultThreadObjectUse( eUse defaultThreadObjectUse );
+
+	virtual eUse DefaultThreadObjectUse();
 };
 
 #endif
