@@ -696,7 +696,6 @@ public:
 	tObject_0042496f *fn_004249de(int aID);
 	bool fn_004235f0(tID aID);	// HYPOTHESIS: a test on the entity with the ID (0x00413614)
 	tID mGetNextPlayerID();	// 0x004239d6
-	void mSetPlayerNumber(const int aNumber);	// 0x004239ba
 	tEntity *mGetPlayersControledEntity(void);	// 0x00424946
 	void mAddEntity(tEntity *pNew);	// 0x00423749
 

@@ -60,14 +60,14 @@ extern tString g_0090d9e8;
 extern const char *g_00844eb4;
 // HYPOTHESIS: a pointer to the name "GameConnectionsSelect".
 extern const char *g_00844ea0;
-void fn_004d3564(const char *psz1, const char *psz2, int n);
+
 // c_004329af_entry is declared in unsorted/tNetControl.h.
-
-
-
-
-
-
+// 0x0047685b lies in tState_NetSetup's code and does not use this; this state calls it with
+// its own this in ecx (0x00469689). Only that member is declared here.
+namespace tState_Namespace_NetSetup
+{
+class tState_NetSetup { public: bool fn_0047685b(); };
+}
 
 
 // HYPOTHESIS: pointers to the names "cCreateGame", "cJoinGame" and "multiplayer".
@@ -177,7 +177,7 @@ public:
 	// HYPOTHESIS: a member; it stores the address field, then runs gNetControl.fn_00431821.
 	void fn_00469096();
 	bool fn_004690a5(int id);
-	bool fn_0047685b();
+
 	void fn_004695c4(const char *name, int n);
 
 	void fn_00469636();
@@ -692,7 +692,7 @@ void tState_GameConnections::fn_00468c49()
 		{
 			g_0090daa8 = 0;
 			g_0090dab0 = 0.0;
-			if (!fn_0047685b())
+			if (!((tState_Namespace_NetSetup::tState_NetSetup *) this)->fn_0047685b())
 			{
 				if (g_00844ec8-- > 0)
 					fn_004695c4("JoinStatus", 0);
@@ -856,7 +856,7 @@ void tState_GameConnections::fn_00469636()
 
 	if (m1b)
 	{
-		if (fn_0047685b())
+		if (((tState_Namespace_NetSetup::tState_NetSetup *) this)->fn_0047685b())
 			fn_00469e0c(g_00844e90);
 		else
 			fn_004695c4("JoinStatus", 1);

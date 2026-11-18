@@ -12,7 +12,7 @@
 #include "unsorted/tApplication.h"
 #include <string.h>
 #include "unsorted/tObject_0092deb4.h"
-#include "unsorted/tEntity.h"
+#include "unsorted/tEntityMgr.h"
 
 // HYPOTHESIS: cdecl functions shared with tState_GameConnections; their names are not known.
 void fn_004be81f(int arg);
@@ -362,15 +362,15 @@ void tState_NetSetup::fn_004767f1()
 }	// namespace tState_Namespace_NetSetup
 using tState_Namespace_NetSetup::tState_NetSetup;	// the definitions below name the class unqualified
 // HYPOTHESIS: a member that does not use this (fn_00476e72 passes this in ecx).
-// tState_GameConnections calls it too. The byte at +0x14 of the entity table is cleared;
-// its member is not declared yet.
+// tState_GameConnections calls it too. The object at 0x008e1060 is the tEntityMgr; the byte it
+// clears at +0x14 is its protected fHost, so it is written through the table's view.
 // FUNCTION: STARFLEETOP 0x0047685b
 bool tState_NetSetup::fn_0047685b()
 {
 	int result = gNetControl.fn_00431c7f();
-	gObject_008e1060.mSetPlayerNumber(gNetControl.fn_00431c79());
+	((tEntityMgr &) gObject_008e1060).mSetPlayerNumber(gNetControl.fn_00431c79());
 	gObject_008e1060.fField00[0x14] = 0;
-	int id = gObject_008e1060.mGetNextPlayerID();
+	int id = ((tEntityMgr &) gObject_008e1060).mGetNextPlayerID();
 	gObject_0092deb4->vfunction10(id, 0, 0);
 	return result == 0 ? true : false;
 }
