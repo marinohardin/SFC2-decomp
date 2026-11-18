@@ -12,13 +12,14 @@
 // FUNCTION: STARFLEETOP 0x0042739e
 tCurrentTime::tCurrentTime( const tCurrentTime& source )
 	: nDataStore::tStreamable( source ),
-	  field_0xc( source.field_0xc ),
-	  field_0x10( source.field_0x10 ),
-	  field_0x14( source.field_0x14 ),
-	  field_0x18( source.field_0x18 ),
-	  field_0x1c( source.field_0x1c ),
-	  field_0x20( source.field_0x20 )
+	  fField0c( source.fField0c ),
+	  fField10( source.fField10 ),
+	  fField14( source.fField14 ),
+	  fField18( source.fField18 ),
+	  fField1c( source.fField1c )
 {
+	struct tBlock { long fWord[4]; };
+	*(tBlock*)fField20 = *(const tBlock*)source.fField20;
 }
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
