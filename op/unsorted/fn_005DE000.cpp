@@ -215,6 +215,24 @@ void fn_005de28c_Vector::fn_005de471(tNewsStory** p, unsigned int m, tNewsStory*
 }
 
 #include "Common/MemberCallback.h"
+// The SDK's template bodies, which Common/Callback.h and Common/MemberCallback.h leave to the
+// units that instantiate them.
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback<tnMemberClass,tnResult>()
+{}
+
+template< typename tParam, typename tClass >
+tMemberCallback< tClass, tParam > CreateCallback( tClass* object, void (tClass::*func)( tParam result ) );
 #include "unsorted/tMetaClientNewsCtlrC.h"
 
 // MATCH-ONLY: the SDK's template CreateCallback, written out as this instance's explicit

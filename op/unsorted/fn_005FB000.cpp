@@ -554,6 +554,24 @@ template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int
 }
 
 #include "Common/MemberCallback.h"
+// The SDK's template bodies, which Common/Callback.h and Common/MemberCallback.h leave to the
+// units that instantiate them.
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::~tMemberCallback<tnMemberClass,tnResult>()
+{}
+
+template< typename tParam, typename tClass >
+tMemberCallback< tClass, tParam > CreateCallback( tClass* object, void (tClass::*func)( tParam result ) );
 #include "unsorted/tMetaClientChatCtlrC.h"
 
 class tChatChannel;
