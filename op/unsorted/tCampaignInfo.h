@@ -4,6 +4,7 @@
 #ifndef tCampaignInfo_h
 #define tCampaignInfo_h 1
 
+#include <iosfwd>
 #include <memory>
 #include <string>
 #include "Common/Database/DatabaseObject.h"
@@ -46,6 +47,9 @@ class tCampaignInfo : public nDatabase::tDatabaseObject
 {
 public:
     tCampaignInfo();
+    // HYPOTHESIS: constructed from a stream at 0x005486ff; 0x0042cd23 builds one from the
+    // campaign file.
+    tCampaignInfo(std::istream &in);
     ~tCampaignInfo();
     tCampaignInfo &operator=(const tCampaignInfo &other);
     // HYPOTHESIS: 0x0054a8d4 lies in tCampaignInfo's own code and returns a text member.

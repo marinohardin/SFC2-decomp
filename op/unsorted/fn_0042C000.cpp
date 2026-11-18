@@ -837,52 +837,52 @@ tSettings* fn_005d481f();
 #include "Common/Database/DatabaseObject.h"
 #include "Common/DateAndTime.h"
 
-// HYPOTHESIS: a 16-byte member of tCampaignInfo destroyed through 0x00402d42; type not identified.
-struct fn_00402d42_Member
-{
-	~fn_00402d42_Member();
+// tCampaignInfo, with the stream constructor 0x0042cd23 uses.
+#include "unsorted/tCampaignInfo.h"
 
-	char m00[0x10];
-};
 
-// HYPOTHESIS: a vector-like member of tCampaignInfo destroyed through 0x00571a7a, the destructor
-// tPanelMgr's 32-bit vectors also use; element type not identified.
-struct fn_00571a7a_Vector
-{
-	~fn_00571a7a_Vector();
 
-	char m00[0x10];
-};
 
-// HYPOTHESIS: layout from the destructor 0x0042ceae (a 0x168-byte database object, RTTI names it,
-// strings at +0x48); constructed from a stream at 0x005486ff. Member types beyond the strings are
-// guesses from the destructors called.
-class tCampaignInfo : public nDatabase::tDatabaseObject
-{
-public:
-	tCampaignInfo( std::istream& in );
-	// The destructor is implicit (0x0042ceae stores no vtable).
 
-	std::string m48;
-	std::string m58;
-	std::string m68;
-	std::string m78;
-	std::string m88;
-	fn_00402d42_Member m98;
-	fn_00571a7a_Vector ma8;
-	char mb8[0x0c];
-	std::string mc4;
-	std::string md4;
-	std::string me4;
-	int mf4;
-	std::string mf8;
-	// HYPOTHESIS: a streamable at +0x108 whose destructor reduces to ~tStreamable; taken to be a
-	// date followed by plain fields.
-	tDateAndTime m108;
-	char m118[0x30];
-	std::string m148;
-	std::string m158;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: an unidentified class whose first member is a string, filled from the campaign file.
 class fn_0042cd23_Class
@@ -903,12 +903,12 @@ fn_0042cd23_Class::fn_0042cd23_Class()
 	path += file;
 	std::ifstream in( path.c_str(), std::ios::in | std::ios::binary );
 	tCampaignInfo info( in );
-	m00 = info.m48;
+	m00 = info.m_48;
 }
 
-// 0x0042ceae is tCampaignInfo's implicit destructor: the original declares none, and the
-// compiler-generated one stores no vtable. It has no source line of its own, so it is not
-// written here.
+// 0x0042ceae is tCampaignInfo's destructor, called out of line here; it stores no vtable, so
+// the original may declare none. It is not written here.
+//
 //
 //
 //
