@@ -363,12 +363,31 @@ public:
     long fn_005db919();
 };
 
-// HYPOTHESIS: the member at +0xec of the owning class keeps the records.
-class fn_00460c0c_list
+// HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements. The
+// elements are the records 0x0046062e builds: 0x00460ede assigns them member by member
+// (0x00460736, 0x0053e29e, then 20 bytes), 0x0045e63a and 0x0046146c are the compiler's
+// destructor and assignment held out of line, and 0x00461406 is the library's _Construct.
+class fn_00460b73_class
 {
 public:
-    void fn_00460c0c(const fn_0045e63a_record &record);
+    fn_00460b73_class(unsigned int n, const fn_0045e63a_record &v, const std::allocator<fn_0045e63a_record> &al);
+    ~fn_00460b73_class();
+    fn_0045e63a_record *end();
+    unsigned int size() const;
+    void push_back(const fn_0045e63a_record &_X);
+    void insert(fn_0045e63a_record *_P, unsigned int _M, const fn_0045e63a_record &_X);
+    fn_0045e63a_record *erase(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
+    void _Destroy(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
+    fn_0045e63a_record *_Ucopy(const fn_0045e63a_record *_F, const fn_0045e63a_record *_L, fn_0045e63a_record *_P);
+    void _Ufill(fn_0045e63a_record *_F, unsigned int _N, const fn_0045e63a_record &_X);
+
+    std::allocator<fn_0045e63a_record> allocator;
+    fn_0045e63a_record *_First;
+    fn_0045e63a_record *_Last;
+    fn_0045e63a_record *_End;
 };
+
+// HYPOTHESIS: the member at +0xec of the owning class is that vector of records.
 
 extern char *g_00844064;
 
@@ -378,7 +397,7 @@ public:
     void fn_0046062e(fn_0046062e_arg *arg);
 
     char pad_000[0xec];
-    fn_00460c0c_list m_ec;
+    fn_00460b73_class m_ec;
 };
 
 // FUNCTION: STARFLEETOP 0x0046062e
@@ -395,7 +414,7 @@ void fn_0046062e_class::fn_0046062e(fn_0046062e_arg *arg)
         // MATCH-ONLY: VC6 rejects the qualified base call (C2352); assign through the base.
         (tCampaignInfo &)record = *arg->fn_0060a827();
         record.m_168 = now;
-        m_ec.fn_00460c0c(record);
+        m_ec.push_back(record);
     }
 }
 
@@ -713,29 +732,10 @@ void fn_00460b3b_class::fn_00460b3b()
     m_8 = 0;
 }
 
-// HYPOTHESIS: 0x00460b73 is the library's vector fill constructor for 396-byte elements. The
-// elements are the records 0x0046062e builds: 0x00460ede assigns them member by member
-// (0x00460736, 0x0053e29e, then 20 bytes), 0x0045e63a and 0x0046146c are the compiler's
-// destructor and assignment held out of line, and 0x00461406 is the library's _Construct.
-class fn_00460b73_class
-{
-public:
-    fn_00460b73_class(unsigned int n, const fn_0045e63a_record &v, const std::allocator<fn_0045e63a_record> &al);
-    ~fn_00460b73_class();
-    fn_0045e63a_record *end();
-    unsigned int size() const;
-    void push_back(const fn_0045e63a_record &_X);
-    void insert(fn_0045e63a_record *_P, unsigned int _M, const fn_0045e63a_record &_X);
-    fn_0045e63a_record *erase(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
-    void _Destroy(fn_0045e63a_record *_F, fn_0045e63a_record *_L);
-    fn_0045e63a_record *_Ucopy(const fn_0045e63a_record *_F, const fn_0045e63a_record *_L, fn_0045e63a_record *_P);
-    void _Ufill(fn_0045e63a_record *_F, unsigned int _N, const fn_0045e63a_record &_X);
-
-    std::allocator<fn_0045e63a_record> allocator;
-    fn_0045e63a_record *_First;
-    fn_0045e63a_record *_Last;
-    fn_0045e63a_record *_End;
-};
+//
+//
+//
+//
 
 // FUNCTION: STARFLEETOP 0x00460b73
 fn_00460b73_class::fn_00460b73_class(unsigned int n, const fn_0045e63a_record &v, const std::allocator<fn_0045e63a_record> &al)
