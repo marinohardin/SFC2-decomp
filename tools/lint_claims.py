@@ -160,6 +160,11 @@ def blank_comments(text):
     return ''.join(out)
 
 
+# The end of a header that is naming an operator: its `=` is part of the name, not an
+# initializer (operator=, operator==, operator<=, operator+=, ...).
+OPERATOR_TAIL = re.compile(r'\boperator\s*[=!<>+\-*/%&|^]*$')
+
+
 def _match(code, i, opener, closer):
     """The index of the `closer` that closes the `opener` at code[i], or -1."""
     depth = 0
@@ -227,6 +232,8 @@ def read_stacks(text):
                 depth -= 1
             elif depth == 0 and c in ';}':
                 break
+            elif depth == 0 and c == '=' and not OPERATOR_TAIL.search(code[starts[k]:i]):
+                break  # a global's initializer, `T g = {...};`: no body
             elif depth == 0 and c == '{':
                 j = _match(code, i, '{', '}')
                 if j >= 0:

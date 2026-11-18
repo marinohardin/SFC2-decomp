@@ -262,3 +262,47 @@ def test_a_baseline_row_that_no_longer_occurs_fails_as_stale(tmp_path, capsys):
         'op/unsorted/gone.part: non-source: - is in the baseline but no longer occurs; delete '
         'its row from the baseline',
     ]
+
+
+def test_a_global_with_a_brace_initializer_has_no_body(tmp_path, capsys):
+    src = """// FUNCTION: STARFLEETOP 0x00401000
+tTestTable g_testTable = {};
+"""
+    repo = make_repo(tmp_path, {'unsorted/tTestTable.cpp': src},
+                     matched={'0x00401000': (8, False)})
+    assert run(repo, capsys) == (0, [])
+
+
+def test_an_empty_assignment_operator_is_still_a_body(tmp_path, capsys):
+    src = """// FUNCTION: STARFLEETOP 0x00401000
+tTestCaptain &tTestCaptain::operator=(const tTestCaptain &other)
+{
+}
+"""
+    repo = make_repo(tmp_path, {'unsorted/tTestCaptain.cpp': src},
+                     matched={'0x00401000': (14, False)})
+    rc, out = run(repo, capsys)
+    assert rc == 1
+    assert out == ["op/unsorted/tTestCaptain.cpp:1: empty-body: FUNCTION 0x00401000 claims an "
+                   "empty body and is not exact: an empty body is allowed only where it compiles "
+                   "to the original's bytes"]
+
+
+def test_a_written_baseline_keeps_its_reasons_and_checks_clean(tmp_path, capsys):
+    other = EMPTY_FN.replace('0x00401000', '0x00402000').replace('tTestCaptain', 'tTestPilot')
+    repo = make_repo(tmp_path, {'unsorted/tTestCaptain.cpp': EMPTY_FN,
+                                'unsorted/tTestPilot.cpp': other},
+                     matched={'0x00401000': (14, False), '0x00402000': (14, False)},
+                     baseline=[('empty-body', 'op/unsorted/tTestCaptain.cpp', '0x00401000',
+                                'kept by hand')])
+    rc, _ = run(repo, capsys, '--write-baseline')
+    assert rc == 0
+    rows = (repo / 'analysis' / 'results' / 'lint_baseline.tsv').read_text().splitlines()
+    assert rows == [
+        'check\tpath\taddress\treason',
+        'empty-body\top/unsorted/tTestCaptain.cpp\t0x00401000\tkept by hand',
+        'empty-body\top/unsorted/tTestPilot.cpp\t0x00402000\tFUNCTION 0x00402000 claims an '
+        "empty body and is not exact: an empty body is allowed only where it compiles to the "
+        "original's bytes",
+    ]
+    assert run(repo, capsys) == (0, [])
