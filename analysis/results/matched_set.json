@@ -3169,15 +3169,6 @@
    "exact": true,
    "recorded": "2026-11-16"
   },
-  "0x00447af2": {
-   "name": "FUN_00447af2",
-   "symbol": "?fn_00447af2@@YAXXZ",
-   "unit": "unsorted/fn_00447000.cpp",
-   "size": 31,
-   "score": 5.0,
-   "exact": false,
-   "recorded": "2026-11-16"
-  },
   "0x00447b7a": {
    "name": "FUN_00447b7a",
    "symbol": "?fn_00447b7a@c_0044715d@@QAEXPAVtObject_0042496f@@@Z",
@@ -3763,24 +3754,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x004696e0": {
-   "name": "tState_Namespace_GameConnections::tState_GameConnections::~tState_GameConnections",
-   "symbol": "??1tState_GameConnections@tState_Namespace_GameConnections@@UAE@XZ",
-   "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
-   "size": 316,
-   "score": 22.123,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
-  "0x0046981c": {
-   "name": "tState_Namespace_GameConnections::tState_GameConnections::tState_GameConnections",
-   "symbol": "??0tState_GameConnections@tState_Namespace_GameConnections@@QAE@XZ",
-   "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
-   "size": 228,
-   "score": 9.177,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x00469900": {
    "name": "tState_Namespace_GameConnections::tState_GameConnections::scalar_deleting_destructor",
    "symbol": "??_GtState_GameConnections@tState_Namespace_GameConnections@@UAEPAXI@Z",
@@ -4049,24 +4022,6 @@
    "size": 12,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x004777f3": {
-   "name": "tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup",
-   "symbol": "??1tState_NetSetup@tState_Namespace_NetSetup@@UAE@XZ",
-   "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
-   "size": 316,
-   "score": 22.123,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
-  "0x0047792f": {
-   "name": "tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup",
-   "symbol": "??0tState_NetSetup@tState_Namespace_NetSetup@@QAE@XZ",
-   "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
-   "size": 228,
-   "score": 28.151,
-   "exact": false,
    "recorded": "2026-11-17"
   },
   "0x00477a13": {

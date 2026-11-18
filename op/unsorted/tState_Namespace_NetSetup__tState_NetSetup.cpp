@@ -696,61 +696,6 @@ bool tState_Namespace_NetSetup::tState_NetSetup::fn_004772ce(int id)
 	return result;
 }
 
-// FUNCTION: STARFLEETOP 0x004776d7
-void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, int n)
-{
-	tStringGroupTag *tag = new tStringGroupTag((char *)name);
-	m5c = tag->mGetString(n);
-	if (tag)
-		delete tag;
-}
-
-// FUNCTION: STARFLEETOP 0x00477749
-void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
-{
-	if (m1f0 != 0x10005)
-		return;
-	if (gNetControl.fn_004317c3())
-		return;
-
-	if (!m19[1])
-	{
-		bool ready;
-		int result = gNetControl.fn_00432cce(&ready, 0);
-		if (!ready)
-		{
-			fn_004776d7("JoinStatus", 1);
-			return;
-		}
-		if (!result)
-			m19[1] = 0;
-		else
-		{
-			m19[1] = 1;
-			m19[2] = 1;
-		}
-	}
-
-	if (m19[2])
-	{
-		if (fn_0047685b())
-			fn_00469e0c(g_008493a8);
-		else
-			fn_004776d7("JoinStatus", 1);
-	}
-}
-// FUNCTION: STARFLEETOP 0x004777dd
-// FUNCTION: STARFLEETOP 0x004777d3
-tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
-
-// HYPOTHESIS: the original's destructor sets no vtable, as VC6's compiler-generated one does
-// (the build with no declared destructor emits exactly its body); written out, VC6 adds the store.
-// FUNCTION: STARFLEETOP 0x00477a13
-// FUNCTION: STARFLEETOP 0x004777f3
-tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
-{
-}
-
 // HYPOTHESIS: the state's control name tables and the names its value objects bind to, as
 // tState_GameConnections::fn_00469271 registers its own.
 #include "unsorted/s_00844ed0_entry.h"
@@ -801,10 +746,65 @@ void tState_Namespace_NetSetup::tState_NetSetup::fn_00477689()
 		fn_004d35bf(g_0084948c[i], 0);
 }
 
+// FUNCTION: STARFLEETOP 0x004776d7
+void tState_Namespace_NetSetup::tState_NetSetup::fn_004776d7(const char *name, int n)
+{
+	tStringGroupTag *tag = new tStringGroupTag((char *)name);
+	m5c = tag->mGetString(n);
+	if (tag)
+		delete tag;
+}
+
+// FUNCTION: STARFLEETOP 0x00477749
+void tState_Namespace_NetSetup::tState_NetSetup::fn_00477749()
+{
+	if (m1f0 != 0x10005)
+		return;
+	if (gNetControl.fn_004317c3())
+		return;
+
+	if (!m19[1])
+	{
+		bool ready;
+		int result = gNetControl.fn_00432cce(&ready, 0);
+		if (!ready)
+		{
+			fn_004776d7("JoinStatus", 1);
+			return;
+		}
+		if (!result)
+			m19[1] = 0;
+		else
+		{
+			m19[1] = 1;
+			m19[2] = 1;
+		}
+	}
+
+	if (m19[2])
+	{
+		if (fn_0047685b())
+			fn_00469e0c(g_008493a8);
+		else
+			fn_004776d7("JoinStatus", 1);
+	}
+}
+// FUNCTION: STARFLEETOP 0x004777dd
+// FUNCTION: STARFLEETOP 0x004777d3
+tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
+
+// MATCH-ONLY: the class's implicit destructor (0x004777f3, unclaimed), written out for its
+// deleting one: the original's sets no vtable, as VC6's compiler-generated one does (the build
+// with no declared destructor emits exactly its body); written out, VC6 adds the store.
+// FUNCTION: STARFLEETOP 0x00477a13
+tState_Namespace_NetSetup::tState_NetSetup::~tState_NetSetup()
+{
+}
+
 // HYPOTHESIS: as in tState_GameConnections, the original calls the out-of-line tValueI<tString>
 // constructor (0x0043d2ef) for m1c to m11c and expands it inline for m15c and m19c (EH states
-// 1-5 then 5-8, m1f8 9, m208 10); this build expands all seven.
-// FUNCTION: STARFLEETOP 0x0047792f
+// 1-5 then 5-8, m1f8 9, m208 10); this build expands all seven, so 0x0047792f is left
+// unclaimed.
 tState_Namespace_NetSetup::tState_NetSetup::tState_NetSetup()
 {
 }

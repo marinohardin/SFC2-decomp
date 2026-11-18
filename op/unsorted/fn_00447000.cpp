@@ -585,11 +585,11 @@ void c_0044715d::fn_00447aa7(tObject_0042496f *ship)
 	}
 }
 
-// HYPOTHESIS: the function really runs 0x00447af2-0x00447b79 (EH frame, a stack tShipSpecs); the recorded boundary stops after 31 bytes, so the body is left empty until it is corrected.
-// FUNCTION: STARFLEETOP 0x00447af2
-void fn_00447af2()
-{
-}
+// HYPOTHESIS: 0x00447af2 is a member of c_0044715d that runs to 0x00447b79 (EH frame, a stack
+// tShipSpecs, then 0x00447aa7 on the ship it builds); the analysis stops it after 31 bytes, at
+// 0x00447b11, so it is left unclaimed until that boundary is corrected.
+//
+//
 
 // FUNCTION: STARFLEETOP 0x00447b7a
 void c_0044715d::fn_00447b7a(tObject_0042496f *ship)
