@@ -29886,9 +29886,9 @@
    "symbol": "?fn_slot28@tFile@@UAE?AVtPath@@XZ",
    "unit": "Tiger/tFile.cpp",
    "size": 64,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-17"
+   "score": 99.667,
+   "exact": false,
+   "recorded": "2026-11-16"
   },
   "0x00757d20": {
    "name": "tFile::mFilePos",
@@ -29922,9 +29922,9 @@
    "symbol": "?mOpenForWriteAppend@tFile@@UAEEAAVtString@@@Z",
    "unit": "Tiger/tFile.cpp",
    "size": 256,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-17"
+   "score": 99.939,
+   "exact": false,
+   "recorded": "2026-11-16"
   },
   "0x00757e80": {
    "name": "tFile::mOpenForWrite",
@@ -29940,9 +29940,9 @@
    "symbol": "?mOpenForWrite@tFile@@UAEEAAVtString@@E@Z",
    "unit": "Tiger/tFile.cpp",
    "size": 256,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-17"
+   "score": 99.942,
+   "exact": false,
+   "recorded": "2026-11-16"
   },
   "0x007581d0": {
    "name": "tFile::mWrite",
