@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 #include "Common/Database/DatabaseObject.h"
+#include "unsorted/tCurrentTime.h"
 
 // HYPOTHESIS: 16-byte members of tCampaignInfo assigned through their own out-of-line
 // assignments (0x0046090a, 0x00604f1d); their types are not identified.
@@ -37,21 +38,14 @@ public:
     char pad_000[0x10];
 };
 
-// HYPOTHESIS: a 0x30-byte member of tCampaignInfo assigned through 0x0045be62.
-class fn_0045be62_object
-{
-public:
-    fn_0045be62_object &operator=(const fn_0045be62_object &other);
-
-    char pad_000[0x30];
-};
-
 // HYPOTHESIS: a database class. The size (0x168) comes from the stack layout in 0x0046062e,
 // the destructor is at 0x0042ceae, and the members are placed by the assignment at 0x00460736;
-// their names are not known. vfunction6 to vfunction9 follow the base's virtuals.
+// their names are not known. 0x0056c414 reads the starting date index at +0xb8 and the clock at
+// +0x108, a tCurrentTime (its assignment is 0x0045be62); 0x0056e124 streams the object from +8.
 class tCampaignInfo : public nDatabase::tDatabaseObject
 {
 public:
+    tCampaignInfo();
     ~tCampaignInfo();
     tCampaignInfo &operator=(const tCampaignInfo &other);
     // HYPOTHESIS: 0x0054a8d4 lies in tCampaignInfo's own code and returns a text member.
@@ -72,18 +66,13 @@ public:
     std::string m_e4;
     long m_f4;
     std::string m_f8;
-    fn_0045be62_object m_108;
+    tCurrentTime m_108;
     long m_138;
     long m_13c;
     long m_140;
     long m_144;
     std::string m_148;
     std::string m_158;
-
-    virtual void vfunction6();
-    virtual void vfunction7();
-    virtual void vfunction8();
-    virtual void vfunction9();
 };
 
 #endif

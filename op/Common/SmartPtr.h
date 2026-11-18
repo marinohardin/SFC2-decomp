@@ -1,6 +1,10 @@
+//	SmartPtr.h
+//
+//	A reference count and the smart pointers that hold it.
+//	Declarations follow the SDK's header; only what the rebuilt functions need is defined yet.
+//
 #if !defined( SmartPtr_h )
 #define SmartPtr_h
-
 
 #include "Common/BaseTypes.h"
 
@@ -59,6 +63,7 @@ public:
 
 	// Suply the same accessors that a pointer would
 	const tnPtr* operator->() const;
+	// The SDK's conversion to const tnPtr* is left out: tools/manifest.py cannot read it.
 
 	bool operator==( const tnPtr* pPtr) const;
 	bool operator!=( const tnPtr* pPtr) const;
@@ -71,7 +76,32 @@ protected:
 
 };
 
-// tSmartPtr, derived from tConstSmartPtr in the SDK, is declared once code needs it.
+////////////////////////////////////////////////////////////////////////////////
+// tSmartPtr
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+template< typename tnPtr > class tSmartPtr : public tConstSmartPtr< tnPtr >
+{
+public:
+// Setup
+	tSmartPtr();
+	tSmartPtr( tnPtr* pObject );
+	tSmartPtr( const tSmartPtr& copy );
+
+// Operations
+	tSmartPtr& operator=( const tSmartPtr& copy );
+	tnPtr* operator=( tnPtr* pPtr );
+
+// Accesors
+	// Suply the same accessors that a pointer would
+	tnPtr* operator->() const;
+	// The SDK's conversion to tnPtr* is left out: tools/manifest.py cannot read it.
+
+	tnPtr* Get() const;
+};
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Template functions for SmartPtr
@@ -110,6 +140,12 @@ inline tConstSmartPtr<tnPtr>::~tConstSmartPtr<tnPtr>()
 
 template <class tnPtr >
 inline const tnPtr* tConstSmartPtr<tnPtr>::Get() const
+{
+	return fObject;
+}
+
+template <class tnPtr >
+tnPtr* tSmartPtr<tnPtr>::Get() const
 {
 	return fObject;
 }

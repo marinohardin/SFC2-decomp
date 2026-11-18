@@ -83,7 +83,7 @@ tAuctionItem::~tAuctionItem()
 // FUNCTION: STARFLEETOP 0x00544c79
 tAuctionItem::tAuctionItem( double arg5, tShip* ship )
 {
-	fn_00544d20( ship->vfunction12(), ship->fn_00546296(), ship->fn_00410223(), ship->fn_00410223(), arg5 );
+	fn_00544d20( ship->GetID(), ship->fn_00546296(), ship->fn_00410223(), ship->fn_00410223(), arg5 );
 }
 
 // FUNCTION: STARFLEETOP 0x00544d20

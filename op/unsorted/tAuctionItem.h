@@ -27,12 +27,9 @@ public:
 	virtual void SQLFillInsertStream( std::stringstream* SQL, bool lastOne = false );
 	virtual void SQLFillUpdateStream( std::stringstream* SQL, bool lastOne = false );
 	virtual const char* SQLTableName() const;
-	// HYPOTHESIS: SQLFieldNames is the first virtual after the base's; the three after it
-	// are known only from the exe's vtable (slots read by 0x0056f4df).
+	// The exe's vtable holds 0x00545227 in tDatabaseObject's SQLFieldNames slot; the slots
+	// after it are the base's, so the class adds no virtual of its own.
 	virtual const char* SQLFieldNames() const;
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
 	// HYPOTHESIS: the two integer arguments' meaning is unknown; fn_00544d20 stores their
 	// product with the double at +0x88 (fild, so arg4 is a signed int).
 	void fn_00544d20( const nDatabase::tID& id, std::string name, int arg3, int arg4, double arg5 );

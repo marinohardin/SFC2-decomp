@@ -57,18 +57,7 @@ namespace OSSPECIFIC {
 extern LONG (*OS_InterlockedCompareExchange)(LPLONG Destination, LONG Exchange, LONG Comperand);
 }
 
-// HYPOTHESIS: tHexPoint (dtor 0x005b6a36) is 0x14 bytes; its members are not recovered.
-class tHexPoint {
-public:
-	tHexPoint();
-	~tHexPoint();
-	tHexPoint &operator=(const tHexPoint &other);
-	int m_00;
-	int m_04;
-	int m_08;
-	int m_0c;
-	int m_10;
-};
+#include "unsorted/tHexPoint.h"
 
 // HYPOTHESIS: a 0x14-byte member type with an out-of-line destructor at 0x0042ade3.
 // HYPOTHESIS: a tree-like container: the constructor copies an empty allocator object to +0

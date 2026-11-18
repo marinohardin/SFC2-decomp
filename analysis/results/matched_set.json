@@ -14410,6 +14410,501 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x0056c414": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
+   "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 940,
+   "score": 16.387,
+   "exact": false,
+   "recorded": "2026-11-16"
+  },
+  "0x0056c7c0": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3",
+   "symbol": "?vfunction3@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@PAV?$vector@VtServCharacter@@V?$allocator@VtServCharacter@@@std@@@4@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 278,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056c8d6": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction4",
+   "symbol": "?vfunction4@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtServCharacter@@V?$allocator@VtServCharacter@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 134,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056c95c": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction5",
+   "symbol": "?vfunction5@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@PAV?$vector@VtServCharacter@@V?$allocator@VtServCharacter@@@std@@@4@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 191,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056cb3b": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction7",
+   "symbol": "?vfunction7@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtServCharacter@@V?$allocator@VtServCharacter@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 252,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056cc37": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction8",
+   "symbol": "?vfunction8@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtServCharacter@@V?$allocator@VtServCharacter@@@std@@@std@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 200,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056ccff": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction9",
+   "symbol": "?vfunction9@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@PAV?$vector@VtShip@@V?$allocator@VtShip@@@std@@@4@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 278,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-16"
+  },
+  "0x0056d1b7": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction11",
+   "symbol": "?vfunction11@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@PAV?$vector@VtAuctionItem@@V?$allocator@VtAuctionItem@@@std@@@4@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 278,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d2cd": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12",
+   "symbol": "?vfunction12@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtAuctionItem@@V?$allocator@VtAuctionItem@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 211,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d3a0": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13",
+   "symbol": "?vfunction13@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtHexPoint@@PAV?$vector@VtMetaMapHex@@V?$allocator@VtMetaMapHex@@@std@@@std@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 237,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d48d": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction14",
+   "symbol": "?vfunction14@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtID@nDatabase@@PAVtServCharacter@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 230,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d573": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction15",
+   "symbol": "?vfunction15@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtID@nDatabase@@PAVtMetaMapHex@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 109,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d5e0": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction16",
+   "symbol": "?vfunction16@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAE_NVtID@nDatabase@@PAVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 111,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d64f": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction17",
+   "symbol": "?vfunction17@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtMetaMapHex@@V?$allocator@VtMetaMapHex@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 141,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d6dc": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction18",
+   "symbol": "?vfunction18@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtMetaMapDesc@@V?$allocator@VtMetaMapDesc@@@std@@@std@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 114,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d74e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction19",
+   "symbol": "?vfunction19@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtPoliticalTensionMatrix@@V?$allocator@VtPoliticalTensionMatrix@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 90,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d7a8": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction20",
+   "symbol": "?vfunction20@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtCampaignInfo@@V?$allocator@VtCampaignInfo@@@std@@@std@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 114,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d81a": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction21",
+   "symbol": "?vfunction21@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtNotify@@V?$allocator@VtNotify@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 90,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d874": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction22",
+   "symbol": "?vfunction22@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtID@nDatabase@@PAV?$vector@VtNewsStory@@V?$allocator@VtNewsStory@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 167,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d91b": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23",
+   "symbol": "?vfunction23@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXABVtDetailTime@tNewsStory@@PAV?$vector@VtNewsStory@@V?$allocator@VtNewsStory@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056d9d3": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24",
+   "symbol": "?vfunction24@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtID@nDatabase@@_NPAV?$vector@VtPreparedMissions@@V?$allocator@VtPreparedMissions@@@std@@@std@@H@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 335,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056db2a": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction25",
+   "symbol": "?vfunction25@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 187,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dbe5": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction26",
+   "symbol": "?vfunction26@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtServCharacter@@0@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 121,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dc5e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction27",
+   "symbol": "?vfunction27@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtMetaMapHex@@V?$allocator@VtMetaMapHex@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 92,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dcba": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction28",
+   "symbol": "?vfunction28@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAV?$vector@VtPoliticalTensionMatrix@@V?$allocator@VtPoliticalTensionMatrix@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 92,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dd16": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction35",
+   "symbol": "?vfunction35@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dd5e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction29",
+   "symbol": "?vfunction29@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dda6": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction30",
+   "symbol": "?vfunction30@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtAuctionItem@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056ddee": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction31",
+   "symbol": "?vfunction31@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtPoliticalTensionMatrix@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056de36": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction32",
+   "symbol": "?vfunction32@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtMetaMapHex@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056de7e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction33",
+   "symbol": "?vfunction33@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtMetaMapDesc@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dec6": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction34",
+   "symbol": "?vfunction34@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056df0e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction36",
+   "symbol": "?vfunction36@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtNotify@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056df56": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction37",
+   "symbol": "?vfunction37@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtNewsStory@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056df9e": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction38",
+   "symbol": "?vfunction38@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXH@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 15,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056dfad": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction40",
+   "symbol": "?vfunction40@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtAuctionItem@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e006": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction42",
+   "symbol": "?vfunction42@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e05f": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction41",
+   "symbol": "?vfunction41@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtDatabaseObjectUpdate@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e095": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction44",
+   "symbol": "?vfunction44@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 89,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e0ee": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43",
+   "symbol": "?vfunction43@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtDatabaseObjectUpdate@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e124": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction48",
+   "symbol": "?vfunction48@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 143,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e1b3": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction49",
+   "symbol": "?vfunction49@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtDatabaseObject@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e1fb": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction45",
+   "symbol": "?vfunction45@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtDatabaseObject@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 139,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e286": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction46",
+   "symbol": "?vfunction46@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtDatabaseObject@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 119,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e2fd": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction47",
+   "symbol": "?vfunction47@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtDatabaseObjectUpdate@nDatabase@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 54,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e333": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction50",
+   "symbol": "?vfunction50@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtAuctionItem@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e37b": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction51",
+   "symbol": "?vfunction51@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e3c3": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction52",
+   "symbol": "?vfunction52@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e40b": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction53",
+   "symbol": "?vfunction53@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXJJPAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 343,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e562": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction54",
+   "symbol": "?vfunction54@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtMetaMapHex@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e5aa": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction55",
+   "symbol": "?vfunction55@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtNewsStory@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e5f2": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction56",
+   "symbol": "?vfunction56@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXVtID@nDatabase@@_N@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 200,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e6ba": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction57",
+   "symbol": "?vfunction57@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtAuctionItem@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e702": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction58",
+   "symbol": "?vfunction58@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x0056e74a": {
+   "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction59",
+   "symbol": "?vfunction59@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtShip@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
+   "size": 72,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x0056f041": {
    "name": "FUN_0056f041",
    "symbol": "??1?$tQuery@VtServCharacter@@@nDatabase@@UAE@XZ",
@@ -16863,6 +17358,294 @@
    "symbol": "?fn_005A4cdb@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
    "unit": "unsorted/fn_005A4000.cpp",
    "size": 105,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc012": {
+   "name": "FUN_005bc012",
+   "symbol": "?FUN_005bc012@@YIHPAH@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc018": {
+   "name": "FUN_005bc018",
+   "symbol": "?FUN_005bc018@fn_005bc018_vector@@QAEXXZ",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 51,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc04b": {
+   "name": "FUN_005bc04b",
+   "symbol": "?FUN_005bc04b@fn_005bc04b_owner@@QAEXH@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc05c": {
+   "name": "FUN_005bc05c",
+   "symbol": "??1fn_005bc05c_record@@QAE@XZ",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 53,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc091": {
+   "name": "FUN_005bc091",
+   "symbol": "??1fn_005bc091_entry@@QAE@XZ",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc0de": {
+   "name": "FUN_005bc0de",
+   "symbol": "?FUN_005bc0de@fn_005bc018_vector@@QAEPAUfn_005bb6fc_elem@@PAU2@ABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc10e": {
+   "name": "FUN_005bc10e",
+   "symbol": "?FUN_005bc10e@fn_005bc10e_vector@@QAEPAUfn_005bc10e_elem@@PAU2@ABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 42,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc138": {
+   "name": "FUN_005bc138",
+   "symbol": "?FUN_005bc138@fn_005bc138_vector@@QAEPAUfn_005bc138_elem@@PAU2@ABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 41,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc161": {
+   "name": "FUN_005bc161",
+   "symbol": "?FUN_005bc161@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc1d5": {
+   "name": "FUN_005bc1d5",
+   "symbol": "?FUN_005bc1d5@fn_005bc1d5_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc249": {
+   "name": "FUN_005bc249",
+   "symbol": "?FUN_005bc249@fn_005bc249_vector@@QAEPAUfn_005bc249_elem@@PAU2@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 87,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc2a0": {
+   "name": "FUN_005bc2a0",
+   "symbol": "?FUN_005bc2a0@fn_005bc2a0_vector@@QAEPAUfn_005bc2a0_elem@@PAU2@ABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 45,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc2cd": {
+   "name": "FUN_005bc2cd",
+   "symbol": "?FUN_005bc2cd@fn_005bc2cd_vector@@QAEPAUfn_005bc2cd_elem@@PAU2@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 87,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc324": {
+   "name": "FUN_005bc324",
+   "symbol": "?FUN_005bc324@fn_005bc324_set@@QAE?AU_Pairib@fn_005bc324_tree@@ABH@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc347": {
+   "name": "FUN_005bc347",
+   "symbol": "?FUN_005bc347@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc3bb": {
+   "name": "FUN_005bc3bb",
+   "symbol": "?FUN_005bc3bb@fn_005bc3bb_set@@QAE?AU_Pairib@fn_005bc324_tree@@ABH@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc3de": {
+   "name": "FUN_005bc3de",
+   "symbol": "??0fn_005bc3de_tree@@QAE@ABU_Pr@0@_NABU_A@0@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc404": {
+   "name": "FUN_005bc404",
+   "symbol": "?FUN_005bc404@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc478": {
+   "name": "FUN_005bc478",
+   "symbol": "?FUN_005bc478@fn_005bc478_set@@QAE?AU_Pairib@fn_005bc324_tree@@ABH@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc49b": {
+   "name": "FUN_005bc49b",
+   "symbol": "?FUN_005bc49b@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc50f": {
+   "name": "nDatabase::tID::tID",
+   "symbol": "??0fn_005bc50f_record@@QAE@ABU0@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc570": {
+   "name": "FUN_005bc570",
+   "symbol": "?FUN_005bc570@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc5a0": {
+   "name": "FUN_005bc5a0",
+   "symbol": "?FUN_005bc5a0@fn_005bc5a0_tree@@QAE?AU_Pairib@1@ABVtID@nDatabase@@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 165,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc645": {
+   "name": "FUN_005bc645",
+   "symbol": "?FUN_005bc645@fn_005bc1d5_tree@@QAE?AViterator@1@V21@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 619,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc8b0": {
+   "name": "FUN_005bc8b0",
+   "symbol": "?FUN_005bc8b0@fn_005bc1d5_tree@@QAEXPAUnode@1@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 56,
+   "score": 99.792,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc8e8": {
+   "name": "FUN_005bc8e8",
+   "symbol": "?FUN_005bc8e8@fn_005bc1d5_tree@@QAEXXZ",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bc938": {
+   "name": "FUN_005bc938",
+   "symbol": "?FUN_005bc938@fn_005bc938_vector@@QAEXPAUfn_005bc938_elem@@IABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 547,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bcb5b": {
+   "name": "FUN_005bcb5b",
+   "symbol": "?FUN_005bcb5b@fn_005bc2a0_vector@@QAEXPAUfn_005bc2cd_elem@@IABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 566,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x005bcd91": {
+   "name": "FUN_005bcd91",
+   "symbol": "?FUN_005bcd91@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x005bcdc1": {
+   "name": "FUN_005bcdc1",
+   "symbol": "?FUN_005bcdc1@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x005bcdf1": {
+   "name": "FUN_005bcdf1",
+   "symbol": "?FUN_005bcdf1@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 48,
+   "score": 99.773,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x005bce21": {
+   "name": "FUN_005bce21",
+   "symbol": "?FUN_005bce21@fn_005bce21_vector@@QAEXPAUfn_005bb6fc_elem@@IABU2@@Z",
+   "unit": "unsorted/fn_005BC000.cpp",
+   "size": 645,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
@@ -27721,6 +28504,582 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x006c13a0": {
+   "name": "FUN_006c13a0",
+   "symbol": "?fn_006c13a0@@YAXPAEPAKI@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c13f0": {
+   "name": "FUN_006c13f0",
+   "symbol": "?fn_006c13f0@@YAXPAKPAEI@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1440": {
+   "name": "FUN_006c1440",
+   "symbol": "?fn_006c1440@@YAXPAE0I@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1460": {
+   "name": "FUN_006c1460",
+   "symbol": "?fn_006c1460@@YAXPAEHI@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1490": {
+   "name": "FUN_006c1490",
+   "symbol": "?fn_006c1490@@YAXPAEPAD@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c14c0": {
+   "name": "FUN_006c14c0",
+   "symbol": "?fn_006c14c0@@YAXPAEIPAD@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1510": {
+   "name": "FUN_006c1510",
+   "symbol": "?fn_006c1510@@YAPAUfn_006c1510_pool@@KKK@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1560": {
+   "name": "FUN_006c1560",
+   "symbol": "?fn_006c1560@@YAXPAUfn_006c1510_pool@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c15a0": {
+   "name": "FUN_006c15a0",
+   "symbol": "?fn_006c15a0@@YAXPAUfn_006c1510_pool@@H@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c15c0": {
+   "name": "FUN_006c15c0",
+   "symbol": "?fn_006c15c0@@YAPAXPAUfn_006c1510_pool@@H@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c15e0": {
+   "name": "FUN_006c15e0",
+   "symbol": "?fn_006c15e0@@YAXPAUfn_006c1510_pool@@PAX@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1600": {
+   "name": "FUN_006c1600",
+   "symbol": "?fn_006c1600@@YAXPAUfn_006c1510_pool@@PAXH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1670": {
+   "name": "FUN_006c1670",
+   "symbol": "?fn_006c1670@@YAXPAUfn_006c1510_pool@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c16a0": {
+   "name": "FUN_006c16a0",
+   "symbol": "?fn_006c16a0@@YAXPAUfn_006c1510_pool@@PAXH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c16e0": {
+   "name": "FUN_006c16e0",
+   "symbol": "?fn_006c16e0@@YAXPAUfn_006c1510_pool@@H@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1730": {
+   "name": "FUN_006c1730",
+   "symbol": "?fn_006c1730@@YAXPAUfn_006c1510_pool@@H@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1750": {
+   "name": "FUN_006c1750",
+   "symbol": "?fn_006c1750@@YAXPAUfn_006c1510_pool@@PAXH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1780": {
+   "name": "FUN_006c1780",
+   "symbol": "?fn_006c1780@@YAHPAUfn_006c1510_pool@@PBXP6AH11@ZHH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1820": {
+   "name": "FUN_006c1820",
+   "symbol": "?fn_006c1820@@YAXPAUfn_006c1510_pool@@P6AXPAX1@Z1@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1860": {
+   "name": "FUN_006c1860",
+   "symbol": "?fn_006c1860@@YAPAXPAUfn_006c1510_pool@@P6AHPAX1@Z1@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c18a0": {
+   "name": "FUN_006c18a0",
+   "symbol": "?fn_006c18a0@@YAPAXPAXPADHHP6AH00@Z@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c18f0": {
+   "name": "FUN_006c18f0",
+   "symbol": "?fn_006c18f0@@YAPAXPBX0HKP6AH00@ZPAH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1960": {
+   "name": "FUN_006c1960",
+   "symbol": "?fn_006c1960@@YAHH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1a70": {
+   "name": "FUN_006c1a70",
+   "symbol": "?fn_006c1a70@@YAXXZ",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1a90": {
+   "name": "FUN_006c1a90",
+   "symbol": "?fn_006c1a90@@YAXXZ",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1ae0": {
+   "name": "FUN_006c1ae0",
+   "symbol": "?fn_006c1ae0@@YAXXZ",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 400,
+   "score": 60.33,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1c70": {
+   "name": "FUN_006c1c70",
+   "symbol": "?fn_006c1c70@@YAXPADPAUsockaddr_in@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1da0": {
+   "name": "FUN_006c1da0",
+   "symbol": "?fn_006c1da0@@YAXPADH@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1e40": {
+   "name": "FUN_006c1e40",
+   "symbol": "?fn_006c1e40@@YAPAUfn_006c1ae0_Request@@PAD@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1ea0": {
+   "name": "FUN_006c1ea0",
+   "symbol": "?fn_006c1ea0@@YAXPADPAUsockaddr_in@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1f30": {
+   "name": "FUN_006c1f30",
+   "symbol": "?fn_006c1f30@@YAXPAUfn_006c1ae0_Request@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1f90": {
+   "name": "FUN_006c1f90",
+   "symbol": "?fn_006c1f90@@YAXPAUfn_006c1ae0_Request@@@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006c1fd0": {
+   "name": "FUN_006c1fd0",
+   "symbol": "?fn_006c1fd0@@YAPADPADPBD@Z",
+   "unit": "unsorted/fn_006C1000.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc070": {
+   "name": "FUN_006cc070",
+   "symbol": "?fn_006cc070@@YAPAXPAUfn_006cc070_owner@@KKKK@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc0b0": {
+   "name": "FUN_006cc0b0",
+   "symbol": "?fn_006cc0b0@@YAHPBDHH@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc0f0": {
+   "name": "FUN_006cc0f0",
+   "symbol": "?fn_006cc0f0@@YAHPAUfn_006cc070_owner@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 816,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc420": {
+   "name": "FUN_006cc420",
+   "symbol": "?fn_006cc420@@YAHPAUfn_006cc070_owner@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc460": {
+   "name": "FUN_006cc460",
+   "symbol": "?fn_006cc460@@YAHPAUfn_006cc070_owner@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc480": {
+   "name": "FUN_006cc480",
+   "symbol": "?fn_006cc480@@YAHPAUfn_006cc070_owner@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc4f0": {
+   "name": "FUN_006cc4f0",
+   "symbol": "?fn_006cc4f0@@YAHPAUfn_006cc070_owner@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc530": {
+   "name": "FUN_006cc530",
+   "symbol": "?fn_006cc530@@YAPAXPAPADHPADKPAUfn_006bf5f0_table@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc640": {
+   "name": "FUN_006cc640",
+   "symbol": "?fn_006cc640@@YAPADPADD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc6a0": {
+   "name": "FUN_006cc6a0",
+   "symbol": "?fn_006cc6a0@@YAPADPAUfn_006cc530_record@@PAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc6f0": {
+   "name": "FUN_006cc6f0",
+   "symbol": "?fn_006cc6f0@@YAXPAUfn_006cc6f0_endpoint@@PAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc730": {
+   "name": "FUN_006cc730",
+   "symbol": "?fn_006cc730@@YAPAUfn_006cc530_record@@KGHPAUfn_006bf5f0_table@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 137,
+   "score": 87.5,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc7d0": {
+   "name": "FUN_006cc7d0",
+   "symbol": "?fn_006cc7d0@@YAXPAUfn_006cc0f0_server@@PAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc860": {
+   "name": "FUN_006cc860",
+   "symbol": "?fn_006cc860@@YAHPAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc8e0": {
+   "name": "FUN_006cc8e0",
+   "symbol": "?fn_006cc8e0@@YAHPAUfn_006cc530_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc8f0": {
+   "name": "FUN_006cc8f0",
+   "symbol": "?fn_006cc8f0@@YAPADPAUfn_006cc0f0_server@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc900": {
+   "name": "FUN_006cc900",
+   "symbol": "?fn_006cc900@@YAKPAUfn_006cc530_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc910": {
+   "name": "FUN_006cc910",
+   "symbol": "?fn_006cc910@@YAHPAUfn_006cc0f0_server@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc920": {
+   "name": "FUN_006cc920",
+   "symbol": "?fn_006cc920@@YAPADPAUfn_006cc0f0_server@@PAD1@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc9a0": {
+   "name": "FUN_006cc9a0",
+   "symbol": "?fn_006cc9a0@@YAPAPADPAUfn_006cc0f0_server@@PAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cc9e0": {
+   "name": "FUN_006cc9e0",
+   "symbol": "?fn_006cc9e0@@YAHPAUfn_006cc0f0_server@@PADH@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cca80": {
+   "name": "FUN_006cca80",
+   "symbol": "?fn_006cca80@@YAIPADI@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccb20": {
+   "name": "FUN_006ccb20",
+   "symbol": "?fn_006ccb20@@YAHPAPAUfn_006ccb20_record@@PADH11KKKKK@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 544,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccd40": {
+   "name": "FUN_006ccd40",
+   "symbol": "?fn_006ccd40@@YAXPAUfn_006ccb20_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccd60": {
+   "name": "FUN_006ccd60",
+   "symbol": "?fn_006ccd60@@YAXPAUfn_006ccb20_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 160,
+   "score": 65.278,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006cce00": {
+   "name": "FUN_006cce00",
+   "symbol": "?fn_006cce00@@YAXPAUfn_006ccb20_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006cce80": {
+   "name": "FUN_006cce80",
+   "symbol": "?fn_006cce80@@YAXPAUfn_006ccb20_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccea0": {
+   "name": "FUN_006ccea0",
+   "symbol": "?fn_006ccea0@@YAXPAUfn_006ccb20_record@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccf00": {
+   "name": "FUN_006ccf00",
+   "symbol": "?fn_006ccf00@@YAHIPADH@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccf20": {
+   "name": "FUN_006ccf20",
+   "symbol": "?fn_006ccf20@@YAHPADHPAUsockaddr_in@@PAPAUhostent@@@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006ccfc0": {
+   "name": "FUN_006ccfc0",
+   "symbol": "?fn_006ccfc0@@YAXPAEHPAD@Z",
+   "unit": "unsorted/fn_006CC000.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
   "0x006d2800": {
    "name": "tSFCStream::mGetVersionNumber",
    "symbol": "?mGetVersionNumber@tSFCStream@@QAEHXZ",
@@ -27729,6 +29088,285 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-08"
+  },
+  "0x006e3000": {
+   "name": "FUN_006e3000",
+   "symbol": "?FUN_006e3000@tObject_006e3000@@QAEXXZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 432,
+   "score": 37.413,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e31b0": {
+   "name": "FUN_006e31b0",
+   "symbol": "?FUN_006e31b0@tObject_006e3000@@QAEKXZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3240": {
+   "name": "FUN_006e3240",
+   "symbol": "?FUN_006e3240@tObject_006e3240@@QAEXXZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3270": {
+   "name": "FUN_006e3270",
+   "symbol": "?FUN_006e3270@tObject_006e3240@@QAEXXZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e32f0": {
+   "name": "FUN_006e32f0",
+   "symbol": "?FUN_006e32f0@tObject_006e3240@@QAEXH@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 48,
+   "score": 79.737,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3320": {
+   "name": "FUN_006e3320",
+   "symbol": "?FUN_006e3320@tObject_006e3240@@QAEXK@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3370": {
+   "name": "FUN_006e3370",
+   "symbol": "?FUN_006e3370@tObject_006e3240@@QAEXK@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3390": {
+   "name": "FUN_006e3390",
+   "symbol": "?FUN_006e3390@tObject_006e3240@@QAEXH@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e33b0": {
+   "name": "FUN_006e33b0",
+   "symbol": "?FUN_006e33b0@tObject_006e3240@@QAEXPBXH@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 92.593,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e33f0": {
+   "name": "FUN_006e33f0",
+   "symbol": "?FUN_006e33f0@tObject_006e3240@@QAEXE@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3400": {
+   "name": "FUN_006e3400",
+   "symbol": "?FUN_006e3400@tObject_006e3240@@QAEX_N@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3420": {
+   "name": "FUN_006e3420",
+   "symbol": "?FUN_006e3420@tObject_006e3240@@QAEXG@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3430": {
+   "name": "FUN_006e3430",
+   "symbol": "?FUN_006e3430@tObject_006e3240@@QAEXK@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3440": {
+   "name": "FUN_006e3440",
+   "symbol": "?FUN_006e3440@tObject_006e3240@@QAEXKE@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 99.75,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3480": {
+   "name": "FUN_006e3480",
+   "symbol": "?FUN_006e3480@tObject_006e3240@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e34c0": {
+   "name": "FUN_006e34c0",
+   "symbol": "?FUN_006e34c0@tObject_006e3240@@QAEXABV?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@std@@E@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3500": {
+   "name": "FUN_006e3500",
+   "symbol": "?FUN_006e3500@tObject_006e3240@@QAEXHPBXH@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 48,
+   "score": 88.176,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3530": {
+   "name": "FUN_006e3530",
+   "symbol": "?FUN_006e3530@tObject_006e3240@@QAEXHE@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3550": {
+   "name": "FUN_006e3550",
+   "symbol": "?FUN_006e3550@tObject_006e3240@@QAEXHG@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3570": {
+   "name": "FUN_006e3570",
+   "symbol": "?FUN_006e3570@tObject_006e3240@@QAE?AVtRef_006e15b0@@XZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3640": {
+   "name": "FUN_006e3640",
+   "symbol": "??1tObject_006e3640@@QAE@XZ",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e36a0": {
+   "name": "FUN_006e36a0",
+   "symbol": "?FUN_006e36a0@tObject_006e36a0@@QAE?AViterator@fn_0060ac82_tree@@V23@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 144,
+   "score": 96.296,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3750": {
+   "name": "FUN_006e3750",
+   "symbol": "?FUN_006e3750@tObject_006e3640@@QAE?AViterator@?$list@VtObject_005d6a66@@V?$allocator@VtObject_005d6a66@@@std@@@std@@V234@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3790": {
+   "name": "FUN_006e3790",
+   "symbol": "?FUN_006e3790@tObject_006e36a0@@QAE?AViterator@fn_0060ac82_tree@@V23@0@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 160,
+   "score": 92.197,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3830": {
+   "name": "FUN_006e3830",
+   "symbol": "?FUN_006e3830@tObject_006e3830@@QAEXAAV1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e38a0": {
+   "name": "FUN_006e38a0",
+   "symbol": "?FUN_006e38a0@tObject_006e3830@@QAE_NABKABQAVtObject_006e3000_shared@@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 320,
+   "score": 88.0,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e39e0": {
+   "name": "FUN_006e39e0",
+   "symbol": "?FUN_006e39e0@fn_0060ac82_tree@@QAE?AViterator@1@V21@ABUvalue@node@1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 437,
+   "score": 83.219,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3bc0": {
+   "name": "FUN_006e3bc0",
+   "symbol": "?FUN_006e3bc0@fn_006e45b0_tree@@QAE?AU?$pair@Viterator@fn_006e45b0_tree@@_N@std@@ABUvalue@node@1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 192,
+   "score": 52.271,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3c80": {
+   "name": "FUN_006e3c80",
+   "symbol": "?FUN_006e3c80@tObject_006e3c80@@QAE?AViterator@fn_005d9441_tree@@V23@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3cf0": {
+   "name": "FUN_006e3cf0",
+   "symbol": "?FUN_006e3cf0@fn_0060ac82_tree@@QAE?AViterator@1@V21@ABUvalue@node@1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 592,
+   "score": 99.933,
+   "exact": false,
+   "recorded": "2026-11-17"
+  },
+  "0x006e3f40": {
+   "name": "FUN_006e3f40",
+   "symbol": "?FUN_006e3f40@fn_005d9441_tree@@QAE?AU?$pair@Viterator@fn_005d9441_tree@@_N@std@@ABUvalue_type@1@@Z",
+   "unit": "unsorted/fn_006E3000.cpp",
+   "size": 528,
+   "score": 85.226,
+   "exact": false,
+   "recorded": "2026-11-17"
   },
   "0x006e7e80": {
    "name": "nTestSim::tSimulator::tSimulator",
