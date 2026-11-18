@@ -31,8 +31,8 @@ inline c_0046aa10_message::c_0046aa10_message()
 }
 
 // HYPOTHESIS: cdecl; 0x0046aa10 takes the next message (true while there is one), 0x0046aa2b
-// posts one.
+// posts one (false when the queue is full). Both return the flag in al (tGameState.cpp).
 bool fn_0046aa10(c_0046aa10_message *msg);
-void fn_0046aa2b(c_0046aa10_message *msg);
+bool fn_0046aa2b(c_0046aa10_message *msg);
 
 #endif	// c_0046aa10_msg_h

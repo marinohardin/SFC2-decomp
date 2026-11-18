@@ -120,7 +120,7 @@ public:
 	bool fn_004772ce(int id);
 	void fn_004776d7(const char *name, int n);
 	void fn_00477749();
-	void fn_00469e0c(const char *name);
+
 	void fn_00477440();
 	void fn_00477689();
 

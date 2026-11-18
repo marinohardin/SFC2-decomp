@@ -179,7 +179,7 @@ public:
 	bool fn_004690a5(int id);
 	bool fn_0047685b();
 	void fn_004695c4(const char *name, int n);
-	void fn_00469e0c(const char *name);
+
 	void fn_00469636();
 
 	unsigned char m0c;
