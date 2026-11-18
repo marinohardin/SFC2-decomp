@@ -68,22 +68,22 @@ public:
 // HYPOTHESIS: a global matrix at 0x009199f0 that 0x004b14db hands to the view before drawing.
 extern tMatrix gObject_009199f0;
 
-// HYPOTHESIS: the object at 0x00918888; only slot 8 (offset 0x20) is called, returning an int.
-class tObject_00918888
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual void vfunction2();
-	virtual void vfunction3();
-	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual int vfunction8();
-};
+// The object at 0x00918888, whose slot 8 returns an int.
+#include "unsorted/tObject_00918888.h"
 
-extern tObject_00918888 *gObject_00918888;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: an 8-byte entry of the table of ten at 0x00852448; it is copied as two words.
 // 0x004b0e1b uses fField0 as a row (0 to 3) of its texture table and fField4 as a level,

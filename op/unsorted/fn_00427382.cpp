@@ -558,24 +558,24 @@ public:
 	int8u				field_0x54;
 };
 
+namespace std
+{
 // FUNCTION: STARFLEETOP 0x00427a53
-inline void std::_Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V )
+inline void _Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V )
 {
 	new ((void *)_P) tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension( _V );
 }
 
 // MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
 // here; not inline, since nothing in this unit instantiates it.
-namespace std
-{
-void _Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V );
-}
-
 // FUNCTION: STARFLEETOP 0x00427a8a
-void std::_Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V )
+void _Construct( tPlayingTeamInfo *_P, const tPlayingTeamInfo& _V )
 {
 	new ((void *)_P) tPlayingTeamInfo( _V );
 }
+}
+
+
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x00427ab7
@@ -617,14 +617,14 @@ std::vector< tShip >::vector( const std::vector< tShip >& _X )
 // tPlayingTeamInfo, written out so that it has source lines here.
 namespace std
 {
-inline void _Construct( tShip *_P, const tShip& _V );
-}
-
 // FUNCTION: STARFLEETOP 0x00427c1d
-inline void std::_Construct( tShip *_P, const tShip& _V )
+inline void _Construct( tShip *_P, const tShip& _V )
 {
 	new ((void *)_P) tShip( _V );
 }
+}
+
+
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
 // FUNCTION: STARFLEETOP 0x00427c6b

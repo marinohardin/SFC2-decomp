@@ -533,4 +533,4 @@ tNewsStory** _Unguarded_partition( tNewsStory** _F, tNewsStory** _L, tNewsStory*
 
 // HYPOTHESIS: a global byte string; this is its dynamic initializer.
 // FUNCTION: STARFLEETOP 0x005deff2
-std::string g_s00c38af0("NewsPanel");
+std::string g_s00c38af0 = "NewsPanel";

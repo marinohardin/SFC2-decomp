@@ -581,6 +581,8 @@ inline tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& >::~tMemberCal
 #include <algorithm>
 #include <utility>
 #include "unsorted/tChatChannel.h"
+// MATCH-ONLY: the for_each specializations 0x005fbb74 and 0x005fbbc1, declared before their first use.
+namespace std { template<> tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > for_each( const tChatChannel* _F, const tChatChannel* _L, tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > _Op ); template<> tMemberCallback< tMetaClientChatCtlrC, const std::string& > for_each( const std::string* _F, const std::string* _L, tMemberCallback< tMetaClientChatCtlrC, const std::string& > _Op ); }
 
 // HYPOTHESIS: the first argument holds the first and past-the-end channel at +0 and +4; it is
 // written as a pair of pointers, the toolchain's vector keeping its first element at +4.
@@ -629,13 +631,11 @@ const std::string* FUN_005fba75( const std::pair<const std::string*, const std::
 // here; not inline, since nothing in this unit instantiates it.
 namespace std
 {
-void _Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V );
-}
-
 // FUNCTION: STARFLEETOP 0x005fba9d
-void std::_Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V )
+void _Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V )
 {
 	new ((void *)_P) fn_0055fe12_value( _V );
+}
 }
 
 // MATCH-ONLY: the library's _Construct for the node value of the map of vectors (0x005fb06b),
@@ -644,20 +644,19 @@ void std::_Construct( fn_0055fe12_value *_P, const fn_0055fe12_value& _V )
 // copy constructor.
 namespace std
 {
-void _Construct( pair<const int, vector<int> > *_P, const pair<const int, vector<int> >& _V );
-}
-
 // FUNCTION: STARFLEETOP 0x005fbaca
-void std::_Construct( std::pair<const int, std::vector<int> > *_P, const std::pair<const int, std::vector<int> >& _V )
+void _Construct( std::pair<const int, std::vector<int> > *_P, const std::pair<const int, std::vector<int> >& _V )
 {
 	new ((void *)_P) std::pair<const int, std::vector<int> >( _V );
 }
+}
 
+namespace std {
 // MATCH-ONLY: the library's for_each, written out as the explicit specialization that
 // 0x005fb9d1 calls so that its annotation names the one instance; the body is the template's.
 // FUNCTION: STARFLEETOP 0x005fbb74
 template<>
-tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > std::for_each( const tChatChannel* _F, const tChatChannel* _L, tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > _Op )
+tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > for_each( const tChatChannel* _F, const tChatChannel* _L, tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > _Op )
 {
 	for (; _F != _L; ++_F)
 		_Op(*_F);
@@ -668,36 +667,37 @@ tMemberCallback< tMetaClientChatCtlrC, const tChatChannel& > std::for_each( cons
 // 0x005fba36 calls, as for 0x005fbb74.
 // FUNCTION: STARFLEETOP 0x005fbbc1
 template<>
-tMemberCallback< tMetaClientChatCtlrC, const std::string& > std::for_each( const std::string* _F, const std::string* _L, tMemberCallback< tMetaClientChatCtlrC, const std::string& > _Op )
+tMemberCallback< tMetaClientChatCtlrC, const std::string& > for_each( const std::string* _F, const std::string* _L, tMemberCallback< tMetaClientChatCtlrC, const std::string& > _Op )
 {
 	for (; _F != _L; ++_F)
 		_Op(*_F);
 	return (_Op);
 }
+}
 
 // HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
 // FUNCTION: STARFLEETOP 0x005fbe7d
 // FUNCTION: STARFLEETOP 0x005fbe4a
-std::string g_s00c39a70("MetaChatBar");
+std::string g_s00c39a70 = "MetaChatBar";
 
 // HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
 // FUNCTION: STARFLEETOP 0x005fbee3
 // FUNCTION: STARFLEETOP 0x005fbeb0
-std::string g_s00c39a58("MetaChat");
+std::string g_s00c39a58 = "MetaChat";
 
 // HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
 // FUNCTION: STARFLEETOP 0x005fbf49
 // FUNCTION: STARFLEETOP 0x005fbf16
-std::string g_s00c39a48("BigAssChat");
+std::string g_s00c39a48 = "BigAssChat";
 
 // HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
 // FUNCTION: STARFLEETOP 0x005fbfaf
 // FUNCTION: STARFLEETOP 0x005fbf7c
-std::string g_s00c39a38("MaxChat");
+std::string g_s00c39a38 = "MaxChat";
 
 // HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
 // FUNCTION: STARFLEETOP 0x005fbfe2
-std::string g_s00c39a28("MinChat");
+std::string g_s00c39a28 = "MinChat";
 
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.

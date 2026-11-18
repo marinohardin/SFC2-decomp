@@ -13,23 +13,23 @@
 
 class tSndMgr_Miles;
 
-// HYPOTHESIS: the object at 0x00918888, which tMyHud3D.cpp declares inside that unit; only
-// slot 8 (offset 0x20) is called, returning a game state.
-class tObject_00918888
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual void vfunction2();
-	virtual void vfunction3();
-	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual int vfunction8();
-};
+// The object at 0x00918888, whose slot 8 returns an int.
+#include "unsorted/tObject_00918888.h"
 
-extern tObject_00918888 *gObject_00918888;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the camera's view and projection matrices and the left and right edges of the
 // screen; fn_0050fa3c projects an entity with them to pan its sound.
