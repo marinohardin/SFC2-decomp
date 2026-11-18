@@ -8,7 +8,7 @@
 #include "Common/DataStore/DataStoreOutput.h"
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
-
+#include "unsorted/tServCharacter.h"
 #include "unsorted/tPreparedMissions.h"
 
 // HYPOTHESIS: the owner of this by-value getter is not known; the body copies a
@@ -16,7 +16,7 @@
 class fn_0053f22f_owner
 {
 public:
-	nDatabase::tID fn_0053f22f() const;
+	// 0x0053f22f is tPreparedMissions's (0x0056d9d3 queries on it); it reads m_48 through a cast.
 	void fn_0053f281( nDatabase::tID id );
 
 	char m_00[0x48];
@@ -24,9 +24,9 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0053f22f
-nDatabase::tID fn_0053f22f_owner::fn_0053f22f() const
+nDatabase::tID tPreparedMissions::fn_0053f22f() const
 {
-	return m_48;
+	return ((const fn_0053f22f_owner *)this)->m_48;
 }
 
 // The class of the member at 0x7c of the owner below is declared in a shared header.
@@ -343,7 +343,7 @@ void fn_0053f25c_owner::fn_0053f30f()
 	fn_0054340c_owner *it = m_6c.begin();
 	while ( it != m_6c.end() )
 	{
-		if ( it->fn_0054340c() )
+		if ( ((const tServCharacter *)it)->fn_0054340c() )
 		{
 			m_7c.fn_0042add2( it->vfunction12() );
 			it = m_6c.erase( it );
@@ -443,20 +443,20 @@ void std::vector< fn_0053f491_elem >::assign( const_iterator _F, const_iterator 
 	insert( begin(), _F, _L );
 }
 
-// HYPOTHESIS: a member of the vector-like class declared above; destroys every element,
-// frees the block and clears the three pointers, like a vector's tidy.
-// FUNCTION: STARFLEETOP 0x0053f4ea
-void fn_0053f522_owner::fn_0053f4ea()
-{
-	fn_0054340c_owner *last = m_08;
-	fn_0054340c_owner *first = m_04;
-	for ( ; first != last; ++first )
-		first->~fn_0054340c_owner();
-	operator delete( m_04 );
-	m_04 = 0;
-	m_08 = 0;
-	m_0c = 0;
-}
+// Not claimed: 0x0053f4ea destroys every element, frees the block and clears the three
+// pointers. AsyncDBSingle calls it as std::vector<tServCharacter>'s destructor, and this
+// compiler emits that member only in a unit that uses it; this unit's use is not known.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the vector at 0x6c above; its assign erases its own range, then inserts the
 // two arguments at its first.
