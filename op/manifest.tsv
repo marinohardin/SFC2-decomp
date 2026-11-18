@@ -1668,19 +1668,19 @@ address	size	symbol	source	modes
 0x0053f2f0	13	fn_0053f25c_owner::fn_0053f2f0(long)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f2fd	18	fn_0053f25c_owner::fn_0053f2fd()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f30f	63	fn_0053f25c_owner::fn_0053f30f()	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f461	12	fn_0053f522_owner::fn_0053f461()	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f461	12	fn_0053f5ad_owner::fn_0053f461()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f46d	36	fn_0042b0fd_owner::fn_0053f46d(const nDatabase::tID *,const nDatabase::tID *)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f491	53	fn_0053f491_owner::fn_0053f491()	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f4c6	36	fn_0053f4c6_owner::fn_0053f4c6(long,long)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f4c6	36	assign(const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f4ea	56	fn_0053f522_owner::fn_0053f4ea()	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f522	36	fn_0053f522_owner::fn_0053f522(long,long)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f546	103	fn_0053f522_owner::fn_0053f546(fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f522	36	assign(const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f546	103	erase(iterator)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f5ad	44	fn_0053f5ad_owner::fn_0053f5ad(char *,char *)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f5d9	603	fn_0042b0fd_owner::fn_0053f5d9(nDatabase::tID *,const nDatabase::tID *,const nDatabase::tID *)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053f834	608	fn_0053f4c6_owner::fn_0053f834(fn_0053f491_elem *,const fn_0053f491_elem *,const fn_0053f491_elem *)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053fa94	87	fn_0053f4c6_owner::fn_0053fa94(fn_0053f491_elem *,fn_0053f491_elem *)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053faeb	659	fn_0053f522_owner::fn_0053faeb(fn_0054340c_owner *,const fn_0054340c_owner *,const fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
-0x0053fd7e	99	fn_0053f522_owner::fn_0053fd7e(fn_0054340c_owner *,fn_0054340c_owner *)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053f834	608	insert(iterator,const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fa94	87	erase(iterator,iterator)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053faeb	659	insert(iterator,const_iterator,const_iterator)	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053fd7e	99	erase(iterator,iterator)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053fde1	60	tClassAllocator()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053fe1d	76	mAllocate()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053fe69	12	mAssignAllocID(iAllocatorID)	unsorted/fn_0053F000.cpp	vc6 guest
@@ -2361,18 +2361,18 @@ address	size	symbol	source	modes
 0x005e3511	268	tMetaMapControl::fn_005e3511(int)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e361d	134	tMetaMapControl::fn_005e361d(const tRect *)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e36a3	42	tMetaMapControl::fn_005e36a3()	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e36cd	63	tMetaMapControl::fn_005e36cd(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e370c	63	tMetaMapControl::fn_005e370c(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e374b	121	tMetaMapControl::fn_005e374b(fn_005e36cd_entry *,int,c_tScrollBar_FieldA8 *,int,int,unsigned long)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e37c4	20	tMetaMapControl::fn_005e37c4(fn_005e36cd_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e37d8	71	tMetaMapControl::fn_005e37d8(fn_005e36cd_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e381f	114	tMetaMapControl::fn_005e381f(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e3891	114	tMetaMapControl::fn_005e3891(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e3903	50	tMetaMapControl::fn_005e3903(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e3935	56	tMetaMapControl::fn_005e3935(fn_005e36cd_entry *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e36cd	63	tMetaMapControl::fn_005e36cd(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e370c	63	tMetaMapControl::fn_005e370c(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e374b	121	tMetaMapControl::fn_005e374b(fn_005e374b_entry *,int,c_tScrollBar_FieldA8 *,int,int,unsigned long)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e37c4	20	tMetaMapControl::fn_005e37c4(fn_005e381f_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e37d8	71	tMetaMapControl::fn_005e37d8(fn_005e381f_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e381f	114	tMetaMapControl::fn_005e381f(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3891	114	tMetaMapControl::fn_005e3891(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3903	50	tMetaMapControl::fn_005e3903(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3935	56	tMetaMapControl::fn_005e3935(fn_005e374b_entry *)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e396d	14	tMetaMapControl::fn_005e396d(int)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e397b	188	tMetaMapControl::fn_005e397b(unsigned char *)	unsorted/tMetaMapControl.cpp	vc6 guest
-0x005e3a37	161	tMetaMapControl::fn_005e3a37(fn_005e36cd_entry *,unsigned long *)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e3a37	161	tMetaMapControl::fn_005e3a37(fn_005e374b_entry *,unsigned long *)	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e3ad8	150	tMetaMapControl::fn_005e3ad8()	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e3b6e	24	tMetaMapControl::fn_005e3b6e()	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e3b86	31	tMetaMapControl::fn_005e3b86()	unsorted/tMetaMapControl.cpp	vc6 guest
