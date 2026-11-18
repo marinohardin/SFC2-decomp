@@ -596,6 +596,39 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 template <class tVolumeType, class tDirType, class tPathType>
@@ -613,6 +646,7 @@ public:
 	void mRemove( tPath &cookie )			{ f_04--; fPathCookies.mRemove( cookie ); }
 	void mRemove( tVolIterator &cookie )	{ f_04--; fVolIterCookies.mRemove( cookie ); }
 	void mRemove( tDirIterator &cookie )	{ f_04--; fDirIterCookies.mRemove( cookie ); }
+	void mRemove( tSession &cookie )		{ f_04--; fSessionCookies.mRemove( cookie ); }
 	void mRemove( tPathIterator &cookie )	{ f_04--; fPathIterCookies.mRemove( cookie ); }
 
 	// HYPOTHESIS: f_04 is the count tFileSession::tFileSession raises; f_00 is not recovered. The
@@ -645,20 +679,6 @@ public:
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 // FUNCTION: STARFLEETOP 0x0061bae0
 tFileSession::tFileSession()
@@ -679,9 +699,9 @@ tFileSession::tFileSession()
 // FUNCTION: STARFLEETOP 0x0061bdd0
 inline tFileSession::~tFileSession()
 {
-	tFSCookiePart	*part = BindPart( tFSCookiePart );
-	part->fFSCookies.f_04--;
-	part->fFSCookies.fSessionCookies.mRemove( fSession );
+	BindPart( tFSCookiePart )->fFSCookies.mRemove( fSession );
+
+
 }
 
 // FUNCTION: STARFLEETOP 0x0061bf50
@@ -917,8 +937,8 @@ tString &tVolume::mGetName( void )
 }
 
 // The original frame is 4 bytes larger than this build's, as in tVolume::mGetName: the thrown
-// string and operator++'s result have separate slots there. The original computes the first
-// bucket's address with the index's increment folded into the lea; neither is recovered.
+// string and operator++'s result have separate slots there. The slot is not recovered; the
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061d8b0
 tString tVolume::mGetSortName( void )
 {
@@ -975,24 +995,24 @@ iTruth tDir::mExist( void )
 }
 
 // The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// two with the plain mResolve; holding the cookie's map in a local for operator[] gives its order.
 // FUNCTION: STARFLEETOP 0x0061e160
 tPathIterator tDir::mGetPathIterator( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetPathIterator();
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetPathIterator();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e280
 tDir tDir::mGetNamedDir( tString &name )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetNamedDir( name );
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetNamedDir( name );
 }
 
 // The resolve has operator[] expanded inline, as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0)
-// has it. As there, the original frame is 4 bytes larger and the first bucket's address has the
-// index's increment folded into the lea; neither is recovered.
+// has it. As there, the original frame is 4 bytes larger; the extra slot is not recovered. The
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061e3a0
 tPath tDir::mGetNamedFile( tString &name )
 {
@@ -1015,20 +1035,20 @@ tString &tPath::mGetName( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetName();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e7e0
 tDate tPath::mGetDate( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetDate();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061e160_mResolve( *this ).mGetDate();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e900
 tDir tPath::mGetParentDir( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetParentDir();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061e160_mResolve( *this ).mGetParentDir();
 }
 
 // The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
@@ -1055,12 +1075,11 @@ iTruth tPath::mCreate( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mCreate();
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, which gives the original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061ed50
 iTruth tPath::mDelete( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mDelete();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mDelete();
 }
 
 // FUNCTION: STARFLEETOP 0x0061ee60
@@ -1075,12 +1094,12 @@ int32u tPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *c
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mWrite( buffer, offset, size, callback );
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, as in tPath::mDelete, which gives the
+// original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061f0c0
 int32u tPath::mFree( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mFree();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mFree();
 }
 
 // FUNCTION: STARFLEETOP 0x0061f1d0

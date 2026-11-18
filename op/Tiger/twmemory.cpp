@@ -94,6 +94,10 @@ public:
 
 protected:
 	unsigned char	mAddMemory	( void );
+	// MATCH-ONLY: the original inlined a helper of this shape (no address, name unknown); going
+	// through it makes the size reload ahead of the handle at 0x006397f0 and 0x00639d90. Only
+	// a body in the class does that; an out-of-class inline definition leaves the order reversed.
+	void*	fn_ReallocateBlock	( long a, long b, unsigned long c ) { return fMemoryBlocks[ a - 1 ].mReallocate( b, c ); }
 };
 
 // FUNCTION: STARFLEETOP 0x00637ec0
@@ -545,7 +549,7 @@ long	twMemoryPart::mResizeHandle( long a, long b )
 		BindPart( tMemoryPart )->vfunction25( "fMemoryBlocks was NULL!" );
 		return 0;
 	}
-	if ( fMemoryBlocks[ a - 1 ].mReallocate( b, 0 ) == NULL )
+	if ( fn_ReallocateBlock( a, b, 0 ) == NULL )
 	{
 		if ( fHandleB != NULL )
 		{
@@ -553,7 +557,7 @@ long	twMemoryPart::mResizeHandle( long a, long b )
 			fHandleB = NULL;
 		}
 		BindPart( tMemoryPart )->vfunction25( "Running Out Of Memory!" );
-		if ( fMemoryBlocks[ a - 1 ].mReallocate( b, 0 ) == NULL )
+		if ( fn_ReallocateBlock( a, b, 0 ) == NULL )
 		{
 			char	message[ 256 ];
 			sprintf( message, "Could not Reallocate to %ld bytes!", b );
@@ -620,7 +624,7 @@ long	twMemoryPart::mResizeHandleZeroIt( long a, long b )
 		BindPart( tMemoryPart )->vfunction25( "fMemoryBlocks was NULL!" );
 		return 0;
 	}
-	if ( fMemoryBlocks[ a - 1 ].mReallocate( b, 0x40 ) == NULL )
+	if ( fn_ReallocateBlock( a, b, 0x40 ) == NULL )
 	{
 		if ( fHandleB != NULL )
 		{
@@ -628,7 +632,7 @@ long	twMemoryPart::mResizeHandleZeroIt( long a, long b )
 			fHandleB = NULL;
 		}
 		BindPart( tMemoryPart )->vfunction25( "Running Out Of Memory!" );
-		if ( fMemoryBlocks[ a - 1 ].mReallocate( b, 0x40 ) == NULL )
+		if ( fn_ReallocateBlock( a, b, 0x40 ) == NULL )
 		{
 			char	message[ 256 ];
 			sprintf( message, "Could not Reallocate to %ld bytes!", b );
