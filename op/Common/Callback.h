@@ -12,9 +12,9 @@ template< typename tnResult >
 class tCallback
 {
 public:
-// Types
-	typedef std::list<tCallback*> iPtrList;
-	typedef std::vector<tCallback*> iPtrVector;
+// MATCH-ONLY: the SDK's header also declares the types iPtrList and iPtrVector here. No unit
+// uses them, and with them the compiler does not finish unsorted/fn_005DE000.cpp and
+// unsorted/fn_005FB000.cpp, which instantiate this class for reference results.
 
 //Setup
 	virtual ~tCallback();
