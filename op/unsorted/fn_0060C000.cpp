@@ -565,11 +565,11 @@ extern tObject_0090b730 gObject_0090b730;
 // FUNCTION: STARFLEETOP 0x0060cac6
 void tObject_0090b730::fn_0060cac6()
 {
-    while (!gObject_0090b730.m_08.empty()) {
-        delete gObject_0090b730.m_08.back();
-        gObject_0090b730.m_08.erase(gObject_0090b730.m_08.end() - 1);
+    while (!fn_0060cac6_teams(gObject_0090b730.m_08).empty()) {
+        delete fn_0060cac6_teams(gObject_0090b730.m_08).back();
+        fn_0060cac6_teams(gObject_0090b730.m_08).erase(fn_0060cac6_teams(gObject_0090b730.m_08).end() - 1);
     }
-    gObject_0090b730.m_08.clear();
+    fn_0060cac6_teams(gObject_0090b730.m_08).clear();
 }
 
 // HYPOTHESIS: sends every team's description, its ships' descriptions and a ready message to
@@ -577,8 +577,8 @@ void tObject_0090b730::fn_0060cac6()
 // FUNCTION: STARFLEETOP 0x0060cb1b
 void tObject_0090b730::fn_0060cb1b()
 {
-    while (!gObject_0090b730.m_08.empty()) {
-        C_004729a6 *team = gObject_0090b730.m_08.back();
+    while (!fn_0060cac6_teams(gObject_0090b730.m_08).empty()) {
+        C_004729a6 *team = fn_0060cac6_teams(gObject_0090b730.m_08).back();
         C_0060e11e *teams = fn_0060e11e();
         int id = team->m_2c;
         C_0052a2b5 *record = teams->fn_0052a2b5(id);
@@ -605,7 +605,7 @@ void tObject_0090b730::fn_0060cb1b()
         readyMsg.fTeam = id;
         gNetControl.mQueueMsg(&readyMsg, tNetMsg::kTeamReady, gNetControl.fn_004324ab(), -1, -1.0);
         delete team;
-        gObject_0090b730.m_08.erase(gObject_0090b730.m_08.end() - 1);
+        fn_0060cac6_teams(gObject_0090b730.m_08).erase(fn_0060cac6_teams(gObject_0090b730.m_08).end() - 1);
     }
-    gObject_0090b730.m_08.erase(gObject_0090b730.m_08.begin(), gObject_0090b730.m_08.end());
+    fn_0060cac6_teams(gObject_0090b730.m_08).erase(fn_0060cac6_teams(gObject_0090b730.m_08).begin(), fn_0060cac6_teams(gObject_0090b730.m_08).end());
 }

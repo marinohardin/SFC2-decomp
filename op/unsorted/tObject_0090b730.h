@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Tiger/tstring.h"
+#include "unsorted/fn_005717f7_vector.h"
 
 class C_0060cf03;
 class C_004729a6;
@@ -57,7 +58,9 @@ public:
     char *fn_0060c982(const char *name);
     C_0060cf03 *m_00;
     int m_04;
-    std::vector<C_004729a6 *> m_08;
+    // HYPOTHESIS: a vector of C_004729a6 pointers; 0x0060c841 destroys it through 0x00571a7a,
+    // so it is declared as fn_005717f7_vector.
+    fn_005717f7_vector m_08;
     int m_18;
     int m_1c;
     bool m_20;
@@ -66,5 +69,12 @@ public:
 };
 
 extern tObject_0090b730 gObject_0090b730;
+
+// MATCH-ONLY: the library vector of C_004729a6 pointers that m_08 stands for; its empty, back,
+// erase and clear are the ones 0x0060cac6 and 0x0060cb1b call.
+inline std::vector<C_004729a6 *> &fn_0060cac6_teams( fn_005717f7_vector &v )
+{
+    return *(std::vector<C_004729a6 *> *)&v;
+}
 
 #endif
