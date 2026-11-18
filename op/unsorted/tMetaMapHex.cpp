@@ -360,7 +360,7 @@ const char* tMetaMapHex::SQLFieldNames() const
 }
 
 // FUNCTION: STARFLEETOP 0x00539f04
-long tMetaMapHex::fn_00539f04()
+long tMetaMapHex::fn_00539f04() const
 {
 	tOptex::tGuard guard( &m_bc );
 	long x = m_a8.fn_0055f269();
@@ -369,7 +369,7 @@ long tMetaMapHex::fn_00539f04()
 }
 
 // FUNCTION: STARFLEETOP 0x00539f50
-long tMetaMapHex::fn_00539f50()
+long tMetaMapHex::fn_00539f50() const
 {
 	tOptex::tGuard guard( &m_bc );
 	long y = m_a8.fn_005e8f21();
