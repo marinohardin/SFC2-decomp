@@ -338,44 +338,6 @@ void fn_006cc6f0(fn_006cc6f0_endpoint *endpoint, char *text)
 	}
 }
 
-int fn_006cc860(char *key);
-
-// HYPOTHESIS: fn_006cc0f0_server and fn_006cc530_record are one server entry; stores the
-// "\key\value" pairs of a reply whose key fn_006cc860 accepts.
-// FUNCTION: STARFLEETOP 0x006cc7d0
-void fn_006cc7d0(fn_006cc0f0_server *server, char *text)
-{
-	fn_006cc530_record *record = (fn_006cc530_record *)server;
-	char *pair[2];
-	char *key = fn_006cc640(text + 1, '\\');
-	while (key != 0)
-	{
-		char *value = fn_006cc640(0, '\\');
-		if (value == 0)
-			value = "";
-		if (fn_006cc860(key) != 0)
-		{
-			pair[0] = fn_006cc6a0(record, key);
-			pair[1] = fn_006cc6a0(record, value);
-			fn_006bf6a0(record->field_0c, pair);
-		}
-		key = fn_006cc640(0, '\\');
-	}
-}
-
-// HYPOTHESIS: filters out the reply keys that are not stored with a server entry.
-// FUNCTION: STARFLEETOP 0x006cc860
-int fn_006cc860(char *key)
-{
-	char *skipped[2] = { "queryid", "final" };
-	for (unsigned int i = 0; i < sizeof(skipped) / sizeof(skipped[0]); i++)
-	{
-		if (strcmp(key, skipped[i]) == 0)
-			return 0;
-	}
-	return 1;
-}
-
 int fn_006ccac0(const void *element, int buckets);
 int fn_006ccb00(const void *a, const void *b);
 
@@ -414,6 +376,44 @@ fn_006cc530_record *fn_006cc730(unsigned long param_1, unsigned short param_2, i
 	record->field_0c = fn_006bf5f0(8, buckets, count, fn_006ccac0, fn_006ccb00, 0);
 	record->field_10 = param_4;
 	return record;
+}
+
+int fn_006cc860(char *key);
+
+// HYPOTHESIS: fn_006cc0f0_server and fn_006cc530_record are one server entry; stores the
+// "\key\value" pairs of a reply whose key fn_006cc860 accepts.
+// FUNCTION: STARFLEETOP 0x006cc7d0
+void fn_006cc7d0(fn_006cc0f0_server *server, char *text)
+{
+	fn_006cc530_record *record = (fn_006cc530_record *)server;
+	char *pair[2];
+	char *key = fn_006cc640(text + 1, '\\');
+	while (key != 0)
+	{
+		char *value = fn_006cc640(0, '\\');
+		if (value == 0)
+			value = "";
+		if (fn_006cc860(key) != 0)
+		{
+			pair[0] = fn_006cc6a0(record, key);
+			pair[1] = fn_006cc6a0(record, value);
+			fn_006bf6a0(record->field_0c, pair);
+		}
+		key = fn_006cc640(0, '\\');
+	}
+}
+
+// HYPOTHESIS: filters out the reply keys that are not stored with a server entry.
+// FUNCTION: STARFLEETOP 0x006cc860
+int fn_006cc860(char *key)
+{
+	char *skipped[2] = { "queryid", "final" };
+	for (unsigned int i = 0; i < sizeof(skipped) / sizeof(skipped[0]); i++)
+	{
+		if (strcmp(key, skipped[i]) == 0)
+			return 0;
+	}
+	return 1;
 }
 
 // HYPOTHESIS: returns a server entry's ping.
