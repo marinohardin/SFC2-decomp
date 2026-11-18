@@ -1,5 +1,5 @@
-// tBuffer::Write is called out of line (0x0042a0fc).
-#define DATASTORE_OUT_OF_LINE_WRITE
+#define DATASTORE_INLINE_NUMBER_WRITE	// MATCH-ONLY: StreamOut inlines the number writes
+#define DATASTORE_OUT_OF_LINE_WRITE	// tBuffer::Write is called out of line (0x0042a0fc).
 #define DATASTORE_OUT_OF_LINE_READ
 #include "unsorted/tMetaMapHex.h"
 #include "Common/Settings.h"

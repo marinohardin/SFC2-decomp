@@ -6,6 +6,9 @@
 //	MATCH-ONLY: operator<<( const std::string& ), defined inline here and inlined by
 //	FileDatabaseMgr.cpp's StreamOut, is left out where DATASTORE_OUT_OF_LINE_WRITE is defined:
 //	tClientCharacter.cpp holds the out-of-line copy (0x0042a116), claimable only from a .cpp.
+//	MATCH-ONLY: the int32u, int32s and double writes are defined only where
+//	DATASTORE_INLINE_NUMBER_WRITE is defined (tMetaMapHex.cpp, whose StreamOut inlines them);
+//	tAuctionItem.cpp's and tMetaMapDesc.cpp's StreamOut call the exe's out-of-line copies.
 #if !defined( DataStoreOutput_h )
 #define DataStoreOutput_h
 
@@ -105,6 +108,7 @@ tOutput& tOutput::operator<<( bool value )
 	return *this;
 }
 
+#ifdef DATASTORE_INLINE_NUMBER_WRITE
 tOutput& tOutput::operator<<( int32u value )
 {
 	Write( (const byte*)&value, sizeof( value ) );
@@ -125,6 +129,7 @@ tOutput& tOutput::operator<<( double value )
 
 	return *this;
 }
+#endif
 
 template< class tType >
 tOutput& operator<<( tOutput& output, const std::vector< tType >& value )
