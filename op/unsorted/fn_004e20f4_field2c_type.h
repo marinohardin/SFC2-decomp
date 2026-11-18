@@ -250,6 +250,26 @@ public:
     virtual void vfunction121();
     virtual void vfunction122();
     virtual float vfunction123();
+    virtual void vfunction124();
+    virtual void vfunction125();
+    virtual void vfunction126();
+    virtual void vfunction127();
+    virtual void vfunction128();
+    virtual void vfunction129();
+    virtual void vfunction130();
+    virtual void vfunction131();
+    virtual void vfunction132();
+    virtual void vfunction133();
+    virtual void vfunction134();
+    virtual void vfunction135();
+    virtual void vfunction136();
+    virtual void vfunction137();
+    virtual void vfunction138();
+    virtual void vfunction139();
+    virtual void vfunction140();
+    virtual void vfunction141();
+    // HYPOTHESIS: slot 142 (offset 0x238) returns a bool; tBaseWeapon's 0x004d76f8 forwards to it.
+    virtual bool vfunction142();
 };
 
 #endif // fn_004e20f4_field2c_type_h

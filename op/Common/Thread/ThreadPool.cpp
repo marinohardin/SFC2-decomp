@@ -281,24 +281,6 @@ protected:
 
 
 
-// The SDK's inline constructor of tPerformanceCounter (Common/Timer/PerformanceCounter.h).
-inline tPerformanceCounter::tPerformanceCounter()
-	: fStart( 0 )
-{
-
-
-	unsigned __int64 frequency;
-	::QueryPerformanceFrequency( reinterpret_cast<LARGE_INTEGER*>( &frequency ) );
-	fTicksPerMicrosecond = frequency / 1000000;
-	// The original's check reports line 44.
-#line 44
-	validate( fTicksPerMicrosecond != 0 );
-#line 298
-
-	LARGE_INTEGER now;
-	::QueryPerformanceCounter( &now );
-	fStart = now.QuadPart;
-}
 
 
 
@@ -312,14 +294,32 @@ inline tPerformanceCounter::tPerformanceCounter()
 
 
 
-template< typename tnResult >
-class tCallback
-{
-public:
-	virtual ~tCallback();
 
-	virtual void Callback( tnResult result ) = 0;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "Common/Callback.h"
+
+
+
+
+
+
+
 
 namespace nLog
 {

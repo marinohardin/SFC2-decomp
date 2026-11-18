@@ -13,7 +13,9 @@
 class tSettings
 {
 public:
+	void GetValue( const std::string& name, long* value );
 	void GetList( const std::string& name, std::vector<std::string>* list, std::vector<std::string>* defaultList );
+	void GetValue( const std::string& name, std::string* value );
 };
 
 #endif

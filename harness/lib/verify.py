@@ -29,6 +29,11 @@ from . import coff, funcs, matched, paths, source, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
+# Relocations of exact functions that name another symbol than the claim at their target, known
+# on develop when the check came in; only breaks not listed here fail (report_claim_symbols).
+RELOC_BASELINE = paths.env_path('HARNESS_RELOC_BASELINE', os.path.join(
+    paths.REPO, 'analysis', 'results', 'reloc_baseline.tsv'))
+RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
 
 
 class Untrusted(Exception):
@@ -38,6 +43,7 @@ class Untrusted(Exception):
 class Report:
     def __init__(self):
         self.lines, self.results, self.regressions, self.failed = [], [], [], False
+        self.claim_breaks = []
 
     def add(self, tag, text):
         self.lines.append(f'{tag:<5} {text}')
@@ -376,6 +382,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             _report_function(rep, data, fn, res)
 
     report_shared_symbols(rep)
+    report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -433,6 +440,111 @@ def report_shared_symbols(rep):
     for line in shared_symbol_conflicts(rep.results):
         rep.add('ERROR', line)
         rep.failed = True
+
+
+CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
+
+
+def claimed_symbols(results, data):
+    """Matched-set key -> (symbol, source) for every claimed function: the symbol this run's
+    rebuild of the claiming unit defines for it ('rebuilt'), else the `symbol` field of its
+    matched-set entry ('recorded'). The rebuild wins because a recorded field can be stale: it is
+    written only when a score improves, so a later rename leaves the old name there."""
+    out = {k: (e['symbol'], 'recorded') for k, e in data['functions'].items() if e.get('symbol')}
+    for res in results:
+        if res.get('symbol'):
+            out[res['address']] = (res['symbol'], 'rebuilt')
+    return out
+
+
+def claim_symbol_breaks(results, claims):
+    """Each REL32/DIR32 relocation of an exact function that reaches a claimed function's
+    address but names another symbol than the claim defines there. The byte match masks the
+    field, so the function scores exact, but a consumer that links the exact objects (manifest
+    mode vc6) is left with an unresolved external. Targets nothing claims (library and CRT code
+    the decomposition does not rebuild) are not checked."""
+    out = []
+    for res in results:
+        if not res.get('exact'):
+            continue
+        for r in res.get('relocs') or []:
+            if (r.get('type') not in CLAIM_RELOC_TYPES or r['exe_address'] is None
+                    or r['status'] == 'mismatch'):
+                continue
+            claim = claims.get(r['exe_address'])
+            if claim is None or claim[0] == r['symbol']:
+                continue
+            out.append(dict(function=res['address'], offset=r['offset'], symbol=r['symbol'],
+                            target=r['exe_address'], claimed=claim[0], source=claim[1]))
+    return out
+
+
+def _break_key(b):
+    """A break is known by function, symbol and target: the offset moves with any edit above."""
+    return (b['function'], b['symbol'], b['target'])
+
+
+def load_reloc_baseline(path):
+    """The rows of the relocation baseline (RELOC_BASELINE_FIELDS), or none without the file. A
+    malformed row stops the run with the file and line."""
+    if not os.path.exists(path):
+        return []
+    out = []
+    with open(path, newline='') as f:
+        rows = csv.reader(f, delimiter='\t')
+        for n, row in enumerate(rows, 1):
+            if not row or row[0].startswith('#') or (n == 1 and row[0] == 'function'):
+                continue
+            if len(row) != len(RELOC_BASELINE_FIELDS):
+                raise Untrusted(f'{_shown(path)}:{n}: expected {len(RELOC_BASELINE_FIELDS)} '
+                                f'tab-separated fields ({", ".join(RELOC_BASELINE_FIELDS)})')
+            b = dict(zip(RELOC_BASELINE_FIELDS, row))
+            try:
+                b['offset'] = int(b['offset'], 16)
+            except ValueError:
+                raise Untrusted(f'{_shown(path)}:{n}: offset {b["offset"]!r} is not hexadecimal') from None
+            out.append(b)
+    return out
+
+
+def reloc_baseline_text(breaks):
+    """breaks in the baseline's format, sorted, one row per break."""
+    rows = sorted({(b['function'], f'0x{b["offset"]:x}', b['symbol'], b['target'], b['claimed'])
+                   for b in breaks})
+    return ''.join('\t'.join(r) + '\n' for r in [RELOC_BASELINE_FIELDS] + rows)
+
+
+def report_claim_symbols(rep, data, baseline, check_all):
+    """Lines for claim_symbol_breaks. A break the baseline lists is tolerated (one INFO line for
+    all of them). Any other break fails the run when the claim's symbol comes from this run's
+    rebuild; when it comes only from the matched set (a single-function run that did not build
+    the target's unit), it is a WARN line, since the recorded field may be stale and --all
+    rebuilds every claim. A baseline row whose break is gone is reported as stale, so the list
+    only shrinks: under --all every row, otherwise only rows of the exact functions scored."""
+    rep.claim_breaks = claim_symbol_breaks(rep.results, claimed_symbols(rep.results, data))
+    listed = {_break_key(b) for b in baseline}
+    tolerated = 0
+    for b in rep.claim_breaks:
+        if _break_key(b) in listed:
+            tolerated += 1
+            continue
+        text = (f'{b["function"]} relocation +0x{b["offset"]:x} names {b["symbol"]}, which '
+                f'reaches {b["target"]}, claimed as {b["claimed"]}')
+        if b['source'] == 'rebuilt':
+            rep.add('ERROR', text + ' (a consumer linking the exact objects cannot resolve it)')
+            rep.failed = True
+        else:
+            rep.add('WARN', text + ' in matched_set.json, not rebuilt in this run (the recorded '
+                    'symbol may be stale; --all decides)')
+    if tolerated:
+        rep.add('INFO', f'{tolerated} relocations name another symbol than the claim at their '
+                f'target, as {_shown(RELOC_BASELINE)} lists')
+    found = {_break_key(b) for b in rep.claim_breaks}
+    scored = {res['address'] for res in rep.results if res.get('exact')}
+    for b in baseline:
+        if _break_key(b) not in found and (check_all or b['function'] in scored):
+            rep.add('WARN', f'{_shown(RELOC_BASELINE)} lists {b["function"]} +0x{b["offset"]:x} '
+                    f'{b["symbol"]} -> {b["target"]}, which no longer breaks: remove the row')
 
 
 def _report_function(rep, data, fn, res):
@@ -517,6 +629,13 @@ def main(argv=None):
         rep = Report()
         rep.add('ERROR', str(e))
         rep.failed = True
+    if a.all and rep.results:
+        # Every claim was rebuilt: what the relocation baseline would hold today.
+        out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
+        with open(out, 'w') as f:
+            f.write(reloc_baseline_text(rep.claim_breaks))
+        rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '
+                f'claim at their target; all written to {out}')
     if rep.regressions:
         status, code = 'ERROR regression', EXIT_REGRESSION
     elif rep.failed:

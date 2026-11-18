@@ -124,7 +124,7 @@ public:
 	virtual void vfunction10();
 	virtual void vfunction11();
 	virtual void vfunction12();	// +0x2c
-	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
+	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
 	// HYPOTHESIS: field types and names unknown; +0x34 is the object's rectangle. The constructor
 	// (0x0067cb70) sets +0x4 to +0x5c, so these are tObjBase's.
 	// HYPOTHESIS: +0x4 and +0x8 link the objects beside this one, one each way (0x004c692a walks

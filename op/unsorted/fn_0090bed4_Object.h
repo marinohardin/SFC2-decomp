@@ -17,6 +17,8 @@ public:
 	tObject_005235a7 *fn_005235a7(int param_1);
 	// HYPOTHESIS: hands the fleet with this ID a new command destination, as 0x004c3815 calls it.
 	void fn_00522bdf(int param_1, tCommandDestination *pDestination);
+	// HYPOTHESIS: takes a float taken from the table of doubles at 0x008552d0.
+	void fn_00522c86(float param_1);
 };
 
 extern fn_0090bed4_Object *g_p0090bed4;

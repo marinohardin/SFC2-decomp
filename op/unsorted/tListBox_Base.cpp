@@ -11,8 +11,10 @@ tListBox_Base::~tListBox_Base()
 {
 	vfunction51();
 	if ( field_B0 )
+	{
 		field_B0->vfunction12();
-	field_B0 = 0;
+		field_B0 = 0;
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004c6376

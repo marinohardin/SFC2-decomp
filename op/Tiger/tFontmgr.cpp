@@ -256,17 +256,17 @@ void tFontTable::mDone(void)
     }
     int i;
     for (i = 0; i < 256; i++) {
-        tCharInfo** page = field_2c[i];
-        if (page) {
-            for (int j = 0; j < 256; j++) {
-                if (page[j])
-                    delete page[j];
+        if (field_2c[i] != NULL) {
+            tCharInfo** page = field_2c[i];
+            if (page != NULL) { // HYPOTHESIS: the null test a delete of a page type with an inline destructor makes
+                for (int j = 0; j < 256; j++) {
+                    if (page[j])
+                        delete page[j];
+                }
+                delete[] page;
             }
-            delete[] page;
+            field_2c[i] = NULL;
         }
-        // HYPOTHESIS: the original clears the slot inside the if (its branch skips the
-        // store); clearing it unconditionally is equivalent and comes closer.
-        field_2c[i] = NULL;
     }
     // HYPOTHESIS: the reset is inlined here, so the original spelled out what
     // mResetDataMembers does (or had an inline copy of it) rather than calling it.
@@ -341,9 +341,7 @@ public:
     }
     virtual unsigned char mOpenForRead(const char* name)
     {
-        if (field_0 == 0)
-            return 0;
-        field_0->mClose();
+        mClose();
         if (field_0 == 0 || !field_0->mOpenForRead(name))
             return 0;
         field_30c = 0;
@@ -528,14 +526,15 @@ tFontMgr::eInitStatus tFontMgr::mInit(void)
             field_0 = kInitFailed;
             return kInitFailed;
         }
-        field_0 = kInitialized;
-        return kInitialized;
+    } else {
+        mDone();
+        field_0 = kInitFailed;
+        return kInitFailed;
     }
-
-    mDone();
-    field_0 = kInitFailed;
-    return kInitFailed;
+    field_0 = kInitialized;
+    return kInitialized;
 }
+
 
 // FUNCTION: STARFLEETOP 0x00670d50
 void tFontMgr::mDone(void)

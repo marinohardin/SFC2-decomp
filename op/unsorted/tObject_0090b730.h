@@ -6,6 +6,7 @@
 class tObject_0090b730 {
 public:
     long fn_005c7fb3();
+    void fn_0060ca42(long);
     long fn_0060ca4f();
     long fn_0060ca9e();
     void fn_0060cac6();
