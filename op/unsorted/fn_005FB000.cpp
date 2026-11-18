@@ -695,6 +695,10 @@ std::string g_s00c39a48("BigAssChat");
 // FUNCTION: STARFLEETOP 0x005fbf7c
 std::string g_s00c39a38("MaxChat");
 
+// HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
+// FUNCTION: STARFLEETOP 0x005fbfe2
+std::string g_s00c39a28("MinChat");
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
