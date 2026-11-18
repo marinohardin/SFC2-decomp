@@ -37,7 +37,12 @@ public:
 	long fField14;
 	long fField18;
 	long fField1c;
-	long fField20[4];
+	// MATCH-ONLY: the four longs are wrapped so that the written-out copy constructor 0x0042739e
+	// copies them as one block, as the implicit one does.
+	struct
+	{
+		long	fWord[4];
+	}		fField20;
 };
 
 #endif

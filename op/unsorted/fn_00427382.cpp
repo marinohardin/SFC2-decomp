@@ -16,10 +16,9 @@ tCurrentTime::tCurrentTime( const tCurrentTime& source )
 	  fField10( source.fField10 ),
 	  fField14( source.fField14 ),
 	  fField18( source.fField18 ),
-	  fField1c( source.fField1c )
+	  fField1c( source.fField1c ),
+	  fField20( source.fField20 )
 {
-	struct tBlock { long fWord[4]; };
-	*(tBlock*)fField20 = *(const tBlock*)source.fField20;
 }
 
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out.
