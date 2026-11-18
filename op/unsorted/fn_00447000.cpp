@@ -602,15 +602,15 @@ void tShipSystemMask::fn_00447b7a(tObject_0042496f *ship)
 	}
 }
 
-// HYPOTHESIS: the three arguments of 0x00447bbb share only a test in slot 3 (offset 0xc).
-class c_00447bbb_arg
-{
-public:
-	virtual void vfunction1();
-	virtual void vfunction2();
-	virtual void vfunction3();
-	virtual bool vfunction4();
-};
+#include "unsorted/c_004526cb.h"
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the classes of the members 0x00447bbb hands its arguments to are not known;
 // 0x004457b7 is also declared in Source/states/SupplyDockItem.cpp under another stand-in name.
@@ -627,11 +627,11 @@ public:
 	void fn_004457b7(c_00447bbb_arg *arg);
 };
 
-class c_004526cb : public c_00447bbb_arg
-{
-public:
-	void fn_004526cb(c_00447bbb_arg *arg);
-};
+
+
+
+
+
 
 // HYPOTHESIS: the class owning 0x00447bbb is not known; it holds three parts at 0xe4-0xec.
 class c_00447bbb
