@@ -675,6 +675,10 @@ tMemberCallback< tMetaClientChatCtlrC, const std::string& > std::for_each( const
 	return (_Op);
 }
 
+// HYPOTHESIS: a global byte string; this is its dynamic initializer.
+// FUNCTION: STARFLEETOP 0x005fbe4a
+std::string g_s00c39a70("MetaChatBar");
+
 // MATCH-ONLY: the caller of 0x005fb00a is not written yet; VC6 emits the specialization only
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
