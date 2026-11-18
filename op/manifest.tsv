@@ -1604,6 +1604,61 @@ address	size	symbol	source	modes
 0x00548395	60	tClassAllocator()	unsorted/tBattles.cpp	vc6 guest
 0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
+0x0056c414	940	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2(tCampaignInfo*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	partial
+0x0056c7c0	278	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3(std::vector<nDatabase::tID>,std::vector<tServCharacter>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056c8d6	134	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction4(std::vector<tServCharacter>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056c95c	191	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction5(std::vector<nDatabase::tID>,std::vector<tServCharacter>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056cb3b	252	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction7(std::vector<tServCharacter>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056cc37	200	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction8(std::vector<tServCharacter>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056ccff	278	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction9(std::vector<nDatabase::tID>,std::vector<tShip>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d1b7	278	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction11(std::vector<nDatabase::tID>,std::vector<tAuctionItem>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d2cd	211	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction12(std::vector<tAuctionItem>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d3a0	237	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction13(tHexPoint,std::vector<tMetaMapHex>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d48d	230	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction14(nDatabase::tID,tServCharacter*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d573	109	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction15(nDatabase::tID,tMetaMapHex*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d5e0	111	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction16(nDatabase::tID,tShip*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d64f	141	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction17(std::vector<tMetaMapHex>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d6dc	114	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction18(std::vector<tMetaMapDesc>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d74e	90	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction19(std::vector<tPoliticalTensionMatrix>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d7a8	114	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction20(std::vector<tCampaignInfo>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d81a	90	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction21(std::vector<tNotify>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d874	167	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction22(nDatabase::tID,std::vector<tNewsStory>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d91b	176	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23(const tNewsStory::tDetailTime&,std::vector<tNewsStory>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056d9d3	335	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24(nDatabase::tID,bool,std::vector<tPreparedMissions>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056db2a	187	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction25(tCampaignInfo*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dbe5	121	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction26(tServCharacter*,tServCharacter*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dc5e	92	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction27(std::vector<tMetaMapHex>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dcba	92	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction28(std::vector<tPoliticalTensionMatrix>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dd16	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction35(tCampaignInfo*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dd5e	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction29(tServCharacter*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dda6	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction30(tAuctionItem*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056ddee	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction31(tPoliticalTensionMatrix*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056de36	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction32(tMetaMapHex*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056de7e	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction33(tMetaMapDesc*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dec6	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction34(tShip*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056df0e	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction36(tNotify*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056df56	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction37(tNewsStory*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056df9e	15	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction38(int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056dfad	89	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction40(tAuctionItem)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e006	89	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction42(tServCharacter)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e05f	54	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction41(nDatabase::tDatabaseObjectUpdate)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e095	89	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction44(tShip)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e0ee	54	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43(nDatabase::tDatabaseObjectUpdate)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e124	143	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction48(tCampaignInfo*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e1b3	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction49(nDatabase::tDatabaseObject*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e1fb	139	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction45(nDatabase::tDatabaseObject*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e286	119	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction46(nDatabase::tDatabaseObject*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e2fd	54	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction47(nDatabase::tDatabaseObjectUpdate)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e333	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction50(tAuctionItem*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e37b	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction51(tServCharacter*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e3c3	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction52(tShip*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e40b	343	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction53(long,long,std::vector<nDatabase::tID>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e562	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction54(tMetaMapHex*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e5aa	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction55(tNewsStory*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e5f2	200	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction56(nDatabase::tID,bool)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e6ba	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction57(tAuctionItem*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e702	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction58(tServCharacter*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
+0x0056e74a	72	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction59(tShip*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
 0x0056f041	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest
 0x0056f04f	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest
 0x0056f05f	316	fn_0056f05f_owner::fn_0056f05f(const nDatabase::tQuery<tServCharacter> &,fn_005406d7_results *,bool)	unsorted/fn_0056F000.cpp	vc6 guest
@@ -1877,6 +1932,38 @@ address	size	symbol	source	modes
 0x005a4c09	105	fn_005A4173_Owner::fn_005A4c09()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a4c72	105	fn_005A4173_Owner::fn_005A4c72()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a4cdb	105	fn_005A4173_Owner::fn_005A4cdb()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005bc012	6	FUN_005bc012(int *)	unsorted/fn_005BC000.cpp	vc6
+0x005bc018	51	fn_005bc018_vector::FUN_005bc018()	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc04b	17	fn_005bce21_vector::FUN_005bc04b(const fn_005bb6fc_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc05c	53	fn_005bc05c_record::~fn_005bc05c_record()	unsorted/fn_005BC000.cpp	vc6
+0x005bc091	77	fn_005bc091_entry::~fn_005bc091_entry()	unsorted/fn_005BC000.cpp	vc6
+0x005bc0de	48	fn_005bc018_vector::FUN_005bc0de(fn_005bb6fc_elem *,const fn_005bb6fc_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc10e	42	fn_005bc10e_vector::FUN_005bc10e(fn_005bc10e_elem *,const fn_005bc10e_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc138	41	fn_005bc138_vector::FUN_005bc138(fn_005bc138_elem *,const fn_005bc138_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc161	116	fn_005bc161_tree::FUN_005bc161(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc1d5	116	fn_005bc1d5_tree::FUN_005bc1d5(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc249	87	fn_005bc249_vector::FUN_005bc249(fn_005bc249_elem *,fn_005bc249_elem *)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc2a0	45	fn_005bc2a0_vector::FUN_005bc2a0(fn_005bc2cd_elem *,const fn_005bc2cd_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc2cd	87	fn_005bc2cd_vector::FUN_005bc2cd(fn_005bc2cd_elem *,fn_005bc2cd_elem *)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc324	35	fn_005bc324_set::FUN_005bc324(const int &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc347	116	fn_005bc161_tree::FUN_005bc347(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc3bb	35	fn_005bc3bb_set::FUN_005bc3bb(const int &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc3de	38	fn_005bc3de_tree::fn_005bc3de_tree(const _Pr &,bool,const _A &)	unsorted/fn_005BC000.cpp	vc6
+0x005bc404	116	fn_005bc161_tree::FUN_005bc404(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc478	35	fn_005bc478_set::FUN_005bc478(const int &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc49b	116	fn_005bc161_tree::FUN_005bc49b(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc50f	97	fn_005bc50f_record::fn_005bc50f_record(const fn_005bc50f_record &)	unsorted/fn_005BC000.cpp	vc6
+0x005bc570	48	fn_005bc161_tree::FUN_005bc570(node *)	unsorted/fn_005BC000.cpp	partial
+0x005bc5a0	165	fn_005bc5a0_tree::FUN_005bc5a0(const nDatabase::tID &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc645	619	fn_005bc1d5_tree::FUN_005bc645(iterator)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc8b0	56	fn_005bc1d5_tree::FUN_005bc8b0(node *)	unsorted/fn_005BC000.cpp	partial
+0x005bc8e8	80	fn_005bc1d5_tree::FUN_005bc8e8()	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bc938	547	fn_005bc938_vector::FUN_005bc938(fn_005bc938_elem *,unsigned int,const fn_005bc938_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bcb5b	566	fn_005bc2a0_vector::FUN_005bcb5b(fn_005bc2cd_elem *,unsigned int,const fn_005bc2cd_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
+0x005bcd91	48	fn_005bc161_tree::FUN_005bcd91(node *)	unsorted/fn_005BC000.cpp	partial
+0x005bcdc1	48	fn_005bc161_tree::FUN_005bcdc1(node *)	unsorted/fn_005BC000.cpp	partial
+0x005bcdf1	48	fn_005bc161_tree::FUN_005bcdf1(node *)	unsorted/fn_005BC000.cpp	partial
+0x005bce21	645	fn_005bce21_vector::FUN_005bce21(fn_005bb6fc_elem *,unsigned int,const fn_005bb6fc_elem &)	unsorted/fn_005BC000.cpp	vc6 guest
 0x005c427c	20	fn_005c427c_Owner::FUN_005c427c()	unsorted/fn_005C4000.cpp	vc6 guest
 0x005c4290	32	fn_005c4290_Holder::FUN_005c4290()	unsorted/fn_005C4000.cpp	vc6 guest
 0x005c42b0	32	fn_005c42b0_Holder::FUN_005c42b0()	unsorted/fn_005C4000.cpp	vc6 guest
@@ -3083,7 +3170,102 @@ address	size	symbol	source	modes
 0x006b4360	249	tDDSurfMgr::mSetDisplayMode(int,int,int)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest
 0x006b4460	218	tDDSurfMgr::mRestoreDisplayMode()	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest
 0x006b4540	1170	tDDSurfMgr::mInitBuffers(int)	dmp3d/glsurface/tDDSurfMgr.cpp	partial
+0x006c13a0	73	fn_006c13a0(unsigned char *,unsigned long *,unsigned int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c13f0	76	fn_006c13f0(unsigned long *,unsigned char *,unsigned int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1440	31	fn_006c1440(unsigned char *,unsigned char *,unsigned int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1460	43	fn_006c1460(unsigned char *,int,unsigned int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1490	46	fn_006c1490(unsigned char *,char *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c14c0	73	fn_006c14c0(unsigned char *,unsigned int,char *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1510	71	fn_006c1510(unsigned long,unsigned long,void (*param)(void *))	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1560	51	fn_006c1560(fn_006c1510_pool *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c15a0	32	fn_006c15a0(fn_006c1510_pool *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c15c0	18	fn_006c15c0(fn_006c1510_pool *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c15e0	22	fn_006c15e0(fn_006c1510_pool *,void *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1600	101	fn_006c1600(fn_006c1510_pool *,void *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1670	42	fn_006c1670(fn_006c1510_pool *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c16a0	50	fn_006c16a0(fn_006c1510_pool *,void *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c16e0	68	fn_006c16e0(fn_006c1510_pool *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1730	30	fn_006c1730(fn_006c1510_pool *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1750	35	fn_006c1750(fn_006c1510_pool *,void *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1780	147	fn_006c1780(fn_006c1510_pool *,const void *,int (*compare)(const void *, const void *),int,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1820	52	fn_006c1820(fn_006c1510_pool *,void (*func)(void *, void *),void *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1860	63	fn_006c1860(fn_006c1510_pool *,int (*func)(void *, void *),void *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c18a0	69	fn_006c18a0(void *,char *,int,int,int (*func)(void *, void *))	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c18f0	98	fn_006c18f0(const void *,const void *,int,unsigned long,int (*compare)(const void *, const void *),int *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1960	264	fn_006c1960(int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1a70	31	fn_006c1a70()	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1a90	80	fn_006c1a90()	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1ae0	397	fn_006c1ae0()	unsorted/fn_006C1000.cpp	partial
+0x006c1c70	299	fn_006c1c70(char *,struct sockaddr_in *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1da0	153	fn_006c1da0(char *,int)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1e40	95	fn_006c1e40(char *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1ea0	139	fn_006c1ea0(char *,struct sockaddr_in *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1f30	91	fn_006c1f30(fn_006c1ae0_Request *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1f90	49	fn_006c1f90(fn_006c1ae0_Request *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006c1fd0	259	fn_006c1fd0(char *,const char *)	unsorted/fn_006C1000.cpp	vc6 guest
+0x006cc070	64	fn_006cc070(fn_006cc070_owner *,char **,int,char *,unsigned long)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc0b0	53	fn_006cc0b0(const char *,int,int)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc0f0	807	fn_006cc0f0(fn_006cc070_owner *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc420	52	fn_006cc420(fn_006cc070_owner *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc460	19	fn_006cc460(fn_006cc070_owner *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc480	107	fn_006cc480(fn_006cc070_owner *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc4f0	17	fn_006cc4f0(fn_006cc070_owner *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc530	257	fn_006cc530(char **,int,char *,unsigned long,fn_006bf5f0_table *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc640	81	fn_006cc640(char *,char)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc6a0	67	fn_006cc6a0(fn_006cc530_record *,char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc6f0	55	fn_006cc6f0(fn_006cc6f0_endpoint *,char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc730	137	fn_006cc730(unsigned long,unsigned short,int,fn_006bf5f0_table *)	unsorted/fn_006CC000.cpp	partial
+0x006cc7d0	132	fn_006cc7d0(fn_006cc0f0_server *,char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc860	114	fn_006cc860(char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc8e0	9	fn_006cc8e0(fn_006cc530_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc8f0	13	fn_006cc8f0(fn_006cc0f0_server *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc900	7	fn_006cc900(fn_006cc530_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc910	11	fn_006cc910(fn_006cc0f0_server *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc920	113	fn_006cc920(fn_006cc0f0_server *,char *,char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc9a0	62	fn_006cc9a0(fn_006cc0f0_server *,char *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cc9e0	122	fn_006cc9e0(fn_006cc0f0_server *,char *,int)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cca80	56	fn_006cca80(char *,unsigned int)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccb20	544	fn_006ccb20(fn_006ccb20_record **,char *,int,char *,char *,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccd40	32	fn_006ccd40(fn_006ccb20_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccd60	150	fn_006ccd60(fn_006ccb20_record *)	unsorted/fn_006CC000.cpp	partial
+0x006cce00	113	fn_006cce00(fn_006ccb20_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006cce80	25	fn_006cce80(fn_006ccb20_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccea0	93	fn_006ccea0(fn_006ccb20_record *)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccf00	28	fn_006ccf00(SOCKET,char *,int)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccf20	160	fn_006ccf20(char *,int,sockaddr_in *,hostent **)	unsorted/fn_006CC000.cpp	vc6 guest
+0x006ccfc0	169	fn_006ccfc0(unsigned char *,int,char *)	unsorted/fn_006CC000.cpp	vc6 guest
 0x006d2800	3	tSFCStream::mGetVersionNumber()	unsorted/fn_006D2000.cpp	vc6 guest
+0x006e3000	419	tObject_006e3000::FUN_006e3000()	unsorted/fn_006E3000.cpp	partial
+0x006e31b0	78	tObject_006e3000::FUN_006e31b0()	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3240	48	tObject_006e3240::FUN_006e3240()	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3270	12	tObject_006e3240::FUN_006e3270()	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e32f0	48	tObject_006e3240::FUN_006e32f0(int)	unsorted/fn_006E3000.cpp	partial
+0x006e3320	74	tObject_006e3240::FUN_006e3320(unsigned long)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3370	22	tObject_006e3240::FUN_006e3370(unsigned long)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3390	27	tObject_006e3240::FUN_006e3390(int)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e33b0	59	tObject_006e3240::FUN_006e33b0(const void*,int)	unsorted/fn_006E3000.cpp	partial
+0x006e33f0	15	tObject_006e3240::FUN_006e33f0(unsigned char)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3400	28	tObject_006e3240::FUN_006e3400(bool)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3420	15	tObject_006e3240::FUN_006e3420(unsigned short)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3430	15	tObject_006e3240::FUN_006e3430(unsigned long)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3440	59	tObject_006e3240::FUN_006e3440(unsigned long,unsigned char)	unsorted/fn_006E3000.cpp	partial
+0x006e3480	53	tObject_006e3240::FUN_006e3480(const std::string&,unsigned char)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e34c0	56	tObject_006e3240::FUN_006e34c0(const std::wstring&,unsigned char)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3500	40	tObject_006e3240::FUN_006e3500(int,const void*,int)	unsorted/fn_006E3000.cpp	partial
+0x006e3530	20	tObject_006e3240::FUN_006e3530(int,unsigned char)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3550	20	tObject_006e3240::FUN_006e3550(int,unsigned short)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3570	194	tObject_006e3240::FUN_006e3570()	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3640	88	tObject_006e3640::~tObject_006e3640()	unsorted/fn_006E3000.cpp	vc6
+0x006e36a0	131	tObject_006e36a0::FUN_006e36a0(fn_0060ac82_tree::iterator)	unsorted/fn_006E3000.cpp	partial
+0x006e3750	62	tObject_006e3640::FUN_006e3750(std::list<tObject_005d6a66>::iterator)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3790	159	tObject_006e36a0::FUN_006e3790(fn_0060ac82_tree::iterator,fn_0060ac82_tree::iterator)	unsorted/fn_006E3000.cpp	partial
+0x006e3830	109	tObject_006e3830::FUN_006e3830(tObject_006e3830&)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e38a0	313	tObject_006e3830::FUN_006e38a0(const unsigned long&,tObject_006e3000_shared* const&)	unsorted/fn_006E3000.cpp	partial
+0x006e39e0	437	fn_0060ac82_tree::FUN_006e39e0(iterator,const node::value&)	unsorted/fn_006E3000.cpp	partial
+0x006e3bc0	189	fn_006e45b0_tree::FUN_006e3bc0(const node::value&)	unsorted/fn_006E3000.cpp	partial
+0x006e3c80	22	tObject_006e3c80::FUN_006e3c80(fn_005d9441_tree::iterator)	unsorted/fn_006E3000.cpp	vc6 guest
+0x006e3cf0	584	fn_0060ac82_tree::FUN_006e3cf0(iterator,const node::value&)	unsorted/fn_006E3000.cpp	partial
+0x006e3f40	517	fn_005d9441_tree::FUN_006e3f40(const value_type&)	unsorted/fn_006E3000.cpp	partial
 0x006e7e80	9	tSimulator::tSimulator()	Common/Simulator/Simulator.cpp	vc6
 0x006f39b0	106	tThreadPool::Instance()	Common/Thread/ThreadPool.cpp	vc6 guest
 0x006f3a20	283	tThreadPool::tThreadPool()	Common/Thread/ThreadPool.cpp	partial
