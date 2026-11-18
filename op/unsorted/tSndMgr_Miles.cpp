@@ -525,7 +525,7 @@ char tSndMgr_Miles::vfunction6()
 	return field_10[0].field_10;
 }
 
-// FUNCTION: STARFLEETOP 0x0050f2fc
+// Unclaimed: 0x0050f2fc calls 0x00424946 under another name than the claim there; claimed again once the two are one.
 long tSndMgr_Miles::vfunction29( long param_1, long param_2, char param_3, unsigned long param_4 )
 {
 	if ( !field_2414 )
@@ -856,7 +856,7 @@ long tSndMgr_Miles::vfunction25()
 	return field_1f14;
 }
 
-// FUNCTION: STARFLEETOP 0x0050f9ea
+// Unclaimed: 0x0050f9ea calls 0x004246ab under another name than the claim there; claimed again once the two are one.
 long tSndMgr_Miles::fn_0050f9ea( long param_1, long param_2 )
 {
 	float distance = gObject_008e1060.fn_004246ab( param_1, param_2 );
@@ -876,7 +876,7 @@ long tSndMgr_Miles::fn_0050f9ea( long param_1, long param_2 )
 	return volume;
 }
 
-// FUNCTION: STARFLEETOP 0x0050fa3c
+// Unclaimed: 0x0050fa3c calls 0x00424a24 under another name than the claim there; claimed again once the two are one.
 long tSndMgr_Miles::fn_0050fa3c( long param_1 )
 {
 	tPhysicalEntity *entity = gObject_008e1060.fn_00424a24( gObject_008e1060.fn_lookup( param_1 ) );

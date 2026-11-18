@@ -325,7 +325,7 @@ tObject_0051c7af *fn_0090bed4_Object::fn_00523543(int param_1)
 	return NULL;
 }
 
-// FUNCTION: STARFLEETOP 0x00523574
+// Unclaimed: 0x00523574 is called from 0x0051e275, 0x0051f184, 0x0051f1ed, 0x0051f559, 0x0051f602 under another declaration; claimed again once the two are one.
 // HYPOTHESIS: the table entry is returned only when bit 0x800 of its +0x18 field is set.
 tObject_0051c7af *fn_0090bed4_Object::fn_00523574(int param_1)
 {
@@ -335,7 +335,7 @@ tObject_0051c7af *fn_0090bed4_Object::fn_00523574(int param_1)
 	return (*(unsigned long *) ((char *) pObject + 0x18) & 0x800) ? (tObject_0051c7af *) pObject : NULL;
 }
 
-// FUNCTION: STARFLEETOP 0x005235a7
+// Unclaimed: 0x005235a7 calls 0x0042496f under another name than the claim there; claimed again once the two are one.
 tObject_005235a7 *fn_0090bed4_Object::fn_005235a7(int param_1)
 {
 	fn_004e2b02_ship_type *pShip = gObject_008e1060.fn_0042496f(param_1);
@@ -554,12 +554,12 @@ tObject_005237dc::tObject_005237dc(int aShipID)
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x0052389f
+// Unclaimed: 0x0052389f calls 0x00571a7a under another name than the claim there; claimed again once the two are one.
 tObject_005237dc::~tObject_005237dc()
 {
 }
 
-// FUNCTION: STARFLEETOP 0x005238aa
+// Unclaimed: 0x005238aa calls 0x00571a69 under another name than the claim there; claimed again once the two are one.
 int tObject_005237dc::fn_005238aa(void *aValue)
 {
 	int index = m_34cc.size();
@@ -567,7 +567,7 @@ int tObject_005237dc::fn_005238aa(void *aValue)
 	return index;
 }
 
-// FUNCTION: STARFLEETOP 0x005238d7
+// Unclaimed: 0x005238d7 is called from 0x005147ab under another declaration; claimed again once the two are one.
 void tObject_005237dc::fn_005238d7(int aColumn, float amount, bool partial, int index, int *pSelector)
 {
 	// HYPOTHESIS: tObject_005236d8 and tObject_005236ea are one 0x224-byte class (an int, then
@@ -806,7 +806,7 @@ public:
 	virtual int vfunction102(char *aOut);
 };
 
-// FUNCTION: STARFLEETOP 0x00523967
+// Unclaimed: 0x00523967 calls 0x0042496f under another name than the claim there; claimed again once the two are one.
 float tObject_005237dc::fn_00523967()
 {
 	tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(m_140);
@@ -845,7 +845,7 @@ void tObject_005237dc::fn_00523ad3()
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x00523afd
+// Unclaimed: 0x00523afd calls 0x0042496f under another name than the claim there; claimed again once the two are one.
 // HYPOTHESIS: the selector and the object 0x005235a7 returns are declared only in tAICaptain.cpp
 // and tFleetEntry.cpp; their +0x8 field (the row) and +0x3a44 flag are read through offsets.
 void tObject_005237dc::fn_00523afd(tObject_00528a11 *aSelector)
@@ -935,7 +935,7 @@ void tObject_005237dc::fn_00523c59()
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x00523e72
+// Unclaimed: 0x00523e72 calls 0x0042496f under another name than the claim there; claimed again once the two are one.
 float tObject_005237dc::fn_00523e72(float amount)
 {
 	tObject_0042496f *ship = (tObject_0042496f *)gObject_008e1060.fn_0042496f(m_140);

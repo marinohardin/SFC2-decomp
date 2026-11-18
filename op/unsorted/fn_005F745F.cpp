@@ -253,7 +253,7 @@ fn_0055fe12_value fn_005f745f_object::FUN_005f75a3()
 
 // HYPOTHESIS: the destructor the compiler would generate; the original has an out-of-line copy
 // for the unwind of 0x005f75a3.
-// FUNCTION: STARFLEETOP 0x005f762d
+// Unclaimed: 0x005f762d is called from 0x005f7897 under another declaration; claimed again once the two are one.
 inline fn_0055fe12_value::~fn_0055fe12_value()
 {
 }
@@ -456,7 +456,7 @@ void fn_005f7a6a_object::FUN_005f7a6a( const int& value )
 	new( p ) int( value );
 }
 
-// FUNCTION: STARFLEETOP 0x005f7aeb
+// Unclaimed: 0x005f7aeb is called from 0x005d97a8 under another declaration; claimed again once the two are one.
 void fn_005f7a6a_object::FUN_005f7aeb()
 {
 	if ( field_10 != 0 ) {
@@ -660,7 +660,7 @@ void fn_005f7a6a_object::FUN_005f7dea( unsigned int count )
 	field_08 += count;
 }
 
-// FUNCTION: STARFLEETOP 0x005f7efa
+// Unclaimed: 0x005f7efa is called from 0x0045dd02 under another declaration; claimed again once the two are one.
 fn_005f7a4b_value& fn_005f7efa_iterator::FUN_005f7efa()
 {
 	unsigned int off = fIndex;

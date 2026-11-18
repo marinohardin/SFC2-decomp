@@ -27,7 +27,7 @@ template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, 
 // HYPOTHESIS: key and element are int; the value's copy constructor (0x0046180d) and destructor
 // (0x00402d42) are the vector's, out of line, and do not tell 4-byte element types apart.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
-// FUNCTION: STARFLEETOP 0x005fb06b
+// Unclaimed: 0x005fb06b calls 0x00402d42 under another name than the claim there; claimed again once the two are one.
 template<> std::vector<int>& std::map<int, std::vector<int> >::operator[]( const int& _Kv )
 {
 	iterator _P = insert( value_type( _Kv, std::vector<int>() ) ).first;
@@ -391,7 +391,7 @@ template<> void std::_Tree<int, std::pair<const int, std::string>, std::map<int,
 // HYPOTHESIS: the tree is the one of 0x005fb2cd; 0x005fba9d is the value's copy constructor,
 // 0x00556fd0 and 0x00558526 the rotations.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x005fb00a.
-// FUNCTION: STARFLEETOP 0x005fb71d
+// Unclaimed: 0x005fb71d calls 0x0040651e under another name than the claim there; claimed again once the two are one.
 template<> std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::iterator std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::_Insert( _Nodeptr _X, _Nodeptr _Y, const _Ty& _V )
 {
 	// MATCH-ONLY: the original's library built the node itself: colour byte at +0x20, nil flag at
@@ -637,7 +637,7 @@ void FUN_005fba36( const std::pair<const std::string*, const std::string*>& stri
 
 // HYPOTHESIS: as for 0x005fba36, the first argument holds the first and past-the-end string at
 // +0 and +4; it is written as a pair of pointers.
-// FUNCTION: STARFLEETOP 0x005fba75
+// Unclaimed: 0x005fba75 calls 0x0040651e under another name than the claim there; claimed again once the two are one.
 const std::string* FUN_005fba75( const std::pair<const std::string*, const std::string*>& strings, const std::string& value )
 {
 	return std::find( strings.first, strings.second, value );

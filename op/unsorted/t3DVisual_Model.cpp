@@ -664,7 +664,7 @@ void t3DVisual_Model::fn_004301bd(unsigned long size, tStream_BasicFile *stream)
 // HYPOTHESIS: reads one entry of the array at +0x158 from the stream.
 void fn_0042de34(tStream_BasicFile *stream, tEntry_0042f918 *entry);
 
-// FUNCTION: STARFLEETOP 0x004301e9
+// Unclaimed: 0x004301e9 calls 0x00571a7a under another name than the claim there; claimed again once the two are one.
 void t3DVisual_Model::fn_004301e9(unsigned long size, tStream_BasicFile *stream)
 {
 	std::vector<tEntry_0042f918> entries;

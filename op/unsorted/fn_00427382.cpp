@@ -359,7 +359,7 @@ inline unsigned int tObject_0042772f::fn_size() const
 }
 
 // HYPOTHESIS: the library's vector insert of aCount copies of aValue at aPos.
-// FUNCTION: STARFLEETOP 0x00427883
+// Unclaimed: 0x00427883 is called from 0x005bc138 under another declaration; claimed again once the two are one.
 void tObject_0042772f::fn_00427883( int *aPos, unsigned int aCount, const int& aValue )
 {
 	if ((unsigned int)(field_0xc - field_0x8) < aCount)
@@ -656,7 +656,7 @@ inline tShip::~tShip()
 // HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out. The original
 // copies the two string arrays in loops inside this function; the wrapper's copy here is
 // called out of line instead.
-// FUNCTION: STARFLEETOP 0x00427db2
+// Unclaimed: 0x00427db2 is called from 0x0054606f under another declaration; claimed again once the two are one.
 tObject_00427db2::tObject_00427db2( const tObject_00427db2& source )
 	: nDataStore::tStreamable( source ),
 	  field_0xc( source.field_0xc ),

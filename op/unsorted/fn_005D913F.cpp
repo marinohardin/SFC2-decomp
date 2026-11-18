@@ -296,7 +296,7 @@ inline fn_005d92b9_object::node *fn_005d92b9_object::fn_max(node *p)
 
 // HYPOTHESIS: the library's red-black tree erase; 0x00556fd0 and 0x00558526 are its left
 // and right rotations.
-// FUNCTION: STARFLEETOP 0x005d9441
+// Unclaimed: 0x005d9441 is called from 0x006e3c80 under another declaration; claimed again once the two are one.
 fn_005d92b9_object::iterator fn_005d92b9_object::fn_005d9441(iterator where)
 {
     node *x;
@@ -492,7 +492,7 @@ fn_005d97a8_object::~fn_005d97a8_object()
     fn_005d97c1();
 }
 
-// FUNCTION: STARFLEETOP 0x005d97c1
+// Unclaimed: 0x005d97c1 is called from 0x005f78e9, 0x005f7a32 under another declaration; claimed again once the two are one.
 void fn_005d97a8_object::fn_005d97c1()
 {
     for (unsigned int i = m_count; i > 0; )
@@ -563,7 +563,7 @@ void fn_005d987d(tMetaMapHex *param_1, int param_2, float *param_3, int *param_4
 // HYPOTHESIS: returns the game's settings object; its name and owner are not known.
 tSettings *fn_0040c868();
 
-// FUNCTION: STARFLEETOP 0x005d9901
+// Unclaimed: 0x005d9901 calls 0x00402d42 under another name than the claim there; claimed again once the two are one.
 std::string fn_005d9901(unsigned int param_1)
 {
     std::string unused;

@@ -560,7 +560,7 @@ template<> tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper()
 	Delete();
 }
 
-// FUNCTION: STARFLEETOP 0x0042c709
+// Unclaimed: 0x0042c709 is the folded Lock of several wrappers (0x0042aaeb, 0x0042ab08, 0x005434dd).
 template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<std::vector<int> >::Lock()
 {
 	fPointerOptex.Enter();
@@ -681,8 +681,7 @@ template<> tInput& operator>>( tInput& input, std::vector< tServCharacter::tShip
 
 
 // HYPOTHESIS: the key of fn_0042c360_Value is a pair of ints compared as std::pair's operator<
-// (first, then second).
-// FUNCTION: STARFLEETOP 0x0042c8f7
+// (first, then second). Unclaimed: 0x0042c8f7 is folded with other compares (0x0042c4e6, 0x005ea63f).
 bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right)
 {
 	const int* x = (const int*)left.m00_data;
@@ -894,7 +893,7 @@ public:
 	std::string m00;
 };
 
-// FUNCTION: STARFLEETOP 0x0042cd23
+// Unclaimed: 0x0042cd23 calls 0x004021b8, 0x004033ab under another name than the claim there; claimed again once the two are one.
 fn_0042cd23_Class::fn_0042cd23_Class()
 {
 	std::string path;

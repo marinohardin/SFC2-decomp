@@ -609,7 +609,7 @@ public:
 // arguments, so it is __stdcall.
 void __stdcall FUN_0042b396( int target, int flag, int value );
 
-// FUNCTION: STARFLEETOP 0x0042adc1
+// Unclaimed: 0x0042adc1 is the library's vector<unsigned char>::push_back, as its callers 0x00538d00 and 0x00544db7 name it.
 void fn_0042adc1_object::FUN_0042adc1( int value )
 {
 	FUN_0042b396( field_08, 1, value );
@@ -618,7 +618,7 @@ void fn_0042adc1_object::FUN_0042adc1( int value )
 // HYPOTHESIS: argument types follow FUN_0042b396; the callee pops its arguments.
 void __stdcall FUN_0042b50c( int target, int flag, int value );
 
-// FUNCTION: STARFLEETOP 0x0042add2
+// Unclaimed: 0x0042add2 is the library's vector<tID>::push_back, which develop's callers name under two classes.
 void fn_0042adc1_object::FUN_0042add2( int value )
 {
 	FUN_0042b50c( field_08, 1, value );
@@ -643,7 +643,7 @@ tObject_0042ade3::~tObject_0042ade3()
 void __stdcall FUN_0042baff( int target, int flag, int value );
 
 // HYPOTHESIS: same shape as FUN_0042adc1, so the same object type.
-// FUNCTION: STARFLEETOP 0x0042aff3
+// Unclaimed: 0x0042aff3 is the library's vector<tShipCache>::push_back, as 0x0042c863 names it.
 void fn_0042adc1_object::FUN_0042aff3( int value )
 {
 	FUN_0042baff( field_08, 1, value );

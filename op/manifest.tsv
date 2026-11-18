@@ -410,25 +410,24 @@ address	size	symbol	source	modes
 0x00426ca8	160	tObject_00426ca8::fn_00426ca8(int,int)	Source/entity/team.cpp	vc6 guest
 0x0042739e	77	tCurrentTime::tCurrentTime(const tCurrentTime&)	unsorted/fn_00427382.cpp	vc6
 0x004273eb	83	tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector(const tPoliticalTensionVector&)	unsorted/fn_00427382.cpp	vc6
-0x0042748f	41	fn_0042748f(tID)	unsorted/fn_00427382.cpp	vc6
+0x0042748f	41	tObject_0090be60::fn_0042748f(int)	unsorted/fn_00427382.cpp	vc6 guest
 0x004274b8	60	fn_004274b8(tID,int)	unsorted/fn_00427382.cpp	vc6
-0x004274f4	27	fn_004274f4(tID)	unsorted/fn_00427382.cpp	vc6
-0x0042750f	43	tObject_0042750f::fn_0042750f(int)	unsorted/fn_00427382.cpp	vc6 guest
-0x0042753a	34	tObject_0042750f::fn_0042753a(int)	unsorted/fn_00427382.cpp	vc6 guest
-0x0042755c	37	tObject_0042750f::fn_0042755c(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x00427581	45	tObject_0042750f::fn_00427581(int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x004275ae	80	tObject_0042750f::fn_004275ae(tID,tID)	unsorted/fn_00427382.cpp	vc6 guest
-0x004275fe	37	tObject_0042750f::fn_004275fe(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x00427623	37	tObject_0042750f::fn_00427623(int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x00427648	33	tObject_0042750f::fn_00427648(int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x00427669	44	tObject_0042750f::fn_00427669(tEntity *,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x00427695	42	tObject_0042750f::fn_00427695(int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x004276bf	37	tObject_0042750f::fn_004276bf(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
-0x004276e4	75	tObject_0042750f::fn_004276e4(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x004274f4	27	tObject_0090be60::fn_004274f4(int)	unsorted/fn_00427382.cpp	vc6 guest
+0x0042750f	43	tObject_0090be60::fn_0042750f(int)	unsorted/fn_00427382.cpp	vc6 guest
+0x0042753a	34	tObject_0090be60::fn_0042753a(int)	unsorted/fn_00427382.cpp	vc6 guest
+0x0042755c	37	tObject_0090be60::fn_0042755c(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x00427581	45	tObject_0090be60::fn_00427581(int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x004275ae	80	tObject_0090be60::fn_004275ae(long,long)	unsorted/fn_00427382.cpp	vc6 guest
+0x004275fe	37	tObject_0090be60::fn_004275fe(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x00427623	37	tObject_0090be60::fn_00427623(int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x00427648	33	tObject_0090be60::fn_00427648(int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x00427669	44	tObject_0090be60::fn_00427669(tEntity *,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x00427695	42	tObject_0090be60::fn_00427695(int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x004276bf	37	tObject_0090be60::fn_004276bf(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
+0x004276e4	75	tObject_0090be60::fn_004276e4(int,int,int)	unsorted/fn_00427382.cpp	vc6 guest
 0x0042772f	17	tObject_0042772f::fn_0042772f(const int&)	unsorted/fn_00427382.cpp	vc6 guest
 0x00427740	110	vector(const std::vector< tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension >&)	unsorted/fn_00427382.cpp	vc6 guest
 0x004277ae	53	~vector()	unsorted/fn_00427382.cpp	vc6 guest
-0x00427883	464	tObject_0042772f::fn_00427883(int *,unsigned int,const int&)	unsorted/fn_00427382.cpp	vc6 guest
 0x00427a53	55	_Construct(tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *,const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension&)	unsorted/fn_00427382.cpp	vc6 guest
 0x00427a8a	45	_Construct(tPlayingTeamInfo *,const tPlayingTeamInfo&)	unsorted/fn_00427382.cpp	vc6 guest
 0x00427ab7	195	tPlayingTeamInfo::tPlayingTeamInfo(const tPlayingTeamInfo&)	unsorted/fn_00427382.cpp	vc6
@@ -437,7 +436,6 @@ address	size	symbol	source	modes
 0x00427c1d	45	_Construct(tShip *,const tShip&)	unsorted/fn_00427382.cpp	vc6 guest
 0x00427c6b	299	tShip::tShip(const tShip&)	unsorted/fn_00427382.cpp	vc6
 0x00427d96	28	tShip::`scalar deleting destructor'	unsorted/fn_00427382.cpp	vc6
-0x00427db2	512	tObject_00427db2::tObject_00427db2(const tObject_00427db2&)	unsorted/fn_00427382.cpp	partial
 0x00427fb2	104	tOfficerList::tOfficerList(const tOfficerList&)	unsorted/fn_00427382.cpp	partial
 0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial
 0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6
@@ -461,7 +459,7 @@ address	size	symbol	source	modes
 0x0042a403	23	fn_0042a480_object::FUN_0042a403(int)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a41a	7	fn_0042a480_object::FUN_0042a41a()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a421	62	fn_0042a480_object::FUN_0042a421(int,int)	unsorted/fn_0042A000.cpp	vc6 guest
-0x0042a45f	33	fn_0042a45f_object::FUN_0042a45f()	unsorted/fn_0042A000.cpp	vc6 guest
+0x0042a45f	33	fn_0042a480_object::FUN_0042a45f()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a480	119	fn_0042a480_object::FUN_0042a480()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a4f7	62	fn_0042a480_object::FUN_0042a4f7(std::string)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a535	82	fn_0042a480_object::FUN_0042a535(const std::string&)	unsorted/fn_0042A000.cpp	vc6 guest
@@ -496,10 +494,7 @@ address	size	symbol	source	modes
 0x0042ac36	32	fn_0042a480_object::FUN_0042ac36()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	partial
 0x0042ada1	32	fn_0042a480_object::FUN_0042ada1()	unsorted/fn_0042A000.cpp	vc6 guest
-0x0042adc1	17	fn_0042adc1_object::FUN_0042adc1(int)	unsorted/fn_0042A000.cpp	vc6 guest
-0x0042add2	17	fn_0042adc1_object::FUN_0042add2(int)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ade3	56	tObject_0042ade3::~tObject_0042ade3()	unsorted/fn_0042A000.cpp	vc6
-0x0042aff3	17	fn_0042adc1_object::FUN_0042aff3(int)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042c053	129	fn_0042c053_Tree::fn_0042c053(fn_0042c053_Node*,fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	partial
 0x0042c0d4	56	fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	partial
 0x0042c10c	596	fn_0042c10c_Vector::fn_0042c10c(fn_0042c10c_Elem*,unsigned int,const fn_0042c10c_Elem&)	unsorted/fn_0042C000.cpp	vc6 guest
@@ -510,7 +505,6 @@ address	size	symbol	source	modes
 0x0042c66d	50	fn_0042c632_Iterator::fn_0042c66d()	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c69f	59	fn_0042c69f_Iterator::fn_0042c69f()	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c6da	47	~tSingleAccessWrapper()	unsorted/fn_0042C000.cpp	partial
-0x0042c709	38	Lock()	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c72f	47	~tSingleAccessWrapper()	unsorted/fn_0042C000.cpp	partial
 0x0042c75e	43	~tAccessPointer()	unsorted/fn_0042C000.cpp	partial
 0x0042c789	43	~tAccessPointer()	unsorted/fn_0042C000.cpp	partial
@@ -518,7 +512,6 @@ address	size	symbol	source	modes
 0x0042c7df	43	~tAccessPointer()	unsorted/fn_0042C000.cpp	partial
 0x0042c80a	89	operator<<(tOutput&,const std::vector< tServCharacter::tShipCache >&)	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c863	148	operator>>(tInput&,std::vector< tServCharacter::tShipCache >&)	unsorted/fn_0042C000.cpp	vc6 guest
-0x0042c8f7	36	fn_0042c8f7(const fn_0042c360_Value&,const fn_0042c360_Value&)	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c91b	45	_Construct(tServCharacter::tShipCache*,const tServCharacter::tShipCache&)	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c948	62	fn_0042c948(void*,const void*)	unsorted/fn_0042C000.cpp	vc6 guest
 0x0042c986	43	_Construct(nDatabase::tID*,const nDatabase::tID&)	unsorted/fn_0042C000.cpp	vc6 guest
@@ -533,7 +526,6 @@ address	size	symbol	source	modes
 0x0042cc94	12	g_008f5330 (atexit registration)	unsorted/fn_0042C000.cpp	vc6
 0x0042ccc7	51	g_008f5318 (dynamic initializer)	unsorted/fn_0042C000.cpp	vc6
 0x0042ccfa	12	g_008f5318 (atexit registration)	unsorted/fn_0042C000.cpp	vc6
-0x0042cd23	395	fn_0042cd23_Class::fn_0042cd23_Class()	unsorted/fn_0042C000.cpp	vc6
 0x0042cfd9	160	fn_0042cfd9_Class::fn_0042cfd9(const std::string&,int)	unsorted/fn_0042C000.cpp	partial
 0x0042f858	164	t3DVisual_Model::t3DVisual_Model()	unsorted/t3DVisual_Model.cpp	vc6
 0x0042f8fc	28	t3DVisual_Model::`scalar deleting destructor'	unsorted/t3DVisual_Model.cpp	vc6
@@ -560,7 +552,6 @@ address	size	symbol	source	modes
 0x0042febe	59	t3DVisual_Model::fn_0042febe(int,int,int,int,tEntry_0042f918 **)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fef9	635	t3DVisual_Model::fn_0042fef9(const char *)	unsorted/t3DVisual_Model.cpp	partial
 0x004301bd	44	t3DVisual_Model::fn_004301bd(unsigned long,tStream_BasicFile *)	unsorted/t3DVisual_Model.cpp	vc6 guest
-0x004301e9	255	t3DVisual_Model::fn_004301e9(unsigned long,tStream_BasicFile *)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x004302e8	127	t3DVisual_Model::fn_004302e8(unsigned long,tStream_BasicFile *)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x00430367	271	t3DVisual_Model::fn_00430367()	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x00430476	54	t3DVisual_Model::vfunction28(int)	unsorted/t3DVisual_Model.cpp	vc6 guest
@@ -1627,7 +1618,6 @@ address	size	symbol	source	modes
 0x0050f24d	85	tSndMgr_Miles::vfunction4()	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f2a2	74	tSndMgr_Miles::vfunction5(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f2ec	16	tSndMgr_Miles::vfunction6()	unsorted/tSndMgr_Miles.cpp	vc6 guest
-0x0050f2fc	764	tSndMgr_Miles::vfunction29(long,long,char,unsigned long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f5f8	119	tSndMgr_Miles::vfunction8(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f66f	34	tSndMgr_Miles::vfunction9()	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f691	35	tSndMgr_Miles::vfunction10(long,long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
@@ -1644,8 +1634,6 @@ address	size	symbol	source	modes
 0x0050f9af	39	tSndMgr_Miles::vfunction23()	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f9d6	13	tSndMgr_Miles::vfunction24(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050f9e3	7	tSndMgr_Miles::vfunction25()	unsorted/tSndMgr_Miles.cpp	vc6 guest
-0x0050f9ea	82	tSndMgr_Miles::fn_0050f9ea(long,long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
-0x0050fa3c	200	tSndMgr_Miles::fn_0050fa3c(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050fb04	58	tSndMgr_Miles::fn_0050fb04(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050fb3e	102	tSndMgr_Miles::fn_0050fb3e(unsigned long,long)	unsorted/tSndMgr_Miles.cpp	vc6 guest
 0x0050fba4	143	tSndMgr_Miles::fn_0050fba4(long,char *)	unsorted/tSndMgr_Miles.cpp	vc6 guest
@@ -1745,8 +1733,6 @@ address	size	symbol	source	modes
 0x00523428	29	fn_0090bed4_Object::fn_00523428(unsigned char)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523445	254	fn_0090bed4_Object::fn_00523445(unsigned char,char)	unsorted/fn_00523000.cpp	partial
 0x00523543	49	fn_0090bed4_Object::fn_00523543(int)	unsorted/fn_00523000.cpp	vc6 guest
-0x00523574	51	fn_0090bed4_Object::fn_00523574(int)	unsorted/fn_00523000.cpp	vc6 guest
-0x005235a7	33	fn_0090bed4_Object::fn_005235a7(int)	unsorted/fn_00523000.cpp	vc6 guest
 0x005235c8	29	fn_0090bed4_Object::fn_005235c8(fn_004e2b02_ship_type *)	unsorted/fn_00523000.cpp	vc6 guest
 0x005235e5	95	fn_0090bed4_Object::fn_005235e5(fn_0090bed4_Object *,char,int,int,int)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523644	36	tObject_00523644::tObject_00523644()	unsorted/fn_00523000.cpp	vc6
@@ -1759,15 +1745,9 @@ address	size	symbol	source	modes
 0x005237b8	25	tObject_005236ea_Entry::tObject_005236ea_Entry(float,bool,tObject_005236ea_Target *)	unsorted/fn_00523000.cpp	vc6
 0x005237d1	11	tObject_005237d1::tObject_005237d1()	unsorted/fn_00523000.cpp	vc6
 0x005237dc	195	tObject_005237dc::tObject_005237dc(int)	unsorted/fn_00523000.cpp	partial
-0x0052389f	11	tObject_005237dc::~tObject_005237dc()	unsorted/fn_00523000.cpp	vc6
-0x005238aa	45	tObject_005237dc::fn_005238aa(void *)	unsorted/fn_00523000.cpp	vc6 guest
-0x005238d7	144	tObject_005237dc::fn_005238d7(int,float,bool,int,int *)	unsorted/fn_00523000.cpp	vc6 guest
-0x00523967	287	tObject_005237dc::fn_00523967()	unsorted/fn_00523000.cpp	vc6 guest
 0x00523ad3	42	tObject_005237dc::fn_00523ad3()	unsorted/fn_00523000.cpp	vc6 guest
-0x00523afd	324	tObject_005237dc::fn_00523afd(tObject_00528a11 *)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523c41	24	tObject_005237dc::fn_00523c41(int)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523c59	537	tObject_005237dc::fn_00523c59()	unsorted/fn_00523000.cpp	vc6 guest
-0x00523e72	395	tObject_005237dc::fn_00523e72(float)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523ffd	147	tObject_005237dc::fn_00523ffd(float,bool)	unsorted/fn_00523000.cpp	vc6 guest
 0x0053434b	4	fn_0053434b_object::fn_0053434b() const	unsorted/fn_0053434B.cpp	vc6 guest
 0x00534391	10	g_00c2f3f8 (dynamic initializer)	unsorted/fn_0053434B.cpp	vc6
@@ -2535,18 +2515,15 @@ address	size	symbol	source	modes
 0x005d9329	116	fn_005d9281_tree::fn_005d9329(iterator,iterator)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d939d	116	fn_005d92b9_object::fn_005d939d(iterator,iterator)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9411	48	fn_005d9281_tree::fn_005d9411(node *)	unsorted/fn_005D913F.cpp	partial
-0x005d9441	619	fn_005d92b9_object::fn_005d9441(iterator)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d96ac	56	fn_005d92b9_object::fn_005d96ac(node *)	unsorted/fn_005D913F.cpp	partial
 0x005d9750	15	g_00c38968 (dynamic initializer)	unsorted/fn_005D913F.cpp	vc6
 0x005d975f	12	g_00c38968 (atexit registration)	unsorted/fn_005D913F.cpp	vc6
 0x005d978b	29	fn_005d978b_object::~fn_005d978b_object()	unsorted/fn_005D913F.cpp	vc6
 0x005d97a8	25	fn_005d97a8_object::~fn_005d97a8_object()	unsorted/fn_005D913F.cpp	vc6
-0x005d97c1	46	fn_005d97a8_object::fn_005d97c1()	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9831	20	fn_005d9831(int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9845	20	fn_005d9845(int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9859	36	fn_005d9859(int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d987d	132	fn_005d987d(tMetaMapHex *,int,float *,int *)	unsorted/fn_005D913F.cpp	vc6 guest
-0x005d9901	310	fn_005d9901(unsigned int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9a6f	183	fn_005d9a6f(const char *)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9b26	50	fn_005d9b26_object::fn_005d9b26_object(const std::string &)	unsorted/fn_005D913F.cpp	vc6
 0x005d9b58	96	fn_005d9b26_object::fn_005d9b58(const char *)	unsorted/fn_005D913F.cpp	vc6 guest
@@ -2558,11 +2535,7 @@ address	size	symbol	source	modes
 0x005d9e88	171	fn_005d9b26_object::fn_005d9e88(const unsigned char *,unsigned int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9f33	203	fn_005d9b26_object::fn_005d9f33(HKEY) const	unsorted/fn_005D913F.cpp	partial
 0x005d9ffe	239	fn_005d9b26_object::fn_005d9ffe(HKEY)	unsorted/fn_005D913F.cpp	vc6 guest
-0x005de0cf	233	fn_005de0cf_Pred::operator()(tNewsStory*,tNewsStory*) const	unsorted/fn_005DE000.cpp	vc6 guest
-0x005de1b8	106	fn_005de1b8_Pred::operator()(tNewsStory*,tNewsStory*) const	unsorted/fn_005DE000.cpp	vc6 guest
-0x005de222	106	fn_005de222_Pred::operator()(tNewsStory*,tNewsStory*) const	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de28c	485	fn_005de28c_Vector::fn_005de28c(tNewsStory**,tNewsStory* const*,tNewsStory* const*)	unsorted/fn_005DE000.cpp	vc6 guest
-0x005de471	464	fn_005de28c_Vector::fn_005de471(tNewsStory**,unsigned int,tNewsStory* const&)	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de641	31	CreateCallback(tMetaClientNewsCtlrC*,void (tMetaClientNewsCtlrC::*func)( tNewsStory* result ))	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de660	7	~tMemberCallback()	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de667	63	fn_005de667(tNewsStory** range[2],const tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >&)	unsorted/fn_005DE000.cpp	vc6 guest
@@ -2731,7 +2704,6 @@ address	size	symbol	source	modes
 0x005f7526	54	fn_005f74a6_entry::fn_005f74a6_entry(const fn_005f74a6_entry&)	unsorted/fn_005F745F.cpp	vc6
 0x005f755c	71	fn_005f745f_object::FUN_005f755c(const fn_0055fe12_value&)	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f75a3	138	fn_005f745f_object::FUN_005f75a3()	unsorted/fn_005F745F.cpp	partial
-0x005f762d	8	fn_0055fe12_value::~fn_0055fe12_value()	unsorted/fn_005F745F.cpp	vc6
 0x005f7635	72	fn_005f745f_object::FUN_005f7635(int)	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f767d	88	fn_005f745f_object::FUN_005f767d()	unsorted/fn_005F745F.cpp	partial
 0x005f76d5	35	fn_005f745f_object::FUN_005f76d5()	unsorted/fn_005F745F.cpp	vc6 guest
@@ -2748,17 +2720,14 @@ address	size	symbol	source	modes
 0x005f7a32	25	fn_005f7961_object::~fn_005f7961_object()	unsorted/fn_005F745F.cpp	vc6
 0x005f7a4b	31	fn_005f7a6a_object::FUN_005f7a4b()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7a6a	129	fn_005f7a6a_object::FUN_005f7a6a(const int&)	unsorted/fn_005F745F.cpp	vc6 guest
-0x005f7aeb	19	fn_005f7a6a_object::FUN_005f7aeb()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7afe	281	fn_005f77c6_object::FUN_005f7afe(unsigned int)	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7c17	52	fn_005f7c17_iterator::FUN_005f7c17()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7c4b	82	fn_005f7961_object::FUN_005f7c4b()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7c9d	281	fn_005f7961_object::FUN_005f7c9d(unsigned int)	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7db6	52	fn_005f7db6_iterator::FUN_005f7db6()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005f7dea	272	fn_005f7a6a_object::FUN_005f7dea(unsigned int)	unsorted/fn_005F745F.cpp	vc6 guest
-0x005f7efa	38	fn_005f7efa_iterator::FUN_005f7efa()	unsorted/fn_005F745F.cpp	vc6 guest
 0x005fb00a	41	operator[](const int&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb033	56	~_Tree()	unsorted/fn_005FB000.cpp	partial
-0x005fb06b	121	operator[](const int&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb0e4	56	~_Tree()	unsorted/fn_005FB000.cpp	partial
 0x005fb124	42	insert(iterator,const std::string&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb14e	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	partial
@@ -2771,7 +2740,6 @@ address	size	symbol	source	modes
 0x005fb3df	155	insert(const value_type&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb47a	619	erase(iterator)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb6e5	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	partial
-0x005fb71d	330	_Insert(_Nodeptr,_Nodeptr,const _Ty&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb867	324	_Insert(_Nodeptr,_Nodeptr,const _Ty&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb9ab	31	CreateCallback(tMetaClientChatCtlrC*,void (tMetaClientChatCtlrC::*func)( const tChatChannel& result ))	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fb9ca	7	~tMemberCallback()	unsorted/fn_005FB000.cpp	vc6 guest
@@ -2779,7 +2747,6 @@ address	size	symbol	source	modes
 0x005fba10	31	CreateCallback(tMetaClientChatCtlrC*,void (tMetaClientChatCtlrC::*func)( const std::string& result ))	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fba2f	7	~tMemberCallback()	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fba36	63	FUN_005fba36(const std::pair<const std::string*, const std::string*>&,const tMemberCallback< tMetaClientChatCtlrC, const std::string& >&)	unsorted/fn_005FB000.cpp	vc6 guest
-0x005fba75	40	FUN_005fba75(const std::pair<const std::string*, const std::string*>&,const std::string&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fba9d	45	_Construct(fn_0055fe12_value *,const fn_0055fe12_value&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fbaca	56	_Construct(std::pair<const int, std::vector<int> > *,const std::pair<const int, std::vector<int> >&)	unsorted/fn_005FB000.cpp	vc6 guest
 0x005fbb1f	28	~tMemberCallback()	unsorted/fn_005FB000.cpp	vc6 guest

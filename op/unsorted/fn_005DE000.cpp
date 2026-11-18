@@ -8,7 +8,7 @@ struct fn_005de0cf_Pred
 {
 	bool operator()( tNewsStory* a, tNewsStory* b ) const;
 };
-// FUNCTION: STARFLEETOP 0x005de0cf
+// Unclaimed: 0x005de0cf calls 0x0040651e under another name than the claim there; claimed again once the two are one.
 bool fn_005de0cf_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 {
 	bool less;
@@ -33,7 +33,7 @@ struct fn_005de1b8_Pred
 {
 	bool operator()( tNewsStory* a, tNewsStory* b ) const;
 };
-// FUNCTION: STARFLEETOP 0x005de1b8
+// Unclaimed: 0x005de1b8 calls 0x0040651e under another name than the claim there; claimed again once the two are one.
 bool fn_005de1b8_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 {
 	bool less;
@@ -57,7 +57,7 @@ struct fn_005de222_Pred
 {
 	bool operator()( tNewsStory* a, tNewsStory* b ) const;
 };
-// FUNCTION: STARFLEETOP 0x005de222
+// Unclaimed: 0x005de222 calls 0x0040651e under another name than the claim there; claimed again once the two are one.
 bool fn_005de222_Pred::operator()( tNewsStory* a, tNewsStory* b ) const
 {
 	bool less;
@@ -182,7 +182,7 @@ inline void fn_005de471_fill(tNewsStory** f, tNewsStory** l, tNewsStory* const& 
 }
 
 // HYPOTHESIS: the same vector's insert of m copies of x before p.
-// FUNCTION: STARFLEETOP 0x005de471
+// Unclaimed: 0x005de471 is called from 0x00571a69 under another declaration; claimed again once the two are one.
 void fn_005de28c_Vector::fn_005de471(tNewsStory** p, unsigned int m, tNewsStory* const& x)
 {
 	if ((unsigned int)(m0c_end - m08_last) < m)
