@@ -30,13 +30,13 @@ tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector( const
 {
 }
 
-// HYPOTHESIS: the original declares no destructor; its compiler-generated one stores no
-// vtable. That one has no source line to claim, so this declared one (which stores the
-// vtable) stands in for it.
-// FUNCTION: STARFLEETOP 0x0042743e
-tPoliticalTensionMatrix::tPoliticalTensionVector::~tPoliticalTensionVector()
-{
-}
+// 0x0042743e is tPoliticalTensionVector's implicit destructor: the original declares none, and
+// the compiler-generated one stores no vtable. It has no source line of its own, so it is not
+// written here.
+//
+//
+//
+//
 
 // HYPOTHESIS: the team of the entity with the ID, or -1 when there is no such entity. It
 // clears its argument on return and never reads ecx: a __stdcall function, or a member of a
@@ -276,16 +276,10 @@ void tObject_0042772f::fn_0042772f( const int& aArg )
 	fn_00427883( field_0x8, 1, aArg );
 }
 
-// MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines here.
+// MATCH-ONLY: the library's _Construct for one element, written out (below, at 0x00427a53) so that it has source lines here.
 namespace std
 {
 inline void _Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V );
-}
-
-// FUNCTION: STARFLEETOP 0x00427a53
-inline void std::_Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V )
-{
-	new ((void *)_P) tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension( _V );
 }
 
 // MATCH-ONLY: the library's copy constructor of the vector at 0x10 of tPoliticalTensionVector,
@@ -564,6 +558,12 @@ public:
 	int8u				field_0x54;
 };
 
+// FUNCTION: STARFLEETOP 0x00427a53
+inline void std::_Construct( tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension *_P, const tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension& _V )
+{
+	new ((void *)_P) tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTension( _V );
+}
+
 // MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
 // here; not inline, since nothing in this unit instantiates it.
 namespace std
@@ -594,7 +594,7 @@ tPlayingTeamInfo::tPlayingTeamInfo( const tPlayingTeamInfo& source )
 {
 }
 
-// HYPOTHESIS: the implicit destructor, written out; not inlined into the deleting destructor,
+// MATCH-ONLY: the implicit destructor, written out; not inlined into the deleting destructor,
 // whose call the linker bound to the copy at 0x0053e638.
 // FUNCTION: STARFLEETOP 0x00427b96
 inline tPlayingTeamInfo::~tPlayingTeamInfo()
@@ -646,7 +646,7 @@ tShip::tShip( const tShip& source )
 {
 }
 
-// HYPOTHESIS: the implicit destructor, written out; not inlined into the deleting destructor,
+// MATCH-ONLY: the implicit destructor, written out; not inlined into the deleting destructor,
 // whose call the linker bound to the copy at 0x0042801a.
 // FUNCTION: STARFLEETOP 0x00427d96
 inline tShip::~tShip()

@@ -861,7 +861,7 @@ class tCampaignInfo : public nDatabase::tDatabaseObject
 {
 public:
 	tCampaignInfo( std::istream& in );
-	virtual ~tCampaignInfo();
+	// The destructor is implicit (0x0042ceae stores no vtable).
 
 	std::string m48;
 	std::string m58;
@@ -906,13 +906,13 @@ fn_0042cd23_Class::fn_0042cd23_Class()
 	m00 = info.m48;
 }
 
-// HYPOTHESIS: the original declares no destructor. Its compiler-generated one (0x0042ceae)
-// stores no vtable; the harness cannot claim a function with no source line, so this declared
-// one (which stores both vtables, 13 bytes more) stands in for it, as for tCampaignState.
-// FUNCTION: STARFLEETOP 0x0042ceae
-tCampaignInfo::~tCampaignInfo()
-{
-}
+// 0x0042ceae is tCampaignInfo's implicit destructor: the original declares none, and the
+// compiler-generated one stores no vtable. It has no source line of its own, so it is not
+// written here.
+//
+//
+//
+//
 
 #include <sstream>
 

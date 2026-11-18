@@ -713,9 +713,9 @@ public:
     fn_006ee740_result fn_006ee740(const unsigned char *data, unsigned int size);
 
     char m_0x00[0x1048];
-    // HYPOTHESIS: two byte strings, destroyed by 0x005d9e48 through 0x005da20a (_Tidy).
-    std::basic_string< unsigned char > m1048;
-    std::basic_string< unsigned char > m1058;
+    // HYPOTHESIS: two strings, destroyed by 0x005d9e48 through 0x005da20a (std::string's _Tidy).
+    std::string m1048;
+    std::string m1058;
     char m_0x1068[0x4c];
 };
 

@@ -422,8 +422,8 @@ void fn_0042a480_object::FUN_0042a7bf( const std::vector< fn_0054185f_ship >& sh
 	caches.Done();
 }
 
+// MATCH-ONLY: the class's implicit destructor (0x0042a863, unclaimed), written out for its deleting one.
 // FUNCTION: STARFLEETOP 0x0042cb29
-// FUNCTION: STARFLEETOP 0x0042a863
 tServCharacter::tShipCache::~tShipCache()
 {
 }

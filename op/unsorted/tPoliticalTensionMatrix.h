@@ -35,7 +35,7 @@ public:
 		};
 
 		tPoliticalTensionVector( const tPoliticalTensionVector& source );
-		virtual ~tPoliticalTensionVector();
+		// The destructor is implicit: 0x0042743e stores no vtable.
 
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );

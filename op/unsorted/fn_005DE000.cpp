@@ -241,28 +241,28 @@ inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* >::~tMemberCallback()
 
 #include <algorithm>
 
+namespace std {
 // MATCH-ONLY: the library's template for_each, written out as this instance's inline explicit
 // specialization so that its annotation names the one instance; the body is the template's.
-namespace std {
+// An explicit specialization precedes its first use (0x005de667), so it is out of address order.
 // FUNCTION: STARFLEETOP 0x005de81b
-template<>
-inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > for_each( tNewsStory** _F, tNewsStory** _L, tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > _Op )
+template<> inline tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > for_each( tNewsStory** _F, tNewsStory** _L, tMemberCallback< tMetaClientNewsCtlrC, tNewsStory* > _Op )
 {
 	for (; _F != _L; ++_F)
 		_Op(*_F);
 	return (_Op);
 }
+// MATCH-ONLY: as 0x005de81b, for the menu item type instance.
 // FUNCTION: STARFLEETOP 0x005de869
-template<>
-inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > for_each( tMetaClientNewsCtlrC::tMenuItem::eType* _F, tMetaClientNewsCtlrC::tMenuItem::eType* _L, tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > _Op )
+template<> inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > for_each( tMetaClientNewsCtlrC::tMenuItem::eType* _F, tMetaClientNewsCtlrC::tMenuItem::eType* _L, tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem::eType > _Op )
 {
 	for (; _F != _L; ++_F)
 		_Op(*_F);
 	return (_Op);
 }
+// MATCH-ONLY: as 0x005de81b, for the menu item instance.
 // FUNCTION: STARFLEETOP 0x005de8b7
-template<>
-inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > for_each( tMetaClientNewsCtlrC::tMenuItem** _F, tMetaClientNewsCtlrC::tMenuItem** _L, tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > _Op )
+template<> inline tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > for_each( tMetaClientNewsCtlrC::tMenuItem** _F, tMetaClientNewsCtlrC::tMenuItem** _L, tMemberCallback< tMetaClientNewsCtlrC, tMetaClientNewsCtlrC::tMenuItem* > _Op )
 {
 	for (; _F != _L; ++_F)
 		_Op(*_F);

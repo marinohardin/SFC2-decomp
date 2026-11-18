@@ -1738,15 +1738,6 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
-  "0x00427382": {
-   "name": "tMatchedMission::scalar_deleting_destructor",
-   "symbol": "??_GtMatchedMission@@UAEPAXI@Z",
-   "unit": "unsorted/tMatchedMission.cpp",
-   "size": 28,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-16"
-  },
   "0x0042739e": {
    "name": "nStoredProcedureArguments::tTransactionUpdateStoresRequest::tTransactionUpdateStoresRequest",
    "symbol": "??0tCurrentTime@@QAE@ABV0@@Z",
@@ -1763,15 +1754,6 @@
    "size": 83,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-16"
-  },
-  "0x0042743e": {
-   "name": "tPoliticalTensionMatrix::tPoliticalTensionVector::~tPoliticalTensionVector",
-   "symbol": "??1tPoliticalTensionVector@tPoliticalTensionMatrix@@UAE@XZ",
-   "unit": "unsorted/fn_00427382.cpp",
-   "size": 53,
-   "score": 62.053,
-   "exact": false,
    "recorded": "2026-11-16"
   },
   "0x0042748f": {
@@ -2377,15 +2359,6 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
-  "0x0042a863": {
-   "name": "tServCharacter::tShipCache::~tShipCache",
-   "symbol": "??1tShipCache@tServCharacter@@UAE@XZ",
-   "unit": "unsorted/fn_0042A000.cpp",
-   "size": 84,
-   "score": 23.158,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
   "0x0042a8b7": {
    "name": "FUN_0042a8b7",
    "symbol": "?FUN_0042a8b7@fn_0042a480_object@@QAEXH@Z",
@@ -2888,15 +2861,6 @@
    "size": 395,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x0042ceae": {
-   "name": "tCampaignInfo::~tCampaignInfo",
-   "symbol": "??1tCampaignInfo@@UAE@XZ",
-   "unit": "unsorted/fn_0042C000.cpp",
-   "size": 257,
-   "score": 16.082,
-   "exact": false,
    "recorded": "2026-11-17"
   },
   "0x0042cfd9": {
@@ -8241,9 +8205,9 @@
    "symbol": "??1fn_006ed560_object@@QAE@XZ",
    "unit": "unsorted/fn_005D913F.cpp",
    "size": 64,
-   "score": 99.474,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-18"
   },
   "0x005d9e88": {
    "name": "FUN_005d9e88",
@@ -8882,24 +8846,6 @@
    "size": 38,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x005f7f79": {
-   "name": "FUN_005f7f79",
-   "symbol": "?FUN_005f7f79@@YAXXZ",
-   "unit": "unsorted/fn_005F745F.cpp",
-   "size": 1,
-   "score": 40.0,
-   "exact": false,
-   "recorded": "2026-11-17"
-  },
-  "0x005f7fd3": {
-   "name": "FUN_005f7fd3",
-   "symbol": "?FUN_005f7fd3@@YAXXZ",
-   "unit": "unsorted/fn_005F745F.cpp",
-   "size": 1,
-   "score": 40.0,
-   "exact": false,
    "recorded": "2026-11-17"
   },
   "0x005fb00a": {

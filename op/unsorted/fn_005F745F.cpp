@@ -672,12 +672,12 @@ fn_005f7a4b_value& fn_005f7efa_iterator::FUN_005f7efa()
 	return fOwner->field_04[block][index];
 }
 
-// FUNCTION: STARFLEETOP 0x005f7f79
-void FUN_005f7f79()
-{
-}
-
-// FUNCTION: STARFLEETOP 0x005f7fd3
-void FUN_005f7fd3()
-{
-}
+// 0x005f7f79 and 0x005f7fd3 are not functions of their own: each is the one `pop esi` after the
+// call to _CxxThrowException that ends the function before it (0x005f7f20, 0x005f7f7a), never
+// reached; they are listed in analysis/results/boundary_errors.tsv.
+//
+//
+//
+//
+//
+//
