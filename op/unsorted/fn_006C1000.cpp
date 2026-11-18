@@ -201,9 +201,9 @@ void fn_006c1750(fn_006c1510_pool *pool, void *element, int index)
 	fn_006c16a0(pool, element, index);
 }
 
-// HYPOTHESIS: 0x006c18a0 is a binary search over base[0..num) with a compare callback
-// (bsearch argument order); 0x006c18f0 the same, also reporting through found.
-void *fn_006c18a0(const void *key, const void *base, int num, unsigned long width, int (*compare)(const void *, const void *));
+// HYPOTHESIS: 0x006c18a0 is the linear search defined below; 0x006c18f0 a binary search
+// (bsearch argument order) that also reports through found.
+void *fn_006c18a0(void *arg, char *base, int count, int size, int (*func)(void *, void *));
 void *fn_006c18f0(const void *key, const void *base, int num, unsigned long width, int (*compare)(const void *, const void *), int *found);
 
 // HYPOTHESIS: searches the elements from start on for key; returns the index, or -1.
@@ -218,7 +218,7 @@ int fn_006c1780(fn_006c1510_pool *pool, const void *key, int (*compare)(const vo
 	if (flag != 0)
 		result = fn_006c18f0(key, fn_006c15c0(pool, start), pool->field_00 - start, pool->field_08, compare, &found);
 	else
-		result = fn_006c18a0(key, fn_006c15c0(pool, start), pool->field_00 - start, pool->field_08, compare);
+		result = fn_006c18a0((void *)key, (char *)fn_006c15c0(pool, start), pool->field_00 - start, pool->field_08, (int (*)(void *, void *))compare);
 	if (result == 0 || found == 0)
 		return -1;
 	return ((int)result - (int)pool->field_14) / (int)pool->field_08;
