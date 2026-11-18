@@ -690,7 +690,8 @@ std::string g_s00c39a58("MetaChat");
 // FUNCTION: STARFLEETOP 0x005fbf16
 std::string g_s00c39a48("BigAssChat");
 
-// HYPOTHESIS: a global byte string; its dynamic initializer.
+// HYPOTHESIS: a global byte string; its dynamic initializer and atexit registration.
+// FUNCTION: STARFLEETOP 0x005fbfaf
 // FUNCTION: STARFLEETOP 0x005fbf7c
 std::string g_s00c39a38("MaxChat");
 
