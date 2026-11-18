@@ -297,18 +297,18 @@ void tMetaMapControl::fn_005e36a3()
 // FUNCTION: STARFLEETOP 0x005e36cd
 void tMetaMapControl::fn_005e36cd( fn_005e381f_entry *entry, int param_2 )
 {
-	if ( field_1a4.size() != 0 )
+	if ( fn_005e30ac_images( field_1a4 ).size() != 0 )
 	{
-		fn_005e374b( entry, param_2, field_1a4[ entry->field_14 ], -1, -1, -1 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_1a4 )[ entry->field_14 ], -1, -1, -1 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e370c
 void tMetaMapControl::fn_005e370c( fn_005e381f_entry *entry, int param_2 )
 {
-	if ( field_1b4.size() != 0 )
+	if ( fn_005e30ac_images( field_1b4 ).size() != 0 )
 	{
-		fn_005e374b( entry, param_2, field_1b4[ entry->field_14 ], -1, -1, -1 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_1b4 )[ entry->field_14 ], -1, -1, -1 );
 	}
 }
 
@@ -341,40 +341,40 @@ void tMetaMapControl::fn_005e37c4( fn_005e381f_entry *entry, int param_2, int pa
 // FUNCTION: STARFLEETOP 0x005e37d8
 void tMetaMapControl::fn_005e37d8( fn_005e381f_entry *entry, int param_2, int param_3 )
 {
-	if ( field_1a4.size() != 0 )
+	if ( fn_005e30ac_images( field_1a4 ).size() != 0 )
 	{
-		fn_005e374b( entry, param_2, field_1a4[ entry->field_14 ], entry->field_2c, entry->field_2e, param_3 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_1a4 )[ entry->field_14 ], entry->field_2c, entry->field_2e, param_3 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e381f
 void tMetaMapControl::fn_005e381f( fn_005e36cd_entry *entry, int param_2 )
 {
-	if ( field_184.size() != 0 )
+	if ( fn_005e30ac_images( field_184 ).size() != 0 )
 	{
 		const tPoint &point = entry->fn_005e488e();
-		fn_005e374b( entry, param_2, field_184[ 24 ], point.x, point.y, -1 );
-		fn_005e374b( entry, param_2, field_184[ entry->field_14 ], entry->field_2c, entry->field_2e, 0 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_184 )[ 24 ], point.x, point.y, -1 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_184 )[ entry->field_14 ], entry->field_2c, entry->field_2e, 0 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e3891
 void tMetaMapControl::fn_005e3891( fn_005e36cd_entry *entry, int param_2 )
 {
-	if ( field_194.size() != 0 )
+	if ( fn_005e30ac_images( field_194 ).size() != 0 )
 	{
 		const tPoint &point = entry->fn_005e488e();
-		fn_005e374b( entry, param_2, field_194[ 24 ], point.x, point.y, -1 );
-		fn_005e374b( entry, param_2, field_194[ entry->field_14 ], entry->field_2c, entry->field_2e, 0 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_194 )[ 24 ], point.x, point.y, -1 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_194 )[ entry->field_14 ], entry->field_2c, entry->field_2e, 0 );
 	}
 }
 
 // FUNCTION: STARFLEETOP 0x005e3903
 void tMetaMapControl::fn_005e3903( fn_005e36cd_entry *entry, int param_2 )
 {
-	if ( field_1b4.size() != 0 )
+	if ( fn_005e30ac_images( field_1b4 ).size() != 0 )
 	{
-		fn_005e374b( entry, param_2, field_1b4[ 0 ], -1, -1, -1 );
+		fn_005e374b( entry, param_2, fn_005e30ac_images( field_1b4 )[ 0 ], -1, -1, -1 );
 	}
 }
 
@@ -495,25 +495,25 @@ extern std::string g_00c38fb8;
 // FUNCTION: STARFLEETOP 0x005e3ba5
 void tMetaMapControl::fn_005e3ba5()
 {
-	field_1a4.assign( 0x18, 0 );
-	field_1a4[ 1 ] = fn_005e3f82( g_00c39038, 0 );
-	field_1a4[ 2 ] = fn_005e3f82( g_00c39028, 0 );
-	field_1a4[ 0 ] = fn_005e3f82( g_00c39018, 0 );
-	field_1a4[ 6 ] = fn_005e3f82( g_00c39048, 0 );
-	field_1a4[ 7 ] = fn_005e3f82( g_00c39048, 1 );
-	field_1a4[ 8 ] = fn_005e3f82( g_00c39048, 2 );
-	field_1a4[ 9 ] = fn_005e3f82( g_00c39048, 3 );
-	field_1a4[ 10 ] = fn_005e3f82( g_00c39048, 4 );
-	field_1a4[ 11 ] = fn_005e3f82( g_00c39048, 5 );
-	field_1a4[ 12 ] = fn_005e3f82( g_00c39048, 6 );
-	field_1a4[ 13 ] = fn_005e3f82( g_00c39048, 7 );
-	field_1a4[ 14 ] = fn_005e3f82( g_00c39048, 8 );
-	field_1a4[ 15 ] = fn_005e3f82( g_00c39008, 0 );
-	field_1a4[ 16 ] = fn_005e3f82( g_00c38ff8, 0 );
-	field_1a4[ 17 ] = fn_005e3f82( g_00c38fe8, 0 );
-	field_1a4[ 3 ] = fn_005e3f82( g_00c38fd8, 0 );
-	field_1a4[ 4 ] = fn_005e3f82( g_00c38fc8, 0 );
-	field_1a4[ 5 ] = fn_005e3f82( g_00c38fb8, 0 );
+	fn_005e30ac_images( field_1a4 ).assign( 0x18, 0 );
+	fn_005e30ac_images( field_1a4 )[ 1 ] = fn_005e3f82( g_00c39038, 0 );
+	fn_005e30ac_images( field_1a4 )[ 2 ] = fn_005e3f82( g_00c39028, 0 );
+	fn_005e30ac_images( field_1a4 )[ 0 ] = fn_005e3f82( g_00c39018, 0 );
+	fn_005e30ac_images( field_1a4 )[ 6 ] = fn_005e3f82( g_00c39048, 0 );
+	fn_005e30ac_images( field_1a4 )[ 7 ] = fn_005e3f82( g_00c39048, 1 );
+	fn_005e30ac_images( field_1a4 )[ 8 ] = fn_005e3f82( g_00c39048, 2 );
+	fn_005e30ac_images( field_1a4 )[ 9 ] = fn_005e3f82( g_00c39048, 3 );
+	fn_005e30ac_images( field_1a4 )[ 10 ] = fn_005e3f82( g_00c39048, 4 );
+	fn_005e30ac_images( field_1a4 )[ 11 ] = fn_005e3f82( g_00c39048, 5 );
+	fn_005e30ac_images( field_1a4 )[ 12 ] = fn_005e3f82( g_00c39048, 6 );
+	fn_005e30ac_images( field_1a4 )[ 13 ] = fn_005e3f82( g_00c39048, 7 );
+	fn_005e30ac_images( field_1a4 )[ 14 ] = fn_005e3f82( g_00c39048, 8 );
+	fn_005e30ac_images( field_1a4 )[ 15 ] = fn_005e3f82( g_00c39008, 0 );
+	fn_005e30ac_images( field_1a4 )[ 16 ] = fn_005e3f82( g_00c38ff8, 0 );
+	fn_005e30ac_images( field_1a4 )[ 17 ] = fn_005e3f82( g_00c38fe8, 0 );
+	fn_005e30ac_images( field_1a4 )[ 3 ] = fn_005e3f82( g_00c38fd8, 0 );
+	fn_005e30ac_images( field_1a4 )[ 4 ] = fn_005e3f82( g_00c38fc8, 0 );
+	fn_005e30ac_images( field_1a4 )[ 5 ] = fn_005e3f82( g_00c38fb8, 0 );
 }
 
 extern std::string g_00c38f58;
@@ -526,16 +526,16 @@ extern std::string g_00c38f18;
 void tMetaMapControl::fn_005e3d73()
 {
 	int i;
-	field_184.assign( 0x19, 0 );
+	fn_005e30ac_images( field_184 ).assign( 0x19, 0 );
 	for ( i = 0; i < 6; i++ )
-		field_184[ i ] = fn_005e3f82( g_00c38f58, i );
+		fn_005e30ac_images( field_184 )[ i ] = fn_005e3f82( g_00c38f58, i );
 	for ( i = 0; i < 6; i++ )
-		field_184[ i + 12 ] = fn_005e3f82( g_00c38f48, i );
+		fn_005e30ac_images( field_184 )[ i + 12 ] = fn_005e3f82( g_00c38f48, i );
 	for ( i = 0; i < 6; i++ )
-		field_184[ i + 6 ] = fn_005e3f82( g_00c38f38, i );
+		fn_005e30ac_images( field_184 )[ i + 6 ] = fn_005e3f82( g_00c38f38, i );
 	for ( i = 0; i < 6; i++ )
-		field_184[ i + 18 ] = fn_005e3f82( g_00c38f28, i );
-	field_184[ 24 ] = fn_005e3f82( g_00c38f18, 0 );
+		fn_005e30ac_images( field_184 )[ i + 18 ] = fn_005e3f82( g_00c38f28, i );
+	fn_005e30ac_images( field_184 )[ 24 ] = fn_005e3f82( g_00c38f18, 0 );
 }
 
 extern std::string g_00c38fa8;
@@ -548,16 +548,16 @@ extern std::string g_00c38f68;
 void tMetaMapControl::fn_005e3e48()
 {
 	int i;
-	field_194.assign( 0x19, 0 );
+	fn_005e30ac_images( field_194 ).assign( 0x19, 0 );
 	for ( i = 0; i < 6; i++ )
-		field_194[ i ] = fn_005e3f82( g_00c38fa8, i );
+		fn_005e30ac_images( field_194 )[ i ] = fn_005e3f82( g_00c38fa8, i );
 	for ( i = 0; i < 6; i++ )
-		field_194[ i + 12 ] = fn_005e3f82( g_00c38f98, i );
+		fn_005e30ac_images( field_194 )[ i + 12 ] = fn_005e3f82( g_00c38f98, i );
 	for ( i = 0; i < 6; i++ )
-		field_194[ i + 6 ] = fn_005e3f82( g_00c38f88, i );
+		fn_005e30ac_images( field_194 )[ i + 6 ] = fn_005e3f82( g_00c38f88, i );
 	for ( i = 0; i < 6; i++ )
-		field_194[ i + 18 ] = fn_005e3f82( g_00c38f78, i );
-	field_194[ 24 ] = fn_005e3f82( g_00c38f68, 0 );
+		fn_005e30ac_images( field_194 )[ i + 18 ] = fn_005e3f82( g_00c38f78, i );
+	fn_005e30ac_images( field_194 )[ 24 ] = fn_005e3f82( g_00c38f68, 0 );
 }
 
 extern std::string g_00c38f08;
@@ -567,10 +567,10 @@ extern std::string g_00c38ee8;
 // FUNCTION: STARFLEETOP 0x005e3f1d
 void tMetaMapControl::fn_005e3f1d()
 {
-	field_1b4.assign( 3, 0 );
-	field_1b4[ 0 ] = fn_005e3f82( g_00c38f08, 0 );
-	field_1b4[ 1 ] = fn_005e3f82( g_00c38ef8, 0 );
-	field_1b4[ 2 ] = fn_005e3f82( g_00c38ee8, 0 );
+	fn_005e30ac_images( field_1b4 ).assign( 3, 0 );
+	fn_005e30ac_images( field_1b4 )[ 0 ] = fn_005e3f82( g_00c38f08, 0 );
+	fn_005e30ac_images( field_1b4 )[ 1 ] = fn_005e3f82( g_00c38ef8, 0 );
+	fn_005e30ac_images( field_1b4 )[ 2 ] = fn_005e3f82( g_00c38ee8, 0 );
 }
 
 // HYPOTHESIS: the object at 0x0092e4a0; 0x004d467a turns a name into the id 0x00677060 looks up.

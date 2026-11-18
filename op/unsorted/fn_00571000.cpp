@@ -317,13 +317,13 @@ public:
 	virtual void vfunction1();
 	virtual bool operator()(fn_005717f7_object* pObject);
 };
-struct fn_005717f7_vector {
-	~fn_005717f7_vector();
-	void* m_allocator;
-	void** m_first;
-	void** m_last;
-	void** m_end;
-};
+// The vector is declared in fn_005717f7_vector.h, which tMetaMapControl.h includes as well.
+#include "unsorted/fn_005717f7_vector.h"
+
+
+
+
+
 // HYPOTHESIS: the per-type index is a std::map, allocator id to object pointers; 0x005719df is its operator[].
 typedef std::map<long, std::vector<fn_005717f7_object*> > fn_005717f7_index;
 struct fn_005717f7_map : public fn_005717f7_index {

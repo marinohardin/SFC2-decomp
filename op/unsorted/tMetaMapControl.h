@@ -6,6 +6,7 @@
 
 #include "unsorted/tValueBtn.h"
 #include "unsorted/tMetaMapHex.h"
+#include "unsorted/fn_005717f7_vector.h"
 #include "Common/Database/DatabaseID.h"
 
 class tCompassRose;
@@ -80,6 +81,14 @@ public:
 	unsigned char field_4[ 0x6c - 0x4 ];
 };
 
+struct c_tScrollBar_FieldA8;
+// MATCH-ONLY: the library vector of image pointers that the members below stand for; its
+// assign (with the erase 0x005e4606), size and index operator are the ones the control calls.
+inline std::vector<c_tScrollBar_FieldA8 *> &fn_005e30ac_images( fn_005717f7_vector &v )
+{
+	return *(std::vector<c_tScrollBar_FieldA8 *> *)&v;
+}
+
 // HYPOTHESIS: 0x1ec bytes, from the operator new in the factory at 0x005e2f60.
 // vftables 0x007b50b0 (tButton part) and 0x007b50a4 (tVisNotifiee part).
 class tMetaMapControl : public tValueBtn
@@ -147,11 +156,12 @@ public:
 
 	fn_005eadc8_class *field_17c;
 	tCompassRose *field_180;
-	// HYPOTHESIS: four vectors (an allocator byte and three pointers each); element types unknown.
-	std::vector<c_tScrollBar_FieldA8 *> field_184;
-	std::vector<c_tScrollBar_FieldA8 *> field_194;
-	std::vector<c_tScrollBar_FieldA8 *> field_1a4;
-	std::vector<c_tScrollBar_FieldA8 *> field_1b4;
+	// HYPOTHESIS: four vectors of image pointers (an allocator byte and three pointers each); the
+	// destructor destroys them through 0x00571a7a, so they are declared as fn_005717f7_vector.
+	fn_005717f7_vector field_184;
+	fn_005717f7_vector field_194;
+	fn_005717f7_vector field_1a4;
+	fn_005717f7_vector field_1b4;
 	int field_1c4;
 	int field_1c8;
 	unsigned char field_1cc[ 0x1d4 - 0x1cc ];
