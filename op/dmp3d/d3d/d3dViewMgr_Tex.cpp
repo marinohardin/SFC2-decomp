@@ -5,57 +5,63 @@
 
 // HYPOTHESIS: the DirectDraw objects are used through their C interface (explicit this
 // argument, stdcall slots), as the exe's calls show. Only the slots the method calls are
-// named, in vtable order.
-struct tDDPalette;
-struct tDDSurface;
-struct tDDraw;
-
-struct tDDPaletteVtbl
-{
-	void	*slot_00;
-	void	*slot_04;
-	unsigned long ( __stdcall *Release )( tDDPalette *self );
-	void	*slot_0c;
-	void	*slot_10;
-	void	*slot_14;
-	long	( __stdcall *SetEntries )( tDDPalette *self, unsigned long flags, unsigned long start, unsigned long count, const unsigned char *entries );
-};
-
+// named, in vtable order. (The class named tDDSurface in the RTTI is unsorted/tDDSurface.h.)
 struct tDDPalette
 {
-	tDDPaletteVtbl	*lpVtbl;
+	virtual long __stdcall slot_00( void ) = 0;
+	virtual long __stdcall slot_04( void ) = 0;
+	virtual unsigned long __stdcall Release( void ) = 0;
+	virtual long __stdcall slot_0c( void ) = 0;
+	virtual long __stdcall slot_10( void ) = 0;
+	virtual long __stdcall slot_14( void ) = 0;
+	virtual long __stdcall SetEntries( unsigned long flags, unsigned long start, unsigned long count, const unsigned char *entries ) = 0;
 };
 
-struct tDDSurfaceVtbl
+struct tDDSurfaceIface
 {
-	long	( __stdcall *QueryInterface )( tDDSurface *self, const void *iid, void **out );
-	void	*slot_04;
-	unsigned long ( __stdcall *Release )( tDDSurface *self );
-	void	*slot_0c[17];
-	long	( __stdcall *GetPalette )( tDDSurface *self, tDDPalette **out );	// +0x50
-	void	*slot_54[10];
-	long	( __stdcall *SetPalette )( tDDSurface *self, tDDPalette *palette );	// +0x7c
-};
-
-struct tDDSurface
-{
-	tDDSurfaceVtbl	*lpVtbl;
-};
-
-struct tDDrawVtbl
-{
-	void	*slot_00;
-	void	*slot_04;
-	void	*slot_08;
-	void	*slot_0c;
-	void	*slot_10;
-	long	( __stdcall *CreatePalette )( tDDraw *self, unsigned long flags, const unsigned char *entries, tDDPalette **out, void *outer );	// +0x14
-	long	( __stdcall *CreateSurface )( tDDraw *self, const void *desc, tDDSurface **out, void *outer );	// +0x18
+	virtual long __stdcall QueryInterface( const void *iid, void **out ) = 0;
+	virtual long __stdcall slot_04( void ) = 0;
+	virtual unsigned long __stdcall Release( void ) = 0;
+	virtual long __stdcall slot_0c( void ) = 0;
+	virtual long __stdcall slot_10( void ) = 0;
+	virtual long __stdcall slot_14( void ) = 0;
+	virtual long __stdcall slot_18( void ) = 0;
+	virtual long __stdcall slot_1c( void ) = 0;
+	virtual long __stdcall slot_20( void ) = 0;
+	virtual long __stdcall slot_24( void ) = 0;
+	virtual long __stdcall slot_28( void ) = 0;
+	virtual long __stdcall slot_2c( void ) = 0;
+	virtual long __stdcall slot_30( void ) = 0;
+	virtual long __stdcall slot_34( void ) = 0;
+	virtual long __stdcall slot_38( void ) = 0;
+	virtual long __stdcall slot_3c( void ) = 0;
+	virtual long __stdcall slot_40( void ) = 0;
+	virtual long __stdcall slot_44( void ) = 0;
+	virtual long __stdcall slot_48( void ) = 0;
+	virtual long __stdcall slot_4c( void ) = 0;
+	virtual long __stdcall GetPalette( tDDPalette **out ) = 0;	// +0x50
+	virtual long __stdcall slot_54( void ) = 0;
+	virtual long __stdcall slot_58( void ) = 0;
+	virtual long __stdcall slot_5c( void ) = 0;
+	virtual long __stdcall slot_60( void ) = 0;
+	virtual long __stdcall slot_64( void ) = 0;
+	virtual long __stdcall slot_68( void ) = 0;
+	virtual long __stdcall slot_6c( void ) = 0;
+	virtual long __stdcall slot_70( void ) = 0;
+	virtual long __stdcall slot_74( void ) = 0;
+	virtual long __stdcall slot_78( void ) = 0;
+	virtual long __stdcall SetPalette( tDDPalette *palette ) = 0;	// +0x7c
 };
 
 struct tDDraw
 {
-	tDDrawVtbl	*lpVtbl;
+	virtual long __stdcall slot_00( void ) = 0;
+	virtual long __stdcall slot_04( void ) = 0;
+	virtual long __stdcall slot_08( void ) = 0;
+	virtual long __stdcall slot_0c( void ) = 0;
+	virtual long __stdcall slot_10( void ) = 0;
+	virtual long __stdcall CreatePalette( unsigned long flags, const unsigned char *entries, tDDPalette **out, void *outer ) = 0;	// +0x14
+	virtual long __stdcall CreateSurface( const void *desc, tDDSurfaceIface **out, void *outer ) = 0;	// +0x18
 };
 
 // HYPOTHESIS: the rectangle a texture face reports, four longs; its name is not known (the
@@ -77,7 +83,7 @@ struct tTexFormat
 	char	field_00[0x34];
 	long	field_34;		// 1 when palettized
 	long	field_38;		// bits per pixel
-	bool	fn_006a13b3( void *tex );
+	bool	fn_006a11f0( tTexFormat *other );
 };
 
 class tTexFace
@@ -86,18 +92,17 @@ public:
 	virtual void		slot_00();
 	virtual void		slot_04();
 	virtual void		slot_08();
-	virtual tTexFace	*slot_0c( tTexFormat *fmt );
+	virtual tTexFormat	*slot_0c( void );
 	virtual fn_006a8930_Rect	*slot_10( void );
 	char				field_04[0x70];	// HYPOTHESIS: the face is 0x74 bytes (the slot allocation is 0xf8)
 	tTexFace( void );
-	bool				fn_006a12a2( void );
-	void				fn_006a79f5( tDDSurface *surf, void *desc, int flag );
+	void				fn_006a79f5( tDDSurfaceIface *surf, void *desc, int flag );
 };
 
 struct tTexSlot
 {
-	tDDSurface	*surface;		// +0x00
-	tDDSurface	*texture;		// +0x04
+	tDDSurfaceIface	*surface;		// +0x00
+	tDDSurfaceIface	*texture;		// +0x04
 	unsigned long	desc[0x1f];	// +0x08: the surface description
 	tTexFace	face;			// +0x84
 
@@ -106,12 +111,12 @@ struct tTexSlot
 	{
 		if ( texture )
 		{
-			texture->lpVtbl->Release( texture );
+			texture->Release();
 			texture = 0;
 		}
 		if ( surface )
 		{
-			surface->lpVtbl->Release( surface );
+			surface->Release();
 			surface = 0;
 		}
 		memset( desc, 0, sizeof( desc ) );
@@ -158,13 +163,13 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 		if ( w == width )
 		{
 			long h = face->slot_10()->Height();
-			if ( h == height && face->slot_0c( fmt )->fn_006a12a2() )
+			if ( h == height && face->slot_0c()->fn_006a11f0( fmt ) )
 			{
 				if ( palette && fmt->field_34 == 1 )
 				{
-					tDDSurface *surf = slots[index]->surface;
+					tDDSurfaceIface *surf = slots[index]->surface;
 					tDDPalette *pal = 0;
-					surf->lpVtbl->GetPalette( surf, &pal );
+					surf->GetPalette( &pal );
 					if ( pal )
 					{
 						unsigned char entries[0x400];
@@ -179,8 +184,8 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 							else
 								entries[i * 4 + 3] = 0;
 						}
-						pal->lpVtbl->SetEntries( pal, 0, 0, 0x100, entries );
-						pal->lpVtbl->Release( pal );
+						pal->SetEntries( 0, 0, 0x100, entries );
+						pal->Release();
 					}
 				}
 				return face;
@@ -191,7 +196,7 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 	tTexNode *node;
 	for ( node = formats; node; node = node->next )
 	{
-		if ( ( (tTexFormat *)node )->fn_006a13b3( fmt ) )
+		if ( ( (tTexFormat *)node )->fn_006a11f0( fmt ) )
 			break;
 	}
 	if ( !node )
@@ -204,8 +209,10 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 			return 0;
 	}
 
-	tTexSlot *s = slots[index];
-	s->Reset();
+	struct { tTexSlot *p; } sp;
+	sp.p = slots[index];
+	tTexSlot &r = *sp.p;
+	r.Reset();
 
 	unsigned long desc[0x1f];
 	memset( desc, 0, sizeof( desc ) );
@@ -220,21 +227,21 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 	desc[0x1b] = 0x10;
 	desc[0x1e] = 0;
 
-	tDDSurface *surf = 0;
-	tDDSurface *tex = 0;
+	tDDSurfaceIface *surf = 0;
+	tDDSurfaceIface *tex = 0;
 	tDDraw *dd = fn_0069d6df();
-	long hr = dd->lpVtbl->CreateSurface( dd, desc, &surf, 0 );
+	long hr = dd->CreateSurface( desc, &surf, 0 );
 	if ( hr )
 	{
 		fn_006a4470( hr, "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\d3d\\d3dViewMgr_Tex.cpp", 397 );
 		throw hr;
 	}
 
-	hr = surf->lpVtbl->QueryInterface( surf, (const void *)0x7bb158, (void **)&tex );
-	if ( hr < 0 )
+	long hr2 = surf->QueryInterface( (const void *)0x7bb158, (void **)&tex );
+	if ( hr2 < 0 )
 	{
-		surf->lpVtbl->Release( surf );
-		throw hr;
+		surf->Release();
+		throw hr2;
 	}
 
 	if ( ( (tTexFormat *)node )->field_34 == 1 && ( (tTexFormat *)node )->field_38 == 8 )
@@ -262,25 +269,25 @@ tTexFace *tD3DViewMgr::fn_006a8930( int index, tTexFormat *fmt, int width, int h
 			pcaps = 0x444;
 		tDDPalette *pal = 0;
 		dd = fn_0069d6df();
-		hr = dd->lpVtbl->CreatePalette( dd, pcaps, entries, &pal, 0 );
-		if ( hr )
+		long hr3 = dd->CreatePalette( pcaps, entries, &pal, 0 );
+		if ( hr3 )
 		{
-			surf->lpVtbl->Release( surf );
-			throw hr;
+			surf->Release();
+			throw hr3;
 		}
-		surf->lpVtbl->SetPalette( surf, pal );
-		pal->lpVtbl->Release( pal );
+		surf->SetPalette( pal );
+		pal->Release();
 	}
 
-	memcpy( s->desc, desc, sizeof( desc ) );
-	s->texture = tex;
-	s->surface = surf;
-	s->face.fn_006a79f5( surf, desc, 0 );
-	return &s->face;
+	memcpy( r.desc, desc, sizeof( desc ) );
+	r.texture = tex;
+	r.surface = surf;
+	r.face.fn_006a79f5( surf, desc, 0 );
+	return &r.face;
 	}
 	catch ( ... )
 	{
-		s->Reset();
+		sp.p->Reset();
 	}
 	return 0;
 }

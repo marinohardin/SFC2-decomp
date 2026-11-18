@@ -1,16 +1,23 @@
-#ifndef COMMON_SETTINGS_H
-#define COMMON_SETTINGS_H
+//	Settings.h: tSettings, the profile settings read from a file.
+//	Only the members matched code calls are declared; their signatures are the SDK library's
+//	symbols (the two numeric GetList overloads at 0x006f7a00 and 0x006f7be0).
+
+#if !defined( Settings_h )
+#define Settings_h
+
+#pragma once
 
 #include <string>
 #include <vector>
 
-// Declared only as far as matched code uses it; the signatures are the SDK library symbols
-// (GetValue at 0x006f75d0, GetList at 0x006f7830).
 class tSettings
 {
 public:
-    void GetValue(const std::string &name, std::string *value);
-    void GetList(const std::string &key, std::vector< std::string > *values, std::vector< std::string > *defaults);
+	void GetValue( const std::string& name, long* value );
+	void GetList( const std::string& name, std::vector<std::string>* list, std::vector<std::string>* defaultList );
+	void GetList( const std::string& name, std::vector< long >* values, std::vector< std::string >* strings );
+	void GetList( const std::string& name, std::vector< float >* values, std::vector< std::string >* strings );
+	void GetValue( const std::string& name, std::string* value );
 };
 
 #endif

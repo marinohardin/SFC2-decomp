@@ -37,6 +37,11 @@ Only the initializer has a line record in the /FAs listing; the harness and the 
 find the registration (`_$E3` for a unit's first global) and the destructor (`_$E2`) from it
 (`harness/lib/source.symbol_for_annotation`).
 
+A member of a standard-library class that op/ does not declare (`std::string::append`, the
+library's own copy that a game unit compiled from the compiler's headers) is read without its
+class: exact it is `vc6` only, since the guest build has no declaration to take a member pointer
+from; not exact `partial`, a `// STUB:` `stub`.
+
 The scanner reads the original's style of C++ (one declaration per line, braces on their own or
 at the end of a line); what it does not understand it reports rather than guesses:
 
@@ -106,8 +111,12 @@ MODULE = 'STARFLEETOP'
 SOURCES = ('.cpp', '.c', '.h', '.inl')
 COLUMNS = ('address', 'size', 'symbol', 'source', 'modes')
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
-CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+)\s*(?::\s*(.*?))?\s*(\{)?\s*$')
-BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)$')
+CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+(?:::\w+)*)\s*(?::(?!:)\s*(.*?))?\s*(\{)?\s*$')
+# A class opened on the line that opens its namespace, after the close of the class above:
+# `}; namespace nName { class tName`. The namespace qualifies the class.
+NAMESPACE_CLASS = re.compile(r'^\s*((?:\}\s*;?\s*)*)namespace\s+(\w+)\s*\{\s*((?:class|struct)\s.*)$')
+# A base, `[access] [virtual] Name[< args >]`; a template base is recorded by its template's name.
+BASE = re.compile(r'^(?:(?:public|protected|private)\s+)?(?:virtual\s+)?([\w:]+)\s*(?:<.*>)?$')
 IDENT = re.compile(r'[A-Za-z_]\w*$')
 CONVENTIONS = ('__stdcall', '__fastcall', '__pascal')
 # A global object's definition: `[static] Type[<...>][*&] Name[[N]] [= value];`, no parameter list.
@@ -243,7 +252,7 @@ def scan(game):
 def scan_file(path, rel, functions, classes):
     lines = read_lines(path)
     pending_vtable = None
-    stack = []          # open braces: ('class', record) or ('other', None)
+    stack = []          # open braces: ('class', record), ('namespace', {'name': ...}) or ('other', None)
     i = 0
     while i < len(lines):
         raw = lines[i]
@@ -281,9 +290,17 @@ def scan_file(path, rel, functions, classes):
             i += 1
             continue
         code = strip_code(raw)
+        nm = NAMESPACE_CLASS.match(code)
+        if nm:
+            for _ in range(nm.group(1).count('}')):
+                if not stack:
+                    raise ManifestError('%s:%d: unbalanced braces' % (rel, i + 1))
+                stack.pop()
+            stack.append(('namespace', {'name': nm.group(2)}))
+            code = nm.group(3)
         cm = CLASS.match(code)
         if cm and (cm.group(3) or (i + 1 < len(lines) and strip_code(lines[i + 1]).strip() == '{')):
-            outer = [r for k, r in stack if k == 'class']
+            outer = [r for k, r in stack if k in ('class', 'namespace')]
             qual = '::'.join([r['name'] for r in outer] + [cm.group(1)])
             bases = [b for b in split_top(cm.group(2) or '')]
             record = {'name': qual, 'file': rel, 'bases': [], 'members': [], 'vtable': None}
@@ -444,6 +461,12 @@ def symbol_of(f):
     return '%s(%s)%s' % (f['name'], ','.join(f['types']), ' const' if f['const'] else '')
 
 
+def library_member(name, classes):
+    """True for a member of a standard-library class op/ does not declare (`std::string::append`)."""
+    owner = name.rsplit('::', 1)[0] if '::' in name else ''
+    return owner.startswith('std::') and owner not in classes
+
+
 def owner_class(name, classes):
     """The class a qualified function name belongs to, or None for a free function."""
     if '::' not in name:
@@ -585,8 +608,16 @@ def build(game, functions_csv, matched_json=MATCHED, units_tsv=None):
             # Generated from a global's definition or a virtual destructor: nothing in the guest
             # can call it by a C++ name, so it has no entry point; exact, only the object lift
             # takes it.
-            if 'deleting' in f:
+            if 'deleting' in f and not library_member(f['name'], classes):
                 owner_class(f['name'], classes)
+            f['class'], f['static'] = None, False
+            if f['modes'] == 'vc6 guest':
+                f['modes'] = 'vc6'
+            continue
+        if library_member(f['name'], classes):
+            # A member of a library class (an instance the game's units compiled from the
+            # compiler's own headers): exact, only the object lift takes it, since the guest build
+            # has no declaration of the class to take a member pointer from.
             f['class'], f['static'] = None, False
             if f['modes'] == 'vc6 guest':
                 f['modes'] = 'vc6'

@@ -4,10 +4,11 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
 
-# A new push to a pull request replaces the review of the previous one.
+# One review at a time per pull request. A running review is not cancelled by a new push: the
+# push may only merge the base branch, and then it is not reviewed again (see "Decide").
 concurrency:
   group: claude-code-review-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   claude-review:
@@ -27,13 +28,40 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+
+      # A push is reviewed again only when it changes the pull request's own change. Merging the
+      # base branch, or regenerating the matched set or the manifest, leaves the pull request's
+      # diff against the base as it was, and is not reviewed again. Opening, reopening and
+      # marking ready always review. When in doubt (the previous head is gone), review. The diff is
+      # compared without context lines, so rows the base adds next to the pull request's do not count.
+      - name: Decide whether this push needs a review
+        id: decide
+        env:
+          EVENT: ${{ github.event.action }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.pull_request.head.sha }}
+          BASE: origin/${{ github.event.pull_request.base.ref }}
+        run: |
+          own_change() {
+            git diff -U0 "$(git merge-base "$BASE" "$1")" "$1" -- . \
+              ':!analysis/results/matched_set.json' ':!op/manifest.tsv' | git patch-id --stable | cut -d' ' -f1
+          }
+          review=true
+          if [ "$EVENT" = synchronize ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            if [ "$(own_change "$BEFORE")" = "$(own_change "$AFTER")" ]; then
+              review=false
+              echo "The push leaves the pull request's own change as it was: no new review."
+            fi
+          fi
+          echo "review=$review" >> "$GITHUB_OUTPUT"
 
       - name: Run Claude Code Review
         id: claude-review
-        uses: anthropics/claude-code-action@v1
+        if: steps.decide.outputs.review == 'true'
+        uses: anthropics/claude-code-action@cc98b3ae241b0fcfb6a42a2690751afffecb4452 # v1.0.278
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'

@@ -10,6 +10,10 @@
 // (0x00661fa0): the item table, a 16-bit use count per slot (the high half of a handle), the
 // number of items and the table's size. Member names are not known. The inlined constructor
 // in tAudioFileInfoPart's (0x00657770) sets the grow step at +0x14 to 0x40.
+//
+// The destructor, mGetItemAtThisIndex and mRemoveItemAtThisIndex are defined inline in
+// unsorted/tChannelGroupManagerPart.h, as tChannelGroupManagerPart's functions inline them; the
+// sound units that do not include it call them out of line (mRemoveItemAtThisIndex at 0x00663210).
 template < class T >
 class tSafeArray
 {
@@ -55,16 +59,21 @@ class tSafeArray
 		unsigned long	mGetIndexFromRealIndex	( unsigned long );
 		void			mAddMoreRoom			( long );
 
+	public:
 		T				**f04;
 		unsigned short	*f08;
 		// HYPOTHESIS: the count is unsigned and the size signed, from the compares in
 		// mClose (0x00662540).
 		unsigned long	f0c;
 		long			f10;
-		// HYPOTHESIS: the field at +0x14 is not known; the flag at +0x18 says the array owns its
-		// items and deletes them (mClose at 0x00662540 compares it with 1).
+		// HYPOTHESIS: the field at +0x14 is the number of items added when the array grows (the
+		// constructor sets 64); the flag at +0x18 says the array owns its items and deletes them
+		// (mClose at 0x00662540 compares it with 1).
 		long			f14;
 		unsigned char	f18;
+		// HYPOTHESIS: the field at +0x1c is not known; the constructor clears it, which makes the
+		// array 0x20 bytes.
+		long			f1c;
 };
 
 template < class T >
@@ -76,6 +85,7 @@ inline tSafeArray< T >::tSafeArray( void )
 	f0c = 0;
 	f10 = 0;
 	f14 = 0x40;
+	f1c = 0;
 }
 
 template < class T >
@@ -159,7 +169,11 @@ inline void tSafeArray< T >::mClearItem( unsigned long index )
 	}
 }
 
+// HYPOTHESIS: the analysis names this address ~tClassTrackingInfo, but the body is the release
+// of the array's items and tables that ~tSafeArray<tClassTrackingInfo> (0x004363a8) tail-jumps to;
+// the inline call is left out of line there.
 template < class T >
+// FUNCTION: STARFLEETOP 0x004363d5
 inline void tSafeArray< T >::mDeleteAll( void )
 {
 	if ( f18 == true )

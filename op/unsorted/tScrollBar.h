@@ -34,8 +34,8 @@ public:
 	void vfunction8( const tRect *area );
 	// Slots 13 to 40 are not called by the functions rebuilt so far.
 	virtual void vfunction13();
-	virtual void vfunction14();
-	virtual void vfunction15();
+	virtual bool vfunction14();
+	virtual void vfunction15( bool a );
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void vfunction18();

@@ -1825,11 +1825,11 @@ unsigned char twStandardSoundChannel::mSetVolume( long volume )
 		total = 0;
 	else if( total > 100 )
 		total = 100;
-	HRESULT err = fSoundBuffer->SetVolume( LinearVolumes[total] );
+	long dsVolume = LinearVolumes[total];
+	HRESULT err = fSoundBuffer->SetVolume( dsVolume );
 	if( err != DS_OK )
 		return kFalse;
-	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction6( volume );
+	( &field_0x30 )->vfunction6( volume );
 	return kTrue;
 }
 

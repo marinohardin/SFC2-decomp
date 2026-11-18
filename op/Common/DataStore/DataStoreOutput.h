@@ -1,11 +1,14 @@
 //	DataStoreOutput.h
-//	Writes values into a data store buffer. Declarations follow the SDK's header, without its
-//	template stream operators for the standard containers, which no matched code uses yet. The
+//	Writes values into a data store buffer. Declarations follow the SDK's header; of its template
+//	stream operators for the standard containers only the vector one is used by matched code. The
 //	original defines the inline functions in DataStoreOutput.cpp, which the header includes; here
 //	they follow the class, and only the ones matched code uses are defined yet.
 //	MATCH-ONLY: operator<<( const std::string& ), defined inline here and inlined by
 //	FileDatabaseMgr.cpp's StreamOut, is left out where DATASTORE_OUT_OF_LINE_WRITE is defined:
 //	tClientCharacter.cpp holds the out-of-line copy (0x0042a116), claimable only from a .cpp.
+//	MATCH-ONLY: the int32u, int32s and double writes are defined only where
+//	DATASTORE_INLINE_NUMBER_WRITE is defined (tMetaMapHex.cpp, whose StreamOut inlines them);
+//	tAuctionItem.cpp's and tMetaMapDesc.cpp's StreamOut call the exe's out-of-line copies.
 #if !defined( DataStoreOutput_h )
 #define DataStoreOutput_h
 
@@ -49,6 +52,9 @@ public:
 
 	inline void Put( byte data );
 	inline void Write( const byte* data, int32 size );
+
+	template< class tType >
+	friend tOutput& operator<<( tOutput& output, const std::vector< tType >& value );
 
 	inline tOutput& operator<<( tOutput& (*func)( tOutput& input ) );
 	inline tOutput& operator<<( const tBuffer& buffer );
@@ -100,6 +106,45 @@ tOutput& tOutput::operator<<( bool value )
 	Put( (byte)value );
 
 	return *this;
+}
+
+#ifdef DATASTORE_INLINE_NUMBER_WRITE
+tOutput& tOutput::operator<<( int32u value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( int32s value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( double value )
+{
+	Write( (const byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+#endif
+
+template< class tType >
+tOutput& operator<<( tOutput& output, const std::vector< tType >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< tType >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
 }
 
 };

@@ -178,6 +178,9 @@ inline short ReadWord( tBasicFile *file )
 void tTexBmp::vfunction3( tBasicFile *file )
 {
 	PcxHeader	header;
+	int			width;
+	int			height;
+	int			bitCount;
 	int			numPlanes;
 
 	header.manufacturer = ReadByte( file );
@@ -237,8 +240,8 @@ void tTexBmp::vfunction3( tBasicFile *file )
 			"Invalid or unsupported PCX file" );
 	}
 
-	int	width = header.xMax - header.xMin;
-	int	height = header.yMax - header.yMin;
+	width = header.xMax - header.xMin;
+	height = header.yMax - header.yMin;
 
 	if ( width <= 0 )
 	{
@@ -251,13 +254,14 @@ void tTexBmp::vfunction3( tBasicFile *file )
 			"Invalid or unsupported PCX file" );
 	}
 
-	field_11c = header.bytesPerLine;
-	field_10c = numPlanes * 8;
+	bitCount = numPlanes * 8;
 	field_118 = numPlanes;
+	field_10c = bitCount;
+	field_11c = header.bytesPerLine;
 	field_04 = 3;
 	field_110 = width;
 	field_114 = height;
-	field_120 = ( ( field_10c * width + 31 ) & ~31 ) / 8;
+	field_120 = ( ( bitCount * field_110 + 31 ) & ~31 ) / 8;
 	field_124 = 0;
 	field_128 = field_120 * field_114;
 	field_12c = 0;

@@ -1,6 +1,1424 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
 // Unit:      unsorted/fn_00585000.cpp
 // Functions: 0x005856fd to 0x00585ffc, 79 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 // Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: a class with a tOptex at +0x4 guarding a long at +0x1b0; its name is not recovered.
+class fn_005856fd_owner {
+public:
+	long fn_005856fd();
+	tOptex fAccess;
+	char fn_005856fd_pad0[0x1b0 - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005856fd
+long fn_005856fd_owner::fn_005856fd()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a long at +0x1a4; its name is not recovered.
+class fn_00585718_owner {
+public:
+	long fn_00585718();
+	tOptex fAccess;
+	char fn_00585718_pad0[0x1a4 - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585718
+long fn_00585718_owner::fn_00585718()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a long at +0x1a8; its name is not recovered.
+class fn_00585733_owner {
+public:
+	long fn_00585733();
+	tOptex fAccess;
+	char fn_00585733_pad0[0x1a8 - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585733
+long fn_00585733_owner::fn_00585733()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a long at +0x1ac; its name is not recovered.
+class fn_0058574e_owner {
+public:
+	long fn_0058574e();
+	tOptex fAccess;
+	char fn_0058574e_pad0[0x1ac - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058574e
+long fn_0058574e_owner::fn_0058574e()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a long at +0x30; its name is not recovered.
+class fn_00585769_owner {
+public:
+	long fn_00585769();
+	tOptex fAccess;
+	char fn_00585769_pad0[0x30 - sizeof(tOptex)];
+	long fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585769
+long fn_00585769_owner::fn_00585769()
+{
+	fAccess.Enter();
+	long value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x178; its name is not recovered.
+class fn_00585781_owner {
+public:
+	float fn_00585781();
+	tOptex fAccess;
+	char fn_00585781_pad0[0x178 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585781
+float fn_00585781_owner::fn_00585781()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x17c; its name is not recovered.
+class fn_005857a3_owner {
+public:
+	float fn_005857a3();
+	tOptex fAccess;
+	char fn_005857a3_pad0[0x17c - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005857a3
+float fn_005857a3_owner::fn_005857a3()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x180; its name is not recovered.
+class fn_005857c5_owner {
+public:
+	float fn_005857c5();
+	tOptex fAccess;
+	char fn_005857c5_pad0[0x180 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005857c5
+float fn_005857c5_owner::fn_005857c5()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x100; its name is not recovered.
+class fn_005857e7_owner {
+public:
+	int fn_005857e7();
+	tOptex fAccess;
+	char fn_005857e7_pad0[0x100 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005857e7
+int fn_005857e7_owner::fn_005857e7()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x164; its name is not recovered.
+class fn_00585802_owner {
+public:
+	int fn_00585802();
+	tOptex fAccess;
+	char fn_00585802_pad0[0x164 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585802
+int fn_00585802_owner::fn_00585802()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x28; its name is not recovered.
+class fn_0058581d_owner {
+public:
+	int fn_0058581d();
+	tOptex fAccess;
+	char fn_0058581d_pad0[0x28 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058581d
+int fn_0058581d_owner::fn_0058581d()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x2c; its name is not recovered.
+class fn_00585835_owner {
+public:
+	int fn_00585835();
+	tOptex fAccess;
+	char fn_00585835_pad0[0x2c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585835
+int fn_00585835_owner::fn_00585835()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex guarding an int at +0xa4; its name and the optex offset are not recovered.
+class fn_0058584d_owner {
+public:
+	int fn_0058584d();
+	tOptex fAccess;
+	char fn_0058584d_pad0[0xa4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058584d
+int fn_0058584d_owner::fn_0058584d()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xa8; its name is not recovered.
+class fn_00585868_owner {
+public:
+	int fn_00585868();
+	tOptex fAccess;
+	char fn_00585868_pad0[0xa8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585868
+int fn_00585868_owner::fn_00585868()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xac; its name is not known.
+class fn_00585883_owner {
+public:
+	int fn_00585883();
+	tOptex fAccess;
+	char fn_00585883_pad0[0xac - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585883
+int fn_00585883_owner::fn_00585883()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xb0; its name is not known.
+class fn_0058589e_owner {
+public:
+	int fn_0058589e();
+	tOptex fAccess;
+	char fn_0058589e_pad0[0xb0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058589e
+int fn_0058589e_owner::fn_0058589e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xb4; its name is not known.
+class fn_005858b9_owner {
+public:
+	int fn_005858b9();
+	tOptex fAccess;
+	char fn_005858b9_pad0[0xb4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005858b9
+int fn_005858b9_owner::fn_005858b9()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xb8; its name is not known.
+class fn_005858d4_owner {
+public:
+	int fn_005858d4();
+	tOptex fAccess;
+	char fn_005858d4_pad0[0xb8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005858d4
+int fn_005858d4_owner::fn_005858d4()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xbc; its name is not known.
+class fn_005858ef_owner {
+public:
+	int fn_005858ef();
+	tOptex fAccess;
+	char fn_005858ef_pad0[0xbc - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005858ef
+int fn_005858ef_owner::fn_005858ef()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xc0; its name is not known.
+class fn_0058590a_owner {
+public:
+	int fn_0058590a();
+	tOptex fAccess;
+	char fn_0058590a_pad0[0xc0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058590a
+int fn_0058590a_owner::fn_0058590a()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xc4; its name is not known.
+class fn_00585925_owner {
+public:
+	int fn_00585925();
+	tOptex fAccess;
+	char fn_00585925_pad0[0xc4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585925
+int fn_00585925_owner::fn_00585925()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xc8; its name is not known.
+class fn_00585940_owner {
+public:
+	int fn_00585940();
+	tOptex fAccess;
+	char fn_00585940_pad0[0xc8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585940
+int fn_00585940_owner::fn_00585940()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xcc; its name is not known.
+class fn_0058595b_owner {
+public:
+	int fn_0058595b();
+	tOptex fAccess;
+	char fn_0058595b_pad0[0xcc - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x0058595b
+int fn_0058595b_owner::fn_0058595b()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xd0; its name is not known.
+class fn_00585976_owner {
+public:
+	int fn_00585976();
+	tOptex fAccess;
+	char fn_00585976_pad0[0xd0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585976
+int fn_00585976_owner::fn_00585976()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xd4; its name is not known.
+class fn_00585991_owner {
+public:
+	int fn_00585991();
+	tOptex fAccess;
+	char fn_00585991_pad0[0xd4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585991
+int fn_00585991_owner::fn_00585991()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xd8; its name is not known.
+class fn_005859ac_owner {
+public:
+	int fn_005859ac();
+	tOptex fAccess;
+	char fn_005859ac_pad0[0xd8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005859ac
+int fn_005859ac_owner::fn_005859ac()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xdc; its name is not known.
+class fn_005859c7_owner {
+public:
+	int fn_005859c7();
+	tOptex fAccess;
+	char fn_005859c7_pad0[0xdc - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005859c7
+int fn_005859c7_owner::fn_005859c7()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xe0; its name is not known.
+class fn_005859e2_owner {
+public:
+	int fn_005859e2();
+	tOptex fAccess;
+	char fn_005859e2_pad0[0xe0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005859e2
+int fn_005859e2_owner::fn_005859e2()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xe4; its name is not known.
+class fn_005859fd_owner {
+public:
+	int fn_005859fd();
+	tOptex fAccess;
+	char fn_005859fd_pad0[0xe4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x005859fd
+int fn_005859fd_owner::fn_005859fd()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xe8; its name is not known.
+class fn_00585a18_owner {
+public:
+	int fn_00585a18();
+	tOptex fAccess;
+	char fn_00585a18_pad0[0xe8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a18
+int fn_00585a18_owner::fn_00585a18()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xec; its name is not known.
+class fn_00585a33_owner {
+public:
+	int fn_00585a33();
+	tOptex fAccess;
+	char fn_00585a33_pad0[0xec - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a33
+int fn_00585a33_owner::fn_00585a33()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xf0; its name is not known.
+class fn_00585a4e_owner {
+public:
+	int fn_00585a4e();
+	tOptex fAccess;
+	char fn_00585a4e_pad0[0xf0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a4e
+int fn_00585a4e_owner::fn_00585a4e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xf4; its name is not known.
+class fn_00585a69_owner {
+public:
+	int fn_00585a69();
+	tOptex fAccess;
+	char fn_00585a69_pad0[0xf4 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a69
+int fn_00585a69_owner::fn_00585a69()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xf8; its name is not known.
+class fn_00585a84_owner {
+public:
+	int fn_00585a84();
+	tOptex fAccess;
+	char fn_00585a84_pad0[0xf8 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a84
+int fn_00585a84_owner::fn_00585a84()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0xfc; its name is not known.
+class fn_00585a9f_owner {
+public:
+	int fn_00585a9f();
+	tOptex fAccess;
+	char fn_00585a9f_pad0[0xfc - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585a9f
+int fn_00585a9f_owner::fn_00585a9f()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x104; its name is not known.
+class fn_00585aba_owner {
+public:
+	float fn_00585aba();
+	tOptex fAccess;
+	char fn_00585aba_pad0[0x104 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585aba
+float fn_00585aba_owner::fn_00585aba()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x108; its name is not known.
+class fn_00585adc_owner {
+public:
+	float fn_00585adc();
+	tOptex fAccess;
+	char fn_00585adc_pad0[0x108 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585adc
+float fn_00585adc_owner::fn_00585adc()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x10c; its name is not known.
+class fn_00585afe_owner {
+public:
+	float fn_00585afe();
+	tOptex fAccess;
+	char fn_00585afe_pad0[0x10c - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585afe
+float fn_00585afe_owner::fn_00585afe()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x110; its name is not known.
+class fn_00585b20_owner {
+public:
+	float fn_00585b20();
+	tOptex fAccess;
+	char fn_00585b20_pad0[0x110 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585b20
+float fn_00585b20_owner::fn_00585b20()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x168; its name is not known.
+class fn_00585b42_owner {
+public:
+	int fn_00585b42();
+	tOptex fAccess;
+	char fn_00585b42_pad0[0x168 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585b42
+int fn_00585b42_owner::fn_00585b42()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x16c; its name is not known.
+class fn_00585b5d_owner {
+public:
+	int fn_00585b5d();
+	tOptex fAccess;
+	char fn_00585b5d_pad0[0x16c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585b5d
+int fn_00585b5d_owner::fn_00585b5d()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x158; its name is not known.
+class fn_00585b78_owner {
+public:
+	float fn_00585b78();
+	tOptex fAccess;
+	char fn_00585b78_pad0[0x158 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585b78
+float fn_00585b78_owner::fn_00585b78()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x15c; its name is not known.
+class fn_00585b9a_owner {
+public:
+	float fn_00585b9a();
+	tOptex fAccess;
+	char fn_00585b9a_pad0[0x15c - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585b9a
+float fn_00585b9a_owner::fn_00585b9a()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x160; its name is not known.
+class fn_00585bbc_owner {
+public:
+	float fn_00585bbc();
+	tOptex fAccess;
+	char fn_00585bbc_pad0[0x160 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585bbc
+float fn_00585bbc_owner::fn_00585bbc()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+#include <string>
+// Inline in the SDK; Optex.h declares it only.
+inline tOptex::tGuard::~tGuard()
+{
+	if (fNeedToLeave) {
+		fOptex->Leave();
+	}
+}
+
+// tSettings is the SDK's class (Common/Settings.h); 0x006f75d0 is its GetValue, matched
+// by signature from the SDK library.
+#include "Common/Settings.h"
+
+
+
+// HYPOTHESIS: 0x005d481f returns the game's settings object; its name is not known.
+tSettings* fn_005d481f();
+
+// HYPOTHESIS: a class with a tOptex at +0x0 and a string at +0x14; its name is not known.
+class fn_00585bde_owner {
+public:
+	void fn_00585bde();
+	tOptex fAccess;
+	std::string fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585bde
+void fn_00585bde_owner::fn_00585bde()
+{
+	tOptex::tGuard guard(&fAccess);
+	// MATCH-ONLY: the original releases the guard explicitly after the key temporary is gone
+	// (no state reset before Leave); a block round the body reproduces that.
+	{
+		std::string key("Assets/Paths/Scripts");
+		fn_005d481f()->GetValue(key, &fValue);
+	}
+	guard.Leave();
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x150; its name is not known.
+class fn_00585c60_owner {
+public:
+	int fn_00585c60();
+	int fn_00585c7b();
+	int fn_00585c96();
+	int fn_00585cb1();
+	tOptex fAccess;
+	char fn_00585c60_pad0[0x148 - sizeof(tOptex)];
+	int fValue3;
+	int fValue0;
+	int fValue;
+	int fValue2;
+};
+
+// FUNCTION: STARFLEETOP 0x00585c60
+int fn_00585c60_owner::fn_00585c60()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x00585c7b
+int fn_00585c60_owner::fn_00585c7b()
+{
+	fAccess.Enter();
+	int value = fValue2;
+	fAccess.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x00585c96
+int fn_00585c60_owner::fn_00585c96()
+{
+	fAccess.Enter();
+	int value = fValue0;
+	fAccess.Leave();
+	return value;
+}
+
+// FUNCTION: STARFLEETOP 0x00585cb1
+int fn_00585c60_owner::fn_00585cb1()
+{
+	fAccess.Enter();
+	int value = fValue3;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a locked accessor returning a std::string member by value.
+class fn_00585ccc_owner {
+public:
+	std::string fn_00585ccc();
+	tOptex fAccess;
+	std::string fText;
+};
+
+// FUNCTION: STARFLEETOP 0x00585ccc
+std::string fn_00585ccc_owner::fn_00585ccc()
+{
+	tOptex::tGuard guard(&fAccess);
+	return fText;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x24; its name is not known.
+class fn_00585d2f_owner {
+public:
+	float fn_00585d2f();
+	tOptex fAccess;
+	char fn_00585d2f_pad0[0x24 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585d2f
+float fn_00585d2f_owner::fn_00585d2f()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x34; its name is not known.
+class fn_00585d4e_owner {
+public:
+	int fn_00585d4e();
+	tOptex fAccess;
+	char fn_00585d4e_pad0[0x34 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585d4e
+int fn_00585d4e_owner::fn_00585d4e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x38; its name is not known.
+class fn_00585d66_owner {
+public:
+	int fn_00585d66();
+	tOptex fAccess;
+	char fn_00585d66_pad0[0x38 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585d66
+int fn_00585d66_owner::fn_00585d66()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x3c; its name is not known.
+class fn_00585d7e_owner {
+public:
+	int fn_00585d7e();
+	tOptex fAccess;
+	char fn_00585d7e_pad0[0x3c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585d7e
+int fn_00585d7e_owner::fn_00585d7e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x40; its name is not known.
+class fn_00585d96_owner {
+public:
+	int fn_00585d96();
+	tOptex fAccess;
+	char fn_00585d96_pad0[0x40 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585d96
+int fn_00585d96_owner::fn_00585d96()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x44; its name is not known.
+class fn_00585dae_owner {
+public:
+	int fn_00585dae();
+	tOptex fAccess;
+	char fn_00585dae_pad0[0x44 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585dae
+int fn_00585dae_owner::fn_00585dae()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x48; its name is not known.
+class fn_00585dc6_owner {
+public:
+	int fn_00585dc6();
+	tOptex fAccess;
+	char fn_00585dc6_pad0[0x48 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585dc6
+int fn_00585dc6_owner::fn_00585dc6()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x4c; its name is not known.
+class fn_00585dde_owner {
+public:
+	int fn_00585dde();
+	tOptex fAccess;
+	char fn_00585dde_pad0[0x4c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585dde
+int fn_00585dde_owner::fn_00585dde()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x50; its name is not known.
+class fn_00585df6_owner {
+public:
+	int fn_00585df6();
+	tOptex fAccess;
+	char fn_00585df6_pad0[0x50 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585df6
+int fn_00585df6_owner::fn_00585df6()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x54; its name is not known.
+class fn_00585e0e_owner {
+public:
+	int fn_00585e0e();
+	tOptex fAccess;
+	char fn_00585e0e_pad0[0x54 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e0e
+int fn_00585e0e_owner::fn_00585e0e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x58; its name is not known.
+class fn_00585e26_owner {
+public:
+	int fn_00585e26();
+	tOptex fAccess;
+	char fn_00585e26_pad0[0x58 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e26
+int fn_00585e26_owner::fn_00585e26()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x5c; its name is not known.
+class fn_00585e3e_owner {
+public:
+	int fn_00585e3e();
+	tOptex fAccess;
+	char fn_00585e3e_pad0[0x5c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e3e
+int fn_00585e3e_owner::fn_00585e3e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x60; its name is not known.
+class fn_00585e56_owner {
+public:
+	int fn_00585e56();
+	tOptex fAccess;
+	char fn_00585e56_pad0[0x60 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e56
+int fn_00585e56_owner::fn_00585e56()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x64; its name is not known.
+class fn_00585e6e_owner {
+public:
+	int fn_00585e6e();
+	tOptex fAccess;
+	char fn_00585e6e_pad0[0x64 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e6e
+int fn_00585e6e_owner::fn_00585e6e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x68; its name is not known.
+class fn_00585e86_owner {
+public:
+	int fn_00585e86();
+	tOptex fAccess;
+	char fn_00585e86_pad0[0x68 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e86
+int fn_00585e86_owner::fn_00585e86()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x6c; its name is not known.
+class fn_00585e9e_owner {
+public:
+	int fn_00585e9e();
+	tOptex fAccess;
+	char fn_00585e9e_pad0[0x6c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585e9e
+int fn_00585e9e_owner::fn_00585e9e()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x70; its name is not known.
+class fn_00585eb6_owner {
+public:
+	int fn_00585eb6();
+	tOptex fAccess;
+	char fn_00585eb6_pad0[0x70 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585eb6
+int fn_00585eb6_owner::fn_00585eb6()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding an int at +0x74; its name is not known.
+class fn_00585ece_owner {
+public:
+	int fn_00585ece();
+	tOptex fAccess;
+	char fn_00585ece_pad0[0x74 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585ece
+int fn_00585ece_owner::fn_00585ece()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x78; its name is not known.
+class fn_00585ee6_owner {
+public:
+	float fn_00585ee6();
+	tOptex fAccess;
+	char fn_00585ee6_pad0[0x78 - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585ee6
+float fn_00585ee6_owner::fn_00585ee6()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a float at +0x7c; its name is not known.
+class fn_00585f05_owner {
+public:
+	float fn_00585f05();
+	tOptex fAccess;
+	char fn_00585f05_pad0[0x7c - sizeof(tOptex)];
+	float fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f05
+float fn_00585f05_owner::fn_00585f05()
+{
+	fAccess.Enter();
+	float value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x80; its name is not known.
+class fn_00585f24_owner {
+public:
+	int fn_00585f24();
+	tOptex fAccess;
+	char fn_00585f24_pad0[0x80 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f24
+int fn_00585f24_owner::fn_00585f24()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x84; its name is not known.
+class fn_00585f3f_owner {
+public:
+	int fn_00585f3f();
+	tOptex fAccess;
+	char fn_00585f3f_pad0[0x84 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f3f
+int fn_00585f3f_owner::fn_00585f3f()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x88; its name is not known.
+class fn_00585f5a_owner {
+public:
+	int fn_00585f5a();
+	tOptex fAccess;
+	char fn_00585f5a_pad0[0x88 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f5a
+int fn_00585f5a_owner::fn_00585f5a()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x8c; its name is not known.
+class fn_00585f75_owner {
+public:
+	int fn_00585f75();
+	tOptex fAccess;
+	char fn_00585f75_pad0[0x8c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f75
+int fn_00585f75_owner::fn_00585f75()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x90; its name is not known.
+class fn_00585f90_owner {
+public:
+	int fn_00585f90();
+	tOptex fAccess;
+	char fn_00585f90_pad0[0x90 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585f90
+int fn_00585f90_owner::fn_00585f90()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x94; its name is not known.
+class fn_00585fab_owner {
+public:
+	int fn_00585fab();
+	tOptex fAccess;
+	char fn_00585fab_pad0[0x94 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585fab
+int fn_00585fab_owner::fn_00585fab()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x98; its name is not known.
+class fn_00585fc6_owner {
+public:
+	int fn_00585fc6();
+	tOptex fAccess;
+	char fn_00585fc6_pad0[0x98 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585fc6
+int fn_00585fc6_owner::fn_00585fc6()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0x9c; its name is not known.
+class fn_00585fe1_owner {
+public:
+	int fn_00585fe1();
+	tOptex fAccess;
+	char fn_00585fe1_pad0[0x9c - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585fe1
+int fn_00585fe1_owner::fn_00585fe1()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}
+
+// HYPOTHESIS: a class with a tOptex at +0x0 guarding a 32-bit value at +0xa0; its name is not known.
+class fn_00585ffc_owner {
+public:
+	int fn_00585ffc();
+	tOptex fAccess;
+	char fn_00585ffc_pad0[0xa0 - sizeof(tOptex)];
+	int fValue;
+};
+
+// FUNCTION: STARFLEETOP 0x00585ffc
+int fn_00585ffc_owner::fn_00585ffc()
+{
+	fAccess.Enter();
+	int value = fValue;
+	fAccess.Leave();
+	return value;
+}

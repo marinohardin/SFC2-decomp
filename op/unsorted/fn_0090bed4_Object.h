@@ -38,6 +38,8 @@ public:
 	tObject_005235a7 *fn_005235c8(fn_004e2b02_ship_type *pShip);
 	// HYPOTHESIS: hands the fleet with this ID a new command destination, as 0x004c3815 calls it.
 	void fn_00522bdf(int param_1, tCommandDestination *pDestination);
+	// HYPOTHESIS: takes a float taken from the table of doubles at 0x008552d0.
+	void fn_00522c86(float param_1);
 	bool fn_00523027(int param_1, int param_2);
 	bool fn_00523086(int param_1, int param_2);
 	bool fn_005230dd(int param_1, int param_2, int param_3, int param_4);

@@ -29,6 +29,7 @@
 
 
 
+
 #include "Common/Exceptions/Validate.h"	// nException::tBaseException, tValidationFailed, validate
 // The lines below up to validate_throw stay blank so the code keeps its line numbers.
 
@@ -280,24 +281,24 @@ protected:
 
 
 
-// The SDK's inline constructor of tPerformanceCounter (Common/Timer/PerformanceCounter.h).
-inline tPerformanceCounter::tPerformanceCounter()
-	: fStart( 0 )
-{
 
 
-	unsigned __int64 frequency;
-	::QueryPerformanceFrequency( reinterpret_cast<LARGE_INTEGER*>( &frequency ) );
-	fTicksPerMicrosecond = frequency / 1000000;
-	// The original's check reports line 44.
-#line 44
-	validate( fTicksPerMicrosecond != 0 );
-#line 298
 
-	LARGE_INTEGER now;
-	::QueryPerformanceCounter( &now );
-	fStart = now.QuadPart;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

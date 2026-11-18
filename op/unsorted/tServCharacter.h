@@ -1,14 +1,16 @@
-//	tServCharacter.h
-//	The parts of tServCharacter that matched code uses, shared by unsorted/fn_0042A000.cpp and
-//	unsorted/fn_0042C000.cpp.
+//	tServCharacter.h: tServCharacter, a character as the server's database holds it.
+
 #if !defined( tServCharacter_h )
 #define tServCharacter_h
 
 #pragma once
 
+#include "Common/Database/DatabaseObject.h"
 #include "Common/BaseTypes.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Database/DatabaseID.h"
+
+#include <string>
 
 // HYPOTHESIS: the 0x434-byte element of the vector 0x0042a7bf copies ship caches from; the
 // tShipCache constructor 0x0054185f takes it by reference. Its class is not known yet.
@@ -18,13 +20,14 @@ public:
 	byte field_00[0x434];
 };
 
-// HYPOTHESIS: the class whose RTTI is tServCharacter::tShipCache; only the constructor from a
-// ship (0x0054185f) and the destructor (0x0042a863) are known, and the size (0x4c) from the
-// stack frame of 0x0042a7bf. The destructor ends in ~tStreamable and destroys an ID at +0x0c
-// and strings at +0x24 and +0x34; the other fields are not known yet.
-class tServCharacter
+// The base class is the exe's RTTI. Its own members are not known yet.
+class tServCharacter : public nDatabase::tDatabaseObject
 {
 public:
+	// HYPOTHESIS: the class whose RTTI is tServCharacter::tShipCache; only the constructor from
+	// a ship (0x0054185f) and the destructor (0x0042a863) are known, and the size (0x4c) from
+	// the stack frame of 0x0042a7bf. The destructor ends in ~tStreamable and destroys an ID at
+	// +0x0c and strings at +0x24 and +0x34; the other fields are not known yet.
 	class tShipCache : public nDataStore::tStreamable
 	{
 	public:
@@ -52,6 +55,22 @@ public:
 		int field_44;
 		int field_48;
 	};
+
+	// HYPOTHESIS: the exe holds the destructor out of line (0x00541d4f); 0x0056e006 calls it.
+	virtual ~tServCharacter();
+
+	// HYPOTHESIS: a flag 0x0056c8d6 queries on; it tests the member at +0x14c.
+	bool fn_00543445() const;
+	// HYPOTHESIS: two flags 0x0056c95c tests before it keeps a character.
+	bool fn_005433dd() const;
+	bool fn_0054340c() const;
+	// HYPOTHESIS: three more flags 0x0056cb3b queries on.
+	bool fn_005433e8() const;
+	bool fn_005433f4() const;
+	bool fn_00543400() const;
+
+	// HYPOTHESIS: the record is 0x160 bytes (the stride 0x0056c95c walks a vector with).
+	char fPad_48[0x160 - 0x48];
 };
 
 #endif

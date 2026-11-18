@@ -1795,8 +1795,7 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
     long skip = 0;
     if (field_0x14c > field_0x100)
         skip = field_0x14c - field_0x100;
-    // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
-    tSoundCommandList* attachments = &field_0xec;
+    tSoundCommandList* attachments = &field_0xec; // HYPOTHESIS: called through its vtable, so a pointer
     tSoundChannelCommand* command = (tSoundChannelCommand*)attachments->vfunction5();
     while (command != 0 && skip > 0)
     {
@@ -1807,22 +1806,23 @@ tSoundChannelCommand* tSoundChannel::mGetFirstPlayingCommand()
     long last = field_0x100 + field_0x104 - 1;
     if (field_0x158 < last && field_0x158 >= field_0x14c && field_0x158 >= field_0x100)
         count += field_0x158 - field_0x100 - field_0x104 + 1;
-    if (command == 0)
-        return 0;
+    if (command == 0) return 0;
     tSoundSelection* selection = 0;
     if (command->vfunction16() == 0)
         selection = command->vfunction32();
-    while (count > 0 && selection != 0 && selection->vfunction27() == 0)
+    while (1) // the back edge is a plain jump to the first test: an endless loop left by break
     {
-        command = (tSoundChannelCommand*)attachments->vfunction14(command);
-        if (command == 0)
-            return 0;
-        if (command->vfunction16() == 0)
-            selection = command->vfunction32();
-        count--;
+        if (count > 0 && selection != 0 && selection->vfunction27() == 0)
+        {
+            command = (tSoundChannelCommand*)attachments->vfunction14(command);
+            if (command == 0) return 0;
+            if (command->vfunction16() == 0) selection = command->vfunction32();
+            count--;
+        }
+        else
+            break;
     }
-    if (count == 0)
-        return 0;
+    if (count == 0) return 0;
     return command;
 }
 
@@ -2949,13 +2949,13 @@ tgSoundPart::tgSoundPart()
     atgSoundPart = this;
 }
 
-// HYPOTHESIS: tChannelGroupManagerPart is declared only as far as this function needs it. It waits
-// for the memory, clock and debug parts: the SDK libraries' data names give the cache pointer
-// (0x008e0b54) and type descriptor (0x0083c608) of the first Test_ function (0x0064fc00) to
-// tMemoryPart, and the other two are 0x00640580 and 0x00640640.
-class tChannelGroupManagerPart : public tPart {
-public: virtual iTruth mIsReady();
-};
+// It waits for the memory, clock and debug parts: the SDK libraries' data names give the cache
+// pointer (0x008e0b54) and type descriptor (0x0083c608) of the first Test_ function (0x0064fc00)
+// to tMemoryPart, and the other two are 0x00640580 and 0x00640640.
+#include "unsorted/tChannelGroupManagerPart.h"
+
+
+
 // FUNCTION: STARFLEETOP 0x0064fbe0
 iTruth tChannelGroupManagerPart::mIsReady()
 {

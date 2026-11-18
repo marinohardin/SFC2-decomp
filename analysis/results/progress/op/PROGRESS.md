@@ -1,8 +1,8 @@
 # Progress
 
-Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-16T18:30:47Z.
+Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-17T04:19:10Z.
 
-Progress: 4.56% exact, 0.00% functional, 1.72% partial, 0.00% lifted, 86.31% original x86 of .text (3,751,936 bytes); named: 11.53% real symbol, 44.94% with class, of 23,071 functions. Game-only: 5.13% exact, 0.00% functional, 1.93% partial of 3,330,800 bytes; 9.42% real symbol, 42.69% with class, of 22,164 functions.
+Progress: 8.40% exact, 0.00% functional, 3.25% partial, 0.00% lifted, 80.94% original x86 of .text (3,751,936 bytes); named: 11.53% real symbol, 44.94% with class, of 23,071 functions. Game-only: 9.46% exact, 0.00% functional, 3.66% partial of 3,330,800 bytes; 9.42% real symbol, 42.69% with class, of 22,164 functions.
 
 ## Code
 
@@ -10,11 +10,11 @@ One row per ordinary function; its bytes include the EH funclets its EH tables r
 
 | status | functions | bytes | of which funclets | % .text | % code | game fns | game bytes | % game code |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| exact | 1,008 | 171,012 | 2,142 | 4.56 | 4.92 | 1,008 | 171,012 | 5.13 |
+| exact | 1,672 | 315,131 | 3,568 | 8.40 | 9.07 | 1,672 | 315,131 | 9.46 |
 | functional | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| partial | 114 | 64,425 | 1,978 | 1.72 | 1.85 | 114 | 64,425 | 1.93 |
+| partial | 199 | 121,775 | 4,131 | 3.25 | 3.51 | 199 | 121,775 | 3.66 |
 | lifted | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| original-x86 | 21,949 | 3,238,404 | 163,421 | 86.31 | 93.22 | 21,042 | 3,095,363 | 92.93 |
+| original-x86 | 21,200 | 3,036,935 | 159,842 | 80.94 | 87.42 | 20,293 | 2,893,894 | 86.88 |
 | all | 23,071 | 3,473,841 | 167,541 | 92.59 | 100.00 | 22,164 | 3,330,800 | 100.00 |
 
 ## Names
@@ -44,3 +44,4 @@ Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8,
 - 2026-11-11T12:47:02Z: exact 1.90%, functional 0.00%, lifted 90.62% of .text; real symbol 9.81%, with class 39.12% of 27,479 functions; game-only exact 2.14%, functional 0.00%
 - 2026-11-16T05:01:14Z: exact 4.46%, functional 0.00%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 5.02%, functional 0.00%
 - 2026-11-16T18:30:47Z: exact 4.56%, functional 0.00%, partial 1.72%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 5.13%, functional 0.00%, partial 1.93%
+- 2026-11-17T04:19:10Z: exact 8.40%, functional 0.00%, partial 3.25%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 9.46%, functional 0.00%, partial 3.66%

@@ -97,7 +97,7 @@ inline tSafeArray<T>::~tSafeArray()
 // FUNCTION: STARFLEETOP 0x00657770
 tAudioFileInfoPart::tAudioFileInfoPart()
 {
-    field_28 = 0;
+    // field_0c's inlined constructor clears +0x28.
     field_2c = 0;
 }
 

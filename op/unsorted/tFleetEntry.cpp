@@ -486,15 +486,15 @@ public:
 	char m_pad2a[0x6];
 };
 
-// HYPOTHESIS: the class whose type descriptor is at 0x00853a08 (tValueBtn, from the RTTI: a
-// tButton, itself a tControl and tVisObject). Only its name at +0x118 is known, as
-// 0x004c3703 compares it; the bases between tVisObject and tValueBtn are not declared here.
-class tValueBtn : public tVisObject
-{
-public:
-	char m_pad64[0xb4];
-	tString m_s118;
-};
+// tValueBtn (type descriptor 0x00853a08): 0x004c3703 compares its name at +0x118.
+#include "unsorted/tValueBtn.h"
+//
+//
+//
+//
+//
+//
+//
 
 
 // HYPOTHESIS: the function really starts at 0x004c265f with `mov eax, <handler>; call

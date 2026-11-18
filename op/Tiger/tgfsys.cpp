@@ -1,601 +1,634 @@
 // tgfsys.cpp: the Tiger file system session.
 
 // The original includes the file system part headers here. The unit map has no place for them
-// yet, so the declarations this unit needs from them are kept here.
+// yet, so the declarations this unit needs from them are kept in Tiger headers of their own.
 #include <windows.h>
 #include "Tiger/tsay.h"
 #include "Tiger/tstring.h"
 #include "Tiger/tgfsys.h"
 
-// HYPOTHESIS: a date value returned by value, one signed 64-bit word, as twDir::mGetDate
-// (STARFLEETOP 0x00631860) sign-extends both halves of the file time into it.
-class tDate
-{
-public:
-	__int64	f_00;
-};
-
-// HYPOTHESIS: the enumerators are not recovered.
-enum eSpecialDir
-{
-};
-
-// HYPOTHESIS: named by the exe through twVolume::mGetVolType's symbol; the enumerators are not
-// recovered. mGetVolType maps removable to 0, fixed and RAM disks to 1, CD-ROM to 2, remote to 3.
-enum eVolType
-{
-};
-
-
-#include "unsorted/tQueue.h"
-
-// HYPOTHESIS: the objects the iterator cookies resolve to; their layouts are not recovered.
-// HYPOTHESIS: 0x28 bytes, as tVolIterator::mValid reads the map pair's count at +0x3c.
-class tVolIterParent
-{
-public:
-	int32u	mAdd( tVolume volume );
-	// HYPOTHESIS: out of line, as tVolIterator::mNext (STARFLEETOP 0x0061f450) calls it with the
-	// volume passed by value and returns its result.
-	tVolume	mNext( tVolume volume );
-
-	// HYPOTHESIS: the volumes iterated, a queue at +0x00, and the node last returned at +0x0c, as
-	// tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) sets it to the queue's head. The member names
-	// and the remaining words are not recovered.
-	tQueue<tVolume>					fVolumes;	// +0x00
-	tQueue<tVolume>::fn_QueueNode	*fCurrent;	// +0x0c
-	int32u							f_10[6];
-};
-
-// HYPOTHESIS: 0x28 bytes, as tDirIterator::mValid reads the map pair's count at +0x3c.
-class tDirIterParent
-{
-public:
-	// Out of line in the exe (STARFLEETOP 0x0061ba80, 0x00634f20).
-	tDirIterParent();
-	~tDirIterParent();
-
-	int32u	mAdd( tDir dir );
-	// HYPOTHESIS: out of line, as tDirIterator::mNext (STARFLEETOP 0x0061f7f0) calls it with the
-	// directory passed by value and returns its result, like tVolIterParent::mNext.
-	tDir	mNext( tDir dir );
-
-	// HYPOTHESIS: the directories iterated, a queue at +0x00, and the node last returned at +0x0c,
-	// as tDirIterator::mFirst (STARFLEETOP 0x0061f690) sets it to the queue's head, like
-	// tVolIterParent. The member names and the remaining words are not recovered.
-	tQueue<tDir>				fDirs;		// +0x00
-	tQueue<tDir>::fn_QueueNode	*fCurrent;	// +0x0c
-	int32u						f_10[6];
-};
-
-// HYPOTHESIS: 0x28 bytes, as tPathIterator::mValid reads the map pair's count at +0x3c.
-class tPathIterParent
-{
-public:
-	// Out of line in the exe (STARFLEETOP 0x0061bab0, 0x00634f50).
-	tPathIterParent();
-	~tPathIterParent();
-
-	int32u	mAdd( tPath path );
-	// HYPOTHESIS: out of line, as tPathIterator::mFirst (STARFLEETOP 0x0061fa60) calls it on the
-	// resolved parent and returns its result, where the volume and directory iterators have it
-	// expanded inline.
-	tPath	mFirst( void );
-	// HYPOTHESIS: out of line, as tPathIterator::mNext (STARFLEETOP 0x0061fb60) calls it with the
-	// path passed by value and returns its result, like tVolIterParent::mNext.
-	tPath	mNext( tPath path );
-
-	int32u	f_00[10];
-};
-
-// HYPOTHESIS: the slots before mGetSpecialDir (vtable +0x24) are not recovered; these three are
-// file system part methods named by the exe, placed to fill slots 6 to 8.
-class tgFileSystemPart: public tPart
-{
-public:
-	GenAbstractBinding( tgFileSystemPart );
-
-	virtual tVolIterator	mGetVolIterator( tSession session ) = 0;
-	virtual tVolume			mGetNamedVolume( tSession session, tString name ) = 0;
-	virtual tPath			mGetAppPath( tSession session ) = 0;
-	virtual tDir			mGetSpecialDir( tSession session, eSpecialDir dir ) = 0;
-	// HYPOTHESIS: slot 10 (vtable +0x28), as tFSSession::mDuplicatePath calls it.
-	virtual tPath			mDuplicatePath( tSession session, tPath path ) = 0;
-	// HYPOTHESIS: slot 11 (vtable +0x2c), as tFSSession::mFileOpenDialog calls it.
-	virtual tPath			mFileOpenDialog( tSession session, tString &prompt, tString &filter,
-								tDir dir ) = 0;
-	// HYPOTHESIS: slot 12 (vtable +0x30), as tFSSession::mFileSaveDialog calls it.
-	virtual tPath			mFileSaveDialog( tSession session, tString &prompt, tString &filter,
-								tDir dir ) = 0;
-};
-
-class tFSSession
-{
-	friend class tFileSession;
-	friend class tSession;
-
-public:
-	tFSSession();
-	tFSSession( const tFSSession &other );
-	virtual ~tFSSession();
-
-	tVolume	mGetNamedVolume( tString &name );
-	tPath	mGetAppPath( void );
-	tPath	mDuplicatePath( tPath path );
-	tPath	mFileOpenDialog( tString &prompt, tString &filter, tDir dir );
-	tPath	mFileSaveDialog( tString &prompt, tString &filter, tDir dir = tDir() );
-	tDir	mGetSpecialDir( eSpecialDir dir )
-	{
-		return BindPart( tgFileSystemPart )->mGetSpecialDir( fSession, dir );
-	}
-
-protected:
-	void	mSession( tSession session );
-
-	// HYPOTHESIS: size 0x5c from the allocation in tFileSession::tFileSession; the session at
-	// +0x4c is the one tFileSession::mGetSpecialDir passes to the file system part. The queue
-	// types follow the vtables tFSSession::tFSSession stores; the one at +0x10 is not named by the
-	// exe and is taken to hold directories.
-	tQueue<tVolume>			f_04;
-	tQueue<tDir>			f_10;
-	tQueue<tPath>			f_1c;
-	tQueue<tVolIterator>	f_28;
-	tQueue<tDirIterator>	f_34;
-	tQueue<tPathIterator>	f_40;
-	tSession	fSession;	// +0x4c
-	tSession	f_54;
-};
-
-// HYPOTHESIS: the platform volume, directory and path objects; their layouts are not recovered.
-// HYPOTHESIS: 0x94 bytes, as tVolume::mValid reads the volume map pair's count at +0xa8.
-class twVolume
-{
-public:
-	// HYPOTHESIS: the first virtual, as tVolume::mGetName (STARFLEETOP 0x0061d7a0) calls it
-	// through the vtable's first slot on the resolved volume.
-	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second virtual, as tVolume::mGetSortName calls it.
-	virtual tString	mGetSortName( void );
-	// HYPOTHESIS: the volume queries the exe names for twVolume, in address order; the slot
-	// after them is not recovered.
-	virtual int32u	mGetClusterSize( void );
-	virtual int32u	mGetTotalClusters( void );
-	virtual int32u	mGetFreeClusters( void );
-	virtual eVolType	mGetVolType( void );
-	virtual iTruth	mIsEjectable( void );
-	virtual void	fn_twVolume_slot7( void );
-	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tVolume::mGetRoot (STARFLEETOP 0x0061dad0)
-	// calls it through that slot on the resolved volume.
-	virtual tDir	mGetRoot( void );
-
-	twVolume();
-	~twVolume();
-
-	// HYPOTHESIS: the volume's own cookie at +0x34, which mGetRoot passes to the root directory as
-	// its parent volume; the members before it are not recovered.
-	tString	f_04;
-	int32u	f_2c;
-	int32u	f_30;
-	tVolume	f_34;
-	// HYPOTHESIS: the sort name copied by mGetSortName from +0x44; later members not recovered.
-	tString	f_44;
-	// HYPOTHESIS: the volume's root path, which mGetClusterSize hands to the system.
-	tString	f_6c;
-};
-
-// HYPOTHESIS: 0xb4 bytes, as tDir::mValid reads the directory map pair's count at +0xc8.
-class twDir
-{
-public:
-	// HYPOTHESIS: the first virtual, as tDir::mGetName (STARFLEETOP 0x0061dbf0) calls it through
-	// the vtable's first slot on the resolved directory.
-	virtual tString	&mGetName( void );
-	// HYPOTHESIS: the second virtual, as twVolume has its mGetSortName there.
-	virtual tString	mGetSortName( void );
-	// HYPOTHESIS: the third virtual (vtable +0x08), as tDir::mGetParentVol (STARFLEETOP
-	// 0x0061dd00) calls it through that slot on the resolved directory.
-	virtual tVolume	mGetParentVol( void );
-	// HYPOTHESIS: the fourth virtual (vtable +0x0c), as tDir::mGetParentDir (STARFLEETOP
-	// 0x0061de20) calls it through that slot on the resolved directory.
-	virtual tDir	mGetParentDir( void );
-	// HYPOTHESIS: the fifth slot, by the exe's symbol for twDir::mGetDate (STARFLEETOP 0x00631860).
-	virtual tDate	mGetDate( void );
-	// HYPOTHESIS: the sixth virtual (vtable +0x14), as tDir::mGetSize (STARFLEETOP 0x0061df40)
-	// calls it through that slot on the resolved directory.
-	virtual int32u	mGetSize( void );
-	// HYPOTHESIS: the seventh virtual (vtable +0x18), as tDir::mExist (STARFLEETOP 0x0061e050)
-	// calls it through that slot on the resolved directory.
-	virtual iTruth	mExist( void );
-	// The eighth slot, by the exe's symbol for twDir::mGetDirIterator (STARFLEETOP 0x00632040).
-	virtual tDirIterator	mGetDirIterator( void );
-	// HYPOTHESIS: the ninth virtual (vtable +0x20), as tDir::mGetPathIterator (STARFLEETOP
-	// 0x0061e160) calls it through that slot on the resolved directory.
-	virtual tPathIterator	mGetPathIterator( void );
-	// HYPOTHESIS: the tenth virtual (vtable +0x24), as tDir::mGetNamedDir (STARFLEETOP
-	// 0x0061e280) calls it through that slot on the resolved directory.
-	virtual tDir	mGetNamedDir( tString &name );
-	// HYPOTHESIS: the eleventh virtual (vtable +0x28), as tDir::mGetNamedFile (STARFLEETOP
-	// 0x0061e3a0) calls it through that slot on the resolved directory.
-	virtual tPath	mGetNamedFile( tString &name );
-	// The twelfth slot, by the exe's symbol for twDir::mCreate (STARFLEETOP 0x00632d30).
-	virtual iTruth	mCreate( void );
-	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tDir::mDelete (STARFLEETOP 0x0061e5c0)
-	// calls it through that slot on the resolved directory.
-	virtual iTruth	mDelete( void );
-
-	// HYPOTHESIS: out of line, as tDir::mGetNamedFile calls both on the default value its inline
-	// map lookup builds.
-	twDir();
-	// HYPOTHESIS: the name, the parent volume and the parent directory, as twVolume::mGetRoot
-	// (STARFLEETOP 0x006313e0) passes them; the argument names are not recovered.
-	twDir( const tString &name, tVolume volume, tDir parent );
-	~twDir();
-
-
-protected:
-	void	mMakeFullPath( void );
-
-public:
-	// HYPOTHESIS: the parent volume at +0x04 and the parent directory at +0x14, as
-	// twDir::mMakeFullPath (STARFLEETOP 0x006315d0) reads them; the name at +0x24 and the full
-	// path built from it at +0x8c. The words at +0x4c and +0x50 and the strings at +0x64 are not
-	// recovered.
-	tVolume	f_04;
-	tDir	f_14;
-	tString	f_24;
-	int32u	f_4c;
-	int32u	f_50;
-	tDir	f_54;
-	tString	f_64;
-	tString	f_8c;
-};
-
-// HYPOTHESIS: the platform-independent path twPath derives from, named by the exe's RTTI; its
-// virtuals and members are not recovered, so twPath declares the slots itself. mCookie
-// (STARFLEETOP 0x00634ea0) is named by the exe's symbol.
-class tgPath
-{
-public:
-	tPath	mCookie( tPath &cookie );
-};
-
-// HYPOTHESIS: 0xac bytes, as tPath::mValid reads the path map pair's count at +0xc0.
-class twPath: public tgPath
-{
-public:
-	// HYPOTHESIS: the first virtual, as tPath::mGetName (STARFLEETOP 0x0061e6d0) calls it through
-	// the vtable's first slot on the resolved path.
-	virtual tString	&mGetName( void );
-	// The second slot, by the exe's symbol for twPath::mGetSortName (STARFLEETOP 0x00633260).
-	virtual tString	mGetSortName( void );
-	// HYPOTHESIS: the third virtual (vtable +0x08), as tPath::mGetParentDir (STARFLEETOP
-	// 0x0061e900) calls it through that slot on the resolved path.
-	virtual tDir	mGetParentDir( void );
-	// HYPOTHESIS: the fourth virtual (vtable +0x0c), as tPath::mGetDate (STARFLEETOP 0x0061e7e0)
-	// calls it through that slot on the resolved path.
-	virtual tDate	mGetDate( void );
-	// HYPOTHESIS: the fifth virtual (vtable +0x10), as tPath::mExist (STARFLEETOP 0x0061ea20)
-	// calls it through that slot on the resolved path.
-	virtual iTruth	mExist( void );
-	// HYPOTHESIS: the sixth virtual (vtable +0x14), as tPath::mGetSize (STARFLEETOP 0x0061eb30)
-	// calls it through that slot on the resolved path.
-	virtual int32u	mGetSize( void );
-	// HYPOTHESIS: the seventh virtual (vtable +0x18), as tPath::mCreate (STARFLEETOP 0x0061ec40)
-	// calls it through that slot on the resolved path.
-	virtual iTruth	mCreate( void );
-	// HYPOTHESIS: the eighth virtual (vtable +0x1c), as tPath::mDelete (STARFLEETOP 0x0061ed50)
-	// calls it through that slot on the resolved path.
-	virtual iTruth	mDelete( void );
-	// HYPOTHESIS: the ninth virtual (vtable +0x20), as its body follows mDelete's; the name is
-	// the exe's symbol for STARFLEETOP 0x00633700, and the tenth (+0x24) is the exe's symbol for
-	// STARFLEETOP 0x00633770, the eleventh (+0x28) for 0x00633850 and the twelfth (+0x2c) for 0x006338c0.
-	virtual iTruth	mLock( void );
-	virtual iTruth	mLock( iTruth lock );
-	virtual iTruth	mHide( void );
-	virtual iTruth	mHide( iTruth hide );
-	// HYPOTHESIS: the thirteenth virtual (vtable +0x30), as tPath::mRead (STARFLEETOP 0x0061ee60)
-	// calls it through that slot on the resolved path.
-	virtual int32u	mRead( void *buffer, int32u offset, int32u size, tPathCallback *callback );
-	// HYPOTHESIS: the fourteenth virtual (vtable +0x34), as tPath::mWrite (STARFLEETOP 0x0061ef90)
-	// calls it through that slot on the resolved path.
-	virtual int32u	mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback );
-	// HYPOTHESIS: the fifteenth virtual (vtable +0x38), as tPath::mFree (STARFLEETOP 0x0061f0c0)
-	// calls it through that slot on the resolved path.
-	virtual int32u	mFree( void );
-	// HYPOTHESIS: the sixteenth virtual, as its body follows mFree's; named by the exe's symbol.
-	virtual iTruth	mExec( tString &args );
-
-	// HYPOTHESIS: out of line, as twDir::mGetNamedFile (STARFLEETOP 0x00631d30) calls it with the
-	// name and the directory the path lies in; ~twPath is expanded inline there.
-	twPath( const tString &name, tDir dir );
-	// HYPOTHESIS: inline, as twDir::mGetPathIterator (STARFLEETOP 0x00632700) has it expanded:
-	// the twPath vtable store, the call to mFree and the members' destructors.
-	~twPath() { mFree(); }
-
-	// HYPOTHESIS: protected, by the exe's symbol, with twIORequest::mProcessRequest (STARFLEETOP
-	// 0x006340b0) calling it as a friend.
-	friend class twIORequest;
-protected:
-	void	mEnsureFileClosed( void );
-	void	mMakeFullPath( void );
-
-public:
-
-	// HYPOTHESIS: the directory the path lies in at +0x04, the name at +0x14 and the directory's
-	// word copied into +0x40; the cookie at +0x44 and the strings at +0x54 and +0x7c, the file
-	// handle at +0xa4 and its count at +0xa8 are read by the inline destructor only.
-	tDir	f_04;
-	tString	f_14;
-	int32u	f_3c;
-	int32u	f_40;
-	tPath	f_44;
-	tString	f_54;
-	tString	f_7c;
-	void	*f_a4;
-	int32	f_a8;
-};
-
-namespace std
-{
-	template <class _Ty> struct less;
-}
-
-// HYPOTHESIS: a hash of 256 singly linked buckets keyed by the cookie's low byte; the class,
-// tMapPair, iterator, operator* and operator++(int) are named by the exe. Member names, the
-// bucket layout and the inline lookup and removal bodies are not recovered.
-template <class tKeyType, class tValueType, class tCompare>
-class tCountMap
-{
-public:
-	class tMapPair
-	{
-	public:
-		tMapPair( tKeyType &key, tValueType &value );
-		virtual ~tMapPair();
-
-		tKeyType	fKey;		// +0x04
-		tValueType	fValue;		// +0x0c
-		int32u		fCount;		// +0x68
-		tMapPair	*fNext;		// +0x6c
-	};
-
-	class iterator
-	{
-	public:
-		iterator( tMapPair *node ) { fNode = node; }
-
-		tMapPair	&operator*();
-		iterator	operator++( int );
-
-		tMapPair	*fNode;
-	};
-
-	iterator mFind( const tKeyType &key )
-	{
-		iterator	it( fHead );
-
-		for ( ; it.fNode != 0; it++ )
-			if ( (*it).fKey.fCookie == key.fCookie )
-				break;
-		return it;
-	}
-
-	// Out of line in the exe (STARFLEETOP 0x00621b60).
-	iterator	find( tKeyType &key );
-	// Out of line in the exe (STARFLEETOP 0x006220e0).
-	iterator	end( void );
-
-	tValueType	&operator[]( tKeyType &key );
-
-	// MATCH-ONLY: operator[] as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0) has it expanded
-	// inline, where tVolume::mGetName calls it out of line. A found pair moves to the front of
-	// its bucket; a missing key gets a new pair with a default value at the front.
-	tValueType &fn_0061d8b0_index( tKeyType &key )
-	{
-		tMapPair	*prev = 0;
-		tMapPair	*pair;
-
-		for ( pair = fHead; pair != 0; prev = pair, pair = pair->fNext )
-			if ( pair->fKey == key )
-				break;
-
-		if ( pair == 0 )
-		{
-			tValueType	value;
-
-			pair = new tMapPair( key, value );
-			if ( fHead != 0 )
-				pair->fNext = fHead;
-			else
-				fTail = pair;
-			fHead = pair;
-		}
-		else if ( prev != 0 )
-		{
-			prev->fNext = pair->fNext;
-			pair->fNext = fHead;
-			fHead = pair;
-			if ( fTail == pair )
-				fTail = prev;
-		}
-		return pair->fValue;
-	}
-
-	void mRemove( const tKeyType &key )
-	{
-		tMapPair	*prev = 0;
-		tMapPair	*pair;
-
-		for ( pair = fHead; pair != 0; prev = pair, pair = pair->fNext )
-			if ( pair->fKey.fCookie == key.fCookie )
-				break;
-		if ( pair == 0 )
-			throw "Couldn't find the object to delete";
-
-		if ( --pair->fCount == 0 )
-		{
-			tMapPair	*head = fHead;
-
-			if ( pair == head )
-				fHead = head->fNext;
-			else if ( pair == fTail )
-			{
-				fTail = prev;
-				prev->fNext = 0;
-			}
-			else
-				prev->fNext = pair->fNext;
-
-			delete pair;
-
-			if ( fHead == 0 )
-				fTail = 0;
-		}
-	}
-
-	int32u		f_00;
-	tMapPair	*fHead;		// +0x04
-	tMapPair	*fTail;		// +0x08
-};
-
-// HYPOTHESIS: the 256 count maps the cookie manager hashes its cookies over, by the cookie's low
-// byte; the class and mResolve are named by the exe, which calls mResolve (STARFLEETOP
-// 0x00637570) out of line to pick a cookie's map. The leading word is not recovered.
-template <class tKeyType, class tValueType, class tCompare>
-class tValueCountMap
-{
-public:
-	typedef tCountMap<tKeyType,tValueType,tCompare>	tMap;
-
-	tMap	&mResolve( tKeyType &key );
-	// Out of line in the exe (STARFLEETOP 0x00636fd0 and 0x00636fb0), named by its symbols.
-	int32u		count( tKeyType &key );
-	tValueType	&operator[]( tKeyType &key );
-
-	int32u	f_00;
-	tMap	fMaps[256];		// +0x04
-};
-
-// HYPOTHESIS: the cookie manager hashes its cookies over 256 count maps by the cookie's low byte;
-// operator[] being called on one 12-byte map (STARFLEETOP 0x00621ba0) shows the maps are the
-// buckets. The leading word is not recovered.
-template <class tCookieType, class tObjectType>
-class tCookieManager
-{
-public:
-	typedef tCountMap<tCookieType,tObjectType,std::less<tCookieType> >	tMap;
-
-	tCookieType	mMake( tObjectType &object );
-
-	void mRemove( tCookieType &cookie )
-	{
-		tMap::iterator it = fValues.fMaps[cookie.fCookie & 0xff].mFind( cookie );
-
-		if ( it.fNode == 0 || it.fNode->fCount == 0 )
-			throw "Use of invalid cookie to remove an item";
-		fValues.fMaps[cookie.fCookie & 0xff].mRemove( cookie );
-	}
-
-	// HYPOTHESIS: whether the cookie names a live item, as tVolume::mValid (STARFLEETOP
-	// 0x0061d200) has it expanded inline; the search compares the node's key directly, where
-	// mResolve's goes through the iterator. Its name is not recovered. The original frame is 4
-	// bytes larger than this build's; the extra slot is not recovered.
-	iTruth fn_0061d200_mValid( tCookieType &cookie )
-	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
-
-		for ( ; it.fNode != 0; it++ )
-			if ( it.fNode->fKey.fCookie == cookie.fCookie )
-				break;
-		return it.fNode != 0 && it.fNode->fCount != 0;
-	}
-
-	// The search is written out here rather than through mFind: tVolume::mGetName (STARFLEETOP
-	// 0x0061d7a0) keeps the iterator in this function's scope, where an inlined mFind's local
-	// would share its slot with the thrown string.
-	tObjectType &mResolve( tCookieType &cookie )
-	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
-
-		for ( ; it.fNode != 0; it++ )
-			if ( (*it).fKey.fCookie == cookie.fCookie )
-				break;
-		if ( it.fNode == 0 || it.fNode->fCount == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
-	}
-
-	// MATCH-ONLY: mResolve as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0) has it, with the
-	// search's comparison taken as a truth value and operator[] expanded inline.
-	tObjectType &fn_0061d8b0_mResolve( tCookieType &cookie )
-	{
-		tMap::iterator it( fValues.fMaps[cookie.fCookie & 0xff].fHead );
-
-		for ( ; it.fNode != 0; it++ )
-			if ( !( (*it).fKey != cookie ) )
-				break;
-		if ( it.fNode == 0 || it.fNode->fCount == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		return fValues.fMaps[cookie.fCookie & 0xff].fn_0061d8b0_index( cookie );
-	}
-
-	// MATCH-ONLY: mResolve as tFileSession::mGetAppPath (STARFLEETOP 0x0061c070) has it, calling
-	// the out-of-line tCountMap::find where tFileSession::mGetNamedVolume has the search expanded
-	// inline. The original has one resolve; why the two expand differently is not recovered.
-	tObjectType &fn_0061c070_mResolve( tCookieType &cookie )
-	{
-		tMap::iterator it = fValues.fMaps[cookie.fCookie & 0xff].find( cookie );
-
-		if ( it.fNode == 0 || (*it).fCount == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		return fValues.fMaps[cookie.fCookie & 0xff][cookie];
-	}
-
-	// MATCH-ONLY: mResolve as tPathIterator::mAdd (STARFLEETOP 0x0061f910) has it, searching with
-	// the out-of-line tCountMap::find and testing the result against the end of the map
-	// tValueCountMap::mResolve picks, which also gives operator[] its map. Why it expands
-	// differently from fn_0061c070_mResolve is not recovered.
-	tObjectType &fn_0061f910_mResolve( tCookieType &cookie )
-	{
-		tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	&values = fValues;	tMap::iterator it = values.fMaps[cookie.fCookie & 0xff].find( cookie );
-		if ( it.fNode == values.mResolve( cookie ).end().fNode || (*it).fCount == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		tMap	&map = values.mResolve( cookie );	return map[cookie];
-	}
-
-	// MATCH-ONLY: mResolve as twDir::mMakeFullPath (STARFLEETOP 0x006315d0) has it, with the
-	// bucket index held in a local for the search, the comparison taken as a truth value, the
-	// found iterator copied before it is tested and operator[] out of line.
-	tObjectType &fn_006315d0_mResolve( tCookieType &cookie )
-	{
-		int32u	index = cookie.fCookie & 0xff;
-		tMap::iterator it( fValues.fMaps[index].fHead );
-		for ( ; it.fNode != 0; it++ )
-			if ( !( (*it).fKey != cookie ) )
-				break;
-		tMap::iterator found = it;
-		if ( found.fNode == 0 || (*found).fCount == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		tMap	&map = fValues.fMaps[cookie.fCookie & 0xff];
-		return map[cookie];
-	}
-
-	// MATCH-ONLY: mResolve as twIORequest::mProcessRequest (STARFLEETOP 0x006340b0) has it for a
-	// read, with the value map's out-of-line count and operator[].
-	tObjectType &fn_006340b0_mResolve( tCookieType &cookie )
-	{
-		if ( fValues.count( cookie ) == 0 )
-			throw "Use of invalid cookie to resolve an item";
-		return fValues[cookie];
-	}
-
-	// MATCH-ONLY: the out-of-line mResolve of tCookieManager<tPath,twPath> (STARFLEETOP
-	// 0x00636ad0), defined after the class so that its callers cannot inline it.
-	tObjectType &fn_00636ad0_mResolve( tCookieType &cookie );
-
-	int32u											f_00;
-	tValueCountMap<tCookieType,tObjectType,std::less<tCookieType> >	fValues;	// +0x04
-};
+#include "Tiger/tFSSession.h"
+
+// tDate, eVolType, the iterator parents, tgFileSystemPart, tFSSession, twVolume, twDir, tgPath
+// and twPath are declared in Tiger/tFSSession.h, as unsorted/fn_00436000.cpp needs them too;
+// these lines keep the line numbers.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+#include "Tiger/tCountMap.h"
+
+// tCountMap, tValueCountMap and tCookieManager are declared in Tiger/tCountMap.h, as
+// unsorted/fn_00436000.cpp uses them too; these lines keep the line numbers.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 template <class tVolumeType, class tDirType, class tPathType>
@@ -613,6 +646,7 @@ public:
 	void mRemove( tPath &cookie )			{ f_04--; fPathCookies.mRemove( cookie ); }
 	void mRemove( tVolIterator &cookie )	{ f_04--; fVolIterCookies.mRemove( cookie ); }
 	void mRemove( tDirIterator &cookie )	{ f_04--; fDirIterCookies.mRemove( cookie ); }
+	void mRemove( tSession &cookie )		{ f_04--; fSessionCookies.mRemove( cookie ); }
 	void mRemove( tPathIterator &cookie )	{ f_04--; fPathIterCookies.mRemove( cookie ); }
 
 	// HYPOTHESIS: f_04 is the count tFileSession::tFileSession raises; f_00 is not recovered. The
@@ -637,28 +671,14 @@ public:
 	tFileSystemCookieManager<twVolume,twDir,twPath>	fFSCookies;		// +0x0c
 };
 
-class tFileSession
-{
-public:
-	tFileSession();
-	virtual ~tFileSession();
-
-	virtual iTruth	mValid( void );
-	virtual void	mInvalidate( void );
-
-	tVolume		mGetNamedVolume( tString &name );
-	tPath		mGetAppPath( void );
-	tDir		mGetSpecialDir( eSpecialDir dir );
-	tPath		mDuplicatePath( tPath path );
-	// HYPOTHESIS: the argument names are not recovered.
-	tPath		mFileOpenDialog( tString &prompt, tString &filter );
-	// HYPOTHESIS: the argument names are not recovered.
-	tPath		mFileSaveDialog( tString &prompt, tString &filter );
-
-	// HYPOTHESIS: +0x04 is not written by the constructor; its meaning is not recovered.
-	int32u		f_04;
-	tSession	fSession;
-};
+// tFileSession is declared in Tiger/tFileSession.h; these lines keep the line numbers.
+//
+//
+//
+//
+//
+//
+//
 
 // FUNCTION: STARFLEETOP 0x0061bae0
 tFileSession::tFileSession()
@@ -679,9 +699,9 @@ tFileSession::tFileSession()
 // FUNCTION: STARFLEETOP 0x0061bdd0
 inline tFileSession::~tFileSession()
 {
-	tFSCookiePart	*part = BindPart( tFSCookiePart );
-	part->fFSCookies.f_04--;
-	part->fFSCookies.fSessionCookies.mRemove( fSession );
+	BindPart( tFSCookiePart )->fFSCookies.mRemove( fSession );
+
+
 }
 
 // FUNCTION: STARFLEETOP 0x0061bf50
@@ -917,8 +937,8 @@ tString &tVolume::mGetName( void )
 }
 
 // The original frame is 4 bytes larger than this build's, as in tVolume::mGetName: the thrown
-// string and operator++'s result have separate slots there. The original computes the first
-// bucket's address with the index's increment folded into the lea; neither is recovered.
+// string and operator++'s result have separate slots there. The slot is not recovered; the
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061d8b0
 tString tVolume::mGetSortName( void )
 {
@@ -975,24 +995,24 @@ iTruth tDir::mExist( void )
 }
 
 // The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// two with the plain mResolve; holding the cookie's map in a local for operator[] gives its order.
 // FUNCTION: STARFLEETOP 0x0061e160
 tPathIterator tDir::mGetPathIterator( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetPathIterator();
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetPathIterator();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e280
 tDir tDir::mGetNamedDir( tString &name )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.mResolve( *this ).mGetNamedDir( name );
+	return BindPart( tFSCookiePart )->fFSCookies.fDirCookies.fn_0061e160_mResolve( *this ).mGetNamedDir( name );
 }
 
 // The resolve has operator[] expanded inline, as tVolume::mGetSortName (STARFLEETOP 0x0061d8b0)
-// has it. As there, the original frame is 4 bytes larger and the first bucket's address has the
-// index's increment folded into the lea; neither is recovered.
+// has it. As there, the original frame is 4 bytes larger; the extra slot is not recovered. The
+// instructions otherwise agree.
 // FUNCTION: STARFLEETOP 0x0061e3a0
 tPath tDir::mGetNamedFile( tString &name )
 {
@@ -1015,20 +1035,20 @@ tString &tPath::mGetName( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetName();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e7e0
 tDate tPath::mGetDate( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetDate();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061e160_mResolve( *this ).mGetDate();
 }
 
-// The original holds this in ebx and the part search's index in ebp, where this build swaps the
-// two, as in tVolume::mGetRoot; the instructions otherwise agree.
+// The resolve holds the cookie's map in a local for operator[], as tDir::mGetPathIterator
+// (STARFLEETOP 0x0061e160) has it; that gives the original's registers.
 // FUNCTION: STARFLEETOP 0x0061e900
 tDir tPath::mGetParentDir( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mGetParentDir();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061e160_mResolve( *this ).mGetParentDir();
 }
 
 // The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
@@ -1055,12 +1075,11 @@ iTruth tPath::mCreate( void )
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mCreate();
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, which gives the original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061ed50
 iTruth tPath::mDelete( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mDelete();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mDelete();
 }
 
 // FUNCTION: STARFLEETOP 0x0061ee60
@@ -1075,12 +1094,12 @@ int32u tPath::mWrite( void *buffer, int32u offset, int32u size, tPathCallback *c
 	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mWrite( buffer, offset, size, callback );
 }
 
-// The original frame is 4 bytes larger than this build's, as in tVolume::mGetName; the extra
-// slot is not recovered. The instructions otherwise agree.
+// The resolve tests the found iterator in a helper, as in tPath::mDelete, which gives the
+// original's four stack slots.
 // FUNCTION: STARFLEETOP 0x0061f0c0
 int32u tPath::mFree( void )
 {
-	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.mResolve( *this ).mFree();
+	return BindPart( tFSCookiePart )->fFSCookies.fPathCookies.fn_0061ed50_mResolve( *this ).mFree();
 }
 
 // FUNCTION: STARFLEETOP 0x0061f1d0

@@ -47,6 +47,8 @@ struct c_00677060_Result
 	unsigned char field_00[ 0x04 - 0x00 ];
 	int field_04;	// HYPOTHESIS: an id; tScrollBar::mLoad (0x004c878a) passes it to 0x006770a0
 	tString field_08;
+	unsigned char field_30[ 0x128 - 0x30 ];
+	int *field_128;	// HYPOTHESIS: ids by index; tMetaMapControl::fn_005e3f82 passes one to 0x00677380
 };
 
 struct c_tScrollBar_FieldA8;
@@ -61,6 +63,8 @@ public:
 	void fn_006773e0( int id );
 	// HYPOTHESIS: returns the image of an id, or 0 (tScrollBar::mLoad, 0x004c878a).
 	c_tScrollBar_FieldA8 *fn_006770a0( int id );
+	// HYPOTHESIS: returns the image of an id (tMetaMapControl::fn_005e3f82, 0x005e3f82).
+	c_tScrollBar_FieldA8 *fn_00677380( int id );
 };
 
 extern c_00c69100_Object g_00c69100;
@@ -108,8 +112,8 @@ public:
 	virtual ~tListBox_Base();
 	// Slots 12 to 41 are not called by the functions rebuilt so far.
 	virtual void vfunction13();
-	virtual void vfunction14();
-	virtual void vfunction15();
+	virtual bool vfunction14();
+	virtual void vfunction15( bool a );
 	virtual void vfunction16();
 	virtual void vfunction17();
 	virtual void vfunction18();
@@ -196,6 +200,13 @@ public:
 	// HYPOTHESIS: works out the items one page holds and the last first-visible item from the
 	// list box's height, and passes the range to its tScrollBar.
 	void fn_004c69b8( int a );
+	// HYPOTHESIS: the index where a text too wide for the list box breaks, at the last space
+	// before it; -1 when the text fits (0x004bd443). The owner class may be a derived list box.
+	int fn_004bd443( tString *text, int width );
+	// HYPOTHESIS: the width a line of text may take (0x004be23f).
+	int fn_004be23f();
+	// HYPOTHESIS: the width of a text in the list box's font (0x004be24a).
+	int fn_004be24a( tString *text );
 
 	// HYPOTHESIS: field types and names unknown; +0x6c and +0x70 are the item count and first
 	// visible item (0x004c6225).

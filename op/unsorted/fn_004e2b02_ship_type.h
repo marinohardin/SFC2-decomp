@@ -4,6 +4,23 @@
 #ifndef fn_004e2b02_ship_type_h
 #define fn_004e2b02_ship_type_h 1
 
+// HYPOTHESIS: the object slot 86 of the object below returns; tShuttleBaySystem's 0x0044ea7e
+// reads a count from its slot 9.
+class fn_004e2b02_ad4_slot86_result
+{
+public:
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual void vfunction5();
+    virtual void vfunction6();
+    virtual void vfunction7();
+    virtual void vfunction8();
+    virtual void vfunction9();
+    virtual int vfunction10();
+};
+
 // HYPOTHESIS: the object at offset 0xad4 of the ship 0x004e2b02 reads; slot 43 (offset 0xac)
 // and slot 160 (offset 0x280) are two tests on it. Its class is not known.
 class fn_004e2b02_field_ad4_type
@@ -95,7 +112,8 @@ public:
     virtual void vfunction84();
     virtual void vfunction85();
     virtual void vfunction86();
-    virtual void vfunction87();
+    // HYPOTHESIS: slot 86 may return null (0x0044ea7e tests it once).
+    virtual fn_004e2b02_ad4_slot86_result* vfunction87();
     virtual void vfunction88();
     virtual void vfunction89();
     virtual void vfunction90();
@@ -170,6 +188,13 @@ public:
     virtual void vfunction159();
     virtual void vfunction160();
     virtual bool vfunction161();
+    virtual void vfunction162();
+    virtual void vfunction163();
+    virtual void vfunction164();
+    // HYPOTHESIS: slots 164 and 165 read and set an owner id; 0x0044ea7e sets it to the
+    // shuttle bay owner's id when they differ.
+    virtual int vfunction165();
+    virtual void vfunction166(int param_1);
 };
 
 // HYPOTHESIS: the ship that slot 32 of a ship system returns, as 0x004e2b02 reads it: slot 31
@@ -201,7 +226,8 @@ public:
     virtual void vfunction21();
     virtual void vfunction22();
     virtual void vfunction23();
-    virtual void vfunction24();
+    // HYPOTHESIS: slot 23 returns a float that 0x0044ea7e compares with a constant.
+    virtual float vfunction24();
     virtual void vfunction25();
     virtual void vfunction26();
     virtual void vfunction27();
@@ -219,7 +245,7 @@ public:
     virtual void vfunction39();
     virtual void vfunction40();
     virtual void vfunction41();
-    virtual void vfunction42();
+    virtual char* vfunction42();
     virtual void vfunction43();
     virtual void vfunction44();
     virtual void vfunction45();
@@ -237,6 +263,18 @@ public:
     virtual void vfunction57();
     virtual void vfunction58();
     virtual int vfunction59();
+    virtual void vfunction60();
+    virtual void vfunction61();
+    virtual void vfunction62();
+    virtual void vfunction63();
+    virtual void vfunction64();
+    virtual void vfunction65();
+    virtual void vfunction66();
+    virtual void vfunction67();
+    virtual void vfunction68();
+    // HYPOTHESIS: slot 68 (offset 0x110) takes one integer; tShuttleBaySystem's destructor
+    // (0x0044e844) passes 0 to the ship of every ID it holds.
+    virtual void vfunction69(int param_1);
 
     char pad04[0x1c - 0x04];
     // HYPOTHESIS: the ship's own id; tPhaserXBank's 0x004e5958 passes it with the target's id
@@ -246,7 +284,12 @@ public:
     int field_60;
     char pad64[0x180 - 0x64];
     int field_180;
-    char pad184[0xad4 - 0x184];
+    char pad184[0x870 - 0x184];
+    int field_870;
+    char pad874[0x87d - 0x874];
+    // HYPOTHESIS: a string held inline; only its address is taken.
+    char field_87d[1];
+    char pad87e[0xad4 - 0x87e];
     fn_004e2b02_field_ad4_type* field_ad4;
 };
 
