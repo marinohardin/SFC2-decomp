@@ -9,8 +9,9 @@
 // 0x0079564c is std::string's _Nullstr, so this global is a std::string whose
 // pointer sits at 0x00c38ddc.
 extern std::string g_00c38dd8;
-// HYPOTHESIS: a free cdecl function of seven arguments; its unit is not written yet.
-long fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
+// HYPOTHESIS: the free cdecl function of seven arguments claimed in unsorted/fn_004D3143.cpp.
+class fn_004d3ef7_object;
+fn_004d3ef7_object* fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
 
 // FUNCTION: STARFLEETOP 0x005e2501
 void tCompassRose::fn_005e2501()
@@ -18,13 +19,14 @@ void tCompassRose::fn_005e2501()
 	fn_004d3278( (long) g_00c38dd8.c_str(), 0, 0, 0, 0, vfunction1(), vfunction2() );
 }
 
-// HYPOTHESIS: a free cdecl function of a name; other units pass it image names.
-void fn_004d3306( const char *psz );
+// HYPOTHESIS: a free cdecl function of a name; other units pass it image names. It is claimed
+// in unsorted/fn_004D3143.cpp with a long argument, so the pointer is passed as one.
+void fn_004d3306( long arg1 );
 
 // FUNCTION: STARFLEETOP 0x005e2539
 void tCompassRose::fn_005e2539()
 {
-	fn_004d3306( g_00c38dd8.c_str() );
+	fn_004d3306( (long) g_00c38dd8.c_str() );
 }
 
 #include "unsorted/tMetaMapControl.h"
