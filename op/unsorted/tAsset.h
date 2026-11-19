@@ -37,6 +37,7 @@ class tCastItem : public tAsset
 public:
 	tCastItem();
 	virtual ~tCastItem();
+	virtual tStream& vfunction5( tStream& s );
 
 	// HYPOTHESIS: field names and types unknown.
 	int field_5C;

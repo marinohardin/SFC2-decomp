@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tCastItem.cpp
-// Functions: 0x00677d20 to 0x00677e50, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "unsorted/tAsset.h"
+#include "Tiger/tStream.h"
+
+// FUNCTION: STARFLEETOP 0x00677d20
+tStream& tCastItem::vfunction5( tStream& s )
+{
+	tAsset::vfunction5( s );
+	s << (unsigned long)field_5C << (unsigned long)field_62;
+	return s;
+}
