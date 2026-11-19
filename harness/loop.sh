@@ -187,8 +187,13 @@ fi
 if [ "$dry" = 0 ]; then
     echo "INFO  writing the symbol table: harness/build-and-verify.sh --all (log $state/symbols.log)"
     HARNESS_STATE="$state" nice -n 5 harness/build-and-verify.sh --all > "$state/symbols.log" 2>&1
-    [ -f "$state/build/symbols.tsv" ] \
-        || echo "WARN  no symbol table: stand-ins are checked only against claims rebuilt in the same run"
+    rc=$?
+    if [ -f "$state/build/symbols.tsv" ]; then
+        echo "INFO  symbol table: $(($(wc -l < "$state/build/symbols.tsv") - 1)) claims (--all exit $rc)"
+        [ "$rc" = 0 ] || echo "WARN  --all exit $rc: claims it could not build keep their earlier rows"
+    else
+        echo "WARN  no symbol table: stand-ins are checked only against claims rebuilt in the same run"
+    fi
 fi
 unset HARNESS_SELECTION HARNESS_BRIEF
 if [ -n "$lean" ]; then
