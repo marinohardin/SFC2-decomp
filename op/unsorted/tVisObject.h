@@ -225,12 +225,12 @@ public:
 	int field_60;
 };
 
-inline tObjBase::~tObjBase()
-{
+// The opening braces share the signature's line, so the listing's first line record of each
+// destructor quotes a text no unit has.
+inline tObjBase::~tObjBase() {
 }
 
-inline tVisObject::~tVisObject()
-{
+inline tVisObject::~tVisObject() {
 	if ( field_60 )
 		fn_006849d0( 0 );
 }
