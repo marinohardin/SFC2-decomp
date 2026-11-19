@@ -1216,6 +1216,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00407d0c": {
+   "name": "tDynamicMemoryFreeList::vfunction16",
+   "symbol": "?vfunction16@tDynamicMemoryFreeList@@UAE_NXZ",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

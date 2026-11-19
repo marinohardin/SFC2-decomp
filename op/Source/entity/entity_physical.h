@@ -124,7 +124,7 @@ public:
 	virtual unsigned char mInsertBeforeListMember(tListMember *aMember, tListMember *aListMember);
 	virtual unsigned char mRemoveFromList(tListMember *aMember);
 	virtual unsigned char mIsListMember(tListMember *aMember);
-	virtual void vfunction16();
+	virtual bool vfunction16();
 	virtual long vfunction17();	// HYPOTHESIS: the member count; 0x0043666d returns field_0xc
 	virtual long mGetZeroIndexedListMemberPosition(tListMember *aMember);
 	virtual void mClearList();
