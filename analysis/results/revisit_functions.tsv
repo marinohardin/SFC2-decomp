@@ -385,3 +385,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006f6d90	tSettings::CreateProfileList	0.00	2	opus	2026-11-19T20:20:09Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x006f8cd0	nDataStore::tStreamable::tCRCFailed::~tCRCFailed	29.84	2	opus	2026-11-19T21:08:31Z	attempt 2 (opus) did not raise the best; best 29.84%
 0x006f8ee0	nDataStore::tStreamable::GetObjectID	95.48	2	opus	2026-11-19T21:14:45Z	attempt 2 (opus) did not raise the best; waits for Fable; best 95.48%
+0x006f9140	nDataStore::operator>>	99.96	3	opus	2026-11-19T21:22:13Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.96%
