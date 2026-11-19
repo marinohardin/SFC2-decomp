@@ -114,7 +114,7 @@ public:
 	virtual void vfunction1();
 	// HYPOTHESIS: slot 2 takes the object, the entry array at +0x158 and the two values
 	// 0x0042fd3f passes on.
-	virtual void vfunction2(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, int param_4);
+	virtual int vfunction2(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, int param_4);
 	// HYPOTHESIS: slot 3 takes the object, the entry array at +0x158 and the three values
 	// 0x0042fddb passes on.
 	virtual void vfunction3(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, float param_4, int param_5);
@@ -165,7 +165,7 @@ class t3DVisual_Model : public t3DVisual
 public:
 	t3DVisual_Model();
 	virtual ~t3DVisual_Model();
-	void vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3);
+	int vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3);
 	void vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4);
 	void vfunction9(tViewer_0042fd3f *param_1, int param_2, int param_3);
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
@@ -476,7 +476,7 @@ int t3DVisual_Model::vfunction23(float time)
 }
 
 // FUNCTION: STARFLEETOP 0x0042fd3f
-void t3DVisual_Model::vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3)
+int t3DVisual_Model::vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3)
 {
 	int index = 0;
 	if (m120 != -1)
@@ -490,8 +490,11 @@ void t3DVisual_Model::vfunction7(tViewer_0042fd3f *param_1, float param_2, int p
 		index = vfunction23(point * point);
 		m124 = index;
 	}
+	// HYPOTHESIS: the function returns a value: the original keeps index in eax past the
+	// load of the part, and leaves slot 2's result there.
 	if (m160[index] != 0)
-		m160[index]->vfunction2(param_1, m158, param_2, param_3);
+		index = m160[index]->vfunction2(param_1, m158, param_2, param_3);
+	return index;
 }
 
 // FUNCTION: STARFLEETOP 0x0042fddb
