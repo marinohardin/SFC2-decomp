@@ -69,7 +69,8 @@ A second run does only the work that changed (`lib/cache.py`):
 
 `HARNESS_NO_CACHE=1` turns both off. CI's `check` runs that way, so every pull request also checks
 that the caches change nothing. Measured on 2026-11-19 over all 158 units and 4,228 claimed
-functions: an uncached, a cold and a warm `--all` printed the same lines. The caches are safe to
+functions: an uncached, a cold and a warm `--all` printed the same lines; the warm run took
+115 s against 228 s cold. The caches are safe to
 delete at any time.
 
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with

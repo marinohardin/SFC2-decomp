@@ -10,6 +10,7 @@ A function is claimed by an annotation on the line(s) before it (harness/SRC_LAY
 compiled in that unit; one in a header in the unit op/UNITS.tsv assigns to its address
 (harness/lib/claims.py), whose listing has line records for the header's inline code.
 """
+import functools
 import hashlib
 import json
 import os
@@ -267,6 +268,8 @@ def listing_functions(listing_text):
             if recs]
 
 
+# Every claim of a unit reads the same listing: parse it once. Callers only read the result.
+@functools.lru_cache(maxsize=8)
 def listing_line_records(listing_text):
     """[(symbol, [(file, line)])] from a VC6 /FAs listing: each PROC, in order, with every line
     record inside it and the file each one is in, read as listing_functions reads the first. An
@@ -539,6 +542,7 @@ def _inline_deleting_destructor(listing_text, path, ann_line, other_ann_lines, c
 LINE_TEXT = re.compile(r'^; (\d+)\s+:(.*)$')
 
 
+@functools.lru_cache(maxsize=8)
 def listing_first_texts(listing_text):
     """{symbol: (line, text)}: the source line each PROC's first line record quotes."""
     out, proc = {}, None
