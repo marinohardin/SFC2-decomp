@@ -3889,6 +3889,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004197dd": {
+   "name": "tNetMsg_kTransportBomb::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kTransportBomb@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kTransportBomb.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
