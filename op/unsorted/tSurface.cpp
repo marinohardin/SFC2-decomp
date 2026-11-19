@@ -47,9 +47,15 @@ public:
 	unsigned char field_76;
 };
 
+// HYPOTHESIS: 0x00695180 releases pixels obtained from 0x00695150.
+void fn_00695180( void *p ) throw();
+
 // FUNCTION: STARFLEETOP 0x00675060
+// FUNCTION: STARFLEETOP 0x00675250
 tSurface::~tSurface()
 {
+	if ( field_76 && field_60 )
+		fn_00695180( field_60 );
 }
 
 // FUNCTION: STARFLEETOP 0x00675080
