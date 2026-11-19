@@ -285,9 +285,10 @@ def _in_threads(fn, items, jobs):
     errors = [None] * len(items)
     pending = iter(range(len(items)))
     lock = threading.Lock()
+    stop = threading.Event()
 
     def worker():
-        while True:
+        while not stop.is_set():
             with lock:
                 i = next(pending, None)
             if i is None:
@@ -301,8 +302,14 @@ def _in_threads(fn, items, jobs):
                for _ in range(max(1, min(jobs, len(items))))]
     for t in threads:
         t.start()
-    for t in threads:
-        t.join()
+    try:
+        for t in threads:
+            t.join()
+    except BaseException:
+        # Ctrl-C reaches only this thread; the compiles run in their own process groups.
+        stop.set()
+        source.stop_all()
+        raise
     for e in errors:
         if e is not None:
             raise e

@@ -17,6 +17,10 @@ common=$(git -C "$top" rev-parse --path-format=absolute --git-common-dir 2>/dev/
     || root=${SFCOP_ROOT:-$(cd "$here/../../.." && pwd)}
 tools=${SFCOP_TOOLS:-$root/tools}
 wibo=$tools/wibo/1.2.0/wibo-macos
+case ${MSVC_VERSION:-6.4} in
+    6.4|6.5) ;;
+    *) echo "cl-native: MSVC_VERSION must be 6.4 or 6.5, not $MSVC_VERSION" >&2; exit 2 ;;
+esac
 msvc=$tools/msvc6/msvc${MSVC_VERSION:-6.4}
 if [ ! -x "$wibo" ] || [ ! -f "$msvc/Bin/CL.EXE" ]; then
     echo "cl-native: no native compiler in $tools (run toolchain/fetch-native.sh)" >&2

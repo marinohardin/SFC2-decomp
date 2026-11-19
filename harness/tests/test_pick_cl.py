@@ -121,3 +121,45 @@ def test_a_compile_that_does_not_finish_is_stopped_with_its_compiler(tmp_path, m
     pid = int(pidfile.read_text())
     assert not _alive(pid)
     assert os.listdir(tmp_path / 'work' / 'toolchain' / 'tmp') == []
+
+
+def test_an_interrupt_stops_the_compiles_of_every_worker(tmp_path, monkeypatch):
+    """Ctrl-C reaches only the main thread; the compiles that two worker threads started are
+    stopped too, and no worker starts another."""
+    import threading
+    from harness.lib import source, verify
+    tools = tmp_path / 'tools'
+    install(tools)
+    pids = tmp_path / 'pids'
+    pids.mkdir()
+    (tools / 'wibo' / '1.2.0' / 'wibo-macos').write_text(
+        f'#!/bin/sh\necho $$ > {pids}/$$\nexec sleep 30\n')
+    monkeypatch.setenv('SFCOP_TOOLS', str(tools))
+    monkeypatch.setenv('SFCOP_WORK', str(tmp_path / 'work'))
+    monkeypatch.setattr(paths, 'CL', paths.CL_NATIVE)
+    units = []
+    for n in range(4):
+        u = tmp_path / f'u{n}.cpp'
+        u.write_text('int f() { return 0; }\n')
+        units.append(str(u))
+    real_join = threading.Thread.join
+
+    def join(self, timeout=None):
+        if threading.current_thread() is threading.main_thread():
+            for _ in range(200):
+                if len(os.listdir(pids)) >= 2:
+                    break
+                time.sleep(0.05)
+            raise KeyboardInterrupt
+        return real_join(self, timeout)
+    monkeypatch.setattr(threading.Thread, 'join', join)
+    with pytest.raises(KeyboardInterrupt):
+        verify._in_threads(lambda u: source.compile_unit(u, {}, str(tmp_path),
+                                                         build_root=str(tmp_path / 'build')),
+                           units, 2)
+    monkeypatch.setattr(threading.Thread, 'join', real_join)
+    started = [int(x) for x in os.listdir(pids)]
+    assert len(started) == 2
+    time.sleep(1)
+    assert len(os.listdir(pids)) == 2
+    assert not any(_alive(pid) for pid in started)

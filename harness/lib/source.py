@@ -18,6 +18,7 @@ import shlex
 import shutil
 import signal
 import subprocess
+import threading
 import time
 
 from . import claims, deleting, paths
@@ -127,6 +128,31 @@ def _stop_group(p, grace=5):
             continue
 
 
+# The compiles running now, so an interrupt in the main thread can stop the ones that worker
+# threads started (verify._in_threads): only the main thread sees KeyboardInterrupt.
+_live = {}
+_live_lock = threading.Lock()
+
+
+def stop_all(grace=5):
+    """Stop every running compile's process group and container: TERM, then KILL after `grace`
+    seconds. The threads waiting on them see the compiles end."""
+    with _live_lock:
+        live = list(_live.values())
+    for p, cname in live:
+        for sig in (signal.SIGTERM, signal.SIGKILL):
+            try:
+                os.killpg(p.pid, sig)
+            except ProcessLookupError:
+                break
+            deadline = time.time() + grace
+            while time.time() < deadline and p.poll() is None:
+                time.sleep(0.05)
+            if p.poll() is not None:
+                break
+        subprocess.run(['docker', 'kill', cname], capture_output=True)
+
+
 def compile_unit(unit_path, profile, src_root, build_root=None):
     """Compile one translation unit with the pinned compiler. Returns a dict with obj, listing,
     log, ok, secs, out_dir."""
@@ -147,6 +173,8 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
     p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
                          errors='replace', start_new_session=True)
+    with _live_lock:
+        _live[p.pid] = (p, cname)
     try:
         out_, err_ = p.communicate(timeout=COMPILE_TIMEOUT)
         log, rc = out_ + err_, p.returncode
@@ -159,6 +187,9 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
         _stop_group(p)
         subprocess.run(['docker', 'kill', cname], capture_output=True)
         raise
+    finally:
+        with _live_lock:
+            _live.pop(p.pid, None)
     obj = os.path.join(out, base + '.obj')
     listing = os.path.join(out, base + '.asm')
     with open(os.path.join(out, 'cl.log'), 'w') as f:
