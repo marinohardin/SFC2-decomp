@@ -2444,10 +2444,10 @@ address	size	symbol	source	modes
 0x005a4257	24	fn_005A4173_Owner::fn_005A4257()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a426f	24	fn_005A4173_Owner::fn_005A426f()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a4287	31	fn_005A4173_Owner::fn_005A4287()	unsorted/fn_005A4000.cpp	vc6 guest
-0x005a42a6	99	fn_005A4173_Owner::fn_005A42a6()	unsorted/fn_005A4000.cpp	partial
-0x005a4309	99	fn_005A4173_Owner::fn_005A4309()	unsorted/fn_005A4000.cpp	partial
-0x005a436c	105	fn_005A4173_Owner::fn_005A436c()	unsorted/fn_005A4000.cpp	partial
-0x005a43d5	105	fn_005A4173_Owner::fn_005A43d5()	unsorted/fn_005A4000.cpp	partial
+0x005a42a6	99	fn_005A4173_Owner::fn_005A42a6()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a4309	99	fn_005A4173_Owner::fn_005A4309()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a436c	105	fn_005A4173_Owner::fn_005A436c()	unsorted/fn_005A4000.cpp	vc6 guest
+0x005a43d5	105	fn_005A4173_Owner::fn_005A43d5()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a443e	105	fn_005A4173_Owner::fn_005A443e()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a44a7	105	fn_005A4173_Owner::fn_005A44a7()	unsorted/fn_005A4000.cpp	vc6 guest
 0x005a4510	105	fn_005A4173_Owner::fn_005A4510()	unsorted/fn_005A4000.cpp	vc6 guest
@@ -2878,7 +2878,7 @@ address	size	symbol	source	modes
 0x0060c4aa	90	C_00c3a80c::~C_00c3a80c()	unsorted/fn_0060C000.cpp	vc6
 0x0060c504	25	C_00c3a80c::C_00c3a80c()	unsorted/fn_0060C000.cpp	vc6
 0x0060c51d	344	C_00c3a80c::fn_0060c51d(bool)	unsorted/fn_0060C000.cpp	vc6 guest
-0x0060c675	21	C_00c3a80c::fn_0060c675(C_0060c486 *,C_0060c486 *)	unsorted/fn_0060C000.cpp	partial
+0x0060c675	21	C_00c3a80c::fn_0060c675(C_0060c486 *,C_0060c486 *)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c68a	75	C_00c3a80c::fn_0060c68a(int)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c6d5	75	C_00c3a80c::fn_0060c6d5(int)	unsorted/fn_0060C000.cpp	vc6 guest
 0x0060c720	75	C_00c3a80c::fn_0060c720(tString &)	unsorted/fn_0060C000.cpp	vc6 guest
