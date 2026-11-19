@@ -436,6 +436,28 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     for path, items in others.items():
         if check_all or path in by_unit:
             by_unit.setdefault(path, []).extend(items)
+    if not check_all and by_unit:
+        # A header (or any file) changed since HEAD can break units that are not the claimed
+        # function's: rebuild every unit with a recorded function that reads a changed file, so
+        # a regression there counts as one here.
+        changed = {f for f in source.changed_files(src_root)
+                   if f not in {os.path.normpath(os.path.realpath(p)) for p in by_unit}}
+        readers = []
+        if changed:
+            for path, items in sorted(others.items()):
+                if path in by_unit:
+                    continue
+                try:
+                    hit = source.reads_any(cfg, src_root, path, changed)
+                except source.SourceError:
+                    hit = True
+                if hit:
+                    by_unit[path] = list(items)
+                    readers.append(os.path.relpath(path, src_root).replace(os.sep, '/'))
+        if readers:
+            shown = ', '.join(readers[:8]) + (f' and {len(readers) - 8} more' if len(readers) > 8 else '')
+            rep.add('INFO', f'{len(readers)} other units read a file changed since HEAD and are '
+                    f'rebuilt to check their recorded functions: {shown}')
 
     lines_in = {}
     for lst in annotations.values():
