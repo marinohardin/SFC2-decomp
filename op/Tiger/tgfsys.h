@@ -74,7 +74,7 @@ class fn_SessionCookie: public tCookie
 {
 public:
 	fn_SessionCookie() { mInvalidate(); }
-	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
+	fn_SessionCookie( const fn_SessionCookie &other );
 	// HYPOTHESIS: the copy takes the cookie and the session, and the derived copies assign the
 	// session again: the copy tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) returns stores the
 	// session cookie both before and after the tVolume vtable pointer. Argument copies elsewhere

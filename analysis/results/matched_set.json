@@ -1162,6 +1162,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00407c5b": {
+   "name": "tCookie::tCookie",
+   "symbol": "??0fn_SessionCookie@@QAE@ABV0@@Z",
+   "unit": "unsorted/tCookie.cpp",
+   "size": 38,
+   "score": 99.5,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
