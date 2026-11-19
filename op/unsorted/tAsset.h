@@ -74,12 +74,16 @@ inline tCastItem::tCastItem()
 	field_66 = 0;
 }
 
+// MATCH-ONLY: the original expands this constructor in some callers (fn_00676a30 kind 1) and has
+// an out-of-line copy for others; tBmpAsset.cpp defines that copy itself.
+#ifndef tBmpAsset_out_of_line
 inline tBmpAsset::tBmpAsset()
 {
 	field_6A = 0xff;
 	field_6C = 0xff;
 	field_6B = 0;
 }
+#endif
 
 class tBoundAsset : public tAsset
 {
