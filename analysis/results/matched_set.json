@@ -10554,9 +10554,9 @@
    "symbol": "?fn_00476e72@tState_NetSetup@tState_Namespace_NetSetup@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
    "size": 1101,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004772bf": {
    "name": "FUN_004772bf",
