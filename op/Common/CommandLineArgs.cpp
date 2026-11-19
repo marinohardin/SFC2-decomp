@@ -1,5 +1,6 @@
 // Common/CommandLineArgs.cpp
 
+#include <windows.h>
 #include <string>
 
 #include "Common/CommandLineArgs.h"
@@ -15,4 +16,10 @@ tCommandLineArgs *tCommandLineArgs::Instance(void)
 	}
 
 	return g_00c7f8b8.get();
+}
+
+// FUNCTION: STARFLEETOP 0x006fdc50
+tCommandLineArgs::tCommandLineArgs()
+	: m14(GetCommandLineA())
+{
 }

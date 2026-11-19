@@ -1,7 +1,7 @@
 #ifndef COMMON_COMMANDLINEARGS_H
 #define COMMON_COMMANDLINEARGS_H
 
-#include <iosfwd>
+#include <string>
 
 #include "Common/AutoPtr.h"
 
@@ -21,9 +21,11 @@ class tCommandLineArgs
 		// HYPOTHESIS: the static's name is not known; the exe holds it at 0x00c7f8b8.
 		static iAutoPtr g_00c7f8b8;
 
-		// HYPOTHESIS: the object is 0x34 bytes (Instance allocates that much); the members
-		// are not recovered yet.
-		char m04[0x30];
+		// HYPOTHESIS: names; the constructor builds three strings and fills the second
+		// from the process command line.
+		std::string m04;
+		std::string m14;
+		std::string m24;
 };
 
 #endif
