@@ -264,3 +264,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x004bde26	FUN_004bde26	3	fable	99.95	2026-11-19T22:55:09Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.95%
 0x004cf9cb	tSFCPlayer::~tSFCPlayer	3	fable	99.91	2026-11-19T22:56:49Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.91%
 0x004d3951	FUN_004d3951	4	fable	99.79	2026-11-19T22:58:14Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.79%
+0x0050eea7	tSndMgr_Miles::vfunction2	3	fable	99.94	2026-11-19T22:59:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.94%
