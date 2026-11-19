@@ -326,4 +326,15 @@ void tDatabaseObject::Kill()
 	CheckForDeath();
 }
 
+// FUNCTION: STARFLEETOP 0x006fb900
+bool tDatabaseObject::IsDead()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	if( !fAlive )
+		return true;
+
+	return false;
+}
+
 }
