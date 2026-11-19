@@ -17857,6 +17857,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00541499": {
+   "name": "FUN_00541499",
+   "symbol": "?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp",
+   "size": 308,
+   "score": 99.949,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x005430ad": {
    "name": "FUN_005430ad",
    "symbol": "?fn_005430ad@fn_005430ad_owner@@QAE_NXZ",
