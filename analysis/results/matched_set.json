@@ -35812,6 +35812,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00677db0": {
+   "name": "tCastItem::vfunction6",
+   "symbol": "?vfunction6@tCastItem@@UAEAAVtStream@@AAV2@@Z",
+   "unit": "unsorted/tCastItem.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
