@@ -249,4 +249,12 @@ void tDatabaseObject::SetID( const tID& id )
 	fID = id;
 }
 
+// FUNCTION: STARFLEETOP 0x006fade0
+void tDatabaseObject::SetLockID( const int32u id )
+{
+	tOptex::tGuard guard( &fAccess );
+
+	fLockID = id;
+}
+
 }
