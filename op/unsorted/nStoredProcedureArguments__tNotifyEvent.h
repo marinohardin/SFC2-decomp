@@ -1,7 +1,7 @@
 //	nStoredProcedureArguments__tNotifyEvent.h
 //
-//	Name from the exe's RTTI (.?AVtNotifyEvent@nStoredProcedureArguments@@). Size 0x28 from a
-//	local in the news flash procedure.
+//	Name from the exe's RTTI (.?AVtNotifyEvent@nStoredProcedureArguments@@). Size 0x18 from the
+//	constructor at 0x0055f1cd (fields at +0x0c, +0x10, +0x14).
 //
 #if !defined( nStoredProcedureArguments__tNotifyEvent_h )
 #define nStoredProcedureArguments__tNotifyEvent_h
@@ -25,7 +25,7 @@ namespace nStoredProcedureArguments
 		int32u fn_005e8f25();
 
 	protected:
-		int8u field_0c[0x1c];
+		int8u field_0c[0x0c];
 	};
 
 };

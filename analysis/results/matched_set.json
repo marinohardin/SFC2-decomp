@@ -23621,9 +23621,9 @@
    "name": "FUN_005dc8a8",
    "symbol": "?fn_005dc8a8@tNewsFlash@nAsyncClientNewsProcedure@@QAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_NewsFlash.cpp",
-   "size": 355,
-   "score": 6.409,
-   "exact": false,
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x005de28c": {

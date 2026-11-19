@@ -55,24 +55,6 @@ using namespace nStoredProcedureArguments;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // FUNCTION: STARFLEETOP 0x005dc8a8
 void tNewsFlash::fn_005dc8a8( const nDataStore::tBuffer* buffer )
 {
