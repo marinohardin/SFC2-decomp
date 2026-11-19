@@ -8,6 +8,7 @@
 #include "Common/DynamicAllocator.h"
 
 #include <string.h>
+#include <algorithm>
 // FUNCTION: STARFLEETOP 0x006fc490
 tAllocatedClass::tAllocatedClass() : fAllocID( -1 ) {}
 // FUNCTION: STARFLEETOP 0x006fc4a0
@@ -124,4 +125,26 @@ void tDynamicAllocator::LockDownAllocator()
 	{
 		( *fAllocatorList )[ i ].fAllocator->mAssignAllocID( i );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006fc790
+void tDynamicAllocator::mAddToAllocList( const type_info& type, tAllocator* alloc )
+{
+	if( fAllocatorListLocked )
+	{
+		return;
+	}
+
+	if( !fAllocatorList )
+	{
+		fAllocatorList = new tAllocatorList;
+	}
+
+	tAllocatorInfo info;
+	info.fTypeID = &type;
+	info.fAllocator = alloc;
+
+	fAllocatorList->push_back( info );
+
+	std::sort( fAllocatorList->begin(), fAllocatorList->end() );
 }
