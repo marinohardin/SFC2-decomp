@@ -318,7 +318,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x0042ceae	tCampaignInfo::~tCampaignInfo	16.08	2	sonnet	2026-11-17T14:21:51Z	attempt 2 (sonnet) did not raise the best; best 16.08%
 0x0042cfaf	FUN_0042cfaf	0.00	2	sonnet	2026-11-17T14:28:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0042cfd9	FUN_0042cfd9	33.07	2	sonnet	2026-11-17T14:36:07Z	attempt 2 (sonnet) did not raise the best; best 33.07%
-0x0042fd3f	t3DVisual_Model::vfunction7	97.64	2	sonnet	2026-11-17T15:05:35Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 97.64%
 0x0042fddb	t3DVisual_Model::vfunction8	97.76	2	sonnet	2026-11-17T15:09:43Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 97.76%
 0x0042fef9	FUN_0042fef9	86.28	2	sonnet	2026-11-17T15:22:02Z	attempt 2 (sonnet) did not raise the best; best 86.28%
 0x004301aa	FUN_004301aa	0.00	2	sonnet	2026-11-17T15:23:48Z	attempt 2 (sonnet) did not raise the best; best 0.00%
