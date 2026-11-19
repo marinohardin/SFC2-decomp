@@ -43,6 +43,9 @@ struct fn_005e374b_entry
 // destructor: 0x005e4638 is the implicit one the compiler generates, and is left unclaimed.
 struct fn_005e36cd_entry : public fn_005e374b_entry
 {
+	// HYPOTHESIS: the constructor 0x005e47d0, which stores the vtable of the RTTI class
+	// tMetaMapNormalHex; 0x005e5ef4 passes a tID, 0x18, a tHexPoint, two points and a map.
+	fn_005e36cd_entry( nDatabase::tID id, int type, const tHexPoint &position, const tPoint &point, const fn_0053a6cc_map &values, const tPoint &offset );
 	const tPoint &fn_005e488e();
 
 	fn_0053a6cc_map field_50;
