@@ -160,7 +160,11 @@ def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
                    dict(address='0x00403000', symbol=None, unit='c.cpp', error=None)]
     verify.write_symbol_table(rep, out)
     assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp'),
-                                       '0x00402000': ('?kept@@YAXXZ', 'b.cpp')}
+                                       '0x00402000': ('?kept@@YAXXZ', 'b.cpp'),
+                                       '0x00404000': ('?unclaimed@@YAXXZ', 'd.cpp')}
+    rep.failed = False      # a clean run: a claim without a result is no longer claimed
+    verify.write_symbol_table(rep, out)
+    assert '0x00404000' not in symtab.load_claims(out)
 
 
 def test_a_table_row_whose_claim_is_gone_is_ignored():

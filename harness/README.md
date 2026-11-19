@@ -208,7 +208,8 @@ function holds one, and the loop does not commit it (exit 5 from `loopio.score`)
 relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as for exact
 functions. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
 are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
-every start; after merging into a running lane, restart its loop (or run `--all`) so a renamed
+every start (a full `--all`: about 2 minutes warm, 4 cold with the native compiler; start lanes
+one after another); after merging into a running lane, restart its loop (or run `--all`) so a renamed
 claim is not refused as a stand-in. A claim that an `--all` could not build keeps its row from the table
 it replaces. Known cost: a session refused against a table older than a merge cannot fix the
 refusal itself, and the attempt is lost until the loop is restarted. The context pack lists a claimed callee's symbol as what the

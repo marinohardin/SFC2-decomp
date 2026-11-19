@@ -561,9 +561,11 @@ def write_symbol_table(rep, out=None):
     out = out or symtab.path()
     rows = symbol_table_rows(rep.results)
     unbuilt = {r['address'] for r in rep.results if r.get('error') and not r.get('symbol')}
-    if unbuilt:
-        rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
-                 if a in unbuilt]
+    seen = {r['address'] for r in rep.results}
+    # A failed run may also have left claims without any result (a unit that aborted); their
+    # rows stay too. A row whose claim is gone is ignored when read (claimed_symbols).
+    rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
+             if a in unbuilt or (rep.failed and a not in seen)]
     symtab.write_claims(out, rows)
 
 
