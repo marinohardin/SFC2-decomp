@@ -133,6 +133,14 @@ public:
 	void fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
 };
 
+// HYPOTHESIS: the object at tObjBase +0x10 that a surface is shown on; 0x00693fc0 copies the
+// pixels of a surface inside a rectangle to it at a position (tSurface::vfunction8, 0x00675a00).
+class c_tObjBase_Field10
+{
+public:
+	void fn_00693fc0( int width, void *pixels, int x, int y, const tRect *rect, unsigned char b );
+};
+
 // tObjBase: vftable 0x0079ee08, destructor in slot 3. Only the slots called are declared.
 class tObjBase
 {
@@ -172,7 +180,7 @@ public:
 	// HYPOTHESIS: +0xc holds an object that tScrollBar's destructor (0x004c8201) hands itself to
 	// through 0x0067d311 when its +0x80 is set.
 	tVisObject *field_0C;
-	unsigned char field_10[ 0x14 - 0x10 ];
+	c_tObjBase_Field10 *field_10;
 	c_tVisObject_Field14 *field_14;
 	unsigned char field_18[ 0x24 - 0x18 ]; tVisObject *field_24; unsigned char field_28[ 0x34 - 0x28 ];	// HYPOTHESIS: +0x24 is the first child, its siblings follow through +0x4 (the fleet entry's 0x004c2aba)
 	tRect field_34;

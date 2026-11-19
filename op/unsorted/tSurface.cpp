@@ -38,6 +38,7 @@ public:
 	tSurface( short x, short y, int width, int height, int a, unsigned char b, unsigned char c );
 	tSurface( void *pixels, short x, short y, short width, short height, int a, unsigned char b, unsigned char c );
 	virtual ~tSurface();
+	virtual void vfunction8( const tRect *area );
 	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675280 (tVisObject.h).
 	bool fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
 	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675470 (tVisObject.h).
@@ -255,4 +256,27 @@ bool tSurface::fn_006755b0( int color, const tRect *rect, const tRect *inner, un
 		fn_006757f0( b, clip.right - a, clip.top, clip.right - a, clip.bottom - a, a, &fill );
 	}
 	return true;
+}
+
+// HYPOTHESIS: draws the surface's pixels inside the area given, clipped to its rectangle; a
+// surface without pixels throws.
+// FUNCTION: STARFLEETOP 0x00675a00
+void tSurface::vfunction8( const tRect *area )
+{
+	tRect clip;
+	if ( area == 0 )
+		clip = field_34;
+	else
+		clip = *area;
+	clip.mClip( &field_34 );
+
+	if ( field_60 != 0 )
+	{
+		field_10->fn_00693fc0( field_64.mWidth(), field_60, field_3C.x, field_3C.y, &clip, field_75 );
+		return;
+	}
+
+	int id = fn_006741e0( "tQ3Error_Q3SURFACE_InvalidBits" );
+	static tString sEmpty( g_0083b344 );
+	throw c_00692f60_Error( g_00c690d0 ? g_00c690d0->fn_006740f0( id ) : sEmpty, 1 );
 }
