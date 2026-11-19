@@ -37801,6 +37801,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006faf30": {
+   "name": "nDatabase::tDatabaseObject::AttachToDB",
+   "symbol": "?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 448,
+   "score": 48.085,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

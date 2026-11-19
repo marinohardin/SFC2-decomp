@@ -54,6 +54,8 @@ public:
 
 //Accessors
 	virtual const tID&			GetID() const;
+	virtual int32u				GetLockID() const;
+	virtual bool				IsLocked() const;
 
 	bool IsDead();
 	void AddReference();
@@ -63,6 +65,9 @@ protected:
 	// HYPOTHESIS: a member at 0x006fc200 that derived classes call on a string before writing
 	// it between quotes into the SQL stream; it returns a new string. Not in the SDK header.
 	std::string fn_006fc200( std::string text );
+
+//Operations
+	virtual void AttachToDB( const tID& id );
 
 //Fields
 	mutable tOptex fAccess;

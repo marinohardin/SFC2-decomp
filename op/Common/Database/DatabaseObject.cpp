@@ -257,4 +257,18 @@ void tDatabaseObject::SetLockID( const int32u id )
 	fLockID = id;
 }
 
+// The inlined basic_string::_Tidy of the name argument lacks the toolchain's _FROZEN test (the
+// library difference noted at 0x00708820); everything after it lines up 4 bytes later.
+// FUNCTION: STARFLEETOP 0x006faf30
+void tDatabaseObject::AttachToDB( const tID& id )
+{
+	tOptex::tGuard guard( &fAccess );
+
+	if( fLockEvent == NULL )
+		fLockEvent = new tThreadEvent( true, false, "", tThreadState::kUseThreadObject );
+
+	fID = id;
+	fLockID = 0;
+}
+
 }
