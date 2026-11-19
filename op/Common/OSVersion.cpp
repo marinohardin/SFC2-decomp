@@ -1,6 +1,7 @@
 // Common/OSVersion.cpp
 
 #include "OSVersion.h"
+#include "Common/Exceptions/InvalidAccess.h"
 
 tOSVersion::iAutoOSVersionPtr tOSVersion::fOSVersion;
 OSVERSIONINFO tOSVersion::fInfo;
@@ -57,4 +58,13 @@ tOSVersion::tOSVersion()
 		OSSPECIFIC::OS_InterlockedCompareExchange = (LONG (*)( LPLONG, LONG, LONG )) _OS_InterlockedCompareExchange;
 		FreeLibrary( fOSDLL ), fOSDLL = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006f55c0
+LONG tOSVersion::_OS_InterlockedCompareExchange( LPLONG Destination, LONG Exchange, LONG Comperand )
+{
+#line 354
+	throw except::tInvalidAccess( "tOSVersion::_OS_InterlockedCompareExchange", __FILE__, __LINE__ );
+
+	return 0;
 }
