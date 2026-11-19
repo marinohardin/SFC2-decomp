@@ -207,3 +207,13 @@ def test_an_interrupted_run_leaves_compiles_allowed(tmp_path, monkeypatch):
     with pytest.raises(KeyboardInterrupt):
         verify._in_threads(lambda x: time.sleep(0.2), range(4), 2)
     assert source._stopping is False
+
+
+def test_ci_checks_with_the_image():
+    """The check job's runner is a Mac that has the native compiler; CI must still rebuild with
+    the image, the compiler of record."""
+    workflow = os.path.join(paths.REPO, '.github', 'workflows', 'pull-request.yml')
+    with open(workflow) as f:
+        text = f.read()
+    check = text[text.index('\n  check:'):]
+    assert 'HARNESS_COMPILER: docker' in check

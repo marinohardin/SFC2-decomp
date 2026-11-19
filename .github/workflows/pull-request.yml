@@ -46,4 +46,7 @@ jobs:
         env:
           # The tests job above has run them on every pull request.
           CHECK_SKIP_TESTS: "1"
+          # The runner is a Mac with the native compiler installed; the image is the compiler
+          # of record, so CI rebuilds with it.
+          HARNESS_COMPILER: docker
         run: nice -n 5 sh scripts/check.sh
