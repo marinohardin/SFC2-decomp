@@ -132,3 +132,15 @@ int fn_00675ec0( tString& name )
 // FUNCTION: STARFLEETOP 0x00675f50
 // FUNCTION: STARFLEETOP 0x00675f40
 tString g_00c690d8;
+
+// HYPOTHESIS: 0x00677060 looks a name up and returns its node, whose value sits at +8.
+int fn_00677060( tString& name );
+
+// FUNCTION: STARFLEETOP 0x00675f70
+tString* fn_00675f70( tString& name )
+{
+	int node = fn_00677060( name );
+	if ( node == 0 )
+		return &g_00c690d8;
+	return (tString*)( node + 8 );
+}
