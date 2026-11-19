@@ -11,3 +11,8 @@ iTruth tSession::mValid( void )
 {
 	return fCookie != kInvalidCookie;
 }
+
+// FUNCTION: STARFLEETOP 0x00407c8b
+tPath::~tPath()
+{
+}

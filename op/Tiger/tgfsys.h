@@ -128,7 +128,7 @@ public:
 	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
 	// copied session cookie both before and after the tPath vtable pointer.
 	tPath( const tPath &other );
-	virtual ~tPath() {}
+	virtual ~tPath();
 
 	virtual iTruth	mValid( void );
 

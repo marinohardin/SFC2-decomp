@@ -1180,6 +1180,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00407c8b": {
+   "name": "tPath::~tPath",
+   "symbol": "??1tPath@@UAE@XZ",
+   "unit": "unsorted/tPath.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
