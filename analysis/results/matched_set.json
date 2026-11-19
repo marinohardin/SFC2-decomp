@@ -19729,6 +19729,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00567249": {
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::scalar_deleting_destructor",
+   "symbol": "??_GtAddPreparedMission@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
