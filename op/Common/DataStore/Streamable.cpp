@@ -61,6 +61,12 @@ tStreamable::iObjectID tStreamable::GetObjectID() const
 	return fObjectID;
 }
 
+// FUNCTION: STARFLEETOP 0x006f9130
+tStreamable::iObjectVersion tStreamable::GetVersion() const
+{
+	return fObjectVersion;
+}
+
 // FUNCTION: STARFLEETOP 0x006f8d90
 // FUNCTION: STARFLEETOP 0x006f8d70
 tStreamable::iObjectIDInfoLookup tStreamable::fObjectIDInfoLookup;

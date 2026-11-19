@@ -37639,6 +37639,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006f9130": {
+   "name": "nDataStore::tStreamable::GetVersion",
+   "symbol": "?GetVersion@tStreamable@nDataStore@@QBEEXZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
