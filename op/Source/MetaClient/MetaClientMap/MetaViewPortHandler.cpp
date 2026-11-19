@@ -24,7 +24,7 @@ extern const char* g_0087632c;
 class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
 class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
-class tMetaClientMapReceiver { public: void fn_005e5ba6( long arg ); };
+class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned char field_0[ 0x14 ]; }; class tMetaClientMapReceiver { public: tMetaClientMapReceiver* fn_005e5ba6( long arg ); long field_0; tMetaClientMapMember field_4; tMetaClientMapMember field_18; long field_2c; };
 class tMetaClientMapPanel
 {
 public:
@@ -159,4 +159,15 @@ bool tMetaClientMapPanel::fn_005e5b2d( tMetaClientMapReceiver* receiver )
 	}
 	guard.Leave();
 	return found;
+}
+
+// FUNCTION: STARFLEETOP 0x005e5ba6
+tMetaClientMapReceiver* tMetaClientMapReceiver::fn_005e5ba6( long arg )
+{
+	long* record = (long*) arg;
+	field_0 = record[ 0 ];
+	field_4.fn_005b69b0( record + 1 );
+	field_18.fn_005b69b0( record + 6 );
+	field_2c = record[ 11 ];
+	return this;
 }
