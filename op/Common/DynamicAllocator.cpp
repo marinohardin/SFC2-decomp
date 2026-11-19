@@ -86,6 +86,17 @@ tDynamicAllocator* tDynamicAllocator::fpDynamicAllocator = 0;
 // FUNCTION: STARFLEETOP 0x006fc610
 tCleanupGlobalPointer< tDynamicAllocator > tDynamicAllocator::fCleanupSingletion( &tDynamicAllocator::fpDynamicAllocator );
 
+// FUNCTION: STARFLEETOP 0x006fc690
+tDynamicAllocator* tDynamicAllocator::Instance()
+{
+	if( fpDynamicAllocator == 0 )
+	{
+		fpDynamicAllocator = new tDynamicAllocator;
+	}
+
+	return fpDynamicAllocator;
+}
+
 // FUNCTION: STARFLEETOP 0x006fc750
 void tDynamicAllocator::LockDownAllocator()
 {

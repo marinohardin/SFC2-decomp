@@ -37999,6 +37999,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fc690": {
+   "name": "tDynamicAllocator::Instance",
+   "symbol": "?Instance@tDynamicAllocator@@SAPAV1@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc750": {
    "name": "tDynamicAllocator::LockDownAllocator",
    "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
