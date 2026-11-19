@@ -381,3 +381,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005fbc58	FUN_005fbc58	0.00	2	sonnet	2026-11-18T00:01:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005fbc64	FUN_005fbc64	0.00	2	sonnet	2026-11-18T00:07:40Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x006f6400	tHeartbeatTimer::TimePassedSinceStart	0.00	2	opus	2026-11-19T20:10:17Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006f6b80	tSettings::~tSettings	53.02	2	opus	2026-11-19T20:16:08Z	attempt 2 (opus) did not raise the best; best 53.02%
