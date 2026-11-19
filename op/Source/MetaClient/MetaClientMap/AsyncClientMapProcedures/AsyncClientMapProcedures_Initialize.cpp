@@ -52,6 +52,7 @@ tInitialize::tInitialize( void* pMyRelay ) :
 }
 
 // FUNCTION: STARFLEETOP 0x005dfb28
+// FUNCTION: STARFLEETOP 0x005dfb44
 tInitialize::~tInitialize()
 {
 }
