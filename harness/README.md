@@ -49,7 +49,7 @@ single-threaded compiler in its own container followed by one objdiff per functi
 roughly the number of cores a run uses. The output does not depend on it: each unit reports into
 its own buffer, and the buffers are printed in unit order. Two lines move: the exe check's
 warning comes before the first unit, and an untrusted exe stops the run before any unit builds.
-An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and their containers.
+An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and their containers. Each compile runs in its own process group, so a harness stopped by another signal (`kill`, a CI timeout) leaves its running compiles to finish on their own, each within the compile timeout; send it Ctrl-C (SIGINT) instead to stop them.
 
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).

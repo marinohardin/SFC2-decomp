@@ -217,3 +217,10 @@ def test_ci_checks_with_the_image():
         text = f.read()
     check = text[text.index('\n  check:'):]
     assert 'HARNESS_COMPILER: docker' in check
+
+
+def test_a_new_run_allows_compiles_again():
+    from harness.lib import source, verify
+    source.stop_all(grace=0)
+    assert verify._in_threads(lambda x: x * 2, [1, 2], 2) == [2, 4]
+    assert source._stopping is False

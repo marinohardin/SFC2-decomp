@@ -281,6 +281,9 @@ def _in_threads(fn, items, jobs):
     in any call is raised once all calls have ended. Plain threads, not concurrent.futures, whose
     `import queue` can pick up harness/queue.py when harness/ is on sys.path."""
     items = list(items)
+    # A run interrupted earlier in this process may have left compiles stopped (a worker of it
+    # outlived the wait); this run starts them again.
+    source.allow_compiles()
     results = [None] * len(items)
     errors = [None] * len(items)
     pending = iter(range(len(items)))
