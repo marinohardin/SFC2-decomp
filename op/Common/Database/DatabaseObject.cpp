@@ -44,4 +44,11 @@ tDatabaseObject::tDatabaseObject( iObjectVersion versionNumber )
 {
 }
 
+// FUNCTION: STARFLEETOP 0x006fa6b0
+tDatabaseObject::~tDatabaseObject()
+{
+	// HYPOTHESIS: the constructor allocates fLockEvent, so the destructor releases it.
+	delete fLockEvent;
+}
+
 }
