@@ -86,6 +86,7 @@ public:
 	tBoundAsset();
 	virtual ~tBoundAsset();
 	virtual tStream& vfunction5( tStream& s );
+	virtual tStream& vfunction6( tStream& s );
 
 	short field_5C;	// HYPOTHESIS: the width
 	short field_5E;	// HYPOTHESIS: the height
