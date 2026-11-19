@@ -30,6 +30,7 @@ tAddPreparedMission::tAddPreparedMission( tAsyncDatabase* pDB ) : tAsyncDatabase
 }
 
 // FUNCTION: STARFLEETOP 0x00567249
+// FUNCTION: STARFLEETOP 0x00567265
 tAddPreparedMission::~tAddPreparedMission()
 {
 }
