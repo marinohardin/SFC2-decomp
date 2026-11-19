@@ -57,3 +57,25 @@ double tShipRepairRates::fGetRate( fShipRepairRateNode* rate )
 	validate( rate != fRepairRates.end() );
 	return rate->fRate;
 }
+#line 61
+
+// HYPOTHESIS: a third rate table whose end node sits at +0x68; the function returns the address
+// of the rate inside the found node (node + 0x20).
+class tShipItemRates
+{
+public:
+	double* fGetRateAddress( fShipRepairRateNode* rate );
+
+	char fPad[0x64];
+	fShipRepairRateTree fItemRates;
+};
+
+// FUNCTION: STARFLEETOP 0x0055a1e2
+double* tShipItemRates::fGetRateAddress( fShipRepairRateNode* rate )
+{
+	fItemRates.find( &rate, (int)rate );
+#line 181
+	validate( rate != fItemRates.end() );
+	return &rate->fRate;
+}
+#line 82
