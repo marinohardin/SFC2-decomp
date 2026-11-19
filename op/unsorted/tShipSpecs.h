@@ -6,7 +6,7 @@ class tShipSpecs
 {
 	public:
 		tShipSpecs();
-		~tShipSpecs();
+		virtual ~tShipSpecs();
 		char m_00[0xc];
 		int m_0c;
 		int m_10;
