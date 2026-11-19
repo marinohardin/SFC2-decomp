@@ -117,7 +117,7 @@ public:
 	virtual int vfunction2(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, int param_4);
 	// HYPOTHESIS: slot 3 takes the object, the entry array at +0x158 and the three values
 	// 0x0042fddb passes on.
-	virtual void vfunction3(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, float param_4, int param_5);
+	virtual int vfunction3(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, float param_3, float param_4, int param_5);
 	// HYPOTHESIS: slot 4 takes the object, the entry array at +0x158 and the two values
 	// 0x0042fe7e passes on.
 	virtual void vfunction4(tViewer_0042fd3f *param_1, tEntry_0042f918 *param_2, int param_3, int param_4);
@@ -166,7 +166,7 @@ public:
 	t3DVisual_Model();
 	virtual ~t3DVisual_Model();
 	int vfunction7(tViewer_0042fd3f *param_1, float param_2, int param_3);
-	void vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4);
+	int vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4);
 	void vfunction9(tViewer_0042fd3f *param_1, int param_2, int param_3);
 	// HYPOTHESIS: slot 10 of the vtable; declared non-virtual until the earlier slots are known.
 	float vfunction10();
@@ -498,7 +498,7 @@ int t3DVisual_Model::vfunction7(tViewer_0042fd3f *param_1, float param_2, int pa
 }
 
 // FUNCTION: STARFLEETOP 0x0042fddb
-void t3DVisual_Model::vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4)
+int t3DVisual_Model::vfunction8(tViewer_0042fd3f *param_1, float param_2, float param_3, int param_4)
 {
 	int index = 0;
 	if (m120 != -1)
@@ -511,8 +511,10 @@ void t3DVisual_Model::vfunction8(tViewer_0042fd3f *param_1, float param_2, float
 		index = vfunction23(point * point);
 		m124 = index;
 	}
+	// HYPOTHESIS: the function returns slot 3's result, as vfunction7 returns slot 2's.
 	if (m160[index] != 0)
-		m160[index]->vfunction3(param_1, m158, param_2, param_3, param_4);
+		index = m160[index]->vfunction3(param_1, m158, param_2, param_3, param_4);
+	return index;
 }
 
 // FUNCTION: STARFLEETOP 0x0042fe7e

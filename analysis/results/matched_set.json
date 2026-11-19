@@ -4890,12 +4890,12 @@
   },
   "0x0042fddb": {
    "name": "t3DVisual_Model::vfunction8",
-   "symbol": "?vfunction8@t3DVisual_Model@@QAEXPAVtViewer_0042fd3f@@MMH@Z",
+   "symbol": "?vfunction8@t3DVisual_Model@@QAEHPAVtViewer_0042fd3f@@MMH@Z",
    "unit": "unsorted/t3DVisual_Model.cpp",
    "size": 163,
-   "score": 97.759,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042fe7e": {
    "name": "t3DVisual_Model::vfunction9",
