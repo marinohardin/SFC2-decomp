@@ -194,6 +194,10 @@ def write_side_by_side(left, right, path):
             f.write(f'{mark}{o:>7} {a:<43}| {b}\n')
 
 
+# A score cache entry leaves these to the function being scored (cache.py).
+CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side')
+
+
 def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
     matched-set entry, part of the evidence for what its annotation claims. Returns a result dict."""
@@ -226,7 +230,7 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
     skey = cache.score_key(build['obj'], sym, fn.address, fn.size)
     hit = cache.load_score(skey)
     if hit is not None:
-        res.update(hit['result'])
+        res.update({k: v for k, v in hit['result'].items() if k not in CACHE_OWN_FIELDS})
         res['diff_rows'] = [tuple(r) for r in res.get('diff_rows') or []]
         res['side_by_side'] = os.path.join(fdir, 'diff.txt')
         with open(res['side_by_side'], 'w') as f:
@@ -254,8 +258,11 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
         json.dump(res, f, indent=1)
     with open(res['side_by_side']) as f:
         side = f.read()
+    # What the comparison found, without what names the function here: a hit may come from
+    # another unit or name with the same object, symbol, address and size.
     cache.store_score(skey, {'result': {k: v for k, v in json.loads(json.dumps(res)).items()
-                                        if k != 'side_by_side'}, 'side_by_side': side})
+                                        if k not in CACHE_OWN_FIELDS},
+                             'side_by_side': side})
     return res
 
 

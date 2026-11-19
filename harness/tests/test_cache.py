@@ -142,15 +142,15 @@ def scoring(cached, monkeypatch):
     monkeypatch.setattr(target, 'build', fake_build)
     monkeypatch.setattr(verify, 'objdiff', fake_objdiff)
 
-    def score(code=b'\xc3' * 4, stamp=0):
+    def score(code=b'\xc3' * 4, stamp=0, rel='u.cpp', fn=Fn):
         raw = bytearray(coff.write_object(code, '_f', []))
         raw[4:8] = stamp.to_bytes(4, 'little')
         out = cached / 'build' / f'u{len(calls)}-{stamp}'
         out.mkdir(parents=True)
         (out / 'u.obj').write_bytes(bytes(raw))
         b = dict(obj=str(out / 'u.obj'), listing=None, out_dir=str(out))
-        unit = dict(rel='u.cpp', path='u.cpp', file='u.cpp', line=1, other_lines=[])
-        return verify.score_function(Fn(), unit, b, None, None, symbol_hint='_f')
+        unit = dict(rel=rel, path=rel, file=rel, line=1, other_lines=[])
+        return verify.score_function(fn(), unit, b, None, None, symbol_hint='_f')
     return score, calls
 
 
@@ -166,6 +166,25 @@ def test_an_unchanged_object_is_not_compared_again(scoring):
         assert f.read() == g.read()
     assert json.load(open(os.path.join(os.path.dirname(again['side_by_side']),
                                        'result.json')))['score'] == 75.0
+
+
+def test_a_hit_keeps_the_unit_and_name_of_the_function_scored_now(scoring):
+    """A function moved to another file or renamed, with the same object: the score is reused,
+    the unit and the name are this run's."""
+    class Renamed(Fn):
+        name = 'tFoo::f'
+    score, calls = scoring
+    score()
+    moved = score(stamp=1, rel='unsorted/tFoo.cpp', fn=Renamed)
+    assert calls == ['_f']
+    assert (moved['unit'], moved['name'], moved['address']) == (
+        'unsorted/tFoo.cpp', 'tFoo::f', '0x00401000')
+    assert moved['score'] == 75.0
+
+
+def test_every_harness_module_is_part_of_the_judge():
+    names = {os.path.basename(f) for f in cache.judge_files()}
+    assert {'cache.py', 'claims.py', 'matched.py', 'paths.py', 'verify.py'} <= names
 
 
 def test_a_changed_object_or_judge_is_compared_again(scoring, monkeypatch):

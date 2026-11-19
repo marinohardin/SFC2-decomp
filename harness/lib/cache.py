@@ -13,7 +13,7 @@ code and objdiff. Scores are content-addressed, so they are shared by every chec
 HARNESS_SHARED/cache/. Only a completed objdiff comparison is stored.
 
 HARNESS_NO_CACHE=1 turns both off: every unit is compiled and every function scored. CI runs
-that way, so each pull request's check is also a check of the cache.
+that way, so no cached build or score stands in a pull request's check.
 """
 import hashlib
 import json
@@ -26,9 +26,7 @@ from . import paths
 from .claims import INCLUDE, _resolve
 
 ANY_INCLUDE = re.compile(r'^\s*#\s*include\b')
-# The judge's code: what a score depends on besides its inputs.
-JUDGE_FILES = ('cache.py', 'coff.py', 'deleting.py', 'funcs.py', 'source.py', 'target.py',
-               'verify.py')
+LIB = os.path.dirname(os.path.abspath(__file__))
 _memo = {}
 _lock = threading.Lock()
 
@@ -156,11 +154,16 @@ def build_key(cmd, cwd, env, unit_path):
     return h.hexdigest()
 
 
+def judge_files():
+    """The judge's code: every module of harness/lib, so a change to any of them, imported by the
+    scorer or not, compares every function again."""
+    return sorted(os.path.join(LIB, f) for f in os.listdir(LIB) if f.endswith('.py'))
+
+
 def _judge_id():
     def compute():
         h = hashlib.sha256(b'judge 1\0')
-        lib = os.path.dirname(os.path.abspath(__file__))
-        _hash_files(h, [os.path.join(lib, f) for f in JUDGE_FILES] + [paths.OBJDIFF])
+        _hash_files(h, judge_files() + [paths.OBJDIFF])
         return h.hexdigest()
     return _memoized('judge', compute)
 
