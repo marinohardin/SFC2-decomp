@@ -38107,6 +38107,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fd810": {
+   "name": "nException::tValidationFailed::ReportException",
+   "symbol": "?ReportException@tValidationFailed@nException@@UAEXPBD@Z",
+   "unit": "Common/Exceptions/Validate.cpp",
+   "size": 169,
+   "score": 96.61,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
