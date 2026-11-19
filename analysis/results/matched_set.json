@@ -23626,6 +23626,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005dd252": {
+   "name": "tMetaClientNewsCtlrC::~tMetaClientNewsCtlrC",
+   "symbol": "??0tMetaClientNewsCtlrC@@QAE@PAX@Z",
+   "unit": "Source/MetaClient/MetaClientNews/MetaClientNewsCtlrC.cpp",
+   "size": 225,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005de28c": {
    "name": "FUN_005de28c",
    "symbol": "?fn_005de28c@fn_005de28c_Vector@@QAEXPAPAVtNewsStory@@PBQAV2@1@Z",
