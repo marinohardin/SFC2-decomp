@@ -40,6 +40,10 @@ public:
 	virtual ~tSurface();
 	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675280 (tVisObject.h).
 	bool fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
+	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675470 (tVisObject.h).
+	bool fn_00675470( int color, const tRect *rect, unsigned char frame, int a, int b );
+	// HYPOTHESIS: 0x006757f0 draws a line between two points in a colour.
+	void fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, int b );
 
 	void *field_60;
 	tRect field_64;
@@ -132,5 +136,41 @@ bool tSurface::fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRe
 	}
 
 	fn_006951e0( image, x, y, r.left, r.top, r.right, r.bottom, field_60, field_70, field_64.mHeight(), field_74, a, b );
+	return true;
+}
+
+// HYPOTHESIS: 0x00696ab0 fills a rectangle of pixels in a colour; the values after the
+// pixels are those 0x006951e0 takes.
+void fn_00696ab0( int color, int left, int top, int right, int bottom, void *pixels, int a,
+	int height, unsigned char b );
+
+// HYPOTHESIS: fills a rectangle (in surface coordinates, clipped to the surface) in a colour and,
+// when asked, draws a frame around it in another; returns whether anything was drawn.
+// FUNCTION: STARFLEETOP 0x00675470
+bool tSurface::fn_00675470( int color, const tRect *rect, unsigned char frame, int a, int b )
+{
+	if ( field_60 == 0 )
+		return false;
+
+	tRect clip;
+	if ( rect != 0 )
+	{
+		clip = *rect;
+		clip.mClip( &field_64 );
+	}
+	else
+		clip = field_64;
+
+	if ( clip.mIsEmpty() )
+		return false;
+
+	fn_00696ab0( color, clip.left, clip.top, clip.right, clip.bottom, field_60, field_70, field_64.mHeight(), field_74 );
+	if ( frame )
+	{
+		fn_006757f0( b, clip.left, clip.top, clip.right, clip.top, a, 0 );
+		fn_006757f0( b, clip.left, clip.bottom, clip.right, clip.bottom, a, 0 );
+		fn_006757f0( b, clip.left, clip.top, clip.left, clip.bottom, a, 0 );
+		fn_006757f0( b, clip.right, clip.top, clip.right, clip.bottom + 1, a, 0 );
+	}
 	return true;
 }
