@@ -440,7 +440,12 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         # A header (or any file) changed since HEAD can break units that are not the claimed
         # function's: rebuild every unit with a recorded function that reads a changed file, so
         # a regression there counts as one here.
-        changed = {f for f in source.changed_files(src_root)
+        listed = source.changed_files(src_root)
+        if listed is None:
+            rep.add('WARN', 'git could not list the files changed since HEAD, so units other than '
+                    'the claimed one are not rebuilt: a header edit that breaks them goes unseen')
+            listed = set()
+        changed = {f for f in listed
                    if f not in {os.path.normpath(os.path.realpath(p)) for p in by_unit}}
         readers = []
         if changed:

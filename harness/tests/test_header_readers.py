@@ -117,3 +117,19 @@ def test_changed_files_lists_modified_and_untracked_files(tree):
 
 def test_changed_files_is_empty_outside_a_checkout(tmp_path):
     assert source.changed_files(str(tmp_path)) == set()
+
+
+def test_a_git_failure_inside_a_checkout_is_a_warning(tree, monkeypatch):
+    (tree.game / 'shared.h').write_text('struct S { int x; int y; };\n')
+    real = subprocess.run
+
+    def run(cmd, *a, **k):
+        if cmd[:2] == ['git', 'diff']:
+            return subprocess.CompletedProcess(cmd, 128, '', 'fatal: bad revision')
+        return real(cmd, *a, **k)
+
+    monkeypatch.setattr(source.subprocess, 'run', run)
+    assert source.changed_files(str(tree.game)) is None
+    rep = verify.run([f'0x{A:08x}'], jobs=1)
+    assert tree.built == ['a.cpp']
+    assert any(ln.startswith('WARN') and 'git could not list' in ln for ln in rep.lines)

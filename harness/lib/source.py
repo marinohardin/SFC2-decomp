@@ -102,16 +102,24 @@ def unit_profile(cfg, src_root, unit_path):
 
 def changed_files(src_root):
     """The files under src_root that differ from the checkout's HEAD (modified, added, deleted or
-    untracked), as normalized absolute paths; empty when src_root is not in a git checkout."""
+    untracked), as normalized absolute paths; empty when src_root is not in a git checkout, and
+    None when it is in one but git cannot list the changes (no HEAD, a timeout, a refusal)."""
+    try:
+        r = subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], cwd=src_root,
+                           capture_output=True, text=True, timeout=60)
+    except (OSError, subprocess.TimeoutExpired):
+        return set()
+    if r.returncode != 0 or r.stdout.strip() != 'true':
+        return set()
     out = set()
     for cmd in (['git', 'diff', '--name-only', '--relative', 'HEAD', '--', '.'],
                 ['git', 'ls-files', '--others', '--exclude-standard', '--', '.']):
         try:
             r = subprocess.run(cmd, cwd=src_root, capture_output=True, text=True, timeout=60)
         except (OSError, subprocess.TimeoutExpired):
-            return set()
+            return None
         if r.returncode != 0:
-            return set()
+            return None
         out.update(os.path.normpath(os.path.join(os.path.realpath(src_root), p))
                    for p in r.stdout.splitlines() if p)
     return out
