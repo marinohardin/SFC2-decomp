@@ -796,8 +796,8 @@ tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 // Unclaimed: the implicit destructor (0x004777f3) and its scalar deleting destructor
 // (0x00477a13). The original declared no destructor, and VC6 emits these with no source line to
 // claim; writing one out would add a vtable store the original does not have.
-//
-//
+// The empty comment lines here keep the unit's line numbers as they were when a destructor was
+// written out (a claim is paired with the function that starts on the line below it).
 //
 //
 

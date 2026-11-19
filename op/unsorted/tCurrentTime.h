@@ -14,6 +14,9 @@ class tCurrentTime : public nDataStore::tStreamable
 {
 public:
 	tCurrentTime( long turn, long turnsPerYear, long milliSecondsPerTurn, long baseYear, long startingDate0, long startingDate1, long startingDate2, long startingDate3 );
+	// HYPOTHESIS: 0x0042739e is the compiler's memberwise copy, out of line: five scalars
+	// copied one by one, then the 16 bytes at +0x20 copied as a block.
+	tCurrentTime( const tCurrentTime& source );
 
 	// HYPOTHESIS: 0x0056c414 calls the assignment out of line (0x0045be62).
 	tCurrentTime& operator=( const tCurrentTime& other );
@@ -34,7 +37,12 @@ public:
 	long fField14;
 	long fField18;
 	long fField1c;
-	long fField20[4];
+	// MATCH-ONLY: the four longs are wrapped so that the written-out copy constructor 0x0042739e
+	// copies them as one block, as the implicit one does.
+	struct
+	{
+		long	fWord[4];
+	}		fField20;
 };
 
 #endif

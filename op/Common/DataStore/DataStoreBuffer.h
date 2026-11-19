@@ -6,6 +6,8 @@
 //	MATCH-ONLY: tBuffer::Write, defined inline here and inlined by FileDatabaseMgr.cpp's StreamOut,
 //	is left out where DATASTORE_OUT_OF_LINE_WRITE is defined: tClientCharacter.cpp holds the copy
 //	the compiler emitted out of line (0x0042a0fc), which the harness can claim only from a .cpp.
+//	MATCH-ONLY: tBuffer::Get is left out where DATASTORE_OUT_OF_LINE_BUFFER_GET is defined, for
+//	the same reason: unsorted/fn_0042A000.cpp holds its out-of-line copy (0x0042a31c).
 #if !defined( DataStoreBuffer_h )
 #define DataStoreBuffer_h
 
@@ -60,6 +62,7 @@ void tBuffer::Write( const byte* data, int32u size )
 	fBuffer.insert( fBuffer.end(), data, data + size );
 }
 #endif
+#ifndef DATASTORE_OUT_OF_LINE_BUFFER_GET
 byte tBuffer::Get( iPos getPos ) const
 {
 	if( getPos >= Size() )
@@ -69,6 +72,7 @@ byte tBuffer::Get( iPos getPos ) const
 
 	return fBuffer[getPos];
 }
+#endif
 
 void tBuffer::Read( byte* data, int32 size, iPos getPos ) const
 {

@@ -59,33 +59,33 @@ extern LONG (*OS_InterlockedCompareExchange)(LPLONG Destination, LONG Exchange, 
 
 #include "unsorted/tHexPoint.h"
 
-// HYPOTHESIS: a 0x14-byte member type with an out-of-line destructor at 0x0042ade3.
-// HYPOTHESIS: a tree-like container: the constructor copies an empty allocator object to +0
-// and an empty comparison object to +1, clears the flag at +0xc and calls 0x0042baaf on
-// itself. It is not the compiler's own std::map (that one keeps its flag at +8 and is 0x10
-// bytes); the key and element types, and so the real allocator and comparison types, are not
-// recovered.
-class tObject_0042ade3 {
-public:
-	tObject_0042ade3(const std::less<int> &pred = std::less<int>(), const std::allocator<int> &al = std::allocator<int>());
+// tObject_0042ade3: a 0x14-byte member type with an out-of-line destructor at 0x0042ade3.
+#include "unsorted/tObject_0042ade3.h"
 
-	~tObject_0042ade3();
-	void fn_0042baaf();
-	std::allocator<int> m_00;
-	std::less<int> m_01;
-	int m_04;
-	int m_08;
-	bool m_0c;
-	int m_10;
-};
 
-inline tObject_0042ade3::tObject_0042ade3(const std::less<int> &pred, const std::allocator<int> &al)
-	: m_00(al)
-	, m_01(pred)
-	, m_0c(false)
-{
-	fn_0042baaf();
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #include "Common/Thread/Optex.h"
 // The lines below up to tSingleAccessWrapper stay blank so the code keeps its line numbers.
@@ -120,60 +120,60 @@ inline tObject_0042ade3::tObject_0042ade3(const std::less<int> &pred, const std:
 // The SDK's tSingleAccessWrapper: exclusive access to a pointer. The members at +0xb4 and
 // +0xcc are two instances; the constructor (0x0048589c) and IsValid (0x0058f829) are shared
 // by both, Delete is 0x0042cc05 for the first and 0x005ff84a for the second.
-// The SDK's tAccessPointer: locked access to the pointer of a tSingleAccessWrapper.
-template <typename tnPtrType, typename tnPtrGuard>
-class tAccessPointer {
-public:
-	tAccessPointer(tAccessPointer<tnPtrType, tnPtrGuard> &copy);
-	~tAccessPointer();
-	void Done();
-	tnPtrType &operator*();
+#include "Common/Thread/SingleAccessWrapper.h"
 
-protected:
-	mutable tOptex fAccess;
-	tnPtrType *fPointer;
-	const tnPtrGuard *fPointerGuard;
-};
 
-template <typename tnPtrType, typename tnPtrGuard>
-inline tAccessPointer<tnPtrType, tnPtrGuard>::~tAccessPointer()
-{
-	Done();
-}
 
-template <typename tPtrType>
-class tSingleAccessWrapper {
-public:
-	typedef tAccessPointer<tPtrType, tSingleAccessWrapper> iPtr;
-	typedef tAccessPointer<const tPtrType, tSingleAccessWrapper> iConstPtr;
 
-	tSingleAccessWrapper();
-	tSingleAccessWrapper(tPtrType *pointer);
-	~tSingleAccessWrapper();
-	void SetPointer(tPtrType *copy);
-	void Delete();
-	iPtr Lock();
-	iConstPtr Lock() const;
-	bool IsValid() const;
 
-protected:
-	tPtrType *fpPointer;
-	mutable tOptex fPointerOptex;
-};
 
-template <typename tPtrType>
-inline tSingleAccessWrapper<tPtrType>::~tSingleAccessWrapper()
-{
-	Delete();
-}
 
-template <typename tPtrType>
-inline void tSingleAccessWrapper<tPtrType>::SetPointer(tPtrType *copy)
-{
-	Delete();
 
-	fpPointer = copy;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the 0xd0-byte object the member at +0xcc points to is a tMetaMapHex, built by
 // 0x005391b0 with 0; the guarded pointer keeps this stand-in for it until its users move.

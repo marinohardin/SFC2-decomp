@@ -19,18 +19,18 @@ public:
 	virtual void vfunction1();
 };
 class tObject_00528a11;
-// HYPOTHESIS: the power object at 0xd4 of tAICaptain, 0x34e0 bytes; its constructor (0x005237dc) takes the ship ID and 0x00523a86 adds an energy request to it.
-class tObject_005237dc
-{
-public:
-	tObject_005237dc(int aShipID);
-	~tObject_005237dc();
-	void fn_00523a86(tExtraEnergyRequest *aRequest);
-	void fn_00523c41(int aMode); // HYPOTHESIS: takes a mode; 0x0051e454 passes 2 while the ship is in a formation, else 0.
-	void fn_00523ad3(); // HYPOTHESIS: 0x0051e613 calls it before it chooses a selector; nothing returned is used.
-	void fn_00523afd(tObject_00528a11 *aSelector); // HYPOTHESIS: takes the selector 0x0051e613 chose (the object at 0x35c8 of tAICaptain).
-	char field_0x0[0x34e0];
-};
+#include "unsorted/tObject_005237dc.h"
+
+
+
+
+
+
+
+
+
+
+
 // HYPOTHESIS: the object at 0x35c8 of tAICaptain, 0x24 bytes, called the selector where the
 // officers read it; its constructor (0x00528a11) takes nothing and it has no destructor. A
 // second constructor (0x00528a23) takes five values; 0x00514f8b copies all 0x24 bytes.
@@ -627,7 +627,7 @@ bool tAICaptain::fn_0051e3ac(int aID, int aValue)
 		}
 	}
 	tObject_0051e3ac_entry entry(aID, aValue);
-	entry.fRelation = gObject_0090be60->fn_0042750a(aID);
+	entry.fRelation = gObject_0090be60->fn_0042748f(aID);
 	entry.fFlag = true;
 	field_0x3a34->push_back(entry);
 	return true;

@@ -540,13 +540,13 @@ void fn_0040b14a()
 	}
 }
 
-// HYPOTHESIS: an object at 0x00c7c120 updated first each frame through 0x006a0bb0.
-class fn_00c7c120_Object {
-public:
-	void fn_006a0bb0();
-};
+// The object at 0x00c7c120, updated first each frame through 0x006a0bb0.
+#include "unsorted/fn_00c7c120_Object.h"
 
-extern fn_00c7c120_Object g_00c7c120;
+
+
+
+
 
 // HYPOTHESIS: the object 0x0060b3f4 returns, updated through 0x005d80e0.
 class fn_0060b3f4_Object {

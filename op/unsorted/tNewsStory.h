@@ -22,6 +22,10 @@ public:
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );
 
+		// HYPOTHESIS: an equality and an ordering test on two detail times.
+		char fn_0054695e( const tDetailTime& other ) const;
+		bool fn_00546986( const tDetailTime& other ) const;
+
 		long fField0C;
 		long fField10;
 	};
@@ -30,10 +34,22 @@ public:
 	const nDatabase::tID& fn_00572b2b() const;
 	// HYPOTHESIS: a non-virtual accessor that returns the story's time; 0x0056d91b queries on it.
 	tDetailTime fn_0054745f() const;
+	// HYPOTHESIS: two bytes that 0x005de1b8 and 0x005de222 sort stories by, and the text
+	// 0x005de0cf compares for an ASCII flag.
+	char fn_00547448() const;
+	char fn_0054744c() const;
+	class fn_0040651e_type* fn_00547450( int ascii ) const;
 
 	// HYPOTHESIS: the record is 0x80 bytes (0x0056ffe3 steps back one element by 0x80). The
 	// members are not recovered.
 	char fPad_48[0x80 - 0x48];
+};
+
+// HYPOTHESIS: the text type returned by tNewsStory::fn_00547450; 0x0040651e compares two.
+class fn_0040651e_type
+{
+public:
+	int fn_0040651e( fn_0040651e_type* other );
 };
 
 #endif

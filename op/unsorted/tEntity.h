@@ -147,6 +147,8 @@ public:
 	iTruth fn_0043bfc1();
 	// HYPOTHESIS: returns a truth value; 0x0051e613 keeps it as a flag.
 	iTruth fn_0043c01d();
+	// HYPOTHESIS: returns a float 0x00523967 adds to its total while 0x0043bfc1 holds.
+	float fn_0043beed();
 };
 
 // HYPOTHESIS: an object returned by slot 89 of the object at 0xad4 of a ship; 0x00515db1
@@ -272,6 +274,7 @@ public:
 class tObject_0042496f_member76;
 class tObject_0042496f_member96;
 class tObject_0042496f_member99;
+class tObject_00523967_member94;
 
 // HYPOTHESIS: a 12-byte value built from a point by a constructor that is not inlined
 // (0x00412f08); 0x004255b5 of the object at 0x008f5170 takes it by value, and tAICaptain's
@@ -289,7 +292,7 @@ class tObject_0042496f_member
 {
 public:
 	virtual void vfunction1();
-	virtual void vfunction2();
+	virtual float vfunction2(); // HYPOTHESIS: slot 1 (offset 4) returns the power 0x00523afd shares out.
 	virtual void vfunction3();
 	virtual void vfunction4();
 	virtual void vfunction5();
@@ -335,9 +338,10 @@ public:
 	virtual void vfunction44();
 	virtual void vfunction45();
 	virtual void vfunction46();
-	virtual void vfunction47();
-	virtual void vfunction48();
-	virtual void vfunction49();
+	// HYPOTHESIS: slots 47 to 49 (offsets 0xb8 to 0xc0) return floats 0x00523967 adds up.
+	virtual float vfunction47();
+	virtual float vfunction48();
+	virtual float vfunction49();
 	virtual void vfunction50();
 	virtual void vfunction51();
 	virtual void vfunction52();
@@ -389,7 +393,8 @@ public:
 	virtual void vfunction91();
 	virtual void vfunction92();
 	virtual void vfunction93();
-	virtual void vfunction94();
+	// HYPOTHESIS: slot 94 (offset 0x174) returns an object or null; 0x00523967 reads it.
+	virtual tObject_00523967_member94 *vfunction94();
 	virtual void vfunction95();
 	// HYPOTHESIS: slot 96 (offset 0x17c) returns an object or null; tAICaptain's 0x0051f602
 	// asks it whether the target is hidden.
@@ -670,6 +675,9 @@ public:
 	bool fn_004235f0(int aID);
 	// HYPOTHESIS: looks an entity up by an ID that 0x00413ea8 gets from vfunction12.
 	tPhysicalEntity *fn_004249d3(int aID);
+	// HYPOTHESIS: the cast tEntityMgr::fn_00424a24; tSndMgr_Miles::fn_0050fa3c calls slot 29 of
+	// the result as a tPhysicalEntity.
+	tPhysicalEntity *fn_00424a24(tEntity *aEntity);
 	// HYPOTHESIS: returns the entity that owns the one given; 0x00413ea8 compares its team.
 	tPhysicalEntity *fn_004249c0(tPhysicalEntity *aEntity);
 	// HYPOTHESIS: returns the first entity of a list linked through 0x8; 0x00413f59 walks it.
@@ -681,6 +689,8 @@ public:
 
 	// HYPOTHESIS: returns an entity ID; 0x00421ea9 compares it with its ship's fID.
 	int fn_00525081();
+	// HYPOTHESIS: the entity the player controls (tEntityMgr::mGetPlayersControledEntity).
+	tEntity *fn_00424946();
 	// HYPOTHESIS: takes the ID 0x004c3784 passes; its result is not used there.
 	int fn_004248b5(int aValue);
 	// fn_0042496f is also the lookup tMyHud3D::vfunction9 (0x004b26e4) makes; it reads the

@@ -42,7 +42,7 @@ public:
 	// HYPOTHESIS: reads a named setting (section, key, default) like +0x10.
 	virtual int vfunction7(const char *, const char *, int);    // +0x18
 	virtual void vfunction8();
-	// HYPOTHESIS: returns the setting's length; tSFCPlayer passes a null buffer first to size it.
+	// HYPOTHESIS: returns the setting's length; tSFCPlayer and 0x00523198 size a buffer by it.
 	virtual int vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
 	// HYPOTHESIS: stores a named string setting (section, key, value) like +0x14.
 	virtual void vfunction10(const char *, const char *, const char *);    // +0x24

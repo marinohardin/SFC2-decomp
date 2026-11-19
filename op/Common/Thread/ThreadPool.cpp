@@ -6,29 +6,29 @@
 #include <list>
 #include <ostream>
 
-typedef long			int32;
-typedef unsigned long	int32u;
+#include "Common/Thread/Thread.h"	// int32, int32u, tCallback (forward), tThread; the lines below stay blank
 
-template< typename tnResult >
-class tCallback;
 
-class tThread
-{
-public:
-	tThread();
-	~tThread();
 
-	bool StartWork( tCallback<int32>* workItem, int32 context );
-	void StopThread( int32u timeout );
 
-	bool Working() const;
-	bool Alive() const;
 
-protected:
-	// HYPOTHESIS: the fields are not declared here; only the size (0xd0c, the allocation in
-	// QueueWorkItem) is known in this unit.
-	char	fUnknown[0xd0c];
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #include "Common/Exceptions/Validate.h"	// nException::tBaseException, tValidationFailed, validate
 // The lines below up to validate_throw stay blank so the code keeps its line numbers.

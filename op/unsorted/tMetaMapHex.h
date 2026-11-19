@@ -11,6 +11,7 @@
 #include "unsorted/tHexPoint.h"
 #include "unsorted/fn_005bc3de_tree.h"
 #include <map>
+#include <vector>
 
 // HYPOTHESIS: the 0x14-byte container tMetaMapHex holds three of, keyed by an int with one
 // 32-bit value per key. It is not this compiler's own std::map (0x10 bytes): its tree
