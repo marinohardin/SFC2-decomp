@@ -87,6 +87,20 @@ void tEntity::vfunction7(tObject_0041018e_arg *param_1, int param_2)
 	}
 }
 
+// HYPOTHESIS: a dword at 0x0090b670 compared with 2; tEntityMgr.cpp declares it too.
+extern int32 gValue_0090b670;
+
+// FUNCTION: STARFLEETOP 0x004101e4
+void tEntity::vfunction16()
+{
+	if (!fField5C && gValue_0090b670 != 2) {
+		if (fField64 == -1)
+			g_p0090bed4->fn_0052280a(this);
+		else
+			g_p0090bed4->fn_00522c66(this);
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x0040ff8c
 void tEntity::vfunction5()
 {

@@ -33,6 +33,9 @@ public:
 	// HYPOTHESIS: forgets an entity; tEntity's destructor (0x0040ffc9) calls it when the
 	// entity's +0x64 is set.
 	void fn_005229b9(class tEntity *pEntity);
+	// HYPOTHESIS: both take an entity; tEntity::vfunction16 (0x004101e4) picks one by its team.
+	void fn_0052280a(class tEntity *pEntity);
+	void fn_00522c66(class tEntity *pEntity);
 	tObject_005235a7 *fn_005235a7(int param_1);
 	// HYPOTHESIS: takes the ship 0x005235a7 looks up and returns the object for it.
 	tObject_005235a7 *fn_005235c8(fn_004e2b02_ship_type *pShip);

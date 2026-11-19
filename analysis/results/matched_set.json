@@ -3286,6 +3286,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004101e4": {
+   "name": "tEntity::vfunction16",
+   "symbol": "?vfunction16@tEntity@@UAEXXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004105dd": {
    "name": "tPhysicalEntity::vfunction28",
    "symbol": "?vfunction28@tPhysicalEntity@@UAEXH@Z",
