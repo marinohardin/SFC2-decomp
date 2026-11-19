@@ -9762,9 +9762,9 @@
    "symbol": "?fn_00468c49@tState_GameConnections@tState_Namespace_GameConnections@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
    "size": 1101,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00469096": {
    "name": "FUN_00469096",
