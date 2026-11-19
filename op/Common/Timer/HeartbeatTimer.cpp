@@ -65,3 +65,98 @@ tHeartbeatTimer::tHeartbeatTimerData::~tHeartbeatTimerData()
 {
 	delete fpClock;
 }
+
+// HYPOTHESIS: the SDK defines Enter, Wait, Leave and the guard's destructor inline; the
+// constructor below expands them and calls TryEnter out of line.
+inline void tOptex::Wait()
+{
+	::WaitForSingleObject( fEvent, INFINITE );
+}
+
+inline void tOptex::Enter()
+{
+	if( fUse == tThreadState::kIgnoreThreadObject )
+	{
+		return;
+	}
+
+	if( fUseCriticalSections )
+	{
+		::EnterCriticalSection( &( fpSharedInfo->fCriticalSection ) );
+		return;
+	}
+
+	if( TryEnter() )
+	{
+		return;
+	}
+
+	int32u threadId = ::GetCurrentThreadId();
+
+	if( ::InterlockedIncrement( &fpSharedInfo->fLockCount ) == 1 )
+	{
+		fpSharedInfo->fThreadId = threadId;
+		fpSharedInfo->fRecurseCount = 1;
+	}
+	else
+	{
+		if( fpSharedInfo->fThreadId == threadId )
+		{
+			fpSharedInfo->fRecurseCount++;
+		}
+		else
+		{
+			Wait();
+
+			fpSharedInfo->fThreadId = threadId;
+			fpSharedInfo->fRecurseCount = 1;
+		}
+	}
+}
+
+inline void tOptex::Leave()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections )
+		{
+			::LeaveCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+		else
+		{
+			--fpSharedInfo->fRecurseCount;
+			if( fpSharedInfo->fRecurseCount > 0 )
+			{
+				::InterlockedDecrement( &fpSharedInfo->fLockCount );
+			}
+			else
+			{
+				fpSharedInfo->fThreadId = 0;
+				if( ::InterlockedDecrement( &fpSharedInfo->fLockCount ) > 0 )
+				{
+					::SetEvent( fEvent );
+				}
+			}
+		}
+	}
+}
+
+inline tOptex::tGuard::~tGuard()
+{
+	if( fNeedToLeave )
+	{
+		fOptex->Leave();
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x006f5b00
+tHeartbeatTimer::tHeartbeatTimer() :
+	fLastTime( 0 ),
+	fInitalTime( 0 )
+{
+	fHBData = tHeartbeatTimerData::Instance();
+	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
+
+	fTimerIndex = fHBData->fTimers.size();
+	fHBData->fTimers.push_back( NULL );
+}

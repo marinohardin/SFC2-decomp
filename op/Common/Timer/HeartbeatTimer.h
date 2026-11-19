@@ -7,20 +7,33 @@
 #include "Common/BaseTypes.h"
 #include "Common/Thread/Optex.h"
 #include "Common/Thread/Thread.h"
+#include "Common/Timer/Timer.h"
 
 #include <vector>
 #include "Common/FunctionCallback.h"
 
 class tClock;
 
-// HYPOTHESIS: the SDK derives tHeartbeatTimer from tTimer, which is not declared in op/ yet;
-// the base and the timer members follow when the first of them is matched.
-class tHeartbeatTimer
+class tHeartbeatTimer : public tTimer
 {
 public:
+// Setup
+	tHeartbeatTimer();
+	virtual ~tHeartbeatTimer();
+
+// Operations
+	virtual void StartTimer( int32u dueTime, int32u period, tTimerHandler* pTimerHandler );
+	virtual void StartTimer( int32u dueTime, int32u period, iTimerCallbackFunc* pCallback, int32u context );
+	virtual void StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context );
+	virtual void ChangeTiming( int32u newDueTime, int32u newPeriod );
+	virtual void StopTimer();
+
 	static void OnAutoRunHB( int32 context );
 
 	static void Heartbeat();
+
+//Accessors
+	virtual int32u TimePassedSinceStart();
 
 // Types
 	typedef std::vector<tHeartbeatTimer*> iTimers;
@@ -47,6 +60,13 @@ public:
 
 		static iPtr fHeartbeatTimerData;
 	};
+
+public:
+// Fields
+	int32u					fLastTime;
+	int32u					fInitalTime;
+	int32					fTimerIndex;
+	tHeartbeatTimerData*	fHBData;
 };
 
 #endif // !defined( HeartbeatTimer_h )
