@@ -19846,6 +19846,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0056882f": {
+   "name": "FUN_0056882f",
+   "symbol": "?fn_0056882f@fn_005686b8_owner@@QAEHHDDH@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 70,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",

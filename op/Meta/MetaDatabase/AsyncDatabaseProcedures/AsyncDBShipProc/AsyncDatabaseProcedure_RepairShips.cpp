@@ -14,7 +14,7 @@ public:
 
 	int fn_005686b8( int base, int value );
 	int fn_0056872c( int8* curState, int8 kind, unsigned int value );
-	int fn_0056882f( int base, int a, int b, int value );
+	int fn_0056882f( int base, char a, char b, int value );
 };
 
 // FUNCTION: STARFLEETOP 0x005686b8
@@ -70,6 +70,19 @@ int fn_005686b8_owner::fn_0056872c( int8* curState, int8 kind, unsigned int valu
 	else
 	{
 		nLog::error << "Problem repairing ship, CurState = " << *curState << " MaxState = " << kind << nLog::report;
+	}
+	return value;
+}
+
+#line 77
+// FUNCTION: STARFLEETOP 0x0056882f
+int fn_005686b8_owner::fn_0056882f( int base, char a, char b, int value )
+{
+	int i = a;
+	while( i < b && (unsigned int)value > 0 )
+	{
+		value = fn_0056872c( (int8*)( i + 0x57 + base ), *(int8*)( i + 0x3e + base ), value );
+		i++;
 	}
 	return value;
 }
