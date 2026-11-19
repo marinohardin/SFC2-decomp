@@ -56,7 +56,7 @@ CL_NATIVE = os.path.join(REPO, 'toolchain', 'bin', 'cl-native')
 
 
 def pick_cl(env, tools, system):
-    """The compiler wrapper the harness runs. HARNESS_COMPILER=docker or native forces one;
+    """The compiler wrapper the harness scores with. HARNESS_COMPILER=docker or native forces one;
     otherwise (auto) the native one when toolchain/fetch-native.sh has installed it on macOS,
     else the Docker image. Both score every claimed function the same (toolchain/README.md)."""
     choice = env.get('HARNESS_COMPILER', 'auto')
@@ -72,7 +72,13 @@ def pick_cl(env, tools, system):
     return CL_NATIVE if native else CL_DOCKER
 
 
-CL = pick_cl(os.environ, TOOLS, platform.system())
+# The compiler of record: the image (docs/INTERFACE.md). A consumer's build and anything that
+# links or compares whole objects uses it.
+CL = CL_DOCKER
+# What the harness's own scoring compiles with (verify.py): the native compiler on macOS when it
+# is installed. Its objects score the same, but differ from the image's in the order of some
+# COMDAT sections (toolchain/README.md), so it is never the default of compile_unit.
+HARNESS_CL = pick_cl(os.environ, TOOLS, platform.system())
 OBJDIFF = env_path('OBJDIFF', os.path.join(TOOLS, 'objdiff', 'objdiff-cli-macos-arm64'))
 
 # Committed results, written only by update-matched-set.sh and queue.py. They live in

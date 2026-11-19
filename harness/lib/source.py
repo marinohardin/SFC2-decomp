@@ -134,10 +134,10 @@ _live = {}
 _live_lock = threading.Lock()
 
 
-def _docker_kill(cname):
+def _docker_kill(cname, cl):
     """Stop the compile's container, when the compiler is the image's; no Docker is needed for
     the native one."""
-    if paths.CL != paths.CL_DOCKER:
+    if cl != paths.CL_DOCKER:
         return
     try:
         subprocess.run(['docker', 'kill', cname], capture_output=True, timeout=30)
@@ -151,29 +151,31 @@ def stop_all(grace=5):
     with _live_lock:
         live = list(_live.values())
     for sig in (signal.SIGTERM, signal.SIGKILL):
-        for p, _ in live:
+        for p, _, _ in live:
             if p.poll() is None:
                 try:
                     os.killpg(p.pid, sig)
                 except ProcessLookupError:
                     pass
         deadline = time.time() + grace
-        while time.time() < deadline and any(p.poll() is None for p, _ in live):
+        while time.time() < deadline and any(p.poll() is None for p, _, _ in live):
             time.sleep(0.05)
-    for _, cname in live:
-        _docker_kill(cname)
+    for _, cname, cl in live:
+        _docker_kill(cname, cl)
 
 
-def compile_unit(unit_path, profile, src_root, build_root=None):
-    """Compile one translation unit with the pinned compiler. Returns a dict with obj, listing,
-    log, ok, secs, out_dir."""
+def compile_unit(unit_path, profile, src_root, build_root=None, cl=None):
+    """Compile one translation unit with the pinned compiler: the image's wrapper, or `cl` (the
+    harness's scoring passes paths.HARNESS_CL). Returns a dict with obj, listing, log, ok, secs,
+    out_dir."""
     build_root = build_root or paths.BUILD
     key = hashlib.sha1(os.path.abspath(unit_path).encode()).hexdigest()[:12]
     base = os.path.splitext(os.path.basename(unit_path))[0]
     out = os.path.join(build_root, f'{base}-{key}')
     shutil.rmtree(out, ignore_errors=True)
     os.makedirs(out)
-    cmd = [paths.CL] + _flags(profile, src_root) + ['/FAs', f'/Fa{out}/', f'/Fo{out}/',
+    cl = cl or paths.CL
+    cmd = [cl] + _flags(profile, src_root) + ['/FAs', f'/Fa{out}/', f'/Fo{out}/',
                                                    os.path.basename(unit_path)]
     cname = f'sfcop-harness-{key}-{os.getpid()}'
     env = dict(os.environ, SFCOP_ROOT=paths.SFCOP_ROOT, SFCOP_MSVC_NAME=cname,
@@ -185,18 +187,18 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
                          errors='replace', start_new_session=True)
     with _live_lock:
-        _live[p.pid] = (p, cname)
+        _live[p.pid] = (p, cname, cl)
     try:
         out_, err_ = p.communicate(timeout=COMPILE_TIMEOUT)
         log, rc = out_ + err_, p.returncode
     except subprocess.TimeoutExpired:
         _stop_group(p)
-        _docker_kill(cname)
+        _docker_kill(cname, cl)
         log, rc = f'compile killed after {COMPILE_TIMEOUT}s', -1
     except BaseException:
         # Ctrl-C reaches only the harness now that the compile has its own group: stop it too.
         _stop_group(p)
-        _docker_kill(cname)
+        _docker_kill(cname, cl)
         raise
     finally:
         with _live_lock:

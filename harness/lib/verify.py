@@ -420,7 +420,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             sub.add('ERROR', str(e))
             sub.failed = True
             return sub
-        build = source.compile_unit(path, profile, src_root)
+        build = source.compile_unit(path, profile, src_root, cl=paths.HARNESS_CL)
         if not build['ok']:
             errs = [ln for ln in build['log'].splitlines() if ' error ' in ln or 'fatal error' in ln]
             sub.add('ERROR', f'build {rel}: BUILD HAS FAILED. Treat this as a build failure, '

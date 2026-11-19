@@ -52,6 +52,15 @@ def test_harness_compiler_rejects_other_values(tmp_path):
         paths.pick_cl({'HARNESS_COMPILER': 'wine'}, str(tmp_path), 'Darwin')
 
 
+def test_the_compiler_of_record_stays_the_image():
+    """docs/INTERFACE.md: a consumer's compile_unit call gets the image, whatever is installed;
+    only the harness's scoring passes paths.HARNESS_CL."""
+    import inspect
+    from harness.lib import source
+    assert paths.CL == paths.CL_DOCKER
+    assert inspect.signature(source.compile_unit).parameters['cl'].default is None
+
+
 def test_cl_native_exits_3_without_the_compiler(tmp_path):
     env = dict(os.environ, SFCOP_TOOLS=str(tmp_path / 'none'), SFCOP_WORK=str(tmp_path / 'work'))
     p = subprocess.run(['sh', paths.CL_NATIVE, '/nologo'], env=env, capture_output=True, text=True)

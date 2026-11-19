@@ -61,7 +61,8 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
 2. Compiles that unit with the unit's profile from `units.json`, adding only output paths and
    `/FAs`. The compiler is `toolchain/bin/cl-native` when `toolchain/fetch-native.sh` has
    installed it, else `toolchain/bin/cl` (`HARNESS_COMPILER=docker` or `native` forces one; see
-   `toolchain/README.md`, "Native compiler"). The listing tells which compiled symbol follows the annotation;
+   `toolchain/README.md`, "Native compiler"); `paths.HARNESS_CL` holds the choice. A consumer
+   calling `source.compile_unit` without `cl=` gets the image, the compiler of record. The listing tells which compiled symbol follows the annotation;
    for a header claim, the header's line records in the unit's listing do. An inline
    destructor's deleting destructor, whose listing may have no line records, is the `??_G` /
    `??_E` whose mangled class is the class named on the definition.

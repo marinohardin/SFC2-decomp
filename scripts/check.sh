@@ -99,10 +99,10 @@ echo "== matched set holds the base branch's"
 have_install=$(python3 -c 'import os, sys; sys.path.insert(0, "."); from harness.lib import paths; print(1 if os.path.isfile(paths.EXE) else "")')
 # The harness compiles natively when toolchain/fetch-native.sh has installed the compiler, else
 # in the sfcop-msvc6 image (harness/lib/paths.py, pick_cl).
-cl=$(python3 -c 'import sys; sys.path.insert(0, "."); from harness.lib import paths; print(paths.CL)')
+cl=$(python3 -c 'import sys; sys.path.insert(0, "."); from harness.lib import paths; print(paths.HARNESS_CL)')
 if [ "$(basename "$cl")" = cl-native ]; then
     have_image=1
-    echo "compiler: native (toolchain/bin/cl-native)"
+    echo "compiler: native (toolchain/bin/cl-native); a preview: CI rebuilds with the image, the result of record"
 else
     have_image=$(docker image inspect sfcop-msvc6:latest >/dev/null 2>&1 && echo 1 || true)
     echo "compiler: the sfcop-msvc6 image (toolchain/bin/cl)"
