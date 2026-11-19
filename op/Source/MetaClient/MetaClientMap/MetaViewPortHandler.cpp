@@ -53,7 +53,7 @@ public:
 	void fn_005e6091();
 	void fn_005e5ef4();
 	void fn_005e620c( long x, long y, bool* changed ); // HYPOTHESIS: 0x005e65e5 tests a position and 0x005e7925 turns it into a hex; argument types are not recovered.
-	bool fn_005e65e5( long x, long y );
+	bool fn_005e65e5( const tPoint* point, const tRect* area );
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	void fn_005e6469( long arg ); bool fn_005e64ea(); bool fn_005e653d( const tHexPoint& position );
 	tHexPoint fn_005e7925( long x, long y, int arg );
@@ -378,7 +378,8 @@ void tMetaClientMapPanel::fn_005e620c( long x, long y, bool* changed )
 	tOptex::tGuard guard( &field_dc );
 
 	tHexPoint old( field_1d0 );
-	if( !fn_005e65e5( x, y ) )
+	// HYPOTHESIS: x and y are two pointers (a point and an area) passed as longs.
+	if( !fn_005e65e5( (const tPoint*) x, (const tRect*) y ) )
 		field_1d0.fn_005b6b62( -1, -1 );
 	else
 		field_1d0 = fn_005e7925( x, y, 0 );
@@ -444,4 +445,28 @@ bool tMetaClientMapPanel::fn_005e653d( const tHexPoint& position )
 		outside = false;
 	guard.Leave();
 	return outside;
+}
+
+// FUNCTION: STARFLEETOP 0x005e65e5
+bool tMetaClientMapPanel::fn_005e65e5( const tPoint* point, const tRect* area )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	bool insideX;
+	if( point->x > area->left && point->x < area->right )
+		insideX = true;
+	else
+		insideX = false;
+	bool insideY;
+	if( point->y > area->top && point->y < area->bottom )
+		insideY = true;
+	else
+		insideY = false;
+	bool result;
+	if( insideX && insideY )
+		result = true;
+	else
+		result = false;
+	guard.Leave();
+	return result;
 }
