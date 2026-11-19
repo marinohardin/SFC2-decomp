@@ -3943,6 +3943,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0041980f": {
+   "name": "tNetMsg_kUpdateCloakStatus::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kUpdateCloakStatus.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
