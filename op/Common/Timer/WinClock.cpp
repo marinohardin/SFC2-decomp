@@ -10,3 +10,11 @@ double tWinClock::GetCurrentSystemTimeInSeconds() const
 // FUNCTION: STARFLEETOP 0x006fe0f0
 // FUNCTION: STARFLEETOP 0x006fe0e0
 tWinClockGlobal::iAutoWinClockGlobalPtr tWinClockGlobal::fpAutoWinClockGlobalPtr;
+
+// FUNCTION: STARFLEETOP 0x006fe140
+tWinClockGlobal* tWinClockGlobal::Instance()
+{
+	if( fpAutoWinClockGlobalPtr.get() == 0 )
+		fpAutoWinClockGlobalPtr = iAutoWinClockGlobalPtr( new tWinClockGlobal );
+	return fpAutoWinClockGlobalPtr.get();
+}

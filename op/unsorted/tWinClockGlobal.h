@@ -14,6 +14,11 @@ public:
 	static tWinClockGlobal* Instance();
 
 private:
+	tWinClockGlobal();
+	// HYPOTHESIS: Instance deletes the old object through vtable slot 0, so the class has a
+	// virtual destructor; new allocates 4 bytes, the vtable alone.
+	virtual ~tWinClockGlobal();
+
 	typedef std::auto_ptr<tWinClockGlobal> iAutoWinClockGlobalPtr;
 	friend iAutoWinClockGlobalPtr;
 
