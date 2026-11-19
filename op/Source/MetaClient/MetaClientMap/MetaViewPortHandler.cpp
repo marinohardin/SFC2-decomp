@@ -27,7 +27,7 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f();
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe();
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -120,4 +120,12 @@ bool tMetaClientMapPanel::fn_005e5a8f()
 	}
 	field_dc.Leave();
 	return flagged;
+}
+
+// FUNCTION: STARFLEETOP 0x005e5abe
+void tMetaClientMapPanel::fn_005e5abe()
+{
+	field_dc.Enter();
+	field_18c = true;
+	field_dc.Leave();
 }
