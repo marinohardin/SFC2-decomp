@@ -1927,6 +1927,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040ca18": {
+   "name": "tElectricSpark::vfunction2",
+   "symbol": "?vfunction2@tElectricSpark@@UAEXPAVfn_0040ca18_viewer@@PBVtMatrix@@ABV3@@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 497,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",

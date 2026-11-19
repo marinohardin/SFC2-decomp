@@ -128,6 +128,7 @@ public:
 	void mRotY(const tAngle angle);
 	void mRotZ(const tAngle angle);
 	void mTranslate(const float x, const float y, const float z);
+	void mMult(tMatrix &a, const tMatrix &b) const;
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);
 	void mTransform(tPoint3 &p) const;
