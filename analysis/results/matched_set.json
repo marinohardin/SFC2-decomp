@@ -38134,6 +38134,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fdb80": {
+   "name": "tCommandLineArgs::Instance",
+   "symbol": "?Instance@tCommandLineArgs@@SAPAV1@XZ",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

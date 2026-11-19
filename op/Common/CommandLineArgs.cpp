@@ -1,6 +1,18 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/CommandLineArgs.cpp
-// Functions: 0x006fdb80 to 0x006fdf20, 6 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// Common/CommandLineArgs.cpp
+
+#include <string>
+
+#include "Common/CommandLineArgs.h"
+
+tCommandLineArgs::iAutoPtr tCommandLineArgs::g_00c7f8b8;
+
+// FUNCTION: STARFLEETOP 0x006fdb80
+tCommandLineArgs *tCommandLineArgs::Instance(void)
+{
+	if (g_00c7f8b8.get() == 0)
+	{
+		g_00c7f8b8 = iAutoPtr(new tCommandLineArgs);
+	}
+
+	return g_00c7f8b8.get();
+}
