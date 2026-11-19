@@ -1,6 +1,44 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_GetEmpireInfo.cpp
-// Functions: 0x005df72e to 0x005df72e, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Switch/AsyncProcedure.h"
+#include "Common/MemberCallback.h"
+#include "Common/Exceptions/Validate.h"
+
+namespace nAsyncClientMapProcedures
+{
+
+	// Name from the exe's RTTI (.?AVtGetEmpireInfo@nAsyncClientMapProcedures@@).
+	class tGetEmpireInfo : public nSwitch::tAsyncProcedure
+	{
+	public:
+		// The parameter name is from the validate( relay ) text; its type is not known.
+		tGetEmpireInfo( void* relay );
+
+		void fn_005df816( const nDataStore::tBuffer* buffer );
+		void fn_005df925( const nDataStore::tBuffer* buffer );
+
+	protected:
+		void* fRelay;
+		// HYPOTHESIS: set to -1 at construction; meaning not known.
+		int32 field_48;
+	};
+
+};
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+using namespace nAsyncClientMapProcedures;
+
+
+// FUNCTION: STARFLEETOP 0x005df72e
+tGetEmpireInfo::tGetEmpireInfo( void* relay ) :
+	fRelay( relay ),
+	field_48( -1 )
+{
+	validate( relay );
+	fn_00718f10( 8, new tMemberCallback<tGetEmpireInfo, const nDataStore::tBuffer*>( this, fn_005df816 ) );
+	fn_00718f10( 9, new tMemberCallback<tGetEmpireInfo, const nDataStore::tBuffer*>( this, fn_005df925 ) );
+	fn_00719050();
+}
