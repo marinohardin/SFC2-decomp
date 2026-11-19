@@ -109,7 +109,7 @@ class tDynamicMemoryFreeList
 public:
 	// HYPOTHESIS: an inline destructor that empties the list; the destructor 0x00413de0
 	// stores this vftable and calls mClearList (slot 18) directly for the member at 0x1a4.
-	virtual ~tDynamicMemoryFreeList() { mClearList(); }
+	virtual ~tDynamicMemoryFreeList();
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
 	virtual tListMember *vfunction4();	// HYPOTHESIS: the last member; 0x006267b0 wraps to it
