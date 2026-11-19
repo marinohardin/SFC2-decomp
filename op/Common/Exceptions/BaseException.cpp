@@ -1,4 +1,5 @@
 #include "Common/Exceptions/BaseException.h"
+#include "Common/Log/LogStream.h"
 
 namespace nException
 {
@@ -12,6 +13,20 @@ tBaseException::tBaseException( const char* pDescription, const char* pFile, int
 // FUNCTION: STARFLEETOP 0x006fd370
 tBaseException::~tBaseException() throw()
 {
+}
+
+// FUNCTION: STARFLEETOP 0x006fd380
+void tBaseException::ReportHeader( const char* caughtDescription ) throw()
+{
+	try
+	{
+		nLog::error << caughtDescription << std::endl
+			<< "Exception: " << GetDescription() << " in " << std::endl
+			<< GetFile() << "(" << GetLineNumber() << ")" << std::endl << std::endl;
+	}
+	catch( ... )
+	{
+	}
 }
 
 };
