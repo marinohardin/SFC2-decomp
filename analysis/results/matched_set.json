@@ -25291,6 +25291,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x005e6d7c": {
+   "name": "tMetaMapNormalHex::tMetaMapNormalHex",
+   "symbol": "??0tMetaMapNormalHex@@QAE@ABV0@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 110,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005ea14b": {
    "name": "FUN_005ea14b",
    "symbol": "?fn_005ea14b@tTree_005ea14b@@QAE?AUtPairib@1@ABU?$pair@HH@std@@@Z",

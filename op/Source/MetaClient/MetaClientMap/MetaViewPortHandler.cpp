@@ -560,3 +560,14 @@ void tMetaClientMapPanel::fn_005e6a41()
 	}
 	list.Done();
 }
+
+#include "unsorted/tMetaMapNormalHex.h"
+
+// FUNCTION: STARFLEETOP 0x005e6d7c
+tMetaMapNormalHex::tMetaMapNormalHex( const tMetaMapNormalHex& other )
+	: fn_005e4d1c_base( other ),
+	  m_4c( other.m_4c ),
+	  m_4e( other.m_4e ),
+	  m_50( (const fn_0053a6cc_map::tree*)&other.m_50 )
+{
+}
