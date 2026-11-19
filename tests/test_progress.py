@@ -486,3 +486,10 @@ def test_funclet_map_round_trips_through_its_file(tmp_path):
     progress.write_funclet_map(out, {0x401080: 0x401000, 0x401090: 0x401020}, 'ab' * 32)
     loaded = progress.load_funclet_parents(out, progress.InputLog(None))
     assert loaded == {0x401080: 0x401000, 0x401090: 0x401020}
+
+
+def test_default_matched_set_is_the_committed_one():
+    # The matched set moved to analysis/results/; a stale default reads nothing and reports 0% exact.
+    path = progress.default_paths()['matched_set']
+    assert path == ROOT / 'analysis/results/matched_set.json'
+    assert path.is_file()
