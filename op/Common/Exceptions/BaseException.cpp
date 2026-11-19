@@ -29,4 +29,18 @@ void tBaseException::ReportHeader( const char* caughtDescription ) throw()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006fd590
+void tBaseException::ReportException( const char* caughtDescription ) throw()
+{
+	try
+	{
+		ReportHeader( caughtDescription );
+		ReportFooter();
+		nLog::error << nLog::report;
+	}
+	catch( ... )
+	{
+	}
+}
+
 };

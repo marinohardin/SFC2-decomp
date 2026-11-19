@@ -38089,6 +38089,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006fd590": {
+   "name": "nException::tBaseException::ReportException",
+   "symbol": "?ReportException@tBaseException@nException@@UAEXPBD@Z",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 90,
+   "score": 93.939,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
