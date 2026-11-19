@@ -199,7 +199,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00496572	FUN_00496572	5.00	2	sonnet	2026-11-17T09:46:05Z	best not above 90% after 2 attempts; best 5.00%
 0x00496682	FUN_00496682	3.23	2	sonnet	2026-11-17T10:18:58Z	best not above 90% after 2 attempts; best 3.23%
 0x00544c24	tAuctionItem::~tAuctionItem	45.29	2	sonnet	2026-11-17T14:12:14Z	attempt 2 (sonnet) did not raise the best; best 45.29%
-0x00544f0f	tAuctionItem::vfunction6_for_tAllocatedClass	99.93	2	sonnet	2026-11-17T14:26:19Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.93%
 0x00585ccc	FUN_00585ccc	29.86	2	opus	2026-11-17T14:26:23Z	attempt 2 (opus) did not raise the best; best 29.86%
 0x00545084	tAuctionItem::vfunction7_for_tAllocatedClass	99.93	2	sonnet	2026-11-17T14:30:14Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.93%
 0x005a4208	FUN_005a4208	25.88	2	opus	2026-11-17T14:59:05Z	attempt 2 (opus) did not raise the best; best 25.88%
