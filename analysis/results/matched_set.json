@@ -35704,6 +35704,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00675cd0": {
+   "name": "tAsset::vfunction6",
+   "symbol": "?vfunction6@tAsset@@UAEAAVtStream@@AAV2@@Z",
+   "unit": "unsorted/tAsset.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",

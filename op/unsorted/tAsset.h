@@ -17,6 +17,7 @@ public:
 	virtual ~tAsset();
 	short fn_00675bf0();
 	virtual tStream& vfunction5( tStream& s );
+	virtual tStream& vfunction6( tStream& s );
 
 	int field_04;
 	// HYPOTHESIS: field names and types unknown; the second string sits at an odd 2-byte offset.

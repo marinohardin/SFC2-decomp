@@ -37,3 +37,25 @@ tStream& tAsset::vfunction5( tStream& s )
 		s << field_08 << field_32;
 	return s;
 }
+
+// FUNCTION: STARFLEETOP 0x00675cd0
+tStream& tAsset::vfunction6( tStream& s )
+{
+	// HYPOTHESIS: field_30 is not read back; the original reads only field_04 and field_5A.
+	unsigned short* p = (unsigned short*)&field_04;
+	s.fn_slot2( p, 4 );
+	if ( s.fSwap )
+	{
+		unsigned short hi = p[1];
+		unsigned short lo = p[0];
+		p[0] = (unsigned short)( ( hi >> 8 ) | ( hi << 8 ) );
+		p[1] = (unsigned short)( ( lo >> 8 ) | ( lo << 8 ) );
+	}
+	unsigned short* q = (unsigned short*)&field_5A;
+	s.fn_slot2( q, 2 );
+	if ( s.fSwap )
+		*q = (unsigned short)( ( *q >> 8 ) | ( *q << 8 ) );
+	if ( *q >= 0x99 )
+		s >> field_08 >> field_32;
+	return s;
+}
