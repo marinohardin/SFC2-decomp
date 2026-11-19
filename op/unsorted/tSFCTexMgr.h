@@ -52,6 +52,7 @@ public:
     virtual int vfunction2(int handle);
     virtual int vfunction3(char *name, char param_2, char param_3, int param_4);
     virtual void vfunction4(int handle);
+    virtual char vfunction5(int handle);
 };
 
 // HYPOTHESIS: the texture handle table built at 0x006a0490 (0x1000 slots, linked through

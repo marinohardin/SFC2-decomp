@@ -96,3 +96,12 @@ void tSFCTexMgrEx::vfunction4(int handle)
         }
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0040f0b9
+char tSFCTexMgrEx::vfunction5(int handle)
+{
+    int i = handle - 1;
+    if (i < 0 || i >= 0x1000)
+        return 0;
+    return m_entries[i].m00;
+}
