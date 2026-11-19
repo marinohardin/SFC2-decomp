@@ -19450,6 +19450,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005517de": {
+   "name": "nStoredProcedureArguments::tReadyToPlayRequest::vfunction3",
+   "symbol": "?vfunction3@tReadyToPlayRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/ReadyToPlayRequest.cpp",
+   "size": 121,
+   "score": 90.0,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
