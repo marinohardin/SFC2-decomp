@@ -1,20 +1,9 @@
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
+#include "unsorted/tRequestWithResponse.h"
 
 // HYPOTHESIS: class layouts below are reconstructed from the function's accesses only.
-class tRequestWithResponse
-{
-public:
-	virtual void v0();
-	virtual void v1();
-	virtual void v2();
-	virtual void vfunction3( nDataStore::tInput& input );
-	char pad4[4];
-	char fFlag8;
-	char pad[0x13 - 4];
-};
-
 class tMissionBase
 {
 public:
