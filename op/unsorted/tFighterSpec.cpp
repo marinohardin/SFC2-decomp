@@ -27,3 +27,8 @@ tFighterSpec::tFighterSpec()
         m68[i].m04 = -1;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x00401974
+tFighterSpec::~tFighterSpec()
+{
+}
