@@ -3907,6 +3907,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004197ef": {
+   "name": "tNetMsg_kRotateTractor::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kRotateTractor@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kRotateTractor.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
