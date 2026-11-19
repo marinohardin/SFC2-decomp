@@ -16,3 +16,14 @@ void tCRC32::GenerateCRCTable()
 		fTable[ i ] = crc;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006fd9b0
+int32u tCRC32::UpdateCRC( int32u crc_accum, const char *data_blk_ptr, int32 data_blk_size )
+{
+	for( int32 j = 0; j < data_blk_size; j++ )
+	{
+		int32 i = ( ( int32 )( crc_accum >> 24 ) ^ *data_blk_ptr++ ) & 0xFF;
+		crc_accum = ( crc_accum << 8 ) ^ fTable[ i ];
+	}
+	return crc_accum;
+}
