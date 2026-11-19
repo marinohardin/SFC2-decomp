@@ -7,6 +7,8 @@
 
 #include "unsorted/tNetControl.h"	// tString
 
+class tStream;
+
 // HYPOTHESIS: only what tListBox_Base::vfunction37 reads is declared; slot names unknown.
 class tAsset
 {
@@ -14,6 +16,7 @@ public:
 	tAsset();
 	virtual ~tAsset();
 	short fn_00675bf0();
+	virtual tStream& vfunction5( tStream& s );
 
 	int field_04;
 	// HYPOTHESIS: field names and types unknown; the second string sits at an odd 2-byte offset.

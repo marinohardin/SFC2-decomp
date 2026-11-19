@@ -6,6 +6,7 @@
 // Profile:   sdk-release (harness/units.json)
 
 #include "unsorted/tAsset.h"
+#include "Tiger/tStream.h"
 
 extern short g_00882e16;
 
@@ -25,4 +26,14 @@ short tAsset::fn_00675bf0()
 	if (kind == 3 || kind == 0x11 || kind == 0x16)
 		return 1;
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00675c10
+tStream& tAsset::vfunction5( tStream& s )
+{
+	// HYPOTHESIS: field_04 is written as an unsigned long; the overload taking it is not known.
+	s << (unsigned short)field_30 << (unsigned long)field_04 << (unsigned short)field_5A;
+	if ( (unsigned short)field_5A >= 0x99 )
+		s << field_08 << field_32;
+	return s;
 }
