@@ -1,5 +1,6 @@
 #include "unsorted/tListMember.h"
 
+// FUNCTION: STARFLEETOP 0x004088e4
 // FUNCTION: STARFLEETOP 0x004088c6
 tListMember::~tListMember()
 {

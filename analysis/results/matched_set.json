@@ -1288,6 +1288,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004088e4": {
+   "name": "tListMember::scalar_deleting_destructor",
+   "symbol": "??_GtListMember@@UAEPAXI@Z",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 29,
+   "score": 8.235,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
