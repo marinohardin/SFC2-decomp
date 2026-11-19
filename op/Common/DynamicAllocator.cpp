@@ -11,6 +11,7 @@
 // FUNCTION: STARFLEETOP 0x006fc490
 tAllocatedClass::tAllocatedClass() : fAllocID( -1 ) {}
 // FUNCTION: STARFLEETOP 0x006fc4a0
+// FUNCTION: STARFLEETOP 0x006fc4c0
 tAllocatedClass::~tAllocatedClass() {}
 
 // FUNCTION: STARFLEETOP 0x006fc4d0
