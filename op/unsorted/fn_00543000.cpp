@@ -453,11 +453,11 @@ bool tServCharacter::fn_0054340c() const
 // FUNCTION: STARFLEETOP 0x00543437
 bool fn_005430ad_owner::fn_00543437()
 {
-	unsigned int v = *(unsigned int*)((char*)&m10c + 0x8);
-	unsigned char r = ~v;
-	r >>= 4;
-	r &= 1;
-	return r;
+	if (m114_4)
+		return false;
+	else
+		return true;
+
 }
 
 // FUNCTION: STARFLEETOP 0x00543445

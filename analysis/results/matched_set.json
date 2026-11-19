@@ -18024,9 +18024,9 @@
    "symbol": "?fn_00543437@fn_005430ad_owner@@QAE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 14,
-   "score": 98.0,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00543445": {
    "name": "FUN_00543445",
