@@ -1,6 +1,17 @@
 #include "unsorted/tAsset.h"
 #include "Tiger/tStream.h"
 
+tBoundAsset::tBoundAsset()
+{
+	field_5E = 0;
+	field_5C = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00678250
+tBoundAsset::~tBoundAsset()
+{
+}
+
 // FUNCTION: STARFLEETOP 0x00678180
 tStream& tBoundAsset::vfunction5( tStream& s )
 {

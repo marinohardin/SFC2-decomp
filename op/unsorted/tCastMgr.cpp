@@ -12,7 +12,7 @@
 #include <string.h>
 #include <vector>
 #include <map>
-
+inline tBoundAsset::tBoundAsset() { field_5E = 0; field_5C = 0; }	// MATCH-ONLY: the original expands this constructor in the factory
 // HYPOTHESIS: the map tCastMgr holds at +0x180. It is not this compiler's own std::map (0x10
 // bytes, one static nil node): its tree keeps an allocator byte at +0, a comparison byte at +1,
 // the head node at +4, a nil node of its own at +8, the multi flag at +0xc and the size at

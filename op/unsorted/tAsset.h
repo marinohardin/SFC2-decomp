@@ -29,6 +29,7 @@ public:
 #pragma pack(pop)
 };
 
+
 // MATCH-ONLY: the original inlines this destructor into the derived ones.
 inline tAsset::~tAsset()
 {
@@ -91,12 +92,6 @@ public:
 	short field_5C;	// HYPOTHESIS: the width
 	short field_5E;	// HYPOTHESIS: the height
 };
-
-inline tBoundAsset::tBoundAsset()
-{
-	field_5E = 0;
-	field_5C = 0;
-}
 
 class tStaticTextAsset : public tBoundAsset
 {
