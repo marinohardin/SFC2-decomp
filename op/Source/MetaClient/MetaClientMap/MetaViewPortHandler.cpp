@@ -56,7 +56,7 @@ public:
 	bool fn_005e65e5( const tPoint* point, const tRect* area );
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	void fn_005e6469( long arg ); bool fn_005e64ea(); bool fn_005e653d( const tHexPoint& position );
-	tHexPoint fn_005e7925( long x, long y, int arg );
+	tHexPoint fn_005e7925( long x, long y, int arg ); bool fn_005e6642( const class fn_005e6642_record& record );
 	unsigned char field_4[ 0xd8 - 0x4 ]; fn_00717950_object* field_d8; // HYPOTHESIS: an object of unknown type; only 0x00717950 is called on it (0x005e64ea).
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
@@ -469,4 +469,12 @@ bool tMetaClientMapPanel::fn_005e65e5( const tPoint* point, const tRect* area )
 		result = false;
 	guard.Leave();
 	return result;
+}
+
+// HYPOTHESIS: the argument is a record with a position at +0x18 (type not recovered, perhaps the 0x64-byte element of the vector at +0x15c); the result of 0x0042a421 on the character is returned.
+class fn_005e6642_record { public: unsigned char field_0[ 0x18 ]; tHexPoint field_18; };
+// FUNCTION: STARFLEETOP 0x005e6642
+bool tMetaClientMapPanel::fn_005e6642( const fn_005e6642_record& record )
+{
+	return ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a421( record.field_18.fn_0055f269(), record.field_18.fn_005e8f21() );
 }
