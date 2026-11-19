@@ -498,12 +498,12 @@
   },
   "0x00404184": {
    "name": "FUN_00404184",
-   "symbol": "??0fn_00404184_Locale@@QAE@XZ",
+   "symbol": "??0?$fn_00404184_LocaleT@D@@QAE@XZ",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 46,
-   "score": 99.412,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004041b2": {
    "name": "FUN_004041b2",
