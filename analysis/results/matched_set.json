@@ -35731,6 +35731,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00675f40": {
+   "name": "FUN_00675f40",
+   "symbol": "_$E6",
+   "unit": "unsorted/tCastMgr.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",

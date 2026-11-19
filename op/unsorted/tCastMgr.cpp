@@ -128,3 +128,6 @@ int fn_00675ec0( tString& name )
 		return 0;
 	return (*it).second;
 }
+
+// FUNCTION: STARFLEETOP 0x00675f40
+tString g_00c690d8;
