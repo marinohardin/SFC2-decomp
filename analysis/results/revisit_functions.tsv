@@ -385,3 +385,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00676250	FUN_00676250	0.00	2	opus	2026-11-19T22:35:54Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x00676a30	FUN_00676a30	14.97	2	opus	2026-11-19T22:56:50Z	best not above 90% after 2 attempts; best 14.97%
 0x00678160	tBoundAsset::tBoundAsset	100.00	2	opus	2026-11-19T23:07:47Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x00678ce0	tControlAsset::tControlAsset	100.00	2	opus	2026-11-19T23:38:01Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
