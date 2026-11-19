@@ -345,4 +345,19 @@ void tDatabaseObject::AddReference()
 	fReferenceCount++;
 }
 
+// FUNCTION: STARFLEETOP 0x006fbb90
+void tDatabaseObject::RemoveReference()
+{
+	tOptex::tGuard guard( &fAccess );
+
+// MATCH-ONLY: the validate below carries line 303 in the exe; this file's numbering above has drifted.
+#line 303
+	validate( fReferenceCount > 0 );
+	if( fReferenceCount > 0 )
+		fReferenceCount--;
+	guard.Leave();
+
+	CheckForDeath();
+}
+
 }
