@@ -387,3 +387,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00407d52	tShipSpecManager::~tShipSpecManager	92.78	2	opus	2026-11-19T20:10:48Z	attempt 2 (opus) did not raise the best; waits for Fable; best 92.78%
 0x004088e4	tListMember::scalar_deleting_destructor	8.23	2	opus	2026-11-19T20:15:59Z	best not above 90% after 2 attempts; best 8.23%
 0x0040891d	tShipSpecs::tShipSpecs	99.93	2	opus	2026-11-19T20:21:20Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.93%
+0x0040a5d8	tSystemCreationInfo::scalar_deleting_destructor	7.78	2	opus	2026-11-19T20:25:25Z	attempt 2 (opus) did not raise the best; best 7.78%
