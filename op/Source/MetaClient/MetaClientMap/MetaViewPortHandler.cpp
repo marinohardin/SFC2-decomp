@@ -3,7 +3,7 @@
 #include "unsorted/fn_004D3143.h"
 #include "unsorted/tVisObject.h"
 #include "unsorted/tMetaMapControl.h"
-
+#include "unsorted/tHexPoint.h"
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
 // out-of-line copy (0x00429a18); the header cannot define it while that unit does.
 inline tOptex::tGuard::~tGuard()
@@ -21,7 +21,7 @@ void fn_004d353e( long arg1, long arg2 );
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed.
-class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); unsigned char field_0[ 0x18c - 0xfc ]; };
+class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x18c - 0xfc ]; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
 class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
 class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned char field_0[ 0x14 ]; }; class tMetaClientMapReceiver { public: tMetaClientMapReceiver* fn_005e5ba6( long arg ); long field_0; tMetaClientMapMember field_4; tMetaClientMapMember field_18; long field_2c; };
@@ -30,7 +30,7 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg );
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position );
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -195,4 +195,10 @@ void tMetaClientMapPanel::fn_005e5c25( long arg )
 
 	field_fc.fn_0054b6cf( arg );
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5c72
+void tMetaClientMapPanel::fn_005e5c72( const tHexPoint& position )
+{
+	fn_005e5c25( (long) &tHexPoint( position.fn_0055f269() - field_fc.fn_00423402() / 2, position.fn_005e8f21() - field_fc.fn_005e8efa() / 2 ) );
 }
