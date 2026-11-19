@@ -33,3 +33,8 @@ tStream& tCastItem::vfunction6( tStream& s )
 	}
 	return s;
 }
+
+// FUNCTION: STARFLEETOP 0x00677e30
+tCastItem::~tCastItem()
+{
+}

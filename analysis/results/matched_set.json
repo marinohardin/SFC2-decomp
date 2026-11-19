@@ -35821,6 +35821,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00677e30": {
+   "name": "tCastItem::scalar_deleting_destructor",
+   "symbol": "??_GtCastItem@@UAEPAXI@Z",
+   "unit": "unsorted/tCastItem.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
