@@ -3349,6 +3349,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00410243": {
+   "name": "FUN_00410243",
+   "symbol": "?fn_00410243@vfunction33_result@@QAEXHH@Z",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 93,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004105dd": {
    "name": "tPhysicalEntity::vfunction28",
    "symbol": "?vfunction28@tPhysicalEntity@@UAEXH@Z",

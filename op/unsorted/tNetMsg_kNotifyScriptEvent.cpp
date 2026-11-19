@@ -1,5 +1,8 @@
 #include "unsorted/tIndividualShipSystem.h"
 
+#include "unsorted/fn_0090bed4_Object.h"
+#include "unsorted/tObject_0090be60.h"
+
 extern char g_0083bddc[];
 
 class tNetMsg_kNotifyScriptEvent
@@ -47,4 +50,29 @@ int vfunction33_result::fn_00410231()
 void vfunction33_result::fn_00410239(int value)
 {
 	field_68 = value;
+}
+
+// HYPOTHESIS: the team list 0x00426f1a returns; 0x00426b63 removes an entity ID from it and
+// 0x00426aef adds one.
+class tObject_00426b63_list
+{
+public:
+	void fn_00426b63(int aID);
+	void fn_00426aef(int aID, int aValue);
+};
+
+// HYPOTHESIS: the team of an entity changes; its +0x64 entry is forgotten first.
+// FUNCTION: STARFLEETOP 0x00410243
+void vfunction33_result::fn_00410243(int team, int value)
+{
+	if (field_64 != -1)
+		g_p0090bed4->fn_00522b94(this, team);
+	tObject_00426b63_list *list = (tObject_00426b63_list *)gObject_0090be60->fn_00426f1a(field_60);
+	if (list)
+		list->fn_00426b63(field_1c);
+	list = (tObject_00426b63_list *)gObject_0090be60->fn_00426f1a(team);
+	if (list) {
+		field_60 = team;
+		list->fn_00426aef(field_1c, value);
+	}
 }
