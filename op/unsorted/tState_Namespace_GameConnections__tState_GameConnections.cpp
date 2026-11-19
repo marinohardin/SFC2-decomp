@@ -867,7 +867,7 @@ void tState_GameConnections::fn_00469636()
 // FUNCTION: STARFLEETOP 0x004696c0
 tState_GameConnections g_0090d7a0;
 
-// MATCH-ONLY: the class's implicit destructor (0x004696e0, unclaimed), written out for its deleting one.
+// MATCH-ONLY: written out only so its deleting destructor can be claimed; not the original's 0x004696e0.
 // FUNCTION: STARFLEETOP 0x00469900
 tState_GameConnections::~tState_GameConnections()
 {

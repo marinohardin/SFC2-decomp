@@ -793,9 +793,9 @@ void tState_NetSetup::fn_00477749()
 // FUNCTION: STARFLEETOP 0x004777d3
 tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 
-// MATCH-ONLY: the class's implicit destructor (0x004777f3, unclaimed), written out for its
-// deleting one: the original's sets no vtable, as VC6's compiler-generated one does (the build
-// with no declared destructor emits exactly its body); written out, VC6 adds the store.
+// MATCH-ONLY: the original declared no destructor; VC6's implicit one (0x004777f3) stores no
+// vtable. Written out only so its deleting destructor can be claimed: this body adds a vtable
+// store, so it is not the original's 0x004777f3, which stays unclaimed.
 // FUNCTION: STARFLEETOP 0x00477a13
 tState_NetSetup::~tState_NetSetup()
 {
