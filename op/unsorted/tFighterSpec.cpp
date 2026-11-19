@@ -29,6 +29,7 @@ tFighterSpec::tFighterSpec()
 }
 
 // FUNCTION: STARFLEETOP 0x00401974
+// FUNCTION: STARFLEETOP 0x00401990
 tFighterSpec::~tFighterSpec()
 {
 }
