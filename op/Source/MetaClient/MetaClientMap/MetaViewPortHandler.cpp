@@ -21,13 +21,16 @@ void fn_004d353e( long arg1, long arg2 );
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered.
-class tMetaClientMapSub { public: void fn_005e94ef( long arg ); };
+class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; };
+// HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
+class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
+class tMetaClientMapReceiver { public: void fn_005e5ba6( long arg ); };
 class tMetaClientMapPanel
 {
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg );
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver );
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -51,7 +54,7 @@ void tMetaClientMapPanel::vfunction19()
 		fpMetaMapControl = dynamic_cast<tMetaMapControl*>( ( (tVisObject* (*)( long, long )) fn_004d353e )( (long) g_0087632c, (long) "FakeMap" ) );
 #line 316
 		validate( fpMetaMapControl );
-#line 54
+#line 57
 	}
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
@@ -137,4 +140,23 @@ void tMetaClientMapPanel::fn_005e5ae0( long arg )
 
 	field_1b8.fn_005e94ef( arg );
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5b2d
+bool tMetaClientMapPanel::fn_005e5b2d( tMetaClientMapReceiver* receiver )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	bool found = false;
+	if( field_1b8.field_10 != 0 )
+	{
+		tMetaClientMapCursor cursor;
+		cursor.fNode = field_1b8.field_c;
+		cursor.fList = &field_1b8;
+		receiver->fn_005e5ba6( cursor.fn_005e9cb0() );
+		field_1b8.fn_005e9499();
+		found = true;
+	}
+	guard.Leave();
+	return found;
 }
