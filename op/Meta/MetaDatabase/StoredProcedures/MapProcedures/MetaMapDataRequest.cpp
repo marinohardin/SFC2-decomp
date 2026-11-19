@@ -96,4 +96,17 @@ void tMetaMapDataRequest::tResponse::tClientHex::fn_0054c0d5()
 	m_20 = m_2a * 0.01f;
 }
 
+// FUNCTION: STARFLEETOP 0x0054c110
+tMetaMapDataRequest::tResponse::tResponse( int32 param_1, int32 param_2, bool param_3 ) :
+	nSwitch::tResponse( 0 ),
+	m_20( true ),
+	m_24( param_1 ),
+	m_28( param_2 )
+{
+	if( param_3 )
+	{
+		m_10.resize( m_24 * m_28, tClientHex() );
+	}
+}
+
 }

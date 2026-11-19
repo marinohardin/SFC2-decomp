@@ -9,6 +9,8 @@
 #pragma once
 
 #include "Common/DataStore/Streamable.h"
+#include "unsorted/nSwitch__tResponse.h"
+#include <vector>
 
 class tMetaMapHex;
 
@@ -23,7 +25,7 @@ namespace nStoredProcedureArguments
 	class tMetaMapDataRequest
 	{
 	public:
-		class tResponse
+		class tResponse : public nSwitch::tResponse
 		{
 		public:
 			class tClientHex : public nDataStore::tStreamable
@@ -51,6 +53,16 @@ namespace nStoredProcedureArguments
 				int8u	m_29;
 				int8u	m_2a;
 			};
+
+			tResponse( int32 param_1, int32 param_2, bool param_3 );
+
+			virtual	void StreamOut( nDataStore::tOutput& output ) const;
+			virtual	void StreamIn( nDataStore::tInput& input );
+
+			std::vector< tClientHex >	m_10;
+			bool	m_20;
+			int32	m_24;
+			int32	m_28;
 		};
 	};
 
