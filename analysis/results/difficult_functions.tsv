@@ -252,3 +252,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0044715d	FUN_0044715d	3	fable	99.72	2026-11-19T21:49:19Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.72%
 0x004472bc	FUN_004472bc	3	fable	99.81	2026-11-19T21:54:11Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
 0x0044e844	tShuttleBaySystem::~tShuttleBaySystem	3	fable	99.96	2026-11-19T21:57:59Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.96%
+0x0044ea7e	FUN_0044ea7e	2	opus	79.81	2026-11-19T22:18:47Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 79.81%
