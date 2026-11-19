@@ -1,6 +1,39 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp
-// Functions: 0x0055095b to 0x0055095b, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Common/DataStore/DataStoreInput.h"
+#include "Common/DataStore/Streamable.h"
+#include "Common/Exceptions/Validate.h"
+
+#include "unsorted/tRequestWithResponse.h"
+
+// HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
+class tExistPreparedMissionRequest : public tRequestWithResponse
+{
+public:
+	class tPreparedMissionKey : public nDataStore::tStreamable
+	{
+	public:
+		virtual void StreamOut( nDataStore::tOutput& output ) const;
+		virtual void StreamIn( nDataStore::tInput& input );
+		char pad[4];
+	};
+
+	virtual void vfunction3( nDataStore::tInput& input );
+	tPreparedMissionKey fKey;
+	bool fFlag;
+};
+
+// FUNCTION: STARFLEETOP 0x0055095b
+void tExistPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
+{
+	tRequestWithResponse::vfunction3( input );
+	int8u c = fFlag8;
+	fFlag8 = 0;
+	if( c != 0 )
+	{
+#line 111
+		validate( 0 );
+	}
+	else
+	{
+		fFlag = ( input >> fKey ).Get() != 0;
+	}
+}
