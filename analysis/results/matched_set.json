@@ -38053,6 +38053,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fd240": {
+   "name": "nException::tOutOfBounds::tOutOfBounds",
+   "symbol": "??0tOutOfBounds@nException@@QAE@PBDJJJ0J@Z",
+   "unit": "Common/Exceptions/OutOfBounds.cpp",
+   "size": 80,
+   "score": 65.833,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

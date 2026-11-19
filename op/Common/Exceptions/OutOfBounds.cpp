@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Exceptions/OutOfBounds.cpp
-// Functions: 0x006fd240 to 0x006fd240, 1 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+#include "Common/Exceptions/OutOfBounds.h"
+
+namespace nException
+{
+
+// FUNCTION: STARFLEETOP 0x006fd240
+tOutOfBounds::tOutOfBounds( const char* object, int32 min, int32 max, int32 value, const char* file, int32 lineNumber )
+	: tBaseException( "Out of bounds", file, lineNumber )
+{
+	fObject = object;
+	fMin = min;
+	fMax = max;
+	fValue = value;
+}
+
+};
