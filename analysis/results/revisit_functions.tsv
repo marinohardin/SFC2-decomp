@@ -175,7 +175,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x0044cdbc	tShipSystemsExt::vfunction130	81.08	2	sonnet	2026-11-17T16:25:33Z	attempt 2 (sonnet) did not raise the best; best 81.08%
 0x0044e722	tShuttleBaySystem::vfunction100	0.00	2	sonnet	2026-11-17T17:24:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0044e793	FUN_0044e793	0.00	2	sonnet	2026-11-17T17:27:04Z	attempt 2 (sonnet) did not raise the best; best 0.00%
-0x004cf9cb	tSFCPlayer::~tSFCPlayer	99.91	2	opus	2026-11-17T04:13:50Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.91%
 0x004d0a97	tSFCPlayer::vfunction37	6.67	2	opus	2026-11-17T06:51:45Z	attempt 2 (opus) did not raise the best; best 6.67%
 0x004d0ab3	FUN_004d0ab3	22.81	2	opus	2026-11-17T07:01:20Z	attempt 2 (opus) did not raise the best; best 22.81%
 0x004d0eb6	tSFCPlayer::vfunction70	23.79	2	opus	2026-11-17T08:13:39Z	attempt 2 (opus) did not raise the best; best 23.79%
