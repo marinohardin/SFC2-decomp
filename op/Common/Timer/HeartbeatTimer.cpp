@@ -190,3 +190,13 @@ void tHeartbeatTimer::StartTimer( int32u dueTime, int32u period, iTimerCallbackF
 	tTimer::StartTimer( dueTime, period, pCallback, context );
 	fHBData->fTimers[ fTimerIndex ] = this;
 }
+
+// FUNCTION: STARFLEETOP 0x006f6020
+void tHeartbeatTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context )
+{
+	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
+
+	fLastTime = fInitalTime = fHBData->fpClock->GetCurrentSystemTime();
+	tTimer::StartTimer( dueTime, period, pCallback, context );
+	fHBData->fTimers[ fTimerIndex ] = this;
+}
