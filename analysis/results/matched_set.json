@@ -16761,12 +16761,12 @@
   },
   "0x00534855": {
    "name": "FUN_00534855",
-   "symbol": "?fn_00534855@fn_005346f9_object@@QAEXPAV?$vector@PAVfn_00534461_entry@@V?$allocator@PAVfn_00534461_entry@@@std@@@std@@_NPAD@Z",
+   "symbol": "?fn_00534855@fn_005346f9_object@@QAEAAVfn_005343b1_object@@AAV?$vector@PAVfn_00534461_entry@@V?$allocator@PAVfn_00534461_entry@@@std@@@std@@_NPAD@Z",
    "unit": "unsorted/fn_0053434B.cpp",
    "size": 174,
-   "score": 99.388,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00534903": {
    "name": "FUN_00534903",
