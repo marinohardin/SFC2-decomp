@@ -3,6 +3,9 @@
 //	The base of the stored procedure requests that expect a response.
 //	HYPOTHESIS: the layout is reconstructed from the accesses of the derived requests' vfunction3
 //	(0x0054fa6d, 0x0054ffe5); the exe names the class nSwitch::tRequestWithResponse.
+//	tAsyncDatabaseProcedure_GetMetaMapHexForUpdate (0x00565464) streams a request in through
+//	the tStreamable input operator with no adjustment, so tStreamable is the base at offset 0;
+//	the byte the derived vfunction3 read and reset at +8 is its fObjectVersion.
 //
 #if !defined( tRequestWithResponse_h )
 #define tRequestWithResponse_h
@@ -10,22 +13,26 @@
 #pragma once
 
 #include "Common/BaseTypes.h"
+#include "Common/DataStore/Streamable.h"
+#include "Common/SmartPtr.h"
 
-namespace nDataStore
+namespace nSwitch
 {
-	class tInput;
+	class tAddress;
+	class tResponse;
 }
 
-class tRequestWithResponse
+class tRequestWithResponse : public nDataStore::tStreamable
 {
 public:
-	virtual void v0();
-	virtual void v1();
-	virtual void v2();
+	virtual ~tRequestWithResponse();
 	virtual void vfunction3( nDataStore::tInput& input );
-	char pad4[4];
-	int8u fFlag8;
-	char pad[0x13 - 4];
+	// HYPOTHESIS: virtual slots 8 and 9, which 0x00565464 calls statically on a local request.
+	// The first returns, held by a smart pointer, the address the response goes to; the second
+	// returns the flags nSwitch::tSwitch::fn_00714020 sends the response with.
+	tSmartPtr<nSwitch::tAddress> vfunction8();
+	int vfunction9();
+	char pad[0x18 - 0xc];
 };
 
 #endif

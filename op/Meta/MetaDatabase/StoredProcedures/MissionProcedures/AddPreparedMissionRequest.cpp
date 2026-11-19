@@ -32,8 +32,8 @@ public:
 void tAddPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
 	tRequestWithResponse::vfunction3( input );
-	char c = fFlag8;
-	fFlag8 = 0;
+	char c = fObjectVersion;
+	fObjectVersion = 0;
 	if( c != 0 )
 	{
 #line 128

@@ -20,6 +20,10 @@ namespace nSwitch
 		tResponse( int32 );
 		virtual ~tResponse();
 
+		// HYPOTHESIS: 0x00716310, called with 0 on a new response by 0x00565464; what it sets
+		// is not known.
+		void fn_00716310( int32 param_1 );
+
 		int32	m_0c;
 	};
 

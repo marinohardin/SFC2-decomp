@@ -28,8 +28,8 @@ public:
 void tChooseMissionRequest::vfunction3( nDataStore::tInput& input )
 {
 	tRequestWithResponse::vfunction3( input );
-	int8u c = fFlag8;
-	fFlag8 = 2;
+	int8u c = fObjectVersion;
+	fObjectVersion = 2;
 	switch( c )
 	{
 	case 0:

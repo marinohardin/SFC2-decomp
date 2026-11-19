@@ -25,8 +25,8 @@ public:
 void tKillPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
 	tRequestWithResponse::vfunction3( input );
-	int8u c = fFlag8;
-	fFlag8 = 0;
+	int8u c = fObjectVersion;
+	fObjectVersion = 0;
 	if( c != 0 )
 	{
 #line 104

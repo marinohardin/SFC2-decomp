@@ -19,8 +19,8 @@ public:
 void tReadyToPlayRequest::vfunction3( nDataStore::tInput& input )
 {
 	tRequestWithResponse::vfunction3( input );
-	int8u c = fFlag8;
-	fFlag8 = 1;
+	int8u c = fObjectVersion;
+	fObjectVersion = 1;
 	switch( c )
 	{
 	case 0:

@@ -715,26 +715,26 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDat
 #include "Common/SmartPtr.h"
 
 // HYPOTHESIS: fn_005d3679 (which reads the text "*~Server~*") returns, held by a smart pointer,
-// the reference-counted object the switch sends to; its tRefCount sits at +0xc, after what is
-// taken to be a tStreamable. fn_005d27f1 returns the object fn_005d3679 is called on. Their
-// classes and names are not known.
-class tObject_005d3679 : public nDataStore::tStreamable, public tRefCount
-{
-};
+// the reference-counted object the switch sends to (see unsorted/nSwitch__tAddress.h).
+// fn_005d27f1 returns the object fn_005d3679 is called on. Its class and name are not known.
+#include "unsorted/nSwitch__tAddress.h"
+
+
+#include "unsorted/nSwitch__tSwitch.h"
 class tObject_005d27f1
 {
 public:
-	tSmartPtr<tObject_005d3679> fn_005d3679();
+	tSmartPtr<nSwitch::tAddress> fn_005d3679();
 };
 tObject_005d27f1* fn_005d27f1();
-// HYPOTHESIS: fn_00713b20 returns the switch (its assertion reads fSwitch); fn_00714020 streams
-// an object to the destination. nSwitch::tSwitch is not declared elsewhere yet.
-namespace nSwitch { class tSwitch
-{
-public:
-	static tSwitch* fn_00713b20();
-	void fn_00714020( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
-}; };
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: writes the campaign record back and sends it on to the server.
 // FUNCTION: STARFLEETOP 0x0056e124
