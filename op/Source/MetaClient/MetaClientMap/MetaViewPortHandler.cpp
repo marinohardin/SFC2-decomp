@@ -29,6 +29,25 @@ class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned 
 class tMetaClientMapPanel
 {
 public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual long vfunction16();
+	virtual long vfunction17();
+	virtual void vfunction18();
 	virtual void vfunction19();
 	virtual void vfunction20();
 	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e5ee7( char arg ); void fn_005e8c29( const tRect& area );
@@ -54,7 +73,7 @@ void tMetaClientMapPanel::vfunction19()
 		fpMetaMapControl = dynamic_cast<tMetaMapControl*>( ( (tVisObject* (*)( long, long )) fn_004d353e )( (long) g_0087632c, (long) "FakeMap" ) );
 #line 316
 		validate( fpMetaMapControl );
-#line 57
+#line 76
 	}
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
@@ -301,6 +320,30 @@ void tMetaClientMapPanel::fn_005e5edc()
 void tMetaClientMapPanel::fn_005e5ee7( char arg )
 {
 	field_1cc = arg;
+}
+
+// HYPOTHESIS: the name of the panel's icon bag control, a global at 0x00876330.
+extern const char* g_00876330;
+// HYPOTHESIS: 0x004d406d returns the id of the control named; 0x00674750 on the object at
+// 0x00c690d0 returns the control of an id. That object's class is declared only inside other
+// units (fn_004D3143.cpp, tSession.cpp, fn_004BD43E.cpp), each under its own name.
+long fn_004d406d( const char* name );
+class fn_00674750_panelOwner { public: tVisObject* fn_00674750( long id ); };
+extern fn_00674750_panelOwner* g_00c690d0;
+// HYPOTHESIS: the free cdecl function of seven arguments claimed in unsorted/fn_004D3143.cpp.
+class fn_004d3ef7_object;
+fn_004d3ef7_object* fn_004d3278( long arg1, long arg2, long arg3, long arg4, long arg5, long arg6, long arg7 );
+
+// FUNCTION: STARFLEETOP 0x005e6091
+void tMetaClientMapPanel::fn_005e6091()
+{
+	long id = fn_004d406d( g_0087632c );
+	if( ( g_00c690d0 ? g_00c690d0->fn_00674750( id ) : 0 ) == 0 )
+		fn_004d31ed( g_0087632c, 1, 0, vfunction17(), vfunction16() );
+	id = fn_004d406d( g_00876330 );
+	if( ( g_00c690d0 ? g_00c690d0->fn_00674750( id ) : 0 ) == 0 )
+		fn_004d3278( (long) g_00876330, 0, 0, 0, 0, vfunction17(), vfunction16() );
+	fn_004d3340( g_00876330 );
 }
 
 // FUNCTION: STARFLEETOP 0x005e5ef4
