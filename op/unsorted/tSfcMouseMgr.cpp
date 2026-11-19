@@ -1,6 +1,13 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSfcMouseMgr.cpp
-// Functions: 0x0040bdf3 to 0x0040be33, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// tSfcMouseMgr: the game's mouse manager base class.
+// Original source file unknown; functions grouped by class (op/UNITS.tsv).
+
+// HYPOTHESIS: the class has a virtual destructor; only its vtable pointer is known.
+class tSfcMouseMgr {
+public:
+    virtual ~tSfcMouseMgr();
+};
+
+// FUNCTION: STARFLEETOP 0x0040bdf3
+tSfcMouseMgr::~tSfcMouseMgr()
+{
+}

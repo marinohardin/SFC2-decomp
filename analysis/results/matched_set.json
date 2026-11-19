@@ -1567,6 +1567,15 @@
    "exact": false,
    "recorded": "2026-11-13"
   },
+  "0x0040bdf3": {
+   "name": "tSfcMouseMgr::~tSfcMouseMgr",
+   "symbol": "??1tSfcMouseMgr@@UAE@XZ",
+   "unit": "unsorted/tSfcMouseMgr.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040be9b": {
    "name": "tSfcMouseMgr_Ex::vfunction2",
    "symbol": "?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ",
