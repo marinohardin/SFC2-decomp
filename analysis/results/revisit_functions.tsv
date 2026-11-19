@@ -393,3 +393,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006fb250	nDatabase::tDatabaseObject::Lock	0.00	2	opus	2026-11-19T23:07:01Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x006fd380	nException::tBaseException::ReportHeader	98.96	2	opus	2026-11-19T23:41:26Z	attempt 2 (opus) did not raise the best; waits for Fable; best 98.96%
 0x006fd590	nException::tBaseException::ReportException	93.94	2	opus	2026-11-19T23:43:23Z	attempt 2 (opus) did not raise the best; waits for Fable; best 93.94%
+0x006fd810	nException::tValidationFailed::ReportException	96.61	2	opus	2026-11-19T23:46:19Z	attempt 2 (opus) did not raise the best; waits for Fable; best 96.61%
