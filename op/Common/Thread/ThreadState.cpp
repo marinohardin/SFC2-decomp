@@ -1,6 +1,13 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Thread/ThreadState.cpp
-// Functions: 0x006f5690 to 0x006f5700, 2 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// Common/Thread/ThreadState.cpp
+
+#include "Common/Thread/ThreadState.h"
+
+// FUNCTION: STARFLEETOP 0x006f5690
+tThreadState* tThreadState::GetCurThreadState()
+{
+	if( fCurThreadState == 0 )
+	{
+		fCurThreadState = new tThreadState( kUseThreadObject );
+	}
+	return fCurThreadState;
+}
