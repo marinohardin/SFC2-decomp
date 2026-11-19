@@ -17,6 +17,7 @@ class tMetaMapHex;
 class tPoliticalTensionMatrix;
 class tPreparedMissions;
 class tShip;
+class tServCharacter;
 
 namespace nAsyncDatabaseProcedure
 {
@@ -29,7 +30,8 @@ namespace nAsyncDatabaseProcedure
 	public:
 		virtual void vfunction1();
 		virtual void vfunction2();
-		virtual void vfunction3();
+		// HYPOTHESIS: reads characters by ID (0x00568b2e).
+		virtual void vfunction3( std::vector<nDatabase::tID> ids, std::vector<tServCharacter>* characters, int lock );
 		virtual void vfunction4();
 		virtual void vfunction5();
 		virtual void vfunction6();
@@ -75,7 +77,8 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction41();
 		virtual void vfunction42();
 		virtual void vfunction43();
-		virtual void vfunction44();
+		// HYPOTHESIS: writes a ship back (0x00568b2e), taken by value.
+		virtual void vfunction44( tShip ship );
 		virtual void vfunction45();
 		virtual void vfunction46();
 		virtual void vfunction47( nDatabase::tDatabaseObjectUpdate update );

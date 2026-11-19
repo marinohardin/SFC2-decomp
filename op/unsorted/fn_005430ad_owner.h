@@ -178,6 +178,8 @@ public:
 	void fn_005437a5(const nDatabase::tID &id);
 	void fn_0054385d(fn_0054385d_source *source);
 	bool fn_00543944(const nDatabase::tID &id) const;
+	// HYPOTHESIS: an amount 0x00568b2e caps a repair cost by, compared unsigned.
+	unsigned int fn_0054a8c8() const;
 	bool fn_005439e4(int value);
 	bool fn_005439f3(int value);
 	bool fn_00543a02(int value);

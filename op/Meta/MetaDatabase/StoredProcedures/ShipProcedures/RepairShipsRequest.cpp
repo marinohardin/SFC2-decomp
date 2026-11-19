@@ -1,35 +1,35 @@
 #include "Common/Exceptions/BaseException.h"
+#include "Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.h"
 
-// HYPOTHESIS: the owning class and the lookup table are not recovered; a tree
-// header at +0x38/+0x3c with a find helper that takes the key by value.
-struct fRepairRateNode
-{
-	char pad[0x20];
-	double fRate;
-};
 
-struct fRepairRateIter
-{
-	fRepairRateIter( fRepairRateNode* p ) : fpNode( p ) {}
-	operator int() const { return (int)fpNode; }
-	fRepairRateNode* fpNode;
-};
 
-struct fRepairRateTree
-{
-	void find( fRepairRateIter* pResult, int key );
-	char pad[4];
-	fRepairRateNode* fpEnd;
-};
 
-class tRepairRates
-{
-public:
-	double GetRepairRate( fRepairRateIter shipID );
-protected:
-	char pad[0x38];
-	fRepairRateTree fRepairRates;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x005596ed
 double tRepairRates::GetRepairRate( fRepairRateIter shipID )

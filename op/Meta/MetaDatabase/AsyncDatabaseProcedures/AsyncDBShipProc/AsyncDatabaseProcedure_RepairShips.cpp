@@ -117,3 +117,79 @@ tRepairShips::tRepairShips( tAsyncDatabase* pDB ) : tAsyncDatabaseProcedure( pDB
 tRepairShips::~tRepairShips()
 {
 }
+
+// The SDK's inline destructor of the reader, expanded into 0x00568b2e as in the original;
+// Close itself is called out of line (0x0056027f).
+inline nDataStore::tInput::~tInput()
+{
+	Close( fCleanUpBuffer );
+}
+
+// HYPOTHESIS: the callback for the database's answer: reads the character and the ships it
+// owns, pays for each repair from the character and writes the ship back.
+// FUNCTION: STARFLEETOP 0x00568b2e
+void tRepairShips::fn_00568b2e( const nDataStore::tBuffer* pBuffer )
+{
+	nDataStore::tInput input( pBuffer );
+	nStoredProcedureArguments::tRepairShipsRequest request;
+	input >> request;
+
+	fn_00719050();
+	tNotifierAgent notifier;
+	bool repaired = false;
+	std::vector<nDatabase::tID> characterIDs;
+	std::vector<nDatabase::tID> shipIDs;
+	characterIDs.push_back( request.fn_0055e877() );
+	std::vector<tServCharacter> characters;
+	std::vector<tShip> ships;
+	fpAsyncDatabase->vfunction3( characterIDs, &characters, 0 );
+#line 279
+	validate( characters.size() == 1 );
+	// HYPOTHESIS: fn_005430ad_owner is the placeholder class unsorted/fn_00543000.cpp gives the
+	// character record.
+	fn_005430ad_owner* character = (fn_005430ad_owner*)&characters[0];
+	validate( character->GetID() == request.fn_0055e877() );
+
+	for( std::vector<nDatabase::tID>::const_iterator id = request.fn_005596e9().begin(); id != request.fn_005596e9().end(); ++id )
+	{
+		if( character->fn_00543944( *id ) )
+			shipIDs.push_back( *id );
+	}
+	if( shipIDs.size() == 0 )
+	{
+		vfunction2();
+		return;
+	}
+	fpAsyncDatabase->vfunction9( shipIDs, &ships, 0 );
+
+	try
+	{
+		for( std::vector<tShip>::iterator ship = ships.begin(); ship != ships.end(); ++ship )
+		{
+			// HYPOTHESIS: tRepairRates and c_00546027 are the placeholder classes the callees'
+			// units give the request and the ship; 0x005596ed takes the ship's ID.
+			double rate = ( (tRepairRates*)&request )->GetRepairRate( (fRepairRateNode*)&ship->GetID() );
+			int cost = ( (c_00546027*)&*ship )->fn_0054603d( rate );
+			if( cost != 0 )
+			{
+				int paid = cost;
+				if( character->fn_0054a8c8() < cost )
+					paid = character->fn_0054a8c8();
+				int maxState;
+				int curState;
+				( (c_00546027*)&*ship )->fn_00546027( (int)&maxState, (int)&curState );
+				fn_00568f29( ship, (int)( (double)paid / cost * ( maxState - curState ) ) );
+				character->fn_005430d3( paid );
+				character->fn_0054385d( (fn_0054385d_source*)&*ship );
+				repaired = true;
+				fpAsyncDatabase->vfunction44( *ship );
+				notifier.fn_005cba1f( ship->GetID() );
+			}
+		}
+	}
+	catch( ... )
+	{
+	}
+
+	vfunction2();
+}

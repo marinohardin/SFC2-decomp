@@ -17,6 +17,8 @@ public:
 	tNotifierAgent();
 	~tNotifierAgent();
 
+	// HYPOTHESIS: 0x00568b2e hands it the ID of each ship it repairs.
+	void fn_005cba1f( const nDatabase::tID& id );
 	void fn_005cba6e( const nDatabase::tID& id );
 
 	char m_00[0xc];

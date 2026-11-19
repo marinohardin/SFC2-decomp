@@ -16,6 +16,9 @@ class tAsyncProcedure
 {
 public:
 	virtual ~tAsyncProcedure();
+	virtual void vfunction1();
+	// HYPOTHESIS: 0x00568b2e calls slot 2 on itself when it has nothing to do.
+	virtual void vfunction2();
 
 protected:
 	void fn_00718f10( int stateID, tCallback<const nDataStore::tBuffer*>* pCallback );	// HYPOTHESIS: registers the callback for a state; its sibling 0x00719200 asserts stateID < fStateInfos.size().
