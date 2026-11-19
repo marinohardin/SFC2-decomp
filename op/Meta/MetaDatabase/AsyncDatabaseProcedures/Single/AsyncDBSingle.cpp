@@ -714,19 +714,19 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDat
 
 #include "Common/SmartPtr.h"
 
-// HYPOTHESIS: fn_005d3679 (which reads the text "*~Server~*") returns, held by a smart pointer,
-// the reference-counted object the switch sends to (see unsorted/nSwitch__tAddress.h).
-// fn_005d27f1 returns the object fn_005d3679 is called on. Its class and name are not known.
+// fn_005d27f1 and the object it returns are declared in unsorted/tObject_005d27f1.h.
+
+
 #include "unsorted/nSwitch__tAddress.h"
 
 
 #include "unsorted/nSwitch__tSwitch.h"
-class tObject_005d27f1
-{
-public:
-	tSmartPtr<nSwitch::tAddress> fn_005d3679();
-};
-tObject_005d27f1* fn_005d27f1();
+#include "unsorted/tObject_005d27f1.h"
+
+
+
+
+
 
 
 

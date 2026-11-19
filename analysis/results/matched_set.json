@@ -19819,6 +19819,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005682b2": {
+   "name": "FUN_005682b2",
+   "symbol": "?fn_005682b2@tKillShips@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_KillShips.cpp",
+   "size": 646,
+   "score": 99.974,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",

@@ -16,6 +16,7 @@ class tHexPoint;
 class tMetaMapHex;
 class tPoliticalTensionMatrix;
 class tPreparedMissions;
+class tShip;
 
 namespace nAsyncDatabaseProcedure
 {
@@ -34,7 +35,9 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction6();
 		virtual void vfunction7();
 		virtual void vfunction8();
-		virtual void vfunction9();
+		// HYPOTHESIS: reads ships by ID (0x005682b2); tAsyncDatabaseSingle defines the slot with
+		// these arguments.
+		virtual void vfunction9( std::vector<nDatabase::tID> ids, std::vector<tShip>* ships, int lock );
 		virtual void vfunction10();
 		virtual void vfunction11();
 		virtual void vfunction12();
@@ -80,7 +83,8 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction49();
 		virtual void vfunction50();
 		virtual void vfunction51();
-		virtual void vfunction52();
+		// HYPOTHESIS: kills a ship (0x005682b2); tAsyncDatabaseSingle's slot takes a tShip*.
+		virtual void vfunction52( tShip* ship );
 		virtual void vfunction53();
 		virtual void vfunction54();
 		virtual void vfunction55();
