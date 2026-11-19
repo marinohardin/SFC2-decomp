@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSurface.cpp
-// Functions: 0x00675060 to 0x00675a00, 9 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+// HYPOTHESIS: the class layout and the destructor body (the original destructor at 0x00675250
+// is not recovered yet) are placeholders; only the deleting destructor is claimed here.
+class tSurface {
+public:
+    virtual ~tSurface();
+};
+
+// FUNCTION: STARFLEETOP 0x00675060
+tSurface::~tSurface()
+{
+}
