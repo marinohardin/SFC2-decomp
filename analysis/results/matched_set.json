@@ -3925,6 +3925,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004197fb": {
+   "name": "tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals",
+   "symbol": "??1tNetMsg_kUpdateInternals@@UAE@XZ",
+   "unit": "unsorted/tNetMsg_kUpdateInternals.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",

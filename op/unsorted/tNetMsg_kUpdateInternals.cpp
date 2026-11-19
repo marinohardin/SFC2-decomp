@@ -1,6 +1,7 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kUpdateInternals.cpp
-// Functions: 0x004197fb to 0x00419809, 2 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tNetMsg_kUpdateInternals.h"
+
+// FUNCTION: STARFLEETOP 0x004197fb
+tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals()
+{
+	fStream.fn_0040d692();
+}
