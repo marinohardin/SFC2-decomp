@@ -239,3 +239,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x007586c0	tBufFile::mRead	4	fable	98.30	2026-11-17T20:05:48Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 98.30%
 0x00402452	FUN_00402452	2	opus	13.93	2026-11-19T19:51:07Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 13.93%
 0x00402a26	FUN_00402a26	2	opus	38.71	2026-11-19T20:07:36Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 38.71%
+0x004033ab	FUN_004033ab	3	fable	100.00	2026-11-19T20:10:02Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 100.00%
