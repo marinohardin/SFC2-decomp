@@ -14,7 +14,7 @@ import os
 import re
 import sys
 
-from . import funcs, paths
+from . import funcs, paths, stophook
 
 LIMIT = re.compile(r'usage limit|limit reached|rate.?limit|resets? at|overloaded|429|'
                    r'credit balance|quota|hit your .{0,40}limit|limit\W+resets?\b', re.I)
@@ -33,14 +33,22 @@ def load(path):
         return None
 
 
+EXIT_STANDIN = 5
+
+
 def score(verify, address):
-    """(score, exact, exit) of address in a build-and-verify --json result; unscored is 0."""
+    """(score, exact, exit) of address in a build-and-verify --json result; unscored is 0. A
+    function holding a stand-in (stophook.standins) gets exit EXIT_STANDIN, so the loop does not
+    commit it."""
     if not verify:
         return 0.0, False, 2
     r = next((x for x in verify.get('results', []) if x.get('address') == address), None)
     if r is None or r.get('error') and 'relocs' not in r:
         return 0.0, False, verify.get('exit', 2)
-    return float(r.get('score', 0.0)), bool(r.get('exact')), verify.get('exit', 2)
+    code = verify.get('exit', 2)
+    if code == 0 and stophook.standins(verify, address):
+        code = EXIT_STANDIN
+    return float(r.get('score', 0.0)), bool(r.get('exact')), code
 
 
 def claim(entry, verify):

@@ -15,6 +15,14 @@ def _no_harness_cache(monkeypatch):
     monkeypatch.setenv('HARNESS_NO_CACHE', '1')
 
 
+@pytest.fixture(autouse=True)
+def _no_symbol_table(monkeypatch, tmp_path):
+    """Tests never read the checkout's symbol table (harness/lib/symtab.py); a test that wants
+    one writes it to symtab.path()."""
+    from harness.lib import symtab
+    monkeypatch.setattr(symtab, 'path', lambda: str(tmp_path / 'symbols.tsv'))
+
+
 IMAGE_BASE = 0x400000
 TEXT_RVA = 0x1000
 

@@ -148,7 +148,7 @@ def test_run_checks_claim_symbols_and_all_writes_the_breaks(tmp_path, monkeypatc
     monkeypatch.setattr(verify, 'check_exe', lambda rep: None)   # no retail file is read
     calls = []
 
-    def breaks(rep, data, baseline, check_all):
+    def breaks(rep, data, baseline, check_all, table=None):
         calls.append(check_all)
         rep.results = [exact_caller()]
         rep.claim_breaks = [dict(row(), source='rebuilt')]

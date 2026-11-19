@@ -7,8 +7,9 @@ Four sections, each capped, and the whole pack capped at HARNESS_PACK_MAX charac
 1. Ghidra's decompiled pseudo-C of the function, from the cache that
    ghidra/scripts/export_decomp.sh writes ($SFCOP_WORK/ghidra/decomp/<0xaddress>.c, or
    HARNESS_DECOMP). Ghidra's types and names are rough; it is a reading aid, not source.
-2. The functions it calls directly, with their prototypes from ghidra/exports/functions.csv and
-   the source file under op/ that already holds one.
+2. The functions it calls directly, with their prototypes from ghidra/exports/functions.csv, the
+   source file under op/ that already holds one, and the symbol a call to it must name
+   (harness/lib/symtab.py).
 3. The declarations of the classes it touches (its own class, then its callees'), taken from
    the headers under the source root; a class declared in no header is left out.
 4. One function already exact in matched_set.json from the same class, or else from the same
@@ -21,7 +22,7 @@ import os
 import re
 import sys
 
-from . import coff, funcs, paths, source
+from . import coff, funcs, paths, source, symtab
 
 PACK_MAX = int(os.environ.get('HARNESS_PACK_MAX', 12000))
 DECOMP_MAX = 5000
@@ -266,10 +267,22 @@ def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
     parts.append('')
     if not calls:
         parts.append('(none found)' if exe is not None else '(the exe is not available)')
+    table = symtab.load_claims()
     for addr, proto, where in calls[:CALLEES_MAX]:
-        parts.append(f'- `{addr}` `{proto}`' + (f' (in `{where}`)' if where else ''))
+        line = f'- `{addr}` `{proto}`' + (f' (in `{where}`)' if where else '')
+        hit = symtab.lookup(int(addr, 16), index, table)
+        if hit:
+            sym, src, _ = hit
+            conv = symtab.convention(sym)
+            line += f': the call must name `{sym}`' + (f' ({conv}' if conv else ' (') + f', {src})'
+        parts.append(line)
     if len(calls) > CALLEES_MAX:
         parts.append(f'- ... {len(calls) - CALLEES_MAX} more cut')
+    if any(symtab.lookup(int(c[0], 16), index, table) for c in calls[:CALLEES_MAX]):
+        parts += ['', 'Declare a callee with a symbol listed above so it compiles to that symbol: '
+                  'use its class and header as they are. A stand-in (the callee declared again '
+                  'under another class or signature) is refused by the Stop hook, even when the '
+                  'bytes match.']
     parts.append('')
 
     wanted = []
@@ -315,7 +328,7 @@ def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
 def load_inputs():
     """The index, exe, matched set and unit map as the loop sees them; missing ones are None."""
     from . import matched, workqueue
-    index = funcs.FunctionIndex(paths.FUNCTIONS_CSV)
+    index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     try:
         exe = coff.PeImage(open(paths.EXE, 'rb').read())
     except OSError:
