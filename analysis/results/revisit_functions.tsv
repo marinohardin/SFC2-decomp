@@ -389,3 +389,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0040891d	tShipSpecs::tShipSpecs	99.93	2	opus	2026-11-19T20:21:20Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.93%
 0x0040a5d8	tSystemCreationInfo::scalar_deleting_destructor	7.78	2	opus	2026-11-19T20:25:25Z	attempt 2 (opus) did not raise the best; best 7.78%
 0x0040b4c6	tGLPixFmt::scalar_deleting_destructor	5.00	2	opus	2026-11-19T21:29:50Z	attempt 2 (opus) did not raise the best; best 5.00%
+0x0040bdfa	tSfcMouseMgr::scalar_deleting_destructor	8.23	2	opus	2026-11-19T21:33:28Z	attempt 2 (opus) did not raise the best; best 8.23%
