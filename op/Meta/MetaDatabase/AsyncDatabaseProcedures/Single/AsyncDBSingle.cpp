@@ -514,7 +514,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23( const tNewsStor
 // FUNCTION: STARFLEETOP 0x0056d9d3
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock )
 {
-	nDatabase::tMemberEval<tPreparedMissions, nDatabase::tID, std::equal_to<nDatabase::tID> > characterEval( &tPreparedMissions::fn_0053f22f, id );
+	nDatabase::tMemberEval<tPreparedMissions, nDatabase::tID, std::equal_to<nDatabase::tID> > characterEval( &tPreparedMissions::GetCharacterID, id );
 	nDatabase::tMemberEval<tPreparedMissions, const nDatabase::tID&, std::equal_to<nDatabase::tID> > idEval( &tPreparedMissions::fn_00572b2b, id );
 	nDatabase::tQuery<tPreparedMissions> query;
 	if( byCharacterID )

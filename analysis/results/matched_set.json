@@ -19752,7 +19752,7 @@
    "symbol": "?fn_00567270@tAddPreparedMission@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
    "size": 468,
-   "score": 99.924,
+   "score": 99.962,
    "exact": false,
    "recorded": "2026-11-19"
   },

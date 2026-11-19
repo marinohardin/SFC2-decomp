@@ -24,7 +24,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0053f22f
-nDatabase::tID tPreparedMissions::fn_0053f22f() const
+nDatabase::tID tPreparedMissions::GetCharacterID() const
 {
 	return ((const fn_0053f22f_owner *)this)->m_48;
 }

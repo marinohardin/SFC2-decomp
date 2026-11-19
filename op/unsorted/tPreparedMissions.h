@@ -17,8 +17,8 @@ public:
 	tPreparedMissions();
 	// 0x00567270 calls the destructor out of line (0x0053ebd1).
 	virtual ~tPreparedMissions();
-	// HYPOTHESIS: a non-virtual accessor that returns a tID by value; 0x0056d9d3 queries on it.
-	nDatabase::tID fn_0053f22f() const;
+	// The name is 0x00567270's assertion text; 0x0056d9d3 queries on it.
+	nDatabase::tID GetCharacterID() const;
 	// HYPOTHESIS: a non-virtual accessor that returns a tID; 0x0056d9d3 queries on it. The exe
 	// shares its 5-byte body with tNewsStory's accessor at the same address.
 	const nDatabase::tID& fn_00572b2b() const;

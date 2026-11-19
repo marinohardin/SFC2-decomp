@@ -55,16 +55,16 @@ void tAddPreparedMission::fn_00567270( const nDataStore::tBuffer* pBuffer )
 
 	fn_00719050();
 	nStoredProcedureArguments::tAddPreparedMissionRequest::tAddPreparedMissionResponse response( 0 );
-	// The original's assertion text calls fn_0053f22f GetCharacterID.
+	// The assertion text gives the accessor's name.
 #line 49
-	validate( request.fPreparedMissions.fn_0053f22f().IsValid() );
-	if( request.fFlag && fpAsyncDatabase->vfunction64( request.fPreparedMissions.fn_0053f22f(), true ) )
+	validate( request.fPreparedMissions.GetCharacterID().IsValid() );
+	if( request.fFlag && fpAsyncDatabase->vfunction64( request.fPreparedMissions.GetCharacterID(), true ) )
 	{
 		response.fn_00716310( 1 );
 	}
 	else
 	{
-		fpAsyncDatabase->vfunction56( request.fPreparedMissions.fn_0053f22f(), true );
+		fpAsyncDatabase->vfunction56( request.fPreparedMissions.GetCharacterID(), true );
 		fpAsyncDatabase->vfunction38( &request.fPreparedMissions );
 		response.fn_00550bdb( request.fPreparedMissions );
 		response.fn_00716310( 0 );
