@@ -381,3 +381,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x005fbc58	FUN_005fbc58	0.00	2	sonnet	2026-11-18T00:01:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005fbc64	FUN_005fbc64	0.00	2	sonnet	2026-11-18T00:07:40Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00401d13	tFighterSpecMgr::~tFighterSpecMgr	8.27	2	opus	2026-11-19T19:55:07Z	attempt 2 (opus) did not raise the best; best 8.27%
+0x00407c3a	tPath::tPath	99.61	2	opus	2026-11-19T19:58:46Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.61%
