@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#include "Common/Database/DatabaseObjectUpdate.h"
+
 class tHexPoint;
 class tMetaMapHex;
 class tPoliticalTensionMatrix;
@@ -37,7 +39,7 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction12();
 		virtual void vfunction13( tHexPoint point, std::vector<tMetaMapHex>* hexes, int lock );
 		virtual void vfunction14();
-		virtual void vfunction15();
+		virtual void vfunction15( nDatabase::tID id, tMetaMapHex* hex, int lock );
 		virtual void vfunction16();
 		virtual void vfunction17();
 		virtual void vfunction18();
@@ -54,6 +56,22 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction29();
 		virtual void vfunction30();
 		virtual void vfunction31( tPoliticalTensionMatrix* matrix );
+		virtual void vfunction32();
+		virtual void vfunction33();
+		virtual void vfunction34();
+		virtual void vfunction35();
+		virtual void vfunction36();
+		virtual void vfunction37();
+		virtual void vfunction38();
+		virtual void vfunction39();
+		virtual void vfunction40();
+		virtual void vfunction41();
+		virtual void vfunction42();
+		virtual void vfunction43();
+		virtual void vfunction44();
+		virtual void vfunction45();
+		virtual void vfunction46();
+		virtual void vfunction47( nDatabase::tDatabaseObjectUpdate update );
 	};
 
 };

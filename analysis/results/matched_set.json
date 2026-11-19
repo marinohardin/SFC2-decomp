@@ -19711,6 +19711,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00566d8a": {
+   "name": "FUN_00566d8a",
+   "symbol": "?fn_00566d8a@tAsyncDatabaseProcedure_UpdateMetaMapHex@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_UpdateMetaMapHex.cpp",
+   "size": 390,
+   "score": 99.957,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
