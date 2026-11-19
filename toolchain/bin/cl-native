@@ -1,0 +1,34 @@
+#!/bin/sh
+# Run VC6's CL.EXE natively on macOS under wibo 1.2.0 (Rosetta 2), with no Docker and no QEMU:
+# cl-native [cl args...]. toolchain/fetch-native.sh installs what it needs into tools/.
+# Same environment as toolchain/bin/cl for compiling: MSVC_VERSION=6.4 (default) or 6.5,
+# MSVC_EXTRA_INCLUDE=dir;dir prepended to INCLUDE. It does not take SFCOP_MSVC_MOUNTS (no
+# containers here); a caller that needs those mounts uses toolchain/bin/cl.
+# Its objects score the same as the image's on every claimed function; see toolchain/README.md
+# for the one known difference (the order of some COMDAT data sections).
+# Exit 3 when the native compiler is not installed.
+here=$(cd "$(dirname "$0")" && pwd)
+top=$(git -C "$here" rev-parse --show-superproject-working-tree 2>/dev/null)
+[ -n "$top" ] || top=$here
+# The SFCOP root holds the main checkout (of the containing repository, when this is the
+# port's decomp/ submodule), work/ and tools/; a worktree finds it through git's common dir.
+common=$(git -C "$top" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) \
+    && root=${SFCOP_ROOT:-$(cd "$common/../.." && pwd)} \
+    || root=${SFCOP_ROOT:-$(cd "$here/../../.." && pwd)}
+tools=${SFCOP_TOOLS:-$root/tools}
+wibo=$tools/wibo/1.2.0/wibo-macos
+msvc=$tools/msvc6/msvc${MSVC_VERSION:-6.4}
+if [ ! -x "$wibo" ] || [ ! -f "$msvc/Bin/CL.EXE" ]; then
+    echo "cl-native: no native compiler in $tools (run toolchain/fetch-native.sh)" >&2
+    exit 3
+fi
+# One temporary folder per call, so parallel compiles never share CL's temporary files.
+work=${SFCOP_WORK:-$root/work}
+mkdir -p "$work/toolchain/tmp"
+tmp=$(mktemp -d "$work/toolchain/tmp/cl.XXXXXX") || exit 2
+INCLUDE="${MSVC_EXTRA_INCLUDE:+$MSVC_EXTRA_INCLUDE;}Z:$msvc/Include"
+export INCLUDE TMP="Z:$tmp" TEMP="Z:$tmp"
+"$wibo" "$msvc/Bin/CL.EXE" "$@"
+rc=$?
+rm -rf "$tmp"
+exit $rc

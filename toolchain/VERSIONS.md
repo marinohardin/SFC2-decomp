@@ -31,7 +31,8 @@ what the build files require; "verified" is the owner's Mac and the runner `sfco
 | Tool | Pinned | Where it is set |
 | --- | --- | --- |
 | Visual C++ 6.0 SP4 (compiler 12.00.8799), from decomp.me `msvc6.4` | checksum-pinned tarball | `toolchain/Dockerfile` |
-| wibo | commit `74517de` | `toolchain/Dockerfile` |
+| wibo (in the image) | commit `74517de` | `toolchain/Dockerfile` |
+| wibo (native, macOS, the harness's compiler) | release 1.2.0 `wibo-macos`, checksum-pinned; same compiler tarballs as the image | `toolchain/fetch-native.sh` |
 | objdiff-cli | 3.8.3, checksum-pinned | `toolchain/calibrate.sh` |
 | VC6 `Lib/` (CRT and import libraries) | hashes in `toolchain/vc6-lib/` | `toolchain/vc6-lib/fetch.sh` |
 
