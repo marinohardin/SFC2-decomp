@@ -110,3 +110,13 @@ void tInitialize::fn_005dfc37( const nDataStore::tBuffer* buffer )
 	validate( tAddressMgr::Instance()->GetClockRelayAddress() );
 	field_1c->fn_00714020( tAddressMgr::Instance()->GetClockRelayAddress(), 2, &request );
 }
+
+// FUNCTION: STARFLEETOP 0x005dfdab
+void tInitialize::fn_005dfdab( const nDataStore::tBuffer* buffer )
+{
+	nDataStore::tInput input( buffer );
+	tRegisterForTurnBreakRequest::tRegisterForTurnBreakResponse response;
+	input >> response;
+
+	fn_00719050();
+}
