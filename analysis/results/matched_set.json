@@ -19689,7 +19689,7 @@
    "symbol": "?fn_00565464@tAsyncDatabaseProcedure_GetMetaMapHexForUpdate@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetMetaMapHexForUpdate.cpp",
    "size": 383,
-   "score": 85.118,
+   "score": 99.957,
    "exact": false,
    "recorded": "2026-11-19"
   },
