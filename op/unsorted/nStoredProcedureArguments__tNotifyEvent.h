@@ -15,6 +15,9 @@ namespace nStoredProcedureArguments
 	{
 	public:
 		tNotifyEvent();
+		// HYPOTHESIS: the constructor at 0x0055f1cd fills the three fields; the news panel
+		// passes ( 3, 0, -1 ). Parameter types are guesses.
+		tNotifyEvent( int32 field0c, int32 field10, int32 field14 );
 		virtual ~tNotifyEvent();
 
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
