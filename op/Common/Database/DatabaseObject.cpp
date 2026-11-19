@@ -337,4 +337,12 @@ bool tDatabaseObject::IsDead()
 	return false;
 }
 
+// FUNCTION: STARFLEETOP 0x006fba50
+void tDatabaseObject::AddReference()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	fReferenceCount++;
+}
+
 }
