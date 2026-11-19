@@ -256,3 +256,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00460539	FUN_00460539	2	opus	32.94	2026-11-19T22:28:39Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 32.94%
 0x00460e3e	FUN_00460e3e	3	fable	99.79	2026-11-19T22:30:44Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
 0x00460e76	FUN_00460e76	3	fable	99.77	2026-11-19T22:32:23Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x00460ea6	FUN_00460ea6	3	fable	99.79	2026-11-19T22:33:50Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
