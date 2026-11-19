@@ -458,25 +458,25 @@ public:
 // FUNCTION: STARFLEETOP 0x00402967
 fn_00402967_Obj g_fn_00402967_Obj;
 
-class fn_00402987_Obj
-{
-public:
-    fn_00402987_Obj(const fn_00402987_Obj& x);
-    void fn_005da20a(bool);
-    void fn_00403b49(const fn_00402987_Obj&, unsigned int, unsigned int);
-    char m0;
-};
-
-// HYPOTHESIS: this is the std::string constructor taking (string, pos, npos); 0x005da20a is _Tidy and 0x00403b49 is assign
-extern unsigned int g_00795648;
-
+// std::string's copy constructor, out of line, as the library header writes it.
 // FUNCTION: STARFLEETOP 0x00402987
-fn_00402987_Obj::fn_00402987_Obj(const fn_00402987_Obj& x)
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(const _Myt& _X)
+    : allocator(_X.allocator)
 {
-    m0 = x.m0;
-    fn_005da20a(false);
-    fn_00403b49(x, 0, g_00795648);
+    _Tidy(), assign(_X, 0, npos);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 class fn_004029b1_Obj
 {

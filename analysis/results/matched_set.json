@@ -210,12 +210,12 @@
   },
   "0x00402987": {
    "name": "FUN_00402987",
-   "symbol": "??0fn_00402987_Obj@@QAE@ABV0@@Z",
+   "symbol": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 42,
-   "score": 99.118,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004029b1": {
    "name": "FUN_004029b1",
