@@ -79,3 +79,9 @@ int32 tDateAndTime::GetMinute() const
 {
 	return GetLocalTm()->tm_min;
 }
+
+// FUNCTION: STARFLEETOP 0x006f8920
+bool tDateAndTime::operator<( const tDateAndTime& time ) const
+{
+	return ( fTime < time.fTime ) ? true : false;
+}
