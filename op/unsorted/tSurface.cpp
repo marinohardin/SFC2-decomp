@@ -35,6 +35,7 @@ class tSurface : public tObjBase
 {
 public:
 	tSurface( short x, short y, int width, int height, int a, unsigned char b, unsigned char c );
+	tSurface( void *pixels, short x, short y, short width, short height, int a, unsigned char b, unsigned char c );
 	virtual ~tSurface();
 
 	void *field_60;
@@ -69,4 +70,18 @@ tSurface::tSurface( short x, short y, int width, int height, int a, unsigned cha
 		static tString sEmpty( g_0083b344 );
 		throw c_00692f60_Error( g_00c690d0 ? g_00c690d0->fn_006740f0( id ) : sEmpty, 1 );
 	}
+}
+
+// HYPOTHESIS: wraps pixels the caller owns (stored in +0x60 instead of allocated); +0x76 is
+// then clear.
+// FUNCTION: STARFLEETOP 0x006751c0
+tSurface::tSurface( void *pixels, short x, short y, short width, short height, int a, unsigned char b, unsigned char c )
+	: field_60( pixels ), field_70( a ), field_74( c ), field_75( b ), field_76( 0 )
+{
+	field_3C.x = x;
+	field_3C.y = y;
+	field_6C.x = 0;
+	field_6C.y = 0;
+	field_64.mSet( 0, 0, width, height );
+	field_34 = tRect( x, y, x + width, y + height );
 }
