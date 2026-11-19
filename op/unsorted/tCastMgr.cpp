@@ -5,6 +5,7 @@
 
 #include "Tiger/tFile.h"
 #include <vector>
+#include <map>
 
 // HYPOTHESIS: the map tCastMgr holds at +0x180. It is not this compiler's own std::map (0x10
 // bytes, one static nil node): its tree keeps an allocator byte at +0, a comparison byte at +1,
@@ -107,48 +108,23 @@ tCastMgr::tCastMgr()
 	fn_00675d90();
 }
 
-// HYPOTHESIS: a map of names to values (global at 0x00c69280, nil node at +4); the lookup
-// 0x0067bd90 is its lower_bound. Each node holds a tString pointer at +0xc and the value at +0x10.
-struct fn_00675ec0_node
-{
-	fn_00675ec0_node*	left;
-	fn_00675ec0_node*	parent;
-	fn_00675ec0_node*	right;
-	tString*	first;
-	int	second;
+// HYPOTHESIS: the SDK's Tiger/tstring.h declares this comparator next to less_ss; op/Tiger is
+// outside this lane, so it is declared here until it moves there.
+class less_ps : public std::binary_function<const tString*, const tString*, bool>
+{	public:
+	bool operator () (const tString* x, const tString* y)
+		const 	{	return ( (*x).mStrCmp( (*y) ) < 0); }
 };
 
-struct fn_00675ec0_iterator
-{
-	fn_00675ec0_node*	_Ptr;
-};
-
-struct fn_00675ec0_map
-{
-	char	allocator;
-	char	key_compare;
-	fn_00675ec0_node*	_Nil;
-
-	fn_00675ec0_node* lower_bound( const tString* const& key );
-};
-
-extern fn_00675ec0_map g_00c69280;
+// HYPOTHESIS: a global map of names to values at 0x00c69280 (head node at +4); 0x0067bd90 is
+// its lower_bound, inlined here into find.
+extern std::map< const tString*, int, less_ps > g_00c69280;
 
 // FUNCTION: STARFLEETOP 0x00675ec0
-int fn_00675ec0( tString *name )
+int fn_00675ec0( tString& name )
 {
-	fn_00675ec0_iterator it;
-	it._Ptr = g_00c69280.lower_bound( name );
-	fn_00675ec0_iterator last;
-	fn_00675ec0_iterator* found;
-	if ( it._Ptr != g_00c69280._Nil && name->mStrCmp( *it._Ptr->first ) >= 0 )
-		found = &it;
-	else
-	{
-		last._Ptr = g_00c69280._Nil;
-		found = &last;
-	}
-	if ( found->_Ptr == g_00c69280._Nil )
+	std::map< const tString*, int, less_ps >::iterator it = g_00c69280.find( &name );
+	if ( it == g_00c69280.end() )
 		return 0;
-	return found->_Ptr->second;
+	return (*it).second;
 }

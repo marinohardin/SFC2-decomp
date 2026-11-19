@@ -35724,11 +35724,11 @@
   },
   "0x00675ec0": {
    "name": "FUN_00675ec0",
-   "symbol": "?fn_00675ec0@@YAHPAVtString@@@Z",
+   "symbol": "?fn_00675ec0@@YAHAAVtString@@@Z",
    "unit": "unsorted/tCastMgr.cpp",
-   "size": 102,
-   "score": 26.929,
-   "exact": false,
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0068ff60": {
