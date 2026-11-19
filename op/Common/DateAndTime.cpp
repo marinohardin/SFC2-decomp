@@ -49,3 +49,9 @@ void tDateAndTime::SetToCurrentTime()
 {
 	fTime = time( NULL );
 }
+
+// FUNCTION: STARFLEETOP 0x006f88d0
+int32 tDateAndTime::GetYear() const
+{
+	return GetLocalTm()->tm_year + 1900;
+}
