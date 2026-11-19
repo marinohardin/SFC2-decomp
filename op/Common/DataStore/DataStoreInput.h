@@ -10,6 +10,9 @@
 //	tInput::Read is left out where DATASTORE_OUT_OF_LINE_READ is defined, for the same reason
 //	(0x0042a377). tInput::operator>>( std::string& ) is left out where
 //	DATASTORE_OUT_OF_LINE_READ_STRING is defined (0x0042a397).
+//	MATCH-ONLY: operator>>( int32u& ) is defined only where DATASTORE_INLINE_NUMBER_READ is
+//	defined (PlayingTeamInfo.cpp, whose StreamIn inlines some calls and calls the out-of-line
+//	copy for the rest); other units call that copy.
 //
 #if !defined( DataStoreInput_h )
 #define DataStoreInput_h
@@ -128,6 +131,15 @@ tInput& tInput::operator>>( bool& value )
 
 	return *this;
 }
+
+#ifdef DATASTORE_INLINE_NUMBER_READ
+tInput& tInput::operator>>( int32u& value )
+{
+	Read( (byte*)&value, sizeof( value ) );
+
+	return *this;
+}
+#endif
 
 template< class tType >
 tInput& operator>>( tInput& input, std::vector< tType >& value )
