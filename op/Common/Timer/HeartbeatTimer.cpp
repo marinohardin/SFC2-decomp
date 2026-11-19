@@ -234,3 +234,47 @@ void tHeartbeatTimer::OnAutoRunHB( int32 context )
 		Sleep( context );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006f65d0
+void tHeartbeatTimer::Heartbeat()
+{
+	tHeartbeatTimerData* data = tHeartbeatTimerData::Instance();
+	tOptex::tGuard guard( &data->fAccessGlobalData );
+
+	int32u currentTime = data->fpClock->GetCurrentSystemTime();
+
+	for( int32u i = 0; i < data->fTimers.size(); i++ )
+	{
+		tHeartbeatTimer* pTimer = data->fTimers[i];
+		if( pTimer )
+		{
+			int32u elapsed = currentTime - pTimer->fLastTime;
+			bool signal = false;
+			if( !pTimer->fTimerHasStarted )
+			{
+				if( elapsed > pTimer->fDueTime )
+				{
+					pTimer->fTimerHasStarted = true;
+					signal = true;
+				}
+			}
+			else if( elapsed > pTimer->fPeriod )
+			{
+				signal = true;
+			}
+
+			if( signal )
+			{
+				pTimer->SignalTimerEvent();
+				if( pTimer->fPeriod > 0 )
+				{
+					pTimer->fLastTime = data->fpClock->GetCurrentSystemTime();
+				}
+				else
+				{
+					data->fTimers[i] = NULL;
+				}
+			}
+		}
+	}
+}
