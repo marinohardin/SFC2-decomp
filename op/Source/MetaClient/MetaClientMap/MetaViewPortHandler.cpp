@@ -21,8 +21,8 @@ inline tOptex::tGuard::~tGuard()
 void fn_004d353e( long arg1, long arg2 );
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
-// HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed.
-class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x18c - 0xfc ]; };
+// HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown.
+class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x18c - 0xfc - 0x25 ]; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
 class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
 class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned char field_0[ 0x14 ]; }; class tMetaClientMapReceiver { public: tMetaClientMapReceiver* fn_005e5ba6( long arg ); long field_0; tMetaClientMapMember field_4; tMetaClientMapMember field_18; long field_2c; };
@@ -31,14 +31,14 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01();
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e8c29( const tRect& area );
 	void fn_005e6091();
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
 	tMetaMapControl* fpMetaMapControl;
 	tMetaClientMapQueue field_fc; bool field_18c; unsigned char field_18d[ 0x190 - 0x18d ]; long field_190; long field_194; unsigned char field_198[ 0x1a0 - 0x198 ];
-	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8;
+	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8; unsigned char field_1cc[ 0x1d0 - 0x1cc ]; tHexPoint field_1d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005e5800
@@ -254,4 +254,39 @@ long tMetaClientMapPanel::fn_005e5e01()
 	long result = field_194;
 	field_dc.Leave();
 	return result;
+}
+
+// MATCH-ONLY: inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is
+// claimed in tClientCharacter.cpp. With the body in view the compiler knows Leave cannot throw (it
+// calls only C functions), so the guard's release below sets no unwind state first. In the
+// original file the body was in view from the top; here that would change the functions above.
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
+		} else {
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x005e5e24
+void tMetaClientMapPanel::fn_005e5e24( int arg )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	field_1a0 = arg;
+	tHexPoint center = fn_005e5ced();
+	field_fc.field_24.fn_005e8e55( arg );
+	fn_005e8c29( tRect( 0, 0, 522, 342 ) );
+	if( field_1d0.fn_005b6a5c( 0, 0 ) )
+		fn_005e5c72( field_1d0 );
+	else
+		fn_005e5c72( center );
+	fn_005e5edc();
 }
