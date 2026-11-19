@@ -139,3 +139,31 @@ tStreamable::tCRCFailed::tCRCFailed( const tCRCFailed& other )
 }
 
 };
+
+// MATCH-ONLY: included after fObjectIDInfoLookup, whose initializer symbols shift when the
+// header's inline functions come first; the CRC write below is inlined.
+#define DATASTORE_INLINE_NUMBER_WRITE
+#include "Common/DataStore/DataStoreOutput.h"
+
+namespace nDataStore
+{
+
+// FUNCTION: STARFLEETOP 0x006f9420
+nDataStore::tOutput& operator<<( nDataStore::tOutput& output, const tStreamable& object )
+{
+	if( output.CheckFlags( tOutput::kOutputVersion ) )
+	{
+		output << object.GetVersion();
+	}
+
+	if( output.CheckFlags( tOutput::kOutputCRC ) )
+	{
+		output << object.GetObjectID();
+	}
+
+	object.StreamOut( output );
+
+	return output;
+}
+
+};
