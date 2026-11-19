@@ -7,6 +7,8 @@
 #include "Common/Thread/SingleAccessWrapper.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/fn_0042a480_object.h"
+#include <algorithm>
+#include "unsorted/fn_005ea9ce_pred.h"
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its out-of-line copy (0x00429a18); the header cannot define it while that unit does.
 inline tOptex::tGuard::~tGuard()
 {
@@ -19,7 +21,7 @@ inline tOptex::tGuard::~tGuard()
 void fn_004d353e( long arg1, long arg2 );
 extern const char* g_0087632c; // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown.
-class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; unsigned char field_60[ 0x18c - 0xfc - 0x60 ]; };
+class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > > field_60; unsigned char field_78[ 0x18c - 0xfc - 0x78 ]; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
 class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
 class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned char field_0[ 0x14 ]; }; class tMetaClientMapReceiver { public: tMetaClientMapReceiver* fn_005e5ba6( long arg ); long field_0; tMetaClientMapMember field_4; tMetaClientMapMember field_18; long field_2c; };
@@ -52,6 +54,7 @@ public:
 	void fn_005e5ef4();
 	void fn_005e620c( long x, long y, bool* changed ); // HYPOTHESIS: 0x005e65e5 tests a position and 0x005e7925 turns it into a hex; argument types are not recovered.
 	bool fn_005e65e5( long x, long y );
+	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	tHexPoint fn_005e7925( long x, long y, int arg );
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
@@ -73,7 +76,7 @@ void tMetaClientMapPanel::vfunction19()
 		fpMetaMapControl = dynamic_cast<tMetaMapControl*>( ( (tVisObject* (*)( long, long )) fn_004d353e )( (long) g_0087632c, (long) "FakeMap" ) );
 #line 316
 		validate( fpMetaMapControl );
-#line 76
+#line 79
 	}
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
@@ -379,4 +382,19 @@ void tMetaClientMapPanel::fn_005e620c( long x, long y, bool* changed )
 	else
 		field_1d0 = fn_005e7925( x, y, 0 );
 	*changed = old != field_1d0;
+}
+
+// HYPOTHESIS: adds an entry to the vector at +0x15c unless the predicate finds a match. The
+// vector's begin and end are called out of line; the linker folded them with other one-load
+// getters (0x00407d08, 0x004088d6).
+// FUNCTION: STARFLEETOP 0x005e62c4
+void tMetaClientMapPanel::fn_005e62c4( const fn_005ea9ce_elem& entry )
+{
+	tOptex::tGuard guard( &field_dc );
+	tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > >::iPtr list = field_fc.field_60.Lock();
+	fn_005ea9ce_pred match( entry );
+
+	if( std::find_if( ( *list ).begin(), ( *list ).end(), match ) == ( *list ).end() )
+		( *list ).push_back( entry );
+	list.Done();
 }
