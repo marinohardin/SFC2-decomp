@@ -35794,6 +35794,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00677010": {
+   "name": "tCastMgr::vfunction1",
+   "symbol": "?vfunction1@tCastMgr@@UAEXXZ",
+   "unit": "unsorted/tCastMgr.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",

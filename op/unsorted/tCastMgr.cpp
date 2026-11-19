@@ -97,6 +97,7 @@ class tCastMgr
 public:
 	tCastMgr();
 	virtual ~tCastMgr();
+	virtual void vfunction1();
 	void fn_00675d90();
 	int fn_00675f90( unsigned int limit, int base );
 	unsigned char fn_00675fe0( unsigned int pos );
@@ -313,4 +314,19 @@ tAsset* fn_00676a30( unsigned short type, int id )
 		}
 	}
 	return asset;
+}
+
+// HYPOTHESIS: deletes every cast item held in field_170, closes the file and resets.
+// FUNCTION: STARFLEETOP 0x00677010
+void tCastMgr::vfunction1()
+{
+	std::vector<void *>::iterator it = field_170.begin();
+	for ( ; it != field_170.end(); it++ )
+	{
+		tAsset* item = (tAsset*)*it;
+		if ( item )
+			delete item;
+	}
+	field_108.mClose();
+	fn_00675d90();
 }
