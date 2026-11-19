@@ -3142,6 +3142,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040fea0": {
+   "name": "tETrait_Creator::tETrait_Creator",
+   "symbol": "??0tETrait_Creator@@QAE@XZ",
+   "unit": "unsorted/tETrait_Creator.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040fefb": {
    "name": "tEntity::tEntity",
    "symbol": "??0tEntity@@QAE@XZ",
