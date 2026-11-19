@@ -37657,6 +37657,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006f92c0": {
+   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed",
+   "symbol": "??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 352,
+   "score": 61.587,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

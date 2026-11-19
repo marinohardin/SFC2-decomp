@@ -127,4 +127,15 @@ nDataStore::tInput& operator>>( nDataStore::tInput& input, tStreamable& object )
 // FUNCTION: STARFLEETOP 0x006f8d70
 tStreamable::iObjectIDInfoLookup tStreamable::fObjectIDInfoLookup;
 
+// HYPOTHESIS: the compiler's implicit memberwise copy constructor, written out. The inlined
+// basic_string::assign of fForObject lacks the toolchain's _FROZEN test (the library difference
+// noted at 0x00708820); the rest lines up.
+// FUNCTION: STARFLEETOP 0x006f92c0
+tStreamable::tCRCFailed::tCRCFailed( const tCRCFailed& other )
+: tBaseException( other )
+, fToObject( other.fToObject )
+, fForObject( other.fForObject )
+{
+}
+
 };

@@ -30,6 +30,9 @@ public:
 	{
 	public:
 		tCRCFailed( const std::string& toObject, const std::string& forObject, const char* file, int32 lineNumber );
+		// MATCH-ONLY: the SDK header has no copy constructor; the compiler's implicit one
+		// (thrown by value in operator>>) is written out so that it can carry its address.
+		tCRCFailed( const tCRCFailed& other );
 		virtual ~tCRCFailed();
 
 		virtual void ReportException( const char* caughtDescription = NULL );
