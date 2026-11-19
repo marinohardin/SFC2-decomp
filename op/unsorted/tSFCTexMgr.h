@@ -36,6 +36,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0040ee2a
+// FUNCTION: STARFLEETOP 0x0040eed6
 inline tSFCTexMgr::~tSFCTexMgr()
 {
 }

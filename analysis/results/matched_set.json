@@ -3016,6 +3016,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040eed6": {
+   "name": "tSFCTexMgr::~tSFCTexMgr",
+   "symbol": "??1tSFCTexMgr@@UAE@XZ",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
