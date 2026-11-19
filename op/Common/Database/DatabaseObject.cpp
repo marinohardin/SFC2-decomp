@@ -1,5 +1,5 @@
 // Common/Database/DatabaseObject.cpp
-
+#define DATASTORE_INLINE_NUMBER_WRITE	// MATCH-ONLY: StreamOut inlines the int32u write
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Exceptions/Validate.h"
 #include "Common/OSVersion.h"
@@ -370,6 +370,20 @@ void tDatabaseObject::CheckForDeath()
 		guard.Leave();
 		delete this;
 	}
+}
+
+}
+
+// The include sits here so the line records of the functions above stay as they are.
+#include "Common/DataStore/DataStoreOutput.h"
+
+namespace nDatabase
+{
+
+// FUNCTION: STARFLEETOP 0x006fbe90
+void tDatabaseObject::StreamOut( nDataStore::tOutput& output ) const
+{
+	output << fID << fLockID;
 }
 
 }
