@@ -16,13 +16,13 @@ higher, and every function is held to the higher of the two. This is how a pull 
 stopped from lowering or deleting an entry along with the source that earned it.
 """
 import argparse
-import concurrent.futures
 import csv
 import hashlib
 import io
 import json
 import os
 import subprocess
+import threading
 import sys
 import time
 
@@ -275,6 +275,39 @@ def claimed_keys(cfg=None):
             if any(x.kind == 'FUNCTION' for x in anns)}
 
 
+
+def _in_threads(fn, items, jobs):
+    """fn applied to every item, at most `jobs` at once, results in the items' order. An exception
+    in any call is raised once all calls have ended. Plain threads, not concurrent.futures, whose
+    `import queue` can pick up harness/queue.py when harness/ is on sys.path."""
+    items = list(items)
+    results = [None] * len(items)
+    errors = [None] * len(items)
+    pending = iter(range(len(items)))
+    lock = threading.Lock()
+
+    def worker():
+        while True:
+            with lock:
+                i = next(pending, None)
+            if i is None:
+                return
+            try:
+                results[i] = fn(items[i])
+            except BaseException as e:  # re-raised below, in the caller's thread
+                errors[i] = e
+
+    threads = [threading.Thread(target=worker, daemon=True)
+               for _ in range(max(1, min(jobs, len(items))))]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    for e in errors:
+        if e is not None:
+            raise e
+    return results
+
 def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None,
         base_sizes=None, jobs=None):
     """base: (matched set, label) to hold the run to as well, from load_base; base_sizes: the
@@ -406,12 +439,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             _report_function(sub, data, fn, res)
         return sub
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
-        for sub in pool.map(build_and_score, sorted(by_unit.items())):
-            rep.lines.extend(sub.lines)
-            rep.results.extend(sub.results)
-            rep.regressions.extend(sub.regressions)
-            rep.failed = rep.failed or sub.failed
+    for sub in _in_threads(build_and_score, sorted(by_unit.items()), jobs):
+        rep.lines.extend(sub.lines)
+        rep.results.extend(sub.results)
+        rep.regressions.extend(sub.regressions)
+        rep.failed = rep.failed or sub.failed
 
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all)

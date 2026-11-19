@@ -78,3 +78,22 @@ def test_jobs_builds_that_many_units_at_once(five_units):
 def test_harness_jobs_sets_the_default(monkeypatch, value, want):
     monkeypatch.setenv('HARNESS_JOBS', value)
     assert verify.default_jobs() == want
+
+
+def test_in_threads_keeps_the_order_and_raises_a_worker_error():
+    assert verify._in_threads(lambda x: x * 2, [3, 1, 2], 2) == [6, 2, 4]
+
+    def boom(x):
+        if x == 2:
+            raise ValueError('unit 2')
+        return x
+
+    with pytest.raises(ValueError, match='unit 2'):
+        verify._in_threads(boom, [1, 2, 3], 3)
+
+
+def test_the_pool_does_not_import_the_queue_module():
+    # concurrent.futures imports `queue`, which harness/queue.py shadows when harness/ is on
+    # sys.path (CI's test run): the pool must not depend on it.
+    src = open(verify.__file__).read()
+    assert 'concurrent.futures' not in src
