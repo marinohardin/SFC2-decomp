@@ -8,7 +8,8 @@
 #include "Common/DynamicAllocator.h"
 
 #include <string.h>
-
+// FUNCTION: STARFLEETOP 0x006fc490
+tAllocatedClass::tAllocatedClass() : fAllocID( -1 ) {}
 // FUNCTION: STARFLEETOP 0x006fc4d0
 int32 tAllocatedClass::operator==( const type_info& type )
 {
