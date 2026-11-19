@@ -37459,6 +37459,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f8800": {
+   "name": "tDateAndTime::tDateAndTime",
+   "symbol": "??0tDateAndTime@@QAE@J@Z",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

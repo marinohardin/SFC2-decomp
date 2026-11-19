@@ -6,3 +6,9 @@ tDateAndTime::tDateAndTime()
 {
 	fTime = time( NULL );
 }
+
+// FUNCTION: STARFLEETOP 0x006f8800
+tDateAndTime::tDateAndTime( time_t time )
+{
+	fTime = time;
+}
