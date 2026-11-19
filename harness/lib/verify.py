@@ -314,7 +314,8 @@ def _in_threads(fn, items, jobs):
         deadline = time.time() + 60
         while any(t.is_alive() for t in threads) and time.time() < deadline:
             time.sleep(0.05)
-        source.allow_compiles()
+        if not any(t.is_alive() for t in threads):
+            source.allow_compiles()
         raise
     for e in errors:
         if e is not None:
