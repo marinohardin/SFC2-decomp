@@ -1,6 +1,47 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Database/DatabaseObject.cpp
-// Functions: 0x006fa540 to 0x006fc140, 24 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+// Common/Database/DatabaseObject.cpp
+
+#include "Common/Database/DatabaseObject.h"
+
+inline tOptex::~tOptex()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections && fpSharedInfo != NULL )
+		{
+			::DeleteCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+
+		if( fEvent != NULL )
+		{
+			::CloseHandle( fEvent );
+		}
+
+		if( fFileMapping == NULL )
+		{
+			delete fpSharedInfo;
+		}
+		else
+		{
+			::UnmapViewOfFile( fpSharedInfo );
+			::CloseHandle( fFileMapping );
+		}
+	}
+}
+
+namespace nDatabase
+{
+
+// The inlined basic_string::_Tidy of the name argument lacks the toolchain's _FROZEN test (the
+// library difference noted at 0x00708820); the rest of 0x006fa540 lines up.
+// FUNCTION: STARFLEETOP 0x006fa540
+tDatabaseObject::tDatabaseObject( iObjectVersion versionNumber )
+	: tStreamable( versionNumber )
+	, fAccess( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
+	, fAlive( true )
+	, fReferenceCount( 0 )
+	, fLockEvent( new tThreadEvent( true, false, "", tThreadState::kUseThreadObject ) )
+	, fLockID( 0 )
+{
+}
+
+}

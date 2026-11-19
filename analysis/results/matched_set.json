@@ -37720,6 +37720,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fa540": {
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject",
+   "symbol": "??0tDatabaseObject@nDatabase@@QAE@E@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 368,
+   "score": 78.022,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

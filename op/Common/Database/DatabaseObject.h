@@ -14,6 +14,8 @@
 #include "Common/DynamicAllocator.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Database/DatabaseID.h"
+#include "Common/Thread/Optex.h"
+#include "Common/Thread/ThreadEvent.h"
 
 namespace nDatabase
 {
@@ -63,9 +65,15 @@ protected:
 	std::string fn_006fc200( std::string text );
 
 //Fields
-	// HYPOTHESIS: fAccess, fID, fAlive, fReferenceCount, fLockEvent and fLockID fill
-	// 0x14 to 0x48; derived classes' first members sit at 0x48 (tMetaMapDesc).
-	char fPad_14[0x34];
+	mutable tOptex fAccess;
+
+	tID fID;
+	bool fAlive;
+	int32u fReferenceCount;
+
+	tThreadEvent*		fLockEvent;
+	// HYPOTHESIS: tDatabase::iLockID in the SDK, see SetLockID.
+	int32u				fLockID;
 };
 
 };
