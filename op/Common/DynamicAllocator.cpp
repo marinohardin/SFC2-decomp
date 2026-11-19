@@ -26,6 +26,26 @@ int32 tAllocatedClass::operator==( const type_info& type )
 	return valid;
 }
 
+// FUNCTION: STARFLEETOP 0x006fc500
+int32 tDynamicAllocator::tAllocatorInfo::operator<( const tAllocatorInfo& allocInfo ) const
+{
+	if( fTypeID )
+	{
+		if( allocInfo.fTypeID )
+		{
+			return strcmp( fTypeID->raw_name(), allocInfo.fTypeID->raw_name() ) <= 0;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x006fc5a0
 int32 tDynamicAllocator::tAllocatorInfo::operator==( const char* raw_name ) const
 {

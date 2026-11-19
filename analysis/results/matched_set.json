@@ -37945,6 +37945,15 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x006fc500": {
+   "name": "tDynamicAllocator::tAllocatorInfo::operator<",
+   "symbol": "??MtAllocatorInfo@tDynamicAllocator@@QBEJABV01@@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc5a0": {
    "name": "tDynamicAllocator::tAllocatorInfo::operator==",
    "symbol": "??8tAllocatorInfo@tDynamicAllocator@@QBEJPBD@Z",
