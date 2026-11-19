@@ -170,3 +170,13 @@ tHeartbeatTimer::~tHeartbeatTimer()
 
 	fHBData->fTimers[ fTimerIndex ] = NULL;
 }
+
+// FUNCTION: STARFLEETOP 0x006f5da0
+void tHeartbeatTimer::StartTimer( int32u dueTime, int32u period, tTimerHandler* pTimerHandler )
+{
+	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
+
+	fLastTime = fInitalTime = fHBData->fpClock->GetCurrentSystemTime();
+	tTimer::StartTimer( dueTime, period, pTimerHandler );
+	fHBData->fTimers[ fTimerIndex ] = this;
+}
