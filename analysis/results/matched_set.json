@@ -1243,6 +1243,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00407d52": {
+   "name": "tShipSpecManager::~tShipSpecManager",
+   "symbol": "??1tShipSpecManager@@UAE@XZ",
+   "unit": "unsorted/tShipSpecManager.cpp",
+   "size": 70,
+   "score": 92.783,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
