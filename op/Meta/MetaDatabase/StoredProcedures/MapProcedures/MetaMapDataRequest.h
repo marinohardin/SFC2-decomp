@@ -63,6 +63,8 @@ namespace nStoredProcedureArguments
 
 			std::vector< tClientHex >	m_10;
 			bool	m_20;
+			int8u	m_21;
+			int8u	m_22;
 			int32	m_24;
 			int32	m_28;
 		};

@@ -127,4 +127,15 @@ tMetaMapDataRequest::tResponse::tResponse( bool param_1 ) :
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0054c26d
+void tMetaMapDataRequest::tResponse::StreamOut( nDataStore::tOutput& output ) const
+{
+	output << m_10 << m_20;
+
+	if( !m_20 )
+	{
+		output << m_21 << m_22;
+	}
+}
+
 }
