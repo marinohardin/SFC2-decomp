@@ -411,7 +411,10 @@ std::string fn_005430ad_owner::fn_005433a7() const
 // FUNCTION: STARFLEETOP 0x005433dd
 bool tServCharacter::fn_005433dd() const
 {
-	return ((const fn_005430ad_owner *)this)->m114_1 ? true : false;
+	if (((const fn_005430ad_owner *)this)->m114_1)
+		return true;
+	else
+		return false;
 }
 
 // HYPOTHESIS: a fifth one-bit flag, bit 2 of the dword at +0x114.

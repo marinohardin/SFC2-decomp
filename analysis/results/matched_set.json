@@ -17976,12 +17976,12 @@
   },
   "0x005433dd": {
    "name": "FUN_005433dd",
-   "symbol": "?fn_005433dd@fn_005430ad_owner@@QAE_NXZ",
+   "symbol": "?fn_005433dd@tServCharacter@@QBE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 11,
-   "score": 98.75,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005433e8": {
    "name": "FUN_005433e8",
