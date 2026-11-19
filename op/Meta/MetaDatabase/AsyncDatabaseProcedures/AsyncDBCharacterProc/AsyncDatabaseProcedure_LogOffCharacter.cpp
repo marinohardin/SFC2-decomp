@@ -32,3 +32,8 @@ tLogOffCharacter::tLogOffCharacter( tAsyncDatabase* pDB ) : tAsyncDatabaseProced
 	fn_00718f10( 0x10, new tMemberCallback<tLogOffCharacter,const nDataStore::tBuffer*>( this, fn_0056403d ) );
 	fn_00719050();
 }
+
+// FUNCTION: STARFLEETOP 0x00564016
+tLogOffCharacter::~tLogOffCharacter()
+{
+}
