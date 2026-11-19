@@ -16,6 +16,7 @@ struct vfunction33_result
     int fn_00410223();
     void fn_00410227(int value);
     int fn_00410231();
+    void fn_00410239(int value);
 
     char pad00[0x1c];
     int field_1c;
@@ -29,7 +30,9 @@ struct vfunction33_result
     int field_60;
     // HYPOTHESIS: a value fn_00410223 returns.
     int field_64;
-    char pad68[0x110 - 0x68];
+    // HYPOTHESIS: a pointer fn_00410239 stores (AI data).
+    int field_68;
+    char pad6c[0x110 - 0x6c];
     bool field_110;
     char pad111[0x86c - 0x111];
     // HYPOTHESIS: a kind or index read by tShieldSystem to pick a sound event.

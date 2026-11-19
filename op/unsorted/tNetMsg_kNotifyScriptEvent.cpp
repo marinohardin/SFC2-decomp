@@ -42,3 +42,9 @@ int vfunction33_result::fn_00410231()
 	field_64 = -1;
 	return old;
 }
+
+// FUNCTION: STARFLEETOP 0x00410239
+void vfunction33_result::fn_00410239(int value)
+{
+	field_68 = value;
+}
