@@ -54,6 +54,7 @@ namespace nStoredProcedureArguments
 				int8u	m_2a;
 			};
 
+			tResponse( bool param_1 );
 			tResponse( int32 param_1, int32 param_2, bool param_3 );
 			virtual ~tResponse();
 

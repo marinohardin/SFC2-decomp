@@ -114,4 +114,17 @@ tMetaMapDataRequest::tResponse::~tResponse()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0054c1ec
+tMetaMapDataRequest::tResponse::tResponse( bool param_1 ) :
+	nSwitch::tResponse( 0 ),
+	m_20( false ),
+	m_24( 1 ),
+	m_28( 1 )
+{
+	if( param_1 )
+	{
+		m_10.resize( 1, tClientHex() );
+	}
+}
+
 }
