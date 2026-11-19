@@ -17,6 +17,8 @@ gets one status and one name tier:
               manual        named by hand from evidence (name_source `manual`)
               sdk-fuzzy     fuzzy SDK matcher, tiers it trusts as labels (score >= 0.85)
               string        a name taken from a string in the exe
+              claim         the symbol a claim in op/ gives it (op/manifest.tsv), when that symbol
+                            is a name and not a placeholder; outranks only rtti-class and none
               rtti-class    a class from RTTI recovery, method name may be a placeholder
               none          FUN_xxxxxxxx
 
@@ -82,9 +84,17 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 TEXT_BYTES = 3_751_936
 
 STATUSES = ('exact', 'functional', 'partial', 'lifted', 'original-x86')
-NAME_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string', 'rtti-class',
-              'none')
-REAL_SYMBOL_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string')
+NAME_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string', 'claim',
+              'rtti-class', 'none')
+REAL_SYMBOL_TIERS = ('sdk-exact', 'sdk-fid', 'vs-fid', 'manual', 'sdk-fuzzy', 'string', 'claim')
+# Tiers a claim's name outranks: no name, or a class whose method name may be a placeholder.
+CLAIM_OUTRANKS = ('rtti-class', 'none')
+# A claimed symbol that is still a placeholder: an address in any part of it (fn_00401000,
+# FUN_00401000, tObject_008e1060, g_00a1b2c3), a numbered virtual (vfunction12, vfunc_3), a part
+# that starts fn_, FUN_, sub_ or LAB_ (fn_slot28), or a compiler helper of a global, written
+# "g_tINIMgr (dynamic initializer)", whose global has no original name.
+PLACEHOLDER_RE = re.compile(r'_[0-9A-Fa-f]{8}(?![0-9A-Fa-f])|vfunc(?:tion)?_?\d|(?:^|::)~?(?:fn|FUN|sub|LAB)_')
+HELPER_RE = re.compile(r'^[^(]* \(')
 # Names applied in functions.csv; they outrank sdk-fuzzy, which is a candidate from a side table.
 APPLIED_NAME_TIERS = ('sdk-fid', 'vs-fid', 'manual')
 
@@ -260,19 +270,34 @@ def load_funclet_parents(path, log):
     return out
 
 
-def load_partial(path, log):
-    """Addresses op/manifest.tsv claims with the mode `partial`: written, scored, not exact."""
+def claimed_name(symbol):
+    """The name a manifest symbol gives, without its parameter list; None for a placeholder."""
+    symbol = (symbol or '').strip()
+    if not symbol or HELPER_RE.search(symbol):
+        return None
+    name = symbol.replace('operator()', 'operator\0').split('(')[0].replace('\0', '()').strip()
+    if not name or PLACEHOLDER_RE.search(name):
+        return None
+    return name
+
+
+def load_manifest(path, log):
+    """From op/manifest.tsv: the addresses claimed with the mode `partial` (written, scored, not
+    exact), and the name each claim gives its function where claimed_name() accepts it."""
     if not log.note('manifest', path):
-        return set()
-    out = set()
+        return set(), {}
+    partial, names = set(), {}
     with open(path, newline='') as f:
         for row in csv.DictReader(f, delimiter='\t'):
-            if 'partial' not in (row.get('modes') or '').split():
-                continue
             address = parse_hex_address(row.get('address'))
-            if address is not None:
-                out.add(address)
-    return out
+            if address is None:
+                continue
+            if 'partial' in (row.get('modes') or '').split():
+                partial.add(address)
+            name = claimed_name(row.get('symbol'))
+            if name is not None:
+                names[address] = name
+    return partial, names
 
 
 STUB_RE = re.compile(r'void sub_([0-9A-Fa-f]{8})\(void\) \{ RECOMP_NOT_LIFTED\(0x')
@@ -437,7 +462,7 @@ def classify_status(address, exact, functional, partial, lifted_ranges):
     return 'original-x86'
 
 
-def classify_name(fn, sdk_exact, sdk_fuzzy):
+def classify_name(fn, sdk_exact, sdk_fuzzy, claimed=None):
     if fn.name_source == 'sdklib-exact' or fn.address in sdk_exact:
         return 'sdk-exact'
     tier = NAME_SOURCE_TIER.get(fn.name_source)
@@ -445,7 +470,10 @@ def classify_name(fn, sdk_exact, sdk_fuzzy):
         return tier
     if fn.address in sdk_fuzzy:
         return 'sdk-fuzzy'
-    return tier or 'none'
+    tier = tier or 'none'
+    if tier in CLAIM_OUTRANKS and claimed and fn.address in claimed:
+        return 'claim'
+    return tier
 
 
 def _pct(part, whole):
@@ -505,7 +533,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
     lifted_ranges, lift_info = load_lifted(paths.get('lifter_dir'), log)
     exact, functional, objdiff_skipped = load_replaced(
         paths.get('matched_set'), paths.get('functional_set'), paths.get('objdiff_reports') or [], log)
-    partial = load_partial(paths.get('manifest'), log)
+    partial, claimed = load_manifest(paths.get('manifest'), log)
 
     rows = []
     by_address = {}
@@ -514,7 +542,7 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
         if fn.kind != 'function':
             continue
         row = Row(fn, classify_status(fn.address, exact, functional, partial, lifted_ranges),
-                  classify_name(fn, sdk_exact, sdk_fuzzy))
+                  classify_name(fn, sdk_exact, sdk_fuzzy, claimed))
         if fn.name_source not in NAME_SOURCE_TIER and fn.name_source not in NO_NAME_SOURCES:
             unmapped[fn.name_source] = unmapped.get(fn.name_source, 0) + 1
         rows.append(row)
