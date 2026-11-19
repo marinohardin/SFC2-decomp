@@ -1,6 +1,6 @@
 #include "Common/DataStore/Streamable.h"
 #include "Common/Crypto/CRC32.h"
-
+#include "Common/DataStore/DataStoreInput.h"
 #include <typeinfo.h>
 
 namespace nDataStore
@@ -66,6 +66,62 @@ tStreamable::iObjectVersion tStreamable::GetVersion() const
 {
 	return fObjectVersion;
 }
+
+#line 102
+// FUNCTION: STARFLEETOP 0x006f9140
+nDataStore::tInput& operator>>( nDataStore::tInput& input, tStreamable& object )
+{
+
+	tStreamable::iObjectID objID;
+
+	tStreamable::iObjectVersion defaultVer = object.GetVersion();
+
+	if( input.CheckFlags( tInput::kReadVersion ) )
+	{
+		input >> object.fObjectVersion;
+	}
+	else
+	{
+		object.fObjectVersion = 0;
+	}
+
+	if( input.CheckFlags( tInput::kDefaultVersion ) )
+	{
+		object.fObjectVersion = defaultVer;
+	}
+
+	if( input.CheckFlags( tInput::kReadCRC ) )
+	{
+		input >> objID;
+
+		if( input.CheckFlags( tInput::kValidateCRC ) && objID != object.GetObjectID() )
+		{
+
+
+			const type_info& objectType = typeid( object );
+			std::string objectName = objectType.name();
+			std::string packetFor;
+
+			for( tStreamable::iObjectIDInfoLookup::iterator i = tStreamable::fObjectIDInfoLookup.begin();
+				 i != tStreamable::fObjectIDInfoLookup.end();
+				 i++ )
+			{
+				if( i->second.fCRC == objID )
+				{
+					packetFor = i->second.fObjectName;
+					break;
+				}
+			}
+
+			throw tStreamable::tCRCFailed( objectName, packetFor, __FILE__, __LINE__ );
+		}
+	}
+
+	object.StreamIn( input );
+
+	return input;
+}
+#line 125
 
 // FUNCTION: STARFLEETOP 0x006f8d90
 // FUNCTION: STARFLEETOP 0x006f8d70

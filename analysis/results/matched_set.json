@@ -37648,6 +37648,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f9140": {
+   "name": "nDataStore::operator>>",
+   "symbol": "??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 384,
+   "score": 99.959,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
