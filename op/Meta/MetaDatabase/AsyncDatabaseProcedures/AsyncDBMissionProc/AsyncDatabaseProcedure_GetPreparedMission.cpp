@@ -26,3 +26,10 @@ tGetPreparedMission::tGetPreparedMission( tAsyncDatabase* pDB ) : tAsyncDatabase
 	fn_00718f10( 0x35, new tMemberCallback<tGetPreparedMission,const nDataStore::tBuffer*>( this, fn_005676f4 ) );
 	fn_00719050();
 }
+
+// FUNCTION: STARFLEETOP 0x005676cd
+tGetPreparedMission::~tGetPreparedMission()
+{
+}
+
+
