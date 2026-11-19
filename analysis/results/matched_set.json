@@ -127,6 +127,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00401cf7": {
+   "name": "tFighterSpecMgr::scalar_deleting_destructor",
+   "symbol": "??_GtFighterSpecMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tFighterSpecMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004021b8": {
    "name": "FUN_004021b8",
    "symbol": "?fn_004021b8@fn_004021b8_Stream@@QAEXXZ",

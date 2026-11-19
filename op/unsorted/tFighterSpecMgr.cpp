@@ -23,3 +23,8 @@ tFighterSpecMgr::tFighterSpecMgr()
 {
     fn_00401ff6();
 }
+
+// FUNCTION: STARFLEETOP 0x00401cf7
+tFighterSpecMgr::~tFighterSpecMgr()
+{
+}
