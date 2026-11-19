@@ -16,7 +16,9 @@ struct vfunction33_result
 
     char pad00[0x1c];
     int field_1c;
-    char pad20[0x5d - 0x20];
+    char pad20[0x5c - 0x20];
+    // HYPOTHESIS: the flag fn_0041021f returns.
+    char field_5c;
     // HYPOTHESIS: a flag; tShuttleBaySystem's 0x0044ea7e skips its recall step while it is set.
     bool field_5d;
     char pad5e[0x60 - 0x5e];
@@ -216,7 +218,7 @@ public:
     virtual ~tIndividualShipSystem();
     // vftable slots 1..45, not yet identified
     virtual void vfunction2();
-    virtual void vfunction3();
+    virtual tListMember *vfunction3();
     virtual tListMember *vfunction4();
     virtual tListMember *vfunction5();
     virtual void vfunction6(tListMember *aMember);
@@ -340,7 +342,7 @@ public:
     // HYPOTHESIS: slot 83; stores its argument in the byte at +0x44 read by slot 82.
     virtual void vfunction84(bool param_1);
 
-    char pad04[0x0c - 0x04];
+    // +0x04 and +0x08 are tListMember's links.
     int field_0c;
     int field_10;
     int field_14;

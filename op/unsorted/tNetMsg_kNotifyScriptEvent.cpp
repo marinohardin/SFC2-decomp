@@ -1,3 +1,5 @@
+#include "unsorted/tIndividualShipSystem.h"
+
 extern char g_0083bddc[];
 
 class tNetMsg_kNotifyScriptEvent
@@ -12,4 +14,10 @@ public:
 void* tNetMsg_kNotifyScriptEvent::vfunction1()
 {
 	return g_0083bddc;
+}
+
+// FUNCTION: STARFLEETOP 0x0041021f
+char vfunction33_result::fn_0041021f()
+{
+	return field_5c;
 }
