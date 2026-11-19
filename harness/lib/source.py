@@ -132,6 +132,15 @@ def _stop_group(p, grace=5):
 # threads started (verify._in_threads): only the main thread sees KeyboardInterrupt.
 _live = {}
 _live_lock = threading.Lock()
+# Set by stop_all until allow_compiles: a worker that had not yet started its compile when the
+# running ones were stopped does not start it after (the check and the start share _live_lock).
+_stopping = False
+
+
+def allow_compiles():
+    global _stopping
+    with _live_lock:
+        _stopping = False
 
 
 def _docker_kill(cname, cl):
@@ -147,8 +156,11 @@ def _docker_kill(cname, cl):
 
 def stop_all(grace=5):
     """Stop every running compile's process group and container: TERM to all, then KILL to what
-    is left after `grace` seconds. The threads waiting on them see the compiles end."""
+    is left after `grace` seconds. The threads waiting on them see the compiles end, and no compile
+    starts until allow_compiles."""
+    global _stopping
     with _live_lock:
+        _stopping = True
         live = list(_live.values())
     for sig in (signal.SIGTERM, signal.SIGKILL):
         for p, _, _ in live:
@@ -183,10 +195,12 @@ def compile_unit(unit_path, profile, src_root, build_root=None, cl=None):
     t0 = time.time()
     # Its own process group, so a timeout stops the whole compile: the wrapper and the compiler
     # it starts (cl-native's wibo, or the docker client).
-    p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
-                         errors='replace', start_new_session=True)
     with _live_lock:
+        if _stopping:
+            raise KeyboardInterrupt('compiles stopped')
+        p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                             errors='replace', start_new_session=True)
         _live[p.pid] = (p, cname, cl)
     try:
         out_, err_ = p.communicate(timeout=COMPILE_TIMEOUT)

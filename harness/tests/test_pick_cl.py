@@ -174,3 +174,36 @@ def test_an_interrupt_stops_the_compiles_of_every_worker(tmp_path, monkeypatch):
     time.sleep(1)
     assert len(os.listdir(pids)) == 2
     assert not any(_alive(pid) for pid in started)
+
+
+def test_no_compile_starts_once_the_running_ones_are_stopped(tmp_path, monkeypatch):
+    """A worker that reaches compile_unit after stop_all took its list of running compiles does
+    not start a compile the list would have missed; allow_compiles lets the next run start."""
+    from harness.lib import source
+    started = []
+    monkeypatch.setattr(subprocess, 'Popen', lambda *a, **k: started.append(a))
+    unit = tmp_path / 'u.cpp'
+    unit.write_text('int f() { return 0; }\n')
+    source.stop_all(grace=0)
+    try:
+        with pytest.raises(KeyboardInterrupt):
+            source.compile_unit(str(unit), {}, str(tmp_path), build_root=str(tmp_path / 'build'))
+        assert started == []
+    finally:
+        source.allow_compiles()
+    assert source._stopping is False
+
+
+def test_an_interrupted_run_leaves_compiles_allowed(tmp_path, monkeypatch):
+    import threading
+    from harness.lib import source, verify
+    real_join = threading.Thread.join
+
+    def join(self, timeout=None):
+        if threading.current_thread() is threading.main_thread():
+            raise KeyboardInterrupt
+        return real_join(self, timeout)
+    monkeypatch.setattr(threading.Thread, 'join', join)
+    with pytest.raises(KeyboardInterrupt):
+        verify._in_threads(lambda x: time.sleep(0.2), range(4), 2)
+    assert source._stopping is False
