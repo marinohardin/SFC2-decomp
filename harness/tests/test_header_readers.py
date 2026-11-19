@@ -133,3 +133,12 @@ def test_a_git_failure_inside_a_checkout_is_a_warning(tree, monkeypatch):
     rep = verify.run([f'0x{A:08x}'], jobs=1)
     assert tree.built == ['a.cpp']
     assert any(ln.startswith('WARN') and 'git could not list' in ln for ln in rep.lines)
+
+
+def test_a_renamed_header_lists_its_old_path_too(tree):
+    git(tree.game, 'mv', 'shared.h', 'moved.h')
+    root = tree.game.resolve()
+    assert source.changed_files(str(tree.game)) == {str(root / 'shared.h'), str(root / 'moved.h')}
+    rep = verify.run([f'0x{A:08x}'], jobs=1)
+    assert sorted(tree.built) == ['a.cpp', 'b.cpp']
+    assert rep.regressions == [B]
