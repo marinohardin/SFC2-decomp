@@ -180,4 +180,22 @@ void tMetaMapDataRequest::tResponse::StreamIn( nDataStore::tInput& input )
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0054c311
+void tMetaMapDataRequest::tResponse::fn_0054c311( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue )
+{
+	tClientHex clientHex( hex, maxEconomyValue, maxVictoryValue );
+
+	if( m_20 )
+	{
+		int32 index = fn_0054c4e3( hex.fn_00539f9c().fn_0055f269(), hex.fn_00539f9c().fn_005e8f21() );
+		m_10[ index ] = clientHex;
+	}
+	else
+	{
+		m_21 = hex.fn_00539f9c().fn_0055f269();
+		m_22 = hex.fn_00539f9c().fn_005e8f21();
+		m_10[ 0 ] = clientHex;
+	}
+}
+
 }

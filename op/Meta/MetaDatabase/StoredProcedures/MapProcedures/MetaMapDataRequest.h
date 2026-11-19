@@ -61,6 +61,10 @@ namespace nStoredProcedureArguments
 			virtual	void StreamOut( nDataStore::tOutput& output ) const;
 			virtual	void StreamIn( nDataStore::tInput& input );
 
+			void fn_0054c311( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
+			// HYPOTHESIS: the index of a hex in m_10 from its two coordinates.
+			int32 fn_0054c4e3( long param_1, long param_2 );
+
 			std::vector< tClientHex >	m_10;
 			bool	m_20;
 			int8u	m_21;
