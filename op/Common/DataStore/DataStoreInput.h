@@ -89,6 +89,11 @@ protected:
 	const tBuffer* fBuffer;
 };
 
+tInput::~tInput()
+{
+	Close( fCleanUpBuffer );
+}
+
 #ifndef DATASTORE_OUT_OF_LINE_GET
 byte tInput::Get()
 {

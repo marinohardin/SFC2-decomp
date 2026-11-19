@@ -3,6 +3,7 @@
 
 #include "Common/BaseTypes.h"
 #include "Common/Callback.h"
+#include "unsorted/tAddressMgr.h"
 
 namespace nDataStore
 {
@@ -26,7 +27,11 @@ namespace nSwitch
 		void fn_00719050();
 
 	protected:
-		int8u field_04[0x40];
+		int8u field_04[0x38];
+		// HYPOTHESIS: the procedure's own address, handed to the requests it sends (the news
+		// flash passes it by value to tGetNewsRequest).
+		tSmartPtr<tObject_005d3679> field_3c;
+		int8u field_40[0x4];
 	};
 
 };

@@ -23617,6 +23617,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005dc8a8": {
+   "name": "FUN_005dc8a8",
+   "symbol": "?fn_005dc8a8@tNewsFlash@nAsyncClientNewsProcedure@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_NewsFlash.cpp",
+   "size": 355,
+   "score": 6.409,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x005de28c": {
    "name": "FUN_005de28c",
    "symbol": "?fn_005de28c@fn_005de28c_Vector@@QAEXPAPAVtNewsStory@@PBQAV2@1@Z",
