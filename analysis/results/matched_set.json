@@ -1504,6 +1504,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040b4bf": {
+   "name": "tGLPixFmt::~tGLPixFmt",
+   "symbol": "??1tGLPixFmt@@UAE@XZ",
+   "unit": "unsorted/tGLPixFmt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040bd69": {
    "name": "tMouseMgr_Base::~tMouseMgr_Base",
    "symbol": "??1tMouseMgr_Base@@UAE@XZ",
