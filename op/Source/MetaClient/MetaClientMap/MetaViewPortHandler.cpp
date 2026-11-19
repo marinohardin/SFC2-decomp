@@ -56,7 +56,7 @@ public:
 	bool fn_005e65e5( const tPoint* point, const tRect* area );
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	void fn_005e6469( long arg ); bool fn_005e64ea(); bool fn_005e653d( const tHexPoint& position );
-	tHexPoint fn_005e7925( long x, long y, int arg ); bool fn_005e6642( const class fn_005e6642_record& record );
+	tHexPoint fn_005e7925( long x, long y, int arg ); bool fn_005e6642( const class fn_005e6642_record& record ); void fn_005e66b7( const fn_005ea9ce_elem& entry );
 	unsigned char field_4[ 0xd8 - 0x4 ]; fn_00717950_object* field_d8; // HYPOTHESIS: an object of unknown type; only 0x00717950 is called on it (0x005e64ea).
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
@@ -477,4 +477,25 @@ class fn_005e6642_record { public: unsigned char field_0[ 0x18 ]; tHexPoint fiel
 bool tMetaClientMapPanel::fn_005e6642( const fn_005e6642_record& record )
 {
 	return ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a421( record.field_18.fn_0055f269(), record.field_18.fn_005e8f21() );
+}
+
+// FUNCTION: STARFLEETOP 0x005e66b7
+void tMetaClientMapPanel::fn_005e66b7( const fn_005ea9ce_elem& entry )
+{
+	tOptex::tGuard guard( &field_dc );
+	tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > >::iPtr list = field_fc.field_60.Lock();
+
+	std::vector< fn_005ea9ce_elem >::iterator it;
+	for( it = ( *list ).begin(); it != ( *list ).end(); ++it )
+	{
+		if( it->m_04 == entry.m_04 && it->m_4c == entry.m_4c && it->m_54 == entry.m_54 )
+		{
+			*it = entry;
+			break;
+		}
+	}
+	if( it == ( *list ).end() )
+		( *list ).push_back( entry );
+	list.Done();
+	fn_005e5abe();
 }
