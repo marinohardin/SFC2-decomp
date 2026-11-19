@@ -5,6 +5,9 @@
 #define tObject_0092deb4_h 1
 
 class tString;
+class fn_0042a480_object;
+template< typename tnPtrType, typename tnPtrGuard > class tAccessPointer;
+template< typename tPtrType > class tSingleAccessWrapper;
 
 // HYPOTHESIS: vfunctionN is slot N of its vftable (offset 4 * N). Only the slots the rebuilt
 // functions call have known signatures; their meanings are not known unless a comment says so.
@@ -137,6 +140,10 @@ public:
 	virtual void vfunction107();
 	virtual void vfunction108();
 	virtual void vfunction109();
+
+	// HYPOTHESIS: locks and returns the character the logon information procedure reads its
+	// database identifier from; the argument's meaning is not recovered.
+	tAccessPointer< fn_0042a480_object, tSingleAccessWrapper< fn_0042a480_object > > fn_004d16b2( int index );
 };
 
 extern tObject_0092deb4 *gObject_0092deb4;

@@ -24040,6 +24040,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005e13d8": {
+   "name": "FUN_005e13d8",
+   "symbol": "?vfunction5@tRequestLogonInformation@nAsyncClientMapProcedures@@UAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp",
+   "size": 322,
+   "score": 99.898,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x005e2501": {
    "name": "FUN_005e2501",
    "symbol": "?fn_005e2501@fn_005e2501_class@@QAEXXZ",
