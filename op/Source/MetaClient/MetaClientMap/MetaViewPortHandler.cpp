@@ -31,14 +31,14 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e8c29( const tRect& area );
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e5ee7( char arg ); void fn_005e8c29( const tRect& area );
 	void fn_005e6091();
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
 	tMetaMapControl* fpMetaMapControl;
 	tMetaClientMapQueue field_fc; bool field_18c; unsigned char field_18d[ 0x190 - 0x18d ]; long field_190; long field_194; unsigned char field_198[ 0x1a0 - 0x198 ];
-	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8; unsigned char field_1cc[ 0x1d0 - 0x1cc ]; tHexPoint field_1d0;
+	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8; char field_1cc; unsigned char field_1cd[ 0x1d0 - 0x1cd ]; tHexPoint field_1d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005e5800
@@ -295,4 +295,10 @@ void tMetaClientMapPanel::fn_005e5e24( int arg )
 void tMetaClientMapPanel::fn_005e5edc()
 {
 	fpMetaMapControl->fn_005e4468();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5ee7
+void tMetaClientMapPanel::fn_005e5ee7( char arg )
+{
+	field_1cc = arg;
 }
