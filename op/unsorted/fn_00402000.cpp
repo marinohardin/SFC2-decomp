@@ -463,14 +463,15 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     d->fn_00407dcc(pe[0x40 / 4]);
     for (i = 0; i < n; i++)
     {
-        fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (char)(i * 5);
-        fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68);
+        char j = i * 5;
         for (int k = 0; k < 5; k++)
         {
-            dst[k].a = src[k].a;
-            dst[k].b = src[k].b;
-            dst[k].c = src[k].c;
-            dst[k].d = src[k].d;
+            fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68) + k;
+            fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (j + k);
+            dst->a = src->a;
+            dst->b = src->b;
+            dst->c = src->c;
+            dst->d = src->d;
         }
     }
 }
