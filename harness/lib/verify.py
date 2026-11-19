@@ -281,13 +281,17 @@ def _in_threads(fn, items, jobs):
     in any call is raised once all calls have ended. Plain threads, not concurrent.futures, whose
     `import queue` can pick up harness/queue.py when harness/ is on sys.path."""
     items = list(items)
+    # A run interrupted earlier in this process may have left compiles stopped (a worker of it
+    # outlived the wait); this run starts them again.
+    source.allow_compiles()
     results = [None] * len(items)
     errors = [None] * len(items)
     pending = iter(range(len(items)))
     lock = threading.Lock()
+    stop = threading.Event()
 
     def worker():
-        while True:
+        while not stop.is_set():
             with lock:
                 i = next(pending, None)
             if i is None:
@@ -301,8 +305,21 @@ def _in_threads(fn, items, jobs):
                for _ in range(max(1, min(jobs, len(items))))]
     for t in threads:
         t.start()
-    for t in threads:
-        t.join()
+    try:
+        for t in threads:
+            t.join()
+    except BaseException:
+        # Ctrl-C reaches only this thread; the compiles run in their own process groups.
+        stop.set()
+        source.stop_all()
+        # Wait for the workers (their compiles are stopped, and none starts another) before
+        # compiles are allowed again; polled, since join is where the interrupt arrives.
+        deadline = time.time() + 60
+        while any(t.is_alive() for t in threads) and time.time() < deadline:
+            time.sleep(0.05)
+        if not any(t.is_alive() for t in threads):
+            source.allow_compiles()
+        raise
     for e in errors:
         if e is not None:
             raise e
@@ -413,7 +430,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             sub.add('ERROR', str(e))
             sub.failed = True
             return sub
-        build = source.compile_unit(path, profile, src_root)
+        build = source.compile_unit(path, profile, src_root, cl=paths.HARNESS_CL)
         if not build['ok']:
             errs = [ln for ln in build['log'].splitlines() if ' error ' in ln or 'fatal error' in ln]
             sub.add('ERROR', f'build {rel}: BUILD HAS FAILED. Treat this as a build failure, '

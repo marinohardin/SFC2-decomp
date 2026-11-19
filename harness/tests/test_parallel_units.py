@@ -36,7 +36,7 @@ def five_units(tmp_path, monkeypatch):
     state = {'running': 0, 'most': 0, 'barrier': None}
     lock = threading.Lock()
 
-    def compile_unit(path, profile, src_root, build_root=None):
+    def compile_unit(path, profile, src_root, build_root=None, cl=None):
         name = path.rsplit('/', 1)[-1]
         with lock:
             state['running'] += 1

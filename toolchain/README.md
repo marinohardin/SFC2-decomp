@@ -93,6 +93,37 @@ Limits:
   Compile one source per call (the calibration does).
 - Wine was not needed; wibo handles `cl`, `link` and `link /lib`.
 
+## Native compiler (macOS)
+
+```sh
+toolchain/fetch-native.sh         # tools/wibo/1.2.0/wibo-macos, tools/msvc6/msvc6.4 and 6.5
+toolchain/bin/cl-native /nologo /c /MT /GR /GX /O1 foo.cpp
+```
+
+The wibo 1.2.0 release runs `CL.EXE` directly on Apple Silicon under Rosetta 2, with no Docker
+and no QEMU (wibo 1.0.0 does not: `C2.DLL` stops with an internal compiler error). The compiler
+files are the image's own decomp.me tarballs, with the same checksums. `scripts/setup.sh` fetches
+it on macOS, and the harness's own scoring then compiles with it (`harness/lib/paths.py`,
+`HARNESS_CL`, chosen by `pick_cl`); `HARNESS_COMPILER=docker` sends it back to the image.
+`paths.CL` and the default of `source.compile_unit`, which a consumer's build calls
+(`docs/INTERFACE.md`), stay the image. `cl-native` takes `MSVC_VERSION`
+and `MSVC_EXTRA_INCLUDE` like `cl`, but not `SFCOP_MSVC_MOUNTS`; `link`, `lib`, `dumpbin` and
+the mission-script build still run in the image.
+
+Checked on 2026-11-19 against the image, over every unit with a claim (158):
+
+- `harness/build-and-verify.sh --all` printed the same verdict and score for all 4,228 claimed
+  functions, line for line, with either compiler.
+- 133 objects were byte-identical apart from the COFF timestamp. The other 25 hold the same
+  sections, bytes and relocations, but list some COMDAT data sections (RTTI records) in another
+  order. Each compiler is deterministic: a second run of either reproduced its own objects.
+  So the native compiler is for the harness's per-function scores only: anything that links
+  objects or compares whole objects (a link, a consumer of `docs/INTERFACE.md`) uses the
+  image's `toolchain/bin/cl`. CI's `check` compiles with the image, so its result is the one of
+  record; a local check with the native compiler is a fast preview of it.
+- Total compile time for the 158 units fell from 842 s to 90 s, and a full verify from 410 s to
+  215 s; most of what is left is objdiff.
+
 ## Calibration
 
 `calibration/calibrate.py` (stdlib Python; `calibrate.sh` is the entry point):

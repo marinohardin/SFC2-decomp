@@ -16,7 +16,9 @@ import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
+import threading
 import time
 
 from . import claims, deleting, paths
@@ -111,29 +113,110 @@ def _flags(profile, src_root):
     return first + flags
 
 
-def compile_unit(unit_path, profile, src_root, build_root=None):
-    """Compile one translation unit with the pinned compiler. Returns a dict with obj, listing,
-    log, ok, secs, out_dir."""
+def _stop_group(p, grace=5):
+    """Stop a process started with start_new_session and everything it started: TERM first, so
+    a wrapper's cleanup trap runs, then KILL."""
+    for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, grace)):
+        try:
+            os.killpg(p.pid, sig)
+        except ProcessLookupError:
+            break
+        try:
+            p.communicate(timeout=wait)
+            break
+        except subprocess.TimeoutExpired:
+            continue
+
+
+# The compiles running now, so an interrupt in the main thread can stop the ones that worker
+# threads started (verify._in_threads): only the main thread sees KeyboardInterrupt.
+_live = {}
+_live_lock = threading.Lock()
+# Set by stop_all until allow_compiles: a worker that had not yet started its compile when the
+# running ones were stopped does not start it after (the check and the start share _live_lock).
+_stopping = False
+
+
+def allow_compiles():
+    global _stopping
+    with _live_lock:
+        _stopping = False
+
+
+def _docker_kill(cname, cl):
+    """Stop the compile's container, when the compiler is the image's; no Docker is needed for
+    the native one."""
+    if cl != paths.CL_DOCKER:
+        return
+    try:
+        subprocess.run(['docker', 'kill', cname], capture_output=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+
+
+def stop_all(grace=5):
+    """Stop every running compile's process group and container: TERM to all, then KILL to what
+    is left after `grace` seconds. The threads waiting on them see the compiles end, and no compile
+    starts until allow_compiles."""
+    global _stopping
+    with _live_lock:
+        _stopping = True
+        live = list(_live.values())
+    for sig in (signal.SIGTERM, signal.SIGKILL):
+        for p, _, _ in live:
+            if p.poll() is None:
+                try:
+                    os.killpg(p.pid, sig)
+                except ProcessLookupError:
+                    pass
+        deadline = time.time() + grace
+        while time.time() < deadline and any(p.poll() is None for p, _, _ in live):
+            time.sleep(0.05)
+    for _, cname, cl in live:
+        _docker_kill(cname, cl)
+
+
+def compile_unit(unit_path, profile, src_root, build_root=None, cl=None):
+    """Compile one translation unit with the pinned compiler: the image's wrapper, or `cl` (the
+    harness's scoring passes paths.HARNESS_CL). Returns a dict with obj, listing, log, ok, secs,
+    out_dir."""
     build_root = build_root or paths.BUILD
     key = hashlib.sha1(os.path.abspath(unit_path).encode()).hexdigest()[:12]
     base = os.path.splitext(os.path.basename(unit_path))[0]
     out = os.path.join(build_root, f'{base}-{key}')
     shutil.rmtree(out, ignore_errors=True)
     os.makedirs(out)
-    cmd = [paths.CL] + _flags(profile, src_root) + ['/FAs', f'/Fa{out}/', f'/Fo{out}/',
+    cl = cl or paths.CL
+    cmd = [cl] + _flags(profile, src_root) + ['/FAs', f'/Fa{out}/', f'/Fo{out}/',
                                                    os.path.basename(unit_path)]
     cname = f'sfcop-harness-{key}-{os.getpid()}'
     env = dict(os.environ, SFCOP_ROOT=paths.SFCOP_ROOT, SFCOP_MSVC_NAME=cname,
                MSVC_VERSION=str(profile.get('compiler', '6.4')))
     t0 = time.time()
+    # Its own process group, so a timeout stops the whole compile: the wrapper and the compiler
+    # it starts (cl-native's wibo, or the docker client).
+    with _live_lock:
+        if _stopping:
+            raise KeyboardInterrupt('compiles stopped')
+        p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                             errors='replace', start_new_session=True)
+        _live[p.pid] = (p, cname, cl)
     try:
-        p = subprocess.run(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
-                           capture_output=True, text=True, errors='replace',
-                           timeout=COMPILE_TIMEOUT)
-        log, rc = p.stdout + p.stderr, p.returncode
+        out_, err_ = p.communicate(timeout=COMPILE_TIMEOUT)
+        log, rc = out_ + err_, p.returncode
     except subprocess.TimeoutExpired:
-        subprocess.run(['docker', 'kill', cname], capture_output=True)
+        _stop_group(p)
+        _docker_kill(cname, cl)
         log, rc = f'compile killed after {COMPILE_TIMEOUT}s', -1
+    except BaseException:
+        # Ctrl-C reaches only the harness now that the compile has its own group: stop it too.
+        _stop_group(p)
+        _docker_kill(cname, cl)
+        raise
+    finally:
+        with _live_lock:
+            _live.pop(p.pid, None)
     obj = os.path.join(out, base + '.obj')
     listing = os.path.join(out, base + '.asm')
     with open(os.path.join(out, 'cl.log'), 'w') as f:

@@ -49,7 +49,7 @@ single-threaded compiler in its own container followed by one objdiff per functi
 roughly the number of cores a run uses. The output does not depend on it: each unit reports into
 its own buffer, and the buffers are printed in unit order. Two lines move: the exe check's
 warning comes before the first unit, and an untrusted exe stops the run before any unit builds.
-An interrupted run (Ctrl-C) can leave the units' compile containers running until they finish.
+An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and their containers. Each compile runs in its own process group, so a harness stopped by another signal (`kill`, a CI timeout) leaves its running compiles to finish on their own, each within the compile timeout; send it Ctrl-C (SIGINT) instead to stop them.
 
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).
@@ -58,8 +58,11 @@ An interrupted run (Ctrl-C) can leave the units' compile containers running unti
    compiled in the unit `op/UNITS.tsv` assigns to its address, which must include the header,
    directly or through other headers; anything else is an error (`lib/claims.py`, shared with
    `tools/manifest.py`).
-2. Compiles that unit with `toolchain/bin/cl` and the unit's profile from `units.json`, adding
-   only output paths and `/FAs`. The listing tells which compiled symbol follows the annotation;
+2. Compiles that unit with the unit's profile from `units.json`, adding only output paths and
+   `/FAs`. The compiler is `toolchain/bin/cl-native` when `toolchain/fetch-native.sh` has
+   installed it, else `toolchain/bin/cl` (`HARNESS_COMPILER=docker` or `native` forces one; see
+   `toolchain/README.md`, "Native compiler"); `paths.HARNESS_CL` holds the choice. A consumer
+   calling `source.compile_unit` without `cl=` gets the image, the compiler of record. The listing tells which compiled symbol follows the annotation;
    for a header claim, the header's line records in the unit's listing do. An inline
    destructor's deleting destructor, whose listing may have no line records, is the `??_G` /
    `??_E` whose mangled class is the class named on the definition.
