@@ -1171,6 +1171,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00407c81": {
+   "name": "tSession::vfunction1",
+   "symbol": "?mValid@tSession@@UAEEXZ",
+   "unit": "unsorted/tPath.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

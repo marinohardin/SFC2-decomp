@@ -59,6 +59,9 @@ public:
 	// copies the session cookie inline.
 	tSession &operator=( const tSession &other ) { fCookie = other.fCookie; return *this; }
 
+	// HYPOTHESIS: the session overrides the first virtual with an out-of-line copy (STARFLEETOP 0x00407c81).
+	virtual iTruth	mValid( void );
+
 	void	mAddCookie( tVolume &volume );
 	void	mAddCookie( tDir &dir );
 	void	mAddCookie( tPath &path );
