@@ -14,7 +14,7 @@ class tStream
 public:
 	virtual void	fn_slot0( void );
 	virtual void	fn_slot1( void );
-	virtual void	fn_slot2( void* buffer, long size );
+	virtual tStream&	fn_slot2( void* buffer, long size );
 	virtual tStream&	fn_slot3( void* buffer, long size );
 	unsigned char	fSwap;
 	tStream&	operator<<( unsigned long v );

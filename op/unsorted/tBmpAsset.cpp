@@ -61,7 +61,6 @@ tStream& tBmpAsset::vfunction6( tStream& s )
 	s.fn_slot2( q, 4 );
 	if ( s.fSwap )
 		fn_00676a00( q );
-	s.fn_slot2( &field_6A, 1 );
-	s.fn_slot2( &field_6B, 1 );
+	s.fn_slot2( &field_6A, 1 ).fn_slot2( &field_6B, 1 );
 	return s;
 }

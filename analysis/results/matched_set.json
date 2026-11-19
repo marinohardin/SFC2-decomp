@@ -35898,8 +35898,8 @@
    "symbol": "?vfunction6@tBmpAsset@@UAEAAVtStream@@AAV2@@Z",
    "unit": "unsorted/tBmpAsset.cpp",
    "size": 128,
-   "score": 99.818,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0068ff60": {
