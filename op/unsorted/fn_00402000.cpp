@@ -478,26 +478,26 @@ std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_st
 
 
 
-class fn_004029b1_Obj
-{
-public:
-    void fn_00403d87();
-    void fn_00403c1a(unsigned int, unsigned int, char);
-    char* fn_004029b1(char*, char);
-    char m0;
-    char* m4;
-};
 
-// HYPOTHESIS: this is the std::string insert(iterator, char); 0x00403d87 is begin and 0x00403c1a is insert(pos, n, c)
+
+
+
+
+
+
+
+
+
+
+
+// std::string::insert(iterator, char), out of line, as the library header writes it.
 // FUNCTION: STARFLEETOP 0x004029b1
-char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >::iterator std::basic_string<char, std::char_traits<char>, std::allocator<char> >::insert(iterator _P, char _C)
 {
-    fn_00403d87();
-    unsigned int d = p - m4;
-    unsigned int pos = p ? d : 0;
-    fn_00403c1a(pos, 1, c);
-    fn_00403d87();
-    return m4 + pos;
+    size_type _P0 = _Pdif(_P, begin());
+    insert(_P0, 1, _C);
+    return (begin() + _P0);
 }
 
 // std::string::substr(pos, n), out of line, as the library header writes it.
