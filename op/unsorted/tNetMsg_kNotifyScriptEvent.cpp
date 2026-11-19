@@ -21,3 +21,9 @@ char vfunction33_result::fn_0041021f()
 {
 	return field_5c;
 }
+
+// FUNCTION: STARFLEETOP 0x00410223
+int vfunction33_result::fn_00410223()
+{
+	return field_64;
+}

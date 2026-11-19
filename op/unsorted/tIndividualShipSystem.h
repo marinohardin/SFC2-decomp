@@ -13,6 +13,7 @@ struct vfunction33_result
     // HYPOTHESIS: a truth test; tSensorGroupSystem's 0x0043f2e3 sets its ECM and ECCM when it
     // holds for the owner.
     char fn_0041021f();
+    int fn_00410223();
 
     char pad00[0x1c];
     int field_1c;
@@ -24,7 +25,9 @@ struct vfunction33_result
     char pad5e[0x60 - 0x5e];
     // HYPOTHESIS: a fleet ID; 0x0043e0ed passes it to fn_004274f4.
     int field_60;
-    char pad64[0x110 - 0x64];
+    // HYPOTHESIS: a value fn_00410223 returns.
+    int field_64;
+    char pad68[0x110 - 0x68];
     bool field_110;
     char pad111[0x86c - 0x111];
     // HYPOTHESIS: a kind or index read by tShieldSystem to pick a sound event.
