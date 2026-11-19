@@ -3880,6 +3880,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004197d7": {
+   "name": "tNetMsg_kSelectTarget::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kSelectTarget@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kSelectTarget.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
