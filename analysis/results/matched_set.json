@@ -17142,9 +17142,9 @@
    "symbol": "?fn_00539ff1@tMetaMapHex@@QAE?AV?$vector@VtHexPoint@@V?$allocator@VtHexPoint@@@std@@@std@@HH@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 662,
-   "score": 95.533,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0053a287": {
    "name": "FUN_0053a287",
