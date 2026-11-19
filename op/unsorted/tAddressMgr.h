@@ -24,6 +24,7 @@ public:
 
 	tSmartPtr<tObject_005d3679> GetNewsRelayAddress();
 	tSmartPtr<tObject_005d3679> GetMapRelayAddress();
+	tSmartPtr<tObject_005d3679> GetClockRelayAddress();
 };
 
 #endif
