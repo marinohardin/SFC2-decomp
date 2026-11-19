@@ -17,3 +17,9 @@ tListMember *tListMember::vfunction3()
 {
     return mNext;
 }
+
+// FUNCTION: STARFLEETOP 0x004088da
+void tListMember::vfunction6(tListMember *aMember)
+{
+    mPrevious = aMember;
+}
