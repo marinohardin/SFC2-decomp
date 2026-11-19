@@ -1,22 +1,26 @@
 #include "unsorted/tIndividualShipSystem.h"
+#include "Source/network/NetMsgClass.h"
+#include "unsorted/tNetControl.h"
 
 #include "unsorted/fn_0090bed4_Object.h"
 #include "unsorted/tObject_0090be60.h"
 
 extern char g_0083bddc[];
 
-class tNetMsg_kNotifyScriptEvent
+// HYPOTHESIS: the fields, from what 0x004102a0 stores into them.
+class tNetMsg_kNotifyScriptEvent: public tNetMsg
 {
 public:
-	virtual void vfunction0();
-	virtual void* vfunction1();
+	virtual const tNetMsg::tMapItem *mGetMap(void) const;
+	char fFlag;
+	int fValue;
 };
 
 // HYPOTHESIS: returns the address of a static descriptor of the message class
 // FUNCTION: STARFLEETOP 0x004101c8
-void* tNetMsg_kNotifyScriptEvent::vfunction1()
+const tNetMsg::tMapItem *tNetMsg_kNotifyScriptEvent::mGetMap(void) const
 {
-	return g_0083bddc;
+	return (const tNetMsg::tMapItem *)g_0083bddc;
 }
 
 // FUNCTION: STARFLEETOP 0x0041021f
@@ -75,4 +79,14 @@ void vfunction33_result::fn_00410243(int team, int value)
 		field_60 = team;
 		list->fn_00426aef(field_1c, value);
 	}
+}
+
+// HYPOTHESIS: tells the other machines about a script event, by entity ID.
+// FUNCTION: STARFLEETOP 0x004102a0
+void vfunction33_result::fn_004102a0(int value)
+{
+	tNetMsg_kNotifyScriptEvent msg;
+	msg.fFlag = 1;
+	msg.fValue = value;
+	gNetControl.mQueueMsg(&msg, 0x3a, field_1c, -1.0);
 }

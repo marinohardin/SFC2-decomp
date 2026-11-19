@@ -18,6 +18,7 @@ struct vfunction33_result
     int fn_00410231();
     void fn_00410239(int value);
     void fn_00410243(int team, int value);
+    void fn_004102a0(int value);
 
     char pad00[0x1c];
     int field_1c;
