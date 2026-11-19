@@ -290,3 +290,9 @@ void tMetaClientMapPanel::fn_005e5e24( int arg )
 		fn_005e5c72( center );
 	fn_005e5edc();
 }
+
+// FUNCTION: STARFLEETOP 0x005e5edc
+void tMetaClientMapPanel::fn_005e5edc()
+{
+	fpMetaMapControl->fn_005e4468();
+}
