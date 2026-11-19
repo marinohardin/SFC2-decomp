@@ -554,6 +554,19 @@ def report_shared_symbols(rep):
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
+def write_symbol_table(rep, out=None):
+    """The claims' rows from an --all run. When a unit failed to build, its claims have no
+    rebuilt symbol: their rows are kept from the table the run replaces, not dropped."""
+    out = out or symtab.path()
+    rows = symbol_table_rows(rep.results)
+    if rep.failed:
+        have = {r[0] for r in rows} | {r['address'] for r in rep.results
+                                        if r.get('symbol') and not r.get('error')}
+        rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
+                 if a not in have]
+    symtab.write_claims(out, rows)
+
+
 def symbol_table_rows(results):
     """(address, symbol, unit) of each claim this run rebuilt, for harness/lib/symtab.py. A
     compiler static (resolved per unit) or a symbol two claims compile to names no one target,
@@ -671,6 +684,9 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None):
         if b['source'] == 'rebuilt':
             rep.add('ERROR', text + ' (a consumer linking the exact objects cannot resolve it)')
             rep.failed = True
+        elif b['source'] == 'table':
+            rep.add('WARN', text + ' in the symbol table, not rebuilt in this run (the table is '
+                    'the last --all\'s; --all decides)')
         else:
             rep.add('WARN', text + ' in matched_set.json, not rebuilt in this run (the recorded '
                     'symbol may be stale; --all decides)')
@@ -773,7 +789,7 @@ def main(argv=None):
         rep.failed = True
     if a.all and rep.results:
         # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
-        symtab.write_claims(symtab.path(), symbol_table_rows(rep.results))
+        write_symbol_table(rep)
     if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')

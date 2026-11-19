@@ -4,7 +4,7 @@ import pytest
 
 from conftest import FakeIndex
 from test_claim_symbols import claim, exact_caller, recorded
-from harness.lib import loopio, stophook, symtab, verify
+from harness.lib import loopio, pack, stophook, symtab, verify
 
 STANDIN = '?fn_00401200@c_00401100_Object@@QAEXXZ'
 
@@ -17,6 +17,7 @@ STANDIN = '?fn_00401200@c_00401100_Object@@QAEXXZ'
     ('??0tPath@@QAE@ABV0@@Z', 'thiscall'),
     ('?vfunction8@tScrollBar@@UAEXPBUtRect@@@Z', 'thiscall'),
     ('?Create@tFoo@@SGPAV1@XZ', 'stdcall'),
+    ('?Add@?$tList@PAVtFoo@@@@QAEXPAVtFoo@@@Z', 'thiscall'),
     ('?g@@3HA', ''),
     ('_main', ''),
 ])
@@ -40,10 +41,10 @@ def test_a_missing_table_is_empty(tmp_path):
     assert symtab.load_claims(str(tmp_path / 'none.tsv')) == {}
 
 
-def checked(results, data=None, table=None):
+def checked(results, data=None, table=None, check_all=False):
     rep = verify.Report()
     rep.results = results
-    verify.report_claim_symbols(rep, data or recorded(), [], False, table)
+    verify.report_claim_symbols(rep, data or recorded(), [], check_all, table)
     return rep
 
 
@@ -116,3 +117,45 @@ def test_the_table_leaves_out_statics_and_symbols_two_claims_share():
                dict(address='0x00401300', symbol='?g@@YAXXZ', unit='b.cpp'),
                dict(address='0x00401400', symbol=None, unit='b.cpp')]
     assert verify.symbol_table_rows(results) == [('0x00401000', '?f@@YAXXZ', 'a.cpp')]
+
+
+def test_a_full_run_collects_stand_ins_without_a_warning_each():
+    rep = checked([partial(exact_caller()), claim(STANDIN)], check_all=True)
+    assert len(rep.standins) == 1
+    assert rep.lines == []
+
+
+def test_an_exact_break_against_the_table_says_so():
+    rep = checked([exact_caller()], table={'0x00401200': (STANDIN, 'b.cpp')})
+    assert [b['source'] for b in rep.claim_breaks] == ['table']
+    assert len(rep.lines) == 1 and rep.lines[0].startswith('WARN')
+    assert 'in the symbol table, not rebuilt in this run' in rep.lines[0]
+
+
+@pytest.mark.parametrize('hit, text', [
+    (None, ''),
+    (('?f@@YGXH@Z', 'claim', 'Tiger/a.cpp'),
+     ': the call must name `?f@@YGXH@Z` (stdcall, claim, Tiger/a.cpp)'),
+    (('?f@tFoo@@QAEXXZ', 'functions.csv', ''),
+     ': probably `?f@tFoo@@QAEXXZ` (thiscall, functions.csv)'),
+    (('_g', 'sdk', ''), ': probably `_g` (sdk)'),
+])
+def test_a_callee_line_states_a_claims_symbol_and_leads_apart(hit, text):
+    assert pack.callee_symbol(hit) == text
+
+
+def test_a_failed_full_run_keeps_the_rows_of_units_that_did_not_build(tmp_path):
+    out = str(tmp_path / 'symbols.tsv')
+    symtab.write_claims(out, [('0x00401000', '?old@@YAXXZ', 'a.cpp'),
+                              ('0x00402000', '?kept@@YAXXZ', 'b.cpp')])
+    rep = verify.Report()
+    rep.failed = True
+    rep.results = [dict(address='0x00401000', symbol='?new@@YAXXZ', unit='a.cpp'),
+                   dict(address='0x00402000', symbol=None, unit='b.cpp',
+                        error='BUILD HAS FAILED')]
+    verify.write_symbol_table(rep, out)
+    assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp'),
+                                       '0x00402000': ('?kept@@YAXXZ', 'b.cpp')}
+    rep.failed = False
+    verify.write_symbol_table(rep, out)
+    assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp')}

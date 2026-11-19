@@ -207,7 +207,11 @@ line for each and lists them under `standins` in `--json`. The Stop hook refuses
 function holds one, and the loop does not commit it (exit 5 from `loopio.score`). Rows on the
 relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as for exact
 functions. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
-are checked, so `loop.sh` writes one before its first session.
+are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
+every start; after merging into a running lane, restart its loop (or run `--all`) so a renamed
+claim is not refused as a stand-in. An `--all` in which a unit failed to build keeps that unit's
+rows from the table it replaces. The context pack lists a claimed callee's symbol as what the
+call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
 
 ## The queue (`queue.py`)
 

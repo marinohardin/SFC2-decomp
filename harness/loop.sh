@@ -181,9 +181,10 @@ if [ "$dry" = 0 ]; then
     fi
 fi
 [ -f "$state/queue.json" ] || python3 harness/queue.py build || exit 2
-# The symbol table the stand-in check reads (harness/lib/symtab.py): one full verify, cheap once
-# the caches are warm. Delete $state/build/symbols.tsv to have it written again.
-if [ "$dry" = 0 ] && [ ! -f "$state/build/symbols.tsv" ]; then
+# The symbol table the stand-in check reads (harness/lib/symtab.py), written again at every
+# start, so a merge into the lane between runs is in it: one full verify, cheap once the caches
+# are warm.
+if [ "$dry" = 0 ]; then
     echo "INFO  writing the symbol table: harness/build-and-verify.sh --all (log $state/symbols.log)"
     HARNESS_STATE="$state" nice -n 5 harness/build-and-verify.sh --all > "$state/symbols.log" 2>&1
     [ -f "$state/build/symbols.tsv" ] \

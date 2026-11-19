@@ -237,6 +237,18 @@ def exact_sample(fn, index, matched_set, src_root, unit_map, anns):
     return None
 
 
+def callee_symbol(hit):
+    """The text a callee line adds for symtab.lookup's (symbol, source, file): a claim's symbol
+    is a requirement (the Stop hook enforces it); the other sources are leads."""
+    if not hit:
+        return ''
+    sym, src, where = hit
+    detail = ', '.join(x for x in (symtab.convention(sym), src, where) if x)
+    if src == 'claim':
+        return f': the call must name `{sym}` ({detail})'
+    return f': probably `{sym}` ({detail})'
+
+
 def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
           decomp=None, limit=None):
     """The pack as Markdown."""
@@ -270,19 +282,15 @@ def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
     table = symtab.load_claims()
     for addr, proto, where in calls[:CALLEES_MAX]:
         line = f'- `{addr}` `{proto}`' + (f' (in `{where}`)' if where else '')
-        hit = symtab.lookup(int(addr, 16), index, table)
-        if hit:
-            sym, src, _ = hit
-            conv = symtab.convention(sym)
-            line += f': the call must name `{sym}`' + (f' ({conv}' if conv else ' (') + f', {src})'
+        line += callee_symbol(symtab.lookup(int(addr, 16), index, table))
         parts.append(line)
     if len(calls) > CALLEES_MAX:
         parts.append(f'- ... {len(calls) - CALLEES_MAX} more cut')
     if any(symtab.lookup(int(c[0], 16), index, table) for c in calls[:CALLEES_MAX]):
-        parts += ['', 'Declare a callee with a symbol listed above so it compiles to that symbol: '
-                  'use its class and header as they are. A stand-in (the callee declared again '
+        parts += ['', 'Declare a claimed callee so it compiles to the symbol listed: use its '
+                  'class and header as they are. A stand-in (a claimed callee declared again '
                   'under another class or signature) is refused by the Stop hook, even when the '
-                  'bytes match.']
+                  'bytes match. For an unclaimed callee the symbol listed is a lead.']
     parts.append('')
 
     wanted = []
