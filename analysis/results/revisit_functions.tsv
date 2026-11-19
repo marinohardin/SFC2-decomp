@@ -385,3 +385,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00407c5b	tCookie::tCookie	99.50	2	opus	2026-11-19T20:01:22Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.50%
 0x00407d14	tDynamicMemoryFreeList::scalar_deleting_destructor	85.83	2	opus	2026-11-19T20:06:58Z	best not above 90% after 2 attempts; best 85.83%
 0x00407d52	tShipSpecManager::~tShipSpecManager	92.78	2	opus	2026-11-19T20:10:48Z	attempt 2 (opus) did not raise the best; waits for Fable; best 92.78%
+0x004088e4	tListMember::scalar_deleting_destructor	8.23	2	opus	2026-11-19T20:15:59Z	best not above 90% after 2 attempts; best 8.23%
