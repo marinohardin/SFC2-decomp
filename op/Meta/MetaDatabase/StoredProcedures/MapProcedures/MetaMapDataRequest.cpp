@@ -238,4 +238,18 @@ tMetaMapDataRequest::tResponse::tClientHex* tMetaMapDataRequest::tResponse::fn_0
 	return &m_10[ 0 ];
 }
 
+// FUNCTION: STARFLEETOP 0x0054c4e3
+int32 tMetaMapDataRequest::tResponse::fn_0054c4e3( long param_1, long param_2 )
+{
+	unsigned int index = m_24 * param_2 + param_1;
+
+	if( (unsigned int)param_1 >= (unsigned int)m_24 || (unsigned int)param_2 >= (unsigned int)m_28 || index >= (unsigned int)m_10.size() )
+	{
+#line 257
+		throw nException::tBaseException( "X/Y position not in bounds", __FILE__, __LINE__ );
+	}
+
+	return index;
+}
+
 }
