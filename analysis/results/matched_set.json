@@ -19378,6 +19378,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0054c471": {
+   "name": "FUN_0054c471",
+   "symbol": "?fn_0054c471@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAVtClientHex@123@JJ@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",

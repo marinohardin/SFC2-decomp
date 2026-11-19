@@ -218,4 +218,11 @@ tMetaMapDataRequest::tResponse::tClientHex& tMetaMapDataRequest::tResponse::tCli
 	return *this;
 }
 
+// FUNCTION: STARFLEETOP 0x0054c471
+tMetaMapDataRequest::tResponse::tClientHex& tMetaMapDataRequest::tResponse::fn_0054c471( long param_1, long param_2 )
+{
+	int32 index = fn_0054c4e3( param_1, param_2 );
+	return m_10[ index ];
+}
+
 }

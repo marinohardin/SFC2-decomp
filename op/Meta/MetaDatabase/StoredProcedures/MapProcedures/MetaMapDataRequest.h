@@ -65,6 +65,8 @@ namespace nStoredProcedureArguments
 			void fn_0054c311( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
 			// HYPOTHESIS: the index of a hex in m_10 from its two coordinates.
 			int32 fn_0054c4e3( long param_1, long param_2 );
+			// HYPOTHESIS: the hex at two coordinates.
+			tClientHex& fn_0054c471( long param_1, long param_2 );
 
 			std::vector< tClientHex >	m_10;
 			bool	m_20;
