@@ -25,3 +25,21 @@ tDateAndTime tDateAndTime::GetTickCount()
 {
 	return tDateAndTime( time( NULL ) );
 }
+
+// FUNCTION: STARFLEETOP 0x006f8860
+tm* tDateAndTime::GetLocalTm( tm* pTime ) const
+{
+	if ( pTime != NULL )
+	{
+		tm* pLocal = localtime( &fTime );
+		if ( pLocal == NULL )
+		{
+			return NULL;
+		}
+
+		*pTime = *pLocal;
+		return pTime;
+	}
+
+	return localtime( &fTime );
+}
