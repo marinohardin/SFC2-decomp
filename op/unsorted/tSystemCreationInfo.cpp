@@ -17,6 +17,7 @@ tSystemCreationInfo::tSystemCreationInfo()
 	m08 = 0;
 }
 
+// FUNCTION: STARFLEETOP 0x0040a5d8
 // FUNCTION: STARFLEETOP 0x0040a5d1
 tSystemCreationInfo::~tSystemCreationInfo()
 {

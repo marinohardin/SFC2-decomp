@@ -1333,6 +1333,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040a5d8": {
+   "name": "tSystemCreationInfo::scalar_deleting_destructor",
+   "symbol": "??_GtSystemCreationInfo@@UAEPAXI@Z",
+   "unit": "unsorted/tSystemCreationInfo.cpp",
+   "size": 29,
+   "score": 7.778,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
