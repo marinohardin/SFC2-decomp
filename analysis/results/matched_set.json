@@ -37760,9 +37760,9 @@
    "name": "nDatabase::tDatabaseObject::operator<",
    "symbol": "??MtDatabaseObject@nDatabase@@UAE_NABV01@@Z",
    "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 36,
-   "score": 86.667,
-   "exact": false,
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x006fc4d0": {

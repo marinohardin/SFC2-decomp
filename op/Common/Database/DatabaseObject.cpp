@@ -128,7 +128,7 @@ tDatabaseObject& tDatabaseObject::operator=( const tDatabaseObject& other )
 // FUNCTION: STARFLEETOP 0x006fa9f0
 bool tDatabaseObject::operator<( const tDatabaseObject& obj )
 {
-	return GetID() < obj.GetID();
+	return GetID() < obj.GetID() ? true : false;
 }
 
 }
