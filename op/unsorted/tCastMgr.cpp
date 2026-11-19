@@ -106,3 +106,49 @@ tCastMgr::tCastMgr()
 {
 	fn_00675d90();
 }
+
+// HYPOTHESIS: a map of names to values (global at 0x00c69280, nil node at +4); the lookup
+// 0x0067bd90 is its lower_bound. Each node holds a tString pointer at +0xc and the value at +0x10.
+struct fn_00675ec0_node
+{
+	fn_00675ec0_node*	left;
+	fn_00675ec0_node*	parent;
+	fn_00675ec0_node*	right;
+	tString*	first;
+	int	second;
+};
+
+struct fn_00675ec0_iterator
+{
+	fn_00675ec0_node*	_Ptr;
+};
+
+struct fn_00675ec0_map
+{
+	char	allocator;
+	char	key_compare;
+	fn_00675ec0_node*	_Nil;
+
+	fn_00675ec0_node* lower_bound( const tString* const& key );
+};
+
+extern fn_00675ec0_map g_00c69280;
+
+// FUNCTION: STARFLEETOP 0x00675ec0
+int fn_00675ec0( tString *name )
+{
+	fn_00675ec0_iterator it;
+	it._Ptr = g_00c69280.lower_bound( name );
+	fn_00675ec0_iterator last;
+	fn_00675ec0_iterator* found;
+	if ( it._Ptr != g_00c69280._Nil && name->mStrCmp( *it._Ptr->first ) >= 0 )
+		found = &it;
+	else
+	{
+		last._Ptr = g_00c69280._Nil;
+		found = &last;
+	}
+	if ( found->_Ptr == g_00c69280._Nil )
+		return 0;
+	return found->_Ptr->second;
+}
