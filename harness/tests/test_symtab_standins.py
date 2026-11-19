@@ -1,0 +1,173 @@
+"""The symbol table, and the stand-in check built on it: a session's function must reach a
+claimed function through the claim's own symbol."""
+import pytest
+
+from conftest import FakeIndex
+from test_claim_symbols import claim, exact_caller, recorded
+from harness.lib import loopio, pack, stophook, symtab, verify
+
+STANDIN = '?fn_00401200@c_00401100_Object@@QAEXXZ'
+
+
+@pytest.mark.parametrize('symbol, conv', [
+    ('?f@@YAXXZ', 'cdecl'),
+    ('?f@@YGXH@Z', 'stdcall'),
+    ('?f@@YIXH@Z', 'fastcall'),
+    ('?mGet@tDir@@QAEXXZ', 'thiscall'),
+    ('??0tPath@@QAE@ABV0@@Z', 'thiscall'),
+    ('?vfunction8@tScrollBar@@UAEXPBUtRect@@@Z', 'thiscall'),
+    ('?Create@tFoo@@SGPAV1@XZ', 'stdcall'),
+    ('?Add@?$tList@PAVtFoo@@@@QAEXPAVtFoo@@@Z', 'thiscall'),
+    ('?g@@3HA', ''),
+    ('_main', ''),
+])
+def test_convention_is_read_from_the_mangled_name(symbol, conv):
+    assert symtab.convention(symbol) == conv
+
+
+def test_the_table_round_trips_and_a_claim_beats_other_evidence(tmp_path):
+    out = tmp_path / 'symbols.tsv'
+    symtab.write_claims(str(out), [('0x00401200', '?callee@@YAXXZ', 'b.cpp')])
+    claims = symtab.load_claims(str(out))
+    assert claims == {'0x00401200': ('?callee@@YAXXZ', 'b.cpp')}
+    index = FakeIndex(known={'?other@@YAXXZ': [0x401200], '?sdk@@YAXXZ': [0x401300]})
+    index.by_address = {}
+    assert symtab.lookup(0x401200, index, claims) == ('?callee@@YAXXZ', 'claim', 'b.cpp')
+    assert symtab.lookup(0x401300, index, claims) == ('?sdk@@YAXXZ', 'sdk', '')
+    assert symtab.lookup(0x401400, index, claims) is None
+
+
+def test_a_missing_table_is_empty(tmp_path):
+    assert symtab.load_claims(str(tmp_path / 'none.tsv')) == {}
+
+
+def checked(results, data=None, table=None, check_all=False):
+    """By default the callee 0x00401200 is claimed (recorded under its own symbol)."""
+    rep = verify.Report()
+    rep.results = results
+    data = recorded(a00401200='?callee@@YAXXZ') if data is None else data
+    verify.report_claim_symbols(rep, data, [], check_all, table)
+    return rep
+
+
+def partial(result):
+    return dict(result, exact=False)
+
+
+def test_a_partial_function_calling_a_rebuilt_claim_through_a_stand_in_is_found():
+    rep = checked([partial(exact_caller()), claim(STANDIN)])
+    assert rep.claim_breaks == []
+    assert [(b['function'], b['symbol'], b['claimed']) for b in rep.standins] == [
+        ('0x00401000', '?callee@@YAXXZ', STANDIN)]
+    assert rep.lines == [
+        f'WARN  stand-in: 0x00401000 reaches 0x00401200 as ?callee@@YAXXZ, but 0x00401200 is '
+        f'claimed as {STANDIN}; declare it as its claim does (the class and header that define '
+        'it), not again under another name']
+
+
+def test_the_table_stands_for_a_claim_this_run_did_not_rebuild():
+    rep = checked([partial(exact_caller())], table={'0x00401200': (STANDIN, 'b.cpp')})
+    assert [b['source'] for b in rep.standins] == ['table']
+
+
+def test_a_recorded_symbol_alone_is_not_a_stand_in():
+    """The matched set's symbol field can be stale, so it never refuses a session."""
+    rep = checked([partial(exact_caller())], data=recorded(a00401200=STANDIN))
+    assert rep.standins == []
+
+
+def test_the_claims_own_symbol_is_not_a_stand_in():
+    rep = checked([partial(exact_caller())], table={'0x00401200': ('?callee@@YAXXZ', 'b.cpp')})
+    assert rep.standins == []
+
+
+CLAIM = {'address': '0x00401000', 'baseline_score': 10.0, 'baseline_exact': False,
+         'max_blocks': 3}
+
+
+def verify_json(standins):
+    return {'exit': 0, 'lines': [], 'standins': standins,
+            'results': [{'address': '0x00401000', 'score': 100.0, 'exact': True, 'relocs': []}]}
+
+
+def test_the_stop_hook_refuses_a_stand_in_even_when_exact():
+    b = dict(function='0x00401000', offset=1, symbol='?callee@@YAXXZ', target='0x00401200',
+             claimed=STANDIN, source='table')
+    allow, why = stophook.decide(CLAIM, verify_json([b]), 0)
+    assert not allow
+    assert f'0x00401200 is claimed as {STANDIN}; this function names ?callee@@YAXXZ' in why
+
+
+def test_the_stop_hook_ignores_another_functions_stand_in():
+    b = dict(function='0x00409999', offset=1, symbol='?x@@YAXXZ', target='0x00401200',
+             claimed=STANDIN, source='table')
+    allow, _ = stophook.decide(CLAIM, verify_json([b]), 0)
+    assert allow
+
+
+def test_the_loop_does_not_commit_a_function_holding_a_stand_in():
+    b = dict(function='0x00401000', offset=1, symbol='?callee@@YAXXZ', target='0x00401200',
+             claimed=STANDIN, source='table')
+    assert loopio.score(verify_json([b]), '0x00401000') == (100.0, True, loopio.EXIT_STANDIN)
+    assert loopio.score(verify_json([]), '0x00401000') == (100.0, True, 0)
+
+
+def test_the_table_leaves_out_statics_and_symbols_two_claims_share():
+    results = [dict(address='0x00401000', symbol='?f@@YAXXZ', unit='a.cpp'),
+               dict(address='0x00401100', symbol='_$E14', unit='a.cpp'),
+               dict(address='0x00401200', symbol='?g@@YAXXZ', unit='a.cpp'),
+               dict(address='0x00401300', symbol='?g@@YAXXZ', unit='b.cpp'),
+               dict(address='0x00401400', symbol=None, unit='b.cpp')]
+    assert verify.symbol_table_rows(results) == [('0x00401000', '?f@@YAXXZ', 'a.cpp')]
+
+
+def test_a_full_run_collects_stand_ins_without_a_warning_each():
+    rep = checked([partial(exact_caller()), claim(STANDIN)], check_all=True)
+    assert len(rep.standins) == 1
+    assert rep.lines == []
+
+
+def test_an_exact_break_against_the_table_says_so():
+    rep = checked([exact_caller()], table={'0x00401200': (STANDIN, 'b.cpp')})
+    assert [b['source'] for b in rep.claim_breaks] == ['table']
+    assert len(rep.lines) == 1 and rep.lines[0].startswith('WARN')
+    assert 'in the symbol table, not rebuilt in this run' in rep.lines[0]
+
+
+@pytest.mark.parametrize('hit, text', [
+    (None, ''),
+    (('?f@@YGXH@Z', 'claim', 'Tiger/a.cpp'),
+     ': the call must name `?f@@YGXH@Z` (stdcall, claim, Tiger/a.cpp)'),
+    (('?f@tFoo@@QAEXXZ', 'functions.csv', ''),
+     ': probably `?f@tFoo@@QAEXXZ` (thiscall, functions.csv)'),
+    (('_g', 'sdk', ''), ': probably `_g` (sdk)'),
+])
+def test_a_callee_line_states_a_claims_symbol_and_leads_apart(hit, text):
+    assert pack.callee_symbol(hit) == text
+
+
+def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
+    out = str(tmp_path / 'symbols.tsv')
+    symtab.write_claims(out, [('0x00401000', '?old@@YAXXZ', 'a.cpp'),
+                              ('0x00402000', '?kept@@YAXXZ', 'b.cpp'),
+                              ('0x00403000', '?gone@@YAXXZ', 'c.cpp'),
+                              ('0x00404000', '?unclaimed@@YAXXZ', 'd.cpp')])
+    rep = verify.Report()
+    rep.failed = True
+    rep.results = [dict(address='0x00401000', symbol='?new@@YAXXZ', unit='a.cpp'),
+                   dict(address='0x00402000', symbol=None, unit='b.cpp',
+                        error='BUILD HAS FAILED'),
+                   dict(address='0x00403000', symbol=None, unit='c.cpp', error=None)]
+    verify.write_symbol_table(rep, out)
+    assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp'),
+                                       '0x00402000': ('?kept@@YAXXZ', 'b.cpp'),
+                                       '0x00404000': ('?unclaimed@@YAXXZ', 'd.cpp')}
+    rep.failed = False      # a clean run: a claim without a result is no longer claimed
+    verify.write_symbol_table(rep, out)
+    assert '0x00404000' not in symtab.load_claims(out)
+
+
+def test_a_table_row_whose_claim_is_gone_is_ignored():
+    table = {'0x00401200': (STANDIN, 'b.cpp')}
+    assert len(checked([partial(exact_caller())], table=table).standins) == 1
+    assert checked([partial(exact_caller())], data=recorded(), table=table).standins == []

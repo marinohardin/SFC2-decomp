@@ -26,7 +26,7 @@ import threading
 import sys
 import time
 
-from . import cache, coff, funcs, matched, paths, source, target
+from . import cache, coff, funcs, matched, paths, source, symtab, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
@@ -45,6 +45,7 @@ class Report:
     def __init__(self):
         self.lines, self.results, self.regressions, self.failed = [], [], [], False
         self.claim_breaks = []
+        self.standins = []
 
     def add(self, tag, text):
         self.lines.append(f'{tag:<5} {text}')
@@ -489,7 +490,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.failed = rep.failed or sub.failed
 
     report_shared_symbols(rep)
-    report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all)
+    report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
+                         symtab.load_claims())
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -552,19 +554,50 @@ def report_shared_symbols(rep):
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
-def claimed_symbols(results, data):
+def write_symbol_table(rep, out=None):
+    """The claims' rows from an --all run. A claim that could not be built or scored (an error
+    and no symbol) keeps its row from the table the run replaces; any other claim without a
+    symbol, and any address no longer claimed, loses it."""
+    out = out or symtab.path()
+    rows = symbol_table_rows(rep.results)
+    unbuilt = {r['address'] for r in rep.results if r.get('error') and not r.get('symbol')}
+    seen = {r['address'] for r in rep.results}
+    # A failed run may also have left claims without any result (a unit that aborted); their
+    # rows stay too. A row whose claim is gone is ignored when read (claimed_symbols).
+    rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
+             if a in unbuilt or (rep.failed and a not in seen)]
+    symtab.write_claims(out, rows)
+
+
+def symbol_table_rows(results):
+    """(address, symbol, unit) of each claim this run rebuilt, for harness/lib/symtab.py. A
+    compiler static (resolved per unit) or a symbol two claims compile to names no one target,
+    so neither is a row."""
+    rows = [(r['address'], r['symbol'], r['unit']) for r in results
+            if r.get('symbol') and not r['symbol'].startswith(PER_UNIT_PREFIXES)]
+    count = {}
+    for _, sym, _ in rows:
+        count[sym] = count.get(sym, 0) + 1
+    return [r for r in rows if count[r[1]] == 1]
+
+
+def claimed_symbols(results, data, table=None):
     """Matched-set key -> (symbol, source) for every claimed function: the symbol this run's
-    rebuild of the claiming unit defines for it ('rebuilt'), else the `symbol` field of its
-    matched-set entry ('recorded'). The rebuild wins because a recorded field can be stale: it is
+    rebuild of the claiming unit defines for it ('rebuilt'), else the one the last --all in this
+    checkout rebuilt (`table`, harness/lib/symtab.py: 'table'), else the `symbol` field of its
+    matched-set entry ('recorded'). A rebuild wins because a recorded field can be stale: it is
     written only when a score improves, so a later rename leaves the old name there."""
     out = {k: (e['symbol'], 'recorded') for k, e in data['functions'].items() if e.get('symbol')}
+    for k, (sym, _) in (table or {}).items():
+        if k in data['functions']:      # a row whose claim is gone since the table was written
+            out[k] = (sym, 'table')
     for res in results:
         if res.get('symbol'):
             out[res['address']] = (res['symbol'], 'rebuilt')
     return out
 
 
-def claim_symbol_breaks(results, claims):
+def claim_symbol_breaks(results, claims, exact_only=True):
     """Each REL32/DIR32 relocation of an exact function that reaches a claimed function's
     address but names another symbol than the claim defines there. The byte match masks the
     field, so the function scores exact, but a consumer that links the exact objects (manifest
@@ -572,7 +605,7 @@ def claim_symbol_breaks(results, claims):
     the decomposition does not rebuild) are not checked."""
     out = []
     for res in results:
-        if not res.get('exact'):
+        if exact_only and not res.get('exact'):
             continue
         for r in res.get('relocs') or []:
             if (r.get('type') not in CLAIM_RELOC_TYPES or r['exe_address'] is None
@@ -621,15 +654,29 @@ def reloc_baseline_text(breaks):
     return ''.join('\t'.join(r) + '\n' for r in [RELOC_BASELINE_FIELDS] + rows)
 
 
-def report_claim_symbols(rep, data, baseline, check_all):
+def report_claim_symbols(rep, data, baseline, check_all, table=None):
     """Lines for claim_symbol_breaks. A break the baseline lists is tolerated (one INFO line for
     all of them). Any other break fails the run when the claim's symbol comes from this run's
     rebuild; when it comes only from the matched set (a single-function run that did not build
     the target's unit), it is a WARN line, since the recorded field may be stale and --all
     rebuilds every claim. A baseline row whose break is gone is reported as stale, so the list
     only shrinks: under --all every row, otherwise only rows of the exact functions scored."""
-    rep.claim_breaks = claim_symbol_breaks(rep.results, claimed_symbols(rep.results, data))
+    claims = claimed_symbols(rep.results, data, table)
+    rep.claim_breaks = claim_symbol_breaks(rep.results, claims)
     listed = {_break_key(b) for b in baseline}
+    # Stand-ins: any scored function, exact or not, that reaches a claimed function through
+    # another symbol than the claim's, judged only against rebuilt symbols (this run's or the
+    # table's), never a recorded field that may be stale. The Stop hook refuses these.
+    rep.standins = [b for b in claim_symbol_breaks(rep.results, claims, exact_only=False)
+                    if b['source'] in ('rebuilt', 'table') and _break_key(b) not in listed]
+    reported = {_break_key(b) for b in rep.claim_breaks}
+    if not check_all:
+        for b in rep.standins:
+            if _break_key(b) in reported:
+                continue
+            rep.add('WARN', f'stand-in: {b["function"]} reaches {b["target"]} as {b["symbol"]}, '
+                    f'but {b["target"]} is claimed as {b["claimed"]}; declare it as its claim '
+                    'does (the class and header that define it), not again under another name')
     tolerated = 0
     for b in rep.claim_breaks:
         if _break_key(b) in listed:
@@ -640,6 +687,9 @@ def report_claim_symbols(rep, data, baseline, check_all):
         if b['source'] == 'rebuilt':
             rep.add('ERROR', text + ' (a consumer linking the exact objects cannot resolve it)')
             rep.failed = True
+        elif b['source'] == 'table':
+            rep.add('WARN', text + ' in the symbol table, not rebuilt in this run (the table is '
+                    'the last --all\'s; --all decides)')
         else:
             rep.add('WARN', text + ' in matched_set.json, not rebuilt in this run (the recorded '
                     'symbol may be stale; --all decides)')
@@ -741,6 +791,9 @@ def main(argv=None):
         rep.add('ERROR', str(e))
         rep.failed = True
     if a.all and rep.results:
+        # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
+        write_symbol_table(rep)
+    if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
@@ -754,7 +807,8 @@ def main(argv=None):
     else:
         status, code = 'OK', EXIT_OK
     if a.json:
-        print(json.dumps(dict(status=status, exit=code, lines=rep.lines, results=[
+        print(json.dumps(dict(status=status, exit=code, lines=rep.lines, standins=rep.standins,
+                              results=[
             {k: v for k, v in r.items() if k not in ('diff_rows',)} for r in rep.results]),
             indent=1))
     else:

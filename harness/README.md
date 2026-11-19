@@ -186,9 +186,34 @@ sessions are unaffected.
   the tree before and after the session and records a change as `tampered`.
 - **Stop** (`hooks/stop_verify.py`, logic in `lib/stophook.py`): re-runs
   `build-and-verify.sh` for the function in `$HARNESS_STATE/claim.json` and blocks completion
-  unless it improved on the score it had when the session started, with nothing regressed. After
-  three refusals (`HARNESS_MAX_STOP_BLOCKS`) it lets the session end and the loop records a failed
-  attempt.
+  unless it improved on the score it had when the session started, with nothing regressed and
+  no stand-in (below). After three refusals (`HARNESS_MAX_STOP_BLOCKS`) it lets the session end
+  and the loop records a failed attempt.
+
+### Symbol table and stand-ins
+
+Every `build-and-verify.sh --all` writes `<build>/symbols.tsv`: each claim's address, the symbol
+its unit compiled for it and the claiming file (`lib/symtab.py`). With `functions.csv`'s mangled
+names and single SDK labels it answers, for an original address, which symbol a call to it must
+name; `python3 -m harness.lib.symtab [<address>...]` prints the rows with the calling convention.
+The matched set's `symbol` field is not used for this: it is written only when a score rises, so
+a later rename leaves it stale (446 of 4,228 entries on 2026-11-19).
+
+A **stand-in** is a relocation in a scored function, exact or not, that reaches a claimed
+function through another symbol than the one the claim compiles to (this run's rebuild, or the
+table): the callee declared again under another class or signature. It matches bytes, but a
+consumer linking the objects cannot resolve it. A single-function run prints a `WARN stand-in`
+line for each and lists them under `standins` in `--json`. The Stop hook refuses a session whose
+function holds one, and the loop does not commit it (exit 5 from `loopio.score`). Rows on the
+relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as for exact
+functions. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
+are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
+every start (a full `--all`: about 2 minutes warm, 4 cold with the native compiler; start lanes
+one after another); after merging into a running lane, restart its loop (or run `--all`) so a renamed
+claim is not refused as a stand-in. A claim that an `--all` could not build keeps its row from the table
+it replaces. Known cost: a session refused against a table older than a merge cannot fix the
+refusal itself, and the attempt is lost until the loop is restarted. The context pack lists a claimed callee's symbol as what the
+call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
 
 ## The queue (`queue.py`)
 
@@ -428,7 +453,8 @@ Before each session the loop builds a pack for the function (`lib/pack.py`; the 
    cache headless from the project, read-only, for every non-library function (26,399), or for
    an address list given as its argument; it skips what is already there.
 2. The direct callees (`call rel32` targets that are function starts), with their prototypes
-   from `functions.csv` and the file under `op/` that already holds one.
+   from `functions.csv`, the file under `op/` that already holds one, and the symbol a call to
+   it must name with its calling convention (the symbol table above).
 3. The declarations of the classes it touches, its own first, from the headers under `op/`;
    classes declared in no header are named so the session searches before declaring one.
 4. One function already exact in `matched_set.json` from the same class, or else the same unit,

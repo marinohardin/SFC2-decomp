@@ -1,10 +1,17 @@
 """Decision of the Stop hook of a function session (harness/hooks/stop_verify.py).
 
 The session may finish only when build-and-verify.sh shows the claimed function better than when
-the session started (higher score, or newly exact) with nothing regressed. After max_blocks
+the session started (higher score, or newly exact) with nothing regressed, and with no stand-in:
+no call that reaches a claimed function through another symbol than the claim's
+(harness/lib/symtab.py). After max_blocks
 refusals it is let go, and harness/loop.sh records the attempt as failed.
 """
 EPSILON = 1e-6
+
+
+def standins(verify, address):
+    """The stand-ins build-and-verify --json found in the function at `address`."""
+    return [b for b in (verify or {}).get('standins') or [] if b.get('function') == address]
 
 
 def decide(claim, verify, blocks):
@@ -23,6 +30,14 @@ def decide(claim, verify, blocks):
         return False, 'A previously matched function regressed. Undo that first.\n' + lines
     if res is None or verify.get('exit') != 0:
         return False, 'The claimed function was not built and scored.\n' + lines
+    mine = standins(verify, claim['address'])
+    if mine:
+        return False, ('The function calls a claimed function through a stand-in: a declaration '
+                       'that compiles to another symbol than the claim. Declare each callee as '
+                       'its claim does (include the header that defines its class) and remove '
+                       'the stand-in, even if the score drops.\n' + '\n'.join(
+                           f'- {b["target"]} is claimed as {b["claimed"]}; this function names '
+                           f'{b["symbol"]}' for b in mine))
     base = claim.get('baseline_score', 0.0)
     if res.get('exact') and not claim.get('baseline_exact'):
         return True, f'{claim["address"]} is now exact'
