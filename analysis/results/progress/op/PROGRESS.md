@@ -1,8 +1,8 @@
 # Progress
 
-Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-19T02:41:04Z.
+Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-19T07:05:37Z.
 
-Progress: 13.12% exact, 0.00% functional, 4.17% partial, 0.00% lifted, 75.30% original x86 of .text (3,751,936 bytes); named: 11.52% real symbol, 44.94% with class, of 23,071 functions. Game-only: 14.78% exact, 0.00% functional, 4.70% partial of 3,330,800 bytes; 9.41% real symbol, 42.69% with class, of 22,164 functions.
+Progress: 13.12% exact, 0.00% functional, 4.17% partial, 0.00% lifted, 75.30% original x86 of .text (3,751,936 bytes); named: 13.09% real symbol, 45.53% with class, of 23,071 functions. Game-only: 14.78% exact, 0.00% functional, 4.70% partial of 3,330,800 bytes; 11.04% real symbol, 43.31% with class, of 22,164 functions.
 
 ## Code
 
@@ -29,10 +29,11 @@ One tier per function, the first that applies in this order. "Real symbol" is ev
 | manual | 2 | 0.01 | 2 | 0.01 |
 | sdk-fuzzy | 315 | 1.37 | 303 | 1.37 |
 | string | 0 | 0.00 | 0 | 0.00 |
-| rtti-class | 7,709 | 33.41 | 7,375 | 33.27 |
-| none | 12,704 | 55.06 | 12,703 | 57.31 |
-| real symbol | 2,658 | 11.52 | 2,086 | 9.41 |
-| with class | 10,367 | 44.94 | 9,461 | 42.69 |
+| claim | 361 | 1.56 | 361 | 1.63 |
+| rtti-class | 7,486 | 32.45 | 7,152 | 32.27 |
+| none | 12,566 | 54.47 | 12,565 | 56.69 |
+| real symbol | 3,019 | 13.09 | 2,447 | 11.04 |
+| with class | 10,505 | 45.53 | 9,599 | 43.31 |
 
 Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8, stl 523, wonapi 196. The flag comes from names, so unnamed library code still counts as game code.
 
@@ -46,3 +47,5 @@ Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8,
 - 2026-11-16T18:30:47Z: exact 4.56%, functional 0.00%, partial 1.72%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 5.13%, functional 0.00%, partial 1.93%
 - 2026-11-17T04:19:10Z: exact 8.40%, functional 0.00%, partial 3.25%, lifted 0.00% of .text; real symbol 11.53%, with class 44.94% of 23,071 functions; game-only exact 9.46%, functional 0.00%, partial 3.66%
 - 2026-11-19T02:41:04Z: exact 13.12%, functional 0.00%, partial 4.17%, lifted 0.00% of .text; real symbol 11.52%, with class 44.94% of 23,071 functions; game-only exact 14.78%, functional 0.00%, partial 4.70%
+- 2026-11-19T07:05:13Z: exact 13.12%, functional 0.00%, partial 4.17%, lifted 0.00% of .text; real symbol 13.09%, with class 45.53% of 23,071 functions; game-only exact 14.78%, functional 0.00%, partial 4.70%
+- 2026-11-19T07:05:37Z: exact 13.12%, functional 0.00%, partial 4.17%, lifted 0.00% of .text; real symbol 13.09%, with class 45.53% of 23,071 functions; game-only exact 14.78%, functional 0.00%, partial 4.70%

@@ -82,8 +82,10 @@ def write_fixture(tmp, lifted_ranges=((0x401000, 0x401480), (0x402000, 0x4020C8)
         'objdiff_reports': [],
     }
     if manifest is not None:
+        # (address, modes) or (address, modes, symbol); the symbol defaults to a placeholder.
         (tmp / 'manifest.tsv').write_text('address\tsize\tsymbol\tsource\tmodes\n' + ''.join(
-            '0x%08x\t1\tinvented\tx.cpp\t%s\n' % am for am in manifest))
+            '0x%08x\t1\t%s\tx.cpp\t%s\n' % (m[0], m[2] if len(m) > 2 else 'fn_%08x()' % m[0], m[1])
+            for m in manifest))
     if matched is not None:
         (tmp / 'matched_set.json').write_text(json.dumps(matched))
     if functional is not None:
@@ -177,7 +179,7 @@ def test_each_function_gets_the_first_name_tier_that_applies(tmp_path):
     # 401300 vs-fid; 401400 fuzzy tier and 401500 low score are leads only -> none;
     # 401500's section-only exact row is not a name; 402000 sdk-fid.
     assert named == {'sdk-exact': 1, 'sdk-fid': 1, 'vs-fid': 1, 'manual': 0, 'sdk-fuzzy': 1, 'string': 0,
-                     'rtti-class': 0, 'none': 2}
+                     'claim': 0, 'rtti-class': 0, 'none': 2}
     assert report['scopes']['total']['named_real_symbol'] == {'functions': 4, 'pct_functions': 66.6667}
     assert report['scopes']['total']['named_with_class'] == {'functions': 4, 'pct_functions': 66.6667}
 
@@ -493,3 +495,50 @@ def test_default_matched_set_is_the_committed_one():
     path = progress.default_paths()['matched_set']
     assert path == ROOT / 'analysis/results/matched_set.json'
     assert path.is_file()
+
+
+def test_a_claimed_name_counts_as_a_real_symbol(tmp_path):
+    paths = write_fixture(tmp_path, manifest=[(0x401400, 'vc6', 'tShip::mWarp(int)')])
+    total = progress.compute(paths, NOW)['scopes']['total']
+    assert total['named']['claim']['functions'] == 1
+    assert total['named']['none']['functions'] == 1
+    assert total['named_real_symbol']['functions'] == 5
+
+
+def test_a_claimed_placeholder_is_not_a_name(tmp_path):
+    paths = write_fixture(tmp_path, manifest=[(0x401400, 'vc6', 'tObject_008e1060::mWarp()'),
+                                              (0x401500, 'vc6 partial', 'tShip::vfunction7()')])
+    total = progress.compute(paths, NOW)['scopes']['total']
+    assert total['named']['claim']['functions'] == 0
+    assert total['named']['none']['functions'] == 2
+
+
+def test_a_claim_outranks_rtti_class_but_not_an_applied_name(tmp_path):
+    paths = write_fixture(tmp_path, manifest=[(0x401100, 'vc6', 'tShip::mTurn()'),
+                                              (0x402000, 'vc6', 'tHull::mMend()')])
+    paths['sdk_fuzzy_tsv'] = None
+    named = progress.compute(paths, NOW)['scopes']['total']['named']
+    assert named['claim']['functions'] == 1
+    assert named['rtti-class']['functions'] == 0
+    assert named['sdk-fid']['functions'] == 1
+
+
+@pytest.mark.parametrize('symbol, name', [
+    ('tShip::tShip()', 'tShip::tShip'),
+    ('tShip::mFire(int, tTarget *)', 'tShip::mFire'),
+    ('tShip::operator()(int)', 'tShip::operator()'),
+    ('tShip::scalar_deleting_destructor', 'tShip::scalar_deleting_destructor'),
+    ('fn_00401000()', None),
+    ('FUN_00401000', None),
+    ('tObject_008e1060::mRun()', None),
+    ('fn_005717f7_vector::~fn_005717f7_vector()', None),
+    ('tShip::vfunction12()', None),
+    ('tShip::vfunction3_for_tHull()', None),
+    ('tShip::vfunc_2()', None),
+    ('tFile::fn_slot28()', None),
+    ('tSound::mSet3DSoundPosition(float)', 'tSound::mSet3DSoundPosition'),
+    ('g_tShipMgr (dynamic initializer)', None),
+    ('', None),
+])
+def test_claimed_name_drops_parameters_and_placeholders(symbol, name):
+    assert progress.claimed_name(symbol) == name

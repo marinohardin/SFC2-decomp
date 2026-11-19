@@ -26,7 +26,9 @@ game-only ones in [PROGRESS.md](analysis/results/progress/op/PROGRESS.md):
   bytes.
 - **Partial:** game code written and scored but not yet byte-exact, as a share of game code bytes.
   A consumer still runs the original's code for it.
-- **Named:** game functions with a real symbol, as a share of game functions.
+- **Named:** game functions with a real symbol, as a share of game functions. The symbol comes
+  from the SDK, from Ghidra's function ID, or from the claim that writes the function in `op/`,
+  unless that claim still uses a placeholder such as `fn_00401000`.
 
 ## Empires at War
 

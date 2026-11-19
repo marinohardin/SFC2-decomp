@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-19T02:41:04Z",
+ "generated_at": "2026-11-19T07:05:37Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -160,24 +160,29 @@
      "function_bytes": 0,
      "pct_functions": 0.0
     },
+    "claim": {
+     "functions": 361,
+     "function_bytes": 49691,
+     "pct_functions": 1.5647
+    },
     "rtti-class": {
-     "functions": 7709,
-     "function_bytes": 1015269,
-     "pct_functions": 33.4142
+     "functions": 7486,
+     "function_bytes": 986590,
+     "pct_functions": 32.4477
     },
     "none": {
-     "functions": 12704,
-     "function_bytes": 1786814,
-     "pct_functions": 55.0648
+     "functions": 12566,
+     "function_bytes": 1765802,
+     "pct_functions": 54.4666
     }
    },
    "named_real_symbol": {
-    "functions": 2658,
-    "pct_functions": 11.521
+    "functions": 3019,
+    "pct_functions": 13.0857
    },
    "named_with_class": {
-    "functions": 10367,
-    "pct_functions": 44.9352
+    "functions": 10505,
+    "pct_functions": 45.5334
    }
   },
   "game": {
@@ -258,24 +263,29 @@
      "function_bytes": 0,
      "pct_functions": 0.0
     },
+    "claim": {
+     "functions": 361,
+     "function_bytes": 49691,
+     "pct_functions": 1.6288
+    },
     "rtti-class": {
-     "functions": 7375,
-     "function_bytes": 971692,
-     "pct_functions": 33.2747
+     "functions": 7152,
+     "function_bytes": 943013,
+     "pct_functions": 32.2685
     },
     "none": {
-     "functions": 12703,
-     "function_bytes": 1786786,
-     "pct_functions": 57.3137
+     "functions": 12565,
+     "function_bytes": 1765774,
+     "pct_functions": 56.691
     }
    },
    "named_real_symbol": {
-    "functions": 2086,
-    "pct_functions": 9.4117
+    "functions": 2447,
+    "pct_functions": 11.0404
    },
    "named_with_class": {
-    "functions": 9461,
-    "pct_functions": 42.6863
+    "functions": 9599,
+    "pct_functions": 43.309
    }
   }
  },
