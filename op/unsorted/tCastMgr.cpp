@@ -123,7 +123,7 @@ class less_ps : public std::binary_function<const tString*, const tString*, bool
 extern std::map< const tString*, int, less_ps > g_00c69280;
 
 // FUNCTION: STARFLEETOP 0x00675ec0
-int fn_00675ec0( tString& name )
+int fn_00675ec0( const tString& name )
 {
 	std::map< const tString*, int, less_ps >::iterator it = g_00c69280.find( &name );
 	if ( it == g_00c69280.end() )
