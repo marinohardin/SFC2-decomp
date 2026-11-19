@@ -276,3 +276,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x005437a5	FUN_005437a5	3	fable	99.91	2026-11-19T23:33:30Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.91%
 0x0054385d	FUN_0054385d	3	fable	99.93	2026-11-19T23:35:54Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.93%
 0x00543944	FUN_00543944	3	fable	99.90	2026-11-19T23:37:24Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.90%
+0x00543c70	tServCharacter::vfunction6_for_tAllocatedClass	4	fable	99.94	2026-11-19T23:50:02Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.94%
