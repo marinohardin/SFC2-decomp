@@ -19612,6 +19612,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00562637": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterShipIDs::~tGetCharacterShipIDs",
+   "symbol": "??0tGetCharacterShipIDs@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterShipIDs.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
