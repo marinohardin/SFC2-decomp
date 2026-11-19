@@ -13,6 +13,7 @@ class tAsset
 public:
 	tAsset();
 	virtual ~tAsset();
+	short fn_00675bf0();
 
 	int field_04;
 	// HYPOTHESIS: field names and types unknown; the second string sits at an odd 2-byte offset.

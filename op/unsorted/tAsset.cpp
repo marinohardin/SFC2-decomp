@@ -16,3 +16,13 @@ tAsset::tAsset()
 	field_04 = 0;
 	field_5A = g_00882e16;
 }
+
+// HYPOTHESIS: field_30 is a kind code; 3, 0x11 and 0x16 are the ones this test accepts.
+// FUNCTION: STARFLEETOP 0x00675bf0
+short tAsset::fn_00675bf0()
+{
+	int kind = (unsigned short)field_30;
+	if (kind == 3 || kind == 0x11 || kind == 0x16)
+		return 1;
+	return 0;
+}

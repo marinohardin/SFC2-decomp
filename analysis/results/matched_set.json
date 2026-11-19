@@ -35686,6 +35686,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00675bf0": {
+   "name": "FUN_00675bf0",
+   "symbol": "?fn_00675bf0@tAsset@@QAEFXZ",
+   "unit": "unsorted/tAsset.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
