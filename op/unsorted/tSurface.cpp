@@ -42,8 +42,10 @@ public:
 	bool fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
 	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675470 (tVisObject.h).
 	bool fn_00675470( int color, const tRect *rect, unsigned char frame, int a, int b );
-	// HYPOTHESIS: 0x006757f0 draws a line between two points in a colour.
-	void fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, int b );
+	bool fn_006755b0( int color, const tRect *rect, const tRect *inner, unsigned char frame, int a, int b );
+	// HYPOTHESIS: 0x006757f0 draws a line between two points in a colour, of a width, clipped
+	// to a rectangle when one is given.
+	void fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip );
 
 	void *field_60;
 	tRect field_64;
@@ -171,6 +173,47 @@ bool tSurface::fn_00675470( int color, const tRect *rect, unsigned char frame, i
 		fn_006757f0( b, clip.left, clip.bottom, clip.right, clip.bottom, a, 0 );
 		fn_006757f0( b, clip.left, clip.top, clip.left, clip.bottom, a, 0 );
 		fn_006757f0( b, clip.right, clip.top, clip.right, clip.bottom + 1, a, 0 );
+	}
+	return true;
+}
+
+// HYPOTHESIS: fills the part of a second rectangle inside the first (both clipped to the
+// surface) in a colour and, when asked, draws a frame of a given width along the inside of the
+// first, clipped to the filled part; returns whether anything was drawn.
+// FUNCTION: STARFLEETOP 0x006755b0
+bool tSurface::fn_006755b0( int color, const tRect *rect, const tRect *inner, unsigned char frame, int a, int b )
+{
+	tRect fill;
+	if ( field_60 == 0 )
+		return false;
+
+	tRect clip;
+	if ( rect != 0 )
+	{
+		clip = *rect;
+		clip.mClip( &field_64 );
+	}
+	else
+		clip = field_64;
+
+	if ( inner != 0 )
+	{
+		fill = *inner;
+		fill.mClip( &clip );
+	}
+	else
+		fill = clip;
+
+	if ( fill.mIsEmpty() )
+		return false;
+
+	fn_00696ab0( color, fill.left, fill.top, fill.right, fill.bottom, field_60, field_70, field_64.mHeight(), field_74 );
+	if ( frame )
+	{
+		fn_006757f0( b, clip.left, clip.top, clip.right - a, clip.top, a, &fill );
+		fn_006757f0( b, clip.left, clip.bottom - a, clip.right - a, clip.bottom - a, a, &fill );
+		fn_006757f0( b, clip.left, clip.top, clip.left, clip.bottom - a, a, &fill );
+		fn_006757f0( b, clip.right - a, clip.top, clip.right - a, clip.bottom - a, a, &fill );
 	}
 	return true;
 }
