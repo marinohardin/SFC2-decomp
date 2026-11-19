@@ -4,7 +4,7 @@ class tETrait_Creator
 {
 public:
 	tETrait_Creator();
-	virtual void vfunction0();
+	virtual ~tETrait_Creator();
 
 	tETrait_Creator* mNext;
 	static tETrait_Creator* sFirst;
@@ -15,4 +15,9 @@ tETrait_Creator::tETrait_Creator()
 {
 	mNext = sFirst;
 	sFirst = this;
+}
+
+// FUNCTION: STARFLEETOP 0x0040feb7
+tETrait_Creator::~tETrait_Creator()
+{
 }

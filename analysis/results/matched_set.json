@@ -3151,6 +3151,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040feb7": {
+   "name": "tETrait_Creator::scalar_deleting_destructor",
+   "symbol": "??_GtETrait_Creator@@UAEPAXI@Z",
+   "unit": "unsorted/tETrait_Creator.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040fefb": {
    "name": "tEntity::tEntity",
    "symbol": "??0tEntity@@QAE@XZ",
