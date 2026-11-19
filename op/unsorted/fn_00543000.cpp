@@ -431,7 +431,10 @@ bool tServCharacter::fn_005433e8() const
 // FUNCTION: STARFLEETOP 0x005433f4
 bool tServCharacter::fn_005433f4() const
 {
-	return ((const fn_005430ad_owner *)this)->m114_3 ? true : false;
+	if (((const fn_005430ad_owner *)this)->m114_3)
+		return true;
+	else
+		return false;
 }
 
 // HYPOTHESIS: a seventh one-bit flag, bit 10 of the dword at +0x114.
