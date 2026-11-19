@@ -12,3 +12,10 @@ tDateAndTime::tDateAndTime( time_t time )
 {
 	fTime = time;
 }
+
+// FUNCTION: STARFLEETOP 0x006f8820
+const tDateAndTime& tDateAndTime::operator=( time_t timeSrc )
+{
+	fTime = timeSrc;
+	return *this;
+}
