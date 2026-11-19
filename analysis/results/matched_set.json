@@ -17985,12 +17985,12 @@
   },
   "0x005433e8": {
    "name": "FUN_005433e8",
-   "symbol": "?fn_005433e8@fn_005430ad_owner@@QAE_NXZ",
+   "symbol": "?fn_005433e8@tServCharacter@@QBE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 12,
-   "score": 98.75,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005433f4": {
    "name": "FUN_005433f4",
