@@ -1,5 +1,5 @@
 #include "Tiger/tstring.h"
-#include "unsorted/tVisObject.h"
+#include "unsorted/tSurface.h"
 #include "unsorted/tScrollBar.h"
 
 // HYPOTHESIS: the exception the constructor throws when its pixels cannot be allocated; 0x00692f60
@@ -30,32 +30,6 @@ int fn_006741e0( const char *name );
 // HYPOTHESIS: 0x00695150 allocates a count of bytes; the first value is not known.
 void *fn_00695150( int a, int size );
 
-// HYPOTHESIS: a surface of pixels the size of its rectangle; the layout is read from the
-// constructor (0x00675080). The original destructor at 0x00675250 is not recovered yet.
-class tSurface : public tObjBase
-{
-public:
-	tSurface( short x, short y, int width, int height, int a, unsigned char b, unsigned char c );
-	tSurface( void *pixels, short x, short y, short width, short height, int a, unsigned char b, unsigned char c );
-	virtual ~tSurface();
-	virtual void vfunction8( const tRect *area );
-	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675280 (tVisObject.h).
-	bool fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
-	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675470 (tVisObject.h).
-	bool fn_00675470( int color, const tRect *rect, unsigned char frame, int a, int b );
-	bool fn_006755b0( int color, const tRect *rect, const tRect *inner, unsigned char frame, int a, int b );
-	// HYPOTHESIS: 0x006757f0 draws a line between two points in a colour, of a width, clipped
-	// to a rectangle when one is given.
-	bool fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip );
-
-	void *field_60;
-	tRect field_64;
-	tPoint field_6C;
-	int field_70;
-	unsigned char field_74;
-	unsigned char field_75;
-	unsigned char field_76;
-};
 
 // HYPOTHESIS: 0x00695180 releases pixels obtained from 0x00695150.
 void fn_00695180( void *p ) throw();

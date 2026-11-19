@@ -122,16 +122,9 @@ struct tPoint
 struct c_tListBox_Base_Item;
 struct c_tScrollBar_FieldA8;
 
-// HYPOTHESIS: the object at tVisObject +0x14 that the visual objects draw on; 0x00675470 fills a
-// rectangle in a colour (tListBox_Base::vfunction44, 0x004c679a).
-class c_tVisObject_Field14
-{
-public:
-	void fn_00675470( int color,const tRect *rect, int a, int b, int c );
-	// HYPOTHESIS: draws an image at a point, clipped to the area given; tScrollBar::vfunction8
-	// (0x004c8439) draws its thumb with it.
-	void fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
-};
+// HYPOTHESIS: the object at +0x14 is the surface the visual objects draw on (tSurface.h):
+// tListBox_Base::vfunction44 (0x004c679a) fills a rectangle on it with 0x00675470.
+class tSurface;
 
 // HYPOTHESIS: the object at tObjBase +0x10 that a surface is shown on; 0x00693fc0 copies the
 // pixels of a surface inside a rectangle to it at a position (tSurface::vfunction8, 0x00675a00).
@@ -181,7 +174,7 @@ public:
 	// through 0x0067d311 when its +0x80 is set.
 	tVisObject *field_0C;
 	c_tObjBase_Field10 *field_10;
-	c_tVisObject_Field14 *field_14;
+	tSurface *field_14;
 	unsigned char field_18[ 0x24 - 0x18 ]; tVisObject *field_24; unsigned char field_28[ 0x34 - 0x28 ];	// HYPOTHESIS: +0x24 is the first child, its siblings follow through +0x4 (the fleet entry's 0x004c2aba)
 	tRect field_34;
 	tPoint field_3C;	// HYPOTHESIS: a position; tSurface's constructor (0x00675080) sets it to its x and y

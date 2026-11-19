@@ -4,7 +4,7 @@
 #ifndef tListBox_Base_h
 #define tListBox_Base_h 1
 
-#include "unsorted/tVisObject.h"
+#include "unsorted/tSurface.h"
 #include "unsorted/tNetControl.h"	// tString
 
 #include <map>
@@ -86,7 +86,7 @@ struct c_tListBox_Base_Item
 // HYPOTHESIS: the argument 0x004c6225 passes to the slot at +0xac for each visible item.
 struct c_tListBox_Base_DrawItem
 {
-	c_tVisObject_Field14 *field_00;	// the list box's field_14
+	tSurface *field_00;	// the list box's field_14
 	tRect *field_04;	// the item's rectangle clipped to the area drawn
 	unsigned int field_08;	// the item's index
 	tRect field_0C;	// the item's rectangle clipped to the list box
