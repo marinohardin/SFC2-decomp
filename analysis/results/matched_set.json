@@ -1900,6 +1900,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040c97b": {
+   "name": "tElectricSpark::scalar_deleting_destructor",
+   "symbol": "??_GtElectricSpark@@UAEPAXI@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",

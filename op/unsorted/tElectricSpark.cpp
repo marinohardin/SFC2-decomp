@@ -5,7 +5,7 @@ class tElectricSpark
 {
 public:
 	tElectricSpark();
-	virtual void vfunction0();
+	virtual ~tElectricSpark();
 
 	float m04;
 	int m08;
@@ -18,4 +18,9 @@ tElectricSpark::tElectricSpark()
 	m0c = 0;
 	m04 = 1.0f;
 	g_00898ca4++;
+}
+
+// FUNCTION: STARFLEETOP 0x0040c97b
+tElectricSpark::~tElectricSpark()
+{
 }
