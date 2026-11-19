@@ -51,6 +51,27 @@ its own buffer, and the buffers are printed in unit order. Two lines move: the e
 warning comes before the first unit, and an untrusted exe stops the run before any unit builds.
 An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and their containers. Each compile runs in its own process group, so a harness stopped by another signal (`kill`, a CI timeout) leaves its running compiles to finish on their own, each within the compile timeout; send it Ctrl-C (SIGINT) instead to stop them.
 
+### Caches
+
+A second run does only the work that changed (`lib/cache.py`):
+
+- **Incremental build.** A unit is rebuilt only when its build key changes: the compile command,
+  the compiler (the native wrapper, wibo and the MSVC tree, or the image's id), the MSVC
+  environment, the folder it compiles in, and the content of every file it includes, found by
+  following every `#include` line through the command's `/I` folders whatever `#if` surrounds
+  it. A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
+  the unit's build folder, `build.key`, and a reused build prints "unchanged, not rebuilt".
+- **Score cache.** A function is rescored only when its score key changes: its object (COFF
+  timestamp masked), the symbol scored, its address and size, the judge's own code and objdiff,
+  and the inputs (the exe, the function index, the SDK symbol tables). Entries are
+  content-addressed under `$HARNESS_SHARED/cache/scores/`, shared by every checkout; only a
+  completed objdiff comparison is stored.
+
+`HARNESS_NO_CACHE=1` turns both off. CI's `check` runs that way, so every pull request also checks
+that the caches change nothing. Measured on 2026-11-19 over all 158 units and 4,228 claimed
+functions: an uncached, a cold and a warm `--all` printed the same lines. The caches are safe to
+delete at any time.
+
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).
    That file is the unit, unless it is a header (`.h`, `.inl`): a claim the original wrote in a

@@ -21,7 +21,7 @@ import subprocess
 import threading
 import time
 
-from . import claims, deleting, paths
+from . import cache, claims, deleting, paths
 
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB):\s*(\w+)\s+0x([0-9a-fA-F]+)\s*$')
 SOURCE_EXTS = ('.cpp', '.c', '.cxx')
@@ -178,27 +178,45 @@ def stop_all(grace=5):
 
 def compile_unit(unit_path, profile, src_root, build_root=None, cl=None):
     """Compile one translation unit with the pinned compiler: the image's wrapper, or `cl` (the
-    harness's scoring passes paths.HARNESS_CL). Returns a dict with obj, listing, log, ok, secs,
-    out_dir."""
+    harness's scoring passes paths.HARNESS_CL), or reuse its last objects when its build key has
+    not changed. Returns a dict with obj, listing, log, ok, secs, out_dir, and cached when the
+    objects were reused."""
     build_root = build_root or paths.BUILD
     key = hashlib.sha1(os.path.abspath(unit_path).encode()).hexdigest()[:12]
     base = os.path.splitext(os.path.basename(unit_path))[0]
     out = os.path.join(build_root, f'{base}-{key}')
-    shutil.rmtree(out, ignore_errors=True)
-    os.makedirs(out)
     cl = cl or paths.CL
     cmd = [cl] + _flags(profile, src_root) + ['/FAs', f'/Fa{out}/', f'/Fo{out}/',
                                                    os.path.basename(unit_path)]
     cname = f'sfcop-harness-{key}-{os.getpid()}'
     env = dict(os.environ, SFCOP_ROOT=paths.SFCOP_ROOT, SFCOP_MSVC_NAME=cname,
                MSVC_VERSION=str(profile.get('compiler', '6.4')))
+    obj = os.path.join(out, base + '.obj')
+    listing = os.path.join(out, base + '.asm')
+    cwd = os.path.dirname(os.path.abspath(unit_path))
+    # The incremental build (harness/lib/cache.py): an unchanged unit keeps its last objects.
+    bkey = cache.build_key(cmd, cwd, env, unit_path)
+    stamp = os.path.join(out, 'build.key')
+    if bkey is not None and os.path.isfile(obj) and os.path.isfile(listing):
+        try:
+            with open(stamp) as f:
+                same = f.read().strip() == bkey
+            with open(os.path.join(out, 'cl.log')) as f:
+                log = f.read().split('\n', 1)[-1]
+        except OSError:
+            same = False
+        if same:
+            return dict(ok=True, rc=0, obj=obj, listing=listing, log=log, secs=0.0,
+                        out_dir=out, cached=True)
+    shutil.rmtree(out, ignore_errors=True)
+    os.makedirs(out)
     t0 = time.time()
     # Its own process group, so a timeout stops the whole compile: the wrapper and the compiler
     # it starts (cl-native's wibo, or the docker client).
     with _live_lock:
         if _stopping:
             raise KeyboardInterrupt('compiles stopped')
-        p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
+        p = subprocess.Popen(cmd, cwd=cwd, env=env,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
                              errors='replace', start_new_session=True)
         _live[p.pid] = (p, cname, cl)
@@ -217,11 +235,12 @@ def compile_unit(unit_path, profile, src_root, build_root=None, cl=None):
     finally:
         with _live_lock:
             _live.pop(p.pid, None)
-    obj = os.path.join(out, base + '.obj')
-    listing = os.path.join(out, base + '.asm')
     with open(os.path.join(out, 'cl.log'), 'w') as f:
         f.write(' '.join(shlex.quote(c) for c in cmd) + '\n' + log)
     ok = rc == 0 and os.path.exists(obj)
+    if ok and bkey is not None and os.path.exists(listing):
+        with open(stamp, 'w') as f:
+            f.write(bkey + '\n')
     return dict(ok=ok, rc=rc, obj=obj if ok else None,
                 listing=listing if os.path.exists(listing) else None,
                 log=log, secs=round(time.time() - t0, 1), out_dir=out)
