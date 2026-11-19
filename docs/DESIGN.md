@@ -53,7 +53,7 @@ A decompiled function is claimed by the annotation on the line before its defini
 op/          Orion Pirates' code as the original wrote it; op/port/ holds the type header
 eaw/         Empires at War's code, once it starts (§7.5)
 harness/     compiles a unit with the pinned compiler and scores each function with objdiff
-toolchain/   the pinned compiler (VC6 SP4 in a container) and its calibration
+toolchain/   the pinned compiler (VC6 SP4 in a container, or natively on macOS) and its calibration
 ghidra/      the analysis exports every tool reads, and the scripts that make them
 analysis/    the matched set, the SDK symbol matches, boundary errors, retail hashes, progress
 tools/       manifest and unit-map generators, progress charts, the batch check

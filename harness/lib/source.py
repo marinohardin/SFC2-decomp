@@ -16,6 +16,7 @@ import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
 import time
 
@@ -111,6 +112,21 @@ def _flags(profile, src_root):
     return first + flags
 
 
+def _stop_group(p, grace=5):
+    """Stop a process started with start_new_session and everything it started: TERM first, so
+    a wrapper's cleanup trap runs, then KILL."""
+    for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, None)):
+        try:
+            os.killpg(p.pid, sig)
+        except ProcessLookupError:
+            break
+        try:
+            p.communicate(timeout=wait)
+            break
+        except subprocess.TimeoutExpired:
+            continue
+
+
 def compile_unit(unit_path, profile, src_root, build_root=None):
     """Compile one translation unit with the pinned compiler. Returns a dict with obj, listing,
     log, ok, secs, out_dir."""
@@ -126,12 +142,16 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
     env = dict(os.environ, SFCOP_ROOT=paths.SFCOP_ROOT, SFCOP_MSVC_NAME=cname,
                MSVC_VERSION=str(profile.get('compiler', '6.4')))
     t0 = time.time()
+    # Its own process group, so a timeout stops the whole compile: the wrapper and the compiler
+    # it starts (cl-native's wibo, or the docker client).
+    p = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                         errors='replace', start_new_session=True)
     try:
-        p = subprocess.run(cmd, cwd=os.path.dirname(os.path.abspath(unit_path)), env=env,
-                           capture_output=True, text=True, errors='replace',
-                           timeout=COMPILE_TIMEOUT)
-        log, rc = p.stdout + p.stderr, p.returncode
+        out_, err_ = p.communicate(timeout=COMPILE_TIMEOUT)
+        log, rc = out_ + err_, p.returncode
     except subprocess.TimeoutExpired:
+        _stop_group(p)
         subprocess.run(['docker', 'kill', cname], capture_output=True)
         log, rc = f'compile killed after {COMPILE_TIMEOUT}s', -1
     obj = os.path.join(out, base + '.obj')

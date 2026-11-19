@@ -26,9 +26,9 @@ fi
 work=${SFCOP_WORK:-$root/work}
 mkdir -p "$work/toolchain/tmp"
 tmp=$(mktemp -d "$work/toolchain/tmp/cl.XXXXXX") || exit 2
+trap 'rm -rf "$tmp"' EXIT
+trap 'exit 143' TERM
+trap 'exit 130' INT
 INCLUDE="${MSVC_EXTRA_INCLUDE:+$MSVC_EXTRA_INCLUDE;}Z:$msvc/Include"
 export INCLUDE TMP="Z:$tmp" TEMP="Z:$tmp"
 "$wibo" "$msvc/Bin/CL.EXE" "$@"
-rc=$?
-rm -rf "$tmp"
-exit $rc
