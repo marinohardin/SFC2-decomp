@@ -52,4 +52,10 @@ tMetaMapDataRequest::tResponse::tClientHex::tClientHex( tMetaMapHex& hex, int32 
 	fn_0054c0d5();
 }
 
+// FUNCTION: STARFLEETOP 0x0054bf43
+tMetaMapDataRequest::tResponse::tClientHex::tClientHex() :
+	tStreamable( 1 )
+{
+}
+
 }

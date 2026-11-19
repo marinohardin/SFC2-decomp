@@ -29,6 +29,7 @@ namespace nStoredProcedureArguments
 			class tClientHex : public nDataStore::tStreamable
 			{
 			public:
+				tClientHex();
 				tClientHex( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
 
 				void fn_0054c0d5();
