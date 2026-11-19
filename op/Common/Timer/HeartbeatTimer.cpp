@@ -161,9 +161,9 @@ tHeartbeatTimer::tHeartbeatTimer() :
 	fHBData->fTimers.push_back( NULL );
 }
 
-// HYPOTHESIS: the destructor clears this timer's slot under the global lock; the rest of
-// its body (0x006f5c70) is not recovered yet.
+
 // FUNCTION: STARFLEETOP 0x006f5c50
+// FUNCTION: STARFLEETOP 0x006f5c70
 tHeartbeatTimer::~tHeartbeatTimer()
 {
 	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
