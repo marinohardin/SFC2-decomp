@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "Tiger/tgSound.h"
-#include "unsorted/tEntity.h"
+#include "Tiger/tvectormath.h"
 // HYPOTHESIS: gSoundSay is defined in this unit in the original (its static initializer is
 // here); its constructor arguments are not recovered yet, so it is declared only.
 extern tSay gSoundSay;

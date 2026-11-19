@@ -1,7 +1,7 @@
 // Unit:      unsorted/fn_004D3143.cpp
 // Functions: 0x004d3143 to 0x004d3b8d, 61 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-
+#include "unsorted/fn_004D3143.h"
 class fn_004d3ef7_object;
 class tVisObject;
 
@@ -82,9 +82,9 @@ public:
 extern fn_004bf6b9_owner g_009254f8;
 
 // FUNCTION: STARFLEETOP 0x004d3179
-void fn_004d3179( long arg1, long arg2 )
+void fn_004d3179( const char* arg1, const tString& arg2 )
 {
-	g_009254f8.fn_004bf6b9( arg1, arg2 );
+	g_009254f8.fn_004bf6b9( (long) arg1, (long) &arg2 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d318c
@@ -125,15 +125,15 @@ bool fn_004d31b2( long arg1, long arg2 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d31ed
-bool fn_004d31ed( long arg1, long arg2, long arg3, long arg4, long arg5 )
+bool fn_004d31ed( const char* arg1, int arg2, void* arg3, int arg4, int arg5 )
 {
-	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d4a02( arg1, arg2, arg4, arg5 );
+	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d4a02( (long) arg1, arg2, arg4, arg5 );
 	bool ok = false;
 	if ( obj != 0 )
 	{
 		if ( arg3 != 0 )
 		{
-			g_009254f8.fn_004caf40( obj, arg3 );
+			g_009254f8.fn_004caf40( obj, (long) arg3 );
 		}
 		else
 		{
@@ -181,11 +181,11 @@ fn_004d3ef7_object* fn_004d3278( long arg1, long arg2, long arg3, long arg4, lon
 }
 
 // FUNCTION: STARFLEETOP 0x004d32c4
-void fn_004d32c4( long arg1 )
+void fn_004d32c4( const char* arg1 )
 {
-	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d4728( arg1, 0 );
+	fn_004d3ef7_object* obj = g_0092e4a0.fn_004d4728( (long) arg1, 0 );
 	g_009254f8.fn_004cb0ab( obj );
-	g_0092e4a0.fn_004d4a9e( arg1 );
+	g_0092e4a0.fn_004d4a9e( (long) arg1 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d32ef
@@ -203,15 +203,15 @@ void fn_004d3306( long arg1 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d3331
-void fn_004d3331( long arg1 )
+void fn_004d3331( const char* arg1 )
 {
-	g_0092e4a0.fn_004d45e6( arg1 );
+	g_0092e4a0.fn_004d45e6( (long) arg1 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d3340
-void fn_004d3340( long arg1 )
+void fn_004d3340( const char* arg1 )
 {
-	g_0092e4a0.fn_004d4630( arg1 );
+	g_0092e4a0.fn_004d4630( (long) arg1 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d334f
@@ -318,9 +318,9 @@ void fn_004d342e( long arg1 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d3446
-long fn_004d3446( long arg1 )
+c_00468677_source* fn_004d3446( int arg1 )
 {
-	return g_009254f8.fn_004cb602( arg1 );
+	return (c_00468677_source*) g_009254f8.fn_004cb602( arg1 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d3455
@@ -334,9 +334,9 @@ void fn_004d3455( long arg1 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d346f
-void fn_004d346f( long arg1, long arg2 )
+void fn_004d346f( const char* arg1, const char* arg2 )
 {
-	fn_004d338b_object* obj = (fn_004d338b_object*) g_0092e4a0.fn_004d4728( arg2, arg1 );
+	fn_004d338b_object* obj = (fn_004d338b_object*) g_0092e4a0.fn_004d4728( (long) arg2, (long) arg1 );
 	if ( obj != 0 )
 	{
 		obj->vfunction17();
@@ -364,7 +364,7 @@ void fn_004d34a7( long arg1, long arg2 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d34c5
-void fn_004d34c5( long arg1, char arg2 )
+void fn_004d34c5( int arg1, bool arg2 )
 {
 	fn_004d338b_object* obj = (fn_004d338b_object*) g_009254f8.fn_004cb602( arg1 );
 	if ( obj != 0 )
@@ -409,9 +409,9 @@ long fn_004d3551( long arg1, long arg2 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d3564
-void fn_004d3564( long arg1, long arg2, long arg3 )
+void fn_004d3564( const char* arg1, const char* arg2, int arg3 )
 {
-	g_0092e4a0.fn_004d48e1( arg1, arg2, arg3 );
+	g_0092e4a0.fn_004d48e1( (long) arg1, (long) arg2, arg3 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d357b
@@ -435,9 +435,9 @@ void fn_004d35a2()
 }
 
 // FUNCTION: STARFLEETOP 0x004d35ac
-void fn_004d35ac( long arg1, long arg2 )
+void fn_004d35ac( tValueBase* arg1, const char* arg2 )
 {
-	g_009254f8.fn_004cb4a7( arg1, arg2 );
+	g_009254f8.fn_004cb4a7( (long) arg1, (long) arg2 );
 }
 
 // HYPOTHESIS: the object found by 0x004cb4f8 is deleted through its virtual destructor
@@ -449,27 +449,27 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x004d35bf
-fn_004d35bf_object* fn_004d35bf( long arg1, char arg2 )
+tValueBase* fn_004d35bf( const char* arg1, bool arg2 )
 {
-	fn_004d35bf_object* obj = g_009254f8.fn_004cb4f8( arg1 );
+	fn_004d35bf_object* obj = g_009254f8.fn_004cb4f8( (long) arg1 );
 	if ( arg2 != 0 && obj != 0 )
 	{
 		delete obj;
 		obj = 0;
 	}
-	return obj;
+	return (tValueBase*) obj;
 }
 
 // FUNCTION: STARFLEETOP 0x004d35e3
-void fn_004d35e3( long arg1, long arg2, long arg3 )
+void fn_004d35e3( const char* arg1, const char* arg2, int arg3 )
 {
-	g_009254f8.fn_004cb56f( arg1, arg2, arg3 );
+	g_009254f8.fn_004cb56f( (long) arg1, (long) arg2, arg3 );
 }
 
 // FUNCTION: STARFLEETOP 0x004d35fa
-void fn_004d35fa( long arg1 )
+void fn_004d35fa( const char* arg1 )
 {
-	g_009254f8.fn_004cb5bd( arg1 );
+	g_009254f8.fn_004cb5bd( (long) arg1 );
 }
 
 // HYPOTHESIS: arg1 points to a record with two longs at +0xc/+0x10 and a name string at +0x138;
@@ -621,7 +621,7 @@ void fn_004d375b( tVarButtonGroup* arg1 )
 }
 
 // FUNCTION: STARFLEETOP 0x004d3774
-void fn_004d3774( long arg1 )
+void fn_004d3774( int arg1 )
 {
 	fn_004d375b( (tVarButtonGroup*) fn_004d3446( arg1 ) );
 }

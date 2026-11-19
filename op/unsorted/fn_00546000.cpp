@@ -92,16 +92,16 @@ public:
     void fn_00450e41(int param_1);
 };
 
-// HYPOTHESIS: the member at +0x30c of 0x00546027's object; 0x00546787 calls 0x004526cb on it.
-// Its class and size are not known; it fills the space up to +0x430.
-class c_004526cb
-{
-public:
-    // HYPOTHESIS: 0x004526cb takes one pointer-sized argument; its type is unknown.
-    void fn_004526cb(int param_1);
+#include "unsorted/c_004526cb.h"
 
-    char field_0[0x124];
-};
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the class that owns 0x00546027; only the member at +0x90 is known.
 class c_00546027
@@ -502,7 +502,7 @@ void c_00546027::fn_005465d5(float param_1, int param_2)
 // FUNCTION: STARFLEETOP 0x00546787
 void c_00546027::fn_00546787(int param_1)
 {
-    field_30c.fn_004526cb(param_1);
+    field_30c.fn_004526cb((c_00447bbb_arg *) param_1);
 }
 
 // FUNCTION: STARFLEETOP 0x00546799
