@@ -45,7 +45,7 @@ public:
 	bool fn_006755b0( int color, const tRect *rect, const tRect *inner, unsigned char frame, int a, int b );
 	// HYPOTHESIS: 0x006757f0 draws a line between two points in a colour, of a width, clipped
 	// to a rectangle when one is given.
-	void fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip );
+	bool fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip );
 
 	void *field_60;
 	tRect field_64;
@@ -173,6 +173,45 @@ bool tSurface::fn_00675470( int color, const tRect *rect, unsigned char frame, i
 		fn_006757f0( b, clip.left, clip.bottom, clip.right, clip.bottom, a, 0 );
 		fn_006757f0( b, clip.left, clip.top, clip.left, clip.bottom, a, 0 );
 		fn_006757f0( b, clip.right, clip.top, clip.right, clip.bottom + 1, a, 0 );
+	}
+	return true;
+}
+
+// HYPOTHESIS: 0x00696db0 draws a one-pixel line clipped to a rectangle; the values after the
+// pixels are those 0x00696ab0 takes.
+void fn_00696db0( int color, int x1, int y1, int x2, int y2, const tRect *clip, void *pixels, int a,
+	int height, unsigned char b );
+
+// HYPOTHESIS: draws a line a given number of pixels wide, widened across its direction and
+// clipped to the rectangle given and to the surface; returns whether anything was drawn.
+// FUNCTION: STARFLEETOP 0x006757f0
+bool tSurface::fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip )
+{
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+	tRect r;
+	if ( field_60 == 0 )
+		return false;
+
+	if ( clip != 0 )
+	{
+		r = *clip;
+		r.mClip( &field_64 );
+	}
+	else
+		r = field_64;
+
+	if ( r.mIsEmpty() )
+		return false;
+
+	for ( int i = 0; i < a; i++ )
+	{
+		if ( dx == 0 )
+			fn_00696db0( color, x1 + i, y1, x1 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
+		else if ( dy == 0 || dy < dx )
+			fn_00696db0( color, x1, y1 + i, x2, y2 + i, &r, field_60, field_70, field_64.mHeight(), field_74 );
+		else
+			fn_00696db0( color, x1 + i, y1, x2 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
 	}
 	return true;
 }
