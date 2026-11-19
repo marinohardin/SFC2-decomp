@@ -4,7 +4,7 @@
 #ifndef tNetControl_h
 #define tNetControl_h 1
 
-#include <vector>
+#include "unsorted/fn_005717f7_vector.h"	// includes <vector>
 
 #include "Tiger/tstring.h"
 
@@ -113,7 +113,7 @@ public:
 	int field_8CE4;
 	int field_8CE8;
 	float field_8CEC;
-	std::vector< int > field_8CF0;	// HYPOTHESIS: element type unknown (no destructor)
+	fn_005717f7_vector field_8CF0;	// HYPOTHESIS: a vector of pointers: destroyed through 0x00571a7a
 	c_tNetControl_8D00 *field_8D00;
 	unsigned char field_8D04;
 	unsigned char field_8D05;

@@ -137,7 +137,6 @@ function	offset	symbol	target	claimed
 0x00424a8f	0x7b	?ArchiveIntegerTM@@YAXJPAXAAVtSFCStream@@KPAD@Z	0x0040ec85	?fn_0040ec85@@YAXHPAXAAVtSFCStream@@EPAD@Z
 0x00424a8f	0x8d	?ArchiveIntegerTM@@YAXJPAXAAVtSFCStream@@KPAD@Z	0x0040ec85	?fn_0040ec85@@YAXHPAXAAVtSFCStream@@EPAD@Z
 0x00424a8f	0x93	?DecrementStreamTab@@YAXAAVtSFCStream@@@Z	0x0040e691	?fn_0040e691@@YAXAAVtSFCStream@@@Z
-0x0043117a	0x52	??1?$vector@HV?$allocator@H@std@@@std@@QAE@XZ	0x00571a7a	??1fn_005717f7_vector@@QAE@XZ
 0x004311ec	0x6	??1c_0091f930@@QAE@XZ	0x004bda12	?fn_004bda12@c_004bd805_Object@@QAE_NXZ
 0x004311f6	0x6	?fn_004bdd71@c_0091f930@@QAEXXZ	0x004bdd67	?fn_004bdd67@c_004bd805_Object@@QAEXXZ
 0x00431275	0x23a	??1?$vector@PAVc_0043127f_src@@V?$allocator@PAVc_0043127f_src@@@std@@@std@@QAE@XZ	0x00571a7a	??1fn_005717f7_vector@@QAE@XZ
