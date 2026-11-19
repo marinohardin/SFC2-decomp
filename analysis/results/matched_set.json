@@ -1909,6 +1909,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040c997": {
+   "name": "tElectricSpark::~tElectricSpark",
+   "symbol": "??1tElectricSpark@@UAE@XZ",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 47,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",

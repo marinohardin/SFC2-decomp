@@ -1,5 +1,6 @@
 // HYPOTHESIS: layout and the counter global are inferred from the constructor's stores.
 extern int g_00898ca4;
+extern char* g_00898c9c;
 
 class tElectricSpark
 {
@@ -21,6 +22,12 @@ tElectricSpark::tElectricSpark()
 }
 
 // FUNCTION: STARFLEETOP 0x0040c97b
+// FUNCTION: STARFLEETOP 0x0040c997
 tElectricSpark::~tElectricSpark()
 {
+	if (g_00898ca4 && --g_00898ca4 == 0 && g_00898c9c)
+	{
+		delete g_00898c9c;
+		g_00898c9c = 0;
+	}
 }
