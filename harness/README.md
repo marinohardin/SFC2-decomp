@@ -123,6 +123,15 @@ Exit status: 0 nothing regressed, 1 a recorded function scored lower (or lost it
 unit no longer builds), 2 the claimed function could not be built or scored, or step 7 or 8
 found a symbol that the exact functions use wrongly.
 
+**Units that read a changed file.** A run for some functions (not `--all`) builds their units,
+plus every other unit with a recorded function that reads a file changed since the checkout's
+HEAD (modified, added, deleted or untracked under `op/`): the unit itself, a file it includes
+directly or not, or a path its include search probes; a unit whose includes cannot be followed
+(`#include MACRO`) is always taken. An `INFO` line names them. Their recorded functions are held
+to their scores like any other, so a header edit that breaks another unit is a regression of
+the run, and the Stop hook and `update-matched-set.sh` refuse it. In the loop HEAD is the round's
+starting commit, so this covers everything the session changed.
+
 `--base <file or git ref>` also holds the run to another copy of the matched set, compared by
 original address: a file, or `analysis/results/matched_set.json` at a git ref (read with
 `git show`). Every entry in the base must still be in this tree's matched set at the same score
