@@ -11,9 +11,17 @@
 class tAsset
 {
 public:
+	tAsset();
 	virtual ~tAsset();
 
 	int field_04;
+	// HYPOTHESIS: field names and types unknown; the second string sits at an odd 2-byte offset.
+#pragma pack(push, 1)
+	tString field_08;
+	short field_30;
+	tString field_32;
+	short field_5A;
+#pragma pack(pop)
 };
 
 class tBoundAsset : public tAsset
