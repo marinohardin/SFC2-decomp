@@ -67,6 +67,7 @@ namespace nStoredProcedureArguments
 			int32 fn_0054c4e3( long param_1, long param_2 );
 			// HYPOTHESIS: the hex at two coordinates.
 			tClientHex& fn_0054c471( long param_1, long param_2 );
+			tClientHex* fn_0054c48b( int32* param_1, int32* param_2 );
 
 			std::vector< tClientHex >	m_10;
 			bool	m_20;

@@ -225,4 +225,17 @@ tMetaMapDataRequest::tResponse::tClientHex& tMetaMapDataRequest::tResponse::fn_0
 	return m_10[ index ];
 }
 
+// HYPOTHESIS: the single hex of a one-hex response, with its two coordinates.
+// FUNCTION: STARFLEETOP 0x0054c48b
+tMetaMapDataRequest::tResponse::tClientHex* tMetaMapDataRequest::tResponse::fn_0054c48b( int32* x, int32* y )
+{
+#line 245
+	validate( x && y );
+
+	// HYPOTHESIS: the coordinates are signed chars here, m_21 and m_22 are read as such.
+	*x = (char)m_21;
+	*y = (char)m_22;
+	return &m_10[ 0 ];
+}
+
 }
