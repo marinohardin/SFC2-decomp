@@ -20,7 +20,6 @@ void fn_004d353e( long arg1, long arg2 );
 
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
-
 // HYPOTHESIS: only the members this unit reads are placed; the rest of the layout is not
 // recovered. fpMetaMapControl is named by the validate text at 0x00876438.
 class tMetaClientMapPanel
@@ -28,6 +27,7 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
+	int fn_005e5957( unsigned long flag );
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -68,4 +68,41 @@ void tMetaClientMapPanel::vfunction20()
 	fpMetaMapControl->fn_005e31be();
 	fn_004d3340( g_0087632c );
 	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5957
+int tMetaClientMapPanel::fn_005e5957( unsigned long flag )
+{
+	field_dc.Enter();
+
+	int result;
+	switch( flag )
+	{
+		case 0x2:		result = 1;		break;
+		case 0x4:		result = 2;		break;
+		case 0x8:		result = 3;		break;
+		case 0x10:		result = 4;		break;
+		case 0x20:		result = 5;		break;
+		case 0x40:		result = 6;		break;
+		case 0x80:		result = 7;		break;
+		case 0x100:		result = 8;		break;
+		case 0x200:		result = 6;		break;
+		case 0x400:		result = 6;		break;
+		case 0x800:		result = 6;		break;
+		case 0x1000:	result = 12;	break;
+		case 0x2000:	result = 13;	break;
+		case 0x4000:	result = 14;	break;
+		case 0x8000:	result = 15;	break;
+		case 0x10000:	result = 16;	break;
+		case 0x20000:	result = 17;	break;
+		case 0x40000:	result = 18;	break;
+		case 0x80000:	result = 19;	break;
+		case 0x100000:	result = 20;	break;
+		case 0x200000:	result = 21;	break;
+		case 0x400000:	result = 22;	break;
+		case 0x800000:	result = 23;	break;
+		default:		result = 0;		break;
+	}
+	field_dc.Leave();
+	return result;
 }
