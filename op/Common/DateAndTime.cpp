@@ -61,3 +61,9 @@ int32 tDateAndTime::GetMonth() const
 {
 	return GetLocalTm()->tm_mon + 1;
 }
+
+// FUNCTION: STARFLEETOP 0x006f88f0
+int32 tDateAndTime::GetDay() const
+{
+	return GetLocalTm()->tm_mday;
+}
