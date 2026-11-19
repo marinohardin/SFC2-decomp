@@ -37495,6 +37495,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f88b0": {
+   "name": "tDateAndTime::SetToCurrentTime",
+   "symbol": "?SetToCurrentTime@tDateAndTime@@QAEXXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

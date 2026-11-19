@@ -43,3 +43,9 @@ tm* tDateAndTime::GetLocalTm( tm* pTime ) const
 
 	return localtime( &fTime );
 }
+
+// FUNCTION: STARFLEETOP 0x006f88b0
+void tDateAndTime::SetToCurrentTime()
+{
+	fTime = time( NULL );
+}
