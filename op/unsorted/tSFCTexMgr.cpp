@@ -11,6 +11,7 @@ public:
 extern fn_006a0490_Mgr* g_00c7c118;
 
 // FUNCTION: STARFLEETOP 0x0040ee47
+// FUNCTION: STARFLEETOP 0x0040ee73
 tSFCTexMgrEx::~tSFCTexMgrEx()
 {
     fn_006a0490_Mgr* mgr = g_00c7c118;
