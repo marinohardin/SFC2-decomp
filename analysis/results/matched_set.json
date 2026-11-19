@@ -4767,9 +4767,9 @@
    "symbol": "?vfunction11@t3DVisual_Model@@QAE_NPAUtPoint3@@PBD@Z",
    "unit": "unsorted/t3DVisual_Model.cpp",
    "size": 162,
-   "score": 95.887,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042fb24": {
    "name": "t3DVisual_Model::vfunction12",

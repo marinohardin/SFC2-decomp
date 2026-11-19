@@ -324,15 +324,19 @@ bool t3DVisual_Model::vfunction11(tPoint3 *out, const char *name)
 	out->x = 0.0f;
 	out->y = 0.0f;
 	out->z = 0.0f;
-	if (name == 0 || m154 == 0)
-		return false;
-	for (int i = 0; i < m180; i++)
+	if (name != 0 && m154 != 0)
 	{
-		tEntry_0042fa82 *entry = &m17c[i];
-		if (stricmp(m154 + entry->mName, name) == 0)
+		int i = 0;
+		while (i < m180)
 		{
-			*out = entry->mPoint * m178;
-			return true;
+			tEntry_0042fa82 *entry = m17c + i;
+			const char *label = m154 + entry->mName;
+			if (stricmp(label, name) == 0)
+			{
+				*out = entry->mPoint * m178;
+				return true;
+			}
+			i++;
 		}
 	}
 	return false;
