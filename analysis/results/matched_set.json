@@ -228,12 +228,12 @@
   },
   "0x004029e8": {
    "name": "FUN_004029e8",
-   "symbol": "?fn_004029e8@fn_004029e8_Obj@@QBE?AV1@II@Z",
+   "symbol": "?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 51,
-   "score": 99.565,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00402a26": {
    "name": "FUN_00402a26",
