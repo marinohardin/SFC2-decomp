@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Database/DatabaseID.cpp
-// Functions: 0x006fa440 to 0x006fa480, 5 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+#include "Common/Database/DatabaseID.h"
+
+namespace nDatabase
+{
+
+// FUNCTION: STARFLEETOP 0x006fa440
+bool tID::IsValid() const
+{
+	return fObjectID != 0 ? true : false;
+}
+
+}
