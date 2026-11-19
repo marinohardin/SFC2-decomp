@@ -67,3 +67,9 @@ int32 tDateAndTime::GetDay() const
 {
 	return GetLocalTm()->tm_mday;
 }
+
+// FUNCTION: STARFLEETOP 0x006f8900
+int32 tDateAndTime::GetHour() const
+{
+	return GetLocalTm()->tm_hour;
+}
