@@ -1306,6 +1306,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040891d": {
+   "name": "tShipSpecs::tShipSpecs",
+   "symbol": "??0tShipSpecs@@QAE@XZ",
+   "unit": "unsorted/tShipSpecs.cpp",
+   "size": 683,
+   "score": 99.931,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

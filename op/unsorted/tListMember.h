@@ -8,6 +8,8 @@
 class tListMember
 {
 public:
+    // HYPOTHESIS: inline; tShipSpecs::tShipSpecs (0x0040891d) sets this vtable and clears both links.
+    tListMember();
     // 0x004088c6: resets the vtable to tListMember's (0x0079590c) and returns.
     virtual ~tListMember();
     virtual void vfunction2();
@@ -32,5 +34,11 @@ public:
     tListMember *mPrevious;
     tListMember *mNext;
 };
+
+inline tListMember::tListMember()
+{
+    mPrevious = 0;
+    mNext = 0;
+}
 
 #endif // tListMember_h
