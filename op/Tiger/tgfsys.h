@@ -74,11 +74,11 @@ class fn_SessionCookie: public tCookie
 {
 public:
 	fn_SessionCookie() { mInvalidate(); }
+	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
 	// HYPOTHESIS: the copy takes the cookie and the session, and the derived copies assign the
 	// session again: the copy tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) returns stores the
 	// session cookie both before and after the tVolume vtable pointer. Argument copies elsewhere
 	// show the second store only.
-	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
 
 	tSession	fSession;	// +0x08
 };
@@ -124,7 +124,7 @@ public:
 	tPath() {}
 	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
 	// copied session cookie both before and after the tPath vtable pointer.
-	tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
+	tPath( const tPath &other );
 	virtual ~tPath() {}
 
 	virtual iTruth	mValid( void );
