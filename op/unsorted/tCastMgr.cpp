@@ -93,6 +93,7 @@ public:
 	tCastMgr();
 	virtual ~tCastMgr();
 	void fn_00675d90();
+	int fn_00675f90( unsigned int limit, int base );
 
 	char	field_04[0x104];
 	tBufFile	field_108;
@@ -142,4 +143,24 @@ tString* fn_00675f70( int id )
 	if ( found )
 		return &found->field_08;
 	return &g_00c690d8;
+}
+
+// HYPOTHESIS: field_194 holds 0x34-byte entries whose dword at +0x30 is a length; this walks
+// them until the running total reaches limit, adding the total before that entry to base.
+// FUNCTION: STARFLEETOP 0x00675f90
+int tCastMgr::fn_00675f90( unsigned int limit, int base )
+{
+	if ( base == 0 )
+		return base;
+	char* p = (char*)field_194._First;
+	unsigned int total = 0;
+	char* last = (char*)field_194._Last;
+	for ( ; p != last; p += 0x34 )
+	{
+		unsigned int next = *(unsigned int*)( p + 0x30 ) + total;
+		if ( limit <= next )
+			return base + total;
+		total = next;
+	}
+	return base;
 }
