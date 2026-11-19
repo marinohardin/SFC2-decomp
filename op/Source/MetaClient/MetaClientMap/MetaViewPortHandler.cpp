@@ -7,8 +7,7 @@
 #include "Common/Thread/SingleAccessWrapper.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/fn_0042a480_object.h"
-// MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
-// out-of-line copy (0x00429a18); the header cannot define it while that unit does.
+// MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its out-of-line copy (0x00429a18); the header cannot define it while that unit does.
 inline tOptex::tGuard::~tGuard()
 {
 	if( fNeedToLeave )
@@ -16,11 +15,9 @@ inline tOptex::tGuard::~tGuard()
 		fOptex->Leave();
 	}
 }
-// HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it
-// returns what 0x004d4728 finds for a group and a control name.
+// HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it returns what 0x004d4728 finds for a group and a control name.
 void fn_004d353e( long arg1, long arg2 );
-// HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
-extern const char* g_0087632c;
+extern const char* g_0087632c; // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown.
 class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; unsigned char field_60[ 0x18c - 0xfc - 0x60 ]; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
@@ -53,6 +50,9 @@ public:
 	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e5ee7( char arg ); void fn_005e8c29( const tRect& area );
 	void fn_005e6091();
 	void fn_005e5ef4();
+	void fn_005e620c( long x, long y, bool* changed ); // HYPOTHESIS: 0x005e65e5 tests a position and 0x005e7925 turns it into a hex; argument types are not recovered.
+	bool fn_005e65e5( long x, long y );
+	tHexPoint fn_005e7925( long x, long y, int arg );
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
@@ -366,4 +366,17 @@ void tMetaClientMapPanel::fn_005e5ef4()
 		}
 	}
 	hexes.Done();
+}
+
+// FUNCTION: STARFLEETOP 0x005e620c
+void tMetaClientMapPanel::fn_005e620c( long x, long y, bool* changed )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	tHexPoint old( field_1d0 );
+	if( !fn_005e65e5( x, y ) )
+		field_1d0.fn_005b6b62( -1, -1 );
+	else
+		field_1d0 = fn_005e7925( x, y, 0 );
+	*changed = old != field_1d0;
 }

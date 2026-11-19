@@ -25192,6 +25192,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005e620c": {
+   "name": "FUN_005e620c",
+   "symbol": "?fn_005e620c@tMetaClientMapPanel@@QAEXJJPA_N@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 184,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005ea14b": {
    "name": "FUN_005ea14b",
    "symbol": "?fn_005ea14b@tTree_005ea14b@@QAE?AUtPairib@1@ABU?$pair@HH@std@@@Z",
