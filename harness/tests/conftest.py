@@ -2,7 +2,18 @@ import os
 import struct
 import sys
 
+import pytest
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+
+@pytest.fixture(autouse=True)
+def _no_harness_cache(monkeypatch):
+    """Tests never read or write the real build and score caches; test_cache.py turns them on
+    in its own folders."""
+    monkeypatch.setenv('HARNESS_NO_CACHE', '1')
+
 
 IMAGE_BASE = 0x400000
 TEXT_RVA = 0x1000

@@ -26,7 +26,7 @@ import threading
 import sys
 import time
 
-from . import coff, funcs, matched, paths, source, target
+from . import cache, coff, funcs, matched, paths, source, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
@@ -69,7 +69,9 @@ def check_exe(rep):
             raise Untrusted(f'{paths.EXE} has sha256 {got}, not the original exe\'s {want}')
         rep.add('WARN', f'HARNESS_EXE_UNVERIFIED=1: scoring against {paths.EXE}, which is NOT '
                 'the original exe; these scores mean nothing for the matched set')
-    return coff.PeImage(raw)
+    img = coff.PeImage(raw)
+    img.sha256 = got        # the score cache keys a score to the exe it was scored against
+    return img
 
 
 def load_base(spec):
@@ -194,6 +196,10 @@ def write_side_by_side(left, right, path):
             f.write(f'{mark}{o:>7} {a:<43}| {b}\n')
 
 
+# A score cache entry leaves these to the function being scored (cache.py).
+CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side')
+
+
 def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
     matched-set entry, part of the evidence for what its annotation claims. Returns a result dict."""
@@ -220,9 +226,21 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
                         'emitted, e.g. an unused inline, cannot be scored)')
         return res
     res['symbol'] = sym
-    t = target.build(fn.address, fn.size, obj, sym, exe, index)
     fdir = os.path.join(build['out_dir'], res['address'])
     os.makedirs(fdir, exist_ok=True)
+    # The score cache (harness/lib/cache.py): an unchanged object is not compared again.
+    skey = cache.score_key(build['obj'], sym, fn.address, fn.size, exe)
+    hit = cache.load_score(skey)
+    if hit is not None:
+        res.update({k: v for k, v in hit['result'].items() if k not in CACHE_OWN_FIELDS})
+        res['diff_rows'] = [tuple(r) for r in res.get('diff_rows') or []]
+        res['side_by_side'] = os.path.join(fdir, 'diff.txt')
+        with open(res['side_by_side'], 'w') as f:
+            f.write(hit['side_by_side'])
+        with open(os.path.join(fdir, 'result.json'), 'w') as f:
+            json.dump(res, f, indent=1)
+        return res
+    t = target.build(fn.address, fn.size, obj, sym, exe, index)
     tpath = os.path.join(fdir, 'target.obj')
     open(tpath, 'wb').write(t['object'])
     left, right, err = objdiff(tpath, build['obj'], sym, fdir)
@@ -240,6 +258,13 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
         res['error'] = 'objdiff reports 100% but the strict byte/relocation check does not'
     with open(os.path.join(fdir, 'result.json'), 'w') as f:
         json.dump(res, f, indent=1)
+    with open(res['side_by_side']) as f:
+        side = f.read()
+    # What the comparison found, without what names the function here: a hit may come from
+    # another unit or name with the same object, symbol, address and size.
+    cache.store_score(skey, {'result': {k: v for k, v in json.loads(json.dumps(res)).items()
+                                        if k not in CACHE_OWN_FIELDS},
+                             'side_by_side': side})
     return res
 
 
@@ -443,7 +468,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                     sub.add('ERROR', f'0x{a:08x} REGRESSION: unit no longer builds')
             sub.failed = any(a in claimed_addrs for a, _ in items)
             return sub
-        sub.add('OK', f'build {rel} ({build["secs"]} s, profile {profile["name"]})')
+        how = 'unchanged, not rebuilt' if build.get('cached') else f'{build["secs"]} s'
+        sub.add('OK', f'build {rel} ({how}, profile {profile["name"]})')
         for a, ann in sorted(items, key=lambda x: x[0]):
             fn = index.by_address[a]
             # The other annotations in the annotation's own file: the unit, or the header it is in.
