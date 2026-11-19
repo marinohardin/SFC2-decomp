@@ -101,13 +101,43 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 // which unsorted/fn_0042C000.cpp also includes.
 #include "unsorted/tServCharacter.h"
 
+// The SDK's inline tOptex destructor, the same body tClientCharacter.cpp claims as the game's
+// copy (0x004296c8). With its body in view the compiler sets no unwind state before calling it
+// from an inlined tAccessPointer destructor, as the original does at 0x0042a8b7.
+// HYPOTHESIS: it belongs in Common/Thread/Optex.h, shared by the units, once they can move.
+inline tOptex::~tOptex()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
 
-
-
-
-
-
-
+// Inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is claimed in
+// tClientCharacter.cpp. With the body in view the compiler knows Leave cannot throw, so 0x0042a8b7
+// sets no unwind state before it.
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
+		} else {
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
+		}
+	}
+}
 
 
 
@@ -157,14 +187,15 @@ public:
 	byte field_00[0x14];
 };
 
-// HYPOTHESIS: the 0xd0-byte object tClientCharacter wraps at +0xcc (tObject_005391b0 in
-// unsorted/tClientCharacter.cpp); only the member 0x0042a8b7 calls is placed, its argument and
-// result types are guesses.
-class fn_005395b2_object
-{
-public:
-	void FUN_005395b2( int value );
-};
+// The object tClientCharacter wraps at +0xcc is a tMetaMapHex: 0x0042a8b7 assigns it through
+// tMetaMapHex::operator= (0x005395b2).
+
+
+
+
+
+
+
 
 // HYPOTHESIS: this is tClientCharacter (the string at +0x0c and the lock at +0xe4 match its
 // layout), declared only inside unsorted/tClientCharacter.cpp; only the members used here are
@@ -196,7 +227,7 @@ public:
 	// HYPOTHESIS: sets the whole flag word that 0x0042a403 tests.
 	void FUN_0042a7b2( unsigned long flags );
 	void FUN_0042a7bf( const std::vector< fn_0054185f_ship >& ships );
-	void FUN_0042a8b7( int value );
+	void FUN_0042a8b7( const tMetaMapHex& hex );
 	std::string FUN_0042a92f();
 	const std::string& FUN_0042a99a();
 	db::tID FUN_0042a9ba();
@@ -208,7 +239,7 @@ public:
 	int FUN_0042aaab();
 	int FUN_0042aacb();
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr FUN_0042aaeb();
-	tSingleAccessWrapper< fn_005395b2_object >::iPtr FUN_0042ab08();
+	tSingleAccessWrapper< tMetaMapHex >::iPtr FUN_0042ab08();
 	void FUN_0042ab25( std::vector< db::tID >& ids );
 	tHexPoint FUN_0042abe4();
 	const tHexPoint& FUN_0042ac36();
@@ -247,8 +278,8 @@ public:
 	// HYPOTHESIS: the wrapped ship cache vector; its Lock is 0x0042c709.
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > > field_b4;
 	// HYPOTHESIS: tClientCharacter's wrapper at +0xcc of tObject_005391b0, declared only inside
-	// unsorted/tClientCharacter.cpp; 0x0042a8b7 locks it and calls 0x005395b2 on the object.
-	tSingleAccessWrapper< fn_005395b2_object > field_cc;
+	// unsorted/tClientCharacter.cpp; 0x0042a8b7 locks it and assigns the map hex.
+	tSingleAccessWrapper< tMetaMapHex > field_cc;
 	tOptex field_e4;
 };
 
@@ -429,11 +460,11 @@ tServCharacter::tShipCache::~tShipCache()
 }
 
 // FUNCTION: STARFLEETOP 0x0042a8b7
-void fn_0042a480_object::FUN_0042a8b7( int value )
+void fn_0042a480_object::FUN_0042a8b7( const tMetaMapHex& hex )
 {
 	tOptex::tGuard guard( &field_e4 );
 
-	(*field_cc.Lock()).FUN_005395b2( value );
+	*field_cc.Lock() = hex;
 
 	guard.Leave();
 }
@@ -529,7 +560,7 @@ tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr fn_0042a
 }
 
 // FUNCTION: STARFLEETOP 0x0042ab08
-tSingleAccessWrapper< fn_005395b2_object >::iPtr fn_0042a480_object::FUN_0042ab08()
+tSingleAccessWrapper< tMetaMapHex >::iPtr fn_0042a480_object::FUN_0042ab08()
 {
 	return field_cc.Lock();
 }
