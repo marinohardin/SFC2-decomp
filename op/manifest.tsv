@@ -958,7 +958,6 @@ address	size	symbol	source	modes
 0x00469636	128	tState_GameConnections::fn_00469636()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x004696c0	10	g_0090d7a0 (dynamic initializer)	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6
 0x004696ca	12	g_0090d7a0 (atexit registration)	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6
-0x00469900	28	tState_GameConnections::`scalar deleting destructor'	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6
 0x00469cd7	38	tGameState::tGameState()	unsorted/tGameState.cpp	vc6
 0x00469cfd	28	tGameState::`scalar deleting destructor'	unsorted/tGameState.cpp	vc6
 0x00469d19	45	tGameState::~tGameState()	unsorted/tGameState.cpp	vc6
@@ -1047,7 +1046,6 @@ address	size	symbol	source	modes
 0x00477749	128	tState_NetSetup::fn_00477749()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x004777d3	10	g_tState_NetSetup (dynamic initializer)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6
 0x004777dd	12	g_tState_NetSetup (atexit registration)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6
-0x00477a13	28	tState_NetSetup::`scalar deleting destructor'	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6
 0x0047ebca	1171	tState_SingleCampaignSelector::fn_0047ebca()	Source/states/SingleCampaignSelector.cpp	vc6 guest
 0x0048612c	126	tSupplyDockItem::tSupplyDockItem(long,long,long,long,long)	Source/states/SupplyDockItem.cpp	vc6
 0x004861aa	54	tSupplyDockItem::vfunction1()	Source/states/SupplyDockItem.cpp	vc6 guest

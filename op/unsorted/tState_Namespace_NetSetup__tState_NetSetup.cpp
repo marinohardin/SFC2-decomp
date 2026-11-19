@@ -793,13 +793,13 @@ void tState_NetSetup::fn_00477749()
 // FUNCTION: STARFLEETOP 0x004777d3
 tState_Namespace_NetSetup::tState_NetSetup g_tState_NetSetup;
 
-// MATCH-ONLY: the original declared no destructor; VC6's implicit one (0x004777f3) stores no
-// vtable. Written out only so its deleting destructor can be claimed: this body adds a vtable
-// store, so it is not the original's 0x004777f3, which stays unclaimed.
-// FUNCTION: STARFLEETOP 0x00477a13
-tState_NetSetup::~tState_NetSetup()
-{
-}
+// Unclaimed: the implicit destructor (0x004777f3) and its scalar deleting destructor
+// (0x00477a13). The original declared no destructor, and VC6 emits these with no source line to
+// claim; writing one out would add a vtable store the original does not have.
+//
+//
+//
+//
 
 // HYPOTHESIS: as in tState_GameConnections, the original calls the out-of-line tValueI<tString>
 // constructor (0x0043d2ef) for m1c to m11c and expands it inline for m15c and m19c (EH states

@@ -126,11 +126,11 @@ class tState_GameConnections : public tGameState
 {
 public:
 	tState_GameConnections();
-	// MATCH-ONLY: the exe's destructor (0x004696e0) destroys the members and calls ~tGameState
-	// without storing the vtable first, as only VC6's implicit destructor does; the original
-	// declared none. It is written out so the address can be claimed; it adds that store.
-	// Slot 0 holds the scalar deleting destructor (0x00469900).
-	virtual ~tState_GameConnections();
+	// No destructor declared: the exe's (0x004696e0) destroys the members and calls ~tGameState
+	// without storing the vtable first, as only VC6's implicit destructor does. Slot 0 holds the
+	// scalar deleting destructor (0x00469900). Neither has a source line to claim.
+	//
+	//
 	virtual void vfunction1();
 	virtual bool vfunction2();
 	virtual void vfunction3();
@@ -867,11 +867,11 @@ void tState_GameConnections::fn_00469636()
 // FUNCTION: STARFLEETOP 0x004696c0
 tState_GameConnections g_0090d7a0;
 
-// MATCH-ONLY: written out only so its deleting destructor can be claimed; not the original's 0x004696e0.
-// FUNCTION: STARFLEETOP 0x00469900
-tState_GameConnections::~tState_GameConnections()
-{
-}
+// Unclaimed: the implicit destructor (0x004696e0) and its scalar deleting destructor (0x00469900),
+// which VC6 emits with no source line to claim (see the class).
+//
+//
+//
 
 // HYPOTHESIS: the original calls the out-of-line tValueI<tString> constructor (0x0043d2ef) for
 // the first five value members and expands it inline for m15c and m19c; this build expands all

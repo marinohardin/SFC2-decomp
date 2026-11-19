@@ -20,7 +20,7 @@ class tState_NetSetup : public tGameState
 {
 public:
 	tState_NetSetup();
-	virtual ~tState_NetSetup();
+	// No destructor declared: the implicit one is the original's (0x004777f3).
 	virtual void vfunction1();
 	virtual bool vfunction2();
 	virtual void vfunction3();

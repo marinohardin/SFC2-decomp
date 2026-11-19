@@ -8605,15 +8605,6 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
-  "0x00469900": {
-   "name": "tState_Namespace_GameConnections::tState_GameConnections::scalar_deleting_destructor",
-   "symbol": "??_GtState_GameConnections@tState_Namespace_GameConnections@@UAEPAXI@Z",
-   "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
-   "size": 28,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-17"
-  },
   "0x00469cd7": {
    "name": "tGameState::tGameState",
    "symbol": "??0tGameState@@QAE@XZ",
@@ -9402,15 +9393,6 @@
    "symbol": "_$E8",
    "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
    "size": 12,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-17"
-  },
-  "0x00477a13": {
-   "name": "tState_Namespace_NetSetup::tState_NetSetup::scalar_deleting_destructor",
-   "symbol": "??_GtState_NetSetup@tState_Namespace_NetSetup@@UAEPAXI@Z",
-   "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
-   "size": 28,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
