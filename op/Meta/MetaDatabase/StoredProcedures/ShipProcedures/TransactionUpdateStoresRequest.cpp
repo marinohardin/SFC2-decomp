@@ -62,3 +62,39 @@ double* tStoresItemRates::fGetRateAddress( fStoresRateNode* itRate )
 	validate( itRate != fItemRates.end() );
 	return &itRate->fRate;
 }
+#line 66
+
+// HYPOTHESIS: a second table of the same shape; its last node sits at +0x50 and the function
+// returns the address of the value inside the found node (+0x1c).
+struct fStoresStateNode
+{
+	char pad[0x1c];
+	int fValue;
+};
+
+struct fStoresStateTree
+{
+	void find( fStoresStateNode** pResult, int key );
+	fStoresStateNode* end() { return fpEnd; }
+
+	char pad[4];
+	fStoresStateNode* fpEnd;
+};
+
+class tStoresStates
+{
+public:
+	int* fn_0055b183( fStoresStateNode* itStores );
+
+	char fPad[0x4c];
+	fStoresStateTree fStoresStates;
+};
+
+// FUNCTION: STARFLEETOP 0x0055b183
+int* tStoresStates::fn_0055b183( fStoresStateNode* itStores )
+{
+	fStoresStates.find( &itStores, (int)itStores );
+#line 234
+	validate( itStores != fStoresStates.end() );
+	return &itStores->fValue;
+}
