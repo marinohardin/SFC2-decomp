@@ -30,14 +30,14 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg );
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg );
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
 	tMetaMapControl* fpMetaMapControl;
-	unsigned char field_fc[ 0x18c - 0xfc ]; bool field_18c; unsigned char field_18d[ 0x190 - 0x18d ]; long field_190; unsigned char field_194[ 0x1a0 - 0x194 ];
+	unsigned char field_fc[ 0x18c - 0xfc ]; bool field_18c; unsigned char field_18d[ 0x190 - 0x18d ]; long field_190; long field_194; unsigned char field_198[ 0x1a0 - 0x198 ];
 	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8;
 };
 
@@ -177,5 +177,13 @@ void tMetaClientMapPanel::fn_005e5bd7( long arg )
 {
 	field_dc.Enter();
 	field_190 = arg;
+	field_dc.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5bfe
+void tMetaClientMapPanel::fn_005e5bfe( long arg )
+{
+	field_dc.Enter();
+	field_194 = arg;
 	field_dc.Leave();
 }
