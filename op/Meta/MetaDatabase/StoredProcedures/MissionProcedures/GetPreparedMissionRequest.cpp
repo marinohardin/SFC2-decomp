@@ -1,25 +1,25 @@
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
+#include "Meta/MetaDatabase/StoredProcedures/MissionProcedures/GetPreparedMissionRequest.h"
 
-#include "unsorted/tRequestWithResponse.h"
+using namespace nStoredProcedureArguments;
 
-// HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
-class tGetPreparedMissionRequest : public tRequestWithResponse
-{
-public:
-	class tPreparedMissionKey : public nDataStore::tStreamable
-	{
-	public:
-		virtual void StreamOut( nDataStore::tOutput& output ) const;
-		virtual void StreamIn( nDataStore::tInput& input );
-		char pad[4];
-	};
 
-	virtual void vfunction3( nDataStore::tInput& input );
-	tPreparedMissionKey fKey;
-	bool fFlag;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00550d34
 void tGetPreparedMissionRequest::vfunction3( nDataStore::tInput& input )

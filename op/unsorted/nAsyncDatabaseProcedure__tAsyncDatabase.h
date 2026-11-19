@@ -49,7 +49,9 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction21();
 		virtual void vfunction22();
 		virtual void vfunction23();
-		virtual void vfunction24();
+		// HYPOTHESIS: reads prepared missions (0x005676f4); tAsyncDatabaseSingle defines the
+		// slot with these arguments.
+		virtual void vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock );
 		virtual void vfunction25();
 		virtual void vfunction26();
 		virtual void vfunction27();

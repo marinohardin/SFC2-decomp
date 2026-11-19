@@ -19792,6 +19792,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005676f4": {
+   "name": "FUN_005676f4",
+   "symbol": "?fn_005676f4@tGetPreparedMission@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 423,
+   "score": 99.962,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
