@@ -36,6 +36,8 @@ public:
 	// HYPOTHESIS: both take an entity; tEntity::vfunction16 (0x004101e4) picks one by its team.
 	void fn_0052280a(class tEntity *pEntity);
 	void fn_00522c66(class tEntity *pEntity);
+	// HYPOTHESIS: takes an entity; tEntity::vfunction17 (0x0041020c) calls it.
+	void fn_00522c46(class tEntity *pEntity);
 	tObject_005235a7 *fn_005235a7(int param_1);
 	// HYPOTHESIS: takes the ship 0x005235a7 looks up and returns the object for it.
 	tObject_005235a7 *fn_005235c8(fn_004e2b02_ship_type *pShip);

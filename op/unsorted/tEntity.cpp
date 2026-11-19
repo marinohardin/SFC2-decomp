@@ -101,6 +101,13 @@ void tEntity::vfunction16()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0041020c
+void tEntity::vfunction17()
+{
+	if (fField5C == 1)
+		g_p0090bed4->fn_00522c46(this);
+}
+
 // FUNCTION: STARFLEETOP 0x0040ff8c
 void tEntity::vfunction5()
 {
