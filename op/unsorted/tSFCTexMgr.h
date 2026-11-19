@@ -55,8 +55,8 @@ class tSFCTexMgrEx : public tSFCTexMgr
 public:
     tSFCTexMgrEx();
     virtual ~tSFCTexMgrEx();
-    // HYPOTHESIS: slot 1 is not known yet; vfunction3 loads a texture by name.
-    virtual void vfunction2();
+    // HYPOTHESIS: vfunction2 releases a texture handle; vfunction3 loads a texture by name.
+    virtual int vfunction2(int handle);
     virtual int vfunction3(char *name, char param_2, char param_3, int param_4);
     virtual void vfunction4(int handle);
 };
