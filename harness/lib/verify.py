@@ -555,15 +555,15 @@ CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
 def write_symbol_table(rep, out=None):
-    """The claims' rows from an --all run. When a unit failed to build, its claims have no
-    rebuilt symbol: their rows are kept from the table the run replaces, not dropped."""
+    """The claims' rows from an --all run. A claim that could not be built or scored (an error
+    and no symbol) keeps its row from the table the run replaces; any other claim without a
+    symbol, and any address no longer claimed, loses it."""
     out = out or symtab.path()
     rows = symbol_table_rows(rep.results)
-    if rep.failed:
-        have = {r[0] for r in rows} | {r['address'] for r in rep.results
-                                        if r.get('symbol') and not r.get('error')}
+    unbuilt = {r['address'] for r in rep.results if r.get('error') and not r.get('symbol')}
+    if unbuilt:
         rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
-                 if a not in have]
+                 if a in unbuilt]
     symtab.write_claims(out, rows)
 
 

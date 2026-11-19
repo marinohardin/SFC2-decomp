@@ -144,18 +144,18 @@ def test_a_callee_line_states_a_claims_symbol_and_leads_apart(hit, text):
     assert pack.callee_symbol(hit) == text
 
 
-def test_a_failed_full_run_keeps_the_rows_of_units_that_did_not_build(tmp_path):
+def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
     out = str(tmp_path / 'symbols.tsv')
     symtab.write_claims(out, [('0x00401000', '?old@@YAXXZ', 'a.cpp'),
-                              ('0x00402000', '?kept@@YAXXZ', 'b.cpp')])
+                              ('0x00402000', '?kept@@YAXXZ', 'b.cpp'),
+                              ('0x00403000', '?gone@@YAXXZ', 'c.cpp'),
+                              ('0x00404000', '?unclaimed@@YAXXZ', 'd.cpp')])
     rep = verify.Report()
     rep.failed = True
     rep.results = [dict(address='0x00401000', symbol='?new@@YAXXZ', unit='a.cpp'),
                    dict(address='0x00402000', symbol=None, unit='b.cpp',
-                        error='BUILD HAS FAILED')]
+                        error='BUILD HAS FAILED'),
+                   dict(address='0x00403000', symbol=None, unit='c.cpp', error=None)]
     verify.write_symbol_table(rep, out)
     assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp'),
                                        '0x00402000': ('?kept@@YAXXZ', 'b.cpp')}
-    rep.failed = False
-    verify.write_symbol_table(rep, out)
-    assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp')}

@@ -209,8 +209,9 @@ relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as fo
 functions. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
 are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
 every start; after merging into a running lane, restart its loop (or run `--all`) so a renamed
-claim is not refused as a stand-in. An `--all` in which a unit failed to build keeps that unit's
-rows from the table it replaces. The context pack lists a claimed callee's symbol as what the
+claim is not refused as a stand-in. A claim that an `--all` could not build keeps its row from the table
+it replaces. Known cost: a session refused against a table older than a merge cannot fix the
+refusal itself, and the attempt is lost until the loop is restarted. The context pack lists a claimed callee's symbol as what the
 call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
 
 ## The queue (`queue.py`)
