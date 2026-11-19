@@ -1225,6 +1225,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00407d14": {
+   "name": "tDynamicMemoryFreeList::scalar_deleting_destructor",
+   "symbol": "??_GtDynamicMemoryFreeList@@UAEPAXI@Z",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 34,
+   "score": 85.833,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
