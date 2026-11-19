@@ -243,4 +243,10 @@ void tDatabaseObject::MakeReadOnly()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006fadc0
+void tDatabaseObject::SetID( const tID& id )
+{
+	fID = id;
+}
+
 }

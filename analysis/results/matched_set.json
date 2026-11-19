@@ -37783,6 +37783,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fadc0": {
+   "name": "nDatabase::tDatabaseObject::SetID",
+   "symbol": "?SetID@tDatabaseObject@nDatabase@@UAEXABVtID@2@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
