@@ -19479,11 +19479,11 @@
   },
   "0x0055a13a": {
    "name": "FUN_0055a13a",
-   "symbol": "?fGetRate@tTradeInRates@@QAENH@Z",
+   "symbol": "?fGetRate@tTradeInRates@@QAENABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
    "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp",
    "size": 84,
-   "score": 64.621,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0056c414": {
