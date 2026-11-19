@@ -42,9 +42,11 @@ def test_a_missing_table_is_empty(tmp_path):
 
 
 def checked(results, data=None, table=None, check_all=False):
+    """By default the callee 0x00401200 is claimed (recorded under its own symbol)."""
     rep = verify.Report()
     rep.results = results
-    verify.report_claim_symbols(rep, data or recorded(), [], check_all, table)
+    data = recorded(a00401200='?callee@@YAXXZ') if data is None else data
+    verify.report_claim_symbols(rep, data, [], check_all, table)
     return rep
 
 
@@ -159,3 +161,9 @@ def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
     verify.write_symbol_table(rep, out)
     assert symtab.load_claims(out) == {'0x00401000': ('?new@@YAXXZ', 'a.cpp'),
                                        '0x00402000': ('?kept@@YAXXZ', 'b.cpp')}
+
+
+def test_a_table_row_whose_claim_is_gone_is_ignored():
+    table = {'0x00401200': (STANDIN, 'b.cpp')}
+    assert len(checked([partial(exact_caller())], table=table).standins) == 1
+    assert checked([partial(exact_caller())], data=recorded(), table=table).standins == []

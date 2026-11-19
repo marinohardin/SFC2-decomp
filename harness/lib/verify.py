@@ -587,7 +587,8 @@ def claimed_symbols(results, data, table=None):
     written only when a score improves, so a later rename leaves the old name there."""
     out = {k: (e['symbol'], 'recorded') for k, e in data['functions'].items() if e.get('symbol')}
     for k, (sym, _) in (table or {}).items():
-        out[k] = (sym, 'table')
+        if k in data['functions']:      # a row whose claim is gone since the table was written
+            out[k] = (sym, 'table')
     for res in results:
         if res.get('symbol'):
             out[res['address']] = (res['symbol'], 'rebuilt')
