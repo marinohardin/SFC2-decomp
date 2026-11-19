@@ -37432,6 +37432,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f6b60": {
+   "name": "tSettings::`scalar_deleting_destructor'",
+   "symbol": "??_GtSettings@@UAEPAXI@Z",
+   "unit": "Common/Settings.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

@@ -13,6 +13,7 @@
 class tSettings
 {
 public:
+	virtual ~tSettings();
 	void GetValue( const std::string& name, long* value );
 	void GetList( const std::string& name, std::vector<std::string>* list, std::vector<std::string>* defaultList );
 	void GetList( const std::string& name, std::vector< long >* values, std::vector< std::string >* strings );
