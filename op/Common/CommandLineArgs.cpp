@@ -24,7 +24,10 @@ tCommandLineArgs::tCommandLineArgs()
 {
 }
 
+// The inlined basic_string::_Tidy calls of 0x006fdd40 lack the toolchain's _FROZEN test (the
+// library difference noted at 0x00708820); the rest lines up.
 // FUNCTION: STARFLEETOP 0x006fdd20
+// FUNCTION: STARFLEETOP 0x006fdd40
 tCommandLineArgs::~tCommandLineArgs()
 {
 }

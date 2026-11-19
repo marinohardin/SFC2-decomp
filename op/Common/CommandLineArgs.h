@@ -5,6 +5,8 @@
 
 #include "Common/AutoPtr.h"
 
+#include <vector>
+
 class tCommandLineArgs
 {
 	public:
@@ -21,9 +23,10 @@ class tCommandLineArgs
 		// HYPOTHESIS: the static's name is not known; the exe holds it at 0x00c7f8b8.
 		static iAutoPtr g_00c7f8b8;
 
-		// HYPOTHESIS: names; the constructor builds three strings and fills the second
-		// from the process command line.
-		std::string m04;
+		// HYPOTHESIS: names; the constructor builds a list and two strings and fills the
+		// first string from the process command line. The destructor frees the list's
+		// 16-byte elements as strings.
+		std::vector<std::string> m04;
 		std::string m14;
 		std::string m24;
 };
