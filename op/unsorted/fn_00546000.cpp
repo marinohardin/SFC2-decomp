@@ -487,10 +487,16 @@ void c_00546027::fn_005465d5(float param_1, int param_2)
         step = param_2 > step ? param_2 : step;
         field_100.field_182[i] = step + field_100.field_182[i] < field_100.field_17a[i] ? step + field_100.field_182[i] : field_100.field_17a[i];
     }
-    step = (int)((field_100.field_10c[2] - field_100.field_112[2]) * param_1);
+    // MATCH-ONLY: the current count is captured inside the subtraction and the clamp is spelled
+    // as an if; the original most likely used the same max and min macros as the entries below.
+    int total;
+    step =(int)((field_100.field_10c[2] - (total = field_100.field_112[2])) * param_1);
     step = param_2 > step ? param_2 : step;
-    step += field_100.field_112[2];
-    field_100.field_112[2] = step < field_100.field_10c[2] ? step : field_100.field_10c[2];
+    total += step;
+    step = total;
+    if (total >= field_100.field_10c[2])
+        step = field_100.field_10c[2];
+    field_100.field_112[2] = step;
     step = (int)((field_100.field_10c[0] - field_100.field_112[0]) * param_1);
     step = param_2 > step ? param_2 : step;
     field_100.field_112[0] = step + field_100.field_112[0] < field_100.field_10c[0] ? step + field_100.field_112[0] : field_100.field_10c[0];

@@ -18969,9 +18969,9 @@
    "symbol": "?fn_005465d5@c_00546027@@QAEXMH@Z",
    "unit": "unsorted/fn_00546000.cpp",
    "size": 434,
-   "score": 98.05,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00546787": {
    "name": "FUN_00546787",
