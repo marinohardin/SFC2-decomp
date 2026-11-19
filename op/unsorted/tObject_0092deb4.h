@@ -142,8 +142,8 @@ public:
 	virtual void vfunction109();
 
 	// HYPOTHESIS: locks and returns the character the logon information procedure reads its
-	// database identifier from; the argument's meaning is not recovered.
-	tAccessPointer< fn_0042a480_object, tSingleAccessWrapper< fn_0042a480_object > > fn_004d16b2( int index );
+	// database identifier from. It returns with ret 4: the result pointer is its only argument.
+	tAccessPointer< fn_0042a480_object, tSingleAccessWrapper< fn_0042a480_object > > fn_004d16b2();
 };
 
 extern tObject_0092deb4 *gObject_0092deb4;

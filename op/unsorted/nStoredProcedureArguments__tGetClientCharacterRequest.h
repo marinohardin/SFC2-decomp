@@ -19,8 +19,10 @@ namespace nStoredProcedureArguments
 	{
 	public:
 		// HYPOTHESIS: the reply address, as tRegisterForTurnBreakRequest takes it, and the
-		// character's database identifier.
-		tGetClientCharacterRequest( tSmartPtr<tObject_005d3679> replyAddress, const nDatabase::tID& characterID );
+		// character's database identifier. The logon information procedure pushes a 0 before
+		// the identifier, read here as a third argument; the constructor's ret 0x10 says it
+		// takes four, so its declaration in that unit may have been an older one.
+		tGetClientCharacterRequest( tSmartPtr<tObject_005d3679> replyAddress, const nDatabase::tID& characterID, int32 unknown );
 
 		virtual	void StreamOut( nDataStore::tOutput& output ) const;
 		virtual	void StreamIn( nDataStore::tInput& input );

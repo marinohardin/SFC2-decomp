@@ -24054,7 +24054,7 @@
    "symbol": "?fn_005e189d@tUpdateFleetIcons@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp",
    "size": 341,
-   "score": 26.124,
+   "score": 99.904,
    "exact": false,
    "recorded": "2026-11-19"
   },

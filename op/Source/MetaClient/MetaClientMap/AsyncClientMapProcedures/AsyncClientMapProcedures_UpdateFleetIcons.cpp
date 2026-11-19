@@ -74,10 +74,10 @@ void tUpdateFleetIcons::fn_005e189d( const nDataStore::tBuffer* buffer )
 
 	fn_00719050();
 
-	// HYPOTHESIS: the original pushes only the result pointer for 0x004d16b2 here, where the
-	// logon information procedure also pushes 0; with the argument kept, the rest of the body
-	// matched once the call was written without it.
-	tGetFleetDataRequest request( fn_00719490( fn_00719580( 7 ) ), ( *gObject_0092deb4->fn_004d16b2( 0 ) ).FUN_0042a9ba() );
+
+
+
+	tGetFleetDataRequest request( fn_00719490( fn_00719580( 7 ) ), ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a9ba() );
 
 	validate( tAddressMgr::Instance()->GetCharacterRelayAddress() );
 	field_1c->fn_00714020( tAddressMgr::Instance()->GetCharacterRelayAddress(), 15, &request );

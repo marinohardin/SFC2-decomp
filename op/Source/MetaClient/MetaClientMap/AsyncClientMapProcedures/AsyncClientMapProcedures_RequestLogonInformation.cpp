@@ -26,7 +26,7 @@ using namespace nStoredProcedureArguments;
 // FUNCTION: STARFLEETOP 0x005e13d8
 void tRequestLogonInformation::vfunction5()
 {
-	tGetClientCharacterRequest request( fn_00719490( fn_00719580( 6 ) ), ( *gObject_0092deb4->fn_004d16b2( 0 ) ).FUN_0042a9ba() );
+	tGetClientCharacterRequest request( fn_00719490( fn_00719580( 6 ) ), ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a9ba(), 0 );
 
 	// The original's validate text gives the line (192) and the getter's name.
 #line 192
