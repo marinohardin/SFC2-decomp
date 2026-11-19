@@ -16386,9 +16386,9 @@
    "symbol": "?fn_00523445@fn_0090bed4_Object@@QAEXED@Z",
    "unit": "unsorted/fn_00523000.cpp",
    "size": 254,
-   "score": 94.937,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00523543": {
    "name": "FUN_00523543",

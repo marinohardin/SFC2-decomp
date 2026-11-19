@@ -271,7 +271,8 @@ extern float g_007b024c;
 // flag set first; with param_2 clear, then any old entry.
 void fn_0090bed4_Object::fn_00523445(unsigned char param_1, char param_2)
 {
-	float now = g_0090bef0;
+	double time = g_0090bef0;
+	float now = time;
 	unsigned char count = 0;
 	unsigned char freed = 0;
 	unsigned char i;
