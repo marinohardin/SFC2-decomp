@@ -37351,6 +37351,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f5c50": {
+   "name": "tHeartbeatTimer::`scalar_deleting_destructor'",
+   "symbol": "??_GtHeartbeatTimer@@UAEPAXI@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
