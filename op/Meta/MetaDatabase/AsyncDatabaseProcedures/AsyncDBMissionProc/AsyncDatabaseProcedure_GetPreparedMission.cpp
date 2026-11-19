@@ -1,6 +1,28 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp
-// Functions: 0x0056763a to 0x005676f4, 4 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.h"
+#include "Common/MemberCallback.h"
+#include "Common/Exceptions/Validate.h"
+#include "unsorted/nAsyncDatabaseProcedure__tAsyncDatabase.h"
+
+// The SDK's template bodies, which Common/Callback.h and Common/MemberCallback.h leave to the
+// units that instantiate them.
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+using namespace nAsyncDatabaseProcedure;
+
+// The analysis names this address as the destructor; the body is the constructor.
+// FUNCTION: STARFLEETOP 0x0056763a
+tGetPreparedMission::tGetPreparedMission( tAsyncDatabase* pDB ) : tAsyncDatabaseProcedure( pDB )
+{
+#line 27
+	validate( pDB );
+	fn_00718f10( 0x35, new tMemberCallback<tGetPreparedMission,const nDataStore::tBuffer*>( this, fn_005676f4 ) );
+	fn_00719050();
+}

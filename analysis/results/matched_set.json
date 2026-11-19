@@ -19765,6 +19765,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0056763a": {
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::~tGetPreparedMission",
+   "symbol": "??0tGetPreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
