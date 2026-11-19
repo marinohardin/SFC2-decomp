@@ -36,7 +36,7 @@ code.
 Every input is optional: a missing file contributes nothing, so before the harness exists exact
 and functional are zero. Accepted shapes of the harness inputs:
 
-  harness/matched_set.json, harness/functional_set.json
+  analysis/results/matched_set.json, harness/functional_set.json
       a list of addresses ("00401000", "0x00401000" or an integer), or of objects with an
       "address" and an optional "status" ("exact" or "functional"); or an object whose "exact",
       "functional" or "functions" keys hold such lists. Entries without a status are exact in
@@ -862,7 +862,7 @@ def default_paths():
         'sdk_fuzzy_tsv': ROOT / 'analysis/results/StarFleetOP_2552_sdklib_fuzzy.tsv',
         'eh_funclet_parents': ROOT / 'analysis/results/progress/op/eh_funclet_parents.tsv',
         'lifter_dir': None,
-        'matched_set': ROOT / 'harness/matched_set.json',
+        'matched_set': ROOT / 'analysis/results/matched_set.json',
         'functional_set': ROOT / 'harness/functional_set.json',
         'manifest': ROOT / 'op/manifest.tsv',
         'objdiff_reports': sorted(pathlib.Path(p) for p in
