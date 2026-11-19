@@ -2062,6 +2062,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040d60d": {
+   "name": "tSFCStream::tSFCStream",
+   "symbol": "??0tSFCStream@@QAE@PAEJ@Z",
+   "unit": "unsorted/tSFCStream.cpp",
+   "size": 50,
+   "score": 50.211,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040d63f": {
    "name": "FUN_0040d63f",
    "symbol": "??0fn_0040d63f_Buf@@QAE@H@Z",

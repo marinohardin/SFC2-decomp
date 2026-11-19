@@ -20,6 +20,7 @@ class tSFCStream
 {
 public:
 	tSFCStream(int32 x);
+	tSFCStream(unsigned char* buffer, long size);
 	void fn_0040d67d();
 	void fn_0040d692();
 	tSFCStream* fn_0040d6b7(int* src);
