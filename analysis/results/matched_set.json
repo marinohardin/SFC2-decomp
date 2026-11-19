@@ -1855,6 +1855,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040c7e7": {
+   "name": "tTexBmpZip::vfunction1",
+   "symbol": "?vfunction1@tTexBmpZip@@UAEPAVtBasicFile@@XZ",
+   "unit": "unsorted/tTexBmpZip.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",
