@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <time.h>
 #include "Common/DateAndTime.h"
 
@@ -20,8 +21,10 @@ const tDateAndTime& tDateAndTime::operator=( time_t timeSrc )
 	return *this;
 }
 
+// windows.h defines GetCurrentTime() as GetTickCount(), so this compiles under the
+// symbol ?GetTickCount@tDateAndTime@@SA?AV1@XZ, as in the original.
 // FUNCTION: STARFLEETOP 0x006f8830
-tDateAndTime tDateAndTime::GetTickCount()
+tDateAndTime tDateAndTime::GetCurrentTime()
 {
 	return tDateAndTime( time( NULL ) );
 }
