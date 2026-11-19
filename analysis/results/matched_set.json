@@ -19504,6 +19504,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0055b087": {
+   "name": "FUN_0055b087",
+   "symbol": "?fn_0055b087@tShipNames@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp",
+   "size": 168,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
