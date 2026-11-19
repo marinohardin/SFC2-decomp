@@ -24049,6 +24049,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x005e189d": {
+   "name": "FUN_005e189d",
+   "symbol": "?fn_005e189d@tUpdateFleetIcons@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp",
+   "size": 341,
+   "score": 26.124,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x005e2501": {
    "name": "FUN_005e2501",
    "symbol": "?fn_005e2501@fn_005e2501_class@@QAEXXZ",
