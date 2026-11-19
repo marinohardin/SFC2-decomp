@@ -17070,9 +17070,9 @@
    "symbol": "?StreamIn@tMetaMapHex@@UAEXAAVtInput@nDataStore@@@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 669,
-   "score": 99.992,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00539a9e": {
    "name": "tMetaMapHex::vfunction6_for_tAllocatedClass",

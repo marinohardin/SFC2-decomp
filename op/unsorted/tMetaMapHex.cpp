@@ -158,6 +158,14 @@ void tMetaMapHex::StreamOut( nDataStore::tOutput& output ) const
 	output << m_98 << m_a0;
 }
 
+// MATCH-ONLY: the map's index operator as the library writes it, which StreamIn has inline in
+// its two loops where the first version's branch calls the out-of-line copy 0x0053a73a.
+inline int32& fn_00539801_index( fn_0053a73a_map& map, const int32& key )
+{
+	fn_0053a73a_map::iterator p = map.insert( fn_0053a73a_map::value_type( key, 0 ) ).first;
+	return (*p).second;
+}
+
 // FUNCTION: STARFLEETOP 0x00539801
 void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 {
@@ -221,9 +229,7 @@ void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 			{
 				input >> key;
 				input >> value2;
-				fn_0053a73a_map::value_type entry( key, 0 );
-				fn_0053a73a_map::iterator it = m_70.insert( entry ).first;
-				(*it).second = value2;
+				fn_00539801_index( m_70, key ) = value2;
 			}
 
 			input >> count2;
@@ -231,9 +237,7 @@ void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 			{
 				input >> key;
 				input >> value2;
-				fn_0053a73a_map::value_type entry( key, 0 );
-				fn_0053a73a_map::iterator it = m_84.insert( entry ).first;
-				(*it).second = value2;
+				fn_00539801_index( m_84, key ) = value2;
 			}
 
 			input >> m_98 >> m_a0;
@@ -633,7 +637,7 @@ void tMetaMapHex::fn_0053a67c( double param_1 )
 // FUNCTION: STARFLEETOP 0x0053a6a3
 int32u& fn_0053a6cc_map::operator[]( const int& key )
 {
-	std::pair< iterator, bool > result = insert( value_type( key, int32u() ) );
+	std::pair< iterator, bool > result = m_tree.insert( value_type( key, int32u() ) );
 	return (*result.first).second;
 }
 
@@ -662,7 +666,7 @@ fn_0053a6cc_map& fn_0053a6cc_map::operator=( const fn_0053a6cc_map& other )
 // FUNCTION: STARFLEETOP 0x0053a73a
 int32& fn_0053a73a_map::operator[]( const int32& key )
 {
-	std::pair< iterator, bool > result = insert( value_type( key, int32() ) );
+	std::pair< iterator, bool > result = m_tree.insert( value_type( key, int32() ) );
 	return (*result.first).second;
 }
 
@@ -797,7 +801,7 @@ void fn_0053a6cc_map::tree::fn_0053a981( const tree& other )
 }
 
 // FUNCTION: STARFLEETOP 0x0053a9e3
-std::pair< fn_0053a6cc_map::iterator, bool > fn_0053a6cc_map::insert( const value_type& v )
+std::pair< fn_0053a73a_map::iterator, bool > fn_0053a73a_map::insert( const value_type& v )
 {
 	std::pair< iterator, bool > result = m_tree.insert( v );
 	return std::pair< iterator, bool >( result.first, result.second );
