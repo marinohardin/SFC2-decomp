@@ -302,7 +302,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00427b7a	nDatabase::tID::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T06:23:02Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00427db2	tStoresState::tStoresState	10.95	2	sonnet	2026-11-17T06:47:38Z	attempt 2 (sonnet) did not raise the best; best 10.95%
 0x00427fb2	tOfficerList::tOfficerList	56.51	2	sonnet	2026-11-17T06:56:26Z	best not above 90% after 2 attempts; best 56.51%
-0x0042a73d	FUN_0042a73d	99.87	2	sonnet	2026-11-17T07:48:44Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.87%
 0x0042a7bf	FUN_0042a7bf	83.68	2	sonnet	2026-11-17T08:10:17Z	attempt 2 (sonnet) did not raise the best; best 83.68%
 0x0042a863	tServCharacter::tShipCache::~tShipCache	23.16	2	sonnet	2026-11-17T08:20:54Z	attempt 2 (sonnet) did not raise the best; best 23.16%
 0x0042a8b7	FUN_0042a8b7	71.10	2	sonnet	2026-11-17T08:35:50Z	attempt 2 (sonnet) did not raise the best; best 71.10%
