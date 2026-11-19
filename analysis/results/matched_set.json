@@ -2067,8 +2067,8 @@
    "symbol": "??0tSFCStream@@QAE@PAEJ@Z",
    "unit": "unsorted/tSFCStream.cpp",
    "size": 50,
-   "score": 50.211,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0040d63f": {
