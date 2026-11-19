@@ -294,4 +294,12 @@ void tDatabaseObject::UnLock()
 	RemoveReference();
 }
 
+// FUNCTION: STARFLEETOP 0x006fb560
+int32u tDatabaseObject::GetLockID() const
+{
+	tOptex::tGuard guard( &fAccess );
+
+	return fLockID;
+}
+
 }
