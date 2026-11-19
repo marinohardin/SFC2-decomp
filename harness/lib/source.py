@@ -100,6 +100,51 @@ def unit_profile(cfg, src_root, unit_path):
     return rel, dict(cfg['profiles'][name], name=name)
 
 
+def changed_files(src_root):
+    """The files under src_root that differ from the checkout's HEAD (modified, added, deleted or
+    untracked; a renamed file under both its names), as normalized absolute paths; empty when
+    src_root is not in a git checkout, and None when it is in one but git cannot list the
+    changes (no HEAD, a timeout, a refusal)."""
+    try:
+        r = subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], cwd=src_root,
+                           capture_output=True, text=True, timeout=60)
+    except OSError:
+        return set()
+    except subprocess.TimeoutExpired:
+        return None
+    if r.returncode != 0 or r.stdout.strip() != 'true':
+        return set()
+    out = set()
+    for cmd in (['git', 'diff', '--name-only', '--no-renames', '--relative', 'HEAD', '--', '.'],
+                ['git', 'ls-files', '--others', '--exclude-standard', '--', '.']):
+        try:
+            r = subprocess.run(cmd, cwd=src_root, capture_output=True, text=True, timeout=60)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+        if r.returncode != 0:
+            return None
+        out.update(os.path.normpath(os.path.join(os.path.realpath(src_root), p))
+                   for p in r.stdout.splitlines() if p)
+    return out
+
+
+def reads_any(cfg, src_root, unit_path, files):
+    """True when compiling the unit reads one of `files` (absolute paths): the unit itself or a
+    file it includes, directly or not, or a path its include search probes (so a deleted or newly
+    added header counts too). True as well when the unit's includes cannot be followed (an
+    #include of a macro), so such a unit is always taken."""
+    _, profile = unit_profile(cfg, src_root, unit_path)
+    here = os.path.dirname(os.path.abspath(unit_path))
+    dirs = [d if os.path.isabs(d) else os.path.join(here, d)
+            for d in cache.include_dirs(_flags(profile, src_root), {})]
+    missing = []
+    deps = cache.dependencies(unit_path, dirs, missing)
+    if deps is None:
+        return True
+    return bool(files & ({os.path.normpath(p) for p in deps}
+                         | {os.path.normpath(os.path.realpath(p)) for p in missing}))
+
+
 def _flags(profile, src_root):
     flags = profile.get('flags', [])
     if isinstance(flags, str):
