@@ -38188,6 +38188,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fe0f0": {
+   "name": "FUN_006fe0f0",
+   "symbol": "_$E5",
+   "unit": "Common/Timer/WinClock.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
