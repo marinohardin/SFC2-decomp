@@ -33,3 +33,12 @@ void vfunction33_result::fn_00410227(int value)
 {
 	field_64 = value;
 }
+
+// HYPOTHESIS: returns field_64 and resets it to -1
+// FUNCTION: STARFLEETOP 0x00410231
+int vfunction33_result::fn_00410231()
+{
+	int old = field_64;
+	field_64 = -1;
+	return old;
+}

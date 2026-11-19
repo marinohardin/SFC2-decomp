@@ -15,6 +15,7 @@ struct vfunction33_result
     char fn_0041021f();
     int fn_00410223();
     void fn_00410227(int value);
+    int fn_00410231();
 
     char pad00[0x1c];
     int field_1c;
