@@ -1252,6 +1252,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x004088c6": {
+   "name": "tListMember::~tListMember",
+   "symbol": "??1tListMember@@UAE@XZ",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
