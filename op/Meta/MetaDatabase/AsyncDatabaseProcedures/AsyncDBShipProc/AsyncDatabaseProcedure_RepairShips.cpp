@@ -1,6 +1,7 @@
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.h"
+#include "Common/MemberCallback.h"
 #include "Common/Exceptions/Validate.h"
 #include "Common/Log/LogStream.h"
-
 // HYPOTHESIS: a record reader keyed on a kind (fKind) and an offset (fOffset); the class is not
 // known, so the members are named by their offsets.
 class fn_005686b8_owner
@@ -11,7 +12,6 @@ public:
 	char m_08;
 	char m_09[3];
 	int fOffset;
-
 	int fn_005686b8( int base, int value );
 	int fn_0056872c( int8* curState, int8 kind, unsigned int value );
 	int fn_0056882f( int base, char a, char b, int value );
@@ -85,4 +85,28 @@ int fn_005686b8_owner::fn_0056882f( int base, char a, char b, int value )
 		i++;
 	}
 	return value;
+}
+
+// The SDK's template bodies, which Common/Callback.h and Common/MemberCallback.h leave to the
+// units that instantiate them.
+template< typename tnResult >
+tCallback<tnResult>::~tCallback()
+{}
+
+template< typename tnMemberClass, typename tnResult >
+tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>( tnMemberClass* pMemberClass, iMemberFunction pMemberFunction ) :
+	fpMemberClass( pMemberClass ),
+	fpMemberFunction( pMemberFunction )
+{}
+
+using namespace nAsyncDatabaseProcedure;
+
+// The analysis names this address as the destructor; the body is the constructor.
+// FUNCTION: STARFLEETOP 0x00568a71
+tRepairShips::tRepairShips( tAsyncDatabase* pDB ) : tAsyncDatabaseProcedure( pDB )
+{
+#line 235
+	validate( pDB );
+	fn_00718f10( 9, new tMemberCallback<tRepairShips,const nDataStore::tBuffer*>( this, fn_00568b2e ) );
+	fn_00719050();
 }
