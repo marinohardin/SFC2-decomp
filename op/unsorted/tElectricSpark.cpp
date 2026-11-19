@@ -1,6 +1,15 @@
 // HYPOTHESIS: layout and the counter global are inferred from the constructor's stores.
 extern int g_00898ca4;
-extern char* g_00898c9c;
+// HYPOTHESIS: the shared buffer holds 12-byte elements of an unnamed type with an empty constructor.
+class tSparkSegment
+{
+public:
+	tSparkSegment() {}
+	int m00;
+	int m04;
+	int m08;
+};
+extern tSparkSegment* g_00898c9c;
 
 class tElectricSpark
 {
@@ -30,4 +39,23 @@ tElectricSpark::~tElectricSpark()
 		delete g_00898c9c;
 		g_00898c9c = 0;
 	}
+}
+
+extern unsigned int g_00898ca0;
+
+// HYPOTHESIS: a free function that grows the shared buffer to n entries of 12 bytes.
+// FUNCTION: STARFLEETOP 0x0040c9c6
+bool fn_0040c9c6(unsigned int n)
+{
+	if (g_00898c9c)
+	{
+		if (g_00898ca0 >= n)
+			return true;
+		delete g_00898c9c;
+	}
+	g_00898c9c = new tSparkSegment[n];
+	if (!g_00898c9c)
+		return false;
+	g_00898ca0 = n;
+	return true;
 }

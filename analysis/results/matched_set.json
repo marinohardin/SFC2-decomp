@@ -1918,6 +1918,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040c9c6": {
+   "name": "FUN_0040c9c6",
+   "symbol": "?fn_0040c9c6@@YA_NI@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",
