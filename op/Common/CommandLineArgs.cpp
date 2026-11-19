@@ -23,3 +23,8 @@ tCommandLineArgs::tCommandLineArgs()
 	: m14(GetCommandLineA())
 {
 }
+
+// FUNCTION: STARFLEETOP 0x006fdd20
+tCommandLineArgs::~tCommandLineArgs()
+{
+}

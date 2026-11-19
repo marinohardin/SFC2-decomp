@@ -38152,6 +38152,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fdd20": {
+   "name": "tCommandLineArgs::`scalar_deleting_destructor'",
+   "symbol": "??_GtCommandLineArgs@@EAEPAXI@Z",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
