@@ -41,7 +41,15 @@ harness/build-and-verify.sh 0x006fc690 --json      # the same, as JSON (the Stop
 harness/build-and-verify.sh 0x006fc690 --behavioural
 harness/build-and-verify.sh --all                  # re-verify every function in matched_set.json
 harness/build-and-verify.sh --all --base origin/develop   # and hold it to the base branch's copy
+harness/build-and-verify.sh --all -j 2             # build 2 units at once (default HARNESS_JOBS, else 4)
 ```
+
+Units build side by side, four at a time by default (`-j N` or `HARNESS_JOBS`). Each build is a
+single-threaded compiler in its own container followed by one objdiff per function, so `-j` is
+roughly the number of cores a run uses. The output does not depend on it: each unit reports into
+its own buffer, and the buffers are printed in unit order. Two lines move: the exe check's
+warning comes before the first unit, and an untrusted exe stops the run before any unit builds.
+An interrupted run (Ctrl-C) can leave the units' compile containers running until they finish.
 
 1. Finds the one source file under the rebuilt tree (`HARNESS_SRC_ROOT`, default `op/`) with
    `// FUNCTION: STARFLEETOP 0x006fc690` on the line before the function (`SRC_LAYOUT.md`).

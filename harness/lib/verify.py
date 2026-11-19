@@ -22,6 +22,7 @@ import io
 import json
 import os
 import subprocess
+import threading
 import sys
 import time
 
@@ -117,6 +118,20 @@ def load_base_sizes(spec):
         return None
     rows = csv.DictReader(io.StringIO(p.stdout))
     return {matched.key(int(r['address'], 16)): int(r['size'] or 0) for r in rows}
+
+
+# Units built at once. Each build is a single-threaded compiler in a container capped at one CPU
+# (toolchain/bin/msvc-run), then one objdiff per function, so this is about the cores a run uses.
+DEFAULT_JOBS = 4
+
+
+def default_jobs():
+    """HARNESS_JOBS if set to a positive number, else DEFAULT_JOBS."""
+    try:
+        n = int(os.environ.get('HARNESS_JOBS', ''))
+    except ValueError:
+        return DEFAULT_JOBS
+    return n if n > 0 else DEFAULT_JOBS
 
 
 OBJDIFF_TIMEOUT = 300   # seconds; objdiff has been seen to spin for hours on some objects
@@ -260,10 +275,45 @@ def claimed_keys(cfg=None):
             if any(x.kind == 'FUNCTION' for x in anns)}
 
 
+
+def _in_threads(fn, items, jobs):
+    """fn applied to every item, at most `jobs` at once, results in the items' order. An exception
+    in any call is raised once all calls have ended. Plain threads, not concurrent.futures, whose
+    `import queue` can pick up harness/queue.py when harness/ is on sys.path."""
+    items = list(items)
+    results = [None] * len(items)
+    errors = [None] * len(items)
+    pending = iter(range(len(items)))
+    lock = threading.Lock()
+
+    def worker():
+        while True:
+            with lock:
+                i = next(pending, None)
+            if i is None:
+                return
+            try:
+                results[i] = fn(items[i])
+            except BaseException as e:  # re-raised below, in the caller's thread
+                errors[i] = e
+
+    threads = [threading.Thread(target=worker, daemon=True)
+               for _ in range(max(1, min(jobs, len(items))))]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    for e in errors:
+        if e is not None:
+            raise e
+    return results
+
 def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None,
-        base_sizes=None):
+        base_sizes=None, jobs=None):
     """base: (matched set, label) to hold the run to as well, from load_base; base_sizes: the
-    base's functions.csv sizes, from load_base_sizes, or None to release nothing for them."""
+    base's functions.csv sizes, from load_base_sizes, or None to release nothing for them.
+    jobs: how many units build at once (default HARNESS_JOBS, else DEFAULT_JOBS)."""
+    jobs = jobs or default_jobs()
     rep = Report()
     index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     cfg = source.load_units()
@@ -348,28 +398,35 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     for lst in annotations.values():
         for x in lst:
             lines_in.setdefault(x.path, []).append(x.line)
-    for path, items in sorted(by_unit.items()):
+    if by_unit:
+        exe = check_exe(rep)
+
+    def build_and_score(job):
+        # One unit: compile it and score its functions, into a report of its own so units can
+        # run side by side; the reports are joined in unit order, so the output does not depend
+        # on how many run at once.
+        path, items = job
+        sub = Report()
         try:
             rel, profile = source.unit_profile(cfg, src_root, path)
         except source.SourceError as e:
-            rep.add('ERROR', str(e))
-            rep.failed = True
-            continue
-        exe = exe or check_exe(rep)
+            sub.add('ERROR', str(e))
+            sub.failed = True
+            return sub
         build = source.compile_unit(path, profile, src_root)
         if not build['ok']:
             errs = [ln for ln in build['log'].splitlines() if ' error ' in ln or 'fatal error' in ln]
-            rep.add('ERROR', f'build {rel}: BUILD HAS FAILED. Treat this as a build failure, '
+            sub.add('ERROR', f'build {rel}: BUILD HAS FAILED. Treat this as a build failure, '
                     f'not a score. ({build["secs"]} s)')
             for ln in (errs or build['log'].splitlines())[:10]:
-                rep.add('ERROR', '  ' + ln.strip())
+                sub.add('ERROR', '  ' + ln.strip())
             for a, _ in items:
                 if a in recorded_addrs:
-                    rep.regressions.append(a)
-                    rep.add('ERROR', f'0x{a:08x} REGRESSION: unit no longer builds')
-            rep.failed = rep.failed or any(a in claimed_addrs for a, _ in items)
-            continue
-        rep.add('OK', f'build {rel} ({build["secs"]} s, profile {profile["name"]})')
+                    sub.regressions.append(a)
+                    sub.add('ERROR', f'0x{a:08x} REGRESSION: unit no longer builds')
+            sub.failed = any(a in claimed_addrs for a, _ in items)
+            return sub
+        sub.add('OK', f'build {rel} ({build["secs"]} s, profile {profile["name"]})')
         for a, ann in sorted(items, key=lambda x: x[0]):
             fn = index.by_address[a]
             # The other annotations in the annotation's own file: the unit, or the header it is in.
@@ -378,8 +435,15 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             res = score_function(fn, unit, build, exe, index,
                                  recorded=data['functions'].get(matched.key(a)))
             res['claimed'] = a in claimed_addrs
-            rep.results.append(res)
-            _report_function(rep, data, fn, res)
+            sub.results.append(res)
+            _report_function(sub, data, fn, res)
+        return sub
+
+    for sub in _in_threads(build_and_score, sorted(by_unit.items()), jobs):
+        rep.lines.extend(sub.lines)
+        rep.results.extend(sub.results)
+        rep.regressions.extend(sub.regressions)
+        rep.failed = rep.failed or sub.failed
 
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all)
@@ -614,9 +678,13 @@ def main(argv=None):
                     help='also hold every function to this matched set (a file or a git ref)')
     ap.add_argument('--record', action='store_true', help=argparse.SUPPRESS)
     ap.add_argument('--json', action='store_true', help='print the result as JSON')
+    ap.add_argument('--jobs', '-j', type=int, metavar='N',
+                    help=f'units to build at once (default HARNESS_JOBS, else {DEFAULT_JOBS})')
     a = ap.parse_args(argv)
     if not a.ids and not a.all:
         ap.error('give a function id, or --all')
+    if a.jobs is not None and a.jobs < 1:
+        ap.error('--jobs must be 1 or more')
     if a.record and a.base:
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)
@@ -624,7 +692,7 @@ def main(argv=None):
         base = load_base(a.base) if a.base else None
         sizes = load_base_sizes(a.base) if a.base else None
         rep = run(a.ids, check_all=a.all, behavioural=a.behavioural, record=a.record, base=base,
-                  base_sizes=sizes)
+                  base_sizes=sizes, jobs=a.jobs)
     except Untrusted as e:
         rep = Report()
         rep.add('ERROR', str(e))
