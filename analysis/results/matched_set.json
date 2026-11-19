@@ -354,12 +354,12 @@
   },
   "0x0040345f": {
    "name": "FUN_0040345f",
-   "symbol": "??1fn_004033ab_Ifstream@@UAE@XZ",
+   "symbol": "??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ",
    "unit": "unsorted/fn_00403000.cpp",
    "size": 70,
-   "score": 99.75,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004034a5": {
    "name": "std::basic_filebuf<char,std::char_traits<char>_>::~basic_filebuf<char,std::char_traits<char>_>",
