@@ -68,6 +68,7 @@ protected:
 
 //Operations
 	virtual void AttachToDB( const tID& id );
+	virtual void RemoveFromDB();
 
 //Fields
 	mutable tOptex fAccess;

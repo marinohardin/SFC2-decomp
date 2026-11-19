@@ -271,4 +271,15 @@ void tDatabaseObject::AttachToDB( const tID& id )
 	fLockID = 0;
 }
 
+// FUNCTION: STARFLEETOP 0x006fb0f0
+void tDatabaseObject::RemoveFromDB()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	fID = tID();
+	fLockID = 0;
+	if( fLockEvent != NULL )
+		fLockEvent->Signal();
+}
+
 }

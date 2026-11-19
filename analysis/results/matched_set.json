@@ -37810,6 +37810,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006fb0f0": {
+   "name": "nDatabase::tDatabaseObject::RemoveFromDB",
+   "symbol": "?RemoveFromDB@tDatabaseObject@nDatabase@@MAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
