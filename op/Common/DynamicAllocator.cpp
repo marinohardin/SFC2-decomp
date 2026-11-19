@@ -97,6 +97,13 @@ tDynamicAllocator* tDynamicAllocator::Instance()
 	return fpDynamicAllocator;
 }
 
+// FUNCTION: STARFLEETOP 0x006fc700
+tDynamicAllocator::tDynamicAllocator()
+{
+	fAllocatorListLocked = false;
+	fAllocatorList = 0;
+}
+
 // FUNCTION: STARFLEETOP 0x006fc750
 void tDynamicAllocator::LockDownAllocator()
 {

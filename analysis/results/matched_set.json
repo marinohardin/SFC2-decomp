@@ -38008,6 +38008,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fc700": {
+   "name": "tDynamicAllocator::tDynamicAllocator",
+   "symbol": "??0tDynamicAllocator@@AAE@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc750": {
    "name": "tDynamicAllocator::LockDownAllocator",
    "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
