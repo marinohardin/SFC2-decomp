@@ -7,7 +7,13 @@
 // without a self-assignment test and releases the source only when the pointers differ or the
 // source owns; the compiler's own <memory> has the later form. Only what the game's units use is
 // declared. A unit that has already included the compiler's own <memory> keeps that one.
+// The SDK's <memory> differs from the compiler's in auto_ptr alone, so the rest of the compiler's
+// header is taken with its auto_ptr renamed; <vector> and the other containers then find it.
 #if !defined( _MEMORY_ )
+#define auto_ptr compiler_auto_ptr
+#include <memory>
+#undef auto_ptr
+
 namespace std
 {
 	template<class _Ty>

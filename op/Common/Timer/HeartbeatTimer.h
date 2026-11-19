@@ -8,6 +8,9 @@
 #include "Common/Thread/Optex.h"
 #include "Common/Thread/Thread.h"
 
+#include <vector>
+#include "Common/FunctionCallback.h"
+
 class tClock;
 
 // HYPOTHESIS: the SDK derives tHeartbeatTimer from tTimer, which is not declared in op/ yet;
@@ -15,7 +18,13 @@ class tClock;
 class tHeartbeatTimer
 {
 public:
+	static void OnAutoRunHB( int32 context );
+
 	static void Heartbeat();
+
+// Types
+	typedef std::vector<tHeartbeatTimer*> iTimers;
+	typedef tFunctionCallback< int32 > iThreadCallback;
 
 	class tHeartbeatTimerData
 	{
@@ -24,13 +33,9 @@ public:
 
 		tOptex			fAccessGlobalData;
 		tClock*			fpClock;
-		// HYPOTHESIS: the SDK's iTimers, a std::vector< tHeartbeatTimer* > (16 bytes); the
-		// compiler's own <vector> brings its <memory>, whose auto_ptr is not the game's.
-		char			fTimers[16];
+		iTimers			fTimers;
 		tThread			fThread;
-		// HYPOTHESIS: the SDK's tFunctionCallback< int32 >, not declared in op/ yet; 8 bytes
-		// from the allocation size in Instance (0xd40).
-		char			fThreadCB[8];
+		iThreadCallback	fThreadCB;
 		int32u			fAutoRunFrequency;
 
 		typedef std::auto_ptr< tHeartbeatTimerData > iPtr;

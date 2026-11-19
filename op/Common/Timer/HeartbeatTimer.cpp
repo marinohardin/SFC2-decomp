@@ -1,6 +1,7 @@
 // Common/Timer/HeartbeatTimer.cpp
 
 #include "Common/Timer/HeartbeatTimer.h"
+#include "unsorted/tWinClock.h"
 
 tHeartbeatTimer::tHeartbeatTimerData::iPtr tHeartbeatTimer::tHeartbeatTimerData::fHeartbeatTimerData;
 
@@ -12,4 +13,12 @@ tHeartbeatTimer::tHeartbeatTimerData* tHeartbeatTimer::tHeartbeatTimerData::Inst
 		fHeartbeatTimerData = iPtr( new tHeartbeatTimerData );
 	}
 	return fHeartbeatTimerData.get();
+}
+
+// FUNCTION: STARFLEETOP 0x006f5950
+tHeartbeatTimer::tHeartbeatTimerData::tHeartbeatTimerData() :
+	fThreadCB( OnAutoRunHB ),
+	fAutoRunFrequency( 0 )
+{
+	fpClock = new tWinClock;
 }
