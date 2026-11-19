@@ -4,6 +4,7 @@
 // Profile:   sdk-release (harness/units.json)
 
 #include "Tiger/tFile.h"
+#include "unsorted/tListBox_Base.h"	// HYPOTHESIS: g_00c69100 is declared there for now
 #include <vector>
 #include <map>
 
@@ -133,14 +134,12 @@ int fn_00675ec0( tString& name )
 // FUNCTION: STARFLEETOP 0x00675f40
 tString g_00c690d8;
 
-// HYPOTHESIS: 0x00677060 looks a name up and returns its node, whose value sits at +8.
-int fn_00677060( tString& name );
-
+// HYPOTHESIS: returns the name of the cast member an id identifies, or an empty string.
 // FUNCTION: STARFLEETOP 0x00675f70
-tString* fn_00675f70( tString& name )
+tString* fn_00675f70( int id )
 {
-	int node = fn_00677060( name );
-	if ( node == 0 )
-		return &g_00c690d8;
-	return (tString*)( node + 8 );
+	c_00677060_Result* found = g_00c69100.fn_00677060( id );
+	if ( found )
+		return &found->field_08;
+	return &g_00c690d8;
 }
