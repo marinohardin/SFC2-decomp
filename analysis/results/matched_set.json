@@ -186,8 +186,8 @@
    "symbol": "?fn_004027c8@fn_004026ec_Owner@@QAEXPAUfn_004026ec_Entry@@PAUfn_004026ec_Dest@@H@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 405,
-   "score": 99.923,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x00402967": {
