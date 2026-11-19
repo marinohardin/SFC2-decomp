@@ -2991,11 +2991,11 @@
   },
   "0x0040ee2a": {
    "name": "tSFCTexMgr::scalar_deleting_destructor",
-   "symbol": "_$E2",
-   "unit": "unsorted/fn_0040E000.cpp",
+   "symbol": "??_GtSFCTexMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tSFCTexMgr.cpp",
    "size": 29,
-   "score": 3.478,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0040f86c": {

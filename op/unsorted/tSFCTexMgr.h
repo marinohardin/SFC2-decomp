@@ -35,4 +35,16 @@ public:
     tSFCTexMgrEntry m_entries[0x1000];
 };
 
+// FUNCTION: STARFLEETOP 0x0040ee2a
+inline tSFCTexMgr::~tSFCTexMgr()
+{
+}
+
+class tSFCTexMgrEx : public tSFCTexMgr
+{
+public:
+    tSFCTexMgrEx();
+    virtual ~tSFCTexMgrEx();
+};
+
 #endif
