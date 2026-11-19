@@ -128,8 +128,8 @@ public:
 	tState_GameConnections();
 	// No destructor declared: the exe's (0x004696e0) destroys the members and calls ~tGameState
 	// without storing the vtable first, as only VC6's implicit destructor does. Slot 0 holds the
-	// scalar deleting destructor (0x00469900). Neither has a source line to claim.
-	//
+	// scalar deleting destructor (0x00469900). Neither has a source line to claim. This
+	// comment and the empty line below keep the unit's line numbers.
 	//
 	virtual void vfunction1();
 	virtual bool vfunction2();
@@ -869,8 +869,8 @@ tState_GameConnections g_0090d7a0;
 
 // Unclaimed: the implicit destructor (0x004696e0) and its scalar deleting destructor (0x00469900),
 // which VC6 emits with no source line to claim (see the class).
-//
-//
+// The empty comment lines here keep the unit's line numbers as they were when a destructor was
+// written out (a claim is paired with the function that starts on the line below it).
 //
 
 // HYPOTHESIS: the original calls the out-of-line tValueI<tString> constructor (0x0043d2ef) for
