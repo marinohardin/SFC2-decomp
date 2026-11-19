@@ -42,7 +42,10 @@ namespace nStoredProcedureArguments
 				int32	m_10;
 				bool	m_14;
 				bool	m_15;
-				char	m_16[0x24 - 0x16];
+				char	m_16[0x18 - 0x16];
+				float	m_18;
+				float	m_1c;
+				float	m_20;
 				float	m_24;
 				int8u	m_28;
 				int8u	m_29;

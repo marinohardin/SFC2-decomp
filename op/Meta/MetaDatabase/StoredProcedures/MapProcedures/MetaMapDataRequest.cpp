@@ -88,4 +88,12 @@ void tMetaMapDataRequest::tResponse::tClientHex::StreamIn( nDataStore::tInput& i
 	fn_0054c0d5();
 }
 
+// FUNCTION: STARFLEETOP 0x0054c0d5
+void tMetaMapDataRequest::tResponse::tClientHex::fn_0054c0d5()
+{
+	m_18 = m_28 * 0.01f;
+	m_1c = m_29 * 0.01f;
+	m_20 = m_2a * 0.01f;
+}
+
 }
