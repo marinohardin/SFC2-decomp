@@ -18,6 +18,16 @@ tETrait_Creator::tETrait_Creator()
 }
 
 // FUNCTION: STARFLEETOP 0x0040feb7
+// FUNCTION: STARFLEETOP 0x0040fed3
 tETrait_Creator::~tETrait_Creator()
 {
+	tETrait_Creator* p = sFirst;
+	while (p) {
+		if (p == this) {
+			if (sFirst == this)
+				sFirst = mNext;
+			return;
+		}
+		p = p->mNext;
+	}
 }
