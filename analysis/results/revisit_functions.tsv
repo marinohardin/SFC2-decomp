@@ -199,7 +199,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x0057147a	FUN_0057147a	99.96	2	opus	2026-11-17T07:10:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x00571676	FUN_00571676	70.47	2	opus	2026-11-17T07:33:01Z	best not above 90% after 2 attempts; best 70.47%
 0x005716e0	FUN_005716e0	66.18	2	opus	2026-11-17T07:41:07Z	best not above 90% after 2 attempts; best 66.18%
-0x00460e76	FUN_00460e76	99.77	2	sonnet	2026-11-17T08:01:51Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
 0x00460ea6	FUN_00460ea6	99.79	2	sonnet	2026-11-17T08:05:18Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.79%
 0x00460ede	FUN_00460ede	91.58	2	sonnet	2026-11-17T08:17:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 91.58%
 0x00496253	FUN_00496253	71.25	2	sonnet	2026-11-17T08:35:46Z	attempt 2 (sonnet) did not raise the best; best 71.25%
