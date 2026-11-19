@@ -21,6 +21,13 @@ tStreamable::tObjectIDInfo::tObjectIDInfo()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x006f8eb0
+tStreamable::tStreamable( iObjectVersion versionNumber )
+: fObjectID( 0xffffffff )
+, fObjectVersion( versionNumber )
+{
+}
+
 // FUNCTION: STARFLEETOP 0x006f8d90
 // FUNCTION: STARFLEETOP 0x006f8d70
 tStreamable::iObjectIDInfoLookup tStreamable::fObjectIDInfoLookup;
