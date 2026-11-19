@@ -4,6 +4,7 @@
 #include "Common/Exceptions/Validate.h"
 #include "Common/OSVersion.h"
 #include "Common/Thread/Optex.inl"
+#include "Common/Log/LogStream.h"
 
 inline tOptex::~tOptex()
 {
@@ -28,6 +29,41 @@ inline tOptex::~tOptex()
 			::UnmapViewOfFile( fpSharedInfo );
 			::CloseHandle( fFileMapping );
 		}
+	}
+}
+
+inline void tOptex::Leave()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections )
+		{
+			::LeaveCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+		else
+		{
+			--fpSharedInfo->fRecurseCount;
+			if( fpSharedInfo->fRecurseCount > 0 )
+			{
+				::InterlockedDecrement( &fpSharedInfo->fLockCount );
+			}
+			else
+			{
+				fpSharedInfo->fThreadId = 0;
+				if( ::InterlockedDecrement( &fpSharedInfo->fLockCount ) > 0 )
+				{
+					::SetEvent( fEvent );
+				}
+			}
+		}
+	}
+}
+
+inline tOptex::tGuard::~tGuard()
+{
+	if( fNeedToLeave )
+	{
+		fOptex->Leave();
 	}
 }
 
@@ -61,6 +97,32 @@ tDatabaseObject::~tDatabaseObject()
 {
 	// HYPOTHESIS: the constructor allocates fLockEvent, so the destructor releases it.
 	delete fLockEvent;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa870
+tDatabaseObject& tDatabaseObject::operator=( const tDatabaseObject& other )
+{
+	tAllocatedClass::operator=( other );
+	tStreamable::operator=( other );
+
+	if( this != &other )
+	{
+		tOptex::tGuard guard( &fAccess );
+		tOptex::tGuard otherGuard( &other.fAccess );
+
+		delete fLockEvent;
+
+		if( !other.fAlive )
+		{
+			nLog::error << "A dead database object was copyied" << nLog::report;
+		}
+
+		fID = other.fID;
+		fLockEvent = NULL;
+		fLockID = other.fLockID;
+	}
+
+	return *this;
 }
 
 }
