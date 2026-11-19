@@ -32,7 +32,7 @@ public:
 		tCRCFailed( const std::string& toObject, const std::string& forObject, const char* file, int32 lineNumber );
 		virtual ~tCRCFailed();
 
-		virtual void ReportException( const char* caughtDescription = NULL ) throw();
+		virtual void ReportException( const char* caughtDescription = NULL );
 
 	protected:
 		std::string fToObject;

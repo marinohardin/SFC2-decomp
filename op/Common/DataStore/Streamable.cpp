@@ -9,4 +9,10 @@ tStreamable::tCRCFailed::~tCRCFailed()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x006f8d50
+void tStreamable::tCRCFailed::ReportException( const char* caughtDescription )
+{
+	tBaseException::ReportException( caughtDescription );
+}
+
 };
