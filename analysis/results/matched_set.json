@@ -3043,6 +3043,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040f015": {
+   "name": "tSFCTexMgrEx::vfunction4",
+   "symbol": "?vfunction4@tSFCTexMgrEx@@UAEXH@Z",
+   "unit": "unsorted/tSFCTexMgrEx.cpp",
+   "size": 164,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",

@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 #include "unsorted/tSFCTexMgr.h"
+#include "unsorted/tApp3dBase.h"
+#include "unsorted/tBmpSurf.h"
 
 // HYPOTHESIS: 0x0040f9ea compares two names and returns 0 when they are equal.
 int fn_0040f9ea(char *a, char *b);
@@ -35,7 +37,7 @@ int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4
     tSFCTexMgrEntry* entry = m_entries;
     for (; i < 0x1000; i++, entry++)
     {
-        if (entry->m08 && fn_0040f9ea(entry->m08->m08, name) == 0)
+        if (entry->m08 && fn_0040f9ea(entry->m08->field_08, name) == 0)
         {
             entry->m04++;
             i++;
@@ -60,7 +62,7 @@ int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4
     entry->m10 = param_4;
     if (param_2)
         vfunction4(i);
-    if (entry->m08->m10c > 8)
+    if (entry->m08->field_10c > 8)
     {
         FILE *file = fopen("Above8BitTextures.txt", "a+");
         fprintf(file, "%s\n", name);
@@ -68,4 +70,29 @@ int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4
         fclose(file);
     }
     return i;
+}
+
+// FUNCTION: STARFLEETOP 0x0040f015
+void tSFCTexMgrEx::vfunction4(int handle)
+{
+    int i = handle - 1;
+    if (i >= 0 && i < 0x1000)
+    {
+        tSFCTexMgrEntry* entry = &m_entries[i];
+        if (entry->m00)
+        {
+            tTexBmp* bmp = entry->m08;
+            if (bmp && g_pApp3dBase)
+            {
+                tView3D* view = g_pApp3dBase->m_field10;
+                if (view && g_00c7c118 && bmp->mLock())
+                {
+                    tBmpSurf surf(bmp);
+                    view->vfunction85(handle, &surf, entry->m0c, entry->m10);
+                    bmp->fn_006a6500();
+                    entry->m00 = 0;
+                }
+            }
+        }
+    }
 }

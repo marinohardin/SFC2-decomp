@@ -2,21 +2,14 @@
 #define TSFCTEXMGR_H
 
 // HYPOTHESIS: tSFCTexMgr and tSFCTexMgrEx are declared here only until their own units land.
-// HYPOTHESIS: the texture object returned by 0x006a0920; +0x8 holds its name and +0x10c its
-// bit depth.
-struct fn_006a0920_Tex
-{
-    char pad00[8];
-    char m08[0x104];
-    int m10c;
-};
+#include "dmp3d/common/texBmp.h"
 
 struct tSFCTexMgrEntry
 {
     char m00;
     char pad01[3];
     int m04;
-    fn_006a0920_Tex* m08;
+    tTexBmp* m08;
     char m0c;
     char pad0d[3];
     int m10;
@@ -68,7 +61,7 @@ class fn_006a0490_Mgr
 public:
     int fn_006a07d0(char *name);
     void fn_006a08e0(int handle);
-    fn_006a0920_Tex* fn_006a0920(int handle);
+    tTexBmp* fn_006a0920(int handle);
 };
 
 extern fn_006a0490_Mgr* g_00c7c118;
