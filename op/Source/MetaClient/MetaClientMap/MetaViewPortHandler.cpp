@@ -27,6 +27,7 @@ class tMetaClientMapPanel
 {
 public:
 	virtual void vfunction19();
+	virtual void vfunction20();
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -55,5 +56,16 @@ void tMetaClientMapPanel::vfunction19()
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
 	fn_004d3331( g_0087632c );
+	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e58f6
+void tMetaClientMapPanel::vfunction20()
+{
+	tOptex::tGuard guard( &field_dc );
+
+	fpMetaMapControl->fn_005e3b6e();
+	fpMetaMapControl->fn_005e31be();
+	fn_004d3340( g_0087632c );
 	guard.Leave();
 }
