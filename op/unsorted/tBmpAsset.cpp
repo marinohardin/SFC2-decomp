@@ -41,3 +41,27 @@ tStream& tBmpAsset::vfunction5( tStream& s )
 	}
 	return s;
 }
+
+void fn_00676a00( unsigned short* p );
+
+// FUNCTION: STARFLEETOP 0x00678c40
+tStream& tBmpAsset::vfunction6( tStream& s )
+{
+	tAsset::vfunction6( s );
+	unsigned short* p = (unsigned short*)&field_5C;
+	s.fn_slot2( p, 4 );
+	if ( s.fSwap )
+	{
+		unsigned short hi = p[1];
+		unsigned short lo = p[0];
+		p[0] = (unsigned short)( ( hi >> 8 ) | ( hi << 8 ) );
+		p[1] = (unsigned short)( ( lo >> 8 ) | ( lo << 8 ) );
+	}
+	unsigned short* q = (unsigned short*)&field_62;
+	s.fn_slot2( q, 4 );
+	if ( s.fSwap )
+		fn_00676a00( q );
+	s.fn_slot2( &field_6A, 1 );
+	s.fn_slot2( &field_6B, 1 );
+	return s;
+}

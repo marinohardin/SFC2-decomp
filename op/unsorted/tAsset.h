@@ -59,6 +59,7 @@ public:
 	tBmpAsset();
 	virtual ~tBmpAsset();
 	virtual tStream& vfunction5( tStream& s );
+	virtual tStream& vfunction6( tStream& s );
 
 	// HYPOTHESIS: field names and types unknown.
 	unsigned char field_6A;
