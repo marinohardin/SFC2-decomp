@@ -19,3 +19,9 @@ const tDateAndTime& tDateAndTime::operator=( time_t timeSrc )
 	fTime = timeSrc;
 	return *this;
 }
+
+// FUNCTION: STARFLEETOP 0x006f8830
+tDateAndTime tDateAndTime::GetTickCount()
+{
+	return tDateAndTime( time( NULL ) );
+}

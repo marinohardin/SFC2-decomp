@@ -25,6 +25,7 @@ public:
 	};
 
 	static tDateAndTime GetCurrentTime();
+	static tDateAndTime GetTickCount();
 
 	tDateAndTime();
 	tDateAndTime( time_t time );
