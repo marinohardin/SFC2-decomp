@@ -7737,9 +7737,9 @@
    "symbol": "??4?$vector@UtTransporterHoldItem@@V?$allocator@UtTransporterHoldItem@@@std@@@std@@QAEAAV01@ABV01@@Z",
    "unit": "unsorted/fn_00447000.cpp",
    "size": 470,
-   "score": 94.274,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00447f3f": {
    "name": "FUN_00447f3f",
