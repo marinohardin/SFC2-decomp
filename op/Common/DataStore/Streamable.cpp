@@ -15,6 +15,12 @@ void tStreamable::tCRCFailed::ReportException( const char* caughtDescription )
 	tBaseException::ReportException( caughtDescription );
 }
 
+// FUNCTION: STARFLEETOP 0x006f8e90
+tStreamable::tObjectIDInfo::tObjectIDInfo()
+: fCRC( 0xffffffff )
+{
+}
+
 // FUNCTION: STARFLEETOP 0x006f8d90
 // FUNCTION: STARFLEETOP 0x006f8d70
 tStreamable::iObjectIDInfoLookup tStreamable::fObjectIDInfoLookup;

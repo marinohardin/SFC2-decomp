@@ -37603,6 +37603,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f8e90": {
+   "name": "nDataStore::tStreamable::tObjectIDInfo::tObjectIDInfo",
+   "symbol": "??0tObjectIDInfo@tStreamable@nDataStore@@QAE@XZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
