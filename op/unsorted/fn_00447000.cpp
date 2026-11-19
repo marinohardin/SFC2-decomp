@@ -1,6 +1,845 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00447000.cpp
-// Functions: 0x0044715d to 0x00447f65, 36 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Tiger/tcglue.h"
+#include "Tiger/tstring.h"
+#include "unsorted/tEntity.h"
+#include <string.h>
+#include <string>
+
+// HYPOTHESIS: a ship system as 0x0044715d reads it: slot 105 (offset 0x1a4) returns its name,
+// slots 100, 102 and 103 (offsets 0x190, 0x198 and 0x19c) three integers. Its class is not known.
+class tObject_0044715d_system
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+	virtual void vfunction12();
+	virtual void vfunction13();
+	virtual void vfunction14();
+	virtual void vfunction15();
+	virtual void vfunction16();
+	virtual void vfunction17();
+	virtual void vfunction18();
+	virtual void vfunction19();
+	virtual void vfunction20();
+	virtual void vfunction21();
+	virtual void vfunction22();
+	virtual void vfunction23();
+	virtual void vfunction24();
+	virtual void vfunction25();
+	virtual void vfunction26();
+	virtual void vfunction27();
+	virtual void vfunction28();
+	virtual void vfunction29();
+	virtual void vfunction30();
+	virtual void vfunction31();
+	virtual void vfunction32();
+	virtual void vfunction33();
+	virtual void vfunction34();
+	virtual void vfunction35();
+	virtual void vfunction36();
+	virtual void vfunction37();
+	virtual void vfunction38();
+	virtual void vfunction39();
+	virtual void vfunction40();
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48();
+	virtual void vfunction49();
+	virtual void vfunction50();
+	virtual void vfunction51();
+	virtual void vfunction52();
+	virtual void vfunction53();
+	virtual void vfunction54();
+	virtual void vfunction55();
+	virtual void vfunction56();
+	virtual void vfunction57();
+	virtual void vfunction58();
+	virtual void vfunction59();
+	virtual void vfunction60();
+	virtual void vfunction61();
+	virtual void vfunction62();
+	virtual void vfunction63();
+	virtual void vfunction64();
+	virtual void vfunction65();
+	virtual void vfunction66();
+	virtual void vfunction67();
+	virtual void vfunction68();
+	virtual void vfunction69();
+	virtual void vfunction70();
+	virtual void vfunction71();
+	virtual void vfunction72();
+	virtual void vfunction73();
+	virtual void vfunction74();
+	virtual void vfunction75();
+	virtual void vfunction76();
+	virtual void vfunction77();
+	virtual void vfunction78();
+	virtual void vfunction79();
+	virtual void vfunction80();
+	virtual void vfunction81();
+	virtual void vfunction82();
+	virtual void vfunction83();
+	virtual void vfunction84();
+	virtual void vfunction85();
+	virtual void vfunction86();
+	virtual void vfunction87();
+	virtual void vfunction88();
+	virtual void vfunction89();
+	virtual void vfunction90();
+	virtual void vfunction91();
+	virtual void vfunction92();
+	virtual void vfunction93();
+	virtual void vfunction94();
+	virtual void vfunction95();
+	virtual void vfunction96();
+	virtual void vfunction97();
+	virtual void vfunction98();
+	virtual void vfunction99();
+	virtual void vfunction100(int);
+	virtual int vfunction101();
+	virtual void vfunction102(int);
+	virtual int vfunction103();
+	virtual int vfunction104();
+	virtual void vfunction105(const tString &);
+	virtual tString *vfunction106();
+};
+
+// HYPOTHESIS: one row of the table 0x0044715d fills, one per ship system.
+struct tObject_0044715d_row
+{
+	char field_0x0[0x8];
+	std::string field_0x8;
+	int field_0x18;
+	int field_0x1c;
+	int field_0x20;
+	char field_0x24[0x4];
+};
+
+// HYPOTHESIS: the table at 0xec of the object 0x0044715d belongs to; seven rows from +0x10.
+struct tObject_0044715d_table
+{
+	char field_0x0[0x10];
+	tObject_0044715d_row field_0x10[7];
+};
+
+// HYPOTHESIS: three counters, each with a maximum, a second value and a current value.
+struct tObject_00447415_limits
+{
+	char field_0x0[0x1a];
+	char field_0x1a;
+	char field_0x1b;
+	short field_0x1c;
+	char field_0x1e[0x2];
+	short field_0x20;
+	short field_0x22;
+	short field_0x24;
+	short field_0x26[25];
+	short field_0x58[25];
+	short field_0x8a[25];
+	short field_0xbc[25];
+	char field_0xee[0x2];
+	char field_0xf0;
+	char field_0xf1;
+	char field_0xf2;
+	char field_0xf3;
+	char field_0xf4;
+	char field_0xf5;
+	char field_0xf6;
+	char field_0xf7;
+	char field_0xf8;
+	char field_0xf9;
+	char field_0xfa;
+	char field_0xfb;
+	char field_0xfc[0x10];
+	char field_0x10c[3];
+	char field_0x10f[3];
+	char field_0x112[3];
+	char field_0x115;
+	short field_0x116[25];
+	char field_0x148[0x32];
+	// HYPOTHESIS: four byte arrays indexed alike; their lengths are not known.
+	char field_0x17a[4];
+	char field_0x17e[4];
+	char field_0x182[4];
+	char field_0x186[3];
+	char field_0x189[0x3];
+	// HYPOTHESIS: strings indexed alike; the array length is not known.
+	std::string field_0x18c[4];
+};
+
+#include "unsorted/tShipSystemMask.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x0044715d
+void tShipSystemMask::fn_0044715d(tObject_0042496f *ship)
+{
+	if (ship && ship->field_0xad4)
+	{
+		int i = 6;
+		do
+		{
+			tObject_0044715d_system *system = NULL;
+			// HYPOTHESIS: slots 77 and 80 return ship systems too; their classes are declared apart.
+			if (i == 1)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction77();
+			if (i == 0)
+				system = ship->field_0xad4->vfunction79();
+			if (i == 5)
+				system = ship->field_0xad4->vfunction78();
+			if (i == 4)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction80();
+			if (i == 3)
+				system = ship->field_0xad4->vfunction81();
+			if (i == 2)
+				system = ship->field_0xad4->vfunction83();
+			if (i == 6)
+				system = ship->field_0xad4->vfunction82();
+			if (system)
+			{
+				field_0xec->field_0x10[i].field_0x8 = system->vfunction106()->mCharStr();
+				field_0xec->field_0x10[i].field_0x18 = system->vfunction101();
+				field_0xec->field_0x10[i].field_0x1c = system->vfunction103();
+				field_0xec->field_0x10[i].field_0x20 = system->vfunction104();
+			}
+		}
+		while (i--);
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004472bc
+void tShipSystemMask::fn_004472bc(tObject_0042496f *ship)
+{
+	if (ship && ship->field_0xad4)
+	{
+		int i = 6;
+		do
+		{
+			tObject_0044715d_system *system = NULL;
+			if (i == 1)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction77();
+			if (i == 0)
+				system = ship->field_0xad4->vfunction79();
+			if (i == 5)
+				system = ship->field_0xad4->vfunction78();
+			if (i == 4)
+				system = (tObject_0044715d_system *)ship->field_0xad4->vfunction80();
+			if (i == 3)
+				system = ship->field_0xad4->vfunction81();
+			if (i == 2)
+				system = ship->field_0xad4->vfunction83();
+			if (i == 6)
+				system = ship->field_0xad4->vfunction82();
+			if (system)
+			{
+				system->vfunction105(tString(field_0xec->field_0x10[i].field_0x8.c_str()));
+				system->vfunction100(field_0xec->field_0x10[i].field_0x18);
+				system->vfunction102(field_0xec->field_0x10[i].field_0x1c);
+			}
+		}
+		while (i--);
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00447415
+int tShipSystemMask::fn_00447415(int side, int kind)
+{
+	switch (side)
+	{
+	case 0:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[0] = (field_0xe8->field_0x112[0] < 0 || field_0xe8->field_0x112[0] > field_0xe8->field_0x10c[0]) ? 0 : field_0xe8->field_0x112[0];
+		case 1:
+			return field_0xe8->field_0x10f[0];
+		case 2:
+			return field_0xe8->field_0x10c[0];
+		}
+		break;
+	case 1:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[1] = (field_0xe8->field_0x112[1] < 0 || field_0xe8->field_0x112[1] > field_0xe8->field_0x10c[1]) ? 0 : field_0xe8->field_0x112[1];
+		case 1:
+			return field_0xe8->field_0x10f[1];
+		case 2:
+			return field_0xe8->field_0x10c[1];
+		}
+		break;
+	case 2:
+		switch (kind)
+		{
+		case 0:
+			return field_0xe8->field_0x112[2] = (field_0xe8->field_0x112[2] < 0 || field_0xe8->field_0x112[2] > field_0xe8->field_0x10c[2]) ? 0 : field_0xe8->field_0x112[2];
+		case 1:
+			return field_0xe8->field_0x10f[2];
+		case 2:
+			return field_0xe8->field_0x10c[2];
+		}
+		break;
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447531
+void tShipSystemMask::fn_00447531(int side, int value)
+{
+	switch (side)
+	{
+	case 0:
+		if (value < 0 || value > field_0xe8->field_0x10c[0])
+			value = 0;
+		field_0xe8->field_0x112[0] = value;
+		break;
+	case 1:
+		if (value < 0 || value > field_0xe8->field_0x10c[1])
+			value = 0;
+		field_0xe8->field_0x112[1] = value;
+		break;
+	case 2:
+		if (value < 0 || value > field_0xe8->field_0x10c[2])
+			value = 0;
+		field_0xe8->field_0x112[2] = value;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004475bc
+void tShipSystemMask::fn_004475bc(int kind, int value)
+{
+	int i;
+
+	switch (kind)
+	{
+	case 0:
+		field_0xe8->field_0x1a = value;
+		break;
+	case 1:
+		field_0xe8->field_0x1b = value;
+		break;
+	case 2:
+		field_0xe8->field_0x1c = value;
+		break;
+	case 3:
+		field_0xe8->field_0x22 = value;
+		for (i = 0; i < 25; i++)
+		{
+			if (field_0xe8->field_0xbc[i] != 0)
+			{
+				int n = value;
+				if (value > field_0xe8->field_0x8a[i])
+					n = field_0xe8->field_0x8a[i];
+				field_0xe8->field_0x26[i] = n;
+				value -= n;
+			}
+		}
+		break;
+	case 4:
+		field_0xe8->field_0x24 = value;
+		for (i = 0; i < 25; i++)
+		{
+			if (field_0xe8->field_0xbc[i] != 0)
+			{
+				int n = value;
+				if (value > field_0xe8->field_0x8a[i] * (field_0xe8->field_0x1c + 1) * field_0xe8->field_0xbc[i] - field_0xe8->field_0x26[i])
+					n = field_0xe8->field_0x8a[i] * (field_0xe8->field_0x1c + 1) * field_0xe8->field_0xbc[i] - field_0xe8->field_0x26[i];
+				value -= n;
+				field_0xe8->field_0x58[i] = n;
+			}
+		}
+		break;
+	case 5:
+		field_0xe8->field_0x20 = value;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004476cf
+int tShipSystemMask::fn_004476cf(int level)
+{
+	switch (level)
+	{
+	case 0:
+		return field_0xe8->field_0x10f[0];
+	case 1:
+		return field_0xe8->field_0x10f[0] + (field_0xe8->field_0x10c[0] - field_0xe8->field_0x10f[0]) / 3;
+	case 2:
+		return field_0xe8->field_0x10f[0] + 2 * (field_0xe8->field_0x10c[0] - field_0xe8->field_0x10f[0]) / 3;
+	case 3:
+		return field_0xe8->field_0x10c[0];
+	default:
+		return 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00447740
+int tShipSystemMask::fn_00447740(int level)
+{
+	switch (level)
+	{
+	case 0:
+		return field_0xe8->field_0x10f[1];
+	case 1:
+		return field_0xe8->field_0x10f[1] + (field_0xe8->field_0x10c[1] - field_0xe8->field_0x10f[1]) / 3;
+	case 2:
+		return field_0xe8->field_0x10f[1] + 2 * (field_0xe8->field_0x10c[1] - field_0xe8->field_0x10f[1]) / 3;
+	case 3:
+		return field_0xe8->field_0x10c[1];
+	default:
+		return 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004477b1
+int tShipSystemMask::fn_004477b1(int index)
+{
+	return field_0xe8->field_0x186[index];
+}
+
+// FUNCTION: STARFLEETOP 0x004477c6
+void tShipSystemMask::fn_004477c6(int index, char value, char current)
+{
+	field_0xe8->field_0x17e[index] = value;
+	field_0xe8->field_0x182[index] = value;
+	field_0xe8->field_0x186[index] = current;
+}
+
+// FUNCTION: STARFLEETOP 0x004477f8
+int tShipSystemMask::fn_004477f8(int index)
+{
+	return field_0xe8->field_0x182[index];
+}
+
+// FUNCTION: STARFLEETOP 0x0044780d
+int tShipSystemMask::fn_0044780d(int index)
+{
+	return field_0xe8->field_0x17a[index];
+}
+
+// FUNCTION: STARFLEETOP 0x00447822
+std::string tShipSystemMask::fn_00447822(int index)
+{
+	return field_0xe8->field_0x18c[index];
+}
+
+// FUNCTION: STARFLEETOP 0x00447867
+void tShipSystemMask::fn_00447867(int index, std::string value)
+{
+	field_0xe8->field_0x18c[index] = value;
+}
+
+// FUNCTION: STARFLEETOP 0x004478b5
+int tShipSystemMask::fn_004478b5(int level)
+{
+	switch (level)
+	{
+	case 0:
+		return field_0xe8->field_0xf0;
+	case 1:
+		return field_0xe8->field_0xf0 + (field_0xe8->field_0xf1 - field_0xe8->field_0xf0) / 3;
+	case 2:
+		return field_0xe8->field_0xf0 + 2 * (field_0xe8->field_0xf1 - field_0xe8->field_0xf0) / 3;
+	case 3:
+		return field_0xe8->field_0xf1;
+	default:
+		return 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00447926
+void tShipSystemMask::fn_00447926(int kind, int value)
+{
+	switch (kind)
+	{
+	case 0:
+		if (value > field_0xe8->field_0xf1)
+			value = field_0xe8->field_0xf1;
+		field_0xe8->field_0xf2 = value;
+		break;
+	case 1:
+		if (value > field_0xe8->field_0xfa)
+			value = field_0xe8->field_0xfa;
+		field_0xe8->field_0xfb = value;
+		break;
+	case 2:
+		if (value > field_0xe8->field_0xf4)
+			value = field_0xe8->field_0xf4;
+		field_0xe8->field_0xf5 = value;
+		break;
+	case 3:
+		if (value > field_0xe8->field_0xf7)
+			value = field_0xe8->field_0xf7;
+		field_0xe8->field_0xf8 = value;
+		break;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004479b4
+int tShipSystemMask::fn_004479b4(int kind)
+{
+	switch (kind)
+	{
+	case 0:
+		return field_0xe8->field_0xf2 = (field_0xe8->field_0xf2 < 0 || field_0xe8->field_0xf2 > field_0xe8->field_0xf1) ? 0 : field_0xe8->field_0xf2;
+	case 1:
+		return field_0xe8->field_0xfb = (field_0xe8->field_0xfb < 0 || field_0xe8->field_0xfb > field_0xe8->field_0xfa) ? 0 : field_0xe8->field_0xfb;
+	case 2:
+		return field_0xe8->field_0xf5 = (field_0xe8->field_0xf5 < 0 || field_0xe8->field_0xf5 > field_0xe8->field_0xf4) ? 0 : field_0xe8->field_0xf5;
+	case 3:
+		return field_0xe8->field_0xf8 = (field_0xe8->field_0xf8 < 0 || field_0xe8->field_0xf8 > field_0xe8->field_0xf7) ? 0 : field_0xe8->field_0xf8;
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447a54
+int tShipSystemMask::fn_00447a54(int kind)
+{
+	switch (kind)
+	{
+	case 0:
+		return field_0xe8->field_0xf1;
+	case 1:
+		return field_0xe8->field_0xfa;
+	case 2:
+		return field_0xe8->field_0xf4;
+	case 3:
+		return field_0xe8->field_0xf7;
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00447aa7
+void tShipSystemMask::fn_00447aa7(tObject_0042496f *ship)
+{
+	if (ship != NULL)
+	{
+		field_0x4 = 1;
+		clib::strcpy(field_0x5, ship->field_0x87d);
+		field_0x88 = ship->field_0x86c;
+		fn_00445a8c(ship);
+		fn_004466ba(ship);
+		fn_0044715d(ship);
+	}
+}
+
+// HYPOTHESIS: 0x00447af2 is a member of tShipSystemMask that runs to 0x00447b79 (EH frame, a stack
+// tShipSpecs, then 0x00447aa7 on the ship it builds); the analysis stops it after 31 bytes, at
+// 0x00447b11, so it is left unclaimed until that boundary is corrected.
+//
+//
+
+// FUNCTION: STARFLEETOP 0x00447b7a
+void tShipSystemMask::fn_00447b7a(tObject_0042496f *ship)
+{
+	if (field_0x4 == 1 && stricmp(field_0x5, ship->field_0x87d) == 0)
+	{
+		fn_00445fe1(ship);
+		fn_00446d3d(ship);
+		fn_004472bc(ship);
+	}
+}
+
+#include "unsorted/c_004526cb.h"
+
+
+
+
+
+
+
+
+
+// HYPOTHESIS: the classes of the members 0x00447bbb hands its arguments to are not known;
+// 0x004457b7 is also declared in Source/states/SupplyDockItem.cpp under another stand-in name.
+// 0x00447c21 calls the same members the other way round, so the parts share the argument base.
+class c_00450e41 : public c_00447bbb_arg
+{
+public:
+	void fn_00450e41(c_00447bbb_arg *arg);
+};
+
+class c_004457b7 : public c_00447bbb_arg
+{
+public:
+	void fn_004457b7(c_00447bbb_arg *arg);
+};
+
+
+
+
+
+
+
+// HYPOTHESIS: the class owning 0x00447bbb is not known; it holds three parts at 0xe4-0xec.
+class c_00447bbb
+{
+public:
+	void fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_arg *c);
+	void fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c);
+
+	char field_0x0[0xe4];
+	c_00450e41 *field_0xe4;
+	c_004457b7 *field_0xe8;
+	c_004526cb *field_0xec;
+};
+
+// FUNCTION: STARFLEETOP 0x00447bbb
+void c_00447bbb::fn_00447bbb(c_00447bbb_arg *a, c_00447bbb_arg *b, c_00447bbb_arg *c)
+{
+	if (a && a->vfunction4())
+		field_0xe4->fn_00450e41(a);
+	if (b && b->vfunction4())
+		field_0xe8->fn_004457b7(b);
+	if (c && c->vfunction4())
+		field_0xec->fn_004526cb(c);
+}
+
+// FUNCTION: STARFLEETOP 0x00447c21
+void c_00447bbb::fn_00447c21(c_00450e41 *a, c_004457b7 *b, c_004526cb *c)
+{
+	if (a)
+		a->fn_00450e41(field_0xe4);
+	if (b)
+		b->fn_004457b7(field_0xe8);
+	if (c)
+		c->fn_004526cb(field_0xec);
+}
+
+// FUNCTION: STARFLEETOP 0x00447c61
+bool tShipSystemMask::fn_00447c61(int kind)
+{
+	int i = 0;
+	switch (kind)
+	{
+	case 0:
+		for (i = 0; i < 25; i++)
+			if (field_0xe8->field_0x116[i] != -1)
+				return true;
+		break;
+	case 1:
+		if (field_0xe8->field_0x20 != 0)
+			return true;
+		break;
+	case 2:
+		for (i = 0; i < 4; i++)
+			if (fn_0044780d(i))
+				return true;
+		break;
+	case 3:
+		if (fn_004478b5(3))
+			return true;
+		break;
+	case 4:
+		if (fn_004476cf(3) || fn_00447740(3))
+			return true;
+		break;
+	}
+	return false;
+}
+
+// HYPOTHESIS: 0x00447ce4 reads the same table pointer at 0xe8 as the functions above.
+// FUNCTION: STARFLEETOP 0x00447ce4
+tObject_00447415_limits *tShipSystemMask::fn_00447ce4()
+{
+	return field_0xe8;
+}
+
+// FUNCTION: STARFLEETOP 0x00447ceb
+tObject_0044715d_table *tShipSystemMask::fn_00447ceb()
+{
+	return field_0xec;
+}
+
+// FUNCTION: STARFLEETOP 0x00447cf2
+c_00450e41 *tShipSystemMask::fn_00447cf2()
+{
+	return field_0xe4;
+}
+
+// FUNCTION: STARFLEETOP 0x00447cf9
+void tShipSystemMask::fn_00447cf9(int index, int value)
+{
+	field_0xec->field_0x10[index].field_0x18 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d11
+void tShipSystemMask::fn_00447d11(int index, int value)
+{
+	field_0xec->field_0x10[index].field_0x1c = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d29
+void tShipSystemMask::fn_00447d29(int index, int value)
+{
+	field_0xec->field_0x10[index].field_0x20 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d41
+int tShipSystemMask::fn_00447d41(int index)
+{
+	return field_0xec->field_0x10[index].field_0x18;
+}
+
+// FUNCTION: STARFLEETOP 0x00447d55
+int tShipSystemMask::fn_00447d55(int index)
+{
+	return field_0xec->field_0x10[index].field_0x1c;
+}
+
+#include <vector>
+#include "unsorted/tTransporterHoldItem.h"
+
+// MATCH-ONLY: the library's vector assignment for this element type, written out as the
+// instance's explicit specialization so that its annotation names the one instance.
+// FUNCTION: STARFLEETOP 0x00447d69
+template<>
+std::vector< tTransporterHoldItem >& std::vector< tTransporterHoldItem >::operator=( const std::vector< tTransporterHoldItem >& _X )
+{
+	if( this == &_X )
+		;
+	else if( _X.size() <= size() )
+	{
+		iterator _S = std::copy( _X.begin(), _X.end(), _First );
+		_Destroy( _S, _Last );
+		_Last = _First + _X.size();
+	}
+	else if( _X.size() <= capacity() )
+	{
+		const_iterator _S = _X.begin() + size();
+		std::copy( _X.begin(), _S, _First );
+		_Ucopy( _S, _X.end(), _Last );
+		_Last = _First + _X.size();
+	}
+	else
+	{
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_First = allocator.allocate( _X.size(), (void*)0 );
+		_Last = _Ucopy( _X.begin(), _X.end(), _First );
+		_End = _Last;
+	}
+	return *this;
+}
+
+template<>
+void std::vector< tTransporterHoldItem >::push_back( const tTransporterHoldItem& _X );
+
+// MATCH-ONLY: the caller of the assignment is not recovered yet (HYPOTHESIS: an assignment
+// operator of a class holding this vector); this use makes the instance emit and is not original code.
+void fn_00447d69_user( std::vector< tTransporterHoldItem >& a, const std::vector< tTransporterHoldItem >& b )
+{
+	a = b;
+	// MATCH-ONLY: the original calls the element assignment out of line from one copy loop of
+	// 0x00447d69 and inlines it in the other; this pointer makes the out-of-line copy emit.
+	tTransporterHoldItem& (tTransporterHoldItem::*assign)( const tTransporterHoldItem& ) = &tTransporterHoldItem::operator=;
+	(a[0].*assign)( b[0] );
+	// MATCH-ONLY: as above, a use that makes the push_back instance emit.
+	a.push_back( b[0] );
+}
+
+// MATCH-ONLY: the library's push_back for this element type, written out as the instance's
+// explicit specialization; insert( end(), _X ) inlines to insert( _Last, 1, _X ) at 0x00447f65.
+// FUNCTION: STARFLEETOP 0x00447f54
+template<>
+void std::vector< tTransporterHoldItem >::push_back( const tTransporterHoldItem& _X )
+{
+	insert( end(), _X );
+}
+
+// MATCH-ONLY: the library's fill insert for this element type, written out as the instance's
+// explicit specialization so that its annotation names the one instance.
+// FUNCTION: STARFLEETOP 0x00447f65
+template<>
+void std::vector< tTransporterHoldItem >::insert( iterator _P, size_type _M, const tTransporterHoldItem& _X )
+{
+	if( _End - _Last < _M )
+	{
+		size_type _N = size() + ( _M < size() ? size() : _M );
+		iterator _S = allocator.allocate( _N, (void*)0 );
+		iterator _Q = _Ucopy( _First, _P, _S );
+		_Ufill( _Q, _M, _X );
+		_Ucopy( _P, _Last, _Q + _M );
+		_Destroy( _First, _Last );
+		allocator.deallocate( _First, _End - _First );
+		_End = _S + _N;
+		_Last = _S + size() + _M;
+		_First = _S;
+	}
+	else if( _Last - _P < _M )
+	{
+		_Ucopy( _P, _Last, _P + _M );
+		_Ufill( _Last, _M - ( _Last - _P ), _X );
+		std::fill( _P, _Last, _X );
+		_Last += _M;
+	}
+	else if( 0 < _M )
+	{
+		_Ucopy( _Last - _M, _Last, _Last );
+		std::copy_backward( _P, _Last - _M, _Last );
+		std::fill( _P, _P + _M, _X );
+		_Last += _M;
+	}
+}

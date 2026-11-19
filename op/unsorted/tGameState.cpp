@@ -118,15 +118,15 @@ void tGameState::vfunction16(int *param_1)
 }
 
 tGameState *fn_0046a59a();
-// HYPOTHESIS: the argument is a state name; slot 17 passes its int argument through as one.
+// HYPOTHESIS: the argument is a state name, the one fn_00469e0c passes on.
 bool fn_0046a62d(char *param_1);
 
 // FUNCTION: STARFLEETOP 0x00469e0c
-bool tGameState::vfunction17(int param_1)
+bool tGameState::fn_00469e0c(const char *name)
 {
 	if (fn_0046a59a() != this)
 		return 0;
-	return fn_0046a62d((char *)param_1);
+	return fn_0046a62d((char *)name);
 }
 
 // HYPOTHESIS: the global at 0x0090db88 is an object of an unidentified class: 0x0046995a,
@@ -243,8 +243,8 @@ void fn_00469ed8()
 class fn_00469c0a_owner
 {
 public:
-	char fn_00469c0a(int *ev);
-	char fn_00469c84(unsigned int param_1);
+	bool fn_00469c0a(int *ev);
+	bool fn_00469c84(struct c_0046aa10_message *msg);
 };
 
 class fn_0090db44_object
@@ -1175,7 +1175,7 @@ char fn_0046a75b(unsigned int param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x0046a9e2
-char fn_0046a9e2()
+bool fn_0046a9e2()
 {
 	if (g_0090db9c != 0)
 		return 0;
@@ -1202,22 +1202,22 @@ int fn_0046aa0a()
 	return g_0090db8c;
 }
 
-// HYPOTHESIS: 0x00469c84 is a method of the class of g_fn_00469c0a_owner; its argument type is guessed.
+#include "unsorted/c_0046aa10_msg.h"
 // FUNCTION: STARFLEETOP 0x0046aa10
-char fn_0046aa10(unsigned int param_1)
+bool fn_0046aa10(c_0046aa10_message *msg)
 {
 	if (g_0090db9c != 0)
 		return 0;
-	return g_fn_00469c0a_owner.fn_00469c84(param_1);
+	return g_fn_00469c0a_owner.fn_00469c84(msg);
 }
 
-// HYPOTHESIS: the owner's method returns a char; argument type guessed.
+// HYPOTHESIS: 0x00469c0a copies the 0x20-byte message into the queue and returns false when full.
 // FUNCTION: STARFLEETOP 0x0046aa2b
-char fn_0046aa2b(int *param_1)
+bool fn_0046aa2b(c_0046aa10_message *msg)
 {
 	if (g_0090db9c != 0)
 		return 0;
-	return g_fn_00469c0a_owner.fn_00469c0a(param_1);
+	return g_fn_00469c0a_owner.fn_00469c0a((int *) msg);
 }
 
 // FUNCTION: STARFLEETOP 0x0046aa46

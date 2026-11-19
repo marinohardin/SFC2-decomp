@@ -39,10 +39,13 @@ public:
 	virtual void vfunction4();
 	virtual int vfunction5(const char *, const char *, int);    // +0x10
 	virtual void vfunction6(const char *, const char *, int);    // +0x14
-	virtual void vfunction7();
+	// HYPOTHESIS: reads a named setting (section, key, default) like +0x10.
+	virtual int vfunction7(const char *, const char *, int);    // +0x18
 	virtual void vfunction8();
+	// HYPOTHESIS: returns the setting's length; tSFCPlayer passes a null buffer first to size it.
 	virtual int vfunction9(const char *, const char *, const char *, char *, int);    // +0x20
-	virtual void vfunction10(const char *, const char *, const char *);    // +0x24, stores a named string setting
+	// HYPOTHESIS: stores a named string setting (section, key, value) like +0x14.
+	virtual void vfunction10(const char *, const char *, const char *);    // +0x24
 };
 
 extern fn_008cc580_Settings *g_p008cc580;

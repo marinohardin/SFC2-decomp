@@ -7,6 +7,8 @@ class fn_0090bed8_type
 {
 public:
     float fn_00518603();
+    // HYPOTHESIS: returns a time in seconds; 0x0060c1c7 truncates it and prints it as h:m:s.
+    float fn_0045d50a();
 };
 extern fn_0090bed8_type g_0090bed8;
 

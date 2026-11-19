@@ -133,6 +133,7 @@ public:
 
 class tObject_00429103;
 class tObject_0042496f_weapon;
+class tObject_0044715d_system;
 
 // HYPOTHESIS: an object returned by slot 80 of the object at 0xad4 of a ship; only its
 // method at 0x0043c0f2 is known.
@@ -368,13 +369,14 @@ public:
 	virtual tObject_0042496f_member76 *vfunction76();
 	// HYPOTHESIS: slot 77 (offset 0x130) returns an object 0x0051e613 calls 0x0043b7fe on.
 	virtual tObject_0043b7fe *vfunction77();
-	virtual void vfunction78();
-	virtual void vfunction79();
+	// HYPOTHESIS: slots 77 to 83 each return one ship system or null; 0x0044715d reads seven.
+	virtual tObject_0044715d_system *vfunction78();
+	virtual tObject_0044715d_system *vfunction79();
 	// HYPOTHESIS: slot 80 (offset 0x13c) returns an object or null.
 	virtual tObject_0043c0f2 *vfunction80();
-	virtual void vfunction81();
-	virtual void vfunction82();
-	virtual void vfunction83();
+	virtual tObject_0044715d_system *vfunction81();
+	virtual tObject_0044715d_system *vfunction82();
+	virtual tObject_0044715d_system *vfunction83();
 	virtual void vfunction84();
 	virtual void vfunction85();
 	virtual void vfunction86();
@@ -607,7 +609,9 @@ public:
 	int field_0x870;
 	// HYPOTHESIS: 0x00515db1 does not stop the ship while it is 1.
 	int field_0x874;
-	char field_0x878[0x1c8];
+	char field_0x878[0x5];
+	// HYPOTHESIS: a name string; 0x00447aa7 copies it.
+	char field_0x87d[0x1c3];
 	// HYPOTHESIS: a state; tAICaptain's constructor tells its helm officer when it is 7.
 	int field_0xa40;
 	char field_0xa44[0x90];

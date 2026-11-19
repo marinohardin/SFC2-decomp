@@ -91,33 +91,33 @@ double tSupplyDockItem::vfunction11()
 	return 0.0;
 }
 #include <string>
-class fn_00447ce4_object;
+#include "unsorted/tShipSystemMask.h"
 
-// HYPOTHESIS: the object the base keeps at +0x74 ("mask"); only 0x004479b4 is called on it.
-class fn_004479b4_object
-{
-public:
-	long fn_004479b4( long arg1 );
-	void fn_00447926( long arg1, long arg2 );
-	long fn_00447a54( long arg1 );
-	fn_00447ce4_object *fn_00447ce4();
-	long fn_004477f8( long arg1 );
-	long fn_0044780d( long arg1 );
-	std::string fn_00447822( long arg1 );
-	long fn_004477b1( long arg1 );
-	void fn_004477c6( long arg1, long arg2, long arg3 );
-	void fn_00447867( long arg1, std::string name );
-	long fn_00447415( long arg1, long arg2 );
-	void fn_00447531( long arg1, long arg2 );
-	// HYPOTHESIS: tSupplyDockShipInfo holds one at +0x6c (0xf0 bytes) and builds it with 0x004455d7,
-	// which sits between tShipSystemMask's deleting destructor and its destructor.
-	fn_004479b4_object( long arg1, long arg2, long arg3, long arg4 );
-	~fn_004479b4_object();
-	long fn_004478b5( long arg1 );
-	bool fn_00447c61( long arg1 );
 
-	char m00[0xf0];
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: vtable 0x0079fcb8; one member past the base's 0x7c bytes.
 class tSupplyDockShuttles : public tSupplyDockItem
@@ -149,7 +149,7 @@ tSupplyDockShuttles::tSupplyDockShuttles( long arg1, long arg2, long arg3, long 
 	m10.fn_004d2797( 0x11014, g_0084bb4c, 0 );
 	m10.fn_004d2797( 0x11015, g_0084bb50, 0 );
 	// HYPOTHESIS: the base stores the "mask" argument as a long; here it is used as an object.
-	m7c = ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
+	m7c = ((tShipSystemMask *) m74)->fn_004479b4( 0 );
 }
 
 #include "Tiger/tstring.h"
@@ -184,9 +184,9 @@ void tSupplyDockShuttles::vfunction3()
 void tSupplyDockShuttles::vfunction4()
 {
 	long value = m7c;
-	if( value != ((fn_004479b4_object *) m74)->fn_004479b4( 0 ) )
+	if( value != ((tShipSystemMask *) m74)->fn_004479b4( 0 ) )
 	{
-		((fn_004479b4_object *) m74)->fn_00447926( 0, value );
+		((tShipSystemMask *) m74)->fn_00447926( 0, value );
 		vfunction3();
 	}
 }
@@ -211,13 +211,13 @@ void tSupplyDockShuttles::vfunction7( long *msg )
 // FUNCTION: STARFLEETOP 0x0048644c
 long tSupplyDockShuttles::vfunction9()
 {
-	return ((fn_004479b4_object *) m74)->fn_00447a54( 0 );
+	return ((tShipSystemMask *) m74)->fn_00447a54( 0 );
 }
 
 // FUNCTION: STARFLEETOP 0x00486457
 long tSupplyDockShuttles::vfunction10()
 {
-	return ((fn_004479b4_object *) m74)->fn_004479b4( 0 );
+	return ((tShipSystemMask *) m74)->fn_004479b4( 0 );
 }
 
 // HYPOTHESIS: the object the base keeps at +0x78 (the constructor's fifth argument); only
@@ -263,7 +263,7 @@ void tSupplyDockShuttles::vfunction14( long value )
 {
 	if( value != vfunction10() )
 	{
-		((fn_004479b4_object *) m74)->fn_00447926( 0, value );
+		((tShipSystemMask *) m74)->fn_00447926( 0, value );
 		vfunction3();
 	}
 }
@@ -341,7 +341,7 @@ public:
 	};
 };
 
-// HYPOTHESIS: the object 0x00447ce4 returns when called on the base's +0x74 object.
+// HYPOTHESIS: a view of the tObject_00447415_limits 0x00447ce4 returns, as this unit uses it.
 class fn_00447ce4_object
 {
 public:
@@ -404,7 +404,7 @@ tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long 
 	m10.fn_004d26fb( &g_009157c8, g_0084bb74 );
 	m10.fn_004d26fb( &g_009157a8, g_0084bb78 );
 	m10.fn_004d26fb( &g_00915788, g_0084bb7c );
-	m7c = ((fn_004479b4_object *) m74)->fn_00447ce4()->fn_0055e60f();
+	m7c = ((fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4())->fn_0055e60f();
 	m7c->m0c = true;
 	m7c->m0d = true;
 	m80.fn_0045154e( m7c );
@@ -412,8 +412,8 @@ tSupplyDockMissiles::tSupplyDockMissiles( long arg1, long arg2, long arg3, long 
 
 #include "unsorted/tObject_0090b730.h"
 
-// HYPOTHESIS: a free cdecl function of a name and the base's +0x04; its unit is not written yet.
-void fn_004d346f( const char *name, long arg2 );
+// fn_004d346f takes a name and the base's +0x04 as its group.
+#include "unsorted/fn_004D3143.h"
 // HYPOTHESIS: two names at fixed data addresses; their text is not known here.
 extern const char g_0084bff4[];
 extern const char g_0084bfe4[];
@@ -466,8 +466,8 @@ void tSupplyDockMissiles::vfunction3()
 	g_00915788.m18 = m7c->fn_00451c2d() - 1;
 	g_00915788.fn_006712c0( 3, 0 );
 
-	fn_004d346f( g_0084bff4, m04 );
-	fn_004d346f( g_0084bfe4, m04 );
+	fn_004d346f( g_0084bff4, (const char *) m04 );
+	fn_004d346f( g_0084bfe4, (const char *) m04 );
 }
 
 // FUNCTION: STARFLEETOP 0x004869a1
@@ -668,9 +668,9 @@ tSupplyDockFighters::tSupplyDockFighters( long arg1, long arg2, long arg3, long 
 {
 	for( long i = 0; i < 4; i++ )
 	{
-		m7c[i] = ((fn_004479b4_object *) m74)->fn_004477f8( i );
-		m8c[i] = vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) * m7c[i];
-		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+		m7c[i] = ((tShipSystemMask *) m74)->fn_004477f8( i );
+		m8c[i] = vfunction17( ((tShipSystemMask *) m74)->fn_00447822( i ) ) * m7c[i];
+		if( ((tShipSystemMask *) m74)->fn_0044780d( i ) )
 		{
 			m10.fn_004d2797( 0x11027 + i, g_0084bb80[i], 0 );
 			m10.fn_004d2797( 0x1102b + i, g_0084bb90[i], 0 );
@@ -686,7 +686,7 @@ long tSupplyDockFighters::vfunction1()
 	long result = tSupplyDockItem::vfunction1();
 	for( long i = 0; i < 4; i++ )
 	{
-		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+		if( ((tShipSystemMask *) m74)->fn_0044780d( i ) )
 			fn_00486fac( i );
 	}
 	vfunction3();
@@ -696,12 +696,12 @@ long tSupplyDockFighters::vfunction1()
 // FUNCTION: STARFLEETOP 0x00486d32
 void tSupplyDockFighters::vfunction20( long arg1, long arg2 )
 {
-	((fn_004479b4_object *) m74)->fn_004477c6( arg2, arg1, ((fn_004479b4_object *) m74)->fn_004477b1( arg2 ) );
+	((tShipSystemMask *) m74)->fn_004477c6( arg2, arg1, ((tShipSystemMask *) m74)->fn_004477b1( arg2 ) );
 }
 
-// HYPOTHESIS: a free cdecl function of a name, the counterpart of fn_004d3306; other units pass
-// it a name string.
-void fn_004d3340( long arg1 );
+
+
+
 // The four fighter bay names, "CC_FighterBay1" first.
 extern const char *g_0084bbc0[];
 
@@ -710,7 +710,7 @@ void tSupplyDockFighters::vfunction2()
 {
 	for( int i = 3; i > -1; i-- )
 	{
-		fn_004d3340( (long) g_0084bbc0[i] );
+		fn_004d3340( g_0084bbc0[i] );
 		fn_004d3306( (long) g_0084bbc0[i] );
 	}
 }
@@ -722,13 +722,13 @@ void tSupplyDockFighters::vfunction3()
 
 	for( long i = 0; i < 4; i++ )
 	{
-		if( ((fn_004479b4_object *) m74)->fn_0044780d( i ) )
+		if( ((tShipSystemMask *) m74)->fn_0044780d( i ) )
 		{
 			text = "";
 			text.mAppendInt32s( vfunction16( i ) );
 			fn_004d33d4( 0x11017 + i, text );
 			text = "";
-			text.mAppendInt32s( vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+			text.mAppendInt32s( vfunction17( ((tShipSystemMask *) m74)->fn_00447822( i ) ) );
 			fn_004d33d4( 0x1101b + i, text );
 			text = "";
 			text.mAppendInt32s( vfunction18( i ) );
@@ -738,7 +738,7 @@ void tSupplyDockFighters::vfunction3()
 			vfunction8( g_0084bb90[i], vfunction16( i ) < vfunction15( i ) );
 			vfunction8( g_0084bba0[i], true );
 			vfunction8( g_0084bbb0[i], true );
-			fn_004d33d4( 0x11023 + i, ((fn_004479b4_object *) m74)->fn_00447822( i ) );
+			fn_004d33d4( 0x11023 + i, ((tShipSystemMask *) m74)->fn_00447822( i ) );
 		}
 	}
 }
@@ -763,7 +763,7 @@ public:
 // FUNCTION: STARFLEETOP 0x00486f8c
 void tSupplyDockItem::vfunction5( fn_004457b7_object *target )
 {
-	target->fn_004457b7( ((fn_004479b4_object *) m74)->fn_00447ce4() );
+	target->fn_004457b7( (fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4() );
 	vfunction6();
 }
 
@@ -776,13 +776,13 @@ void tSupplyDockFighters::fn_00486fac( long i )
 // FUNCTION: STARFLEETOP 0x00486fd6
 long tSupplyDockFighters::vfunction15( long i )
 {
-	return ((fn_004479b4_object *) m74)->fn_00447ce4()->m17a[i];
+	return ((fn_00447ce4_object *) ((tShipSystemMask *) m74)->fn_00447ce4())->m17a[i];
 }
 
 // FUNCTION: STARFLEETOP 0x00486fed
 long tSupplyDockFighters::vfunction16( long i )
 {
-	return ((fn_004479b4_object *) m74)->fn_004477f8( i );
+	return ((tShipSystemMask *) m74)->fn_004477f8( i );
 }
 
 // FUNCTION: STARFLEETOP 0x00486ffc
@@ -796,7 +796,7 @@ double tSupplyDockFighters::vfunction17( const std::string &name )
 // FUNCTION: STARFLEETOP 0x0048701a
 long tSupplyDockFighters::vfunction18( long i )
 {
-	long total = vfunction16( i ) * vfunction17( ((fn_004479b4_object *) m74)->fn_00447822( i ) );
+	long total = vfunction16( i ) * vfunction17( ((tShipSystemMask *) m74)->fn_00447822( i ) );
 	long result = total - m8c[i];
 	if( result < 0 )
 		result = 0;
@@ -816,34 +816,34 @@ void tSupplyDockFighters::vfunction7( long *msg )
 	case 0x11029:
 	case 0x1102a:
 		i = *msg - 0x11027;
-		count = ((fn_004479b4_object *) m74)->fn_004477f8( i ) - 1;
+		count = ((tShipSystemMask *) m74)->fn_004477f8( i ) - 1;
 		if( count < 0 )
 			count = 0;
-		((fn_004479b4_object *) m74)->fn_004477c6( i, count, ((fn_004479b4_object *) m74)->fn_004477b1( i ) );
+		((tShipSystemMask *) m74)->fn_004477c6( i, count, ((tShipSystemMask *) m74)->fn_004477b1( i ) );
 		break;
 	case 0x1102b:
 	case 0x1102c:
 	case 0x1102d:
 	case 0x1102e:
 		i = *msg - 0x1102b;
-		count = ((fn_004479b4_object *) m74)->fn_004477f8( i ) + 1;
+		count = ((tShipSystemMask *) m74)->fn_004477f8( i ) + 1;
 		if( count > vfunction15( i ) )
 			count = vfunction15( i );
-		((fn_004479b4_object *) m74)->fn_004477c6( i, count, ((fn_004479b4_object *) m74)->fn_004477b1( i ) );
+		((tShipSystemMask *) m74)->fn_004477c6( i, count, ((tShipSystemMask *) m74)->fn_004477b1( i ) );
 		break;
 	case 0x1102f:
 	case 0x11030:
 	case 0x11031:
 	case 0x11032:
 		i = *msg - 0x1102f;
-		((fn_004479b4_object *) m74)->fn_00447867( i, fn_00487236( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+		((tShipSystemMask *) m74)->fn_00447867( i, fn_00487236( ((tShipSystemMask *) m74)->fn_00447822( i ) ) );
 		break;
 	case 0x11033:
 	case 0x11034:
 	case 0x11035:
 	case 0x11036:
 		i = *msg - 0x11033;
-		((fn_004479b4_object *) m74)->fn_00447867( i, fn_0048719b( ((fn_004479b4_object *) m74)->fn_00447822( i ) ) );
+		((tShipSystemMask *) m74)->fn_00447867( i, fn_0048719b( ((tShipSystemMask *) m74)->fn_00447822( i ) ) );
 		break;
 	}
 	vfunction3();
@@ -1016,13 +1016,13 @@ void tSupplyDockMisc::vfunction7( long *msg )
 // FUNCTION: STARFLEETOP 0x004876ae
 long tSupplyDockMisc::fn_004876ae( long i )
 {
-	return ((fn_004479b4_object *) m74)->fn_00447415( i, 2 );
+	return ((tShipSystemMask *) m74)->fn_00447415( i, 2 );
 }
 
 // FUNCTION: STARFLEETOP 0x004876bf
 long tSupplyDockMisc::fn_004876bf( long i )
 {
-	return ((fn_004479b4_object *) m74)->fn_00447415( i, 0 );
+	return ((tShipSystemMask *) m74)->fn_00447415( i, 0 );
 }
 
 // FUNCTION: STARFLEETOP 0x004876d0
@@ -1055,7 +1055,7 @@ void tSupplyDockMisc::fn_00487757( long i, long count )
 {
 	if( count != fn_004876bf( i ) )
 	{
-		((fn_004479b4_object *) m74)->fn_00447531( i, count );
+		((tShipSystemMask *) m74)->fn_00447531( i, count );
 		vfunction3();
 	}
 }
@@ -1064,17 +1064,17 @@ void tSupplyDockMisc::fn_00487757( long i, long count )
 
 #include "unsorted/fn_004d288f_object.h"
 
-// RTTI names the class tValueI<tString>; vtable 0x0079b8a4, the value at +0x18.
-template< class T >
-class tValueI : public tValueBase
-{
-public:
-	// HYPOTHESIS: the set step; the original assigns the value, notifies with (3, 0), and
-	// only then destroys the temporary it was given.
-	tValueI &operator=( const T &value ) { m18 = value; fn_006712c0( 3, 0 ); return *this; }
+// tValueI<tString> (vtable 0x0079b8a4, the value at +0x18).
+#include "unsorted/tValueI.h"
 
-	T m18;
-};
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: vtable 0x0079fdc0 has one slot (0x00487f84); layout from the constructor's stores.
 class tSupplyDockShipInfo
@@ -1091,7 +1091,7 @@ public:
 
 	long m04;
 	tObject_0045e574 m08;
-	fn_004479b4_object m6c;
+	tShipSystemMask m6c;
 	tSupplyDockItem *m15c[4];
 	long m16c;
 	long m170;

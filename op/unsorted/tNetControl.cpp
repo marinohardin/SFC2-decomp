@@ -205,7 +205,7 @@ public:
 	virtual void fn_vtbl_34();
 	virtual int fn_vtbl_38( std::vector< c_0043127f_src * > *list, int a, int b );
 	virtual int fn_vtbl_3C();
-	virtual void fn_vtbl_40();
+	virtual bool fn_vtbl_40();	// HYPOTHESIS: 0x00468c49 tests the result in al
 	virtual void fn_vtbl_44();
 	virtual void fn_vtbl_48();
 	virtual void fn_vtbl_4C();
@@ -235,16 +235,16 @@ public:
 	virtual void fn_vtbl_A0( int a );
 };
 
-class c_008e1060
-{
-public:
-	void fn_004239ba( int n );
-	int fn_004239d6();
-};
+// The object at 0x008e1060 is the entity manager.
+#include "unsorted/tEntityMgr.h"
+
+
+
+
 
 extern int g_008f5b84;
 extern int g_008f5b3c;
-extern c_008e1060 g_008e1060;
+extern tEntityMgr g_008e1060;
 
 // The function starts with its EH prolog at 0x00431275; the symbol keeps the name of the
 // address 10 bytes in, where analysis first put the start. The 6-byte copy calls 0x007365b0,
@@ -313,8 +313,8 @@ void tNetControl::fn_0043127f()
 	{
 		g_008f5b84 = field_8D00->fn_vtbl_3C();
 		gObject_0092deb4->vfunction59( g_008f5b84 );
-		g_008e1060.fn_004239ba( g_008f5b84 );
-		int value = g_008e1060.fn_004239d6();
+		g_008e1060.mSetPlayerNumber( g_008f5b84 );
+		int value = g_008e1060.mGetNextPlayerID();
 		gObject_0092deb4->vfunction10( value, 0, 0 );
 	}
 
@@ -532,9 +532,9 @@ int tNetControl::fn_004317bd()
 }
 
 // FUNCTION: STARFLEETOP 0x004317c3
-void tNetControl::fn_004317c3()
+bool tNetControl::fn_004317c3()
 {
-	field_8D00->fn_vtbl_40();
+	return field_8D00->fn_vtbl_40();
 }
 
 // FUNCTION: STARFLEETOP 0x004317ce
