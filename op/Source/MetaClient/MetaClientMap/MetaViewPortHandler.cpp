@@ -57,7 +57,7 @@ public:
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	void fn_005e6469( long arg ); bool fn_005e64ea(); bool fn_005e653d( const tHexPoint& position );
 	tHexPoint fn_005e7925( long x, long y, int arg ); bool fn_005e6642( const class fn_005e6642_record& record ); void fn_005e66b7( const fn_005ea9ce_elem& entry );
-	// HYPOTHESIS: 0x005e6991 takes the same id and position as 0x005e67a8 passes on; its body is not recovered.
+	// HYPOTHESIS: 0x005e6991 moves every entry with the id to the position.
 	void fn_005e67a8( const nDatabase::tID& id, const tHexPoint& position, long value, nDatabase::tID other ); void fn_005e6991( const nDatabase::tID& id, const tHexPoint& position );
 	unsigned char field_4[ 0xd8 - 0x4 ]; fn_00717950_object* field_d8; // HYPOTHESIS: an object of unknown type; only 0x00717950 is called on it (0x005e64ea).
 	tOptex field_dc;
@@ -529,4 +529,17 @@ void tMetaClientMapPanel::fn_005e67a8( const nDatabase::tID& id, const tHexPoint
 	list.Done();
 	fn_005e6991( id, position );
 	fn_005e5abe();
+}
+
+// FUNCTION: STARFLEETOP 0x005e6991
+void tMetaClientMapPanel::fn_005e6991( const nDatabase::tID& id, const tHexPoint& position )
+{
+	tOptex::tGuard guard( &field_dc );
+	tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > >::iPtr list = field_fc.field_60.Lock();
+
+	for( std::vector< fn_005ea9ce_elem >::iterator it = ( *list ).begin(); it != ( *list ).end(); ++it )
+	{
+		if( it->m_04 == id )
+			*(tHexPoint*) ( it->m_14 + 0x18 - 0x14 ) = position;
+	}
 }
