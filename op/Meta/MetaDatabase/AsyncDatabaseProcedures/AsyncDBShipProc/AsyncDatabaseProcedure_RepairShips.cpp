@@ -110,3 +110,9 @@ tRepairShips::tRepairShips( tAsyncDatabase* pDB ) : tAsyncDatabaseProcedure( pDB
 	fn_00718f10( 9, new tMemberCallback<tRepairShips,const nDataStore::tBuffer*>( this, fn_00568b2e ) );
 	fn_00719050();
 }
+
+#line 115
+// FUNCTION: STARFLEETOP 0x00568b07
+tRepairShips::~tRepairShips()
+{
+}
