@@ -57,6 +57,8 @@ public:
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
 	void fn_005e6469( long arg ); bool fn_005e64ea(); bool fn_005e653d( const tHexPoint& position );
 	tHexPoint fn_005e7925( long x, long y, int arg ); bool fn_005e6642( const class fn_005e6642_record& record ); void fn_005e66b7( const fn_005ea9ce_elem& entry );
+	// HYPOTHESIS: 0x005e6991 takes the same id and position as 0x005e67a8 passes on; its body is not recovered.
+	void fn_005e67a8( const nDatabase::tID& id, const tHexPoint& position, long value, nDatabase::tID other ); void fn_005e6991( const nDatabase::tID& id, const tHexPoint& position );
 	unsigned char field_4[ 0xd8 - 0x4 ]; fn_00717950_object* field_d8; // HYPOTHESIS: an object of unknown type; only 0x00717950 is called on it (0x005e64ea).
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
@@ -77,7 +79,7 @@ void tMetaClientMapPanel::vfunction19()
 		fpMetaMapControl = dynamic_cast<tMetaMapControl*>( ( (tVisObject* (*)( long, long )) fn_004d353e )( (long) g_0087632c, (long) "FakeMap" ) );
 #line 316
 		validate( fpMetaMapControl );
-#line 80
+#line 82
 	}
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
@@ -497,5 +499,34 @@ void tMetaClientMapPanel::fn_005e66b7( const fn_005ea9ce_elem& entry )
 	if( it == ( *list ).end() )
 		( *list ).push_back( entry );
 	list.Done();
+	fn_005e5abe();
+}
+
+// FUNCTION: STARFLEETOP 0x005e67a8
+void tMetaClientMapPanel::fn_005e67a8( const nDatabase::tID& id, const tHexPoint& position, long value, nDatabase::tID other )
+{
+	tOptex::tGuard guard( &field_dc );
+	tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > >::iPtr list = field_fc.field_60.Lock();
+
+	for( std::vector< fn_005ea9ce_elem >::iterator it = ( *list ).begin(); it != ( *list ).end(); ++it )
+	{
+		if( it->m_04 == id && it->m_4c == value && it->m_54 == other )
+		{
+			bool own = id == ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a9ba();
+			if( own )
+			{
+				if( fn_005e653d( position ) )
+					fn_005e5c72( position );
+				( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a68f( position );
+				( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a73d();
+			}
+			// HYPOTHESIS: the element holds a tHexPoint at +0x18 (assigned through 0x005b69b0); placed in the
+			// shared element type it makes the type non-trivial and changes this unit's other functions.
+			*(tHexPoint*) ( it->m_14 + 0x18 - 0x14 ) = position;
+			break;
+		}
+	}
+	list.Done();
+	fn_005e6991( id, position );
 	fn_005e5abe();
 }
