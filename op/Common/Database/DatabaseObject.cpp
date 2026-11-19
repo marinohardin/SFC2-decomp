@@ -138,3 +138,109 @@ bool tDatabaseObject::operator==( const tDatabaseObject& obj )
 }
 
 }
+
+// HYPOTHESIS: Enter, TryEnter and Wait are inline (MakeReadOnly expands all three) but defined
+// only here, after operator=, which still calls the out-of-line Enter.
+inline bool tOptex::TryEnter()
+{
+	if( fUse == tThreadState::kIgnoreThreadObject )
+	{
+		return false;
+	}
+
+	if( fUseCriticalSections )
+	{
+		return false;
+	}
+
+	int32u threadId = ::GetCurrentThreadId();
+
+	bool thisThreadOwnsTheOptex = false;
+	int32u spinCount = fpSharedInfo->fSpinCount;
+
+	do
+	{
+		thisThreadOwnsTheOptex = ( 0 == ( *( OSSPECIFIC::OS_InterlockedCompareExchange ) )( &fpSharedInfo->fLockCount, 1, 0 ) );
+
+		if( thisThreadOwnsTheOptex )
+		{
+			fpSharedInfo->fThreadId = threadId;
+			fpSharedInfo->fRecurseCount = 1;
+		}
+		else
+		{
+			if( fpSharedInfo->fThreadId == threadId )
+			{
+				::InterlockedIncrement( &fpSharedInfo->fLockCount );
+				fpSharedInfo->fRecurseCount++;
+				thisThreadOwnsTheOptex = TRUE;
+			}
+		}
+	} while( !thisThreadOwnsTheOptex && ( spinCount-- > 0 ) );
+
+	return( thisThreadOwnsTheOptex );
+}
+
+inline void tOptex::Wait()
+{
+	::WaitForSingleObject( fEvent, INFINITE );
+}
+
+inline void tOptex::Enter()
+{
+	if( fUse == tThreadState::kIgnoreThreadObject )
+	{
+		return;
+	}
+
+	if( fUseCriticalSections )
+	{
+		::EnterCriticalSection( &( fpSharedInfo->fCriticalSection ) );
+		return;
+	}
+
+	if( TryEnter() )
+	{
+		return;
+	}
+
+	int32u threadId = ::GetCurrentThreadId();
+
+	if( ::InterlockedIncrement( &fpSharedInfo->fLockCount ) == 1 )
+	{
+		fpSharedInfo->fThreadId = threadId;
+		fpSharedInfo->fRecurseCount = 1;
+	}
+	else
+	{
+		if( fpSharedInfo->fThreadId == threadId )
+		{
+			fpSharedInfo->fRecurseCount++;
+		}
+		else
+		{
+			Wait();
+
+			fpSharedInfo->fThreadId = threadId;
+			fpSharedInfo->fRecurseCount = 1;
+		}
+	}
+}
+
+namespace nDatabase
+{
+
+// FUNCTION: STARFLEETOP 0x006fac20
+void tDatabaseObject::MakeReadOnly()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	fLockID = 0;
+	if( fLockEvent != NULL )
+	{
+		delete fLockEvent;
+		fLockEvent = NULL;
+	}
+}
+
+}

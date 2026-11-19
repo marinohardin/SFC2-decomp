@@ -37774,6 +37774,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fac20": {
+   "name": "nDatabase::tDatabaseObject::MakeReadOnly",
+   "symbol": "?MakeReadOnly@tDatabaseObject@nDatabase@@UAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 416,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
