@@ -38116,6 +38116,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006fd970": {
+   "name": "tCRC32::GenerateCRCTable",
+   "symbol": "?GenerateCRCTable@tCRC32@@IAEXXZ",
+   "unit": "Common/Crypto/CRC32.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

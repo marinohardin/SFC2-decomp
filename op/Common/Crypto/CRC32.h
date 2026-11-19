@@ -7,7 +7,8 @@
 #define CRC32_h
 
 #include "Common/BaseTypes.h"
-#include <iosfwd>
+#include <vector>
+#include <iosfwd>	// std::string, without the locale statics <string> brings in
 
 class tCRC32
 {

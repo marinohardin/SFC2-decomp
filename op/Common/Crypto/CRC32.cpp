@@ -1,6 +1,18 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Crypto/CRC32.cpp
-// Functions: 0x006fd970 to 0x006fd9f0, 3 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+#include "Common/Crypto/CRC32.h"
+
+// FUNCTION: STARFLEETOP 0x006fd970
+void tCRC32::GenerateCRCTable()
+{
+	for( int i = 0; i < kTableSize; i++ )
+	{
+		int32u crc = i << 24;
+		for( int j = 0; j < 8; j++ )
+		{
+			if( crc & 0x80000000 )
+				crc = ( crc << 1 ) ^ 0x04C11DB7;	// HYPOTHESIS: the polynomial literal, not fPolynomial, which VC6 would not fold
+			else
+				crc = crc << 1;
+		}
+		fTable[ i ] = crc;
+	}
+}
