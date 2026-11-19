@@ -29154,12 +29154,12 @@
   },
   "0x00633e80": {
    "name": "tDir::tDir",
-   "symbol": "??0tPath@@QAE@ABV0@@Z",
+   "symbol": "??1tPath@@UAE@XZ",
    "unit": "Tiger/twfsys.cpp",
-   "size": 64,
-   "score": 99.231,
+   "size": 53,
+   "score": 1.633,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-16"
   },
   "0x00633ec0": {
    "name": "twPath::mFree",
