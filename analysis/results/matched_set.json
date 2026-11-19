@@ -23968,6 +23968,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005dfb28": {
+   "name": "nAsyncClientMapProcedures::tInitialize::scalar_deleting_destructor",
+   "symbol": "??_GtInitialize@nAsyncClientMapProcedures@@UAEPAXI@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005e2501": {
    "name": "FUN_005e2501",
    "symbol": "?fn_005e2501@fn_005e2501_class@@QAEXXZ",

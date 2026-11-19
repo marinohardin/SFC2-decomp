@@ -12,7 +12,7 @@ namespace nAsyncClientMapProcedures
 	public:
 		// The parameter's member name is from the validate( fpMyRelay ) text; its type is not known.
 		tInitialize( void* pMyRelay );
-
+		virtual ~tInitialize();
 		// HYPOTHESIS: the callback for message 0 is 0x005dfb86 (its address sits in this unit
 		// before the other two; the instruction holding it could not be read).
 		void fn_005dfb86( const nDataStore::tBuffer* buffer );
@@ -49,4 +49,9 @@ tInitialize::tInitialize( void* pMyRelay ) :
 	fn_00718f10( 1, new tMemberCallback<tInitialize, const nDataStore::tBuffer*>( this, fn_005dfc37 ) );
 	fn_00718f10( 2, new tMemberCallback<tInitialize, const nDataStore::tBuffer*>( this, fn_005dfdab ) );
 	fn_00719050();
+}
+
+// FUNCTION: STARFLEETOP 0x005dfb28
+tInitialize::~tInitialize()
+{
 }
