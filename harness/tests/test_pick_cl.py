@@ -113,6 +113,8 @@ def test_a_compile_that_does_not_finish_is_stopped_with_its_compiler(tmp_path, m
     monkeypatch.setenv('SFCOP_WORK', str(tmp_path / 'work'))
     monkeypatch.setattr(paths, 'CL', paths.CL_NATIVE)
     monkeypatch.setattr(source, 'COMPILE_TIMEOUT', 1)
+    # No docker on PATH: the native compiler needs none, and stopping it must not either.
+    monkeypatch.setenv('PATH', '/usr/bin:/bin')
     unit = tmp_path / 'u.cpp'
     unit.write_text('int f() { return 0; }\n')
     b = source.compile_unit(str(unit), {}, str(tmp_path), build_root=str(tmp_path / 'build'))

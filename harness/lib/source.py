@@ -134,23 +134,34 @@ _live = {}
 _live_lock = threading.Lock()
 
 
+def _docker_kill(cname):
+    """Stop the compile's container, when the compiler is the image's; no Docker is needed for
+    the native one."""
+    if paths.CL != paths.CL_DOCKER:
+        return
+    try:
+        subprocess.run(['docker', 'kill', cname], capture_output=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+
+
 def stop_all(grace=5):
-    """Stop every running compile's process group and container: TERM, then KILL after `grace`
-    seconds. The threads waiting on them see the compiles end."""
+    """Stop every running compile's process group and container: TERM to all, then KILL to what
+    is left after `grace` seconds. The threads waiting on them see the compiles end."""
     with _live_lock:
         live = list(_live.values())
-    for p, cname in live:
-        for sig in (signal.SIGTERM, signal.SIGKILL):
-            try:
-                os.killpg(p.pid, sig)
-            except ProcessLookupError:
-                break
-            deadline = time.time() + grace
-            while time.time() < deadline and p.poll() is None:
-                time.sleep(0.05)
-            if p.poll() is not None:
-                break
-        subprocess.run(['docker', 'kill', cname], capture_output=True)
+    for sig in (signal.SIGTERM, signal.SIGKILL):
+        for p, _ in live:
+            if p.poll() is None:
+                try:
+                    os.killpg(p.pid, sig)
+                except ProcessLookupError:
+                    pass
+        deadline = time.time() + grace
+        while time.time() < deadline and any(p.poll() is None for p, _ in live):
+            time.sleep(0.05)
+    for _, cname in live:
+        _docker_kill(cname)
 
 
 def compile_unit(unit_path, profile, src_root, build_root=None):
@@ -180,12 +191,12 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
         log, rc = out_ + err_, p.returncode
     except subprocess.TimeoutExpired:
         _stop_group(p)
-        subprocess.run(['docker', 'kill', cname], capture_output=True)
+        _docker_kill(cname)
         log, rc = f'compile killed after {COMPILE_TIMEOUT}s', -1
     except BaseException:
         # Ctrl-C reaches only the harness now that the compile has its own group: stop it too.
         _stop_group(p)
-        subprocess.run(['docker', 'kill', cname], capture_output=True)
+        _docker_kill(cname)
         raise
     finally:
         with _live_lock:

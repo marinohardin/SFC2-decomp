@@ -117,7 +117,8 @@ Checked on 2026-11-19 against the image, over every unit with a claim (158):
   order. Each compiler is deterministic: a second run of either reproduced its own objects.
   So the native compiler is for the harness's per-function scores only: anything that links
   objects or compares whole objects (a link, a consumer of `docs/INTERFACE.md`) uses the
-  image's `toolchain/bin/cl`.
+  image's `toolchain/bin/cl`. CI's `check` compiles with the image, so its result is the one of
+  record; a local check with the native compiler is a fast preview of it.
 - Total compile time for the 158 units fell from 842 s to 90 s, and a full verify from 410 s to
   215 s; most of what is left is objdiff.
 
