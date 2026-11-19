@@ -222,3 +222,15 @@ void tHeartbeatTimer::StopTimer()
 	fHBData->fTimers[ fTimerIndex ] = NULL;
 	fLastTime = fInitalTime = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006f6580
+void tHeartbeatTimer::OnAutoRunHB( int32 context )
+{
+	tHeartbeatTimerData* data = tHeartbeatTimerData::Instance();
+
+	while ( data->fThread.Alive() && data->fThread.Working() )
+	{
+		Heartbeat();
+		Sleep( context );
+	}
+}
