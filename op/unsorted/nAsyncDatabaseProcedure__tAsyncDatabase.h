@@ -15,6 +15,7 @@
 class tHexPoint;
 class tMetaMapHex;
 class tPoliticalTensionMatrix;
+class tPreparedMissions;
 
 namespace nAsyncDatabaseProcedure
 {
@@ -62,7 +63,8 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction35();
 		virtual void vfunction36();
 		virtual void vfunction37();
-		virtual void vfunction38();
+		// HYPOTHESIS: stores new prepared missions (0x00567270).
+		virtual void vfunction38( tPreparedMissions* missions );
 		virtual void vfunction39();
 		virtual void vfunction40();
 		virtual void vfunction41();
@@ -72,6 +74,26 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction45();
 		virtual void vfunction46();
 		virtual void vfunction47( nDatabase::tDatabaseObjectUpdate update );
+		virtual void vfunction48();
+		virtual void vfunction49();
+		virtual void vfunction50();
+		virtual void vfunction51();
+		virtual void vfunction52();
+		virtual void vfunction53();
+		virtual void vfunction54();
+		virtual void vfunction55();
+		// HYPOTHESIS: removes the prepared missions of a character (0x00567270); the slot
+		// tAsyncDatabaseSingle defines at this index takes the same arguments.
+		virtual void vfunction56( nDatabase::tID id, bool byCharacterID );
+		virtual void vfunction57();
+		virtual void vfunction58();
+		virtual void vfunction59();
+		virtual void vfunction60();
+		virtual void vfunction61();
+		virtual void vfunction62();
+		virtual void vfunction63();
+		// HYPOTHESIS: whether prepared missions exist for a character (0x00567270).
+		virtual bool vfunction64( nDatabase::tID id, bool byCharacterID );
 	};
 
 };

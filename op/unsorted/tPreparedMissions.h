@@ -15,6 +15,8 @@ class tPreparedMissions : public nDatabase::tDatabaseObject
 public:
 	// HYPOTHESIS: its allocator news 0x98 bytes and constructs it out of line.
 	tPreparedMissions();
+	// 0x00567270 calls the destructor out of line (0x0053ebd1).
+	virtual ~tPreparedMissions();
 	// HYPOTHESIS: a non-virtual accessor that returns a tID by value; 0x0056d9d3 queries on it.
 	nDatabase::tID fn_0053f22f() const;
 	// HYPOTHESIS: a non-virtual accessor that returns a tID; 0x0056d9d3 queries on it. The exe
