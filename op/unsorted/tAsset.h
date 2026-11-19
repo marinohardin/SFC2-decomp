@@ -40,8 +40,6 @@ class tStaticTextAsset : public tBoundAsset
 public:
 	virtual ~tStaticTextAsset();
 
-	// HYPOTHESIS: field types and names unknown.
-	unsigned char field_08[ 0x5c - 0x08 ];
 	short field_5C;	// HYPOTHESIS: the text's width
 	short field_5E;	// HYPOTHESIS: the text's height
 	tString field_60;	// HYPOTHESIS: the text
@@ -64,7 +62,7 @@ public:
 	virtual ~tSliderAsset();
 
 	// HYPOTHESIS: field types and names unknown; tScrollBar::mLoad (0x004c878a) reads these.
-	unsigned char field_08[ 0xb0 - 0x08 ];
+	unsigned char field_5C[ 0xb0 - 0x5c ];
 	short field_B0;	// HYPOTHESIS: the bar's width
 	short field_B2;	// HYPOTHESIS: the bar's height
 	int field_B4;	// HYPOTHESIS: identifies the thumb's image
