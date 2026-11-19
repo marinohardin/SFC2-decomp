@@ -683,6 +683,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if not a.ids and not a.all:
         ap.error('give a function id, or --all')
+    if a.jobs is not None and a.jobs < 1:
+        ap.error('--jobs must be 1 or more')
     if a.record and a.base:
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)

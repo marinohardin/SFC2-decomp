@@ -33,7 +33,7 @@ def five_units(tmp_path, monkeypatch):
                         lambda cfg, root, path: (path.rsplit('/', 1)[-1], {'name': 'test'}))
     matched.save(paths.MATCHED_SET, {'version': 1, 'functions': entries})
 
-    state = {'running': 0, 'most': 0}
+    state = {'running': 0, 'most': 0, 'barrier': None}
     lock = threading.Lock()
 
     def compile_unit(path, profile, src_root, build_root=None):
@@ -41,6 +41,14 @@ def five_units(tmp_path, monkeypatch):
         with lock:
             state['running'] += 1
             state['most'] = max(state['most'], state['running'])
+        b = state['barrier']
+        with lock:
+            first = b is not None and state.setdefault('waited', 0) < b.parties
+            if first:
+                state['waited'] += 1
+        if first:
+            # The first `parties` builds wait for each other, so the count does not rest on timing.
+            b.wait(timeout=5)
         time.sleep(0.05 * (len(UNITS) - UNITS.index(name)))
         with lock:
             state['running'] -= 1
@@ -69,6 +77,7 @@ def test_jobs_builds_that_many_units_at_once(five_units):
     verify.run([], check_all=True, jobs=1)
     assert five_units['most'] == 1
     five_units['most'] = 0
+    five_units['barrier'] = threading.Barrier(3)
     verify.run([], check_all=True, jobs=3)
     assert five_units['most'] == 3
 
@@ -97,3 +106,8 @@ def test_the_pool_does_not_import_the_queue_module():
     # sys.path (CI's test run): the pool must not depend on it.
     src = open(verify.__file__).read()
     assert 'import concurrent' not in src and 'from concurrent' not in src
+
+
+def test_jobs_below_one_is_refused():
+    with pytest.raises(SystemExit):
+        verify.main(['--all', '-j', '0'])
