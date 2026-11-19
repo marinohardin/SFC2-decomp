@@ -2998,6 +2998,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040ee47": {
+   "name": "tSFCTexMgrEx::scalar_deleting_destructor",
+   "symbol": "??_GtSFCTexMgrEx@@UAEPAXI@Z",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
