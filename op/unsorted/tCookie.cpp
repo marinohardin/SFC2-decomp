@@ -5,3 +5,9 @@ iTruth tCookie::operator==( const tCookie &other ) const
 {
 	return !( *this != other );
 }
+
+// FUNCTION: STARFLEETOP 0x00407c29
+iTruth tCookie::operator<( const tCookie &other ) const
+{
+	return fCookie < other.fCookie;
+}

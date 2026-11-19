@@ -37,6 +37,8 @@ public:
 	// 0x0061d8b0) calls it on a map pair's key with the cookie searched for, and takes a true
 	// result as a match.
 	virtual iTruth	operator==( const tCookie &other ) const;
+	// HYPOTHESIS: the fourth virtual (vtable +0x0c), an ordering of cookies by value.
+	virtual iTruth	operator<( const tCookie &other ) const;
 	// HYPOTHESIS: an inline comparison, as tVolume::mGetSortName's search takes the cookies'
 	// difference as a truth value before testing it.
 	iTruth	operator!=( const tCookie &other ) const	{ return fCookie != other.fCookie; }
