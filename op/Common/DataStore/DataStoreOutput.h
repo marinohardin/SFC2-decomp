@@ -108,6 +108,13 @@ tOutput& tOutput::operator<<( bool value )
 	return *this;
 }
 
+tOutput& tOutput::operator<<( int8u value )
+{
+	Put( value );
+
+	return *this;
+}
+
 #ifdef DATASTORE_INLINE_NUMBER_WRITE
 tOutput& tOutput::operator<<( int32u value )
 {

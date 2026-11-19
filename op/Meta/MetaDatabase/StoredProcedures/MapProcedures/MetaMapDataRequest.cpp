@@ -5,13 +5,13 @@
 #include "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.h"
 #include "Common/Exceptions/Validate.h"
 #include "unsorted/tMetaMapHex.h"
+#include "Common/DataStore/DataStoreOutput.h"
+
+
+
+
 
 // The blank lines below keep the original's line numbers, which the assertions carry.
-
-
-
-
-
 
 
 
@@ -56,6 +56,12 @@ tMetaMapDataRequest::tResponse::tClientHex::tClientHex( tMetaMapHex& hex, int32 
 tMetaMapDataRequest::tResponse::tClientHex::tClientHex() :
 	tStreamable( 1 )
 {
+}
+
+// FUNCTION: STARFLEETOP 0x0054bf57
+void tMetaMapDataRequest::tResponse::tClientHex::StreamOut( nDataStore::tOutput& output ) const
+{
+	output << m_0c << m_0d << m_10 << m_14 << m_15 << m_28 << m_29 << m_2a << (int8u)(m_24 * 100.0f);
 }
 
 }

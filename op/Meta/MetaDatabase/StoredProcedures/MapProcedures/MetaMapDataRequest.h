@@ -32,6 +32,8 @@ namespace nStoredProcedureArguments
 				tClientHex();
 				tClientHex( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
 
+				virtual	void StreamOut( nDataStore::tOutput& output ) const;
+
 				void fn_0054c0d5();
 
 				int8u	m_0c;
