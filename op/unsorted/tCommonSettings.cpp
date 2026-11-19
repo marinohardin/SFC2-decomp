@@ -12,3 +12,8 @@ tCommonSettings::tCommonSettings()
 	: tSettings( std::string( "CommonSettings.gf" ) )
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0040c904
+tCommonSettings::~tCommonSettings()
+{
+}
