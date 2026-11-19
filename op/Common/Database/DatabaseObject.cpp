@@ -282,4 +282,16 @@ void tDatabaseObject::RemoveFromDB()
 		fLockEvent->Signal();
 }
 
+#line 213
+// FUNCTION: STARFLEETOP 0x006fb3f0
+void tDatabaseObject::UnLock()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	validate( fLockEvent );
+	fLockID = 0;
+	fLockEvent->Signal();
+	RemoveReference();
+}
+
 }

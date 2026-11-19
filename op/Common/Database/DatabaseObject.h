@@ -69,6 +69,9 @@ protected:
 //Operations
 	virtual void AttachToDB( const tID& id );
 	virtual void RemoveFromDB();
+	// HYPOTHESIS: the SDK's parameter type is tDatabase::iLockID, see SetLockID.
+	virtual bool Lock( int32u lockId );
+	virtual void UnLock();
 
 //Fields
 	mutable tOptex fAccess;
