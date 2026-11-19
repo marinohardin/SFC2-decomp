@@ -37441,6 +37441,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f6b80": {
+   "name": "tSettings::~tSettings",
+   "symbol": "??1tSettings@@UAE@XZ",
+   "unit": "Common/Settings.cpp",
+   "size": 224,
+   "score": 53.025,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
