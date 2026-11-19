@@ -82,6 +82,15 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x00401862": {
+   "name": "tFighterSpec::tFighterSpec",
+   "symbol": "??0tFighterSpec@@QAE@XZ",
+   "unit": "unsorted/tFighterSpec.cpp",
+   "size": 253,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004021b8": {
    "name": "FUN_004021b8",
    "symbol": "?fn_004021b8@fn_004021b8_Stream@@QAEXXZ",
