@@ -49,7 +49,7 @@ jobs:
           # The runner is a Mac with the native compiler installed; the image is the compiler
           # of record, so CI rebuilds with it.
           HARNESS_COMPILER: docker
-          # Every unit compiled and every function scored: the check is also a check of the
-          # harness's build and score caches (harness/README.md, "Caches").
+          # Every unit compiled and every function scored afresh: no cached build or score
+          # stands in CI's result (harness/README.md, "Caches").
           HARNESS_NO_CACHE: "1"
         run: nice -n 5 sh scripts/check.sh
