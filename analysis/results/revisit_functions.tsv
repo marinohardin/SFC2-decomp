@@ -383,3 +383,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00401d13	tFighterSpecMgr::~tFighterSpecMgr	8.27	2	opus	2026-11-19T19:55:07Z	attempt 2 (opus) did not raise the best; best 8.27%
 0x00407c3a	tPath::tPath	99.61	2	opus	2026-11-19T19:58:46Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.61%
 0x00407c5b	tCookie::tCookie	99.50	2	opus	2026-11-19T20:01:22Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.50%
+0x00407d14	tDynamicMemoryFreeList::scalar_deleting_destructor	85.83	2	opus	2026-11-19T20:06:58Z	best not above 90% after 2 attempts; best 85.83%
