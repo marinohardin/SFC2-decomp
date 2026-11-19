@@ -3,14 +3,16 @@
 #include "Common/Exceptions/Validate.h"
 
 #include "unsorted/tRequestWithResponse.h"
-
-// HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
+#include "unsorted/tMissionProfile.h"
+#include <vector>
+// HYPOTHESIS: the class layout below is reconstructed from the function's accesses only; the
+// second read calls the vector operator>> emitted at 0x0053d754 among tMissionProfile's code.
 class tReadyToPlayRequest : public tRequestWithResponse
 {
 public:
 	virtual void vfunction3( nDataStore::tInput& input );
 	int32u fA;
-	int32u fB;
+	std::vector< tMissionProfile::tMissionInfo > fB;
 };
 
 // FUNCTION: STARFLEETOP 0x005517de

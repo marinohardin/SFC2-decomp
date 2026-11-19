@@ -19455,8 +19455,8 @@
    "symbol": "?vfunction3@tReadyToPlayRequest@@UAEXAAVtInput@nDataStore@@@Z",
    "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/ReadyToPlayRequest.cpp",
    "size": 121,
-   "score": 90.0,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x0056c414": {
