@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kNotifyScriptEvent.cpp
-// Functions: 0x004101c8 to 0x004102a0, 11 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+extern char g_0083bddc[];
+
+class tNetMsg_kNotifyScriptEvent
+{
+public:
+	virtual void vfunction0();
+	virtual void* vfunction1();
+};
+
+// HYPOTHESIS: returns the address of a static descriptor of the message class
+// FUNCTION: STARFLEETOP 0x004101c8
+void* tNetMsg_kNotifyScriptEvent::vfunction1()
+{
+	return g_0083bddc;
+}

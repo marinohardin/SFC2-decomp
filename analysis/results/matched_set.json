@@ -3277,6 +3277,15 @@
    "exact": true,
    "recorded": "2026-11-08"
   },
+  "0x004101c8": {
+   "name": "tNetMsg_kNotifyScriptEvent::vfunction1",
+   "symbol": "?vfunction1@tNetMsg_kNotifyScriptEvent@@UAEPAXXZ",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004105dd": {
    "name": "tPhysicalEntity::vfunction28",
    "symbol": "?vfunction28@tPhysicalEntity@@UAEXH@Z",
