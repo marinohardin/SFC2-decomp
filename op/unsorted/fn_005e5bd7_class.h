@@ -9,6 +9,7 @@
 #define fn_005e5bd7_class_h
 
 #include "Common/BaseTypes.h"
+#include "unsorted/tAddressMgr.h"
 
 class fn_005e5bd7_class
 {
@@ -20,7 +21,8 @@ public:
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
-	virtual void vfunction7();
+	// HYPOTHESIS: returns an address by value (the map initialize procedure's newAddress).
+	virtual tSmartPtr<tObject_005d3679> vfunction7();
 	virtual int32 vfunction8( int32 param_1 );
 
 	void fn_005e5bd7( int32 param_1 );

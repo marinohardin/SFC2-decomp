@@ -21,7 +21,7 @@ namespace nAsyncClientMapProcedures
 		void fn_005dfb86( const nDataStore::tBuffer* buffer );
 		void fn_005dfc37( const nDataStore::tBuffer* buffer );
 		void fn_005dfdab( const nDataStore::tBuffer* buffer );
-
+		virtual void vfunction5();
 	protected:
 		// Name from the original's validate text.
 		tSmartPtr<tObject_005d3679> fpMapRelayAddress;
@@ -119,4 +119,55 @@ void tInitialize::fn_005dfdab( const nDataStore::tBuffer* buffer )
 	input >> response;
 
 	fn_00719050();
+}
+
+#include "unsorted/nStoredProcedureArguments__tLogonInformationRequest.h"
+#include "unsorted/nStoredProcedureArguments__tMetaMapDataRequest.h"
+#include "unsorted/tNotifierAgent.h"
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x005dfe22
+void tInitialize::vfunction5()
+{
+	tSmartPtr<tObject_005d3679> newAddress = fpMyRelay->vfunction7();
+
+	tLogonInformationRequest logonRequest( 3 );
+	validate( newAddress );
+	field_1c->fn_00714020( newAddress, 5, &logonRequest );
+
+
+
+
+
+
+
+
+
+
+	tMetaMapDataRequest dataRequest( newAddress, 2, -1, -1 );
+	validate( fpMapRelayAddress );
+	field_1c->fn_00714020( fpMapRelayAddress, 3, &dataRequest );
+
+
+
+
+
+
+
+
+
+	tNotifierAgent agent;
+	agent.fn_005cc6db( fpMyRelay->vfunction8( 3 ) );
+
+	validate( newAddress );
+	field_1c->fn_00714000( newAddress, 6, NULL );
+	agent.fn_005cc674( fpMyRelay->vfunction8( 6 ) );
 }

@@ -22,6 +22,13 @@ namespace nSwitch
 	public:
 		tAsyncProcedure();
 		virtual ~tAsyncProcedure();
+		// Slots 1 to 5 from the derived procedures' vtables (0x007b4de8): slots 3 and 4 are an
+		// empty function the map initialize procedure overrides slot 4 of.
+		virtual void vfunction2( int16 param_1, int32 param_2 );
+		virtual void vfunction3();
+		virtual void vfunction4();
+		virtual void vfunction5();
+		virtual int32 vfunction6();
 
 		// HYPOTHESIS: registers a callback for a message kind; called with 2 by the client
 		// news procedures.

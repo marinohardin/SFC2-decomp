@@ -21,6 +21,9 @@ namespace nSwitch
 	{
 	public:
 		static tSwitch* fn_00713b20();
+		// HYPOTHESIS: a second send taking the same arguments; the map initialize procedure
+		// passes NULL for the object.
+		void fn_00714000( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
 		void fn_00714020( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
 	};
 
