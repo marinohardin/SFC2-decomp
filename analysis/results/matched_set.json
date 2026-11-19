@@ -35911,6 +35911,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00678db0": {
+   "name": "tControlAsset::~tControlAsset",
+   "symbol": "??1tControlAsset@@UAE@XZ",
+   "unit": "unsorted/tControlAsset.cpp",
+   "size": 239,
+   "score": 26.293,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
