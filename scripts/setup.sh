@@ -1,7 +1,7 @@
 #!/bin/sh
 # One-time setup of a clone for matching work. Checks the prerequisites, links your own Orion
 # Pirates install (patched to 2.5.5.2) where the tools read it, checks its files against the known
-# hashes, builds the VC6 compiler image and fetches objdiff.
+# hashes, builds the VC6 compiler image, fetches the native compiler on macOS and fetches objdiff.
 #
 # Usage: sh scripts/setup.sh --install "/path/to/Starfleet Command Orion Pirates"
 #        sh scripts/setup.sh            (the install is already linked)
@@ -50,6 +50,11 @@ if docker image inspect "${SFCOP_MSVC_IMAGE:-sfcop-msvc6:latest}" >/dev/null 2>&
 else
     echo "setup: building the VC6 image (downloads the compiler; a few minutes)"
     sh toolchain/build-image.sh
+fi
+
+if [ "$(uname -s)" = Darwin ]; then
+    echo "setup: fetching the native compiler (wibo and VC6 into tools/; the harness uses it)"
+    sh toolchain/fetch-native.sh
 fi
 
 echo "setup: calibrating (fetches objdiff, then compiles the SDK sources and compares them)"

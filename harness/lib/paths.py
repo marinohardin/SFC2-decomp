@@ -6,6 +6,7 @@ files.
 """
 import hashlib
 import os
+import platform
 import subprocess
 
 HARNESS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,7 +51,28 @@ FUNCTIONS_CSV = env_path('HARNESS_FUNCTIONS', os.path.join(REPO, 'ghidra', 'expo
 # Extra name -> address evidence for relocation checks (SDK library matches).
 SYMBOL_TSVS = [os.path.join(REPO, 'analysis', 'results', n) for n in
                ('StarFleetOP_2552_sdklib_fuzzy.tsv', 'StarFleetOP_2552_sdklib_fuzzy_data.tsv')]
-CL = os.path.join(REPO, 'toolchain', 'bin', 'cl')
+CL_DOCKER = os.path.join(REPO, 'toolchain', 'bin', 'cl')
+CL_NATIVE = os.path.join(REPO, 'toolchain', 'bin', 'cl-native')
+
+
+def pick_cl(env, tools, system):
+    """The compiler wrapper the harness runs. HARNESS_COMPILER=docker or native forces one;
+    otherwise (auto) the native one when toolchain/fetch-native.sh has installed it on macOS,
+    else the Docker image. Both score every claimed function the same (toolchain/README.md)."""
+    choice = env.get('HARNESS_COMPILER', 'auto')
+    if choice in ('docker', 'native'):
+        return CL_DOCKER if choice == 'docker' else CL_NATIVE
+    if choice != 'auto':
+        raise ValueError(f'HARNESS_COMPILER must be auto, docker or native, not {choice!r}')
+    tools = env.get('SFCOP_TOOLS') or tools
+    native = (system == 'Darwin'
+              and os.access(os.path.join(tools, 'wibo', '1.2.0', 'wibo-macos'), os.X_OK)
+              and all(os.path.isfile(os.path.join(tools, 'msvc6', f'msvc{v}', 'Bin', 'CL.EXE'))
+                      for v in ('6.4', '6.5')))
+    return CL_NATIVE if native else CL_DOCKER
+
+
+CL = pick_cl(os.environ, TOOLS, platform.system())
 OBJDIFF = env_path('OBJDIFF', os.path.join(TOOLS, 'objdiff', 'objdiff-cli-macos-arm64'))
 
 # Committed results, written only by update-matched-set.sh and queue.py. They live in

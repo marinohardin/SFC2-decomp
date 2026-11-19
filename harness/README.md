@@ -58,8 +58,10 @@ An interrupted run (Ctrl-C) can leave the units' compile containers running unti
    compiled in the unit `op/UNITS.tsv` assigns to its address, which must include the header,
    directly or through other headers; anything else is an error (`lib/claims.py`, shared with
    `tools/manifest.py`).
-2. Compiles that unit with `toolchain/bin/cl` and the unit's profile from `units.json`, adding
-   only output paths and `/FAs`. The listing tells which compiled symbol follows the annotation;
+2. Compiles that unit with the unit's profile from `units.json`, adding only output paths and
+   `/FAs`. The compiler is `toolchain/bin/cl-native` when `toolchain/fetch-native.sh` has
+   installed it, else `toolchain/bin/cl` (`HARNESS_COMPILER=docker` or `native` forces one; see
+   `toolchain/README.md`, "Native compiler"). The listing tells which compiled symbol follows the annotation;
    for a header claim, the header's line records in the unit's listing do. An inline
    destructor's deleting destructor, whose listing may have no line records, is the `??_G` /
    `??_E` whose mangled class is the class named on the definition.
