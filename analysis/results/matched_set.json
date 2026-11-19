@@ -37900,6 +37900,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fc090": {
+   "name": "nDatabase::tDatabaseObject::StreamIn",
+   "symbol": "?StreamIn@tDatabaseObject@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

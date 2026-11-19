@@ -1,11 +1,11 @@
 // Common/Database/DatabaseObject.cpp
 #define DATASTORE_INLINE_NUMBER_WRITE	// MATCH-ONLY: StreamOut inlines the int32u write
+#define DATASTORE_BUFFER_READ_LINE	// MATCH-ONLY: StreamIn's inlined read throws with the original's line
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Exceptions/Validate.h"
 #include "Common/OSVersion.h"
 #include "Common/Thread/Optex.inl"
 #include "Common/Log/LogStream.h"
-
 inline tOptex::~tOptex()
 {
 	if( fUse != tThreadState::kIgnoreThreadObject )
@@ -376,6 +376,7 @@ void tDatabaseObject::CheckForDeath()
 
 // The include sits here so the line records of the functions above stay as they are.
 #include "Common/DataStore/DataStoreOutput.h"
+#include "Common/DataStore/DataStoreInput.h"
 
 namespace nDatabase
 {
@@ -384,6 +385,12 @@ namespace nDatabase
 void tDatabaseObject::StreamOut( nDataStore::tOutput& output ) const
 {
 	output << fID << fLockID;
+}
+
+// FUNCTION: STARFLEETOP 0x006fc090
+void tDatabaseObject::StreamIn( nDataStore::tInput& input )
+{
+	input >> fID >> fLockID;
 }
 
 }
