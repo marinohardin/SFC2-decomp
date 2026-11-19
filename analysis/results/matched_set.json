@@ -1315,6 +1315,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x0040a5b9": {
+   "name": "tSystemCreationInfo::tSystemCreationInfo",
+   "symbol": "??0tSystemCreationInfo@@QAE@XZ",
+   "unit": "unsorted/tSystemCreationInfo.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",

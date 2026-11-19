@@ -1,6 +1,18 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSystemCreationInfo.cpp
-// Functions: 0x0040a5b9 to 0x0040a5d8, 3 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+class tSystemCreationInfo {
+public:
+	tSystemCreationInfo();
+	virtual ~tSystemCreationInfo();
+	long m04;
+	long m08;
+	long m0c;
+	long m10;
+};
+
+// FUNCTION: STARFLEETOP 0x0040a5b9
+tSystemCreationInfo::tSystemCreationInfo()
+{
+	m0c = -1;
+	m10 = 0;
+	m04 = 0;
+	m08 = 0;
+}
