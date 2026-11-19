@@ -115,7 +115,7 @@ def _flags(profile, src_root):
 def _stop_group(p, grace=5):
     """Stop a process started with start_new_session and everything it started: TERM first, so
     a wrapper's cleanup trap runs, then KILL."""
-    for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, None)):
+    for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, grace)):
         try:
             os.killpg(p.pid, sig)
         except ProcessLookupError:
@@ -154,6 +154,11 @@ def compile_unit(unit_path, profile, src_root, build_root=None):
         _stop_group(p)
         subprocess.run(['docker', 'kill', cname], capture_output=True)
         log, rc = f'compile killed after {COMPILE_TIMEOUT}s', -1
+    except BaseException:
+        # Ctrl-C reaches only the harness now that the compile has its own group: stop it too.
+        _stop_group(p)
+        subprocess.run(['docker', 'kill', cname], capture_output=True)
+        raise
     obj = os.path.join(out, base + '.obj')
     listing = os.path.join(out, base + '.asm')
     with open(os.path.join(out, 'cl.log'), 'w') as f:

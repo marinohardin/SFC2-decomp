@@ -115,6 +115,9 @@ Checked on 2026-11-19 against the image, over every unit with a claim (158):
 - 133 objects were byte-identical apart from the COFF timestamp. The other 25 hold the same
   sections, bytes and relocations, but list some COMDAT data sections (RTTI records) in another
   order. Each compiler is deterministic: a second run of either reproduced its own objects.
+  So the native compiler is for the harness's per-function scores only: anything that links
+  objects or compares whole objects (a link, a consumer of `docs/INTERFACE.md`) uses the
+  image's `toolchain/bin/cl`.
 - Total compile time for the 158 units fell from 842 s to 90 s, and a full verify from 410 s to
   215 s; most of what is left is objdiff.
 

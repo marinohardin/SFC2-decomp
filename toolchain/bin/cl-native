@@ -27,6 +27,8 @@ work=${SFCOP_WORK:-$root/work}
 mkdir -p "$work/toolchain/tmp"
 tmp=$(mktemp -d "$work/toolchain/tmp/cl.XXXXXX") || exit 2
 trap 'rm -rf "$tmp"' EXIT
+# sh runs these traps only once wibo has exited, so stopping this wrapper alone does not stop
+# the compiler: signal the whole process group (the harness does, with killpg).
 trap 'exit 143' TERM
 trap 'exit 130' INT
 INCLUDE="${MSVC_EXTRA_INCLUDE:+$MSVC_EXTRA_INCLUDE;}Z:$msvc/Include"
