@@ -19666,6 +19666,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0056403d": {
+   "name": "FUN_0056403d",
+   "symbol": "?fn_0056403d@tLogOffCharacter@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
+   "size": 620,
+   "score": 0.549,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
