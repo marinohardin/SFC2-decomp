@@ -29,6 +29,11 @@ public:
 #pragma pack(pop)
 };
 
+// MATCH-ONLY: the original inlines this destructor into the derived ones.
+inline tAsset::~tAsset()
+{
+}
+
 // The layouts below come from the asset factory fn_00676a30, which inlines most constructors;
 // the sizes are the ones it allocates.
 #pragma pack(push, 1)
