@@ -5,6 +5,8 @@
 
 #include "Tiger/tFile.h"
 #include "unsorted/tListBox_Base.h"	// HYPOTHESIS: g_00c69100 is declared there for now
+#include "unsorted/c_00692f60_Error.h"
+#include <string.h>
 #include <vector>
 #include <map>
 
@@ -94,6 +96,7 @@ public:
 	virtual ~tCastMgr();
 	void fn_00675d90();
 	int fn_00675f90( unsigned int limit, int base );
+	unsigned char fn_00675fe0( unsigned int pos );
 
 	char	field_04[0x104];
 	tBufFile	field_108;
@@ -101,6 +104,15 @@ public:
 	std::vector<void *>	field_170;
 	fn_00675db0_map	field_180;
 	fn_00675db0_vector	field_194;
+	int	field_1a4;
+};
+
+// HYPOTHESIS: the 0x34-byte entries of field_194: a file name, then its length at +0x30.
+struct fn_00675fe0_Entry
+{
+	tString	name;
+	char	field_28[0x8];
+	unsigned int	length;
 };
 
 // FUNCTION: STARFLEETOP 0x00675db0
@@ -163,4 +175,50 @@ int tCastMgr::fn_00675f90( unsigned int limit, int base )
 		total = next;
 	}
 	return base;
+}
+
+// HYPOTHESIS: makes the cast file holding position pos current: finds the entry of field_194
+// whose running length reaches pos and, when its number differs from field_1a4, closes field_108
+// and opens the entry's file there by its name without the directory. Throws when it fails.
+// FUNCTION: STARFLEETOP 0x00675fe0
+unsigned char tCastMgr::fn_00675fe0( unsigned int pos )
+{
+	fn_00675fe0_Entry* e = (fn_00675fe0_Entry*)field_194._First;
+	unsigned int total = 0;
+	int index = 1;
+	for ( ; e != (fn_00675fe0_Entry*)field_194._Last; e++, index++ )
+	{
+		unsigned int next = total + e->length;
+		total = next;
+		if ( pos <= next )
+		{
+			if ( index != field_1a4 )
+			{
+				tBufFile* file = &field_108;
+				file->mClose();
+				tString name( e->name + ".q3");
+				tString path( name.mCharStr() );
+				tString::iterator it = path.mStrRChr( '\\' );
+				if ( it != path.end() )
+				{
+					tString tail( it + 1 );
+					path = tail;
+				}
+				char* dest = field_04;
+				strcpy( dest, path.mCharStr() );
+				if ( !file->mOpenForRead( dest ) )
+				{
+					int id = fn_006741e0( "tQ3Error_Q3CAST_OpeningFile" );
+					static tString sEmpty( g_0083b344 );
+					tString text( g_00c690d0 ? g_00c690d0->fn_006740f0( id ) : sEmpty );
+					text += " ";
+					text += dest;
+					throw c_00692f60_Error( text, 1 );
+				}
+				field_1a4 = index;
+			}
+			return 1;
+		}
+	}
+	return 0;
 }
