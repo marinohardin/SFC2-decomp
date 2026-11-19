@@ -34,6 +34,7 @@ tLogOffCharacter::tLogOffCharacter( tAsyncDatabase* pDB ) : tAsyncDatabaseProced
 }
 
 // FUNCTION: STARFLEETOP 0x00564016
+// FUNCTION: STARFLEETOP 0x00564032
 tLogOffCharacter::~tLogOffCharacter()
 {
 }
