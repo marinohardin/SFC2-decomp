@@ -132,6 +132,13 @@ tInput& tInput::operator>>( bool& value )
 	return *this;
 }
 
+tInput& tInput::operator>>( int8u& value )
+{
+	value = Get();
+
+	return *this;
+}
+
 #ifdef DATASTORE_INLINE_NUMBER_READ
 tInput& tInput::operator>>( int32u& value )
 {

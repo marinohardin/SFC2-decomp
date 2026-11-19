@@ -6,8 +6,8 @@
 #include "Common/Exceptions/Validate.h"
 #include "unsorted/tMetaMapHex.h"
 #include "Common/DataStore/DataStoreOutput.h"
-
-
+#define DATASTORE_OUT_OF_LINE_GET	// MATCH-ONLY: the original calls the out-of-line copy of tInput::Get (0x0042a309)
+#include "Common/DataStore/DataStoreInput.h"
 
 
 
@@ -62,6 +62,30 @@ tMetaMapDataRequest::tResponse::tClientHex::tClientHex() :
 void tMetaMapDataRequest::tResponse::tClientHex::StreamOut( nDataStore::tOutput& output ) const
 {
 	output << m_0c << m_0d << m_10 << m_14 << m_15 << m_28 << m_29 << m_2a << (int8u)(m_24 * 100.0f);
+}
+
+// FUNCTION: STARFLEETOP 0x0054c025
+void tMetaMapDataRequest::tResponse::tClientHex::StreamIn( nDataStore::tInput& input )
+{
+	iObjectVersion version = fObjectVersion;
+	fObjectVersion = 1;
+
+	int8u value;
+
+	switch( version )
+	{
+		case 0:
+			input >> m_0c >> m_10 >> m_14 >> m_15 >> m_28 >> m_29 >> m_2a >> value;
+			break;
+
+		case 1:
+			input >> m_0c >> m_0d >> m_10 >> m_14 >> m_15 >> m_28 >> m_29 >> m_2a >> value;
+			break;
+	}
+
+	m_24 = value * 0.01f;
+
+	fn_0054c0d5();
 }
 
 }
