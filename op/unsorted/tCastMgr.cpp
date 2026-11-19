@@ -238,6 +238,9 @@ void fn_00676a00( unsigned short* p )
 
 // HYPOTHESIS: makes an empty asset of the kind type names; id is stored in it (field_04).
 // Kinds 2, 6, 7, 14, 19 and 20 make nothing.
+// The original calls the base constructors out of line in some cases and expands them in others:
+// tVisGroupAsset (0x0067acf0) in kind 17, tControlAsset (0x00678ce0) in 15 and 16, tBoundAsset
+// (0x00678160) in 21 and 25, tBmpAsset (0x00678ae0) in 26; it expands tStaticTextAsset.
 // FUNCTION: STARFLEETOP 0x00676a30
 tAsset* fn_00676a30( unsigned short type, int id )
 {
@@ -254,11 +257,11 @@ tAsset* fn_00676a30( unsigned short type, int id )
 		case 22:
 			asset = new tCastItem;
 			break;
-		case 3:
-			asset = new tVisGroupAsset;
-			break;
 		case 17:
 			asset = new tRadioGroupAsset;
+			break;
+		case 3:
+			asset = new tVisGroupAsset;
 			break;
 		case 8:
 			asset = new tPushBtnAsset;
