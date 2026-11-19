@@ -73,7 +73,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00668970	tBasicSoundFileManager::mParseAllSoundsFile	1.94	2	sonnet	2026-11-16T21:22:10Z	best not above 90% after 2 attempts; best 1.94%
 0x00661fa0	tAudioPriorityManagerPart::mAreWeAllowedToPlay	6.71	2	sonnet	2026-11-16T22:33:46Z	attempt 2 (sonnet) did not raise the best; best 6.71%
 0x0048628e	FUN_0048628e	0.00	2	sonnet	2026-11-16T16:37:50Z	attempt 2 (sonnet) did not raise the best; best 0.00%
-0x0044715d	FUN_0044715d	99.72	2	sonnet	2026-11-17T06:44:30Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.72%
 0x004472bc	FUN_004472bc	99.81	2	sonnet	2026-11-17T06:51:06Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.81%
 0x00447af2	FUN_00447af2	5.00	2	sonnet	2026-11-17T07:23:31Z	best not above 90% after 2 attempts; best 5.00%
 0x00447b11	FUN_00447b11	0.00	2	sonnet	2026-11-17T07:26:22Z	attempt 2 (sonnet) did not raise the best; best 0.00%
