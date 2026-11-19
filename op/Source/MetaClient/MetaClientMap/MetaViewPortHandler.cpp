@@ -20,8 +20,8 @@ inline tOptex::tGuard::~tGuard()
 // HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it returns what 0x004d4728 finds for a group and a control name.
 void fn_004d353e( long arg1, long arg2 );
 extern const char* g_0087632c; // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
-// HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown.
-class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > > field_60; unsigned char field_78[ 0x18c - 0xfc - 0x78 ]; };
+// HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown. The wrapper at +0x78 (0x174 in the panel) holds an object of unknown type whose 0x005e907e takes the panel's argument (0x005e6469).
+class fn_005e907e_object { public: void fn_005e907e( long arg ); }; class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > > field_60; tSingleAccessWrapper< fn_005e907e_object > field_78; };
 // HYPOTHESIS: a cursor over the list at 0x1b8 (node pointer, list pointer) and the receiver of its result.
 class tMetaClientMapCursor { public: long fn_005e9cb0(); void* fNode; tMetaClientMapSub* fList; };
 class tMetaClientMapMember { public: void fn_005b69b0( void* source ); unsigned char field_0[ 0x14 ]; }; class tMetaClientMapReceiver { public: tMetaClientMapReceiver* fn_005e5ba6( long arg ); long field_0; tMetaClientMapMember field_4; tMetaClientMapMember field_18; long field_2c; };
@@ -55,6 +55,7 @@ public:
 	void fn_005e620c( long x, long y, bool* changed ); // HYPOTHESIS: 0x005e65e5 tests a position and 0x005e7925 turns it into a hex; argument types are not recovered.
 	bool fn_005e65e5( long x, long y );
 	void fn_005e62c4( const fn_005ea9ce_elem& entry );
+	void fn_005e6469( long arg );
 	tHexPoint fn_005e7925( long x, long y, int arg );
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
@@ -76,7 +77,7 @@ void tMetaClientMapPanel::vfunction19()
 		fpMetaMapControl = dynamic_cast<tMetaMapControl*>( ( (tVisObject* (*)( long, long )) fn_004d353e )( (long) g_0087632c, (long) "FakeMap" ) );
 #line 316
 		validate( fpMetaMapControl );
-#line 79
+#line 80
 	}
 	fpMetaMapControl->fn_005e3148( field_1a0 );
 	fpMetaMapControl->fn_005e3ad8();
@@ -397,4 +398,14 @@ void tMetaClientMapPanel::fn_005e62c4( const fn_005ea9ce_elem& entry )
 	if( std::find_if( ( *list ).begin(), ( *list ).end(), match ) == ( *list ).end() )
 		( *list ).push_back( entry );
 	list.Done();
+}
+
+// FUNCTION: STARFLEETOP 0x005e6469
+void tMetaClientMapPanel::fn_005e6469( long arg )
+{
+	tOptex::tGuard guard( &field_dc );
+	tSingleAccessWrapper< fn_005e907e_object >::iPtr object = field_fc.field_78.Lock();
+
+	( *object ).fn_005e907e( arg );
+	object.Done();
 }
