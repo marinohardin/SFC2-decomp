@@ -43,4 +43,10 @@ void tBaseException::ReportException( const char* caughtDescription ) throw()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006fd5f0
+const char* tBaseException::GetDescription() throw()
+{
+	return what();
+}
+
 };
