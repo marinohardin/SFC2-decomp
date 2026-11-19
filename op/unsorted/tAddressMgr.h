@@ -23,6 +23,7 @@ public:
 	static tAddressMgr* Instance();
 
 	tSmartPtr<tObject_005d3679> GetNewsRelayAddress();
+	tSmartPtr<tObject_005d3679> GetMapRelayAddress();
 };
 
 #endif

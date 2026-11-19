@@ -23959,6 +23959,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005dfa31": {
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>",
+   "symbol": "??0tInitialize@nAsyncClientMapProcedures@@QAE@PAX@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 247,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005e2501": {
    "name": "FUN_005e2501",
    "symbol": "?fn_005e2501@fn_005e2501_class@@QAEXXZ",
