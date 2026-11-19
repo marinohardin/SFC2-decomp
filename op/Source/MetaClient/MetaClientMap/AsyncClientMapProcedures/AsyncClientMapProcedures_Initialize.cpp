@@ -2,6 +2,9 @@
 #include "Common/MemberCallback.h"
 #include "Common/Exceptions/Validate.h"
 #include "unsorted/tAddressMgr.h"
+#include "Switch/Switch.h"
+#include "Common/Log/LogStream.h"
+#include "unsorted/nStoredProcedureArguments__tMetaMapSizeRequest.h"
 
 namespace nAsyncClientMapProcedures
 {
@@ -34,10 +37,7 @@ tMemberCallback<tnMemberClass,tnResult>::tMemberCallback<tnMemberClass,tnResult>
 {}
 
 using namespace nAsyncClientMapProcedures;
-
-
-
-
+using namespace nStoredProcedureArguments;
 
 // FUNCTION: STARFLEETOP 0x005dfa31
 tInitialize::tInitialize( void* pMyRelay ) :
@@ -55,4 +55,28 @@ tInitialize::tInitialize( void* pMyRelay ) :
 // FUNCTION: STARFLEETOP 0x005dfb44
 tInitialize::~tInitialize()
 {
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x005dfb86
+void tInitialize::fn_005dfb86( const nDataStore::tBuffer* buffer )
+{
+	nLog::info << "MetaClient: kInitialize (Map)" << nLog::report;
+
+	tMetaMapSizeRequest request( fn_00719490( fn_00719580( 1 ) ) );
+
+	fn_00719050();
+
+	validate( fpMapRelayAddress );
+	field_1c->fn_00714020( fpMapRelayAddress, 2, &request );
 }

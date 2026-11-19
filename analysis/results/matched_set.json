@@ -23986,6 +23986,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x005dfb86": {
+   "name": "FUN_005dfb86",
+   "symbol": "?fn_005dfb86@tInitialize@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 177,
+   "score": 99.907,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x005e2501": {
    "name": "FUN_005e2501",
    "symbol": "?fn_005e2501@fn_005e2501_class@@QAEXXZ",
