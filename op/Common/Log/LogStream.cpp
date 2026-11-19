@@ -1,6 +1,19 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Log/LogStream.cpp
-// Functions: 0x006fe4f0 to 0x006fef00, 13 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// Common/Log/LogStream.cpp
+
+#include "Common/BaseTypes.h"
+#include "Common/Thread/ThreadState.h"
+
+#include "Common/Log/LogStream.h"
+
+namespace nLog
+{
+
+// FUNCTION: STARFLEETOP 0x006fe4f0
+tLogStream::tStreamBuf::tStreamBuf( tLog* eventLog )
+	: fLog( eventLog )
+	, fEventType( tLog::kErrorEvent )
+	, fLockType( false )
+	, fAccess( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
+{}
+
+};
