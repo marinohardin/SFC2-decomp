@@ -3958,6 +3958,25 @@ address	size	symbol	source	modes
 0x00671110	21	_GetCharInfo(unsigned short,unsigned long)	Tiger/tFontmgr.cpp	vc6 guest
 0x00671130	122	_GetCharHeight(unsigned long,unsigned short)	Tiger/tFontmgr.cpp	vc6 guest
 0x006729e0	16	TextStreamCompress(char *,tSFCStream &)	Source/Common/sfcstreams.cpp	vc6 guest
+0x00675060	30	tSurface::`scalar deleting destructor'	unsorted/tSurface.cpp	vc6
+0x00675080	315	tSurface::tSurface(short,short,int,int,int,unsigned char,unsigned char)	unsorted/tSurface.cpp	vc6
+0x006751c0	139	tSurface::tSurface(void *,short,short,short,short,int,unsigned char,unsigned char)	unsorted/tSurface.cpp	vc6
+0x00675250	40	tSurface::~tSurface()	unsorted/tSurface.cpp	vc6
+0x00675280	485	tSurface::fn_00675280(c_tScrollBar_FieldA8 *,int,int,const tRect *,int,int)	unsorted/tSurface.cpp	vc6 guest
+0x00675470	319	tSurface::fn_00675470(int,const tRect *,unsigned char,int,int)	unsorted/tSurface.cpp	vc6 guest
+0x006755b0	571	tSurface::fn_006755b0(int,const tRect *,const tRect *,unsigned char,int,int)	unsorted/tSurface.cpp	vc6 guest
+0x006757f0	525	tSurface::fn_006757f0(int,int,int,int,int,int,const tRect *)	unsorted/tSurface.cpp	partial
+0x00675a00	317	tSurface::vfunction8(const tRect *)	unsorted/tSurface.cpp	vc6 guest
+0x00675b80	100	tAsset::tAsset()	unsorted/tAsset.cpp	vc6
+0x00675bf0	30	tAsset::fn_00675bf0()	unsorted/tAsset.cpp	vc6 guest
+0x00675c10	183	tAsset::vfunction5(tStream&)	unsorted/tAsset.cpp	vc6 guest
+0x00675cd0	124	tAsset::vfunction6(tStream&)	unsorted/tAsset.cpp	vc6 guest
+0x00675db0	267	tCastMgr::tCastMgr()	unsorted/tCastMgr.cpp	vc6
+0x00675ec0	102	fn_00675ec0(const tString&)	unsorted/tCastMgr.cpp	vc6 guest
+0x00675f40	10	g_00c690d8 (dynamic initializer)	unsorted/tCastMgr.cpp	vc6
+0x00675f50	12	g_00c690d8 (atexit registration)	unsorted/tCastMgr.cpp	vc6
+0x00675f70	29	fn_00675f70(int)	unsorted/tCastMgr.cpp	vc6 guest
+0x00675f90	71	tCastMgr::fn_00675f90(unsigned int,int)	unsorted/tCastMgr.cpp	vc6 guest
 0x0068ff60	534	fn_0068ff60(iBasicStringElement *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	partial
 0x00690180	41	tHtmlParser::fn_00690180(tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	vc6 guest
 0x006901b0	333	fn_006901b0(fn_0068ff60_Root *)	unsorted/tSession.cpp	vc6 guest
