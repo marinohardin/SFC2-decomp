@@ -20,14 +20,14 @@ void fn_004d353e( long arg1, long arg2 );
 
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
-// HYPOTHESIS: only the members this unit reads are placed; the rest of the layout is not
-// recovered. fpMetaMapControl is named by the validate text at 0x00876438.
+// HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered.
+class tMetaClientMapSub { public: void fn_005e94ef( long arg ); };
 class tMetaClientMapPanel
 {
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe();
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg );
 	void fn_005e6091();
 
 	unsigned char field_4[ 0xdc - 0x4 ];
@@ -35,7 +35,7 @@ public:
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
 	tMetaMapControl* fpMetaMapControl;
 	unsigned char field_fc[ 0x18c - 0xfc ]; bool field_18c; unsigned char field_18d[ 0x1a0 - 0x18d ];
-	int field_1a0;
+	int field_1a0; unsigned char field_1a4[ 0x1b8 - 0x1a4 ]; tMetaClientMapSub field_1b8;
 };
 
 // FUNCTION: STARFLEETOP 0x005e5800
@@ -128,4 +128,13 @@ void tMetaClientMapPanel::fn_005e5abe()
 	field_dc.Enter();
 	field_18c = true;
 	field_dc.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x005e5ae0
+void tMetaClientMapPanel::fn_005e5ae0( long arg )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	field_1b8.fn_005e94ef( arg );
+	guard.Leave();
 }
