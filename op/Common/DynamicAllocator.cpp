@@ -160,5 +160,6 @@ tAllocatedClass* tDynamicAllocator::mAllocateClass( iAllocatorID typeAllocID )
 		return 0;
 	}
 
-	return fAllocatorList->at( typeAllocID ).fAllocator->mAllocate();
+	const tAllocatorInfo& info = fAllocatorList->at( typeAllocID );
+	return info.fAllocator->mAllocate();
 }
