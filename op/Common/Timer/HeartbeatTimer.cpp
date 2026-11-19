@@ -3,6 +3,7 @@
 #include "Common/Timer/HeartbeatTimer.h"
 #include "unsorted/tWinClock.h"
 #include "Common/Thread/ThreadState.h"
+#include "Common/Exceptions/Validate.h"
 
 // HYPOTHESIS: the SDK defines these destructors inline in its headers; the original inlines
 // all three into ~tHeartbeatTimerData.
@@ -199,4 +200,15 @@ void tHeartbeatTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback*
 	fLastTime = fInitalTime = fHBData->fpClock->GetCurrentSystemTime();
 	tTimer::StartTimer( dueTime, period, pCallback, context );
 	fHBData->fTimers[ fTimerIndex ] = this;
+}
+
+// FUNCTION: STARFLEETOP 0x006f6160
+void tHeartbeatTimer::ChangeTiming( int32u newDueTime, int32u newPeriod )
+{
+	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
+
+#line 123
+	validate( fHBData->fTimers[fTimerIndex] );
+	tTimer::ChangeTiming( newDueTime, newPeriod );
+	fLastTime = fInitalTime = fHBData->fpClock->GetCurrentSystemTime();
 }
