@@ -268,3 +268,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x0052315a	FUN_0052315a	4	fable	91.25	2026-11-19T23:05:39Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 91.25%
 0x005344a3	FUN_005344a3	3	fable	99.86	2026-11-19T23:07:58Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.86%
 0x00539464	tMetaMapHex::~tMetaMapHex	4	fable	99.87	2026-11-19T23:13:47Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.87%
+0x0053ab16	FUN_0053ab16	3	fable	99.81	2026-11-19T23:21:33Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
