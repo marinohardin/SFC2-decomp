@@ -7,6 +7,7 @@ public:
     virtual ~tSfcMouseMgr();
 };
 
+// FUNCTION: STARFLEETOP 0x0040bdfa
 // FUNCTION: STARFLEETOP 0x0040bdf3
 tSfcMouseMgr::~tSfcMouseMgr()
 {

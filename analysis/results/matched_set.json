@@ -1576,6 +1576,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040bdfa": {
+   "name": "tSfcMouseMgr::scalar_deleting_destructor",
+   "symbol": "??_GtSfcMouseMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tSfcMouseMgr.cpp",
+   "size": 29,
+   "score": 8.235,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040be9b": {
    "name": "tSfcMouseMgr_Ex::vfunction2",
    "symbol": "?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ",
