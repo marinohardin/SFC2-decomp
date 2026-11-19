@@ -96,4 +96,4 @@ def test_the_pool_does_not_import_the_queue_module():
     # concurrent.futures imports `queue`, which harness/queue.py shadows when harness/ is on
     # sys.path (CI's test run): the pool must not depend on it.
     src = open(verify.__file__).read()
-    assert 'concurrent.futures' not in src
+    assert 'import concurrent' not in src and 'from concurrent' not in src
