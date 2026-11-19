@@ -35785,6 +35785,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00676a30": {
+   "name": "FUN_00676a30",
+   "symbol": "?fn_00676a30@@YAPAVtAsset@@GH@Z",
+   "unit": "unsorted/tCastMgr.cpp",
+   "size": 1504,
+   "score": 4.912,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",

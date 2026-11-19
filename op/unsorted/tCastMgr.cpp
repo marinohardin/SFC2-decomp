@@ -6,6 +6,9 @@
 #include "Tiger/tFile.h"
 #include "unsorted/tListBox_Base.h"	// HYPOTHESIS: g_00c69100 is declared there for now
 #include "unsorted/c_00692f60_Error.h"
+#include "unsorted/tAsset.h"
+#include "unsorted/tVisGroupAsset.h"
+#include "unsorted/tButtonAsset.h"
 #include <string.h>
 #include <vector>
 #include <map>
@@ -231,4 +234,80 @@ void fn_00676a00( unsigned short* p )
 	unsigned short a = p[0];
 	p[0] = (unsigned short)( ( b << 8 ) | ( b >> 8 ) );
 	p[1] = (unsigned short)( ( a << 8 ) | ( a >> 8 ) );
+}
+
+// HYPOTHESIS: makes an empty asset of the kind type names; id is stored in it (field_04).
+// Kinds 2, 6, 7, 14, 19 and 20 make nothing.
+// FUNCTION: STARFLEETOP 0x00676a30
+tAsset* fn_00676a30( unsigned short type, int id )
+{
+	tAsset* asset = 0;
+	if ( id )
+	{
+		switch ( type )
+		{
+		case 1:
+			asset = new tBmpAsset;
+			break;
+		case 4:
+		case 5:
+		case 22:
+			asset = new tCastItem;
+			break;
+		case 3:
+			asset = new tVisGroupAsset;
+			break;
+		case 17:
+			asset = new tRadioGroupAsset;
+			break;
+		case 8:
+			asset = new tPushBtnAsset;
+			break;
+		case 18:
+			asset = new tPushRectAsset;
+			break;
+		case 23:
+			asset = new tTextButtonAsset;
+			break;
+		case 12:
+			asset = new tBrowserAsset;
+			break;
+		case 10:
+			asset = new tValueBtnAsset;
+			break;
+		case 11:
+			asset = new tSliderAsset;
+			break;
+		case 15:
+			asset = new tScrollBoxAsset;
+			break;
+		case 16:
+			asset = new tNavigatorAsset;
+			break;
+		case 13:
+			asset = new tBoundAsset;
+			break;
+		case 21:
+			asset = new tStaticTextAsset;
+			break;
+		case 24:
+			asset = new tTableAsset;
+			break;
+		case 9:
+			asset = new tTextEditAsset;
+			break;
+		case 25:
+			asset = new tGenericRectAsset;
+			break;
+		case 26:
+			asset = new tGenericBmpAsset;
+			break;
+		}
+		if ( asset )
+		{
+			asset->field_30 = type;
+			asset->field_04 = id;
+		}
+	}
+	return asset;
 }
