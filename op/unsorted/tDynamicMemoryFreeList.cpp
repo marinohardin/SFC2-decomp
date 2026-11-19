@@ -13,3 +13,9 @@ void tDynamicMemoryFreeList::vfunction2()
 	field_0x4 = 0;
 	field_0x8 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00407d08
+void *tDynamicMemoryFreeList::vfunction3()
+{
+	return field_0x4;
+}
