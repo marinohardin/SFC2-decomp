@@ -7773,9 +7773,9 @@
    "symbol": "??0tShipSystemsExt@@QAE@K@Z",
    "unit": "unsorted/tShipSystemsExt.cpp",
    "size": 1554,
-   "score": 52.71,
+   "score": 61.9,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-19"
   },
   "0x00448847": {
    "name": "tShipSystemsExt::vfunction107",
@@ -19257,9 +19257,9 @@
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
    "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp",
    "size": 940,
-   "score": 16.387,
+   "score": 79.28,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x0056c7c0": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3",
@@ -21975,36 +21975,36 @@
    "symbol": "?fn_005A42a6@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
    "unit": "unsorted/fn_005A4000.cpp",
    "size": 99,
-   "score": 29.86,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005a4309": {
    "name": "FUN_005a4309",
    "symbol": "?fn_005A4309@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
    "unit": "unsorted/fn_005A4000.cpp",
    "size": 99,
-   "score": 29.86,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005a436c": {
    "name": "FUN_005a436c",
    "symbol": "?fn_005A436c@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
    "unit": "unsorted/fn_005A4000.cpp",
    "size": 105,
-   "score": 29.86,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005a43d5": {
    "name": "FUN_005a43d5",
    "symbol": "?fn_005A43d5@fn_005A4173_Owner@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
    "unit": "unsorted/fn_005A4000.cpp",
    "size": 105,
-   "score": 29.86,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005a443e": {
    "name": "FUN_005a443e",
@@ -25368,9 +25368,9 @@
    "symbol": "?erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 116,
-   "score": 10.896,
+   "score": 71.468,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-19"
   },
   "0x005fb1c2": {
    "name": "FUN_005fb1c2",
@@ -25878,12 +25878,12 @@
   },
   "0x0060c675": {
    "name": "FUN_0060c675",
-   "symbol": "?fn_0060c675@C_00c3a80c@@QAEXPAVC_0060c486@@0@Z",
+   "symbol": "?fn_0060c675@C_00c3a80c@@QAEPAVC_0060c486@@PAV2@0@Z",
    "unit": "unsorted/fn_0060C000.cpp",
    "size": 21,
-   "score": 94.286,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0060c68a": {
    "name": "FUN_0060c68a",
@@ -26088,9 +26088,9 @@
    "symbol": "?fn_006160a0@fn_00616000_DirectPlayHolder@@QAEXHH@Z",
    "unit": "unsorted/fn_00616000.cpp",
    "size": 116,
-   "score": 40.638,
+   "score": 90.146,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-19"
   },
   "0x00616150": {
    "name": "FUN_00616150",
@@ -26421,9 +26421,9 @@
    "symbol": "?mDuplicatePath@tFSSession@@QAE?AVtPath@@V2@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 160,
-   "score": 32.213,
+   "score": 33.644,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-19"
   },
   "0x0061cb00": {
    "name": "tFSSession::mFileOpenDialog",
@@ -26646,9 +26646,9 @@
    "symbol": "?mGetNamedFile@tDir@@QAE?AVtPath@@AAVtString@@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 544,
-   "score": 98.897,
+   "score": 99.923,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-19"
   },
   "0x0061e5c0": {
    "name": "tDir::mDelete",
@@ -27051,9 +27051,9 @@
    "symbol": "?find@tString@@QAEJAAV1@J@Z",
    "unit": "Tiger/tstring.cpp",
    "size": 565,
-   "score": 16.431,
+   "score": 16.891,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x00624260": {
    "name": "tString::rfind",
@@ -27078,9 +27078,9 @@
    "symbol": "?rfind@tString@@QAEJAAV1@J@Z",
    "unit": "Tiger/tstring.cpp",
    "size": 571,
-   "score": 16.313,
+   "score": 16.784,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x00624660": {
    "name": "tString::operator=",
@@ -27222,9 +27222,9 @@
    "symbol": "??Giterator@tString@@QAE?AV01@J@Z",
    "unit": "Tiger/tstring.cpp",
    "size": 96,
-   "score": 25.741,
+   "score": 32.5,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x006254f0": {
    "name": "tString::iterator::operator++",
@@ -27312,9 +27312,9 @@
    "symbol": "?mStrICmp@tString@@QBEJABV1@@Z",
    "unit": "Tiger/tstring.cpp",
    "size": 528,
-   "score": 13.03,
+   "score": 13.123,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x00625b80": {
    "name": "tString::begin",
@@ -28707,18 +28707,18 @@
    "symbol": "?mGetVolIterator@twFileSystemPart@@UAE?AVtVolIterator@@VtSession@@@Z",
    "unit": "Tiger/twfsys.cpp",
    "size": 1527,
-   "score": 0.626,
+   "score": 1.083,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-19"
   },
   "0x0062e7c0": {
    "name": "twFileSystemPart::mGetNamedVolume",
    "symbol": "?mGetNamedVolume@twFileSystemPart@@UAE?AVtVolume@@VtSession@@VtString@@@Z",
    "unit": "Tiger/twfsys.cpp",
    "size": 559,
-   "score": 8.067,
+   "score": 9.107,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x0062e9f0": {
    "name": "twFileSystemPart::mGetAppPath",
@@ -28896,9 +28896,9 @@
    "symbol": "?mGetRoot@twVolume@@UAE?AVtDir@@XZ",
    "unit": "Tiger/tgfsys.cpp",
    "size": 487,
-   "score": 18.874,
+   "score": 20.536,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x006315d0": {
    "name": "twDir::mMakeFullPath",
@@ -28950,9 +28950,9 @@
    "symbol": "?mGetNamedFile@twDir@@UAE?AVtPath@@AAVtString@@@Z",
    "unit": "Tiger/tgfsys.cpp",
    "size": 552,
-   "score": 2.83,
+   "score": 3.287,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x00631f60": {
    "name": "twDir::mExist",
@@ -33764,10 +33764,10 @@
    "name": "tBasicSoundFileManager::mUpdateTest",
    "symbol": "?mUpdateTest@tBasicSoundFileManager@@QAEXXZ",
    "unit": "Tiger/tsndmgr.cpp",
-   "size": 1990,
-   "score": 0.165,
+   "size": 2000,
+   "score": 18.302,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-19"
   },
   "0x00664870": {
    "name": "tBasicSoundFileManager::mGetTrackingIndex",
@@ -37167,18 +37167,18 @@
    "symbol": "?Heartbeat@tThreadPool@@QAEXXZ",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 608,
-   "score": 46.653,
+   "score": 46.67,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-19"
   },
   "0x006f4440": {
    "name": "tThreadPool::EmptyWorkQue",
    "symbol": "?EmptyWorkQue@tThreadPool@@QAEX_N@Z",
    "unit": "Common/Thread/ThreadPool.cpp",
    "size": 272,
-   "score": 54.395,
+   "score": 54.435,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-19"
   },
   "0x006f4550": {
    "name": "tThreadPool::SetMemoryChecking",
