@@ -34,6 +34,13 @@ struct tRect
 		bottom	= (short)ey;
 	};
 	inline tRect( const tRect &T ) { left = T.left; top = T.top; right = T.right; bottom = T.bottom; }
+	inline void mSet( int sx, int sy, int ex, int ey )
+	{
+		left	= (short)sx;
+		top		= (short)sy;
+		right	= (short)ex;
+		bottom	= (short)ey;
+	};
 	inline tRect & operator = ( const tRect &T )
 	{
 		left	= T.left;
@@ -151,7 +158,7 @@ public:
 	c_tVisObject_Field14 *field_14;
 	unsigned char field_18[ 0x24 - 0x18 ]; tVisObject *field_24; unsigned char field_28[ 0x34 - 0x28 ];	// HYPOTHESIS: +0x24 is the first child, its siblings follow through +0x4 (the fleet entry's 0x004c2aba)
 	tRect field_34;
-	unsigned char field_3C[ 0x40 - 0x3c ];
+	tPoint field_3C;	// HYPOTHESIS: a position; tSurface's constructor (0x00675080) sets it to its x and y
 	int field_40;	// HYPOTHESIS: flags; tListBox_Select::vfunction31 handles a click only when bit 0 is set
 	int field_44;	// HYPOTHESIS: a delay or interval; the fleet panel's constructor (0x0048bd4d) sets its fleet form's to 3000
 	int field_48;

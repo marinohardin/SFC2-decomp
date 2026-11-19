@@ -35605,6 +35605,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00675080": {
+   "name": "tSurface::tSurface",
+   "symbol": "??0tSurface@@QAE@FFHHHEE@Z",
+   "unit": "unsorted/tSurface.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
