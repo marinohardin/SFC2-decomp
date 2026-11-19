@@ -113,6 +113,7 @@ tRepairShips::tRepairShips( tAsyncDatabase* pDB ) : tAsyncDatabaseProcedure( pDB
 
 #line 115
 // FUNCTION: STARFLEETOP 0x00568b07
+// FUNCTION: STARFLEETOP 0x00568b23
 tRepairShips::~tRepairShips()
 {
 }
