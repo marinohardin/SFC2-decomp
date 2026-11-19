@@ -554,6 +554,18 @@ def report_shared_symbols(rep):
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
+def symbol_table_rows(results):
+    """(address, symbol, unit) of each claim this run rebuilt, for harness/lib/symtab.py. A
+    compiler static (resolved per unit) or a symbol two claims compile to names no one target,
+    so neither is a row."""
+    rows = [(r['address'], r['symbol'], r['unit']) for r in results
+            if r.get('symbol') and not r['symbol'].startswith(PER_UNIT_PREFIXES)]
+    count = {}
+    for _, sym, _ in rows:
+        count[sym] = count.get(sym, 0) + 1
+    return [r for r in rows if count[r[1]] == 1]
+
+
 def claimed_symbols(results, data, table=None):
     """Matched-set key -> (symbol, source) for every claimed function: the symbol this run's
     rebuild of the claiming unit defines for it ('rebuilt'), else the one the last --all in this
@@ -761,8 +773,7 @@ def main(argv=None):
         rep.failed = True
     if a.all and rep.results:
         # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
-        symtab.write_claims(symtab.path(), [(r['address'], r['symbol'], r['unit'])
-                                            for r in rep.results if r.get('symbol')])
+        symtab.write_claims(symtab.path(), symbol_table_rows(rep.results))
     if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')

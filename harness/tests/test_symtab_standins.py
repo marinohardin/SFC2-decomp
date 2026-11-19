@@ -107,3 +107,12 @@ def test_the_loop_does_not_commit_a_function_holding_a_stand_in():
              claimed=STANDIN, source='table')
     assert loopio.score(verify_json([b]), '0x00401000') == (100.0, True, loopio.EXIT_STANDIN)
     assert loopio.score(verify_json([]), '0x00401000') == (100.0, True, 0)
+
+
+def test_the_table_leaves_out_statics_and_symbols_two_claims_share():
+    results = [dict(address='0x00401000', symbol='?f@@YAXXZ', unit='a.cpp'),
+               dict(address='0x00401100', symbol='_$E14', unit='a.cpp'),
+               dict(address='0x00401200', symbol='?g@@YAXXZ', unit='a.cpp'),
+               dict(address='0x00401300', symbol='?g@@YAXXZ', unit='b.cpp'),
+               dict(address='0x00401400', symbol=None, unit='b.cpp')]
+    assert verify.symbol_table_rows(results) == [('0x00401000', '?f@@YAXXZ', 'a.cpp')]
