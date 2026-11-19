@@ -118,6 +118,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00401c9c": {
+   "name": "tFighterSpecMgr::tFighterSpecMgr",
+   "symbol": "??0tFighterSpecMgr@@QAE@XZ",
+   "unit": "unsorted/tFighterSpecMgr.cpp",
+   "size": 91,
+   "score": 47.75,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x004021b8": {
    "name": "FUN_004021b8",
    "symbol": "?fn_004021b8@fn_004021b8_Stream@@QAEXXZ",
