@@ -55,3 +55,9 @@ int32 tDateAndTime::GetYear() const
 {
 	return GetLocalTm()->tm_year + 1900;
 }
+
+// FUNCTION: STARFLEETOP 0x006f88e0
+int32 tDateAndTime::GetMonth() const
+{
+	return GetLocalTm()->tm_mon + 1;
+}
