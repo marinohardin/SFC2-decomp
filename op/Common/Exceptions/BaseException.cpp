@@ -9,4 +9,9 @@ tBaseException::tBaseException( const char* pDescription, const char* pFile, int
 {
 }
 
+// FUNCTION: STARFLEETOP 0x006fd370
+tBaseException::~tBaseException() throw()
+{
+}
+
 };
