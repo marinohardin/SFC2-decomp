@@ -138,4 +138,46 @@ void tMetaMapDataRequest::tResponse::StreamOut( nDataStore::tOutput& output ) co
 	}
 }
 
+// HYPOTHESIS: the vector reader at 0x0054c9a1, not claimed here (another lane's address range)
+}
+
+namespace nDataStore
+{
+
+template<>
+tInput& operator>>( tInput& input, std::vector< nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex >& value )
+{
+	value.clear();
+
+	int32u size = 0;
+	input.Read( (byte*)&size, sizeof( size ) );
+
+	value.reserve( size );
+
+	for( int i = 0; i < size; i++ )
+	{
+		nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex type;
+		input >> type;
+		value.push_back( type );
+	}
+
+	return input;
+}
+
+};
+
+namespace nStoredProcedureArguments
+{
+
+// FUNCTION: STARFLEETOP 0x0054c2d1
+void tMetaMapDataRequest::tResponse::StreamIn( nDataStore::tInput& input )
+{
+	input >> m_10 >> m_20;
+
+	if( !m_20 )
+	{
+		input >> m_21 >> m_22;
+	}
+}
+
 }
