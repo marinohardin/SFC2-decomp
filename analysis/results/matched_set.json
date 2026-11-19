@@ -19693,6 +19693,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x0056571c": {
+   "name": "FUN_0056571c",
+   "symbol": "?fn_0056571c@tAsyncDatabaseProcedure_GetPoliticalTensionMatrix@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrix.cpp",
+   "size": 405,
+   "score": 99.959,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",

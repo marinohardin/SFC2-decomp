@@ -12,6 +12,7 @@
 
 class tHexPoint;
 class tMetaMapHex;
+class tPoliticalTensionMatrix;
 
 namespace nAsyncDatabaseProcedure
 {
@@ -35,6 +36,24 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction11();
 		virtual void vfunction12();
 		virtual void vfunction13( tHexPoint point, std::vector<tMetaMapHex>* hexes, int lock );
+		virtual void vfunction14();
+		virtual void vfunction15();
+		virtual void vfunction16();
+		virtual void vfunction17();
+		virtual void vfunction18();
+		virtual void vfunction19( std::vector<tPoliticalTensionMatrix>* matrices );
+		virtual void vfunction20();
+		virtual void vfunction21();
+		virtual void vfunction22();
+		virtual void vfunction23();
+		virtual void vfunction24();
+		virtual void vfunction25();
+		virtual void vfunction26();
+		virtual void vfunction27();
+		virtual void vfunction28();
+		virtual void vfunction29();
+		virtual void vfunction30();
+		virtual void vfunction31( tPoliticalTensionMatrix* matrix );
 	};
 
 };
