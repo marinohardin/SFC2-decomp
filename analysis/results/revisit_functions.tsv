@@ -151,7 +151,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00404fee	FUN_00404fee	0.00	2	opus	2026-11-17T10:32:10Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x0040e699	FUN_0040e699	89.45	2	opus	2026-11-17T15:39:56Z	attempt 2 (opus) did not raise the best; best 89.45%
 0x0040e70f	FUN_0040e70f	88.67	2	opus	2026-11-17T15:47:59Z	attempt 2 (opus) did not raise the best; best 88.67%
-0x0046a46a	FUN_0046a46a	90.48	2	opus	2026-11-17T16:48:40Z	attempt 2 (opus) did not raise the best; waits for Fable; best 90.48%
 0x00436006	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:35:03Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x00436022	tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::~tValueCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>	0.00	2	sonnet	2026-11-17T03:37:13Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0043603e	tCountMap<tDirIterator,tDirIterParent,std::less<tDirIterator>_>::scalar_deleting_destructor	0.00	2	sonnet	2026-11-17T03:39:20Z	attempt 2 (sonnet) did not raise the best; best 0.00%
