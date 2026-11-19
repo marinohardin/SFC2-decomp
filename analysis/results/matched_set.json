@@ -37972,6 +37972,15 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x006fc610": {
+   "name": "tCleanupGlobalPointer<tDynamicAllocator>::tCleanupGlobalPointer<tDynamicAllocator>_Constructor_or_Destructor",
+   "symbol": "_$E4",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc750": {
    "name": "tDynamicAllocator::LockDownAllocator",
    "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",

@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "port/types.h"
+#include "Common/CleanupGlobalPointer.h"
 
 typedef int32 iAllocatorID;
 const int8 kInvalidAllocatorID = -1;
@@ -75,6 +76,10 @@ private:
 
 	tDynamicAllocator();
 	~tDynamicAllocator();
+
+	friend class tCleanupGlobalPointer< tDynamicAllocator >;
+	static tCleanupGlobalPointer< tDynamicAllocator > fCleanupSingletion;
+	static tDynamicAllocator* fpDynamicAllocator;
 
 	bool fAllocatorListLocked;
 	tAllocatorList* fAllocatorList;

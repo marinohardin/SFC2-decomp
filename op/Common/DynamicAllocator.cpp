@@ -79,6 +79,11 @@ int32 tDynamicAllocator::tAllocatorInfo::operator==( const char* raw_name ) cons
 	}
 }
 
+tDynamicAllocator* tDynamicAllocator::fpDynamicAllocator = 0;
+
+// FUNCTION: STARFLEETOP 0x006fc610
+tCleanupGlobalPointer< tDynamicAllocator > tDynamicAllocator::fCleanupSingletion( &tDynamicAllocator::fpDynamicAllocator );
+
 // FUNCTION: STARFLEETOP 0x006fc750
 void tDynamicAllocator::LockDownAllocator()
 {
