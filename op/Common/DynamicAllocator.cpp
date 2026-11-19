@@ -148,3 +148,17 @@ void tDynamicAllocator::mAddToAllocList( const type_info& type, tAllocator* allo
 
 	std::sort( fAllocatorList->begin(), fAllocatorList->end() );
 }
+
+// FUNCTION: STARFLEETOP 0x006fcb40
+tAllocatedClass* tDynamicAllocator::mAllocateClass( iAllocatorID typeAllocID )
+{
+	LockDownAllocator();
+
+	int32 count = fAllocatorList->size();
+	if( typeAllocID < 0 || typeAllocID >= count )
+	{
+		return 0;
+	}
+
+	return fAllocatorList->at( typeAllocID ).fAllocator->mAllocate();
+}

@@ -38044,6 +38044,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fcb40": {
+   "name": "tDynamicAllocator::mAllocateClass",
+   "symbol": "?mAllocateClass@tDynamicAllocator@@QAEPAVtAllocatedClass@@J@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 96,
+   "score": 97.5,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
