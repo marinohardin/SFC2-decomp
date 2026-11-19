@@ -212,3 +212,13 @@ void tHeartbeatTimer::ChangeTiming( int32u newDueTime, int32u newPeriod )
 	tTimer::ChangeTiming( newDueTime, newPeriod );
 	fLastTime = fInitalTime = fHBData->fpClock->GetCurrentSystemTime();
 }
+
+// FUNCTION: STARFLEETOP 0x006f62c0
+void tHeartbeatTimer::StopTimer()
+{
+	tOptex::tGuard guard( &fHBData->fAccessGlobalData );
+
+	tTimer::StopTimer();
+	fHBData->fTimers[ fTimerIndex ] = NULL;
+	fLastTime = fInitalTime = 0;
+}
