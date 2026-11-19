@@ -3961,6 +3961,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0041ef62": {
+   "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint",
+   "symbol": "?fn_0041ef62@tEntity_Seeker@@QAEXXZ",
+   "unit": "unsorted/tNetMsg_kCreateSeekerAtPoint.cpp",
+   "size": 180,
+   "score": 94.623,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
    "symbol": "??0tEntityControlShip@@QAE@PAVtEntity@@@Z",
