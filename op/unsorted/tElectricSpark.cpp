@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tElectricSpark.cpp
-// Functions: 0x0040c963 to 0x0040cc0a, 6 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: layout and the counter global are inferred from the constructor's stores.
+extern int g_00898ca4;
+
+class tElectricSpark
+{
+public:
+	tElectricSpark();
+	virtual void vfunction0();
+
+	float m04;
+	int m08;
+	int m0c;
+};
+
+// FUNCTION: STARFLEETOP 0x0040c963
+tElectricSpark::tElectricSpark()
+{
+	m0c = 0;
+	m04 = 1.0f;
+	g_00898ca4++;
+}
