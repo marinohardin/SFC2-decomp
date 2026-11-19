@@ -304,7 +304,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x00427fb2	tOfficerList::tOfficerList	56.51	2	sonnet	2026-11-17T06:56:26Z	best not above 90% after 2 attempts; best 56.51%
 0x0042a7bf	FUN_0042a7bf	83.68	2	sonnet	2026-11-17T08:10:17Z	attempt 2 (sonnet) did not raise the best; best 83.68%
 0x0042a863	tServCharacter::tShipCache::~tShipCache	23.16	2	sonnet	2026-11-17T08:20:54Z	attempt 2 (sonnet) did not raise the best; best 23.16%
-0x0042a8b7	FUN_0042a8b7	71.10	2	sonnet	2026-11-17T08:35:50Z	attempt 2 (sonnet) did not raise the best; best 71.10%
 0x0042a92f	FUN_0042a92f	67.65	2	sonnet	2026-11-17T08:52:06Z	attempt 2 (sonnet) did not raise the best; best 67.65%
 0x0042a9ba	FUN_0042a9ba	34.31	2	sonnet	2026-11-17T09:28:09Z	attempt 2 (sonnet) did not raise the best; best 34.31%
 0x0042ab25	FUN_0042ab25	78.50	2	sonnet	2026-11-17T09:49:18Z	attempt 2 (sonnet) did not raise the best; best 78.50%
