@@ -203,3 +203,32 @@ def test_no_cache_compares_every_time(scoring, monkeypatch):
     score()
     score()
     assert len(calls) == 2
+
+
+def test_a_score_is_keyed_to_the_exe_it_was_scored_against(cached, tmp_path):
+    obj = tmp_path / 'u.obj'
+    obj.write_bytes(bytes(coff.write_object(b'\xc3', '_f', [])))
+
+    class Exe:
+        def __init__(self, sha):
+            self.sha256 = sha
+    one = cache.score_key(str(obj), '_f', 0x401000, 1, Exe('a' * 64))
+    assert one == cache.score_key(str(obj), '_f', 0x401000, 1, Exe('a' * 64))
+    assert one != cache.score_key(str(obj), '_f', 0x401000, 1, Exe('b' * 64))
+    assert cache.score_key(str(obj), '_f', 0x401000, 1, object()) is None
+
+
+@pytest.mark.parametrize('text', ['{"result": {}}', '[]', '{"result": 1, "side_by_side": ""}',
+                                  'not json'])
+def test_a_malformed_entry_is_a_miss(cached, text):
+    key = 'ab' + '0' * 62
+    path = cache._score_path(key)
+    os.makedirs(os.path.dirname(path))
+    with open(path, 'w') as f:
+        f.write(text)
+    assert cache.load_score(key) is None
+
+
+def test_an_entry_that_cannot_be_written_is_left_out(cached, monkeypatch):
+    monkeypatch.setattr(cache, '_score_path', lambda key: '/nonexistent-dir/x/' + key + '.json')
+    cache.store_score('ab' + '0' * 62, {'result': {}, 'side_by_side': ''})

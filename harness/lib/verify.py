@@ -69,7 +69,9 @@ def check_exe(rep):
             raise Untrusted(f'{paths.EXE} has sha256 {got}, not the original exe\'s {want}')
         rep.add('WARN', f'HARNESS_EXE_UNVERIFIED=1: scoring against {paths.EXE}, which is NOT '
                 'the original exe; these scores mean nothing for the matched set')
-    return coff.PeImage(raw)
+    img = coff.PeImage(raw)
+    img.sha256 = got        # the score cache keys a score to the exe it was scored against
+    return img
 
 
 def load_base(spec):
@@ -227,7 +229,7 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None)
     fdir = os.path.join(build['out_dir'], res['address'])
     os.makedirs(fdir, exist_ok=True)
     # The score cache (harness/lib/cache.py): an unchanged object is not compared again.
-    skey = cache.score_key(build['obj'], sym, fn.address, fn.size)
+    skey = cache.score_key(build['obj'], sym, fn.address, fn.size, exe)
     hit = cache.load_score(skey)
     if hit is not None:
         res.update({k: v for k, v in hit['result'].items() if k not in CACHE_OWN_FIELDS})

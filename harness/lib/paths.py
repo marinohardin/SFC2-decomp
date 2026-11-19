@@ -55,6 +55,11 @@ CL_DOCKER = os.path.join(REPO, 'toolchain', 'bin', 'cl')
 CL_NATIVE = os.path.join(REPO, 'toolchain', 'bin', 'cl-native')
 
 
+def wibo(tools):
+    """The wibo binary toolchain/bin/cl-native runs, under the tools folder."""
+    return os.path.join(tools, 'wibo', '1.2.0', 'wibo-macos')
+
+
 def pick_cl(env, tools, system):
     """The compiler wrapper the harness scores with. HARNESS_COMPILER=docker or native forces one;
     otherwise (auto) the native one when toolchain/fetch-native.sh has installed it on macOS,
@@ -66,7 +71,7 @@ def pick_cl(env, tools, system):
         raise ValueError(f'HARNESS_COMPILER must be auto, docker or native, not {choice!r}')
     tools = env.get('SFCOP_TOOLS') or tools
     native = (system == 'Darwin'
-              and os.access(os.path.join(tools, 'wibo', '1.2.0', 'wibo-macos'), os.X_OK)
+              and os.access(wibo(tools), os.X_OK)
               and all(os.path.isfile(os.path.join(tools, 'msvc6', f'msvc{v}', 'Bin', 'CL.EXE'))
                       for v in ('6.4', '6.5')))
     return CL_NATIVE if native else CL_DOCKER

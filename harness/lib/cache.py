@@ -74,7 +74,7 @@ def compiler_id(cl, version):
         name = os.path.basename(cl)
         if name == 'cl-native':
             tools = os.environ.get('SFCOP_TOOLS') or paths.TOOLS
-            _hash_files(h, [cl, os.path.join(tools, 'wibo', '1.2.0', 'wibo-macos')]
+            _hash_files(h, [cl, paths.wibo(tools)]
                         + _tree(os.path.join(tools, 'msvc6', f'msvc{version}')))
         elif name == 'cl' and os.path.isfile(os.path.join(here, 'msvc-run')):
             image = os.environ.get('SFCOP_MSVC_IMAGE', 'sfcop-msvc6:latest')
@@ -168,12 +168,20 @@ def _judge_id():
     return _memoized('judge', compute)
 
 
-def _inputs_id(exe_path):
+def _inputs_id(exe_sha):
     def compute():
-        h = hashlib.sha256(b'inputs 1\0')
-        _hash_files(h, [exe_path, paths.FUNCTIONS_CSV] + list(paths.SYMBOL_TSVS))
+        h = hashlib.sha256(b'inputs 2\0' + exe_sha.encode() + b'\0')
+        _hash_files(h, [paths.FUNCTIONS_CSV] + list(paths.SYMBOL_TSVS))
         return h.hexdigest()
-    return _memoized(('inputs', exe_path), compute)
+    return _memoized(('inputs', exe_sha), compute)
+
+
+def _file_sha(path):
+    def compute():
+        h = hashlib.sha256()
+        _hash_files(h, [path])
+        return h.hexdigest()
+    return _memoized(('file', path), compute)
 
 
 def object_hash(obj_path):
@@ -185,12 +193,17 @@ def object_hash(obj_path):
     return hashlib.sha256(raw).hexdigest()
 
 
-def score_key(obj_path, symbol, address, size):
+def score_key(obj_path, symbol, address, size, exe=None):
+    """The key of one function's score, or None (nothing reused). `exe` is the image scored
+    against: verify's check_exe gives it the sha256 of its bytes; None stands for paths.EXE."""
     if not enabled():
+        return None
+    exe_sha = _file_sha(paths.EXE) if exe is None else getattr(exe, 'sha256', None)
+    if exe_sha is None:
         return None
     h = hashlib.sha256(b'score 1\0')
     for part in (object_hash(obj_path), symbol, f'{address:08x}', str(size), _judge_id(),
-                 _inputs_id(paths.EXE)):
+                 _inputs_id(exe_sha)):
         h.update(part.encode() + b'\0')
     return h.hexdigest()
 
@@ -200,21 +213,33 @@ def _score_path(key):
 
 
 def load_score(key):
+    """The stored entry, or None: a missing, unreadable or malformed entry is a miss."""
     if key is None:
         return None
     try:
         with open(_score_path(key)) as f:
-            return json.load(f)
+            entry = json.load(f)
     except (OSError, ValueError):
         return None
+    if (not isinstance(entry, dict) or not isinstance(entry.get('result'), dict)
+            or not isinstance(entry.get('side_by_side'), str)):
+        return None
+    return entry
 
 
 def store_score(key, value):
     if key is None:
         return
     path = _score_path(key)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = f'{path}.{os.getpid()}.{threading.get_ident()}.part'
-    with open(tmp, 'w') as f:
-        json.dump(value, f)
-    os.replace(tmp, path)
+    # A cache never changes a result: an entry that cannot be written is left out.
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(tmp, 'w') as f:
+            json.dump(value, f)
+        os.replace(tmp, path)
+    except OSError:
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
