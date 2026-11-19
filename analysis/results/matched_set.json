@@ -19459,6 +19459,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00551a84": {
+   "name": "nStoredProcedureArguments::tUpdatePreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tUpdatePreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/UpdatePreparedMissionRequest.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
