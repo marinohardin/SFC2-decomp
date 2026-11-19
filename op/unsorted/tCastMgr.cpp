@@ -222,3 +222,13 @@ unsigned char tCastMgr::fn_00675fe0( unsigned int pos )
 	}
 	return 0;
 }
+
+// HYPOTHESIS: byte-swaps a 32-bit value held as two 16-bit halves (network to host order).
+// FUNCTION: STARFLEETOP 0x00676a00
+void fn_00676a00( unsigned short* p )
+{
+	unsigned short b = p[1];
+	unsigned short a = p[0];
+	p[0] = (unsigned short)( ( b << 8 ) | ( b >> 8 ) );
+	p[1] = (unsigned short)( ( a << 8 ) | ( a >> 8 ) );
+}
