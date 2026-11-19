@@ -4,6 +4,9 @@
 #include "unsorted/tVisObject.h"
 #include "unsorted/tMetaMapControl.h"
 #include "unsorted/tHexPoint.h"
+#include "Common/Thread/SingleAccessWrapper.h"
+#include "unsorted/tObject_0092deb4.h"
+#include "unsorted/fn_0042a480_object.h"
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its
 // out-of-line copy (0x00429a18); the header cannot define it while that unit does.
 inline tOptex::tGuard::~tGuard()
@@ -13,11 +16,9 @@ inline tOptex::tGuard::~tGuard()
 		fOptex->Leave();
 	}
 }
-
 // HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it
 // returns what 0x004d4728 finds for a group and a control name.
 void fn_004d353e( long arg1, long arg2 );
-
 // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 extern const char* g_0087632c;
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed.
@@ -30,9 +31,8 @@ class tMetaClientMapPanel
 public:
 	virtual void vfunction19();
 	virtual void vfunction20();
-	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced();
+	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a();
 	void fn_005e6091();
-
 	unsigned char field_4[ 0xdc - 0x4 ];
 	tOptex field_dc;
 	unsigned char field_f0[ 0xf8 - 0xdc - sizeof( tOptex ) ];
@@ -208,4 +208,10 @@ tHexPoint tMetaClientMapPanel::fn_005e5ced()
 {
 	tHexPoint corner( field_fc.fn_0058c2e1() );
 	return tHexPoint( corner.fn_0055f269() + field_fc.fn_00423402() / 2, corner.fn_005e8f21() + field_fc.fn_005e8efa() / 2 );
+}
+
+// FUNCTION: STARFLEETOP 0x005e5d7a
+tHexPoint tMetaClientMapPanel::fn_005e5d7a()
+{
+	return ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042abe4();
 }
