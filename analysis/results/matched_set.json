@@ -9636,9 +9636,9 @@
    "symbol": "?fn_004682c7@tState_GameConnections@tState_Namespace_GameConnections@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
    "size": 312,
-   "score": 99.241,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004683ff": {
    "name": "FUN_004683ff",

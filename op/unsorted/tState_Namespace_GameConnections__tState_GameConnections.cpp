@@ -377,7 +377,12 @@ void tState_GameConnections::fn_004682c7()
 			m10 = 1;
 			m11 = 1;
 		}
-		else if ((!strcmp(name, "MPlayer") && !m14) || (!strcmp(name, "DPSim") && m14))
+		else if (!strcmp(name, "MPlayer") && !m14)
+		{
+			fn_004d34c5(0x10008, 0);
+			m11 = 1;
+		}
+		else if (!strcmp(name, "DPSim") && m14)
 		{
 			fn_004d34c5(0x10008, 0);
 			m11 = 1;
