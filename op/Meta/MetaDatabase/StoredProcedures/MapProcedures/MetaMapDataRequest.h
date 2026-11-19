@@ -55,6 +55,7 @@ namespace nStoredProcedureArguments
 			};
 
 			tResponse( int32 param_1, int32 param_2, bool param_3 );
+			virtual ~tResponse();
 
 			virtual	void StreamOut( nDataStore::tOutput& output ) const;
 			virtual	void StreamIn( nDataStore::tInput& input );
