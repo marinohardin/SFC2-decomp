@@ -4,3 +4,10 @@
 tListMember::~tListMember()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x004088cd
+void tListMember::vfunction2()
+{
+    mPrevious = 0;
+    mNext = 0;
+}

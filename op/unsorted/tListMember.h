@@ -26,6 +26,10 @@ public:
     // HYPOTHESIS: dumps the member (offset 0x1c); tDynamicMemoryFreeList::mDumpList
     // (0x00626b90) calls it on every member.
     virtual void vfunction8();
+
+    // HYPOTHESIS: the two link pointers, cleared by vfunction2 (offsets 4 and 8).
+    tListMember *mPrevious;
+    tListMember *mNext;
 };
 
 #endif // tListMember_h
