@@ -77,6 +77,8 @@ public:
 	virtual ~tElectricSpark();
 	// HYPOTHESIS: a viewer, the camera matrix and the spark's world matrix.
 	virtual void vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *param_2, const tMatrix &param_3);
+	// HYPOTHESIS: the spark's start and end points, passed by value.
+	virtual void vfunction3(tPoint3 param_1, tPoint3 param_2);
 
 	float m04;
 	int m08;
@@ -160,4 +162,25 @@ void tElectricSpark::vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *para
 	offset.mSet(0.7f, 0.7f, 1.0f);
 	fn_005090c7(param_1, &matrix, g_00898c9c, m0c, width, width, 0.85f, 0.85f, &offset, &offset);
 	param_1->vfunction49(1);
+}
+
+// HYPOTHESIS: a float constant (points per unit of length) at a fixed exe address.
+extern float g_00795bf4;
+
+// FUNCTION: STARFLEETOP 0x0040cc0a
+void tElectricSpark::vfunction3(tPoint3 param_1, tPoint3 param_2)
+{
+	m10 = param_1;
+	m1c = param_2;
+	m28 = m1c - m10;
+	m0c = m28.mLength() * g_00795bf4;
+	if (m0c < 2)
+	{
+		m0c = 0;
+	}
+	else if (fn_0040c9c6(m0c))
+	{
+		m28 /= m0c - 1;
+		m04 = m28.mLength();
+	}
 }

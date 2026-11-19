@@ -1936,6 +1936,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040cc0a": {
+   "name": "tElectricSpark::vfunction3",
+   "symbol": "?vfunction3@tElectricSpark@@UAEXUtPoint3@@0@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 156,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",

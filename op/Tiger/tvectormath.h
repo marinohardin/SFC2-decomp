@@ -56,6 +56,7 @@ public:
 	float mLength(void) const;
 	iTruth	mNormalize(void);
 	tPoint3 &operator*=(const float d);
+	tPoint3 &operator/=(const float d);
 };
 
 struct tPoint2
