@@ -340,6 +340,35 @@ struct fn_004027c8_Rec
     char d;
 };
 
+struct fn_004029e8_Alloc
+{
+};
+
+// HYPOTHESIS: stands in for std::string; m4, m8 and mc follow its pointer, length and reserve.
+class fn_004029e8_Obj
+{
+public:
+    fn_004029e8_Obj(const fn_004029e8_Obj& x, unsigned int pos, unsigned int n, const fn_004029e8_Alloc& a = fn_004029e8_Alloc())
+        : m0(a)
+    {
+        fn_005da20a(false);
+        fn_00403b49(x, pos, n);
+    }
+    ~fn_004029e8_Obj();
+    fn_004029e8_Obj fn_004029e8(unsigned int pos, unsigned int n) const;
+    void fn_005da20a(bool);
+    void fn_00403b49(const fn_004029e8_Obj&, unsigned int, unsigned int);
+    fn_004029e8_Alloc m0;
+    char* m4;
+    unsigned int m8;
+    unsigned int mc;
+};
+
+inline fn_004029e8_Obj::~fn_004029e8_Obj()
+{
+    fn_005da20a(true);
+}
+
 struct fn_004026ec_Entry
 {
     int pad[2];
@@ -413,8 +442,9 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     p[0x628 / 4] = n;
     p[0x570 / 4] = pe[0x20 / 4] * n;
     p[0x5dc / 4] = pe[0x30 / 4] * n;
+    int m = pe[0x44 / 4] * n;
     int* q = &p[0x618 / 4];
-    *q = pe[0x44 / 4] * n;
+    *q = m;
     p[0xc / 4] = pe[4 / 4];
     *q = 6;
     p[0x5e0 / 4] = pe[0x38 / 4];
@@ -422,7 +452,8 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     fn_007364c0((char*)&p[0x38 / 4], ((std::string*)&pe[0x58 / 4])->c_str());
     fn_007364c0((char*)&p[0x238 / 4], ((std::string*)&pe[0x8 / 4])->c_str());
     fn_007364c0((char*)&p[0x138 / 4], ((std::string*)&pe[0x48 / 4])->c_str());
-    if (fn_0040503b(((std::string*)&pe[0x8 / 4])->substr(((std::string*)&pe[0x8 / 4])->size() - 2, std::string::npos), g_0083a3e0))
+    // HYPOTHESIS: substr on the name string at +8; the claim's class stands in for std::string.
+    if (fn_0040503b(*(const std::string*)&((fn_004029e8_Obj*)&pe[0x8 / 4])->fn_004029e8(((std::string*)&pe[0x8 / 4])->size() - 2, std::string::npos), g_0083a3e0))
         p[0x10 / 4] = 0x17;
     d->fn_00407db2(pe[0x1c / 4]);
     d->fn_00407dd9(pe[0x2c / 4]);
@@ -496,26 +527,6 @@ char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
     fn_00403d87();
     return m4 + pos;
 }
-
-struct fn_004029e8_Alloc
-{
-};
-
-class fn_004029e8_Obj
-{
-public:
-    fn_004029e8_Obj(const fn_004029e8_Obj& x, unsigned int pos, unsigned int n, const fn_004029e8_Alloc& a = fn_004029e8_Alloc())
-        : m0(a)
-    {
-        fn_005da20a(false);
-        fn_00403b49(x, pos, n);
-    }
-    ~fn_004029e8_Obj();
-    fn_004029e8_Obj fn_004029e8(unsigned int pos, unsigned int n) const;
-    void fn_005da20a(bool);
-    void fn_00403b49(const fn_004029e8_Obj&, unsigned int, unsigned int);
-    fn_004029e8_Alloc m0;
-};
 
 // HYPOTHESIS: std::string::substr(pos, n), returning basic_string(*this, pos, n); m0 is the allocator copied from a default temporary
 // FUNCTION: STARFLEETOP 0x004029e8
