@@ -1,5 +1,6 @@
 #include "Tiger/tstring.h"
 #include "unsorted/tVisObject.h"
+#include "unsorted/tScrollBar.h"
 
 // HYPOTHESIS: the exception the constructor throws when its pixels cannot be allocated; 0x00692f60
 // builds it from a message and a value, and it is thrown with the throw information at 0x008273b8.
@@ -37,6 +38,8 @@ public:
 	tSurface( short x, short y, int width, int height, int a, unsigned char b, unsigned char c );
 	tSurface( void *pixels, short x, short y, short width, short height, int a, unsigned char b, unsigned char c );
 	virtual ~tSurface();
+	// HYPOTHESIS: the callers reach it as c_tVisObject_Field14::fn_00675280 (tVisObject.h).
+	bool fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
 
 	void *field_60;
 	tRect field_64;
@@ -90,4 +93,44 @@ tSurface::tSurface( void *pixels, short x, short y, short width, short height, i
 	field_6C.y = 0;
 	field_64.mSet( 0, 0, width, height );
 	field_34 = tRect( x, y, x + width, y + height );
+}
+
+// HYPOTHESIS: 0x006951e0 copies the part of an image inside a rectangle to pixels; the values
+// after the destination's pixels are not known.
+void fn_006951e0( c_tScrollBar_FieldA8 *image, int x, int y, int left, int top, int right, int bottom,
+	void *pixels, int a, int height, unsigned char b, int c, int d );
+
+// HYPOTHESIS: draws an image with its hot spot at a point, clipped to the area given (in the
+// owner's coordinates) and to the surface; returns whether anything was drawn.
+// FUNCTION: STARFLEETOP 0x00675280
+bool tSurface::fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b )
+{
+	if ( field_60 == 0 )
+		return false;
+
+	tRect clip;
+	if ( area != 0 )
+	{
+		clip = *area;
+		clip.mOffset( -field_6C.x, -field_6C.y );
+		clip.mClip( &field_64 );
+	}
+	else
+		clip = field_64;
+
+	x -= field_6C.x + image->field_04;
+	y -= field_6C.y + image->field_06;
+	tRect r( x, y, x + image->field_00, y + image->field_02 );
+
+	if ( !r.mIsEnclosedBy( &clip ) )
+	{
+		if ( !r.mIntersects( &clip ) )
+			return false;
+		r.mClip( &clip );
+		if ( r.mIsEmpty() )
+			return false;
+	}
+
+	fn_006951e0( image, x, y, r.left, r.top, r.right, r.bottom, field_60, field_70, field_64.mHeight(), field_74, a, b );
+	return true;
 }

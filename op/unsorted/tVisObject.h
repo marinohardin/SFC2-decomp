@@ -50,6 +50,24 @@ struct tRect
 		return *this;
 	}
 
+	inline unsigned char mIntersects( const tRect *pR )
+	{
+		return( ( left < pR->right ) && ( top < pR->bottom )
+			&& ( right > pR->left ) && ( bottom > pR->top ) );
+	};
+
+	inline unsigned char mIsEnclosedBy( const tRect *pE ) const
+	{
+		return( ( pE->left <= left ) && ( pE->top <= top )
+			&& ( pE->right >= right ) && ( pE->bottom >= bottom ) );
+	};
+
+	inline void mOffset( int deltaX, int deltaY )
+	{
+		left += (short)deltaX;  right  += (short)deltaX;
+		top  += (short)deltaY;  bottom += (short)deltaY;
+	};
+
 	inline void mClip( const tRect *pC )
 	{
 		if ( left < pC->left )		left	= pC->left;
