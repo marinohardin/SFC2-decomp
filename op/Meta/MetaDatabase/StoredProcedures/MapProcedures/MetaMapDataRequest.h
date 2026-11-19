@@ -38,6 +38,7 @@ namespace nStoredProcedureArguments
 				virtual	void StreamIn( nDataStore::tInput& input );
 
 				void fn_0054c0d5();
+				tClientHex& operator=( const tClientHex& other );
 
 				int8u	m_0c;
 				int8u	m_0d;

@@ -198,4 +198,24 @@ void tMetaMapDataRequest::tResponse::fn_0054c311( tMetaMapHex& hex, int32 maxEco
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0054c414
+tMetaMapDataRequest::tResponse::tClientHex& tMetaMapDataRequest::tResponse::tClientHex::operator=( const tClientHex& other )
+{
+	fObjectID = other.fObjectID;
+	fObjectVersion = other.fObjectVersion;
+	m_0c = other.m_0c;
+	m_0d = other.m_0d;
+	m_10 = other.m_10;
+	m_14 = other.m_14;
+	m_15 = other.m_15;
+	m_18 = other.m_18;
+	m_1c = other.m_1c;
+	m_20 = other.m_20;
+	m_24 = other.m_24;
+	m_28 = other.m_28;
+	m_29 = other.m_29;
+	m_2a = other.m_2a;
+	return *this;
+}
+
 }
