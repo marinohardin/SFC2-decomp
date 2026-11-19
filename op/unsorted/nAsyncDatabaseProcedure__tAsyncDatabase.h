@@ -50,7 +50,7 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction25();
 		virtual void vfunction26();
 		virtual void vfunction27();
-		virtual void vfunction28();
+		virtual void vfunction28( std::vector<tPoliticalTensionMatrix>* matrices );
 		virtual void vfunction29();
 		virtual void vfunction30();
 		virtual void vfunction31( tPoliticalTensionMatrix* matrix );
