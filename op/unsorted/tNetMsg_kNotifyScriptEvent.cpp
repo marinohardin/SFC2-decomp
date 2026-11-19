@@ -27,3 +27,9 @@ int vfunction33_result::fn_00410223()
 {
 	return field_64;
 }
+
+// FUNCTION: STARFLEETOP 0x00410227
+void vfunction33_result::fn_00410227(int value)
+{
+	field_64 = value;
+}

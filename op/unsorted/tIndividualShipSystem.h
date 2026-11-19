@@ -14,6 +14,7 @@ struct vfunction33_result
     // holds for the owner.
     char fn_0041021f();
     int fn_00410223();
+    void fn_00410227(int value);
 
     char pad00[0x1c];
     int field_1c;
