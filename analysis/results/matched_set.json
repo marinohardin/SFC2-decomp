@@ -1513,6 +1513,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040b4c6": {
+   "name": "tGLPixFmt::scalar_deleting_destructor",
+   "symbol": "??_GtGLPixFmt@@UAEPAXI@Z",
+   "unit": "unsorted/tGLPixFmt.cpp",
+   "size": 29,
+   "score": 5.0,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040bd69": {
    "name": "tMouseMgr_Base::~tMouseMgr_Base",
    "symbol": "??1tMouseMgr_Base@@UAE@XZ",
