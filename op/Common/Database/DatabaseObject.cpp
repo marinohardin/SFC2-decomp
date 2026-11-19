@@ -360,4 +360,16 @@ void tDatabaseObject::RemoveReference()
 	CheckForDeath();
 }
 
+// FUNCTION: STARFLEETOP 0x006fbce0
+void tDatabaseObject::CheckForDeath()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	if( !fAlive && fReferenceCount == 0 )
+	{
+		guard.Leave();
+		delete this;
+	}
+}
+
 }
