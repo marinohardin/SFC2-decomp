@@ -37315,6 +37315,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006f5860": {
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::Instance",
+   "symbol": "?Instance@tHeartbeatTimerData@tHeartbeatTimer@@SAPAV12@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",

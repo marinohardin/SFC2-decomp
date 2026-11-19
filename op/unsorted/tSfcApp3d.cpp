@@ -556,11 +556,11 @@ public:
 
 fn_0060b3f4_Object *fn_0060b3f4();
 
-// The heartbeat timer (its SDK name, tHeartbeatTimer::Heartbeat).
-class tHeartbeatTimer {
-public:
-	static void Heartbeat();
-};
+#include "Common/Timer/HeartbeatTimer.h"
+
+
+
+
 
 #include "unsorted/fn_0090bed4_Object.h"
 
