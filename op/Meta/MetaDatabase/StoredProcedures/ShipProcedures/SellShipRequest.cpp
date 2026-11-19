@@ -22,3 +22,38 @@ double tTradeInRates::fGetRate( const std::string& shipClass )
 	validate( rate != fTradeInRates.end() );
 	return rate->second;
 }
+#line 26
+// HYPOTHESIS: a second rate table (repair rates) with a find helper at 0x0055973a taking the key
+// by value; its end node sits at +0x54 and the rate at +0x20 of a node.
+struct fShipRepairRateNode
+{
+	char pad[0x20];
+	double fRate;
+};
+
+struct fShipRepairRateTree
+{
+	void find( fShipRepairRateNode** pResult, int key );
+	fShipRepairRateNode* end() { return fpEnd; }
+
+	char pad[4];
+	fShipRepairRateNode* fpEnd;
+};
+
+class tShipRepairRates
+{
+public:
+	double fGetRate( fShipRepairRateNode* rate );
+
+	char fPad[0x50];
+	fShipRepairRateTree fRepairRates;
+};
+
+// FUNCTION: STARFLEETOP 0x0055a18e
+double tShipRepairRates::fGetRate( fShipRepairRateNode* rate )
+{
+	fRepairRates.find( &rate, (int)rate );
+#line 170
+	validate( rate != fRepairRates.end() );
+	return rate->fRate;
+}

@@ -19486,6 +19486,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0055a18e": {
+   "name": "FUN_0055a18e",
+   "symbol": "?fGetRate@tShipRepairRates@@QAENPAUfShipRepairRateNode@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
