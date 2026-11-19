@@ -1882,6 +1882,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0040c920": {
+   "name": "tCommonSettings::~tCommonSettings",
+   "symbol": "??1tCommonSettings@@UAE@XZ",
+   "unit": "unsorted/tCommonSettings.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",

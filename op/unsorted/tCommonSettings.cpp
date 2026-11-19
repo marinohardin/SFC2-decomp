@@ -14,6 +14,7 @@ tCommonSettings::tCommonSettings()
 }
 
 // FUNCTION: STARFLEETOP 0x0040c904
+// FUNCTION: STARFLEETOP 0x0040c920
 tCommonSettings::~tCommonSettings()
 {
 }
