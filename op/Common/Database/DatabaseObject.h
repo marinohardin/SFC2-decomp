@@ -57,6 +57,7 @@ public:
 	virtual int32u				GetLockID() const;
 	virtual bool				IsLocked() const;
 
+	void Kill();
 	bool IsDead();
 	void AddReference();
 	void RemoveReference();
@@ -72,6 +73,8 @@ protected:
 	// HYPOTHESIS: the SDK's parameter type is tDatabase::iLockID, see SetLockID.
 	virtual bool Lock( int32u lockId );
 	virtual void UnLock();
+	virtual tThreadEvent* GetLockEvent();
+	virtual void CheckForDeath();
 
 //Fields
 	mutable tOptex fAccess;

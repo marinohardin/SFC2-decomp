@@ -315,4 +315,15 @@ bool tDatabaseObject::IsLocked() const
 	return true;
 }
 
+// FUNCTION: STARFLEETOP 0x006fb7f0
+void tDatabaseObject::Kill()
+{
+	tOptex::tGuard guard( &fAccess );
+
+	fAlive = false;
+	guard.Leave();
+
+	CheckForDeath();
+}
+
 }
