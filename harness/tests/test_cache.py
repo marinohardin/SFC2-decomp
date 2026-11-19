@@ -232,3 +232,31 @@ def test_a_malformed_entry_is_a_miss(cached, text):
 def test_an_entry_that_cannot_be_written_is_left_out(cached, monkeypatch):
     monkeypatch.setattr(cache, '_score_path', lambda key: '/nonexistent-dir/x/' + key + '.json')
     cache.store_score('ab' + '0' * 62, {'result': {}, 'side_by_side': ''})
+
+
+def test_a_quoted_include_is_also_looked_for_beside_the_files_that_included_it(tmp_path):
+    """MSVC: beside the including file, then beside each file above it, then the /I folders."""
+    tree(tmp_path, {'u.cpp': '#include "sub/a.h"\n', 'sub/a.h': '#include "b.h"\n',
+                    'b.h': '', 'inc/b.h': ''})
+    missing = []
+    deps = cache.dependencies(str(tmp_path / 'u.cpp'), [str(tmp_path / 'inc')], missing)
+    assert os.path.realpath(tmp_path / 'b.h') in deps
+    assert os.path.realpath(tmp_path / 'inc/b.h') not in deps
+    assert os.path.normpath(os.path.realpath(tmp_path / 'sub') + '/b.h') in missing
+
+
+def test_a_header_that_appears_earlier_on_the_search_rebuilds(unit, tmp_path):
+    src, build, calls = unit
+    (src / 'u.cpp').write_text('#include <u.h>\nint f() { return 1; }\n')
+    first = build({'flags': '/O1 /Iearly /I.'})
+    assert build({'flags': '/O1 /Iearly /I.'}).get('cached') and calls() == 1
+    tree(src, {'early/u.h': 'int f(); // shadows ./u.h\n'})
+    assert not build({'flags': '/O1 /Iearly /I.'}).get('cached') and calls() == 2
+    assert first['ok']
+
+
+def test_the_compilers_environment_is_part_of_the_key(unit, monkeypatch):
+    src, build, calls = unit
+    build()
+    monkeypatch.setenv('CL', '/DX=1')
+    assert not build().get('cached') and calls() == 2

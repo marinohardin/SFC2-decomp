@@ -142,8 +142,10 @@ A second run does only the work that changed (`lib/cache.py`):
 - **Incremental build.** A unit is rebuilt only when its build key changes: the compile command,
   the compiler (the native wrapper, wibo and the MSVC tree, or the image's id), the MSVC
   environment, the folder it compiles in, and the content of every file it includes, found by
-  following every `#include` line through the command's `/I` folders whatever `#if` surrounds
-  it. A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
+  following every `#include` line whatever `#if` surrounds it, searched as MSVC searches (a
+  quoted include beside its file, then beside each file above it, then the `/I` folders), and
+  every path searched before the one found, so a header that appears earlier on the search
+  rebuilds the unit; also the environment the compiler reads (`CL`, `_CL_`, `INCLUDE`, `LIB`). A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
   the unit's build folder, `build.key`, and a reused build prints "unchanged, not rebuilt".
 - **Score cache.** A function is rescored only when its score key changes: its object (COFF
   timestamp masked), the symbol scored, its address and size, the judge's own code (every module of `lib/`) and objdiff,

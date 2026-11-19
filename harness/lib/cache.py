@@ -23,8 +23,11 @@ import subprocess
 import threading
 
 from . import paths
-from .claims import INCLUDE, _resolve
+from .claims import INCLUDE
 
+# The environment the wrappers and the compiler read.
+KEY_ENV = ('MSVC_VERSION', 'MSVC_EXTRA_INCLUDE', 'MSVC_LIB', 'MSVC_LIB_SET', 'SFCOP_ROOT',
+           'SFCOP_MSVC_IMAGE', 'CL', '_CL_', 'INCLUDE', 'LIB')
 ANY_INCLUDE = re.compile(r'^\s*#\s*include\b')
 LIB = os.path.dirname(os.path.abspath(__file__))
 _memo = {}
@@ -107,13 +110,18 @@ def include_dirs(cmd, env):
     return dirs
 
 
-def dependencies(unit_path, dirs):
+def dependencies(unit_path, dirs, missing=None):
     """Every file the unit reads that can be found: itself and what it includes, directly or
     through other files, following every #include line. None when an #include line names no
-    file (a macro include): such a unit cannot be keyed."""
-    seen, todo = set(), [os.path.realpath(unit_path)]
+    file (a macro include): such a unit cannot be keyed.
+
+    A quoted include is looked for as MSVC does: beside the including file, then beside each
+    file that included it, back to the unit, then on `dirs`; an angle include only on `dirs`.
+    Each path looked at before the one found (every path, when none is) is added to `missing`,
+    so a header that later appears earlier on the search changes the key."""
+    seen, todo = set(), [(os.path.realpath(unit_path), ())]
     while todo:
-        p = todo.pop()
+        p, parents = todo.pop()
         if p in seen:
             continue
         seen.add(p)
@@ -122,15 +130,25 @@ def dependencies(unit_path, dirs):
                 lines = f.readlines()
         except OSError:
             continue
+        chain = (os.path.dirname(p),) + parents
         for line in lines:
             if not ANY_INCLUDE.match(line):
                 continue
             m = INCLUDE.match(line)
             if not m:
                 return None
-            q = _resolve(m.group(2), m.group(1) == '"', os.path.dirname(p), dirs)
-            if q is not None:
-                todo.append(q)
+            name = m.group(2)
+            search = (list(chain) if m.group(1) == '"' else []) + list(dirs)
+            found = None
+            for d in search:
+                cand = os.path.join(d, name)
+                if os.path.isfile(cand):
+                    found = os.path.realpath(cand)
+                    break
+                if missing is not None:
+                    missing.append(os.path.normpath(cand))
+            if found is not None:
+                todo.append((found, chain))
     return sorted(seen)
 
 
@@ -143,13 +161,15 @@ def build_key(cmd, cwd, env, unit_path):
     if comp is None:
         return None
     dirs = [d if os.path.isabs(d) else os.path.join(cwd, d) for d in include_dirs(cmd, env)]
-    deps = dependencies(unit_path, dirs)
+    missing = []
+    deps = dependencies(unit_path, dirs, missing)
     if deps is None:
         return None
-    h = hashlib.sha256(b'build 1\0' + comp.encode() + b'\0' + cwd.encode() + b'\0')
+    h = hashlib.sha256(b'build 2\0' + comp.encode() + b'\0' + cwd.encode() + b'\0')
     h.update('\0'.join(cmd).encode() + b'\0')
-    for v in ('MSVC_VERSION', 'MSVC_EXTRA_INCLUDE', 'MSVC_LIB', 'MSVC_LIB_SET'):
+    for v in KEY_ENV:
         h.update(f'{v}={env.get(v, "")}\0'.encode())
+    h.update('\0'.join(sorted(set(missing))).encode() + b'\0')
     _hash_files(h, deps)
     return h.hexdigest()
 
