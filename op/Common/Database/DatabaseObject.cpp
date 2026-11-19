@@ -302,4 +302,17 @@ int32u tDatabaseObject::GetLockID() const
 	return fLockID;
 }
 
+// MATCH-ONLY: back to this file's own numbering; under the one above, this would share lines with MakeReadOnly.
+#line 307
+// FUNCTION: STARFLEETOP 0x006fb6a0
+bool tDatabaseObject::IsLocked() const
+{
+	tOptex::tGuard guard( &fAccess );
+
+	if( fLockID == 0 )
+		return false;
+
+	return true;
+}
+
 }

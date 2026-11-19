@@ -37837,6 +37837,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fb6a0": {
+   "name": "nDatabase::tDatabaseObject::IsLocked",
+   "symbol": "?IsLocked@tDatabaseObject@nDatabase@@UBE_NXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
