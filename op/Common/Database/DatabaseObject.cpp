@@ -1,6 +1,9 @@
 // Common/Database/DatabaseObject.cpp
 
 #include "Common/Database/DatabaseObject.h"
+#include "Common/Exceptions/Validate.h"
+#include "Common/OSVersion.h"
+#include "Common/Thread/Optex.inl"
 
 inline tOptex::~tOptex()
 {
@@ -42,6 +45,15 @@ tDatabaseObject::tDatabaseObject( iObjectVersion versionNumber )
 	, fLockEvent( new tThreadEvent( true, false, "", tThreadState::kUseThreadObject ) )
 	, fLockID( 0 )
 {
+}
+
+// FUNCTION: STARFLEETOP 0x006fa6d0
+tDatabaseObject::tDatabaseObject( const tDatabaseObject& copy )
+	: fAlive( true )
+	, fReferenceCount( 0 )
+	, fLockEvent( NULL )
+{
+	*this = copy;
 }
 
 // FUNCTION: STARFLEETOP 0x006fa6b0
