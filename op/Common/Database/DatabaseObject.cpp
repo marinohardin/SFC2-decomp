@@ -83,6 +83,13 @@ tDatabaseObject::tDatabaseObject( iObjectVersion versionNumber )
 {
 }
 
+// FUNCTION: STARFLEETOP 0x006fa6b0
+tDatabaseObject::~tDatabaseObject()
+{
+	// HYPOTHESIS: the constructor allocates fLockEvent, so the destructor releases it.
+	delete fLockEvent;
+}
+
 // FUNCTION: STARFLEETOP 0x006fa6d0
 tDatabaseObject::tDatabaseObject( const tDatabaseObject& copy )
 	: fAlive( true )
@@ -90,13 +97,6 @@ tDatabaseObject::tDatabaseObject( const tDatabaseObject& copy )
 	, fLockEvent( NULL )
 {
 	*this = copy;
-}
-
-// FUNCTION: STARFLEETOP 0x006fa6b0
-tDatabaseObject::~tDatabaseObject()
-{
-	// HYPOTHESIS: the constructor allocates fLockEvent, so the destructor releases it.
-	delete fLockEvent;
 }
 
 // FUNCTION: STARFLEETOP 0x006fa870

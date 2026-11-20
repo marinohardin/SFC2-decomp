@@ -10,24 +10,6 @@ bool tID::IsValid() const
 	return fObjectID != 0 ? true : false;
 }
 
-// FUNCTION: STARFLEETOP 0x006fa460
-bool tID::operator==( const tID& compare ) const
-{
-	return fObjectID == compare.fObjectID ? true : false;
-}
-
-// FUNCTION: STARFLEETOP 0x006fa470
-bool tID::operator!=( const tID& compare ) const
-{
-	return fObjectID != compare.fObjectID ? true : false;
-}
-
-// FUNCTION: STARFLEETOP 0x006fa480
-bool tID::operator<( const tID& compare ) const
-{
-	return fObjectID < compare.fObjectID ? true : false;
-}
-
 }
 
 // HYPOTHESIS: tgPrefsPart derives from tPart; only the slot mActivate touches (+0xc) is known.
@@ -46,4 +28,27 @@ public:
 void tgPrefsPart::mActivate( void )
 {
 	fField0c = 0;
+}
+
+namespace nDatabase
+{
+
+// FUNCTION: STARFLEETOP 0x006fa460
+bool tID::operator==( const tID& compare ) const
+{
+	return fObjectID == compare.fObjectID ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa470
+bool tID::operator!=( const tID& compare ) const
+{
+	return fObjectID != compare.fObjectID ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa480
+bool tID::operator<( const tID& compare ) const
+{
+	return fObjectID < compare.fObjectID ? true : false;
+}
+
 }
