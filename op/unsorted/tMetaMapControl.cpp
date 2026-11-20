@@ -658,7 +658,7 @@ void tMetaMapControl::vfunction30()
 		field_1e4 = 0;
 	}
 	fn_005eb3c5_class pair;
-	if ( fn_00607d61()->fn_0060a54d()->fn_005e5b2d( &pair ) )
+	if ( fn_00607d61()->fn_0060a54d()->fn_005e5b2d( (tMetaClientMapReceiver*) &pair ) )
 	{
 		fn_005e36a3();
 		if ( pair.fn_005eb407() )
@@ -852,7 +852,7 @@ bool tMetaMapControl::vfunction31( c_tListBox_Base_Event *event )
 			redraw = true;
 		}
 		else
-			map->fn_005e620c( &point, &field_34, &redraw );
+			map->fn_005e620c( (long) &point, (long) &field_34, &redraw ); // HYPOTHESIS: the panel declares the first two arguments long; the caller passes the mouse point and the control's rectangle
 	}
 	if ( redraw )
 		fn_0045f4c2();
