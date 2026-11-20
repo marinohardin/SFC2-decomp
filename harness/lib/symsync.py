@@ -13,7 +13,9 @@ tool and never by the model. Run before the loop commits the round:
    row that already has another `mangled` or `add` symbol (the session was refused for it in
    build-and-verify, and a Stop hook that let it through after three refusals does not write it).
 
-Every line it prints starts with INFO or WARN. The exit status is 0.
+After its edits it runs `tools/symbols.py check` on the table; on a finding it restores the
+table's earlier content, prints ERROR lines and exits 1. Every other line starts with INFO or
+WARN; the exit status is 0.
 
     python3 -m harness.lib.symsync --scratch
 
@@ -22,6 +24,7 @@ is the whole-tree step's check: claim (all) then check, on a copy of the table; 
 import contextlib
 import io
 import json
+import os
 import sys
 
 from . import paths, symtab, verify
@@ -67,6 +70,10 @@ def sync(path, address, table=None, src_root=None):
     tool = symtab.tool()
     with open(path, encoding='utf-8', errors='replace') as f:
         text = f.read()
+    table = table or paths.SYMBOL_TABLE
+    table_path = table
+    with open(table_path, encoding='utf-8', newline='') as f:
+        previous = f.read()
     res, _ = own_result(text, address)
     lines = []
     if res is None:
@@ -76,7 +83,7 @@ def sync(path, address, table=None, src_root=None):
     lines += [f'INFO  symbol table: {x}' for x in out] if code == 0 else \
         [f'WARN  symbol table: claim sync failed: {x}' for x in out]
     rows = {}
-    for r in tool.read_rows(table or tool.default_table()):
+    for r in tool.read_rows(table):
         if r['kind'] in ('function', 'thunk'):
             rows[r['address']] = r
     claimed = tool.current_claims(src_root or paths.SRC_ROOT)
@@ -104,13 +111,28 @@ def sync(path, address, table=None, src_root=None):
             lines.append(f'INFO  symbol table: {target} gets {sym} (add)')
         else:
             lines += [f'WARN  symbol table: {x}' for x in out]
+    bad = checked(tool, table_path, src_root)
+    if bad:
+        with open(table_path, 'w', encoding='utf-8', newline='') as f:
+            f.write(previous)
+        lines += [f'ERROR symbol table: {x}' for x in bad]
+        lines.append('ERROR symbol table: restored to its content before this sync')
     return lines
+
+
+def checked(tool, table, src_root=None):
+    """The ERROR lines of `tools/symbols.py check` on the table, without a build to compare (the
+    session's run is newer than the build folder's symbols.tsv); [] when it is clean."""
+    scratch = os.path.join(paths.STATE, 'symsync-build')
+    os.makedirs(scratch, exist_ok=True)
+    code, out = run_tool(tool, ['check', '--functions', paths.FUNCTIONS_CSV, '--build', scratch,
+                                '--src-root', src_root or paths.SRC_ROOT], table)
+    return [x for x in out if x.startswith('ERROR')] or (['check failed'] if code else [])
 
 
 def scratch_check():
     """`tools/symbols.py claim` for every claim, then `check`, on a copy of the committed table in
     the state folder (the whole-tree step). Prints what `check` reports; 0 when it is clean."""
-    import os
     import shutil
     tool = symtab.tool()
     os.makedirs(paths.STATE, exist_ok=True)
@@ -130,9 +152,10 @@ def main(argv):
     if len(argv) != 2:
         print(__doc__)
         return 2
-    for line in sync(argv[0], argv[1]):
+    lines = sync(argv[0], argv[1])
+    for line in lines:
         print(line)
-    return 0
+    return 1 if any(x.startswith('ERROR') for x in lines) else 0
 
 
 if __name__ == '__main__':

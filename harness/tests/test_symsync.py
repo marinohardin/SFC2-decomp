@@ -3,6 +3,8 @@ rebuilt units are synced, and an unclaimed callee with no symbol gets the one it
 names, when the seed's rule accepts it."""
 import json
 
+import pytest
+
 from harness.lib import paths, symsync, symtab
 
 HEAD = 'address\tkind\tname\tclass\tsymbol\tsymbol_evidence\tdeclaration\tevidence\n'
@@ -16,7 +18,20 @@ def reloc(addr, symbol, status='ok', typ='REL32'):
     return dict(type=typ, symbol=symbol, exe_address=addr, status=status, offset=1)
 
 
+@pytest.fixture(autouse=True)
+def _env(monkeypatch, tmp_path):
+    ENV['mp'] = monkeypatch
+    monkeypatch.setattr(paths, 'STATE', str(tmp_path / 'state'))
+
+
+ENV = {}
+
+
 def tree(tmp_path, rows, relocs):
+    csv = tmp_path / 'functions.csv'
+    csv.write_text('address,kind\n' + ''.join(f'{r.split(chr(9))[0][2:]},function\n'
+                                              for r in rows))
+    ENV['mp'].setattr(paths, 'FUNCTIONS_CSV', str(csv))
     src = tmp_path / 'op'
     src.mkdir()
     (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid f() {}\n')
@@ -112,3 +127,31 @@ def test_scratch_check_syncs_a_copy_and_leaves_the_committed_table_alone(tmp_pat
     assert table.read_text() == before
     copy = (tmp_path / 'state' / 'wholetree-symbols.tsv').read_text()
     assert copy.split('\n')[1].split('\t')[4:6] == ['', '']
+
+
+def test_a_table_that_fails_check_after_the_sync_is_restored_and_reported(tmp_path):
+    out, table, src = tree(tmp_path, [
+        row('0x00401000', 'f', '?old@@YAXXZ', 'claim', 'claim'),
+        row('0x00401200', 'fn_00401200'), row('0x00401300', 'fn_00401300')],
+        [reloc('0x00401200', '?fn_00401200@@YAXXZ'), reloc('0x00401300', '?fn_00401200@@YAXXZ')])
+    # the same symbol would stand at two addresses: the second add refuses, so the table is fine
+    lines = symsync.sync(out, '0x00401000', table, src)
+    assert not [x for x in lines if x.startswith('ERROR')]
+    # a table that check rejects (a row the functions list lacks) is put back as it was
+    open(table, 'a').write(row('0x00409999', 'fn_00409999') + '\n')
+    before = open(table).read()
+    lines = symsync.sync(out, '0x00401000', table, src)
+    assert open(table).read() == before
+    assert any(x.startswith('ERROR') and '0x00409999' in x for x in lines)
+    assert lines[-1] == 'ERROR symbol table: restored to its content before this sync'
+    assert symsync.main([out, '0x00401000']) == 1      # the exit status says so
+
+
+def test_the_default_table_is_resolved_through_paths(tmp_path, monkeypatch):
+    out, table, src = tree(tmp_path, [
+        row('0x00401000', 'f', '?old@@YAXXZ', 'claim', 'claim'),
+        row('0x00401200', 'fn_00401200')], [reloc('0x00401200', '?fn_00401200@@YAXXZ')])
+    monkeypatch.setattr(paths, 'SRC_ROOT', src)
+    monkeypatch.setattr(paths, 'SYMBOL_TABLE', table)
+    assert symsync.main([out, '0x00401000']) == 0
+    assert rows_of(table)['0x00401200'][4:6] == ['?fn_00401200@@YAXXZ', 'add']

@@ -348,16 +348,23 @@ while :; do
             code=6
             echo "ERROR $addr: the whole-tree checks failed (see $tag.wholetree.txt)"
         fi
+        # The symbol table is the one non-source file a lane commits, and only the tool writes it
+        # (harness/lib/symsync.py): the claims of the rebuilt units, and the symbols of the
+        # unclaimed functions this one calls. A sync that fails leaves no half-synced table.
+        table=analysis/symbols/STARFLEETOP.tsv
+        if [ "$code" = 0 ] && [ "$improved" = 1 ] && [ -f "$table" ] && [ -f tools/symbols.py ]; then
+            if python3 -m harness.lib.symsync "$tag.after.json" "$addr" > "$tag.symbols.txt" 2>&1; then
+                grep -E '^(WARN|ERROR)' "$tag.symbols.txt"
+            else
+                grep -v '^INFO' "$tag.symbols.txt"
+                git checkout -q -- "$table"
+                code=7
+                echo "ERROR $addr: the symbol table sync failed (see $tag.symbols.txt); the table is restored"
+            fi
+        fi
         if [ "$code" = 0 ] && [ "$improved" = 1 ]; then
             outcome=$([ "$kind" = exact ] && echo exact || echo improved)
             name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
-            # The symbol table is the one non-source file a lane commits, and only the tool
-            # writes it (harness/lib/symsync.py): the claims of the rebuilt units, and the
-            # symbols of the unclaimed functions this one calls.
-            table=analysis/symbols/STARFLEETOP.tsv
-            if [ -f "$table" ] && [ -f tools/symbols.py ]; then
-                python3 -m harness.lib.symsync "$tag.after.json" "$addr" 2>&1 | tee "$tag.symbols.txt" | grep -E '^(WARN|ERROR)'
-            fi
             git add -A -- "$src"
             [ -f "$table" ] && git add -- "$table"
             git commit -q -m "feat(op): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \

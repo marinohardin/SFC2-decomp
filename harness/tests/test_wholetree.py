@@ -114,8 +114,7 @@ def test_a_symbol_table_finding_fails_the_step_and_runs_on_a_copy():
     ok, msg = wholetree.check(run, {})
     assert not ok
     assert 'symbols (tools/symbols.py claim, check) failed:\n  ERROR 0x00401000: symbol listed twice' in msg
-    assert run.calls[-1][-2:] == ['harness.lib.symsync', '--scratch'] or \
-        run.calls[-1][-3:] == ['-m', 'harness.lib.symsync', '--scratch']
+    assert run.calls[-1] == [sys.executable, '-m', 'harness.lib.symsync', '--scratch']
 
 
 def test_every_failure_is_reported_at_once_with_one_closing_sentence():

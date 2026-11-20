@@ -64,7 +64,7 @@ TABLE = (TABLE_HEAD
          + '0x00401200\tfunction\tfn_00401200\t\t\t\t\tnone\n')
 
 
-def _lane_repo(tmp_path, with_table=False):
+def _lane_repo(tmp_path, with_table=False, table=None):
     repo = tmp_path / 'repo'
     shutil.copytree(HARNESS, repo / 'harness',
                     ignore=shutil.ignore_patterns('__pycache__', 'tests', 'proof'))
@@ -79,7 +79,7 @@ def _lane_repo(tmp_path, with_table=False):
     if with_table:
         (repo / 'op' / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nint a;\n')
         (repo / 'analysis' / 'symbols').mkdir()
-        (repo / 'analysis' / 'symbols' / 'STARFLEETOP.tsv').write_text(TABLE)
+        (repo / 'analysis' / 'symbols' / 'STARFLEETOP.tsv').write_text(table or TABLE)
         (repo / 'tools').mkdir()
         shutil.copy(os.path.join(os.path.dirname(HARNESS), 'tools', 'symbols.py'),
                     repo / 'tools' / 'symbols.py')
@@ -89,7 +89,8 @@ def _lane_repo(tmp_path, with_table=False):
     csv = tmp_path / 'functions.csv'
     csv.write_text('address,size,name,mangled,demangled,name_source,translation_unit,tu_evidence,'
                    'headers,is_library,library,kind,tags\n'
-                   '00401000,4,f,,void f(void),rtti-class-recovery,,,,0,,function,\n')
+                   '00401000,4,f,,void f(void),rtti-class-recovery,,,,0,,function,\n'
+                   + ('00401200,4,fn_00401200,,,,,,,0,,function,\n' if with_table else ''))
     _git(repo, 'init', '-q', '-b', 'grind/lane-x')
     _git(repo, 'add', '-A')
     _git(repo, '-c', 'user.name=T', '-c', 'user.email=t@example.invalid', 'commit', '-q', '-m', 'base')
@@ -151,6 +152,16 @@ def test_a_lane_commits_the_symbol_table_with_the_source_and_the_trailer_stays_l
     assert body.splitlines()[-1] == 'Harness-Score: STARFLEETOP 0x00401000 exact'
     assert _git(repo, 'log', '-1', '--format=%(trailers:key=Harness-Score,valueonly)').strip() == \
         'STARFLEETOP 0x00401000 exact'
+
+
+def test_a_symbol_sync_that_fails_check_undoes_the_round_and_restores_the_table(tmp_path):
+    bad = TABLE + '0x00409999\tfunction\tfn_00409999\t\t\t\t\tnone\n'    # no such function
+    repo, state, env = _lane_repo(tmp_path, with_table=True, table=bad)
+    r = _run_loop(repo, env)
+    assert 'the symbol table sync failed' in r.stdout
+    assert (repo / 'analysis/symbols/STARFLEETOP.tsv').read_text() == bad
+    assert _git(repo, 'rev-list', '--count', 'HEAD').strip() == '1'
+    assert _git(repo, 'status', '--porcelain') == ''
 
 
 def test_a_round_that_is_undone_leaves_the_symbol_table_as_committed(tmp_path):
