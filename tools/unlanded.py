@@ -33,7 +33,8 @@ import subprocess
 import sys
 
 MATCHED_SET = 'analysis/results/matched_set.json'
-EXACT_TRAILER = re.compile(r'^Harness-Score:\s+\S+\s+(0x[0-9a-fA-F]{1,8})\s+exact\s*$', re.M)
+# A value of a Harness-Score trailer, as git's own parser prints it: `<module> <address> exact`.
+EXACT_VALUE = re.compile(r'^\S+\s+(0x[0-9a-fA-F]{1,8})\s+exact\s*$')
 
 
 def unlanded(base_functions, branch_functions):
@@ -60,11 +61,13 @@ def functions_at(ref, cwd=None):
 def trailer_exact(base, branch, cwd=None):
     """The functions (matched-set keys) that commits in `base..branch` record exact in a
     Harness-Score trailer."""
-    r = git('log', '--format=%B%x00', f'{base}..{branch}', cwd=cwd)
+    r = git('log', '--format=%(trailers:key=Harness-Score,valueonly)%x00', f'{base}..{branch}',
+            cwd=cwd)
     if r.returncode != 0:
         # Never "no trailers": that would report the lane as landed.
         raise RuntimeError(f'git log {base}..{branch} failed: {r.stderr.strip()}')
-    return {f'0x{int(a, 16):08x}': {'exact': True} for a in EXACT_TRAILER.findall(r.stdout)}
+    found = (EXACT_VALUE.match(v.strip()) for v in r.stdout.replace('\0', '\n').splitlines())
+    return {f'0x{int(m.group(1), 16):08x}': {'exact': True} for m in found if m}
 
 
 def local_branches(prefixes, cwd=None):

@@ -88,3 +88,16 @@ def test_a_failing_log_is_an_error_not_an_empty_list_of_trailers(tmp_path):
     with pytest.raises(RuntimeError, match='failed'):
         unlanded.trailer_exact('no-such-base', 'grind/lane-c', cwd=repo)
     assert unlanded.main.__name__ == 'main'
+
+
+def test_a_body_line_that_only_looks_like_the_trailer_does_not_count(tmp_path):
+    repo = _repo(tmp_path)
+    _git(repo, 'checkout', '-q', '-b', 'grind/lane-c')
+    (repo / 'a.cpp').write_text('x')
+    _git(repo, 'add', '-A')
+    # In the middle of the message, not in its trailer block.
+    _git(repo, 'commit', '-q', '-m', 'feat(op): match f (0x00405000)',
+         '-m', 'Harness-Score: STARFLEETOP 0x00405000 exact', '-m', 'A closing paragraph of prose.')
+    out = io.StringIO()
+    assert unlanded.report('develop', ['grind/'], cwd=repo, out=out) == 0
+    assert out.getvalue() == ''
