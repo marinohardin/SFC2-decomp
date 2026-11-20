@@ -72,6 +72,16 @@ stay; it is for the integrator, after a fix, not for making a new break pass.
     python3 tools/lint_claims.py                 # check; exit 0 when nothing new and nothing stale
     python3 tools/lint_claims.py --all           # also print the breaks the baseline holds
 
+line-macro (a warning)
+    A claimed (`// FUNCTION:`) function whose body uses a line macro (`__LINE__`, `__FILE__`,
+    `assert`, and every macro under op/ whose replacement mentions one, found transitively at run
+    time from the `#define` lines) has the source line number in its bytes, so it needs a `#line`
+    directive to pin it. A use is governed when a `#line` directive sits between the end of the
+    previous claimed definition (or the start of the file) and that use: before the function,
+    inside it ahead of the use, as `#line N` / `#line M` around a throw. Uses in comments and
+    string literals do not count. It is printed as `warning`, counted apart, never written to the
+    baseline, and does not change the exit status.
+
 Exit 0 when every break is in the baseline and every baseline row still occurs, 1 otherwise, 2
 when an input cannot be read.
 """
@@ -96,6 +106,9 @@ ROOT_TABLES = ('UNITS.tsv', 'manifest.tsv')
 FRAGMENT_KINDS = ('body-fragment', 'library-instance')
 JOINED_TAG = 'eh-prolog-joined'
 BASELINE_COLUMNS = ('check', 'path', 'address', 'reason')
+LINE_DIRECTIVE = re.compile(r'^[ \t]*#[ \t]*line\b', re.M)
+DEFINE = re.compile(r'^[ \t]*#[ \t]*define[ \t]+(\w+)((?:[^\n]|(?<=\\)\n)*)', re.M)
+BASE_LINE_MACROS = ('__LINE__', '__FILE__', 'assert')
 CHECKS = ('empty-body', 'fragment-claim', 'address-order', 'non-source')
 
 csv.field_size_limit(1 << 24)
@@ -118,7 +131,7 @@ class Break:
 
 class Stack:
     """The annotations stacked on one definition, and what follows them."""
-    __slots__ = ('anns', 'first_line', 'def_line', 'body', 'header', 'match_only')
+    __slots__ = ('anns', 'first_line', 'def_line', 'body', 'header', 'match_only', 'span')
 
     def __init__(self, anns, first_line):
         self.anns = anns              # [(kind, address, line)]
@@ -127,6 +140,7 @@ class Stack:
         self.body = None              # None: no body (`;`); else the body's code, comments blanked
         self.header = ''              # the definition's code before its body
         self.match_only = False       # a MATCH-ONLY: comment directly above the stack
+        self.span = None              # (offset of the body's first character, offset of its `}`)
 
 
 # --- reading C++ -----------------------------------------------------------------------------
@@ -239,6 +253,7 @@ def read_stacks(text):
                 if j >= 0:
                     s.header = code[starts[k]:i]
                     s.body = code[i + 1:j]
+                    s.span = (i + 1, j)
                 break
             i += 1
     return stacks
@@ -464,6 +479,77 @@ def lint(repo, op_root, ev, baseline=()):
     return sorted(out, key=lambda b: (b.path, b.line, b.check))
 
 
+def lint_lines(repo, op_root):
+    """(warnings, uses, governed): the line-macro warnings; they never reach the baseline."""
+    macros = line_macros(op_root)
+    out, uses, governed = [], 0, 0
+    for d, dirs, files in os.walk(op_root):
+        dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
+        for name in sorted(files):
+            if name.startswith('.') or not name.lower().endswith(SOURCE_EXTS + HEADER_EXTS):
+                continue
+            p = os.path.join(d, name)
+            rel = os.path.relpath(p, repo).replace(os.sep, '/')
+            with open(p, encoding='latin1') as f:
+                text = f.read()
+            w, u, g = check_lines(rel, text, read_stacks(text), macros)
+            out += w
+            uses += u
+            governed += g
+    return sorted(out, key=lambda b: (b.path, b.line)), uses, governed
+
+
+def line_macros(op_root):
+    """The line macros: the built-in ones plus every macro defined anywhere under op_root whose
+    replacement mentions one, to a fixed point."""
+    defs = {}
+    for d, dirs, files in os.walk(op_root):
+        dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
+        for name in sorted(files):
+            if name.startswith('.') or not name.lower().endswith(SOURCE_EXTS + HEADER_EXTS):
+                continue
+            with open(os.path.join(d, name), encoding='latin1') as f:
+                text = blank_comments(f.read())
+            for m in DEFINE.finditer(text):
+                defs[m.group(1)] = m.group(2)
+    found = set(BASE_LINE_MACROS)
+    grew = True
+    while grew:
+        grew = False
+        for name, repl in defs.items():
+            if name not in found and any(re.search(r'\b%s\b' % re.escape(f), repl) for f in found):
+                found.add(name)
+                grew = True
+    return found
+
+
+def check_lines(rel, text, stacks, macros):
+    """(warnings, uses, governed) for the claimed functions of one file."""
+    code = blank_comments(text)
+    use = re.compile(r'\b(?:%s)\b' % '|'.join(map(re.escape, sorted(macros))))
+    warnings, uses, governed = [], 0, 0
+    prev_end = 0
+    for s in stacks:
+        if s.span is None:
+            continue
+        lo, hi = s.span
+        start, prev_end = prev_end, hi
+        if not any(k == 'FUNCTION' for k, _, _ in s.anns):
+            continue
+        m = use.search(code, lo, hi)
+        if not m:
+            continue
+        uses += 1
+        if LINE_DIRECTIVE.search(code, start, m.start()):
+            governed += 1
+            continue
+        line = code.count('\n', 0, m.start()) + 1
+        warnings.append(Break('line-macro', rel, line, hx(s.anns[0][1]),
+                              f'warning: {hx(s.anns[0][1])} uses {m.group(0)} and no #line '
+                              'directive governs it'))
+    return warnings, uses, governed
+
+
 def baseline_text(breaks, old):
     rows = ['\t'.join(BASELINE_COLUMNS)]
     seen = set()
@@ -510,6 +596,7 @@ def main(argv=None):
             f.write(baseline_text(breaks, baseline))
         print(f'lint_claims: wrote {len({b.key for b in breaks})} rows to {baseline_path}')
         return 0
+    warnings, uses, governed = lint_lines(repo, op_root)
     found = {b.key for b in breaks}
     new = [b for b in breaks if b.key not in baseline]
     known = [b for b in breaks if b.key in baseline]
@@ -522,6 +609,10 @@ def main(argv=None):
     for check, path, address in stale:
         print(f'{path}: {check}: {address} is in the baseline but no longer occurs; '
               'delete its row from the baseline')
+    for w in warnings:
+        print(w)
+    print(f'lint_claims: line macros: {uses} claimed functions use one, {governed} governed by '
+          f'#line, {len(warnings)} flagged (warnings; exit status unaffected)')
     counts = ', '.join(f'{c} {sum(1 for b in new if b.check == c)}' for c in CHECKS)
     print(f'lint_claims: {len(new)} new ({counts}), {len(known)} in the baseline, '
           f'{len(stale)} stale baseline rows')
