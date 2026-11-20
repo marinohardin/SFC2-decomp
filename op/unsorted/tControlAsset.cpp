@@ -92,7 +92,7 @@ struct fn_00679140_vector
 	};
 
 	int fn_00679140();
-
+	int fn_00679170();
 
 
 	char	m_pad[4];
@@ -105,4 +105,11 @@ struct fn_00679140_vector
 int fn_00679140_vector::fn_00679140()
 {
 	return (m_first == 0 ? 0 : m_end - m_first);
+}
+
+// HYPOTHESIS: the same library vector's size() (last - first) in the same ternary form.
+// FUNCTION: STARFLEETOP 0x00679170
+int fn_00679140_vector::fn_00679170()
+{
+	return (m_first == 0 ? 0 : m_last - m_first);
 }
