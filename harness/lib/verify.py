@@ -26,7 +26,7 @@ import threading
 import sys
 import time
 
-from . import cache, coff, funcs, matched, paths, source, symtab, target
+from . import cache, clean, coff, funcs, matched, paths, source, symtab, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
@@ -811,6 +811,7 @@ def main(argv=None):
     if a.record and a.base:
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)
+    clean.record_worktree()
     try:
         base = load_base(a.base) if a.base else None
         sizes = load_base_sizes(a.base) if a.base else None

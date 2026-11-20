@@ -37,7 +37,7 @@ import time
 # Replace this script's own directory with the repository root: as harness/ on sys.path, this
 # file would shadow the stdlib queue module.
 sys.path[0] = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-from harness.lib import coff, funcs, matched, paths, workqueue  # noqa: E402
+from harness.lib import clean, coff, funcs, matched, paths, workqueue  # noqa: E402
 
 
 def main(argv):
@@ -45,6 +45,8 @@ def main(argv):
         print(__doc__)
         return 2
     cmd, args = argv[0], argv[1:]
+    if cmd in ('build', 'select', 'next'):
+        clean.record_worktree()
     tiers = workqueue.Tiers.from_env()
     difficult = workqueue.read_tsv(paths.DIFFICULT, workqueue.DIFFICULT_FIELDS)
     revisit = workqueue.read_tsv(paths.REVISIT, workqueue.REVISIT_FIELDS)
