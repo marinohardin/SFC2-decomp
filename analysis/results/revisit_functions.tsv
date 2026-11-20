@@ -393,3 +393,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x0040be33	tSfcMouseMgr::tSfcMouseMgr	0.00	2	opus	2026-11-19T21:47:31Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x004101ce	tEntity::vfunction3	100.00	2	opus	2026-11-19T23:09:17Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
 0x004109c9	tNetMsg_kDamage::vfunction1	100.00	2	opus	2026-11-19T23:33:13Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x0041ef62	tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint	94.62	2	opus	2026-11-20T00:03:26Z	attempt 2 (opus) did not raise the best; waits for Fable; best 94.62%
