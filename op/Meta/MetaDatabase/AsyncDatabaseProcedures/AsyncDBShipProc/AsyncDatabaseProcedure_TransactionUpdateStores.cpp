@@ -44,6 +44,7 @@ tTransactionUpdateStores::tTransactionUpdateStores( tAsyncDatabase* db ) : tAsyn
 }
 
 // FUNCTION: STARFLEETOP 0x00569c5c
+// FUNCTION: STARFLEETOP 0x00569c78
 #line 48
 tTransactionUpdateStores::~tTransactionUpdateStores()
 {
