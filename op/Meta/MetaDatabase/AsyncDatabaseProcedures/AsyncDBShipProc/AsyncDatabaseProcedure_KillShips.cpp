@@ -55,5 +55,5 @@ void tKillShips::fn_005682b2( const nDataStore::tBuffer* pBuffer )
 
 	nStoredProcedureArguments::tUpdateCharactersRequest update( fn_00719490( fn_00719580( 0xd ) ) );
 	update.fn_00553ba5( characters );
-	m_1c->fn_00714020( fn_005d27f1()->fn_005d2f20().Get(), 0xa, &update );
+	field_1c->fn_00714020( fn_005d27f1()->fn_005d2f20().Get(), 0xa, &update );
 }

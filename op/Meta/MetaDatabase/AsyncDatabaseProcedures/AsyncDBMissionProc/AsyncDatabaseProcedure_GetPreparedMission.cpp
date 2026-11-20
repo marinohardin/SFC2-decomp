@@ -69,7 +69,7 @@ void tGetPreparedMission::fn_005676f4( const nDataStore::tBuffer* pBuffer )
 	{
 		response.fn_00716310( 1 );
 	}
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }
 
 

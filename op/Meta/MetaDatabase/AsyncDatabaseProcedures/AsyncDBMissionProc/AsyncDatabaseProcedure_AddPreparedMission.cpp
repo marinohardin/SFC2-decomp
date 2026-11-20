@@ -69,5 +69,5 @@ void tAddPreparedMission::fn_00567270( const nDataStore::tBuffer* pBuffer )
 		response.fn_00550bdb( request.fPreparedMissions );
 		response.fn_00716310( 0 );
 	}
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }

@@ -35,5 +35,5 @@ void tAsyncDatabaseProcedure_GetMetaMapHexForUpdate::fn_00565464( const nDataSto
 	response.m_10 = *hex;
 
 	fn_00719050();
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }

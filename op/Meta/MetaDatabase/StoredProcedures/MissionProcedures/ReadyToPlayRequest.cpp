@@ -18,7 +18,7 @@ public:
 // FUNCTION: STARFLEETOP 0x005517de
 void tReadyToPlayRequest::vfunction3( nDataStore::tInput& input )
 {
-	nSwitch::tRequestWithResponse::vfunction3( input );
+	tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 1;
 	switch( c )

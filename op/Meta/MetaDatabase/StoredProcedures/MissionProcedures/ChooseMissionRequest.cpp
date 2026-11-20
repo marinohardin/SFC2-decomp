@@ -27,7 +27,7 @@ public:
 // FUNCTION: STARFLEETOP 0x0054ffe5
 void tChooseMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	nSwitch::tRequestWithResponse::vfunction3( input );
+	tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 2;
 	switch( c )

@@ -31,7 +31,7 @@ public:
 // FUNCTION: STARFLEETOP 0x00551a84
 void tUpdatePreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	nSwitch::tRequestWithResponse::vfunction3( input );
+	tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 0;
 	if( c != 0 )

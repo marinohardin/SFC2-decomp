@@ -24,7 +24,7 @@ public:
 // FUNCTION: STARFLEETOP 0x00550e96
 void tKillPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	nSwitch::tRequestWithResponse::vfunction3( input );
+	tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 0;
 	if( c != 0 )

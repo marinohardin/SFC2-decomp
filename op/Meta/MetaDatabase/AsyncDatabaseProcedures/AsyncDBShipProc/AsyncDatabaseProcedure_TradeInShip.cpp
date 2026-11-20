@@ -91,5 +91,5 @@ void tTradeInShip::fn_0056964b( const nDataStore::tBuffer* pBuffer )
 
 	nStoredProcedureArguments::tUpdateCharactersRequest update( fn_00719490( fn_00719580( 0xe ) ) );
 	update.fn_00553ba5( characters );
-	m_1c->fn_00714020( m_48, 0xa, &update );
+	field_1c->fn_00714020( m_48, 0xa, &update );
 }

@@ -12,7 +12,7 @@ public:
 
 protected:
 	int8u field_00[0xac];
-	tObject_005d3679* fMyAddress;
+	nSwitch::tAddress* fMyAddress;
 };
 
 using namespace nStoredProcedureArguments;
@@ -81,6 +81,6 @@ void tMetaClientNewsPanel::fn_005df230()
 {
 	tNotifyEvent event( 3, 0, -1 );
 	validate( fMyAddress );
-	tObject_005d3679* address = fMyAddress;
+	nSwitch::tAddress* address = fMyAddress;
 	nSwitch::tSwitch::fn_00713b20()->fn_00714020( address, 3, &event );
 }

@@ -33,5 +33,5 @@ void tAsyncDatabaseProcedure_UpdateMetaMapHex::fn_00566d8a( const nDataStore::tB
 
 	fn_00719050();
 	response.fn_00716310( 0 );
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }

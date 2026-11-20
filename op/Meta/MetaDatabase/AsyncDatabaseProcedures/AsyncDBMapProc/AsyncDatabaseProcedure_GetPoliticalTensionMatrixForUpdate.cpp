@@ -43,5 +43,5 @@ void tGetPoliticalTensionMatrixForUpdate::fn_00565993( const nDataStore::tBuffer
 	}
 
 	fn_00719050();
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }

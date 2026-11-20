@@ -8,7 +8,7 @@ using namespace nStoredProcedureArguments;
 // FUNCTION: STARFLEETOP 0x0054fa6d
 void tAddPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	nSwitch::tRequestWithResponse::vfunction3( input );
+	tRequestWithResponse::vfunction3( input );
 	char c = fObjectVersion;
 	fObjectVersion = 0;
 	if( c != 0 )

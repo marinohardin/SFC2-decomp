@@ -192,5 +192,5 @@ void tTransactionUpdateStores::fn_00569c83( const nDataStore::tBuffer* pBuffer )
 	fpAsyncDatabase->vfunction42( (tServCharacter&)character );
 	notifier.fn_005cbc48( character.GetID() );
 	nStoredProcedureArguments::tTransactionUpdateStoresRequest::tTransactionUpdateStoresResponse response( request, updatedShips );
-	m_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
+	field_1c->fn_00714020( request.vfunction8().Get(), request.vfunction9(), &response );
 }
