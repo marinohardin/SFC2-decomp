@@ -64,8 +64,10 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    installed it, else `toolchain/bin/cl` (`HARNESS_COMPILER=docker` or `native` forces one; see
    `toolchain/README.md`, "Native compiler"); `paths.HARNESS_CL` holds the choice. A consumer
    calling `source.compile_unit` without `cl=` gets the image, the compiler of record (the
-   scheduled Docker audit checks it). The listing tells which compiled symbol follows the
-   annotation; for a header claim, the header's line records in the unit's listing do. An inline
+   scheduled Docker audit checks it). Which compiled function the annotation claims is found by
+   symbol first (see "How a claim is found"); the listing's line records tell it only for a
+   claim the symbol table has no current symbol for, and for a header claim they are the
+   header's line records in the unit's listing. An inline
    destructor's deleting destructor, whose listing may have no line records, is the `??_G` /
    `??_E` whose mangled class is the class named on the definition.
 3. Takes the function's original bytes from the exe at the address and size in
@@ -238,7 +240,11 @@ sessions are unaffected.
 ### Lanes commit source only
 
 A grind lane (a `grind/` branch the loop runs on) commits source and nothing else, so lanes never
-conflict on generated files when they land.
+conflict on the matched set, the manifest or the lists when they land. The one generated file a
+lane does commit is the symbol table (`analysis/symbols/STARFLEETOP.tsv`), together with the
+source in the same commit; only the tool edits it, and lanes can conflict on it (see "The landing
+step" for what to do) ("Symbol table and stand-ins", "What the loop does to the
+table").
 
 - **Matched set.** The loop exports `HARNESS_MATCHED_SET=$HARNESS_STATE/matched_set.json`, the
   lane's own copy: seeded from `analysis/results/matched_set.json` and topped up from it at every
@@ -281,21 +287,30 @@ conflict on generated files when they land.
 Run once on the integration branch, after the lanes are merged into it:
 
 ```sh
-harness/landing.sh origin/develop     # rebuilds every claim, records its score, regenerates the manifest
-git add analysis/results/matched_set.json op/manifest.tsv
+harness/landing.sh origin/develop     # rebuilds every claim, records its score, syncs the symbol table, regenerates the manifest
+git add analysis/results/matched_set.json analysis/symbols/STARFLEETOP.tsv op/manifest.tsv
 git commit -m "chore(op): land <batch>"
 python3 -m pytest tests harness/tests && sh scripts/check.sh
 ```
 
 `landing.sh` is `verify.py --land --base <ref>` (every function claimed in `op/`, rebuilt,
 recorded when its score rose or it became exact, with its name, symbol, unit and size refreshed
-from the tree) followed by `tools/manifest.py`. A function that scores below the base's record,
+from the tree), then `tools/symbols.py claim` (every claimed row takes the symbol the build just
+made), the seed in its keep-existing mode (`analysis/scripts/seed_symbols.py`, no `--reseed`:
+empty rows are filled from exact callers that agree, evidence `callers`, existing values are
+untouched) and `tools/symbols.py check`, so an integration branch ends with the table in sync,
+then `tools/manifest.py`.
+
+On a merge conflict in `analysis/symbols/STARFLEETOP.tsv`, take either side for the file and run
+`harness/landing.sh`: it rewrites every claim row and refills callee rows from the build. The one
+case to look at by hand is a row two lanes filled with different `add` symbols: that is a real
+disagreement (the seed report lists the callers of each). A function that scores below the base's record,
 or lost its source, is reported as a `REGRESSION` and the script exits 1 without writing the
 matched set; exit 2 means a function could not be built. The agents' guard refuses `--land`.
 
 ### Whole-tree checks
 
-Once the function itself is judged good, the Stop hook runs four checks on the whole tree
+Once the function itself is judged good, the Stop hook runs five checks on the whole tree
 (`lib/wholetree.py`), and `loop.sh` runs them again before it commits the round, so the session
 that causes a problem is told while it still has the context:
 
@@ -309,6 +324,9 @@ that causes a problem is told while it still has the context:
 4. `pytest tests/test_units.py tests/test_manifest.py`, without
    `test_committed_manifest_matches_the_tree`, which the loop cannot satisfy because it never
    regenerates the manifest.
+5. `tools/symbols.py claim` (every claim) then `check`, on a copy of the symbol table in the
+   harness state (`python3 -m harness.lib.symsync --scratch`): the tree is left alone, and the
+   table is held to the claims as they stand.
 
 A failure reaches the session as a refusal to stop: the tools' own lines (at most 15 each), then
 one sentence saying what to do. It counts against `HARNESS_MAX_STOP_BLOCKS` like any refusal;
@@ -366,6 +384,56 @@ claim is not refused as a stand-in. A claim that an `--all` could not build keep
 it replaces. Known cost: a session refused against a table older than a merge cannot fix the
 refusal itself, and the attempt is lost until the loop is restarted. The context pack lists a claimed callee's symbol as what the
 call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
+
+### How a claim is found
+
+A `// FUNCTION:` annotation claims one compiled function, and the harness has to say which. It
+asks the symbol table first (`lib/verify.py`, `claim_symbol`): when the claimed address's row has
+a symbol with evidence `claim` and the unit's object defines that symbol, that function is the
+claim; no line record is read, so moved lines, several functions on one line, or an inline
+function opening on a bare `{` cannot attach the claim to a neighbour. Every other claim is found
+by line, as before: the function whose first line record follows the annotation
+(`source.symbol_for_claim`). That covers a new claim (its row is empty or not a `claim` row), a
+symbol the unit no longer produces (the session renamed or re-signed the function), and the forms
+the table has no row for: the compiler-generated functions of a global (`_$E<n>` is per unit and
+never a row) and a symbol two claims compile to. Each claim found by line prints
+`INFO ... found by line (table has no current symbol)`, and a run prints how many claims were
+found by symbol and by line. A deleting destructor and a header inline copy are found by symbol
+like any other claim once they have a row.
+
+### What the loop does to the table
+
+After a session's function improves, and before the commit, the loop runs `lib/symsync.py` (never
+the model; the guard keeps the table and the tools out of a session's reach):
+
+1. `tools/symbols.py claim --results <build-and-verify --json output>`: the claims of the units
+   the session's run rebuilt take the symbols they compile to now (evidence `claim`).
+2. For each unclaimed function the session's function calls, whose row has no symbol: the symbol
+   its relocation names is written with evidence `add` (`tools/symbols.py add --callee`), but
+   only when it passes the seed's rule for callers (`tools/symbols.callee_verdict`: a real name,
+   or exactly `fn_<the target's own address>`, free or a member of a class that is not a
+   placeholder). A symbol that fails the rule is not written and gives one `WARN` line. A result file without
+the function skips that round's sync with a `WARN`; the next sync or the landing catches up.
+
+The loop then commits the table with the source. A round that is undone restores it with the
+rest of the worktree. The whole-tree step runs `claim` for every claim and then `check` on a copy
+of the table, and `landing.sh` does both on the real one. A row with `mangled` or `add` evidence
+is first-writer-wins: a session that calls the function through another symbol is refused
+(`report_table_breaks`, same break classes as for a claim: `other-object`, `other-address` and
+`wrong-function` fail the run with the table's symbol in the message; a `stand-in` goes to the
+Stop hook; `folded` and `own-object` warn). A `callers` symbol is provisional and only warns. The
+rule holds for the session's own function only: under `--all` the breaks are counted in one
+`WARN` line and written to `<build>/table_breaks.tsv`, never failed, and nothing is added to
+`analysis/results/reloc_baseline.tsv`.
+
+### An `other-object` error on a standard-library instance claimed under a stand-in name
+
+Some claims are standard-library template instances the original compiled and a past session
+claimed under a stand-in name. When a session's function hits an `other-object` error on one,
+it does not rename or declare the library function again, and it does not touch the claim. It
+leaves the call as the context pack shows it, writes a `RENAME:` or `HEADER REQUEST:` note in
+its handoff (what the call names, the address, the symbol the table has) and stops: settling
+those claims is integrator work.
 
 ## The queue (`queue.py`)
 

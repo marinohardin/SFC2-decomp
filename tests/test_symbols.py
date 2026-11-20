@@ -241,6 +241,17 @@ def test_add_refuses_what_is_not_a_symbol_a_function_may_be_called_by(tmp_path, 
     assert table.read_bytes() == GOOD.encode()
 
 
+def test_add_callee_also_accepts_the_functions_own_placeholder_name_and_nothing_else(tmp_path, capsys):
+    table, _ = setup(tmp_path)
+    for symbol in ('?fn_00409999@tTestShip@@QAEXXZ',          # another address's name
+                   '?Hold@tObject_00401010@@QAEXXZ'):          # a placeholder class
+        rc, out = run(tmp_path, capsys, 'add', '0x00401010', symbol, '--callee')
+        assert rc == 1 and out.startswith('ERROR'), symbol
+    rc, out = run(tmp_path, capsys, 'add', '0x00401010', '?fn_00401010@tTestShip@@QAEXXZ', '--callee')
+    assert rc == 0, out
+    assert '?fn_00401010@tTestShip@@QAEXXZ\tadd' in table.read_text()
+
+
 def test_show_prints_the_row_and_its_folded_rows(tmp_path, capsys):
     setup(tmp_path)
     rc, out = run(tmp_path, capsys, 'show', '401000', 'fn_00401010')

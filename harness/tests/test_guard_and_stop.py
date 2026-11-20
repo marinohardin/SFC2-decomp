@@ -393,3 +393,11 @@ def test_the_list_does_not_widen_what_is_protected(lane, tmp_path):
     lane.write_text('harness/*\nanalysis/*\n**\n*\n')
     assert edit(os.path.join(paths.REPO, 'harness', 'lib', 'verify.py')) is not None
     assert edit(os.path.join(paths.REPO, 'analysis', 'results', 'matched_set.json')) is not None
+
+
+def test_a_session_cannot_edit_the_symbol_table_or_run_the_tool_that_does():
+    table = os.path.join(paths.REPO, 'analysis', 'symbols', 'STARFLEETOP.tsv')
+    assert edit(table) is not None
+    assert bash('python3 tools/symbols.py add 0x00401000 ?f@@YAXXZ') is not None
+    assert bash('python3 -m harness.lib.symsync after.json 0x00401000') is not None
+    assert bash(f'sed -i s/a/b/ {table}') is not None

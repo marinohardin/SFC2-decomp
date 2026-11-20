@@ -51,6 +51,7 @@ class Report:
         self.lines, self.results, self.regressions, self.failed = [], [], [], False
         self.claim_breaks = []
         self.standins = []
+        self.table_breaks = []   # report_table_breaks
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -207,23 +208,62 @@ def write_side_by_side(left, right, path):
 
 
 # A score cache entry leaves these to the function being scored (cache.py).
-CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side')
+CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side', 'found_by', 'line_note')
 
 
-def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None):
+def claim_symbol(fn, unit, obj, listing, table_symbol=None, symbol_hint=None, recorded=None):
+    """(symbol, how) of the function an annotation claims in a compiled unit. `how` is 'hint',
+    'symbol' or 'line'. The symbol table's `claim` symbol (`table_symbol`) is used when the unit's
+    object defines it: every compiled function has its own symbol, so no line record is read and
+    moved lines, several functions on one line or an inline function opening on a bare `{` cannot
+    attach the claim to a neighbour. A new claim, a row without a claim symbol, or a symbol the
+    unit no longer produces (the function was renamed or re-signed) is found by its line
+    (source.symbol_for_claim)."""
+    if symbol_hint:
+        return symbol_hint, 'hint'
+    if table_symbol:
+        defined = obj.by_name.get(table_symbol)
+        if defined is not None and defined.section > 0:
+            return table_symbol, 'symbol'
+    sym = source.symbol_for_claim(
+        listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
+        recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+    return sym, 'line'
+
+
+def line_disagreement(fn, unit, listing, symbol, recorded=None):
+    """The function the annotation's line points at when it is another than `symbol` (a claim
+    found by the table's symbol), else None: the annotation was moved off the function whose
+    symbol the table has. The line rule's answer comes from the listing already parsed for the
+    unit; an ambiguous or missing answer says nothing."""
+    try:
+        line = source.symbol_for_claim(
+            listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
+            recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+    except source.SourceError:
+        return None
+    return line if isinstance(line, str) and line != symbol else None
+
+
+def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
+                   table_symbol=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
-    matched-set entry, part of the evidence for what its annotation claims. Returns a result dict."""
+    matched-set entry, part of the evidence for what its annotation claims, `table_symbol` the
+    symbol the committed table records for a claim (claim_symbol). Returns a result dict."""
     res = dict(address=f'0x{fn.address:08x}', name=fn.name, unit=unit['rel'], score=0.0,
                exact=False, symbol=None, size=fn.size, error=None)
     obj = coff.CoffObject(open(build['obj'], 'rb').read())
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
     try:
-        sym = symbol_hint or source.symbol_for_claim(
-            listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
-            recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+        sym, how = claim_symbol(fn, unit, obj, listing, table_symbol, symbol_hint, recorded)
     except source.SourceError as e:
         res['error'] = str(e)
         return res
+    res['found_by'] = how
+    if how == 'symbol':
+        other = line_disagreement(fn, unit, listing, sym, recorded)
+        if other:
+            res['line_note'] = other
     if isinstance(sym, list):
         sym = fn.mangled if fn.mangled in sym else None
         if sym is None:
@@ -477,6 +517,12 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     for lst in annotations.values():
         for x in lst:
             lines_in.setdefault(x.path, []).append(x.line)
+    try:
+        table = symtab.load_table()
+    except symtab.TableError as e:
+        rep.add('ERROR', f'the symbol table cannot be read: {e}')
+        rep.failed = True
+        return rep
     if by_unit:
         exe = check_exe(rep)
 
@@ -513,8 +559,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             # The other annotations in the annotation's own file: the unit, or the header it is in.
             unit = dict(rel=rel, path=path, file=ann.path, line=ann.line,
                         other_lines=[n for n in lines_in[ann.path] if n != ann.line])
+            row = table.get(f'0x{a:08x}')
             res = score_function(fn, unit, build, exe, index,
-                                 recorded=data['functions'].get(matched.key(a)))
+                                 recorded=data['functions'].get(matched.key(a)),
+                                 table_symbol=row[0] if row and row[1] == 'claim' else None)
             res['claimed'] = a in claimed_addrs
             sub.results.append(res)
             _report_function(sub, data, fn, res)
@@ -527,9 +575,16 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.objects.update(sub.objects)
         rep.failed = rep.failed or sub.failed
 
+    by_how = {h: sum(1 for r in rep.results if r.get('found_by') == h) for h in ('symbol', 'line')}
+    if by_how['symbol'] or by_how['line']:
+        rep.add('INFO', f'{by_how["symbol"]} claims found by symbol, {by_how["line"]} by line '
+                '(no current symbol in the symbol table)')
+    report_line_notes(rep, check_all, {f'0x{a:08x}' for a in claimed_addrs})
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
+    report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
+                        check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -859,9 +914,113 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
                     'remove the row')
 
 
+def report_line_notes(rep, check_all, own):
+    """A claim found by its table symbol whose annotation's line points at another function: the
+    annotation was moved. The table wins. Full detail (WARN) for the session's own function;
+    under --all, and for other functions, one INFO count line."""
+    notes = [r for r in rep.results if r.get('line_note')]
+    shown = [r for r in notes if not check_all and r['address'] in own]
+    for r in shown:
+        rep.add('WARN', f'{r["address"]} found by symbol {r["symbol"]}, but its annotation\'s line '
+                f'points at {r["line_note"]}: if the annotation was moved, run '
+                'tools/symbols.py claim')
+    rest = len(notes) - len(shown)
+    if rest:
+        rep.add('INFO', f'{rest} claims found by symbol whose annotation\'s line points at '
+                'another function (the table wins)')
+
+
+TABLE_EVIDENCE = ('mangled', 'add', 'callers')
+TABLE_BREAKS_FILE = 'table_breaks.tsv'
+
+
+def table_targets(rows, claims):
+    """{address: (symbol, 'table-<evidence>')} for the unclaimed addresses whose table row has a
+    symbol of evidence mangled, add (required) or callers (provisional)."""
+    return {a: (sym, f'table-{ev}') for a, (sym, ev) in (rows or {}).items()
+            if ev in TABLE_EVIDENCE and a not in claims}
+
+
+def startup_table_breaks():
+    """The keys of the table breaks the last `--all` in this checkout wrote, or None."""
+    try:
+        with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), newline='') as f:
+            return {(r['function'], r['symbol'], r['target'])
+                    for r in csv.DictReader(f, delimiter='\t')}
+    except (OSError, KeyError):
+        return None
+
+
+def report_table_breaks(rep, claims, rows, check_all, own, evidence):
+    """Relocations that reach an unclaimed function by another symbol than its table row's
+    (claim_symbol_breaks against table_targets), sorted into the break classes of
+    classify_break. Only the session's own function (`own`, the addresses of the functions the
+    run was asked about) is held to them, and not under --all: exact functions already in the
+    tree are not judged retroactively, they are only counted (and written to table_breaks.tsv,
+    which says which breaks were there when the session started).
+
+    For the own function, a break of an error class against a `mangled` or `add` symbol fails
+    the run, naming the table's symbol; a `stand-in` against one goes to rep.standins (the Stop
+    hook refuses it, unless the function is exact and the break was already there at the start);
+    a `folded` or `own-object` one, and any break against a provisional `callers` symbol, is a
+    WARN line. Sets rep.table_breaks."""
+    targets = table_targets(rows, claims)
+    rep.table_breaks = []
+    if not targets:
+        return
+    if check_all:
+        results = [r for r in rep.results if r.get('exact')]
+    else:
+        results = [r for r in rep.results if r['address'] in (own or ())]
+    breaks = claim_symbol_breaks(results, targets, exact_only=False)
+    if not breaks:
+        return
+    units = {res['address']: res['unit'] for res in rep.results}
+    defined = defined_symbols(rep.objects)
+    for b in breaks:
+        b['class'], b['detail'] = classify_break(b, units.get(b['function']), defined, evidence)
+    rep.table_breaks = breaks
+    if check_all:
+        by_class = {}
+        for b in breaks:
+            by_class[b['class']] = by_class.get(b['class'], 0) + 1
+        rep.add('WARN', f'{len(breaks)} relocations of exact functions name another symbol than '
+                f'the symbol table has at an unclaimed target ({", ".join(f"{n} {c}" for c, n in sorted(by_class.items()))}); '
+                f'written to {TABLE_BREAKS_FILE}; only the function a session works on is held to it')
+        return
+    exact = {r['address'] for r in results if r.get('exact')}
+    startup = startup_table_breaks()
+    seen = set()
+    for b in breaks:
+        key = _break_key(b)
+        if key in seen:
+            continue
+        seen.add(key)
+        evidence_kind = b['source'][len('table-'):]
+        text = (f'{b["function"]} relocation +0x{b["offset"]:x} names {b["symbol"]}, but the '
+                f'symbol table has {b["claimed"]} at {b["target"]} ({evidence_kind})')
+        if evidence_kind == 'callers':
+            rep.add('WARN', text + ': provisional (every exact caller names it); declare the '
+                    'callee so it mangles to that unless you know better')
+        elif b['class'] in CLASS_ERRORS:
+            rep.add('ERROR', text + f'; declare the callee so it mangles to {b["claimed"]} (the '
+                    'context pack lists it): ' + CLASS_TEXT[b['class']].format(d=b['detail']))
+            rep.failed = True
+        elif b['class'] == 'stand-in':
+            if b['function'] in exact and startup is not None and key in startup:
+                rep.add('WARN', text + ' (already so when the session started)')
+            else:
+                rep.standins.append(b)
+                rep.add('WARN', text + f'; declare the callee so it mangles to {b["claimed"]}')
+        else:
+            rep.add('WARN', text + f' (class {b["class"]})')
+
+
 def _report_function(rep, data, fn, res):
     a = fn.address
     head = f'{res["address"]} {fn.name}'
+    if res.get('found_by') == 'line':
+        rep.add('INFO', f'{head}: found by line (table has no current symbol)')
     if res['error'] and 'relocs' not in res:
         rep.add('ERROR', f'{head}: {res["error"]}')
         if res['claimed']:
@@ -961,6 +1120,8 @@ def main(argv=None):
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
             f.write(reloc_baseline_text(rep.claim_breaks, classes=True))
+        with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
+            f.write(reloc_baseline_text(rep.table_breaks, classes=True))
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
                     for c in CLASS_ERRORS + CLASS_WARNS}
         rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '

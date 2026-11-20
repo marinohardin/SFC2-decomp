@@ -2,13 +2,14 @@
 
 The Stop hook (harness/hooks/stop_verify.py) runs them once the function itself is judged
 good, and harness/loop.sh runs them again before it commits the round, so the session that
-caused a problem is told while it still has the context. Four checks, each the tool's own:
+caused a problem is told while it still has the context. Five checks, each the tool's own:
 
   verify    build-and-verify.sh --all --json: a regression or an ERROR in any unit
   manifest  tools/manifest.py, written to a scratch file so the tree is left alone
   lint      tools/lint_claims.py: a new finding (a stale baseline row is not the session's)
   tests     tests/test_units.py and tests/test_manifest.py, except the one test that compares the
             committed manifest with the matched set: the loop never regenerates the manifest
+  symbols   tools/symbols.py claim (all) then check, on a copy of the symbol table
 
 HARNESS_WHOLETREE=0 turns all of it off. HARNESS_WHOLETREE_BUDGET (seconds, default 600) is the time
 for the whole step; each command gets what remains. At its start the loop runs them once on the tree as it stands, reusing its own
@@ -106,6 +107,15 @@ def check_lint(run):
     return _trim(found) if new else None
 
 
+def check_symbols(run):
+    """The symbol table, synced to the claims the verify step just rebuilt and then checked, on
+    a copy in the state folder so the tree is left alone (harness/lib/symsync.py --scratch; the
+    loop commits the table through symsync and the landing step syncs all of it)."""
+    rc, out, err = run([sys.executable, '-m', 'harness.lib.symsync', '--scratch'])
+    return None if rc == 0 else _trim((out + err).splitlines(),
+                                      lambda x: x.startswith(('ERROR', 'WARN')))
+
+
 def check_tests(run):
     rc, out, err = run([sys.executable, '-m', 'pytest', 'tests/test_units.py',
                         'tests/test_manifest.py', '-q', '-p', 'no:cacheprovider', '-rfE',
@@ -117,7 +127,8 @@ def check_tests(run):
 CHECKS = (('verify (harness/build-and-verify.sh --all)', check_verify),
           ('manifest (tools/manifest.py)', check_manifest),
           ('lint (tools/lint_claims.py)', check_lint),
-          ('tests (tests/test_units.py, tests/test_manifest.py)', check_tests))
+          ('tests (tests/test_units.py, tests/test_manifest.py)', check_tests),
+          ('symbols (tools/symbols.py claim, check)', check_symbols))
 
 
 def check(run=None, environ=None, verify_done=None):

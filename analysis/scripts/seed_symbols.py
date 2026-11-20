@@ -134,21 +134,9 @@ def level1(fn, claim_symbol, index, vt_entries, bases, stats):
 
 
 def callers_verdict(symbol, address):
-    """(True, '') when a caller-named symbol may be seeded for the function at `address`, else
-    (False, reason). No placeholder component is allowed except the function's own name
-    fn_<address>, free or member of a class with a real name."""
-    h = tool.head_scopes(symbol)
-    if h is None:
-        return True, ''
-    special, scopes, _ = h
-    bad = [i for i, s in enumerate(scopes) if tool.is_placeholder(s)]
-    if not bad:
-        return True, ''
-    if not special and bad == [0] and scopes[0].lower() == f'fn_{address:08x}':
-        return True, ''
-    if bad == [0] and not special:
-        return False, 'fn-name-of-another-address'
-    return False, 'placeholder-class'
+    """tools/symbols.py's callee_verdict: whether a caller-named symbol may be seeded for the
+    function at `address` (the loop's `add` uses the same rule)."""
+    return tool.callee_verdict(symbol, address)
 
 
 def caller_symbols(results, index, claimed):

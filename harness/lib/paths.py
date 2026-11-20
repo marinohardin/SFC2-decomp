@@ -102,6 +102,7 @@ BOUNDARIES = env_path('HARNESS_BOUNDARIES',
                       os.path.join(REPO, 'analysis', 'results', 'boundary_errors.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
 # The unit map (tools/units.py): one row per translation unit with its address range.
+SYMBOL_TABLE = env_path('HARNESS_SYMBOL_TABLE', os.path.join(REPO, 'analysis', 'symbols', 'STARFLEETOP.tsv'))
 UNITS_TSV = env_path('HARNESS_UNITS_TSV', os.path.join(REPO, 'op', 'UNITS.tsv'))
 # Rebuilt game source (see harness/SRC_LAYOUT.md).
 SRC_ROOT = env_path('HARNESS_SRC_ROOT', os.path.join(REPO, 'op'))
