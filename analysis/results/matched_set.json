@@ -38287,6 +38287,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006feed0": {
+   "name": "nLog::tLogStream::`scalar_deleting_destructor'",
+   "symbol": "??_GtLogStream@nLog@@UAEPAXI@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

@@ -36,6 +36,11 @@ inline tOptex::~tOptex()
 namespace nLog
 {
 
+// The destructor itself is 0x006fe360.
+// FUNCTION: STARFLEETOP 0x006feed0
+tLogStream::~tLogStream()
+{}
+
 // FUNCTION: STARFLEETOP 0x006fe4f0
 tLogStream::tStreamBuf::tStreamBuf( tLog* eventLog )
 	: fLog( eventLog )

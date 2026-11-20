@@ -21,6 +21,9 @@ class tLogStream : public std::ostream
 public:
 //Setup
 	tLogStream( tLog::tEventType eventType = tLog::kNoEventType );
+	// MATCH-ONLY: the SDK declares no destructor; this declared one stands in for the
+	// implicit one so its deleting destructor (0x006feed0) has a definition to sit on.
+	~tLogStream();
 
 	tLogStream& operator()( const char* category, int8u level = 10 );
 
