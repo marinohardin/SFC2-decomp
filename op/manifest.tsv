@@ -2044,7 +2044,8 @@ address	size	symbol	source	modes
 0x0053ac7e	60	tClassAllocator()	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053acba	77	mAllocate()	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053ad07	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapHex.cpp	vc6 guest
-0x0053f22f	45	tPreparedMissions::fn_0053f22f() const	unsorted/fn_0053F000.cpp	vc6 guest
+0x0053e70e	461	tPlayingTeamInfo::StreamIn(nDataStore::tInput&)	Meta/MetaDatabase/Objects/MissionObjects/PlayingTeamInfo.cpp	vc6 guest
+0x0053f22f	45	tPreparedMissions::GetCharacterID() const	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f25c	4	fn_0053f25c_owner::fn_0053f25c()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f260	4	fn_0053f25c_owner::fn_0053f260()	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053f264	4	fn_0053f25c_owner::fn_0053f264()	unsorted/fn_0053F000.cpp	vc6 guest
@@ -2080,6 +2081,7 @@ address	size	symbol	source	modes
 0x0053fece	117	operator<<(tOutput&,const std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053ff43	148	operator>>(tInput&,std::vector< fn_0053f491_elem >&)	unsorted/fn_0053F000.cpp	vc6 guest
 0x0053ffd7	182	operator>>(tInput&,std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest
+0x00541499	308	tTeamSlot::fn_00541499(tServCharacter*)	Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp	partial
 0x005430ad	12	fn_005430ad_owner::fn_005430ad()	unsorted/fn_00543000.cpp	vc6 guest
 0x005430b9	26	fn_005430ad_owner::fn_005430b9(bool)	unsorted/fn_00543000.cpp	vc6 guest
 0x005430d3	32	fn_005430ad_owner::fn_005430d3(int)	unsorted/fn_00543000.cpp	vc6 guest
@@ -2237,6 +2239,80 @@ address	size	symbol	source	modes
 0x00548395	60	tClassAllocator()	unsorted/tBattles.cpp	vc6 guest
 0x005483d1	76	mAllocate()	unsorted/tBattles.cpp	vc6 guest
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest
+0x0054bd73	464	tMetaMapDataRequest::tResponse::tClientHex::tClientHex(tMetaMapHex&,int32,int32)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
+0x0054bf43	20	tMetaMapDataRequest::tResponse::tClientHex::tClientHex()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
+0x0054bf57	206	tMetaMapDataRequest::tResponse::tClientHex::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c025	176	tMetaMapDataRequest::tResponse::tClientHex::StreamIn(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c0d5	59	tMetaMapDataRequest::tResponse::tClientHex::fn_0054c0d5()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c110	139	tMetaMapDataRequest::tResponse::tResponse(int32,int32,bool)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
+0x0054c1b7	53	tMetaMapDataRequest::tResponse::~tResponse()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	partial
+0x0054c1ec	129	tMetaMapDataRequest::tResponse::tResponse(bool)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
+0x0054c26d	100	tMetaMapDataRequest::tResponse::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c2d1	64	tMetaMapDataRequest::tResponse::StreamIn(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c311	259	tMetaMapDataRequest::tResponse::fn_0054c311(tMetaMapHex&,int32,int32)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c414	93	tMetaMapDataRequest::tResponse::tClientHex::operator=(const tClientHex&)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c471	26	tMetaMapDataRequest::tResponse::fn_0054c471(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c48b	88	tMetaMapDataRequest::tResponse::fn_0054c48b(int32*,int32*)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054c4e3	97	tMetaMapDataRequest::tResponse::fn_0054c4e3(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
+0x0054fa6d	117	tAddPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp	vc6 guest
+0x0054ffe5	173	tChooseMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ChooseMissionRequest.cpp	vc6 guest
+0x0055095b	102	tExistPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp	vc6 guest
+0x00550d34	102	tGetPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/GetPreparedMissionRequest.cpp	vc6 guest
+0x00550e96	103	tKillPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/KillPreparedMissionRequest.cpp	vc6 guest
+0x005517de	121	tReadyToPlayRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ReadyToPlayRequest.cpp	vc6 guest
+0x00551a84	96	tUpdatePreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/UpdatePreparedMissionRequest.cpp	vc6 guest
+0x005596ed	77	tRepairRates::GetRepairRate(fRepairRateIter)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.cpp	vc6 guest
+0x0055a13a	84	tTradeInRates::fGetRate(const std::string&)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest
+0x0055a18e	84	tShipRepairRates::fGetRate(fShipRepairRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest
+0x0055a1e2	84	tShipItemRates::fGetRateAddress(fShipRepairRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest
+0x0055b087	168	tShipNames::fn_0055b087(const std::string&)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest
+0x0055b12f	84	tStoresItemRates::fGetRateAddress(fStoresRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest
+0x0055b183	84	tStoresStates::fn_0055b183(fStoresStateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest
+0x0056005c	147	tGetCurrentTurn::tGetCurrentTurn(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_GetCurrentTurn.cpp	vc6
+0x005602ea	147	tLockCurrentTurn::tLockCurrentTurn(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_LockCurrentTurn.cpp	vc6
+0x005604f2	147	tUnlockCurrentTurn::tUnlockCurrentTurn(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_UnlockCurrentTurn.cpp	vc6
+0x005606ca	147	tClearPreparedMissionsID::tClearPreparedMissionsID(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_ClearPreparedMissionsID.cpp	vc6
+0x0056142b	147	tGetCharacterMedals::tGetCharacterMedals(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterMedals.cpp	vc6
+0x0056167b	147	tGetCharacterOpenBidShipIDs::tGetCharacterOpenBidShipIDs(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterOpenBidShipIDs.cpp	vc6
+0x00561929	147	tGetCharacterPosition::tGetCharacterPosition(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPosition.cpp	vc6
+0x00561c5e	147	tGetCharacterPrestige::tGetCharacterPrestige(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPrestige.cpp	vc6
+0x00561ebd	147	tGetCharacterRank::tGetCharacterRank(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterRank.cpp	vc6
+0x00562637	147	tGetCharacterShipIDs::tGetCharacterShipIDs(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterShipIDs.cpp	vc6
+0x00562910	147	tGetFleetData::tGetFleetData(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetFleetData.cpp	vc6
+0x00562f30	147	tGetLoggedOnCharacterIDs::tGetLoggedOnCharacterIDs(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetLoggedOnCharacterIDs.cpp	vc6
+0x00563f83	147	tLogOffCharacter::tLogOffCharacter(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
+0x00564016	28	tLogOffCharacter::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
+0x00564032	11	tLogOffCharacter::~tLogOffCharacter()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
+0x0056403d	620	tLogOffCharacter::fn_0056403d(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	partial
+0x00564951	147	tSetPreparedMissionsID::tSetPreparedMissionsID(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_SetPreparedMissionsID.cpp	vc6
+0x00565464	383	tAsyncDatabaseProcedure_GetMetaMapHexForUpdate::fn_00565464(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetMetaMapHexForUpdate.cpp	partial
+0x0056571c	405	tAsyncDatabaseProcedure_GetPoliticalTensionMatrix::fn_0056571c(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrix.cpp	partial
+0x00565993	405	tGetPoliticalTensionMatrixForUpdate::fn_00565993(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrixForUpdate.cpp	partial
+0x00566d8a	390	tAsyncDatabaseProcedure_UpdateMetaMapHex::fn_00566d8a(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_UpdateMetaMapHex.cpp	partial
+0x005671b6	147	tAddPreparedMission::tAddPreparedMission(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp	vc6
+0x00567249	28	tAddPreparedMission::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp	vc6
+0x00567265	11	tAddPreparedMission::~tAddPreparedMission()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp	vc6
+0x00567270	468	tAddPreparedMission::fn_00567270(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp	partial
+0x00567465	147	tCheckExistencePreparedMission::tCheckExistencePreparedMission(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_CheckExistencePreparedMission.cpp	vc6
+0x0056763a	147	tGetPreparedMission::tGetPreparedMission(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp	vc6
+0x005676cd	28	tGetPreparedMission::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp	vc6
+0x005676e9	11	tGetPreparedMission::~tGetPreparedMission()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp	vc6
+0x005676f4	423	tGetPreparedMission::fn_005676f4(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp	partial
+0x005678f4	147	tKillPreparedMission::tKillPreparedMission(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_KillPreparedMission.cpp	vc6
+0x00567ad2	147	tUpdatePreparedMission::tUpdatePreparedMission(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_UpdatePreparedMission.cpp	vc6
+0x005682b2	646	tKillShips::fn_005682b2(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_KillShips.cpp	partial
+0x005686b8	116	fn_005686b8_owner::fn_005686b8(int,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6 guest
+0x0056872c	259	fn_005686b8_owner::fn_0056872c(int8*,int8,unsigned int)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6 guest
+0x0056882f	70	fn_005686b8_owner::fn_0056882f(int,char,char,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6 guest
+0x00568a71	150	tRepairShips::tRepairShips(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6
+0x00568b07	28	tRepairShips::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6
+0x00568b23	11	tRepairShips::~tRepairShips()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	vc6
+0x00568b2e	711	tRepairShips::fn_00568b2e(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp	partial
+0x0056964b	1138	tTradeInShip::fn_0056964b(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TradeInShip.cpp	partial
+0x00569bc9	147	tTransactionUpdateStores::tTransactionUpdateStores(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp	vc6
+0x00569c5c	28	tTransactionUpdateStores::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp	vc6
+0x00569c78	11	tTransactionUpdateStores::~tTransactionUpdateStores()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp	vc6
+0x00569c83	2622	tTransactionUpdateStores::fn_00569c83(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp	partial
 0x0056c414	940	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2(tCampaignInfo*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	partial
 0x0056c7c0	278	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction3(std::vector<nDatabase::tID>,std::vector<tServCharacter>*,int)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
 0x0056c8d6	134	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction4(std::vector<tServCharacter>*)	Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp	vc6 guest
