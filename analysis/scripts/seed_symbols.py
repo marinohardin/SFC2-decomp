@@ -2,26 +2,25 @@
 """Seed analysis/symbols/STARFLEETOP.tsv: one row per function of the original.
 
     python3 analysis/scripts/seed_symbols.py --report <path> [--out TABLE] [--build DIR]
-                                             [--reseed] [--no-folded]
+                                             [--reseed]
 
 Level 1 (name, class, evidence) comes from the claims in op/, functions.csv, the SDK label
-tables and the vtable export. Level 2 (symbol) comes from, most trusted first:
+tables and the vtable export. A placeholder is never evidence (tools/symbols.py
+has_placeholder): a name with a placeholder component is fn_<address>. Level 2 (symbol and
+symbol_evidence) comes from, most trusted first:
 
-  a  claim     the symbol the claiming unit compiled (<build>/symbols.tsv, harness/lib/symtab.py);
-  b  mangled   the mangled name in functions.csv;
-  c  callers   an unclaimed function that exact functions call, when every caller's relocation
-               names it by one symbol (<build>/<unit>/<address>/result.json, as
-               harness/lib/verify.py's exact_reloc_uses reads them).
+  claim    the symbol the claiming unit compiled (<build>/symbols.tsv, harness/lib/symtab.py,
+           rows of current claims only). It always tracks the build: a seed replaces any other
+           value of a claimed address and lists the replacement in the report;
+  mangled  the mangled name in functions.csv, unless it decodes to another name than the row's;
+  callers  an unclaimed function that exact functions call, when every caller's relocation
+           names it by one symbol (<build>/<unit>/<address>/result.json, as
+           harness/lib/verify.py's exact_reloc_uses reads them), and the symbol has no
+           placeholder component other than the function's own fn_<address>.
 
-A disagreement between sources goes to the report and the more trusted one wins. An address
-whose callers disagree is not seeded; it is listed in the report with each symbol and its callers.
-A symbol that would stand at two addresses is left empty at both. The declaration column is
-never seeded.
-
-Name precedence: the claim's compiled symbol, a mangled name, an unambiguous SDK label, another
-name the harness counts as one (Function.has_name: not Ghidra's FUN_, an analyzer's vfunctionN or
-a default), else fn_<address>. A table that exists keeps its symbol and declaration values (they
-may have been added by `tools/symbols.py add`); --reseed takes the seed's instead.
+For a row that is not claimed an existing symbol is kept (first writer wins); --reseed takes
+the seed's instead. A symbol that would stand at two addresses is left empty at both (a claim
+and an existing value excepted). Declarations are never seeded; a re-seed keeps them.
 
 The seed refuses to run when <build>/symbols.tsv is missing or older than the sources in op/:
 run `harness/build-and-verify.sh --all` first. Same inputs, same bytes out.
@@ -49,58 +48,10 @@ def _tool():
 
 tool = _tool()
 
-OPERATORS = {'2': 'new', '3': 'delete', '4': '=', '5': '>>', '6': '<<', '7': '!', '8': '==',
-             '9': '!=', 'A': '[]', 'C': '->', 'D': '*', 'E': '++', 'F': '--', 'G': '-', 'H': '+',
-             'I': '&', 'J': '->*', 'K': '/', 'L': '%', 'M': '<', 'N': '<=', 'O': '>', 'P': '>=',
-             'Q': ',', 'R': '()', 'S': '~', 'T': '^', 'U': '|', 'V': '&&', 'W': '||', 'X': '*=',
-             'Y': '+=', 'Z': '-='}
-# name_source of functions.csv -> the evidence column, for a name the harness counts as one.
+# name_source of functions.csv -> the evidence column. Any other source (Ghidra's analysis and
+# imports, defaults) gives a name that is not evidence.
 SOURCE_EVIDENCE = {'rtti-class-recovery': 'rtti', 'sdk-fid': 'sdk', 'sdklib-exact': 'sdk',
                    'ghidra-fid-vs': 'fid'}
-
-
-def split_qualified(name):
-    """('Outer::Inner', 'method') for 'Outer::Inner::method', ignoring a '::' inside <...>."""
-    depth, cut = 0, -1
-    for i, ch in enumerate(name):
-        if ch == '<':
-            depth += 1
-        elif ch == '>':
-            depth -= 1
-        elif ch == ':' and depth == 0 and name[i:i + 2] == '::':
-            cut = i
-    return (name[:cut], name[cut + 2:]) if cut >= 0 else ('', name)
-
-
-def decode_symbol(symbol):
-    """(qualified name, class) from a plain MSVC symbol, or None for anything it does not read
-    with certainty (templates, other special names, C symbols). `?m@A@B@@...` is B::A::m, a
-    constructor `??0A@B@@...` is B::A::A, a destructor B::A::~A."""
-    if not symbol.startswith('?') or '?$' in symbol:
-        return None
-    body, special = symbol[1:], ''
-    if body.startswith('?'):
-        code = body[1:2]
-        body = body[2:]
-        if code and code in '01':
-            special = code
-        elif code in OPERATORS:
-            special = 'op' + code
-        else:
-            return None
-    head = body.split('@@', 1)[0] if '@@' in body else None
-    if head is None:
-        return None
-    scopes = head.split('@')
-    if not all(s and s.replace('_', 'a').isalnum() for s in scopes):
-        return None
-    qual = '::'.join(reversed(scopes[1:] if not special else scopes))
-    if special in ('0', '1'):
-        cls = qual
-        return f'{cls}::{"~" if special == "1" else ""}{scopes[0]}', cls
-    if special:
-        return f'{qual}::operator{OPERATORS[special[2:]]}', qual
-    return (f'{qual}::{scopes[0]}' if qual else scopes[0]), qual
 
 
 def owner_class(entries, bases):
@@ -118,43 +69,85 @@ def owner_class(entries, bases):
     return roots[0] if len(roots) == 1 else ''
 
 
+def evidence_name(fn):
+    """The name functions.csv gives the function when it is evidence, else None."""
+    if not fn.has_name or tool.has_placeholder(fn.name):
+        return None
+    if fn.name_source in SOURCE_EVIDENCE or fn.mangled:
+        return fn.name
+    return None
+
+
+def mangled_disagrees(fn):
+    """True when the mangled name of functions.csv decodes to another name than the row's."""
+    d = tool.decode_symbol(fn.mangled) if fn.mangled else None
+    name = evidence_name(fn)
+    return bool(d and name and d[0] != name)
+
+
 def level1(fn, claim_symbol, index, vt_entries, bases, stats):
     """(name, class, evidence) for one function."""
-    place = f'fn_{fn.address:08x}'
     name = cls = ev = None
+    claim_cls = ''
     if claim_symbol:
-        d = decode_symbol(claim_symbol)
-        if d:
-            (name, cls), ev = d, 'claim'
-    if name is None and fn.mangled:
-        if fn.has_name:
-            name = fn.name
-        elif decode_symbol(fn.mangled):
-            name = decode_symbol(fn.mangled)[0]
-        ev = 'mangled'
-    if name is None:
-        labels = [n for n in index.names_at.get(fn.address, ()) if n.startswith('?')]
-        if len(labels) == 1 and not fn.mangled:
-            d = decode_symbol(labels[0])
-            name = fn.name if fn.has_name else (d[0] if d else None)
-            ev = 'sdk'
-    if name is None and fn.has_name:
-        name, ev = fn.name, SOURCE_EVIDENCE.get(fn.name_source, 'other')
+        d = tool.decode_symbol(claim_symbol)
+        if d and not tool.has_placeholder(d[0]):
+            name, cls, ev = d[0], d[1], 'claim'
+        elif d and not tool.has_placeholder(d[1]):
+            claim_cls = d[1]
+    if name is None and fn.mangled and not mangled_disagrees(fn):
+        d = tool.decode_symbol(fn.mangled)
+        csv_name = evidence_name(fn)
+        if d and not tool.has_placeholder(d[0]):
+            name, cls, ev = csv_name or d[0], d[1], 'mangled'
+        elif csv_name:
+            name, cls, ev = csv_name, tool.split_qualified(csv_name)[0], 'mangled'
+    if name is None and not fn.mangled:
+        labels = sorted(n for n in index.names_at.get(fn.address, ()) if n.startswith('?'))
+        if len(labels) == 1:
+            d = tool.decode_symbol(labels[0])
+            csv_name = evidence_name(fn)
+            if csv_name:
+                name, cls, ev = csv_name, tool.split_qualified(csv_name)[0], 'sdk'
+            elif d and not tool.has_placeholder(d[0]):
+                name, cls, ev = d[0], d[1], 'sdk'
+    if name is None and not fn.mangled and evidence_name(fn):
+        name, ev = fn.name, SOURCE_EVIDENCE[fn.name_source]
+        cls = tool.split_qualified(name)[0]
     if name is not None:
         stats['name'][ev] = stats['name'].get(ev, 0) + 1
-        cls = cls if cls is not None else split_qualified(name)[0]
-        if not cls:
-            cls = owner_class(vt_entries.get(fn.address, ()), bases)
-        return name, cls, ev
-    # no evidence for a name: the class, when the analysis or a vtable gives one
-    cls = ''
-    if '::vfunction' in fn.name:
-        cls = fn.name.split('::vfunction')[0]
+        return name, cls or owner_class(vt_entries.get(fn.address, ()), bases), ev
+    # no evidence for a name: the class, when the claim, a vtable or the analysis gives one
+    cls = claim_cls
+    from_vtable = False
     if not cls:
         cls = owner_class(vt_entries.get(fn.address, ()), bases)
-    ev = 'vtable' if cls else 'none'
+        from_vtable = bool(cls)
+    if not cls and '::vfunction' in fn.name:
+        pre = fn.name.split('::vfunction')[0]
+        cls = '' if tool.has_placeholder(pre) else pre
+        from_vtable = bool(cls)
+    ev = 'vtable' if from_vtable else 'none'
     stats['name'][ev] = stats['name'].get(ev, 0) + 1
-    return place, cls, ev
+    return f'fn_{fn.address:08x}', cls, ev
+
+
+def callers_verdict(symbol, address):
+    """(True, '') when a caller-named symbol may be seeded for the function at `address`, else
+    (False, reason). No placeholder component is allowed except the function's own name
+    fn_<address>, free or member of a class with a real name."""
+    h = tool.head_scopes(symbol)
+    if h is None:
+        return True, ''
+    special, scopes, _ = h
+    bad = [i for i, s in enumerate(scopes) if tool.is_placeholder(s)]
+    if not bad:
+        return True, ''
+    if not special and bad == [0] and scopes[0].lower() == f'fn_{address:08x}':
+        return True, ''
+    if bad == [0] and not special:
+        return False, 'fn-name-of-another-address'
+    return False, 'placeholder-class'
 
 
 def caller_symbols(results, index, claimed):
@@ -174,41 +167,51 @@ def caller_symbols(results, index, claimed):
     return out
 
 
-def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, reseed=False,
-         folded=True):
+def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, reseed=False):
     """(rows, stats) for the table. claim_syms {address text: (symbol, file)}, claimed the
     addresses a FUNCTION annotation claims, vtables [(vtable, class, function address text)],
     bases {class: set of base classes}, results the build's result dicts, existing {address
     text: row} of the table so far."""
     existing = existing or {}
+    claim_syms = {k: v for k, v in claim_syms.items() if int(k, 16) in claimed}
     vt_entries = {}
     for vt, cls, fa in vtables:
         vt_entries.setdefault(int(fa, 16), []).append((vt, cls))
     for v in vt_entries.values():
         v.sort()
     stats = {'name': {}, 'symbol': {}, 'conflicts': [], 'disagree': [], 'duplicates': [],
-             'kept': [], 'unbuilt': [], 'folded': 0}
+             'kept': [], 'unbuilt': [], 'replaced': [], 'mangled_names': [],
+             'callers_single': 0, 'callers_rejected': {}}
     callers = caller_symbols([r for r in results if r.get('address') in claim_syms
                               and claim_syms[r['address']][1] == r.get('unit')], index, claimed)
     fns = sorted((f for f in index.functions if f.kind in ('function', 'thunk')),
                  key=lambda f: f.address)
-    chosen = {}                     # address int -> (symbol, source)
+    chosen, kept = {}, set()        # address int -> (symbol, symbol_evidence)
     for fn in fns:
         a = fn.address
         key = f'0x{a:08x}'
         cand = {}
-        if key in claim_syms and claim_syms[key][0] and tool.plausible_symbol(claim_syms[key][0]) \
-                and not claim_syms[key][0].startswith(tool.PER_UNIT_PREFIXES):
-            cand['claim'] = claim_syms[key][0]
+        sym = claim_syms.get(key, ('', ''))[0]
+        if sym and tool.plausible_symbol(sym) and not sym.startswith(tool.PER_UNIT_PREFIXES):
+            cand['claim'] = sym
         elif a in claimed:
             stats['unbuilt'].append(key)
         if fn.mangled and not fn.mangled.startswith(tool.PER_UNIT_PREFIXES) \
                 and tool.plausible_symbol(fn.mangled):
-            cand['mangled'] = fn.mangled
+            if mangled_disagrees(fn):
+                stats['mangled_names'].append((key, fn.mangled, fn.name))
+            else:
+                cand['mangled'] = fn.mangled
         if a in callers:
             syms = callers[a]
             if len(syms) == 1:
-                cand['callers'] = next(iter(syms))
+                stats['callers_single'] += 1
+                s = next(iter(syms))
+                ok, why = callers_verdict(s, a)
+                if ok:
+                    cand['callers'] = s
+                else:
+                    stats['callers_rejected'][why] = stats['callers_rejected'].get(why, 0) + 1
             else:
                 stats['conflicts'].append((key, {s: sorted(c) for s, c in sorted(syms.items())}))
         if len(set(cand.values())) > 1:
@@ -217,15 +220,16 @@ def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, res
             if src in cand:
                 chosen[a] = (cand[src], src)
                 break
-    # an existing value wins over the seed's, unless --reseed
-    for key, row in existing.items():
-        a = int(key, 16)
-        if a not in index.by_address:
-            continue
-        if not reseed and row['symbol']:
-            if a in chosen and chosen[a][0] != row['symbol']:
-                stats['kept'].append((key, row['symbol'], chosen[a][0]))
-            chosen[a] = (row['symbol'], 'existing')
+        row = existing.get(key)
+        if row and row['symbol'] and not reseed:
+            old_ev = row['symbol_evidence'] or 'add'
+            if 'claim' in cand and cand['claim'] != row['symbol']:
+                stats['replaced'].append((key, row['symbol'], old_ev, cand['claim']))
+            elif 'claim' not in cand and old_ev != 'claim':
+                if a in chosen and chosen[a][0] != row['symbol']:
+                    stats['kept'].append((key, row['symbol'], chosen[a][0]))
+                chosen[a] = (row['symbol'], old_ev)
+                kept.add(a)
     users = {}
     for a, (sym, _) in chosen.items():
         users.setdefault(sym, []).append(a)
@@ -233,10 +237,9 @@ def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, res
         if len(addrs) > 1:
             stats['duplicates'].append((sym, [f'0x{a:08x}' for a in sorted(addrs)]))
             for a in addrs:
-                if chosen[a][1] != 'existing':
+                if chosen[a][1] != 'claim' and a not in kept:
                     del chosen[a]
     rows = []
-    bases = bases or {}
     for fn in fns:
         a = fn.address
         key = f'0x{a:08x}'
@@ -247,37 +250,34 @@ def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, res
         if sym:
             stats['symbol'][src] = stats['symbol'].get(src, 0) + 1
         rows.append(dict(address=key, kind=fn.kind, name=name, **{'class': cls}, symbol=sym,
-                         declaration=decl, evidence=ev))
-        if folded and sym:
-            labels = sorted(n for n in index.names_at.get(a, ()) if n.startswith('?'))
-            if sym in labels:
-                for extra in labels:
-                    if extra != sym and not extra.startswith(tool.PER_UNIT_PREFIXES):
-                        d = decode_symbol(extra)
-                        rows.append(dict(address=key, kind='folded', name=d[0] if d else extra,
-                                         **{'class': d[1] if d else ''}, symbol=extra,
-                                         declaration='', evidence=('mangled' if extra == fn.mangled
-                                                                   else 'sdk')))
-                        stats['folded'] += 1
+                         symbol_evidence=src, declaration=decl, evidence=ev))
     return sorted(rows, key=tool.sort_key), stats
 
 
 def report_text(rows, stats):
-    out = ['rows: %d primary, %d folded' % (sum(r['kind'] != 'folded' for r in rows), stats['folded']),
-           '', 'name evidence (primary rows):']
+    out = ['rows: %d' % len(rows), '', 'name evidence:']
     out += [f'  {k:<8} {stats["name"][k]}' for k in sorted(stats['name'])]
-    out += ['', 'symbols by source (after existing values):']
+    out += ['', 'symbols by source:']
     out += [f'  {k:<8} {stats["symbol"][k]}' for k in sorted(stats['symbol'])]
     out += ['', f'claimed addresses without a compiled symbol: {len(stats["unbuilt"])}']
     out += [f'  {a}' for a in stats['unbuilt']]
+    out += ['', f'unclaimed callees with one caller name: {stats["callers_single"]}',
+            'rejected by reason:']
+    out += [f'  {k:<28} {v}' for k, v in sorted(stats['callers_rejected'].items())]
     out += ['', f'callers disagree, not seeded: {len(stats["conflicts"])}']
     for key, syms in stats['conflicts']:
         out.append(f'  {key}')
         for s, c in syms.items():
             out.append(f'    {s}  called by {", ".join(c)}')
+    out += ['', f'a mangled name that decodes to another name than the row, not seeded: '
+                f'{len(stats["mangled_names"])}']
+    out += [f'  {a}  {m}  row name {n}' for a, m, n in stats['mangled_names']]
     out += ['', f'sources disagree, the more trusted won: {len(stats["disagree"])}']
     for key, c in stats['disagree']:
         out.append(f'  {key}  ' + '  '.join(f'{s}={v}' for s, v in c.items()))
+    out += ['', f'a claim replaced an earlier symbol: {len(stats["replaced"])}']
+    for key, old, ev, new in stats['replaced']:
+        out.append(f'  {key}  was {old} ({ev})  now {new}')
     out += ['', f'a symbol at two addresses, seeded values left empty: {len(stats["duplicates"])}']
     for sym, addrs in stats['duplicates']:
         out.append(f'  {sym}  {", ".join(addrs)}')
@@ -332,7 +332,6 @@ def main(argv=None):
     p.add_argument('--src-root', default=paths.SRC_ROOT)
     p.add_argument('--module', default='STARFLEETOP')
     p.add_argument('--reseed', action='store_true', help='replace existing symbol/declaration values')
-    p.add_argument('--no-folded', action='store_true')
     a = p.parse_args(argv)
     table = os.path.join(a.build, 'symbols.tsv')
     if not os.path.isfile(table):
@@ -352,12 +351,10 @@ def main(argv=None):
     existing = {r['address']: r for r in tool.read_rows(a.out) if r['kind'] != 'folded'} \
         if os.path.isfile(a.out) else {}
     rows, stats = seed(index, claim_syms, claimed, vtables, bases, load_results(a.build),
-                       existing, a.reseed, not a.no_folded)
+                       existing, a.reseed)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
-    with open(a.out, 'w', encoding='utf-8', newline='') as f:
-        f.write(tool.format_rows(rows))
-    with open(a.report, 'w', encoding='utf-8', newline='') as f:
-        f.write(report_text(rows, stats))
+    tool.write_atomic(a.out, tool.format_rows(rows))
+    tool.write_atomic(a.report, report_text(rows, stats))
     print(f'wrote {len(rows)} rows to {a.out}; report in {a.report}')
     return 0
 
