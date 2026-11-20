@@ -17,13 +17,14 @@ SUMMARY_0 = 'lint_claims: 0 new (empty-body 0), 12 in the baseline, 0 stale base
 def fake(**overrides):
     """A runner keyed on what each command is; any command not overridden passes."""
     answers = dict(verify=(0, OK_VERIFY, ''), manifest=(0, '', ''), lint=(0, SUMMARY_0, ''),
-                   tests=(0, '3 passed in 1.0s\n', ''))
+                   tests=(0, '3 passed in 1.0s\n', ''), symbols=(0, '', ''))
     answers.update(overrides)
     calls = []
 
     def run(argv, env=None, timeout=None):
         calls.append(argv)
         key = ('verify' if argv[0].endswith('build-and-verify.sh') else
+               'symbols' if 'harness.lib.symsync' in argv else
                'manifest' if argv[1].endswith('manifest.py') else
                'lint' if argv[1].endswith('lint_claims.py') else 'tests')
         return answers[key]
@@ -31,10 +32,10 @@ def fake(**overrides):
     return run
 
 
-def test_all_passing_is_silent_and_runs_all_four():
+def test_all_passing_is_silent_and_runs_all_five():
     run = fake()
     assert wholetree.check(run, {}) == (True, '')
-    assert len(run.calls) == 4
+    assert len(run.calls) == 5
 
 
 def test_the_off_switch_runs_nothing():
@@ -103,9 +104,18 @@ def test_a_failing_test_fails_with_the_failed_lines_and_deselects_the_manifest_c
     ok, msg = wholetree.check(run, {})
     assert not ok
     assert 'FAILED tests/test_units.py::test_empty_stray' in msg and '1 failed, 2 passed' not in msg
-    argv = run.calls[-1]
+    argv = next(c for c in run.calls if 'pytest' in c)
     assert argv[argv.index('--deselect') + 1] == \
         'tests/test_manifest.py::test_committed_manifest_matches_the_tree'
+
+
+def test_a_symbol_table_finding_fails_the_step_and_runs_on_a_copy():
+    run = fake(symbols=(1, 'ERROR 0x00401000: symbol listed twice\n', ''))
+    ok, msg = wholetree.check(run, {})
+    assert not ok
+    assert 'symbols (tools/symbols.py claim, check) failed:\n  ERROR 0x00401000: symbol listed twice' in msg
+    assert run.calls[-1][-2:] == ['harness.lib.symsync', '--scratch'] or \
+        run.calls[-1][-3:] == ['-m', 'harness.lib.symsync', '--scratch']
 
 
 def test_every_failure_is_reported_at_once_with_one_closing_sentence():
@@ -222,7 +232,7 @@ def test_without_a_runner_the_real_one_is_looked_up_when_called(monkeypatch):
                         lambda argv, env=None, timeout=None: calls.append(timeout) or (
                             0, OK_VERIFY if argv[0].endswith('.sh') else SUMMARY_0, ''))
     assert wholetree.check(environ={}) == (True, '')
-    assert len(calls) == 4 and all(0 < t <= 600 for t in calls)
+    assert len(calls) == 5 and all(0 < t <= 600 for t in calls)
 
 
 def test_a_verify_run_the_loop_already_made_is_used_instead_of_a_new_one(tmp_path):
@@ -230,7 +240,7 @@ def test_a_verify_run_the_loop_already_made_is_used_instead_of_a_new_one(tmp_pat
     log = 'OK x\nERROR 0x00401000 f REGRESSION: was 100.00%\n'
     ok, msg = wholetree.check(run, {}, verify_done=(1, log))
     assert not ok and 'ERROR 0x00401000 f REGRESSION' in msg
-    assert len(run.calls) == 3
+    assert len(run.calls) == 4
     assert wholetree.check(fake(), {}, verify_done=(0, 'OK x\n')) == (True, '')
 
 

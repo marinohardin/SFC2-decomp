@@ -351,7 +351,15 @@ while :; do
         if [ "$code" = 0 ] && [ "$improved" = 1 ]; then
             outcome=$([ "$kind" = exact ] && echo exact || echo improved)
             name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
+            # The symbol table is the one non-source file a lane commits, and only the tool
+            # writes it (harness/lib/symsync.py): the claims of the rebuilt units, and the
+            # symbols of the unclaimed functions this one calls.
+            table=analysis/symbols/STARFLEETOP.tsv
+            if [ -f "$table" ] && [ -f tools/symbols.py ]; then
+                python3 -m harness.lib.symsync "$tag.after.json" "$addr" 2>&1 | tee "$tag.symbols.txt" | grep -E '^(WARN|ERROR)'
+            fi
             git add -A -- "$src"
+            [ -f "$table" ] && git add -- "$table"
             git commit -q -m "feat(op): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \
                 -m "build-and-verify: $before% -> $after% ($kind) with $model." \
                 -m "$(py trailer "$addr" "$after" "$kind")" \

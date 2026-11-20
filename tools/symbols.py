@@ -414,7 +414,12 @@ def cmd_add(a):
         print(f'ERROR {symbol!r} is not a plausible MSVC symbol for a function (a per-unit or '
               'import symbol is never recorded)')
         return 1
-    if symbol_placeholders(symbol):
+    if a.callee:
+        ok, why = callee_verdict(symbol, int(address, 16))
+        if not ok:
+            print(f'ERROR {symbol} is not accepted for {address} ({why})')
+            return 1
+    elif symbol_placeholders(symbol):
         print(f'ERROR {symbol} names a placeholder ({", ".join(symbol_placeholders(symbol))}): '
               'a placeholder is not evidence')
         return 1
@@ -561,6 +566,9 @@ def main(argv=None):
     s.add_argument('address')
     s.add_argument('symbol')
     s.add_argument('--declaration')
+    s.add_argument('--callee', action='store_true',
+                   help="the symbol is one a caller's relocation names: also accept the "
+                   "function's own fn_<address> name, as the seed does for callers")
     s.set_defaults(fn=cmd_add)
     c = sub.add_parser('claim', help="make claimed rows carry the build's symbols")
     c.add_argument('address', nargs='*', help='default: every current claim')
