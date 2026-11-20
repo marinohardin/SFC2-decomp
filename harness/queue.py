@@ -44,17 +44,38 @@ sys.path[0] = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from harness.lib import clean, coff, funcs, matched, paths, workqueue  # noqa: E402
 
 
+def _last_commit_with(ref, rel):
+    """The commit to read `rel` from: `ref` when the file exists there, else the parent of the
+    commit that deleted it (the last one reachable from `ref` that still had it), else None."""
+    import subprocess
+
+    def git(*a):
+        return subprocess.run(['git', '-C', paths.REPO, *a], capture_output=True, text=True)
+    if git('cat-file', '-e', f'{ref}:{rel}').returncode == 0:
+        return ref
+    last = git('log', '-1', '--format=%H', ref, '--', rel)
+    sha = last.stdout.strip()
+    if last.returncode != 0 or not sha:
+        return None
+    parent = git('rev-parse', '--verify', '--quiet', f'{sha}^')
+    return parent.stdout.strip() if parent.returncode == 0 else None
+
+
 def seed_lists(ref):
     """Copy the two lists as committed at `ref` into the lists folder, as the lane "seed". Run
-    once, when the lists first leave the repository; it never overwrites a file."""
+    once, when the lists first leave the repository; it never overwrites a file. Once they are
+    deleted on `ref`, each is read from the last commit reachable from `ref` that still had it
+    (the line says which)."""
     import subprocess
     out = os.path.join(paths.LISTS, 'seed')
     for name in (paths.DIFFICULT_NAME, paths.REVISIT_NAME):
         dest = os.path.join(out, name)
-        p = subprocess.run(['git', '-C', paths.REPO, 'show', f'{ref}:analysis/results/{name}'],
-                           capture_output=True, text=True)
-        if p.returncode != 0:
-            print(f'ERROR {ref} has no analysis/results/{name}', file=sys.stderr)
+        rel = f'analysis/results/{name}'
+        at = _last_commit_with(ref, rel)
+        p = subprocess.run(['git', '-C', paths.REPO, 'show', f'{at}:{rel}'],
+                           capture_output=True, text=True) if at else None
+        if p is None or p.returncode != 0:
+            print(f'ERROR no commit reachable from {ref} has {rel}', file=sys.stderr)
             return 2
         if os.path.exists(dest):
             print(f'INFO  {dest} exists; left alone')
@@ -62,7 +83,8 @@ def seed_lists(ref):
         os.makedirs(out, exist_ok=True)
         with open(dest, 'w', newline='') as f:
             f.write(p.stdout)
-        print(f'OK    {name} from {ref}: {max(len(p.stdout.splitlines()) - 1, 0)} rows -> {dest}')
+        print(f'OK    {name} from {at[:12]} ({ref}): '
+              f'{max(len(p.stdout.splitlines()) - 1, 0)} rows -> {dest}')
     return 0
 
 
@@ -161,7 +183,10 @@ def main(argv):
         if where in ('difficult', 'revisit'):
             print(f'INFO  {row["address"]} listed in {where}_functions.tsv (lane {paths.LANE})')
         elif where == 'cleared':
-            print(f'INFO  {row["address"]} taken off revisit_functions.tsv')
+            print(f'INFO  {row["address"]} taken off this lane\'s revisit_functions.tsv')
+        elif where and where.startswith('left:'):
+            print(f'INFO  {row["address"]} is exact; listed by lane {where[5:]}, left there '
+                  f'(the queue skips it because it is exact)')
         return 0
     if cmd == 'show':
         n = int(args[0]) if args else 20

@@ -415,7 +415,8 @@ def _rewrite_tsv(path, fields, keep):
 
 def settle(paths_, entry, tiers, now, take_revisit=False):
     """Put a function whose run is over on the right list. Returns 'difficult', 'revisit',
-    'cleared' (exact: taken off the revisit list) or None (its run goes on, or it is listed
+    'cleared' (exact: taken off this lane's revisit list), 'left:<lane>' (exact, but another
+    lane's revisit file holds it: left there) or None (its run goes on, or it is listed
     already)."""
     a = entry['address']
     tiers = tiers.for_size(entry.get('size'))
@@ -424,8 +425,15 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     mine = [r for r in revisit if r['address'] == a]
     if any(r['address'] == a and r['outcome'] == 'exact' for r in attempts):
         if mine:
-            _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
-            return 'cleared'
+            if any(r['address'] == a for r in read_tsv(paths_.REVISIT, REVISIT_FIELDS)):
+                _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+                return 'cleared'
+            # Another lane's (or the seed's) row: a loop writes only its own files, and the queue
+            # skips an exact function whatever the lists say.
+            where = next((os.path.basename(os.path.dirname(f))
+                          for f in getattr(paths_, 'revisit_files', lambda: [])()
+                          if any(r['address'] == a for r in read_tsv(f, REVISIT_FIELDS))), '?')
+            return f'left:{where}'
         return None
     if mine and not take_revisit:
         return None

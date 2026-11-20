@@ -252,9 +252,15 @@ conflict on generated files when they land.
   overrides). A loop writes only its own lane's two files; the queue reads the union of every
   lane's, so memory carries across lanes with no write races and no merge. A revisit row for a
   function another lane listed difficult is ignored. Nothing is committed and nothing is listed
-  in a commit. To start from the lists as they were committed, run once:
+  in a commit. Clearing is per lane: a function that ends exact comes off this lane's revisit
+  file only; a row in another lane's file (or in `seed/`) stays, and the loop says so
+  (`listed by lane X, left there`), since the queue skips an exact function anyway. A lane's list
+  files have one writer, so `HARNESS_STATE` (and with it the lane name) must not be shared
+  between worktrees or clones. To start from the lists as they were committed, run once:
   `python3 harness/queue.py seed-lists origin/develop` (it copies the two files into
-  `lists/seed/` and never overwrites one).
+  `lists/seed/` and never overwrites one). Once develop no longer has the files, each is read
+  from the last commit reachable from the ref that still had it (the parent of the commit that
+  deleted it), and the output names that commit.
 - **Commits.** `feat(op): match|improve <name> (<address>)`, the score change in the body, and a
   trailer: `Harness-Score: STARFLEETOP 0x00401234 exact`, or the percent for an improvement.
   `tools/unlanded.py` reads the trailers in `base..branch`: a lane's exact functions are those
