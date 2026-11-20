@@ -8,6 +8,12 @@
 #include "Common/DynamicAllocator.h"
 
 #include <string.h>
+#include <algorithm>
+// FUNCTION: STARFLEETOP 0x006fc490
+tAllocatedClass::tAllocatedClass() : fAllocID( -1 ) {}
+// FUNCTION: STARFLEETOP 0x006fc4a0
+// FUNCTION: STARFLEETOP 0x006fc4c0
+tAllocatedClass::~tAllocatedClass() {}
 
 // FUNCTION: STARFLEETOP 0x006fc4d0
 int32 tAllocatedClass::operator==( const type_info& type )
@@ -19,6 +25,39 @@ int32 tAllocatedClass::operator==( const type_info& type )
 	}
 
 	return valid;
+}
+
+// FUNCTION: STARFLEETOP 0x006fc500
+int32 tDynamicAllocator::tAllocatorInfo::operator<( const tAllocatorInfo& allocInfo ) const
+{
+	if( fTypeID )
+	{
+		if( allocInfo.fTypeID )
+		{
+			return strcmp( fTypeID->raw_name(), allocInfo.fTypeID->raw_name() ) <= 0;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x006fc580
+int32 tDynamicAllocator::tAllocatorInfo::operator==( const type_info& type ) const
+{
+	if( fTypeID )
+	{
+		return *fTypeID == type;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x006fc5a0
@@ -41,6 +80,37 @@ int32 tDynamicAllocator::tAllocatorInfo::operator==( const char* raw_name ) cons
 	}
 }
 
+tDynamicAllocator* tDynamicAllocator::fpDynamicAllocator = 0;
+
+// FUNCTION: STARFLEETOP 0x006fc640
+// FUNCTION: STARFLEETOP 0x006fc630
+// FUNCTION: STARFLEETOP 0x006fc610
+tCleanupGlobalPointer< tDynamicAllocator > tDynamicAllocator::fCleanupSingletion( &tDynamicAllocator::fpDynamicAllocator );
+
+// FUNCTION: STARFLEETOP 0x006fc690
+tDynamicAllocator* tDynamicAllocator::Instance()
+{
+	if( fpDynamicAllocator == 0 )
+	{
+		fpDynamicAllocator = new tDynamicAllocator;
+	}
+
+	return fpDynamicAllocator;
+}
+
+// FUNCTION: STARFLEETOP 0x006fc700
+tDynamicAllocator::tDynamicAllocator()
+{
+	fAllocatorListLocked = false;
+	fAllocatorList = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006fc710
+tDynamicAllocator::~tDynamicAllocator()
+{
+	delete fAllocatorList;
+}
+
 // FUNCTION: STARFLEETOP 0x006fc750
 void tDynamicAllocator::LockDownAllocator()
 {
@@ -55,4 +125,41 @@ void tDynamicAllocator::LockDownAllocator()
 	{
 		( *fAllocatorList )[ i ].fAllocator->mAssignAllocID( i );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006fc790
+void tDynamicAllocator::mAddToAllocList( const type_info& type, tAllocator* alloc )
+{
+	if( fAllocatorListLocked )
+	{
+		return;
+	}
+
+	if( !fAllocatorList )
+	{
+		fAllocatorList = new tAllocatorList;
+	}
+
+	tAllocatorInfo info;
+	info.fTypeID = &type;
+	info.fAllocator = alloc;
+
+	fAllocatorList->push_back( info );
+
+	std::sort( fAllocatorList->begin(), fAllocatorList->end() );
+}
+
+// FUNCTION: STARFLEETOP 0x006fcb40
+tAllocatedClass* tDynamicAllocator::mAllocateClass( iAllocatorID typeAllocID )
+{
+	LockDownAllocator();
+
+	int32 count = fAllocatorList->size();
+	if( typeAllocID < 0 || typeAllocID >= count )
+	{
+		return 0;
+	}
+
+	const tAllocatorInfo& info = fAllocatorList->at( typeAllocID );
+	return info.fAllocator->mAllocate();
 }

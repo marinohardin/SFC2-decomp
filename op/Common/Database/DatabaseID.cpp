@@ -1,6 +1,49 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Database/DatabaseID.cpp
-// Functions: 0x006fa440 to 0x006fa480, 5 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+#include "Common/Database/DatabaseID.h"
+#include "Tiger/tpart.h"
+
+namespace nDatabase
+{
+
+// FUNCTION: STARFLEETOP 0x006fa440
+bool tID::IsValid() const
+{
+	return fObjectID != 0 ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa460
+bool tID::operator==( const tID& compare ) const
+{
+	return fObjectID == compare.fObjectID ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa470
+bool tID::operator!=( const tID& compare ) const
+{
+	return fObjectID != compare.fObjectID ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x006fa480
+bool tID::operator<( const tID& compare ) const
+{
+	return fObjectID < compare.fObjectID ? true : false;
+}
+
+}
+
+// HYPOTHESIS: tgPrefsPart derives from tPart; only the slot mActivate touches (+0xc) is known.
+class tgPrefsPart : public tPart
+{
+public:
+	virtual	iTruth	mIsValid	( void );
+	virtual	iTruth	mIsReady	( void );
+	virtual	void	mActivate	( void );
+	virtual	void	mDeactivate	( void );
+
+	int32s			fField0c;
+};
+
+// FUNCTION: STARFLEETOP 0x006fa450
+void tgPrefsPart::mActivate( void )
+{
+	fField0c = 0;
+}

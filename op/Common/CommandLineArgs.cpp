@@ -1,6 +1,33 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/CommandLineArgs.cpp
-// Functions: 0x006fdb80 to 0x006fdf20, 6 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// Common/CommandLineArgs.cpp
+
+#include <windows.h>
+#include <string>
+
+#include "Common/CommandLineArgs.h"
+
+tCommandLineArgs::iAutoPtr tCommandLineArgs::g_00c7f8b8;
+
+// FUNCTION: STARFLEETOP 0x006fdb80
+tCommandLineArgs *tCommandLineArgs::Instance(void)
+{
+	if (g_00c7f8b8.get() == 0)
+	{
+		g_00c7f8b8 = iAutoPtr(new tCommandLineArgs);
+	}
+
+	return g_00c7f8b8.get();
+}
+
+// FUNCTION: STARFLEETOP 0x006fdc50
+tCommandLineArgs::tCommandLineArgs()
+	: m14(GetCommandLineA())
+{
+}
+
+// The inlined basic_string::_Tidy calls of 0x006fdd40 lack the toolchain's _FROZEN test (the
+// library difference noted at 0x00708820); the rest lines up.
+// FUNCTION: STARFLEETOP 0x006fdd20
+// FUNCTION: STARFLEETOP 0x006fdd40
+tCommandLineArgs::~tCommandLineArgs()
+{
+}

@@ -321,16 +321,16 @@ protected:
 
 
 
-namespace nLog
-{
-	class tLogStream : public std::ostream
-	{
-	};
+#include "Common/Log/LogStream.h"
 
-	std::ostream& __cdecl report( std::ostream& stream );
 
-	extern tLogStream warning;
-};
+
+
+
+
+
+
+
 
 // tThreadPool is declared in Common/Thread/ThreadPool.h; the lines below up to Instance stay
 // blank so the code keeps its line numbers.

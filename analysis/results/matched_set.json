@@ -37288,6 +37288,654 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x006f55c0": {
+   "name": "tOSVersion::_OS_InterlockedCompareExchange",
+   "symbol": "?_OS_InterlockedCompareExchange@tOSVersion@@CAJPAJJJ@Z",
+   "unit": "Common/OSVersion.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5690": {
+   "name": "tThreadState::GetCurThreadState",
+   "symbol": "?GetCurThreadState@tThreadState@@SAPAV1@XZ",
+   "unit": "Common/Thread/ThreadState.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5700": {
+   "name": "tThreadState::SetCurThreadState",
+   "symbol": "?SetCurThreadState@tThreadState@@SAXPAV1@@Z",
+   "unit": "Common/Thread/ThreadState.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5860": {
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::Instance",
+   "symbol": "?Instance@tHeartbeatTimerData@tHeartbeatTimer@@SAPAV12@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5950": {
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::tHeartbeatTimerData",
+   "symbol": "??0tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 192,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5a10": {
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::~tHeartbeatTimerData",
+   "symbol": "??1tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 240,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5b00": {
+   "name": "tHeartbeatTimer::tHeartbeatTimer",
+   "symbol": "??0tHeartbeatTimer@@QAE@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5c50": {
+   "name": "tHeartbeatTimer::`scalar_deleting_destructor'",
+   "symbol": "??_GtHeartbeatTimer@@UAEPAXI@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5c70": {
+   "name": "tHeartbeatTimer::~tHeartbeatTimer",
+   "symbol": "??1tHeartbeatTimer@@UAE@XZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5da0": {
+   "name": "tHeartbeatTimer::StartTimer",
+   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKPAVtTimerHandler@@@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f5ee0": {
+   "name": "tHeartbeatTimer::StartTimer",
+   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f6020": {
+   "name": "tHeartbeatTimer::StartTimer",
+   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKPAV?$tCallback@K@@K@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f6160": {
+   "name": "tHeartbeatTimer::ChangeTiming",
+   "symbol": "?ChangeTiming@tHeartbeatTimer@@UAEXKK@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f62c0": {
+   "name": "tHeartbeatTimer::StopTimer",
+   "symbol": "?StopTimer@tHeartbeatTimer@@UAEXXZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f6580": {
+   "name": "tHeartbeatTimer::OnAutoRunHB",
+   "symbol": "?OnAutoRunHB@tHeartbeatTimer@@SAXJ@Z",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f65d0": {
+   "name": "tHeartbeatTimer::Heartbeat",
+   "symbol": "?Heartbeat@tHeartbeatTimer@@SAXXZ",
+   "unit": "Common/Timer/HeartbeatTimer.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f6b60": {
+   "name": "tSettings::`scalar_deleting_destructor'",
+   "symbol": "??_GtSettings@@UAEPAXI@Z",
+   "unit": "Common/Settings.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f6b80": {
+   "name": "tSettings::~tSettings",
+   "symbol": "??1tSettings@@UAE@XZ",
+   "unit": "Common/Settings.cpp",
+   "size": 224,
+   "score": 53.025,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006f87d0": {
+   "name": "tDateAndTime::tDateAndTime",
+   "symbol": "??0tDateAndTime@@QAE@XZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8800": {
+   "name": "tDateAndTime::tDateAndTime",
+   "symbol": "??0tDateAndTime@@QAE@J@Z",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8820": {
+   "name": "tDateAndTime::operator=",
+   "symbol": "??4tDateAndTime@@QAEABV0@J@Z",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8830": {
+   "name": "tDateAndTime::GetTickCount",
+   "symbol": "?GetTickCount@tDateAndTime@@SA?AV1@XZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8860": {
+   "name": "tDateAndTime::GetLocalTm",
+   "symbol": "?GetLocalTm@tDateAndTime@@QBEPAUtm@@PAU2@@Z",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f88b0": {
+   "name": "tDateAndTime::SetToCurrentTime",
+   "symbol": "?SetToCurrentTime@tDateAndTime@@QAEXXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f88d0": {
+   "name": "tDateAndTime::GetYear",
+   "symbol": "?GetYear@tDateAndTime@@QBEJXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f88e0": {
+   "name": "tDateAndTime::GetMonth",
+   "symbol": "?GetMonth@tDateAndTime@@QBEJXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f88f0": {
+   "name": "tDateAndTime::GetDay",
+   "symbol": "?GetDay@tDateAndTime@@QBEJXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8900": {
+   "name": "tDateAndTime::GetHour",
+   "symbol": "?GetHour@tDateAndTime@@QBEJXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8910": {
+   "name": "tDateAndTime::GetMinute",
+   "symbol": "?GetMinute@tDateAndTime@@QBEJXZ",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8920": {
+   "name": "tDateAndTime::operator<",
+   "symbol": "??MtDateAndTime@@QBE_NABV0@@Z",
+   "unit": "Common/DateAndTime.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8cb0": {
+   "name": "nDataStore::tStreamable::tCRCFailed::scalar_deleting_destructor",
+   "symbol": "??_GtCRCFailed@tStreamable@nDataStore@@UAEPAXI@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8cd0": {
+   "name": "nDataStore::tStreamable::tCRCFailed::~tCRCFailed",
+   "symbol": "??1tCRCFailed@tStreamable@nDataStore@@UAE@XZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 128,
+   "score": 29.835,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8d50": {
+   "name": "nDataStore::tStreamable::tCRCFailed::ReportException",
+   "symbol": "?ReportException@tCRCFailed@tStreamable@nDataStore@@UAEXPBD@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8d70": {
+   "name": "FUN_006f8d70",
+   "symbol": "_$E17",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8d90": {
+   "name": "FUN_006f8d90",
+   "symbol": "_$E20",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8e90": {
+   "name": "nDataStore::tStreamable::tObjectIDInfo::tObjectIDInfo",
+   "symbol": "??0tObjectIDInfo@tStreamable@nDataStore@@QAE@XZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8eb0": {
+   "name": "nDataStore::tStreamable::tStreamable",
+   "symbol": "??0tStreamable@nDataStore@@QAE@E@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8ed0": {
+   "name": "nDataStore::tStreamable::~tStreamable",
+   "symbol": "??1tStreamable@nDataStore@@UAE@XZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f8ee0": {
+   "name": "nDataStore::tStreamable::GetObjectID",
+   "symbol": "?GetObjectID@tStreamable@nDataStore@@QBEKXZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 592,
+   "score": 95.483,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006f9130": {
+   "name": "nDataStore::tStreamable::GetVersion",
+   "symbol": "?GetVersion@tStreamable@nDataStore@@QBEEXZ",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006f9140": {
+   "name": "nDataStore::operator>>",
+   "symbol": "??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 384,
+   "score": 99.959,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006f92c0": {
+   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed",
+   "symbol": "??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 352,
+   "score": 61.587,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006f9420": {
+   "name": "nDataStore::operator<<",
+   "symbol": "??6nDataStore@@YAAAVtOutput@0@AAV10@ABVtStreamable@0@@Z",
+   "unit": "Common/DataStore/Streamable.cpp",
+   "size": 544,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa440": {
+   "name": "nDatabase::tID::IsValid",
+   "symbol": "?IsValid@tID@nDatabase@@QBE_NXZ",
+   "unit": "Common/Database/DatabaseID.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa450": {
+   "name": "tgPrefsPart::mActivate",
+   "symbol": "?mActivate@tgPrefsPart@@UAEXXZ",
+   "unit": "Common/Database/DatabaseID.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa460": {
+   "name": "nDatabase::tID::operator==",
+   "symbol": "??8tID@nDatabase@@QBE_NABV01@@Z",
+   "unit": "Common/Database/DatabaseID.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa470": {
+   "name": "nDatabase::tID::operator!=",
+   "symbol": "??9tID@nDatabase@@QBE_NABV01@@Z",
+   "unit": "Common/Database/DatabaseID.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa480": {
+   "name": "nDatabase::tID::operator<",
+   "symbol": "??MtID@nDatabase@@QBE_NABV01@@Z",
+   "unit": "Common/Database/DatabaseID.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa540": {
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject",
+   "symbol": "??0tDatabaseObject@nDatabase@@QAE@E@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 368,
+   "score": 78.022,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa6b0": {
+   "name": "nDatabase::tDatabaseObject::`scalar_deleting_destructor'",
+   "symbol": "??_GtDatabaseObject@nDatabase@@UAEPAXI@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa6d0": {
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject",
+   "symbol": "??0tDatabaseObject@nDatabase@@QAE@ABV01@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 416,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa870": {
+   "name": "nDatabase::tDatabaseObject::operator=",
+   "symbol": "??4tDatabaseObject@nDatabase@@QAEAAV01@ABV01@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 384,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fa9f0": {
+   "name": "nDatabase::tDatabaseObject::operator<",
+   "symbol": "??MtDatabaseObject@nDatabase@@UAE_NABV01@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006faa20": {
+   "name": "nDatabase::tDatabaseObject::operator==",
+   "symbol": "??8tDatabaseObject@nDatabase@@UAE_NABV01@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fac20": {
+   "name": "nDatabase::tDatabaseObject::MakeReadOnly",
+   "symbol": "?MakeReadOnly@tDatabaseObject@nDatabase@@UAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 416,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fadc0": {
+   "name": "nDatabase::tDatabaseObject::SetID",
+   "symbol": "?SetID@tDatabaseObject@nDatabase@@UAEXABVtID@2@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fade0": {
+   "name": "nDatabase::tDatabaseObject::SetLockID",
+   "symbol": "?SetLockID@tDatabaseObject@nDatabase@@UAEXK@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006faf30": {
+   "name": "nDatabase::tDatabaseObject::AttachToDB",
+   "symbol": "?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 448,
+   "score": 48.085,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb0f0": {
+   "name": "nDatabase::tDatabaseObject::RemoveFromDB",
+   "symbol": "?RemoveFromDB@tDatabaseObject@nDatabase@@MAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb3f0": {
+   "name": "nDatabase::tDatabaseObject::UnLock",
+   "symbol": "?UnLock@tDatabaseObject@nDatabase@@MAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 368,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb560": {
+   "name": "nDatabase::tDatabaseObject::GetLockID",
+   "symbol": "?GetLockID@tDatabaseObject@nDatabase@@UBEKXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb6a0": {
+   "name": "nDatabase::tDatabaseObject::IsLocked",
+   "symbol": "?IsLocked@tDatabaseObject@nDatabase@@UBE_NXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb7f0": {
+   "name": "nDatabase::tDatabaseObject::Kill",
+   "symbol": "?Kill@tDatabaseObject@nDatabase@@QAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fb900": {
+   "name": "nDatabase::tDatabaseObject::IsDead",
+   "symbol": "?IsDead@tDatabaseObject@nDatabase@@QAE_NXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fba50": {
+   "name": "nDatabase::tDatabaseObject::AddReference",
+   "symbol": "?AddReference@tDatabaseObject@nDatabase@@QAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 320,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fbb90": {
+   "name": "nDatabase::tDatabaseObject::RemoveReference",
+   "symbol": "?RemoveReference@tDatabaseObject@nDatabase@@QAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 336,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fbce0": {
+   "name": "nDatabase::tDatabaseObject::CheckForDeath",
+   "symbol": "?CheckForDeath@tDatabaseObject@nDatabase@@MAEXXZ",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 432,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fbe90": {
+   "name": "nDatabase::tDatabaseObject::StreamOut",
+   "symbol": "?StreamOut@tDatabaseObject@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 512,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc090": {
+   "name": "nDatabase::tDatabaseObject::StreamIn",
+   "symbol": "?StreamIn@tDatabaseObject@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Common/Database/DatabaseObject.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc490": {
+   "name": "tAllocatedClass::tAllocatedClass",
+   "symbol": "??0tAllocatedClass@@QAE@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc4a0": {
+   "name": "tAllocatedClass::scalar_deleting_destructor",
+   "symbol": "??_GtAllocatedClass@@UAEPAXI@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc4c0": {
+   "name": "tAllocatedClass::~tAllocatedClass",
+   "symbol": "??1tAllocatedClass@@UAE@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
@@ -37296,6 +37944,24 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x006fc500": {
+   "name": "tDynamicAllocator::tAllocatorInfo::operator<",
+   "symbol": "??MtAllocatorInfo@tDynamicAllocator@@QBEJABV01@@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 128,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc580": {
+   "name": "tDynamicAllocator::tAllocatorInfo::operator==",
+   "symbol": "??8tAllocatorInfo@tDynamicAllocator@@QBEJABVtype_info@@@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x006fc5a0": {
    "name": "tDynamicAllocator::tAllocatorInfo::operator==",
@@ -37306,6 +37972,60 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
+  "0x006fc610": {
+   "name": "tCleanupGlobalPointer<tDynamicAllocator>::tCleanupGlobalPointer<tDynamicAllocator>_Constructor_or_Destructor",
+   "symbol": "_$E4",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc630": {
+   "name": "FUN_006fc630",
+   "symbol": "_$E7",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc640": {
+   "name": "tCleanupGlobalPointer<tDynamicAllocator>::tCleanupGlobalPointer<tDynamicAllocator>_Constructor_or_Destructor",
+   "symbol": "_$E5",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc690": {
+   "name": "tDynamicAllocator::Instance",
+   "symbol": "?Instance@tDynamicAllocator@@SAPAV1@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc700": {
+   "name": "tDynamicAllocator::tDynamicAllocator",
+   "symbol": "??0tDynamicAllocator@@AAE@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fc710": {
+   "name": "tDynamicAllocator::~tDynamicAllocator",
+   "symbol": "??1tDynamicAllocator@@AAE@XZ",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x006fc750": {
    "name": "tDynamicAllocator::LockDownAllocator",
    "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
@@ -37314,6 +38034,267 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
+  },
+  "0x006fc790": {
+   "name": "tDynamicAllocator::mAddToAllocList",
+   "symbol": "?mAddToAllocList@tDynamicAllocator@@QAEXABVtype_info@@PAVtAllocator@@@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 944,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fcb40": {
+   "name": "tDynamicAllocator::mAllocateClass",
+   "symbol": "?mAllocateClass@tDynamicAllocator@@QAEPAVtAllocatedClass@@J@Z",
+   "unit": "Common/DynamicAllocator.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd240": {
+   "name": "nException::tOutOfBounds::tOutOfBounds",
+   "symbol": "??0tOutOfBounds@nException@@QAE@PBDJJJ0J@Z",
+   "unit": "Common/Exceptions/OutOfBounds.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd340": {
+   "name": "nException::tBaseException::tBaseException",
+   "symbol": "??0tBaseException@nException@@QAE@PBD0J@Z",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd370": {
+   "name": "nException::tBaseException::~tBaseException",
+   "symbol": "??1tBaseException@nException@@UAE@XZ",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd380": {
+   "name": "nException::tBaseException::ReportHeader",
+   "symbol": "?ReportHeader@tBaseException@nException@@UAEXPBD@Z",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 511,
+   "score": 98.958,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd590": {
+   "name": "nException::tBaseException::ReportException",
+   "symbol": "?ReportException@tBaseException@nException@@UAEXPBD@Z",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 90,
+   "score": 93.939,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd5f0": {
+   "name": "nException::tBaseException::GetDescription",
+   "symbol": "?GetDescription@tBaseException@nException@@UAEPBDXZ",
+   "unit": "Common/Exceptions/BaseException.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd810": {
+   "name": "nException::tValidationFailed::ReportException",
+   "symbol": "?ReportException@tValidationFailed@nException@@UAEXPBD@Z",
+   "unit": "Common/Exceptions/Validate.cpp",
+   "size": 169,
+   "score": 96.61,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd970": {
+   "name": "tCRC32::GenerateCRCTable",
+   "symbol": "?GenerateCRCTable@tCRC32@@IAEXXZ",
+   "unit": "Common/Crypto/CRC32.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fd9b0": {
+   "name": "tCRC32::UpdateCRC",
+   "symbol": "?UpdateCRC@tCRC32@@QAEKKPBDJ@Z",
+   "unit": "Common/Crypto/CRC32.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fdb80": {
+   "name": "tCommandLineArgs::Instance",
+   "symbol": "?Instance@tCommandLineArgs@@SAPAV1@XZ",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fdc50": {
+   "name": "tCommandLineArgs::tCommandLineArgs",
+   "symbol": "??0tCommandLineArgs@@AAE@XZ",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fdd20": {
+   "name": "tCommandLineArgs::`scalar_deleting_destructor'",
+   "symbol": "??_GtCommandLineArgs@@EAEPAXI@Z",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fdd40": {
+   "name": "tCommandLineArgs::~tCommandLineArgs",
+   "symbol": "??1tCommandLineArgs@@EAE@XZ",
+   "unit": "Common/CommandLineArgs.cpp",
+   "size": 192,
+   "score": 28.125,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe0a0": {
+   "name": "tWinClock::GetCurrentSystemTimeInSeconds",
+   "symbol": "?GetCurrentSystemTimeInSeconds@tWinClock@@UBENXZ",
+   "unit": "Common/Timer/WinClock.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe0e0": {
+   "name": "FUN_006fe0e0",
+   "symbol": "_$E2",
+   "unit": "Common/Timer/WinClock.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe0f0": {
+   "name": "FUN_006fe0f0",
+   "symbol": "_$E5",
+   "unit": "Common/Timer/WinClock.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe140": {
+   "name": "tWinClockGlobal::Instance",
+   "symbol": "?Instance@tWinClockGlobal@@SAPAV1@XZ",
+   "unit": "Common/Timer/WinClock.cpp",
+   "size": 208,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe4f0": {
+   "name": "nLog::tLogStream::tStreamBuf::tStreamBuf",
+   "symbol": "??0tStreamBuf@tLogStream@nLog@@QAE@PAVtLog@2@@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe600": {
+   "name": "nLog::tLogStream::tStreamBuf::`scalar_deleting_destructor'",
+   "symbol": "??_GtStreamBuf@tLogStream@nLog@@UAEPAXI@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe620": {
+   "name": "nLog::tLogStream::tStreamBuf::~tStreamBuf",
+   "symbol": "??1tStreamBuf@tLogStream@nLog@@UAE@XZ",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 256,
+   "score": 25.05,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe720": {
+   "name": "nLog::tLogStream::tStreamBuf::xsputn",
+   "symbol": "?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 352,
+   "score": 24.719,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe880": {
+   "name": "nLog::tLogStream::tStreamBuf::overflow",
+   "symbol": "?overflow@tStreamBuf@tLogStream@nLog@@UAEHH@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe8a0": {
+   "name": "nLog::tLogStream::tStreamBuf::vfunction5",
+   "symbol": "?underflow@tStreamBuf@tLogStream@nLog@@UAEHXZ",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fe8b0": {
+   "name": "nLog::tLogStream::tStreamBuf::Report",
+   "symbol": "?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 384,
+   "score": 28.201,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x006feda0": {
+   "name": "nLog::tLogStream::tStreamBuf::SetEventType",
+   "symbol": "?SetEventType@tStreamBuf@tLogStream@nLog@@UAEXW4tEventType@tLog@3@@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006fedc0": {
+   "name": "nLog::tLogStream::tLogStream",
+   "symbol": "??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x006feed0": {
+   "name": "nLog::tLogStream::`scalar_deleting_destructor'",
+   "symbol": "??_GtLogStream@nLog@@UAEPAXI@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",

@@ -4146,6 +4146,48 @@ address	size	symbol	source	modes
 0x006f5570	14	tOSVersion::Init()	Common/OSVersion.cpp	vc6 guest
 0x006f5580	28	tOSVersion::IsWindows95()	Common/OSVersion.cpp	vc6 guest
 0x006f55a0	28	tOSVersion::IsWindows98()	Common/OSVersion.cpp	vc6 guest
+0x006f55c0	42	tOSVersion::_OS_InterlockedCompareExchange(LPLONG,LONG,LONG)	Common/OSVersion.cpp	vc6 guest
+0x006f5690	108	tThreadState::GetCurThreadState()	Common/Thread/ThreadState.cpp	vc6 guest
+0x006f5700	37	tThreadState::SetCurThreadState(tThreadState*)	Common/Thread/ThreadState.cpp	vc6 guest
+0x006f5860	229	tHeartbeatTimer::tHeartbeatTimerData::Instance()	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f5950	186	tHeartbeatTimer::tHeartbeatTimerData::tHeartbeatTimerData()	Common/Timer/HeartbeatTimer.cpp	vc6
+0x006f5a10	226	tHeartbeatTimer::tHeartbeatTimerData::~tHeartbeatTimerData()	Common/Timer/HeartbeatTimer.cpp	vc6
+0x006f5b00	336	tHeartbeatTimer::tHeartbeatTimer()	Common/Timer/HeartbeatTimer.cpp	vc6
+0x006f5c50	30	tHeartbeatTimer::`scalar deleting destructor'	Common/Timer/HeartbeatTimer.cpp	vc6
+0x006f5c70	294	tHeartbeatTimer::~tHeartbeatTimer()	Common/Timer/HeartbeatTimer.cpp	vc6
+0x006f5da0	309	tHeartbeatTimer::StartTimer(int32u,int32u,tTimerHandler*)	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f5ee0	317	tHeartbeatTimer::StartTimer(int32u,int32u,iTimerCallbackFunc*,int32u)	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f6020	317	tHeartbeatTimer::StartTimer(int32u,int32u,iTimerCallback*,int32u)	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f6160	344	tHeartbeatTimer::ChangeTiming(int32u,int32u)	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f62c0	318	tHeartbeatTimer::StopTimer()	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f6580	66	tHeartbeatTimer::OnAutoRunHB(int32)	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f65d0	316	tHeartbeatTimer::Heartbeat()	Common/Timer/HeartbeatTimer.cpp	vc6 guest
+0x006f6b60	30	tSettings::`scalar deleting destructor'	Common/Settings.cpp	vc6
+0x006f6b80	217	tSettings::~tSettings()	Common/Settings.cpp	partial
+0x006f87d0	33	tDateAndTime::tDateAndTime()	Common/DateAndTime.cpp	vc6
+0x006f8800	29	tDateAndTime::tDateAndTime(time_t)	Common/DateAndTime.cpp	vc6
+0x006f8820	12	tDateAndTime::operator=(time_t)	Common/DateAndTime.cpp	vc6 guest
+0x006f8830	37	tDateAndTime::GetCurrentTime()	Common/DateAndTime.cpp	vc6 guest
+0x006f8860	66	tDateAndTime::GetLocalTm(tm*) const	Common/DateAndTime.cpp	vc6 guest
+0x006f88b0	18	tDateAndTime::SetToCurrentTime()	Common/DateAndTime.cpp	vc6 guest
+0x006f88d0	16	tDateAndTime::GetYear() const	Common/DateAndTime.cpp	vc6 guest
+0x006f88e0	12	tDateAndTime::GetMonth() const	Common/DateAndTime.cpp	vc6 guest
+0x006f88f0	11	tDateAndTime::GetDay() const	Common/DateAndTime.cpp	vc6 guest
+0x006f8900	11	tDateAndTime::GetHour() const	Common/DateAndTime.cpp	vc6 guest
+0x006f8910	11	tDateAndTime::GetMinute() const	Common/DateAndTime.cpp	vc6 guest
+0x006f8920	16	tDateAndTime::operator<(const tDateAndTime&) const	Common/DateAndTime.cpp	vc6 guest
+0x006f8cb0	30	tStreamable::tCRCFailed::`scalar deleting destructor'	Common/DataStore/Streamable.cpp	vc6
+0x006f8cd0	115	tStreamable::tCRCFailed::~tCRCFailed()	Common/DataStore/Streamable.cpp	partial
+0x006f8d50	13	tStreamable::tCRCFailed::ReportException(const char*)	Common/DataStore/Streamable.cpp	vc6 guest
+0x006f8d70	23	tStreamable::fObjectIDInfoLookup (dynamic initializer)	Common/DataStore/Streamable.cpp	vc6
+0x006f8d90	12	tStreamable::fObjectIDInfoLookup (atexit registration)	Common/DataStore/Streamable.cpp	vc6
+0x006f8e90	29	tStreamable::tObjectIDInfo::tObjectIDInfo()	Common/DataStore/Streamable.cpp	vc6
+0x006f8eb0	25	tStreamable::tStreamable(iObjectVersion)	Common/DataStore/Streamable.cpp	vc6
+0x006f8ed0	7	tStreamable::~tStreamable()	Common/DataStore/Streamable.cpp	vc6
+0x006f8ee0	587	tStreamable::GetObjectID() const	Common/DataStore/Streamable.cpp	partial
+0x006f9130	4	tStreamable::GetVersion() const	Common/DataStore/Streamable.cpp	vc6 guest
+0x006f9140	384	operator>>(nDataStore::tInput&,tStreamable&)	Common/DataStore/Streamable.cpp	partial
+0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	partial
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc5a0	93	tDynamicAllocator::tAllocatorInfo::operator==(const char*) const	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc750	54	tDynamicAllocator::LockDownAllocator()	Common/DynamicAllocator.cpp	vc6 guest

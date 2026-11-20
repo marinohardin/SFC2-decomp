@@ -81,6 +81,18 @@ protected:
 	tBuffer* fBuffer;
 };
 
+bool tOutput::CheckFlags( iOutputFlags flags ) const
+{
+	if( fOutputFlags & flags )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void tOutput::Put( byte data )
 {
 	fBuffer->Put( data );
@@ -104,6 +116,13 @@ tOutput& tOutput::operator<<( const std::string& string )
 tOutput& tOutput::operator<<( bool value )
 {
 	Put( (byte)value );
+
+	return *this;
+}
+
+tOutput& tOutput::operator<<( int8u value )
+{
+	Put( value );
 
 	return *this;
 }

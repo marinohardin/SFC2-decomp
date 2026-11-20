@@ -380,3 +380,23 @@ address	name	best_score	attempts	last_model	listed	note
 0x005fbc4c	FUN_005fbc4c	0.00	2	sonnet	2026-11-17T23:57:07Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005fbc58	FUN_005fbc58	0.00	2	sonnet	2026-11-18T00:01:28Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x005fbc64	FUN_005fbc64	0.00	2	sonnet	2026-11-18T00:07:40Z	attempt 2 (sonnet) did not raise the best; best 0.00%
+0x006f6400	tHeartbeatTimer::TimePassedSinceStart	0.00	2	opus	2026-11-19T20:10:17Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006f6b80	tSettings::~tSettings	53.02	2	opus	2026-11-19T20:16:08Z	attempt 2 (opus) did not raise the best; best 53.02%
+0x006f6d90	tSettings::CreateProfileList	0.00	2	opus	2026-11-19T20:20:09Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006f8cd0	nDataStore::tStreamable::tCRCFailed::~tCRCFailed	29.84	2	opus	2026-11-19T21:08:31Z	attempt 2 (opus) did not raise the best; best 29.84%
+0x006f8ee0	nDataStore::tStreamable::GetObjectID	95.48	2	opus	2026-11-19T21:14:45Z	attempt 2 (opus) did not raise the best; waits for Fable; best 95.48%
+0x006f9140	nDataStore::operator>>	99.96	3	opus	2026-11-19T21:22:13Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.96%
+0x006f92c0	nDataStore::tStreamable::tCRCFailed::tCRCFailed	61.59	2	opus	2026-11-19T21:24:56Z	attempt 2 (opus) did not raise the best; best 61.59%
+0x006fa540	nDatabase::tDatabaseObject::tDatabaseObject	78.02	2	opus	2026-11-19T22:22:10Z	attempt 2 (opus) did not raise the best; best 78.02%
+0x006faa50	nDatabase::tDatabaseObject::~tDatabaseObject	0.00	2	opus	2026-11-19T22:43:58Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006faf30	nDatabase::tDatabaseObject::AttachToDB	48.09	2	opus	2026-11-19T22:50:24Z	attempt 2 (opus) did not raise the best; best 48.09%
+0x006fb250	nDatabase::tDatabaseObject::Lock	0.00	2	opus	2026-11-19T23:07:01Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006fd380	nException::tBaseException::ReportHeader	98.96	2	opus	2026-11-19T23:41:26Z	attempt 2 (opus) did not raise the best; waits for Fable; best 98.96%
+0x006fd590	nException::tBaseException::ReportException	93.94	2	opus	2026-11-19T23:43:23Z	attempt 2 (opus) did not raise the best; waits for Fable; best 93.94%
+0x006fd810	nException::tValidationFailed::ReportException	96.61	2	opus	2026-11-19T23:46:19Z	attempt 2 (opus) did not raise the best; waits for Fable; best 96.61%
+0x006fdd40	tCommandLineArgs::~tCommandLineArgs	28.12	2	opus	2026-11-19T23:55:01Z	attempt 2 (opus) did not raise the best; best 28.12%
+0x006fe620	nLog::tLogStream::tStreamBuf::~tStreamBuf	25.05	2	opus	2026-11-20T00:03:52Z	attempt 2 (opus) did not raise the best; best 25.05%
+0x006fe720	nLog::tLogStream::tStreamBuf::xsputn	24.72	2	opus	2026-11-20T00:06:45Z	attempt 2 (opus) did not raise the best; best 24.72%
+0x006fe8b0	nLog::tLogStream::tStreamBuf::Report	28.20	2	opus	2026-11-20T00:09:38Z	attempt 2 (opus) did not raise the best; best 28.20%
+0x006fea30	nLog::tLogStream::tStreamBuf::LockAccess	0.00	2	opus	2026-11-20T00:14:36Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006febb0	nLog::tLogStream::tStreamBuf::RunCommand	0.00	2	opus	2026-11-20T00:18:34Z	attempt 2 (opus) did not raise the best; best 0.00%

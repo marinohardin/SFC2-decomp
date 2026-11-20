@@ -1,6 +1,20 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Timer/WinClock.cpp
-// Functions: 0x006fe0a0 to 0x006fe140, 4 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+#include "unsorted/tWinClock.h"
+#include "unsorted/tWinClockGlobal.h"
+
+// FUNCTION: STARFLEETOP 0x006fe0a0
+double tWinClock::GetCurrentSystemTimeInSeconds() const
+{
+	return (double)GetCurrentSystemTime() * 0.001;
+}
+
+// FUNCTION: STARFLEETOP 0x006fe0f0
+// FUNCTION: STARFLEETOP 0x006fe0e0
+tWinClockGlobal::iAutoWinClockGlobalPtr tWinClockGlobal::fpAutoWinClockGlobalPtr;
+
+// FUNCTION: STARFLEETOP 0x006fe140
+tWinClockGlobal* tWinClockGlobal::Instance()
+{
+	if( fpAutoWinClockGlobalPtr.get() == 0 )
+		fpAutoWinClockGlobalPtr = iAutoWinClockGlobalPtr( new tWinClockGlobal );
+	return fpAutoWinClockGlobalPtr.get();
+}
