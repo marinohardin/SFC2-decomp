@@ -2450,7 +2450,7 @@ address	size	symbol	source	modes
 0x005751f9	67	fn_00575023_owner::fn_005751f9(fn_005751f9_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x0057523c	70	fn_00575023_owner::fn_0057523c(fn_0057523c_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575282	67	fn_00575282_owner::fn_00575282(nAsyncDatabaseProcedure::tRepairShips**)	unsorted/fn_00575000.cpp	vc6 guest
-0x005752c5	67	fn_005752c5_owner::fn_005752c5(fn_005752c5_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x005752c5	67	fn_005752c5_owner::fn_005752c5(nAsyncDatabaseProcedure::tTransactionUpdateStores**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575308	70	fn_00575308_owner::fn_00575308(fn_00575308_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x0057534e	70	fn_0057534e_owner::fn_0057534e(fn_0057534e_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575394	67	fn_00575394_owner::fn_00575394(fn_00575394_object**)	unsorted/fn_00575000.cpp	vc6 guest
@@ -2491,9 +2491,9 @@ address	size	symbol	source	modes
 0x00575cc0	67	fn_00575cc0_owner::fn_00575cc0(fn_00575cc0_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575d03	67	fn_00575d03_owner::fn_00575d03(fn_00575d03_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575d46	67	fn_00575d46_owner::fn_00575d46(nAsyncDatabaseProcedure::tCheckExistencePreparedMission**)	unsorted/fn_00575000.cpp	vc6 guest
-0x00575d89	67	fn_00575d89_owner::fn_00575d89(fn_00575d89_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575d89	67	fn_00575d89_owner::fn_00575d89(nAsyncDatabaseProcedure::tAddPreparedMission**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575dcc	67	fn_00575dcc_owner::fn_00575dcc(nAsyncDatabaseProcedure::tUpdatePreparedMission**)	unsorted/fn_00575000.cpp	vc6 guest
-0x00575e0f	67	fn_00575e0f_owner::fn_00575e0f(fn_00575e0f_object**)	unsorted/fn_00575000.cpp	vc6 guest
+0x00575e0f	67	fn_00575e0f_owner::fn_00575e0f(nAsyncDatabaseProcedure::tGetPreparedMission**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575e52	67	fn_00575e52_owner::fn_00575e52(nAsyncDatabaseProcedure::tKillPreparedMission**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575e95	67	fn_00575e95_owner::fn_00575e95(fn_00575e95_object**)	unsorted/fn_00575000.cpp	vc6 guest
 0x00575ed8	67	fn_00575ed8_owner::fn_00575ed8(fn_00575ed8_object**)	unsorted/fn_00575000.cpp	vc6 guest
