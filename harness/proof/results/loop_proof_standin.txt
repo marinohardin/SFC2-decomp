@@ -1,31 +1,35 @@
-# loop proof, 2026-11-08T21:53Z; scratch repository $SFCOP_WORK/harness/loopproof/repo
+# loop proof, 2026-11-20T19:43Z; scratch repository $SFCOP_WORK/harness/loopproof/repo
 # agent: the scripted stand-in agent harness/proof/standin_agent.py, not claude
 
 $ harness/loop.sh --max 2
-INFO  0x006fc750 opus (baseline 0.00%) -> $SFCOP_WORK/harness/loopproof/state/attempts/0x006fc750-20261108T135348.*
-ERROR 0x006fc750 not scored: changes outside game: ?? harness/lib/planted.py ; worktree reset to 2958439cf06270e9fb10e5aac8c559e11142168e
-INFO  0x006fc750 sonnet (baseline 0.00%) -> $SFCOP_WORK/harness/loopproof/state/attempts/0x006fc750-20261108T135417.*
+INFO  writing the symbol table: harness/build-and-verify.sh --all (log $SFCOP_WORK/harness/loopproof/state/symbols.log)
+WARN  no symbol table: stand-ins are checked only against claims rebuilt in the same run
+INFO  0x006fc750 sonnet (baseline 0.00%) -> $SFCOP_WORK/harness/loopproof/state/attempts/0x006fc750-20261120T114330.*
+ERROR 0x006fc750 not scored: changes outside op: ?? harness/lib/planted.py ; worktree reset to 8deb0c48377e9d3c7911ebd70a34d9be9845e92a
+INFO  0x006fc750 opus (baseline 0.00%) -> $SFCOP_WORK/harness/loopproof/state/attempts/0x006fc750-20261120T114335.*
 OK    0x006fc750 exact 0.00% -> 100.00%, committed
 [exit 0]
 
 $ git status --porcelain; ls harness/lib/planted.py   (the planted file must be gone)
 No such file or directory
 $ git log --format=%s
-feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)
-loop proof: base tree with the SDK as game/
+feat(op): match tDynamicAllocator::LockDownAllocator (0x006fc750)
+loop proof: base tree with the SDK as op/
 $ git log -1 --stat
-feat(game): match tDynamicAllocator::LockDownAllocator (0x006fc750)
+feat(op): match tDynamicAllocator::LockDownAllocator (0x006fc750)
 
-build-and-verify: 0.00% -> 100.00% (exact) with sonnet.
+build-and-verify: 0.00% -> 100.00% (exact) with opus.
+
+Harness-Score: STARFLEETOP 0x006fc750 exact
 
 
- analysis/results/matched_set.json                 | 15 ++++++++++++++-
- game/Scripts/ScriptInterface/DynamicAllocator.cpp |  1 +
- 2 files changed, 15 insertions(+), 1 deletion(-)
-$ git diff -U0 HEAD~1 -- game   (changed lines only; the SDK source itself is not shown)
-+++ b/game/Scripts/ScriptInterface/DynamicAllocator.cpp
+ op/Scripts/ScriptInterface/DynamicAllocator.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+$ git diff -U0 HEAD~1 -- op   (changed lines only; the SDK source itself is not shown)
++++ b/op/Scripts/ScriptInterface/DynamicAllocator.cpp
 +// FUNCTION: STARFLEETOP 0x006fc750
-$ cat analysis/results/matched_set.json
+$ git diff --stat HEAD~1 -- analysis   (a lane commits source only: nothing here)
+$ cat $HARNESS_STATE/matched_set.json   (the lane's own matched set, outside the repository)
 {
  "version": 1,
  "functions": {
@@ -36,34 +40,34 @@ $ cat analysis/results/matched_set.json
    "size": 64,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-08"
+   "recorded": "2026-11-20"
   }
  }
 }
 $ cat $HARNESS_STATE/attempts.tsv
 time	address	name	model	outcome	score_before	score_after	input_tokens	output_tokens	cache_read_tokens	cache_write_tokens	cost_usd	turns	seconds
-2026-11-08T21:54:16Z	0x006fc750	tDynamicAllocator::LockDownAllocator	opus	tampered	0.00	0.00	0	0	0	0	0	0	27
-2026-11-08T21:54:40Z	0x006fc750	tDynamicAllocator::LockDownAllocator	sonnet	exact	0.00	100.00	0	0	0	0	0	0	23
+2026-11-20T19:43:34Z	0x006fc750	tDynamicAllocator::LockDownAllocator	sonnet	tampered	0.00	0.00	0	0	0	0	0	0	3
+2026-11-20T19:43:37Z	0x006fc750	tDynamicAllocator::LockDownAllocator	opus	exact	0.00	100.00	0	0	0	0	0	0	1
 
-## Session 0x006fc750-20261108T135348: final message
+## Session 0x006fc750-20261120T114330: final message
 stand-in agent:
 guard Edit {'file_path': '$SFCOP_WORK/harness/loopproof/repo/analysis/results/matched_set.json'}: deny
 guard Bash {'command': 'harness/update-matched-set.sh 0x006fc750'}: deny
 stop before any change: block
-guard Edit game/Scripts/ScriptInterface/DynamicAllocator.cpp: allow
+guard Edit op/Scripts/ScriptInterface/DynamicAllocator.cpp: allow
 tamper: wrote harness/lib/planted.py without asking the guard
-  OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (16.9 s, profile sdk-script-interface)
+  OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (1.2 s, profile sdk-script-interface)
   OK    0x006fc750 tDynamicAllocator::LockDownAllocator 100.00% exact (64 bytes original, 64 rebuilt; 0 relocations, 0 unverified); not in matched_set.json
   RESULT OK
 stop after the change: allow 0x006fc750 is now exact
 
-## Session 0x006fc750-20261108T135417: final message
+## Session 0x006fc750-20261120T114335: final message
 stand-in agent:
 guard Edit {'file_path': '$SFCOP_WORK/harness/loopproof/repo/analysis/results/matched_set.json'}: deny
 guard Bash {'command': 'harness/update-matched-set.sh 0x006fc750'}: deny
 stop before any change: block
-guard Edit game/Scripts/ScriptInterface/DynamicAllocator.cpp: allow
-  OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (8.8 s, profile sdk-script-interface)
+guard Edit op/Scripts/ScriptInterface/DynamicAllocator.cpp: allow
+  OK    build Scripts/ScriptInterface/DynamicAllocator.cpp (unchanged, not rebuilt, profile sdk-script-interface)
   OK    0x006fc750 tDynamicAllocator::LockDownAllocator 100.00% exact (64 bytes original, 64 rebuilt; 0 relocations, 0 unverified); not in matched_set.json
   RESULT OK
 stop after the change: allow 0x006fc750 is now exact

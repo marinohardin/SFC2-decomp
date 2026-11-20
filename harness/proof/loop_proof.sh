@@ -37,14 +37,14 @@ fi
 fn=0x006fc750
 
 rm -rf "$proof"
-mkdir -p "$proof/repo/game" "$proof/state" "$here/results"
+mkdir -p "$proof/repo" "$proof/state" "$here/results"
 (cd "$repo" && git ls-files -co --exclude-standard -z | xargs -0 tar cf - | tar xf - -C "$proof/repo")
 # op/ is the SDK tree alone, and nothing is recorded yet: the checkout's own units claim
 # functions (0x006fc750 among them) that the proof needs unclaimed.
-rm -rf "$proof/repo/game"; mkdir -p "$proof/repo/game"
+rm -rf "$proof/repo/op"; mkdir -p "$proof/repo/op"
 printf '{"version": 1, "functions": {}}\n' > "$proof/repo/analysis/results/matched_set.json"
 cp -R "$sdk/Scripts" "$sdk/STL" "$proof/repo/op/"
-chmod -R u+w "$proof/repo/game"
+chmod -R u+w "$proof/repo/op"
 flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/repo/op/Scripts/ScriptInterface/_ScriptInterface.dsp" \
         | sed 's/^# ADD CPP //' | tr -d '\r')
 python3 - "$proof/units.json" "$flags" "$proof/state/queue.json" "$fn" <<'EOF'
@@ -69,6 +69,8 @@ export HARNESS_STATE="$proof/state" HARNESS_UNITS="$proof/units.json"
 export HARNESS_MAX_TURNS=40 HARNESS_FAIL_SLEEP=0
 # The proof runs with the repository's own instructions: it has no lean file.
 export HARNESS_NO_LEAN=1 HARNESS_PACK=0
+# The scratch tree (the SDK as op/) is not the game tree the whole-tree checks hold; they have their own tests.
+export HARNESS_WHOLETREE=0
 if [ "$standin" = 1 ]; then
     export HARNESS_CLAUDE="$proof/repo/harness/proof/standin_agent.py"
     export HARNESS_STANDIN_TAMPER="$proof/state/tampered-once"
@@ -88,8 +90,8 @@ echo "\$ git log --format=%s"
 git log --format=%s
 echo "\$ git log -1 --stat"
 git log -1 --stat --format='%s%n%n%b' | grep -v '^ op/S[CT]' | head -12
-echo "\$ git diff -U0 HEAD~1 -- game   (changed lines only; the SDK source itself is not shown)"
-git diff -U0 HEAD~1 -- game | grep -E '^(\+\+\+|[+-][^+-])'
+echo "\$ git diff -U0 HEAD~1 -- op   (changed lines only; the SDK source itself is not shown)"
+git diff -U0 HEAD~1 -- op | grep -E '^(\+\+\+|[+-][^+-])'
 echo "\$ git diff --stat HEAD~1 -- analysis   (a lane commits source only: nothing here)"
 git diff --stat HEAD~1 -- analysis
 echo "\$ cat \$HARNESS_STATE/matched_set.json   (the lane's own matched set, outside the repository)"
