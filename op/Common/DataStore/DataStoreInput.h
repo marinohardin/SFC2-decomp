@@ -92,15 +92,10 @@ protected:
 bool tInput::CheckFlags( iInputFlags flags ) const
 {
 	if( fInputFlags & flags )
-	{
 		return true;
-	}
 	else
-	{
 		return false;
-	}
 }
-
 tInput::~tInput()
 {
 	Close( fCleanUpBuffer );
