@@ -51,4 +51,26 @@ tLogStream::tStreamBuf::tStreamBuf( tLog* eventLog )
 tLogStream::tStreamBuf::~tStreamBuf()
 {}
 
+// The inlined basic_string::_Grow calls of assign and append lack the toolchain's _FROZEN test
+// (the library difference noted at 0x00708820), and the original's assign clears the length
+// before growing.
+// FUNCTION: STARFLEETOP 0x006fe720
+std::streamsize tLogStream::tStreamBuf::xsputn( const char* text, std::streamsize n )
+{
+	LockAccess();
+
+	if( n == 0 )
+		return 0;
+
+	if( text[0] == '%' && text[n - 1] == '%' )
+	{
+		fCommand.assign( text, n );
+		RunCommand();
+		return n;
+	}
+
+	fEventBuffer.append( text, n );
+	return n;
+}
+
 };
