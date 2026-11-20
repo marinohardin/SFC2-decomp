@@ -174,11 +174,11 @@ def build_folder(tmp_path):
     return build, src
 
 
-def test_check_warns_when_the_last_build_compiled_another_symbol_of_a_current_claim(tmp_path, capsys):
+def test_check_fails_when_the_last_build_compiled_another_symbol_of_a_current_claim(tmp_path, capsys):
     build, src = build_folder(tmp_path)
     rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
-    assert rc == 0
-    assert out.startswith(f'WARN 0x00401000: the last build compiled ?Fire@tTestShip@@QAEHXZ, '
+    assert rc == 1
+    assert out.startswith(f'ERROR 0x00401000: the last build compiled ?Fire@tTestShip@@QAEHXZ, '
                           f'the table has {FIRE}\n')
     assert '0x00401010' not in out              # not a current claim: its row is stale
 
@@ -256,3 +256,9 @@ def test_show_of_an_address_without_a_row_exits_1(tmp_path, capsys):
 def test_format_rows_sorts_by_address_and_puts_folded_after_the_primary():
     rows = [dict(zip(sym.COLUMNS, line.split('\t'))) for line in GOOD.split('\n')[1:-1]]
     assert sym.format_rows(reversed(rows)) == GOOD
+
+
+def test_the_committed_table_passes_check():
+    table = ROOT / 'analysis/symbols/STARFLEETOP.tsv'
+    known = sym.known_functions(str(ROOT / 'ghidra/exports/functions.csv'))
+    assert sym.check_text(table.read_text(encoding='utf-8'), known) == []

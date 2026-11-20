@@ -181,7 +181,7 @@ def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, res
         v.sort()
     stats = {'name': {}, 'symbol': {}, 'conflicts': [], 'disagree': [], 'duplicates': [],
              'kept': [], 'unbuilt': [], 'replaced': [], 'mangled_names': [],
-             'callers_single': 0, 'callers_rejected': {}}
+             'callers_single': 0, 'callers_accepted': 0, 'callers_rejected': {}}
     callers = caller_symbols([r for r in results if r.get('address') in claim_syms
                               and claim_syms[r['address']][1] == r.get('unit')], index, claimed)
     fns = sorted((f for f in index.functions if f.kind in ('function', 'thunk')),
@@ -210,6 +210,7 @@ def seed(index, claim_syms, claimed, vtables, bases, results, existing=None, res
                 ok, why = callers_verdict(s, a)
                 if ok:
                     cand['callers'] = s
+                    stats['callers_accepted'] += 1
                 else:
                     stats['callers_rejected'][why] = stats['callers_rejected'].get(why, 0) + 1
             else:
@@ -262,7 +263,7 @@ def report_text(rows, stats):
     out += ['', f'claimed addresses without a compiled symbol: {len(stats["unbuilt"])}']
     out += [f'  {a}' for a in stats['unbuilt']]
     out += ['', f'unclaimed callees with one caller name: {stats["callers_single"]}',
-            'rejected by reason:']
+            f'accepted by the rules: {stats["callers_accepted"]}', 'rejected by reason:']
     out += [f'  {k:<28} {v}' for k, v in sorted(stats['callers_rejected'].items())]
     out += ['', f'callers disagree, not seeded: {len(stats["conflicts"])}']
     for key, syms in stats['conflicts']:

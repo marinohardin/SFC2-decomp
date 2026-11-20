@@ -14,12 +14,18 @@ Tab-separated, one header line, sorted by address, LF, no quoting.
 | `name` | The original identifier when evidence gives one, else `fn_<address>` |
 | `class` | The class the evidence or the vtable export gives; `tVtbl_<vtable address>` for a vtable class that has no evidence name; else empty |
 | `symbol` | Level 2: the MSVC mangled name a call to this function must use; empty until known |
+| `symbol_evidence` | Where `symbol` came from; empty when `symbol` is empty. `claim`: what the claiming unit compiled, which always tracks the build (a seed replaces any other value of a claimed address, and `add` refuses a claimed row); `mangled`: functions.csv; `callers`: every exact caller's relocation names it; `add`: written by `tools/symbols.py add`. For the other three the first writer wins |
 | `declaration` | Level 2: optional C++ declaration text; empty until known |
-| `evidence` | Where `name` came from: `claim` (the symbol the claiming unit compiled), `mangled` (functions.csv), `sdk` (an SDK library match), `rtti`, `fid` (Ghidra function id), `other`; `vtable` and `none` mean the name is the placeholder `fn_<address>` (`vtable`: the class is known from a vtable slot) |
+| `evidence` | Where `name` came from: `claim` (the symbol the claiming unit compiled), `mangled` (functions.csv), `sdk` (an SDK library match), `rtti`, `fid` (Ghidra function id); `vtable` and `none` mean the name is the placeholder `fn_<address>` (`vtable`: the class is known from a vtable slot) |
+
+A placeholder is never evidence: a name or class component such as `fn_<address>`, `FUN_<address>`,
+`tObject_<address>`, `c_<address>`, `c_<Class>_Field<N>` or `vfunction<N>` is not recorded as a
+name (`tVtbl_<address>` is the one placeholder class, naming a vtable that has no evidence name).
 
 Level 1 (`address` to `evidence`) is complete from the start. Level 2 (`symbol`, `declaration`)
-fills in as it becomes known. One address has one primary row; only a `folded` row may repeat
-an address, and one symbol is at one address unless a folded row is involved.
+fills in as it becomes known. One address has one primary row; only a `folded` row (for later
+hand or tool use; the seed writes none) may repeat an address, and one symbol appears once in
+the whole table.
 
 ## Who edits it
 

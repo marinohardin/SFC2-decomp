@@ -251,6 +251,7 @@ def test_decode_symbol_reads_member_constructor_destructor_operator_and_free_sym
     assert d('??8tTestShip@@UAEJXZ') == ('tTestShip::operator==', 'tTestShip')
     assert d('?Zap@@YAXXZ') == ('Zap', '')
     assert d('?Zap@nTest@@YAXXZ') == ('nTest::Zap', '')
+    assert d('?_Construct@std@@YAXPAU?$pair@H@@@Z') == ('std::_Construct', '')   # a template only in the arguments
     assert d('??_GtTestShip@@UAEPAXI@Z') is None
     assert d('??$Tpl@H@@YAXXZ') is None
     assert d('_memcpy') is None

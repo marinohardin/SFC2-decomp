@@ -98,7 +98,7 @@ def head_scopes(symbol):
     """(special code or '', scopes, what follows '@@') of a plain MSVC symbol, or None when it
     does not read with certainty (a template, another special name, a C symbol, a scope that is
     not an identifier or is only digits)."""
-    if not symbol.startswith('?') or '?$' in symbol:
+    if not symbol.startswith('?'):
         return None
     body, special = symbol[1:], ''
     if body.startswith('?'):
@@ -112,6 +112,8 @@ def head_scopes(symbol):
     if '@@' not in body:
         return None
     head, rest = body.split('@@', 1)
+    if '?' in head:
+        return None
     scopes = head.split('@')
     if not all(s and s.replace('_', 'a').isalnum() and not s.isdigit() for s in scopes):
         return None
@@ -309,7 +311,7 @@ def _load_build_symbols(build, src_root):
 
 # A claimed function's compiled symbol that differs from the table's: the seed writes the
 # build's symbols, so a difference means the table is stale against the claims.
-BUILD_LEVEL = 'WARN'
+BUILD_LEVEL = 'ERROR'
 
 
 def cmd_check(a):
