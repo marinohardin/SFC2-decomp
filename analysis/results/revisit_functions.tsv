@@ -399,3 +399,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006fe720	nLog::tLogStream::tStreamBuf::xsputn	24.72	2	opus	2026-11-20T00:06:45Z	attempt 2 (opus) did not raise the best; best 24.72%
 0x006fe8b0	nLog::tLogStream::tStreamBuf::Report	28.20	2	opus	2026-11-20T00:09:38Z	attempt 2 (opus) did not raise the best; best 28.20%
 0x006fea30	nLog::tLogStream::tStreamBuf::LockAccess	0.00	2	opus	2026-11-20T00:14:36Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x006febb0	nLog::tLogStream::tStreamBuf::RunCommand	0.00	2	opus	2026-11-20T00:18:34Z	attempt 2 (opus) did not raise the best; best 0.00%
