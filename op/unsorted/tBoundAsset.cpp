@@ -1,6 +1,36 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tBoundAsset.cpp
-// Functions: 0x00678160 to 0x00678250, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "unsorted/tAsset.h"
+#include "Tiger/tStream.h"
+
+tBoundAsset::tBoundAsset()
+{
+	field_5E = 0;
+	field_5C = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00678250
+tBoundAsset::~tBoundAsset()
+{
+}
+
+// FUNCTION: STARFLEETOP 0x00678180
+tStream& tBoundAsset::vfunction5( tStream& s )
+{
+	tAsset::vfunction5( s );
+	s << (unsigned short)field_5C << (unsigned short)field_5E;
+	return s;
+}
+
+// FUNCTION: STARFLEETOP 0x006781f0
+tStream& tBoundAsset::vfunction6( tStream& s )
+{
+	tAsset::vfunction6( s );
+	unsigned short* p = (unsigned short*)&field_5C;
+	s.fn_slot2( p, 2 );
+	if ( s.fSwap )
+		*p = (unsigned short)( ( *p >> 8 ) | ( *p << 8 ) );
+	unsigned short* q = (unsigned short*)&field_5E;
+	s.fn_slot2( q, 2 );
+	if ( s.fSwap )
+		*q = (unsigned short)( ( *q >> 8 ) | ( *q << 8 ) );
+	return s;
+}

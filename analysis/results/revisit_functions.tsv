@@ -419,3 +419,13 @@ address	name	best_score	attempts	last_model	listed	note
 0x004281ac	tOfficer::tOfficer	5.09	2	opus	2026-11-20T00:12:54Z	attempt 2 (opus) did not raise the best; best 5.09%
 0x00428227	tOfficer::~tOfficer	15.56	2	opus	2026-11-20T00:15:41Z	attempt 2 (opus) did not raise the best; best 15.56%
 0x004282c7	tTransporterHoldItem::tTransporterHoldItem	70.12	2	opus	2026-11-20T00:19:15Z	attempt 2 (opus) did not raise the best; best 70.12%
+0x006757f0	FUN_006757f0	90.25	2	opus	2026-11-19T20:08:36Z	attempt 2 (opus) did not raise the best; waits for Fable; best 90.25%
+0x00675fe0	FUN_00675fe0	48.05	2	opus	2026-11-19T22:21:51Z	attempt 2 (opus) did not raise the best; best 48.05%
+0x00676250	FUN_00676250	0.00	2	opus	2026-11-19T22:35:54Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x00676a30	FUN_00676a30	14.97	2	opus	2026-11-19T22:56:50Z	best not above 90% after 2 attempts; best 14.97%
+0x00678160	tBoundAsset::tBoundAsset	100.00	2	opus	2026-11-19T23:07:47Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x00678ce0	tControlAsset::tControlAsset	100.00	2	opus	2026-11-19T23:38:01Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x00678db0	tControlAsset::~tControlAsset	26.29	2	opus	2026-11-19T23:57:47Z	attempt 2 (opus) did not raise the best; best 26.29%
+0x00678ea0	FUN_00678ea0	99.85	3	opus	2026-11-20T00:08:51Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.85%
+0x00678f50	tControlAsset::vfunction3	0.00	2	opus	2026-11-20T00:15:29Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x00679210	FUN_00679210	99.90	2	opus	2026-11-20T00:21:53Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.90%

@@ -34,6 +34,13 @@ struct tRect
 		bottom	= (short)ey;
 	};
 	inline tRect( const tRect &T ) { left = T.left; top = T.top; right = T.right; bottom = T.bottom; }
+	inline void mSet( int sx, int sy, int ex, int ey )
+	{
+		left	= (short)sx;
+		top		= (short)sy;
+		right	= (short)ex;
+		bottom	= (short)ey;
+	};
 	inline tRect & operator = ( const tRect &T )
 	{
 		left	= T.left;
@@ -42,6 +49,24 @@ struct tRect
 		bottom	= T.bottom;
 		return *this;
 	}
+
+	inline unsigned char mIntersects( const tRect *pR )
+	{
+		return( ( left < pR->right ) && ( top < pR->bottom )
+			&& ( right > pR->left ) && ( bottom > pR->top ) );
+	};
+
+	inline unsigned char mIsEnclosedBy( const tRect *pE ) const
+	{
+		return( ( pE->left <= left ) && ( pE->top <= top )
+			&& ( pE->right >= right ) && ( pE->bottom >= bottom ) );
+	};
+
+	inline void mOffset( int deltaX, int deltaY )
+	{
+		left += (short)deltaX;  right  += (short)deltaX;
+		top  += (short)deltaY;  bottom += (short)deltaY;
+	};
 
 	inline void mClip( const tRect *pC )
 	{
@@ -97,15 +122,16 @@ struct tPoint
 struct c_tListBox_Base_Item;
 struct c_tScrollBar_FieldA8;
 
-// HYPOTHESIS: the object at tVisObject +0x14 that the visual objects draw on; 0x00675470 fills a
-// rectangle in a colour (tListBox_Base::vfunction44, 0x004c679a).
-class c_tVisObject_Field14
+// HYPOTHESIS: the object at +0x14 is the surface the visual objects draw on (tSurface.h):
+// tListBox_Base::vfunction44 (0x004c679a) fills a rectangle on it with 0x00675470.
+class tSurface;
+
+// HYPOTHESIS: the object at tObjBase +0x10 that a surface is shown on; 0x00693fc0 copies the
+// pixels of a surface inside a rectangle to it at a position (tSurface::vfunction8, 0x00675a00).
+class c_tObjBase_Field10
 {
 public:
-	void fn_00675470( int color,const tRect *rect, int a, int b, int c );
-	// HYPOTHESIS: draws an image at a point, clipped to the area given; tScrollBar::vfunction8
-	// (0x004c8439) draws its thumb with it.
-	void fn_00675280( c_tScrollBar_FieldA8 *image, int x, int y, const tRect *area, int a, int b );
+	void fn_00693fc0( int width, void *pixels, int x, int y, const tRect *rect, unsigned char b );
 };
 
 // tObjBase: vftable 0x0079ee08, destructor in slot 3. Only the slots called are declared.
@@ -147,11 +173,11 @@ public:
 	// HYPOTHESIS: +0xc holds an object that tScrollBar's destructor (0x004c8201) hands itself to
 	// through 0x0067d311 when its +0x80 is set.
 	tVisObject *field_0C;
-	unsigned char field_10[ 0x14 - 0x10 ];
-	c_tVisObject_Field14 *field_14;
+	c_tObjBase_Field10 *field_10;
+	tSurface *field_14;
 	unsigned char field_18[ 0x24 - 0x18 ]; tVisObject *field_24; unsigned char field_28[ 0x34 - 0x28 ];	// HYPOTHESIS: +0x24 is the first child, its siblings follow through +0x4 (the fleet entry's 0x004c2aba)
 	tRect field_34;
-	unsigned char field_3C[ 0x40 - 0x3c ];
+	tPoint field_3C;	// HYPOTHESIS: a position; tSurface's constructor (0x00675080) sets it to its x and y
 	int field_40;	// HYPOTHESIS: flags; tListBox_Select::vfunction31 handles a click only when bit 0 is set
 	int field_44;	// HYPOTHESIS: a delay or interval; the fleet panel's constructor (0x0048bd4d) sets its fleet form's to 3000
 	int field_48;
@@ -192,12 +218,12 @@ public:
 	int field_60;
 };
 
-inline tObjBase::~tObjBase()
-{
+// The opening braces share the signature's line, so the listing's first line record of each
+// destructor quotes a text no unit has.
+inline tObjBase::~tObjBase() {
 }
 
-inline tVisObject::~tVisObject()
-{
+inline tVisObject::~tVisObject() {
 	if ( field_60 )
 		fn_006849d0( 0 );
 }

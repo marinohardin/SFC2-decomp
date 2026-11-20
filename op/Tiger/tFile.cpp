@@ -520,42 +520,42 @@ unsigned char tBufFile::mGetFile( unsigned char flag, tString& name1, tString& n
 	return 0;
 }
 
-// HYPOTHESIS: tStream is an abstract byte sink; slot 3 (+0x0c) writes a buffer, the byte at +4
-// asks for the length to be written byte-swapped.
-class tStream
-{
-public:
-	virtual void	fn_slot0( void );
-	virtual void	fn_slot1( void );
-	virtual void	fn_slot2( void* buffer, long size );
-	virtual void	fn_slot3( void* buffer, long size );
-	unsigned char	fSwap;
-	tStream&	operator<<( unsigned long v );
-	tStream&	operator<<( char c );
-	tStream&	operator<<( const tString& s );
-	tStream&	operator>>( const tString& s );
-};
+#include "Tiger/tStream.h"
 
-// HYPOTHESIS: the long and char writers were inline overloads; the exe has no copy of either.
-inline tStream& tStream::operator<<( unsigned long v )
-{
-	unsigned long out = v;
-	if ( fSwap )
-	{
-		unsigned short hi = ( (unsigned short*)&v )[1];
-		unsigned short lo = ( (unsigned short*)&v )[0];
-		( (unsigned short*)&out )[0] = (unsigned short)( ( hi >> 8 ) | ( hi << 8 ) );
-		( (unsigned short*)&out )[1] = (unsigned short)( ( lo >> 8 ) | ( lo << 8 ) );
-	}
-	fn_slot3( &out, 4 );
-	return *this;
-}
 
-inline tStream& tStream::operator<<( char c )
-{
-	fn_slot3( &c, 1 );
-	return *this;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00758cd0
 tStream& tStream::operator<<( const tString& s )
