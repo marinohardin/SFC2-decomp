@@ -82,8 +82,8 @@ fn_00678ea0_tree::iterator fn_00678ea0_tree::erase( iterator first, iterator las
 	}
 }
 
-// HYPOTHESIS: the element count of the vector of 0x30-byte entries (begin at +4, end at +0xc);
-// the owning class is not known.
+// HYPOTHESIS: the library vector's capacity() for 0x30-byte entries (first at +4, end of
+// storage at +0xc), in the library's ternary form; the owning class is not known.
 struct fn_00679140_vector
 {
 	struct entry
@@ -93,8 +93,7 @@ struct fn_00679140_vector
 
 	int fn_00679140();
 
-	// MATCH-ONLY: the library's inline size().
-	int fn_size() const { return m_end - m_first; }
+
 
 	char	m_pad[4];
 	entry*	m_first;
@@ -105,7 +104,5 @@ struct fn_00679140_vector
 // FUNCTION: STARFLEETOP 0x00679140
 int fn_00679140_vector::fn_00679140()
 {
-	if( m_first == 0 )
-		return 0;
-	return fn_size();
+	return (m_first == 0 ? 0 : m_end - m_first);
 }
