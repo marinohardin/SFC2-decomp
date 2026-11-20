@@ -9,6 +9,7 @@ public:
     virtual void vfunction2();
 };
 
+// MATCH-ONLY: the destructor of tSfcMouseMgr_Ex is not claimed; only its scalar deleting destructor (0x0040be17) is exact.
 // FUNCTION: STARFLEETOP 0x0040be17
 tSfcMouseMgr_Ex::~tSfcMouseMgr_Ex()
 {

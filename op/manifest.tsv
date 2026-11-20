@@ -14,7 +14,6 @@ address	size	symbol	source	modes
 0x004019f7	310	tFighterSpec::tFighterSpec(const tFighterSpec&)	unsorted/tFighterSpec.cpp	vc6
 0x00401c9c	91	tFighterSpecMgr::tFighterSpecMgr()	unsorted/tFighterSpecMgr.cpp	vc6
 0x00401cf7	28	tFighterSpecMgr::`scalar deleting destructor'	unsorted/tFighterSpecMgr.cpp	vc6
-0x00401d13	78	tFighterSpecMgr::~tFighterSpecMgr()	unsorted/tFighterSpecMgr.cpp	partial
 0x004021b8	20	fn_004021b8_Stream::fn_004021b8()	unsorted/fn_00402000.cpp	partial
 0x004021cc	5	fn_004021cc_Object::fn_004021cc()	unsorted/fn_00402000.cpp	vc6 guest
 0x004021d1	362	fn_004021d1_Holder::fn_004021d1(const fn_004021d1_Record*)	unsorted/fn_00402000.cpp	vc6 guest
@@ -530,8 +529,6 @@ address	size	symbol	source	modes
 0x00427c6b	299	tShip::tShip(const tShip&)	unsorted/fn_00427382.cpp	vc6
 0x00427d96	28	tShip::`scalar deleting destructor'	unsorted/fn_00427382.cpp	vc6
 0x00427fb2	104	tOfficerList::tOfficerList(const tOfficerList&)	unsorted/fn_00427382.cpp	partial
-0x004281ac	123	tOfficer::tOfficer(const tOfficer&)	unsorted/tOfficer.cpp	partial
-0x00428227	22	tOfficer::~tOfficer()	unsorted/tOfficer.cpp	partial
 0x0042823d	28	tOfficer::`scalar deleting destructor'	unsorted/tOfficer.cpp	vc6
 0x004282c7	49	_Construct(tTransporterHoldItem*,const tTransporterHoldItem&)	unsorted/tTransporterHoldItem.cpp	partial
 0x004282f8	27	tTransporterHoldItem::fn_004282f8(fn_0050d6a0_Stream*)	unsorted/tTransporterHoldItem.cpp	vc6 guest

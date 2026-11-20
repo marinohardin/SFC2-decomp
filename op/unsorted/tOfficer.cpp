@@ -1,12 +1,11 @@
 #include "unsorted/tShip.h"
 
-// FUNCTION: STARFLEETOP 0x004281ac
 tOfficer::tOfficer( const tOfficer& source )
 {
 }
 
+// MATCH-ONLY: the destructor (0x00428227) is not claimed; only its scalar deleting destructor is exact.
 // FUNCTION: STARFLEETOP 0x0042823d
-// FUNCTION: STARFLEETOP 0x00428227
 tOfficer::~tOfficer()
 {
 }

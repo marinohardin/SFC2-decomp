@@ -9,6 +9,7 @@ tStrMgrCore::tStrMgrCore( unsigned char throwOnMiss )
 	fn_00627180_count = 1;
 }
 
+// MATCH-ONLY: the destructor of tStrMgrCore is not claimed; only its scalar deleting destructor (0x00424c07) is exact.
 // FUNCTION: STARFLEETOP 0x00424c07
 tStrMgrCore::~tStrMgrCore( void )
 {

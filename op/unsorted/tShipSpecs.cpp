@@ -1,5 +1,6 @@
 #include "unsorted/tShipSpecs.h"
 
+// MATCH-ONLY: the destructor of tShipSpecs is not claimed; only its scalar deleting destructor (0x00408901) is exact.
 // FUNCTION: STARFLEETOP 0x00408901
 tShipSpecs::~tShipSpecs()
 {
