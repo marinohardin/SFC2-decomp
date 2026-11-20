@@ -4072,6 +4072,29 @@ address	size	symbol	source	modes
 0x00675f50	12	g_00c690d8 (atexit registration)	unsorted/tCastMgr.cpp	vc6
 0x00675f70	29	fn_00675f70(int)	unsorted/tCastMgr.cpp	vc6 guest
 0x00675f90	71	tCastMgr::fn_00675f90(unsigned int,int)	unsorted/tCastMgr.cpp	vc6 guest
+0x00675fe0	623	tCastMgr::fn_00675fe0(unsigned int)	unsorted/tCastMgr.cpp	partial
+0x00676a00	33	fn_00676a00(unsigned short*)	unsorted/tCastMgr.cpp	vc6 guest
+0x00676a30	1388	fn_00676a30(unsigned short,int)	unsorted/tCastMgr.cpp	partial
+0x00677010	70	tCastMgr::vfunction1()	unsorted/tCastMgr.cpp	vc6 guest
+0x00677d20	133	tCastItem::vfunction5(tStream&)	unsorted/tCastItem.cpp	vc6 guest
+0x00677db0	115	tCastItem::vfunction6(tStream&)	unsorted/tCastItem.cpp	vc6 guest
+0x00677e30	30	tCastItem::`scalar deleting destructor'	unsorted/tCastItem.cpp	vc6
+0x00677e50	105	tCastItem::~tCastItem()	unsorted/tCastItem.cpp	vc6
+0x00678180	101	tBoundAsset::vfunction5(tStream&)	unsorted/tBoundAsset.cpp	vc6 guest
+0x006781f0	87	tBoundAsset::vfunction6(tStream&)	unsorted/tBoundAsset.cpp	vc6 guest
+0x00678250	30	tBoundAsset::`scalar deleting destructor'	unsorted/tBoundAsset.cpp	vc6
+0x00678ae0	44	tBmpAsset::tBmpAsset()	unsorted/tBmpAsset.cpp	vc6
+0x00678b10	105	tBmpAsset::~tBmpAsset()	unsorted/tBmpAsset.cpp	vc6
+0x00678b80	177	tBmpAsset::vfunction5(tStream&)	unsorted/tBmpAsset.cpp	vc6 guest
+0x00678c40	124	tBmpAsset::vfunction6(tStream&)	unsorted/tBmpAsset.cpp	vc6 guest
+0x00678cc0	30	tBmpAsset::`scalar deleting destructor'	unsorted/tBmpAsset.cpp	vc6
+0x00678db0	239	tControlAsset::~tControlAsset()	unsorted/tControlAsset.cpp	partial
+0x00678ea0	174	fn_00678ea0_tree::erase(iterator,iterator)	unsorted/tControlAsset.cpp	partial
+0x00679140	33	fn_00679140_vector::fn_00679140()	unsorted/tControlAsset.cpp	vc6 guest
+0x00679170	33	fn_00679140_vector::fn_00679170()	unsorted/tControlAsset.cpp	vc6 guest
+0x006791a0	33	fn_006791a0_vector::fn_006791a0(entry*,entry*)	unsorted/tControlAsset.cpp	vc6 guest
+0x006791d0	56	fn_006791d0_vector::fn_006791d0(entry*,entry*,entry*)	unsorted/tControlAsset.cpp	vc6 guest
+0x00679210	244	fn_00678ea0_tree::fn_00679210(const fn_00678ea0_tree&)	unsorted/tControlAsset.cpp	partial
 0x0068ff60	534	fn_0068ff60(iBasicStringElement *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	partial
 0x00690180	41	tHtmlParser::fn_00690180(tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	vc6 guest
 0x006901b0	333	fn_006901b0(fn_0068ff60_Root *)	unsorted/tSession.cpp	vc6 guest
