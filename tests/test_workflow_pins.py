@@ -39,25 +39,42 @@ def test_every_workflow_action_is_pinned():
     assert {f: u for f, u in bad.items() if u} == {}
 
 
+def code_lines(*parts):
+    """The stripped, non-comment, non-empty lines of a file under the repository root."""
+    text = ROOT.joinpath(*parts).read_text()
+    return [l.strip() for l in text.splitlines() if l.strip() and not l.strip().startswith("#")]
+
+
 def test_pull_request_check_scores_with_the_native_compiler():
-    text = (ROOT / ".github" / "workflows" / "pull-request.yml").read_text()
-    assert "HARNESS_COMPILER: native" in text
-    assert "HARNESS_COMPILER: docker" not in text
-    assert "compiler: native" in text
+    lines = code_lines(".github", "workflows", "pull-request.yml")
+    assert 'HARNESS_COMPILER: native' in lines
+    assert not [l for l in lines if l.startswith("HARNESS_COMPILER: docker")]
+    assert "compiler: native" in lines
 
 
 def test_docker_audit_runs_the_check_with_the_image_on_a_schedule():
-    text = (ROOT / ".github" / "workflows" / "docker-audit.yml").read_text()
-    assert "HARNESS_COMPILER: docker" in text
-    assert "schedule:" in text and "workflow_dispatch:" in text
-    assert "timeout-minutes: 180" in text
-    assert "group: docker-audit" in text
-    assert "sh scripts/check.sh" in text
-    assert "[self-hosted, sfcop-mac]" in text
+    lines = code_lines(".github", "workflows", "docker-audit.yml")
+    for line in ("HARNESS_COMPILER: docker", "schedule:", "workflow_dispatch:",
+                 "timeout-minutes: 180", "group: docker-audit", "cancel-in-progress: false",
+                 "runs-on: [self-hosted, sfcop-mac]", "compiler: docker",
+                 "nice -n 5 sh scripts/check.sh 2>&1 | tee \"$log\""):
+        assert line in lines, line
+
+
+def test_docker_audit_forces_the_rebuild_and_fails_when_it_did_not_run():
+    lines = code_lines(".github", "workflows", "docker-audit.yml")
+    # The base is the checked-out commit: no changed file, so check.sh rebuilds everything.
+    assert "export SFCOP_BASE_REF=$(git rev-parse HEAD)" in lines
+    assert "set -eu -o pipefail" in lines
+    assert any(l.startswith("grep -q '^compiler: the sfcop-msvc6 image'") and l.endswith("exit 1; }")
+               for l in lines)
+    assert any(l.startswith("grep -qx 'RESULT OK'") and l.endswith("exit 1; }") for l in lines)
 
 
 def test_setup_action_checks_docker_only_for_the_docker_compiler():
-    text = (ROOT / ".github" / "actions" / "setup" / "action.yml").read_text()
-    assert 'inputs.compiler }}" = native' in text
-    assert "fetch-native.sh" in text
-    assert text.index("docker version") > text.index("else")
+    lines = code_lines(".github", "actions", "setup", "action.yml")
+    native = lines.index('if [ "${{ inputs.compiler }}" = native ]; then')
+    other = lines.index("else")
+    docker = [i for i, l in enumerate(lines) if l.startswith("docker version")]
+    assert native < other and docker and all(i > other for i in docker)
+    assert any("sh toolchain/fetch-native.sh" in l for l in lines[native:other])
