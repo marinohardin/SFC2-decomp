@@ -1,0 +1,37 @@
+name: Docker audit
+
+# The Docker image is the compiler of record. The per-pull-request check scores with the native
+# compiler; this audit runs the same definition of done with the image on develop, so a score
+# that differs between the two fails here.
+on:
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Two audits never overlap, and a running one is never cancelled.
+concurrency:
+  group: docker-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: [self-hosted, sfcop-mac]
+    # A full cold rebuild under the image's CPU emulation.
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: develop
+
+      - uses: ./.github/actions/setup
+        with:
+          compiler: docker
+
+      - name: The definition of done, with the image
+        env:
+          HARNESS_COMPILER: docker
+          HARNESS_NO_CACHE: "1"
+        run: nice -n 5 sh scripts/check.sh

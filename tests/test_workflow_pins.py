@@ -37,3 +37,27 @@ def test_every_workflow_action_is_pinned():
     assert files, "no workflow files found"
     bad = {str(f.relative_to(ROOT)): unpinned(f.read_text()) for f in files}
     assert {f: u for f, u in bad.items() if u} == {}
+
+
+def test_pull_request_check_scores_with_the_native_compiler():
+    text = (ROOT / ".github" / "workflows" / "pull-request.yml").read_text()
+    assert "HARNESS_COMPILER: native" in text
+    assert "HARNESS_COMPILER: docker" not in text
+    assert "compiler: native" in text
+
+
+def test_docker_audit_runs_the_check_with_the_image_on_a_schedule():
+    text = (ROOT / ".github" / "workflows" / "docker-audit.yml").read_text()
+    assert "HARNESS_COMPILER: docker" in text
+    assert "schedule:" in text and "workflow_dispatch:" in text
+    assert "timeout-minutes: 180" in text
+    assert "group: docker-audit" in text
+    assert "sh scripts/check.sh" in text
+    assert "[self-hosted, sfcop-mac]" in text
+
+
+def test_setup_action_checks_docker_only_for_the_docker_compiler():
+    text = (ROOT / ".github" / "actions" / "setup" / "action.yml").read_text()
+    assert 'inputs.compiler }}" = native' in text
+    assert "fetch-native.sh" in text
+    assert text.index("docker version") > text.index("else")

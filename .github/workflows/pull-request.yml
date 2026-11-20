@@ -27,7 +27,7 @@ jobs:
       - run: python3 -m pip install --quiet pytest==8.3.3
       - run: python3 -m pytest tests harness/tests -q
 
-  # The definition of done, with the retail files and the compiler image, on the owner's machine.
+  # The definition of done, with the retail files and the native compiler, on the owner's machine.
   # Only for branches of this repository: a fork's pull request never runs code on it.
   check:
     if: github.event.pull_request.head.repo.full_name == github.repository
@@ -41,14 +41,16 @@ jobs:
           fetch-depth: 2
 
       - uses: ./.github/actions/setup
+        with:
+          compiler: native
 
       - name: The definition of done
         env:
           # The tests job above has run them on every pull request.
           CHECK_SKIP_TESTS: "1"
-          # The runner is a Mac with the native compiler installed; the image is the compiler
-          # of record, so CI rebuilds with it.
-          HARNESS_COMPILER: docker
+          # The runner is a Mac with the native compiler installed (the setup step checks it).
+          # The image stays the compiler of record through the scheduled Docker audit.
+          HARNESS_COMPILER: native
           # Every unit compiled and every function scored afresh: no cached build or score
           # stands in CI's result (harness/README.md, "Caches").
           HARNESS_NO_CACHE: "1"

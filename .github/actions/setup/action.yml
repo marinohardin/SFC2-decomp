@@ -1,9 +1,15 @@
 name: Set up
 description: Checks that the self-hosted runner has the tools the jobs need. Nothing is installed.
 
+inputs:
+  compiler:
+    description: "The compiler the job uses: native (wibo and VC6 from toolchain/fetch-native.sh) or docker (the sfcop-msvc6 image)."
+    default: docker
+
 # The check job runs on a self-hosted runner that has the retail install. The toolchain is not
-# installed by CI: Python 3 comes from the machine and the VC6 SP4 compiler lives in a Docker
-# image built from toolchain/. Keep two rules whatever is added later:
+# installed by CI: Python 3 comes from the machine and the VC6 SP4 compiler lives either in
+# tools/ beside the clone (toolchain/fetch-native.sh, the per-pull-request check) or in a Docker
+# image built from toolchain/ (the scheduled audit). Keep two rules whatever is added later:
 # - pin versions from a file in the repository, never "latest";
 # - on a self-hosted runner, keep caches and stores under $RUNNER_TOOL_CACHE or $RUNNER_TEMP,
 #   never in the home directory, because several runners on one machine share a home directory.
@@ -16,5 +22,20 @@ runs:
         set -eu
         python3 --version
         python3 -c "import pytest" 2>/dev/null || python3 -m pip install --quiet --user pytest==8.3.3
-        docker version --format '{{.Server.Version}}' >/dev/null || { echo "docker is not available on this runner"; exit 1; }
+        if [ "${{ inputs.compiler }}" = native ]; then
+          python3 - <<'EOF'
+        import os, sys
+        sys.path.insert(0, ".")
+        from harness.lib import paths
+        t = os.environ.get("SFCOP_TOOLS") or paths.TOOLS
+        need = [paths.wibo(t)] + [os.path.join(t, "msvc6", "msvc" + v, "Bin", "CL.EXE") for v in ("6.4", "6.5")]
+        gone = [n for n in need if not os.path.exists(n)]
+        if gone:
+            print("the native compiler is not installed on this runner; missing:", *gone, sep="\n  ")
+            print("run `sh toolchain/fetch-native.sh` on the runner machine (it fills " + t + ")")
+            sys.exit(1)
+        EOF
+        else
+          docker version --format '{{.Server.Version}}' >/dev/null || { echo "docker is not available on this runner"; exit 1; }
+        fi
         echo "PIP_CACHE_DIR=$RUNNER_TOOL_CACHE/pip-cache" >> "$GITHUB_ENV"

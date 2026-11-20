@@ -102,7 +102,7 @@ have_install=$(python3 -c 'import os, sys; sys.path.insert(0, "."); from harness
 cl=$(python3 -c 'import sys; sys.path.insert(0, "."); from harness.lib import paths; print(paths.HARNESS_CL)')
 if [ "$(basename "$cl")" = cl-native ]; then
     have_image=1
-    echo "compiler: native (toolchain/bin/cl-native); a preview: CI rebuilds with the image, the result of record"
+    echo "compiler: native (toolchain/bin/cl-native); the image's scheduled audit is the result of record"
 else
     have_image=$(docker image inspect sfcop-msvc6:latest >/dev/null 2>&1 && echo 1 || true)
     echo "compiler: the sfcop-msvc6 image (toolchain/bin/cl)"
