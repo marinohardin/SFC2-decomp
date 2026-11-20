@@ -19891,6 +19891,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x0056964b": {
+   "name": "FUN_0056964b",
+   "symbol": "?fn_0056964b@tTradeInShip@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TradeInShip.cpp",
+   "size": 1138,
+   "score": 31.321,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
