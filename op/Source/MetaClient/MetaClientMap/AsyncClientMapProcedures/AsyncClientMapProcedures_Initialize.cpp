@@ -122,7 +122,7 @@ void tInitialize::fn_005dfdab( const nDataStore::tBuffer* buffer )
 }
 
 #include "unsorted/nStoredProcedureArguments__tLogonInformationRequest.h"
-#include "unsorted/nStoredProcedureArguments__tMetaMapDataRequest.h"
+#include "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.h"
 #include "unsorted/tNotifierAgent.h"
 
 

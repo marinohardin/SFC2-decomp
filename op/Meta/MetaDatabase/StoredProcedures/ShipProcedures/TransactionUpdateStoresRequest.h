@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "Common/Database/DatabaseID.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 
 class tShip;
@@ -99,7 +99,7 @@ namespace nStoredProcedureArguments
 
 	// RTTI names both classes. 0x00569c83 holds the request in 0xa4 bytes (built by 0x0055ac6a,
 	// destroyed by 0x0055af53) and the response in 0x20 bytes, a ship vector at +0x10.
-	class tTransactionUpdateStoresRequest : public tRequestWithResponse
+	class tTransactionUpdateStoresRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tTransactionUpdateStoresResponse : public nSwitch::tResponse

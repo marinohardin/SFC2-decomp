@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "Common/Database/DatabaseID.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 
 // HYPOTHESIS: the owning class and the lookup table are not recovered; a tree
 // header at +0x38/+0x3c with a find helper that takes the key by value.
@@ -49,7 +49,7 @@ namespace nStoredProcedureArguments
 {
 
 	// RTTI names the class. 0x00568b2e builds one with 0x00559449 and streams it in.
-	class tRepairShipsRequest : public tRequestWithResponse
+	class tRepairShipsRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		tRepairShipsRequest();

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Common/Database/DatabaseID.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 #include "unsorted/tPreparedMissions.h"
 
@@ -19,7 +19,7 @@ namespace nStoredProcedureArguments
 	// RTTI names both classes. 0x005676f4 holds the request in 0x2c bytes with an ID at +0x18
 	// (copied and destroyed as a nDatabase::tID) and a flag at +0x28, and the response in 0xa8
 	// bytes with missions at +0x10.
-	class tGetPreparedMissionRequest : public tRequestWithResponse
+	class tGetPreparedMissionRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tGetPreparedMissionResponse : public nSwitch::tResponse

@@ -9,7 +9,9 @@
 #pragma once
 
 #include "Common/DataStore/Streamable.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
+#include "unsorted/tAddressMgr.h"
 #include <vector>
 
 class tMetaMapHex;
@@ -22,38 +24,23 @@ const int32 kMax8BitNum = 255;
 namespace nStoredProcedureArguments
 {
 
-	class tMetaMapDataRequest
+	// Name from the exe's RTTI. Constructor 0x0054c572, destructor 0x0054c5d2. Size 0x1c from a
+	// local in the map initialize procedure.
+	// HYPOTHESIS: a request with response like its neighbours; the map initialize procedure
+	// builds it with an address, 2, -1 and -1, whose meanings are not recovered.
+	class tMetaMapDataRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
+		tMetaMapDataRequest( tSmartPtr<tObject_005d3679> address, int32 param_2, int32 param_3, int32 param_4 );
+		virtual ~tMetaMapDataRequest();
+
+		virtual	void StreamOut( nDataStore::tOutput& output ) const;
+		virtual	void StreamIn( nDataStore::tInput& input );
+
 		class tResponse : public nSwitch::tResponse
 		{
 		public:
-			class tClientHex : public nDataStore::tStreamable
-			{
-			public:
-				tClientHex();
-				tClientHex( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
-
-				virtual	void StreamOut( nDataStore::tOutput& output ) const;
-				virtual	void StreamIn( nDataStore::tInput& input );
-
-				void fn_0054c0d5();
-				tClientHex& operator=( const tClientHex& other );
-
-				int8u	m_0c;
-				int8u	m_0d;
-				int32	m_10;
-				bool	m_14;
-				bool	m_15;
-				char	m_16[0x18 - 0x16];
-				float	m_18;
-				float	m_1c;
-				float	m_20;
-				float	m_24;
-				int8u	m_28;
-				int8u	m_29;
-				int8u	m_2a;
-			};
+			class tClientHex;
 
 			tResponse( bool param_1 );
 			tResponse( int32 param_1, int32 param_2, bool param_3 );
@@ -76,6 +63,38 @@ namespace nStoredProcedureArguments
 			int32	m_24;
 			int32	m_28;
 		};
+
+	protected:
+		int32 field_18;
+	};
+
+
+	// Defined outside tResponse so that the manifest reads a class nested three deep.
+	class tMetaMapDataRequest::tResponse::tClientHex : public nDataStore::tStreamable
+	{
+	public:
+		tClientHex();
+		tClientHex( tMetaMapHex& hex, int32 maxEconomyValue, int32 maxVictoryValue );
+
+		virtual	void StreamOut( nDataStore::tOutput& output ) const;
+		virtual	void StreamIn( nDataStore::tInput& input );
+
+		void fn_0054c0d5();
+		tClientHex& operator=( const tClientHex& other );
+
+		int8u	m_0c;
+		int8u	m_0d;
+		int32	m_10;
+		bool	m_14;
+		bool	m_15;
+		char	m_16[0x18 - 0x16];
+		float	m_18;
+		float	m_1c;
+		float	m_20;
+		float	m_24;
+		int8u	m_28;
+		int8u	m_29;
+		int8u	m_2a;
 	};
 
 };

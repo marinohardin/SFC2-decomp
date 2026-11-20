@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "Common/Database/DatabaseID.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 
 namespace nStoredProcedureArguments
@@ -19,7 +19,7 @@ namespace nStoredProcedureArguments
 
 	// RTTI names both classes. 0x005682b2 holds the response in 0x20 bytes with ship IDs at
 	// +0x10; the request sits in nAsyncDatabaseProcedure::tKillShips at +0x48.
-	class tKillShipsRequest : public tRequestWithResponse
+	class tKillShipsRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tKillShipsResponse : public nSwitch::tResponse

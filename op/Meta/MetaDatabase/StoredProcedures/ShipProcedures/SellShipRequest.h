@@ -2,7 +2,7 @@
 #define SellShipRequest_h
 
 #include "Common/Database/DatabaseID.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include <map>
 #include <string>
 
@@ -12,7 +12,7 @@ namespace nStoredProcedureArguments
 // HYPOTHESIS: RTTI names the class and its base. nAsyncDatabaseProcedure::tTradeInShip holds
 // one at +0x4c and it ends where that class's character begins (+0xc4), so it is 0x78 bytes;
 // the rate tables below sit inside it (+0x3c, +0x50, +0x64).
-class tSellShipRequest : public tRequestWithResponse
+class tSellShipRequest : public nSwitch::tRequestWithResponse
 {
 public:
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;

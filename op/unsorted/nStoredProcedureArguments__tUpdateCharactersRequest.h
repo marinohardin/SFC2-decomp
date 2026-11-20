@@ -12,7 +12,7 @@
 
 #include "Common/SmartPtr.h"
 #include "Common/Database/DatabaseObjectUpdate.h"
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tAddress.h"
 #include "unsorted/tServCharacter.h"
 
@@ -21,7 +21,7 @@ namespace nStoredProcedureArguments
 
 	// HYPOTHESIS: RTTI names the class; 0x005682b2 holds it in 0x28 bytes with 0x38-byte
 	// records (destroyed by 0x0054d244) at +0x18, taken to be updates.
-	class tUpdateCharactersRequest : public tRequestWithResponse
+	class tUpdateCharactersRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		// HYPOTHESIS: the constructor (0x00553aa5) takes the address the response goes to.

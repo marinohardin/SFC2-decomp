@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 #include "unsorted/tPreparedMissions.h"
 
@@ -18,7 +18,7 @@ namespace nStoredProcedureArguments
 	// RTTI names both classes. 0x00567270 holds the request in 0xb4 bytes with the missions at
 	// +0x18 (named by its assertion text) and a flag at +0xb0, and the response in 0xa8 bytes
 	// with missions at +0x10.
-	class tAddPreparedMissionRequest : public tRequestWithResponse
+	class tAddPreparedMissionRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tAddPreparedMissionResponse : public nSwitch::tResponse

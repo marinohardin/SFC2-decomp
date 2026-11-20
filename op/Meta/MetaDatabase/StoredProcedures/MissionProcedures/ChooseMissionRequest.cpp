@@ -2,12 +2,12 @@
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 
 #include <vector>
 
 // HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
-class tChooseMissionRequest : public tRequestWithResponse
+class tChooseMissionRequest : public nSwitch::tRequestWithResponse
 {
 public:
 	// HYPOTHESIS: the elements stream through the vector operator>> emitted at 0x00550150.
@@ -27,7 +27,7 @@ public:
 // FUNCTION: STARFLEETOP 0x0054ffe5
 void tChooseMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	tRequestWithResponse::vfunction3( input );
+	nSwitch::tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 2;
 	switch( c )

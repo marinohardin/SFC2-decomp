@@ -2,12 +2,12 @@
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/tMissionProfile.h"
 #include <vector>
 // HYPOTHESIS: the class layout below is reconstructed from the function's accesses only; the
 // second read calls the vector operator>> emitted at 0x0053d754 among tMissionProfile's code.
-class tReadyToPlayRequest : public tRequestWithResponse
+class tReadyToPlayRequest : public nSwitch::tRequestWithResponse
 {
 public:
 	virtual void vfunction3( nDataStore::tInput& input );
@@ -18,7 +18,7 @@ public:
 // FUNCTION: STARFLEETOP 0x005517de
 void tReadyToPlayRequest::vfunction3( nDataStore::tInput& input )
 {
-	tRequestWithResponse::vfunction3( input );
+	nSwitch::tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 1;
 	switch( c )

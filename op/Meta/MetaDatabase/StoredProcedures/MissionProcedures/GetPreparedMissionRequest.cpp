@@ -24,7 +24,7 @@ using namespace nStoredProcedureArguments;
 // FUNCTION: STARFLEETOP 0x00550d34
 void tGetPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	tRequestWithResponse::vfunction3( input );
+	nSwitch::tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 0;
 	if( c != 0 )

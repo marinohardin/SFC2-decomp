@@ -10,7 +10,7 @@
 
 #include <vector>
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 #include "unsorted/tServCharacter.h"
 
@@ -19,7 +19,7 @@ namespace nStoredProcedureArguments
 
 	// HYPOTHESIS: RTTI names the response; 0x005682b2 holds it in 0x20 bytes with the
 	// characters at +0x10 (named by that function's assertion text).
-	class tGetCharactersRequest : public tRequestWithResponse
+	class tGetCharactersRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tGetCharactersResponse : public nSwitch::tResponse

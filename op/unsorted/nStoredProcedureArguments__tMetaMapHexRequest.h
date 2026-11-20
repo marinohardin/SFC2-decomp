@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 #include "unsorted/tHexPoint.h"
 #include "unsorted/tMetaMapHex.h"
@@ -18,7 +18,7 @@ namespace nStoredProcedureArguments
 
 	// HYPOTHESIS: RTTI names both classes. 0x00565464 holds the request in 0x2c bytes with a
 	// tHexPoint at +0x18, and the response in 0xe0 bytes with a tMetaMapHex at +0x10.
-	class tMetaMapHexRequest : public tRequestWithResponse
+	class tMetaMapHexRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tMetaMapHexResponse : public nSwitch::tResponse

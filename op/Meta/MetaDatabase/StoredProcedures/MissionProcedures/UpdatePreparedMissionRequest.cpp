@@ -2,10 +2,10 @@
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 
 // HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
-class tUpdatePreparedMissionRequest : public tRequestWithResponse
+class tUpdatePreparedMissionRequest : public nSwitch::tRequestWithResponse
 {
 public:
 	class tDataBase
@@ -31,7 +31,7 @@ public:
 // FUNCTION: STARFLEETOP 0x00551a84
 void tUpdatePreparedMissionRequest::vfunction3( nDataStore::tInput& input )
 {
-	tRequestWithResponse::vfunction3( input );
+	nSwitch::tRequestWithResponse::vfunction3( input );
 	int8u c = fObjectVersion;
 	fObjectVersion = 0;
 	if( c != 0 )

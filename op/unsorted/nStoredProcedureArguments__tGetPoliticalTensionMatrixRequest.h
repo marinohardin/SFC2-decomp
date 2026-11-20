@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "unsorted/tRequestWithResponse.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
 #include "unsorted/nSwitch__tResponse.h"
 #include "unsorted/tPoliticalTensionMatrix.h"
 
@@ -18,7 +18,7 @@ namespace nStoredProcedureArguments
 	// HYPOTHESIS: RTTI names both classes. 0x0056571c holds the request in 0x18 bytes and
 	// destroys it as a tRequestWithResponse, and the response in 0x70 bytes with a
 	// tPoliticalTensionMatrix at +0x10.
-	class tGetPoliticalTensionMatrixRequest : public tRequestWithResponse
+	class tGetPoliticalTensionMatrixRequest : public nSwitch::tRequestWithResponse
 	{
 	public:
 		class tGetPoliticalTensionMatrixResponse : public nSwitch::tResponse

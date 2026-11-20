@@ -6,7 +6,7 @@
 #include "unsorted/tAddressMgr.h"
 #include "unsorted/tCompressedPosition.h"
 #include "unsorted/nStoredProcedureArguments__tNotifyEvent.h"
-#include "unsorted/nStoredProcedureArguments__tMetaMapDataRequest.h"
+#include "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.h"
 
 namespace nAsyncClientMapProcedures
 {
