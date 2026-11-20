@@ -38278,6 +38278,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fedc0": {
+   "name": "nLog::tLogStream::tLogStream",
+   "symbol": "??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 272,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

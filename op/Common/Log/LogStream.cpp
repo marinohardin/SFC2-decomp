@@ -105,4 +105,13 @@ void tLogStream::tStreamBuf::SetEventType( tLog::tEventType eventType )
 		fLockType = false;
 }
 
+// FUNCTION: STARFLEETOP 0x006fedc0
+tLogStream::tLogStream( tLog::tEventType eventType )
+	: std::basic_ostream< char, std::char_traits< char > >( 0 )
+	, fStreamBuf( tLog::Instance() )
+{
+	fStreamBuf.SetEventType( eventType );
+	init( &fStreamBuf );
+}
+
 };
