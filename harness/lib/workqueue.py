@@ -231,6 +231,25 @@ def read_tsv(path, fields):
         return [r for r in csv.DictReader(f, delimiter='\t') if r.get(fields[0])]
 
 
+def read_lists(paths_, which):
+    """The union of a list over every lane (paths_.difficult_files() / revisit_files(): this lane's
+    file first, then the others'), one row per address, this lane's row first. A revisit row for
+    an address another lane listed as difficult is dropped: difficult is final."""
+    fields = DIFFICULT_FIELDS if which == 'difficult' else REVISIT_FIELDS
+    own = paths_.DIFFICULT if which == 'difficult' else paths_.REVISIT
+    files = getattr(paths_, f'{which}_files', lambda: [own])()
+    rows, seen = [], set()
+    for f in files:
+        for r in read_tsv(f, fields):
+            if r['address'] not in seen:
+                seen.add(r['address'])
+                rows.append(r)
+    if which == 'revisit':
+        hard = {r['address'] for r in read_lists(paths_, 'difficult')}
+        rows = [r for r in rows if r['address'] not in hard]
+    return rows
+
+
 def append_tsv(path, fields, row):
     """Append one row under an exclusive lock (several loops share the attempt log)."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -401,7 +420,7 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     a = entry['address']
     tiers = tiers.for_size(entry.get('size'))
     attempts = read_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS)
-    revisit = read_tsv(paths_.REVISIT, REVISIT_FIELDS)
+    revisit = read_lists(paths_, 'revisit')
     mine = [r for r in revisit if r['address'] == a]
     if any(r['address'] == a and r['outcome'] == 'exact' for r in attempts):
         if mine:
@@ -420,7 +439,7 @@ def settle(paths_, entry, tiers, now, take_revisit=False):
     p = plan(rows, tiers)
     if p.model is not None:
         return None
-    if any(r['address'] == a for r in read_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS)):
+    if any(r['address'] == a for r in read_lists(paths_, 'difficult')):
         return None
     last = rows[-1]
     # A listed function gets one revisit run: if that ends short too, and it is not left

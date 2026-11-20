@@ -86,17 +86,14 @@ CL = CL_DOCKER
 HARNESS_CL = pick_cl(os.environ, TOOLS, platform.system())
 OBJDIFF = env_path('OBJDIFF', os.path.join(TOOLS, 'objdiff', 'objdiff-cli-macos-arm64'))
 
-# Committed results, written only by update-matched-set.sh and queue.py. They live in
-# analysis/results/, not harness/, because harness/ is a hotspot and every grind pull request
-# updates them.
-MATCHED_SET = env_path('HARNESS_MATCHED_SET',
-                       os.path.join(REPO, 'analysis', 'results', 'matched_set.json'))
-DIFFICULT = env_path('HARNESS_DIFFICULT',
-                     os.path.join(REPO, 'analysis', 'results', 'difficult_functions.tsv'))
-# Functions the stop rule ended short of 100% before their full chance (harness/README.md,
-# "Model tiers"); queue.py skips them unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit).
-REVISIT = env_path('HARNESS_REVISIT_LIST',
-                   os.path.join(REPO, 'analysis', 'results', 'revisit_functions.tsv'))
+# The committed matched set: develop's record of the best verified score per function. A grind
+# lane never writes it (harness/README.md, "Lanes commit source only"); the landing step does.
+COMMITTED_MATCHED_SET = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
+# What the harness reads and update-matched-set.sh writes. By default the committed file, which
+# is what a person running build-and-verify.sh by hand is held to. loop.sh exports its lane's own
+# copy in the lane's state folder, so the ratchet, the queue and the hooks see the lane's scores
+# without a committed file changing.
+MATCHED_SET = env_path('HARNESS_MATCHED_SET', COMMITTED_MATCHED_SET)
 # Analysis boundaries known to be wrong: an address the analysis records as a function that is
 # only a piece of one (an exception prolog split from its body, a static initializer's fragment,
 # a compiler stub). queue.py never takes them, and a matched-set entry for one may be dropped if
@@ -126,3 +123,37 @@ ATTEMPTS = os.path.join(SHARED, 'attempts.tsv')
 # Handoff notes: what each unfinished attempt left for the next one, one file per function.
 NOTES = os.path.join(SHARED, 'notes')
 CLAIMS = os.path.join(SHARED, 'claims')
+
+# The revisit and difficult lists (harness/README.md, "Model tiers") live outside the repository:
+# one sub-folder per lane under HARNESS_LISTS, holding that lane's two files. A loop writes only
+# its own lane's files and reads the union of every lane's, so memory carries across lanes with no
+# write races and nothing to merge. The lane is the state folder's name (HARNESS_LANE overrides).
+# A run with its own HARNESS_STATE (the proofs, tests) keeps the lists inside it.
+LISTS = env_path('HARNESS_LISTS', os.path.join(STATE, 'lists') if os.environ.get('HARNESS_STATE')
+                 else os.path.join(WORK, 'harness', 'lists'))
+LANE = os.environ.get('HARNESS_LANE') or os.path.basename(STATE)
+DIFFICULT_NAME = 'difficult_functions.tsv'
+REVISIT_NAME = 'revisit_functions.tsv'
+# Functions that had every attempt the stop rule gives without becoming exact, for a human.
+DIFFICULT = env_path('HARNESS_DIFFICULT', os.path.join(LISTS, LANE, DIFFICULT_NAME))
+# Functions the stop rule ended short of 100% before their full chance (harness/README.md,
+# "Model tiers"); queue.py skips them unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit).
+REVISIT = env_path('HARNESS_REVISIT_LIST', os.path.join(LISTS, LANE, REVISIT_NAME))
+
+
+def _all_lists(own, name, overridden):
+    """This lane's file first, then the same file of every other lane. An explicit path
+    (HARNESS_DIFFICULT, HARNESS_REVISIT_LIST) is the only file read."""
+    if overridden:
+        return [own]
+    import glob
+    others = sorted(p for p in glob.glob(os.path.join(LISTS, '*', name)) if p != own)
+    return [own] + others
+
+
+def difficult_files():
+    return _all_lists(DIFFICULT, DIFFICULT_NAME, 'HARNESS_DIFFICULT' in os.environ)
+
+
+def revisit_files():
+    return _all_lists(REVISIT, REVISIT_NAME, 'HARNESS_REVISIT_LIST' in os.environ)

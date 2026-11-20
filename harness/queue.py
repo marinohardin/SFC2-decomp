@@ -9,10 +9,14 @@
     harness/queue.py record <json-row>     # log an attempt (loop.sh only)
     harness/queue.py show [N]              # the first N entries and the attempt totals
     harness/queue.py sweep                 # list functions the stop rule has already ended
+    harness/queue.py seed-lists [REF]      # once: copy the lists as committed at REF (default
+                                           # origin/develop) into the lists folder, lane "seed"
 
 Skips library-flagged functions, EH funclets and thunks, functions already exact in
 matched_set.json, those in difficult_functions.tsv, and the boundary errors in
-boundary_errors.tsv. Functions in revisit_functions.tsv are
+boundary_errors.tsv. The two lists live outside the repository, one folder per lane under
+HARNESS_LISTS; the queue reads the union of every lane's, a loop writes only its own
+(harness/lib/paths.py). Functions in revisit_functions.tsv are
 skipped too unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit); a revisit run counts only the
 attempts made after the function was listed. See lib/workqueue.py for the order and the stop
 rule (`plan`).
@@ -40,16 +44,40 @@ sys.path[0] = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from harness.lib import clean, coff, funcs, matched, paths, workqueue  # noqa: E402
 
 
+def seed_lists(ref):
+    """Copy the two lists as committed at `ref` into the lists folder, as the lane "seed". Run
+    once, when the lists first leave the repository; it never overwrites a file."""
+    import subprocess
+    out = os.path.join(paths.LISTS, 'seed')
+    for name in (paths.DIFFICULT_NAME, paths.REVISIT_NAME):
+        dest = os.path.join(out, name)
+        p = subprocess.run(['git', '-C', paths.REPO, 'show', f'{ref}:analysis/results/{name}'],
+                           capture_output=True, text=True)
+        if p.returncode != 0:
+            print(f'ERROR {ref} has no analysis/results/{name}', file=sys.stderr)
+            return 2
+        if os.path.exists(dest):
+            print(f'INFO  {dest} exists; left alone')
+            continue
+        os.makedirs(out, exist_ok=True)
+        with open(dest, 'w', newline='') as f:
+            f.write(p.stdout)
+        print(f'OK    {name} from {ref}: {max(len(p.stdout.splitlines()) - 1, 0)} rows -> {dest}')
+    return 0
+
+
 def main(argv):
     if not argv:
         print(__doc__)
         return 2
     cmd, args = argv[0], argv[1:]
+    if cmd == 'seed-lists':
+        return seed_lists(args[0] if args else 'origin/develop')
     if cmd in ('build', 'select', 'next'):
         clean.record_worktree()
     tiers = workqueue.Tiers.from_env()
-    difficult = workqueue.read_tsv(paths.DIFFICULT, workqueue.DIFFICULT_FIELDS)
-    revisit = workqueue.read_tsv(paths.REVISIT, workqueue.REVISIT_FIELDS)
+    difficult = workqueue.read_lists(paths, 'difficult')
+    revisit = workqueue.read_lists(paths, 'revisit')
     take_revisit = os.environ.get('HARNESS_TAKE_REVISIT') == '1'
     if cmd == 'sweep':
         exact = {k for k, v in matched.load(paths.MATCHED_SET)['functions'].items()
@@ -131,7 +159,7 @@ def main(argv):
         entry = {'address': row['address'], 'name': row.get('name', ''), 'size': size}
         where = workqueue.record(paths, entry, row, tiers, take_revisit)
         if where in ('difficult', 'revisit'):
-            print(f'INFO  {row["address"]} listed in {where}_functions.tsv')
+            print(f'INFO  {row["address"]} listed in {where}_functions.tsv (lane {paths.LANE})')
         elif where == 'cleared':
             print(f'INFO  {row["address"]} taken off revisit_functions.tsv')
         return 0
