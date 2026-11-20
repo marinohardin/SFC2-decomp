@@ -4780,6 +4780,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x0042823d": {
+   "name": "tOfficer::scalar_deleting_destructor",
+   "symbol": "??_GtOfficer@@UAEPAXI@Z",
+   "unit": "unsorted/tOfficer.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",

@@ -5,6 +5,7 @@ tOfficer::tOfficer( const tOfficer& source )
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0042823d
 // FUNCTION: STARFLEETOP 0x00428227
 tOfficer::~tOfficer()
 {
