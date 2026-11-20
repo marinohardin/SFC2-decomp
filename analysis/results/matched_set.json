@@ -37972,33 +37972,6 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
-  "0x006fc610": {
-   "name": "tCleanupGlobalPointer<tDynamicAllocator>::tCleanupGlobalPointer<tDynamicAllocator>_Constructor_or_Destructor",
-   "symbol": "_$E4",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc630": {
-   "name": "FUN_006fc630",
-   "symbol": "_$E7",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc640": {
-   "name": "tCleanupGlobalPointer<tDynamicAllocator>::tCleanupGlobalPointer<tDynamicAllocator>_Constructor_or_Destructor",
-   "symbol": "_$E5",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 80,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
   "0x006fc690": {
    "name": "tDynamicAllocator::Instance",
    "symbol": "?Instance@tDynamicAllocator@@SAPAV1@XZ",
