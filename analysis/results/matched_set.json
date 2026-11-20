@@ -4474,6 +4474,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00424c07": {
+   "name": "tStrMgrCore::scalar_deleting_destructor",
+   "symbol": "??_GtStrMgrCore@@UAEPAXI@Z",
+   "unit": "unsorted/tStrMgrCore.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00426ca8": {
    "name": "FUN_00426ca8",
    "symbol": "?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z",

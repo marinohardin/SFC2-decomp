@@ -8,3 +8,8 @@ tStrMgrCore::tStrMgrCore( unsigned char throwOnMiss )
 	fn_00627200_throwOnMiss = throwOnMiss;
 	fn_00627180_count = 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00424c07
+tStrMgrCore::~tStrMgrCore( void )
+{
+}
