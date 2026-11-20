@@ -156,6 +156,23 @@ def improves(data, address, score, exact):
     return score > old['score'] + EPSILON or (exact and not old.get('exact'))
 
 
+REFRESHED = ('name', 'symbol', 'unit', 'size')
+
+
+def refresh(data, address, entry):
+    """Update the descriptive fields of the recorded entry from `entry`, which scored the same
+    (not higher: record does that; not lower: a lower score is a regression, never stored). The
+    landing step uses it so a name the source or the analysis has since corrected replaces the
+    stale one. Returns True when something changed."""
+    old = recorded(data, address)
+    if old is None or entry['score'] + EPSILON < old['score'] or bool(old.get('exact')) > bool(
+            entry.get('exact')):
+        return False
+    new = {k: entry[k] for k in REFRESHED if k in entry and old.get(k) != entry[k]}
+    old.update(new)
+    return bool(new)
+
+
 def record(data, address, entry, now):
     """Store entry for address if it improves on the recorded one. `now` is an ISO date string
     passed in by the caller. Returns True when stored."""

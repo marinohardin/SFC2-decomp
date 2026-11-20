@@ -493,7 +493,8 @@ def main(argv=None):
     op_root = os.path.abspath(args.op or os.path.join(repo, 'op'))
     baseline_path = args.baseline or os.path.join(res, 'lint_baseline.tsv')
     try:
-        ev = Evidence(load_matched(args.matched_set or os.path.join(res, 'matched_set.json')),
+        ev = Evidence(load_matched(args.matched_set or os.environ.get('HARNESS_MATCHED_SET')
+                                   or os.path.join(res, 'matched_set.json')),
                       load_boundaries(args.boundaries or os.path.join(res, 'boundary_errors.tsv')),
                       load_functions(args.functions
                                      or os.path.join(repo, 'ghidra', 'exports', 'functions.csv')))

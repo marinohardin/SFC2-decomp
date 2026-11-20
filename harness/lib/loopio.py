@@ -14,7 +14,7 @@ import os
 import re
 import sys
 
-from . import funcs, paths, stophook
+from . import funcs, matched, paths, source, stophook
 
 LIMIT = re.compile(r'usage limit|limit reached|rate.?limit|resets? at|overloaded|429|'
                    r'credit balance|quota|hit your .{0,40}limit|limit\W+resets?\b', re.I)
@@ -49,6 +49,27 @@ def score(verify, address):
     if code == 0 and stophook.standins(verify, address):
         code = EXIT_STANDIN
     return float(r.get('score', 0.0)), bool(r.get('exact')), code
+
+
+def seed_matched(dest, src=None):
+    """Make the lane's matched set at `dest` hold at least everything the committed one does:
+    a copy of it when `dest` is absent, else `dest` with every entry the committed set has higher
+    (a develop merged into the lane since) put back. Never lowers an entry of the lane's."""
+    src = src or paths.COMMITTED_MATCHED_SET
+    base = matched.load(src)
+    lane = matched.load(dest)
+    out = matched.merged(lane, base)
+    if not os.path.exists(dest) or out != lane:
+        os.makedirs(os.path.dirname(os.path.abspath(dest)), exist_ok=True)
+        matched.save(dest, out)
+    return out
+
+
+def score_trailer(module, address, score, exact):
+    """The commit trailer that records a function's result where `git log` can read it:
+    `Harness-Score: STARFLEETOP 0x00401234 exact`, or the percent for an improvement."""
+    return (f'Harness-Score: {module} {matched.key(int(address, 16))} '
+            f'{"exact" if exact else f"{float(score):.2f}"}')
 
 
 def claim(entry, verify):
@@ -217,6 +238,10 @@ def main(argv):
     elif cmd == 'score':
         s, exact, code = score(load(argv[1]), argv[2])
         print(f'{s:.2f} {"exact" if exact else "partial"} {code}')
+    elif cmd == 'seed':
+        seed_matched(argv[1])
+    elif cmd == 'trailer':
+        print(score_trailer(source.load_units()['module'], argv[1], argv[2], argv[3] == 'exact'))
     elif cmd == 'claims':
         print('\n'.join(claim_lines(argv[1], int(argv[2], 16))))
     elif cmd == 'limited':

@@ -10,5 +10,6 @@
 here=$(cd "$(dirname "$0")" && pwd)
 for a in "$@"; do
     [ "$a" = --record ] && { echo "ERROR --record is for harness/update-matched-set.sh" >&2; exit 2; }
+    [ "$a" = --land ] && { echo "ERROR --land is for harness/landing.sh" >&2; exit 2; }
 done
 PYTHONPATH="$(dirname "$here")" exec python3 -m harness.lib.verify "$@"

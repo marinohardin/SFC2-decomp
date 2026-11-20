@@ -8,8 +8,8 @@
 # Each round: claim the next function (harness/queue.py; a lock file keeps loops in other
 # worktrees off it), score it as it stands, write the claim the Stop hook checks, run claude with
 # the prompt harness/prompts/function.md and the hooks in harness/hooks/settings.fragment.json,
-# then let harness/update-matched-set.sh judge the result. An improvement is committed on the
-# current branch; anything else is undone and counts as an attempt. An attempt that does not end
+# then let harness/update-matched-set.sh judge the result. An improvement is committed (source
+# only) on the current branch; anything else is undone and counts as an attempt. An attempt that does not end
 # exact leaves a handoff note in the harness state for the next one (harness/lib/notes.py), and
 # the prompt carries a context pack (harness/lib/pack.py). Usage-limit stops sleep and retry the
 # same function without counting.
@@ -25,9 +25,13 @@
 # builds again. From attempt 2 on, an attempt that does not raise the best score ends the run,
 # and after two attempts so does a best of 90% or less. Fable gets one time-boxed try at a
 # function whose best is at least 90%, and only with --allow-fable. A run that ends short of
-# 100% lists the function in analysis/results/revisit_functions.tsv (or difficult_functions.tsv
-# when it had every attempt), which the loop commits; the queue skips revisit-listed functions
+# 100% lists the function in this lane's revisit_functions.tsv (or difficult_functions.tsv when it
+# had every attempt), outside the repository; the queue skips listed functions, of every lane,
 # unless --revisit is given.
+#
+# A lane commits source only: each commit carries a `Harness-Score:` trailer with the function's
+# result, and the scores themselves go to the lane's matched set in the state folder. Develop's
+# matched_set.json and manifest are written once, by the landing step (harness/landing.sh).
 #
 # Runs under the owner's Claude Max login: it aborts if ANTHROPIC_API_KEY (or another variable
 # that would switch billing) is set. Run it in its own worktree on a grind/ or feature/ branch.
@@ -147,11 +151,19 @@ done
 eval "$(python3 -c 'from harness.lib import paths; import os, shlex
 rel = lambda p: os.path.relpath(p, paths.REPO)
 print("state=" + shlex.quote(paths.STATE)); print("src=" + shlex.quote(rel(paths.SRC_ROOT)))
-print("difficult=" + shlex.quote(rel(paths.DIFFICULT)))
-print("revisit=" + shlex.quote(rel(paths.REVISIT)))
-print("matched=" + shlex.quote(rel(paths.MATCHED_SET)))')"
+print("lane=" + shlex.quote(paths.LANE))')"
 case "$src" in ..*|/*) echo "ERROR the source root must be inside this worktree for the loop" >&2; exit 2 ;; esac
 mkdir -p "$state/attempts"
+# A lane commits source only (harness/README.md, "Lanes commit source only"): its scores live in
+# its own matched set in the state folder, seeded from the committed one and topped up from it at
+# every start, and exported so every reader (the queue, the verifier, the hooks, the session's own
+# children) sees it. HARNESS_MATCHED_SET set by the caller names the lane's set instead. The
+# revisit and difficult lists are the lane's two files under the lists folder (paths.py).
+if [ -z "${HARNESS_MATCHED_SET:-}" ]; then
+    export HARNESS_MATCHED_SET="$state/matched_set.json"
+fi
+py seed "$HARNESS_MATCHED_SET" || exit 2
+export SFCOP_LANE=1
 judges="harness toolchain analysis ghidra scripts oracle"
 export HARNESS_LOOP_PID=$$
 addr=
@@ -161,10 +173,13 @@ trap '[ -n "$addr" ] && python3 harness/queue.py release "$addr"' EXIT
 session=
 trap '[ -n "$session" ] && kill -TERM "$session" 2>/dev/null && wait "$session"; exit 130' INT TERM HUP
 
-# Undo everything since the round started: tracked changes, new files, commits.
+# Undo everything since the round started: tracked changes, new files, commits, and the lane's
+# matched set (outside the worktree, so git does not restore it) as it was at the round's start.
+msnap=
 reset_round() {
     git reset -q --hard "$1"
     git clean -fdq
+    [ -n "$msnap" ] && [ -f "$msnap" ] && cp "$msnap" "$HARNESS_MATCHED_SET"
 }
 branch=$(git rev-parse --abbrev-ref HEAD)
 case "$branch" in
@@ -238,6 +253,7 @@ while :; do
     model=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["model"])' "$entry")
     tag="$state/attempts/$addr-$(date +%Y%m%dT%H%M%S)"
     head0=$(git rev-parse HEAD)
+    msnap="$tag.matched.before"; cp "$HARNESS_MATCHED_SET" "$msnap"
     harness/build-and-verify.sh "$addr" --json > "$tag.before.json" 2>&1
     before=$(py claim "$entry" "$tag.before.json")
     snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
@@ -335,9 +351,10 @@ while :; do
         if [ "$code" = 0 ] && [ "$improved" = 1 ]; then
             outcome=$([ "$kind" = exact ] && echo exact || echo improved)
             name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
-            git add -A -- "$src" "$matched"
+            git add -A -- "$src"
             git commit -q -m "feat(op): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \
                 -m "build-and-verify: $before% -> $after% ($kind) with $model." \
+                -m "$(py trailer "$addr" "$after" "$kind")" \
                 && echo "OK    $addr $outcome $before% -> $after%, committed"
         else
             outcome=$([ "$code" = 0 ] && echo no-change || echo failed)
@@ -354,20 +371,6 @@ while :; do
             || echo "WARN  could not write the handoff note for $addr"
     fi
     python3 harness/queue.py record "$(py row "$entry" "$outcome" "$before" "$after" "$tag.claude.json" "$secs" "$now")"
-    if [ "$dry" = 0 ] && [ -n "$(git status --porcelain -- "$difficult" "$revisit")" ]; then
-        name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
-        git add -A -- "$difficult" "$revisit"
-        if [ -n "$(git diff --cached --name-only -- "$difficult")" ]; then
-            git commit -q -m "chore(harness): list $name ($addr) as difficult" \
-                -m "Not exact after every attempt the stop rule gives; best and last attempt in $difficult."
-        elif [ "$outcome" = exact ]; then
-            git commit -q -m "chore(harness): take $name ($addr) off the revisit list" \
-                -m "Exact on a revisit pass."
-        else
-            git commit -q -m "chore(harness): update $name ($addr) on the revisit list" \
-                -m "The stop rule ended its run short of 100%; see $revisit."
-        fi
-    fi
     python3 harness/queue.py release "$addr"; addr=
 
     rounds=$((rounds + 1))
