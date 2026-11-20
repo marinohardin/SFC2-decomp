@@ -222,6 +222,18 @@ when they are used up the session is let go, the loop's own run of the same chec
 the round is undone and recorded as `failed`, as for a regression. `HARNESS_WHOLETREE=0` turns
 the checks off, in the hook and in the loop (default 1; for emergencies).
 
+### Lane file list
+
+`HARNESS_LANE_FILES`, when set to a file, narrows what the guard allows under the source tree
+to the files that list names. The lane launcher sets it; `loop.sh` does not. One
+repository-relative path or glob per line (`fnmatch`: `*` also matches `/`; for example
+`op/Tiger/tsay.cpp`, `op/Tiger/tsay*.h`); blank lines and lines starting with `#` are ignored. An
+edit or new file under `op/` that matches no line is denied, with a message that tells the
+session to leave the file alone and end its final message with `HEADER REQUEST: <header> <what
+and why> (for 0x<address>)` or `UNIT REQUEST: <file> <what and why> (for 0x<address>)`. A list that
+is set but cannot be read denies every edit. Unset, the guard allows any edit under `op/`, as
+before.
+
 ### Symbol table and stand-ins
 
 Every `build-and-verify.sh --all` writes `<build>/symbols.tsv`: each claim's address, the symbol
