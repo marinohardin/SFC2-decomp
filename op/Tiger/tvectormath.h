@@ -135,6 +135,7 @@ public:
 	void mTranslate(const float x, const float y, const float z);
 #if defined( tvectormath_spark_members )
 	void mMult(tMatrix &a, const tMatrix &b) const;
+	void fn_0069cbc0(tPoint3 &out, const tPoint3 &in) const;
 #endif
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);

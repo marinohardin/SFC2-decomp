@@ -2,6 +2,9 @@
 #include <math.h>
 #include "Tiger/tvectormath.h"
 
+// The two callees below (0x00737fa4 and 0x0069cbc0) are unidentified; they keep their address names.
+extern "C" double fn_00737fa4( double );
+
 // HYPOTHESIS: layout and the counter global are inferred from the constructor's stores.
 extern int g_00898ca4;
 // HYPOTHESIS: the shared buffer holds the spark's points; 0x0040ca18 copies 12-byte tPoint3
@@ -143,7 +146,7 @@ void tElectricSpark::vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *para
 	{
 		// MATCH-ONLY: the float casts keep VC6 from reordering the multiplications; the
 		// original may have reached the same trees through float temporaries.
-		scale = sin((float)(i * 3.14159265359) * step);
+		scale = fn_00737fa4((float)(i * 3.14159265359) * step);
 		offset.mSet((float)((fn_0069b0e0() - 0.5f) * m04) * scale, (float)((fn_0069b0e0() - 0.5f) * m04) * scale, (float)((fn_0069b0e0() - 0.5f) * m04) * scale);
 		g_00898c9c[i] = m10 + m28 * (float)i + offset;
 	}
@@ -154,7 +157,7 @@ void tElectricSpark::vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *para
 
 	static tPoint3 origin(0.0f, 0.0f, 0.0f);
 	tPoint3 position;
-	world.mTransform(position, origin);
+	world.fn_0069cbc0(position, origin);
 	// The original computes this squared distance and discards it.
 	float distance = position * position;
 
