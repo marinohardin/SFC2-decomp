@@ -35,6 +35,10 @@ DIFF_ROWS = 12
 RELOC_BASELINE = paths.env_path('HARNESS_RELOC_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'reloc_baseline.tsv'))
 RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
+# A relocation that names another symbol than the claim at its target is of one class
+# (classify_break): the first three fail the run, the last two are listed only.
+CLASS_ERRORS = ('other-object', 'other-address', 'wrong-function')
+CLASS_WARNS = ('own-object', 'folded', 'stand-in')
 
 
 class Untrusted(Exception):
@@ -46,6 +50,7 @@ class Report:
         self.lines, self.results, self.regressions, self.failed = [], [], [], False
         self.claim_breaks = []
         self.standins = []
+        self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
         self.lines.append(f'{tag:<5} {text}')
@@ -501,6 +506,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             return sub
         how = 'unchanged, not rebuilt' if build.get('cached') else f'{build["secs"]} s'
         sub.add('OK', f'build {rel} ({how}, profile {profile["name"]})')
+        sub.objects[rel] = build['obj']
         for a, ann in sorted(items, key=lambda x: x[0]):
             fn = index.by_address[a]
             # The other annotations in the annotation's own file: the unit, or the header it is in.
@@ -517,11 +523,12 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.lines.extend(sub.lines)
         rep.results.extend(sub.results)
         rep.regressions.extend(sub.regressions)
+        rep.objects.update(sub.objects)
         rep.failed = rep.failed or sub.failed
 
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
-                         symtab.load_claims())
+                         symtab.load_claims(), index)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -665,10 +672,11 @@ def load_reloc_baseline(path):
         for n, row in enumerate(rows, 1):
             if not row or row[0].startswith('#') or (n == 1 and row[0] == 'function'):
                 continue
-            if len(row) != len(RELOC_BASELINE_FIELDS):
+            # (a sixth column is the class a reloc_breaks.tsv row carries; it is not read)
+            if len(row) not in (len(RELOC_BASELINE_FIELDS), len(RELOC_BASELINE_FIELDS) + 1):
                 raise Untrusted(f'{_shown(path)}:{n}: expected {len(RELOC_BASELINE_FIELDS)} '
                                 f'tab-separated fields ({", ".join(RELOC_BASELINE_FIELDS)})')
-            b = dict(zip(RELOC_BASELINE_FIELDS, row))
+            b = dict(zip(RELOC_BASELINE_FIELDS, row[:len(RELOC_BASELINE_FIELDS)]))
             try:
                 b['offset'] = int(b['offset'], 16)
             except ValueError:
@@ -677,29 +685,113 @@ def load_reloc_baseline(path):
     return out
 
 
-def reloc_baseline_text(breaks):
-    """breaks in the baseline's format, sorted, one row per break."""
+def reloc_baseline_text(breaks, classes=False):
+    """breaks in the baseline's format, sorted, one row per break; `classes` adds the column
+    naming each break's class (the reloc_breaks.tsv an --all run writes)."""
     rows = sorted({(b['function'], f'0x{b["offset"]:x}', b['symbol'], b['target'], b['claimed'])
-                   for b in breaks})
-    return ''.join('\t'.join(r) + '\n' for r in [RELOC_BASELINE_FIELDS] + rows)
+                   + ((b['class'],) if classes else ()) for b in breaks})
+    head = RELOC_BASELINE_FIELDS + (('class',) if classes else ())
+    return ''.join('\t'.join(r) + '\n' for r in [head] + rows)
 
 
-def report_claim_symbols(rep, data, baseline, check_all, table=None):
-    """Lines for claim_symbol_breaks. A break the baseline lists is tolerated (one INFO line for
-    all of them). Any other break fails the run when the claim's symbol comes from this run's
-    rebuild; when it comes only from the matched set (a single-function run that did not build
-    the target's unit), it is a WARN line, since the recorded field may be stale and --all
-    rebuilds every claim. A baseline row whose break is gone is reported as stale, so the list
-    only shrinks: under --all every row, otherwise only rows of the exact functions scored."""
+def defined_symbols(objects):
+    """{symbol: set of units} for every external symbol the unit objects define (a function,
+    or an inline or template instance a unit emitted). `objects` maps a unit to its object file."""
+    out = {}
+    for unit, path in objects.items():
+        try:
+            with open(path, 'rb') as f:
+                obj = coff.CoffObject(f.read())
+        except (OSError, coff.CoffError):
+            continue
+        for s in obj.symbols.values():
+            if s.section > 0 and s.storage == coff.SYM_CLASS_EXTERNAL:
+                out.setdefault(s.name, set()).add(unit)
+    return out
+
+
+def startup_breaks():
+    """The keys (_break_key) of the breaks the last `--all` in this checkout wrote to
+    reloc_breaks.tsv (the loop runs one at its start), or None without that file."""
+    try:
+        with open(os.path.join(paths.BUILD, 'reloc_breaks.tsv'), newline='') as f:
+            return {(r['function'], r['symbol'], r['target'])
+                    for r in csv.DictReader(f, delimiter='\t')}
+    except (OSError, KeyError):
+        return None
+
+
+def classify_break(b, unit, defined, evidence):
+    """(class, detail) of a claim_symbol_breaks row: how the consumer that links the exact
+    objects resolves the call, which names the symbol S, to the target T (harness/README.md,
+    step 8). An object defining S wins (the consumer binds by name), then the exe's evidence
+    names (functions.csv and the SDK tables), then the address in the caller's original bytes.
+    `unit` is the caller's; `defined` is defined_symbols; `evidence` has `known` (name ->
+    addresses) and `names_at` (address -> names), like funcs.FunctionIndex."""
+    sym, target = b['symbol'], int(b['target'], 16)
+    other = sorted(defined.get(sym, set()) - {unit})
+    if other:
+        return 'other-object', other[0]
+    known, names_at = getattr(evidence, 'known', {}), getattr(evidence, 'names_at', {})
+    elsewhere = sorted(a for a in known.get(sym, ()) if a != target)
+    if elsewhere:
+        return 'other-address', f'0x{elsewhere[0]:08x}'
+    names = names_at.get(target, set())
+    if names - {sym}:
+        if sym in names:
+            return 'folded', ', '.join(sorted(names))
+        return 'wrong-function', sorted(names)[0]
+    if unit in defined.get(sym, ()):
+        return 'own-object', ''
+    return 'stand-in', ''
+
+
+CLASS_TEXT = {
+    'other-object': 'it is defined in another object ({d}): a consumer would bind the call to '
+                    'that body',
+    'other-address': 'the evidence has it at another address ({d}): a consumer would bind the '
+                     'call there',
+    'wrong-function': 'it names another function than the one at this address ({d})',
+}
+
+
+def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=None):
+    """Lines for claim_symbol_breaks, each sorted into a class by classify_break, from the unit
+    objects the run built (rep.objects) and `evidence` (the funcs.FunctionIndex). A break of an
+    error class (CLASS_ERRORS) fails the run when the claim's symbol comes from this run's
+    rebuild, unless the baseline lists it (one INFO line for all of them); when the claim's
+    symbol comes only from the matched set (a single-function run that did not build the
+    target's unit), it is a WARN line, since the recorded field may be stale and --all rebuilds
+    every claim. A break of a warning class (CLASS_WARNS) only adds to one summary WARN line per
+    class. A baseline row whose break is gone, or under --all no longer an error, is reported as
+    stale, so the list only shrinks: under --all every row, otherwise only rows of the exact
+    functions scored. A single-function run knows only the objects it built, so it can miss a
+    definition in another unit; --all decides."""
     claims = claimed_symbols(rep.results, data, table)
     rep.claim_breaks = claim_symbol_breaks(rep.results, claims)
     listed = {_break_key(b) for b in baseline}
+    units = {res['address']: res['unit'] for res in rep.results}
+    exact = {res['address'] for res in rep.results if res.get('exact')}
+    scored = claim_symbol_breaks(rep.results, claims, exact_only=False)
+    defined = defined_symbols(rep.objects) if scored else {}
+    for b in scored + rep.claim_breaks:
+        b['class'], b['detail'] = classify_break(b, units.get(b['function']), defined, evidence)
     # Stand-ins: any scored function, exact or not, that reaches a claimed function through
     # another symbol than the claim's, judged only against rebuilt symbols (this run's or the
-    # table's), never a recorded field that may be stale. The Stop hook refuses these.
-    rep.standins = [b for b in claim_symbol_breaks(rep.results, claims, exact_only=False)
-                    if b['source'] in ('rebuilt', 'table') and _break_key(b) not in listed]
-    reported = {_break_key(b) for b in rep.claim_breaks}
+    # table's), never a recorded field that may be stale. The Stop hook refuses these. An exact
+    # function's warning-class break is not one, and is only counted below, unless it is a
+    # `stand-in` the startup --all (reloc_breaks.tsv) did not have: the session made it.
+    startup = startup_breaks()
+
+    def tolerated_warning(b):
+        if b['function'] not in exact or b['class'] not in CLASS_WARNS:
+            return False
+        return startup is None or b['class'] != 'stand-in' or _break_key(b) in startup
+    rep.standins = [b for b in scored
+                    if b['source'] in ('rebuilt', 'table') and _break_key(b) not in listed
+                    and not tolerated_warning(b)]
+    errors = [b for b in rep.claim_breaks if b['class'] in CLASS_ERRORS]
+    reported = {_break_key(b) for b in errors}
     if not check_all:
         for b in rep.standins:
             if _break_key(b) in reported:
@@ -708,30 +800,49 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None):
                     f'but {b["target"]} is claimed as {b["claimed"]}; declare it as its claim '
                     'does (the class and header that define it), not again under another name')
     tolerated = 0
-    for b in rep.claim_breaks:
+    for b in errors:
         if _break_key(b) in listed:
             tolerated += 1
             continue
         text = (f'{b["function"]} relocation +0x{b["offset"]:x} names {b["symbol"]}, which '
-                f'reaches {b["target"]}, claimed as {b["claimed"]}')
+                f'reaches {b["target"]}, claimed as {b["claimed"]}: '
+                + CLASS_TEXT[b['class']].format(d=b['detail']))
         if b['source'] == 'rebuilt':
-            rep.add('ERROR', text + ' (a consumer linking the exact objects cannot resolve it)')
+            rep.add('ERROR', text)
             rep.failed = True
         elif b['source'] == 'table':
-            rep.add('WARN', text + ' in the symbol table, not rebuilt in this run (the table is '
-                    'the last --all\'s; --all decides)')
+            rep.add('WARN', text + ' (the claim is from the symbol table, not rebuilt in this '
+                    'run; the table is the last --all\'s; --all decides)')
         else:
-            rep.add('WARN', text + ' in matched_set.json, not rebuilt in this run (the recorded '
-                    'symbol may be stale; --all decides)')
+            rep.add('WARN', text + ' (the claim is from matched_set.json, not rebuilt in this '
+                    'run; the recorded symbol may be stale; --all decides)')
     if tolerated:
         rep.add('INFO', f'{tolerated} relocations name another symbol than the claim at their '
                 f'target, as {_shown(RELOC_BASELINE)} lists')
-    found = {_break_key(b) for b in rep.claim_breaks}
-    scored = {res['address'] for res in rep.results if res.get('exact')}
+    for cls, what in (
+            ('stand-in', 'a stand-in no other object defines and no evidence places elsewhere: '
+                         'resolved by name or by address'),
+            ('folded', 'a symbol the evidence gives the target together with other names (bodies '
+                       'the original folded into one address): resolved by name'),
+            ('own-object', 'a symbol their own object defines (an inline or template instance): '
+                           'unresolved, whether a consumer binds it to that body is open')):
+        n = sum(1 for b in rep.claim_breaks if b['class'] == cls)
+        if n:
+            rep.add('WARN', f'{n} relocations of exact functions name {what} (class {cls}); '
+                    '--all lists them in reloc_breaks.tsv')
+    now = {_break_key(b): b['class'] for b in rep.claim_breaks}
+    scored_fns = {res['address'] for res in rep.results if res.get('exact')}
     for b in baseline:
-        if _break_key(b) not in found and (check_all or b['function'] in scored):
+        if not (check_all or b['function'] in scored_fns):
+            continue
+        cls = now.get(_break_key(b))
+        if cls is None:
             rep.add('WARN', f'{_shown(RELOC_BASELINE)} lists {b["function"]} +0x{b["offset"]:x} '
                     f'{b["symbol"]} -> {b["target"]}, which no longer breaks: remove the row')
+        elif check_all and cls not in CLASS_ERRORS:
+            rep.add('WARN', f'{_shown(RELOC_BASELINE)} lists {b["function"]} +0x{b["offset"]:x} '
+                    f'{b["symbol"]} -> {b["target"]}, which is now only a warning ({cls}): '
+                    'remove the row')
 
 
 def _report_function(rep, data, fn, res):
@@ -828,9 +939,12 @@ def main(argv=None):
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
-            f.write(reloc_baseline_text(rep.claim_breaks))
+            f.write(reloc_baseline_text(rep.claim_breaks, classes=True))
+        by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
+                    for c in CLASS_ERRORS + CLASS_WARNS}
         rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '
-                f'claim at their target; all written to {out}')
+                f'claim at their target ({", ".join(f"{n} {c}" for c, n in by_class.items())}); '
+                f'all written to {out}')
     if rep.regressions:
         status, code = 'ERROR regression', EXIT_REGRESSION
     elif rep.failed:

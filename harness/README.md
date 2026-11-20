@@ -9,7 +9,7 @@ from everything that judges; scores only go up.
 | `build-and-verify.sh <fn>` | The only judge. Compiles the function's unit, diffs it against the original bytes, refuses any score below `matched_set.json`. Read-only |
 | `update-matched-set.sh <fn>` | The only writer of `matched_set.json`. Takes no score: it verifies the function itself and records an improvement |
 | `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address |
-| `../analysis/results/reloc_baseline.tsv` | Known relocations of exact functions that name another symbol than the claim at their target (step 8 of `build-and-verify.sh`) |
+| `../analysis/results/reloc_baseline.tsv` | Known error-class relocations of exact functions that name another symbol than the claim at their target (step 8 of `build-and-verify.sh`) |
 | `units.json` | Compile profile per unit of the rebuilt tree (flags, compiler, include order) |
 | `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps `difficult_functions.tsv` |
 | `../analysis/results/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human |
@@ -94,28 +94,45 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    line naming both, exit 2): the native build links one definition per name, so one of them
    names the wrong callee, global or method. Labels, compiler statics and literal constants are
    resolved per unit and compared within one. `--all` checks every recorded function this way.
-8. Checks that every REL32 / DIR32 relocation of an exact function that reaches a claimed
-   function (an address in `matched_set.json`, or one scored in the run) names the symbol that
-   claim defines (`report_claim_symbols` in `lib/verify.py`). The byte match masks the field,
-   so a call through a stand-in class name or signature scores exact, but a consumer linking the
-   exact objects (manifest mode `vc6`) is left with an unresolved external. The claim's symbol
-   is the one the run's rebuild of its unit defines; a matched-set `symbol` field is only a
-   fallback, because it is rewritten only when a score improves and can be stale after a rename.
-   A break against a rebuilt symbol is an `ERROR` line naming the function, the relocation
-   offset, the symbol, the exe address and the claimed symbol, and fails the run (exit 2); one
-   against a recorded symbol only (a single-function run that did not build the target's unit)
-   is a `WARN` line, and `--all`, which rebuilds every claim, decides. Targets nothing claims
-   (library and CRT code) are not checked. A legitimate case, such as two identical functions
-   the linker folded into one address, is listed in the baseline too.
+8. Checks every REL32 / DIR32 relocation of an exact function that reaches a claimed function
+   (an address in `matched_set.json`, or one scored in the run) and names another symbol than
+   that claim defines (`report_claim_symbols` in `lib/verify.py`). The byte match masks the
+   field, so such a call scores exact; whether it matters depends on how a consumer linking the
+   exact objects (manifest mode `vc6`) resolves the name, in this order: (1) a definition in
+   another input object, by name; (2) the exe's symbol evidence (`functions.csv`, the SDK
+   tables), by name; (3) the address the exact caller's original bytes hold for that field;
+   (4) otherwise it stops. Each such relocation is of one class (`classify_break`), decided from
+   the objects the run built and that evidence:
+
+   | Class | Meaning | Result | What a session does |
+   | --- | --- | --- | --- |
+   | `other-object` | the caller's symbol is defined in another built object: the consumer binds the call to that body | `ERROR`, exit 2 | declare the callee as its claim does |
+   | `other-address` | the evidence names the caller's symbol at another address | `ERROR`, exit 2 | same |
+   | `wrong-function` | the evidence names the callee's address, and the caller's symbol is not among those names: the caller names another real function | `ERROR`, exit 2 | same |
+   | `folded` | the evidence gives the target several names, the caller's symbol one of them (bodies the original folded into one address): resolved by name | `WARN`, one summary line, never fails | nothing needed |
+   | `stand-in` | the symbol is defined in no other object and the evidence does not place it elsewhere (an invented class or signature): resolved by name or by address | `WARN`, one summary line, never fails | nothing needed; declaring the callee as its claim does removes it |
+   | `own-object` | the symbol is defined in the caller's own object (an inline or template instance emitted there) | `WARN`, one summary line, never fails | nothing needed; **unresolved**: whether a consumer binds the call to that local body or to the exe's address is for the consumer's maintainer to say |
+
+   An error is a line naming the function, the relocation offset, the symbol, the exe address,
+   the claimed symbol and the reason. The claim's symbol is the one the run's rebuild of its
+   unit defines; a matched-set `symbol` field is only a fallback, because it is rewritten only
+   when a score improves and can be stale after a rename. An error against a recorded symbol
+   only (a single-function run that did not build the target's unit) is a `WARN` line, and
+   `--all`, which rebuilds every claim, decides. A single-function run knows only the objects it
+   built, so it can miss a definition in another unit: `--all` is the judge. Targets nothing
+   claims (library and CRT code) are not checked. A legitimate case, such as two identical
+   functions the linker folded into one address, is listed in the baseline.
 
    **The relocation baseline** (`analysis/results/reloc_baseline.tsv`, `HARNESS_RELOC_BASELINE`):
-   the breaks known when the check came in, one row each (`function`, `offset`, `symbol`,
+   the errors known when the check came in, one row each (`function`, `offset`, `symbol`,
    `target`, `claimed`), matched by function, symbol and target (the offset is for the reader).
-   A listed break is tolerated, with one `INFO` line counting them; a row whose break is gone is
-   a `WARN` line asking for its removal (under `--all` every row, otherwise only the rows of the
-   exact functions scored), so the list only shrinks. Every `--all` run writes the breaks it found,
-   in the same format, to `reloc_breaks.tsv` in its build folder; the baseline is only ever
-   replaced from such a file by the integrator, never extended to let a new break through.
+   A listed error is tolerated, with one `INFO` line counting them; a row whose break is gone,
+   or under `--all` has become a warning class, is a `WARN` line asking for its removal (under
+   `--all` every row, otherwise only the rows of the exact functions scored), so the list only
+   shrinks. Warnings are never listed in it. Every `--all` run writes every break it found, with
+   a sixth column naming its class, to `reloc_breaks.tsv` in its build folder (the reader of the
+   baseline ignores that column); the baseline is only ever replaced from such a file by the
+   integrator, never extended to let a new error through.
 
 Output is a few lines, each tagged `OK`, `ERROR` or `INFO`, then a `RESULT` line; for a function
 that is not exact, the first differing instructions side by side and the path of a full
@@ -275,11 +292,14 @@ a later rename leaves it stale (446 of 4,228 entries on 2026-11-19).
 A **stand-in** is a relocation in a scored function, exact or not, that reaches a claimed
 function through another symbol than the one the claim compiles to (this run's rebuild, or the
 table): the callee declared again under another class or signature. It matches bytes, but a
-consumer linking the objects cannot resolve it. A single-function run prints a `WARN stand-in`
+consumer linking the objects may not resolve it. A single-function run prints a `WARN stand-in`
 line for each and lists them under `standins` in `--json`. The Stop hook refuses a session whose
 function holds one, and the loop does not commit it (exit 5 from `loopio.score`). Rows on the
 relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as for exact
-functions. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
+functions; so is a warning-class break of a function that is exact, which step 8 only counts,
+except an exact function's `stand-in` break that the last `--all` in this checkout (the loop's
+start; its `reloc_breaks.tsv`) did not already have: the session created it, and it is refused. Without
+that file such a break is only counted (a later symbol-table change tightens it). Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
 are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
 every start (a full `--all`: about 2 minutes warm, 4 cold with the native compiler; start lanes
 one after another); after merging into a running lane, restart its loop (or run `--all`) so a renamed

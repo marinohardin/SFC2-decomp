@@ -3,7 +3,7 @@ claimed function through the claim's own symbol."""
 import pytest
 
 from conftest import FakeIndex
-from test_claim_symbols import claim, exact_caller, recorded
+from test_claim_symbols import claim, exact_caller, objects_defining, recorded
 from harness.lib import loopio, pack, stophook, symtab, verify
 
 STANDIN = '?fn_00401200@c_00401100_Object@@QAEXXZ'
@@ -41,10 +41,11 @@ def test_a_missing_table_is_empty(tmp_path):
     assert symtab.load_claims(str(tmp_path / 'none.tsv')) == {}
 
 
-def checked(results, data=None, table=None, check_all=False):
+def checked(results, data=None, table=None, check_all=False, objects=None):
     """By default the callee 0x00401200 is claimed (recorded under its own symbol)."""
     rep = verify.Report()
     rep.results = results
+    rep.objects = objects or {}
     data = recorded(a00401200='?callee@@YAXXZ') if data is None else data
     verify.report_claim_symbols(rep, data, [], check_all, table)
     return rep
@@ -127,11 +128,12 @@ def test_a_full_run_collects_stand_ins_without_a_warning_each():
     assert rep.lines == []
 
 
-def test_an_exact_break_against_the_table_says_so():
-    rep = checked([exact_caller()], table={'0x00401200': (STANDIN, 'b.cpp')})
+def test_an_exact_break_against_the_table_says_so(tmp_path):
+    rep = checked([exact_caller()], table={'0x00401200': (STANDIN, 'b.cpp')},
+                  objects=objects_defining(tmp_path, c_cpp='?callee@@YAXXZ'))
     assert [b['source'] for b in rep.claim_breaks] == ['table']
     assert len(rep.lines) == 1 and rep.lines[0].startswith('WARN')
-    assert 'in the symbol table, not rebuilt in this run' in rep.lines[0]
+    assert 'the claim is from the symbol table, not rebuilt in this run' in rep.lines[0]
 
 
 @pytest.mark.parametrize('hit, text', [
