@@ -6,7 +6,7 @@
 namespace nDataStore
 {
 
-// FUNCTION: STARFLEETOP 0x006f8cd0
+// MATCH-ONLY: the destructor (0x006f8cd0) is implicit (base and member destructors), unclaimed.
 // FUNCTION: STARFLEETOP 0x006f8cb0
 tStreamable::tCRCFailed::~tCRCFailed()
 {
@@ -122,7 +122,7 @@ nDataStore::tInput& operator>>( nDataStore::tInput& input, tStreamable& object )
 	return input;
 }
 #line 125
-
+// MATCH-ONLY: defined here, not in address order; placed earlier it changes the copy constructor.
 // FUNCTION: STARFLEETOP 0x006f8d90
 // FUNCTION: STARFLEETOP 0x006f8d70
 tStreamable::iObjectIDInfoLookup tStreamable::fObjectIDInfoLookup;

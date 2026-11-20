@@ -36,7 +36,7 @@ inline tOptex::~tOptex()
 namespace nLog
 {
 
-// The destructor itself is 0x006fe360.
+// MATCH-ONLY: the destructor itself is 0x006fe360; this is the compiler's deleting form.
 // FUNCTION: STARFLEETOP 0x006feed0
 tLogStream::~tLogStream()
 {}
@@ -49,10 +49,9 @@ tLogStream::tStreamBuf::tStreamBuf( tLog* eventLog )
 	, fAccess( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
 {}
 
-// The two inlined basic_string::_Tidy calls of 0x006fe620 lack the toolchain's _FROZEN test
-// (the library difference noted at 0x00708820); the rest lines up.
+// MATCH-ONLY: the destructor (0x006fe620) is implicit; its two inlined basic_string::_Tidy calls
+// lack the toolchain's _FROZEN test (0x00708820), so it is unclaimed.
 // FUNCTION: STARFLEETOP 0x006fe600
-// FUNCTION: STARFLEETOP 0x006fe620
 tLogStream::tStreamBuf::~tStreamBuf()
 {}
 
