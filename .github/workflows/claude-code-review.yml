@@ -14,9 +14,13 @@ jobs:
   claude-review:
     # Draft pull requests are not reviewed. Marking one ready starts the review.
     # Not for a fork's pull request: it gets no secrets, and its code never runs with them.
+    # Not for a grind landing (a `grind/` lane or an `integrate/` batch): its diff is decompiled
+    # functions, which the verifier judges byte for byte in `check`, and is too large to read whole.
     if: >-
       github.event.pull_request.draft == false &&
-      github.event.pull_request.head.repo.full_name == github.repository
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !startsWith(github.head_ref, 'grind/') &&
+      !startsWith(github.head_ref, 'integrate/')
     # Reads the pull request through gh only: a hosted runner, so it never waits behind a build.
     runs-on: ubuntu-latest
     timeout-minutes: 20

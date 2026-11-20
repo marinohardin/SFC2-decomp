@@ -212,6 +212,8 @@ def parse_signature(text):
             t, n = param_type_and_name(p, i)
             types.append(t)
             names.append(n)
+    # An exception specification, `throw()` or `throw( tType, ... )`, is not part of the identity.
+    tail = re.sub(r'\s*\bthrow\s*\([^()]*\)$', '', tail)
     if tail not in ('', 'const'):
         raise NotAFunction(text)
     return ret, name, tuple(types), tuple(names), tail == 'const', convention
