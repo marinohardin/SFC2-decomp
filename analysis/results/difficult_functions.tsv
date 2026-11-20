@@ -282,3 +282,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x00571018	FUN_00571018	4	fable	99.96	2026-11-20T00:00:03Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.96%
 0x0057118e	FUN_0057118e	3	fable	99.96	2026-11-20T00:01:08Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
 0x00571304	FUN_00571304	3	fable	99.96	2026-11-20T00:02:19Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
+0x0057147a	FUN_0057147a	3	fable	99.96	2026-11-20T00:03:32Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
