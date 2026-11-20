@@ -4798,6 +4798,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x004282f8": {
+   "name": "tTransporterHoldItem::vfunction3",
+   "symbol": "?fn_004282f8@tTransporterHoldItem@@QAEXPAVfn_0050d6a0_Stream@@@Z",
+   "unit": "unsorted/tTransporterHoldItem.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
