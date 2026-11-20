@@ -306,3 +306,106 @@ def test_a_written_baseline_keeps_its_reasons_and_checks_clean(tmp_path, capsys)
         "original's bytes",
     ]
     assert run(repo, capsys) == (0, [])
+
+
+def line_fn(address, body, pre=''):
+    return f"// FUNCTION: STARFLEETOP 0x{address:08x}\n{pre}void tTestShip::Check()\n{{\n{body}}}\n"
+
+
+def warnings_of(repo, capsys):
+    rc = lint_claims.main(['--repo', str(repo)])
+    out = capsys.readouterr().out.splitlines()
+    return rc, [ln for ln in out if 'line-macro' in ln], out[-2]
+
+
+def test_a_claimed_function_using_a_line_macro_without_a_directive_is_flagged(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'a.cpp': line_fn(0x401000, '\tfn_x(__FILE__, __LINE__);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert rc == 0
+    assert len(warns) == 1 and warns[0].startswith('op/a.cpp:4: line-macro: warning')
+    assert '0x00401000' in warns[0]
+    assert '1 claimed functions use one, 0 governed by #line, 1 flagged' in summary
+
+
+def test_a_line_directive_before_the_use_governs_it(tmp_path, capsys):
+    body = '#line 3504\n\tfn_x(__FILE__, __LINE__);\n#line 7\n'
+    text = line_fn(0x401000, body) + line_fn(0x401100, '\tfn_y();\n', '#line 900\n') \
+        + line_fn(0x401200, '\tassert(1);\n', '#line 12\n')
+    repo = make_repo(tmp_path, {'a.cpp': text})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert rc == 0 and warns == []
+    assert '2 claimed functions use one, 2 governed by #line, 0 flagged' in summary
+
+
+def test_a_directive_in_an_earlier_function_does_not_govern_a_later_one(tmp_path, capsys):
+    text = line_fn(0x401000, '#line 5\n\tassert(1);\n') + line_fn(0x401100, '\tassert(2);\n')
+    repo = make_repo(tmp_path, {'a.cpp': text})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1 and '0x00401100' in warns[0]
+    assert '2 claimed functions use one, 1 governed by #line, 1 flagged' in summary
+
+
+def test_a_project_macro_is_recognised_through_other_macros(tmp_path, capsys):
+    header = ('#define WHERE_ __LINE__\n'
+              '#define SAY(a) \\\n   fn_say(a, WHERE_)\n'
+              '#define SAYMORE(a) { SAY(a); }\n')
+    repo = make_repo(tmp_path, {'h.h': header,
+                                'a.cpp': line_fn(0x401000, '\tSAYMORE("x");\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert rc == 0 and len(warns) == 1
+    assert '1 claimed functions use one' in summary
+
+
+def test_uses_in_comments_and_strings_are_ignored(tmp_path, capsys):
+    body = '\t// assert(x) and __LINE__\n\tfn_x("assert __FILE__");\n\t/* assert(y) */\n'
+    repo = make_repo(tmp_path, {'a.cpp': line_fn(0x401000, body)})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert warns == []
+    assert '0 claimed functions use one' in summary
+
+
+def test_an_unclaimed_function_is_not_reported(tmp_path, capsys):
+    text = 'void tTestShip::Check()\n{\n\tassert(1);\n}\n'
+    repo = make_repo(tmp_path, {'a.cpp': text})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert rc == 0 and warns == []
+    assert '0 claimed functions use one' in summary
+
+
+def test_warnings_do_not_reach_the_baseline_or_the_exit_status(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'a.cpp': line_fn(0x401000, '\tassert(1);\n')}, baseline=[])
+    assert lint_claims.main(['--repo', str(repo), '--write-baseline']) == 0
+    capsys.readouterr()
+    assert (tmp_path / 'analysis/results/lint_baseline.tsv').read_text() == \
+        'check\tpath\taddress\treason\n'
+    assert lint_claims.main(['--repo', str(repo)]) == 0
+
+
+def test_a_project_assert_without_a_line_is_not_flagged(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) { if (!(x)) throw 1; }\n',
+                                'a.cpp': '#include "t.h"\n' + line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert warns == [] and '0 claimed functions use one' in summary
+
+
+def test_a_project_assert_with_a_line_is_flagged(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) fn_fail(__LINE__)\n',
+                                'a.cpp': '#include "t.h"\n' + line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1 and '1 claimed functions use one' in summary
+
+
+def test_assert_with_no_project_definition_is_the_built_in(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'a.cpp': line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1
+
+
+def test_assert_defined_two_ways_follows_the_included_header(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) fn_fail(__LINE__)\n',
+                                'u.h': '#define assert(x) { }\n',
+                                'a.cpp': '#include "u.h"\n' + line_fn(0x401000, '\tassert(1);\n'),
+                                'b.cpp': '#include "t.h"\n' + line_fn(0x401100, '\tassert(1);\n'),
+                                'c.cpp': line_fn(0x401200, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1 and 'op/b.cpp' in warns[0]
