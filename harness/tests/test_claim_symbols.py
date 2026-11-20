@@ -6,6 +6,12 @@ import pytest
 from conftest import FakeIndex, make_pe
 from harness.lib import coff, funcs, paths, target, verify
 
+@pytest.fixture(autouse=True)
+def _own_build_folder(monkeypatch, tmp_path):
+    """No test reads the reloc_breaks.tsv of a real --all build in this checkout."""
+    monkeypatch.setattr(paths, 'BUILD', str(tmp_path / 'build'))
+
+
 FN = 0x401000          # the exact function
 CALLEE = 0x401200      # the address its call reaches in the exe
 GLOBAL = 0x00500010

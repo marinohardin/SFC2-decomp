@@ -559,6 +559,22 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
 PER_UNIT_PREFIXES = ('$', '_$', '__real@', '??_C@')
 
 
+def exact_reloc_uses(results):
+    """(symbol, exe address text, per-unit?, unit, caller address, relocation) for each resolved
+    relocation of an exact function: one whose target address is known and whose bytes match.
+    A per-unit symbol is a label, compiler static, literal constant or one the object marks
+    static, which two units may define under one name."""
+    for res in results:
+        if not res.get('exact'):
+            continue
+        for r in res.get('relocs') or []:
+            name, addr = r['symbol'], r['exe_address']
+            if addr is None or r['status'] == 'mismatch':
+                continue
+            per_unit = name.startswith(PER_UNIT_PREFIXES) or bool(r.get('file_local'))
+            yield name, addr, per_unit, res['unit'], res['address'], r
+
+
 def shared_symbol_conflicts(results):
     """Error lines for a symbol that exact functions use at two exe addresses. The native build
     links one definition per name, so the object lift refuses such a pair; it means one of the
@@ -567,16 +583,9 @@ def shared_symbol_conflicts(results):
     function or variable, which two units may define under one name) are resolved per unit, so
     they are compared only within one."""
     seen = {}
-    for res in results:
-        if not res.get('exact'):
-            continue
-        for r in res.get('relocs') or []:
-            name, addr = r['symbol'], r['exe_address']
-            if addr is None or r['status'] == 'mismatch':
-                continue
-            per_unit = name.startswith(PER_UNIT_PREFIXES) or r.get('file_local')
-            key = (res['unit'], name) if per_unit else ('', name)
-            seen.setdefault(key, {}).setdefault(addr, set()).add(res['address'])
+    for name, addr, per_unit, unit, caller, _ in exact_reloc_uses(results):
+        key = (unit, name) if per_unit else ('', name)
+        seen.setdefault(key, {}).setdefault(addr, set()).add(caller)
     out = []
     for (_, name), uses in sorted(seen.items()):
         if len(uses) > 1:
