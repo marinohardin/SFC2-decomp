@@ -38224,6 +38224,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fe620": {
+   "name": "nLog::tLogStream::tStreamBuf::~tStreamBuf",
+   "symbol": "??1tStreamBuf@tLogStream@nLog@@UAE@XZ",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 256,
+   "score": 25.05,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
