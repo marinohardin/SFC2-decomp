@@ -291,3 +291,4 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x005bcdf1	FUN_005bcdf1	3	fable	99.77	2026-11-20T00:16:47Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
 0x005d9411	FUN_005d9411	3	fable	99.77	2026-11-20T00:18:18Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
 0x005d96ac	FUN_005d96ac	3	fable	99.79	2026-11-20T00:19:38Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x005d9cd3	FUN_005d9cd3	3	fable	99.87	2026-11-20T00:20:53Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.87%
