@@ -42,3 +42,9 @@ tTransactionUpdateStores::tTransactionUpdateStores( tAsyncDatabase* db ) : tAsyn
 	fn_00718f10( 10, new tMemberCallback<tTransactionUpdateStores,const nDataStore::tBuffer*>( this, fn_00569c83 ) );
 	fn_00719050();
 }
+
+// FUNCTION: STARFLEETOP 0x00569c5c
+#line 48
+tTransactionUpdateStores::~tTransactionUpdateStores()
+{
+}
