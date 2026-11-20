@@ -19900,6 +19900,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00569bc9": {
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::~tTransactionUpdateStores",
+   "symbol": "??0tTransactionUpdateStores@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",
