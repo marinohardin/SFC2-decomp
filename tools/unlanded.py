@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """List the local branches that hold exact functions the base branch does not.
 
-A grind lane records each function it matches in `analysis/results/matched_set.json` on its own
-branch. Until that branch is merged, the work exists nowhere else, and a branch that is never
-turned into a pull request is lost work that nothing reports. This lists every local branch whose
-matched set has a function exact that the base's matched set does not have exact.
+A grind lane commits source only: each of its commits for a function it matched carries a
+`Harness-Score: <module> <address> exact` trailer (harness/loop.sh), and its matched set lives
+outside the repository. Until that branch is merged, the work exists nowhere else, and a branch
+that is never turned into a pull request is lost work that nothing reports. This lists every local
+branch with a function exact that the base's matched set does not have exact: one its committed
+matched set has exact (a branch from before lanes committed source only), or one named by a
+trailer in a commit on `<base>..<branch>`. A function has landed once the base's matched set has
+it exact, which a squash merge keeps true.
 
     python3 tools/unlanded.py                      # every local branch, against origin/develop
     python3 tools/unlanded.py --base develop grind/ wp/   # only branches with these prefixes
@@ -24,10 +28,12 @@ and the next one started, only when this exits 0.
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 
 MATCHED_SET = 'analysis/results/matched_set.json'
+EXACT_TRAILER = re.compile(r'^Harness-Score:\s+\S+\s+(0x[0-9a-fA-F]{1,8})\s+exact\s*$', re.M)
 
 
 def unlanded(base_functions, branch_functions):
@@ -51,6 +57,15 @@ def functions_at(ref, cwd=None):
         raise RuntimeError(f'{ref}:{MATCHED_SET} is not valid JSON ({e})') from e
 
 
+def trailer_exact(base, branch, cwd=None):
+    """The functions (matched-set keys) that commits in `base..branch` record exact in a
+    Harness-Score trailer."""
+    r = git('log', '--format=%B%x00', f'{base}..{branch}', cwd=cwd)
+    if r.returncode != 0:
+        return {}
+    return {f'0x{int(a, 16):08x}': {'exact': True} for a in EXACT_TRAILER.findall(r.stdout)}
+
+
 def local_branches(prefixes, cwd=None):
     r = git('for-each-ref', '--format=%(refname:short)', 'refs/heads', cwd=cwd)
     if r.returncode != 0:
@@ -68,7 +83,9 @@ def report(base, prefixes, cwd=None, out=None, disposed=()):
         raise RuntimeError(f'{base} has no {MATCHED_SET}')
     found = 0
     for branch in local_branches(prefixes, cwd):
-        addresses = unlanded(base_functions, functions_at(branch, cwd))
+        claimed = trailer_exact(base, branch, cwd)
+        claimed.update({k: v for k, v in functions_at(branch, cwd).items() if v.get('exact')})
+        addresses = unlanded(base_functions, claimed)
         if not addresses:
             continue
         held = branch in disposed
