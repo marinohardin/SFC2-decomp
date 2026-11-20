@@ -62,7 +62,8 @@ def trailer_exact(base, branch, cwd=None):
     Harness-Score trailer."""
     r = git('log', '--format=%B%x00', f'{base}..{branch}', cwd=cwd)
     if r.returncode != 0:
-        return {}
+        # Never "no trailers": that would report the lane as landed.
+        raise RuntimeError(f'git log {base}..{branch} failed: {r.stderr.strip()}')
     return {f'0x{int(a, 16):08x}': {'exact': True} for a in EXACT_TRAILER.findall(r.stdout)}
 
 

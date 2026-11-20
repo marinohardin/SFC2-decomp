@@ -79,3 +79,12 @@ def test_a_branch_with_both_kinds_of_evidence_lists_the_union(tmp_path):
     assert unlanded.report('develop', ['grind/'], cwd=repo, out=out) == 1
     assert out.getvalue() == ('grind/old-lane: 2 exact not in develop (not pushed): '
                               '0x00405000 0x00409000\n')
+
+
+def test_a_failing_log_is_an_error_not_an_empty_list_of_trailers(tmp_path):
+    import pytest
+    repo = _repo(tmp_path)
+    _git(repo, 'checkout', '-q', '-b', 'grind/lane-c')
+    with pytest.raises(RuntimeError, match='failed'):
+        unlanded.trailer_exact('no-such-base', 'grind/lane-c', cwd=repo)
+    assert unlanded.main.__name__ == 'main'

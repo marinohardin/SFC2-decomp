@@ -104,6 +104,12 @@ def test_a_lane_commits_source_only_with_a_trailer_and_keeps_its_scores_outside(
     body = _git(repo, 'log', '-1', '--format=%B').rstrip()
     assert body.splitlines()[0] == 'feat(op): match f (0x00401000)'
     assert body.splitlines()[-1] == 'Harness-Score: STARFLEETOP 0x00401000 exact'
+    # A real git trailer: the last paragraph, found by git itself.
+    assert _git(repo, 'log', '-1', '--format=%(trailers:key=Harness-Score,valueonly)').strip() == \
+        'STARFLEETOP 0x00401000 exact'
+    parsed = subprocess.run(['git', 'interpret-trailers', '--parse'], cwd=repo, input=body,
+                            capture_output=True, text=True).stdout
+    assert parsed.strip() == 'Harness-Score: STARFLEETOP 0x00401000 exact'
     assert 'Co-Authored-By' not in body
     # The committed matched set and the lists are untouched; the lane's own set has the score.
     assert (repo / 'analysis/results/matched_set.json').read_text() == \
