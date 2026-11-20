@@ -38197,15 +38197,6 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
-  "0x006fe8a0": {
-   "name": "nLog::tLogStream::tStreamBuf::vfunction5",
-   "symbol": "?underflow@tStreamBuf@tLogStream@nLog@@UAEHXZ",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
   "0x006fe8b0": {
    "name": "nLog::tLogStream::tStreamBuf::Report",
    "symbol": "?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ",

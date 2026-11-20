@@ -84,7 +84,7 @@ int tLogStream::tStreamBuf::overflow( int ch )
 	return xsputn( (const char*)&ch, 1 );
 }
 
-// FUNCTION: STARFLEETOP 0x006fe8a0
+// Unclaimed (0x006fe8a0): the original shares one return-0 body between unrelated classes.
 int tLogStream::tStreamBuf::underflow()
 {
 	return 0;
