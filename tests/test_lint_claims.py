@@ -379,3 +379,33 @@ def test_warnings_do_not_reach_the_baseline_or_the_exit_status(tmp_path, capsys)
     assert (tmp_path / 'analysis/results/lint_baseline.tsv').read_text() == \
         'check\tpath\taddress\treason\n'
     assert lint_claims.main(['--repo', str(repo)]) == 0
+
+
+def test_a_project_assert_without_a_line_is_not_flagged(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) { if (!(x)) throw 1; }\n',
+                                'a.cpp': '#include "t.h"\n' + line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert warns == [] and '0 claimed functions use one' in summary
+
+
+def test_a_project_assert_with_a_line_is_flagged(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) fn_fail(__LINE__)\n',
+                                'a.cpp': '#include "t.h"\n' + line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1 and '1 claimed functions use one' in summary
+
+
+def test_assert_with_no_project_definition_is_the_built_in(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'a.cpp': line_fn(0x401000, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1
+
+
+def test_assert_defined_two_ways_follows_the_included_header(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'t.h': '#define assert(x) fn_fail(__LINE__)\n',
+                                'u.h': '#define assert(x) { }\n',
+                                'a.cpp': '#include "u.h"\n' + line_fn(0x401000, '\tassert(1);\n'),
+                                'b.cpp': '#include "t.h"\n' + line_fn(0x401100, '\tassert(1);\n'),
+                                'c.cpp': line_fn(0x401200, '\tassert(1);\n')})
+    rc, warns, summary = warnings_of(repo, capsys)
+    assert len(warns) == 1 and 'op/b.cpp' in warns[0]

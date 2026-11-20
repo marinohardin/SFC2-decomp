@@ -74,8 +74,10 @@ stay; it is for the integrator, after a fix, not for making a new break pass.
 
 line-macro (a warning)
     A claimed (`// FUNCTION:`) function whose body uses a line macro (`__LINE__`, `__FILE__`,
-    `assert`, and every macro under op/ whose replacement mentions one, found transitively at run
-    time from the `#define` lines) has the source line number in its bytes, so it needs a `#line`
+    `assert` unless op/ defines it itself, and every macro under op/ whose replacement mentions
+    one, found transitively at run time from the `#define` lines; a project `assert` counts only
+    when its replacement does, judged by the file's own or directly included definition, and
+    when that cannot be told it is not flagged) has the source line number in its bytes, so it needs a `#line`
     directive to pin it. A use is governed when a `#line` directive sits between the end of the
     previous claimed definition (or the start of the file) and that use: before the function,
     inside it ahead of the use, as `#line N` / `#line M` around a throw. Uses in comments and
@@ -481,7 +483,7 @@ def lint(repo, op_root, ev, baseline=()):
 
 def lint_lines(repo, op_root):
     """(warnings, uses, governed): the line-macro warnings; they never reach the baseline."""
-    macros = line_macros(op_root)
+    macros, asserts = line_macros(op_root)
     out, uses, governed = [], 0, 0
     for d, dirs, files in os.walk(op_root):
         dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
@@ -492,7 +494,8 @@ def lint_lines(repo, op_root):
             rel = os.path.relpath(p, repo).replace(os.sep, '/')
             with open(p, encoding='latin1') as f:
                 text = f.read()
-            w, u, g = check_lines(rel, text, read_stacks(text), macros)
+            w, u, g = check_lines(rel, text, read_stacks(text), macros,
+                              assert_is_line(p, text, asserts) is True)
             out += w
             uses += u
             governed += g
@@ -500,9 +503,12 @@ def lint_lines(repo, op_root):
 
 
 def line_macros(op_root):
-    """The line macros: the built-in ones plus every macro defined anywhere under op_root whose
-    replacement mentions one, to a fixed point."""
-    defs = {}
+    """(macros, asserts): the line macros other than `assert`, being `__LINE__`, `__FILE__` and
+    every macro defined anywhere under op_root whose replacement mentions one, to a fixed
+    point; and [(path, reaches)] for each project definition of `assert`, `reaches` saying
+    whether its replacement mentions one. `assert` is a built-in line macro only when the
+    project does not define it."""
+    defs, asserts = {}, []
     for d, dirs, files in os.walk(op_root):
         dirs[:] = sorted(x for x in dirs if not x.startswith('.'))
         for name in sorted(files):
@@ -511,8 +517,11 @@ def line_macros(op_root):
             with open(os.path.join(d, name), encoding='latin1') as f:
                 text = blank_comments(f.read())
             for m in DEFINE.finditer(text):
-                defs[m.group(1)] = m.group(2)
-    found = set(BASE_LINE_MACROS)
+                if m.group(1) == 'assert':
+                    asserts.append((os.path.join(d, name), m.group(2)))
+                else:
+                    defs[m.group(1)] = m.group(2)
+    found = {'__LINE__', '__FILE__'}
     grew = True
     while grew:
         grew = False
@@ -520,13 +529,30 @@ def line_macros(op_root):
             if name not in found and any(re.search(r'\b%s\b' % re.escape(f), repl) for f in found):
                 found.add(name)
                 grew = True
-    return found
+    return found, [(p, any(re.search(r'\b%s\b' % re.escape(f), r) for f in found))
+                   for p, r in asserts]
 
 
-def check_lines(rel, text, stacks, macros):
+def assert_is_line(path, text, asserts):
+    """True, False or None (cannot be told) for `assert` in the file at `path`: its own
+    definition if it has one, else the definitions of the defining headers it directly
+    includes, else all of them when they agree. No project definition: the built-in, True."""
+    if not asserts:
+        return True
+    own = {r for p, r in asserts if p == path}
+    if own:
+        return own.pop() if len(own) == 1 else None
+    included = {os.path.basename(i) for i in re.findall(
+        r'^[ \t]*#[ \t]*include[ \t]*[<"]([^>"]+)', text, re.M)}
+    seen = {r for p, r in asserts if os.path.basename(p) in included} or {r for _, r in asserts}
+    return seen.pop() if len(seen) == 1 else None
+
+
+def check_lines(rel, text, stacks, macros, assert_line=True):
     """(warnings, uses, governed) for the claimed functions of one file."""
     code = blank_comments(text)
-    use = re.compile(r'\b(?:%s)\b' % '|'.join(map(re.escape, sorted(macros))))
+    names = sorted(macros) + (['assert'] if assert_line else [])
+    use = re.compile(r'\b(?:%s)\b' % '|'.join(map(re.escape, names)))
     warnings, uses, governed = [], 0, 0
     prev_end = 0
     for s in stacks:
