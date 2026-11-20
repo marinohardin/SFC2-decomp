@@ -80,4 +80,10 @@ int tLogStream::tStreamBuf::overflow( int ch )
 	return xsputn( (const char*)&ch, 1 );
 }
 
+// FUNCTION: STARFLEETOP 0x006fe8a0
+int tLogStream::tStreamBuf::underflow()
+{
+	return 0;
+}
+
 };
