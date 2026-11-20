@@ -104,7 +104,10 @@ sys.path.insert(0, REPO)
 from harness.lib import claims, deleting  # noqa: E402  (the one rule for each claim form)
 GAME = os.path.join(REPO, 'op')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
-MATCHED = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
+# HARNESS_MATCHED_SET is a grind lane's own copy (harness/README.md, "Lanes commit source only"):
+# the loop's whole-tree check reads the lane's scores, not develop's.
+MATCHED = os.environ.get('HARNESS_MATCHED_SET') or os.path.join(REPO, 'analysis', 'results',
+                                                               'matched_set.json')
 MANIFEST = os.path.join(GAME, 'manifest.tsv')
 
 MODULE = 'STARFLEETOP'

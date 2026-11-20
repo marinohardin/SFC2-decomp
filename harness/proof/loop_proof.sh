@@ -2,7 +2,8 @@
 # Proof that one function round-trips through the loop: a real `claude -p` session (Opus, the
 # build tier) claims tDynamicAllocator::LockDownAllocator (0x006fc750) in a source tree where its
 # code is present but unclaimed, the hooks hold, the Stop hook lets it finish,
-# update-matched-set.sh records it, and loop.sh commits it.
+# update-matched-set.sh records it in the lane's matched set (in the state folder), and loop.sh
+# commits the source with a Harness-Score trailer.
 #
 #   harness/proof/loop_proof.sh            # real claude; writes results/loop_proof.txt
 #   harness/proof/loop_proof.sh --standin  # scripted stand-in agent (standin_agent.py) instead
@@ -42,7 +43,6 @@ mkdir -p "$proof/repo/game" "$proof/state" "$here/results"
 # functions (0x006fc750 among them) that the proof needs unclaimed.
 rm -rf "$proof/repo/game"; mkdir -p "$proof/repo/game"
 printf '{"version": 1, "functions": {}}\n' > "$proof/repo/analysis/results/matched_set.json"
-head -1 "$repo/analysis/results/difficult_functions.tsv" > "$proof/repo/analysis/results/difficult_functions.tsv"
 cp -R "$sdk/Scripts" "$sdk/STL" "$proof/repo/op/"
 chmod -R u+w "$proof/repo/game"
 flags=$(grep -m1 '^# ADD CPP /nologo /MT ' "$proof/repo/op/Scripts/ScriptInterface/_ScriptInterface.dsp" \
@@ -90,8 +90,10 @@ echo "\$ git log -1 --stat"
 git log -1 --stat --format='%s%n%n%b' | grep -v '^ op/S[CT]' | head -12
 echo "\$ git diff -U0 HEAD~1 -- game   (changed lines only; the SDK source itself is not shown)"
 git diff -U0 HEAD~1 -- game | grep -E '^(\+\+\+|[+-][^+-])'
-echo "\$ cat analysis/results/matched_set.json"
-cat analysis/results/matched_set.json
+echo "\$ git diff --stat HEAD~1 -- analysis   (a lane commits source only: nothing here)"
+git diff --stat HEAD~1 -- analysis
+echo "\$ cat \$HARNESS_STATE/matched_set.json   (the lane's own matched set, outside the repository)"
+cat "$proof/state/matched_set.json"
 echo "\$ cat \$HARNESS_STATE/attempts.tsv"
 cat "$proof/state/attempts.tsv"
 for f in $(ls "$proof"/state/attempts/*.claude.json); do

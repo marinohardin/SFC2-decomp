@@ -28,10 +28,17 @@ set -eu
 cd "$(dirname "$0")/.."
 
 skip() { echo "skip: $*"; }
+# A grind lane (a grind/ branch, or the loop's own SFCOP_LANE=1) commits source only: its matched
+# set and manifest stay as on develop until the landing step (harness/landing.sh), so the one
+# test that compares the committed manifest with the tree is skipped there. Everything else, the
+# progress and matched-set gates included, runs as on any branch.
+case "$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)" in grind/*) SFCOP_LANE=1 ;; esac
+export SFCOP_LANE="${SFCOP_LANE:-}"
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/sfcop-check.XXXXXX")
 trap 'rm -rf "$tmp"' EXIT INT TERM
 
 echo "== tests"
+[ "$SFCOP_LANE" = 1 ] && echo "lane branch: the manifest-freshness test is skipped (landing step)"
 if [ "${CHECK_SKIP_TESTS:-}" = 1 ]; then
     skip "CHECK_SKIP_TESTS=1: the tests ran in another job"
 else
