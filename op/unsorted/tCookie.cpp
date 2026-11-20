@@ -1,3 +1,4 @@
+#define tgfsys_copies_out_of_line
 #include "Tiger/tgfsys.h"
 
 // FUNCTION: STARFLEETOP 0x00407c17
