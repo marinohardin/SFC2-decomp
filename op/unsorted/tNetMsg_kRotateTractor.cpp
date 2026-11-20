@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kRotateTractor.cpp
-// Functions: 0x004197ef to 0x004197ef, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tNetMsg_kRotateTractor.h"
+
+extern char g_0083d148[];
+
+// HYPOTHESIS: returns the address of a static descriptor of the message class
+// FUNCTION: STARFLEETOP 0x004197ef
+const tNetMsg::tMapItem *tNetMsg_kRotateTractor::mGetMap(void) const
+{
+	return (const tNetMsg::tMapItem *)g_0083d148;
+}

@@ -1,6 +1,26 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tListMember.cpp
-// Functions: 0x004088c6 to 0x004088e4, 5 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tListMember.h"
+
+// FUNCTION: STARFLEETOP 0x004088e4
+// FUNCTION: STARFLEETOP 0x004088c6
+tListMember::~tListMember()
+{
+}
+
+// FUNCTION: STARFLEETOP 0x004088cd
+void tListMember::vfunction2()
+{
+    mPrevious = 0;
+    mNext = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004088d6
+tListMember *tListMember::vfunction3()
+{
+    return mNext;
+}
+
+// FUNCTION: STARFLEETOP 0x004088da
+void tListMember::vfunction6(tListMember *aMember)
+{
+    mPrevious = aMember;
+}

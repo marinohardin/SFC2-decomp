@@ -17,6 +17,7 @@ namespace nException
 	{
 	public:
 		tOutOfBounds( const char* object, int32 min, int32 max, int32 value, const char* file, int32 lineNumber );
+		tOutOfBounds( const tOutOfBounds& other );
 
 		const char* fObject;
 		int32 fMin;

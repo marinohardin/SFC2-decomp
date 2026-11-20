@@ -56,6 +56,7 @@ public:
 	float mLength(void) const;
 	iTruth	mNormalize(void);
 	tPoint3 &operator*=(const float d);
+	tPoint3 &operator/=(const float d);
 };
 
 struct tPoint2
@@ -128,6 +129,7 @@ public:
 	void mRotY(const tAngle angle);
 	void mRotZ(const tAngle angle);
 	void mTranslate(const float x, const float y, const float z);
+	void mMult(tMatrix &a, const tMatrix &b) const;
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);
 	void mTransform(tPoint3 &p) const;

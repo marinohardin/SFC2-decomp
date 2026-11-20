@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kSendVoice.cpp
-// Functions: 0x004197f5 to 0x004197f5, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tNetMsg_kSendVoice.h"
+
+extern char g_0083d150[];
+
+// HYPOTHESIS: returns the address of a static descriptor of the message class
+// FUNCTION: STARFLEETOP 0x004197f5
+const tNetMsg::tMapItem *tNetMsg_kSendVoice::mGetMap(void) const
+{
+	return (const tNetMsg::tMapItem *)g_0083d150;
+}

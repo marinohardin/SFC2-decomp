@@ -13,16 +13,28 @@ struct vfunction33_result
     // HYPOTHESIS: a truth test; tSensorGroupSystem's 0x0043f2e3 sets its ECM and ECCM when it
     // holds for the owner.
     char fn_0041021f();
+    int fn_00410223();
+    void fn_00410227(int value);
+    int fn_00410231();
+    void fn_00410239(int value);
+    void fn_00410243(int team, int value);
+    void fn_004102a0(int value);
 
     char pad00[0x1c];
     int field_1c;
-    char pad20[0x5d - 0x20];
+    char pad20[0x5c - 0x20];
+    // HYPOTHESIS: the flag fn_0041021f returns.
+    char field_5c;
     // HYPOTHESIS: a flag; tShuttleBaySystem's 0x0044ea7e skips its recall step while it is set.
     bool field_5d;
     char pad5e[0x60 - 0x5e];
     // HYPOTHESIS: a fleet ID; 0x0043e0ed passes it to fn_004274f4.
     int field_60;
-    char pad64[0x110 - 0x64];
+    // HYPOTHESIS: a value fn_00410223 returns.
+    int field_64;
+    // HYPOTHESIS: a pointer fn_00410239 stores (AI data).
+    int field_68;
+    char pad6c[0x110 - 0x6c];
     bool field_110;
     char pad111[0x86c - 0x111];
     // HYPOTHESIS: a kind or index read by tShieldSystem to pick a sound event.
@@ -216,7 +228,7 @@ public:
     virtual ~tIndividualShipSystem();
     // vftable slots 1..45, not yet identified
     virtual void vfunction2();
-    virtual void vfunction3();
+    virtual tListMember *vfunction3();
     virtual tListMember *vfunction4();
     virtual tListMember *vfunction5();
     virtual void vfunction6(tListMember *aMember);
@@ -340,7 +352,7 @@ public:
     // HYPOTHESIS: slot 83; stores its argument in the byte at +0x44 read by slot 82.
     virtual void vfunction84(bool param_1);
 
-    char pad04[0x0c - 0x04];
+    // +0x04 and +0x08 are tListMember's links.
     int field_0c;
     int field_10;
     int field_14;

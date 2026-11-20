@@ -1,6 +1,19 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSFCTexMgr.cpp
-// Functions: 0x0040ee2a to 0x0040eed6, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tSFCTexMgr.h"
+
+// FUNCTION: STARFLEETOP 0x0040ee47
+// FUNCTION: STARFLEETOP 0x0040ee73
+tSFCTexMgrEx::~tSFCTexMgrEx()
+{
+    fn_006a0490_Mgr* mgr = g_00c7c118;
+    if (mgr)
+    {
+        for (int i = 0; i < 0x1000; i++)
+        {
+            if (m_entries[i].m08)
+            {
+                mgr->fn_006a08e0(i + 1);
+                m_entries[i].m08 = 0;
+            }
+        }
+    }
+}

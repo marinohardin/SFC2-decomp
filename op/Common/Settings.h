@@ -15,6 +15,7 @@ class tGFSection;
 class tSettings
 {
 public:
+	tSettings( std::string name, bool flag = true );
 	virtual ~tSettings();
 	void GetValue( const std::string& name, long* value );
 	void GetList( const std::string& name, std::vector<std::string>* list, std::vector<std::string>* defaultList );

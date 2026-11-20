@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kCaptureShip.cpp
-// Functions: 0x004197e9 to 0x004197e9, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tNetMsg_kCaptureShip.h"
+
+extern char g_0083d140[];
+
+// HYPOTHESIS: returns the address of a static descriptor of the message class
+// FUNCTION: STARFLEETOP 0x004197e9
+const tNetMsg::tMapItem *tNetMsg_kCaptureShip::mGetMap(void) const
+{
+	return (const tNetMsg::tMapItem *)g_0083d140;
+}

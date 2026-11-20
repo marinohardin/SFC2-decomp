@@ -400,3 +400,22 @@ address	name	best_score	attempts	last_model	listed	note
 0x006fe8b0	nLog::tLogStream::tStreamBuf::Report	28.20	2	opus	2026-11-20T00:09:38Z	attempt 2 (opus) did not raise the best; best 28.20%
 0x006fea30	nLog::tLogStream::tStreamBuf::LockAccess	0.00	2	opus	2026-11-20T00:14:36Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x006febb0	nLog::tLogStream::tStreamBuf::RunCommand	0.00	2	opus	2026-11-20T00:18:34Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x00401d13	tFighterSpecMgr::~tFighterSpecMgr	8.27	2	opus	2026-11-19T19:55:07Z	attempt 2 (opus) did not raise the best; best 8.27%
+0x00407c3a	tPath::tPath	99.61	2	opus	2026-11-19T19:58:46Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.61%
+0x00407c5b	tCookie::tCookie	99.50	2	opus	2026-11-19T20:01:22Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.50%
+0x00407d14	tDynamicMemoryFreeList::scalar_deleting_destructor	85.83	2	opus	2026-11-19T20:06:58Z	best not above 90% after 2 attempts; best 85.83%
+0x00407d52	tShipSpecManager::~tShipSpecManager	92.78	2	opus	2026-11-19T20:10:48Z	attempt 2 (opus) did not raise the best; waits for Fable; best 92.78%
+0x004088e4	tListMember::scalar_deleting_destructor	8.23	2	opus	2026-11-19T20:15:59Z	best not above 90% after 2 attempts; best 8.23%
+0x0040891d	tShipSpecs::tShipSpecs	99.93	2	opus	2026-11-19T20:21:20Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.93%
+0x0040a5d8	tSystemCreationInfo::scalar_deleting_destructor	7.78	2	opus	2026-11-19T20:25:25Z	attempt 2 (opus) did not raise the best; best 7.78%
+0x0040b4c6	tGLPixFmt::scalar_deleting_destructor	5.00	2	opus	2026-11-19T21:29:50Z	attempt 2 (opus) did not raise the best; best 5.00%
+0x0040bdfa	tSfcMouseMgr::scalar_deleting_destructor	8.23	2	opus	2026-11-19T21:33:28Z	attempt 2 (opus) did not raise the best; best 8.23%
+0x0040be33	tSfcMouseMgr::tSfcMouseMgr	0.00	2	opus	2026-11-19T21:47:31Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x004101ce	tEntity::vfunction3	100.00	2	opus	2026-11-19T23:09:17Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x004109c9	tNetMsg_kDamage::vfunction1	100.00	2	opus	2026-11-19T23:33:13Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x0041ef62	tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint	94.62	2	opus	2026-11-20T00:03:26Z	attempt 2 (opus) did not raise the best; waits for Fable; best 94.62%
+0x00424b90	tStrMgrCore::tStrMgrCore	99.95	2	opus	2026-11-20T00:06:24Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.95%
+0x00424c23	tStrMgrCore::~tStrMgrCore	100.00	2	opus	2026-11-20T00:09:22Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
+0x004281ac	tOfficer::tOfficer	5.09	2	opus	2026-11-20T00:12:54Z	attempt 2 (opus) did not raise the best; best 5.09%
+0x00428227	tOfficer::~tOfficer	15.56	2	opus	2026-11-20T00:15:41Z	attempt 2 (opus) did not raise the best; best 15.56%
+0x004282c7	tTransporterHoldItem::tTransporterHoldItem	70.12	2	opus	2026-11-20T00:19:15Z	attempt 2 (opus) did not raise the best; best 70.12%

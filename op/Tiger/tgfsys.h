@@ -37,6 +37,8 @@ public:
 	// 0x0061d8b0) calls it on a map pair's key with the cookie searched for, and takes a true
 	// result as a match.
 	virtual iTruth	operator==( const tCookie &other ) const;
+	// HYPOTHESIS: the fourth virtual (vtable +0x0c), an ordering of cookies by value.
+	virtual iTruth	operator<( const tCookie &other ) const;
 	// HYPOTHESIS: an inline comparison, as tVolume::mGetSortName's search takes the cookies'
 	// difference as a truth value before testing it.
 	iTruth	operator!=( const tCookie &other ) const	{ return fCookie != other.fCookie; }
@@ -57,6 +59,9 @@ public:
 	// copies the session cookie inline.
 	tSession &operator=( const tSession &other ) { fCookie = other.fCookie; return *this; }
 
+	// HYPOTHESIS: the session overrides the first virtual with an out-of-line copy (STARFLEETOP 0x00407c81).
+	virtual iTruth	mValid( void );
+
 	void	mAddCookie( tVolume &volume );
 	void	mAddCookie( tDir &dir );
 	void	mAddCookie( tPath &path );
@@ -72,11 +77,11 @@ class fn_SessionCookie: public tCookie
 {
 public:
 	fn_SessionCookie() { mInvalidate(); }
+	fn_SessionCookie( const fn_SessionCookie &other );
 	// HYPOTHESIS: the copy takes the cookie and the session, and the derived copies assign the
 	// session again: the copy tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) returns stores the
 	// session cookie both before and after the tVolume vtable pointer. Argument copies elsewhere
 	// show the second store only.
-	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
 
 	tSession	fSession;	// +0x08
 };
@@ -122,8 +127,8 @@ public:
 	tPath() {}
 	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
 	// copied session cookie both before and after the tPath vtable pointer.
-	tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
-	virtual ~tPath() {}
+	tPath( const tPath &other );
+	virtual ~tPath();
 
 	virtual iTruth	mValid( void );
 

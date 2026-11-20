@@ -82,6 +82,69 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x00401862": {
+   "name": "tFighterSpec::tFighterSpec",
+   "symbol": "??0tFighterSpec@@QAE@XZ",
+   "unit": "unsorted/tFighterSpec.cpp",
+   "size": 253,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00401974": {
+   "name": "tFighterSpec::scalar_deleting_destructor",
+   "symbol": "??_GtFighterSpec@@UAEPAXI@Z",
+   "unit": "unsorted/tFighterSpec.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00401990": {
+   "name": "tFighterSpec::~tFighterSpec",
+   "symbol": "??1tFighterSpec@@UAE@XZ",
+   "unit": "unsorted/tFighterSpec.cpp",
+   "size": 103,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004019f7": {
+   "name": "tFighterSpec::tFighterSpec",
+   "symbol": "??0tFighterSpec@@QAE@ABV0@@Z",
+   "unit": "unsorted/tFighterSpec.cpp",
+   "size": 310,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00401c9c": {
+   "name": "tFighterSpecMgr::tFighterSpecMgr",
+   "symbol": "??0tFighterSpecMgr@@QAE@XZ",
+   "unit": "unsorted/tFighterSpecMgr.cpp",
+   "size": 91,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00401cf7": {
+   "name": "tFighterSpecMgr::scalar_deleting_destructor",
+   "symbol": "??_GtFighterSpecMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tFighterSpecMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00401d13": {
+   "name": "tFighterSpecMgr::~tFighterSpecMgr",
+   "symbol": "??1tFighterSpecMgr@@UAE@XZ",
+   "unit": "unsorted/tFighterSpecMgr.cpp",
+   "size": 78,
+   "score": 8.265,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x004021b8": {
    "name": "FUN_004021b8",
    "symbol": "?fn_004021b8@fn_004021b8_Stream@@QAEXXZ",
@@ -1072,6 +1135,213 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x00407c17": {
+   "name": "tCookie::vfunction3",
+   "symbol": "??8tCookie@@UBEEABV0@@Z",
+   "unit": "unsorted/tCookie.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407c29": {
+   "name": "tCookie::vfunction4",
+   "symbol": "??MtCookie@@UBEEABV0@@Z",
+   "unit": "unsorted/tCookie.cpp",
+   "size": 17,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407c3a": {
+   "name": "tPath::tPath",
+   "symbol": "??0tPath@@QAE@ABV0@@Z",
+   "unit": "unsorted/tPath.cpp",
+   "size": 33,
+   "score": 99.615,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00407c5b": {
+   "name": "tCookie::tCookie",
+   "symbol": "??0fn_SessionCookie@@QAE@ABV0@@Z",
+   "unit": "unsorted/tCookie.cpp",
+   "size": 38,
+   "score": 99.5,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00407c81": {
+   "name": "tSession::vfunction1",
+   "symbol": "?mValid@tSession@@UAEEXZ",
+   "unit": "unsorted/tPath.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407c8b": {
+   "name": "tPath::~tPath",
+   "symbol": "??1tPath@@UAE@XZ",
+   "unit": "unsorted/tPath.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407cf1": {
+   "name": "tDynamicMemoryFreeList::~tDynamicMemoryFreeList",
+   "symbol": "??1tDynamicMemoryFreeList@@UAE@XZ",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407cfc": {
+   "name": "tDynamicMemoryFreeList::vfunction2",
+   "symbol": "?vfunction2@tDynamicMemoryFreeList@@UAEXXZ",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407d08": {
+   "name": "tDynamicMemoryFreeList::vfunction3",
+   "symbol": "?vfunction3@tDynamicMemoryFreeList@@UAEPAXXZ",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407d0c": {
+   "name": "tDynamicMemoryFreeList::vfunction16",
+   "symbol": "?vfunction16@tDynamicMemoryFreeList@@UAE_NXZ",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407d14": {
+   "name": "tDynamicMemoryFreeList::scalar_deleting_destructor",
+   "symbol": "??_GtDynamicMemoryFreeList@@UAEPAXI@Z",
+   "unit": "unsorted/tDynamicMemoryFreeList.cpp",
+   "size": 34,
+   "score": 85.833,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00407d36": {
+   "name": "tShipSpecManager::scalar_deleting_destructor",
+   "symbol": "??_GtShipSpecManager@@UAEPAXI@Z",
+   "unit": "unsorted/tShipSpecManager.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00407d52": {
+   "name": "tShipSpecManager::~tShipSpecManager",
+   "symbol": "??1tShipSpecManager@@UAE@XZ",
+   "unit": "unsorted/tShipSpecManager.cpp",
+   "size": 70,
+   "score": 92.783,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x004088c6": {
+   "name": "tListMember::~tListMember",
+   "symbol": "??1tListMember@@UAE@XZ",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004088cd": {
+   "name": "tListMember::vfunction2",
+   "symbol": "?vfunction2@tListMember@@UAEXXZ",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004088d6": {
+   "name": "tDynamicMemoryFreeList::vfunction4",
+   "symbol": "?vfunction3@tListMember@@UAEPAV1@XZ",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004088da": {
+   "name": "tListMember::vfunction6",
+   "symbol": "?vfunction6@tListMember@@UAEXPAV1@@Z",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004088e4": {
+   "name": "tListMember::scalar_deleting_destructor",
+   "symbol": "??_GtListMember@@UAEPAXI@Z",
+   "unit": "unsorted/tListMember.cpp",
+   "size": 29,
+   "score": 8.235,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00408901": {
+   "name": "tShipSpecs::scalar_deleting_destructor",
+   "symbol": "??_GtShipSpecs@@UAEPAXI@Z",
+   "unit": "unsorted/tShipSpecs.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040891d": {
+   "name": "tShipSpecs::tShipSpecs",
+   "symbol": "??0tShipSpecs@@QAE@XZ",
+   "unit": "unsorted/tShipSpecs.cpp",
+   "size": 683,
+   "score": 99.931,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0040a5b9": {
+   "name": "tSystemCreationInfo::tSystemCreationInfo",
+   "symbol": "??0tSystemCreationInfo@@QAE@XZ",
+   "unit": "unsorted/tSystemCreationInfo.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040a5d1": {
+   "name": "tSystemCreationInfo::~tSystemCreationInfo",
+   "symbol": "??1tSystemCreationInfo@@UAE@XZ",
+   "unit": "unsorted/tSystemCreationInfo.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040a5d8": {
+   "name": "tSystemCreationInfo::scalar_deleting_destructor",
+   "symbol": "??_GtSystemCreationInfo@@UAEPAXI@Z",
+   "unit": "unsorted/tSystemCreationInfo.cpp",
+   "size": 29,
+   "score": 7.778,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040aad2": {
    "name": "tSfcApp3d::tSfcApp3d",
    "symbol": "??0tSfcApp3d@@QAE@XZ",
@@ -1234,6 +1504,24 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040b4bf": {
+   "name": "tGLPixFmt::~tGLPixFmt",
+   "symbol": "??1tGLPixFmt@@UAE@XZ",
+   "unit": "unsorted/tGLPixFmt.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040b4c6": {
+   "name": "tGLPixFmt::scalar_deleting_destructor",
+   "symbol": "??_GtGLPixFmt@@UAEPAXI@Z",
+   "unit": "unsorted/tGLPixFmt.cpp",
+   "size": 29,
+   "score": 5.0,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0040bd69": {
    "name": "tMouseMgr_Base::~tMouseMgr_Base",
    "symbol": "??1tMouseMgr_Base@@UAE@XZ",
@@ -1278,6 +1566,33 @@
    "score": 99.722,
    "exact": false,
    "recorded": "2026-11-13"
+  },
+  "0x0040bdf3": {
+   "name": "tSfcMouseMgr::~tSfcMouseMgr",
+   "symbol": "??1tSfcMouseMgr@@UAE@XZ",
+   "unit": "unsorted/tSfcMouseMgr.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040bdfa": {
+   "name": "tSfcMouseMgr::scalar_deleting_destructor",
+   "symbol": "??_GtSfcMouseMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tSfcMouseMgr.cpp",
+   "size": 29,
+   "score": 8.235,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0040be17": {
+   "name": "tSfcMouseMgr_Ex::scalar_deleting_destructor",
+   "symbol": "??_GtSfcMouseMgr_Ex@@UAEPAXI@Z",
+   "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0040be9b": {
    "name": "tSfcMouseMgr_Ex::vfunction2",
@@ -1540,6 +1855,96 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
+  "0x0040c7e7": {
+   "name": "tTexBmpZip::vfunction1",
+   "symbol": "?vfunction1@tTexBmpZip@@UAEPAVtBasicFile@@XZ",
+   "unit": "unsorted/tTexBmpZip.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c8d2": {
+   "name": "tCommonSettings::tCommonSettings",
+   "symbol": "??0tCommonSettings@@QAE@XZ",
+   "unit": "unsorted/tCommonSettings.cpp",
+   "size": 50,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c904": {
+   "name": "tCommonSettings::scalar_deleting_destructor",
+   "symbol": "??_GtCommonSettings@@UAEPAXI@Z",
+   "unit": "unsorted/tCommonSettings.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c920": {
+   "name": "tCommonSettings::~tCommonSettings",
+   "symbol": "??1tCommonSettings@@UAE@XZ",
+   "unit": "unsorted/tCommonSettings.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c963": {
+   "name": "tElectricSpark::tElectricSpark",
+   "symbol": "??0tElectricSpark@@QAE@XZ",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 24,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c97b": {
+   "name": "tElectricSpark::scalar_deleting_destructor",
+   "symbol": "??_GtElectricSpark@@UAEPAXI@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c997": {
+   "name": "tElectricSpark::~tElectricSpark",
+   "symbol": "??1tElectricSpark@@UAE@XZ",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 47,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040c9c6": {
+   "name": "FUN_0040c9c6",
+   "symbol": "?fn_0040c9c6@@YA_NI@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040ca18": {
+   "name": "tElectricSpark::vfunction2",
+   "symbol": "?vfunction2@tElectricSpark@@UAEXPAVfn_0040ca18_viewer@@PBVtMatrix@@ABV3@@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 497,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040cc0a": {
+   "name": "tElectricSpark::vfunction3",
+   "symbol": "?vfunction3@tElectricSpark@@UAEXUtPoint3@@0@Z",
+   "unit": "unsorted/tElectricSpark.cpp",
+   "size": 156,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040ceae": {
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor",
    "symbol": "_$E1",
@@ -1656,6 +2061,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x0040d60d": {
+   "name": "tSFCStream::tSFCStream",
+   "symbol": "??0tSFCStream@@QAE@PAEJ@Z",
+   "unit": "unsorted/tSFCStream.cpp",
+   "size": 50,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0040d63f": {
    "name": "FUN_0040d63f",
@@ -2575,6 +2989,78 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0040ee2a": {
+   "name": "tSFCTexMgr::scalar_deleting_destructor",
+   "symbol": "??_GtSFCTexMgr@@UAEPAXI@Z",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 29,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040ee47": {
+   "name": "tSFCTexMgrEx::scalar_deleting_destructor",
+   "symbol": "??_GtSFCTexMgrEx@@UAEPAXI@Z",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040ee73": {
+   "name": "tSFCTexMgrEx::~tSFCTexMgrEx",
+   "symbol": "??1tSFCTexMgrEx@@UAE@XZ",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 99,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040eed6": {
+   "name": "tSFCTexMgr::~tSFCTexMgr",
+   "symbol": "??1tSFCTexMgr@@UAE@XZ",
+   "unit": "unsorted/tSFCTexMgr.cpp",
+   "size": 7,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040eedd": {
+   "name": "tSFCTexMgrEx::vfunction3",
+   "symbol": "?vfunction3@tSFCTexMgrEx@@UAEHPADDDH@Z",
+   "unit": "unsorted/tSFCTexMgrEx.cpp",
+   "size": 238,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040efcb": {
+   "name": "tSFCTexMgrEx::vfunction2",
+   "symbol": "?vfunction2@tSFCTexMgrEx@@UAEHH@Z",
+   "unit": "unsorted/tSFCTexMgrEx.cpp",
+   "size": 74,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040f015": {
+   "name": "tSFCTexMgrEx::vfunction4",
+   "symbol": "?vfunction4@tSFCTexMgrEx@@UAEXH@Z",
+   "unit": "unsorted/tSFCTexMgrEx.cpp",
+   "size": 164,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040f0b9": {
+   "name": "tSFCTexMgrEx::vfunction5",
+   "symbol": "?vfunction5@tSFCTexMgrEx@@UAEDH@Z",
+   "unit": "unsorted/tSFCTexMgrEx.cpp",
+   "size": 30,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0040f86c": {
    "name": "FUN_0040f86c",
    "symbol": "?FUN_0040f86c@@YG_NHHHHHHH@Z",
@@ -2655,6 +3141,33 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x0040fea0": {
+   "name": "tETrait_Creator::tETrait_Creator",
+   "symbol": "??0tETrait_Creator@@QAE@XZ",
+   "unit": "unsorted/tETrait_Creator.cpp",
+   "size": 23,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040feb7": {
+   "name": "tETrait_Creator::scalar_deleting_destructor",
+   "symbol": "??_GtETrait_Creator@@UAEPAXI@Z",
+   "unit": "unsorted/tETrait_Creator.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0040fed3": {
+   "name": "tETrait_Creator::~tETrait_Creator",
+   "symbol": "??1tETrait_Creator@@UAE@XZ",
+   "unit": "unsorted/tETrait_Creator.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0040fefb": {
    "name": "tEntity::tEntity",
@@ -2764,6 +3277,96 @@
    "exact": true,
    "recorded": "2026-11-08"
   },
+  "0x004101c8": {
+   "name": "tNetMsg_kNotifyScriptEvent::vfunction1",
+   "symbol": "?vfunction1@tNetMsg_kNotifyScriptEvent@@UAEPAXXZ",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004101e4": {
+   "name": "tEntity::vfunction16",
+   "symbol": "?vfunction16@tEntity@@UAEXXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 40,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041020c": {
+   "name": "tEntity::vfunction17",
+   "symbol": "?vfunction17@tEntity@@UAEXXZ",
+   "unit": "unsorted/tEntity.cpp",
+   "size": 19,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041021f": {
+   "name": "FUN_0041021f",
+   "symbol": "?fn_0041021f@vfunction33_result@@QAEDXZ",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00410223": {
+   "name": "FUN_00410223",
+   "symbol": "?fn_00410223@vfunction33_result@@QAEHXZ",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00410227": {
+   "name": "FUN_00410227",
+   "symbol": "?fn_00410227@vfunction33_result@@QAEXH@Z",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00410231": {
+   "name": "FUN_00410231",
+   "symbol": "?fn_00410231@vfunction33_result@@QAEHXZ",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 8,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00410239": {
+   "name": "FUN_00410239",
+   "symbol": "?fn_00410239@vfunction33_result@@QAEXH@Z",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00410243": {
+   "name": "FUN_00410243",
+   "symbol": "?fn_00410243@vfunction33_result@@QAEXHH@Z",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 93,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004102a0": {
+   "name": "tNetMsg_kNotifyScriptEvent::~tNetMsg_kNotifyScriptEvent",
+   "symbol": "?fn_004102a0@vfunction33_result@@QAEXH@Z",
+   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
+   "size": 57,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004105dd": {
    "name": "tPhysicalEntity::vfunction28",
    "symbol": "?vfunction28@tPhysicalEntity@@UAEXH@Z",
@@ -2871,6 +3474,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-08"
+  },
+  "0x00410a46": {
+   "name": "tNetMsg_kKillEntity::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kKillEntity.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00413153": {
    "name": "tPhysicalEntity::vfunction11",
@@ -3159,6 +3771,204 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-09"
+  },
+  "0x00414b76": {
+   "name": "tNetMsg_kHoldPosition::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kHoldPosition@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kHoldPosition.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00414b7c": {
+   "name": "tNetMsg_kMoveInDirection::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kMoveInDirection@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kMoveInDirection.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00414b82": {
+   "name": "tNetMsg_kMoveTo::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kMoveTo@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kMoveTo.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00414b88": {
+   "name": "tNetMsg_kOrbit::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kOrbit@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kOrbit.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041978f": {
+   "name": "tNetMsg_kAdjustSpeed::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kAdjustSpeed@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kAdjustSpeed.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00419795": {
+   "name": "tNetMsg_kShipTargetable::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kShipTargetable@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kShipTargetable.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041979b": {
+   "name": "tNetMsg_kShipCanTarget::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kShipCanTarget@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kShipCanTarget.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197a1": {
+   "name": "tNetMsg_kBreakDown::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kBreakDown@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kBreakDown.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197a7": {
+   "name": "tNetMsg_kWarpOut::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kWarpOut@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kWarpOut.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197ad": {
+   "name": "tNetMsg_kCorrectPos::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kCorrectPos@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kCorrectPos.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197b9": {
+   "name": "tNetMsg_kCreateESG::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kCreateESG@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kCreateESG.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197d1": {
+   "name": "tNetMsg_kLayMine::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kLayMine@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kLayMine.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197d7": {
+   "name": "tNetMsg_kSelectTarget::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kSelectTarget@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kSelectTarget.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197dd": {
+   "name": "tNetMsg_kTransportBomb::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kTransportBomb@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kTransportBomb.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197e9": {
+   "name": "tNetMsg_kCaptureShip::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kCaptureShip@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kCaptureShip.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197ef": {
+   "name": "tNetMsg_kRotateTractor::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kRotateTractor@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kRotateTractor.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197f5": {
+   "name": "tNetMsg_kSendVoice::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kSendVoice@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kSendVoice.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004197fb": {
+   "name": "tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals",
+   "symbol": "??1tNetMsg_kUpdateInternals@@UAE@XZ",
+   "unit": "unsorted/tNetMsg_kUpdateInternals.cpp",
+   "size": 14,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00419809": {
+   "name": "tNetMsg_kUpdateInternals::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kUpdateInternals@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kUpdateInternals.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041980f": {
+   "name": "tNetMsg_kUpdateCloakStatus::vfunction1",
+   "symbol": "?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ",
+   "unit": "unsorted/tNetMsg_kUpdateCloakStatus.cpp",
+   "size": 6,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041eeaf": {
+   "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint",
+   "symbol": "?fn_0041eeaf@tEntity_Seeker@@QAEXXZ",
+   "unit": "unsorted/tNetMsg_kCreateSeekerAtPoint.cpp",
+   "size": 179,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0041ef62": {
+   "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint",
+   "symbol": "?fn_0041ef62@tEntity_Seeker@@QAEXXZ",
+   "unit": "unsorted/tNetMsg_kCreateSeekerAtPoint.cpp",
+   "size": 180,
+   "score": 94.623,
+   "exact": false,
+   "recorded": "2026-11-19"
   },
   "0x0042192f": {
    "name": "tEntityControlShip::tEntityControlShip",
@@ -3655,6 +4465,24 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x00424b90": {
+   "name": "tStrMgrCore::tStrMgrCore",
+   "symbol": "??0tStrMgrCore@@QAE@E@Z",
+   "unit": "unsorted/tStrMgrCore.cpp",
+   "size": 119,
+   "score": 99.949,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00424c07": {
+   "name": "tStrMgrCore::scalar_deleting_destructor",
+   "symbol": "??_GtStrMgrCore@@UAEPAXI@Z",
+   "unit": "unsorted/tStrMgrCore.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00426ca8": {
    "name": "FUN_00426ca8",
    "symbol": "?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z",
@@ -3663,6 +4491,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-16"
+  },
+  "0x00427366": {
+   "name": "nDataStore::tStreamable::scalar_deleting_destructor",
+   "symbol": "??_GtStreamable@nDataStore@@UAEPAXI@Z",
+   "unit": "unsorted/nDataStore__tStreamable.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042739e": {
    "name": "nStoredProcedureArguments::tTransactionUpdateStoresRequest::tTransactionUpdateStoresRequest",
@@ -3924,6 +4761,60 @@
    "score": 56.514,
    "exact": false,
    "recorded": "2026-11-16"
+  },
+  "0x004281ac": {
+   "name": "tOfficer::tOfficer",
+   "symbol": "??0tOfficer@@QAE@ABV0@@Z",
+   "unit": "unsorted/tOfficer.cpp",
+   "size": 123,
+   "score": 5.095,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00428227": {
+   "name": "tOfficer::~tOfficer",
+   "symbol": "??1tOfficer@@UAE@XZ",
+   "unit": "unsorted/tOfficer.cpp",
+   "size": 22,
+   "score": 15.556,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0042823d": {
+   "name": "tOfficer::scalar_deleting_destructor",
+   "symbol": "??_GtOfficer@@UAEPAXI@Z",
+   "unit": "unsorted/tOfficer.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x004282c7": {
+   "name": "tTransporterHoldItem::tTransporterHoldItem",
+   "symbol": "?fn_004282c7@@YAXPAUtTransporterHoldItem@@ABU1@@Z",
+   "unit": "unsorted/tTransporterHoldItem.cpp",
+   "size": 49,
+   "score": 70.118,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x004282f8": {
+   "name": "tTransporterHoldItem::vfunction3",
+   "symbol": "?fn_004282f8@tTransporterHoldItem@@QAEXPAVfn_0050d6a0_Stream@@@Z",
+   "unit": "unsorted/tTransporterHoldItem.cpp",
+   "size": 27,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0042838f": {
+   "name": "nException::tOutOfBounds::tOutOfBounds",
+   "symbol": "??0tOutOfBounds@nException@@QAE@ABV01@@Z",
+   "unit": "unsorted/nException__tOutOfBounds.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
@@ -37288,645 +38179,6 @@
    "exact": true,
    "recorded": "2026-11-09"
   },
-  "0x006f55c0": {
-   "name": "tOSVersion::_OS_InterlockedCompareExchange",
-   "symbol": "?_OS_InterlockedCompareExchange@tOSVersion@@CAJPAJJJ@Z",
-   "unit": "Common/OSVersion.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5690": {
-   "name": "tThreadState::GetCurThreadState",
-   "symbol": "?GetCurThreadState@tThreadState@@SAPAV1@XZ",
-   "unit": "Common/Thread/ThreadState.cpp",
-   "size": 112,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5700": {
-   "name": "tThreadState::SetCurThreadState",
-   "symbol": "?SetCurThreadState@tThreadState@@SAXPAV1@@Z",
-   "unit": "Common/Thread/ThreadState.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5860": {
-   "name": "tHeartbeatTimer::tHeartbeatTimerData::Instance",
-   "symbol": "?Instance@tHeartbeatTimerData@tHeartbeatTimer@@SAPAV12@XZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 240,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5950": {
-   "name": "tHeartbeatTimer::tHeartbeatTimerData::tHeartbeatTimerData",
-   "symbol": "??0tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 192,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5a10": {
-   "name": "tHeartbeatTimer::tHeartbeatTimerData::~tHeartbeatTimerData",
-   "symbol": "??1tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 240,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5b00": {
-   "name": "tHeartbeatTimer::tHeartbeatTimer",
-   "symbol": "??0tHeartbeatTimer@@QAE@XZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 336,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5c50": {
-   "name": "tHeartbeatTimer::`scalar_deleting_destructor'",
-   "symbol": "??_GtHeartbeatTimer@@UAEPAXI@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5c70": {
-   "name": "tHeartbeatTimer::~tHeartbeatTimer",
-   "symbol": "??1tHeartbeatTimer@@UAE@XZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 304,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5da0": {
-   "name": "tHeartbeatTimer::StartTimer",
-   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKPAVtTimerHandler@@@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f5ee0": {
-   "name": "tHeartbeatTimer::StartTimer",
-   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f6020": {
-   "name": "tHeartbeatTimer::StartTimer",
-   "symbol": "?StartTimer@tHeartbeatTimer@@UAEXKKPAV?$tCallback@K@@K@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f6160": {
-   "name": "tHeartbeatTimer::ChangeTiming",
-   "symbol": "?ChangeTiming@tHeartbeatTimer@@UAEXKK@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 352,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f62c0": {
-   "name": "tHeartbeatTimer::StopTimer",
-   "symbol": "?StopTimer@tHeartbeatTimer@@UAEXXZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f6580": {
-   "name": "tHeartbeatTimer::OnAutoRunHB",
-   "symbol": "?OnAutoRunHB@tHeartbeatTimer@@SAXJ@Z",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 80,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f65d0": {
-   "name": "tHeartbeatTimer::Heartbeat",
-   "symbol": "?Heartbeat@tHeartbeatTimer@@SAXXZ",
-   "unit": "Common/Timer/HeartbeatTimer.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f6b60": {
-   "name": "tSettings::`scalar_deleting_destructor'",
-   "symbol": "??_GtSettings@@UAEPAXI@Z",
-   "unit": "Common/Settings.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f6b80": {
-   "name": "tSettings::~tSettings",
-   "symbol": "??1tSettings@@UAE@XZ",
-   "unit": "Common/Settings.cpp",
-   "size": 224,
-   "score": 53.025,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006f87d0": {
-   "name": "tDateAndTime::tDateAndTime",
-   "symbol": "??0tDateAndTime@@QAE@XZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8800": {
-   "name": "tDateAndTime::tDateAndTime",
-   "symbol": "??0tDateAndTime@@QAE@J@Z",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8820": {
-   "name": "tDateAndTime::operator=",
-   "symbol": "??4tDateAndTime@@QAEABV0@J@Z",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8830": {
-   "name": "tDateAndTime::GetTickCount",
-   "symbol": "?GetTickCount@tDateAndTime@@SA?AV1@XZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8860": {
-   "name": "tDateAndTime::GetLocalTm",
-   "symbol": "?GetLocalTm@tDateAndTime@@QBEPAUtm@@PAU2@@Z",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 80,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f88b0": {
-   "name": "tDateAndTime::SetToCurrentTime",
-   "symbol": "?SetToCurrentTime@tDateAndTime@@QAEXXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f88d0": {
-   "name": "tDateAndTime::GetYear",
-   "symbol": "?GetYear@tDateAndTime@@QBEJXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f88e0": {
-   "name": "tDateAndTime::GetMonth",
-   "symbol": "?GetMonth@tDateAndTime@@QBEJXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f88f0": {
-   "name": "tDateAndTime::GetDay",
-   "symbol": "?GetDay@tDateAndTime@@QBEJXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8900": {
-   "name": "tDateAndTime::GetHour",
-   "symbol": "?GetHour@tDateAndTime@@QBEJXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8910": {
-   "name": "tDateAndTime::GetMinute",
-   "symbol": "?GetMinute@tDateAndTime@@QBEJXZ",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8920": {
-   "name": "tDateAndTime::operator<",
-   "symbol": "??MtDateAndTime@@QBE_NABV0@@Z",
-   "unit": "Common/DateAndTime.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8cb0": {
-   "name": "nDataStore::tStreamable::tCRCFailed::scalar_deleting_destructor",
-   "symbol": "??_GtCRCFailed@tStreamable@nDataStore@@UAEPAXI@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8d50": {
-   "name": "nDataStore::tStreamable::tCRCFailed::ReportException",
-   "symbol": "?ReportException@tCRCFailed@tStreamable@nDataStore@@UAEXPBD@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8d70": {
-   "name": "FUN_006f8d70",
-   "symbol": "_$E17",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8d90": {
-   "name": "FUN_006f8d90",
-   "symbol": "_$E20",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8e90": {
-   "name": "nDataStore::tStreamable::tObjectIDInfo::tObjectIDInfo",
-   "symbol": "??0tObjectIDInfo@tStreamable@nDataStore@@QAE@XZ",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8eb0": {
-   "name": "nDataStore::tStreamable::tStreamable",
-   "symbol": "??0tStreamable@nDataStore@@QAE@E@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8ed0": {
-   "name": "nDataStore::tStreamable::~tStreamable",
-   "symbol": "??1tStreamable@nDataStore@@UAE@XZ",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f8ee0": {
-   "name": "nDataStore::tStreamable::GetObjectID",
-   "symbol": "?GetObjectID@tStreamable@nDataStore@@QBEKXZ",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 592,
-   "score": 95.483,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006f9130": {
-   "name": "nDataStore::tStreamable::GetVersion",
-   "symbol": "?GetVersion@tStreamable@nDataStore@@QBEEXZ",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006f9140": {
-   "name": "nDataStore::operator>>",
-   "symbol": "??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 384,
-   "score": 99.959,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006f92c0": {
-   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed",
-   "symbol": "??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 352,
-   "score": 61.587,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006f9420": {
-   "name": "nDataStore::operator<<",
-   "symbol": "??6nDataStore@@YAAAVtOutput@0@AAV10@ABVtStreamable@0@@Z",
-   "unit": "Common/DataStore/Streamable.cpp",
-   "size": 544,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa440": {
-   "name": "nDatabase::tID::IsValid",
-   "symbol": "?IsValid@tID@nDatabase@@QBE_NXZ",
-   "unit": "Common/Database/DatabaseID.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa450": {
-   "name": "tgPrefsPart::mActivate",
-   "symbol": "?mActivate@tgPrefsPart@@UAEXXZ",
-   "unit": "Common/Database/DatabaseID.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa460": {
-   "name": "nDatabase::tID::operator==",
-   "symbol": "??8tID@nDatabase@@QBE_NABV01@@Z",
-   "unit": "Common/Database/DatabaseID.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa470": {
-   "name": "nDatabase::tID::operator!=",
-   "symbol": "??9tID@nDatabase@@QBE_NABV01@@Z",
-   "unit": "Common/Database/DatabaseID.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa480": {
-   "name": "nDatabase::tID::operator<",
-   "symbol": "??MtID@nDatabase@@QBE_NABV01@@Z",
-   "unit": "Common/Database/DatabaseID.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa540": {
-   "name": "nDatabase::tDatabaseObject::tDatabaseObject",
-   "symbol": "??0tDatabaseObject@nDatabase@@QAE@E@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 368,
-   "score": 78.022,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa6b0": {
-   "name": "nDatabase::tDatabaseObject::`scalar_deleting_destructor'",
-   "symbol": "??_GtDatabaseObject@nDatabase@@UAEPAXI@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa6d0": {
-   "name": "nDatabase::tDatabaseObject::tDatabaseObject",
-   "symbol": "??0tDatabaseObject@nDatabase@@QAE@ABV01@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 416,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa870": {
-   "name": "nDatabase::tDatabaseObject::operator=",
-   "symbol": "??4tDatabaseObject@nDatabase@@QAEAAV01@ABV01@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 384,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fa9f0": {
-   "name": "nDatabase::tDatabaseObject::operator<",
-   "symbol": "??MtDatabaseObject@nDatabase@@UAE_NABV01@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006faa20": {
-   "name": "nDatabase::tDatabaseObject::operator==",
-   "symbol": "??8tDatabaseObject@nDatabase@@UAE_NABV01@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fac20": {
-   "name": "nDatabase::tDatabaseObject::MakeReadOnly",
-   "symbol": "?MakeReadOnly@tDatabaseObject@nDatabase@@UAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 416,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fadc0": {
-   "name": "nDatabase::tDatabaseObject::SetID",
-   "symbol": "?SetID@tDatabaseObject@nDatabase@@UAEXABVtID@2@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fade0": {
-   "name": "nDatabase::tDatabaseObject::SetLockID",
-   "symbol": "?SetLockID@tDatabaseObject@nDatabase@@UAEXK@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 336,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006faf30": {
-   "name": "nDatabase::tDatabaseObject::AttachToDB",
-   "symbol": "?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 448,
-   "score": 48.085,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb0f0": {
-   "name": "nDatabase::tDatabaseObject::RemoveFromDB",
-   "symbol": "?RemoveFromDB@tDatabaseObject@nDatabase@@MAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 352,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb3f0": {
-   "name": "nDatabase::tDatabaseObject::UnLock",
-   "symbol": "?UnLock@tDatabaseObject@nDatabase@@MAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 368,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb560": {
-   "name": "nDatabase::tDatabaseObject::GetLockID",
-   "symbol": "?GetLockID@tDatabaseObject@nDatabase@@UBEKXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb6a0": {
-   "name": "nDatabase::tDatabaseObject::IsLocked",
-   "symbol": "?IsLocked@tDatabaseObject@nDatabase@@UBE_NXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 336,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb7f0": {
-   "name": "nDatabase::tDatabaseObject::Kill",
-   "symbol": "?Kill@tDatabaseObject@nDatabase@@QAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 272,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fb900": {
-   "name": "nDatabase::tDatabaseObject::IsDead",
-   "symbol": "?IsDead@tDatabaseObject@nDatabase@@QAE_NXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 336,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fba50": {
-   "name": "nDatabase::tDatabaseObject::AddReference",
-   "symbol": "?AddReference@tDatabaseObject@nDatabase@@QAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 320,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fbb90": {
-   "name": "nDatabase::tDatabaseObject::RemoveReference",
-   "symbol": "?RemoveReference@tDatabaseObject@nDatabase@@QAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 336,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fbce0": {
-   "name": "nDatabase::tDatabaseObject::CheckForDeath",
-   "symbol": "?CheckForDeath@tDatabaseObject@nDatabase@@MAEXXZ",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 432,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fbe90": {
-   "name": "nDatabase::tDatabaseObject::StreamOut",
-   "symbol": "?StreamOut@tDatabaseObject@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 512,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc090": {
-   "name": "nDatabase::tDatabaseObject::StreamIn",
-   "symbol": "?StreamIn@tDatabaseObject@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
-   "unit": "Common/Database/DatabaseObject.cpp",
-   "size": 176,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc490": {
-   "name": "tAllocatedClass::tAllocatedClass",
-   "symbol": "??0tAllocatedClass@@QAE@XZ",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc4a0": {
-   "name": "tAllocatedClass::scalar_deleting_destructor",
-   "symbol": "??_GtAllocatedClass@@UAEPAXI@Z",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc4c0": {
-   "name": "tAllocatedClass::~tAllocatedClass",
-   "symbol": "??1tAllocatedClass@@UAE@XZ",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
   "0x006fc4d0": {
    "name": "tAllocatedClass::operator==",
    "symbol": "??8tAllocatedClass@@UAEJABVtype_info@@@Z",
@@ -37935,24 +38187,6 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
-  },
-  "0x006fc500": {
-   "name": "tDynamicAllocator::tAllocatorInfo::operator<",
-   "symbol": "??MtAllocatorInfo@tDynamicAllocator@@QBEJABV01@@Z",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 128,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc580": {
-   "name": "tDynamicAllocator::tAllocatorInfo::operator==",
-   "symbol": "??8tAllocatorInfo@tDynamicAllocator@@QBEJABVtype_info@@@Z",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
   },
   "0x006fc5a0": {
    "name": "tDynamicAllocator::tAllocatorInfo::operator==",
@@ -37963,33 +38197,6 @@
    "exact": true,
    "recorded": "2026-11-04"
   },
-  "0x006fc690": {
-   "name": "tDynamicAllocator::Instance",
-   "symbol": "?Instance@tDynamicAllocator@@SAPAV1@XZ",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 112,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc700": {
-   "name": "tDynamicAllocator::tDynamicAllocator",
-   "symbol": "??0tDynamicAllocator@@AAE@XZ",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fc710": {
-   "name": "tDynamicAllocator::~tDynamicAllocator",
-   "symbol": "??1tDynamicAllocator@@AAE@XZ",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 64,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
   "0x006fc750": {
    "name": "tDynamicAllocator::LockDownAllocator",
    "symbol": "?LockDownAllocator@tDynamicAllocator@@QAEXXZ",
@@ -37998,240 +38205,6 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-04"
-  },
-  "0x006fc790": {
-   "name": "tDynamicAllocator::mAddToAllocList",
-   "symbol": "?mAddToAllocList@tDynamicAllocator@@QAEXABVtype_info@@PAVtAllocator@@@Z",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 944,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fcb40": {
-   "name": "tDynamicAllocator::mAllocateClass",
-   "symbol": "?mAllocateClass@tDynamicAllocator@@QAEPAVtAllocatedClass@@J@Z",
-   "unit": "Common/DynamicAllocator.cpp",
-   "size": 96,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd240": {
-   "name": "nException::tOutOfBounds::tOutOfBounds",
-   "symbol": "??0tOutOfBounds@nException@@QAE@PBDJJJ0J@Z",
-   "unit": "Common/Exceptions/OutOfBounds.cpp",
-   "size": 80,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd340": {
-   "name": "nException::tBaseException::tBaseException",
-   "symbol": "??0tBaseException@nException@@QAE@PBD0J@Z",
-   "unit": "Common/Exceptions/BaseException.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd370": {
-   "name": "nException::tBaseException::~tBaseException",
-   "symbol": "??1tBaseException@nException@@UAE@XZ",
-   "unit": "Common/Exceptions/BaseException.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd380": {
-   "name": "nException::tBaseException::ReportHeader",
-   "symbol": "?ReportHeader@tBaseException@nException@@UAEXPBD@Z",
-   "unit": "Common/Exceptions/BaseException.cpp",
-   "size": 511,
-   "score": 98.958,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd590": {
-   "name": "nException::tBaseException::ReportException",
-   "symbol": "?ReportException@tBaseException@nException@@UAEXPBD@Z",
-   "unit": "Common/Exceptions/BaseException.cpp",
-   "size": 90,
-   "score": 93.939,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd5f0": {
-   "name": "nException::tBaseException::GetDescription",
-   "symbol": "?GetDescription@tBaseException@nException@@UAEPBDXZ",
-   "unit": "Common/Exceptions/BaseException.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd810": {
-   "name": "nException::tValidationFailed::ReportException",
-   "symbol": "?ReportException@tValidationFailed@nException@@UAEXPBD@Z",
-   "unit": "Common/Exceptions/Validate.cpp",
-   "size": 169,
-   "score": 96.61,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd970": {
-   "name": "tCRC32::GenerateCRCTable",
-   "symbol": "?GenerateCRCTable@tCRC32@@IAEXXZ",
-   "unit": "Common/Crypto/CRC32.cpp",
-   "size": 64,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fd9b0": {
-   "name": "tCRC32::UpdateCRC",
-   "symbol": "?UpdateCRC@tCRC32@@QAEKKPBDJ@Z",
-   "unit": "Common/Crypto/CRC32.cpp",
-   "size": 64,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fdb80": {
-   "name": "tCommandLineArgs::Instance",
-   "symbol": "?Instance@tCommandLineArgs@@SAPAV1@XZ",
-   "unit": "Common/CommandLineArgs.cpp",
-   "size": 208,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fdc50": {
-   "name": "tCommandLineArgs::tCommandLineArgs",
-   "symbol": "??0tCommandLineArgs@@AAE@XZ",
-   "unit": "Common/CommandLineArgs.cpp",
-   "size": 208,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fdd20": {
-   "name": "tCommandLineArgs::`scalar_deleting_destructor'",
-   "symbol": "??_GtCommandLineArgs@@EAEPAXI@Z",
-   "unit": "Common/CommandLineArgs.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe0a0": {
-   "name": "tWinClock::GetCurrentSystemTimeInSeconds",
-   "symbol": "?GetCurrentSystemTimeInSeconds@tWinClock@@UBENXZ",
-   "unit": "Common/Timer/WinClock.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe0e0": {
-   "name": "FUN_006fe0e0",
-   "symbol": "_$E2",
-   "unit": "Common/Timer/WinClock.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe0f0": {
-   "name": "FUN_006fe0f0",
-   "symbol": "_$E5",
-   "unit": "Common/Timer/WinClock.cpp",
-   "size": 16,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe140": {
-   "name": "tWinClockGlobal::Instance",
-   "symbol": "?Instance@tWinClockGlobal@@SAPAV1@XZ",
-   "unit": "Common/Timer/WinClock.cpp",
-   "size": 208,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe4f0": {
-   "name": "nLog::tLogStream::tStreamBuf::tStreamBuf",
-   "symbol": "??0tStreamBuf@tLogStream@nLog@@QAE@PAVtLog@2@@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 272,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe600": {
-   "name": "nLog::tLogStream::tStreamBuf::`scalar_deleting_destructor'",
-   "symbol": "??_GtStreamBuf@tLogStream@nLog@@UAEPAXI@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe720": {
-   "name": "nLog::tLogStream::tStreamBuf::xsputn",
-   "symbol": "?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 352,
-   "score": 24.719,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe880": {
-   "name": "nLog::tLogStream::tStreamBuf::overflow",
-   "symbol": "?overflow@tStreamBuf@tLogStream@nLog@@UAEHH@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fe8b0": {
-   "name": "nLog::tLogStream::tStreamBuf::Report",
-   "symbol": "?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 384,
-   "score": 28.201,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
-  "0x006feda0": {
-   "name": "nLog::tLogStream::tStreamBuf::SetEventType",
-   "symbol": "?SetEventType@tStreamBuf@tLogStream@nLog@@UAEXW4tEventType@tLog@3@@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 32,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006fedc0": {
-   "name": "nLog::tLogStream::tLogStream",
-   "symbol": "??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 272,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x006feed0": {
-   "name": "nLog::tLogStream::`scalar_deleting_destructor'",
-   "symbol": "??_GtLogStream@nLog@@UAEPAXI@Z",
-   "unit": "Common/Log/LogStream.cpp",
-   "size": 48,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
   },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",

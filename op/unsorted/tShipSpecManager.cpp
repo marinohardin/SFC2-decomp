@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tShipSpecManager.cpp
-// Functions: 0x00407d36 to 0x00407d52, 2 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Source/entity/entity_physical.h"
+#include "Common/Object.h"
+
+// HYPOTHESIS: tShipSpecManager derives from tDynamicMemoryFreeList (its vftable layout is the base's).
+class tShipSpecManager : public tDynamicMemoryFreeList
+{
+public:
+	virtual ~tShipSpecManager();
+
+	long field_0x10;
+	long field_0x14;
+	// HYPOTHESIS: an owned object with a virtual destructor; the type is unknown, tObject stands in.
+	tObject *field_0x18;
+};
+
+// FUNCTION: STARFLEETOP 0x00407d36
+// FUNCTION: STARFLEETOP 0x00407d52
+tShipSpecManager::~tShipSpecManager()
+{
+	delete field_0x18;
+}

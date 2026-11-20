@@ -1,6 +1,20 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tCommonSettings.cpp
-// Functions: 0x0040c8d2 to 0x0040c920, 3 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Settings.h"
+
+class tCommonSettings : public tSettings
+{
+public:
+	tCommonSettings();
+	virtual ~tCommonSettings();
+};
+
+// FUNCTION: STARFLEETOP 0x0040c8d2
+tCommonSettings::tCommonSettings()
+	: tSettings( std::string( "CommonSettings.gf" ) )
+{
+}
+
+// FUNCTION: STARFLEETOP 0x0040c904
+// FUNCTION: STARFLEETOP 0x0040c920
+tCommonSettings::~tCommonSettings()
+{
+}
