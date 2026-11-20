@@ -8,7 +8,6 @@
 // HYPOTHESIS: the body is empty and the members clean up themselves. The original destroys a
 // vector of 0x30-byte entries, a tree and a tString inside field_60; c_00678500 is still
 // declared as bytes, because declaring those members lowers the factory fn_00676a30.
-// FUNCTION: STARFLEETOP 0x00678db0
 tControlAsset::~tControlAsset()
 {
 }
@@ -129,23 +128,6 @@ fn_00678ea0_tree::iterator fn_00678ea0_tree::erase( iterator first, iterator las
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x00679210
-void fn_00678ea0_tree::fn_00679210( const fn_00678ea0_tree& x )
-{
-	m_head->parent = fn_00679310( x.m_head->parent, m_head );
-	m_size = x.m_size;
-	if( m_head->parent != m_nil )
-	{
-		m_head->left = _Min( m_head->parent );
-		m_head->right = _Max( m_head->parent );
-	}
-	else
-	{
-		m_head->left = m_head;
-		m_head->right = m_head;
-	}
-}
-
 // HYPOTHESIS: the library vector's capacity() for 0x30-byte entries (first at +4, end of
 // storage at +0xc), in the library's ternary form; the owning class is not known.
 struct fn_00679140_vector
@@ -218,4 +200,21 @@ fn_006791d0_vector::entry* fn_006791d0_vector::fn_006791d0( entry* first, entry*
 	for( ; first != last; ++first, ++dest )
 		fn_0067c460( dest, first );
 	return dest;
+}
+
+// FUNCTION: STARFLEETOP 0x00679210
+void fn_00678ea0_tree::fn_00679210( const fn_00678ea0_tree& x )
+{
+	m_head->parent = fn_00679310( x.m_head->parent, m_head );
+	m_size = x.m_size;
+	if( m_head->parent != m_nil )
+	{
+		m_head->left = _Min( m_head->parent );
+		m_head->right = _Max( m_head->parent );
+	}
+	else
+	{
+		m_head->left = m_head;
+		m_head->right = m_head;
+	}
 }

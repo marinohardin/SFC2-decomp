@@ -34,14 +34,6 @@ void *fn_00695150( int a, int size );
 // HYPOTHESIS: 0x00695180 releases pixels obtained from 0x00695150.
 void fn_00695180( void *p ) throw();
 
-// FUNCTION: STARFLEETOP 0x00675060
-// FUNCTION: STARFLEETOP 0x00675250
-tSurface::~tSurface()
-{
-	if ( field_76 && field_60 )
-		fn_00695180( field_60 );
-}
-
 // FUNCTION: STARFLEETOP 0x00675080
 tSurface::tSurface( short x, short y, int width, int height, int a, unsigned char b, unsigned char c )
 	: field_70( a ), field_74( c ), field_75( b ), field_76( 1 )
@@ -80,6 +72,14 @@ tSurface::tSurface( void *pixels, short x, short y, short width, short height, i
 // after the destination's pixels are not known.
 void fn_006951e0( c_tScrollBar_FieldA8 *image, int x, int y, int left, int top, int right, int bottom,
 	void *pixels, int a, int height, unsigned char b, int c, int d );
+
+// FUNCTION: STARFLEETOP 0x00675060
+// FUNCTION: STARFLEETOP 0x00675250
+tSurface::~tSurface()
+{
+	if ( field_76 && field_60 )
+		fn_00695180( field_60 );
+}
 
 // HYPOTHESIS: draws an image with its hot spot at a point, clipped to the area given (in the
 // owner's coordinates) and to the surface; returns whether anything was drawn.
@@ -152,45 +152,6 @@ bool tSurface::fn_00675470( int color, const tRect *rect, unsigned char frame, i
 	return true;
 }
 
-// HYPOTHESIS: 0x00696db0 draws a one-pixel line clipped to a rectangle; the values after the
-// pixels are those 0x00696ab0 takes.
-void fn_00696db0( int color, int x1, int y1, int x2, int y2, const tRect *clip, void *pixels, int a,
-	int height, unsigned char b );
-
-// HYPOTHESIS: draws a line a given number of pixels wide, widened across its direction and
-// clipped to the rectangle given and to the surface; returns whether anything was drawn.
-// FUNCTION: STARFLEETOP 0x006757f0
-bool tSurface::fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip )
-{
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	tRect r;
-	if ( field_60 == 0 )
-		return false;
-
-	if ( clip != 0 )
-	{
-		r = *clip;
-		r.mClip( &field_64 );
-	}
-	else
-		r = field_64;
-
-	if ( r.mIsEmpty() )
-		return false;
-
-	for ( int i = 0; i < a; i++ )
-	{
-		if ( dx == 0 )
-			fn_00696db0( color, x1 + i, y1, x1 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
-		else if ( dy == 0 || dy < dx )
-			fn_00696db0( color, x1, y1 + i, x2, y2 + i, &r, field_60, field_70, field_64.mHeight(), field_74 );
-		else
-			fn_00696db0( color, x1 + i, y1, x2 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
-	}
-	return true;
-}
-
 // HYPOTHESIS: fills the part of a second rectangle inside the first (both clipped to the
 // surface) in a colour and, when asked, draws a frame of a given width along the inside of the
 // first, clipped to the filled part; returns whether anything was drawn.
@@ -228,6 +189,45 @@ bool tSurface::fn_006755b0( int color, const tRect *rect, const tRect *inner, un
 		fn_006757f0( b, clip.left, clip.bottom - a, clip.right - a, clip.bottom - a, a, &fill );
 		fn_006757f0( b, clip.left, clip.top, clip.left, clip.bottom - a, a, &fill );
 		fn_006757f0( b, clip.right - a, clip.top, clip.right - a, clip.bottom - a, a, &fill );
+	}
+	return true;
+}
+
+// HYPOTHESIS: 0x00696db0 draws a one-pixel line clipped to a rectangle; the values after the
+// pixels are those 0x00696ab0 takes.
+void fn_00696db0( int color, int x1, int y1, int x2, int y2, const tRect *clip, void *pixels, int a,
+	int height, unsigned char b );
+
+// HYPOTHESIS: draws a line a given number of pixels wide, widened across its direction and
+// clipped to the rectangle given and to the surface; returns whether anything was drawn.
+// FUNCTION: STARFLEETOP 0x006757f0
+bool tSurface::fn_006757f0( int color, int x1, int y1, int x2, int y2, int a, const tRect *clip )
+{
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+	tRect r;
+	if ( field_60 == 0 )
+		return false;
+
+	if ( clip != 0 )
+	{
+		r = *clip;
+		r.mClip( &field_64 );
+	}
+	else
+		r = field_64;
+
+	if ( r.mIsEmpty() )
+		return false;
+
+	for ( int i = 0; i < a; i++ )
+	{
+		if ( dx == 0 )
+			fn_00696db0( color, x1 + i, y1, x1 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
+		else if ( dy == 0 || dy < dx )
+			fn_00696db0( color, x1, y1 + i, x2, y2 + i, &r, field_60, field_70, field_64.mHeight(), field_74 );
+		else
+			fn_00696db0( color, x1 + i, y1, x2 + i, y2, &r, field_60, field_70, field_64.mHeight(), field_74 );
 	}
 	return true;
 }

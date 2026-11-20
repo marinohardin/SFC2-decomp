@@ -36766,15 +36766,6 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
-  "0x00678db0": {
-   "name": "tControlAsset::~tControlAsset",
-   "symbol": "??1tControlAsset@@UAE@XZ",
-   "unit": "unsorted/tControlAsset.cpp",
-   "size": 239,
-   "score": 26.293,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
   "0x00678ea0": {
    "name": "FUN_00678ea0",
    "symbol": "?erase@fn_00678ea0_tree@@QAE?AViterator@1@V21@0@Z",

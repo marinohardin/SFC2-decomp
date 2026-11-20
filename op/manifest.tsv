@@ -4088,7 +4088,6 @@ address	size	symbol	source	modes
 0x00678b80	177	tBmpAsset::vfunction5(tStream&)	unsorted/tBmpAsset.cpp	vc6 guest
 0x00678c40	124	tBmpAsset::vfunction6(tStream&)	unsorted/tBmpAsset.cpp	vc6 guest
 0x00678cc0	30	tBmpAsset::`scalar deleting destructor'	unsorted/tBmpAsset.cpp	vc6
-0x00678db0	239	tControlAsset::~tControlAsset()	unsorted/tControlAsset.cpp	partial
 0x00678ea0	174	fn_00678ea0_tree::erase(iterator,iterator)	unsorted/tControlAsset.cpp	partial
 0x00679140	33	fn_00679140_vector::fn_00679140()	unsorted/tControlAsset.cpp	vc6 guest
 0x00679170	33	fn_00679140_vector::fn_00679170()	unsorted/tControlAsset.cpp	vc6 guest

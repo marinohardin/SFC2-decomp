@@ -7,6 +7,8 @@ tBoundAsset::tBoundAsset()
 	field_5C = 0;
 }
 
+// MATCH-ONLY: the destructor is implicit: its body is the base class's. Only its scalar deleting
+// destructor is claimed.
 // FUNCTION: STARFLEETOP 0x00678250
 tBoundAsset::~tBoundAsset()
 {
