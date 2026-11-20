@@ -158,3 +158,50 @@ def test_the_stop_hook_does_not_run_the_tree_checks_once_refusals_are_used_up(mo
     hook, claim = run_stop_hook(monkeypatch, tmp_path, 3, boom)
     hook.main()
     assert 'repeated refusals' in json.loads(capsys.readouterr().out)['systemMessage']
+
+
+def test_a_failing_verify_with_only_relocation_notes_says_the_exit_code():
+    out = json.dumps(dict(exit=2, lines=['INFO a', 'ERROR   relocation +0x1 _f: exe uses 0x1, '
+                                         'known at 0x2'], results=[]))
+    ok, msg = wholetree.check(fake(verify=(2, out, '')), {})
+    assert not ok and 'verify failed with exit 2' in msg and 'INFO a' not in msg
+
+
+def test_a_lint_exit_without_a_readable_summary_is_a_failure_with_its_last_lines():
+    ok, msg = wholetree.check(fake(lint=(1, 'something changed\n', '')), {})
+    assert not ok and 'something changed' in msg
+
+
+def test_a_timeout_is_a_failure_that_names_the_command(monkeypatch):
+    import subprocess
+
+    def slow(*a, **k):
+        raise subprocess.TimeoutExpired(a[0], 5)
+    monkeypatch.setattr(wholetree.subprocess, 'run', slow)
+    monkeypatch.setenv('HARNESS_WHOLETREE_TIMEOUT', '5')
+    rc, out, err = wholetree.run_command(['/x/build-and-verify.sh', '--all', '--json'])
+    assert rc == 124
+    assert err == ('build-and-verify.sh --all --json timed out after 5 s; the build cache was '
+                   'probably cold (a cold --all took 189 s here). Run it once by hand, then stop '
+                   'again.')
+    ok, msg = wholetree.check(fake(verify=(124, '', err)), {})
+    assert not ok and 'timed out after 5 s' in msg
+
+
+def test_a_verify_run_the_loop_already_made_is_used_instead_of_a_new_one(tmp_path):
+    run = fake(verify=(0, 'must not be used', ''))
+    log = 'OK x\nERROR 0x00401000 f REGRESSION: was 100.00%\n'
+    ok, msg = wholetree.check(run, {}, verify_done=(1, log))
+    assert not ok and 'ERROR 0x00401000 f REGRESSION' in msg
+    assert len(run.calls) == 3
+    assert wholetree.check(fake(), {}, verify_done=(0, 'OK x\n')) == (True, '')
+
+
+def test_main_reads_the_loops_log_and_exit(tmp_path, monkeypatch, capsys):
+    log = tmp_path / 'symbols.log'
+    log.write_text('ERROR 0x00401000 f REGRESSION: was 100.00%\n')
+    monkeypatch.setattr(wholetree, 'run_command', fake())
+    monkeypatch.setattr(wholetree, 'check', lambda run=None, environ=None, verify_done=None:
+                        (False, 'X %r' % (verify_done,)))
+    assert wholetree.main(['--verify-log', str(log), '--verify-exit', '1']) == 1
+    assert "X (1, 'ERROR 0x00401000 f REGRESSION: was 100.00%\\n')" in capsys.readouterr().out

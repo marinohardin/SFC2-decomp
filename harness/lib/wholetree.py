@@ -10,7 +10,9 @@ caused a problem is told while it still has the context. Four checks, each the t
   tests     tests/test_units.py and tests/test_manifest.py, except the one test that compares the
             committed manifest with the matched set: the loop never regenerates the manifest
 
-HARNESS_WHOLETREE=0 turns all of it off. `python3 -m harness.lib.wholetree` prints the failures
+HARNESS_WHOLETREE=0 turns all of it off. HARNESS_WHOLETREE_TIMEOUT (seconds, default 300) bounds
+each command. At its start the loop runs them once on the tree as it stands, reusing its own
+startup `--all` (`--verify-log FILE --verify-exit N`), and refuses to start on a failing tree. `python3 -m harness.lib.wholetree` prints the failures
 and exits 1, or prints nothing and exits 0.
 """
 import json
@@ -34,11 +36,22 @@ def enabled(environ=None):
     return (os.environ if environ is None else environ).get('HARNESS_WHOLETREE', '1') != '0'
 
 
+TIMEOUT = 300
+TIMEOUT_TEXT = ('%s timed out after %d s; the build cache was probably cold (a cold --all took '
+                '189 s here). Run it once by hand, then stop again.')
+
+
 def run_command(argv, env=None):
-    """(exit code, stdout, stderr) of argv, run from the repository root."""
+    """(exit code, stdout, stderr) of argv, run from the repository root. A command that runs
+    longer than HARNESS_WHOLETREE_TIMEOUT seconds exits 124 with the fixed text on stderr."""
+    limit = int(os.environ.get('HARNESS_WHOLETREE_TIMEOUT', TIMEOUT))
     e = dict(os.environ, PYTHONPATH=paths.REPO, PYTHONDONTWRITEBYTECODE='1')
     e.update(env or {})
-    p = subprocess.run(argv, capture_output=True, text=True, cwd=paths.REPO, env=e)
+    try:
+        p = subprocess.run(argv, capture_output=True, text=True, cwd=paths.REPO, env=e,
+                           timeout=limit)
+    except subprocess.TimeoutExpired:
+        return 124, '', TIMEOUT_TEXT % (' '.join(os.path.basename(a) for a in argv[:3]), limit)
     return p.returncode, p.stdout, p.stderr
 
 
@@ -51,15 +64,23 @@ def _trim(lines, keep=None):
     return picked[:MAX_LINES] + ([f'... and {more} more'] if more > 0 else [])
 
 
-def check_verify(run):
-    rc, out, err = run([os.path.join(paths.HARNESS, 'build-and-verify.sh'), '--all', '--json'])
-    try:
-        lines = json.loads(out).get('lines', [])
-    except ValueError:
-        lines = (out + err).splitlines()[-MAX_LINES:]
+def check_verify(run, done=None):
+    """done: (exit code, text) of an `--all` run already made, in place of a new one."""
+    if done:
+        rc, out, err = done[0], '', done[1]
+        lines = err.splitlines()
+    else:
+        rc, out, err = run([os.path.join(paths.HARNESS, 'build-and-verify.sh'), '--all', '--json'])
+        try:
+            lines = json.loads(out).get('lines', [])
+        except ValueError:
+            return None if rc == 0 else _trim((out + err).splitlines()[-MAX_LINES:])
     if rc == 0:
         return None
-    return _trim(lines, lambda x: x.startswith('ERROR') and not RELOC_NOTE.match(x))
+    if rc == 124:
+        return [err.strip()]
+    kept = [x for x in lines if x.startswith('ERROR') and not RELOC_NOTE.match(x)]
+    return _trim(kept) if kept else [f'verify failed with exit {rc}']
 
 
 def check_manifest(run):
@@ -73,7 +94,7 @@ def check_lint(run):
     lines = out.splitlines()
     found = [x for x in lines if x.strip() and not STALE.search(x) and not SUMMARY.match(x)]
     new = next((int(m.group(1)) for m in map(SUMMARY.match, lines) if m), None)
-    if rc == 2 or new is None and rc != 0:
+    if rc == 124 or rc == 2 or new is None and rc != 0:
         return _trim((out + err).splitlines())
     return _trim(found) if new else None
 
@@ -92,13 +113,13 @@ CHECKS = (('verify (harness/build-and-verify.sh --all)', check_verify),
           ('tests (tests/test_units.py, tests/test_manifest.py)', check_tests))
 
 
-def check(run=run_command, environ=None):
+def check(run=run_command, environ=None, verify_done=None):
     """(ok, message): message is empty when everything passes or the checks are off."""
     if not enabled(environ):
         return True, ''
     parts = []
     for name, fn in CHECKS:
-        lines = fn(run)
+        lines = fn(run, verify_done) if fn is check_verify else fn(run)
         if lines:
             parts.append(f'{name} failed:\n' + '\n'.join('  ' + x for x in lines))
     if not parts:
@@ -106,8 +127,16 @@ def check(run=run_command, environ=None):
     return False, 'The whole-tree checks failed.\n' + '\n'.join(parts) + '\n' + ADVICE
 
 
-def main():
-    ok, message = check()
+def main(argv=None):
+    a = list(sys.argv[1:] if argv is None else argv)
+    done = None
+    if a[:1] == ['--verify-log'] and a[2:3] == ['--verify-exit']:
+        try:
+            with open(a[1], errors='replace') as f:
+                done = (int(a[3]), f.read())
+        except (OSError, ValueError, IndexError):
+            done = None
+    ok, message = check(verify_done=done)
     if message:
         print(message)
     return 0 if ok else 1

@@ -195,6 +195,13 @@ if [ "$dry" = 0 ]; then
     else
         echo "WARN  no symbol table: stand-ins are checked only against claims rebuilt in the same run"
     fi
+    # A lane must start from a green tree: the checks every session is held to (harness/README.md,
+    # "Whole-tree checks"), on the tree as it stands, reusing the --all run above.
+    if ! wt=$(python3 -m harness.lib.wholetree --verify-log "$state/symbols.log" --verify-exit "$rc" 2>&1); then
+        printf '%s\n' "$wt" >&2
+        echo "ERROR the whole-tree checks fail before any session: the lane must start from a green tree. Fix the failures above (or start from a green develop); HARNESS_WHOLETREE=0 skips this check and the ones after each session" >&2
+        exit 2
+    fi
 fi
 unset HARNESS_SELECTION HARNESS_BRIEF
 if [ -n "$lean" ]; then

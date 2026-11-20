@@ -222,6 +222,13 @@ when they are used up the session is let go, the loop's own run of the same chec
 the round is undone and recorded as `failed`, as for a regression. `HARNESS_WHOLETREE=0` turns
 the checks off, in the hook and in the loop (default 1; for emergencies).
 
+The checks are not compared with a baseline: a tree that already fails would refuse every
+session. So `loop.sh` runs them once at start, after its own `--all` (that run is reused, not
+repeated), and stops before any session if they fail; the lane must start from a green tree. Each
+command is bounded by `HARNESS_WHOLETREE_TIMEOUT` (300 s); a timeout is a failure that names the
+command. With a cold build cache the `--all` is a full build (189 s here), so run the loop's
+start once before sessions.
+
 ### Lane file list
 
 `HARNESS_LANE_FILES`, when set to a file, narrows what the guard allows under the source tree
