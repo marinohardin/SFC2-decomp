@@ -95,4 +95,14 @@ void tLogStream::tStreamBuf::Report()
 	LockAccess( false );
 }
 
+// FUNCTION: STARFLEETOP 0x006feda0
+void tLogStream::tStreamBuf::SetEventType( tLog::tEventType eventType )
+{
+	fEventType = eventType;
+	if ( eventType != 0 )
+		fLockType = true;
+	else
+		fLockType = false;
+}
+
 };
