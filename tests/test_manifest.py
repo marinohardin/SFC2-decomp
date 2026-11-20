@@ -298,6 +298,19 @@ def test_signatures_are_read_from_definition_heads():
         'long', 'tWin::mWndProcThunk', ('void*', 'unsigned int'), ('w', 'm'), False, '__stdcall')
 
 
+def test_an_exception_specification_is_not_part_of_the_signature():
+    assert manifest.parse_signature('tBaseException::~tBaseException() throw()') == (
+        '', 'tBaseException::~tBaseException', (), (), False, None)
+    assert manifest.parse_signature('virtual const char* tFoo::what() const throw()') == (
+        'const char*', 'tFoo::what', (), (), True, None)
+    assert manifest.parse_signature('void tFoo::mSet( int32 count ) throw( tBadCount, tOther )') == (
+        'void', 'tFoo::mSet', ('int32',), ('count',), False, None)
+    assert manifest.parse_signature('void tFoo::mSet( int32 count ) const throw( tBadCount )') == (
+        'void', 'tFoo::mSet', ('int32',), ('count',), True, None)
+    with pytest.raises(manifest.NotAFunction):
+        manifest.parse_signature('void tFoo::mSet() throw() garbage')
+
+
 def test_a_constructor_initialiser_list_is_not_part_of_the_signature(tmp_path):
     source = SOURCE.replace('// FUNCTION: STARFLEETOP 0x00401100\ntTestShip* tTestShip::Instance()',
                             '// FUNCTION: STARFLEETOP 0x00401100\ntTestShip* tTestShip::Instance() :\n'

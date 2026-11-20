@@ -118,7 +118,7 @@ Branches follow §7.1. Commit scopes are the top-level directory or the componen
 
 - Atomic: one concern each. Small enough to review in one sitting, or split, or sent through a `feature/` branch in pieces.
 - `sh scripts/check.sh` passes before pushing.
-- Opened as a draft; marked ready when the checks pass, which starts the automated review. Never left in draft when handed to the owner. Nobody comments `@claude` to ask for a review.
+- Opened as a draft; marked ready when the checks pass, which starts the automated review. Never left in draft when handed to the owner. Nobody comments `@claude` to ask for a review. A grind landing (a `grind/` or `integrate/` branch) gets no automated review: `check` judges its functions.
 - The checks are `tests`, `check` and `hotspots`. A pull request is merged only when they are green; from a fork, where `check` does not run, the description carries the last lines of a local `sh scripts/check.sh`. The automated review is advisory: read it, fix what is right, say why when it is not.
 - Title: a Conventional Commits subject. Description: what changed, why, how it was tested.
 - A pull request that changes behavior described in DESIGN.md or a rule in this document updates that document in the same pull request.
