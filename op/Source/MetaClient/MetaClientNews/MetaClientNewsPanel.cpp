@@ -1,6 +1,86 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Source/MetaClient/MetaClientNews/MetaClientNewsPanel.cpp
-// Functions: 0x005df230 to 0x005df230, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Switch/Switch.h"
+#include "Common/Exceptions/Validate.h"
+#include "unsorted/nStoredProcedureArguments__tNotifyEvent.h"
+
+// Name from the exe's RTTI (.?AVtMetaClientNewsPanel@@, derived from tMetaClientPanel).
+// HYPOTHESIS: only the member this function reads is placed; fMyAddress is named by the
+// assertion text at line 83, and its type follows tSwitch::fn_00714020's destination.
+class tMetaClientNewsPanel
+{
+public:
+	void fn_005df230();
+
+protected:
+	int8u field_00[0xac];
+	tObject_005d3679* fMyAddress;
+};
+
+using namespace nStoredProcedureArguments;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x005df230
+void tMetaClientNewsPanel::fn_005df230()
+{
+	tNotifyEvent event( 3, 0, -1 );
+	validate( fMyAddress );
+	tObject_005d3679* address = fMyAddress;
+	nSwitch::tSwitch::fn_00713b20()->fn_00714020( address, 3, &event );
+}

@@ -97,7 +97,7 @@ public:
 // Accesors
 	// Suply the same accessors that a pointer would
 	tnPtr* operator->() const;
-	// The SDK's conversion to tnPtr* is left out: tools/manifest.py cannot read it.
+	operator tnPtr*() const;
 
 	tnPtr* Get() const;
 };
@@ -140,6 +140,12 @@ inline tConstSmartPtr<tnPtr>::~tConstSmartPtr<tnPtr>()
 
 template <class tnPtr >
 inline const tnPtr* tConstSmartPtr<tnPtr>::Get() const
+{
+	return fObject;
+}
+
+template <class tnPtr >
+inline tSmartPtr<tnPtr>::operator tnPtr*() const
 {
 	return fObject;
 }

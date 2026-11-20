@@ -101,6 +101,11 @@ bool tInput::CheckFlags( iInputFlags flags ) const
 	}
 }
 
+tInput::~tInput()
+{
+	Close( fCleanUpBuffer );
+}
+
 #ifndef DATASTORE_OUT_OF_LINE_GET
 byte tInput::Get()
 {

@@ -24463,6 +24463,33 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x005dc698": {
+   "name": "tMemberCallback<nAsyncClientNewsProcedure::tGetNewsResponse,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientNewsProcedure::tGetNewsResponse,nDataStore::tBuffer_const*>",
+   "symbol": "??0tGetNewsResponse@nAsyncClientNewsProcedure@@QAE@PAVtMetaClientNewsCtlrC@@@Z",
+   "unit": "Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_GetNewsResponse.cpp",
+   "size": 148,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dc8a8": {
+   "name": "FUN_005dc8a8",
+   "symbol": "?fn_005dc8a8@tNewsFlash@nAsyncClientNewsProcedure@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_NewsFlash.cpp",
+   "size": 352,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dd252": {
+   "name": "tMetaClientNewsCtlrC::~tMetaClientNewsCtlrC",
+   "symbol": "??0tMetaClientNewsCtlrC@@QAE@PAX@Z",
+   "unit": "Source/MetaClient/MetaClientNews/MetaClientNewsCtlrC.cpp",
+   "size": 225,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x005de28c": {
    "name": "FUN_005de28c",
    "symbol": "?fn_005de28c@fn_005de28c_Vector@@QAEXPAPAVtNewsStory@@PBQAV2@1@Z",
@@ -24768,6 +24795,123 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
+  },
+  "0x005df230": {
+   "name": "FUN_005df230",
+   "symbol": "?fn_005df230@tMetaClientNewsPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientNews/MetaClientNewsPanel.cpp",
+   "size": 131,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005df72e": {
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tGetEmpireInfo,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tGetEmpireInfo,nDataStore::tBuffer_const*>",
+   "symbol": "??0tGetEmpireInfo@nAsyncClientMapProcedures@@QAE@PAX@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_GetEmpireInfo.cpp",
+   "size": 193,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfa31": {
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>",
+   "symbol": "??0tInitialize@nAsyncClientMapProcedures@@QAE@PAX@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 247,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfb28": {
+   "name": "nAsyncClientMapProcedures::tInitialize::scalar_deleting_destructor",
+   "symbol": "??_GtInitialize@nAsyncClientMapProcedures@@UAEPAXI@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfb44": {
+   "name": "nAsyncClientMapProcedures::tInitialize::~tInitialize",
+   "symbol": "??1tInitialize@nAsyncClientMapProcedures@@UAE@XZ",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 66,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfb86": {
+   "name": "FUN_005dfb86",
+   "symbol": "?fn_005dfb86@tInitialize@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 177,
+   "score": 99.907,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfc37": {
+   "name": "nStoredProcedureArguments::tMetaMapSizeRequest::tResponse::tResponse",
+   "symbol": "?fn_005dfc37@tInitialize@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 372,
+   "score": 99.957,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfdab": {
+   "name": "FUN_005dfdab",
+   "symbol": "?fn_005dfdab@tInitialize@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 119,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005dfe22": {
+   "name": "nAsyncClientMapProcedures::tInitialize::vfunction5",
+   "symbol": "?vfunction5@tInitialize@nAsyncClientMapProcedures@@UAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp",
+   "size": 378,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e009a": {
+   "name": "FUN_005e009a",
+   "symbol": "?fn_005e009a@tMapChange@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_MapChange.cpp",
+   "size": 381,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e028e": {
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tMoveResponse,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tMoveResponse,nDataStore::tBuffer_const*>",
+   "symbol": "??0tMoveResponse@nAsyncClientMapProcedures@@QAE@PAVfn_005e5bd7_class@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_MoveResponse.cpp",
+   "size": 148,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e13d8": {
+   "name": "FUN_005e13d8",
+   "symbol": "?vfunction5@tRequestLogonInformation@nAsyncClientMapProcedures@@UAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp",
+   "size": 322,
+   "score": 99.898,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e189d": {
+   "name": "FUN_005e189d",
+   "symbol": "?fn_005e189d@tUpdateFleetIcons@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp",
+   "size": 341,
+   "score": 99.904,
+   "exact": false,
+   "recorded": "2026-11-19"
   },
   "0x005e2501": {
    "name": "FUN_005e2501",
@@ -25713,6 +25857,321 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
+  },
+  "0x005e5800": {
+   "name": "tMetaClientMapPanel::vfunction19",
+   "symbol": "?vfunction19@tMetaClientMapPanel@@UAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 246,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e58f6": {
+   "name": "tMetaClientMapPanel::vfunction20",
+   "symbol": "?vfunction20@tMetaClientMapPanel@@UAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5957": {
+   "name": "FUN_005e5957",
+   "symbol": "?fn_005e5957@tMetaClientMapPanel@@QAEHK@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 312,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5a8f": {
+   "name": "FUN_005e5a8f",
+   "symbol": "?fn_005e5a8f@tMetaClientMapPanel@@QAE_NXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 47,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5abe": {
+   "name": "FUN_005e5abe",
+   "symbol": "?fn_005e5abe@tMetaClientMapPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 34,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5ae0": {
+   "name": "FUN_005e5ae0",
+   "symbol": "?fn_005e5ae0@tMetaClientMapPanel@@QAEXJ@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5b2d": {
+   "name": "FUN_005e5b2d",
+   "symbol": "?fn_005e5b2d@tMetaClientMapPanel@@QAE_NPAVtMetaClientMapReceiver@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 121,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5ba6": {
+   "name": "FUN_005e5ba6",
+   "symbol": "?fn_005e5ba6@tMetaClientMapReceiver@@QAEPAV1@J@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 49,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5bd7": {
+   "name": "FUN_005e5bd7",
+   "symbol": "?fn_005e5bd7@tMetaClientMapPanel@@QAEXJ@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5bfe": {
+   "name": "FUN_005e5bfe",
+   "symbol": "?fn_005e5bfe@tMetaClientMapPanel@@QAEXJ@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 39,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5c25": {
+   "name": "FUN_005e5c25",
+   "symbol": "?fn_005e5c25@tMetaClientMapPanel@@QAEXJ@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5c72": {
+   "name": "FUN_005e5c72",
+   "symbol": "?fn_005e5c72@tMetaClientMapPanel@@QAEXABVtHexPoint@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 123,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5ced": {
+   "name": "FUN_005e5ced",
+   "symbol": "?fn_005e5ced@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 141,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5d7a": {
+   "name": "FUN_005e5d7a",
+   "symbol": "?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 100,
+   "score": 99.828,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5dde": {
+   "name": "FUN_005e5dde",
+   "symbol": "?fn_005e5dde@tMetaClientMapPanel@@QAEJXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5e01": {
+   "name": "FUN_005e5e01",
+   "symbol": "?fn_005e5e01@tMetaClientMapPanel@@QAEJXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 35,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5e24": {
+   "name": "FUN_005e5e24",
+   "symbol": "?fn_005e5e24@tMetaClientMapPanel@@QAEXH@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 184,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5edc": {
+   "name": "FUN_005e5edc",
+   "symbol": "?fn_005e5edc@tMetaClientMapPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5ee7": {
+   "name": "FUN_005e5ee7",
+   "symbol": "?fn_005e5ee7@tMetaClientMapPanel@@QAEXD@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 13,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e5ef4": {
+   "name": "FUN_005e5ef4",
+   "symbol": "?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 413,
+   "score": 99.958,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6091": {
+   "name": "FUN_005e6091",
+   "symbol": "?fn_005e6091@tMetaClientMapPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e620c": {
+   "name": "FUN_005e620c",
+   "symbol": "?fn_005e620c@tMetaClientMapPanel@@QAEXJJPA_N@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 184,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e62c4": {
+   "name": "FUN_005e62c4",
+   "symbol": "?fn_005e62c4@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 244,
+   "score": 98.015,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6469": {
+   "name": "FUN_005e6469",
+   "symbol": "?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 129,
+   "score": 99.865,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e64ea": {
+   "name": "FUN_005e64ea",
+   "symbol": "?fn_005e64ea@tMetaClientMapPanel@@QAE_NXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 83,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e653d": {
+   "name": "FUN_005e653d",
+   "symbol": "?fn_005e653d@tMetaClientMapPanel@@QAE_NABVtHexPoint@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 168,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e65e5": {
+   "name": "FUN_005e65e5",
+   "symbol": "?fn_005e65e5@tMetaClientMapPanel@@QAE_NPBUtPoint@@PBUtRect@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 93,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6642": {
+   "name": "FUN_005e6642",
+   "symbol": "?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 117,
+   "score": 99.868,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e66b7": {
+   "name": "FUN_005e66b7",
+   "symbol": "?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 241,
+   "score": 99.934,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e67a8": {
+   "name": "FUN_005e67a8",
+   "symbol": "?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 489,
+   "score": 99.858,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6991": {
+   "name": "FUN_005e6991",
+   "symbol": "?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 176,
+   "score": 99.907,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6a41": {
+   "name": "FUN_005e6a41",
+   "symbol": "?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 170,
+   "score": 99.904,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005e6d7c": {
+   "name": "tMetaMapNormalHex::tMetaMapNormalHex",
+   "symbol": "??0tMetaMapNormalHex@@QAE@ABV0@@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 110,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e7744": {
+   "name": "FUN_005e7744",
+   "symbol": "?fn_005e7744@fn_005e7744_vector@@QAEXXZ",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 52,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005e78c6": {
+   "name": "FUN_005e78c6",
+   "symbol": "?fn_005e78c6@tMetaClientMapPanel@@QAEXV?$tSmartPtr@Vfn_005e78c6_object@@@@HH@Z",
+   "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
+   "size": 95,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005ea14b": {
    "name": "FUN_005ea14b",

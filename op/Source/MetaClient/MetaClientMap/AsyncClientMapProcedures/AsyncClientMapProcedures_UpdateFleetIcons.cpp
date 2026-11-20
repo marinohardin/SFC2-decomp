@@ -1,6 +1,84 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp
-// Functions: 0x005e189d to 0x005e189d, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Switch/AsyncProcedure.h"
+#include "Switch/Switch.h"
+#include "Common/Log/LogStream.h"
+#include "Common/Exceptions/Validate.h"
+#include "Common/Thread/SingleAccessWrapper.h"
+#include "unsorted/tAddressMgr.h"
+#include "unsorted/tObject_0092deb4.h"
+#include "unsorted/nStoredProcedureArguments__tGetFleetDataRequest.h"
+#include "unsorted/fn_0042a480_object.h"
+
+namespace nAsyncClientMapProcedures
+{
+
+	// Name from the exe's RTTI (.?AVtUpdateFleetIcons@nAsyncClientMapProcedures@@).
+	class tUpdateFleetIcons : public nSwitch::tAsyncProcedure
+	{
+	public:
+		// HYPOTHESIS: the callback registered for the fleet icon message (the RTTI names a
+		// tMemberCallback<tUpdateFleetIcons,const nDataStore::tBuffer*>).
+		void fn_005e189d( const nDataStore::tBuffer* buffer );
+	};
+
+};
+
+using namespace nAsyncClientMapProcedures;
+using namespace nStoredProcedureArguments;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x005e189d
+void tUpdateFleetIcons::fn_005e189d( const nDataStore::tBuffer* buffer )
+{
+	nLog::info << "MetaClient: kUpdateFleetIcons" << nLog::report;
+
+	fn_00719050();
+
+
+
+
+	tGetFleetDataRequest request( fn_00719490( fn_00719580( 7 ) ), ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042a9ba() );
+
+	validate( tAddressMgr::Instance()->GetCharacterRelayAddress() );
+	field_1c->fn_00714020( tAddressMgr::Instance()->GetCharacterRelayAddress(), 15, &request );
+}
