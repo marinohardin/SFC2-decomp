@@ -1,27 +1,30 @@
 #include <fstream>
 
-// HYPOTHESIS: the library's std::ifstream constructor taking (name, mode), written out as a
-// stand-in class with the same layout (filebuf at +8, virtual ios base at +0x5c).
-class fn_004033ab_Ifstream : public std::istream
-{
-public:
-    fn_004033ab_Ifstream(const char* name, int mode);
-    ~fn_004033ab_Ifstream();
-    std::filebuf _Fb;
-};
+#include "unsorted/fn_00404230_Obj.h"
 
+
+
+
+
+
+
+// The library's std::ifstream constructor taking (name, mode); the exe names its vtable
+// 0x00795704 basic_ifstream<char>.
 // FUNCTION: STARFLEETOP 0x004033ab
-fn_004033ab_Ifstream::fn_004033ab_Ifstream(const char* name, int mode)
-    : std::basic_istream<char, std::char_traits<char> >(&_Fb), _Fb()
+std::ifstream::ifstream(const char* _S, std::ios_base::openmode _M)
+    : std::basic_istream<char, std::char_traits<char> >(&_Fb)
 {
-    if (_Fb.open(name, mode | in) == 0)
+    if (((fn_00404230_Obj*)&_Fb)->fn_00404230((unsigned long)_S, _M | in) == 0)
         setstate(failbit);
 }
 
 // FUNCTION: STARFLEETOP 0x0040345f
-fn_004033ab_Ifstream::~fn_004033ab_Ifstream()
+std::ifstream::~ifstream()
 {
 }
+
+// HYPOTHESIS: a caller in the original constructs a std::ifstream and so uses this instantiation.
+template class std::basic_ifstream<char, std::char_traits<char> >;
 
 // FUNCTION: STARFLEETOP 0x004034a5
 std::filebuf::~filebuf()

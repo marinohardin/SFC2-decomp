@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Settings.cpp
-// Functions: 0x006f6820 to 0x006f7dc0, 17 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   sdk-release (harness/units.json)
+#include "Common/Settings.h"
+#include "Common/GenericFile.h"
+
+// The two inlined basic_string::_Tidy calls lack the toolchain's _FROZEN test (the library
+// difference noted at 0x00708820); the rest of 0x006f6b80 lines up.
+// FUNCTION: STARFLEETOP 0x006f6b80
+// FUNCTION: STARFLEETOP 0x006f6b60
+tSettings::~tSettings()
+{
+	if( fSection )
+	{
+		delete fSection;
+		fSection = 0;
+	}
+}

@@ -237,3 +237,58 @@ address	name	attempts	last_model	best_score	last_attempt	reason
 0x006b3f80	FUN_006b3f80	3	fable	91.11	2026-11-17T19:23:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.11%
 0x006f53f0	tOSVersion::Instance	5	fable	99.86	2026-11-17T19:32:07Z	not exact after 5 attempts: all 4 regular attempts used; Fable tried; best 99.86%
 0x007586c0	tBufFile::mRead	4	fable	98.30	2026-11-17T20:05:48Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 98.30%
+0x00402452	FUN_00402452	2	opus	13.93	2026-11-19T19:51:07Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 13.93%
+0x00402a26	FUN_00402a26	2	opus	38.71	2026-11-19T20:07:36Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 38.71%
+0x004033ab	FUN_004033ab	3	fable	100.00	2026-11-19T20:10:02Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 100.00%
+0x00404f00	FUN_00404f00	2	opus	38.03	2026-11-19T20:17:11Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 38.03%
+0x0042a73d	FUN_0042a73d	3	fable	99.87	2026-11-19T20:19:06Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.87%
+0x0042a8b7	FUN_0042a8b7	4	fable	99.86	2026-11-19T20:36:10Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.86%
+0x0042ac56	FUN_0042ac56	3	fable	99.71	2026-11-19T21:03:20Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.71%
+0x0042c053	FUN_0042c053	3	fable	99.81	2026-11-19T21:05:07Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
+0x0042c0d4	FUN_0042c0d4	3	fable	99.79	2026-11-19T21:06:52Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x0043e09e	FUN_0043e09e	3	fable	93.86	2026-11-19T21:17:28Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 93.86%
+0x0043e201	FUN_0043e201	2	opus	37.14	2026-11-19T21:31:30Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 37.14%
+0x0043e911	FUN_0043e911	2	opus	83.97	2026-11-19T21:40:34Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 83.97%
+0x0044715d	FUN_0044715d	3	fable	99.72	2026-11-19T21:49:19Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.72%
+0x004472bc	FUN_004472bc	3	fable	99.81	2026-11-19T21:54:11Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
+0x0044e844	tShuttleBaySystem::~tShuttleBaySystem	3	fable	99.96	2026-11-19T21:57:59Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.96%
+0x0044ea7e	FUN_0044ea7e	2	opus	79.81	2026-11-19T22:18:47Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 79.81%
+0x00460539	FUN_00460539	2	opus	32.94	2026-11-19T22:28:39Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 32.94%
+0x00460e3e	FUN_00460e3e	3	fable	99.79	2026-11-19T22:30:44Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x00460e76	FUN_00460e76	3	fable	99.77	2026-11-19T22:32:23Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x00460ea6	FUN_00460ea6	3	fable	99.79	2026-11-19T22:33:50Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x00460ede	FUN_00460ede	3	fable	91.58	2026-11-19T22:39:55Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.58%
+0x0046a46a	FUN_0046a46a	3	fable	90.48	2026-11-19T22:45:22Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 90.48%
+0x004bd443	FUN_004bd443	3	fable	91.77	2026-11-19T22:51:58Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 91.77%
+0x004bd8d4	FUN_004bd8d4	3	fable	99.95	2026-11-19T22:53:28Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.95%
+0x004bde26	FUN_004bde26	3	fable	99.95	2026-11-19T22:55:09Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.95%
+0x004cf9cb	tSFCPlayer::~tSFCPlayer	3	fable	99.91	2026-11-19T22:56:49Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.91%
+0x004d3951	FUN_004d3951	4	fable	99.79	2026-11-19T22:58:14Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.79%
+0x0050eea7	tSndMgr_Miles::vfunction2	3	fable	99.94	2026-11-19T22:59:17Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.94%
+0x0052315a	FUN_0052315a	4	fable	91.25	2026-11-19T23:05:39Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 91.25%
+0x005344a3	FUN_005344a3	3	fable	99.86	2026-11-19T23:07:58Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.86%
+0x00539464	tMetaMapHex::~tMetaMapHex	4	fable	99.87	2026-11-19T23:13:47Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.87%
+0x0053ab16	FUN_0053ab16	3	fable	99.81	2026-11-19T23:21:33Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
+0x0053ab9a	FUN_0053ab9a	3	fable	99.77	2026-11-19T23:23:00Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x0053abca	FUN_0053abca	3	fable	99.81	2026-11-19T23:24:10Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.81%
+0x0053ac4e	FUN_0053ac4e	3	fable	99.77	2026-11-19T23:25:38Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x0054372f	FUN_0054372f	3	fable	99.86	2026-11-19T23:32:20Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.86%
+0x005437a5	FUN_005437a5	3	fable	99.91	2026-11-19T23:33:30Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.91%
+0x0054385d	FUN_0054385d	3	fable	99.93	2026-11-19T23:35:54Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.93%
+0x00543944	FUN_00543944	3	fable	99.90	2026-11-19T23:37:24Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.90%
+0x00543c70	tServCharacter::vfunction6_for_tAllocatedClass	4	fable	99.94	2026-11-19T23:50:02Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.94%
+0x00544f0f	tAuctionItem::vfunction6_for_tAllocatedClass	3	fable	99.93	2026-11-19T23:52:20Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.93%
+0x00545084	tAuctionItem::vfunction7_for_tAllocatedClass	3	fable	99.93	2026-11-19T23:54:00Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.93%
+0x00571018	FUN_00571018	4	fable	99.96	2026-11-20T00:00:03Z	not exact after 4 attempts: attempt 3 (opus) did not raise the best; Fable tried; best 99.96%
+0x0057118e	FUN_0057118e	3	fable	99.96	2026-11-20T00:01:08Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
+0x00571304	FUN_00571304	3	fable	99.96	2026-11-20T00:02:19Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
+0x0057147a	FUN_0057147a	3	fable	99.96	2026-11-20T00:03:32Z	not exact after 3 attempts: attempt 2 (opus) did not raise the best; Fable tried; best 99.96%
+0x005716e0	FUN_005716e0	2	opus	66.18	2026-11-20T00:09:56Z	not exact after 2 attempts: attempt 2 (opus) did not raise the best; best 66.18%
+0x005bc570	FUN_005bc570	3	fable	99.77	2026-11-20T00:11:18Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x005bc8b0	FUN_005bc8b0	3	fable	99.79	2026-11-20T00:12:33Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x005bcd91	FUN_005bcd91	3	fable	99.77	2026-11-20T00:13:53Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x005bcdc1	FUN_005bcdc1	3	fable	99.77	2026-11-20T00:15:24Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x005bcdf1	FUN_005bcdf1	3	fable	99.77	2026-11-20T00:16:47Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x005d9411	FUN_005d9411	3	fable	99.77	2026-11-20T00:18:18Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.77%
+0x005d96ac	FUN_005d96ac	3	fable	99.79	2026-11-20T00:19:38Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.79%
+0x005d9cd3	FUN_005d9cd3	3	fable	99.87	2026-11-20T00:20:53Z	not exact after 3 attempts: attempt 2 (sonnet) did not raise the best; Fable tried; best 99.87%

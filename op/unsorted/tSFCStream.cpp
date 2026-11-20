@@ -1,6 +1,20 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSFCStream.cpp
-// Functions: 0x0040d60d to 0x0040d60d, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Tiger/tstring.h"
+#include "Tiger/tvectormath.h"
+#include "unsorted/sfcstreams.h"
+
+// FUNCTION: STARFLEETOP 0x0040d60d
+tSFCStream::tSFCStream(unsigned char* buffer, long size)
+{
+    fBuffer = buffer;
+    fOwned = 0;
+    fMaxPtr = fBuffer + size;
+    fGetPtr = fBuffer;
+    fPutPtr = fBuffer;
+    fReadLock = 0;
+    fWriteLock = 0;
+    if (fBuffer == 0)
+        fMaxPtr = 0;
+    fTabNumber = 0;
+
+
+}

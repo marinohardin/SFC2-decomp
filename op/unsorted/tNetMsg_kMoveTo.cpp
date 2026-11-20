@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tNetMsg_kMoveTo.cpp
-// Functions: 0x00414b82 to 0x00414b82, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tNetMsg_kMoveTo.h"
+
+extern char g_0083c850[];
+
+// HYPOTHESIS: returns the address of a static descriptor of the message class
+// FUNCTION: STARFLEETOP 0x00414b82
+const tNetMsg::tMapItem *tNetMsg_kMoveTo::mGetMap(void) const
+{
+	return (const tNetMsg::tMapItem *)g_0083c850;
+}

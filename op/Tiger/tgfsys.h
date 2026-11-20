@@ -37,6 +37,8 @@ public:
 	// 0x0061d8b0) calls it on a map pair's key with the cookie searched for, and takes a true
 	// result as a match.
 	virtual iTruth	operator==( const tCookie &other ) const;
+	// HYPOTHESIS: the fourth virtual (vtable +0x0c), an ordering of cookies by value.
+	virtual iTruth	operator<( const tCookie &other ) const;
 	// HYPOTHESIS: an inline comparison, as tVolume::mGetSortName's search takes the cookies'
 	// difference as a truth value before testing it.
 	iTruth	operator!=( const tCookie &other ) const	{ return fCookie != other.fCookie; }
@@ -57,6 +59,9 @@ public:
 	// copies the session cookie inline.
 	tSession &operator=( const tSession &other ) { fCookie = other.fCookie; return *this; }
 
+	// HYPOTHESIS: the session overrides the first virtual with an out-of-line copy (STARFLEETOP 0x00407c81).
+	virtual iTruth	mValid( void );
+
 	void	mAddCookie( tVolume &volume );
 	void	mAddCookie( tDir &dir );
 	void	mAddCookie( tPath &path );
@@ -72,11 +77,15 @@ class fn_SessionCookie: public tCookie
 {
 public:
 	fn_SessionCookie() { mInvalidate(); }
+#if defined( tgfsys_copies_out_of_line )
+	fn_SessionCookie( const fn_SessionCookie &other );
+#else
+	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
+#endif
 	// HYPOTHESIS: the copy takes the cookie and the session, and the derived copies assign the
 	// session again: the copy tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) returns stores the
 	// session cookie both before and after the tVolume vtable pointer. Argument copies elsewhere
 	// show the second store only.
-	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
 
 	tSession	fSession;	// +0x08
 };
@@ -113,6 +122,10 @@ public:
 // FUNCTION: STARFLEETOP 0x00633e80
 inline tDir::tDir( const tDir &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
 
+// MATCH-ONLY: the callers expand the copies and the destructor in line, and the original also holds
+// out-of-line instances of them (0x00407c3a, 0x00407c5b, 0x00407c8b). Defining
+// tgfsys_copies_out_of_line before this header declares them out of line, for the units that
+// claim those instances (unsorted/tPath.cpp, unsorted/tCookie.cpp).
 // HYPOTHESIS: a path cookie with its session like tDir, 16 bytes as tFileSession::mDuplicatePath's
 // argument copy shows; twFileSystemPart::mGetAppPath (STARFLEETOP 0x0062e9f0) stores the invalid
 // cookies of its local before the tPath vtable pointer, as a base constructor does.
@@ -122,8 +135,13 @@ public:
 	tPath() {}
 	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
 	// copied session cookie both before and after the tPath vtable pointer.
+#if defined( tgfsys_copies_out_of_line )
+	tPath( const tPath &other );
+	virtual ~tPath();
+#else
 	tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
 	virtual ~tPath() {}
+#endif
 
 	virtual iTruth	mValid( void );
 

@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tStrMgrCore.cpp
-// Functions: 0x00424b90 to 0x00424c23, 3 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Tiger/tgStrMgr.h"
+
+// FUNCTION: STARFLEETOP 0x00424b90
+// HYPOTHESIS: the parameter is the byte flag at +0x40 (the throw-on-miss flag), and the
+// counter at +0x3c starts at 1.
+tStrMgrCore::tStrMgrCore( unsigned char throwOnMiss )
+{
+	fn_00627200_throwOnMiss = throwOnMiss;
+	fn_00627180_count = 1;
+}
+
+// MATCH-ONLY: the destructor of tStrMgrCore is not claimed; only its scalar deleting destructor (0x00424c07) is exact.
+// FUNCTION: STARFLEETOP 0x00424c07
+tStrMgrCore::~tStrMgrCore( void )
+{
+}

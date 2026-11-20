@@ -112,6 +112,5 @@ address-order	op/unsorted/tShieldGroup.cpp	0x0044140c	out of address order befor
 address-order	op/unsorted/tShipSystemsFighter.cpp	0x00444558	out of address order before the check was added
 address-order	op/unsorted/tShuttleBaySystem.cpp	0x0044e844	out of address order before the check was added
 empty-body	op/Tiger/tSndMemMgr.cpp	0x0066def0	legal form, the destructor folded with its base 0x00645480; the comment above lacks MATCH-ONLY:
-empty-body	op/unsorted/fn_00403000.cpp	0x0040345f	empty destructor, not exact (honest partial or placeholder); predates the check
 empty-body	op/unsorted/tAuctionItem.cpp	0x00544c08	legal form, the destructor implicit (0x00544c24); the comment above lacks MATCH-ONLY:
 empty-body	op/unsorted/tCampaignState.cpp	0x0045ddf7	empty destructor, not exact (honest partial or placeholder); predates the check

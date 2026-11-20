@@ -89,6 +89,18 @@ protected:
 	const tBuffer* fBuffer;
 };
 
+bool tInput::CheckFlags( iInputFlags flags ) const
+{
+	if( fInputFlags & flags )
+		return true;
+	else
+		return false;
+}
+tInput::~tInput()
+{
+	Close( fCleanUpBuffer );
+}
+
 #ifndef DATASTORE_OUT_OF_LINE_GET
 byte tInput::Get()
 {
@@ -125,6 +137,20 @@ tInput& tInput::operator>>( std::string& string )
 tInput& tInput::operator>>( bool& value )
 {
 	value = (bool)Get();
+
+	return *this;
+}
+
+tInput& tInput::operator>>( int8u& value )
+{
+	value = (int8u)Get();
+
+	return *this;
+}
+
+tInput& tInput::operator>>( int32u& value )
+{
+	Read( (byte*)&value, sizeof( value ) );
 
 	return *this;
 }

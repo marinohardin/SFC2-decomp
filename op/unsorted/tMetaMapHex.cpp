@@ -158,6 +158,14 @@ void tMetaMapHex::StreamOut( nDataStore::tOutput& output ) const
 	output << m_98 << m_a0;
 }
 
+// MATCH-ONLY: the map's index operator as the library writes it, which StreamIn has inline in
+// its two loops where the first version's branch calls the out-of-line copy 0x0053a73a.
+inline int32& fn_00539801_index( fn_0053a73a_map& map, const int32& key )
+{
+	fn_0053a73a_map::iterator p = map.insert( fn_0053a73a_map::value_type( key, 0 ) ).first;
+	return (*p).second;
+}
+
 // FUNCTION: STARFLEETOP 0x00539801
 void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 {
@@ -221,9 +229,7 @@ void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 			{
 				input >> key;
 				input >> value2;
-				fn_0053a73a_map::value_type entry( key, 0 );
-				fn_0053a73a_map::iterator it = m_70.insert( entry ).first;
-				(*it).second = value2;
+				fn_00539801_index( m_70, key ) = value2;
 			}
 
 			input >> count2;
@@ -231,9 +237,7 @@ void tMetaMapHex::StreamIn( nDataStore::tInput& input )
 			{
 				input >> key;
 				input >> value2;
-				fn_0053a73a_map::value_type entry( key, 0 );
-				fn_0053a73a_map::iterator it = m_84.insert( entry ).first;
-				(*it).second = value2;
+				fn_00539801_index( m_84, key ) = value2;
 			}
 
 			input >> m_98 >> m_a0;
@@ -377,12 +381,44 @@ long tMetaMapHex::fn_00539f50() const
 	return y;
 }
 
+// Inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is claimed in
+// tClientCharacter.cpp. With the body in view the compiler knows Leave cannot throw, so the two
+// functions below keep no unwind state round the guard's release.
+// MATCH-ONLY: the body sits here, not at the top, because the functions above still treat
+// Leave as able to throw.
+inline void tOptex::Leave()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections )
+		{
+			::LeaveCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+		else if( --fpSharedInfo->fRecurseCount > 0 )
+		{
+			::InterlockedDecrement( &fpSharedInfo->fLockCount );
+		}
+		else
+		{
+			fpSharedInfo->fThreadId = 0;
+			if( ::InterlockedDecrement( &fpSharedInfo->fLockCount ) > 0 )
+				::SetEvent( fEvent );
+		}
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x00539f9c
 tHexPoint tMetaMapHex::fn_00539f9c()
 {
 	tOptex::tGuard guard( &m_bc );
 	return m_a8;
 }
+
+// The two members of std::vector< tHexPoint > this unit writes out below (0x0053a7d1, 0x0053a83f).
+template<>
+std::vector< tHexPoint >::vector( const std::vector< tHexPoint >& x );
+template<>
+void std::vector< tHexPoint >::reserve( size_type n );
 
 // FUNCTION: STARFLEETOP 0x00539ff1
 std::vector< tHexPoint > tMetaMapHex::fn_00539ff1( int param_1, int param_2 )
@@ -633,7 +669,7 @@ void tMetaMapHex::fn_0053a67c( double param_1 )
 // FUNCTION: STARFLEETOP 0x0053a6a3
 int32u& fn_0053a6cc_map::operator[]( const int& key )
 {
-	std::pair< iterator, bool > result = insert( value_type( key, int32u() ) );
+	std::pair< iterator, bool > result = m_tree.insert( value_type( key, int32u() ) );
 	return (*result.first).second;
 }
 
@@ -662,7 +698,7 @@ fn_0053a6cc_map& fn_0053a6cc_map::operator=( const fn_0053a6cc_map& other )
 // FUNCTION: STARFLEETOP 0x0053a73a
 int32& fn_0053a73a_map::operator[]( const int32& key )
 {
-	std::pair< iterator, bool > result = insert( value_type( key, int32() ) );
+	std::pair< iterator, bool > result = m_tree.insert( value_type( key, int32() ) );
 	return (*result.first).second;
 }
 
@@ -688,36 +724,28 @@ fn_0053a73a_map& fn_0053a73a_map::operator=( const fn_0053a73a_map& other )
 	return *this;
 }
 
-// HYPOTHESIS: the copy constructor of this compiler's std::vector< tHexPoint > (0x14-byte
-// elements); it is written out here so that the out-of-line copy has a definition.
-struct fn_0053a7d1_vector
-{
-	fn_0053a7d1_vector( const fn_0053a7d1_vector& x );
-	void reserve( unsigned int n );
-	std::allocator< tHexPoint > m_alloc;
-	tHexPoint*	m_first;
-	tHexPoint*	m_last;
-	tHexPoint*	m_end;
-};
-
 // HYPOTHESIS: the out-of-line element copy construction 0x0042c9c5 (the library's _Construct).
 void fn_0042c9c5( tHexPoint* dst, const tHexPoint& src );
 
+// MATCH-ONLY: the library's copy constructor of std::vector< tHexPoint > (0x14-byte elements).
+// The original is the template in the library header; it is written out here as the instance's
+// explicit specialization so that it has source lines here.
 // FUNCTION: STARFLEETOP 0x0053a7d1
-fn_0053a7d1_vector::fn_0053a7d1_vector( const fn_0053a7d1_vector& x )
-	: m_alloc( x.m_alloc )
+template<>
+std::vector< tHexPoint >::vector( const std::vector< tHexPoint >& x )
+	: allocator( x.allocator )
 {
-	int count = ( x.m_first != 0 ? x.m_last - x.m_first : 0 );
+	int count = ( x._First != 0 ? x._Last - x._First : 0 );
 	if( count < 0 )
 		count = 0;
-	m_first = (tHexPoint*)operator new( count * sizeof( tHexPoint ) );
-	tHexPoint* last = x.m_last;
-	tHexPoint* src = x.m_first;
-	tHexPoint* dst = m_first;
+	_First = (tHexPoint*)operator new( count * sizeof( tHexPoint ) );
+	tHexPoint* last = x._Last;
+	tHexPoint* src = x._First;
+	tHexPoint* dst = _First;
 	for( ; src != last; ++src, ++dst )
 		fn_0042c9c5( dst, *src );
-	m_last = dst;
-	m_end = dst;
+	_Last = dst;
+	_End = dst;
 }
 
 // MATCH-ONLY: the library's uninitialized_copy and _Destroy, inlined by the original; their
@@ -735,22 +763,25 @@ inline void fn_0053a83f_destroy( tHexPoint* first, tHexPoint* last )
 		first->~tHexPoint();
 }
 
+// MATCH-ONLY: the library's reserve for the same vector, written out as the copy constructor
+// above is.
 // FUNCTION: STARFLEETOP 0x0053a83f
-void fn_0053a7d1_vector::reserve( unsigned int n )
+template<>
+void std::vector< tHexPoint >::reserve( size_type n )
 {
-	if( ( m_first == 0 ? 0 : m_end - m_first ) < n )
+	if( ( _First == 0 ? 0 : _End - _First ) < n )
 	{
 		int count = n;
 		if( count < 0 )
 			count = 0;
 		tHexPoint* s = (tHexPoint*)operator new( count * sizeof( tHexPoint ) );
-		fn_0053a83f_copy( m_first, m_last, s );
-		fn_0053a83f_destroy( m_first, m_last );
-		operator delete( m_first );
-		m_end = s + n;
-		int size = ( m_first == 0 ? 0 : m_last - m_first );
-		m_first = s;
-		m_last = s + size;
+		fn_0053a83f_copy( _First, _Last, s );
+		fn_0053a83f_destroy( _First, _Last );
+		operator delete( _First );
+		_End = s + n;
+		int size = ( _First == 0 ? 0 : _Last - _First );
+		_First = s;
+		_Last = s + size;
 	}
 }
 
@@ -797,7 +828,7 @@ void fn_0053a6cc_map::tree::fn_0053a981( const tree& other )
 }
 
 // FUNCTION: STARFLEETOP 0x0053a9e3
-std::pair< fn_0053a6cc_map::iterator, bool > fn_0053a6cc_map::insert( const value_type& v )
+std::pair< fn_0053a73a_map::iterator, bool > fn_0053a73a_map::insert( const value_type& v )
 {
 	std::pair< iterator, bool > result = m_tree.insert( v );
 	return std::pair< iterator, bool >( result.first, result.second );

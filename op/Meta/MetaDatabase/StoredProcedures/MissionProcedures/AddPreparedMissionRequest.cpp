@@ -1,6 +1,23 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp
-// Functions: 0x0054fa6d to 0x0054fa6d, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Common/DataStore/DataStoreInput.h"
+#include "Common/DataStore/Streamable.h"
+#include "Common/Exceptions/Validate.h"
+#include "Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.h"
+
+using namespace nStoredProcedureArguments;
+
+// FUNCTION: STARFLEETOP 0x0054fa6d
+void tAddPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
+{
+	tRequestWithResponse::vfunction3( input );
+	char c = fObjectVersion;
+	fObjectVersion = 0;
+	if( c != 0 )
+	{
+#line 128
+		validate( 0 );
+	}
+	else
+	{
+		fFlag = ( input >> fPreparedMissions ).Get() != 0;
+	}
+}

@@ -195,12 +195,7 @@ struct tNetMsg_kDeepScan: public tNetMsg
 	virtual const tNetMsg::tMapItem *mGetMap(void) const;
 	int fID;
 };
-// HYPOTHESIS: one one-byte field, set to 1 by 0x004139ec; its meaning is not known.
-struct tNetMsg_kKillEntity: public tNetMsg
-{
-	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-	bool field_0x4;
-};
+#include "unsorted/tNetMsg_kKillEntity.h"
 // The object that the pointer at 0x0090be60 holds.
 // HYPOTHESIS: the class is inferred from 0x00413541 only; fn_00427581 returns 5 for the
 // relation that sends kAIChangeTeamRelationshipToWar.

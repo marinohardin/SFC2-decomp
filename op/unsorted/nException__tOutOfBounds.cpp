@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/nException__tOutOfBounds.cpp
-// Functions: 0x0042838f to 0x0042838f, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Exceptions/OutOfBounds.h"
+
+namespace nException
+{
+
+// FUNCTION: STARFLEETOP 0x0042838f
+tOutOfBounds::tOutOfBounds( const tOutOfBounds& other )
+	: tBaseException( other ), fObject( other.fObject ), fMin( other.fMin ), fMax( other.fMax ), fValue( other.fValue )
+{
+}
+
+}

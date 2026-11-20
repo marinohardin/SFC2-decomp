@@ -1,6 +1,99 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tShipSpecs.cpp
-// Functions: 0x00408901 to 0x0040891d, 2 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tShipSpecs.h"
+
+// MATCH-ONLY: the destructor of tShipSpecs is not claimed; only its scalar deleting destructor (0x00408901) is exact.
+// FUNCTION: STARFLEETOP 0x00408901
+tShipSpecs::~tShipSpecs()
+{
+}
+
+// FUNCTION: STARFLEETOP 0x0040891d
+tShipSpecs::tShipSpecs()
+{
+	m_0c = -1;
+	m_10 = -1;
+	m_14[0] = 0;
+	m_34 = -1;
+	m_38[0] = 0;
+	m_138[0] = 0;
+	m_238[0] = 0;
+	m_338[0] = 0;
+	m_378 = -1;
+	m_388 = 0;
+	m_38c = 0;
+	m_390 = 0;
+	m_37c = 0;
+	m_380 = -1;
+	m_384 = 0.0f;
+	m_394 = 0;
+	m_398 = 0;
+	m_39c = 0;
+	m_3a0 = 0;
+	m_3a4 = 0;
+	m_3a8 = 0;
+	for (int j = 0; j < 6; j++)
+		m_3ac[j] = 0;
+	m_3c4 = 0;
+	m_558 = 0;
+	m_55c = 0;
+	m_560 = 0;
+	m_564 = 0;
+	m_568 = 0;
+	m_56c = 0;
+	m_570 = 0;
+	m_574 = 0;
+	m_578 = 0;
+	m_57c = 0;
+	m_580 = 0;
+	m_584 = 0;
+	m_588 = 0;
+	m_58c = 0;
+	m_590 = 0;
+	m_594 = 0;
+	m_598 = 0;
+	m_59c = 0;
+	m_5a0 = 0;
+	m_5b4 = 0;
+	m_5b8 = 0;
+	m_5bc = 0;
+	m_5c0 = 0;
+	m_5c4 = 0;
+	m_5c8 = 0;
+	m_5cc = 0;
+	m_5d4 = 0;
+	m_5d0 = 0;
+	m_5d8 = 0;
+	m_5dc = 0;
+	m_5e0 = 0;
+	m_5e4 = 0;
+	m_5e8 = 0;
+	m_5ec = 0;
+	m_5f0 = 0;
+	m_5f4 = 0;
+	m_5f8 = 0;
+	m_5fc = 0;
+	m_600 = 0;
+	m_604 = 0;
+	m_608 = 0;
+	m_60c = 0;
+	m_610 = 0;
+	m_614 = 0;
+	m_618 = 0;
+	m_61c = 0;
+	m_620 = 0;
+	m_624 = 0;
+	m_628 = 0;
+	m_62c = 0.0f;
+	m_630[0] = 0;
+	m_650 = 0;
+	m_654 = 1;
+	m_658 = 5;
+	m_65c = 1;
+	m_660 = 1000;
+	m_664 = 1000;
+	m_668 = 0x1f;
+	for (int i = 0; i < 4; i++)
+	{
+		m_5a4[i] = 0;
+		m_66c[i] = "";
+	}
+}

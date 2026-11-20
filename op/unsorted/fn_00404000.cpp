@@ -88,10 +88,13 @@ fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf* _S)
 // header defines it in the class, so it cannot be redefined); written out as a stand-in class.
 // m0 is the implementation pointer, taken from std::locale::_Init at 0x0074c431; the global at
 // 0x00c8032c is std::locale::_Locimp::_Global.
-class fn_00404184_Locale
+// MATCH-ONLY: a template, because the compiler lets a template name those two members, which
+// the library's header keeps to its own classes.
+template<class T>
+class fn_00404184_LocaleT
 {
 public:
-    fn_00404184_Locale();
+    fn_00404184_LocaleT();
     std::locale::_Locimp* m0;
 };
 
@@ -101,20 +104,17 @@ public:
 
 
 
-
-
-
-
-extern fn_00402b90_Obj* g_00c8032c;
-std::locale::_Locimp* fn_0074c431() throw();
-
 // FUNCTION: STARFLEETOP 0x00404184
-fn_00404184_Locale::fn_00404184_Locale()
+template<class T>
+fn_00404184_LocaleT<T>::fn_00404184_LocaleT()
 {
-    m0 = fn_0074c431();
+    m0 = std::locale::_Init();
     std::_Lockit lock;
-    g_00c8032c->fn_00402b90();
+    ((fn_00402b90_Obj*)std::locale::_Locimp::_Global)->fn_00402b90();
 }
+template class fn_00404184_LocaleT<char>;
+
+
 
 // HYPOTHESIS: a locked-state owner; m0c points to a pointer to the lock object released by the
 // call at 0x0072eec0, m3c is cleared and bit 0 of m44 marks "held". The real class is unknown.
@@ -139,25 +139,25 @@ void fn_004041b2_Obj::fn_004041b2()
     m44 &= 0xfffffffe;
 }
 
-// HYPOTHESIS: unknown class; m50 is a state word tested before the lookup.
-class fn_00404230_Item;
+// The class is declared in a header, which the filebuf users also include.
+#include "unsorted/fn_00404230_Obj.h"
 
-class fn_00404230_Obj
-{
-public:
-    fn_00404230_Obj* fn_00404230(unsigned long a, unsigned long b);
-    void fn_0040499a(fn_00404230_Item* item, int n);
-    void fn_00404a0c();
-    fn_00404230_Obj* fn_00404267();
-    std::locale getloc() const;
-    char pad0[0x38];
-    std::codecvt<char, char, int>* m38;
-    char pad3c[0x08];
-    std::string* m44;
-    char pad48[0x04];
-    std::locale m4c;
-    unsigned long m50;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 fn_00404230_Item* fn_0074c69d(unsigned long a, unsigned long b);
 

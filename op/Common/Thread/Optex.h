@@ -35,6 +35,7 @@ public:
 	tOptex( tThreadState::eUse use = tThreadState::kUseThreadObject, int32u spinCount = 4000 );
 	~tOptex();
 
+	void SetSpinCount( int32u spinCount );
 	void Enter();
 	bool TryEnter();
 	void Leave();
@@ -54,12 +55,25 @@ protected:
 		CRITICAL_SECTION	fCriticalSection;
 	};
 
+	enum eProccessorState
+	{
+		kNotSet,
+		kMultiProccessor,
+		kSingleProccessor
+	};
+
 	tThreadState::eUse	fUse;
 	bool				fInitComplete;
 	bool				fUseCriticalSections;
 	void*				fEvent;
 	void*				fFileMapping;
 	tSharedInfo*		fpSharedInfo;
+
+	static eProccessorState fProccessorState;
+
+	static bool		fIsWindows95;
+	static bool		fIsWindows98;
+	static bool		fTreatWindows98As95;
 };
 
 inline tOptex::tOptex( tThreadState::eUse use, int32u spinCount )

@@ -74,8 +74,8 @@ extern const char *g_00844ea0;
 extern const char *g_00844eb8;
 extern const char *g_00844ebc;
 extern const char *g_00844e90;
-// HYPOTHESIS: cdecl; the meaning of the arguments is not known.
-void fn_004d34e8(const char *name, const char *group, int n);
+
+
 // HYPOTHESIS: the current time, and the modem state's flag and time of its last progress dot.
 extern double g_00c7c148;
 extern char g_0090daa8;
@@ -377,7 +377,12 @@ void tState_GameConnections::fn_004682c7()
 			m10 = 1;
 			m11 = 1;
 		}
-		else if ((!strcmp(name, "MPlayer") && !m14) || (!strcmp(name, "DPSim") && m14))
+		else if (!strcmp(name, "MPlayer") && !m14)
+		{
+			fn_004d34c5(0x10008, 0);
+			m11 = 1;
+		}
+		else if (!strcmp(name, "DPSim") && m14)
 		{
 			fn_004d34c5(0x10008, 0);
 			m11 = 1;
@@ -676,8 +681,8 @@ void tState_GameConnections::fn_00468c49()
 			case 5:
 				status = tag->mGetString(4);
 				m12[0] = 1;
-				fn_004d34e8(g_00844eb8, g_00844eac, 0);
-				fn_004d34e8(g_00844ebc, g_00844eac, 0);
+				fn_004d34e8((long) g_00844eb8, (long) g_00844eac, 0);
+				fn_004d34e8((long) g_00844ebc, (long) g_00844eac, 0);
 				fn_004d346f(g_00844ec0, g_00844eac);
 				break;
 			}
@@ -695,12 +700,15 @@ void tState_GameConnections::fn_00468c49()
 			if (!((tState_Namespace_NetSetup::tState_NetSetup *) this)->fn_0047685b())
 			{
 				if (g_00844ec8-- > 0)
+				{
 					fn_004695c4("JoinStatus", 0);
+					return;
+				}
 				else
 				{
 					fn_004695c4("JoinStatus", 3);
-					fn_004d34e8(g_00844eb8, g_00844eac, 0);
-					fn_004d34e8(g_00844ebc, g_00844eac, 0);
+					fn_004d34e8((long) g_00844eb8, (long) g_00844eac, 0);
+					fn_004d34e8((long) g_00844ebc, (long) g_00844eac, 0);
 					fn_004d346f(g_00844ec0, g_00844eac);
 					gNetControl.fn_00433c46();
 					g_00844ec8 = 10;

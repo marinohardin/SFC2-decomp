@@ -23,6 +23,9 @@ public:
 //Setup
 	tDatabaseObjectUpdate();
 	tDatabaseObjectUpdate( const tDatabaseObject& object );
+	// HYPOTHESIS: 0x00566d8a copies an update onto the stack through an out-of-line copy
+	// constructor (0x0054d61d).
+	tDatabaseObjectUpdate( const tDatabaseObjectUpdate& update );
 	virtual ~tDatabaseObjectUpdate();
 
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;

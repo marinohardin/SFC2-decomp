@@ -28,6 +28,7 @@ class tStrMgrCore
 		// Name from the exe's throw info; its enumerators are not recovered.
 		enum eStrManagerErr {};
 
+							tStrMgrCore( unsigned char );
 		virtual				~tStrMgrCore( void );
 		virtual		void	mDone		( void );
 		virtual		unsigned char	mLoadStringFile	( const char *, bool );

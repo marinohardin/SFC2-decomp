@@ -6,6 +6,7 @@
 
 #include "unsorted/tApplication.h"
 
+class tBmpSurf;
 struct tagRECT;
 typedef tagRECT RECT;
 
@@ -111,7 +112,8 @@ public:
 	virtual void vfunction82();
 	virtual void vfunction83();
 	virtual void vfunction84();
-	virtual void vfunction85();
+	// HYPOTHESIS: +0x150 takes a texture handle and its surface (tSFCTexMgrEx::vfunction4).
+	virtual void vfunction85(int, tBmpSurf *, char, int);    // +0x150
 	// HYPOTHESIS: tSfcApp3d::vfunction21 calls +0x154 with the two "Mouse" settings (async,
 	// hwblit) and passes its result to the mouse at 0x00898c24.
 	virtual int vfunction86(int, int);    // +0x154
@@ -176,5 +178,8 @@ public:
 	tView3D *m_field10;    // +0x10
 	char m_field14;    // +0x14
 };
+
+// HYPOTHESIS: the application singleton pointer (0x0089309c), set by the constructor.
+extern tApp3dBase *g_pApp3dBase;
 
 #endif	// tApp3dBase_h

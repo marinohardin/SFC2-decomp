@@ -23,6 +23,8 @@ c_00468677_source* fn_004d3446( int id );
 void fn_004d346f( const char* name, const char* group );
 // HYPOTHESIS: enables (true) or disables (false) the control with the given id.
 void fn_004d34c5( int id, bool enable );
+// HYPOTHESIS: the same for the control with the given name in the given group.
+void fn_004d34e8( long name, long group, char enable );
 void fn_004d3564( const char* psz1, const char* psz2, int n );
 // HYPOTHESIS: binds a value object to a control name; registers a control name; unregisters
 // one; and unbinds a value object from a name, returning it (deleted first when asked).

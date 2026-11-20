@@ -1,6 +1,40 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/MetaDatabase/StoredProcedures/MissionProcedures/KillPreparedMissionRequest.cpp
-// Functions: 0x00550e96 to 0x00550e96, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Common/DataStore/DataStoreInput.h"
+#include "Common/DataStore/Streamable.h"
+#include "Common/Exceptions/Validate.h"
+
+#include "unsorted/nSwitch__tRequestWithResponse.h"
+
+// HYPOTHESIS: the class layout below is reconstructed from the function's accesses only.
+class tKillPreparedMissionRequest : public nSwitch::tRequestWithResponse
+{
+public:
+	class tPreparedMissionKey : public nDataStore::tStreamable
+	{
+	public:
+		virtual void StreamOut( nDataStore::tOutput& output ) const;
+		virtual void StreamIn( nDataStore::tInput& input );
+		char pad[4];
+	};
+
+	virtual void vfunction3( nDataStore::tInput& input );
+	bool fFlag;
+	tPreparedMissionKey fKey;
+};
+
+// FUNCTION: STARFLEETOP 0x00550e96
+void tKillPreparedMissionRequest::vfunction3( nDataStore::tInput& input )
+{
+	tRequestWithResponse::vfunction3( input );
+	int8u c = fObjectVersion;
+	fObjectVersion = 0;
+	if( c != 0 )
+	{
+#line 104
+		validate( 0 );
+	}
+	else
+	{
+		fFlag = input.Get() != 0;
+		input >> fKey;
+	}
+}

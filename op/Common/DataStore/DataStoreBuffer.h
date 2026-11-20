@@ -78,7 +78,17 @@ void tBuffer::Read( byte* data, int32 size, iPos getPos ) const
 {
 	if( getPos + size > Size() )
 	{
+// MATCH-ONLY: the original defines this inline body in DataStoreBuffer.cpp, which its header
+// includes; the exe's exception carries that file and line (0x006fc090). Only a unit that
+// defines DATASTORE_BUFFER_READ_LINE gets them: a unit that emits Read out of line has its
+// source listing open the named file from the unit's folder, which fails outside this one.
+#if defined( DATASTORE_BUFFER_READ_LINE )
+#line 128 "DataStoreBuffer.cpp"
+#endif
 		throw except::tOutOfBounds( "tBuffer", 0, Size(), getPos + size, __FILE__, __LINE__ );
+#if defined( DATASTORE_BUFFER_READ_LINE )
+#line 90 "DataStoreBuffer.h"
+#endif
 	}
 
 	iBuffer::const_iterator start = fBuffer.begin() + getPos;

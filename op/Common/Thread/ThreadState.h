@@ -17,13 +17,23 @@ public:
 		kUseThreadObject,
 	};
 
+	tThreadState( eUse defaultThreadObjectUse );
+
 	virtual ~tThreadState();
+
+	static tThreadState* GetCurThreadState();
 
 	static void SetCurThreadState( tThreadState* );
 
 	virtual void SetDefaultThreadObjectUse( eUse defaultThreadObjectUse );
 
 	virtual eUse DefaultThreadObjectUse();
+
+protected:
+	static tThreadState* fCurThreadState;
+
+	// HYPOTHESIS: the constructor argument is stored as the default use
+	eUse fDefaultThreadObjectUse;
 };
 
 #endif

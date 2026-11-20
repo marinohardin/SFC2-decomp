@@ -1,10 +1,19 @@
 // tSfcMouseMgr_Ex: the game's mouse manager (RTTI name).
 // Original source file unknown; functions grouped by class (op/UNITS.tsv).
 
-class tSfcMouseMgr_Ex {
+#include "unsorted/tSfcMouseMgr.h"
+
+class tSfcMouseMgr_Ex : public tSfcMouseMgr {
 public:
+    virtual ~tSfcMouseMgr_Ex();
     virtual void vfunction2();
 };
+
+// MATCH-ONLY: the destructor of tSfcMouseMgr_Ex is not claimed; only its scalar deleting destructor (0x0040be17) is exact.
+// FUNCTION: STARFLEETOP 0x0040be17
+tSfcMouseMgr_Ex::~tSfcMouseMgr_Ex()
+{
+}
 
 // HYPOTHESIS: the code at 0x0040be9b (its exception-frame setup and body) is rebuilt as
 // fn_0040bea5_mgr::fn_0040bea5, which claims 0x0040be9b. This empty definition is not the original; it stays

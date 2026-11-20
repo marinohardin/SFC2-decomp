@@ -21,6 +21,8 @@ public:
 
 	void			fn_006a5c20( void );					// clear the description
 	bool			mLock( void );							// read the pixels on first lock
+	// HYPOTHESIS: the counterpart of mLock; tSFCTexMgrEx::vfunction4 calls it after mLock.
+	void			fn_006a6500( void );
 
 	long			field_04;		// 1 for a Windows header, 2 for an OS/2 core header
 	char			field_08[0x104];

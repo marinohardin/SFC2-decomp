@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-19T07:05:37Z",
+ "generated_at": "2026-11-20T04:54:37Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "a890b34432591cbcbb137ac1f02da7728eb7f94e1cf37239b37c4f746d74e47f"
+   "sha256": "4a19311329c7334823180accf76bfc29c9b5046d4cbc5eab091a882715dff01e"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "0bb4b81d6c665a4d0ca4dfd4b74b7f54601e73d2fe4d7a9d345ed6543eb06df5"
+   "sha256": "9e5383f49bafbd9887f75db0f9225da609dee13bad970ff0c088c9a995560125"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 3858,
-     "pct_functions": 16.7223,
-     "function_bytes": 482603,
-     "funclet_bytes": 9543,
-     "bytes": 492146,
-     "pct_bytes": 14.1672,
-     "pct_text": 13.1171
+     "functions": 4196,
+     "pct_functions": 18.1873,
+     "function_bytes": 522948,
+     "funclet_bytes": 11243,
+     "bytes": 534191,
+     "pct_bytes": 15.3775,
+     "pct_text": 14.2377
     },
     "functional": {
      "functions": 0,
@@ -102,13 +102,13 @@
      "pct_text": 0.0
     },
     "partial": {
-     "functions": 376,
-     "pct_functions": 1.6298,
-     "function_bytes": 149448,
-     "funclet_bytes": 7122,
-     "bytes": 156570,
-     "pct_bytes": 4.5071,
-     "pct_text": 4.173
+     "functions": 401,
+     "pct_functions": 1.7381,
+     "function_bytes": 161930,
+     "funclet_bytes": 8853,
+     "bytes": 170783,
+     "pct_bytes": 4.9163,
+     "pct_text": 4.5519
     },
     "lifted": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 18837,
-     "pct_functions": 81.648,
-     "function_bytes": 2674249,
-     "funclet_bytes": 150876,
-     "bytes": 2825125,
-     "pct_bytes": 81.3257,
-     "pct_text": 75.2978
+     "functions": 18474,
+     "pct_functions": 80.0746,
+     "function_bytes": 2621422,
+     "funclet_bytes": 147445,
+     "bytes": 2768867,
+     "pct_bytes": 79.7062,
+     "pct_text": 73.7984
     }
    },
    "named": {
@@ -161,28 +161,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 361,
-     "function_bytes": 49691,
-     "pct_functions": 1.5647
+     "functions": 498,
+     "function_bytes": 61019,
+     "pct_functions": 2.1586
     },
     "rtti-class": {
-     "functions": 7486,
-     "function_bytes": 986590,
-     "pct_functions": 32.4477
+     "functions": 7360,
+     "function_bytes": 976395,
+     "pct_functions": 31.9015
     },
     "none": {
-     "functions": 12566,
-     "function_bytes": 1765802,
-     "pct_functions": 54.4666
+     "functions": 12555,
+     "function_bytes": 1764669,
+     "pct_functions": 54.419
     }
    },
    "named_real_symbol": {
-    "functions": 3019,
-    "pct_functions": 13.0857
+    "functions": 3156,
+    "pct_functions": 13.6795
    },
    "named_with_class": {
-    "functions": 10505,
-    "pct_functions": 45.5334
+    "functions": 10516,
+    "pct_functions": 45.581
    }
   },
   "game": {
@@ -192,12 +192,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 3858,
-     "pct_functions": 17.4066,
-     "function_bytes": 482603,
-     "funclet_bytes": 9543,
-     "bytes": 492146,
-     "pct_bytes": 14.7756
+     "functions": 4196,
+     "pct_functions": 18.9316,
+     "function_bytes": 522948,
+     "funclet_bytes": 11243,
+     "bytes": 534191,
+     "pct_bytes": 16.0379
     },
     "functional": {
      "functions": 0,
@@ -208,12 +208,12 @@
      "pct_bytes": 0.0
     },
     "partial": {
-     "functions": 376,
-     "pct_functions": 1.6964,
-     "function_bytes": 149448,
-     "funclet_bytes": 7122,
-     "bytes": 156570,
-     "pct_bytes": 4.7007
+     "functions": 401,
+     "pct_functions": 1.8092,
+     "function_bytes": 161930,
+     "funclet_bytes": 8853,
+     "bytes": 170783,
+     "pct_bytes": 5.1274
     },
     "lifted": {
      "functions": 0,
@@ -224,12 +224,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 17930,
-     "pct_functions": 80.897,
-     "function_bytes": 2539393,
-     "funclet_bytes": 142691,
-     "bytes": 2682084,
-     "pct_bytes": 80.5237
+     "functions": 17567,
+     "pct_functions": 79.2592,
+     "function_bytes": 2486566,
+     "funclet_bytes": 139260,
+     "bytes": 2625826,
+     "pct_bytes": 78.8347
     }
    },
    "named": {
@@ -264,28 +264,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 361,
-     "function_bytes": 49691,
-     "pct_functions": 1.6288
+     "functions": 498,
+     "function_bytes": 61019,
+     "pct_functions": 2.2469
     },
     "rtti-class": {
-     "functions": 7152,
-     "function_bytes": 943013,
-     "pct_functions": 32.2685
+     "functions": 7026,
+     "function_bytes": 932818,
+     "pct_functions": 31.7001
     },
     "none": {
-     "functions": 12565,
-     "function_bytes": 1765774,
-     "pct_functions": 56.691
+     "functions": 12554,
+     "function_bytes": 1764641,
+     "pct_functions": 56.6414
     }
    },
    "named_real_symbol": {
-    "functions": 2447,
-    "pct_functions": 11.0404
+    "functions": 2584,
+    "pct_functions": 11.6585
    },
    "named_with_class": {
-    "functions": 9599,
-    "pct_functions": 43.309
+    "functions": 9610,
+    "pct_functions": 43.3586
    }
   }
  },
@@ -353,6 +353,30 @@
    "name": "tApp3dBase::vfunction18"
   },
   {
+   "address": "00401862",
+   "name": "tFighterSpec::tFighterSpec"
+  },
+  {
+   "address": "00401974",
+   "name": "tFighterSpec::scalar_deleting_destructor"
+  },
+  {
+   "address": "00401990",
+   "name": "tFighterSpec::~tFighterSpec"
+  },
+  {
+   "address": "004019f7",
+   "name": "tFighterSpec::tFighterSpec"
+  },
+  {
+   "address": "00401c9c",
+   "name": "tFighterSpecMgr::tFighterSpecMgr"
+  },
+  {
+   "address": "00401cf7",
+   "name": "tFighterSpecMgr::scalar_deleting_destructor"
+  },
+  {
    "address": "004021cc",
    "name": "FUN_004021cc"
   },
@@ -389,12 +413,28 @@
    "name": "FUN_00402763"
   },
   {
+   "address": "004027c8",
+   "name": "FUN_004027c8"
+  },
+  {
    "address": "00402967",
    "name": "FUN_00402967"
   },
   {
    "address": "00402971",
    "name": "FUN_00402971"
+  },
+  {
+   "address": "00402987",
+   "name": "FUN_00402987"
+  },
+  {
+   "address": "004029b1",
+   "name": "FUN_004029b1"
+  },
+  {
+   "address": "004029e8",
+   "name": "FUN_004029e8"
   },
   {
    "address": "00402b22",
@@ -435,6 +475,10 @@
   {
    "address": "00402d77",
    "name": "FUN_00402d77"
+  },
+  {
+   "address": "0040345f",
+   "name": "FUN_0040345f"
   },
   {
    "address": "004034a5",
@@ -495,6 +539,10 @@
   {
    "address": "004040a4",
    "name": "FUN_004040a4"
+  },
+  {
+   "address": "00404184",
+   "name": "FUN_00404184"
   },
   {
    "address": "004041b2",
@@ -745,6 +793,70 @@
    "name": "FUN_00406c9b"
   },
   {
+   "address": "00407c17",
+   "name": "tCookie::vfunction3"
+  },
+  {
+   "address": "00407c29",
+   "name": "tCookie::vfunction4"
+  },
+  {
+   "address": "00407c81",
+   "name": "tSession::vfunction1"
+  },
+  {
+   "address": "00407c8b",
+   "name": "tPath::~tPath"
+  },
+  {
+   "address": "00407cf1",
+   "name": "tDynamicMemoryFreeList::~tDynamicMemoryFreeList"
+  },
+  {
+   "address": "00407cfc",
+   "name": "tDynamicMemoryFreeList::vfunction2"
+  },
+  {
+   "address": "00407d08",
+   "name": "tDynamicMemoryFreeList::vfunction3"
+  },
+  {
+   "address": "00407d0c",
+   "name": "tDynamicMemoryFreeList::vfunction16"
+  },
+  {
+   "address": "00407d36",
+   "name": "tShipSpecManager::scalar_deleting_destructor"
+  },
+  {
+   "address": "004088c6",
+   "name": "tListMember::~tListMember"
+  },
+  {
+   "address": "004088cd",
+   "name": "tListMember::vfunction2"
+  },
+  {
+   "address": "004088d6",
+   "name": "tDynamicMemoryFreeList::vfunction4"
+  },
+  {
+   "address": "004088da",
+   "name": "tListMember::vfunction6"
+  },
+  {
+   "address": "00408901",
+   "name": "tShipSpecs::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040a5b9",
+   "name": "tSystemCreationInfo::tSystemCreationInfo"
+  },
+  {
+   "address": "0040a5d1",
+   "name": "tSystemCreationInfo::~tSystemCreationInfo"
+  },
+  {
    "address": "0040aad2",
    "name": "tSfcApp3d::tSfcApp3d"
   },
@@ -793,6 +905,10 @@
    "name": "tSfcApp3d::vfunction4"
   },
   {
+   "address": "0040b4bf",
+   "name": "tGLPixFmt::~tGLPixFmt"
+  },
+  {
    "address": "0040bd69",
    "name": "tMouseMgr_Base::~tMouseMgr_Base"
   },
@@ -807,6 +923,14 @@
   {
    "address": "0040bd95",
    "name": "tMouseMgr_Ex::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040bdf3",
+   "name": "tSfcMouseMgr::~tSfcMouseMgr"
+  },
+  {
+   "address": "0040be17",
+   "name": "tSfcMouseMgr_Ex::scalar_deleting_destructor"
   },
   {
    "address": "0040c016",
@@ -917,6 +1041,46 @@
    "name": "tMyApp::vfunction23"
   },
   {
+   "address": "0040c7e7",
+   "name": "tTexBmpZip::vfunction1"
+  },
+  {
+   "address": "0040c8d2",
+   "name": "tCommonSettings::tCommonSettings"
+  },
+  {
+   "address": "0040c904",
+   "name": "tCommonSettings::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040c920",
+   "name": "tCommonSettings::~tCommonSettings"
+  },
+  {
+   "address": "0040c963",
+   "name": "tElectricSpark::tElectricSpark"
+  },
+  {
+   "address": "0040c97b",
+   "name": "tElectricSpark::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040c997",
+   "name": "tElectricSpark::~tElectricSpark"
+  },
+  {
+   "address": "0040c9c6",
+   "name": "FUN_0040c9c6"
+  },
+  {
+   "address": "0040ca18",
+   "name": "tElectricSpark::vfunction2"
+  },
+  {
+   "address": "0040cc0a",
+   "name": "tElectricSpark::vfunction3"
+  },
+  {
    "address": "0040ceae",
    "name": "tINIMgr::tINIMgr_Constructor_or_Destructor"
   },
@@ -967,6 +1131,10 @@
   {
    "address": "0040d05e",
    "name": "tINIMgr::vfunction10"
+  },
+  {
+   "address": "0040d60d",
+   "name": "tSFCStream::tSFCStream"
   },
   {
    "address": "0040d63f",
@@ -1369,6 +1537,38 @@
    "name": "tSFCTexMgrEx::tSFCTexMgrEx"
   },
   {
+   "address": "0040ee2a",
+   "name": "tSFCTexMgr::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040ee47",
+   "name": "tSFCTexMgrEx::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040ee73",
+   "name": "tSFCTexMgrEx::~tSFCTexMgrEx"
+  },
+  {
+   "address": "0040eed6",
+   "name": "tSFCTexMgr::~tSFCTexMgr"
+  },
+  {
+   "address": "0040eedd",
+   "name": "tSFCTexMgrEx::vfunction3"
+  },
+  {
+   "address": "0040efcb",
+   "name": "tSFCTexMgrEx::vfunction2"
+  },
+  {
+   "address": "0040f015",
+   "name": "tSFCTexMgrEx::vfunction4"
+  },
+  {
+   "address": "0040f0b9",
+   "name": "tSFCTexMgrEx::vfunction5"
+  },
+  {
    "address": "0040f87f",
    "name": "tSphere::vfunction4"
   },
@@ -1399,6 +1599,18 @@
   {
    "address": "0040f99d",
    "name": "tSphere::vfunction10"
+  },
+  {
+   "address": "0040fea0",
+   "name": "tETrait_Creator::tETrait_Creator"
+  },
+  {
+   "address": "0040feb7",
+   "name": "tETrait_Creator::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040fed3",
+   "name": "tETrait_Creator::~tETrait_Creator"
   },
   {
    "address": "0040fefb",
@@ -1449,6 +1661,42 @@
    "name": "tEntity::vfunction7"
   },
   {
+   "address": "004101c8",
+   "name": "tNetMsg_kNotifyScriptEvent::vfunction1"
+  },
+  {
+   "address": "004101e4",
+   "name": "tEntity::vfunction16"
+  },
+  {
+   "address": "0041020c",
+   "name": "tEntity::vfunction17"
+  },
+  {
+   "address": "0041021f",
+   "name": "FUN_0041021f"
+  },
+  {
+   "address": "00410227",
+   "name": "FUN_00410227"
+  },
+  {
+   "address": "00410231",
+   "name": "FUN_00410231"
+  },
+  {
+   "address": "00410239",
+   "name": "FUN_00410239"
+  },
+  {
+   "address": "00410243",
+   "name": "FUN_00410243"
+  },
+  {
+   "address": "004102a0",
+   "name": "tNetMsg_kNotifyScriptEvent::~tNetMsg_kNotifyScriptEvent"
+  },
+  {
    "address": "004105dd",
    "name": "tPhysicalEntity::vfunction28"
   },
@@ -1495,6 +1743,10 @@
   {
    "address": "00410667",
    "name": "tPhysicalEntity::vfunction64"
+  },
+  {
+   "address": "00410a46",
+   "name": "tNetMsg_kKillEntity::vfunction1"
   },
   {
    "address": "00413153",
@@ -1619,6 +1871,90 @@
   {
    "address": "00413fe9",
    "name": "tPhysicalEntity::vfunction46"
+  },
+  {
+   "address": "00414b76",
+   "name": "tNetMsg_kHoldPosition::vfunction1"
+  },
+  {
+   "address": "00414b7c",
+   "name": "tNetMsg_kMoveInDirection::vfunction1"
+  },
+  {
+   "address": "00414b82",
+   "name": "tNetMsg_kMoveTo::vfunction1"
+  },
+  {
+   "address": "00414b88",
+   "name": "tNetMsg_kOrbit::vfunction1"
+  },
+  {
+   "address": "0041978f",
+   "name": "tNetMsg_kAdjustSpeed::vfunction1"
+  },
+  {
+   "address": "00419795",
+   "name": "tNetMsg_kShipTargetable::vfunction1"
+  },
+  {
+   "address": "0041979b",
+   "name": "tNetMsg_kShipCanTarget::vfunction1"
+  },
+  {
+   "address": "004197a1",
+   "name": "tNetMsg_kBreakDown::vfunction1"
+  },
+  {
+   "address": "004197a7",
+   "name": "tNetMsg_kWarpOut::vfunction1"
+  },
+  {
+   "address": "004197ad",
+   "name": "tNetMsg_kCorrectPos::vfunction1"
+  },
+  {
+   "address": "004197b9",
+   "name": "tNetMsg_kCreateESG::vfunction1"
+  },
+  {
+   "address": "004197d1",
+   "name": "tNetMsg_kLayMine::vfunction1"
+  },
+  {
+   "address": "004197d7",
+   "name": "tNetMsg_kSelectTarget::vfunction1"
+  },
+  {
+   "address": "004197dd",
+   "name": "tNetMsg_kTransportBomb::vfunction1"
+  },
+  {
+   "address": "004197e9",
+   "name": "tNetMsg_kCaptureShip::vfunction1"
+  },
+  {
+   "address": "004197ef",
+   "name": "tNetMsg_kRotateTractor::vfunction1"
+  },
+  {
+   "address": "004197f5",
+   "name": "tNetMsg_kSendVoice::vfunction1"
+  },
+  {
+   "address": "004197fb",
+   "name": "tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals"
+  },
+  {
+   "address": "00419809",
+   "name": "tNetMsg_kUpdateInternals::vfunction1"
+  },
+  {
+   "address": "0041980f",
+   "name": "tNetMsg_kUpdateCloakStatus::vfunction1"
+  },
+  {
+   "address": "0041eeaf",
+   "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint"
   },
   {
    "address": "00421b42",
@@ -1821,8 +2157,16 @@
    "name": "tEntityMgr::vfunction1"
   },
   {
+   "address": "00424c07",
+   "name": "tStrMgrCore::scalar_deleting_destructor"
+  },
+  {
    "address": "00426ca8",
    "name": "FUN_00426ca8"
+  },
+  {
+   "address": "00427366",
+   "name": "nDataStore::tStreamable::scalar_deleting_destructor"
   },
   {
    "address": "0042739e",
@@ -1935,6 +2279,18 @@
   {
    "address": "00427d96",
    "name": "tShip::scalar_deleting_destructor"
+  },
+  {
+   "address": "0042823d",
+   "name": "tOfficer::scalar_deleting_destructor"
+  },
+  {
+   "address": "004282f8",
+   "name": "tTransporterHoldItem::vfunction3"
+  },
+  {
+   "address": "0042838f",
+   "name": "nException::tOutOfBounds::tOutOfBounds"
   },
   {
    "address": "004296c8",
@@ -2225,6 +2581,10 @@
    "name": "t3DVisual_Model::vfunction10"
   },
   {
+   "address": "0042fa82",
+   "name": "t3DVisual_Model::vfunction11"
+  },
+  {
    "address": "0042fb24",
    "name": "t3DVisual_Model::vfunction12"
   },
@@ -2271,6 +2631,14 @@
   {
    "address": "0042fc91",
    "name": "FUN_0042fc91"
+  },
+  {
+   "address": "0042fd3f",
+   "name": "t3DVisual_Model::vfunction7"
+  },
+  {
+   "address": "0042fddb",
+   "name": "t3DVisual_Model::vfunction8"
   },
   {
    "address": "0042fe7e",
@@ -3485,6 +3853,10 @@
    "name": "FUN_00447d55"
   },
   {
+   "address": "00447d69",
+   "name": "FUN_00447d69"
+  },
+  {
    "address": "00447f3f",
    "name": "FUN_00447f3f"
   },
@@ -4269,6 +4641,10 @@
    "name": "FUN_00468297"
   },
   {
+   "address": "004682c7",
+   "name": "FUN_004682c7"
+  },
+  {
    "address": "004683ff",
    "name": "FUN_004683ff"
   },
@@ -4319,6 +4695,10 @@
   {
    "address": "00468c13",
    "name": "FUN_00468c13"
+  },
+  {
+   "address": "00468c49",
+   "name": "FUN_00468c49"
   },
   {
    "address": "00469096",
@@ -4663,6 +5043,10 @@
   {
    "address": "00476da0",
    "name": "FUN_00476da0"
+  },
+  {
+   "address": "00476e72",
+   "name": "FUN_00476e72"
   },
   {
    "address": "004772bf",
@@ -7145,6 +7529,10 @@
    "name": "FUN_00523428"
   },
   {
+   "address": "00523445",
+   "name": "FUN_00523445"
+  },
+  {
    "address": "00523543",
    "name": "FUN_00523543"
   },
@@ -7301,6 +7689,10 @@
    "name": "FUN_00534840"
   },
   {
+   "address": "00534855",
+   "name": "FUN_00534855"
+  },
+  {
    "address": "00534903",
    "name": "FUN_00534903"
   },
@@ -7425,6 +7817,10 @@
    "name": "FUN_005395b2"
   },
   {
+   "address": "00539801",
+   "name": "tMetaMapHex::vfunction3_for_tStreamable"
+  },
+  {
    "address": "00539ecc",
    "name": "tMetaMapHex::vfunction8_for_tAllocatedClass"
   },
@@ -7439,6 +7835,10 @@
   {
    "address": "00539f50",
    "name": "FUN_00539f50"
+  },
+  {
+   "address": "00539ff1",
+   "name": "FUN_00539ff1"
   },
   {
    "address": "0053a287",
@@ -7583,6 +7983,10 @@
   {
    "address": "0053ad07",
    "name": "tClassAllocator<tMetaMapHex>::vfunction3"
+  },
+  {
+   "address": "0053e70e",
+   "name": "tPlayingTeamInfo::vfunction3"
   },
   {
    "address": "0053f22f",
@@ -7777,12 +8181,28 @@
    "name": "FUN_005433a7"
   },
   {
+   "address": "005433dd",
+   "name": "FUN_005433dd"
+  },
+  {
+   "address": "005433e8",
+   "name": "FUN_005433e8"
+  },
+  {
+   "address": "005433f4",
+   "name": "FUN_005433f4"
+  },
+  {
    "address": "00543400",
    "name": "FUN_00543400"
   },
   {
    "address": "0054340c",
    "name": "FUN_0054340c"
+  },
+  {
+   "address": "00543437",
+   "name": "FUN_00543437"
   },
   {
    "address": "00543445",
@@ -8173,6 +8593,10 @@
    "name": "FUN_00546492"
   },
   {
+   "address": "005465d5",
+   "name": "FUN_005465d5"
+  },
+  {
    "address": "00546787",
    "name": "FUN_00546787"
   },
@@ -8295,6 +8719,254 @@
   {
    "address": "0054841d",
    "name": "tClassAllocator<tBattles>::vfunction3"
+  },
+  {
+   "address": "0054bd73",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex"
+  },
+  {
+   "address": "0054bf43",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex"
+  },
+  {
+   "address": "0054bf57",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::vfunction2"
+  },
+  {
+   "address": "0054c025",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::vfunction3"
+  },
+  {
+   "address": "0054c0d5",
+   "name": "FUN_0054c0d5"
+  },
+  {
+   "address": "0054c110",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tResponse"
+  },
+  {
+   "address": "0054c1ec",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tResponse"
+  },
+  {
+   "address": "0054c26d",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::vfunction2"
+  },
+  {
+   "address": "0054c2d1",
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::vfunction3"
+  },
+  {
+   "address": "0054c311",
+   "name": "FUN_0054c311"
+  },
+  {
+   "address": "0054c414",
+   "name": "FUN_0054c414"
+  },
+  {
+   "address": "0054c471",
+   "name": "FUN_0054c471"
+  },
+  {
+   "address": "0054c48b",
+   "name": "FUN_0054c48b"
+  },
+  {
+   "address": "0054c4e3",
+   "name": "FUN_0054c4e3"
+  },
+  {
+   "address": "0054fa6d",
+   "name": "nStoredProcedureArguments::tAddPreparedMissionRequest::vfunction3"
+  },
+  {
+   "address": "0054ffe5",
+   "name": "nStoredProcedureArguments::tChooseMissionRequest::vfunction3"
+  },
+  {
+   "address": "0055095b",
+   "name": "nStoredProcedureArguments::tExistPreparedMissionRequest::vfunction3"
+  },
+  {
+   "address": "00550d34",
+   "name": "nStoredProcedureArguments::tGetPreparedMissionRequest::vfunction3"
+  },
+  {
+   "address": "00550e96",
+   "name": "nStoredProcedureArguments::tKillPreparedMissionRequest::vfunction3"
+  },
+  {
+   "address": "005517de",
+   "name": "nStoredProcedureArguments::tReadyToPlayRequest::vfunction3"
+  },
+  {
+   "address": "00551a84",
+   "name": "nStoredProcedureArguments::tUpdatePreparedMissionRequest::vfunction3"
+  },
+  {
+   "address": "005596ed",
+   "name": "FUN_005596ed"
+  },
+  {
+   "address": "0055a13a",
+   "name": "FUN_0055a13a"
+  },
+  {
+   "address": "0055a18e",
+   "name": "FUN_0055a18e"
+  },
+  {
+   "address": "0055a1e2",
+   "name": "FUN_0055a1e2"
+  },
+  {
+   "address": "0055b087",
+   "name": "FUN_0055b087"
+  },
+  {
+   "address": "0055b12f",
+   "name": "FUN_0055b12f"
+  },
+  {
+   "address": "0055b183",
+   "name": "FUN_0055b183"
+  },
+  {
+   "address": "0056005c",
+   "name": "nAsyncDatabaseProcedure::tGetCurrentTurn::~tGetCurrentTurn"
+  },
+  {
+   "address": "005602ea",
+   "name": "nAsyncDatabaseProcedure::tLockCurrentTurn::~tLockCurrentTurn"
+  },
+  {
+   "address": "005604f2",
+   "name": "nAsyncDatabaseProcedure::tUnlockCurrentTurn::~tUnlockCurrentTurn"
+  },
+  {
+   "address": "005606ca",
+   "name": "nAsyncDatabaseProcedure::tClearPreparedMissionsID::~tClearPreparedMissionsID"
+  },
+  {
+   "address": "0056142b",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterMedals::~tGetCharacterMedals"
+  },
+  {
+   "address": "0056167b",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterOpenBidShipIDs::~tGetCharacterOpenBidShipIDs"
+  },
+  {
+   "address": "00561929",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterPosition::~tGetCharacterPosition"
+  },
+  {
+   "address": "00561c5e",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterPrestige::~tGetCharacterPrestige"
+  },
+  {
+   "address": "00561ebd",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterRank::~tGetCharacterRank"
+  },
+  {
+   "address": "00562637",
+   "name": "nAsyncDatabaseProcedure::tGetCharacterShipIDs::~tGetCharacterShipIDs"
+  },
+  {
+   "address": "00562910",
+   "name": "nAsyncDatabaseProcedure::tGetFleetData::~tGetFleetData"
+  },
+  {
+   "address": "00562f30",
+   "name": "nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs::~tGetLoggedOnCharacterIDs"
+  },
+  {
+   "address": "00563f83",
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::~tLogOffCharacter"
+  },
+  {
+   "address": "00564016",
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::scalar_deleting_destructor"
+  },
+  {
+   "address": "00564032",
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::~tLogOffCharacter"
+  },
+  {
+   "address": "00564951",
+   "name": "nAsyncDatabaseProcedure::tSetPreparedMissionsID::~tSetPreparedMissionsID"
+  },
+  {
+   "address": "005671b6",
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::~tAddPreparedMission"
+  },
+  {
+   "address": "00567249",
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::scalar_deleting_destructor"
+  },
+  {
+   "address": "00567265",
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::~tAddPreparedMission"
+  },
+  {
+   "address": "00567465",
+   "name": "nAsyncDatabaseProcedure::tCheckExistencePreparedMission::~tCheckExistencePreparedMission"
+  },
+  {
+   "address": "0056763a",
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::~tGetPreparedMission"
+  },
+  {
+   "address": "005676cd",
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::scalar_deleting_destructor"
+  },
+  {
+   "address": "005676e9",
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::~tGetPreparedMission"
+  },
+  {
+   "address": "005678f4",
+   "name": "nAsyncDatabaseProcedure::tKillPreparedMission::~tKillPreparedMission"
+  },
+  {
+   "address": "00567ad2",
+   "name": "nAsyncDatabaseProcedure::tUpdatePreparedMission::~tUpdatePreparedMission"
+  },
+  {
+   "address": "005686b8",
+   "name": "FUN_005686b8"
+  },
+  {
+   "address": "0056872c",
+   "name": "FUN_0056872c"
+  },
+  {
+   "address": "0056882f",
+   "name": "FUN_0056882f"
+  },
+  {
+   "address": "00568a71",
+   "name": "nAsyncDatabaseProcedure::tRepairShips::~tRepairShips"
+  },
+  {
+   "address": "00568b07",
+   "name": "nAsyncDatabaseProcedure::tRepairShips::scalar_deleting_destructor"
+  },
+  {
+   "address": "00568b23",
+   "name": "nAsyncDatabaseProcedure::tRepairShips::~tRepairShips"
+  },
+  {
+   "address": "00569bc9",
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::~tTransactionUpdateStores"
+  },
+  {
+   "address": "00569c5c",
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::scalar_deleting_destructor"
+  },
+  {
+   "address": "00569c78",
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::~tTransactionUpdateStores"
   },
   {
    "address": "0056c7c0",
@@ -9457,6 +10129,22 @@
    "name": "FUN_005a4287"
   },
   {
+   "address": "005a42a6",
+   "name": "FUN_005a42a6"
+  },
+  {
+   "address": "005a4309",
+   "name": "FUN_005a4309"
+  },
+  {
+   "address": "005a436c",
+   "name": "FUN_005a436c"
+  },
+  {
+   "address": "005a43d5",
+   "name": "FUN_005a43d5"
+  },
+  {
    "address": "005a443e",
    "name": "FUN_005a443e"
   },
@@ -10105,6 +10793,18 @@
    "name": "FUN_005d9ffe"
   },
   {
+   "address": "005dc698",
+   "name": "tMemberCallback<nAsyncClientNewsProcedure::tGetNewsResponse,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientNewsProcedure::tGetNewsResponse,nDataStore::tBuffer_const*>"
+  },
+  {
+   "address": "005dc8a8",
+   "name": "FUN_005dc8a8"
+  },
+  {
+   "address": "005dd252",
+   "name": "tMetaClientNewsCtlrC::~tMetaClientNewsCtlrC"
+  },
+  {
    "address": "005de28c",
    "name": "FUN_005de28c"
   },
@@ -10219,6 +10919,42 @@
   {
    "address": "005deff2",
    "name": "FUN_005deff2"
+  },
+  {
+   "address": "005df230",
+   "name": "FUN_005df230"
+  },
+  {
+   "address": "005df72e",
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tGetEmpireInfo,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tGetEmpireInfo,nDataStore::tBuffer_const*>"
+  },
+  {
+   "address": "005dfa31",
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tInitialize,nDataStore::tBuffer_const*>"
+  },
+  {
+   "address": "005dfb28",
+   "name": "nAsyncClientMapProcedures::tInitialize::scalar_deleting_destructor"
+  },
+  {
+   "address": "005dfb44",
+   "name": "nAsyncClientMapProcedures::tInitialize::~tInitialize"
+  },
+  {
+   "address": "005dfdab",
+   "name": "FUN_005dfdab"
+  },
+  {
+   "address": "005dfe22",
+   "name": "nAsyncClientMapProcedures::tInitialize::vfunction5"
+  },
+  {
+   "address": "005e009a",
+   "name": "FUN_005e009a"
+  },
+  {
+   "address": "005e028e",
+   "name": "tMemberCallback<nAsyncClientMapProcedures::tMoveResponse,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientMapProcedures::tMoveResponse,nDataStore::tBuffer_const*>"
   },
   {
    "address": "005e2501",
@@ -10641,6 +11377,110 @@
    "name": "FUN_005e4606"
   },
   {
+   "address": "005e5800",
+   "name": "tMetaClientMapPanel::vfunction19"
+  },
+  {
+   "address": "005e58f6",
+   "name": "tMetaClientMapPanel::vfunction20"
+  },
+  {
+   "address": "005e5957",
+   "name": "FUN_005e5957"
+  },
+  {
+   "address": "005e5a8f",
+   "name": "FUN_005e5a8f"
+  },
+  {
+   "address": "005e5abe",
+   "name": "FUN_005e5abe"
+  },
+  {
+   "address": "005e5ae0",
+   "name": "FUN_005e5ae0"
+  },
+  {
+   "address": "005e5b2d",
+   "name": "FUN_005e5b2d"
+  },
+  {
+   "address": "005e5ba6",
+   "name": "FUN_005e5ba6"
+  },
+  {
+   "address": "005e5bd7",
+   "name": "FUN_005e5bd7"
+  },
+  {
+   "address": "005e5bfe",
+   "name": "FUN_005e5bfe"
+  },
+  {
+   "address": "005e5c25",
+   "name": "FUN_005e5c25"
+  },
+  {
+   "address": "005e5c72",
+   "name": "FUN_005e5c72"
+  },
+  {
+   "address": "005e5ced",
+   "name": "FUN_005e5ced"
+  },
+  {
+   "address": "005e5dde",
+   "name": "FUN_005e5dde"
+  },
+  {
+   "address": "005e5e01",
+   "name": "FUN_005e5e01"
+  },
+  {
+   "address": "005e5e24",
+   "name": "FUN_005e5e24"
+  },
+  {
+   "address": "005e5edc",
+   "name": "FUN_005e5edc"
+  },
+  {
+   "address": "005e5ee7",
+   "name": "FUN_005e5ee7"
+  },
+  {
+   "address": "005e6091",
+   "name": "FUN_005e6091"
+  },
+  {
+   "address": "005e620c",
+   "name": "FUN_005e620c"
+  },
+  {
+   "address": "005e64ea",
+   "name": "FUN_005e64ea"
+  },
+  {
+   "address": "005e653d",
+   "name": "FUN_005e653d"
+  },
+  {
+   "address": "005e65e5",
+   "name": "FUN_005e65e5"
+  },
+  {
+   "address": "005e6d7c",
+   "name": "tMetaMapNormalHex::tMetaMapNormalHex"
+  },
+  {
+   "address": "005e7744",
+   "name": "FUN_005e7744"
+  },
+  {
+   "address": "005e78c6",
+   "name": "FUN_005e78c6"
+  },
+  {
    "address": "005ea14b",
    "name": "FUN_005ea14b"
   },
@@ -11015,6 +11855,10 @@
   {
    "address": "0060c51d",
    "name": "FUN_0060c51d"
+  },
+  {
+   "address": "0060c675",
+   "name": "FUN_0060c675"
   },
   {
    "address": "0060c68a",
@@ -14845,6 +15689,150 @@
    "name": "TextStreamCompress"
   },
   {
+   "address": "00675060",
+   "name": "tSurface::scalar_deleting_destructor"
+  },
+  {
+   "address": "00675080",
+   "name": "tSurface::tSurface"
+  },
+  {
+   "address": "006751c0",
+   "name": "tSurface::tSurface"
+  },
+  {
+   "address": "00675250",
+   "name": "tSurface::~tSurface"
+  },
+  {
+   "address": "00675280",
+   "name": "FUN_00675280"
+  },
+  {
+   "address": "00675470",
+   "name": "FUN_00675470"
+  },
+  {
+   "address": "006755b0",
+   "name": "FUN_006755b0"
+  },
+  {
+   "address": "00675a00",
+   "name": "tSurface::vfunction8"
+  },
+  {
+   "address": "00675b80",
+   "name": "tAsset::tAsset"
+  },
+  {
+   "address": "00675bf0",
+   "name": "FUN_00675bf0"
+  },
+  {
+   "address": "00675c10",
+   "name": "tAsset::vfunction5"
+  },
+  {
+   "address": "00675cd0",
+   "name": "tAsset::vfunction6"
+  },
+  {
+   "address": "00675db0",
+   "name": "tCastMgr::tCastMgr"
+  },
+  {
+   "address": "00675ec0",
+   "name": "FUN_00675ec0"
+  },
+  {
+   "address": "00675f40",
+   "name": "FUN_00675f40"
+  },
+  {
+   "address": "00675f50",
+   "name": "FUN_00675f50"
+  },
+  {
+   "address": "00675f70",
+   "name": "FUN_00675f70"
+  },
+  {
+   "address": "00675f90",
+   "name": "FUN_00675f90"
+  },
+  {
+   "address": "00676a00",
+   "name": "FUN_00676a00"
+  },
+  {
+   "address": "00677010",
+   "name": "tCastMgr::vfunction1"
+  },
+  {
+   "address": "00677d20",
+   "name": "tCastItem::vfunction5"
+  },
+  {
+   "address": "00677db0",
+   "name": "tCastItem::vfunction6"
+  },
+  {
+   "address": "00677e30",
+   "name": "tCastItem::scalar_deleting_destructor"
+  },
+  {
+   "address": "00677e50",
+   "name": "tCastItem::~tCastItem"
+  },
+  {
+   "address": "00678180",
+   "name": "tBoundAsset::vfunction5"
+  },
+  {
+   "address": "006781f0",
+   "name": "tBoundAsset::vfunction6"
+  },
+  {
+   "address": "00678250",
+   "name": "tBoundAsset::scalar_deleting_destructor"
+  },
+  {
+   "address": "00678ae0",
+   "name": "tBmpAsset::tBmpAsset"
+  },
+  {
+   "address": "00678b10",
+   "name": "FUN_00678b10"
+  },
+  {
+   "address": "00678b80",
+   "name": "tBmpAsset::vfunction5"
+  },
+  {
+   "address": "00678c40",
+   "name": "tBmpAsset::vfunction6"
+  },
+  {
+   "address": "00678cc0",
+   "name": "tBmpAsset::scalar_deleting_destructor"
+  },
+  {
+   "address": "00679140",
+   "name": "FUN_00679140"
+  },
+  {
+   "address": "00679170",
+   "name": "FUN_00679170"
+  },
+  {
+   "address": "006791a0",
+   "name": "FUN_006791a0"
+  },
+  {
+   "address": "006791d0",
+   "name": "FUN_006791d0"
+  },
+  {
    "address": "00690180",
    "name": "FUN_00690180"
   },
@@ -15473,16 +16461,380 @@
    "name": "tOSVersion::IsWindows98"
   },
   {
+   "address": "006f55c0",
+   "name": "tOSVersion::_OS_InterlockedCompareExchange"
+  },
+  {
+   "address": "006f5690",
+   "name": "tThreadState::GetCurThreadState"
+  },
+  {
+   "address": "006f5700",
+   "name": "tThreadState::SetCurThreadState"
+  },
+  {
+   "address": "006f5860",
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::Instance"
+  },
+  {
+   "address": "006f5950",
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::tHeartbeatTimerData"
+  },
+  {
+   "address": "006f5a10",
+   "name": "tHeartbeatTimer::tHeartbeatTimerData::~tHeartbeatTimerData"
+  },
+  {
+   "address": "006f5b00",
+   "name": "tHeartbeatTimer::tHeartbeatTimer"
+  },
+  {
+   "address": "006f5c50",
+   "name": "tHeartbeatTimer::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006f5c70",
+   "name": "tHeartbeatTimer::~tHeartbeatTimer"
+  },
+  {
+   "address": "006f5da0",
+   "name": "tHeartbeatTimer::StartTimer"
+  },
+  {
+   "address": "006f5ee0",
+   "name": "tHeartbeatTimer::StartTimer"
+  },
+  {
+   "address": "006f6020",
+   "name": "tHeartbeatTimer::StartTimer"
+  },
+  {
+   "address": "006f6160",
+   "name": "tHeartbeatTimer::ChangeTiming"
+  },
+  {
+   "address": "006f62c0",
+   "name": "tHeartbeatTimer::StopTimer"
+  },
+  {
+   "address": "006f6580",
+   "name": "tHeartbeatTimer::OnAutoRunHB"
+  },
+  {
+   "address": "006f65d0",
+   "name": "tHeartbeatTimer::Heartbeat"
+  },
+  {
+   "address": "006f6b60",
+   "name": "tSettings::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006f87d0",
+   "name": "tDateAndTime::tDateAndTime"
+  },
+  {
+   "address": "006f8800",
+   "name": "tDateAndTime::tDateAndTime"
+  },
+  {
+   "address": "006f8820",
+   "name": "tDateAndTime::operator="
+  },
+  {
+   "address": "006f8830",
+   "name": "tDateAndTime::GetTickCount"
+  },
+  {
+   "address": "006f8860",
+   "name": "tDateAndTime::GetLocalTm"
+  },
+  {
+   "address": "006f88b0",
+   "name": "tDateAndTime::SetToCurrentTime"
+  },
+  {
+   "address": "006f88d0",
+   "name": "tDateAndTime::GetYear"
+  },
+  {
+   "address": "006f88e0",
+   "name": "tDateAndTime::GetMonth"
+  },
+  {
+   "address": "006f88f0",
+   "name": "tDateAndTime::GetDay"
+  },
+  {
+   "address": "006f8900",
+   "name": "tDateAndTime::GetHour"
+  },
+  {
+   "address": "006f8910",
+   "name": "tDateAndTime::GetMinute"
+  },
+  {
+   "address": "006f8920",
+   "name": "tDateAndTime::operator<"
+  },
+  {
+   "address": "006f8cb0",
+   "name": "nDataStore::tStreamable::tCRCFailed::scalar_deleting_destructor"
+  },
+  {
+   "address": "006f8d50",
+   "name": "nDataStore::tStreamable::tCRCFailed::ReportException"
+  },
+  {
+   "address": "006f8d70",
+   "name": "FUN_006f8d70"
+  },
+  {
+   "address": "006f8d90",
+   "name": "FUN_006f8d90"
+  },
+  {
+   "address": "006f8e90",
+   "name": "nDataStore::tStreamable::tObjectIDInfo::tObjectIDInfo"
+  },
+  {
+   "address": "006f8eb0",
+   "name": "nDataStore::tStreamable::tStreamable"
+  },
+  {
+   "address": "006f8ed0",
+   "name": "nDataStore::tStreamable::~tStreamable"
+  },
+  {
+   "address": "006f9130",
+   "name": "nDataStore::tStreamable::GetVersion"
+  },
+  {
+   "address": "006f9420",
+   "name": "nDataStore::operator<<"
+  },
+  {
+   "address": "006fa440",
+   "name": "nDatabase::tID::IsValid"
+  },
+  {
+   "address": "006fa450",
+   "name": "tgPrefsPart::mActivate"
+  },
+  {
+   "address": "006fa460",
+   "name": "nDatabase::tID::operator=="
+  },
+  {
+   "address": "006fa470",
+   "name": "nDatabase::tID::operator!="
+  },
+  {
+   "address": "006fa480",
+   "name": "nDatabase::tID::operator<"
+  },
+  {
+   "address": "006fa6b0",
+   "name": "nDatabase::tDatabaseObject::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006fa6d0",
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject"
+  },
+  {
+   "address": "006fa870",
+   "name": "nDatabase::tDatabaseObject::operator="
+  },
+  {
+   "address": "006fa9f0",
+   "name": "nDatabase::tDatabaseObject::operator<"
+  },
+  {
+   "address": "006faa20",
+   "name": "nDatabase::tDatabaseObject::operator=="
+  },
+  {
+   "address": "006fac20",
+   "name": "nDatabase::tDatabaseObject::MakeReadOnly"
+  },
+  {
+   "address": "006fadc0",
+   "name": "nDatabase::tDatabaseObject::SetID"
+  },
+  {
+   "address": "006fade0",
+   "name": "nDatabase::tDatabaseObject::SetLockID"
+  },
+  {
+   "address": "006fb0f0",
+   "name": "nDatabase::tDatabaseObject::RemoveFromDB"
+  },
+  {
+   "address": "006fb3f0",
+   "name": "nDatabase::tDatabaseObject::UnLock"
+  },
+  {
+   "address": "006fb560",
+   "name": "nDatabase::tDatabaseObject::GetLockID"
+  },
+  {
+   "address": "006fb6a0",
+   "name": "nDatabase::tDatabaseObject::IsLocked"
+  },
+  {
+   "address": "006fb7f0",
+   "name": "nDatabase::tDatabaseObject::Kill"
+  },
+  {
+   "address": "006fb900",
+   "name": "nDatabase::tDatabaseObject::IsDead"
+  },
+  {
+   "address": "006fba50",
+   "name": "nDatabase::tDatabaseObject::AddReference"
+  },
+  {
+   "address": "006fbb90",
+   "name": "nDatabase::tDatabaseObject::RemoveReference"
+  },
+  {
+   "address": "006fbce0",
+   "name": "nDatabase::tDatabaseObject::CheckForDeath"
+  },
+  {
+   "address": "006fbe90",
+   "name": "nDatabase::tDatabaseObject::StreamOut"
+  },
+  {
+   "address": "006fc090",
+   "name": "nDatabase::tDatabaseObject::StreamIn"
+  },
+  {
+   "address": "006fc490",
+   "name": "tAllocatedClass::tAllocatedClass"
+  },
+  {
+   "address": "006fc4a0",
+   "name": "tAllocatedClass::scalar_deleting_destructor"
+  },
+  {
+   "address": "006fc4c0",
+   "name": "tAllocatedClass::~tAllocatedClass"
+  },
+  {
    "address": "006fc4d0",
    "name": "tAllocatedClass::operator=="
+  },
+  {
+   "address": "006fc500",
+   "name": "tDynamicAllocator::tAllocatorInfo::operator<"
+  },
+  {
+   "address": "006fc580",
+   "name": "tDynamicAllocator::tAllocatorInfo::operator=="
   },
   {
    "address": "006fc5a0",
    "name": "tDynamicAllocator::tAllocatorInfo::operator=="
   },
   {
+   "address": "006fc690",
+   "name": "tDynamicAllocator::Instance"
+  },
+  {
+   "address": "006fc700",
+   "name": "tDynamicAllocator::tDynamicAllocator"
+  },
+  {
+   "address": "006fc710",
+   "name": "tDynamicAllocator::~tDynamicAllocator"
+  },
+  {
    "address": "006fc750",
    "name": "tDynamicAllocator::LockDownAllocator"
+  },
+  {
+   "address": "006fc790",
+   "name": "tDynamicAllocator::mAddToAllocList"
+  },
+  {
+   "address": "006fcb40",
+   "name": "tDynamicAllocator::mAllocateClass"
+  },
+  {
+   "address": "006fd240",
+   "name": "nException::tOutOfBounds::tOutOfBounds"
+  },
+  {
+   "address": "006fd340",
+   "name": "nException::tBaseException::tBaseException"
+  },
+  {
+   "address": "006fd370",
+   "name": "nException::tBaseException::~tBaseException"
+  },
+  {
+   "address": "006fd5f0",
+   "name": "nException::tBaseException::GetDescription"
+  },
+  {
+   "address": "006fd970",
+   "name": "tCRC32::GenerateCRCTable"
+  },
+  {
+   "address": "006fd9b0",
+   "name": "tCRC32::UpdateCRC"
+  },
+  {
+   "address": "006fdb80",
+   "name": "tCommandLineArgs::Instance"
+  },
+  {
+   "address": "006fdc50",
+   "name": "tCommandLineArgs::tCommandLineArgs"
+  },
+  {
+   "address": "006fdd20",
+   "name": "tCommandLineArgs::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006fe0a0",
+   "name": "tWinClock::GetCurrentSystemTimeInSeconds"
+  },
+  {
+   "address": "006fe0e0",
+   "name": "FUN_006fe0e0"
+  },
+  {
+   "address": "006fe0f0",
+   "name": "FUN_006fe0f0"
+  },
+  {
+   "address": "006fe140",
+   "name": "tWinClockGlobal::Instance"
+  },
+  {
+   "address": "006fe4f0",
+   "name": "nLog::tLogStream::tStreamBuf::tStreamBuf"
+  },
+  {
+   "address": "006fe600",
+   "name": "nLog::tLogStream::tStreamBuf::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006fe880",
+   "name": "nLog::tLogStream::tStreamBuf::overflow"
+  },
+  {
+   "address": "006feda0",
+   "name": "nLog::tLogStream::tStreamBuf::SetEventType"
+  },
+  {
+   "address": "006fedc0",
+   "name": "nLog::tLogStream::tLogStream"
+  },
+  {
+   "address": "006feed0",
+   "name": "nLog::tLogStream::`scalar_deleting_destructor'"
   },
   {
    "address": "00707e80",
@@ -15760,22 +17112,6 @@
    "name": "FUN_00402452"
   },
   {
-   "address": "004027c8",
-   "name": "FUN_004027c8"
-  },
-  {
-   "address": "00402987",
-   "name": "FUN_00402987"
-  },
-  {
-   "address": "004029b1",
-   "name": "FUN_004029b1"
-  },
-  {
-   "address": "004029e8",
-   "name": "FUN_004029e8"
-  },
-  {
    "address": "00402a26",
    "name": "FUN_00402a26"
   },
@@ -15788,16 +17124,36 @@
    "name": "FUN_004033ab"
   },
   {
-   "address": "0040345f",
-   "name": "FUN_0040345f"
-  },
-  {
-   "address": "00404184",
-   "name": "FUN_00404184"
-  },
-  {
    "address": "00404f00",
    "name": "FUN_00404f00"
+  },
+  {
+   "address": "00407c3a",
+   "name": "tPath::tPath"
+  },
+  {
+   "address": "00407c5b",
+   "name": "tCookie::tCookie"
+  },
+  {
+   "address": "00407d14",
+   "name": "tDynamicMemoryFreeList::scalar_deleting_destructor"
+  },
+  {
+   "address": "00407d52",
+   "name": "tShipSpecManager::~tShipSpecManager"
+  },
+  {
+   "address": "004088e4",
+   "name": "tListMember::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040891d",
+   "name": "tShipSpecs::tShipSpecs"
+  },
+  {
+   "address": "0040a5d8",
+   "name": "tSystemCreationInfo::scalar_deleting_destructor"
   },
   {
    "address": "0040ab74",
@@ -15828,8 +17184,16 @@
    "name": "tSfcApp3d::vfunction21"
   },
   {
+   "address": "0040b4c6",
+   "name": "tGLPixFmt::scalar_deleting_destructor"
+  },
+  {
    "address": "0040bdb1",
    "name": "tMouseMgr_Ex::~tMouseMgr_Ex"
+  },
+  {
+   "address": "0040bdfa",
+   "name": "tSfcMouseMgr::scalar_deleting_destructor"
   },
   {
    "address": "0040be9b",
@@ -15860,6 +17224,10 @@
    "name": "tPhysicalEntity::vfunction49"
   },
   {
+   "address": "0041ef62",
+   "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint"
+  },
+  {
    "address": "0042192f",
    "name": "tEntityControlShip::tEntityControlShip"
   },
@@ -15880,8 +17248,16 @@
    "name": "FUN_0042402d"
   },
   {
+   "address": "00424b90",
+   "name": "tStrMgrCore::tStrMgrCore"
+  },
+  {
    "address": "00427fb2",
    "name": "tOfficerList::tOfficerList"
+  },
+  {
+   "address": "004282c7",
+   "name": "tTransporterHoldItem::tTransporterHoldItem"
   },
   {
    "address": "004295d0",
@@ -15972,18 +17348,6 @@
    "name": "FUN_0042cfd9"
   },
   {
-   "address": "0042fa82",
-   "name": "t3DVisual_Model::vfunction11"
-  },
-  {
-   "address": "0042fd3f",
-   "name": "t3DVisual_Model::vfunction7"
-  },
-  {
-   "address": "0042fddb",
-   "name": "t3DVisual_Model::vfunction8"
-  },
-  {
    "address": "0042fef9",
    "name": "FUN_0042fef9"
   },
@@ -16030,10 +17394,6 @@
   {
    "address": "004472bc",
    "name": "FUN_004472bc"
-  },
-  {
-   "address": "00447d69",
-   "name": "FUN_00447d69"
   },
   {
    "address": "00448235",
@@ -16092,20 +17452,8 @@
    "name": "FUN_00460ede"
   },
   {
-   "address": "004682c7",
-   "name": "FUN_004682c7"
-  },
-  {
-   "address": "00468c49",
-   "name": "FUN_00468c49"
-  },
-  {
    "address": "0046a46a",
    "name": "FUN_0046a46a"
-  },
-  {
-   "address": "00476e72",
-   "name": "FUN_00476e72"
   },
   {
    "address": "00496253",
@@ -16216,10 +17564,6 @@
    "name": "FUN_0052327e"
   },
   {
-   "address": "00523445",
-   "name": "FUN_00523445"
-  },
-  {
    "address": "005237dc",
    "name": "FUN_005237dc"
   },
@@ -16228,20 +17572,12 @@
    "name": "FUN_005344a3"
   },
   {
-   "address": "00534855",
-   "name": "FUN_00534855"
-  },
-  {
    "address": "00539464",
    "name": "tMetaMapHex::~tMetaMapHex"
   },
   {
    "address": "0053963a",
    "name": "tMetaMapHex::vfunction2_for_tStreamable"
-  },
-  {
-   "address": "00539801",
-   "name": "tMetaMapHex::vfunction3_for_tStreamable"
   },
   {
    "address": "00539a9e",
@@ -16254,10 +17590,6 @@
   {
    "address": "00539f9c",
    "name": "FUN_00539f9c"
-  },
-  {
-   "address": "00539ff1",
-   "name": "FUN_00539ff1"
   },
   {
    "address": "0053a2fc",
@@ -16284,28 +17616,16 @@
    "name": "FUN_0053ac4e"
   },
   {
+   "address": "00541499",
+   "name": "FUN_00541499"
+  },
+  {
    "address": "0054313e",
    "name": "FUN_0054313e"
   },
   {
    "address": "00543294",
    "name": "FUN_00543294"
-  },
-  {
-   "address": "005433dd",
-   "name": "FUN_005433dd"
-  },
-  {
-   "address": "005433e8",
-   "name": "FUN_005433e8"
-  },
-  {
-   "address": "005433f4",
-   "name": "FUN_005433f4"
-  },
-  {
-   "address": "00543437",
-   "name": "FUN_00543437"
   },
   {
    "address": "0054372f",
@@ -16336,12 +17656,48 @@
    "name": "tAuctionItem::vfunction7_for_tAllocatedClass"
   },
   {
-   "address": "005465d5",
-   "name": "FUN_005465d5"
-  },
-  {
    "address": "00547e67",
    "name": "tBattles::vfunction6_for_tAllocatedClass"
+  },
+  {
+   "address": "00565464",
+   "name": "FUN_00565464"
+  },
+  {
+   "address": "0056571c",
+   "name": "FUN_0056571c"
+  },
+  {
+   "address": "00565993",
+   "name": "FUN_00565993"
+  },
+  {
+   "address": "00566d8a",
+   "name": "FUN_00566d8a"
+  },
+  {
+   "address": "00567270",
+   "name": "FUN_00567270"
+  },
+  {
+   "address": "005676f4",
+   "name": "FUN_005676f4"
+  },
+  {
+   "address": "005682b2",
+   "name": "FUN_005682b2"
+  },
+  {
+   "address": "00568b2e",
+   "name": "FUN_00568b2e"
+  },
+  {
+   "address": "0056964b",
+   "name": "FUN_0056964b"
+  },
+  {
+   "address": "00569c83",
+   "name": "FUN_00569c83"
   },
   {
    "address": "0056c414",
@@ -16390,22 +17746,6 @@
   {
    "address": "005a4220",
    "name": "FUN_005a4220"
-  },
-  {
-   "address": "005a42a6",
-   "name": "FUN_005a42a6"
-  },
-  {
-   "address": "005a4309",
-   "name": "FUN_005a4309"
-  },
-  {
-   "address": "005a436c",
-   "name": "FUN_005a436c"
-  },
-  {
-   "address": "005a43d5",
-   "name": "FUN_005a43d5"
   },
   {
    "address": "005bc570",
@@ -16492,6 +17832,58 @@
    "name": "FUN_005debbc"
   },
   {
+   "address": "005dfb86",
+   "name": "FUN_005dfb86"
+  },
+  {
+   "address": "005dfc37",
+   "name": "nStoredProcedureArguments::tMetaMapSizeRequest::tResponse::tResponse"
+  },
+  {
+   "address": "005e13d8",
+   "name": "FUN_005e13d8"
+  },
+  {
+   "address": "005e189d",
+   "name": "FUN_005e189d"
+  },
+  {
+   "address": "005e5d7a",
+   "name": "FUN_005e5d7a"
+  },
+  {
+   "address": "005e5ef4",
+   "name": "FUN_005e5ef4"
+  },
+  {
+   "address": "005e62c4",
+   "name": "FUN_005e62c4"
+  },
+  {
+   "address": "005e6469",
+   "name": "FUN_005e6469"
+  },
+  {
+   "address": "005e6642",
+   "name": "FUN_005e6642"
+  },
+  {
+   "address": "005e66b7",
+   "name": "FUN_005e66b7"
+  },
+  {
+   "address": "005e67a8",
+   "name": "FUN_005e67a8"
+  },
+  {
+   "address": "005e6991",
+   "name": "FUN_005e6991"
+  },
+  {
+   "address": "005e6a41",
+   "name": "FUN_005e6a41"
+  },
+  {
    "address": "005ea469",
    "name": "FUN_005ea469"
   },
@@ -16566,10 +17958,6 @@
   {
    "address": "005fb6e5",
    "name": "FUN_005fb6e5"
-  },
-  {
-   "address": "0060c675",
-   "name": "FUN_0060c675"
   },
   {
    "address": "006160a0",
@@ -17060,6 +18448,26 @@
    "name": "tSoundMemoryBlockManager::mTestBlockIntegrity"
   },
   {
+   "address": "006757f0",
+   "name": "FUN_006757f0"
+  },
+  {
+   "address": "00675fe0",
+   "name": "FUN_00675fe0"
+  },
+  {
+   "address": "00676a30",
+   "name": "FUN_00676a30"
+  },
+  {
+   "address": "00678ea0",
+   "name": "FUN_00678ea0"
+  },
+  {
+   "address": "00679210",
+   "name": "FUN_00679210"
+  },
+  {
    "address": "0068ff60",
    "name": "tSession::~tSession"
   },
@@ -17182,6 +18590,50 @@
   {
    "address": "006f53f0",
    "name": "tOSVersion::Instance"
+  },
+  {
+   "address": "006f6b80",
+   "name": "tSettings::~tSettings"
+  },
+  {
+   "address": "006f8ee0",
+   "name": "nDataStore::tStreamable::GetObjectID"
+  },
+  {
+   "address": "006f9140",
+   "name": "nDataStore::operator>>"
+  },
+  {
+   "address": "006f92c0",
+   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed"
+  },
+  {
+   "address": "006fa540",
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject"
+  },
+  {
+   "address": "006faf30",
+   "name": "nDatabase::tDatabaseObject::AttachToDB"
+  },
+  {
+   "address": "006fd380",
+   "name": "nException::tBaseException::ReportHeader"
+  },
+  {
+   "address": "006fd590",
+   "name": "nException::tBaseException::ReportException"
+  },
+  {
+   "address": "006fd810",
+   "name": "nException::tValidationFailed::ReportException"
+  },
+  {
+   "address": "006fe720",
+   "name": "nLog::tLogStream::tStreamBuf::xsputn"
+  },
+  {
+   "address": "006fe8b0",
+   "name": "nLog::tLogStream::tStreamBuf::Report"
   },
   {
    "address": "00708140",

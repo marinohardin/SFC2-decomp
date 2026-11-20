@@ -45,6 +45,15 @@ public:
 		int32u								field_0xc;
 		std::vector< tPoliticalTension >	field_0x10;
 	};
+
+	tPoliticalTensionMatrix();
+
+	// HYPOTHESIS: 0x0056571c destroys a local matrix by destroying a 16-byte member at +0x48
+	// out of line (0x0045275f), then the base; the object is 0x60 bytes. Taken as the
+	// matrix's vectors; the two words after it are not recovered.
+	std::vector< tPoliticalTensionVector >	field_0x48;
+	int32u									field_0x58;
+	int32u									field_0x5c;
 };
 
 #endif

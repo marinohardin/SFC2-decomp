@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tCookie.cpp
-// Functions: 0x00407c17 to 0x00407c29, 2 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#define tgfsys_copies_out_of_line
+#include "Tiger/tgfsys.h"
+
+// FUNCTION: STARFLEETOP 0x00407c17
+iTruth tCookie::operator==( const tCookie &other ) const
+{
+	return !( *this != other );
+}
+
+// FUNCTION: STARFLEETOP 0x00407c29
+iTruth tCookie::operator<( const tCookie &other ) const
+{
+	return fCookie < other.fCookie;
+}
+
+// FUNCTION: STARFLEETOP 0x00407c5b
+fn_SessionCookie::fn_SessionCookie( const fn_SessionCookie &other )
+{
+	fCookie = other.fCookie;
+	fSession = other.fSession;
+}
