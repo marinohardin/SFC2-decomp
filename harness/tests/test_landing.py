@@ -79,7 +79,11 @@ def test_landing_syncs_every_claim_and_checks_the_table_before_the_manifest(tmp_
     code, log = _landing(tmp_path)
     assert code == 0
     assert log == ['-m harness.lib.verify --land --base refs/base',
-                   'tools/symbols.py claim', 'tools/symbols.py check', 'tools/manifest.py']
+                   'tools/symbols.py claim'] + [log[2]] + [
+                   'tools/symbols.py check', 'tools/manifest.py']
+    # the seed runs in keep-existing mode: no --reseed, its report in a scratch file
+    assert log[2].startswith('analysis/scripts/seed_symbols.py --report ')
+    assert '--reseed' not in log[2]
 
 
 def test_landing_stops_when_the_table_is_not_in_sync_after_the_claim_sync(tmp_path):
@@ -97,3 +101,8 @@ def test_landing_refuses_a_lanes_environment(var):
     r = subprocess.run(['sh', script, 'develop'], capture_output=True, text=True,
                        env=dict(env, **{var: '/tmp/x'}))
     assert r.returncode == 2 and f'ERROR {var} is set' in r.stderr
+
+
+def test_landing_stops_when_the_seed_fails(tmp_path):
+    code, log = _landing(tmp_path, fail='seed_symbols')
+    assert code == 2 and not any('symbols.py check' in x or 'manifest' in x for x in log)

@@ -240,9 +240,10 @@ sessions are unaffected.
 ### Lanes commit source only
 
 A grind lane (a `grind/` branch the loop runs on) commits source and nothing else, so lanes never
-conflict on generated files when they land. The one exception is the symbol table
-(`analysis/symbols/STARFLEETOP.tsv`), which a lane commits together with the source in the same
-commit and which only the tool edits ("Symbol table and stand-ins", "What the loop does to the
+conflict on the matched set, the manifest or the lists when they land. The one generated file a
+lane does commit is the symbol table (`analysis/symbols/STARFLEETOP.tsv`), together with the
+source in the same commit; only the tool edits it, and lanes can conflict on it (see "The landing
+step" for what to do) ("Symbol table and stand-ins", "What the loop does to the
 table").
 
 - **Matched set.** The loop exports `HARNESS_MATCHED_SET=$HARNESS_STATE/matched_set.json`, the
@@ -295,8 +296,15 @@ python3 -m pytest tests harness/tests && sh scripts/check.sh
 `landing.sh` is `verify.py --land --base <ref>` (every function claimed in `op/`, rebuilt,
 recorded when its score rose or it became exact, with its name, symbol, unit and size refreshed
 from the tree), then `tools/symbols.py claim` (every claimed row takes the symbol the build just
-made) and `tools/symbols.py check`, so an integration branch ends with the table in sync, then
-`tools/manifest.py`. A function that scores below the base's record,
+made), the seed in its keep-existing mode (`analysis/scripts/seed_symbols.py`, no `--reseed`:
+empty rows are filled from exact callers that agree, evidence `callers`, existing values are
+untouched) and `tools/symbols.py check`, so an integration branch ends with the table in sync,
+then `tools/manifest.py`.
+
+On a merge conflict in `analysis/symbols/STARFLEETOP.tsv`, take either side for the file and run
+`harness/landing.sh`: it rewrites every claim row and refills callee rows from the build. The one
+case to look at by hand is a row two lanes filled with different `add` symbols: that is a real
+disagreement (the seed report lists the callers of each). A function that scores below the base's record,
 or lost its source, is reported as a `REGRESSION` and the script exits 1 without writing the
 matched set; exit 2 means a function could not be built. The agents' guard refuses `--land`.
 
@@ -404,7 +412,8 @@ the model; the guard keeps the table and the tools out of a session's reach):
    its relocation names is written with evidence `add` (`tools/symbols.py add --callee`), but
    only when it passes the seed's rule for callers (`tools/symbols.callee_verdict`: a real name,
    or exactly `fn_<the target's own address>`, free or a member of a class that is not a
-   placeholder). A symbol that fails the rule is not written and gives one `WARN` line.
+   placeholder). A symbol that fails the rule is not written and gives one `WARN` line. A result file without
+the function skips that round's sync with a `WARN`; the next sync or the landing catches up.
 
 The loop then commits the table with the source. A round that is undone restores it with the
 rest of the worktree. The whole-tree step runs `claim` for every claim and then `check` on a copy
