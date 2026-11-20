@@ -187,7 +187,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x004d82fb	tBaseWeapon::vfunction74	56.32	2	opus	2026-11-17T16:40:53Z	best not above 90% after 2 attempts; best 56.32%
 0x004d87e3	FUN_004d87e3	42.48	2	opus	2026-11-17T17:02:21Z	attempt 2 (opus) did not raise the best; best 42.48%
 0x0046034f	FUN_0046034f	32.71	2	sonnet	2026-11-17T06:56:32Z	attempt 2 (sonnet) did not raise the best; best 32.71%
-0x0057118e	FUN_0057118e	99.96	2	opus	2026-11-17T06:59:27Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x00571304	FUN_00571304	99.96	2	opus	2026-11-17T07:05:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x0057147a	FUN_0057147a	99.96	2	opus	2026-11-17T07:10:14Z	named #line raised it to 99.96% (review fix); the rest is the AddObjectToDBIndex symbol on a stand-in owner; waits for Fable
 0x00571676	FUN_00571676	70.47	2	opus	2026-11-17T07:33:01Z	best not above 90% after 2 attempts; best 70.47%
