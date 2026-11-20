@@ -7,25 +7,8 @@
 #include "tObject_0096eca8.h"
 #include "tNetControl.h"
 #include "Source/network/NetMsgClass.h"
-
-// HYPOTHESIS: the speed message 0x00515db1 builds on the stack (vftable 0x007971a4): one float,
-// set to 0 to stop the ship. Its map is at 0x0041978f.
-struct tNetMsg_kAdjustSpeed: public tNetMsg
-{
-	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
-	float field_0x4;
-};
-
-// HYPOTHESIS: the turn message 0x005169e0 builds on the stack (vftable 0x00796efc): a heading
-// and a turn direction (-1, 0 or 1). Its map is at 0x00414b7c.
-struct tNetMsg_kMoveInDirection: public tNetMsg
-{
-	virtual const tNetMsg::tMapItem *mGetMap(void) const;
-
-	short field_0x4;
-	char field_0x6;
-};
+#include "unsorted/tNetMsg_kAdjustSpeed.h"
+#include "unsorted/tNetMsg_kMoveInDirection.h"
 
 // HYPOTHESIS: a byte flag at 0x0085922b; 0x005169e0 reports the power request only while set.
 extern char g_b0085922b;
