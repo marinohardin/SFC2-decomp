@@ -4177,7 +4177,6 @@ address	size	symbol	source	modes
 0x006f8910	11	tDateAndTime::GetMinute() const	Common/DateAndTime.cpp	vc6 guest
 0x006f8920	16	tDateAndTime::operator<(const tDateAndTime&) const	Common/DateAndTime.cpp	vc6 guest
 0x006f8cb0	30	tStreamable::tCRCFailed::`scalar deleting destructor'	Common/DataStore/Streamable.cpp	vc6
-0x006f8cd0	115	tStreamable::tCRCFailed::~tCRCFailed()	Common/DataStore/Streamable.cpp	partial
 0x006f8d50	13	tStreamable::tCRCFailed::ReportException(const char*)	Common/DataStore/Streamable.cpp	vc6 guest
 0x006f8d70	23	tStreamable::fObjectIDInfoLookup (dynamic initializer)	Common/DataStore/Streamable.cpp	vc6
 0x006f8d90	12	tStreamable::fObjectIDInfoLookup (atexit registration)	Common/DataStore/Streamable.cpp	vc6
@@ -4188,9 +4187,70 @@ address	size	symbol	source	modes
 0x006f9130	4	tStreamable::GetVersion() const	Common/DataStore/Streamable.cpp	vc6 guest
 0x006f9140	384	operator>>(nDataStore::tInput&,tStreamable&)	Common/DataStore/Streamable.cpp	partial
 0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	partial
+0x006f9420	534	operator<<(nDataStore::tOutput&,const tStreamable&)	Common/DataStore/Streamable.cpp	vc6 guest
+0x006fa440	9	tID::IsValid() const	Common/Database/DatabaseID.cpp	vc6 guest
+0x006fa450	8	tgPrefsPart::mActivate()	Common/Database/DatabaseID.cpp	vc6 guest
+0x006fa460	16	tID::operator==(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest
+0x006fa470	16	tID::operator!=(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest
+0x006fa480	16	tID::operator<(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest
+0x006fa540	364	tDatabaseObject::tDatabaseObject(iObjectVersion)	Common/Database/DatabaseObject.cpp	partial
+0x006fa6b0	30	tDatabaseObject::`scalar deleting destructor'	Common/Database/DatabaseObject.cpp	vc6
+0x006fa6d0	401	tDatabaseObject::tDatabaseObject(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6
+0x006fa870	383	tDatabaseObject::operator=(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fa9f0	36	tDatabaseObject::operator<(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006faa20	36	tDatabaseObject::operator==(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fac20	413	tDatabaseObject::MakeReadOnly()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fadc0	25	tDatabaseObject::SetID(const tID&)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fade0	324	tDatabaseObject::SetLockID(const int32u)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006faf30	441	tDatabaseObject::AttachToDB(const tID&)	Common/Database/DatabaseObject.cpp	partial
+0x006fb0f0	344	tDatabaseObject::RemoveFromDB()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fb3f0	358	tDatabaseObject::UnLock()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fb560	317	tDatabaseObject::GetLockID() const	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fb6a0	336	tDatabaseObject::IsLocked() const	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fb7f0	270	tDatabaseObject::Kill()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fb900	336	tDatabaseObject::IsDead()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fba50	315	tDatabaseObject::AddReference()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fbb90	332	tDatabaseObject::RemoveReference()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fbce0	429	tDatabaseObject::CheckForDeath()	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fbe90	505	tDatabaseObject::StreamOut(nDataStore::tOutput&) const	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fc090	162	tDatabaseObject::StreamIn(nDataStore::tInput&)	Common/Database/DatabaseObject.cpp	vc6 guest
+0x006fc490	16	tAllocatedClass::tAllocatedClass()	Common/DynamicAllocator.cpp	vc6
+0x006fc4a0	30	tAllocatedClass::`scalar deleting destructor'	Common/DynamicAllocator.cpp	vc6
+0x006fc4c0	7	tAllocatedClass::~tAllocatedClass()	Common/DynamicAllocator.cpp	vc6
 0x006fc4d0	41	tAllocatedClass::operator==(const type_info&)	Common/DynamicAllocator.cpp	vc6 guest
+0x006fc500	122	tDynamicAllocator::tAllocatorInfo::operator<(const tAllocatorInfo&) const	Common/DynamicAllocator.cpp	vc6 guest
+0x006fc580	24	tDynamicAllocator::tAllocatorInfo::operator==(const type_info&) const	Common/DynamicAllocator.cpp	vc6 guest
 0x006fc5a0	93	tDynamicAllocator::tAllocatorInfo::operator==(const char*) const	Common/DynamicAllocator.cpp	vc6 guest
+0x006fc690	106	tDynamicAllocator::Instance()	Common/DynamicAllocator.cpp	vc6 guest
+0x006fc700	13	tDynamicAllocator::tDynamicAllocator()	Common/DynamicAllocator.cpp	vc6
+0x006fc710	55	tDynamicAllocator::~tDynamicAllocator()	Common/DynamicAllocator.cpp	vc6
 0x006fc750	54	tDynamicAllocator::LockDownAllocator()	Common/DynamicAllocator.cpp	vc6 guest
+0x006fc790	930	tDynamicAllocator::mAddToAllocList(const type_info&,tAllocator*)	Common/DynamicAllocator.cpp	vc6 guest
+0x006fcb40	95	tDynamicAllocator::mAllocateClass(iAllocatorID)	Common/DynamicAllocator.cpp	vc6 guest
+0x006fd240	65	tOutOfBounds::tOutOfBounds(const char*,int32,int32,int32,const char*,int32)	Common/Exceptions/OutOfBounds.cpp	vc6
+0x006fd340	39	tBaseException::tBaseException(const char*,const char*,int32)	Common/Exceptions/BaseException.cpp	vc6
+0x006fd370	11	tBaseException::~tBaseException()	Common/Exceptions/BaseException.cpp	vc6
+0x006fd380	511	tBaseException::ReportHeader(const char*)	Common/Exceptions/BaseException.cpp	partial
+0x006fd590	90	tBaseException::ReportException(const char*)	Common/Exceptions/BaseException.cpp	partial
+0x006fd5f0	5	tBaseException::GetDescription()	Common/Exceptions/BaseException.cpp	vc6 guest
+0x006fd810	169	tValidationFailed::ReportException(const char*)	Common/Exceptions/Validate.cpp	partial
+0x006fd970	53	tCRC32::GenerateCRCTable()	Common/Crypto/CRC32.cpp	vc6 guest
+0x006fd9b0	60	tCRC32::UpdateCRC(int32u,const char *,int32)	Common/Crypto/CRC32.cpp	vc6 guest
+0x006fdb80	206	tCommandLineArgs::Instance()	Common/CommandLineArgs.cpp	vc6 guest
+0x006fdc50	197	tCommandLineArgs::tCommandLineArgs()	Common/CommandLineArgs.cpp	vc6
+0x006fdd20	30	tCommandLineArgs::`scalar deleting destructor'	Common/CommandLineArgs.cpp	vc6
+0x006fe0a0	34	tWinClock::GetCurrentSystemTimeInSeconds() const	Common/Timer/WinClock.cpp	vc6 guest
+0x006fe0e0	13	tWinClockGlobal::fpAutoWinClockGlobalPtr (dynamic initializer)	Common/Timer/WinClock.cpp	vc6
+0x006fe0f0	12	tWinClockGlobal::fpAutoWinClockGlobalPtr (atexit registration)	Common/Timer/WinClock.cpp	vc6
+0x006fe140	206	tWinClockGlobal::Instance()	Common/Timer/WinClock.cpp	vc6 guest
+0x006fe4f0	272	tLogStream::tStreamBuf::tStreamBuf(tLog*)	Common/Log/LogStream.cpp	vc6
+0x006fe600	30	tLogStream::tStreamBuf::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6
+0x006fe720	340	tLogStream::tStreamBuf::xsputn(const char*,std::streamsize)	Common/Log/LogStream.cpp	partial
+0x006fe880	28	tLogStream::tStreamBuf::overflow(int)	Common/Log/LogStream.cpp	vc6 guest
+0x006fe8b0	377	tLogStream::tStreamBuf::Report()	Common/Log/LogStream.cpp	partial
+0x006feda0	25	tLogStream::tStreamBuf::SetEventType(tLog::tEventType)	Common/Log/LogStream.cpp	vc6 guest
+0x006fedc0	262	tLogStream::tLogStream(tLog::tEventType)	Common/Log/LogStream.cpp	vc6
+0x006feed0	45	tLogStream::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6
 0x00707e80	97	tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo()	Common/Database/FileDatabaseMgr.cpp	vc6
 0x00707ef0	588	tFileDatabaseMgr::tDatabaseInfo::StreamOut(nDataStore::tOutput&) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest
 0x00708140	472	tFileDatabaseMgr::tDatabaseInfo::StreamIn(nDataStore::tInput&)	Common/Database/FileDatabaseMgr.cpp	partial
