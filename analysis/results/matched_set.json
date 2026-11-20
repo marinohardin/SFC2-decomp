@@ -19927,6 +19927,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00569c83": {
+   "name": "FUN_00569c83",
+   "symbol": "?fn_00569c83@tTransactionUpdateStores@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 2650,
+   "score": 56.073,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
    "symbol": "?vfunction2@tAsyncDatabaseSingle@nAsyncDatabaseProcedure@@UAEXPAVtCampaignInfo@@@Z",

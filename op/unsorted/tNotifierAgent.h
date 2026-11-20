@@ -20,6 +20,8 @@ public:
 	// HYPOTHESIS: 0x00568b2e hands it the ID of each ship it repairs.
 	void fn_005cba1f( const nDatabase::tID& id );
 	void fn_005cba6e( const nDatabase::tID& id );
+	// HYPOTHESIS: 0x00569c83 hands it the ID of the character whose stores it updated.
+	void fn_005cbc48( const nDatabase::tID& id );
 
 	char m_00[0xc];
 };

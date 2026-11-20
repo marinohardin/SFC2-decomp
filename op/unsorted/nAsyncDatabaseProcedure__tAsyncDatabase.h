@@ -75,7 +75,9 @@ namespace nAsyncDatabaseProcedure
 		virtual void vfunction39();
 		virtual void vfunction40();
 		virtual void vfunction41();
-		virtual void vfunction42();
+		// HYPOTHESIS: writes a character back (0x00569c83), taken by value; tAsyncDatabaseSingle
+		// defines the slot with this argument.
+		virtual void vfunction42( tServCharacter character );
 		virtual void vfunction43();
 		// HYPOTHESIS: writes a ship back (0x00568b2e), taken by value.
 		virtual void vfunction44( tShip ship );
