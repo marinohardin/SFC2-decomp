@@ -19,6 +19,12 @@ tControlAsset::~tControlAsset()
 // single erase (0x00684120) are folded with the other maps of the same shape. The mapped
 // type is not known. Written out because the toolchain's xtree keeps a static nil node,
 // where the original's library kept one per instance at +0x8 and the size at +0x10.
+// The library's _Construct for the node value is held out of line at 0x0067c4d0.
+namespace std
+{
+template<> void _Construct( std::pair< const tString, int >* _P, const std::pair< const tString, int >& _V );
+};
+
 struct fn_00678ea0_tree
 {
 	typedef std::pair< const tString, int > value_type;
@@ -29,6 +35,8 @@ struct fn_00678ea0_tree
 		node*	parent;
 		node*	right;
 		value_type	value;
+		char	color;
+		char	isnil;
 	};
 
 	class iterator
@@ -43,6 +51,45 @@ struct fn_00678ea0_tree
 
 	iterator erase( iterator first, iterator last );
 	iterator erase( iterator where );
+	void fn_00679210( const fn_00678ea0_tree& x );
+	// MATCH-ONLY: the library's inline _Buynode, _Copy, _Min and _Max; the out-of-line copy of
+	// _Copy is 0x00679310.
+	node* _Buynode( node* parent, char color )
+	{
+		node* n = (node*)operator new( sizeof( node ) );
+		n->parent = parent;
+		n->color = color;
+		n->isnil = 0;
+		return n;
+	}
+	node* fn_00679310( node* root, node* where )
+	{
+		node* newroot = m_nil;
+		if( !root->isnil )
+		{
+			node* n = _Buynode( where, root->color );
+			std::_Construct( &n->value, root->value );
+			n->left = m_nil;
+			n->right = m_nil;
+			if( newroot == m_nil )
+				newroot = n;
+			n->left = fn_00679310( root->left, n );
+			n->right = fn_00679310( root->right, n );
+		}
+		return newroot;
+	}
+	static node* _Min( node* p )
+	{
+		while( !p->left->isnil )
+			p = p->left;
+		return p;
+	}
+	static node* _Max( node* p )
+	{
+		while( !p->right->isnil )
+			p = p->right;
+		return p;
+	}
 	// MATCH-ONLY: the library's inline _Erase; the out-of-line copy is 0x00678aa0.
 	void fn_00678aa0( node* root )
 	{
@@ -79,6 +126,23 @@ fn_00678ea0_tree::iterator fn_00678ea0_tree::erase( iterator first, iterator las
 		m_head->left = m_head;
 		m_head->right = m_head;
 		return iterator( m_head->left );
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00679210
+void fn_00678ea0_tree::fn_00679210( const fn_00678ea0_tree& x )
+{
+	m_head->parent = fn_00679310( x.m_head->parent, m_head );
+	m_size = x.m_size;
+	if( m_head->parent != m_nil )
+	{
+		m_head->left = _Min( m_head->parent );
+		m_head->right = _Max( m_head->parent );
+	}
+	else
+	{
+		m_head->left = m_head;
+		m_head->right = m_head;
 	}
 }
 
