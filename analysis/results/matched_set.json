@@ -35929,6 +35929,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x00679140": {
+   "name": "FUN_00679140",
+   "symbol": "?fn_00679140@fn_00679140_vector@@QAEHXZ",
+   "unit": "unsorted/tControlAsset.cpp",
+   "size": 48,
+   "score": 83.571,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
