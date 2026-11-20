@@ -23,6 +23,8 @@ from . import paths
 
 MAX_LINES = 15
 STALE = re.compile(r'is in the baseline but no longer occurs')
+# A partial function's relocation detail is an ERROR line too (verify.py), but not a failure.
+RELOC_NOTE = re.compile(r'^ERROR\s+relocation \+0x')
 SUMMARY = re.compile(r'^lint_claims: (\d+) new')
 ADVICE = ('Fix these in the source of your own function (or undo the edit that caused them) and '
           'stop again; do not edit another function or another lane\'s file.')
@@ -57,7 +59,7 @@ def check_verify(run):
         lines = (out + err).splitlines()[-MAX_LINES:]
     if rc == 0:
         return None
-    return _trim(lines, lambda x: x.startswith('ERROR'))
+    return _trim(lines, lambda x: x.startswith('ERROR') and not RELOC_NOTE.match(x))
 
 
 def check_manifest(run):

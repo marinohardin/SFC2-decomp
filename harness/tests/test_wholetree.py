@@ -45,11 +45,13 @@ def test_the_off_switch_runs_nothing():
 
 def test_a_verify_error_in_any_unit_fails_with_the_error_lines_only():
     out = json.dumps(dict(exit=2, lines=['INFO a', 'ERROR Tiger/x.cpp: relocation 0x1 names _y',
+                                         'ERROR   relocation +0x1ae _f: exe uses 0x1, known at 0x2',
                                          'WARN b'], results=[]))
     ok, msg = wholetree.check(fake(verify=(2, out, '')), {})
     assert not ok
     assert 'ERROR Tiger/x.cpp: relocation 0x1 names _y' in msg
     assert 'INFO a' not in msg and 'WARN b' not in msg
+    assert 'relocation +0x1ae' not in msg
     assert 'build-and-verify.sh --all' in msg
 
 
