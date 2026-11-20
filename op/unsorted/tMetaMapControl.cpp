@@ -6,6 +6,7 @@
 #include "unsorted/tApplication.h"
 #include "unsorted/tListBox_Base.h"
 #include "unsorted/tHexPoint.h"
+#include "unsorted/tMetaClientMapPanel.h"
 
 // FUNCTION: STARFLEETOP 0x005e2f95
 tMetaMapControl::tMetaMapControl()
@@ -28,29 +29,28 @@ tMetaMapControl::~tMetaMapControl()
 	field_180 = 0;
 }
 
-// HYPOTHESIS: the object returned by fn_00607d61 (tPanelMgr.cpp declares the same getter for its
-// own use); fn_0060a54d on it returns the object whose fn_005e5e24 takes the new value.
-class fn_005e5e24_class
-{
-public:
-	void fn_005e5e24( int value );
-	void fn_005e6aeb( int param_1, std::vector<fn_005e36cd_entry> &list );
-	void fn_005e6dea( int param_1, std::vector<fn_005e381f_entry> &list );
-	// HYPOTHESIS: 0x005e361d hands it its area and the object at +0x17c.
-	void fn_005e7539( const tRect *area, fn_005eadc8_class *object );
-	bool fn_005e5a8f();
-	bool fn_005e5b2d( fn_005eb3c5_class *pair );
-	// HYPOTHESIS: 0x005e41ec hands it 1 and the control's rectangle.
-	void fn_005e7778( int param_1, const tRect *area );
-	// HYPOTHESIS: 0x005e42a6 hands the hex point 0x005e5d7a returns (by value) to 0x005e5c72.
-	tHexPoint fn_005e5d7a();
-	void fn_005e5c72( const tHexPoint &point );
-	// HYPOTHESIS: 0x005e4470 hands these the mouse point and the control's rectangle; the
-	// last also sets the flag that asks for a redraw.
-	void fn_005e7f60( const tPoint *point, const tRect *area );
-	void fn_005e800f( const tPoint *point, const tRect *area );
-	void fn_005e620c( const tPoint *point, const tRect *area, bool *redraw );
-};
+// The map panel the callers below reach is declared in unsorted/tMetaClientMapPanel.h;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // HYPOTHESIS: the object fn_005e488e returns; 0x005e326c hands it the map view state.
 class fn_004cf594_class
@@ -67,7 +67,7 @@ public:
 class fn_0060a54d_class
 {
 public:
-	fn_005e5e24_class *fn_0060a54d();
+	tMetaClientMapPanel *fn_0060a54d();
 	fn_004cf594_class *fn_005e488e();
 	// HYPOTHESIS: a list of view labels; 0x005e3ad8 clears it (erase 0x0042500f over its +0x4 and
 	// +0x8) and pushes "Empires View" and "Cartels View" (push_back 0x00424f16).
@@ -829,7 +829,7 @@ void tMetaMapControl::fn_005e4468()
 // FUNCTION: STARFLEETOP 0x005e4470
 bool tMetaMapControl::vfunction31( c_tListBox_Base_Event *event )
 {
-	fn_005e5e24_class *map = fn_00607d61()->fn_0060a54d();
+	tMetaClientMapPanel *map = fn_00607d61()->fn_0060a54d();
 	if ( vfunction14() || ( field_40 & 1 ) == 0 || map == 0 )
 		return false;
 
