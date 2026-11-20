@@ -260,8 +260,9 @@ conflict on generated files when they land.
   `tools/unlanded.py` reads the trailers in `base..branch`: a lane's exact functions are those
   its commits name plus those its committed matched set has exact (older branches). A function
   has landed once the base's matched set has it exact.
-- **Checks on a lane.** A lane is recognised by the `grind/` branch prefix, or `SFCOP_LANE=1`
-  (the loop exports it; `scripts/check.sh` sets it on a `grind/` branch). There the only check
+- **Checks on a lane.** A lane is recognised, in this order, by `SFCOP_LANE=1` (the loop exports it), a
+  `GITHUB_HEAD_REF` that starts with `grind/` (CI checks out a detached merge commit), or a
+  `grind/` branch name (`lib/lane.py`; `scripts/check.sh` and the manifest test both ask it). There the only check
   that changes is `test_committed_manifest_matches_the_tree`, which is skipped: the manifest is
   stale until landing. The tests, the claims lint, the progress gate and the matched-set gate
   run as on any branch, against develop's committed files, which a lane does not change.

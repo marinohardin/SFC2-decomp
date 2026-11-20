@@ -32,7 +32,9 @@ skip() { echo "skip: $*"; }
 # set and manifest stay as on develop until the landing step (harness/landing.sh), so the one
 # test that compares the committed manifest with the tree is skipped there. Everything else, the
 # progress and matched-set gates included, runs as on any branch.
-case "$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)" in grind/*) SFCOP_LANE=1 ;; esac
+# harness/lib/lane.py decides: SFCOP_LANE=1, else GITHUB_HEAD_REF (CI's detached merge commit has
+# no branch name), else the branch.
+if python3 -m harness.lib.lane; then SFCOP_LANE=1; fi
 export SFCOP_LANE="${SFCOP_LANE:-}"
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/sfcop-check.XXXXXX")
 trap 'rm -rf "$tmp"' EXIT INT TERM
