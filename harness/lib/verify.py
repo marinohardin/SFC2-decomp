@@ -4,6 +4,7 @@ harness/update-matched-set.sh (the only writer of matched_set.json).
     verify.py <function-id> [--json] [--behavioural] [--base <file or git ref>]
     verify.py --all [--base <file or git ref>]
     verify.py --record <function-id>
+    verify.py --land --base <git ref>      (harness/landing.sh)
 
 Output is a few lines, each starting with OK, ERROR, WARN or INFO, and a RESULT line. Exit
 status: 0 nothing regressed; 1 a function scored below matched_set.json (or lost its source);
@@ -85,9 +86,9 @@ def load_base(spec):
     at a git ref. A ref without the file gives an empty set."""
     if os.path.isfile(spec):
         return matched.load(spec), _shown(spec)
-    rel = os.path.relpath(paths.MATCHED_SET, paths.REPO)
-    if rel.startswith('..'):
-        raise Untrusted(f'--base {spec}: the matched set is outside the repository; give a file')
+    # develop's committed copy, whatever file this run is scored against (a lane's own set lives
+    # outside the repository).
+    rel = 'analysis/results/matched_set.json'
     git = ['git', '-C', paths.REPO]
     if subprocess.run(git + ['rev-parse', '--verify', '--quiet', f'{spec}^{{commit}}'],
                       capture_output=True).returncode != 0:
@@ -360,7 +361,7 @@ def _in_threads(fn, items, jobs):
     return results
 
 def run(ids, check_all=False, behavioural=False, record=False, now=None, base=None,
-        base_sizes=None, jobs=None):
+        base_sizes=None, jobs=None, land=False):
     """base: (matched set, label) to hold the run to as well, from load_base; base_sizes: the
     base's functions.csv sizes, from load_base_sizes, or None to release nothing for them.
     jobs: how many units build at once (default HARNESS_JOBS, else DEFAULT_JOBS)."""
@@ -542,6 +543,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                     changed = True
                     rep.add('OK', f'{res["address"]} recorded in matched_set.json at '
                             f'{res["score"]:.2f}%')
+                elif land and matched.refresh(data, int(res['address'], 16), entry):
+                    changed = True
+                    rep.add('INFO', f'{res["address"]} name, symbol, unit or size refreshed from '
+                            f'the tree (score unchanged at {res["score"]:.2f}%)')
                 else:
                     rep.add('INFO', f'{res["address"]} not recorded: no improvement')
         if changed:
@@ -920,15 +925,22 @@ def main(argv=None):
     ap.add_argument('--base', metavar='FILE_OR_REF',
                     help='also hold every function to this matched set (a file or a git ref)')
     ap.add_argument('--record', action='store_true', help=argparse.SUPPRESS)
+    ap.add_argument('--land', action='store_true', help=argparse.SUPPRESS)
     ap.add_argument('--json', action='store_true', help='print the result as JSON')
     ap.add_argument('--jobs', '-j', type=int, metavar='N',
                     help=f'units to build at once (default HARNESS_JOBS, else {DEFAULT_JOBS})')
     a = ap.parse_args(argv)
+    if a.land:
+        # The landing step (harness/landing.sh): every claimed function, recorded, held to --base.
+        if a.ids or not a.base:
+            ap.error('--land takes no function and needs --base')
+        a.all = a.record = True
+        a.ids = sorted(claimed_keys())
     if not a.ids and not a.all:
         ap.error('give a function id, or --all')
     if a.jobs is not None and a.jobs < 1:
         ap.error('--jobs must be 1 or more')
-    if a.record and a.base:
+    if a.record and a.base and not a.land:
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)
     clean.record_worktree()
@@ -936,7 +948,7 @@ def main(argv=None):
         base = load_base(a.base) if a.base else None
         sizes = load_base_sizes(a.base) if a.base else None
         rep = run(a.ids, check_all=a.all, behavioural=a.behavioural, record=a.record, base=base,
-                  base_sizes=sizes, jobs=a.jobs)
+                  base_sizes=sizes, jobs=a.jobs, land=a.land)
     except Untrusted as e:
         rep = Report()
         rep.add('ERROR', str(e))

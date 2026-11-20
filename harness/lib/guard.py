@@ -38,7 +38,7 @@ def protected_roots():
     return [os.path.join(r, p) for p in
             ('harness', 'toolchain', 'analysis', 'ghidra', 'scripts', 'oracle', '.claude',
              '.githooks', '.github', 'third_party', 'docs', 'AGENTS.md', 'CLAUDE.md')] + [
-        paths.STATE, paths.SHARED, paths.DIFFICULT, paths.REFERENCE, paths.TOOLS, paths.MATCHED_SET, paths.UNITS, paths.EXE,
+        paths.STATE, paths.SHARED, paths.LISTS, paths.DIFFICULT, paths.REVISIT, paths.REFERENCE, paths.TOOLS, paths.MATCHED_SET, paths.UNITS, paths.EXE,
         paths.FUNCTIONS_CSV, paths.HASHES]
 
 
@@ -315,7 +315,7 @@ def _check_words(words):
     if words == MANIFEST_CHECK:  # read-only: reports, writes nothing
         return None
     if _is_verify(cmd):
-        if any(a == '--record' for a in args):
+        if any(a in ('--record', '--land') for a in args):
             return 'only the harness records results'
         return None
     if any(a.startswith(('--output', '--pre', '--hostname-bin')) for a in args):

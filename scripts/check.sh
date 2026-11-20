@@ -29,10 +29,19 @@ set -eu
 cd "$(dirname "$0")/.."
 
 skip() { echo "skip: $*"; }
+# A grind lane (a grind/ branch, or the loop's own SFCOP_LANE=1) commits source only: its matched
+# set and manifest stay as on develop until the landing step (harness/landing.sh), so the one
+# test that compares the committed manifest with the tree is skipped there. Everything else, the
+# progress and matched-set gates included, runs as on any branch.
+# harness/lib/lane.py decides: SFCOP_LANE=1, else GITHUB_HEAD_REF (CI's detached merge commit has
+# no branch name), else the branch.
+if python3 -m harness.lib.lane; then SFCOP_LANE=1; fi
+export SFCOP_LANE="${SFCOP_LANE:-}"
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/sfcop-check.XXXXXX")
 trap 'rm -rf "$tmp"' EXIT INT TERM
 
 echo "== tests"
+[ "$SFCOP_LANE" = 1 ] && echo "lane branch: the manifest-freshness test is skipped (landing step)"
 if [ "${CHECK_SKIP_TESTS:-}" = 1 ]; then
     skip "CHECK_SKIP_TESTS=1: the tests ran in another job"
 else

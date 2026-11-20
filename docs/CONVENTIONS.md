@@ -129,9 +129,9 @@ Branches follow §7.1. Commit scopes are the top-level directory or the componen
 **Decompiling a function**
 1. Find it in `ghidra/exports/functions.csv`; take the unit path from its evidence, or `op/unsorted/`.
 2. Write it at its address position in the unit with its `// FUNCTION:` line and the original identifiers.
-3. `harness/build-and-verify.sh 0x<address>` until exact, or until the harness's stop rule ends the run; the harness records it in `difficult_functions.tsv` or `revisit_functions.tsv` (harness/README.md, "Model tiers and the stop rule").
-4. `harness/update-matched-set.sh 0x<address>`; `python3 scripts/progress.py --gate`.
-5. Commit: `feat(op/<dir>): decompile <Class>::<Method>`; the matched set change in the same commit.
+3. `harness/build-and-verify.sh 0x<address>` until exact, or until the harness's stop rule ends the run; the harness lists it outside the repository (harness/README.md, "Model tiers and the stop rule").
+4. By hand: `harness/update-matched-set.sh 0x<address>`; `python3 scripts/progress.py --gate`. A grind lane commits source only, with a `Harness-Score:` trailer, and skips this: the integration branch runs `harness/landing.sh` once after merging lanes (harness/README.md, "Lanes commit source only").
+5. Commit: `feat(op/<dir>): decompile <Class>::<Method>`; by hand, the matched set change in the same commit.
 
 **Closing a grind batch**
 1. Once the batch's pull requests are merged, on a branch cut from `develop`: `python3 scripts/progress.py --markdown --matched-set analysis/results/matched_set.json`, then `python3 tools/progress_chart.py`. Nothing in the output is edited by hand, and a warning from the second script is fixed, not ignored.

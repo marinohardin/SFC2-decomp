@@ -7,13 +7,14 @@ from everything that judges; scores only go up.
 | File | What it is |
 | --- | --- |
 | `build-and-verify.sh <fn>` | The only judge. Compiles the function's unit, diffs it against the original bytes, refuses any score below `matched_set.json`. Read-only |
-| `update-matched-set.sh <fn>` | The only writer of `matched_set.json`. Takes no score: it verifies the function itself and records an improvement |
-| `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address |
+| `update-matched-set.sh <fn>` | The only writer of the matched set a lane scores against. Takes no score: it verifies the function itself and records an improvement |
+| `landing.sh [base]` | The landing step: records every claim's score in the committed `matched_set.json`, then regenerates `op/manifest.tsv` |
+| `../analysis/results/matched_set.json` | Best verified score per original function, keyed by original address. Develop's copy; a lane works on its own (see "Lanes commit source only") |
 | `../analysis/results/reloc_baseline.tsv` | Known error-class relocations of exact functions that name another symbol than the claim at their target (step 8 of `build-and-verify.sh`) |
 | `units.json` | Compile profile per unit of the rebuilt tree (flags, compiler, include order) |
-| `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps `difficult_functions.tsv` |
-| `../analysis/results/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human |
-| `../analysis/results/revisit_functions.tsv` | Functions the stop rule ended short of 100% before their full chance, for a later revisit pass (`--revisit`) |
+| `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps the lane's `difficult_functions.tsv` and `revisit_functions.tsv` |
+| `$SFCOP_WORK/harness/lists/<lane>/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human. Outside the repository |
+| `$SFCOP_WORK/harness/lists/<lane>/revisit_functions.tsv` | Functions the stop rule ended short of 100% before their full chance, for a later revisit pass (`--revisit`). Outside the repository |
 | `loop.sh` | The headless loop: one fresh `claude -p` per function |
 | `prompts/function.md` | The prompt each session gets |
 | `hooks/` | `PreToolUse` guard and `Stop` verifier, plus `settings.fragment.json` to merge |
@@ -30,8 +31,8 @@ on every run; a missing hash line or another exe stops the run, also with `HARNE
 `wt-<checkout>-<hash>/` holds objects, listings, targets, the queue and the claim; `shared/`
 holds what all loops on the machine share, the attempt log and the claim locks.
 
-The matched set and the difficult list are committed in `analysis/results/`, not here: every
-grind pull request updates them, and `harness/` is a hotspot.
+The committed matched set is in `analysis/results/`, not here, and the revisit and difficult lists
+are not committed at all (see "Lanes commit source only"): `harness/` is a hotspot.
 
 ## build-and-verify.sh
 
@@ -234,6 +235,64 @@ sessions are unaffected.
   no stand-in (below). After three refusals (`HARNESS_MAX_STOP_BLOCKS`) it lets the session end
   and the loop records a failed attempt.
 
+### Lanes commit source only
+
+A grind lane (a `grind/` branch the loop runs on) commits source and nothing else, so lanes never
+conflict on generated files when they land.
+
+- **Matched set.** The loop exports `HARNESS_MATCHED_SET=$HARNESS_STATE/matched_set.json`, the
+  lane's own copy: seeded from `analysis/results/matched_set.json` and topped up from it at every
+  start (an entry the committed set has higher is put back, never the reverse). Every reader goes
+  through `lib/paths.py`, so the queue, the verifier, the hooks and the whole-tree step see the
+  lane's scores, and `update-matched-set.sh` writes them there. A round that is undone restores
+  the lane's set to its state when the round began (`git reset` cannot: it is outside the
+  worktree).
+- **Lists.** `queue.py` keeps the revisit and difficult lists in `$HARNESS_LISTS/<lane>/`
+  (default `$SFCOP_WORK/harness/lists/`), the lane being the state folder's name (`HARNESS_LANE`
+  overrides). A loop writes only its own lane's two files; the queue reads the union of every
+  lane's, so memory carries across lanes with no write races and no merge. A revisit row for a
+  function another lane listed difficult is ignored. Nothing is committed and nothing is listed
+  in a commit. Clearing is per lane: a function that ends exact comes off this lane's revisit
+  file only; a row in another lane's file (or in `seed/`) stays, and the loop says so
+  (`listed by lane X, left there`), since the queue skips an exact function anyway. A lane's list
+  files have one writer, so `HARNESS_STATE` (and with it the lane name) must not be shared
+  between worktrees or clones. To start from the lists as they were committed, run once:
+  `python3 harness/queue.py seed-lists origin/develop` (it copies the two files into
+  `lists/seed/` and never overwrites one). Once develop no longer has the files, each is read
+  from the last commit reachable from the ref that still had it (the parent of the commit that
+  deleted it), and the output names that commit.
+- **Commits.** `feat(op): match|improve <name> (<address>)`, the score change in the body, and a
+  trailer: `Harness-Score: STARFLEETOP 0x00401234 exact`, or the percent for an improvement.
+  `tools/unlanded.py` reads the trailers in `base..branch`: a lane's exact functions are those
+  its commits name plus those its committed matched set has exact (older branches). A function
+  has landed once the base's matched set has it exact.
+- **Checks on a lane.** A lane is recognised, in this order, by `SFCOP_LANE=1` (the loop exports it), a
+  `GITHUB_HEAD_REF` that starts with `grind/` (CI checks out a detached merge commit), or a
+  `grind/` branch name (`lib/lane.py`; `scripts/check.sh` and the manifest test both ask it). There the only check
+  that changes is `test_committed_manifest_matches_the_tree`, which is skipped: the manifest is
+  stale until landing. The tests, the claims lint, the progress gate and the matched-set gate
+  run as on any branch, against develop's committed files, which a lane does not change.
+  `tools/manifest.py` and `tools/lint_claims.py` read `HARNESS_MATCHED_SET` when it is set, so
+  the loop's whole-tree step judges against the lane's scores. On `develop`, an integration
+  branch and any pull request that is not a lane, nothing is skipped.
+
+### The landing step
+
+Run once on the integration branch, after the lanes are merged into it:
+
+```sh
+harness/landing.sh origin/develop     # rebuilds every claim, records its score, regenerates the manifest
+git add analysis/results/matched_set.json op/manifest.tsv
+git commit -m "chore(op): land <batch>"
+python3 -m pytest tests harness/tests && sh scripts/check.sh
+```
+
+`landing.sh` is `verify.py --land --base <ref>` (every function claimed in `op/`, rebuilt,
+recorded when its score rose or it became exact, with its name, symbol, unit and size refreshed
+from the tree) followed by `tools/manifest.py`. A function that scores below the base's record,
+or lost its source, is reported as a `REGRESSION` and the script exits 1 without writing the
+matched set; exit 2 means a function could not be built. The agents' guard refuses `--land`.
+
 ### Whole-tree checks
 
 Once the function itself is judged good, the Stop hook runs four checks on the whole tree
@@ -243,8 +302,8 @@ that causes a problem is told while it still has the context:
 1. `build-and-verify.sh --all --json`: a regression or an `ERROR` in any unit, the relocation
    and claim-symbol steps included. Warm, unchanged units are neither recompiled nor rescored.
 2. `tools/manifest.py`, written to a scratch file in the harness state: a claim on a non-function,
-   a class declared twice or a declaration it cannot read. The loop's commit is unchanged: it
-   still does not regenerate `op/manifest.tsv`.
+   a class declared twice or a declaration it cannot read. The loop never regenerates
+   `op/manifest.tsv`; the landing step does.
 3. `tools/lint_claims.py`: a new finding. A stale baseline row is not the session's doing and
    does not fail.
 4. `pytest tests/test_units.py tests/test_manifest.py`, without
@@ -369,13 +428,13 @@ is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split 
 the queue no longer holds, such as one already on the difficult list, has no known size and is
 judged with the regular sequence.
 
-When a run ends short of 100%, `queue.py record` lists the function, and the loop commits the
-list:
+When a run ends short of 100%, `queue.py record` lists the function in the lane's list folder
+(outside the repository; nothing is committed):
 
-- **`analysis/results/difficult_functions.tsv`** when it had its full chance: every model of
+- **`difficult_functions.tsv`** when it had its full chance: every model of
   the regular sequence was tried and, if its best qualified for Fable, Fable was tried too. The
   queue never takes it again.
-- **`analysis/results/revisit_functions.tsv`** otherwise: the stop rule ended it early, or it is
+- **`revisit_functions.tsv`** otherwise: the stop rule ended it early, or it is
   waiting for a Fable try that was not allowed. Columns: `address`, `name`, `best_score`,
   `attempts`, `last_model`, `listed` (the time of its last attempt) and `note` (why the run
   ended). The queue skips these functions unless `--revisit` (or `HARNESS_TAKE_REVISIT=1`) is
@@ -386,8 +445,9 @@ list:
   was not allowed, which keeps its row. Listing it again would hand it straight back to the
   same `--revisit` loop.
 
-The two lists live in each checkout, but the attempt log is shared, so a loop on one branch
-does not see what a loop on another branch listed. `--revisit` therefore also takes a function
+The queue reads the lists of every lane, so a function one lane listed is skipped by the others.
+A list entry only arrives with a lane's loop, however, and the attempt log is shared, so
+`--revisit` also takes a function
 that is on neither list here but whose last run in the shared log ended short of its full
 chance and is not exact: it gets a new run, cut from the log alone (a run ends where the rule
 gives no further model, with Fable counted as allowed, so a Fable try continues the run it was
@@ -396,8 +456,8 @@ used its full chance is left alone. Without `--revisit` the queue skips all of t
 
 `queue.py sweep` settles the functions in the attempt log that are on neither list but whose
 run the rule has already ended: those attempted before the rule existed. The loop does not run
-it; run it once, on a grind branch, after the loops that used the old tiers have stopped, and
-commit the lists it writes. It reads matched_set.json too: a function recorded exact is never
+it; run it once, on a grind branch, after the loops that used the old tiers have stopped; it
+writes this lane's lists. It reads matched_set.json too: a function recorded exact is never
 listed, and is taken off either list, because a function matched outside the loop has no exact
 attempt in the log.
 
@@ -483,8 +543,9 @@ starting score; the claim goes to `$HARNESS_STATE/claim.json`; the prompt is ren
 <tier> --output-format json --settings hooks/settings.fragment.json --permission-mode acceptEdits
 --strict-mcp-config` (plus the lean-session flags) runs with `HARNESS_FUNCTION_SESSION=1`, under
 the time box when it has one;
-then `update-matched-set.sh` judges. An improvement is committed on the current branch
-(`feat(op): match <name> (<address>)` with the score change in the body). Anything else is
+then `update-matched-set.sh` judges. An improvement is committed on the current branch, source
+only (`feat(op): match <name> (<address>)`, the score change in the body, a `Harness-Score:`
+trailer; "Lanes commit source only"). Anything else is
 undone: the worktree is reset to the commit the round started from. Tokens, cost, turns and seconds of every attempt go to
 `$HARNESS_STATE/attempts.tsv`, and the prompt, pack, command line, output and verification JSON
 of each attempt to `$HARNESS_STATE/attempts/`.
