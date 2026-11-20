@@ -1,13 +1,9 @@
 function	offset	symbol	target	claimed
-0x0040233b	0x25	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z	0x00402987	??0fn_00402987_Obj@@QAE@ABV0@@Z
 0x0040233b	0x30	?fn_0040257f@fn_0040233b_Object@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@PAD@Z	0x0040257f	?fn_0040257f@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@PAD@Z
 0x0040233b	0x4b	?fn_004026ec@fn_0040233b_Object@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HD@Z	0x004026ec	?fn_004026ec@fn_004026ec_Owner@@QAEDPAUfn_004026ec_Name@@PAUfn_004026ec_Dest@@H@Z
 0x004023bb	0x28	?fn_00404044@fn_004023bb_Sub@@QAEXHH@Z	0x00404044	?fn_00404044@fn_00404044_Vector@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV23@0@Z
 0x00402407	0x3a	?fn_00402d77@fn_004023bb_Sub@@QAEXPAVfn_00402407_A@@@Z	0x00402d77	?fn_00402d77@fn_00402d77_Obj@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
-0x00402501	0x4f	?insert@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEPADPADD@Z	0x004029b1	?fn_004029b1@fn_004029b1_Obj@@QAEPADPADD@Z
 0x0040257f	0x6a	?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z	0x00403d05	?fn_00403d05@fn_00403d05_String@@QBEIPBDII@Z
-0x0040257f	0x87	?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z	0x004029e8	?fn_004029e8@fn_004029e8_Obj@@QBE?AV1@II@Z
-0x0040257f	0xb7	?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z	0x004029e8	?fn_004029e8@fn_004029e8_Obj@@QBE?AV1@II@Z
 0x004026ec	0x2e	?fn_0040651e@fn_004026ec_Name@@QAEHPAX@Z	0x0040651e	?fn_0040651e@fn_0040651e_String@@QBEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
 0x00402b73	0x12	?_Incref@facet@locale@std@@QAEXXZ	0x00402b90	?fn_00402b90@fn_00402b90_Obj@@QAEXXZ
 0x00402cdf	0x4	?fn_00403ff1@fn_00402bb6_Streambuf@@QAEHXZ	0x00403ff1	?fn_00403ff1@fn_00403ff1_Streambuf@@QAEHXZ
