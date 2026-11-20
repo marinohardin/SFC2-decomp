@@ -4807,6 +4807,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x0042838f": {
+   "name": "nException::tOutOfBounds::tOutOfBounds",
+   "symbol": "??0tOutOfBounds@nException@@QAE@ABV01@@Z",
+   "unit": "unsorted/nException__tOutOfBounds.cpp",
+   "size": 69,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
