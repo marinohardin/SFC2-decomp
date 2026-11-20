@@ -7,29 +7,6 @@
 // HYPOTHESIS: 0x0040f9ea compares two names and returns 0 when they are equal.
 int fn_0040f9ea(char *a, char *b);
 
-// FUNCTION: STARFLEETOP 0x0040efcb
-int tSFCTexMgrEx::vfunction2(int handle)
-{
-    int i = handle - 1;
-    if (i >= 0 && i < 0x1000)
-    {
-        tSFCTexMgrEntry* entry = &m_entries[i];
-        if (entry->m04 > 0)
-        {
-            entry->m04--;
-            if (entry->m04 == 0)
-            {
-                entry->m00 = 0;
-                entry->m08 = 0;
-                if (g_00c7c118)
-                    g_00c7c118->fn_006a08e0(handle);
-            }
-            return entry->m04;
-        }
-    }
-    return 0;
-}
-
 // FUNCTION: STARFLEETOP 0x0040eedd
 int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4)
 {
@@ -70,6 +47,29 @@ int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4
         fclose(file);
     }
     return i;
+}
+
+// FUNCTION: STARFLEETOP 0x0040efcb
+int tSFCTexMgrEx::vfunction2(int handle)
+{
+    int i = handle - 1;
+    if (i >= 0 && i < 0x1000)
+    {
+        tSFCTexMgrEntry* entry = &m_entries[i];
+        if (entry->m04 > 0)
+        {
+            entry->m04--;
+            if (entry->m04 == 0)
+            {
+                entry->m00 = 0;
+                entry->m08 = 0;
+                if (g_00c7c118)
+                    g_00c7c118->fn_006a08e0(handle);
+            }
+            return entry->m04;
+        }
+    }
+    return 0;
 }
 
 // FUNCTION: STARFLEETOP 0x0040f015
