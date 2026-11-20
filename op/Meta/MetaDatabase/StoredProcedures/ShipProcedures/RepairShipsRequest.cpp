@@ -1,6 +1,43 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.cpp
-// Functions: 0x005596ed to 0x005596ed, 1 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#include "Common/Exceptions/BaseException.h"
+#include "Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x005596ed
+double tRepairRates::GetRepairRate( fRepairRateIter shipID )
+{
+	fRepairRates.find( &shipID, shipID );
+	if ( shipID.fpNode == fRepairRates.fpEnd )
+	{
+		throw nException::tBaseException( "shipID not found in fRepairRates", __FILE__, 137 );
+	}
+	return shipID.fpNode->fRate;
+}

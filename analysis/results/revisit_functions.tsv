@@ -448,3 +448,18 @@ address	name	best_score	attempts	last_model	listed	note
 0x005e6dea	FUN_005e6dea	0.00	2	opus	2026-11-19T23:53:14Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x005e7539	FUN_005e7539	0.00	2	opus	2026-11-20T00:06:59Z	attempt 2 (opus) did not raise the best; best 0.00%
 0x005e7778	FUN_005e7778	0.00	2	opus	2026-11-20T00:15:43Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x00541499	FUN_00541499	99.95	3	opus	2026-11-19T20:02:20Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.95%
+0x0054c1b7	nStoredProcedureArguments::tMetaMapDataRequest::tResponse::~tResponse	18.91	2	opus	2026-11-19T20:21:08Z	attempt 2 (opus) did not raise the best; best 18.91%
+0x005609ee	FUN_005609ee	0.00	2	opus	2026-11-19T21:46:54Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x0056403d	FUN_0056403d	0.55	2	opus	2026-11-19T22:09:49Z	attempt 2 (opus) did not raise the best; best 0.55%
+0x00564356	FUN_00564356	0.00	2	opus	2026-11-19T22:26:59Z	attempt 2 (opus) did not raise the best; best 0.00%
+0x00565464	FUN_00565464	99.96	3	opus	2026-11-19T22:37:34Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.96%
+0x0056571c	FUN_0056571c	99.96	2	opus	2026-11-19T22:42:38Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.96%
+0x00565993	FUN_00565993	99.96	2	opus	2026-11-19T22:45:50Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.96%
+0x00566d8a	FUN_00566d8a	99.96	2	opus	2026-11-19T22:50:00Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.96%
+0x00567270	FUN_00567270	99.96	3	opus	2026-11-19T23:00:01Z	attempt 3 (opus) did not raise the best; waits for Fable; best 99.96%
+0x005676f4	FUN_005676f4	99.96	2	opus	2026-11-19T23:09:57Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.96%
+0x005682b2	FUN_005682b2	99.97	2	opus	2026-11-19T23:23:05Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.97%
+0x00568b2e	FUN_00568b2e	24.82	2	opus	2026-11-20T00:00:08Z	attempt 2 (opus) did not raise the best; best 24.82%
+0x0056964b	FUN_0056964b	31.32	2	opus	2026-11-20T00:09:39Z	attempt 2 (opus) did not raise the best; best 31.32%
+0x00569c83	FUN_00569c83	56.07	2	opus	2026-11-20T00:30:10Z	attempt 2 (opus) did not raise the best; best 56.07%

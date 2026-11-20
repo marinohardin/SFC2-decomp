@@ -16,10 +16,16 @@ namespace nSwitch
 	class tResponse : public nDataStore::tStreamable
 	{
 	public:
+		// HYPOTHESIS: the constructor (0x00716230) takes one argument it does not use; its
+		// type is unknown.
+		tResponse( int32 );
 		virtual ~tResponse();
 
-	protected:
-		int8u field_0c[4];
+		// HYPOTHESIS: 0x00716310, called with 0 on a new response by 0x00565464; what it sets
+		// is not known.
+		void fn_00716310( int32 param_1 );
+
+		int32	m_0c;
 	};
 
 };

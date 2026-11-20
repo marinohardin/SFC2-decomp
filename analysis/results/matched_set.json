@@ -18379,6 +18379,15 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x0053e70e": {
+   "name": "tPlayingTeamInfo::vfunction3",
+   "symbol": "?StreamIn@tPlayingTeamInfo@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/Objects/MissionObjects/PlayingTeamInfo.cpp",
+   "size": 461,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0053f22f": {
    "name": "nDatabase::tID::~tID",
    "symbol": "?fn_0053f22f@fn_0053f22f_owner@@QBE?AVtID@nDatabase@@XZ",
@@ -18702,6 +18711,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
+  },
+  "0x00541499": {
+   "name": "FUN_00541499",
+   "symbol": "?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z",
+   "unit": "Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp",
+   "size": 308,
+   "score": 99.949,
+   "exact": false,
+   "recorded": "2026-11-19"
   },
   "0x005430ad": {
    "name": "FUN_005430ad",
@@ -20106,6 +20124,672 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-10"
+  },
+  "0x0054bd73": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex",
+   "symbol": "??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 464,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054bf43": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex",
+   "symbol": "??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@XZ",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 20,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054bf57": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::vfunction2",
+   "symbol": "?StreamOut@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 206,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c025": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::vfunction3",
+   "symbol": "?StreamIn@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 176,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c0d5": {
+   "name": "FUN_0054c0d5",
+   "symbol": "?fn_0054c0d5@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEXXZ",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c110": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tResponse",
+   "symbol": "??0tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@JJ_N@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 139,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c1b7": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::~tResponse",
+   "symbol": "??1tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 53,
+   "score": 18.913,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c1ec": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tResponse",
+   "symbol": "??0tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@_N@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 129,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c26d": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::vfunction2",
+   "symbol": "?StreamOut@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 100,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c2d1": {
+   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::vfunction3",
+   "symbol": "?StreamIn@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c311": {
+   "name": "FUN_0054c311",
+   "symbol": "?fn_0054c311@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEXAAVtMetaMapHex@@JJ@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 259,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c414": {
+   "name": "FUN_0054c414",
+   "symbol": "??4tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAV0123@ABV0123@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 93,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c471": {
+   "name": "FUN_0054c471",
+   "symbol": "?fn_0054c471@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAVtClientHex@123@JJ@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 26,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c48b": {
+   "name": "FUN_0054c48b",
+   "symbol": "?fn_0054c48b@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEPAVtClientHex@123@PAJ0@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 88,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054c4e3": {
+   "name": "FUN_0054c4e3",
+   "symbol": "?fn_0054c4e3@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEJJJ@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
+   "size": 97,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054fa6d": {
+   "name": "nStoredProcedureArguments::tAddPreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tAddPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp",
+   "size": 117,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0054ffe5": {
+   "name": "nStoredProcedureArguments::tChooseMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tChooseMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/ChooseMissionRequest.cpp",
+   "size": 173,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055095b": {
+   "name": "nStoredProcedureArguments::tExistPreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tExistPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp",
+   "size": 102,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00550d34": {
+   "name": "nStoredProcedureArguments::tGetPreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tGetPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/GetPreparedMissionRequest.cpp",
+   "size": 102,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00550e96": {
+   "name": "nStoredProcedureArguments::tKillPreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tKillPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/KillPreparedMissionRequest.cpp",
+   "size": 103,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005517de": {
+   "name": "nStoredProcedureArguments::tReadyToPlayRequest::vfunction3",
+   "symbol": "?vfunction3@tReadyToPlayRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/ReadyToPlayRequest.cpp",
+   "size": 121,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00551a84": {
+   "name": "nStoredProcedureArguments::tUpdatePreparedMissionRequest::vfunction3",
+   "symbol": "?vfunction3@tUpdatePreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/MissionProcedures/UpdatePreparedMissionRequest.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005596ed": {
+   "name": "FUN_005596ed",
+   "symbol": "?GetRepairRate@tRepairRates@@QAENUfRepairRateIter@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.cpp",
+   "size": 77,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055a13a": {
+   "name": "FUN_0055a13a",
+   "symbol": "?fGetRate@tTradeInRates@@QAENABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055a18e": {
+   "name": "FUN_0055a18e",
+   "symbol": "?fGetRate@tShipRepairRates@@QAENPAUfShipRepairRateNode@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055a1e2": {
+   "name": "FUN_0055a1e2",
+   "symbol": "?fGetRateAddress@tShipItemRates@@QAEPANPAUfShipRepairRateNode@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055b087": {
+   "name": "FUN_0055b087",
+   "symbol": "?fn_0055b087@tShipNames@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp",
+   "size": 168,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055b12f": {
+   "name": "FUN_0055b12f",
+   "symbol": "?fGetRateAddress@tStoresItemRates@@QAEPANPAUfStoresRateNode@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0055b183": {
+   "name": "FUN_0055b183",
+   "symbol": "?fn_0055b183@tStoresStates@@QAEPAHPAUfStoresStateNode@@@Z",
+   "unit": "Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp",
+   "size": 84,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056005c": {
+   "name": "nAsyncDatabaseProcedure::tGetCurrentTurn::~tGetCurrentTurn",
+   "symbol": "??0tGetCurrentTurn@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_GetCurrentTurn.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005602ea": {
+   "name": "nAsyncDatabaseProcedure::tLockCurrentTurn::~tLockCurrentTurn",
+   "symbol": "??0tLockCurrentTurn@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_LockCurrentTurn.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005604f2": {
+   "name": "nAsyncDatabaseProcedure::tUnlockCurrentTurn::~tUnlockCurrentTurn",
+   "symbol": "??0tUnlockCurrentTurn@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_UnlockCurrentTurn.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005606ca": {
+   "name": "nAsyncDatabaseProcedure::tClearPreparedMissionsID::~tClearPreparedMissionsID",
+   "symbol": "??0tClearPreparedMissionsID@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_ClearPreparedMissionsID.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056142b": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterMedals::~tGetCharacterMedals",
+   "symbol": "??0tGetCharacterMedals@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterMedals.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056167b": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterOpenBidShipIDs::~tGetCharacterOpenBidShipIDs",
+   "symbol": "??0tGetCharacterOpenBidShipIDs@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterOpenBidShipIDs.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00561929": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterPosition::~tGetCharacterPosition",
+   "symbol": "??0tGetCharacterPosition@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPosition.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00561c5e": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterPrestige::~tGetCharacterPrestige",
+   "symbol": "??0tGetCharacterPrestige@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPrestige.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00561ebd": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterRank::~tGetCharacterRank",
+   "symbol": "??0tGetCharacterRank@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterRank.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00562637": {
+   "name": "nAsyncDatabaseProcedure::tGetCharacterShipIDs::~tGetCharacterShipIDs",
+   "symbol": "??0tGetCharacterShipIDs@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterShipIDs.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00562910": {
+   "name": "nAsyncDatabaseProcedure::tGetFleetData::~tGetFleetData",
+   "symbol": "??0tGetFleetData@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetFleetData.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00562f30": {
+   "name": "nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs::~tGetLoggedOnCharacterIDs",
+   "symbol": "??0tGetLoggedOnCharacterIDs@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetLoggedOnCharacterIDs.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00563f83": {
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::~tLogOffCharacter",
+   "symbol": "??0tLogOffCharacter@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00564016": {
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::scalar_deleting_destructor",
+   "symbol": "??_GtLogOffCharacter@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00564032": {
+   "name": "nAsyncDatabaseProcedure::tLogOffCharacter::~tLogOffCharacter",
+   "symbol": "??1tLogOffCharacter@nAsyncDatabaseProcedure@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056403d": {
+   "name": "FUN_0056403d",
+   "symbol": "?fn_0056403d@tLogOffCharacter@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
+   "size": 620,
+   "score": 0.549,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00564951": {
+   "name": "nAsyncDatabaseProcedure::tSetPreparedMissionsID::~tSetPreparedMissionsID",
+   "symbol": "??0tSetPreparedMissionsID@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_SetPreparedMissionsID.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00565464": {
+   "name": "FUN_00565464",
+   "symbol": "?fn_00565464@tAsyncDatabaseProcedure_GetMetaMapHexForUpdate@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetMetaMapHexForUpdate.cpp",
+   "size": 383,
+   "score": 99.957,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0056571c": {
+   "name": "FUN_0056571c",
+   "symbol": "?fn_0056571c@tAsyncDatabaseProcedure_GetPoliticalTensionMatrix@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrix.cpp",
+   "size": 405,
+   "score": 99.959,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00565993": {
+   "name": "FUN_00565993",
+   "symbol": "?fn_00565993@tGetPoliticalTensionMatrixForUpdate@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrixForUpdate.cpp",
+   "size": 405,
+   "score": 99.959,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00566d8a": {
+   "name": "FUN_00566d8a",
+   "symbol": "?fn_00566d8a@tAsyncDatabaseProcedure_UpdateMetaMapHex@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_UpdateMetaMapHex.cpp",
+   "size": 390,
+   "score": 99.957,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005671b6": {
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::~tAddPreparedMission",
+   "symbol": "??0tAddPreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00567249": {
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::scalar_deleting_destructor",
+   "symbol": "??_GtAddPreparedMission@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00567265": {
+   "name": "nAsyncDatabaseProcedure::tAddPreparedMission::~tAddPreparedMission",
+   "symbol": "??1tAddPreparedMission@nAsyncDatabaseProcedure@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00567270": {
+   "name": "FUN_00567270",
+   "symbol": "?fn_00567270@tAddPreparedMission@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_AddPreparedMission.cpp",
+   "size": 468,
+   "score": 99.962,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00567465": {
+   "name": "nAsyncDatabaseProcedure::tCheckExistencePreparedMission::~tCheckExistencePreparedMission",
+   "symbol": "??0tCheckExistencePreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_CheckExistencePreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056763a": {
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::~tGetPreparedMission",
+   "symbol": "??0tGetPreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005676cd": {
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::scalar_deleting_destructor",
+   "symbol": "??_GtGetPreparedMission@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005676e9": {
+   "name": "nAsyncDatabaseProcedure::tGetPreparedMission::~tGetPreparedMission",
+   "symbol": "??1tGetPreparedMission@nAsyncDatabaseProcedure@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005676f4": {
+   "name": "FUN_005676f4",
+   "symbol": "?fn_005676f4@tGetPreparedMission@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_GetPreparedMission.cpp",
+   "size": 423,
+   "score": 99.962,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005678f4": {
+   "name": "nAsyncDatabaseProcedure::tKillPreparedMission::~tKillPreparedMission",
+   "symbol": "??0tKillPreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_KillPreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00567ad2": {
+   "name": "nAsyncDatabaseProcedure::tUpdatePreparedMission::~tUpdatePreparedMission",
+   "symbol": "??0tUpdatePreparedMission@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_UpdatePreparedMission.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x005682b2": {
+   "name": "FUN_005682b2",
+   "symbol": "?fn_005682b2@tKillShips@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_KillShips.cpp",
+   "size": 646,
+   "score": 99.974,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x005686b8": {
+   "name": "FUN_005686b8",
+   "symbol": "?fn_005686b8@fn_005686b8_owner@@QAEHHH@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 116,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056872c": {
+   "name": "FUN_0056872c",
+   "symbol": "?fn_0056872c@fn_005686b8_owner@@QAEHPACCI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 259,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x0056882f": {
+   "name": "FUN_0056882f",
+   "symbol": "?fn_0056882f@fn_005686b8_owner@@QAEHHDDH@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 70,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00568a71": {
+   "name": "nAsyncDatabaseProcedure::tRepairShips::~tRepairShips",
+   "symbol": "??0tRepairShips@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 150,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00568b07": {
+   "name": "nAsyncDatabaseProcedure::tRepairShips::scalar_deleting_destructor",
+   "symbol": "??_GtRepairShips@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00568b23": {
+   "name": "nAsyncDatabaseProcedure::tRepairShips::~tRepairShips",
+   "symbol": "??1tRepairShips@nAsyncDatabaseProcedure@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00568b2e": {
+   "name": "FUN_00568b2e",
+   "symbol": "?fn_00568b2e@tRepairShips@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.cpp",
+   "size": 711,
+   "score": 24.815,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x0056964b": {
+   "name": "FUN_0056964b",
+   "symbol": "?fn_0056964b@tTradeInShip@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TradeInShip.cpp",
+   "size": 1138,
+   "score": 31.321,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
+  "0x00569bc9": {
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::~tTransactionUpdateStores",
+   "symbol": "??0tTransactionUpdateStores@nAsyncDatabaseProcedure@@QAE@PAVtAsyncDatabase@1@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 147,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00569c5c": {
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::scalar_deleting_destructor",
+   "symbol": "??_GtTransactionUpdateStores@nAsyncDatabaseProcedure@@UAEPAXI@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00569c78": {
+   "name": "nAsyncDatabaseProcedure::tTransactionUpdateStores::~tTransactionUpdateStores",
+   "symbol": "??1tTransactionUpdateStores@nAsyncDatabaseProcedure@@UAE@XZ",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 11,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
+  "0x00569c83": {
+   "name": "FUN_00569c83",
+   "symbol": "?fn_00569c83@tTransactionUpdateStores@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
+   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
+   "size": 2650,
+   "score": 56.073,
+   "exact": false,
+   "recorded": "2026-11-19"
   },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",

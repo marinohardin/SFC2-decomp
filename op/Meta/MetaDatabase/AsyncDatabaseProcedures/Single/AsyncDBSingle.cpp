@@ -514,7 +514,7 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction23( const tNewsStor
 // FUNCTION: STARFLEETOP 0x0056d9d3
 void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction24( nDatabase::tID id, bool byCharacterID, std::vector<tPreparedMissions>* queryResult, int lock )
 {
-	nDatabase::tMemberEval<tPreparedMissions, nDatabase::tID, std::equal_to<nDatabase::tID> > characterEval( &tPreparedMissions::fn_0053f22f, id );
+	nDatabase::tMemberEval<tPreparedMissions, nDatabase::tID, std::equal_to<nDatabase::tID> > characterEval( &tPreparedMissions::GetCharacterID, id );
 	nDatabase::tMemberEval<tPreparedMissions, const nDatabase::tID&, std::equal_to<nDatabase::tID> > idEval( &tPreparedMissions::fn_00572b2b, id );
 	nDatabase::tQuery<tPreparedMissions> query;
 	if( byCharacterID )
@@ -714,27 +714,27 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDat
 
 #include "unsorted/tAddressMgr.h"
 
-// HYPOTHESIS: fn_005d3679 (which reads the text "*~Server~*") returns, held by a smart pointer,
-// the reference-counted object the switch sends to; its tRefCount sits at +0xc, after what is
-// taken to be a tStreamable. fn_005d27f1 returns the object fn_005d3679 is called on. Their
-// classes and names are not known.
-// tObject_005d3679 is declared in unsorted/tAddressMgr.h
-//
-//
-class tObject_005d27f1
-{
-public:
-	tSmartPtr<tObject_005d3679> fn_005d3679();
-};
-tObject_005d27f1* fn_005d27f1();
-// HYPOTHESIS: fn_00713b20 returns the switch (its assertion reads fSwitch); fn_00714020 streams
-// an object to the destination. nSwitch::tSwitch is not declared elsewhere yet.
-namespace nSwitch { class tSwitch
-{
-public:
-	static tSwitch* fn_00713b20();
-	void fn_00714020( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
-}; };
+// fn_005d27f1 and the object it returns are declared in unsorted/tObject_005d27f1.h.
+
+
+#include "unsorted/nSwitch__tAddress.h"
+
+
+#include "Switch/Switch.h"
+#include "unsorted/tObject_005d27f1.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: writes the campaign record back and sends it on to the server.
 // FUNCTION: STARFLEETOP 0x0056e124

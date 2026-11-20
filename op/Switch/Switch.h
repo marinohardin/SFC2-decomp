@@ -7,8 +7,7 @@
 #define Switch_h
 
 #include "Common/DataStore/DataStorePre.h"
-
-class tObject_005d3679;
+#include "unsorted/nSwitch__tAddress.h"
 
 namespace nSwitch
 {
@@ -23,8 +22,8 @@ namespace nSwitch
 		static tSwitch* fn_00713b20();
 		// HYPOTHESIS: a second send taking the same arguments; the map initialize procedure
 		// passes NULL for the object.
-		void fn_00714000( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
-		void fn_00714020( tObject_005d3679* destination, int flags, const nDataStore::tStreamable* object );
+		void fn_00714000( tAddress* destination, int flags, const nDataStore::tStreamable* object );
+		void fn_00714020( tAddress* destination, int flags, const nDataStore::tStreamable* object );
 	};
 
 };
