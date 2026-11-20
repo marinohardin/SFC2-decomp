@@ -115,7 +115,6 @@ address	name	best_score	attempts	last_model	listed	note
 0x0056ce15	nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction10	0.00	2	sonnet	2026-11-17T07:54:00Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0056d9cb	FUN_0056d9cb	0.00	2	sonnet	2026-11-17T08:49:23Z	attempt 2 (sonnet) did not raise the best; best 0.00%
 0x0056db22	FUN_0056db22	0.00	2	sonnet	2026-11-17T09:32:52Z	attempt 2 (sonnet) did not raise the best; best 0.00%
-0x005bcd91	FUN_005bcd91	99.77	2	sonnet	2026-11-17T14:38:47Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
 0x005bcdc1	FUN_005bcdc1	99.77	2	sonnet	2026-11-17T14:40:53Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
 0x005bcdf1	FUN_005bcdf1	99.77	2	sonnet	2026-11-17T14:42:58Z	attempt 2 (sonnet) did not raise the best; waits for Fable; best 99.77%
 0x006c1ae0	FUN_006c1ae0	60.33	2	sonnet	2026-11-17T15:21:34Z	best not above 90% after 2 attempts; best 60.33%
