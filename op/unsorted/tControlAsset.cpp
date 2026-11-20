@@ -113,3 +113,23 @@ int fn_00679140_vector::fn_00679170()
 {
 	return (m_first == 0 ? 0 : m_last - m_first);
 }
+
+// HYPOTHESIS: the library vector's _Destroy(first, last) for the 0x30-byte entries (a tString
+// first); a member function, since the original returns with ret 8 and the owner is not known.
+struct fn_006791a0_vector
+{
+	struct entry
+	{
+		std::pair< const tString, int >	m_pair;
+		char	m_pad[4];
+	};
+
+	void fn_006791a0( entry* first, entry* last );
+};
+
+// FUNCTION: STARFLEETOP 0x006791a0
+void fn_006791a0_vector::fn_006791a0( entry* first, entry* last )
+{
+	for( ; first != last; ++first )
+		first->m_pair.~pair();
+}
