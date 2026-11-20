@@ -167,7 +167,7 @@ If `.agent/CONTINUITY.md` exists (it is local and git-ignored), read it at the s
 A task is done when:
 
 - the requested change is implemented or the question is answered,
-- `sh scripts/check.sh` passes, and errors or warnings are addressed or explicitly listed as out of scope (on a Mac that uses the native compiler, a local pass is a preview: the pull request's `check` job, which rebuilds with the image, is the result of record),
+- `sh scripts/check.sh` passes, and errors or warnings are addressed or explicitly listed as out of scope (on a Mac that uses the native compiler, a local pass is a preview: the pull request's `check` job, which also uses the native compiler, is the result for the pull request, and the image's scheduled Docker audit is the result of record),
 - documentation is updated for impacted areas (or, if your package does not own `docs/`, the change needed is reported),
 - impact is explained (what changed, where, why),
 - follow-ups are listed if anything was intentionally left out,

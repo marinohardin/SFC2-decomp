@@ -1,0 +1,48 @@
+name: Docker audit
+
+# The Docker image is the compiler of record. The per-pull-request check scores with the native
+# compiler; this audit runs the same definition of done with the image on develop, so a score
+# that differs between the two fails here.
+on:
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Two audits never overlap, and a running one is never cancelled.
+concurrency:
+  group: docker-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: [self-hosted, sfcop-mac]
+    # A full cold rebuild under the image's CPU emulation.
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: develop
+
+      - uses: ./.github/actions/setup
+        with:
+          compiler: docker
+
+      # The base is the checked-out commit itself: nothing differs from it, so scripts/check.sh
+      # rebuilds every matched function (scripts/rebuild_scope.py) and holds each score to the
+      # one committed in analysis/results/matched_set.json. The greps make a skipped rebuild, or
+      # a run that did not use the image, fail the job.
+      - name: The definition of done, with the image
+        shell: bash
+        env:
+          HARNESS_COMPILER: docker
+          HARNESS_NO_CACHE: "1"
+        run: |
+          set -eu -o pipefail
+          export SFCOP_BASE_REF=$(git rev-parse HEAD)
+          log="$RUNNER_TEMP/docker-audit.log"
+          nice -n 5 sh scripts/check.sh 2>&1 | tee "$log"
+          grep -q '^compiler: the sfcop-msvc6 image' "$log" || { echo "audit: the image did not compile"; exit 1; }
+          grep -qx 'RESULT OK' "$log" || { echo "audit: the full rebuild did not run"; exit 1; }

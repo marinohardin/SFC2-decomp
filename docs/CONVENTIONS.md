@@ -9,10 +9,10 @@ The standard every change is held to. `DESIGN.md` says what the system does; thi
 | Tool | Convention |
 | --- | --- |
 | Languages | `op/`: C++ that compiles with VC6 SP4 (§4.1); tooling: Python 3.9 or later, standard library only |
-| Compiler | VC6 SP4 from `toolchain/`, run under wibo: in the `sfcop-msvc6` container, or natively on macOS (`toolchain/bin/cl-native`, the same compiler files, which score every claimed function as the container does; the harness's scoring uses it when installed; a consumer's build and CI use the container). Versions in `toolchain/VERSIONS.md` |
+| Compiler | VC6 SP4 from `toolchain/`, run under wibo: in the `sfcop-msvc6` container, or natively on macOS (`toolchain/bin/cl-native`, the same compiler files, which score every claimed function as the container does; the harness's scoring uses it when installed; a consumer's build and the scheduled Docker audit use the container; the per-pull-request CI check uses the native compiler). Versions in `toolchain/VERSIONS.md` |
 | Tests | `python3 -m pytest tests harness/tests` for tooling; the harness's byte check and the gates through `sh scripts/check.sh` |
 | Format | `op/` keeps the original's style and is never reformatted |
-| CI | GitHub Actions: the hosted `tests` job, and `check` on a runner that has the retail install; the same `scripts/check.sh` as locally |
+| CI | GitHub Actions: the hosted `tests` job, and `check` on a runner that has the retail install, plus a weekly Docker audit of the same `scripts/check.sh` with the image; the same `scripts/check.sh` as locally |
 
 Versions are pinned in a file in the repository, never "latest".
 
