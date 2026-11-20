@@ -2245,7 +2245,6 @@ address	size	symbol	source	modes
 0x0054c025	176	tMetaMapDataRequest::tResponse::tClientHex::StreamIn(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
 0x0054c0d5	59	tMetaMapDataRequest::tResponse::tClientHex::fn_0054c0d5()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
 0x0054c110	139	tMetaMapDataRequest::tResponse::tResponse(int32,int32,bool)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
-0x0054c1b7	53	tMetaMapDataRequest::tResponse::~tResponse()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	partial
 0x0054c1ec	129	tMetaMapDataRequest::tResponse::tResponse(bool)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6
 0x0054c26d	100	tMetaMapDataRequest::tResponse::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
 0x0054c2d1	64	tMetaMapDataRequest::tResponse::StreamIn(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest
@@ -2283,7 +2282,6 @@ address	size	symbol	source	modes
 0x00563f83	147	tLogOffCharacter::tLogOffCharacter(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
 0x00564016	28	tLogOffCharacter::`scalar deleting destructor'	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
 0x00564032	11	tLogOffCharacter::~tLogOffCharacter()	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	vc6
-0x0056403d	620	tLogOffCharacter::fn_0056403d(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp	partial
 0x00564951	147	tSetPreparedMissionsID::tSetPreparedMissionsID(tAsyncDatabase*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_SetPreparedMissionsID.cpp	vc6
 0x00565464	383	tAsyncDatabaseProcedure_GetMetaMapHexForUpdate::fn_00565464(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetMetaMapHexForUpdate.cpp	partial
 0x0056571c	405	tAsyncDatabaseProcedure_GetPoliticalTensionMatrix::fn_0056571c(const nDataStore::tBuffer*)	Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMapProc/AsyncDatabaseProcedure_GetPoliticalTensionMatrix.cpp	partial

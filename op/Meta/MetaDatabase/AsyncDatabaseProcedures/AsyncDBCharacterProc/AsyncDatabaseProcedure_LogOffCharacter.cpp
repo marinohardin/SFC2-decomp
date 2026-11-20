@@ -39,7 +39,7 @@ tLogOffCharacter::~tLogOffCharacter()
 {
 }
 
-// FUNCTION: STARFLEETOP 0x0056403d
+// Not claimed: the empty body is not the original's code yet.
 void tLogOffCharacter::fn_0056403d( const nDataStore::tBuffer* pBuffer )
 {
 }

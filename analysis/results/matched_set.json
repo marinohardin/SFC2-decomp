@@ -20179,15 +20179,6 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
-  "0x0054c1b7": {
-   "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::~tResponse",
-   "symbol": "??1tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UAE@XZ",
-   "unit": "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp",
-   "size": 53,
-   "score": 18.913,
-   "exact": false,
-   "recorded": "2026-11-19"
-  },
   "0x0054c1ec": {
    "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tResponse",
    "symbol": "??0tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@_N@Z",
@@ -20519,15 +20510,6 @@
    "size": 11,
    "score": 100.0,
    "exact": true,
-   "recorded": "2026-11-19"
-  },
-  "0x0056403d": {
-   "name": "FUN_0056403d",
-   "symbol": "?fn_0056403d@tLogOffCharacter@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
-   "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.cpp",
-   "size": 620,
-   "score": 0.549,
-   "exact": false,
    "recorded": "2026-11-19"
   },
   "0x00564951": {

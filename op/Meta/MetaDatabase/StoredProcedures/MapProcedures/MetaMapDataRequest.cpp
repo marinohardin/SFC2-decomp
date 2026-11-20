@@ -109,7 +109,7 @@ tMetaMapDataRequest::tResponse::tResponse( int32 param_1, int32 param_2, bool pa
 	}
 }
 
-// FUNCTION: STARFLEETOP 0x0054c1b7
+// Not claimed: the empty body is not the original's code yet.
 tMetaMapDataRequest::tResponse::~tResponse()
 {
 }
