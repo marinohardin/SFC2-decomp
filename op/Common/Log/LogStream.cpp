@@ -86,4 +86,13 @@ int tLogStream::tStreamBuf::underflow()
 	return 0;
 }
 
+// FUNCTION: STARFLEETOP 0x006fe8b0
+void tLogStream::tStreamBuf::Report()
+{
+	LockAccess( true );
+	fLog->LogReport( fEventType, fEventBuffer.c_str(), 0, 0x400f0001, NULL );
+	fEventBuffer.erase();
+	LockAccess( false );
+}
+
 };
