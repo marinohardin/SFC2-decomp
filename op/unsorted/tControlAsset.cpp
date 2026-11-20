@@ -133,3 +133,25 @@ void fn_006791a0_vector::fn_006791a0( entry* first, entry* last )
 	for( ; first != last; ++first )
 		first->m_pair.~pair();
 }
+
+// HYPOTHESIS: the library vector's _Ucopy(first, last, dest) for the 0x30-byte entries; the
+// per-entry copy-construct is the function at 0x0067c460.
+struct fn_006791d0_vector
+{
+	struct entry
+	{
+		char	m_pad[0x30];
+	};
+
+	entry* fn_006791d0( entry* first, entry* last, entry* dest );
+};
+
+void fn_0067c460( fn_006791d0_vector::entry* dest, fn_006791d0_vector::entry* src );
+
+// FUNCTION: STARFLEETOP 0x006791d0
+fn_006791d0_vector::entry* fn_006791d0_vector::fn_006791d0( entry* first, entry* last, entry* dest )
+{
+	for( ; first != last; ++first, ++dest )
+		fn_0067c460( dest, first );
+	return dest;
+}

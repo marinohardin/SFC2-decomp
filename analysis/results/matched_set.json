@@ -35956,6 +35956,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006791d0": {
+   "name": "FUN_006791d0",
+   "symbol": "?fn_006791d0@fn_006791d0_vector@@QAEPAUentry@1@PAU21@00@Z",
+   "unit": "unsorted/tControlAsset.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@HHHVtDir@@@Z",
