@@ -368,7 +368,6 @@ address	size	symbol	source	modes
 0x004101e4	40	tEntity::vfunction16()	unsorted/tEntity.cpp	vc6 guest
 0x0041020c	19	tEntity::vfunction17()	unsorted/tEntity.cpp	vc6 guest
 0x0041021f	4	vfunction33_result::fn_0041021f()	unsorted/tNetMsg_kNotifyScriptEvent.cpp	vc6 guest
-0x00410223	4	vfunction33_result::fn_00410223()	unsorted/tNetMsg_kNotifyScriptEvent.cpp	vc6 guest
 0x00410227	10	vfunction33_result::fn_00410227(int)	unsorted/tNetMsg_kNotifyScriptEvent.cpp	vc6 guest
 0x00410231	8	vfunction33_result::fn_00410231()	unsorted/tNetMsg_kNotifyScriptEvent.cpp	vc6 guest
 0x00410239	10	vfunction33_result::fn_00410239(int)	unsorted/tNetMsg_kNotifyScriptEvent.cpp	vc6 guest

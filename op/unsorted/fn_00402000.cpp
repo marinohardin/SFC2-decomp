@@ -444,16 +444,11 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     }
 }
 
-class fn_00402967_Obj
-{
-public:
-    fn_00402967_Obj();
-    ~fn_00402967_Obj();
-};
+#include "unsorted/tFighterSpecMgr.h"
 
 // FUNCTION: STARFLEETOP 0x00402971
 // FUNCTION: STARFLEETOP 0x00402967
-fn_00402967_Obj g_fn_00402967_Obj;
+tFighterSpecMgr g_fn_00402967_Obj;
 
 class fn_00402987_Obj
 {

@@ -29,7 +29,8 @@ char vfunction33_result::fn_0041021f()
 	return field_5c;
 }
 
-// FUNCTION: STARFLEETOP 0x00410223
+// Unclaimed (0x00410223): the original shares one four-byte getter between unrelated classes (tShip and
+// c_00546027 call it too).
 int vfunction33_result::fn_00410223()
 {
 	return field_64;

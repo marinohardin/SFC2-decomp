@@ -3304,15 +3304,6 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
-  "0x00410223": {
-   "name": "FUN_00410223",
-   "symbol": "?fn_00410223@vfunction33_result@@QAEHXZ",
-   "unit": "unsorted/tNetMsg_kNotifyScriptEvent.cpp",
-   "size": 4,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-19"
-  },
   "0x00410227": {
    "name": "FUN_00410227",
    "symbol": "?fn_00410227@vfunction33_result@@QAEXH@Z",
