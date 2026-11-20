@@ -4,6 +4,9 @@ Evidence, most trusted first:
 
 - claim         the symbol the claiming unit compiled for it at the last `build-and-verify.sh
                 --all` in this checkout, which writes the claims' rows to <build>/symbols.tsv;
+- table         the committed symbol table (analysis/symbols/STARFLEETOP.tsv), any row with a
+                symbol, whatever its symbol_evidence (a claim row equals the build's when the
+                table is in sync);
 - functions.csv the mangled name in ghidra/exports/functions.csv;
 - sdk           a single SDK library label at the address (the matcher's label tiers).
 
@@ -61,12 +64,41 @@ def load_claims(src=None):
         return {}
 
 
-def lookup(address, index, claims):
-    """(symbol, source, file) for the int `address`, or None when nothing names it."""
+def load_table(src=None):
+    """{address 0x...: (symbol, symbol_evidence)} of the committed symbol table's rows that have a
+    symbol (a `folded` row is skipped), or {} when it cannot be read."""
+    src = src or paths.SYMBOL_TABLE
+    out = {}
+    try:
+        with open(src, encoding='utf-8', newline='') as f:
+            for line in f.read().split('\n')[1:]:
+                c = line.split('\t')
+                if len(c) == 8 and c[4] and c[1] != 'folded':
+                    out[c[0]] = (c[4], c[5])
+    except OSError:
+        return {}
+    return out
+
+
+def tool():
+    """tools/symbols.py as a module: the table's rules (which symbols may be written) live there."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        'sfcop_symbols_tool', os.path.join(paths.REPO, 'tools', 'symbols.py'))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def lookup(address, index, claims, table=None):
+    """(symbol, source, file) for the int `address`, or None when nothing names it. `table` is
+    load_table's result; without it the committed table is not consulted."""
     key = f'0x{address:08x}'
     if key in claims:
         sym, where = claims[key]
         return sym, 'claim', where
+    if table and key in table:
+        return table[key][0], 'table', table[key][1]
     fn = index.by_address.get(address)
     if fn is not None and getattr(fn, 'mangled', ''):
         return fn.mangled, 'functions.csv', ''
@@ -80,6 +112,7 @@ def main(argv):
     from . import funcs
     index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     claims = load_claims()
+    rows = load_table()
     if not claims:
         print(f'note: no {path()} yet: run harness/build-and-verify.sh --all for the claims\' '
               'symbols', file=sys.stderr)
@@ -88,7 +121,7 @@ def main(argv):
     w.writerow(('address', 'name', 'symbol', 'source', 'convention', 'file'))
     for a in wanted:
         fn = index.by_address.get(a)
-        hit = lookup(a, index, claims)
+        hit = lookup(a, index, claims, rows)
         if hit is None:
             continue
         sym, source, where = hit

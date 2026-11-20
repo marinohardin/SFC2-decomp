@@ -207,23 +207,44 @@ def write_side_by_side(left, right, path):
 
 
 # A score cache entry leaves these to the function being scored (cache.py).
-CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side')
+CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side', 'found_by')
 
 
-def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None):
+def claim_symbol(fn, unit, obj, listing, table_symbol=None, symbol_hint=None, recorded=None):
+    """(symbol, how) of the function an annotation claims in a compiled unit. `how` is 'hint',
+    'symbol' or 'line'. The symbol table's `claim` symbol (`table_symbol`) is used when the unit's
+    object defines it: every compiled function has its own symbol, so no line record is read and
+    moved lines, several functions on one line or an inline function opening on a bare `{` cannot
+    attach the claim to a neighbour. A new claim, a row without a claim symbol, or a symbol the
+    unit no longer produces (the function was renamed or re-signed) is found by its line
+    (source.symbol_for_claim)."""
+    if symbol_hint:
+        return symbol_hint, 'hint'
+    if table_symbol:
+        defined = obj.by_name.get(table_symbol)
+        if defined is not None and defined.section > 0:
+            return table_symbol, 'symbol'
+    sym = source.symbol_for_claim(
+        listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
+        recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+    return sym, 'line'
+
+
+def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
+                   table_symbol=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
-    matched-set entry, part of the evidence for what its annotation claims. Returns a result dict."""
+    matched-set entry, part of the evidence for what its annotation claims, `table_symbol` the
+    symbol the committed table records for a claim (claim_symbol). Returns a result dict."""
     res = dict(address=f'0x{fn.address:08x}', name=fn.name, unit=unit['rel'], score=0.0,
                exact=False, symbol=None, size=fn.size, error=None)
     obj = coff.CoffObject(open(build['obj'], 'rb').read())
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
     try:
-        sym = symbol_hint or source.symbol_for_claim(
-            listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
-            recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+        sym, how = claim_symbol(fn, unit, obj, listing, table_symbol, symbol_hint, recorded)
     except source.SourceError as e:
         res['error'] = str(e)
         return res
+    res['found_by'] = how
     if isinstance(sym, list):
         sym = fn.mangled if fn.mangled in sym else None
         if sym is None:
@@ -477,6 +498,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     for lst in annotations.values():
         for x in lst:
             lines_in.setdefault(x.path, []).append(x.line)
+    table = symtab.load_table()
     if by_unit:
         exe = check_exe(rep)
 
@@ -513,8 +535,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
             # The other annotations in the annotation's own file: the unit, or the header it is in.
             unit = dict(rel=rel, path=path, file=ann.path, line=ann.line,
                         other_lines=[n for n in lines_in[ann.path] if n != ann.line])
+            row = table.get(f'0x{a:08x}')
             res = score_function(fn, unit, build, exe, index,
-                                 recorded=data['functions'].get(matched.key(a)))
+                                 recorded=data['functions'].get(matched.key(a)),
+                                 table_symbol=row[0] if row and row[1] == 'claim' else None)
             res['claimed'] = a in claimed_addrs
             sub.results.append(res)
             _report_function(sub, data, fn, res)
@@ -527,6 +551,10 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.objects.update(sub.objects)
         rep.failed = rep.failed or sub.failed
 
+    by_how = {h: sum(1 for r in rep.results if r.get('found_by') == h) for h in ('symbol', 'line')}
+    if by_how['symbol'] or by_how['line']:
+        rep.add('INFO', f'{by_how["symbol"]} claims found by symbol, {by_how["line"]} by line '
+                '(no current symbol in the symbol table)')
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
@@ -862,6 +890,8 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
 def _report_function(rep, data, fn, res):
     a = fn.address
     head = f'{res["address"]} {fn.name}'
+    if res.get('found_by') == 'line':
+        rep.add('INFO', f'{head}: found by line (table has no current symbol)')
     if res['error'] and 'relocs' not in res:
         rep.add('ERROR', f'{head}: {res["error"]}')
         if res['claimed']:
