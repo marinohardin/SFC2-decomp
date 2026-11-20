@@ -1,3 +1,21 @@
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_GetCurrentTurn.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_LockCurrentTurn.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBTimeProc/AsyncDatabaseProcedure_UnlockCurrentTurn.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_RepairShips.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_LogOffCharacter.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetLoggedOnCharacterIDs.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetFleetData.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPosition.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterShipIDs.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterPrestige.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterOpenBidShipIDs.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterRank.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_GetCharacterMedals.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_SetPreparedMissionsID.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBCharacterProc/AsyncDatabaseProcedure_ClearPreparedMissionsID.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_CheckExistencePreparedMission.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_UpdatePreparedMission.h"
+#include "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBMissionProc/AsyncDatabaseProcedure_KillPreparedMission.h"
 // HYPOTHESIS: the 0x48-byte object built here, and the owner holding the value at +0xd0, are unnamed
 class fn_0057430c_object
 {
@@ -7,34 +25,32 @@ public:
 };
 
 class fn_00575066_object;
-class fn_00575130_object;
+
 class fn_00575173_object;
 class fn_005751b6_object;
 class fn_005751f9_object;
 class fn_0057523c_object;
 
-// HYPOTHESIS: the 0x48-byte object built by fn_005750aa is unnamed
-class fn_005750aa_object
-{
-public:
-	fn_005750aa_object(void* arg);
-	char m_pad[0x48];
-};
 
-// HYPOTHESIS: the 0x48-byte object built by fn_005750ed is unnamed
-class fn_005750ed_object
-{
-public:
-	fn_005750ed_object(void* arg);
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
+
+
+
+
+
 
 class fn_00575023_owner
 {
 public:
-	void fn_005750aa(fn_005750aa_object** out);
-	void fn_005750ed(fn_005750ed_object** out);
-	void fn_00575130(fn_00575130_object** out);
+	void fn_005750aa(nAsyncDatabaseProcedure::tGetCurrentTurn** out);
+	void fn_005750ed(nAsyncDatabaseProcedure::tLockCurrentTurn** out);
+	void fn_00575130(nAsyncDatabaseProcedure::tUnlockCurrentTurn** out);
 	void fn_00575023(fn_0057430c_object** out);
 	void fn_00575066(fn_00575066_object** out);
 	void fn_00575173(fn_00575173_object** out);
@@ -66,29 +82,28 @@ void fn_00575023_owner::fn_00575066(fn_00575066_object** out)
 }
 
 // FUNCTION: STARFLEETOP 0x005750aa
-void fn_00575023_owner::fn_005750aa(fn_005750aa_object** out)
+void fn_00575023_owner::fn_005750aa(nAsyncDatabaseProcedure::tGetCurrentTurn** out)
 {
-	*out = new fn_005750aa_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCurrentTurn( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // FUNCTION: STARFLEETOP 0x005750ed
-void fn_00575023_owner::fn_005750ed(fn_005750ed_object** out)
+void fn_00575023_owner::fn_005750ed(nAsyncDatabaseProcedure::tLockCurrentTurn** out)
 {
-	*out = new fn_005750ed_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tLockCurrentTurn( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the 0x48-byte object built by fn_00575130 is unnamed
-class fn_00575130_object
-{
-public:
-	fn_00575130_object(void* arg);
-	char m_pad[0x48];
-};
+
+
+
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00575130
-void fn_00575023_owner::fn_00575130(fn_00575130_object** out)
+void fn_00575023_owner::fn_00575130(nAsyncDatabaseProcedure::tUnlockCurrentTurn** out)
 {
-	*out = new fn_00575130_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tUnlockCurrentTurn( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // HYPOTHESIS: the 0x48-byte object built by fn_00575173 is unnamed
@@ -147,26 +162,25 @@ void fn_00575023_owner::fn_0057523c(fn_0057523c_object** out)
 	*out = new fn_0057523c_object(m_d0);
 }
 
-// HYPOTHESIS: the 0x48-byte object built by fn_00575282 is unnamed
-class fn_00575282_object
-{
-public:
-	fn_00575282_object(void* arg);
-	char m_pad[0x48];
-};
+
+
+
+
+
+
 
 class fn_00575282_owner
 {
 public:
-	void fn_00575282(fn_00575282_object** out);
+	void fn_00575282(nAsyncDatabaseProcedure::tRepairShips** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575282
-void fn_00575282_owner::fn_00575282(fn_00575282_object** out)
+void fn_00575282_owner::fn_00575282(nAsyncDatabaseProcedure::tRepairShips** out)
 {
-	*out = new fn_00575282_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tRepairShips( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // HYPOTHESIS: the 0x48-byte object built by fn_005752c5 is unnamed
@@ -303,27 +317,26 @@ void fn_0057541a_owner::fn_0057541a(fn_0057541a_object** out)
 	*out = new fn_0057541a_object(m_d0);
 }
 
-// HYPOTHESIS: the 0x48-byte object built by fn_0057545d is unnamed; it has a destructor, so the new-expression carries an EH frame
-class fn_0057545d_object
-{
-public:
-	fn_0057545d_object(void* arg);
-	~fn_0057545d_object();
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
 
 class fn_0057545d_owner
 {
 public:
-	void fn_0057545d(fn_0057545d_object** out);
+	void fn_0057545d(nAsyncDatabaseProcedure::tLogOffCharacter** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x0057545d
-void fn_0057545d_owner::fn_0057545d(fn_0057545d_object** out)
+void fn_0057545d_owner::fn_0057545d(nAsyncDatabaseProcedure::tLogOffCharacter** out)
 {
-	*out = new fn_0057545d_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tLogOffCharacter( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // HYPOTHESIS: the object built by fn_005754a0 is unnamed
@@ -416,31 +429,30 @@ void fn_00575569_owner::fn_00575569(fn_00575569_object** out)
 	*out = new fn_00575569_object(m_d0);
 }
 
-// HYPOTHESIS: the object built by fn_005755ac is unnamed (constructor at 0x00562f5f, next to
-// nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs's destructor); it has a destructor, so the new-expression carries an EH frame
-class fn_005755ac_object
-{
-public:
-	fn_005755ac_object(void* arg);
-	~fn_005755ac_object();
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
+
 
 class fn_005755ac_owner
 {
 public:
-	void fn_005755ac(fn_005755ac_object** out);
+	void fn_005755ac(nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005755ac
-void fn_005755ac_owner::fn_005755ac(fn_005755ac_object** out)
+void fn_005755ac_owner::fn_005755ac(nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs** out)
 {
-	*out = new fn_005755ac_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_005755ef is unnamed; same shape as fn_005755ac_object
+// HYPOTHESIS: the object built by fn_005755ef is unnamed; same shape as nAsyncDatabaseProcedure::tGetLoggedOnCharacterIDs
 class fn_005755ef_object
 {
 public:
@@ -601,211 +613,202 @@ void fn_00575781_owner::fn_00575781(fn_00575781_object** out)
 	*out = new fn_00575781_object(m_d0);
 }
 
-// HYPOTHESIS: the object built by fn_005757c4 is unnamed; 0x50 bytes
-class fn_005757c4_object
-{
-public:
-	fn_005757c4_object(void* arg);
-	~fn_005757c4_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_005757c4_owner
 {
 public:
-	void fn_005757c4(fn_005757c4_object** out);
+	void fn_005757c4(nAsyncDatabaseProcedure::tGetFleetData** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005757c4
-void fn_005757c4_owner::fn_005757c4(fn_005757c4_object** out)
+void fn_005757c4_owner::fn_005757c4(nAsyncDatabaseProcedure::tGetFleetData** out)
 {
-	*out = new fn_005757c4_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetFleetData( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575807 is unnamed; 0x50 bytes
-class fn_00575807_object
-{
-public:
-	fn_00575807_object(void* arg);
-	~fn_00575807_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_00575807_owner
 {
 public:
-	void fn_00575807(fn_00575807_object** out);
+	void fn_00575807(nAsyncDatabaseProcedure::tGetCharacterPosition** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575807
-void fn_00575807_owner::fn_00575807(fn_00575807_object** out)
+void fn_00575807_owner::fn_00575807(nAsyncDatabaseProcedure::tGetCharacterPosition** out)
 {
-	*out = new fn_00575807_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterPosition( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_0057584a is unnamed; 0x50 bytes
-class fn_0057584a_object
-{
-public:
-	fn_0057584a_object(void* arg);
-	~fn_0057584a_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_0057584a_owner
 {
 public:
-	void fn_0057584a(fn_0057584a_object** out);
+	void fn_0057584a(nAsyncDatabaseProcedure::tGetCharacterShipIDs** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x0057584a
-void fn_0057584a_owner::fn_0057584a(fn_0057584a_object** out)
+void fn_0057584a_owner::fn_0057584a(nAsyncDatabaseProcedure::tGetCharacterShipIDs** out)
 {
-	*out = new fn_0057584a_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterShipIDs( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_0057588d is unnamed; 0x50 bytes like fn_0057584a_object
-class fn_0057588d_object
-{
-public:
-	fn_0057588d_object(void* arg);
-	~fn_0057588d_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_0057588d_owner
 {
 public:
-	void fn_0057588d(fn_0057588d_object** out);
+	void fn_0057588d(nAsyncDatabaseProcedure::tGetCharacterPrestige** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x0057588d
-void fn_0057588d_owner::fn_0057588d(fn_0057588d_object** out)
+void fn_0057588d_owner::fn_0057588d(nAsyncDatabaseProcedure::tGetCharacterPrestige** out)
 {
-	*out = new fn_0057588d_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterPrestige( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_005758d0 is unnamed; 0x50 bytes like fn_0057588d_object
-class fn_005758d0_object
-{
-public:
-	fn_005758d0_object(void* arg);
-	~fn_005758d0_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_005758d0_owner
 {
 public:
-	void fn_005758d0(fn_005758d0_object** out);
+	void fn_005758d0(nAsyncDatabaseProcedure::tGetCharacterOpenBidShipIDs** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005758d0
-void fn_005758d0_owner::fn_005758d0(fn_005758d0_object** out)
+void fn_005758d0_owner::fn_005758d0(nAsyncDatabaseProcedure::tGetCharacterOpenBidShipIDs** out)
 {
-	*out = new fn_005758d0_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterOpenBidShipIDs( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575913 is unnamed; 0x50 bytes like fn_005758d0_object
-class fn_00575913_object
-{
-public:
-	fn_00575913_object(void* arg);
-	~fn_00575913_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_00575913_owner
 {
 public:
-	void fn_00575913(fn_00575913_object** out);
+	void fn_00575913(nAsyncDatabaseProcedure::tGetCharacterRank** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575913
-void fn_00575913_owner::fn_00575913(fn_00575913_object** out)
+void fn_00575913_owner::fn_00575913(nAsyncDatabaseProcedure::tGetCharacterRank** out)
 {
-	*out = new fn_00575913_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterRank( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575956 is unnamed; 0x50 bytes like fn_00575913_object
-class fn_00575956_object
-{
-public:
-	fn_00575956_object(void* arg);
-	~fn_00575956_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_00575956_owner
 {
 public:
-	void fn_00575956(fn_00575956_object** out);
+	void fn_00575956(nAsyncDatabaseProcedure::tGetCharacterMedals** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575956
-void fn_00575956_owner::fn_00575956(fn_00575956_object** out)
+void fn_00575956_owner::fn_00575956(nAsyncDatabaseProcedure::tGetCharacterMedals** out)
 {
-	*out = new fn_00575956_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tGetCharacterMedals( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575999 is unnamed; 0x50 bytes like fn_00575956_object
-class fn_00575999_object
-{
-public:
-	fn_00575999_object(void* arg);
-	~fn_00575999_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_00575999_owner
 {
 public:
-	void fn_00575999(fn_00575999_object** out);
+	void fn_00575999(nAsyncDatabaseProcedure::tSetPreparedMissionsID** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575999
-void fn_00575999_owner::fn_00575999(fn_00575999_object** out)
+void fn_00575999_owner::fn_00575999(nAsyncDatabaseProcedure::tSetPreparedMissionsID** out)
 {
-	*out = new fn_00575999_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tSetPreparedMissionsID( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_005759dc is unnamed; 0x50 bytes like fn_00575999_object
-class fn_005759dc_object
-{
-public:
-	fn_005759dc_object(void* arg);
-	~fn_005759dc_object();
-	char m_pad[0x50];
-};
+
+
+
+
+
+
+
 
 class fn_005759dc_owner
 {
 public:
-	void fn_005759dc(fn_005759dc_object** out);
+	void fn_005759dc(nAsyncDatabaseProcedure::tClearPreparedMissionsID** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x005759dc
-void fn_005759dc_owner::fn_005759dc(fn_005759dc_object** out)
+void fn_005759dc_owner::fn_005759dc(nAsyncDatabaseProcedure::tClearPreparedMissionsID** out)
 {
-	*out = new fn_005759dc_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tClearPreparedMissionsID( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // HYPOTHESIS: the 0x48-byte object built by fn_00575a1f is unnamed; it has a destructor, so the new-expression carries an EH frame
@@ -1081,27 +1084,26 @@ void fn_00575d03_owner::fn_00575d03(fn_00575d03_object** out)
 	*out = new fn_00575d03_object(m_d0);
 }
 
-// HYPOTHESIS: the object built by fn_00575d46 is unnamed; constructor at 0x00567494, same shape as fn_00575bf4_object
-class fn_00575d46_object
-{
-public:
-	fn_00575d46_object(void* arg);
-	~fn_00575d46_object();
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
 
 class fn_00575d46_owner
 {
 public:
-	void fn_00575d46(fn_00575d46_object** out);
+	void fn_00575d46(nAsyncDatabaseProcedure::tCheckExistencePreparedMission** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575d46
-void fn_00575d46_owner::fn_00575d46(fn_00575d46_object** out)
+void fn_00575d46_owner::fn_00575d46(nAsyncDatabaseProcedure::tCheckExistencePreparedMission** out)
 {
-	*out = new fn_00575d46_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tCheckExistencePreparedMission( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
 // HYPOTHESIS: the object built by fn_00575d89 is unnamed; constructor at 0x005671e5, next to nAsyncDatabaseProcedure::tAddPreparedMission's destructor
@@ -1127,30 +1129,29 @@ void fn_00575d89_owner::fn_00575d89(fn_00575d89_object** out)
 	*out = new fn_00575d89_object(m_d0);
 }
 
-// HYPOTHESIS: the object built by fn_00575dcc is unnamed; same shape as fn_00575d89_object
-class fn_00575dcc_object
-{
-public:
-	fn_00575dcc_object(void* arg);
-	~fn_00575dcc_object();
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
 
 class fn_00575dcc_owner
 {
 public:
-	void fn_00575dcc(fn_00575dcc_object** out);
+	void fn_00575dcc(nAsyncDatabaseProcedure::tUpdatePreparedMission** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575dcc
-void fn_00575dcc_owner::fn_00575dcc(fn_00575dcc_object** out)
+void fn_00575dcc_owner::fn_00575dcc(nAsyncDatabaseProcedure::tUpdatePreparedMission** out)
 {
-	*out = new fn_00575dcc_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tUpdatePreparedMission( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575e0f is unnamed; same shape as fn_00575dcc_object
+// HYPOTHESIS: the object built by fn_00575e0f is unnamed; same shape as nAsyncDatabaseProcedure::tUpdatePreparedMission
 class fn_00575e0f_object
 {
 public:
@@ -1173,30 +1174,29 @@ void fn_00575e0f_owner::fn_00575e0f(fn_00575e0f_object** out)
 	*out = new fn_00575e0f_object(m_d0);
 }
 
-// HYPOTHESIS: the object built by fn_00575e52 is unnamed; same shape as fn_00575e0f_object
-class fn_00575e52_object
-{
-public:
-	fn_00575e52_object(void* arg);
-	~fn_00575e52_object();
-	char m_pad[0x48];
-};
+
+
+
+
+
+
+
 
 class fn_00575e52_owner
 {
 public:
-	void fn_00575e52(fn_00575e52_object** out);
+	void fn_00575e52(nAsyncDatabaseProcedure::tKillPreparedMission** out);
 	char m_pad[0xd0];
 	void* m_d0;
 };
 
 // FUNCTION: STARFLEETOP 0x00575e52
-void fn_00575e52_owner::fn_00575e52(fn_00575e52_object** out)
+void fn_00575e52_owner::fn_00575e52(nAsyncDatabaseProcedure::tKillPreparedMission** out)
 {
-	*out = new fn_00575e52_object(m_d0);
+	*out = new nAsyncDatabaseProcedure::tKillPreparedMission( (nAsyncDatabaseProcedure::tAsyncDatabase*)m_d0 );
 }
 
-// HYPOTHESIS: the object built by fn_00575e95 is unnamed; same shape as fn_00575e52_object
+// HYPOTHESIS: the object built by fn_00575e95 is unnamed; same shape as nAsyncDatabaseProcedure::tKillPreparedMission
 class fn_00575e95_object
 {
 public:
