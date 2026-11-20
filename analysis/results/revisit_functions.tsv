@@ -397,3 +397,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x006fdd40	tCommandLineArgs::~tCommandLineArgs	28.12	2	opus	2026-11-19T23:55:01Z	attempt 2 (opus) did not raise the best; best 28.12%
 0x006fe620	nLog::tLogStream::tStreamBuf::~tStreamBuf	25.05	2	opus	2026-11-20T00:03:52Z	attempt 2 (opus) did not raise the best; best 25.05%
 0x006fe720	nLog::tLogStream::tStreamBuf::xsputn	24.72	2	opus	2026-11-20T00:06:45Z	attempt 2 (opus) did not raise the best; best 24.72%
+0x006fe8b0	nLog::tLogStream::tStreamBuf::Report	28.20	2	opus	2026-11-20T00:09:38Z	attempt 2 (opus) did not raise the best; best 28.20%
