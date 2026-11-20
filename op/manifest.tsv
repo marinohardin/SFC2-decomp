@@ -2721,6 +2721,9 @@ address	size	symbol	source	modes
 0x005d9e88	171	fn_005d9b26_object::fn_005d9e88(const unsigned char *,unsigned int)	unsorted/fn_005D913F.cpp	vc6 guest
 0x005d9f33	203	fn_005d9b26_object::fn_005d9f33(HKEY) const	unsorted/fn_005D913F.cpp	partial
 0x005d9ffe	239	fn_005d9b26_object::fn_005d9ffe(HKEY)	unsorted/fn_005D913F.cpp	vc6 guest
+0x005dc698	148	tGetNewsResponse::tGetNewsResponse(tMetaClientNewsCtlrC*)	Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_GetNewsResponse.cpp	vc6
+0x005dc8a8	352	tNewsFlash::fn_005dc8a8(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientNews/AsyncClientNewsProcedures/AsyncClientNewsProcedure_NewsFlash.cpp	vc6 guest
+0x005dd252	225	tMetaClientNewsCtlrC::tMetaClientNewsCtlrC(void*)	Source/MetaClient/MetaClientNews/MetaClientNewsCtlrC.cpp	vc6
 0x005de28c	485	fn_005de28c_Vector::fn_005de28c(tNewsStory**,tNewsStory* const*,tNewsStory* const*)	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de641	31	CreateCallback(tMetaClientNewsCtlrC*,void (tMetaClientNewsCtlrC::*func)( tNewsStory* result ))	unsorted/fn_005DE000.cpp	vc6 guest
 0x005de660	7	~tMemberCallback()	unsorted/fn_005DE000.cpp	vc6 guest
@@ -2755,6 +2758,19 @@ address	size	symbol	source	modes
 0x005def21	104	_Median(tNewsStory*,tNewsStory*,tNewsStory*,fn_005de222_Pred)	unsorted/fn_005DE000.cpp	vc6 guest
 0x005def89	72	_Unguarded_partition(tNewsStory**,tNewsStory**,tNewsStory*,fn_005de222_Pred)	unsorted/fn_005DE000.cpp	vc6 guest
 0x005deff2	51	g_s00c38af0 (dynamic initializer)	unsorted/fn_005DE000.cpp	vc6
+0x005df230	131	tMetaClientNewsPanel::fn_005df230()	Source/MetaClient/MetaClientNews/MetaClientNewsPanel.cpp	vc6 guest
+0x005df72e	193	tGetEmpireInfo::tGetEmpireInfo(void*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_GetEmpireInfo.cpp	vc6
+0x005dfa31	247	tInitialize::tInitialize(fn_005e5bd7_class*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	vc6
+0x005dfb28	28	tInitialize::`scalar deleting destructor'	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	vc6
+0x005dfb44	66	tInitialize::~tInitialize()	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	vc6
+0x005dfb86	177	tInitialize::fn_005dfb86(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	partial
+0x005dfc37	372	tInitialize::fn_005dfc37(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	partial
+0x005dfdab	119	tInitialize::fn_005dfdab(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	vc6 guest
+0x005dfe22	378	tInitialize::vfunction5()	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_Initialize.cpp	vc6 guest
+0x005e009a	381	tMapChange::fn_005e009a(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_MapChange.cpp	vc6 guest
+0x005e028e	148	tMoveResponse::tMoveResponse(fn_005e5bd7_class*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_MoveResponse.cpp	vc6
+0x005e13d8	322	tRequestLogonInformation::vfunction5()	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp	partial
+0x005e189d	341	tUpdateFleetIcons::fn_005e189d(const nDataStore::tBuffer*)	Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp	partial
 0x005e2501	56	tCompassRose::fn_005e2501()	unsorted/fn_005E2501.cpp	vc6 guest
 0x005e2539	22	tCompassRose::fn_005e2539()	unsorted/fn_005E2501.cpp	vc6 guest
 0x005e254f	102	tCompassRose::fn_005e254f(long *)	unsorted/fn_005E2501.cpp	vc6 guest
@@ -2860,6 +2876,41 @@ address	size	symbol	source	modes
 0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e45d3	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest
 0x005e4606	50	erase(iterator,iterator)	unsorted/tMetaMapControl.cpp	vc6 guest
+0x005e5800	246	tMetaClientMapPanel::vfunction19()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e58f6	97	tMetaClientMapPanel::vfunction20()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5957	312	tMetaClientMapPanel::fn_005e5957(unsigned long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5a8f	47	tMetaClientMapPanel::fn_005e5a8f()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5abe	34	tMetaClientMapPanel::fn_005e5abe()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5ae0	77	tMetaClientMapPanel::fn_005e5ae0(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5b2d	121	tMetaClientMapPanel::fn_005e5b2d(tMetaClientMapReceiver*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5ba6	49	tMetaClientMapReceiver::fn_005e5ba6(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5bd7	39	tMetaClientMapPanel::fn_005e5bd7(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5bfe	39	tMetaClientMapPanel::fn_005e5bfe(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5c25	77	tMetaClientMapPanel::fn_005e5c25(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5c72	123	tMetaClientMapPanel::fn_005e5c72(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5ced	141	tMetaClientMapPanel::fn_005e5ced()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5d7a	100	tMetaClientMapPanel::fn_005e5d7a()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e5dde	35	tMetaClientMapPanel::fn_005e5dde()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5e01	35	tMetaClientMapPanel::fn_005e5e01()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5e24	184	tMetaClientMapPanel::fn_005e5e24(int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5edc	11	tMetaClientMapPanel::fn_005e5edc()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5ee7	13	tMetaClientMapPanel::fn_005e5ee7(char)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e5ef4	413	tMetaClientMapPanel::fn_005e5ef4()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e6091	160	tMetaClientMapPanel::fn_005e6091()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e620c	184	tMetaClientMapPanel::fn_005e620c(long,long,bool*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e62c4	244	tMetaClientMapPanel::fn_005e62c4(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e6469	129	tMetaClientMapPanel::fn_005e6469(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e64ea	83	tMetaClientMapPanel::fn_005e64ea()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e653d	168	tMetaClientMapPanel::fn_005e653d(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e65e5	93	tMetaClientMapPanel::fn_005e65e5(const tPoint*,const tRect*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e6642	117	tMetaClientMapPanel::fn_005e6642(const fn_005e6642_record&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e66b7	241	tMetaClientMapPanel::fn_005e66b7(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e67a8	489	tMetaClientMapPanel::fn_005e67a8(const nDatabase::tID&,const tHexPoint&,long,nDatabase::tID)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e6991	176	tMetaClientMapPanel::fn_005e6991(const nDatabase::tID&,const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e6a41	170	tMetaClientMapPanel::fn_005e6a41()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial
+0x005e6d7c	110	tMetaMapNormalHex::tMetaMapNormalHex(const tMetaMapNormalHex&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6
+0x005e7744	52	fn_005e7744_vector::fn_005e7744()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
+0x005e78c6	95	tMetaClientMapPanel::fn_005e78c6(tSmartPtr< fn_005e78c6_object >,int,int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest
 0x005ea14b	179	tTree_005ea14b::fn_005ea14b(const std::pair<int, int> &)	unsorted/fn_005EA000.cpp	vc6 guest
 0x005ea1fe	619	tTree_005ea14b::fn_005ea1fe(iterator)	unsorted/fn_005EA000.cpp	vc6 guest
 0x005ea469	56	tTree_005ea14b::fn_005ea469(tNode *)	unsorted/fn_005EA000.cpp	partial
