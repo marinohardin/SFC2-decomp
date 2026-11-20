@@ -21,7 +21,7 @@ def fake(**overrides):
     answers.update(overrides)
     calls = []
 
-    def run(argv, env=None):
+    def run(argv, env=None, timeout=None):
         calls.append(argv)
         key = ('verify' if argv[0].endswith('build-and-verify.sh') else
                'manifest' if argv[1].endswith('manifest.py') else
@@ -178,14 +178,38 @@ def test_a_timeout_is_a_failure_that_names_the_command(monkeypatch):
     def slow(*a, **k):
         raise subprocess.TimeoutExpired(a[0], 5)
     monkeypatch.setattr(wholetree.subprocess, 'run', slow)
-    monkeypatch.setenv('HARNESS_WHOLETREE_TIMEOUT', '5')
-    rc, out, err = wholetree.run_command(['/x/build-and-verify.sh', '--all', '--json'])
+    rc, out, err = wholetree.run_command(['/x/build-and-verify.sh', '--all', '--json'], timeout=5)
     assert rc == 124
-    assert err == ('build-and-verify.sh --all --json timed out after 5 s; the build cache was '
-                   'probably cold (a cold --all took 189 s here). Run it once by hand, then stop '
-                   'again.')
+    assert err == ('build-and-verify.sh --all --json timed out (the 5 s time budget of the '
+                   'whole-tree checks); the build cache was probably cold (a cold --all took '
+                   '189 s here). Run it once by hand, then stop again.')
     ok, msg = wholetree.check(fake(verify=(124, '', err)), {})
-    assert not ok and 'timed out after 5 s' in msg
+    assert not ok and 'timed out' in msg
+
+
+def test_each_command_gets_what_remains_of_one_budget_and_the_rest_are_not_run(monkeypatch):
+    clock = [100.0]
+    monkeypatch.setattr(wholetree, '_now', lambda: clock[0])
+    seen = []
+
+    def run(argv, env=None, timeout=None):
+        seen.append(timeout)
+        clock[0] += 250.0  # each command takes 250 s
+        return 0, OK_VERIFY if argv[0].endswith('.sh') else SUMMARY_0, ''
+    ok, msg = wholetree.check(run, {'HARNESS_WHOLETREE_BUDGET': '600'})
+    assert seen == [600.0, 350.0, 100.0]  # the fourth is never started
+    assert not ok
+    assert 'pytest' in msg and 'not run: the 600 s time budget' in msg
+    assert 'verify (' not in msg and 'manifest (' not in msg and 'lint (' not in msg
+
+
+def test_without_a_runner_the_real_one_is_looked_up_when_called(monkeypatch):
+    calls = []
+    monkeypatch.setattr(wholetree, 'run_command',
+                        lambda argv, env=None, timeout=None: calls.append(timeout) or (
+                            0, OK_VERIFY if argv[0].endswith('.sh') else SUMMARY_0, ''))
+    assert wholetree.check(environ={}) == (True, '')
+    assert len(calls) == 4 and all(0 < t <= 600 for t in calls)
 
 
 def test_a_verify_run_the_loop_already_made_is_used_instead_of_a_new_one(tmp_path):
@@ -200,7 +224,6 @@ def test_a_verify_run_the_loop_already_made_is_used_instead_of_a_new_one(tmp_pat
 def test_main_reads_the_loops_log_and_exit(tmp_path, monkeypatch, capsys):
     log = tmp_path / 'symbols.log'
     log.write_text('ERROR 0x00401000 f REGRESSION: was 100.00%\n')
-    monkeypatch.setattr(wholetree, 'run_command', fake())
     monkeypatch.setattr(wholetree, 'check', lambda run=None, environ=None, verify_done=None:
                         (False, 'X %r' % (verify_done,)))
     assert wholetree.main(['--verify-log', str(log), '--verify-exit', '1']) == 1

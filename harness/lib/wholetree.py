@@ -10,8 +10,8 @@ caused a problem is told while it still has the context. Four checks, each the t
   tests     tests/test_units.py and tests/test_manifest.py, except the one test that compares the
             committed manifest with the matched set: the loop never regenerates the manifest
 
-HARNESS_WHOLETREE=0 turns all of it off. HARNESS_WHOLETREE_TIMEOUT (seconds, default 300) bounds
-each command. At its start the loop runs them once on the tree as it stands, reusing its own
+HARNESS_WHOLETREE=0 turns all of it off. HARNESS_WHOLETREE_BUDGET (seconds, default 600) is the time
+for the whole step; each command gets what remains. At its start the loop runs them once on the tree as it stands, reusing its own
 startup `--all` (`--verify-log FILE --verify-exit N`), and refuses to start on a failing tree. `python3 -m harness.lib.wholetree` prints the failures
 and exits 1, or prints nothing and exits 0.
 """
@@ -20,6 +20,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 
 from . import paths
 
@@ -36,22 +37,28 @@ def enabled(environ=None):
     return (os.environ if environ is None else environ).get('HARNESS_WHOLETREE', '1') != '0'
 
 
-TIMEOUT = 300
-TIMEOUT_TEXT = ('%s timed out after %d s; the build cache was probably cold (a cold --all took '
-                '189 s here). Run it once by hand, then stop again.')
+BUDGET = 600
+TIMEOUT_TEXT = ('%s timed out (the %d s time budget of the whole-tree checks); the build cache '
+                'was probably cold (a cold --all took 189 s here). Run it once by hand, then '
+                'stop again.')
+NOT_RUN_TEXT = '%s not run: the %d s time budget of the whole-tree checks was spent.'
 
 
-def run_command(argv, env=None):
+def _now():
+    return time.monotonic()
+
+
+def run_command(argv, env=None, timeout=None):
     """(exit code, stdout, stderr) of argv, run from the repository root. A command that runs
-    longer than HARNESS_WHOLETREE_TIMEOUT seconds exits 124 with the fixed text on stderr."""
-    limit = int(os.environ.get('HARNESS_WHOLETREE_TIMEOUT', TIMEOUT))
+    longer than `timeout` seconds exits 124 with the fixed text on stderr."""
     e = dict(os.environ, PYTHONPATH=paths.REPO, PYTHONDONTWRITEBYTECODE='1')
     e.update(env or {})
+    name = ' '.join(os.path.basename(a) for a in argv[:3])
     try:
         p = subprocess.run(argv, capture_output=True, text=True, cwd=paths.REPO, env=e,
-                           timeout=limit)
+                           timeout=timeout)
     except subprocess.TimeoutExpired:
-        return 124, '', TIMEOUT_TEXT % (' '.join(os.path.basename(a) for a in argv[:3]), limit)
+        return 124, '', TIMEOUT_TEXT % (name, timeout)
     return p.returncode, p.stdout, p.stderr
 
 
@@ -113,10 +120,24 @@ CHECKS = (('verify (harness/build-and-verify.sh --all)', check_verify),
           ('tests (tests/test_units.py, tests/test_manifest.py)', check_tests))
 
 
-def check(run=run_command, environ=None, verify_done=None):
-    """(ok, message): message is empty when everything passes or the checks are off."""
+def check(run=None, environ=None, verify_done=None):
+    """(ok, message): message is empty when everything passes or the checks are off. `run` is
+    called as run(argv, env=None, timeout=seconds_left); once HARNESS_WHOLETREE_BUDGET seconds
+    are spent, the checks still to run are reported as not run."""
     if not enabled(environ):
         return True, ''
+    run = run or run_command
+    budget = int((os.environ if environ is None else environ).get('HARNESS_WHOLETREE_BUDGET',
+                                                                  BUDGET))
+    start = _now()
+    inner = run
+
+    def run(argv, env=None):
+        left = budget - (_now() - start)
+        if left <= 0:
+            return 124, '', NOT_RUN_TEXT % (' '.join(os.path.basename(a) for a in argv[:3]),
+                                            budget)
+        return inner(argv, env, timeout=left)
     parts = []
     for name, fn in CHECKS:
         lines = fn(run, verify_done) if fn is check_verify else fn(run)

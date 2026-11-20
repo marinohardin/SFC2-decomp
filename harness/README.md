@@ -224,10 +224,13 @@ the checks off, in the hook and in the loop (default 1; for emergencies).
 
 The checks are not compared with a baseline: a tree that already fails would refuse every
 session. So `loop.sh` runs them once at start, after its own `--all` (that run is reused, not
-repeated), and stops before any session if they fail; the lane must start from a green tree. Each
-command is bounded by `HARNESS_WHOLETREE_TIMEOUT` (300 s); a timeout is a failure that names the
-command. With a cold build cache the `--all` is a full build (189 s here), so run the loop's
-start once before sessions.
+repeated), and stops before any session if they fail; the lane must start from a green tree. A
+non-zero exit of that startup `--all` used to be a warning and now stops the loop; the detail is in
+`$HARNESS_STATE/symbols.log`. The whole step shares one time budget, `HARNESS_WHOLETREE_BUDGET`
+(600 s, inside the Stop hook's 900 s): each command gets what remains, and a command that runs
+out of it is a failure that names it, the ones after it reported as not run. With a cold build
+cache the `--all` alone is a full build (189 s here), so run the loop's start once before
+sessions.
 
 ### Lane file list
 
@@ -238,7 +241,8 @@ repository-relative path or glob per line (`fnmatch`: `*` also matches `/`; for 
 edit or new file under `op/` that matches no line is denied, with a message that tells the
 session to leave the file alone and end its final message with `HEADER REQUEST: <header> <what
 and why> (for 0x<address>)` or `UNIT REQUEST: <file> <what and why> (for 0x<address>)`. A list that
-is set but cannot be read denies every edit. Unset, the guard allows any edit under `op/`, as
+is set but cannot be read denies every edit. A session's Bash cannot write files at all
+(no redirect, `sed -i`, `cp` or `mv` passes the guard), so the list covers Edit and Write only. Unset, the guard allows any edit under `op/`, as
 before.
 
 ### Symbol table and stand-ins
