@@ -4789,6 +4789,15 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x004282c7": {
+   "name": "tTransporterHoldItem::tTransporterHoldItem",
+   "symbol": "?fn_004282c7@@YAXPAUtTransporterHoldItem@@ABU1@@Z",
+   "unit": "unsorted/tTransporterHoldItem.cpp",
+   "size": 49,
+   "score": 70.118,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
