@@ -106,3 +106,20 @@ def test_landing_refuses_a_lanes_environment(var):
 def test_landing_stops_when_the_seed_fails(tmp_path):
     code, log = _landing(tmp_path, fail='seed_symbols')
     assert code == 2 and not any('symbols.py check' in x or 'manifest' in x for x in log)
+
+
+def test_a_symbol_table_that_cannot_be_read_is_an_error_not_a_silent_fallback(tmp_path,
+                                                                             monkeypatch):
+    (tmp_path / 'game').mkdir()
+    bad = tmp_path / 'table.tsv'
+    bad.write_text('address\tkind\n0x00401000\n')
+    monkeypatch.setattr(paths, 'SRC_ROOT', str(tmp_path / 'game'))
+    monkeypatch.setattr(paths, 'MATCHED_SET', str(tmp_path / 'matched_set.json'))
+    monkeypatch.setattr(paths, 'BOUNDARIES', str(tmp_path / 'boundary_errors.tsv'))
+    monkeypatch.setattr(paths, 'SYMBOL_TABLE', str(bad))
+    monkeypatch.setattr(funcs, 'FunctionIndex', lambda *a: FakeIndex())
+    matched.save(paths.MATCHED_SET, {'version': 1, 'functions': {}})
+    rep = verify.run([], check_all=True)
+    assert rep.failed
+    assert any(ln.startswith('ERROR') and 'the symbol table cannot be read' in ln
+               for ln in rep.lines)

@@ -64,19 +64,37 @@ def load_claims(src=None):
         return {}
 
 
+class TableError(Exception):
+    """The committed symbol table exists and cannot be read."""
+
+
 def load_table(src=None):
     """{address 0x...: (symbol, symbol_evidence)} of the committed symbol table's rows that have a
-    symbol (a `folded` row is skipped), or {} when it cannot be read."""
+    symbol (a `folded` row is skipped). Columns are found by their header names, so an added
+    column does not move them. {} when there is no table; a table that cannot be read (a missing
+    column, a row with another cell count) raises TableError."""
     src = src or paths.SYMBOL_TABLE
-    out = {}
     try:
         with open(src, encoding='utf-8', newline='') as f:
-            for line in f.read().split('\n')[1:]:
-                c = line.split('\t')
-                if len(c) == 8 and c[4] and c[1] != 'folded':
-                    out[c[0]] = (c[4], c[5])
-    except OSError:
+            lines = f.read().split('\n')
+    except FileNotFoundError:
         return {}
+    except OSError as e:
+        raise TableError(f'{src}: {e.strerror}') from None
+    head = lines[0].split('\t')
+    need = ('address', 'kind', 'symbol', 'symbol_evidence')
+    if any(c not in head for c in need):
+        raise TableError(f'{src}: the header lacks {", ".join(c for c in need if c not in head)}')
+    at = {c: head.index(c) for c in need}
+    out = {}
+    for n, line in enumerate(lines[1:], 2):
+        if not line:
+            continue
+        c = line.split('\t')
+        if len(c) != len(head):
+            raise TableError(f'{src}:{n}: {len(c)} cells, the header has {len(head)}')
+        if c[at['symbol']] and c[at['kind']] != 'folded':
+            out[c[at['address']]] = (c[at['symbol']], c[at['symbol_evidence']])
     return out
 
 

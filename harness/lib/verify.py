@@ -208,7 +208,7 @@ def write_side_by_side(left, right, path):
 
 
 # A score cache entry leaves these to the function being scored (cache.py).
-CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side', 'found_by')
+CACHE_OWN_FIELDS = ('address', 'name', 'unit', 'side_by_side', 'found_by', 'line_note')
 
 
 def claim_symbol(fn, unit, obj, listing, table_symbol=None, symbol_hint=None, recorded=None):
@@ -231,6 +231,20 @@ def claim_symbol(fn, unit, obj, listing, table_symbol=None, symbol_hint=None, re
     return sym, 'line'
 
 
+def line_disagreement(fn, unit, listing, symbol, recorded=None):
+    """The function the annotation's line points at when it is another than `symbol` (a claim
+    found by the table's symbol), else None: the annotation was moved off the function whose
+    symbol the table has. The line rule's answer comes from the listing already parsed for the
+    unit; an ambiguous or missing answer says nothing."""
+    try:
+        line = source.symbol_for_claim(
+            listing, unit.get('file', unit['path']), unit['line'], unit['other_lines'],
+            recorded=recorded, mangled=fn.mangled, name=fn.name, unit=unit['path'])
+    except source.SourceError:
+        return None
+    return line if isinstance(line, str) and line != symbol else None
+
+
 def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
                    table_symbol=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
@@ -246,6 +260,10 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
         res['error'] = str(e)
         return res
     res['found_by'] = how
+    if how == 'symbol':
+        other = line_disagreement(fn, unit, listing, sym, recorded)
+        if other:
+            res['line_note'] = other
     if isinstance(sym, list):
         sym = fn.mangled if fn.mangled in sym else None
         if sym is None:
@@ -499,7 +517,12 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     for lst in annotations.values():
         for x in lst:
             lines_in.setdefault(x.path, []).append(x.line)
-    table = symtab.load_table()
+    try:
+        table = symtab.load_table()
+    except symtab.TableError as e:
+        rep.add('ERROR', f'the symbol table cannot be read: {e}')
+        rep.failed = True
+        return rep
     if by_unit:
         exe = check_exe(rep)
 
@@ -556,6 +579,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     if by_how['symbol'] or by_how['line']:
         rep.add('INFO', f'{by_how["symbol"]} claims found by symbol, {by_how["line"]} by line '
                 '(no current symbol in the symbol table)')
+    report_line_notes(rep, check_all, {f'0x{a:08x}' for a in claimed_addrs})
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
@@ -888,6 +912,22 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
             rep.add('WARN', f'{_shown(RELOC_BASELINE)} lists {b["function"]} +0x{b["offset"]:x} '
                     f'{b["symbol"]} -> {b["target"]}, which is now only a warning ({cls}): '
                     'remove the row')
+
+
+def report_line_notes(rep, check_all, own):
+    """A claim found by its table symbol whose annotation's line points at another function: the
+    annotation was moved. The table wins. Full detail (WARN) for the session's own function;
+    under --all, and for other functions, one INFO count line."""
+    notes = [r for r in rep.results if r.get('line_note')]
+    shown = [r for r in notes if not check_all and r['address'] in own]
+    for r in shown:
+        rep.add('WARN', f'{r["address"]} found by symbol {r["symbol"]}, but its annotation\'s line '
+                f'points at {r["line_note"]}: if the annotation was moved, run '
+                'tools/symbols.py claim')
+    rest = len(notes) - len(shown)
+    if rest:
+        rep.add('INFO', f'{rest} claims found by symbol whose annotation\'s line points at '
+                'another function (the table wins)')
 
 
 TABLE_EVIDENCE = ('mangled', 'add', 'callers')

@@ -107,3 +107,23 @@ def test_a_function_found_by_line_is_told_in_the_report():
 
 def test_the_listing_rule_is_unchanged():
     assert source.symbol_for_claim(SWAPPED, 'op/u.cpp', 10, [20]) == B
+
+
+def test_an_annotation_moved_to_another_function_warns_naming_both(monkeypatch):
+    # FnA's annotation (line 20) now sits above FnB (compiled at line 21); both still compile.
+    listing = SWAPPED.replace('; 21', '; 99').replace('; 11', '; 21').replace('; 99', '; 11')
+    f = SimpleNamespace(mangled='', name='f')
+    u = unit(20, [10])
+    assert verify.line_disagreement(f, u, listing, A) == B
+    assert verify.line_disagreement(f, u, listing, B) is None
+    rep = verify.Report()
+    rep.results = [dict(address='0x00401000', symbol=A, line_note=B),
+                   dict(address='0x00402000', symbol=A, line_note=B)]
+    verify.report_line_notes(rep, False, {'0x00401000'})
+    assert rep.lines[0].startswith('WARN') and f'found by symbol {A}' in rep.lines[0] \
+        and f'points at {B}' in rep.lines[0] and 'tools/symbols.py claim' in rep.lines[0]
+    assert rep.lines[1].startswith('INFO') and rep.lines[1].count('1 claims')
+    rep = verify.Report()
+    rep.results = [dict(address='0x00401000', symbol=A, line_note=B)]
+    verify.report_line_notes(rep, True, {'0x00401000'})
+    assert [x[:4] for x in rep.lines] == ['INFO']

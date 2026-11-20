@@ -1,4 +1,6 @@
 """The committed symbol table as the harness symbol table's evidence (harness/lib/symtab.py)."""
+import pytest
+
 from conftest import FakeIndex
 from harness.lib import pack, symtab
 
@@ -41,3 +43,15 @@ def test_the_pack_requires_a_claim_mangled_or_add_symbol_and_leads_with_the_othe
     assert 'must name' in pack.callee_symbol(('?a@@YAXXZ', 'table', 'mangled'))
     assert 'must name' in pack.callee_symbol(('?a@@YAXXZ', 'table', 'claim'))
     assert pack.callee_symbol(('?a@@YAXXZ', 'table', 'callers')).startswith(': probably')
+
+
+def test_columns_are_found_by_their_header_names_and_a_bad_table_is_an_error(tmp_path):
+    f = tmp_path / 'wide.tsv'
+    f.write_text('note\t' + HEAD + 'x\t0x00401000\tfunction\ta\t\t?a@@YAXXZ\tadd\t\tnone\n')
+    assert symtab.load_table(str(f)) == {'0x00401000': ('?a@@YAXXZ', 'add')}
+    f.write_text(HEAD + '0x00401000\tfunction\ta\n')
+    with pytest.raises(symtab.TableError, match=':2: 3 cells'):
+        symtab.load_table(str(f))
+    f.write_text('address\tkind\n')
+    with pytest.raises(symtab.TableError, match='lacks symbol, symbol_evidence'):
+        symtab.load_table(str(f))
