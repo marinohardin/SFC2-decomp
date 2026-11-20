@@ -25,12 +25,12 @@ address	size	symbol	source	modes
 0x0040257f	365	fn_0040257f(std::string,char*)	unsorted/fn_00402000.cpp	vc6
 0x004026ec	119	fn_004026ec_Owner::fn_004026ec(fn_004026ec_Name*,fn_004026ec_Dest*,int)	unsorted/fn_00402000.cpp	vc6 guest
 0x00402763	101	fn_004026ec_Owner::fn_00402763(fn_004026ec_Dest*,int)	unsorted/fn_00402000.cpp	vc6 guest
-0x004027c8	405	fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry*,fn_004026ec_Dest*,int)	unsorted/fn_00402000.cpp	partial
+0x004027c8	405	fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry*,fn_004026ec_Dest*,int)	unsorted/fn_00402000.cpp	vc6 guest
 0x00402967	10	g_fn_00402967_Obj (dynamic initializer)	unsorted/fn_00402000.cpp	vc6
 0x00402971	12	g_fn_00402967_Obj (atexit registration)	unsorted/fn_00402000.cpp	vc6
-0x00402987	42	fn_00402987_Obj::fn_00402987_Obj(const fn_00402987_Obj&)	unsorted/fn_00402000.cpp	partial
-0x004029b1	55	fn_004029b1_Obj::fn_004029b1(char*,char)	unsorted/fn_00402000.cpp	partial
-0x004029e8	51	fn_004029e8_Obj::fn_004029e8(unsigned int,unsigned int) const	unsorted/fn_00402000.cpp	partial
+0x00402987	42	basic_string(const _Myt&)	unsorted/fn_00402000.cpp	vc6 guest
+0x004029b1	55	insert(iterator,char)	unsorted/fn_00402000.cpp	vc6 guest
+0x004029e8	51	substr(size_type,size_type) const	unsorted/fn_00402000.cpp	vc6 guest
 0x00402a26	155	fn_00402a26_Istream::fn_00402a26(long&)	unsorted/fn_00402000.cpp	partial
 0x00402b22	24	fn_00402b22_Obj::fn_00402b22()	unsorted/fn_00402000.cpp	vc6 guest
 0x00402b3a	57	fn_00402b22_Inner::fn_00402b3a()	unsorted/fn_00402000.cpp	vc6 guest
@@ -43,8 +43,8 @@ address	size	symbol	source	modes
 0x00402d31	17	fn_00402d31_Obj::fn_00402d31(int)	unsorted/fn_00402000.cpp	vc6 guest
 0x00402d42	53	fn_00402d42_Vec::fn_00402d42()	unsorted/fn_00402000.cpp	vc6 guest
 0x00402d77	17	fn_00402d77_Obj::fn_00402d77(const std::string&)	unsorted/fn_00402000.cpp	vc6 guest
-0x004033ab	165	fn_004033ab_Ifstream::fn_004033ab_Ifstream(const char*,int)	unsorted/fn_00403000.cpp	partial
-0x0040345f	70	fn_004033ab_Ifstream::~fn_004033ab_Ifstream()	unsorted/fn_00403000.cpp	partial
+0x004033ab	165	std::ifstream::ifstream(const char*,std::ios_base::openmode)	unsorted/fn_00403000.cpp	partial
+0x0040345f	70	std::ifstream::~ifstream()	unsorted/fn_00403000.cpp	vc6
 0x004034a5	101	std::filebuf::~filebuf()	unsorted/fn_00403000.cpp	vc6
 0x00403af0	89	std::string::append(size_type,char)	unsorted/fn_00403000.cpp	vc6
 0x00403b49	209	std::string::assign(const std::string&,size_type,size_type)	unsorted/fn_00403000.cpp	vc6
@@ -60,7 +60,7 @@ address	size	symbol	source	modes
 0x00404034	16	fn_00404034_Counters::fn_00404034()	unsorted/fn_00404000.cpp	vc6 guest
 0x00404044	96	fn_00404044_Vector::fn_00404044(std::string*,std::string*)	unsorted/fn_00404000.cpp	vc6 guest
 0x004040a4	122	fn_004040a4_Iostream::fn_004040a4_Iostream(std::streambuf*)	unsorted/fn_00404000.cpp	vc6
-0x00404184	46	fn_00404184_Locale::fn_00404184_Locale()	unsorted/fn_00404000.cpp	partial
+0x00404184	46	fn_00404184_LocaleT()	unsorted/fn_00404000.cpp	vc6 guest
 0x004041b2	30	fn_004041b2_Obj::fn_004041b2()	unsorted/fn_00404000.cpp	vc6 guest
 0x00404230	55	fn_00404230_Obj::fn_00404230(unsigned long,unsigned long)	unsorted/fn_00404000.cpp	vc6 guest
 0x00404267	39	fn_00404230_Obj::fn_00404267()	unsorted/fn_00404000.cpp	vc6 guest
@@ -571,7 +571,7 @@ address	size	symbol	source	modes
 0x0042a73d	112	fn_0042a480_object::FUN_0042a73d()	unsorted/fn_0042A000.cpp	partial
 0x0042a7b2	13	fn_0042a480_object::FUN_0042a7b2(unsigned long)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a7bf	164	fn_0042a480_object::FUN_0042a7bf(const std::vector< fn_0054185f_ship >&)	unsorted/fn_0042A000.cpp	partial
-0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(int)	unsorted/fn_0042A000.cpp	partial
+0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	partial
 0x0042a92f	107	fn_0042a480_object::FUN_0042a92f()	unsorted/fn_0042A000.cpp	partial
 0x0042a99a	32	fn_0042a480_object::FUN_0042a99a()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a9ba	81	fn_0042a480_object::FUN_0042a9ba()	unsorted/fn_0042A000.cpp	partial
@@ -626,7 +626,7 @@ address	size	symbol	source	modes
 0x0042f8fc	28	t3DVisual_Model::`scalar deleting destructor'	unsorted/t3DVisual_Model.cpp	vc6
 0x0042f918	349	t3DVisual_Model::~t3DVisual_Model()	unsorted/t3DVisual_Model.cpp	vc6
 0x0042fa75	13	t3DVisual_Model::vfunction10()	unsorted/t3DVisual_Model.cpp	vc6 guest
-0x0042fa82	162	t3DVisual_Model::vfunction11(tPoint3 *,const char *)	unsorted/t3DVisual_Model.cpp	partial
+0x0042fa82	162	t3DVisual_Model::vfunction11(tPoint3 *,const char *)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fb24	7	t3DVisual_Model::vfunction12()	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fb2b	113	t3DVisual_Model::vfunction13(tPoint3 *,const char *,unsigned int)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fb9c	56	t3DVisual_Model::vfunction14(const char *)	unsorted/t3DVisual_Model.cpp	vc6 guest
@@ -639,8 +639,8 @@ address	size	symbol	source	modes
 0x0042fc61	18	t3DVisual_Model::vfunction21()	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fc73	30	t3DVisual_Model::vfunction22(int,int)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fc91	174	t3DVisual_Model::vfunction23(float)	unsorted/t3DVisual_Model.cpp	vc6 guest
-0x0042fd3f	156	t3DVisual_Model::vfunction7(tViewer_0042fd3f *,float,int)	unsorted/t3DVisual_Model.cpp	partial
-0x0042fddb	163	t3DVisual_Model::vfunction8(tViewer_0042fd3f *,float,float,int)	unsorted/t3DVisual_Model.cpp	partial
+0x0042fd3f	156	t3DVisual_Model::vfunction7(tViewer_0042fd3f *,float,int)	unsorted/t3DVisual_Model.cpp	vc6 guest
+0x0042fddb	163	t3DVisual_Model::vfunction8(tViewer_0042fd3f *,float,float,int)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fe7e	38	t3DVisual_Model::vfunction9(tViewer_0042fd3f *,int,int)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042fea4	18	t3DVisual_Model::fn_0042fea4(unsigned int)	unsorted/t3DVisual_Model.cpp	vc6 guest
 0x0042feb6	8	t3DVisual_Model::fn_0042feb6()	unsorted/t3DVisual_Model.cpp	vc6 guest
@@ -956,7 +956,7 @@ address	size	symbol	source	modes
 0x00447d29	24	tShipSystemMask::fn_00447d29(int,int)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447d41	20	tShipSystemMask::fn_00447d41(int)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447d55	20	tShipSystemMask::fn_00447d55(int)	unsorted/fn_00447000.cpp	vc6 guest
-0x00447d69	470	operator=(const std::vector< tTransporterHoldItem >&)	unsorted/fn_00447000.cpp	partial
+0x00447d69	470	operator=(const std::vector< tTransporterHoldItem >&)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447f3f	21	tTransporterHoldItem::operator=(const tTransporterHoldItem&)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447f54	17	push_back(const tTransporterHoldItem&)	unsorted/fn_00447000.cpp	vc6 guest
 0x00447f65	616	insert(iterator,size_type,const tTransporterHoldItem&)	unsorted/fn_00447000.cpp	vc6 guest
@@ -1167,7 +1167,7 @@ address	size	symbol	source	modes
 0x0046691b	160	tState_GameConnections::vfunction4()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x0046822d	106	tState_GameConnections::vfunction15(c_0046aa10_message *)	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00468297	48	tState_GameConnections::fn_00468297()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
-0x004682c7	312	tState_GameConnections::fn_004682c7()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	partial
+0x004682c7	312	tState_GameConnections::fn_004682c7()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x004683ff	130	tState_GameConnections::fn_004683ff()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00468481	166	tState_GameConnections::fn_00468481()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00468527	99	tState_GameConnections::fn_00468527()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
@@ -1181,7 +1181,7 @@ address	size	symbol	source	modes
 0x00468bbb	48	tState_GameConnections::fn_00468bbb()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00468beb	40	tState_GameConnections::fn_00468beb()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00468c13	54	tState_GameConnections::fn_00468c13(int)	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
-0x00468c49	1101	tState_GameConnections::fn_00468c49()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	partial
+0x00468c49	1101	tState_GameConnections::fn_00468c49()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00469096	15	tState_GameConnections::fn_00469096()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x004690a5	460	tState_GameConnections::fn_004690a5(int)	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
 0x00469271	707	tState_GameConnections::fn_00469271()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest
@@ -1269,7 +1269,7 @@ address	size	symbol	source	modes
 0x00476ce5	109	tState_NetSetup::fn_00476ce5(int)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x00476d52	78	tState_NetSetup::fn_00476d52(c_00468677_source **,void *,int)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x00476da0	210	tState_NetSetup::fn_00476da0(c_00468677_source **,int)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
-0x00476e72	1101	tState_NetSetup::fn_00476e72()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	partial
+0x00476e72	1101	tState_NetSetup::fn_00476e72()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x004772bf	15	tState_NetSetup::fn_004772bf()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x004772ce	370	tState_NetSetup::fn_004772ce(int)	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
 0x00477440	585	tState_NetSetup::fn_00477440()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest
@@ -1917,7 +1917,7 @@ address	size	symbol	source	modes
 0x00523370	91	fn_0090bed4_Object::fn_00523370(int,char)	unsorted/fn_00523000.cpp	vc6 guest
 0x005233cb	93	fn_0090bed4_Object::fn_005233cb()	unsorted/fn_00523000.cpp	vc6 guest
 0x00523428	29	fn_0090bed4_Object::fn_00523428(unsigned char)	unsorted/fn_00523000.cpp	vc6 guest
-0x00523445	254	fn_0090bed4_Object::fn_00523445(unsigned char,char)	unsorted/fn_00523000.cpp	partial
+0x00523445	254	fn_0090bed4_Object::fn_00523445(unsigned char,char)	unsorted/fn_00523000.cpp	vc6 guest
 0x00523543	49	fn_0090bed4_Object::fn_00523543(int)	unsorted/fn_00523000.cpp	vc6 guest
 0x005235c8	29	fn_0090bed4_Object::fn_005235c8(fn_004e2b02_ship_type *)	unsorted/fn_00523000.cpp	vc6 guest
 0x005235e5	95	fn_0090bed4_Object::fn_005235e5(fn_0090bed4_Object *,char,int,int,int)	unsorted/fn_00523000.cpp	vc6 guest
@@ -1959,7 +1959,7 @@ address	size	symbol	source	modes
 0x005347f4	55	fn_005346f9_object::fn_005347f4(long)	unsorted/fn_0053434B.cpp	vc6 guest
 0x0053482b	21	fn_005346f9_object::fn_0053482b(bool)	unsorted/fn_0053434B.cpp	vc6 guest
 0x00534840	21	fn_005346f9_object::fn_00534840(bool)	unsorted/fn_0053434B.cpp	vc6 guest
-0x00534855	174	fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >*,bool,char*)	unsorted/fn_0053434B.cpp	partial
+0x00534855	174	fn_005346f9_object::fn_00534855(std::vector< fn_00534461_entry* >&,bool,char*)	unsorted/fn_0053434B.cpp	vc6 guest
 0x00534903	77	fn_005346f9_object::fn_00534903()	unsorted/fn_0053434B.cpp	vc6 guest
 0x00534950	182	fn_00534950_object::fn_00534950_object()	unsorted/fn_0053434B.cpp	vc6
 0x00534a06	187	fn_00534950_object::~fn_00534950_object()	unsorted/fn_0053434B.cpp	vc6
@@ -1993,7 +1993,7 @@ address	size	symbol	source	modes
 0x005394f4	190	tMetaMapHex::tMetaMapHex(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6
 0x005395b2	136	tMetaMapHex::operator=(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053963a	455	tMetaMapHex::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapHex.cpp	partial
-0x00539801	669	tMetaMapHex::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapHex.cpp	partial
+0x00539801	669	tMetaMapHex::StreamIn(nDataStore::tInput&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539a9e	484	tMetaMapHex::SQLFillInsertStream(std::stringstream*,bool)	unsorted/tMetaMapHex.cpp	partial
 0x00539c82	586	tMetaMapHex::SQLFillUpdateStream(std::stringstream*,bool)	unsorted/tMetaMapHex.cpp	partial
 0x00539ecc	28	tMetaMapHex::SQLTableName() const	unsorted/tMetaMapHex.cpp	vc6 guest
@@ -2001,7 +2001,7 @@ address	size	symbol	source	modes
 0x00539f04	76	tMetaMapHex::fn_00539f04() const	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539f50	76	tMetaMapHex::fn_00539f50() const	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539f9c	85	tMetaMapHex::fn_00539f9c()	unsorted/tMetaMapHex.cpp	partial
-0x00539ff1	662	tMetaMapHex::fn_00539ff1(int,int)	unsorted/tMetaMapHex.cpp	partial
+0x00539ff1	662	tMetaMapHex::fn_00539ff1(int,int)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a287	117	tMetaMapHex::fn_0053a287(tHexPoint&,unsigned int,unsigned int)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a2fc	32	tMetaMapHex::fn_0053a2fc()	unsorted/tMetaMapHex.cpp	partial
 0x0053a31c	32	tMetaMapHex::fn_0053a31c()	unsorted/tMetaMapHex.cpp	vc6 guest
@@ -2029,12 +2029,12 @@ address	size	symbol	source	modes
 0x0053a73a	41	fn_0053a73a_map::operator[](const int32&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a763	56	fn_0053a73a_map::tree::~tree()	unsorted/tMetaMapHex.cpp	vc6
 0x0053a79b	54	fn_0053a73a_map::operator=(const fn_0053a73a_map&)	unsorted/tMetaMapHex.cpp	vc6 guest
-0x0053a7d1	110	fn_0053a7d1_vector::fn_0053a7d1_vector(const fn_0053a7d1_vector&)	unsorted/tMetaMapHex.cpp	partial
-0x0053a83f	192	fn_0053a7d1_vector::reserve(unsigned int)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a7d1	110	vector(const std::vector< tHexPoint >&)	unsorted/tMetaMapHex.cpp	partial
+0x0053a83f	192	reserve(size_type)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a8ff	14	fn_0053a6cc_map::begin() const	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a90d	116	fn_0053a6cc_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a981	98	fn_0053a6cc_map::tree::fn_0053a981(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
-0x0053a9e3	35	fn_0053a6cc_map::insert(const value_type&)	unsorted/tMetaMapHex.cpp	vc6 guest
+0x0053a9e3	35	fn_0053a73a_map::insert(const value_type&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053aa06	116	fn_0053a73a_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053aab4	98	fn_0053a73a_map::tree::fn_0053aab4(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053ab16	132	fn_0053a6cc_map::tree::fn_0053ab16(node*,node*)	unsorted/tMetaMapHex.cpp	partial
@@ -2096,12 +2096,12 @@ address	size	symbol	source	modes
 0x0054334a	13	fn_005430ad_owner::fn_0054334a(int)	unsorted/fn_00543000.cpp	vc6 guest
 0x00543357	80	fn_005430ad_owner::fn_00543357(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest
 0x005433a7	54	fn_005430ad_owner::fn_005433a7() const	unsorted/fn_00543000.cpp	vc6 guest
-0x005433dd	11	tServCharacter::fn_005433dd() const	unsorted/fn_00543000.cpp	partial
-0x005433e8	12	tServCharacter::fn_005433e8() const	unsorted/fn_00543000.cpp	partial
-0x005433f4	12	tServCharacter::fn_005433f4() const	unsorted/fn_00543000.cpp	partial
+0x005433dd	11	tServCharacter::fn_005433dd() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005433e8	12	tServCharacter::fn_005433e8() const	unsorted/fn_00543000.cpp	vc6 guest
+0x005433f4	12	tServCharacter::fn_005433f4() const	unsorted/fn_00543000.cpp	vc6 guest
 0x00543400	12	tServCharacter::fn_00543400() const	unsorted/fn_00543000.cpp	vc6 guest
 0x0054340c	43	tServCharacter::fn_0054340c() const	unsorted/fn_00543000.cpp	vc6 guest
-0x00543437	14	fn_005430ad_owner::fn_00543437()	unsorted/fn_00543000.cpp	partial
+0x00543437	14	fn_005430ad_owner::fn_00543437()	unsorted/fn_00543000.cpp	vc6 guest
 0x00543445	16	tServCharacter::fn_00543445() const	unsorted/fn_00543000.cpp	vc6 guest
 0x00543455	4	fn_005430ad_owner::fn_00543455()	unsorted/fn_00543000.cpp	vc6 guest
 0x00543459	60	fn_005430ad_owner::fn_00543459() const	unsorted/fn_00543000.cpp	vc6 guest
@@ -2206,7 +2206,7 @@ address	size	symbol	source	modes
 0x005463cb	181	c_00546337::fn_005463cb(float,char)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546480	18	c_00546027::fn_00546480(int)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546492	323	c_00546027::fn_00546492(c_00427db2&)	unsorted/fn_00546000.cpp	vc6 guest
-0x005465d5	434	c_00546027::fn_005465d5(float,int)	unsorted/fn_00546000.cpp	partial
+0x005465d5	434	c_00546027::fn_005465d5(float,int)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546787	18	c_00546027::fn_00546787(int)	unsorted/fn_00546000.cpp	vc6 guest
 0x00546799	23	c_00546296::fn_00546799(const std::string&)	unsorted/fn_00546000.cpp	vc6 guest
 0x005467b0	26	c_00546296::fn_005467b0(const std::string&)	unsorted/fn_00546000.cpp	vc6 guest
