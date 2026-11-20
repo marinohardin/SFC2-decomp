@@ -8,6 +8,7 @@
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/fn_0042a480_object.h"
 #include <algorithm>
+#include "Common/SmartPtr.h"
 #include "unsorted/fn_005ea9ce_pred.h"
 // MATCH-ONLY: inline in the SDK, as in unsorted/tClientCharacter.cpp, which claims its out-of-line copy (0x00429a18); the header cannot define it while that unit does.
 inline tOptex::tGuard::~tGuard()
@@ -17,8 +18,7 @@ inline tOptex::tGuard::~tGuard()
 		fOptex->Leave();
 	}
 }
-// HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it returns what 0x004d4728 finds for a group and a control name.
-void fn_004d353e( long arg1, long arg2 );
+void fn_004d353e( long arg1, long arg2 ); // HYPOTHESIS: the claim at 0x004d353e is declared void, but this caller casts its result; it returns what 0x004d4728 finds for a group and a control name.
 extern const char* g_0087632c; // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 // HYPOTHESIS: only the members read here are placed; the class at 0x1b8 and its argument are not recovered. The member at 0xfc is some container; only its 0x54b6cf method is placed. Its +0x24 takes the panel's new value (0x005e8e55); that object's size is unknown. The wrapper at +0x78 (0x174 in the panel) holds an object of unknown type whose 0x005e907e takes the panel's argument (0x005e6469).
 class fn_00717950_object { public: bool fn_00717950(); }; class fn_005e907e_object { public: void fn_005e907e( long arg ); }; class tMetaClientMapQueueMember { public: void fn_005e8e55( int arg ); unsigned char field_0; }; class tMetaClientMapSub { public: void fn_005e94ef( long arg ); void fn_005e9499(); unsigned char field_0[ 0xc ]; void* field_c; long field_10; }; class tMetaClientMapQueue { public: void fn_0054b6cf( long arg ); const tHexPoint& fn_0058c2e1(); int fn_005e8efa(); int fn_00423402(); int fn_005e8efe(); int fn_0055f269(); unsigned char field_0[ 0x24 ]; tMetaClientMapQueueMember field_24; unsigned char field_25[ 0x48 - 0x25 ]; tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48; tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > > field_60; tSingleAccessWrapper< fn_005e907e_object > field_78; };
@@ -50,7 +50,7 @@ public:
 	virtual void vfunction19();
 	virtual void vfunction20();
 	int fn_005e5957( unsigned long flag ); bool fn_005e5a8f(); void fn_005e5abe(); void fn_005e5ae0( long arg ); bool fn_005e5b2d( tMetaClientMapReceiver* receiver ); void fn_005e5bd7( long arg ); void fn_005e5bfe( long arg ); void fn_005e5c25( long arg ); void fn_005e5c72( const tHexPoint& position ); tHexPoint fn_005e5ced(); tHexPoint fn_005e5d7a(); long fn_005e5dde(); long fn_005e5e01(); void fn_005e5e24( int arg ); void fn_005e5edc(); void fn_005e5ee7( char arg ); void fn_005e8c29( const tRect& area );
-	void fn_005e6091();
+	void fn_005e6091(); void fn_005e78c6( tSmartPtr< class fn_005e78c6_object > object, int flag, int unused );
 	void fn_005e5ef4();
 	void fn_005e620c( long x, long y, bool* changed ); // HYPOTHESIS: 0x005e65e5 tests a position and 0x005e7925 turns it into a hex; argument types are not recovered.
 	bool fn_005e65e5( const tPoint* point, const tRect* area );
@@ -590,4 +590,24 @@ void fn_005e7744_vector::fn_005e7744()
 	length = sqrt( length );
 	x = (float)( x / length );
 	y = (float)( y / length );
+}
+
+// HYPOTHESIS: the object the smart pointer holds; a 0xc byte base, then its reference count.
+class fn_005e78c6_base { public: virtual void vfunction0(); long field_4; long field_8; };
+class fn_005e78c6_object : public fn_005e78c6_base, public tRefCount { };
+
+// HYPOTHESIS: the panel's method that stores the flag at 0x18d under the optex; the third argument is unused.
+// FUNCTION: STARFLEETOP 0x005e78c6
+void tMetaClientMapPanel::fn_005e78c6( tSmartPtr< fn_005e78c6_object > object, int flag, int unused )
+{
+	tOptex::tGuard guard( &field_dc );
+
+	if( flag == 0 )
+	{
+		field_18d[ 0 ] = 1;
+	}
+	else
+	{
+		field_18d[ 0 ] = 0;
+	}
 }
