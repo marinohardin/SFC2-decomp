@@ -4762,6 +4762,15 @@
    "exact": false,
    "recorded": "2026-11-16"
   },
+  "0x004281ac": {
+   "name": "tOfficer::tOfficer",
+   "symbol": "??0tOfficer@@QAE@ABV0@@Z",
+   "unit": "unsorted/tOfficer.cpp",
+   "size": 123,
+   "score": 5.095,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x004295d0": {
    "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem",
    "symbol": "??1tClientCharacter@@UAE@XZ",
