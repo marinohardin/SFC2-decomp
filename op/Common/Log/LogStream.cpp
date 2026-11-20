@@ -16,4 +16,8 @@ tLogStream::tStreamBuf::tStreamBuf( tLog* eventLog )
 	, fAccess( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
 {}
 
+// FUNCTION: STARFLEETOP 0x006fe600
+tLogStream::tStreamBuf::~tStreamBuf()
+{}
+
 };
