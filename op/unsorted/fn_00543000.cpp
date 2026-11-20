@@ -161,21 +161,30 @@ std::string fn_005430ad_owner::fn_005433a7() const
 // FUNCTION: STARFLEETOP 0x005433dd
 bool tServCharacter::fn_005433dd() const
 {
-	return ((const fn_005430ad_owner *)this)->m114_1 ? true : false;
+	if (((const fn_005430ad_owner *)this)->m114_1)
+		return true;
+	else
+		return false;
 }
 
 // HYPOTHESIS: a fifth one-bit flag, bit 2 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x005433e8
 bool tServCharacter::fn_005433e8() const
 {
-	return ((const fn_005430ad_owner *)this)->m114_2 ? true : false;
+	if (((const fn_005430ad_owner *)this)->m114_2)
+		return true;
+	else
+		return false;
 }
 
 // HYPOTHESIS: a sixth one-bit flag, bit 3 of the dword at +0x114.
 // FUNCTION: STARFLEETOP 0x005433f4
 bool tServCharacter::fn_005433f4() const
 {
-	return ((const fn_005430ad_owner *)this)->m114_3 ? true : false;
+	if (((const fn_005430ad_owner *)this)->m114_3)
+		return true;
+	else
+		return false;
 }
 
 // HYPOTHESIS: a seventh one-bit flag, bit 10 of the dword at +0x114.
@@ -194,11 +203,11 @@ bool tServCharacter::fn_0054340c() const
 // FUNCTION: STARFLEETOP 0x00543437
 bool fn_005430ad_owner::fn_00543437()
 {
-	unsigned int v = *(unsigned int*)((char*)&m10c + 0x8);
-	unsigned char r = ~v;
-	r >>= 4;
-	r &= 1;
-	return r;
+	if (m114_4)
+		return false;
+	else
+		return true;
+
 }
 
 // FUNCTION: STARFLEETOP 0x00543445

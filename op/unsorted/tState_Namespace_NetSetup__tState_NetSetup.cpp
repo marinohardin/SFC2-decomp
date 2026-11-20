@@ -55,8 +55,8 @@ extern char *g_00849550[6];
 extern const char *g_008493c4;
 extern const char *g_008493c8;
 extern const char *g_008493a8;
-// HYPOTHESIS: cdecl; the meaning of the arguments is not known.
-void fn_004d34e8(const char *name, const char *group, int n);
+
+
 // HYPOTHESIS: the current time, and the modem state's flag and time of its last progress dot.
 extern double g_00c7c148;
 extern char g_00910b38;
@@ -607,8 +607,8 @@ void tState_NetSetup::fn_00476e72()
 			case 5:
 				status = tag->mGetString(4);
 				m12[0] = 1;
-				fn_004d34e8(g_008493c4, g_008493b8, 0);
-				fn_004d34e8(g_008493c8, g_008493b8, 0);
+				fn_004d34e8((long) g_008493c4, (long) g_008493b8, 0);
+				fn_004d34e8((long) g_008493c8, (long) g_008493b8, 0);
 				fn_004d346f(g_008493cc, g_008493b8);
 				break;
 			}
@@ -626,12 +626,15 @@ void tState_NetSetup::fn_00476e72()
 			if (!fn_0047685b())
 			{
 				if (g_008493d4-- > 0)
+				{
 					fn_004776d7("JoinStatus", 0);
+					return;
+				}
 				else
 				{
 					fn_004776d7("JoinStatus", 3);
-					fn_004d34e8(g_008493c4, g_008493b8, 0);
-					fn_004d34e8(g_008493c8, g_008493b8, 0);
+					fn_004d34e8((long) g_008493c4, (long) g_008493b8, 0);
+					fn_004d34e8((long) g_008493c8, (long) g_008493b8, 0);
 					fn_004d346f(g_008493cc, g_008493b8);
 					gNetControl.fn_00433c46();
 					g_008493d4 = 10;

@@ -101,13 +101,43 @@ void fn_0042a3f3_object::FUN_0042a3f3()
 // which unsorted/fn_0042C000.cpp also includes.
 #include "unsorted/tServCharacter.h"
 
+// The SDK's inline tOptex destructor, the same body tClientCharacter.cpp claims as the game's
+// copy (0x004296c8). With its body in view the compiler sets no unwind state before calling it
+// from an inlined tAccessPointer destructor, as the original does at 0x0042a8b7.
+// HYPOTHESIS: it belongs in Common/Thread/Optex.h, shared by the units, once they can move.
+inline tOptex::~tOptex()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
 
-
-
-
-
-
-
+// Inline in the SDK; Optex.h declares it only. Its out-of-line copy (0x004297fa) is claimed in
+// tClientCharacter.cpp. With the body in view the compiler knows Leave cannot throw, so 0x0042a8b7
+// sets no unwind state before it.
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (--fpSharedInfo->fRecurseCount > 0) {
+			::InterlockedDecrement(&fpSharedInfo->fLockCount);
+		} else {
+			fpSharedInfo->fThreadId = 0;
+			if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+				::SetEvent(fEvent);
+		}
+	}
+}
 
 
 
@@ -337,11 +367,11 @@ tServCharacter::tShipCache::~tShipCache()
 }
 
 // FUNCTION: STARFLEETOP 0x0042a8b7
-void fn_0042a480_object::FUN_0042a8b7( int value )
+void fn_0042a480_object::FUN_0042a8b7( const tMetaMapHex& hex )
 {
 	tOptex::tGuard guard( &field_e4 );
 
-	(*field_cc.Lock()).FUN_005395b2( value );
+	*field_cc.Lock() = hex;
 
 	guard.Leave();
 }
@@ -437,7 +467,7 @@ tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > >::iPtr fn_0042a
 }
 
 // FUNCTION: STARFLEETOP 0x0042ab08
-tSingleAccessWrapper< fn_005395b2_object >::iPtr fn_0042a480_object::FUN_0042ab08()
+tSingleAccessWrapper< tMetaMapHex >::iPtr fn_0042a480_object::FUN_0042ab08()
 {
 	return field_cc.Lock();
 }

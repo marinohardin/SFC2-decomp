@@ -44,6 +44,8 @@ struct fn_0053a73a_map
 		node* m_node;
 	};
 
+	struct value_type;
+
 	class tree
 	{
 	public:
@@ -54,6 +56,8 @@ struct fn_0053a73a_map
 			( (fn_005bc3de_tree*)this )->fn_005bc3de_tree::fn_005bc3de_tree(
 				*(const fn_005bc3de_tree::_Pr*)&pred, multi, *(const fn_005bc3de_tree::_A*)&al );
 		}
+		// HYPOTHESIS: the out-of-line tree insert 0x0057f946, shared with m_48's tree.
+		std::pair< iterator, bool > insert( const value_type& v );
 		// MATCH-ONLY: the copy constructor of tMetaMapHex has this tree constructor inline where
 		// the other constructor calls it; the second form stands for that.
 		tree( const std::allocator< int32 >& al, const std::less< int32 >& pred, bool multi )
@@ -99,6 +103,8 @@ struct fn_0053a73a_map
 
 	// HYPOTHESIS: the out-of-line assignment 0x0053a79b.
 	fn_0053a73a_map& operator=( const fn_0053a73a_map& other );
+	// HYPOTHESIS: the out-of-line insert 0x0053a9e3, which calls the tree's; tMetaMapHex's
+	// StreamIn calls it on m_70 and m_84. Both index operators have the insert inline.
 	std::pair< iterator, bool > insert( const value_type& v );
 	int32& operator[]( const int32& key );
 	// HYPOTHESIS: the out-of-line lookup 0x0053aa7a, taken to be the map's find.
@@ -199,8 +205,6 @@ struct fn_0053a6cc_map
 		int32u	second;
 	};
 
-	// HYPOTHESIS: the out-of-line insert 0x0053a9e3, which calls the tree's.
-	std::pair< iterator, bool > insert( const value_type& v );
 	// HYPOTHESIS: the index operator 0x0053a6a3. tMetaMapHex's StreamIn copies a long key into a
 	// temporary before the call, so the key is an int here.
 	int32u& operator[]( const int& key );

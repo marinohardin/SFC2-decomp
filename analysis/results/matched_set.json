@@ -239,10 +239,10 @@
    "name": "FUN_004027c8",
    "symbol": "?fn_004027c8@fn_004026ec_Owner@@QAEXPAUfn_004026ec_Entry@@PAUfn_004026ec_Dest@@H@Z",
    "unit": "unsorted/fn_00402000.cpp",
-   "size": 415,
-   "score": 88.129,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "size": 405,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00402967": {
    "name": "FUN_00402967",
@@ -264,30 +264,30 @@
   },
   "0x00402987": {
    "name": "FUN_00402987",
-   "symbol": "??0fn_00402987_Obj@@QAE@ABV0@@Z",
+   "symbol": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 42,
-   "score": 99.118,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004029b1": {
    "name": "FUN_004029b1",
-   "symbol": "?fn_004029b1@fn_004029b1_Obj@@QAEPADPADD@Z",
+   "symbol": "?insert@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEPADPADD@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 55,
-   "score": 99.545,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004029e8": {
    "name": "FUN_004029e8",
-   "symbol": "?fn_004029e8@fn_004029e8_Obj@@QBE?AV1@II@Z",
+   "symbol": "?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 51,
-   "score": 99.565,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00402a26": {
    "name": "FUN_00402a26",
@@ -408,12 +408,12 @@
   },
   "0x0040345f": {
    "name": "FUN_0040345f",
-   "symbol": "??1fn_004033ab_Ifstream@@UAE@XZ",
+   "symbol": "??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ",
    "unit": "unsorted/fn_00403000.cpp",
    "size": 70,
-   "score": 99.75,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004034a5": {
    "name": "std::basic_filebuf<char,std::char_traits<char>_>::~basic_filebuf<char,std::char_traits<char>_>",
@@ -552,12 +552,12 @@
   },
   "0x00404184": {
    "name": "FUN_00404184",
-   "symbol": "??0fn_00404184_Locale@@QAE@XZ",
+   "symbol": "??0?$fn_00404184_LocaleT@D@@QAE@XZ",
    "unit": "unsorted/fn_00404000.cpp",
    "size": 46,
-   "score": 99.412,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004041b2": {
    "name": "FUN_004041b2",
@@ -5124,12 +5124,12 @@
   },
   "0x0042a8b7": {
    "name": "FUN_0042a8b7",
-   "symbol": "?FUN_0042a8b7@fn_0042a480_object@@QAEXH@Z",
+   "symbol": "?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 120,
-   "score": 71.098,
+   "score": 99.857,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-19"
   },
   "0x0042a92f": {
    "name": "FUN_0042a92f",
@@ -5622,9 +5622,9 @@
    "symbol": "?vfunction11@t3DVisual_Model@@QAE_NPAUtPoint3@@PBD@Z",
    "unit": "unsorted/t3DVisual_Model.cpp",
    "size": 162,
-   "score": 95.887,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042fb24": {
    "name": "t3DVisual_Model::vfunction12",
@@ -5736,21 +5736,21 @@
   },
   "0x0042fd3f": {
    "name": "t3DVisual_Model::vfunction7",
-   "symbol": "?vfunction7@t3DVisual_Model@@QAEXPAVtViewer_0042fd3f@@MH@Z",
+   "symbol": "?vfunction7@t3DVisual_Model@@QAEHPAVtViewer_0042fd3f@@MH@Z",
    "unit": "unsorted/t3DVisual_Model.cpp",
    "size": 156,
-   "score": 97.636,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042fddb": {
    "name": "t3DVisual_Model::vfunction8",
-   "symbol": "?vfunction8@t3DVisual_Model@@QAEXPAVtViewer_0042fd3f@@MMH@Z",
+   "symbol": "?vfunction8@t3DVisual_Model@@QAEHPAVtViewer_0042fd3f@@MMH@Z",
    "unit": "unsorted/t3DVisual_Model.cpp",
    "size": 163,
-   "score": 97.759,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0042fe7e": {
    "name": "t3DVisual_Model::vfunction9",
@@ -8592,9 +8592,9 @@
    "symbol": "??4?$vector@UtTransporterHoldItem@@V?$allocator@UtTransporterHoldItem@@@std@@@std@@QAEAAV01@ABV01@@Z",
    "unit": "unsorted/fn_00447000.cpp",
    "size": 470,
-   "score": 94.274,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00447f3f": {
    "name": "FUN_00447f3f",
@@ -10491,9 +10491,9 @@
    "symbol": "?fn_004682c7@tState_GameConnections@tState_Namespace_GameConnections@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
    "size": 312,
-   "score": 99.241,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004683ff": {
    "name": "FUN_004683ff",
@@ -10617,9 +10617,9 @@
    "symbol": "?fn_00468c49@tState_GameConnections@tState_Namespace_GameConnections@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp",
    "size": 1101,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00469096": {
    "name": "FUN_00469096",
@@ -11409,9 +11409,9 @@
    "symbol": "?fn_00476e72@tState_NetSetup@tState_Namespace_NetSetup@@QAEXXZ",
    "unit": "unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp",
    "size": 1101,
-   "score": 99.951,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x004772bf": {
    "name": "FUN_004772bf",
@@ -17241,9 +17241,9 @@
    "symbol": "?fn_00523445@fn_0090bed4_Object@@QAEXED@Z",
    "unit": "unsorted/fn_00523000.cpp",
    "size": 254,
-   "score": 94.937,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00523543": {
    "name": "FUN_00523543",
@@ -17616,12 +17616,12 @@
   },
   "0x00534855": {
    "name": "FUN_00534855",
-   "symbol": "?fn_00534855@fn_005346f9_object@@QAEXPAV?$vector@PAVfn_00534461_entry@@V?$allocator@PAVfn_00534461_entry@@@std@@@std@@_NPAD@Z",
+   "symbol": "?fn_00534855@fn_005346f9_object@@QAEAAVfn_005343b1_object@@AAV?$vector@PAVfn_00534461_entry@@V?$allocator@PAVfn_00534461_entry@@@std@@@std@@_NPAD@Z",
    "unit": "unsorted/fn_0053434B.cpp",
    "size": 174,
-   "score": 99.388,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00534903": {
    "name": "FUN_00534903",
@@ -17925,9 +17925,9 @@
    "symbol": "?StreamIn@tMetaMapHex@@UAEXAAVtInput@nDataStore@@@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 669,
-   "score": 99.992,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00539a9e": {
    "name": "tMetaMapHex::vfunction6_for_tAllocatedClass",
@@ -17997,9 +17997,9 @@
    "symbol": "?fn_00539ff1@tMetaMapHex@@QAE?AV?$vector@VtHexPoint@@V?$allocator@VtHexPoint@@@std@@@std@@HH@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 662,
-   "score": 95.533,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x0053a287": {
    "name": "FUN_0053a287",
@@ -18849,30 +18849,30 @@
   },
   "0x005433dd": {
    "name": "FUN_005433dd",
-   "symbol": "?fn_005433dd@fn_005430ad_owner@@QAE_NXZ",
+   "symbol": "?fn_005433dd@tServCharacter@@QBE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 11,
-   "score": 98.75,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005433e8": {
    "name": "FUN_005433e8",
-   "symbol": "?fn_005433e8@fn_005430ad_owner@@QAE_NXZ",
+   "symbol": "?fn_005433e8@tServCharacter@@QBE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 12,
-   "score": 98.75,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x005433f4": {
    "name": "FUN_005433f4",
-   "symbol": "?fn_005433f4@fn_005430ad_owner@@QAE_NXZ",
+   "symbol": "?fn_005433f4@tServCharacter@@QBE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 12,
-   "score": 98.75,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00543400": {
    "name": "FUN_00543400",
@@ -18897,9 +18897,9 @@
    "symbol": "?fn_00543437@fn_005430ad_owner@@QAE_NXZ",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 14,
-   "score": 98.0,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00543445": {
    "name": "FUN_00543445",
@@ -19842,9 +19842,9 @@
    "symbol": "?fn_005465d5@c_00546027@@QAEXMH@Z",
    "unit": "unsorted/fn_00546000.cpp",
    "size": 434,
-   "score": 98.05,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
   },
   "0x00546787": {
    "name": "FUN_00546787",

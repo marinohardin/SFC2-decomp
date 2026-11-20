@@ -762,7 +762,14 @@ std::vector< tTransporterHoldItem >& std::vector< tTransporterHoldItem >::operat
 		;
 	else if( _X.size() <= size() )
 	{
-		iterator _S = std::copy( _X.begin(), _X.end(), _First );
+		// MATCH-ONLY: the library's copy( _X.begin(), _X.end(), _First ) written out; the original
+		// calls the element assignment out of line in this loop and inlines it in the next branch.
+		tTransporterHoldItem& (tTransporterHoldItem::*assign)( const tTransporterHoldItem& ) = &tTransporterHoldItem::operator=;
+		const_iterator _L = _X.end();
+		iterator _S = _First;
+		const_iterator _F = _X.begin();
+		for( ; _F != _L; ++_S, ++_F )
+			(_S->*assign)( *_F );
 		_Destroy( _S, _Last );
 		_Last = _First + _X.size();
 	}

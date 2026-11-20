@@ -413,8 +413,9 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     p[0x628 / 4] = n;
     p[0x570 / 4] = pe[0x20 / 4] * n;
     p[0x5dc / 4] = pe[0x30 / 4] * n;
+    int m = pe[0x44 / 4] * n;
     int* q = &p[0x618 / 4];
-    *q = pe[0x44 / 4] * n;
+    *q = m;
     p[0xc / 4] = pe[4 / 4];
     *q = 6;
     p[0x5e0 / 4] = pe[0x38 / 4];
@@ -422,6 +423,7 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     fn_007364c0((char*)&p[0x38 / 4], ((std::string*)&pe[0x58 / 4])->c_str());
     fn_007364c0((char*)&p[0x238 / 4], ((std::string*)&pe[0x8 / 4])->c_str());
     fn_007364c0((char*)&p[0x138 / 4], ((std::string*)&pe[0x48 / 4])->c_str());
+    // HYPOTHESIS: the name string at +8 ends in a two-character suffix compared with g_0083a3e0.
     if (fn_0040503b(((std::string*)&pe[0x8 / 4])->substr(((std::string*)&pe[0x8 / 4])->size() - 2, std::string::npos), g_0083a3e0))
         p[0x10 / 4] = 0x17;
     d->fn_00407db2(pe[0x1c / 4]);
@@ -432,14 +434,15 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
     d->fn_00407dcc(pe[0x40 / 4]);
     for (i = 0; i < n; i++)
     {
-        fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (char)(i * 5);
-        fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68);
+        char j = i * 5;
         for (int k = 0; k < 5; k++)
         {
-            dst[k].a = src[k].a;
-            dst[k].b = src[k].b;
-            dst[k].c = src[k].c;
-            dst[k].d = src[k].d;
+            fn_004027c8_Rec* src = (fn_004027c8_Rec*)((char*)e + 0x68) + k;
+            fn_004027c8_Rec* dst = (fn_004027c8_Rec*)((char*)d + 0x3c8) + (j + k);
+            dst->a = src->a;
+            dst->b = src->b;
+            dst->c = src->c;
+            dst->d = src->d;
         }
     }
 }
@@ -450,73 +453,54 @@ void fn_004026ec_Owner::fn_004027c8(fn_004026ec_Entry* e, fn_004026ec_Dest* d, i
 // FUNCTION: STARFLEETOP 0x00402967
 tFighterSpecMgr g_fn_00402967_Obj;
 
-class fn_00402987_Obj
-{
-public:
-    fn_00402987_Obj(const fn_00402987_Obj& x);
-    void fn_005da20a(bool);
-    void fn_00403b49(const fn_00402987_Obj&, unsigned int, unsigned int);
-    char m0;
-};
-
-// HYPOTHESIS: this is the std::string constructor taking (string, pos, npos); 0x005da20a is _Tidy and 0x00403b49 is assign
-extern unsigned int g_00795648;
-
+// std::string's copy constructor, out of line, as the library header writes it.
 // FUNCTION: STARFLEETOP 0x00402987
-fn_00402987_Obj::fn_00402987_Obj(const fn_00402987_Obj& x)
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(const _Myt& _X)
+    : allocator(_X.allocator)
 {
-    m0 = x.m0;
-    fn_005da20a(false);
-    fn_00403b49(x, 0, g_00795648);
+    _Tidy(), assign(_X, 0, npos);
 }
 
-class fn_004029b1_Obj
-{
-public:
-    void fn_00403d87();
-    void fn_00403c1a(unsigned int, unsigned int, char);
-    char* fn_004029b1(char*, char);
-    char m0;
-    char* m4;
-};
 
-// HYPOTHESIS: this is the std::string insert(iterator, char); 0x00403d87 is begin and 0x00403c1a is insert(pos, n, c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// std::string::insert(iterator, char), out of line, as the library header writes it.
 // FUNCTION: STARFLEETOP 0x004029b1
-char* fn_004029b1_Obj::fn_004029b1(char* p, char c)
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >::iterator std::basic_string<char, std::char_traits<char>, std::allocator<char> >::insert(iterator _P, char _C)
 {
-    fn_00403d87();
-    unsigned int d = p - m4;
-    unsigned int pos = p ? d : 0;
-    fn_00403c1a(pos, 1, c);
-    fn_00403d87();
-    return m4 + pos;
+    size_type _P0 = _Pdif(_P, begin());
+    insert(_P0, 1, _C);
+    return (begin() + _P0);
 }
 
-struct fn_004029e8_Alloc
-{
-};
-
-class fn_004029e8_Obj
-{
-public:
-    fn_004029e8_Obj(const fn_004029e8_Obj& x, unsigned int pos, unsigned int n, const fn_004029e8_Alloc& a = fn_004029e8_Alloc())
-        : m0(a)
-    {
-        fn_005da20a(false);
-        fn_00403b49(x, pos, n);
-    }
-    ~fn_004029e8_Obj();
-    fn_004029e8_Obj fn_004029e8(unsigned int pos, unsigned int n) const;
-    void fn_005da20a(bool);
-    void fn_00403b49(const fn_004029e8_Obj&, unsigned int, unsigned int);
-    fn_004029e8_Alloc m0;
-};
-
-// HYPOTHESIS: std::string::substr(pos, n), returning basic_string(*this, pos, n); m0 is the allocator copied from a default temporary
+// std::string::substr(pos, n), out of line, as the library header writes it.
 // FUNCTION: STARFLEETOP 0x004029e8
-fn_004029e8_Obj fn_004029e8_Obj::fn_004029e8(unsigned int pos, unsigned int n) const
+template <>
+std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::basic_string<char, std::char_traits<char>, std::allocator<char> >::substr(size_type _P, size_type _M) const
 {
-    return fn_004029e8_Obj(*this, pos, n);
+    return (_Myt(*this, _P, _M));
 }
 
 // HYPOTHESIS: std::istream::operator>>(long&) as the library header writes it (num_get's do_get for
