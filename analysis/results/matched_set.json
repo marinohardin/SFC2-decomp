@@ -4465,6 +4465,15 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x00424b90": {
+   "name": "tStrMgrCore::tStrMgrCore",
+   "symbol": "??0tStrMgrCore@@QAE@E@Z",
+   "unit": "unsorted/tStrMgrCore.cpp",
+   "size": 119,
+   "score": 99.949,
+   "exact": false,
+   "recorded": "2026-11-19"
+  },
   "0x00426ca8": {
    "name": "FUN_00426ca8",
    "symbol": "?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z",
