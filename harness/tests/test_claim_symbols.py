@@ -39,10 +39,22 @@ def recorded(**symbols):
         for k, s in symbols.items()}}
 
 
-def checked(results, data=None, baseline=(), check_all=False):
+def objects_defining(tmp_path, **units):
+    """{unit: object file} for units that each define the one symbol given (`a_cpp` is a.cpp)."""
+    out = {}
+    for unit, symbol in units.items():
+        path = tmp_path / (unit + '.obj')
+        path.write_bytes(coff.write_object(b'\xc3', symbol, []))
+        out[unit.replace('_cpp', '.cpp')] = str(path)
+    return out
+
+
+def checked(results, data=None, baseline=(), check_all=False, objects=None, evidence=None):
     rep = verify.Report()
     rep.results = results
-    verify.report_claim_symbols(rep, data or recorded(), list(baseline), check_all)
+    rep.objects = objects or {}
+    verify.report_claim_symbols(rep, data or recorded(), list(baseline), check_all, None,
+                                evidence)
     return rep
 
 
@@ -57,17 +69,90 @@ def test_a_call_naming_the_claimed_symbol_passes():
     assert rep.lines == []
 
 
-def test_a_call_naming_another_symbol_than_the_claim_fails():
-    rep = checked([exact_caller(), claim('?fn_00401200@c_00401100_Object@@QAEXXZ')])
+STANDIN = '?fn_00401200@c_00401100_Object@@QAEXXZ'
+
+
+def test_a_symbol_defined_in_another_object_is_an_error(tmp_path):
+    rep = checked([exact_caller(), claim(STANDIN)],
+                  objects=objects_defining(tmp_path, c_cpp='?callee@@YAXXZ'))
     assert rep.failed
     assert rep.lines == [
         'ERROR 0x00401000 relocation +0x1 names ?callee@@YAXXZ, which reaches 0x00401200, '
-        'claimed as ?fn_00401200@c_00401100_Object@@QAEXXZ (a consumer linking the exact '
-        'objects cannot resolve it)']
+        f'claimed as {STANDIN}: it is defined in another object (c.cpp): a consumer would bind '
+        'the call to that body']
     assert rep.claim_breaks == [dict(function='0x00401000', offset=1, symbol='?callee@@YAXXZ',
-                                     target='0x00401200',
-                                     claimed='?fn_00401200@c_00401100_Object@@QAEXXZ',
-                                     source='rebuilt')]
+                                     target='0x00401200', claimed=STANDIN, source='rebuilt',
+                                     **{'class': 'other-object', 'detail': 'c.cpp'})]
+
+
+def test_a_symbol_the_evidence_puts_at_another_address_is_an_error():
+    rep = checked([exact_caller(), claim(STANDIN)],
+                  evidence=FakeIndex(known={'?callee@@YAXXZ': [0x401500]}))
+    assert rep.failed
+    assert rep.lines == [
+        'ERROR 0x00401000 relocation +0x1 names ?callee@@YAXXZ, which reaches 0x00401200, '
+        f'claimed as {STANDIN}: the evidence has it at another address (0x00401500): a '
+        'consumer would bind the call there']
+
+
+def test_a_target_the_evidence_names_otherwise_is_an_error():
+    rep = checked([exact_caller(), claim(STANDIN)],
+                  evidence=FakeIndex(known={'?real@@YAXXZ': [0x401200]}))
+    assert rep.failed
+    assert rep.lines == [
+        'ERROR 0x00401000 relocation +0x1 names ?callee@@YAXXZ, which reaches 0x00401200, '
+        f'claimed as {STANDIN}: it names another function than the one at this address '
+        '(?real@@YAXXZ)']
+
+
+def test_a_target_the_evidence_also_names_otherwise_is_an_error():
+    # two names at one address (identical SDK functions the linker folded): the caller's own
+    # is not enough, a consumer cannot tell which function the claim is
+    rep = checked([exact_caller(), claim(STANDIN)], evidence=FakeIndex(
+        known={'?callee@@YAXXZ': [0x401200], '?real@@YAXXZ': [0x401200]}))
+    assert rep.failed and [b['class'] for b in rep.claim_breaks] == ['wrong-function']
+
+
+def test_a_stand_in_nobody_else_knows_is_a_warning_only():
+    rep = checked([exact_caller(), claim(STANDIN)], evidence=FakeIndex(known={'?x@@YAXXZ': [0x1]}))
+    assert not rep.failed
+    assert [b['class'] for b in rep.claim_breaks] == ['stand-in']
+    assert rep.lines == [
+        'WARN  1 relocations of exact functions name a stand-in no other object defines and no '
+        'evidence places elsewhere: resolved by name or by address (class stand-in); --all '
+        'lists them in reloc_breaks.tsv']
+    assert rep.standins == []
+
+
+def test_the_evidence_naming_the_symbol_at_this_address_is_a_warning_only():
+    rep = checked([exact_caller(), claim(STANDIN)],
+                  evidence=FakeIndex(known={'?callee@@YAXXZ': [0x401200]}))
+    assert not rep.failed and [b['class'] for b in rep.claim_breaks] == ['stand-in']
+
+
+def test_a_symbol_the_callers_own_object_defines_is_its_own_warning(tmp_path):
+    rep = checked([exact_caller(), claim(STANDIN)],
+                  objects=objects_defining(tmp_path, a_cpp='?callee@@YAXXZ'))
+    assert not rep.failed
+    assert [b['class'] for b in rep.claim_breaks] == ['own-object']
+    assert rep.lines == [
+        'WARN  1 relocations of exact functions name a symbol their own object defines (an '
+        'inline or template instance): unresolved, whether a consumer binds it to that body is '
+        'open (class own-object); --all lists them in reloc_breaks.tsv']
+
+
+def test_a_definition_in_another_object_beats_the_own_object_class(tmp_path):
+    rep = checked([exact_caller(), claim(STANDIN)], objects=objects_defining(
+        tmp_path, a_cpp='?callee@@YAXXZ', c_cpp='?callee@@YAXXZ'))
+    assert rep.failed and [b['class'] for b in rep.claim_breaks] == ['other-object']
+
+
+def test_a_functions_own_stand_in_is_still_a_stand_in_until_it_is_exact():
+    partial_caller = dict(exact_caller(), exact=False)
+    rep = checked([partial_caller, claim(STANDIN)])
+    assert [b['class'] for b in rep.standins] == ['stand-in']
+    rep = checked([exact_caller(), claim(STANDIN)])
+    assert rep.standins == []
 
 
 def test_a_target_nothing_claims_is_ignored():
@@ -87,17 +172,21 @@ def test_the_rebuilt_symbol_wins_over_a_stale_recorded_one():
     assert rep.claim_breaks == [] and not rep.failed
 
 
-def test_a_break_against_a_recorded_symbol_only_warns():
+def test_an_error_class_break_against_a_recorded_symbol_only_warns(tmp_path):
     # The claiming unit was not built in this run: its matched-set symbol may be stale.
-    rep = checked([exact_caller()], data=recorded(a00401200='?other@@YAXXZ'))
+    rep = checked([exact_caller()], data=recorded(a00401200='?other@@YAXXZ'),
+                  objects=objects_defining(tmp_path, c_cpp='?callee@@YAXXZ'))
     assert not rep.failed
     assert len(rep.lines) == 1 and rep.lines[0].startswith(
         'WARN  0x00401000 relocation +0x1 names ?callee@@YAXXZ, which reaches 0x00401200, '
-        'claimed as ?other@@YAXXZ in matched_set.json, not rebuilt in this run')
+        'claimed as ?other@@YAXXZ: it is defined in another object (c.cpp)')
+    assert rep.lines[0].endswith('(the claim is from matched_set.json, not rebuilt in this '
+                                 'run; the recorded symbol may be stale; --all decides)')
 
 
-def test_a_break_the_baseline_lists_is_tolerated():
-    rep = checked([exact_caller(), claim('?other@@YAXXZ')], baseline=[row(offset=0x40)])
+def test_a_break_the_baseline_lists_is_tolerated(tmp_path):
+    rep = checked([exact_caller(), claim('?other@@YAXXZ')], baseline=[row(offset=0x40)],
+                  objects=objects_defining(tmp_path, c_cpp='?callee@@YAXXZ'))
     assert not rep.failed
     assert len(rep.claim_breaks) == 1
     assert rep.lines == [f'INFO  1 relocations name another symbol than the claim at their '
@@ -110,6 +199,16 @@ def test_a_baseline_row_that_no_longer_breaks_is_reported_stale():
     assert len(rep.lines) == 1
     assert rep.lines[0].startswith('WARN ') and rep.lines[0].endswith(
         'lists 0x00401000 +0x1 ?callee@@YAXXZ -> 0x00401200, which no longer breaks: remove the row')
+
+
+def test_a_baseline_row_that_is_only_a_warning_now_is_stale_under_all():
+    results = [exact_caller(), claim('?other@@YAXXZ')]
+    rep = checked(results, baseline=[row()], check_all=True)
+    assert not rep.failed
+    assert len(rep.lines) == 2 and rep.lines[1].endswith(
+        'which is now only a warning (stand-in): remove the row')
+    # a single-function run may not know every object, so it does not ask for the removal
+    assert all('remove the row' not in line for line in checked(results, baseline=[row()]).lines)
 
 
 def test_rows_of_functions_not_scored_are_stale_only_under_all():
@@ -128,6 +227,13 @@ def test_the_baseline_reads_back_what_the_breaks_write(tmp_path):
                     '0x00401000\t0x1\t?callee@@YAXXZ\t0x00401200\t?other@@YAXXZ\n')
     p = tmp_path / 'reloc_baseline.tsv'
     p.write_text(text)
+    assert verify.load_reloc_baseline(str(p)) == [row(function='0x00400000', offset=0x2c), row()]
+    # the file an --all run writes has the class as a sixth column, which the reader ignores
+    classed = verify.reloc_baseline_text([dict(b, **{'class': 'stand-in'}) for b in breaks],
+                                         classes=True)
+    assert classed.splitlines()[0] == 'function\toffset\tsymbol\ttarget\tclaimed\tclass'
+    assert classed.splitlines()[1].endswith('\t?other@@YAXXZ\tstand-in')
+    p.write_text(classed)
     assert verify.load_reloc_baseline(str(p)) == [row(function='0x00400000', offset=0x2c), row()]
     assert verify.load_reloc_baseline(str(tmp_path / 'absent.tsv')) == []
 
@@ -148,15 +254,21 @@ def test_run_checks_claim_symbols_and_all_writes_the_breaks(tmp_path, monkeypatc
     monkeypatch.setattr(verify, 'check_exe', lambda rep: None)   # no retail file is read
     calls = []
 
-    def breaks(rep, data, baseline, check_all, table=None):
+    def breaks(rep, data, baseline, check_all, table=None, evidence=None):
         calls.append(check_all)
         rep.results = [exact_caller()]
-        rep.claim_breaks = [dict(row(), source='rebuilt')]
+        rep.claim_breaks = [dict(row(), source='rebuilt', **{'class': 'stand-in'})]
         rep.add('ERROR', 'a relocation names another symbol than the claim')
         rep.failed = True
     monkeypatch.setattr(verify, 'report_claim_symbols', breaks)
     assert verify.main(['--all']) == verify.EXIT_FAILED
     assert calls == [True]
     assert (tmp_path / 'build' / 'reloc_breaks.tsv').read_text() == (
-        'function\toffset\tsymbol\ttarget\tclaimed\n'
-        '0x00401000\t0x1\t?callee@@YAXXZ\t0x00401200\t?other@@YAXXZ\n')
+        'function\toffset\tsymbol\ttarget\tclaimed\tclass\n'
+        '0x00401000\t0x1\t?callee@@YAXXZ\t0x00401200\t?other@@YAXXZ\tstand-in\n')
+
+
+def test_defined_symbols_reads_external_definitions_per_unit(tmp_path):
+    objects = objects_defining(tmp_path, a_cpp='?f@@YAXXZ', c_cpp='?f@@YAXXZ')
+    objects['gone.cpp'] = str(tmp_path / 'missing.obj')
+    assert verify.defined_symbols(objects) == {'?f@@YAXXZ': {'a.cpp', 'c.cpp'}}
