@@ -205,6 +205,8 @@ struct fn_0053a6cc_map
 		int32u	second;
 	};
 
+	// HYPOTHESIS: the out-of-line insert 0x0053a9e3, which calls the tree's.
+	std::pair< iterator, bool > insert( const value_type& v );
 	// HYPOTHESIS: the index operator 0x0053a6a3. tMetaMapHex's StreamIn copies a long key into a
 	// temporary before the call, so the key is an int here.
 	int32u& operator[]( const int& key );
