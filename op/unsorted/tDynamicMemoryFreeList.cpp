@@ -1,3 +1,4 @@
+#define tDynamicMemoryFreeList_out_of_line
 #include "Source/entity/entity_physical.h"
 
 // FUNCTION: STARFLEETOP 0x00407d14

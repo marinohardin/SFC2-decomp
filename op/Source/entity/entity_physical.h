@@ -109,7 +109,13 @@ class tDynamicMemoryFreeList
 public:
 	// HYPOTHESIS: an inline destructor that empties the list; the destructor 0x00413de0
 	// stores this vftable and calls mClearList (slot 18) directly for the member at 0x1a4.
+	// MATCH-ONLY: the original also holds an out-of-line instance (0x00407cf1, with its deleting
+	// destructor 0x00407d14); the unit that claims it defines tDynamicMemoryFreeList_out_of_line.
+#if defined( tDynamicMemoryFreeList_out_of_line )
 	virtual ~tDynamicMemoryFreeList();
+#else
+	virtual ~tDynamicMemoryFreeList() { mClearList(); }
+#endif
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
 	virtual tListMember *vfunction4();	// HYPOTHESIS: the last member; 0x006267b0 wraps to it
@@ -242,9 +248,9 @@ public:
 	// and the target's, as 0x00413614 fills them; the two links are cleared on construction.
 	class tTractorItem : public tListMember
 	{
-	public: tTractorItem() : field_0x4(0), field_0x8(0) {}
+	public: tTractorItem() {}
 		tTractorItem *scalar_deleting_destructor(unsigned char flags);
-		void *field_0x4; void *field_0x8; tID fEntityID; tID fTargetID; };
+		tID fEntityID; tID fTargetID; };
 	// HYPOTHESIS: called with 0x2000 when a beam locks on a ship and 0x4000 when it lets go.
 	void fn_004102d9(int aFlag, tID aID, int a3, int a4, int a5);
 	// HYPOTHESIS: the object set by 0x00413a8d; its type is not known.
