@@ -63,7 +63,8 @@
 # HARNESS_SMALL_BYTES (128; 0: one order for every size), HARNESS_NEAR (90), HARNESS_ALLOW_FABLE (0),
 # HARNESS_FABLE_TRIES (1), HARNESS_FABLE_MAX_TURNS (30), HARNESS_FABLE_TIMEOUT (1800 s),
 # HARNESS_MAX_TURNS (60), HARNESS_SESSION_TIMEOUT (0: none), HARNESS_LEAN_INSTRUCTIONS,
-# HARNESS_NO_LEAN (0), HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000),
+# HARNESS_NO_LEAN (0), HARNESS_WHOLETREE (1; 0 skips the whole-tree checks), HARNESS_LANE_FILES,
+# HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000),
 # HARNESS_LIMIT_SLEEP (300 s), HARNESS_FAIL_SLEEP (5 s), plus the paths in
 # harness/lib/paths.py.
 set -u
@@ -318,6 +319,12 @@ while :; do
         set -- $(py score "$tag.after.json" "$addr")
         after=$1 kind=$2 code=$3
         improved=$(python3 -c 'import sys; print(int(float(sys.argv[2]) > float(sys.argv[1]) + 1e-6 or sys.argv[3] == "exact"))' "$before" "$after" "$kind")
+        if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.wholetree > "$tag.wholetree.txt" 2>&1; then
+            # The Stop hook runs the same checks; this catches a session it let go after three
+            # refusals. The round is undone like any other failure.
+            code=6
+            echo "ERROR $addr: the whole-tree checks failed (see $tag.wholetree.txt)"
+        fi
         if [ "$code" = 0 ] && [ "$improved" = 1 ]; then
             outcome=$([ "$kind" = exact ] && echo exact || echo improved)
             name=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["name"])' "$entry")
