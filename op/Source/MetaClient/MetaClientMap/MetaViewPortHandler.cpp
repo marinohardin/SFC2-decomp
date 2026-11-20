@@ -575,12 +575,19 @@ tMetaMapNormalHex::tMetaMapNormalHex( const tMetaMapNormalHex& other )
 #include <math.h>
 
 // HYPOTHESIS: a two-float vector at the start of its object; the class is not recovered.
-class fn_005e7744_vector { public: void fn_005e7744(); float x; float y; };
+class fn_005e7744_vector
+{
+public:
+	void fn_005e7744();
+	float x;
+	float y;
+};
 
 // FUNCTION: STARFLEETOP 0x005e7744
 void fn_005e7744_vector::fn_005e7744()
 {
-	double length = sqrt( (double)( y * y + x * x ) );
+	double length = y * y + x * x;
+	length = sqrt( length );
 	x = (float)( x / length );
 	y = (float)( y / length );
 }

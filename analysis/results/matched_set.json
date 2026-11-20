@@ -25305,8 +25305,8 @@
    "symbol": "?fn_005e7744@fn_005e7744_vector@@QAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 52,
-   "score": 95.385,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-19"
   },
   "0x005ea14b": {
