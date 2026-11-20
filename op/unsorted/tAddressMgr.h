@@ -11,8 +11,8 @@
 
 // HYPOTHESIS: the reference-counted destination the switch sends to; its tRefCount sits at
 // +0xc, after what is taken to be a tStreamable. Its class and name are not known.
-// Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp still holds a local
-// copy of this declaration and calls 0x005d27f1 as fn_005d27f1.
+// Meta/MetaDatabase/AsyncDatabaseProcedures/Single/AsyncDBSingle.cpp includes this header
+// and calls 0x005d27f1 as fn_005d27f1.
 class tObject_005d3679 : public nDataStore::tStreamable, public tRefCount
 {
 };

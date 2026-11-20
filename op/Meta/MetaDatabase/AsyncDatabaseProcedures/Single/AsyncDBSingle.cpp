@@ -712,15 +712,15 @@ void nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction43( nDatabase::tDat
 	fDatabase->UpdateObject( update );
 }
 
-#include "Common/SmartPtr.h"
+#include "unsorted/tAddressMgr.h"
 
 // HYPOTHESIS: fn_005d3679 (which reads the text "*~Server~*") returns, held by a smart pointer,
 // the reference-counted object the switch sends to; its tRefCount sits at +0xc, after what is
 // taken to be a tStreamable. fn_005d27f1 returns the object fn_005d3679 is called on. Their
 // classes and names are not known.
-class tObject_005d3679 : public nDataStore::tStreamable, public tRefCount
-{
-};
+// tObject_005d3679 is declared in unsorted/tAddressMgr.h
+//
+//
 class tObject_005d27f1
 {
 public:
