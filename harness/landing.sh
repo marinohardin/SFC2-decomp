@@ -13,6 +13,12 @@
 # 2. Regenerates op/manifest.tsv from the annotations and the new matched set (tools/manifest.py).
 #
 # Commit what it changes. Exit 0 landed, 1 a regression, 2 a function could not be built or scored.
+for v in HARNESS_MATCHED_SET SFCOP_LANE; do
+    if [ -n "$(printenv "$v" 2>/dev/null)" ]; then
+        echo "ERROR $v is set: that is a grind lane's environment, and a landing would record into the lane's copy. Unset it; the landing records into analysis/results/matched_set.json" >&2
+        exit 2
+    fi
+done
 here=$(cd "$(dirname "$0")" && pwd)
 repo=$(dirname "$here")
 base=${1:-origin/develop}

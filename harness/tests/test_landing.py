@@ -47,3 +47,14 @@ def test_land_verifies_every_claim_records_and_holds_the_run_to_the_base(tmp_pat
     assert calls['base'][1] == 'develop'
     with pytest.raises(SystemExit):
         verify.main(['--land'])
+
+
+@pytest.mark.parametrize('var', ['HARNESS_MATCHED_SET', 'SFCOP_LANE'])
+def test_landing_refuses_a_lanes_environment(var):
+    import os
+    import subprocess
+    script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'landing.sh')
+    env = {k: v for k, v in os.environ.items() if k not in ('HARNESS_MATCHED_SET', 'SFCOP_LANE')}
+    r = subprocess.run(['sh', script, 'develop'], capture_output=True, text=True,
+                       env=dict(env, **{var: '/tmp/x'}))
+    assert r.returncode == 2 and f'ERROR {var} is set' in r.stderr
