@@ -397,3 +397,4 @@ address	name	best_score	attempts	last_model	listed	note
 0x00424b90	tStrMgrCore::tStrMgrCore	99.95	2	opus	2026-11-20T00:06:24Z	attempt 2 (opus) did not raise the best; waits for Fable; best 99.95%
 0x00424c23	tStrMgrCore::~tStrMgrCore	100.00	2	opus	2026-11-20T00:09:22Z	attempt 2 (opus) did not raise the best; waits for Fable; best 100.00%
 0x004281ac	tOfficer::tOfficer	5.09	2	opus	2026-11-20T00:12:54Z	attempt 2 (opus) did not raise the best; best 5.09%
+0x00428227	tOfficer::~tOfficer	15.56	2	opus	2026-11-20T00:15:41Z	attempt 2 (opus) did not raise the best; best 15.56%
