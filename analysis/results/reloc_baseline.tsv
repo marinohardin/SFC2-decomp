@@ -30,7 +30,3 @@ function	offset	symbol	target	claimed
 0x0046090a	0x12b	?_Construct@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z	0x004064d5	?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z
 0x0046090a	0x1a0	?_Construct@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z	0x004064d5	?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z
 0x0047ebca	0x476	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ	0x00402d42	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ
-0x00663d80	0x29	??0tRegisteredAudioType@@QAE@XZ	0x006e7e80	??0tSimulator@nTestSim@@QAE@XZ
-0x0066dc50	0xcf	??1tSoundMemoryBlock@@UAE@XZ	0x00645480	??1tListMemberWithHandle@@UAE@XZ
-0x0066def0	0x15	??1tSoundMemoryBlock@@UAE@XZ	0x00645480	??1tListMemberWithHandle@@UAE@XZ
-0x0066def0	0x3b	??1tSoundMemoryBlock@@UAE@XZ	0x00645480	??1tListMemberWithHandle@@UAE@XZ

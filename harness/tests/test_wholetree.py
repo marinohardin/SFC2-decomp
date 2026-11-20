@@ -55,6 +55,19 @@ def test_a_verify_error_in_any_unit_fails_with_the_error_lines_only():
     assert 'build-and-verify.sh --all' in msg
 
 
+def test_the_claim_symbol_classes_are_warnings_or_errors_as_step_8_says():
+    warn = ('WARN  504 relocations of exact functions name a stand-in no other object defines '
+            '(class stand-in); --all lists them in reloc_breaks.tsv')
+    assert wholetree.check(fake(verify=(0, json.dumps(dict(exit=0, lines=[warn])), '')), {}) == (
+        True, '')
+    err = ('ERROR 0x00401000 relocation +0x1 names ?f@@YAXXZ, which reaches 0x00401200, claimed '
+           'as ?g@@YAXXZ: it is defined in another object (c.cpp): a consumer would bind the '
+           'call to that body')
+    out = json.dumps(dict(exit=2, lines=[warn, err]))
+    ok, msg = wholetree.check(fake(verify=(2, out, '')), {})
+    assert not ok and err in msg and 'class stand-in' not in msg
+
+
 def test_unparsable_verify_output_shows_its_last_lines():
     ok, msg = wholetree.check(fake(verify=(2, '', 'Traceback\nValueError: x')), {})
     assert not ok and 'ValueError: x' in msg

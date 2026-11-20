@@ -105,12 +105,27 @@ def test_a_target_the_evidence_names_otherwise_is_an_error():
         '(?real@@YAXXZ)']
 
 
-def test_a_target_the_evidence_also_names_otherwise_is_an_error():
-    # two names at one address (identical SDK functions the linker folded): the caller's own
-    # is not enough, a consumer cannot tell which function the claim is
+def test_a_symbol_among_several_evidence_names_of_the_target_is_folded():
     rep = checked([exact_caller(), claim(STANDIN)], evidence=FakeIndex(
         known={'?callee@@YAXXZ': [0x401200], '?real@@YAXXZ': [0x401200]}))
-    assert rep.failed and [b['class'] for b in rep.claim_breaks] == ['wrong-function']
+    assert not rep.failed and [b['class'] for b in rep.claim_breaks] == ['folded']
+    assert rep.lines[0].startswith('WARN  1 relocations of exact functions name a symbol the '
+                                   'evidence gives the target together with other names')
+    # the evidence naming the symbol at another address still wins
+    rep = checked([exact_caller(), claim(STANDIN)], evidence=FakeIndex(
+        known={'?callee@@YAXXZ': [0x401200, 0x401500], '?real@@YAXXZ': [0x401200]}))
+    assert rep.failed and [b['class'] for b in rep.claim_breaks] == ['other-address']
+
+
+def test_a_new_stand_in_of_an_exact_function_is_refused_an_old_one_is_not(tmp_path, monkeypatch):
+    monkeypatch.setattr(paths, 'BUILD', str(tmp_path))
+    results = [exact_caller(), claim(STANDIN)]
+    assert checked(results).standins == []          # no startup file: loosened
+    (tmp_path / 'reloc_breaks.tsv').write_text(verify.reloc_baseline_text(
+        [dict(row(), **{'class': 'stand-in'})], classes=True))
+    assert checked(results).standins == []          # the startup --all had it
+    (tmp_path / 'reloc_breaks.tsv').write_text(verify.reloc_baseline_text([], classes=True))
+    assert [b['class'] for b in checked(results).standins] == ['stand-in']
 
 
 def test_a_stand_in_nobody_else_knows_is_a_warning_only():

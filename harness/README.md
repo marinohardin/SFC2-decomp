@@ -108,7 +108,8 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    | --- | --- | --- | --- |
    | `other-object` | the caller's symbol is defined in another built object: the consumer binds the call to that body | `ERROR`, exit 2 | declare the callee as its claim does |
    | `other-address` | the evidence names the caller's symbol at another address | `ERROR`, exit 2 | same |
-   | `wrong-function` | the evidence names the callee's address with a name other than the caller's symbol: the caller names another real function | `ERROR`, exit 2 | same |
+   | `wrong-function` | the evidence names the callee's address, and the caller's symbol is not among those names: the caller names another real function | `ERROR`, exit 2 | same |
+   | `folded` | the evidence gives the target several names, the caller's symbol one of them (bodies the original folded into one address): resolved by name | `WARN`, one summary line, never fails | nothing needed |
    | `stand-in` | the symbol is defined in no other object and the evidence does not place it elsewhere (an invented class or signature): resolved by name or by address | `WARN`, one summary line, never fails | nothing needed; declaring the callee as its claim does removes it |
    | `own-object` | the symbol is defined in the caller's own object (an inline or template instance emitted there) | `WARN`, one summary line, never fails | nothing needed; **unresolved**: whether a consumer binds the call to that local body or to the exe's address is for the consumer's maintainer to say |
 
@@ -278,8 +279,10 @@ consumer linking the objects may not resolve it. A single-function run prints a 
 line for each and lists them under `standins` in `--json`. The Stop hook refuses a session whose
 function holds one, and the loop does not commit it (exit 5 from `loopio.score`). Rows on the
 relocation baseline (`analysis/results/reloc_baseline.tsv`) are tolerated, as for exact
-functions; so is a warning-class break (`stand-in`, `own-object`) of a function that is exact,
-which step 8 only counts. Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
+functions; so is a warning-class break of a function that is exact, which step 8 only counts,
+except an exact function's `stand-in` break that the last `--all` in this checkout (the loop's
+start; its `reloc_breaks.tsv`) did not already have: the session created it, and it is refused. Without
+that file such a break is only counted (a later symbol-table change tightens it). Without a table (no `--all` yet in the checkout) only claims rebuilt in the same run
 are checked. The table is as old as the `--all` that wrote it, so `loop.sh` writes it again at
 every start (a full `--all`: about 2 minutes warm, 4 cold with the native compiler; start lanes
 one after another); after merging into a running lane, restart its loop (or run `--all`) so a renamed

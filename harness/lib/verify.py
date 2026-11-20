@@ -38,7 +38,7 @@ RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
 # A relocation that names another symbol than the claim at its target is of one class
 # (classify_break): the first three fail the run, the last two are listed only.
 CLASS_ERRORS = ('other-object', 'other-address', 'wrong-function')
-CLASS_WARNS = ('own-object', 'stand-in')
+CLASS_WARNS = ('own-object', 'folded', 'stand-in')
 
 
 class Untrusted(Exception):
@@ -707,6 +707,17 @@ def defined_symbols(objects):
     return out
 
 
+def startup_breaks():
+    """The keys (_break_key) of the breaks the last `--all` in this checkout wrote to
+    reloc_breaks.tsv (the loop runs one at its start), or None without that file."""
+    try:
+        with open(os.path.join(paths.BUILD, 'reloc_breaks.tsv'), newline='') as f:
+            return {(r['function'], r['symbol'], r['target'])
+                    for r in csv.DictReader(f, delimiter='\t')}
+    except (OSError, KeyError):
+        return None
+
+
 def classify_break(b, unit, defined, evidence):
     """(class, detail) of a claim_symbol_breaks row: how the consumer that links the exact
     objects resolves the call, which names the symbol S, to the target T (harness/README.md,
@@ -722,9 +733,11 @@ def classify_break(b, unit, defined, evidence):
     elsewhere = sorted(a for a in known.get(sym, ()) if a != target)
     if elsewhere:
         return 'other-address', f'0x{elsewhere[0]:08x}'
-    other_names = names_at.get(target, set()) - {sym}
-    if other_names:
-        return 'wrong-function', sorted(other_names)[0]
+    names = names_at.get(target, set())
+    if names - {sym}:
+        if sym in names:
+            return 'folded', ', '.join(sorted(names))
+        return 'wrong-function', sorted(names)[0]
     if unit in defined.get(sym, ()):
         return 'own-object', ''
     return 'stand-in', ''
@@ -763,10 +776,17 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
     # Stand-ins: any scored function, exact or not, that reaches a claimed function through
     # another symbol than the claim's, judged only against rebuilt symbols (this run's or the
     # table's), never a recorded field that may be stale. The Stop hook refuses these. An exact
-    # function's warning-class break is not one: it is only counted below.
+    # function's warning-class break is not one, and is only counted below, unless it is a
+    # `stand-in` the startup --all (reloc_breaks.tsv) did not have: the session made it.
+    startup = startup_breaks()
+
+    def tolerated_warning(b):
+        if b['function'] not in exact or b['class'] not in CLASS_WARNS:
+            return False
+        return startup is None or b['class'] != 'stand-in' or _break_key(b) in startup
     rep.standins = [b for b in scored
                     if b['source'] in ('rebuilt', 'table') and _break_key(b) not in listed
-                    and not (b['function'] in exact and b['class'] in CLASS_WARNS)]
+                    and not tolerated_warning(b)]
     errors = [b for b in rep.claim_breaks if b['class'] in CLASS_ERRORS]
     reported = {_break_key(b) for b in errors}
     if not check_all:
@@ -799,6 +819,8 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
     for cls, what in (
             ('stand-in', 'a stand-in no other object defines and no evidence places elsewhere: '
                          'resolved by name or by address'),
+            ('folded', 'a symbol the evidence gives the target together with other names (bodies '
+                       'the original folded into one address): resolved by name'),
             ('own-object', 'a symbol their own object defines (an inline or template instance): '
                            'unresolved, whether a consumer binds it to that body is open')):
         n = sum(1 for b in rep.claim_breaks if b['class'] == cls)
