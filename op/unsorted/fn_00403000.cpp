@@ -1,12 +1,12 @@
 #include <fstream>
 
-// HYPOTHESIS: the library's basic_filebuf::open, which the claim at 0x00404230 holds under a
-// stand-in class; it is declared here so that this constructor reaches the claimed symbol.
-class fn_00404230_Obj
-{
-public:
-    fn_00404230_Obj* fn_00404230(unsigned long a, unsigned long b);
-};
+#include "unsorted/fn_00404230_Obj.h"
+
+
+
+
+
+
 
 // The library's std::ifstream constructor taking (name, mode); the exe names its vtable
 // 0x00795704 basic_ifstream<char>.
