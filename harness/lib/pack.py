@@ -244,7 +244,7 @@ def callee_symbol(hit):
         return ''
     sym, src, where = hit
     detail = ', '.join(x for x in (symtab.convention(sym), src, where) if x)
-    if src == 'claim':
+    if src == 'claim' or (src == 'table' and where in ('claim', 'mangled', 'add')):
         return f': the call must name `{sym}` ({detail})'
     return f': probably `{sym}` ({detail})'
 
@@ -280,13 +280,14 @@ def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
     if not calls:
         parts.append('(none found)' if exe is not None else '(the exe is not available)')
     table = symtab.load_claims()
+    rows = symtab.load_table()
     for addr, proto, where in calls[:CALLEES_MAX]:
         line = f'- `{addr}` `{proto}`' + (f' (in `{where}`)' if where else '')
-        line += callee_symbol(symtab.lookup(int(addr, 16), index, table))
+        line += callee_symbol(symtab.lookup(int(addr, 16), index, table, rows))
         parts.append(line)
     if len(calls) > CALLEES_MAX:
         parts.append(f'- ... {len(calls) - CALLEES_MAX} more cut')
-    if any(symtab.lookup(int(c[0], 16), index, table) for c in calls[:CALLEES_MAX]):
+    if any(symtab.lookup(int(c[0], 16), index, table, rows) for c in calls[:CALLEES_MAX]):
         parts += ['', 'Declare a claimed callee so it compiles to the symbol listed: use its '
                   'class and header as they are. A stand-in (a claimed callee declared again '
                   'under another class or signature) is refused by the Stop hook, even when the '

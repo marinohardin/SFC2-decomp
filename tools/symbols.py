@@ -15,6 +15,7 @@ informational.
 """
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -119,6 +120,25 @@ def head_scopes(symbol):
     if not all(s and s.replace('_', 'a').isalnum() and not s.isdigit() for s in scopes):
         return None
     return special, scopes, rest
+
+
+def callee_verdict(symbol, address):
+    """(True, '') when a symbol named by a caller's relocation may be written for the function at
+    the int `address` (the seed's rule for `callers`, and the loop's for `add`), else (False,
+    reason). No placeholder component is allowed except the function's own name fn_<address>,
+    free or member of a class with a real name."""
+    h = head_scopes(symbol)
+    if h is None:
+        return True, ''
+    special, scopes, _ = h
+    bad = [i for i, s in enumerate(scopes) if is_placeholder(s)]
+    if not bad:
+        return True, ''
+    if not special and bad == [0] and scopes[0].lower() == f'fn_{address:08x}':
+        return True, ''
+    if bad == [0] and not special:
+        return False, 'fn-name-of-another-address'
+    return False, 'placeholder-class'
 
 
 def decode_symbol(symbol):
@@ -450,6 +470,20 @@ def cmd_add(a):
     return 0
 
 
+def read_result_symbols(path):
+    """{address: symbol} of the claims a `build-and-verify.sh <function> --json` output rebuilt
+    (every function of the units it built), as harness/lib/verify.symbol_table_rows names them;
+    None when the file holds no such output."""
+    from harness.lib import verify
+    try:
+        with open(path, encoding='utf-8', errors='replace') as f:
+            text = f.read()
+        results = json.loads(text[text.index('{'):])['results']
+    except (OSError, ValueError, KeyError):
+        return None
+    return {a: sym for a, sym, _ in verify.symbol_table_rows(results)}
+
+
 def cmd_claim(a):
     table = a.table or default_table()
     build, src_root = a.build, a.src_root
@@ -457,7 +491,17 @@ def cmd_claim(a):
         from harness.lib import paths
         build = build or paths.BUILD
         src_root = src_root or paths.SRC_ROOT
-    built = read_build_symbols(build)
+    if a.results:
+        built = read_result_symbols(a.results)
+        if built is None:
+            print(f'ERROR {a.results} holds no build-and-verify --json output')
+            return 1
+        a.address = a.address or sorted(built)
+        if not a.address:
+            print('0 rows changed')
+            return 0
+    else:
+        built = read_build_symbols(build)
     if built is None:
         print(f'ERROR no symbols.tsv in {build}: run harness/build-and-verify.sh --all first')
         return 1
@@ -522,6 +566,8 @@ def main(argv=None):
     c.add_argument('address', nargs='*', help='default: every current claim')
     c.add_argument('--build')
     c.add_argument('--src-root')
+    c.add_argument('--results', help='take the symbols from this build-and-verify --json output '
+                   '(a single-function run), for the claims it rebuilt, instead of the build')
     c.set_defaults(fn=cmd_claim)
     h = sub.add_parser('show', help='print rows')
     h.add_argument('address', nargs='+')
