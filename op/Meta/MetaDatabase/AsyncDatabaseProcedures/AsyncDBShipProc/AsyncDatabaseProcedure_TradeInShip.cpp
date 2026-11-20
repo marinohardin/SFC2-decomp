@@ -15,10 +15,10 @@ using namespace nAsyncDatabaseProcedure;
 
 // The SDK's inline destructor of the reader, expanded into the function below as in the
 // original; Close itself is called out of line (0x0056027f).
-inline nDataStore::tInput::~tInput()
-{
-	Close( fCleanUpBuffer );
-}
+// (DataStoreInput.h defines it.)
+
+
+
 
 // HYPOTHESIS: the callback for the database's answer: reads the character, finds the ship to
 // trade in among the character's ship caches, prices it, removes it from the character and the

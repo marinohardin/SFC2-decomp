@@ -43,19 +43,19 @@ tTransactionUpdateStores::tTransactionUpdateStores( tAsyncDatabase* db ) : tAsyn
 	fn_00719050();
 }
 
+#line 46
 // FUNCTION: STARFLEETOP 0x00569c5c
 // FUNCTION: STARFLEETOP 0x00569c78
-#line 48
 tTransactionUpdateStores::~tTransactionUpdateStores()
 {
 }
 
 // The SDK's inline destructor of the reader, expanded into the function below as in the
 // original; Close itself is called out of line (0x0056027f).
-inline nDataStore::tInput::~tInput()
-{
-	Close( fCleanUpBuffer );
-}
+// (DataStoreInput.h defines it.)
+
+
+
 
 // HYPOTHESIS: the callback for the database's answer: reads the character and the ships it
 // owns, names the ships, buys the stores the request asks for as far as the character can pay,

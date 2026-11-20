@@ -10,10 +10,10 @@ using namespace nAsyncDatabaseProcedure;
 
 // The SDK's inline destructor of the reader, expanded into the function below as in the
 // original; Close itself is called out of line (0x0056027f).
-inline nDataStore::tInput::~tInput()
-{
-	Close( fCleanUpBuffer );
-}
+// (DataStoreInput.h defines it.)
+
+
+
 
 // HYPOTHESIS: the callback for the database's answer: reads the matrix in from the database,
 // or makes a new one there when there is none, and sends it back in the response.

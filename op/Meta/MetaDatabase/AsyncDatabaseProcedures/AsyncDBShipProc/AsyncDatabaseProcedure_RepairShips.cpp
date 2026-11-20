@@ -120,10 +120,10 @@ tRepairShips::~tRepairShips()
 
 // The SDK's inline destructor of the reader, expanded into 0x00568b2e as in the original;
 // Close itself is called out of line (0x0056027f).
-inline nDataStore::tInput::~tInput()
-{
-	Close( fCleanUpBuffer );
-}
+// (DataStoreInput.h defines it.)
+
+
+
 
 // HYPOTHESIS: the callback for the database's answer: reads the character and the ships it
 // owns, pays for each repair from the character and writes the ship back.
