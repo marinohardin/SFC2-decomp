@@ -322,3 +322,74 @@ def test_a_link_in_the_worktree_to_a_private_folder_is_refused_through_realpath(
                          'tool_input': {'pattern': 'x', 'path': 'notes'}}) == guard.PRIVATE_DENY
     assert bash('cat notes/secret.txt') == guard.PRIVATE_DENY
     assert bash('ls notes') == guard.PRIVATE_DENY
+
+
+# The lane file list ($HARNESS_LANE_FILES).
+
+@pytest.fixture
+def lane(tmp_path, monkeypatch):
+    f = tmp_path / 'lane.txt'
+    f.write_text('# the files of this lane\n\nop/Tiger/tsay.cpp\n  op/Tiger/tsay*.h  \n'
+                 'op/Common/*.inl\n')
+    monkeypatch.setenv('HARNESS_LANE_FILES', str(f))
+    return f
+
+
+def op(rel):
+    return os.path.join(paths.REPO, 'op', rel)
+
+
+def test_without_a_lane_list_every_file_under_the_tree_is_allowed(monkeypatch):
+    monkeypatch.delenv('HARNESS_LANE_FILES', raising=False)
+    assert edit(op('Tiger/tsay.cpp')) is None
+    assert edit(op('Other/new.cpp')) is None
+
+
+def test_a_listed_file_is_allowed(lane):
+    assert edit(op('Tiger/tsay.cpp')) is None
+    assert guard.decide({'tool_name': 'Write', 'cwd': paths.REPO,
+                         'tool_input': {'file_path': 'op/Tiger/tsay_new.h'}}) is None
+
+
+def test_a_glob_entry_matches_files_it_covers_and_a_comment_or_blank_line_matches_nothing(lane):
+    assert edit(op('Tiger/tsay2.h')) is None
+    assert edit(op('Common/list.inl')) is None
+    assert edit(op('Tiger/tsayx.cpp')) is not None
+    assert edit(op('Tiger/other.h')) is not None
+    assert edit(op('Common/list.h')) is not None
+
+
+def test_an_unlisted_file_is_denied_with_the_request_forms(lane):
+    reason = edit(op('Tiger/tship.cpp'))
+    assert 'Leave it alone' in reason
+    assert 'HEADER REQUEST: <header> <what and why> (for 0x<address>)' in reason
+    assert 'UNIT REQUEST: <file> <what and why> (for 0x<address>)' in reason
+
+
+def test_a_new_unlisted_file_is_denied_and_a_new_listed_one_is_allowed(lane):
+    assert not os.path.exists(op('Tiger/brand_new.cpp'))
+    assert edit(op('Tiger/brand_new.cpp')) is not None
+    assert edit(op('Tiger/tsay_new.h')) is None
+
+
+def test_a_relative_path_is_matched_from_the_repository_root(lane):
+    ev = {'tool_name': 'Edit', 'cwd': paths.REPO, 'tool_input': {'file_path': 'op/Tiger/tship.cpp'}}
+    assert guard.decide(ev) is not None
+    ev['tool_input']['file_path'] = 'op/Tiger/tsay.cpp'
+    assert guard.decide(ev) is None
+
+
+def test_multiedit_is_held_to_the_list_too(lane):
+    assert guard.decide({'tool_name': 'MultiEdit', 'tool_input': {
+        'file_path': op('Tiger/tship.cpp'), 'edits': []}}) is not None
+
+
+def test_a_set_but_unreadable_list_denies_every_edit(tmp_path, monkeypatch):
+    monkeypatch.setenv('HARNESS_LANE_FILES', str(tmp_path / 'missing.txt'))
+    assert 'cannot be read' in edit(op('Tiger/tsay.cpp'))
+
+
+def test_the_list_does_not_widen_what_is_protected(lane, tmp_path):
+    lane.write_text('harness/*\nanalysis/*\n**\n*\n')
+    assert edit(os.path.join(paths.REPO, 'harness', 'lib', 'verify.py')) is not None
+    assert edit(os.path.join(paths.REPO, 'analysis', 'results', 'matched_set.json')) is not None

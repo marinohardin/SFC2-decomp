@@ -5,6 +5,7 @@ read-only commands. Everything that judges its work (the harness, the compiler a
 original exe and its hashes, the analysis exports, generated objects and listings, the queue and
 the matched set) is out of reach, as are the hook settings themselves.
 """
+import fnmatch
 import json
 import os
 import re
@@ -61,7 +62,29 @@ def check_edit(file_path, cwd=None):
     if not _inside(p, paths.SRC_ROOT):
         return (f'{file_path} is outside the rebuilt source tree '
                 f'({os.path.relpath(paths.SRC_ROOT, paths.REPO)}/); edit only source files there')
-    return None
+    return check_lane(p, file_path)
+
+
+def check_lane(p, file_path):
+    """None to allow, or the reason to deny an edit of p under the source tree, when
+    $HARNESS_LANE_FILES names the lane's file list: one repository-relative path or glob per line,
+    `#` comments and blank lines ignored. Unset, any file under the tree may be edited."""
+    lane = os.environ.get('HARNESS_LANE_FILES')
+    if not lane:
+        return None
+    try:
+        with open(lane) as f:
+            lines = [x.strip() for x in f]
+    except OSError:
+        return f'the lane file list {lane} cannot be read, so no edit is allowed'
+    rel = os.path.relpath(os.path.realpath(p), os.path.realpath(paths.REPO)).replace(os.sep, '/')
+    if any(fnmatch.fnmatchcase(rel, x) for x in lines if x and not x.startswith('#')):
+        return None
+    return (f'{file_path} is not one of the files this lane may edit. Leave it alone and finish '
+            f'your work without it; end your final message with one line, '
+            f'`HEADER REQUEST: <header> <what and why> (for 0x<address>)` or '
+            f'`UNIT REQUEST: <file> <what and why> (for 0x<address>)`, so the integrator can '
+            f'make the change')
 
 
 # Any claim line, in any module: a session may add or change only its own function's.

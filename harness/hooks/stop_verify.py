@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Stop hook for function sessions: re-run build-and-verify.sh for the claimed function and
-block completion unless it improved. Inert unless HARNESS_FUNCTION_SESSION=1. The claim (which
+block completion unless it improved and the whole-tree checks
+(harness/lib/wholetree.py) pass. Inert unless HARNESS_FUNCTION_SESSION=1. The claim (which
 function, its score at the start) is written by harness/loop.sh to $HARNESS_STATE/claim.json."""
 import json
 import os
@@ -9,7 +10,7 @@ import sys
 
 # The repository root, not harness/: harness/queue.py would shadow the stdlib queue module.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from harness.lib import paths, stophook  # noqa: E402
+from harness.lib import paths, stophook, wholetree  # noqa: E402
 
 
 def main():
@@ -31,6 +32,11 @@ def main():
     except ValueError:
         verify = None
     allow, message = stophook.decide(claim, verify, claim.get('blocks', 0))
+    if allow and claim.get('blocks', 0) < claim.get('max_blocks', 3):
+        # The function is good: now the rest of the tree (harness/lib/wholetree.py).
+        ok, text = wholetree.check()
+        if not ok:
+            allow, message = False, text
     if allow:
         print(json.dumps({'systemMessage': message}))
         return 0
