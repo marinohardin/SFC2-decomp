@@ -1,3 +1,4 @@
+#define tvectormath_spark_members
 #include <math.h>
 #include "Tiger/tvectormath.h"
 

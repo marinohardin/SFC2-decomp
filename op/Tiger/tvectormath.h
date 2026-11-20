@@ -56,7 +56,11 @@ public:
 	float mLength(void) const;
 	iTruth	mNormalize(void);
 	tPoint3 &operator*=(const float d);
+// MATCH-ONLY: only tElectricSpark.cpp declares these two members; declared for every unit they
+// move a register assignment in tgSound.cpp.
+#if defined( tvectormath_spark_members )
 	tPoint3 &operator/=(const float d);
+#endif
 };
 
 struct tPoint2
@@ -129,7 +133,9 @@ public:
 	void mRotY(const tAngle angle);
 	void mRotZ(const tAngle angle);
 	void mTranslate(const float x, const float y, const float z);
+#if defined( tvectormath_spark_members )
 	void mMult(tMatrix &a, const tMatrix &b) const;
+#endif
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);
 	void mTransform(tPoint3 &p) const;
