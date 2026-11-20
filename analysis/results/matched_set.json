@@ -38242,6 +38242,15 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x006fe880": {
+   "name": "nLog::tLogStream::tStreamBuf::overflow",
+   "symbol": "?overflow@tStreamBuf@tLogStream@nLog@@UAEHH@Z",
+   "unit": "Common/Log/LogStream.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-19"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",

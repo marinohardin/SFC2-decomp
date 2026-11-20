@@ -73,4 +73,11 @@ std::streamsize tLogStream::tStreamBuf::xsputn( const char* text, std::streamsiz
 	return n;
 }
 
+// FUNCTION: STARFLEETOP 0x006fe880
+int tLogStream::tStreamBuf::overflow( int ch )
+{
+	LockAccess();
+	return xsputn( (const char*)&ch, 1 );
+}
+
 };
