@@ -51,6 +51,7 @@ class Report:
         self.lines, self.results, self.regressions, self.failed = [], [], [], False
         self.claim_breaks = []
         self.standins = []
+        self.table_breaks = []   # report_table_breaks
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -558,6 +559,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     report_shared_symbols(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
+    report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
+                        check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -887,6 +890,92 @@ def report_claim_symbols(rep, data, baseline, check_all, table=None, evidence=No
                     'remove the row')
 
 
+TABLE_EVIDENCE = ('mangled', 'add', 'callers')
+TABLE_BREAKS_FILE = 'table_breaks.tsv'
+
+
+def table_targets(rows, claims):
+    """{address: (symbol, 'table-<evidence>')} for the unclaimed addresses whose table row has a
+    symbol of evidence mangled, add (required) or callers (provisional)."""
+    return {a: (sym, f'table-{ev}') for a, (sym, ev) in (rows or {}).items()
+            if ev in TABLE_EVIDENCE and a not in claims}
+
+
+def startup_table_breaks():
+    """The keys of the table breaks the last `--all` in this checkout wrote, or None."""
+    try:
+        with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), newline='') as f:
+            return {(r['function'], r['symbol'], r['target'])
+                    for r in csv.DictReader(f, delimiter='\t')}
+    except (OSError, KeyError):
+        return None
+
+
+def report_table_breaks(rep, claims, rows, check_all, own, evidence):
+    """Relocations that reach an unclaimed function by another symbol than its table row's
+    (claim_symbol_breaks against table_targets), sorted into the break classes of
+    classify_break. Only the session's own function (`own`, the addresses of the functions the
+    run was asked about) is held to them, and not under --all: exact functions already in the
+    tree are not judged retroactively, they are only counted (and written to table_breaks.tsv,
+    which says which breaks were there when the session started).
+
+    For the own function, a break of an error class against a `mangled` or `add` symbol fails
+    the run, naming the table's symbol; a `stand-in` against one goes to rep.standins (the Stop
+    hook refuses it, unless the function is exact and the break was already there at the start);
+    a `folded` or `own-object` one, and any break against a provisional `callers` symbol, is a
+    WARN line. Sets rep.table_breaks."""
+    targets = table_targets(rows, claims)
+    rep.table_breaks = []
+    if not targets:
+        return
+    if check_all:
+        results = [r for r in rep.results if r.get('exact')]
+    else:
+        results = [r for r in rep.results if r['address'] in (own or ())]
+    breaks = claim_symbol_breaks(results, targets, exact_only=False)
+    if not breaks:
+        return
+    units = {res['address']: res['unit'] for res in rep.results}
+    defined = defined_symbols(rep.objects)
+    for b in breaks:
+        b['class'], b['detail'] = classify_break(b, units.get(b['function']), defined, evidence)
+    rep.table_breaks = breaks
+    if check_all:
+        by_class = {}
+        for b in breaks:
+            by_class[b['class']] = by_class.get(b['class'], 0) + 1
+        rep.add('WARN', f'{len(breaks)} relocations of exact functions name another symbol than '
+                f'the symbol table has at an unclaimed target ({", ".join(f"{n} {c}" for c, n in sorted(by_class.items()))}); '
+                f'written to {TABLE_BREAKS_FILE}; only the function a session works on is held to it')
+        return
+    exact = {r['address'] for r in results if r.get('exact')}
+    startup = startup_table_breaks()
+    seen = set()
+    for b in breaks:
+        key = _break_key(b)
+        if key in seen:
+            continue
+        seen.add(key)
+        evidence_kind = b['source'][len('table-'):]
+        text = (f'{b["function"]} relocation +0x{b["offset"]:x} names {b["symbol"]}, but the '
+                f'symbol table has {b["claimed"]} at {b["target"]} ({evidence_kind})')
+        if evidence_kind == 'callers':
+            rep.add('WARN', text + ': provisional (every exact caller names it); declare the '
+                    'callee so it mangles to that unless you know better')
+        elif b['class'] in CLASS_ERRORS:
+            rep.add('ERROR', text + f'; declare the callee so it mangles to {b["claimed"]} (the '
+                    'context pack lists it): ' + CLASS_TEXT[b['class']].format(d=b['detail']))
+            rep.failed = True
+        elif b['class'] == 'stand-in':
+            if b['function'] in exact and startup is not None and key in startup:
+                rep.add('WARN', text + ' (already so when the session started)')
+            else:
+                rep.standins.append(b)
+                rep.add('WARN', text + f'; declare the callee so it mangles to {b["claimed"]}')
+        else:
+            rep.add('WARN', text + f' (class {b["class"]})')
+
+
 def _report_function(rep, data, fn, res):
     a = fn.address
     head = f'{res["address"]} {fn.name}'
@@ -991,6 +1080,8 @@ def main(argv=None):
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
             f.write(reloc_baseline_text(rep.claim_breaks, classes=True))
+        with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
+            f.write(reloc_baseline_text(rep.table_breaks, classes=True))
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
                     for c in CLASS_ERRORS + CLASS_WARNS}
         rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '
