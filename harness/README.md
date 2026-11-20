@@ -185,6 +185,23 @@ stands in a pull request's check. Measured on 2026-11-19 over all 158 units and 
 functions: an uncached, a cold and a warm `--all` printed the same lines; the warm run took
 115 s against 228 s cold. The caches are safe to delete at any time.
 
+### Build folders
+
+Each checkout keeps its state in `$SFCOP_WORK/harness/wt-<name>-<hash>/`, and the build output of
+its runs in `build/` there. A function's folder in `build/` holds `target.obj`, `diff.txt` (the
+rows a session is shown) and `result.json`; objdiff's own report is read once and deleted, so a
+full `--all` leaves about 115 MB, not 4 GB. Nothing removes `build/` when the git worktree is
+removed. The harness writes the worktree's absolute path to `worktree.txt` in the state folder
+whenever it builds or builds the queue, and
+
+    python3 -m harness.lib.clean [--dry-run] [--unrecorded]
+
+deletes `build/` of every state folder whose recorded worktree no longer exists, and prints each
+folder and the bytes freed. It never touches anything else in the folder (`attempts/`,
+`queue.json`, `cache/` stay), and leaves a folder with no `worktree.txt` alone unless
+`--unrecorded` is given. Run it after removing a worktree and before launching lanes; start with
+`--dry-run`. Nothing runs it by itself.
+
 ## matched_set.json and update-matched-set.sh
 
 `{"version": 1, "functions": {"0x006fc690": {name, symbol, unit, size, score, exact, recorded}}}`.

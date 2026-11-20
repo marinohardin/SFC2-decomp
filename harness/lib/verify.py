@@ -26,7 +26,7 @@ import threading
 import sys
 import time
 
-from . import cache, coff, funcs, matched, paths, source, symtab, target
+from . import cache, clean, coff, funcs, matched, paths, source, symtab, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
@@ -157,6 +157,9 @@ def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
         return None, None, p.stderr.strip()[-500:]
     with open(out) as f:
         d = json.load(f)
+    # Nothing reads the report again: the score, the diff rows and diff.txt are made from it
+    # here, and it is about 1 MB a function.
+    os.remove(out)
     left = next((s for s in d['left']['symbols'] if s['name'] == symbol), None)
     if left is None:
         return None, None, 'symbol missing from objdiff output'
@@ -919,6 +922,7 @@ def main(argv=None):
     if a.record and a.base:
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)
+    clean.record_worktree()
     try:
         base = load_base(a.base) if a.base else None
         sizes = load_base_sizes(a.base) if a.base else None
