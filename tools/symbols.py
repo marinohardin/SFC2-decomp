@@ -7,6 +7,7 @@ analysis/scripts/seed_symbols.py.
 
     python3 tools/symbols.py [--table T] check [--functions F] [--build B] [--src-root R]
     python3 tools/symbols.py [--table T] add <address> <symbol> [--declaration TEXT]
+    python3 tools/symbols.py [--table T] claim [<address>...] [--build B] [--src-root R]
     python3 tools/symbols.py [--table T] show <address>...
 
 `check` exits 1 with one line per finding that starts ERROR; a line that starts WARN is
@@ -174,9 +175,16 @@ def format_rows(rows):
 def write_atomic(path, text):
     """Write `text` to a temporary file beside `path` and rename it over `path`."""
     tmp = path + '.tmp'
-    with open(tmp, 'w', encoding='utf-8', newline='') as f:
-        f.write(text)
-    os.replace(tmp, path)
+    try:
+        with open(tmp, 'w', encoding='utf-8', newline='') as f:
+            f.write(text)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        raise
 
 
 def read_rows(path):
@@ -204,10 +212,12 @@ def known_functions(functions_csv):
     return out
 
 
-def check_text(text, known, build_symbols=None, build_level='WARN'):
+def check_text(text, known, build_symbols=None, build_level='WARN', claimed=None):
     """The findings for the table text: ['ERROR ...' or 'WARN ...', ...], in file order.
     `known` is known_functions(); `build_symbols` {address: compiled symbol of a current claim}
-    or None; a difference from the table is a finding of level `build_level`."""
+    or None; a difference from the table is a finding of level `build_level`. `claimed` is the
+    set of current claims' addresses when known: a row with symbol_evidence claim at another
+    address is an error."""
     out = []
     err = out.append
     if '\r' in text:
@@ -288,25 +298,56 @@ def check_text(text, known, build_symbols=None, build_level='WARN'):
         if build_symbols and r['kind'] != 'folded' and r['address'] in build_symbols \
                 and build_symbols[r['address']] != r['symbol']:
             err(f'{build_level} {r["address"]}: the last build compiled '
-                f'{build_symbols[r["address"]]}, the table has {r["symbol"] or "no symbol"}')
+                f'{build_symbols[r["address"]]}, the table has {r["symbol"] or "no symbol"}; '
+                'run `python3 tools/symbols.py claim`')
+        if claimed is not None and r['symbol_evidence'] == 'claim' and r['address'] not in claimed:
+            err(f'ERROR {r["address"]}: symbol_evidence is claim but the address is no longer '
+                'claimed; run `python3 tools/symbols.py claim` to reset the row')
     return out
 
 
-def _load_build_symbols(build, src_root):
-    """{address: symbol} of the build's symbols.tsv rows that are current claims (those of
-    `src_root`, when it is given), or None without the file."""
+def current_claims(src_root):
+    """The addresses (text) a FUNCTION annotation under `src_root` claims."""
+    from harness.lib import source
+    return {f'0x{a:08x}' for a, anns in source.scan_annotations(src_root, 'STARFLEETOP').items()
+            if any(x.kind == 'FUNCTION' for x in anns)}
+
+
+def read_build_symbols(build):
+    """{address: symbol} of the build's symbols.tsv, or None without the file."""
     try:
         with open(os.path.join(build, 'symbols.tsv'), newline='') as f:
-            rows = {r['address']: r['symbol'] for r in csv.DictReader(f, delimiter='\t')
+            return {r['address']: r['symbol'] for r in csv.DictReader(f, delimiter='\t')
                     if r.get('symbol')}
     except OSError:
         return None
-    if src_root:
-        from harness.lib import source
-        claimed = {f'0x{a:08x}' for a, anns in source.scan_annotations(src_root, 'STARFLEETOP').items()
-                   if any(x.kind == 'FUNCTION' for x in anns)}
-        rows = {a: s for a, s in rows.items() if a in claimed}
-    return rows
+
+
+def claim_lines(lines, build_symbols, claimed, only=None):
+    """(new lines, messages) after making each claimed row's symbol the build's, with
+    symbol_evidence claim, and resetting a claim row whose address is no longer claimed (only
+    when `only` is None). `lines` are the file's lines, header first; other lines stay as they
+    are."""
+    out, messages = list(lines), []
+    for i, line in enumerate(lines[1:], 1):
+        cells = line.split('\t')
+        if len(cells) != len(COLUMNS) or cells[1] == 'folded':
+            continue
+        a = cells[0]
+        if only is not None and a not in only:
+            continue
+        if a in claimed and a in build_symbols:
+            new = build_symbols[a]
+            if cells[4] != new or cells[5] != 'claim':
+                messages.append(f'{a}: {cells[4] or "no symbol"} ({cells[5] or "none"}) -> {new} (claim)')
+                cells[4], cells[5] = new, 'claim'
+        elif only is None and a not in claimed and cells[5] == 'claim':
+            messages.append(f'{a}: {cells[4]} (claim) -> no symbol (no longer claimed)')
+            cells[4] = cells[5] = ''
+        else:
+            continue
+        out[i] = '\t'.join(cells)
+    return out, messages
 
 
 # A claimed function's compiled symbol that differs from the table's: the seed writes the
@@ -328,8 +369,11 @@ def cmd_check(a):
     except OSError as e:
         print(f'ERROR cannot read {table}: {e.strerror}')
         return 1
-    findings = check_text(text, known_functions(functions), _load_build_symbols(build, src_root),
-                          BUILD_LEVEL)
+    built = read_build_symbols(build)
+    claimed = current_claims(src_root) if built is not None else None
+    if built is not None:
+        built = {k: v for k, v in built.items() if k in claimed}
+    findings = check_text(text, known_functions(functions), built, BUILD_LEVEL, claimed)
     for line in findings:
         print(line)
     errors = [x for x in findings if x.startswith('ERROR')]
@@ -376,8 +420,12 @@ def cmd_add(a):
         print(f'ERROR {address} is claimed: its claim defines {row[4]}, and the next seed replaces '
               'whatever is written here')
         return 1
-    if row[4] and row[4] != symbol:
+    if row[4] and row[4] != symbol and row[5] != 'callers':
         print(f'ERROR {address} already has symbol {row[4]}; first writer wins, not {symbol}')
+        return 1
+    d = decode_symbol(symbol)
+    if row[7] not in PLACEHOLDER_EVIDENCE and d and d[0] != row[2]:
+        print(f'ERROR {address} is named {row[2]}, the symbol {symbol} decodes to {d[0]}')
         return 1
     elsewhere = sorted(set(hit) - {address})
     if elsewhere:
@@ -387,7 +435,9 @@ def cmd_add(a):
         print(f'ERROR {address} already has declaration {row[6]!r}, not {decl!r}')
         return 1
     new = list(row)
-    if not row[4]:
+    if row[4] != symbol:
+        if row[4]:
+            print(f'{address}: replacing the callers symbol {row[4]} with {symbol}')
         new[4], new[5] = symbol, 'add'
     if decl is not None:
         new[6] = decl
@@ -397,6 +447,39 @@ def cmd_add(a):
     lines[idx] = '\t'.join(new)
     write_atomic(table, '\n'.join(lines))
     print(f'{address}: {symbol}')
+    return 0
+
+
+def cmd_claim(a):
+    table = a.table or default_table()
+    build, src_root = a.build, a.src_root
+    if not (build and src_root):
+        from harness.lib import paths
+        build = build or paths.BUILD
+        src_root = src_root or paths.SRC_ROOT
+    built = read_build_symbols(build)
+    if built is None:
+        print(f'ERROR no symbols.tsv in {build}: run harness/build-and-verify.sh --all first')
+        return 1
+    only = None
+    if a.address:
+        try:
+            only = {address_text(x) for x in a.address}
+        except ValueError as e:
+            print(f'ERROR {e}')
+            return 1
+        missing = sorted(only - set(built))
+        if missing:
+            print(f'ERROR the build has no symbol for {", ".join(missing)}')
+            return 1
+    with open(table, encoding='utf-8', newline='') as f:
+        lines = f.read().split('\n')
+    new, messages = claim_lines(lines, built, current_claims(src_root), only)
+    for m in messages:
+        print(m)
+    if new != lines:
+        write_atomic(table, '\n'.join(new))
+    print(f'{len(messages)} rows changed')
     return 0
 
 
@@ -435,6 +518,11 @@ def main(argv=None):
     s.add_argument('symbol')
     s.add_argument('--declaration')
     s.set_defaults(fn=cmd_add)
+    c = sub.add_parser('claim', help="make claimed rows carry the build's symbols")
+    c.add_argument('address', nargs='*', help='default: every current claim')
+    c.add_argument('--build')
+    c.add_argument('--src-root')
+    c.set_defaults(fn=cmd_claim)
     h = sub.add_parser('show', help='print rows')
     h.add_argument('address', nargs='+')
     h.set_defaults(fn=cmd_show)

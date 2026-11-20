@@ -10,9 +10,9 @@
 #   4. the claims in op/: empty bodies, fragment claims, address order and stray files, each
 #      break not in analysis/results/lint_baseline.tsv a failure, and so is a stale baseline row
 #      (tools/lint_claims.py)
-#      the symbol table's format and coverage (tools/symbols.py check), once the table exists
-#   5. the progress gate: no function loses its status (scripts/progress.py)
-#   6. the matched-set gate: no score drops below the base branch's. With the install and the
+#   5. the symbol table's format and coverage (tools/symbols.py check), once the table exists
+#   6. the progress gate: no function loses its status (scripts/progress.py)
+#   7. the matched-set gate: no score drops below the base branch's. With the install and the
 #      compiler image, every matched function is rebuilt (harness/build-and-verify.sh), unless
 #      every changed file is documentation (scripts/rebuild_scope.py); otherwise only the
 #      recorded scores are compared

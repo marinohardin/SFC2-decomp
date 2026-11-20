@@ -179,7 +179,7 @@ def test_check_fails_when_the_last_build_compiled_another_symbol_of_a_current_cl
     rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
     assert rc == 1
     assert out.startswith(f'ERROR 0x00401000: the last build compiled ?Fire@tTestShip@@QAEHXZ, '
-                          f'the table has {FIRE}\n')
+                          f'the table has {FIRE}; run `python3 tools/symbols.py claim`\n')
     assert '0x00401010' not in out              # not a current claim: its row is stale
 
 
@@ -187,7 +187,8 @@ def test_a_build_difference_is_an_error_when_the_level_is_error():
     known = {'0x00401000': 'function'}
     text = HEAD + ROW_FIRE + '\n'
     got = sym.check_text(text, known, {'0x00401000': '?Other@@YAXXZ'}, 'ERROR')
-    assert got == [f'ERROR 0x00401000: the last build compiled ?Other@@YAXXZ, the table has {FIRE}']
+    assert got == [f'ERROR 0x00401000: the last build compiled ?Other@@YAXXZ, the table has {FIRE}; '
+                   'run `python3 tools/symbols.py claim`']
 
 
 def test_add_fills_an_empty_symbol_marks_it_add_and_changes_only_that_line(tmp_path, capsys):
@@ -262,3 +263,96 @@ def test_the_committed_table_passes_check():
     table = ROOT / 'analysis/symbols/STARFLEETOP.tsv'
     known = sym.known_functions(str(ROOT / 'ghidra/exports/functions.csv'))
     assert sym.check_text(table.read_text(encoding='utf-8'), known) == []
+
+
+def test_check_is_quiet_when_the_build_symbol_of_a_claim_equals_the_tables(tmp_path, capsys):
+    build, src = build_folder(tmp_path)
+    (build / 'symbols.tsv').write_text(f'address\tsymbol\tfile\n0x00401000\t{FIRE}\ta.cpp\n')
+    rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
+    assert (rc, out) == (0, f'ok: 4 rows in {tmp_path / "T.tsv"}\n')
+
+
+def test_check_fails_for_a_claim_row_whose_address_is_no_longer_claimed(tmp_path, capsys):
+    build, src = build_folder(tmp_path)
+    (build / 'symbols.tsv').write_text(f'address\tsymbol\tfile\n0x00401000\t{FIRE}\ta.cpp\n')
+    text = GOOD.replace(ROW_PLAIN, '0x00401010\tfunction\tfn_00401010\t\t?Hold@tTestShip@@QAEXXZ\tclaim\t\tnone')
+    rc, out = check(tmp_path, capsys, text, build=build, src_root=src)
+    assert rc == 1
+    assert out.startswith('ERROR 0x00401010: symbol_evidence is claim but the address is no longer '
+                          'claimed; run `python3 tools/symbols.py claim` to reset the row\n')
+
+
+def claim_run(tmp_path, capsys, *args):
+    return run(tmp_path, capsys, 'claim', '--build', str(tmp_path / 'build'),
+               '--src-root', str(tmp_path / 'op'), *args)
+
+
+def test_claim_makes_a_claimed_row_carry_the_builds_symbol_and_touches_nothing_else(tmp_path, capsys):
+    table, _ = setup(tmp_path)
+    build_folder(tmp_path)
+    rc, out = claim_run(tmp_path, capsys)
+    assert rc == 0
+    assert out == (f'0x00401000: {FIRE} (mangled) -> ?Fire@tTestShip@@QAEHXZ (claim)\n'
+                   '1 rows changed\n')
+    want = GOOD.replace(ROW_FIRE, ROW_FIRE.replace(FIRE, '?Fire@tTestShip@@QAEHXZ').replace('mangled', 'claim'))
+    assert table.read_bytes() == want.encode()
+    rc, out = claim_run(tmp_path, capsys)
+    assert (rc, out) == (0, '0 rows changed\n')
+    assert table.read_bytes() == want.encode()
+
+
+def test_claim_resets_a_claim_row_that_is_no_longer_claimed_but_only_without_addresses(tmp_path, capsys):
+    text = GOOD.replace(ROW_PLAIN, '0x00401010\tfunction\tfn_00401010\t\t?Hold@tTestShip@@QAEXXZ\tclaim\t\tnone')
+    table, _ = setup(tmp_path, text)
+    build_folder(tmp_path)
+    rc, out = claim_run(tmp_path, capsys, '0x00401000')
+    assert 'no longer claimed' not in out
+    rc, out = claim_run(tmp_path, capsys)
+    assert '0x00401010: ?Hold@tTestShip@@QAEXXZ (claim) -> no symbol (no longer claimed)\n' in out
+    assert ROW_PLAIN in table.read_text()
+
+
+def test_claim_refuses_a_missing_build_and_an_address_the_build_lacks(tmp_path, capsys):
+    setup(tmp_path)
+    rc, out = claim_run(tmp_path, capsys)
+    assert rc == 1 and out.startswith('ERROR no symbols.tsv in')
+    build_folder(tmp_path)
+    rc, out = claim_run(tmp_path, capsys, '0x00401020')
+    assert (rc, out) == (1, 'ERROR the build has no symbol for 0x00401020\n')
+
+
+def test_add_may_replace_a_callers_symbol_but_not_a_mangled_or_add_one(tmp_path, capsys):
+    text = GOOD.replace(ROW_PLAIN, '0x00401010\tfunction\tfn_00401010\t\t?Old@@YAXXZ\tcallers\t\tnone')
+    table, _ = setup(tmp_path, text)
+    rc, out = run(tmp_path, capsys, 'add', '0x00401010', '?New@@YAXXZ')
+    assert rc == 0
+    assert out == '0x00401010: replacing the callers symbol ?Old@@YAXXZ with ?New@@YAXXZ\n' \
+                  '0x00401010: ?New@@YAXXZ\n'
+    assert '0x00401010\tfunction\tfn_00401010\t\t?New@@YAXXZ\tadd\t\tnone' in table.read_text()
+    rc, out = run(tmp_path, capsys, 'add', '0x00401010', '?Newer@@YAXXZ')
+    assert rc == 1 and 'first writer wins' in out
+
+
+def test_add_refuses_a_symbol_whose_name_disagrees_with_a_named_row(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttTestShip::Hold\ttTestShip\t\t\t\trtti'
+    setup(tmp_path, GOOD.replace(ROW_PLAIN, row))
+    rc, out = run(tmp_path, capsys, 'add', '0x00401010', '?Drop@tTestShip@@QAEXXZ')
+    assert (rc, out) == (1, 'ERROR 0x00401010 is named tTestShip::Hold, the symbol '
+                            '?Drop@tTestShip@@QAEXXZ decodes to tTestShip::Drop\n')
+    rc, out = run(tmp_path, capsys, 'add', '0x00401010', '?Hold@tTestShip@@QAEXXZ')
+    assert rc == 0
+
+
+def test_a_failed_write_leaves_no_temporary_file(tmp_path, monkeypatch):
+    target = tmp_path / 'T.tsv'
+    target.write_text('old\n')
+
+    def boom(*a):
+        raise OSError('disk full')
+    monkeypatch.setattr(sym.os, 'replace', boom)
+    try:
+        sym.write_atomic(str(target), 'new\n')
+    except OSError:
+        pass
+    assert target.read_text() == 'old\n'
+    assert not (tmp_path / 'T.tsv.tmp').exists()

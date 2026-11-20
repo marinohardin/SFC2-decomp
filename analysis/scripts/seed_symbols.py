@@ -23,7 +23,8 @@ the seed's instead. A symbol that would stand at two addresses is left empty at 
 and an existing value excepted). Declarations are never seeded; a re-seed keeps them.
 
 The seed refuses to run when <build>/symbols.tsv is missing or older than the sources in op/:
-run `harness/build-and-verify.sh --all` first. Same inputs, same bytes out.
+run `harness/build-and-verify.sh --all` first. The check is a guard against an old build, not
+proof that the build matches the sources. Same inputs, same bytes out.
 """
 import argparse
 import csv
