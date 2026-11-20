@@ -1,12 +1,20 @@
 #include <fstream>
 
+// HYPOTHESIS: the library's basic_filebuf::open, which the claim at 0x00404230 holds under a
+// stand-in class; it is declared here so that this constructor reaches the claimed symbol.
+class fn_00404230_Obj
+{
+public:
+    fn_00404230_Obj* fn_00404230(unsigned long a, unsigned long b);
+};
+
 // The library's std::ifstream constructor taking (name, mode); the exe names its vtable
 // 0x00795704 basic_ifstream<char>.
 // FUNCTION: STARFLEETOP 0x004033ab
 std::ifstream::ifstream(const char* _S, std::ios_base::openmode _M)
     : std::basic_istream<char, std::char_traits<char> >(&_Fb)
 {
-    if (_Fb.open(_S, _M | in) == 0)
+    if (((fn_00404230_Obj*)&_Fb)->fn_00404230((unsigned long)_S, _M | in) == 0)
         setstate(failbit);
 }
 
