@@ -707,3 +707,13 @@ void twIORequestQueueManager::mRequest(twIORequest request)
             request.f_20->fn_006340b0_vfunction0(request.f_04, 1, -1);
     }
 }
+
+// MATCH-ONLY: the original's instance of tDir's copy constructor (0x00633e80) comes from
+// twDir::mGetDirIterator (Tiger/tgfsys.cpp), which is not recovered far enough to call it out of
+// line; with inline expansion off, a copy makes this unit emit it. Not a function of the original.
+#pragma inline_depth( 0 )
+void fn_emit_tDir_copy( tDir &dir )
+{
+	tDir copy( dir );
+}
+#pragma inline_depth()

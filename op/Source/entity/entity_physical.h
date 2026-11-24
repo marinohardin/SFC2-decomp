@@ -109,13 +109,7 @@ class tDynamicMemoryFreeList
 public:
 	// HYPOTHESIS: an inline destructor that empties the list; the destructor 0x00413de0
 	// stores this vftable and calls mClearList (slot 18) directly for the member at 0x1a4.
-	// MATCH-ONLY: the original also holds an out-of-line instance (0x00407cf1, with its deleting
-	// destructor 0x00407d14); the unit that claims it defines tDynamicMemoryFreeList_out_of_line.
-#if defined( tDynamicMemoryFreeList_out_of_line )
 	virtual ~tDynamicMemoryFreeList();
-#else
-	virtual ~tDynamicMemoryFreeList() { mClearList(); }
-#endif
 	virtual void vfunction2();
 	virtual void *vfunction3();	// HYPOTHESIS: the first member; 0x00413614 walks the list from it
 	virtual tListMember *vfunction4();	// HYPOTHESIS: the last member; 0x006267b0 wraps to it
@@ -143,6 +137,12 @@ public:
 	tListMember *field_0x8;
 	long field_0xc;
 };
+
+// The original also holds an instance (0x00407cf1, with its deleting destructor 0x00407d14),
+// claimed here; one definition, the same in every unit, so every copy is a COMDAT any will do.
+// FUNCTION: STARFLEETOP 0x00407d14
+// FUNCTION: STARFLEETOP 0x00407cf1
+inline tDynamicMemoryFreeList::~tDynamicMemoryFreeList() { mClearList(); }
 
 class tPhysicalEntity: public tEntity
 {

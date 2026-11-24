@@ -234,7 +234,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00407c12	function	fn_00407c12	tSession				vtable
 0x00407c17	function	tCookie::operator==	tCookie	??8tCookie@@UBEEABV0@@Z	claim		claim
 0x00407c29	function	tCookie::operator<	tCookie	??MtCookie@@UBEEABV0@@Z	claim		claim
-0x00407c3a	function	tPath::tPath	tPath				sdk
+0x00407c3a	function	tPath::tPath	tPath	??0tPath@@QAE@ABV0@@Z	claim		sdk
 0x00407c5b	function	fn_SessionCookie::fn_SessionCookie	fn_SessionCookie	??0fn_SessionCookie@@QAE@ABV0@@Z	claim		claim
 0x00407c81	function	tSession::mValid	tSession	?mValid@tSession@@UAEEXZ	claim		claim
 0x00407c8b	function	tPath::~tPath	tPath	??1tPath@@UAE@XZ	claim		claim
@@ -16531,7 +16531,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00633bf0	function	twPath::mWrite	twPath	?mWrite@twPath@@UAEKPAXKKPAVtPathCallback@@@Z	claim		claim
 0x00633e10	function	OpenForWriteChar		?OpenForWriteChar@@YAPAXAAVtString@@@Z	claim		claim
 0x00633e40	function	tVolume::tVolume	tVolume	??0tVolume@@QAE@ABV0@@Z	mangled		mangled
-0x00633e80	function	tDir::tDir	tDir	??0tDir@@QAE@ABV0@@Z	mangled		mangled
+0x00633e80	function	tDir::tDir	tDir	??0tDir@@QAE@ABV0@@Z	claim		mangled
 0x00633ec0	function	twPath::mFree	twPath	?mFree@twPath@@UAEKXZ	claim		claim
 0x00633f20	function	twPath::mExec	twPath	?mExec@twPath@@UAEEAAVtString@@@Z	claim		claim
 0x00633fe0	function	AsynchIOMain		?AsynchIOMain@@YAKPAX@Z	claim		claim

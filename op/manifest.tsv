@@ -127,7 +127,7 @@ address	size	symbol	source	modes
 0x00407c17	18	tCookie::operator==(const tCookie &) const	unsorted/tCookie.cpp	vc6 guest
 0x00407c29	17	tCookie::operator<(const tCookie &) const	unsorted/tCookie.cpp	vc6 guest
 0x00407c3a	33	tPath::tPath(const tPath &)	unsorted/tPath.cpp	partial
-0x00407c5b	38	fn_SessionCookie::fn_SessionCookie(const fn_SessionCookie &)	unsorted/tCookie.cpp	partial
+0x00407c5b	38	fn_SessionCookie::fn_SessionCookie(const fn_SessionCookie &)	unsorted/tPath.cpp	partial
 0x00407c81	10	tSession::mValid()	unsorted/tPath.cpp	vc6 guest
 0x00407c8b	7	tPath::~tPath()	unsorted/tPath.cpp	vc6
 0x00407cf1	11	tDynamicMemoryFreeList::~tDynamicMemoryFreeList()	unsorted/tDynamicMemoryFreeList.cpp	vc6
