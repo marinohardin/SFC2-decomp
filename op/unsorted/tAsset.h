@@ -76,6 +76,19 @@ inline tCastItem::tCastItem()
 	field_66 = 0;
 }
 
+// HYPOTHESIS: 0x00695180 releases the buffer held in field_66.
+void fn_00695180( void *p ) throw();
+
+// The original holds a copy of this destructor (0x00677e50) and expands it into ~tBmpAsset;
+// one inline definition, claimed here, so every copy is a COMDAT any copy will do.
+// FUNCTION: STARFLEETOP 0x00677e30
+// FUNCTION: STARFLEETOP 0x00677e50
+inline tCastItem::~tCastItem()
+{
+	if ( field_66 )
+		fn_00695180( (void*)field_66 );
+}
+
 // MATCH-ONLY: the original expands this constructor in some callers (fn_00676a30 kind 1) and has
 // an out-of-line copy for others; tBmpAsset.cpp defines that copy itself.
 #ifndef tBmpAsset_out_of_line

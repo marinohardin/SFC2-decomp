@@ -144,6 +144,15 @@ Exit status: 0 nothing regressed, 1 a recorded function scored lower (or lost it
 unit no longer builds), 2 the claimed function could not be built or scored, or step 7 or 8
 found a symbol that the exact functions use wrongly.
 
+**One kind of definition per symbol** (`--all` only, `report_comdat_kinds` in `lib/verify.py`). After
+every unit is built, a symbol that two built objects define as COMDATs with different selection
+kinds is an `ERROR` line naming the symbol, the kinds and the units, and fails the run (exit 2); so
+is a symbol defined outside COMDATs in two objects. VC6 emits an out-of-line definition as "no
+duplicates" and an inline copy as "any", so a function defined out of line in one unit and inline
+in another (typically behind a macro the claiming unit sets) cannot be linked: a linker, and the
+consumer's lifter, refuse the pair. A session gives the function one definition, the same in every
+unit (inline in the header, claimed there), and never an out-of-line variant behind a macro.
+
 **Units that read a changed file.** A run for some functions (not `--all`) builds their units,
 plus every other unit with a recorded function that reads a file changed since the checkout's
 HEAD (modified, added, deleted or untracked under `op/`): the unit itself, a file it includes

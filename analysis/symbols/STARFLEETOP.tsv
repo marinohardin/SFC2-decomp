@@ -234,7 +234,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00407c12	function	fn_00407c12	tSession				vtable
 0x00407c17	function	tCookie::operator==	tCookie	??8tCookie@@UBEEABV0@@Z	claim		claim
 0x00407c29	function	tCookie::operator<	tCookie	??MtCookie@@UBEEABV0@@Z	claim		claim
-0x00407c3a	function	tPath::tPath	tPath				sdk
+0x00407c3a	function	tPath::tPath	tPath	??0tPath@@QAE@ABV0@@Z	claim		claim
 0x00407c5b	function	fn_SessionCookie::fn_SessionCookie	fn_SessionCookie	??0fn_SessionCookie@@QAE@ABV0@@Z	claim		claim
 0x00407c81	function	tSession::mValid	tSession	?mValid@tSession@@UAEEXZ	claim		claim
 0x00407c8b	function	tPath::~tPath	tPath	??1tPath@@UAE@XZ	claim		claim
@@ -301,7 +301,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0040aad2	function	tSfcApp3d::tSfcApp3d	tSfcApp3d	??0tSfcApp3d@@QAE@XZ	claim		claim
 0x0040ab1d	function	tSfcApp3d::scalar_deleting_destructor	tSfcApp3d				fid
 0x0040ab39	function	tSfcApp3d::~tSfcApp3d	tSfcApp3d	??1tSfcApp3d@@UAE@XZ	claim		claim
-0x0040ab74	function	fn_0040ab74	tSfcApp3d				vtable
+0x0040ab74	function	fn_0040ab74	tSfcApp3d	?fn_0040ab7e@tSfcApp3d@@QAEXXZ	claim		none
 0x0040ac19	function	fn_0040ac19		?fn_0040ac19@@YAXXZ	claim		none
 0x0040ac4a	function	fn_0040ac4a		?fn_0040ac4a@@YAXXZ	claim		none
 0x0040ac84	function	fn_0040ac84		?fn_0040ac84@@YAXXZ	claim		none
@@ -552,7 +552,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0040f0b9	function	fn_0040f0b9	tSFCTexMgrEx	?vfunction5@tSFCTexMgrEx@@UAEDH@Z	claim		none
 0x0040f102	function	fn_0040f102					none
 0x0040f10c	function	fn_0040f10c					none
-0x0040f15a	function	fn_0040f15a	tSphere				vtable
+0x0040f15a	function	fn_0040f15a	tSphere	?vfunction2@tSphere@@UAE_NMHHMMM@Z	claim		none
 0x0040f868	thunk	fn_0040f868					none
 0x0040f86c	function	fn_0040f86c	tSphere	?FUN_0040f86c@tSphere@@QAE_NHHHHHHH@Z	claim		none
 0x0040f87f	function	fn_0040f87f	tSphere	?vfunction4@tSphere@@UAEXPAVfn_0040f87f_Target@@@Z	claim		none
@@ -1377,7 +1377,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042a0e4	function	fn_0042a0e4					none
 0x0042a0fc	function	nDataStore::tBuffer::Write	nDataStore::tBuffer	?Write@tBuffer@nDataStore@@QAEXPBEK@Z	claim		claim
 0x0042a116	function	nDataStore::tOutput::operator<<	nDataStore::tOutput	??6tOutput@nDataStore@@QAEAAV01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		claim
-0x0042a165	function	fn_0042a165	tClientCharacter				vtable
+0x0042a165	function	tClientCharacter::StreamIn	tClientCharacter	?StreamIn@tClientCharacter@@UAEXAAVtInput@nDataStore@@@Z	claim		claim
 0x0042a309	function	nDataStore::tInput::Get	nDataStore::tInput	?Get@tInput@nDataStore@@QAEEXZ	claim		claim
 0x0042a31c	function	nDataStore::tBuffer::Get	nDataStore::tBuffer	?Get@tBuffer@nDataStore@@QBEEK@Z	claim		claim
 0x0042a377	function	nDataStore::tInput::Read	nDataStore::tInput	?Read@tInput@nDataStore@@QAEXPAEJ@Z	claim		claim
@@ -9589,7 +9589,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00547d3b	function	tMissionCompleteResults::operator=	tMissionCompleteResults	??4tMissionCompleteResults@@QAEAAV0@ABV0@@Z	claim		claim
 0x00547d6e	function	tBattles::StreamOut	tBattles	?StreamOut@tBattles@@UBEXAAVtOutput@nDataStore@@@Z	claim		claim
 0x00547de9	function	tBattles::StreamIn	tBattles	?StreamIn@tBattles@@UAEXAAVtInput@nDataStore@@@Z	claim		claim
-0x00547e67	function	fn_00547e67	tBattles				vtable
+0x00547e67	function	tBattles::SQLFillInsertStream	tBattles	?SQLFillInsertStream@tBattles@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z	claim		claim
 0x005480e3	function	fn_005480e3		?fn_005480e3@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@J@Z	claim		none
 0x0054814e	function	tBattles::SQLFillUpdateStream	tBattles	?SQLFillUpdateStream@tBattles@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z	claim		claim
 0x00548151	function	tBattles::SQLTableName	tBattles	?SQLTableName@tBattles@@UBEPBDXZ	claim		claim
@@ -16531,7 +16531,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00633bf0	function	twPath::mWrite	twPath	?mWrite@twPath@@UAEKPAXKKPAVtPathCallback@@@Z	claim		claim
 0x00633e10	function	OpenForWriteChar		?OpenForWriteChar@@YAPAXAAVtString@@@Z	claim		claim
 0x00633e40	function	tVolume::tVolume	tVolume	??0tVolume@@QAE@ABV0@@Z	mangled		mangled
-0x00633e80	function	tDir::tDir	tDir	??0tDir@@QAE@ABV0@@Z	mangled		mangled
+0x00633e80	function	tDir::tDir	tDir	??0tDir@@QAE@ABV0@@Z	claim		claim
 0x00633ec0	function	twPath::mFree	twPath	?mFree@twPath@@UAEKXZ	claim		claim
 0x00633f20	function	twPath::mExec	twPath	?mExec@twPath@@UAEEAAVtString@@@Z	claim		claim
 0x00633fe0	function	AsynchIOMain		?AsynchIOMain@@YAKPAX@Z	claim		claim
@@ -22678,7 +22678,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00757770	function	tFile::mOpenForRead	tFile	?mOpenForRead@tFile@@UAEEAAVtString@@E@Z	claim		claim
 0x007577d0	function	tFile::mOpenForRead	tFile	?mOpenForRead@tFile@@UAEEVtPath@@E@Z	claim		claim
 0x00757880	function	tFile::mSearchOpen	tFile	?mSearchOpen@tFile@@UAE?AVtPath@@AAVtString@@E@Z	claim		claim
-0x007579f0	function	tFile::mSearchOpen	tFile	?mSearchOpen@tFile@@UAE?AVtPath@@V2@E@Z	mangled		mangled
+0x007579f0	function	tFile::mSearchOpen	tFile	?mSearchOpen@tFile@@UAE?AVtPath@@V2@E@Z	claim		claim
 0x00757bb0	function	tFile::mClose	tFile	?mClose@tFile@@UAEEXZ	claim		claim
 0x00757be0	function	tFile::mRead	tFile	?mRead@tFile@@UAEJPAXJ@Z	claim		claim
 0x00757c30	function	tFile::mSeekCur	tFile	?mSeekCur@tFile@@UAEEJ@Z	claim		claim
@@ -22691,7 +22691,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00757d80	function	tFile::mOpenForWriteAppend	tFile	?mOpenForWriteAppend@tFile@@UAEEAAVtString@@@Z	claim		claim
 0x00757e80	function	tFile::mOpenForWrite	tFile	?mOpenForWrite@tFile@@UAEEPBDE@Z	claim		claim
 0x00757ef0	function	tFile::mOpenForWrite	tFile	?mOpenForWrite@tFile@@UAEEAAVtString@@E@Z	claim		claim
-0x00757ff0	function	tFile::mOpenForWrite	tFile	?mOpenForWrite@tFile@@UAEEVtPath@@E@Z	mangled		mangled
+0x00757ff0	function	tFile::mOpenForWrite	tFile	?mOpenForWrite@tFile@@UAEEVtPath@@E@Z	claim		claim
 0x007581d0	function	tFile::mWrite	tFile	?mWrite@tFile@@UAEJPBXJ@Z	claim		claim
 0x00758240	function	tFile::mGetFile	tFile	?mGetFile@tFile@@UAEEEPBD0@Z	claim		claim
 0x007582d0	function	tFile::mGetFile	tFile	?mGetFile@tFile@@UAEEEAAVtString@@0@Z	claim		claim

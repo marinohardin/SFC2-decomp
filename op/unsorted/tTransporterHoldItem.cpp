@@ -8,7 +8,7 @@ namespace std {
 // specialization carries the template's body so the claim has a line of its own.
 // FUNCTION: STARFLEETOP 0x004282c7
 template<>
-void _Construct( tTransporterHoldItem* _P, const tTransporterHoldItem& _V )
+inline void _Construct( tTransporterHoldItem* _P, const tTransporterHoldItem& _V )
 {
 	new ((void*)_P) tTransporterHoldItem(_V);
 }
@@ -27,3 +27,12 @@ void tTransporterHoldItem::fn_004282f8( fn_0050d6a0_Stream* stream )
 {
 	stream->fn_0050d6a0( &m_0c ).fn_0050d6a0( &m_10 );
 }
+
+// MATCH-ONLY: exists only to make this unit emit the copy of _Construct it claims (0x004282c7);
+// not a function of the original.
+#pragma inline_depth( 0 )
+void fn_emit_004282c7( tTransporterHoldItem *item )
+{
+	std::_Construct( item, *item );
+}
+#pragma inline_depth()

@@ -555,7 +555,7 @@ void fn_0042c69f_Iterator::fn_0042c69f()
 #include "Common/Thread/SingleAccessWrapper.h"
 
 // FUNCTION: STARFLEETOP 0x0042c6da
-template<> tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper()
+template<> inline tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper()
 {
 	Delete();
 }
@@ -575,7 +575,7 @@ template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<st
 class tObject_005391b0;
 
 // FUNCTION: STARFLEETOP 0x0042c72f
-template<> tSingleAccessWrapper<tObject_005391b0>::~tSingleAccessWrapper()
+template<> inline tSingleAccessWrapper<tObject_005391b0>::~tSingleAccessWrapper()
 {
 	Delete();
 }
@@ -585,7 +585,7 @@ template<> tSingleAccessWrapper<tObject_005391b0>::~tSingleAccessWrapper()
 // through identical code folding, so the call does not tell the instantiations apart.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
 // FUNCTION: STARFLEETOP 0x0042c75e
-template<> tAccessPointer<std::vector<int>, tSingleAccessWrapper<std::vector<int> > >::~tAccessPointer()
+template<> inline tAccessPointer<std::vector<int>, tSingleAccessWrapper<std::vector<int> > >::~tAccessPointer()
 {
 	Done();
 }
@@ -595,7 +595,7 @@ template<> tAccessPointer<std::vector<int>, tSingleAccessWrapper<std::vector<int
 // 0x0042c75e; Done (0x005f4352) is shared through identical code folding.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
 // FUNCTION: STARFLEETOP 0x0042c789
-template<> tAccessPointer<tObject_005391b0, tSingleAccessWrapper<tObject_005391b0> >::~tAccessPointer()
+template<> inline tAccessPointer<tObject_005391b0, tSingleAccessWrapper<tObject_005391b0> >::~tAccessPointer()
 {
 	Done();
 }
@@ -605,7 +605,7 @@ template<> tAccessPointer<tObject_005391b0, tSingleAccessWrapper<tObject_005391b
 // tObject_00543551::fn_005434f7 returns; Done (0x005f4352) is shared through identical code folding.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
 // FUNCTION: STARFLEETOP 0x0042c7b4
-template<> tAccessPointer<const std::vector<int>, tSingleAccessWrapper<std::vector<int> > >::~tAccessPointer()
+template<> inline tAccessPointer<const std::vector<int>, tSingleAccessWrapper<std::vector<int> > >::~tAccessPointer()
 {
 	Done();
 }
@@ -615,7 +615,7 @@ template<> tAccessPointer<const std::vector<int>, tSingleAccessWrapper<std::vect
 // after 0x0042c7b4; Done (0x005f4352) is shared through identical code folding.
 // MATCH-ONLY: written as a specialization so the copy's body sits in this unit, as for 0x0042c6da.
 // FUNCTION: STARFLEETOP 0x0042c7df
-template<> tAccessPointer<const tObject_005391b0, tSingleAccessWrapper<tObject_005391b0> >::~tAccessPointer()
+template<> inline tAccessPointer<const tObject_005391b0, tSingleAccessWrapper<tObject_005391b0> >::~tAccessPointer()
 {
 	Done();
 }
@@ -695,7 +695,7 @@ bool fn_0042c8f7(const fn_0042c360_Value& left, const fn_0042c360_Value& right)
 namespace std
 {
 // FUNCTION: STARFLEETOP 0x0042c91b
-template<> void _Construct( tServCharacter::tShipCache* _P, const tServCharacter::tShipCache& _V )
+template<> inline void _Construct( tServCharacter::tShipCache* _P, const tServCharacter::tShipCache& _V )
 {
 	new ((void*)_P) tServCharacter::tShipCache(_V);
 }
@@ -723,7 +723,7 @@ void fn_0042c948(void* dest, const void* src)
 namespace std
 {
 // FUNCTION: STARFLEETOP 0x0042c986
-template<> void _Construct( nDatabase::tID* _P, const nDatabase::tID& _V )
+template<> inline void _Construct( nDatabase::tID* _P, const nDatabase::tID& _V )
 {
 	new ((void*)_P) nDatabase::tID(_V);
 }
@@ -936,3 +936,29 @@ std::string fn_0042cfd9_Class::fn_0042cfd9( const std::string& prefix, int unuse
 	ss << prefix << fn_0042d079();
 	return ss.str();
 }
+
+// MATCH-ONLY: exists only to make this unit emit the copies it claims of the SDK's inline
+// tSingleAccessWrapper and tAccessPointer destructors (0x0042c6da, 0x0042c72f, 0x0042c75e,
+// 0x0042c789, 0x0042c7b4, 0x0042c7df) and of _Construct (0x0042c91b, 0x0042c986); not a
+// function of the original.
+#pragma inline_depth( 0 )
+typedef tSingleAccessWrapper<std::vector<int> > fn_emit_wrapper_1;
+typedef tSingleAccessWrapper<tObject_005391b0> fn_emit_wrapper_2;
+typedef tAccessPointer<std::vector<int>, fn_emit_wrapper_1> fn_emit_pointer_1;
+typedef tAccessPointer<tObject_005391b0, fn_emit_wrapper_2> fn_emit_pointer_2;
+typedef tAccessPointer<const std::vector<int>, fn_emit_wrapper_1> fn_emit_pointer_3;
+typedef tAccessPointer<const tObject_005391b0, fn_emit_wrapper_2> fn_emit_pointer_4;
+void fn_emit_0042c000( fn_emit_wrapper_1 *w1, fn_emit_wrapper_2 *w2, fn_emit_pointer_1 *p1,
+	fn_emit_pointer_2 *p2, fn_emit_pointer_3 *p3, fn_emit_pointer_4 *p4,
+	tServCharacter::tShipCache *cache, nDatabase::tID *id )
+{
+	w1->~fn_emit_wrapper_1();
+	w2->~fn_emit_wrapper_2();
+	p1->~fn_emit_pointer_1();
+	p2->~fn_emit_pointer_2();
+	p3->~fn_emit_pointer_3();
+	p4->~fn_emit_pointer_4();
+	std::_Construct( cache, *cache );
+	std::_Construct( id, *id );
+}
+#pragma inline_depth()

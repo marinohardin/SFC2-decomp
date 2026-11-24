@@ -581,6 +581,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                 '(no current symbol in the symbol table)')
     report_line_notes(rep, check_all, {f'0x{a:08x}' for a in claimed_addrs})
     report_shared_symbols(rep)
+    if check_all:
+        report_comdat_kinds(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -653,6 +655,50 @@ def shared_symbol_conflicts(results):
 def report_shared_symbols(rep):
     """An ERROR line, and a failed run, for each symbol shared_symbol_conflicts finds."""
     for line in shared_symbol_conflicts(rep.results):
+        rep.add('ERROR', line)
+        rep.failed = True
+
+
+def comdat_kind_conflicts(objects):
+    """Error lines for an external symbol that built objects define in a way the linker refuses
+    to merge: COMDAT copies whose selection kinds differ (an out-of-line definition is "no
+    duplicates", an inline copy "any"), and a symbol defined outside COMDATs in two objects.
+    `objects` maps a unit to its object file."""
+    kinds, plain = {}, {}   # symbol: {kind: [unit]}, symbol: [unit]
+    for unit, path in sorted(objects.items()):
+        try:
+            with open(path, 'rb') as f:
+                obj = coff.CoffObject(f.read())
+        except (OSError, coff.CoffError):
+            continue
+        for s in obj.symbols.values():
+            if s.section <= 0 or s.storage != coff.SYM_CLASS_EXTERNAL:
+                continue
+            kind = obj.sections[s.section].selection
+            if kind is None:
+                plain.setdefault(s.name, []).append(unit)
+            else:
+                units = kinds.setdefault(s.name, {}).setdefault(kind, [])
+                if unit not in units:
+                    units.append(unit)
+    out = []
+    for name, by_kind in sorted(kinds.items()):
+        if len(by_kind) > 1:
+            where = '; '.join(f'{coff.COMDAT_SELECT_NAMES.get(k, k)} ({k}) in {", ".join(u)}'
+                              for k, u in sorted(by_kind.items()))
+            out.append(f'{name} is defined with different COMDAT selection kinds: {where} '
+                       '(no linker accepts the pair; give it one definition, the same in every '
+                       'unit)')
+    for name, units in sorted(plain.items()):
+        if len(units) > 1:
+            out.append(f'{name} is defined outside a COMDAT in more than one object: '
+                       f'{", ".join(units)}')
+    return out
+
+
+def report_comdat_kinds(rep):
+    """An ERROR line, and a failed run, for each symbol comdat_kind_conflicts finds."""
+    for line in comdat_kind_conflicts(rep.objects):
         rep.add('ERROR', line)
         rep.failed = True
 

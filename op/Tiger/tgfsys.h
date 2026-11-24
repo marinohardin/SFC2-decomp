@@ -77,11 +77,7 @@ class fn_SessionCookie: public tCookie
 {
 public:
 	fn_SessionCookie() { mInvalidate(); }
-#if defined( tgfsys_copies_out_of_line )
 	fn_SessionCookie( const fn_SessionCookie &other );
-#else
-	fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
-#endif
 	// HYPOTHESIS: the copy takes the cookie and the session, and the derived copies assign the
 	// session again: the copy tVolIterator::mFirst (STARFLEETOP 0x0061f2f0) returns stores the
 	// session cookie both before and after the tVolume vtable pointer. Argument copies elsewhere
@@ -89,6 +85,11 @@ public:
 
 	tSession	fSession;	// +0x08
 };
+
+// The original also holds an instance of the copy (0x00407c5b), claimed on this definition; the
+// unit that emits it is the one UNITS.tsv gives the address (unsorted/tPath.cpp).
+// FUNCTION: STARFLEETOP 0x00407c5b
+inline fn_SessionCookie::fn_SessionCookie( const fn_SessionCookie &other ) { fCookie = other.fCookie; fSession = other.fSession; }
 
 // HYPOTHESIS: a directory cookie with its session, 16 bytes as tFileSession::mFileOpenDialog's
 // default argument shows: a cookie and a session, both invalid when default constructed.
@@ -122,10 +123,9 @@ public:
 // FUNCTION: STARFLEETOP 0x00633e80
 inline tDir::tDir( const tDir &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
 
-// MATCH-ONLY: the callers expand the copies and the destructor in line, and the original also holds
-// out-of-line instances of them (0x00407c3a, 0x00407c5b, 0x00407c8b). Defining
-// tgfsys_copies_out_of_line before this header declares them out of line, for the units that
-// claim those instances (unsorted/tPath.cpp, unsorted/tCookie.cpp).
+// The callers expand the copies and the destructor in line, and the original also holds
+// instances of them (0x00407c3a, 0x00407c5b, 0x00407c8b), claimed on the inline definitions
+// here; one definition, the same in every unit, so every copy is a COMDAT any copy will do.
 // HYPOTHESIS: a path cookie with its session like tDir, 16 bytes as tFileSession::mDuplicatePath's
 // argument copy shows; twFileSystemPart::mGetAppPath (STARFLEETOP 0x0062e9f0) stores the invalid
 // cookies of its local before the tPath vtable pointer, as a base constructor does.
@@ -135,13 +135,8 @@ public:
 	tPath() {}
 	// HYPOTHESIS: the copy assigns the session in its body, like tDir's, as the original stores the
 	// copied session cookie both before and after the tPath vtable pointer.
-#if defined( tgfsys_copies_out_of_line )
 	tPath( const tPath &other );
 	virtual ~tPath();
-#else
-	tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
-	virtual ~tPath() {}
-#endif
 
 	virtual iTruth	mValid( void );
 
@@ -156,6 +151,11 @@ public:
 	int32u	mWrite( void *buffer, int32u offset, int32u size, tPathCallback *callback );
 	int32u	mFree( void );
 };
+
+// FUNCTION: STARFLEETOP 0x00407c3a
+inline tPath::tPath( const tPath &other ): fn_SessionCookie( other ) { fSession = other.fSession; }
+// FUNCTION: STARFLEETOP 0x00407c8b
+inline tPath::~tPath() {}
 
 // HYPOTHESIS: a volume cookie with its session, like tDir: tSession::mAddCookie sets the session
 // cookie at +0x0c.

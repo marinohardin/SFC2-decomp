@@ -19,6 +19,9 @@ SYM_CLASS_EXTERNAL = 2
 SYM_CLASS_STATIC = 3
 SYM_CLASS_LABEL = 6
 SYM_TYPE_FUNCTION = 0x20
+SCN_LNK_COMDAT = 0x1000
+COMDAT_SELECT_NAMES = {1: 'no duplicates', 2: 'any', 3: 'same size', 4: 'exact match',
+                       5: 'associative', 6: 'largest'}
 TEXT_CHARACTERISTICS = 0x60500020  # CNT_CODE | ALIGN_16BYTES | MEM_EXECUTE | MEM_READ
 RDATA_CHARACTERISTICS = 0x40301040  # CNT_INITIALIZED_DATA | LNK_COMDAT | ALIGN_4BYTES | MEM_READ
 
@@ -43,11 +46,12 @@ class Symbol:
 
 
 class Section:
-    __slots__ = ('number', 'name', 'data', 'relocs', 'characteristics')
+    __slots__ = ('number', 'name', 'data', 'relocs', 'characteristics', 'selection')
 
     def __init__(self, number, name, data, relocs, characteristics):
         self.number, self.name, self.data = number, name, data
         self.relocs, self.characteristics = relocs, characteristics  # relocs: [(offset, symidx, type)]
+        self.selection = None  # a COMDAT section's selection kind (COMDAT_SELECT_NAMES), else None
 
 
 class CoffObject:
@@ -74,6 +78,10 @@ class CoffObject:
         while i < nsym:
             name, value, sec, typ, cls, naux = struct.unpack_from('<8sIhHBB', raw, symoff + i * 18)
             self.symbols[i] = Symbol(i, self._name(name), value, sec, typ, cls, naux)
+            if naux and cls == SYM_CLASS_STATIC and sec in self.sections \
+                    and self.sections[sec].characteristics & SCN_LNK_COMDAT:
+                # the section symbol's auxiliary record ends with the COMDAT selection byte
+                self.sections[sec].selection = raw[symoff + (i + 1) * 18 + 14]
             i += 1 + naux
         self.by_name = {}  # the first defined symbol of a name wins over undefined ones
         for s in self.symbols.values():

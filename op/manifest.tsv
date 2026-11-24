@@ -127,16 +127,16 @@ address	size	symbol	source	modes
 0x00407c17	18	tCookie::operator==(const tCookie &) const	unsorted/tCookie.cpp	vc6 guest
 0x00407c29	17	tCookie::operator<(const tCookie &) const	unsorted/tCookie.cpp	vc6 guest
 0x00407c3a	33	tPath::tPath(const tPath &)	unsorted/tPath.cpp	partial
-0x00407c5b	38	fn_SessionCookie::fn_SessionCookie(const fn_SessionCookie &)	unsorted/tCookie.cpp	partial
+0x00407c5b	38	fn_SessionCookie::fn_SessionCookie(const fn_SessionCookie &)	unsorted/tPath.cpp	partial
 0x00407c81	10	tSession::mValid()	unsorted/tPath.cpp	vc6 guest
 0x00407c8b	7	tPath::~tPath()	unsorted/tPath.cpp	vc6
 0x00407cf1	11	tDynamicMemoryFreeList::~tDynamicMemoryFreeList()	unsorted/tDynamicMemoryFreeList.cpp	vc6
 0x00407cfc	12	tDynamicMemoryFreeList::vfunction2()	unsorted/tDynamicMemoryFreeList.cpp	vc6 guest
 0x00407d08	4	tDynamicMemoryFreeList::vfunction3()	unsorted/tDynamicMemoryFreeList.cpp	vc6 guest
 0x00407d0c	8	tDynamicMemoryFreeList::vfunction16()	unsorted/tDynamicMemoryFreeList.cpp	vc6 guest
-0x00407d14	34	tDynamicMemoryFreeList::`scalar deleting destructor'	unsorted/tDynamicMemoryFreeList.cpp	partial
+0x00407d14	34	tDynamicMemoryFreeList::`scalar deleting destructor'	unsorted/tDynamicMemoryFreeList.cpp	vc6
 0x00407d36	28	tShipSpecManager::`scalar deleting destructor'	unsorted/tShipSpecManager.cpp	vc6
-0x00407d52	70	tShipSpecManager::~tShipSpecManager()	unsorted/tShipSpecManager.cpp	partial
+0x00407d52	70	tShipSpecManager::~tShipSpecManager()	unsorted/tShipSpecManager.cpp	vc6
 0x004088c6	7	tListMember::~tListMember()	unsorted/tListMember.cpp	vc6
 0x004088cd	9	tListMember::vfunction2()	unsorted/tListMember.cpp	vc6 guest
 0x004088d6	4	tListMember::vfunction3()	unsorted/tListMember.cpp	vc6 guest
@@ -572,9 +572,9 @@ address	size	symbol	source	modes
 0x0042a7b2	13	fn_0042a480_object::FUN_0042a7b2(unsigned long)	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a7bf	164	fn_0042a480_object::FUN_0042a7bf(const std::vector< fn_0054185f_ship >&)	unsorted/fn_0042A000.cpp	partial
 0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	partial
-0x0042a92f	107	fn_0042a480_object::FUN_0042a92f()	unsorted/fn_0042A000.cpp	partial
+0x0042a92f	107	fn_0042a480_object::FUN_0042a92f()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042a99a	32	fn_0042a480_object::FUN_0042a99a()	unsorted/fn_0042A000.cpp	vc6 guest
-0x0042a9ba	81	fn_0042a480_object::FUN_0042a9ba()	unsorted/fn_0042A000.cpp	partial
+0x0042a9ba	81	fn_0042a480_object::FUN_0042a9ba()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042aa0b	32	fn_0042a480_object::FUN_0042aa0b()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042aa2b	32	fn_0042a480_object::FUN_0042aa2b()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042aa4b	32	fn_0042a480_object::FUN_0042aa4b()	unsorted/fn_0042A000.cpp	vc6 guest
@@ -585,7 +585,7 @@ address	size	symbol	source	modes
 0x0042aaeb	29	fn_0042a480_object::FUN_0042aaeb()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ab08	29	fn_0042a480_object::FUN_0042ab08()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	partial
-0x0042abe4	82	fn_0042a480_object::FUN_0042abe4()	unsorted/fn_0042A000.cpp	partial
+0x0042abe4	82	fn_0042a480_object::FUN_0042abe4()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ac36	32	fn_0042a480_object::FUN_0042ac36()	unsorted/fn_0042A000.cpp	vc6 guest
 0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	partial
 0x0042ada1	32	fn_0042a480_object::FUN_0042ada1()	unsorted/fn_0042A000.cpp	vc6 guest
@@ -2000,7 +2000,7 @@ address	size	symbol	source	modes
 0x00539ee8	28	tMetaMapHex::SQLFieldNames() const	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539f04	76	tMetaMapHex::fn_00539f04() const	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539f50	76	tMetaMapHex::fn_00539f50() const	unsorted/tMetaMapHex.cpp	vc6 guest
-0x00539f9c	85	tMetaMapHex::fn_00539f9c()	unsorted/tMetaMapHex.cpp	partial
+0x00539f9c	85	tMetaMapHex::fn_00539f9c()	unsorted/tMetaMapHex.cpp	vc6 guest
 0x00539ff1	662	tMetaMapHex::fn_00539ff1(int,int)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a287	117	tMetaMapHex::fn_0053a287(tHexPoint&,unsigned int,unsigned int)	unsorted/tMetaMapHex.cpp	vc6 guest
 0x0053a2fc	32	tMetaMapHex::fn_0053a2fc()	unsorted/tMetaMapHex.cpp	partial
