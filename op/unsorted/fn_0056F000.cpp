@@ -42,7 +42,7 @@ namespace nDatabase {
 }
 
 // FUNCTION: STARFLEETOP 0x0056f041
-nDatabase::tQuery<tServCharacter>::~tQuery()
+inline nDatabase::tQuery<tServCharacter>::~tQuery()
 {
 }
 
@@ -197,7 +197,7 @@ void fn_0056f19b_owner::fn_0056f19b(const nDatabase::tQuery<fn_0056f19b_object> 
 class tShip;
 #line 200
 // FUNCTION: STARFLEETOP 0x0056f265
-nDatabase::tQuery<tShip>::~tQuery()
+inline nDatabase::tQuery<tShip>::~tQuery()
 {
 }
 
@@ -385,7 +385,7 @@ class tAuctionItem;
 
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tAuctionItem>, as 0x0056f041 is for tServCharacter.
 // FUNCTION: STARFLEETOP 0x0056f4c1
-nDatabase::tQuery<tAuctionItem>::~tQuery()
+inline nDatabase::tQuery<tAuctionItem>::~tQuery()
 {
 }
 
@@ -502,7 +502,7 @@ void fn_0056f61b_owner::fn_0056f61b(const nDatabase::tQuery<tAuctionItem> &query
 
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tMetaMapHex>, as 0x0056f041 is for tServCharacter.
 // FUNCTION: STARFLEETOP 0x0056f6e5
-nDatabase::tQuery<tMetaMapHex>::~tQuery()
+inline nDatabase::tQuery<tMetaMapHex>::~tQuery()
 {
 }
 
@@ -687,7 +687,7 @@ class tMetaMapDesc;
 
 // HYPOTHESIS: the destructor of nDatabase::tQuery<tMetaMapDesc>, as 0x0056f041 is for tServCharacter.
 // FUNCTION: STARFLEETOP 0x0056f9b9
-nDatabase::tQuery<tMetaMapDesc>::~tQuery() {}
+inline nDatabase::tQuery<tMetaMapDesc>::~tQuery() {}
 
 // FUNCTION: STARFLEETOP 0x0056f9c7
 void nDatabase::tQuery<tMetaMapDesc>::fn_0056f04f(void *value)
@@ -703,15 +703,15 @@ nDatabase::tQuery<fn_0056fb13_object>::~tQuery() {}
 // FUNCTION: STARFLEETOP 0x0056fbe5
 void nDatabase::tQuery<fn_0056fb13_object>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // FUNCTION: STARFLEETOP 0x0056fcb9
-nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
+inline nDatabase::tQuery<tCampaignInfo>::~tQuery() {}
 // FUNCTION: STARFLEETOP 0x0056fcc7
 void nDatabase::tQuery<tCampaignInfo>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // FUNCTION: STARFLEETOP 0x0056fedd
-nDatabase::tQuery<tNotify>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
+inline nDatabase::tQuery<tNotify>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
 // FUNCTION: STARFLEETOP 0x0056feeb
 void nDatabase::tQuery<tNotify>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // FUNCTION: STARFLEETOP 0x0056ffc5
-nDatabase::tQuery<tNewsStory>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
+inline nDatabase::tQuery<tNewsStory>::~tQuery() {}	// HYPOTHESIS: as 0x0056f041 for tServCharacter; the exe names the vtable
 // FUNCTION: STARFLEETOP 0x0056ffd3
 void nDatabase::tQuery<tNewsStory>::fn_0056f04f(void *value) { m_results.fn_00571a69(value); }
 // HYPOTHESIS: tMetaMapDesc is declared only inside unsorted/tMetaMapDesc.cpp, so it stays incomplete here; the casts below stand for the original's static_casts (the base sits at offset 0). The result container for tMetaMapDesc is as for 0x0056f4df.
@@ -1088,3 +1088,28 @@ void fn_0056ffe3_owner::fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &query, 
 	}
 	guard.Leave();
 }
+
+// MATCH-ONLY: exists only to make this unit emit the copies it claims of the query destructors
+// (0x0056f041, 0x0056f265, 0x0056f4c1, 0x0056f6e5, 0x0056f9b9, 0x0056fcb9, 0x0056fedd,
+// 0x0056ffc5); not a function of the original.
+#pragma inline_depth( 0 )
+typedef nDatabase::tQuery<tServCharacter> fn_emit_query_0;
+typedef nDatabase::tQuery<tShip> fn_emit_query_1;
+typedef nDatabase::tQuery<tAuctionItem> fn_emit_query_2;
+typedef nDatabase::tQuery<tMetaMapHex> fn_emit_query_3;
+typedef nDatabase::tQuery<tMetaMapDesc> fn_emit_query_4;
+typedef nDatabase::tQuery<tCampaignInfo> fn_emit_query_5;
+typedef nDatabase::tQuery<tNotify> fn_emit_query_6;
+typedef nDatabase::tQuery<tNewsStory> fn_emit_query_7;
+void fn_emit_0056f000( fn_emit_query_0 *q0, fn_emit_query_1 *q1, fn_emit_query_2 *q2, fn_emit_query_3 *q3, fn_emit_query_4 *q4, fn_emit_query_5 *q5, fn_emit_query_6 *q6, fn_emit_query_7 *q7 )
+{
+	q0->fn_emit_query_0::~fn_emit_query_0();
+	q1->fn_emit_query_1::~fn_emit_query_1();
+	q2->fn_emit_query_2::~fn_emit_query_2();
+	q3->fn_emit_query_3::~fn_emit_query_3();
+	q4->fn_emit_query_4::~fn_emit_query_4();
+	q5->fn_emit_query_5::~fn_emit_query_5();
+	q6->fn_emit_query_6::~fn_emit_query_6();
+	q7->fn_emit_query_7::~fn_emit_query_7();
+}
+#pragma inline_depth()

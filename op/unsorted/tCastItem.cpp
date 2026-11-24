@@ -34,13 +34,11 @@ tStream& tCastItem::vfunction6( tStream& s )
 	return s;
 }
 
-// HYPOTHESIS: 0x00695180 releases the buffer held in field_62.
-void fn_00695180( void *p ) throw();
-
-// FUNCTION: STARFLEETOP 0x00677e30
-// FUNCTION: STARFLEETOP 0x00677e50
-tCastItem::~tCastItem()
+// MATCH-ONLY: only to make this unit emit tCastItem's destructor (0x00677e30, 0x00677e50), the
+// inline definition in unsorted/tAsset.h; not a function of the original.
+#pragma inline_depth( 0 )
+void fn_emit_tCastItem()
 {
-	if ( field_66 )
-		fn_00695180( (void*)field_66 );
+	tCastItem item;
 }
+#pragma inline_depth()

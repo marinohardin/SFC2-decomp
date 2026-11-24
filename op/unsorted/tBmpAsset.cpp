@@ -10,17 +10,6 @@ tBmpAsset::tBmpAsset()
 	field_6B = 0;
 }
 
-// HYPOTHESIS: 0x00695180 releases the buffer held in field_66.
-void fn_00695180( void *p ) throw();
-
-// MATCH-ONLY: the original expands the tCastItem destructor into ~tBmpAsset; its out-of-line
-// copy is in tCastItem.cpp.
-inline tCastItem::~tCastItem()
-{
-	if ( field_66 )
-		fn_00695180( (void*)field_66 );
-}
-
 // FUNCTION: STARFLEETOP 0x00678cc0
 // FUNCTION: STARFLEETOP 0x00678b10
 tBmpAsset::~tBmpAsset()

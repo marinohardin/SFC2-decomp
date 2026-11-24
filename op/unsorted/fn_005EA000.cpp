@@ -646,7 +646,7 @@ namespace std {
 // unit for the claim; this explicit specialization carries the template's body.
 // FUNCTION: STARFLEETOP 0x005ea9ce
 template<>
-fn_005ea9ce_elem* find_if( fn_005ea9ce_elem* _F, fn_005ea9ce_elem* _L, fn_005ea9ce_pred _P )
+inline fn_005ea9ce_elem* find_if( fn_005ea9ce_elem* _F, fn_005ea9ce_elem* _L, fn_005ea9ce_pred _P )
 {
 	for (; _F != _L; ++_F)
 		if (_P(*_F))
@@ -744,3 +744,12 @@ fn_005eab05_value::fn_005eab05_value( const fn_005eab05_value& other )
 // FUNCTION: STARFLEETOP 0x005eabf1
 // FUNCTION: STARFLEETOP 0x005eabbe
 std::string g_00c391e8 = "MetaMovementGauge";
+
+// MATCH-ONLY: exists only to make this unit emit the copy of find_if it claims (0x005ea9ce); not a
+// function of the original.
+#pragma inline_depth( 0 )
+fn_005ea9ce_elem *fn_emit_005ea9ce( fn_005ea9ce_elem *first, fn_005ea9ce_elem *last, fn_005ea9ce_pred pred )
+{
+	return std::find_if( first, last, pred );
+}
+#pragma inline_depth()

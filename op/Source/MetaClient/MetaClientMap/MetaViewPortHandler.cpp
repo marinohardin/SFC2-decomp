@@ -22,23 +22,23 @@ void fn_004d353e( long arg1, long arg2 ); // HYPOTHESIS: the claim at 0x004d353e
 extern const char* g_0087632c; // HYPOTHESIS: the name of the map panel's control group, a global at 0x0087632c.
 #include "unsorted/tMetaClientMapPanel.h"
 // The class is declared in unsorted/tMetaClientMapPanel.h; these comment lines keep the line numbers.
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// The SDK's inline tOptex destructor, as in every unit; defined before its first use here so the
+// compiler knows it cannot throw and sets no unwind state before the call, as in the original.
+inline tOptex::~tOptex() throw()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
 //
 //
 //
@@ -235,27 +235,27 @@ tHexPoint tMetaClientMapPanel::fn_005e5ced()
 	return tHexPoint( corner.fn_0055f269() + field_fc.fn_00423402() / 2, corner.fn_005e8f21() + field_fc.fn_005e8efa() / 2 );
 }
 
-// MATCH-ONLY: the SDK's inline tOptex destructor, the body tClientCharacter.cpp claims as the
-// game's copy (0x004296c8), defined out of line here. In the original file the panel's earlier
-// functions (its destructor 0x005e506f and the members up to 0x005e57b2, another unit for now)
-// had already compiled it, so the compiler knew it cannot throw and set no unwind state before
-// calling it from the inlined tAccessPointer destructor. Defined inline here, it is compiled
-// only after this function and the call gets an extra state store.
-tOptex::~tOptex()
-{
-	if (fUse != tThreadState::kIgnoreThreadObject) {
-		if (fUseCriticalSections && fpSharedInfo != NULL)
-			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
-		if (fEvent != NULL)
-			::CloseHandle(fEvent);
-		if (fFileMapping == NULL) {
-			delete fpSharedInfo;
-		} else {
-			::UnmapViewOfFile(fpSharedInfo);
-			::CloseHandle(fFileMapping);
-		}
-	}
-}
+// The SDK's inline tOptex destructor is defined above, before its first use.
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // FUNCTION: STARFLEETOP 0x005e5d7a
 tHexPoint tMetaClientMapPanel::fn_005e5d7a()
