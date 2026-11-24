@@ -38,6 +38,13 @@ def test_all_passing_is_silent_and_runs_all_five():
     assert len(run.calls) == 5
 
 
+def test_a_comdat_kind_error_line_is_kept_as_a_failure():
+    line = 'ERROR ??1tX@@UAE@XZ is defined with different COMDAT selection kinds: any (2) in a.cpp'
+    out = json.dumps(dict(exit=2, lines=['INFO a', line], results=[]))
+    ok, msg = wholetree.check(fake(verify=(2, out, '')), {})
+    assert not ok and line in msg
+
+
 def test_the_off_switch_runs_nothing():
     run = fake(verify=(1, 'not json', 'boom'))
     assert wholetree.check(run, {'HARNESS_WHOLETREE': '0'}) == (True, '')
