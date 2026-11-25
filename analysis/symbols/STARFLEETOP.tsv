@@ -1266,7 +1266,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426e18	function	fn_00426e18		?fn_00426e18@fn_00426988_Class@@QAEHXZ	claim		none
 0x00426e1f	function	fn_00426e1f		?fn_00426e1f@fn_00426988_Class@@QAEXH@Z	claim		none
 0x00426e2c	function	fn_00426e2c		?fn_00426e2c@fn_00426988_Class@@QAEHXZ	claim		none
-0x00426e40	function	fn_00426e40					none
+0x00426e40	function	fn_00426e40		?fn_00426e40@fn_00426988_Class@@QAEXHH@Z	claim		none
 0x00426e61	function	fn_00426e61					none
 0x00426e7a	function	fn_00426e7a					none
 0x00426e9b	function	fn_00426e9b					none
