@@ -1,6 +1,133 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Common/Thread/ResourceGuard.cpp
-// Functions: 0x0070efa0 to 0x0070f260, 6 in op/UNITS.tsv
-// Evidence:  sdk-member (an SDK library object compiled from this file has these functions)
-// Profile:   sdk-release (harness/units.json)
+// Common/Thread/ResourceGuard.cpp
+
+#include "Common/Thread/ResourceGuard.h"
+#include "Common/Exceptions/Validate.h"
+#include "Common/OSVersion.h"
+#include "Common/Thread/Optex.inl"
+
+// FUNCTION: STARFLEETOP 0x0070efa0
+tResourceGuard::tGuard::tGuard( tResourceGuard& resGuard )
+	: fResGuard( resGuard )
+{
+	fResGuard.Guard();
+}
+
+// FUNCTION: STARFLEETOP 0x0070efc0
+tResourceGuard::tGuard::~tGuard()
+{
+	fResGuard.Unguard();
+}
+
+// FUNCTION: STARFLEETOP 0x0070efd0
+tResourceGuard::tResourceGuard()
+	: fCriticalSection( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
+	, fGuardCount( 0 )
+{
+}
+
+// FUNCTION: STARFLEETOP 0x0070f100
+tResourceGuard::~tResourceGuard()
+{
+}
+
+inline tOptex::~tOptex()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
+
+// HYPOTHESIS: the SDK defines Enter and TryEnter inline; Guard expands both.
+inline bool tOptex::TryEnter()
+{
+	if (fUse == tThreadState::kIgnoreThreadObject)
+		return false;
+
+	if (fUseCriticalSections)
+		return false;
+
+	int32u threadId = ::GetCurrentThreadId();
+
+	bool thisThreadOwnsTheOptex = false;
+	int32u spinCount = fpSharedInfo->fSpinCount;
+
+	do {
+		thisThreadOwnsTheOptex =
+			(0 == (*(OSSPECIFIC::OS_InterlockedCompareExchange))(&fpSharedInfo->fLockCount, 1, 0));
+
+		if (thisThreadOwnsTheOptex) {
+			fpSharedInfo->fThreadId = threadId;
+			fpSharedInfo->fRecurseCount = 1;
+		} else {
+			if (fpSharedInfo->fThreadId == threadId) {
+				::InterlockedIncrement(&fpSharedInfo->fLockCount);
+				++fpSharedInfo->fRecurseCount;
+				thisThreadOwnsTheOptex = TRUE;
+			}
+		}
+	} while (!thisThreadOwnsTheOptex && (spinCount-- > 0));
+
+	return thisThreadOwnsTheOptex;
+}
+
+inline void tOptex::Enter()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::EnterCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else if (!TryEnter()) {
+			int32u threadId = ::GetCurrentThreadId();
+			if (::InterlockedIncrement(&fpSharedInfo->fLockCount) == 1) {
+				fpSharedInfo->fThreadId = threadId;
+				fpSharedInfo->fRecurseCount = 1;
+			} else if (fpSharedInfo->fThreadId == threadId) {
+				++fpSharedInfo->fRecurseCount;
+			} else {
+				::WaitForSingleObject(fEvent, INFINITE);
+				fpSharedInfo->fThreadId = threadId;
+				fpSharedInfo->fRecurseCount = 1;
+			}
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0070f160
+void tResourceGuard::Guard()
+{
+	fCriticalSection.Enter();
+	++fGuardCount;
+}
+
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else {
+			--fpSharedInfo->fRecurseCount;
+			if (fpSharedInfo->fRecurseCount > 0) {
+				::InterlockedDecrement(&fpSharedInfo->fLockCount);
+			} else {
+				fpSharedInfo->fThreadId = 0;
+				if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+					::SetEvent(fEvent);
+			}
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0070f260
+void tResourceGuard::Unguard()
+{
+	--fGuardCount;
+	fCriticalSection.Leave();
+}

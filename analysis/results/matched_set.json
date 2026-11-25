@@ -33420,7 +33420,7 @@
   },
   "0x0064fbe0": {
    "name": "tChannelGroupManagerPart::mIsReady",
-   "symbol": "?mIsReady@tChannelGroupManagerPart@@UAEEXZ",
+   "symbol": "?mIsReady@tgSoundPart@@UAEEXZ",
    "unit": "Tiger/tgSound.cpp",
    "size": 32,
    "score": 100.0,
@@ -34428,7 +34428,7 @@
   },
   "0x00657970": {
    "name": "tAudioPriorityManagerPart::mIsReady",
-   "symbol": "?mIsReady@tAudioPriorityManagerPart@@UAEEXZ",
+   "symbol": "?mIsReady@tAudioFileInfoPart@@UAEEXZ",
    "unit": "Tiger/tAudioFile.cpp",
    "size": 16,
    "score": 100.0,
@@ -37945,6 +37945,168 @@
    "exact": false,
    "recorded": "2026-11-19"
   },
+  "0x0067b2b0": {
+   "name": "tVisGroupAsset::vfunction5",
+   "symbol": "?vfunction5@tVisGroupAsset@@UAEAAVtStream@@AAV2@@Z",
+   "unit": "unsorted/tVisGroupAsset.cpp",
+   "size": 216,
+   "score": 96.429,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
+  "0x0067b390": {
+   "name": "tVisGroupAsset::vfunction3",
+   "symbol": "?vfunction3@tVisGroupAsset@@UAEXABVc_00678500@@@Z",
+   "unit": "unsorted/tVisGroupAsset.cpp",
+   "size": 483,
+   "score": 3.792,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
+  "0x0067b580": {
+   "name": "tVisGroupAsset::vfunction4",
+   "symbol": "?vfunction4@tVisGroupAsset@@UAEPAVc_00678500@@XZ",
+   "unit": "unsorted/tVisGroupAsset.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067b590": {
+   "name": "tVisGroupAsset::vfunction2",
+   "symbol": "?vfunction2@tVisGroupAsset@@UAEPAXH@Z",
+   "unit": "unsorted/tVisGroupAsset.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067da80": {
+   "name": "tVisGroup::tVisGroup",
+   "symbol": "??0tVisGroup@@QAE@XZ",
+   "unit": "unsorted/tVisGroup.cpp",
+   "size": 288,
+   "score": 99.943,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dba0": {
+   "name": "tVisGroup::scalar_deleting_destructor",
+   "symbol": "?scalar_deleting_destructor@tVisGroup@@QAEPAV1@E@Z",
+   "unit": "unsorted/tVisGroup.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dbc0": {
+   "name": "tSeqScene::vfunction42",
+   "symbol": "?fn_0067dbc0@tSeqScene@@QAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dc30": {
+   "name": "tVisGroup::~tVisGroup",
+   "symbol": "??1tVisGroup@@UAE@XZ",
+   "unit": "unsorted/tVisGroup.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dcb0": {
+   "name": "tSeqScene::vfunction43",
+   "symbol": "?vfunction43@tSeqScene@@UAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dcf0": {
+   "name": "tVisGroup::vfunction40",
+   "symbol": "?vfunction40@tVisGroup@@UAEXXZ",
+   "unit": "unsorted/tVisGroup.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dd00": {
+   "name": "tVisGroup::vfunction31",
+   "symbol": "?vfunction31@tVisGroup@@UAE_NPAH@Z",
+   "unit": "unsorted/tVisGroup.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dd40": {
+   "name": "tSeqScene::vfunction40",
+   "symbol": "?vfunction40@tSeqScene@@UAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dd90": {
+   "name": "FUN_0067dd90",
+   "symbol": "?fn_0067dd90@tSeqScene@@QAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dda0": {
+   "name": "FUN_0067dda0",
+   "symbol": "?fn_0067dda0@tSeqScene@@QAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067dde0": {
+   "name": "FUN_0067dde0",
+   "symbol": "?fn_0067dde0@tSeqScene@@QAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067e1a0": {
+   "name": "tSeqScene::vfunction44",
+   "symbol": "?vfunction44@tSeqScene@@UAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067e1d0": {
+   "name": "FUN_0067e1d0",
+   "symbol": "?fn_0067e1d0@tSeqScene@@QAE_NXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0067e2d0": {
+   "name": "tSeqScene::vfunction30",
+   "symbol": "?vfunction30@tSeqScene@@UAEXXZ",
+   "unit": "unsorted/tSeqScene.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
   "0x0068ff60": {
    "name": "tSession::~tSession",
    "symbol": "?fn_0068ff60@@YAPAVfn_0068ff60_Root@@PAGAAVtString@@PAV1@VtDir@@@Z",
@@ -40582,6 +40744,69 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x006fefd0": {
+   "name": "tThread::tThread",
+   "symbol": "??0tThread@@QAE@XZ",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 416,
+   "score": 53.483,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff170": {
+   "name": "tThread::~tThread",
+   "symbol": "??1tThread@@QAE@XZ",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 224,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff4f0": {
+   "name": "tThread::StopThread",
+   "symbol": "?StopThread@tThread@@QAEXK@Z",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 480,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff6d0": {
+   "name": "tThread::mSetPriority",
+   "symbol": "?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff6f0": {
+   "name": "FUN_006ff6f0",
+   "symbol": "?Working@tThread@@QBE_NXZ",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff700": {
+   "name": "FUN_006ff700",
+   "symbol": "?Alive@tThread@@QBE_NXZ",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x006ff710": {
+   "name": "FUN_006ff710",
+   "symbol": "?fn_006ff710@tThread@@IAEXXZ",
+   "unit": "Common/Thread/Thread.cpp",
+   "size": 199,
+   "score": 48.713,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
   "0x00707e80": {
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo",
    "symbol": "??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ",
@@ -40716,6 +40941,285 @@
    "score": 79.659,
    "exact": false,
    "recorded": "2026-11-09"
+  },
+  "0x0070e250": {
+   "name": "tWaitForObject::tResult::tResult",
+   "symbol": "??0tResult@tWaitForObject@@QAE@K@Z",
+   "unit": "Common/Thread/WaitForObject.cpp",
+   "size": 80,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070e2a0": {
+   "name": "tWaitForObject::tResult::TimedOut",
+   "symbol": "?TimedOut@tResult@tWaitForObject@@QBE_NXZ",
+   "unit": "Common/Thread/WaitForObject.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070e2b0": {
+   "name": "tWaitForObject::tResult::Ready",
+   "symbol": "?Ready@tResult@tWaitForObject@@QBE_NXZ",
+   "unit": "Common/Thread/WaitForObject.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070e2c0": {
+   "name": "tWaitForObject::Wait",
+   "symbol": "?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z",
+   "unit": "Common/Thread/WaitForObject.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070e4e0": {
+   "name": "tThreadEvent::`scalar_deleting_destructor'",
+   "symbol": "??_GtThreadEvent@@UAEPAXI@Z",
+   "unit": "Common/Thread/ThreadEvent.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070e500": {
+   "name": "tThreadEvent::~tThreadEvent",
+   "symbol": "??1tThreadEvent@@UAE@XZ",
+   "unit": "Common/Thread/ThreadEvent.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070efa0": {
+   "name": "tResourceGuard::tGuard::tGuard",
+   "symbol": "??0tGuard@tResourceGuard@@QAE@AAV1@@Z",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070efc0": {
+   "name": "FUN_0070efc0",
+   "symbol": "??1tGuard@tResourceGuard@@QAE@XZ",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070efd0": {
+   "name": "tResourceGuard::tResourceGuard",
+   "symbol": "??0tResourceGuard@@QAE@XZ",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 304,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f100": {
+   "name": "tOptex::~tOptex",
+   "symbol": "??1tResourceGuard@@QAE@XZ",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 96,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f160": {
+   "name": "tResourceGuard::Guard",
+   "symbol": "?Guard@tResourceGuard@@AAEXXZ",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 256,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f260": {
+   "name": "tResourceGuard::Unguard",
+   "symbol": "?Unguard@tResourceGuard@@AAEXXZ",
+   "unit": "Common/Thread/ResourceGuard.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f5a0": {
+   "name": "tWinTimer::tWinTimer",
+   "symbol": "??0tWinTimer@@QAE@XZ",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f610": {
+   "name": "tWinTimer::`scalar_deleting_destructor'",
+   "symbol": "??_GtWinTimer@@UAEPAXI@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f630": {
+   "name": "tWinTimer::~tWinTimer",
+   "symbol": "??1tWinTimer@@UAE@XZ",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 112,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f6a0": {
+   "name": "tWinTimer::StartTimer",
+   "symbol": "?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f730": {
+   "name": "tWinTimer::StartTimer",
+   "symbol": "?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 144,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f7c0": {
+   "name": "tWinTimer::StartTimer",
+   "symbol": "?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f860": {
+   "name": "tWinTimer::ChangeTiming",
+   "symbol": "?ChangeTiming@tWinTimer@@UAEXKK@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 160,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f900": {
+   "name": "tWinTimer::StopTimer",
+   "symbol": "?StopTimer@tWinTimer@@UAEXXZ",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f920": {
+   "name": "tWinTimer::TimePassedSinceStart",
+   "symbol": "?TimePassedSinceStart@tWinTimer@@UAEKXZ",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070f940": {
+   "name": "tWinTimer::WinTimerCallback",
+   "symbol": "?WinTimerCallback@tWinTimer@@KGXIIKKK@Z",
+   "unit": "Common/Timer/WinTimer.cpp",
+   "size": 128,
+   "score": 99.974,
+   "exact": false,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fc80": {
+   "name": "tTimer::tTimer",
+   "symbol": "??0tTimer@@QAE@XZ",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fca0": {
+   "name": "tTimer::scalar_deleting_destructor",
+   "symbol": "??_GtTimer@@UAEPAXI@Z",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fcc0": {
+   "name": "tTimer::~tTimer",
+   "symbol": "??1tTimer@@UAE@XZ",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fcd0": {
+   "name": "tTimer::StartTimer",
+   "symbol": "?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 48,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fd00": {
+   "name": "tTimer::StartTimer",
+   "symbol": "?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fd40": {
+   "name": "tTimer::StartTimer",
+   "symbol": "?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fd80": {
+   "name": "tTimer::ChangeTiming",
+   "symbol": "?ChangeTiming@tTimer@@UAEXKK@Z",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 32,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fda0": {
+   "name": "tTimer::StopTimer",
+   "symbol": "?StopTimer@tTimer@@UAEXXZ",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
+  },
+  "0x0070fdb0": {
+   "name": "tTimer::SignalTimerEvent",
+   "symbol": "?SignalTimerEvent@tTimer@@MAEXXZ",
+   "unit": "Common/Timer/Timer.cpp",
+   "size": 64,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-24"
   },
   "0x00757250": {
    "name": "tFile::gGetPath",

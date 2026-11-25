@@ -13893,7 +13893,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005d8ec8	function	tInterlockedScalar<bool>::scalar_deleting_destructor	tInterlockedScalar<bool>				rtti
 0x005d8ee4	function	tInterlockedType<bool>::~tInterlockedType<bool>	tInterlockedType<bool>				rtti
 0x005d8ef2	function	tInterlockedType<bool>::tInterlockedType<bool>	tInterlockedType<bool>				rtti
-0x005d8f12	function	fn_005d8f12					none
+0x005d8f12	function	fn_005d8f12		??B?$tInterlockedType@_N@@QBE_NXZ	add		none
 0x005d8f37	function	fn_005d8f37					none
 0x005d8f63	function	fn_005d8f63					none
 0x005d8fd1	function	fn_005d8fd1					none
@@ -16971,7 +16971,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0064f670	function	tgSoundPart::mUpdateAtInterrupt	tgSoundPart	?mUpdateAtInterrupt@tgSoundPart@@UAEXXZ	claim		claim
 0x0064faa0	function	tgSoundPart::tgSoundPart	tgSoundPart	??0tgSoundPart@@QAE@XZ	claim		claim
 0x0064fbc0	function	tSoundChannelList::scalar_deleting_destructor	tSoundChannelList				rtti
-0x0064fbe0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart	?mIsReady@tgSoundPart@@UAEEXZ	claim		mangled
+0x0064fbe0	function	tgSoundPart::mIsReady	tgSoundPart	?mIsReady@tgSoundPart@@UAEEXZ	claim		claim
 0x0064fc00	function	tSoundPart::Test_tSoundPart	tSoundPart				mangled
 0x0064fcc0	function	tgSoundPart::mActivate	tgSoundPart	?mActivate@tgSoundPart@@UAEXXZ	claim		claim
 0x0064fd00	function	tgSoundPart::mDeactivate	tgSoundPart	?mDeactivate@tgSoundPart@@UAEXXZ	claim		claim
@@ -17087,7 +17087,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00657770	function	tAudioFileInfoPart::tAudioFileInfoPart	tAudioFileInfoPart	??0tAudioFileInfoPart@@QAE@XZ	claim		claim
 0x006577b0	function	tAudioFileInfoPart::`scalar_deleting_destructor'	tAudioFileInfoPart	??_GtAudioFileInfoPart@@UAEPAXI@Z	mangled		mangled
 0x006577d0	function	tAudioFileInfoPart::~tAudioFileInfoPart	tAudioFileInfoPart	??1tAudioFileInfoPart@@UAE@XZ	claim		claim
-0x00657970	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart	?mIsReady@tAudioFileInfoPart@@UAEEXZ	claim		mangled
+0x00657970	function	tAudioFileInfoPart::mIsReady	tAudioFileInfoPart	?mIsReady@tAudioFileInfoPart@@UAEEXZ	claim		claim
 0x00657980	function	tAudioFileInfoPart::mActivate	tAudioFileInfoPart	?mActivate@tAudioFileInfoPart@@UAEXXZ	claim		claim
 0x00657b60	function	tAudioFileInfoPart::mDeactivate	tAudioFileInfoPart	?mDeactivate@tAudioFileInfoPart@@UAEXXZ	claim		claim
 0x00657cf0	function	tAudioFileInfoPart::vfn_48	tAudioFileInfoPart	?vfn_48@tAudioFileInfoPart@@UAEEJJJ@Z	claim		claim
@@ -17179,7 +17179,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00660c50	function	tChannelGroupManagerPart::mDeleteChannelGroup	tChannelGroupManagerPart	?mDeleteChannelGroup@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660cd0	function	tChannelGroupManagerPart::mRemoveChannelGroupOwner	tChannelGroupManagerPart	?mRemoveChannelGroupOwner@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660d60	function	tAudioFileInfoPart::mGetBasicAudioFile	tAudioFileInfoPart	?mGetBasicAudioFile@tAudioFileInfoPart@@UAEPAVtBasicAudioFile@@K@Z	claim		claim
-0x00660da0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart	?mIsReady@tChannelGroupManagerPart@@UAEEXZ	claim		mangled
+0x00660da0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart	?mIsReady@tChannelGroupManagerPart@@UAEEXZ	claim		claim
 0x00660dc0	function	tChannelGroupManagerPart::mDeactivate	tChannelGroupManagerPart	?mDeactivate@tChannelGroupManagerPart@@UAEXXZ	claim		claim
 0x00660f30	function	tChannelGroupManagerPart::mAttachFileToGroup	tChannelGroupManagerPart	?mAttachFileToGroup@tChannelGroupManagerPart@@UAEEKJ@Z	claim		claim
 0x00660f60	function	tChannelGroupManagerPart::mAttachFileToChannel	tChannelGroupManagerPart	?mAttachFileToChannel@tChannelGroupManagerPart@@UAEEKKJ@Z	claim		claim
@@ -17205,7 +17205,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00661fa0	function	tAudioPriorityManagerPart::mAreWeAllowedToPlay	tAudioPriorityManagerPart	?mAreWeAllowedToPlay@tAudioPriorityManagerPart@@UAEEKJJJPAJAAKAAN@Z	claim		claim
 0x00662400	function	tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo	tAudioPriorityManagerPart	?mGetNextAvailableClassTrackingInfo@tAudioPriorityManagerPart@@IAEJXZ	claim		claim
 0x006624b0	function	tAudioPriorityManagerPart::mWeHaveStoppedPlaying	tAudioPriorityManagerPart	?mWeHaveStoppedPlaying@tAudioPriorityManagerPart@@UAEXK@Z	claim		claim
-0x00662510	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart	?mIsReady@tAudioPriorityManagerPart@@UAEEXZ	claim		mangled
+0x00662510	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart	?mIsReady@tAudioPriorityManagerPart@@UAEEXZ	claim		claim
 0x00662520	function	tAudioPriorityManagerPart::mActivate	tAudioPriorityManagerPart	?mActivate@tAudioPriorityManagerPart@@UAEXXZ	claim		claim
 0x00662530	function	tAudioPriorityManagerPart::mDeactivate	tAudioPriorityManagerPart	?mDeactivate@tAudioPriorityManagerPart@@UAEXXZ	claim		claim
 0x00662540	function	tAudioPriorityManagerPart::mClose	tAudioPriorityManagerPart	?mClose@tAudioPriorityManagerPart@@MAEXXZ	claim		claim
@@ -17752,10 +17752,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067b0b0	function	fn_0067b0b0					none
 0x0067b0f0	function	fn_0067b0f0	tGroupCell				vtable
 0x0067b1e0	function	fn_0067b1e0	tGroupCell				vtable
-0x0067b2b0	function	fn_0067b2b0	tVisGroupAsset				vtable
-0x0067b390	function	fn_0067b390	tVisGroupAsset				vtable
-0x0067b580	function	fn_0067b580	tVisGroupAsset				vtable
-0x0067b590	function	fn_0067b590	tVisGroupAsset				vtable
+0x0067b2b0	function	fn_0067b2b0	tVisGroupAsset	?vfunction5@tVisGroupAsset@@UAEAAVtStream@@AAV2@@Z	claim		none
+0x0067b390	function	fn_0067b390	tVisGroupAsset	?vfunction3@tVisGroupAsset@@UAEXABVc_00678500@@@Z	claim		none
+0x0067b580	function	fn_0067b580	tVisGroupAsset	?vfunction4@tVisGroupAsset@@UAEPAVc_00678500@@XZ	claim		none
+0x0067b590	function	fn_0067b590	tVisGroupAsset	?vfunction2@tVisGroupAsset@@UAEPAXH@Z	claim		none
 0x0067b5c0	function	tVisGroupAsset::scalar_deleting_destructor	tVisGroupAsset				rtti
 0x0067b5e0	function	tRadioGroupAsset::scalar_deleting_destructor	tRadioGroupAsset				rtti
 0x0067b7b0	function	fn_0067b7b0	tRadioGroupAsset				vtable
@@ -17812,7 +17812,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d030	function	tFile::gSetFileCallback	tFile				sdk
 0x0067d040	function	fn_0067d040	tObjBase				vtable
 0x0067d160	function	fn_0067d160	tObjBase				vtable
-0x0067d1c0	function	fn_0067d1c0	tObjBase				vtable
+0x0067d1c0	function	fn_0067d1c0	tObjBase	?fn_0067d1c0@tVisGroup@@QAE_NPAH@Z	add		vtable
 0x0067d2d0	function	fn_0067d2d0		?fn_0067d2d0@tVisObject@@QAE_NPAV1@@Z	callers		none
 0x0067d310	function	fn_0067d310					none
 0x0067d350	function	fn_0067d350	tObjBase				vtable
@@ -17829,22 +17829,22 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d930	function	fn_0067d930					none
 0x0067d950	function	fn_0067d950					none
 0x0067d9b0	function	fn_0067d9b0					none
-0x0067da80	function	tVisGroup::tVisGroup	tVisGroup				rtti
-0x0067dba0	function	tVisGroup::scalar_deleting_destructor	tVisGroup				rtti
-0x0067dbc0	function	fn_0067dbc0	tSeqScene				vtable
-0x0067dc30	function	tVisGroup::~tVisGroup	tVisGroup	??1tVisGroup@@UAE@XZ	callers		rtti
+0x0067da80	function	tVisGroup::tVisGroup	tVisGroup	??0tVisGroup@@QAE@XZ	claim		claim
+0x0067dba0	function	tVisGroup::scalar_deleting_destructor	tVisGroup	?scalar_deleting_destructor@tVisGroup@@QAEPAV1@E@Z	claim		claim
+0x0067dbc0	function	fn_0067dbc0	tSeqScene	?fn_0067dbc0@tSeqScene@@QAEXXZ	claim		none
+0x0067dc30	function	tVisGroup::~tVisGroup	tVisGroup	??1tVisGroup@@UAE@XZ	claim		claim
 0x0067dca0	thunk	fn_0067dca0	tSeqScene				vtable
-0x0067dcb0	function	fn_0067dcb0	tSeqScene				vtable
-0x0067dcf0	function	fn_0067dcf0	tVisGroup				vtable
-0x0067dd00	function	fn_0067dd00	tVisGroup				vtable
-0x0067dd40	function	fn_0067dd40	tSeqScene				vtable
-0x0067dd90	function	fn_0067dd90					none
-0x0067dda0	function	fn_0067dda0					none
-0x0067dde0	function	fn_0067dde0					none
+0x0067dcb0	function	fn_0067dcb0	tSeqScene	?vfunction43@tSeqScene@@UAEXXZ	claim		none
+0x0067dcf0	function	fn_0067dcf0	tVisGroup	?vfunction40@tVisGroup@@UAEXXZ	claim		none
+0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAH@Z	claim		none
+0x0067dd40	function	fn_0067dd40	tSeqScene	?vfunction40@tSeqScene@@UAEXXZ	claim		none
+0x0067dd90	function	fn_0067dd90	tSeqScene	?fn_0067dd90@tSeqScene@@QAEXXZ	claim		none
+0x0067dda0	function	fn_0067dda0	tSeqScene	?fn_0067dda0@tSeqScene@@QAEXXZ	claim		none
+0x0067dde0	function	fn_0067dde0	tSeqScene	?fn_0067dde0@tSeqScene@@QAEXXZ	claim		none
 0x0067de00	function	fn_0067de00	tSeqScene				vtable
-0x0067e1a0	function	fn_0067e1a0	tSeqScene				vtable
-0x0067e1d0	function	fn_0067e1d0					none
-0x0067e2d0	function	fn_0067e2d0	tSeqScene				vtable
+0x0067e1a0	function	fn_0067e1a0	tSeqScene	?vfunction44@tSeqScene@@UAEXXZ	claim		none
+0x0067e1d0	function	fn_0067e1d0	tSeqScene	?fn_0067e1d0@tSeqScene@@QAE_NXZ	claim		none
+0x0067e2d0	function	fn_0067e2d0	tSeqScene	?vfunction30@tSeqScene@@UAEXXZ	claim		none
 0x0067e340	function	fn_0067e340	tVisGroup				vtable
 0x0067e3f0	function	fn_0067e3f0	tSeqScene				vtable
 0x0067e430	function	fn_0067e430					none
@@ -17854,7 +17854,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067e8c0	function	fn_0067e8c0	tRadioGroup				vtable
 0x0067e940	function	fn_0067e940					none
 0x0067e9b0	function	fn_0067e9b0	tRadioGroup				vtable
-0x0067ea20	function	fn_0067ea20					none
+0x0067ea20	function	fn_0067ea20		?fn_0067ea20@@YAPAVtVisObject@@H@Z	add		none
 0x0067eaa0	function	fn_0067eaa0					none
 0x0067eb10	function	tListMemberWithHandle::mGetNextListHandle	tListMemberWithHandle				sdk
 0x0067eb20	function	fn_0067eb20	tBufferStream				vtable
@@ -17864,11 +17864,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067ecc0	function	std::_Tree<tString,std::pair<tString_const_,tState*>,std::map<tString,tState*,std::less<tString>,std::allocator<tState*>_>::_Kfn,std::less<tString>,std::allocator<tState*>_>::iterator::operator++	std::_Tree<tString,std::pair<tString_const_,tState*>,std::map<tString,tState*,std::less<tString>,std::allocator<tState*>_>::_Kfn,std::less<tString>,std::allocator<tState*>_>::iterator	??Eiterator@?$_Tree@VtString@@U?$pair@$$CBVtString@@PAVtState@@@std@@U_Kfn@?$map@VtString@@PAVtState@@U?$less@VtString@@@std@@V?$allocator@PAVtState@@@4@@3@U?$less@VtString@@@3@V?$allocator@PAVtState@@@3@@std@@QAE?AV012@H@Z	mangled		mangled
 0x0067ed50	function	fn_0067ed50					none
 0x0067efb0	function	fn_0067efb0					none
-0x0067f010	function	fn_0067f010					none
-0x0067f090	function	fn_0067f090					none
+0x0067f010	function	fn_0067f010		?fn_0067f010@tMachine@@QAE_NPAVtVisGroup@@PAH@Z	callers		none
+0x0067f090	function	fn_0067f090		?fn_0067f090@tMachine@@QAEXPAVtVisGroup@@HH@Z	add		none
 0x0067f400	function	fn_0067f400					none
 0x0067f450	function	fn_0067f450					none
-0x0067f490	function	tMachine::~tMachine	tMachine				rtti
+0x0067f490	function	tMachine::~tMachine	tMachine	??1tMachine@@UAE@XZ	add		rtti
 0x0067f5d0	function	fn_0067f5d0					none
 0x0067f6e0	function	fn_0067f6e0					none
 0x0067f7a0	function	fn_0067f7a0					none
@@ -18302,7 +18302,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00693120	function	fn_00693120	tEvtMgr				vtable
 0x00693140	function	fn_00693140	tEvtMgr				vtable
 0x00693150	function	fn_00693150					none
-0x006932f0	function	fn_006932f0					none
+0x006932f0	function	fn_006932f0		?fn_006932f0@tEvtMgr@@QAEXPAUfn_006932f0_Event@@@Z	add		none
 0x00693350	function	fn_00693350					none
 0x006933d0	function	fn_006933d0	tEvtMgr				vtable
 0x00693400	function	fn_00693400					none
@@ -20410,14 +20410,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006fef70	function	fn_006fef70					none
 0x006fefa0	function	fn_006fefa0					none
 0x006fefb0	function	fn_006fefb0					none
-0x006fefd0	function	tThread::tThread	tThread	??0tThread@@QAE@XZ	mangled		mangled
-0x006ff170	function	tThread::~tThread	tThread	??1tThread@@QAE@XZ	mangled		mangled
+0x006fefd0	function	tThread::tThread	tThread	??0tThread@@QAE@XZ	claim		claim
+0x006ff170	function	tThread::~tThread	tThread	??1tThread@@QAE@XZ	claim		claim
 0x006ff250	function	tThread::StartWork	tThread	?StartWork@tThread@@QAE_NPAV?$tCallback@J@@J@Z	mangled		mangled
-0x006ff4f0	function	tThread::StopThread	tThread	?StopThread@tThread@@QAEXK@Z	mangled		mangled
-0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	mangled		mangled
-0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	callers		sdk
-0x006ff700	function	fn_006ff700		?Alive@tThread@@QBE_NXZ	callers		none
-0x006ff710	function	fn_006ff710					none
+0x006ff4f0	function	tThread::StopThread	tThread	?StopThread@tThread@@QAEXK@Z	claim		claim
+0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	claim		claim
+0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	claim		claim
+0x006ff700	function	tThread::Alive	tThread	?Alive@tThread@@QBE_NXZ	claim		claim
+0x006ff710	function	fn_006ff710	tThread	?fn_006ff710@tThread@@IAEXXZ	claim		none
 0x006ff9dc	function	fn_006ff9dc					none
 0x006ffa70	function	tThread::ThreadProc	tThread	?ThreadProc@tThread@@KGIPAX@Z	mangled		mangled
 0x006ffaf0	function	fn_006ffaf0					none
@@ -20673,15 +20673,15 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e1c7	function	fn_0070e1c7					none
 0x0070e1cd	function	fn_0070e1cd					none
 0x0070e240	function	fn_0070e240		??0iterator@tString@@QAE@XZ	callers		none
-0x0070e250	function	tWaitForObject::tResult::tResult	tWaitForObject::tResult	??0tResult@tWaitForObject@@QAE@K@Z	mangled		mangled
-0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	mangled		mangled
-0x0070e2b0	function	tWaitForObject::tResult::Ready	tWaitForObject::tResult	?Ready@tResult@tWaitForObject@@QBE_NXZ	mangled		mangled
-0x0070e2c0	function	tWaitForObject::Wait	tWaitForObject	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z	mangled		mangled
+0x0070e250	function	tWaitForObject::tResult::tResult	tWaitForObject::tResult	??0tResult@tWaitForObject@@QAE@K@Z	claim		claim
+0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	claim		claim
+0x0070e2b0	function	tWaitForObject::tResult::Ready	tWaitForObject::tResult	?Ready@tResult@tWaitForObject@@QBE_NXZ	claim		claim
+0x0070e2c0	function	tWaitForObject::Wait	tWaitForObject	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z	claim		claim
 0x0070e300	function	fn_0070e300					none
 0x0070e450	function	tThreadEvent::tThreadEvent	tThreadEvent	??0tThreadEvent@@QAE@_N0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eUse@tThreadState@@@Z	mangled		mangled
-0x0070e4e0	function	tThreadEvent::`scalar_deleting_destructor'	tThreadEvent	??_GtThreadEvent@@UAEPAXI@Z	mangled		mangled
-0x0070e500	function	tThreadEvent::~tThreadEvent	tThreadEvent	??1tThreadEvent@@UAE@XZ	mangled		mangled
-0x0070e520	function	fn_0070e520	tGLDC				vtable
+0x0070e4e0	function	tThreadEvent::`scalar_deleting_destructor'	tThreadEvent	??_GtThreadEvent@@UAEPAXI@Z	claim		mangled
+0x0070e500	function	tThreadEvent::~tThreadEvent	tThreadEvent	??1tThreadEvent@@UAE@XZ	claim		claim
+0x0070e520	function	fn_0070e520	tGLDC	??BtThreadEvent@@QAEPAXXZ	add		vtable
 0x0070e530	function	tThreadEvent::Signal	tThreadEvent	?Signal@tThreadEvent@@QAEXXZ	mangled		mangled
 0x0070e550	function	tThreadEvent::Reset	tThreadEvent	?Reset@tThreadEvent@@QAEXXZ	mangled		mangled
 0x0070e5b0	function	fn_0070e5b0					none
@@ -20707,12 +20707,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070ef40	function	fn_0070ef40					none
 0x0070ef70	function	fn_0070ef70					none
 0x0070ef80	function	fn_0070ef80					none
-0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	mangled		mangled
-0x0070efc0	function	fn_0070efc0					none
-0x0070efd0	function	tResourceGuard::tResourceGuard	tResourceGuard	??0tResourceGuard@@QAE@XZ	mangled		mangled
-0x0070f100	function	fn_0070f100					none
-0x0070f160	function	tResourceGuard::Guard	tResourceGuard	?Guard@tResourceGuard@@AAEXXZ	mangled		mangled
-0x0070f260	function	tResourceGuard::Unguard	tResourceGuard	?Unguard@tResourceGuard@@AAEXXZ	mangled		mangled
+0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	claim		claim
+0x0070efc0	function	tResourceGuard::tGuard::~tGuard	tResourceGuard::tGuard	??1tGuard@tResourceGuard@@QAE@XZ	claim		claim
+0x0070efd0	function	tResourceGuard::tResourceGuard	tResourceGuard	??0tResourceGuard@@QAE@XZ	claim		claim
+0x0070f100	function	tResourceGuard::~tResourceGuard	tResourceGuard	??1tResourceGuard@@QAE@XZ	claim		claim
+0x0070f160	function	tResourceGuard::Guard	tResourceGuard	?Guard@tResourceGuard@@AAEXXZ	claim		claim
+0x0070f260	function	tResourceGuard::Unguard	tResourceGuard	?Unguard@tResourceGuard@@AAEXXZ	claim		claim
 0x0070f310	function	fn_0070f310					none
 0x0070f320	function	fn_0070f320					none
 0x0070f370	function	tStatTracker::Instance	tStatTracker	?Instance@tStatTracker@@SAPAV1@XZ	mangled		mangled
@@ -20720,30 +20720,30 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070f460	function	tStatTracker::`scalar_deleting_destructor'	tStatTracker	??_GtStatTracker@@EAEPAXI@Z	mangled		mangled
 0x0070f480	function	tStatTracker::~tStatTracker	tStatTracker	??1tStatTracker@@EAE@XZ	mangled		mangled
 0x0070f4a0	function	tStatTracker::GetCounter32	tStatTracker	?GetCounter32@tStatTracker@@QAE?AV?$tStatCounter@J@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	mangled		mangled
-0x0070f5a0	function	tWinTimer::tWinTimer	tWinTimer	??0tWinTimer@@QAE@XZ	mangled		mangled
-0x0070f610	function	tWinTimer::`scalar_deleting_destructor'	tWinTimer	??_GtWinTimer@@UAEPAXI@Z	mangled		mangled
-0x0070f630	function	tWinTimer::~tWinTimer	tWinTimer	??1tWinTimer@@UAE@XZ	mangled		mangled
-0x0070f6a0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
-0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	mangled		mangled
-0x0070f7c0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z	mangled		mangled
-0x0070f860	function	tWinTimer::ChangeTiming	tWinTimer	?ChangeTiming@tWinTimer@@UAEXKK@Z	mangled		mangled
-0x0070f900	function	tWinTimer::StopTimer	tWinTimer	?StopTimer@tWinTimer@@UAEXXZ	mangled		mangled
-0x0070f920	function	tWinTimer::TimePassedSinceStart	tWinTimer	?TimePassedSinceStart@tWinTimer@@UAEKXZ	mangled		mangled
-0x0070f940	function	tWinTimer::WinTimerCallback	tWinTimer	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z	mangled		mangled
+0x0070f5a0	function	tWinTimer::tWinTimer	tWinTimer	??0tWinTimer@@QAE@XZ	claim		claim
+0x0070f610	function	tWinTimer::`scalar_deleting_destructor'	tWinTimer	??_GtWinTimer@@UAEPAXI@Z	claim		mangled
+0x0070f630	function	tWinTimer::~tWinTimer	tWinTimer	??1tWinTimer@@UAE@XZ	claim		claim
+0x0070f6a0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z	claim		claim
+0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	claim		claim
+0x0070f7c0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z	claim		claim
+0x0070f860	function	tWinTimer::ChangeTiming	tWinTimer	?ChangeTiming@tWinTimer@@UAEXKK@Z	claim		claim
+0x0070f900	function	tWinTimer::StopTimer	tWinTimer	?StopTimer@tWinTimer@@UAEXXZ	claim		claim
+0x0070f920	function	tWinTimer::TimePassedSinceStart	tWinTimer	?TimePassedSinceStart@tWinTimer@@UAEKXZ	claim		claim
+0x0070f940	function	tWinTimer::WinTimerCallback	tWinTimer	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z	claim		claim
 0x0070fb20	function	fn_0070fb20					none
 0x0070fb30	function	fn_0070fb30					none
 0x0070fb60	function	fn_0070fb60					none
 0x0070fb70	function	fn_0070fb70					none
 0x0070fb90	function	nFunctionWrapper::GetExceptionCallstack		?GetExceptionCallstack@nFunctionWrapper@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	mangled		mangled
-0x0070fc80	function	tTimer::tTimer	tTimer	??0tTimer@@QAE@XZ	mangled		mangled
-0x0070fca0	function	tTimer::scalar_deleting_destructor	tTimer				sdk
-0x0070fcc0	function	tTimer::~tTimer	tTimer	??1tTimer@@UAE@XZ	callers		sdk
-0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
-0x0070fd00	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z	mangled		mangled
-0x0070fd40	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z	mangled		mangled
-0x0070fd80	function	tTimer::ChangeTiming	tTimer	?ChangeTiming@tTimer@@UAEXKK@Z	mangled		mangled
-0x0070fda0	function	tTimer::StopTimer	tTimer	?StopTimer@tTimer@@UAEXXZ	mangled		mangled
-0x0070fdb0	function	tTimer::SignalTimerEvent	tTimer	?SignalTimerEvent@tTimer@@MAEXXZ	mangled		mangled
+0x0070fc80	function	tTimer::tTimer	tTimer	??0tTimer@@QAE@XZ	claim		claim
+0x0070fca0	function	tTimer::scalar_deleting_destructor	tTimer	??_GtTimer@@UAEPAXI@Z	claim		sdk
+0x0070fcc0	function	tTimer::~tTimer	tTimer	??1tTimer@@UAE@XZ	claim		claim
+0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	claim		claim
+0x0070fd00	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z	claim		claim
+0x0070fd40	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z	claim		claim
+0x0070fd80	function	tTimer::ChangeTiming	tTimer	?ChangeTiming@tTimer@@UAEXKK@Z	claim		claim
+0x0070fda0	function	tTimer::StopTimer	tTimer	?StopTimer@tTimer@@UAEXXZ	claim		claim
+0x0070fdb0	function	tTimer::SignalTimerEvent	tTimer	?SignalTimerEvent@tTimer@@MAEXXZ	claim		claim
 0x0070fe30	function	fn_0070fe30					none
 0x0070fe40	function	fn_0070fe40					none
 0x0070fe70	function	fn_0070fe70					none
@@ -21425,7 +21425,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0072ee70	function	fn_0072ee70					none
 0x0072ee80	function	fn_0072ee80					none
 0x0072eea0	function	tBmpSurf::~tBmpSurf	tBmpSurf	??2@YAPAXI@Z	callers		sdk
-0x0072eec0	function	fn_0072eec0					none
+0x0072eec0	function	fn_0072eec0		??3@YAXPAX@Z	add		none
 0x0072eed0	function	fn_0072eed0		_malloc	callers		none
 0x0072ef40	function	fn_0072ef40					none
 0x0072efa0	function	fn_0072efa0		_realloc	callers		none

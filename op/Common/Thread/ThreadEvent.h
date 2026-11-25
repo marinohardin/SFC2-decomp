@@ -22,6 +22,8 @@ public:
 // Operations
 	// The SDK's conversion to the event handle (operator void*) is left out until a rebuilt
 	// function needs it; tools/manifest.py cannot read its declaration.
+	typedef void* tHandle;
+	operator tHandle();
 	void Signal();
 	void Reset();
 
