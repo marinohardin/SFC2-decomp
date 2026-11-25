@@ -1,3 +1,5 @@
+#include "unsorted/fn_00571a58_owner.h"
+
 struct tS {
 	char a;
 	char b;
@@ -23,6 +25,7 @@ public:
 	int f30;
 	int f34;
 	void fn_00520ecf(int a, int b, tS c, int d);
+	void fn_00520f16(char v);
 };
 
 // FUNCTION: STARFLEETOP 0x00520ecf
@@ -42,4 +45,10 @@ void tX::fn_00520ecf(int a, int b, tS c, int d)
 	f34 = 0;
 	f1c = 0;
 	f20 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00520f16
+void tX::fn_00520f16(char v)
+{
+	((fn_00571a58_owner*)&f28)->fn_00571a69((int)&v);
 }

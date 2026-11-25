@@ -8314,7 +8314,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520e5d	function	fn_00520e5d		?fn_00520e5d@tAIUnitDataList@@QAEDXZ	claim		none
 0x00520e90	function	fn_00520e90	tAIUnitData				vtable
 0x00520ecf	function	fn_00520ecf		?fn_00520ecf@tX@@QAEXHHUtS@@H@Z	claim		none
-0x00520f16	function	fn_00520f16					none
+0x00520f16	function	fn_00520f16		?fn_00520f16@tX@@QAEXD@Z	claim		none
 0x00520f26	function	tAIDesignateTargetsCalc::tAIDesignateTargetsCalc	tAIDesignateTargetsCalc				rtti
 0x00520fb1	function	tAIDesignateTargetsCalc::scalar_deleting_destructor	tAIDesignateTargetsCalc				rtti
 0x00520fcd	function	fn_00520fcd					none
