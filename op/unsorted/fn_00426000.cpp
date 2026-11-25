@@ -83,7 +83,7 @@ class fn_00426141_Cell
 {
 public:
 	float m00[9];
-	void fn_0042642c(const fn_00426141_Cell& other);
+	fn_00426141_Cell& fn_0042642c(const fn_00426141_Cell& other);
 };
 
 // HYPOTHESIS: three floats set together.
@@ -241,4 +241,19 @@ fn_00426141_Cell* fn_00426141_Class::fn_0042636b(fn_00426141_Cell* out, int i, i
 	c.m00[7] = g;
 	out->fn_0042642c(c);
 	return out;
+}
+
+// FUNCTION: STARFLEETOP 0x0042642c
+fn_00426141_Cell& fn_00426141_Cell::fn_0042642c(const fn_00426141_Cell& other)
+{
+	m00[0] = other.m00[0];
+	m00[1] = other.m00[1];
+	m00[2] = other.m00[2];
+	m00[3] = other.m00[3];
+	m00[4] = other.m00[4];
+	m00[5] = other.m00[5];
+	m00[6] = other.m00[6];
+	m00[7] = other.m00[7];
+	m00[8] = other.m00[8];
+	return *this;
 }
