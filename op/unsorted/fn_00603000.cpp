@@ -115,6 +115,7 @@ class fn_00603351_vector
 public:
 	void fn_00603dee( void** it );
 	void fn_00603e35();
+	void** fn_00603ebe( void** dest, void** src );
 
 	int32u	field_00;
 	void**	field_04;
@@ -434,11 +435,27 @@ void fn_00603e24_object::fn_00603e24( int arg )
 	fn_00603ef0( field_08, 1, arg );
 }
 
-// HYPOTHESIS: the callee takes the two members; its class is not known.
-void __stdcall fn_00603ebe( void** begin, void** end );
-
 // FUNCTION: STARFLEETOP 0x00603e35
 void fn_00603351_vector::fn_00603e35()
 {
 	fn_00603ebe( field_04, field_08 );
+}
+
+// HYPOTHESIS: moves the tail [src, end) down to dest and shrinks the end; returns dest.
+// FUNCTION: STARFLEETOP 0x00603ebe
+void** fn_00603351_vector::fn_00603ebe( void** dest, void** src )
+{
+	void** last = field_08;
+	void** out = dest;
+	void** it = src;
+	for ( ; it != last; ++it )
+	{
+		*out = *it;
+		++out;
+	}
+	void** oldEnd = field_08;
+	field_08 = out;
+	void** volatile keep = oldEnd; // MATCH-ONLY: original stores the old end into its argument slot
+	src = keep;
+	return dest;
 }

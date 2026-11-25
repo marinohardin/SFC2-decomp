@@ -15390,7 +15390,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603e24	function	fn_00603e24		?fn_00603e24@fn_00603e24_object@@QAEXH@Z	claim		none
 0x00603e35	function	fn_00603e35		?fn_00603e35@fn_00603351_vector@@QAEXXZ	claim		none
 0x00603e41	function	fn_00603e41					none
-0x00603ebe	function	fn_00603ebe		?fn_00603ebe@@YGXPAPAX0@Z	add		none
+0x00603ebe	function	fn_00603ebe		?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z	claim		none
 0x00603ef0	function	fn_00603ef0		?fn_00603ef0@@YGXPAVfn_00603ef0_target@@HH@Z	add		none
 0x006041a1	function	fn_006041a1					none
 0x006041d0	function	fn_006041d0					none
