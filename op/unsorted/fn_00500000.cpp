@@ -114,6 +114,6 @@ extern long g_007aa8d0;
 tFx_Photon::tFx_Photon()
 {
 	m0e = 1;
-	m10 = g_007aa8d0;
 	m3c = 1;
+	m10 = g_007aa8d0;
 }
