@@ -1,3 +1,6 @@
+#include <string>
+#include "unsorted/tMedalsPanelCreator.h"
+
 extern "C" int atexit( void ( *func )( void ) );
 
 void fn_004bd431();
@@ -21,4 +24,12 @@ void fn_0060114d()
 void fn_00601159()
 {
 	atexit( fn_004bd431 );
+}
+
+// HYPOTHESIS: the original passes a temporary std::string to the base constructor; blocked on tMetaClientCreator.h (HEADER REQUEST).
+// FUNCTION: STARFLEETOP 0x00601165
+tMedalsPanelCreator::tMedalsPanelCreator()
+{
+	// HYPOTHESIS: the original builds this temporary and hands it to the base constructor.
+	std::string name( "" );
 }

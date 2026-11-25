@@ -15306,7 +15306,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00601141	function	fn_00601141		?fn_00601141@@YAXXZ	claim		none
 0x0060114d	function	fn_0060114d		?fn_0060114d@@YAXXZ	claim		none
 0x00601159	function	fn_00601159		?fn_00601159@@YAXXZ	claim		none
-0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	callers		rtti
+0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	claim		rtti
 0x006011d2	function	tMedalsPanelCreator::scalar_deleting_destructor	tMedalsPanelCreator				rtti
 0x006011ee	function	tMedalsPanelCreator::~tMedalsPanelCreator	tMedalsPanelCreator	??1tMedalsPanelCreator@@UAE@XZ	callers		rtti
 0x006011f9	function	fn_006011f9	tMedalsPanelCreator				vtable
