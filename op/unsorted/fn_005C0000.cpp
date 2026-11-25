@@ -20,3 +20,14 @@ std::string fn_005c0725(std::string text, char c)
 	stream << text << c << text;
 	return stream.str();
 }
+
+// HYPOTHESIS: same family as fn_005c057f; the original also builds tIdiom temporaries and calls
+// tLogMessage and tHexPoint members, left out because tIdiom and tLogMessage have no header yet.
+// FUNCTION: STARFLEETOP 0x005c087e
+std::string fn_005c087e(std::string text, char c)
+{
+	std::stringstream stream;
+	stream << text << c;
+	stream << text << c << text;
+	return stream.str();
+}
