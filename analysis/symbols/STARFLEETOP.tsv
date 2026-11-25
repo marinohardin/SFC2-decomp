@@ -17812,7 +17812,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d030	function	tFile::gSetFileCallback	tFile				sdk
 0x0067d040	function	fn_0067d040	tObjBase				vtable
 0x0067d160	function	fn_0067d160	tObjBase				vtable
-0x0067d1c0	function	fn_0067d1c0	tObjBase				vtable
+0x0067d1c0	function	fn_0067d1c0	tObjBase	?fn_0067d1c0@tVisGroup@@QAE_NPAH@Z	add		vtable
 0x0067d2d0	function	fn_0067d2d0		?fn_0067d2d0@tVisObject@@QAE_NPAV1@@Z	callers		none
 0x0067d310	function	fn_0067d310					none
 0x0067d350	function	fn_0067d350	tObjBase				vtable
@@ -17836,7 +17836,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dca0	thunk	fn_0067dca0	tSeqScene				vtable
 0x0067dcb0	function	fn_0067dcb0	tSeqScene	?vfunction43@tSeqScene@@UAEXXZ	claim		vtable
 0x0067dcf0	function	fn_0067dcf0	tVisGroup				vtable
-0x0067dd00	function	fn_0067dd00	tVisGroup				vtable
+0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAH@Z	claim		vtable
 0x0067dd40	function	fn_0067dd40	tSeqScene				vtable
 0x0067dd90	function	fn_0067dd90					none
 0x0067dda0	function	fn_0067dda0					none
