@@ -16,12 +16,19 @@ tFx_PPDPulse* fn_00503dac()
 }
 
 // HYPOTHESIS: tProbeCell (vftable 0x007aaa54) has no header yet; base tFxCell_Base is not declared.
-class tProbeCell
+// HYPOTHESIS: the original base class sets the byte at +4 before the derived vtable store.
+class tFxCell_Base
+{
+public:
+	tFxCell_Base() { m04 = 1; }
+	char m04;
+};
+
+class tProbeCell : public tFxCell_Base
 {
 public:
 	tProbeCell(const float* a, const float* b);
 	virtual ~tProbeCell();
-	char m04;
 	float m08;
 	float m0c;
 	float m10;
@@ -44,7 +51,6 @@ float fn_004baeb1(float x);
 // FUNCTION: STARFLEETOP 0x00503e41
 tProbeCell::tProbeCell(const float* a, const float* b)
 {
-	m04 = 1;
 	m08 = 0;
 	m08 = g_0092f61c;
 	m1c = 0.5f;
