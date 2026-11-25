@@ -31,5 +31,5 @@ void fn_00601159()
 tMedalsPanelCreator::tMedalsPanelCreator()
 {
 	// HYPOTHESIS: the original builds this temporary and hands it to the base constructor.
-	std::string name( "" );
+	std::string name( "MedalsPanel" );
 }
