@@ -16819,7 +16819,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		mangled
 0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?vfunction13@tSoundChannelFormat@@UAEJXZ	claim		mangled
 0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	mangled		mangled
+0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	claim		mangled
 0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x006465d0	function	tSoundChannelFormat::mAreWeStatic	tSoundChannelFormat	?mAreWeStatic@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x006465e0	function	tSoundChannelFormat::mAreWeFixedFrequency	tSoundChannelFormat	?mAreWeFixedFrequency@tSoundChannelFormat@@UAEEXZ	mangled		mangled

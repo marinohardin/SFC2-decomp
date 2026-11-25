@@ -56,6 +56,8 @@ long tSoundChannelFormat::vfunction12() { return ((fBitsPerSample + 7) >> 3) * f
 long tSoundChannelFormat::vfunction13() { return vfunction12() * fSamplesPerSec; }
 // FUNCTION: STARFLEETOP 0x006465a0
 unsigned char tSoundChannelFormat::mAreWeLooping() { unsigned char looping = (fSoundType & 4) > 0; return looping; }
+// FUNCTION: STARFLEETOP 0x006465b0
+unsigned char tSoundChannelFormat::mAreWeStreaming() { unsigned char streaming = (fSoundType & 2) > 0; return streaming; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
