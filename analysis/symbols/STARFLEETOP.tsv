@@ -13082,7 +13082,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c136c	function	fn_005c136c					none
 0x005c13a2	function	fn_005c13a2		?fn_005c13a2@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAccepted@@@Z	claim		none
 0x005c13e8	function	fn_005c13e8		?fn_005c13e8@tMapRelayS@@QAEXPAPAVtMemberCallback_tCharacterLoggedOn@@@Z	claim		none
-0x005c142b	function	fn_005c142b					none
+0x005c142b	function	fn_005c142b		?fn_005c142b@tMapRelayS@@QAEXPAPAVtMemberCallback_tTurnBreak@@@Z	claim		none
 0x005c1472	function	fn_005c1472					none
 0x005c14b5	function	fn_005c14b5					none
 0x005c14f8	function	fn_005c14f8					none
