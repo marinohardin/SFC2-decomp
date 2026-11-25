@@ -78,3 +78,4 @@ void __fastcall fn_005227c1(char* self)
 		}
 	}
 }
+
