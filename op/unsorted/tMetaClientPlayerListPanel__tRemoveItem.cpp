@@ -1,6 +1,21 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp
-// Functions: 0x00603b91 to 0x0060430d, 19 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: the original is tMetaClientPlayerListPanel::tRemoveItem; the outer class is declared
+// only in another unit and has no header yet, so the item class stands alone here. Only what this
+// destructor touches is declared: a cleanup member at 0x0060432e and a tOptex at +0x4.
+class tRemoveItem
+{
+public:
+	~tRemoveItem();
+	void fn_0060432e();
+
+protected:
+	int32u	field_00;
+	tOptex	field_04;
+};
+
+// FUNCTION: STARFLEETOP 0x006041a1
+tRemoveItem::~tRemoveItem()
+{
+	fn_0060432e();
+}
