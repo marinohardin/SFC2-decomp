@@ -310,3 +310,16 @@ int* fn_004232aa_List::fn_00423402()
 {
     return fHead;
 }
+
+// HYPOTHESIS: the first dword is a state, the dword at +0x18 an entity ID; when the state is 1 the
+// entity found by that ID is called through its slot 4. The node arrives in ecx.
+// FUNCTION: STARFLEETOP 0x00423405
+void fn_004232aa_List::fn_00423405(int* node)
+{
+    if (*node == 1) {
+        tEntity* entity = gEntityMgr_008e1060.mFindID(node[6]);
+        if (entity != 0) {
+            entity->vfunction5();
+        }
+    }
+}
