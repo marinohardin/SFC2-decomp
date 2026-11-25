@@ -41,7 +41,7 @@ import time
 # Replace this script's own directory with the repository root: as harness/ on sys.path, this
 # file would shadow the stdlib queue module.
 sys.path[0] = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-from harness.lib import clean, coff, funcs, matched, nearmiss, paths, workqueue  # noqa: E402
+from harness.lib import clean, coff, funcs, matched, nearmiss, pairs, paths, source, workqueue  # noqa: E402
 
 
 def _last_commit_with(ref, rel):
@@ -59,6 +59,54 @@ def _last_commit_with(ref, rel):
         return None
     parent = git('rev-parse', '--verify', '--quiet', f'{sha}^')
     return parent.stdout.strip() if parent.returncode == 0 else None
+
+
+def pair_resolver():
+    """A `pairs.Resolver` over the functions and the symbol table, or None when HARNESS_PAIRS=0 or
+    an input is missing (the loop then runs as it did, one address per session)."""
+    if os.environ.get('HARNESS_PAIRS') == '0':
+        return None
+    from harness.lib import symtab
+    try:
+        index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
+        claims, table = symtab.load_claims(), symtab.load_table()
+    except (OSError, symtab.TableError) as e:
+        print(f'WARN  deleting destructors are not paired: {e}', file=sys.stderr)
+        return None
+    symbols = {}
+    for fn in index.functions:
+        got = symtab.lookup(fn.address, index, claims, table)
+        if got:
+            symbols[fn.address] = got[0]
+    image = []
+
+    def read(address, size):
+        """The original's bytes, read from the install only when a deleting destructor's call
+        has to be looked at; None when they cannot be read (the class symbols then decide)."""
+        try:
+            if not image:
+                image.append(coff.PeImage(open(paths.EXE, 'rb').read()))
+            return image[0].read(address, size)
+        except (OSError, coff.CoffError):
+            return None
+    return pairs.Resolver(index, symbols, read)
+
+
+def pair_states(entry, ms):
+    """For the pair of a queue entry: ({partner address: 'exact' | 'claimed' | 'open'},
+    {partner address: name})."""
+    exact = {k for k, v in ms['functions'].items() if v.get('exact')}
+    claimed = source.scan_annotations(paths.SRC_ROOT, source.load_units()['module'])
+    index = funcs.FunctionIndex(paths.FUNCTIONS_CSV)
+    states, names = {}, {}
+    for a in entry['pair']['partners']:
+        n = int(a, 16)
+        states[a] = ('exact' if matched.key(n) in exact else
+                     'claimed' if any(x.kind == 'FUNCTION' for x in claimed.get(n, [])) else
+                     'open')
+        fn = index.by_address.get(n)
+        names[a] = fn.name if fn else ''
+    return states, names
 
 
 def seed_lists(ref):
@@ -169,25 +217,49 @@ def main(argv):
         # The near-miss labels route a reference-only function (workqueue.route); off with
         # HARNESS_NEARMISS=0.
         labels = nearmiss.load_labels() if nearmiss.enabled() else None
-        ended = []
-        e = workqueue.next_entry(q, attempts, difficult, tiers,
-                                 lambda a: workqueue.acquire(paths.CLAIMS, a, owner, pid),
-                                 revisit, take_revisit, labels, ended)
+        ended, parked = [], []
+        ms = matched.load(paths.MATCHED_SET)
+        resolver = pair_resolver()
+        cache = {}
+
+        def pair_of(a):
+            if a not in cache:
+                cache[a] = resolver.pair_of(int(a, 16))
+            return cache[a]
+
+        def grant(a):
+            group = pair_of(a) if resolver else None
+            partners = [f'0x{p:08x}' for p in group.partners] if hasattr(
+                group, 'partners') else []
+            return workqueue.acquire_group(paths.CLAIMS, a, partners, owner, pid)
+        exact = {f'0x{int(k, 16):08x}' for k, v in ms['functions'].items() if v.get('exact')}
+        e = workqueue.next_entry(q, attempts, difficult, tiers, grant, revisit, take_revisit,
+                                 labels, ended, pair_of if resolver else None, exact, parked)
+        for entry, reason in parked:
+            if workqueue.park(paths, entry, reason):
+                print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
+                      f'{paths.LANE}): a deleting destructor with no identifiable real '
+                      f'destructor ({reason})', file=sys.stderr)
         for entry, p, rows in ended:
             workqueue.end_reference_only(paths, entry, p, rows)
             print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
                   f'{paths.LANE}): a reference-only near miss gets no Fable try', file=sys.stderr)
         if e:
+            if e.get('pair'):
+                e['pair']['states'], e['pair']['names'] = pair_states(e, ms)
             print(json.dumps(e))
         return 0
     if cmd == 'release':
-        workqueue.release(paths.CLAIMS, args[0], owner)
+        workqueue.release_group(paths.CLAIMS, args[0], owner)
         return 0
     if cmd == 'record':
         row = json.loads(args[0])
         size = next((e['size'] for e in q if e['address'] == row['address']), None)
         entry = {'address': row['address'], 'name': row.get('name', ''), 'size': size}
         where = workqueue.record(paths, entry, row, tiers, take_revisit)
+        if row.get('partners'):
+            workqueue.settle_partners(paths, entry, where, row, row['partners'], tiers,
+                                      take_revisit)
         if where in ('difficult', 'revisit'):
             print(f'INFO  {row["address"]} listed in {where}_functions.tsv (lane {paths.LANE})')
         elif where == 'cleared':

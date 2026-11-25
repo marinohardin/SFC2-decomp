@@ -10,7 +10,7 @@ import sys
 
 # The repository root, not harness/: harness/queue.py would shadow the stdlib queue module.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from harness.lib import paths, stophook, wholetree  # noqa: E402
+from harness.lib import loopio, paths, stophook, wholetree  # noqa: E402
 
 
 def main():
@@ -25,8 +25,11 @@ def main():
             claim = json.load(f)
     except (OSError, ValueError):
         return 0  # no claim: nothing to judge (the loop treats this as a failed attempt)
-    p = subprocess.run([os.path.join(paths.HARNESS, 'build-and-verify.sh'), claim['address'],
-                        '--json'], capture_output=True, text=True)
+    # The claimed function, and the partners of its pair that the source claims (a deleting
+    # destructor and its real destructor are one piece of work, harness/lib/pairs.py).
+    ids = loopio.verify_ids(claim)
+    p = subprocess.run([os.path.join(paths.HARNESS, 'build-and-verify.sh'), *ids, '--json'],
+                       capture_output=True, text=True)
     try:
         verify = json.loads(p.stdout)
     except ValueError:

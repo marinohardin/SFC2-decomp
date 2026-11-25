@@ -14,7 +14,26 @@ def standins(verify, address):
     return [b for b in (verify or {}).get('standins') or [] if b.get('function') == address]
 
 
+def partner_note(claim, verify):
+    """One line per pair partner the verify result scored (harness/lib/pairs.py): the session
+    is judged on the claimed function, and the partners' results are reported beside it."""
+    out = []
+    for a in claim.get('partners') or []:
+        r = next((x for x in (verify or {}).get('results', []) if x.get('address') == a), None)
+        if r is not None:
+            shown = 'exact' if r.get('exact') else '%.2f%%' % r.get('score', 0.0)
+            out.append(f'partner {a}: {shown}')
+    return out
+
+
 def decide(claim, verify, blocks):
+    """The decision of `_decide` with the pair partners' results added to the message."""
+    allow, message = _decide(claim, verify, blocks)
+    notes = partner_note(claim, verify)
+    return allow, message + ('\n' + '\n'.join(notes) if notes else '')
+
+
+def _decide(claim, verify, blocks):
     """claim: {'address', 'baseline_score', 'baseline_exact', 'max_blocks'};
     verify: build-and-verify.sh --json output (dict), or None if it could not run;
     blocks: refusals so far. Returns (allow, message)."""
@@ -30,7 +49,8 @@ def decide(claim, verify, blocks):
         return False, 'A previously matched function regressed. Undo that first.\n' + lines
     if res is None or verify.get('exit') != 0:
         return False, 'The claimed function was not built and scored.\n' + lines
-    mine = standins(verify, claim['address'])
+    mine = [b for a in [claim['address']] + list(claim.get('partners') or [])
+            for b in standins(verify, a)]
     if mine:
         return False, ('The function calls a claimed function through a stand-in: a declaration '
                        'that compiles to another symbol than the claim. Declare each callee as '

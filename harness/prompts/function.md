@@ -11,7 +11,7 @@ attempt {{ATTEMPT}} on this function ({{MODEL}}). {{ROLE}}
 - Size: {{SIZE}} bytes
 - Original source file, if known: {{TRANSLATION_UNIT}}
 - Score when this session started: {{BASELINE}}%
-
+{{PAIR}}
 ## What to do
 
 1. Find or create the translation unit for it under `{{SRC_ROOT}}/` (see
@@ -43,6 +43,32 @@ attempt {{ATTEMPT}} on this function ({{MODEL}}). {{ROLE}}
    branches came out swapped -> wrote the if and else the other way round (for {{ADDRESS}})`.
    The harness collects these lines.
 
+## Deleting destructors
+
+A scalar or vector deleting destructor (mangled `??_G` or `??_E`, about 30 bytes: call the
+class's destructor, test the flag, call `operator delete`) is never written by hand. The
+compiler generates it from the class's real destructor. In this code base it is claimed by
+stacking its annotation on the real destructor's out-of-class definition, with the real
+destructor's own annotation below it, like `tThreadEvent` (`Common/Thread/ThreadEvent.cpp`)
+and `tWinTimer` (`Common/Timer/WinTimer.cpp`):
+
+    // FUNCTION: STARFLEETOP 0x0070e4e0
+    // FUNCTION: STARFLEETOP 0x0070e500
+    tThreadEvent::~tThreadEvent()
+    {
+        ...the real destructor's body...
+    }
+
+So the work is the real destructor: write it from the original, with an honest body (a claim
+never sits on an empty body or a placeholder), and the compiler emits the deleting destructor
+from it. Do not write a `scalar_deleting_destructor` member, a body that calls `delete this`,
+or any body for the deleting destructor itself; an older file that still has such a member form
+is rewritten to the stacked form when the pair is done. A destructor written inline in the class
+gets an out-of-class definition for this (in the unit, or `inline` after the class in its
+header). If the pair above says a partner is already exact, keep its annotation and keep the
+pair compiling. If the compiler does not emit the deleting destructor from your definition, say
+so in your HANDOFF; do not fake it.
+
 The context pack after the rules (Ghidra's pseudo-C, the callees, the class declarations and an
 exact function nearby) and any notes from earlier attempts were gathered for you; start from
 them rather than searching for the same things again.
@@ -62,5 +88,6 @@ them rather than searching for the same things again.
   analysis exports, matched set, queue and settings are off limits; attempts to change them are
   refused and end nothing but your progress.
 - Do not run git commands that change anything; the loop commits a success for you.
-- Keep other annotated functions in the same file as they are. Lowering any recorded score is a
+- Keep other annotated functions in the same file as they are (the addresses of your pair, if
+  you were given one, are yours to claim). Lowering any recorded score is a
   regression and fails the build.
