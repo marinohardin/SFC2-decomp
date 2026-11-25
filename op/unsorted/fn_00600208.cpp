@@ -10,7 +10,7 @@ namespace std
 	{
 	public:
 		// MATCH-ONLY: the original inlined the const char* constructor into the initializer.
-		basic_string(const char* s)
+		__forceinline basic_string(const char* s)
 		{
 			char allocator;
 			m_al = allocator; // HYPOTHESIS: uninitialised allocator byte
@@ -18,7 +18,9 @@ namespace std
 			assign(s, strlen(s));
 		}
 		basic_string& assign(const char* s, unsigned int n);
+	private:
 		void _Tidy(bool built);
+	public:
 		char m_al;
 		char* _Ptr;
 		unsigned int m_len;
