@@ -199,3 +199,45 @@ void fn_00425480()
 {
 	atexit(fn_0042548c);
 }
+
+// HYPOTHESIS: a singly linked list of nodes (id +0, next +4, two words at +8 and +0xc); this
+// removes the node with the given id unless it is unchanged and no force was asked for.
+struct fn_004254a7_list
+{
+	struct node
+	{
+		int mID;
+		node* mNext;
+		int mValue;
+		int mStamp;
+	};
+	void fn_004254a7(int id, int value, char force);
+
+	node* fHead;
+};
+
+extern int g_00c7c140;
+
+// FUNCTION: STARFLEETOP 0x004254a7
+void fn_004254a7_list::fn_004254a7(int id, int value, char force)
+{
+	node* p = fHead;
+	node* prev = 0;
+	for (;;) {
+		if (p == 0)
+			return;
+		if (p->mID == id)
+			break;
+		node* next = p->mNext;
+		prev = p;
+		p = next;
+	}
+	if (force == 0 && value != 2 && p->mStamp == g_00c7c140 && p->mValue == value)
+		return;
+	if (prev != 0)
+		prev->mNext = p->mNext;
+	else
+		fHead = p->mNext;
+	p->mNext = 0;
+	operator delete(p);
+}
