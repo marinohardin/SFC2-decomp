@@ -15380,7 +15380,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006037fc	function	fn_006037fc		?fn_006037fc@fn_006032e7_object@@QAEHPAH@Z	claim		none
 0x00603873	function	fn_00603873		?fn_00603873@fn_006032e7_object@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z	claim		none
 0x00603978	function	fn_00603978		?fn_00603978@fn_006032e7_object@@QAEXPAX@Z	claim		none
-0x00603a08	function	fn_00603a08					none
+0x00603a08	function	fn_00603a08		?fn_00603a08@fn_006032e7_object@@QAEXHH@Z	claim		none
 0x00603a5f	function	tMetaClientPlayerListPanel::tAddItem::~tAddItem	tMetaClientPlayerListPanel::tAddItem				rtti
 0x00603b91	function	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	tMetaClientPlayerListPanel::tRemoveItem				rtti
 0x00603c9a	function	fn_00603c9a					none

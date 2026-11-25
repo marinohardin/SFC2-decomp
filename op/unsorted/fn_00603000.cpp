@@ -63,7 +63,7 @@ public:
 	virtual void fn_slot54( const tString& name, int a, int b, int index );
 	virtual void fn_slot55( int index );
 	virtual tString* fn_slot56( int index );
-	virtual void fn_slot57();
+	virtual void fn_slot57( int index, int value );
 	virtual void fn_slot58();
 	virtual void* fn_item( int index );
 };
@@ -332,5 +332,14 @@ void fn_006032e7_object::fn_00603978( void* record )
 			}
 		}
 	}
+	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x00603a08
+void fn_006032e7_object::fn_00603a08( int index, int value )
+{
+	tOptex::tGuard guard( &field_b8 );
+	if ( field_13c )
+		field_13c->fn_slot57( index, value );
 	guard.Leave();
 }
