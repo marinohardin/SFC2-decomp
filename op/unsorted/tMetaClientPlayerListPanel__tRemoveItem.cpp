@@ -53,9 +53,10 @@ tRemoveItem_00604390::~tRemoveItem_00604390()
 
 // HYPOTHESIS: the SDK's tAccessPointer, whose destructor releases the lock through Done
 // (0x005f4352) and then destroys the tOptex it holds first.
-class tAccessPointer_0060422e : public tOptex
+class tAccessPointer_0060422e
 {
 public:
+	tOptex	field_00;
 	~tAccessPointer_0060422e();
 	void Done();
 };
