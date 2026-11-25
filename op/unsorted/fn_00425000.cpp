@@ -487,3 +487,18 @@ void fn_004255b5_class::fn_00425928(tPoint3 aPoint, float aRadius, tEntity* pEnt
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004259bd
+void fn_004255b5_class::fn_004259bd(float x, float y, unsigned int* col, unsigned int* row)
+{
+	// HYPOTHESIS: +0xc holds the cell offset; adding the magic constant leaves the rounded value in the low word.
+	x = x * 0.01f + 12582912.0f;
+	y = y * 0.01f;
+	*col = *(short*)&x + *(int*)((char*)this + 0xc);
+	y += 12582912.0f;
+	*row = *(short*)&y + *(int*)((char*)this + 0xc);
+	if (*col >= 0x100)
+		*col = 0xff;
+	if (*row >= 0x100)
+		*row = 0xff;
+}
