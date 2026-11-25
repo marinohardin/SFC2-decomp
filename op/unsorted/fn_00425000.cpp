@@ -335,7 +335,10 @@ struct fn_00412f08_point
 
 
 extern void fn_00425f71(unsigned int* first, unsigned int* last, int v);
-extern void fn_00425f08(fn_004255b5_vector* v, unsigned int* first, unsigned int* last);
+extern unsigned int* fn_00425f08(fn_004255b5_vector* v, unsigned int* first, unsigned int* last);
+// HYPOTHESIS: std::unique over the unsigned ints of the vector; 0x005bbd03 is the helper that
+// takes the count of the kept elements and the address of a null pointer.
+extern void fn_005bbd03(int n, unsigned int** p);
 
 // HYPOTHESIS: the static at 0x008f5184 is built by 0x0040ce21 from a string; its class is unknown.
 struct fn_0040ce21_object
@@ -585,4 +588,47 @@ fn_0042556b_table g_fn_0042556b_table;
 fn_0042556b_table::~fn_0042556b_table() throw()
 {
 	operator delete(fElements);
+}
+
+// MATCH-ONLY: the search for the first adjacent equal pair, written as the library's helper.
+inline unsigned int* fn_00425f08_adjacent_find(unsigned int* first, unsigned int* last)
+{
+	if (first == last)
+		return last;
+	unsigned int* next = first;
+	while (++next != last) {
+		if (*first == *next)
+			return first;
+		first = next;
+	}
+	return last;
+}
+
+// FUNCTION: STARFLEETOP 0x00425f08
+unsigned int* fn_00425f08(fn_004255b5_vector* v, unsigned int* first, unsigned int* last)
+{
+	unsigned int* a = first;
+	if (first != last) {
+		unsigned int* next = a;
+		while (++next != last) {
+			if (*a == *next)
+				goto found;
+			a = next;
+		}
+	}
+	a = last;
+found:
+	if (a != last) {
+		unsigned int* b = a + 1;
+		unsigned int* out = b;
+		for (; b != last; b++) {
+			if (*a != *b) {
+				*out = *b;
+				a = out++;
+			}
+		}
+		unsigned int* p = 0;
+		fn_005bbd03(out - first, &p);
+	}
+	return v->fFirst;
 }
