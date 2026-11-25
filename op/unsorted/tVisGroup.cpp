@@ -8,6 +8,11 @@ tVisGroup::tVisGroup()
 	field_40 |= 8;
 }
 
+// FUNCTION: STARFLEETOP 0x0067dc30
+tVisGroup::~tVisGroup()
+{
+}
+
 // FUNCTION: STARFLEETOP 0x0067dd00
 bool tVisGroup::vfunction31( int *event )
 {
