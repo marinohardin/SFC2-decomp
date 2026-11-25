@@ -40,3 +40,29 @@ void fn_00521db5_owner::fn_00521db5(int param_1, int param_2)
 	fn_00488e97(field_4, field_8);
 	fn_00521e22(field_4,param_1, param_2);
 }
+
+struct fn_00521dd9_owner {
+	void fn_00521dd9();
+	void fn_005220d5(int* a, int* b);
+	int field_0;
+	int* field_4;
+	int field_8;
+};
+
+void __cdecl operator delete(void*);
+
+// FUNCTION: STARFLEETOP 0x00521dd9
+void fn_00521dd9_owner::fn_00521dd9()
+{
+	fn_00521dd9_owner* local = this;
+	int* head = field_4;
+	int* node = (int*)*head;
+	while (node != head) {
+		int* next = (int*)*node;
+		fn_005220d5((int*)&local, node);
+		node = next;
+	}
+	operator delete(field_4);
+	field_4 = 0;
+	field_8 = 0;
+}
