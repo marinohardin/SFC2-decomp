@@ -77,3 +77,10 @@ iTruth tSoundChannel::mAreWeStreaming()
     unsigned char streaming = (mGetSoundType() & 2) > 0;
     return streaming;
 }
+
+// FUNCTION: STARFLEETOP 0x00646950
+iTruth tSoundChannel::mAreWe3D()
+{
+    unsigned char is3D = (mGetSoundType() & 8) > 0;
+    return is3D;
+}
