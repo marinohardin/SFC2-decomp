@@ -54,9 +54,11 @@ public:
 class tMemberCallback_tMoveAccepted;
 class tMemberCallback_tCharacterLoggedOn;
 class tMemberCallback_tTurnBreak;
+class tMemberCallback_tGetStartLocation;
 
 class tMapRelayS {
 public:
+	void fn_005c1472( tMemberCallback_tGetStartLocation** out );
 	void fn_005c13e8( tMemberCallback_tCharacterLoggedOn** out );
 	void fn_005c13a2( tMemberCallback_tMoveAccepted** out );
 	void fn_005c1298( tMemberCallback_tRequestMapData** out );
@@ -147,4 +149,19 @@ public:
 void tMapRelayS::fn_005c142b( tMemberCallback_tTurnBreak** out )
 {
 	*out = new tMemberCallback_tTurnBreak( this, m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005ac897 (the symbol table calls it
+// tMemberCallback<nAsyncMapProcedures::tGetStartLocation, nDataStore::tBuffer const*>); size
+// taken from its siblings. Real name and header unknown.
+class tMemberCallback_tGetStartLocation {
+public:
+	tMemberCallback_tGetStartLocation( void* a );
+	char pad00[0x48];
+};
+
+// FUNCTION: STARFLEETOP 0x005c1472
+void tMapRelayS::fn_005c1472( tMemberCallback_tGetStartLocation** out )
+{
+	*out = new tMemberCallback_tGetStartLocation( m_d4 );
 }
