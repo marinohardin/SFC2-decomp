@@ -172,3 +172,37 @@ void fn_00423232_List::fn_00423232(int* node)
         fn_004232ff(node);
     }
 }
+
+// HYPOTHESIS: a two-ended list (head at +0, tail at +4, links at +0x38/+0x3c); moves a node to the tail.
+struct fn_004232aa_List {
+    int* fHead;
+    int* fTail;
+    void fn_00423405(int* node);
+    void fn_004232aa(int* node);
+};
+
+// FUNCTION: STARFLEETOP 0x004232aa
+void fn_004232aa_List::fn_004232aa(int* node)
+{
+    int* prev = (int*)node[0xf];
+    int* next = (int*)node[0xe];
+    fn_00423405(node);
+    if (prev != 0) {
+        prev[0xe] = (int)next;
+    } else {
+        fHead = next;
+    }
+    if (next != 0) {
+        next[0xf] = (int)prev;
+    }
+    if (fTail != 0) {
+        fTail[0xf] = (int)node;
+        node[0xf] = 0;
+        node[0xe] = (int)fTail;
+        fTail = node;
+    } else {
+        fTail = node;
+        node[0xf] = 0;
+        fTail[0xe] = 0;
+    }
+}
