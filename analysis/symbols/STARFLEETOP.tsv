@@ -1216,7 +1216,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042516e	function	fn_0042516e					none
 0x004253c2	function	fn_004253c2		?fn_004253c2@fn_004253c2_iterator@@QAEXXZ	claim		none
 0x004253f4	function	fn_004253f4		?_Construct@std@@YAXPAVtString@@ABV2@@Z	claim		none
-0x00425463	function	fn_00425463					none
+0x00425463	function	fn_00425463		?fn_00425463@@YAXXZ	claim		none
 0x00425480	function	fn_00425480					none
 0x004254a7	function	fn_004254a7					none
 0x00425501	function	fn_00425501					none

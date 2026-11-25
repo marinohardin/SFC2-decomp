@@ -174,3 +174,19 @@ inline void _Construct(tString* _P, const tString& _V)
 
 // MATCH-ONLY: takes the address of _Construct so that the unit emits its out-of-line copy.
 void (*g_fn_004253f4_construct)(tString*, const tString&) = std::_Construct;
+
+// HYPOTHESIS: globals are a char and three longs/pointers; the char store reads an uninitialized local, as the original does.
+extern char g_008f5188;
+extern long g_008f518c;
+extern long g_008f5190;
+extern long g_008f5194;
+
+// FUNCTION: STARFLEETOP 0x00425463
+void fn_00425463()
+{
+	char c;
+	g_008f5188 = c;
+	g_008f518c = 0;
+	g_008f5190 = 0;
+	g_008f5194 = 0;
+}
