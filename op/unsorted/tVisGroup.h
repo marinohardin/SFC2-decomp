@@ -133,6 +133,7 @@ class tVisGroup : public tVisObject
 public:
 	tVisGroup();
 	virtual ~tVisGroup();
+	tVisGroup *scalar_deleting_destructor( unsigned char flags );	// 0x0067dba0
 	virtual void vfunction22();
 	virtual void vfunction23();
 	virtual void vfunction24();
