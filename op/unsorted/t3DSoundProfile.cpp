@@ -8,3 +8,6 @@ void t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation(float anAngle) { f3DS
 
 // FUNCTION: STARFLEETOP 0x006462e0
 float t3DSoundProfile::vfunction17() { return f3DSoundConeAngleForNoAttenuation; }
+
+// FUNCTION: STARFLEETOP 0x006462f0
+void t3DSoundProfile::mSet3DSoundConeAttenuationLevel(long aLevel) { f3DSoundConeAttenuationLevel = aLevel; }
