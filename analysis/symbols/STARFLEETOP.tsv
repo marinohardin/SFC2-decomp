@@ -1274,7 +1274,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426ecd	thunk	fn_00426ecd					none
 0x00426ed2	function	fn_00426ed2		?fn_00426ed2@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426ee2	function	fn_00426ee2		?fn_00426ee2@fn_00426e9b_Class@@QAEXXZ	claim		none
-0x00426ef0	function	fn_00426ef0					none
+0x00426ef0	function	fn_00426ef0		?fn_00426ef0@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426f1a	function	fn_00426f1a					none
 0x00427145	function	fn_00427145					none
 0x00427160	function	tMatchedMission::tMatchedMission	tMatchedMission				rtti

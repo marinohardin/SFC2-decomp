@@ -673,7 +673,7 @@ public:
 	int m00[20];
 	char m50;
 	char pad51[3];
-	int m54[20];
+	fn_00426988_Class* m54[20];
 };
 
 // FUNCTION: STARFLEETOP 0x00426e9b
@@ -709,4 +709,18 @@ void fn_00426e9b_Class::fn_00426ee2()
 {
 	fn_00426ef0();
 	m50 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00426ef0
+void fn_00426e9b_Class::fn_00426ef0()
+{
+	for (int i = 0; i < 20; i++)
+	{
+		fn_00426988_Class* p = m54[i];
+		if (p != 0)
+		{
+			delete p;
+			m54[i] = 0;
+		}
+	}
 }
