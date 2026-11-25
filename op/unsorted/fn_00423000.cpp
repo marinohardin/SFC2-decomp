@@ -182,6 +182,7 @@ struct fn_004232aa_List {
     void fn_00423405(int* node);
     void fn_004232aa(int* node);
     void fn_00423384();
+    int* fn_00423402();
 };
 
 // FUNCTION: STARFLEETOP 0x004232aa
@@ -301,4 +302,11 @@ void fn_004232aa_List::fn_00423384()
         }
         node = (int*)node[0xe];
     }
+}
+
+// HYPOTHESIS: returns the first member (the list head).
+// FUNCTION: STARFLEETOP 0x00423402
+int* fn_004232aa_List::fn_00423402()
+{
+    return fHead;
 }
