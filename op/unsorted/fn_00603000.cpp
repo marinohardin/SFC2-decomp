@@ -319,17 +319,18 @@ void fn_006032e7_object::fn_00603978( void* record )
 		unsigned int count = field_13c->fn_count();
 		if ( count > 0 )
 		{
-			do
+			while ( 1 )
 			{
 				if ( field_13c->fn_item( index ) == record )
-					goto found;
+				{
+					field_13c->fn_slot55( index );
+					break;
+				}
 				++index;
-			} while ( index < field_13c->fn_count() );
+				if ( index >= (unsigned int)field_13c->fn_count() )
+					break;
+			}
 		}
-		goto done;
-	found:
-		field_13c->fn_slot55( index );
 	}
-done:
 	guard.Leave();
 }
