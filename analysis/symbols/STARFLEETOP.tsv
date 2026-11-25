@@ -16809,7 +16809,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
 0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?vfunction22@tChannelAttributes@@UAEXN@Z	claim		mangled
 0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	claim		mangled
-0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mSet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEXM@Z	mangled		mangled
+0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?vfunction24@tChannelAttributes@@UAEXM@Z	claim		mangled
 0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	mangled		mangled
 0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?mSet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEXJ@Z	mangled		mangled
 0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	mangled		mangled
