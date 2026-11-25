@@ -1,6 +1,17 @@
 #include "Common/Thread/Optex.h"
 #include "Tiger/tstring.h"
 #include "unsorted/fn_0042a480_object.h"
+#include "unsorted/fn_005430ad_owner.h"
+#include "unsorted/fn_00571a58_owner.h"
+
+// HYPOTHESIS: the 0x1c-byte element the function appends to the wrapped vector; not recovered.
+class fn_00603c9a_entry
+{
+public:
+	fn_00603c9a_entry( int a, int b, int c );
+
+	int8u	field_00[0x1c];
+};
 
 // HYPOTHESIS: the list object at +0x13c; slot 44 returns its count, slot 59 the item at an index.
 class fn_006037fc_list
@@ -84,6 +95,7 @@ public:
 	void fn_00603873( const std::string& name, int a, int b );
 	void fn_00603575( int* record );
 	void fn_00603a08( int index, int value );
+	void fn_00603c9a( int a, int b, int c );
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
@@ -93,6 +105,8 @@ public:
 	int32u	field_150;
 	void**	field_154;
 	void**	field_158;
+	int8u	field_15c[0x178 - 0x15c];
+	fn_0042c709_wrapper	field_178;
 };
 
 // HYPOTHESIS: a vector of owned pointers (begin at +4, end at +8); the class is not recovered.
@@ -341,5 +355,18 @@ void fn_006032e7_object::fn_00603a08( int index, int value )
 	tOptex::tGuard guard( &field_b8 );
 	if ( field_13c )
 		field_13c->fn_slot57( index, value );
+	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x00603c9a
+void fn_006032e7_object::fn_00603c9a( int a, int b, int c )
+{
+	tOptex::tGuard guard( &field_b8 );
+	{
+		fn_0042c709_iptr lock = field_178.Lock();
+		fn_00603c9a_entry* entry = new fn_00603c9a_entry( a, b, c );
+		( (fn_00571a58_owner*)&*lock )->fn_00571a69( (int)&entry );
+		lock.Done();
+	}
 	guard.Leave();
 }

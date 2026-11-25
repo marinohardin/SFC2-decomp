@@ -15383,7 +15383,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603a08	function	fn_00603a08		?fn_00603a08@fn_006032e7_object@@QAEXHH@Z	claim		none
 0x00603a5f	function	tMetaClientPlayerListPanel::tAddItem::~tAddItem	tMetaClientPlayerListPanel::tAddItem				rtti
 0x00603b91	function	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	tMetaClientPlayerListPanel::tRemoveItem				rtti
-0x00603c9a	function	fn_00603c9a					none
+0x00603c9a	function	fn_00603c9a		?fn_00603c9a@fn_006032e7_object@@QAEXHHH@Z	claim		none
 0x00603d4a	function	fn_00603d4a					none
 0x00603d8f	function	fn_00603d8f					none
 0x00603dee	function	fn_00603dee					none
