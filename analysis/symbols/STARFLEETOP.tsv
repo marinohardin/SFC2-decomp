@@ -13107,7 +13107,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c19e7	function	tMapSettings::tMapSettings	tMapSettings				rtti
 0x005c1fc9	function	tMapSettings::scalar_deleting_destructor	tMapSettings				rtti
 0x005c1fe5	function	tMapSettings::~tMapSettings	tMapSettings				rtti
-0x005c2394	function	fn_005c2394					none
+0x005c2394	function	fn_005c2394		?FUN_005c2394@fn_005c427c_Owner@@QAEXXZ	claim		none
 0x005c23dc	function	fn_005c23dc					none
 0x005c427c	function	fn_005c427c		?FUN_005c427c@fn_005c427c_Owner@@QAEXXZ	claim		none
 0x005c4290	function	fn_005c4290		?FUN_005c4290@fn_005c4290_Holder@@QAEHXZ	claim		none
