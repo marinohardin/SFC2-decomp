@@ -16857,7 +16857,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646890	function	tSoundChannel::mGetSoundType	tSoundChannel	?mGetSoundType@tSoundChannel@@UAEJXZ	claim		mangled
 0x006468a0	function	tSoundChannel::mSetSoundType	tSoundChannel	?mSetSoundType@tSoundChannel@@UAEXJ@Z	claim		mangled
 0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	claim		mangled
-0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	mangled		mangled
+0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	claim		mangled
 0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	mangled		mangled
 0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEP6AXKE@ZXZ	mangled		mangled
 0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXP6AXKE@Z@Z	mangled		mangled

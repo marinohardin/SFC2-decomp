@@ -29,3 +29,9 @@ double tSoundChannel::mGetMillisecondsLeftToPlay()
 {
     return mGetTotalNumberOfSecondsLeftToPlay() * 1000.0;
 }
+
+// FUNCTION: STARFLEETOP 0x006468d0
+long tSoundChannel::mGetUserData()
+{
+    return field_0x8c;
+}

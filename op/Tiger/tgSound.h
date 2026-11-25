@@ -416,7 +416,7 @@ public:
     virtual void mSetSoundType(long type);
     virtual double mGetMillisecondsLeftToPlay();
     virtual void vfunction62(); virtual void vfunction63();
-    virtual void mGetUserData();
+    virtual long mGetUserData();
     virtual void mSetUserData(long userData);
     virtual void mGetFinishSoundCallback();
     virtual void mSetFinishSoundCallback(long callback);
