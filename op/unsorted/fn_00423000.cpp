@@ -130,3 +130,45 @@ void fn_00423165_List::fn_00423165(int* cur)
         fn_004232ff(node);
     }
 }
+
+// HYPOTHESIS: a list head at +0 with link at +0x38/+0x3c; the class is unknown.
+struct fn_00423232_List {
+    int* fHead;
+    void fn_004231e9(int* node, int* other);
+    void fn_004232aa(int* node);
+    void fn_004232ff(int* node);
+    void fn_00423232(int* node);
+};
+
+// FUNCTION: STARFLEETOP 0x00423232
+void fn_00423232_List::fn_00423232(int* node)
+{
+    int* last = 0;
+    int* cur = fHead;
+    if (cur != 0) {
+        do {
+            int* next;
+            if (*node == 0 && *(char*)(cur + 8) == 0) {
+                fn_004231e9(cur, node);
+                next = (int*)cur[0xe];
+                fn_004232aa(cur);
+            } else {
+                next = (int*)cur[0xe];
+                last = cur;
+            }
+            cur = next;
+        } while (cur != 0);
+    }
+    if (last != 0) {
+        last[0xe] = (int)node;
+        node[0xe] = 0;
+        node[0xf] = (int)last;
+    } else {
+        fHead = node;
+        node[0xe] = 0;
+        fHead[0xf] = 0;
+    }
+    if (*node == 1) {
+        fn_004232ff(node);
+    }
+}

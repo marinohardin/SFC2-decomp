@@ -1137,7 +1137,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00423142	function	fn_00423142		?fn_00423142@fn_00423142_List@@QAEXXZ	claim		none
 0x00423165	function	fn_00423165		?fn_00423165@fn_00423165_List@@QAEXPAH@Z	claim		none
 0x004231e9	function	fn_004231e9					none
-0x00423232	function	fn_00423232					none
+0x00423232	function	fn_00423232		?fn_00423232@fn_00423232_List@@QAEXPAH@Z	claim		none
 0x004232aa	function	fn_004232aa					none
 0x004232ff	function	fn_004232ff					none
 0x00423384	function	fn_00423384					none
