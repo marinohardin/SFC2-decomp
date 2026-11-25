@@ -1,4 +1,5 @@
 #include "Tiger/tstring.h"
+#include "Tiger/tgStrMgr.h"
 #include <vector>
 
 // HYPOTHESIS: the owner is unknown; a vector of strings sits at +0x48 and this clears it (erase over begin and end).
@@ -9,7 +10,12 @@ public:
 	std::vector<tString> fStrings;
 	void fn_00424d28();
 	void fn_00424d37(const tString& s);
+	tString* fn_00424d46(const char* s);
+	int fn_00424e2a(const tString& s);
 };
+
+// HYPOTHESIS: the global string manager at 0x008f5118.
+extern tStrMgrCore g_008f5118;
 
 // FUNCTION: STARFLEETOP 0x00424d28
 void fn_00424d28_class::fn_00424d28()
@@ -21,4 +27,29 @@ void fn_00424d28_class::fn_00424d28()
 void fn_00424d28_class::fn_00424d37(const tString& s)
 {
 	fStrings.push_back(s);
+}
+
+// FUNCTION: STARFLEETOP 0x00424d46
+tString* fn_00424d28_class::fn_00424d46(const char* s)
+{
+	tString str(g_008f5118.mGetRandStr(s));
+	int index = fn_00424e2a(str);
+	int slot = -1;
+	if (index != -1) {
+		int first = index;
+		long count = g_008f5118.mGetNumElements(s);
+		for (long i = 0; i < count; i++) {
+			if (index == -1)
+				break;
+			str = g_008f5118.mGetGrpStr(s, i);
+			index = fn_00424e2a(str);
+		}
+		if (index != -1)
+			slot = first;
+	}
+	if (slot == -1) {
+		slot = fStrings.size();
+		fStrings.push_back(str);
+	}
+	return &fStrings[slot];
 }
