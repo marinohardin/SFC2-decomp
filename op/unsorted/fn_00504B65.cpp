@@ -21,5 +21,6 @@ __declspec(noreturn) float fn_005050e2(float aValue);
 // FUNCTION: STARFLEETOP 0x00504bff
 void fn_00504bff()
 {
-	fn_005050e2(0.0f);
+	// MATCH-ONLY: the original call leaves no result to pop; call through a void-returning type.
+	((void (*)(float))fn_005050e2)(0.0f);
 }
