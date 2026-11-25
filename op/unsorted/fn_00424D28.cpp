@@ -54,16 +54,20 @@ tString* fn_00424d28_class::fn_00424d46(const char* s)
 	return &fStrings[slot];
 }
 
+// MATCH-ONLY: the original inlined a size helper that tests for an empty buffer.
+inline unsigned int fn_00424e2a_Size(const std::vector<tString>& v)
+{
+	if (v.begin() == 0)
+		return 0;
+	return v.end() - v.begin();
+}
+
 // FUNCTION: STARFLEETOP 0x00424e2a
 int fn_00424d28_class::fn_00424e2a(const tString& s)
 {
-	unsigned int i = 0;
-	int offset = 0;
-	while (fStrings.begin() != 0 && i < fStrings.size()) {
-		if (*(tString*)((char*)fStrings.begin() + offset) == s)
+	for (unsigned int i = 0; i < fn_00424e2a_Size(fStrings); i++) {
+		if (fStrings.begin()[i] == s)
 			return i;
-		i++;
-		offset += sizeof(tString);
 	}
 	return (unsigned int)-1;
 }
