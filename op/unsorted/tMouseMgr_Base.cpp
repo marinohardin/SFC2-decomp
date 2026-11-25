@@ -76,20 +76,20 @@ tMouseMgr_Ex::~tMouseMgr_Ex()
 // address; it is not an original class), so the scored range lines up with
 // the original body after the EH prolog. The original inlines
 // ~tMouseMgr_Base here; the stand-in calls it.
-class tLock_0040bdbb {
-public:
-    tLock_0040bdbb();
-    virtual ~tLock_0040bdbb();
-    unsigned char fReserved[28];
-    unsigned long fLock;
-};
+#include "Tiger/tatomic.h"
+
+
+
+
+
+
 
 class fn_0040bdbb : public tMouseMgr_Base {
 public:
     ~fn_0040bdbb();
     void fn_006a3350();
     unsigned char m_4[0x10]; // HYPOTHESIS: fields +4..+0x13, not touched here
-    tLock_0040bdbb m_lock;   // +0x14
+    tAtomicLock m_lock;   // +0x14
 };
 
 // FUNCTION: STARFLEETOP 0x0040bdb1
