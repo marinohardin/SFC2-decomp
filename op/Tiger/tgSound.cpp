@@ -7,7 +7,7 @@ extern tSay gSoundSay; static char gSoundFmtStr[32][256]; static long mNumberOfE
 // MATCH-ONLY: empty body; the compiler inlines the profile member's destructor (vtable reset)
 // FUNCTION: STARFLEETOP 0x00646550
 // FUNCTION: STARFLEETOP 0x006461f0
-tChannelAttributes::~tChannelAttributes() {}
+inline tChannelAttributes::~tChannelAttributes() {}
 // FUNCTION: STARFLEETOP 0x00646240
 void t3DSoundProfile::mSet3DSoundOrientation(tPoint3* aPoint) { f3DSoundOrientation.x = aPoint->x; f3DSoundOrientation.y = aPoint->y; f3DSoundOrientation.z = aPoint->z; }
 // FUNCTION: STARFLEETOP 0x006462c0
@@ -78,6 +78,9 @@ unsigned char tSoundChannelFormat::mAreWeFixedVolume() { unsigned char fixedVolu
 unsigned char tSoundChannelFormat::mAreWeAGlobalSound() { unsigned char globalSound = (fSoundType & 0x400) > 0; return globalSound; }
 // FUNCTION: STARFLEETOP 0x00646650
 unsigned char tSoundChannelFormat::mDoWeRetainSelections() { unsigned char retain = (fSoundType & 0x800) > 0; return retain; }
+// FUNCTION: STARFLEETOP 0x00646b70
+// FUNCTION: STARFLEETOP 0x00646660
+tSoundChannel::~tSoundChannel() { mSetUpdateMode((eSoundChannelUpdateMode)5); mDone(); }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)

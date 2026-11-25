@@ -346,6 +346,7 @@ public:
     virtual ~tSoundCommandList();
     virtual tListMemberWithHandle* mGetListMemberWithHandleFromHandle(long handle);
 };
+inline tSoundCommandList::~tSoundCommandList() {}
 
 // The slots follow the exe's vtable of the class (0x007b6d1c, 122 slots). Slot 0 is the
 // destructor and slots 1-8 are tListMemberWithHandle's, so tSoundChannel derives from it and
