@@ -20707,7 +20707,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070ef40	function	fn_0070ef40					none
 0x0070ef70	function	fn_0070ef70					none
 0x0070ef80	function	fn_0070ef80					none
-0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	mangled		mangled
+0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	claim		mangled
 0x0070efc0	function	fn_0070efc0		??1tGuard@tResourceGuard@@QAE@XZ	add		none
 0x0070efd0	function	tResourceGuard::tResourceGuard	tResourceGuard	??0tResourceGuard@@QAE@XZ	mangled		mangled
 0x0070f100	function	fn_0070f100					none
