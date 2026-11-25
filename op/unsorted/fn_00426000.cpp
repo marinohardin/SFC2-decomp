@@ -409,6 +409,7 @@ public:
 	bool fn_00426c23(int aValue);
 	void fn_00426c5e(int aValue);
 	void fn_00426d48(int aValue);
+	void fn_00426da7();
 
 	int m10[20];
 	int m60[20];
@@ -570,4 +571,32 @@ void fn_00426988_Class::fn_00426d48(int aValue)
 			return;
 		}
 	}
+}
+
+extern void *g_008e1090[0x4000];
+
+// HYPOTHESIS: drops the entries of the table at mc4 whose first int no longer names an object
+// in the table at 0x008e1090, shifting the kept ones down.
+// FUNCTION: STARFLEETOP 0x00426da7
+void fn_00426988_Class::fn_00426da7()
+{
+	int j = 0;
+	int i = 0;
+	int kept = 0;
+	for (; i < mc8; i++)
+	{
+		int id = ((int*)mc4)[i * 2];
+		void *p = (id < 0 || id >= 0x4000) ? NULL : g_008e1090[id];
+		if (p != NULL)
+		{
+			kept++;
+			if (j != i)
+			{
+				((int*)mc4)[j * 2] = id;
+				((int*)mc4)[j * 2 + 1] = ((int*)mc4)[i * 2 + 1];
+			}
+			j++;
+		}
+	}
+	mc8 = kept;
 }
