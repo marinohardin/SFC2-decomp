@@ -1,3 +1,5 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy in fn_0042A000.cpp (0x0042a31c)
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 #define DATASTORE_INLINE_NUMBER_READ	// MATCH-ONLY: StreamIn inlines some of the int32u reads
 #include "unsorted/tPlayingTeamInfo.h"
 #include "Common/DataStore/DataStoreInput.h"

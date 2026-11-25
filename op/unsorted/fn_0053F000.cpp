@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 // Unit:      unsorted/fn_0053F000.cpp
 // Functions: 0x0053f22f to 0x0053ffd7, 40 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)

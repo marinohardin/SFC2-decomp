@@ -1,13 +1,13 @@
 //	DataStoreBuffer.h
 //	The byte store behind a data store's input and output. Declarations follow the SDK's header,
-//	without its operator const byte*(), which tools/manifest.py cannot read yet. The original
-//	defines the inline functions in DataStoreBuffer.cpp, which the header includes; here they
-//	follow the class, and only the ones matched code uses are defined yet.
+//	without its operator const byte*() (tools/manifest.py cannot read it yet). The original has the
+//	inline functions in DataStoreBuffer.cpp; here they follow the class, only the ones used so far.
 //	MATCH-ONLY: tBuffer::Write, defined inline here and inlined by FileDatabaseMgr.cpp's StreamOut,
 //	is left out where DATASTORE_OUT_OF_LINE_WRITE is defined: tClientCharacter.cpp holds the copy
 //	the compiler emitted out of line (0x0042a0fc), which the harness can claim only from a .cpp.
 //	MATCH-ONLY: tBuffer::Get is left out where DATASTORE_OUT_OF_LINE_BUFFER_GET is defined, for
-//	the same reason: unsorted/fn_0042A000.cpp holds its out-of-line copy (0x0042a31c).
+//	the same reason: unsorted/fn_0042A000.cpp holds its out-of-line copy (0x0042a31c). Read, left
+//	out by DATASTORE_OUT_OF_LINE_BUFFER_READ, has no owner. Callers define them: __FILE__ is a path.
 #if !defined( DataStoreBuffer_h )
 #define DataStoreBuffer_h
 
@@ -73,7 +73,7 @@ byte tBuffer::Get( iPos getPos ) const
 	return fBuffer[getPos];
 }
 #endif
-
+#ifndef DATASTORE_OUT_OF_LINE_BUFFER_READ
 void tBuffer::Read( byte* data, int32 size, iPos getPos ) const
 {
 	if( getPos + size > Size() )
@@ -96,7 +96,7 @@ void tBuffer::Read( byte* data, int32 size, iPos getPos ) const
 
 	std::copy( start, end, data );
 }
-
+#endif
 tBuffer::iBufferSize tBuffer::Size() const
 {
 	return fBuffer.size();

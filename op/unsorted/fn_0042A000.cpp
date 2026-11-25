@@ -4,6 +4,7 @@
 #define DATASTORE_OUT_OF_LINE_READ_STRING
 #define DATASTORE_OUT_OF_LINE_GET
 #define DATASTORE_OUT_OF_LINE_BUFFER_GET
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 #define DATASTORE_OUT_OF_LINE_READ
 #include "Common/DataStore/DataStoreInput.h"
 

@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy in fn_0042A000.cpp (0x0042a31c)
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"

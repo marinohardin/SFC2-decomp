@@ -1,5 +1,5 @@
 //	MetaMapDataRequest.cpp
-//
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 //	The map data request: the hexes of the meta map as the client receives them.
 //
 #include "Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.h"

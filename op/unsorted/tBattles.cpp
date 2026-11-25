@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 // tBattles: functions of this class (original file unknown).
 #include "Common/Database/DatabaseObject.h"
 #include "Common/Database/DatabaseID.h"

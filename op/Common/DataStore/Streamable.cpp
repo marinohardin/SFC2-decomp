@@ -1,11 +1,11 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy in fn_0042A000.cpp (0x0042a31c)
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
 #include "Common/DataStore/Streamable.h"
 #include "Common/Crypto/CRC32.h"
 #include "Common/DataStore/DataStoreInput.h"
 #include <typeinfo.h>
-
 namespace nDataStore
 {
-
 // MATCH-ONLY: the destructor (0x006f8cd0) is implicit (base and member destructors), unclaimed.
 // FUNCTION: STARFLEETOP 0x006f8cb0
 tStreamable::tCRCFailed::~tCRCFailed()
