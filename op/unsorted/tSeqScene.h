@@ -30,7 +30,7 @@ public:
 	void fn_0067dd90();	// clears bit 0 of field_EC
 	void fn_0067dda0();	// sets bit 0 of field_EC and stores a clock reading in field_E8
 	void fn_0067dde0();	// sets bit 0 of field_EC and copies field_E0 to field_F0
-	void fn_0067e1d0();	// called by vfunction30's neighbour 0x0067e2d0 with the tick count
+	bool fn_0067e1d0();	// called by vfunction30's neighbour 0x0067e2d0 with the tick count
 
 	// HYPOTHESIS: field names unknown; offsets and constant stores from fn_0067dbc0.
 	int field_D4;

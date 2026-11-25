@@ -17843,8 +17843,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dde0	function	fn_0067dde0		?fn_0067dde0@tSeqScene@@QAEXXZ	claim		none
 0x0067de00	function	fn_0067de00	tSeqScene				vtable
 0x0067e1a0	function	fn_0067e1a0	tSeqScene				vtable
-0x0067e1d0	function	fn_0067e1d0					none
-0x0067e2d0	function	fn_0067e2d0	tSeqScene				vtable
+0x0067e1d0	function	fn_0067e1d0		?fn_0067e1d0@tSeqScene@@QAE_NXZ	add		none
+0x0067e2d0	function	fn_0067e2d0	tSeqScene	?vfunction30@tSeqScene@@UAEXXZ	claim		vtable
 0x0067e340	function	fn_0067e340	tVisGroup				vtable
 0x0067e3f0	function	fn_0067e3f0	tSeqScene				vtable
 0x0067e430	function	fn_0067e430					none
