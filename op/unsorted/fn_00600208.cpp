@@ -17,6 +17,10 @@ namespace std
 			_Tidy(false);
 			assign(s, strlen(s));
 		}
+		~basic_string()
+		{
+			_Tidy(true);
+		}
 		basic_string& assign(const char* s, unsigned int n);
 	private:
 		void _Tidy(bool built);
@@ -31,5 +35,6 @@ namespace std
 // HYPOTHESIS: the global's name is not known.
 typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_00600208_string;
 
+// FUNCTION: STARFLEETOP 0x0060023b
 // FUNCTION: STARFLEETOP 0x00600208
 fn_00600208_string g_00c39e48 = "BriefingSP";
