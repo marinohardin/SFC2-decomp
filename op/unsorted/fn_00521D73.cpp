@@ -65,3 +65,19 @@ void fn_00521dd9_owner::fn_00521dd9()
 	field_4 = 0;
 	field_8 = 0;
 }
+
+struct fn_00521e11_owner {
+	void fn_00521e11(int param_1);
+	int field_0;
+	int field_4;
+	int field_8;
+};
+
+// HYPOTHESIS: signature and calling convention of the callee are unknown.
+void __stdcall fn_0052210d(int a, int b, int c);
+
+// FUNCTION: STARFLEETOP 0x00521e11
+void fn_00521e11_owner::fn_00521e11(int param_1)
+{
+	fn_0052210d(field_8, 1, param_1);
+}
