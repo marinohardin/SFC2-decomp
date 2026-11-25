@@ -435,3 +435,25 @@ void tObject_008f5170::fn_004257f5(tEntity *pEntity, int32 value)
 	pEntity->fLastMapPos = pEntity->fCurrPos;
 	pEntity->fMapRadius = pEntity->vfunction14();
 }
+
+// FUNCTION: STARFLEETOP 0x00425824
+void fn_004255b5_class::fn_00425824(tEntity* pEntity, int value)
+{
+	if (pEntity != 0) {
+		float radius = pEntity->vfunction14();
+		float x = pEntity->fCurrPos.x;
+		float y = pEntity->fCurrPos.y;
+		unsigned int col, row;
+		this->fn_004259bd(x, y, &col, &row);
+		unsigned int col0, col1, row0, row1;
+		this->fn_0042574b(col, row, x, y, radius, &col0, &col1, &row0, &row1);
+		for (unsigned int c = col0; c <= col1; c++) {
+			for (unsigned int r = row0; r <= row1; r++) {
+				fn_004254a7_list* list = (fn_004254a7_list*)((tObject_008f5170*)this)->fn_00425726(c, r);
+				if (list == 0)
+					return;
+				list->fn_00425501((int)pEntity, value);
+			}
+		}
+	}
+}
