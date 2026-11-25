@@ -631,3 +631,9 @@ void tAudioFileClass::mSet( long arg1, long arg2, eAudioPreemptType preempt, dou
 	tClassActiveChannelList *list = &f08;
 	list->mInit( arg2 );
 }
+
+// FUNCTION: STARFLEETOP 0x00663590
+void tHandleList::mClear( void )
+{
+	f04 = 0;
+}
