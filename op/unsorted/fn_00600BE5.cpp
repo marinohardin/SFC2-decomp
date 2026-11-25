@@ -90,3 +90,7 @@ fn_00600be5_string g_00c39f40 = "MetaMedals";
 // FUNCTION: STARFLEETOP 0x00600d15
 // FUNCTION: STARFLEETOP 0x00600ce2
 fn_00600be5_string g_00c39f28 = "Medals";
+
+// HYPOTHESIS: the global's name is not known.
+// FUNCTION: STARFLEETOP 0x00600d48
+fn_00600be5_string g_00c39f18 = "cRankMedals_";
