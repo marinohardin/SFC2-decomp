@@ -15329,8 +15329,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006017d1	function	fn_006017d1					none
 0x00601804	function	fn_00601804					none
 0x0060181d	function	tMessengerRelayCreator::tMessengerRelayCreator	tMessengerRelayCreator	??0tMessengerRelayCreator@@QAE@XZ	callers		rtti
-0x00601834	function	tMessengerRelayCreator::scalar_deleting_destructor	tMessengerRelayCreator				rtti
-0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	callers		rtti
+0x00601834	function	tMessengerRelayCreator::scalar_deleting_destructor	tMessengerRelayCreator	??_GtMessengerRelayCreator@@UAEPAXI@Z	claim		rtti
+0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	claim		rtti
 0x0060185b	function	fn_0060185b	tMessengerRelayCreator				vtable
 0x006018c8	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>				rtti
 0x0060195c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOff::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOff				rtti

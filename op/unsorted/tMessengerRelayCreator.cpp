@@ -1,6 +1,9 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tMessengerRelayCreator.cpp
-// Functions: 0x0060181d to 0x0060185b, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tMessengerRelayCreator.h"
+
+// MATCH-ONLY: the destructor is empty; its 11 bytes are the vtable store and the call to the base
+// destructor that VC6 generates around an empty body.
+// FUNCTION: STARFLEETOP 0x00601834
+// FUNCTION: STARFLEETOP 0x00601850
+tMessengerRelayCreator::~tMessengerRelayCreator()
+{
+}
