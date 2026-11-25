@@ -9,7 +9,7 @@ public:
 	int m_14;
 	int pad18;
 	int pad1c;
-	int pad20;
+	float m_20;
 	float m_24;
 	int m_28;
 	int pad2c;
@@ -275,4 +275,21 @@ float __stdcall fn_00521a15(float amount, fn_0052197e_node* n)
 		}
 	}
 	return result * n->field_30;
+}
+
+// HYPOTHESIS: a free function; the second argument is a float array indexed by m_38
+// FUNCTION: STARFLEETOP 0x00521b5d
+void __stdcall fn_00521b5d(tAIEntryTable* t, float* sums)
+{
+	int i = 0;
+	if (0 < t->m_count) {
+		tAIEntry* p = t->m_entries;
+		do {
+			if (p->m_id != -1) {
+				sums[p->m_38] = p->m_20 +sums[p->m_38];
+			}
+			i++;
+			p++;
+		} while (i < t->m_count);
+	}
 }

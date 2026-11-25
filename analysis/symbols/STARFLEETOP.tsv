@@ -8330,7 +8330,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521965	function	fn_00521965		?fn_00521965@@YG_NPBM@Z	claim		none
 0x0052197e	function	fn_0052197e		?fn_0052197e@fn_0052197e_owner@@QAEMPAMHPAUfn_0052197e_node@@@Z	claim		none
 0x00521a15	function	fn_00521a15		?fn_00521a15@@YGMMPAUfn_0052197e_node@@@Z	claim		none
-0x00521b5d	function	fn_00521b5d					none
+0x00521b5d	function	fn_00521b5d		?fn_00521b5d@@YGXPAVtAIEntryTable@@PAM@Z	claim		none
 0x00521b98	function	fn_00521b98					none
 0x00521bc8	function	fn_00521bc8					none
 0x00521c58	function	tAIDesignateTargetsCalcResult::tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
