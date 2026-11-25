@@ -64,17 +64,24 @@ tAIData::tAIData(char param_1, int param_2)
     field_1c = 0;
 }
 
-// HYPOTHESIS: the real body at 0x005209eb stores the tETrait vtable, calls tETrait's destructor and
-// frees the pointer at +0x18 through 0x005288cb. tETrait has no header and 0x005288cb no
-// declaration yet, so the body stays empty and only the deleting destructor is claimed.
-// MATCH-ONLY: the empty body stands in for the real destructor so the compiler emits the exact deleting destructor.
-// FUNCTION: STARFLEETOP 0x005209a3
-tAIData::~tAIData()
-{
-}
-
 // FUNCTION: STARFLEETOP 0x005209db
 const char* tAIData::vfunction5()
 {
     return "AIData";
+}
+
+// HYPOTHESIS: 0x005288cb destroys the object at +0x18; its class is unknown, so it is declared
+// here by address (the original calls it as a member).
+void fn_005288cb(void* p);
+
+// HYPOTHESIS: the original also stores the tETrait vtable 0x007b01b0 under an EH frame at the end;
+// tETrait has no header yet, so that part is missing here.
+// FUNCTION: STARFLEETOP 0x005209a3
+// FUNCTION: STARFLEETOP 0x005209e1
+tAIData::~tAIData()
+{
+    if (field_18 != 0)
+    {
+        fn_005288cb(field_18);
+    }
 }
