@@ -19,42 +19,42 @@ tFx_Phaser *fn_0050037b( tBmpSurf *arg )
 	return new tFx_Phaser( arg );
 }
 
-float fn_005050e2(float aValue);
-extern float g_009669fc;
 
-// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
-// FUNCTION: STARFLEETOP 0x0050048f
-void fn_0050048f()
-{
-	g_009669fc = fn_005050e2(64.0f);
-}
 
-extern float g_00966a04;
 
-// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
-// FUNCTION: STARFLEETOP 0x005004b7
-void fn_005004b7()
-{
-	g_00966a04 = fn_005050e2(127.0f);
-}
 
-extern float g_00966a08;
 
-// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
-// FUNCTION: STARFLEETOP 0x005004cb
-void fn_005004cb()
-{
-	g_00966a08 = fn_005050e2(128.0f);
-}
 
-extern float g_00966ab0;
 
-// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
-// FUNCTION: STARFLEETOP 0x00500803
-void fn_00500803()
-{
-	g_00966ab0 = fn_005050e2(255.0f);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
 // by file name and returns a handle. No header declares it yet; a shared one should replace this.
