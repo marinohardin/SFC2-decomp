@@ -13065,7 +13065,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c087e	function	fn_005c087e		?fn_005c087e@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
 0x005c0a24	function	fn_005c0a24					none
 0x005c0b85	function	fn_005c0b85		?fn_005c0b85@@YAXXZ	claim		none
-0x005c0b91	function	fn_005c0b91					none
+0x005c0b91	function	fn_005c0b91		?fn_005c0b91@@YAXXZ	claim		none
 0x005c0b9d	function	fn_005c0b9d					none
 0x005c0ba9	function	tMapRelayS::tMapRelayS	tMapRelayS				rtti
 0x005c0c2e	function	tMapRelayS::scalar_deleting_destructor	tMapRelayS				rtti
