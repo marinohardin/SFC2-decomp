@@ -293,3 +293,37 @@ void __stdcall fn_00521b5d(tAIEntryTable* t, float* sums)
 		} while (i < t->m_count);
 	}
 }
+
+// HYPOTHESIS: a circular list owner; the node holds a next link, a previous link and a payload at +8
+struct fn_00521b98_payload {
+	char data[0x24];
+	int field_24;
+};
+
+struct fn_00521b98_node {
+	fn_00521b98_node* next;
+	fn_00521b98_node* prev;
+	fn_00521b98_payload payload;
+};
+
+struct fn_00521b98_owner {
+	void fn_00521b98(fn_00521b98_owner* o);
+	void fn_00521bc8(fn_00521b98_payload* p);
+	int field_0;
+	fn_00521b98_node* head;
+};
+
+// FUNCTION: STARFLEETOP 0x00521b98
+void fn_00521b98_owner::fn_00521b98(fn_00521b98_owner* o)
+{
+	fn_00521b98_node* n = o->head->next;
+	if (n != o->head) {
+		do {
+			fn_00521b98_payload* p = &n->payload;
+			if (p->field_24 == 0) {
+				fn_00521bc8(p);
+			}
+			n = n->next;
+		} while (n != o->head);
+	}
+}
