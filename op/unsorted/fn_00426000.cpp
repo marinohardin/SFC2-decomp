@@ -668,7 +668,7 @@ public:
 	void fn_00426ec0();
 	void fn_00426ed2();
 
-	char pad00[0x50];
+	int m00[20];
 	char m50;
 	char pad51[3];
 	int m54[20];
@@ -683,4 +683,11 @@ fn_00426e9b_Class* fn_00426e9b_Class::fn_00426e9b()
 	fn_00426ed2();
 	m50 = 0;
 	return this;
+}
+
+// FUNCTION: STARFLEETOP 0x00426ec0
+void fn_00426e9b_Class::fn_00426ec0()
+{
+	for (int i = 0; i < 20; i++)
+		m00[i] = -2;
 }
