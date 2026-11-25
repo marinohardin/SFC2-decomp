@@ -407,6 +407,8 @@ public:
 	bool fn_00426bac(int aID);
 	fn_00524daa_Class* fn_00426bcc();
 	bool fn_00426c23(int aValue);
+	void fn_00426c5e(int aValue);
+	void fn_00426d48(int aValue);
 
 	int m10[20];
 	int m60[20];
@@ -532,4 +534,17 @@ bool fn_00426988_Class::fn_00426c23(int aValue)
 		idx--;
 	}
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x00426c5e
+void fn_00426988_Class::fn_00426c5e(int aValue)
+{
+	mb4++;
+	if (mb4 < 0 || mb4 >= 20)
+		mb4 = 0;
+	m60[mb4] = aValue;
+	mb0++;
+	if (mb0 > 20)
+		mb0 = 20;
+	fn_00426d48(aValue);
 }
