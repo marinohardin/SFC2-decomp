@@ -344,6 +344,15 @@ struct fn_0040ce21_object
 	int fPad;
 };
 
+// HYPOTHESIS: a plain three-word value (no constructor) passed by value.
+struct fn_00425d5f_words
+{
+	int a;
+	int b;
+	int c;
+	fn_00425d5f_words(const fn_00425d5f_words& o) { a = o.a; b = o.b; c = o.c; }
+};
+
 // HYPOTHESIS: the class owning the query and the cell visitor; unknown.
 struct fn_004255b5_class
 {
@@ -357,6 +366,8 @@ struct fn_004255b5_class
 	char fn_00425a18(tEntity* a, tEntity* b, char c);
 	// HYPOTHESIS: the callee at 0x00425aad takes the callback at 0x004260fa, both positions and both entities.
 	char fn_00425aad(void (*callback)(), tPoint3 a, tPoint3 b, tEntity* pA, tEntity* pB, int flag);
+	char fn_00425d5f(char (__fastcall *callback)(tEntity*), int col, int row, tPoint3 a, tPoint3 b, float r, fn_00425d5f_words c, tEntity* pA, tEntity* pB);
+	char fn_00425def(tEntity* e, tPoint3 a, tPoint3 b, float r, fn_00425d5f_words c);
 };
 
 extern void fn_004260fa();
@@ -524,4 +535,22 @@ char fn_004255b5_class::fn_00425a18(tEntity* a, tEntity* b, char c)
 	tPoint3 posA = a->fCurrPos;
 	tPoint3 posB = b->fCurrPos;
 	return fn_00425aad(fn_004260fa, posA, posB, a, b, 0);
+}
+
+// FUNCTION: STARFLEETOP 0x00425d5f
+char fn_004255b5_class::fn_00425d5f(char (__fastcall *callback)(tEntity*), int col, int row, tPoint3 a, tPoint3 b, float r, fn_00425d5f_words c, tEntity* pA, tEntity* pB)
+{
+	char ok = 1;
+	// HYPOTHESIS: the list is a chain of (entity, next) nodes; seen as void** pairs, as in fn_004256b1.
+	void*** list = (void***)((tObject_008f5170*)this)->fn_00425726(col, row);
+	if (list != 0) {
+		for (void** n = *list; n != 0 && n[0] != 0; n = (void**)n[1]) {
+			if (n[0] != pA && n[0] != pB && callback((tEntity*)n[0])) {
+				ok = fn_00425def((tEntity*)n[0], a, b, r, c);
+				if (ok == 0)
+					return 0;
+			}
+		}
+	}
+	return ok;
 }

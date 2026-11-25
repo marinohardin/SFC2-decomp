@@ -1233,7 +1233,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004259bd	function	fn_004259bd		?fn_004259bd@fn_004255b5_class@@QAEXMMPAI0@Z	claim		none
 0x00425a18	function	fn_00425a18		?fn_00425a18@fn_004255b5_class@@QAEDPAVtEntity@@0D@Z	claim		none
 0x00425aad	function	fn_00425aad					none
-0x00425d5f	function	fn_00425d5f					none
+0x00425d5f	function	fn_00425d5f		?fn_00425d5f@fn_004255b5_class@@QAEDP6IDPAVtEntity@@@ZHHUtPoint3@@2MUfn_00425d5f_words@@00@Z	claim		none
 0x00425def	function	fn_00425def					none
 0x00425eb6	function	fn_00425eb6					none
 0x00425ec0	function	fn_00425ec0					none
