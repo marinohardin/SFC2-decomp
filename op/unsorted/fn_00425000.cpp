@@ -471,3 +471,19 @@ void tObject_008f5170::fn_004258de(tEntity *pEntity, int32 kind, int32 value)
 		((fn_004255b5_class*)this)->fn_00425928(*(tPoint3 *)&pos, pEntity->fMapRadius, pEntity, kind, value);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00425928
+void fn_004255b5_class::fn_00425928(tPoint3 aPoint, float aRadius, tEntity* pEntity, int kind, int value)
+{
+	unsigned int col, row;
+	this->fn_004259bd(aPoint.x, aPoint.y, &col, &row);
+	unsigned int col0, col1, row0, row1;
+	this->fn_0042574b(col, row, aPoint.x, aPoint.y, aRadius, &col0, &col1, &row0, &row1);
+	for (unsigned int c = col0; c <= col1; c++) {
+		for (unsigned int r = row0; r <= row1; r++) {
+			fn_004254a7_list* list = (fn_004254a7_list*)((tObject_008f5170*)this)->fn_00425726(c, r);
+			if (list != 0)
+				list->fn_004254a7((int)pEntity, kind, value);
+		}
+	}
+}
