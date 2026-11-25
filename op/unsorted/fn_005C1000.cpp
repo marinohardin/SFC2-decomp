@@ -73,6 +73,7 @@ class tMemberCallback_fn_005c1851;
 class tMemberCallback_fn_005c1894;
 class tMemberCallback_fn_005c18d7;
 class tMemberCallback_fn_005c191b;
+class tMemberCallback_fn_005c195f;
 
 class tMapRelayS {
 public:
@@ -104,6 +105,7 @@ public:
 	void fn_005c1894( tMemberCallback_fn_005c1894** out );
 	void fn_005c18d7( tMemberCallback_fn_005c18d7** out );
 	void fn_005c191b( tMemberCallback_fn_005c191b** out );
+	void fn_005c195f( tMemberCallback_fn_005c195f** out );
 
 	char pad00[0xd4];
 	void* m_d4;
@@ -458,4 +460,18 @@ public:
 void tMapRelayS::fn_005c191b( tMemberCallback_fn_005c191b** out )
 {
 	*out = new tMemberCallback_fn_005c191b( this, m_d4 );
+}
+
+// HYPOTHESIS: another tMemberCallback instance for nAsyncMapProcedures; size and
+// constructor arguments are guesses. Real name and header unknown.
+class tMemberCallback_fn_005c195f {
+public:
+	tMemberCallback_fn_005c195f( tMapRelayS* a, void* b );
+	char pad00[0x4c];
+};
+
+// FUNCTION: STARFLEETOP 0x005c195f
+void tMapRelayS::fn_005c195f( tMemberCallback_fn_005c195f** out )
+{
+	*out = new tMemberCallback_fn_005c195f( this, m_d4 );
 }

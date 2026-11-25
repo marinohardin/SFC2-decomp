@@ -13102,7 +13102,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c1894	function	fn_005c1894		?fn_005c1894@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1894@@@Z	claim		none
 0x005c18d7	function	fn_005c18d7		?fn_005c18d7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c18d7@@@Z	claim		none
 0x005c191b	function	fn_005c191b		?fn_005c191b@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c191b@@@Z	claim		none
-0x005c195f	function	fn_005c195f					none
+0x005c195f	function	fn_005c195f		?fn_005c195f@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c195f@@@Z	claim		none
 0x005c19a3	function	fn_005c19a3					none
 0x005c19e7	function	tMapSettings::tMapSettings	tMapSettings				rtti
 0x005c1fc9	function	tMapSettings::scalar_deleting_destructor	tMapSettings				rtti
