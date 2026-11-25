@@ -54,3 +54,27 @@ void fn_00500803()
 {
 	g_00966ab0 = fn_005050e2(255.0f);
 }
+
+// HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
+// by file name and returns a handle. No header declares it yet; a shared one should replace this.
+class fn_008cc620_object_00500847
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual long vfunction2( const char *name, long a, long b, long c );
+};
+
+extern fn_008cc620_object_00500847 *g_008cc620;
+extern char g_00966ac0;
+extern long g_00857fc4;
+
+// FUNCTION: STARFLEETOP 0x00500847
+void fn_00500847()
+{
+	if( !g_00966ac0 )
+	{
+		g_00857fc4 = g_008cc620->vfunction2( "assets/textures/photons-2.bmp", 1, 0, 0 );
+		g_00966ac0 = 1;
+	}
+}

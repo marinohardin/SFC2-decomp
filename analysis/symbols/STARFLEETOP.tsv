@@ -7495,7 +7495,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00500817	function	fn_00500817					none
 0x0050082b	function	fn_0050082b					none
 0x0050083f	function	fn_0050083f					none
-0x00500847	function	fn_00500847					none
+0x00500847	function	fn_00500847		?fn_00500847@@YAXXZ	claim		none
 0x00500872	function	fn_00500872					none
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
