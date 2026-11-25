@@ -33,6 +33,7 @@ class fn_004bcfd3_class
 {
 public:
 	void fn_004bd0e5( tMessageDialog* param_1 );
+	void fn_004bd135( tMessageDialog* param_1 );
 };
 
 fn_00607d61_class* fn_00607d61();
@@ -76,4 +77,15 @@ void tMessageDialog::fn_0060072f( int param_1, char param_2 )
 		fn_004bcfd3()->fn_004bd0e5( this );
 		fn_004d3331( g_00c39ea0.c_str() );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006009ed
+void tMessageDialog::fn_006009ed()
+{
+	fn_004bcfd3()->fn_004bd135( this );
+	fn_004d3340( g_00c39ea0.c_str() );
+	fn_004bcfd3()->fn_004bd135( this );
+	if ( field_28 != 0 )
+		fn_00607d61()->fn_00609e57( field_24 );
+	fn_004d32c4( g_00c39ea0.c_str() );
 }

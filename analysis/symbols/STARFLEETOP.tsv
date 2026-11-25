@@ -15273,7 +15273,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006007f9	function	fn_006007f9		?fn_006007f9@tMessageDialog@@QAEXH@Z	add		none
 0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
 0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
-0x006009ed	function	fn_006009ed		?fn_006009ed@tMessageDialog@@QAEXXZ	add		none
+0x006009ed	function	fn_006009ed		?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
 0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
 0x00600a82	function	fn_00600a82					none
 0x00600a91	function	fn_00600a91					none
