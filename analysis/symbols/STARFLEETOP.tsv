@@ -16879,7 +16879,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	mangled		mangled
+0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	claim		mangled
 0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	mangled		mangled
 0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXP6AXKJ@Z@Z	mangled		mangled
 0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel				sdk

@@ -187,3 +187,9 @@ long tSoundChannel::mGetUserPositionContext()
 {
     return field_0xa0;
 }
+
+// FUNCTION: STARFLEETOP 0x00646b10
+void tSoundChannel::mSetUserPositionContext(long context)
+{
+    field_0xa0 = context;
+}
