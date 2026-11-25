@@ -1,4 +1,5 @@
 #include "Common/Thread/Optex.h"
+#include "unsorted/fn_0042a480_object.h"
 
 // HYPOTHESIS: an object holding an optex at +0xb8 and a vector of owned pointers at +0x150;
 // the owning class is not recovered.
@@ -69,4 +70,32 @@ void fn_00603351_object::fn_00603351( fn_00603351_vector* list )
 	}
 	list->fn_00603e35();
 	guard.Leave();
+}
+
+// HYPOTHESIS: the character object (see fn_0042a480_object) extended with two counts at +0x140
+// and +0x148; the owning class is not recovered.
+class fn_006033b4_object : public fn_0042a480_object
+{
+public:
+	int fn_006033b4( int* record );
+
+	int8u	field_110[0x140 - sizeof( fn_0042a480_object )];
+	int32u	field_140;
+	int8u	field_144[4];
+	int32u	field_148;
+};
+
+// FUNCTION: STARFLEETOP 0x006033b4
+int fn_006033b4_object::fn_006033b4( int* record )
+{
+	int result = 0;
+	switch ( *record )
+	{
+	case 2:
+		// HYPOTHESIS: the record holds a character object at +8.
+		result = ( (fn_0042a480_object*)( record + 2 ) )->FUN_0042aa2b();
+		result += ( *(byte*)( record + 1 ) & 2 ) ? field_148 : field_140;
+		break;
+	}
+	return result;
 }
