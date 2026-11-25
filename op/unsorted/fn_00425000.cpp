@@ -135,22 +135,27 @@ struct fn_004253c2_iterator
 	};
 	void fn_004253c2();
 
+	// MATCH-ONLY: helper the original inlined, it has no address
+	static node* fn_Min(node* p)
+	{
+		while (!p->left->isnil)
+			p = p->left;
+		return p;
+	}
+
 	node* fNode;
 };
 
 // FUNCTION: STARFLEETOP 0x004253c2
 void fn_004253c2_iterator::fn_004253c2()
 {
-	node* n = fNode;
-	node* r = fNode->right;
-	if (!r->isnil) {
-		while (!r->left->isnil)
-			r = r->left;
-		fNode = r;
-	} else {
-		while (n = n->parent, fNode == n->right)
-			fNode = n;
-		if (fNode->right != n)
-			fNode = n;
+	if (!fNode->right->isnil)
+		fNode = fn_Min(fNode->right);
+	else {
+		node* p;
+		while (fNode == (p = fNode->parent)->right)
+			fNode = p;
+		if (fNode->right != p)
+			fNode = p;
 	}
 }
