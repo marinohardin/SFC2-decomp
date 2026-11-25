@@ -60,6 +60,24 @@ void tSeqScene::fn_0067dde0()
 	field_F0 = field_E0;
 }
 
+// HYPOTHESIS: the object at 0x00c690d0 that holds the groups; 0x00674250 takes the object at +0x50.
+class fn_00674250_Owner
+{
+public:
+	void fn_00674250(int param_1);
+};
+
+extern fn_00674250_Owner *g_00c690d0;
+
+// FUNCTION: STARFLEETOP 0x0067e1a0
+void tSeqScene::vfunction44()
+{
+	field_68.fn_0067f090(this, 1, 0);
+	int object = field_12C;
+	if (object && g_00c690d0)
+		g_00c690d0->fn_00674250(object);
+}
+
 // FUNCTION: STARFLEETOP 0x0067e2d0
 void tSeqScene::vfunction30()
 {
