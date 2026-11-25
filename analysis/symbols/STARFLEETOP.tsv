@@ -7519,7 +7519,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00501a3e	function	fn_00501a3e					none
 0x00501a52	function	fn_00501a52					none
 0x00501b0e	function	fn_00501b0e		?fn_00501b0e@@YAXXZ	claim		none
-0x00501bd3	function	tFx_Plasma::tFx_Plasma	tFx_Plasma				rtti
+0x00501bd3	function	tFx_Plasma::tFx_Plasma	tFx_Plasma	??0tFx_Plasma@@QAE@PAVtBmpSurf@@@Z	add		rtti
 0x00501c2e	function	fn_00501c2e	tFx_Plasma				vtable
 0x00501c33	function	fn_00501c33	tFx_Plasma				vtable
 0x00501c37	function	tFx_Plasma::scalar_deleting_destructor	tFx_Plasma				rtti
@@ -7529,7 +7529,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00501e02	function	fn_00501e02					none
 0x00501fed	function	fn_00501fed	tFx_Plasma				vtable
 0x00502326	function	fn_00502326	tFx_Plasma				vtable
-0x005023f9	function	fn_005023f9					none
+0x005023f9	function	fn_005023f9		?fn_005023f9@@YAPAVtFx_Plasma@@PAVtBmpSurf@@@Z	claim		none
 0x005024e0	function	fn_005024e0					none
 0x005024f4	function	fn_005024f4					none
 0x00502508	function	fn_00502508					none

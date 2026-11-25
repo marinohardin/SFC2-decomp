@@ -1,6 +1,19 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00502000.cpp
-// Functions: 0x005023f9 to 0x00502b0a, 16 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tObject_0040ce21.h"
+#include "unsorted/tBmpSurf.h"
+
+// HYPOTHESIS: tFx_Plasma has no header yet; this is the shape the constructor call and
+// the 0x1fa0 allocation show. It belongs in a shared header once one exists.
+class tFx_Plasma
+{
+public:
+	tFx_Plasma( tBmpSurf *bmp );
+
+	char	pad00[0x1fa0];
+};
+
+// FUNCTION: STARFLEETOP 0x005023f9
+tFx_Plasma *fn_005023f9( tBmpSurf *arg )
+{
+	static tObject_0040ce21 marker("Toot Toot");
+	return new tFx_Plasma( arg );
+}
