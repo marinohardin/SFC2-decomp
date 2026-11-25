@@ -7575,7 +7575,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504110	function	tFx_Probe::~tFx_Probe	tFx_Probe				rtti
 0x0050413e	function	fn_0050413e	tFx_Probe				vtable
 0x00504206	function	fn_00504206	tFx_Probe				vtable
-0x00504316	function	fn_00504316					none
+0x00504316	function	fn_00504316		?fn_00504316@@YAXXZ	claim		none
 0x00504339	function	fn_00504339					none
 0x00504399	thunk	fn_00504399					none
 0x005043ea	function	fn_005043ea					none
