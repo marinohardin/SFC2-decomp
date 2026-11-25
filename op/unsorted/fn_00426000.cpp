@@ -297,8 +297,8 @@ void fn_00426141_Class::fn_00426469(int index, tPoint3* p, fn_00426469_Vertex* v
 float fn_0042653f(float x)
 {
 	if (x > 1.0f)
-		return 1.0f;
-	if (x < 0.0f)
+		x = 1.0f;
+	else if (x < 0.0f)
 		x = 0.0f;
 	return x;
 }
