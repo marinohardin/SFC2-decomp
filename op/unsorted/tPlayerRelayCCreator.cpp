@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tPlayerRelayCCreator.cpp
-// Functions: 0x00600114 to 0x006001a8, 4 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <string>
+#include "unsorted/tPlayerRelayCCreator.h"
+
+// HYPOTHESIS: the original passes this string to the base constructor, which needs a string
+// parameter in unsorted/tMetaClientCreator.h (HEADER REQUEST); the literal at 0x0087a4fc is not read yet.
+// FUNCTION: STARFLEETOP 0x00600114
+tPlayerRelayCCreator::tPlayerRelayCCreator()
+{
+    std::string name;
+    name.assign("PlayerRelayC");
+}

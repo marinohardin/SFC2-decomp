@@ -15237,7 +15237,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005fffd6	function	fn_005fffd6					none
 0x00600035	function	fn_00600035		?fn_00600035@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
 0x00600094	function	fn_00600094		?fn_00600094@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
-0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	callers		rtti
+0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	claim		rtti
 0x00600181	function	tPlayerRelayCCreator::scalar_deleting_destructor	tPlayerRelayCCreator				rtti
 0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	callers		rtti
 0x006001a8	function	fn_006001a8	tPlayerRelayCCreator				vtable
