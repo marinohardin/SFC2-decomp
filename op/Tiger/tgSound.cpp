@@ -42,6 +42,8 @@ void tChannelAttributes::vfunction22(double aDistance) { t3DSoundProfile* profil
 double tChannelAttributes::mGet3DSoundReferenceDistance() { return (&m3DSoundProfile)->vfunction15(); }
 // FUNCTION: STARFLEETOP 0x006464c0
 void tChannelAttributes::vfunction24(float anAngle) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); } // slot 24 = mSet3DSoundConeAngleForNoAttenuation, name kept for twSound.cpp
+// FUNCTION: STARFLEETOP 0x006464e0
+float tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation() { return (&m3DSoundProfile)->vfunction17(); }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
