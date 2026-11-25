@@ -126,3 +126,10 @@ iTruth tSoundChannel::mAreWeFixedPan()
     unsigned char fixedPan = (mGetSoundType() & 0x100) > 0;
     return fixedPan;
 }
+
+// FUNCTION: STARFLEETOP 0x006469e0
+iTruth tSoundChannel::mAreWeFixedVolume()
+{
+    unsigned char fixedVolume = (mGetSoundType() & 0x200) > 0;
+    return fixedVolume;
+}
