@@ -1,4 +1,5 @@
 #include "Common/Thread/Optex.h"
+#include "Tiger/tstring.h"
 #include "unsorted/fn_0042a480_object.h"
 
 // HYPOTHESIS: the list object at +0x13c; slot 44 returns its count, slot 59 the item at an index.
@@ -59,9 +60,9 @@ public:
 	virtual void fn_slot51();
 	virtual void fn_slot52();
 	virtual void fn_slot53();
-	virtual void fn_slot54();
+	virtual void fn_slot54( const tString& name, int a, int b, int index );
 	virtual void fn_slot55();
-	virtual void fn_slot56();
+	virtual tString* fn_slot56( int index );
 	virtual void fn_slot57();
 	virtual void fn_slot58();
 	virtual void* fn_item( int index );
@@ -80,6 +81,7 @@ public:
 	void fn_00603978( void* record );
 	void fn_0060378d( int* message );
 	int fn_006037fc( int* record );
+	void fn_00603873( const std::string& name, int a, int b );
 	void fn_00603575( int* record );
 	void fn_00603a08( int index, int value );
 
@@ -279,4 +281,30 @@ int fn_006032e7_object::fn_006037fc( int* record )
 done:
 	guard.Leave();
 	return index;
+}
+
+// FUNCTION: STARFLEETOP 0x00603873
+void fn_006032e7_object::fn_00603873( const std::string& name, int a, int b )
+{
+	tOptex::tGuard guard( &field_b8 );
+	int index = 0;
+	if ( field_13c )
+	{
+		int count = field_13c->fn_count();
+		if ( count > 0 )
+		{
+			do
+			{
+				if ( field_13c->fn_item( index ) )
+				{
+					bool found = field_13c->fn_slot56( index )->mStrICmp( tString( name.c_str() ) ) > 0;
+					if ( found )
+						break;
+				}
+				++index;
+			} while ( index < count );
+		}
+		field_13c->fn_slot54( tString( name.c_str() ), a, b, index );
+	}
+	guard.Leave();
 }
