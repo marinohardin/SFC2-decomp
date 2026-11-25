@@ -236,3 +236,60 @@ void fn_005223af(int* dest, int value)
 {
 	new (dest) fn_005223dc_value(value);
 }
+
+// HYPOTHESIS: copy constructor of a vector of 8-byte elements (allocator flag byte, first, last, end).
+struct fn_00522441_elem
+{
+	int field_0;
+	int field_4;
+};
+
+struct fn_00522441_vector
+{
+	char field_0;
+	fn_00522441_elem* field_4;
+	fn_00522441_elem* field_8;
+	fn_00522441_elem* field_c;
+
+	fn_00522441_vector(const fn_00522441_vector& other);
+
+	// MATCH-ONLY: inlined helper; the original's name is unknown.
+	int size() const
+	{
+		if (field_4 == 0) {
+			return 0;
+		}
+		return field_8 - field_4;
+	}
+};
+
+// MATCH-ONLY: inlined helper; the original's name is unknown.
+inline fn_00522441_elem* fn_00522441_allocate(int count)
+{
+	if (count < 0) {
+		count = 0;
+	}
+	return (fn_00522441_elem*)operator new(count * sizeof(fn_00522441_elem));
+}
+
+// MATCH-ONLY: inlined helper; the original's name is unknown.
+inline fn_00522441_elem* fn_00522441_copy(fn_00522441_elem* first, fn_00522441_elem* last, fn_00522441_elem* dst)
+{
+	for (; first != last; first++) {
+		if (dst != 0) {
+			new (dst) fn_00522441_elem(*first);
+		}
+		dst++;
+	}
+	return dst;
+}
+
+// FUNCTION: STARFLEETOP 0x00522441
+fn_00522441_vector::fn_00522441_vector(const fn_00522441_vector& other)
+{
+	field_0 = other.field_0;
+	field_4 = fn_00522441_allocate(other.size());
+	fn_00522441_elem* dst = fn_00522441_copy(other.field_4, other.field_8, field_4);
+	field_8 = dst;
+	field_c = dst;
+}
