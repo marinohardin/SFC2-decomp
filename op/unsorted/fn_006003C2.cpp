@@ -16,3 +16,12 @@ char* fn_006003c8()
 {
 	return g_00c39e30;
 }
+
+// HYPOTHESIS: same string object family as above (defined in fn_00600208.cpp); only its address is used.
+extern char g_00c39e20[];
+
+// FUNCTION: STARFLEETOP 0x006003ce
+char* fn_006003ce()
+{
+	return g_00c39e20;
+}
