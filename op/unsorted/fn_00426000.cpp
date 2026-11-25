@@ -346,3 +346,82 @@ void fn_00426141_Class::fn_00426886(unsigned int mask)
 	m50[index] = q - pos;
 	m98[index] = 1;
 }
+
+#include <string.h>
+#include "unsorted/tObject_0092deb4.h"
+
+// HYPOTHESIS: a record of 0xe8 bytes built by the function at 0x00426988: a table of 20 counters
+// with one entry set from an ID, and a flag telling whether the ID is the one slot 33 of the
+// object at 0x0092deb4 returns.
+// HYPOTHESIS: the first 0x10 bytes are a base with a constructor and a destructor; its type is
+// unknown.
+class fn_00426988_Base
+{
+public:
+	fn_00426988_Base(char aKind);
+	~fn_00426988_Base();
+
+	char m00;
+	int m04;
+	int m08;
+	int m0c;
+};
+
+inline fn_00426988_Base::fn_00426988_Base(char aKind)
+{
+	m00 = aKind;
+	m04 = 0;
+	m08 = 0;
+	m0c = 0;
+}
+
+inline fn_00426988_Base::~fn_00426988_Base()
+{
+}
+
+class fn_00426988_Class : public fn_00426988_Base
+{
+public:
+	fn_00426988_Class(int aID);
+
+	int m10[20];
+	int m60[20];
+	int mb0;
+	int mb4;
+	int mb8[3];
+	int mc4;
+	int mc8;
+	int mcc;
+	char md0;
+	int md4;
+	int md8;
+	int mdc;
+	int me0;
+	int me4;
+};
+
+// FUNCTION: STARFLEETOP 0x00426988
+fn_00426988_Class::fn_00426988_Class(int aID)
+	: fn_00426988_Base(((char*)&aID)[3])
+{
+	// HYPOTHESIS: the top byte of the ID is a kind; the original reads it straight from memory.
+	md8 = -1;
+	md4 = aID;
+	for (int i = 0; i < 20; i++)
+		m10[i] = 6;
+	m10[md4] = 1;
+	mb0 = 0;
+	mb4 = 20;
+	mc4 = 0;
+	mc8 = 0;
+	mcc = 0;
+	me0 = -2;
+	me4 = 0;
+	for (int j = 0; j < 3; j++)
+		mb8[j] = 0;
+	if (aID == gObject_0092deb4->vfunction33())
+		md0 = 1;
+	else
+		md0 = 0;
+	mdc = 0;
+}
