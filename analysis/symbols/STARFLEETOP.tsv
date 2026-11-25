@@ -7499,7 +7499,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00500872	function	fn_00500872		??0tFx_Photon@@QAE@XZ	claim		none
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
-0x005008f4	function	fn_005008f4					none
+0x005008f4	function	fn_005008f4		??0fn_005008f4_element@@QAE@XZ	claim		none
 0x00500976	function	fn_00500976					none
 0x00500b46	function	fn_00500b46					none
 0x00500c30	function	fn_00500c30	tFx_Photon				vtable
@@ -18479,7 +18479,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069ac50	function	fn_0069ac50		?fn_0069ac50@@YADI@Z	callers		none
 0x0069adc2	function	fn_0069adc2					none
 0x0069afc0	function	fn_0069afc0		?fn_0069afc0@@YAFMM@Z	callers		none
-0x0069b0e0	function	fn_0069b0e0					none
+0x0069b0e0	function	fn_0069b0e0		?fn_0069b0e0@@YAMXZ	add		none
 0x0069b120	function	fn_0069b120		??HtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b160	function	fn_0069b160		??YtPoint3@@QAEAAU0@ABU0@@Z	callers		none
 0x0069b190	function	fn_0069b190		??GtPoint3@@QBE?AU0@ABU0@@Z	callers		none

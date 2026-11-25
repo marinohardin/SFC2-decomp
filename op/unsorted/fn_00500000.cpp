@@ -117,3 +117,23 @@ tFx_Photon::tFx_Photon()
 	m3c = 1;
 	m10 = g_007aa8d0;
 }
+
+float fn_0069b0e0();
+extern double g_007aa8c8;
+extern float g_0096699c;
+extern float g_009669a0;
+
+// FUNCTION: STARFLEETOP 0x005008f4
+fn_005008f4_element::fn_005008f4_element()
+{
+	float a = fn_0069b0e0() * 2.0f - 1.0f;
+	float b = fn_0069b0e0() * 2.0f - 1.0f;
+	float c = fn_0069b0e0() * 2.0f - 1.0f;
+	*(float *)&m00[4] = b;
+	*(float *)&m00[8] = a;
+	*(float *)&m00[0] = c;
+	double t = fn_0069b0e0() * g_007aa8c8;
+	*(float *)&m00[12] = t + t;
+	*(float *)&m00[16] = (g_009669a0 - g_0096699c) * fn_0069b0e0() + g_0096699c;
+	*(float *)&m00[20] = fn_0069b0e0() * 5.0f;
+}
