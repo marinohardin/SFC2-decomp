@@ -19,12 +19,17 @@ struct fn_00425066_tree
 		node* parent;
 		node* right;
 		fn_00425066_value value;
+		bool color;
+		bool isnil;
 	};
 	void fn_00425066(node* n);
+	void fn_0042509e();
 
 	char fPad[4];
 	node* fHead;
 	node* fNil;
+	bool fMulti;
+	unsigned int fSize;
 };
 
 // FUNCTION: STARFLEETOP 0x00425066
@@ -36,4 +41,26 @@ void fn_00425066_tree::fn_00425066(node* n)
 		n->value.~fn_00425066_value();
 		operator delete(n);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0042509e
+void fn_00425066_tree::fn_0042509e()
+{
+	node* n = (node*)operator new(sizeof(node));
+	n->parent = 0;
+	n->color = 1;
+	n->isnil = 0;
+	fNil = n;
+	fNil->isnil = 1;
+	fNil->left = 0;
+	fNil->right = 0;
+	node* sentinel = fNil;
+	node* h = (node*)operator new(sizeof(node));
+	h->parent = sentinel;
+	h->color = 0;
+	h->isnil = 0;
+	fHead = h;
+	h->left = h;
+	fHead->right = fHead;
+	fSize = 0;
 }
