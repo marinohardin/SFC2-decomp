@@ -34,3 +34,32 @@ void fn_004230c6_List::fn_004230c6()
     fHead[0] = 0;
     fHead[1] = 0;
 }
+
+// HYPOTHESIS: a node pool: free list head at +0, a stored value at +4, link at +0x38/+0x3c.
+struct fn_0042310b_Pool {
+    int fField0;
+    int* fFree;
+    int fValue;
+    int* fn_0042310b(int value);
+};
+
+// FUNCTION: STARFLEETOP 0x0042310b
+int* fn_0042310b_Pool::fn_0042310b(int value)
+{
+    if (fValue == 0) {
+        fValue = value;
+    }
+    int* node = fFree;
+    if (node != 0) {
+        int* next = (int*)node[0xe];
+        fFree = next;
+        if (next != 0) {
+            next[0xf] = 0;
+        }
+        node[0xe] = 0;
+        node[0xf] = 0;
+    } else {
+        node = (int*)operator new(0x40);
+    }
+    return node;
+}
