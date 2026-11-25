@@ -15318,7 +15318,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00601343	function	fn_00601343					none
 0x00601498	function	fn_00601498		?fn_00601498@@YGXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x00601540	function	fn_00601540		?fn_00601540@@YGXHH@Z	claim		none
-0x00601557	function	fn_00601557					none
+0x00601557	function	fn_00601557		?fn_00601557@@YGXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x0060161d	function	fn_0060161d					none
 0x00601650	function	fn_00601650					none
 0x00601669	function	tMessengerRelayC::tMessengerRelayC	tMessengerRelayC				rtti
