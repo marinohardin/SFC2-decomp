@@ -13093,7 +13093,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c1639	function	fn_005c1639		?fn_005c1639@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAIs@@@Z	claim		none
 0x005c167f	function	fn_005c167f		?fn_005c167f@tMapRelayS@@QAEXPAPAVtMemberCallback_tEconomicStatusRequest@@@Z	claim		none
 0x005c16c2	function	fn_005c16c2		?fn_005c16c2@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTension@@@Z	claim		none
-0x005c1705	function	fn_005c1705					none
+0x005c1705	function	fn_005c1705		?fn_005c1705@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrix@@@Z	claim		none
 0x005c1748	function	fn_005c1748					none
 0x005c1781	function	fn_005c1781					none
 0x005c17c7	function	fn_005c17c7					none
