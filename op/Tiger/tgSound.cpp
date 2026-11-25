@@ -308,35 +308,35 @@ void t3DListenerProfile::mDump()
 // FUNCTION: STARFLEETOP 0x00647460
 void t3DSoundProfile::mInit()
 {
-    field_0x8[0] = 0.0f;
-    field_0x8[1] = 0.0f;
-    field_0x8[2] = 1.0f;
-    field_0x14[0] = 0.0f;
-    field_0x14[1] = 0.0f;
-    field_0x14[2] = -1.0f;
-    field_0x20[0] = 0.0f;
-    field_0x20[1] = 0.0f;
-    field_0x20[2] = 0.0f;
-    field_0x30 = 1.0;
-    field_0x38 = 90.0f;
-    field_0x3c = 50;
+    f3DSoundPosition.x = 0.0f;
+    f3DSoundPosition.y = 0.0f;
+    f3DSoundPosition.z = 1.0f;
+    f3DSoundOrientation.x = 0.0f;
+    f3DSoundOrientation.y = 0.0f;
+    f3DSoundOrientation.z = -1.0f;
+    f3DSoundVelocity.x = 0.0f;
+    f3DSoundVelocity.y = 0.0f;
+    f3DSoundVelocity.z = 0.0f;
+    f3DSoundReferenceDistance = 1.0;
+    f3DSoundConeAngleForNoAttenuation = 90.0f;
+    f3DSoundConeAttenuationLevel = 50;
 }
 
 // FUNCTION: STARFLEETOP 0x006474a0
 t3DSoundProfile& t3DSoundProfile::operator=(t3DSoundProfile& other)
 {
-    field_0x8[0] = other.field_0x8[0];
-    field_0x8[1] = other.field_0x8[1];
-    field_0x8[2] = other.field_0x8[2];
-    field_0x14[0] = other.field_0x14[0];
-    field_0x14[1] = other.field_0x14[1];
-    field_0x14[2] = other.field_0x14[2];
-    field_0x20[0] = other.field_0x20[0];
-    field_0x20[1] = other.field_0x20[1];
-    field_0x20[2] = other.field_0x20[2];
-    field_0x30 = other.field_0x30;
-    field_0x38 = other.field_0x38;
-    field_0x3c = other.field_0x3c;
+    f3DSoundPosition.x = other.f3DSoundPosition.x;
+    f3DSoundPosition.y = other.f3DSoundPosition.y;
+    f3DSoundPosition.z = other.f3DSoundPosition.z;
+    f3DSoundOrientation.x = other.f3DSoundOrientation.x;
+    f3DSoundOrientation.y = other.f3DSoundOrientation.y;
+    f3DSoundOrientation.z = other.f3DSoundOrientation.z;
+    f3DSoundVelocity.x = other.f3DSoundVelocity.x;
+    f3DSoundVelocity.y = other.f3DSoundVelocity.y;
+    f3DSoundVelocity.z = other.f3DSoundVelocity.z;
+    f3DSoundReferenceDistance = other.f3DSoundReferenceDistance;
+    f3DSoundConeAngleForNoAttenuation = other.f3DSoundConeAngleForNoAttenuation;
+    f3DSoundConeAttenuationLevel = other.f3DSoundConeAttenuationLevel;
     return *this;
 }
 
@@ -375,11 +375,11 @@ inline t3DSoundProfile::~t3DSoundProfile()
 // FUNCTION: STARFLEETOP 0x00647500
 void t3DSoundProfile::mDump()
 {
-    SOUND_ERROR(("3DSound: 3DSoundPosition=(%f,%f,%f)", field_0x8[0], field_0x8[1], field_0x8[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("3DSound: 3DSoundOrientation=(%f,%f,%f)", field_0x14[0], field_0x14[1], field_0x14[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("3DSound: 3DSoundVelocity=(%f,%f,%f)", field_0x20[0], field_0x20[1], field_0x20[2])); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("3DSound: 3DSoundReferenceDistance=%f", field_0x30)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
-    SOUND_ERROR(("3DSound: 3DSoundConeAngleForNoAttenuation=%f, 3DSoundConeAttenuationLevel=%ld", field_0x38, field_0x3c)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("3DSound: 3DSoundPosition=(%f,%f,%f)", f3DSoundPosition.x, f3DSoundPosition.y, f3DSoundPosition.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("3DSound: 3DSoundOrientation=(%f,%f,%f)", f3DSoundOrientation.x, f3DSoundOrientation.y, f3DSoundOrientation.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("3DSound: 3DSoundVelocity=(%f,%f,%f)", f3DSoundVelocity.x, f3DSoundVelocity.y, f3DSoundVelocity.z)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("3DSound: 3DSoundReferenceDistance=%f", f3DSoundReferenceDistance)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("3DSound: 3DSoundConeAngleForNoAttenuation=%f, 3DSoundConeAttenuationLevel=%ld", f3DSoundConeAngleForNoAttenuation, f3DSoundConeAttenuationLevel)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
 }
 
 // MATCH-ONLY: tgSound.h now declares tChannelAttributes; the lines are kept so line numbers stay.
@@ -404,8 +404,8 @@ void t3DSoundProfile::mDump()
 tChannelAttributes::tChannelAttributes()
 {
     mFrequency = 22050;
-    field_0xc = 0;
-    field_0x10 = 80;
+    mPan = 0;
+    mVolume = 80;
     m3DSoundProfile.mInit();
 }
 
@@ -413,8 +413,8 @@ tChannelAttributes::tChannelAttributes()
 void tChannelAttributes::mInit()
 {
     mFrequency = 22050;
-    field_0xc = 0;
-    field_0x10 = 80;
+    mPan = 0;
+    mVolume = 80;
     m3DSoundProfile.mInit();
 }
 
@@ -460,7 +460,7 @@ void tChannelAttributes::mInit()
 // FUNCTION: STARFLEETOP 0x00647af0
 void tChannelAttributes::mDump()
 {
-    SOUND_ERROR(("Frequency=%ld, Pan=%ld, Volume=%ld", mFrequency, field_0xc, field_0x10)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
+    SOUND_ERROR(("Frequency=%ld, Pan=%ld, Volume=%ld", mFrequency, mPan, mVolume)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
     // HYPOTHESIS: the original calls the profile's mDump through its vtable, so through a pointer
     // (perhaps an inline accessor); calling it on the member directly would bind statically.
     t3DSoundProfile* profile = &m3DSoundProfile;
@@ -2263,15 +2263,15 @@ iTruth tSoundChannelCommand::mMakeUnavailable()
 }
 
 // FUNCTION: STARFLEETOP 0x0064d860
-// HYPOTHESIS: the volume setter; mDump reports field_0x10 as "Volume"
-void tChannelAttributes::vfunction7(long volume)
+// The volume setter; the exe shares this body with tSoundChannelFormat::mSetBitsPerSample.
+void tChannelAttributes::vfunction6(long volume)
 {
-    field_0x10 = volume;
+    mVolume = volume;
 }
 
 // FUNCTION: STARFLEETOP 0x0064d870
-// HYPOTHESIS: the getter for the sound-type flags at +0x14
-long tSoundChannelFormat::vfunction12()
+// The sound-type getter (vtable slot 11 of tSoundChannelFormat)
+long tSoundChannelFormat::vfunction11()
 {
     return fSoundType;
 }

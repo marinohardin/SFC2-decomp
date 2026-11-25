@@ -52,9 +52,14 @@ public:
     long field_0x4[3];
 };
 
-// HYPOTHESIS: tSoundChannelFormat is declared only as far as its constructor needs it. The
-// fields are named by the exe's mDump format string; the virtual methods other than the
-// destructor and mInit are not declared yet.
+// tSoundChannelFormat (tgsound.h in the original). Layout PROVEN by the bytes: the vtable at
+// 0x007b70c0 has 27 slots, the five fields sit at 4-0x14 (setter and getter bodies at slots
+// 2-11 read and write them in order). Slot names are the SDK library's symbols
+// (?mSetBufferLength@tSoundChannelFormat@@UAEXJ@Z and the rest). The slots Tiger/twSound.cpp calls
+// keep the name vfunction<slot> (renamed with that file; an inline forwarder changes the
+// instruction order): 2 mSetBufferLength, 3 mGetBufferLength, 5 mGetNumChannels, 7
+// mGetSamplesPerSec, 9 mGetBitsPerSample, 10 mSetSoundType, 11 mGetSoundType, 12
+// mGetBytesPerSample, 13 mGetBytesPerSec.
 class tSoundChannelFormat
 {
 public:
@@ -62,141 +67,157 @@ public:
     virtual ~tSoundChannelFormat();
     tSoundChannelFormat& operator=(tSoundChannelFormat& other);
     virtual void mInit();
-    // HYPOTHESIS: slot 2 sets the buffer length (twStandardSoundChannel::mAddSoundChannel rounds
-    // slot 3's length up to slot 12's block size through it); slots 10 and 11 set and get the
-    // sound type flags. Their names are not recovered.
     virtual void vfunction2(long value);
-    // HYPOTHESIS: slots 3-12 are not recovered; tSoundChannel::mInit reads 3, 7 and 12.
     virtual long vfunction3();
-    virtual void vfunction4(); virtual long vfunction5(); virtual void vfunction6();
+    virtual void mSetNumChannels(long value);
+    virtual long vfunction5();
+    virtual void mSetSamplesPerSec(long value);
     virtual long vfunction7();
-    virtual void vfunction8(); virtual long vfunction9();
+    virtual void mSetBitsPerSample(long value);
+    virtual long vfunction9();
     virtual void vfunction10(long value);
     virtual long vfunction11();
     virtual long vfunction12();
-    virtual long vfunction13(); virtual void vfunction14(); virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
-    virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24();
-    virtual void vfunction25();
-    // tSoundChannel::mDump calls slot 26 to dump the format.
+    virtual long vfunction13();
+    // The flag getters read bits of fSoundType (0x04 looping, 0x02 streaming, 0x08 3D, 0x01 static,
+    // 0x10 fixed frequency, 0x20 recording channel, 0x40 locate in hardware, 0x80 locate in
+    // software, 0x100 fixed pan, 0x200 fixed volume, 0x400 global sound, 0x800 retain selections).
+    virtual unsigned char mAreWeLooping();
+    virtual unsigned char mAreWeStreaming();
+    virtual unsigned char mAreWe3D();
+    virtual unsigned char mAreWeStatic();
+    virtual unsigned char mAreWeFixedFrequency();
+    virtual unsigned char mAreWeARecordingChannel();
+    virtual unsigned char mTryToLocateInHardware();
+    virtual unsigned char mTryToLocateInSoftware();
+    virtual unsigned char mAreWeFixedPan();
+    virtual unsigned char mAreWeFixedVolume();
+    virtual unsigned char mAreWeAGlobalSound();
+    virtual unsigned char mDoWeRetainSelections();
     virtual void mDump();
+
 
     long fBufferLength;
     long fNumChannels;
     long fSamplesPerSec;
     long fBitsPerSample;
-    // HYPOTHESIS: a set of flags read by mAreWeStatic and the other mAreWe getters
+    // The flag word the mAreWe getters read (names of the bits above from those getters)
     long fSoundType;
 };
 
-// HYPOTHESIS: t3DSoundProfile (tgsound.h in the original) is declared only as far as mInit,
-// operator= and mDump need it. Field names are not recovered; mDump's strings label them, in order,
-// 3DSoundPosition, 3DSoundOrientation, 3DSoundVelocity, 3DSoundReferenceDistance,
-// 3DSoundConeAngleForNoAttenuation and 3DSoundConeAttenuationLevel (printed with %ld).
+// t3DSoundProfile (tgsound.h in the original). Vtable 0x007b6fe8, 22 slots; slot names are the SDK
+// library's symbols (?mSet3DSoundPosition@t3DSoundProfile@@UAEXMMM@Z and the rest). Each vector's
+// three setters are declared pointer, by value, then x y z: MSVC lays an overload set out in
+// reverse, and the exe's slots read x y z, by value, pointer (the first two share one body). Size
+// 0x40 PROVEN by the size of tChannelAttributes below (its profile member sits at 0x18 and the
+// class ends at 0x58).
+// The slots Tiger/twSound.cpp calls keep the name vfunction<slot> (a function session there
+// renames its call sites, then these; an inline forwarder changes the instruction order): slot 5 is
+// mGet3DSoundPosition, 9 mGet3DSoundOrientation, 13 mGet3DSoundVelocity, 15
+// mGet3DSoundReferenceDistance, 17 mGet3DSoundConeAngleForNoAttenuation, 19
+// mGet3DSoundConeAttenuationLevel.
 class t3DSoundProfile
 {
 public:
-    // The exe's vtable (0x007b6fe8) holds a destructor in slot 0 and mInit in slot 1. HYPOTHESIS:
-    // the destructor is inline here; the exe places it after the unit's last function.
     t3DSoundProfile()
     {
-        field_0x8[0] = 0.0f;
-        field_0x8[1] = 0.0f;
-        field_0x8[2] = 1.0f;
-        field_0x14[0] = 0.0f;
-        field_0x14[1] = 0.0f;
-        field_0x14[2] = -1.0f;
-        field_0x20[0] = 0.0f;
-        field_0x20[1] = 0.0f;
-        field_0x20[2] = 0.0f;
-        field_0x30 = 1.0;
-        field_0x38 = 90.0f;
-        field_0x3c = 50;
+        f3DSoundPosition.x = 0.0f;
+        f3DSoundPosition.y = 0.0f;
+        f3DSoundPosition.z = 1.0f;
+        f3DSoundOrientation.x = 0.0f;
+        f3DSoundOrientation.y = 0.0f;
+        f3DSoundOrientation.z = -1.0f;
+        f3DSoundVelocity.x = 0.0f;
+        f3DSoundVelocity.y = 0.0f;
+        f3DSoundVelocity.z = 0.0f;
+        f3DSoundReferenceDistance = 1.0;
+        f3DSoundConeAngleForNoAttenuation = 90.0f;
+        f3DSoundConeAttenuationLevel = 50;
     }
-    // The destructor is defined inline below, after operator=.
     virtual ~t3DSoundProfile();
     virtual void mInit();
-    // HYPOTHESIS: the exe's setters and getters (mSet3DSoundPosition and the rest) fill slots
-    // 2-20; tChannelAttributes::mDump calls mDump through slot 21. Their order is not recovered.
-    // HYPOTHESIS: slots 5, 9, 13, 15, 17 and 19 return the position, orientation, velocity,
-    // reference distance, cone angle and cone level (twStandardSoundChannel::mSet3DSoundProfile).
-    virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4();
+    virtual void mSet3DSoundPosition(tPoint3* aPoint);
+    virtual void mSet3DSoundPosition(tPoint3 aPoint);
+    virtual void mSet3DSoundPosition(float aX, float aY, float aZ);
     virtual tPoint3* vfunction5();
-    virtual void vfunction6(); virtual void vfunction7();
-    virtual void vfunction8();
+    virtual void mSet3DSoundOrientation(tPoint3* aPoint);
+    virtual void mSet3DSoundOrientation(tPoint3 aPoint);
+    virtual void mSet3DSoundOrientation(float aX, float aY, float aZ);
     virtual tPoint3* vfunction9();
-    virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12();
+    virtual void mSet3DSoundVelocity(tPoint3* aPoint);
+    virtual void mSet3DSoundVelocity(tPoint3 aPoint);
+    virtual void mSet3DSoundVelocity(float aX, float aY, float aZ);
     virtual tPoint3* vfunction13();
-    virtual void vfunction14();
+    virtual void mSet3DSoundReferenceDistance(double aDistance);
     virtual double vfunction15();
-    virtual void vfunction16();
+    virtual void mSet3DSoundConeAngleForNoAttenuation(float anAngle);
     virtual float vfunction17();
-    virtual void vfunction18();
+    virtual void mSet3DSoundConeAttenuationLevel(long aLevel);
     virtual long vfunction19();
-    virtual void vfunction20();
+    virtual void mSet3DSoundCones(float anAngle, long aLevel);
     virtual void mDump();
     t3DSoundProfile& operator=(t3DSoundProfile& other);
 
+
     // The double makes the class 8-aligned, so the compiler pads the vtable pointer to 8.
-    float field_0x8[3];
-    float field_0x14[3];
-    float field_0x20[3];
-    double field_0x30;
-    float field_0x38;
-    long field_0x3c;  // HYPOTHESIS: long (stored as the integer 50)
+    // HYPOTHESIS: the f names follow the getters' names and mDump's labels.
+    tPoint3 f3DSoundPosition;
+    tPoint3 f3DSoundOrientation;
+    tPoint3 f3DSoundVelocity;
+    double f3DSoundReferenceDistance;
+    float f3DSoundConeAngleForNoAttenuation;
+    long f3DSoundConeAttenuationLevel;  // HYPOTHESIS: long (stored as the integer 50)
 };
 
-// HYPOTHESIS: tChannelAttributes (tgsound.h in the original) is declared only as far as its
-// constructor needs it. The fields are named by the setters the exe exports for this class
-// (mSetFrequency); the others are not recovered and keep their offsets.
+// tChannelAttributes (tgsound.h in the original). Vtable 0x007b7044, 30 slots; slot names are the
+// SDK library's symbols. Overloads are declared pointer, by value, x y z, as in t3DSoundProfile.
+// The slots Tiger/twSound.cpp calls keep the name vfunction<slot> (renamed with that file): slot 4
+// is mSetPan, 6 mSetVolume, 8 mSet3DSoundProfile, 12 the pointer overload of mSet3DSoundPosition,
+// 16 of mSet3DSoundOrientation, 20 of mSet3DSoundVelocity, 22 mSet3DSoundReferenceDistance, 24
+// mSet3DSoundConeAngleForNoAttenuation, 26 mSet3DSoundConeAttenuationLevel.
 class tChannelAttributes
 {
 public:
     tChannelAttributes();
-    // HYPOTHESIS: slot 0 is the destructor; twSoundPart::mDuplicateSoundChannel's inlined channel
-    // constructor counts an unwind state for this member.
     virtual ~tChannelAttributes();
     virtual void mInit();
-    // HYPOTHESIS: slot 2 sets the frequency (mDuplicateSoundChannel passes it the format's
-    // sample rate); the exe's dump of the attributes is slot 29.
-    virtual void mSetFrequency(long frequency);
-    virtual void vfunction3();
-    // HYPOTHESIS: slot 4 records the pan (twStandardSoundChannel::mSetPan passes it the channel's pan).
-    virtual void vfunction4(long pan);
-    virtual void vfunction5();
-    // HYPOTHESIS: slot 6 records the volume (twStandardSoundChannel::mSetVolume passes it the channel's volume).
-    virtual void vfunction6(long volume);
-    virtual void vfunction7(long volume);
-    // HYPOTHESIS: slot 8 records the whole 3D profile (twStandardSoundChannel::mSet3DSoundProfile passes it the profile it set).
-    virtual void vfunction8(t3DSoundProfile* profile);
-    // HYPOTHESIS: slot 9 is the profile getter; overloaded setters sit in reverse order before
-    // each getter (position 10-13, orientation 14-17, velocity 18-21), leaving slot 9 to it.
+    virtual void mSetFrequency(long aFrequency);
+    virtual long mGetFrequency();
+    virtual void vfunction4(long aPan);
+    virtual long mGetPan();
+    virtual void vfunction6(long aVolume);
+    virtual long mGetVolume();
+    virtual void vfunction8(t3DSoundProfile* aProfile);
     virtual t3DSoundProfile* mGet3DSoundProfile();
-    virtual void vfunction10(); virtual void vfunction11();
-    // HYPOTHESIS: slot 12 records the 3D position (twStandardSoundChannel::mSet3DSoundPosition passes it the position it set).
-    virtual void vfunction12(tPoint3* position);
-    virtual void vfunction13();
-    virtual void vfunction14(); virtual void vfunction15();
-    // HYPOTHESIS: slot 16 records the 3D orientation (twStandardSoundChannel::mSet3DSoundOrientation passes it the orientation it set).
-    virtual void vfunction16(tPoint3* orientation);
-    virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19();
-    // HYPOTHESIS: slot 20 records the 3D velocity (twStandardSoundChannel::mSet3DSoundVelocity passes it the velocity it set).
-    virtual void vfunction20(tPoint3* velocity);
-    virtual void vfunction21();
-    // HYPOTHESIS: slot 22 records the reference distance (twStandardSoundChannel::mSet3DSoundReferenceDistance passes it the distance it set).
-    virtual void vfunction22(double distance);
-    virtual void vfunction23();
-    // HYPOTHESIS: slots 24 and 26 record the cone angle and the outside level (twStandardSoundChannel::mSet3DSoundCones passes them what it set).
-    virtual void vfunction24(float angle);
-    virtual void vfunction25();
-    virtual void vfunction26(long level);
-    virtual void vfunction27(); virtual void vfunction28();
+    virtual void mSet3DSoundPosition(float aX, float aY, float aZ);
+    virtual void mSet3DSoundPosition(tPoint3 aPoint);
+    virtual void vfunction12(tPoint3* aPoint);
+    virtual tPoint3* mGet3DSoundPosition();
+    virtual void mSet3DSoundOrientation(float aX, float aY, float aZ);
+    virtual void mSet3DSoundOrientation(tPoint3 aPoint);
+    virtual void vfunction16(tPoint3* aPoint);
+    virtual tPoint3* mGet3DSoundOrientation();
+    virtual void mSet3DSoundVelocity(float aX, float aY, float aZ);
+    virtual void mSet3DSoundVelocity(tPoint3 aPoint);
+    virtual void vfunction20(tPoint3* aPoint);
+    virtual tPoint3* mGet3DSoundVelocity();
+    virtual void vfunction22(double aDistance);
+    virtual double mGet3DSoundReferenceDistance();
+    virtual void vfunction24(float anAngle);
+    virtual float mGet3DSoundConeAngleForNoAttenuation();
+    virtual void vfunction26(long aLevel);
+    virtual long mGet3DSoundConeAttenuationLevel();
+    virtual void mSet3DSoundCones(float anAngle, long aLevel);
     virtual void mDump();
 
+
     // The t3DSoundProfile member makes the class 8-aligned, so the vtable pointer is padded to 8.
-    long mFrequency;  // HYPOTHESIS: 22050 at construction, so the frequency in Hz
-    long field_0xc;
-    long field_0x10;
-    t3DSoundProfile m3DSoundProfile;  // HYPOTHESIS: returned by mGet3DSoundProfile
+    // Offsets PROVEN by the setters at slots 2, 4 and 6 (+8, +0xc, +0x10) and the profile at +0x18
+    // that slots 9-28 forward to; the f names are HYPOTHESIS (SDK getter names, mDump's labels).
+    long mFrequency;  // 22050 at construction, so the frequency in Hz
+    long mPan;
+    long mVolume;     // 80 at construction
+    t3DSoundProfile m3DSoundProfile;
 };
 
 enum eSoundChannelCommand {};
@@ -855,5 +876,12 @@ public:
 };
 
 extern tgSoundPart* atgSoundPart;
+
+// Size checks (sizes PROVEN: tSoundChannel holds the format at 0x10 and the attributes at 0x30, its next
+// field at 0x88; the profile sits at 0x18 inside the attributes). They come last so that no type
+// declared before the classes that use them moves in the compiler's type table.
+typedef char tSoundChannelFormat_size_is_0x18[sizeof(tSoundChannelFormat) == 0x18 ? 1 : -1];
+typedef char t3DSoundProfile_size_is_0x40[sizeof(t3DSoundProfile) == 0x40 ? 1 : -1];
+typedef char tChannelAttributes_size_is_0x58[sizeof(tChannelAttributes) == 0x58 ? 1 : -1];
 
 #endif
