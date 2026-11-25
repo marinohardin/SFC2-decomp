@@ -17,3 +17,13 @@ tFx_Phaser *fn_0050037b( tBmpSurf *arg )
 	static tObject_0040ce21 marker("You'll need more than that");
 	return new tFx_Phaser( arg );
 }
+
+float fn_005050e2(float aValue);
+extern float g_009669fc;
+
+// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
+// FUNCTION: STARFLEETOP 0x0050048f
+void fn_0050048f()
+{
+	g_009669fc = fn_005050e2(64.0f);
+}
