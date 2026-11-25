@@ -52,5 +52,6 @@ void __stdcall fn_00601557( const std::string& param_1, int param_2 )
 }
 
 // HYPOTHESIS: a second global std::string built from the same literal; its dynamic initializer is this function.
+// FUNCTION: STARFLEETOP 0x00601650
 // FUNCTION: STARFLEETOP 0x0060161d
 std::string g_00c39ff0 = "MessengerRelayNameC";
