@@ -12,13 +12,13 @@
 <rect x="1.0" y="364.3" width="49.0" height="44.1" fill="#333633"><title>unsorted/fn_0052E000.cpp: 0.0% of 10,044 bytes</title></rect>
 <rect x="1.0" y="408.4" width="49.0" height="38.8" fill="#3c8a3c"><title>unsorted/tSFCPlayer.cpp: 94.2% of 8,850 bytes</title></rect>
 <rect x="1.0" y="447.2" width="49.0" height="38.7" fill="#333633"><title>unsorted/fn_00583000.cpp: 0.0% of 8,828 bytes</title></rect>
-<rect x="1.0" y="485.9" width="49.0" height="38.2" fill="#333633"><title>unsorted/fn_005C2000.cpp: 0.0% of 8,704 bytes</title></rect>
+<rect x="1.0" y="485.9" width="49.0" height="38.2" fill="#333733"><title>unsorted/fn_005C2000.cpp: 0.6% of 8,704 bytes</title></rect>
 <rect x="1.0" y="524.1" width="49.0" height="37.9" fill="#333633"><title>unsorted/tNotifiee.cpp: 0.0% of 8,638 bytes</title></rect>
 <rect x="1.0" y="561.9" width="49.0" height="37.1" fill="#3c873c"><title>unsorted/tMyHud3D.cpp: 91.5% of 8,450 bytes</title></rect>
 <rect x="50.0" y="1.0" width="38.6" height="44.2" fill="#333633"><title>unsorted/fn_006C3000.cpp: 0.0% of 7,932 bytes</title></rect>
 <rect x="50.0" y="45.2" width="38.6" height="43.7" fill="#333633"><title>unsorted/fn_006BB000.cpp: 0.0% of 7,842 bytes</title></rect>
 <rect x="50.0" y="89.0" width="38.6" height="41.8" fill="#333633"><title>unsorted/tState_MetaLogon.cpp: 0.0% of 7,495 bytes</title></rect>
-<rect x="50.0" y="130.7" width="38.6" height="41.8" fill="#3b803b"><title>unsorted/tMetaMapHex.cpp: 83.3% of 7,494 bytes</title></rect>
+<rect x="50.0" y="130.7" width="38.6" height="41.8" fill="#3b813b"><title>unsorted/tMetaMapHex.cpp: 84.1% of 7,494 bytes</title></rect>
 <rect x="50.0" y="172.5" width="38.6" height="39.2" fill="#333633"><title>unsorted/tCampaignInfo.cpp: 0.0% of 7,033 bytes</title></rect>
 <rect x="50.0" y="211.7" width="38.6" height="38.0" fill="#333633"><title>unsorted/fn_0049F000.cpp: 0.0% of 6,811 bytes</title></rect>
 <rect x="50.0" y="249.7" width="38.6" height="37.8" fill="#333633"><title>unsorted/fn_00532000.cpp: 0.0% of 6,781 bytes</title></rect>
@@ -122,7 +122,7 @@
 <rect x="217.0" y="361.1" width="29.7" height="29.9" fill="#333633"><title>unsorted/fn_005EE000.cpp: 0.0% of 4,127 bytes</title></rect>
 <rect x="217.0" y="391.0" width="29.7" height="29.9" fill="#333633"><title>unsorted/tFederationRedicle.cpp: 0.0% of 4,125 bytes</title></rect>
 <rect x="217.0" y="420.8" width="29.7" height="29.8" fill="#333633"><title>unsorted/fn_0041A000.cpp: 0.0% of 4,122 bytes</title></rect>
-<rect x="217.0" y="450.7" width="29.7" height="29.8" fill="#333633"><title>unsorted/fn_00425000.cpp: 0.0% of 4,111 bytes</title></rect>
+<rect x="217.0" y="450.7" width="29.7" height="29.8" fill="#396d39"><title>unsorted/fn_00425000.cpp: 62.0% of 4,111 bytes</title></rect>
 <rect x="217.0" y="480.4" width="29.7" height="29.7" fill="#333633"><title>unsorted/fn_004CD1DB.cpp: 0.0% of 4,109 bytes</title></rect>
 <rect x="217.0" y="510.2" width="29.7" height="29.7" fill="#00d000"><title>unsorted/tAIHelmOfficer.cpp: 100.0% of 4,108 bytes</title></rect>
 <rect x="217.0" y="539.9" width="29.7" height="29.6" fill="#333633"><title>unsorted/fn_0052D000.cpp: 0.0% of 4,090 bytes</title></rect>
@@ -197,7 +197,7 @@
 <rect x="332.7" y="138.8" width="28.2" height="27.4" fill="#3d8e3d"><title>unsorted/fn_005C4000.cpp: 99.3% of 3,598 bytes</title></rect>
 <rect x="332.7" y="166.2" width="28.2" height="27.4" fill="#333633"><title>unsorted/fn_0050D000.cpp: 0.0% of 3,591 bytes</title></rect>
 <rect x="332.7" y="193.6" width="28.2" height="27.3" fill="#333633"><title>unsorted/fn_005CA000.cpp: 0.0% of 3,583 bytes</title></rect>
-<rect x="332.7" y="220.9" width="28.2" height="27.3" fill="#3b793b"><title>unsorted/fn_0042A000.cpp: 75.7% of 3,582 bytes</title></rect>
+<rect x="332.7" y="220.9" width="28.2" height="27.3" fill="#3b7e3b"><title>unsorted/fn_0042A000.cpp: 81.3% of 3,582 bytes</title></rect>
 <rect x="332.7" y="248.2" width="28.2" height="27.3" fill="#3a783a"><title>unsorted/tEntityControlShip.cpp: 74.4% of 3,580 bytes</title></rect>
 <rect x="332.7" y="275.5" width="28.2" height="27.3" fill="#333633"><title>unsorted/tModel0.cpp: 0.0% of 3,578 bytes</title></rect>
 <rect x="332.7" y="302.8" width="28.2" height="27.3" fill="#333633"><title>unsorted/fn_004F851F.cpp: 0.0% of 3,576 bytes</title></rect>
@@ -241,7 +241,7 @@
 <rect x="520.5" y="1.0" width="26.4" height="27.0" fill="#333633"><title>unsorted/fn_00674000.cpp: 0.0% of 3,305 bytes</title></rect>
 <rect x="546.8" y="1.0" width="26.3" height="27.0" fill="#333633"><title>unsorted/fn_0069D000.cpp: 0.0% of 3,297 bytes</title></rect>
 <rect x="573.1" y="1.0" width="26.3" height="27.0" fill="#3c853c"><title>unsorted/t3DVisual_Model.cpp: 88.6% of 3,293 bytes</title></rect>
-<rect x="599.4" y="1.0" width="26.3" height="27.0" fill="#333633"><title>unsorted/fn_005C0000.cpp: 0.0% of 3,292 bytes</title></rect>
+<rect x="599.4" y="1.0" width="26.3" height="27.0" fill="#333733"><title>unsorted/fn_005C0000.cpp: 1.1% of 3,292 bytes</title></rect>
 <rect x="625.6" y="1.0" width="26.1" height="27.0" fill="#333633"><title>unsorted/fn_005F3000.cpp: 0.0% of 3,270 bytes</title></rect>
 <rect x="651.7" y="1.0" width="26.0" height="27.0" fill="#333633"><title>unsorted/fn_006DD000.cpp: 0.0% of 3,261 bytes</title></rect>
 <rect x="677.7" y="1.0" width="26.0" height="27.0" fill="#333633"><title>unsorted/tRomulanRedicle.cpp: 0.0% of 3,259 bytes</title></rect>
@@ -287,7 +287,7 @@
 <rect x="413.5" y="179.5" width="25.1" height="25.1" fill="#333633"><title>unsorted/tState_Namespace_TutorialSelector__tState_TutorialSelector.cpp: 0.0% of 2,935 bytes</title></rect>
 <rect x="413.5" y="204.6" width="25.1" height="25.1" fill="#333633"><title>unsorted/fn_0050A3CD.cpp: 0.0% of 2,928 bytes</title></rect>
 <rect x="413.5" y="229.7" width="25.1" height="25.1" fill="#333633"><title>unsorted/fn_006E8000.cpp: 0.0% of 2,927 bytes</title></rect>
-<rect x="413.5" y="254.7" width="25.1" height="25.0" fill="#333633"><title>unsorted/fn_00426000.cpp: 0.0% of 2,917 bytes</title></rect>
+<rect x="413.5" y="254.7" width="25.1" height="25.0" fill="#396e39"><title>unsorted/fn_00426000.cpp: 63.4% of 2,917 bytes</title></rect>
 <rect x="413.5" y="279.7" width="25.1" height="24.8" fill="#3c893c"><title>unsorted/fn_005F745F.cpp: 92.8% of 2,893 bytes</title></rect>
 <rect x="413.5" y="304.5" width="25.1" height="24.8" fill="#333633"><title>unsorted/tStageBase.cpp: 0.0% of 2,891 bytes</title></rect>
 <rect x="413.5" y="329.2" width="25.1" height="24.7" fill="#3d8f3d"><title>unsorted/fn_0053434B.cpp: 100.0% of 2,884 bytes</title></rect>
@@ -345,7 +345,7 @@
 <rect x="892.5" y="51.9" width="23.2" height="23.4" fill="#333633"><title>unsorted/fn_00481000.cpp: 0.0% of 2,534 bytes</title></rect>
 <rect x="915.7" y="51.9" width="23.1" height="23.4" fill="#333633"><title>unsorted/tFederationOutlinedRedicle.cpp: 0.0% of 2,518 bytes</title></rect>
 <rect x="938.8" y="51.9" width="23.0" height="23.4" fill="#333633"><title>unsorted/tState_Namespace_Medals__tState_Medals.cpp: 0.0% of 2,510 bytes</title></rect>
-<rect x="961.9" y="51.9" width="23.0" height="23.4" fill="#333633"><title>unsorted/fn_00522679.cpp: 0.0% of 2,508 bytes</title></rect>
+<rect x="961.9" y="51.9" width="23.0" height="23.4" fill="#365336"><title>unsorted/fn_00522679.cpp: 32.5% of 2,508 bytes</title></rect>
 <rect x="438.6" y="75.4" width="23.0" height="23.4" fill="#333633"><title>unsorted/fn_00485000.cpp: 0.0% of 2,505 bytes</title></rect>
 <rect x="438.6" y="98.8" width="23.0" height="23.4" fill="#333633"><title>unsorted/fn_006AA000.cpp: 0.0% of 2,500 bytes</title></rect>
 <rect x="438.6" y="122.2" width="23.0" height="23.3" fill="#333633"><title>unsorted/tAntiDroneRack.cpp: 0.0% of 2,488 bytes</title></rect>
@@ -365,7 +365,7 @@
 <rect x="438.6" y="443.3" width="23.0" height="22.3" fill="#333633"><title>unsorted/tMirakRedicle.cpp: 0.0% of 2,387 bytes</title></rect>
 <rect x="438.6" y="465.7" width="23.0" height="22.3" fill="#333633"><title>unsorted/fn_004B3000.cpp: 0.0% of 2,380 bytes</title></rect>
 <rect x="438.6" y="487.9" width="23.0" height="22.3" fill="#333633"><title>unsorted/fn_006D2000.cpp: 0.1% of 2,380 bytes</title></rect>
-<rect x="438.6" y="510.2" width="23.0" height="22.2" fill="#333633"><title>unsorted/fn_00521000.cpp: 0.0% of 2,377 bytes</title></rect>
+<rect x="438.6" y="510.2" width="23.0" height="22.2" fill="#385e38"><title>unsorted/fn_00521000.cpp: 45.4% of 2,377 bytes</title></rect>
 <rect x="438.6" y="532.5" width="23.0" height="22.2" fill="#333633"><title>unsorted/fn_005DA7AE.cpp: 0.0% of 2,374 bytes</title></rect>
 <rect x="438.6" y="554.7" width="23.0" height="22.2" fill="#333633"><title>unsorted/tFx_PPDPulse.cpp: 0.0% of 2,368 bytes</title></rect>
 <rect x="438.6" y="576.8" width="23.0" height="22.2" fill="#333633"><title>unsorted/fn_0073D000.cpp: 0.0% of 2,367 bytes</title></rect>
@@ -375,7 +375,7 @@
 <rect x="531.1" y="75.4" width="23.1" height="21.9" fill="#3d8c3d"><title>unsorted/fn_00585000.cpp: 96.8% of 2,354 bytes</title></rect>
 <rect x="554.2" y="75.4" width="23.0" height="21.9" fill="#333633"><title>unsorted/tKlingonRedicle.cpp: 0.0% of 2,347 bytes</title></rect>
 <rect x="577.3" y="75.4" width="23.0" height="21.9" fill="#333633"><title>unsorted/fn_0044987A.cpp: 0.0% of 2,343 bytes</title></rect>
-<rect x="600.3" y="75.4" width="23.0" height="21.9" fill="#333633"><title>unsorted/fn_005C1000.cpp: 0.0% of 2,343 bytes</title></rect>
+<rect x="600.3" y="75.4" width="23.0" height="21.9" fill="#3d8c3d"><title>unsorted/fn_005C1000.cpp: 96.6% of 2,343 bytes</title></rect>
 <rect x="623.3" y="75.4" width="23.0" height="21.9" fill="#333633"><title>unsorted/fn_00558000.cpp: 0.0% of 2,338 bytes</title></rect>
 <rect x="646.2" y="75.4" width="22.9" height="21.9" fill="#333633"><title>unsorted/fn_005AA70D.cpp: 0.0% of 2,332 bytes</title></rect>
 <rect x="669.1" y="75.4" width="22.9" height="21.9" fill="#3d8f3d"><title>unsorted/tPhaserXBank.cpp: 99.6% of 2,330 bytes</title></rect>
@@ -413,7 +413,7 @@
 <rect x="461.6" y="491.9" width="21.6" height="21.6" fill="#333633"><title>unsorted/fn_0059E000.cpp: 0.0% of 2,170 bytes</title></rect>
 <rect x="461.6" y="513.4" width="21.6" height="21.5" fill="#333633"><title>unsorted/fn_0059F9AA.cpp: 0.0% of 2,163 bytes</title></rect>
 <rect x="461.6" y="534.9" width="21.6" height="21.4" fill="#333633"><title>unsorted/fn_0053D691.cpp: 0.0% of 2,156 bytes</title></rect>
-<rect x="461.6" y="556.3" width="21.6" height="21.4" fill="#354435"><title>unsorted/tSphere.cpp: 15.5% of 2,155 bytes</title></rect>
+<rect x="461.6" y="556.3" width="21.6" height="21.4" fill="#354435"><title>unsorted/tSphere.cpp: 15.7% of 2,155 bytes</title></rect>
 <rect x="461.6" y="577.7" width="21.6" height="21.3" fill="#333633"><title>unsorted/tDisruptorTube.cpp: 0.0% of 2,142 bytes</title></rect>
 <rect x="483.3" y="97.3" width="21.3" height="21.6" fill="#333633"><title>unsorted/fn_005D8000.cpp: 0.0% of 2,139 bytes</title></rect>
 <rect x="504.5" y="97.3" width="21.2" height="21.6" fill="#333633"><title>unsorted/fn_004AF706.cpp: 0.0% of 2,135 bytes</title></rect>
@@ -422,7 +422,7 @@
 <rect x="568.1" y="97.3" width="21.1" height="21.6" fill="#333633"><title>unsorted/tFx_Tractor.cpp: 0.0% of 2,126 bytes</title></rect>
 <rect x="589.2" y="97.3" width="21.0" height="21.6" fill="#333633"><title>unsorted/fn_005FF000.cpp: 0.0% of 2,118 bytes</title></rect>
 <rect x="610.3" y="97.3" width="21.0" height="21.6" fill="#00d000"><title>unsorted/tNetControl.cpp: 100.0% of 2,114 bytes</title></rect>
-<rect x="631.3" y="97.3" width="21.0" height="21.6" fill="#333633"><title>unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp: 0.0% of 2,111 bytes</title></rect>
+<rect x="631.3" y="97.3" width="21.0" height="21.6" fill="#364d36"><title>unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp: 25.9% of 2,111 bytes</title></rect>
 <rect x="652.2" y="97.3" width="20.9" height="21.6" fill="#333633"><title>unsorted/fn_005B6A41.cpp: 0.0% of 2,106 bytes</title></rect>
 <rect x="673.2" y="97.3" width="20.9" height="21.6" fill="#333633"><title>unsorted/tNewsStory.cpp: 0.0% of 2,104 bytes</title></rect>
 <rect x="694.1" y="97.3" width="20.9" height="21.6" fill="#333633"><title>unsorted/fn_005ED8E5.cpp: 0.0% of 2,103 bytes</title></rect>
@@ -435,7 +435,7 @@
 <rect x="839.9" y="97.3" width="20.8" height="21.6" fill="#333633"><title>unsorted/fn_006D6000.cpp: 0.0% of 2,089 bytes</title></rect>
 <rect x="860.7" y="97.3" width="20.7" height="21.6" fill="#333633"><title>unsorted/tAIAdmiral.cpp: 0.0% of 2,086 bytes</title></rect>
 <rect x="881.4" y="97.3" width="20.7" height="21.6" fill="#333633"><title>unsorted/tStoresState.cpp: 0.0% of 2,086 bytes</title></rect>
-<rect x="902.2" y="97.3" width="20.7" height="21.6" fill="#333633"><title>unsorted/fn_00603000.cpp: 0.0% of 2,085 bytes</title></rect>
+<rect x="902.2" y="97.3" width="20.7" height="21.6" fill="#396b39"><title>unsorted/fn_00603000.cpp: 59.2% of 2,085 bytes</title></rect>
 <rect x="922.9" y="97.3" width="20.7" height="21.6" fill="#333633"><title>unsorted/fn_00419818.cpp: 0.0% of 2,083 bytes</title></rect>
 <rect x="943.6" y="97.3" width="20.7" height="21.6" fill="#333633"><title>unsorted/tSecurityPanel.cpp: 0.0% of 2,081 bytes</title></rect>
 <rect x="964.3" y="97.3" width="20.6" height="21.6" fill="#333633"><title>unsorted/fn_0061B000.cpp: 0.0% of 2,074 bytes</title></rect>
@@ -554,10 +554,10 @@
 <rect x="524.5" y="504.8" width="18.6" height="18.9" fill="#333633"><title>unsorted/fn_004AD000.cpp: 0.0% of 1,638 bytes</title></rect>
 <rect x="524.5" y="523.7" width="18.6" height="18.9" fill="#333633"><title>unsorted/fn_0055A000.cpp: 0.0% of 1,633 bytes</title></rect>
 <rect x="524.5" y="542.5" width="18.6" height="18.8" fill="#333633"><title>unsorted/tState_HotKeys.cpp: 0.0% of 1,631 bytes</title></rect>
-<rect x="524.5" y="561.4" width="18.6" height="18.8" fill="#333633"><title>unsorted/fn_005C5000.cpp: 0.0% of 1,630 bytes</title></rect>
+<rect x="524.5" y="561.4" width="18.6" height="18.8" fill="#396a39"><title>unsorted/fn_005C5000.cpp: 58.8% of 1,630 bytes</title></rect>
 <rect x="524.5" y="580.2" width="18.6" height="18.8" fill="#333633"><title>unsorted/tAIPlasmaOfficer.cpp: 0.0% of 1,629 bytes</title></rect>
 <rect x="543.1" y="157.9" width="18.6" height="18.8" fill="#333633"><title>unsorted/tSlider.cpp: 0.0% of 1,628 bytes</title></rect>
-<rect x="543.1" y="176.7" width="18.6" height="18.8" fill="#333633"><title>unsorted/tFx_Photon.cpp: 0.0% of 1,625 bytes</title></rect>
+<rect x="543.1" y="176.7" width="18.6" height="18.8" fill="#386338"><title>unsorted/tFx_Photon.cpp: 50.9% of 1,625 bytes</title></rect>
 <rect x="543.1" y="195.5" width="18.6" height="18.8" fill="#333633"><title>unsorted/tNebula_GlobalExt.cpp: 0.0% of 1,623 bytes</title></rect>
 <rect x="543.1" y="214.3" width="18.6" height="18.7" fill="#333633"><title>unsorted/fn_006E5000.cpp: 0.0% of 1,618 bytes</title></rect>
 <rect x="543.1" y="233.0" width="18.6" height="18.7" fill="#333633"><title>unsorted/fn_0062A000.cpp: 0.0% of 1,615 bytes</title></rect>
@@ -592,7 +592,7 @@
 <rect x="729.5" y="157.9" width="18.4" height="17.7" fill="#333633"><title>unsorted/tStaticText.cpp: 0.0% of 1,518 bytes</title></rect>
 <rect x="748.0" y="157.9" width="18.4" height="17.7" fill="#333633"><title>unsorted/fn_006B2000.cpp: 0.0% of 1,512 bytes</title></rect>
 <rect x="766.4" y="157.9" width="18.4" height="17.7" fill="#333633"><title>unsorted/tKlingonOutlinedRedicle.cpp: 0.0% of 1,511 bytes</title></rect>
-<rect x="784.7" y="157.9" width="18.3" height="17.7" fill="#333633"><title>unsorted/tSeqScene.cpp: 0.0% of 1,509 bytes</title></rect>
+<rect x="784.7" y="157.9" width="18.3" height="17.7" fill="#375737"><title>unsorted/tSeqScene.cpp: 37.1% of 1,509 bytes</title></rect>
 <rect x="803.0" y="157.9" width="18.3" height="17.7" fill="#333633"><title>unsorted/fn_006EA000.cpp: 0.0% of 1,508 bytes</title></rect>
 <rect x="821.3" y="157.9" width="18.3" height="17.7" fill="#333633"><title>unsorted/tISCRedicle.cpp: 0.0% of 1,507 bytes</title></rect>
 <rect x="839.7" y="157.9" width="18.3" height="17.7" fill="#333633"><title>unsorted/tFx_Base.cpp: 0.0% of 1,503 bytes</title></rect>
@@ -607,7 +607,7 @@
 <rect x="579.7" y="175.6" width="17.9" height="17.7" fill="#333633"><title>unsorted/fn_004CC6EA.cpp: 0.0% of 1,475 bytes</title></rect>
 <rect x="597.6" y="175.6" width="17.9" height="17.7" fill="#333633"><title>unsorted/fn_00529C78.cpp: 0.0% of 1,475 bytes</title></rect>
 <rect x="615.4" y="175.6" width="17.9" height="17.7" fill="#333633"><title>unsorted/fn_00448BFE.cpp: 0.0% of 1,474 bytes</title></rect>
-<rect x="633.3" y="175.6" width="17.9" height="17.7" fill="#333633"><title>unsorted/fn_00522000.cpp: 0.0% of 1,473 bytes</title></rect>
+<rect x="633.3" y="175.6" width="17.9" height="17.7" fill="#354b35"><title>unsorted/fn_00522000.cpp: 23.7% of 1,473 bytes</title></rect>
 <rect x="651.2" y="175.6" width="17.8" height="17.7" fill="#333633"><title>unsorted/fn_0057F000.cpp: 0.0% of 1,472 bytes</title></rect>
 <rect x="669.0" y="175.6" width="17.8" height="17.7" fill="#333633"><title>unsorted/fn_0072DB80.cpp: 0.0% of 1,468 bytes</title></rect>
 <rect x="686.8" y="175.6" width="17.8" height="17.7" fill="#333633"><title>unsorted/fn_00518603.cpp: 0.0% of 1,465 bytes</title></rect>
@@ -670,7 +670,7 @@
 <rect x="578.7" y="482.8" width="16.9" height="16.6" fill="#333633"><title>unsorted/fn_0054AD3E.cpp: 0.0% of 1,305 bytes</title></rect>
 <rect x="578.7" y="499.4" width="16.9" height="16.6" fill="#333633"><title>unsorted/fn_00563335.cpp: 0.0% of 1,304 bytes</title></rect>
 <rect x="578.7" y="516.1" width="16.9" height="16.6" fill="#333633"><title>unsorted/fn_006C9000.cpp: 0.0% of 1,304 bytes</title></rect>
-<rect x="578.7" y="532.7" width="16.9" height="16.6" fill="#333633"><title>unsorted/tMessageDialog.cpp: 0.0% of 1,301 bytes</title></rect>
+<rect x="578.7" y="532.7" width="16.9" height="16.6" fill="#364e36"><title>unsorted/tMessageDialog.cpp: 27.4% of 1,301 bytes</title></rect>
 <rect x="578.7" y="549.3" width="16.9" height="16.6" fill="#333633"><title>unsorted/tCharacterRelayS.cpp: 0.0% of 1,300 bytes</title></rect>
 <rect x="578.7" y="565.9" width="16.9" height="16.6" fill="#333633"><title>unsorted/fn_0072E000.cpp: 0.0% of 1,299 bytes</title></rect>
 <rect x="578.7" y="582.5" width="16.9" height="16.5" fill="#333633"><title>unsorted/nSwitch__tSwitch.cpp: 0.0% of 1,297 bytes</title></rect>
@@ -781,7 +781,7 @@
 <rect x="747.5" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/fn_0054C000.cpp: 0.0% of 1,075 bytes</title></rect>
 <rect x="762.5" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/tState_Namespace_Tactical__tCameraMgrEx.cpp: 0.0% of 1,074 bytes</title></rect>
 <rect x="777.4" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/tTRBeam.cpp: 0.0% of 1,073 bytes</title></rect>
-<rect x="792.3" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/fn_00423000.cpp: 0.0% of 1,072 bytes</title></rect>
+<rect x="792.3" y="226.2" width="14.9" height="15.5" fill="#3a723a"><title>unsorted/fn_00423000.cpp: 67.6% of 1,072 bytes</title></rect>
 <rect x="807.2" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/tAIHitAndRunOfficer.cpp: 0.0% of 1,072 bytes</title></rect>
 <rect x="822.1" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/tState_Namespace_Tactical__tCamera_TopDownAutoZoom.cpp: 0.0% of 1,072 bytes</title></rect>
 <rect x="837.0" y="226.2" width="14.9" height="15.5" fill="#333633"><title>unsorted/fn_005CFA62.cpp: 0.0% of 1,070 bytes</title></rect>
@@ -800,7 +800,7 @@
 <rect x="627.0" y="287.4" width="14.8" height="15.2" fill="#333633"><title>unsorted/fn_00530000.cpp: 0.0% of 1,041 bytes</title></rect>
 <rect x="627.0" y="302.6" width="14.8" height="15.2" fill="#333633"><title>unsorted/tFx_ADDBlast.cpp: 0.0% of 1,040 bytes</title></rect>
 <rect x="627.0" y="317.8" width="14.8" height="15.1" fill="#333633"><title>unsorted/tAIPhotonOfficer.cpp: 0.0% of 1,039 bytes</title></rect>
-<rect x="627.0" y="332.9" width="14.8" height="15.1" fill="#333633"><title>unsorted/fn_00426D48.cpp: 0.0% of 1,037 bytes</title></rect>
+<rect x="627.0" y="332.9" width="14.8" height="15.1" fill="#375d37"><title>unsorted/fn_00426D48.cpp: 44.0% of 1,037 bytes</title></rect>
 <rect x="627.0" y="348.0" width="14.8" height="15.0" fill="#333633"><title>unsorted/fn_004DCDDE.cpp: 0.0% of 1,030 bytes</title></rect>
 <rect x="627.0" y="363.0" width="14.8" height="14.9" fill="#333633"><title>unsorted/fn_00516000.cpp: 0.0% of 1,024 bytes</title></rect>
 <rect x="627.0" y="378.0" width="14.8" height="14.9" fill="#333633"><title>unsorted/fn_004C2000.cpp: 0.0% of 1,023 bytes</title></rect>
@@ -832,7 +832,7 @@
 <rect x="800.6" y="241.7" width="14.3" height="14.7" fill="#333633"><title>unsorted/fn_00712F20.cpp: 0.0% of 978 bytes</title></rect>
 <rect x="815.0" y="241.7" width="14.3" height="14.7" fill="#333633"><title>unsorted/tShipRelayS.cpp: 0.0% of 975 bytes</title></rect>
 <rect x="829.3" y="241.7" width="14.2" height="14.7" fill="#333633"><title>unsorted/fn_0056A9D5.cpp: 0.0% of 972 bytes</title></rect>
-<rect x="843.5" y="241.7" width="14.2" height="14.7" fill="#333633"><title>unsorted/tSoundChannel.cpp: 0.0% of 971 bytes</title></rect>
+<rect x="843.5" y="241.7" width="14.2" height="14.7" fill="#3c883c"><title>unsorted/tSoundChannel.cpp: 91.9% of 971 bytes</title></rect>
 <rect x="857.7" y="241.7" width="14.2" height="14.7" fill="#333633"><title>unsorted/fn_0059A000.cpp: 0.0% of 968 bytes</title></rect>
 <rect x="871.9" y="241.7" width="14.2" height="14.7" fill="#333633"><title>unsorted/tFx_IonStorm.cpp: 0.0% of 967 bytes</title></rect>
 <rect x="886.1" y="241.7" width="14.2" height="14.7" fill="#333633"><title>unsorted/tVariableBtn.cpp: 0.0% of 967 bytes</title></rect>
@@ -926,7 +926,7 @@
 <rect x="788.6" y="270.1" width="13.2" height="13.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tRepairShipsRequest.cpp: 0.0% of 808 bytes</title></rect>
 <rect x="801.8" y="270.1" width="13.2" height="13.1" fill="#333633"><title>unsorted/tFx_MaulerMuzzleFlash.cpp: 0.0% of 808 bytes</title></rect>
 <rect x="815.0" y="270.1" width="13.2" height="13.1" fill="#333633"><title>unsorted/fn_005D159C.cpp: 0.0% of 806 bytes</title></rect>
-<rect x="828.2" y="270.1" width="13.1" height="13.1" fill="#333633"><title>unsorted/fn_00601343.cpp: 0.0% of 804 bytes</title></rect>
+<rect x="828.2" y="270.1" width="13.1" height="13.1" fill="#386738"><title>unsorted/fn_00601343.cpp: 54.6% of 804 bytes</title></rect>
 <rect x="841.3" y="270.1" width="13.1" height="13.1" fill="#3d8c3d"><title>unsorted/tApp3dBase.cpp: 96.5% of 804 bytes</title></rect>
 <rect x="854.5" y="270.1" width="13.1" height="13.1" fill="#333633"><title>unsorted/fn_00562199.cpp: 0.0% of 802 bytes</title></rect>
 <rect x="867.6" y="270.1" width="13.1" height="13.1" fill="#333633"><title>unsorted/tEntity_HellboreBlast.cpp: 0.0% of 802 bytes</title></rect>
@@ -940,12 +940,12 @@
 <rect x="971.9" y="270.1" width="13.0" height="13.1" fill="#333633"><title>unsorted/tEntity_Placeholder.cpp: 0.0% of 792 bytes</title></rect>
 <rect x="668.9" y="283.3" width="12.6" height="13.5" fill="#333633"><title>unsorted/tHelmPanel.cpp: 0.0% of 790 bytes</title></rect>
 <rect x="668.9" y="296.7" width="12.6" height="13.4" fill="#333633"><title>unsorted/fn_005A6BFF.cpp: 0.0% of 787 bytes</title></rect>
-<rect x="668.9" y="310.1" width="12.6" height="13.4" fill="#333633"><title>unsorted/tAIUnitData.cpp: 0.0% of 787 bytes</title></rect>
+<rect x="668.9" y="310.1" width="12.6" height="13.4" fill="#396b39"><title>unsorted/tAIUnitData.cpp: 59.7% of 787 bytes</title></rect>
 <rect x="668.9" y="323.5" width="12.6" height="13.4" fill="#333633"><title>unsorted/tHelpWinMgr_SFC.cpp: 0.0% of 787 bytes</title></rect>
 <rect x="668.9" y="336.9" width="12.6" height="13.4" fill="#333633"><title>unsorted/tNavigatorAsset.cpp: 0.0% of 785 bytes</title></rect>
 <rect x="668.9" y="350.3" width="12.6" height="13.3" fill="#333633"><title>unsorted/fn_0059C000.cpp: 0.0% of 782 bytes</title></rect>
 <rect x="668.9" y="363.6" width="12.6" height="13.3" fill="#333633"><title>unsorted/fn_0043B000.cpp: 0.0% of 779 bytes</title></rect>
-<rect x="668.9" y="376.9" width="12.6" height="13.3" fill="#333633"><title>unsorted/tVisGroupAsset.cpp: 0.0% of 779 bytes</title></rect>
+<rect x="668.9" y="376.9" width="12.6" height="13.3" fill="#375637"><title>unsorted/tVisGroupAsset.cpp: 35.5% of 779 bytes</title></rect>
 <rect x="668.9" y="390.2" width="12.6" height="13.2" fill="#333633"><title>unsorted/fn_0045A000.cpp: 0.0% of 777 bytes</title></rect>
 <rect x="668.9" y="403.4" width="12.6" height="13.2" fill="#333633"><title>unsorted/nAsyncMissionProcedures__tTurnBreak.cpp: 0.0% of 777 bytes</title></rect>
 <rect x="668.9" y="416.6" width="12.6" height="13.2" fill="#333633"><title>unsorted/tScrollBoxAsset.cpp: 0.0% of 777 bytes</title></rect>
@@ -964,7 +964,7 @@
 <rect x="668.9" y="586.2" width="12.6" height="12.8" fill="#333633"><title>unsorted/fn_0050B659.cpp: 0.0% of 752 bytes</title></rect>
 <rect x="681.5" y="283.3" width="13.0" height="12.5" fill="#333633"><title>unsorted/fn_00735CD5.cpp: 0.0% of 752 bytes</title></rect>
 <rect x="694.5" y="283.3" width="13.0" height="12.5" fill="#333633"><title>unsorted/nStoredProcedureArguments__tBidRequest__tBidResponse.cpp: 0.0% of 752 bytes</title></rect>
-<rect x="707.5" y="283.3" width="12.9" height="12.5" fill="#333633"><title>unsorted/fn_00424D28.cpp: 0.0% of 751 bytes</title></rect>
+<rect x="707.5" y="283.3" width="12.9" height="12.5" fill="#396b39"><title>unsorted/fn_00424D28.cpp: 59.8% of 751 bytes</title></rect>
 <rect x="720.4" y="283.3" width="12.9" height="12.5" fill="#333633"><title>unsorted/tScrollText_Base.cpp: 0.0% of 748 bytes</title></rect>
 <rect x="733.3" y="283.3" width="12.9" height="12.5" fill="#333633"><title>unsorted/fn_004ED97D.cpp: 0.0% of 747 bytes</title></rect>
 <rect x="746.2" y="283.3" width="12.8" height="12.5" fill="#333633"><title>unsorted/fn_00564A0B.cpp: 0.0% of 744 bytes</title></rect>
@@ -986,7 +986,7 @@
 <rect x="947.9" y="283.3" width="12.4" height="12.5" fill="#333633"><title>unsorted/tMetaClientChatCtlrC.cpp: 0.0% of 717 bytes</title></rect>
 <rect x="960.3" y="283.3" width="12.3" height="12.5" fill="#333633"><title>unsorted/fn_006A8000.cpp: 0.0% of 713 bytes</title></rect>
 <rect x="972.6" y="283.3" width="12.3" height="12.5" fill="#333633"><title>unsorted/fn_0058DDA5.cpp: 0.0% of 712 bytes</title></rect>
-<rect x="681.5" y="295.8" width="12.4" height="12.4" fill="#333633"><title>unsorted/fn_00521D73.cpp: 0.0% of 711 bytes</title></rect>
+<rect x="681.5" y="295.8" width="12.4" height="12.4" fill="#354435"><title>unsorted/fn_00521D73.cpp: 16.0% of 711 bytes</title></rect>
 <rect x="681.5" y="308.1" width="12.4" height="12.3" fill="#333633"><title>unsorted/tPrefsPanel.cpp: 0.0% of 706 bytes</title></rect>
 <rect x="681.5" y="320.4" width="12.4" height="12.3" fill="#333633"><title>unsorted/tFx_Pulsar.cpp: 0.0% of 705 bytes</title></rect>
 <rect x="681.5" y="332.7" width="12.4" height="12.3" fill="#333633"><title>unsorted/tImageSegment.cpp: 0.0% of 705 bytes</title></rect>
@@ -1004,10 +1004,10 @@
 <rect x="681.5" y="478.7" width="12.4" height="12.1" fill="#333633"><title>unsorted/fn_00444D81.cpp: 0.0% of 694 bytes</title></rect>
 <rect x="681.5" y="490.7" width="12.4" height="12.1" fill="#333633"><title>unsorted/fn_005F1000.cpp: 0.0% of 694 bytes</title></rect>
 <rect x="681.5" y="502.8" width="12.4" height="12.1" fill="#333633"><title>unsorted/tScrollBarButton.cpp: 0.0% of 693 bytes</title></rect>
-<rect x="681.5" y="514.9" width="12.4" height="12.0" fill="#333633"><title>unsorted/fn_00427000.cpp: 0.0% of 692 bytes</title></rect>
+<rect x="681.5" y="514.9" width="12.4" height="12.0" fill="#333933"><title>unsorted/fn_00427000.cpp: 3.1% of 692 bytes</title></rect>
 <rect x="681.5" y="526.9" width="12.4" height="12.0" fill="#333633"><title>unsorted/fn_00572BBC.cpp: 0.0% of 692 bytes</title></rect>
 <rect x="681.5" y="539.0" width="12.4" height="12.0" fill="#333633"><title>unsorted/fn_00672000.cpp: 0.0% of 692 bytes</title></rect>
-<rect x="681.5" y="551.0" width="12.4" height="12.0" fill="#333633"><title>unsorted/tVisGroup.cpp: 0.0% of 692 bytes</title></rect>
+<rect x="681.5" y="551.0" width="12.4" height="12.0" fill="#3d8f3d"><title>unsorted/tVisGroup.cpp: 100.0% of 692 bytes</title></rect>
 <rect x="681.5" y="563.1" width="12.4" height="12.0" fill="#333633"><title>unsorted/fn_005619E3.cpp: 0.0% of 691 bytes</title></rect>
 <rect x="681.5" y="575.1" width="12.4" height="12.0" fill="#333633"><title>unsorted/tFx_Organian.cpp: 0.0% of 689 bytes</title></rect>
 <rect x="681.5" y="587.1" width="12.4" height="11.9" fill="#333633"><title>unsorted/tAIDisruptorOfficer.cpp: 0.0% of 685 bytes</title></rect>
@@ -1030,7 +1030,7 @@
 <rect x="888.9" y="295.8" width="12.1" height="12.0" fill="#333633"><title>unsorted/fn_006AD000.cpp: 0.0% of 671 bytes</title></rect>
 <rect x="900.9" y="295.8" width="12.1" height="12.0" fill="#333633"><title>unsorted/tSliderAsset.cpp: 0.0% of 671 bytes</title></rect>
 <rect x="913.0" y="295.8" width="12.0" height="12.0" fill="#333633"><title>unsorted/fn_0043AE3E.cpp: 0.0% of 669 bytes</title></rect>
-<rect x="925.0" y="295.8" width="12.0" height="12.0" fill="#333633"><title>unsorted/fn_00503DAC.cpp: 0.0% of 669 bytes</title></rect>
+<rect x="925.0" y="295.8" width="12.0" height="12.0" fill="#3a753a"><title>unsorted/fn_00503DAC.cpp: 71.3% of 669 bytes</title></rect>
 <rect x="937.0" y="295.8" width="12.0" height="12.0" fill="#333633"><title>unsorted/fn_0071D6B0.cpp: 0.0% of 667 bytes</title></rect>
 <rect x="949.0" y="295.8" width="12.0" height="12.0" fill="#333633"><title>unsorted/fn_006AE000.cpp: 0.0% of 666 bytes</title></rect>
 <rect x="961.0" y="295.8" width="11.9" height="12.0" fill="#333633"><title>unsorted/fn_0050E21D.cpp: 0.0% of 665 bytes</title></rect>
@@ -1095,7 +1095,7 @@
 <rect x="705.4" y="410.7" width="11.5" height="11.3" fill="#333633"><title>unsorted/tState_Namespace_Upsell__tState_Upsell.cpp: 0.0% of 603 bytes</title></rect>
 <rect x="705.4" y="422.0" width="11.5" height="11.3" fill="#333633"><title>unsorted/fn_0058F952.cpp: 0.0% of 601 bytes</title></rect>
 <rect x="705.4" y="433.3" width="11.5" height="11.2" fill="#333633"><title>unsorted/nStoredProcedureArguments__tMetaMapMoveRequest__tMetaMapMoveResponse.cpp: 0.0% of 598 bytes</title></rect>
-<rect x="705.4" y="444.5" width="11.5" height="11.2" fill="#333633"><title>unsorted/fn_00421000.cpp: 0.0% of 597 bytes</title></rect>
+<rect x="705.4" y="444.5" width="11.5" height="11.2" fill="#375c37"><title>unsorted/fn_00421000.cpp: 42.2% of 597 bytes</title></rect>
 <rect x="705.4" y="455.7" width="11.5" height="11.2" fill="#333633"><title>unsorted/fn_0060E7A5.cpp: 0.0% of 597 bytes</title></rect>
 <rect x="705.4" y="466.8" width="11.5" height="11.2" fill="#333633"><title>unsorted/fn_0052BE16.cpp: 0.0% of 596 bytes</title></rect>
 <rect x="705.4" y="478.0" width="11.5" height="11.1" fill="#333633"><title>unsorted/fn_0056E000.cpp: 0.0% of 595 bytes</title></rect>
@@ -1174,7 +1174,7 @@
 <rect x="716.9" y="482.8" width="10.5" height="10.7" fill="#333633"><title>unsorted/fn_005A65D7.cpp: 0.0% of 523 bytes</title></rect>
 <rect x="716.9" y="493.5" width="10.5" height="10.7" fill="#333633"><title>unsorted/fn_004D9000.cpp: 0.0% of 521 bytes</title></rect>
 <rect x="716.9" y="504.1" width="10.5" height="10.7" fill="#333633"><title>unsorted/fn_005AC4E1.cpp: 0.0% of 521 bytes</title></rect>
-<rect x="716.9" y="514.8" width="10.5" height="10.6" fill="#333633"><title>unsorted/fn_00602000.cpp: 0.0% of 519 bytes</title></rect>
+<rect x="716.9" y="514.8" width="10.5" height="10.6" fill="#343e34"><title>unsorted/fn_00602000.cpp: 8.7% of 519 bytes</title></rect>
 <rect x="716.9" y="525.4" width="10.5" height="10.6" fill="#333633"><title>unsorted/fn_006716F0.cpp: 0.0% of 519 bytes</title></rect>
 <rect x="716.9" y="536.0" width="10.5" height="10.6" fill="#333633"><title>unsorted/tTextButtonAsset.cpp: 0.0% of 518 bytes</title></rect>
 <rect x="716.9" y="546.6" width="10.5" height="10.5" fill="#333633"><title>unsorted/fn_004E5000.cpp: 0.0% of 514 bytes</title></rect>
@@ -1264,7 +1264,7 @@
 <rect x="737.9" y="412.2" width="9.9" height="10.0" fill="#333633"><title>unsorted/fn_0071D000.cpp: 0.0% of 459 bytes</title></rect>
 <rect x="737.9" y="422.1" width="9.9" height="9.9" fill="#333633"><title>unsorted/fn_0042E000.cpp: 0.0% of 456 bytes</title></rect>
 <rect x="737.9" y="432.0" width="9.9" height="9.9" fill="#333633"><title>unsorted/tESGPanel.cpp: 0.0% of 456 bytes</title></rect>
-<rect x="737.9" y="441.9" width="9.9" height="9.9" fill="#333633"><title>unsorted/fn_00500000.cpp: 0.0% of 455 bytes</title></rect>
+<rect x="737.9" y="441.9" width="9.9" height="9.9" fill="#375d37"><title>unsorted/fn_00500000.cpp: 44.3% of 455 bytes</title></rect>
 <rect x="737.9" y="451.8" width="9.9" height="9.9" fill="#333633"><title>unsorted/fn_00560F46.cpp: 0.0% of 455 bytes</title></rect>
 <rect x="737.9" y="461.7" width="9.9" height="9.9" fill="#333633"><title>unsorted/tDisruptorPanel.cpp: 0.0% of 454 bytes</title></rect>
 <rect x="737.9" y="471.5" width="9.9" height="9.9" fill="#333633"><title>unsorted/tHeavyDisruptorPanel.cpp: 0.0% of 454 bytes</title></rect>
@@ -1296,7 +1296,7 @@
 <rect x="747.8" y="491.7" width="9.6" height="9.9" fill="#333633"><title>unsorted/tGroupCell.cpp: 0.0% of 440 bytes</title></rect>
 <rect x="747.8" y="501.5" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_00677EC0.cpp: 0.0% of 438 bytes</title></rect>
 <rect x="747.8" y="511.4" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_004D6E73.cpp: 0.0% of 437 bytes</title></rect>
-<rect x="747.8" y="521.1" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_00501000.cpp: 0.0% of 437 bytes</title></rect>
+<rect x="747.8" y="521.1" width="9.6" height="9.8" fill="#385e38"><title>unsorted/fn_00501000.cpp: 45.1% of 437 bytes</title></rect>
 <rect x="747.8" y="530.9" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_0053CAB7.cpp: 0.0% of 437 bytes</title></rect>
 <rect x="747.8" y="540.7" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_0059655F.cpp: 0.0% of 437 bytes</title></rect>
 <rect x="747.8" y="550.5" width="9.6" height="9.8" fill="#333633"><title>unsorted/fn_00634000.cpp: 0.0% of 436 bytes</title></rect>
@@ -1320,7 +1320,7 @@
 <rect x="881.4" y="362.1" width="9.5" height="9.7" fill="#333633"><title>unsorted/fn_00567B8C.cpp: 0.0% of 425 bytes</title></rect>
 <rect x="890.8" y="362.1" width="9.5" height="9.7" fill="#333633"><title>unsorted/nSwitch__tDataHandler.cpp: 0.0% of 425 bytes</title></rect>
 <rect x="900.3" y="362.1" width="9.5" height="9.7" fill="#333633"><title>unsorted/tGameSpeedBar.cpp: 0.0% of 425 bytes</title></rect>
-<rect x="909.7" y="362.1" width="9.4" height="9.7" fill="#333633"><title>unsorted/fn_00502000.cpp: 0.0% of 423 bytes</title></rect>
+<rect x="909.7" y="362.1" width="9.4" height="9.7" fill="#375637"><title>unsorted/fn_00502000.cpp: 35.7% of 423 bytes</title></rect>
 <rect x="919.2" y="362.1" width="9.4" height="9.7" fill="#333633"><title>unsorted/nAsyncMissionProcedures__tMatchCharacter.cpp: 0.0% of 423 bytes</title></rect>
 <rect x="928.6" y="362.1" width="9.4" height="9.7" fill="#333633"><title>unsorted/tMultiESGPanel.cpp: 0.0% of 423 bytes</title></rect>
 <rect x="938.0" y="362.1" width="9.4" height="9.7" fill="#333633"><title>unsorted/tShipUI.cpp: 0.0% of 423 bytes</title></rect>
@@ -1355,7 +1355,7 @@
 <rect x="766.8" y="371.8" width="9.3" height="9.3" fill="#333633"><title>unsorted/tMetaClientPanel.cpp: 0.0% of 402 bytes</title></rect>
 <rect x="776.0" y="371.8" width="9.3" height="9.3" fill="#333633"><title>unsorted/tMissionProfile__tMissionInfo.cpp: 0.0% of 402 bytes</title></rect>
 <rect x="785.3" y="371.8" width="9.2" height="9.3" fill="#333633"><title>unsorted/fn_005669E7.cpp: 0.0% of 400 bytes</title></rect>
-<rect x="794.5" y="371.8" width="9.2" height="9.3" fill="#333633"><title>unsorted/fn_00600BE5.cpp: 0.0% of 400 bytes</title></rect>
+<rect x="794.5" y="371.8" width="9.2" height="9.3" fill="#00d000"><title>unsorted/fn_00600BE5.cpp: 100.0% of 400 bytes</title></rect>
 <rect x="803.7" y="371.8" width="9.2" height="9.3" fill="#333633"><title>unsorted/tGDISurface.cpp: 0.0% of 400 bytes</title></rect>
 <rect x="813.0" y="371.8" width="9.2" height="9.3" fill="#333633"><title>unsorted/tSFCFireButton.cpp: 0.0% of 400 bytes</title></rect>
 <rect x="822.2" y="371.8" width="9.2" height="9.3" fill="#333633"><title>unsorted/nStoredProcedureArguments__tUpdateCharactersRequest.cpp: 0.0% of 398 bytes</title></rect>
@@ -1370,7 +1370,7 @@
 <rect x="904.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_00568538.cpp: 0.0% of 391 bytes</title></rect>
 <rect x="913.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/tMultiPhaserXPanel.cpp: 0.0% of 391 bytes</title></rect>
 <rect x="922.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_004BEE21.cpp: 0.0% of 390 bytes</title></rect>
-<rect x="931.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_00503000.cpp: 0.0% of 390 bytes</title></rect>
+<rect x="931.1" y="371.8" width="9.0" height="9.3" fill="#396d39"><title>unsorted/fn_00503000.cpp: 61.6% of 390 bytes</title></rect>
 <rect x="940.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_00451380.cpp: 0.0% of 389 bytes</title></rect>
 <rect x="949.1" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_004DEF3D.cpp: 0.0% of 389 bytes</title></rect>
 <rect x="958.0" y="371.8" width="9.0" height="9.3" fill="#333633"><title>unsorted/fn_004EECAD.cpp: 0.0% of 389 bytes</title></rect>
@@ -1404,7 +1404,7 @@
 <rect x="784.6" y="381.1" width="8.9" height="9.1" fill="#333633"><title>unsorted/fn_005ABAD3.cpp: 0.0% of 373 bytes</title></rect>
 <rect x="793.5" y="381.1" width="8.9" height="9.1" fill="#333633"><title>unsorted/fn_005CE3BC.cpp: 0.0% of 373 bytes</title></rect>
 <rect x="802.3" y="381.1" width="8.8" height="9.1" fill="#333633"><title>unsorted/fn_005603A4.cpp: 0.0% of 372 bytes</title></rect>
-<rect x="811.2" y="381.1" width="8.8" height="9.1" fill="#333633"><title>unsorted/tChannelAttributes.cpp: 0.0% of 372 bytes</title></rect>
+<rect x="811.2" y="381.1" width="8.8" height="9.1" fill="#3d8b3d"><title>unsorted/tChannelAttributes.cpp: 95.7% of 372 bytes</title></rect>
 <rect x="820.0" y="381.1" width="8.8" height="9.1" fill="#333633"><title>unsorted/tShuttleButton.cpp: 0.0% of 371 bytes</title></rect>
 <rect x="828.8" y="381.1" width="8.8" height="9.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tPushMatchedMission.cpp: 0.0% of 370 bytes</title></rect>
 <rect x="837.6" y="381.1" width="8.8" height="9.1" fill="#333633"><title>unsorted/fn_00436945.cpp: 0.0% of 369 bytes</title></rect>
@@ -1450,7 +1450,7 @@
 <rect x="775.7" y="590.5" width="8.8" height="8.5" fill="#333633"><title>unsorted/fn_005E151A.cpp: 0.0% of 348 bytes</title></rect>
 <rect x="784.5" y="390.2" width="8.9" height="8.4" fill="#333633"><title>unsorted/fn_00560585.cpp: 0.0% of 347 bytes</title></rect>
 <rect x="793.4" y="390.2" width="8.9" height="8.4" fill="#333633"><title>unsorted/fn_00562DE4.cpp: 0.0% of 347 bytes</title></rect>
-<rect x="802.2" y="390.2" width="8.8" height="8.4" fill="#333633"><title>unsorted/fn_00504316.cpp: 0.0% of 345 bytes</title></rect>
+<rect x="802.2" y="390.2" width="8.8" height="8.4" fill="#365336"><title>unsorted/fn_00504316.cpp: 32.1% of 345 bytes</title></rect>
 <rect x="811.0" y="390.2" width="8.8" height="8.4" fill="#333633"><title>unsorted/fn_004C7732.cpp: 0.0% of 344 bytes</title></rect>
 <rect x="819.8" y="390.2" width="8.8" height="8.4" fill="#333633"><title>unsorted/fn_005A2000.cpp: 0.0% of 344 bytes</title></rect>
 <rect x="828.6" y="390.2" width="8.8" height="8.4" fill="#333633"><title>unsorted/fn_006AB000.cpp: 0.0% of 344 bytes</title></rect>
@@ -1511,7 +1511,7 @@
 <rect x="784.5" y="516.4" width="8.4" height="8.3" fill="#333633"><title>unsorted/tStoresState__tFighterInfo.cpp: 0.0% of 325 bytes</title></rect>
 <rect x="784.5" y="524.7" width="8.4" height="8.3" fill="#333633"><title>unsorted/tTeamInfo.cpp: 0.0% of 325 bytes</title></rect>
 <rect x="784.5" y="533.0" width="8.4" height="8.3" fill="#333633"><title>unsorted/fn_00640000.cpp: 0.0% of 324 bytes</title></rect>
-<rect x="784.5" y="541.3" width="8.4" height="8.3" fill="#333633"><title>unsorted/fn_00661000.cpp: 0.0% of 324 bytes</title></rect>
+<rect x="784.5" y="541.3" width="8.4" height="8.3" fill="#3b813b"><title>unsorted/fn_00661000.cpp: 84.7% of 324 bytes</title></rect>
 <rect x="784.5" y="549.6" width="8.4" height="8.3" fill="#333633"><title>unsorted/nSwitch__tAsyncDataHandler.cpp: 0.0% of 323 bytes</title></rect>
 <rect x="784.5" y="557.9" width="8.4" height="8.3" fill="#333633"><title>unsorted/tEntityWayPntMarker.cpp: 0.0% of 323 bytes</title></rect>
 <rect x="784.5" y="566.1" width="8.4" height="8.2" fill="#333633"><title>unsorted/fn_00459000.cpp: 0.0% of 322 bytes</title></rect>
@@ -1535,7 +1535,7 @@
 <rect x="792.9" y="524.6" width="8.1" height="8.3" fill="#333633"><title>unsorted/fn_005F0F42.cpp: 0.0% of 314 bytes</title></rect>
 <rect x="792.9" y="532.9" width="8.1" height="8.3" fill="#333633"><title>unsorted/nStoredProcedureArguments__tChooseMissionRequest.cpp: 0.0% of 314 bytes</title></rect>
 <rect x="792.9" y="541.2" width="8.1" height="8.3" fill="#333633"><title>unsorted/fn_00438B2A.cpp: 0.0% of 313 bytes</title></rect>
-<rect x="792.9" y="549.5" width="8.1" height="8.3" fill="#333633"><title>unsorted/fn_00504B65.cpp: 0.0% of 313 bytes</title></rect>
+<rect x="792.9" y="549.5" width="8.1" height="8.3" fill="#375637"><title>unsorted/fn_00504B65.cpp: 36.1% of 313 bytes</title></rect>
 <rect x="792.9" y="557.8" width="8.1" height="8.3" fill="#333633"><title>unsorted/fn_005C8542.cpp: 0.0% of 313 bytes</title></rect>
 <rect x="792.9" y="566.0" width="8.1" height="8.3" fill="#333633"><title>unsorted/fn_0071D1F0.cpp: 0.0% of 313 bytes</title></rect>
 <rect x="792.9" y="574.3" width="8.1" height="8.2" fill="#333633"><title>unsorted/fn_0040CCFF.cpp: 0.0% of 312 bytes</title></rect>
@@ -1572,7 +1572,7 @@
 <rect x="801.0" y="455.9" width="7.7" height="8.1" fill="#333633"><title>unsorted/fn_006A7B00.cpp: 0.0% of 290 bytes</title></rect>
 <rect x="801.0" y="464.1" width="7.7" height="8.1" fill="#333633"><title>unsorted/tSensorPanel.cpp: 0.0% of 290 bytes</title></rect>
 <rect x="801.0" y="472.2" width="7.7" height="8.1" fill="#333633"><title>unsorted/fn_004F4000.cpp: 0.0% of 288 bytes</title></rect>
-<rect x="801.0" y="480.2" width="7.7" height="8.0" fill="#333633"><title>unsorted/fn_00520AB2.cpp: 0.0% of 287 bytes</title></rect>
+<rect x="801.0" y="480.2" width="7.7" height="8.0" fill="#3d8e3d"><title>unsorted/fn_00520AB2.cpp: 98.5% of 287 bytes</title></rect>
 <rect x="801.0" y="488.2" width="7.7" height="8.0" fill="#333633"><title>unsorted/tTeamSpec.cpp: 0.0% of 287 bytes</title></rect>
 <rect x="801.0" y="496.3" width="7.7" height="8.0" fill="#333633"><title>unsorted/fn_006A1000.cpp: 0.0% of 286 bytes</title></rect>
 <rect x="801.0" y="504.3" width="7.7" height="8.0" fill="#333633"><title>unsorted/fn_0070E300.cpp: 0.0% of 286 bytes</title></rect>
@@ -1587,7 +1587,7 @@
 <rect x="801.0" y="575.6" width="7.7" height="7.8" fill="#333633"><title>unsorted/nStoredProcedureArguments__tTakeCensusRequest.cpp: 0.0% of 280 bytes</title></rect>
 <rect x="801.0" y="583.4" width="7.7" height="7.8" fill="#333633"><title>unsorted/fn_00597B40.cpp: 0.0% of 279 bytes</title></rect>
 <rect x="801.0" y="591.2" width="7.7" height="7.8" fill="#333633"><title>unsorted/fn_00737B72.cpp: 0.0% of 279 bytes</title></rect>
-<rect x="808.7" y="415.3" width="7.8" height="7.6" fill="#333633"><title>unsorted/fn_006003C2.cpp: 0.0% of 276 bytes</title></rect>
+<rect x="808.7" y="415.3" width="7.8" height="7.6" fill="#00d000"><title>unsorted/fn_006003C2.cpp: 100.0% of 276 bytes</title></rect>
 <rect x="816.5" y="415.3" width="7.8" height="7.6" fill="#333633"><title>unsorted/tBridgeSystem.cpp: 0.0% of 276 bytes</title></rect>
 <rect x="824.3" y="415.3" width="7.8" height="7.6" fill="#333633"><title>unsorted/tMetaMapSprite.cpp: 0.0% of 276 bytes</title></rect>
 <rect x="832.0" y="415.3" width="7.7" height="7.6" fill="#333633"><title>unsorted/bad_typeid.cpp: 0.0% of 275 bytes</title></rect>
@@ -1615,7 +1615,7 @@
 <rect x="808.7" y="438.5" width="7.4" height="7.8" fill="#333633"><title>unsorted/tFlagBridgeSystem.cpp: 0.0% of 266 bytes</title></rect>
 <rect x="808.7" y="446.2" width="7.4" height="7.7" fill="#333633"><title>unsorted/nStoredProcedureArguments__tMetaMapDataRequest.cpp: 0.0% of 265 bytes</title></rect>
 <rect x="808.7" y="453.9" width="7.4" height="7.7" fill="#333633"><title>unsorted/tListBox_News_Session.cpp: 0.0% of 265 bytes</title></rect>
-<rect x="808.7" y="461.7" width="7.4" height="7.7" fill="#333633"><title>unsorted/fn_005053EC.cpp: 0.0% of 264 bytes</title></rect>
+<rect x="808.7" y="461.7" width="7.4" height="7.7" fill="#354a35"><title>unsorted/fn_005053EC.cpp: 22.7% of 264 bytes</title></rect>
 <rect x="808.7" y="469.4" width="7.4" height="7.7" fill="#333633"><title>unsorted/fn_005AC17B.cpp: 0.0% of 264 bytes</title></rect>
 <rect x="808.7" y="477.1" width="7.4" height="7.7" fill="#333633"><title>unsorted/tDDPixFmt.cpp: 0.0% of 264 bytes</title></rect>
 <rect x="808.7" y="484.8" width="7.4" height="7.7" fill="#333633"><title>unsorted/tMissionCompleteResults.cpp: 0.0% of 264 bytes</title></rect>
@@ -1646,7 +1646,7 @@
 <rect x="890.3" y="422.9" width="7.4" height="7.4" fill="#333633"><title>unsorted/fn_00558D27.cpp: 0.0% of 255 bytes</title></rect>
 <rect x="897.6" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/fn_005EBFBE.cpp: 0.0% of 254 bytes</title></rect>
 <rect x="905.0" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/fn_00438CEA.cpp: 0.0% of 252 bytes</title></rect>
-<rect x="912.2" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/fn_00600208.cpp: 0.0% of 252 bytes</title></rect>
+<rect x="912.2" y="422.9" width="7.3" height="7.4" fill="#00d000"><title>unsorted/fn_00600208.cpp: 100.0% of 252 bytes</title></rect>
 <rect x="919.5" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/fn_006214F0.cpp: 0.0% of 252 bytes</title></rect>
 <rect x="926.8" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/fn_006945C0.cpp: 0.0% of 252 bytes</title></rect>
 <rect x="934.1" y="422.9" width="7.3" height="7.4" fill="#333633"><title>unsorted/tMultiStateSel.cpp: 0.0% of 252 bytes</title></rect>
@@ -1677,7 +1677,7 @@
 <rect x="816.1" y="562.8" width="7.3" height="7.3" fill="#3c853c"><title>unsorted/tBoundAsset.cpp: 88.6% of 246 bytes</title></rect>
 <rect x="816.1" y="570.1" width="7.3" height="7.3" fill="#333633"><title>unsorted/tQuickTipMgr_SFC__tQuickTipText.cpp: 0.0% of 246 bytes</title></rect>
 <rect x="816.1" y="577.3" width="7.3" height="7.2" fill="#333633"><title>unsorted/fn_004AF000.cpp: 0.0% of 245 bytes</title></rect>
-<rect x="816.1" y="584.6" width="7.3" height="7.2" fill="#333633"><title>unsorted/fn_00601000.cpp: 0.0% of 245 bytes</title></rect>
+<rect x="816.1" y="584.6" width="7.3" height="7.2" fill="#344334"><title>unsorted/fn_00601000.cpp: 14.7% of 245 bytes</title></rect>
 <rect x="816.1" y="591.8" width="7.3" height="7.2" fill="#333633"><title>unsorted/fn_005CF909.cpp: 0.0% of 244 bytes</title></rect>
 <rect x="823.4" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/fn_005CFE9D.cpp: 0.0% of 244 bytes</title></rect>
 <rect x="830.8" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/tEntity_IonStorm.cpp: 0.0% of 244 bytes</title></rect>
@@ -1687,14 +1687,14 @@
 <rect x="860.5" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/fn_00598000.cpp: 0.0% of 243 bytes</title></rect>
 <rect x="867.9" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tMetaMapDescStore.cpp: 0.0% of 243 bytes</title></rect>
 <rect x="875.3" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/tAIHeavyPhaserOfficer.cpp: 0.0% of 243 bytes</title></rect>
-<rect x="882.6" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/fn_00505D0A.cpp: 0.0% of 242 bytes</title></rect>
+<rect x="882.6" y="430.4" width="7.4" height="7.1" fill="#375c37"><title>unsorted/fn_00505D0A.cpp: 42.1% of 242 bytes</title></rect>
 <rect x="890.0" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/fn_00568000.cpp: 0.0% of 242 bytes</title></rect>
 <rect x="897.4" y="430.4" width="7.4" height="7.1" fill="#333633"><title>unsorted/tMetaSpecLoader__tCreateShipParams.cpp: 0.0% of 242 bytes</title></rect>
 <rect x="904.7" y="430.4" width="7.3" height="7.1" fill="#396a39"><title>unsorted/tFighterSpecMgr.cpp: 58.5% of 241 bytes</title></rect>
 <rect x="912.1" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/fn_0043583D.cpp: 0.0% of 240 bytes</title></rect>
 <rect x="919.4" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/fn_00768000.cpp: 0.0% of 240 bytes</title></rect>
 <rect x="926.7" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/fn_0076E000.cpp: 0.0% of 240 bytes</title></rect>
-<rect x="934.0" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/t3DSoundProfile.cpp: 0.0% of 240 bytes</title></rect>
+<rect x="934.0" y="430.4" width="7.3" height="7.1" fill="#396b39"><title>unsorted/t3DSoundProfile.cpp: 60.0% of 240 bytes</title></rect>
 <rect x="941.3" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/tGenericRectAsset.cpp: 0.0% of 240 bytes</title></rect>
 <rect x="948.6" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/fn_00604000.cpp: 0.0% of 239 bytes</title></rect>
 <rect x="955.9" y="430.4" width="7.3" height="7.1" fill="#333633"><title>unsorted/tFSCookiePart.cpp: 0.0% of 239 bytes</title></rect>
@@ -1703,7 +1703,7 @@
 <rect x="977.6" y="430.4" width="7.2" height="7.1" fill="#333633"><title>unsorted/tEconomySettings.cpp: 0.0% of 237 bytes</title></rect>
 <rect x="823.4" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/fn_0051A0B1.cpp: 0.0% of 236 bytes</title></rect>
 <rect x="830.5" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/tAnimatingSprite.cpp: 0.0% of 236 bytes</title></rect>
-<rect x="837.7" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/fn_00506000.cpp: 0.0% of 235 bytes</title></rect>
+<rect x="837.7" y="437.4" width="7.1" height="7.1" fill="#375a37"><title>unsorted/fn_00506000.cpp: 40.4% of 235 bytes</title></rect>
 <rect x="844.8" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/fn_005F6DC8.cpp: 0.0% of 235 bytes</title></rect>
 <rect x="851.9" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/fn_00614000.cpp: 0.0% of 235 bytes</title></rect>
 <rect x="859.0" y="437.4" width="7.1" height="7.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tGetClientCharacterRequest__tGetClientCharacterResponse.cpp: 0.0% of 234 bytes</title></rect>
@@ -1724,7 +1724,7 @@
 <rect x="964.1" y="437.4" width="6.9" height="7.1" fill="#333633"><title>unsorted/nAsyncMapProcedures__tTakeCensus.cpp: 0.0% of 228 bytes</title></rect>
 <rect x="971.1" y="437.4" width="6.9" height="7.1" fill="#333633"><title>unsorted/tHelpWinMgr_SFC__tMyBrowser.cpp: 0.0% of 228 bytes</title></rect>
 <rect x="978.0" y="437.4" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMapObject.cpp: 0.0% of 228 bytes</title></rect>
-<rect x="823.4" y="444.5" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMedalsPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
+<rect x="823.4" y="444.5" width="6.9" height="7.1" fill="#365336"><title>unsorted/tMedalsPanelCreator.cpp: 32.8% of 227 bytes</title></rect>
 <rect x="823.4" y="451.6" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMetaClientChatPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
 <rect x="823.4" y="458.7" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMetaClientHelpListPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
 <rect x="823.4" y="465.7" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMetaClientMissionPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
@@ -1732,9 +1732,9 @@
 <rect x="823.4" y="479.9" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMetaClientPlayerListPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
 <rect x="823.4" y="486.9" width="6.9" height="7.1" fill="#333633"><title>unsorted/tMetaClientSupplyDockPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
 <rect x="823.4" y="494.0" width="6.9" height="7.1" fill="#333633"><title>unsorted/tPlayerInfoPanelCreator.cpp: 0.0% of 227 bytes</title></rect>
-<rect x="823.4" y="501.1" width="6.9" height="7.1" fill="#333633"><title>unsorted/tPlayerRelayCCreator.cpp: 0.0% of 227 bytes</title></rect>
+<rect x="823.4" y="501.1" width="6.9" height="7.1" fill="#375b37"><title>unsorted/tPlayerRelayCCreator.cpp: 42.1% of 227 bytes</title></rect>
 <rect x="823.4" y="508.1" width="6.9" height="7.1" fill="#333633"><title>unsorted/tSecurityRelayCreator.cpp: 0.0% of 227 bytes</title></rect>
-<rect x="823.4" y="515.2" width="6.9" height="7.0" fill="#333633"><title>unsorted/fn_00600000.cpp: 0.0% of 226 bytes</title></rect>
+<rect x="823.4" y="515.2" width="6.9" height="7.0" fill="#3a763a"><title>unsorted/fn_00600000.cpp: 72.3% of 226 bytes</title></rect>
 <rect x="823.4" y="522.2" width="6.9" height="7.0" fill="#333633"><title>unsorted/tMultiMaulerPanel.cpp: 0.0% of 226 bytes</title></rect>
 <rect x="823.4" y="529.3" width="6.9" height="7.0" fill="#333633"><title>unsorted/tStatTracker.cpp: 0.0% of 225 bytes</title></rect>
 <rect x="823.4" y="536.3" width="6.9" height="7.0" fill="#333633"><title>unsorted/fn_004AE000.cpp: 0.0% of 224 bytes</title></rect>
@@ -1791,7 +1791,7 @@
 <rect x="971.6" y="444.5" width="6.6" height="6.8" fill="#333633"><title>unsorted/fn_005C8431.cpp: 0.0% of 209 bytes</title></rect>
 <rect x="978.2" y="444.5" width="6.6" height="6.8" fill="#333633"><title>unsorted/fn_005FDFE8.cpp: 0.0% of 209 bytes</title></rect>
 <rect x="837.0" y="451.3" width="6.6" height="6.8" fill="#333633"><title>unsorted/fn_004EBCF7.cpp: 0.0% of 208 bytes</title></rect>
-<rect x="837.0" y="458.1" width="6.6" height="6.8" fill="#333633"><title>unsorted/fn_00600F8D.cpp: 0.0% of 207 bytes</title></rect>
+<rect x="837.0" y="458.1" width="6.6" height="6.8" fill="#3d8e3d"><title>unsorted/fn_00600F8D.cpp: 98.6% of 207 bytes</title></rect>
 <rect x="837.0" y="464.9" width="6.6" height="6.8" fill="#333633"><title>unsorted/fn_004C098B.cpp: 0.0% of 206 bytes</title></rect>
 <rect x="837.0" y="471.7" width="6.6" height="6.8" fill="#333633"><title>unsorted/tAudioPriorityManagerPart.cpp: 0.0% of 206 bytes</title></rect>
 <rect x="837.0" y="478.5" width="6.6" height="6.8" fill="#333633"><title>unsorted/tFx_Corpses.cpp: 0.0% of 206 bytes</title></rect>
@@ -1902,7 +1902,7 @@
 <rect x="856.4" y="464.3" width="6.2" height="6.2" fill="#333633"><title>unsorted/tNotifierAgent.cpp: 0.0% of 177 bytes</title></rect>
 <rect x="862.6" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/fn_004C3F72.cpp: 0.0% of 176 bytes</title></rect>
 <rect x="868.7" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/fn_00541000.cpp: 0.0% of 176 bytes</title></rect>
-<rect x="874.9" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/fn_00601747.cpp: 0.0% of 176 bytes</title></rect>
+<rect x="874.9" y="464.3" width="6.1" height="6.2" fill="#3b7d3b"><title>unsorted/fn_00601747.cpp: 79.6% of 176 bytes</title></rect>
 <rect x="881.0" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/tEntityNameManager.cpp: 0.0% of 176 bytes</title></rect>
 <rect x="887.2" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/nSwitch__tUniqueNameClosed.cpp: 0.0% of 175 bytes</title></rect>
 <rect x="893.3" y="464.3" width="6.1" height="6.2" fill="#333633"><title>unsorted/tAntiDroneRack12.cpp: 0.0% of 175 bytes</title></rect>
@@ -1930,7 +1930,7 @@
 <rect x="899.8" y="470.4" width="6.2" height="6.0" fill="#333633"><title>unsorted/tHelpMgr_Base.cpp: 0.0% of 172 bytes</title></rect>
 <rect x="905.9" y="470.4" width="6.1" height="6.0" fill="#333633"><title>unsorted/fn_004EF000.cpp: 0.0% of 171 bytes</title></rect>
 <rect x="912.0" y="470.4" width="6.1" height="6.0" fill="#00d000"><title>unsorted/tSFCTexMgr.cpp: 100.0% of 171 bytes</title></rect>
-<rect x="918.2" y="470.4" width="6.1" height="6.0" fill="#333633"><title>unsorted/fn_00506F07.cpp: 0.0% of 170 bytes</title></rect>
+<rect x="918.2" y="470.4" width="6.1" height="6.0" fill="#396b39"><title>unsorted/fn_00506F07.cpp: 59.8% of 170 bytes</title></rect>
 <rect x="924.2" y="470.4" width="6.1" height="6.0" fill="#333633"><title>unsorted/fn_006F3000.cpp: 0.0% of 170 bytes</title></rect>
 <rect x="930.3" y="470.4" width="6.1" height="6.0" fill="#333633"><title>unsorted/fn_00766000.cpp: 0.0% of 170 bytes</title></rect>
 <rect x="936.4" y="470.4" width="6.1" height="6.0" fill="#333633"><title>unsorted/fn_0077D000.cpp: 0.0% of 170 bytes</title></rect>
@@ -1942,7 +1942,7 @@
 <rect x="972.8" y="470.4" width="6.0" height="6.0" fill="#333633"><title>unsorted/tPh2_Creator.cpp: 0.0% of 169 bytes</title></rect>
 <rect x="978.8" y="470.4" width="6.0" height="6.0" fill="#333633"><title>unsorted/nStoredProcedureArguments__tProcessBattleRequest__tProcessBattleRequestResponse.cpp: 0.0% of 168 bytes</title></rect>
 <rect x="856.4" y="476.4" width="6.1" height="5.9" fill="#333633"><title>unsorted/fn_005EB818.cpp: 0.0% of 167 bytes</title></rect>
-<rect x="856.4" y="482.4" width="6.1" height="5.9" fill="#333633"><title>unsorted/fn_00601259.cpp: 0.0% of 167 bytes</title></rect>
+<rect x="856.4" y="482.4" width="6.1" height="5.9" fill="#375837"><title>unsorted/fn_00601259.cpp: 37.7% of 167 bytes</title></rect>
 <rect x="856.4" y="488.3" width="6.1" height="5.9" fill="#333633"><title>unsorted/nStoredProcedureArguments__tGetShipsRequest__tGetShipsResponse.cpp: 0.0% of 167 bytes</title></rect>
 <rect x="856.4" y="494.2" width="6.1" height="5.9" fill="#333633"><title>unsorted/tHullSystem.cpp: 0.0% of 167 bytes</title></rect>
 <rect x="856.4" y="500.1" width="6.1" height="5.9" fill="#333633"><title>unsorted/fn_00574398.cpp: 0.0% of 166 bytes</title></rect>
@@ -1951,7 +1951,7 @@
 <rect x="856.4" y="517.8" width="6.1" height="5.8" fill="#333633"><title>unsorted/nDataStore__tBuffer.cpp: 0.0% of 165 bytes</title></rect>
 <rect x="856.4" y="523.6" width="6.1" height="5.8" fill="#333633"><title>unsorted/tNebula_Global.cpp: 0.0% of 165 bytes</title></rect>
 <rect x="856.4" y="529.5" width="6.1" height="5.8" fill="#333633"><title>unsorted/tNotifyCtrlS.cpp: 0.0% of 165 bytes</title></rect>
-<rect x="856.4" y="535.3" width="6.1" height="5.8" fill="#333633"><title>unsorted/fn_00601983.cpp: 0.0% of 164 bytes</title></rect>
+<rect x="856.4" y="535.3" width="6.1" height="5.8" fill="#00d000"><title>unsorted/fn_00601983.cpp: 100.0% of 164 bytes</title></rect>
 <rect x="856.4" y="541.1" width="6.1" height="5.8" fill="#333633"><title>unsorted/nStoredProcedureArguments__tGetFleetDataRequest__tGetFleetDataResponse.cpp: 0.0% of 164 bytes</title></rect>
 <rect x="856.4" y="546.9" width="6.1" height="5.8" fill="#333633"><title>unsorted/nStoredProcedureArguments__tServerChallengeRequest__tServerChallengeResponse.cpp: 0.0% of 164 bytes</title></rect>
 <rect x="856.4" y="552.7" width="6.1" height="5.8" fill="#333633"><title>unsorted/nStoredProcedureArguments__tVerifyClientRequest__tVerifyClientRequestResponse.cpp: 0.0% of 164 bytes</title></rect>
@@ -1970,7 +1970,7 @@
 <rect x="892.0" y="476.4" width="5.9" height="5.9" fill="#333633"><title>unsorted/fn_004C0000.cpp: 0.0% of 161 bytes</title></rect>
 <rect x="897.8" y="476.4" width="5.9" height="5.9" fill="#333633"><title>unsorted/tImpulseEngine.cpp: 0.0% of 161 bytes</title></rect>
 <rect x="903.7" y="476.4" width="5.8" height="5.9" fill="#333633"><title>unsorted/fn_0044967C.cpp: 0.0% of 160 bytes</title></rect>
-<rect x="909.5" y="476.4" width="5.8" height="5.9" fill="#333633"><title>unsorted/fn_00601CA9.cpp: 0.0% of 160 bytes</title></rect>
+<rect x="909.5" y="476.4" width="5.8" height="5.9" fill="#00d000"><title>unsorted/fn_00601CA9.cpp: 100.0% of 160 bytes</title></rect>
 <rect x="915.4" y="476.4" width="5.8" height="5.9" fill="#333633"><title>unsorted/fn_006C7000.cpp: 0.0% of 160 bytes</title></rect>
 <rect x="921.2" y="476.4" width="5.8" height="5.9" fill="#333633"><title>unsorted/fn_00702000.cpp: 0.0% of 160 bytes</title></rect>
 <rect x="927.0" y="476.4" width="5.8" height="5.9" fill="#333633"><title>unsorted/fn_00769000.cpp: 0.0% of 160 bytes</title></rect>
@@ -2003,13 +2003,13 @@
 <rect x="862.5" y="581.6" width="5.8" height="5.8" fill="#333633"><title>unsorted/tTacticalStoresManager.cpp: 0.0% of 156 bytes</title></rect>
 <rect x="862.5" y="587.5" width="5.8" height="5.8" fill="#333633"><title>unsorted/fn_0050A000.cpp: 0.0% of 155 bytes</title></rect>
 <rect x="862.5" y="593.2" width="5.8" height="5.8" fill="#333633"><title>unsorted/fn_005F1A86.cpp: 0.0% of 155 bytes</title></rect>
-<rect x="868.3" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_00600A82.cpp: 0.0% of 155 bytes</title></rect>
+<rect x="868.3" y="482.3" width="5.9" height="5.6" fill="#354635"><title>unsorted/fn_00600A82.cpp: 17.4% of 155 bytes</title></rect>
 <rect x="874.2" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/nStoredProcedureArguments__tGetStartLocationRequest.cpp: 0.0% of 155 bytes</title></rect>
 <rect x="880.1" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_004D3000.cpp: 0.0% of 154 bytes</title></rect>
 <rect x="886.0" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_0070FE30.cpp: 0.0% of 154 bytes</title></rect>
-<rect x="892.0" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/tAIData.cpp: 0.0% of 154 bytes</title></rect>
+<rect x="892.0" y="482.3" width="5.9" height="5.6" fill="#365336"><title>unsorted/tAIData.cpp: 32.1% of 154 bytes</title></rect>
 <rect x="897.9" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_00451000.cpp: 0.0% of 153 bytes</title></rect>
-<rect x="903.7" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_00520000.cpp: 0.0% of 153 bytes</title></rect>
+<rect x="903.7" y="482.3" width="5.9" height="5.6" fill="#365136"><title>unsorted/fn_00520000.cpp: 29.8% of 153 bytes</title></rect>
 <rect x="909.6" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/fn_00716280.cpp: 0.0% of 153 bytes</title></rect>
 <rect x="915.5" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/nAsyncCharacterProcedures__tLogOnCharacter.cpp: 0.0% of 153 bytes</title></rect>
 <rect x="921.3" y="482.3" width="5.9" height="5.6" fill="#333633"><title>unsorted/nAsyncDatabaseProcedure__tKillShips.cpp: 0.0% of 153 bytes</title></rect>
@@ -2038,7 +2038,7 @@
 <rect x="868.3" y="555.1" width="5.7" height="5.5" fill="#333633"><title>unsorted/tVarImageBtn.cpp: 0.0% of 147 bytes</title></rect>
 <rect x="868.3" y="560.7" width="5.7" height="5.5" fill="#333633"><title>unsorted/tControl.cpp: 0.0% of 146 bytes</title></rect>
 <rect x="868.3" y="566.2" width="5.7" height="5.5" fill="#00d000"><title>unsorted/tPhysicalEntity.cpp: 100.0% of 146 bytes</title></rect>
-<rect x="868.3" y="571.7" width="5.7" height="5.5" fill="#333633"><title>unsorted/tSoundChannelFormat.cpp: 0.0% of 146 bytes</title></rect>
+<rect x="868.3" y="571.7" width="5.7" height="5.5" fill="#3b7a3b"><title>unsorted/tSoundChannelFormat.cpp: 76.0% of 146 bytes</title></rect>
 <rect x="868.3" y="577.2" width="5.7" height="5.5" fill="#333633"><title>unsorted/fn_00500F26.cpp: 0.0% of 145 bytes</title></rect>
 <rect x="868.3" y="582.6" width="5.7" height="5.5" fill="#333633"><title>unsorted/fn_00539000.cpp: 0.0% of 145 bytes</title></rect>
 <rect x="868.3" y="588.1" width="5.7" height="5.5" fill="#333633"><title>unsorted/fn_005C5F1E.cpp: 0.0% of 145 bytes</title></rect>
@@ -2056,7 +2056,7 @@
 <rect x="929.9" y="488.0" width="5.6" height="5.5" fill="#333633"><title>unsorted/tTallyGroup.cpp: 0.0% of 143 bytes</title></rect>
 <rect x="935.5" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/fn_004C7DB2.cpp: 0.0% of 142 bytes</title></rect>
 <rect x="941.0" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/fn_006FD600.cpp: 0.0% of 142 bytes</title></rect>
-<rect x="946.5" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/tAudioFileClass.cpp: 0.0% of 142 bytes</title></rect>
+<rect x="946.5" y="488.0" width="5.5" height="5.5" fill="#3c853c"><title>unsorted/tAudioFileClass.cpp: 88.7% of 142 bytes</title></rect>
 <rect x="952.0" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/fn_0049E000.cpp: 0.0% of 141 bytes</title></rect>
 <rect x="957.5" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/fn_006FA000.cpp: 0.0% of 141 bytes</title></rect>
 <rect x="963.0" y="488.0" width="5.5" height="5.5" fill="#333633"><title>unsorted/fn_00707000.cpp: 0.0% of 141 bytes</title></rect>
@@ -2095,7 +2095,7 @@
 <rect x="879.3" y="547.2" width="5.4" height="5.3" fill="#333633"><title>unsorted/tQuickTipMgr_SFC.cpp: 0.0% of 133 bytes</title></rect>
 <rect x="879.3" y="552.5" width="5.4" height="5.3" fill="#333633"><title>unsorted/fn_005C5E5A.cpp: 0.0% of 132 bytes</title></rect>
 <rect x="879.3" y="557.8" width="5.4" height="5.2" fill="#333633"><title>unsorted/fn_004BCA59.cpp: 0.0% of 130 bytes</title></rect>
-<rect x="879.3" y="563.0" width="5.4" height="5.2" fill="#333633"><title>unsorted/fn_0050786E.cpp: 0.0% of 130 bytes</title></rect>
+<rect x="879.3" y="563.0" width="5.4" height="5.2" fill="#3b813b"><title>unsorted/fn_0050786E.cpp: 84.6% of 130 bytes</title></rect>
 <rect x="879.3" y="568.1" width="5.4" height="5.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tAddPreparedMissionRequest__tAddPreparedMissionResponse.cpp: 0.0% of 129 bytes</title></rect>
 <rect x="879.3" y="573.3" width="5.4" height="5.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tCharacterRequest__tCharacterResponse.cpp: 0.0% of 129 bytes</title></rect>
 <rect x="879.3" y="578.4" width="5.4" height="5.1" fill="#333633"><title>unsorted/nStoredProcedureArguments__tGetNearestBaseRequest__tGetNearestBaseResponse.cpp: 0.0% of 129 bytes</title></rect>
@@ -2126,7 +2126,7 @@
 <rect x="895.4" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/tMetaMapNormalIcon.cpp: 0.0% of 126 bytes</title></rect>
 <rect x="900.7" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/fn_00442B3B.cpp: 0.0% of 125 bytes</title></rect>
 <rect x="906.0" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/tDamageControlGroupSystem.cpp: 0.0% of 125 bytes</title></rect>
-<rect x="911.3" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/tMessengerRelayCreator.cpp: 0.0% of 125 bytes</title></rect>
+<rect x="911.3" y="498.7" width="5.3" height="5.1" fill="#396939"><title>unsorted/tMessengerRelayCreator.cpp: 57.1% of 125 bytes</title></rect>
 <rect x="916.6" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/tMetaClientMapPanelCreator.cpp: 0.0% of 125 bytes</title></rect>
 <rect x="922.0" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/fn_00420D52.cpp: 0.0% of 124 bytes</title></rect>
 <rect x="927.2" y="498.7" width="5.3" height="5.1" fill="#333633"><title>unsorted/fn_00428313.cpp: 0.0% of 124 bytes</title></rect>
@@ -2206,7 +2206,7 @@
 <rect x="923.7" y="508.6" width="4.8" height="4.8" fill="#333633"><title>unsorted/fn_004C9677.cpp: 0.0% of 107 bytes</title></rect>
 <rect x="928.5" y="508.6" width="4.8" height="4.8" fill="#333633"><title>unsorted/tVisObject.cpp: 0.0% of 107 bytes</title></rect>
 <rect x="933.3" y="508.6" width="4.8" height="4.8" fill="#333633"><title>unsorted/twMemoryPart.cpp: 0.0% of 107 bytes</title></rect>
-<rect x="938.0" y="508.6" width="4.7" height="4.8" fill="#3c8a3c"><title>unsorted/tShipSpecManager.cpp: 94.7% of 106 bytes</title></rect>
+<rect x="938.0" y="508.6" width="4.7" height="4.8" fill="#00d000"><title>unsorted/tShipSpecManager.cpp: 100.0% of 106 bytes</title></rect>
 <rect x="942.7" y="508.6" width="4.7" height="4.8" fill="#333633"><title>unsorted/tgDir.cpp: 0.0% of 106 bytes</title></rect>
 <rect x="947.5" y="508.6" width="4.7" height="4.8" fill="#333633"><title>unsorted/fn_0041267E.cpp: 0.0% of 105 bytes</title></rect>
 <rect x="952.1" y="508.6" width="4.7" height="4.8" fill="#333633"><title>unsorted/fn_00412831.cpp: 0.0% of 105 bytes</title></rect>
@@ -2304,7 +2304,7 @@
 <rect x="904.0" y="581.3" width="4.3" height="4.4" fill="#333633"><title>unsorted/fn_0070E5B0.cpp: 0.0% of 88 bytes</title></rect>
 <rect x="904.0" y="585.8" width="4.3" height="4.4" fill="#3d8f3d"><title>unsorted/tPath.cpp: 99.6% of 88 bytes</title></rect>
 <rect x="904.0" y="590.2" width="4.3" height="4.4" fill="#333633"><title>unsorted/fn_00411000.cpp: 0.0% of 87 bytes</title></rect>
-<rect x="904.0" y="594.6" width="4.3" height="4.4" fill="#333633"><title>unsorted/fn_00520ECF.cpp: 0.0% of 87 bytes</title></rect>
+<rect x="904.0" y="594.6" width="4.3" height="4.4" fill="#3b7e3b"><title>unsorted/fn_00520ECF.cpp: 80.6% of 87 bytes</title></rect>
 <rect x="908.3" y="522.5" width="4.3" height="4.4" fill="#333633"><title>unsorted/tConnector.cpp: 0.0% of 87 bytes</title></rect>
 <rect x="908.3" y="526.9" width="4.3" height="4.4" fill="#333633"><title>unsorted/tTigerQ3Glue.cpp: 0.0% of 87 bytes</title></rect>
 <rect x="908.3" y="531.3" width="4.3" height="4.3" fill="#333633"><title>unsorted/nLog__tLogStream.cpp: 0.0% of 86 bytes</title></rect>
@@ -2317,13 +2317,13 @@
 <rect x="908.3" y="561.3" width="4.3" height="4.2" fill="#333633"><title>unsorted/tETrait_Creator_DoomsdayMouth.cpp: 0.0% of 84 bytes</title></rect>
 <rect x="908.3" y="565.5" width="4.3" height="4.2" fill="#333633"><title>unsorted/tETrait_Creator_Explosion.cpp: 0.0% of 84 bytes</title></rect>
 <rect x="908.3" y="569.8" width="4.3" height="4.2" fill="#333633"><title>unsorted/tETrait_Creator_Explosion_Debris.cpp: 0.0% of 84 bytes</title></rect>
-<rect x="908.3" y="574.0" width="4.3" height="4.2" fill="#333633"><title>unsorted/tSoundMemoryBlock.cpp: 0.0% of 84 bytes</title></rect>
+<rect x="908.3" y="574.0" width="4.3" height="4.2" fill="#3b7f3b"><title>unsorted/tSoundMemoryBlock.cpp: 82.1% of 84 bytes</title></rect>
 <rect x="908.3" y="578.3" width="4.3" height="4.2" fill="#333633"><title>unsorted/fn_00434F19.cpp: 0.0% of 83 bytes</title></rect>
 <rect x="908.3" y="582.5" width="4.3" height="4.1" fill="#333633"><title>unsorted/nChat__tChannelSeed.cpp: 0.0% of 82 bytes</title></rect>
 <rect x="908.3" y="586.6" width="4.3" height="4.1" fill="#333633"><title>unsorted/tNetMsg_kQUERRYREQUEST_HEALTH_PERCENTAGE.cpp: 0.0% of 82 bytes</title></rect>
 <rect x="908.3" y="590.8" width="4.3" height="4.1" fill="#333633"><title>unsorted/twQueueName.cpp: 0.0% of 82 bytes</title></rect>
 <rect x="908.3" y="594.9" width="4.3" height="4.1" fill="#333633"><title>unsorted/fn_004C8F07.cpp: 0.0% of 81 bytes</title></rect>
-<rect x="912.5" y="522.5" width="4.3" height="4.1" fill="#333633"><title>unsorted/fn_00505000.cpp: 0.0% of 81 bytes</title></rect>
+<rect x="912.5" y="522.5" width="4.3" height="4.1" fill="#00d000"><title>unsorted/fn_00505000.cpp: 100.0% of 81 bytes</title></rect>
 <rect x="916.8" y="522.5" width="4.3" height="4.1" fill="#333633"><title>unsorted/fn_006A3000.cpp: 0.0% of 81 bytes</title></rect>
 <rect x="921.1" y="522.5" width="4.3" height="4.1" fill="#333633"><title>unsorted/tCharTag.cpp: 0.0% of 81 bytes</title></rect>
 <rect x="925.4" y="522.5" width="4.3" height="4.1" fill="#333633"><title>unsorted/twClock.cpp: 0.0% of 81 bytes</title></rect>
@@ -2344,7 +2344,7 @@
 <rect x="916.7" y="526.5" width="4.1" height="4.1" fill="#333633"><title>unsorted/fn_006635B0.cpp: 0.0% of 79 bytes</title></rect>
 <rect x="920.8" y="526.5" width="4.1" height="4.1" fill="#333633"><title>unsorted/fn_006F5730.cpp: 0.0% of 79 bytes</title></rect>
 <rect x="924.9" y="526.5" width="4.1" height="4.1" fill="#333633"><title>unsorted/fn_00475000.cpp: 0.0% of 78 bytes</title></rect>
-<rect x="929.0" y="526.5" width="4.1" height="4.1" fill="#333633"><title>unsorted/fn_00646000.cpp: 0.0% of 78 bytes</title></rect>
+<rect x="929.0" y="526.5" width="4.1" height="4.1" fill="#354635"><title>unsorted/fn_00646000.cpp: 17.9% of 78 bytes</title></rect>
 <rect x="933.1" y="526.5" width="4.1" height="4.1" fill="#333633"><title>unsorted/tTallyButton.cpp: 0.0% of 78 bytes</title></rect>
 <rect x="937.1" y="526.5" width="4.0" height="4.1" fill="#333633"><title>unsorted/fn_004E6000.cpp: 0.0% of 77 bytes</title></rect>
 <rect x="941.2" y="526.5" width="4.0" height="4.1" fill="#333633"><title>unsorted/fn_00759000.cpp: 0.0% of 77 bytes</title></rect>
@@ -2383,7 +2383,7 @@
 <rect x="916.4" y="549.9" width="3.9" height="3.8" fill="#333633"><title>unsorted/nSwitch__tResponse.cpp: 0.0% of 70 bytes</title></rect>
 <rect x="916.4" y="553.8" width="3.9" height="3.8" fill="#333633"><title>unsorted/tRadioShadow.cpp: 0.0% of 70 bytes</title></rect>
 <rect x="916.4" y="557.6" width="3.9" height="3.8" fill="#00d000"><title>unsorted/nException__tOutOfBounds.cpp: 100.0% of 69 bytes</title></rect>
-<rect x="916.4" y="561.4" width="3.9" height="3.8" fill="#3c893c"><title>unsorted/tDynamicMemoryFreeList.cpp: 93.0% of 69 bytes</title></rect>
+<rect x="916.4" y="561.4" width="3.9" height="3.8" fill="#00d000"><title>unsorted/tDynamicMemoryFreeList.cpp: 100.0% of 69 bytes</title></rect>
 <rect x="916.4" y="565.2" width="3.9" height="3.8" fill="#333633"><title>unsorted/tNotifier.cpp: 0.0% of 69 bytes</title></rect>
 <rect x="916.4" y="569.0" width="3.9" height="3.8" fill="#333633"><title>unsorted/tShadowFloatV.cpp: 0.0% of 69 bytes</title></rect>
 <rect x="916.4" y="572.8" width="3.9" height="3.8" fill="#333633"><title>unsorted/tShadowInt.cpp: 0.0% of 69 bytes</title></rect>
@@ -2538,7 +2538,7 @@
 <rect x="930.9" y="572.7" width="3.0" height="3.0" fill="#333633"><title>unsorted/fn_004CAE4D.cpp: 0.0% of 42 bytes</title></rect>
 <rect x="930.9" y="575.7" width="3.0" height="3.0" fill="#333633"><title>unsorted/fn_0054B6B4.cpp: 0.0% of 42 bytes</title></rect>
 <rect x="930.9" y="578.6" width="3.0" height="3.0" fill="#333633"><title>unsorted/tNetSessionBase.cpp: 0.0% of 42 bytes</title></rect>
-<rect x="930.9" y="581.6" width="3.0" height="2.9" fill="#333633"><title>unsorted/fn_00646B70.cpp: 0.0% of 41 bytes</title></rect>
+<rect x="930.9" y="581.6" width="3.0" height="2.9" fill="#3a773a"><title>unsorted/fn_00646B70.cpp: 73.2% of 41 bytes</title></rect>
 <rect x="930.9" y="584.5" width="3.0" height="2.9" fill="#333633"><title>unsorted/fn_0066E000.cpp: 0.0% of 41 bytes</title></rect>
 <rect x="930.9" y="587.4" width="3.0" height="2.9" fill="#333633"><title>unsorted/fn_0067C000.cpp: 0.0% of 41 bytes</title></rect>
 <rect x="930.9" y="590.3" width="3.0" height="2.9" fill="#333633"><title>unsorted/fn_007186C0.cpp: 0.0% of 41 bytes</title></rect>
@@ -2548,7 +2548,7 @@
 <rect x="936.8" y="547.9" width="2.9" height="3.0" fill="#333633"><title>unsorted/fn_00773000.cpp: 0.0% of 40 bytes</title></rect>
 <rect x="939.7" y="547.9" width="2.9" height="3.0" fill="#333633"><title>unsorted/fn_00775000.cpp: 0.0% of 40 bytes</title></rect>
 <rect x="942.6" y="547.9" width="2.9" height="3.0" fill="#333633"><title>unsorted/fn_0077F000.cpp: 0.0% of 40 bytes</title></rect>
-<rect x="945.4" y="547.9" width="2.9" height="3.0" fill="#333633"><title>unsorted/tClassActiveChannelList.cpp: 0.0% of 40 bytes</title></rect>
+<rect x="945.4" y="547.9" width="2.9" height="3.0" fill="#00d000"><title>unsorted/tClassActiveChannelList.cpp: 100.0% of 40 bytes</title></rect>
 <rect x="948.3" y="547.9" width="2.8" height="3.0" fill="#333633"><title>unsorted/fn_0055E877.cpp: 0.0% of 39 bytes</title></rect>
 <rect x="951.1" y="547.9" width="2.8" height="3.0" fill="#333633"><title>unsorted/nAsyncCharacterProcedures__tInitialize.cpp: 0.0% of 39 bytes</title></rect>
 <rect x="953.9" y="547.9" width="2.8" height="3.0" fill="#333633"><title>unsorted/nAsyncCharacterProcedures__tLogOffCharacter.cpp: 0.0% of 39 bytes</title></rect>
@@ -2681,7 +2681,7 @@
 <rect x="964.0" y="559.8" width="3.0" height="2.8" fill="#333633"><title>unsorted/tThreadPart.cpp: 0.0% of 39 bytes</title></rect>
 <rect x="967.0" y="559.8" width="3.0" height="2.8" fill="#333633"><title>unsorted/tView3D.cpp: 0.0% of 39 bytes</title></rect>
 <rect x="970.0" y="559.8" width="3.0" height="2.8" fill="#333633"><title>unsorted/tWinClock.cpp: 0.0% of 39 bytes</title></rect>
-<rect x="973.1" y="559.8" width="2.9" height="2.8" fill="#333633"><title>unsorted/fn_004234CF.cpp: 0.0% of 38 bytes</title></rect>
+<rect x="973.1" y="559.8" width="2.9" height="2.8" fill="#00d000"><title>unsorted/fn_004234CF.cpp: 100.0% of 38 bytes</title></rect>
 <rect x="976.0" y="559.8" width="2.9" height="2.8" fill="#333633"><title>unsorted/fn_00529A4F.cpp: 0.0% of 38 bytes</title></rect>
 <rect x="979.0" y="559.8" width="2.9" height="2.8" fill="#333633"><title>unsorted/fn_00529B3B.cpp: 0.0% of 38 bytes</title></rect>
 <rect x="981.9" y="559.8" width="2.9" height="2.8" fill="#333633"><title>unsorted/tFillObj.cpp: 0.0% of 38 bytes</title></rect>
@@ -2740,7 +2740,7 @@
 <rect x="951.2" y="570.8" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_00552CAB.cpp: 0.0% of 31 bytes</title></rect>
 <rect x="951.2" y="573.4" width="2.5" height="2.6" fill="#333633"><title>unsorted/tBufFile.cpp: 0.0% of 31 bytes</title></rect>
 <rect x="951.2" y="576.0" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_0062D000.cpp: 0.0% of 30 bytes</title></rect>
-<rect x="951.2" y="578.6" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_006636D0.cpp: 0.0% of 30 bytes</title></rect>
+<rect x="951.2" y="578.6" width="2.5" height="2.6" fill="#00d000"><title>unsorted/fn_006636D0.cpp: 100.0% of 30 bytes</title></rect>
 <rect x="951.2" y="581.1" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_00705000.cpp: 0.0% of 30 bytes</title></rect>
 <rect x="951.2" y="583.7" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_00763000.cpp: 0.0% of 30 bytes</title></rect>
 <rect x="951.2" y="586.2" width="2.5" height="2.6" fill="#333633"><title>unsorted/fn_00764000.cpp: 0.0% of 30 bytes</title></rect>
@@ -2770,7 +2770,7 @@
 <rect x="972.9" y="568.0" width="2.4" height="2.5" fill="#333633"><title>unsorted/fn_0054EE75.cpp: 0.0% of 28 bytes</title></rect>
 <rect x="975.3" y="568.0" width="2.4" height="2.5" fill="#333633"><title>unsorted/fn_005B334D.cpp: 0.0% of 28 bytes</title></rect>
 <rect x="977.7" y="568.0" width="2.4" height="2.5" fill="#333633"><title>unsorted/fn_006A7000.cpp: 0.0% of 28 bytes</title></rect>
-<rect x="980.1" y="568.0" width="2.4" height="2.5" fill="#00d000"><title>unsorted/nDataStore__tStreamable.cpp: 100.0% of 28 bytes</title></rect>
+<rect x="980.1" y="568.0" width="2.4" height="2.5" fill="#333633"><title>unsorted/nDataStore__tStreamable.cpp: 0.0% of 28 bytes</title></rect>
 <rect x="982.5" y="568.0" width="2.4" height="2.5" fill="#333633"><title>unsorted/nStoredProcedureArguments__tMetaMapSizeRequest__tResponse.cpp: 0.0% of 28 bytes</title></rect>
 <rect x="956.2" y="570.6" width="2.5" height="2.4" fill="#333633"><title>unsorted/nStoredProcedureArguments__tTakeCensusRequest__tTakeCensusRequestResponse.cpp: 0.0% of 28 bytes</title></rect>
 <rect x="956.2" y="572.9" width="2.5" height="2.4" fill="#333633"><title>unsorted/tActionUser.cpp: 0.0% of 28 bytes</title></rect>
@@ -2886,7 +2886,7 @@
 <rect x="967.5" y="585.5" width="1.9" height="2.0" fill="#333633"><title>unsorted/fn_0046B000.cpp: 0.0% of 18 bytes</title></rect>
 <rect x="967.5" y="587.5" width="1.9" height="2.0" fill="#333633"><title>unsorted/tShadowGaugeStr.cpp: 0.0% of 18 bytes</title></rect>
 <rect x="967.5" y="589.5" width="1.9" height="1.9" fill="#333633"><title>unsorted/fn_0040C5D5.cpp: 0.0% of 17 bytes</title></rect>
-<rect x="967.5" y="591.4" width="1.9" height="1.9" fill="#333633"><title>unsorted/tHandleList.cpp: 0.0% of 17 bytes</title></rect>
+<rect x="967.5" y="591.4" width="1.9" height="1.9" fill="#00d000"><title>unsorted/tHandleList.cpp: 100.0% of 17 bytes</title></rect>
 <rect x="967.5" y="593.3" width="1.9" height="1.9" fill="#333633"><title>unsorted/tSequencePart.cpp: 0.0% of 17 bytes</title></rect>
 <rect x="967.5" y="595.2" width="1.9" height="1.9" fill="#333633"><title>unsorted/tShadowFloat.cpp: 0.0% of 17 bytes</title></rect>
 <rect x="967.5" y="597.1" width="1.9" height="1.9" fill="#333633"><title>unsorted/tShadowTrans.cpp: 0.0% of 17 bytes</title></rect>
@@ -2911,7 +2911,7 @@
 <rect x="971.0" y="588.4" width="1.6" height="1.5" fill="#333633"><title>unsorted/fn_0041D000.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="971.0" y="589.9" width="1.6" height="1.5" fill="#333633"><title>unsorted/fn_00439CE8.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="971.0" y="591.4" width="1.6" height="1.5" fill="#333633"><title>unsorted/fn_004DF5FC.cpp: 0.0% of 11 bytes</title></rect>
-<rect x="971.0" y="592.9" width="1.6" height="1.5" fill="#333633"><title>unsorted/fn_0066EBC0.cpp: 0.0% of 11 bytes</title></rect>
+<rect x="971.0" y="592.9" width="1.6" height="1.5" fill="#00d000"><title>unsorted/fn_0066EBC0.cpp: 100.0% of 11 bytes</title></rect>
 <rect x="971.0" y="594.5" width="1.6" height="1.5" fill="#333633"><title>unsorted/nAsyncEconomyProcedures__tTurnBreak.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="971.0" y="596.0" width="1.6" height="1.5" fill="#333633"><title>unsorted/tClockPart.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="971.0" y="597.5" width="1.6" height="1.5" fill="#333633"><title>unsorted/tEntity_Astral.cpp: 0.0% of 11 bytes</title></rect>
@@ -2919,13 +2919,13 @@
 <rect x="974.2" y="585.2" width="1.6" height="1.5" fill="#333633"><title>unsorted/tMilesCallBack.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="975.8" y="585.2" width="1.6" height="1.5" fill="#333633"><title>unsorted/tgFileSystemPart.cpp: 0.0% of 11 bytes</title></rect>
 <rect x="977.4" y="585.2" width="1.6" height="1.5" fill="#333633"><title>unsorted/twSoundPart.cpp: 0.0% of 11 bytes</title></rect>
-<rect x="979.0" y="585.2" width="1.5" height="1.5" fill="#333633"><title>unsorted/fn_00646CD0.cpp: 0.0% of 10 bytes</title></rect>
+<rect x="979.0" y="585.2" width="1.5" height="1.5" fill="#00d000"><title>unsorted/fn_00646CD0.cpp: 100.0% of 10 bytes</title></rect>
 <rect x="980.5" y="585.2" width="1.5" height="1.5" fill="#333633"><title>unsorted/fn_00760000.cpp: 0.0% of 10 bytes</title></rect>
 <rect x="981.9" y="585.2" width="1.5" height="1.5" fill="#333633"><title>unsorted/fn_00788000.cpp: 0.0% of 10 bytes</title></rect>
 <rect x="983.4" y="585.2" width="1.5" height="1.5" fill="#333633"><title>unsorted/fn_0078B000.cpp: 0.0% of 10 bytes</title></rect>
 <rect x="972.6" y="586.7" width="1.6" height="1.4" fill="#333633"><title>unsorted/tFSSession.cpp: 0.0% of 10 bytes</title></rect>
 <rect x="974.2" y="586.7" width="1.4" height="1.4" fill="#333633"><title>unsorted/fn_00524109.cpp: 0.0% of 9 bytes</title></rect>
-<rect x="975.6" y="586.7" width="1.3" height="1.4" fill="#333633"><title>unsorted/fn_00507000.cpp: 0.0% of 8 bytes</title></rect>
+<rect x="975.6" y="586.7" width="1.3" height="1.4" fill="#00d000"><title>unsorted/fn_00507000.cpp: 100.0% of 8 bytes</title></rect>
 <rect x="976.8" y="586.7" width="1.3" height="1.4" fill="#333633"><title>unsorted/fn_0055F269.cpp: 0.0% of 8 bytes</title></rect>
 <rect x="978.1" y="586.7" width="1.3" height="1.4" fill="#333633"><title>unsorted/tChannelGroup.cpp: 0.0% of 8 bytes</title></rect>
 <rect x="979.4" y="586.7" width="1.1" height="1.4" fill="#333633"><title>unsorted/fn_004AF2CD.cpp: 0.0% of 7 bytes</title></rect>
@@ -3050,7 +3050,7 @@
 <rect x="986.9" y="1.0" width="140.4" height="101.1" fill="#3d8e3d"><title>Tiger/tgSound.cpp: 99.2% of 66,700 bytes</title></rect>
 <rect x="1127.3" y="1.0" width="71.7" height="101.1" fill="#3c8a3c"><title>Tiger/taudiochannel.cpp: 94.8% of 34,053 bytes</title></rect>
 <rect x="986.9" y="102.1" width="85.6" height="81.8" fill="#3a733a"><title>Tiger/tsndmgr.cpp: 68.1% of 32,932 bytes</title></rect>
-<rect x="1072.5" y="102.1" width="74.8" height="81.8" fill="#386138"><title>Tiger/twfsys.cpp: 48.3% of 28,763 bytes</title></rect>
+<rect x="1072.5" y="102.1" width="74.8" height="81.8" fill="#386138"><title>Tiger/twfsys.cpp: 48.4% of 28,763 bytes</title></rect>
 <rect x="1147.3" y="102.1" width="51.7" height="81.8" fill="#3c833c"><title>Tiger/twSound.cpp: 86.7% of 19,892 bytes</title></rect>
 <rect x="986.9" y="183.9" width="50.7" height="69.7" fill="#3d8d3d"><title>Tiger/tgfsys.cpp: 98.2% of 16,619 bytes</title></rect>
 <rect x="986.9" y="253.6" width="50.7" height="64.2" fill="#3c873c"><title>Tiger/twmemory.cpp: 91.0% of 15,295 bytes</title></rect>
@@ -3164,33 +3164,33 @@
 <rect x="1173.2" y="359.9" width="25.8" height="34.7" fill="#386638"><title>Common/Database/FileDatabaseMgr.cpp: 54.4% of 4,295 bytes</title></rect>
 <rect x="1112.5" y="394.6" width="22.5" height="35.7" fill="#3c863c"><title>Common/Timer/HeartbeatTimer.cpp: 90.1% of 3,860 bytes</title></rect>
 <rect x="1112.5" y="430.3" width="22.5" height="35.6" fill="#333633"><title>Common/Debug/CallStack.cpp: 0.0% of 3,845 bytes</title></rect>
-<rect x="1135.0" y="394.6" width="23.8" height="25.5" fill="#333633"><title>Common/Thread/Thread.cpp: 0.0% of 2,916 bytes</title></rect>
+<rect x="1135.0" y="394.6" width="23.8" height="25.5" fill="#386238"><title>Common/Thread/Thread.cpp: 49.1% of 2,916 bytes</title></rect>
 <rect x="1158.9" y="394.6" width="21.0" height="25.5" fill="#375637"><title>Common/Log/LogStream.cpp: 35.8% of 2,571 bytes</title></rect>
 <rect x="1179.9" y="394.6" width="19.1" height="25.5" fill="#333633"><title>Common/Database/DatabaseObjectUpdate.cpp: 0.0% of 2,338 bytes</title></rect>
 <rect x="1135.0" y="420.1" width="17.7" height="25.7" fill="#3c843c"><title>Common/DataStore/Streamable.cpp: 87.1% of 2,183 bytes</title></rect>
 <rect x="1135.0" y="445.8" width="17.7" height="20.1" fill="#3c893c"><title>Common/DynamicAllocator.cpp: 93.6% of 1,707 bytes</title></rect>
 <rect x="1152.7" y="420.1" width="16.3" height="19.0" fill="#333633"><title>Common/GenericFile.cpp: 0.0% of 1,489 bytes</title></rect>
 <rect x="1152.7" y="439.1" width="16.3" height="13.7" fill="#333633"><title>Common/Stats/Stats.cpp: 0.0% of 1,075 bytes</title></rect>
-<rect x="1152.7" y="452.8" width="16.3" height="13.1" fill="#333633"><title>Common/Timer/WinTimer.cpp: 0.0% of 1,025 bytes</title></rect>
+<rect x="1152.7" y="452.8" width="16.3" height="13.1" fill="#3d8f3d"><title>Common/Timer/WinTimer.cpp: 100.0% of 1,025 bytes</title></rect>
 <rect x="1169.1" y="420.1" width="15.1" height="11.9" fill="#354735"><title>Common/Settings.cpp: 18.9% of 861 bytes</title></rect>
 <rect x="1184.2" y="420.1" width="14.8" height="11.9" fill="#333633"><title>Common/Log/Log.cpp: 0.0% of 847 bytes</title></rect>
-<rect x="1169.1" y="432.0" width="11.1" height="14.5" fill="#333633"><title>Common/Thread/ResourceGuard.cpp: 0.0% of 768 bytes</title></rect>
+<rect x="1169.1" y="432.0" width="11.1" height="14.5" fill="#00d000"><title>Common/Thread/ResourceGuard.cpp: 100.0% of 768 bytes</title></rect>
 <rect x="1180.1" y="432.0" width="9.6" height="14.5" fill="#3d8e3d"><title>Common/Exceptions/BaseException.cpp: 98.3% of 668 bytes</title></rect>
 <rect x="1189.7" y="432.0" width="9.3" height="14.5" fill="#3a763a"><title>Common/CommandLineArgs.cpp: 72.0% of 643 bytes</title></rect>
 <rect x="1169.1" y="446.5" width="10.4" height="9.9" fill="#3d8f3d"><title>Common/OSVersion.cpp: 99.9% of 491 bytes</title></rect>
 <rect x="1169.1" y="456.3" width="10.4" height="9.6" fill="#333633"><title>Common/DataStore/DataStoreBuffer.cpp: 0.0% of 476 bytes</title></rect>
-<rect x="1179.4" y="446.5" width="9.3" height="6.9" fill="#333633"><title>Common/Timer/Timer.cpp: 0.0% of 309 bytes</title></rect>
+<rect x="1179.4" y="446.5" width="9.3" height="6.9" fill="#00d000"><title>Common/Timer/Timer.cpp: 100.0% of 309 bytes</title></rect>
 <rect x="1179.4" y="453.4" width="9.3" height="6.4" fill="#00d000"><title>Common/Timer/WinClock.cpp: 100.0% of 284 bytes</title></rect>
 <rect x="1179.4" y="459.8" width="9.3" height="6.1" fill="#00d000"><title>Common/DateAndTime.cpp: 100.0% of 272 bytes</title></rect>
 <rect x="1188.7" y="446.5" width="5.4" height="6.7" fill="#3d8c3d"><title>Common/Exceptions/Validate.cpp: 96.6% of 175 bytes</title></rect>
 <rect x="1194.2" y="446.5" width="4.8" height="6.7" fill="#00d000"><title>Common/Thread/ThreadState.cpp: 100.0% of 156 bytes</title></rect>
-<rect x="1188.7" y="453.2" width="5.6" height="5.0" fill="#333633"><title>Common/Thread/WaitForObject.cpp: 0.0% of 135 bytes</title></rect>
+<rect x="1188.7" y="453.2" width="5.6" height="5.0" fill="#00d000"><title>Common/Thread/WaitForObject.cpp: 100.0% of 135 bytes</title></rect>
 <rect x="1194.3" y="453.2" width="4.7" height="5.0" fill="#00d000"><title>Common/Crypto/CRC32.cpp: 100.0% of 113 bytes</title></rect>
 <rect x="1188.7" y="458.2" width="4.2" height="4.3" fill="#333633"><title>Common/Object.cpp: 0.0% of 86 bytes</title></rect>
 <rect x="1188.7" y="462.5" width="4.2" height="3.4" fill="#333633"><title>Common/Stats/StatTracker.cpp: 0.0% of 67 bytes</title></rect>
 <rect x="1192.9" y="458.2" width="3.0" height="4.4" fill="#00d000"><title>Common/Database/DatabaseID.cpp: 100.0% of 65 bytes</title></rect>
 <rect x="1196.0" y="458.2" width="3.0" height="4.4" fill="#00d000"><title>Common/Exceptions/OutOfBounds.cpp: 100.0% of 65 bytes</title></rect>
-<rect x="1192.9" y="462.7" width="3.5" height="3.2" fill="#333633"><title>Common/Thread/ThreadEvent.cpp: 0.0% of 54 bytes</title></rect>
+<rect x="1192.9" y="462.7" width="3.5" height="3.2" fill="#00d000"><title>Common/Thread/ThreadEvent.cpp: 100.0% of 54 bytes</title></rect>
 <rect x="1196.4" y="462.7" width="2.6" height="2.5" fill="#333633"><title>Common/SmartPtr.cpp: 0.0% of 31 bytes</title></rect>
 <rect x="1196.4" y="465.1" width="2.6" height="0.7" fill="#00d000"><title>Common/Simulator/Simulator.cpp: 100.0% of 9 bytes</title></rect>
 </g>
@@ -3218,7 +3218,7 @@
 <rect x="1072.9" y="498.4" width="10.6" height="7.6" fill="#333633"><title>Source/MetaClient/MetaClientPlayer/AsyncClientPlayerProcedures/AsyncClientPlayerProcedures_CharacterRankChanged.cpp: 0.0% of 389 bytes</title></rect>
 <rect x="1083.5" y="498.4" width="10.2" height="7.6" fill="#3d8f3d"><title>Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp: 99.9% of 376 bytes</title></rect>
 <rect x="1062.3" y="506.0" width="7.7" height="7.7" fill="#333633"><title>Source/MetaClient/MetaClientMission/MetaClientMissionPanel.cpp: 0.0% of 289 bytes</title></rect>
-<rect x="1062.3" y="513.7" width="7.7" height="7.6" fill="#333633"><title>Source/MetaClient/MetaClientPlayerList/MetaClientPlayerListPanel.cpp: 0.0% of 286 bytes</title></rect>
+<rect x="1062.3" y="513.7" width="7.7" height="7.6" fill="#365536"><title>Source/MetaClient/MetaClientPlayerList/MetaClientPlayerListPanel.cpp: 34.3% of 286 bytes</title></rect>
 <rect x="1062.3" y="521.3" width="7.7" height="7.5" fill="#00d000"><title>Source/MetaClient/MetaClientNews/MetaClientNewsCtlrC.cpp: 100.0% of 280 bytes</title></rect>
 <rect x="1062.3" y="528.8" width="7.7" height="7.0" fill="#333633"><title>Source/MetaClient/MetaClientCreator.cpp: 0.0% of 262 bytes</title></rect>
 <rect x="1070.0" y="506.0" width="6.1" height="7.2" fill="#333633"><title>Source/MetaClient/MetaClientMission/AsyncClientMissionProcedures/AsyncClientMissionProcedures_ReceiveMissionLists.cpp: 0.0% of 214 bytes</title></rect>
