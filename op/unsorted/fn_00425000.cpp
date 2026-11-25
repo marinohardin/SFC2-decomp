@@ -274,3 +274,40 @@ void fn_004254a7_list::fn_00425501(int id, int value)
 		fHead = n;
 	}
 }
+
+// HYPOTHESIS: a constructor of a 0x10-byte object owning a 0x100 by 0x100 table of 0x80000 bytes
+// (0x10000 elements of 8 bytes, each built by the constructor at 0x005298a6).
+struct fn_0042556b_element
+{
+	fn_0042556b_element() throw();
+	char fPad[8];
+};
+
+struct fn_0042556b_table
+{
+	fn_0042556b_table() throw();
+
+	fn_0042556b_element* fElements;
+	int fWidth;
+	int fHeight;
+	int fDepth;
+};
+
+// FUNCTION: STARFLEETOP 0x0042556b
+fn_0042556b_table::fn_0042556b_table() throw()
+{
+	fWidth = 0x100;
+	fHeight = 0x100;
+	fDepth = 0x80;
+	fn_0042556b_element* e = (fn_0042556b_element*)operator new(0x80000);
+	if (e != 0) {
+		fn_0042556b_element* p = e;
+		for (int i = 0x10000; i != 0; i--) {
+			p->fn_0042556b_element::fn_0042556b_element();
+			p++;
+		}
+	} else {
+		e = 0;
+	}
+	fElements = e;
+}
