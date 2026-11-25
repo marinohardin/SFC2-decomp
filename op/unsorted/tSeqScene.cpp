@@ -27,6 +27,19 @@ void tSeqScene::vfunction43()
 		vfunction41(field_D4);
 }
 
+// FUNCTION: STARFLEETOP 0x0067dd40
+void tSeqScene::vfunction40()
+{
+	if (field_D4)
+		vfunction43();
+	tVisGroup::vfunction40();
+	if (field_D4)
+	{
+		field_EC |= 1;
+		field_E8 = fn_00672870();
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x0067dd90
 void tSeqScene::fn_0067dd90()
 {
