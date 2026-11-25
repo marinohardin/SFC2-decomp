@@ -44,3 +44,23 @@ void tWinTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCall
 #line 141
 	validate( fTimerHandle );
 }
+
+#line 190
+// FUNCTION: STARFLEETOP 0x0070f940
+void __stdcall tWinTimer::WinTimerCallback( unsigned int timerId, unsigned int msg, int32u user, int32u dw1, int32u dw2 )
+{
+	tWinTimer* winTimer = (tWinTimer*)user;
+	winTimer->SignalTimerEvent();
+	if( !winTimer->fTimerHasStarted )
+	{
+		timeKillEvent( winTimer->fTimerHandle );
+		winTimer->fTimerHandle = 0;
+		winTimer->fTimerHasStarted = true;
+		if( winTimer->fPeriod > 0 )
+		{
+			winTimer->fTimerHandle = timeSetEvent( winTimer->fPeriod, 1, (LPTIMECALLBACK)WinTimerCallback, (DWORD)winTimer, 1 );
+#line 210
+			validate( winTimer->fTimerHandle );
+		}
+	}
+}
