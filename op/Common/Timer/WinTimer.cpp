@@ -30,3 +30,17 @@ void tWinTimer::StartTimer( int32u dueTime, int32u period, iTimerCallbackFunc* p
 #line 115
 	validate( fTimerHandle );
 }
+
+// FUNCTION: STARFLEETOP 0x0070f7c0
+void tWinTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context )
+{
+	if( fTimerHandle != 0 )
+		StopTimer();
+	if( dueTime == 0 )
+		dueTime = 1;
+	fInitalTime = fpClock->GetCurrentSystemTime();
+	tTimer::StartTimer( dueTime, period, pCallback, context );
+	fTimerHandle = timeSetEvent( fDueTime, 1, (LPTIMECALLBACK)WinTimerCallback, (DWORD)this, 0 );
+#line 141
+	validate( fTimerHandle );
+}
