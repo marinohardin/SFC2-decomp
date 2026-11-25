@@ -4560,7 +4560,7 @@ address	size	symbol	source	modes	decorated
 0x0070efa0	20	tResourceGuard::tGuard::tGuard(tResourceGuard&)	Common/Thread/ResourceGuard.cpp	vc6	??0tGuard@tResourceGuard@@QAE@AAV1@@Z
 0x0070efc0	7	tResourceGuard::tGuard::~tGuard()	Common/Thread/ResourceGuard.cpp	vc6	??1tGuard@tResourceGuard@@QAE@XZ
 0x0070efd0	299	tResourceGuard::tResourceGuard()	Common/Thread/ResourceGuard.cpp	vc6	??0tResourceGuard@@QAE@XZ
-0x0070f100	90	tOptex::~tOptex()	Common/Thread/ResourceGuard.cpp	vc6	??1tResourceGuard@@QAE@XZ
+0x0070f100	90	tResourceGuard::~tResourceGuard()	Common/Thread/ResourceGuard.cpp	vc6	??1tResourceGuard@@QAE@XZ
 0x0070f160	249	tResourceGuard::Guard()	Common/Thread/ResourceGuard.cpp	vc6 guest	?Guard@tResourceGuard@@AAEXXZ
 0x0070f260	103	tResourceGuard::Unguard()	Common/Thread/ResourceGuard.cpp	vc6 guest	?Unguard@tResourceGuard@@AAEXXZ
 0x0070f5a0	112	tWinTimer::tWinTimer()	Common/Timer/WinTimer.cpp	vc6	??0tWinTimer@@QAE@XZ

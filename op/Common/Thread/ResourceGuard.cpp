@@ -25,11 +25,11 @@ tResourceGuard::tResourceGuard()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0070f100
 tResourceGuard::~tResourceGuard()
 {
 }
 
-// FUNCTION: STARFLEETOP 0x0070f100
 inline tOptex::~tOptex()
 {
 	if (fUse != tThreadState::kIgnoreThreadObject) {

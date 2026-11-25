@@ -263,8 +263,8 @@ public:
 	tOptex m_e4;
 };
 
-// The calls to tOptex::~tOptex go to the game's copy (0x004296c8); the SDK's own copy is
-// 0x0070f100, and the harness holds one symbol to one address, so this stays short of exact.
+// The calls to tOptex::~tOptex go to the game's copy (0x004296c8). 0x0070f100 is not a second
+// copy: it is tResourceGuard's destructor, which expands tOptex's inline. Short of exact.
 // FUNCTION: STARFLEETOP 0x004295d0
 tClientCharacter::~tClientCharacter()
 {
