@@ -13208,7 +13208,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c513e	function	fn_005c513e		?fn_005c513e@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c51ac	function	fn_005c51ac		?fn_005c51ac@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c521a	function	fn_005c521a		?fn_005c521a@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
-0x005c5288	function	fn_005c5288					none
+0x005c5288	function	fn_005c5288		?fn_005c5288@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c52f6	function	fn_005c52f6					none
 0x005c5364	function	fn_005c5364					none
 0x005c53d2	function	fn_005c53d2					none
