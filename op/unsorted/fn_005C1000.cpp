@@ -61,6 +61,7 @@ class tMemberCallback_tUpdateHex;
 class tMemberCallback_tChangeHexAttribute;
 class tMemberCallback_tBaseTransitionVictoryPointAdjustment;
 class tMemberCallback_fn_005c15f3;
+class tMemberCallback_tMoveAIs;
 
 class tMapRelayS {
 public:
@@ -80,6 +81,7 @@ public:
 	void fn_005c131e( tMemberCallback_tRequestTerrainAtHex** out );
 	void fn_005c142b( tMemberCallback_tTurnBreak** out );
 	void fn_005c15f3( tMemberCallback_fn_005c15f3** out );
+	void fn_005c1639( tMemberCallback_tMoveAIs** out );
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -261,4 +263,18 @@ public:
 void tMapRelayS::fn_005c15f3( tMemberCallback_fn_005c15f3** out )
 {
 	*out = new tMemberCallback_fn_005c15f3( m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005ae434 (the symbol table calls it a tMemberCallback
+// instance for nAsyncMapProcedures::tMoveAIs); size and arguments guessed.
+class tMemberCallback_tMoveAIs {
+public:
+	tMemberCallback_tMoveAIs( void* a );
+	char pad00[0x94];
+};
+
+// FUNCTION: STARFLEETOP 0x005c1639
+void tMapRelayS::fn_005c1639( tMemberCallback_tMoveAIs** out )
+{
+	*out = new tMemberCallback_tMoveAIs( m_d4 );
 }
