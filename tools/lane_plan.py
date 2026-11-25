@@ -19,10 +19,13 @@ lane may not edit that header. This reads the include graph of `op/`, the unit m
 A units file lists one unit per line, as in `op/UNITS.tsv` (`unsorted/tSlider.cpp`); a leading
 `op/` is accepted, blank lines and `#` comments are skipped. Exit 0 when every lane is within
 `--max-blocked` (a share of its non-exact functions) and no two lanes contest a file, 1 when a
-lane is over the threshold, a unit is in two lanes, or a header that a lane needs is needed by
-two lanes, 2 on a usage error.
+lane is over the threshold, a unit is in two lanes, or a header is given to two lanes (grants), 2 on a usage error.
 
-`--write-files DIR` writes `files-<lane>.txt` (what `HARNESS_LANE_FILES` takes) and
+`--grant LANE=HEADER` (repeatable) is the integrator's decision to give a shared header to one lane:
+it counts as owned by that lane, goes on its file list and is contested for every other lane; the
+output lists each grant with the units outside the lane that include it. A grant of a header under
+`op/port/` is refused. A header under `op/port/` is a `hotspot`: never owned, never on a list, and a
+function whose class is declared there is blocked. `--write-files DIR` writes `files-<lane>.txt` (what `HARNESS_LANE_FILES` takes) and
 `functions-<lane>.tsv` (address, size, class, unit, status, blocking header) for each lane.
 
 Limits: the class header is the first header found that defines `class X` or `struct X` with a
@@ -40,6 +43,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INCLUDE = re.compile(r'^\s*#\s*include\s*([<"])([^>"]+)[>"]', re.M)
 CLASS_DEF = re.compile(r'\b(?:class|struct)\s+(?:__declspec\s*\([^)]*\)\s*)?(\w+)\s*(?::[^;{]*)?\{')
+LANE_NAME = re.compile(r'^[A-Za-z0-9_-]+$')
 COMMENT = re.compile(r'/\*.*?\*/|//[^\n]*', re.S)
 SOURCE_EXT = ('.cpp', '.c', '.cc')
 HEADER_EXT = ('.h', '.hpp', '.inl')
@@ -123,6 +127,20 @@ def read_units(path):
     return out
 
 
+def function_sizes(root):
+    """{address as int: size} from the function boundaries export (ghidra/exports/functions.csv)."""
+    out = {}
+    path = os.path.join(root, 'ghidra/exports/functions.csv')
+    if os.path.isfile(path):
+        with open(path, newline='') as f:
+            for r in csv.DictReader(f):
+                try:
+                    out[int(r['address'], 16)] = int(r['size'])
+                except (ValueError, KeyError):
+                    pass
+    return out
+
+
 def unit_functions(root, units):
     """{unit: [(address, size, class, exact, claimed)]} for the units, from UNITS.tsv, the symbol
     table, the matched set and the manifest."""
@@ -141,14 +159,14 @@ def unit_functions(root, units):
     out = {u: [] for u in units}
     with open(os.path.join(root, 'analysis/symbols/STARFLEETOP.tsv'), newline='') as f:
         syms = [r for r in csv.DictReader(f, delimiter='\t') if r['kind'] == 'function']
-    sizes = {a: m.get('size', 0) for a, m in matched.items()}
+    sizes = function_sizes(root)
     for r in syms:
         a = int(r['address'], 16)
         for u, (lo, hi) in ranges.items():
             if lo <= a <= hi:
                 key = r['address']
                 m = matched.get(key, {})
-                out[u].append((key, sizes.get(key, 0), r['class'], bool(m.get('exact')),
+                out[u].append((key, sizes.get(a), r['class'], bool(m.get('exact')),
                                key in claimed))
                 break
     return out
@@ -168,8 +186,10 @@ def class_header(tree, cls, lane_units):
     return heads[0]
 
 
-def plan(tree, lanes, functions):
-    """lanes: {name: [unit]}; functions: {unit: rows}. Returns {name: result dict}."""
+def plan(tree, lanes, functions, grants=None):
+    """lanes: {name: [unit]}; functions: {unit: rows}; grants: {header: lane}. Returns
+    ({name: result dict}, {unit: [lanes]} for units in several lanes)."""
+    grants = grants or {}
     unit_lane = {}
     for name, units in lanes.items():
         for u in units:
@@ -178,19 +198,23 @@ def plan(tree, lanes, functions):
     for name, units in lanes.items():
         inside = set(units)
         others = {u for n, us in lanes.items() if n != name for u in us}
+
+        def state_of(h):
+            users = tree.includers(h)
+            outside = len(users - inside)
+            if h.startswith('port/'):
+                return ('hotspot', outside)
+            if h in grants:
+                return ('owned', 0) if grants[h] == name else ('contested', outside)
+            if users & others:
+                return ('contested', outside)
+            return ('shared', outside) if outside else ('owned', 0)
+
         headers = set()
         for u in units:
             headers |= {h for h in tree.closure(u) if h.lower().endswith(HEADER_EXT)}
-        klass = {}
-        for h in sorted(headers):
-            users = tree.includers(h)
-            outside = users - inside
-            if users & others:
-                klass[h] = ('contested', len(outside))
-            elif outside:
-                klass[h] = ('shared', len(outside))
-            else:
-                klass[h] = ('owned', 0)
+        headers |= {h for h, n in grants.items() if n == name}
+        klass = {h: state_of(h) for h in sorted(headers)}
         rows = []
         for u in units:
             for addr, size, cls, exact, claimed in functions.get(u, ()):
@@ -203,33 +227,34 @@ def plan(tree, lanes, functions):
                 if h is None:
                     rows.append((addr, size, cls, u, 'blocked', '(undeclared)', 0, claimed))
                     continue
-                state, n = klass.get(h, (None, 0))
-                if state is None:
-                    # declared in a header none of the lane's units include
-                    users = tree.includers(h)
-                    state, n = ('contested' if users & others else 'shared'), len(users - inside)
+                if h not in klass:
+                    # declared in a header none of the lane's units reach: still the lane's
+                    # to edit when nobody else includes it, so it goes on the file list
+                    klass[h] = state_of(h)
+                state, n = klass[h]
                 if state == 'owned':
                     rows.append((addr, size, cls, u, 'workable', h, 0, claimed))
                 else:
                     rows.append((addr, size, cls, u, 'blocked', h, n, claimed))
-        needed = {r[5] for r in rows if r[4] == 'workable' and r[5]}
-        owned = sorted(h for h, (s, _) in klass.items() if s == 'owned')
-        result[name] = {'units': units, 'headers': klass, 'rows': rows, 'needed': needed,
+        owned = sorted(h for h, (st, _) in klass.items() if st == 'owned')
+        given = [(h, len(tree.includers(h) - inside)) for h in sorted(grants)
+                 if grants[h] == name]
+        result[name] = {'units': units, 'headers': klass, 'rows': rows, 'grants': given,
                         'files': sorted(['op/' + u for u in units] + ['op/' + h for h in owned])}
     return result, {u: n for u, n in unit_lane.items() if len(n) > 1}
 
 
 def conflicts(result, dup_units):
-    """Messages for a unit in two lanes, or a needed header that two lanes both need."""
+    """Messages for a unit in two lanes, or a file the plan gives to two lanes. A header two
+    lanes are both blocked by is not a conflict: the ranking reports it."""
     out = ['unit %s is in lanes %s' % (u, ', '.join(n)) for u, n in sorted(dup_units.items())]
-    wanted = {}
+    given = {}
     for name, r in result.items():
-        for row in r['rows']:
-            if row[5] and row[5] != '(undeclared)':
-                wanted.setdefault(row[5], set()).add(name)
-    for h, names in sorted(wanted.items()):
-        if len(names) > 1:
-            out.append('header %s is needed by lanes %s' % (h, ', '.join(sorted(names))))
+        for f in r['files']:
+            given.setdefault(f, []).append(name)
+    for f, names in sorted(given.items()):
+        if len(names) > 1 and f.endswith(HEADER_EXT):
+            out.append('file %s is given to lanes %s' % (f, ', '.join(sorted(names))))
     return out
 
 
@@ -247,6 +272,9 @@ def blocking_rank(result):
 
 
 def write_files(result, out_dir):
+    for name in result:
+        if not LANE_NAME.match(name):
+            raise ValueError('lane name %r: use letters, digits, _ and -' % name)
     os.makedirs(out_dir, exist_ok=True)
     for name, r in result.items():
         with open(os.path.join(out_dir, 'files-%s.txt' % name), 'w') as f:
@@ -254,8 +282,9 @@ def write_files(result, out_dir):
         with open(os.path.join(out_dir, 'functions-%s.tsv' % name), 'w') as f:
             f.write('address\tsize\tclass\tunit\tstatus\tblocking_header\n')
             for addr, size, cls, u, status, h, _n, _c in r['rows']:
-                f.write('%s\t%d\t%s\t%s\t%s\t%s\n' % (
-                    addr, size, cls, u, status, h if status == 'blocked' else ''))
+                f.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (
+                    addr, '' if size is None else size, cls, u, status,
+                    h if status == 'blocked' else ''))
 
 
 def report(result, dup, max_blocked, out):
@@ -272,9 +301,13 @@ def report(result, dup, max_blocked, out):
         out.write('lane %s: %d units, %d non-exact functions: %d workable, %d blocked (%.0f%%)%s\n'
                   % (name, len(r['units']), len(rows), len(rows) - len(blocked), len(blocked),
                      share * 100, '  OVER %.0f%%' % (max_blocked * 100) if over else ''))
-        out.write('  headers: %d owned, %d shared, %d contested; lane file list: %d files\n'
-                  % (counts.get('owned', 0), counts.get('shared', 0), counts.get('contested', 0),
-                     len(r['files'])))
+        out.write('  headers: %d owned, %d shared, %d contested, %d hotspot; lane file list: '
+                  '%d files\n' % (counts.get('owned', 0), counts.get('shared', 0),
+                                  counts.get('contested', 0), counts.get('hotspot', 0),
+                                  len(r['files'])))
+        for h, n in r['grants']:
+            out.write('  granted %s: %d units outside the lane include it; keep them unbroken\n'
+                      % (h, n))
         by = {}
         for x in blocked:
             e = by.setdefault(x[5], [0, x[6]])
@@ -300,6 +333,8 @@ def main(argv=None, root=ROOT, out=sys.stdout):
                     help='a lane and its units file; repeat for several lanes')
     ap.add_argument('--max-blocked', type=float, default=0.2,
                     help='largest share of a lane\'s non-exact functions that may be blocked')
+    ap.add_argument('--grant', action='append', default=[], metavar='LANE=HEADER',
+                    help='give a shared header to one lane (repeatable); op/port/ is refused')
     ap.add_argument('--write-files', metavar='DIR')
     ap.add_argument('--root', default=root)
     args = ap.parse_args(argv)
@@ -313,13 +348,33 @@ def main(argv=None, root=ROOT, out=sys.stdout):
         lanes['lane'] = read_units(args.units)
     if not lanes:
         ap.error('give --units or --lane')
+    if args.write_files:
+        bad = [n for n in lanes if not LANE_NAME.match(n)]
+        if bad:
+            sys.stderr.write('lane name %s: use letters, digits, _ and -\n' % ', '.join(bad))
+            return 2
     tree = Tree(args.root)
     every = {u for us in lanes.values() for u in us}
-    missing = sorted(u for u in every if u not in tree.files)
+    sources = set(tree.sources())
+    missing = sorted(u for u in every if u not in sources)
     if missing:
-        sys.stderr.write('unknown unit: %s\n' % ', '.join(missing))
+        sys.stderr.write('not a source unit under op/: %s\n' % ', '.join(missing))
         return 2
-    result, dup = plan(tree, lanes, unit_functions(args.root, every))
+    grants = {}
+    for spec in args.grant:
+        lane, _, h = spec.partition('=')
+        h = h[3:] if h.startswith('op/') else h
+        if lane not in lanes or not h.lower().endswith(HEADER_EXT) or h not in tree.files:
+            sys.stderr.write('bad grant %s: needs a lane in the plan and a header under op/\n' % spec)
+            return 2
+        if h.startswith('port/'):
+            sys.stderr.write('grant refused: op/%s is a hotspot\n' % h)
+            return 2
+        if grants.get(h, lane) != lane:
+            sys.stderr.write('header %s is granted to two lanes\n' % h)
+            return 2
+        grants[h] = lane
+    result, dup = plan(tree, lanes, unit_functions(args.root, every), grants)
     code = report(result, dup, args.max_blocked, out)
     if args.write_files:
         write_files(result, args.write_files)

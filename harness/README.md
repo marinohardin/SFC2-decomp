@@ -393,11 +393,24 @@ shared or contested, or the class is defined nowhere (`(undeclared)`). The lane 
 units' sources plus the owned headers.
 
 It prints a table per lane and, across the plan, the shared headers ranked by functions blocked:
-the integrator's list of headers to settle (or lanes to merge) before lanes start. Exit 1 when a
-lane's blocked share is over `--max-blocked` (default 0.2), a unit is in two lanes, or a header
-two lanes both need; 2 on a usage error. `--write-files DIR` writes `files-<lane>.txt` (for
-`HARNESS_LANE_FILES`) and `functions-<lane>.tsv` (address, size, class, unit, status, blocking
-header). It is advice for the integrator: `guard.py` is unchanged and still enforces whatever
+the integrator's list of headers to settle (or lanes to merge) before lanes start. A header two
+lanes are both blocked by shows up there only; it is not a conflict.
+
+A header under `op/port/` is a hotspot: class `hotspot`, never owned, never on a list, and a
+function whose class is declared there is blocked. A unit must be a source file under `op/`, not
+a header; anything else exits 2.
+
+`--grant LANE=HEADER` (repeatable) records the integrator's decision to give a shared header to
+one lane: it counts as owned by that lane, goes on its file list and is contested for every other
+lane, and the output lists each grant with the number of units outside the lane that include it
+(the units the lane's whole-tree checks must keep unbroken). A grant of an `op/port/` header is
+refused.
+
+Exit 1 when a lane's blocked share is over `--max-blocked` (default 0.2), a unit is in two lanes,
+or a file is given to two lanes; 2 on a usage error. `--write-files DIR` writes
+`files-<lane>.txt` (for `HARNESS_LANE_FILES`; lane names are letters, digits, `_` and `-`) and
+`functions-<lane>.tsv` (address, size from `ghidra/exports/functions.csv` or empty, class, unit,
+status, blocking header). It is advice for the integrator: `guard.py` is unchanged and still enforces whatever
 list the launcher is given.
 
 ### Symbol table and stand-ins
