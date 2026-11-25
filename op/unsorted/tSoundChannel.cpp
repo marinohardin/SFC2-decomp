@@ -112,3 +112,10 @@ iTruth tSoundChannel::mTryToLocateInHardware()
     unsigned char inHardware = (mGetSoundType() & 0x40) > 0;
     return inHardware;
 }
+
+// FUNCTION: STARFLEETOP 0x006469a0
+iTruth tSoundChannel::mTryToLocateInSoftware()
+{
+    unsigned char inSoftware = (mGetSoundType() & 0x80) > 0;
+    return inSoftware;
+}
