@@ -46,6 +46,13 @@ void tSeqScene::fn_0067dd90()
 	field_EC &= ~1;
 }
 
+// FUNCTION: STARFLEETOP 0x0067dda0
+void tSeqScene::fn_0067dda0()
+{
+	field_EC |= 1;
+	field_E8 = fn_00672870() - (1000 / (unsigned long)field_FC) * field_F0;
+}
+
 // FUNCTION: STARFLEETOP 0x0067dde0
 void tSeqScene::fn_0067dde0()
 {

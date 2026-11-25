@@ -17839,7 +17839,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAH@Z	claim		vtable
 0x0067dd40	function	fn_0067dd40	tSeqScene	?vfunction40@tSeqScene@@UAEXXZ	claim		vtable
 0x0067dd90	function	fn_0067dd90		?fn_0067dd90@tSeqScene@@QAEXXZ	claim		none
-0x0067dda0	function	fn_0067dda0					none
+0x0067dda0	function	fn_0067dda0		?fn_0067dda0@tSeqScene@@QAEXXZ	claim		none
 0x0067dde0	function	fn_0067dde0		?fn_0067dde0@tSeqScene@@QAEXXZ	claim		none
 0x0067de00	function	fn_0067de00	tSeqScene				vtable
 0x0067e1a0	function	fn_0067e1a0	tSeqScene				vtable
