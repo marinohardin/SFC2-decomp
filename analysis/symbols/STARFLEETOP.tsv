@@ -16792,7 +16792,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	claim		mangled
 0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?vfunction17@t3DSoundProfile@@UAEMXZ	claim		mangled
 0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	claim		mangled
-0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?mGet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEJXZ	mangled		mangled
+0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?vfunction19@t3DSoundProfile@@UAEJXZ	claim		mangled
 0x00646310	function	t3DSoundProfile::scalar_deleting_destructor	t3DSoundProfile				sdk
 0x00646330	function	tChannelAttributes::mSet3DSoundProfile	tChannelAttributes	?mSet3DSoundProfile@tChannelAttributes@@UAEXPAVt3DSoundProfile@@@Z	mangled		mangled
 0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
