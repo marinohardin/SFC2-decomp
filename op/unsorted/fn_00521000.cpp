@@ -296,8 +296,15 @@ void __stdcall fn_00521b5d(tAIEntryTable* t, float* sums)
 
 // HYPOTHESIS: a circular list owner; the node holds a next link, a previous link and a payload at +8
 struct fn_00521b98_payload {
-	char data[0x24];
+	char data0[4];
+	int field_4;
+	char data1[0x14];
+	float field_1c;
+	float field_20;
 	int field_24;
+	char data2[4];
+	fn_00521b98_payload** field_2c;
+	fn_00521b98_payload** field_30;
 };
 
 struct fn_00521b98_node {
@@ -325,5 +332,40 @@ void fn_00521b98_owner::fn_00521b98(fn_00521b98_owner* o)
 			}
 			n = n->next;
 		} while (n != o->head);
+	}
+}
+
+// MATCH-ONLY: helper the original inlined (a container's size())
+inline unsigned int fn_00521bc8_size(fn_00521b98_payload** first, fn_00521b98_payload** last)
+{
+	if (first == 0) {
+		return 0;
+	}
+	return ((unsigned int)((char*)last - (char*)first) & 0xfffffffc);
+}
+
+// FUNCTION: STARFLEETOP 0x00521bc8
+void fn_00521b98_owner::fn_00521bc8(fn_00521b98_payload* p)
+{
+	if (fn_00521bc8_size(p->field_2c, p->field_30)) {
+		fn_00521b98_payload** it = p->field_2c;
+		fn_00521b98_payload** best = p->field_30;
+		float bestDiff = 0.0f;
+		if (it != best) {
+			do {
+				fn_00521bc8(*it);
+				fn_00521b98_payload* c = *it;
+				float diff = c->field_1c - c->field_20;
+				if (best == p->field_30 || (c->field_4 == 0 && bestDiff < diff) || (c->field_4 == 1 && diff < bestDiff)) {
+					best = it;
+					bestDiff = diff;
+				}
+				it++;
+			} while (it != p->field_30);
+		}
+		if (best != p->field_30) {
+			p->field_1c = (*best)->field_1c;
+			p->field_20 = (*best)->field_20;
+		}
 	}
 }
