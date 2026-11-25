@@ -548,3 +548,31 @@ void fn_00426988_Class::fn_00426c5e(int aValue)
 		mb0 = 20;
 	fn_00426d48(aValue);
 }
+
+// HYPOTHESIS: mc4 points to mc8 entries of two ints each; the entry whose first int is aValue
+// is removed by shifting the later ones down.
+// FUNCTION: STARFLEETOP 0x00426d48
+void fn_00426988_Class::fn_00426d48(int aValue)
+{
+	int last = mc8 - 1;
+	int i = last;
+	if (i >= 0)
+	{
+		int* p = (int*)mc4 + i * 2;
+		do
+		{
+			if (*p == aValue)
+			{
+				mc8 = last;
+				for (; i < mc8; i++)
+				{
+					((int*)mc4)[i * 2] = ((int*)mc4)[i * 2 + 2];
+					((int*)mc4)[i * 2 + 1] = ((int*)mc4)[i * 2 + 3];
+				}
+				return;
+			}
+			i--;
+			p -= 2;
+		} while (i >= 0);
+	}
+}
