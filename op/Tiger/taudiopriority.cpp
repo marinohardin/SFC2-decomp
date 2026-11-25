@@ -74,7 +74,7 @@ long tAudioPriorityManagerPart::mGetAudioFileClassHandleFromReference( long refe
 	{
 		for ( long i = 0; i < f14; i++ )
 		{
-			if ( f0c[i] && f0c[i]->vfunction1() == reference )
+			if ( f0c[i] && f0c[i]->mGetMyHandle() == reference )
 				return i;
 		}
 	}
@@ -106,7 +106,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[0] = new tAudioFileClass;
 		if ( f0c[0] )
 		{
-			f0c[0]->vfunction2( 0 );
+			f0c[0]->mSetMyHandle( 0 );
 			f10 = 1;
 			return 0;
 		}
@@ -143,7 +143,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[oldSize] = new tAudioFileClass;
 		if ( f0c[oldSize] )
 		{
-			f0c[oldSize]->vfunction2( oldSize );
+			f0c[oldSize]->mSetMyHandle( oldSize );
 			f10++;
 			return oldSize;
 		}
@@ -158,7 +158,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[f10] = new tAudioFileClass;
 		if ( f0c[f10] )
 		{
-			f0c[f10]->vfunction2( f10 );
+			f0c[f10]->mSetMyHandle( f10 );
 			f10++;
 			return f10 - 1;
 		}
@@ -177,7 +177,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 				f0c[i] = new tAudioFileClass;
 				if ( f0c[i] )
 				{
-					f0c[i]->vfunction2( i );
+					f0c[i]->mSetMyHandle( i );
 					f10++;
 					return i;
 				}
@@ -630,4 +630,43 @@ void tAudioFileClass::mSet( long arg1, long arg2, eAudioPreemptType preempt, dou
 	f28 = preempt;
 	tClassActiveChannelList *list = &f08;
 	list->mInit( arg2 );
+}
+
+// FUNCTION: STARFLEETOP 0x00663590
+void tHandleList::mClear( void )
+{
+	f04 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006635a0
+unsigned char tHandleList::mIsEmpty( void )
+{
+	unsigned char empty = f04 == 0;
+	return empty;
+}
+
+// FUNCTION: STARFLEETOP 0x00663620
+void tAudioFileClass::mSetMyHandle( long handle )
+{
+	f24 = handle;
+}
+
+// FUNCTION: STARFLEETOP 0x00663630
+long tAudioFileClass::mGetMyHandle( void )
+{
+	return f24;
+}
+
+// HYPOTHESIS: the header names this slot vfunction52 (the symbol table says vfunction53);
+// field_0x28 is the channel's status.
+// FUNCTION: STARFLEETOP 0x00663640
+eSoundChannelStatus tSoundChannel::vfunction52()
+{
+	return (eSoundChannelStatus)field_0x28;
+}
+
+// FUNCTION: STARFLEETOP 0x006636c0
+void tAudioFileClass::mChangeEarliestNextStartTime( double change )
+{
+	f38 = change + f38;
 }

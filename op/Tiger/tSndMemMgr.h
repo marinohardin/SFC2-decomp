@@ -126,8 +126,8 @@ public:
     long fNumberOfBlocks;
     long fNumberOfLocks;
     // HYPOTHESIS: set together by mSetAboutToBeRemovedByManagerCallback; names not yet known.
-    void (*field_20)(long);
-    long field_24;
+    long field_20;
+    void (*field_24)(long);
     short fTopHalfOfHandle;
     unsigned char fBlockInUse;
 };

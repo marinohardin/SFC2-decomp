@@ -1829,7 +1829,7 @@ unsigned char twStandardSoundChannel::mSetVolume( long volume )
 	HRESULT err = fSoundBuffer->SetVolume( dsVolume );
 	if( err != DS_OK )
 		return kFalse;
-	( &field_0x30 )->vfunction6( volume );
+	( &field_0x30 )->vfunction7( volume );
 	return kTrue;
 }
 
@@ -1918,7 +1918,7 @@ unsigned char twStandardSoundChannel::mSet3DSoundPosition( tPoint3* position )
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction12( position );
+	attributes->mSet3DSoundPosition( position );
 	return kTrue;
 }
 
@@ -1931,7 +1931,7 @@ unsigned char twStandardSoundChannel::mSet3DSoundOrientation( tPoint3* orientati
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction16( orientation );
+	attributes->mSet3DSoundOrientation( orientation );
 	return kTrue;
 }
 
@@ -1944,7 +1944,7 @@ unsigned char twStandardSoundChannel::mSet3DSoundVelocity( tPoint3* velocity )
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction20( velocity );
+	attributes->mSet3DSoundVelocity( velocity );
 	return kTrue;
 }
 
@@ -1960,8 +1960,8 @@ unsigned char twStandardSoundChannel::mSet3DSoundCones( float angle, long level 
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction24( angle );
-	attributes->vfunction26( level );
+	attributes->mSet3DSoundConeAngleForNoAttenuation( angle );
+	attributes->mSet3DSoundConeAttenuationLevel( level );
 	return kTrue;
 }
 
@@ -1974,7 +1974,7 @@ unsigned char twStandardSoundChannel::mSet3DSoundReferenceDistance( double dista
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;
-	attributes->vfunction22( distance );
+	attributes->mSet3DSoundReferenceDistance( distance );
 	return kTrue;
 }
 
@@ -1995,13 +1995,13 @@ unsigned char twStandardSoundChannel::mSet3DSoundProfile( t3DSoundProfile* profi
 	err = fUnknown_01bc->SetVelocity( velocity->x, velocity->y, velocity->z, DS3D_DEFERRED );
 	if( err != DS_OK )
 		return kFalse;
-	err = fUnknown_01bc->SetConeAngles( (DWORD)( profile->vfunction17() * 2 ), 360, DS3D_DEFERRED );
+	err = fUnknown_01bc->SetConeAngles( (DWORD)( profile->mGet3DSoundConeAngleForNoAttenuation() * 2 ), 360, DS3D_DEFERRED );
 	if( err != DS_OK )
 		return kFalse;
-	err = fUnknown_01bc->SetMinDistance( (float)profile->vfunction15(), DS3D_DEFERRED );
+	err = fUnknown_01bc->SetMinDistance( (float)profile->mGet3DSoundReferenceDistance(), DS3D_DEFERRED );
 	if( err != DS_OK )
 		return kFalse;
-	err = fUnknown_01bc->SetConeOutsideVolume( profile->vfunction19() * -100, DS3D_IMMEDIATE );
+	err = fUnknown_01bc->SetConeOutsideVolume( profile->mGet3DSoundConeAttenuationLevel() * -100, DS3D_IMMEDIATE );
 	if( err != DS_OK )
 		return kFalse;
 	tChannelAttributes* attributes = &field_0x30;

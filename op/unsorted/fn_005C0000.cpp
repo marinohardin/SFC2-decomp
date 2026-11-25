@@ -1,6 +1,55 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005C0000.cpp
-// Functions: 0x005c008d to 0x005c0b9d, 10 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void fn_004bd431();
+
+// HYPOTHESIS: arranges at exit the cleanup that Ghidra labels tApp3dBase::vfunction5, unconfirmed.
+// FUNCTION: STARFLEETOP 0x005c0b85
+void fn_005c0b85()
+{
+	atexit(fn_004bd431);
+}
+
+// FUNCTION: STARFLEETOP 0x005c0b91
+void fn_005c0b91()
+{
+	atexit(fn_004bd431);
+}
+
+// FUNCTION: STARFLEETOP 0x005c0b9d
+void fn_005c0b9d()
+{
+	atexit(fn_004bd431);
+}

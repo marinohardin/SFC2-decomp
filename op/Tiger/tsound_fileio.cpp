@@ -103,6 +103,12 @@ DWORD	AsynchSoundIOMain	( void *data );
 tAsynchSoundQueue	gAsynchSoundQueue;
 tAsynchSoundQueue	*theAsynchSoundQueue;
 
+// FUNCTION: STARFLEETOP 0x0066ebc0
+void	ReadAtInterrupt	( void )
+{
+	theAsynchSoundQueue->mReadNextInterrupt();
+}
+
 // FUNCTION: STARFLEETOP 0x0066ebd0
 tAsynchSoundQueue::tAsynchSoundQueue( void )
 {

@@ -1,6 +1,48 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tSoundMemoryBlock.cpp
-// Functions: 0x0066eb20 to 0x0066ebb0, 9 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "Tiger/tSndMemMgr.h"
+
+// FUNCTION: STARFLEETOP 0x0066eb40
+long tSoundMemoryBlock::mGetNumberOfLocks()
+{
+    return fNumberOfLocks;
+}
+
+// FUNCTION: STARFLEETOP 0x0066eb50
+unsigned char tSoundMemoryBlock::mAreWeInUse()
+{
+    return fBlockInUse;
+}
+
+// FUNCTION: STARFLEETOP 0x0066eb60
+void tSoundMemoryBlock::mSetBlockInUse(unsigned char inUse)
+{
+    fBlockInUse = inUse;
+}
+
+// FUNCTION: STARFLEETOP 0x0066eb70
+void tSoundMemoryBlock::mLock()
+{
+    fNumberOfLocks++;
+}
+
+// FUNCTION: STARFLEETOP 0x0066eb80
+void tSoundMemoryBlock::mUnlock()
+{
+    fNumberOfLocks--;
+    if (fNumberOfLocks < 0) {
+        fNumberOfLocks = 0;
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x0066eba0
+unsigned long tSoundMemoryBlock::mGetHandle()
+{
+    return ((unsigned short)fTopHalfOfHandle << 16) + field_0c;
+}
+
+// FUNCTION: STARFLEETOP 0x0066ebb0
+void tSoundMemoryBlock::mAboutToBeRemovedByManager()
+{
+    if (field_24 != 0) {
+        field_24(field_20);
+    }
+}

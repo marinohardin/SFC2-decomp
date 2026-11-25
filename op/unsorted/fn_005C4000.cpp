@@ -6,10 +6,22 @@ class fn_005c427c_Owner
 {
 public:
 	void FUN_005c427c();
+	void FUN_005c23dc();
+	void FUN_005c2394();
 
 	int		m00;
 	tOptex	m04;
 };
+
+// HYPOTHESIS: placed here because the owner class is declared only in this unit; the original
+// unit of 0x005c2394 (page 0x005c2000) is not known.
+// FUNCTION: STARFLEETOP 0x005c2394
+void fn_005c427c_Owner::FUN_005c2394()
+{
+	tOptex::tGuard guard(&m04);
+	FUN_005c427c();
+	FUN_005c23dc();
+}
 
 // FUNCTION: STARFLEETOP 0x005c427c
 void fn_005c427c_Owner::FUN_005c427c()

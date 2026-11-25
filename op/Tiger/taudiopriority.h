@@ -61,6 +61,10 @@ class tClassActiveChannelList : public tHandleList
 };
 
 // HYPOTHESIS: inline and empty, from ~tAudioFileClass (0x00661f30) storing only the base's vtable.
+// MATCH-ONLY: the empty body is the original's (both addresses compile exact from it); the
+// out-of-line copy exists because unsorted/fn_006636D0.cpp uses the class.
+// FUNCTION: STARFLEETOP 0x006636d0
+// FUNCTION: STARFLEETOP 0x006636f0
 inline tClassActiveChannelList::~tClassActiveChannelList( void )
 {
 }
@@ -84,8 +88,8 @@ class tAudioFileClass
 		// pointer of its own, which a written destructor does.
 
 		virtual		void	vfunction0	( void );
-		virtual		long	vfunction1	( void );
-		virtual		void	vfunction2	( long );
+		virtual		long	mGetMyHandle	( void );
+		virtual		void	mSetMyHandle	( long );
 		virtual		void	vfunction3	( void );
 		// HYPOTHESIS: mSet (signature from the SDK library symbols) in slot 4, from
 		// mSetAudioFileClass (0x00661f60) calling through +0x10.
@@ -98,7 +102,7 @@ class tAudioFileClass
 		virtual		double	mGetAtmostOneCanPlayPerThisNumberOfMicroseconds	( void );
 		virtual		void	vfunction10	( void );
 		virtual		void	mSetEarliestNextStartTime	( double );
-		virtual		void	vfunction12	( void );
+		virtual		void	mChangeEarliestNextStartTime	( double );
 		virtual		void	vfunction13	( void );
 		virtual		void	mRemoveHandle	( unsigned long );
 		virtual		void	mAddHandle	( unsigned long );

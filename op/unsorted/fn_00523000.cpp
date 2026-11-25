@@ -6,6 +6,8 @@
 #include "unsorted/tAIData.h"
 #include "unsorted/tEntity.h"
 #include "unsorted/fn_004e2b02_ship_type.h"
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tIndividualShipSystem.h"
 
 // HYPOTHESIS: the object 0x00523543 and 0x00523574 return for an ID; tAICaptain.cpp declares
 // what is likely the same class as tObject_004b94dc.
@@ -16,9 +18,30 @@ public:
 	void fn_0051c7af(int param_1);
 	void fn_0051c7e3(int param_1);
 	bool fn_0051bf99(int param_1, int param_2);
+	void fn_0051c5f2(int param_1);
 	// HYPOTHESIS: returns the object for the ship (0x005235c8 passes its result through).
 	tObject_005235a7 *fn_0051c210(fn_004e2b02_ship_type *pShip);
 };
+
+// FUNCTION: STARFLEETOP 0x0052294d
+// HYPOTHESIS: takes the new entity and the one whose fleet ID (+0x60) is looked up; a member of
+// fn_0090bed4_Object whose declaration is not in the header yet, so it stands as a fastcall.
+char __fastcall fn_0052294d(fn_0090bed4_Object* self, int, tEntity* pNew, vfunction33_result* pOwner)
+{
+	tID id = ((tEntityMgr*)&gObject_008e1060)->mGetNextHostID();
+	pNew->fID = id;
+	gObject_008e1060.mAddEntity(pNew);
+	pOwner->fn_00410227(id);
+	pOwner->field_5c = 1;
+	tObject_0051c7af* pObject = self->fn_00523543(pOwner->field_60);
+	if (pObject == 0)
+		return 0;
+	pObject->fn_0051c5f2(id);
+	int ownerID = pOwner->field_1c;
+	if (gObject_008e1060.fn_00525081() == ownerID)
+		self->fn_00522c46((tEntity*)pOwner);
+	return 1;
+}
 
 // FUNCTION: STARFLEETOP 0x00523027
 bool fn_0090bed4_Object::fn_00523027(int param_1, int param_2)
