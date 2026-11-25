@@ -14,3 +14,12 @@ tFx_ProximityDetonation* fn_00504b65()
 	static tObject_0040ce21 marker("That was close!");
 	return new tFx_ProximityDetonation;
 }
+
+__declspec(noreturn) float fn_005050e2(float aValue);
+
+// HYPOTHESIS: the original bytes are the tail of a larger function (the call ends the range); this is the closest standalone form.
+// FUNCTION: STARFLEETOP 0x00504bff
+void fn_00504bff()
+{
+	fn_005050e2(0.0f);
+}

@@ -7597,7 +7597,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504af2	function	fn_00504af2	tFx_ProximityDetonation				vtable
 0x00504b65	function	fn_00504b65		?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ	claim		none
 0x00504bfa	thunk	fn_00504bfa					none
-0x00504bff	function	fn_00504bff					none
+0x00504bff	function	fn_00504bff		?fn_00504bff@@YAXXZ	claim		none
 0x00504c0a	function	fn_00504c0a					none
 0x00504c1e	function	fn_00504c1e					none
 0x00504c32	function	fn_00504c32					none
