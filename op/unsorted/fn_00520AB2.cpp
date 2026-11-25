@@ -301,6 +301,7 @@ struct fn_005224d8_holder
 	int field_4;
 	double field_8;
 
+	fn_005224d8_holder();
 	fn_005224d8_holder(int value);
 };
 
@@ -308,5 +309,13 @@ struct fn_005224d8_holder
 fn_005224d8_holder::fn_005224d8_holder(int value)
 {
 	field_0 = value;
+	field_8 = 0.0;
+}
+
+// HYPOTHESIS: default constructor of the same holder: clears the value and the 8-byte pair.
+// FUNCTION: STARFLEETOP 0x005224e8
+fn_005224d8_holder::fn_005224d8_holder()
+{
+	field_0 = 0;
 	field_8 = 0.0;
 }
