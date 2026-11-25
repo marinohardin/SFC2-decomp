@@ -268,7 +268,10 @@ while :; do
         || echo "WARN  could not label $addr (see $state/nearmiss.log)"
     # A deleting destructor and its real destructor are one piece of work (harness/lib/pairs.py):
     # the snapshot leaves out every address of the group, not only the queued one.
-    group=$(py group "$entry")
+    if ! group=$(py group "$entry") || [ -z "$group" ]; then
+        group=$addr
+        echo "WARN  $addr: could not read its pair from $entry; the claim snapshot covers the queued address alone"
+    fi
     # shellcheck disable=SC2086  # addresses only
     snap_ok=1; py claims "$src" $group > "$tag.claims.before" || snap_ok=0
     # Never run a session on a missing or partial prompt (an unreadable brief, say).
@@ -357,9 +360,10 @@ while :; do
         ids=$(py ids "$entry")
         # shellcheck disable=SC2086
         harness/update-matched-set.sh $ids --json > "$tag.after.json" 2>&1
-        set -- $(py score "$tag.after.json" "$addr")
-        after=$1 kind=$2 code=$3
-        improved=$(python3 -c 'import sys; print(int(float(sys.argv[2]) > float(sys.argv[1]) + 1e-6 or sys.argv[3] == "exact"))' "$before" "$after" "$kind")
+        # A round is kept when any member of the group improved and the queued function did not
+        # get worse (harness/lib/loopio.py, judge).
+        set -- $(py judge "$entry" "$tag.after.json" "$before")
+        after=$1 kind=$2 code=$3 improved=$4
         if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.wholetree > "$tag.wholetree.txt" 2>&1; then
             # The Stop hook runs the same checks; this catches a session it let go after three
             # refusals. The round is undone like any other failure.

@@ -48,8 +48,11 @@ class Pair:
 class Unpaired:
     """A deleting destructor whose real destructor cannot be identified."""
 
-    def __init__(self, reason):
-        self.reason = reason
+    def __init__(self, reason, transient=False):
+        # transient: the only gap is that the original's bytes could not be read, a fact about
+        # this run (install link missing, image unreadable), not about the address. The queue
+        # skips such an address for the call and never lists it.
+        self.reason, self.transient = reason, transient
 
     def __repr__(self):
         return f'Unpaired({self.reason!r})'
@@ -142,6 +145,7 @@ class Resolver:
             return Pair('real', None, sorted(siblings), 'class symbols')
         by_class = self.real.get(cls, [])
         by_class = by_class[0] if len(by_class) == 1 else None
+        self.unread = False
         called = self._target(address)
         if called is not None and (
                 self.info.get(called, ('',))[0] == 'deleting'
@@ -153,9 +157,10 @@ class Resolver:
                             f'call 0x{called:08x}')
         real = by_class or called
         if real is None:
+            unread = self.read is None or self.unread
             return Unpaired('no real destructor of its class is named, and ' + (
-                'no call near its start reaches a function' if self.read and not self.unread else
-                'the original bytes were not read'))
+                'the original bytes were not read' if unread else
+                'no call near its start reaches a function'), transient=unread)
         how = 'class symbols and bytes' if by_class and called else (
             'class symbols' if by_class else 'the call in its bytes')
         sibs = [d for d in self.deleting.get(cls, []) if d != address and self._calls(d, real)]

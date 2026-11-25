@@ -187,8 +187,9 @@ def test_an_unpaired_deleting_destructor_is_parked_not_handed_out():
                              parked=parked)
     # Its reason comes back; the next function is handed out as usual (no pair: tA's deleting
     # destructor is not in this queue, but it is still the real destructor's partner).
-    assert [(x['address'], 'no real destructor' in why) for x, why in parked] == \
-        [('0x00401080', True)]
+    assert [(x['address'], 'no real destructor' in why.reason, why.transient)
+                                   for x, why in parked] == \
+        [('0x00401080', True, False)]
     assert e['address'] == '0x00401020'
 
 
@@ -453,3 +454,132 @@ def test_queue_cli_record_credits_the_exact_partner(tmp_path):
                                   workqueue.ATTEMPT_FIELDS)
     assert [(a['address'], a['outcome']) for a in attempts] == [
         (LEAD, 'exact'), ('0x00401020', 'exact')]
+
+
+# ---- the review round ---------------------------------------------------------------------
+
+def test_unreadable_bytes_make_an_unpaired_address_transient_not_a_finding():
+    assert world(read=False).pair_of(LOOSE).transient is True
+    assert world().pair_of(LOOSE).transient is False   # bytes read, no call: a real finding
+    r = world()
+    r.read = lambda a, n: None                          # the image cannot be read
+    got = r.pair_of(LOOSE)
+    assert got.transient and 'bytes were not read' in got.reason
+
+
+def test_queue_cli_skips_an_address_whose_bytes_cannot_be_read_and_lists_nothing(tmp_path):
+    _cli_world(tmp_path)
+    os.remove(tmp_path / 'exe')
+    r = _cli(tmp_path, 'next')
+    assert r.returncode == 0, r.stderr
+    assert '0x00401060 skipped for this call, not listed' in r.stderr
+    assert not (tmp_path / 'state' / 'lists').exists()
+
+
+def test_the_asymmetric_group_pairs_only_what_the_bytes_confirm():
+    # tA has a scalar deleting destructor that calls its destructor and a vector one whose
+    # bytes call something else.
+    other = 0x401100
+    idx = index(fn(DEL_A, "tA::`scalar deleting destructor'", '??_GtA@@UAEPAXI@Z'),
+                fn(DEL_B, "tA::`vector deleting destructor'", '??_EtA@@UAEPAXI@Z'),
+                fn(REAL_A, 'tA::~tA', '??1tA@@UAE@XZ'), fn(other, 'fn_x', '', named=False))
+    code = {DEL_A: call_to(DEL_A, REAL_A), DEL_B: call_to(DEL_B, other)}
+    r = pairs.Resolver(idx, {}, lambda a, n: code.get(a, b'\x90' * n)[:n])
+    assert r.pair_of(REAL_A).partners == [DEL_A]
+    assert r.pair_of(DEL_A).partners == [REAL_A]
+    odd = r.pair_of(DEL_B)
+    assert isinstance(odd, pairs.Unpaired) and 'the bytes call 0x00401100' in odd.reason
+
+
+def test_parking_checks_under_the_lock_so_two_loops_add_one_row(tmp_path, monkeypatch):
+    p = _paths(tmp_path)
+    entry = dict(address='0x00401080', name='x')
+    # The other loop wins between this one's check and its append.
+    monkeypatch.setattr(workqueue, 'read_lists', lambda *a: [])
+    assert workqueue.park(p, entry, 'r') is True
+    assert workqueue.park(p, entry, 'r') is False
+    assert len(workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS)) == 1
+    f = str(tmp_path / 'x.tsv')
+    row = dict(address='1', name='n')
+    assert workqueue.append_tsv_once(f, ['address', 'name'], 'address', row) is True
+    assert workqueue.append_tsv_once(f, ['address', 'name'], 'address', row) is False
+
+
+def test_settle_partners_uses_the_queues_size_for_the_partners_model_order(tmp_path,
+                                                                           monkeypatch):
+    seen = []
+    monkeypatch.setattr(workqueue, 'settle', lambda p, e, *a: seen.append(e['size']))
+    p = _paths(tmp_path)
+    partner = dict(address='0x00401020', name='d', exact=True, score_after='100.00')
+    workqueue.settle_partners(p, dict(address=LEAD, name='l'), 'exact', ROW, [partner], TIERS,
+                              sizes={'0x00401020': 60})
+    assert seen == [60]
+
+
+def test_judge_keeps_a_round_when_a_partner_improved_and_the_lead_did_not_get_worse():
+    entry = dict(address=LEAD, partners=None, pair=dict(partners=['0x00401020']))
+    base = {'0x00401020': dict(score=20.0, exact=False)}
+
+    def verify(lead, partner, lead_exact=False, partner_exact=False, exit_=0):
+        return dict(exit=exit_, results=[dict(address=LEAD, score=lead, exact=lead_exact),
+                                         dict(address='0x00401020', score=partner,
+                                              exact=partner_exact)])
+    judge = lambda v, before='50.00': loopio.judge(entry, v, before, base)  # noqa: E731
+    assert judge(verify(50.0, 60.0)) == (50.0, 'partial', 0, 1)     # partner up, lead level
+    assert judge(verify(40.0, 90.0)) == (40.0, 'partial', 0, 0)     # lead worse: not kept
+    assert judge(verify(50.0, 20.0)) == (50.0, 'partial', 0, 0)     # nothing improved
+    assert judge(verify(60.0, 20.0)) == (60.0, 'partial', 0, 1)     # lead up
+    assert judge(verify(100.0, 20.0, lead_exact=True)) == (100.0, 'exact', 0, 1)
+    assert judge(verify(50.0, 100.0, partner_exact=True))[3] == 1   # partner newly exact
+    # No pair: the lead alone decides, as before.
+    assert loopio.judge(dict(address=LEAD), verify(50.0, 99.0), '50.00')[3] == 0
+
+
+def test_the_stop_hook_lets_go_when_only_a_partner_improved():
+    claim = dict(address=LEAD, baseline_score=50.0, baseline_exact=False, max_blocks=3,
+                 partners=['0x00401020'],
+                 partner_baselines={'0x00401020': dict(score=20.0, exact=False)})
+    v = dict(exit=0, lines=[], standins=[], results=[
+        dict(address=LEAD, score=50.0, exact=False),
+        dict(address='0x00401020', score=60.0, exact=False)])
+    assert stophook.decide(claim, v, 0)[0] is True
+    v['results'][1]['score'] = 20.0
+    assert stophook.decide(claim, v, 0)[0] is False
+
+
+def test_the_claim_records_each_partners_starting_score(tmp_path, monkeypatch):
+    monkeypatch.setattr(loopio.paths, 'CLAIM', str(tmp_path / 'claim.json'))
+    ms = tmp_path / 'ms.json'
+    ms.write_text(json.dumps({'version': 1, 'module': 'STARFLEETOP', 'functions': {
+        '0x00401020': dict(name='d', score=33.0, exact=False)}}))
+    monkeypatch.setattr(loopio.paths, 'MATCHED_SET', str(ms))
+    c = loopio.claim(dict(address=LEAD, name='l', pair=dict(partners=['0x00401020',
+                                                                     '0x00401040'])), None)
+    assert c['partner_baselines'] == {'0x00401020': dict(score=33.0, exact=False),
+                                      '0x00401040': dict(score=0.0, exact=False)}
+
+
+def test_the_entry_points_the_loop_calls_take_several_ids(tmp_path, monkeypatch, capsys):
+    src = tmp_path / 'src'
+    src.mkdir()
+    (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\n'
+                               '// FUNCTION: STARFLEETOP 0x00401020\n'
+                               '// STUB: STARFLEETOP 0x00401040\n'
+                               '// FUNCTION: STARFLEETOP 0x00401999\n')
+    monkeypatch.setattr(loopio.paths, 'SRC_ROOT', str(src))
+    monkeypatch.setattr(loopio.source, 'load_units', lambda: dict(module='STARFLEETOP'))
+    entry = tmp_path / 'entry.json'
+    entry.write_text(json.dumps(dict(address=LEAD, pair=dict(
+        partners=['0x00401020', '0x00401040', '0x00401060']))))
+    assert loopio.main(['ids', str(entry)]) == 0
+    assert capsys.readouterr().out.split() == [LEAD, '0x00401020']   # a STUB is no claim
+    assert loopio.main(['group', str(entry)]) == 0
+    assert capsys.readouterr().out.split() == [LEAD, '0x00401020', '0x00401040', '0x00401060']
+    assert loopio.main(['claims', str(src), LEAD, '0x00401020', '0x00401040']) == 0
+    assert capsys.readouterr().out.split('\n')[0] == 'a.cpp\tFUNCTION STARFLEETOP 0x00401999'
+    # The updater and the verifier take every id.
+    from harness.lib import verify
+    got = []
+    monkeypatch.setattr(verify, 'run', lambda ids, **k: got.append(list(ids)) or verify.Report())
+    verify.main([LEAD, '0x00401020', '--json'])
+    assert got == [[LEAD, '0x00401020']]

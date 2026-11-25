@@ -577,7 +577,11 @@ treats the two as one piece of work (`lib/pairs.py`).
   and the Stop hook count the pair's addresses as the session's own: it may add, move or
   re-stack their annotations. The Stop hook judges the lead as before and reports each partner
   claimed in the source (`partner 0x...: 62.50%`), and a stand-in in a partner blocks the stop
-  too. After the session `update-matched-set.sh` records the lead and every partner the source
+  too. A round is kept when any member of the group improved (a partner higher than the score
+  recorded when the session started, or newly exact) and the queued function did not get worse;
+  the Stop hook and `loopio judge` (used by `loop.sh`) decide it the same way. A lead that is
+  still not exact stays in the queue for its next tier. `loop.sh` falls back to the queued
+  address alone, with a warning, if it cannot read the group. After the session `update-matched-set.sh` records the lead and every partner the source
   claims, and the commit carries a `Harness-Score:` trailer for each.
 - **Credit.** A lead that ends exact is logged as exact; each partner the committed round left
   exact gets an `exact` row of its own, so the queue never hands it out. A partner left short
@@ -587,7 +591,11 @@ treats the two as one piece of work (`lib/pairs.py`).
 - **No identifiable destructor.** A deleting destructor with no real destructor (no `??1` of its
   class, no call to a function, or a class and a call that disagree, or a call to a named
   function that is not a destructor) is not given to a session: it goes to this lane's
-  `difficult_functions.tsv` with attempts 0 and the reason, as a reference-only near miss does.
+  `difficult_functions.tsv` with attempts 0 and the reason, as a reference-only near miss does
+  (the row is added under the file's lock, so two loops add it once). When the only gap is that
+  the original's bytes could not be read (the install link is missing, the image will not
+  parse), the address is not listed: `queue.py next` skips it for that call and says so on
+  stderr (`skipped for this call, not listed`).
 - **The prompt** says how a deleting destructor is written here: never by hand, never as a
   `scalar_deleting_destructor` member; its annotation is stacked on the real destructor's
   out-of-class definition above the destructor's own, as `tThreadEvent` and `tWinTimer` do, and

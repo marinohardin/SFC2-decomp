@@ -26,6 +26,12 @@ def partner_note(claim, verify):
     return out
 
 
+def _up(verify, address, old):
+    r = next((x for x in (verify or {}).get('results', []) if x.get('address') == address), None)
+    return r is not None and (r.get('score', 0.0) > old.get('score', 0.0) + EPSILON
+                              or bool(r.get('exact') and not old.get('exact')))
+
+
 def decide(claim, verify, blocks):
     """The decision of `_decide` with the pair partners' results added to the message."""
     allow, message = _decide(claim, verify, blocks)
@@ -63,6 +69,10 @@ def _decide(claim, verify, blocks):
         return True, f'{claim["address"]} is now exact'
     if res.get('score', 0.0) > base + EPSILON:
         return True, f'{claim["address"]} improved from {base:.2f}% to {res["score"]:.2f}%'
+    if res.get('score', 0.0) + EPSILON >= base and any(
+            _up(verify, a, (claim.get('partner_baselines') or {}).get(a) or {})
+            for a in claim.get('partners') or []):
+        return True, f'{claim["address"]} stays at {base:.2f}% but a partner improved'
     return False, (f'{claim["address"]} scores {res.get("score", 0.0):.2f}%, not above the '
                    f'{base:.2f}% it had when this session started. Keep working on the '
                    f'function, or stop again to give up.\n' + lines)

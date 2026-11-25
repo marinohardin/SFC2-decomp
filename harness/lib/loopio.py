@@ -3,6 +3,7 @@
     python3 -m harness.lib.loopio claim <entry.json> <verify.json>     # writes claim.json
     python3 -m harness.lib.loopio prompt <entry.json> [pack.md]        # prints the prompt
     python3 -m harness.lib.loopio score <verify.json> <address>        # "score exact exit"
+    python3 -m harness.lib.loopio judge <entry.json> <verify.json> <before>  # "score kind exit kept"
     python3 -m harness.lib.loopio group <entry.json>                   # the pair's addresses
     python3 -m harness.lib.loopio ids <entry.json>                     # addresses to verify
     python3 -m harness.lib.loopio limited <claude.json>                # exit 0 on a usage limit
@@ -51,6 +52,33 @@ def score(verify, address):
     if code == 0 and stophook.standins(verify, address):
         code = EXIT_STANDIN
     return float(r.get('score', 0.0)), bool(r.get('exact')), code
+
+
+def partner_improved(verify, partners, baselines):
+    """True when a pair partner the verify result scored beats what it had at the start (a
+    higher score, or newly exact)."""
+    for p in partners:
+        r = next((x for x in (verify or {}).get('results', []) if x.get('address') == p), None)
+        if r is None or r.get('error') and 'relocs' not in r:
+            continue
+        old = (baselines or {}).get(p) or {}
+        if r.get('score', 0.0) > old.get('score', 0.0) + 1e-6 or (
+                r.get('exact') and not old.get('exact')):
+            return True
+    return False
+
+
+def judge(entry, verify, before, baselines=None):
+    """(score, kind, exit, improved) of a finished round. The round is kept when any member of
+    the group improved and the queued function did not get worse: the queued function itself
+    higher or newly exact, or (a pair) a partner higher or newly exact. The queued function's
+    score and kind (`exact` / `partial`) are what the commit and the attempt log record; it stays
+    in the queue for its next attempt while it is not exact."""
+    s, exact, code = score(verify, entry['address'])
+    lead_up = s > float(before) + 1e-6 or exact
+    worse = s + 1e-6 < float(before)
+    up = lead_up or partner_improved(verify, partners_of(entry), baselines)
+    return s, 'exact' if exact else 'partial', code, int(up and not worse)
 
 
 def seed_matched(dest, src=None):
@@ -120,6 +148,13 @@ def claim(entry, verify):
              baseline_score=s, baseline_exact=exact, max_blocks=MAX_BLOCKS, blocks=0)
     if entry.get('pair'):
         c['partners'] = partners_of(entry)
+        # What each partner had recorded when the session started: the Stop hook and the loop
+        # keep a round in which a partner improved too (`judge`).
+        data = matched.load(paths.MATCHED_SET)
+        c['partner_baselines'] = {
+            p: dict(score=(matched.recorded(data, int(p, 16)) or {}).get('score', 0.0),
+                    exact=bool((matched.recorded(data, int(p, 16)) or {}).get('exact')))
+            for p in c['partners']}
     os.makedirs(os.path.dirname(paths.CLAIM), exist_ok=True)
     with open(paths.CLAIM, 'w') as f:
         json.dump(c, f)
@@ -306,6 +341,10 @@ def main(argv):
                              entry, load(argv[5]) if len(argv) > 5 else None))
     elif cmd == 'claims':
         print('\n'.join(claim_lines(argv[1], {int(a, 16) for a in argv[2:]})))
+    elif cmd == 'judge':
+        s, kind, code, improved = judge(load(argv[1]), load(argv[2]), argv[3],
+                                        (load(paths.CLAIM) or {}).get('partner_baselines'))
+        print(f'{s:.2f} {kind} {code} {improved}')
     elif cmd == 'group':
         entry = load(argv[1])
         print(' '.join([entry['address']] + partners_of(entry)))

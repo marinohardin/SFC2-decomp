@@ -235,11 +235,14 @@ def main(argv):
         exact = {f'0x{int(k, 16):08x}' for k, v in ms['functions'].items() if v.get('exact')}
         e = workqueue.next_entry(q, attempts, difficult, tiers, grant, revisit, take_revisit,
                                  labels, ended, pair_of if resolver else None, exact, parked)
-        for entry, reason in parked:
-            if workqueue.park(paths, entry, reason):
+        for entry, why in parked:
+            if why.transient:
+                print(f'WARN  {entry["address"]} skipped for this call, not listed: {why.reason}',
+                      file=sys.stderr)
+            elif workqueue.park(paths, entry, why.reason):
                 print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
                       f'{paths.LANE}): a deleting destructor with no identifiable real '
-                      f'destructor ({reason})', file=sys.stderr)
+                      f'destructor ({why.reason})', file=sys.stderr)
         for entry, p, rows in ended:
             workqueue.end_reference_only(paths, entry, p, rows)
             print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
@@ -259,7 +262,7 @@ def main(argv):
         where = workqueue.record(paths, entry, row, tiers, take_revisit)
         if row.get('partners'):
             workqueue.settle_partners(paths, entry, where, row, row['partners'], tiers,
-                                      take_revisit)
+                                      take_revisit, {e['address']: e['size'] for e in q})
         if where in ('difficult', 'revisit'):
             print(f'INFO  {row["address"]} listed in {where}_functions.tsv (lane {paths.LANE})')
         elif where == 'cleared':

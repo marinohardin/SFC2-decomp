@@ -265,6 +265,27 @@ def append_tsv(path, fields, row):
             fcntl.flock(f, fcntl.LOCK_UN)
 
 
+def append_tsv_once(path, fields, key, row):
+    """Append `row` unless a row with the same `key` is there, checked under the same exclusive
+    lock as the append, so two loops cannot both add it. True when it was appended."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'a+', newline='') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            f.seek(0)
+            if any(r.get(key) == row[key] for r in csv.DictReader(f, delimiter='\t')):
+                return False
+            f.seek(0, os.SEEK_END)
+            w = csv.DictWriter(f, fieldnames=fields, delimiter='\t', extrasaction='ignore',
+                               lineterminator='\n')
+            if f.tell() == 0:
+                w.writeheader()
+            w.writerow(row)
+            return True
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+
 def _alive(pid):
     try:
         os.kill(pid, 0)
@@ -455,8 +476,8 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
     the lead (its entry carries `pair`, and the model follows the group's largest open
     function); the other open members wait behind it (they are never handed to a second
     session) and are not counted. A deleting destructor whose real destructor cannot be
-    identified is appended to `parked` as (entry, reason), for the caller to route out with
-    `park`. `exact` holds the matched-set addresses already exact."""
+    identified is appended to `parked` as (entry, Unpaired), for the caller to route out with
+    `park` (unless the Unpaired is transient: only unreadable bytes, which the caller skips). `exact` holds the matched-set addresses already exact."""
     done = {r['address'] for r in attempts if r['outcome'] == 'exact'} | set(exact)
     given_up = {r['address'] for r in difficult}
     listed = {r['address']: r.get('listed', '') for r in revisit}
@@ -477,7 +498,7 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
             group = pairs(a)
             if group is not None and hasattr(group, 'reason'):
                 if parked is not None:
-                    parked.append((e, group.reason))
+                    parked.append((e, group))
                 continue
             if group is not None:
                 partners = [f'0x{p:08x}' for p in group.partners]
@@ -516,20 +537,21 @@ def park(paths_, entry, reason):
     if any(r['address'] == a for r in read_lists(paths_, 'difficult')):
         return False
     _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
-    append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
+    return append_tsv_once(paths_.DIFFICULT, DIFFICULT_FIELDS, 'address', dict(
         address=a, name=entry.get('name', ''), attempts=0, last_model='', best_score='0.00',
         last_attempt='',
         reason=('not attempted: a deleting destructor is generated from its class\'s real '
                 f'destructor and cannot be written alone, and {reason} (harness/lib/pairs.py)')))
-    return True
 
 
-def settle_partners(paths_, entry, where, row, partners, tiers, take_revisit=False):
+def settle_partners(paths_, entry, where, row, partners, tiers, take_revisit=False,
+                    sizes=None):
     """After a lead's attempt is logged and settled (`where`, from `record`): each partner of
     its pair that the attempt left exact gets an `exact` row of its own (so the queue never hands
     it out), and when the lead's run ended on a list the other partners go on the same list,
     with the lead's row, so they are not handed to a session of their own. `partners` is
-    [{address, name, exact, score_before, score_after}]."""
+    [{address, name, exact, score_before, score_after}]; `sizes` ({address: bytes}, from the
+    queue) picks each partner's model order."""
     for p in partners:
         if p.get('exact'):
             append_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS, dict(
@@ -537,8 +559,9 @@ def settle_partners(paths_, entry, where, row, partners, tiers, take_revisit=Fal
                 score_before=p.get('score_before', '0.00'),
                 score_after=p.get('score_after', '100.00'), input_tokens=0, output_tokens=0,
                 cache_read_tokens=0, cache_write_tokens=0, cost_usd=0, turns=0, seconds=0))
-            settle(paths_, dict(address=p['address'], name=p.get('name', ''),
-                                size=p.get('size')), tiers, row['time'], take_revisit)
+            size = (sizes or {}).get(p['address'], p.get('size'))
+            settle(paths_, dict(address=p['address'], name=p.get('name', ''), size=size), tiers,
+                   row['time'], take_revisit)
         elif where in ('difficult', 'revisit'):
             lead = entry['address']
             fields, path = ((DIFFICULT_FIELDS, paths_.DIFFICULT) if where == 'difficult'
