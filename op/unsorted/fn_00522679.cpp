@@ -40,3 +40,22 @@ void fn_0090bed4_Object::fn_00522681()
 		}
 	}
 }
+
+// HYPOTHESIS: a member of the object above, called on the same object.
+void __fastcall fn_005227c1(char* self);
+
+// FUNCTION: STARFLEETOP 0x0052277b
+// HYPOTHESIS: the table at +0x10 is a tObject_00523644; its removal call is not reachable from here yet.
+void __fastcall fn_0052277b(char* self, int, void* param_1)
+{
+	if (param_1 != 0) {
+		int count = *(int*)(self + 0x210);
+		for (int i = 0; i < count; i++) {
+			if (*(void**)(self + 0x10 + i * 16) == param_1) {
+				break;
+			}
+		}
+		operator delete(param_1);
+		fn_005227c1(self);
+	}
+}
