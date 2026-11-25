@@ -56,17 +56,17 @@ tFx_Phaser *fn_0050037b( tBmpSurf *arg )
 
 
 
-// HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
-// by file name and returns a handle. No header declares it yet; a shared one should replace this.
-class fn_008cc620_object_00500847
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual long vfunction2( const char *name, long a, long b, long c );
-};
+#include "unsorted/fn_008cc620_object.h"
 
-extern fn_008cc620_object_00500847 *g_008cc620;
+
+
+
+
+
+
+
+
+
 extern char g_00966ac0;
 extern long g_00857fc4;
 

@@ -16,17 +16,17 @@ tFx_PPDWave* fn_005032f7()
 	return new tFx_PPDWave;
 }
 
-// HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
-// by file name and returns a handle. No header declares it yet; a shared one should replace this.
-class fn_008cc620_object_00503354
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual long vfunction2( const char *name, long a, long b, long c );
-};
+#include "unsorted/fn_008cc620_object.h"
 
-extern fn_008cc620_object_00503354 *g_008cc620;
+
+
+
+
+
+
+
+
+
 extern char g_00967479;
 extern long g_009672d0;
 extern long g_009672d4;

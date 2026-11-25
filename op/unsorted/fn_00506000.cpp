@@ -1,14 +1,14 @@
-// HYPOTHESIS: the object held by the global at 0x008cc620; its third virtual loads a texture
-// by file name and returns a handle. No header declares it yet; a shared one should replace this.
-class fn_008cc620_object_0050678f
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual long vfunction2( const char *name, long a, long b, long c );
-};
+#include "unsorted/fn_008cc620_object.h"
 
-extern fn_008cc620_object_0050678f *g_008cc620;
+
+
+
+
+
+
+
+
+
 extern char g_00967978;
 extern long g_00967724;
 extern long g_00967728;
