@@ -155,6 +155,12 @@ tPoint3* tSoundChannel::mGet3DSoundVelocity()
 {
     return (&field_0x30)->mGet3DSoundVelocity();
 }
+
+// FUNCTION: STARFLEETOP 0x00646810
+double tSoundChannel::mGet3DSoundReferenceDistance()
+{
+    return (&field_0x30)->mGet3DSoundReferenceDistance();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
