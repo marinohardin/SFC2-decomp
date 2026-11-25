@@ -723,7 +723,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00412bf4	function	fn_00412bf4	tEntity_Mine				vtable
 0x00412c1e	function	fn_00412c1e	tEntity_Mine				vtable
 0x00412d0f	function	fn_00412d0f	tEntity_Mine				vtable
-0x00412f08	function	fn_00412f08					none
+0x00412f08	function	fn_00412f08		??0tPoint3@@QAE@ABU0@@Z	add		none
 0x00412f21	function	fn_00412f21		?fn_00412f21@@YAMXZ	callers		none
 0x00412f28	function	fn_00412f28					none
 0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity				rtti
@@ -1228,7 +1228,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004257b4	function	fn_004257b4		?fn_004257b4@fn_004255b5_class@@QAEXPAVtEntity@@@Z	claim		none
 0x004257f5	function	fn_004257f5		?fn_004257f5@tObject_008f5170@@QAEXPAVtEntity@@J@Z	claim		none
 0x00425824	function	fn_00425824		?fn_00425824@fn_004255b5_class@@QAEXPAVtEntity@@H@Z	claim		none
-0x004258de	function	fn_004258de					none
+0x004258de	function	fn_004258de		?fn_004258de@tObject_008f5170@@QAEXPAVtEntity@@JJ@Z	claim		none
 0x00425928	function	fn_00425928					none
 0x004259bd	function	fn_004259bd					none
 0x00425a18	function	fn_00425a18					none

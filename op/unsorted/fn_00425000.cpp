@@ -353,6 +353,7 @@ struct fn_004255b5_class
 	void fn_0042574b(int unused0, int unused1, float x, float y, float r, unsigned int* col0, unsigned int* col1, unsigned int* row0, unsigned int* row1);
 	void fn_004257b4(tEntity* pEntity);
 	void fn_00425824(tEntity* pEntity, int value);
+	void fn_00425928(tPoint3 aPoint, float aRadius, tEntity* pEntity, int kind, int value);
 };
 
 // FUNCTION: STARFLEETOP 0x004255b5
@@ -455,5 +456,18 @@ void fn_004255b5_class::fn_00425824(tEntity* pEntity, int value)
 				list->fn_00425501((int)pEntity, value);
 			}
 		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004258de
+void tObject_008f5170::fn_004258de(tEntity *pEntity, int32 kind, int32 value)
+{
+	if (pEntity != 0) {
+		// HYPOTHESIS: the original copied the three words through a plain local before the call.
+		struct { int a; int b; int c; } pos;
+		pos.a = *(int *)&pEntity->fLastMapPos.x;
+		pos.b = *(int *)&pEntity->fLastMapPos.y;
+		pos.c = *(int *)&pEntity->fLastMapPos.z;
+		((fn_004255b5_class*)this)->fn_00425928(*(tPoint3 *)&pos, pEntity->fMapRadius, pEntity, kind, value);
 	}
 }
