@@ -390,8 +390,11 @@ inline fn_00426988_Base::~fn_00426988_Base()
 class fn_00524daa_Class
 {
 public:
+	fn_00524daa_Class();
 	~fn_00524daa_Class();
 	void fn_00524ead(int param_1);
+
+	char pad00[0x64];	// HYPOTHESIS: size 0x64 from the allocation in fn_00426bcc
 };
 
 class fn_00426988_Class : public fn_00426988_Base
@@ -504,4 +507,12 @@ bool fn_00426988_Class::fn_00426bac(int aID)
 		p++;
 	}
 	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x00426bcc
+fn_00524daa_Class* fn_00426988_Class::fn_00426bcc()
+{
+	if (md0 != 0 && mdc == 0)
+		mdc = new fn_00524daa_Class;
+	return mdc;
 }
