@@ -62,7 +62,7 @@ class tMemberCallback_tChangeHexAttribute;
 class tMemberCallback_tBaseTransitionVictoryPointAdjustment;
 class tMemberCallback_fn_005c15f3;
 class tMemberCallback_tMoveAIs;
-
+class tMemberCallback_tEconomicStatusRequest;
 class tMapRelayS {
 public:
 	void fn_005c1531( tMemberCallback_tUpdateHex** out );
@@ -82,6 +82,7 @@ public:
 	void fn_005c142b( tMemberCallback_tTurnBreak** out );
 	void fn_005c15f3( tMemberCallback_fn_005c15f3** out );
 	void fn_005c1639( tMemberCallback_tMoveAIs** out );
+	void fn_005c167f( tMemberCallback_tEconomicStatusRequest** out );
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -277,4 +278,18 @@ public:
 void tMapRelayS::fn_005c1639( tMemberCallback_tMoveAIs** out )
 {
 	*out = new tMemberCallback_tMoveAIs( m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005ab671 (the symbol table calls it a tMemberCallback
+// instance for nAsyncMapProcedures::tEconomicStatusRequest); size guessed.
+class tMemberCallback_tEconomicStatusRequest {
+public:
+	tMemberCallback_tEconomicStatusRequest( void* a );
+	char pad00[0x48];
+};
+
+// FUNCTION: STARFLEETOP 0x005c167f
+void tMapRelayS::fn_005c167f( tMemberCallback_tEconomicStatusRequest** out )
+{
+	*out = new tMemberCallback_tEconomicStatusRequest( m_d4 );
 }
