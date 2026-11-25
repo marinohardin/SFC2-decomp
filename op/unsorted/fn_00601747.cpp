@@ -1,3 +1,4 @@
+#include <string>
 #include "Common/Thread/Optex.h"
 #include "unsorted/tMessengerRelayCreator.h"
 
@@ -24,3 +25,7 @@ void fn_00601747_class::fn_00601747( tMetaClientCreator** result )
 	tOptex::tGuard guard( &fOptex );
 	*result = new tMessengerRelayCreator;
 }
+
+// HYPOTHESIS: a third global std::string built from the same literal as g_00c39fe0 and g_00c39ff0; its dynamic initializer is this function.
+// FUNCTION: STARFLEETOP 0x006017d1
+std::string g_00c3a000 = "MessengerRelayNameC";
