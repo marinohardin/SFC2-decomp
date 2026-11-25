@@ -14858,7 +14858,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005f42c2	function	fn_005f42c2					none
 0x005f42f8	function	fn_005f42f8					none
 0x005f4327	function	fn_005f4327					none
-0x005f4352	function	fn_005f4352					none
+0x005f4352	function	fn_005f4352		?Done@tAccessPointer_0060422e@@QAEXXZ	add		none
 0x005f4378	function	tCallback<unsigned_long>::~tCallback<unsigned_long>	tCallback<unsigned_long>				rtti
 0x005f437f	function	fn_005f437f					none
 0x005f43ee	function	fn_005f43ee					none
@@ -15395,7 +15395,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006041a1	function	fn_006041a1		??1tRemoveItem@@QAE@XZ	claim		none
 0x006041d0	function	fn_006041d0		??1tRemoveItem_0060435f@@QAE@XZ	claim		none
 0x006041ff	function	fn_006041ff		??1tRemoveItem_00604390@@QAE@XZ	claim		none
-0x0060422e	function	fn_0060422e					none
+0x0060422e	function	fn_0060422e		??1tAccessPointer_0060422e@@QAE@XZ	claim		none
 0x00604259	function	fn_00604259					none
 0x00604271	function	fn_00604271					none
 0x0060429c	function	fn_0060429c					none
