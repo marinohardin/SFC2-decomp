@@ -91,3 +91,10 @@ iTruth tSoundChannel::mAreWeStatic()
     unsigned char isStatic = (mGetSoundType() & 1) > 0;
     return isStatic;
 }
+
+// FUNCTION: STARFLEETOP 0x00646970
+iTruth tSoundChannel::mAreWeFixedFrequency()
+{
+    unsigned char isFixed = (mGetSoundType() & 0x10) > 0;
+    return isFixed;
+}
