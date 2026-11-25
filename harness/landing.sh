@@ -15,6 +15,9 @@
 #    check), so an integration branch ends with every claimed row current.
 # 3. Regenerates op/manifest.tsv from the annotations and the new matched set (tools/manifest.py).
 #
+# 4. Prints the new stand-in classes of this tree against BASE (harness/lib/standins.py), each with
+#    the STAND-IN allowance a lane recorded for it, if any. Informational: the integrator judges.
+#
 # Commit what it changes (matched_set.json, the symbol table, op/manifest.tsv). Exit 0 landed, 1 a regression, 2 a function could not be built or scored.
 for v in HARNESS_MATCHED_SET SFCOP_LANE; do
     if [ -n "$(printenv "$v" 2>/dev/null)" ]; then
@@ -34,4 +37,5 @@ report=$(mktemp "${TMPDIR:-/tmp}/seed-report.XXXXXX") || exit 2
 python3 analysis/scripts/seed_symbols.py --report "$report" || { rm -f "$report"; exit 2; }
 rm -f "$report"
 python3 tools/symbols.py check || exit 2
+PYTHONPATH="$repo" python3 -m harness.lib.standins --report --base "$base" || true
 exec python3 tools/manifest.py

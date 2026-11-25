@@ -10,16 +10,18 @@ import sys
 
 # The repository root, not harness/: harness/queue.py would shadow the stdlib queue module.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from harness.lib import paths, stophook, wholetree  # noqa: E402
+from harness.lib import paths, standins, stophook, wholetree  # noqa: E402
 
 
 def main():
     if os.environ.get('HARNESS_FUNCTION_SESSION') != '1':
         return 0
     try:
-        json.load(sys.stdin)
+        payload = json.load(sys.stdin)
     except ValueError:
-        pass
+        payload = {}
+    # A STAND-IN: line in the final message is an allowance (harness/lib/standins.py).
+    standins.record(standins.last_message(payload))
     try:
         with open(paths.CLAIM) as f:
             claim = json.load(f)
@@ -34,9 +36,13 @@ def main():
     allow, message = stophook.decide(claim, verify, claim.get('blocks', 0))
     if allow and claim.get('blocks', 0) < claim.get('max_blocks', 3):
         # The function is good: now the rest of the tree (harness/lib/wholetree.py).
-        ok, text = wholetree.check()
+        told = claim.get('standins_told', [])
+        ok, text = wholetree.check(told=told)
         if not ok:
             allow, message = False, text
+            # A stand-in is named once: the next stop does not refuse it again (so it does not
+            # use up the refusals), and the loop's own whole-tree run still fails the round.
+            claim['standins_told'] = sorted(set(told) | set(standins.pending_names()))
     if allow:
         print(json.dumps({'systemMessage': message}))
         return 0

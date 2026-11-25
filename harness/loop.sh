@@ -348,6 +348,9 @@ while :; do
     else
         git clean -fdXq -- $judges
         harness/update-matched-set.sh "$addr" --json > "$tag.after.json" 2>&1
+        # STAND-IN: lines in the final message are allowances, kept in the lane state before the
+        # whole-tree checks read them (harness/lib/standins.py).
+        python3 -m harness.lib.standins --record "$tag.claude.json" || true
         set -- $(py score "$tag.after.json" "$addr")
         after=$1 kind=$2 code=$3
         improved=$(python3 -c 'import sys; print(int(float(sys.argv[2]) > float(sys.argv[1]) + 1e-6 or sys.argv[3] == "exact"))' "$before" "$after" "$kind")

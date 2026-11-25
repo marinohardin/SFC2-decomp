@@ -8,10 +8,17 @@ import sys
 
 import pytest
 
-from harness.lib import paths, wholetree
+from harness.lib import paths, standins, wholetree
 
 OK_VERIFY = json.dumps(dict(exit=0, lines=['INFO fine'], results=[]))
 SUMMARY_0 = 'lint_claims: 0 new (empty-body 0), 12 in the baseline, 0 stale baseline rows\n'
+
+
+@pytest.fixture(autouse=True)
+def _no_standin_scan(monkeypatch):
+    """These tests are about the commands; the stand-in scan reads the checkout (its own tests are
+    in test_standins.py) and finds nothing here."""
+    monkeypatch.setattr(standins, 'check_lines', lambda told=(), **kw: None)
 
 
 def fake(**overrides):
@@ -161,12 +168,14 @@ def run_stop_hook(monkeypatch, tmp_path, blocks, whole):
         stdout = json.dumps(verify)
     monkeypatch.setattr(hook.subprocess, 'run', lambda *a, **k: P)
     monkeypatch.setattr(hook.wholetree, 'check', whole)
+    monkeypatch.setattr(paths, 'STATE', str(tmp_path / 'state'))
+    monkeypatch.setattr(standins, 'pending_names', lambda **kw: ['c_0067b2b0'])
     return hook, claim
 
 
 def test_the_stop_hook_blocks_an_improved_function_when_the_tree_fails(monkeypatch, tmp_path,
                                                                        capsys):
-    hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, lambda: (False, 'MANIFEST BROKE'))
+    hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, lambda told=(): (False, 'MANIFEST BROKE'))
     hook.main()
     out = json.loads(capsys.readouterr().out)
     assert out == {'decision': 'block', 'reason': 'MANIFEST BROKE'}
@@ -175,14 +184,14 @@ def test_the_stop_hook_blocks_an_improved_function_when_the_tree_fails(monkeypat
 
 def test_the_stop_hook_lets_an_improved_function_go_when_the_tree_passes(monkeypatch, tmp_path,
                                                                          capsys):
-    hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, lambda: (True, ''))
+    hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, lambda told=(): (True, ''))
     hook.main()
     assert 'improved from 80.00% to 90.00%' in json.loads(capsys.readouterr().out)['systemMessage']
 
 
 def test_the_stop_hook_does_not_run_the_tree_checks_once_refusals_are_used_up(monkeypatch,
                                                                             tmp_path, capsys):
-    def boom():
+    def boom(told=()):
         raise AssertionError('must not run')
     hook, claim = run_stop_hook(monkeypatch, tmp_path, 3, boom)
     hook.main()
@@ -257,3 +266,35 @@ def test_main_reads_the_loops_log_and_exit(tmp_path, monkeypatch, capsys):
                         (False, 'X %r' % (verify_done,)))
     assert wholetree.main(['--verify-log', str(log), '--verify-exit', '1']) == 1
     assert "X (1, 'ERROR 0x00401000 f REGRESSION: was 100.00%\\n')" in capsys.readouterr().out
+
+
+def test_a_new_stand_in_fails_the_whole_tree_check_once_told(monkeypatch):
+    seen = []
+
+    def lines(told=(), **kw):
+        seen.append(tuple(told))
+        return None if 'c_0067b2b0' in told else ['new stand-in classes', 'op/a.h:1: c_0067b2b0']
+    monkeypatch.setattr(standins, 'check_lines', lines)
+    ok, message = wholetree.check(fake(), {})
+    assert not ok and 'standins (harness/lib/standins.py) failed' in message
+    assert 'op/a.h:1: c_0067b2b0' in message
+    assert wholetree.check(fake(), {}, told=['c_0067b2b0']) == (True, '')
+    assert seen == [(), ('c_0067b2b0',)]
+
+
+def test_the_stop_hook_names_a_stand_in_once_and_keeps_the_final_message_allowance(
+        monkeypatch, tmp_path, capsys):
+    told_seen = []
+
+    def whole(told=()):
+        told_seen.append(list(told))
+        return (False, 'STAND-IN REFUSAL')
+    hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, whole)
+    monkeypatch.setattr(sys, 'stdin', io.StringIO(json.dumps(
+        {'last_assistant_message': 'STAND-IN: fn_00674250_Owner 0x00674250 no RTTI'})))
+    hook.main()
+    data = json.loads(claim.read_text())
+    assert data['standins_told'] == ['c_0067b2b0'] and data['blocks'] == 1
+    assert standins.load_allowed() == {'fn_00674250_Owner': ('0x00674250', 'no RTTI')}
+    hook.main()
+    assert told_seen == [[], ['c_0067b2b0']]

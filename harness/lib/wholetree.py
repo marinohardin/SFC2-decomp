@@ -2,7 +2,7 @@
 
 The Stop hook (harness/hooks/stop_verify.py) runs them once the function itself is judged
 good, and harness/loop.sh runs them again before it commits the round, so the session that
-caused a problem is told while it still has the context. Five checks, each the tool's own:
+caused a problem is told while it still has the context. Six checks, each the tool's own:
 
   verify    build-and-verify.sh --all --json: a regression or an ERROR in any unit
   manifest  tools/manifest.py, written to a scratch file so the tree is left alone
@@ -10,6 +10,7 @@ caused a problem is told while it still has the context. Five checks, each the t
   tests     tests/test_units.py and tests/test_manifest.py, except the one test that compares the
             committed manifest with the matched set: the loop never regenerates the manifest
   symbols   tools/symbols.py claim (all) then check, on a copy of the symbol table
+  standins  no new stand-in class in op/ against the base (harness/lib/standins.py): a text scan
 
 HARNESS_WHOLETREE=0 turns all of it off. HARNESS_WHOLETREE_BUDGET (seconds, default 600) is the time
 for the whole step; each command gets what remains. At its start the loop runs them once on the tree as it stands, reusing its own
@@ -23,7 +24,7 @@ import subprocess
 import sys
 import time
 
-from . import paths
+from . import paths, standins
 
 MAX_LINES = 15
 STALE = re.compile(r'is in the baseline but no longer occurs')
@@ -124,17 +125,25 @@ def check_tests(run):
                                       lambda x: x.startswith(('FAILED', 'ERROR')))
 
 
+def check_standins(run, told=()):
+    """No class or struct in op/ that is a placeholder or an invented t-class and is not in the
+    base (harness/lib/standins.py). `told`: names a refusal already named once."""
+    return standins.check_lines(told=told)
+
+
 CHECKS = (('verify (harness/build-and-verify.sh --all)', check_verify),
           ('manifest (tools/manifest.py)', check_manifest),
           ('lint (tools/lint_claims.py)', check_lint),
           ('tests (tests/test_units.py, tests/test_manifest.py)', check_tests),
-          ('symbols (tools/symbols.py claim, check)', check_symbols))
+          ('symbols (tools/symbols.py claim, check)', check_symbols),
+          ('standins (harness/lib/standins.py)', check_standins))
 
 
-def check(run=None, environ=None, verify_done=None):
+def check(run=None, environ=None, verify_done=None, told=()):
     """(ok, message): message is empty when everything passes or the checks are off. `run` is
     called as run(argv, env=None, timeout=seconds_left); once HARNESS_WHOLETREE_BUDGET seconds
-    are spent, the checks still to run are reported as not run."""
+    are spent, the checks still to run are reported as not run. `told`: stand-in names an earlier
+    refusal already named (the Stop hook passes them, so the same finding is refused once)."""
     if not enabled(environ):
         return True, ''
     run = run or run_command
@@ -151,7 +160,8 @@ def check(run=None, environ=None, verify_done=None):
         return inner(argv, env, timeout=left)
     parts = []
     for name, fn in CHECKS:
-        lines = fn(run, verify_done) if fn is check_verify else fn(run)
+        lines = (fn(run, verify_done) if fn is check_verify else
+                 fn(run, told) if fn is check_standins else fn(run))
         if lines:
             parts.append(f'{name} failed:\n' + '\n'.join('  ' + x for x in lines))
     if not parts:
