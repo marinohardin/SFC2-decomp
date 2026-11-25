@@ -38,7 +38,7 @@ public:
 	// HYPOTHESIS: past slot 40 the real vtable is the derived class's; these are the slots the
 	// code that goes through a tVisGroup pointer calls (kept from the reduced declaration that
 	// tFleetEntry.h held before), and tSeqScene overrides 41 to 44.
-	virtual void vfunction41();
+	virtual void vfunction41(int);
 	virtual void vfunction42();
 	virtual void vfunction43();
 	virtual void vfunction44();

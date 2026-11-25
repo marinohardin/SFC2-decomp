@@ -17834,7 +17834,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dbc0	function	fn_0067dbc0	tSeqScene				vtable
 0x0067dc30	function	tVisGroup::~tVisGroup	tVisGroup	??1tVisGroup@@UAE@XZ	callers		rtti
 0x0067dca0	thunk	fn_0067dca0	tSeqScene				vtable
-0x0067dcb0	function	fn_0067dcb0	tSeqScene				vtable
+0x0067dcb0	function	fn_0067dcb0	tSeqScene	?vfunction43@tSeqScene@@UAEXXZ	claim		vtable
 0x0067dcf0	function	fn_0067dcf0	tVisGroup				vtable
 0x0067dd00	function	fn_0067dd00	tVisGroup				vtable
 0x0067dd40	function	fn_0067dd40	tSeqScene				vtable
