@@ -109,6 +109,7 @@ class fn_00426141_Class
 public:
 	fn_00426141_Class(fn_00426141_Game* game);
 	fn_00426141_Cell fn_0042636b(int i, int j);
+	void fn_0042630b();
 
 	fn_00426141_Game* m00;
 	float m04[6];
@@ -188,6 +189,27 @@ fn_00426141_Class::fn_00426141_Class(fn_00426141_Game* game)
 		for (int j = 0; j < 0x21; j++)
 		{
 			mb0[i][j].fn_0042642c(fn_0042636b(i, j));
+		}
+	}
+}
+
+// HYPOTHESIS: a double global at 0x00c7c148 holding the current time.
+extern double g_00c7c148;
+
+// FUNCTION: STARFLEETOP 0x0042630b
+void fn_00426141_Class::fn_0042630b()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		if (m98[i])
+		{
+			double d = (g_00c7c148 - m20[i]) * 5e-07;
+			float v = (float)d;
+			m04[i] = (float)d;
+			if (v > 1.0f)
+				m98[i] = 0;
+			else
+				m04[i] = 1.0f - v;
 		}
 	}
 }
