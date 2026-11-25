@@ -632,3 +632,31 @@ found:
 	}
 	return v->fFirst;
 }
+
+void fn_00425fef(unsigned int* first, unsigned int* last, int depth);
+void fn_004260a4(unsigned int* first, unsigned int* last, int depth);
+
+// FUNCTION: STARFLEETOP 0x00425f71
+void fn_00425f71(unsigned int* first, unsigned int* last, int depth)
+{
+	if (last - first <= 16) {
+		fn_004260a4(first, last, 0);
+	} else {
+		unsigned int* p;
+		fn_00425fef(first, last, 0);
+		fn_004260a4(first, first + 16, 0);
+		for (p = first + 16; p != last; p++) {
+			unsigned int val = *p;
+			unsigned int* q = p;
+			unsigned int* r = p - 1;
+			for (;;) {
+				unsigned int prev = *r;
+				if (val >= prev)
+					break;
+				*q = prev;
+				q = r--;
+			}
+			*q = val;
+		}
+	}
+}
