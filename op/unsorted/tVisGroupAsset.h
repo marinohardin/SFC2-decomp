@@ -14,11 +14,27 @@ class tVisGroupAsset : public tAsset
 public:
 	tVisGroupAsset();
 	virtual ~tVisGroupAsset();
+	// vftable 0x007b7c80, 6 slots (tAsset's): dtor 0x0067b5c0, vfunction2 0x0067b590,
+	// vfunction3 0x0067b390, vfunction4 0x0067b580, vfunction5 0x0067b2b0, vfunction6 0x0067aef0.
+	// HYPOTHESIS: tAsset.h declares only the dtor, vfunction5 and vfunction6 (HEADER REQUEST in
+	// the lane notes: vfunction2 to vfunction4 belong between the dtor and vfunction5), so these
+	// three are new slots until it does.
+	// HYPOTHESIS: takes an id, makes the object 0x0067ea20 finds for it, stores the id at +0x48
+	// of that object and calls its slot at +0x90 with this; returns the object.
+	virtual void *vfunction2( int id );
+	virtual void vfunction3();	// 483 bytes
+	virtual void vfunction4();	// 4 bytes, a bare return
+	// HYPOTHESIS: 0x0067aef0 (the symbol table calls it a deleting destructor, wrongly) writes the
+	// stream form of the members, field_BC last.
+	virtual tStream& vfunction5( tStream& s );
+	virtual tStream& vfunction6( tStream& s );
 
 	std::vector<void *> field_5C;	// HYPOTHESIS: the element type is not known
 	c_00678500 field_6C;
 	int field_BC;
 };
+
+typedef char tVisGroupAsset_size_is_0xc0[ sizeof( tVisGroupAsset ) == 0xc0 ? 1 : -1 ];
 
 inline tVisGroupAsset::tVisGroupAsset()
 {
