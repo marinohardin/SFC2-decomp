@@ -7583,7 +7583,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504412	function	fn_00504412					none
 0x00504426	function	fn_00504426					none
 0x0050442e	thunk	fn_0050442e					none
-0x00504433	function	fn_00504433		?fn_00504433@@YAXXZ	claim		none
+0x00504433	function	fn_00504433		?fn_00504433@@YAMXZ	claim		none
 0x00504442	function	fn_00504442					none
 0x00504456	function	fn_00504456					none
 0x0050446a	function	fn_0050446a					none
