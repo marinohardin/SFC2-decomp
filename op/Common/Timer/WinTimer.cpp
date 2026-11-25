@@ -13,6 +13,7 @@ tWinTimer::tWinTimer()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0070f610
 // FUNCTION: STARFLEETOP 0x0070f630
 tWinTimer::~tWinTimer()
 {

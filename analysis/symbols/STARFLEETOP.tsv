@@ -20721,7 +20721,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070f480	function	tStatTracker::~tStatTracker	tStatTracker	??1tStatTracker@@EAE@XZ	mangled		mangled
 0x0070f4a0	function	tStatTracker::GetCounter32	tStatTracker	?GetCounter32@tStatTracker@@QAE?AV?$tStatCounter@J@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	mangled		mangled
 0x0070f5a0	function	tWinTimer::tWinTimer	tWinTimer	??0tWinTimer@@QAE@XZ	claim		mangled
-0x0070f610	function	tWinTimer::`scalar_deleting_destructor'	tWinTimer	??_GtWinTimer@@UAEPAXI@Z	mangled		mangled
+0x0070f610	function	tWinTimer::`scalar_deleting_destructor'	tWinTimer	??_GtWinTimer@@UAEPAXI@Z	claim		mangled
 0x0070f630	function	tWinTimer::~tWinTimer	tWinTimer	??1tWinTimer@@UAE@XZ	claim		mangled
 0x0070f6a0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
 0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	claim		mangled
