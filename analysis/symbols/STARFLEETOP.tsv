@@ -1221,7 +1221,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004254a7	function	fn_004254a7		?fn_004254a7@fn_004254a7_list@@QAEXHHD@Z	claim		none
 0x00425501	function	fn_00425501		?fn_00425501@fn_004254a7_list@@QAEXHH@Z	claim		none
 0x0042556b	function	fn_0042556b		??0fn_0042556b_table@@QAE@XZ	claim		none
-0x004255b5	function	fn_004255b5					none
+0x004255b5	function	fn_004255b5		?fn_004255b5@fn_004255b5_class@@QAEPAUfn_004255b5_vector@@MMHM@Z	claim		none
 0x004256b1	function	fn_004256b1					none
 0x00425726	function	fn_00425726					none
 0x0042574b	function	fn_0042574b					none
@@ -1238,8 +1238,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00425eb6	function	fn_00425eb6					none
 0x00425ec0	function	fn_00425ec0					none
 0x00425ed6	function	fn_00425ed6					none
-0x00425f08	function	fn_00425f08					none
-0x00425f71	function	fn_00425f71					none
+0x00425f08	function	fn_00425f08		?fn_00425f08@@YAXPAUfn_004255b5_vector@@PAI1@Z	add		none
+0x00425f71	function	fn_00425f71		?fn_00425f71@@YAXPAI0H@Z	add		none
 0x00425fef	function	fn_00425fef					none
 0x004260a4	function	fn_004260a4					none
 0x00426116	function	fn_00426116					none

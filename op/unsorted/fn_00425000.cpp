@@ -176,19 +176,25 @@ inline void _Construct(tString* _P, const tString& _V)
 void (*g_fn_004253f4_construct)(tString*, const tString&) = std::_Construct;
 
 // HYPOTHESIS: globals are a char and three longs/pointers; the char store reads an uninitialized local, as the original does.
-extern char g_008f5188;
-extern long g_008f518c;
-extern long g_008f5190;
-extern long g_008f5194;
+struct fn_004255b5_vector
+{
+	char fAlloc;
+	unsigned int* fFirst;
+	unsigned int* fLast;
+	unsigned int* fEnd;
+
+	void fn_00425ed6(unsigned int* first, unsigned int* last);
+};
+extern fn_004255b5_vector g_008f5188;
 
 // FUNCTION: STARFLEETOP 0x00425463
 void fn_00425463()
 {
 	char c;
-	g_008f5188 = c;
-	g_008f518c = 0;
-	g_008f5190 = 0;
-	g_008f5194 = 0;
+	g_008f5188.fAlloc = c;
+	g_008f5188.fFirst = 0;
+	g_008f5188.fLast = 0;
+	g_008f5188.fEnd = 0;
 }
 
 // HYPOTHESIS: the atexit call for the global set up by fn_00425463; the destructor at 0x0042548c is not yet identified.
@@ -310,4 +316,56 @@ fn_0042556b_table::fn_0042556b_table() throw()
 		e = 0;
 	}
 	fElements = e;
+}
+
+// HYPOTHESIS: the point built by the constructor at 0x00412f08 from the two floats of the query.
+struct fn_00412f08_point
+{
+	fn_00412f08_point(const float* p) throw();
+	fn_00412f08_point(const fn_00412f08_point& o) throw();
+	float fX;
+	float fY;
+	float fZ;
+};
+
+
+extern void fn_00425f71(unsigned int* first, unsigned int* last, int v);
+extern void fn_00425f08(fn_004255b5_vector* v, unsigned int* first, unsigned int* last);
+
+// HYPOTHESIS: the static at 0x008f5184 is built by 0x0040ce21 from a string; its class is unknown.
+struct fn_0040ce21_object
+{
+	fn_0040ce21_object(const char* s);
+	~fn_0040ce21_object();
+	int fPad;
+};
+
+// HYPOTHESIS: the class owning the query and the cell visitor; unknown.
+struct fn_004255b5_class
+{
+	fn_004255b5_vector* fn_004255b5(float x, float y, int unused, float r);
+	void fn_004259bd(float x, float y, unsigned int* col, unsigned int* row);
+	void fn_004256b1(unsigned int col, unsigned int row, fn_00412f08_point p, float r);
+};
+
+// FUNCTION: STARFLEETOP 0x004255b5
+fn_004255b5_vector* fn_004255b5_class::fn_004255b5(float x, float y, int unused, float r)
+{
+	static fn_0040ce21_object s("Round up the usual suspects?");
+	g_008f5188.fn_00425ed6(g_008f5188.fFirst, g_008f5188.fLast);
+	unsigned int col0, row0, col1, row1;
+	float x0 = x - r;
+	float y0 = y - r;
+	this->fn_004259bd(x0, y0, &col0, &row0);
+	float x1 = x + r;
+	float y1 = y + r;
+	this->fn_004259bd(x1, y1, &col1, &row1);
+	for (unsigned int row = row0; row <= row1; row++) {
+		for (unsigned int col = col0; col <= col1; col++) {
+			this->fn_004256b1(col, row, fn_00412f08_point(&x), r);
+		}
+	}
+	fn_00425f71(g_008f5188.fFirst, g_008f5188.fLast, 0);
+	fn_00425f08(&g_008f5188, g_008f5188.fFirst, g_008f5188.fLast);
+	return &g_008f5188;
 }
