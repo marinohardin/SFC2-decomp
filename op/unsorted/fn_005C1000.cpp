@@ -59,11 +59,13 @@ class tMemberCallback_tGetHex;
 class tMemberCallback_tGetHexForUpdate;
 class tMemberCallback_tUpdateHex;
 class tMemberCallback_tChangeHexAttribute;
+class tMemberCallback_tBaseTransitionVictoryPointAdjustment;
 
 class tMapRelayS {
 public:
 	void fn_005c1531( tMemberCallback_tUpdateHex** out );
 	void fn_005c1574( tMemberCallback_tChangeHexAttribute** out );
+	void fn_005c15ba( tMemberCallback_tBaseTransitionVictoryPointAdjustment** out );
 	void fn_005c14b5( tMemberCallback_tGetHex** out );
 	void fn_005c14f8( tMemberCallback_tGetHexForUpdate** out );
 	void fn_005c1472( tMemberCallback_tGetStartLocation** out );
@@ -230,4 +232,18 @@ public:
 void tMapRelayS::fn_005c1574( tMemberCallback_tChangeHexAttribute** out )
 {
 	*out = new tMemberCallback_tChangeHexAttribute( m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005a94bd (the symbol table calls it
+// tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment, nDataStore::tBuffer const*>).
+class tMemberCallback_tBaseTransitionVictoryPointAdjustment {
+public:
+	tMemberCallback_tBaseTransitionVictoryPointAdjustment();
+	char pad00[0x44];
+};
+
+// FUNCTION: STARFLEETOP 0x005c15ba
+void tMapRelayS::fn_005c15ba( tMemberCallback_tBaseTransitionVictoryPointAdjustment** out )
+{
+	*out = new tMemberCallback_tBaseTransitionVictoryPointAdjustment;
 }
