@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005C0000.cpp
-// Functions: 0x005c008d to 0x005c0b9d, 10 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <sstream>
+#include <string>
+
+// HYPOTHESIS: builds a message in a stringstream and returns it as a string; the tIdiom and
+// tLogMessage parts are left out because neither class has a header yet.
+// FUNCTION: STARFLEETOP 0x005c057f
+std::string fn_005c057f(std::string text, char c)
+{
+	std::stringstream stream;
+	stream << text << c;
+	return stream.str();
+}

@@ -13060,7 +13060,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c008d	function	fn_005c008d					none
 0x005c0233	function	fn_005c0233					none
 0x005c03d9	function	fn_005c03d9					none
-0x005c057f	function	fn_005c057f					none
+0x005c057f	function	fn_005c057f		?fn_005c057f@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
 0x005c0725	function	fn_005c0725					none
 0x005c087e	function	fn_005c087e					none
 0x005c0a24	function	fn_005c0a24					none
