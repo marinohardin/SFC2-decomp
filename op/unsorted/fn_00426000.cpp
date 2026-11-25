@@ -556,23 +556,18 @@ void fn_00426988_Class::fn_00426d48(int aValue)
 {
 	int last = mc8 - 1;
 	int i = last;
-	if (i >= 0)
+	for (; i >= 0; i--)
 	{
-		int* p = (int*)mc4 + i * 2;
-		do
+		int v = ((int*)mc4)[i * 2];
+		if (v == aValue)
 		{
-			if (*p == aValue)
+			mc8 = last;
+			for (; i < mc8; i++)
 			{
-				mc8 = last;
-				for (; i < mc8; i++)
-				{
-					((int*)mc4)[i * 2] = ((int*)mc4)[i * 2 + 2];
-					((int*)mc4)[i * 2 + 1] = ((int*)mc4)[i * 2 + 3];
-				}
-				return;
+				((int*)mc4)[i * 2] = ((int*)mc4)[i * 2 + 2];
+				((int*)mc4)[i * 2 + 1] = ((int*)mc4)[i * 2 + 3];
 			}
-			i--;
-			p -= 2;
-		} while (i >= 0);
+			return;
+		}
 	}
 }
