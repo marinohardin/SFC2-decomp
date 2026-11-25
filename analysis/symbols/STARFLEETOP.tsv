@@ -1265,7 +1265,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426e11	function	fn_00426e11		?fn_00426e11@@YIHPAX@Z	add		none
 0x00426e18	function	fn_00426e18		?fn_00426e18@@YIHPAX@Z	add		none
 0x00426e1f	function	fn_00426e1f					none
-0x00426e2c	function	fn_00426e2c					none
+0x00426e2c	function	fn_00426e2c		?fn_00426e2c@@YIHPAX@Z	add		none
 0x00426e40	function	fn_00426e40					none
 0x00426e61	function	fn_00426e61					none
 0x00426e7a	function	fn_00426e7a					none
@@ -8365,7 +8365,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0052294d	function	fn_0052294d		?fn_0052294d@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@PAUvfunction33_result@@@Z	claim		none
 0x005229b9	function	fn_005229b9		?fn_005229b9@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
 0x00522a09	function	fn_00522a09		?fn_00522a09@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
-0x00522b29	function	fn_00522b29					none
+0x00522b29	function	fn_00522b29		?fn_00522b29@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
 0x00522b94	function	fn_00522b94					none
 0x00522bdf	function	fn_00522bdf					none
 0x00522c00	function	fn_00522c00					none

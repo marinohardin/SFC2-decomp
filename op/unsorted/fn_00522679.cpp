@@ -178,3 +178,23 @@ char __fastcall fn_00522a09(fn_0090bed4_Object *self, int, void *pTeam)
 	return 1;
 }
 
+// HYPOTHESIS: 0x00426e2c returns the team record's admiral entity ID.
+int __fastcall fn_00426e2c(void *self);
+
+// FUNCTION: STARFLEETOP 0x00522b29
+// HYPOTHESIS: a member of fn_0090bed4_Object taking the team record; removes its admiral's ID from the list at +0x16c0.
+char __fastcall fn_00522b29(fn_0090bed4_Object *self, int, void *pTeam)
+{
+	int id = fn_00426e2c(pTeam);
+	tObject_008e1090 *p = (id < 0 || id >= 0x4000) ? 0 : g_008e1090[id];
+	if (p != 0)
+		p->vfunction4();
+	for (std::list<int>::iterator it = self->m_16c0.begin(); it != self->m_16c0.end(); it++) {
+		if (*it == id) {
+			self->m_16c0.erase(it);
+			return 1;
+		}
+	}
+	return 0;
+}
+
