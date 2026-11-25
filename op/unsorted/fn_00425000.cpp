@@ -190,3 +190,12 @@ void fn_00425463()
 	g_008f5190 = 0;
 	g_008f5194 = 0;
 }
+
+// HYPOTHESIS: the atexit call for the global set up by fn_00425463; the destructor at 0x0042548c is not yet identified.
+extern void fn_0042548c();
+
+// FUNCTION: STARFLEETOP 0x00425480
+void fn_00425480()
+{
+	atexit(fn_0042548c);
+}
