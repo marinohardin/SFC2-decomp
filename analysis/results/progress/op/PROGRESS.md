@@ -1,8 +1,8 @@
 # Progress
 
-Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-25T19:55:33Z.
+Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-20T04:54:37Z.
 
-Progress: 14.79% exact, 0.00% functional, 4.89% partial, 0.00% lifted, 72.91% original x86 of .text (3,751,936 bytes); named: 13.79% real symbol, 45.63% with class, of 23,071 functions. Game-only: 16.66% exact, 0.00% functional, 5.51% partial of 3,330,800 bytes; 11.77% real symbol, 43.41% with class, of 22,164 functions.
+Progress: 14.24% exact, 0.00% functional, 4.55% partial, 0.00% lifted, 73.80% original x86 of .text (3,751,936 bytes); named: 13.68% real symbol, 45.58% with class, of 23,071 functions. Game-only: 16.04% exact, 0.00% functional, 5.13% partial of 3,330,800 bytes; 11.66% real symbol, 43.36% with class, of 22,164 functions.
 
 ## Code
 
@@ -10,11 +10,11 @@ One row per ordinary function; its bytes include the EH funclets its EH tables r
 
 | status | functions | bytes | of which funclets | % .text | % code | game fns | game bytes | % game code |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| exact | 4,596 | 554,894 | 11,995 | 14.79 | 15.97 | 4,596 | 554,894 | 16.66 |
+| exact | 4,196 | 534,191 | 11,243 | 14.24 | 15.38 | 4,196 | 534,191 | 16.04 |
 | functional | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| partial | 480 | 183,585 | 10,252 | 4.89 | 5.28 | 480 | 183,585 | 5.51 |
+| partial | 401 | 170,783 | 8,853 | 4.55 | 4.92 | 401 | 170,783 | 5.13 |
 | lifted | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| original-x86 | 17,995 | 2,735,362 | 145,294 | 72.91 | 78.74 | 17,088 | 2,592,321 | 77.83 |
+| original-x86 | 18,474 | 2,768,867 | 147,445 | 73.80 | 79.71 | 17,567 | 2,625,826 | 78.83 |
 | all | 23,071 | 3,473,841 | 167,541 | 92.59 | 100.00 | 22,164 | 3,330,800 | 100.00 |
 
 ## Names
@@ -29,11 +29,11 @@ One tier per function, the first that applies in this order. "Real symbol" is ev
 | manual | 2 | 0.01 | 2 | 0.01 |
 | sdk-fuzzy | 315 | 1.37 | 303 | 1.37 |
 | string | 0 | 0.00 | 0 | 0.00 |
-| claim | 523 | 2.27 | 523 | 2.36 |
-| rtti-class | 7,346 | 31.84 | 7,012 | 31.64 |
-| none | 12,544 | 54.37 | 12,543 | 56.59 |
-| real symbol | 3,181 | 13.79 | 2,609 | 11.77 |
-| with class | 10,527 | 45.63 | 9,621 | 43.41 |
+| claim | 498 | 2.16 | 498 | 2.25 |
+| rtti-class | 7,360 | 31.90 | 7,026 | 31.70 |
+| none | 12,555 | 54.42 | 12,554 | 56.64 |
+| real symbol | 3,156 | 13.68 | 2,584 | 11.66 |
+| with class | 10,516 | 45.58 | 9,610 | 43.36 |
 
 Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8, stl 523, wonapi 196. The flag comes from names, so unnamed library code still counts as game code.
 
@@ -50,4 +50,3 @@ Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8,
 - 2026-11-19T07:05:13Z: exact 13.12%, functional 0.00%, partial 4.17%, lifted 0.00% of .text; real symbol 13.09%, with class 45.53% of 23,071 functions; game-only exact 14.78%, functional 0.00%, partial 4.70%
 - 2026-11-19T07:05:37Z: exact 13.12%, functional 0.00%, partial 4.17%, lifted 0.00% of .text; real symbol 13.09%, with class 45.53% of 23,071 functions; game-only exact 14.78%, functional 0.00%, partial 4.70%
 - 2026-11-20T04:54:37Z: exact 14.24%, functional 0.00%, partial 4.55%, lifted 0.00% of .text; real symbol 13.68%, with class 45.58% of 23,071 functions; game-only exact 16.04%, functional 0.00%, partial 5.13%
-- 2026-11-25T19:55:33Z: exact 14.79%, functional 0.00%, partial 4.89%, lifted 0.00% of .text; real symbol 13.79%, with class 45.63% of 23,071 functions; game-only exact 16.66%, functional 0.00%, partial 5.51%
