@@ -401,6 +401,7 @@ public:
 	~fn_00426988_Class();
 	void fn_00603dee(void** p);
 	void fn_00426b63(int aID);
+	bool fn_00426bac(int aID);
 	fn_00524daa_Class* fn_00426bcc();
 
 	int m10[20];
@@ -490,4 +491,17 @@ void fn_00426988_Class::fn_00426b63(int aID)
 	fn_00524daa_Class* obj = fn_00426bcc();
 	if (obj != 0)
 		obj->fn_00524ead(aID);
+}
+
+// FUNCTION: STARFLEETOP 0x00426bac
+bool fn_00426988_Class::fn_00426bac(int aID)
+{
+	void** p = m04;
+	while (p != m08)
+	{
+		if (*(int*)p == aID)
+			return true;
+		p++;
+	}
+	return false;
 }
