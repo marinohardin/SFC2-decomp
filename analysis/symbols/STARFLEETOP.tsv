@@ -17755,7 +17755,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067b2b0	function	fn_0067b2b0	tVisGroupAsset	?vfunction5@tVisGroupAsset@@UAEAAVtStream@@AAV2@@Z	claim		vtable
 0x0067b390	function	fn_0067b390	tVisGroupAsset	?vfunction3@tVisGroupAsset@@UAEXABVc_00678500@@@Z	claim		vtable
 0x0067b580	function	fn_0067b580	tVisGroupAsset	?vfunction4@tVisGroupAsset@@UAEPAVc_00678500@@XZ	claim		vtable
-0x0067b590	function	fn_0067b590	tVisGroupAsset				vtable
+0x0067b590	function	fn_0067b590	tVisGroupAsset	?vfunction2@tVisGroupAsset@@UAEPAXH@Z	claim		vtable
 0x0067b5c0	function	tVisGroupAsset::scalar_deleting_destructor	tVisGroupAsset				rtti
 0x0067b5e0	function	tRadioGroupAsset::scalar_deleting_destructor	tRadioGroupAsset				rtti
 0x0067b7b0	function	fn_0067b7b0	tRadioGroupAsset				vtable
@@ -17854,7 +17854,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067e8c0	function	fn_0067e8c0	tRadioGroup				vtable
 0x0067e940	function	fn_0067e940					none
 0x0067e9b0	function	fn_0067e9b0	tRadioGroup				vtable
-0x0067ea20	function	fn_0067ea20					none
+0x0067ea20	function	fn_0067ea20		?fn_0067ea20@@YAPAVtVisObject@@H@Z	add		none
 0x0067eaa0	function	fn_0067eaa0					none
 0x0067eb10	function	tListMemberWithHandle::mGetNextListHandle	tListMemberWithHandle				sdk
 0x0067eb20	function	fn_0067eb20	tBufferStream				vtable
