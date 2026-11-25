@@ -15387,11 +15387,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603d4a	function	fn_00603d4a		??0fn_00603d4a_node@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z	claim		none
 0x00603d8f	function	fn_00603d8f		?fn_00603d8f@fn_00603d8f_object@@QAEXH@Z	claim		none
 0x00603dee	function	fn_00603dee					none
-0x00603e24	function	fn_00603e24					none
+0x00603e24	function	fn_00603e24		?fn_00603e24@fn_00603e24_object@@QAEXH@Z	claim		none
 0x00603e35	function	fn_00603e35					none
 0x00603e41	function	fn_00603e41					none
 0x00603ebe	function	fn_00603ebe					none
-0x00603ef0	function	fn_00603ef0					none
+0x00603ef0	function	fn_00603ef0		?fn_00603ef0@@YGXPAVfn_00603ef0_target@@HH@Z	add		none
 0x006041a1	function	fn_006041a1					none
 0x006041d0	function	fn_006041d0					none
 0x006041ff	function	fn_006041ff					none

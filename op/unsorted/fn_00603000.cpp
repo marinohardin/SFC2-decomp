@@ -413,3 +413,23 @@ void fn_00603d8f_object::fn_00603d8f( int arg )
 	( (fn_005541af_vector*)&*lock )->fn_005541af( arg );
 	lock.Done();
 }
+
+// HYPOTHESIS: the target of a forwarding call with a leading constant 1; its class is not known.
+class fn_00603ef0_target;
+
+void __stdcall fn_00603ef0( fn_00603ef0_target* target, int flag, int arg );
+
+class fn_00603e24_object
+{
+public:
+	void fn_00603e24( int arg );
+
+	int8u				field_00[8];
+	fn_00603ef0_target*	field_08;
+};
+
+// FUNCTION: STARFLEETOP 0x00603e24
+void fn_00603e24_object::fn_00603e24( int arg )
+{
+	fn_00603ef0( field_08, 1, arg );
+}
