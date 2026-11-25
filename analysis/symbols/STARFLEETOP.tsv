@@ -1215,7 +1215,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042511e	function	fn_0042511e		?fn_0042511e@fn_0042511e_tree@@QAEXXZ	claim		none
 0x0042516e	function	fn_0042516e					none
 0x004253c2	function	fn_004253c2		?fn_004253c2@fn_004253c2_iterator@@QAEXXZ	claim		none
-0x004253f4	function	fn_004253f4		?_Construct@std@@YAXPAVtString@@ABV2@@Z	claim		none
+0x004253f4	function	fn_004253f4					none
 0x00425463	function	fn_00425463		?fn_00425463@@YAXXZ	claim		none
 0x00425480	function	fn_00425480		?fn_00425480@@YAXXZ	claim		none
 0x004254a7	function	fn_004254a7		?fn_004254a7@fn_004254a7_list@@QAEXHHD@Z	claim		none
@@ -7487,16 +7487,16 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00500453	function	fn_00500453					none
 0x00500467	function	fn_00500467					none
 0x0050047b	function	fn_0050047b					none
-0x0050048f	function	fn_0050048f		?fn_0050048f@@YAXXZ	claim		none
+0x0050048f	function	fn_0050048f					none
 0x005004a3	function	fn_005004a3					none
-0x005004b7	function	fn_005004b7		?fn_005004b7@@YAXXZ	claim		none
-0x005004cb	function	fn_005004cb		?fn_005004cb@@YAXXZ	claim		none
-0x00500803	function	fn_00500803		?fn_00500803@@YAXXZ	claim		none
+0x005004b7	function	fn_005004b7					none
+0x005004cb	function	fn_005004cb					none
+0x00500803	function	fn_00500803					none
 0x00500817	function	fn_00500817					none
 0x0050082b	function	fn_0050082b					none
 0x0050083f	function	fn_0050083f					none
 0x00500847	function	fn_00500847		?fn_00500847@@YAXXZ	claim		none
-0x00500872	function	fn_00500872		??0tFx_Photon@@QAE@XZ	claim		none
+0x00500872	function	tFx_Photon::tFx_Photon	tFx_Photon	??0tFx_Photon@@QAE@XZ	claim		claim
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
 0x005008f4	function	fn_005008f4		??0fn_005008f4_element@@QAE@XZ	claim		none
@@ -7557,14 +7557,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005037c4	function	fn_005037c4	tFx_PPDPulse				vtable
 0x00503ad5	function	fn_00503ad5	tFx_PPDPulse				vtable
 0x00503dac	function	fn_00503dac		?fn_00503dac@@YAPAVtFx_PPDPulse@@XZ	claim		none
-0x00503e41	function	fn_00503e41		??0tProbeCell@@QAE@PBM0@Z	claim		none
+0x00503e41	function	tProbeCell::tProbeCell	tProbeCell	??0tProbeCell@@QAE@PBM0@Z	claim		claim
 0x00503ef3	function	fn_00503ef3		?fn_00503ef3@@YAMXZ	claim		none
 0x00503efa	function	fn_00503efa	tProbeCell				vtable
 0x00503f01	function	fn_00503f01	tProbeCell				vtable
 0x00503f05	function	fn_00503f05	tProbeCell				vtable
 0x00503fba	function	fn_00503fba		?fn_00503fba@@YAPAXXZ	claim		none
 0x00503fd6	function	fn_00503fd6		?fn_00503fd6@@YAXPAD@Z	claim		none
-0x00503fed	function	fn_00503fed		??0tProbeHead@@QAE@PAX@Z	claim		none
+0x00503fed	function	tProbeHead::tProbeHead	tProbeHead	??0tProbeHead@@QAE@PAX@Z	claim		claim
 0x00504078	function	fn_00504078	t3DVisual				vtable
 0x0050407f	function	fn_0050407f	tProbeHead				vtable
 0x00504086	function	fn_00504086	tProbeHead				vtable
@@ -8291,30 +8291,30 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005200c8	function	fn_005200c8	tAICaptain	?vfunction4@tAICaptain@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
 0x005208d2	function	fn_005208d2		?fn_005208d2@fn_005208d2_Vec@@QAEPAUfn_005208d2_Elem@@PAU2@0@Z	claim		none
 0x0052090a	function	fn_0052090a		?fn_0052090a@@YGPAHPAH0@Z	claim		none
-0x00520966	function	tAIData::tAIData	tAIData	??0tAIData@@QAE@DH@Z	claim		rtti
+0x00520966	function	tAIData::tAIData	tAIData	??0tAIData@@QAE@DH@Z	claim		claim
 0x00520990	function	tBasicFile::mDispose	tBasicFile	?mDispose@tBasicFile@@QAEPAV1@XZ	mangled		mangled
 0x0052099d	function	fn_0052099d	tETrait				vtable
 0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData	??_GtAIData@@UAEPAXI@Z	claim		rtti
-0x005209bf	function	fn_005209bf	tAIData	?vfunction2@tAIData@@UAEXH@Z	claim		vtable
-0x005209db	function	fn_005209db	tAIData	?vfunction5@tAIData@@UAEPBDXZ	claim		vtable
-0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	claim		rtti
+0x005209bf	function	fn_005209bf	tAIData	?vfunction2@tAIData@@UAEXH@Z	claim		none
+0x005209db	function	fn_005209db	tAIData	?vfunction5@tAIData@@UAEPBDXZ	claim		none
+0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	claim		claim
 0x00520a35	function	tETrait::~tETrait	tETrait				rtti
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
-0x00520ab2	function	fn_00520ab2		??0tAIUnitData@@QAE@HHHMMD@Z	claim		none
-0x00520b1a	function	fn_00520b1a		??0tAIUnitData@@QAE@XZ	claim		none
-0x00520b5e	function	fn_00520b5e		??0tAIUnitData0208@@QAE@XZ	claim		none
+0x00520ab2	function	tAIUnitData::tAIUnitData	tAIUnitData	??0tAIUnitData@@QAE@HHHMMD@Z	claim		claim
+0x00520b1a	function	tAIUnitData::tAIUnitData	tAIUnitData	??0tAIUnitData@@QAE@XZ	claim		claim
+0x00520b5e	function	tAIUnitData0208::tAIUnitData0208	tAIUnitData0208	??0tAIUnitData0208@@QAE@XZ	claim		claim
 0x00520bc9	function	tAIUnitData::scalar_deleting_destructor	tAIUnitData				rtti
 0x00520be5	thunk	fn_00520be5					none
 0x00520bea	function	tAIUnitData::tAIUnitData	tAIUnitData				rtti
-0x00520cba	function	fn_00520cba		?fn_00520cba@tAIUnitDataList@@QAEHHHMD@Z	claim		none
-0x00520d38	function	fn_00520d38		?fn_00520d38@tAIUnitDataList@@QAEPAVtAIUnitData@@H@Z	claim		none
-0x00520d69	function	fn_00520d69		?fn_00520d69@tAIUnitDataList@@QAEXHH@Z	claim		none
-0x00520dad	function	fn_00520dad		?fn_00520dad@tAIUnitDataList@@QAEXHHHH@Z	claim		none
-0x00520e30	function	fn_00520e30		?fn_00520e30@tAIUnitDataList@@QAEXXZ	claim		none
-0x00520e5d	function	fn_00520e5d		?fn_00520e5d@tAIUnitDataList@@QAEDXZ	claim		none
+0x00520cba	function	fn_00520cba	tAIUnitDataList	?fn_00520cba@tAIUnitDataList@@QAEHHHMD@Z	claim		none
+0x00520d38	function	fn_00520d38	tAIUnitDataList	?fn_00520d38@tAIUnitDataList@@QAEPAVtAIUnitData@@H@Z	claim		none
+0x00520d69	function	fn_00520d69	tAIUnitDataList	?fn_00520d69@tAIUnitDataList@@QAEXHH@Z	claim		none
+0x00520dad	function	fn_00520dad	tAIUnitDataList	?fn_00520dad@tAIUnitDataList@@QAEXHHHH@Z	claim		none
+0x00520e30	function	fn_00520e30	tAIUnitDataList	?fn_00520e30@tAIUnitDataList@@QAEXXZ	claim		none
+0x00520e5d	function	fn_00520e5d	tAIUnitDataList	?fn_00520e5d@tAIUnitDataList@@QAEDXZ	claim		none
 0x00520e90	function	fn_00520e90	tAIUnitData				vtable
-0x00520ecf	function	fn_00520ecf		?fn_00520ecf@tX@@QAEXHHUtS@@H@Z	claim		none
-0x00520f16	function	fn_00520f16		?fn_00520f16@tX@@QAEXD@Z	claim		none
+0x00520ecf	function	fn_00520ecf	tX	?fn_00520ecf@tX@@QAEXHHUtS@@H@Z	claim		none
+0x00520f16	function	fn_00520f16	tX	?fn_00520f16@tX@@QAEXD@Z	claim		none
 0x00520f26	function	tAIDesignateTargetsCalc::tAIDesignateTargetsCalc	tAIDesignateTargetsCalc				rtti
 0x00520fb1	function	tAIDesignateTargetsCalc::scalar_deleting_destructor	tAIDesignateTargetsCalc				rtti
 0x00520fcd	function	fn_00520fcd					none
@@ -8322,7 +8322,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521041	function	fn_00521041	tAIDesignateTargetsCalc				vtable
 0x00521149	function	fn_00521149	tAIDesignateTargetsCalc				vtable
 0x00521342	function	fn_00521342					none
-0x00521450	function	fn_00521450		?fn_00521450@tAIEntryOwner@@QAEHPAVtAIEntryTable@@PAVtAIIdList@@1@Z	claim		none
+0x00521450	function	fn_00521450	tAIEntryOwner	?fn_00521450@tAIEntryOwner@@QAEHPAVtAIEntryTable@@PAVtAIIdList@@1@Z	claim		none
 0x00521530	function	fn_00521530		?fn_00521530@@YGII@Z	claim		none
 0x00521549	function	fn_00521549					none
 0x005218c3	function	fn_005218c3		??1fn_005218c3_owner@@QAE@XZ	claim		none
@@ -8347,7 +8347,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005220b1	function	fn_005220b1		?fn_005220b1@fn_00522077_list@@QAEPAUfn_00522077_node@@PAU2@0@Z	claim		none
 0x005220d5	function	fn_005220d5					none
 0x0052210d	function	fn_0052210d		?fn_0052210d@@YGXHHH@Z	add		none
-0x0052238b	function	fn_0052238b		??0tList@tAIUnitDataList@@QAE@XZ	claim		none
+0x0052238b	function	tAIUnitDataList::tList::tList	tAIUnitDataList::tList	??0tList@tAIUnitDataList@@QAE@XZ	claim		claim
 0x005223af	function	fn_005223af		?fn_005223af@@YAXPAHH@Z	claim		none
 0x005223dc	function	fn_005223dc					none
 0x00522441	function	fn_00522441		??0fn_00522441_vector@@QAE@ABU0@@Z	claim		none
@@ -10169,7 +10169,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00553aa5	function	nStoredProcedureArguments::tUpdateCharactersRequest::tUpdateCharactersRequest	nStoredProcedureArguments::tUpdateCharactersRequest				rtti
 0x00553b0b	function	nStoredProcedureArguments::tUpdateCharactersRequest::tUpdateCharactersRequest	nStoredProcedureArguments::tUpdateCharactersRequest				rtti
 0x00553ba5	function	fn_00553ba5					none
-0x00553c24	function	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse::tGetClientCharacterResponse	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse				rtti
+0x00553c24	function	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse::tGetClientCharacterResponse	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse	??0tGetClientCharacterResponse@@QAE@XZ	callers		rtti
 0x00553c4d	function	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse::scalar_deleting_destructor	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse				fid
 0x00553c69	function	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse::~tGetClientCharacterResponse	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse				fid
 0x00553c9e	function	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse::tGetClientCharacterResponse	nStoredProcedureArguments::tGetClientCharacterRequest::tGetClientCharacterResponse				rtti
@@ -12538,19 +12538,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005a8dc4	function	tEconomyWatchdog::scalar_deleting_destructor	tEconomyWatchdog				rtti
 0x005a8de0	function	tEconomyWatchdog::~tEconomyWatchdog	tEconomyWatchdog				rtti
 0x005a8deb	function	fn_005a8deb	tEconomyWatchdog				vtable
-0x005a8e41	function	tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>				rtti
+0x005a8e41	function	tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c17c7@@QAE@PAX@Z	callers		rtti
 0x005a8f04	function	nAsyncMapProcedures::tAssignCombatDamagePrestige::scalar_deleting_destructor	nAsyncMapProcedures::tAssignCombatDamagePrestige				fid
 0x005a8f20	function	nAsyncMapProcedures::tAssignCombatDamagePrestige::~tAssignCombatDamagePrestige	nAsyncMapProcedures::tAssignCombatDamagePrestige				rtti
 0x005a8f5b	function	fn_005a8f5b					none
 0x005a905f	function	fn_005a905f					none
 0x005a93df	function	fn_005a93df					none
-0x005a94bd	function	tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>				rtti
+0x005a94bd	function	tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment,nDataStore::tBuffer_const*>	??0tMemberCallback_tBaseTransitionVictoryPointAdjustment@@QAE@XZ	callers		rtti
 0x005a951d	function	nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment::scalar_deleting_destructor	nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment				rtti
 0x005a9539	function	nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment::~tBaseTransitionVictoryPointAdjustment	nAsyncMapProcedures::tBaseTransitionVictoryPointAdjustment				rtti
 0x005a9544	function	fn_005a9544					none
 0x005a98e1	function	fn_005a98e1					none
 0x005a9959	function	fn_005a9959					none
-0x005a9b56	function	tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>				rtti
+0x005a9b56	function	tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tChangeHexAttribute,nDataStore::tBuffer_const*>	??0tMemberCallback_tChangeHexAttribute@@QAE@PAX@Z	callers		rtti
 0x005a9c19	function	nAsyncMapProcedures::tChangeHexAttribute::scalar_deleting_destructor	nAsyncMapProcedures::tChangeHexAttribute				fid
 0x005a9c35	function	nAsyncMapProcedures::tChangeHexAttribute::~tChangeHexAttribute	nAsyncMapProcedures::tChangeHexAttribute				rtti
 0x005a9c70	function	fn_005a9c70					none
@@ -12560,12 +12560,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005aa2e2	function	fn_005aa2e2					none
 0x005aa2ee	function	fn_005aa2ee					none
 0x005aa2fa	function	fn_005aa2fa					none
-0x005aa306	function	tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>				rtti
+0x005aa306	function	tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>	??0tMemberCallback_tCharacterLoggedOn@@QAE@PAX@Z	callers		rtti
 0x005aa3d6	function	nAsyncMapProcedures::tCharacterLoggedOn::scalar_deleting_destructor	nAsyncMapProcedures::tCharacterLoggedOn				rtti
 0x005aa3f2	function	nAsyncMapProcedures::tCharacterLoggedOn::~tCharacterLoggedOn	nAsyncMapProcedures::tCharacterLoggedOn				rtti
 0x005aa434	function	fn_005aa434					none
 0x005aa525	function	fn_005aa525					none
-0x005aa5dd	function	tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>				rtti
+0x005aa5dd	function	tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCorrectBaseAIBug,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c195f@@QAE@PAVtMapRelayS@@PAX@Z	callers		rtti
 0x005aa6e6	function	nAsyncMapProcedures::tCorrectBaseAIBug::scalar_deleting_destructor	nAsyncMapProcedures::tCorrectBaseAIBug				rtti
 0x005aa702	function	nAsyncMapProcedures::tCorrectBaseAIBug::~tCorrectBaseAIBug	nAsyncMapProcedures::tCorrectBaseAIBug				rtti
 0x005aa70d	function	fn_005aa70d					none
@@ -12579,7 +12579,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005aae8a	function	fn_005aae8a					none
 0x005aae96	function	fn_005aae96					none
 0x005aaea2	function	fn_005aaea2					none
-0x005aaeae	function	tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>				rtti
+0x005aaeae	function	tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tCreateBaseAIs,nDataStore::tBuffer_const*>	??0tCreateBaseAIs@nAsyncMapProcedures@@QAE@PAX@Z	callers		rtti
 0x005aaf64	function	nAsyncMapProcedures::tCreateBaseAIs::scalar_deleting_destructor	nAsyncMapProcedures::tCreateBaseAIs				rtti
 0x005aaf80	function	nAsyncMapProcedures::tCreateBaseAIs::~tCreateBaseAIs	nAsyncMapProcedures::tCreateBaseAIs				rtti
 0x005aafca	function	fn_005aafca					none
@@ -12594,11 +12594,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005ab581	function	fn_005ab581					none
 0x005ab58d	function	fn_005ab58d					none
 0x005ab599	function	fn_005ab599					none
-0x005ab5a5	function	tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>				rtti
+0x005ab5a5	function	tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tEconomicReport,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c191b@@QAE@PAVtMapRelayS@@PAX@Z	callers		rtti
 0x005ab613	function	nAsyncMapProcedures::tEconomicReport::scalar_deleting_destructor	nAsyncMapProcedures::tEconomicReport				rtti
 0x005ab62f	function	nAsyncMapProcedures::tEconomicReport::~tEconomicReport	nAsyncMapProcedures::tEconomicReport				rtti
 0x005ab63a	function	fn_005ab63a					none
-0x005ab671	function	tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>				rtti
+0x005ab671	function	tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tEconomicStatusRequest,nDataStore::tBuffer_const*>	??0tMemberCallback_tEconomicStatusRequest@@QAE@PAX@Z	callers		rtti
 0x005ab6d9	function	nAsyncMapProcedures::tEconomicStatusRequest::scalar_deleting_destructor	nAsyncMapProcedures::tEconomicStatusRequest				rtti
 0x005ab6f5	function	nAsyncMapProcedures::tEconomicStatusRequest::~tEconomicStatusRequest	nAsyncMapProcedures::tEconomicStatusRequest				rtti
 0x005ab700	function	fn_005ab700					none
@@ -12607,41 +12607,41 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005ab9f4	function	fn_005ab9f4					none
 0x005aba00	function	fn_005aba00					none
 0x005aba0c	function	fn_005aba0c					none
-0x005aba18	function	tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>				rtti
+0x005aba18	function	tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetEmpireStatus,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c1894@@QAE@PAX@Z	callers		rtti
 0x005abaac	function	nAsyncMapProcedures::tGetEmpireStatus::scalar_deleting_destructor	nAsyncMapProcedures::tGetEmpireStatus				rtti
 0x005abac8	function	nAsyncMapProcedures::tGetEmpireStatus::~tGetEmpireStatus	nAsyncMapProcedures::tGetEmpireStatus				rtti
 0x005abad3	function	fn_005abad3					none
-0x005abbd9	function	tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>				rtti
+0x005abbd9	function	tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetHex,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetHex@@QAE@PAX@Z	callers		rtti
 0x005abc41	function	nAsyncMapProcedures::tGetHex::scalar_deleting_destructor	nAsyncMapProcedures::tGetHex				rtti
 0x005abc5d	function	nAsyncMapProcedures::tGetHex::~tGetHex	nAsyncMapProcedures::tGetHex				rtti
 0x005abc68	function	fn_005abc68					none
-0x005abdc0	function	tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>				rtti
+0x005abdc0	function	tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetHexForUpdate@@QAE@XZ	callers		rtti
 0x005abe69	function	nAsyncMapProcedures::tGetHexForUpdate::scalar_deleting_destructor	nAsyncMapProcedures::tGetHexForUpdate				rtti
 0x005abe85	function	nAsyncMapProcedures::tGetHexForUpdate::~tGetHexForUpdate	nAsyncMapProcedures::tGetHexForUpdate				rtti
 0x005abeeb	function	fn_005abeeb					none
 0x005abfaa	function	fn_005abfaa					none
-0x005ac098	function	tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>				rtti
+0x005ac098	function	tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetNearestBase,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c1851@@QAE@PAX@Z	callers		rtti
 0x005ac10c	function	nAsyncMapProcedures::tGetNearestBase::scalar_deleting_destructor	nAsyncMapProcedures::tGetNearestBase				rtti
 0x005ac128	function	nAsyncMapProcedures::tGetNearestBase::~tGetNearestBase	nAsyncMapProcedures::tGetNearestBase				rtti
 0x005ac17b	function	fn_005ac17b					none
-0x005ac284	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>				rtti
+0x005ac284	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTension,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetPoliticalTension@@QAE@PAX@Z	callers		rtti
 0x005ac318	function	nAsyncMapProcedures::tGetPoliticalTension::scalar_deleting_destructor	nAsyncMapProcedures::tGetPoliticalTension				rtti
 0x005ac334	function	nAsyncMapProcedures::tGetPoliticalTension::~tGetPoliticalTension	nAsyncMapProcedures::tGetPoliticalTension				rtti
 0x005ac33f	function	fn_005ac33f					none
-0x005ac452	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>				rtti
+0x005ac452	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrix,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetPoliticalTensionMatrix@@QAE@PAX@Z	callers		rtti
 0x005ac4ba	function	nAsyncMapProcedures::tGetPoliticalTensionMatrix::scalar_deleting_destructor	nAsyncMapProcedures::tGetPoliticalTensionMatrix				rtti
 0x005ac4d6	function	nAsyncMapProcedures::tGetPoliticalTensionMatrix::~tGetPoliticalTensionMatrix	nAsyncMapProcedures::tGetPoliticalTensionMatrix				rtti
 0x005ac4e1	function	fn_005ac4e1					none
-0x005ac60b	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>				rtti
+0x005ac60b	function	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetPoliticalTensionMatrixForUpdate@@QAE@XZ	callers		rtti
 0x005ac6b4	function	nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate::scalar_deleting_destructor	nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate				rtti
 0x005ac6d0	function	nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate::~tGetPoliticalTensionMatrixForUpdate	nAsyncMapProcedures::tGetPoliticalTensionMatrixForUpdate				rtti
 0x005ac721	function	fn_005ac721					none
 0x005ac7bb	function	fn_005ac7bb					none
-0x005ac897	function	tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>				rtti
+0x005ac897	function	tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tGetStartLocation,nDataStore::tBuffer_const*>	??0tMemberCallback_tGetStartLocation@@QAE@PAX@Z	callers		rtti
 0x005ac92b	function	nAsyncMapProcedures::tGetStartLocation::scalar_deleting_destructor	nAsyncMapProcedures::tGetStartLocation				rtti
 0x005ac947	function	nAsyncMapProcedures::tGetStartLocation::~tGetStartLocation	nAsyncMapProcedures::tGetStartLocation				rtti
 0x005ac952	function	fn_005ac952					none
-0x005aca6f	function	tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>				rtti
+0x005aca6f	function	tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tInitialize,nDataStore::tBuffer_const*>	??0tMemberCallback_tInitialize@@QAE@PAX0@Z	callers		rtti
 0x005acd16	function	nAsyncMapProcedures::tInitialize::scalar_deleting_destructor	nAsyncMapProcedures::tInitialize				rtti
 0x005acd32	function	nAsyncMapProcedures::tInitialize::~tInitialize	nAsyncMapProcedures::tInitialize				rtti
 0x005acd98	function	fn_005acd98					none
@@ -12664,12 +12664,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005ade53	function	fn_005ade53					none
 0x005adef0	function	fn_005adef0					none
 0x005adf23	function	fn_005adf23					none
-0x005adf3c	function	tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>				rtti
+0x005adf3c	function	tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tMoveAccepted,nDataStore::tBuffer_const*>	??0tMemberCallback_tMoveAccepted@@QAE@PAX@Z	callers		rtti
 0x005ae013	function	nAsyncMapProcedures::tMoveAccepted::scalar_deleting_destructor	nAsyncMapProcedures::tMoveAccepted				rtti
 0x005ae02f	function	nAsyncMapProcedures::tMoveAccepted::~tMoveAccepted	nAsyncMapProcedures::tMoveAccepted				rtti
 0x005ae07c	function	fn_005ae07c					none
 0x005ae2a5	function	fn_005ae2a5					none
-0x005ae434	function	tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>				rtti
+0x005ae434	function	tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tMoveAIs,nDataStore::tBuffer_const*>	??0tMemberCallback_tMoveAIs@@QAE@PAX@Z	callers		rtti
 0x005ae56b	function	nAsyncMapProcedures::tMoveAIs::scalar_deleting_destructor	nAsyncMapProcedures::tMoveAIs				rtti
 0x005ae587	function	nAsyncMapProcedures::tMoveAIs::~tMoveAIs	nAsyncMapProcedures::tMoveAIs				rtti
 0x005ae5ec	function	fn_005ae5ec					none
@@ -12729,7 +12729,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b064c	function	fn_005b064c					none
 0x005b07e7	function	fn_005b07e7					none
 0x005b081a	function	fn_005b081a					none
-0x005b0833	function	tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>				rtti
+0x005b0833	function	tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tProcessBattle,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c180a@@QAE@PAVtMapRelayS@@PAX@Z	callers		rtti
 0x005b0a7c	function	nAsyncMapProcedures::tProcessBattle::scalar_deleting_destructor	nAsyncMapProcedures::tProcessBattle				rtti
 0x005b0a98	function	nAsyncMapProcedures::tProcessBattle::~tProcessBattle	nAsyncMapProcedures::tProcessBattle				rtti
 0x005b0b1e	function	fn_005b0b1e					none
@@ -12753,28 +12753,28 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b26c0	function	fn_005b26c0					none
 0x005b26cc	function	fn_005b26cc					none
 0x005b26d8	function	fn_005b26d8					none
-0x005b26e4	function	tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>				rtti
+0x005b26e4	function	tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tProcessMap,nDataStore::tBuffer_const*>	??0tMemberCallback_tProcessMap@@QAE@PAX@Z	callers		rtti
 0x005b274c	function	nAsyncMapProcedures::tProcessMap::scalar_deleting_destructor	nAsyncMapProcedures::tProcessMap				rtti
 0x005b2768	function	nAsyncMapProcedures::tProcessMap::~tProcessMap	nAsyncMapProcedures::tProcessMap				rtti
 0x005b2773	function	fn_005b2773					none
-0x005b27d9	function	tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>				rtti
+0x005b27d9	function	tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRandomNews,nDataStore::tBuffer_const*>	??0tMemberCallback_fn_005c18d7@@QAE@PAVtMapRelayS@@PAX@Z	callers		rtti
 0x005b2847	function	nAsyncMapProcedures::tRandomNews::scalar_deleting_destructor	nAsyncMapProcedures::tRandomNews				rtti
 0x005b2863	function	nAsyncMapProcedures::tRandomNews::~tRandomNews	nAsyncMapProcedures::tRandomNews				rtti
 0x005b286e	function	fn_005b286e					none
 0x005b2d2c	function	fn_005b2d2c					none
 0x005b2d56	function	fn_005b2d56					none
-0x005b2dbc	function	tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>				rtti
+0x005b2dbc	function	tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestMapData,nDataStore::tBuffer_const*>	??0tMemberCallback_tRequestMapData@@QAE@PAX@Z	callers		rtti
 0x005b2e50	function	nAsyncMapProcedures::tRequestMapData::scalar_deleting_destructor	nAsyncMapProcedures::tRequestMapData				rtti
 0x005b2e6c	function	nAsyncMapProcedures::tRequestMapData::~tRequestMapData	nAsyncMapProcedures::tRequestMapData				rtti
 0x005b2e77	function	fn_005b2e77					none
-0x005b3286	function	tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>				rtti
+0x005b3286	function	tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestMapSize,nDataStore::tBuffer_const*>	??0tMemberCallback_tRequestMapSize@@QAE@PAX@Z	callers		rtti
 0x005b32ee	function	nAsyncMapProcedures::tRequestMapSize::scalar_deleting_destructor	nAsyncMapProcedures::tRequestMapSize				rtti
 0x005b330a	function	nAsyncMapProcedures::tRequestMapSize::~tRequestMapSize	nAsyncMapProcedures::tRequestMapSize				rtti
 0x005b3315	thunk	fn_005b3315					none
 0x005b331a	function	nException::tInvalidAccess::tInvalidAccess	nException::tInvalidAccess				rtti
 0x005b334d	function	nException::tOutOfBounds::scalar_deleting_destructor	nException::tOutOfBounds				rtti
 0x005b3369	function	fn_005b3369					none
-0x005b349b	function	tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>				rtti
+0x005b349b	function	tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tRequestTerrainAtHex,nDataStore::tBuffer_const*>	??0tMemberCallback_tRequestTerrainAtHex@@QAE@PAX@Z	callers		rtti
 0x005b352f	function	nAsyncMapProcedures::tRequestTerrainAtHex::scalar_deleting_destructor	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b354b	function	nAsyncMapProcedures::tRequestTerrainAtHex::~tRequestTerrainAtHex	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b3556	function	fn_005b3556					none
@@ -12794,7 +12794,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b41fa	function	fn_005b41fa					none
 0x005b4281	function	fn_005b4281					none
 0x005b42cc	function	fn_005b42cc					none
-0x005b431c	function	tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>				rtti
+0x005b431c	function	tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tTurnBreak,nDataStore::tBuffer_const*>	??0tMemberCallback_tTurnBreak@@QAE@PAVtMapRelayS@@PAX@Z	callers		rtti
 0x005b446b	function	nAsyncMapProcedures::tTurnBreak::scalar_deleting_destructor	nAsyncMapProcedures::tTurnBreak				rtti
 0x005b4487	function	nAsyncMapProcedures::tTurnBreak::~tTurnBreak	nAsyncMapProcedures::tTurnBreak				rtti
 0x005b4520	function	fn_005b4520					none
@@ -12806,12 +12806,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b493a	function	fn_005b493a					none
 0x005b49ab	function	fn_005b49ab					none
 0x005b49df	function	fn_005b49df	nAsyncMapProcedures::tTurnBreak				vtable
-0x005b4a0b	function	tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>				rtti
+0x005b4a0b	function	tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tUpdateHex,nDataStore::tBuffer_const*>	??0tMemberCallback_tUpdateHex@@QAE@PAX@Z	callers		rtti
 0x005b4ae8	function	nAsyncMapProcedures::tUpdateHex::scalar_deleting_destructor	nAsyncMapProcedures::tUpdateHex				rtti
 0x005b4b04	function	nAsyncMapProcedures::tUpdateHex::~tUpdateHex	nAsyncMapProcedures::tUpdateHex				rtti
 0x005b4b6a	function	fn_005b4b6a					none
 0x005b4c29	function	fn_005b4c29					none
-0x005b4d87	function	tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>				rtti
+0x005b4d87	function	tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncMapProcedures::tUpdatePoliticalTensionMatrix,nDataStore::tBuffer_const*>	??0tMemberCallback_tUpdatePoliticalTensionMatrix@@QAE@PAX@Z	callers		rtti
 0x005b4e67	function	nAsyncMapProcedures::tUpdatePoliticalTensionMatrix::scalar_deleting_destructor	nAsyncMapProcedures::tUpdatePoliticalTensionMatrix				rtti
 0x005b4e83	function	nAsyncMapProcedures::tUpdatePoliticalTensionMatrix::~tUpdatePoliticalTensionMatrix	nAsyncMapProcedures::tUpdatePoliticalTensionMatrix				rtti
 0x005b4ed4	function	fn_005b4ed4					none
@@ -13072,38 +13072,38 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c0c4a	function	tMapRelayS::~tMapRelayS	tMapRelayS				rtti
 0x005c0ce3	function	fn_005c0ce3	tMapRelayS				vtable
 0x005c1185	function	fn_005c1185	tMapRelayS				vtable
-0x005c11cb	function	fn_005c11cb		?fn_005c11cb@tMapRelayS@@QAEXPAPAVtCreateBaseAIs@nAsyncMapProcedures@@@Z	claim		none
-0x005c120e	function	fn_005c120e		?fn_005c120e@tMapRelayS@@QAEXPAPAVtMemberCallback_tInitialize@@@Z	claim		none
-0x005c1255	function	fn_005c1255		?fn_005c1255@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapSize@@@Z	claim		none
-0x005c1298	function	fn_005c1298		?fn_005c1298@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapData@@@Z	claim		none
-0x005c12db	function	fn_005c12db		?fn_005c12db@tMapRelayS@@QAEXPAPAVtMemberCallback_tProcessMap@@@Z	claim		none
-0x005c131e	function	fn_005c131e		?fn_005c131e@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestTerrainAtHex@@@Z	claim		none
+0x005c11cb	function	fn_005c11cb	tMapRelayS	?fn_005c11cb@tMapRelayS@@QAEXPAPAVtCreateBaseAIs@nAsyncMapProcedures@@@Z	claim		none
+0x005c120e	function	fn_005c120e	tMapRelayS	?fn_005c120e@tMapRelayS@@QAEXPAPAVtMemberCallback_tInitialize@@@Z	claim		none
+0x005c1255	function	fn_005c1255	tMapRelayS	?fn_005c1255@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapSize@@@Z	claim		none
+0x005c1298	function	fn_005c1298	tMapRelayS	?fn_005c1298@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapData@@@Z	claim		none
+0x005c12db	function	fn_005c12db	tMapRelayS	?fn_005c12db@tMapRelayS@@QAEXPAPAVtMemberCallback_tProcessMap@@@Z	claim		none
+0x005c131e	function	fn_005c131e	tMapRelayS	?fn_005c131e@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestTerrainAtHex@@@Z	claim		none
 0x005c1361	function	fn_005c1361					none
 0x005c136c	function	fn_005c136c					none
-0x005c13a2	function	fn_005c13a2		?fn_005c13a2@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAccepted@@@Z	claim		none
-0x005c13e8	function	fn_005c13e8		?fn_005c13e8@tMapRelayS@@QAEXPAPAVtMemberCallback_tCharacterLoggedOn@@@Z	claim		none
-0x005c142b	function	fn_005c142b		?fn_005c142b@tMapRelayS@@QAEXPAPAVtMemberCallback_tTurnBreak@@@Z	claim		none
-0x005c1472	function	fn_005c1472		?fn_005c1472@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetStartLocation@@@Z	claim		none
-0x005c14b5	function	fn_005c14b5		?fn_005c14b5@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHex@@@Z	claim		none
-0x005c14f8	function	fn_005c14f8		?fn_005c14f8@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHexForUpdate@@@Z	claim		none
-0x005c1531	function	fn_005c1531		?fn_005c1531@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdateHex@@@Z	claim		none
-0x005c1574	function	fn_005c1574		?fn_005c1574@tMapRelayS@@QAEXPAPAVtMemberCallback_tChangeHexAttribute@@@Z	claim		none
-0x005c15ba	function	fn_005c15ba		?fn_005c15ba@tMapRelayS@@QAEXPAPAVtMemberCallback_tBaseTransitionVictoryPointAdjustment@@@Z	claim		none
-0x005c15f3	function	fn_005c15f3		?fn_005c15f3@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c15f3@@@Z	claim		none
-0x005c1639	function	fn_005c1639		?fn_005c1639@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAIs@@@Z	claim		none
-0x005c167f	function	fn_005c167f		?fn_005c167f@tMapRelayS@@QAEXPAPAVtMemberCallback_tEconomicStatusRequest@@@Z	claim		none
-0x005c16c2	function	fn_005c16c2		?fn_005c16c2@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTension@@@Z	claim		none
-0x005c1705	function	fn_005c1705		?fn_005c1705@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrix@@@Z	claim		none
-0x005c1748	function	fn_005c1748		?fn_005c1748@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrixForUpdate@@@Z	claim		none
-0x005c1781	function	fn_005c1781		?fn_005c1781@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdatePoliticalTensionMatrix@@@Z	claim		none
-0x005c17c7	function	fn_005c17c7		?fn_005c17c7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c17c7@@@Z	claim		none
-0x005c180a	function	fn_005c180a		?fn_005c180a@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c180a@@@Z	claim		none
-0x005c1851	function	fn_005c1851		?fn_005c1851@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1851@@@Z	claim		none
-0x005c1894	function	fn_005c1894		?fn_005c1894@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1894@@@Z	claim		none
-0x005c18d7	function	fn_005c18d7		?fn_005c18d7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c18d7@@@Z	claim		none
-0x005c191b	function	fn_005c191b		?fn_005c191b@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c191b@@@Z	claim		none
-0x005c195f	function	fn_005c195f		?fn_005c195f@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c195f@@@Z	claim		none
-0x005c19a3	function	fn_005c19a3		?fn_005c19a3@tMapRelayS@@QAEPAXXZ	claim		none
+0x005c13a2	function	fn_005c13a2	tMapRelayS	?fn_005c13a2@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAccepted@@@Z	claim		none
+0x005c13e8	function	fn_005c13e8	tMapRelayS	?fn_005c13e8@tMapRelayS@@QAEXPAPAVtMemberCallback_tCharacterLoggedOn@@@Z	claim		none
+0x005c142b	function	fn_005c142b	tMapRelayS	?fn_005c142b@tMapRelayS@@QAEXPAPAVtMemberCallback_tTurnBreak@@@Z	claim		none
+0x005c1472	function	fn_005c1472	tMapRelayS	?fn_005c1472@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetStartLocation@@@Z	claim		none
+0x005c14b5	function	fn_005c14b5	tMapRelayS	?fn_005c14b5@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHex@@@Z	claim		none
+0x005c14f8	function	fn_005c14f8	tMapRelayS	?fn_005c14f8@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHexForUpdate@@@Z	claim		none
+0x005c1531	function	fn_005c1531	tMapRelayS	?fn_005c1531@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdateHex@@@Z	claim		none
+0x005c1574	function	fn_005c1574	tMapRelayS	?fn_005c1574@tMapRelayS@@QAEXPAPAVtMemberCallback_tChangeHexAttribute@@@Z	claim		none
+0x005c15ba	function	fn_005c15ba	tMapRelayS	?fn_005c15ba@tMapRelayS@@QAEXPAPAVtMemberCallback_tBaseTransitionVictoryPointAdjustment@@@Z	claim		none
+0x005c15f3	function	fn_005c15f3	tMapRelayS	?fn_005c15f3@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c15f3@@@Z	claim		none
+0x005c1639	function	fn_005c1639	tMapRelayS	?fn_005c1639@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAIs@@@Z	claim		none
+0x005c167f	function	fn_005c167f	tMapRelayS	?fn_005c167f@tMapRelayS@@QAEXPAPAVtMemberCallback_tEconomicStatusRequest@@@Z	claim		none
+0x005c16c2	function	fn_005c16c2	tMapRelayS	?fn_005c16c2@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTension@@@Z	claim		none
+0x005c1705	function	fn_005c1705	tMapRelayS	?fn_005c1705@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrix@@@Z	claim		none
+0x005c1748	function	fn_005c1748	tMapRelayS	?fn_005c1748@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrixForUpdate@@@Z	claim		none
+0x005c1781	function	fn_005c1781	tMapRelayS	?fn_005c1781@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdatePoliticalTensionMatrix@@@Z	claim		none
+0x005c17c7	function	fn_005c17c7	tMapRelayS	?fn_005c17c7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c17c7@@@Z	claim		none
+0x005c180a	function	fn_005c180a	tMapRelayS	?fn_005c180a@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c180a@@@Z	claim		none
+0x005c1851	function	fn_005c1851	tMapRelayS	?fn_005c1851@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1851@@@Z	claim		none
+0x005c1894	function	fn_005c1894	tMapRelayS	?fn_005c1894@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1894@@@Z	claim		none
+0x005c18d7	function	fn_005c18d7	tMapRelayS	?fn_005c18d7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c18d7@@@Z	claim		none
+0x005c191b	function	fn_005c191b	tMapRelayS	?fn_005c191b@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c191b@@@Z	claim		none
+0x005c195f	function	fn_005c195f	tMapRelayS	?fn_005c195f@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c195f@@@Z	claim		none
+0x005c19a3	function	fn_005c19a3	tMapRelayS	?fn_005c19a3@tMapRelayS@@QAEPAXXZ	claim		none
 0x005c19e7	function	tMapSettings::tMapSettings	tMapSettings				rtti
 0x005c1fc9	function	tMapSettings::scalar_deleting_destructor	tMapSettings				rtti
 0x005c1fe5	function	tMapSettings::~tMapSettings	tMapSettings				rtti
@@ -15237,10 +15237,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005fffd6	function	fn_005fffd6					none
 0x00600035	function	fn_00600035		?fn_00600035@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
 0x00600094	function	fn_00600094		?fn_00600094@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
-0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	claim		rtti
+0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	claim		claim
 0x00600181	function	tPlayerRelayCCreator::scalar_deleting_destructor	tPlayerRelayCCreator	??_GtPlayerRelayCCreator@@UAEPAXI@Z	claim		rtti
-0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	claim		rtti
-0x006001a8	function	fn_006001a8	tPlayerRelayCCreator	?vfunction3@tPlayerRelayCCreator@@UAEXXZ	claim		vtable
+0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	claim		claim
+0x006001a8	function	fn_006001a8	tPlayerRelayCCreator	?vfunction3@tPlayerRelayCCreator@@UAEXXZ	claim		none
 0x00600208	function	fn_00600208					none
 0x0060023b	function	fn_0060023b					none
 0x0060026e	function	fn_0060026e					none
@@ -15269,13 +15269,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
 0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
 0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog				rtti
-0x0060072f	function	fn_0060072f		?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none
+0x0060072f	function	fn_0060072f	tMessageDialog	?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none
 0x006007f9	function	fn_006007f9		?fn_006007f9@tMessageDialog@@QAEXH@Z	add		none
 0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
 0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
-0x006009ed	function	fn_006009ed		?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
+0x006009ed	function	fn_006009ed	tMessageDialog	?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
 0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
-0x00600a82	function	fn_00600a82		?fn_00600a82@@YAXXZ	claim		none
+0x00600a82	function	fn_00600a82					none
 0x00600a91	function	fn_00600a91					none
 0x00600ab8	function	fn_00600ab8		?fn_00600ab8@@YGPAVfn_00600b4a_class@@HHH@Z	add		none
 0x00600b2e	function	tMessageDialogGlobal::scalar_deleting_destructor	tMessageDialogGlobal				rtti
@@ -15300,15 +15300,15 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600ea9	function	fn_00600ea9	tMedalsPanel				vtable
 0x00600f61	function	fn_00600f61	tMedalsPanel				vtable
 0x00600f8d	function	fn_00600f8d	tMetaClientPanel				vtable
-0x00600f90	function	fn_00600f90		?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
-0x00600fba	function	fn_00600fba		?FUN_00600fba@tMedalsPanel@@QAEXH@Z	claim		none
+0x00600f90	function	fn_00600f90	tMedalsPanel	?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
+0x00600fba	function	fn_00600fba	tMedalsPanel	?FUN_00600fba@tMedalsPanel@@QAEXH@Z	claim		none
 0x00601054	function	fn_00601054		?fn_00601054@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	add		none
 0x00601141	function	fn_00601141		?fn_00601141@@YAXXZ	claim		none
 0x0060114d	function	fn_0060114d		?fn_0060114d@@YAXXZ	claim		none
 0x00601159	function	fn_00601159		?fn_00601159@@YAXXZ	claim		none
-0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	claim		rtti
+0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	claim		claim
 0x006011d2	function	tMedalsPanelCreator::scalar_deleting_destructor	tMedalsPanelCreator	??_GtMedalsPanelCreator@@UAEPAXI@Z	claim		rtti
-0x006011ee	function	tMedalsPanelCreator::~tMedalsPanelCreator	tMedalsPanelCreator	??1tMedalsPanelCreator@@UAE@XZ	claim		rtti
+0x006011ee	function	tMedalsPanelCreator::~tMedalsPanelCreator	tMedalsPanelCreator	??1tMedalsPanelCreator@@UAE@XZ	claim		claim
 0x006011f9	function	fn_006011f9	tMedalsPanelCreator				vtable
 0x00601259	function	fn_00601259					none
 0x0060128c	function	fn_0060128c					none
@@ -15330,17 +15330,17 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00601804	function	fn_00601804					none
 0x0060181d	function	tMessengerRelayCreator::tMessengerRelayCreator	tMessengerRelayCreator	??0tMessengerRelayCreator@@QAE@XZ	callers		rtti
 0x00601834	function	tMessengerRelayCreator::scalar_deleting_destructor	tMessengerRelayCreator	??_GtMessengerRelayCreator@@UAEPAXI@Z	claim		rtti
-0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	claim		rtti
-0x0060185b	function	fn_0060185b	tMessengerRelayCreator	?vfunction3@tMessengerRelayCreator@@UAEXXZ	claim		vtable
+0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	claim		claim
+0x0060185b	function	fn_0060185b	tMessengerRelayCreator	?vfunction3@tMessengerRelayCreator@@UAEXXZ	claim		none
 0x006018c8	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>				rtti
 0x0060195c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOff::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOff				rtti
 0x00601978	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOff::~tCharacterLoggedOff	nAsyncClientPlayerListProcedures::tCharacterLoggedOff				rtti
-0x00601983	function	fn_00601983		?fn_00601983@tCharacterLoggedOff@nAsyncClientPlayerListProcedures@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
+0x00601983	function	fn_00601983	nAsyncClientPlayerListProcedures::tCharacterLoggedOff	?fn_00601983@tCharacterLoggedOff@nAsyncClientPlayerListProcedures@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
 0x00601a4f	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>				rtti
 0x00601b0c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b28	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::~tCharacterLoggedOn	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b33	function	fn_00601b33					none
-0x00601ca9	function	fn_00601ca9		?fn_00601ca9@tCharacterInfoProcedure@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
+0x00601ca9	function	fn_00601ca9	tCharacterInfoProcedure	?fn_00601ca9@tCharacterInfoProcedure@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
 0x00601d69	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>				rtti
 0x00601dfd	function	nAsyncClientPlayerListProcedures::tCharacterReceived::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
 0x00601e19	function	nAsyncClientPlayerListProcedures::tCharacterReceived::~tCharacterReceived	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
@@ -15367,7 +15367,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00602afd	function	fn_00602afd	tMetaClientPlayerListPanel				vtable
 0x00602b51	function	fn_00602b51	tMetaClientPlayerListPanel				vtable
 0x00602bc7	function	fn_00602bc7	tMetaClientPlayerListPanel				vtable
-0x00602e18	function	fn_00602e18		?fn_00602e18@tPlayerListPanelSketch@@QAEXPAVfn_00602e18_message@@@Z	claim		none
+0x00602e18	function	fn_00602e18	tMetaClientPlayerListPanel	?fn_00602e18@tMetaClientPlayerListPanel@@QAEXPAVfn_00602e18_message@@@Z	claim		none
 0x00602f16	function	fn_00602f16					none
 0x006032e7	function	fn_006032e7		?fn_006032e7@fn_006032e7_object@@QAEXXZ	claim		none
 0x00603351	function	fn_00603351		?fn_00603351@fn_00603351_object@@QAEXPAVfn_00603351_vector@@@Z	claim		none
@@ -15392,10 +15392,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603e41	function	fn_00603e41					none
 0x00603ebe	function	fn_00603ebe		?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z	claim		none
 0x00603ef0	function	fn_00603ef0		?fn_00603ef0@@YGXPAVfn_00603ef0_target@@HH@Z	add		none
-0x006041a1	function	fn_006041a1		??1tRemoveItem@@QAE@XZ	claim		none
-0x006041d0	function	fn_006041d0		??1tRemoveItem_0060435f@@QAE@XZ	claim		none
-0x006041ff	function	fn_006041ff		??1tRemoveItem_00604390@@QAE@XZ	claim		none
-0x0060422e	function	fn_0060422e		??1tAccessPointer_0060422e@@QAE@XZ	claim		none
+0x006041a1	function	tRemoveItem::~tRemoveItem	tRemoveItem	??1tRemoveItem@@QAE@XZ	claim		claim
+0x006041d0	function	tRemoveItem_0060435f::~tRemoveItem_0060435f	tRemoveItem_0060435f	??1tRemoveItem_0060435f@@QAE@XZ	claim		claim
+0x006041ff	function	tRemoveItem_00604390::~tRemoveItem_00604390	tRemoveItem_00604390	??1tRemoveItem_00604390@@QAE@XZ	claim		claim
+0x0060422e	function	tAccessPointer_0060422e::~tAccessPointer_0060422e	tAccessPointer_0060422e	??1tAccessPointer_0060422e@@QAE@XZ	claim		claim
 0x00604259	function	fn_00604259		??D?$tAccessPointer@HH@@QAEAAHXZ	claim		none
 0x00604271	function	fn_00604271					none
 0x0060429c	function	fn_0060429c					none
@@ -15509,7 +15509,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00607364	function	fn_00607364					none
 0x006073af	function	tMetaClientCreator::tMetaClientCreator	tMetaClientCreator				rtti
 0x00607407	function	tMetaClientCreator::scalar_deleting_destructor	tMetaClientCreator				rtti
-0x00607423	function	tMetaClientCreator::~tMetaClientCreator	tMetaClientCreator				rtti
+0x00607423	function	tMetaClientCreator::~tMetaClientCreator	tMetaClientCreator	??1tMetaClientCreator@@UAE@XZ	callers		rtti
 0x00607460	function	fn_00607460	tMetaClientCreator				vtable
 0x0060757e	function	tMetaClientPanel::tMetaClientPanel	tMetaClientPanel				rtti
 0x006075c6	function	tMetaClientPanel::scalar_deleting_destructor	tMetaClientPanel				rtti
@@ -16781,109 +16781,109 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00645f60	function	twSoundPart::mSet3DListenerUnitScaleInMeters	twSoundPart	?mSet3DListenerUnitScaleInMeters@twSoundPart@@UAEEN@Z	claim		claim
 0x00645ff0	function	twSoundPart::mGetHardwareInformation	twSoundPart	?mGetHardwareInformation@twSoundPart@@UAEJJ@Z	claim		claim
 0x00646010	function	twSoundPart::mInit	twSoundPart	?mInit@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z	claim		claim
-0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes	??1tChannelAttributes@@UAE@XZ	claim		rtti
+0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes	??1tChannelAttributes@@UAE@XZ	claim		claim
 0x00646200	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
 0x00646220	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
-0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	claim		mangled
-0x00646260	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXMMM@Z	claim		mangled
+0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	claim		claim
+0x00646260	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXMMM@Z	claim		claim
 0x00646280	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
 0x006462a0	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
 0x006462c0	function	t3DListenerProfile::mGetUpDirection	t3DListenerProfile	?vfunction13@t3DSoundProfile@@UAEPAUtPoint3@@XZ	claim		mangled
-0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	claim		mangled
+0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	claim		claim
 0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?vfunction17@t3DSoundProfile@@UAEMXZ	claim		mangled
-0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	claim		mangled
+0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	claim		claim
 0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?vfunction19@t3DSoundProfile@@UAEJXZ	claim		mangled
 0x00646310	function	t3DSoundProfile::scalar_deleting_destructor	t3DSoundProfile				sdk
 0x00646330	function	tChannelAttributes::mSet3DSoundProfile	tChannelAttributes	?mSet3DSoundProfile@tChannelAttributes@@UAEXPAVt3DSoundProfile@@@Z	mangled		mangled
 0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?vfunction12@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
-0x00646360	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
-0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	claim		mangled
-0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646360	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		claim
+0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	claim		claim
+0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		claim
 0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?vfunction16@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
-0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
-0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	claim		mangled
-0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		claim
+0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	claim		claim
+0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		claim
 0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?vfunction20@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
-0x00646440	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
-0x00646460	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXMMM@Z	claim		mangled
-0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646440	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		claim
+0x00646460	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXMMM@Z	claim		claim
+0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		claim
 0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?vfunction22@tChannelAttributes@@UAEXN@Z	claim		mangled
-0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	claim		mangled
+0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	claim		claim
 0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?vfunction24@tChannelAttributes@@UAEXM@Z	claim		mangled
-0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	claim		mangled
+0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	claim		claim
 0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?vfunction26@tChannelAttributes@@UAEXJ@Z	claim		mangled
-0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	claim		mangled
-0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	claim		mangled
+0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	claim		claim
+0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	claim		claim
 0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes	??_GtChannelAttributes@@UAEPAXI@Z	claim		sdk
 0x00646570	function	tSoundChannelFormat::~tSoundChannelFormat	tSoundChannelFormat				sdk
 0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		mangled
 0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?vfunction13@tSoundChannelFormat@@UAEJXZ	claim		mangled
-0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465d0	function	tSoundChannelFormat::mAreWeStatic	tSoundChannelFormat	?mAreWeStatic@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465e0	function	tSoundChannelFormat::mAreWeFixedFrequency	tSoundChannelFormat	?mAreWeFixedFrequency@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x006465f0	function	tSoundChannelFormat::mAreWeARecordingChannel	tSoundChannelFormat	?mAreWeARecordingChannel@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646600	function	tSoundChannelFormat::mTryToLocateInHardware	tSoundChannelFormat	?mTryToLocateInHardware@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646610	function	tSoundChannelFormat::mTryToLocateInSoftware	tSoundChannelFormat	?mTryToLocateInSoftware@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646620	function	tSoundChannelFormat::mAreWeFixedPan	tSoundChannelFormat	?mAreWeFixedPan@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646640	function	tSoundChannelFormat::mAreWeAGlobalSound	tSoundChannelFormat	?mAreWeAGlobalSound@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	claim		mangled
-0x00646720	function	tSoundChannel::mGetAttachmentsList	tSoundChannel	?mGetAttachmentsList@tSoundChannel@@UAEPAVtSoundCommandList@@XZ	claim		mangled
-0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646740	function	tSoundChannel::mGetAmountThatCanBeAdded	tSoundChannel	?mGetAmountThatCanBeAdded@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646750	function	tSoundChannel::mGetFirstImmediateNonInterruptCommand	tSoundChannel	?mGetFirstImmediateNonInterruptCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
-0x00646760	function	tSoundChannel::mGetFirstImmediateCommand	tSoundChannel	?mGetFirstImmediateCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
-0x00646770	function	tSoundChannel::mGetFirstDelayedCommand	tSoundChannel	?mGetFirstDelayedCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
-0x00646780	function	tSoundChannel::mGetFrequency	tSoundChannel	?mGetFrequency@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646790	function	tSoundChannel::mGetPan	tSoundChannel	?mGetPan@tSoundChannel@@UAEJXZ	claim		mangled
-0x006467a0	function	tSoundChannel::mGetVolume	tSoundChannel	?mGetVolume@tSoundChannel@@UAEJXZ	claim		mangled
-0x006467b0	function	tSoundChannel::mGetChannelPriority	tSoundChannel	?mGetChannelPriority@tSoundChannel@@UAEJXZ	claim		mangled
-0x006467c0	function	tSoundChannel::mGetChannelAttributes	tSoundChannel	?mGetChannelAttributes@tSoundChannel@@UAEPAVtChannelAttributes@@XZ	claim		mangled
-0x006467d0	function	tSoundChannel::mGet3DSoundProfile	tSoundChannel	?mGet3DSoundProfile@tSoundChannel@@UAEPAVt3DSoundProfile@@XZ	claim		mangled
-0x006467e0	function	tSoundChannel::mGet3DSoundPosition	tSoundChannel	?mGet3DSoundPosition@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
-0x006467f0	function	tSoundChannel::mGet3DSoundOrientation	tSoundChannel	?mGet3DSoundOrientation@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
-0x00646800	function	tSoundChannel::mGet3DSoundVelocity	tSoundChannel	?mGet3DSoundVelocity@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
-0x00646810	function	tSoundChannel::mGet3DSoundReferenceDistance	tSoundChannel	?mGet3DSoundReferenceDistance@tSoundChannel@@UAENXZ	claim		mangled
-0x00646820	function	tSoundChannel::mGet3DSoundConeAngleForNoAttenuation	tSoundChannel	?mGet3DSoundConeAngleForNoAttenuation@tSoundChannel@@UAEMXZ	claim		mangled
-0x00646830	function	tSoundChannel::mGet3DSoundConeAttenuationLevel	tSoundChannel	?mGet3DSoundConeAttenuationLevel@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646840	function	tSoundChannel::mGetSoundChannelFormat	tSoundChannel	?mGetSoundChannelFormat@tSoundChannel@@UAEPAVtSoundChannelFormat@@XZ	claim		mangled
-0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646860	function	tSoundChannel::mGetNumChannels	tSoundChannel	?mGetNumChannels@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646870	function	tSoundChannel::mGetBytesPerSample	tSoundChannel	?mGetBytesPerSample@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646880	function	tSoundChannel::mGetBitsPerSample	tSoundChannel	?mGetBitsPerSample@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646890	function	tSoundChannel::mGetSoundType	tSoundChannel	?mGetSoundType@tSoundChannel@@UAEJXZ	claim		mangled
-0x006468a0	function	tSoundChannel::mSetSoundType	tSoundChannel	?mSetSoundType@tSoundChannel@@UAEXJ@Z	claim		mangled
-0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	claim		mangled
-0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	claim		mangled
-0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	claim		mangled
-0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXJ@Z	claim		mangled
-0x00646910	function	tSoundChannel::mGetNumberOfAttachments	tSoundChannel	?mGetNumberOfAttachments@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646930	function	tSoundChannel::mAreWeLooping	tSoundChannel	?mAreWeLooping@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646940	function	tSoundChannel::mAreWeStreaming	tSoundChannel	?mAreWeStreaming@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646950	function	tSoundChannel::mAreWe3D	tSoundChannel	?mAreWe3D@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646960	function	tSoundChannel::mAreWeStatic	tSoundChannel	?mAreWeStatic@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646970	function	tSoundChannel::mAreWeFixedFrequency	tSoundChannel	?mAreWeFixedFrequency@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646980	function	tSoundChannel::mAreWeARecordingChannel	tSoundChannel	?mAreWeARecordingChannel@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646990	function	tSoundChannel::mTryToLocateInHardware	tSoundChannel	?mTryToLocateInHardware@tSoundChannel@@UAEEXZ	claim		mangled
-0x006469a0	function	tSoundChannel::mTryToLocateInSoftware	tSoundChannel	?mTryToLocateInSoftware@tSoundChannel@@UAEEXZ	claim		mangled
-0x006469c0	function	tSoundChannel::mAreWeFixedPan	tSoundChannel	?mAreWeFixedPan@tSoundChannel@@UAEEXZ	claim		mangled
-0x006469e0	function	tSoundChannel::mAreWeFixedVolume	tSoundChannel	?mAreWeFixedVolume@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646a00	function	tSoundChannel::mAreWeAGlobalSound	tSoundChannel	?mAreWeAGlobalSound@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646a20	function	tSoundChannel::mDoWeRetainSelections	tSoundChannel	?mDoWeRetainSelections@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646a40	function	tSoundChannel::mDoWeAutoRemoveChannel	tSoundChannel	?mDoWeAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646a60	function	tSoundChannel::mDoWeAutoRemoveSelections	tSoundChannel	?mDoWeAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	claim		mangled
-0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	claim		mangled
-0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x006465d0	function	tSoundChannelFormat::mAreWeStatic	tSoundChannelFormat	?mAreWeStatic@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x006465e0	function	tSoundChannelFormat::mAreWeFixedFrequency	tSoundChannelFormat	?mAreWeFixedFrequency@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x006465f0	function	tSoundChannelFormat::mAreWeARecordingChannel	tSoundChannelFormat	?mAreWeARecordingChannel@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646600	function	tSoundChannelFormat::mTryToLocateInHardware	tSoundChannelFormat	?mTryToLocateInHardware@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646610	function	tSoundChannelFormat::mTryToLocateInSoftware	tSoundChannelFormat	?mTryToLocateInSoftware@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646620	function	tSoundChannelFormat::mAreWeFixedPan	tSoundChannelFormat	?mAreWeFixedPan@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646640	function	tSoundChannelFormat::mAreWeAGlobalSound	tSoundChannelFormat	?mAreWeAGlobalSound@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	claim		claim
+0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	claim		claim
+0x00646720	function	tSoundChannel::mGetAttachmentsList	tSoundChannel	?mGetAttachmentsList@tSoundChannel@@UAEPAVtSoundCommandList@@XZ	claim		claim
+0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAEJXZ	claim		claim
+0x00646740	function	tSoundChannel::mGetAmountThatCanBeAdded	tSoundChannel	?mGetAmountThatCanBeAdded@tSoundChannel@@UAEJXZ	claim		claim
+0x00646750	function	tSoundChannel::mGetFirstImmediateNonInterruptCommand	tSoundChannel	?mGetFirstImmediateNonInterruptCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		claim
+0x00646760	function	tSoundChannel::mGetFirstImmediateCommand	tSoundChannel	?mGetFirstImmediateCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		claim
+0x00646770	function	tSoundChannel::mGetFirstDelayedCommand	tSoundChannel	?mGetFirstDelayedCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		claim
+0x00646780	function	tSoundChannel::mGetFrequency	tSoundChannel	?mGetFrequency@tSoundChannel@@UAEJXZ	claim		claim
+0x00646790	function	tSoundChannel::mGetPan	tSoundChannel	?mGetPan@tSoundChannel@@UAEJXZ	claim		claim
+0x006467a0	function	tSoundChannel::mGetVolume	tSoundChannel	?mGetVolume@tSoundChannel@@UAEJXZ	claim		claim
+0x006467b0	function	tSoundChannel::mGetChannelPriority	tSoundChannel	?mGetChannelPriority@tSoundChannel@@UAEJXZ	claim		claim
+0x006467c0	function	tSoundChannel::mGetChannelAttributes	tSoundChannel	?mGetChannelAttributes@tSoundChannel@@UAEPAVtChannelAttributes@@XZ	claim		claim
+0x006467d0	function	tSoundChannel::mGet3DSoundProfile	tSoundChannel	?mGet3DSoundProfile@tSoundChannel@@UAEPAVt3DSoundProfile@@XZ	claim		claim
+0x006467e0	function	tSoundChannel::mGet3DSoundPosition	tSoundChannel	?mGet3DSoundPosition@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		claim
+0x006467f0	function	tSoundChannel::mGet3DSoundOrientation	tSoundChannel	?mGet3DSoundOrientation@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		claim
+0x00646800	function	tSoundChannel::mGet3DSoundVelocity	tSoundChannel	?mGet3DSoundVelocity@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		claim
+0x00646810	function	tSoundChannel::mGet3DSoundReferenceDistance	tSoundChannel	?mGet3DSoundReferenceDistance@tSoundChannel@@UAENXZ	claim		claim
+0x00646820	function	tSoundChannel::mGet3DSoundConeAngleForNoAttenuation	tSoundChannel	?mGet3DSoundConeAngleForNoAttenuation@tSoundChannel@@UAEMXZ	claim		claim
+0x00646830	function	tSoundChannel::mGet3DSoundConeAttenuationLevel	tSoundChannel	?mGet3DSoundConeAttenuationLevel@tSoundChannel@@UAEJXZ	claim		claim
+0x00646840	function	tSoundChannel::mGetSoundChannelFormat	tSoundChannel	?mGetSoundChannelFormat@tSoundChannel@@UAEPAVtSoundChannelFormat@@XZ	claim		claim
+0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	claim		claim
+0x00646860	function	tSoundChannel::mGetNumChannels	tSoundChannel	?mGetNumChannels@tSoundChannel@@UAEJXZ	claim		claim
+0x00646870	function	tSoundChannel::mGetBytesPerSample	tSoundChannel	?mGetBytesPerSample@tSoundChannel@@UAEJXZ	claim		claim
+0x00646880	function	tSoundChannel::mGetBitsPerSample	tSoundChannel	?mGetBitsPerSample@tSoundChannel@@UAEJXZ	claim		claim
+0x00646890	function	tSoundChannel::mGetSoundType	tSoundChannel	?mGetSoundType@tSoundChannel@@UAEJXZ	claim		claim
+0x006468a0	function	tSoundChannel::mSetSoundType	tSoundChannel	?mSetSoundType@tSoundChannel@@UAEXJ@Z	claim		claim
+0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	claim		claim
+0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	claim		claim
+0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	claim		claim
+0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEJXZ	claim		claim
+0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXJ@Z	claim		claim
+0x00646910	function	tSoundChannel::mGetNumberOfAttachments	tSoundChannel	?mGetNumberOfAttachments@tSoundChannel@@UAEJXZ	claim		claim
+0x00646930	function	tSoundChannel::mAreWeLooping	tSoundChannel	?mAreWeLooping@tSoundChannel@@UAEEXZ	claim		claim
+0x00646940	function	tSoundChannel::mAreWeStreaming	tSoundChannel	?mAreWeStreaming@tSoundChannel@@UAEEXZ	claim		claim
+0x00646950	function	tSoundChannel::mAreWe3D	tSoundChannel	?mAreWe3D@tSoundChannel@@UAEEXZ	claim		claim
+0x00646960	function	tSoundChannel::mAreWeStatic	tSoundChannel	?mAreWeStatic@tSoundChannel@@UAEEXZ	claim		claim
+0x00646970	function	tSoundChannel::mAreWeFixedFrequency	tSoundChannel	?mAreWeFixedFrequency@tSoundChannel@@UAEEXZ	claim		claim
+0x00646980	function	tSoundChannel::mAreWeARecordingChannel	tSoundChannel	?mAreWeARecordingChannel@tSoundChannel@@UAEEXZ	claim		claim
+0x00646990	function	tSoundChannel::mTryToLocateInHardware	tSoundChannel	?mTryToLocateInHardware@tSoundChannel@@UAEEXZ	claim		claim
+0x006469a0	function	tSoundChannel::mTryToLocateInSoftware	tSoundChannel	?mTryToLocateInSoftware@tSoundChannel@@UAEEXZ	claim		claim
+0x006469c0	function	tSoundChannel::mAreWeFixedPan	tSoundChannel	?mAreWeFixedPan@tSoundChannel@@UAEEXZ	claim		claim
+0x006469e0	function	tSoundChannel::mAreWeFixedVolume	tSoundChannel	?mAreWeFixedVolume@tSoundChannel@@UAEEXZ	claim		claim
+0x00646a00	function	tSoundChannel::mAreWeAGlobalSound	tSoundChannel	?mAreWeAGlobalSound@tSoundChannel@@UAEEXZ	claim		claim
+0x00646a20	function	tSoundChannel::mDoWeRetainSelections	tSoundChannel	?mDoWeRetainSelections@tSoundChannel@@UAEEXZ	claim		claim
+0x00646a40	function	tSoundChannel::mDoWeAutoRemoveChannel	tSoundChannel	?mDoWeAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		claim
+0x00646a60	function	tSoundChannel::mDoWeAutoRemoveSelections	tSoundChannel	?mDoWeAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		claim
+0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		claim
+0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		claim
+0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	claim		claim
+0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	claim		claim
+0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	claim		claim
+0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXJ@Z	claim		claim
 0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel	?vfunction117@tSoundChannel@@UAENXZ	claim		sdk
-0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	claim		mangled
+0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	claim		claim
 0x00646b70	function	tSoundChannel::`scalar_deleting_destructor'	tSoundChannel	??_GtSoundChannel@@UAEPAXI@Z	claim		mangled
 0x00646b90	function	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles	tDynamicMemoryFreeListViaHandles				rtti
 0x00646ba0	function	twStandardSoundChannel::mGetfDSBuffer	twStandardSoundChannel	?mGetfDSBuffer@twStandardSoundChannel@@UAEPAUIDirectSoundBuffer@@XZ	mangled		mangled
@@ -17186,8 +17186,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00660f90	function	tChannelGroupManagerPart::mKillRetainedMode	tChannelGroupManagerPart	?mKillRetainedMode@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fb0	function	tChannelGroupManagerPart::mClearAttachments	tChannelGroupManagerPart	?mClearAttachments@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fd0	function	tSafeArray<tChannelGroup>::`scalar_deleting_destructor'	tSafeArray<tChannelGroup>	??_G?$tSafeArray@VtChannelGroup@@@@UAEPAXI@Z	mangled		mangled
-0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart	?Test_tSoundPart@tSoundPart@@SAEXZ	claim		mangled
-0x00661220	function	tAudioFileInfoPart::Test_tAudioFileInfoPart	tAudioFileInfoPart	?Test_tAudioFileInfoPart@tAudioFileInfoPart@@SAEXZ	claim		sdk
+0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart	?Test_tSoundPart@tSoundPart@@SAEXZ	claim		claim
+0x00661220	function	tAudioFileInfoPart::Test_tAudioFileInfoPart	tAudioFileInfoPart	?Test_tAudioFileInfoPart@tAudioFileInfoPart@@SAEXZ	claim		claim
 0x006612e0	function	tChannelGroup::mAddOwner	tChannelGroup	?mAddOwner@tChannelGroup@@UAEXXZ	mangled		mangled
 0x006612f0	function	tChannelGroup::mRemoveOwner	tChannelGroup	?mRemoveOwner@tChannelGroup@@UAEXXZ	mangled		mangled
 0x00661300	function	tClassTrackingInfo::mSet	tClassTrackingInfo	?mSet@tClassTrackingInfo@@UAEXKKJJPAJ@Z	claim		claim
@@ -17232,21 +17232,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00663250	function	tSafeArray<tClassTrackingInfo>::mGetNextItemIndex	tSafeArray<tClassTrackingInfo>	?mGetNextItemIndex@?$tSafeArray@VtClassTrackingInfo@@@@QAEKK@Z	mangled		mangled
 0x006632a0	function	tSafeArray<tClassTrackingInfo>::mGetIndexFromRealIndex	tSafeArray<tClassTrackingInfo>	?mGetIndexFromRealIndex@?$tSafeArray@VtClassTrackingInfo@@@@IAEKK@Z	mangled		mangled
 0x006632f0	function	tSafeArray<tClassTrackingInfo>::mAddMoreRoom	tSafeArray<tClassTrackingInfo>	?mAddMoreRoom@?$tSafeArray@VtClassTrackingInfo@@@@IAEXJ@Z	mangled		mangled
-0x00663590	function	tHandleList::mClear	tHandleList	?mClear@tHandleList@@UAEXXZ	claim		mangled
-0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	claim		mangled
+0x00663590	function	tHandleList::mClear	tHandleList	?mClear@tHandleList@@UAEXXZ	claim		claim
+0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	claim		claim
 0x006635b0	function	tHandleList::`scalar_deleting_destructor'	tHandleList	??_GtHandleList@@UAEPAXI@Z	mangled		mangled
 0x00663600	function	tSoundSelection::mSetDonePlaying	tSoundSelection	?mSetDonePlaying@tSoundSelection@@UAEXP6AXJ@Z@Z	mangled		mangled
 0x00663610	function	tBasicAudioFile::mGetLinkDepth	tBasicAudioFile	?mGetLinkDepth@tBasicAudioFile@@UAEJXZ	mangled		mangled
-0x00663620	function	tAudioFileClass::mSetMyHandle	tAudioFileClass	?mSetMyHandle@tAudioFileClass@@UAEXJ@Z	claim		mangled
-0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	claim		mangled
+0x00663620	function	tAudioFileClass::mSetMyHandle	tAudioFileClass	?mSetMyHandle@tAudioFileClass@@UAEXJ@Z	claim		claim
+0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	claim		claim
 0x00663640	function	tSoundChannel::mGetChannelStatus	tSoundChannel	?vfunction52@tSoundChannel@@UAE?AW4eSoundChannelStatus@@XZ	claim		sdk
 0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?vfunction15@t3DSoundProfile@@UAENXZ	claim		mangled
-0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	claim		mangled
-0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	claim		mangled
+0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	claim		claim
+0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	claim		claim
 0x006636b0	function	t3DListenerProfile::mGetUnitScaleInMeters	t3DListenerProfile				mangled
-0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	claim		mangled
+0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	claim		claim
 0x006636d0	function	tClassActiveChannelList::`scalar_deleting_destructor'	tClassActiveChannelList	??_GtClassActiveChannelList@@UAEPAXI@Z	claim		mangled
-0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	claim		mangled
+0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	claim		claim
 0x00663720	function	mystrequivalent		?mystrequivalent@@YAEPAD0@Z	claim		claim
 0x00663780	function	mystrequivalentN		?mystrequivalentN@@YAEPAD0J@Z	claim		claim
 0x006637f0	function	tAFPlayInfo::mGetRandomFrequency	tAFPlayInfo	?mGetRandomFrequency@tAFPlayInfo@@UAEJXZ	claim		claim
@@ -17476,13 +17476,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0066eb10	function	tGFItem::GetNext	tGFItem	?GetNext@tGFItem@@UAEPAV1@XZ	mangled		mangled
 0x0066eb20	function	tSoundMemoryBlock::mGetTopHalfOfHandle	tSoundMemoryBlock	?mGetTopHalfOfHandle@tSoundMemoryBlock@@UAEGXZ	mangled		mangled
 0x0066eb30	function	tSoundMemoryBlock::mSetNextBlock	tSoundMemoryBlock	?mSetNextBlock@tSoundMemoryBlock@@UAEXJ@Z	mangled		mangled
-0x0066eb40	function	fn_0066eb40	tSoundMemoryBlock	?mGetNumberOfLocks@tSoundMemoryBlock@@UAEJXZ	claim		vtable
-0x0066eb50	function	tSoundMemoryBlock::mAreWeInUse	tSoundMemoryBlock	?mAreWeInUse@tSoundMemoryBlock@@UAEEXZ	claim		mangled
-0x0066eb60	function	tSoundMemoryBlock::mSetBlockInUse	tSoundMemoryBlock	?mSetBlockInUse@tSoundMemoryBlock@@UAEXE@Z	claim		mangled
-0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
-0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
-0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	claim		mangled
-0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	claim		mangled
+0x0066eb40	function	tSoundMemoryBlock::mGetNumberOfLocks	tSoundMemoryBlock	?mGetNumberOfLocks@tSoundMemoryBlock@@UAEJXZ	claim		claim
+0x0066eb50	function	tSoundMemoryBlock::mAreWeInUse	tSoundMemoryBlock	?mAreWeInUse@tSoundMemoryBlock@@UAEEXZ	claim		claim
+0x0066eb60	function	tSoundMemoryBlock::mSetBlockInUse	tSoundMemoryBlock	?mSetBlockInUse@tSoundMemoryBlock@@UAEXE@Z	claim		claim
+0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	claim		claim
+0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	claim		claim
+0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	claim		claim
+0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	claim		claim
 0x0066ebc0	function	ReadAtInterrupt		?fn_0066ebc0@@YAXXZ	claim		sdk
 0x0066ebd0	function	tAsynchSoundQueue::tAsynchSoundQueue	tAsynchSoundQueue	??0tAsynchSoundQueue@@QAE@XZ	claim		claim
 0x0066ec50	function	tAsynchSoundQueue::mReadNext	tAsynchSoundQueue	?mReadNext@tAsynchSoundQueue@@QAEEXZ	claim		claim
