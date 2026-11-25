@@ -406,6 +406,7 @@ public:
 	void fn_00426b63(int aID);
 	bool fn_00426bac(int aID);
 	fn_00524daa_Class* fn_00426bcc();
+	bool fn_00426c23(int aValue);
 
 	int m10[20];
 	int m60[20];
@@ -515,4 +516,20 @@ fn_00524daa_Class* fn_00426988_Class::fn_00426bcc()
 	if (md0 != 0 && mdc == 0)
 		mdc = new fn_00524daa_Class;
 	return mdc;
+}
+
+// HYPOTHESIS: m60 is a ring of 20 entries walked backwards from mb4, mb0 steps.
+// FUNCTION: STARFLEETOP 0x00426c23
+bool fn_00426988_Class::fn_00426c23(int aValue)
+{
+	int idx = mb4;
+	for (int i = 0; i < mb0; i++)
+	{
+		if (idx < 0 || idx >= 20)
+			idx = 19;
+		if (m60[idx] == aValue)
+			return true;
+		idx--;
+	}
+	return false;
 }
