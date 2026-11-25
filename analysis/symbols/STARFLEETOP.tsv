@@ -17479,7 +17479,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0066eb40	function	fn_0066eb40	tSoundMemoryBlock	?mGetNumberOfLocks@tSoundMemoryBlock@@UAEJXZ	claim		vtable
 0x0066eb50	function	tSoundMemoryBlock::mAreWeInUse	tSoundMemoryBlock	?mAreWeInUse@tSoundMemoryBlock@@UAEEXZ	claim		mangled
 0x0066eb60	function	tSoundMemoryBlock::mSetBlockInUse	tSoundMemoryBlock	?mSetBlockInUse@tSoundMemoryBlock@@UAEXE@Z	claim		mangled
-0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	mangled		mangled
+0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
 0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	mangled		mangled
 0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	mangled		mangled
 0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	mangled		mangled

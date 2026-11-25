@@ -17,3 +17,9 @@ void tSoundMemoryBlock::mSetBlockInUse(unsigned char inUse)
 {
     fBlockInUse = inUse;
 }
+
+// FUNCTION: STARFLEETOP 0x0066eb70
+void tSoundMemoryBlock::mLock()
+{
+    fNumberOfLocks++;
+}
