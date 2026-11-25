@@ -71,3 +71,40 @@ int fn_00424d28_class::fn_00424e2a(const tString& s)
 	}
 	return (unsigned int)-1;
 }
+
+// HYPOTHESIS: a map from string to int in the 0x14-byte tree layout (head at +4, nil node of
+// its own at +8, multi flag at +0xc, size at +0x10); this is the body that frees it.
+struct fn_00424e71_map
+{
+	struct node
+	{
+		node* left;
+		node* parent;
+		node* right;
+	};
+	class iterator
+	{
+	public:
+		iterator(node* n) : fNode(n) {}
+		node* fNode;
+	};
+	iterator fn_00424f27(iterator first, iterator last);
+	void fn_00424e71();
+
+	char fPad[4];
+	node* fHead;
+	node* fNil;
+	bool fMulti;
+	unsigned int fSize;
+};
+
+// FUNCTION: STARFLEETOP 0x00424e71
+void fn_00424e71_map::fn_00424e71()
+{
+	fn_00424f27(iterator(fHead->left), iterator(fHead));
+	operator delete(fHead);
+	fHead = 0;
+	fSize = 0;
+	operator delete(fNil);
+	fNil = 0;
+}

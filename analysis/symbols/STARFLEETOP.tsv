@@ -1202,7 +1202,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00424d37	function	fn_00424d37		?fn_00424d37@fn_00424d28_class@@QAEXABVtString@@@Z	claim		none
 0x00424d46	function	fn_00424d46		?fn_00424d46@fn_00424d28_class@@QAEPAVtString@@PBD@Z	claim		none
 0x00424e2a	function	fn_00424e2a		?fn_00424e2a@fn_00424d28_class@@QAEHABVtString@@@Z	claim		none
-0x00424e71	function	fn_00424e71					none
+0x00424e71	function	fn_00424e71		?fn_00424e71@fn_00424e71_map@@QAEXXZ	claim		none
 0x00424ea9	function	fn_00424ea9					none
 0x00424ee1	function	fn_00424ee1		??1?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAE@XZ	callers		none
 0x00424f16	function	fn_00424f16		?push_back@?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAEXABVtString@@@Z	callers		none
