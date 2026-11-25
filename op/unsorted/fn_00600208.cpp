@@ -50,3 +50,6 @@ fn_00600208_string g_00c39e20 = "BriefingMultiMeta";
 // FUNCTION: STARFLEETOP 0x0060036d
 // FUNCTION: STARFLEETOP 0x0060033a
 fn_00600208_string g_00c39e10 = "DebriefingMP";
+
+// FUNCTION: STARFLEETOP 0x0060041c
+fn_00600208_string g_00c39ea0 = "General_Error";
