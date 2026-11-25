@@ -7592,10 +7592,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005044aa	function	fn_005044aa					none
 0x005044be	function	fn_005044be					none
 0x005044d2	function	fn_005044d2					none
-0x005044da	function	tFx_ProximityDetonation::tFx_ProximityDetonation	tFx_ProximityDetonation				rtti
+0x005044da	function	tFx_ProximityDetonation::tFx_ProximityDetonation	tFx_ProximityDetonation	??0tFx_ProximityDetonation@@QAE@XZ	add		rtti
 0x00504500	function	fn_00504500					none
 0x00504af2	function	fn_00504af2	tFx_ProximityDetonation				vtable
-0x00504b65	function	fn_00504b65					none
+0x00504b65	function	fn_00504b65		?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ	claim		none
 0x00504bfa	thunk	fn_00504bfa					none
 0x00504bff	function	fn_00504bff					none
 0x00504c0a	function	fn_00504c0a					none

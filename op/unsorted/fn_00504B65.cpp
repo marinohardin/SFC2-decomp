@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00504B65.cpp
-// Functions: 0x00504b65 to 0x00504cd2, 13 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tObject_0040ce21.h"
+
+// HYPOTHESIS: a factory for tFx_ProximityDetonation (size 0x30); the class is not declared in a header yet.
+class tFx_ProximityDetonation
+{
+public:
+	tFx_ProximityDetonation();
+	char	pad00[0x30];
+};
+
+// FUNCTION: STARFLEETOP 0x00504b65
+tFx_ProximityDetonation* fn_00504b65()
+{
+	static tObject_0040ce21 marker("That was close!");
+	return new tFx_ProximityDetonation;
+}
