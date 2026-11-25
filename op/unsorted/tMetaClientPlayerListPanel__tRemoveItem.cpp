@@ -17,26 +17,22 @@ public:
 	void fn_0060432e();
 };
 
-// The SDK's inline tOptex destructor, as in fn_00543000.cpp: with its body in view the compiler
-// sets no unwind state before calling it.
-inline tOptex::~tOptex()
-{
-	if (fUse != tThreadState::kIgnoreThreadObject) {
-		if (fUseCriticalSections && fpSharedInfo != NULL)
-			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
-		if (fEvent != NULL)
-			::CloseHandle(fEvent);
-		if (fFileMapping == NULL) {
-			delete fpSharedInfo;
-		} else {
-			::UnmapViewOfFile(fpSharedInfo);
-			::CloseHandle(fFileMapping);
-		}
-	}
-}
-
 // FUNCTION: STARFLEETOP 0x006041a1
 tRemoveItem::~tRemoveItem()
 {
 	fn_0060432e();
+}
+
+// HYPOTHESIS: a sibling item class of tRemoveItem with the same layout; its cleanup member is at 0x0060435f.
+class tRemoveItem_0060435f : public tRemoveItemBase, public tOptex
+{
+public:
+	~tRemoveItem_0060435f();
+	void fn_0060435f();
+};
+
+// FUNCTION: STARFLEETOP 0x006041d0
+tRemoveItem_0060435f::~tRemoveItem_0060435f()
+{
+	fn_0060435f();
 }

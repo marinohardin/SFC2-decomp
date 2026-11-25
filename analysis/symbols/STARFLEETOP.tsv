@@ -15393,7 +15393,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603ebe	function	fn_00603ebe		?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z	claim		none
 0x00603ef0	function	fn_00603ef0		?fn_00603ef0@@YGXPAVfn_00603ef0_target@@HH@Z	add		none
 0x006041a1	function	fn_006041a1		??1tRemoveItem@@QAE@XZ	claim		none
-0x006041d0	function	fn_006041d0					none
+0x006041d0	function	fn_006041d0		??1tRemoveItem_0060435f@@QAE@XZ	claim		none
 0x006041ff	function	fn_006041ff					none
 0x0060422e	function	fn_0060422e					none
 0x00604259	function	fn_00604259					none
@@ -15403,7 +15403,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0060430d	function	tMetaClientPlayerListPanel::tRemoveItem::scalar_deleting_destructor	tMetaClientPlayerListPanel::tRemoveItem				rtti
 0x00604329	thunk	fn_00604329					none
 0x0060432e	function	fn_0060432e		?fn_0060432e@tRemoveItem@@QAEXXZ	add		none
-0x0060435f	function	fn_0060435f					none
+0x0060435f	function	fn_0060435f		?fn_0060435f@tRemoveItem_0060435f@@QAEXXZ	add		none
 0x00604390	function	fn_00604390					none
 0x006043ff	function	fn_006043ff					none
 0x0060440b	function	fn_0060440b					none
