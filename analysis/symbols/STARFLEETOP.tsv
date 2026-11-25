@@ -5197,7 +5197,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bcf52	function	fn_004bcf52	tValue<tListData>				vtable
 0x004bcf9d	function	fn_004bcf9d					none
 0x004bcfac	function	fn_004bcfac					none
-0x004bcfd3	function	fn_004bcfd3					none
+0x004bcfd3	function	fn_004bcfd3		?fn_004bcfd3@@YAPAVfn_004bcfd3_class@@XZ	add		none
 0x004bd03d	function	fn_004bd03d					none
 0x004bd088	function	fn_004bd088					none
 0x004bd0e5	function	fn_004bd0e5					none
@@ -15269,11 +15269,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
 0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
 0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog				rtti
-0x0060072f	function	fn_0060072f					none
-0x006007f9	function	fn_006007f9					none
-0x00600857	function	fn_00600857					none
-0x00600922	function	fn_00600922					none
-0x006009ed	function	fn_006009ed					none
+0x0060072f	function	fn_0060072f		?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none
+0x006007f9	function	fn_006007f9		?fn_006007f9@tMessageDialog@@QAEXH@Z	add		none
+0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
+0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
+0x006009ed	function	fn_006009ed		?fn_006009ed@tMessageDialog@@QAEXXZ	add		none
 0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
 0x00600a82	function	fn_00600a82					none
 0x00600a91	function	fn_00600a91					none
