@@ -54,6 +54,8 @@ void tChannelAttributes::mSet3DSoundCones(float anAngle, long aLevel) { t3DSound
 long tSoundChannelFormat::vfunction12() { return ((fBitsPerSample + 7) >> 3) * fNumChannels; }
 // FUNCTION: STARFLEETOP 0x00646590
 long tSoundChannelFormat::vfunction13() { return vfunction12() * fSamplesPerSec; }
+// FUNCTION: STARFLEETOP 0x006465a0
+unsigned char tSoundChannelFormat::mAreWeLooping() { unsigned char looping = (fSoundType & 4) > 0; return looping; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
