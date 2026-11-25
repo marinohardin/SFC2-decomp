@@ -17,3 +17,28 @@ void fn_00504316()
 	}
 	g_00967484 = 0;
 }
+
+// HYPOTHESIS: tFx_Probe is the 0x84-byte effect class built by its constructor at 0x0050408d.
+class tFx_Probe
+{
+public:
+	tFx_Probe();
+	char pad00[0x84];
+};
+
+// HYPOTHESIS: a one-byte registration object whose constructor (0x0040ce21) takes a string.
+class fn_0040ce21_holder
+{
+public:
+	fn_0040ce21_holder(const char* s);
+};
+
+extern const char g_00857bb0[];
+
+// FUNCTION: STARFLEETOP 0x00504339
+void fn_00504339()
+{
+	static fn_0040ce21_holder holder(g_00857bb0);
+	tFx_Probe* probe = 0;
+	probe = new tFx_Probe;
+}
