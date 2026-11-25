@@ -630,7 +630,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004109c9	function	fn_004109c9	tNetMsg_kDamage				vtable
 0x004109cf	function	fn_004109cf	tEntityAsteroid				vtable
 0x00410a46	function	tNetMsg_kKillEntity::mGetMap	tNetMsg_kKillEntity	?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00410a4d	function	tEntityWayPntMarker::tEntityWayPntMarker	tEntityWayPntMarker				rtti
+0x00410a4d	function	tEntityWayPntMarker::tEntityWayPntMarker	tEntityWayPntMarker	??0tEntityWayPntMarker@@QAE@XZ	add		rtti
 0x00410ada	function	tEntityWayPntMarker::scalar_deleting_destructor	tEntityWayPntMarker				rtti
 0x00410af6	function	fn_00410af6	tEntityWayPntMarker				vtable
 0x00410b19	function	tEntityWayPntMarker::~tEntityWayPntMarker	tEntityWayPntMarker				rtti
@@ -1139,7 +1139,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004231e9	function	fn_004231e9					none
 0x00423232	function	fn_00423232		?fn_00423232@fn_00423232_List@@QAEXPAH@Z	claim		none
 0x004232aa	function	fn_004232aa		?fn_004232aa@fn_004232aa_List@@QAEXPAH@Z	claim		none
-0x004232ff	function	fn_004232ff					none
+0x004232ff	function	fn_004232ff		?fn_004232ff@fn_004232ff_Handler@@QAEXPAUfn_004232ff_request@@@Z	claim		none
 0x00423384	function	fn_00423384					none
 0x00423402	function	fn_00423402					none
 0x00423405	function	fn_00423405					none

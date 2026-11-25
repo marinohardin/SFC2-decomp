@@ -1,3 +1,5 @@
+#include "unsorted/tEntityMgr.h"
+
 // HYPOTHESIS: a constructor of a class with three zeroed dword members; the class is unknown.
 // FUNCTION: STARFLEETOP 0x004230b9
 int* __fastcall fn_004230b9(int* p)
@@ -204,5 +206,64 @@ void fn_004232aa_List::fn_004232aa(int* node)
         fTail = node;
         node[0xf] = 0;
         fTail[0xe] = 0;
+    }
+}
+
+// HYPOTHESIS: the way point marker entity (0x1bc bytes, constructor 0x00410a4d); the class has no
+// header yet, so it is declared here with what this function uses.
+class tEntityWayPntMarker : public tEntity {
+public:
+    tEntityWayPntMarker();
+    void fn_0041089e(tPoint3* aPos);
+    char fPad[0x1bc - sizeof(tEntity)];
+};
+
+// HYPOTHESIS: the object the handler asks for the owner entity (slot 5), which carries an ID at +0x1c.
+struct fn_004232ff_owner_entity {
+    int fPad[7];
+    tID fID;
+};
+
+// HYPOTHESIS: the object held at +8 of the handler; slot 5 returns the owner entity.
+class fn_004232ff_owner {
+public:
+    virtual void vfunction0();
+    virtual void vfunction1();
+    virtual void vfunction2();
+    virtual void vfunction3();
+    virtual void vfunction4();
+    virtual fn_004232ff_owner_entity* vfunction5();
+};
+
+// HYPOTHESIS: the request: a point at +8 and an entity ID at +0x18.
+struct fn_004232ff_request {
+    int fPad[2];
+    tPoint3 fPos;
+    char fPad2[0x18 - 0x8 - sizeof(tPoint3)];
+    tID fID;
+};
+
+// HYPOTHESIS: a handler with an owner object at +8; the class is unknown.
+struct fn_004232ff_Handler {
+    int fField0;
+    int fField4;
+    fn_004232ff_owner* fOwner;
+    void fn_004232ff(fn_004232ff_request* request);
+};
+
+extern tEntityMgr gEntityMgr_008e1060;
+
+// FUNCTION: STARFLEETOP 0x004232ff
+void fn_004232ff_Handler::fn_004232ff(fn_004232ff_request* request)
+{
+    tEntityWayPntMarker* marker = new tEntityWayPntMarker;
+    if (marker != 0) {
+        tEntityMgr* mgr = &gEntityMgr_008e1060;
+        if (!mgr->fn_004235fa(fOwner->vfunction5()->fID)) {
+            marker->fProperties &= ~1;
+        }
+        marker->fID = request->fID;
+        marker->fn_0041089e(&request->fPos);
+        mgr->mAddEntity(marker);
     }
 }
