@@ -161,3 +161,13 @@ iTruth tSoundChannel::mDoWeAutoRemoveSelections()
     unsigned char autoRemove = (mGetSoundType() & 0x2000) > 0;
     return autoRemove;
 }
+
+// FUNCTION: STARFLEETOP 0x00646a80
+unsigned char tSoundChannel::mAutoRemoveChannel()
+{
+    if ((mGetSoundType() & 0x1000) > 0) {
+        return 1;
+    }
+    mSetSoundType(mGetSoundType() + 0x1000);
+    return 1;
+}
