@@ -1,6 +1,9 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tClassActiveChannelList.cpp
-// Functions: 0x006636f0 to 0x006636f0, 1 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "Tiger/taudiopriority.h"
+
+// MATCH-ONLY: not what the original said; the original's user of the class is not recovered.
+// HYPOTHESIS: a use that makes the compiler emit the inline destructor's out-of-line copy
+// (0x006636f0), which is claimed in Tiger/taudiopriority.h.
+tClassActiveChannelList *fn_006636f0_make( void )
+{
+	return new tClassActiveChannelList;
+}

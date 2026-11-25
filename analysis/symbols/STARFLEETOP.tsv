@@ -17245,8 +17245,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	claim		mangled
 0x006636b0	function	t3DListenerProfile::mGetUnitScaleInMeters	t3DListenerProfile				mangled
 0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	claim		mangled
-0x006636d0	function	tClassActiveChannelList::`scalar_deleting_destructor'	tClassActiveChannelList	??_GtClassActiveChannelList@@UAEPAXI@Z	mangled		mangled
-0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	mangled		mangled
+0x006636d0	function	tClassActiveChannelList::`scalar_deleting_destructor'	tClassActiveChannelList	??_GtClassActiveChannelList@@UAEPAXI@Z	claim		mangled
+0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	claim		mangled
 0x00663720	function	mystrequivalent		?mystrequivalent@@YAEPAD0@Z	claim		claim
 0x00663780	function	mystrequivalentN		?mystrequivalentN@@YAEPAD0J@Z	claim		claim
 0x006637f0	function	tAFPlayInfo::mGetRandomFrequency	tAFPlayInfo	?mGetRandomFrequency@tAFPlayInfo@@UAEJXZ	claim		claim

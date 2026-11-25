@@ -61,6 +61,10 @@ class tClassActiveChannelList : public tHandleList
 };
 
 // HYPOTHESIS: inline and empty, from ~tAudioFileClass (0x00661f30) storing only the base's vtable.
+// MATCH-ONLY: the empty body is the original's (both addresses compile exact from it); the
+// out-of-line copy exists because unsorted/fn_006636D0.cpp uses the class.
+// FUNCTION: STARFLEETOP 0x006636d0
+// FUNCTION: STARFLEETOP 0x006636f0
 inline tClassActiveChannelList::~tClassActiveChannelList( void )
 {
 }
