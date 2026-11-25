@@ -656,3 +656,11 @@ long tAudioFileClass::mGetMyHandle( void )
 {
 	return f24;
 }
+
+// HYPOTHESIS: the header names this slot vfunction52 (the symbol table says vfunction53);
+// field_0x28 is the channel's status.
+// FUNCTION: STARFLEETOP 0x00663640
+eSoundChannelStatus tSoundChannel::vfunction52()
+{
+	return (eSoundChannelStatus)field_0x28;
+}
