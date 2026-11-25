@@ -12778,7 +12778,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b352f	function	nAsyncMapProcedures::tRequestTerrainAtHex::scalar_deleting_destructor	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b354b	function	nAsyncMapProcedures::tRequestTerrainAtHex::~tRequestTerrainAtHex	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b3556	function	fn_005b3556					none
-0x005b3701	function	fn_005b3701					none
+0x005b3701	function	fn_005b3701		??0tMemberCallback_fn_005c15f3@@QAE@PAX@Z	add		none
 0x005b3825	function	nAsyncMapProcedures::tTakeCensus::scalar_deleting_destructor	nAsyncMapProcedures::tTakeCensus				rtti
 0x005b3841	function	nAsyncMapProcedures::tTakeCensus::~tTakeCensus	nAsyncMapProcedures::tTakeCensus				rtti
 0x005b38c4	function	fn_005b38c4					none
@@ -13060,54 +13060,54 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c008d	function	fn_005c008d					none
 0x005c0233	function	fn_005c0233					none
 0x005c03d9	function	fn_005c03d9					none
-0x005c057f	function	fn_005c057f					none
-0x005c0725	function	fn_005c0725					none
-0x005c087e	function	fn_005c087e					none
+0x005c057f	function	fn_005c057f		?fn_005c057f@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
+0x005c0725	function	fn_005c0725		?fn_005c0725@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
+0x005c087e	function	fn_005c087e		?fn_005c087e@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
 0x005c0a24	function	fn_005c0a24					none
-0x005c0b85	function	fn_005c0b85					none
-0x005c0b91	function	fn_005c0b91					none
-0x005c0b9d	function	fn_005c0b9d					none
+0x005c0b85	function	fn_005c0b85		?fn_005c0b85@@YAXXZ	claim		none
+0x005c0b91	function	fn_005c0b91		?fn_005c0b91@@YAXXZ	claim		none
+0x005c0b9d	function	fn_005c0b9d		?fn_005c0b9d@@YAXXZ	claim		none
 0x005c0ba9	function	tMapRelayS::tMapRelayS	tMapRelayS				rtti
 0x005c0c2e	function	tMapRelayS::scalar_deleting_destructor	tMapRelayS				rtti
 0x005c0c4a	function	tMapRelayS::~tMapRelayS	tMapRelayS				rtti
 0x005c0ce3	function	fn_005c0ce3	tMapRelayS				vtable
 0x005c1185	function	fn_005c1185	tMapRelayS				vtable
-0x005c11cb	function	fn_005c11cb					none
-0x005c120e	function	fn_005c120e					none
-0x005c1255	function	fn_005c1255					none
-0x005c1298	function	fn_005c1298					none
-0x005c12db	function	fn_005c12db					none
-0x005c131e	function	fn_005c131e					none
+0x005c11cb	function	fn_005c11cb		?fn_005c11cb@tMapRelayS@@QAEXPAPAVtCreateBaseAIs@nAsyncMapProcedures@@@Z	claim		none
+0x005c120e	function	fn_005c120e		?fn_005c120e@tMapRelayS@@QAEXPAPAVtMemberCallback_tInitialize@@@Z	claim		none
+0x005c1255	function	fn_005c1255		?fn_005c1255@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapSize@@@Z	claim		none
+0x005c1298	function	fn_005c1298		?fn_005c1298@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestMapData@@@Z	claim		none
+0x005c12db	function	fn_005c12db		?fn_005c12db@tMapRelayS@@QAEXPAPAVtMemberCallback_tProcessMap@@@Z	claim		none
+0x005c131e	function	fn_005c131e		?fn_005c131e@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestTerrainAtHex@@@Z	claim		none
 0x005c1361	function	fn_005c1361					none
 0x005c136c	function	fn_005c136c					none
-0x005c13a2	function	fn_005c13a2					none
-0x005c13e8	function	fn_005c13e8					none
-0x005c142b	function	fn_005c142b					none
-0x005c1472	function	fn_005c1472					none
-0x005c14b5	function	fn_005c14b5					none
-0x005c14f8	function	fn_005c14f8					none
-0x005c1531	function	fn_005c1531					none
-0x005c1574	function	fn_005c1574					none
-0x005c15ba	function	fn_005c15ba					none
-0x005c15f3	function	fn_005c15f3					none
-0x005c1639	function	fn_005c1639					none
-0x005c167f	function	fn_005c167f					none
-0x005c16c2	function	fn_005c16c2					none
-0x005c1705	function	fn_005c1705					none
-0x005c1748	function	fn_005c1748					none
-0x005c1781	function	fn_005c1781					none
-0x005c17c7	function	fn_005c17c7					none
-0x005c180a	function	fn_005c180a					none
-0x005c1851	function	fn_005c1851					none
-0x005c1894	function	fn_005c1894					none
-0x005c18d7	function	fn_005c18d7					none
-0x005c191b	function	fn_005c191b					none
-0x005c195f	function	fn_005c195f					none
-0x005c19a3	function	fn_005c19a3					none
+0x005c13a2	function	fn_005c13a2		?fn_005c13a2@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAccepted@@@Z	claim		none
+0x005c13e8	function	fn_005c13e8		?fn_005c13e8@tMapRelayS@@QAEXPAPAVtMemberCallback_tCharacterLoggedOn@@@Z	claim		none
+0x005c142b	function	fn_005c142b		?fn_005c142b@tMapRelayS@@QAEXPAPAVtMemberCallback_tTurnBreak@@@Z	claim		none
+0x005c1472	function	fn_005c1472		?fn_005c1472@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetStartLocation@@@Z	claim		none
+0x005c14b5	function	fn_005c14b5		?fn_005c14b5@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHex@@@Z	claim		none
+0x005c14f8	function	fn_005c14f8		?fn_005c14f8@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHexForUpdate@@@Z	claim		none
+0x005c1531	function	fn_005c1531		?fn_005c1531@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdateHex@@@Z	claim		none
+0x005c1574	function	fn_005c1574		?fn_005c1574@tMapRelayS@@QAEXPAPAVtMemberCallback_tChangeHexAttribute@@@Z	claim		none
+0x005c15ba	function	fn_005c15ba		?fn_005c15ba@tMapRelayS@@QAEXPAPAVtMemberCallback_tBaseTransitionVictoryPointAdjustment@@@Z	claim		none
+0x005c15f3	function	fn_005c15f3		?fn_005c15f3@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c15f3@@@Z	claim		none
+0x005c1639	function	fn_005c1639		?fn_005c1639@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAIs@@@Z	claim		none
+0x005c167f	function	fn_005c167f		?fn_005c167f@tMapRelayS@@QAEXPAPAVtMemberCallback_tEconomicStatusRequest@@@Z	claim		none
+0x005c16c2	function	fn_005c16c2		?fn_005c16c2@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTension@@@Z	claim		none
+0x005c1705	function	fn_005c1705		?fn_005c1705@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrix@@@Z	claim		none
+0x005c1748	function	fn_005c1748		?fn_005c1748@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrixForUpdate@@@Z	claim		none
+0x005c1781	function	fn_005c1781		?fn_005c1781@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdatePoliticalTensionMatrix@@@Z	claim		none
+0x005c17c7	function	fn_005c17c7		?fn_005c17c7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c17c7@@@Z	claim		none
+0x005c180a	function	fn_005c180a		?fn_005c180a@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c180a@@@Z	claim		none
+0x005c1851	function	fn_005c1851		?fn_005c1851@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1851@@@Z	claim		none
+0x005c1894	function	fn_005c1894		?fn_005c1894@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1894@@@Z	claim		none
+0x005c18d7	function	fn_005c18d7		?fn_005c18d7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c18d7@@@Z	claim		none
+0x005c191b	function	fn_005c191b		?fn_005c191b@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c191b@@@Z	claim		none
+0x005c195f	function	fn_005c195f		?fn_005c195f@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c195f@@@Z	claim		none
+0x005c19a3	function	fn_005c19a3		?fn_005c19a3@tMapRelayS@@QAEPAXXZ	claim		none
 0x005c19e7	function	tMapSettings::tMapSettings	tMapSettings				rtti
 0x005c1fc9	function	tMapSettings::scalar_deleting_destructor	tMapSettings				rtti
 0x005c1fe5	function	tMapSettings::~tMapSettings	tMapSettings				rtti
-0x005c2394	function	fn_005c2394					none
+0x005c2394	function	fn_005c2394		?FUN_005c2394@fn_005c427c_Owner@@QAEXXZ	claim		none
 0x005c23dc	function	fn_005c23dc					none
 0x005c427c	function	fn_005c427c		?FUN_005c427c@fn_005c427c_Owner@@QAEXXZ	claim		none
 0x005c4290	function	fn_005c4290		?FUN_005c4290@fn_005c4290_Holder@@QAEHXZ	claim		none
@@ -13203,19 +13203,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c4f18	function	fn_005c4f18		?FUN_005c4f18@fn_005c478f_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c4f86	function	fn_005c4f86		?FUN_005c4f86@fn_005c478f_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c4ff4	function	fn_005c4ff4		?FUN_005c4ff4@fn_005c478f_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
-0x005c5062	function	fn_005c5062					none
-0x005c50d0	function	fn_005c50d0					none
-0x005c513e	function	fn_005c513e					none
-0x005c51ac	function	fn_005c51ac					none
-0x005c521a	function	fn_005c521a					none
-0x005c5288	function	fn_005c5288					none
-0x005c52f6	function	fn_005c52f6					none
-0x005c5364	function	fn_005c5364					none
-0x005c53d2	function	fn_005c53d2					none
+0x005c5062	function	fn_005c5062		?FUN_005c5062@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c50d0	function	fn_005c50d0		?fn_005c50d0@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c513e	function	fn_005c513e		?fn_005c513e@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c51ac	function	fn_005c51ac		?fn_005c51ac@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c521a	function	fn_005c521a		?fn_005c521a@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c5288	function	fn_005c5288		?fn_005c5288@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c52f6	function	fn_005c52f6		?fn_005c52f6@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c5364	function	fn_005c5364		?fn_005c5364@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c53d2	function	fn_005c53d2		?fn_005c53d2@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c5440	function	fn_005c5440					none
-0x005c54ae	function	fn_005c54ae					none
-0x005c551c	function	fn_005c551c					none
-0x005c558a	function	fn_005c558a					none
+0x005c54ae	function	fn_005c54ae		?fn_005c54ae@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c551c	function	fn_005c551c		?fn_005c551c@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
+0x005c558a	function	fn_005c558a		?fn_005c558a@fn_005c5062_Holder@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	claim		none
 0x005c55f8	function	fn_005c55f8					none
 0x005c5618	function	fn_005c5618					none
 0x005c5638	function	fn_005c5638					none
