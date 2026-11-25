@@ -98,6 +98,14 @@ public:
 	float g;
 	float b;
 	void Set(float nr, float ng, float nb);
+	// MATCH-ONLY: the original copies the three floats as dwords
+	fn_00426141_Color& operator=(const tPoint3& p)
+	{
+		*(int*)&r = *(const int*)&p.x;
+		*(int*)&g = *(const int*)&p.y;
+		*(int*)&b = *(const int*)&p.z;
+		return *this;
+	}
 };
 
 inline void fn_00426141_Color::Set(float nr, float ng, float nb)
@@ -335,9 +343,6 @@ void fn_00426141_Class::fn_00426886(unsigned int mask)
 	q.x = g_00c6c004[mask & 0x1fff] + pos.x;
 	q.y = g_00c6a004[mask & 0x1fff] + pos.y;
 	q.z = pos.z;
-	tPoint3 d = q - pos;
-	m50[index].r = d.x;
-	m50[index].g = d.y;
-	m50[index].b = d.z;
+	m50[index] = q - pos;
 	m98[index] = 1;
 }
