@@ -108,3 +108,39 @@ void fn_00424e71_map::fn_00424e71()
 	operator delete(fNil);
 	fNil = 0;
 }
+
+// HYPOTHESIS: the same tree layout as fn_00424e71_map, keyed by int with a string value; this frees it.
+struct fn_00424ea9_map
+{
+	struct node
+	{
+		node* left;
+		node* parent;
+		node* right;
+	};
+	class iterator
+	{
+	public:
+		iterator(node* n) : fNode(n) {}
+		node* fNode;
+	};
+	iterator fn_00424f9b(iterator first, iterator last);
+	void fn_00424ea9();
+
+	char fPad[4];
+	node* fHead;
+	node* fNil;
+	bool fMulti;
+	unsigned int fSize;
+};
+
+// FUNCTION: STARFLEETOP 0x00424ea9
+void fn_00424ea9_map::fn_00424ea9()
+{
+	fn_00424f9b(iterator(fHead->left), iterator(fHead));
+	operator delete(fHead);
+	fHead = 0;
+	fSize = 0;
+	operator delete(fNil);
+	fNil = 0;
+}
