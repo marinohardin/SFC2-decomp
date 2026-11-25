@@ -245,6 +245,35 @@ def line_disagreement(fn, unit, listing, symbol, recorded=None):
     return line if isinstance(line, str) and line != symbol else None
 
 
+_unit_objects = {}
+_unit_lock = threading.Lock()
+
+
+def unit_object(path):
+    """(parsed object, bytes for objdiff or None) of a compiled unit, read once per object file:
+    the bytes are None unless the object holds a relocation objdiff cannot load (SECREL), else
+    the object with those records rewritten (coff.rewrite_reloc_types)."""
+    st = os.stat(path)
+    key = (path, st.st_size, st.st_mtime_ns)
+    with _unit_lock:
+        hit = _unit_objects.get(key)
+    if hit is None:
+        raw = open(path, 'rb').read()
+        obj = coff.CoffObject(raw)
+        fixed, n = coff.rewrite_reloc_types(raw)
+        hit = (obj, fixed if n else None)
+        with _unit_lock:
+            _unit_objects[key] = hit
+    return hit
+
+
+def function_secrel(obj, symbol):
+    """How many SECREL relocation records belong to the function `symbol` of `obj`."""
+    sec, off, size = obj.function(symbol)
+    return sum(1 for r_off, _, typ in sec.relocs
+               if typ == coff.REL_SECREL and off <= r_off < off + size)
+
+
 def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
                    table_symbol=None):
     """Score one annotated function against an already compiled unit; `recorded` is its
@@ -252,7 +281,7 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     symbol the committed table records for a claim (claim_symbol). Returns a result dict."""
     res = dict(address=f'0x{fn.address:08x}', name=fn.name, unit=unit['rel'], score=0.0,
                exact=False, symbol=None, size=fn.size, error=None)
-    obj = coff.CoffObject(open(build['obj'], 'rb').read())
+    obj, fixed = unit_object(build['obj'])
     listing = open(build['listing'], encoding='latin1').read() if build['listing'] else ''
     try:
         sym, how = claim_symbol(fn, unit, obj, listing, table_symbol, symbol_hint, recorded)
@@ -293,7 +322,13 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     t = target.build(fn.address, fn.size, obj, sym, exe, index)
     tpath = os.path.join(fdir, 'target.obj')
     open(tpath, 'wb').write(t['object'])
-    left, right, err = objdiff(tpath, build['obj'], sym, fdir)
+    # objdiff cannot load a SECREL relocation: it is given copies of both objects in which those
+    # records read as DIR32 (coff.rewrite_reloc_types); the strict check above still judges them.
+    bpath = build['obj']
+    if fixed is not None:
+        bpath = os.path.join(fdir, 'base.obj')
+        open(bpath, 'wb').write(fixed)
+    left, right, err = objdiff(tpath, bpath, sym, fdir)
     if left is None:
         res['error'] = f'objdiff failed: {err}'
         return res
@@ -301,7 +336,8 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     res.update(score=round(pct, 3), exact=bool(pct >= 100.0 and t['strict']),
                size=len(t['target']), rebuilt_size=len(t['base']),
                relocs=[r.as_dict() for r in t['relocs']], strict=t['strict'],
-               first_diff=t['first_diff'], side_by_side=os.path.join(fdir, 'diff.txt'))
+               first_diff=t['first_diff'], objdiff_rewrites=t['rewritten'] + function_secrel(obj, sym),
+               side_by_side=os.path.join(fdir, 'diff.txt'))
     write_side_by_side(left, right, res['side_by_side'])
     res['diff_rows'], res['diff_count'] = diff_rows(left, right)
     if pct >= 100.0 and not t['strict']:
@@ -1102,6 +1138,10 @@ def _report_function(rep, data, fn, res):
     else:
         was = f'; matched_set.json has {old["score"]:.2f}%' if old else '; not in matched_set.json'
         rep.add('OK', f'{head} {detail}{was}')
+    secrel = [r for r in res.get('relocs', []) if r['type'] == 'SECREL']
+    if secrel:
+        rep.add('INFO', f'  {len(secrel)} thread-local (SECREL) relocations: checked by the '
+                'harness against the exe TLS directory; objdiff saw them as DIR32')
     for r in bad_relocs[:6]:
         addr = r['exe_address'] or '?'
         rep.add('ERROR', f'  relocation +0x{r["offset"]:x} {r["symbol"]}: exe uses {addr}, '

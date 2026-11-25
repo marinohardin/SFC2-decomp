@@ -184,6 +184,42 @@ def write_object(code, func_name, relocs, local_symbols=(), data=()):
     return bytes(out)
 
 
+# objdiff cannot load a type 0x0B relocation (it reports an "unsupported x86 implicit relocation"),
+# so the copy of an object it is given has each one rewritten as a plain 32-bit address
+# (REL_DIR32). Both sides get the same rewrite and no byte of section data changes; the harness's
+# own strict check (target.py) is what judges a SECREL field.
+OBJDIFF_REWRITE = {REL_SECREL: REL_DIR32}
+
+
+def rewrite_reloc_types(raw, mapping=None):
+    """(object bytes, number of relocation records changed): `raw` with each relocation type in
+    `mapping` (default OBJDIFF_REWRITE) replaced by the one it maps to. Only the 2-byte type of a
+    record changes; sizes, offsets, symbols and section data stay as they were."""
+    mapping = OBJDIFF_REWRITE if mapping is None else mapping
+    if len(raw) < 20:
+        raise CoffError('file too short for a COFF header')
+    nsec = struct.unpack_from('<H', raw, 2)[0]
+    opt = struct.unpack_from('<H', raw, 16)[0]
+    out, changed = bytearray(raw), 0
+    for i in range(nsec):
+        h = 20 + opt + i * 40
+        if h + 40 > len(raw):
+            raise CoffError('truncated section table')
+        reloff = struct.unpack_from('<I', raw, h + 24)[0]
+        nrel = struct.unpack_from('<H', raw, h + 32)[0]
+        if struct.unpack_from('<I', raw, h + 36)[0] & 0x01000000 and nrel == 0xFFFF:
+            raise CoffError('extended relocation count (IMAGE_SCN_LNK_NRELOC_OVFL) not supported')
+        if nrel and reloff + nrel * 10 > len(raw):
+            raise CoffError('truncated relocation table')
+        for j in range(nrel):
+            at = reloff + j * 10 + 8
+            typ = struct.unpack_from('<H', raw, at)[0]
+            if typ in mapping:
+                struct.pack_into('<H', out, at, mapping[typ])
+                changed += 1
+    return bytes(out), changed
+
+
 class PeImage:
     """Read bytes of a PE image by virtual address."""
 
@@ -202,6 +238,21 @@ class PeImage:
             h = opt + optsize + i * 40
             name, vsize, va, rsize, roff = struct.unpack_from('<8sIIII', raw, h)
             self.sections.append((name.rstrip(b'\0').decode('latin1'), va, vsize, roff, rsize))
+        # The thread-local storage directory (data directory 9). `tls_start` is the address its
+        # raw data starts at, which a section-relative (type 0x0B) field is counted from, and
+        # `tls_end` where the block ends (raw data and zero fill); None when the image has no
+        # such directory.
+        self.tls_start = self.tls_end = None
+        if optsize >= 96 + 10 * 8 and struct.unpack_from('<I', raw, opt + 92)[0] > 9:
+            tls_rva, tls_size = struct.unpack_from('<II', raw, opt + 96 + 9 * 8)
+            if tls_rva and tls_size >= 24:
+                try:
+                    # StartAddressOfRawData, EndAddressOfRawData, then SizeOfZeroFill at +16
+                    start, end, _, _, fill = struct.unpack(
+                        '<5I', self.read(self.image_base + tls_rva, 20))
+                    self.tls_start, self.tls_end = start, end + fill
+                except CoffError:
+                    pass
 
     def read(self, address, size):
         rva = address - self.image_base
