@@ -190,7 +190,11 @@ unit (inline in the header, claimed there), and never an out-of-line variant beh
   Equal copies are fine.
 
 Known debt is listed in `analysis/results/object_baseline.tsv` (`path<TAB>unit<TAB>symbol` and
-`copy<TAB>-<TAB>symbol` rows); a row that no longer occurs is a `WARN` asking for its removal, so the
+`copy<TAB>-<TAB>symbol` rows; rows are matched on the symbol, never on message text). A `path` row names
+the *function* that uses the string: the string's own mangled symbol holds the start of the path and is
+not stable across machines, so a build path that no function refers to is always an error, naming the
+object, and cannot be baselined. COMDAT selection kinds are not compared here (`comdat_kind_conflicts`
+does that); only code bytes and relocation targets. The checkout root is matched on whole path segments; a row that no longer occurs is a `WARN` asking for its removal, so the
 list only shrinks. Only the units a claim builds are read: an unclaimed unit's object is not.
 
 **Units that read a changed file.** A run for some functions (not `--all`) builds their units,
