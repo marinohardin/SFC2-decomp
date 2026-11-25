@@ -1,6 +1,14 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005053EC.cpp
-// Functions: 0x005053ec to 0x00505552, 13 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: tFx_Pulsar has no shared header yet; declared here pending a HEADER REQUEST.
+class tFx_Pulsar
+{
+public:
+	tFx_Pulsar();
+
+	char	pad00[0x30];
+};
+
+// FUNCTION: STARFLEETOP 0x005053ec
+void fn_005053ec()
+{
+	tFx_Pulsar* p = new tFx_Pulsar();
+}

@@ -7613,7 +7613,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00505133	function	tFx_Pulsar::tFx_Pulsar	tFx_Pulsar				rtti
 0x0050517b	function	fn_0050517b	tFx_Pulsar				vtable
 0x00505182	function	fn_00505182	tFx_Pulsar				vtable
-0x005053ec	function	fn_005053ec					none
+0x005053ec	function	fn_005053ec		?fn_005053ec@@YAXXZ	claim		none
 0x0050546a	function	fn_0050546a					none
 0x0050547e	function	fn_0050547e					none
 0x00505492	function	fn_00505492					none
