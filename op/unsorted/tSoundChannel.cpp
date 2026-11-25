@@ -17,3 +17,9 @@ long tSoundChannel::mGetSoundType()
 {
     return field_0x10.vfunction11();
 }
+
+// FUNCTION: STARFLEETOP 0x006468a0
+void tSoundChannel::mSetSoundType(long type)
+{
+    field_0x10.vfunction10(type);
+}
