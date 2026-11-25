@@ -24,6 +24,7 @@ struct fn_00425066_tree
 	};
 	void fn_00425066(node* n);
 	void fn_0042509e();
+	void fn_004250ee(node* n);
 
 	char fPad[4];
 	node* fHead;
@@ -63,4 +64,14 @@ void fn_00425066_tree::fn_0042509e()
 	h->left = h;
 	fHead->right = fHead;
 	fSize = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004250ee
+void fn_00425066_tree::fn_004250ee(node* n)
+{
+	for (node* y = n; n != fNil; n = y) {
+		fn_004250ee(y->right);
+		y = y->left;
+		operator delete(n);
+	}
 }
