@@ -17241,7 +17241,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	claim		mangled
 0x00663640	function	tSoundChannel::mGetChannelStatus	tSoundChannel	?vfunction52@tSoundChannel@@UAE?AW4eSoundChannelStatus@@XZ	claim		sdk
 0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?vfunction15@t3DSoundProfile@@UAENXZ	claim		mangled
-0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	mangled		mangled
+0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	claim		mangled
 0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	mangled		mangled
 0x006636b0	function	t3DListenerProfile::mGetUnitScaleInMeters	t3DListenerProfile				mangled
 0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	mangled		mangled
