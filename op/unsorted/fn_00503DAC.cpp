@@ -99,3 +99,48 @@ void fn_00503fd6(char* p)
 		g_00967484 = p;
 	}
 }
+
+// HYPOTHESIS: tProbeHead has no header yet; the base is assumed to be tFxCell_Base.
+// HYPOTHESIS: the base constructor clears +8 before setting the byte at +4.
+class tProbeHeadBase
+{
+public:
+	tProbeHeadBase() { m08 = 0; m04 = 1; }
+	virtual void vfunction0();
+	char m04;
+	float m08;
+};
+
+class tProbeHead : public tProbeHeadBase
+{
+public:
+	tProbeHead(void* a);
+	float m0c;
+	float m10;
+	float m14;
+	float m18;
+	float m1c;
+	float m20;
+	float m24;
+	float m28;
+	float m2c;
+	float m30;
+	char pad34[8];
+	void* m3c;
+};
+
+// FUNCTION: STARFLEETOP 0x00503fed
+tProbeHead::tProbeHead(void* a)
+{
+	m0c = 1.0f;
+	m14 = 0.53f;
+	m18 = 0.9f;
+	m10 = 1.0f;
+	m1c = 0.2f;
+	m20 = 0.6f;
+	m3c = a;
+	m24 = fn_004baeb1(64.0f);
+	m28 = fn_004baeb1(125.0f);
+	m2c = fn_004baeb1(127.0f);
+	m30 = fn_004baeb1(64.0f);
+}
