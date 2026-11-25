@@ -17,7 +17,28 @@ template <class T> class tStandardMemoryArray;
 class tAudioFileInfoPart : public tPart
 {
 public:
-    GenAbstractBinding(tAudioFileInfoPart);
+    // GenAbstractBinding(tAudioFileInfoPart) written out: Test_tAudioFileInfoPart has its own address in the exe.
+    static tAudioFileInfoPart *Search_tAudioFileInfoPart( void )
+    {
+        static tAudioFileInfoPart *partCachePtr = (tAudioFileInfoPart*) NULL;
+        if (partCachePtr) return partCachePtr;
+        else
+        {
+            for( int idx = 0; idx<tPart::fStaticPartActivateCount; idx++)
+            {
+                tAudioFileInfoPart *bindResult = dynamic_cast< tAudioFileInfoPart *>(tPart::fStaticPartActivateList[idx] );
+                if (bindResult)
+                {
+                    tPart::mAddToPartCachePtrList( (tPart**)&partCachePtr );
+                    partCachePtr = bindResult;
+                    return bindResult;
+                }
+            }
+            throw tPartBindingException();
+            return (kFalse);
+        }
+    };
+    static iTruth Test_tAudioFileInfoPart( void );
 
     tAudioFileInfoPart();
     virtual ~tAudioFileInfoPart();
