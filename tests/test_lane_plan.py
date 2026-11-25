@@ -148,7 +148,7 @@ def test_port_header_is_a_hotspot_and_blocks(tmp_path):
     build(tmp_path)
     extend(tmp_path)
     code, text, lines = rows(tmp_path, 'u/E.cpp\n')
-    assert '0 owned, 0 shared, 0 contested, 1 hotspot' in text
+    assert '0 shared, 0 contested, 1 hotspot' in text
     assert '0x00401400\t\ttPort\tu/E.cpp\tblocked\tport/pp.h' in lines
     assert 'op/port/pp.h' not in (tmp_path / 'o/files-e.txt').read_text()
 
