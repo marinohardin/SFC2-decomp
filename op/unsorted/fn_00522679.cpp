@@ -1,4 +1,5 @@
 #include "unsorted/fn_0090bed4_Object.h"
+#include "unsorted/tIndividualShipSystem.h"
 
 // FUNCTION: STARFLEETOP 0x00522679
 void __fastcall fn_00522679(char* self)
@@ -77,5 +78,43 @@ void __fastcall fn_005227c1(char* self)
 			} while (i < *(int*)(self + 0x210));
 		}
 	}
+}
+
+// HYPOTHESIS: the object 0x00523543 returns for a fleet ID (tObject_0051c7af in fn_00523000.cpp,
+// which has no header yet).
+class tObject_0051c668 {
+public:
+	void fn_0051c668(int param_1);
+};
+
+// HYPOTHESIS: an object in the table of 0x4000 object pointers indexed by ID, with a virtual
+// at slot 4 that takes no arguments.
+class tObject_008e1090 {
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+};
+
+extern tObject_008e1090 *g_008e1090[0x4000];
+
+// FUNCTION: STARFLEETOP 0x005229b9
+// HYPOTHESIS: the header declares this member as void; the original returns 0 in al, so it stands
+// as a fastcall until the header's return type is changed.
+char __fastcall fn_005229b9(fn_0090bed4_Object *self, int, tEntity *pEntity)
+{
+	vfunction33_result *pOwner = (vfunction33_result *)pEntity;
+	tObject_0051c668 *pObject = (tObject_0051c668 *)self->fn_00523543(pOwner->field_60);
+	if (pObject != 0) {
+		int value = pOwner->fn_00410223();
+		pObject->fn_0051c668(value);
+	}
+	int id = pOwner->fn_00410231();
+	tObject_008e1090 *p = (id < 0 || id >= 0x4000) ? 0 : g_008e1090[id];
+	if (p != 0)
+		p->vfunction4();
+	return 0;
 }
 

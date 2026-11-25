@@ -591,7 +591,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004101e4	function	fn_004101e4	tEntity	?vfunction16@tEntity@@UAEXXZ	claim		none
 0x0041020c	function	fn_0041020c	tEntity	?vfunction17@tEntity@@UAEXXZ	claim		none
 0x0041021f	function	fn_0041021f	vfunction33_result	?fn_0041021f@vfunction33_result@@QAEDXZ	claim		none
-0x00410223	function	fn_00410223					none
+0x00410223	function	fn_00410223		?fn_00410223@vfunction33_result@@QAEHXZ	add		none
 0x00410227	function	fn_00410227	vfunction33_result	?fn_00410227@vfunction33_result@@QAEXH@Z	claim		none
 0x00410231	function	fn_00410231	vfunction33_result	?fn_00410231@vfunction33_result@@QAEHXZ	claim		none
 0x00410239	function	fn_00410239	vfunction33_result	?fn_00410239@vfunction33_result@@QAEXH@Z	claim		none
@@ -8363,7 +8363,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005227c1	function	fn_005227c1		?fn_005227c1@@YIXPAD@Z	claim		none
 0x0052280a	function	fn_0052280a					none
 0x0052294d	function	fn_0052294d		?fn_0052294d@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@PAUvfunction33_result@@@Z	claim		none
-0x005229b9	function	fn_005229b9					none
+0x005229b9	function	fn_005229b9		?fn_005229b9@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
 0x00522a09	function	fn_00522a09					none
 0x00522b29	function	fn_00522b29					none
 0x00522b94	function	fn_00522b94					none
