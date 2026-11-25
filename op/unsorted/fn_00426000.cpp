@@ -1,3 +1,5 @@
+#include "Tiger/tvectormath.h"
+
 // HYPOTHESIS: the insertion sort of the standard library's sort, instantiated for unsigned int.
 // FUNCTION: STARFLEETOP 0x004260a4
 void fn_004260a4(unsigned int* first, unsigned int* last)
@@ -103,6 +105,24 @@ inline void fn_00426141_Color::Set(float nr, float ng, float nb)
 	b = nb;
 }
 
+// HYPOTHESIS: a vertex: position, normal, then four colour bytes at +0x20 (layout from the accesses
+// in 0x00426469 only).
+#pragma pack(push)
+#pragma pack(1)
+struct fn_00426469_Vertex
+{
+	tPoint3 pos;
+	tPoint3 normal;
+	char pad18[8];
+	unsigned char b;
+	unsigned char g;
+	unsigned char r;
+	unsigned char a;
+};
+#pragma pack(pop)
+
+float fn_0042653f(float);
+
 // HYPOTHESIS: the class whose constructor is at 0x00426141 (name and size unknown).
 class fn_00426141_Class
 {
@@ -110,6 +130,7 @@ public:
 	fn_00426141_Class(fn_00426141_Game* game);
 	fn_00426141_Cell* fn_0042636b(fn_00426141_Cell* out, int i, int j);
 	void fn_0042630b();
+	void fn_00426469(int index, tPoint3* p, fn_00426469_Vertex* v);
 
 	fn_00426141_Game* m00;
 	float m04[6];
@@ -256,4 +277,18 @@ fn_00426141_Cell& fn_00426141_Cell::fn_0042642c(const fn_00426141_Cell& other)
 	m00[7] = other.m00[7];
 	m00[8] = other.m00[8];
 	return *this;
+}
+
+// FUNCTION: STARFLEETOP 0x00426469
+void fn_00426141_Class::fn_00426469(int index, tPoint3* p, fn_00426469_Vertex* v)
+{
+	if (p)
+	{
+		tPoint3 d = (*p * (ma0 + 1.0f)) - v->pos;
+		float f = (v->normal * d) * 1.5f;
+		v->r = (unsigned char)(fn_0042653f(f * ma4.r) * m04[index] * 255.0f);
+		v->g = (unsigned char)(fn_0042653f(f * ma4.g) * m04[index] * 255.0f);
+		v->b = (unsigned char)(fn_0042653f(f * ma4.b) * m04[index] * 255.0f);
+		v->a = (unsigned char)(m04[index] * 255.0f);
+	}
 }

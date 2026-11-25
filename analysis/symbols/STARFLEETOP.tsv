@@ -1247,8 +1247,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042630b	function	fn_0042630b		?fn_0042630b@fn_00426141_Class@@QAEXXZ	claim		none
 0x0042636b	function	fn_0042636b		?fn_0042636b@fn_00426141_Class@@QAEPAVfn_00426141_Cell@@PAV2@HH@Z	claim		none
 0x0042642c	function	fn_0042642c		?fn_0042642c@fn_00426141_Cell@@QAEAAV1@ABV1@@Z	claim		none
-0x00426469	function	fn_00426469					none
-0x0042653f	function	fn_0042653f					none
+0x00426469	function	fn_00426469		?fn_00426469@fn_00426141_Class@@QAEXHPAUtPoint3@@PAUfn_00426469_Vertex@@@Z	claim		none
+0x0042653f	function	fn_0042653f		?fn_0042653f@@YAMM@Z	add		none
 0x00426563	function	fn_00426563					none
 0x00426886	function	fn_00426886					none
 0x00426988	function	fn_00426988					none
