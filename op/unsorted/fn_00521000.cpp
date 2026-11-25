@@ -173,3 +173,10 @@ void fn_005218f9_owner::fn_005218f9(tAIEntryTable* t, fn_005218f9_node* n)
 		n = n->m_next;
 	} while (n != 0);
 }
+
+// HYPOTHESIS: the argument's class is unknown; only the two floats at +0x14 and +0x18 are known
+// FUNCTION: STARFLEETOP 0x00521965
+bool __stdcall fn_00521965(const float* p)
+{
+	return p[5] <= p[6];
+}
