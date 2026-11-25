@@ -165,11 +165,44 @@ def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
                                        '0x00402000': ('?kept@@YAXXZ', 'b.cpp'),
                                        '0x00404000': ('?unclaimed@@YAXXZ', 'd.cpp')}
     rep.failed = False      # a clean run: a claim without a result is no longer claimed
-    verify.write_symbol_table(rep, out)
+    (tmp_path / 'src').mkdir()
+    verify.write_symbol_table(rep, out, str(tmp_path / 'src'))
     assert '0x00404000' not in symtab.load_claims(out)
+    assert symtab.build_is_current(str(tmp_path), str(tmp_path / 'src'))      # a complete run: identity written
+
+
+def test_a_failed_run_leaves_a_build_that_belongs_to_no_tree(tmp_path):
+    out = str(tmp_path / 'symbols.tsv')
+    (tmp_path / 'src').mkdir()
+    symtab.write_identity(str(tmp_path), str(tmp_path / 'src'))
+    rep = verify.Report()
+    rep.failed = True
+    rep.results = [dict(address='0x00401000', symbol='?new@@YAXXZ', unit='a.cpp')]
+    verify.write_symbol_table(rep, out, str(tmp_path / 'src'))
+    assert not symtab.build_is_current(str(tmp_path), str(tmp_path / 'src'))
 
 
 def test_a_table_row_whose_claim_is_gone_is_ignored():
     table = {'0x00401200': (STANDIN, 'b.cpp')}
     assert len(checked([partial(exact_caller())], table=table).standins) == 1
     assert checked([partial(exact_caller())], data=recorded(), table=table).standins == []
+
+
+def test_the_identity_is_the_tree_taken_before_the_run_not_after_it(tmp_path):
+    src = tmp_path / 'src'
+    src.mkdir()
+    (src / 'a.cpp').write_text('one')
+    before = symtab.tree_id(str(src))
+    (src / 'a.cpp').write_text('two')                   # edited while --all was running
+    rep = verify.Report()
+    rep.results = [dict(address='0x00401000', symbol='?f@@YAXXZ', unit='a.cpp')]
+    verify.write_symbol_table(rep, str(tmp_path / 'symbols.tsv'), str(src), tree=before)
+    assert not symtab.build_is_current(str(tmp_path), str(src))
+
+
+def test_an_identity_that_cannot_be_removed_is_an_error(tmp_path, monkeypatch):
+    symtab.write_identity(str(tmp_path), str(tmp_path / 'nowhere'), tree='abc')
+    monkeypatch.setattr(symtab.os, 'remove', lambda p: None)      # the removal silently fails
+    with pytest.raises(OSError):
+        symtab.remove_identity(str(tmp_path))
+    symtab.remove_identity(str(tmp_path / 'empty'))     # nothing to remove: fine

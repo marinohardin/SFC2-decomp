@@ -30,7 +30,10 @@ repo=$(dirname "$here")
 base=${1:-origin/develop}
 cd "$repo" || exit 2
 PYTHONPATH="$repo" python3 -m harness.lib.verify --land --base "$base" || exit $?
-python3 tools/symbols.py claim || exit 2
+python3 tools/symbols.py claim || {
+    echo "ERROR a claim tried to replace a symbol the table holds with evidence mangled or add: make the claim compile the table's symbol (or, if the table is wrong, run tools/symbols.py claim --replace-evidence <address>)" >&2
+    exit 2
+}
 # Rows still empty are filled from the exact callers that agree on a symbol (evidence callers);
 # existing values are kept: no --reseed.
 report=$(mktemp "${TMPDIR:-/tmp}/seed-report.XXXXXX") || exit 2

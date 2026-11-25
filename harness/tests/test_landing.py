@@ -71,6 +71,7 @@ def _landing(tmp_path, fail=None):
     env['PATH'] = f'{bin_dir}:{env["PATH"]}'
     r = subprocess.run(['sh', str(repo / 'harness' / 'landing.sh'), 'refs/base'], cwd=repo,
                        env=env, capture_output=True, text=True)
+    (tmp_path / 'err').write_text(r.stderr)
     log = (tmp_path / 'log').read_text().splitlines() if (tmp_path / 'log').exists() else []
     return r.returncode, log
 
@@ -91,6 +92,13 @@ def test_landing_stops_when_the_table_is_not_in_sync_after_the_claim_sync(tmp_pa
     code, log = _landing(tmp_path, fail='symbols.py check')
     assert code == 2
     assert log[-1] == 'tools/symbols.py check' and 'tools/manifest.py' not in log
+
+
+def test_landing_says_what_a_refused_claim_means_and_stops_before_the_seed(tmp_path):
+    code, log = _landing(tmp_path, fail='symbols.py claim')
+    assert code == 2
+    assert log == ['-m harness.lib.verify --land --base refs/base', 'tools/symbols.py claim']
+    assert 'ERROR a claim tried to replace a symbol the table holds' in (tmp_path / 'err').read_text()
 
 
 @pytest.mark.parametrize('var', ['HARNESS_MATCHED_SET', 'SFCOP_LANE'])

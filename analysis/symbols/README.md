@@ -45,6 +45,9 @@ of the whole table is `analysis/scripts/seed_symbols.py`, which reads a finished
 
 A claimed row's `symbol` is what the claiming unit compiled, so it changes with the claims. After
 `harness/build-and-verify.sh --all`, run `python3 tools/symbols.py claim [<address>...]`: it sets
-each current claim's row to the build's symbol (evidence `claim`), replacing any `mangled`,
-`callers` or `add` value and printing each replacement, and, with no address, resets a `claim`
-row whose address is no longer claimed. `check`, with a build present, fails until you have.
+each current claim's row to the build's symbol (evidence `claim`), replacing a `callers` value
+and printing each replacement, and, with no address, resets a `claim` row whose address is no
+longer claimed. A `mangled` or `add` symbol that differs from the build's is not replaced: `claim`
+prints an `ERROR` naming the address, both symbols and the evidence, and exits 1, unless
+`--replace-evidence` is given. `check`, with a current build present (one made from this tree),
+fails until the table agrees with it.
