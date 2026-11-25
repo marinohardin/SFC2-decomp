@@ -20680,7 +20680,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e300	function	fn_0070e300					none
 0x0070e450	function	tThreadEvent::tThreadEvent	tThreadEvent	??0tThreadEvent@@QAE@_N0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eUse@tThreadState@@@Z	mangled		mangled
 0x0070e4e0	function	tThreadEvent::`scalar_deleting_destructor'	tThreadEvent	??_GtThreadEvent@@UAEPAXI@Z	mangled		mangled
-0x0070e500	function	tThreadEvent::~tThreadEvent	tThreadEvent	??1tThreadEvent@@UAE@XZ	mangled		mangled
+0x0070e500	function	tThreadEvent::~tThreadEvent	tThreadEvent	??1tThreadEvent@@UAE@XZ	claim		mangled
 0x0070e520	function	fn_0070e520	tGLDC	??BtThreadEvent@@QAEPAXXZ	add		vtable
 0x0070e530	function	tThreadEvent::Signal	tThreadEvent	?Signal@tThreadEvent@@QAEXXZ	mangled		mangled
 0x0070e550	function	tThreadEvent::Reset	tThreadEvent	?Reset@tThreadEvent@@QAEXXZ	mangled		mangled
