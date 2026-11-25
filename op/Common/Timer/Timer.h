@@ -8,7 +8,19 @@
 
 class tTimer;
 class tClock;
-class tTimerHandler;
+
+// CLASS PURPOSE: A interface class for a timer callback
+// HYPOTHESIS: the destructor is declared and not defined, as the SDK defines it inline; slot 1
+// is what tTimer::SignalTimerEvent (0x0070fdb0) calls through.
+class tTimerHandler
+{
+public:
+//Setup
+	virtual ~tTimerHandler();
+
+//Operations
+	virtual void HandlerTimerEvent( tTimer* pTimer ) = 0;
+};
 
 class tTimer
 {
