@@ -3,15 +3,15 @@
 #include <string.h>
 #include "Tiger/tgSound.h"
 #include "Tiger/tvectormath.h"
-// HYPOTHESIS: gSoundSay is defined in this unit in the original (its static initializer is
-// here); its constructor arguments are not recovered yet, so it is declared only.
-extern tSay gSoundSay;
-
-// Error messages raised while the sound interrupt runs are kept here and printed later
-// by PrintOutBufferedErrors, outside the interrupt.
-static char gSoundFmtStr[32][256];
+extern tSay gSoundSay; // HYPOTHESIS: defined in this unit, constructor arguments not recovered
+static char gSoundFmtStr[32][256]; // errors raised during the sound interrupt, printed later by PrintOutBufferedErrors
 static long mNumberOfErrors; // HYPOTHESIS: long (compared signed with 32)
-
+// MATCH-ONLY: empty body; the compiler inlines the profile member's destructor (vtable reset)
+// FUNCTION: STARFLEETOP 0x00646550
+// FUNCTION: STARFLEETOP 0x006461f0
+tChannelAttributes::~tChannelAttributes()
+{
+}
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
 {

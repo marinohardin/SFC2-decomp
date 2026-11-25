@@ -16781,7 +16781,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00645f60	function	twSoundPart::mSet3DListenerUnitScaleInMeters	twSoundPart	?mSet3DListenerUnitScaleInMeters@twSoundPart@@UAEEN@Z	claim		claim
 0x00645ff0	function	twSoundPart::mGetHardwareInformation	twSoundPart	?mGetHardwareInformation@twSoundPart@@UAEJJ@Z	claim		claim
 0x00646010	function	twSoundPart::mInit	twSoundPart	?mInit@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z	claim		claim
-0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes				rtti
+0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes	??1tChannelAttributes@@UAE@XZ	claim		rtti
 0x00646200	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
 0x00646220	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
 0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	mangled		mangled
@@ -16814,7 +16814,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?mSet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEXJ@Z	mangled		mangled
 0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	mangled		mangled
 0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	mangled		mangled
-0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes				sdk
+0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes	??_GtChannelAttributes@@UAEPAXI@Z	claim		sdk
 0x00646570	function	tSoundChannelFormat::~tSoundChannelFormat	tSoundChannelFormat				sdk
 0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?mGetBytesPerSample@tSoundChannelFormat@@UAEJXZ	mangled		mangled
 0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?mGetBytesPerSec@tSoundChannelFormat@@UAEJXZ	mangled		mangled
@@ -16945,8 +16945,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0064d830	function	tSoundChannelCommand::mMakeInvalid	tSoundChannelCommand	?mMakeInvalid@tSoundChannelCommand@@UAEXXZ	claim		claim
 0x0064d840	function	tSoundChannelCommand::mMakeAvailable	tSoundChannelCommand	?mMakeAvailable@tSoundChannelCommand@@UAEXXZ	claim		claim
 0x0064d850	function	tSoundChannelCommand::mMakeUnavailable	tSoundChannelCommand	?mMakeUnavailable@tSoundChannelCommand@@UAEEXZ	claim		claim
-0x0064d860	function	fn_0064d860	tChannelAttributes	?vfunction7@tChannelAttributes@@UAEXJ@Z	claim		none
-0x0064d870	function	fn_0064d870	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		none
+0x0064d860	function	fn_0064d860	tChannelAttributes	?vfunction6@tChannelAttributes@@UAEXJ@Z	claim		none
+0x0064d870	function	fn_0064d870	tSoundChannelFormat	?vfunction11@tSoundChannelFormat@@UAEJXZ	claim		none
 0x0064d880	function	tSoundChannelCommand::mGetUserData	tSoundChannelCommand	?mGetUserData@tSoundChannelCommand@@UAEJXZ	claim		claim
 0x0064d890	function	tSoundChannel::mUpdateRegular	tSoundChannel	?mUpdateRegular@tSoundChannel@@UAEEN@Z	claim		claim
 0x0064dc40	function	tSoundChannelCommand::mSetPan	tSoundChannelCommand	?mSetPan@tSoundChannelCommand@@UAEXJ@Z	claim		claim
