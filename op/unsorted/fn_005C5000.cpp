@@ -15,6 +15,7 @@ public:
 	std::string fn_005c5364();
 	std::string fn_005c53d2();
 	std::string fn_005c54ae();
+	std::string fn_005c551c();
 
 	int			m00;
 	tOptex		m04;
@@ -30,6 +31,7 @@ public:
 	std::string	m434;
 	std::string	m444;
 	std::string	m454;
+	std::string	m464;
 };
 
 inline tOptex::tGuard::~tGuard()
@@ -108,4 +110,11 @@ std::string fn_005c5062_Holder::fn_005c54ae()
 {
 	tOptex::tGuard guard(&m04);
 	return m454;
+}
+
+// FUNCTION: STARFLEETOP 0x005c551c
+std::string fn_005c5062_Holder::fn_005c551c()
+{
+	tOptex::tGuard guard(&m04);
+	return m464;
 }
