@@ -83,6 +83,8 @@ public:
 		tAIUnitData field_0[0x32];
 		int field_c80;
 
+		tList();
+
 		// MATCH-ONLY: inlined append helper; the original's name is unknown.
 		void Append(const tAIUnitData& d)
 		{
@@ -210,4 +212,11 @@ char tAIUnitDataList::fn_00520e5d()
 		}
 	}
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x0052238b
+// HYPOTHESIS: the constructor of the array holder; it default-constructs the 0x32 entries and clears the count.
+tAIUnitDataList::tList::tList()
+{
+	field_c80 = 0;
 }
