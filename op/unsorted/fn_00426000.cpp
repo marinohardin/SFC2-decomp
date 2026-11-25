@@ -416,6 +416,7 @@ public:
 	int fn_00426e2c();
 	void fn_00426e40(int aIndex, int aValue);
 	void fn_00426e61(int aValue, int aIndex);
+	int fn_00426e7a(int aIndex);
 
 	int m10[20];
 	int m60[20];
@@ -647,4 +648,14 @@ void fn_00426988_Class::fn_00426e61(int aValue, int aIndex)
 	{
 		mb8[aIndex] += aValue;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00426e7a
+int fn_00426988_Class::fn_00426e7a(int aIndex)
+{
+	if (aIndex < 3)
+	{
+		return mb8[aIndex];
+	}
+	return mb8[2] + mb8[1];
 }
