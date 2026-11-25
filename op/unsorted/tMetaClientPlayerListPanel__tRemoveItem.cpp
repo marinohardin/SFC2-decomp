@@ -36,3 +36,17 @@ tRemoveItem_0060435f::~tRemoveItem_0060435f()
 {
 	fn_0060435f();
 }
+
+// HYPOTHESIS: a third sibling item class with the same layout; its cleanup member is at 0x00604390.
+class tRemoveItem_00604390 : public tRemoveItemBase, public tOptex
+{
+public:
+	~tRemoveItem_00604390();
+	void fn_00604390();
+};
+
+// FUNCTION: STARFLEETOP 0x006041ff
+tRemoveItem_00604390::~tRemoveItem_00604390()
+{
+	fn_00604390();
+}
