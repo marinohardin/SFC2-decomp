@@ -70,3 +70,10 @@ iTruth tSoundChannel::mAreWeLooping()
     unsigned char looping = (mGetSoundType() & 4) > 0;
     return looping;
 }
+
+// FUNCTION: STARFLEETOP 0x00646940
+iTruth tSoundChannel::mAreWeStreaming()
+{
+    unsigned char streaming = (mGetSoundType() & 2) > 0;
+    return streaming;
+}
