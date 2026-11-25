@@ -5,3 +5,6 @@ void t3DSoundProfile::mSet3DSoundOrientation(float aX, float aY, float aZ) { f3D
 
 // FUNCTION: STARFLEETOP 0x006462d0
 void t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation(float anAngle) { f3DSoundConeAngleForNoAttenuation = anAngle; }
+
+// FUNCTION: STARFLEETOP 0x006462e0
+float t3DSoundProfile::vfunction17() { return f3DSoundConeAngleForNoAttenuation; }
