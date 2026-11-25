@@ -3,9 +3,7 @@
 #include <string.h>
 #include "Tiger/tgSound.h"
 #include "Tiger/tvectormath.h"
-extern tSay gSoundSay; // HYPOTHESIS: defined in this unit, constructor arguments not recovered
-static char gSoundFmtStr[32][256]; // errors raised during the sound interrupt, printed later by PrintOutBufferedErrors
-static long mNumberOfErrors; // HYPOTHESIS: long (compared signed with 32)
+extern tSay gSoundSay; static char gSoundFmtStr[32][256]; static long mNumberOfErrors; // gSoundSay HYPOTHESIS: defined in this unit, constructor arguments not recovered; gSoundFmtStr holds errors raised during the sound interrupt, printed later by PrintOutBufferedErrors; mNumberOfErrors HYPOTHESIS: long (compared signed with 32)
 // MATCH-ONLY: empty body; the compiler inlines the profile member's destructor (vtable reset)
 // FUNCTION: STARFLEETOP 0x00646550
 // FUNCTION: STARFLEETOP 0x006461f0
@@ -18,6 +16,8 @@ tPoint3* t3DSoundProfile::vfunction13() { return &f3DSoundVelocity; } // slot 13
 void tChannelAttributes::vfunction12(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(aPoint); } // slot 12 = pointer overload of mSet3DSoundPosition, name kept for twSound.cpp
 // FUNCTION: STARFLEETOP 0x00646360
 void tChannelAttributes::mSet3DSoundPosition(tPoint3 aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(&aPoint); }
+// FUNCTION: STARFLEETOP 0x00646380
+void tChannelAttributes::mSet3DSoundPosition(float aX, float aY, float aZ) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(aX, aY, aZ); }
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
 {
