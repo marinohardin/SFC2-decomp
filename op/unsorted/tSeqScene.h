@@ -33,6 +33,8 @@ public:
 	void fn_0067e1d0();	// called by vfunction30's neighbour 0x0067e2d0 with the tick count
 
 	// HYPOTHESIS: field names unknown; offsets and constant stores from fn_0067dbc0.
+	int field_D4;
+	int field_D8;
 	int field_DC;
 	int field_E0;
 	int field_E4;

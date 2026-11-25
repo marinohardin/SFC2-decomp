@@ -1,7 +1,7 @@
 //	tVisGroup.h: tVisGroup, a visual object that holds others.
 // Evidence:  class (RTTI: tVisGroup type descriptor 0x0084d040, vftable 0x007b7d18, 40 slots,
-// base tVisObject; original file unknown). Object size 0xdc: the constructor 0x0067da80 and the
-// allocation sites of its derived classes agree on the layout below.
+// base tVisObject; original file unknown). Object size 0xd4: the highest store of the constructor 0x0067da80 is the
+// word at +0xd0, and tRadioGroup puts its second vftable at +0xd4 (the exact tFleetEntry constructor).
 
 #ifndef tVisGroup_h
 #define tVisGroup_h 1
@@ -35,14 +35,26 @@ public:
 	virtual void vfunction38();
 	virtual void vfunction39();
 	virtual void vfunction40();	// 0x0067dcf0
+	// HYPOTHESIS: past slot 40 the real vtable is the derived class's; these are the slots the
+	// code that goes through a tVisGroup pointer calls (kept from the reduced declaration that
+	// tFleetEntry.h held before), and tSeqScene overrides 41 to 44.
+	virtual void vfunction41();
+	virtual void vfunction42();
+	virtual void vfunction43();
+	virtual void vfunction44();
+	virtual void vfunction45();
+	virtual void vfunction46();
+	virtual void vfunction47();
+	virtual void vfunction48( bool b );
+	virtual void vfunction49( bool b );
 
 	int field_64;	// HYPOTHESIS: the constructor never writes it
-	// HYPOTHESIS: an 0x74-byte member with its own vftable 0x007b7dbc, constructed in place by
+	// HYPOTHESIS: a 0x6c-byte member with its own vftable 0x007b7dbc, constructed in place by
 	// the constructor and destroyed by 0x0067f490 (the same type sits at tButton +0x74, whose
 	// destructor 0x0067f490 also runs); layout in the lane notes.
-	unsigned char field_68[ 0xdc - 0x68 ];
+	unsigned char field_68[ 0xd4 - 0x68 ];
 };
 
-typedef char tVisGroup_size_is_0xdc[ sizeof( tVisGroup ) == 0xdc ? 1 : -1 ];
+typedef char tVisGroup_size_is_0xd4[ sizeof( tVisGroup ) == 0xd4 ? 1 : -1 ];
 
 #endif	// tVisGroup_h

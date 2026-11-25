@@ -5,6 +5,7 @@
 #define tFleetEntry_h 1
 
 #include "unsorted/tVisObject.h"
+#include "unsorted/tVisGroup.h"
 
 class tFleetPanel;
 class tGauge;
@@ -13,45 +14,6 @@ class tSFCStatic;
 class tValueBtn;
 class tObject_004c2669_slot;
 class tObject_00412f08;
-
-// HYPOTHESIS: 0xd4 bytes; the analysis names tRadioGroup's and tFleetEntry's virtual
-// functions after tVisGroup's slots.
-// HYPOTHESIS: 0x004c3a36 calls vfunction48 and vfunction49 on the fleet entry's "StartFireFleet" button
-// with a flag each, likely enabling it and setting its state.
-class tVisGroup : public tVisObject
-{
-public:
-	virtual ~tVisGroup();
-	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
-	virtual void vfunction25();
-	virtual void vfunction26();
-	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
-	virtual void vfunction30();
-	virtual void vfunction31();
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
-	virtual void vfunction35();
-	virtual void vfunction36();
-	virtual void vfunction37();
-	virtual void vfunction38();
-	virtual void vfunction39();
-	virtual void vfunction40();
-	virtual void vfunction41();
-	virtual void vfunction42();
-	virtual void vfunction43();
-	virtual void vfunction44();
-	virtual void vfunction45();
-	virtual void vfunction46();
-	virtual void vfunction47();
-	virtual void vfunction48(bool b);
-	virtual void vfunction49(bool b);
-	char m_pad64[0x70];
-};
 
 // HYPOTHESIS: a notification interface; the analysis names slot 2 of the second vftable of
 // tRadioGroup and tFleetEntry after it.
