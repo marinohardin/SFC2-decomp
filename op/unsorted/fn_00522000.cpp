@@ -22,3 +22,30 @@ void fn_0052203a_vector::fn_0052203a(int* pos)
 	pos = (int*)(last = (Elem*)field_8 - 1);
 	field_8 = (int*)last;
 }
+
+// HYPOTHESIS: a doubly linked list container whose insert allocates a node, links it before pos and copies the value.
+struct fn_00522077_node {
+	fn_00522077_node* field_0;
+	fn_00522077_node* field_4;
+	int field_8;
+};
+
+struct fn_00522077_list {
+	int field_0;
+	int field_4;
+	int field_8;
+	fn_00522077_node* fn_005220b1(fn_00522077_node* next, fn_00522077_node* prev);
+	static void fn_005223af(int* dest, int value);
+	void fn_00522077(fn_00522077_node** result, fn_00522077_node* pos, int value);
+};
+
+// FUNCTION: STARFLEETOP 0x00522077
+void fn_00522077_list::fn_00522077(fn_00522077_node** result, fn_00522077_node* pos, int value)
+{
+	fn_00522077_node* node = fn_005220b1(pos, pos->field_4);
+	pos->field_4 = node;
+	node->field_4->field_0 = node;
+	fn_005223af(&node->field_8, value);
+	field_8++;
+	*result = node;
+}

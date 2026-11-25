@@ -8343,7 +8343,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521e11	function	fn_00521e11		?fn_00521e11@fn_00521e11_owner@@QAEXH@Z	claim		none
 0x00521e22	function	fn_00521e22					none
 0x0052203a	function	fn_0052203a		?fn_0052203a@fn_0052203a_vector@@QAEXPAH@Z	claim		none
-0x00522077	function	fn_00522077					none
+0x00522077	function	fn_00522077		?fn_00522077@fn_00522077_list@@QAEXPAPAUfn_00522077_node@@PAU2@H@Z	claim		none
 0x005220b1	function	fn_005220b1					none
 0x005220d5	function	fn_005220d5					none
 0x0052210d	function	fn_0052210d		?fn_0052210d@@YGXHHH@Z	add		none
