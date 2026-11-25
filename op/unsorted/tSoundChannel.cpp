@@ -199,3 +199,9 @@ tUpdateSoundPositionFunction tSoundChannel::mGetUpdateSoundPositionFunction()
 {
     return (tUpdateSoundPositionFunction)field_0x9c;
 }
+
+// FUNCTION: STARFLEETOP 0x00646b30
+void tSoundChannel::mSetUpdateSoundPositionFunction(long function)
+{
+    field_0x9c = (void (*)(long, long))function; // HYPOTHESIS: header types the parameter as long
+}
