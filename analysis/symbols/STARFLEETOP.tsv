@@ -15282,7 +15282,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600b4a	function	fn_00600b4a					none
 0x00600bd5	thunk	fn_00600bd5					none
 0x00600bda	function	tMessageDialogGlobal::~tMessageDialogGlobal	tMessageDialogGlobal				rtti
-0x00600be5	function	fn_00600be5					none
+0x00600be5	function	fn_00600be5		?fn_00600be5@fn_00600be5_holder@@QAEAAU1@AAU1@@Z	claim		none
 0x00600c26	function	fn_00600c26					none
 0x00600c7c	function	fn_00600c7c					none
 0x00600caf	function	fn_00600caf					none
