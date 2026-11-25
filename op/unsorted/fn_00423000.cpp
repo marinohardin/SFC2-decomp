@@ -83,3 +83,50 @@ void fn_00423142_List::fn_00423142()
         cur = next;
     }
 }
+
+// HYPOTHESIS: two linked lists (heads at +0 and +4, link at +0x38/+0x3c); the class is unknown.
+struct fn_00423165_List {
+    int* fHead;
+    int* fOld;
+    void fn_00423405(int* node);
+    void fn_004232ff(int* node);
+    void fn_00423165(int* node);
+};
+
+// FUNCTION: STARFLEETOP 0x00423165
+void fn_00423165_List::fn_00423165(int* cur)
+{
+    int* first = fHead;
+    int* old = fOld;
+    int* node = cur;
+    fHead = node;
+    if (first != 0) {
+        node[0xf] = 0;
+        fHead[0xe] = 0;
+        if (old != 0) {
+            while (old[0xe] != 0) {
+                old = (int*)old[0xe];
+            }
+            old[0xe] = (int)first;
+            first[0xf] = (int)old;
+            do {
+                fn_00423405(first);
+                first = (int*)first[0xe];
+            } while (first != 0);
+        } else {
+            fOld = first;
+            cur = first;
+            do {
+                fn_00423405(cur);
+                cur = (int*)cur[0xe];
+            } while (cur != 0);
+            first[0xf] = 0;
+        }
+    } else {
+        node[0xe] = 0;
+        fHead[0xf] = 0;
+    }
+    if (*node == 1) {
+        fn_004232ff(node);
+    }
+}
