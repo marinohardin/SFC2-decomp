@@ -23,3 +23,12 @@ void tSoundMemoryBlock::mLock()
 {
     fNumberOfLocks++;
 }
+
+// FUNCTION: STARFLEETOP 0x0066eb80
+void tSoundMemoryBlock::mUnlock()
+{
+    fNumberOfLocks--;
+    if (fNumberOfLocks < 0) {
+        fNumberOfLocks = 0;
+    }
+}
