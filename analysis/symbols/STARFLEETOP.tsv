@@ -15267,7 +15267,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006005aa	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
 0x00600604	function	tMessageDialog::scalar_deleting_destructor	tMessageDialog				rtti
 0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
-0x006006b3	function	fn_006006b3					none
+0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
 0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog				rtti
 0x0060072f	function	fn_0060072f					none
 0x006007f9	function	fn_006007f9					none
