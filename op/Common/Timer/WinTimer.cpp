@@ -88,6 +88,11 @@ void tWinTimer::StopTimer()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x0070f920
+int32u tWinTimer::TimePassedSinceStart()
+{
+	return fpClock->GetCurrentSystemTime() - fInitalTime;
+}
 #line 190
 // FUNCTION: STARFLEETOP 0x0070f940
 void __stdcall tWinTimer::WinTimerCallback( unsigned int timerId, unsigned int msg, int32u user, int32u dw1, int32u dw2 )
