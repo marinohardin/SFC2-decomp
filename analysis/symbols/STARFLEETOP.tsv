@@ -5128,7 +5128,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ba7c7	function	fn_004ba7c7					none
 0x004ba9eb	function	fn_004ba9eb					none
 0x004bac62	function	fn_004bac62					none
-0x004baeb1	function	fn_004baeb1					none
+0x004baeb1	function	fn_004baeb1		?fn_004baeb1@@YAMM@Z	add		none
 0x004baef4	function	tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed	tNetMsg_kAdjustSpeed				rtti
 0x004baf7a	function	tNetMsg_kSetGameSpeed::~tNetMsg_kSetGameSpeed	tNetMsg_kSetGameSpeed				rtti
 0x004bb2af	function	fn_004bb2af					none
@@ -7168,7 +7168,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ec752	function	fn_004ec752					none
 0x004ec922	function	fn_004ec922					none
 0x004ecc82	function	fn_004ecc82					none
-0x004ecd72	function	tFx_Base::tFx_Base	tFx_Base				rtti
+0x004ecd72	function	tFx_Base::tFx_Base	tFx_Base	??0tFx_Base@@QAE@XZ	add		rtti
 0x004ecdb2	function	fn_004ecdb2	tFx_Base				vtable
 0x004ecdba	function	tFx_Base::scalar_deleting_destructor	tFx_Base				rtti
 0x004ecdd6	function	tFx_Base::~tFx_Base	tFx_Base				rtti
@@ -7479,29 +7479,29 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ffb3b	function	fn_004ffb3b	tFx_Organian				vtable
 0x004ffb42	function	fn_004ffb42	tFx_Organian				vtable
 0x004ffd9c	function	fn_004ffd9c					none
-0x004ffe06	function	tFx_Phaser::tFx_Phaser	tFx_Phaser				rtti
+0x004ffe06	function	tFx_Phaser::tFx_Phaser	tFx_Phaser	??0tFx_Phaser@@QAE@PAVtBmpSurf@@@Z	add		rtti
 0x004ffe39	function	fn_004ffe39					none
 0x00500306	function	fn_00500306					none
 0x00500312	function	fn_00500312	tFx_Phaser				vtable
-0x0050037b	function	fn_0050037b					none
+0x0050037b	function	fn_0050037b		?fn_0050037b@@YAPAVtFx_Phaser@@PAVtBmpSurf@@@Z	claim		none
 0x00500453	function	fn_00500453					none
 0x00500467	function	fn_00500467					none
 0x0050047b	function	fn_0050047b					none
-0x0050048f	function	fn_0050048f					none
+0x0050048f	function	fn_0050048f		?fn_0050048f@@YAXXZ	claim		none
 0x005004a3	function	fn_005004a3					none
-0x005004b7	function	fn_005004b7					none
-0x005004cb	function	fn_005004cb					none
-0x00500803	function	fn_00500803					none
+0x005004b7	function	fn_005004b7		?fn_005004b7@@YAXXZ	claim		none
+0x005004cb	function	fn_005004cb		?fn_005004cb@@YAXXZ	claim		none
+0x00500803	function	fn_00500803		?fn_00500803@@YAXXZ	claim		none
 0x00500817	function	fn_00500817					none
 0x0050082b	function	fn_0050082b					none
 0x0050083f	function	fn_0050083f					none
-0x00500847	function	fn_00500847					none
-0x00500872	function	fn_00500872					none
+0x00500847	function	fn_00500847		?fn_00500847@@YAXXZ	claim		none
+0x00500872	function	fn_00500872		??0tFx_Photon@@QAE@XZ	claim		none
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
-0x005008f4	function	fn_005008f4					none
-0x00500976	function	fn_00500976					none
-0x00500b46	function	fn_00500b46					none
+0x005008f4	function	fn_005008f4		??0fn_005008f4_element@@QAE@XZ	claim		none
+0x00500976	function	fn_00500976		?fn_00500976@fn_005008f4_element@@QAEXPAVtObject_00413ac3_arg@@MMM@Z	claim		none
+0x00500b46	function	fn_00500b46		?fn_00500b46@@YAXPAVtMatrix@@UtPoint3@@M@Z	claim		none
 0x00500c30	function	fn_00500c30	tFx_Photon				vtable
 0x00500f26	function	fn_00500f26					none
 0x00500fe6	function	fn_00500fe6					none
@@ -7518,8 +7518,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00501a2a	function	fn_00501a2a					none
 0x00501a3e	function	fn_00501a3e					none
 0x00501a52	function	fn_00501a52					none
-0x00501b0e	function	fn_00501b0e					none
-0x00501bd3	function	tFx_Plasma::tFx_Plasma	tFx_Plasma				rtti
+0x00501b0e	function	fn_00501b0e		?fn_00501b0e@@YAXXZ	claim		none
+0x00501bd3	function	tFx_Plasma::tFx_Plasma	tFx_Plasma	??0tFx_Plasma@@QAE@PAVtBmpSurf@@@Z	add		rtti
 0x00501c2e	function	fn_00501c2e	tFx_Plasma				vtable
 0x00501c33	function	fn_00501c33	tFx_Plasma				vtable
 0x00501c37	function	tFx_Plasma::scalar_deleting_destructor	tFx_Plasma				rtti
@@ -7529,7 +7529,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00501e02	function	fn_00501e02					none
 0x00501fed	function	fn_00501fed	tFx_Plasma				vtable
 0x00502326	function	fn_00502326	tFx_Plasma				vtable
-0x005023f9	function	fn_005023f9					none
+0x005023f9	function	fn_005023f9		?fn_005023f9@@YAPAVtFx_Plasma@@PAVtBmpSurf@@@Z	claim		none
 0x005024e0	function	fn_005024e0					none
 0x005024f4	function	fn_005024f4					none
 0x00502508	function	fn_00502508					none
@@ -7544,27 +7544,27 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00502664	function	fn_00502664					none
 0x00502678	function	fn_00502678					none
 0x0050268c	function	fn_0050268c					none
-0x00502b0a	function	fn_00502b0a					none
-0x00502b35	function	tFx_PPDWave::tFx_PPDWave	tFx_PPDWave				rtti
+0x00502b0a	function	fn_00502b0a		?fn_00502b0a@@YAXXZ	claim		none
+0x00502b35	function	tFx_PPDWave::tFx_PPDWave	tFx_PPDWave	??0tFx_PPDWave@@QAE@XZ	add		rtti
 0x00502b9c	function	fn_00502b9c	tFx_PPDWave				vtable
 0x00502c54	function	fn_00502c54	tFx_PPDWave				vtable
 0x00502eb6	function	fn_00502eb6	tFx_PPDWave				vtable
-0x005032f7	function	fn_005032f7					none
-0x00503354	function	fn_00503354					none
-0x00503474	function	tFx_PPDPulse::tFx_PPDPulse	tFx_PPDPulse				rtti
+0x005032f7	function	fn_005032f7		?fn_005032f7@@YAPAVtFx_PPDWave@@XZ	claim		none
+0x00503354	function	fn_00503354		?fn_00503354@@YAXXZ	claim		none
+0x00503474	function	tFx_PPDPulse::tFx_PPDPulse	tFx_PPDPulse	??0tFx_PPDPulse@@QAE@XZ	add		rtti
 0x005034d8	function	fn_005034d8	tFx_PPDPulse				vtable
 0x00503570	function	fn_00503570	tFx_PPDPulse				vtable
 0x005037c4	function	fn_005037c4	tFx_PPDPulse				vtable
 0x00503ad5	function	fn_00503ad5	tFx_PPDPulse				vtable
-0x00503dac	function	fn_00503dac					none
-0x00503e41	function	fn_00503e41					none
-0x00503ef3	function	fn_00503ef3					none
+0x00503dac	function	fn_00503dac		?fn_00503dac@@YAPAVtFx_PPDPulse@@XZ	claim		none
+0x00503e41	function	fn_00503e41		??0tProbeCell@@QAE@PBM0@Z	claim		none
+0x00503ef3	function	fn_00503ef3		?fn_00503ef3@@YAMXZ	claim		none
 0x00503efa	function	fn_00503efa	tProbeCell				vtable
 0x00503f01	function	fn_00503f01	tProbeCell				vtable
 0x00503f05	function	fn_00503f05	tProbeCell				vtable
-0x00503fba	function	fn_00503fba					none
-0x00503fd6	function	fn_00503fd6					none
-0x00503fed	function	fn_00503fed					none
+0x00503fba	function	fn_00503fba		?fn_00503fba@@YAPAXXZ	claim		none
+0x00503fd6	function	fn_00503fd6		?fn_00503fd6@@YAXPAD@Z	claim		none
+0x00503fed	function	fn_00503fed		??0tProbeHead@@QAE@PAX@Z	claim		none
 0x00504078	function	fn_00504078	t3DVisual				vtable
 0x0050407f	function	fn_0050407f	tProbeHead				vtable
 0x00504086	function	fn_00504086	tProbeHead				vtable
@@ -7575,15 +7575,15 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504110	function	tFx_Probe::~tFx_Probe	tFx_Probe				rtti
 0x0050413e	function	fn_0050413e	tFx_Probe				vtable
 0x00504206	function	fn_00504206	tFx_Probe				vtable
-0x00504316	function	fn_00504316					none
-0x00504339	function	fn_00504339					none
+0x00504316	function	fn_00504316		?fn_00504316@@YAXXZ	claim		none
+0x00504339	function	fn_00504339		?fn_00504339@@YAXXZ	claim		none
 0x00504399	thunk	fn_00504399					none
 0x005043ea	function	fn_005043ea					none
 0x005043fe	function	fn_005043fe					none
 0x00504412	function	fn_00504412					none
 0x00504426	function	fn_00504426					none
 0x0050442e	thunk	fn_0050442e					none
-0x00504433	function	fn_00504433					none
+0x00504433	function	fn_00504433		?fn_00504433@@YAMXZ	claim		none
 0x00504442	function	fn_00504442					none
 0x00504456	function	fn_00504456					none
 0x0050446a	function	fn_0050446a					none
@@ -7592,12 +7592,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005044aa	function	fn_005044aa					none
 0x005044be	function	fn_005044be					none
 0x005044d2	function	fn_005044d2					none
-0x005044da	function	tFx_ProximityDetonation::tFx_ProximityDetonation	tFx_ProximityDetonation				rtti
+0x005044da	function	tFx_ProximityDetonation::tFx_ProximityDetonation	tFx_ProximityDetonation	??0tFx_ProximityDetonation@@QAE@XZ	add		rtti
 0x00504500	function	fn_00504500					none
 0x00504af2	function	fn_00504af2	tFx_ProximityDetonation				vtable
-0x00504b65	function	fn_00504b65					none
+0x00504b65	function	fn_00504b65		?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ	claim		none
 0x00504bfa	thunk	fn_00504bfa					none
-0x00504bff	function	fn_00504bff					none
+0x00504bff	function	fn_00504bff		?fn_00504bff@@YAXXZ	claim		none
 0x00504c0a	function	fn_00504c0a					none
 0x00504c1e	function	fn_00504c1e					none
 0x00504c32	function	fn_00504c32					none
@@ -7608,12 +7608,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504caa	function	fn_00504caa					none
 0x00504cbe	function	fn_00504cbe					none
 0x00504cd2	function	fn_00504cd2					none
-0x005050e2	function	fn_005050e2					none
-0x005050ed	function	fn_005050ed					none
-0x00505133	function	tFx_Pulsar::tFx_Pulsar	tFx_Pulsar				rtti
+0x005050e2	function	fn_005050e2		?fn_005050e2@@YAMM@Z	claim		none
+0x005050ed	function	fn_005050ed		?fn_005050ed@@YAXXZ	claim		none
+0x00505133	function	tFx_Pulsar::tFx_Pulsar	tFx_Pulsar	??0tFx_Pulsar@@QAE@XZ	add		rtti
 0x0050517b	function	fn_0050517b	tFx_Pulsar				vtable
 0x00505182	function	fn_00505182	tFx_Pulsar				vtable
-0x005053ec	function	fn_005053ec					none
+0x005053ec	function	fn_005053ec		?fn_005053ec@@YAPAVtFx_Pulsar@@XZ	claim		none
 0x0050546a	function	fn_0050546a					none
 0x0050547e	function	fn_0050547e					none
 0x00505492	function	fn_00505492					none
@@ -7626,10 +7626,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0050552a	function	fn_0050552a					none
 0x0050553e	function	fn_0050553e					none
 0x00505552	function	fn_00505552					none
-0x0050555a	function	tFx_Shockwave::tFx_Shockwave	tFx_Shockwave				rtti
+0x0050555a	function	tFx_Shockwave::tFx_Shockwave	tFx_Shockwave	??0tFx_Shockwave@@QAE@XZ	add		rtti
 0x00505580	function	fn_00505580					none
 0x00505c97	function	fn_00505c97	tFx_Shockwave				vtable
-0x00505d0a	function	fn_00505d0a					none
+0x00505d0a	function	fn_00505d0a		?fn_00505d0a@@YAPAVtFx_Shockwave@@XZ	claim		none
 0x00505daf	function	fn_00505daf					none
 0x00505dc3	function	fn_00505dc3					none
 0x00505dd7	function	fn_00505dd7					none
@@ -7644,21 +7644,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005062eb	function	fn_005062eb					none
 0x005062ff	function	fn_005062ff					none
 0x00506313	function	fn_00506313					none
-0x0050678f	function	fn_0050678f					none
-0x005067ee	function	tFx_Shockwave2::tFx_Shockwave2	tFx_Shockwave2				rtti
+0x0050678f	function	fn_0050678f		?fn_0050678f@@YAXXZ	claim		none
+0x005067ee	function	tFx_Shockwave2::tFx_Shockwave2	tFx_Shockwave2	??0tFx_Shockwave2@@QAE@XZ	add		rtti
 0x00506836	function	fn_00506836					none
 0x00506e94	function	fn_00506e94	tFx_Shockwave2				vtable
-0x00506f07	function	fn_00506f07					none
+0x00506f07	function	fn_00506f07		?fn_00506f07@@YAPAVtFx_Shockwave2@@XZ	claim		none
 0x00506fb0	function	fn_00506fb0					none
 0x00506fc4	function	fn_00506fc4					none
 0x00506fd8	function	fn_00506fd8					none
 0x00506fec	function	fn_00506fec					none
-0x00507018	function	fn_00507018					none
-0x00507020	function	tFx_Tractor::tFx_Tractor	tFx_Tractor				rtti
+0x00507018	function	fn_00507018		?fn_00507018@@YAXXZ	claim		none
+0x00507020	function	tFx_Tractor::tFx_Tractor	tFx_Tractor	??0tFx_Tractor@@QAE@XZ	add		rtti
 0x00507066	function	fn_00507066	tFx_Tractor				vtable
 0x005070fe	function	fn_005070fe	tFx_Tractor				vtable
-0x0050786e	function	fn_0050786e					none
-0x00507903	function	fn_00507903					none
+0x0050786e	function	fn_0050786e		?fn_0050786e@@YAPAVtFx_Tractor@@XZ	claim		none
+0x00507903	function	fn_00507903		?fn_00507903@@YAXXZ	claim		none
 0x0050790b	function	fn_0050790b					none
 0x00507917	function	tFx_Transporter::tFx_Transporter	tFx_Transporter				rtti
 0x00507a26	function	fn_00507a26	tFx_Transporter				vtable
@@ -18479,7 +18479,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069ac50	function	fn_0069ac50		?fn_0069ac50@@YADI@Z	callers		none
 0x0069adc2	function	fn_0069adc2					none
 0x0069afc0	function	fn_0069afc0		?fn_0069afc0@@YAFMM@Z	callers		none
-0x0069b0e0	function	fn_0069b0e0					none
+0x0069b0e0	function	fn_0069b0e0		?fn_0069b0e0@@YAMXZ	add		none
 0x0069b120	function	fn_0069b120		??HtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b160	function	fn_0069b160		??YtPoint3@@QAEAAU0@ABU0@@Z	callers		none
 0x0069b190	function	fn_0069b190		??GtPoint3@@QBE?AU0@ABU0@@Z	callers		none
@@ -18492,7 +18492,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069b320	function	fn_0069b320		??_0tPoint3@@QAEAAU0@M@Z	callers		none
 0x0069b350	function	fn_0069b350					none
 0x0069b390	function	fn_0069b390		?mLength@tPoint3@@QBEMXZ	callers		none
-0x0069b3d0	function	fn_0069b3d0					none
+0x0069b3d0	function	fn_0069b3d0		?mNormalize@tPoint3@@QAEEXZ	add		none
 0x0069b450	function	fn_0069b450					none
 0x0069baf0	function	fn_0069baf0		?mMult@tMatrix@@QBEXAAV1@ABV1@@Z	callers		none
 0x0069c250	function	fn_0069c250		?mIdentity@tMatrix@@QAEXXZ	callers		none
@@ -21698,7 +21698,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00737f63	function	fn_00737f63					none
 0x00737f86	function	fn_00737f86	tSfcMouseMgr				vtable
 0x00737f90	function	fn_00737f90					none
-0x00737fa4	function	fn_00737fa4					none
+0x00737fa4	function	fn_00737fa4		_fn_00737fa4	add		none
 0x00737fad	function	fn_00737fad					none
 0x00738040	function	__ftol		__ftol	callers		fid
 0x00738070	function	fn_00738070					none

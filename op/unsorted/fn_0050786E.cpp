@@ -1,6 +1,24 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_0050786E.cpp
-// Functions: 0x0050786e to 0x0050790b, 3 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tObject_0040ce21.h"
+
+// HYPOTHESIS: tFx_Tractor is not declared in any header yet
+class tFx_Tractor
+{
+public:
+	tFx_Tractor();
+	char	pad00[0x40];
+};
+
+// FUNCTION: STARFLEETOP 0x0050786e
+tFx_Tractor* fn_0050786e()
+{
+	static tObject_0040ce21 marker("Let's haul it!");
+	return new tFx_Tractor;
+}
+
+extern char g_00967a44;
+
+// FUNCTION: STARFLEETOP 0x00507903
+void fn_00507903()
+{
+	g_00967a44 = 1;
+}
