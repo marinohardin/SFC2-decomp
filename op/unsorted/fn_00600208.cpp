@@ -1,6 +1,33 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00600208.cpp
-// Functions: 0x00600208 to 0x0060036d, 8 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+extern "C" unsigned int strlen(const char*);
+
+// HYPOTHESIS: the callees are basic_string::_Tidy (0x005da20a) and basic_string::assign
+// (0x0040428e); a reduced stand-in of the standard class keeps this unit free of <string>.
+namespace std
+{
+	template <class T> struct char_traits;
+	template <class T> class allocator;
+	template <class C, class Tr, class A> class basic_string
+	{
+	public:
+		// MATCH-ONLY: the original inlined the const char* constructor into the initializer.
+		basic_string(const char* s)
+		{
+			char allocator;
+			m_al = allocator; // HYPOTHESIS: uninitialised allocator byte
+			_Tidy(false);
+			assign(s, strlen(s));
+		}
+		basic_string& assign(const char* s, unsigned int n);
+		void _Tidy(bool built);
+		char m_al;
+		char* _Ptr;
+		unsigned int m_len;
+		unsigned int m_res;
+	};
+}
+
+// HYPOTHESIS: the global's name is not known.
+typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_00600208_string;
+
+// FUNCTION: STARFLEETOP 0x00600208
+fn_00600208_string g_00c39e48 = "BriefingSP";
