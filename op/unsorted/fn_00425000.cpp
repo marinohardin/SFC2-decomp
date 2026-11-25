@@ -119,3 +119,38 @@ void fn_0042511e_tree::fn_0042511e()
 	fHead->right = fHead;
 	fSize = 0;
 }
+
+// HYPOTHESIS: an iterator of a red-black tree (node: left +0, parent +4, right +8, isnil +0x39);
+// this advances it to the in-order successor.
+struct fn_004253c2_iterator
+{
+	struct node
+	{
+		node* left;
+		node* parent;
+		node* right;
+		char fPad[0x2c];
+		bool color;
+		bool isnil;
+	};
+	void fn_004253c2();
+
+	node* fNode;
+};
+
+// FUNCTION: STARFLEETOP 0x004253c2
+void fn_004253c2_iterator::fn_004253c2()
+{
+	node* n = fNode;
+	node* r = fNode->right;
+	if (!r->isnil) {
+		while (!r->left->isnil)
+			r = r->left;
+		fNode = r;
+	} else {
+		while (n = n->parent, fNode == n->right)
+			fNode = n;
+		if (fNode->right != n)
+			fNode = n;
+	}
+}
