@@ -15252,7 +15252,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600396	function	tMetaClientBriefing::~tMetaClientBriefing	tMetaClientBriefing				rtti
 0x0060039f	function	tMetaClientBriefing::scalar_deleting_destructor	tMetaClientBriefing				rtti
 0x006003bb	function	tMetaClientBriefing::~tMetaClientBriefing	tMetaClientBriefing				rtti
-0x006003c2	function	fn_006003c2					none
+0x006003c2	function	fn_006003c2		?fn_006003c2@@YAPADXZ	claim		none
 0x006003c8	function	fn_006003c8					none
 0x006003ce	function	fn_006003ce					none
 0x006003d4	function	fn_006003d4					none
