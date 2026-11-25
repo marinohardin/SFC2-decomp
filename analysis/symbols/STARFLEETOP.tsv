@@ -20674,7 +20674,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e1cd	function	fn_0070e1cd					none
 0x0070e240	function	fn_0070e240		??0iterator@tString@@QAE@XZ	callers		none
 0x0070e250	function	tWaitForObject::tResult::tResult	tWaitForObject::tResult	??0tResult@tWaitForObject@@QAE@K@Z	mangled		mangled
-0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	mangled		mangled
+0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	claim		mangled
 0x0070e2b0	function	tWaitForObject::tResult::Ready	tWaitForObject::tResult	?Ready@tResult@tWaitForObject@@QBE_NXZ	mangled		mangled
 0x0070e2c0	function	tWaitForObject::Wait	tWaitForObject	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z	mangled		mangled
 0x0070e300	function	fn_0070e300					none
