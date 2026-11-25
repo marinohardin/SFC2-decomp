@@ -1,6 +1,22 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005C1000.cpp
-// Functions: 0x005c11cb to 0x005c19a3, 32 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the owner is tMapRelayS (the symbol table puts the preceding vtable function in
+// that class); the field at +0xd4 is passed on to the new 0x68-byte object's constructor.
+namespace nAsyncMapProcedures {
+class tCreateBaseAIs {
+public:
+	tCreateBaseAIs( void* arg );
+	char pad00[0x68];
+};
+}
+
+class tMapRelayS {
+public:
+	void fn_005c11cb( nAsyncMapProcedures::tCreateBaseAIs** out );
+	char pad00[0xd4];
+	void* m_d4;
+};
+
+// FUNCTION: STARFLEETOP 0x005c11cb
+void tMapRelayS::fn_005c11cb( nAsyncMapProcedures::tCreateBaseAIs** out )
+{
+	*out = new nAsyncMapProcedures::tCreateBaseAIs( m_d4 );
+}

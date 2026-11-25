@@ -13072,7 +13072,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c0c4a	function	tMapRelayS::~tMapRelayS	tMapRelayS				rtti
 0x005c0ce3	function	fn_005c0ce3	tMapRelayS				vtable
 0x005c1185	function	fn_005c1185	tMapRelayS				vtable
-0x005c11cb	function	fn_005c11cb					none
+0x005c11cb	function	fn_005c11cb		?fn_005c11cb@tMapRelayS@@QAEXPAPAVtCreateBaseAIs@nAsyncMapProcedures@@@Z	claim		none
 0x005c120e	function	fn_005c120e					none
 0x005c1255	function	fn_005c1255					none
 0x005c1298	function	fn_005c1298					none
