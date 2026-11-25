@@ -101,6 +101,12 @@ tSoundChannelCommand* tSoundChannel::mGetFirstImmediateCommand()
     tSoundCommandList* list = &field_0xdc;
     return (tSoundChannelCommand*)list->vfunction5();
 }
+// FUNCTION: STARFLEETOP 0x00646770
+tSoundChannelCommand* tSoundChannel::mGetFirstDelayedCommand()
+{
+    tSoundCommandList* list = &field_0xcc;
+    return (tSoundChannelCommand*)list->vfunction5();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
