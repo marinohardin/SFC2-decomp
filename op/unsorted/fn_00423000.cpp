@@ -63,3 +63,23 @@ int* fn_0042310b_Pool::fn_0042310b(int value)
     }
     return node;
 }
+
+// HYPOTHESIS: a list head at +0 with link at +0x38; each node with a nonzero first dword is handled.
+struct fn_00423142_List {
+    int* fHead;
+    void fn_004232aa(int* node);
+    void fn_00423142();
+};
+
+// FUNCTION: STARFLEETOP 0x00423142
+void fn_00423142_List::fn_00423142()
+{
+    int* cur = fHead;
+    while (cur != 0) {
+        int* next = (int*)cur[0xe];
+        if (*cur != 0) {
+            fn_004232aa(cur);
+        }
+        cur = next;
+    }
+}
