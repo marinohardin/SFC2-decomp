@@ -407,7 +407,7 @@ public:
     virtual eSoundChannelStatus vfunction52();
     virtual tSoundChannelFormat* mGetSoundChannelFormat();
     virtual long mGetBufferLength();
-    virtual void mGetNumChannels();
+    virtual long mGetNumChannels();
     virtual void mGetBytesPerSample();
     virtual void vfunction57();
     virtual void mGetBitsPerSample();
