@@ -12,6 +12,10 @@ public:
 	void** fn_00603486( const std::string& name );
 	void fn_00603713( fn_0042a480_object* character );
 	void fn_00603978( void* record );
+	void fn_0060378d( int* message );
+	int fn_006037fc( int* record );
+	void fn_00603575( int* record );
+	void fn_00603a08( int index, int value );
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
@@ -161,5 +165,26 @@ void fn_006032e7_object::fn_00603713( fn_0042a480_object* character )
 		fn_00603978( entry );
 		if ( entry )
 			delete entry;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0060378d
+void fn_006032e7_object::fn_0060378d( int* message )
+{
+	int** it = (int**)field_158;
+	switch ( message[0] )
+	{
+	case 2:
+		it = (int**)fn_00603486( *(std::string*)( message + 3 ) );
+		break;
+	}
+	if ( it != (int**)field_158 )
+	{
+		( *it )[1] = ( ~message[2] & ( *it )[1] ) | message[1];
+		int found = fn_006037fc( *it );
+		if ( found != -1 )
+			fn_00603a08( found, ( (fn_006033b4_object*)this )->fn_006033b4( *it ) );
+		else
+			fn_00603575( *it + 2 );
 	}
 }
