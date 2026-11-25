@@ -15384,7 +15384,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603a5f	function	tMetaClientPlayerListPanel::tAddItem::~tAddItem	tMetaClientPlayerListPanel::tAddItem				rtti
 0x00603b91	function	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	tMetaClientPlayerListPanel::tRemoveItem				rtti
 0x00603c9a	function	fn_00603c9a		?fn_00603c9a@fn_006032e7_object@@QAEXHHH@Z	claim		none
-0x00603d4a	function	fn_00603d4a					none
+0x00603d4a	function	fn_00603d4a		??0fn_00603d4a_node@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z	claim		none
 0x00603d8f	function	fn_00603d8f					none
 0x00603dee	function	fn_00603dee					none
 0x00603e24	function	fn_00603e24					none
