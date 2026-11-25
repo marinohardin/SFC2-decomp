@@ -35,3 +35,9 @@ long tSoundChannel::mGetUserData()
 {
     return field_0x8c;
 }
+
+// FUNCTION: STARFLEETOP 0x006468e0
+void tSoundChannel::mSetUserData(long userData)
+{
+    field_0x8c = userData;
+}
