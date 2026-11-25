@@ -50,3 +50,10 @@ long tSoundChannel::mGetFinishSoundCallback()
 {
     return (long)field_0x90;
 }
+
+// FUNCTION: STARFLEETOP 0x00646900
+// HYPOTHESIS: the original takes void (*)(unsigned long, unsigned char); declared long like the getter.
+void tSoundChannel::mSetFinishSoundCallback(long callback)
+{
+    field_0x90 = (void (*)(long, iTruth))callback;
+}
