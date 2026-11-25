@@ -53,3 +53,17 @@ tString* fn_00424d28_class::fn_00424d46(const char* s)
 	}
 	return &fStrings[slot];
 }
+
+// FUNCTION: STARFLEETOP 0x00424e2a
+int fn_00424d28_class::fn_00424e2a(const tString& s)
+{
+	unsigned int i = 0;
+	int offset = 0;
+	while (fStrings.begin() != 0 && i < fStrings.size()) {
+		if (*(tString*)((char*)fStrings.begin() + offset) == s)
+			return i;
+		i++;
+		offset += sizeof(tString);
+	}
+	return (unsigned int)-1;
+}
