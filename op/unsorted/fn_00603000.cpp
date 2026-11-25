@@ -61,7 +61,7 @@ public:
 	virtual void fn_slot52();
 	virtual void fn_slot53();
 	virtual void fn_slot54( const tString& name, int a, int b, int index );
-	virtual void fn_slot55();
+	virtual void fn_slot55( int index );
 	virtual tString* fn_slot56( int index );
 	virtual void fn_slot57();
 	virtual void fn_slot58();
@@ -306,5 +306,30 @@ void fn_006032e7_object::fn_00603873( const std::string& name, int a, int b )
 		}
 		field_13c->fn_slot54( tString( name.c_str() ), a, b, index );
 	}
+	guard.Leave();
+}
+
+// FUNCTION: STARFLEETOP 0x00603978
+void fn_006032e7_object::fn_00603978( void* record )
+{
+	tOptex::tGuard guard( &field_b8 );
+	unsigned int index = 0;
+	if ( field_13c )
+	{
+		unsigned int count = field_13c->fn_count();
+		if ( count > 0 )
+		{
+			do
+			{
+				if ( field_13c->fn_item( index ) == record )
+					goto found;
+				++index;
+			} while ( index < field_13c->fn_count() );
+		}
+		goto done;
+	found:
+		field_13c->fn_slot55( index );
+	}
+done:
 	guard.Leave();
 }
