@@ -66,6 +66,7 @@ class tMemberCallback_tEconomicStatusRequest;
 class tMemberCallback_tGetPoliticalTension;
 class tMemberCallback_tGetPoliticalTensionMatrix;
 class tMemberCallback_tGetPoliticalTensionMatrixForUpdate;
+class tMemberCallback_tUpdatePoliticalTensionMatrix;
 class tMapRelayS {
 public:
 	void fn_005c1531( tMemberCallback_tUpdateHex** out );
@@ -89,6 +90,7 @@ public:
 	void fn_005c16c2( tMemberCallback_tGetPoliticalTension** out );
 	void fn_005c1705( tMemberCallback_tGetPoliticalTensionMatrix** out );
 	void fn_005c1748( tMemberCallback_tGetPoliticalTensionMatrixForUpdate** out );
+	void fn_005c1781( tMemberCallback_tUpdatePoliticalTensionMatrix** out );
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -340,4 +342,18 @@ public:
 void tMapRelayS::fn_005c1748( tMemberCallback_tGetPoliticalTensionMatrixForUpdate** out )
 {
 	*out = new tMemberCallback_tGetPoliticalTensionMatrixForUpdate;
+}
+
+// HYPOTHESIS: the object built at 0x005b4d87, a tMemberCallback instance for
+// nAsyncMapProcedures::tUpdatePoliticalTensionMatrix with a tBuffer const* argument.
+class tMemberCallback_tUpdatePoliticalTensionMatrix {
+public:
+	tMemberCallback_tUpdatePoliticalTensionMatrix( void* a );
+	char pad00[0xc4];
+};
+
+// FUNCTION: STARFLEETOP 0x005c1781
+void tMapRelayS::fn_005c1781( tMemberCallback_tUpdatePoliticalTensionMatrix** out )
+{
+	*out = new tMemberCallback_tUpdatePoliticalTensionMatrix( m_d4 );
 }
