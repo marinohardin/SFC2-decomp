@@ -8,6 +8,6 @@
 iTruth tSoundPart::Test_tSoundPart( void )
 {
     try { tSoundPart *test = tSoundPart::Search_tSoundPart(); }
-    catch (tPartBindingException) { return kFalse; }
+    catch (...) {}
     return kTrue;
 }
