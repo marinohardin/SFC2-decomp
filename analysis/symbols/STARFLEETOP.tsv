@@ -20727,7 +20727,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	claim		mangled
 0x0070f7c0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z	claim		mangled
 0x0070f860	function	tWinTimer::ChangeTiming	tWinTimer	?ChangeTiming@tWinTimer@@UAEXKK@Z	claim		mangled
-0x0070f900	function	tWinTimer::StopTimer	tWinTimer	?StopTimer@tWinTimer@@UAEXXZ	mangled		mangled
+0x0070f900	function	tWinTimer::StopTimer	tWinTimer	?StopTimer@tWinTimer@@UAEXXZ	claim		mangled
 0x0070f920	function	tWinTimer::TimePassedSinceStart	tWinTimer	?TimePassedSinceStart@tWinTimer@@UAEKXZ	mangled		mangled
 0x0070f940	function	tWinTimer::WinTimerCallback	tWinTimer	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z	claim		mangled
 0x0070fb20	function	fn_0070fb20					none

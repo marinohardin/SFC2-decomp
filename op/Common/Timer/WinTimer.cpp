@@ -78,6 +78,16 @@ void tWinTimer::ChangeTiming( int32u newDueTime, int32u newPeriod )
 	validate( fTimerHandle );
 }
 
+// FUNCTION: STARFLEETOP 0x0070f900
+void tWinTimer::StopTimer()
+{
+	if( fTimerHandle != 0 )
+	{
+		timeKillEvent( fTimerHandle );
+		fTimerHandle = 0;
+	}
+}
+
 #line 190
 // FUNCTION: STARFLEETOP 0x0070f940
 void __stdcall tWinTimer::WinTimerCallback( unsigned int timerId, unsigned int msg, int32u user, int32u dw1, int32u dw2 )
