@@ -27,6 +27,9 @@ public:
 	tInterlockedType( const tType& value );
 	virtual ~tInterlockedType();
 
+//Accessors
+	operator tType() const;
+
 protected:
 //Operations
 	virtual void OnValChanged( const tType& newValue, const tType& prevValue ) const;
@@ -65,7 +68,7 @@ inline void tInterlockedType< tType >::OnValChanged( const tType& newValue, cons
 // all members of this class (except the constructor and destructor)
 // must be thread-safe.
 template< typename tType >
-class tInterlockedScalar : protected tInterlockedType< tType >
+class tInterlockedScalar : public tInterlockedType< tType >
 {
 public:
 //Setup

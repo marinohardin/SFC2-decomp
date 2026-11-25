@@ -14,3 +14,9 @@ tThread::tThread() :
 {
 	fThread = _beginthreadex( NULL, 0, ThreadProc, this, 0, &fThreadID );
 }
+
+// FUNCTION: STARFLEETOP 0x006ff6f0
+bool tThread::Working() const
+{
+	return fWorking;
+}

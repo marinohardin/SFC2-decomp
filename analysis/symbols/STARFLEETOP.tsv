@@ -13893,7 +13893,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005d8ec8	function	tInterlockedScalar<bool>::scalar_deleting_destructor	tInterlockedScalar<bool>				rtti
 0x005d8ee4	function	tInterlockedType<bool>::~tInterlockedType<bool>	tInterlockedType<bool>				rtti
 0x005d8ef2	function	tInterlockedType<bool>::tInterlockedType<bool>	tInterlockedType<bool>				rtti
-0x005d8f12	function	fn_005d8f12					none
+0x005d8f12	function	fn_005d8f12		??B?$tInterlockedType@_N@@QBE_NXZ	add		none
 0x005d8f37	function	fn_005d8f37					none
 0x005d8f63	function	fn_005d8f63					none
 0x005d8fd1	function	fn_005d8fd1					none
@@ -20415,7 +20415,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ff250	function	tThread::StartWork	tThread	?StartWork@tThread@@QAE_NPAV?$tCallback@J@@J@Z	mangled		mangled
 0x006ff4f0	function	tThread::StopThread	tThread	?StopThread@tThread@@QAEXK@Z	mangled		mangled
 0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	mangled		mangled
-0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	callers		sdk
+0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	claim		sdk
 0x006ff700	function	fn_006ff700		?Alive@tThread@@QBE_NXZ	callers		none
 0x006ff710	function	fn_006ff710					none
 0x006ff9dc	function	fn_006ff9dc					none
