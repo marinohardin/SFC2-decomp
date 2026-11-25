@@ -27,3 +27,9 @@ bool tWaitForObject::tResult::TimedOut() const
 {
 	return fKind == 3 ? true : false;
 }
+
+// FUNCTION: STARFLEETOP 0x0070e2b0
+bool tWaitForObject::tResult::Ready() const
+{
+	return fKind == 1 ? true : false;
+}
