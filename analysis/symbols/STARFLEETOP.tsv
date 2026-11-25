@@ -1245,7 +1245,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426116	function	fn_00426116		?fn_00426116@@YAXXZ	claim		none
 0x00426141	function	fn_00426141		??0fn_00426141_Class@@QAE@PAVfn_00426141_Game@@@Z	claim		none
 0x0042630b	function	fn_0042630b		?fn_0042630b@fn_00426141_Class@@QAEXXZ	claim		none
-0x0042636b	function	fn_0042636b					none
+0x0042636b	function	fn_0042636b		?fn_0042636b@fn_00426141_Class@@QAE?AVfn_00426141_Cell@@HH@Z	claim		none
 0x0042642c	function	fn_0042642c					none
 0x00426469	function	fn_00426469					none
 0x0042653f	function	fn_0042653f					none

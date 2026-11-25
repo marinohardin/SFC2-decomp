@@ -82,7 +82,7 @@ public:
 class fn_00426141_Cell
 {
 public:
-	int m00[9];
+	float m00[9];
 	void fn_0042642c(const fn_00426141_Cell& other);
 };
 
@@ -212,4 +212,33 @@ void fn_00426141_Class::fn_0042630b()
 				m04[i] = 1.0f - v;
 		}
 	}
+}
+
+extern "C" double fn_007381c4(double);
+extern "C" double fn_00737fa4(double);
+
+// FUNCTION: STARFLEETOP 0x0042636b
+fn_00426141_Cell fn_00426141_Class::fn_0042636b(int i, int j)
+{
+	fn_00426141_Cell r;
+	float f = (float)j * 0.03125f;
+	float a = f * 3.14159265358979;
+	a = a + a;
+	float g = (float)i * 0.0625f;
+	float b = g * 3.14159265358979;
+	float sa = (float)fn_007381c4(a);
+	float ca = (float)fn_00737fa4(a);
+	float sb = (float)fn_007381c4(b);
+	float cb = (float)fn_00737fa4(b);
+	fn_00426141_Cell c;
+	c.m00[0] = sb * ma0;
+	c.m00[1] = cb * ma0 * ca;
+	c.m00[2] = cb * ma0 * sa;
+	c.m00[3] = sb;
+	c.m00[4] = cb * ca;
+	c.m00[5] = cb * sa;
+	c.m00[6] = f;
+	c.m00[7] = g;
+	r.fn_0042642c(c);
+	return r;
 }
