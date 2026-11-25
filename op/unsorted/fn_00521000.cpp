@@ -1,6 +1,84 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00521000.cpp
-// Functions: 0x00521342 to 0x00521bc8, 12 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: layouts guessed from the accesses; no header holds these classes yet
+class tAIEntry {
+public:
+	int m_id;
+	int pad4;
+	int pad8;
+	int padc;
+	int m_10;
+	int m_14;
+	int pad18;
+	int pad1c;
+	int pad20;
+	float m_24;
+	int m_28;
+	int pad2c;
+	int pad30;
+	int pad34;
+	int m_38;
+	int m_3c;
+};
+
+extern float g_0079561c;
+char __stdcall fn_00521965(tAIEntry* e);
+
+class tAIIdList {
+public:
+	int m_ids[50];
+	int m_count;
+};
+
+class tAIEntryTable {
+public:
+	tAIEntry m_entries[50];
+	int m_count;
+};
+
+// FUNCTION: STARFLEETOP 0x00521450
+int __stdcall fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
+{
+	int i = 0;
+	tAIEntry* p = t->m_entries;
+	for (; i < t->m_count; i++, p++) {
+		if (p->m_id != -1) {
+			p->m_10 = p->m_14;
+			if (fn_00521965(p)) {
+				p->m_28 = 2;
+			}
+		}
+	}
+	int counts[2];
+	tAIEntry* e;
+	int j;
+	counts[0] = 0;
+	counts[1] = 0;
+	e = t->m_entries;
+	for (j = 0; j < t->m_count; j++, e++) {
+		if (e->m_id != -1) {
+			if (e->m_28 == 0) {
+				counts[e->m_38]++;
+			} else {
+				if (e->m_24 == g_0079561c) {
+					continue;
+				}
+				if (e->m_28 == 0) {
+					counts[e->m_38]++;
+				}
+			}
+			if (t->m_entries[e->m_3c].m_28 != 0) {
+				tAIIdList* l = a;
+				if (e->m_38 != 0) {
+					l = b;
+				}
+				if (l->m_count < 50) {
+					l->m_ids[l->m_count] = e->m_id;
+					l->m_count++;
+				}
+			}
+		}
+	}
+	if (counts[0] != 0 && counts[1] != 0) {
+		return 0;
+	}
+	return 1;
+}
