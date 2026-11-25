@@ -161,6 +161,12 @@ double tSoundChannel::mGet3DSoundReferenceDistance()
 {
     return (&field_0x30)->mGet3DSoundReferenceDistance();
 }
+
+// FUNCTION: STARFLEETOP 0x00646820
+float tSoundChannel::mGet3DSoundConeAngleForNoAttenuation()
+{
+    return (&field_0x30)->mGet3DSoundConeAngleForNoAttenuation();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
