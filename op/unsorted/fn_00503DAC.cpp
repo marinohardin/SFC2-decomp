@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00503DAC.cpp
-// Functions: 0x00503dac to 0x00503fed, 9 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/fn_0040ce21_type.h"
+
+// HYPOTHESIS: tFx_PPDPulse has no header yet; 0x48 bytes from the new below.
+class tFx_PPDPulse
+{
+public:
+	tFx_PPDPulse();
+	char pad00[0x48];
+};
+
+// FUNCTION: STARFLEETOP 0x00503dac
+tFx_PPDPulse* fn_00503dac()
+{
+	static fn_0040ce21_type marker("Let's Paul it!");
+	return new tFx_PPDPulse;
+}

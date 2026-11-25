@@ -7551,12 +7551,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00502eb6	function	fn_00502eb6	tFx_PPDWave				vtable
 0x005032f7	function	fn_005032f7		?fn_005032f7@@YAPAVtFx_PPDWave@@XZ	claim		none
 0x00503354	function	fn_00503354		?fn_00503354@@YAXXZ	claim		none
-0x00503474	function	tFx_PPDPulse::tFx_PPDPulse	tFx_PPDPulse				rtti
+0x00503474	function	tFx_PPDPulse::tFx_PPDPulse	tFx_PPDPulse	??0tFx_PPDPulse@@QAE@XZ	add		rtti
 0x005034d8	function	fn_005034d8	tFx_PPDPulse				vtable
 0x00503570	function	fn_00503570	tFx_PPDPulse				vtable
 0x005037c4	function	fn_005037c4	tFx_PPDPulse				vtable
 0x00503ad5	function	fn_00503ad5	tFx_PPDPulse				vtable
-0x00503dac	function	fn_00503dac					none
+0x00503dac	function	fn_00503dac		?fn_00503dac@@YAPAVtFx_PPDPulse@@XZ	claim		none
 0x00503e41	function	fn_00503e41					none
 0x00503ef3	function	fn_00503ef3					none
 0x00503efa	function	fn_00503efa	tProbeCell				vtable
