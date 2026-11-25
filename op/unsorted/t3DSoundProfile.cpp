@@ -20,3 +20,6 @@ double t3DSoundProfile::vfunction15() { return f3DSoundReferenceDistance; }
 
 // FUNCTION: STARFLEETOP 0x00663670
 void t3DSoundProfile::mSet3DSoundReferenceDistance(double aDistance) { f3DSoundReferenceDistance = aDistance; }
+
+// FUNCTION: STARFLEETOP 0x00663690
+void t3DSoundProfile::mSet3DSoundCones(float anAngle, long aLevel) { f3DSoundConeAngleForNoAttenuation = anAngle; f3DSoundConeAttenuationLevel = aLevel; }
