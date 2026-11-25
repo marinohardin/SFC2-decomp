@@ -20735,7 +20735,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070fb60	function	fn_0070fb60					none
 0x0070fb70	function	fn_0070fb70					none
 0x0070fb90	function	nFunctionWrapper::GetExceptionCallstack		?GetExceptionCallstack@nFunctionWrapper@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	mangled		mangled
-0x0070fc80	function	tTimer::tTimer	tTimer	??0tTimer@@QAE@XZ	mangled		mangled
+0x0070fc80	function	tTimer::tTimer	tTimer	??0tTimer@@QAE@XZ	claim		mangled
 0x0070fca0	function	tTimer::scalar_deleting_destructor	tTimer				sdk
 0x0070fcc0	function	tTimer::~tTimer	tTimer	??1tTimer@@UAE@XZ	callers		sdk
 0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
