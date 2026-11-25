@@ -33,6 +33,10 @@ public:
 protected:
 //Operations
 	virtual void OnValChanged( const tType& newValue, const tType& prevValue ) const;
+	tType SetVal( const tType& newValue );
+
+//Accessors
+	tType& GetVal();
 
 //Fields
 	// Guard for use by derived class functions
@@ -67,6 +71,26 @@ inline tInterlockedType<tType>::~tInterlockedType()
 }
 
 template< typename tType >
+inline tType& tInterlockedType< tType >::GetVal()
+{
+	return fValue;
+}
+
+template< typename tType >
+inline tType tInterlockedType< tType >::SetVal( const tType& newValue )
+{
+	tType& value = GetVal();
+	if( value != newValue )
+	{
+		tType prevValue = value;
+		value = newValue;
+		OnValChanged( newValue, prevValue );
+	}
+
+	return value;
+}
+
+template< typename tType >
 inline void tInterlockedType< tType >::OnValChanged( const tType& newValue, const tType& prevValue ) const
 {
 }
@@ -84,20 +108,15 @@ public:
 	~tInterlockedScalar();
 
 //Operations
-	tInterlockedScalar& operator=( const tType& value );
+	tType operator=( tType value );
 };
 
 template< typename tType >
-inline tInterlockedScalar<tType>& tInterlockedScalar<tType>::operator=( const tType& value )
+inline tType tInterlockedScalar<tType>::operator=( tType value )
 {
 	tResourceGuard::tGuard guard( fResourceGuard );
-	tType prev = fValue;
-	if( prev != value )
-	{
-		fValue = value;
-		OnValChanged( value, prev );
-	}
-	return *this;
+
+	return( SetVal( value ) );
 }
 
 template< typename tType >
