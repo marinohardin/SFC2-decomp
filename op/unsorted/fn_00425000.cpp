@@ -351,6 +351,8 @@ struct fn_004255b5_class
 	void fn_004259bd(float x, float y, unsigned int* col, unsigned int* row);
 	void fn_004256b1(unsigned int col, unsigned int row, fn_00412f08_point p, float r);
 	void fn_0042574b(int unused0, int unused1, float x, float y, float r, unsigned int* col0, unsigned int* col1, unsigned int* row0, unsigned int* row1);
+	void fn_004257b4(tEntity* pEntity);
+	void fn_00425824(tEntity* pEntity, int value);
 };
 
 // FUNCTION: STARFLEETOP 0x004255b5
@@ -412,4 +414,16 @@ void fn_004255b5_class::fn_0042574b(int unused0, int unused1, float x, float y, 
 		*col0 = 0;
 	if (*row0 > *row1)
 		*row0 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004257b4
+void fn_004255b5_class::fn_004257b4(tEntity* pEntity)
+{
+	// HYPOTHESIS: fn_00425824 belongs to the cell object like fn_004258de.
+	if (pEntity != 0) {
+		this->fn_00425824(pEntity, 0);
+		((tObject_008f5170*)this)->fn_004258de(pEntity, 0, 0);
+		pEntity->fLastMapPos = pEntity->fCurrPos;
+		pEntity->fMapRadius = pEntity->vfunction14();
+	}
 }
