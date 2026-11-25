@@ -38,3 +38,14 @@ fn_005208d2_Elem* fn_005208d2_Vec::fn_005208d2(fn_005208d2_Elem* dest, fn_005208
     last = i;
     return dest;
 }
+
+// HYPOTHESIS: a tree-node allocator (first two links default to the node itself); the
+// node's third word is left unset. Pointer-sized words stand in for the node type.
+// FUNCTION: STARFLEETOP 0x0052090a
+int* __stdcall fn_0052090a(int* a, int* b)
+{
+    int* node = (int*)operator new(0xc);
+    node[0] = (int)(a ? a : node);
+    node[1] = (int)(b ? b : node);
+    return node;
+}

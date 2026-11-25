@@ -8290,7 +8290,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0052008f	function	fn_0052008f	tAICaptain	?fn_0052008f@tAICaptain@@QAEXXZ	claim		none
 0x005200c8	function	fn_005200c8	tAICaptain	?vfunction4@tAICaptain@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
 0x005208d2	function	fn_005208d2		?fn_005208d2@fn_005208d2_Vec@@QAEPAUfn_005208d2_Elem@@PAU2@0@Z	claim		none
-0x0052090a	function	fn_0052090a					none
+0x0052090a	function	fn_0052090a		?fn_0052090a@@YGPAHPAH0@Z	claim		none
 0x00520966	function	tAIData::tAIData	tAIData				rtti
 0x00520990	function	tBasicFile::mDispose	tBasicFile	?mDispose@tBasicFile@@QAEPAV1@XZ	mangled		mangled
 0x0052099d	function	fn_0052099d	tETrait				vtable
