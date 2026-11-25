@@ -20,3 +20,18 @@ void __stdcall fn_00601498( const std::string& param_1, int param_2 )
 	fn_00404e8a( stream << "*** ", param_1 ) << " ***";
 	fn_00607d61()->fn_0060a4b8( stream.str(), param_2 );
 }
+
+// HYPOTHESIS: the object fn_00600ab8 returns is the class that owns fn_00600b4a; its name is unknown.
+class fn_00600b4a_class
+{
+public:
+	void fn_00600b4a();
+};
+
+fn_00600b4a_class* __stdcall fn_00600ab8( int param_1, int param_2, int param_3 );
+
+// FUNCTION: STARFLEETOP 0x00601540
+void __stdcall fn_00601540( int param_1, int param_2 )
+{
+	fn_00600ab8( param_1, 5, 1 )->fn_00600b4a();
+}

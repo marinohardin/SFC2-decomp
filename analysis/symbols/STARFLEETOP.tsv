@@ -15277,7 +15277,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
 0x00600a82	function	fn_00600a82		?fn_00600a82@@YAXXZ	claim		none
 0x00600a91	function	fn_00600a91					none
-0x00600ab8	function	fn_00600ab8					none
+0x00600ab8	function	fn_00600ab8		?fn_00600ab8@@YGPAVfn_00600b4a_class@@HHH@Z	add		none
 0x00600b2e	function	tMessageDialogGlobal::scalar_deleting_destructor	tMessageDialogGlobal				rtti
 0x00600b4a	function	fn_00600b4a					none
 0x00600bd5	thunk	fn_00600bd5					none
@@ -15317,7 +15317,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00601338	function	nAsyncClientMessengerProcedures::tAcceptMessage::~tAcceptMessage	nAsyncClientMessengerProcedures::tAcceptMessage				rtti
 0x00601343	function	fn_00601343					none
 0x00601498	function	fn_00601498		?fn_00601498@@YGXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
-0x00601540	function	fn_00601540					none
+0x00601540	function	fn_00601540		?fn_00601540@@YGXHH@Z	claim		none
 0x00601557	function	fn_00601557					none
 0x0060161d	function	fn_0060161d					none
 0x00601650	function	fn_00601650					none
