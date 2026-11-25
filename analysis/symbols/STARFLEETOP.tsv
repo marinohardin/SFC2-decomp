@@ -15369,7 +15369,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00602bc7	function	fn_00602bc7	tMetaClientPlayerListPanel				vtable
 0x00602e18	function	fn_00602e18		?fn_00602e18@tPlayerListPanelSketch@@QAEXPAVfn_00602e18_message@@@Z	claim		none
 0x00602f16	function	fn_00602f16					none
-0x006032e7	function	fn_006032e7					none
+0x006032e7	function	fn_006032e7		?fn_006032e7@fn_006032e7_object@@QAEXXZ	claim		none
 0x00603351	function	fn_00603351					none
 0x006033b4	function	fn_006033b4					none
 0x006033e7	function	fn_006033e7					none
