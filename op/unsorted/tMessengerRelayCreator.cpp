@@ -7,3 +7,10 @@
 tMessengerRelayCreator::~tMessengerRelayCreator()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0060185b
+// HYPOTHESIS: the original returns the new object; the base declares the slot as void.
+void tMessengerRelayCreator::vfunction3()
+{
+    new tMessengerRelayC;
+}
