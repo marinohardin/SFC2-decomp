@@ -8,3 +8,9 @@ tResourceGuard::tGuard::tGuard( tResourceGuard& resGuard )
 {
 	fResGuard.Guard();
 }
+
+// FUNCTION: STARFLEETOP 0x0070efc0
+tResourceGuard::tGuard::~tGuard()
+{
+	fResGuard.Unguard();
+}
