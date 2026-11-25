@@ -3,13 +3,13 @@
 #include "Common/DataStore/DataStoreInput.h"
 #include "unsorted/nStoredProcedureArguments__tNotifyEvent.h"
 
-// HYPOTHESIS: the player list panel; the real class (tMetaClientPlayerListPanel, named by its
-// creator and by tRemoveItem) has no header yet. Only the member this function calls is declared.
-class tMetaClientPlayerListPanel
-{
-public:
-	void fn_00603bfb( int32u id );
-};
+#include "unsorted/tMetaClientPlayerListPanel.h"
+
+
+
+
+
+
 
 namespace nAsyncClientPlayerListProcedures
 {

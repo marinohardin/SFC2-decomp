@@ -24,24 +24,24 @@ public:
 	fn_0042a480_object field_08;
 };
 
-// HYPOTHESIS: the player list panel (tMetaClientPlayerListPanel); no header yet, so only the
-// members this function reads are declared, in a scope of its own.
-class tPlayerListPanelSketch
-{
-public:
-	void fn_00602e18( fn_00602e18_message* message );
+#include "unsorted/tMetaClientPlayerListPanel.h"
 
-protected:
-	int8u field_00[0xac];
-	tSmartPtr<nSwitch::tAddress> field_ac;
-	int8u field_b0[0x1c];
-	nSwitch::tSwitch* field_cc;
-};
+
+
+
+
+
+
+
+
+
+
+
 
 using namespace nStoredProcedureArguments;
 
 // FUNCTION: STARFLEETOP 0x00602e18
-void tPlayerListPanelSketch::fn_00602e18( fn_00602e18_message* message )
+void tMetaClientPlayerListPanel::fn_00602e18( fn_00602e18_message* message )
 {
 	if ( message )
 	{

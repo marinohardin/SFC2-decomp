@@ -2,16 +2,16 @@
 #include "Common/DataStore/DataStoreInput.h"
 #include "unsorted/nSwitch__tResponse.h"
 
-// HYPOTHESIS: the player list panel is declared in fn_00601983.cpp (no header yet); this unit
-// declares only the member it calls, in a scope of its own, so as not to declare the class twice.
-namespace nPlayerListPanelLocal
-{
-	class tPanel
-	{
-	public:
-		void fn_00603aac( int32 param_1 );
-	};
-};
+#include "unsorted/tMetaClientPlayerListPanel.h"
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: nested member of tMetaClientPlayerListPanel (destructor 0x00603a5f); no header yet.
 class tAddItem
@@ -44,7 +44,7 @@ public:
 	void fn_00601ca9( const nDataStore::tBuffer* buffer );
 
 protected:
-	nPlayerListPanelLocal::tPanel* field_44;
+	tMetaClientPlayerListPanel* field_44;
 };
 
 // FUNCTION: STARFLEETOP 0x00601ca9
