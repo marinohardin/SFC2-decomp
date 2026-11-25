@@ -12,6 +12,8 @@ static long mNumberOfErrors; // HYPOTHESIS: long (compared signed with 32)
 tChannelAttributes::~tChannelAttributes() {}
 // FUNCTION: STARFLEETOP 0x00646240
 void t3DSoundProfile::mSet3DSoundOrientation(tPoint3* aPoint) { f3DSoundOrientation.x = aPoint->x; f3DSoundOrientation.y = aPoint->y; f3DSoundOrientation.z = aPoint->z; }
+// FUNCTION: STARFLEETOP 0x006462c0
+tPoint3* t3DSoundProfile::vfunction13() { return &f3DSoundVelocity; } // slot 13 = mGet3DSoundVelocity, name kept for twSound.cpp
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
 {
@@ -22,7 +24,6 @@ void AddSoundErrorDuringInterrupt(const char* format, ...)
         vsprintf(gSoundFmtStr[mNumberOfErrors++], format, args);
     }
 }
-
 // FUNCTION: STARFLEETOP 0x00646d10
 void PrintOutBufferedErrors()
 {
@@ -36,7 +37,6 @@ void PrintOutBufferedErrors()
 // needs only its declaration. The exe's data names put the Test_ function of this unit's binding copy
 // (0x0064fc00; cache 0x008e0b54, type descriptor 0x0083c608) on tMemoryPart, not tSoundPart; it is not claimed here.
 #include "unsorted/tMemoryPart.h"
-
 // The scalar deleting destructor the compiler generates from the virtual ~tSoundChannelList is 0x0064fbc0.
 inline tSoundChannelList::~tSoundChannelList()
 {
