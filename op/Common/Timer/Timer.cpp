@@ -13,3 +13,16 @@ tTimer::tTimer()
 	, fPeriod( 0 )
 {
 }
+
+// FUNCTION: STARFLEETOP 0x0070fd40
+void tTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context )
+{
+	fTimerHasStarted = 0;
+	fDueTime = dueTime;
+	fPeriod = period;
+	fpTimerHandler = 0;
+	fpCallbackFunc = 0;
+	fCallbackType = kCallbackClass;
+	fpCallback = pCallback;
+	fContext = context;
+}
