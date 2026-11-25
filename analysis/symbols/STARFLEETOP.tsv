@@ -15377,7 +15377,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00603575	function	fn_00603575					none
 0x00603713	function	fn_00603713		?fn_00603713@fn_006032e7_object@@QAEXPAVfn_0042a480_object@@@Z	claim		none
 0x0060378d	function	fn_0060378d		?fn_0060378d@fn_006032e7_object@@QAEXPAH@Z	claim		none
-0x006037fc	function	fn_006037fc					none
+0x006037fc	function	fn_006037fc		?fn_006037fc@fn_006032e7_object@@QAEHPAH@Z	claim		none
 0x00603873	function	fn_00603873					none
 0x00603978	function	fn_00603978					none
 0x00603a08	function	fn_00603a08					none

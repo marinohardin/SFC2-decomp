@@ -1,6 +1,72 @@
 #include "Common/Thread/Optex.h"
 #include "unsorted/fn_0042a480_object.h"
 
+// HYPOTHESIS: the list object at +0x13c; slot 44 returns its count, slot 59 the item at an index.
+class fn_006037fc_list
+{
+public:
+	virtual void fn_slot0();
+	virtual void fn_slot1();
+	virtual void fn_slot2();
+	virtual void fn_slot3();
+	virtual void fn_slot4();
+	virtual void fn_slot5();
+	virtual void fn_slot6();
+	virtual void fn_slot7();
+	virtual void fn_slot8();
+	virtual void fn_slot9();
+	virtual void fn_slot10();
+	virtual void fn_slot11();
+	virtual void fn_slot12();
+	virtual void fn_slot13();
+	virtual void fn_slot14();
+	virtual void fn_slot15();
+	virtual void fn_slot16();
+	virtual void fn_slot17();
+	virtual void fn_slot18();
+	virtual void fn_slot19();
+	virtual void fn_slot20();
+	virtual void fn_slot21();
+	virtual void fn_slot22();
+	virtual void fn_slot23();
+	virtual void fn_slot24();
+	virtual void fn_slot25();
+	virtual void fn_slot26();
+	virtual void fn_slot27();
+	virtual void fn_slot28();
+	virtual void fn_slot29();
+	virtual void fn_slot30();
+	virtual void fn_slot31();
+	virtual void fn_slot32();
+	virtual void fn_slot33();
+	virtual void fn_slot34();
+	virtual void fn_slot35();
+	virtual void fn_slot36();
+	virtual void fn_slot37();
+	virtual void fn_slot38();
+	virtual void fn_slot39();
+	virtual void fn_slot40();
+	virtual void fn_slot41();
+	virtual void fn_slot42();
+	virtual void fn_slot43();
+	virtual int fn_count();
+	virtual void fn_slot45();
+	virtual void fn_slot46();
+	virtual void fn_slot47();
+	virtual void fn_slot48();
+	virtual void fn_slot49();
+	virtual void fn_slot50();
+	virtual void fn_slot51();
+	virtual void fn_slot52();
+	virtual void fn_slot53();
+	virtual void fn_slot54();
+	virtual void fn_slot55();
+	virtual void fn_slot56();
+	virtual void fn_slot57();
+	virtual void fn_slot58();
+	virtual void* fn_item( int index );
+};
+
 // HYPOTHESIS: an object holding an optex at +0xb8 and a vector of owned pointers at +0x150;
 // the owning class is not recovered.
 class fn_006032e7_object
@@ -19,7 +85,9 @@ public:
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
-	int8u	field_e4[0x150 - 0xb8 - sizeof( tOptex )];
+	int8u	field_e4[0x13c - 0xb8 - sizeof( tOptex )];
+	fn_006037fc_list*	field_13c;
+	int8u	field_140[0x150 - 0x140];
 	int32u	field_150;
 	void**	field_154;
 	void**	field_158;
@@ -187,4 +255,24 @@ void fn_006032e7_object::fn_0060378d( int* message )
 		else
 			fn_00603575( *it + 2 );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x006037fc
+int fn_006032e7_object::fn_006037fc( int* record )
+{
+	tOptex::tGuard guard( &field_b8 );
+	int index = 0;
+	if ( field_13c )
+	{
+		int count = field_13c->fn_count();
+		for ( ; index < count; ++index )
+		{
+			if ( field_13c->fn_item( index ) == record )
+				goto done;
+		}
+	}
+	index = -1;
+done:
+	guard.Leave();
+	return index;
 }
