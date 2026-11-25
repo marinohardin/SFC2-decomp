@@ -15300,7 +15300,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600ea9	function	fn_00600ea9	tMedalsPanel				vtable
 0x00600f61	function	fn_00600f61	tMedalsPanel				vtable
 0x00600f8d	function	fn_00600f8d	tMetaClientPanel				vtable
-0x00600f90	function	fn_00600f90					none
+0x00600f90	function	fn_00600f90		?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
 0x00600fba	function	fn_00600fba					none
 0x00601054	function	fn_00601054					none
 0x00601141	function	fn_00601141					none
