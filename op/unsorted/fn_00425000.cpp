@@ -390,3 +390,14 @@ void fn_004255b5_class::fn_004256b1(unsigned int col, unsigned int row, fn_00412
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00425726
+tObject_00425726_list *tObject_008f5170::fn_00425726(int32 column, int32 row)
+{
+	// HYPOTHESIS: the object's layout is not declared in its header yet; the fields are
+	// read through this: +0 cells (8 bytes each), +4 width, +8 height (the row stride).
+	int *self = (int *)this;
+	if ((unsigned int)column < (unsigned int)self[1] && (unsigned int)row < (unsigned int)self[2])
+		return (tObject_00425726_list *)(self[0] + (self[2] * row + column) * 8);
+	return 0;
+}
