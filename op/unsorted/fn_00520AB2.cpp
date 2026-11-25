@@ -220,3 +220,19 @@ tAIUnitDataList::tList::tList()
 {
 	field_c80 = 0;
 }
+
+// HYPOTHESIS: the 0x38-byte list value; its one-argument constructor is at 0x005223dc.
+struct fn_005223dc_value
+{
+	char field_0[0x38];
+	fn_005223dc_value(int arg);
+};
+
+inline void* operator new(unsigned int, void* p) { return p; }
+inline void operator delete(void*, void*) {}
+
+// FUNCTION: STARFLEETOP 0x005223af
+void fn_005223af(int* dest, int value)
+{
+	new (dest) fn_005223dc_value(value);
+}

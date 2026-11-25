@@ -8348,7 +8348,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005220d5	function	fn_005220d5					none
 0x0052210d	function	fn_0052210d		?fn_0052210d@@YGXHHH@Z	add		none
 0x0052238b	function	fn_0052238b		??0tList@tAIUnitDataList@@QAE@XZ	claim		none
-0x005223af	function	fn_005223af					none
+0x005223af	function	fn_005223af		?fn_005223af@@YAXPAHH@Z	claim		none
 0x005223dc	function	fn_005223dc					none
 0x00522441	function	fn_00522441					none
 0x005224d8	function	fn_005224d8					none
