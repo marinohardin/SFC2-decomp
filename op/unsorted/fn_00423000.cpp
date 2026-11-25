@@ -181,6 +181,7 @@ struct fn_004232aa_List {
     int* fTail;
     void fn_00423405(int* node);
     void fn_004232aa(int* node);
+    void fn_00423384();
 };
 
 // FUNCTION: STARFLEETOP 0x004232aa
@@ -265,5 +266,39 @@ void fn_004232ff_Handler::fn_004232ff(fn_004232ff_request* request)
         marker->fID = request->fID;
         marker->fn_0041089e(&request->fPos);
         mgr->mAddEntity(marker);
+    }
+}
+
+extern float g_0090bee0;
+
+// HYPOTHESIS: each node has a timer (double at +0x30) advanced by the clamped frame time g_0090bee0;
+// when it passes the limit (double at +0x28) the other nodes are moved to the tail.
+// FUNCTION: STARFLEETOP 0x00423384
+void fn_004232aa_List::fn_00423384()
+{
+    int* node = fHead;
+    while (node != 0) {
+        float step;
+        if (g_0090bee0 < 0.0 || g_0090bee0 >= 0.25) {
+            step = 0.0f;
+        } else {
+            step = g_0090bee0;
+        }
+        *(double*)(node + 0xc) = step + *(double*)(node + 0xc);
+        if (*(char*)(node + 8) == 0 && *(double*)(node + 0xc) > *(double*)(node + 10)) {
+            *(char*)(node + 8) = 1;
+            *(double*)(node + 10) = 0.0;
+            int* other = fHead;
+            while (other != 0) {
+                if (other == node || (*other == 1 && *node == 1)) {
+                    other = (int*)other[0xe];
+                } else {
+                    int* cur = other;
+                    other = (int*)other[0xe];
+                    fn_004232aa(cur);
+                }
+            }
+        }
+        node = (int*)node[0xe];
     }
 }
