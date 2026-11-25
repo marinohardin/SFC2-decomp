@@ -19,6 +19,7 @@ so a later rename leaves it stale.
     python3 -m harness.lib.symtab [<address>...]   # rows, as TSV, for these or every address
 """
 import csv
+import hashlib
 import os
 import re
 import sys
@@ -51,6 +52,53 @@ def write_claims(out, rows):
         w.writerow(FIELDS)
         for row in sorted(set(rows)):
             w.writerow(row)
+
+
+IDENTITY_FILE = 'symbols.id'
+
+
+def tree_id(src_root):
+    """A hash of every file under `src_root` (path and bytes): what the source tree a build was
+    made from looked like, uncommitted edits included. The compiler and its flags are pinned by
+    the repository, so equal trees compile to equal symbols."""
+    h = hashlib.sha256()
+    for top, dirs, files in os.walk(src_root):
+        dirs.sort()
+        for name in sorted(files):
+            full = os.path.join(top, name)
+            h.update(os.path.relpath(full, src_root).replace(os.sep, '/').encode() + b'\0')
+            with open(full, 'rb') as f:
+                h.update(hashlib.sha256(f.read()).digest())
+    return h.hexdigest()
+
+
+def write_identity(build, src_root, tree=None):
+    """Record in `build` which source tree its symbols.tsv belongs to: `tree`, a tree_id taken
+    before the build started (so an edit during the run is not stamped as built), else the
+    tree's id now."""
+    with open(os.path.join(build, IDENTITY_FILE), 'w') as f:
+        f.write((tree or tree_id(src_root)) + '\n')
+
+
+def remove_identity(build):
+    """A run that did not complete: its symbols.tsv belongs to no tree. Raises OSError when the
+    file cannot be removed, since a stale id could then be taken for this run's."""
+    target = os.path.join(build, IDENTITY_FILE)
+    try:
+        os.remove(target)
+    except FileNotFoundError:
+        return
+    if os.path.exists(target):
+        raise OSError(f'cannot remove {target}')
+
+
+def build_is_current(build, src_root):
+    """True when `build`'s symbols.tsv was written for the tree now under `src_root`."""
+    try:
+        with open(os.path.join(build, IDENTITY_FILE)) as f:
+            return f.read().strip() == tree_id(src_root)
+    except OSError:
+        return False
 
 
 def load_claims(src=None):

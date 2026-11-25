@@ -4,8 +4,11 @@ Rows, addresses and symbols are invented; expected output is written out by hand
 """
 import importlib.util
 import pathlib
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from harness.lib import symtab  # noqa: E402
 spec = importlib.util.spec_from_file_location('symbols_tool', ROOT / 'tools/symbols.py')
 sym = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sym)
@@ -22,6 +25,8 @@ ROW_FIRE = '0x00401000\tfunction\ttTestShip::Fire\ttTestShip\t' + FIRE + '\tmang
 ROW_FOLDED = '0x00401000\tfolded\ttTestShip::Fire2\ttTestShip\t?Fire2@tTestShip@@QAEXXZ\tadd\t\tsdk'
 ROW_PLAIN = '0x00401010\tfunction\tfn_00401010\t\t\t\t\tnone'
 ROW_THUNK = '0x00401020\tthunk\tfn_00401020\ttVtbl_00500000\t\t\t\tvtable'
+TAIL = ("its symbol_evidence is mangled, which `claim` does not replace: make the claim compile "
+        "the table's symbol, or `claim --replace-evidence`")
 GOOD = HEAD + '\n'.join([ROW_FIRE, ROW_FOLDED, ROW_PLAIN, ROW_THUNK]) + '\n'
 
 
@@ -171,6 +176,7 @@ def build_folder(tmp_path):
     src = tmp_path / 'op'
     src.mkdir()
     (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid f() {}\n')
+    symtab.write_identity(str(build), str(src))      # a build of this very tree
     return build, src
 
 
@@ -179,7 +185,7 @@ def test_check_fails_when_the_last_build_compiled_another_symbol_of_a_current_cl
     rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
     assert rc == 1
     assert out.startswith(f'ERROR 0x00401000: the last build compiled ?Fire@tTestShip@@QAEHXZ, '
-                          f'the table has {FIRE}; run `python3 tools/symbols.py claim`\n')
+                          f'the table has {FIRE}; {TAIL}\n')
     assert '0x00401010' not in out              # not a current claim: its row is stale
 
 
@@ -187,6 +193,10 @@ def test_a_build_difference_is_an_error_when_the_level_is_error():
     known = {'0x00401000': 'function'}
     text = HEAD + ROW_FIRE + '\n'
     got = sym.check_text(text, known, {'0x00401000': '?Other@@YAXXZ'}, 'ERROR')
+    assert got == [f'ERROR 0x00401000: the last build compiled ?Other@@YAXXZ, the table has {FIRE}; '
+                   f'{TAIL}']
+    got = sym.check_text(text.replace('mangled', 'callers'), known, {'0x00401000': '?Other@@YAXXZ'},
+                         'ERROR')
     assert got == [f'ERROR 0x00401000: the last build compiled ?Other@@YAXXZ, the table has {FIRE}; '
                    'run `python3 tools/symbols.py claim`']
 
@@ -301,7 +311,7 @@ def claim_run(tmp_path, capsys, *args):
 def test_claim_makes_a_claimed_row_carry_the_builds_symbol_and_touches_nothing_else(tmp_path, capsys):
     table, _ = setup(tmp_path)
     build_folder(tmp_path)
-    rc, out = claim_run(tmp_path, capsys)
+    rc, out = claim_run(tmp_path, capsys, '--replace-evidence')
     assert rc == 0
     assert out == (f'0x00401000: {FIRE} (mangled) -> ?Fire@tTestShip@@QAEHXZ (claim)\n'
                    '1 rows changed\n')
@@ -310,6 +320,62 @@ def test_claim_makes_a_claimed_row_carry_the_builds_symbol_and_touches_nothing_e
     rc, out = claim_run(tmp_path, capsys)
     assert (rc, out) == (0, '0 rows changed\n')
     assert table.read_bytes() == want.encode()
+
+
+def test_claim_refuses_to_replace_a_mangled_or_add_symbol_and_changes_nothing(tmp_path, capsys):
+    table, _ = setup(tmp_path)
+    build_folder(tmp_path)
+    rc, out = claim_run(tmp_path, capsys)
+    assert rc == 1
+    assert out == (f'ERROR 0x00401000: the build compiled ?Fire@tTestShip@@QAEHXZ, but the table '
+                   f'has {FIRE} with symbol_evidence mangled; not replaced (the claim must compile '
+                   "the original's symbol; --replace-evidence overrides)\n"
+                   '0 rows changed, 1 refused\n')
+    assert table.read_bytes() == GOOD.encode()
+    table.write_text(GOOD.replace(ROW_FIRE, ROW_FIRE.replace('mangled', 'add')), newline='')
+    rc, out = claim_run(tmp_path, capsys)
+    assert rc == 1 and 'with symbol_evidence add;' in out
+
+
+def test_claim_still_replaces_a_callers_symbol_and_an_equal_mangled_one(tmp_path, capsys):
+    table, _ = setup(tmp_path, GOOD.replace(ROW_FIRE, ROW_FIRE.replace('mangled', 'callers')))
+    build_folder(tmp_path)
+    rc, out = claim_run(tmp_path, capsys)
+    assert rc == 0 and '(callers) -> ?Fire@tTestShip@@QAEHXZ (claim)' in out
+    table.write_text(GOOD, newline='')
+    (tmp_path / 'build' / 'symbols.tsv').write_text(f'address\tsymbol\tfile\n0x00401000\t{FIRE}\ta.cpp\n')
+    rc, out = claim_run(tmp_path, capsys)           # the build agrees: the evidence becomes claim
+    assert rc == 0 and f'{FIRE} (mangled) -> {FIRE} (claim)' in out
+
+
+def test_a_build_of_another_tree_is_not_compared_and_says_so(tmp_path, capsys):
+    build, src = build_folder(tmp_path)            # symbols that disagree with the table
+    (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid g() {}\n')   # edited since
+    rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
+    assert rc == 0
+    assert out == ('INFO the last build was not made from the current source tree: its symbols '
+                   'are not compared (run harness/build-and-verify.sh --all, then check again)\n'
+                   f'ok: 4 rows in {tmp_path / "T.tsv"}\n')
+
+
+def test_a_build_with_no_identity_is_not_compared(tmp_path, capsys):
+    build, src = build_folder(tmp_path)
+    (build / 'symbols.id').unlink()
+    rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
+    assert rc == 0 and out.startswith('INFO the last build was not made from the current')
+
+
+def test_the_tree_id_follows_content_and_names_not_the_clock(tmp_path):
+    (tmp_path / 'd').mkdir()
+    (tmp_path / 'd' / 'a.cpp').write_text('x')
+    first = symtab.tree_id(str(tmp_path))
+    assert symtab.tree_id(str(tmp_path)) == first
+    (tmp_path / 'd' / 'a.cpp').write_text('y')
+    assert symtab.tree_id(str(tmp_path)) != first
+    (tmp_path / 'd' / 'a.cpp').write_text('x')
+    assert symtab.tree_id(str(tmp_path)) == first
+    (tmp_path / 'd' / 'a.cpp').rename(tmp_path / 'd' / 'b.cpp')
+    assert symtab.tree_id(str(tmp_path)) != first
 
 
 def test_claim_resets_a_claim_row_that_is_no_longer_claimed_but_only_without_addresses(tmp_path, capsys):
