@@ -70,6 +70,8 @@ unsigned char tSoundChannelFormat::mAreWeARecordingChannel() { unsigned char isR
 unsigned char tSoundChannelFormat::mTryToLocateInHardware() { unsigned char inHardware = (fSoundType & 0x40) > 0; return inHardware; }
 // FUNCTION: STARFLEETOP 0x00646610
 unsigned char tSoundChannelFormat::mTryToLocateInSoftware() { unsigned char inSoftware = (fSoundType & 0x80) > 0; return inSoftware; }
+// FUNCTION: STARFLEETOP 0x00646620
+unsigned char tSoundChannelFormat::mAreWeFixedPan() { unsigned char fixedPan = (fSoundType & 0x100) > 0; return fixedPan; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
