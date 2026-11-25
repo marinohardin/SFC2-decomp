@@ -56,10 +56,12 @@ class tMemberCallback_tCharacterLoggedOn;
 class tMemberCallback_tTurnBreak;
 class tMemberCallback_tGetStartLocation;
 class tMemberCallback_tGetHex;
+class tMemberCallback_tGetHexForUpdate;
 
 class tMapRelayS {
 public:
 	void fn_005c14b5( tMemberCallback_tGetHex** out );
+	void fn_005c14f8( tMemberCallback_tGetHexForUpdate** out );
 	void fn_005c1472( tMemberCallback_tGetStartLocation** out );
 	void fn_005c13e8( tMemberCallback_tCharacterLoggedOn** out );
 	void fn_005c13a2( tMemberCallback_tMoveAccepted** out );
@@ -180,4 +182,19 @@ public:
 void tMapRelayS::fn_005c14b5( tMemberCallback_tGetHex** out )
 {
 	*out = new tMemberCallback_tGetHex( m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005abdc0 (the symbol table calls it
+// tMemberCallback<nAsyncMapProcedures::tGetHexForUpdate, nDataStore::tBuffer const*>); takes no
+// argument, size 0x74 from the allocation. Real name and header unknown.
+class tMemberCallback_tGetHexForUpdate {
+public:
+	tMemberCallback_tGetHexForUpdate();
+	char pad00[0x74];
+};
+
+// FUNCTION: STARFLEETOP 0x005c14f8
+void tMapRelayS::fn_005c14f8( tMemberCallback_tGetHexForUpdate** out )
+{
+	*out = new tMemberCallback_tGetHexForUpdate;
 }
