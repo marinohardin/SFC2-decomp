@@ -44,6 +44,7 @@ private:
 	tInterlockedType& operator=( const tInterlockedType& copy );
 
 //Fields
+protected:
 	tType fValue;
 };
 
@@ -51,6 +52,13 @@ template< typename tType >
 inline tInterlockedType<tType>::tInterlockedType( const tType& value )
 {
 	fValue = value;
+}
+
+template< typename tType >
+inline tInterlockedType<tType>::operator tType() const
+{
+	tResourceGuard::tGuard guard( fResourceGuard );
+	return fValue;
 }
 
 template< typename tType >
@@ -74,7 +82,23 @@ public:
 //Setup
 	tInterlockedScalar( tType value = tType() );
 	~tInterlockedScalar();
+
+//Operations
+	tInterlockedScalar& operator=( const tType& value );
 };
+
+template< typename tType >
+inline tInterlockedScalar<tType>& tInterlockedScalar<tType>::operator=( const tType& value )
+{
+	tResourceGuard::tGuard guard( fResourceGuard );
+	tType prev = fValue;
+	if( prev != value )
+	{
+		fValue = value;
+		OnValChanged( value, prev );
+	}
+	return *this;
+}
 
 template< typename tType >
 inline tInterlockedScalar<tType>::tInterlockedScalar( tType value ) :
@@ -97,6 +121,7 @@ public:
 // Operations
 	virtual	void StreamOut( nDataStore::tOutput& output ) const;
 	virtual	void StreamIn( nDataStore::tInput& input );
+	void ClearStackInfo();
 
 protected:
 // Types

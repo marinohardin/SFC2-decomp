@@ -20417,7 +20417,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	mangled		mangled
 0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	claim		sdk
 0x006ff700	function	fn_006ff700		?Alive@tThread@@QBE_NXZ	callers		none
-0x006ff710	function	fn_006ff710					none
+0x006ff710	function	fn_006ff710		?fn_006ff710@tThread@@IAEXXZ	claim		none
 0x006ff9dc	function	fn_006ff9dc					none
 0x006ffa70	function	tThread::ThreadProc	tThread	?ThreadProc@tThread@@KGIPAX@Z	mangled		mangled
 0x006ffaf0	function	fn_006ffaf0					none
@@ -20681,7 +20681,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e450	function	tThreadEvent::tThreadEvent	tThreadEvent	??0tThreadEvent@@QAE@_N0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eUse@tThreadState@@@Z	mangled		mangled
 0x0070e4e0	function	tThreadEvent::`scalar_deleting_destructor'	tThreadEvent	??_GtThreadEvent@@UAEPAXI@Z	mangled		mangled
 0x0070e500	function	tThreadEvent::~tThreadEvent	tThreadEvent	??1tThreadEvent@@UAE@XZ	mangled		mangled
-0x0070e520	function	fn_0070e520	tGLDC				vtable
+0x0070e520	function	fn_0070e520	tGLDC	??BtThreadEvent@@QAEPAXXZ	add		vtable
 0x0070e530	function	tThreadEvent::Signal	tThreadEvent	?Signal@tThreadEvent@@QAEXXZ	mangled		mangled
 0x0070e550	function	tThreadEvent::Reset	tThreadEvent	?Reset@tThreadEvent@@QAEXXZ	mangled		mangled
 0x0070e5b0	function	fn_0070e5b0					none
@@ -20708,7 +20708,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070ef70	function	fn_0070ef70					none
 0x0070ef80	function	fn_0070ef80					none
 0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	mangled		mangled
-0x0070efc0	function	fn_0070efc0					none
+0x0070efc0	function	fn_0070efc0		??1tGuard@tResourceGuard@@QAE@XZ	add		none
 0x0070efd0	function	tResourceGuard::tResourceGuard	tResourceGuard	??0tResourceGuard@@QAE@XZ	mangled		mangled
 0x0070f100	function	fn_0070f100					none
 0x0070f160	function	tResourceGuard::Guard	tResourceGuard	?Guard@tResourceGuard@@AAEXXZ	mangled		mangled
