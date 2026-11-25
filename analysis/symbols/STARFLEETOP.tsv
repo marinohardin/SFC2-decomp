@@ -17752,7 +17752,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067b0b0	function	fn_0067b0b0					none
 0x0067b0f0	function	fn_0067b0f0	tGroupCell				vtable
 0x0067b1e0	function	fn_0067b1e0	tGroupCell				vtable
-0x0067b2b0	function	fn_0067b2b0	tVisGroupAsset				vtable
+0x0067b2b0	function	fn_0067b2b0	tVisGroupAsset	?vfunction5@tVisGroupAsset@@UAEAAVtStream@@AAV2@@Z	claim		vtable
 0x0067b390	function	fn_0067b390	tVisGroupAsset				vtable
 0x0067b580	function	fn_0067b580	tVisGroupAsset				vtable
 0x0067b590	function	fn_0067b590	tVisGroupAsset				vtable

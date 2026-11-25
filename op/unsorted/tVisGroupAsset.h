@@ -8,6 +8,16 @@
 #include "unsorted/tAsset.h"
 #include <vector>
 
+class tStream;
+
+// HYPOTHESIS: 0x14-byte element of tVisGroupAsset's vector; slot 0 takes a stream.
+class c_0067b2b0
+{
+public:
+	virtual void fn_slot0( tStream& s );
+	unsigned char field_04[ 0x10 ];
+};
+
 // The layouts come from the asset factory fn_00676a30; the sizes are the ones it allocates.
 class tVisGroupAsset : public tAsset
 {
@@ -29,7 +39,9 @@ public:
 	virtual tStream& vfunction5( tStream& s );
 	virtual tStream& vfunction6( tStream& s );
 
-	std::vector<void *> field_5C;	// HYPOTHESIS: the element type is not known
+	// HYPOTHESIS: the element is 0x14 bytes with a virtual slot 0 that writes it to a stream
+	// (vfunction5 at 0x0067b2b0 calls it for each element); its real class is not known.
+	std::vector<c_0067b2b0> field_5C;
 	c_00678500 field_6C;
 	int field_BC;
 };
