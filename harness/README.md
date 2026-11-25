@@ -379,6 +379,40 @@ is set but cannot be read denies every edit. A session's Bash cannot write files
 (no redirect, `sed -i`, `cp` or `mv` passes the guard), so the list covers Edit and Write only. Unset, the guard allows any edit under `op/`, as
 before.
 
+### Planning lanes
+
+`python3 tools/lane_plan.py` checks a lane before it starts, so its file list owns the headers its
+classes need. Give it a units file (`--units`, one `op/UNITS.tsv` unit per line) or several lanes
+at once (`--lane name=file`, repeated). It follows the quoted `#include` lines under `op/` and
+`op/port/` and classes each header the lane's units reach as `owned` (only the lane's units
+include it), `shared` (units outside the lane include it) or `contested` (a unit of another lane
+in the plan does). For each function of the lane's units that is not exact (`op/UNITS.tsv`
+address ranges, `analysis/symbols/STARFLEETOP.tsv`, `matched_set.json`) it finds the header that
+defines the function's class: `workable` when the lane owns that header, `blocked` when it is
+shared or contested, or the class is defined nowhere (`(undeclared)`). The lane file list is the
+units' sources plus the owned headers.
+
+It prints a table per lane and, across the plan, the shared headers ranked by functions blocked:
+the integrator's list of headers to settle (or lanes to merge) before lanes start. A header two
+lanes are both blocked by shows up there only; it is not a conflict.
+
+A header under `op/port/` is a hotspot: class `hotspot`, never owned, never on a list, and a
+function whose class is declared there is blocked. A unit must be a source file under `op/`, not
+a header; anything else exits 2.
+
+`--grant LANE=HEADER` (repeatable) records the integrator's decision to give a shared header to
+one lane: it counts as owned by that lane, goes on its file list and is contested for every other
+lane, and the output lists each grant with the number of units outside the lane that include it
+(the units the lane's whole-tree checks must keep unbroken). A grant of an `op/port/` header is
+refused.
+
+Exit 1 when a lane's blocked share is over `--max-blocked` (default 0.2), a unit is in two lanes,
+or a file is given to two lanes; 2 on a usage error. `--write-files DIR` writes
+`files-<lane>.txt` (for `HARNESS_LANE_FILES`; lane names are letters, digits, `_` and `-`) and
+`functions-<lane>.tsv` (address, size from `ghidra/exports/functions.csv` or empty, class, unit,
+status, blocking header). It is advice for the integrator: `guard.py` is unchanged and still enforces whatever
+list the launcher is given.
+
 ### Symbol table and stand-ins
 
 Every `build-and-verify.sh --all` writes `<build>/symbols.tsv`: each claim's address, the symbol
