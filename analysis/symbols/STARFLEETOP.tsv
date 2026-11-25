@@ -1242,7 +1242,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00425f71	function	fn_00425f71		?fn_00425f71@@YAXPAI0H@Z	claim		none
 0x00425fef	function	fn_00425fef		?fn_00425fef@@YAXPAI0H@Z	claim		none
 0x004260a4	function	fn_004260a4		?fn_004260a4@@YAXPAI0@Z	claim		none
-0x00426116	function	fn_00426116					none
+0x00426116	function	fn_00426116		?fn_00426116@@YAXXZ	claim		none
 0x00426141	function	fn_00426141					none
 0x0042630b	function	fn_0042630b					none
 0x0042636b	function	fn_0042636b					none
