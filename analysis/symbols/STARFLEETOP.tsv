@@ -5128,7 +5128,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ba7c7	function	fn_004ba7c7					none
 0x004ba9eb	function	fn_004ba9eb					none
 0x004bac62	function	fn_004bac62					none
-0x004baeb1	function	fn_004baeb1					none
+0x004baeb1	function	fn_004baeb1		?fn_004baeb1@@YAMM@Z	add		none
 0x004baef4	function	tNetMsg_kAdjustSpeed::~tNetMsg_kAdjustSpeed	tNetMsg_kAdjustSpeed				rtti
 0x004baf7a	function	tNetMsg_kSetGameSpeed::~tNetMsg_kSetGameSpeed	tNetMsg_kSetGameSpeed				rtti
 0x004bb2af	function	fn_004bb2af					none
@@ -7557,7 +7557,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005037c4	function	fn_005037c4	tFx_PPDPulse				vtable
 0x00503ad5	function	fn_00503ad5	tFx_PPDPulse				vtable
 0x00503dac	function	fn_00503dac		?fn_00503dac@@YAPAVtFx_PPDPulse@@XZ	claim		none
-0x00503e41	function	fn_00503e41					none
+0x00503e41	function	fn_00503e41		??0tProbeCell@@QAE@PBM0@Z	claim		none
 0x00503ef3	function	fn_00503ef3					none
 0x00503efa	function	fn_00503efa	tProbeCell				vtable
 0x00503f01	function	fn_00503f01	tProbeCell				vtable
