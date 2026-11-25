@@ -249,39 +249,28 @@ float __stdcall fn_00521a15(float amount, fn_0052197e_node* n)
 	float total = n->field_14;
 	float quarterA = g_007b0200 * n->field_c;
 	float partA = (total > quarterA) ? quarterA : total;
+	float rest;
 	float left = total - partA;
 	float quarterB = g_007b01fc * n->field_c;
 	float partB = (left > quarterB) ? quarterB : left;
 	float left2 = left - partB;
 	float half = g_007b01f8 * n->field_c;
-	float rest = left2;
-	if (half < rest) {
-		rest = half;
-	}
+	rest = (left2 > half) ? half : left2;
 	if (amount > 0.0f) {
 		if (rest > 0.0f) {
-			if (amount <= rest) {
-				rest = amount;
-			}
-			result = (g_007b01ec * n->field_c / half) * rest;
-			amount = amount - rest;
+			float use = (amount > rest) ? rest : amount;
+			result = (g_007b01ec * n->field_c / half) * use;
+			amount = amount - use;
 		}
 		if (amount > 0.0f) {
 			if (partB > 0.0f) {
-				float t;
-				if (amount <= partB) {
-					t = amount;
-				} else {
-					t = partB;
-				}
+				float t = (amount > partB) ? partB : amount;
 				result = (g_007b01f0 * n->field_c / quarterB) * t + result;
 				amount = amount - t;
 			}
 			if (amount > 0.0f && partA > 0.0f) {
-				if (partA < amount) {
-					amount = partA;
-				}
-				result = (g_007b01f4 * n->field_c / quarterA) * amount + result;
+				float u = (amount > partA) ? partA : amount;
+				result = (g_007b01f4 * n->field_c / quarterA) * u + result;
 			}
 		}
 	}
