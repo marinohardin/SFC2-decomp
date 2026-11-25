@@ -7489,7 +7489,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0050047b	function	fn_0050047b					none
 0x0050048f	function	fn_0050048f		?fn_0050048f@@YAXXZ	claim		none
 0x005004a3	function	fn_005004a3					none
-0x005004b7	function	fn_005004b7					none
+0x005004b7	function	fn_005004b7		?fn_005004b7@@YAXXZ	claim		none
 0x005004cb	function	fn_005004cb					none
 0x00500803	function	fn_00500803					none
 0x00500817	function	fn_00500817					none
