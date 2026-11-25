@@ -11,3 +11,9 @@ unsigned char tSoundMemoryBlock::mAreWeInUse()
 {
     return fBlockInUse;
 }
+
+// FUNCTION: STARFLEETOP 0x0066eb60
+void tSoundMemoryBlock::mSetBlockInUse(unsigned char inUse)
+{
+    fBlockInUse = inUse;
+}
