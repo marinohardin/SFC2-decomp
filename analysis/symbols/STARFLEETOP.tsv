@@ -13096,7 +13096,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c1705	function	fn_005c1705		?fn_005c1705@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrix@@@Z	claim		none
 0x005c1748	function	fn_005c1748		?fn_005c1748@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetPoliticalTensionMatrixForUpdate@@@Z	claim		none
 0x005c1781	function	fn_005c1781		?fn_005c1781@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdatePoliticalTensionMatrix@@@Z	claim		none
-0x005c17c7	function	fn_005c17c7					none
+0x005c17c7	function	fn_005c17c7		?fn_005c17c7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c17c7@@@Z	claim		none
 0x005c180a	function	fn_005c180a					none
 0x005c1851	function	fn_005c1851					none
 0x005c1894	function	fn_005c1894					none

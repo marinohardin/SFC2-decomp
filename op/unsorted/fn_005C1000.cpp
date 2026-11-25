@@ -67,6 +67,7 @@ class tMemberCallback_tGetPoliticalTension;
 class tMemberCallback_tGetPoliticalTensionMatrix;
 class tMemberCallback_tGetPoliticalTensionMatrixForUpdate;
 class tMemberCallback_tUpdatePoliticalTensionMatrix;
+class tMemberCallback_fn_005c17c7;
 class tMapRelayS {
 public:
 	void fn_005c1531( tMemberCallback_tUpdateHex** out );
@@ -91,6 +92,7 @@ public:
 	void fn_005c1705( tMemberCallback_tGetPoliticalTensionMatrix** out );
 	void fn_005c1748( tMemberCallback_tGetPoliticalTensionMatrixForUpdate** out );
 	void fn_005c1781( tMemberCallback_tUpdatePoliticalTensionMatrix** out );
+	void fn_005c17c7( tMemberCallback_fn_005c17c7** out );
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -356,4 +358,19 @@ public:
 void tMapRelayS::fn_005c1781( tMemberCallback_tUpdatePoliticalTensionMatrix** out )
 {
 	*out = new tMemberCallback_tUpdatePoliticalTensionMatrix( m_d4 );
+}
+
+// HYPOTHESIS: the 0x58-byte object whose constructor is at 0x005a8e41 (the symbol table calls it
+// tMemberCallback<nAsyncMapProcedures::tAssignCombatDamagePrestige, nDataStore::tBuffer const*>).
+// Real name and header unknown.
+class tMemberCallback_fn_005c17c7 {
+public:
+	tMemberCallback_fn_005c17c7( void* a );
+	char pad00[0x58];
+};
+
+// FUNCTION: STARFLEETOP 0x005c17c7
+void tMapRelayS::fn_005c17c7( tMemberCallback_fn_005c17c7** out )
+{
+	*out = new tMemberCallback_fn_005c17c7( m_d4 );
 }
