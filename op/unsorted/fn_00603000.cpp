@@ -10,6 +10,8 @@ public:
 	void fn_005ff7ac();
 	void** fn_006033e7( const db::tID& id );
 	void** fn_00603486( const std::string& name );
+	void fn_00603713( fn_0042a480_object* character );
+	void fn_00603978( void* record );
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
@@ -23,6 +25,7 @@ public:
 class fn_00603351_vector
 {
 public:
+	void fn_00603dee( void** it );
 	void fn_00603e35();
 
 	int32u	field_00;
@@ -143,4 +146,20 @@ void** fn_006032e7_object::fn_00603486( const std::string& name )
 	}
 	guard.Leave();
 	return it;
+}
+
+// HYPOTHESIS: the object at +8 of the entry (a tClientCharacter) is destroyed before the entry
+// is freed; its destructor has no shared header yet, so only the free is written here.
+// FUNCTION: STARFLEETOP 0x00603713
+void fn_006032e7_object::fn_00603713( fn_0042a480_object* character )
+{
+	void** it = fn_006033e7( character->FUN_0042a9ba() );
+	if ( it != field_158 )
+	{
+		void* entry = *it;
+		( (fn_00603351_vector*)&field_150 )->fn_00603dee( it );
+		fn_00603978( entry );
+		if ( entry )
+			delete entry;
+	}
 }

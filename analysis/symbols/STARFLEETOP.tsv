@@ -15375,7 +15375,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006033e7	function	fn_006033e7		?fn_006033e7@fn_006032e7_object@@QAEPAPAXABVtID@nDatabase@@@Z	claim		none
 0x00603486	function	fn_00603486		?fn_00603486@fn_006032e7_object@@QAEPAPAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x00603575	function	fn_00603575					none
-0x00603713	function	fn_00603713					none
+0x00603713	function	fn_00603713		?fn_00603713@fn_006032e7_object@@QAEXPAVfn_0042a480_object@@@Z	claim		none
 0x0060378d	function	fn_0060378d					none
 0x006037fc	function	fn_006037fc					none
 0x00603873	function	fn_00603873					none
