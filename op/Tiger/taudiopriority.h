@@ -98,7 +98,7 @@ class tAudioFileClass
 		virtual		double	mGetAtmostOneCanPlayPerThisNumberOfMicroseconds	( void );
 		virtual		void	vfunction10	( void );
 		virtual		void	mSetEarliestNextStartTime	( double );
-		virtual		void	vfunction12	( void );
+		virtual		void	mChangeEarliestNextStartTime	( double );
 		virtual		void	vfunction13	( void );
 		virtual		void	mRemoveHandle	( unsigned long );
 		virtual		void	mAddHandle	( unsigned long );

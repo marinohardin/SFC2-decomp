@@ -664,3 +664,9 @@ eSoundChannelStatus tSoundChannel::vfunction52()
 {
 	return (eSoundChannelStatus)field_0x28;
 }
+
+// FUNCTION: STARFLEETOP 0x006636c0
+void tAudioFileClass::mChangeEarliestNextStartTime( double change )
+{
+	f38 = change + f38;
+}
