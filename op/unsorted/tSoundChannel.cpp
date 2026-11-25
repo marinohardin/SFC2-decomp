@@ -212,3 +212,9 @@ double tSoundChannel::vfunction117()
     double value = field_0xb0;
     return value * 0.001; // HYPOTHESIS: milliseconds to seconds
 }
+
+// FUNCTION: STARFLEETOP 0x00646b50
+void tSoundChannel::mSetMillisecondsBetweenUpdates(double milliseconds)
+{
+    field_0xb0 = milliseconds * 1000.0; // HYPOTHESIS: same field vfunction117 reads
+}

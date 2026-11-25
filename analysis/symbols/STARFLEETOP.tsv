@@ -16883,7 +16883,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	claim		mangled
 0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXJ@Z	claim		mangled
 0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel	?vfunction117@tSoundChannel@@UAENXZ	claim		sdk
-0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	mangled		mangled
+0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	claim		mangled
 0x00646b70	function	tSoundChannel::`scalar_deleting_destructor'	tSoundChannel	??_GtSoundChannel@@UAEPAXI@Z	claim		mangled
 0x00646b90	function	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles	tDynamicMemoryFreeListViaHandles				rtti
 0x00646ba0	function	twStandardSoundChannel::mGetfDSBuffer	twStandardSoundChannel	?mGetfDSBuffer@twStandardSoundChannel@@UAEPAUIDirectSoundBuffer@@XZ	mangled		mangled
