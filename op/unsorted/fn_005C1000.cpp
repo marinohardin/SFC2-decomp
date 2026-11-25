@@ -484,8 +484,9 @@ void tMapRelayS::fn_005c195f( tMemberCallback_fn_005c195f** out )
 // FUNCTION: STARFLEETOP 0x005c19a3
 void* tMapRelayS::fn_005c19a3()
 {
-	tOptex* optex = (tOptex*)this;
+	tOptex* optex = (tOptex*)((char*)this + 0xb8);
 	optex->Enter();
+	tMapRelayS* self = (tMapRelayS*)((char*)this + 0xdc);
 	optex->Leave();
-	return (char*)this + 0xdc;
+	return self;
 }
