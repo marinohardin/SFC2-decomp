@@ -348,6 +348,9 @@ while :; do
     else
         git clean -fdXq -- $judges
         harness/update-matched-set.sh "$addr" --json > "$tag.after.json" 2>&1
+        # STAND-IN: lines in the final message are allowances, kept in the lane state before the
+        # whole-tree checks read them (harness/lib/standins.py).
+        python3 -m harness.lib.standins --record "$tag.claude.json" || true
         set -- $(py score "$tag.after.json" "$addr")
         after=$1 kind=$2 code=$3
         improved=$(python3 -c 'import sys; print(int(float(sys.argv[2]) > float(sys.argv[1]) + 1e-6 or sys.argv[3] == "exact"))' "$before" "$after" "$kind")
@@ -356,6 +359,13 @@ while :; do
             # refusals. The round is undone like any other failure.
             code=6
             echo "ERROR $addr: the whole-tree checks failed (see $tag.wholetree.txt)"
+        fi
+        # The stand-in scan again on its own, before anything is committed: a text scan that does not
+        # depend on HARNESS_WHOLETREE or the whole-tree time budget (harness/README.md, "New stand-in
+        # classes").
+        if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.standins > "$tag.standins.txt" 2>&1; then
+            code=6
+            echo "ERROR $addr: the round adds a stand-in class (see $tag.standins.txt)"
         fi
         # The symbol table is the one non-source file a lane commits, and only the tool writes it
         # (harness/lib/symsync.py): the claims of the rebuilt units, and the symbols of the

@@ -348,7 +348,7 @@ matched set; exit 2 means a function could not be built. The agents' guard refus
 
 ### Whole-tree checks
 
-Once the function itself is judged good, the Stop hook runs five checks on the whole tree
+Once the function itself is judged good, the Stop hook runs six checks on the whole tree
 (`lib/wholetree.py`), and `loop.sh` runs them again before it commits the round, so the session
 that causes a problem is told while it still has the context:
 
@@ -365,6 +365,7 @@ that causes a problem is told while it still has the context:
 5. `tools/symbols.py claim` (every claim) then `check`, on a copy of the symbol table in the
    harness state (`python3 -m harness.lib.symsync --scratch`): the tree is left alone, and the
    table is held to the claims as they stand.
+6. `lib/standins.py`: no new stand-in **class** in `op/` (a text scan, no compile; below).
 
 A failure reaches the session as a refusal to stop: the tools' own lines (at most 15 each), then
 one sentence saying what to do. It counts against `HARNESS_MAX_STOP_BLOCKS` like any refusal;
@@ -381,6 +382,38 @@ non-zero exit of that startup `--all` used to be a warning and now stops the loo
 out of it is a failure that names it, the ones after it reported as not run. With a cold build
 cache the `--all` alone is a full build (189 s here), so run the loop's start once before
 sessions.
+
+### New stand-in classes
+
+A session must use the original's class names (the symbol table, `tools/symbols.py`, the SDK),
+not invent a placeholder class. Check 6 compares the tree's `class`/`struct`/`union` declarations
+in `op/` with the base (`HARNESS_STANDIN_BASE`, else the merge base of `HEAD` and `origin/develop`,
+else `develop`; names are compared as sets, so a moved or renamed file is not new) and refuses
+each new name that is a placeholder (`fn_<8 hex>_<Word>`, `c_<...>`, `<name>_<8 hex>` such as
+`tObject_00410fd4` and `tVtbl_00410fd4`) or a `t`+capital class name that no row of the symbol
+table, no SDK library match and no Ghidra export mentions. Free `fn_<8 hex>` function names for an
+unclaimed callee are not looked at, and stand-ins already in the base are tolerated debt. On
+`develop` at 4577fb2 the patterns match 778, 187 and 86 of 1,749 declared class names (1,051 in
+all), and 30 more are unknown t-classes (29 older plus `tVisObjectSlots`); the six the widgets
+lane added (`tVisObjectSlots`, `c_0067b2b0`, `c_tMachine_Field04`, `c_tMachine_Field14`,
+`fn_00674250_Owner`, `fn_006932f0_Event`) are the only new ones against the commit before it.
+
+The refusal tells the session to look the address up, use the real class, or, when the real
+class's header is outside the lane file list, write `HEADER REQUEST: <class> <why>` and leave the
+function unclaimed (kept in `$HARNESS_STATE/header_requests.txt`); when the original truly has no
+such class, one line `STAND-IN: <name> <address> <reason>` in the final message is an allowance.
+The Stop hook and `loop.sh` (`python3 -m harness.lib.standins --record`) keep allowances in
+`$HARNESS_STATE/standins.tsv`. A name is refused once per session: the hook records it in the claim
+(`standins_told`) and does not refuse it again, so it uses one of the refusals and no more, but
+the loop's own run of the checks has no such memory and fails the round unless the name is allowed.
+The loop fails a round for a new stand-in in exactly this case: the round would be committed (the
+function improved, the other checks passed) and the scan finds a name that is neither in the base
+nor allowed. It runs that scan on its own, after the whole-tree step and before the commit, so
+`HARNESS_WHOLETREE=0` or a spent time budget does not skip it; the round is undone with exit 6
+(`$tag.standins.txt`). A round that commits nothing is reset anyway. A later `STAND-IN:` line for
+a name with another address or reason is added to the record, newest last, and the newest wins.
+`harness/landing.sh` prints the count and list of new stand-ins against its base, each with the
+allowance a lane recorded for it (`python3 -m harness.lib.standins --report --base <ref>`).
 
 ### Lane file list
 

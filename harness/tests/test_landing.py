@@ -80,7 +80,8 @@ def test_landing_syncs_every_claim_and_checks_the_table_before_the_manifest(tmp_
     assert code == 0
     assert log == ['-m harness.lib.verify --land --base refs/base',
                    'tools/symbols.py claim'] + [log[2]] + [
-                   'tools/symbols.py check', 'tools/manifest.py']
+                   'tools/symbols.py check', '-m harness.lib.standins --report --base refs/base',
+                   'tools/manifest.py']
     # the seed runs in keep-existing mode: no --reseed, its report in a scratch file
     assert log[2].startswith('analysis/scripts/seed_symbols.py --report ')
     assert '--reseed' not in log[2]

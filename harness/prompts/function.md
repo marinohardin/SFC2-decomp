@@ -52,6 +52,12 @@ them rather than searching for the same things again.
 - Write the code the original programmers would have written: the class layouts, names and
   idioms of the surrounding source. Use names from the exe or the SDK headers
   (`{{SDK_HEADERS}}`); otherwise keep `fn_<address>` style names. Do not invent names.
+- Declare no placeholder class (`fn_<address>_<Word>`, `c_<...>`, `tObject_<address>`, or a `t...`
+  name the symbol table lacks): look the address or vtable up with `tools/symbols.py` and use the
+  real class. If its header is outside your file list, write `HEADER REQUEST: <class> <why>` in
+  your last message and leave the function unclaimed. If the original truly has no such class, say
+  `STAND-IN: <name> <address> <reason>` in your last message; the Stop hook refuses a new one
+  otherwise.
 - No inline assembly, no `#pragma` that changes code generation, no register variables or other
   tricks that only exist to force a match. If a construct is needed only to match and you
   believe it is not what the original said, mark it `// MATCH-ONLY: <why>`. Mark guesses about
