@@ -66,6 +66,28 @@ void fn_00425066_tree::fn_0042509e()
 	fSize = 0;
 }
 
+// HYPOTHESIS: a tree like fn_00425066_tree whose node holds two plain words at +0xc.
+struct fn_0042511e_tree
+{
+	struct node
+	{
+		node* left;
+		node* parent;
+		node* right;
+		int mKey;
+		int mValue;
+		bool color;
+		bool isnil;
+	};
+	void fn_0042511e();
+
+	char fPad[4];
+	node* fHead;
+	node* fNil;
+	bool fMulti;
+	unsigned int fSize;
+};
+
 // FUNCTION: STARFLEETOP 0x004250ee
 void fn_00425066_tree::fn_004250ee(node* n)
 {
@@ -74,4 +96,26 @@ void fn_00425066_tree::fn_004250ee(node* n)
 		y = y->left;
 		operator delete(n);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0042511e
+void fn_0042511e_tree::fn_0042511e()
+{
+	node* n = (node*)operator new(sizeof(node));
+	n->parent = 0;
+	n->color = 1;
+	n->isnil = 0;
+	fNil = n;
+	fNil->isnil = 1;
+	fNil->left = 0;
+	fNil->right = 0;
+	node* sentinel = fNil;
+	node* h = (node*)operator new(sizeof(node));
+	h->parent = sentinel;
+	h->color = 0;
+	h->isnil = 0;
+	fHead = h;
+	h->left = h;
+	fHead->right = fHead;
+	fSize = 0;
 }
