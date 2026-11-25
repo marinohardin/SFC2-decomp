@@ -72,3 +72,9 @@ tAIData::tAIData(char param_1, int param_2)
 tAIData::~tAIData()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x005209db
+const char* tAIData::vfunction5()
+{
+    return "AIData";
+}

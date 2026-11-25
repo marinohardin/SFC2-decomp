@@ -8296,7 +8296,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0052099d	function	fn_0052099d	tETrait				vtable
 0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData	??_GtAIData@@UAEPAXI@Z	claim		rtti
 0x005209bf	function	fn_005209bf	tAIData	?vfunction2@tAIData@@UAEXH@Z	claim		vtable
-0x005209db	function	fn_005209db	tAIData				vtable
+0x005209db	function	fn_005209db	tAIData	?vfunction5@tAIData@@UAEPBDXZ	claim		vtable
 0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	add		rtti
 0x00520a35	function	tETrait::~tETrait	tETrait				rtti
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
