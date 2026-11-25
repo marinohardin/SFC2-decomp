@@ -1,6 +1,25 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00600000.cpp
-// Functions: 0x00600035 to 0x00600094, 2 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+#include "unsorted/tPlayerRelayCCreator.h"
+
+// MATCH-ONLY: inline in the SDK, as in unsorted/fn_0042A000.cpp.
+inline tOptex::tGuard::~tGuard()
+{
+    if (fNeedToLeave) {
+        fOptex->Leave();
+    }
+}
+
+// HYPOTHESIS: the owner class is not recovered; it holds a tOptex at +0xb8.
+class fn_00600035_owner {
+public:
+    char pad[0xb8];
+    tOptex m_b8;
+    void fn_00600035(tMetaClientCreator **out);
+};
+
+// FUNCTION: STARFLEETOP 0x00600035
+void fn_00600035_owner::fn_00600035(tMetaClientCreator **out)
+{
+    tOptex::tGuard guard(&m_b8);
+    *out = new tPlayerRelayCCreator;
+}
