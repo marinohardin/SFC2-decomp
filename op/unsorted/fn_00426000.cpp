@@ -659,3 +659,28 @@ int fn_00426988_Class::fn_00426e7a(int aIndex)
 	}
 	return mb8[2] + mb8[1];
 }
+
+// HYPOTHESIS: the class of 0x00426e9b is unknown; 0x00426ec0 and 0x00426ed2 are its members.
+class fn_00426e9b_Class
+{
+public:
+	fn_00426e9b_Class* fn_00426e9b();
+	void fn_00426ec0();
+	void fn_00426ed2();
+
+	char pad00[0x50];
+	char m50;
+	char pad51[3];
+	int m54[20];
+};
+
+// FUNCTION: STARFLEETOP 0x00426e9b
+fn_00426e9b_Class* fn_00426e9b_Class::fn_00426e9b()
+{
+	for (int i = 0; i < 20; i++)
+		m54[i] = 0;
+	fn_00426ec0();
+	fn_00426ed2();
+	m50 = 0;
+	return this;
+}

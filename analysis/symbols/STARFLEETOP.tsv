@@ -1269,7 +1269,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426e40	function	fn_00426e40		?fn_00426e40@fn_00426988_Class@@QAEXHH@Z	claim		none
 0x00426e61	function	fn_00426e61		?fn_00426e61@fn_00426988_Class@@QAEXHH@Z	claim		none
 0x00426e7a	function	fn_00426e7a		?fn_00426e7a@fn_00426988_Class@@QAEHH@Z	claim		none
-0x00426e9b	function	fn_00426e9b					none
+0x00426e9b	function	fn_00426e9b		?fn_00426e9b@fn_00426e9b_Class@@QAEPAV1@XZ	claim		none
 0x00426ec0	function	fn_00426ec0					none
 0x00426ecd	thunk	fn_00426ecd					none
 0x00426ed2	function	fn_00426ed2					none
