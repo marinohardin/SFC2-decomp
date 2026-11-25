@@ -630,7 +630,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004109c9	function	fn_004109c9	tNetMsg_kDamage				vtable
 0x004109cf	function	fn_004109cf	tEntityAsteroid				vtable
 0x00410a46	function	tNetMsg_kKillEntity::mGetMap	tNetMsg_kKillEntity	?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00410a4d	function	tEntityWayPntMarker::tEntityWayPntMarker	tEntityWayPntMarker				rtti
+0x00410a4d	function	tEntityWayPntMarker::tEntityWayPntMarker	tEntityWayPntMarker	??0tEntityWayPntMarker@@QAE@XZ	add		rtti
 0x00410ada	function	tEntityWayPntMarker::scalar_deleting_destructor	tEntityWayPntMarker				rtti
 0x00410af6	function	fn_00410af6	tEntityWayPntMarker				vtable
 0x00410b19	function	tEntityWayPntMarker::~tEntityWayPntMarker	tEntityWayPntMarker				rtti
@@ -723,7 +723,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00412bf4	function	fn_00412bf4	tEntity_Mine				vtable
 0x00412c1e	function	fn_00412c1e	tEntity_Mine				vtable
 0x00412d0f	function	fn_00412d0f	tEntity_Mine				vtable
-0x00412f08	function	fn_00412f08					none
+0x00412f08	function	fn_00412f08		??0tPoint3@@QAE@ABU0@@Z	add		none
 0x00412f21	function	fn_00412f21		?fn_00412f21@@YAMXZ	callers		none
 0x00412f28	function	fn_00412f28					none
 0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity				rtti
@@ -972,7 +972,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c983	function	fn_0041c983					none
 0x0041c99c	function	fn_0041c99c	tEntity_Weapon				vtable
 0x0041c9a7	function	fn_0041c9a7	tEntity_Weapon				vtable
-0x0041ca85	function	tEntity_DirectFire::tEntity_DirectFire	tEntity_DirectFire				rtti
+0x0041ca85	function	tEntity_DirectFire::tEntity_DirectFire	tEntity_DirectFire	??0tEntity_DirectFire@@QAE@XZ	add		rtti
 0x0041cae2	function	fn_0041cae2	tEntity_DirectFire				vtable
 0x0041cae6	function	tEntity_DirectFire::scalar_deleting_destructor	tEntity_DirectFire				rtti
 0x0041cb02	function	tEntity_DirectFire::~tEntity_DirectFire	tEntity_DirectFire				rtti
@@ -985,7 +985,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041d280	function	fn_0041d280	tEntity_DirectFire				vtable
 0x0041d2ab	function	fn_0041d2ab	tEntity_DirectFire				vtable
 0x0041d396	function	fn_0041d396					none
-0x0041d3a1	function	tEntity_PPDFire::tEntity_PPDFire	tEntity_PPDFire				rtti
+0x0041d3a1	function	tEntity_PPDFire::tEntity_PPDFire	tEntity_PPDFire	??0tEntity_PPDFire@@QAE@XZ	add		rtti
 0x0041d4bb	function	fn_0041d4bb	tEntity_PPDFire				vtable
 0x0041d4bf	function	tEntity_PPDFire::scalar_deleting_destructor	tEntity_PPDFire				rtti
 0x0041d4db	function	tEntity_PPDFire::~tEntity_PPDFire	tEntity_PPDFire				rtti
@@ -993,7 +993,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041d5f9	function	fn_0041d5f9	tEntity_PPDFire				vtable
 0x0041d5fd	function	fn_0041d5fd	tEntity_PPDFire				vtable
 0x0041d6bf	function	fn_0041d6bf	tEntity_PPDFire				vtable
-0x0041dbc5	function	tEntity_ESG::tEntity_ESG	tEntity_ESG				rtti
+0x0041dbc5	function	tEntity_ESG::tEntity_ESG	tEntity_ESG	??0tEntity_ESG@@QAE@XZ	add		rtti
 0x0041dbed	function	fn_0041dbed	tEntity_ESG				vtable
 0x0041dbf0	function	fn_0041dbf0	tEntity_ESG				vtable
 0x0041dbf4	function	tEntity_ESG::scalar_deleting_destructor	tEntity_ESG				rtti
@@ -1034,7 +1034,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00420447	function	fn_00420447	tEntity_Seeker				vtable
 0x00420493	function	fn_00420493					none
 0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker				vtable
-0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker				rtti
+0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker	??0tEntity_DriftingSeeker@@QAE@XZ	add		rtti
 0x00420588	function	fn_00420588	tEntity_DriftingSeeker				vtable
 0x0042058c	function	tEntity_HellboreSeeker::scalar_deleting_destructor	tEntity_HellboreSeeker				rtti
 0x004205a8	thunk	fn_004205a8					none
@@ -1083,12 +1083,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00421671	function	fn_00421671	tEntity_Shockwave				vtable
 0x0042167b	function	fn_0042167b	tEntity_ESG				vtable
 0x0042167f	function	fn_0042167f	tEntity_HellboreBlast				vtable
-0x00421740	function	fn_00421740					none
-0x00421775	function	fn_00421775					none
-0x004217aa	function	fn_004217aa					none
+0x00421740	function	fn_00421740		?fn_00421740@@YAPAVtEntity_DirectFire@@XZ	claim		none
+0x00421775	function	fn_00421775		?fn_00421775@@YAPAVtEntity_PPDFire@@XZ	claim		none
+0x004217aa	function	fn_004217aa		?fn_004217aa@@YAPAVtEntity_ESG@@XZ	claim		none
 0x004217df	function	fn_004217df					none
 0x00421814	function	fn_00421814					none
-0x00421855	function	fn_00421855					none
+0x00421855	function	fn_00421855		?fn_00421855@@YAPAVtEntity_DriftingSeeker@@XZ	claim		none
 0x004218c2	function	tEntityControl::tEntityControl	tEntityControl				rtti
 0x004218d4	function	tEntityControl::scalar_deleting_destructor	tEntityControl				rtti
 0x004218f0	function	tEntityControl::~tEntityControl	tEntityControl	??1tEntityControl@@UAE@XZ	callers		rtti
@@ -1131,18 +1131,18 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00423025	function	fn_00423025					none
 0x0042305e	function	fn_0042305e	tEntityControlShip				vtable
 0x004230ab	function	fn_004230ab	tEntityControlShip				vtable
-0x004230b9	function	fn_004230b9					none
-0x004230c6	function	fn_004230c6					none
-0x0042310b	function	fn_0042310b					none
-0x00423142	function	fn_00423142					none
-0x00423165	function	fn_00423165					none
+0x004230b9	function	fn_004230b9		?fn_004230b9@@YIPAHPAH@Z	claim		none
+0x004230c6	function	fn_004230c6		?fn_004230c6@fn_004230c6_List@@QAEXXZ	claim		none
+0x0042310b	function	fn_0042310b		?fn_0042310b@fn_0042310b_Pool@@QAEPAHH@Z	claim		none
+0x00423142	function	fn_00423142		?fn_00423142@fn_00423142_List@@QAEXXZ	claim		none
+0x00423165	function	fn_00423165		?fn_00423165@fn_00423165_List@@QAEXPAH@Z	claim		none
 0x004231e9	function	fn_004231e9					none
-0x00423232	function	fn_00423232					none
-0x004232aa	function	fn_004232aa					none
-0x004232ff	function	fn_004232ff					none
-0x00423384	function	fn_00423384					none
-0x00423402	function	fn_00423402					none
-0x00423405	function	fn_00423405					none
+0x00423232	function	fn_00423232		?fn_00423232@fn_00423232_List@@QAEXPAH@Z	claim		none
+0x004232aa	function	fn_004232aa		?fn_004232aa@fn_004232aa_List@@QAEXPAH@Z	claim		none
+0x004232ff	function	fn_004232ff		?fn_004232ff@fn_004232ff_Handler@@QAEXPAUfn_004232ff_request@@@Z	claim		none
+0x00423384	function	fn_00423384		?fn_00423384@fn_004232aa_List@@QAEXXZ	claim		none
+0x00423402	function	fn_00423402		?fn_00423402@fn_004232aa_List@@QAEPAHXZ	claim		none
+0x00423405	function	fn_00423405		?fn_00423405@fn_004232aa_List@@QAEXPAH@Z	claim		none
 0x0042343f	function	fn_0042343f					none
 0x00423449	function	fn_00423449					none
 0x0042345f	thunk	fn_0042345f					none
@@ -1150,7 +1150,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00423476	function	fn_00423476	tEntityControlShip_Creator				vtable
 0x004234ad	function	fn_004234ad	tEntityControlShip_Creator				vtable
 0x004234b3	function	tEntityControlShip_Creator::scalar_deleting_destructor	tEntityControlShip_Creator				rtti
-0x004234cf	function	fn_004234cf					none
+0x004234cf	function	fn_004234cf		?fn_004234cf@@YAPAXXZ	claim		none
 0x00423517	function	fn_00423517					none
 0x00423521	function	fn_00423521					none
 0x0042352d	function	fn_0042352d					none
@@ -1198,85 +1198,85 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00424ce4	function	fn_00424ce4					none
 0x00424cfa	function	fn_00424cfa					none
 0x00424d0d	function	fn_00424d0d	tEntityNameManager				vtable
-0x00424d28	function	fn_00424d28					none
-0x00424d37	function	fn_00424d37					none
-0x00424d46	function	fn_00424d46					none
-0x00424e2a	function	fn_00424e2a					none
-0x00424e71	function	fn_00424e71					none
-0x00424ea9	function	fn_00424ea9					none
-0x00424ee1	function	fn_00424ee1		??1?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAE@XZ	callers		none
+0x00424d28	function	fn_00424d28		?fn_00424d28@fn_00424d28_class@@QAEXXZ	claim		none
+0x00424d37	function	fn_00424d37		?fn_00424d37@fn_00424d28_class@@QAEXABVtString@@@Z	claim		none
+0x00424d46	function	fn_00424d46		?fn_00424d46@fn_00424d28_class@@QAEPAVtString@@PBD@Z	claim		none
+0x00424e2a	function	fn_00424e2a		?fn_00424e2a@fn_00424d28_class@@QAEHABVtString@@@Z	claim		none
+0x00424e71	function	fn_00424e71		?fn_00424e71@fn_00424e71_map@@QAEXXZ	claim		none
+0x00424ea9	function	fn_00424ea9		?fn_00424ea9@fn_00424ea9_map@@QAEXXZ	claim		none
+0x00424ee1	function	fn_00424ee1		?fn_00424ee1@fn_00424ee1_vector@@QAEXXZ	claim		none
 0x00424f16	function	fn_00424f16		?push_back@?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAEXABVtString@@@Z	callers		none
 0x00424f27	function	fn_00424f27		?erase@?$_Tree@VtString@@U?$pair@$$CBVtString@@H@std@@U_Kfn@?$map@VtString@@HVless_ss@@V?$allocator@H@std@@@3@Vless_ss@@V?$allocator@H@3@@std@@QAE?AViterator@12@V312@0@Z	callers		none
-0x00424f9b	function	fn_00424f9b		?erase@?$_Tree@HU?$pair@$$CBHVtString@@@std@@U_Kfn@?$map@HVtString@@U?$less@H@std@@V?$allocator@VtString@@@3@@2@U?$less@H@2@V?$allocator@VtString@@@2@@std@@QAE?AViterator@12@V312@0@Z	callers		none
+0x00424f9b	function	fn_00424f9b		?fn_00424f9b@fn_00424ea9_map@@QAE?AViterator@1@V21@0@Z	claim		none
 0x0042500f	function	fn_0042500f		?erase@?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAEPAVtString@@PAV3@0@Z	callers		none
-0x00425066	function	fn_00425066					none
-0x0042509e	function	fn_0042509e					none
-0x004250ee	function	fn_004250ee					none
-0x0042511e	function	fn_0042511e					none
+0x00425066	function	fn_00425066		?fn_00425066@fn_00425066_tree@@QAEXPAUnode@1@@Z	claim		none
+0x0042509e	function	fn_0042509e		?fn_0042509e@fn_00425066_tree@@QAEXXZ	claim		none
+0x004250ee	function	fn_004250ee		?fn_004250ee@fn_00425066_tree@@QAEXPAUnode@1@@Z	claim		none
+0x0042511e	function	fn_0042511e		?fn_0042511e@fn_0042511e_tree@@QAEXXZ	claim		none
 0x0042516e	function	fn_0042516e					none
-0x004253c2	function	fn_004253c2					none
-0x004253f4	function	fn_004253f4					none
-0x00425463	function	fn_00425463					none
-0x00425480	function	fn_00425480					none
-0x004254a7	function	fn_004254a7					none
-0x00425501	function	fn_00425501					none
-0x0042556b	function	fn_0042556b					none
-0x004255b5	function	fn_004255b5					none
-0x004256b1	function	fn_004256b1					none
-0x00425726	function	fn_00425726					none
-0x0042574b	function	fn_0042574b					none
-0x004257b4	function	fn_004257b4					none
-0x004257f5	function	fn_004257f5					none
-0x00425824	function	fn_00425824					none
-0x004258de	function	fn_004258de					none
-0x00425928	function	fn_00425928					none
-0x004259bd	function	fn_004259bd					none
-0x00425a18	function	fn_00425a18					none
+0x004253c2	function	fn_004253c2		?fn_004253c2@fn_004253c2_iterator@@QAEXXZ	claim		none
+0x004253f4	function	fn_004253f4		?_Construct@std@@YAXPAVtString@@ABV2@@Z	claim		none
+0x00425463	function	fn_00425463		?fn_00425463@@YAXXZ	claim		none
+0x00425480	function	fn_00425480		?fn_00425480@@YAXXZ	claim		none
+0x004254a7	function	fn_004254a7		?fn_004254a7@fn_004254a7_list@@QAEXHHD@Z	claim		none
+0x00425501	function	fn_00425501		?fn_00425501@fn_004254a7_list@@QAEXHH@Z	claim		none
+0x0042556b	function	fn_0042556b		??0fn_0042556b_table@@QAE@XZ	claim		none
+0x004255b5	function	fn_004255b5		?fn_004255b5@fn_004255b5_class@@QAEPAUfn_004255b5_vector@@MMHM@Z	claim		none
+0x004256b1	function	fn_004256b1		?fn_004256b1@fn_004255b5_class@@QAEXIIUfn_00412f08_point@@M@Z	claim		none
+0x00425726	function	fn_00425726		?fn_00425726@tObject_008f5170@@QAEPAVtObject_00425726_list@@JJ@Z	claim		none
+0x0042574b	function	fn_0042574b		?fn_0042574b@fn_004255b5_class@@QAEXHHMMMPAI000@Z	claim		none
+0x004257b4	function	fn_004257b4		?fn_004257b4@fn_004255b5_class@@QAEXPAVtEntity@@@Z	claim		none
+0x004257f5	function	fn_004257f5		?fn_004257f5@tObject_008f5170@@QAEXPAVtEntity@@J@Z	claim		none
+0x00425824	function	fn_00425824		?fn_00425824@fn_004255b5_class@@QAEXPAVtEntity@@H@Z	claim		none
+0x004258de	function	fn_004258de		?fn_004258de@tObject_008f5170@@QAEXPAVtEntity@@JJ@Z	claim		none
+0x00425928	function	fn_00425928		?fn_00425928@fn_004255b5_class@@QAEXUtPoint3@@MPAVtEntity@@HH@Z	claim		none
+0x004259bd	function	fn_004259bd		?fn_004259bd@fn_004255b5_class@@QAEXMMPAI0@Z	claim		none
+0x00425a18	function	fn_00425a18		?fn_00425a18@fn_004255b5_class@@QAEDPAVtEntity@@0D@Z	claim		none
 0x00425aad	function	fn_00425aad					none
-0x00425d5f	function	fn_00425d5f					none
-0x00425def	function	fn_00425def					none
+0x00425d5f	function	fn_00425d5f		?fn_00425d5f@fn_004255b5_class@@QAEDP6IDPAVtEntity@@@ZHHUtPoint3@@2MUfn_00425d5f_words@@00@Z	claim		none
+0x00425def	function	fn_00425def		?fn_00425def@fn_004255b5_class@@QAEDPAVtEntity@@UtPoint3@@1MUfn_00425d5f_words@@@Z	claim		none
 0x00425eb6	function	fn_00425eb6					none
 0x00425ec0	function	fn_00425ec0					none
 0x00425ed6	function	fn_00425ed6					none
-0x00425f08	function	fn_00425f08					none
-0x00425f71	function	fn_00425f71					none
-0x00425fef	function	fn_00425fef					none
-0x004260a4	function	fn_004260a4					none
-0x00426116	function	fn_00426116					none
-0x00426141	function	fn_00426141					none
-0x0042630b	function	fn_0042630b					none
-0x0042636b	function	fn_0042636b					none
-0x0042642c	function	fn_0042642c					none
-0x00426469	function	fn_00426469					none
-0x0042653f	function	fn_0042653f					none
+0x00425f08	function	fn_00425f08		?fn_00425f08@@YAPAIPAUfn_004255b5_vector@@PAI1@Z	claim		none
+0x00425f71	function	fn_00425f71		?fn_00425f71@@YAXPAI0H@Z	claim		none
+0x00425fef	function	fn_00425fef		?fn_00425fef@@YAXPAI0H@Z	claim		none
+0x004260a4	function	fn_004260a4		?fn_004260a4@@YAXPAI0@Z	claim		none
+0x00426116	function	fn_00426116		?fn_00426116@@YAXXZ	claim		none
+0x00426141	function	fn_00426141		??0fn_00426141_Class@@QAE@PAVfn_00426141_Game@@@Z	claim		none
+0x0042630b	function	fn_0042630b		?fn_0042630b@fn_00426141_Class@@QAEXXZ	claim		none
+0x0042636b	function	fn_0042636b		?fn_0042636b@fn_00426141_Class@@QAEPAVfn_00426141_Cell@@PAV2@HH@Z	claim		none
+0x0042642c	function	fn_0042642c		?fn_0042642c@fn_00426141_Cell@@QAEAAV1@ABV1@@Z	claim		none
+0x00426469	function	fn_00426469		?fn_00426469@fn_00426141_Class@@QAEXHPAUtPoint3@@PAUfn_00426469_Vertex@@@Z	claim		none
+0x0042653f	function	fn_0042653f		?fn_0042653f@@YAMM@Z	claim		none
 0x00426563	function	fn_00426563					none
-0x00426886	function	fn_00426886					none
-0x00426988	function	fn_00426988					none
-0x00426a4d	function	fn_00426a4d					none
+0x00426886	function	fn_00426886		?fn_00426886@fn_00426141_Class@@QAEXI@Z	claim		none
+0x00426988	function	fn_00426988		??0fn_00426988_Class@@QAE@H@Z	claim		none
+0x00426a4d	function	fn_00426a4d		??1fn_00426988_Class@@QAE@XZ	claim		none
 0x00426aef	function	fn_00426aef					none
-0x00426b63	function	fn_00426b63					none
-0x00426bac	function	fn_00426bac					none
-0x00426bcc	function	fn_00426bcc					none
-0x00426c23	function	fn_00426c23					none
-0x00426c5e	function	fn_00426c5e					none
+0x00426b63	function	fn_00426b63		?fn_00426b63@fn_00426988_Class@@QAEXH@Z	claim		none
+0x00426bac	function	fn_00426bac		?fn_00426bac@fn_00426988_Class@@QAE_NH@Z	claim		none
+0x00426bcc	function	fn_00426bcc		?fn_00426bcc@fn_00426988_Class@@QAEPAVfn_00524daa_Class@@XZ	claim		none
+0x00426c23	function	fn_00426c23		?fn_00426c23@fn_00426988_Class@@QAE_NH@Z	claim		none
+0x00426c5e	function	fn_00426c5e		?fn_00426c5e@fn_00426988_Class@@QAEXH@Z	claim		none
 0x00426ca8	function	fn_00426ca8		?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z	claim		none
-0x00426d48	function	fn_00426d48					none
-0x00426da7	function	fn_00426da7					none
-0x00426e11	function	fn_00426e11		?fn_00426e11@@YIHPAX@Z	add		none
-0x00426e18	function	fn_00426e18		?fn_00426e18@@YIHPAX@Z	add		none
-0x00426e1f	function	fn_00426e1f					none
-0x00426e2c	function	fn_00426e2c		?fn_00426e2c@@YIHPAX@Z	add		none
-0x00426e40	function	fn_00426e40					none
-0x00426e61	function	fn_00426e61					none
-0x00426e7a	function	fn_00426e7a					none
-0x00426e9b	function	fn_00426e9b					none
-0x00426ec0	function	fn_00426ec0					none
+0x00426d48	function	fn_00426d48		?fn_00426d48@fn_00426988_Class@@QAEXH@Z	claim		none
+0x00426da7	function	fn_00426da7		?fn_00426da7@fn_00426988_Class@@QAEXXZ	claim		none
+0x00426e11	function	fn_00426e11		?fn_00426e11@fn_00426988_Class@@QAEHXZ	claim		none
+0x00426e18	function	fn_00426e18		?fn_00426e18@fn_00426988_Class@@QAEHXZ	claim		none
+0x00426e1f	function	fn_00426e1f		?fn_00426e1f@fn_00426988_Class@@QAEXH@Z	claim		none
+0x00426e2c	function	fn_00426e2c		?fn_00426e2c@fn_00426988_Class@@QAEHXZ	claim		none
+0x00426e40	function	fn_00426e40		?fn_00426e40@fn_00426988_Class@@QAEXHH@Z	claim		none
+0x00426e61	function	fn_00426e61		?fn_00426e61@fn_00426988_Class@@QAEXHH@Z	claim		none
+0x00426e7a	function	fn_00426e7a		?fn_00426e7a@fn_00426988_Class@@QAEHH@Z	claim		none
+0x00426e9b	function	fn_00426e9b		?fn_00426e9b@fn_00426e9b_Class@@QAEPAV1@XZ	claim		none
+0x00426ec0	function	fn_00426ec0		?fn_00426ec0@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426ecd	thunk	fn_00426ecd					none
-0x00426ed2	function	fn_00426ed2					none
-0x00426ee2	function	fn_00426ee2					none
-0x00426ef0	function	fn_00426ef0					none
+0x00426ed2	function	fn_00426ed2		?fn_00426ed2@fn_00426e9b_Class@@QAEXXZ	claim		none
+0x00426ee2	function	fn_00426ee2		?fn_00426ee2@fn_00426e9b_Class@@QAEXXZ	claim		none
+0x00426ef0	function	fn_00426ef0		?fn_00426ef0@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426f1a	function	fn_00426f1a					none
-0x00427145	function	fn_00427145					none
+0x00427145	function	fn_00427145		?fn_00427145@fn_00427145_Owner@@QAEPAV1@PAV1@@Z	claim		none
 0x00427160	function	tMatchedMission::tMatchedMission	tMatchedMission				rtti
 0x00427366	function	nDataStore::tStreamable::scalar_deleting_destructor	nDataStore::tStreamable				rtti
 0x00427382	function	tMatchedMission::scalar_deleting_destructor	tMatchedMission				rtti
@@ -2986,7 +2986,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0045413e	function	fn_0045413e	tIndividualShipSystemList				vtable
 0x00454291	function	fn_00454291	tIndividualShipSystemList				vtable
 0x004542c4	function	fn_004542c4	tIndividualShipSystemList				vtable
-0x00454339	function	fn_00454339					none
+0x00454339	function	fn_00454339		?fn_00454339@@YAHI@Z	add		none
 0x004543e9	function	fn_004543e9	tTractorSystem				vtable
 0x00454403	function	tTractorSystem::tTractorSystem	tTractorSystem				rtti
 0x004545cb	function	fn_004545cb	tEntityAsteroid				vtable
@@ -18486,7 +18486,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069b1d0	function	fn_0069b1d0					none
 0x0069b200	function	fn_0069b200		??LtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b250	function	fn_0069b250		??DtPoint3@@QBEMABU0@@Z	callers		none
-0x0069b270	function	fn_0069b270					none
+0x0069b270	function	fn_0069b270		??DtPoint3@@QBE?AU0@M@Z	add		none
 0x0069b2b0	function	fn_0069b2b0		??XtPoint3@@QAEAAU0@M@Z	callers		none
 0x0069b2e0	function	fn_0069b2e0					none
 0x0069b320	function	fn_0069b320		??_0tPoint3@@QAEAAU0@M@Z	callers		none
