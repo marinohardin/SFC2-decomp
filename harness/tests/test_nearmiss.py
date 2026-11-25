@@ -1,8 +1,14 @@
 """Near-miss labels (harness/lib/nearmiss.py): each label from small synthetic comparisons, the
-precedence, the fallback, the reference listing and the stored labels."""
+precedence, the fallback, the reference listing, the stored labels and the loop's routing."""
+import json
 import os
+import subprocess
+import sys
 
-from harness.lib import nearmiss, verify
+from harness.lib import nearmiss, verify, workqueue
+
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 def side_by_side(tmp_path, pairs):
     """A diff.txt written by the scorer's own writer, parsed back. `pairs` are
@@ -159,3 +165,49 @@ def test_labels_are_stored_per_address(tmp_path):
     # A function that is exact now (no record) loses its row; the others stay.
     nearmiss.store([], ['0x00401000'], path=path)
     assert list(nearmiss.load_labels(path)) == ['0x00401010']
+
+
+def test_route_keeps_reference_only_functions_off_the_expensive_tiers():
+    ref_ = dict(label='reference-only', waits='')
+    assert workqueue.route('opus', ref_) == 'sonnet'
+    assert workqueue.route('sonnet', ref_) == 'sonnet'
+    assert workqueue.route('fable', ref_) is None
+    assert workqueue.route('opus', dict(ref_, waits='unnamed: no symbol yet at 0x1')) is None
+    assert workqueue.route('opus', dict(label='order', waits='')) == 'opus'
+    assert workqueue.route('opus', None) == 'opus'
+
+
+def test_next_with_labels_on_and_off():
+    tiers = workqueue.Tiers(['opus', 'opus', 'opus'])
+    queue = [dict(address='0x00401000', name='a', size=300),
+             dict(address='0x00401100', name='b', size=300)]
+    labels = {'0x00401000': dict(label='reference-only', waits='unnamed: no symbol yet at 0x1'),
+              '0x00401100': dict(label='reference-only', waits='')}
+    nxt = workqueue.next_entry(queue, [], [], tiers, labels=labels)
+    assert (nxt['address'], nxt['model'], nxt['nearmiss']) == ('0x00401100', 'sonnet',
+                                                               'reference-only')
+    nxt = workqueue.next_entry(queue, [], [], tiers, labels=None)
+    assert (nxt['address'], nxt['model']) == ('0x00401000', 'opus')
+    assert 'nearmiss' not in nxt
+
+
+def test_queue_next_reads_the_labels_unless_the_switch_is_off(tmp_path):
+    state = tmp_path / 'lane'
+    workqueue.save_queue(str(state / 'queue.json'),
+                         [dict(address='0x00401000', name='a', size=300, similarity=0.0,
+                               named=False)], 'T')
+    nearmiss.store([dict(address='0x00401000', name='a', unit='a.cpp', label='reference-only',
+                         score=99.5, differing=1, references=[{}], waits='')],
+                   everything=True, path=str(state / 'lists' / 'lane' / 'nearmiss_labels.tsv'))
+
+    def model(switch):
+        env = dict(os.environ, HARNESS_STATE=str(state), HARNESS_NEARMISS=switch,
+                   HARNESS_LOOP_PID=str(os.getpid()), PYTHONPATH=REPO)
+        env.pop('HARNESS_SELECTION', None)
+        out = subprocess.run([sys.executable, os.path.join(REPO, 'harness', 'queue.py'), 'next'],
+                             env=env, capture_output=True, text=True, check=True).stdout
+        subprocess.run([sys.executable, os.path.join(REPO, 'harness', 'queue.py'), 'release',
+                        '0x00401000'], env=env, check=True)
+        return json.loads(out)['model']
+    assert model('1') == 'sonnet'
+    assert model('0') == 'opus'

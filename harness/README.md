@@ -504,7 +504,8 @@ far. `HARNESS_TIERS` (default `opus,opus,opus`) and `HARNESS_SMALL_TIERS` (defau
 `sonnet,opus,opus`) replace the two sequences; neither may name Fable. When only `HARNESS_TIERS`
 is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split off. A function
 the queue no longer holds, such as one already on the difficult list, has no known size and is
-judged with the regular sequence.
+judged with the regular sequence. A near miss labelled `reference-only` is the one exception:
+it never goes to Opus or Fable ("Near-miss labels", `HARNESS_NEARMISS`).
 
 When a run ends short of 100%, `queue.py record` lists the function in the lane's list folder
 (outside the repository; nothing is committed):
@@ -692,6 +693,7 @@ Before each session the loop builds a pack for the function (`lib/pack.py`; the 
 4. One function already exact in `matched_set.json` from the same class, or else the same unit,
    nearest by address, as it stands in the source.
 
+For a `reference-only` near miss the pack opens with its wrong references ("Near-miss labels").
 Each section is capped and the whole pack is cut at `HARNESS_PACK_MAX` characters (12000), at
 a line end with a note of what was cut. A missing input leaves a one-line note in its section,
 never a failed round; `HARNESS_PACK=0` leaves the pack out.
@@ -754,7 +756,16 @@ with a reason that starts with one word, when no session can fix it yet:
 folder (`$HARNESS_LISTS/<lane>/`, beside the revisit and difficult lists; `HARNESS_NEARMISS_LABELS`
 overrides): `address`, `name`, `unit`, `label`, `score`, `differing`, `wrong_refs`, `waits` and
 `labelled`. A run over every function replaces the file; a run for some addresses replaces their
-rows, and an address that is exact now loses its row. Only this lane's file is read.
+rows, and an address that is exact now loses its row. Only this lane's file is read. The loop
+labels every near miss after its startup `--all`, labels the round's function after its starting
+score (copied to the attempt's `.nearmiss.tsv`) and again after an improvement is committed.
+
+**What the loop does with it** (`route` in `lib/workqueue.py`, called from `next_entry`; on by
+default, `HARNESS_NEARMISS=0` turns it off): a function whose stored label is `reference-only`
+is never escalated. An Opus attempt goes to Sonnet instead, and its context pack opens with the
+list of wrong references (within `HARNESS_PACK_MAX`); it gets no Fable try; and a parked one is
+not taken at all until a later labelling clears its reason. Nothing else about the tiers, the stop
+rule or the attempt caps changes: the attempts it does get are counted as usual.
 
 ## Proof
 
