@@ -112,3 +112,14 @@ int tAIUnitDataList::fn_00520cba(int a, int b, float c, char d)
 	}
 	return -1;
 }
+
+// FUNCTION: STARFLEETOP 0x00520d38
+tAIUnitData* tAIUnitDataList::fn_00520d38(int a)
+{
+	for (int i = 0; i < field_8.field_c80; i++) {
+		if (field_8.field_0[i].field_4 == a) {
+			return &field_8.field_0[i];
+		}
+	}
+	return 0;
+}
