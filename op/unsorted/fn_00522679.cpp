@@ -215,3 +215,18 @@ char __fastcall fn_00522b94(fn_0090bed4_Object *self, int, vfunction33_result *p
 	return 0;
 }
 
+// HYPOTHESIS: 0x00522c00 is a member of fn_0090bed4_Object (this in ecx); it is reached through this one-member class until that header declares it.
+class tObject_00522c00 {
+public:
+	void fn_00522c00(void *pEntity, tCommandDestination *pDestination);
+};
+
+extern tEntityMgr g_008e1060;
+
+// FUNCTION: STARFLEETOP 0x00522bdf
+void fn_0090bed4_Object::fn_00522bdf(int param_1, tCommandDestination *pDestination)
+{
+	void *pEntity = g_008e1060.fn_0042496f(param_1);
+	((tObject_00522c00 *)this)->fn_00522c00(pEntity, pDestination);
+}
+
