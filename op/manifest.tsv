@@ -4218,6 +4218,24 @@ address	size	symbol	source	modes	decorated
 0x006791a0	33	fn_006791a0_vector::fn_006791a0(entry*,entry*)	unsorted/tControlAsset.cpp	vc6 guest	?fn_006791a0@fn_006791a0_vector@@QAEXPAUentry@1@0@Z
 0x006791d0	56	fn_006791d0_vector::fn_006791d0(entry*,entry*,entry*)	unsorted/tControlAsset.cpp	vc6 guest	?fn_006791d0@fn_006791d0_vector@@QAEPAUentry@1@PAU21@00@Z
 0x00679210	244	fn_00678ea0_tree::fn_00679210(const fn_00678ea0_tree&)	unsorted/tControlAsset.cpp	partial	?fn_00679210@fn_00678ea0_tree@@QAEXABU1@@Z
+0x0067b2b0	216	tVisGroupAsset::vfunction5(tStream&)	unsorted/tVisGroupAsset.cpp	partial	?vfunction5@tVisGroupAsset@@UAEAAVtStream@@AAV2@@Z
+0x0067b390	483	tVisGroupAsset::vfunction3(const c_00678500&)	unsorted/tVisGroupAsset.cpp	partial	?vfunction3@tVisGroupAsset@@UAEXABVc_00678500@@@Z
+0x0067b580	4	tVisGroupAsset::vfunction4()	unsorted/tVisGroupAsset.cpp	vc6 guest	?vfunction4@tVisGroupAsset@@UAEPAVc_00678500@@XZ
+0x0067b590	46	tVisGroupAsset::vfunction2(int)	unsorted/tVisGroupAsset.cpp	vc6 guest	?vfunction2@tVisGroupAsset@@UAEPAXH@Z
+0x0067da80	284	tVisGroup::tVisGroup()	unsorted/tVisGroup.cpp	partial	??0tVisGroup@@QAE@XZ
+0x0067dba0	30	tVisGroup::scalar_deleting_destructor(unsigned char)	unsorted/tVisGroup.cpp	vc6 guest	?scalar_deleting_destructor@tVisGroup@@QAEPAV1@E@Z
+0x0067dbc0	97	tSeqScene::fn_0067dbc0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dbc0@tSeqScene@@QAEXXZ
+0x0067dc30	103	tVisGroup::~tVisGroup()	unsorted/tVisGroup.cpp	vc6	??1tVisGroup@@UAE@XZ
+0x0067dcb0	60	tSeqScene::vfunction43()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction43@tSeqScene@@UAEXXZ
+0x0067dcf0	14	tVisGroup::vfunction40()	unsorted/tVisGroup.cpp	vc6 guest	?vfunction40@tVisGroup@@UAEXXZ
+0x0067dd00	50	tVisGroup::vfunction31(int *)	unsorted/tVisGroup.cpp	vc6 guest	?vfunction31@tVisGroup@@UAE_NPAH@Z
+0x0067dd40	65	tSeqScene::vfunction40()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction40@tSeqScene@@UAEXXZ
+0x0067dd90	15	tSeqScene::fn_0067dd90()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dd90@tSeqScene@@QAEXXZ
+0x0067dda0	54	tSeqScene::fn_0067dda0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dda0@tSeqScene@@QAEXXZ
+0x0067dde0	27	tSeqScene::fn_0067dde0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dde0@tSeqScene@@QAEXXZ
+0x0067e1a0	44	tSeqScene::vfunction44()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction44@tSeqScene@@UAEXXZ
+0x0067e1d0	253	tSeqScene::fn_0067e1d0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067e1d0@tSeqScene@@QAE_NXZ
+0x0067e2d0	102	tSeqScene::vfunction30()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction30@tSeqScene@@UAEXXZ
 0x0068ff60	534	fn_0068ff60(iBasicStringElement *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	partial	?fn_0068ff60@@YAPAVfn_0068ff60_Root@@PAGAAVtString@@PAV1@VtDir@@@Z
 0x00690180	41	tHtmlParser::fn_00690180(tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	vc6 guest	?fn_00690180@tHtmlParser@@QAEXAAVtString@@PAVfn_0068ff60_Root@@VtDir@@@Z
 0x006901b0	333	fn_006901b0(fn_0068ff60_Root *)	unsorted/tSession.cpp	vc6 guest	?fn_006901b0@@YAPAVfn_0068d830_Item@@PAVfn_0068ff60_Root@@@Z
@@ -4511,6 +4529,13 @@ address	size	symbol	source	modes	decorated
 0x006feda0	25	tLogStream::tStreamBuf::SetEventType(tLog::tEventType)	Common/Log/LogStream.cpp	vc6 guest	?SetEventType@tStreamBuf@tLogStream@nLog@@UAEXW4tEventType@tLog@3@@Z
 0x006fedc0	262	tLogStream::tLogStream(tLog::tEventType)	Common/Log/LogStream.cpp	vc6	??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z
 0x006feed0	45	tLogStream::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6	??_GtLogStream@nLog@@UAEPAXI@Z
+0x006fefd0	406	tThread::tThread()	Common/Thread/Thread.cpp	partial	??0tThread@@QAE@XZ
+0x006ff170	224	tThread::~tThread()	Common/Thread/Thread.cpp	vc6	??1tThread@@QAE@XZ
+0x006ff4f0	471	tThread::StopThread(int32u)	Common/Thread/Thread.cpp	vc6 guest	?StopThread@tThread@@QAEXK@Z
+0x006ff6d0	24	tThread::mSetPriority(ThreadPriority)	Common/Thread/Thread.cpp	vc6 guest	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z
+0x006ff6f0	8	tThread::Working() const	Common/Thread/Thread.cpp	vc6 guest	?Working@tThread@@QBE_NXZ
+0x006ff700	8	tThread::Alive() const	Common/Thread/Thread.cpp	vc6 guest	?Alive@tThread@@QBE_NXZ
+0x006ff710	199	tThread::fn_006ff710()	Common/Thread/Thread.cpp	partial	?fn_006ff710@tThread@@IAEXXZ
 0x00707e80	97	tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo()	Common/Database/FileDatabaseMgr.cpp	vc6	??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ
 0x00707ef0	588	tFileDatabaseMgr::tDatabaseInfo::StreamOut(nDataStore::tOutput&) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?StreamOut@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z
 0x00708140	472	tFileDatabaseMgr::tDatabaseInfo::StreamIn(nDataStore::tInput&)	Common/Database/FileDatabaseMgr.cpp	partial	?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z
@@ -4526,6 +4551,37 @@ address	size	symbol	source	modes	decorated
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetDBInfo@tFileDatabaseMgr@nDatabase@@UBEPBVtDatabaseInfo@12@J@Z
 0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?New@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z
 0x00709270	770	tFileDatabaseMgr::Load(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z
+0x0070e250	71	tWaitForObject::tResult::tResult(int32u)	Common/Thread/WaitForObject.cpp	vc6	??0tResult@tWaitForObject@@QAE@K@Z
+0x0070e2a0	7	tWaitForObject::tResult::TimedOut() const	Common/Thread/WaitForObject.cpp	vc6 guest	?TimedOut@tResult@tWaitForObject@@QBE_NXZ
+0x0070e2b0	7	tWaitForObject::tResult::Ready() const	Common/Thread/WaitForObject.cpp	vc6 guest	?Ready@tResult@tWaitForObject@@QBE_NXZ
+0x0070e2c0	50	tWaitForObject::Wait(void*,int32u)	Common/Thread/WaitForObject.cpp	vc6 guest	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z
+0x0070e4e0	30	tThreadEvent::`scalar deleting destructor'	Common/Thread/ThreadEvent.cpp	vc6	??_GtThreadEvent@@UAEPAXI@Z
+0x0070e500	24	tThreadEvent::~tThreadEvent()	Common/Thread/ThreadEvent.cpp	vc6	??1tThreadEvent@@UAE@XZ
+0x0070efa0	20	tResourceGuard::tGuard::tGuard(tResourceGuard&)	Common/Thread/ResourceGuard.cpp	vc6	??0tGuard@tResourceGuard@@QAE@AAV1@@Z
+0x0070efc0	7	tResourceGuard::tGuard::~tGuard()	Common/Thread/ResourceGuard.cpp	vc6	??1tGuard@tResourceGuard@@QAE@XZ
+0x0070efd0	299	tResourceGuard::tResourceGuard()	Common/Thread/ResourceGuard.cpp	vc6	??0tResourceGuard@@QAE@XZ
+0x0070f100	90	tOptex::~tOptex()	Common/Thread/ResourceGuard.cpp	vc6	??1tResourceGuard@@QAE@XZ
+0x0070f160	249	tResourceGuard::Guard()	Common/Thread/ResourceGuard.cpp	vc6 guest	?Guard@tResourceGuard@@AAEXXZ
+0x0070f260	103	tResourceGuard::Unguard()	Common/Thread/ResourceGuard.cpp	vc6 guest	?Unguard@tResourceGuard@@AAEXXZ
+0x0070f5a0	112	tWinTimer::tWinTimer()	Common/Timer/WinTimer.cpp	vc6	??0tWinTimer@@QAE@XZ
+0x0070f610	30	tWinTimer::`scalar deleting destructor'	Common/Timer/WinTimer.cpp	vc6	??_GtWinTimer@@UAEPAXI@Z
+0x0070f630	108	tWinTimer::~tWinTimer()	Common/Timer/WinTimer.cpp	vc6	??1tWinTimer@@UAE@XZ
+0x0070f6a0	137	tWinTimer::StartTimer(int32u,int32u,tTimerHandler*)	Common/Timer/WinTimer.cpp	vc6 guest	?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z
+0x0070f730	142	tWinTimer::StartTimer(int32u,int32u,iTimerCallbackFunc*,int32u)	Common/Timer/WinTimer.cpp	vc6 guest	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z
+0x0070f7c0	145	tWinTimer::StartTimer(int32u,int32u,iTimerCallback*,int32u)	Common/Timer/WinTimer.cpp	vc6 guest	?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z
+0x0070f860	152	tWinTimer::ChangeTiming(int32u,int32u)	Common/Timer/WinTimer.cpp	vc6 guest	?ChangeTiming@tWinTimer@@UAEXKK@Z
+0x0070f900	26	tWinTimer::StopTimer()	Common/Timer/WinTimer.cpp	vc6 guest	?StopTimer@tWinTimer@@UAEXXZ
+0x0070f920	18	tWinTimer::TimePassedSinceStart()	Common/Timer/WinTimer.cpp	vc6 guest	?TimePassedSinceStart@tWinTimer@@UAEKXZ
+0x0070f940	128	tWinTimer::WinTimerCallback(unsigned int,unsigned int,int32u,int32u,int32u)	Common/Timer/WinTimer.cpp	partial	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z
+0x0070fc80	32	tTimer::tTimer()	Common/Timer/Timer.cpp	vc6	??0tTimer@@QAE@XZ
+0x0070fca0	30	tTimer::`scalar deleting destructor'	Common/Timer/Timer.cpp	vc6	??_GtTimer@@UAEPAXI@Z
+0x0070fcc0	7	tTimer::~tTimer()	Common/Timer/Timer.cpp	vc6	??1tTimer@@UAE@XZ
+0x0070fcd0	45	tTimer::StartTimer(int32u,int32u,tTimerHandler*)	Common/Timer/Timer.cpp	vc6 guest	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z
+0x0070fd00	49	tTimer::StartTimer(int32u,int32u,iTimerCallbackFunc*,int32u)	Common/Timer/Timer.cpp	vc6 guest	?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z
+0x0070fd40	49	tTimer::StartTimer(int32u,int32u,iTimerCallback*,int32u)	Common/Timer/Timer.cpp	vc6 guest	?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z
+0x0070fd80	30	tTimer::ChangeTiming(int32u,int32u)	Common/Timer/Timer.cpp	vc6 guest	?ChangeTiming@tTimer@@UAEXKK@Z
+0x0070fda0	9	tTimer::StopTimer()	Common/Timer/Timer.cpp	vc6 guest	?StopTimer@tTimer@@UAEXXZ
+0x0070fdb0	58	tTimer::SignalTimerEvent()	Common/Timer/Timer.cpp	vc6 guest	?SignalTimerEvent@tTimer@@MAEXXZ
 0x00757250	167	tFile::gGetPath(tString,tDir)	Tiger/tFile.cpp	vc6 guest	?gGetPath@tFile@@SA?AVtPath@@VtString@@VtDir@@@Z
 0x00757310	756	tFile::mInit()	Tiger/tFile.cpp	partial	?mInit@tFile@@SAXXZ
 0x00757610	27	gFileDeInit()	Tiger/tFile.cpp	vc6 guest	?gFileDeInit@@YAXXZ
