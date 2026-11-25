@@ -12,4 +12,6 @@ public:
     virtual void vfunction3();
 };
 
+typedef char tPlayerRelayCCreator_size_is_0x44[ sizeof( tPlayerRelayCCreator ) == 0x44 ? 1 : -1 ];
+
 #endif
