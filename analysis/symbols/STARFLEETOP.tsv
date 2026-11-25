@@ -16971,7 +16971,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0064f670	function	tgSoundPart::mUpdateAtInterrupt	tgSoundPart	?mUpdateAtInterrupt@tgSoundPart@@UAEXXZ	claim		claim
 0x0064faa0	function	tgSoundPart::tgSoundPart	tgSoundPart	??0tgSoundPart@@QAE@XZ	claim		claim
 0x0064fbc0	function	tSoundChannelList::scalar_deleting_destructor	tSoundChannelList				rtti
-0x0064fbe0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart				mangled
+0x0064fbe0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart	?mIsReady@tgSoundPart@@UAEEXZ	claim		mangled
 0x0064fc00	function	tSoundPart::Test_tSoundPart	tSoundPart				mangled
 0x0064fcc0	function	tgSoundPart::mActivate	tgSoundPart	?mActivate@tgSoundPart@@UAEXXZ	claim		claim
 0x0064fd00	function	tgSoundPart::mDeactivate	tgSoundPart	?mDeactivate@tgSoundPart@@UAEXXZ	claim		claim
@@ -17087,7 +17087,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00657770	function	tAudioFileInfoPart::tAudioFileInfoPart	tAudioFileInfoPart	??0tAudioFileInfoPart@@QAE@XZ	claim		claim
 0x006577b0	function	tAudioFileInfoPart::`scalar_deleting_destructor'	tAudioFileInfoPart	??_GtAudioFileInfoPart@@UAEPAXI@Z	mangled		mangled
 0x006577d0	function	tAudioFileInfoPart::~tAudioFileInfoPart	tAudioFileInfoPart	??1tAudioFileInfoPart@@UAE@XZ	claim		claim
-0x00657970	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart				mangled
+0x00657970	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart	?mIsReady@tAudioFileInfoPart@@UAEEXZ	claim		mangled
 0x00657980	function	tAudioFileInfoPart::mActivate	tAudioFileInfoPart	?mActivate@tAudioFileInfoPart@@UAEXXZ	claim		claim
 0x00657b60	function	tAudioFileInfoPart::mDeactivate	tAudioFileInfoPart	?mDeactivate@tAudioFileInfoPart@@UAEXXZ	claim		claim
 0x00657cf0	function	tAudioFileInfoPart::vfn_48	tAudioFileInfoPart	?vfn_48@tAudioFileInfoPart@@UAEEJJJ@Z	claim		claim
@@ -17179,7 +17179,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00660c50	function	tChannelGroupManagerPart::mDeleteChannelGroup	tChannelGroupManagerPart	?mDeleteChannelGroup@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660cd0	function	tChannelGroupManagerPart::mRemoveChannelGroupOwner	tChannelGroupManagerPart	?mRemoveChannelGroupOwner@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660d60	function	tAudioFileInfoPart::mGetBasicAudioFile	tAudioFileInfoPart	?mGetBasicAudioFile@tAudioFileInfoPart@@UAEPAVtBasicAudioFile@@K@Z	claim		claim
-0x00660da0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart				mangled
+0x00660da0	function	tChannelGroupManagerPart::mIsReady	tChannelGroupManagerPart	?mIsReady@tChannelGroupManagerPart@@UAEEXZ	claim		mangled
 0x00660dc0	function	tChannelGroupManagerPart::mDeactivate	tChannelGroupManagerPart	?mDeactivate@tChannelGroupManagerPart@@UAEXXZ	claim		claim
 0x00660f30	function	tChannelGroupManagerPart::mAttachFileToGroup	tChannelGroupManagerPart	?mAttachFileToGroup@tChannelGroupManagerPart@@UAEEKJ@Z	claim		claim
 0x00660f60	function	tChannelGroupManagerPart::mAttachFileToChannel	tChannelGroupManagerPart	?mAttachFileToChannel@tChannelGroupManagerPart@@UAEEKKJ@Z	claim		claim
@@ -17205,7 +17205,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00661fa0	function	tAudioPriorityManagerPart::mAreWeAllowedToPlay	tAudioPriorityManagerPart	?mAreWeAllowedToPlay@tAudioPriorityManagerPart@@UAEEKJJJPAJAAKAAN@Z	claim		claim
 0x00662400	function	tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo	tAudioPriorityManagerPart	?mGetNextAvailableClassTrackingInfo@tAudioPriorityManagerPart@@IAEJXZ	claim		claim
 0x006624b0	function	tAudioPriorityManagerPart::mWeHaveStoppedPlaying	tAudioPriorityManagerPart	?mWeHaveStoppedPlaying@tAudioPriorityManagerPart@@UAEXK@Z	claim		claim
-0x00662510	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart				mangled
+0x00662510	function	tAudioPriorityManagerPart::mIsReady	tAudioPriorityManagerPart	?mIsReady@tAudioPriorityManagerPart@@UAEEXZ	claim		mangled
 0x00662520	function	tAudioPriorityManagerPart::mActivate	tAudioPriorityManagerPart	?mActivate@tAudioPriorityManagerPart@@UAEXXZ	claim		claim
 0x00662530	function	tAudioPriorityManagerPart::mDeactivate	tAudioPriorityManagerPart	?mDeactivate@tAudioPriorityManagerPart@@UAEXXZ	claim		claim
 0x00662540	function	tAudioPriorityManagerPart::mClose	tAudioPriorityManagerPart	?mClose@tAudioPriorityManagerPart@@MAEXXZ	claim		claim

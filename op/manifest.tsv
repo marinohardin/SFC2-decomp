@@ -3716,7 +3716,7 @@ address	size	symbol	source	modes
 0x0064f250	979	tgSoundPart::mUpdate()	Tiger/tgSound.cpp	partial
 0x0064f670	1064	tgSoundPart::mUpdateAtInterrupt()	Tiger/tgSound.cpp	vc6 guest
 0x0064faa0	274	tgSoundPart::tgSoundPart()	Tiger/tgSound.cpp	vc6
-0x0064fbe0	31	tChannelGroupManagerPart::mIsReady()	Tiger/tgSound.cpp	vc6 guest
+0x0064fbe0	31	tgSoundPart::mIsReady()	Tiger/tgSound.cpp	vc6 guest
 0x0064fcc0	55	tgSoundPart::mActivate()	Tiger/tgSound.cpp	vc6 guest
 0x0064fd00	5	tgSoundPart::mDeactivate()	Tiger/tgSound.cpp	vc6 guest
 0x0064fd10	537	tgSoundPart::mDone()	Tiger/tgSound.cpp	vc6 guest
@@ -3828,7 +3828,7 @@ address	size	symbol	source	modes
 0x00657580	481	tgSoundPart::mAttachSoundToRecordChannel(tSoundSelection*)	Tiger/tgSound.cpp	vc6 guest
 0x00657770	56	tAudioFileInfoPart::tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6
 0x006577d0	412	tAudioFileInfoPart::~tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6
-0x00657970	11	tAudioPriorityManagerPart::mIsReady()	Tiger/tAudioFile.cpp	vc6 guest
+0x00657970	11	tAudioFileInfoPart::mIsReady()	Tiger/tAudioFile.cpp	vc6 guest
 0x00657980	475	tAudioFileInfoPart::mActivate()	Tiger/tAudioFile.cpp	vc6 guest
 0x00657b60	389	tAudioFileInfoPart::mDeactivate()	Tiger/tAudioFile.cpp	vc6 guest
 0x00657cf0	42	tAudioFileInfoPart::vfn_48(long,long,long)	Tiger/tAudioFile.cpp	vc6 guest
