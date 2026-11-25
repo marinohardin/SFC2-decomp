@@ -58,3 +58,6 @@ fn_00600208_string g_00c39ea0 = "General_Error";
 // FUNCTION: STARFLEETOP 0x006004b5
 // FUNCTION: STARFLEETOP 0x00600482
 fn_00600208_string g_00c39e88 = "ErrorOk";
+
+// FUNCTION: STARFLEETOP 0x006004e8
+fn_00600208_string g_00c39e78 = "ErrorMessage";
