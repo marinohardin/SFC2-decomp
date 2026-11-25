@@ -292,3 +292,13 @@ void fn_00426141_Class::fn_00426469(int index, tPoint3* p, fn_00426469_Vertex* v
 		v->a = (unsigned char)(m04[index] * 255.0f);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0042653f
+float fn_0042653f(float x)
+{
+	if (x > 1.0f)
+		return 1.0f;
+	if (x < 0.0f)
+		x = 0.0f;
+	return x;
+}
