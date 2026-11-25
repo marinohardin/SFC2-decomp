@@ -1199,7 +1199,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00424cfa	function	fn_00424cfa					none
 0x00424d0d	function	fn_00424d0d	tEntityNameManager				vtable
 0x00424d28	function	fn_00424d28		?fn_00424d28@fn_00424d28_class@@QAEXXZ	claim		none
-0x00424d37	function	fn_00424d37					none
+0x00424d37	function	fn_00424d37		?fn_00424d37@fn_00424d28_class@@QAEXABVtString@@@Z	claim		none
 0x00424d46	function	fn_00424d46					none
 0x00424e2a	function	fn_00424e2a					none
 0x00424e71	function	fn_00424e71					none

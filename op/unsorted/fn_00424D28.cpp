@@ -8,10 +8,17 @@ public:
 	char fPad[0x48];
 	std::vector<tString> fStrings;
 	void fn_00424d28();
+	void fn_00424d37(const tString& s);
 };
 
 // FUNCTION: STARFLEETOP 0x00424d28
 void fn_00424d28_class::fn_00424d28()
 {
 	fStrings.clear();
+}
+
+// FUNCTION: STARFLEETOP 0x00424d37
+void fn_00424d28_class::fn_00424d37(const tString& s)
+{
+	fStrings.push_back(s);
 }
