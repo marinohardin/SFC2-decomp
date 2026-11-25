@@ -76,6 +76,8 @@ unsigned char tSoundChannelFormat::mAreWeFixedPan() { unsigned char fixedPan = (
 unsigned char tSoundChannelFormat::mAreWeFixedVolume() { unsigned char fixedVolume = (fSoundType & 0x200) > 0; return fixedVolume; }
 // FUNCTION: STARFLEETOP 0x00646640
 unsigned char tSoundChannelFormat::mAreWeAGlobalSound() { unsigned char globalSound = (fSoundType & 0x400) > 0; return globalSound; }
+// FUNCTION: STARFLEETOP 0x00646650
+unsigned char tSoundChannelFormat::mDoWeRetainSelections() { unsigned char retain = (fSoundType & 0x800) > 0; return retain; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
