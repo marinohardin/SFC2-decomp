@@ -3,6 +3,20 @@
 #include "unsorted/tSeqScene.h"
 #include "unsorted/tScrollBar.h"
 
+// FUNCTION: STARFLEETOP 0x0067dbc0
+void tSeqScene::fn_0067dbc0()
+{
+	field_F4 = -1;
+	field_F8 = -1;
+	field_E8 = 0;
+	field_EC &= ~1;
+	field_F0 = 0;
+	field_FC = 10;
+	field_100 = 0;
+	field_104 = "";
+	field_130 = "";
+}
+
 // FUNCTION: STARFLEETOP 0x0067dcb0
 void tSeqScene::vfunction43()
 {
