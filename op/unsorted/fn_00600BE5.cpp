@@ -97,5 +97,6 @@ fn_00600be5_string g_00c39f28 = "Medals";
 fn_00600be5_string g_00c39f18 = "cRankMedals_";
 
 // HYPOTHESIS: the global's name is not known.
+// FUNCTION: STARFLEETOP 0x00600de1
 // FUNCTION: STARFLEETOP 0x00600dae
 fn_00600be5_string g_00c39f08 = "cMissionMedals_";
