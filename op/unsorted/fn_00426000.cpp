@@ -21,15 +21,10 @@ void fn_004260a4(unsigned int* first, unsigned int* last)
 		}
 		else
 		{
-			unsigned int* p = i;
-			if (first != p)
-			{
-				do
-				{
-					*p = *(p - 1);
-					--p;
-				} while (first != p);
-			}
+			unsigned int* src = i;
+			unsigned int* dst = i + 1;
+			while (first != src)
+				*--dst = *--src;
 			*first = val;
 		}
 	}
