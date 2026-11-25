@@ -57,3 +57,9 @@ void tSoundChannel::mSetFinishSoundCallback(long callback)
 {
     field_0x90 = (void (*)(long, iTruth))callback;
 }
+
+// FUNCTION: STARFLEETOP 0x00646910
+long tSoundChannel::mGetNumberOfAttachments()
+{
+    return (&field_0xec)->vfunction39();
+}
