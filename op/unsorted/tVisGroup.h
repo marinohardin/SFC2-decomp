@@ -7,15 +7,107 @@
 #define tVisGroup_h 1
 
 #include "unsorted/tVisObject.h"
+#include "Tiger/tstring.h"
+#include <list>
 
 class tVisGroup;
 
-// HYPOTHESIS: the 0x6c-byte member at +0x68; 0x0067f010 takes the group and a pointer into an
-// event record, and answers whether the member handled it.
-class c_tVisGroup_Field68
+// HYPOTHESIS: the library's map< tString, int, less_ss > as the original's library lays it out
+// (the toolchain's xtree keeps a static nil node): an allocator byte, a comparison byte, the head
+// node at +4, a nil node of its own at +8, the multi flag at +0xc and the size at +0x10; nodes
+// of 0x3c bytes. Only what tVisGroup's constructor (0x0067da80) builds is declared.
+struct c_tMachine_Field14
+{
+	struct node
+	{
+		node*	left;
+		node*	parent;
+		node*	right;
+		std::pair< const tString, int >	value;
+		char	color;
+		char	isnil;
+	};
+	struct _Pr
+	{
+	};
+	struct _A
+	{
+	};
+
+	c_tMachine_Field14( const _Pr& pred = _Pr(), const _A& al = _A() )
+		: allocator( al ), key_compare( pred ), _Multi( false )
+	{
+		_Init();
+	}
+	~c_tMachine_Field14();
+	void _Init()
+	{
+		_Nil = _Buynode( 0, 1 );
+		_Nil->isnil = 1;
+		_Nil->left = 0;
+		_Nil->right = 0;
+		_Head = fn_006373b0( _Nil, 0 );
+		_Head->left = _Head;
+		_Head->right = _Head;
+		_Size = 0;
+	}
+	// MATCH-ONLY: the library's _Buynode( parent, colour ), which the original expands inline
+	// for the nil node and calls out of line (0x006373b0) for the head.
+	node* _Buynode( node* parent, char color )
+	{
+		node* s = (node*)operator new( sizeof( node ) );
+		s->parent = parent;
+		s->color = color;
+		s->isnil = 0;
+		return s;
+	}
+	node* fn_006373b0( node* parent, char color );
+
+	_A	allocator;
+	_Pr	key_compare;
+	node*	_Head;
+	node*	_Nil;
+	bool	_Multi;
+	unsigned int	_Size;
+};
+
+// HYPOTHESIS: the part of tMachine at +4, built as one object: the original keeps its address
+// apart from tMachine's, and stores the int only once the tString is constructed.
+struct c_tMachine_Field04
+{
+	c_tMachine_Field04()
+	{
+		field_24 = 0;
+	}
+
+	std::vector< void * >	field_00;
+	c_tMachine_Field14	field_10;
+	int	field_24;
+	tString	field_28;
+};
+
+// tMachine: vftable 0x007b7dbc, 0x6c bytes, destroyed by 0x0067f490 (the name is the analysis's).
+// HYPOTHESIS: the member types past the map are read from tVisGroup's constructor alone; the
+// element types of the vector and the list are not known.
+class tMachine
 {
 public:
+	tMachine()
+	{
+		field_68 = 0;
+		field_64 = 1;
+		field_54 = 0;
+	}
+	virtual ~tMachine();
+	// HYPOTHESIS: 0x0067f010 takes the group and a pointer into an event record, and answers
+	// whether the machine handled it.
 	bool fn_0067f010( tVisGroup *group, int *data );
+
+	c_tMachine_Field04	field_04;
+	int	field_54;
+	std::list< void * >	field_58;
+	int	field_64;
+	int	field_68;
 };
 
 // HYPOTHESIS: tFleetEntry.h still declares a reduced tVisGroup of its own; it must include this
@@ -63,10 +155,8 @@ public:
 	bool fn_0067d1c0( int *event );
 
 	int field_64;	// HYPOTHESIS: the constructor never writes it
-	// HYPOTHESIS: a 0x6c-byte member with its own vftable 0x007b7dbc, constructed in place by
-	// the constructor and destroyed by 0x0067f490 (the same type sits at tButton +0x74, whose
-	// destructor 0x0067f490 also runs); layout in the lane notes.
-	unsigned char field_68[ 0xd4 - 0x68 ];
+	// The same type sits at tButton +0x74, whose destructor runs 0x0067f490 too.
+	tMachine field_68;
 };
 
 typedef char tVisGroup_size_is_0xd4[ sizeof( tVisGroup ) == 0xd4 ? 1 : -1 ];
