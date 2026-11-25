@@ -265,10 +265,14 @@ int fn_006032e7_object::fn_006037fc( int* record )
 	if ( field_13c )
 	{
 		int count = field_13c->fn_count();
-		for ( ; index < count; ++index )
+		if ( count > 0 )
 		{
-			if ( field_13c->fn_item( index ) == record )
-				goto done;
+			do
+			{
+				if ( field_13c->fn_item( index ) == record )
+					goto done;
+				++index;
+			} while ( index < count );
 		}
 	}
 	index = -1;
