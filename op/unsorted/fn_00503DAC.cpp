@@ -70,3 +70,9 @@ tProbeCell::tProbeCell(const float* a, const float* b)
 	m2c = fn_004baeb1(127.0f);
 	m30 = fn_004baeb1(64.0f);
 }
+
+// FUNCTION: STARFLEETOP 0x00503ef3
+float fn_00503ef3()
+{
+	return 0.25f;
+}
