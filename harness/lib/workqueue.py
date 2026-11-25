@@ -265,6 +265,27 @@ def append_tsv(path, fields, row):
             fcntl.flock(f, fcntl.LOCK_UN)
 
 
+def append_tsv_once(path, fields, key, row):
+    """Append `row` unless a row with the same `key` is there, checked under the same exclusive
+    lock as the append, so two loops cannot both add it. True when it was appended."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'a+', newline='') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            f.seek(0)
+            if any(r.get(key) == row[key] for r in csv.DictReader(f, delimiter='\t')):
+                return False
+            f.seek(0, os.SEEK_END)
+            w = csv.DictWriter(f, fieldnames=fields, delimiter='\t', extrasaction='ignore',
+                               lineterminator='\n')
+            if f.tell() == 0:
+                w.writeheader()
+            w.writerow(row)
+            return True
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+
 def _alive(pid):
     try:
         os.kill(pid, 0)
@@ -275,12 +296,15 @@ def _alive(pid):
     return True
 
 
-def acquire(claims_dir, address, owner, pid):
+def acquire(claims_dir, address, owner, pid, lead=None):
     """Claim a function for one loop: create claims/<address>.lock exclusively. A lock held by a
-    dead process on this host is taken over. Returns True when this owner holds it."""
+    dead process on this host is taken over. Returns True when this owner holds it. `lead` marks
+    the lock of a pair partner: the address of the function whose session covers it."""
     os.makedirs(claims_dir, exist_ok=True)
     path = os.path.join(claims_dir, f'{address}.lock')
     me = {'owner': owner, 'pid': pid, 'host': socket.gethostname()}
+    if lead:
+        me['lead'] = lead
     for _ in range(2):
         try:
             fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
@@ -310,6 +334,41 @@ def release(claims_dir, address, owner):
                 os.remove(path)
     except (OSError, ValueError):
         pass
+
+
+def acquire_group(claims_dir, address, partners, owner, pid):
+    """Claim a function and its pair partners (harness/lib/pairs.py) together, or none of them:
+    a partner another loop holds makes the whole group unavailable. Partner locks name the lead."""
+    if not acquire(claims_dir, address, owner, pid):
+        return False
+    taken = []
+    for p in partners:
+        if not acquire(claims_dir, p, owner, pid, lead=address):
+            for t in taken:
+                release(claims_dir, t, owner)
+            release(claims_dir, address, owner)
+            return False
+        taken.append(p)
+    return True
+
+
+def release_group(claims_dir, address, owner):
+    """Release a function's lock and the locks of the partners it took with it."""
+    try:
+        names = os.listdir(claims_dir)
+    except OSError:
+        names = []
+    for n in names:
+        if not n.endswith('.lock'):
+            continue
+        try:
+            with open(os.path.join(claims_dir, n)) as f:
+                held = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if held.get('lead') == address and held.get('owner') == owner:
+            release(claims_dir, n[:-len('.lock')], owner)
+    release(claims_dir, address, owner)
 
 
 def counted_attempts(attempts, address, since=''):
@@ -401,7 +460,8 @@ def end_reference_only(paths_, entry, p, rows):
 
 
 def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, revisit=(),
-               take_revisit=False, labels=None, ended=None):
+               take_revisit=False, labels=None, ended=None, pairs=None, exact=frozenset(),
+               parked=None):
     """The first queue entry still open that `claim` grants, with its attempt count, model and
     role; None if there is none. Functions on the revisit list are skipped unless
     `take_revisit`, and then their run starts over from the time they were listed (`run_rows`).
@@ -409,16 +469,46 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
     its full chance in the shared log is taken too, with a new run (`unlisted_run`). `labels`,
     the lane's near-miss labels when HARNESS_NEARMISS is on, routes a reference-only function
     (`route`); one whose run has reached the Fable step is appended to `ended` as (entry, plan,
-    rows), for the caller to end with `end_reference_only`."""
-    done = {r['address'] for r in attempts if r['outcome'] == 'exact'}
+    rows), for the caller to end with `end_reference_only`.
+
+    `pairs(address)` (harness/lib/pairs.py `Resolver.pair_of`) makes a deleting destructor and
+    its real destructor one piece of work: the first member of the group the queue reaches is
+    the lead (its entry carries `pair`, and the model follows the group's largest open
+    function); the other open members wait behind it (they are never handed to a second
+    session) and are not counted. A deleting destructor whose real destructor cannot be
+    identified is appended to `parked` as (entry, Unpaired), for the caller to route out with
+    `park` (unless the Unpaired is transient: only unreadable bytes, which the caller skips). `exact` holds the matched-set addresses already exact."""
+    done = {r['address'] for r in attempts if r['outcome'] == 'exact'} | set(exact)
     given_up = {r['address'] for r in difficult}
     listed = {r['address']: r.get('listed', '') for r in revisit}
     whole = tiers
-    for e in queue:
+    position = {e['address']: i for i, e in enumerate(queue)}
+    size_of = {e['address']: e.get('size') or 0 for e in queue}
+
+    def open_(a):
+        return (a in position and a not in done and a not in given_up
+                and not (a in listed and not take_revisit))
+
+    for i, e in enumerate(queue):
         a = e['address']
         if a in given_up or a in done or (a in listed and not take_revisit):
             continue
-        tiers = whole.for_size(e.get('size'))
+        group = None
+        if pairs is not None:
+            group = pairs(a)
+            if group is not None and hasattr(group, 'reason'):
+                if parked is not None:
+                    parked.append((e, group))
+                continue
+            if group is not None:
+                partners = [f'0x{p:08x}' for p in group.partners]
+                if any(open_(p) and position[p] < i for p in partners):
+                    continue  # the lead of its group comes first and covers this one
+        size = e.get('size')
+        if group is not None:
+            sizes = [size_of[p] for p in partners if open_(p)]
+            size = max([size or 0] + sizes)
+        tiers = whole.for_size(size)
         if a not in listed and take_revisit:
             rows = unlisted_run(attempts, a, tiers)
         else:
@@ -433,8 +523,59 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
             out = dict(e, attempts=p.attempts, model=model, role=p.role, best=p.best)
             if label and label.get('label') == 'reference-only':
                 out['nearmiss'] = 'reference-only'
+            if group is not None:
+                out['pair'] = group.as_dict()
             return out
     return None
+
+
+def park(paths_, entry, reason):
+    """Put an address the loop cannot work on its own on this lane's difficult list, with the
+    reason, so no session is spent on it (a deleting destructor with no identifiable real
+    destructor, harness/lib/pairs.py)."""
+    a = entry['address']
+    if any(r['address'] == a for r in read_lists(paths_, 'difficult')):
+        return False
+    _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+    return append_tsv_once(paths_.DIFFICULT, DIFFICULT_FIELDS, 'address', dict(
+        address=a, name=entry.get('name', ''), attempts=0, last_model='', best_score='0.00',
+        last_attempt='',
+        reason=('not attempted: a deleting destructor is generated from its class\'s real '
+                f'destructor and cannot be written alone, and {reason} (harness/lib/pairs.py)')))
+
+
+def settle_partners(paths_, entry, where, row, partners, tiers, take_revisit=False,
+                    sizes=None):
+    """After a lead's attempt is logged and settled (`where`, from `record`): each partner of
+    its pair that the attempt left exact gets an `exact` row of its own (so the queue never hands
+    it out), and when the lead's run ended on a list the other partners go on the same list,
+    with the lead's row, so they are not handed to a session of their own. `partners` is
+    [{address, name, exact, score_before, score_after}]; `sizes` ({address: bytes}, from the
+    queue) picks each partner's model order."""
+    for p in partners:
+        if p.get('exact'):
+            append_tsv(paths_.ATTEMPTS, ATTEMPT_FIELDS, dict(
+                row, address=p['address'], name=p.get('name', ''), outcome='exact',
+                score_before=p.get('score_before', '0.00'),
+                score_after=p.get('score_after', '100.00'), input_tokens=0, output_tokens=0,
+                cache_read_tokens=0, cache_write_tokens=0, cost_usd=0, turns=0, seconds=0))
+            size = (sizes or {}).get(p['address'], p.get('size'))
+            settle(paths_, dict(address=p['address'], name=p.get('name', ''), size=size), tiers,
+                   row['time'], take_revisit)
+        elif where in ('difficult', 'revisit'):
+            lead = entry['address']
+            fields, path = ((DIFFICULT_FIELDS, paths_.DIFFICULT) if where == 'difficult'
+                            else (REVISIT_FIELDS, paths_.REVISIT))
+            src = next((r for r in read_tsv(path, fields) if r['address'] == lead), None)
+            if src is None or any(r['address'] == p['address'] for r in read_lists(
+                    paths_, 'difficult')):
+                continue
+            _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != p['address'])
+            note = f' (with {lead}, its pair)'
+            copy = dict(src, address=p['address'], name=p.get('name', ''))
+            copy['reason' if where == 'difficult' else 'note'] = (
+                src.get('reason' if where == 'difficult' else 'note', '') + note)
+            append_tsv(path, fields, copy)
 
 
 def _rewrite_tsv(path, fields, keep):

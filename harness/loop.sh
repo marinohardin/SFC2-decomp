@@ -70,6 +70,7 @@
 # HARNESS_NO_LEAN (0), HARNESS_WHOLETREE (1; 0 skips the whole-tree checks), HARNESS_WHOLETREE_BUDGET (600 s), HARNESS_LANE_FILES,
 # HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000), HARNESS_NEARMISS (1; 0:
 # reference-only near misses take the tiers like any other),
+# HARNESS_PAIRS (1; 0: a deleting destructor and its real destructor are handed out alone),
 # HARNESS_LIMIT_SLEEP (300 s), HARNESS_FAIL_SLEEP (5 s), plus the paths in
 # harness/lib/paths.py.
 set -u
@@ -265,7 +266,14 @@ while :; do
     # routing reads it, and the RULE: collector reads it back (nearmiss.py --rules).
     python3 -m harness.lib.nearmiss "$addr" --store --tsv > "$tag.nearmiss.tsv" 2>> "$state/nearmiss.log" \
         || echo "WARN  could not label $addr (see $state/nearmiss.log)"
-    snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
+    # A deleting destructor and its real destructor are one piece of work (harness/lib/pairs.py):
+    # the snapshot leaves out every address of the group, not only the queued one.
+    if ! group=$(py group "$entry") || [ -z "$group" ]; then
+        group=$addr
+        echo "WARN  $addr: could not read its pair from $entry; the claim snapshot covers the queued address alone"
+    fi
+    # shellcheck disable=SC2086  # addresses only
+    snap_ok=1; py claims "$src" $group > "$tag.claims.before" || snap_ok=0
     # Never run a session on a missing or partial prompt (an unreadable brief, say).
     if ! py prompt "$entry" "$tag.pack.md" > "$tag.prompt.md" || [ ! -s "$tag.prompt.md" ]; then
         echo "ERROR could not write the prompt for $addr (see above); stopping" >&2
@@ -332,7 +340,8 @@ while :; do
         changed=$(git status --porcelain --untracked-files=all -- . ":(exclude)$src")
         [ -z "$changed" ] || tampered="changes outside $src: $(echo "$changed" | head -5 | tr '\n' ' ')"
         if [ -z "$tampered" ]; then
-            py claims "$src" "$addr" > "$tag.claims.after" || snap_ok=0
+            # shellcheck disable=SC2086
+            py claims "$src" $group > "$tag.claims.after" || snap_ok=0
             [ "$snap_ok" = 1 ] || tampered="the claim-line snapshot failed (see $tag.claims.*)"
             [ -n "$tampered" ] || cmp -s "$tag.claims.before" "$tag.claims.after" \
                 || tampered="claim lines of other functions changed: $(diff "$tag.claims.before" "$tag.claims.after" | grep '^[<>]' | head -3 | tr '\n' ' ')"
@@ -347,13 +356,18 @@ while :; do
         echo "ERROR $addr not scored: $tampered; worktree reset to $head0"
     else
         git clean -fdXq -- $judges
-        harness/update-matched-set.sh "$addr" --json > "$tag.after.json" 2>&1
+        # The queued function, and the partners of its pair that the source now claims.
+        ids=$(py ids "$entry")
+        # shellcheck disable=SC2086
+        harness/update-matched-set.sh $ids --json > "$tag.after.json" 2>&1
         # STAND-IN: lines in the final message are allowances, kept in the lane state before the
         # whole-tree checks read them (harness/lib/standins.py).
         python3 -m harness.lib.standins --record "$tag.claude.json" || true
-        set -- $(py score "$tag.after.json" "$addr")
-        after=$1 kind=$2 code=$3
-        improved=$(python3 -c 'import sys; print(int(float(sys.argv[2]) > float(sys.argv[1]) + 1e-6 or sys.argv[3] == "exact"))' "$before" "$after" "$kind")
+        # A round is kept when at least one member of the group improved and none got worse
+        # (harness/lib/loopio.py, judge); the whole-tree and stand-in scans below cover every
+        # file the session touched, so a kept pair round is scanned before its commit.
+        set -- $(py judge "$entry" "$tag.after.json" "$before")
+        after=$1 kind=$2 code=$3 improved=$4
         if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.wholetree > "$tag.wholetree.txt" 2>&1; then
             # The Stop hook runs the same checks; this catches a session it let go after three
             # refusals. The round is undone like any other failure.
@@ -388,7 +402,7 @@ while :; do
             [ -f "$table" ] && git add -- "$table"
             git commit -q -m "feat(op): $([ "$kind" = exact ] && echo match || echo improve) $name ($addr)" \
                 -m "build-and-verify: $before% -> $after% ($kind) with $model." \
-                -m "$(py trailer "$addr" "$after" "$kind")" \
+                -m "$(py trailer "$addr" "$after" "$kind" "$entry" "$tag.after.json")" \
                 && echo "OK    $addr $outcome $before% -> $after%, committed"
             python3 -m harness.lib.nearmiss "$addr" --store --tsv > /dev/null 2>> "$state/nearmiss.log" \
                 || echo "WARN  could not relabel $addr after the commit; its stored label is stale (see $state/nearmiss.log)"
@@ -406,7 +420,10 @@ while :; do
             "$tag.claude.json" "$tag.after.json" "$now" > /dev/null \
             || echo "WARN  could not write the handoff note for $addr"
     fi
-    python3 harness/queue.py record "$(py row "$entry" "$outcome" "$before" "$after" "$tag.claude.json" "$secs" "$now")"
+    # The partners of a pair are credited with what was committed only: a reset round keeps nothing.
+    scored=
+    case "$outcome" in exact|improved) scored="$tag.after.json" ;; esac
+    python3 harness/queue.py record "$(py row "$entry" "$outcome" "$before" "$after" "$tag.claude.json" "$secs" "$now" "$scored")"
     python3 harness/queue.py release "$addr"; addr=
 
     rounds=$((rounds + 1))

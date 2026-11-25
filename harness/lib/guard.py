@@ -101,12 +101,27 @@ def claimed_address():
         return None
 
 
+def claimed_addresses():
+    """Every function this session may claim: its own and its pair partners' (the deleting
+    destructor and real destructor of a class are one piece of work, harness/lib/pairs.py)."""
+    own = claimed_address()
+    out = set() if own is None else {own}
+    try:
+        with open(paths.CLAIM) as f:
+            out |= {int(a, 16) for a in json.load(f).get('partners') or []}
+    except (OSError, ValueError, TypeError, AttributeError):
+        pass
+    return out
+
+
 def other_claims(text, claimed):
-    """Claim lines in text for any address but the claimed one: {(kind, module, address): count}."""
+    """Claim lines in text for any address but the claimed one (an address, or a collection of
+    them): {(kind, module, address): count}."""
+    own = {claimed} if isinstance(claimed, int) or claimed is None else set(claimed)
     out = {}
     for line in (text or '').splitlines():
         m = CLAIM_LINE.match(line)
-        if m and int(m.group(3), 16) != claimed:
+        if m and int(m.group(3), 16) not in own:
             k = (m.group(1), m.group(2), int(m.group(3), 16))
             out[k] = out.get(k, 0) + 1
     return out
@@ -127,7 +142,7 @@ def check_claims(tool, file_path, ti, cwd=None):
     p = file_path if os.path.isabs(file_path) else os.path.join(cwd or paths.REPO, file_path)
     if not os.path.realpath(p).lower().endswith(ANNOTATED_EXTS) and not p.lower().endswith(ANNOTATED_EXTS):
         return None
-    claimed = claimed_address()
+    claimed = claimed_addresses()
     try:
         with open(p, encoding='latin1', newline='') as f:
             old = f.read()
