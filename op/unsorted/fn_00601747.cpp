@@ -27,5 +27,6 @@ void fn_00601747_class::fn_00601747( tMetaClientCreator** result )
 }
 
 // HYPOTHESIS: a third global std::string built from the same literal as g_00c39fe0 and g_00c39ff0; its dynamic initializer is this function.
+// FUNCTION: STARFLEETOP 0x00601804
 // FUNCTION: STARFLEETOP 0x006017d1
 std::string g_00c3a000 = "MessengerRelayNameC";
