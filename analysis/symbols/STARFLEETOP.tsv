@@ -1278,7 +1278,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426f1a	function	fn_00426f1a					none
 0x00427145	function	fn_00427145					none
 0x00427160	function	tMatchedMission::tMatchedMission	tMatchedMission				rtti
-0x00427366	function	nDataStore::tStreamable::scalar_deleting_destructor	nDataStore::tStreamable	??_GtStreamable@nDataStore@@UAEPAXI@Z	claim		rtti
+0x00427366	function	nDataStore::tStreamable::scalar_deleting_destructor	nDataStore::tStreamable				rtti
 0x00427382	function	tMatchedMission::scalar_deleting_destructor	tMatchedMission				rtti
 0x0042739e	function	tCurrentTime::tCurrentTime	tCurrentTime	??0tCurrentTime@@QAE@ABV0@@Z	claim		claim
 0x004273eb	function	tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector	tPoliticalTensionMatrix::tPoliticalTensionVector	??0tPoliticalTensionVector@tPoliticalTensionMatrix@@QAE@ABV01@@Z	claim		claim
