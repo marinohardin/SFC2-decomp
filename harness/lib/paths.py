@@ -100,6 +100,9 @@ MATCHED_SET = env_path('HARNESS_MATCHED_SET', COMMITTED_MATCHED_SET)
 # it was never exact (harness/README.md, "Boundary errors").
 BOUNDARIES = env_path('HARNESS_BOUNDARIES',
                       os.path.join(REPO, 'analysis', 'results', 'boundary_errors.tsv'))
+# Functions the owner released from the base gate (harness/README.md, "Released functions").
+RELEASED = env_path('HARNESS_RELEASED',
+                    os.path.join(REPO, 'analysis', 'results', 'released.tsv'))
 UNITS = env_path('HARNESS_UNITS', os.path.join(HARNESS, 'units.json'))
 # The unit map (tools/units.py): one row per translation unit with its address range.
 SYMBOL_TABLE = env_path('HARNESS_SYMBOL_TABLE', os.path.join(REPO, 'analysis', 'symbols', 'STARFLEETOP.tsv'))

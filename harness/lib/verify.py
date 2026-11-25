@@ -417,6 +417,13 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
+        base_data, used, stale = matched.release_released(
+            base_data, data, matched.load_released(paths.RELEASED))
+        for k, date, reason in used:
+            rep.add('INFO', f'{k} released from {label} ({date}): {reason}')
+        for k in stale:
+            rep.add('WARN', f'{k} is on analysis/results/released.tsv but is still exact: remove '
+                    'the row')
         base_data, misscored = matched.release_misscored(base_data, data, claimed_keys(cfg))
         for k in misscored:
             rep.add('INFO', f'{k} dropped from matched_set.json: its entry in {label} was scored '
@@ -662,7 +669,8 @@ def report_shared_symbols(rep):
 def comdat_kind_conflicts(objects):
     """Error lines for an external symbol that built objects define in a way the linker refuses
     to merge: COMDAT copies whose selection kinds differ (an out-of-line definition is "no
-    duplicates", an inline copy "any"), and a symbol defined outside COMDATs in two objects.
+    duplicates", an inline copy "any"), a "no duplicates" COMDAT defined in more than one object,
+    and a symbol defined outside COMDATs in two objects.
     `objects` maps a unit to its object file."""
     kinds, plain = {}, {}   # symbol: {kind: [unit]}, symbol: [unit]
     for unit, path in sorted(objects.items()):
@@ -689,6 +697,10 @@ def comdat_kind_conflicts(objects):
             out.append(f'{name} is defined with different COMDAT selection kinds: {where} '
                        '(no linker accepts the pair; give it one definition, the same in every '
                        'unit)')
+        elif 1 in by_kind and len(by_kind[1]) > 1:
+            out.append(f'{name} is defined with COMDAT selection "no duplicates" in more than one '
+                       f'object: {", ".join(by_kind[1])} (a linker accepts one definition of a '
+                       'name; two different functions cannot share it)')
     for name, units in sorted(plain.items()):
         if len(units) > 1:
             out.append(f'{name} is defined outside a COMDAT in more than one object: '

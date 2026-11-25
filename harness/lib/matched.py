@@ -69,6 +69,59 @@ def boundary_listed(path):
     return out
 
 
+RELEASED_FIELDS = ('address', 'date', 'reason')
+
+
+def load_released(path):
+    """{matched-set key: (date, reason)} of the released-function list, or {} when there is no
+    file. A malformed file (another header, a row that is not three cells, an address that is not
+    0x-prefixed hexadecimal, a date that is not YYYY-MM-DD, an empty reason, an address twice)
+    raises ValueError naming the file and line: a list that is silently misread would release
+    the wrong functions."""
+    if not os.path.exists(path):
+        return {}
+    with open(path, newline='', encoding='utf-8') as f:
+        lines = f.read().split('\n')
+    if lines[0].split('\t') != list(RELEASED_FIELDS):
+        raise ValueError(f'{path}:1: the header must be {chr(9).join(RELEASED_FIELDS)}')
+    out = {}
+    for n, line in enumerate(lines[1:], 2):
+        if not line:
+            continue
+        cells = line.split('\t')
+        if len(cells) != 3:
+            raise ValueError(f'{path}:{n}: {len(cells)} cells, expected 3')
+        a, date, reason = cells
+        if not re.fullmatch(r'0x[0-9a-fA-F]{1,8}', a):
+            raise ValueError(f'{path}:{n}: address {a!r} is not a 0x-prefixed hexadecimal address')
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date):
+            raise ValueError(f'{path}:{n}: date {date!r} is not YYYY-MM-DD')
+        if not reason.strip():
+            raise ValueError(f'{path}:{n}: the reason is empty')
+        k = key(int(a, 16))
+        if k in out:
+            raise ValueError(f'{path}:{n}: address {a} is listed twice')
+        out[k] = (date, reason)
+    return out
+
+
+def release_released(base, data, released):
+    """(base without the entries of listed addresses that data lost or lowered, [(key, date,
+    reason) of each released entry used], [keys of listed addresses data still has exact]).
+    Whatever `worse` calls worse is released for a listed address: dropped, no longer exact, or
+    a lower score. A listed address that is still exact is stale: the list says nothing about it
+    and it stays held."""
+    used = [(k, *released[k]) for k, old in sorted(base['functions'].items())
+            if k in released and worse(data['functions'].get(k), old)]
+    stale = sorted(k for k in released
+                   if (data['functions'].get(k) or {}).get('exact'))
+    gone = {k for k, _, _ in used}
+    if not gone:
+        return base, [], stale
+    return dict(base, functions={k: v for k, v in base['functions'].items() if k not in gone}), \
+        used, stale
+
+
 def release_listed(base, data, listed, claimed=()):
     """base without the entries data dropped because the address is on the boundary-error list
     and was never exact there: such an entry scored a fragment, not a function. Returns

@@ -1,13 +1,3 @@
 #include "Common/DataStore/Streamable.h"
 
-namespace nDataStore
-{
-
-// MATCH-ONLY: the scalar deleting destructor of tStreamable (the destructor itself is 0x006f8ed0);
-// the out-of-class destructor is defined in this unit so that the deleting form can be claimed on it.
-// FUNCTION: STARFLEETOP 0x00427366
-tStreamable::~tStreamable()
-{
-}
-
-}
+// Unclaimed (0x00427366, tStreamable's scalar deleting destructor, 28 bytes): it needs a second definition of ~tStreamable, whose one definition is 0x006f8ed0 in Common/DataStore/Streamable.cpp.

@@ -498,7 +498,6 @@ address	size	symbol	source	modes	decorated
 0x00424b90	119	tStrMgrCore::tStrMgrCore(unsigned char)	unsorted/tStrMgrCore.cpp	partial	??0tStrMgrCore@@QAE@E@Z
 0x00424c07	28	tStrMgrCore::`scalar deleting destructor'	unsorted/tStrMgrCore.cpp	vc6	??_GtStrMgrCore@@UAEPAXI@Z
 0x00426ca8	160	tObject_00426ca8::fn_00426ca8(int,int)	Source/entity/team.cpp	vc6 guest	?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z
-0x00427366	28	tStreamable::`scalar deleting destructor'	unsorted/nDataStore__tStreamable.cpp	vc6	??_GtStreamable@nDataStore@@UAEPAXI@Z
 0x0042739e	77	tCurrentTime::tCurrentTime(const tCurrentTime&)	unsorted/fn_00427382.cpp	vc6	??0tCurrentTime@@QAE@ABV0@@Z
 0x004273eb	83	tPoliticalTensionMatrix::tPoliticalTensionVector::tPoliticalTensionVector(const tPoliticalTensionVector&)	unsorted/fn_00427382.cpp	vc6	??0tPoliticalTensionVector@tPoliticalTensionMatrix@@QAE@ABV01@@Z
 0x0042748f	41	tObject_0090be60::fn_0042748f(int)	unsorted/fn_00427382.cpp	vc6 guest	?fn_0042748f@tObject_0090be60@@QAEHH@Z
@@ -3716,7 +3715,7 @@ address	size	symbol	source	modes	decorated
 0x0064f250	979	tgSoundPart::mUpdate()	Tiger/tgSound.cpp	partial	?mUpdate@tgSoundPart@@UAEXXZ
 0x0064f670	1064	tgSoundPart::mUpdateAtInterrupt()	Tiger/tgSound.cpp	vc6 guest	?mUpdateAtInterrupt@tgSoundPart@@UAEXXZ
 0x0064faa0	274	tgSoundPart::tgSoundPart()	Tiger/tgSound.cpp	vc6	??0tgSoundPart@@QAE@XZ
-0x0064fbe0	31	tChannelGroupManagerPart::mIsReady()	Tiger/tgSound.cpp	vc6 guest	
+0x0064fbe0	31	tgSoundPart::mIsReady()	Tiger/tgSound.cpp	vc6 guest	?mIsReady@tgSoundPart@@UAEEXZ
 0x0064fcc0	55	tgSoundPart::mActivate()	Tiger/tgSound.cpp	vc6 guest	?mActivate@tgSoundPart@@UAEXXZ
 0x0064fd00	5	tgSoundPart::mDeactivate()	Tiger/tgSound.cpp	vc6 guest	?mDeactivate@tgSoundPart@@UAEXXZ
 0x0064fd10	537	tgSoundPart::mDone()	Tiger/tgSound.cpp	vc6 guest	?mDone@tgSoundPart@@UAEXXZ
@@ -3828,7 +3827,7 @@ address	size	symbol	source	modes	decorated
 0x00657580	481	tgSoundPart::mAttachSoundToRecordChannel(tSoundSelection*)	Tiger/tgSound.cpp	vc6 guest	?mAttachSoundToRecordChannel@tgSoundPart@@UAEEPAVtSoundSelection@@@Z
 0x00657770	56	tAudioFileInfoPart::tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6	??0tAudioFileInfoPart@@QAE@XZ
 0x006577d0	412	tAudioFileInfoPart::~tAudioFileInfoPart()	Tiger/tAudioFile.cpp	vc6	??1tAudioFileInfoPart@@UAE@XZ
-0x00657970	11	tAudioPriorityManagerPart::mIsReady()	Tiger/tAudioFile.cpp	vc6 guest	
+0x00657970	11	tAudioFileInfoPart::mIsReady()	Tiger/tAudioFile.cpp	vc6 guest	?mIsReady@tAudioFileInfoPart@@UAEEXZ
 0x00657980	475	tAudioFileInfoPart::mActivate()	Tiger/tAudioFile.cpp	vc6 guest	?mActivate@tAudioFileInfoPart@@UAEXXZ
 0x00657b60	389	tAudioFileInfoPart::mDeactivate()	Tiger/tAudioFile.cpp	vc6 guest	?mDeactivate@tAudioFileInfoPart@@UAEXXZ
 0x00657cf0	42	tAudioFileInfoPart::vfn_48(long,long,long)	Tiger/tAudioFile.cpp	vc6 guest	?vfn_48@tAudioFileInfoPart@@UAEEJJJ@Z
@@ -3915,7 +3914,7 @@ address	size	symbol	source	modes	decorated
 0x00660c50	114	tChannelGroupManagerPart::mDeleteChannelGroup(unsigned long)	Tiger/taudiochannel.cpp	vc6 guest	?mDeleteChannelGroup@tChannelGroupManagerPart@@UAEEK@Z
 0x00660cd0	131	tChannelGroupManagerPart::mRemoveChannelGroupOwner(unsigned long)	Tiger/taudiochannel.cpp	vc6 guest	?mRemoveChannelGroupOwner@tChannelGroupManagerPart@@UAEEK@Z
 0x00660d60	53	tAudioFileInfoPart::mGetBasicAudioFile(unsigned long)	Tiger/taudiochannel.cpp	vc6 guest	?mGetBasicAudioFile@tAudioFileInfoPart@@UAEPAVtBasicAudioFile@@K@Z
-0x00660da0	31	tChannelGroupManagerPart::mIsReady()	Tiger/taudiochannel.cpp	vc6 guest	
+0x00660da0	31	tChannelGroupManagerPart::mIsReady()	Tiger/taudiochannel.cpp	vc6 guest	?mIsReady@tChannelGroupManagerPart@@UAEEXZ
 0x00660dc0	360	tChannelGroupManagerPart::mDeactivate()	Tiger/taudiochannel.cpp	vc6 guest	?mDeactivate@tChannelGroupManagerPart@@UAEXXZ
 0x00660f30	34	tChannelGroupManagerPart::mAttachFileToGroup(unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest	?mAttachFileToGroup@tChannelGroupManagerPart@@UAEEKJ@Z
 0x00660f60	39	tChannelGroupManagerPart::mAttachFileToChannel(unsigned long,unsigned long,long)	Tiger/taudiochannel.cpp	vc6 guest	?mAttachFileToChannel@tChannelGroupManagerPart@@UAEEKKJ@Z
@@ -3936,7 +3935,7 @@ address	size	symbol	source	modes	decorated
 0x00661fa0	1108	tAudioPriorityManagerPart::mAreWeAllowedToPlay(unsigned long,long,long,long,long *,unsigned long &,double &)	Tiger/taudiopriority.cpp	partial	?mAreWeAllowedToPlay@tAudioPriorityManagerPart@@UAEEKJJJPAJAAKAAN@Z
 0x00662400	171	tAudioPriorityManagerPart::mGetNextAvailableClassTrackingInfo()	Tiger/taudiopriority.cpp	vc6 guest	?mGetNextAvailableClassTrackingInfo@tAudioPriorityManagerPart@@IAEJXZ
 0x006624b0	96	tAudioPriorityManagerPart::mWeHaveStoppedPlaying(unsigned long)	Tiger/taudiopriority.cpp	vc6 guest	?mWeHaveStoppedPlaying@tAudioPriorityManagerPart@@UAEXK@Z
-0x00662510	11	tAudioPriorityManagerPart::mIsReady()	Tiger/taudiopriority.cpp	vc6 guest	
+0x00662510	11	tAudioPriorityManagerPart::mIsReady()	Tiger/taudiopriority.cpp	vc6 guest	?mIsReady@tAudioPriorityManagerPart@@UAEEXZ
 0x00662520	12	tAudioPriorityManagerPart::mActivate()	Tiger/taudiopriority.cpp	vc6 guest	?mActivate@tAudioPriorityManagerPart@@UAEXXZ
 0x00662530	5	tAudioPriorityManagerPart::mDeactivate()	Tiger/taudiopriority.cpp	vc6 guest	?mDeactivate@tAudioPriorityManagerPart@@UAEXXZ
 0x00662540	381	tAudioPriorityManagerPart::mClose()	Tiger/taudiopriority.cpp	vc6 guest	?mClose@tAudioPriorityManagerPart@@MAEXXZ

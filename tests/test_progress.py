@@ -542,3 +542,10 @@ def test_a_claim_outranks_rtti_class_but_not_an_applied_name(tmp_path):
 ])
 def test_claimed_name_drops_parameters_and_placeholders(symbol, name):
     assert progress.claimed_name(symbol) == name
+
+
+def test_the_gate_does_not_hold_a_released_address():
+    previous = {'exact': [{'address': '00427366', 'name': 'a'}, {'address': '00401000', 'name': 'b'}]}
+    report = {'exact': []}
+    assert [r[0] for r in progress.gate(previous, report)] == ['00401000', '00427366']
+    assert [r[0] for r in progress.gate(previous, report, {'00427366'})] == ['00401000']
