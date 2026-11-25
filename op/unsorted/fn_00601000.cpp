@@ -8,3 +8,10 @@ void fn_00601141()
 {
 	atexit( fn_004bd431 );
 }
+
+// HYPOTHESIS: arranges at exit the same cleanup at 0x004bd431 as the function above.
+// FUNCTION: STARFLEETOP 0x0060114d
+void fn_0060114d()
+{
+	atexit( fn_004bd431 );
+}
