@@ -68,7 +68,8 @@
 # HARNESS_FABLE_TRIES (1), HARNESS_FABLE_MAX_TURNS (30), HARNESS_FABLE_TIMEOUT (1800 s),
 # HARNESS_MAX_TURNS (60), HARNESS_SESSION_TIMEOUT (0: none), HARNESS_LEAN_INSTRUCTIONS,
 # HARNESS_NO_LEAN (0), HARNESS_WHOLETREE (1; 0 skips the whole-tree checks), HARNESS_WHOLETREE_BUDGET (600 s), HARNESS_LANE_FILES,
-# HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000),
+# HARNESS_TAKE_REVISIT (0), HARNESS_PACK (1), HARNESS_PACK_MAX (12000), HARNESS_NEARMISS (1; 0:
+# reference-only near misses take the tiers like any other),
 # HARNESS_LIMIT_SLEEP (300 s), HARNESS_FAIL_SLEEP (5 s), plus the paths in
 # harness/lib/paths.py.
 set -u
@@ -217,6 +218,10 @@ if [ "$dry" = 0 ]; then
         echo "ERROR the whole-tree checks fail before any session: the lane must start from a green tree. Fix the failures above (or start from a green develop); HARNESS_WHOLETREE=0 skips this check and the ones after each session" >&2
         exit 2
     fi
+    # The near-miss label of every function this --all left short of exact (harness/lib/nearmiss.py),
+    # stored in the lane's lists; queue.py next routes reference-only functions by it.
+    python3 -m harness.lib.nearmiss --store --tsv > "$state/nearmiss.tsv" 2>> "$state/nearmiss.log" \
+        || echo "WARN  could not label the near misses (see $state/nearmiss.log)"
 fi
 unset HARNESS_SELECTION HARNESS_BRIEF
 if [ -n "$lean" ]; then
@@ -256,6 +261,10 @@ while :; do
     msnap="$tag.matched.before"; cp "$HARNESS_MATCHED_SET" "$msnap"
     harness/build-and-verify.sh "$addr" --json > "$tag.before.json" 2>&1
     before=$(py claim "$entry" "$tag.before.json")
+    # Its label as the round starts, from the committed source just scored: the next round's
+    # routing reads it, and the RULE: collector reads it back (nearmiss.py --rules).
+    python3 -m harness.lib.nearmiss "$addr" --store --tsv > "$tag.nearmiss.tsv" 2>> "$state/nearmiss.log" \
+        || echo "WARN  could not label $addr (see $state/nearmiss.log)"
     snap_ok=1; py claims "$src" "$addr" > "$tag.claims.before" || snap_ok=0
     # Never run a session on a missing or partial prompt (an unreadable brief, say).
     if ! py prompt "$entry" "$tag.pack.md" > "$tag.prompt.md" || [ ! -s "$tag.prompt.md" ]; then
@@ -371,6 +380,8 @@ while :; do
                 -m "build-and-verify: $before% -> $after% ($kind) with $model." \
                 -m "$(py trailer "$addr" "$after" "$kind")" \
                 && echo "OK    $addr $outcome $before% -> $after%, committed"
+            python3 -m harness.lib.nearmiss "$addr" --store --tsv > /dev/null 2>> "$state/nearmiss.log" \
+                || echo "WARN  could not relabel $addr after the commit; its stored label is stale (see $state/nearmiss.log)"
         else
             outcome=$([ "$code" = 0 ] && echo no-change || echo failed)
             reset_round "$head0"

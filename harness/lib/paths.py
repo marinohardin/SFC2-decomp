@@ -140,6 +140,9 @@ DIFFICULT = env_path('HARNESS_DIFFICULT', os.path.join(LISTS, LANE, DIFFICULT_NA
 # Functions the stop rule ended short of 100% before their full chance (harness/README.md,
 # "Model tiers"); queue.py skips them unless HARNESS_TAKE_REVISIT=1 (loop.sh --revisit).
 REVISIT = env_path('HARNESS_REVISIT_LIST', os.path.join(LISTS, LANE, REVISIT_NAME))
+# The near-miss label of each non-exact function of this lane (harness/lib/nearmiss.py); only
+# this lane's file is read.
+NEARMISS = env_path('HARNESS_NEARMISS_LABELS', os.path.join(LISTS, LANE, 'nearmiss_labels.tsv'))
 
 
 def _all_lists(own, name, overridden):

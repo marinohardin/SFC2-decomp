@@ -2,7 +2,8 @@
 
     python3 -m harness.lib.pack <entry.json>        # prints the pack for the entry's function
 
-Four sections, each capped, and the whole pack capped at HARNESS_PACK_MAX characters (12000):
+Four sections, each capped, and the whole pack capped at HARNESS_PACK_MAX characters (12000), after
+a list of wrong references first for a reference-only near miss (harness/lib/nearmiss.py):
 
 1. Ghidra's decompiled pseudo-C of the function, from the cache that
    ghidra/scripts/export_decomp.sh writes ($SFCOP_WORK/ghidra/decomp/<0xaddress>.c, or
@@ -262,6 +263,14 @@ def build(entry, index, exe=None, matched_set=None, src_root=None, unit_map=(),
              'Gathered by the harness before this session so you need not look it up. Ghidra\'s '
              'output is a reading aid with rough types and names; the original instructions '
              'from build-and-verify.sh are what you match.', '']
+
+    # A reference-only near miss (workqueue.route): its wrong references first, so the cap at
+    # the end never cuts them.
+    if entry.get('nearmiss') == 'reference-only':
+        from . import nearmiss
+        section = nearmiss.pack_section(entry['address'])
+        if section:
+            parts += [section.rstrip('\n'), '']
 
     text = decompiled(fn.id, decomp)
     parts.append("### Ghidra's pseudo-C")

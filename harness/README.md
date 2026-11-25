@@ -15,6 +15,7 @@ from everything that judges; scores only go up.
 | `queue.py` | Builds and serves the work queue; claims functions; logs attempts; keeps the lane's `difficult_functions.tsv` and `revisit_functions.tsv` |
 | `$SFCOP_WORK/harness/lists/<lane>/difficult_functions.tsv` | Functions that had every attempt the stop rule gives without becoming exact, for a human. Outside the repository |
 | `$SFCOP_WORK/harness/lists/<lane>/revisit_functions.tsv` | Functions the stop rule ended short of 100% before their full chance, for a later revisit pass (`--revisit`). Outside the repository |
+| `$SFCOP_WORK/harness/lists/<lane>/nearmiss_labels.tsv` | The near-miss label of each non-exact function of the lane (`lib/nearmiss.py`). Outside the repository |
 | `loop.sh` | The headless loop: one fresh `claude -p` per function |
 | `prompts/function.md` | The prompt each session gets |
 | `hooks/` | `PreToolUse` guard and `Stop` verifier, plus `settings.fragment.json` to merge |
@@ -503,7 +504,8 @@ far. `HARNESS_TIERS` (default `opus,opus,opus`) and `HARNESS_SMALL_TIERS` (defau
 `sonnet,opus,opus`) replace the two sequences; neither may name Fable. When only `HARNESS_TIERS`
 is set, it is used for every size. `HARNESS_SMALL_BYTES=0` turns the size split off. A function
 the queue no longer holds, such as one already on the difficult list, has no known size and is
-judged with the regular sequence.
+judged with the regular sequence. A near miss labelled `reference-only` is the one exception:
+it never goes to Opus or Fable ("Near-miss labels", `HARNESS_NEARMISS`).
 
 When a run ends short of 100%, `queue.py record` lists the function in the lane's list folder
 (outside the repository; nothing is committed):
@@ -691,6 +693,7 @@ Before each session the loop builds a pack for the function (`lib/pack.py`; the 
 4. One function already exact in `matched_set.json` from the same class, or else the same unit,
    nearest by address, as it stands in the source.
 
+For a `reference-only` near miss the pack opens with its wrong references ("Near-miss labels").
 Each section is capped and the whole pack is cut at `HARNESS_PACK_MAX` characters (12000), at
 a line end with a note of what was cut. A missing input leaves a one-line note in its section,
 never a failed round; `HARNESS_PACK=0` leaves the pack out.
@@ -705,6 +708,77 @@ The prompt asks a session that stops short of 100% to end its last message with 
 section (what it tried, what remains, what it suspects); without one, the note keeps the end of
 its last message. The next attempt's prompt carries the newest two notes, at most 3,000
 characters, after the pack. Notes live only in the harness state, never in the repository.
+
+### Near-miss labels
+
+A near miss is a claimed function that is not exact. `lib/nearmiss.py` gives each one a label,
+with no model, from its own comparison in the build folder of the last run (`result.json`,
+`diff.txt` and the unit's object): it rebuilds the masked comparison the scorer made
+(`target.build`, from the object and the original's bytes) and reads the differing rows of the
+side-by-side listing. It never compiles, never edits source and never writes into the
+repository.
+
+```sh
+python3 -m harness.lib.nearmiss                    # every non-exact claim of the last --all
+python3 -m harness.lib.nearmiss 0x005fb3af         # one function (after a run that scored it)
+python3 -m harness.lib.nearmiss --unit Tiger/tsay.cpp
+python3 -m harness.lib.nearmiss --tsv              # or --json, with the references
+python3 -m harness.lib.nearmiss --store            # also store the labels (below)
+python3 -m harness.lib.nearmiss --parked           # stored reference-only functions that wait
+```
+
+One label per function, the first of these that holds (the order is the precedence):
+
+| Label | Holds when |
+| --- | --- |
+| `reference-only` | The rebuilt and original bytes have the same length and differ only inside fields of relocations the scorer marked mismatch, and every differing row of the listing holds a relocation field: a call, vtable or data reference reaches another address than the original's. Also when no byte differs and nothing mismatches but objdiff still counts a row holding a relocation |
+| `order` | No relocation mismatches, and the differing rows hold the same instructions on each side (the same multiset of instruction text), in another order |
+| `stack` | No relocation mismatches, every differing row has an instruction on both sides, and each row is equal once esp/ebp displacements and the frame size (`sub`/`add esp, N`) are masked, with registers masked as well where a row needs it; at least one row needs the stack mask. A function whose slots and registers both differ is `stack` |
+| `registers` | No relocation mismatches, every differing row has an instruction on both sides, and each row is equal once register names are masked |
+| `structural` | Anything else: instructions missing or extra, other operands or sizes, a wrong reference together with a body difference, a function with no comparison to read. A function the rules do not fit cleanly is `structural`, never a cheaper label |
+
+Each record also has the score and the number of differing rows. For a `reference-only`
+function it lists each wrong reference: the relocation's offset, the symbol the source names,
+the address the original reaches, and what the symbol table (`analysis/symbols/STARFLEETOP.tsv`)
+has there (name, class, symbol and declaration; or that the row has only a name; or that there
+is no row), the claim's file and symbol when the address is claimed, a vtable's class from
+`ghidra/exports/vtables.csv`, and the scorer's reason. A `reference-only` function is parked,
+with a reason that starts with one word, when no session can fix it yet:
+
+- `unnamed`: a target has no symbol in the table (a level 1 row, or no row): it waits for the
+  callee to be named;
+- `evidence`: the source already names the symbol the table gives each target, and the scorer's
+  evidence places that symbol at another address: for the integrator;
+- `objdiff`: the strict check passes every reference and objdiff still counts a row: no source
+  change can help.
+
+**Stored labels.** `--store` writes the records to `nearmiss_labels.tsv` in the lane's list
+folder (`$HARNESS_LISTS/<lane>/`, beside the revisit and difficult lists; `HARNESS_NEARMISS_LABELS`
+overrides): `address`, `name`, `unit`, `label`, `score`, `differing`, `wrong_refs`, `waits` and
+`labelled`. A run over every function replaces the file; a run for some addresses replaces their
+rows, and an address that is exact now loses its row (with `--unit`, every address the unit
+scored). Only this lane's file is read. The loop
+labels every near miss after its startup `--all`, labels the round's function after its starting
+score (copied to the attempt's `.nearmiss.tsv`) and again after an improvement is committed.
+
+**What the loop does with it** (`route` in `lib/workqueue.py`, called from `next_entry`; on by
+default, `HARNESS_NEARMISS=0` turns it off): a function whose stored label is `reference-only`
+is never escalated. An Opus attempt goes to Sonnet instead, and its context pack opens with the
+list of wrong references (within `HARNESS_PACK_MAX`); it gets no Fable try; and a parked one is
+not taken at all. A parked function is relabelled only by the loop's startup `--all` (or by
+running the command by hand), never by a round, since it gets none: it stays parked until the
+next loop start after its callee is named. A reference-only function whose run reaches the Fable
+step is put on the lane's `difficult_functions.tsv`, with a reason saying it is a reference-only
+near miss with its regular attempts used, so it is not skipped without a trace. Nothing else about the tiers, the stop
+rule or the attempt caps changes: the attempts it does get are counted as usual.
+
+**Rules from fixes.** The prompt asks a session that takes its function to 100% from a lower
+starting score to end with one line, `RULE: <what the diff showed> -> <the source change that
+fixed it> (for 0x<address>)`, in source terms. `python3 -m harness.lib.nearmiss --rules` (or
+`--rules --tsv`) collects every such line from the attempt transcripts (`*.claude.json`) of
+every state folder under `$SFCOP_WORK/harness/`, with the attempt and the function's label when
+that attempt started, when the attempt has a `.nearmiss.tsv`. It only reads; a line without the
+arrow or the `(for 0x...)` part is ignored.
 
 ## Proof
 

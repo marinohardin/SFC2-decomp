@@ -366,13 +366,50 @@ def unlisted_run(attempts, address, tiers):
     return [] if p.model is None and not p.full else last
 
 
+CHEAP_MODEL = 'sonnet'
+
+
+def route(model, label):
+    """The model for a function's next session given its stored near-miss label
+    (harness/lib/nearmiss.py), or None to park it. A `reference-only` function is never
+    escalated: an Opus attempt goes to the cheap tier instead (the context pack carries the
+    wrong references), it gets no Fable try, and one whose label says it waits (a callee with
+    no symbol yet, say) is not taken at all. Any other label leaves the model as it is."""
+    if not label or label.get('label') != 'reference-only':
+        return model
+    if label.get('waits') or model == 'fable':
+        return None
+    return CHEAP_MODEL if model == 'opus' else model
+
+
+def end_reference_only(paths_, entry, p, rows):
+    """Put a reference-only function whose run reached the Fable step on this lane's difficult
+    list (and off its revisit list), as `settle` does for a run that had its full chance: it
+    gets no Fable try (`route`), so without a row it would be skipped forever with no trace."""
+    a = entry['address']
+    if any(r['address'] == a for r in read_lists(paths_, 'difficult')):
+        return
+    last = rows[-1] if rows else {}
+    _rewrite_tsv(paths_.REVISIT, REVISIT_FIELDS, lambda r: r['address'] != a)
+    append_tsv(paths_.DIFFICULT, DIFFICULT_FIELDS, dict(
+        address=a, name=entry.get('name', ''), attempts=p.attempts,
+        last_model=last.get('model', ''), best_score=f'{p.best:.2f}',
+        last_attempt=last.get('time', ''),
+        reason=(f'not exact after {p.attempts} attempts: a reference-only near miss with its '
+                f'regular attempts used; no Fable try (harness/lib/nearmiss.py); '
+                f'best {p.best:.2f}%')))
+
+
 def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, revisit=(),
-               take_revisit=False):
+               take_revisit=False, labels=None, ended=None):
     """The first queue entry still open that `claim` grants, with its attempt count, model and
     role; None if there is none. Functions on the revisit list are skipped unless
     `take_revisit`, and then their run starts over from the time they were listed (`run_rows`).
     With `take_revisit`, a function that is not listed here but whose run has ended short of
-    its full chance in the shared log is taken too, with a new run (`unlisted_run`)."""
+    its full chance in the shared log is taken too, with a new run (`unlisted_run`). `labels`,
+    the lane's near-miss labels when HARNESS_NEARMISS is on, routes a reference-only function
+    (`route`); one whose run has reached the Fable step is appended to `ended` as (entry, plan,
+    rows), for the caller to end with `end_reference_only`."""
     done = {r['address'] for r in attempts if r['outcome'] == 'exact'}
     given_up = {r['address'] for r in difficult}
     listed = {r['address']: r.get('listed', '') for r in revisit}
@@ -387,8 +424,16 @@ def next_entry(queue, attempts, difficult, tiers, claim=lambda address: True, re
         else:
             rows = run_rows(attempts, a, listed.get(a, ''), tiers)
         p = plan(rows, tiers)
-        if p.model and claim(a):
-            return dict(e, attempts=p.attempts, model=p.model, role=p.role, best=p.best)
+        label = (labels or {}).get(a)
+        model = route(p.model, label) if p.model else None
+        if (p.model == 'fable' and ended is not None and label
+                and label.get('label') == 'reference-only'):
+            ended.append((e, p, rows))
+        if model and claim(a):
+            out = dict(e, attempts=p.attempts, model=model, role=p.role, best=p.best)
+            if label and label.get('label') == 'reference-only':
+                out['nearmiss'] = 'reference-only'
+            return out
     return None
 
 

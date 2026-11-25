@@ -41,7 +41,7 @@ import time
 # Replace this script's own directory with the repository root: as harness/ on sys.path, this
 # file would shadow the stdlib queue module.
 sys.path[0] = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-from harness.lib import clean, coff, funcs, matched, paths, workqueue  # noqa: E402
+from harness.lib import clean, coff, funcs, matched, nearmiss, paths, workqueue  # noqa: E402
 
 
 def _last_commit_with(ref, rel):
@@ -166,9 +166,17 @@ def main(argv):
             return 2
     if cmd == 'next':
         pid = int(os.environ.get('HARNESS_LOOP_PID', os.getppid()))
+        # The near-miss labels route a reference-only function (workqueue.route); off with
+        # HARNESS_NEARMISS=0.
+        labels = nearmiss.load_labels() if nearmiss.enabled() else None
+        ended = []
         e = workqueue.next_entry(q, attempts, difficult, tiers,
                                  lambda a: workqueue.acquire(paths.CLAIMS, a, owner, pid),
-                                 revisit, take_revisit)
+                                 revisit, take_revisit, labels, ended)
+        for entry, p, rows in ended:
+            workqueue.end_reference_only(paths, entry, p, rows)
+            print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
+                  f'{paths.LANE}): a reference-only near miss gets no Fable try', file=sys.stderr)
         if e:
             print(json.dumps(e))
         return 0
