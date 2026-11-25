@@ -25,3 +25,9 @@ void tVisGroupAsset::vfunction3( const c_00678500& x )
 {
 	field_6C = x;
 }
+
+// FUNCTION: STARFLEETOP 0x0067b580
+c_00678500* tVisGroupAsset::vfunction4()
+{
+	return &field_6C;
+}

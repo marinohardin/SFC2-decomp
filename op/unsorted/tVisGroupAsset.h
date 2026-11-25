@@ -35,7 +35,7 @@ public:
 	// HYPOTHESIS: assigns field_6C from the caller's member of the same type (the original
 	// expands c_00678500's implicit operator=: vector, map, int and tString in order).
 	virtual void vfunction3( const c_00678500& x );
-	virtual void vfunction4();	// 4 bytes, a bare return
+	virtual c_00678500* vfunction4();	// returns the address of field_6C
 	// HYPOTHESIS: 0x0067aef0 (the symbol table calls it a deleting destructor, wrongly) writes the
 	// stream form of the members, field_BC last.
 	virtual tStream& vfunction5( tStream& s );
