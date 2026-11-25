@@ -121,6 +121,27 @@ bool tThread::Working() const
 	return fWorking;
 }
 
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x006ff700
+bool tThread::Alive() const
+{
+	return fAlive;
+}
+
+
+
+
+
+
+
+
 #include "Common/Thread/WaitForObject.h"
 
 // HYPOTHESIS: names of the two statics at 0x00c7fc48 and 0x00c7fc46.
