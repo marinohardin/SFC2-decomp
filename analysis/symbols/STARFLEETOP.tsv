@@ -20676,7 +20676,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e250	function	tWaitForObject::tResult::tResult	tWaitForObject::tResult	??0tResult@tWaitForObject@@QAE@K@Z	claim		mangled
 0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	claim		mangled
 0x0070e2b0	function	tWaitForObject::tResult::Ready	tWaitForObject::tResult	?Ready@tResult@tWaitForObject@@QBE_NXZ	claim		mangled
-0x0070e2c0	function	tWaitForObject::Wait	tWaitForObject	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z	mangled		mangled
+0x0070e2c0	function	tWaitForObject::Wait	tWaitForObject	?Wait@tWaitForObject@@SA?AVtResult@1@PAXK@Z	claim		mangled
 0x0070e300	function	fn_0070e300					none
 0x0070e450	function	tThreadEvent::tThreadEvent	tThreadEvent	??0tThreadEvent@@QAE@_N0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4eUse@tThreadState@@@Z	mangled		mangled
 0x0070e4e0	function	tThreadEvent::`scalar_deleting_destructor'	tThreadEvent	??_GtThreadEvent@@UAEPAXI@Z	mangled		mangled

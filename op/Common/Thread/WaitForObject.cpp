@@ -2,6 +2,8 @@
 
 #include "Common/Thread/WaitForObject.h"
 
+#include <windows.h>
+
 // FUNCTION: STARFLEETOP 0x0070e250
 tWaitForObject::tResult::tResult( int32u waitResult )
 {
@@ -32,4 +34,11 @@ bool tWaitForObject::tResult::TimedOut() const
 bool tWaitForObject::tResult::Ready() const
 {
 	return fKind == 1 ? true : false;
+}
+
+// FUNCTION: STARFLEETOP 0x0070e2c0
+tWaitForObject::tResult tWaitForObject::Wait( void* handle, int32u timeout )
+{
+	tResult result( WaitForSingleObject( handle, timeout ) );
+	return result;
 }
