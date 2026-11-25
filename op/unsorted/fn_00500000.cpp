@@ -36,3 +36,12 @@ void fn_005004b7()
 {
 	g_00966a04 = fn_005050e2(127.0f);
 }
+
+extern float g_00966a08;
+
+// HYPOTHESIS: the original bytes are the tail of a larger function; this is the closest standalone form.
+// FUNCTION: STARFLEETOP 0x005004cb
+void fn_005004cb()
+{
+	g_00966a08 = fn_005050e2(128.0f);
+}
