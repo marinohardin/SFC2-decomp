@@ -91,3 +91,12 @@ int tAIEntryOwner::fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
 	}
 	return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00521530
+unsigned int __stdcall fn_00521530(unsigned int v)
+{
+	if (v == 0) {
+		return 1;
+	}
+	return (v == 1) ? 0 : v;
+}
