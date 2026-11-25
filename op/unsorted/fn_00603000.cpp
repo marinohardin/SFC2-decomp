@@ -9,6 +9,7 @@ public:
 	void fn_006032e7();
 	void fn_005ff7ac();
 	void** fn_006033e7( const db::tID& id );
+	void** fn_00603486( const std::string& name );
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
@@ -117,6 +118,27 @@ void** fn_006032e7_object::fn_006033e7( const db::tID& id )
 				if ( ( (fn_0042a480_object*)( record + 2 ) )->FUN_0042a9ba() == id )
 					break;
 			}
+		}
+	}
+	guard.Leave();
+	return it;
+}
+
+// HYPOTHESIS: the original calls out-of-line instances of operator+ (0x005c8caf) and
+// compare (0x0040651e); those have no shared header yet, so this uses the library's.
+// FUNCTION: STARFLEETOP 0x00603486
+void** fn_006032e7_object::fn_00603486( const std::string& name )
+{
+	tOptex::tGuard guard( &field_b8 );
+	void** it = field_154;
+	for ( ; it != field_158; ++it )
+	{
+		int* record = (int*)*it;
+		if ( record && *record == 2 )
+		{
+			std::string joined = ( (fn_0042a480_object*)( record + 2 ) )->FUN_0042aa0b() + std::string( "" );
+			if ( joined.compare( 0, joined.size(), name.c_str(), name.size() ) == 0 )
+				break;
 		}
 	}
 	guard.Leave();
