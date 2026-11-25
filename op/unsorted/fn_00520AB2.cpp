@@ -22,6 +22,7 @@ public:
 	int field_38;
 	int field_3c;
 
+	tAIUnitData();
 	tAIUnitData(int a, int b, int c, float d, float e, char f);
 };
 
@@ -48,4 +49,25 @@ tAIUnitData::tAIUnitData(int a, int b, int c, float d, float e, char f)
 	field_18 = d * g_007b01e0;
 	field_2c = d * g_007b01e4;
 	field_30 = e / d;
+}
+
+// FUNCTION: STARFLEETOP 0x00520b1a
+// HYPOTHESIS: the default constructor of tAIUnitData (same -1 sentinels as the other one).
+tAIUnitData::tAIUnitData()
+{
+	field_0 = -1;
+	field_4 = -1;
+	field_c = 0;
+	field_3c = -1;
+	field_10 = 0;
+	field_1c = 0;
+	field_28 = 0;
+	field_14 = 0;
+	field_34 = 0;
+	field_38 = 0;
+	field_18 = 0;
+	field_20 = 0;
+	field_24 = 0;
+	field_2c = 0;
+	field_30 = 0;
 }
