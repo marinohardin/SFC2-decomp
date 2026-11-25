@@ -1276,7 +1276,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426ee2	function	fn_00426ee2		?fn_00426ee2@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426ef0	function	fn_00426ef0		?fn_00426ef0@fn_00426e9b_Class@@QAEXXZ	claim		none
 0x00426f1a	function	fn_00426f1a					none
-0x00427145	function	fn_00427145					none
+0x00427145	function	fn_00427145		?fn_00427145@fn_00427145_Owner@@QAEPAV1@PAV1@@Z	claim		none
 0x00427160	function	tMatchedMission::tMatchedMission	tMatchedMission				rtti
 0x00427366	function	nDataStore::tStreamable::scalar_deleting_destructor	nDataStore::tStreamable				rtti
 0x00427382	function	tMatchedMission::scalar_deleting_destructor	tMatchedMission				rtti
