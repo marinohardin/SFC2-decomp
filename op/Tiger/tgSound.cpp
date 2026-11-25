@@ -132,6 +132,11 @@ long tSoundChannel::mGetVolume()
 {
     return (&field_0x30)->mGetVolume();
 }
+// FUNCTION: STARFLEETOP 0x006467b0
+long tSoundChannel::mGetChannelPriority()
+{
+    return field_0x88;
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
