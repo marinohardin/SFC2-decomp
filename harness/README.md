@@ -767,6 +767,14 @@ list of wrong references (within `HARNESS_PACK_MAX`); it gets no Fable try; and 
 not taken at all until a later labelling clears its reason. Nothing else about the tiers, the stop
 rule or the attempt caps changes: the attempts it does get are counted as usual.
 
+**Rules from fixes.** The prompt asks a session that takes its function to 100% from a lower
+starting score to end with one line, `RULE: <what the diff showed> -> <the source change that
+fixed it> (for 0x<address>)`, in source terms. `python3 -m harness.lib.nearmiss --rules` (or
+`--rules --tsv`) collects every such line from the attempt transcripts (`*.claude.json`) of
+every state folder under `$SFCOP_WORK/harness/`, with the attempt and the function's label when
+that attempt started, when the attempt has a `.nearmiss.tsv`. It only reads; a line without the
+arrow or the `(for 0x...)` part is ignored.
+
 ## Proof
 
 Both transcripts are in `proof/results/`; the source used is the SDK's, copied into

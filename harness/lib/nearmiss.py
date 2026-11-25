@@ -6,6 +6,7 @@
     python3 -m harness.lib.nearmiss --tsv | --json       # for a script
     python3 -m harness.lib.nearmiss --store              # also store the labels in the lane's lists
     python3 -m harness.lib.nearmiss --parked             # the stored reference-only functions that wait
+    python3 -m harness.lib.nearmiss --rules [--tsv]      # RULE: lines from the lanes' sessions
 
 It reads the build folder of the last build-and-verify.sh run in this checkout (each function's
 result.json and diff.txt, and the unit's object) and the original's bytes, and rebuilds the
@@ -425,6 +426,44 @@ def store(recs, addresses=None, everything=False, path=None, now=None):
             fcntl.flock(f, fcntl.LOCK_UN)
 
 
+# --- RULE: lines -----------------------------------------------------------------------------
+
+RULE = re.compile(r'^\s*RULE:\s*(\S.*?)\s+->\s+(\S.*?)\s+\(for\s+(0x[0-9a-fA-F]{1,8})\)\s*$', re.M)
+
+
+def rules_in(text):
+    """(symptom, fix, address) of each well-formed RULE: line in a session's final message."""
+    return [(s, f, _norm(a)) for s, f, a in RULE.findall(text or '')]
+
+
+def collect_rules(states=None):
+    """Every RULE: line of the attempt transcripts in the harness state folders, with the
+    attempt it came from and the function's label when that attempt started (the loop's
+    <attempt>.nearmiss.tsv), or '' when it is not known."""
+    states = states or sorted(glob.glob(os.path.join(paths.WORK, 'harness', 'wt-*')))
+    out = []
+    for st in states:
+        for p in sorted(glob.glob(os.path.join(st, 'attempts', '*.claude.json'))):
+            try:
+                with open(p) as f:
+                    text = json.load(f).get('result') or ''
+            except (OSError, ValueError, AttributeError):
+                continue
+            if not isinstance(text, str) or 'RULE:' not in text:
+                continue
+            tag = p[:-len('.claude.json')]
+            labels = {}
+            try:
+                with open(tag + '.nearmiss.tsv', newline='') as f:
+                    labels = {r['address']: r['label'] for r in csv.DictReader(f, delimiter='\t')}
+            except (OSError, KeyError):
+                pass
+            for s, fix, a in rules_in(text):
+                out.append(dict(address=a, label=labels.get(a, ''), symptom=s, fix=fix,
+                                attempt=os.path.relpath(tag, os.path.dirname(st))))
+    return out
+
+
 # --- the command ---------------------------------------------------------------------------
 
 def _print_human(recs):
@@ -452,6 +491,21 @@ def main(argv):
         if flag in args:
             args.remove(flag)
             fmt = flag[2:]
+    if '--rules' in args:
+        got = collect_rules()
+        if fmt == 'json':
+            print(json.dumps(got, indent=1))
+        else:
+            w = csv.writer(sys.stdout, delimiter='\t', lineterminator='\n')
+            if fmt == 'tsv':
+                w.writerow(('address', 'label', 'symptom', 'fix', 'attempt'))
+            for r in got:
+                if fmt == 'tsv':
+                    w.writerow((r['address'], r['label'], r['symptom'], r['fix'], r['attempt']))
+                else:
+                    print(f'{r["address"]}  {r["label"] or "(label unknown)"}  '
+                          f'{r["symptom"]} -> {r["fix"]}  [{r["attempt"]}]')
+        return 0
     if '--parked' in args:
         for a, r in sorted(load_labels().items()):
             if r.get('label') == 'reference-only' and r.get('waits'):

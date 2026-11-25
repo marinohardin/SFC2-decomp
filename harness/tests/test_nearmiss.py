@@ -211,3 +211,27 @@ def test_queue_next_reads_the_labels_unless_the_switch_is_off(tmp_path):
         return json.loads(out)['model']
     assert model('1') == 'sonnet'
     assert model('0') == 'opus'
+
+
+def test_the_prompt_asks_for_the_rule_line():
+    with open(os.path.join(REPO, 'harness', 'prompts', 'function.md')) as f:
+        text = f.read()
+    assert '`RULE: <what the diff showed> -> <the source change that fixed it> (for\n' in text
+
+
+def test_rules_are_collected_from_transcripts_and_malformed_lines_ignored(tmp_path):
+    st = tmp_path / 'wt-lane-1'
+    (st / 'attempts').mkdir(parents=True)
+    tag = st / 'attempts' / '0x00401000-20261124T000000'
+    text = ('Done.\nRULE: a branch came out inverted -> wrote the if and else the other way '
+            '(for 0x00401000)\nRULE: no arrow here (for 0x00401000)\nRULE: x -> y\n'
+            'RULE: no prefix -> on the address (for 401010)\n'
+            '  RULE: a local was missing -> added a temporary for the count (for 0x401010)\n')
+    (tag.parent / (tag.name + '.claude.json')).write_text(json.dumps({'result': text}))
+    (tag.parent / (tag.name + '.nearmiss.tsv')).write_text(
+        'address\tname\tunit\tlabel\n0x00401000\tf\ta.cpp\torder\n')
+    got = nearmiss.collect_rules([str(st)])
+    assert [(r['address'], r['label'], r['symptom'], r['fix']) for r in got] == [
+        ('0x00401000', 'order', 'a branch came out inverted', 'wrote the if and else the other way'),
+        ('0x00401010', '', 'a local was missing', 'added a temporary for the count')]
+    assert got[0]['attempt'] == 'wt-lane-1/attempts/0x00401000-20261124T000000'

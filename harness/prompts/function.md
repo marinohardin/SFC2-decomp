@@ -37,6 +37,11 @@ attempt {{ATTEMPT}} on this function ({{MODEL}}). {{ROLE}}
    `HANDOFF:` and holds at most eight short lines: what you tried, which differences remain, and
    what you suspect causes them. The harness keeps it outside the repository and gives it to the
    next attempt on this function.
+6. If you take the function to 100% from a lower starting score, end your last message with
+   one line `RULE: <what the diff showed> -> <the source change that fixed it> (for
+   {{ADDRESS}})`, on one line, in source terms and without assembly, such as `RULE: two
+   branches came out swapped -> wrote the if and else the other way round (for {{ADDRESS}})`.
+   The harness collects these lines.
 
 The context pack after the rules (Ghidra's pseudo-C, the callees, the class declarations and an
 exact function nearby) and any notes from earlier attempts were gathered for you; start from
