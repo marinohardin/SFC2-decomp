@@ -105,3 +105,10 @@ iTruth tSoundChannel::mAreWeARecordingChannel()
     unsigned char isRecording = (mGetSoundType() & 0x20) > 0;
     return isRecording;
 }
+
+// FUNCTION: STARFLEETOP 0x00646990
+iTruth tSoundChannel::mTryToLocateInHardware()
+{
+    unsigned char inHardware = (mGetSoundType() & 0x40) > 0;
+    return inHardware;
+}
