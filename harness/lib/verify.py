@@ -293,7 +293,15 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     t = target.build(fn.address, fn.size, obj, sym, exe, index)
     tpath = os.path.join(fdir, 'target.obj')
     open(tpath, 'wb').write(t['object'])
-    left, right, err = objdiff(tpath, build['obj'], sym, fdir)
+    # objdiff cannot load a SECREL relocation: it is given copies of both objects in which those
+    # records read as DIR32 (coff.rewrite_reloc_types); the strict check above still judges them.
+    bpath, rewritten = build['obj'], t['rewritten']
+    raw_base = open(build['obj'], 'rb').read()
+    fixed, n_base = coff.rewrite_reloc_types(raw_base)
+    if n_base:
+        bpath = os.path.join(fdir, 'base.obj')
+        open(bpath, 'wb').write(fixed)
+    left, right, err = objdiff(tpath, bpath, sym, fdir)
     if left is None:
         res['error'] = f'objdiff failed: {err}'
         return res
@@ -301,7 +309,8 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     res.update(score=round(pct, 3), exact=bool(pct >= 100.0 and t['strict']),
                size=len(t['target']), rebuilt_size=len(t['base']),
                relocs=[r.as_dict() for r in t['relocs']], strict=t['strict'],
-               first_diff=t['first_diff'], side_by_side=os.path.join(fdir, 'diff.txt'))
+               first_diff=t['first_diff'], objdiff_rewrites=rewritten + n_base,
+               side_by_side=os.path.join(fdir, 'diff.txt'))
     write_side_by_side(left, right, res['side_by_side'])
     res['diff_rows'], res['diff_count'] = diff_rows(left, right)
     if pct >= 100.0 and not t['strict']:
@@ -1102,6 +1111,10 @@ def _report_function(rep, data, fn, res):
     else:
         was = f'; matched_set.json has {old["score"]:.2f}%' if old else '; not in matched_set.json'
         rep.add('OK', f'{head} {detail}{was}')
+    secrel = [r for r in res.get('relocs', []) if r['type'] == 'SECREL']
+    if secrel:
+        rep.add('INFO', f'  {len(secrel)} thread-local (SECREL) relocations: checked by the '
+                'harness against the exe TLS directory; objdiff saw them as DIR32')
     for r in bad_relocs[:6]:
         addr = r['exe_address'] or '?'
         rep.add('ERROR', f'  relocation +0x{r["offset"]:x} {r["symbol"]}: exe uses {addr}, '

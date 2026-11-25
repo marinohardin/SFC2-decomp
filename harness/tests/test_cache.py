@@ -134,7 +134,7 @@ def scoring(cached, monkeypatch):
     def fake_build(address, size, obj, sym, exe, index):
         calls.append(sym)
         return dict(target=b'\xc3' * 4, base=b'\xc3' * 4, object=b'', relocs=[Reloc()],
-                    strict=True, first_diff=None)
+                    strict=True, first_diff=None, rewritten=0)
 
     def fake_objdiff(t, b, sym, out_dir):
         ins = [{'diff_kind': 'DIFF_REPLACE', 'instruction': {'address': 0, 'formatted': 'ret'}}]

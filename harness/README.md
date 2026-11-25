@@ -90,6 +90,22 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    ok and unverified fields are masked so objdiff sees them equal; a mismatch keeps the exe bytes
    and points at a symbol named after the exe address, so objdiff counts it. Identical opcodes
    calling the wrong function therefore do not pass.
+   **Thread-local variables (`__declspec(thread)`).** Their access is a relocation of type
+   `0x0B` (SECREL): the field holds the variable's offset inside the thread-local block. The
+   harness turns the exe's field into an address (`tls_start` of the exe's TLS directory, plus the
+   field, minus the rebuilt object's addend) and checks it like a DIR32 field: the address of a
+   symbol with a known address must equal it, a symbol used for two addresses in one function is a
+   mismatch, an address known under another name is a mismatch, and an offset outside the exe's
+   thread-local block (raw data plus zero fill) or an exe without a TLS directory is a mismatch.
+   A variable whose address is not known stays `unverified`, like any other unnamed global; what
+   is then compared is every opcode byte, the field's consistency and its place in the block, not
+   a name. Because objdiff refuses an object that holds a type `0x0B` record ("unsupported x86
+   implicit relocation") and so scored the whole unit as an error, step 5 hands objdiff copies of
+   the rebuilt and the target object in which those records read as DIR32
+   (`coff.rewrite_reloc_types`; the target field is masked to the rebuilt addend, as for any
+   relocation, so objdiff sees the pair equal). Nothing else changes in the copies, the
+   result's `relocs` keep the type `SECREL`, `objdiff_rewrites` counts the records rewritten, and
+   the report prints a line for each function that has such a relocation.
 5. Runs `objdiff-cli diff` for the score, and a strict byte comparison of the masked bytes.
    **Exact** means objdiff 100% and the strict check equal.
 6. Re-scores every other recorded function in the same unit (a header or shared edit can break
