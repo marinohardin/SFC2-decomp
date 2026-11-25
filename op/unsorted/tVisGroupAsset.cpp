@@ -16,3 +16,12 @@ tStream& tVisGroupAsset::vfunction5( tStream& s )
 	// HEADER REQUEST: c_00678500 needs fn_0067f5d0( tStream& ) for the call field_6C.fn_0067f5d0( s ) here.
 	return s;
 }
+
+// HYPOTHESIS: c_00678500 is still declared as bytes in tAsset.h, so its implicit operator=
+// copies 0x50 bytes; the original's is the member-wise one (vector of 0x30-byte entries at +0,
+// map keyed by tString at +0x10, int at +0x24, tString at +0x28).
+// FUNCTION: STARFLEETOP 0x0067b390
+void tVisGroupAsset::vfunction3( const c_00678500& x )
+{
+	field_6C = x;
+}

@@ -32,7 +32,9 @@ public:
 	// HYPOTHESIS: takes an id, makes the object 0x0067ea20 finds for it, stores the id at +0x48
 	// of that object and calls its slot at +0x90 with this; returns the object.
 	virtual void *vfunction2( int id );
-	virtual void vfunction3();	// 483 bytes
+	// HYPOTHESIS: assigns field_6C from the caller's member of the same type (the original
+	// expands c_00678500's implicit operator=: vector, map, int and tString in order).
+	virtual void vfunction3( const c_00678500& x );
 	virtual void vfunction4();	// 4 bytes, a bare return
 	// HYPOTHESIS: 0x0067aef0 (the symbol table calls it a deleting destructor, wrongly) writes the
 	// stream form of the members, field_BC last.
