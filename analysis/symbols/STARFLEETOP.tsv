@@ -7500,8 +7500,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
 0x005008f4	function	fn_005008f4		??0fn_005008f4_element@@QAE@XZ	claim		none
-0x00500976	function	fn_00500976					none
-0x00500b46	function	fn_00500b46					none
+0x00500976	function	fn_00500976		?fn_00500976@fn_005008f4_element@@QAEXPAVtObject_00413ac3_arg@@MMM@Z	claim		none
+0x00500b46	function	fn_00500b46		?fn_00500b46@@YAXPAVtMatrix@@VtObject_00412f08@@M@Z	add		none
 0x00500c30	function	fn_00500c30	tFx_Photon				vtable
 0x00500f26	function	fn_00500f26					none
 0x00500fe6	function	fn_00500fe6					none

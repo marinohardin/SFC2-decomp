@@ -1,5 +1,6 @@
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tBmpSurf.h"
+#include "Source/entity/entity_physical.h"
 
 // HYPOTHESIS: tFx_Phaser has no header yet; this is the shape the constructor call and
 // the 0x4c allocation show. It belongs in a shared header once one exists.
@@ -98,6 +99,7 @@ class fn_005008f4_element
 {
 public:
 	fn_005008f4_element();
+	void fn_00500976( tObject_00413ac3_arg *renderer, float x, float y, float z );
 	char m00[0x18];
 };
 
@@ -137,3 +139,44 @@ fn_005008f4_element::fn_005008f4_element()
 	*(float *)&m00[16] = (g_009669a0 - g_0096699c) * fn_0069b0e0() + g_0096699c;
 	*(float *)&m00[20] = fn_0069b0e0() * 5.0f;
 }
+
+// MATCH-ONLY: stand-in for the tMatrix member at 0x0069b450, which tvectormath.h does not declare yet.
+class fn_00500976_matrix : public tMatrix
+{
+public:
+	void fn_0069b450( tMatrix *other );
+};
+
+void fn_00500b46( tMatrix *, tObject_00412f08, float );
+extern float g_0092f61c;
+extern float g_00966ab0;
+extern float g_00966ab4;
+extern float g_00966ab8;
+extern float g_00966abc;
+
+// HYPOTHESIS: the element draws itself as a quad; its point is at 0 and the floats at 0xc, 0x10, 0x14.
+// FUNCTION: STARFLEETOP 0x00500976
+void fn_005008f4_element::fn_00500976( tObject_00413ac3_arg *renderer, float x, float y, float z )
+{
+	tMatrix a;
+	fn_00500b46( &a, *(tPoint3 *)&m00[0], g_0092f61c * *(float *)&m00[16] + *(float *)&m00[12] );
+	fn_00500976_matrix b;
+	b.mIdentity();
+	b.mTranslate( x, y, z );
+	b.fn_0069b450( &a );
+	renderer->vfunction57( &b );
+	float f = *(float *)&m00[20] * 0.1f;
+	float f2 = *(float *)&m00[20] * 0.1f;
+	renderer->vfunction76( 1.0f, 1.0f, 1.0f );
+	renderer->vfunction67( 7 );
+	renderer->vfunction73( g_00966ab0, g_00966ab4 );
+	renderer->vfunction69( -f, 0.0f, 0.0f );
+	renderer->vfunction73( g_00966ab8, g_00966ab4 );
+	renderer->vfunction69( f, 0.0f, 0.0f );
+	renderer->vfunction73( g_00966ab8, g_00966abc );
+	renderer->vfunction69( f2, *(float *)&m00[20], 0.0f );
+	renderer->vfunction73( g_00966ab0, g_00966abc );
+	renderer->vfunction69( -f2, *(float *)&m00[20], 0.0f );
+	renderer->vfunction68();
+}
+
