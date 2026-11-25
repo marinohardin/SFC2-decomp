@@ -97,11 +97,35 @@ public:
 	{
 		int field_0[0x32];
 		int field_c8;
-	} field_c8c[1];
+	} field_c8c[2];
+
+	// HYPOTHESIS: per-index command lists (0x324 bytes each); entry count unknown.
+	struct CommandEntry
+	{
+		int field_0;
+		int field_4;
+		int field_8;
+		int field_c;
+	};
+	struct CommandList
+	{
+		CommandEntry field_0[0x32];
+		int field_320;
+
+		// MATCH-ONLY: inlined append helper; the original's name is unknown.
+		void Append(const CommandEntry& e)
+		{
+			if (field_320 < 0x32) {
+				field_0[field_320] = e;
+				field_320++;
+			}
+		}
+	} field_e24[1];
 
 	int fn_00520cba(int a, int b, float c, char d);
 	tAIUnitData* fn_00520d38(int a);
 	void fn_00520d69(int a, int b);
+	void fn_00520dad(int a, int b, int c, int d);
 };
 
 // FUNCTION: STARFLEETOP 0x00520cba
@@ -141,5 +165,24 @@ void tAIUnitDataList::fn_00520d69(int a, int b)
 			list->field_0[list->field_c8] = p->field_0;
 			list->field_c8++;
 		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00520dad
+void tAIUnitDataList::fn_00520dad(int a, int b, int c, int d)
+{
+	for (int i = 0; i < field_e24[a].field_320; i++) {
+		if (field_e24[a].field_0[i].field_4 == b) {
+			return;
+		}
+	}
+	tAIUnitData* p = fn_00520d38(b);
+	if (p != 0 && p->field_0 != -1) {
+		CommandEntry e;
+		e.field_0 = p->field_0;
+		e.field_8 = c;
+		e.field_c = d;
+		e.field_4 = b;
+		field_e24[a].Append(e);
 	}
 }
