@@ -8300,7 +8300,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	claim		rtti
 0x00520a35	function	tETrait::~tETrait	tETrait				rtti
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
-0x00520ab2	function	fn_00520ab2					none
+0x00520ab2	function	fn_00520ab2		??0tAIUnitData@@QAE@HHHMMD@Z	claim		none
 0x00520b1a	function	fn_00520b1a					none
 0x00520b5e	function	fn_00520b5e					none
 0x00520bc9	function	tAIUnitData::scalar_deleting_destructor	tAIUnitData				rtti
