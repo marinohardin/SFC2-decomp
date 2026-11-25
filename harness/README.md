@@ -104,7 +104,7 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    the rebuilt and the target object in which those records read as DIR32
    (`coff.rewrite_reloc_types`; the target field is masked to the rebuilt addend, as for any
    relocation, so objdiff sees the pair equal). Nothing else changes in the copies, the
-   result's `relocs` keep the type `SECREL`, `objdiff_rewrites` counts the records rewritten, and
+   result's `relocs` keep the type `SECREL`, `objdiff_rewrites` counts the records rewritten that belong to this function (both sides: its own relocations in the rebuilt object and in the target object, not the unit's), and
    the report prints a line for each function that has such a relocation.
 5. Runs `objdiff-cli diff` for the score, and a strict byte comparison of the masked bytes.
    **Exact** means objdiff 100% and the strict check equal.

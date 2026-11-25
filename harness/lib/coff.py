@@ -203,8 +203,14 @@ def rewrite_reloc_types(raw, mapping=None):
     out, changed = bytearray(raw), 0
     for i in range(nsec):
         h = 20 + opt + i * 40
+        if h + 40 > len(raw):
+            raise CoffError('truncated section table')
         reloff = struct.unpack_from('<I', raw, h + 24)[0]
         nrel = struct.unpack_from('<H', raw, h + 32)[0]
+        if struct.unpack_from('<I', raw, h + 36)[0] & 0x01000000 and nrel == 0xFFFF:
+            raise CoffError('extended relocation count (IMAGE_SCN_LNK_NRELOC_OVFL) not supported')
+        if nrel and reloff + nrel * 10 > len(raw):
+            raise CoffError('truncated relocation table')
         for j in range(nrel):
             at = reloff + j * 10 + 8
             typ = struct.unpack_from('<H', raw, at)[0]
@@ -239,7 +245,7 @@ class PeImage:
         self.tls_start = self.tls_end = None
         if optsize >= 96 + 10 * 8 and struct.unpack_from('<I', raw, opt + 92)[0] > 9:
             tls_rva, tls_size = struct.unpack_from('<II', raw, opt + 96 + 9 * 8)
-            if tls_rva and tls_size >= 20:
+            if tls_rva and tls_size >= 24:
                 try:
                     # StartAddressOfRawData, EndAddressOfRawData, then SizeOfZeroFill at +16
                     start, end, _, _, fill = struct.unpack(

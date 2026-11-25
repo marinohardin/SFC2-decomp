@@ -69,9 +69,9 @@ def target_length(fn_address, fn_size, base_size, exe, next_start):
 
 
 def build(fn_address, fn_size, obj, symbol, exe, index):
-    """Returns dict(base, target, object, relocs, strict, first_diff, rewritten). `object` is for
-    objdiff: its SECREL relocations are rewritten as DIR32 (`rewritten` of them), see coff.py;
-    `relocs` and `strict` keep the real types and are the judge."""
+    """Returns dict(base, target, object, relocs, strict, first_diff, rewritten).
+    `object` is for objdiff: its SECREL relocations are rewritten as DIR32 (`rewritten` of
+    them), see coff.py; `relocs` and `strict` keep the real types and are the judge."""
     sec, off, bsize = obj.function(symbol)
     base = sec.data[off:off + bsize]
     target = bytearray(target_length(fn_address, fn_size, bsize, exe, index.next_start(fn_address)))
@@ -99,13 +99,13 @@ def build(fn_address, fn_size, obj, symbol, exe, index):
             # A __declspec(thread) variable: the field holds the variable's offset in the
             # thread-local block, which the exe counts from the start of its TLS raw data. The
             # address it stands for is that start plus the offset, and is checked like any other.
-            tls = getattr(exe, 'tls_start', None)
+            tls = exe.tls_start
             if tls is None:
                 relocs.append(Reloc(o, typ, name, None, 'mismatch', 'the exe has no TLS directory'))
                 out_relocs.append((o, name, typ))
                 continue
             s_exe = (ft - fb + tls) & MASK
-            tls_end = getattr(exe, 'tls_end', None)
+            tls_end = exe.tls_end
             if tls_end is not None and not tls <= s_exe < tls_end:
                 relocs.append(Reloc(o, typ, name, s_exe, 'mismatch',
                                     f'offset 0x{(s_exe - tls) & MASK:x} is outside the exe\'s '

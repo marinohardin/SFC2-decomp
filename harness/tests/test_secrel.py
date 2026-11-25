@@ -6,9 +6,10 @@ own strict check judges the field: the offset is turned into an address with the
 directory and checked like any other relocation's address.
 """
 import struct
+from types import SimpleNamespace
 
 from conftest import FakeIndex, make_pe
-from harness.lib import coff, target
+from harness.lib import coff, target, verify
 
 FN = 0x401000
 TLS_START = 0x00600000     # where the exe's thread-local data starts
@@ -49,6 +50,18 @@ def test_rewrite_changes_only_the_type_of_secrel_records():
     assert [o for o, _, _ in new.relocs] == [o for o, _, _ in old.relocs]
     assert new.data == old.data
     assert coff.rewrite_reloc_types(out)[1] == 0
+
+
+def test_rewrite_refuses_a_truncated_relocation_table_or_an_overflow_flag():
+    import pytest
+    raw = coff.write_object(BASE, '?f@@YAXXZ', RELOCS)
+    with pytest.raises(coff.CoffError):
+        coff.rewrite_reloc_types(raw[:20 + 40 + len(BASE) + 4])
+    flagged = bytearray(raw)
+    struct.pack_into('<H', flagged, 20 + 32, 0xFFFF)
+    struct.pack_into('<I', flagged, 20 + 36, 0x01000000 | coff.TEXT_CHARACTERISTICS)
+    with pytest.raises(coff.CoffError):
+        coff.rewrite_reloc_types(bytes(flagged))
 
 
 def test_pe_reads_the_thread_local_block_range():
@@ -104,3 +117,47 @@ def test_the_target_object_for_objdiff_carries_dir32_while_the_result_keeps_secr
     tobj = coff.CoffObject(t['object'])
     assert [typ for _, _, typ in tobj.sections[1].relocs] == [coff.REL_DIR32]
     assert [r.type for r in t['relocs']] == [coff.REL_SECREL]
+
+
+# --- score_function with a faked objdiff ------------------------------------------------------
+
+def _score(tmp_path, monkeypatch, relocs, base_code):
+    monkeypatch.setenv('HARNESS_NO_CACHE', '1')
+    seen = {}
+
+    def fake_objdiff(t, b, sym, out_dir):
+        seen['base'] = b
+        seen['base_types'] = [typ for _, _, typ in coff.CoffObject(open(b, 'rb').read())
+                              .sections[1].relocs]
+        ins = [{'diff_kind': 'DIFF_NONE', 'instruction': {'address': 0, 'formatted': 'ret'}}]
+        return {'match_percent': 100.0, 'instructions': ins}, {'instructions': ins}, ''
+    monkeypatch.setattr(verify, 'objdiff', fake_objdiff)
+    obj_path = tmp_path / 'u.obj'
+    obj_path.write_bytes(coff.write_object(base_code, '_f', relocs))
+    b = dict(obj=str(obj_path), listing=None, out_dir=str(tmp_path))
+    fn = SimpleNamespace(address=FN, name='f', size=len(base_code), mangled='_f')
+    unit = dict(rel='u.cpp', path='u.cpp', file='u.cpp', line=1, other_lines=[])
+    exe = tls_pe(exe_code(8) if relocs else base_code)
+    res = verify.score_function(fn, unit, b, exe, FakeIndex(), symbol_hint='_f')
+    return res, seen, obj_path
+
+
+def test_objdiff_receives_the_rewritten_object_when_the_object_has_secrel(tmp_path, monkeypatch):
+    res, seen, obj_path = _score(tmp_path, monkeypatch, RELOCS, BASE)
+    assert seen['base'] == str(tmp_path / '0x00401000' / 'base.obj')
+    assert seen['base_types'] == [coff.REL_DIR32]
+    assert coff.CoffObject(obj_path.read_bytes()).sections[1].relocs[0][2] == coff.REL_SECREL
+    assert res['exact'] is True
+    assert res['objdiff_rewrites'] == 2     # one record in the target object, one in the base
+    assert res['relocs'][0]['type'] == 'SECREL'
+    rep = verify.Report()
+    verify._report_function(rep, dict(functions={}), SimpleNamespace(address=FN, name='f'),
+                            dict(res, claimed=True))
+    assert any(ln.startswith('INFO') and 'thread-local (SECREL)' in ln for ln in rep.lines)
+
+
+def test_objdiff_receives_the_original_object_when_it_has_no_secrel(tmp_path, monkeypatch):
+    res, seen, obj_path = _score(tmp_path, monkeypatch, [], b'\xc3')
+    assert seen['base'] == str(obj_path)
+    assert not (tmp_path / '0x00401000' / 'base.obj').exists()
+    assert res['objdiff_rewrites'] == 0
