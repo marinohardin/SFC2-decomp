@@ -410,6 +410,7 @@ public:
 	void fn_00426c5e(int aValue);
 	void fn_00426d48(int aValue);
 	void fn_00426da7();
+	int fn_00426e11();
 
 	int m10[20];
 	int m60[20];
@@ -599,4 +600,10 @@ void fn_00426988_Class::fn_00426da7()
 		}
 	}
 	mc8 = kept;
+}
+
+// FUNCTION: STARFLEETOP 0x00426e11
+int fn_00426988_Class::fn_00426e11()
+{
+	return md4;
 }
