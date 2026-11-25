@@ -105,6 +105,16 @@ void tThread::StopThread( int32u waitTime )
 	}
 }
 
+// HYPOTHESIS: table at 0x0088c358 maps ThreadPriority to Win32 priority values.
+extern int g_0088c358[];
+extern "C" __declspec(dllimport) int __stdcall SetThreadPriority( void* thread, int priority );
+
+// FUNCTION: STARFLEETOP 0x006ff6d0
+void tThread::mSetPriority( ThreadPriority priority )
+{
+	SetThreadPriority( (void*)fThread, g_0088c358[priority] );
+}
+
 // FUNCTION: STARFLEETOP 0x006ff6f0
 bool tThread::Working() const
 {

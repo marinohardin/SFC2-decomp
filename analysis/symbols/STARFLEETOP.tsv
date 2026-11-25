@@ -20414,7 +20414,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ff170	function	tThread::~tThread	tThread	??1tThread@@QAE@XZ	claim		mangled
 0x006ff250	function	tThread::StartWork	tThread	?StartWork@tThread@@QAE_NPAV?$tCallback@J@@J@Z	mangled		mangled
 0x006ff4f0	function	tThread::StopThread	tThread	?StopThread@tThread@@QAEXK@Z	claim		mangled
-0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	mangled		mangled
+0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	claim		mangled
 0x006ff6f0	function	tThread::Working	tThread	?Working@tThread@@QBE_NXZ	claim		sdk
 0x006ff700	function	fn_006ff700		?Alive@tThread@@QBE_NXZ	callers		none
 0x006ff710	function	fn_006ff710		?fn_006ff710@tThread@@IAEXXZ	claim		none
