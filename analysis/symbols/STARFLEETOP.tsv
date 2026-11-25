@@ -7550,7 +7550,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00502c54	function	fn_00502c54	tFx_PPDWave				vtable
 0x00502eb6	function	fn_00502eb6	tFx_PPDWave				vtable
 0x005032f7	function	fn_005032f7		?fn_005032f7@@YAPAVtFx_PPDWave@@XZ	claim		none
-0x00503354	function	fn_00503354					none
+0x00503354	function	fn_00503354		?fn_00503354@@YAXXZ	claim		none
 0x00503474	function	tFx_PPDPulse::tFx_PPDPulse	tFx_PPDPulse				rtti
 0x005034d8	function	fn_005034d8	tFx_PPDPulse				vtable
 0x00503570	function	fn_00503570	tFx_PPDPulse				vtable
