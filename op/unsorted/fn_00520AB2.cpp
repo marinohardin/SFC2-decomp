@@ -120,12 +120,13 @@ public:
 				field_320++;
 			}
 		}
-	} field_e24[1];
+	} field_e24[2];
 
 	int fn_00520cba(int a, int b, float c, char d);
 	tAIUnitData* fn_00520d38(int a);
 	void fn_00520d69(int a, int b);
 	void fn_00520dad(int a, int b, int c, int d);
+	void fn_00520e30();
 };
 
 // FUNCTION: STARFLEETOP 0x00520cba
@@ -184,5 +185,15 @@ void tAIUnitDataList::fn_00520dad(int a, int b, int c, int d)
 		e.field_c = d;
 		e.field_4 = b;
 		field_e24[a].Append(e);
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00520e30
+void tAIUnitDataList::fn_00520e30()
+{
+	for (int i = 0; i < 2; i++) {
+		field_c8c[i].field_c8 = 0;
+		field_e24[i].field_320 = 0;
+		field_8.field_c80 = 0;
 	}
 }
