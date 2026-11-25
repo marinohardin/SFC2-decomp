@@ -112,6 +112,21 @@ long tSoundChannel::mGetFrequency()
 {
     return (&field_0x30)->mGetFrequency();
 }
+
+
+
+
+
+
+
+
+
+
+// FUNCTION: STARFLEETOP 0x00646790
+long tSoundChannel::mGetPan()
+{
+    return (&field_0x30)->mGetPan();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
