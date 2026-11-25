@@ -49,3 +49,12 @@ void fn_00522077_list::fn_00522077(fn_00522077_node** result, fn_00522077_node* 
 	field_8++;
 	*result = node;
 }
+
+// FUNCTION: STARFLEETOP 0x005220b1
+fn_00522077_node* fn_00522077_list::fn_005220b1(fn_00522077_node* next, fn_00522077_node* prev)
+{
+	fn_00522077_node* node = (fn_00522077_node*)operator new(0x40); // HYPOTHESIS: the node holds a 0x38-byte value after the two links
+	node->field_0 = next ? next : node;
+	node->field_4 = prev ? prev : node;
+	return node;
+}
