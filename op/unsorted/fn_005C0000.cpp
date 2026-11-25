@@ -10,3 +10,13 @@ std::string fn_005c057f(std::string text, char c)
 	stream << text << c;
 	return stream.str();
 }
+
+// HYPOTHESIS: same shape as fn_005c057f, with the tIdiom parts left out (no header for tIdiom yet);
+// the literals are guesses.
+// FUNCTION: STARFLEETOP 0x005c0725
+std::string fn_005c0725(std::string text, char c)
+{
+	std::stringstream stream;
+	stream << text << c << text;
+	return stream.str();
+}
