@@ -16889,7 +16889,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646ba0	function	twStandardSoundChannel::mGetfDSBuffer	twStandardSoundChannel	?mGetfDSBuffer@twStandardSoundChannel@@UAEPAUIDirectSoundBuffer@@XZ	mangled		mangled
 0x00646bb0	function	twStandardSoundChannel::`scalar_deleting_destructor'	twStandardSoundChannel	??_GtwStandardSoundChannel@@UAEPAXI@Z	mangled		mangled
 0x00646bd0	function	twStandardSoundChannel::~twStandardSoundChannel	twStandardSoundChannel	??1twStandardSoundChannel@@UAE@XZ	mangled		mangled
-0x00646cd0	function	fn_00646cd0					none
+0x00646cd0	function	fn_00646cd0		?fn_00646cd0@@YAXXZ	claim		none
 0x00646ce0	function	AddSoundErrorDuringInterrupt		?AddSoundErrorDuringInterrupt@@YAXPBDZZ	claim		claim
 0x00646d10	function	PrintOutBufferedErrors		?PrintOutBufferedErrors@@YAXXZ	claim		claim
 0x00646d60	function	GetSilenceData		?GetSilenceData@@YAEJ@Z	claim		claim
