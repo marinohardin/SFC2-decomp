@@ -19,6 +19,19 @@ tTimer::~tTimer()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0070fcd0
+void tTimer::StartTimer( int32u dueTime, int32u period, tTimerHandler* pTimerHandler )
+{
+	fTimerHasStarted = false;
+	fDueTime = dueTime;
+	fPeriod = period;
+	fCallbackType = kTimerHandler;
+	fpTimerHandler = pTimerHandler;
+	fpCallbackFunc = 0;
+	fpCallback = 0;
+	fContext = 0;
+}
+
 // FUNCTION: STARFLEETOP 0x0070fd40
 void tTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context )
 {

@@ -20738,7 +20738,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070fc80	function	tTimer::tTimer	tTimer	??0tTimer@@QAE@XZ	claim		mangled
 0x0070fca0	function	tTimer::scalar_deleting_destructor	tTimer				sdk
 0x0070fcc0	function	tTimer::~tTimer	tTimer	??1tTimer@@UAE@XZ	claim		sdk
-0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
+0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	claim		mangled
 0x0070fd00	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z	mangled		mangled
 0x0070fd40	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z	claim		mangled
 0x0070fd80	function	tTimer::ChangeTiming	tTimer	?ChangeTiming@tTimer@@UAEXKK@Z	mangled		mangled
