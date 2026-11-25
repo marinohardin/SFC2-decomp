@@ -1,5 +1,7 @@
 #include "unsorted/fn_0090bed4_Object.h"
 #include "unsorted/tIndividualShipSystem.h"
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tObject_0090be60.h"
 
 // FUNCTION: STARFLEETOP 0x00522679
 void __fastcall fn_00522679(char* self)
@@ -116,5 +118,58 @@ char __fastcall fn_005229b9(fn_0090bed4_Object *self, int, tEntity *pEntity)
 	if (p != 0)
 		p->vfunction4();
 	return 0;
+}
+
+// HYPOTHESIS: the team record 0x00426f1a returns (see fn_00523000.cpp); 0x00426e11 returns the
+// team's ID, 0x00426e18 its admiral's entity ID (-1 when it has none), 0x00426e1f sets that ID.
+// Their class is not declared in a header of this lane, so they stand as fastcalls.
+int __fastcall fn_00426e11(void *self);
+int __fastcall fn_00426e18(void *self);
+void __fastcall fn_00426e1f(void *self, int, int param_1);
+
+// HYPOTHESIS: the entity 0x00522a09 creates for a team; an entity by the ID set at +0x1c and
+// by mAddEntity, 0x118 bytes. Its header is not on this lane's list.
+class tAIAdmiral : public tEntity
+{
+public:
+	tAIAdmiral(int aTeam);
+	void fn_0051c1e1(void *pSlot);
+	void fn_0051c76f(int param_1, int param_2);
+
+	char m_pad0088[0x118 - 0x88];
+};
+
+// HYPOTHESIS: a method of the object 0x00523574 returns for an ID, as a fastcall.
+int __fastcall fn_004b94dc(void *self);
+
+// HYPOTHESIS: the index of an entry of the 16-byte table at +0x1694 for a team ID; a member of
+// fn_0090bed4_Object not declared in the header yet, so it stands as a fastcall.
+int __fastcall fn_00522e1b(fn_0090bed4_Object *self, int, int param_1);
+
+// FUNCTION: STARFLEETOP 0x00522a09
+// HYPOTHESIS: a member of fn_0090bed4_Object taking the team record, a fastcall like its neighbours.
+char __fastcall fn_00522a09(fn_0090bed4_Object *self, int, void *pTeam)
+{
+	int teamID = fn_00426e11(pTeam);
+	if (fn_00426e18(pTeam) == -1) {
+		tAIAdmiral *pAdmiral = new tAIAdmiral(teamID);
+		int id;
+		pAdmiral->fID = id = ((tEntityMgr *)&gObject_008e1060)->mGetNextHostID();
+		((tEntityMgr *)&gObject_008e1060)->mAddEntity(pAdmiral);
+		fn_00426e1f(pTeam, 0, id);
+		if (self->m_16b4 != 0) {
+			int index = fn_00522e1b(self, 0, teamID);
+			pAdmiral->fn_0051c1e1((char *)self + 0x1694 + index * 16);
+		}
+		for (std::list<int>::iterator it = self->m_16c0.begin(); it != self->m_16c0.end(); it++) {
+			void *pObject = self->fn_00523574(*it);
+			if (pObject != 0) {
+				if (gObject_0090be60->fn_00427581(teamID, fn_004b94dc(pObject)) == 6)
+					pAdmiral->fn_0051c76f(fn_004b94dc(pObject), 1);
+			}
+		}
+		self->m_16c0.push_back(id);
+	}
+	return 1;
 }
 

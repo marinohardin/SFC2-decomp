@@ -1262,8 +1262,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426ca8	function	fn_00426ca8		?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z	claim		none
 0x00426d48	function	fn_00426d48					none
 0x00426da7	function	fn_00426da7					none
-0x00426e11	function	fn_00426e11					none
-0x00426e18	function	fn_00426e18					none
+0x00426e11	function	fn_00426e11		?fn_00426e11@@YIHPAX@Z	add		none
+0x00426e18	function	fn_00426e18		?fn_00426e18@@YIHPAX@Z	add		none
 0x00426e1f	function	fn_00426e1f					none
 0x00426e2c	function	fn_00426e2c					none
 0x00426e40	function	fn_00426e40					none
@@ -8185,7 +8185,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051bc86	function	tAITBombOfficer::scalar_deleting_destructor	tAITBombOfficer				rtti
 0x0051bca2	function	fn_0051bca2	tAITransportOfficer				vtable
 0x0051bccb	function	fn_0051bccb					none
-0x0051be52	function	tAIAdmiral::tAIAdmiral	tAIAdmiral				rtti
+0x0051be52	function	tAIAdmiral::tAIAdmiral	tAIAdmiral	??0tAIAdmiral@@QAE@H@Z	add		rtti
 0x0051bf1a	function	fn_0051bf1a	tAIAdmiral				vtable
 0x0051bf1e	function	tAIAdmiral::scalar_deleting_destructor	tAIAdmiral				rtti
 0x0051bf3a	function	tAIAdmiral::~tAIAdmiral	tAIAdmiral				rtti
@@ -8364,7 +8364,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0052280a	function	fn_0052280a					none
 0x0052294d	function	fn_0052294d		?fn_0052294d@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@PAUvfunction33_result@@@Z	claim		none
 0x005229b9	function	fn_005229b9		?fn_005229b9@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
-0x00522a09	function	fn_00522a09					none
+0x00522a09	function	fn_00522a09		?fn_00522a09@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
 0x00522b29	function	fn_00522b29					none
 0x00522b94	function	fn_00522b94					none
 0x00522bdf	function	fn_00522bdf					none
