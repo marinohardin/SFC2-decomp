@@ -13099,7 +13099,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c17c7	function	fn_005c17c7		?fn_005c17c7@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c17c7@@@Z	claim		none
 0x005c180a	function	fn_005c180a		?fn_005c180a@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c180a@@@Z	claim		none
 0x005c1851	function	fn_005c1851		?fn_005c1851@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1851@@@Z	claim		none
-0x005c1894	function	fn_005c1894					none
+0x005c1894	function	fn_005c1894		?fn_005c1894@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c1894@@@Z	claim		none
 0x005c18d7	function	fn_005c18d7					none
 0x005c191b	function	fn_005c191b					none
 0x005c195f	function	fn_005c195f					none
