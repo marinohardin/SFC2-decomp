@@ -4703,7 +4703,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0049f4b2	function	tActualPlayer::tActualPlayer	tActualPlayer				rtti
 0x004a0355	function	fn_004a0355					none
 0x004a037a	function	fn_004a037a	tListMember				vtable
-0x004a0384	function	fn_004a0384					none
+0x004a0384	function	fn_004a0384		?fn_004a0384@tMedalsPanel@@QAEXXZ	add		none
 0x004a039a	function	tNotifiee::scalar_deleting_destructor	tNotifiee				rtti
 0x004a03bc	function	tShadowFloat::tShadowFloat	tShadowFloat				rtti
 0x004a03cd	function	tShadowTStr::tShadowTStr	tShadowTStr				rtti
@@ -5197,7 +5197,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bcf52	function	fn_004bcf52	tValue<tListData>				vtable
 0x004bcf9d	function	fn_004bcf9d					none
 0x004bcfac	function	fn_004bcfac					none
-0x004bcfd3	function	fn_004bcfd3					none
+0x004bcfd3	function	fn_004bcfd3		?fn_004bcfd3@@YAPAVfn_004bcfd3_class@@XZ	add		none
 0x004bd03d	function	fn_004bd03d					none
 0x004bd088	function	fn_004bd088					none
 0x004bd0e5	function	fn_004bd0e5					none
@@ -5212,7 +5212,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bd2f0	function	fn_004bd2f0	tListBox_News_Session				vtable
 0x004bd325	function	fn_004bd325	tListBox_News_Session				vtable
 0x004bd3f9	function	tListBox_News::tListBox_News	tListBox_News				rtti
-0x004bd431	function	fn_004bd431	tApp3dBase				vtable
+0x004bd431	function	fn_004bd431	tApp3dBase	?fn_004bd431@@YAXXZ	add		vtable
 0x004bd432	function	fn_004bd432	tListBox_News				vtable
 0x004bd43e	thunk	fn_004bd43e					none
 0x004bd443	function	fn_004bd443	tListBox_Base	?fn_004bd443@tListBox_Base@@QAEHPAVtString@@H@Z	claim		none
@@ -10184,7 +10184,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00553e9c	function	fn_00553e9c	nStoredProcedureArguments::tGetCharactersRequest				vtable
 0x00553ed4	function	fn_00553ed4	nStoredProcedureArguments::tGetCharactersRequest				vtable
 0x00553f02	function	fn_00553f02					none
-0x00553f6d	function	fn_00553f6d					none
+0x00553f6d	function	fn_00553f6d		??1tAddItem@@QAE@XZ	add		none
 0x00553fa5	function	fn_00553fa5					none
 0x00554004	function	fn_00554004					none
 0x005540a7	function	fn_005540a7					none
@@ -14858,7 +14858,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005f42c2	function	fn_005f42c2					none
 0x005f42f8	function	fn_005f42f8					none
 0x005f4327	function	fn_005f4327					none
-0x005f4352	function	fn_005f4352					none
+0x005f4352	function	fn_005f4352		?Done@tAccessPointer_0060422e@@QAEXXZ	add		none
 0x005f4378	function	tCallback<unsigned_long>::~tCallback<unsigned_long>	tCallback<unsigned_long>				rtti
 0x005f437f	function	fn_005f437f					none
 0x005f43ee	function	fn_005f43ee					none
@@ -15235,12 +15235,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005fff18	function	fn_005fff18					none
 0x005fff77	function	fn_005fff77					none
 0x005fffd6	function	fn_005fffd6					none
-0x00600035	function	fn_00600035					none
-0x00600094	function	fn_00600094					none
-0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	callers		rtti
-0x00600181	function	tPlayerRelayCCreator::scalar_deleting_destructor	tPlayerRelayCCreator				rtti
-0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	callers		rtti
-0x006001a8	function	fn_006001a8	tPlayerRelayCCreator				vtable
+0x00600035	function	fn_00600035		?fn_00600035@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
+0x00600094	function	fn_00600094		?fn_00600094@fn_00600035_owner@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
+0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	claim		rtti
+0x00600181	function	tPlayerRelayCCreator::scalar_deleting_destructor	tPlayerRelayCCreator	??_GtPlayerRelayCCreator@@UAEPAXI@Z	claim		rtti
+0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	claim		rtti
+0x006001a8	function	fn_006001a8	tPlayerRelayCCreator	?vfunction3@tPlayerRelayCCreator@@UAEXXZ	claim		vtable
 0x00600208	function	fn_00600208					none
 0x0060023b	function	fn_0060023b					none
 0x0060026e	function	fn_0060026e					none
@@ -15252,10 +15252,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600396	function	tMetaClientBriefing::~tMetaClientBriefing	tMetaClientBriefing				rtti
 0x0060039f	function	tMetaClientBriefing::scalar_deleting_destructor	tMetaClientBriefing				rtti
 0x006003bb	function	tMetaClientBriefing::~tMetaClientBriefing	tMetaClientBriefing				rtti
-0x006003c2	function	fn_006003c2					none
-0x006003c8	function	fn_006003c8					none
-0x006003ce	function	fn_006003ce					none
-0x006003d4	function	fn_006003d4					none
+0x006003c2	function	fn_006003c2		?fn_006003c2@@YAPADXZ	claim		none
+0x006003c8	function	fn_006003c8		?fn_006003c8@@YAPADXZ	claim		none
+0x006003ce	function	fn_006003ce		?fn_006003ce@@YAPADXZ	claim		none
+0x006003d4	function	fn_006003d4		?fn_006003d4@@YAPADXZ	claim		none
 0x0060041c	function	fn_0060041c					none
 0x0060044f	function	fn_0060044f					none
 0x00600482	function	fn_00600482					none
@@ -15267,23 +15267,23 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006005aa	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
 0x00600604	function	tMessageDialog::scalar_deleting_destructor	tMessageDialog				rtti
 0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
-0x006006b3	function	fn_006006b3					none
+0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
 0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog				rtti
-0x0060072f	function	fn_0060072f					none
-0x006007f9	function	fn_006007f9					none
-0x00600857	function	fn_00600857					none
-0x00600922	function	fn_00600922					none
-0x006009ed	function	fn_006009ed					none
+0x0060072f	function	fn_0060072f		?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none
+0x006007f9	function	fn_006007f9		?fn_006007f9@tMessageDialog@@QAEXH@Z	add		none
+0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
+0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
+0x006009ed	function	fn_006009ed		?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
 0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
-0x00600a82	function	fn_00600a82					none
+0x00600a82	function	fn_00600a82		?fn_00600a82@@YAXXZ	claim		none
 0x00600a91	function	fn_00600a91					none
-0x00600ab8	function	fn_00600ab8					none
+0x00600ab8	function	fn_00600ab8		?fn_00600ab8@@YGPAVfn_00600b4a_class@@HHH@Z	add		none
 0x00600b2e	function	tMessageDialogGlobal::scalar_deleting_destructor	tMessageDialogGlobal				rtti
 0x00600b4a	function	fn_00600b4a					none
 0x00600bd5	thunk	fn_00600bd5					none
 0x00600bda	function	tMessageDialogGlobal::~tMessageDialogGlobal	tMessageDialogGlobal				rtti
-0x00600be5	function	fn_00600be5					none
-0x00600c26	function	fn_00600c26					none
+0x00600be5	function	fn_00600be5		?fn_00600be5@fn_00600be5_holder@@QAEAAU1@AAU1@@Z	claim		none
+0x00600c26	function	fn_00600c26		??1fn_00600be5_holder@@QAE@XZ	claim		none
 0x00600c7c	function	fn_00600c7c					none
 0x00600caf	function	fn_00600caf					none
 0x00600ce2	function	fn_00600ce2					none
@@ -15300,15 +15300,15 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600ea9	function	fn_00600ea9	tMedalsPanel				vtable
 0x00600f61	function	fn_00600f61	tMedalsPanel				vtable
 0x00600f8d	function	fn_00600f8d	tMetaClientPanel				vtable
-0x00600f90	function	fn_00600f90					none
-0x00600fba	function	fn_00600fba					none
-0x00601054	function	fn_00601054					none
-0x00601141	function	fn_00601141					none
-0x0060114d	function	fn_0060114d					none
-0x00601159	function	fn_00601159					none
-0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	callers		rtti
-0x006011d2	function	tMedalsPanelCreator::scalar_deleting_destructor	tMedalsPanelCreator				rtti
-0x006011ee	function	tMedalsPanelCreator::~tMedalsPanelCreator	tMedalsPanelCreator	??1tMedalsPanelCreator@@UAE@XZ	callers		rtti
+0x00600f90	function	fn_00600f90		?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
+0x00600fba	function	fn_00600fba		?FUN_00600fba@tMedalsPanel@@QAEXH@Z	claim		none
+0x00601054	function	fn_00601054		?fn_00601054@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	add		none
+0x00601141	function	fn_00601141		?fn_00601141@@YAXXZ	claim		none
+0x0060114d	function	fn_0060114d		?fn_0060114d@@YAXXZ	claim		none
+0x00601159	function	fn_00601159		?fn_00601159@@YAXXZ	claim		none
+0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	claim		rtti
+0x006011d2	function	tMedalsPanelCreator::scalar_deleting_destructor	tMedalsPanelCreator	??_GtMedalsPanelCreator@@UAEPAXI@Z	claim		rtti
+0x006011ee	function	tMedalsPanelCreator::~tMedalsPanelCreator	tMedalsPanelCreator	??1tMedalsPanelCreator@@UAE@XZ	claim		rtti
 0x006011f9	function	fn_006011f9	tMedalsPanelCreator				vtable
 0x00601259	function	fn_00601259					none
 0x0060128c	function	fn_0060128c					none
@@ -15316,31 +15316,31 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0060131c	function	nAsyncClientMessengerProcedures::tAcceptMessage::scalar_deleting_destructor	nAsyncClientMessengerProcedures::tAcceptMessage				rtti
 0x00601338	function	nAsyncClientMessengerProcedures::tAcceptMessage::~tAcceptMessage	nAsyncClientMessengerProcedures::tAcceptMessage				rtti
 0x00601343	function	fn_00601343					none
-0x00601498	function	fn_00601498					none
-0x00601540	function	fn_00601540					none
-0x00601557	function	fn_00601557					none
+0x00601498	function	fn_00601498		?fn_00601498@@YGXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
+0x00601540	function	fn_00601540		?fn_00601540@@YGXHH@Z	claim		none
+0x00601557	function	fn_00601557		?fn_00601557@@YGXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x0060161d	function	fn_0060161d					none
 0x00601650	function	fn_00601650					none
 0x00601669	function	tMessengerRelayC::tMessengerRelayC	tMessengerRelayC				rtti
 0x0060167b	function	tMessengerRelayC::scalar_deleting_destructor	tMessengerRelayC				rtti
 0x00601697	function	tMessengerRelayC::~tMessengerRelayC	tMessengerRelayC				rtti
 0x006016e0	function	fn_006016e0	tMessengerRelayC				vtable
-0x00601747	function	fn_00601747					none
+0x00601747	function	fn_00601747		?fn_00601747@fn_00601747_class@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
 0x006017d1	function	fn_006017d1					none
 0x00601804	function	fn_00601804					none
 0x0060181d	function	tMessengerRelayCreator::tMessengerRelayCreator	tMessengerRelayCreator	??0tMessengerRelayCreator@@QAE@XZ	callers		rtti
-0x00601834	function	tMessengerRelayCreator::scalar_deleting_destructor	tMessengerRelayCreator				rtti
-0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	callers		rtti
-0x0060185b	function	fn_0060185b	tMessengerRelayCreator				vtable
+0x00601834	function	tMessengerRelayCreator::scalar_deleting_destructor	tMessengerRelayCreator	??_GtMessengerRelayCreator@@UAEPAXI@Z	claim		rtti
+0x00601850	function	tMessengerRelayCreator::~tMessengerRelayCreator	tMessengerRelayCreator	??1tMessengerRelayCreator@@UAE@XZ	claim		rtti
+0x0060185b	function	fn_0060185b	tMessengerRelayCreator	?vfunction3@tMessengerRelayCreator@@UAEXXZ	claim		vtable
 0x006018c8	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOff,nDataStore::tBuffer_const*>				rtti
 0x0060195c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOff::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOff				rtti
 0x00601978	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOff::~tCharacterLoggedOff	nAsyncClientPlayerListProcedures::tCharacterLoggedOff				rtti
-0x00601983	function	fn_00601983					none
+0x00601983	function	fn_00601983		?fn_00601983@tCharacterLoggedOff@nAsyncClientPlayerListProcedures@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
 0x00601a4f	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterLoggedOn,nDataStore::tBuffer_const*>				rtti
 0x00601b0c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b28	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::~tCharacterLoggedOn	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b33	function	fn_00601b33					none
-0x00601ca9	function	fn_00601ca9					none
+0x00601ca9	function	fn_00601ca9		?fn_00601ca9@tCharacterInfoProcedure@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
 0x00601d69	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>				rtti
 0x00601dfd	function	nAsyncClientPlayerListProcedures::tCharacterReceived::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
 0x00601e19	function	nAsyncClientPlayerListProcedures::tCharacterReceived::~tCharacterReceived	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
@@ -15367,44 +15367,44 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00602afd	function	fn_00602afd	tMetaClientPlayerListPanel				vtable
 0x00602b51	function	fn_00602b51	tMetaClientPlayerListPanel				vtable
 0x00602bc7	function	fn_00602bc7	tMetaClientPlayerListPanel				vtable
-0x00602e18	function	fn_00602e18					none
+0x00602e18	function	fn_00602e18		?fn_00602e18@tPlayerListPanelSketch@@QAEXPAVfn_00602e18_message@@@Z	claim		none
 0x00602f16	function	fn_00602f16					none
-0x006032e7	function	fn_006032e7					none
-0x00603351	function	fn_00603351					none
-0x006033b4	function	fn_006033b4					none
-0x006033e7	function	fn_006033e7					none
-0x00603486	function	fn_00603486					none
+0x006032e7	function	fn_006032e7		?fn_006032e7@fn_006032e7_object@@QAEXXZ	claim		none
+0x00603351	function	fn_00603351		?fn_00603351@fn_00603351_object@@QAEXPAVfn_00603351_vector@@@Z	claim		none
+0x006033b4	function	fn_006033b4		?fn_006033b4@fn_006033b4_object@@QAEHPAH@Z	claim		none
+0x006033e7	function	fn_006033e7		?fn_006033e7@fn_006032e7_object@@QAEPAPAXABVtID@nDatabase@@@Z	claim		none
+0x00603486	function	fn_00603486		?fn_00603486@fn_006032e7_object@@QAEPAPAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x00603575	function	fn_00603575					none
-0x00603713	function	fn_00603713					none
-0x0060378d	function	fn_0060378d					none
-0x006037fc	function	fn_006037fc					none
-0x00603873	function	fn_00603873					none
-0x00603978	function	fn_00603978					none
-0x00603a08	function	fn_00603a08					none
+0x00603713	function	fn_00603713		?fn_00603713@fn_006032e7_object@@QAEXPAVfn_0042a480_object@@@Z	claim		none
+0x0060378d	function	fn_0060378d		?fn_0060378d@fn_006032e7_object@@QAEXPAH@Z	claim		none
+0x006037fc	function	fn_006037fc		?fn_006037fc@fn_006032e7_object@@QAEHPAH@Z	claim		none
+0x00603873	function	fn_00603873		?fn_00603873@fn_006032e7_object@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z	claim		none
+0x00603978	function	fn_00603978		?fn_00603978@fn_006032e7_object@@QAEXPAX@Z	claim		none
+0x00603a08	function	fn_00603a08		?fn_00603a08@fn_006032e7_object@@QAEXHH@Z	claim		none
 0x00603a5f	function	tMetaClientPlayerListPanel::tAddItem::~tAddItem	tMetaClientPlayerListPanel::tAddItem				rtti
 0x00603b91	function	tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem	tMetaClientPlayerListPanel::tRemoveItem				rtti
-0x00603c9a	function	fn_00603c9a					none
-0x00603d4a	function	fn_00603d4a					none
-0x00603d8f	function	fn_00603d8f					none
+0x00603c9a	function	fn_00603c9a		?fn_00603c9a@fn_006032e7_object@@QAEXHHH@Z	claim		none
+0x00603d4a	function	fn_00603d4a		??0fn_00603d4a_node@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z	claim		none
+0x00603d8f	function	fn_00603d8f		?fn_00603d8f@fn_00603d8f_object@@QAEXH@Z	claim		none
 0x00603dee	function	fn_00603dee					none
-0x00603e24	function	fn_00603e24					none
-0x00603e35	function	fn_00603e35					none
+0x00603e24	function	fn_00603e24		?fn_00603e24@fn_00603e24_object@@QAEXH@Z	claim		none
+0x00603e35	function	fn_00603e35		?fn_00603e35@fn_00603351_vector@@QAEXXZ	claim		none
 0x00603e41	function	fn_00603e41					none
-0x00603ebe	function	fn_00603ebe					none
-0x00603ef0	function	fn_00603ef0					none
-0x006041a1	function	fn_006041a1					none
-0x006041d0	function	fn_006041d0					none
-0x006041ff	function	fn_006041ff					none
-0x0060422e	function	fn_0060422e					none
-0x00604259	function	fn_00604259					none
+0x00603ebe	function	fn_00603ebe		?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z	claim		none
+0x00603ef0	function	fn_00603ef0		?fn_00603ef0@@YGXPAVfn_00603ef0_target@@HH@Z	add		none
+0x006041a1	function	fn_006041a1		??1tRemoveItem@@QAE@XZ	claim		none
+0x006041d0	function	fn_006041d0		??1tRemoveItem_0060435f@@QAE@XZ	claim		none
+0x006041ff	function	fn_006041ff		??1tRemoveItem_00604390@@QAE@XZ	claim		none
+0x0060422e	function	fn_0060422e		??1tAccessPointer_0060422e@@QAE@XZ	claim		none
+0x00604259	function	fn_00604259		??D?$tAccessPointer@HH@@QAEAAHXZ	claim		none
 0x00604271	function	fn_00604271					none
 0x0060429c	function	fn_0060429c					none
 0x006042c7	function	fn_006042c7					none
 0x0060430d	function	tMetaClientPlayerListPanel::tRemoveItem::scalar_deleting_destructor	tMetaClientPlayerListPanel::tRemoveItem				rtti
 0x00604329	thunk	fn_00604329					none
-0x0060432e	function	fn_0060432e					none
-0x0060435f	function	fn_0060435f					none
-0x00604390	function	fn_00604390					none
+0x0060432e	function	fn_0060432e		?fn_0060432e@tRemoveItem@@QAEXXZ	add		none
+0x0060435f	function	fn_0060435f		?fn_0060435f@tRemoveItem_0060435f@@QAEXXZ	add		none
+0x00604390	function	fn_00604390		?fn_00604390@tRemoveItem_00604390@@QAEXXZ	add		none
 0x006043ff	function	fn_006043ff					none
 0x0060440b	function	fn_0060440b					none
 0x00604417	function	fn_00604417					none

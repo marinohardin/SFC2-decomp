@@ -1,6 +1,68 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00600208.cpp
-// Functions: 0x00600208 to 0x0060036d, 8 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+extern "C" unsigned int strlen(const char*);
+
+// HYPOTHESIS: the callees are basic_string::_Tidy (0x005da20a) and basic_string::assign
+// (0x0040428e); a reduced stand-in of the standard class keeps this unit free of <string>.
+namespace std
+{
+	template <class T> struct char_traits;
+	template <class T> class allocator;
+	template <class C, class Tr, class A> class basic_string
+	{
+	public:
+		// MATCH-ONLY: the original inlined the const char* constructor into the initializer.
+		__forceinline basic_string(const char* s)
+		{
+			char allocator;
+			m_al = allocator; // HYPOTHESIS: uninitialised allocator byte
+			_Tidy(false);
+			assign(s, strlen(s));
+		}
+		~basic_string()
+		{
+			_Tidy(true);
+		}
+		basic_string& assign(const char* s, unsigned int n);
+	private:
+		void _Tidy(bool built);
+	public:
+		char m_al;
+		char* _Ptr;
+		unsigned int m_len;
+		unsigned int m_res;
+	};
+}
+
+// HYPOTHESIS: the global's name is not known.
+typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_00600208_string;
+
+// FUNCTION: STARFLEETOP 0x0060023b
+// FUNCTION: STARFLEETOP 0x00600208
+fn_00600208_string g_00c39e48 = "BriefingSP";
+
+// FUNCTION: STARFLEETOP 0x006002a1
+// FUNCTION: STARFLEETOP 0x0060026e
+fn_00600208_string g_00c39e30 = "DebriefingSP";
+
+// FUNCTION: STARFLEETOP 0x00600307
+// FUNCTION: STARFLEETOP 0x006002d4
+fn_00600208_string g_00c39e20 = "BriefingMultiMeta";
+
+// FUNCTION: STARFLEETOP 0x0060036d
+// FUNCTION: STARFLEETOP 0x0060033a
+fn_00600208_string g_00c39e10 = "DebriefingMP";
+
+// FUNCTION: STARFLEETOP 0x0060044f
+// FUNCTION: STARFLEETOP 0x0060041c
+fn_00600208_string g_00c39ea0 = "General_Error";
+
+// FUNCTION: STARFLEETOP 0x006004b5
+// FUNCTION: STARFLEETOP 0x00600482
+fn_00600208_string g_00c39e88 = "ErrorOk";
+
+// FUNCTION: STARFLEETOP 0x0060051b
+// FUNCTION: STARFLEETOP 0x006004e8
+fn_00600208_string g_00c39e78 = "ErrorMessage";
+
+// FUNCTION: STARFLEETOP 0x00600581
+// FUNCTION: STARFLEETOP 0x0060054e
+fn_00600208_string g_00c39e68 = "ErrorTitle";
