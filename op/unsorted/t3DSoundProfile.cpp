@@ -1,6 +1,25 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/t3DSoundProfile.cpp
-// Functions: 0x00646240 to 0x00646310, 10 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "Tiger/tgSound.h"
+
+// FUNCTION: STARFLEETOP 0x00646260
+void t3DSoundProfile::mSet3DSoundOrientation(float aX, float aY, float aZ) { f3DSoundOrientation.x = aX; f3DSoundOrientation.y = aY; f3DSoundOrientation.z = aZ; }
+
+// FUNCTION: STARFLEETOP 0x006462d0
+void t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation(float anAngle) { f3DSoundConeAngleForNoAttenuation = anAngle; }
+
+// FUNCTION: STARFLEETOP 0x006462e0
+float t3DSoundProfile::vfunction17() { return f3DSoundConeAngleForNoAttenuation; }
+
+// FUNCTION: STARFLEETOP 0x006462f0
+void t3DSoundProfile::mSet3DSoundConeAttenuationLevel(long aLevel) { f3DSoundConeAttenuationLevel = aLevel; }
+
+// FUNCTION: STARFLEETOP 0x00646300
+long t3DSoundProfile::vfunction19() { return f3DSoundConeAttenuationLevel; }
+
+// FUNCTION: STARFLEETOP 0x00663660
+double t3DSoundProfile::vfunction15() { return f3DSoundReferenceDistance; }
+
+// FUNCTION: STARFLEETOP 0x00663670
+void t3DSoundProfile::mSet3DSoundReferenceDistance(double aDistance) { f3DSoundReferenceDistance = aDistance; }
+
+// FUNCTION: STARFLEETOP 0x00663690
+void t3DSoundProfile::mSet3DSoundCones(float anAngle, long aLevel) { f3DSoundConeAngleForNoAttenuation = anAngle; f3DSoundConeAttenuationLevel = aLevel; }

@@ -16781,115 +16781,115 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00645f60	function	twSoundPart::mSet3DListenerUnitScaleInMeters	twSoundPart	?mSet3DListenerUnitScaleInMeters@twSoundPart@@UAEEN@Z	claim		claim
 0x00645ff0	function	twSoundPart::mGetHardwareInformation	twSoundPart	?mGetHardwareInformation@twSoundPart@@UAEJJ@Z	claim		claim
 0x00646010	function	twSoundPart::mInit	twSoundPart	?mInit@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z	claim		claim
-0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes				rtti
+0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes	??1tChannelAttributes@@UAE@XZ	claim		rtti
 0x00646200	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
 0x00646220	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
-0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	mangled		mangled
-0x00646260	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXMMM@Z	mangled		mangled
+0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x00646260	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXMMM@Z	claim		mangled
 0x00646280	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
 0x006462a0	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
-0x006462c0	function	t3DListenerProfile::mGetUpDirection	t3DListenerProfile				mangled
-0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	mangled		mangled
-0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mGet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEMXZ	mangled		mangled
-0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	mangled		mangled
-0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?mGet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEJXZ	mangled		mangled
+0x006462c0	function	t3DListenerProfile::mGetUpDirection	t3DListenerProfile	?vfunction13@t3DSoundProfile@@UAEPAUtPoint3@@XZ	claim		mangled
+0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	claim		mangled
+0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?vfunction17@t3DSoundProfile@@UAEMXZ	claim		mangled
+0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	claim		mangled
+0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?vfunction19@t3DSoundProfile@@UAEJXZ	claim		mangled
 0x00646310	function	t3DSoundProfile::scalar_deleting_destructor	t3DSoundProfile				sdk
 0x00646330	function	tChannelAttributes::mSet3DSoundProfile	tChannelAttributes	?mSet3DSoundProfile@tChannelAttributes@@UAEXPAVt3DSoundProfile@@@Z	mangled		mangled
-0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
-0x00646360	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXUtPoint3@@@Z	mangled		mangled
-0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	mangled		mangled
-0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
-0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	mangled		mangled
-0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	mangled		mangled
-0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
-0x00646440	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXUtPoint3@@@Z	mangled		mangled
-0x00646460	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXMMM@Z	mangled		mangled
-0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?mSet3DSoundReferenceDistance@tChannelAttributes@@UAEXN@Z	mangled		mangled
-0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	mangled		mangled
-0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mSet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEXM@Z	mangled		mangled
-0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	mangled		mangled
-0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?mSet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEXJ@Z	mangled		mangled
-0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	mangled		mangled
-0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	mangled		mangled
-0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes				sdk
+0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?vfunction12@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x00646360	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
+0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	claim		mangled
+0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?vfunction16@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
+0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	claim		mangled
+0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?vfunction20@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x00646440	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
+0x00646460	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXMMM@Z	claim		mangled
+0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?vfunction22@tChannelAttributes@@UAEXN@Z	claim		mangled
+0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	claim		mangled
+0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?vfunction24@tChannelAttributes@@UAEXM@Z	claim		mangled
+0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	claim		mangled
+0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?vfunction26@tChannelAttributes@@UAEXJ@Z	claim		mangled
+0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	claim		mangled
+0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	claim		mangled
+0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes	??_GtChannelAttributes@@UAEPAXI@Z	claim		sdk
 0x00646570	function	tSoundChannelFormat::~tSoundChannelFormat	tSoundChannelFormat				sdk
-0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?mGetBytesPerSample@tSoundChannelFormat@@UAEJXZ	mangled		mangled
-0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?mGetBytesPerSec@tSoundChannelFormat@@UAEJXZ	mangled		mangled
-0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x006465d0	function	tSoundChannelFormat::mAreWeStatic	tSoundChannelFormat	?mAreWeStatic@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x006465e0	function	tSoundChannelFormat::mAreWeFixedFrequency	tSoundChannelFormat	?mAreWeFixedFrequency@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x006465f0	function	tSoundChannelFormat::mAreWeARecordingChannel	tSoundChannelFormat	?mAreWeARecordingChannel@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646600	function	tSoundChannelFormat::mTryToLocateInHardware	tSoundChannelFormat	?mTryToLocateInHardware@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646610	function	tSoundChannelFormat::mTryToLocateInSoftware	tSoundChannelFormat	?mTryToLocateInSoftware@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646620	function	tSoundChannelFormat::mAreWeFixedPan	tSoundChannelFormat	?mAreWeFixedPan@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646640	function	tSoundChannelFormat::mAreWeAGlobalSound	tSoundChannelFormat	?mAreWeAGlobalSound@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	mangled		mangled
-0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	mangled		mangled
-0x00646720	function	tSoundChannel::mGetAttachmentsList	tSoundChannel	?mGetAttachmentsList@tSoundChannel@@UAEPAVtSoundCommandList@@XZ	mangled		mangled
-0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAE?AW4eSoundChannelUpdateMode@@XZ	mangled		mangled
-0x00646740	function	tSoundChannel::mGetAmountThatCanBeAdded	tSoundChannel	?mGetAmountThatCanBeAdded@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646750	function	tSoundChannel::mGetFirstImmediateNonInterruptCommand	tSoundChannel	?mGetFirstImmediateNonInterruptCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	mangled		mangled
-0x00646760	function	tSoundChannel::mGetFirstImmediateCommand	tSoundChannel	?mGetFirstImmediateCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	mangled		mangled
-0x00646770	function	tSoundChannel::mGetFirstDelayedCommand	tSoundChannel	?mGetFirstDelayedCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	mangled		mangled
-0x00646780	function	tSoundChannel::mGetFrequency	tSoundChannel	?mGetFrequency@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646790	function	tSoundChannel::mGetPan	tSoundChannel	?mGetPan@tSoundChannel@@UAEJXZ	mangled		mangled
-0x006467a0	function	tSoundChannel::mGetVolume	tSoundChannel	?mGetVolume@tSoundChannel@@UAEJXZ	mangled		mangled
-0x006467b0	function	tSoundChannel::mGetChannelPriority	tSoundChannel	?mGetChannelPriority@tSoundChannel@@UAEJXZ	mangled		mangled
-0x006467c0	function	tSoundChannel::mGetChannelAttributes	tSoundChannel	?mGetChannelAttributes@tSoundChannel@@UAEPAVtChannelAttributes@@XZ	mangled		mangled
-0x006467d0	function	tSoundChannel::mGet3DSoundProfile	tSoundChannel	?mGet3DSoundProfile@tSoundChannel@@UAEPAVt3DSoundProfile@@XZ	mangled		mangled
-0x006467e0	function	tSoundChannel::mGet3DSoundPosition	tSoundChannel	?mGet3DSoundPosition@tSoundChannel@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x006467f0	function	tSoundChannel::mGet3DSoundOrientation	tSoundChannel	?mGet3DSoundOrientation@tSoundChannel@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x00646800	function	tSoundChannel::mGet3DSoundVelocity	tSoundChannel	?mGet3DSoundVelocity@tSoundChannel@@UAEPAUtPoint3@@XZ	mangled		mangled
-0x00646810	function	tSoundChannel::mGet3DSoundReferenceDistance	tSoundChannel	?mGet3DSoundReferenceDistance@tSoundChannel@@UAENXZ	mangled		mangled
-0x00646820	function	tSoundChannel::mGet3DSoundConeAngleForNoAttenuation	tSoundChannel	?mGet3DSoundConeAngleForNoAttenuation@tSoundChannel@@UAEMXZ	mangled		mangled
-0x00646830	function	tSoundChannel::mGet3DSoundConeAttenuationLevel	tSoundChannel	?mGet3DSoundConeAttenuationLevel@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646840	function	tSoundChannel::mGetSoundChannelFormat	tSoundChannel	?mGetSoundChannelFormat@tSoundChannel@@UAEPAVtSoundChannelFormat@@XZ	mangled		mangled
-0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646860	function	tSoundChannel::mGetNumChannels	tSoundChannel	?mGetNumChannels@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646870	function	tSoundChannel::mGetBytesPerSample	tSoundChannel	?mGetBytesPerSample@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646880	function	tSoundChannel::mGetBitsPerSample	tSoundChannel	?mGetBitsPerSample@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646890	function	tSoundChannel::mGetSoundType	tSoundChannel	?mGetSoundType@tSoundChannel@@UAEJXZ	mangled		mangled
-0x006468a0	function	tSoundChannel::mSetSoundType	tSoundChannel	?mSetSoundType@tSoundChannel@@UAEXJ@Z	mangled		mangled
-0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	mangled		mangled
-0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	mangled		mangled
-0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	mangled		mangled
-0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEP6AXKE@ZXZ	mangled		mangled
-0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXP6AXKE@Z@Z	mangled		mangled
-0x00646910	function	tSoundChannel::mGetNumberOfAttachments	tSoundChannel	?mGetNumberOfAttachments@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646930	function	tSoundChannel::mAreWeLooping	tSoundChannel	?mAreWeLooping@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646940	function	tSoundChannel::mAreWeStreaming	tSoundChannel	?mAreWeStreaming@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646950	function	tSoundChannel::mAreWe3D	tSoundChannel	?mAreWe3D@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646960	function	tSoundChannel::mAreWeStatic	tSoundChannel	?mAreWeStatic@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646970	function	tSoundChannel::mAreWeFixedFrequency	tSoundChannel	?mAreWeFixedFrequency@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646980	function	tSoundChannel::mAreWeARecordingChannel	tSoundChannel	?mAreWeARecordingChannel@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646990	function	tSoundChannel::mTryToLocateInHardware	tSoundChannel	?mTryToLocateInHardware@tSoundChannel@@UAEEXZ	mangled		mangled
-0x006469a0	function	tSoundChannel::mTryToLocateInSoftware	tSoundChannel	?mTryToLocateInSoftware@tSoundChannel@@UAEEXZ	mangled		mangled
-0x006469c0	function	tSoundChannel::mAreWeFixedPan	tSoundChannel	?mAreWeFixedPan@tSoundChannel@@UAEEXZ	mangled		mangled
-0x006469e0	function	tSoundChannel::mAreWeFixedVolume	tSoundChannel	?mAreWeFixedVolume@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646a00	function	tSoundChannel::mAreWeAGlobalSound	tSoundChannel	?mAreWeAGlobalSound@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646a20	function	tSoundChannel::mDoWeRetainSelections	tSoundChannel	?mDoWeRetainSelections@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646a40	function	tSoundChannel::mDoWeAutoRemoveChannel	tSoundChannel	?mDoWeAutoRemoveChannel@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646a60	function	tSoundChannel::mDoWeAutoRemoveSelections	tSoundChannel	?mDoWeAutoRemoveSelections@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	mangled		mangled
-0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	mangled		mangled
-0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	mangled		mangled
-0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	mangled		mangled
-0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXP6AXKJ@Z@Z	mangled		mangled
-0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel				sdk
-0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	mangled		mangled
-0x00646b70	function	tSoundChannel::`scalar_deleting_destructor'	tSoundChannel	??_GtSoundChannel@@UAEPAXI@Z	mangled		mangled
+0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		mangled
+0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?vfunction13@tSoundChannelFormat@@UAEJXZ	claim		mangled
+0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x006465d0	function	tSoundChannelFormat::mAreWeStatic	tSoundChannelFormat	?mAreWeStatic@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x006465e0	function	tSoundChannelFormat::mAreWeFixedFrequency	tSoundChannelFormat	?mAreWeFixedFrequency@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x006465f0	function	tSoundChannelFormat::mAreWeARecordingChannel	tSoundChannelFormat	?mAreWeARecordingChannel@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646600	function	tSoundChannelFormat::mTryToLocateInHardware	tSoundChannelFormat	?mTryToLocateInHardware@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646610	function	tSoundChannelFormat::mTryToLocateInSoftware	tSoundChannelFormat	?mTryToLocateInSoftware@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646620	function	tSoundChannelFormat::mAreWeFixedPan	tSoundChannelFormat	?mAreWeFixedPan@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646640	function	tSoundChannelFormat::mAreWeAGlobalSound	tSoundChannelFormat	?mAreWeAGlobalSound@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	claim		mangled
+0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	claim		mangled
+0x00646720	function	tSoundChannel::mGetAttachmentsList	tSoundChannel	?mGetAttachmentsList@tSoundChannel@@UAEPAVtSoundCommandList@@XZ	claim		mangled
+0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646740	function	tSoundChannel::mGetAmountThatCanBeAdded	tSoundChannel	?mGetAmountThatCanBeAdded@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646750	function	tSoundChannel::mGetFirstImmediateNonInterruptCommand	tSoundChannel	?mGetFirstImmediateNonInterruptCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
+0x00646760	function	tSoundChannel::mGetFirstImmediateCommand	tSoundChannel	?mGetFirstImmediateCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
+0x00646770	function	tSoundChannel::mGetFirstDelayedCommand	tSoundChannel	?mGetFirstDelayedCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
+0x00646780	function	tSoundChannel::mGetFrequency	tSoundChannel	?mGetFrequency@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646790	function	tSoundChannel::mGetPan	tSoundChannel	?mGetPan@tSoundChannel@@UAEJXZ	claim		mangled
+0x006467a0	function	tSoundChannel::mGetVolume	tSoundChannel	?mGetVolume@tSoundChannel@@UAEJXZ	claim		mangled
+0x006467b0	function	tSoundChannel::mGetChannelPriority	tSoundChannel	?mGetChannelPriority@tSoundChannel@@UAEJXZ	claim		mangled
+0x006467c0	function	tSoundChannel::mGetChannelAttributes	tSoundChannel	?mGetChannelAttributes@tSoundChannel@@UAEPAVtChannelAttributes@@XZ	claim		mangled
+0x006467d0	function	tSoundChannel::mGet3DSoundProfile	tSoundChannel	?mGet3DSoundProfile@tSoundChannel@@UAEPAVt3DSoundProfile@@XZ	claim		mangled
+0x006467e0	function	tSoundChannel::mGet3DSoundPosition	tSoundChannel	?mGet3DSoundPosition@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
+0x006467f0	function	tSoundChannel::mGet3DSoundOrientation	tSoundChannel	?mGet3DSoundOrientation@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646800	function	tSoundChannel::mGet3DSoundVelocity	tSoundChannel	?mGet3DSoundVelocity@tSoundChannel@@UAEPAUtPoint3@@XZ	claim		mangled
+0x00646810	function	tSoundChannel::mGet3DSoundReferenceDistance	tSoundChannel	?mGet3DSoundReferenceDistance@tSoundChannel@@UAENXZ	claim		mangled
+0x00646820	function	tSoundChannel::mGet3DSoundConeAngleForNoAttenuation	tSoundChannel	?mGet3DSoundConeAngleForNoAttenuation@tSoundChannel@@UAEMXZ	claim		mangled
+0x00646830	function	tSoundChannel::mGet3DSoundConeAttenuationLevel	tSoundChannel	?mGet3DSoundConeAttenuationLevel@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646840	function	tSoundChannel::mGetSoundChannelFormat	tSoundChannel	?mGetSoundChannelFormat@tSoundChannel@@UAEPAVtSoundChannelFormat@@XZ	claim		mangled
+0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646860	function	tSoundChannel::mGetNumChannels	tSoundChannel	?mGetNumChannels@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646870	function	tSoundChannel::mGetBytesPerSample	tSoundChannel	?mGetBytesPerSample@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646880	function	tSoundChannel::mGetBitsPerSample	tSoundChannel	?mGetBitsPerSample@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646890	function	tSoundChannel::mGetSoundType	tSoundChannel	?mGetSoundType@tSoundChannel@@UAEJXZ	claim		mangled
+0x006468a0	function	tSoundChannel::mSetSoundType	tSoundChannel	?mSetSoundType@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	claim		mangled
+0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	claim		mangled
+0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x00646910	function	tSoundChannel::mGetNumberOfAttachments	tSoundChannel	?mGetNumberOfAttachments@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646930	function	tSoundChannel::mAreWeLooping	tSoundChannel	?mAreWeLooping@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646940	function	tSoundChannel::mAreWeStreaming	tSoundChannel	?mAreWeStreaming@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646950	function	tSoundChannel::mAreWe3D	tSoundChannel	?mAreWe3D@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646960	function	tSoundChannel::mAreWeStatic	tSoundChannel	?mAreWeStatic@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646970	function	tSoundChannel::mAreWeFixedFrequency	tSoundChannel	?mAreWeFixedFrequency@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646980	function	tSoundChannel::mAreWeARecordingChannel	tSoundChannel	?mAreWeARecordingChannel@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646990	function	tSoundChannel::mTryToLocateInHardware	tSoundChannel	?mTryToLocateInHardware@tSoundChannel@@UAEEXZ	claim		mangled
+0x006469a0	function	tSoundChannel::mTryToLocateInSoftware	tSoundChannel	?mTryToLocateInSoftware@tSoundChannel@@UAEEXZ	claim		mangled
+0x006469c0	function	tSoundChannel::mAreWeFixedPan	tSoundChannel	?mAreWeFixedPan@tSoundChannel@@UAEEXZ	claim		mangled
+0x006469e0	function	tSoundChannel::mAreWeFixedVolume	tSoundChannel	?mAreWeFixedVolume@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646a00	function	tSoundChannel::mAreWeAGlobalSound	tSoundChannel	?mAreWeAGlobalSound@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646a20	function	tSoundChannel::mDoWeRetainSelections	tSoundChannel	?mDoWeRetainSelections@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646a40	function	tSoundChannel::mDoWeAutoRemoveChannel	tSoundChannel	?mDoWeAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646a60	function	tSoundChannel::mDoWeAutoRemoveSelections	tSoundChannel	?mDoWeAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
+0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	claim		mangled
+0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel	?vfunction117@tSoundChannel@@UAENXZ	claim		sdk
+0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	claim		mangled
+0x00646b70	function	tSoundChannel::`scalar_deleting_destructor'	tSoundChannel	??_GtSoundChannel@@UAEPAXI@Z	claim		mangled
 0x00646b90	function	tDynamicMemoryFreeListViaHandles::~tDynamicMemoryFreeListViaHandles	tDynamicMemoryFreeListViaHandles				rtti
 0x00646ba0	function	twStandardSoundChannel::mGetfDSBuffer	twStandardSoundChannel	?mGetfDSBuffer@twStandardSoundChannel@@UAEPAUIDirectSoundBuffer@@XZ	mangled		mangled
 0x00646bb0	function	twStandardSoundChannel::`scalar_deleting_destructor'	twStandardSoundChannel	??_GtwStandardSoundChannel@@UAEPAXI@Z	mangled		mangled
 0x00646bd0	function	twStandardSoundChannel::~twStandardSoundChannel	twStandardSoundChannel	??1twStandardSoundChannel@@UAE@XZ	mangled		mangled
-0x00646cd0	function	fn_00646cd0					none
+0x00646cd0	function	fn_00646cd0		?fn_00646cd0@@YAXXZ	claim		none
 0x00646ce0	function	AddSoundErrorDuringInterrupt		?AddSoundErrorDuringInterrupt@@YAXPBDZZ	claim		claim
 0x00646d10	function	PrintOutBufferedErrors		?PrintOutBufferedErrors@@YAXXZ	claim		claim
 0x00646d60	function	GetSilenceData		?GetSilenceData@@YAEJ@Z	claim		claim
@@ -16945,8 +16945,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0064d830	function	tSoundChannelCommand::mMakeInvalid	tSoundChannelCommand	?mMakeInvalid@tSoundChannelCommand@@UAEXXZ	claim		claim
 0x0064d840	function	tSoundChannelCommand::mMakeAvailable	tSoundChannelCommand	?mMakeAvailable@tSoundChannelCommand@@UAEXXZ	claim		claim
 0x0064d850	function	tSoundChannelCommand::mMakeUnavailable	tSoundChannelCommand	?mMakeUnavailable@tSoundChannelCommand@@UAEEXZ	claim		claim
-0x0064d860	function	fn_0064d860	tChannelAttributes	?vfunction7@tChannelAttributes@@UAEXJ@Z	claim		none
-0x0064d870	function	fn_0064d870	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		none
+0x0064d860	function	fn_0064d860	tChannelAttributes	?vfunction6@tChannelAttributes@@UAEXJ@Z	claim		none
+0x0064d870	function	fn_0064d870	tSoundChannelFormat	?vfunction11@tSoundChannelFormat@@UAEJXZ	claim		none
 0x0064d880	function	tSoundChannelCommand::mGetUserData	tSoundChannelCommand	?mGetUserData@tSoundChannelCommand@@UAEJXZ	claim		claim
 0x0064d890	function	tSoundChannel::mUpdateRegular	tSoundChannel	?mUpdateRegular@tSoundChannel@@UAEEN@Z	claim		claim
 0x0064dc40	function	tSoundChannelCommand::mSetPan	tSoundChannelCommand	?mSetPan@tSoundChannelCommand@@UAEXJ@Z	claim		claim
@@ -17186,8 +17186,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00660f90	function	tChannelGroupManagerPart::mKillRetainedMode	tChannelGroupManagerPart	?mKillRetainedMode@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fb0	function	tChannelGroupManagerPart::mClearAttachments	tChannelGroupManagerPart	?mClearAttachments@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fd0	function	tSafeArray<tChannelGroup>::`scalar_deleting_destructor'	tSafeArray<tChannelGroup>	??_G?$tSafeArray@VtChannelGroup@@@@UAEPAXI@Z	mangled		mangled
-0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart				mangled
-0x00661220	function	tAudioFileInfoPart::Test_tAudioFileInfoPart	tAudioFileInfoPart	?Test_tAudioFileInfoPart@tAudioFileInfoPart@@SAEXZ	callers		sdk
+0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart	?Test_tSoundPart@tSoundPart@@SAEXZ	claim		mangled
+0x00661220	function	tAudioFileInfoPart::Test_tAudioFileInfoPart	tAudioFileInfoPart	?Test_tAudioFileInfoPart@tAudioFileInfoPart@@SAEXZ	claim		sdk
 0x006612e0	function	tChannelGroup::mAddOwner	tChannelGroup	?mAddOwner@tChannelGroup@@UAEXXZ	mangled		mangled
 0x006612f0	function	tChannelGroup::mRemoveOwner	tChannelGroup	?mRemoveOwner@tChannelGroup@@UAEXXZ	mangled		mangled
 0x00661300	function	tClassTrackingInfo::mSet	tClassTrackingInfo	?mSet@tClassTrackingInfo@@UAEXKKJJPAJ@Z	claim		claim
@@ -17232,21 +17232,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00663250	function	tSafeArray<tClassTrackingInfo>::mGetNextItemIndex	tSafeArray<tClassTrackingInfo>	?mGetNextItemIndex@?$tSafeArray@VtClassTrackingInfo@@@@QAEKK@Z	mangled		mangled
 0x006632a0	function	tSafeArray<tClassTrackingInfo>::mGetIndexFromRealIndex	tSafeArray<tClassTrackingInfo>	?mGetIndexFromRealIndex@?$tSafeArray@VtClassTrackingInfo@@@@IAEKK@Z	mangled		mangled
 0x006632f0	function	tSafeArray<tClassTrackingInfo>::mAddMoreRoom	tSafeArray<tClassTrackingInfo>	?mAddMoreRoom@?$tSafeArray@VtClassTrackingInfo@@@@IAEXJ@Z	mangled		mangled
-0x00663590	function	tHandleList::mClear	tHandleList	?mClear@tHandleList@@UAEXXZ	mangled		mangled
-0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	mangled		mangled
+0x00663590	function	tHandleList::mClear	tHandleList	?mClear@tHandleList@@UAEXXZ	claim		mangled
+0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	claim		mangled
 0x006635b0	function	tHandleList::`scalar_deleting_destructor'	tHandleList	??_GtHandleList@@UAEPAXI@Z	mangled		mangled
 0x00663600	function	tSoundSelection::mSetDonePlaying	tSoundSelection	?mSetDonePlaying@tSoundSelection@@UAEXP6AXJ@Z@Z	mangled		mangled
 0x00663610	function	tBasicAudioFile::mGetLinkDepth	tBasicAudioFile	?mGetLinkDepth@tBasicAudioFile@@UAEJXZ	mangled		mangled
-0x00663620	function	tAudioFileClass::mSetMyHandle	tAudioFileClass	?mSetMyHandle@tAudioFileClass@@UAEXJ@Z	mangled		mangled
-0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	mangled		mangled
-0x00663640	function	tSoundChannel::mGetChannelStatus	tSoundChannel				sdk
-0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?mGet3DSoundReferenceDistance@t3DSoundProfile@@UAENXZ	mangled		mangled
-0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	mangled		mangled
-0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	mangled		mangled
+0x00663620	function	tAudioFileClass::mSetMyHandle	tAudioFileClass	?mSetMyHandle@tAudioFileClass@@UAEXJ@Z	claim		mangled
+0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	claim		mangled
+0x00663640	function	tSoundChannel::mGetChannelStatus	tSoundChannel	?vfunction52@tSoundChannel@@UAE?AW4eSoundChannelStatus@@XZ	claim		sdk
+0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?vfunction15@t3DSoundProfile@@UAENXZ	claim		mangled
+0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	claim		mangled
+0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	claim		mangled
 0x006636b0	function	t3DListenerProfile::mGetUnitScaleInMeters	t3DListenerProfile				mangled
-0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	mangled		mangled
-0x006636d0	function	tClassActiveChannelList::`scalar_deleting_destructor'	tClassActiveChannelList	??_GtClassActiveChannelList@@UAEPAXI@Z	mangled		mangled
-0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	mangled		mangled
+0x006636c0	function	tAudioFileClass::mChangeEarliestNextStartTime	tAudioFileClass	?mChangeEarliestNextStartTime@tAudioFileClass@@UAEXN@Z	claim		mangled
+0x006636d0	function	tClassActiveChannelList::`scalar_deleting_destructor'	tClassActiveChannelList	??_GtClassActiveChannelList@@UAEPAXI@Z	claim		mangled
+0x006636f0	function	tClassActiveChannelList::~tClassActiveChannelList	tClassActiveChannelList	??1tClassActiveChannelList@@UAE@XZ	claim		mangled
 0x00663720	function	mystrequivalent		?mystrequivalent@@YAEPAD0@Z	claim		claim
 0x00663780	function	mystrequivalentN		?mystrequivalentN@@YAEPAD0J@Z	claim		claim
 0x006637f0	function	tAFPlayInfo::mGetRandomFrequency	tAFPlayInfo	?mGetRandomFrequency@tAFPlayInfo@@UAEJXZ	claim		claim
@@ -17476,14 +17476,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0066eb10	function	tGFItem::GetNext	tGFItem	?GetNext@tGFItem@@UAEPAV1@XZ	mangled		mangled
 0x0066eb20	function	tSoundMemoryBlock::mGetTopHalfOfHandle	tSoundMemoryBlock	?mGetTopHalfOfHandle@tSoundMemoryBlock@@UAEGXZ	mangled		mangled
 0x0066eb30	function	tSoundMemoryBlock::mSetNextBlock	tSoundMemoryBlock	?mSetNextBlock@tSoundMemoryBlock@@UAEXJ@Z	mangled		mangled
-0x0066eb40	function	fn_0066eb40	tSoundMemoryBlock				vtable
-0x0066eb50	function	tSoundMemoryBlock::mAreWeInUse	tSoundMemoryBlock	?mAreWeInUse@tSoundMemoryBlock@@UAEEXZ	mangled		mangled
-0x0066eb60	function	tSoundMemoryBlock::mSetBlockInUse	tSoundMemoryBlock	?mSetBlockInUse@tSoundMemoryBlock@@UAEXE@Z	mangled		mangled
-0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	mangled		mangled
-0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	mangled		mangled
-0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	mangled		mangled
-0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	mangled		mangled
-0x0066ebc0	function	ReadAtInterrupt		?ReadAtInterrupt@@YAXXZ	callers		sdk
+0x0066eb40	function	fn_0066eb40	tSoundMemoryBlock	?mGetNumberOfLocks@tSoundMemoryBlock@@UAEJXZ	claim		vtable
+0x0066eb50	function	tSoundMemoryBlock::mAreWeInUse	tSoundMemoryBlock	?mAreWeInUse@tSoundMemoryBlock@@UAEEXZ	claim		mangled
+0x0066eb60	function	tSoundMemoryBlock::mSetBlockInUse	tSoundMemoryBlock	?mSetBlockInUse@tSoundMemoryBlock@@UAEXE@Z	claim		mangled
+0x0066eb70	function	tSoundMemoryBlock::mLock	tSoundMemoryBlock	?mLock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
+0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
+0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	claim		mangled
+0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	claim		mangled
+0x0066ebc0	function	ReadAtInterrupt		?fn_0066ebc0@@YAXXZ	claim		sdk
 0x0066ebd0	function	tAsynchSoundQueue::tAsynchSoundQueue	tAsynchSoundQueue	??0tAsynchSoundQueue@@QAE@XZ	claim		claim
 0x0066ec50	function	tAsynchSoundQueue::mReadNext	tAsynchSoundQueue	?mReadNext@tAsynchSoundQueue@@QAEEXZ	claim		claim
 0x0066ee80	function	tAsynchSoundQueue::mReadNextInterrupt	tAsynchSoundQueue	?mReadNextInterrupt@tAsynchSoundQueue@@QAEXXZ	claim		claim
