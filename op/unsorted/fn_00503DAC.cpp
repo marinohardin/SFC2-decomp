@@ -90,3 +90,12 @@ void* fn_00503fba()
 	}
 	return operator new(0x54);
 }
+
+// FUNCTION: STARFLEETOP 0x00503fd6
+void fn_00503fd6(char* p)
+{
+	if (p) {
+		*(char**)(p + 0x34) = g_00967484;
+		g_00967484 = p;
+	}
+}
