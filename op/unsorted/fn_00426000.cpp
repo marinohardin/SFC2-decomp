@@ -454,12 +454,11 @@ fn_00426988_Class::~fn_00426988_Class()
 		mc8 = 0;
 		mcc = 0;
 	}
-	// HYPOTHESIS: the vector's size test, written through a local count.
+	// HYPOTHESIS: the vector's size() inlined: the guard on the first pointer and the element count.
 	while (m04 != 0)
 	{
 		void** last = m08;
-		int count = last - m04;
-		if (count == 0)
+		if ((((int)last - (int)m04) >> 2) == 0)
 			break;
 		fn_00603dee(last - 1);
 	}
