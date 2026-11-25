@@ -296,6 +296,7 @@ struct fn_0042556b_element
 struct fn_0042556b_table
 {
 	fn_0042556b_table() throw();
+	~fn_0042556b_table() throw();
 
 	fn_0042556b_element* fElements;
 	int fWidth;
@@ -576,5 +577,12 @@ char fn_004255b5_class::fn_00425def(tEntity* e, tPoint3 a, tPoint3 b, float r, f
 }
 
 // HYPOTHESIS: the 10-byte function is the dynamic initializer of a global of this table type.
+// FUNCTION: STARFLEETOP 0x00425ec0
 // FUNCTION: STARFLEETOP 0x00425eb6
 fn_0042556b_table g_fn_0042556b_table;
+
+// HYPOTHESIS: the destructor at 0x00425ed6 releases the element array.
+fn_0042556b_table::~fn_0042556b_table() throw()
+{
+	operator delete(fElements);
+}
