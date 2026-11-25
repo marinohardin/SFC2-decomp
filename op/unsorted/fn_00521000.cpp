@@ -183,12 +183,15 @@ bool __stdcall fn_00521965(const float* p)
 
 // HYPOTHESIS: the classes of the owner and of the second argument are unknown; only the offsets used are known
 struct fn_0052197e_node {
-	char pad0[0x14];
+	char pad0[0xc];
+	float field_c;
+	char pad10[4];
 	float field_14;
 	float field_18;
 	char pad1c[0x10];
 	float field_2c;
-	char pad30[0xc];
+	float field_30;
+	char pad34[8];
 	int field_3c;
 };
 
@@ -230,4 +233,57 @@ float fn_0052197e_owner::fn_0052197e(float* amount, int mode, fn_0052197e_node* 
 	n->field_14 -= used;
 	*amount -= used;
 	return r;
+}
+
+extern float g_007b01ec;
+extern float g_007b01f0;
+extern float g_007b01f4;
+extern float g_007b01f8;
+extern float g_007b01fc;
+extern float g_007b0200;
+
+// FUNCTION: STARFLEETOP 0x00521a15
+float __stdcall fn_00521a15(float amount, fn_0052197e_node* n)
+{
+	float result = 0.0f;
+	float total = n->field_14;
+	float quarterA = g_007b0200 * n->field_c;
+	float partA = (total > quarterA) ? quarterA : total;
+	float left = total - partA;
+	float quarterB = g_007b01fc * n->field_c;
+	float partB = (left > quarterB) ? quarterB : left;
+	float left2 = left - partB;
+	float half = g_007b01f8 * n->field_c;
+	float rest = left2;
+	if (half < rest) {
+		rest = half;
+	}
+	if (amount > 0.0f) {
+		if (rest > 0.0f) {
+			if (amount <= rest) {
+				rest = amount;
+			}
+			result = (g_007b01ec * n->field_c / half) * rest;
+			amount = amount - rest;
+		}
+		if (amount > 0.0f) {
+			if (partB > 0.0f) {
+				float t;
+				if (amount <= partB) {
+					t = amount;
+				} else {
+					t = partB;
+				}
+				result = (g_007b01f0 * n->field_c / quarterB) * t + result;
+				amount = amount - t;
+			}
+			if (amount > 0.0f && partA > 0.0f) {
+				if (partA < amount) {
+					amount = partA;
+				}
+				result = (g_007b01f4 * n->field_c / quarterA) * amount + result;
+			}
+		}
+	}
+	return result * n->field_30;
 }
