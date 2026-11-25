@@ -7,6 +7,12 @@
 #include "Common/Timer/WinTimer.h"
 #include "unsorted/tWinClock.h"
 
+// FUNCTION: STARFLEETOP 0x0070f5a0
+tWinTimer::tWinTimer()
+	: fTimerHandle( 0 ), fpClock( new tWinClock )
+{
+}
+
 // FUNCTION: STARFLEETOP 0x0070f630
 tWinTimer::~tWinTimer()
 {
