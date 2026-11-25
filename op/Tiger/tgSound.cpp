@@ -88,6 +88,13 @@ long tSoundChannel::mGetUpdateMode() { return field_0xfc; }
 
 // FUNCTION: STARFLEETOP 0x00646740
 long tSoundChannel::mGetAmountThatCanBeAdded() { return field_0x168; }
+// FUNCTION: STARFLEETOP 0x00646750
+tSoundChannelCommand* tSoundChannel::mGetFirstImmediateNonInterruptCommand()
+{
+    // HYPOTHESIS: the original calls the list through its vtable, so through a pointer.
+    tSoundCommandList* list = &field_0xbc;
+    return (tSoundChannelCommand*)list->vfunction5();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
