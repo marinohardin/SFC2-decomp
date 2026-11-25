@@ -8337,7 +8337,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521ca0	function	tAIDesignateTargetsCalcResult::scalar_deleting_destructor	tAIDesignateTargetsCalcResult				rtti
 0x00521cbc	function	tAIDesignateTargetsCalcResult::~tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
 0x00521cfb	function	tAIDesignateTargetsCalcResult::tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
-0x00521d73	function	fn_00521d73					none
+0x00521d73	function	fn_00521d73		?fn_00521d73@tObject_00521d73@@QAEXH@Z	claim		none
 0x00521db5	function	fn_00521db5					none
 0x00521dd9	function	fn_00521dd9					none
 0x00521e11	function	fn_00521e11					none
