@@ -598,11 +598,12 @@ def compute(paths, now, text_bytes=TEXT_BYTES):
     }
 
 
-def gate(previous, report):
+def gate(previous, report, released=()):
     """Functions exact or functional in `previous` that are not at least as good in `report`.
 
     Compared by original address only, so a rename cannot hide a regression. Returns a list of
-    (address, old status, new status, old name, new name). Raises ValueError when `previous` is not
+    (address, old status, new status, old name, new name). An address in `released` (the owner's
+    list, analysis/results/released.tsv, as 0x%08x strings) is not held. Raises ValueError when `previous` is not
     a progress.json.
     """
     if not isinstance(previous, dict):
@@ -622,6 +623,8 @@ def gate(previous, report):
             if address is None:
                 raise ValueError('"%s" entry without a valid address: %r' % (status, e))
             address = fmt_address(address)
+            if address in released:
+                continue
             now_status, now_name = current.get(address, (None, ''))
             if now_status not in allowed[status]:
                 out.append((address, status, now_status or 'not replaced', e.get('name', ''), now_name))
@@ -926,6 +929,10 @@ def main(argv=None):
     ap.add_argument('--gate', type=pathlib.Path, metavar='BASE_JSON',
                     help="compare with the base branch's progress.json (not the working tree's "
                          'own, which this run would regenerate); writes nothing')
+    ap.add_argument('--released', type=pathlib.Path,
+                    default=ROOT / 'analysis/results/released.tsv',
+                    help='the owner-approved list of functions the gate does not hold '
+                         '(harness/README.md, "Released functions")')
     ap.add_argument('--build-funclet-map', type=pathlib.Path, metavar='EXE',
                     help='rebuild the funclet-to-parent table from the original exe, then stop')
     ap.add_argument('--now', help='timestamp to record (ISO 8601); default the current UTC time')
@@ -970,11 +977,23 @@ def main(argv=None):
         print('inputs absent (counted as zero): ' + ', '.join(missing))
 
     if previous is not None:
+        sys.path.insert(0, str(ROOT))
+        from harness.lib import matched
         try:
-            regressions = gate(previous, report)
+            released = matched.load_released(str(args.released))
+        except ValueError as e:
+            print('progress: %s' % e, file=sys.stderr)
+            return 2
+        try:
+            regressions = gate(previous, report, {k[2:].lower() for k in released})
         except (ValueError, AttributeError) as e:
             print('progress: %s is not a valid progress.json: %s' % (args.gate, e), file=sys.stderr)
             return 2
+        for k, (date, reason) in sorted(released.items()):
+            now = {e['address'] for s in ('exact', 'functional') for e in report.get(s, [])}
+            was = {e['address'] for s in ('exact', 'functional') for e in previous.get(s, [])}
+            if k[2:].lower() in was and k[2:].lower() not in now:
+                print('INFO released %s (%s): %s' % (k, date, reason))
         for address, old, new, old_name, new_name in regressions:
             print('REGRESSION %s: %s -> %s (was %s, now %s)'
                   % (address, old, new, old_name or '?', new_name or '?'))

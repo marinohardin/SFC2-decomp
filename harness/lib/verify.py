@@ -417,6 +417,13 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
+        base_data, used, stale = matched.release_released(
+            base_data, data, matched.load_released(paths.RELEASED))
+        for k, date, reason in used:
+            rep.add('INFO', f'{k} released from {label} ({date}): {reason}')
+        for k in stale:
+            rep.add('WARN', f'{k} is on analysis/results/released.tsv but is still exact: remove '
+                    'the row')
         base_data, misscored = matched.release_misscored(base_data, data, claimed_keys(cfg))
         for k in misscored:
             rep.add('INFO', f'{k} dropped from matched_set.json: its entry in {label} was scored '

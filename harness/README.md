@@ -225,6 +225,16 @@ Keyed by original address, so renaming or moving a function cannot hide a regres
 it improves on the recorded one (higher score, or newly exact) and nothing in the unit
 regressed. It accepts no score from its caller. The hooks deny it, and `--record`, to agents.
 
+**Released functions** (`analysis/results/released.tsv`: `address`, `date`, `reason`, one row per
+function, sorted by address). The base gate (`--base`, `scripts/check.sh`, and the progress gate in
+`scripts/progress.py`) refuses a function that lost its recorded score, its exact status or its
+claim. An address on this list is not held: the run prints one `INFO` line per listed address it
+used, with the date and reason. It releases whatever the gate would call worse for that address,
+a lowered score included. A listed address that is still exact prints a stale-row warning, so the
+list cannot rot; remove the row then. A malformed row is an error. Adding a row needs the owner's
+approval and a reason a reader can check (for a function given up so that objects link, say); it
+is not a way to pass a lane or to hide a regression, and a lane never adds one.
+
 ## Hooks (`hooks/`)
 
 `hooks/settings.fragment.json` holds two hooks for the integrator to merge into

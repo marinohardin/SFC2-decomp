@@ -149,6 +149,11 @@ base, released = matched.release_listed(base, data, matched.boundary_listed(path
                                          verify.claimed_keys())
 for k in released:
     print('released %s: on the boundary-error list and never exact in %s' % (k, label))
+base, used, stale = matched.release_released(base, data, matched.load_released(paths.RELEASED))
+for k, date, reason in used:
+    print('released %s (%s): %s' % (k, date, reason))
+for k in stale:
+    print('warning: %s is on analysis/results/released.tsv but is still exact: remove the row' % k)
 base, misscored = matched.release_misscored(base, data, verify.claimed_keys())
 for k in misscored:
     print('released %s: scored against the plain destructor, not its deleting destructor' % k)
