@@ -5212,7 +5212,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bd2f0	function	fn_004bd2f0	tListBox_News_Session				vtable
 0x004bd325	function	fn_004bd325	tListBox_News_Session				vtable
 0x004bd3f9	function	tListBox_News::tListBox_News	tListBox_News				rtti
-0x004bd431	function	fn_004bd431	tApp3dBase				vtable
+0x004bd431	function	fn_004bd431	tApp3dBase	?fn_004bd431@@YAXXZ	add		vtable
 0x004bd432	function	fn_004bd432	tListBox_News				vtable
 0x004bd43e	thunk	fn_004bd43e					none
 0x004bd443	function	fn_004bd443	tListBox_Base	?fn_004bd443@tListBox_Base@@QAEHPAVtString@@H@Z	claim		none
@@ -15303,7 +15303,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600f90	function	fn_00600f90		?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
 0x00600fba	function	fn_00600fba		?FUN_00600fba@tMedalsPanel@@QAEXH@Z	claim		none
 0x00601054	function	fn_00601054		?fn_00601054@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	add		none
-0x00601141	function	fn_00601141					none
+0x00601141	function	fn_00601141		?fn_00601141@@YAXXZ	claim		none
 0x0060114d	function	fn_0060114d					none
 0x00601159	function	fn_00601159					none
 0x00601165	function	tMedalsPanelCreator::tMedalsPanelCreator	tMedalsPanelCreator	??0tMedalsPanelCreator@@QAE@XZ	callers		rtti
