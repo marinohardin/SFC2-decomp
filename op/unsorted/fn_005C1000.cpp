@@ -106,6 +106,7 @@ public:
 	void fn_005c18d7( tMemberCallback_fn_005c18d7** out );
 	void fn_005c191b( tMemberCallback_fn_005c191b** out );
 	void fn_005c195f( tMemberCallback_fn_005c195f** out );
+	void* fn_005c19a3();
 
 	char pad00[0xd4];
 	void* m_d4;
@@ -474,4 +475,17 @@ public:
 void tMapRelayS::fn_005c195f( tMemberCallback_fn_005c195f** out )
 {
 	*out = new tMemberCallback_fn_005c195f( this, m_d4 );
+}
+
+#include "Common/Thread/Optex.h"
+
+// HYPOTHESIS: a tMapRelayS member (neighbouring address); the optex location and the
+// returned pointer's type are guesses.
+// FUNCTION: STARFLEETOP 0x005c19a3
+void* tMapRelayS::fn_005c19a3()
+{
+	tOptex* optex = (tOptex*)this;
+	optex->Enter();
+	optex->Leave();
+	return (char*)this + 0xdc;
 }
