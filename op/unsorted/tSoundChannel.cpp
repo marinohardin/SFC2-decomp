@@ -171,3 +171,13 @@ unsigned char tSoundChannel::mAutoRemoveChannel()
     mSetSoundType(mGetSoundType() + 0x1000);
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00646ac0
+unsigned char tSoundChannel::mAutoRemoveSelections()
+{
+    if ((mGetSoundType() & 0x2000) > 0) {
+        return 1;
+    }
+    mSetSoundType(mGetSoundType() + 0x2000);
+    return 1;
+}

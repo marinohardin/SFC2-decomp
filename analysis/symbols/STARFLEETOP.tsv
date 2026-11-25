@@ -16877,7 +16877,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646a40	function	tSoundChannel::mDoWeAutoRemoveChannel	tSoundChannel	?mDoWeAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646a60	function	tSoundChannel::mDoWeAutoRemoveSelections	tSoundChannel	?mDoWeAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646a80	function	tSoundChannel::mAutoRemoveChannel	tSoundChannel	?mAutoRemoveChannel@tSoundChannel@@UAEEXZ	claim		mangled
-0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	mangled		mangled
+0x00646ac0	function	tSoundChannel::mAutoRemoveSelections	tSoundChannel	?mAutoRemoveSelections@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	mangled		mangled
 0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	mangled		mangled
 0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	mangled		mangled
