@@ -49,3 +49,17 @@ int* __stdcall fn_0052090a(int* a, int* b)
     node[1] = (int)(b ? b : node);
     return node;
 }
+
+#include "unsorted/tAIData.h"
+
+// FUNCTION: STARFLEETOP 0x00520966
+tAIData::tAIData(char param_1, int param_2)
+{
+    field_4 = 0;
+    field_8 = 0;
+    field_c = 0;
+    m_10 = param_1;
+    field_14 = param_2;
+    field_18 = 0;
+    field_1c = 0;
+}
