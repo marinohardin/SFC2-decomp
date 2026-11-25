@@ -12778,7 +12778,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b352f	function	nAsyncMapProcedures::tRequestTerrainAtHex::scalar_deleting_destructor	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b354b	function	nAsyncMapProcedures::tRequestTerrainAtHex::~tRequestTerrainAtHex	nAsyncMapProcedures::tRequestTerrainAtHex				rtti
 0x005b3556	function	fn_005b3556					none
-0x005b3701	function	fn_005b3701					none
+0x005b3701	function	fn_005b3701		??0tMemberCallback_fn_005c15f3@@QAE@PAX@Z	add		none
 0x005b3825	function	nAsyncMapProcedures::tTakeCensus::scalar_deleting_destructor	nAsyncMapProcedures::tTakeCensus				rtti
 0x005b3841	function	nAsyncMapProcedures::tTakeCensus::~tTakeCensus	nAsyncMapProcedures::tTakeCensus				rtti
 0x005b38c4	function	fn_005b38c4					none
@@ -13089,7 +13089,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c1531	function	fn_005c1531		?fn_005c1531@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdateHex@@@Z	claim		none
 0x005c1574	function	fn_005c1574		?fn_005c1574@tMapRelayS@@QAEXPAPAVtMemberCallback_tChangeHexAttribute@@@Z	claim		none
 0x005c15ba	function	fn_005c15ba		?fn_005c15ba@tMapRelayS@@QAEXPAPAVtMemberCallback_tBaseTransitionVictoryPointAdjustment@@@Z	claim		none
-0x005c15f3	function	fn_005c15f3					none
+0x005c15f3	function	fn_005c15f3		?fn_005c15f3@tMapRelayS@@QAEXPAPAVtMemberCallback_fn_005c15f3@@@Z	claim		none
 0x005c1639	function	fn_005c1639					none
 0x005c167f	function	fn_005c167f					none
 0x005c16c2	function	fn_005c16c2					none

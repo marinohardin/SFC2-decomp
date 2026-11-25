@@ -60,6 +60,7 @@ class tMemberCallback_tGetHexForUpdate;
 class tMemberCallback_tUpdateHex;
 class tMemberCallback_tChangeHexAttribute;
 class tMemberCallback_tBaseTransitionVictoryPointAdjustment;
+class tMemberCallback_fn_005c15f3;
 
 class tMapRelayS {
 public:
@@ -78,6 +79,7 @@ public:
 	void fn_005c12db( tMemberCallback_tProcessMap** out );
 	void fn_005c131e( tMemberCallback_tRequestTerrainAtHex** out );
 	void fn_005c142b( tMemberCallback_tTurnBreak** out );
+	void fn_005c15f3( tMemberCallback_fn_005c15f3** out );
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -246,4 +248,17 @@ public:
 void tMapRelayS::fn_005c15ba( tMemberCallback_tBaseTransitionVictoryPointAdjustment** out )
 {
 	*out = new tMemberCallback_tBaseTransitionVictoryPointAdjustment;
+}
+
+// HYPOTHESIS: the object built at 0x005b3701; size, constructor arguments and real name unknown.
+class tMemberCallback_fn_005c15f3 {
+public:
+	tMemberCallback_fn_005c15f3( void* a );
+	char pad00[0xc0];
+};
+
+// FUNCTION: STARFLEETOP 0x005c15f3
+void tMapRelayS::fn_005c15f3( tMemberCallback_fn_005c15f3** out )
+{
+	*out = new tMemberCallback_fn_005c15f3( m_d4 );
 }
