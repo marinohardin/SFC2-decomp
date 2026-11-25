@@ -15325,7 +15325,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0060167b	function	tMessengerRelayC::scalar_deleting_destructor	tMessengerRelayC				rtti
 0x00601697	function	tMessengerRelayC::~tMessengerRelayC	tMessengerRelayC				rtti
 0x006016e0	function	fn_006016e0	tMessengerRelayC				vtable
-0x00601747	function	fn_00601747					none
+0x00601747	function	fn_00601747		?fn_00601747@fn_00601747_class@@QAEXPAPAVtMetaClientCreator@@@Z	claim		none
 0x006017d1	function	fn_006017d1					none
 0x00601804	function	fn_00601804					none
 0x0060181d	function	tMessengerRelayCreator::tMessengerRelayCreator	tMessengerRelayCreator	??0tMessengerRelayCreator@@QAE@XZ	callers		rtti

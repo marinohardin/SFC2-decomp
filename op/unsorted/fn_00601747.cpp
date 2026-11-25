@@ -1,6 +1,26 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00601747.cpp
-// Functions: 0x00601747 to 0x00601804, 3 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Thread/Optex.h"
+#include "unsorted/tMessengerRelayCreator.h"
+
+// MATCH-ONLY: the original's guard release is a bare Leave, with no flag test.
+inline tOptex::tGuard::~tGuard()
+{
+	fOptex->Leave();
+}
+
+// HYPOTHESIS: the owner is a MetaClient object with an optex at +0xb8 whose real name is unknown;
+// this unit names it after its one method.
+class fn_00601747_class
+{
+public:
+	void fn_00601747( tMetaClientCreator** result );
+
+	char		pad00[0xb8];
+	tOptex		fOptex;
+};
+
+// FUNCTION: STARFLEETOP 0x00601747
+void fn_00601747_class::fn_00601747( tMetaClientCreator** result )
+{
+	tOptex::tGuard guard( &fOptex );
+	*result = new tMessengerRelayCreator;
+}
