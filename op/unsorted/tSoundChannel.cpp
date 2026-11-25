@@ -63,3 +63,10 @@ long tSoundChannel::mGetNumberOfAttachments()
 {
     return (&field_0xec)->vfunction39();
 }
+
+// FUNCTION: STARFLEETOP 0x00646930
+iTruth tSoundChannel::mAreWeLooping()
+{
+    unsigned char looping = (mGetSoundType() & 4) > 0;
+    return looping;
+}
