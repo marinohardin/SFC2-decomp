@@ -172,6 +172,27 @@ in another (typically behind a macro the claiming unit sets) cannot be linked: a
 consumer's lifter, refuse the pair. A session gives the function one definition, the same in every
 unit (inline in the header, claimed there), and never an out-of-line variant behind a macro.
 
+**Build paths and clashing copies** (`--all` only, `report_object_clashes` in `lib/verify.py`,
+`lib/objclash.py`). Two more `ERROR` lines that fail the run (exit 2), both read from the built objects:
+
+- A data section holds a **build path**: a source path with a `.` segment (`<root>/.\<include>`, how
+  the harness joins the source root and an include path) or the checkout's own path. That is a
+  `__FILE__` the compiler expanded in an inline body that a header defines (an assert, a throw); the
+  exe never holds such a string, so a function that uses it cannot link to the exe's data. The
+  original's own paths (a drive letter and a folder of its machine, or a `#line` name) are not
+  reported. A unit that calls such a body out of line defines the header's guard macro and leaves
+  the body to its owner (`DATASTORE_OUT_OF_LINE_BUFFER_GET`, `_READ` and `_WRITE` in
+  `Common/DataStore/DataStoreBuffer.h`); the owner gives the body its original file and line with
+  `#line`.
+- A **claimed function that two objects define differently**: the same external function COMDAT in
+  more than one object with different code or relocation targets, the symbol being one a `// FUNCTION:`
+  annotation claims. A linker keeps the first copy it sees, which may not be the one that matches.
+  Equal copies are fine.
+
+Known debt is listed in `analysis/results/object_baseline.tsv` (`path<TAB>unit<TAB>symbol` and
+`copy<TAB>-<TAB>symbol` rows); a row that no longer occurs is a `WARN` asking for its removal, so the
+list only shrinks. Only the units a claim builds are read: an unclaimed unit's object is not.
+
 **Units that read a changed file.** A run for some functions (not `--all`) builds their units,
 plus every other unit with a recorded function that reads a file changed since the checkout's
 HEAD (modified, added, deleted or untracked under `op/`): the unit itself, a file it includes
