@@ -17835,7 +17835,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dc30	function	tVisGroup::~tVisGroup	tVisGroup	??1tVisGroup@@UAE@XZ	claim		rtti
 0x0067dca0	thunk	fn_0067dca0	tSeqScene				vtable
 0x0067dcb0	function	fn_0067dcb0	tSeqScene	?vfunction43@tSeqScene@@UAEXXZ	claim		vtable
-0x0067dcf0	function	fn_0067dcf0	tVisGroup				vtable
+0x0067dcf0	function	fn_0067dcf0	tVisGroup	?vfunction40@tVisGroup@@UAEXXZ	claim		vtable
 0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAH@Z	claim		vtable
 0x0067dd40	function	fn_0067dd40	tSeqScene				vtable
 0x0067dd90	function	fn_0067dd90		?fn_0067dd90@tSeqScene@@QAEXXZ	claim		none
@@ -17865,7 +17865,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067ed50	function	fn_0067ed50					none
 0x0067efb0	function	fn_0067efb0					none
 0x0067f010	function	fn_0067f010					none
-0x0067f090	function	fn_0067f090					none
+0x0067f090	function	fn_0067f090		?fn_0067f090@tMachine@@QAEXPAVtVisGroup@@HH@Z	add		none
 0x0067f400	function	fn_0067f400					none
 0x0067f450	function	fn_0067f450					none
 0x0067f490	function	tMachine::~tMachine	tMachine	??1tMachine@@UAE@XZ	add		rtti

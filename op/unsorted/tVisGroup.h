@@ -116,6 +116,7 @@ public:
 	// HYPOTHESIS: 0x0067f010 takes the group and a pointer into an event record, and answers
 	// whether the machine handled it.
 	bool fn_0067f010( tVisGroup *group, int *data );
+	void fn_0067f090( tVisGroup *group, int param_2, int param_3 );
 
 	c_tMachine_Field04	field_04;
 	int	field_54;

@@ -13,6 +13,12 @@ tVisGroup::~tVisGroup()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0067dcf0
+void tVisGroup::vfunction40()
+{
+	field_68.fn_0067f090( this, 0, 0 );
+}
+
 // FUNCTION: STARFLEETOP 0x0067dd00
 bool tVisGroup::vfunction31( int *event )
 {
