@@ -85,6 +85,9 @@ tSoundChannel::~tSoundChannel() { mSetUpdateMode((eSoundChannelUpdateMode)5); mD
 tSoundCommandList* tSoundChannel::mGetAttachmentsList() { return &field_0xec; }
 // FUNCTION: STARFLEETOP 0x00646730
 long tSoundChannel::mGetUpdateMode() { return field_0xfc; }
+
+// FUNCTION: STARFLEETOP 0x00646740
+long tSoundChannel::mGetAmountThatCanBeAdded() { return field_0x168; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
