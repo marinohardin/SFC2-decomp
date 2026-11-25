@@ -8,7 +8,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x005053ec
-void fn_005053ec()
+tFx_Pulsar* fn_005053ec()
 {
-	tFx_Pulsar* p = new tFx_Pulsar();
+	return new tFx_Pulsar();
 }
