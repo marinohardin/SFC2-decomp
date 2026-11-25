@@ -1,7 +1,9 @@
 // Common/Thread/ResourceGuard.cpp
 
 #include "Common/Thread/ResourceGuard.h"
+#include "Common/Exceptions/Validate.h"
 #include "Common/OSVersion.h"
+#include "Common/Thread/Optex.inl"
 
 // FUNCTION: STARFLEETOP 0x0070efa0
 tResourceGuard::tGuard::tGuard( tResourceGuard& resGuard )
@@ -14,6 +16,13 @@ tResourceGuard::tGuard::tGuard( tResourceGuard& resGuard )
 tResourceGuard::tGuard::~tGuard()
 {
 	fResGuard.Unguard();
+}
+
+// FUNCTION: STARFLEETOP 0x0070efd0
+tResourceGuard::tResourceGuard()
+	: fCriticalSection( tThreadState::GetCurThreadState()->DefaultThreadObjectUse() )
+	, fGuardCount( 0 )
+{
 }
 
 tResourceGuard::~tResourceGuard()
