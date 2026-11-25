@@ -15,6 +15,40 @@ tThread::tThread() :
 	fThread = _beginthreadex( NULL, 0, ThreadProc, this, 0, &fThreadID );
 }
 
+// The destructor of fStartUpGuard is inlined into ~tThread; the guards inside fWorking and
+// fAlive call the out-of-line copy.
+inline tOptex::~tOptex()
+{
+	if( fUse != tThreadState::kIgnoreThreadObject )
+	{
+		if( fUseCriticalSections && fpSharedInfo != NULL )
+		{
+			::DeleteCriticalSection( &fpSharedInfo->fCriticalSection );
+		}
+
+		if( fEvent != NULL )
+		{
+			::CloseHandle( fEvent );
+		}
+
+		if( fFileMapping == NULL )
+		{
+			delete fpSharedInfo;
+		}
+		else
+		{
+			::UnmapViewOfFile( fpSharedInfo );
+			::CloseHandle( fFileMapping );
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x006ff170
+tThread::~tThread()
+{
+	StopThread( 60000 );
+}
+
 // FUNCTION: STARFLEETOP 0x006ff6f0
 bool tThread::Working() const
 {

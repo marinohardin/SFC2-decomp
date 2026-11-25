@@ -20411,7 +20411,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006fefa0	function	fn_006fefa0					none
 0x006fefb0	function	fn_006fefb0					none
 0x006fefd0	function	tThread::tThread	tThread	??0tThread@@QAE@XZ	claim		mangled
-0x006ff170	function	tThread::~tThread	tThread	??1tThread@@QAE@XZ	mangled		mangled
+0x006ff170	function	tThread::~tThread	tThread	??1tThread@@QAE@XZ	claim		mangled
 0x006ff250	function	tThread::StartWork	tThread	?StartWork@tThread@@QAE_NPAV?$tCallback@J@@J@Z	mangled		mangled
 0x006ff4f0	function	tThread::StopThread	tThread	?StopThread@tThread@@QAEXK@Z	mangled		mangled
 0x006ff6d0	function	tThread::mSetPriority	tThread	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z	mangled		mangled
