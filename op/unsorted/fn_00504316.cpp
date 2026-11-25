@@ -42,3 +42,12 @@ void fn_00504339()
 	tFx_Probe* probe = 0;
 	probe = new tFx_Probe;
 }
+
+float fn_005050e2(float aValue);
+
+// HYPOTHESIS: the original bytes are the tail of a larger function (the call ends the range); this is the closest standalone form.
+// FUNCTION: STARFLEETOP 0x00504433
+void fn_00504433()
+{
+	fn_005050e2(64.0f);
+}
