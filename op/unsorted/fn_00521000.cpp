@@ -100,3 +100,25 @@ unsigned int __stdcall fn_00521530(unsigned int v)
 	}
 	return (v == 1) ? 0 : v;
 }
+
+#include "unsorted/fn_005717f7_vector.h"
+// HYPOTHESIS: a class of unknown name; only the two vectors destroyed here are known
+class fn_005218c3_owner {
+public:
+	~fn_005218c3_owner();
+	int field_0;
+	int field_4;
+	int field_8;
+	fn_005717f7_vector field_c;
+	int field_1c;
+	int field_20;
+	int field_24;
+	fn_005717f7_vector field_28;
+};
+
+// FUNCTION: STARFLEETOP 0x005218c3
+fn_005218c3_owner::~fn_005218c3_owner()
+{
+	// The body is empty in the original: the two vectors (field_28, then field_c) are destroyed by
+	// the compiler-generated epilogue, under the EH frame; the bytes (54) are exact without more code.
+}
