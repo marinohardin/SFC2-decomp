@@ -122,10 +122,13 @@ struct fn_00424ea9_map
 	{
 	public:
 		iterator(node* n) : fNode(n) {}
+		void fn_0052e144();
 		node* fNode;
 	};
 	iterator fn_00424f9b(iterator first, iterator last);
 	void fn_00424ea9();
+	void fn_004250ee(node* n);
+	iterator fn_0060ac82(iterator it);
 
 	char fPad[4];
 	node* fHead;
@@ -173,4 +176,24 @@ void fn_00424ee1_vector::fn_00424ee1()
 	fFirst = 0;
 	fLast = 0;
 	fEnd = 0;
+}
+
+// HYPOTHESIS: the range erase of the tree in fn_00424ea9_map; erasing everything empties the tree at once.
+// FUNCTION: STARFLEETOP 0x00424f9b
+fn_00424ea9_map::iterator fn_00424ea9_map::fn_00424f9b(iterator first, iterator last)
+{
+	if (fSize == 0 || first.fNode != fHead->left || last.fNode != fHead) {
+		while (first.fNode != last.fNode) {
+			iterator it = first;
+			first.fn_0052e144();
+			fn_0060ac82(it);
+		}
+		return first;
+	}
+	fn_004250ee(fHead->parent);
+	fHead->parent = fNil;
+	fSize = 0;
+	fHead->left = fHead;
+	fHead->right = fHead;
+	return iterator(fHead->left);
 }
