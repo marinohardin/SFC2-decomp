@@ -1554,9 +1554,9 @@
    "symbol": "??1fn_0040bdbb@@UAE@XZ",
    "unit": "unsorted/tMouseMgr_Base.cpp",
    "size": 66,
-   "score": 99.722,
-   "exact": false,
-   "recorded": "2026-11-13"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0040bdf3": {
    "name": "tSfcMouseMgr::~tSfcMouseMgr",
@@ -1590,13 +1590,13 @@
    "symbol": "?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ",
    "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
    "size": 379,
-   "score": 99.846,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0040c016": {
    "name": "FUN_0040c016",
-   "symbol": "?fn_0040c016@@YAHPAVfn_00627140_stream@@@Z",
+   "symbol": "?fn_0040c016@@YAHPAVtBasicFile@@@Z",
    "unit": "unsorted/tSfcMouseMgr_Ex.cpp",
    "size": 33,
    "score": 100.0,

@@ -172,12 +172,12 @@ address	size	symbol	source	modes	decorated
 0x0040bd70	29	tMouseMgr_Base::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest	?scalar_deleting_destructor@tMouseMgr_Base@@QAEPAV1@E@Z
 0x0040bd8d	8	tMouseMgr_Ex::tTimer::fn_0040bd8d()	unsorted/tMouseMgr_Base.cpp	vc6 guest	?fn_0040bd8d@tTimer@tMouseMgr_Ex@@UAEXXZ
 0x0040bd95	28	tMouseMgr_Ex::scalar_deleting_destructor(unsigned char)	unsorted/tMouseMgr_Base.cpp	vc6 guest	?scalar_deleting_destructor@tMouseMgr_Ex@@QAEPAV1@E@Z
-0x0040bdb1	66	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	partial	??1fn_0040bdbb@@UAE@XZ
+0x0040bdb1	66	fn_0040bdbb::~fn_0040bdbb()	unsorted/tMouseMgr_Base.cpp	vc6	??1fn_0040bdbb@@UAE@XZ
 0x0040bdf3	7	tSfcMouseMgr::~tSfcMouseMgr()	unsorted/tSfcMouseMgr.cpp	vc6	??1tSfcMouseMgr@@UAE@XZ
 0x0040bdfa	29	tSfcMouseMgr::`scalar deleting destructor'	unsorted/tSfcMouseMgr.cpp	partial	??_GtSfcMouseMgr@@UAEPAXI@Z
 0x0040be17	28	tSfcMouseMgr_Ex::`scalar deleting destructor'	unsorted/tSfcMouseMgr_Ex.cpp	vc6	??_GtSfcMouseMgr_Ex@@UAEPAXI@Z
-0x0040be9b	379	fn_0040bea5_mgr::fn_0040bea5()	unsorted/tSfcMouseMgr_Ex.cpp	partial	?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ
-0x0040c016	33	fn_0040c016(fn_00627140_stream *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040c016@@YAHPAVfn_00627140_stream@@@Z
+0x0040be9b	379	fn_0040bea5_mgr::fn_0040bea5()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ
+0x0040c016	33	fn_0040c016(tBasicFile *)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040c016@@YAHPAVtBasicFile@@@Z
 0x0040c037	44	fn_0040bea5_mgr::fn_0040c037()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040c037@fn_0040bea5_mgr@@QAEXXZ
 0x0040c063	40	fn_0040bea5_mgr::fn_0040c063(long,long,long,long,long)	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040c063@fn_0040bea5_mgr@@QAEXJJJJJ@Z
 0x0040c08b	9	fn_0040bea5_mgr::fn_0040c08b()	unsorted/tSfcMouseMgr_Ex.cpp	vc6 guest	?fn_0040c08b@fn_0040bea5_mgr@@QAEXXZ

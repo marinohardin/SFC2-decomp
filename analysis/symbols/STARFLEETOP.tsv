@@ -350,7 +350,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0040be17	function	tSfcMouseMgr_Ex::scalar_deleting_destructor	tSfcMouseMgr_Ex	??_GtSfcMouseMgr_Ex@@UAEPAXI@Z	claim		rtti
 0x0040be33	function	tSfcMouseMgr::tSfcMouseMgr	tSfcMouseMgr	??1tSfcMouseMgr_Ex@@UAE@XZ	callers		rtti
 0x0040be9b	function	fn_0040be9b	tSfcMouseMgr_Ex	?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ	claim		vtable
-0x0040c016	function	fn_0040c016		?fn_0040c016@@YAHPAVfn_00627140_stream@@@Z	claim		none
+0x0040c016	function	fn_0040c016		?fn_0040c016@@YAHPAVtBasicFile@@@Z	claim		none
 0x0040c037	function	tSfcMouseMgr_Ex::scalar_deleting_destructor	tSfcMouseMgr_Ex	?fn_0040c037@fn_0040bea5_mgr@@QAEXXZ	claim		rtti
 0x0040c063	function	fn_0040c063	tSfcMouseMgr_Ex	?fn_0040c063@fn_0040bea5_mgr@@QAEXJJJJJ@Z	claim		vtable
 0x0040c08b	function	fn_0040c08b	tSfcMouseMgr_Ex	?fn_0040c08b@fn_0040bea5_mgr@@QAEXXZ	claim		vtable
