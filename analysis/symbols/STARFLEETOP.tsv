@@ -7654,7 +7654,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00506fd8	function	fn_00506fd8					none
 0x00506fec	function	fn_00506fec					none
 0x00507018	function	fn_00507018		?fn_00507018@@YAXXZ	claim		none
-0x00507020	function	tFx_Tractor::tFx_Tractor	tFx_Tractor				rtti
+0x00507020	function	tFx_Tractor::tFx_Tractor	tFx_Tractor	??0tFx_Tractor@@QAE@XZ	add		rtti
 0x00507066	function	fn_00507066	tFx_Tractor				vtable
 0x005070fe	function	fn_005070fe	tFx_Tractor				vtable
 0x0050786e	function	fn_0050786e		?fn_0050786e@@YAPAVtFx_Tractor@@XZ	claim		none
