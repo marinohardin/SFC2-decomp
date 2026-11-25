@@ -13080,7 +13080,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c131e	function	fn_005c131e		?fn_005c131e@tMapRelayS@@QAEXPAPAVtMemberCallback_tRequestTerrainAtHex@@@Z	claim		none
 0x005c1361	function	fn_005c1361					none
 0x005c136c	function	fn_005c136c					none
-0x005c13a2	function	fn_005c13a2					none
+0x005c13a2	function	fn_005c13a2		?fn_005c13a2@tMapRelayS@@QAEXPAPAVtMemberCallback_tMoveAccepted@@@Z	claim		none
 0x005c13e8	function	fn_005c13e8					none
 0x005c142b	function	fn_005c142b					none
 0x005c1472	function	fn_005c1472					none

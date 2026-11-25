@@ -51,8 +51,11 @@ public:
 	char pad00[0x48];
 };
 
+class tMemberCallback_tMoveAccepted;
+
 class tMapRelayS {
 public:
+	void fn_005c13a2( tMemberCallback_tMoveAccepted** out );
 	void fn_005c1298( tMemberCallback_tRequestMapData** out );
 	void fn_005c120e( tMemberCallback_tInitialize** out );
 	void fn_005c11cb( nAsyncMapProcedures::tCreateBaseAIs** out );
@@ -97,4 +100,19 @@ void tMapRelayS::fn_005c12db( tMemberCallback_tProcessMap** out )
 void tMapRelayS::fn_005c131e( tMemberCallback_tRequestTerrainAtHex** out )
 {
 	*out = new tMemberCallback_tRequestTerrainAtHex( m_d4 );
+}
+
+// HYPOTHESIS: the object built at 0x005adf3c (the symbol table calls it
+// tMemberCallback<nAsyncMapProcedures::tMoveAccepted, nDataStore::tBuffer const*>); one-argument
+// constructor, size unknown. Real name and header unknown.
+class tMemberCallback_tMoveAccepted {
+public:
+	tMemberCallback_tMoveAccepted( void* a );
+	char pad00[0xc0];
+};
+
+// FUNCTION: STARFLEETOP 0x005c13a2
+void tMapRelayS::fn_005c13a2( tMemberCallback_tMoveAccepted** out )
+{
+	*out = new tMemberCallback_tMoveAccepted( m_d4 );
 }
