@@ -32,7 +32,7 @@ protected:
 	static void __stdcall WinTimerCallback( unsigned int timerId, unsigned int msg, int32u user, int32u dw1, int32u dw2 );
 
 // Fields
-	unsigned int	fTimerID;	// 0x28, the multimedia timer's id, 0 when none
+	unsigned int	fTimerHandle;	// 0x28, the multimedia timer's id, 0 when none
 	tClock*			fpClock;	// 0x2c, a tWinClock the timer owns
 };
 

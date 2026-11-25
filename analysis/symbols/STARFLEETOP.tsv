@@ -20724,7 +20724,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070f610	function	tWinTimer::`scalar_deleting_destructor'	tWinTimer	??_GtWinTimer@@UAEPAXI@Z	mangled		mangled
 0x0070f630	function	tWinTimer::~tWinTimer	tWinTimer	??1tWinTimer@@UAE@XZ	claim		mangled
 0x0070f6a0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAVtTimerHandler@@@Z	mangled		mangled
-0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	mangled		mangled
+0x0070f730	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKP6AXPAVtTimer@@K@ZK@Z	claim		mangled
 0x0070f7c0	function	tWinTimer::StartTimer	tWinTimer	?StartTimer@tWinTimer@@UAEXKKPAV?$tCallback@K@@K@Z	mangled		mangled
 0x0070f860	function	tWinTimer::ChangeTiming	tWinTimer	?ChangeTiming@tWinTimer@@UAEXKK@Z	mangled		mangled
 0x0070f900	function	tWinTimer::StopTimer	tWinTimer	?StopTimer@tWinTimer@@UAEXXZ	mangled		mangled
