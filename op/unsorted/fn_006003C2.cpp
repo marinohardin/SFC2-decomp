@@ -7,3 +7,12 @@ char* fn_006003c2()
 {
 	return g_00c39e48;
 }
+
+// HYPOTHESIS: same string object as above (defined in fn_00600208.cpp); only its address is used.
+extern char g_00c39e30[];
+
+// FUNCTION: STARFLEETOP 0x006003c8
+char* fn_006003c8()
+{
+	return g_00c39e30;
+}
