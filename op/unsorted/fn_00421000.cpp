@@ -13,3 +13,19 @@ tEntity_DirectFire* fn_00421740()
 {
 	return new tEntity_DirectFire;
 }
+
+// HYPOTHESIS: tEntity_PPDFire has no header yet; this small declaration only serves the
+// factory below.
+class tEntity_PPDFire
+{
+public:
+	tEntity_PPDFire();
+
+	char	pad00[0x2b8];
+};
+
+// FUNCTION: STARFLEETOP 0x00421775
+tEntity_PPDFire* fn_00421775()
+{
+	return new tEntity_PPDFire;
+}
