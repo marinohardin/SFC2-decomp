@@ -14,15 +14,11 @@ struct fn_0052203a_vector {
 // FUNCTION: STARFLEETOP 0x0052203a
 void fn_0052203a_vector::fn_0052203a(int* pos)
 {
-	int* end = field_8;
-	if (pos + 2 != end) {
-		int* src = pos + 2;
-		do {
-			pos[0] = src[0];
-			pos[1] = src[1];
-			pos += 2;
-			src += 2;
-		} while (src != end);
-	}
-	field_8 -= 2;
+	struct Elem { int a; int b; };
+	Elem* dest = (Elem*)pos;
+	Elem* last = (Elem*)field_8;
+	for (Elem* first = dest + 1; first != last; ++first, ++dest)
+		*dest = *first;
+	pos = (int*)(last = (Elem*)field_8 - 1);
+	field_8 = (int*)last;
 }
