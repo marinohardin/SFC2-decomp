@@ -14,6 +14,8 @@
 
 class tSoundChannel;
 class tSoundChannelCommand;
+// HYPOTHESIS: the original's name for this function pointer type is not known.
+typedef void (*tUpdateSoundPositionFunction)(unsigned long, long);
 class tSoundSelection;
 class tInitSoundPartInfo;
 class fn_0064fd10_Array;
@@ -298,7 +300,7 @@ public:
     virtual void mSet3DSoundConeAttenuationLevel(long level);
     virtual long mGetUserPositionContext();
     virtual void mSetUserPositionContext(long context);
-    virtual long vfunction50();
+    virtual tUpdateSoundPositionFunction mGetUpdateSoundPositionFunction();
     virtual void mSetUpdateSoundPositionFunction(void (*function)(unsigned long, long));
     virtual double mGetMillisecondsBetweenUpdates();
     virtual void mSetMillisecondsBetweenUpdates(double milliseconds);
@@ -476,7 +478,7 @@ public:
     virtual unsigned char mSet3DSoundProfile(t3DSoundProfile* profile) = 0;
     virtual long mGetUserPositionContext();
     virtual void mSetUserPositionContext(long context);
-    virtual void mGetUpdateSoundPositionFunction();
+    virtual tUpdateSoundPositionFunction mGetUpdateSoundPositionFunction();
     virtual void mSetUpdateSoundPositionFunction(long function);
     virtual void vfunction116();
     virtual void mSetMillisecondsBetweenUpdates(double milliseconds);

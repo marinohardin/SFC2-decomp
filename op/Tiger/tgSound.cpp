@@ -942,7 +942,7 @@ void tSoundChannelCommand::mDump()
     case 20:
     {
         long userData = mGetUserPositionContext();
-        long function = vfunction50();
+        long function = (long)mGetUpdateSoundPositionFunction();
         SOUND_ERROR(("    UpdateSoundPositionFunction=%ld, UserData = %ld", function, userData)); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
         break;
     }
@@ -2813,7 +2813,7 @@ iTruth tSoundChannel::mDoCommand(tSoundChannelCommand* command)
         return kTrue;
     }
     case 20:
-        mSetUpdateSoundPositionFunction(command->vfunction50());
+        mSetUpdateSoundPositionFunction((long)command->mGetUpdateSoundPositionFunction());
         mSetUserPositionContext(command->mGetUserPositionContext());
         return kTrue;
     case 21:
