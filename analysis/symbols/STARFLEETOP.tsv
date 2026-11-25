@@ -7562,7 +7562,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00503efa	function	fn_00503efa	tProbeCell				vtable
 0x00503f01	function	fn_00503f01	tProbeCell				vtable
 0x00503f05	function	fn_00503f05	tProbeCell				vtable
-0x00503fba	function	fn_00503fba					none
+0x00503fba	function	fn_00503fba		?fn_00503fba@@YAPAXXZ	claim		none
 0x00503fd6	function	fn_00503fd6					none
 0x00503fed	function	fn_00503fed					none
 0x00504078	function	fn_00504078	t3DVisual				vtable

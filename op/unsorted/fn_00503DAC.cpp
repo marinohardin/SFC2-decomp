@@ -76,3 +76,17 @@ float fn_00503ef3()
 {
 	return 0.25f;
 }
+
+// HYPOTHESIS: a free-list allocator for 0x54-byte effect objects; the next link sits at +0x34.
+extern char* g_00967484;
+
+// FUNCTION: STARFLEETOP 0x00503fba
+void* fn_00503fba()
+{
+	char* p = g_00967484;
+	if (p) {
+		g_00967484 = *(char**)(p + 0x34);
+		return p;
+	}
+	return operator new(0x54);
+}
