@@ -17,3 +17,10 @@ void tSeqScene::fn_0067dd90()
 {
 	field_EC &= ~1;
 }
+
+// FUNCTION: STARFLEETOP 0x0067dde0
+void tSeqScene::fn_0067dde0()
+{
+	field_EC |= 1;
+	field_F0 = field_E0;
+}
