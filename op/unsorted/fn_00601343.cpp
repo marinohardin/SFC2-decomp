@@ -1,6 +1,22 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00601343.cpp
-// Functions: 0x00601343 to 0x00601650, 6 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <sstream>
+#include <string>
+
+// HYPOTHESIS: the object 0x00607d61 returns is the class the symbol table calls fn_0060a54d_class,
+// which other units already declare locally; no shared header exists yet, so this unit names it
+// after its one method.
+class fn_0060a4b8_class
+{
+public:
+	void fn_0060a4b8( const std::string& str, int param_2 );
+};
+
+fn_0060a4b8_class* fn_00607d61();
+std::ostream& __cdecl fn_00404e8a( std::ostream& os, const std::string& str );
+
+// FUNCTION: STARFLEETOP 0x00601498
+void __stdcall fn_00601498( const std::string& param_1, int param_2 )
+{
+	std::stringstream stream;
+	fn_00404e8a( stream << "*** ", param_1 ) << " ***";
+	fn_00607d61()->fn_0060a4b8( stream.str(), param_2 );
+}
