@@ -106,3 +106,28 @@ void tResourceGuard::Guard()
 	fCriticalSection.Enter();
 	++fGuardCount;
 }
+
+inline void tOptex::Leave()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections) {
+			::LeaveCriticalSection(&fpSharedInfo->fCriticalSection);
+		} else {
+			--fpSharedInfo->fRecurseCount;
+			if (fpSharedInfo->fRecurseCount > 0) {
+				::InterlockedDecrement(&fpSharedInfo->fLockCount);
+			} else {
+				fpSharedInfo->fThreadId = 0;
+				if (::InterlockedDecrement(&fpSharedInfo->fLockCount) > 0)
+					::SetEvent(fEvent);
+			}
+		}
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0070f260
+void tResourceGuard::Unguard()
+{
+	--fGuardCount;
+	fCriticalSection.Leave();
+}
