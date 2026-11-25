@@ -3524,7 +3524,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046acd5	function	fn_0046acd5		?fn_0046acd5@@YAXPAD@Z	claim		none
 0x0046ad4d	function	fn_0046ad4d	tGameState	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z	claim		vtable
 0x0046ad61	function	fn_0046ad61					none
-0x0046ad85	function	fn_0046ad85					none
+0x0046ad85	function	fn_0046ad85		?insert@?$list@HV?$allocator@H@std@@@std@@QAE?AViterator@12@V312@ABH@Z	add		none
 0x0046adf5	function	fn_0046adf5	tState_HotKeys				vtable
 0x0046adfb	function	fn_0046adfb	tState_HotKeys				vtable
 0x0046b0f7	function	fn_0046b0f7					none
@@ -5111,7 +5111,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b85f1	function	fn_004b85f1					none
 0x004b900a	function	fn_004b900a					none
 0x004b915b	function	fn_004b915b					none
-0x004b94dc	function	fn_004b94dc					none
+0x004b94dc	function	fn_004b94dc		?fn_004b94dc@@YIHPAX@Z	add		none
 0x004b94e3	function	fn_004b94e3					none
 0x004b97cc	function	fn_004b97cc					none
 0x004b99a4	function	fn_004b99a4					none
@@ -8193,7 +8193,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051bfce	function	fn_0051bfce					none
 0x0051bfdc	function	fn_0051bfdc					none
 0x0051c18a	function	fn_0051c18a					none
-0x0051c1e1	function	fn_0051c1e1					none
+0x0051c1e1	function	fn_0051c1e1		?fn_0051c1e1@tAIAdmiral@@QAEXPAX@Z	add		none
 0x0051c1f3	function	fn_0051c1f3					none
 0x0051c210	function	fn_0051c210					none
 0x0051c257	function	fn_0051c257					none
@@ -8204,7 +8204,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051c5f2	function	fn_0051c5f2					none
 0x0051c668	function	fn_0051c668					none
 0x0051c6fc	function	fn_0051c6fc					none
-0x0051c76f	function	fn_0051c76f					none
+0x0051c76f	function	fn_0051c76f		?fn_0051c76f@tAIAdmiral@@QAEXHH@Z	add		none
 0x0051c7af	function	fn_0051c7af					none
 0x0051c7e3	function	fn_0051c7e3					none
 0x0051c81f	function	fn_0051c81f					none
