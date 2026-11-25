@@ -13086,7 +13086,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c1472	function	fn_005c1472		?fn_005c1472@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetStartLocation@@@Z	claim		none
 0x005c14b5	function	fn_005c14b5		?fn_005c14b5@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHex@@@Z	claim		none
 0x005c14f8	function	fn_005c14f8		?fn_005c14f8@tMapRelayS@@QAEXPAPAVtMemberCallback_tGetHexForUpdate@@@Z	claim		none
-0x005c1531	function	fn_005c1531					none
+0x005c1531	function	fn_005c1531		?fn_005c1531@tMapRelayS@@QAEXPAPAVtMemberCallback_tUpdateHex@@@Z	claim		none
 0x005c1574	function	fn_005c1574					none
 0x005c15ba	function	fn_005c15ba					none
 0x005c15f3	function	fn_005c15f3					none
