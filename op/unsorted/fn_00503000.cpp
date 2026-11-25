@@ -1,6 +1,16 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00503000.cpp
-// Functions: 0x005032f7 to 0x00503354, 2 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/fn_0040ce21_type.h"
+
+// HYPOTHESIS: tFx_PPDWave has no header yet (see layout notes); 0x48 bytes from the new below.
+class tFx_PPDWave
+{
+public:
+	tFx_PPDWave();
+	char pad00[0x48];
+};
+
+// FUNCTION: STARFLEETOP 0x005032f7
+tFx_PPDWave* fn_005032f7()
+{
+	static fn_0040ce21_type marker("Let's haul it!");
+	return new tFx_PPDWave;
+}
