@@ -11,3 +11,9 @@ long tSoundChannel::mGetBitsPerSample()
 {
     return field_0x10.vfunction9();
 }
+
+// FUNCTION: STARFLEETOP 0x00646890
+long tSoundChannel::mGetSoundType()
+{
+    return field_0x10.vfunction11();
+}
