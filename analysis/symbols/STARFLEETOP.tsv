@@ -16817,7 +16817,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes	??_GtChannelAttributes@@UAEPAXI@Z	claim		sdk
 0x00646570	function	tSoundChannelFormat::~tSoundChannelFormat	tSoundChannelFormat				sdk
 0x00646580	function	tSoundChannelFormat::mGetBytesPerSample	tSoundChannelFormat	?vfunction12@tSoundChannelFormat@@UAEJXZ	claim		mangled
-0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?mGetBytesPerSec@tSoundChannelFormat@@UAEJXZ	mangled		mangled
+0x00646590	function	tSoundChannelFormat::mGetBytesPerSec	tSoundChannelFormat	?vfunction13@tSoundChannelFormat@@UAEJXZ	claim		mangled
 0x006465a0	function	tSoundChannelFormat::mAreWeLooping	tSoundChannelFormat	?mAreWeLooping@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x006465b0	function	tSoundChannelFormat::mAreWeStreaming	tSoundChannelFormat	?mAreWeStreaming@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x006465c0	function	tSoundChannelFormat::mAreWe3D	tSoundChannelFormat	?mAreWe3D@tSoundChannelFormat@@UAEEXZ	mangled		mangled

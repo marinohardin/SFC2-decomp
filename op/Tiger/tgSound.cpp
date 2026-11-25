@@ -52,6 +52,8 @@ long tChannelAttributes::mGet3DSoundConeAttenuationLevel() { return (&m3DSoundPr
 void tChannelAttributes::mSet3DSoundCones(float anAngle, long aLevel) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); profile->mSet3DSoundConeAttenuationLevel(aLevel); }
 // FUNCTION: STARFLEETOP 0x00646580
 long tSoundChannelFormat::vfunction12() { return ((fBitsPerSample + 7) >> 3) * fNumChannels; }
+// FUNCTION: STARFLEETOP 0x00646590
+long tSoundChannelFormat::vfunction13() { return vfunction12() * fSamplesPerSec; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
