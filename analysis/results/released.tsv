@@ -1,0 +1,2 @@
+address	date	reason
+0x00427366	2026-11-24	Its unit defined nDataStore::tStreamable's destructor a second time, which no link accepts; the single definition stays at 0x006f8ed0.

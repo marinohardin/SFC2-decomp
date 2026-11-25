@@ -136,6 +136,7 @@ def run(tmp_path, game, csv, *extra):
     return manifest.main(['--game', str(game), '--functions', str(csv),
                           '--matched', str(tmp_path / 'matched.json'),
                           '--manifest', str(tmp_path / 'out' / 'manifest.tsv'),
+                          '--symbols', str(tmp_path / 'symbols.tsv'),
                           '--override', str(tmp_path / 'out' / 'override.cpp'), *extra])
 
 
@@ -143,12 +144,34 @@ def test_manifest_lists_every_claim_in_address_order_with_size_and_modes(tmp_pat
     game, csv = make_tree(tmp_path)
     assert run(tmp_path, game, csv) == 0
     assert (tmp_path / 'out' / 'manifest.tsv').read_text() == (
-        'address\tsize\tsymbol\tsource\tmodes\n'
-        '0x00401000\t24\ttTestShip::mSpeed() const\tTest/TestShip.cpp\tvc6 guest\n'
-        '0x00401100\t16\ttTestShip::Instance()\tTest/TestShip.cpp\tvc6 guest\n'
-        '0x00401200\t40\ttTestShip::mFire(int32,const char*)\tTest/TestShip.cpp\tstub\n'
-        '0x00401300\t52\ttTestShip::mHull(const tTestShip&) const\tTest/TestShip.cpp\tvc6 guest\n'
-        '0x00401400\t8\tTestRound(int32)\tTest/TestShip.cpp\tvc6 guest\n')
+        'address\tsize\tsymbol\tsource\tmodes\tdecorated\n'
+        '0x00401000\t24\ttTestShip::mSpeed() const\tTest/TestShip.cpp\tvc6 guest\t\n'
+        '0x00401100\t16\ttTestShip::Instance()\tTest/TestShip.cpp\tvc6 guest\t\n'
+        '0x00401200\t40\ttTestShip::mFire(int32,const char*)\tTest/TestShip.cpp\tstub\t\n'
+        '0x00401300\t52\ttTestShip::mHull(const tTestShip&) const\tTest/TestShip.cpp\tvc6 guest\t\n'
+        '0x00401400\t8\tTestRound(int32)\tTest/TestShip.cpp\tvc6 guest\t\n')
+
+
+SYMBOLS = ('address\tkind\tname\tclass\tsymbol\tsymbol_evidence\tdeclaration\tevidence\n'
+           '0x00401000\tfunction\ttTestShip::mSpeed\ttTestShip\t?mSpeed@tTestShip@@UBEHXZ\tclaim\t\tclaim\n'
+           '0x00401100\tfunction\ttTestShip::Instance\ttTestShip\t?Instance@tTestShip@@SAPAV1@XZ\tmangled\t\tmangled\n'
+           '0x00401300\tfunction\ttTestShip::mHull\ttTestShip\t\t\t\tnone\n'
+           '0x00409000\tfunction\ttOther::mGone\ttOther\t?mGone@tOther@@QAEXXZ\tclaim\t\tclaim\n')
+
+
+def test_the_decorated_column_is_the_symbol_tables_claim_row_and_empty_otherwise(tmp_path):
+    game, csv = make_tree(tmp_path)
+    (tmp_path / 'symbols.tsv').write_text(SYMBOLS)
+    assert run(tmp_path, game, csv) == 0
+    rows = {l.split('\t')[0]: l.split('\t') for l in
+            (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
+    # A claim row fills it; a mangled-evidence row, a row without a symbol and an address with
+    # no row stay empty; a claim row for an address nothing claims adds no manifest row.
+    assert {a: r[5] for a, r in rows.items()} == {
+        '0x00401000': '?mSpeed@tTestShip@@UBEHXZ', '0x00401100': '', '0x00401200': '',
+        '0x00401300': '', '0x00401400': ''}
+    assert rows['0x00401000'][:5] == ['0x00401000', '24', 'tTestShip::mSpeed() const',
+                                      'Test/TestShip.cpp', 'vc6 guest']
 
 
 def test_override_has_an_entry_point_per_guest_function_with_its_calling_convention(tmp_path):
@@ -333,8 +356,8 @@ def test_constructors_and_destructors_have_no_guest_entry_point(tmp_path):
                          '00401600,12,tTestShip::~tTestShip,,,default,,,,0,,function,\n')
     assert run(tmp_path, game, csv) == 0
     rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
-    assert rows['0x00401500'][2:] == ['tTestShip::tTestShip()', 'Test/TestShip.cpp', 'vc6']
-    assert rows['0x00401600'][2:] == ['tTestShip::~tTestShip()', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401500'][2:5] == ['tTestShip::tTestShip()', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401600'][2:5] == ['tTestShip::~tTestShip()', 'Test/TestShip.cpp', 'vc6']
     assert rows['0x00401000'][4] == 'vc6 guest'
     text = (tmp_path / 'out' / 'override.cpp').read_text()
     assert 'sub_00401500' not in text and 'sub_00401600' not in text
@@ -353,7 +376,7 @@ def test_an_annotated_part_binding_claims_its_search_member(tmp_path):
     csv.write_text(CSV + '00401500,117,tTestShip::Search_tTestShip,,,default,,,,0,,function,\n')
     assert run(tmp_path, game, csv) == 0
     rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
-    assert rows['0x00401500'][1:] == ['117', 'tTestShip::Search_tTestShip()', 'Test/TestShip.cpp', 'vc6 guest']
+    assert rows['0x00401500'][1:5] == ['117', 'tTestShip::Search_tTestShip()', 'Test/TestShip.cpp', 'vc6 guest']
     text = (tmp_path / 'out' / 'override.cpp').read_text()
     assert 'static_cast< tTestShip * (*)() >( &tTestShip::Search_tTestShip )' in text
     _, classes = manifest.scan(str(game))
@@ -439,9 +462,9 @@ def test_an_annotated_global_claims_the_functions_vc6_generates_from_it(tmp_path
     csv.write_text(GLOBAL_CSV)
     assert run(tmp_path, game, csv) == 0
     rows = {l.split('\t')[0]: l.split('\t') for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
-    assert rows['0x00401500'][1:] == ['18', 'g_testShip (dynamic initializer)', 'Test/TestShip.cpp', 'vc6']
-    assert rows['0x00401600'][1:] == ['12', 'g_testShip (atexit registration)', 'Test/TestShip.cpp', 'vc6']
-    assert rows['0x00401700'][1:] == ['20', 'g_testShip (atexit destructor)', 'Test/TestShip.cpp', 'partial']
+    assert rows['0x00401500'][1:5] == ['18', 'g_testShip (dynamic initializer)', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401600'][1:5] == ['12', 'g_testShip (atexit registration)', 'Test/TestShip.cpp', 'vc6']
+    assert rows['0x00401700'][1:5] == ['20', 'g_testShip (atexit destructor)', 'Test/TestShip.cpp', 'partial']
     text = (tmp_path / 'out' / 'override.cpp').read_text()
     for a in ('00401500', '00401600', '00401700'):
         assert 'sub_%s' % a not in text and '0x%su' % a not in text
@@ -532,7 +555,7 @@ DELETING_CSV = CSV + ('00401500,28,tTestShip::scalar_deleting_destructor,,,rtti-
 
 
 def manifest_rows(tmp_path):
-    return {l.split('\t')[0]: l.split('\t')[1:]
+    return {l.split('\t')[0]: l.split('\t')[1:5]
             for l in (tmp_path / 'out' / 'manifest.tsv').read_text().splitlines()[1:]}
 
 

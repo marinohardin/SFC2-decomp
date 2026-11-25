@@ -4,7 +4,8 @@
 Scans `op/` for the annotations `harness/SRC_LAYOUT.md` defines and writes:
 
 - `op/manifest.tsv`: one row per claimed address: address, size (from
-  `ghidra/exports/functions.csv`), symbol, source file, compile modes (DESIGN §7.2).
+  `ghidra/exports/functions.csv`), symbol, source file, compile modes (DESIGN §7.2), and the
+  decorated symbol the claim compiles to (the symbol table's `claim` row; empty when it has none).
   `// FUNCTION:` claims a function for both modes, `vc6 guest`, once
   `analysis/results/matched_set.json` records it exact; until then it is `partial`: kept in op/
   and scored, but its lifted body stays in the native build. A unit may mix the two: /O1 puts each
@@ -101,7 +102,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
-from harness.lib import claims, deleting  # noqa: E402  (the one rule for each claim form)
+from harness.lib import claims, deleting, paths, symtab  # noqa: E402  (the one rule for each claim form)
 GAME = os.path.join(REPO, 'op')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 # HARNESS_MATCHED_SET is a grind lane's own copy (harness/README.md, "Lanes commit source only"):
@@ -112,7 +113,7 @@ MANIFEST = os.path.join(GAME, 'manifest.tsv')
 
 MODULE = 'STARFLEETOP'
 SOURCES = ('.cpp', '.c', '.h', '.inl')
-COLUMNS = ('address', 'size', 'symbol', 'source', 'modes')
+COLUMNS = ('address', 'size', 'symbol', 'source', 'modes', 'decorated')
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
 CLASS = re.compile(r'^\s*(?:class|struct)\s+(\w+(?:::\w+)*)\s*(?::(?!:)\s*(.*?))?\s*(\{)?\s*$')
 # A class opened on the line that opens its namespace, after the close of the class above:
@@ -643,10 +644,18 @@ def build(game, functions_csv, matched_json=MATCHED, units_tsv=None):
     return functions, classes
 
 
-def manifest_text(functions):
+def decorated_symbols(table):
+    """{address 0x...: decorated symbol} of the symbol table's `claim` rows: what the claiming unit
+    compiled. A row of another evidence (a guess from functions.csv or the callers) is not one."""
+    return {a: sym for a, (sym, evidence) in table.items() if evidence == 'claim'}
+
+
+def manifest_text(functions, decorated=None):
+    decorated = decorated or {}
     out = ['\t'.join(COLUMNS)]
     for f in functions:
-        out.append('\t'.join(['0x%08x' % f['address'], f['size'], symbol_of(f), f['file'], f['modes']]))
+        out.append('\t'.join(['0x%08x' % f['address'], f['size'], symbol_of(f), f['file'], f['modes'],
+                               decorated.get('0x%08x' % f['address'], '')]))
     return '\n'.join(out) + '\n'
 
 
@@ -751,6 +760,8 @@ def main(argv=None):
     ap.add_argument('--matched', default=MATCHED)
     ap.add_argument('--units', default=None, help='the unit map (default: UNITS.tsv in --game)')
     ap.add_argument('--manifest', default=MANIFEST)
+    ap.add_argument('--symbols', default=None,
+                    help='the symbol table (default: analysis/symbols/STARFLEETOP.tsv)')
     ap.add_argument('--override', default=None,
                     help="also write the native build's override table (the port's path)")
     ap.add_argument('--only-override', action='store_true',
@@ -759,8 +770,9 @@ def main(argv=None):
     args = ap.parse_args(argv)
     try:
         functions, classes = build(args.game, args.functions, args.matched, args.units)
-        manifest, override = manifest_text(functions), override_text(functions, classes)
-    except ManifestError as e:
+        decorated = decorated_symbols(symtab.load_table(args.symbols or paths.SYMBOL_TABLE))
+        manifest, override = manifest_text(functions, decorated), override_text(functions, classes)
+    except (ManifestError, symtab.TableError) as e:
         print('manifest: %s' % e, file=sys.stderr)
         return 2
     if args.only_override and not args.override:
