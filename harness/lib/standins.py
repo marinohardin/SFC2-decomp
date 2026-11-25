@@ -169,17 +169,17 @@ def tree_declarations(repo=None, subdir='op'):
     return found
 
 
-def load_allowed(state=None):
-    """{name: (address, reason)} the lane state accepts."""
-    out = {}
+def _rows(path):
     try:
-        with open(state or state_file('standins.tsv'), newline='') as f:
-            for row in csv.reader(f, delimiter='\t'):
-                if len(row) >= 3:
-                    out[row[0]] = (row[1], row[2])
+        with open(path, newline='') as f:
+            return [r for r in csv.reader(f, delimiter='\t') if len(r) >= 3]
     except OSError:
-        pass
-    return out
+        return []
+
+
+def load_allowed(state=None):
+    """{name: (address, reason)} the lane state accepts; the newest record of a name wins."""
+    return {r[0]: (r[1], r[2]) for r in _rows(state or state_file('standins.tsv'))}
 
 
 def findings(repo=None, base=None, known=None, allowed=None, environ=None):
@@ -217,8 +217,10 @@ def record(text, state=None, header_state=None):
     """Keep the allowances and header requests of a final message in the lane state; returns the
     allowances that were new."""
     state = state or state_file('standins.tsv')
-    have = load_allowed(state)
-    new = [a for a in allowances_in(text) if a[0] not in have]
+    seen = set()
+    for row in _rows(state):
+        seen.add(tuple(row[:3]))
+    new = [a for a in dict.fromkeys(allowances_in(text)) if a not in seen]
     if new:
         os.makedirs(os.path.dirname(state), exist_ok=True)
         with open(state, 'a', newline='') as f:
@@ -269,18 +271,19 @@ def last_message(payload):
 
 # --- the whole-tree check and the landing report ---------------------------------------------
 
-def check_lines(told=(), **kw):
-    """The refusal for wholetree: a header line, the findings not already told, the advice. None
+def check_report(told=(), **kw):
+    """(lines, names) of the refusal for wholetree: the lines are a header, the findings not
+    already told and the advice; names are exactly the ones whose line is in them. (None, [])
     when there is nothing to say. `told`: names a refusal already named once."""
     found = [f for f in findings(**kw) if f[0] not in set(told)]
     if not found:
-        return None
-    return ['new stand-in classes (not in the base, not in the symbol table):'] + \
-        lines_of(found) + ADVICE.splitlines()
+        return None, []
+    return (['new stand-in classes (not in the base, not in the symbol table):'] +
+            lines_of(found) + ADVICE.splitlines(), [f[0] for f in found])
 
 
-def pending_names(**kw):
-    return [f[0] for f in findings(**kw)]
+def check_lines(told=(), **kw):
+    return check_report(told, **kw)[0]
 
 
 def landing_lines(base, repo=None):
@@ -299,12 +302,21 @@ def landing_lines(base, repo=None):
     return out
 
 
+USAGE = 'usage: standins.py [--base REF] | --report [--base REF] | --record FILE'
+
+
 def main(argv=None):
     a = list(sys.argv[1:] if argv is None else argv)
     base = None
     if '--base' in a:
         i = a.index('--base')
+        if i + 1 >= len(a) or a[i + 1].startswith('--'):
+            print(USAGE, file=sys.stderr)
+            return 2
         base = a[i + 1]
+    if '--record' in a and a.index('--record') + 1 >= len(a):
+        print(USAGE, file=sys.stderr)
+        return 2
     if '--record' in a:
         try:
             with open(a[a.index('--record') + 1]) as f:

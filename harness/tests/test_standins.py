@@ -2,6 +2,7 @@
 repository for the base, no compile."""
 import json
 import os
+import sys
 import subprocess
 
 import pytest
@@ -141,7 +142,7 @@ def test_a_name_already_told_is_not_refused_again(repo):
     lines = standins.check_lines(told=['c_0067b2b0'], **kw)
     assert any('c_0067b2b1' in x for x in lines) and not any('c_0067b2b0' in x for x in lines)
     assert standins.check_lines(told=['c_0067b2b0', 'c_0067b2b1'], **kw) is None
-    assert standins.pending_names(**kw) == ['c_0067b2b0', 'c_0067b2b1']
+    assert standins.check_report(**kw)[1] == ['c_0067b2b0', 'c_0067b2b1']
 
 
 def test_known_tokens_read_class_columns_and_mangled_names(tmp_path):
@@ -174,3 +175,58 @@ def test_last_message_reads_the_hook_input_or_the_transcript(tmp_path):
             {'type': 'tool_use'}, {'type': 'text', 'text': 'STAND-IN: a 0x1 b'}]}}) + '\n')
     assert standins.last_message({'transcript_path': str(t)}) == 'STAND-IN: a 0x1 b'
     assert standins.last_message({}) == ''
+
+
+def test_check_standins_end_to_end_with_a_told_set(repo, monkeypatch):
+    from harness.lib import wholetree
+    monkeypatch.setenv('HARNESS_STANDIN_BASE', 'HEAD')
+    monkeypatch.setattr(paths, 'REPO', str(repo))
+    monkeypatch.setattr(standins, 'default_known_files', lambda: [])
+    write(repo, 'op/a.h', 'class c_0067b2b0;\nclass tVisObjectSlots;\n')
+    del wholetree.STANDINS_SHOWN[:]
+    lines = wholetree.check_standins(None, told=['c_0067b2b0'])
+    assert any('tVisObjectSlots' in x for x in lines) and not any('c_0067b2b0' in x for x in lines)
+    assert wholetree.STANDINS_SHOWN == ['tVisObjectSlots']
+    del wholetree.STANDINS_SHOWN[:]
+    assert wholetree.check_standins(None, told=['c_0067b2b0', 'tVisObjectSlots']) is None
+    assert wholetree.STANDINS_SHOWN == []
+
+
+def test_a_later_allowance_for_the_same_name_is_kept_newest_last(tmp_path, monkeypatch):
+    monkeypatch.setattr(paths, 'STATE', str(tmp_path))
+    assert len(standins.record('STAND-IN: x_00401000 0x00401000 first')) == 1
+    assert len(standins.record('STAND-IN: x_00401000 0x00401004 second\n'
+                               'STAND-IN: x_00401000 0x00401000 first')) == 1
+    rows = (tmp_path / 'standins.tsv').read_text().splitlines()
+    assert rows == ['x_00401000\t0x00401000\tfirst', 'x_00401000\t0x00401004\tsecond']
+    assert standins.load_allowed() == {'x_00401000': ('0x00401004', 'second')}
+
+
+def test_record_cli_reads_the_result_and_tolerates_bad_input(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(paths, 'STATE', str(tmp_path / 's'))
+    ok = tmp_path / 'r.json'
+    ok.write_text(json.dumps({'result': 'STAND-IN: a_00401000 0x00401000 why'}))
+    assert standins.main(['--record', str(ok)]) == 0
+    assert 'stand-in allowed: a_00401000' in capsys.readouterr().out
+    assert standins.main(['--record', str(tmp_path / 'missing.json')]) == 0
+    num = tmp_path / 'n.json'
+    num.write_text(json.dumps({'result': 5}))
+    assert standins.main(['--record', str(num)]) == 0
+    bad = tmp_path / 'b.json'
+    bad.write_text('not json')
+    assert standins.main(['--record', str(bad)]) == 0
+    assert list(standins.load_allowed()) == ['a_00401000']
+    assert standins.main(['--record']) == 2
+
+
+def test_cli_report_and_base_parsing(repo, monkeypatch, capsys):
+    monkeypatch.setattr(paths, 'REPO', str(repo))
+    monkeypatch.setattr(standins, 'default_known_files', lambda: [])
+    write(repo, 'op/a.h', 'class c_0067b2b0;\n')
+    assert standins.main(['--report', '--base', 'HEAD']) == 0
+    assert capsys.readouterr().out.splitlines()[0] == 'new stand-in classes against HEAD: 1'
+    assert standins.main(['--base', 'HEAD']) == 1
+    assert 'c_0067b2b0' in capsys.readouterr().out
+    assert standins.main(['--base']) == 2
+    assert 'usage' in capsys.readouterr().err
+    assert standins.main(['--report', '--base', '--record']) == 2

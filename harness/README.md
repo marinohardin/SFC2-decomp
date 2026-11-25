@@ -390,6 +390,12 @@ The Stop hook and `loop.sh` (`python3 -m harness.lib.standins --record`) keep al
 `$HARNESS_STATE/standins.tsv`. A name is refused once per session: the hook records it in the claim
 (`standins_told`) and does not refuse it again, so it uses one of the refusals and no more, but
 the loop's own run of the checks has no such memory and fails the round unless the name is allowed.
+The loop fails a round for a new stand-in in exactly this case: the round would be committed (the
+function improved, the other checks passed) and the scan finds a name that is neither in the base
+nor allowed. It runs that scan on its own, after the whole-tree step and before the commit, so
+`HARNESS_WHOLETREE=0` or a spent time budget does not skip it; the round is undone with exit 6
+(`$tag.standins.txt`). A round that commits nothing is reset anyway. A later `STAND-IN:` line for
+a name with another address or reason is added to the record, newest last, and the newest wins.
 `harness/landing.sh` prints the count and list of new stand-ins against its base, each with the
 allowance a lane recorded for it (`python3 -m harness.lib.standins --report --base <ref>`).
 

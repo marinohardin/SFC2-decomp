@@ -360,6 +360,13 @@ while :; do
             code=6
             echo "ERROR $addr: the whole-tree checks failed (see $tag.wholetree.txt)"
         fi
+        # The stand-in scan again on its own, before anything is committed: a text scan that does not
+        # depend on HARNESS_WHOLETREE or the whole-tree time budget (harness/README.md, "New stand-in
+        # classes").
+        if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.standins > "$tag.standins.txt" 2>&1; then
+            code=6
+            echo "ERROR $addr: the round adds a stand-in class (see $tag.standins.txt)"
+        fi
         # The symbol table is the one non-source file a lane commits, and only the tool writes it
         # (harness/lib/symsync.py): the claims of the rebuilt units, and the symbols of the
         # unclaimed functions this one calls. A sync that fails leaves no half-synced table.

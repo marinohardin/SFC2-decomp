@@ -18,7 +18,7 @@ SUMMARY_0 = 'lint_claims: 0 new (empty-body 0), 12 in the baseline, 0 stale base
 def _no_standin_scan(monkeypatch):
     """These tests are about the commands; the stand-in scan reads the checkout (its own tests are
     in test_standins.py) and finds nothing here."""
-    monkeypatch.setattr(standins, 'check_lines', lambda told=(), **kw: None)
+    monkeypatch.setattr(standins, 'check_report', lambda told=(), **kw: (None, []))
 
 
 def fake(**overrides):
@@ -169,7 +169,6 @@ def run_stop_hook(monkeypatch, tmp_path, blocks, whole):
     monkeypatch.setattr(hook.subprocess, 'run', lambda *a, **k: P)
     monkeypatch.setattr(hook.wholetree, 'check', whole)
     monkeypatch.setattr(paths, 'STATE', str(tmp_path / 'state'))
-    monkeypatch.setattr(standins, 'pending_names', lambda **kw: ['c_0067b2b0'])
     return hook, claim
 
 
@@ -271,10 +270,12 @@ def test_main_reads_the_loops_log_and_exit(tmp_path, monkeypatch, capsys):
 def test_a_new_stand_in_fails_the_whole_tree_check_once_told(monkeypatch):
     seen = []
 
-    def lines(told=(), **kw):
+    def report(told=(), **kw):
         seen.append(tuple(told))
-        return None if 'c_0067b2b0' in told else ['new stand-in classes', 'op/a.h:1: c_0067b2b0']
-    monkeypatch.setattr(standins, 'check_lines', lines)
+        if 'c_0067b2b0' in told:
+            return None, []
+        return ['new stand-in classes', 'op/a.h:1: c_0067b2b0'], ['c_0067b2b0']
+    monkeypatch.setattr(standins, 'check_report', report)
     ok, message = wholetree.check(fake(), {})
     assert not ok and 'standins (harness/lib/standins.py) failed' in message
     assert 'op/a.h:1: c_0067b2b0' in message
@@ -288,6 +289,7 @@ def test_the_stop_hook_names_a_stand_in_once_and_keeps_the_final_message_allowan
 
     def whole(told=()):
         told_seen.append(list(told))
+        wholetree.STANDINS_SHOWN[:] = ['c_0067b2b0']
         return (False, 'STAND-IN REFUSAL')
     hook, claim = run_stop_hook(monkeypatch, tmp_path, 0, whole)
     monkeypatch.setattr(sys, 'stdin', io.StringIO(json.dumps(

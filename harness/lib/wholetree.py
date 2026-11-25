@@ -125,10 +125,15 @@ def check_tests(run):
                                       lambda x: x.startswith(('FAILED', 'ERROR')))
 
 
+STANDINS_SHOWN = []   # the names the last check() put in its message (the Stop hook marks them told)
+
+
 def check_standins(run, told=()):
     """No class or struct in op/ that is a placeholder or an invented t-class and is not in the
     base (harness/lib/standins.py). `told`: names a refusal already named once."""
-    return standins.check_lines(told=told)
+    lines, names = standins.check_report(told=told)
+    STANDINS_SHOWN.extend(names)
+    return lines
 
 
 CHECKS = (('verify (harness/build-and-verify.sh --all)', check_verify),
@@ -144,6 +149,7 @@ def check(run=None, environ=None, verify_done=None, told=()):
     called as run(argv, env=None, timeout=seconds_left); once HARNESS_WHOLETREE_BUDGET seconds
     are spent, the checks still to run are reported as not run. `told`: stand-in names an earlier
     refusal already named (the Stop hook passes them, so the same finding is refused once)."""
+    del STANDINS_SHOWN[:]
     if not enabled(environ):
         return True, ''
     run = run or run_command

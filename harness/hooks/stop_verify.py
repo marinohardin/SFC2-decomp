@@ -42,7 +42,7 @@ def main():
             allow, message = False, text
             # A stand-in is named once: the next stop does not refuse it again (so it does not
             # use up the refusals), and the loop's own whole-tree run still fails the round.
-            claim['standins_told'] = sorted(set(told) | set(standins.pending_names()))
+            claim['standins_told'] = sorted(set(told) | set(wholetree.STANDINS_SHOWN))
     if allow:
         print(json.dumps({'systemMessage': message}))
         return 0
