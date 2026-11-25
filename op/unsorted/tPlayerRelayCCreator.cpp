@@ -16,3 +16,11 @@ tPlayerRelayCCreator::tPlayerRelayCCreator()
 tPlayerRelayCCreator::~tPlayerRelayCCreator()
 {
 }
+
+// FUNCTION: STARFLEETOP 0x006001a8
+void tPlayerRelayCCreator::vfunction3()
+{
+    // HYPOTHESIS: the original discards the new object
+    tPlayerRelayC *relay = 0;
+    relay = new tPlayerRelayC;
+}

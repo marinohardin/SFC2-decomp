@@ -15240,7 +15240,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600114	function	tPlayerRelayCCreator::tPlayerRelayCCreator	tPlayerRelayCCreator	??0tPlayerRelayCCreator@@QAE@XZ	claim		rtti
 0x00600181	function	tPlayerRelayCCreator::scalar_deleting_destructor	tPlayerRelayCCreator	??_GtPlayerRelayCCreator@@UAEPAXI@Z	claim		rtti
 0x0060019d	function	tPlayerRelayCCreator::~tPlayerRelayCCreator	tPlayerRelayCCreator	??1tPlayerRelayCCreator@@UAE@XZ	claim		rtti
-0x006001a8	function	fn_006001a8	tPlayerRelayCCreator				vtable
+0x006001a8	function	fn_006001a8	tPlayerRelayCCreator	?vfunction3@tPlayerRelayCCreator@@UAEXXZ	claim		vtable
 0x00600208	function	fn_00600208					none
 0x0060023b	function	fn_0060023b					none
 0x0060026e	function	fn_0060026e					none
