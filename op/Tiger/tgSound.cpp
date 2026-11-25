@@ -81,6 +81,8 @@ unsigned char tSoundChannelFormat::mDoWeRetainSelections() { unsigned char retai
 // FUNCTION: STARFLEETOP 0x00646b70
 // FUNCTION: STARFLEETOP 0x00646660
 tSoundChannel::~tSoundChannel() { mSetUpdateMode((eSoundChannelUpdateMode)5); mDone(); }
+// FUNCTION: STARFLEETOP 0x00646720
+tSoundCommandList* tSoundChannel::mGetAttachmentsList() { return &field_0xec; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
