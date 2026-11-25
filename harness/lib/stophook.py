@@ -32,6 +32,12 @@ def _up(verify, address, old):
                               or bool(r.get('exact') and not old.get('exact')))
 
 
+def _down(verify, address, old):
+    r = next((x for x in (verify or {}).get('results', []) if x.get('address') == address), None)
+    return r is not None and (r.get('score', 0.0) + EPSILON < old.get('score', 0.0)
+                              or bool(old.get('exact') and not r.get('exact')))
+
+
 def decide(claim, verify, blocks):
     """The decision of `_decide` with the pair partners' results added to the message."""
     allow, message = _decide(claim, verify, blocks)
@@ -69,9 +75,11 @@ def _decide(claim, verify, blocks):
         return True, f'{claim["address"]} is now exact'
     if res.get('score', 0.0) > base + EPSILON:
         return True, f'{claim["address"]} improved from {base:.2f}% to {res["score"]:.2f}%'
+    olds = claim.get('partner_baselines') or {}
+    partners = claim.get('partners') or []
     if res.get('score', 0.0) + EPSILON >= base and any(
-            _up(verify, a, (claim.get('partner_baselines') or {}).get(a) or {})
-            for a in claim.get('partners') or []):
+            _up(verify, a, olds.get(a) or {}) for a in partners) and not any(
+            _down(verify, a, olds[a]) for a in partners if a in olds):
         return True, f'{claim["address"]} stays at {base:.2f}% but a partner improved'
     return False, (f'{claim["address"]} scores {res.get("score", 0.0):.2f}%, not above the '
                    f'{base:.2f}% it had when this session started. Keep working on the '

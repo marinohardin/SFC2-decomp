@@ -18,7 +18,8 @@ the exe uses. The byte match masks the address, so without this a wrong constant
 string would score exact.
 
 For ok and unverified relocations the field is masked (the target gets the rebuilt addend and the
-same symbol name), so objdiff compares them as equal. A mismatch keeps the exe bytes and points
+same symbol name), so objdiff compares them as equal. A SECREL field (a thread-local variable's
+offset) is resolved to an address with the exe's TLS directory and then checked the same way. A mismatch keeps the exe bytes and points
 the relocation at a symbol named after the address the exe uses, so objdiff reports it.
 """
 import struct
@@ -68,7 +69,9 @@ def target_length(fn_address, fn_size, base_size, exe, next_start):
 
 
 def build(fn_address, fn_size, obj, symbol, exe, index):
-    """Returns dict(base, target, object, relocs, strict, first_diff)."""
+    """Returns dict(base, target, object, relocs, strict, first_diff, rewritten).
+    `object` is for objdiff: its SECREL relocations are rewritten as DIR32 (`rewritten` of
+    them), see coff.py; `relocs` and `strict` keep the real types and are the judge."""
     sec, off, bsize = obj.function(symbol)
     base = sec.data[off:off + bsize]
     target = bytearray(target_length(fn_address, fn_size, bsize, exe, index.next_start(fn_address)))
@@ -92,6 +95,23 @@ def build(fn_address, fn_size, obj, symbol, exe, index):
             s_exe = (ft + fn_address + o + 4 - fb) & MASK
         elif typ == coff.REL_DIR32NB:
             s_exe = (ft + exe.image_base - fb) & MASK
+        elif typ == coff.REL_SECREL:
+            # A __declspec(thread) variable: the field holds the variable's offset in the
+            # thread-local block, which the exe counts from the start of its TLS raw data. The
+            # address it stands for is that start plus the offset, and is checked like any other.
+            tls = exe.tls_start
+            if tls is None:
+                relocs.append(Reloc(o, typ, name, None, 'mismatch', 'the exe has no TLS directory'))
+                out_relocs.append((o, name, typ))
+                continue
+            s_exe = (ft - fb + tls) & MASK
+            tls_end = exe.tls_end
+            if tls_end is not None and not tls <= s_exe < tls_end:
+                relocs.append(Reloc(o, typ, name, s_exe, 'mismatch',
+                                    f'offset 0x{(s_exe - tls) & MASK:x} is outside the exe\'s '
+                                    f'thread-local block (0x{tls_end - tls:x} bytes)'))
+                out_relocs.append((o, f'$exe_{s_exe:08x}', typ))
+                continue
         else:
             st = 'ok' if ft == fb else 'mismatch'
             relocs.append(Reloc(o, typ, name, None, st, 'compared as raw bytes'))
@@ -112,8 +132,10 @@ def build(fn_address, fn_size, obj, symbol, exe, index):
                       None if len(base) == len(target) else min(len(base), len(target)))
     strict = (first_diff is None and all(r.status != 'mismatch' for r in relocs))
     objbytes = coff.write_object(target, symbol, out_relocs, locals_)
+    objbytes, rewritten = coff.rewrite_reloc_types(objbytes)   # for objdiff only
     return dict(base=base, target=target, object=objbytes, relocs=relocs, strict=strict,
-                first_diff=first_diff)
+                first_diff=first_diff,
+                rewritten=rewritten)
 
 
 VALUE_PREFIXES = ('__real@', '??_C@')

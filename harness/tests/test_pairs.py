@@ -531,6 +531,10 @@ def test_judge_keeps_a_round_when_a_partner_improved_and_the_lead_did_not_get_wo
     assert judge(verify(60.0, 20.0)) == (60.0, 'partial', 0, 1)     # lead up
     assert judge(verify(100.0, 20.0, lead_exact=True)) == (100.0, 'exact', 0, 1)
     assert judge(verify(50.0, 100.0, partner_exact=True))[3] == 1   # partner newly exact
+    # A partner below its starting score blocks the round, whatever else improved.
+    assert judge(verify(60.0, 10.0))[3] == 0
+    assert loopio.judge(entry, verify(100.0, 20.0, lead_exact=True), '50.00',
+                        {'0x00401020': dict(score=20.0, exact=True)})[3] == 0
     # No pair: the lead alone decides, as before.
     assert loopio.judge(dict(address=LEAD), verify(50.0, 99.0), '50.00')[3] == 0
 

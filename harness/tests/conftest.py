@@ -27,8 +27,9 @@ IMAGE_BASE = 0x400000
 TEXT_RVA = 0x1000
 
 
-def make_pe(text, image_base=IMAGE_BASE, text_rva=TEXT_RVA):
-    """A minimal PE image with one .text section holding `text` at image_base + text_rva."""
+def make_pe(text, image_base=IMAGE_BASE, text_rva=TEXT_RVA, tls_dir_rva=None):
+    """A minimal PE image with one .text section holding `text` at image_base + text_rva.
+    tls_dir_rva, if given, is the RVA (inside `text`) of an IMAGE_TLS_DIRECTORY it declares."""
     raw = bytearray(0x200)
     raw[0:2] = b'MZ'
     struct.pack_into('<I', raw, 0x3C, 0x40)
@@ -37,6 +38,9 @@ def make_pe(text, image_base=IMAGE_BASE, text_rva=TEXT_RVA):
     opt = 0x58
     struct.pack_into('<H', raw, opt, 0x10B)
     struct.pack_into('<I', raw, opt + 28, image_base)
+    if tls_dir_rva is not None:
+        struct.pack_into('<I', raw, opt + 92, 16)
+        struct.pack_into('<II', raw, opt + 96 + 9 * 8, tls_dir_rva, 24)
     struct.pack_into('<8sIIII', raw, opt + 0xE0, b'.text', len(text), text_rva, len(text), 0x200)
     return bytes(raw) + text
 

@@ -68,15 +68,30 @@ def partner_improved(verify, partners, baselines):
     return False
 
 
+def partner_worse(verify, partners, baselines):
+    """True when a pair partner the verify result scored is below what it had at the start, or
+    lost its exact status."""
+    for p in partners:
+        r = next((x for x in (verify or {}).get('results', []) if x.get('address') == p), None)
+        old = (baselines or {}).get(p)
+        if r is None or not old or r.get('error') and 'relocs' not in r:
+            continue
+        if r.get('score', 0.0) + 1e-6 < old.get('score', 0.0) or (
+                old.get('exact') and not r.get('exact')):
+            return True
+    return False
+
+
 def judge(entry, verify, before, baselines=None):
     """(score, kind, exit, improved) of a finished round. The round is kept when any member of
     the group improved and the queued function did not get worse: the queued function itself
-    higher or newly exact, or (a pair) a partner higher or newly exact. The queued function's
+    higher or newly exact, or (a pair) a partner higher or newly exact; no member, lead or
+    partner, may be below its starting score. The queued function's
     score and kind (`exact` / `partial`) are what the commit and the attempt log record; it stays
     in the queue for its next attempt while it is not exact."""
     s, exact, code = score(verify, entry['address'])
     lead_up = s > float(before) + 1e-6 or exact
-    worse = s + 1e-6 < float(before)
+    worse = s + 1e-6 < float(before) or partner_worse(verify, partners_of(entry), baselines)
     up = lead_up or partner_improved(verify, partners_of(entry), baselines)
     return s, 'exact' if exact else 'partial', code, int(up and not worse)
 

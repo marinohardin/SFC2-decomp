@@ -360,8 +360,12 @@ while :; do
         ids=$(py ids "$entry")
         # shellcheck disable=SC2086
         harness/update-matched-set.sh $ids --json > "$tag.after.json" 2>&1
-        # A round is kept when any member of the group improved and the queued function did not
-        # get worse (harness/lib/loopio.py, judge).
+        # STAND-IN: lines in the final message are allowances, kept in the lane state before the
+        # whole-tree checks read them (harness/lib/standins.py).
+        python3 -m harness.lib.standins --record "$tag.claude.json" || true
+        # A round is kept when at least one member of the group improved and none got worse
+        # (harness/lib/loopio.py, judge); the whole-tree and stand-in scans below cover every
+        # file the session touched, so a kept pair round is scanned before its commit.
         set -- $(py judge "$entry" "$tag.after.json" "$before")
         after=$1 kind=$2 code=$3 improved=$4
         if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.wholetree > "$tag.wholetree.txt" 2>&1; then
@@ -369,6 +373,13 @@ while :; do
             # refusals. The round is undone like any other failure.
             code=6
             echo "ERROR $addr: the whole-tree checks failed (see $tag.wholetree.txt)"
+        fi
+        # The stand-in scan again on its own, before anything is committed: a text scan that does not
+        # depend on HARNESS_WHOLETREE or the whole-tree time budget (harness/README.md, "New stand-in
+        # classes").
+        if [ "$code" = 0 ] && [ "$improved" = 1 ] && ! python3 -m harness.lib.standins > "$tag.standins.txt" 2>&1; then
+            code=6
+            echo "ERROR $addr: the round adds a stand-in class (see $tag.standins.txt)"
         fi
         # The symbol table is the one non-source file a lane commits, and only the tool writes it
         # (harness/lib/symsync.py): the claims of the rebuilt units, and the symbols of the
