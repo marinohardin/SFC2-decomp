@@ -173,6 +173,12 @@ long tSoundChannel::mGet3DSoundConeAttenuationLevel()
 {
     return (&field_0x30)->mGet3DSoundConeAttenuationLevel();
 }
+
+// FUNCTION: STARFLEETOP 0x00646840
+tSoundChannelFormat* tSoundChannel::mGetSoundChannelFormat()
+{
+    return &field_0x10;
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
