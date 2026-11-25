@@ -667,6 +667,7 @@ public:
 	fn_00426e9b_Class* fn_00426e9b();
 	void fn_00426ec0();
 	void fn_00426ed2();
+	void fn_00426ee2();
 	void fn_00426ef0();
 
 	int m00[20];
@@ -701,4 +702,11 @@ void fn_00426e9b_Class::fn_00426ed2()
 		m50 = 1;
 		fn_00426ef0();
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00426ee2
+void fn_00426e9b_Class::fn_00426ee2()
+{
+	fn_00426ef0();
+	m50 = 0;
 }
