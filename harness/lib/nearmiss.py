@@ -317,8 +317,10 @@ def pack_section(address):
     '' when the function is not reference-only there."""
     try:
         recs = label_addresses([address])
-    except Exception as e:  # a missing input must not stop the round
-        return f'### Wrong references\n\n(not read: {type(e).__name__}: {e})\n'
+    except Exception as e:  # a missing input must not stop the round, nor reach the session
+        print(f'WARN  no wrong-reference listing for {address} in the context pack: '
+              f'{type(e).__name__}: {e}', file=sys.stderr)
+        return ''
     if not recs or recs[0]['label'] != 'reference-only':
         return ''
     from .pack import cut
@@ -345,6 +347,12 @@ def results(build=None):
         if a and (a not in out or t > out[a][2]):
             out[a] = (res, os.path.dirname(p), t)
     return {a: (r, d) for a, (r, d, _) in out.items()}
+
+
+def unit_addresses(unit, build=None):
+    """Every address the build folder scored in `unit`, exact or not."""
+    u = unit[3:] if unit.startswith('op/') else unit
+    return sorted(a for a, (r, _) in results(build).items() if r.get('unit') == u)
 
 
 def _norm(a):
@@ -531,7 +539,10 @@ def main(argv):
         print(f'ERROR {type(e).__name__}: {e}', file=sys.stderr)
         return 2
     if keep:
-        store(recs, args, everything=not args and not unit)
+        # With --unit, every function the unit scored loses its old row, so one that is exact
+        # now does not keep a stale label.
+        store(recs, args or (unit_addresses(unit) if unit else None),
+              everything=not args and not unit)
     if fmt == 'json':
         print(json.dumps(recs, indent=1))
     elif fmt == 'tsv':

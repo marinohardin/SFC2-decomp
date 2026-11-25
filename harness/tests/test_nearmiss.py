@@ -235,3 +235,56 @@ def test_rules_are_collected_from_transcripts_and_malformed_lines_ignored(tmp_pa
         ('0x00401000', 'order', 'a branch came out inverted', 'wrote the if and else the other way'),
         ('0x00401010', '', 'a local was missing', 'added a temporary for the count')]
     assert got[0]['attempt'] == 'wt-lane-1/attempts/0x00401000-20261124T000000'
+
+
+def test_a_reference_only_function_at_the_fable_step_goes_to_the_difficult_list(tmp_path):
+    import types
+    p = types.SimpleNamespace(ATTEMPTS=str(tmp_path / 'a.tsv'), DIFFICULT=str(tmp_path / 'd.tsv'),
+                              REVISIT=str(tmp_path / 'r.tsv'))
+    tiers = workqueue.Tiers(['opus', 'opus'], allow_fable=True)
+    queue = [dict(address='0x00401000', name='a', size=300)]
+    rows = [dict(time='2026-11-24T00:00:00Z', address='0x00401000', name='a', model='sonnet',
+                 outcome='improved', score_before='99.00', score_after='99.50'),
+            dict(time='2026-11-24T01:00:00Z', address='0x00401000', name='a', model='sonnet',
+                 outcome='improved', score_before='99.50', score_after='99.80')]
+    labels = {'0x00401000': dict(label='reference-only', waits='')}
+    ended = []
+    assert workqueue.next_entry(queue, rows, [], tiers, labels=labels, ended=ended) is None
+    (e, plan_, run), = ended
+    workqueue.end_reference_only(p, e, plan_, run)
+    (d,) = workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS)
+    assert (d['address'], d['attempts'], d['last_model'], d['best_score']) == \
+        ('0x00401000', '2', 'sonnet', '99.80')
+    assert d['reason'] == ('not exact after 2 attempts: a reference-only near miss with its '
+                           'regular attempts used; no Fable try (harness/lib/nearmiss.py); '
+                           'best 99.80%')
+    # Listed once: a second pass skips it as difficult and adds no row.
+    ended = []
+    assert workqueue.next_entry(queue, rows, [d], tiers, labels=labels, ended=ended) is None
+    assert ended == []
+    workqueue.end_reference_only(p, e, plan_, run)
+    assert len(workqueue.read_tsv(p.DIFFICULT, workqueue.DIFFICULT_FIELDS)) == 1
+
+
+def test_storing_a_unit_drops_the_rows_of_its_functions_that_are_exact_now(tmp_path):
+    build = tmp_path / 'build'
+    for a, exact in (('0x00401000', True), ('0x00401010', False)):
+        d = build / 'a-1' / a
+        d.mkdir(parents=True)
+        (d / 'result.json').write_text(json.dumps(dict(address=a, unit='a.cpp', exact=exact)))
+    assert nearmiss.unit_addresses('op/a.cpp', str(build)) == ['0x00401000', '0x00401010']
+    path = str(tmp_path / 'labels.tsv')
+    rec = dict(address='0x00401000', name='f', unit='a.cpp', label='reference-only', score=99.5,
+               differing=1, references=[], waits='')
+    nearmiss.store([rec, dict(rec, address='0x00402000', unit='b.cpp')], everything=True,
+                   path=path)
+    nearmiss.store([], nearmiss.unit_addresses('a.cpp', str(build)), path=path)
+    assert list(nearmiss.load_labels(path)) == ['0x00402000']
+
+
+def test_a_listing_that_cannot_be_built_leaves_the_pack_alone(monkeypatch, capsys):
+    def fail(*a, **k):
+        raise OSError('no exe')
+    monkeypatch.setattr(nearmiss, 'label_addresses', fail)
+    assert nearmiss.pack_section('0x00401000') == ''
+    assert 'WARN  no wrong-reference listing for 0x00401000' in capsys.readouterr().err

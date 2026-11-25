@@ -756,7 +756,8 @@ with a reason that starts with one word, when no session can fix it yet:
 folder (`$HARNESS_LISTS/<lane>/`, beside the revisit and difficult lists; `HARNESS_NEARMISS_LABELS`
 overrides): `address`, `name`, `unit`, `label`, `score`, `differing`, `wrong_refs`, `waits` and
 `labelled`. A run over every function replaces the file; a run for some addresses replaces their
-rows, and an address that is exact now loses its row. Only this lane's file is read. The loop
+rows, and an address that is exact now loses its row (with `--unit`, every address the unit
+scored). Only this lane's file is read. The loop
 labels every near miss after its startup `--all`, labels the round's function after its starting
 score (copied to the attempt's `.nearmiss.tsv`) and again after an improvement is committed.
 
@@ -764,7 +765,11 @@ score (copied to the attempt's `.nearmiss.tsv`) and again after an improvement i
 default, `HARNESS_NEARMISS=0` turns it off): a function whose stored label is `reference-only`
 is never escalated. An Opus attempt goes to Sonnet instead, and its context pack opens with the
 list of wrong references (within `HARNESS_PACK_MAX`); it gets no Fable try; and a parked one is
-not taken at all until a later labelling clears its reason. Nothing else about the tiers, the stop
+not taken at all. A parked function is relabelled only by the loop's startup `--all` (or by
+running the command by hand), never by a round, since it gets none: it stays parked until the
+next loop start after its callee is named. A reference-only function whose run reaches the Fable
+step is put on the lane's `difficult_functions.tsv`, with a reason saying it is a reference-only
+near miss with its regular attempts used, so it is not skipped without a trace. Nothing else about the tiers, the stop
 rule or the attempt caps changes: the attempts it does get are counted as usual.
 
 **Rules from fixes.** The prompt asks a session that takes its function to 100% from a lower

@@ -169,9 +169,14 @@ def main(argv):
         # The near-miss labels route a reference-only function (workqueue.route); off with
         # HARNESS_NEARMISS=0.
         labels = nearmiss.load_labels() if nearmiss.enabled() else None
+        ended = []
         e = workqueue.next_entry(q, attempts, difficult, tiers,
                                  lambda a: workqueue.acquire(paths.CLAIMS, a, owner, pid),
-                                 revisit, take_revisit, labels)
+                                 revisit, take_revisit, labels, ended)
+        for entry, p, rows in ended:
+            workqueue.end_reference_only(paths, entry, p, rows)
+            print(f'INFO  {entry["address"]} listed in difficult_functions.tsv (lane '
+                  f'{paths.LANE}): a reference-only near miss gets no Fable try', file=sys.stderr)
         if e:
             print(json.dumps(e))
         return 0
