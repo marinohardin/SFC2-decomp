@@ -26,3 +26,10 @@ void tTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallbac
 	fpCallback = pCallback;
 	fContext = context;
 }
+
+// FUNCTION: STARFLEETOP 0x0070fda0
+void tTimer::StopTimer()
+{
+	fDueTime = 0;
+	fPeriod = 0;
+}
