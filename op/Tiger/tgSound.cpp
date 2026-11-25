@@ -34,6 +34,8 @@ void tChannelAttributes::vfunction20(tPoint3* aPoint) { t3DSoundProfile* profile
 void tChannelAttributes::mSet3DSoundVelocity(tPoint3 aPoint) { (&m3DSoundProfile)->mSet3DSoundVelocity(&aPoint); }
 // FUNCTION: STARFLEETOP 0x00646460
 void tChannelAttributes::mSet3DSoundVelocity(float aX, float aY, float aZ) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundVelocity(aX, aY, aZ); }
+// FUNCTION: STARFLEETOP 0x00646480
+tPoint3* tChannelAttributes::mGet3DSoundVelocity() { t3DSoundProfile* profile = &m3DSoundProfile; return profile->vfunction13(); }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
