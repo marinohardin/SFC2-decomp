@@ -78,3 +78,42 @@ void fn_00500847()
 		g_00966ac0 = 1;
 	}
 }
+
+// HYPOTHESIS: no header declares tFx_Base or the array element yet; minimal forms so the constructor can be written.
+class tFx_Base
+{
+public:
+	tFx_Base();
+	virtual ~tFx_Base();
+	char m04[0x0a];
+	char m0e;
+	char m0f;
+	long m10;
+	char m14[0x28];
+	char m3c;
+	char m3d[3];
+};
+
+class fn_005008f4_element
+{
+public:
+	fn_005008f4_element();
+	char m00[0x18];
+};
+
+class tFx_Photon : public tFx_Base
+{
+public:
+	tFx_Photon();
+	fn_005008f4_element m40[16];
+};
+
+extern long g_007aa8d0;
+
+// FUNCTION: STARFLEETOP 0x00500872
+tFx_Photon::tFx_Photon()
+{
+	m0e = 1;
+	m10 = g_007aa8d0;
+	m3c = 1;
+}

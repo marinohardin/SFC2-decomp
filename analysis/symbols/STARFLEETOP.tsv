@@ -7168,7 +7168,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ec752	function	fn_004ec752					none
 0x004ec922	function	fn_004ec922					none
 0x004ecc82	function	fn_004ecc82					none
-0x004ecd72	function	tFx_Base::tFx_Base	tFx_Base				rtti
+0x004ecd72	function	tFx_Base::tFx_Base	tFx_Base	??0tFx_Base@@QAE@XZ	add		rtti
 0x004ecdb2	function	fn_004ecdb2	tFx_Base				vtable
 0x004ecdba	function	tFx_Base::scalar_deleting_destructor	tFx_Base				rtti
 0x004ecdd6	function	tFx_Base::~tFx_Base	tFx_Base				rtti
@@ -7496,7 +7496,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0050082b	function	fn_0050082b					none
 0x0050083f	function	fn_0050083f					none
 0x00500847	function	fn_00500847		?fn_00500847@@YAXXZ	claim		none
-0x00500872	function	fn_00500872					none
+0x00500872	function	fn_00500872		??0tFx_Photon@@QAE@XZ	claim		none
 0x005008cd	function	tFx_Photon::scalar_deleting_destructor	tFx_Photon				rtti
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
 0x005008f4	function	fn_005008f4					none
