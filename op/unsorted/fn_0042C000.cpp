@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 // HYPOTHESIS: a red-black tree of the library's map/set: 0x2c-byte nodes with the value at
 // +0x0c, a colour byte at +0x28 and an is-nil byte at +0x29; the head node sits at +0x08.
 // HYPOTHESIS: the node's 0x1c-byte value; fn_0042b0f5 destroys it in place.

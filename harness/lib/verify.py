@@ -27,7 +27,7 @@ import threading
 import sys
 import time
 
-from . import cache, clean, coff, funcs, matched, paths, source, symtab, target
+from . import cache, clean, coff, funcs, matched, objclash, paths, source, symtab, target
 
 EXIT_OK, EXIT_REGRESSION, EXIT_FAILED = 0, 1, 2
 DIFF_ROWS = 12
@@ -35,6 +35,8 @@ DIFF_ROWS = 12
 # on develop when the check came in; only breaks not listed here fail (report_claim_symbols).
 RELOC_BASELINE = paths.env_path('HARNESS_RELOC_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'reloc_baseline.tsv'))
+OBJECT_BASELINE = paths.env_path('HARNESS_OBJECT_BASELINE', os.path.join(
+    paths.REPO, 'analysis', 'results', 'object_baseline.tsv'))
 RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
 # A relocation that names another symbol than the claim at its target is of one class
 # (classify_break): the first three fail the run, the last two are listed only.
@@ -626,6 +628,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     report_shared_symbols(rep)
     if check_all:
         report_comdat_kinds(rep)
+        report_object_clashes(rep)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -749,6 +752,22 @@ def report_comdat_kinds(rep):
     for line in comdat_kind_conflicts(rep.objects):
         rep.add('ERROR', line)
         rep.failed = True
+
+
+def report_object_clashes(rep, baseline_path=None):
+    """An ERROR line, and a failed run, for each build path an object holds and each claimed
+    function that two objects define differently (harness/lib/objclash.py), unless the object
+    baseline lists it; a WARN line for each baseline row that no longer occurs."""
+    keys = claimed_keys()
+    claimed = {r['symbol'] for r in rep.results if r.get('symbol') and r['address'] in keys}
+    baseline = objclash.load_baseline(baseline_path or OBJECT_BASELINE)
+    errors, stale = objclash.check(rep.objects, claimed, (paths.REPO,), baseline)
+    for line in errors:
+        rep.add('ERROR', line)
+        rep.failed = True
+    for row in stale:
+        rep.add('WARN', f'{_shown(baseline_path or OBJECT_BASELINE)}: the row "{row}" no longer '
+                'occurs: remove it')
 
 
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')

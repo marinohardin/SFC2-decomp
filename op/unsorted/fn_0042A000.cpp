@@ -4,6 +4,7 @@
 #define DATASTORE_OUT_OF_LINE_READ_STRING
 #define DATASTORE_OUT_OF_LINE_GET
 #define DATASTORE_OUT_OF_LINE_BUFFER_GET
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 #define DATASTORE_OUT_OF_LINE_READ
 #include "Common/DataStore/DataStoreInput.h"
 

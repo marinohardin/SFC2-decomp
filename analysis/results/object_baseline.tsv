@@ -1,0 +1,49 @@
+# Known debt of the object checks (harness/lib/objclash.py, harness/README.md "Build paths and
+# clashing copies"): only findings not listed here fail `build-and-verify.sh --all`; a row that no
+# longer occurs is a WARN, so the list only shrinks. Format: kind <TAB> unit <TAB> symbol.
+#   path: the unit's object has a function that uses a build-path __FILE__ string. The one row is
+#         tDatabaseInfo::StreamIn, a partial match whose inlined tBuffer::Get still carries it.
+#   copy: a claimed function two or more units define with different code or relocation targets
+#         (inline expansion or a stand-in name differs from unit to unit); the unit column is "-".
+kind	unit	symbol
+copy	-	??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDH@Z
+copy	-	??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z
+copy	-	??0?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N1@Z
+copy	-	??0?$fpos@H@std@@QAE@J@Z
+copy	-	??0fn_SessionCookie@@QAE@ABV0@@Z
+copy	-	??0tPath@@QAE@ABV0@@Z
+copy	-	??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ
+copy	-	??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
+copy	-	??1?$tAccessPointer@$$CBV?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ
+copy	-	??1?$tAccessPointer@$$CBVtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ
+copy	-	??1?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ
+copy	-	??1?$tAccessPointer@VtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ
+copy	-	??1?$tQuery@VtAuctionItem@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtCampaignInfo@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtMetaMapDesc@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtMetaMapHex@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtNewsStory@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtNotify@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtServCharacter@@@nDatabase@@UAE@XZ
+copy	-	??1?$tQuery@VtShip@@@nDatabase@@UAE@XZ
+copy	-	??1?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE@XZ
+copy	-	??1?$tSingleAccessWrapper@VtObject_005391b0@@@@QAE@XZ
+copy	-	??1tCastItem@@UAE@XZ
+copy	-	??1tGuard@tOptex@@QAE@XZ
+copy	-	??1tOptex@@QAE@XZ
+copy	-	??1tPath@@UAE@XZ
+copy	-	?Enter@tOptex@@QAEXXZ
+copy	-	?Leave@tOptex@@QAEXXZ
+copy	-	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
+copy	-	?TryEnter@tOptex@@QAE_NXZ
+copy	-	?_Construct@std@@YAXPAVtShip@@ABV2@@Z
+copy	-	?_Construct@std@@YAXPAVtShipCache@tServCharacter@@ABV23@@Z
+copy	-	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+copy	-	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+copy	-	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+copy	-	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+copy	-	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+copy	-	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+copy	-	?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z
+copy	-	?find_if@std@@YAPAUfn_005ea9ce_elem@@PAU2@0Vfn_005ea9ce_pred@@@Z
+path	Common/Database/FileDatabaseMgr.cpp	?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z

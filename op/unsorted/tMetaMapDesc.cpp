@@ -1,3 +1,5 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy in fn_0042A000.cpp (0x0042a31c)
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 // tMetaMapDesc: functions of this class (original file unknown).
 #include "Common/Database/DatabaseObject.h"
 #include "Common/DataStore/DataStoreOutput.h"

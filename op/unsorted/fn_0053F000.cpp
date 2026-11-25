@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 // Unit:      unsorted/fn_0053F000.cpp
 // Functions: 0x0053f22f to 0x0053ffd7, 40 in op/UNITS.tsv
 // Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
