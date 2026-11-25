@@ -1,6 +1,8 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004234CF.cpp
-// Functions: 0x004234cf to 0x0042352d, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the global's type is unknown
+extern char g_008e0f38;
+
+// FUNCTION: STARFLEETOP 0x004234cf
+void* fn_004234cf()
+{
+    return &g_008e0f38;
+}

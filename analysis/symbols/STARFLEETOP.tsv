@@ -1150,7 +1150,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00423476	function	fn_00423476	tEntityControlShip_Creator				vtable
 0x004234ad	function	fn_004234ad	tEntityControlShip_Creator				vtable
 0x004234b3	function	tEntityControlShip_Creator::scalar_deleting_destructor	tEntityControlShip_Creator				rtti
-0x004234cf	function	fn_004234cf					none
+0x004234cf	function	fn_004234cf		?fn_004234cf@@YAPAXXZ	claim		none
 0x00423517	function	fn_00423517					none
 0x00423521	function	fn_00423521					none
 0x0042352d	function	fn_0042352d					none
