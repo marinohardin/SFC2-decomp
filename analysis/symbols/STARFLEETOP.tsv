@@ -1219,7 +1219,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00425463	function	fn_00425463		?fn_00425463@@YAXXZ	claim		none
 0x00425480	function	fn_00425480		?fn_00425480@@YAXXZ	claim		none
 0x004254a7	function	fn_004254a7		?fn_004254a7@fn_004254a7_list@@QAEXHHD@Z	claim		none
-0x00425501	function	fn_00425501					none
+0x00425501	function	fn_00425501		?fn_00425501@fn_004254a7_list@@QAEXHH@Z	claim		none
 0x0042556b	function	fn_0042556b					none
 0x004255b5	function	fn_004255b5					none
 0x004256b1	function	fn_004256b1					none

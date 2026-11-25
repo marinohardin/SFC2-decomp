@@ -212,6 +212,7 @@ struct fn_004254a7_list
 		int mStamp;
 	};
 	void fn_004254a7(int id, int value, char force);
+	void fn_00425501(int id, int value);
 
 	node* fHead;
 };
@@ -240,4 +241,34 @@ void fn_004254a7_list::fn_004254a7(int id, int value, char force)
 		fHead = p->mNext;
 	p->mNext = 0;
 	operator delete(p);
+}
+
+// FUNCTION: STARFLEETOP 0x00425501
+void fn_004254a7_list::fn_00425501(int id, int value)
+{
+	if (id == 0)
+		return;
+	node* p = fHead;
+	for (; p != 0; p = p->mNext) {
+		if (p->mID == id) {
+			p->mStamp = g_00c7c140;
+			p->mValue = value;
+			return;
+		}
+	}
+	node* n = (node*)operator new(0x10);
+	if (n != 0) {
+		n->mID = 0;
+		n->mNext = 0;
+		n->mValue = -1;
+		n->mStamp = 0;
+	} else {
+		n = 0;
+	}
+	int stamp = g_00c7c140;
+	n->mID = id;
+	n->mStamp = stamp;
+	n->mValue = value;
+	n->mNext = fHead;
+	fHead = n;
 }
