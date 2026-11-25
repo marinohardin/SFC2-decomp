@@ -10184,7 +10184,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00553e9c	function	fn_00553e9c	nStoredProcedureArguments::tGetCharactersRequest				vtable
 0x00553ed4	function	fn_00553ed4	nStoredProcedureArguments::tGetCharactersRequest				vtable
 0x00553f02	function	fn_00553f02					none
-0x00553f6d	function	fn_00553f6d					none
+0x00553f6d	function	fn_00553f6d		??1tAddItem@@QAE@XZ	add		none
 0x00553fa5	function	fn_00553fa5					none
 0x00554004	function	fn_00554004					none
 0x005540a7	function	fn_005540a7					none
@@ -15340,7 +15340,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00601b0c	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b28	function	nAsyncClientPlayerListProcedures::tCharacterLoggedOn::~tCharacterLoggedOn	nAsyncClientPlayerListProcedures::tCharacterLoggedOn				rtti
 0x00601b33	function	fn_00601b33					none
-0x00601ca9	function	fn_00601ca9					none
+0x00601ca9	function	fn_00601ca9		?fn_00601ca9@tCharacterInfoProcedure@@QAEXPBVtBuffer@nDataStore@@@Z	claim		none
 0x00601d69	function	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>::tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>	tMemberCallback<nAsyncClientPlayerListProcedures::tCharacterReceived,nDataStore::tBuffer_const*>				rtti
 0x00601dfd	function	nAsyncClientPlayerListProcedures::tCharacterReceived::scalar_deleting_destructor	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
 0x00601e19	function	nAsyncClientPlayerListProcedures::tCharacterReceived::~tCharacterReceived	nAsyncClientPlayerListProcedures::tCharacterReceived				rtti
