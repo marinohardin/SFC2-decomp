@@ -82,5 +82,6 @@ namespace std
 // HYPOTHESIS: the global's name is not known.
 typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > fn_00600be5_string;
 
+// FUNCTION: STARFLEETOP 0x00600caf
 // FUNCTION: STARFLEETOP 0x00600c7c
 fn_00600be5_string g_00c39f40 = "MetaMedals";
