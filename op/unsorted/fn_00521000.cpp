@@ -20,7 +20,15 @@ public:
 };
 
 extern float g_0079561c;
-char __stdcall fn_00521965(tAIEntry* e);
+// HYPOTHESIS: both functions are members of one unknown class (the original spills ecx and reloads it for the call)
+class tAIEntryTable;
+class tAIIdList;
+
+class tAIEntryOwner {
+public:
+	int fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b);
+	char fn_00521965(tAIEntry* e);
+};
 
 class tAIIdList {
 public:
@@ -35,25 +43,26 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x00521450
-int __stdcall fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
+int tAIEntryOwner::fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
 {
+	tAIEntryTable* tb = t;
 	int i = 0;
-	tAIEntry* p = t->m_entries;
-	for (; i < t->m_count; i++, p++) {
+	tAIEntry* p = tb->m_entries;
+	for (; i < tb->m_count; i++, p++) {
 		if (p->m_id != -1) {
 			p->m_10 = p->m_14;
-			if (fn_00521965(p)) {
+			if (this->fn_00521965(p)) {
 				p->m_28 = 2;
 			}
 		}
 	}
 	int counts[2];
 	tAIEntry* e;
-	int j;
 	counts[0] = 0;
 	counts[1] = 0;
-	e = t->m_entries;
-	for (j = 0; j < t->m_count; j++, e++) {
+	e = tb->m_entries;
+	int j;
+	for (j = 0; j < tb->m_count; j++, e++) {
 		if (e->m_id != -1) {
 			if (e->m_28 == 0) {
 				counts[e->m_38]++;
@@ -65,7 +74,7 @@ int __stdcall fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
 					counts[e->m_38]++;
 				}
 			}
-			if (t->m_entries[e->m_3c].m_28 != 0) {
+			if (tb->m_entries[e->m_3c].m_28 != 0) {
 				tAIIdList* l = a;
 				if (e->m_38 != 0) {
 					l = b;

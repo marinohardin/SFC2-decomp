@@ -8322,7 +8322,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521041	function	fn_00521041	tAIDesignateTargetsCalc				vtable
 0x00521149	function	fn_00521149	tAIDesignateTargetsCalc				vtable
 0x00521342	function	fn_00521342					none
-0x00521450	function	fn_00521450		?fn_00521450@@YGHPAVtAIEntryTable@@PAVtAIIdList@@1@Z	claim		none
+0x00521450	function	fn_00521450		?fn_00521450@tAIEntryOwner@@QAEHPAVtAIEntryTable@@PAVtAIIdList@@1@Z	claim		none
 0x00521530	function	fn_00521530					none
 0x00521549	function	fn_00521549					none
 0x005218c3	function	fn_005218c3					none
