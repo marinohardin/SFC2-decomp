@@ -11,3 +11,9 @@ void tSeqScene::vfunction43()
 	if (field_D4 && field_E0)
 		vfunction41(field_D4);
 }
+
+// FUNCTION: STARFLEETOP 0x0067dd90
+void tSeqScene::fn_0067dd90()
+{
+	field_EC &= ~1;
+}
