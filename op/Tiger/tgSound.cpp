@@ -2430,14 +2430,14 @@ iTruth tSoundChannelCommand::mMakeUnavailable()
     return fAvailable.mAcquire();
 }
 
-// Unclaimed: an identical 16-byte twin, and builds disagree on which body this maps to.
+// FUNCTION: STARFLEETOP 0x0064d860
 // The volume setter; the exe shares this body with tSoundChannelFormat::mSetBitsPerSample.
 void tChannelAttributes::vfunction6(long volume)
 {
     mVolume = volume;
 }
 
-// Unclaimed: an identical 16-byte twin, and builds disagree on which body this maps to.
+// FUNCTION: STARFLEETOP 0x0064d870
 // The sound-type getter (vtable slot 11 of tSoundChannelFormat)
 long tSoundChannelFormat::vfunction11()
 {
