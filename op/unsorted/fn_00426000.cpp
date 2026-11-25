@@ -349,6 +349,8 @@ void fn_00426141_Class::fn_00426886(unsigned int mask)
 
 #include <string.h>
 #include "unsorted/tObject_0092deb4.h"
+#include "unsorted/tMemoryPart.h"
+#include "unsorted/fn_0090bed4_Object.h"
 
 // HYPOTHESIS: a record of 0xe8 bytes built by the function at 0x00426988: a table of 20 counters
 // with one entry set from an ID, and a flag telling whether the ID is the one slot 33 of the
@@ -362,9 +364,9 @@ public:
 	~fn_00426988_Base();
 
 	char m00;
-	int m04;
-	int m08;
-	int m0c;
+	void** m04;
+	void** m08;
+	void** m0c;
 };
 
 inline fn_00426988_Base::fn_00426988_Base(char aKind)
@@ -375,14 +377,28 @@ inline fn_00426988_Base::fn_00426988_Base(char aKind)
 	m0c = 0;
 }
 
+#include "unsorted/fn_005717f7_vector.h"
+
+// HYPOTHESIS: the base is the vector of pointers destroyed through 0x00571a7a (an allocator byte,
+// first, last and end pointers).
 inline fn_00426988_Base::~fn_00426988_Base()
 {
+	((fn_005717f7_vector*)this)->~fn_005717f7_vector();
 }
+
+// HYPOTHESIS: the object mdc points to; its destructor is at 0x00524daa.
+class fn_00524daa_Class
+{
+public:
+	~fn_00524daa_Class();
+};
 
 class fn_00426988_Class : public fn_00426988_Base
 {
 public:
 	fn_00426988_Class(int aID);
+	~fn_00426988_Class();
+	void fn_00603dee(void** p);
 
 	int m10[20];
 	int m60[20];
@@ -395,7 +411,7 @@ public:
 	char md0;
 	int md4;
 	int md8;
-	int mdc;
+	fn_00524daa_Class* mdc;
 	int me0;
 	int me4;
 };
@@ -424,4 +440,33 @@ fn_00426988_Class::fn_00426988_Class(int aID)
 	else
 		md0 = 0;
 	mdc = 0;
+}
+
+// HYPOTHESIS: the call of 0x00522b29 on g_p0090bed4 is missing below until fn_0090bed4_Object
+// declares that member (header request).
+// FUNCTION: STARFLEETOP 0x00426a4d
+fn_00426988_Class::~fn_00426988_Class()
+{
+	if (mc4 != 0)
+	{
+		tMemoryPart::Search_tMemoryPart()->vfunction10((void*)mc4);
+		mc4 = 0;
+		mc8 = 0;
+		mcc = 0;
+	}
+	// HYPOTHESIS: the vector's size test, written through a local count.
+	while (m04 != 0)
+	{
+		void** last = m08;
+		int count = last - m04;
+		if (count == 0)
+			break;
+		fn_00603dee(last - 1);
+	}
+	// (call of 0x00522b29 on g_p0090bed4 with this: needs the header member)
+	if (mdc != 0)
+	{
+		delete mdc;
+		mdc = 0;
+	}
 }
