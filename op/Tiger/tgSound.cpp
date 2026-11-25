@@ -149,6 +149,12 @@ tPoint3* tSoundChannel::mGet3DSoundOrientation()
 {
     return (&field_0x30)->mGet3DSoundOrientation();
 }
+
+// FUNCTION: STARFLEETOP 0x00646800
+tPoint3* tSoundChannel::mGet3DSoundVelocity()
+{
+    return (&field_0x30)->mGet3DSoundVelocity();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
