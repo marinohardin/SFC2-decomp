@@ -1234,7 +1234,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00425a18	function	fn_00425a18		?fn_00425a18@fn_004255b5_class@@QAEDPAVtEntity@@0D@Z	claim		none
 0x00425aad	function	fn_00425aad					none
 0x00425d5f	function	fn_00425d5f		?fn_00425d5f@fn_004255b5_class@@QAEDP6IDPAVtEntity@@@ZHHUtPoint3@@2MUfn_00425d5f_words@@00@Z	claim		none
-0x00425def	function	fn_00425def					none
+0x00425def	function	fn_00425def		?fn_00425def@fn_004255b5_class@@QAEDPAVtEntity@@UtPoint3@@1MUfn_00425d5f_words@@@Z	claim		none
 0x00425eb6	function	fn_00425eb6					none
 0x00425ec0	function	fn_00425ec0					none
 0x00425ed6	function	fn_00425ed6					none
@@ -18486,7 +18486,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069b1d0	function	fn_0069b1d0					none
 0x0069b200	function	fn_0069b200		??LtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b250	function	fn_0069b250		??DtPoint3@@QBEMABU0@@Z	callers		none
-0x0069b270	function	fn_0069b270					none
+0x0069b270	function	fn_0069b270		??DtPoint3@@QBE?AU0@M@Z	add		none
 0x0069b2b0	function	fn_0069b2b0		??XtPoint3@@QAEAAU0@M@Z	callers		none
 0x0069b2e0	function	fn_0069b2e0					none
 0x0069b320	function	fn_0069b320		??_0tPoint3@@QAEAAU0@M@Z	callers		none

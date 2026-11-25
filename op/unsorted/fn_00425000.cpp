@@ -554,3 +554,23 @@ char fn_004255b5_class::fn_00425d5f(char (__fastcall *callback)(tEntity*), int c
 	}
 	return ok;
 }
+
+// FUNCTION: STARFLEETOP 0x00425def
+char fn_004255b5_class::fn_00425def(tEntity* e, tPoint3 a, tPoint3 b, float r, fn_00425d5f_words c)
+{
+	float radius = e->vfunction14();
+	// HYPOTHESIS: the three-word locals are the original's copies of the returned points.
+	fn_00425d5f_words d = *(fn_00425d5f_words*)&(const tPoint3&)(e->fCurrPos - *(tPoint3*)&c);
+	float t = *(tPoint3*)&d * b;
+	if (t < 0.0f || t > r)
+		return 1;
+	tPoint3 p;
+	{
+		tPoint3 scaled = b * t;
+		p = scaled;
+	}
+	fn_00425d5f_words q = *(fn_00425d5f_words*)&(const tPoint3&)(p - *(tPoint3*)&d);
+	if (*(tPoint3*)&q * *(tPoint3*)&q < radius * radius)
+		return 0;
+	return 1;
+}
