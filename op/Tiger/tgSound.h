@@ -408,7 +408,7 @@ public:
     virtual tSoundChannelFormat* mGetSoundChannelFormat();
     virtual long mGetBufferLength();
     virtual long mGetNumChannels();
-    virtual void mGetBytesPerSample();
+    virtual long mGetBytesPerSample();
     virtual void vfunction57();
     virtual void mGetBitsPerSample();
     // HYPOTHESIS: tgSoundPart::mWeAutoRemoveChannel adds 0x1000 to the type read here.
