@@ -50,3 +50,7 @@ void __stdcall fn_00601557( const std::string& param_1, int param_2 )
 	fn_00404e8a( stream << "*** ", param_1 ) << " ***";
 	fn_005a616c_class().fn_005a616c( stream.str(), 0, 3, 3, 0 );
 }
+
+// HYPOTHESIS: a second global std::string built from the same literal; its dynamic initializer is this function.
+// FUNCTION: STARFLEETOP 0x0060161d
+std::string g_00c39ff0 = "MessengerRelayNameC";
