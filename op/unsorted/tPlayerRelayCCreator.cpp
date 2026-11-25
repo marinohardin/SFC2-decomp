@@ -21,6 +21,5 @@ tPlayerRelayCCreator::~tPlayerRelayCCreator()
 void tPlayerRelayCCreator::vfunction3()
 {
     // HYPOTHESIS: the original discards the new object
-    tPlayerRelayC *relay = 0;
-    relay = new tPlayerRelayC;
+    new tPlayerRelayC;
 }
