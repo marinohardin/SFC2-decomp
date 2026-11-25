@@ -4703,7 +4703,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0049f4b2	function	tActualPlayer::tActualPlayer	tActualPlayer				rtti
 0x004a0355	function	fn_004a0355					none
 0x004a037a	function	fn_004a037a	tListMember				vtable
-0x004a0384	function	fn_004a0384					none
+0x004a0384	function	fn_004a0384		?fn_004a0384@tMedalsPanel@@QAEXXZ	add		none
 0x004a039a	function	tNotifiee::scalar_deleting_destructor	tNotifiee				rtti
 0x004a03bc	function	tShadowFloat::tShadowFloat	tShadowFloat				rtti
 0x004a03cd	function	tShadowTStr::tShadowTStr	tShadowTStr				rtti
@@ -15301,8 +15301,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600f61	function	fn_00600f61	tMedalsPanel				vtable
 0x00600f8d	function	fn_00600f8d	tMetaClientPanel				vtable
 0x00600f90	function	fn_00600f90		?FUN_00600f90@tMedalsPanel@@QAEXPAVfn_0042a480_object@@@Z	claim		none
-0x00600fba	function	fn_00600fba					none
-0x00601054	function	fn_00601054					none
+0x00600fba	function	fn_00600fba		?FUN_00600fba@tMedalsPanel@@QAEXH@Z	claim		none
+0x00601054	function	fn_00601054		?fn_00601054@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	add		none
 0x00601141	function	fn_00601141					none
 0x0060114d	function	fn_0060114d					none
 0x00601159	function	fn_00601159					none
