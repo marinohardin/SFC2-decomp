@@ -52,6 +52,21 @@ def test_the_same_kind_in_both_objects_is_fine(tmp_path):
     assert verify.comdat_kind_conflicts(objs) == []
 
 
+def test_no_duplicates_in_two_objects_is_an_error(tmp_path):
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(DTOR, 1)]),
+            'b.cpp': write(tmp_path, 'b.obj', [(DTOR, 1)])}
+    assert verify.comdat_kind_conflicts(objs) == [
+        f'{DTOR} is defined with COMDAT selection "no duplicates" in more than one object: '
+        'a.cpp, b.cpp (a linker accepts one definition of a name; two different functions cannot '
+        'share it)']
+
+
+def test_any_in_two_objects_stays_fine(tmp_path):
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(DTOR, 2)]),
+            'b.cpp': write(tmp_path, 'b.obj', [(DTOR, 2)])}
+    assert verify.comdat_kind_conflicts(objs) == []
+
+
 def test_a_symbol_defined_in_one_object_only_is_fine(tmp_path):
     objs = {'a.cpp': write(tmp_path, 'a.obj', [(DTOR, 1)]),
             'b.cpp': write(tmp_path, 'b.obj', [('?other@@YAXXZ', 2)])}

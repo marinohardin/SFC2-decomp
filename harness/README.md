@@ -148,7 +148,9 @@ found a symbol that the exact functions use wrongly.
 **One kind of definition per symbol** (`--all` only, `report_comdat_kinds` in `lib/verify.py`). After
 every unit is built, a symbol that two built objects define as COMDATs with different selection
 kinds is an `ERROR` line naming the symbol, the kinds and the units, and fails the run (exit 2); so
-is a symbol defined outside COMDATs in two objects. VC6 emits an out-of-line definition as "no
+is a symbol defined outside COMDATs in two objects, and so is a symbol that two objects both define
+as a "no duplicates" COMDAT (the same kind twice is still two definitions: two different functions
+given one decorated name, typically one class name written on both). VC6 emits an out-of-line definition as "no
 duplicates" and an inline copy as "any", so a function defined out of line in one unit and inline
 in another (typically behind a macro the claiming unit sets) cannot be linked: a linker, and the
 consumer's lifter, refuse the pair. A session gives the function one definition, the same in every
