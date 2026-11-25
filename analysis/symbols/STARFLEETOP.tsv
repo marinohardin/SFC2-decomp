@@ -7644,7 +7644,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005062eb	function	fn_005062eb					none
 0x005062ff	function	fn_005062ff					none
 0x00506313	function	fn_00506313					none
-0x0050678f	function	fn_0050678f					none
+0x0050678f	function	fn_0050678f		?fn_0050678f@@YAXXZ	claim		none
 0x005067ee	function	tFx_Shockwave2::tFx_Shockwave2	tFx_Shockwave2				rtti
 0x00506836	function	fn_00506836					none
 0x00506e94	function	fn_00506e94	tFx_Shockwave2				vtable
