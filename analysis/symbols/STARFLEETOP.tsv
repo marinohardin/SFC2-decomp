@@ -1131,7 +1131,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00423025	function	fn_00423025					none
 0x0042305e	function	fn_0042305e	tEntityControlShip				vtable
 0x004230ab	function	fn_004230ab	tEntityControlShip				vtable
-0x004230b9	function	fn_004230b9					none
+0x004230b9	function	fn_004230b9		?fn_004230b9@@YIPAHPAH@Z	claim		none
 0x004230c6	function	fn_004230c6					none
 0x0042310b	function	fn_0042310b					none
 0x00423142	function	fn_00423142					none
