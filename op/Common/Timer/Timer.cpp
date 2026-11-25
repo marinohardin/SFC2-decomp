@@ -14,6 +14,7 @@ tTimer::tTimer()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0070fca0
 // FUNCTION: STARFLEETOP 0x0070fcc0
 tTimer::~tTimer()
 {
