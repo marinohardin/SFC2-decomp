@@ -14,6 +14,11 @@ tTimer::tTimer()
 {
 }
 
+// FUNCTION: STARFLEETOP 0x0070fcc0
+tTimer::~tTimer()
+{
+}
+
 // FUNCTION: STARFLEETOP 0x0070fd40
 void tTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallback, int32u context )
 {
