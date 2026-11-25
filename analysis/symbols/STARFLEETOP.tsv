@@ -1224,7 +1224,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004255b5	function	fn_004255b5		?fn_004255b5@fn_004255b5_class@@QAEPAUfn_004255b5_vector@@MMHM@Z	claim		none
 0x004256b1	function	fn_004256b1		?fn_004256b1@fn_004255b5_class@@QAEXIIUfn_00412f08_point@@M@Z	claim		none
 0x00425726	function	fn_00425726		?fn_00425726@tObject_008f5170@@QAEPAVtObject_00425726_list@@JJ@Z	claim		none
-0x0042574b	function	fn_0042574b					none
+0x0042574b	function	fn_0042574b		?fn_0042574b@fn_004255b5_class@@QAEXHHMMMPAI000@Z	claim		none
 0x004257b4	function	fn_004257b4					none
 0x004257f5	function	fn_004257f5					none
 0x00425824	function	fn_00425824					none

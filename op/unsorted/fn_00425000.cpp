@@ -350,6 +350,7 @@ struct fn_004255b5_class
 	fn_004255b5_vector* fn_004255b5(float x, float y, int unused, float r);
 	void fn_004259bd(float x, float y, unsigned int* col, unsigned int* row);
 	void fn_004256b1(unsigned int col, unsigned int row, fn_00412f08_point p, float r);
+	void fn_0042574b(int unused0, int unused1, float x, float y, float r, unsigned int* col0, unsigned int* col1, unsigned int* row0, unsigned int* row1);
 };
 
 // FUNCTION: STARFLEETOP 0x004255b5
@@ -400,4 +401,15 @@ tObject_00425726_list *tObject_008f5170::fn_00425726(int32 column, int32 row)
 	if ((unsigned int)column < (unsigned int)self[1] && (unsigned int)row < (unsigned int)self[2])
 		return (tObject_00425726_list *)(self[0] + (self[2] * row + column) * 8);
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0042574b
+void fn_004255b5_class::fn_0042574b(int unused0, int unused1, float x, float y, float r, unsigned int* col0, unsigned int* col1, unsigned int* row0, unsigned int* row1)
+{
+	this->fn_004259bd(x - r, y - r, col0, row0);
+	this->fn_004259bd(x + r, y + r, col1, row1);
+	if (*col0 > *col1)
+		*col0 = 0;
+	if (*row0 > *row1)
+		*row0 = 0;
 }
