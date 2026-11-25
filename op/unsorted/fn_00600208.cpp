@@ -43,5 +43,6 @@ fn_00600208_string g_00c39e48 = "BriefingSP";
 // FUNCTION: STARFLEETOP 0x0060026e
 fn_00600208_string g_00c39e30 = "DebriefingSP";
 
+// FUNCTION: STARFLEETOP 0x00600307
 // FUNCTION: STARFLEETOP 0x006002d4
 fn_00600208_string g_00c39e20 = "BriefingMultiMeta";
