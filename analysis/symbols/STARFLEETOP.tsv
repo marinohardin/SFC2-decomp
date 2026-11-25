@@ -17186,7 +17186,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00660f90	function	tChannelGroupManagerPart::mKillRetainedMode	tChannelGroupManagerPart	?mKillRetainedMode@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fb0	function	tChannelGroupManagerPart::mClearAttachments	tChannelGroupManagerPart	?mClearAttachments@tChannelGroupManagerPart@@UAEEK@Z	claim		claim
 0x00660fd0	function	tSafeArray<tChannelGroup>::`scalar_deleting_destructor'	tSafeArray<tChannelGroup>	??_G?$tSafeArray@VtChannelGroup@@@@UAEPAXI@Z	mangled		mangled
-0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart				mangled
+0x00661160	function	tSoundPart::Test_tSoundPart	tSoundPart	?Test_tSoundPart@tSoundPart@@SAEXZ	claim		mangled
 0x00661220	function	tAudioFileInfoPart::Test_tAudioFileInfoPart	tAudioFileInfoPart	?Test_tAudioFileInfoPart@tAudioFileInfoPart@@SAEXZ	callers		sdk
 0x006612e0	function	tChannelGroup::mAddOwner	tChannelGroup	?mAddOwner@tChannelGroup@@UAEXXZ	mangled		mangled
 0x006612f0	function	tChannelGroup::mRemoveOwner	tChannelGroup	?mRemoveOwner@tChannelGroup@@UAEXXZ	mangled		mangled

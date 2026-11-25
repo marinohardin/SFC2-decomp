@@ -542,7 +542,28 @@ class tSoundPart : public tPart
 {
 public:
     tSoundPart() {}
-    GenAbstractBinding(tSoundPart);
+    // GenAbstractBinding(tSoundPart) written out: Test_tSoundPart has its own address in the exe.
+    static tSoundPart *Search_tSoundPart( void )
+    {
+        static tSoundPart *partCachePtr = (tSoundPart*) NULL;
+        if (partCachePtr) return partCachePtr;
+        else
+        {
+            for( int idx = 0; idx<tPart::fStaticPartActivateCount; idx++)
+            {
+                tSoundPart *bindResult = dynamic_cast< tSoundPart *>(tPart::fStaticPartActivateList[idx] );
+                if (bindResult)
+                {
+                    tPart::mAddToPartCachePtrList( (tPart**)&partCachePtr );
+                    partCachePtr = bindResult;
+                    return bindResult;
+                }
+            }
+            throw tPartBindingException();
+            return (kFalse);
+        }
+    };
+    static iTruth Test_tSoundPart( void );
 
     virtual iTruth mInit(tInitSoundPartInfo* info);
     virtual void mDone();
