@@ -106,16 +106,16 @@ tAudioFileInfoPart::~tAudioFileInfoPart()
 {
 }
 
-// The exe's symbol places tAudioPriorityManagerPart's mIsReady in this unit's address range. It
-// waits for the memory part (Test_ at 0x0064fc00, see Tiger/tgSound.cpp).
-#include "Tiger/taudiopriority.h"
+// tAudioFileInfoPart's mIsReady (slot 2 of its vtable, 0x007b73ec). It waits for the memory part
+// (Test_ at 0x0064fc00, see Tiger/tgSound.cpp).
+//
 
 
 
 
 
 // FUNCTION: STARFLEETOP 0x00657970
-iTruth tAudioPriorityManagerPart::mIsReady()
+iTruth tAudioFileInfoPart::mIsReady()
 {
     if (TestPart(tMemoryPart) == kTrue)
         return kTrue;

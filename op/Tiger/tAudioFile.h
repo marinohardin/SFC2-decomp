@@ -24,6 +24,7 @@ public:
 
     virtual void mActivate();
     virtual void mDeactivate();
+    virtual iTruth mIsReady();   // slot 2: 0x00657970
 
     // Slot order from the exe's vtable (0x007b73ec).
     virtual long mGetNumberOfSamples(unsigned long param_1);

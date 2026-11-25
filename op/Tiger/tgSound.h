@@ -680,12 +680,13 @@ public:
 
 // HYPOTHESIS: a part like tClockPart: tPart's virtuals fill slots 0-5 and its fields 0x4-0xb, so
 // the vtable pointer is not padded. Its vtable (0x00798fb0) has 139 slots, 0-138; twSoundPart's
-// first own virtual is slot 139. It overrides most of tSoundPart's slots; only the ones this
-// part's units define are declared again here.
+// first own virtual is slot 139. It overrides most of tSoundPart's slots; only the ones this part's
+// units define are declared again here; mIsReady (slot 2) is 0x0064fbe0.
 class tgSoundPart : public tSoundPart
 {
 public:
     tgSoundPart();
+    virtual iTruth mIsReady();
     virtual void mActivate();
     virtual void mDeactivate();
     virtual iTruth mInit(tInitSoundPartInfo* info);
