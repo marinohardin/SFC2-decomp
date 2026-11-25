@@ -591,7 +591,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004101e4	function	fn_004101e4	tEntity	?vfunction16@tEntity@@UAEXXZ	claim		none
 0x0041020c	function	fn_0041020c	tEntity	?vfunction17@tEntity@@UAEXXZ	claim		none
 0x0041021f	function	fn_0041021f	vfunction33_result	?fn_0041021f@vfunction33_result@@QAEDXZ	claim		none
-0x00410223	function	fn_00410223					none
+0x00410223	function	fn_00410223		?fn_00410223@vfunction33_result@@QAEHXZ	add		none
 0x00410227	function	fn_00410227	vfunction33_result	?fn_00410227@vfunction33_result@@QAEXH@Z	claim		none
 0x00410231	function	fn_00410231	vfunction33_result	?fn_00410231@vfunction33_result@@QAEHXZ	claim		none
 0x00410239	function	fn_00410239	vfunction33_result	?fn_00410239@vfunction33_result@@QAEXH@Z	claim		none
@@ -1262,10 +1262,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426ca8	function	fn_00426ca8		?fn_00426ca8@tObject_00426ca8@@QAEXHH@Z	claim		none
 0x00426d48	function	fn_00426d48					none
 0x00426da7	function	fn_00426da7					none
-0x00426e11	function	fn_00426e11					none
-0x00426e18	function	fn_00426e18					none
+0x00426e11	function	fn_00426e11		?fn_00426e11@@YIHPAX@Z	add		none
+0x00426e18	function	fn_00426e18		?fn_00426e18@@YIHPAX@Z	add		none
 0x00426e1f	function	fn_00426e1f					none
-0x00426e2c	function	fn_00426e2c					none
+0x00426e2c	function	fn_00426e2c		?fn_00426e2c@@YIHPAX@Z	add		none
 0x00426e40	function	fn_00426e40					none
 0x00426e61	function	fn_00426e61					none
 0x00426e7a	function	fn_00426e7a					none
@@ -3524,7 +3524,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046acd5	function	fn_0046acd5		?fn_0046acd5@@YAXPAD@Z	claim		none
 0x0046ad4d	function	fn_0046ad4d	tGameState	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z	claim		vtable
 0x0046ad61	function	fn_0046ad61					none
-0x0046ad85	function	fn_0046ad85					none
+0x0046ad85	function	fn_0046ad85		?insert@?$list@HV?$allocator@H@std@@@std@@QAE?AViterator@12@V312@ABH@Z	add		none
 0x0046adf5	function	fn_0046adf5	tState_HotKeys				vtable
 0x0046adfb	function	fn_0046adfb	tState_HotKeys				vtable
 0x0046b0f7	function	fn_0046b0f7					none
@@ -4225,7 +4225,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00488e66	function	fn_00488e66					none
 0x00488e70	function	fn_00488e70					none
 0x00488e86	function	fn_00488e86					none
-0x00488e97	function	fn_00488e97					none
+0x00488e97	function	fn_00488e97		?fn_00488e97@@YGXHH@Z	add		none
 0x00488ecf	function	fn_00488ecf					none
 0x004890d1	function	fn_004890d1					none
 0x00489186	function	fn_00489186					none
@@ -5111,7 +5111,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b85f1	function	fn_004b85f1					none
 0x004b900a	function	fn_004b900a					none
 0x004b915b	function	fn_004b915b					none
-0x004b94dc	function	fn_004b94dc					none
+0x004b94dc	function	fn_004b94dc		?fn_004b94dc@@YIHPAX@Z	add		none
 0x004b94e3	function	fn_004b94e3					none
 0x004b97cc	function	fn_004b97cc					none
 0x004b99a4	function	fn_004b99a4					none
@@ -8185,7 +8185,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051bc86	function	tAITBombOfficer::scalar_deleting_destructor	tAITBombOfficer				rtti
 0x0051bca2	function	fn_0051bca2	tAITransportOfficer				vtable
 0x0051bccb	function	fn_0051bccb					none
-0x0051be52	function	tAIAdmiral::tAIAdmiral	tAIAdmiral				rtti
+0x0051be52	function	tAIAdmiral::tAIAdmiral	tAIAdmiral	??0tAIAdmiral@@QAE@H@Z	add		rtti
 0x0051bf1a	function	fn_0051bf1a	tAIAdmiral				vtable
 0x0051bf1e	function	tAIAdmiral::scalar_deleting_destructor	tAIAdmiral				rtti
 0x0051bf3a	function	tAIAdmiral::~tAIAdmiral	tAIAdmiral				rtti
@@ -8193,7 +8193,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051bfce	function	fn_0051bfce					none
 0x0051bfdc	function	fn_0051bfdc					none
 0x0051c18a	function	fn_0051c18a					none
-0x0051c1e1	function	fn_0051c1e1					none
+0x0051c1e1	function	fn_0051c1e1		?fn_0051c1e1@tAIAdmiral@@QAEXPAX@Z	add		none
 0x0051c1f3	function	fn_0051c1f3					none
 0x0051c210	function	fn_0051c210					none
 0x0051c257	function	fn_0051c257					none
@@ -8204,7 +8204,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051c5f2	function	fn_0051c5f2					none
 0x0051c668	function	fn_0051c668					none
 0x0051c6fc	function	fn_0051c6fc					none
-0x0051c76f	function	fn_0051c76f					none
+0x0051c76f	function	fn_0051c76f		?fn_0051c76f@tAIAdmiral@@QAEXHH@Z	add		none
 0x0051c7af	function	fn_0051c7af					none
 0x0051c7e3	function	fn_0051c7e3					none
 0x0051c81f	function	fn_0051c81f					none
@@ -8238,7 +8238,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051d8a5	function	tCalculationData::tCalculationData	tCalculationData				rtti
 0x0051d8b7	function	tCalculationData::scalar_deleting_destructor	tCalculationData				rtti
 0x0051d8d3	function	tCalculationData::~tCalculationData	tCalculationData				rtti
-0x0051d8da	function	tCalculationInitData::tCalculationInitData	tCalculationInitData				rtti
+0x0051d8da	function	tCalculationInitData::tCalculationInitData	tCalculationInitData	??0tCalculationInitData@@QAE@H@Z	add		rtti
 0x0051d8f2	function	tCalculationInitData::scalar_deleting_destructor	tCalculationInitData				rtti
 0x0051d90e	function	tCalculationInitData::~tCalculationInitData	tCalculationInitData				rtti
 0x0051d919	function	tAICalculation::tAICalculation	tAICalculation				rtti
@@ -8289,32 +8289,32 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520004	function	fn_00520004	tAICaptain	?fn_00520004@tAICaptain@@QAEXMEPAD@Z	claim		none
 0x0052008f	function	fn_0052008f	tAICaptain	?fn_0052008f@tAICaptain@@QAEXXZ	claim		none
 0x005200c8	function	fn_005200c8	tAICaptain	?vfunction4@tAICaptain@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
-0x005208d2	function	fn_005208d2		?erase@?$vector@UtObject_0051e3ac_entry@@V?$allocator@UtObject_0051e3ac_entry@@@std@@@std@@QAEPAUtObject_0051e3ac_entry@@PAU3@0@Z	callers		none
-0x0052090a	function	fn_0052090a					none
-0x00520966	function	tAIData::tAIData	tAIData				rtti
+0x005208d2	function	fn_005208d2		?fn_005208d2@fn_005208d2_Vec@@QAEPAUfn_005208d2_Elem@@PAU2@0@Z	claim		none
+0x0052090a	function	fn_0052090a		?fn_0052090a@@YGPAHPAH0@Z	claim		none
+0x00520966	function	tAIData::tAIData	tAIData	??0tAIData@@QAE@DH@Z	claim		rtti
 0x00520990	function	tBasicFile::mDispose	tBasicFile	?mDispose@tBasicFile@@QAEPAV1@XZ	mangled		mangled
 0x0052099d	function	fn_0052099d	tETrait				vtable
-0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData				rtti
-0x005209bf	function	fn_005209bf	tAIData				vtable
-0x005209db	function	fn_005209db	tAIData				vtable
-0x005209e1	function	tAIData::~tAIData	tAIData				rtti
+0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData	??_GtAIData@@UAEPAXI@Z	claim		rtti
+0x005209bf	function	fn_005209bf	tAIData	?vfunction2@tAIData@@UAEXH@Z	claim		vtable
+0x005209db	function	fn_005209db	tAIData	?vfunction5@tAIData@@UAEPBDXZ	claim		vtable
+0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	claim		rtti
 0x00520a35	function	tETrait::~tETrait	tETrait				rtti
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
-0x00520ab2	function	fn_00520ab2					none
-0x00520b1a	function	fn_00520b1a					none
-0x00520b5e	function	fn_00520b5e					none
+0x00520ab2	function	fn_00520ab2		??0tAIUnitData@@QAE@HHHMMD@Z	claim		none
+0x00520b1a	function	fn_00520b1a		??0tAIUnitData@@QAE@XZ	claim		none
+0x00520b5e	function	fn_00520b5e		??0tAIUnitData0208@@QAE@XZ	claim		none
 0x00520bc9	function	tAIUnitData::scalar_deleting_destructor	tAIUnitData				rtti
 0x00520be5	thunk	fn_00520be5					none
 0x00520bea	function	tAIUnitData::tAIUnitData	tAIUnitData				rtti
-0x00520cba	function	fn_00520cba					none
-0x00520d38	function	fn_00520d38					none
-0x00520d69	function	fn_00520d69					none
-0x00520dad	function	fn_00520dad					none
-0x00520e30	function	fn_00520e30					none
-0x00520e5d	function	fn_00520e5d					none
+0x00520cba	function	fn_00520cba		?fn_00520cba@tAIUnitDataList@@QAEHHHMD@Z	claim		none
+0x00520d38	function	fn_00520d38		?fn_00520d38@tAIUnitDataList@@QAEPAVtAIUnitData@@H@Z	claim		none
+0x00520d69	function	fn_00520d69		?fn_00520d69@tAIUnitDataList@@QAEXHH@Z	claim		none
+0x00520dad	function	fn_00520dad		?fn_00520dad@tAIUnitDataList@@QAEXHHHH@Z	claim		none
+0x00520e30	function	fn_00520e30		?fn_00520e30@tAIUnitDataList@@QAEXXZ	claim		none
+0x00520e5d	function	fn_00520e5d		?fn_00520e5d@tAIUnitDataList@@QAEDXZ	claim		none
 0x00520e90	function	fn_00520e90	tAIUnitData				vtable
-0x00520ecf	function	fn_00520ecf					none
-0x00520f16	function	fn_00520f16					none
+0x00520ecf	function	fn_00520ecf		?fn_00520ecf@tX@@QAEXHHUtS@@H@Z	claim		none
+0x00520f16	function	fn_00520f16		?fn_00520f16@tX@@QAEXD@Z	claim		none
 0x00520f26	function	tAIDesignateTargetsCalc::tAIDesignateTargetsCalc	tAIDesignateTargetsCalc				rtti
 0x00520fb1	function	tAIDesignateTargetsCalc::scalar_deleting_destructor	tAIDesignateTargetsCalc				rtti
 0x00520fcd	function	fn_00520fcd					none
@@ -8322,52 +8322,52 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521041	function	fn_00521041	tAIDesignateTargetsCalc				vtable
 0x00521149	function	fn_00521149	tAIDesignateTargetsCalc				vtable
 0x00521342	function	fn_00521342					none
-0x00521450	function	fn_00521450					none
-0x00521530	function	fn_00521530					none
+0x00521450	function	fn_00521450		?fn_00521450@tAIEntryOwner@@QAEHPAVtAIEntryTable@@PAVtAIIdList@@1@Z	claim		none
+0x00521530	function	fn_00521530		?fn_00521530@@YGII@Z	claim		none
 0x00521549	function	fn_00521549					none
-0x005218c3	function	fn_005218c3					none
-0x005218f9	function	fn_005218f9					none
-0x00521965	function	fn_00521965					none
-0x0052197e	function	fn_0052197e					none
-0x00521a15	function	fn_00521a15					none
-0x00521b5d	function	fn_00521b5d					none
-0x00521b98	function	fn_00521b98					none
-0x00521bc8	function	fn_00521bc8					none
+0x005218c3	function	fn_005218c3		??1fn_005218c3_owner@@QAE@XZ	claim		none
+0x005218f9	function	fn_005218f9		?fn_005218f9@fn_005218f9_owner@@QAEXPAVtAIEntryTable@@PAVfn_005218f9_node@@@Z	claim		none
+0x00521965	function	fn_00521965		?fn_00521965@@YG_NPBM@Z	claim		none
+0x0052197e	function	fn_0052197e		?fn_0052197e@fn_0052197e_owner@@QAEMPAMHPAUfn_0052197e_node@@@Z	claim		none
+0x00521a15	function	fn_00521a15		?fn_00521a15@@YGMMPAUfn_0052197e_node@@@Z	claim		none
+0x00521b5d	function	fn_00521b5d		?fn_00521b5d@@YGXPAVtAIEntryTable@@PAM@Z	claim		none
+0x00521b98	function	fn_00521b98		?fn_00521b98@fn_00521b98_owner@@QAEXPAU1@@Z	claim		none
+0x00521bc8	function	fn_00521bc8		?fn_00521bc8@fn_00521b98_owner@@QAEXPAUfn_00521b98_payload@@@Z	claim		none
 0x00521c58	function	tAIDesignateTargetsCalcResult::tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
 0x00521ca0	function	tAIDesignateTargetsCalcResult::scalar_deleting_destructor	tAIDesignateTargetsCalcResult				rtti
 0x00521cbc	function	tAIDesignateTargetsCalcResult::~tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
 0x00521cfb	function	tAIDesignateTargetsCalcResult::tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
-0x00521d73	function	fn_00521d73					none
-0x00521db5	function	fn_00521db5					none
-0x00521dd9	function	fn_00521dd9					none
-0x00521e11	function	fn_00521e11					none
+0x00521d73	function	fn_00521d73		?fn_00521d73@tObject_00521d73@@QAEXH@Z	claim		none
+0x00521db5	function	fn_00521db5		?fn_00521db5@fn_00521db5_owner@@QAEXHH@Z	claim		none
+0x00521dd9	function	fn_00521dd9		?fn_00521dd9@fn_00521dd9_owner@@QAEXXZ	claim		none
+0x00521e11	function	fn_00521e11		?fn_00521e11@fn_00521e11_owner@@QAEXH@Z	claim		none
 0x00521e22	function	fn_00521e22					none
-0x0052203a	function	fn_0052203a					none
-0x00522077	function	fn_00522077					none
-0x005220b1	function	fn_005220b1					none
+0x0052203a	function	fn_0052203a		?fn_0052203a@fn_0052203a_vector@@QAEXPAH@Z	claim		none
+0x00522077	function	fn_00522077		?fn_00522077@fn_00522077_list@@QAEXPAPAUfn_00522077_node@@PAU2@H@Z	claim		none
+0x005220b1	function	fn_005220b1		?fn_005220b1@fn_00522077_list@@QAEPAUfn_00522077_node@@PAU2@0@Z	claim		none
 0x005220d5	function	fn_005220d5					none
-0x0052210d	function	fn_0052210d					none
-0x0052238b	function	fn_0052238b					none
-0x005223af	function	fn_005223af					none
+0x0052210d	function	fn_0052210d		?fn_0052210d@@YGXHHH@Z	add		none
+0x0052238b	function	fn_0052238b		??0tList@tAIUnitDataList@@QAE@XZ	claim		none
+0x005223af	function	fn_005223af		?fn_005223af@@YAXPAHH@Z	claim		none
 0x005223dc	function	fn_005223dc					none
-0x00522441	function	fn_00522441					none
-0x005224d8	function	fn_005224d8					none
-0x005224e8	function	fn_005224e8					none
+0x00522441	function	fn_00522441		??0fn_00522441_vector@@QAE@ABU0@@Z	claim		none
+0x005224d8	function	fn_005224d8		??0fn_005224d8_holder@@QAE@H@Z	claim		none
+0x005224e8	function	fn_005224e8		??0fn_005224d8_holder@@QAE@XZ	claim		none
 0x005224f3	function	fn_005224f3					none
 0x005225e2	function	tAIManager::scalar_deleting_destructor	tAIManager				rtti
 0x005225fe	function	tAIManager::~tAIManager	tAIManager				rtti
-0x00522679	function	fn_00522679					none
-0x00522681	function	fn_00522681					none
+0x00522679	function	fn_00522679		?fn_00522679@@YIXPAD@Z	claim		none
+0x00522681	function	fn_00522681		?fn_00522681@fn_0090bed4_Object@@QAEXXZ	claim		none
 0x00522708	function	fn_00522708					none
-0x0052277b	function	fn_0052277b					none
-0x005227c1	function	fn_005227c1					none
+0x0052277b	function	fn_0052277b		?fn_0052277b@@YIXPADHPAX@Z	claim		none
+0x005227c1	function	fn_005227c1		?fn_005227c1@@YIXPAD@Z	claim		none
 0x0052280a	function	fn_0052280a					none
-0x0052294d	function	fn_0052294d					none
-0x005229b9	function	fn_005229b9					none
-0x00522a09	function	fn_00522a09					none
-0x00522b29	function	fn_00522b29					none
-0x00522b94	function	fn_00522b94					none
-0x00522bdf	function	fn_00522bdf					none
+0x0052294d	function	fn_0052294d		?fn_0052294d@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@PAUvfunction33_result@@@Z	claim		none
+0x005229b9	function	fn_005229b9		?fn_005229b9@@YIDPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
+0x00522a09	function	fn_00522a09		?fn_00522a09@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
+0x00522b29	function	fn_00522b29		?fn_00522b29@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
+0x00522b94	function	fn_00522b94		?fn_00522b94@@YIDPAVfn_0090bed4_Object@@HPAUvfunction33_result@@H@Z	claim		none
+0x00522bdf	function	fn_00522bdf		?fn_00522bdf@fn_0090bed4_Object@@QAEXHPAVtCommandDestination@@@Z	claim		none
 0x00522c00	function	fn_00522c00					none
 0x00522c46	function	fn_00522c46					none
 0x00522c66	function	fn_00522c66					none

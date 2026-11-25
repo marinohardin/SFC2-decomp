@@ -1,6 +1,371 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00521000.cpp
-// Functions: 0x00521342 to 0x00521bc8, 12 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: layouts guessed from the accesses; no header holds these classes yet
+class tAIEntry {
+public:
+	int m_id;
+	int pad4;
+	int pad8;
+	int padc;
+	int m_10;
+	int m_14;
+	int pad18;
+	int pad1c;
+	float m_20;
+	float m_24;
+	int m_28;
+	int pad2c;
+	int pad30;
+	int pad34;
+	int m_38;
+	int m_3c;
+};
+
+extern float g_0079561c;
+// HYPOTHESIS: both functions are members of one unknown class (the original spills ecx and reloads it for the call)
+class tAIEntryTable;
+class tAIIdList;
+
+class tAIEntryOwner {
+public:
+	int fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b);
+	char fn_00521965(tAIEntry* e);
+};
+
+class tAIIdList {
+public:
+	int m_ids[50];
+	int m_count;
+};
+
+class tAIEntryTable {
+public:
+	tAIEntry m_entries[50];
+	int m_count;
+};
+
+// FUNCTION: STARFLEETOP 0x00521450
+int tAIEntryOwner::fn_00521450(tAIEntryTable* t, tAIIdList* a, tAIIdList* b)
+{
+	tAIEntryTable* tb = t;
+	int i = 0;
+	tAIEntry* p = tb->m_entries;
+	for (; i < tb->m_count; i++, p++) {
+		if (p->m_id != -1) {
+			p->m_10 = p->m_14;
+			if (this->fn_00521965(p)) {
+				p->m_28 = 2;
+			}
+		}
+	}
+	int counts[2];
+	tAIEntry* e;
+	counts[0] = 0;
+	counts[1] = 0;
+	e = tb->m_entries;
+	int j;
+	for (j = 0; j < tb->m_count; j++, e++) {
+		if (e->m_id != -1) {
+			if (e->m_28 == 0) {
+				counts[e->m_38]++;
+			} else {
+				if (e->m_24 == g_0079561c) {
+					continue;
+				}
+				if (e->m_28 == 0) {
+					counts[e->m_38]++;
+				}
+			}
+			if (tb->m_entries[e->m_3c].m_28 != 0) {
+				tAIIdList* l = a;
+				if (e->m_38 != 0) {
+					l = b;
+				}
+				if (l->m_count < 50) {
+					l->m_ids[l->m_count] = e->m_id;
+					l->m_count++;
+				}
+			}
+		}
+	}
+	if (counts[0] != 0 && counts[1] != 0) {
+		return 0;
+	}
+	return 1;
+}
+
+// FUNCTION: STARFLEETOP 0x00521530
+unsigned int __stdcall fn_00521530(unsigned int v)
+{
+	if (v == 0) {
+		return 1;
+	}
+	return (v == 1) ? 0 : v;
+}
+
+// HYPOTHESIS: layouts guessed from the accesses
+class fn_005218f9_pair {
+public:
+	int m_index;
+	int m_value;
+};
+
+class fn_005218f9_node {
+public:
+	int pad0;
+	int pad4;
+	int pad8;
+	int padc;
+	fn_005218f9_pair* m_begin;
+	fn_005218f9_pair* m_end;
+	int pad18;
+	int pad1c;
+	int pad20;
+	fn_005218f9_node* m_next;
+};
+
+class fn_005218f9_owner {
+public:
+	void fn_005218f9(tAIEntryTable* t, fn_005218f9_node* n);
+	char pad[0x14c0];
+	int m_counts[50];
+};
+
+#include "unsorted/fn_005717f7_vector.h"
+// HYPOTHESIS: a class of unknown name; only the two vectors destroyed here are known
+class fn_005218c3_owner {
+public:
+	~fn_005218c3_owner();
+	int field_0;
+	int field_4;
+	int field_8;
+	fn_005717f7_vector field_c;
+	int field_1c;
+	int field_20;
+	int field_24;
+	fn_005717f7_vector field_28;
+};
+
+// FUNCTION: STARFLEETOP 0x005218c3
+fn_005218c3_owner::~fn_005218c3_owner()
+{
+	// The body is empty in the original: the two vectors (field_28, then field_c) are destroyed by
+	// the compiler-generated epilogue, under the EH frame; the bytes (54) are exact without more code.
+}
+
+// FUNCTION: STARFLEETOP 0x005218f9
+void fn_005218f9_owner::fn_005218f9(tAIEntryTable* t, fn_005218f9_node* n)
+{
+	int i = 0;
+	if (0 < t->m_count) {
+		int* p = m_counts;
+		do {
+			*p = 0;
+			i++;
+			p++;
+		} while (i < t->m_count);
+	}
+	do {
+		for (fn_005218f9_pair* q = n->m_begin; q != n->m_end; q++) {
+			if (t->m_entries[q->m_index].m_3c == -1) {
+				t->m_entries[q->m_index].m_3c = q->m_value;
+				m_counts[q->m_value]++;
+			}
+		}
+		n = n->m_next;
+	} while (n != 0);
+}
+
+// HYPOTHESIS: the argument's class is unknown; only the two floats at +0x14 and +0x18 are known
+// FUNCTION: STARFLEETOP 0x00521965
+bool __stdcall fn_00521965(const float* p)
+{
+	return p[5] <= p[6];
+}
+
+// HYPOTHESIS: the classes of the owner and of the second argument are unknown; only the offsets used are known
+struct fn_0052197e_node {
+	char pad0[0xc];
+	float field_c;
+	char pad10[4];
+	float field_14;
+	float field_18;
+	char pad1c[0x10];
+	float field_2c;
+	float field_30;
+	char pad34[8];
+	int field_3c;
+};
+
+class fn_0052197e_owner {
+public:
+	float fn_0052197e(float* amount, int mode, fn_0052197e_node* n);
+	char pad[0x14c0];
+	int m_counts[50];
+};
+
+float __stdcall fn_00521a15(float amount, fn_0052197e_node* n);
+
+// FUNCTION: STARFLEETOP 0x0052197e
+float fn_0052197e_owner::fn_0052197e(float* amount, int mode, fn_0052197e_node* n)
+{
+	float avail = 0.0f;
+	if (m_counts[n->field_3c] >= 2) {
+		if (*amount > n->field_2c) {
+			*amount -= n->field_2c;
+			n->field_2c = 0.0f;
+		} else {
+			n->field_2c -= *amount;
+			*amount = 0.0f;
+			return avail;
+		}
+	}
+	if (mode == 2) {
+		avail = n->field_14 - n->field_18;
+	} else if (mode == 3) {
+		avail = n->field_14;
+	}
+	float used;
+	if (avail > *amount) {
+		used = *amount;
+	} else {
+		used = avail;
+	}
+	float r = fn_00521a15(used, n);
+	n->field_14 -= used;
+	*amount -= used;
+	return r;
+}
+
+extern float g_007b01ec;
+extern float g_007b01f0;
+extern float g_007b01f4;
+extern float g_007b01f8;
+extern float g_007b01fc;
+extern float g_007b0200;
+
+// FUNCTION: STARFLEETOP 0x00521a15
+float __stdcall fn_00521a15(float amount, fn_0052197e_node* n)
+{
+	float result = 0.0f;
+	float total = n->field_14;
+	float quarterA = g_007b0200 * n->field_c;
+	float partA = (total > quarterA) ? quarterA : total;
+	float rest;
+	float left = total - partA;
+	float quarterB = g_007b01fc * n->field_c;
+	float partB = (left > quarterB) ? quarterB : left;
+	float left2 = left - partB;
+	float half = g_007b01f8 * n->field_c;
+	rest = (left2 > half) ? half : left2;
+	if (amount > 0.0f) {
+		if (rest > 0.0f) {
+			float use = (amount > rest) ? rest : amount;
+			result = (g_007b01ec * n->field_c / half) * use;
+			amount = amount - use;
+		}
+		if (amount > 0.0f) {
+			if (partB > 0.0f) {
+				float t = (amount > partB) ? partB : amount;
+				result = (g_007b01f0 * n->field_c / quarterB) * t + result;
+				amount = amount - t;
+			}
+			if (amount > 0.0f && partA > 0.0f) {
+				float u = (amount > partA) ? partA : amount;
+				result = (g_007b01f4 * n->field_c / quarterA) * u + result;
+			}
+		}
+	}
+	return result * n->field_30;
+}
+
+// HYPOTHESIS: a free function; the second argument is a float array indexed by m_38
+// FUNCTION: STARFLEETOP 0x00521b5d
+void __stdcall fn_00521b5d(tAIEntryTable* t, float* sums)
+{
+	int i = 0;
+	if (0 < t->m_count) {
+		tAIEntry* p = t->m_entries;
+		do {
+			if (p->m_id != -1) {
+				sums[p->m_38] = p->m_20 +sums[p->m_38];
+			}
+			i++;
+			p++;
+		} while (i < t->m_count);
+	}
+}
+
+// HYPOTHESIS: a circular list owner; the node holds a next link, a previous link and a payload at +8
+struct fn_00521b98_payload {
+	char data0[4];
+	int field_4;
+	char data1[0x14];
+	float field_1c;
+	float field_20;
+	int field_24;
+	char data2[4];
+	fn_00521b98_payload** field_2c;
+	fn_00521b98_payload** field_30;
+};
+
+struct fn_00521b98_node {
+	fn_00521b98_node* next;
+	fn_00521b98_node* prev;
+	fn_00521b98_payload payload;
+};
+
+struct fn_00521b98_owner {
+	void fn_00521b98(fn_00521b98_owner* o);
+	void fn_00521bc8(fn_00521b98_payload* p);
+	int field_0;
+	fn_00521b98_node* head;
+};
+
+// FUNCTION: STARFLEETOP 0x00521b98
+void fn_00521b98_owner::fn_00521b98(fn_00521b98_owner* o)
+{
+	fn_00521b98_node* n = o->head->next;
+	if (n != o->head) {
+		do {
+			fn_00521b98_payload* p = &n->payload;
+			if (p->field_24 == 0) {
+				fn_00521bc8(p);
+			}
+			n = n->next;
+		} while (n != o->head);
+	}
+}
+
+// MATCH-ONLY: helper the original inlined (a container's size())
+inline unsigned int fn_00521bc8_size(fn_00521b98_payload** first, fn_00521b98_payload** last)
+{
+	if (first == 0) {
+		return 0;
+	}
+	return ((unsigned int)((char*)last - (char*)first) & 0xfffffffc);
+}
+
+// FUNCTION: STARFLEETOP 0x00521bc8
+void fn_00521b98_owner::fn_00521bc8(fn_00521b98_payload* p)
+{
+	if (fn_00521bc8_size(p->field_2c, p->field_30)) {
+		fn_00521b98_payload** it = p->field_2c;
+		fn_00521b98_payload** best = p->field_30;
+		float bestDiff = 0.0f;
+		if (it != best) {
+			do {
+				fn_00521bc8(*it);
+				fn_00521b98_payload* c = *it;
+				float diff = c->field_1c - c->field_20;
+				if (best == p->field_30 || (c->field_4 == 0 && bestDiff < diff) || (c->field_4 == 1 && diff < bestDiff)) {
+					best = it;
+					bestDiff = diff;
+				}
+				it++;
+			} while (it != p->field_30);
+		}
+		if (best != p->field_30) {
+			p->field_1c = (*best)->field_1c;
+			p->field_20 = (*best)->field_20;
+		}
+	}
+}
