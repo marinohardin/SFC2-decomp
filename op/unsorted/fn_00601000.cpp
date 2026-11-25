@@ -33,3 +33,10 @@ tMedalsPanelCreator::tMedalsPanelCreator()
 	// HYPOTHESIS: the original builds this temporary and hands it to the base constructor.
 	std::string name( "MedalsPanel" );
 }
+
+// FUNCTION: STARFLEETOP 0x006011d2
+// FUNCTION: STARFLEETOP 0x006011ee
+tMedalsPanelCreator::~tMedalsPanelCreator()
+{
+	// MATCH-ONLY: empty body; the original's 11 bytes only restore the vtable and run the base destructor, and both addresses are exact.
+}
