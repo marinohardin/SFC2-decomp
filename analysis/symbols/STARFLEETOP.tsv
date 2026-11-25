@@ -17843,7 +17843,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dde0	function	fn_0067dde0		?fn_0067dde0@tSeqScene@@QAEXXZ	claim		none
 0x0067de00	function	fn_0067de00	tSeqScene				vtable
 0x0067e1a0	function	fn_0067e1a0	tSeqScene	?vfunction44@tSeqScene@@UAEXXZ	claim		vtable
-0x0067e1d0	function	fn_0067e1d0		?fn_0067e1d0@tSeqScene@@QAE_NXZ	add		none
+0x0067e1d0	function	fn_0067e1d0		?fn_0067e1d0@tSeqScene@@QAE_NXZ	claim		none
 0x0067e2d0	function	fn_0067e2d0	tSeqScene	?vfunction30@tSeqScene@@UAEXXZ	claim		vtable
 0x0067e340	function	fn_0067e340	tVisGroup				vtable
 0x0067e3f0	function	fn_0067e3f0	tSeqScene				vtable
@@ -18302,7 +18302,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00693120	function	fn_00693120	tEvtMgr				vtable
 0x00693140	function	fn_00693140	tEvtMgr				vtable
 0x00693150	function	fn_00693150					none
-0x006932f0	function	fn_006932f0					none
+0x006932f0	function	fn_006932f0		?fn_006932f0@tEvtMgr@@QAEXPAUfn_006932f0_Event@@@Z	add		none
 0x00693350	function	fn_00693350					none
 0x006933d0	function	fn_006933d0	tEvtMgr				vtable
 0x00693400	function	fn_00693400					none

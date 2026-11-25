@@ -17,7 +17,7 @@ public:
 	virtual void vfunction30();	// 0x0067e2d0
 	virtual void vfunction37();	// 0x0067e3f0
 	virtual void vfunction40();	// 0x0067dd40
-	virtual void vfunction41(int);	// 0x0067de00
+	virtual int vfunction41(int);	// 0x0067de00
 	virtual void vfunction42();	// the slot holds the thunk 0x0067dca0, which jumps to fn_0067dbc0
 	virtual void vfunction43();	// 0x0067dcb0
 	virtual void vfunction44();	// 0x0067e1a0
