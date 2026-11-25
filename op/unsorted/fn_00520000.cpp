@@ -30,7 +30,7 @@ inline void fn_005208d2_Destroy(fn_005208d2_Elem*& f, fn_005208d2_Elem* l)
     f = l;
 }
 
-// FUNCTION: STARFLEETOP 0x005208d2
+// Unclaimed: the symbol is std::vector erase of a type declared in tAICaptain.cpp
 fn_005208d2_Elem* fn_005208d2_Vec::fn_005208d2(fn_005208d2_Elem* dest, fn_005208d2_Elem* src)
 {
     fn_005208d2_Elem* i = fn_005208d2_Copy(src, last, dest);

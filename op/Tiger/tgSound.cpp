@@ -11,9 +11,9 @@ inline tChannelAttributes::~tChannelAttributes() {}
 // FUNCTION: STARFLEETOP 0x00646240
 void t3DSoundProfile::mSet3DSoundOrientation(tPoint3* aPoint) { f3DSoundOrientation.x = aPoint->x; f3DSoundOrientation.y = aPoint->y; f3DSoundOrientation.z = aPoint->z; }
 // FUNCTION: STARFLEETOP 0x006462c0
-tPoint3* t3DSoundProfile::vfunction13() { return &f3DSoundVelocity; } // slot 13 = mGet3DSoundVelocity, name kept for twSound.cpp
+tPoint3* t3DSoundProfile::vfunction13() { return &f3DSoundVelocity; }
 // FUNCTION: STARFLEETOP 0x00646340
-void tChannelAttributes::vfunction12(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(aPoint); } // slot 12 = pointer overload of mSet3DSoundPosition, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundPosition(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(aPoint); }
 // FUNCTION: STARFLEETOP 0x00646360
 void tChannelAttributes::mSet3DSoundPosition(tPoint3 aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(&aPoint); }
 // FUNCTION: STARFLEETOP 0x00646380
@@ -21,7 +21,7 @@ void tChannelAttributes::mSet3DSoundPosition(float aX, float aY, float aZ) { t3D
 // FUNCTION: STARFLEETOP 0x006463a0
 tPoint3* tChannelAttributes::mGet3DSoundPosition() { t3DSoundProfile* profile = &m3DSoundProfile; return profile->vfunction5(); }
 // FUNCTION: STARFLEETOP 0x006463b0
-void tChannelAttributes::vfunction16(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundOrientation(aPoint); } // slot 16 = pointer overload of mSet3DSoundOrientation, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundOrientation(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundOrientation(aPoint); }
 // FUNCTION: STARFLEETOP 0x006463d0
 void tChannelAttributes::mSet3DSoundOrientation(tPoint3 aPoint) { (&m3DSoundProfile)->mSet3DSoundOrientation(&aPoint); }
 // FUNCTION: STARFLEETOP 0x006463f0
@@ -29,7 +29,7 @@ void tChannelAttributes::mSet3DSoundOrientation(float aX, float aY, float aZ) { 
 // FUNCTION: STARFLEETOP 0x00646410
 tPoint3* tChannelAttributes::mGet3DSoundOrientation() { t3DSoundProfile* profile = &m3DSoundProfile; return profile->vfunction9(); }
 // FUNCTION: STARFLEETOP 0x00646420
-void tChannelAttributes::vfunction20(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundVelocity(aPoint); } // slot 20 = pointer overload of mSet3DSoundVelocity, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundVelocity(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundVelocity(aPoint); }
 // FUNCTION: STARFLEETOP 0x00646440
 void tChannelAttributes::mSet3DSoundVelocity(tPoint3 aPoint) { (&m3DSoundProfile)->mSet3DSoundVelocity(&aPoint); }
 // FUNCTION: STARFLEETOP 0x00646460
@@ -37,17 +37,17 @@ void tChannelAttributes::mSet3DSoundVelocity(float aX, float aY, float aZ) { t3D
 // FUNCTION: STARFLEETOP 0x00646480
 tPoint3* tChannelAttributes::mGet3DSoundVelocity() { t3DSoundProfile* profile = &m3DSoundProfile; return profile->vfunction13(); }
 // FUNCTION: STARFLEETOP 0x00646490
-void tChannelAttributes::vfunction22(double aDistance) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundReferenceDistance(aDistance); } // slot 22 = mSet3DSoundReferenceDistance, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundReferenceDistance(double aDistance) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundReferenceDistance(aDistance); }
 // FUNCTION: STARFLEETOP 0x006464b0
-double tChannelAttributes::mGet3DSoundReferenceDistance() { return (&m3DSoundProfile)->vfunction15(); }
+double tChannelAttributes::mGet3DSoundReferenceDistance() { return (&m3DSoundProfile)->mGet3DSoundReferenceDistance(); }
 // FUNCTION: STARFLEETOP 0x006464c0
-void tChannelAttributes::vfunction24(float anAngle) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); } // slot 24 = mSet3DSoundConeAngleForNoAttenuation, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation(float anAngle) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); }
 // FUNCTION: STARFLEETOP 0x006464e0
-float tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation() { return (&m3DSoundProfile)->vfunction17(); }
+float tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation() { return (&m3DSoundProfile)->mGet3DSoundConeAngleForNoAttenuation(); }
 // FUNCTION: STARFLEETOP 0x006464f0
-void tChannelAttributes::vfunction26(long aLevel) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAttenuationLevel(aLevel); } // slot 26 = mSet3DSoundConeAttenuationLevel, name kept for twSound.cpp
+void tChannelAttributes::mSet3DSoundConeAttenuationLevel(long aLevel) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAttenuationLevel(aLevel); }
 // FUNCTION: STARFLEETOP 0x00646510
-long tChannelAttributes::mGet3DSoundConeAttenuationLevel() { return (&m3DSoundProfile)->vfunction19(); }
+long tChannelAttributes::mGet3DSoundConeAttenuationLevel() { return (&m3DSoundProfile)->mGet3DSoundConeAttenuationLevel(); }
 // FUNCTION: STARFLEETOP 0x00646520
 void tChannelAttributes::mSet3DSoundCones(float anAngle, long aLevel) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); profile->mSet3DSoundConeAttenuationLevel(aLevel); }
 //
@@ -83,7 +83,7 @@ unsigned char tSoundChannelFormat::mDoWeRetainSelections() { unsigned char retai
 tSoundChannel::~tSoundChannel() { mSetUpdateMode((eSoundChannelUpdateMode)5); mDone(); }
 // FUNCTION: STARFLEETOP 0x00646720
 tSoundCommandList* tSoundChannel::mGetAttachmentsList() { return &field_0xec; }
-// FUNCTION: STARFLEETOP 0x00646730
+// Unclaimed: the original returns eSoundChannelUpdateMode; declaring that moves a stack slot in tgSoundPart::mSetNumberOfSoundChannelCommands
 long tSoundChannel::mGetUpdateMode() { return field_0xfc; }
 
 // FUNCTION: STARFLEETOP 0x00646740
@@ -2997,7 +2997,7 @@ void tgSoundPart::mUpdate()
 #line 3670
                     SOUND_ERROR((" REMOVE -- %ld", field_0x40.vfunction39())); SOUND_ERROR((" -- %s %d\n", __FILE__, __LINE__));
                 }
-                else if (channel->mGetUpdateMode() == 4)
+                else if ((long)channel->mGetUpdateMode() == 4)
                 {
                     if (field_0xc8 == 0)
                     {

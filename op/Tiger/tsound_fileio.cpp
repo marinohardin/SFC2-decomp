@@ -104,7 +104,7 @@ tAsynchSoundQueue	gAsynchSoundQueue;
 tAsynchSoundQueue	*theAsynchSoundQueue;
 
 // FUNCTION: STARFLEETOP 0x0066ebc0
-void	fn_0066ebc0	( void )
+void	ReadAtInterrupt	( void )
 {
 	theAsynchSoundQueue->mReadNextInterrupt();
 }

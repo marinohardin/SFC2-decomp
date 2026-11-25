@@ -42,17 +42,17 @@ void tSoundChannel::mSetUserData(long userData)
     field_0x8c = userData;
 }
 
-// FUNCTION: STARFLEETOP 0x006468f0
-// HYPOTHESIS: the original returns void (*)(unsigned long, unsigned char); declaring that
-// return type in tgSound.h moves a stack slot in tgSoundPart::mSetNumberOfSoundChannelCommands,
-// so the slot is declared long, which gives the same bytes.
+// Unclaimed: the original returns void (*)(unsigned long, unsigned char); the callback types
+// declared in tgSound.h (here and in mSetFinishSoundCallback) move a stack slot in
+// tgSoundPart::mSetNumberOfSoundChannelCommands, so the slots are declared long, which gives the
+// same bytes under a symbol that is not the original's.
 long tSoundChannel::mGetFinishSoundCallback()
 {
     return (long)field_0x90;
 }
 
-// FUNCTION: STARFLEETOP 0x00646900
-// HYPOTHESIS: the original takes void (*)(unsigned long, unsigned char); declared long like the getter.
+// Unclaimed: the original takes void (*)(unsigned long, unsigned char); declared long, see
+// the getter above.
 void tSoundChannel::mSetFinishSoundCallback(long callback)
 {
     field_0x90 = (void (*)(long, iTruth))callback;
@@ -200,10 +200,10 @@ tUpdateSoundPositionFunction tSoundChannel::mGetUpdateSoundPositionFunction()
     return (tUpdateSoundPositionFunction)field_0x9c;
 }
 
-// FUNCTION: STARFLEETOP 0x00646b30
+// Unclaimed: the original takes void (*)(unsigned long, long); declaring that moves a stack slot in tgSoundPart::mSetNumberOfSoundChannelCommands
 void tSoundChannel::mSetUpdateSoundPositionFunction(long function)
 {
-    field_0x9c = (void (*)(long, long))function; // HYPOTHESIS: header types the parameter as long
+    field_0x9c = (void (*)(long, long))function; // the field is declared with signed first parameter
 }
 
 // FUNCTION: STARFLEETOP 0x00646b40

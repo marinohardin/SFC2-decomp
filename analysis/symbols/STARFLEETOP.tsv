@@ -1204,10 +1204,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00424e2a	function	fn_00424e2a		?fn_00424e2a@fn_00424d28_class@@QAEHABVtString@@@Z	claim		none
 0x00424e71	function	fn_00424e71		?fn_00424e71@fn_00424e71_map@@QAEXXZ	claim		none
 0x00424ea9	function	fn_00424ea9		?fn_00424ea9@fn_00424ea9_map@@QAEXXZ	claim		none
-0x00424ee1	function	fn_00424ee1		?fn_00424ee1@fn_00424ee1_vector@@QAEXXZ	claim		none
+0x00424ee1	function	fn_00424ee1		??1?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAE@XZ	callers		none
 0x00424f16	function	fn_00424f16		?push_back@?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAEXABVtString@@@Z	callers		none
 0x00424f27	function	fn_00424f27		?erase@?$_Tree@VtString@@U?$pair@$$CBVtString@@H@std@@U_Kfn@?$map@VtString@@HVless_ss@@V?$allocator@H@std@@@3@Vless_ss@@V?$allocator@H@3@@std@@QAE?AViterator@12@V312@0@Z	callers		none
-0x00424f9b	function	fn_00424f9b		?fn_00424f9b@fn_00424ea9_map@@QAE?AViterator@1@V21@0@Z	claim		none
+0x00424f9b	function	fn_00424f9b		?erase@?$_Tree@HU?$pair@$$CBHVtString@@@std@@U_Kfn@?$map@HVtString@@U?$less@H@std@@V?$allocator@VtString@@@3@@2@U?$less@H@2@V?$allocator@VtString@@@2@@std@@QAE?AViterator@12@V312@0@Z	callers		none
 0x0042500f	function	fn_0042500f		?erase@?$vector@VtString@@V?$allocator@VtString@@@std@@@std@@QAEPAVtString@@PAV3@0@Z	callers		none
 0x00425066	function	fn_00425066		?fn_00425066@fn_00425066_tree@@QAEXPAUnode@1@@Z	claim		none
 0x0042509e	function	fn_0042509e		?fn_0042509e@fn_00425066_tree@@QAEXXZ	claim		none
@@ -1215,7 +1215,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042511e	function	fn_0042511e		?fn_0042511e@fn_0042511e_tree@@QAEXXZ	claim		none
 0x0042516e	function	fn_0042516e					none
 0x004253c2	function	fn_004253c2		?fn_004253c2@fn_004253c2_iterator@@QAEXXZ	claim		none
-0x004253f4	function	fn_004253f4		?_Construct@std@@YAXPAVtString@@ABV2@@Z	claim		none
+0x004253f4	function	fn_004253f4					none
 0x00425463	function	fn_00425463		?fn_00425463@@YAXXZ	claim		none
 0x00425480	function	fn_00425480		?fn_00425480@@YAXXZ	claim		none
 0x004254a7	function	fn_004254a7		?fn_004254a7@fn_004254a7_list@@QAEXHHD@Z	claim		none
@@ -7487,11 +7487,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00500453	function	fn_00500453					none
 0x00500467	function	fn_00500467					none
 0x0050047b	function	fn_0050047b					none
-0x0050048f	function	fn_0050048f		?fn_0050048f@@YAXXZ	claim		none
+0x0050048f	function	fn_0050048f					none
 0x005004a3	function	fn_005004a3					none
-0x005004b7	function	fn_005004b7		?fn_005004b7@@YAXXZ	claim		none
-0x005004cb	function	fn_005004cb		?fn_005004cb@@YAXXZ	claim		none
-0x00500803	function	fn_00500803		?fn_00500803@@YAXXZ	claim		none
+0x005004b7	function	fn_005004b7					none
+0x005004cb	function	fn_005004cb					none
+0x00500803	function	fn_00500803					none
 0x00500817	function	fn_00500817					none
 0x0050082b	function	fn_0050082b					none
 0x0050083f	function	fn_0050083f					none
@@ -8289,7 +8289,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520004	function	fn_00520004	tAICaptain	?fn_00520004@tAICaptain@@QAEXMEPAD@Z	claim		none
 0x0052008f	function	fn_0052008f	tAICaptain	?fn_0052008f@tAICaptain@@QAEXXZ	claim		none
 0x005200c8	function	fn_005200c8	tAICaptain	?vfunction4@tAICaptain@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
-0x005208d2	function	fn_005208d2		?fn_005208d2@fn_005208d2_Vec@@QAEPAUfn_005208d2_Elem@@PAU2@0@Z	claim		none
+0x005208d2	function	fn_005208d2		?erase@?$vector@UtObject_0051e3ac_entry@@V?$allocator@UtObject_0051e3ac_entry@@@std@@@std@@QAEPAUtObject_0051e3ac_entry@@PAU3@0@Z	callers		none
 0x0052090a	function	fn_0052090a		?fn_0052090a@@YGPAHPAH0@Z	claim		none
 0x00520966	function	tAIData::tAIData	tAIData	??0tAIData@@QAE@DH@Z	claim		rtti
 0x00520990	function	tBasicFile::mDispose	tBasicFile	?mDispose@tBasicFile@@QAEPAV1@XZ	mangled		mangled
@@ -13060,9 +13060,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c008d	function	fn_005c008d					none
 0x005c0233	function	fn_005c0233					none
 0x005c03d9	function	fn_005c03d9					none
-0x005c057f	function	fn_005c057f		?fn_005c057f@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
-0x005c0725	function	fn_005c0725		?fn_005c0725@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
-0x005c087e	function	fn_005c087e		?fn_005c087e@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
+0x005c057f	function	fn_005c057f					none
+0x005c0725	function	fn_005c0725					none
+0x005c087e	function	fn_005c087e					none
 0x005c0a24	function	fn_005c0a24					none
 0x005c0b85	function	fn_005c0b85		?fn_005c0b85@@YAXXZ	claim		none
 0x005c0b91	function	fn_005c0b91		?fn_005c0b91@@YAXXZ	claim		none
@@ -16790,28 +16790,28 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006462a0	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
 0x006462c0	function	t3DListenerProfile::mGetUpDirection	t3DListenerProfile	?vfunction13@t3DSoundProfile@@UAEPAUtPoint3@@XZ	claim		mangled
 0x006462d0	function	t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mSet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEXM@Z	claim		mangled
-0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?vfunction17@t3DSoundProfile@@UAEMXZ	claim		mangled
+0x006462e0	function	t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation	t3DSoundProfile	?mGet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEMXZ	mangled		mangled
 0x006462f0	function	t3DSoundProfile::mSet3DSoundConeAttenuationLevel	t3DSoundProfile	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	claim		mangled
-0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?vfunction19@t3DSoundProfile@@UAEJXZ	claim		mangled
+0x00646300	function	t3DSoundProfile::mGet3DSoundConeAttenuationLevel	t3DSoundProfile	?mGet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEJXZ	mangled		mangled
 0x00646310	function	t3DSoundProfile::scalar_deleting_destructor	t3DSoundProfile				sdk
 0x00646330	function	tChannelAttributes::mSet3DSoundProfile	tChannelAttributes	?mSet3DSoundProfile@tChannelAttributes@@UAEXPAVt3DSoundProfile@@@Z	mangled		mangled
-0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?vfunction12@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x00646340	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
 0x00646360	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
 0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	claim		mangled
 0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
-0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?vfunction16@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
 0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
 0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	claim		mangled
 0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
-0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?vfunction20@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
+0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
 0x00646440	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
 0x00646460	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXMMM@Z	claim		mangled
 0x00646480	function	tChannelAttributes::mGet3DSoundVelocity	tChannelAttributes	?mGet3DSoundVelocity@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
-0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?vfunction22@tChannelAttributes@@UAEXN@Z	claim		mangled
+0x00646490	function	tChannelAttributes::mSet3DSoundReferenceDistance	tChannelAttributes	?mSet3DSoundReferenceDistance@tChannelAttributes@@UAEXN@Z	mangled		mangled
 0x006464b0	function	tChannelAttributes::mGet3DSoundReferenceDistance	tChannelAttributes	?mGet3DSoundReferenceDistance@tChannelAttributes@@UAENXZ	claim		mangled
-0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?vfunction24@tChannelAttributes@@UAEXM@Z	claim		mangled
+0x006464c0	function	tChannelAttributes::mSet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mSet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEXM@Z	mangled		mangled
 0x006464e0	function	tChannelAttributes::mGet3DSoundConeAngleForNoAttenuation	tChannelAttributes	?mGet3DSoundConeAngleForNoAttenuation@tChannelAttributes@@UAEMXZ	claim		mangled
-0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?vfunction26@tChannelAttributes@@UAEXJ@Z	claim		mangled
+0x006464f0	function	tChannelAttributes::mSet3DSoundConeAttenuationLevel	tChannelAttributes	?mSet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEXJ@Z	mangled		mangled
 0x00646510	function	tChannelAttributes::mGet3DSoundConeAttenuationLevel	tChannelAttributes	?mGet3DSoundConeAttenuationLevel@tChannelAttributes@@UAEJXZ	claim		mangled
 0x00646520	function	tChannelAttributes::mSet3DSoundCones	tChannelAttributes	?mSet3DSoundCones@tChannelAttributes@@UAEXMJ@Z	claim		mangled
 0x00646550	function	tChannelAttributes::scalar_deleting_destructor	tChannelAttributes	??_GtChannelAttributes@@UAEPAXI@Z	claim		sdk
@@ -16832,7 +16832,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	claim		mangled
 0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	claim		mangled
 0x00646720	function	tSoundChannel::mGetAttachmentsList	tSoundChannel	?mGetAttachmentsList@tSoundChannel@@UAEPAVtSoundCommandList@@XZ	claim		mangled
-0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAEJXZ	claim		mangled
+0x00646730	function	tSoundChannel::mGetUpdateMode	tSoundChannel	?mGetUpdateMode@tSoundChannel@@UAE?AW4eSoundChannelUpdateMode@@XZ	mangled		mangled
 0x00646740	function	tSoundChannel::mGetAmountThatCanBeAdded	tSoundChannel	?mGetAmountThatCanBeAdded@tSoundChannel@@UAEJXZ	claim		mangled
 0x00646750	function	tSoundChannel::mGetFirstImmediateNonInterruptCommand	tSoundChannel	?mGetFirstImmediateNonInterruptCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
 0x00646760	function	tSoundChannel::mGetFirstImmediateCommand	tSoundChannel	?mGetFirstImmediateCommand@tSoundChannel@@UAEPAVtSoundChannelCommand@@XZ	claim		mangled
@@ -16859,8 +16859,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006468c0	function	tSoundChannel::mGetMillisecondsLeftToPlay	tSoundChannel	?mGetMillisecondsLeftToPlay@tSoundChannel@@UAENXZ	claim		mangled
 0x006468d0	function	tSoundChannel::mGetUserData	tSoundChannel	?mGetUserData@tSoundChannel@@UAEJXZ	claim		mangled
 0x006468e0	function	tSoundChannel::mSetUserData	tSoundChannel	?mSetUserData@tSoundChannel@@UAEXJ@Z	claim		mangled
-0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEJXZ	claim		mangled
-0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x006468f0	function	tSoundChannel::mGetFinishSoundCallback	tSoundChannel	?mGetFinishSoundCallback@tSoundChannel@@UAEP6AXKE@ZXZ	mangled		mangled
+0x00646900	function	tSoundChannel::mSetFinishSoundCallback	tSoundChannel	?mSetFinishSoundCallback@tSoundChannel@@UAEXP6AXKE@Z@Z	mangled		mangled
 0x00646910	function	tSoundChannel::mGetNumberOfAttachments	tSoundChannel	?mGetNumberOfAttachments@tSoundChannel@@UAEJXZ	claim		mangled
 0x00646930	function	tSoundChannel::mAreWeLooping	tSoundChannel	?mAreWeLooping@tSoundChannel@@UAEEXZ	claim		mangled
 0x00646940	function	tSoundChannel::mAreWeStreaming	tSoundChannel	?mAreWeStreaming@tSoundChannel@@UAEEXZ	claim		mangled
@@ -16881,7 +16881,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646b00	function	tSoundChannel::mGetUserPositionContext	tSoundChannel	?mGetUserPositionContext@tSoundChannel@@UAEJXZ	claim		mangled
 0x00646b10	function	tSoundChannel::mSetUserPositionContext	tSoundChannel	?mSetUserPositionContext@tSoundChannel@@UAEXJ@Z	claim		mangled
 0x00646b20	function	tSoundChannel::mGetUpdateSoundPositionFunction	tSoundChannel	?mGetUpdateSoundPositionFunction@tSoundChannel@@UAEP6AXKJ@ZXZ	claim		mangled
-0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXJ@Z	claim		mangled
+0x00646b30	function	tSoundChannel::mSetUpdateSoundPositionFunction	tSoundChannel	?mSetUpdateSoundPositionFunction@tSoundChannel@@UAEXP6AXKJ@Z@Z	mangled		mangled
 0x00646b40	function	tSoundChannel::mGetMillisecondsBetweenUpdates	tSoundChannel	?vfunction117@tSoundChannel@@UAENXZ	claim		sdk
 0x00646b50	function	tSoundChannel::mSetMillisecondsBetweenUpdates	tSoundChannel	?mSetMillisecondsBetweenUpdates@tSoundChannel@@UAEXN@Z	claim		mangled
 0x00646b70	function	tSoundChannel::`scalar_deleting_destructor'	tSoundChannel	??_GtSoundChannel@@UAEPAXI@Z	claim		mangled
@@ -17240,7 +17240,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00663620	function	tAudioFileClass::mSetMyHandle	tAudioFileClass	?mSetMyHandle@tAudioFileClass@@UAEXJ@Z	claim		mangled
 0x00663630	function	tAudioFileClass::mGetMyHandle	tAudioFileClass	?mGetMyHandle@tAudioFileClass@@UAEJXZ	claim		mangled
 0x00663640	function	tSoundChannel::mGetChannelStatus	tSoundChannel	?vfunction52@tSoundChannel@@UAE?AW4eSoundChannelStatus@@XZ	claim		sdk
-0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?vfunction15@t3DSoundProfile@@UAENXZ	claim		mangled
+0x00663660	function	t3DSoundProfile::mGet3DSoundReferenceDistance	t3DSoundProfile	?mGet3DSoundReferenceDistance@t3DSoundProfile@@UAENXZ	mangled		mangled
 0x00663670	function	t3DSoundProfile::mSet3DSoundReferenceDistance	t3DSoundProfile	?mSet3DSoundReferenceDistance@t3DSoundProfile@@UAEXN@Z	claim		mangled
 0x00663690	function	t3DSoundProfile::mSet3DSoundCones	t3DSoundProfile	?mSet3DSoundCones@t3DSoundProfile@@UAEXMJ@Z	claim		mangled
 0x006636b0	function	t3DListenerProfile::mGetUnitScaleInMeters	t3DListenerProfile				mangled
@@ -17483,7 +17483,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
 0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	claim		mangled
 0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	claim		mangled
-0x0066ebc0	function	ReadAtInterrupt		?fn_0066ebc0@@YAXXZ	claim		sdk
+0x0066ebc0	function	ReadAtInterrupt		?ReadAtInterrupt@@YAXXZ	callers		sdk
 0x0066ebd0	function	tAsynchSoundQueue::tAsynchSoundQueue	tAsynchSoundQueue	??0tAsynchSoundQueue@@QAE@XZ	claim		claim
 0x0066ec50	function	tAsynchSoundQueue::mReadNext	tAsynchSoundQueue	?mReadNext@tAsynchSoundQueue@@QAEEXZ	claim		claim
 0x0066ee80	function	tAsynchSoundQueue::mReadNextInterrupt	tAsynchSoundQueue	?mReadNextInterrupt@tAsynchSoundQueue@@QAEXXZ	claim		claim

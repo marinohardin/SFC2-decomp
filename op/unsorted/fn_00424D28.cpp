@@ -166,7 +166,7 @@ struct fn_00424ee1_vector
 	fn_00424ee1_element* fEnd;
 };
 
-// FUNCTION: STARFLEETOP 0x00424ee1
+// Unclaimed: the symbol is std::vector<tString>::~vector, which this reduced layout does not produce
 void fn_00424ee1_vector::fn_00424ee1()
 {
 	fn_00424ee1_element* last = fLast;
@@ -179,7 +179,7 @@ void fn_00424ee1_vector::fn_00424ee1()
 }
 
 // HYPOTHESIS: the range erase of the tree in fn_00424ea9_map; erasing everything empties the tree at once.
-// FUNCTION: STARFLEETOP 0x00424f9b
+// Unclaimed: the symbol is the std::map tree erase, which this reduced layout does not produce
 fn_00424ea9_map::iterator fn_00424ea9_map::fn_00424f9b(iterator first, iterator last)
 {
 	if (fSize == 0 || first.fNode != fHead->left || last.fNode != fHead) {

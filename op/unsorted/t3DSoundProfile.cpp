@@ -7,16 +7,16 @@ void t3DSoundProfile::mSet3DSoundOrientation(float aX, float aY, float aZ) { f3D
 void t3DSoundProfile::mSet3DSoundConeAngleForNoAttenuation(float anAngle) { f3DSoundConeAngleForNoAttenuation = anAngle; }
 
 // FUNCTION: STARFLEETOP 0x006462e0
-float t3DSoundProfile::vfunction17() { return f3DSoundConeAngleForNoAttenuation; }
+float t3DSoundProfile::mGet3DSoundConeAngleForNoAttenuation() { return f3DSoundConeAngleForNoAttenuation; }
 
 // FUNCTION: STARFLEETOP 0x006462f0
 void t3DSoundProfile::mSet3DSoundConeAttenuationLevel(long aLevel) { f3DSoundConeAttenuationLevel = aLevel; }
 
 // FUNCTION: STARFLEETOP 0x00646300
-long t3DSoundProfile::vfunction19() { return f3DSoundConeAttenuationLevel; }
+long t3DSoundProfile::mGet3DSoundConeAttenuationLevel() { return f3DSoundConeAttenuationLevel; }
 
 // FUNCTION: STARFLEETOP 0x00663660
-double t3DSoundProfile::vfunction15() { return f3DSoundReferenceDistance; }
+double t3DSoundProfile::mGet3DSoundReferenceDistance() { return f3DSoundReferenceDistance; }
 
 // FUNCTION: STARFLEETOP 0x00663670
 void t3DSoundProfile::mSet3DSoundReferenceDistance(double aDistance) { f3DSoundReferenceDistance = aDistance; }
