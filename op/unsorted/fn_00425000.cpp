@@ -1,4 +1,5 @@
 #include "Tiger/tstring.h"
+#include <new>
 
 // HYPOTHESIS: the value a node holds at +0xc, with a tString first. Its implicit destructor
 // is the out-of-line copy at 0x004bd853 that jumps to tString::~tString; the second member's
@@ -159,3 +160,17 @@ void fn_004253c2_iterator::fn_004253c2()
 			fNode = p;
 	}
 }
+
+// MATCH-ONLY: the library's _Construct for one element, written out so that it has source lines
+// here; not inline, since nothing in this unit instantiates it.
+namespace std
+{
+// FUNCTION: STARFLEETOP 0x004253f4
+inline void _Construct(tString* _P, const tString& _V)
+{
+	new ((void*)_P) tString(_V);
+}
+}
+
+// MATCH-ONLY: takes the address of _Construct so that the unit emits its out-of-line copy.
+void (*g_fn_004253f4_construct)(tString*, const tString&) = std::_Construct;
