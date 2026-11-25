@@ -22,31 +22,31 @@ void tSfcMouseMgr_Ex::vfunction2()
 {
 }
 
-// The stream fn_00627140 hands out. HYPOTHESIS: slot 1 opens a named file and
-// reports success, slot 4 closes it; fn_00520990 releases the stream.
-class fn_00627140_stream {
-public:
-    virtual void fn_slot0();
-    virtual bool fn_slot1(char *name);
-    virtual void fn_slot2();
-    virtual void fn_slot3();
-    virtual void fn_slot4();
-    virtual void fn_slot5();
-    // HYPOTHESIS: reads up to count bytes into buffer, returns the number read.
-    virtual int fn_slot6(void *buffer, int count);
-    void fn_00520990();
-};
+// The stream mNewBasicFile hands out; slot 1 opens a named file, slot 4 closes it.
+#include "Tiger/tbasicfile.h"
 
-fn_00627140_stream *fn_00627140();
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Reads the next byte of the stream, -1 at the end.
-int fn_0040c016(fn_00627140_stream *stream);
+int fn_0040c016(tBasicFile *stream);
 
 // HYPOTHESIS: one entry of the cursor list, 0x10 bytes, linked through +0.
 class fn_0040b688_cursor {
 public:
     fn_0040b688_cursor(char *name);
     ~fn_0040b688_cursor(); // HYPOTHESIS: 0x0040b6d8
-    void fn_0040b6e7(fn_00627140_stream *stream, char *line);
+    void fn_0040b6e7(tBasicFile *stream, char *line);
     fn_0040b688_cursor *m_next; // +0
     char *m_4;                  // +4 HYPOTHESIS: the cursor's name
     long m_8;                   // +8
@@ -126,15 +126,15 @@ public:
 bool fn_0040bea5_mgr::fn_0040bea5()
 {
     fn_slot2();
-    fn_00627140_stream *file = fn_00627140();
+    tBasicFile *file = tBasicFile::mNewBasicFile();
     if (!file)
         return false;
     bool result;
     char name[] = "assets/mouse/cursors.txt";
-    if (!file->fn_slot1(name)) {
+    if (!file->mOpenForRead(name)) {
         result = false;
     } else {
-        fn_00627140_stream *stream = fn_00627140();
+        tBasicFile *stream = tBasicFile::mNewBasicFile();
         if (!stream) {
             result = false;
         } else {
@@ -176,21 +176,21 @@ bool fn_0040bea5_mgr::fn_0040bea5()
                 if (line[0] && cursor)
                     cursor->fn_0040b6e7(stream, line);
             } while (c != (char)0xff);
-            stream->fn_slot4();
-            stream->fn_00520990();
+            stream->mClose();
+            stream->mDispose();
             result = true;
         }
-        file->fn_slot4();
+        file->mClose();
     }
-    file->fn_00520990();
+    file->mDispose();
     return result;
 }
 
 // FUNCTION: STARFLEETOP 0x0040c016
-int fn_0040c016(fn_00627140_stream *stream)
+int fn_0040c016(tBasicFile *stream)
 {
     unsigned char c;
-    if (stream->fn_slot6(&c, 1) != 1)
+    if (stream->mRead(&c, 1) != 1)
         return -1;
     return c;
 }
