@@ -8,6 +8,7 @@ class fn_006032e7_object
 public:
 	void fn_006032e7();
 	void fn_005ff7ac();
+	void** fn_006033e7( const db::tID& id );
 
 	int8u	field_00[0xb8];
 	tOptex	field_b8;
@@ -98,4 +99,26 @@ int fn_006033b4_object::fn_006033b4( int* record )
 		break;
 	}
 	return result;
+}
+
+// FUNCTION: STARFLEETOP 0x006033e7
+void** fn_006032e7_object::fn_006033e7( const db::tID& id )
+{
+	tOptex::tGuard guard( &field_b8 );
+	void** it = field_158;
+	if ( id.IsValid() )
+	{
+		for ( it = field_154; it != field_158; ++it )
+		{
+			int* record = (int*)*it;
+			if ( record && *record == 2 )
+			{
+				// HYPOTHESIS: the record holds a character object at +8, as in fn_006033b4.
+				if ( ( (fn_0042a480_object*)( record + 2 ) )->FUN_0042a9ba() == id )
+					break;
+			}
+		}
+	}
+	guard.Leave();
+	return it;
 }
