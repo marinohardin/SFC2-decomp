@@ -13,6 +13,7 @@ public:
 
 struct fn_00600be5_holder
 {
+	~fn_00600be5_holder();
 	fn_00600be5_holder& fn_00600be5(fn_00600be5_holder& other);
 	bool m_owns;
 	fn_00600be5_target* m_ptr;
@@ -35,4 +36,11 @@ fn_00600be5_holder& fn_00600be5_holder::fn_00600be5(fn_00600be5_holder& other)
 		other.m_owns = false;
 	}
 	return *this;
+}
+
+// FUNCTION: STARFLEETOP 0x00600c26
+fn_00600be5_holder::~fn_00600be5_holder()
+{
+	if (m_owns && m_ptr)
+		delete m_ptr;
 }
