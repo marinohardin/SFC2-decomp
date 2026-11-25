@@ -180,3 +180,54 @@ bool __stdcall fn_00521965(const float* p)
 {
 	return p[5] <= p[6];
 }
+
+// HYPOTHESIS: the classes of the owner and of the second argument are unknown; only the offsets used are known
+struct fn_0052197e_node {
+	char pad0[0x14];
+	float field_14;
+	float field_18;
+	char pad1c[0x10];
+	float field_2c;
+	char pad30[0xc];
+	int field_3c;
+};
+
+class fn_0052197e_owner {
+public:
+	float fn_0052197e(float* amount, int mode, fn_0052197e_node* n);
+	char pad[0x14c0];
+	int m_counts[50];
+};
+
+float __stdcall fn_00521a15(float amount, fn_0052197e_node* n);
+
+// FUNCTION: STARFLEETOP 0x0052197e
+float fn_0052197e_owner::fn_0052197e(float* amount, int mode, fn_0052197e_node* n)
+{
+	float avail = 0.0f;
+	if (m_counts[n->field_3c] >= 2) {
+		if (*amount > n->field_2c) {
+			*amount -= n->field_2c;
+			n->field_2c = 0.0f;
+		} else {
+			n->field_2c -= *amount;
+			*amount = 0.0f;
+			return avail;
+		}
+	}
+	if (mode == 2) {
+		avail = n->field_14 - n->field_18;
+	} else if (mode == 3) {
+		avail = n->field_14;
+	}
+	float used;
+	if (avail > *amount) {
+		used = *amount;
+	} else {
+		used = avail;
+	}
+	float r = fn_00521a15(used, n);
+	n->field_14 -= used;
+	*amount -= used;
+	return r;
+}
