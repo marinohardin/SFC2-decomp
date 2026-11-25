@@ -38,3 +38,11 @@ unsigned long tSoundMemoryBlock::mGetHandle()
 {
     return ((unsigned short)fTopHalfOfHandle << 16) + field_0c;
 }
+
+// FUNCTION: STARFLEETOP 0x0066ebb0
+void tSoundMemoryBlock::mAboutToBeRemovedByManager()
+{
+    if (field_24 != 0) {
+        field_24(field_20);
+    }
+}
