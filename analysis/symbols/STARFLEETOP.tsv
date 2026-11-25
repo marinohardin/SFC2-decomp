@@ -993,7 +993,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041d5f9	function	fn_0041d5f9	tEntity_PPDFire				vtable
 0x0041d5fd	function	fn_0041d5fd	tEntity_PPDFire				vtable
 0x0041d6bf	function	fn_0041d6bf	tEntity_PPDFire				vtable
-0x0041dbc5	function	tEntity_ESG::tEntity_ESG	tEntity_ESG				rtti
+0x0041dbc5	function	tEntity_ESG::tEntity_ESG	tEntity_ESG	??0tEntity_ESG@@QAE@XZ	add		rtti
 0x0041dbed	function	fn_0041dbed	tEntity_ESG				vtable
 0x0041dbf0	function	fn_0041dbf0	tEntity_ESG				vtable
 0x0041dbf4	function	tEntity_ESG::scalar_deleting_destructor	tEntity_ESG				rtti
@@ -1085,7 +1085,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042167f	function	fn_0042167f	tEntity_HellboreBlast				vtable
 0x00421740	function	fn_00421740		?fn_00421740@@YAPAVtEntity_DirectFire@@XZ	claim		none
 0x00421775	function	fn_00421775		?fn_00421775@@YAPAVtEntity_PPDFire@@XZ	claim		none
-0x004217aa	function	fn_004217aa					none
+0x004217aa	function	fn_004217aa		?fn_004217aa@@YAPAVtEntity_ESG@@XZ	claim		none
 0x004217df	function	fn_004217df					none
 0x00421814	function	fn_00421814					none
 0x00421855	function	fn_00421855					none

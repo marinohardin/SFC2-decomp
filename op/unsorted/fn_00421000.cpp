@@ -29,3 +29,19 @@ tEntity_PPDFire* fn_00421775()
 {
 	return new tEntity_PPDFire;
 }
+
+// HYPOTHESIS: tEntity_ESG has no header yet; this small declaration only serves the
+// factory below.
+class tEntity_ESG
+{
+public:
+	tEntity_ESG();
+
+	char	pad00[0x260];
+};
+
+// FUNCTION: STARFLEETOP 0x004217aa
+tEntity_ESG* fn_004217aa()
+{
+	return new tEntity_ESG;
+}
