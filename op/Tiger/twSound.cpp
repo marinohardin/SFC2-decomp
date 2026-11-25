@@ -1829,7 +1829,7 @@ unsigned char twStandardSoundChannel::mSetVolume( long volume )
 	HRESULT err = fSoundBuffer->SetVolume( dsVolume );
 	if( err != DS_OK )
 		return kFalse;
-	( &field_0x30 )->vfunction6( volume );
+	( &field_0x30 )->vfunction7( volume );
 	return kTrue;
 }
 

@@ -187,7 +187,7 @@ public:
     virtual long mGetFrequency();
     virtual void vfunction4(long aPan);
     virtual long mGetPan();
-    virtual void vfunction6(long aVolume);
+    virtual void vfunction7(long aVolume);
     virtual long mGetVolume();
     virtual void vfunction8(t3DSoundProfile* aProfile);
     virtual t3DSoundProfile* mGet3DSoundProfile();

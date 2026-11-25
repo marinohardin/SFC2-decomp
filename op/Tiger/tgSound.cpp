@@ -50,10 +50,10 @@ void tChannelAttributes::vfunction26(long aLevel) { t3DSoundProfile* profile = &
 long tChannelAttributes::mGet3DSoundConeAttenuationLevel() { return (&m3DSoundProfile)->vfunction19(); }
 // FUNCTION: STARFLEETOP 0x00646520
 void tChannelAttributes::mSet3DSoundCones(float anAngle, long aLevel) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundConeAngleForNoAttenuation(anAngle); profile->mSet3DSoundConeAttenuationLevel(aLevel); }
-// FUNCTION: STARFLEETOP 0x00646580
-long tSoundChannelFormat::vfunction12() { return ((fBitsPerSample + 7) >> 3) * fNumChannels; }
-// FUNCTION: STARFLEETOP 0x00646590
-long tSoundChannelFormat::vfunction13() { return vfunction12() * fSamplesPerSec; }
+//
+// Slot 12 (the block size) is not claimed: 0x0064d870 owns the symbol vfunction12 on develop.
+//
+// Slot 13 (bytes per second) is not claimed: develop's symbol for 0x00646590 is mGetBytesPerSec, which twSound.cpp's vfunction13 calls forbid.
 // FUNCTION: STARFLEETOP 0x006465a0
 unsigned char tSoundChannelFormat::mAreWeLooping() { unsigned char looping = (fSoundType & 4) > 0; return looping; }
 // FUNCTION: STARFLEETOP 0x006465b0
@@ -2432,14 +2432,14 @@ iTruth tSoundChannelCommand::mMakeUnavailable()
 
 // FUNCTION: STARFLEETOP 0x0064d860
 // The volume setter; the exe shares this body with tSoundChannelFormat::mSetBitsPerSample.
-void tChannelAttributes::vfunction6(long volume)
+void tChannelAttributes::vfunction7(long volume)
 {
     mVolume = volume;
 }
 
 // FUNCTION: STARFLEETOP 0x0064d870
 // The sound-type getter (vtable slot 11 of tSoundChannelFormat)
-long tSoundChannelFormat::vfunction11()
+long tSoundChannelFormat::vfunction12()
 {
     return fSoundType;
 }
