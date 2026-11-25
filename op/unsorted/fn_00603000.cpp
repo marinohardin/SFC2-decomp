@@ -388,3 +388,28 @@ fn_00603d4a_node::fn_00603d4a_node( const std::string& text, int a, int b )
 	: m_b( a ), m_kind( 2 ), m_a( b ), m_text( text )
 {
 }
+
+// HYPOTHESIS: the vector the wrapper at +0x190 guards, seen through its member at 0x005541af;
+// the owning class is not recovered.
+class fn_005541af_vector
+{
+public:
+	void fn_005541af( int arg );
+};
+
+class fn_00603d8f_object
+{
+public:
+	void fn_00603d8f( int arg );
+
+	int8u	field_00[0x190];
+	fn_0042c709_wrapper	field_190;
+};
+
+// FUNCTION: STARFLEETOP 0x00603d8f
+void fn_00603d8f_object::fn_00603d8f( int arg )
+{
+	fn_0042c709_iptr lock = field_190.Lock();
+	( (fn_005541af_vector*)&*lock )->fn_005541af( arg );
+	lock.Done();
+}
