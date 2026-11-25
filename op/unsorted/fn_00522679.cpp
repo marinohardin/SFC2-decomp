@@ -59,3 +59,22 @@ void __fastcall fn_0052277b(char* self, int, void* param_1)
 		fn_005227c1(self);
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x005227c1
+void __fastcall fn_005227c1(char* self)
+{
+	int i = 0;
+	if (*(int*)(self + 0x210) >= 0) {
+		*(double*)(self + 8) = g_007b0250 / (double)*(int*)(self + 0x210);
+		if (*(int*)(self + 0x210) > 0) {
+			double* p = (double*)(self + 0x18);
+			double t = g_0090bef0;
+			do {
+				*p = t;
+				t = t + *(double*)(self + 8);
+				i++;
+				p += 2;
+			} while (i < *(int*)(self + 0x210));
+		}
+	}
+}

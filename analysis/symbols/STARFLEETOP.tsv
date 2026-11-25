@@ -8360,7 +8360,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00522681	function	fn_00522681		?fn_00522681@fn_0090bed4_Object@@QAEXXZ	claim		none
 0x00522708	function	fn_00522708					none
 0x0052277b	function	fn_0052277b		?fn_0052277b@@YIXPADHPAX@Z	claim		none
-0x005227c1	function	fn_005227c1					none
+0x005227c1	function	fn_005227c1		?fn_005227c1@@YIXPAD@Z	claim		none
 0x0052280a	function	fn_0052280a					none
 0x0052294d	function	fn_0052294d					none
 0x005229b9	function	fn_005229b9					none
