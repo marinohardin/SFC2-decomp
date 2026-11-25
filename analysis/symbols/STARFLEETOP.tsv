@@ -20710,7 +20710,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070efa0	function	tResourceGuard::tGuard::tGuard	tResourceGuard::tGuard	??0tGuard@tResourceGuard@@QAE@AAV1@@Z	claim		mangled
 0x0070efc0	function	fn_0070efc0		??1tGuard@tResourceGuard@@QAE@XZ	claim		none
 0x0070efd0	function	tResourceGuard::tResourceGuard	tResourceGuard	??0tResourceGuard@@QAE@XZ	mangled		mangled
-0x0070f100	function	fn_0070f100					none
+0x0070f100	function	fn_0070f100		??1tResourceGuard@@QAE@XZ	claim		none
 0x0070f160	function	tResourceGuard::Guard	tResourceGuard	?Guard@tResourceGuard@@AAEXXZ	mangled		mangled
 0x0070f260	function	tResourceGuard::Unguard	tResourceGuard	?Unguard@tResourceGuard@@AAEXXZ	mangled		mangled
 0x0070f310	function	fn_0070f310					none
@@ -21425,7 +21425,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0072ee70	function	fn_0072ee70					none
 0x0072ee80	function	fn_0072ee80					none
 0x0072eea0	function	tBmpSurf::~tBmpSurf	tBmpSurf	??2@YAPAXI@Z	callers		sdk
-0x0072eec0	function	fn_0072eec0					none
+0x0072eec0	function	fn_0072eec0		??3@YAXPAX@Z	add		none
 0x0072eed0	function	fn_0072eed0		_malloc	callers		none
 0x0072ef40	function	fn_0072ef40					none
 0x0072efa0	function	fn_0072efa0		_realloc	callers		none

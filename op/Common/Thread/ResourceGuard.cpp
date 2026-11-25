@@ -14,3 +14,24 @@ tResourceGuard::tGuard::~tGuard()
 {
 	fResGuard.Unguard();
 }
+
+tResourceGuard::~tResourceGuard()
+{
+}
+
+// FUNCTION: STARFLEETOP 0x0070f100
+inline tOptex::~tOptex()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
