@@ -7,7 +7,7 @@
 //	the compiler emitted out of line (0x0042a0fc), which the harness can claim only from a .cpp.
 //	MATCH-ONLY: tBuffer::Get is left out where DATASTORE_OUT_OF_LINE_BUFFER_GET is defined, for
 //	the same reason: unsorted/fn_0042A000.cpp holds its out-of-line copy (0x0042a31c). Read, left
-//	out by DATASTORE_OUT_OF_LINE_BUFFER_READ, has no owner. Callers define them: __FILE__ is a path.
+//	out by DATASTORE_OUT_OF_LINE_BUFFER_READ; no unit defines it yet, so a consumer keeps its original code.
 #if !defined( DataStoreBuffer_h )
 #define DataStoreBuffer_h
 

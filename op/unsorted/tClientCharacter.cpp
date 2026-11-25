@@ -1,5 +1,5 @@
 #define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy in fn_0042A000.cpp (0x0042a31c)
-#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 // Unit:      unsorted/tClientCharacter.cpp
 // Functions: 0x004295da to 0x0042a165, 20 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)

@@ -1,4 +1,4 @@
-#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: tBuffer::Read is the out-of-line copy at 0x00428313, claimed by no unit yet
+#define DATASTORE_OUT_OF_LINE_BUFFER_READ	// MATCH-ONLY: no unit defines tBuffer::Read (0x00428313) yet; a consumer keeps the original code until one does
 #include "Common/DataStore/DataStoreInput.h"
 #include "Common/DataStore/Streamable.h"
 #include "Common/Exceptions/Validate.h"
