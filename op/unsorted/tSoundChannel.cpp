@@ -23,3 +23,9 @@ void tSoundChannel::mSetSoundType(long type)
 {
     field_0x10.vfunction10(type);
 }
+
+// FUNCTION: STARFLEETOP 0x006468c0
+double tSoundChannel::mGetMillisecondsLeftToPlay()
+{
+    return mGetTotalNumberOfSecondsLeftToPlay() * 1000.0;
+}
