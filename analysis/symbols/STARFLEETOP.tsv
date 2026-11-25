@@ -7479,11 +7479,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ffb3b	function	fn_004ffb3b	tFx_Organian				vtable
 0x004ffb42	function	fn_004ffb42	tFx_Organian				vtable
 0x004ffd9c	function	fn_004ffd9c					none
-0x004ffe06	function	tFx_Phaser::tFx_Phaser	tFx_Phaser				rtti
+0x004ffe06	function	tFx_Phaser::tFx_Phaser	tFx_Phaser	??0tFx_Phaser@@QAE@PAVtBmpSurf@@@Z	add		rtti
 0x004ffe39	function	fn_004ffe39					none
 0x00500306	function	fn_00500306					none
 0x00500312	function	fn_00500312	tFx_Phaser				vtable
-0x0050037b	function	fn_0050037b					none
+0x0050037b	function	fn_0050037b		?fn_0050037b@@YAPAVtFx_Phaser@@PAVtBmpSurf@@@Z	claim		none
 0x00500453	function	fn_00500453					none
 0x00500467	function	fn_00500467					none
 0x0050047b	function	fn_0050047b					none
