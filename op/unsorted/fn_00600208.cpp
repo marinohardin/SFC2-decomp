@@ -54,3 +54,6 @@ fn_00600208_string g_00c39e10 = "DebriefingMP";
 // FUNCTION: STARFLEETOP 0x0060044f
 // FUNCTION: STARFLEETOP 0x0060041c
 fn_00600208_string g_00c39ea0 = "General_Error";
+
+// FUNCTION: STARFLEETOP 0x00600482
+fn_00600208_string g_00c39e88 = "ErrorOk";
