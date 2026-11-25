@@ -480,7 +480,7 @@ public:
     virtual void mSetUserPositionContext(long context);
     virtual tUpdateSoundPositionFunction mGetUpdateSoundPositionFunction();
     virtual void mSetUpdateSoundPositionFunction(long function);
-    virtual void vfunction116();
+    virtual double vfunction117();
     virtual void mSetMillisecondsBetweenUpdates(double milliseconds);
     virtual iTruth mAddGetNextAttachmentFunction(void (*function)(unsigned long, long), long userData, double milliseconds);
     virtual iTruth mFadeToVolume(long volume, double timeToTake);

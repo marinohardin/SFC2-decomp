@@ -205,3 +205,10 @@ void tSoundChannel::mSetUpdateSoundPositionFunction(long function)
 {
     field_0x9c = (void (*)(long, long))function; // HYPOTHESIS: header types the parameter as long
 }
+
+// FUNCTION: STARFLEETOP 0x00646b40
+double tSoundChannel::vfunction117()
+{
+    double value = field_0xb0;
+    return value * 0.001; // HYPOTHESIS: milliseconds to seconds
+}
