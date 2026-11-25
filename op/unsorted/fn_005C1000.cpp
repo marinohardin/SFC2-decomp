@@ -72,6 +72,8 @@ class tMemberCallback_fn_005c180a;
 class tMemberCallback_fn_005c1851;
 class tMemberCallback_fn_005c1894;
 class tMemberCallback_fn_005c18d7;
+class tMemberCallback_fn_005c191b;
+
 class tMapRelayS {
 public:
 	void fn_005c1531( tMemberCallback_tUpdateHex** out );
@@ -101,6 +103,8 @@ public:
 	void fn_005c1851( tMemberCallback_fn_005c1851** out );
 	void fn_005c1894( tMemberCallback_fn_005c1894** out );
 	void fn_005c18d7( tMemberCallback_fn_005c18d7** out );
+	void fn_005c191b( tMemberCallback_fn_005c191b** out );
+
 	char pad00[0xd4];
 	void* m_d4;
 };
@@ -439,4 +443,19 @@ public:
 void tMapRelayS::fn_005c18d7( tMemberCallback_fn_005c18d7** out )
 {
 	*out = new tMemberCallback_fn_005c18d7( this, m_d4 );
+}
+
+// HYPOTHESIS: the object built by 0x005ab5a5 (the symbol table calls it a tMemberCallback
+// instance for nAsyncMapProcedures::tEconomicReport); size from the operator new argument.
+// Real name and header unknown.
+class tMemberCallback_fn_005c191b {
+public:
+	tMemberCallback_fn_005c191b( tMapRelayS* a, void* b );
+	char pad00[0x4c];
+};
+
+// FUNCTION: STARFLEETOP 0x005c191b
+void tMapRelayS::fn_005c191b( tMemberCallback_fn_005c191b** out )
+{
+	*out = new tMemberCallback_fn_005c191b( this, m_d4 );
 }
