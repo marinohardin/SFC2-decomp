@@ -1,6 +1,4 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/t3DSoundProfile.cpp
-// Functions: 0x00646240 to 0x00646310, 10 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "Tiger/tgSound.h"
+
+// FUNCTION: STARFLEETOP 0x00646260
+void t3DSoundProfile::mSet3DSoundOrientation(float aX, float aY, float aZ) { f3DSoundOrientation.x = aX; f3DSoundOrientation.y = aY; f3DSoundOrientation.z = aZ; }
