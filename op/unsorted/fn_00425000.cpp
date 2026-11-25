@@ -427,3 +427,11 @@ void fn_004255b5_class::fn_004257b4(tEntity* pEntity)
 		pEntity->fMapRadius = pEntity->vfunction14();
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004257f5
+void tObject_008f5170::fn_004257f5(tEntity *pEntity, int32 value)
+{
+	((fn_004255b5_class*)this)->fn_00425824(pEntity, value);
+	pEntity->fLastMapPos = pEntity->fCurrPos;
+	pEntity->fMapRadius = pEntity->vfunction14();
+}
