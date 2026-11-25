@@ -433,3 +433,12 @@ void fn_00603e24_object::fn_00603e24( int arg )
 {
 	fn_00603ef0( field_08, 1, arg );
 }
+
+// HYPOTHESIS: the callee takes the two members; its class is not known.
+void __stdcall fn_00603ebe( void** begin, void** end );
+
+// FUNCTION: STARFLEETOP 0x00603e35
+void fn_00603351_vector::fn_00603e35()
+{
+	fn_00603ebe( field_04, field_08 );
+}
