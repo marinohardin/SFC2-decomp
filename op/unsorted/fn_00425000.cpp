@@ -660,3 +660,45 @@ void fn_00425f71(unsigned int* first, unsigned int* last, int depth)
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00425fef
+void fn_00425fef(unsigned int* first, unsigned int* last, int depth)
+{
+	while (last - first > 16) {
+		unsigned int c = last[-1];
+		unsigned int pivot = *first;
+		unsigned int b = first[(last - first) / 2];
+		if (pivot < b) {
+			if (b < c)
+				pivot = b;
+			else if (pivot < c)
+				pivot = c;
+		} else if (pivot >= c) {
+			pivot = c;
+			if (b >= c)
+				pivot = b;
+		}
+		unsigned int* p = last;
+		unsigned int* q = first;
+		for (;;) {
+			if (!(*q < pivot)) {
+				do {
+					--p;
+				} while (pivot < *p);
+				if (p <= q)
+					break;
+				unsigned int t = *q;
+				*q = *p;
+				*p = t;
+			}
+			++q;
+		}
+		if (last - q <= q - first) {
+			fn_00425fef(q, last, 0);
+			last = q;
+		} else {
+			fn_00425fef(first, q, 0);
+			first = q;
+		}
+	}
+}
