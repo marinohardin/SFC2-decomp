@@ -32,3 +32,9 @@ void tSoundMemoryBlock::mUnlock()
         fNumberOfLocks = 0;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x0066eba0
+unsigned long tSoundMemoryBlock::mGetHandle()
+{
+    return ((unsigned short)fTopHalfOfHandle << 16) + field_0c;
+}
