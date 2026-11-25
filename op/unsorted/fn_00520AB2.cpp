@@ -92,9 +92,16 @@ public:
 			}
 		}
 	} field_8;
+	// HYPOTHESIS: per-index id lists (0x32 ids plus a count, 0xcc bytes each); entry count unknown.
+	struct IdList
+	{
+		int field_0[0x32];
+		int field_c8;
+	} field_c8c[1];
 
 	int fn_00520cba(int a, int b, float c, char d);
 	tAIUnitData* fn_00520d38(int a);
+	void fn_00520d69(int a, int b);
 };
 
 // FUNCTION: STARFLEETOP 0x00520cba
@@ -122,4 +129,17 @@ tAIUnitData* tAIUnitDataList::fn_00520d38(int a)
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00520d69
+void tAIUnitDataList::fn_00520d69(int a, int b)
+{
+	tAIUnitData* p = fn_00520d38(a);
+	if (p != 0 && p->field_0 != -1) {
+		IdList* list = &field_c8c[b];
+		if (list->field_c8 < 0x32) {
+			list->field_0[list->field_c8] = p->field_0;
+			list->field_c8++;
+		}
+	}
 }
