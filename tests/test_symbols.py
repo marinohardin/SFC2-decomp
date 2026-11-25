@@ -353,16 +353,16 @@ def test_a_build_of_another_tree_is_not_compared_and_says_so(tmp_path, capsys):
     (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid g() {}\n')   # edited since
     rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
     assert rc == 0
-    assert out == (f'INFO the last build in {build} was not made from the tree under {src}: its '
-                   'symbols are not compared (run harness/build-and-verify.sh --all, then check '
-                   f'again)\nok: 4 rows in {tmp_path / "T.tsv"}\n')
+    assert out == ('INFO the last build was not made from the current source tree: its symbols '
+                   'are not compared (run harness/build-and-verify.sh --all, then check again)\n'
+                   f'ok: 4 rows in {tmp_path / "T.tsv"}\n')
 
 
 def test_a_build_with_no_identity_is_not_compared(tmp_path, capsys):
     build, src = build_folder(tmp_path)
     (build / 'symbols.id').unlink()
     rc, out = check(tmp_path, capsys, GOOD, build=build, src_root=src)
-    assert rc == 0 and out.startswith('INFO the last build in ')
+    assert rc == 0 and out.startswith('INFO the last build was not made from the current')
 
 
 def test_the_tree_id_follows_content_and_names_not_the_clock(tmp_path):

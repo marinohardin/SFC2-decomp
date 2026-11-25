@@ -409,9 +409,8 @@ def cmd_check(a):
     if built is not None:
         from harness.lib import symtab
         if not symtab.build_is_current(build, src_root):
-            print(f'INFO the last build in {shown(build)} was not made from the tree under '
-                  f'{shown(src_root)}: its symbols are not compared (run '
-                  'harness/build-and-verify.sh --all, then check again)')
+            print('INFO the last build was not made from the current source tree: its symbols '
+                  'are not compared (run harness/build-and-verify.sh --all, then check again)')
             built = None
     claimed = current_claims(src_root) if built is not None else None
     if built is not None:

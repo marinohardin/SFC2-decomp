@@ -155,3 +155,27 @@ def test_the_default_table_is_resolved_through_paths(tmp_path, monkeypatch):
     monkeypatch.setattr(paths, 'SYMBOL_TABLE', table)
     assert symsync.main([out, '0x00401000']) == 0
     assert rows_of(table)['0x00401200'][4:6] == ['?fn_00401200@@YAXXZ', 'add']
+
+
+def test_a_refused_claim_is_a_warning_in_the_sync_and_an_error_in_the_whole_tree_step(
+        tmp_path, capsys):
+    rows = [row('0x00401000', 'f', '?old@@YAXXZ', 'mangled', 'mangled')]
+    out, table, src = tree(tmp_path, rows, [])
+    before = open(table).read()
+    lines = symsync.sync(out, '0x00401000', table, src)
+    assert open(table).read() == before
+    assert [x for x in lines if x.startswith('WARN')][0].startswith(
+        'WARN  symbol table: claim sync failed: ERROR 0x00401000: the build compiled ?new@@YAXXZ')
+    assert not [x for x in lines if x.startswith('ERROR')]
+    # whole tree: the same refusal, against a build whose symbols.tsv names the claim
+    paths_ = ENV['mp']
+    paths_.setattr(paths, 'SYMBOL_TABLE', table)
+    paths_.setattr(paths, 'BUILD', str(tmp_path / 'build'))
+    paths_.setattr(paths, 'SRC_ROOT', src)
+    (tmp_path / 'build').mkdir()
+    symtab.write_claims(str(tmp_path / 'build' / 'symbols.tsv'), [('0x00401000', '?new@@YAXXZ', 'a.cpp')])
+    capsys.readouterr()
+    assert symsync.scratch_check() == 1
+    shown = capsys.readouterr().out
+    assert 'ERROR 0x00401000: the build compiled ?new@@YAXXZ, but the table has ?old@@YAXXZ' in shown
+    assert open(table).read() == before

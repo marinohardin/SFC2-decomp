@@ -521,11 +521,20 @@ refusal itself, and the attempt is lost until the loop is restarted. The context
 call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
 
 `tools/symbols.py claim` does not replace a symbol whose `symbol_evidence` is `mangled` (the
-original's own name, from `functions.csv`) or `add` (first writer wins) with another one: it leaves
+original's own name, from `functions.csv`) or `add` (first writer wins) with another one. It leaves
 the row, prints an `ERROR` naming the address, both symbols and the evidence, and exits 1.
-`--replace-evidence` overrides. `callers` (provisional) and `claim` rows are replaced as before, and a
-build symbol equal to the row's only turns its evidence into `claim`. `check` words a build
-difference on such a row the same way. The loop's sync only warns on the refusal.
+`--replace-evidence` overrides. `callers` (provisional) and `claim` rows are replaced as before.
+A build symbol equal to the row's only turns its evidence into `claim`. `check` words a build
+difference on such a row the same way.
+
+What the exit 1 does depends on who ran `claim`:
+
+- `symsync.sync` (the loop, one function, `--results`): a `WARN symbol table: claim sync failed`
+  line; the round goes on and the row is unchanged.
+- The whole-tree `symbols` step (`symsync.scratch_check`): the step fails and its message carries
+  the `ERROR` line, so the session is told to make the claim compile the table's symbol.
+- `harness/landing.sh`: it stops with exit 2 and prints one line saying a claim tried to replace
+  an evidence-backed symbol and what to do.
 
 ### How a claim is found
 

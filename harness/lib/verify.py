@@ -773,7 +773,7 @@ def report_object_clashes(rep, baseline_path=None):
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
-def write_symbol_table(rep, out=None, src_root=None):
+def write_symbol_table(rep, out=None, src_root=None, tree=None):
     """The claims' rows from an --all run. A claim that could not be built or scored (an error
     and no symbol) keeps its row from the table the run replaces; any other claim without a
     symbol, and any address no longer claimed, loses it."""
@@ -790,7 +790,7 @@ def write_symbol_table(rep, out=None, src_root=None):
     if rep.failed:
         symtab.remove_identity(os.path.dirname(out))
     else:
-        symtab.write_identity(os.path.dirname(out), src_root or paths.SRC_ROOT)
+        symtab.write_identity(os.path.dirname(out), src_root or paths.SRC_ROOT, tree)
 
 
 def symbol_table_rows(results):
@@ -1225,6 +1225,8 @@ def main(argv=None):
         ap.error('--base is for checking; it cannot be combined with recording')
     os.makedirs(paths.BUILD, exist_ok=True)
     clean.record_worktree()
+    # The tree the symbol table will be stamped with: taken before the build, not after it.
+    built_tree = symtab.tree_id(paths.SRC_ROOT) if a.all else None
     try:
         base = load_base(a.base) if a.base else None
         sizes = load_base_sizes(a.base) if a.base else None
@@ -1236,7 +1238,7 @@ def main(argv=None):
         rep.failed = True
     if a.all and rep.results:
         # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
-        write_symbol_table(rep)
+        write_symbol_table(rep, tree=built_tree)
     if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')

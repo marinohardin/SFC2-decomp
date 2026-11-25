@@ -72,18 +72,24 @@ def tree_id(src_root):
     return h.hexdigest()
 
 
-def write_identity(build, src_root):
-    """Record in `build` which source tree its symbols.tsv belongs to."""
+def write_identity(build, src_root, tree=None):
+    """Record in `build` which source tree its symbols.tsv belongs to: `tree`, a tree_id taken
+    before the build started (so an edit during the run is not stamped as built), else the
+    tree's id now."""
     with open(os.path.join(build, IDENTITY_FILE), 'w') as f:
-        f.write(tree_id(src_root) + '\n')
+        f.write((tree or tree_id(src_root)) + '\n')
 
 
 def remove_identity(build):
-    """A run that did not complete: its symbols.tsv belongs to no tree."""
+    """A run that did not complete: its symbols.tsv belongs to no tree. Raises OSError when the
+    file cannot be removed, since a stale id could then be taken for this run's."""
+    target = os.path.join(build, IDENTITY_FILE)
     try:
-        os.remove(os.path.join(build, IDENTITY_FILE))
-    except OSError:
-        pass
+        os.remove(target)
+    except FileNotFoundError:
+        return
+    if os.path.exists(target):
+        raise OSError(f'cannot remove {target}')
 
 
 def build_is_current(build, src_root):
