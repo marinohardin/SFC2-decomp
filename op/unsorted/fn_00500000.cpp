@@ -147,7 +147,7 @@ public:
 	void fn_0069b450( tMatrix *other );
 };
 
-void fn_00500b46( tMatrix *, tObject_00412f08, float );
+void fn_00500b46( tMatrix *, tPoint3, float );
 extern float g_0092f61c;
 extern float g_00966ab0;
 extern float g_00966ab4;
@@ -178,5 +178,39 @@ void fn_005008f4_element::fn_00500976( tObject_00413ac3_arg *renderer, float x, 
 	renderer->vfunction73( g_00966ab0, g_00966abc );
 	renderer->vfunction69( -f2, *(float *)&m00[20], 0.0f );
 	renderer->vfunction68();
+}
+
+extern "C" double fn_007381c4( double );
+extern "C" double fn_00737fa4( double );
+
+// HYPOTHESIS: builds the rotation matrix of an angle (radians) about an axis, in tMatrix's layout.
+// FUNCTION: STARFLEETOP 0x00500b46
+void fn_00500b46( tMatrix *m, tPoint3 axis, float angle )
+{
+	float c = (float)fn_007381c4( angle );
+	float s = (float)fn_00737fa4( angle );
+	axis.mNormalize();
+	float t = 1.0f - c;
+	float *f = (float *)m;
+	*((unsigned char *)m + 0x40) = 0;
+	f[0] = axis.x * axis.x * t + c;
+	float xy = axis.y * axis.x * t;
+	f[1] = xy - axis.z * s;
+	float xz = axis.z * axis.x * t;
+	f[2] = axis.y * s + xz;
+	f[4] = axis.z * s + xy;
+	f[5] = axis.y * axis.y * t + c;
+	float yz = axis.z * axis.y * t;
+	f[6] = yz - axis.x * s;
+	f[8] = xz - axis.y * s;
+	f[9] = axis.x * s + yz;
+	f[10] = axis.z * axis.z * t + c;
+	f[11] = 0.0f;
+	f[7] = 0.0f;
+	f[3] = 0.0f;
+	f[14] = 0.0f;
+	f[13] = 0.0f;
+	f[12] = 0.0f;
+	f[15] = 1.0f;
 }
 

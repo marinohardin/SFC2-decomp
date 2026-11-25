@@ -7501,7 +7501,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005008e9	function	tFx_Photon::~tFx_Photon	tFx_Photon				rtti
 0x005008f4	function	fn_005008f4		??0fn_005008f4_element@@QAE@XZ	claim		none
 0x00500976	function	fn_00500976		?fn_00500976@fn_005008f4_element@@QAEXPAVtObject_00413ac3_arg@@MMM@Z	claim		none
-0x00500b46	function	fn_00500b46		?fn_00500b46@@YAXPAVtMatrix@@VtObject_00412f08@@M@Z	add		none
+0x00500b46	function	fn_00500b46		?fn_00500b46@@YAXPAVtMatrix@@UtPoint3@@M@Z	claim		none
 0x00500c30	function	fn_00500c30	tFx_Photon				vtable
 0x00500f26	function	fn_00500f26					none
 0x00500fe6	function	fn_00500fe6					none
@@ -18492,7 +18492,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069b320	function	fn_0069b320		??_0tPoint3@@QAEAAU0@M@Z	callers		none
 0x0069b350	function	fn_0069b350					none
 0x0069b390	function	fn_0069b390		?mLength@tPoint3@@QBEMXZ	callers		none
-0x0069b3d0	function	fn_0069b3d0					none
+0x0069b3d0	function	fn_0069b3d0		?mNormalize@tPoint3@@QAEEXZ	add		none
 0x0069b450	function	fn_0069b450					none
 0x0069baf0	function	fn_0069baf0		?mMult@tMatrix@@QBEXAAV1@ABV1@@Z	callers		none
 0x0069c250	function	fn_0069c250		?mIdentity@tMatrix@@QAEXXZ	callers		none
@@ -21698,7 +21698,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00737f63	function	fn_00737f63					none
 0x00737f86	function	fn_00737f86	tSfcMouseMgr				vtable
 0x00737f90	function	fn_00737f90					none
-0x00737fa4	function	fn_00737fa4					none
+0x00737fa4	function	fn_00737fa4		_fn_00737fa4	add		none
 0x00737fad	function	fn_00737fad					none
 0x00738040	function	__ftol		__ftol	callers		fid
 0x00738070	function	fn_00738070					none
