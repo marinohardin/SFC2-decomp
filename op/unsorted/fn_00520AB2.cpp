@@ -71,3 +71,44 @@ tAIUnitData::tAIUnitData()
 	field_2c = 0;
 	field_30 = 0;
 }
+
+// HYPOTHESIS: owner of the 0x32-entry tAIUnitData array at +8 (count at +0xc88); real class unknown.
+class tAIUnitDataList
+{
+public:
+	char pad_0[8];
+	// HYPOTHESIS: the array and its count form one member at +8 (the count is addressed from the array base).
+	struct tList
+	{
+		tAIUnitData field_0[0x32];
+		int field_c80;
+
+		// MATCH-ONLY: inlined append helper; the original's name is unknown.
+		void Append(const tAIUnitData& d)
+		{
+			if (field_c80 < 0x32) {
+				field_0[field_c80] = d;
+				field_c80++;
+			}
+		}
+	} field_8;
+
+	int fn_00520cba(int a, int b, float c, char d);
+	tAIUnitData* fn_00520d38(int a);
+};
+
+// FUNCTION: STARFLEETOP 0x00520cba
+int tAIUnitDataList::fn_00520cba(int a, int b, float c, char d)
+{
+	if (field_8.field_c80 < 0x32) {
+		tAIUnitData data(field_8.field_c80, a, b, c, c, d);
+		tAIUnitData* p = fn_00520d38(a);
+		if (p == 0) {
+			field_8.Append(data);
+		} else {
+			*p = data;
+		}
+		return data.field_0;
+	}
+	return -1;
+}

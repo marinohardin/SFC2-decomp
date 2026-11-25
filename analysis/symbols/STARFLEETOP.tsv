@@ -8306,8 +8306,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520bc9	function	tAIUnitData::scalar_deleting_destructor	tAIUnitData				rtti
 0x00520be5	thunk	fn_00520be5					none
 0x00520bea	function	tAIUnitData::tAIUnitData	tAIUnitData				rtti
-0x00520cba	function	fn_00520cba					none
-0x00520d38	function	fn_00520d38					none
+0x00520cba	function	fn_00520cba		?fn_00520cba@tAIUnitDataList@@QAEHHHMD@Z	claim		none
+0x00520d38	function	fn_00520d38		?fn_00520d38@tAIUnitDataList@@QAEPAVtAIUnitData@@H@Z	add		none
 0x00520d69	function	fn_00520d69					none
 0x00520dad	function	fn_00520dad					none
 0x00520e30	function	fn_00520e30					none
