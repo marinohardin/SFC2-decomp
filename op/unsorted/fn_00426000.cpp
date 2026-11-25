@@ -391,6 +391,7 @@ class fn_00524daa_Class
 {
 public:
 	~fn_00524daa_Class();
+	void fn_00524ead(int param_1);
 };
 
 class fn_00426988_Class : public fn_00426988_Base
@@ -399,6 +400,8 @@ public:
 	fn_00426988_Class(int aID);
 	~fn_00426988_Class();
 	void fn_00603dee(void** p);
+	void fn_00426b63(int aID);
+	fn_00524daa_Class* fn_00426bcc();
 
 	int m10[20];
 	int m60[20];
@@ -468,4 +471,23 @@ fn_00426988_Class::~fn_00426988_Class()
 		delete mdc;
 		mdc = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00426b63
+void fn_00426988_Class::fn_00426b63(int aID)
+{
+	g_p0090bed4->fn_00523027(aID, -1);
+	void** p = m04;
+	while (p != m08)
+	{
+		if (*(int*)p == aID)
+		{
+			fn_00603dee(p);
+			break;
+		}
+		p++;
+	}
+	fn_00524daa_Class* obj = fn_00426bcc();
+	if (obj != 0)
+		obj->fn_00524ead(aID);
 }
