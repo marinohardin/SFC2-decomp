@@ -1,5 +1,6 @@
 #include "Common/Thread/Optex.h"
 #include "unsorted/tPlayerRelayCCreator.h"
+#include "unsorted/tMedalsPanelCreator.h"
 
 // MATCH-ONLY: inline in the SDK, as in unsorted/fn_0042A000.cpp.
 inline tOptex::tGuard::~tGuard()
@@ -15,6 +16,7 @@ public:
     char pad[0xb8];
     tOptex m_b8;
     void fn_00600035(tMetaClientCreator **out);
+    void fn_00600094(tMetaClientCreator **out);
 };
 
 // FUNCTION: STARFLEETOP 0x00600035
@@ -22,4 +24,11 @@ void fn_00600035_owner::fn_00600035(tMetaClientCreator **out)
 {
     tOptex::tGuard guard(&m_b8);
     *out = new tPlayerRelayCCreator;
+}
+
+// FUNCTION: STARFLEETOP 0x00600094
+void fn_00600035_owner::fn_00600094(tMetaClientCreator **out)
+{
+    tOptex::tGuard guard(&m_b8);
+    *out = new tMedalsPanelCreator;
 }
