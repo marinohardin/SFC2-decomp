@@ -66,6 +66,18 @@ void tWinTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCall
 	validate( fTimerHandle );
 }
 
+#line 145
+// FUNCTION: STARFLEETOP 0x0070f860
+void tWinTimer::ChangeTiming( int32u newDueTime, int32u newPeriod )
+{
+#line 148
+	validate( fTimerHandle );
+	tTimer::ChangeTiming( newDueTime, newPeriod );
+	fTimerHandle = timeSetEvent( fDueTime, 1, (LPTIMECALLBACK)WinTimerCallback, (DWORD)this, 0 );
+#line 157
+	validate( fTimerHandle );
+}
+
 #line 190
 // FUNCTION: STARFLEETOP 0x0070f940
 void __stdcall tWinTimer::WinTimerCallback( unsigned int timerId, unsigned int msg, int32u user, int32u dw1, int32u dw2 )
