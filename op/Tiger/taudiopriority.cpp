@@ -74,7 +74,7 @@ long tAudioPriorityManagerPart::mGetAudioFileClassHandleFromReference( long refe
 	{
 		for ( long i = 0; i < f14; i++ )
 		{
-			if ( f0c[i] && f0c[i]->vfunction1() == reference )
+			if ( f0c[i] && f0c[i]->mGetMyHandle() == reference )
 				return i;
 		}
 	}
@@ -649,4 +649,10 @@ unsigned char tHandleList::mIsEmpty( void )
 void tAudioFileClass::mSetMyHandle( long handle )
 {
 	f24 = handle;
+}
+
+// FUNCTION: STARFLEETOP 0x00663630
+long tAudioFileClass::mGetMyHandle( void )
+{
+	return f24;
 }

@@ -84,7 +84,7 @@ class tAudioFileClass
 		// pointer of its own, which a written destructor does.
 
 		virtual		void	vfunction0	( void );
-		virtual		long	vfunction1	( void );
+		virtual		long	mGetMyHandle	( void );
 		virtual		void	mSetMyHandle	( long );
 		virtual		void	vfunction3	( void );
 		// HYPOTHESIS: mSet (signature from the SDK library symbols) in slot 4, from
