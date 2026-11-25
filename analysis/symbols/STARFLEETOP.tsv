@@ -7609,7 +7609,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504cbe	function	fn_00504cbe					none
 0x00504cd2	function	fn_00504cd2					none
 0x005050e2	function	fn_005050e2		?fn_005050e2@@YAMM@Z	claim		none
-0x005050ed	function	fn_005050ed					none
+0x005050ed	function	fn_005050ed		?fn_005050ed@@YAXXZ	claim		none
 0x00505133	function	tFx_Pulsar::tFx_Pulsar	tFx_Pulsar				rtti
 0x0050517b	function	fn_0050517b	tFx_Pulsar				vtable
 0x00505182	function	fn_00505182	tFx_Pulsar				vtable
