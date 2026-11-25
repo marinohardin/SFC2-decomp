@@ -16800,7 +16800,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646380	function	tChannelAttributes::mSet3DSoundPosition	tChannelAttributes	?mSet3DSoundPosition@tChannelAttributes@@UAEXMMM@Z	claim		mangled
 0x006463a0	function	tChannelAttributes::mGet3DSoundPosition	tChannelAttributes	?mGet3DSoundPosition@tChannelAttributes@@UAEPAUtPoint3@@XZ	claim		mangled
 0x006463b0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?vfunction16@tChannelAttributes@@UAEXPAUtPoint3@@@Z	claim		mangled
-0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	mangled		mangled
+0x006463d0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXUtPoint3@@@Z	claim		mangled
 0x006463f0	function	tChannelAttributes::mSet3DSoundOrientation	tChannelAttributes	?mSet3DSoundOrientation@tChannelAttributes@@UAEXMMM@Z	mangled		mangled
 0x00646410	function	tChannelAttributes::mGet3DSoundOrientation	tChannelAttributes	?mGet3DSoundOrientation@tChannelAttributes@@UAEPAUtPoint3@@XZ	mangled		mangled
 0x00646420	function	tChannelAttributes::mSet3DSoundVelocity	tChannelAttributes	?mSet3DSoundVelocity@tChannelAttributes@@UAEXPAUtPoint3@@@Z	mangled		mangled
