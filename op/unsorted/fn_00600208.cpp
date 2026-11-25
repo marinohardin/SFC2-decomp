@@ -39,5 +39,6 @@ typedef std::basic_string<char, std::char_traits<char>, std::allocator<char> > f
 // FUNCTION: STARFLEETOP 0x00600208
 fn_00600208_string g_00c39e48 = "BriefingSP";
 
+// FUNCTION: STARFLEETOP 0x006002a1
 // FUNCTION: STARFLEETOP 0x0060026e
 fn_00600208_string g_00c39e30 = "DebriefingSP";
