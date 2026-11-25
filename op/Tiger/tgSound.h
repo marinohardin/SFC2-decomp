@@ -474,7 +474,7 @@ public:
     virtual unsigned char mSet3DSoundCones(float angle, long level) = 0;
     virtual unsigned char mSet3DSoundReferenceDistance(double distance) = 0;
     virtual unsigned char mSet3DSoundProfile(t3DSoundProfile* profile) = 0;
-    virtual void mGetUserPositionContext();
+    virtual long mGetUserPositionContext();
     virtual void mSetUserPositionContext(long context);
     virtual void mGetUpdateSoundPositionFunction();
     virtual void mSetUpdateSoundPositionFunction(long function);

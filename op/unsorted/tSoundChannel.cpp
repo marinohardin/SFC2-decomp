@@ -181,3 +181,9 @@ unsigned char tSoundChannel::mAutoRemoveSelections()
     mSetSoundType(mGetSoundType() + 0x2000);
     return 1;
 }
+
+// FUNCTION: STARFLEETOP 0x00646b00
+long tSoundChannel::mGetUserPositionContext()
+{
+    return field_0xa0;
+}
