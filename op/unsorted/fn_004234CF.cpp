@@ -9,5 +9,6 @@ void* fn_004234cf()
 
 #include "unsorted/tEntityMgr.h"
 
+// FUNCTION: STARFLEETOP 0x00423521
 // FUNCTION: STARFLEETOP 0x00423517
 tEntityMgr g_tEntityMgr;
