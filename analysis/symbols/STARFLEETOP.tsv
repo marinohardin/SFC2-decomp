@@ -8238,7 +8238,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0051d8a5	function	tCalculationData::tCalculationData	tCalculationData				rtti
 0x0051d8b7	function	tCalculationData::scalar_deleting_destructor	tCalculationData				rtti
 0x0051d8d3	function	tCalculationData::~tCalculationData	tCalculationData				rtti
-0x0051d8da	function	tCalculationInitData::tCalculationInitData	tCalculationInitData				rtti
+0x0051d8da	function	tCalculationInitData::tCalculationInitData	tCalculationInitData	??0tCalculationInitData@@QAE@H@Z	add		rtti
 0x0051d8f2	function	tCalculationInitData::scalar_deleting_destructor	tCalculationInitData				rtti
 0x0051d90e	function	tCalculationInitData::~tCalculationInitData	tCalculationInitData				rtti
 0x0051d919	function	tAICalculation::tAICalculation	tAICalculation				rtti
@@ -8302,7 +8302,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
 0x00520ab2	function	fn_00520ab2		??0tAIUnitData@@QAE@HHHMMD@Z	claim		none
 0x00520b1a	function	fn_00520b1a		??0tAIUnitData@@QAE@XZ	claim		none
-0x00520b5e	function	fn_00520b5e					none
+0x00520b5e	function	fn_00520b5e		??0tAIUnitData0208@@QAE@XZ	claim		none
 0x00520bc9	function	tAIUnitData::scalar_deleting_destructor	tAIUnitData				rtti
 0x00520be5	thunk	fn_00520be5					none
 0x00520bea	function	tAIUnitData::tAIUnitData	tAIUnitData				rtti
