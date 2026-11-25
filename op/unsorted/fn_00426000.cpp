@@ -76,7 +76,9 @@ public:
 	virtual void vfunction11();
 	virtual void vfunction12();
 	virtual float vfunction13();
-	char pad0004[0x868];
+	char pad0004[0x30];
+	tPoint3 m34;
+	char pad0040[0x82c];
 	int m86c;
 };
 
@@ -131,6 +133,7 @@ public:
 	fn_00426141_Cell* fn_0042636b(fn_00426141_Cell* out, int i, int j);
 	void fn_0042630b();
 	void fn_00426469(int index, tPoint3* p, fn_00426469_Vertex* v);
+	void fn_00426886(unsigned int mask);
 
 	fn_00426141_Game* m00;
 	float m04[6];
@@ -301,4 +304,40 @@ float fn_0042653f(float x)
 	else if (x < 0.0f)
 		x = 0.0f;
 	return x;
+}
+
+#include "unsorted/fn_0040ce21_type.h"
+
+int fn_00454339(unsigned int);
+
+// HYPOTHESIS: two float tables at 0x00c6c004 and 0x00c6a004, indexed by an angle in 8192 steps.
+extern float g_00c6c004[];
+extern float g_00c6a004[];
+
+// FUNCTION: STARFLEETOP 0x00426886
+void fn_00426141_Class::fn_00426886(unsigned int mask)
+{
+	int index = 0;
+	tPoint3 pos = m00->m34;
+	int bits = fn_00454339(mask) >> 1;
+	if (bits != 0)
+	{
+		do
+		{
+			bits >>= 1;
+			index++;
+		}
+		while (bits != 0);
+	}
+	static fn_0040ce21_type gotcha("Gotcha you SOB!");
+	m20[index] = g_00c7c148;
+	tPoint3 q;
+	q.x = g_00c6c004[mask & 0x1fff] + pos.x;
+	q.y = g_00c6a004[mask & 0x1fff] + pos.y;
+	q.z = pos.z;
+	tPoint3 d = q - pos;
+	m50[index].r = d.x;
+	m50[index].g = d.y;
+	m50[index].b = d.z;
+	m98[index] = 1;
 }

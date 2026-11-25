@@ -1250,7 +1250,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426469	function	fn_00426469		?fn_00426469@fn_00426141_Class@@QAEXHPAUtPoint3@@PAUfn_00426469_Vertex@@@Z	claim		none
 0x0042653f	function	fn_0042653f		?fn_0042653f@@YAMM@Z	claim		none
 0x00426563	function	fn_00426563					none
-0x00426886	function	fn_00426886					none
+0x00426886	function	fn_00426886		?fn_00426886@fn_00426141_Class@@QAEXI@Z	claim		none
 0x00426988	function	fn_00426988					none
 0x00426a4d	function	fn_00426a4d					none
 0x00426aef	function	fn_00426aef					none
@@ -2986,7 +2986,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0045413e	function	fn_0045413e	tIndividualShipSystemList				vtable
 0x00454291	function	fn_00454291	tIndividualShipSystemList				vtable
 0x004542c4	function	fn_004542c4	tIndividualShipSystemList				vtable
-0x00454339	function	fn_00454339					none
+0x00454339	function	fn_00454339		?fn_00454339@@YAHI@Z	add		none
 0x004543e9	function	fn_004543e9	tTractorSystem				vtable
 0x00454403	function	tTractorSystem::tTractorSystem	tTractorSystem				rtti
 0x004545cb	function	fn_004545cb	tEntityAsteroid				vtable
