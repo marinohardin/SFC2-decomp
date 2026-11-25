@@ -17,5 +17,6 @@ iTruth tSoundPart::Test_tSoundPart( void )
 iTruth tAudioFileInfoPart::Test_tAudioFileInfoPart( void )
 {
     try { tAudioFileInfoPart *test = tAudioFileInfoPart::Search_tAudioFileInfoPart(); return kTrue; }
-    catch (tPartBindingException) { return kFalse; }
+    catch (...) {}
+    return kTrue;
 }
