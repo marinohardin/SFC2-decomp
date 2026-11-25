@@ -179,6 +179,12 @@ tSoundChannelFormat* tSoundChannel::mGetSoundChannelFormat()
 {
     return &field_0x10;
 }
+
+// FUNCTION: STARFLEETOP 0x00646850
+long tSoundChannel::mGetBufferLength()
+{
+    return field_0x10.vfunction3();
+}
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)

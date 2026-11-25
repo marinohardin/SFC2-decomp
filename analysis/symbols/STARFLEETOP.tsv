@@ -16850,7 +16850,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646820	function	tSoundChannel::mGet3DSoundConeAngleForNoAttenuation	tSoundChannel	?mGet3DSoundConeAngleForNoAttenuation@tSoundChannel@@UAEMXZ	claim		mangled
 0x00646830	function	tSoundChannel::mGet3DSoundConeAttenuationLevel	tSoundChannel	?mGet3DSoundConeAttenuationLevel@tSoundChannel@@UAEJXZ	claim		mangled
 0x00646840	function	tSoundChannel::mGetSoundChannelFormat	tSoundChannel	?mGetSoundChannelFormat@tSoundChannel@@UAEPAVtSoundChannelFormat@@XZ	claim		mangled
-0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	mangled		mangled
+0x00646850	function	tSoundChannel::mGetBufferLength	tSoundChannel	?mGetBufferLength@tSoundChannel@@UAEJXZ	claim		mangled
 0x00646860	function	tSoundChannel::mGetNumChannels	tSoundChannel	?mGetNumChannels@tSoundChannel@@UAEJXZ	mangled		mangled
 0x00646870	function	tSoundChannel::mGetBytesPerSample	tSoundChannel	?mGetBytesPerSample@tSoundChannel@@UAEJXZ	mangled		mangled
 0x00646880	function	tSoundChannel::mGetBitsPerSample	tSoundChannel	?mGetBitsPerSample@tSoundChannel@@UAEJXZ	mangled		mangled
