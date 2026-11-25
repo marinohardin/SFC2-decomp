@@ -58,6 +58,15 @@ void tTimer::StartTimer( int32u dueTime, int32u period, iTimerCallback* pCallbac
 	fContext = context;
 }
 
+// FUNCTION: STARFLEETOP 0x0070fd80
+void tTimer::ChangeTiming( int32u newDueTime, int32u newPeriod )
+{
+	StopTimer();
+	fTimerHasStarted = false;
+	fDueTime = newDueTime;
+	fPeriod = newPeriod;
+}
+
 // FUNCTION: STARFLEETOP 0x0070fda0
 void tTimer::StopTimer()
 {

@@ -20741,7 +20741,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070fcd0	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAVtTimerHandler@@@Z	claim		mangled
 0x0070fd00	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKP6AXPAV1@K@ZK@Z	claim		mangled
 0x0070fd40	function	tTimer::StartTimer	tTimer	?StartTimer@tTimer@@UAEXKKPAV?$tCallback@K@@K@Z	claim		mangled
-0x0070fd80	function	tTimer::ChangeTiming	tTimer	?ChangeTiming@tTimer@@UAEXKK@Z	mangled		mangled
+0x0070fd80	function	tTimer::ChangeTiming	tTimer	?ChangeTiming@tTimer@@UAEXKK@Z	claim		mangled
 0x0070fda0	function	tTimer::StopTimer	tTimer	?StopTimer@tTimer@@UAEXXZ	claim		mangled
 0x0070fdb0	function	tTimer::SignalTimerEvent	tTimer	?SignalTimerEvent@tTimer@@MAEXXZ	claim		mangled
 0x0070fe30	function	fn_0070fe30					none
