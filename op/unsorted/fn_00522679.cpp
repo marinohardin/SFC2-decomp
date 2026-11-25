@@ -87,6 +87,7 @@ void __fastcall fn_005227c1(char* self)
 class tObject_0051c668 {
 public:
 	void fn_0051c668(int param_1);
+	void fn_0051c5f2(int param_1);
 };
 
 // HYPOTHESIS: an object in the table of 0x4000 object pointers indexed by ID, with a virtual
@@ -194,6 +195,22 @@ char __fastcall fn_00522b29(fn_0090bed4_Object *self, int, void *pTeam)
 			self->m_16c0.erase(it);
 			return 1;
 		}
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00522b94
+// HYPOTHESIS: a member of fn_0090bed4_Object taking the owner and a fleet ID; calls 0x0051c668 on the owner's fleet object and 0x0051c5f2 on the other.
+char __fastcall fn_00522b94(fn_0090bed4_Object *self, int, vfunction33_result *pOwner, int param_2)
+{
+	tObject_0051c668 *pObject = (tObject_0051c668 *)self->fn_00523543(pOwner->field_60);
+	int value = pOwner->fn_00410223();
+	if (pObject != 0)
+		pObject->fn_0051c668(value);
+	pObject = (tObject_0051c668 *)self->fn_00523543(param_2);
+	if (pObject != 0) {
+		pObject->fn_0051c5f2(value);
+		return 1;
 	}
 	return 0;
 }
