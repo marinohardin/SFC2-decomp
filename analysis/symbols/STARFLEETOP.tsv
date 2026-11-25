@@ -17483,7 +17483,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0066eb80	function	tSoundMemoryBlock::mUnlock	tSoundMemoryBlock	?mUnlock@tSoundMemoryBlock@@UAEXXZ	claim		mangled
 0x0066eba0	function	tSoundMemoryBlock::mGetHandle	tSoundMemoryBlock	?mGetHandle@tSoundMemoryBlock@@UAEKXZ	claim		mangled
 0x0066ebb0	function	tSoundMemoryBlock::mAboutToBeRemovedByManager	tSoundMemoryBlock	?mAboutToBeRemovedByManager@tSoundMemoryBlock@@UAEXXZ	claim		mangled
-0x0066ebc0	function	ReadAtInterrupt		?ReadAtInterrupt@@YAXXZ	callers		sdk
+0x0066ebc0	function	ReadAtInterrupt		?fn_0066ebc0@@YAXXZ	claim		sdk
 0x0066ebd0	function	tAsynchSoundQueue::tAsynchSoundQueue	tAsynchSoundQueue	??0tAsynchSoundQueue@@QAE@XZ	claim		claim
 0x0066ec50	function	tAsynchSoundQueue::mReadNext	tAsynchSoundQueue	?mReadNext@tAsynchSoundQueue@@QAEEXZ	claim		claim
 0x0066ee80	function	tAsynchSoundQueue::mReadNextInterrupt	tAsynchSoundQueue	?mReadNextInterrupt@tAsynchSoundQueue@@QAEXXZ	claim		claim
