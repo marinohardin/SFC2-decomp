@@ -1,5 +1,9 @@
 #include "Tiger/tstring.h"
 #include <new>
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tObject_008f5170.h"
+#include "unsorted/fn_00571a58_owner.h"
+#include "Tiger/tvectormath.h"
 
 // HYPOTHESIS: the value a node holds at +0xc, with a tString first. Its implicit destructor
 // is the out-of-line copy at 0x004bd853 that jumps to tString::~tString; the second member's
@@ -368,4 +372,21 @@ fn_004255b5_vector* fn_004255b5_class::fn_004255b5(float x, float y, int unused,
 	fn_00425f71(g_008f5188.fFirst, g_008f5188.fLast, 0);
 	fn_00425f08(&g_008f5188, g_008f5188.fFirst, g_008f5188.fLast);
 	return &g_008f5188;
+}
+
+// HYPOTHESIS: the object at 0x008e1060 is the entity manager.
+extern tEntityMgr g_008e1060;
+
+// FUNCTION: STARFLEETOP 0x004256b1
+void fn_004255b5_class::fn_004256b1(unsigned int col, unsigned int row, fn_00412f08_point p, float r)
+{
+	static fn_0040ce21_object s("Clean it up Yummm!");
+	// HYPOTHESIS: the list is a chain of (entity, next) nodes; seen as void** pairs here.
+	void*** list = (void***)((tObject_008f5170*)this)->fn_00425726(col, row);
+	if (list != 0) {
+		for (void** n = *list; n != 0; n = (void**)n[1]) {
+			if (g_008e1060.mGetDistanceFromEntityToPoint((tEntity*)n[0], *(const tPoint3*)&p) <= r)
+				((fn_00571a58_owner*)&g_008f5188)->fn_00571a69((int)n);
+		}
+	}
 }
