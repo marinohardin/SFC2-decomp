@@ -108,7 +108,7 @@ class fn_00426141_Class
 {
 public:
 	fn_00426141_Class(fn_00426141_Game* game);
-	fn_00426141_Cell fn_0042636b(int i, int j);
+	fn_00426141_Cell* fn_0042636b(fn_00426141_Cell* out, int i, int j);
 	void fn_0042630b();
 
 	fn_00426141_Game* m00;
@@ -188,7 +188,8 @@ fn_00426141_Class::fn_00426141_Class(fn_00426141_Game* game)
 	{
 		for (int j = 0; j < 0x21; j++)
 		{
-			mb0[i][j].fn_0042642c(fn_0042636b(i, j));
+			fn_00426141_Cell tmp;
+			mb0[i][j].fn_0042642c(*fn_0042636b(&tmp, i, j));
 		}
 	}
 }
@@ -218,14 +219,13 @@ extern "C" double fn_007381c4(double);
 extern "C" double fn_00737fa4(double);
 
 // FUNCTION: STARFLEETOP 0x0042636b
-fn_00426141_Cell fn_00426141_Class::fn_0042636b(int i, int j)
+fn_00426141_Cell* fn_00426141_Class::fn_0042636b(fn_00426141_Cell* out, int i, int j)
 {
-	fn_00426141_Cell r;
 	float f = (float)j * 0.03125f;
-	float a = f * 3.14159265358979;
+	float a = f * 3.14159265358979323846;
 	a = a + a;
 	float g = (float)i * 0.0625f;
-	float b = g * 3.14159265358979;
+	float b = g * 3.14159265358979323846;
 	float sa = (float)fn_007381c4(a);
 	float ca = (float)fn_00737fa4(a);
 	float sb = (float)fn_007381c4(b);
@@ -239,6 +239,6 @@ fn_00426141_Cell fn_00426141_Class::fn_0042636b(int i, int j)
 	c.m00[5] = cb * sa;
 	c.m00[6] = f;
 	c.m00[7] = g;
-	r.fn_0042642c(c);
-	return r;
+	out->fn_0042642c(c);
+	return out;
 }

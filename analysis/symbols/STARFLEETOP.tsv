@@ -1245,7 +1245,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00426116	function	fn_00426116		?fn_00426116@@YAXXZ	claim		none
 0x00426141	function	fn_00426141		??0fn_00426141_Class@@QAE@PAVfn_00426141_Game@@@Z	claim		none
 0x0042630b	function	fn_0042630b		?fn_0042630b@fn_00426141_Class@@QAEXXZ	claim		none
-0x0042636b	function	fn_0042636b		?fn_0042636b@fn_00426141_Class@@QAE?AVfn_00426141_Cell@@HH@Z	claim		none
+0x0042636b	function	fn_0042636b		?fn_0042636b@fn_00426141_Class@@QAEPAVfn_00426141_Cell@@PAV2@HH@Z	claim		none
 0x0042642c	function	fn_0042642c					none
 0x00426469	function	fn_00426469					none
 0x0042653f	function	fn_0042653f					none
@@ -21698,7 +21698,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00737f63	function	fn_00737f63					none
 0x00737f86	function	fn_00737f86	tSfcMouseMgr				vtable
 0x00737f90	function	fn_00737f90					none
-0x00737fa4	function	fn_00737fa4					none
+0x00737fa4	function	fn_00737fa4		_fn_00737fa4	add		none
 0x00737fad	function	fn_00737fad					none
 0x00738040	function	__ftol		__ftol	callers		fid
 0x00738070	function	fn_00738070					none
