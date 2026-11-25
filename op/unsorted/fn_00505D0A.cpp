@@ -1,6 +1,17 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00505D0A.cpp
-// Functions: 0x00505d0a to 0x00505e27, 8 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tObject_0040ce21.h"
+
+// HYPOTHESIS: tFx_Shockwave has no shared header yet; declared here pending a HEADER REQUEST.
+class tFx_Shockwave
+{
+public:
+	tFx_Shockwave();
+
+	char	pad00[0x30];
+};
+
+// FUNCTION: STARFLEETOP 0x00505d0a
+tFx_Shockwave* fn_00505d0a()
+{
+	static tObject_0040ce21 report("Oh my, what will we do");
+	return new tFx_Shockwave();
+}

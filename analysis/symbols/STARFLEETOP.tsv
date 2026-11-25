@@ -7626,10 +7626,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0050552a	function	fn_0050552a					none
 0x0050553e	function	fn_0050553e					none
 0x00505552	function	fn_00505552					none
-0x0050555a	function	tFx_Shockwave::tFx_Shockwave	tFx_Shockwave				rtti
+0x0050555a	function	tFx_Shockwave::tFx_Shockwave	tFx_Shockwave	??0tFx_Shockwave@@QAE@XZ	add		rtti
 0x00505580	function	fn_00505580					none
 0x00505c97	function	fn_00505c97	tFx_Shockwave				vtable
-0x00505d0a	function	fn_00505d0a					none
+0x00505d0a	function	fn_00505d0a		?fn_00505d0a@@YAPAVtFx_Shockwave@@XZ	claim		none
 0x00505daf	function	fn_00505daf					none
 0x00505dc3	function	fn_00505dc3					none
 0x00505dd7	function	fn_00505dd7					none
