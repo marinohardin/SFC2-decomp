@@ -33,3 +33,22 @@ void tTimer::StopTimer()
 	fDueTime = 0;
 	fPeriod = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0070fdb0
+void tTimer::SignalTimerEvent()
+{
+	switch( fCallbackType )
+	{
+	case kTimerHandler:
+		fpTimerHandler->HandlerTimerEvent( this );
+		break;
+	case kTimerCallbackFuncton:
+		fpCallbackFunc( this, fContext );
+		break;
+	case kCallbackClass:
+		fpCallback->Callback( fContext );
+		break;
+	default:
+		throw;
+	}
+}
