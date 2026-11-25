@@ -140,3 +140,10 @@ iTruth tSoundChannel::mAreWeAGlobalSound()
     unsigned char globalSound = (mGetSoundType() & 0x400) > 0;
     return globalSound;
 }
+
+// FUNCTION: STARFLEETOP 0x00646a20
+iTruth tSoundChannel::mDoWeRetainSelections()
+{
+    unsigned char retain = (mGetSoundType() & 0x800) > 0;
+    return retain;
+}
