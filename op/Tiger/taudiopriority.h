@@ -85,7 +85,7 @@ class tAudioFileClass
 
 		virtual		void	vfunction0	( void );
 		virtual		long	vfunction1	( void );
-		virtual		void	vfunction2	( long );
+		virtual		void	mSetMyHandle	( long );
 		virtual		void	vfunction3	( void );
 		// HYPOTHESIS: mSet (signature from the SDK library symbols) in slot 4, from
 		// mSetAudioFileClass (0x00661f60) calling through +0x10.

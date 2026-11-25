@@ -106,7 +106,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[0] = new tAudioFileClass;
 		if ( f0c[0] )
 		{
-			f0c[0]->vfunction2( 0 );
+			f0c[0]->mSetMyHandle( 0 );
 			f10 = 1;
 			return 0;
 		}
@@ -143,7 +143,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[oldSize] = new tAudioFileClass;
 		if ( f0c[oldSize] )
 		{
-			f0c[oldSize]->vfunction2( oldSize );
+			f0c[oldSize]->mSetMyHandle( oldSize );
 			f10++;
 			return oldSize;
 		}
@@ -158,7 +158,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 		f0c[f10] = new tAudioFileClass;
 		if ( f0c[f10] )
 		{
-			f0c[f10]->vfunction2( f10 );
+			f0c[f10]->mSetMyHandle( f10 );
 			f10++;
 			return f10 - 1;
 		}
@@ -177,7 +177,7 @@ long tAudioPriorityManagerPart::mNewAudioFileClass( void )
 				f0c[i] = new tAudioFileClass;
 				if ( f0c[i] )
 				{
-					f0c[i]->vfunction2( i );
+					f0c[i]->mSetMyHandle( i );
 					f10++;
 					return i;
 				}
@@ -643,4 +643,10 @@ unsigned char tHandleList::mIsEmpty( void )
 {
 	unsigned char empty = f04 == 0;
 	return empty;
+}
+
+// FUNCTION: STARFLEETOP 0x00663620
+void tAudioFileClass::mSetMyHandle( long handle )
+{
+	f24 = handle;
 }
