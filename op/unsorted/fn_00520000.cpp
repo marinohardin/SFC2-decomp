@@ -63,3 +63,12 @@ tAIData::tAIData(char param_1, int param_2)
     field_18 = 0;
     field_1c = 0;
 }
+
+// HYPOTHESIS: the real body at 0x005209eb stores the tETrait vtable, calls tETrait's destructor and
+// frees the pointer at +0x18 through 0x005288cb. tETrait has no header and 0x005288cb no
+// declaration yet, so the body stays empty and only the deleting destructor is claimed.
+// MATCH-ONLY: the empty body stands in for the real destructor so the compiler emits the exact deleting destructor.
+// FUNCTION: STARFLEETOP 0x005209a3
+tAIData::~tAIData()
+{
+}

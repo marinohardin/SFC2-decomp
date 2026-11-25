@@ -8294,10 +8294,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520966	function	tAIData::tAIData	tAIData	??0tAIData@@QAE@DH@Z	claim		rtti
 0x00520990	function	tBasicFile::mDispose	tBasicFile	?mDispose@tBasicFile@@QAEPAV1@XZ	mangled		mangled
 0x0052099d	function	fn_0052099d	tETrait				vtable
-0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData				rtti
+0x005209a3	function	tAIData::scalar_deleting_destructor	tAIData	??_GtAIData@@UAEPAXI@Z	claim		rtti
 0x005209bf	function	fn_005209bf	tAIData				vtable
 0x005209db	function	fn_005209db	tAIData				vtable
-0x005209e1	function	tAIData::~tAIData	tAIData				rtti
+0x005209e1	function	tAIData::~tAIData	tAIData	??1tAIData@@UAE@XZ	add		rtti
 0x00520a35	function	tETrait::~tETrait	tETrait				rtti
 0x00520a3c	function	tETrait::scalar_deleting_destructor	tETrait				rtti
 0x00520ab2	function	fn_00520ab2					none
