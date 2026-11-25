@@ -7,6 +7,105 @@
 #include "Common/Callback.h"
 #include "Common/Thread/Optex.h"
 #include "Common/Thread/ThreadEvent.h"
+#include "Common/Thread/ResourceGuard.h"
+#include "Common/DataStore/Streamable.h"
+
+// HYPOTHESIS: the SDK declares tInterlockedType, tInterlockedScalar and tCallStack in
+// Common/Thread/InterlockedType.h, Common/Thread/InterlockedScalar.h and
+// Common/Debug/CallStack.h; they stay here, in the SDK's form and with only what tThread
+// uses, until those headers exist.
+
+// CLASS PURPOSE: Instances of this class will be accessed by multiple
+// threads. So, all members of this class (except the constructor and
+// destructor) must be thread-safe.
+template< typename tType >
+class tInterlockedType
+{
+public:
+//Setup
+	// Note: Constructors & destructors are always thread safe
+	tInterlockedType( const tType& value );
+	virtual ~tInterlockedType();
+
+protected:
+//Operations
+	virtual void OnValChanged( const tType& newValue, const tType& prevValue ) const;
+
+//Fields
+	// Guard for use by derived class functions
+	mutable tResourceGuard fResourceGuard;
+
+private:
+//Hidden
+	tInterlockedType( const tInterlockedType& copy );
+	tInterlockedType& operator=( const tInterlockedType& copy );
+
+//Fields
+	tType fValue;
+};
+
+template< typename tType >
+inline tInterlockedType<tType>::tInterlockedType( const tType& value )
+{
+	fValue = value;
+}
+
+template< typename tType >
+inline tInterlockedType<tType>::~tInterlockedType()
+{
+}
+
+template< typename tType >
+inline void tInterlockedType< tType >::OnValChanged( const tType& newValue, const tType& prevValue ) const
+{
+}
+
+// CLASS PURPOSE:
+// Instances of this class will be accessed by multiple threads. So,
+// all members of this class (except the constructor and destructor)
+// must be thread-safe.
+template< typename tType >
+class tInterlockedScalar : protected tInterlockedType< tType >
+{
+public:
+//Setup
+	tInterlockedScalar( tType value = tType() );
+	~tInterlockedScalar();
+};
+
+template< typename tType >
+inline tInterlockedScalar<tType>::tInterlockedScalar( tType value ) :
+	tInterlockedType<tType>( value )
+{
+}
+
+template< typename tType >
+inline tInterlockedScalar<tType>::~tInterlockedScalar()
+{
+}
+
+class tCallStack : public nDataStore::tStreamable
+{
+public:
+// Setup
+	tCallStack( bool recordCurStack = true );
+	virtual ~tCallStack();
+
+// Operations
+	virtual	void StreamOut( nDataStore::tOutput& output ) const;
+	virtual	void StreamIn( nDataStore::tInput& input );
+
+protected:
+// Types
+	enum
+	{
+		kMaxStackTrace = 200
+	};
+
+// Fields
+	int32u			fCallStackSize;
+	std::string		fCallStack[ kMaxStackTrace ];
+};
 
 // CLASS PURPOSE: A class that encapsulates threading
 class tThread
@@ -56,18 +155,14 @@ protected:
 	tThreadEvent	fShutdownCompleteEvent;	// 0x10
 	unsigned int	fThreadID;			// 0x1c
 
-	// HYPOTHESIS: two tInterlockedScalar<bool> (vtable at 0x00, a tResourceGuard at 0x04, the
-	// value at 0x1c), 0x20 bytes each. Working() reads fWorking, Alive() fAlive. Opaque until
-	// the interlocked types exist as headers.
-	char			fWorking[0x20];		// 0x20
-	char			fAlive[0x20];		// 0x40
+	// HYPOTHESIS: Working() reads fWorking, Alive() fAlive.
+	tInterlockedScalar< bool >	fWorking;	// 0x20
+	tInterlockedScalar< bool >	fAlive;		// 0x40
 	iThreadCallback* fWorkItem;			// 0x60
 	int32			fContext;			// 0x64
 	tOptex			fStartUpGuard;		// 0x68, built with (kUseThreadObject, 4000)
 
-	// HYPOTHESIS: the SDK's tCallStack fCallStackOfCallingThread, 0xc90 bytes; opaque until
-	// Common/Debug/CallStack.h has content.
-	char			fCallStackOfCallingThread[0xc90];	// 0x7c
+	tCallStack		fCallStackOfCallingThread;	// 0x7c
 
 private:
 //Hidden
