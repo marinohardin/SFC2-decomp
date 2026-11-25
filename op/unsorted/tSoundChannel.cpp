@@ -133,3 +133,10 @@ iTruth tSoundChannel::mAreWeFixedVolume()
     unsigned char fixedVolume = (mGetSoundType() & 0x200) > 0;
     return fixedVolume;
 }
+
+// FUNCTION: STARFLEETOP 0x00646a00
+iTruth tSoundChannel::mAreWeAGlobalSound()
+{
+    unsigned char globalSound = (mGetSoundType() & 0x400) > 0;
+    return globalSound;
+}
