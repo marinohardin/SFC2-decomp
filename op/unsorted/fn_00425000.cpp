@@ -574,3 +574,7 @@ char fn_004255b5_class::fn_00425def(tEntity* e, tPoint3 a, tPoint3 b, float r, f
 		return 0;
 	return 1;
 }
+
+// HYPOTHESIS: the 10-byte function is the dynamic initializer of a global of this table type.
+// FUNCTION: STARFLEETOP 0x00425eb6
+fn_0042556b_table g_fn_0042556b_table;
