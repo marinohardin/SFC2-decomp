@@ -7544,7 +7544,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00502664	function	fn_00502664					none
 0x00502678	function	fn_00502678					none
 0x0050268c	function	fn_0050268c					none
-0x00502b0a	function	fn_00502b0a					none
+0x00502b0a	function	fn_00502b0a		?fn_00502b0a@@YAXXZ	claim		none
 0x00502b35	function	tFx_PPDWave::tFx_PPDWave	tFx_PPDWave				rtti
 0x00502b9c	function	fn_00502b9c	tFx_PPDWave				vtable
 0x00502c54	function	fn_00502c54	tFx_PPDWave				vtable
