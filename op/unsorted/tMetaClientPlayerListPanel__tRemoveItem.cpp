@@ -1,4 +1,5 @@
 #include "Common/Thread/Optex.h"
+#include "Common/Thread/AccessPointer.h"
 
 // HYPOTHESIS: the original is tMetaClientPlayerListPanel::tRemoveItem; the outer class is declared
 // only in another unit and has no header yet, so the item class stands alone here. Only what this
@@ -65,4 +66,16 @@ public:
 tAccessPointer_0060422e::~tAccessPointer_0060422e()
 {
 	Done();
+}
+
+// HYPOTHESIS: operator* is shared by every instantiation through identical code folding; the
+// instantiation written here is arbitrary.
+// FUNCTION: STARFLEETOP 0x00604259
+template<>
+int& tAccessPointer< int, int >::operator*()
+{
+	fAccess.Enter();
+	int* result = fPointer;
+	fAccess.Leave();
+	return *result;
 }

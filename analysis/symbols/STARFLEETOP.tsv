@@ -15396,7 +15396,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006041d0	function	fn_006041d0		??1tRemoveItem_0060435f@@QAE@XZ	claim		none
 0x006041ff	function	fn_006041ff		??1tRemoveItem_00604390@@QAE@XZ	claim		none
 0x0060422e	function	fn_0060422e		??1tAccessPointer_0060422e@@QAE@XZ	claim		none
-0x00604259	function	fn_00604259					none
+0x00604259	function	fn_00604259		??D?$tAccessPointer@HH@@QAEAAHXZ	claim		none
 0x00604271	function	fn_00604271					none
 0x0060429c	function	fn_0060429c					none
 0x006042c7	function	fn_006042c7					none
