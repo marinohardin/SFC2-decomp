@@ -1,5 +1,6 @@
 #include <sstream>
 #include <string>
+#include <stdlib.h>
 
 // HYPOTHESIS: builds a message in a stringstream and returns it as a string; the tIdiom and
 // tLogMessage parts are left out because neither class has a header yet.
@@ -30,4 +31,13 @@ std::string fn_005c087e(std::string text, char c)
 	stream << text << c;
 	stream << text << c << text;
 	return stream.str();
+}
+
+void fn_004bd431();
+
+// HYPOTHESIS: arranges at exit the cleanup that Ghidra labels tApp3dBase::vfunction5, unconfirmed.
+// FUNCTION: STARFLEETOP 0x005c0b85
+void fn_005c0b85()
+{
+	atexit(fn_004bd431);
 }

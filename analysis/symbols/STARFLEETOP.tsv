@@ -5212,7 +5212,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bd2f0	function	fn_004bd2f0	tListBox_News_Session				vtable
 0x004bd325	function	fn_004bd325	tListBox_News_Session				vtable
 0x004bd3f9	function	tListBox_News::tListBox_News	tListBox_News				rtti
-0x004bd431	function	fn_004bd431	tApp3dBase				vtable
+0x004bd431	function	fn_004bd431	tApp3dBase	?fn_004bd431@@YAXXZ	add		vtable
 0x004bd432	function	fn_004bd432	tListBox_News				vtable
 0x004bd43e	thunk	fn_004bd43e					none
 0x004bd443	function	fn_004bd443	tListBox_Base	?fn_004bd443@tListBox_Base@@QAEHPAVtString@@H@Z	claim		none
@@ -13064,7 +13064,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c0725	function	fn_005c0725		?fn_005c0725@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
 0x005c087e	function	fn_005c087e		?fn_005c087e@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@D@Z	claim		none
 0x005c0a24	function	fn_005c0a24					none
-0x005c0b85	function	fn_005c0b85					none
+0x005c0b85	function	fn_005c0b85		?fn_005c0b85@@YAXXZ	claim		none
 0x005c0b91	function	fn_005c0b91					none
 0x005c0b9d	function	fn_005c0b9d					none
 0x005c0ba9	function	tMapRelayS::tMapRelayS	tMapRelayS				rtti
