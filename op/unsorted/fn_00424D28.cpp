@@ -144,3 +144,33 @@ void fn_00424ea9_map::fn_00424ea9()
 	operator delete(fNil);
 	fNil = 0;
 }
+
+// HYPOTHESIS: the symbol table names this std::vector<tString>::~vector (elements of 0x28 bytes with a
+// virtual destructor); VC6 emits no out-of-line copy from a plain definition, so the layout is written out.
+struct fn_00424ee1_element
+{
+	virtual ~fn_00424ee1_element();
+	char fPad[0x24];
+};
+
+struct fn_00424ee1_vector
+{
+	void fn_00424ee1();
+
+	char fPad[4];
+	fn_00424ee1_element* fFirst;
+	fn_00424ee1_element* fLast;
+	fn_00424ee1_element* fEnd;
+};
+
+// FUNCTION: STARFLEETOP 0x00424ee1
+void fn_00424ee1_vector::fn_00424ee1()
+{
+	fn_00424ee1_element* last = fLast;
+	for (fn_00424ee1_element* p = fFirst; p != last; ++p)
+		p->~fn_00424ee1_element();
+	operator delete(fFirst);
+	fFirst = 0;
+	fLast = 0;
+	fEnd = 0;
+}
