@@ -16,6 +16,8 @@ void t3DSoundProfile::mSet3DSoundOrientation(tPoint3* aPoint) { f3DSoundOrientat
 tPoint3* t3DSoundProfile::vfunction13() { return &f3DSoundVelocity; } // slot 13 = mGet3DSoundVelocity, name kept for twSound.cpp
 // FUNCTION: STARFLEETOP 0x00646340
 void tChannelAttributes::vfunction12(tPoint3* aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(aPoint); } // slot 12 = pointer overload of mSet3DSoundPosition, name kept for twSound.cpp
+// FUNCTION: STARFLEETOP 0x00646360
+void tChannelAttributes::mSet3DSoundPosition(tPoint3 aPoint) { t3DSoundProfile* profile = &m3DSoundProfile; profile->mSet3DSoundPosition(&aPoint); }
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
 {
@@ -43,8 +45,6 @@ void PrintOutBufferedErrors()
 inline tSoundChannelList::~tSoundChannelList()
 {
 }
-
-
 
 
 
