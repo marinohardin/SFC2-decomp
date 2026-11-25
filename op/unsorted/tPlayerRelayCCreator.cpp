@@ -9,3 +9,10 @@ tPlayerRelayCCreator::tPlayerRelayCCreator()
     std::string name;
     name.assign("PlayerRelayC");
 }
+
+// MATCH-ONLY: the class has no members; the destructor body is only the base destructor call (11 bytes, exact)
+// FUNCTION: STARFLEETOP 0x00600181
+// FUNCTION: STARFLEETOP 0x0060019d
+tPlayerRelayCCreator::~tPlayerRelayCCreator()
+{
+}
