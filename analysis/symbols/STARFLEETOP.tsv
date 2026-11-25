@@ -16827,7 +16827,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00646600	function	tSoundChannelFormat::mTryToLocateInHardware	tSoundChannelFormat	?mTryToLocateInHardware@tSoundChannelFormat@@UAEEXZ	claim		mangled
 0x00646610	function	tSoundChannelFormat::mTryToLocateInSoftware	tSoundChannelFormat	?mTryToLocateInSoftware@tSoundChannelFormat@@UAEEXZ	claim		mangled
 0x00646620	function	tSoundChannelFormat::mAreWeFixedPan	tSoundChannelFormat	?mAreWeFixedPan@tSoundChannelFormat@@UAEEXZ	claim		mangled
-0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	mangled		mangled
+0x00646630	function	tSoundChannelFormat::mAreWeFixedVolume	tSoundChannelFormat	?mAreWeFixedVolume@tSoundChannelFormat@@UAEEXZ	claim		mangled
 0x00646640	function	tSoundChannelFormat::mAreWeAGlobalSound	tSoundChannelFormat	?mAreWeAGlobalSound@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x00646650	function	tSoundChannelFormat::mDoWeRetainSelections	tSoundChannelFormat	?mDoWeRetainSelections@tSoundChannelFormat@@UAEEXZ	mangled		mangled
 0x00646660	function	tSoundChannel::~tSoundChannel	tSoundChannel	??1tSoundChannel@@UAE@XZ	mangled		mangled
