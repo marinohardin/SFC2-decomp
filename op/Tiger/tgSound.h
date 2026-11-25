@@ -58,10 +58,10 @@ public:
 // 0x007b70c0 has 27 slots, the five fields sit at 4-0x14 (setter and getter bodies at slots
 // 2-11 read and write them in order). Slot names are the SDK library's symbols
 // (?mSetBufferLength@tSoundChannelFormat@@UAEXJ@Z and the rest). The slots Tiger/twSound.cpp calls
-// keep the name vfunction<slot> (renamed with that file; an inline forwarder changes the
-// instruction order): 2 mSetBufferLength, 3 mGetBufferLength, 5 mGetNumChannels, 7
-// mGetSamplesPerSec, 9 mGetBitsPerSample, 10 mSetSoundType, 11 mGetSoundType, 12
-// mGetBytesPerSample, 13 mGetBytesPerSec.
+// keep the name vfunction<slot> (an inline forwarder changes the instruction order): 2
+// mSetBufferLength, 3 mGetBufferLength, 5 mGetNumChannels, 7 mGetSamplesPerSec, 9
+// mGetBitsPerSample, 10 mSetSoundType, 11 mGetSoundType, 12 mGetBytesPerSample, 13 mGetBytesPerSec.
+// 0x0064d870 (the sound-type getter) is exact as vfunction12, so slots 12 and 13 are unclaimed.
 class tSoundChannelFormat
 {
 public:
@@ -113,11 +113,11 @@ public:
 // reverse, and the exe's slots read x y z, by value, pointer (the first two share one body). Size
 // 0x40 PROVEN by the size of tChannelAttributes below (its profile member sits at 0x18 and the
 // class ends at 0x58).
-// The slots Tiger/twSound.cpp calls keep the name vfunction<slot> (a function session there
-// renames its call sites, then these; an inline forwarder changes the instruction order): slot 5 is
-// mGet3DSoundPosition, 9 mGet3DSoundOrientation, 13 mGet3DSoundVelocity, 15
-// mGet3DSoundReferenceDistance, 17 mGet3DSoundConeAngleForNoAttenuation, 19
-// mGet3DSoundConeAttenuationLevel.
+// Slots 15, 17 and 19 carry their SDK names (mGet3DSoundReferenceDistance,
+// mGet3DSoundConeAngleForNoAttenuation, mGet3DSoundConeAttenuationLevel). The vector getters keep
+// the name vfunction<slot>, as Tiger/twSound.cpp calls them (an inline forwarder changes the
+// instruction order): slot 5 is mGet3DSoundPosition, 9 mGet3DSoundOrientation, 13
+// mGet3DSoundVelocity.
 class t3DSoundProfile
 {
 public:
@@ -173,10 +173,10 @@ public:
 
 // tChannelAttributes (tgsound.h in the original). Vtable 0x007b7044, 30 slots; slot names are the
 // SDK library's symbols. Overloads are declared pointer, by value, x y z, as in t3DSoundProfile.
-// The slots Tiger/twSound.cpp calls keep the name vfunction<slot> (renamed with that file): slot 4
-// is mSetPan, 6 mSetVolume, 8 mSet3DSoundProfile, 12 the pointer overload of mSet3DSoundPosition,
-// 16 of mSet3DSoundOrientation, 20 of mSet3DSoundVelocity, 22 mSet3DSoundReferenceDistance, 24
-// mSet3DSoundConeAngleForNoAttenuation, 26 mSet3DSoundConeAttenuationLevel.
+// The setters at 12, 16, 20, 22, 24 and 26 carry their SDK names (the pointer overloads are
+// declared first, as in t3DSoundProfile). Three slots keep the name vfunction<slot>: slot 4 is
+// mSetPan, slot 8 mSet3DSoundProfile, and slot 6 (mSetVolume) is vfunction7, the symbol that
+// 0x0064d860 has as an exact function, shared with tSoundChannelFormat::mSetBitsPerSample.
 class tChannelAttributes
 {
 public:

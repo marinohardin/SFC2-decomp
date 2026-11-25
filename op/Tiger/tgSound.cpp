@@ -4,7 +4,7 @@
 #include "Tiger/tgSound.h"
 #include "Tiger/tvectormath.h"
 extern tSay gSoundSay; static char gSoundFmtStr[32][256]; static long mNumberOfErrors; // gSoundSay HYPOTHESIS: defined in this unit, constructor arguments not recovered; gSoundFmtStr holds errors raised during the sound interrupt, printed later by PrintOutBufferedErrors; mNumberOfErrors HYPOTHESIS: long (compared signed with 32)
-// MATCH-ONLY: empty body; the compiler inlines the profile member's destructor (vtable reset)
+// MATCH-ONLY: empty body; the compiler emits the profile member's destructor (a vtable reset) inline, and 0x00646550 is the scalar deleting form of this destructor
 // FUNCTION: STARFLEETOP 0x00646550
 // FUNCTION: STARFLEETOP 0x006461f0
 inline tChannelAttributes::~tChannelAttributes() {}
