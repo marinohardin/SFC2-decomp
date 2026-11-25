@@ -45,3 +45,19 @@ tEntity_ESG* fn_004217aa()
 {
 	return new tEntity_ESG;
 }
+
+// HYPOTHESIS: tEntity_DriftingSeeker has no header yet; this small declaration only serves the
+// factory below.
+class tEntity_DriftingSeeker
+{
+public:
+	tEntity_DriftingSeeker();
+
+	char	pad00[0x290];
+};
+
+// FUNCTION: STARFLEETOP 0x00421855
+tEntity_DriftingSeeker* fn_00421855()
+{
+	return new tEntity_DriftingSeeker;
+}

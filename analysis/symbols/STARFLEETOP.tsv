@@ -1034,7 +1034,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00420447	function	fn_00420447	tEntity_Seeker				vtable
 0x00420493	function	fn_00420493					none
 0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker				vtable
-0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker				rtti
+0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker	??0tEntity_DriftingSeeker@@QAE@XZ	add		rtti
 0x00420588	function	fn_00420588	tEntity_DriftingSeeker				vtable
 0x0042058c	function	tEntity_HellboreSeeker::scalar_deleting_destructor	tEntity_HellboreSeeker				rtti
 0x004205a8	thunk	fn_004205a8					none
@@ -1088,7 +1088,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004217aa	function	fn_004217aa		?fn_004217aa@@YAPAVtEntity_ESG@@XZ	claim		none
 0x004217df	function	fn_004217df					none
 0x00421814	function	fn_00421814					none
-0x00421855	function	fn_00421855					none
+0x00421855	function	fn_00421855		?fn_00421855@@YAPAVtEntity_DriftingSeeker@@XZ	claim		none
 0x004218c2	function	tEntityControl::tEntityControl	tEntityControl				rtti
 0x004218d4	function	tEntityControl::scalar_deleting_destructor	tEntityControl				rtti
 0x004218f0	function	tEntityControl::~tEntityControl	tEntityControl	??1tEntityControl@@UAE@XZ	callers		rtti
