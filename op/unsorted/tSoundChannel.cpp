@@ -119,3 +119,10 @@ iTruth tSoundChannel::mTryToLocateInSoftware()
     unsigned char inSoftware = (mGetSoundType() & 0x80) > 0;
     return inSoftware;
 }
+
+// FUNCTION: STARFLEETOP 0x006469c0
+iTruth tSoundChannel::mAreWeFixedPan()
+{
+    unsigned char fixedPan = (mGetSoundType() & 0x100) > 0;
+    return fixedPan;
+}
