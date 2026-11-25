@@ -490,7 +490,12 @@ list the launcher is given.
 ### Symbol table and stand-ins
 
 Every `build-and-verify.sh --all` writes `<build>/symbols.tsv`: each claim's address, the symbol
-its unit compiled for it and the claiming file (`lib/symtab.py`). With `functions.csv`'s mangled
+its unit compiled for it and the claiming file (`lib/symtab.py`), and beside it `<build>/symbols.id`,
+a hash of every file under the source root the run saw (a run that failed removes it). `tools/symbols.py
+check` compares the table with `symbols.tsv` only when `symbols.id` equals the hash of the tree it is
+checking; a build folder left by another commit (a CI runner's, between runs) gives an `INFO` line and
+no comparison, so a stale record can neither fail nor pass a check. `scripts/check.sh` runs `check`
+before the rebuild (format and coverage) and again after it, when the comparison is this tree's. With `functions.csv`'s mangled
 names and single SDK labels it answers, for an original address, which symbol a call to it must
 name; `python3 -m harness.lib.symtab [<address>...]` prints the rows with the calling convention.
 The matched set's `symbol` field is not used for this: it is written only when a score rises, so
@@ -514,6 +519,13 @@ claim is not refused as a stand-in. A claim that an `--all` could not build keep
 it replaces. Known cost: a session refused against a table older than a merge cannot fix the
 refusal itself, and the attempt is lost until the loop is restarted. The context pack lists a claimed callee's symbol as what the
 call must name; a symbol from `functions.csv` or the SDK is given as a lead only.
+
+`tools/symbols.py claim` does not replace a symbol whose `symbol_evidence` is `mangled` (the
+original's own name, from `functions.csv`) or `add` (first writer wins) with another one: it leaves
+the row, prints an `ERROR` naming the address, both symbols and the evidence, and exits 1.
+`--replace-evidence` overrides. `callers` (provisional) and `claim` rows are replaced as before, and a
+build symbol equal to the row's only turns its evidence into `claim`. `check` words a build
+difference on such a row the same way. The loop's sync only warns on the refusal.
 
 ### How a claim is found
 

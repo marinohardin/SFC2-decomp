@@ -165,8 +165,21 @@ def test_a_full_run_keeps_only_the_rows_of_claims_it_could_not_build(tmp_path):
                                        '0x00402000': ('?kept@@YAXXZ', 'b.cpp'),
                                        '0x00404000': ('?unclaimed@@YAXXZ', 'd.cpp')}
     rep.failed = False      # a clean run: a claim without a result is no longer claimed
-    verify.write_symbol_table(rep, out)
+    (tmp_path / 'src').mkdir()
+    verify.write_symbol_table(rep, out, str(tmp_path / 'src'))
     assert '0x00404000' not in symtab.load_claims(out)
+    assert symtab.build_is_current(str(tmp_path), str(tmp_path / 'src'))      # a complete run: identity written
+
+
+def test_a_failed_run_leaves_a_build_that_belongs_to_no_tree(tmp_path):
+    out = str(tmp_path / 'symbols.tsv')
+    (tmp_path / 'src').mkdir()
+    symtab.write_identity(str(tmp_path), str(tmp_path / 'src'))
+    rep = verify.Report()
+    rep.failed = True
+    rep.results = [dict(address='0x00401000', symbol='?new@@YAXXZ', unit='a.cpp')]
+    verify.write_symbol_table(rep, out, str(tmp_path / 'src'))
+    assert not symtab.build_is_current(str(tmp_path), str(tmp_path / 'src'))
 
 
 def test_a_table_row_whose_claim_is_gone_is_ignored():

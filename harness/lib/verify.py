@@ -773,7 +773,7 @@ def report_object_clashes(rep, baseline_path=None):
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
 
 
-def write_symbol_table(rep, out=None):
+def write_symbol_table(rep, out=None, src_root=None):
     """The claims' rows from an --all run. A claim that could not be built or scored (an error
     and no symbol) keeps its row from the table the run replaces; any other claim without a
     symbol, and any address no longer claimed, loses it."""
@@ -786,6 +786,11 @@ def write_symbol_table(rep, out=None):
     rows += [(a, sym, where) for a, (sym, where) in symtab.load_claims(out).items()
              if a in unbuilt or (rep.failed and a not in seen)]
     symtab.write_claims(out, rows)
+    # Which tree the rows belong to: tools/symbols.py check compares only a build of its own tree.
+    if rep.failed:
+        symtab.remove_identity(os.path.dirname(out))
+    else:
+        symtab.write_identity(os.path.dirname(out), src_root or paths.SRC_ROOT)
 
 
 def symbol_table_rows(results):

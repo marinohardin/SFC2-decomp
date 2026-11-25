@@ -8,7 +8,11 @@ analysis/scripts/seed_symbols.py.
     python3 tools/symbols.py [--table T] check [--functions F] [--build B] [--src-root R]
     python3 tools/symbols.py [--table T] add <address> <symbol> [--declaration TEXT]
     python3 tools/symbols.py [--table T] claim [<address>...] [--build B] [--src-root R]
+                                                 [--replace-evidence]
     python3 tools/symbols.py [--table T] show <address>...
+
+`check` compares the table with <build>/symbols.tsv only when the build was made from the tree
+under --src-root (harness/lib/symtab.py, build_is_current); otherwise it prints an INFO line.
 
 `check` exits 1 with one line per finding that starts ERROR; a line that starts WARN is
 informational.
@@ -35,6 +39,10 @@ PLACEHOLDER_EVIDENCE = ('vtable', 'none')
 # Where a symbol came from: claim (what the claiming unit compiled; it tracks the build),
 # mangled (functions.csv), callers (every exact caller's relocation names it), add (this tool).
 SYMBOL_EVIDENCE = ('claim', 'mangled', 'callers', 'add')
+# Evidence `claim` does not overwrite unless told to (--replace-evidence): the original's own
+# mangled name (functions.csv) and a name `add` wrote are first-writer-wins. `callers` is
+# provisional and `claim`/none are the claim's own.
+HELD_EVIDENCE = ('mangled', 'add')
 PER_UNIT_PREFIXES = ('$', '_$', '__real@', '??_C@')   # as harness/lib/verify.py: never seeded
 ADDRESS = re.compile(r'^0x[0-9a-f]{8}$')
 # ?name@scope@@... (a C++ symbol), _name or _name@N (cdecl, stdcall), @name@N (fastcall).
@@ -317,9 +325,11 @@ def check_text(text, known, build_symbols=None, build_level='WARN', claimed=None
     for r in rows:
         if build_symbols and r['kind'] != 'folded' and r['address'] in build_symbols \
                 and build_symbols[r['address']] != r['symbol']:
+            tail = ('run `python3 tools/symbols.py claim`' if r['symbol_evidence'] not in HELD_EVIDENCE
+                    else f'its symbol_evidence is {r["symbol_evidence"]}, which `claim` does not '
+                    "replace: make the claim compile the table's symbol, or `claim --replace-evidence`")
             err(f'{build_level} {r["address"]}: the last build compiled '
-                f'{build_symbols[r["address"]]}, the table has {r["symbol"] or "no symbol"}; '
-                'run `python3 tools/symbols.py claim`')
+                f'{build_symbols[r["address"]]}, the table has {r["symbol"] or "no symbol"}; {tail}')
         if claimed is not None and r['symbol_evidence'] == 'claim' and r['address'] not in claimed:
             err(f'ERROR {r["address"]}: symbol_evidence is claim but the address is no longer '
                 'claimed; run `python3 tools/symbols.py claim` to reset the row')
@@ -343,12 +353,13 @@ def read_build_symbols(build):
         return None
 
 
-def claim_lines(lines, build_symbols, claimed, only=None):
-    """(new lines, messages) after making each claimed row's symbol the build's, with
+def claim_lines(lines, build_symbols, claimed, only=None, replace_evidence=False):
+    """(new lines, messages, refusals) after making each claimed row's symbol the build's, with
     symbol_evidence claim, and resetting a claim row whose address is no longer claimed (only
     when `only` is None). `lines` are the file's lines, header first; other lines stay as they
-    are."""
-    out, messages = list(lines), []
+    are. A row whose symbol_evidence is in HELD_EVIDENCE and whose symbol differs from the
+    build's is left alone and gives a refusal line (an ERROR) unless `replace_evidence`."""
+    out, messages, refusals = list(lines), [], []
     for i, line in enumerate(lines[1:], 1):
         cells = line.split('\t')
         if len(cells) != len(COLUMNS) or cells[1] == 'folded':
@@ -358,6 +369,11 @@ def claim_lines(lines, build_symbols, claimed, only=None):
             continue
         if a in claimed and a in build_symbols:
             new = build_symbols[a]
+            if cells[4] != new and cells[5] in HELD_EVIDENCE and not replace_evidence:
+                refusals.append(f'ERROR {a}: the build compiled {new}, but the table has {cells[4]} '
+                                f'with symbol_evidence {cells[5]}; not replaced (the claim must '
+                                "compile the original's symbol; --replace-evidence overrides)")
+                continue
             if cells[4] != new or cells[5] != 'claim':
                 messages.append(f'{a}: {cells[4] or "no symbol"} ({cells[5] or "none"}) -> {new} (claim)')
                 cells[4], cells[5] = new, 'claim'
@@ -367,7 +383,7 @@ def claim_lines(lines, build_symbols, claimed, only=None):
         else:
             continue
         out[i] = '\t'.join(cells)
-    return out, messages
+    return out, messages, refusals
 
 
 # A claimed function's compiled symbol that differs from the table's: the seed writes the
@@ -390,6 +406,13 @@ def cmd_check(a):
         print(f'ERROR cannot read {table}: {e.strerror}')
         return 1
     built = read_build_symbols(build)
+    if built is not None:
+        from harness.lib import symtab
+        if not symtab.build_is_current(build, src_root):
+            print(f'INFO the last build in {shown(build)} was not made from the tree under '
+                  f'{shown(src_root)}: its symbols are not compared (run '
+                  'harness/build-and-verify.sh --all, then check again)')
+            built = None
     claimed = current_claims(src_root) if built is not None else None
     if built is not None:
         built = {k: v for k, v in built.items() if k in claimed}
@@ -523,13 +546,14 @@ def cmd_claim(a):
             return 1
     with open(table, encoding='utf-8', newline='') as f:
         lines = f.read().split('\n')
-    new, messages = claim_lines(lines, built, current_claims(src_root), only)
-    for m in messages:
+    new, messages, refusals = claim_lines(lines, built, current_claims(src_root), only,
+                                          a.replace_evidence)
+    for m in messages + refusals:
         print(m)
     if new != lines:
         write_atomic(table, '\n'.join(new))
-    print(f'{len(messages)} rows changed')
-    return 0
+    print(f'{len(messages)} rows changed' + (f', {len(refusals)} refused' if refusals else ''))
+    return 1 if refusals else 0
 
 
 def cmd_show(a):
@@ -576,6 +600,8 @@ def main(argv=None):
     c.add_argument('--src-root')
     c.add_argument('--results', help='take the symbols from this build-and-verify --json output '
                    '(a single-function run), for the claims it rebuilt, instead of the build')
+    c.add_argument('--replace-evidence', action='store_true',
+                   help='also replace a symbol whose symbol_evidence is mangled or add')
     c.set_defaults(fn=cmd_claim)
     h = sub.add_parser('show', help='print rows')
     h.add_argument('address', nargs='+')

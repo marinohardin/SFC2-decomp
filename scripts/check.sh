@@ -10,7 +10,10 @@
 #   4. the claims in op/: empty bodies, fragment claims, address order and stray files, each
 #      break not in analysis/results/lint_baseline.tsv a failure, and so is a stale baseline row
 #      (tools/lint_claims.py)
-#   5. the symbol table's format and coverage (tools/symbols.py check), once the table exists
+#   5. the symbol table's format and coverage (tools/symbols.py check), once the table exists. It
+#      compares the table with the last build's symbols only if that build was made from this
+#      very tree (the build folder records which); otherwise it prints an INFO line, and the same
+#      check runs again after step 7's rebuild, when the build is this tree's
 #   6. the progress gate: no function loses its status (scripts/progress.py)
 #   7. the matched-set gate: no score drops below the base branch's. With the install and the
 #      compiler image, every matched function is rebuilt (harness/build-and-verify.sh), unless
@@ -132,6 +135,10 @@ if [ -z "$base" ]; then
     skip "no base commit to compare with (set SFCOP_BASE_REF)"
 elif [ -n "$have_install" ] && [ -n "$have_image" ] && [ "$scope" != skip ]; then
     sh harness/build-and-verify.sh --all --base "$base"
+    if [ -f analysis/symbols/STARFLEETOP.tsv ]; then
+        echo "== symbol table against the build just made (tools/symbols.py check)"
+        python3 tools/symbols.py check
+    fi
 else
     if [ "$scope" = skip ]; then
         skip "only documentation changed since $base: the matched functions are not rebuilt; only their scores are held to it"
