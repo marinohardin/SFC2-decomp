@@ -34,4 +34,5 @@ void fn_006032e7_object::fn_006032e7()
 			delete *it;
 	}
 	( (fn_006032e7_object*)&field_150 )->fn_005ff7ac();
+	guard.Leave();
 }
