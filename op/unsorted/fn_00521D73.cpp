@@ -22,3 +22,21 @@ void tObject_00521d73::fn_00521d73(int param_1)
 		} while (n != 0);
 	}
 }
+
+// HYPOTHESIS: signature and calling convention of the callees are unknown.
+void __stdcall fn_00488e97(int a, int b);
+
+struct fn_00521db5_owner {
+	void fn_00521db5(int param_1, int param_2);
+	void fn_00521e22(int a, int b, int c);
+	int field_0;
+	int field_4;
+	int field_8;
+};
+
+// FUNCTION: STARFLEETOP 0x00521db5
+void fn_00521db5_owner::fn_00521db5(int param_1, int param_2)
+{
+	fn_00488e97(field_4, field_8);
+	fn_00521e22(field_4,param_1, param_2);
+}

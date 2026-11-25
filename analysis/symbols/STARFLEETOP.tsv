@@ -4225,7 +4225,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00488e66	function	fn_00488e66					none
 0x00488e70	function	fn_00488e70					none
 0x00488e86	function	fn_00488e86					none
-0x00488e97	function	fn_00488e97					none
+0x00488e97	function	fn_00488e97		?fn_00488e97@@YGXHH@Z	add		none
 0x00488ecf	function	fn_00488ecf					none
 0x004890d1	function	fn_004890d1					none
 0x00489186	function	fn_00489186					none
@@ -8338,7 +8338,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521cbc	function	tAIDesignateTargetsCalcResult::~tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
 0x00521cfb	function	tAIDesignateTargetsCalcResult::tAIDesignateTargetsCalcResult	tAIDesignateTargetsCalcResult				rtti
 0x00521d73	function	fn_00521d73		?fn_00521d73@tObject_00521d73@@QAEXH@Z	claim		none
-0x00521db5	function	fn_00521db5					none
+0x00521db5	function	fn_00521db5		?fn_00521db5@fn_00521db5_owner@@QAEXHH@Z	claim		none
 0x00521dd9	function	fn_00521dd9					none
 0x00521e11	function	fn_00521e11					none
 0x00521e22	function	fn_00521e22					none
