@@ -15,14 +15,26 @@ struct fn_005208d2_Vec {
     fn_005208d2_Elem* fn_005208d2(fn_005208d2_Elem* dest, fn_005208d2_Elem* src);
 };
 
+// MATCH-ONLY: stands for the copy and destroy helpers the original inlined; they take the
+// position by reference.
+inline fn_005208d2_Elem* fn_005208d2_Copy(fn_005208d2_Elem* f, fn_005208d2_Elem* l, fn_005208d2_Elem* d)
+{
+    for (; f != l; ++f, ++d) {
+        *d = *f;
+    }
+    return d;
+}
+
+inline void fn_005208d2_Destroy(fn_005208d2_Elem*& f, fn_005208d2_Elem* l)
+{
+    f = l;
+}
+
 // FUNCTION: STARFLEETOP 0x005208d2
 fn_005208d2_Elem* fn_005208d2_Vec::fn_005208d2(fn_005208d2_Elem* dest, fn_005208d2_Elem* src)
 {
-    fn_005208d2_Elem* end = last;
-    fn_005208d2_Elem* p = dest;
-    for (; src != end; ++src, ++p) {
-        *p = *src;
-    }
-    last = p;
+    fn_005208d2_Elem* i = fn_005208d2_Copy(src, last, dest);
+    fn_005208d2_Destroy(src, last);
+    last = i;
     return dest;
 }
