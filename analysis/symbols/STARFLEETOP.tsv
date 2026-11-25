@@ -15255,7 +15255,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006003c2	function	fn_006003c2		?fn_006003c2@@YAPADXZ	claim		none
 0x006003c8	function	fn_006003c8		?fn_006003c8@@YAPADXZ	claim		none
 0x006003ce	function	fn_006003ce		?fn_006003ce@@YAPADXZ	claim		none
-0x006003d4	function	fn_006003d4					none
+0x006003d4	function	fn_006003d4		?fn_006003d4@@YAPADXZ	claim		none
 0x0060041c	function	fn_0060041c					none
 0x0060044f	function	fn_0060044f					none
 0x00600482	function	fn_00600482					none
