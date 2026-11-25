@@ -101,6 +101,34 @@ unsigned int __stdcall fn_00521530(unsigned int v)
 	return (v == 1) ? 0 : v;
 }
 
+// HYPOTHESIS: layouts guessed from the accesses
+class fn_005218f9_pair {
+public:
+	int m_index;
+	int m_value;
+};
+
+class fn_005218f9_node {
+public:
+	int pad0;
+	int pad4;
+	int pad8;
+	int padc;
+	fn_005218f9_pair* m_begin;
+	fn_005218f9_pair* m_end;
+	int pad18;
+	int pad1c;
+	int pad20;
+	fn_005218f9_node* m_next;
+};
+
+class fn_005218f9_owner {
+public:
+	void fn_005218f9(tAIEntryTable* t, fn_005218f9_node* n);
+	char pad[0x14c0];
+	int m_counts[50];
+};
+
 #include "unsorted/fn_005717f7_vector.h"
 // HYPOTHESIS: a class of unknown name; only the two vectors destroyed here are known
 class fn_005218c3_owner {
@@ -121,4 +149,27 @@ fn_005218c3_owner::~fn_005218c3_owner()
 {
 	// The body is empty in the original: the two vectors (field_28, then field_c) are destroyed by
 	// the compiler-generated epilogue, under the EH frame; the bytes (54) are exact without more code.
+}
+
+// FUNCTION: STARFLEETOP 0x005218f9
+void fn_005218f9_owner::fn_005218f9(tAIEntryTable* t, fn_005218f9_node* n)
+{
+	int i = 0;
+	if (0 < t->m_count) {
+		int* p = m_counts;
+		do {
+			*p = 0;
+			i++;
+			p++;
+		} while (i < t->m_count);
+	}
+	do {
+		for (fn_005218f9_pair* q = n->m_begin; q != n->m_end; q++) {
+			if (t->m_entries[q->m_index].m_3c == -1) {
+				t->m_entries[q->m_index].m_3c = q->m_value;
+				m_counts[q->m_value]++;
+			}
+		}
+		n = n->m_next;
+	} while (n != 0);
 }

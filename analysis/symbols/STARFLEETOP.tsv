@@ -8326,7 +8326,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00521530	function	fn_00521530		?fn_00521530@@YGII@Z	claim		none
 0x00521549	function	fn_00521549					none
 0x005218c3	function	fn_005218c3		??1fn_005218c3_owner@@QAE@XZ	claim		none
-0x005218f9	function	fn_005218f9					none
+0x005218f9	function	fn_005218f9		?fn_005218f9@fn_005218f9_owner@@QAEXPAVtAIEntryTable@@PAVfn_005218f9_node@@@Z	claim		none
 0x00521965	function	fn_00521965					none
 0x0052197e	function	fn_0052197e					none
 0x00521a15	function	fn_00521a15					none
