@@ -64,6 +64,8 @@ unsigned char tSoundChannelFormat::mAreWe3D() { unsigned char is3D = (fSoundType
 unsigned char tSoundChannelFormat::mAreWeStatic() { unsigned char isStatic = (fSoundType & 1) > 0; return isStatic; }
 // FUNCTION: STARFLEETOP 0x006465e0
 unsigned char tSoundChannelFormat::mAreWeFixedFrequency() { unsigned char fixedFrequency = (fSoundType & 0x10) > 0; return fixedFrequency; }
+// FUNCTION: STARFLEETOP 0x006465f0
+unsigned char tSoundChannelFormat::mAreWeARecordingChannel() { unsigned char isRecording = (fSoundType & 0x20) > 0; return isRecording; }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
