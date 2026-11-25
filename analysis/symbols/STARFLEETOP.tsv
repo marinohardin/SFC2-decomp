@@ -17233,7 +17233,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006632a0	function	tSafeArray<tClassTrackingInfo>::mGetIndexFromRealIndex	tSafeArray<tClassTrackingInfo>	?mGetIndexFromRealIndex@?$tSafeArray@VtClassTrackingInfo@@@@IAEKK@Z	mangled		mangled
 0x006632f0	function	tSafeArray<tClassTrackingInfo>::mAddMoreRoom	tSafeArray<tClassTrackingInfo>	?mAddMoreRoom@?$tSafeArray@VtClassTrackingInfo@@@@IAEXJ@Z	mangled		mangled
 0x00663590	function	tHandleList::mClear	tHandleList	?mClear@tHandleList@@UAEXXZ	claim		mangled
-0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	mangled		mangled
+0x006635a0	function	tHandleList::mIsEmpty	tHandleList	?mIsEmpty@tHandleList@@UAEEXZ	claim		mangled
 0x006635b0	function	tHandleList::`scalar_deleting_destructor'	tHandleList	??_GtHandleList@@UAEPAXI@Z	mangled		mangled
 0x00663600	function	tSoundSelection::mSetDonePlaying	tSoundSelection	?mSetDonePlaying@tSoundSelection@@UAEXP6AXJ@Z@Z	mangled		mangled
 0x00663610	function	tBasicAudioFile::mGetLinkDepth	tBasicAudioFile	?mGetLinkDepth@tBasicAudioFile@@UAEJXZ	mangled		mangled

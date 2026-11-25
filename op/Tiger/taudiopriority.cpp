@@ -637,3 +637,10 @@ void tHandleList::mClear( void )
 {
 	f04 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x006635a0
+unsigned char tHandleList::mIsEmpty( void )
+{
+	unsigned char empty = f04 == 0;
+	return empty;
+}
