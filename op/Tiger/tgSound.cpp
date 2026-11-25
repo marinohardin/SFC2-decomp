@@ -9,9 +9,9 @@ static long mNumberOfErrors; // HYPOTHESIS: long (compared signed with 32)
 // MATCH-ONLY: empty body; the compiler inlines the profile member's destructor (vtable reset)
 // FUNCTION: STARFLEETOP 0x00646550
 // FUNCTION: STARFLEETOP 0x006461f0
-tChannelAttributes::~tChannelAttributes()
-{
-}
+tChannelAttributes::~tChannelAttributes() {}
+// FUNCTION: STARFLEETOP 0x00646240
+void t3DSoundProfile::mSet3DSoundOrientation(tPoint3* aPoint) { f3DSoundOrientation.x = aPoint->x; f3DSoundOrientation.y = aPoint->y; f3DSoundOrientation.z = aPoint->z; }
 // FUNCTION: STARFLEETOP 0x00646ce0
 void AddSoundErrorDuringInterrupt(const char* format, ...)
 {

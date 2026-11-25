@@ -16784,7 +16784,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006461f0	function	tChannelAttributes::~tChannelAttributes	tChannelAttributes	??1tChannelAttributes@@UAE@XZ	claim		rtti
 0x00646200	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
 0x00646220	function	t3DListenerProfile::mSet3DPosition	t3DListenerProfile				mangled
-0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	mangled		mangled
+0x00646240	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXPAUtPoint3@@@Z	claim		mangled
 0x00646260	function	t3DSoundProfile::mSet3DSoundOrientation	t3DSoundProfile	?mSet3DSoundOrientation@t3DSoundProfile@@UAEXMMM@Z	mangled		mangled
 0x00646280	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
 0x006462a0	function	t3DListenerProfile::mSetUpDirection	t3DListenerProfile				mangled
