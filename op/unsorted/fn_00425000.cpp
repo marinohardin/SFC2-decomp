@@ -354,7 +354,12 @@ struct fn_004255b5_class
 	void fn_004257b4(tEntity* pEntity);
 	void fn_00425824(tEntity* pEntity, int value);
 	void fn_00425928(tPoint3 aPoint, float aRadius, tEntity* pEntity, int kind, int value);
+	char fn_00425a18(tEntity* a, tEntity* b, char c);
+	// HYPOTHESIS: the callee at 0x00425aad takes the callback at 0x004260fa, both positions and both entities.
+	char fn_00425aad(void (*callback)(), tPoint3 a, tPoint3 b, tEntity* pA, tEntity* pB, int flag);
 };
+
+extern void fn_004260fa();
 
 // FUNCTION: STARFLEETOP 0x004255b5
 fn_004255b5_vector* fn_004255b5_class::fn_004255b5(float x, float y, int unused, float r)
@@ -501,4 +506,22 @@ void fn_004255b5_class::fn_004259bd(float x, float y, unsigned int* col, unsigne
 		*col = 0xff;
 	if (*row >= 0x100)
 		*row = 0xff;
+}
+
+// FUNCTION: STARFLEETOP 0x00425a18
+char fn_004255b5_class::fn_00425a18(tEntity* a, tEntity* b, char c)
+{
+	if (a == 0 || b == 0)
+		return 0;
+	if (a == b)
+		return 1;
+	if (c == 0) {
+		if (a->fTeam == b->fTeam)
+			return 1;
+		if (b->vfunction9())
+			return 1;
+	}
+	tPoint3 posA = a->fCurrPos;
+	tPoint3 posB = b->fCurrPos;
+	return fn_00425aad(fn_004260fa, posA, posB, a, b, 0);
 }
