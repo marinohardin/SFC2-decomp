@@ -44,12 +44,26 @@ struct c_tMachine_Field14
 	{
 		_Nil = _Buynode( 0, 1 );
 		_Nil->isnil = 1;
-		_Nil->left = 0;
-		_Nil->right = 0;
+		_Left( _Nil ) = 0, _Right( _Nil ) = 0;
 		_Head = fn_006373b0( _Nil, 0 );
-		_Head->left = _Head;
-		_Head->right = _Head;
+		_Lmost() = _Head, _Rmost() = _Head;
 		_Size = 0;
+	}
+	static node*& _Left( node* p )
+	{
+		return p->left;
+	}
+	static node*& _Right( node* p )
+	{
+		return p->right;
+	}
+	node*& _Lmost() const
+	{
+		return _Left( _Head );
+	}
+	node*& _Rmost() const
+	{
+		return _Right( _Head );
 	}
 	// MATCH-ONLY: the library's _Buynode( parent, colour ), which the original expands inline
 	// for the nil node and calls out of line (0x006373b0) for the head.
