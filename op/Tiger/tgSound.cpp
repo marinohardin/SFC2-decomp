@@ -113,15 +113,6 @@ long tSoundChannel::mGetFrequency()
     return (&field_0x30)->mGetFrequency();
 }
 
-
-
-
-
-
-
-
-
-
 // FUNCTION: STARFLEETOP 0x00646790
 long tSoundChannel::mGetPan()
 {
@@ -141,6 +132,11 @@ long tSoundChannel::mGetChannelPriority()
 tChannelAttributes* tSoundChannel::mGetChannelAttributes()
 {
     return &field_0x30;
+}
+// FUNCTION: STARFLEETOP 0x006467d0
+t3DSoundProfile* tSoundChannel::mGet3DSoundProfile()
+{
+    return (&field_0x30)->mGet3DSoundProfile();
 }
 #line 27
 // FUNCTION: STARFLEETOP 0x00646ce0
