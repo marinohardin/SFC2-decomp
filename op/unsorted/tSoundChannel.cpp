@@ -41,3 +41,12 @@ void tSoundChannel::mSetUserData(long userData)
 {
     field_0x8c = userData;
 }
+
+// FUNCTION: STARFLEETOP 0x006468f0
+// HYPOTHESIS: the original returns void (*)(unsigned long, unsigned char); declaring that
+// return type in tgSound.h moves a stack slot in tgSoundPart::mSetNumberOfSoundChannelCommands,
+// so the slot is declared long, which gives the same bytes.
+long tSoundChannel::mGetFinishSoundCallback()
+{
+    return (long)field_0x90;
+}

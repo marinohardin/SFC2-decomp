@@ -418,7 +418,7 @@ public:
     virtual void vfunction62(); virtual void vfunction63();
     virtual long mGetUserData();
     virtual void mSetUserData(long userData);
-    virtual void mGetFinishSoundCallback();
+    virtual long mGetFinishSoundCallback();
     virtual void mSetFinishSoundCallback(long callback);
     virtual long mGetTotalBytesLeftToPlay();
     virtual double mGetTotalNumberOfSecondsLeftToPlay();
