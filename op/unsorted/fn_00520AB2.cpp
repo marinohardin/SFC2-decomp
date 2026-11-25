@@ -293,3 +293,20 @@ fn_00522441_vector::fn_00522441_vector(const fn_00522441_vector& other)
 	field_8 = dst;
 	field_c = dst;
 }
+
+// HYPOTHESIS: constructor of a holder: a value, an unused slot, and a cleared 8-byte pair.
+struct fn_005224d8_holder
+{
+	int field_0;
+	int field_4;
+	double field_8;
+
+	fn_005224d8_holder(int value);
+};
+
+// FUNCTION: STARFLEETOP 0x005224d8
+fn_005224d8_holder::fn_005224d8_holder(int value)
+{
+	field_0 = value;
+	field_8 = 0.0;
+}
