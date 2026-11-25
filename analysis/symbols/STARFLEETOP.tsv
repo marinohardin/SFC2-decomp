@@ -8311,7 +8311,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00520d69	function	fn_00520d69		?fn_00520d69@tAIUnitDataList@@QAEXHH@Z	claim		none
 0x00520dad	function	fn_00520dad		?fn_00520dad@tAIUnitDataList@@QAEXHHHH@Z	claim		none
 0x00520e30	function	fn_00520e30		?fn_00520e30@tAIUnitDataList@@QAEXXZ	claim		none
-0x00520e5d	function	fn_00520e5d					none
+0x00520e5d	function	fn_00520e5d		?fn_00520e5d@tAIUnitDataList@@QAEDXZ	claim		none
 0x00520e90	function	fn_00520e90	tAIUnitData				vtable
 0x00520ecf	function	fn_00520ecf					none
 0x00520f16	function	fn_00520f16					none

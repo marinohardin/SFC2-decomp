@@ -127,6 +127,7 @@ public:
 	void fn_00520d69(int a, int b);
 	void fn_00520dad(int a, int b, int c, int d);
 	void fn_00520e30();
+	char fn_00520e5d();
 };
 
 // FUNCTION: STARFLEETOP 0x00520cba
@@ -196,4 +197,17 @@ void tAIUnitDataList::fn_00520e30()
 		field_e24[i].field_320 = 0;
 		field_8.field_c80 = 0;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x00520e5d
+char tAIUnitDataList::fn_00520e5d()
+{
+	char result = 1;
+	for (int i = 0; i < 2; i++) {
+		if (field_c8c[i].field_c8 == 0 || field_e24[i].field_320 == 0) {
+			result = 0;
+			break;
+		}
+	}
+	return result;
 }
