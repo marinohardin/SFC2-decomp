@@ -151,9 +151,11 @@ struct c_tObjBase_Field4C
 	short field_02;
 	short field_04;
 	short field_06;
-	// HYPOTHESIS: 0x00696b40 tests whether the point (relative to the object) hits the shape.
-	bool fn_00696b40( int x, int y );
 };
+
+// HYPOTHESIS: 0x00696b40 tests whether the point (relative to the object) hits the shape; a
+// free function, since 0x0067cf10 pushes the shape as its first argument and pops all three.
+bool fn_00696b40( c_tObjBase_Field4C *shape, int x, int y );
 
 // HYPOTHESIS: the event record that tObjBase::vfunction31 (slot 30, 0x0067d1c0) takes: the
 // type is read first (0x0067d1c0 handles types 1 to 7 as mouse events with the x at +0x4 and the

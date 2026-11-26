@@ -148,14 +148,14 @@ void tObjBase::fn_0067cee0()
 // FUNCTION: STARFLEETOP 0x0067cf10
 bool tObjBase::vfunction36( int x, int y )
 {
-	short sx = x;
-	short sy = y;
-	if ( field_34.left <= sx && field_34.top <= sy && field_34.right > sx && field_34.bottom > sy )
+	if ( field_34.left <= (short)x && field_34.top <= (short)y && field_34.right > (short)x && field_34.bottom > (short)y )
 	{
-		c_tObjBase_Field4C *shape = field_4C;
-		if ( !shape || ( field_40 & 2 ) )
+		if ( field_4C == 0 )
 			return true;
-		return shape->fn_00696b40( x - field_3C.x, y - field_3C.y );
+		if ( !( field_40 & 2 ) )
+			return fn_00696b40( field_4C, x - field_3C.x, y - field_3C.y );
+		return true;
 	}
+
 	return false;
 }
