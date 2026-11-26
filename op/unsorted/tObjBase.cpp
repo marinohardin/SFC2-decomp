@@ -328,3 +328,64 @@ void tObjBase::fn_0067d4a0( tSurface *surface )
 			child->fn_0067d4a0( surface );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0067d4d0
+tObjBase *tObjBase::vfunction5( tObjBase *child )
+{
+	tVisObject *c = (tVisObject *)child;
+	int key = c->field_44;
+	bool ordered = key != -1;
+	if ( c != 0 )
+	{
+		tVisObject *p;
+		tVisObject *last;
+		tVisObject *prev;
+		if ( !ordered || ( p = field_24 ) == 0 || !ordered )
+		{
+			tVisObject *old = field_24;
+			field_24 = c;
+			c->field_08 = 0;
+			c->field_04 = old;
+			if ( old != 0 )
+				old->field_08 = c;
+			else
+				field_28 = c;
+		}
+		else
+		{
+			for ( ; p != 0; p = p->field_04 )
+			{
+				if ( p->field_44 >= key )
+				{
+					if ( p != 0 )
+					{
+						prev = p->field_08;
+						c->field_04 = p;
+						c->field_08 = prev;
+						p->field_08 = c;
+						if ( p == field_24 )
+							field_24 = c;
+						else if ( prev != 0 )
+							prev->field_04 = c;
+						goto linked;
+					}
+					break;
+				}
+			}
+			last = field_28;
+			field_28 = c;
+			c->field_08 = last;
+			c->field_04 = 0;
+			if ( last != 0 )
+				last->field_04 = c;
+		}
+linked:
+		field_20++;
+		c->field_0C = (tVisObject *)this;
+		c->vfunction35( field_10 );
+		c->fn_0067ce90();
+		if ( c->field_40 & 8 )
+			vfunction1( 1 );
+	}
+	return child;
+}
