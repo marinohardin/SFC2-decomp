@@ -449,6 +449,12 @@ void __cdecl fn_004aba3c( char value )
 	g_b00850b62 = value;
 }
 
+// FUNCTION: STARFLEETOP 0x004aba46
+void __cdecl fn_004aba46()
+{
+	fn_004aba3c( 0 );
+}
+
 namespace tState_Namespace_Tactical
 {
 
