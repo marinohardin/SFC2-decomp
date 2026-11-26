@@ -78,7 +78,25 @@ public:
     void fn_0047f4ff();
     void fn_0047f62e(const char *text, const std::string &name);
     void fn_0047f439(int code);
+
+    char pad_000[0xac];
+    char m_ac;
+    char pad_0ad;
+    char m_ae;
 };
+
+#include "Common/Thread/ThreadPool.h"
+#include "unsorted/tObject_0090b730.h"
+
+// HYPOTHESIS: the object at 0x0090e008; fn_00460000.cpp declares the same global as
+// fn_0090e008_class (a .cpp, not includable), so this unit keeps its own view of it.
+class fn_0090e008_object
+{
+public:
+    void fn_005d46d3();
+};
+
+extern fn_0090e008_object *g_0090e008;
 
 // FUNCTION: STARFLEETOP 0x0047f439
 void c_0047f439_Owner::fn_0047f439(int code)
@@ -111,4 +129,17 @@ void c_0047f439_Owner::fn_0047f439(int code)
         break;
     }
     }
+}
+
+// FUNCTION: STARFLEETOP 0x0047f4ff
+void c_0047f439_Owner::fn_0047f4ff()
+{
+    m_ac = 0;
+    if (g_0090e008 != 0)
+    {
+        m_ae = 1;
+        tThreadPool::Instance()->EmptyWorkQue(true);
+        g_0090e008->fn_005d46d3();
+    }
+    gObject_0090b730.fn_0060ca42(0);
 }
