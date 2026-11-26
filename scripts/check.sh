@@ -14,6 +14,9 @@
 #      compares the table with the last build's symbols only if that build was made from this
 #      very tree (the build folder records which); otherwise it prints an INFO line, and the same
 #      check runs again after step 7's rebuild, when the build is this tree's
+#      The data symbols of the type information (analysis/symbols/STARFLEETOP.data.tsv) are
+#      compared with the executable's by tools/rtti_symbols.py check, which prints an INFO line
+#      and passes where there is no install
 #   6. the progress gate: no function loses its status (scripts/progress.py)
 #   7. the matched-set gate: no score drops below the base branch's. With the install and the
 #      compiler image, every matched function is rebuilt (harness/build-and-verify.sh), unless
@@ -82,6 +85,13 @@ if [ -f analysis/symbols/STARFLEETOP.tsv ]; then
     python3 tools/symbols.py check
 else
     skip "no analysis/symbols/STARFLEETOP.tsv yet"
+fi
+
+echo "== data symbols (tools/rtti_symbols.py check)"
+if [ -f analysis/symbols/STARFLEETOP.data.tsv ]; then
+    python3 tools/rtti_symbols.py check
+else
+    skip "no analysis/symbols/STARFLEETOP.data.tsv yet"
 fi
 
 # The commit whose copies of the progress and matched-set files this tree is held to. Locally a
