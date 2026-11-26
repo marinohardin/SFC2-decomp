@@ -522,3 +522,55 @@ def test_reclass_refuses_to_rename_under_an_add_symbol_unless_forced(tmp_path, c
     text = HEAD + row + '\n'
     rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
     assert rc == 1 and 'has symbol ?Draw@tOldView@@QAEXXZ' in out and got == text
+
+
+def test_reclass_compares_a_constructor_by_the_last_component_of_a_namespaced_class(tmp_path, capsys):
+    row = '0x00401010\tfunction\tNs::tOldView::tOldView\tNs::tOldView\t\t\t\trtti'
+    rc, out, got = reclass(tmp_path, capsys, HEAD + row + '\n', '0x00401010', 'tNewView',
+                           '--evidence', 'x')
+    assert rc == 0
+    assert got == HEAD + '0x00401010\tfunction\tfn_00401010\ttNewView\t\t\t\tvtable\n'
+
+
+def test_reclass_of_a_placeholder_gets_evidence_vtable_which_check_accepts(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttOldView::~tOldView\ttOldView\t\t\t\tsdk'
+    rc, out, got = reclass(tmp_path, capsys, HEAD + row + '\n', '0x00401010', 'tNewView',
+                           '--evidence', 'x')
+    assert got.endswith('\tfn_00401010\ttNewView\t\t\t\tvtable\n')
+    assert not [f for f in sym.check_text(got, {'0x00401010': 'function'}) if f.startswith('ERROR')]
+
+
+def test_reclass_of_a_row_with_a_symbol_needs_force_even_when_the_name_stays(tmp_path, capsys):
+    row = '0x00401010\tfunction\tfn_00401010\ttOldView\t?Draw@tOldView@@QAEXXZ\tadd\t\tvtable'
+    text = HEAD + row + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and 'still encodes the class tOldView' in out and got == text
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', 'x', '--force')
+    assert rc == 0 and '\ttNewView\t?Draw@tOldView@@QAEXXZ\tadd' in (tmp_path / 'T.tsv').read_text()
+
+
+def test_reclass_refuses_an_unknown_address_and_a_bad_class_name(tmp_path, capsys):
+    text = HEAD + METH + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00409999', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and out.startswith('ERROR 0x00409999 has no row') and got == text
+    for bad in ('t New', 'fn_00401010', '1abc'):
+        rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', bad, '--evidence', 'x')
+        assert rc == 1 and 'is not a class name' in out
+    assert (tmp_path / 'T.tsv').read_text() == text
+
+
+def test_reclass_refuses_a_row_whose_name_evidence_is_mangled(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttOldView::Draw\ttOldView\t\t\t\tmangled'
+    text = HEAD + row + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and 'decorated name' in out and got == text
+
+
+def test_reclass_force_on_a_claimed_constructor_still_makes_it_a_placeholder(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttOldView::tOldView\ttOldView\t\t\t\tclaim'
+    text = HEAD + row + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and got == text
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', 'x', '--force')
+    assert rc == 0
+    assert (tmp_path / 'T.tsv').read_text() == HEAD + '0x00401010\tfunction\tfn_00401010\ttNewView\t\t\t\tvtable\n'

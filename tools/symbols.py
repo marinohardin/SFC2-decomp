@@ -536,7 +536,8 @@ def cmd_reclass(a):
     prefix = old + '::' if old else None
     if prefix and row[2].startswith(prefix):
         rest = row[2][len(prefix):]
-        if rest in (old, '~' + old):
+        base = components(old)[-1]
+        if rest in (base, '~' + base):
             # a constructor or destructor of the old class names nothing in the new one
             new[2], new[7] = 'fn_' + address[2:], 'vtable'
         else:
@@ -549,9 +550,10 @@ def cmd_reclass(a):
             print(f'ERROR {address} is claimed under {old or "no class"}: the next seed follows '
                   'the claim; use --force only if the claim is what is wrong')
             return 1
-    if new[2] != row[2] and row[4] and not a.force:
-        print(f'ERROR {address} has symbol {row[4]}, which names {row[2]}: the symbol is '
-              'stronger than a correction; use --force to rename anyway')
+    if row[4] and not a.force:
+        print(f'ERROR {address} has symbol {row[4]}, which still encodes the class {old or "(none)"} '
+              'until the row is rebuilt and claimed: the symbol is stronger than a correction; '
+              'use --force to change the class anyway')
         return 1
     lines[idx] = '\t'.join(new)
     write_atomic(table, '\n'.join(lines))
