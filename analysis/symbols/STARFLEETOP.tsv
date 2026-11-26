@@ -14462,7 +14462,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e81db	function	fn_005e81db					none
 0x005e8376	function	fn_005e8376		?fn_005e8376@@YGXPAVtMetaClientMapPanel@@J@Z	claim		none
 0x005e843a	function	fn_005e843a					none
-0x005e89fd	function	fn_005e89fd					none
+0x005e89fd	function	fn_005e89fd		?fn_005e89fd@fn_005e89fd_panel@@QAE?AUtPoint@@ABVtHexPoint@@@Z	claim		none
 0x005e8acc	function	fn_005e8acc					none
 0x005e8be0	function	fn_005e8be0					none
 0x005e8c29	function	fn_005e8c29		?fn_005e8c29@tMetaClientMapPanel@@QAEXABUtRect@@@Z	callers		none
@@ -14472,7 +14472,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8efa	function	fn_005e8efa		?fn_005e8efa@tMetaClientMapQueue@@QAEHXZ	callers		none
 0x005e8efe	function	fn_005e8efe	tGameState	?fn_005e8efe@tMetaClientMapQueue@@QAEHXZ	callers		vtable
 0x005e8f02	function	fn_005e8f02					none
-0x005e8f21	function	fn_005e8f21	tBitmapFontEx				vtable
+0x005e8f21	function	fn_005e8f21	tBitmapFontEx	?fn_005e8f21@tHexPoint@@QBEJXZ	add		vtable
 0x005e8f25	function	fn_005e8f25	tBitmapFontEx	?fn_005e8f25@tNotifyEvent@nStoredProcedureArguments@@QAEKXZ	callers		vtable
 0x005e8f29	function	fn_005e8f29					none
 0x005e8f2d	function	fn_005e8f2d					none

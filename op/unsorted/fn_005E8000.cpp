@@ -4,6 +4,7 @@
 #include "unsorted/fn_0042a480_object.h"
 #include "Common/Thread/AccessPointer.h"
 #include "Switch/Switch.h"
+#include "unsorted/tCurrentTime.h"
 
 // HYPOTHESIS: the original is the tMetaClientMapPanel member fn_005e80ef(); the lane may not
 // edit the class header, so this is a free function over the panel until it is declared.
@@ -53,4 +54,41 @@ void __stdcall fn_005e8376( tMetaClientMapPanel* panel, long value )
 		message.fn_00535919( value );
 		( *(nSwitch::tSwitch**) ( (char*) panel + 0xcc ) )->fn_00714000( *(nSwitch::tAddress**) ( (char*) panel + 0xac ), 8, (const nDataStore::tStreamable*) &message );
 	}
+}
+
+// HYPOTHESIS: the object at +0x120 of the panel (the cell layout of the map view); its class is
+// not recovered, only the getters this function calls are placed.
+class fn_005e89fd_layout
+{
+public:
+	int fn_005e8efa();
+	int fn_005e8efe();
+	int fn_005e8f02( const tHexPoint& position );
+	int fn_005e8f25();
+};
+long __fastcall fn_005c7fb3( char* param_1 );
+long __fastcall fn_005c7fb7( class tCurrentTime* param_1 );
+
+class fn_005e89fd_panel : public tMetaClientMapPanel
+{
+public:
+	tPoint fn_005e89fd( const tHexPoint& position );
+};
+
+// HYPOTHESIS: a tMetaClientMapPanel member returning the screen position of a hex; the lane may
+// not edit the class header, so this is a free __fastcall function with a dummy edx argument.
+// FUNCTION: STARFLEETOP 0x005e89fd
+tPoint fn_005e89fd_panel::fn_005e89fd( const tHexPoint& position )
+{
+	tMetaClientMapPanel* panel = this;
+	tOptex::tGuard guard( &panel->field_dc );
+	tMetaClientMapQueue* queue = &panel->field_fc;
+	fn_005e89fd_layout* layout = (fn_005e89fd_layout*) ( (char*) panel + 0x120 );
+	// HYPOTHESIS: 0x0055f269 is tCurrentTime's accessor in the symbol table; the hex point and the
+	// queue share the same one-line getter, so both are called through it.
+	tCurrentTime* hex = (tCurrentTime*) &position;
+	long left = queue->fn_005e8efe();
+	long x = ( hex->fn_0055f269() - left ) * layout->fn_005e8efe() + fn_005c7fb7( (tCurrentTime*) layout ) + layout->fn_005e8f25();
+	long y = ( position.fn_005e8f21() - ( (tCurrentTime*) queue )->fn_0055f269() ) * layout->fn_005e8efa() + layout->fn_005e8f02( position ) + fn_005c7fb3( (char*) layout ) + fn_005c7fb3( (char*) layout );
+	return tPoint( (short) x, (short) y );
 }
