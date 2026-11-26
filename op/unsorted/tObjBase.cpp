@@ -159,3 +159,31 @@ bool tObjBase::vfunction36( int x, int y )
 
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x0067cf70
+void tObjBase::fn_0067cf70( c_tObjBase_Field4C *shape, unsigned char visible )
+{
+	if ( field_0C && fn_RectNotEmpty( &field_34 ) )
+		field_0C->vfunction32( &field_34 );
+	if ( visible != 0 )
+		field_40 |= 2;
+	else
+		field_40 &= 0xfffffffd;
+	field_4C = shape;
+	if ( shape != 0 )
+	{
+		field_34.left = field_3C.x - shape->field_04;
+		field_34.top = field_3C.y - shape->field_06;
+		field_34.right = shape->field_00 + field_34.left;
+		field_34.bottom = shape->field_02 + field_34.top;
+		if ( field_0C && fn_RectNotEmpty( &field_34 ) )
+			field_0C->vfunction32( &field_34 );
+	}
+	else
+	{
+		field_34.left = 0;
+		field_34.top = 0;
+		field_34.right = 0;
+		field_34.bottom = 0;
+	}
+}

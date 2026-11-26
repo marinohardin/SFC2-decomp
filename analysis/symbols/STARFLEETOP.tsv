@@ -17808,7 +17808,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067ce90	function	fn_0067ce90		?fn_0067ce90@tVisObject@@QAEXXZ	claim		none
 0x0067cee0	function	fn_0067cee0		?fn_0067cee0@tObjBase@@QAEXXZ	claim		none
 0x0067cf10	function	fn_0067cf10	tObjBase	?vfunction36@tObjBase@@UAE_NHH@Z	claim		vtable
-0x0067cf70	function	fn_0067cf70					none
+0x0067cf70	function	fn_0067cf70		?fn_0067cf70@tObjBase@@QAEXPAUc_tObjBase_Field4C@@E@Z	claim		none
 0x0067d030	function	tFile::gSetFileCallback	tFile				sdk
 0x0067d040	function	fn_0067d040	tObjBase				vtable
 0x0067d160	function	fn_0067d160	tObjBase				vtable
