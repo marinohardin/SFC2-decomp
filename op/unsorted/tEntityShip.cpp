@@ -160,12 +160,12 @@ void tEntityShip::fn_004155c1(tPoint3 *aPoint)
 	if (fField14)
 	{
 		typedef void (tEntityShip::*tSlot18)(tPoint3);
-		union { void *p; tSlot18 f; } u;
-		void **vtable = *(void ***)fField14;
-		u.p = vtable[0x48 / 4];
-		(((tEntityShip *)fField14)->*(u.f))(*aPoint);
+		(((tEntityShip *)fField14)->*(*(tSlot18 *)(*(void ***)fField14 + 0x48 / 4)))(*aPoint);
 	}
 }
+
+
+
 
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
