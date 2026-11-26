@@ -225,8 +225,6 @@ public:
 	tObjBase *field_B0;	// HYPOTHESIS: a tObjBase; the destructor calls its slot at +0x2c
 	int field_B4;	// HYPOTHESIS: the font style, 0x80 to 0x83
 	std::map< int, c_tListBox_Base_Colors > field_B8;
-	// HYPOTHESIS: tListBox_Select's members start at +0xcc; what fills +0xc8 is not known.
-	unsigned char field_C8[ 0xcc - 0xc8 ];
 };
 
 #endif	// tListBox_Base_h
