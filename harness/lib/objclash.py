@@ -12,7 +12,13 @@
                       a linker keeps the first copy it sees, which may be the wrong one. Equal
                       copies are fine.
 
-Both only read the COFF objects (harness/lib/coff.py). `objects` maps a unit to its object file.
+  unclaimed originals a function that the object defines out of line (not an inline or template COMDAT) under a decorated symbol
+                      the symbol table places at an address in the exe, while no `// FUNCTION:`
+                      claim in that object's unit covers one of the symbol's addresses: the body
+                      carries the original's symbol but is not held to the original's bytes, and a
+                      consumer that links the objects may bind callers to it.
+
+All of them only read the COFF objects (harness/lib/coff.py). `objects` maps a unit to its object file.
 """
 import re
 
@@ -27,6 +33,7 @@ STRING = re.compile(rb'[\x20-\x7e]{4,}?(?:%s)(?=\0)' % b'|'.join(
 # and a folder of the original's machine) are strings the exe holds and are not reported
 DOT_SEGMENT = re.compile(r'[\\/]\.[\\/]')
 SCN_CNT_CODE = 0x20
+SELECT_NODUPLICATES = 1
 
 
 def _read(path):
@@ -179,45 +186,93 @@ def clashing_copies(objects, claimed_symbols):
     return [line for _, line in copy_findings(load_objects(objects), claimed_symbols)]
 
 
+def unclaimed_findings(objs, symbol_addresses, unit_claims):
+    """[(unit, symbol, line)] for each function symbol that an object defines out of line: outside
+    a COMDAT, or in a COMDAT of selection "no duplicates" (what VC6 /Gy makes of a function the
+    unit's source defines out of line). A COMDAT of selection "any" is an inline function or a
+    template, whose copies the compiler makes, so it is not read: the object cannot tell an
+    explicit definition from a copy. The symbol's decorated name (it starts with `?`) is in `symbol_addresses` ({symbol: set of int
+    addresses the symbol table gives it}), and none of whose addresses is in `unit_claims`
+    ({unit: set of int addresses a FUNCTION claim in that unit covers}). One finding per (unit,
+    symbol): several symbols at one address, or one symbol at several, are each judged on their own
+    addresses."""
+    out = []
+    for unit, obj in sorted(objs.items()):
+        claimed = unit_claims.get(unit, ())
+        seen = set()
+        for s in obj.symbols.values():
+            if (s.section <= 0 or s.storage != coff.SYM_CLASS_EXTERNAL or not s.is_function
+                    or obj.sections[s.section].selection not in (None, SELECT_NODUPLICATES)
+                    or not s.name.startswith('?') or s.name in seen):
+                continue
+            addrs = symbol_addresses.get(s.name)
+            if not addrs or any(a in claimed for a in addrs):
+                continue
+            seen.add(s.name)
+            where = ', '.join(f'0x{a:08x}' for a in sorted(addrs))
+            out.append((unit, s.name, f'{unit}: {s.name} is defined here, and the symbol table '
+                        f'places it at {where}, but no // FUNCTION: claim in this unit covers '
+                        'that address, so the body is not held to the original\'s bytes while '
+                        'it carries the original\'s symbol: claim the function as a real attempt '
+                        'at the original\'s code, remove the body, or give it a placeholder name '
+                        '(not the original\'s symbol)'))
+    return out
+
+
 BASELINE_FIELDS = ('kind', 'unit', 'symbol')
 
 
 def load_baseline(path):
     """The known debt: rows `path <TAB> unit <TAB> symbol` (a build path a unit holds, as
     build_path_lines names it) and `copy <TAB> - <TAB> symbol` (a claimed function that objects
-    define differently). A missing file is no debt; `#` starts a comment line. Returns
-    (allowed paths: set of (unit, symbol), allowed copies: set of symbols)."""
-    paths_, copies = set(), set()
+    define differently) and `unclaimed <TAB> unit <TAB> symbol` (a function a unit defines under an
+    original's symbol without claiming it). A missing file is no debt; `#` starts a comment line.
+    Returns (allowed paths: set of (unit, symbol), allowed copies: set of symbols, allowed
+    unclaimed: set of (unit, symbol))."""
+    paths_, copies, unclaimed = set(), set(), set()
     try:
         f = open(path, newline='')
     except OSError:
-        return paths_, copies
+        return paths_, copies, unclaimed
     with f:
         for n, line in enumerate(f, 1):
             line = line.rstrip('\r\n')
             if not line.strip() or line.startswith('#') or line.split('\t')[0] == 'kind':
                 continue
             row = line.split('\t')
-            if len(row) != 3 or row[0] not in ('path', 'copy'):
-                raise ValueError(f'{path}:{n}: expected kind (path or copy), unit, symbol '
-                                 'separated by tabs')
-            (paths_.add((row[1], row[2])) if row[0] == 'path' else copies.add(row[2]))
-    return paths_, copies
+            if len(row) != 3 or row[0] not in ('path', 'copy', 'unclaimed'):
+                raise ValueError(f'{path}:{n}: expected kind (path, copy or unclaimed), unit, '
+                                 'symbol separated by tabs')
+            if row[0] == 'path':
+                paths_.add((row[1], row[2]))
+            elif row[0] == 'copy':
+                copies.add(row[2])
+            else:
+                unclaimed.add((row[1], row[2]))
+    return paths_, copies, unclaimed
 
 
-def check(objects, claimed_symbols, roots=(), baseline=(frozenset(), frozenset())):
-    """(error lines, stale lines): the findings of both checks that the baseline does not list,
+def check(objects, claimed_symbols, roots=(), baseline=(frozenset(), frozenset(), frozenset()),
+          symbol_addresses=None, unit_claims=None):
+    """(error lines, stale lines): the findings of the checks that the baseline does not list,
     and a line for each baseline row that no longer occurs (the list only shrinks). Each object
-    is parsed once and the baseline is matched on the structured symbol, not on message text."""
-    allowed_paths, allowed_copies = baseline
+    is parsed once and the baseline is matched on the structured symbol, not on message text.
+    The unclaimed-original check runs only when `symbol_addresses` is given."""
+    allowed_paths, allowed_copies, allowed_unclaimed = baseline
     objs = load_objects(objects)
     paths_ = path_findings(objs, roots)
     copies = copy_findings(objs, claimed_symbols)
+    unclaimed = (unclaimed_findings(objs, symbol_addresses, unit_claims or {})
+                 if symbol_addresses is not None else [])
     errors = [line for unit, sym, _, line in paths_
               if sym is None or (unit, sym) not in allowed_paths]
     errors += [line for sym, line in copies if sym not in allowed_copies]
+    errors += [line for unit, sym, line in unclaimed if (unit, sym) not in allowed_unclaimed]
     seen_paths = {(unit, sym) for unit, sym, _, _ in paths_ if sym is not None}
     seen_copies = {sym for sym, _ in copies}
+    seen_unclaimed = {(unit, sym) for unit, sym, _ in unclaimed}
     stale = [f'path\t{u}\t{s}' for u, s in sorted(allowed_paths - seen_paths)]
     stale += [f'copy\t-\t{s}' for s in sorted(allowed_copies - seen_copies)]
+    if symbol_addresses is not None:
+        stale += [f'unclaimed\t{u}\t{s}' for u, s in sorted(allowed_unclaimed - seen_unclaimed)]
     return errors, stale
