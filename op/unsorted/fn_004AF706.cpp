@@ -184,3 +184,15 @@ void __fastcall fn_004afb67(void *self, int, int value)
 	((int *)array[0])[array[1]] = value;
 	array[1]++;
 }
+
+// HYPOTHESIS: constructor of a growable array {data, count, capacity} with 20-byte elements;
+// the capacity is at least 10, like 0x004afb43.
+// FUNCTION: STARFLEETOP 0x004afbc4
+void *__fastcall fn_004afbc4(void *self, int, unsigned capacity)
+{
+	if (capacity < 10)
+		capacity = 10;
+	((unsigned *)self)[2] = capacity;
+	((void **)self)[0] = operator new( capacity * 0x14 );
+	return self;
+}
