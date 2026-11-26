@@ -1,4 +1,5 @@
 #include "Source/entity/entity_physical.h"
+#include "Tiger/tstring.h"
 
 // FUNCTION: STARFLEETOP 0x004140a9
 // HYPOTHESIS: removes the entity ID from the threat list, shifting the later entries down.
@@ -45,3 +46,7 @@ void fn_0041455b(int a, int b)
 {
 	new tEntity_Placeholder(a, b);
 }
+
+// HYPOTHESIS: the global's name is unknown; the path string is from the exe.
+// FUNCTION: STARFLEETOP 0x004145d7
+tString g_008e0d48 = "assets\\WeaponGroups\\";
