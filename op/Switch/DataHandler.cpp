@@ -4,3 +4,5 @@
 // Functions: 0x0071ca10 to 0x0071cdf0, 3 in op/UNITS.tsv
 // Evidence:  assert-path (the original's assertion strings name this file)
 // Profile:   sdk-release (harness/units.json)
+
+#include "Switch/DataHandler.h"

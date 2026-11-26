@@ -4,3 +4,5 @@
 // Functions: 0x00727a90 to 0x00727d20, 3 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   sdk-release (harness/units.json)
+
+#include "Switch/ObjectDirectory.h"

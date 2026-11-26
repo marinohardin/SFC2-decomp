@@ -4,3 +4,5 @@
 // Functions: 0x0071c8a0 to 0x0071c8c0, 2 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   sdk-release (harness/units.json)
+
+#include "Switch/DataHandler.h"
