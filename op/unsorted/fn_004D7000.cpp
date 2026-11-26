@@ -135,3 +135,12 @@ char tBaseWeapon::vfunction66()
 {
     return field_fc;
 }
+
+// FUNCTION: STARFLEETOP 0x004d7362
+char tBaseWeapon::vfunction140()
+{
+    if (fn_004d76f8() == true) {
+        return 5;
+    }
+    return field_110;
+}
