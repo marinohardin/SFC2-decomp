@@ -37,3 +37,47 @@ void tView3DExt::vfunction58(tMatrix *m)
 		}
 	}
 }
+
+// HYPOTHESIS: tView3D declares vfunction41/42/53/54 without the arguments this function passes
+// (HEADER REQUEST pending); the member-pointer casts give those calls their real shapes.
+typedef bool (tView3D::*tVFn41)(bool);
+typedef void (tView3D::*tVFn42)(int, int);
+typedef bool (tView3D::*tVFn53)();
+typedef void (tView3D::*tVFn54)(int);
+
+// FUNCTION: STARFLEETOP 0x006ac5a0
+void tView3DExt::vfunction81(int a, void **b, bool c)
+{
+	tVFn41 f41 = (tVFn41)&tView3D::vfunction41;
+	tVFn42 f42 = (tVFn42)&tView3D::vfunction42;
+	tVFn53 f53 = (tVFn53)&tView3D::vfunction53;
+	tVFn54 f54 = (tVFn54)&tView3D::vfunction54;
+	int saved = vfunction96();
+	bool old = vfunction48(false);
+	vfunction48(old);
+	if ((vfunction10() & 0x20) == 0) {
+		(this->*f54)(0);
+		vfunction97(1, a, b, c);
+		return;
+	}
+	if ((this->*f53)()) {
+		vfunction97(0, a, b, c);
+		return;
+	}
+	unsigned char flags;
+	if (old ? (flags & 2) == 0 : (flags & 1) == 0) {
+		(this->*f54)(0);
+		vfunction97(1, a, b, c);
+		return;
+	}
+	(this->*f54)(2);
+	vfunction97(2, a, b, c);
+	bool lit = vfunction37(false);
+	bool prev = (this->*f41)(true);
+	(this->*f42)(1, 4);
+	(this->*f54)(1);
+	vfunction97(1, a, b, c);
+	(this->*f41)(prev);
+	vfunction37(lit);
+	(this->*f54)(0);
+}
