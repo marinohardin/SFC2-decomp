@@ -57,3 +57,26 @@ void fn_00544725_user( std::vector< fn_00544725_elem > *v )
 {
 	v->erase( v->begin() );
 }
+
+template<> std::vector< tServCharacter::tShipCache >::iterator std::vector< tServCharacter::tShipCache >::erase( iterator _P );
+
+// FUNCTION: STARFLEETOP 0x0054477b
+template<>
+std::vector< tServCharacter::tShipCache >::iterator std::vector< tServCharacter::tShipCache >::erase( iterator _P )
+{
+	tServCharacter::tShipCache *last = _Last;
+	tServCharacter::tShipCache *dest = _P;
+	for ( tServCharacter::tShipCache *src = _P + 1; src != last; ++dest, ++src )
+		*dest = *src;
+	tServCharacter::tShipCache *e = _Last;
+	for ( tServCharacter::tShipCache *p = e - 1; p != e; ++p )
+		p->~tShipCache();
+	--_Last;
+	return _P;
+}
+
+// MATCH-ONLY: a user so that the specialization above is emitted out of line.
+void fn_0054477b_user( std::vector< tServCharacter::tShipCache > *v )
+{
+	v->erase( v->begin() );
+}
