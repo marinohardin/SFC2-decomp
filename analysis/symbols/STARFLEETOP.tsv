@@ -9001,7 +9001,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005380dd	function	fn_005380dd		?fn_005380dd@@YAPAVtBitmapFontEx@@XZ	add		none
 0x005380e3	function	fn_005380e3					none
 0x005381a3	function	fn_005381a3		?fn_005381a3@@YAXHPAVtObjBase@@HHHHHHPAGHPAUtagRECT@@HH@Z	callers		none
-0x0053860e	function	fn_0053860e					none
+0x0053860e	function	fn_0053860e		?fn_0053860e@@YADH@Z	claim		none
 0x00538621	function	fn_00538621					none
 0x005387ee	function	fn_005387ee					none
 0x00538897	function	fn_00538897					none

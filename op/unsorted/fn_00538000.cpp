@@ -46,3 +46,9 @@ tBitmapFontEx *fn_00538098( const char *name )
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0053860e
+char fn_0053860e( int c )
+{
+	return "; !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"[( c - 0x20U & 0xff ) + 1];
+}
