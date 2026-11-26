@@ -6,6 +6,7 @@
 #include "Tiger/tvectormath.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/fn_004D3143.h"
+#include <string.h>
 
 // HYPOTHESIS: builds a look-at (view) matrix from an eye position, a target and an up vector.
 // FUNCTION: STARFLEETOP 0x004af706
@@ -89,4 +90,33 @@ void __fastcall fn_004afa40(void *self)
 {
 	if (((void **)self)[0] != 0)
 		operator delete( ((void **)self)[0] );
+}
+
+// HYPOTHESIS: appends one element to the same growable array, growing it by ten when full; the
+// element is four words copied from the first argument followed by three more words. The first
+// argument's type is unknown; a 16-byte struct copy (tPoint4) gives the original's block copy.
+// FUNCTION: STARFLEETOP 0x004afa4e
+void __fastcall fn_004afa4e(void *self, int, const tPoint4 *head, int a, int b, int c)
+{
+	int *array = (int *)self;
+	if (array[1] + 1 >= array[2])
+	{
+		int capacity = array[2] + 10;
+		int *data = (int *)operator new( capacity * 0x1c );
+		if (data == 0)
+			return;
+		if (array[0] != 0)
+		{
+			memcpy( data, (void *)array[0], array[1] * 0x1c );
+			operator delete( (void *)array[0] );
+		}
+		array[2] = capacity;
+		array[0] = (int)data;
+	}
+	int *e = (int *)(array[1] * 0x1c + array[0]);
+	array[1]++;
+	*(tPoint4 *)e = *head;
+	e[4] = a;
+	e[5] = b;
+	e[6] = c;
 }
