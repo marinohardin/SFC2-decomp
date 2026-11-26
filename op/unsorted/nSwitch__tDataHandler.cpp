@@ -50,6 +50,14 @@ nSwitch::tDataHandler::~tDataHandler()
 	}
 }
 
+// HYPOTHESIS: the object at +0x7c is a class not recovered; this reduced declaration carries
+// only the member 0x00715500 that 0x0071d090 forwards to.
+class fn_00715500_Object
+{
+public:
+	void fn_00715500( int32u arg );
+};
+
 // FUNCTION: STARFLEETOP 0x0071d010
 void nSwitch::tDataHandler::fn_slot6( int32u arg )
 {
@@ -64,4 +72,10 @@ void nSwitch::tDataHandler::fn_slot6( int32u arg )
 		// HYPOTHESIS: the stream and the helper that prints the address are not recovered.
 		fn_00716040( nLog::info, f_7c ) << " received packet " << *(int32*)( arg + 0x50 ) << " while waiting to be deleted" << nLog::report;
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0071d090
+void nSwitch::tDataHandler::fn_0071d090( int32u arg )
+{
+	((fn_00715500_Object*)f_7c)->fn_00715500( arg );
 }

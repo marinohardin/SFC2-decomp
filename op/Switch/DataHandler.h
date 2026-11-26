@@ -53,6 +53,9 @@ namespace nSwitch { class tDataHandler
 
 		tDataHandler();
 
+		// Not in the vtable (0x0071d090): forwards its argument to the member at +0x7c.
+		void	fn_0071d090( int32u arg );
+
 	protected:
 		// +0x04: the spin-counted guard slots 0 to 2 lock, built as tOptex( use, 4000 ).
 		tOptex						f_04;
