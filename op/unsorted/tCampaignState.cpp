@@ -3,40 +3,41 @@
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tApplication.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/c_0046aa10_msg.h"
 
 // HYPOTHESIS: a cdecl function of one pointer argument at 0x004d32cf (the call's
 // displacement lands there; the analysis export places it inside FUN_004d32c4).
 void fn_004d32cf(void *p);
 
-// HYPOTHESIS: a 0x20-byte entry of the list at tCampaignState+0x18.
-struct c_tState_Campaign_entry
-{
-	char m_pad[0x20];
-};
+// The object at tCampaignState+0xc is a tShipUI (tShipUI.h). The id at +0x1110 follows it.
+#include "unsorted/tShipUI.h"
 
-// HYPOTHESIS: the object at tCampaignState+0xc. The list at tCampaignState+0x18, its
-// index at +0x1018 and the id at +0x1110 are taken to be its members: the original computes
-// this object's address before it reads the id, as for a member read through it.
-class c_004cd1db
-{
-public:
-	// HYPOTHESIS: three arguments; the split of the pushes between this call and the two
-	// virtual calls inside its argument list is read from the register use at the call
-	// sites, not from the callee. Types unknown.
-	// HYPOTHESIS: 0x004cd034 and 0x004cd115 (tShipUI's in the unit table); tCampaignState's call them.
-	c_004cd1db();
-	~c_004cd1db();
-	void fn_004cd1db(int a, int b, int id);
-	void fn_004cd2c9();
-	void fn_004cd2f6();
-	void fn_004cd739();
 
-	char m_pad_00[0xc];
-	c_tState_Campaign_entry m_0c[0x80];
-	int m_100c;
-	char m_pad_1010[0xf4];
-	int m_1104;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: an empty allocator, copied from a default one (an uninitialized stack byte).
 struct c_0045dece_allocator {};
@@ -85,26 +86,11 @@ public:
 	// no source line, so this declared one (which stores the vtable) stands in for it.
 	virtual ~tCampaignState();
 	tCampaignState *scalar_deleting_destructor(unsigned char flags);
-	virtual int vfunction2();
-	virtual void vfunction3();
+	// 0x0045da31, slot 3. Slot 14 (0x0045dc2b) is this class's too: both vtables hold it.
 	virtual bool vfunction4();
-	// HYPOTHESIS: slots 4 to 11 are placeholders that keep the offset of vfunction13 (0x30).
-	virtual void vfunction5();
-	// HYPOTHESIS: one argument (the original returns with ret 4).
-	virtual void vfunction6(int arg);
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
-	virtual void vfunction12();
-	// HYPOTHESIS: returns the state's name, as tState_NetSetup's slot 0x30 does.
-	virtual const char *vfunction13();
-	// HYPOTHESIS: slot 14 is a placeholder that keeps the offset of vfunction15.
-	virtual void vfunction14();
-	virtual void vfunction15(int *arg);
+	virtual void vfunction15(c_0046aa10_message *msg);
 
-	c_004cd1db m_0c;
+	tShipUI m_0c; int m_1110;
 	c_0045dece m_1114;
 	// HYPOTHESIS: set once the player's name has been sent.
 	bool m_1130;
@@ -114,7 +100,7 @@ public:
 bool tCampaignState::vfunction4()
 {
 	// HYPOTHESIS: the value at +0x1110, a pointer here.
-	fn_004d32cf((void *)m_0c.m_1104);
+	fn_004d32cf((void *)m_1110);
 	return true;
 }
 
@@ -175,9 +161,8 @@ public:
 	virtual void vfunction3();
 	// HYPOTHESIS: the argument is not read here.
 	virtual void vfunction6(int arg);
-	// HYPOTHESIS: remaps a key event in place; arg[0] is the action written back, arg[1] the
-	// key code read (the analysis export names this tCampaignState::vfunction15).
-	virtual void vfunction15(int *arg);
+	// The state's name (0x0045d95d); this state overrides slots 1, 2, 3, 5 and 12 of the base.
+	virtual char *vfunction13();
 
 	void fn_0045dc99(int id);
 	bool fn_0045dd02();
@@ -244,8 +229,8 @@ void tState_Campaign::vfunction3()
 				return;
 			}
 			{
-				c_004cd1db *p = &m_0c;
-				p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), p->m_1104);
+				tShipUI *p = &m_0c;
+				p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), m_1110);
 				p->fn_004cd739();
 			}
 			break;
@@ -257,7 +242,7 @@ void tState_Campaign::vfunction3()
 void tState_Campaign::vfunction6(int arg)
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name here; vfunction3 passes it as an id.
-	const char *name = (const char *)m_0c.m_1104;
+	const char *name = (const char *)m_1110;
 
 	if ((name == vfunction13() && !m_1130) || (name == "playerOptions" && !m_1130))
 	{
@@ -267,25 +252,25 @@ void tState_Campaign::vfunction6(int arg)
 }
 
 // FUNCTION: STARFLEETOP 0x0045dc2b
-void tState_Campaign::vfunction15(int *arg)
+void tCampaignState::vfunction15(c_0046aa10_message *msg)
 {
-	switch (arg[1])
+	switch (msg->m_04)
 	{
 	case 0x102:
-		arg[0] = 0x103;
+		msg->id = 0x103;
 		break;
 	case 0x103:
-		arg[0] = 0x102;
+		msg->id = 0x102;
 		break;
 	case 0x115:
 		if (g_p008cc580->vfunction5("Debug", "DebugKeys", 0))
 		{
-			if (arg[1] == 0x115)
-				arg[0] = 0x206;
-			if (arg[1] == 0x116)
-				arg[0] = 0x205;
-			if (arg[1] == 0x117)
-				arg[0] = 0x204;
+			if (msg->m_04 == 0x115)
+				msg->id = 0x206;
+			if (msg->m_04 == 0x116)
+				msg->id = 0x205;
+			if (msg->m_04 == 0x117)
+				msg->id = 0x204;
 		}
 		break;
 	}
@@ -302,7 +287,7 @@ extern char g_00843ed0[];
 void tState_Campaign::fn_0045dc99(int id)
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name, as in vfunction6.
-	const char **name = (const char **)&m_0c.m_1104;
+	const char **name = (const char **)&m_1110;
 
 	fn_004d32c4(*name);
 	m_1114.fn_0045dece(name);
@@ -326,7 +311,7 @@ bool tState_Campaign::fn_0045dd02()
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name, as in fn_0045dc99; the name
 	// pushed there is popped here.
-	const char **name = (const char **)&m_0c.m_1104;
+	const char **name = (const char **)&m_1110;
 
 	fn_004d32c4(*name);
 	*name = *c_0045dece_iterator(&m_1114).fn_005f7efa();
@@ -338,7 +323,7 @@ bool tState_Campaign::fn_0045dd02()
 	const char *current = *name;
 	if (current == "VesselLibrary")
 	{
-		c_004cd1db *p = &m_0c;
+		tShipUI *p = &m_0c;
 		p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), (int)current);
 		p->fn_004cd739();
 	}

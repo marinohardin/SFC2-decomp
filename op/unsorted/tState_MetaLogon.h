@@ -19,8 +19,8 @@
 // constructor initialises and by the offsets the methods use.
 //
 // The vtable at 0x0079f284 overrides slot 0 (the deleting destructor 0x0046d1ac) and slots 1, 2,
-// 3 and 12; every other slot keeps tGameState's. Slots 4 to 11 are declared here only to keep
-// slot 12 in place (MATCH-ONLY): the original inherits them.
+// 3 and 12; every other slot keeps tGameState's. The virtual functions are named as the vtable
+// export names them: slot N is vfunctionN+1.
 class tState_MetaLogon : public tGameState, public tStatusAccess
 {
 public:
@@ -28,21 +28,14 @@ public:
 	virtual ~tState_MetaLogon();
 
 	// 0x0046d4d2: returns true.
-	virtual bool vfunction1();
-	// 0x0046e178: ends by calling tGameState::fn_00469e0c.
 	virtual bool vfunction2();
+	// 0x0046e178: ends by calling tGameState::fn_00469e0c (declared void like the base slot;
+	// the same code is generated whether or not the result is returned).
+	virtual void vfunction3();
 	// 0x0046d9cf: returns true.
-	virtual bool vfunction3();
-	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
+	virtual bool vfunction4();
 	// 0x0046d2a4: returns the state's name, the string at 0x008471e4 ("MetaLogOn").
-	virtual char *vfunction12();
+	virtual char *vfunction13();
 
 	// The tStatusAccess slot, 0x0046d370: calls 0x0046d2aa on this state with the text's pointer.
 	virtual void vfunction1( const std::string& text );

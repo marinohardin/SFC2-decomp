@@ -3,13 +3,6 @@
 
 #include "Source/entity/entity_physical.h"
 
-// MATCH-ONLY: the harness finds a function by the "; File" line that the listing writes
-// with the class's vftable; this emits it until the class's constructor is decompiled.
-tPhysicalEntity *fn_probe_vftable()
-{
-	return new tPhysicalEntity;
-}
-
 // FUNCTION: STARFLEETOP 0x004105dd
 tMatrix *tPhysicalEntity::vfunction28(bool aValue)
 {
@@ -77,7 +70,7 @@ void tPhysicalEntity::vfunction62()
 }
 
 // FUNCTION: STARFLEETOP 0x00410667
-void tPhysicalEntity::vfunction64()
+float tPhysicalEntity::vfunction64()
 {
-	vfunction63();
+	return vfunction63();
 }

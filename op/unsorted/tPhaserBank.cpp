@@ -96,7 +96,7 @@ public:
     virtual void vfunction105(int param_1);
     virtual void vfunction102();
     virtual float vfunction74(float param_1, float param_2);
-    virtual float vfunction143(float param_1, float param_2);
+    virtual float vfunction143(char param_1, unsigned char param_2);
     virtual float vfunction135(unsigned char param_1);
     virtual int vfunction136(char param_1);
     // HYPOTHESIS: the slot at offset 0x224, a test 0x004e2b02 makes before counting the
@@ -358,9 +358,9 @@ float tPhaserBank::vfunction74(float param_1, float param_2)
 }
 
 // FUNCTION: STARFLEETOP 0x004e245e
-float tPhaserBank::vfunction143(float param_1, float param_2)
+float tPhaserBank::vfunction143(char param_1, unsigned char param_2)
 {
-    // HYPOTHESIS: the two parameters (ret 8) are unused; their types are guessed from slot 74.
+    // HYPOTHESIS: the two parameters (ret 8) are unused; tBaseWeapon reads them as a bank and a mode.
     float max = field_2c->vfunction123();
     float cur = field_2c->vfunction117();
     float rate = field_2c->vfunction112();
