@@ -294,6 +294,13 @@ int tSWView3D::vfunction10()
 	return result;
 }
 
+// FUNCTION: STARFLEETOP 0x0069faf0
+bool tSWView3D::vfunction28(unsigned int color)
+{
+	unsigned char* c = (unsigned char*)&color;
+	return vfunction27(c[2], c[1], c[0]);
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
