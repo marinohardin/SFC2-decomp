@@ -111,6 +111,33 @@ int tView3DExt::vfunction32()
 	return 0x40;
 }
 
+// FUNCTION: STARFLEETOP 0x006a9ab0
+void tView3DExt::vfunction33(unsigned int index, const void *light)
+{
+	if (index < 0x40) {
+		const int *src = (const int *)light;
+		*(int *)&field_0x778[index][0x00] = src[0];
+		*(int *)&field_0x778[index][0x04] = src[1];
+		*(int *)&field_0x778[index][0x08] = src[2];
+		*(int *)&field_0x778[index][0x0c] = src[3];
+		*(int *)&field_0x778[index][0x10] = src[4];
+		*(int *)&field_0x778[index][0x14] = src[5];
+		*(int *)&field_0x778[index][0x18] = src[6];
+		*(int *)&field_0x778[index][0x1c] = src[7];
+		*(int *)&field_0x778[index][0x20] = src[8];
+		*(int *)&field_0x778[index][0x24] = src[9];
+		*(int *)&field_0x778[index][0x28] = src[10];
+		*(int *)&field_0x778[index][0x2c] = src[11];
+		*(int *)&field_0x778[index][0x30] = src[12];
+		*(int *)&field_0x778[index][0x34] = src[13];
+		*(int *)&field_0x778[index][0x38] = src[14];
+		*(int *)&field_0x778[index][0x3c] = src[15];
+		int type = src[0];
+		if ((type == 1 || (type > 4 && type <= 6)) && ((float *)field_0x778[index])[10] != 0.0f)
+			field_0x1db8[index] = 1.0f / ((float *)field_0x778[index])[10];
+	}
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
