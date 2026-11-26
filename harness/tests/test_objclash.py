@@ -319,3 +319,39 @@ def test_a_function_outside_a_comdat_is_read_too(tmp_path):
     errors, _ = unclaimed(tmp_path, [(CTOR, b'\xc3', CODE & ~coff.SCN_LNK_COMDAT, 0, [])],
                           {CTOR: {0x412f67}}, {})
     assert len(errors) == 1
+
+
+def test_a_claim_row_claimed_in_another_unit_still_reports_this_unit():
+    from harness.lib import verify
+    table = {'0x00412f67': (CTOR, 'claim')}
+    results = [{'address': '0x00412f67', 'symbol': CTOR, 'unit': 'b.cpp'}]
+    addrs, units = verify.unclaimed_inputs(results, table)
+    assert addrs == {CTOR: {0x412f67}} and units == {'b.cpp': {0x412f67}}
+
+
+def test_a_claim_row_claimed_elsewhere_reports_the_unit_that_does_not_claim_it(tmp_path):
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(CTOR, b'\xc3', CODE, 1, [])]),
+            'b.cpp': write(tmp_path, 'b.obj', [(CTOR, b'\xc3', CODE, 1, [])])}
+    errors, _ = objclash.check(objs, set(), symbol_addresses={CTOR: {0x412f67}},
+                               unit_claims={'b.cpp': {0x412f67}})
+    assert len(errors) == 1 and errors[0].startswith(f'a.cpp: {CTOR} is defined here')
+
+
+def test_an_unreadable_table_is_an_error_and_the_check_goes_on(tmp_path, monkeypatch):
+    from harness.lib import verify, symtab
+
+    class Rep:
+        def __init__(self):
+            self.objects, self.results, self.lines, self.failed = {}, [], [], False
+
+        def add(self, level, text):
+            self.lines.append((level, text))
+
+    def broken():
+        raise symtab.TableError('bad table')
+    monkeypatch.setattr(verify, 'claimed_keys', lambda: set())
+    monkeypatch.setattr(symtab, 'load_table', broken)
+    rep = Rep()
+    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'))
+    assert rep.failed and rep.lines == [
+        ('ERROR', 'unclaimed originals not checked: bad table')]

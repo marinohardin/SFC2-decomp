@@ -218,10 +218,11 @@ unit (inline in the header, claimed there), and never an out-of-line variant beh
   is not held to the original's bytes, and a consumer that links the objects may bind callers to it
   (an empty constructor written only to emit a vtable is the usual case). Fix it by claiming the
   function as a real attempt at the original's code, by removing the body, or by giving it a
-  placeholder name. **Covered:** out-of-line definitions: VC6 `/Gy` puts each in a COMDAT of
-  selection "no duplicates" (or outside a COMDAT). A COMDAT of selection "any" (an inline function or
-  a template) is not read, because the object cannot tell an explicit definition from a
-  compiler-generated copy; an inline body written under an original's symbol is not caught. The addresses a symbol has are
+  placeholder name. The check reads out-of-line definitions only: VC6 `/Gy` puts each in a COMDAT
+  of selection "no duplicates" (or outside a COMDAT). It does not read a COMDAT of selection "any"
+  (an inline function or a template), because the object cannot tell an explicit definition from a
+  compiler-generated copy, so an inline body written under an original's symbol is not caught.
+  The addresses a symbol has are
   the committed table's rows of evidence `mangled` or `add`, its `claim` rows whose address a claim
   still names, and this run's own claims (`callers` rows are guesses and are not used); a symbol at
   several addresses (a folded copy) is covered when the unit claims any of them, and a claim of the

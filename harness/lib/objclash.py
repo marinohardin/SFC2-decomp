@@ -12,11 +12,12 @@
                       a linker keeps the first copy it sees, which may be the wrong one. Equal
                       copies are fine.
 
-  unclaimed originals a function that the object defines out of line (not an inline or template COMDAT) under a decorated symbol
-                      the symbol table places at an address in the exe, while no `// FUNCTION:`
-                      claim in that object's unit covers one of the symbol's addresses: the body
-                      carries the original's symbol but is not held to the original's bytes, and a
-                      consumer that links the objects may bind callers to it.
+  unclaimed originals an object defines a function out of line (not an inline or template
+                      COMDAT) under a decorated symbol that the symbol table places at an address
+                      in the exe, and no `// FUNCTION:` claim in that object's unit covers any of
+                      the symbol's addresses. The body carries the original's symbol but is not
+                      held to the original's bytes, and a consumer that links the objects may bind
+                      callers to it.
 
 All of them only read the COFF objects (harness/lib/coff.py). `objects` maps a unit to its object file.
 """
@@ -187,15 +188,15 @@ def clashing_copies(objects, claimed_symbols):
 
 
 def unclaimed_findings(objs, symbol_addresses, unit_claims):
-    """[(unit, symbol, line)] for each function symbol that an object defines out of line: outside
-    a COMDAT, or in a COMDAT of selection "no duplicates" (what VC6 /Gy makes of a function the
-    unit's source defines out of line). A COMDAT of selection "any" is an inline function or a
-    template, whose copies the compiler makes, so it is not read: the object cannot tell an
-    explicit definition from a copy. The symbol's decorated name (it starts with `?`) is in `symbol_addresses` ({symbol: set of int
-    addresses the symbol table gives it}), and none of whose addresses is in `unit_claims`
-    ({unit: set of int addresses a FUNCTION claim in that unit covers}). One finding per (unit,
-    symbol): several symbols at one address, or one symbol at several, are each judged on their own
-    addresses."""
+    """[(unit, symbol, line)], one per (unit, symbol), for each function that an object defines
+    out of line, outside a COMDAT or in a COMDAT of selection "no duplicates" (what VC6 /Gy makes
+    of a function the unit's source defines out of line). A COMDAT of selection "any" is an inline
+    function or a template whose copies the compiler makes, so it is not read: the object cannot
+    tell an explicit definition from a copy. A function is reported when its decorated name
+    (it starts with `?`) is in `symbol_addresses` ({symbol: set of int addresses the symbol table
+    gives it}) and none of those addresses is in `unit_claims` ({unit: set of int addresses that
+    a FUNCTION claim in that unit covers}). Each symbol is judged on its own addresses, so
+    several symbols at one address, or one symbol at several, do not affect each other."""
     out = []
     for unit, obj in sorted(objs.items()):
         claimed = unit_claims.get(unit, ())
