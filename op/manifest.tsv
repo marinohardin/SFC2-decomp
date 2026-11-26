@@ -1913,7 +1913,7 @@ address	size	symbol	source	modes	decorated
 0x0050eda2	35	tSndMgr_Miles::vfunction28(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction28@tSndMgr_Miles@@UAEXJ@Z
 0x0050edc5	7	tSndMgr_Miles::vfunction31()	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction31@tSndMgr_Miles@@UAEDXZ
 0x0050ede8	191	tSndMgr_Miles::~tSndMgr_Miles()	unsorted/tSndMgr_Miles.cpp	vc6	??1tSndMgr_Miles@@UAE@XZ
-0x0050eea7	592	tSndMgr_Miles::vfunction2(HWND)	unsorted/tSndMgr_Miles.cpp	partial	?vfunction2@tSndMgr_Miles@@UAEDPAUHWND__@@@Z
+0x0050eea7	592	tSndMgr_Miles::vfunction2(HWND)	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction2@tSndMgr_Miles@@UAEDPAUHWND__@@@Z
 0x0050f0f7	342	tSndMgr_Miles::vfunction3()	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction3@tSndMgr_Miles@@UAEXXZ
 0x0050f24d	85	tSndMgr_Miles::vfunction4()	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction4@tSndMgr_Miles@@UAEXXZ
 0x0050f2a2	74	tSndMgr_Miles::vfunction5(long)	unsorted/tSndMgr_Miles.cpp	vc6 guest	?vfunction5@tSndMgr_Miles@@UAEDJ@Z
@@ -2566,10 +2566,10 @@ address	size	symbol	source	modes	decorated
 0x0056ffc5	14	~tQuery()	unsorted/fn_0056F000.cpp	vc6 guest	??1?$tQuery@VtNewsStory@@@nDatabase@@UAE@XZ
 0x0056ffd3	16	fn_0056f04f(void *)	unsorted/fn_0056F000.cpp	vc6 guest	?fn_0056f04f@?$tQuery@VtNewsStory@@@nDatabase@@UAEXPAX@Z
 0x0056ffe3	196	fn_0056ffe3_owner::fn_0056ffe3(const nDatabase::tQuery<tNewsStory> &,fn_0056ffe3_results *)	unsorted/fn_0056F000.cpp	vc6 guest	?fn_0056ffe3@fn_0056ffe3_owner@@QAEXABV?$tQuery@VtNewsStory@@@nDatabase@@PAVfn_0056ffe3_results@@@Z
-0x00571018	374	fn_00571018_owner::fn_00571018(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial	?fn_00571018@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z
-0x0057118e	374	fn_00571018_owner::fn_0057118e(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial	?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z
-0x00571304	374	fn_00571018_owner::fn_00571304(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial	?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z
-0x0057147a	374	fn_00571018_owner::fn_0057147a(fn_00571018_object*)	unsorted/fn_00571000.cpp	partial	?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z
+0x00571018	374	fn_00571018_owner::fn_00571018(fn_00571018_object*)	unsorted/fn_00571000.cpp	vc6 guest	?fn_00571018@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z
+0x0057118e	374	fn_00571018_owner::fn_0057118e(fn_0057118e_object*)	unsorted/fn_00571000.cpp	vc6 guest	?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_0057118e_object@@@Z
+0x00571304	374	fn_00571018_owner::fn_00571304(fn_00571304_object*)	unsorted/fn_00571000.cpp	vc6 guest	?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571304_object@@@Z
+0x0057147a	374	fn_00571018_owner::fn_0057147a(fn_0057147a_object*)	unsorted/fn_00571000.cpp	vc6 guest	?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_0057147a_object@@@Z
 0x005715f0	88	fn_00571018_owner::fn_005715f0(long,fn_00571018_owner*)	unsorted/fn_00571000.cpp	vc6 guest	?fn_005715f0@fn_00571018_owner@@QAEXJPAV1@@Z
 0x00571648	23	fn_00571648_owner::fn_00571648(int)	unsorted/fn_00571000.cpp	vc6 guest	?fn_00571648@fn_00571648_owner@@QAE_NH@Z
 0x0057165f	23	fn_00571648_owner::fn_0057165f(int)	unsorted/fn_00571000.cpp	vc6 guest	?fn_0057165f@fn_00571648_owner@@QAE_NH@Z
