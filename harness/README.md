@@ -449,6 +449,14 @@ out of it is a failure that names it, the ones after it reported as not run. Wit
 cache the `--all` alone is a full build (189 s here), so run the loop's start once before
 sessions.
 
+### Correcting a wrong class in the symbol table
+
+The table's `class` column is seeded and can be wrong. `python3 tools/symbols.py reclass <address>
+<class> --evidence TEXT [--force]` corrects it (and the class in the name), never touching the
+address, kind or symbol; see `analysis/symbols/README.md`. The note is printed only (the table has
+no column for it): put it in the commit message. `mangled` rows are refused; claimed rows need
+`--force`.
+
 ### New stand-in classes
 
 A session must use the original's class names (the symbol table, `tools/symbols.py`, the SDK),

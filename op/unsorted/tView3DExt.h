@@ -42,8 +42,8 @@ public:
 	void	mAssertVtxCache( int count );
 
 	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
-	// in slot 5, is this class's (it frees the vertex cache) though the symbol table gives it
-	// to tSWView3D.
+	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
+	// as a placeholder name.
 	virtual bool vfunction6();
 	virtual void (*vfunction13(void (*)(), void *))();    // 0x006a9f20, returns the old callback
 	virtual void (*vfunction14())();    // 0x006a9f40

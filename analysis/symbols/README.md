@@ -34,6 +34,7 @@ The table is edited through `tools/symbols.py` only, never by hand:
 ```
 python3 tools/symbols.py check
 python3 tools/symbols.py add <address> <symbol> [--declaration TEXT]
+python3 tools/symbols.py reclass <address> <class> --evidence TEXT [--force]
 python3 tools/symbols.py show <address>...
 ```
 
@@ -51,6 +52,18 @@ longer claimed. A `mangled` or `add` symbol that differs from the build's is not
 prints an `ERROR` naming the address, both symbols and the evidence, and exits 1, unless
 `--replace-evidence` is given. `check`, with a current build present (one made from this tree),
 fails until the table agrees with it.
+
+## Correcting a class
+
+The `class` column is seeded from analysis and can be wrong. `reclass` sets a row's class and,
+where the name starts with the old class, the class part of the name; a constructor or destructor
+of the old class (compared by its last `::` component) becomes the placeholder `fn_<address>`
+with evidence `vtable`: the table requires `vtable` or `none` for a placeholder name, and `vtable`
+is what rows of a known class use, so the previous evidence is not kept. It never changes
+address, kind or a symbol. `--evidence` is required; the table has no column for it, so it is
+printed and belongs in the commit message. It refuses a row with `mangled` evidence, and a claimed
+row, or a row that has a symbol (it still encodes the old class until rebuilt and claimed), unless `--force` is given. A repeat is a
+no-op.
 
 ## The data symbols: `STARFLEETOP.data.tsv`
 
