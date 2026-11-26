@@ -51,6 +51,7 @@ public:
 	virtual bool vfunction82(void (__stdcall *)(void *, int), int);    // +0x144 0x006b2230
 	virtual tTexInfo *vfunction83(int, void *, int, int, int);    // +0x148 0x006b2280
 	virtual tTexInfo *vfunction84(int);    // +0x14c 0x006b2500
+	virtual bool vfunction85(int, tBmpSurf *, char, int);    // +0x150 0x006b23c0
 	virtual bool vfunction98(int, int, int, bool);    // +0x184 0x006b1050
 	virtual bool vfunction99(int);    // +0x188 0x006b1660
 	virtual bool vfunction100(int, int);    // +0x18c 0x006b1230

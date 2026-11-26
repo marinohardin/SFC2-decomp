@@ -83,3 +83,86 @@ bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 	}
 	return true;
 }
+
+// HYPOTHESIS: the surface's vtable, as 0x006b23c0 reads it (tBmpSurf declares no virtuals yet).
+class fn_006b23c0_Info {
+public:
+	char pad[0x34];
+	int mode;
+};
+
+class fn_006b23c0_Rect {
+public:
+	int left;
+	int top;
+	int right;
+	int bottom;
+};
+
+class fn_006b23c0_Surf {
+public:
+	virtual void v0();
+	virtual void v1();
+	virtual void v2();
+	virtual fn_006b23c0_Info *GetInfo();
+	virtual fn_006b23c0_Rect *GetRect();
+	virtual void v5();
+	virtual void v6();
+	virtual bool IsLocked();
+	virtual int v8();
+	virtual void v9();
+	virtual int GetPitch();
+	virtual unsigned char *GetBits();
+	virtual void v12();
+	virtual void v13();
+	virtual int GetFlag();
+};
+
+// HYPOTHESIS: the tTexInfo fields this reads (+0x6c pitch, +0x74 bits, +0x64 and +0x65 flags).
+class fn_006b23c0_Tex {
+public:
+	char pad[0x64];
+	char flag64;
+	char flag65;
+	char pad2[6];
+	int pitch;
+	int pad3;
+	unsigned char *bits;
+};
+
+// FUNCTION: STARFLEETOP 0x006b23c0
+bool tSWView3D::vfunction85(int handle, tBmpSurf *surf, char c1, int c2)
+{
+	fn_006b23c0_Surf *s = (fn_006b23c0_Surf *)surf;
+	if (handle > 0 && handle <= 0x1000) {
+		fn_006b23c0_Rect *r = s->GetRect();
+		unsigned int w = ((r->right - r->left < 0) - 1) & (r->right - r->left);
+		r = s->GetRect();
+		unsigned int h = ((r->bottom - r->top < 0) - 1) & (r->bottom - r->top);
+		fn_006b23c0_Info *info = s->GetInfo();
+		unsigned int flag = s->GetFlag();
+		if (info->mode == 1 && flag) {
+			fn_006b23c0_Tex *t = (fn_006b23c0_Tex *)vfunction83(handle, info, w, h, flag);
+			if (t && s->IsLocked()) {
+				int srcPitch = s->GetPitch();
+				int dstPitch = t->pitch;
+				unsigned char *dst = t->bits + (h - 1) * dstPitch;
+				unsigned char *src = s->GetBits();
+				if ((int)h > 0) {
+					int y = h;
+					do {
+						memcpy(dst, src, w);
+						dst -= dstPitch;
+						src += srcPitch;
+						y--;
+					} while (y != 0);
+				}
+				s->v8();
+				t->flag64 = c1;
+				t->flag65 = (char)c2;
+				return true;
+			}
+		}
+	}
+	return false;
+}

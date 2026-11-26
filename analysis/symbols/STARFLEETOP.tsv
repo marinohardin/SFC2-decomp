@@ -18884,7 +18884,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b20d0	function	fn_006b20d0					none
 0x006b2230	function	fn_006b2230	tSWView3D				vtable
 0x006b2280	function	fn_006b2280	tSWView3D				vtable
-0x006b23c0	function	fn_006b23c0	tSWView3D				vtable
+0x006b23c0	function	fn_006b23c0	tSWView3D	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z	claim		vtable
 0x006b2500	function	fn_006b2500	tSWView3D				vtable
 0x006b2520	function	fn_006b2520					none
 0x006b26a0	function	tGDISurface::scalar_deleting_destructor	tGDISurface				rtti
