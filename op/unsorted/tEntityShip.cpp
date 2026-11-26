@@ -17,9 +17,12 @@ struct tNetMsg;
 #include "unsorted/tObject_0096ed60.h"
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tNetControl.h"
+#include "unsorted/tAICaptain.h"
+#include "unsorted/fn_0090bed4_Object.h"
 
 extern float g_008e0cd4[];
 extern tEntityMgr g_008e1060;
+extern tEntity *g_008e1090[];
 
 // HYPOTHESIS: slot 73 of the object at 0x0092deb4 takes three arguments here; tObject_0092deb4.h
 // declares it with two (HEADER REQUEST).
@@ -118,6 +121,35 @@ void tEntityShip::vfunction17()
 	if (fField5C == 1)
 		field_ad4->vfunction113(1.0f);
 	tEntity::vfunction17();
+}
+
+// HYPOTHESIS: returns the entity's position, or the AI captain's helm target while the flag at
+// 0x5c is set.
+// FUNCTION: STARFLEETOP 0x00415479
+tPoint3 tEntityShip::fn_00415479()
+{
+	if (fField5C)
+	{
+		tAICaptain *captain = (tAICaptain *)g_p0090bed4->fn_005235a7(fID);
+		// HYPOTHESIS: the original's 0x0051e3a1 returns a pointer to the point; the header declares void.
+		tPoint3 *(tAICaptain::*getPoint)() = (tPoint3 *(tAICaptain::*)())&tAICaptain::fn_0051e3a1;
+		tPoint3 *point = (captain->*getPoint)();
+		if (point)
+			return *point;
+		return captain->fn_0051e37d();
+	}
+	else
+	{
+		tEntity *target = (fTargetID < 0 || fTargetID >= 0x4000) ? 0 : g_008e1090[fTargetID];
+		if (target)
+			return target->fCurrPos;
+		tPoint3 other;
+		char flag;
+		fn_0041553a(&other, &flag);
+		if (flag)
+			return other;
+		return fCurrPos;
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x00414b8f

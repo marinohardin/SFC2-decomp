@@ -194,6 +194,8 @@ public:
 	void fn_00414cf5(tNetMsg *aMsg);
 	void fn_00414d2f(tNetMsg *aMsg);
 	int fn_00414d69();
+	tPoint3 fn_00415479();
+	void fn_0041553a(tPoint3 *aPoint, char *aFlag);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
