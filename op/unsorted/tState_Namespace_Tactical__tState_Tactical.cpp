@@ -95,6 +95,11 @@ public:
 	virtual void vfunction16(int w, int h, int x, int y);
 };
 
+// MATCH-ONLY: until tMatrix declares these two members (0x0069b450 takes a matrix and is called
+// on the matrix being built; 0x0069c7c0 takes three floats), the calls go through these.
+void __fastcall fn_0069b450( tMatrix *self, int unused, tMatrix *other );
+void __fastcall fn_0069c7c0( tMatrix *self, int unused, float x, float y, float z );
+
 extern fn_00898c24_object *g_00898c24;
 extern fn_00918838_object *g_00918838;
 extern fn_00918838_object *g_0091883c;
@@ -142,10 +147,6 @@ extern int g_00850bd4;
 extern char g_b00850b62;
 extern char g_b008930a2;
 
-// MATCH-ONLY: until tMatrix declares these two members (0x0069b450 takes a matrix and is called
-// on the matrix being built; 0x0069c7c0 takes three floats), the calls go through these.
-void __fastcall fn_0069b450( tMatrix *self, int unused, tMatrix *other );
-void __fastcall fn_0069c7c0( tMatrix *self, int unused, float x, float y, float z );
 
 // MATCH-ONLY: tObject_00918888 declares slots 5 and 6 as void and nullary; the calls here need
 // slot 5 to return an int and slot 6 to take a point and return a truth value.
@@ -342,6 +343,8 @@ void tState_Tactical::vfunction9( int *param_1 )
 			screen.mTranslate( (float)field_1f0[0] + halfWidth, (float)field_1f0[1] + halfHeight, 0.0f );
 			fn_0069c7c0( &screen, 0, halfWidth, -halfHeight, 1.0f );
 			fn_0069b450( &screen, 0, view->vfunction61() );
+
+
 			field_31c = screen;
 			screen.mMult( field_2d8, field_294 );
 			gMatrix_0092f570 = field_2d8;
@@ -349,7 +352,8 @@ void tState_Tactical::vfunction9( int *param_1 )
 		}
 		g_0092f478.fn_004b9d12( (fn_0092f478_object *)field_360 );
 		haveTarget = ( (fn_00918888_slots *)gObject_00918888 )->vfunction6( &target );
-		( (fn_0092f478_object *)field_360 )->fn_004afec0( &target, ( (fn_00918888_slots *)gObject_00918888 )->vfunction5(), &field_294 );
+		int kind = ( (fn_00918888_slots *)gObject_00918888 )->vfunction5();
+		( (fn_0092f478_object *)field_360 )->fn_004afec0( &target, kind, &field_294 );
 		if ( g_00850bd4 != 0 && !g_b008930a2 )
 		{
 			fn_00509aaf( param_1 );
@@ -389,7 +393,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 			light.f1 = 0.0f;
 			light.f2 = 0.0f;
 			light.f7 = ( view->vfunction10() & 0x20 ) ? 1.5f : 4.0f;
-			view->vfunction33( 0, &light );
+			view->vfunction33( 0, (void *)&light.type );
 			view->vfunction39( 0, true );
 			if ( (unsigned int)view->vfunction32() > 1 )
 				view->vfunction39( 1, false );
