@@ -213,9 +213,8 @@ def test_ci_checks_natively_and_the_audit_uses_the_image():
     """The check job's runner is a Mac that has the native compiler; the per-pull-request check
     uses it, and the scheduled audit rebuilds with the image, the compiler of record."""
     workflows = os.path.join(paths.REPO, '.github', 'workflows')
-    with open(os.path.join(workflows, 'pull-request.yml')) as f:
-        text = f.read()
-    check = text[text.index('\n  check:'):]
+    with open(os.path.join(workflows, 'check.yml')) as f:
+        check = f.read()
     assert 'HARNESS_COMPILER: native' in check
     with open(os.path.join(workflows, 'docker-audit.yml')) as f:
         assert 'HARNESS_COMPILER: docker' in f.read()
