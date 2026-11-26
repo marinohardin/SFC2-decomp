@@ -7,6 +7,7 @@
 #include "unsorted/tApplication.h"
 
 class tBmpSurf;
+class tTexInfo;
 struct tagRECT;
 typedef tagRECT RECT;
 
@@ -23,28 +24,31 @@ struct fn_0040105e_Vector {
 // tView3D); only the vtable offsets the units use are evidenced.
 class tView3D {
 public:
-	virtual void vfunction1();
-	virtual void vfunction2();
+	// +0x00 is the virtual destructor (tSWView3D 0x0069f490, tView3DExt 0x006a9e80).
+	virtual ~tView3D();
+	// +0x04 is tSWView3D 0x0069f510: stores its first argument and passes the second to a
+	// call on the surface object together with a callback.
+	virtual bool vfunction2(int, int);
 	// HYPOTHESIS: +0x08 and +0x0c open the view (with and without a display mode, as
 	// tApp3dBase::vfunction7 calls them); the trailing bool lets the view try its best setting first.
 	virtual bool vfunction3(int, int, int, int, RECT *, bool);    // +0x08
 	virtual bool vfunction4(int, int, RECT *, bool);    // +0x0c
 	// HYPOTHESIS: +0x10 takes the "3D" "driver" setting.
 	virtual void vfunction5(int);    // +0x10
-	virtual void vfunction6();    // +0x14
+	virtual bool vfunction6();    // +0x14, closes the view (tSWView3D 0x0069f900 returns true)
 	virtual void vfunction7();
 	// HYPOTHESIS: +0x1c reports whether the view can draw this frame (tSfcApp3d::vfunction4
 	// tests it).
 	virtual bool vfunction8();    // +0x1c
 	virtual void vfunction9();    // +0x20
-	virtual void vfunction10();
-	virtual void vfunction11();
-	virtual void vfunction12();
+	virtual int vfunction10();
+	virtual bool vfunction11();
+	virtual bool vfunction12();
 	virtual void vfunction13(void (*)(), void *);    // +0x30
 	virtual void vfunction14();
 	virtual void vfunction15(void (*)(), void *);    // +0x38
 	virtual void vfunction16();
-	virtual void vfunction17();
+	virtual void vfunction17(int, int, int, int);
 	virtual void vfunction18();
 	virtual void vfunction19();
 	virtual void vfunction20();
@@ -52,13 +56,13 @@ public:
 	virtual void vfunction22();
 	virtual void vfunction23();
 	virtual void vfunction24();
-	virtual void vfunction25();
-	virtual void vfunction26();
-	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
-	virtual void vfunction30();
-	virtual void vfunction31();
+	virtual int vfunction25(int);
+	virtual int vfunction26();
+	virtual bool vfunction27(unsigned char, unsigned char, unsigned char);
+	virtual bool vfunction28(unsigned int);
+	virtual bool vfunction29(int, int, int, int, bool, bool);
+	virtual bool vfunction30(bool, bool);
+	virtual bool vfunction31();
 	virtual void vfunction32();
 	virtual void vfunction33();
 	virtual void vfunction34();
@@ -70,15 +74,15 @@ public:
 	virtual void vfunction40();
 	virtual void vfunction41();
 	virtual void vfunction42();
-	virtual void vfunction43();
+	virtual int vfunction43();
 	virtual void vfunction44();
 	virtual void vfunction45();
 	virtual void vfunction46();
 	virtual void vfunction47();
-	virtual void vfunction48();
-	virtual void vfunction49();
-	virtual void vfunction50();
-	virtual void vfunction51();
+	virtual bool vfunction48(bool);
+	virtual bool vfunction49(bool);
+	virtual bool vfunction50(bool);
+	virtual bool vfunction51(bool);
 	virtual void vfunction52();
 	virtual void vfunction53();
 	virtual void vfunction54();
@@ -109,11 +113,11 @@ public:
 	virtual void vfunction79();
 	virtual void vfunction80();
 	virtual void vfunction81();
-	virtual void vfunction82();
-	virtual void vfunction83();
-	virtual void vfunction84();
+	virtual bool vfunction82(void (__stdcall *)(void *, int), int);
+	virtual tTexInfo *vfunction83(int, void *, int, int, int);
+	virtual tTexInfo *vfunction84(int);
 	// HYPOTHESIS: +0x150 takes a texture handle and its surface (tSFCTexMgrEx::vfunction4).
-	virtual void vfunction85(int, tBmpSurf *, char, int);    // +0x150
+	virtual bool vfunction85(int, tBmpSurf *, char, int);    // +0x150
 	// HYPOTHESIS: tSfcApp3d::vfunction21 calls +0x154 with the two "Mouse" settings (async,
 	// hwblit) and passes its result to the mouse at 0x00898c24.
 	virtual int vfunction86(int, int);    // +0x154
