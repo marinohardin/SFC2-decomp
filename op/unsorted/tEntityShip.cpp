@@ -29,6 +29,22 @@ bool __stdcall fn_004274b8(tID aID, int aValue);
 // untyped in entity_physical.h, so the call goes through this member pointer (HEADER REQUEST).
 typedef void *(tObject_00413ac3_arg::*tSlot58)(int aSize);
 
+// HYPOTHESIS: tests whether an angle lies within a span around a centre, in 0x2000-step angle units.
+// FUNCTION: STARFLEETOP 0x00414bab
+bool __stdcall fn_00414bab(int aCenter, short aAngle, int aSpan)
+{
+	short lo = (aCenter - aSpan) & 0x1fff;
+	short hi = (aCenter + aSpan) & 0x1fff;
+	if (lo < hi)
+	{
+		if (lo <= aAngle && aAngle <= hi)
+			return true;
+	}
+	else if ((lo <= aAngle && aAngle <= 0x2000) || (aAngle >= 0 && aAngle <= hi))
+		return true;
+	return false;
+}
+
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
