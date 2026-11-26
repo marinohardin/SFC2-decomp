@@ -263,6 +263,9 @@ class Result:
         self.failures, self.warnings = [], []
         self.changes = []
         self.added, self.removed = set(), set()
+        # The added or changed FUNCTION lines only: the addresses the harness can score. A STUB
+        # or VTABLE line is held to the claim like any annotation, but is not a function to build.
+        self.functions = set()
         self.merge_base = None
 
     def fail(self, text):
@@ -314,13 +317,15 @@ def check(cwd, base, head, body, issues=None, repo=None, author=None):
             if why:
                 res.fail(f'{p}: {why}')
         res.added.update(_addresses(added))
+        res.functions.update(_addresses(added, kinds=('FUNCTION',)))
         res.removed.update(_addresses(removed))
     _check_claims(res, body, issues, repo, author, base_units(cwd, base))
     return res
 
 
-def _addresses(lines):
-    return {int(m.group(3), 16) for m in map(ANNOTATION.match, lines) if m}
+def _addresses(lines, kinds=('FUNCTION', 'STUB', 'VTABLE')):
+    return {int(m.group(3), 16) for m in map(ANNOTATION.match, lines)
+            if m and m.group(1) in kinds}
 
 
 def _check_claims(res, body, issues, repo, author, units):

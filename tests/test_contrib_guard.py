@@ -220,6 +220,18 @@ def test_an_out_of_claim_vtable_line_fails(tmp_path):
     ]
 
 
+def test_only_function_lines_are_functions_to_build(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', '// FUNCTION: STARFLEETOP 0x00401010\nvoid f() {}\n'
+           '// STUB: STARFLEETOP 0x00401020\nvoid h() {}\n'
+           '// VTABLE: STARFLEETOP 0x00401030\nclass tA {};\n')
+    _commit(repo)
+    res = _check(repo)
+    assert res.failures == []
+    assert res.added == {0x00401010, 0x00401020, 0x00401030}
+    assert res.functions == {0x00401010}
+
+
 def test_the_annotation_pattern_is_the_harness_guards():
     text = (ROOT / 'harness/lib/guard.py').read_text()
     assert f"CLAIM_LINE = re.compile(r'{guard.ANNOTATION.pattern}')" in text
