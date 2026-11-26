@@ -135,7 +135,8 @@ void tState_Skirmish::vfunction20()
 // HYPOTHESIS: the data at 0x0084a8a0 is a table the helper takes by address.
 extern char g_0084a8a0[];
 int fn_00481bf2( int id );
-bool fn_00481a1c( int a, int b );
+// HYPOTHESIS: __stdcall; the original leaves its two arguments to the callee (no cleanup after the call).
+bool __stdcall fn_00481a1c( int a, int b );
 
 // HYPOTHESIS: fn_004d3331 returns a found flag and slot 39 returns an int; the shared headers declare both void.
 // MATCH-ONLY: the calls go through casts until those headers are corrected.
@@ -145,17 +146,13 @@ void tState_Skirmish::fn_004819a4()
 	field_0x1118 = "shipHull";
 	if (!((bool (*)( const char * ))fn_004d3331)( "shipHull" ))
 		fn_004d31ed( field_0x1118, 0, g_0084a8a0, 0x280, 0x1e0 );
-	int a;
-	int id = 0x1001c;
-	do
+	for (int id = 0x1001c; id <= 0x1001f; id++)
 	{
-		a = fn_00481bf2( id );
-		int (tObject_0092deb4::*f)( int ) = (int (tObject_0092deb4::*)( int ))&tObject_0092deb4::vfunction40;
+		int a = fn_00481bf2( id );
+		int (tObject_0092deb4::*f)( int ) = (int (tObject_0092deb4::*)( int ))&tObject_0092deb4::vfunction39;
 		int b = (gObject_0092deb4->*f)( a );
-		bool c = fn_00481a1c( b, a ) != 0;
-		fn_004d34c5( id, !c );
-		id++;
-	} while (id < 0x10020);
+		fn_004d34c5( id, !fn_00481a1c( b, a ) );
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x004817a9
