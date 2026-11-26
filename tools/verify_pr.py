@@ -19,7 +19,7 @@ imported: its op/ files are copied in as text and compiled by develop's harness.
    function the pull request annotates with its old and new score, regressions, each command's
    exit status, and "claimed N exact, verified M" from the evidence block in the description.
    Escape characters are stripped and the home directory masked.
-6. Removes the worktree and its harness state (about 4 GB of build output), keeping the report
+6. Removes the worktree and its harness state, build output included, keeping the report
    and the harness output beside it.
 
 The description and the claims come from `gh` (read-only), or from --body and --claims files.
