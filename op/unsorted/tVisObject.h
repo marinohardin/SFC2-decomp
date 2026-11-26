@@ -5,6 +5,7 @@
 #define tVisObject_h 1
 
 class tScrollBar;
+class tObjBase;
 class tVisObject;
 class tString;
 
@@ -146,19 +147,32 @@ struct c_tObjBase_Field4C
 	short field_06;
 };
 
+// HYPOTHESIS: the event record that tObjBase::vfunction31 (slot 30, 0x0067d1c0) takes: the
+// type is read first (0x0067d1c0 handles types 1 to 7 as mouse events with the x at +0x4 and the
+// y at +0x8, and hands the other types on), tVisGroup compares it with 0x15 and passes the
+// words after it to its state machine (0x0067f010). The record was first seen in
+// tListBox_Base (0x004c63dd), type 0xd comes from a tScrollBar.
+struct c_tListBox_Base_Event
+{
+	int field_00;	// the event type
+	int field_04;	// HYPOTHESIS: the x of a mouse event
+	int field_08;	// HYPOTHESIS: the y of a mouse event
+	unsigned char field_0C[ 0x10 - 0x0c ];
+	tObjBase *field_10;	// the sender
+	int field_14;	// the scroll action, 1 to 9
+	int field_18;	// the position for action 3
+	tObjBase *field_1C;	// the object the event is for
+};
+
 // tObjBase: vftable 0x0079ee08, 36 slots (the destructor in slot 3), constructor 0x0067cb70.
 // The layout is read from the constructor and from the 25 functions of 0x0067cb70 to 0x0067d590:
 // the objects form a tree (+0xc the parent, +0x24 the first child and +0x28 the last, +0x4 the
-// next and +0x8 the previous child of the same parent). Slots 0 to 28 are declared. Slot 29 is
-// 0x0067d160, void(), which tScrollBar and tSeqScene override and tMetaMapControl declares
-// without virtual (its symbol-table name is non-virtual). Slot 30 is
-// 0x0067d1c0, bool( event* ), which tVisGroup, tListBox_Base and tScrollBar each declare with
-// their own event type (HEADER REQUEST: those two names settled, then vfunction30 to vfunction36
-// here: slot 29 above, slot 31 0x0067cbf0 void( const tRect* ), slot 32 0x0067cc10 void( tRect* ), slot 33
-// 0x0046c477 tRect( tRect ), slot 34 0x0067d450 void( c_tObjBase_Field10* ), slot 35 0x0067cf10
-// bool( int x, int y )). Slots 2 and 4 are declared as tListBox_Base uses them, on its font,
-// which is not a tObjBase: tObjBase's own slot 2 is 0x0067d3a0, bool() and slot 4 is 0x0067d4d0,
-// tObjBase*( tObjBase* child ) (HEADER REQUEST: give the font its own class).
+// next and +0x8 the previous child of the same parent). All 36 slots are declared. The font
+// tListBox_Base keeps at +0xb0 is not a tObjBase: it is a tBitmapFontEx (tBitmapFontEx.h), whose
+// slots 2 and 4 are not tObjBase's slots 2 (0x0067d3a0) and 4 (0x0067d4d0). Slot 29 (0x0067d160)
+// is overridden by tVisGroup, tScrollBar, tSeqScene and tMetaMapControl (0x005e4089, its vftable
+// 0x007b50b0 holds it at slot 29), slot 30 (0x0067d1c0) by tVisGroup, tListBox_Base, tScrollBar
+// and tMetaMapControl (0x005e4470): one event type, c_tListBox_Base_Event.
 class tObjBase
 {
 public:
@@ -181,13 +195,13 @@ public:
 	virtual void vfunction1( unsigned int n );
 	// 0x0067d350: +0x30 takes the object (the capture); true when it was taken.
 	virtual bool vfunction2( tObjBase *a );
-	// HYPOTHESIS: +0x8 measures a run of text in a font, -1 for the whole string;
-	// tListBox_Base::vfunction53 (0x004c6af8) asks it of its font.
-	virtual int vfunction3( unsigned short *text, int length );
+	// 0x0067d3a0: the counterpart of vfunction2: when +0x30 is set, asks it the same and clears
+	// +0x30 on true; when none is set, calls its own slot 12 (+0x30) and goes on to the parent.
+	virtual bool vfunction3();
 	virtual ~tObjBase();
-	// HYPOTHESIS: +0x10 returns a height; tListBox_Base::vfunction43 (0x004c6787) asks it of
-	// its font.
-	virtual int vfunction5();
+	// 0x0067d4d0: puts a child into this object's list before the first whose +0x44 is not
+	// less than its own; returns the child.
+	virtual tObjBase *vfunction5( tObjBase *child );
 	// 0x0067d590: takes a child out of this object's list (and releases the capture); the
 	// second value says whether to call the child's slot 17 first. Returns the child.
 	virtual tObjBase *vfunction6( tObjBase *child, char flag );
@@ -209,6 +223,23 @@ public:
 	virtual void vfunction27();
 	virtual bool vfunction28( int a, void *b );	// 0x0046c464: puts a string in the second argument, returns false
 	virtual bool vfunction29( int a, int *b );	// 0x0046c458: clears *b, returns false
+	// 0x0067d160: walks the children, calling a child's +0x58 handler (when bit 3 of its +0x40
+	// is set) and its slot 29 (+0x74).
+	virtual void vfunction30();
+	// 0x0067d1c0: the event handler: +0x54 first, then the capture holder (+0x2c) for mouse
+	// events (types 1 to 7), then the children; true when handled.
+	virtual bool vfunction31( c_tListBox_Base_Event *event );
+	// 0x0067cbf0: hands the area to the parent's slot 31.
+	virtual void vfunction32( const tRect *area );
+	// 0x0067cc10: when bit 0 of +0x40 is set, has the area take in the object's rectangle
+	// (0x006985f0) and hands it to each child's slot 32.
+	virtual void vfunction33( tRect *area );
+	// 0x0046c477: returns a copy of the rectangle given.
+	virtual tRect vfunction34( tRect r );
+	// 0x0067d450: sets +0x10 (and +0x14 from it) on this object and, through slot 34, its children.
+	virtual void vfunction35( c_tObjBase_Field10 *target );
+	// 0x0067cf10: true when the point lies inside the rectangle at +0x34 (and in +0x4c's shape).
+	virtual bool vfunction36( int x, int y );
 	// HYPOTHESIS: field types and names unknown; +0x34 is the object's rectangle. The constructor
 	// (0x0067cb70) sets +0x4 to +0x5c, so these are tObjBase's.
 	// +0x4 and +0x8 link the objects beside this one, one each way (0x004c692a walks
@@ -236,7 +267,7 @@ public:
 	c_tObjBase_Field4C *field_4C;
 	int field_50;
 	// HYPOTHESIS: a handler tried before the object's own slot 30: 0x0067d1c0 calls it with the event and the object.
-	bool ( *field_54 )( int *event, tObjBase *object );
+	bool ( *field_54 )( c_tListBox_Base_Event *event, tObjBase *object );
 	// HYPOTHESIS: a function 0x0067d160 calls on a child with bit 3 of +0x40 set.
 	void ( *field_58 )( tObjBase *object );
 	int field_5C;

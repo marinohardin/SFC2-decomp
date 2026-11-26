@@ -14133,7 +14133,7 @@
   },
   "0x004c8587": {
    "name": "tScrollBar::vfunction31",
-   "symbol": "?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z",
+   "symbol": "?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tScrollBar.cpp",
    "size": 505,
    "score": 100.0,
@@ -28227,7 +28227,7 @@
   },
   "0x005e4089": {
    "name": "tMetaMapControl::vfunction30_for_tButton",
-   "symbol": "?vfunction30@tMetaMapControl@@QAEXXZ",
+   "symbol": "?vfunction30@tMetaMapControl@@UAEXXZ",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 301,
    "score": 100.0,
@@ -28380,7 +28380,7 @@
   },
   "0x005e4470": {
    "name": "tMetaMapControl::vfunction31_for_tButton",
-   "symbol": "?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z",
+   "symbol": "?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 193,
    "score": 100.0,
@@ -41772,7 +41772,7 @@
   },
   "0x0067dd00": {
    "name": "tVisGroup::vfunction31",
-   "symbol": "?vfunction31@tVisGroup@@UAE_NPAH@Z",
+   "symbol": "?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tVisGroup.cpp",
    "size": 64,
    "score": 100.0,

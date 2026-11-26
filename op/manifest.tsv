@@ -1571,7 +1571,7 @@ address	size	symbol	source	modes	decorated
 0x004c8439	158	tScrollBar::vfunction8(const tRect *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction8@tScrollBar@@UAEXPBUtRect@@@Z
 0x004c84d7	135	tScrollBar::fn_004c84d7(int,int)	unsorted/tScrollBar.cpp	vc6 guest	?fn_004c84d7@tScrollBar@@QAEHHH@Z
 0x004c855e	41	tRect::mPointInside(int,int) const	unsorted/tScrollBar.cpp	vc6 guest	?mPointInside@tRect@@QBEEHH@Z
-0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z
+0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x004c8780	539	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial	?mLoad@tScrollBar@@QAEXPAVtAsset@@@Z
 0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction41@tScrollBar@@UAEEHHE@Z
 0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction42@tScrollBar@@UAEEPAH0@Z
@@ -3138,7 +3138,7 @@ address	size	symbol	source	modes	decorated
 0x005e3f1d	101	tMetaMapControl::fn_005e3f1d()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3f1d@tMetaMapControl@@QAEXXZ
 0x005e3f82	91	tMetaMapControl::fn_005e3f82(const std::string &,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3f82@tMetaMapControl@@QAEPAUc_tScrollBar_FieldA8@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
 0x005e3fdd	172	tMetaMapControl::vfunction8(const tRect *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction8@tMetaMapControl@@UAEXPBUtRect@@@Z
-0x005e4089	301	tMetaMapControl::vfunction30()	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction30@tMetaMapControl@@QAEXXZ
+0x005e4089	301	tMetaMapControl::vfunction30()	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction30@tMetaMapControl@@UAEXXZ
 0x005e41b6	54	fn_005eb3c5_class::~fn_005eb3c5_class()	unsorted/tMetaMapControl.cpp	vc6	??1fn_005eb3c5_class@@QAE@XZ
 0x005e41ec	37	tMetaMapControl::fn_005e41ec()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e41ec@tMetaMapControl@@QAEXXZ
 0x005e4211	37	tMetaMapControl::fn_005e4211()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4211@tMetaMapControl@@QAEXXZ
@@ -3155,7 +3155,7 @@ address	size	symbol	source	modes	decorated
 0x005e4426	47	tMetaMapControl::fn_005e4426(long *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4426@tMetaMapControl@@QAEXPAJ@Z
 0x005e4455	19	tMetaMapControl::fn_005e4455()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4455@tMetaMapControl@@QAEXXZ
 0x005e4468	8	tMetaMapControl::fn_005e4468()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4468@tMetaMapControl@@QAEXXZ
-0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z
+0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x005e4531	16	tMetaMapControl::vfunction43(int)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction43@tMetaMapControl@@QAEXH@Z
 0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
 0x005e45d3	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@Ufn_005e381f_entry@@V?$allocator@Ufn_005e381f_entry@@@std@@@std@@QAE@XZ
@@ -4643,7 +4643,7 @@ address	size	symbol	source	modes	decorated
 0x0067dc30	103	tVisGroup::~tVisGroup()	unsorted/tVisGroup.cpp	vc6	??1tVisGroup@@UAE@XZ
 0x0067dcb0	60	tSeqScene::vfunction43()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction43@tSeqScene@@UAEXXZ
 0x0067dcf0	14	tVisGroup::vfunction40()	unsorted/tVisGroup.cpp	vc6 guest	?vfunction40@tVisGroup@@UAEXXZ
-0x0067dd00	50	tVisGroup::vfunction31(int *)	unsorted/tVisGroup.cpp	vc6 guest	?vfunction31@tVisGroup@@UAE_NPAH@Z
+0x0067dd00	50	tVisGroup::vfunction31(c_tListBox_Base_Event *)	unsorted/tVisGroup.cpp	vc6 guest	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x0067dd40	65	tSeqScene::vfunction40()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction40@tSeqScene@@UAEXXZ
 0x0067dd90	15	tSeqScene::fn_0067dd90()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dd90@tSeqScene@@QAEXXZ
 0x0067dda0	54	tSeqScene::fn_0067dda0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dda0@tSeqScene@@QAEXXZ

@@ -5731,7 +5731,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004c8439	function	fn_004c8439	tScrollBar	?vfunction8@tScrollBar@@UAEXPBUtRect@@@Z	claim		none
 0x004c84d7	function	fn_004c84d7	tScrollBar	?fn_004c84d7@tScrollBar@@QAEHHH@Z	claim		none
 0x004c855e	function	tRect::mPointInside	tRect	?mPointInside@tRect@@QBEEHH@Z	claim		claim
-0x004c8587	function	fn_004c8587	tScrollBar	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z	claim		none
+0x004c8587	function	fn_004c8587	tScrollBar	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z	claim		none
 0x004c8780	function	tScrollBar::mLoad	tScrollBar	?mLoad@tScrollBar@@QAEXPAVtAsset@@@Z	claim		claim
 0x004c899b	function	fn_004c899b	tScrollBar	?vfunction41@tScrollBar@@UAEEHHE@Z	claim		none
 0x004c8a0e	function	fn_004c8a0e	tScrollBar	?vfunction42@tScrollBar@@UAEEPAH0@Z	claim		none
@@ -14339,7 +14339,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e3f1d	function	fn_005e3f1d	tMetaMapControl	?fn_005e3f1d@tMetaMapControl@@QAEXXZ	claim		none
 0x005e3f82	function	fn_005e3f82	tMetaMapControl	?fn_005e3f82@tMetaMapControl@@QAEPAUc_tScrollBar_FieldA8@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x005e3fdd	function	fn_005e3fdd	tMetaMapControl	?vfunction8@tMetaMapControl@@UAEXPBUtRect@@@Z	claim		none
-0x005e4089	function	fn_005e4089	tMetaMapControl	?vfunction30@tMetaMapControl@@QAEXXZ	claim		none
+0x005e4089	function	fn_005e4089	tMetaMapControl	?vfunction30@tMetaMapControl@@UAEXXZ	claim		none
 0x005e41b6	function	fn_005e41b6		??1fn_005eb3c5_class@@QAE@XZ	claim		none
 0x005e41ec	function	fn_005e41ec	tMetaMapControl	?fn_005e41ec@tMetaMapControl@@QAEXXZ	claim		none
 0x005e4211	function	fn_005e4211	tMetaMapControl	?fn_005e4211@tMetaMapControl@@QAEXXZ	claim		none
@@ -14356,7 +14356,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e4426	function	fn_005e4426	tMetaMapControl	?fn_005e4426@tMetaMapControl@@QAEXPAJ@Z	claim		none
 0x005e4455	function	fn_005e4455	tMetaMapControl	?fn_005e4455@tMetaMapControl@@QAEXXZ	claim		none
 0x005e4468	function	fn_005e4468	tMetaMapControl	?fn_005e4468@tMetaMapControl@@QAEXXZ	claim		none
-0x005e4470	function	fn_005e4470	tMetaMapControl	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	claim		none
+0x005e4470	function	fn_005e4470	tMetaMapControl	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z	claim		none
 0x005e4531	function	fn_005e4531	tMetaMapControl	?vfunction43@tMetaMapControl@@QAEXH@Z	claim		none
 0x005e4541	function	fn_005e4541		?assign@?$vector@PAUc_tScrollBar_FieldA8@@V?$allocator@PAUc_tScrollBar_FieldA8@@@std@@@std@@QAEXIABQAUc_tScrollBar_FieldA8@@@Z	callers		none
 0x005e45a0	function	fn_005e45a0		??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ	claim		none
@@ -17836,7 +17836,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067dca0	thunk	fn_0067dca0	tSeqScene				vtable
 0x0067dcb0	function	fn_0067dcb0	tSeqScene	?vfunction43@tSeqScene@@UAEXXZ	claim		none
 0x0067dcf0	function	fn_0067dcf0	tVisGroup	?vfunction40@tVisGroup@@UAEXXZ	claim		none
-0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAH@Z	claim		none
+0x0067dd00	function	fn_0067dd00	tVisGroup	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z	claim		none
 0x0067dd40	function	fn_0067dd40	tSeqScene	?vfunction40@tSeqScene@@UAEXXZ	claim		none
 0x0067dd90	function	fn_0067dd90	tSeqScene	?fn_0067dd90@tSeqScene@@QAEXXZ	claim		none
 0x0067dda0	function	fn_0067dda0	tSeqScene	?fn_0067dda0@tSeqScene@@QAEXXZ	claim		none

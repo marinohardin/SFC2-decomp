@@ -17,3 +17,7 @@ address	base symbol	new symbol
 0x0045dc2b	?vfunction15@tState_Campaign@@UAEXPAH@Z	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z
 0x00608b4e	?vfunction4@tPanelMgr@@QAE_NXZ	?vfunction4@tPanelMgr@@UAE_NXZ
 0x00609077	?vfunction13@tPanelMgr@@QAEPADXZ	?vfunction13@tPanelMgr@@UAEPADXZ
+0x004c8587	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x005e4089	?vfunction30@tMetaMapControl@@QAEXXZ	?vfunction30@tMetaMapControl@@UAEXXZ
+0x005e4470	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x0067dd00	?vfunction31@tVisGroup@@UAE_NPAH@Z	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z
