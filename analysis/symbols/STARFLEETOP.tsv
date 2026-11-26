@@ -15266,7 +15266,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600581	function	fn_00600581					none
 0x006005aa	function	tMessageDialog::tMessageDialog	tMessageDialog	??0tMessageDialog@@QAE@XZ	claim		rtti
 0x00600604	function	tMessageDialog::scalar_deleting_destructor	tMessageDialog	??_GtMessageDialog@@UAEPAXI@Z	claim		rtti
-0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
+0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog	??0tMessageDialog@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z	claim		rtti
 0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
 0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog	??1tMessageDialog@@UAE@XZ	claim		rtti
 0x0060072f	function	fn_0060072f	tMessageDialog	?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none

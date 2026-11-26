@@ -18,6 +18,16 @@ tMessageDialog::tMessageDialog()
 	field_28 = 0;
 }
 
+void fn_006006b3();
+
+// FUNCTION: STARFLEETOP 0x00600620
+tMessageDialog::tMessageDialog( const std::string &aFirst, const std::string &aSecond )
+	: field_04( aFirst ), field_14( aSecond )
+{
+	fn_006006b3();
+	fn_0060072f( 5, 1 );
+}
+
 // FUNCTION: STARFLEETOP 0x006006b3
 void fn_006006b3()
 {
