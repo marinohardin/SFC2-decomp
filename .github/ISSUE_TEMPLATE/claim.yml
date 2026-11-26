@@ -1,0 +1,38 @@
+name: Claim units
+description: "Say which units you are decompiling, so nobody else works on them (CONTRIBUTING.md)."
+title: "Claim: "
+labels: [claim]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pick free units with `python3 tools/claims.py free`. Keep one or two claims open at a time.
+        A claim with no activity for 14 days is closed; comment here with progress to keep it.
+  - type: textarea
+    id: units
+    attributes:
+      label: Units
+      description: "One path per line, as `op/UNITS.tsv` lists it, with `op/` in front."
+      placeholder: |
+        op/unsorted/tFighterSpec.cpp
+    validations:
+      required: true
+  - type: textarea
+    id: ranges
+    attributes:
+      label: Ranges
+      description: "One line per unit, `range: 0x<first>-0x<last>`, the unit's first and last address from `op/UNITS.tsv`. The guard holds your pull request's annotations to these ranges."
+      placeholder: |
+        range: 0x00401862-0x004019f7
+    validations:
+      required: true
+  - type: input
+    id: branch
+    attributes:
+      label: Fork branch
+      description: "A link to the branch you work on, `contrib/<this issue's number>-<slug>`. It may be added later."
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+      description: "Anything else, such as which functions you expect to leave for later."

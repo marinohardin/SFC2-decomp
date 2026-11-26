@@ -1,0 +1,33 @@
+name: Claim expiry
+
+# A claim with no activity for 10 days gets one reminder; at 14 days it is closed and its units
+# are free again (CONTRIBUTING.md). `reserved` issues are never touched. The logic and its tests
+# are in tools/claims.py; this only passes the date.
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: claim-expiry
+  cancel-in-progress: false
+
+jobs:
+  expire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: develop
+          persist-credentials: false
+
+      - name: Remind or close quiet claims
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python3 -I tools/claims.py expire --now "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --apply
