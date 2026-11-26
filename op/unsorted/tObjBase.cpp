@@ -18,14 +18,11 @@ tObjBase::tObjBase()
 	field_30 = 0;
 	field_3C.y = 0;
 	field_3C.x = 0;
-	field_34.left = 0;
-	field_34.top = 0;
-	field_34.right = 0;
-	field_34.bottom = 0;
+	field_34.mSet( 0, 0, 0, 0 );
+	field_40 = field_40 & 0xffffffc1 | 1;
 	field_44 = -1;
 	field_48 = -1;
 	field_4C = 0;
-	field_40 = field_40 & 0xffffffc1 | 1;
 	field_54 = 0;
 	field_58 = 0;
 	field_50 = 0;
