@@ -64,3 +64,32 @@ fn_00678600_Tree::~fn_00678600_Tree()
     operator delete((void *)field_8);
     field_8 = 0;
 }
+
+// HYPOTHESIS: the original is a std::map tree's Erase(node); node links are left at +0 and
+// right at +8, the nil node is at +8 of the tree.
+struct fn_006786d0_Node
+{
+    fn_006786d0_Node* left;
+    fn_006786d0_Node* parent;
+    fn_006786d0_Node* right;
+};
+
+class fn_006786d0_Tree
+{
+public:
+    int field_0;
+    int field_4;
+    fn_006786d0_Node* field_8;
+    void fn_006786d0(fn_006786d0_Node* node);
+    fn_006786d0_Node* Nil() { return field_8; }
+};
+
+// FUNCTION: STARFLEETOP 0x006786d0
+void fn_006786d0_Tree::fn_006786d0(fn_006786d0_Node* node)
+{
+    for (fn_006786d0_Node* x = node; x != Nil(); x = node) {
+        fn_006786d0(x->right);
+        node = x->left;
+        operator delete(x);
+    }
+}
