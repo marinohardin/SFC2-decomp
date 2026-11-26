@@ -9436,7 +9436,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0054491b	function	fn_0054491b		??6nDataStore@@YAAAVtOutput@0@AAV10@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z	claim		none
 0x00544970	function	fn_00544970					none
 0x00544a0d	function	fn_00544a0d					none
-0x00544b06	function	fn_00544b06					none
+0x00544b06	function	fn_00544b06		?fn_00544b06@@YAXXZ	claim		none
 0x00544b12	function	fn_00544b12					none
 0x00544b1e	function	fn_00544b1e					none
 0x00544b2a	function	fn_00544b2a	tServCharacter				vtable

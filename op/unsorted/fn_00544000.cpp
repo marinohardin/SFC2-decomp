@@ -157,3 +157,14 @@ tOutput& operator<<( tOutput& output, const std::vector< std::string >& value )
 	return output;
 }
 }
+
+extern "C" int atexit( void ( *func )( void ) );
+
+void fn_004bd431();
+
+// HYPOTHESIS: arranges at exit the cleanup at 0x004bd431 (Ghidra labels it tApp3dBase::vfunction5, unconfirmed).
+// FUNCTION: STARFLEETOP 0x00544b06
+void fn_00544b06()
+{
+	atexit( fn_004bd431 );
+}
