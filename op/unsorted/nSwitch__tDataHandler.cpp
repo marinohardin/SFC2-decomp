@@ -1,4 +1,5 @@
 #include "Switch/DataHandler.h"
+#include "Switch/Switch.h"
 #include "Common/Thread/ThreadPool.h"
 #include "Common/Log/LogStream.h"
 
@@ -96,4 +97,11 @@ void nSwitch::tDataHandler::fn_0071d170( void )
 	f_58 = false;
 	// The original inlines the smart pointer's assignment: release if set, then clear.
 	f_ac = NULL;
+}
+
+// FUNCTION: STARFLEETOP 0x0071d1a0
+tSmartPtr<nSwitch::tAddress> nSwitch::tDataHandler::fn_slot7( void )
+{
+	nSwitch::tSwitch::fn_00713b20();
+	return f_ac;
 }
