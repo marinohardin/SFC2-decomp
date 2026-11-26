@@ -186,23 +186,16 @@ void fn_004064d5(std::string* _P, const std::string& _V)
     new ((void*)_P) std::string(_V);
 }
 
-// HYPOTHESIS: the library's string::compare(const string&) instance, written on a stand-in
-// class of the string's layout; it calls the library's compare at 0x004067db.
-class fn_0040651e_String
-{
-public:
-    int fn_0040651e(const std::string& _X) const;
-    char _A;
-    char* _Ptr;
-    size_t _Len;
-    size_t _Res;
-};
-
+// The library's string::compare(const string&), out of line; it calls the library's compare at
+// 0x004067db.
 // FUNCTION: STARFLEETOP 0x0040651e
-int fn_0040651e_String::fn_0040651e(const std::string& _X) const
+int std::string::compare(const std::string& _X) const
 {
-    return (((const std::string*)this)->compare(0, _Len, _X.c_str(), _X.size()));
+    return (compare(0, _Len, _X.c_str(), _X.size()));
 }
+
+// HYPOTHESIS: a caller in the original uses this instantiation.
+int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
 
 // HYPOTHESIS: the library's istreambuf_iterator<char>::equal instance, written on a stand-in
 // class of the iterator's layout; 0x00405fdf is _Peek.

@@ -191,7 +191,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00406487	function	fn_00406487		?fn_00406487@@YA_NDABVlocale@std@@@Z	claim		none
 0x004064a8	function	fn_004064a8		?fn_004064a8@@YAXPAVtFighterSpec@@ABV1@@Z	claim		none
 0x004064d5	function	fn_004064d5		?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z	claim		none
-0x0040651e	function	fn_0040651e		?fn_0040651e@fn_0040651e_String@@QBEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
+0x0040651e	function	fn_0040651e		?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z	claim		none
 0x00406540	function	fn_00406540		?fn_00406540@fn_00406540_Iter@@QBE_NABV1@@Z	claim		none
 0x0040657f	function	fn_0040657f		??0fn_0040657f_Collate@@QAE@I@Z	claim		none
 0x004065d3	function	fn_004065d3	std::codecvt<char,char,int>	?fn_004065d3@fn_004065d3_Codecvt@@QBEHAAHPBD1AAPBDPAD3AAPAD@Z	claim		vtable
