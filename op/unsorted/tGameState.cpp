@@ -675,7 +675,7 @@ void fn_0046a534(int param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		state->vfunction8((int *)param_1);
+		state->vfunction8((int *)param_1);	// HYPOTHESIS: the word is passed on unchanged (0x0046a53f); int is the original's type, the cast follows vfunction8's guessed int *
 }
 
 // FUNCTION: STARFLEETOP 0x0046a549
