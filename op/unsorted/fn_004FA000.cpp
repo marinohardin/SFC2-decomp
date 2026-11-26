@@ -111,3 +111,25 @@ tPoint3 tHypermass<16>::fn_004fa526(unsigned int param_2, unsigned int param_3)
 	p.z = -field_1c[param_2 * 16 + param_3][3] - 2.0f;
 	return p;
 }
+
+// The N = 16 instance of 0x004fa58f (row stride 16 cells).
+// FUNCTION: STARFLEETOP 0x004faa22
+template<>
+tPoint2 tHypermass<16>::fn_004fa58f(unsigned int param_2, unsigned int param_3)
+{
+	int n = field_04;
+	float x = ((int) param_3 - n * 0.5f) * field_10;
+	x *= g_007aa558;
+	float y = ((int) param_2 - n * 0.5f) * field_10;
+	y *= g_007aa55c;
+	if (param_2 >= n)
+		param_2 -= n;
+	if (param_3 >= n)
+		param_3 -= n;
+	float s = (float) sin(field_1c[param_2 * 16 + param_3][3] * g_007aa554 + g_0092f61c * g_007aa550);
+	double c = fn_00737fa4(field_1c[param_2 * 16 + param_3][3] * g_007aa554 + g_0092f61c * g_007aa550);
+	tPoint2 p;
+	p.x = x * s - y * c;
+	p.y = y * s + x * c;
+	return p;
+}
