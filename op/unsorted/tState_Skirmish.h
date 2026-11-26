@@ -64,7 +64,7 @@ public:
 	// HYPOTHESIS: a method of the class of the object at 0x1154 (unknown); declared here until it is known.
 	void fn_00482ed3( int a, int b, int c );
 	void fn_0047ffe0();
-	// HYPOTHESIS: a method of this class taking the object fn_0060e11e returns, called by vfunction20.
+	void fn_004819a4();	// HYPOTHESIS: a method of this class taking the object fn_0060e11e returns, called by vfunction20.
 	void fn_00480677( class C_0060e11e *param_1 );
 
 	// HYPOTHESIS: 0x0c is the first word after tGameState's, not used in the bodies recovered; 0x10 is
