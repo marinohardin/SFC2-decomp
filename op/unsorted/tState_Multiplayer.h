@@ -45,6 +45,7 @@ public:
 	// HYPOTHESIS: 0x0046f24b is a method; it reads the flags at +0x2200.
 	int fn_0046f24b( int param_1 );
 	void fn_00470b59( unsigned char param_1 );
+	void fn_00470c38( unsigned char param_1 );
 	// HYPOTHESIS: 0x00473049 is a method taking a pointer to a list entry of field_e64.
 	char fn_00473049( void *entry );
 

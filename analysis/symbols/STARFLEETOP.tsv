@@ -3643,7 +3643,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046f24b	function	fn_0046f24b		?fn_0046f24b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHH@Z	claim		none
 0x0046f292	function	fn_0046f292	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
 0x00470b59	function	fn_00470b59		?fn_00470b59@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
-0x00470c38	function	fn_00470c38					none
+0x00470c38	function	fn_00470c38		?fn_00470c38@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
 0x00470d1b	function	fn_00470d1b					none
 0x00470d4c	function	fn_00470d4c					none
 0x00470e13	function	fn_00470e13					none
