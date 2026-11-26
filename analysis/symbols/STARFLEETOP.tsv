@@ -3942,7 +3942,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f53c	function	fn_0047f53c					none
 0x0047f621	function	fn_0047f621		?fn_0047f621@@YAXXZ	claim		none
 0x0047f62e	function	fn_0047f62e					none
-0x0047f6b1	function	fn_0047f6b1					none
+0x0047f6b1	function	fn_0047f6b1		?fn_0047f6b1@c_0047f6b1_Owner@@QAEXXZ	claim		none
 0x0047f700	function	fn_0047f700					none
 0x0047f70a	function	fn_0047f70a					none
 0x0047f720	function	fn_0047f720					none

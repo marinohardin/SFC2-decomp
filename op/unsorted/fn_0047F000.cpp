@@ -152,3 +152,32 @@ void fn_0047f621()
 {
     fn_004d32c4(g_0084a4c4);
 }
+
+#include <string.h>
+
+// HYPOTHESIS: owner class unknown; the std::string member sits at 0x20.
+class c_0047f6b1_Owner
+{
+public:
+    void fn_0047f6b1();
+
+    char pad_000[0x20];
+    std::string m_20;
+    char pad_030[0x74];
+    char m_a4;
+};
+
+extern const char *g_0084a4c8;
+extern char g_008930a4[];
+extern std::string g_00893090;
+
+// FUNCTION: STARFLEETOP 0x0047f6b1
+void c_0047f6b1_Owner::fn_0047f6b1()
+{
+    m_a4 = 0;
+    const char *p = g_0084a4c8;
+    if (!m_20.empty())
+        p = m_20.c_str();
+    fn_004d32c4(p);
+    g_00893090.assign(g_008930a4, strlen(g_008930a4));
+}
