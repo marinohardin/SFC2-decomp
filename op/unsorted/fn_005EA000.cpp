@@ -513,7 +513,7 @@ void tTree_005ea14b::iterator::fn_005ea7c6()
 // HYPOTHESIS: the pointee is the vector of tMetaMapControl's records whose destructor is
 // 0x005e45a0 (claimed in unsorted/tMetaMapControl.cpp).
 #include "unsorted/tMetaMapControl.h"
-typedef std::vector<fn_005e36cd_entry> tObject_005e45a0;
+typedef std::vector<tMetaMapNormalHex> tObject_005e45a0;
 
 
 class tObject_005ea7f8 {

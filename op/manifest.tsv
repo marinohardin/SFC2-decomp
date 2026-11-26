@@ -683,6 +683,7 @@ address	size	symbol	source	modes	decorated
 0x0042c66d	50	fn_0042c632_Iterator::fn_0042c66d()	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c66d@fn_0042c632_Iterator@@QAEXXZ
 0x0042c69f	59	fn_0042c69f_Iterator::fn_0042c69f()	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c69f@fn_0042c69f_Iterator@@QAEXXZ
 0x0042c6da	47	~tSingleAccessWrapper()	unsorted/fn_0042C000.cpp	partial	??1?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE@XZ
+0x0042c709	38	Lock()	unsorted/fn_0042C000.cpp	vc6 guest	?Lock@?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE?AV?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@XZ
 0x0042c72f	47	~tSingleAccessWrapper()	unsorted/fn_0042C000.cpp	partial	??1?$tSingleAccessWrapper@VtObject_005391b0@@@@QAE@XZ
 0x0042c75e	43	~tAccessPointer()	unsorted/fn_0042C000.cpp	partial	??1?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ
 0x0042c789	43	~tAccessPointer()	unsorted/fn_0042C000.cpp	partial	??1?$tAccessPointer@VtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ
@@ -3118,16 +3119,16 @@ address	size	symbol	source	modes	decorated
 0x005e36a3	42	tMetaMapControl::fn_005e36a3()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e36a3@tMetaMapControl@@QAEXXZ
 0x005e36cd	63	tMetaMapControl::fn_005e36cd(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e36cd@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@H@Z
 0x005e370c	63	tMetaMapControl::fn_005e370c(fn_005e381f_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e370c@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@H@Z
-0x005e374b	121	tMetaMapControl::fn_005e374b(fn_005e374b_entry *,int,c_tScrollBar_FieldA8 *,int,int,unsigned long)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e374b@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@HPAUc_tScrollBar_FieldA8@@HHK@Z
+0x005e374b	121	tMetaMapControl::fn_005e374b(tMetaMapSprite *,int,c_tScrollBar_FieldA8 *,int,int,unsigned long)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e374b@tMetaMapControl@@QAEXPAVtMetaMapSprite@@HPAUc_tScrollBar_FieldA8@@HHK@Z
 0x005e37c4	20	tMetaMapControl::fn_005e37c4(fn_005e381f_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e37c4@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@HH@Z
 0x005e37d8	71	tMetaMapControl::fn_005e37d8(fn_005e381f_entry *,int,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e37d8@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@HH@Z
-0x005e381f	114	tMetaMapControl::fn_005e381f(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e381f@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z
-0x005e3891	114	tMetaMapControl::fn_005e3891(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3891@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z
-0x005e3903	50	tMetaMapControl::fn_005e3903(fn_005e36cd_entry *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3903@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z
-0x005e3935	56	tMetaMapControl::fn_005e3935(fn_005e374b_entry *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3935@tMetaMapControl@@QAEKPAUfn_005e374b_entry@@@Z
+0x005e381f	114	tMetaMapControl::fn_005e381f(tMetaMapNormalHex *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e381f@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3891	114	tMetaMapControl::fn_005e3891(tMetaMapNormalHex *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3891@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3903	50	tMetaMapControl::fn_005e3903(tMetaMapNormalHex *,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3903@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3935	56	tMetaMapControl::fn_005e3935(tMetaMapSprite *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3935@tMetaMapControl@@QAEKPAVtMetaMapSprite@@@Z
 0x005e396d	14	tMetaMapControl::fn_005e396d(int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e396d@tMetaMapControl@@QAEPAEH@Z
 0x005e397b	188	tMetaMapControl::fn_005e397b(unsigned char *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e397b@tMetaMapControl@@QAEKPAE@Z
-0x005e3a37	161	tMetaMapControl::fn_005e3a37(fn_005e374b_entry *,unsigned long *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z
+0x005e3a37	161	tMetaMapControl::fn_005e3a37(tMetaMapSprite *,unsigned long *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z
 0x005e3ad8	150	tMetaMapControl::fn_005e3ad8()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3ad8@tMetaMapControl@@QAEXXZ
 0x005e3b6e	24	tMetaMapControl::fn_005e3b6e()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3b6e@tMetaMapControl@@QAEXXZ
 0x005e3b86	31	tMetaMapControl::fn_005e3b86()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3b86@tMetaMapControl@@QAEXXZ
@@ -3156,7 +3157,7 @@ address	size	symbol	source	modes	decorated
 0x005e4468	8	tMetaMapControl::fn_005e4468()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4468@tMetaMapControl@@QAEXXZ
 0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z
 0x005e4531	16	tMetaMapControl::vfunction43(int)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction43@tMetaMapControl@@QAEXH@Z
-0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ
+0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
 0x005e45d3	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@Ufn_005e381f_entry@@V?$allocator@Ufn_005e381f_entry@@@std@@@std@@QAE@XZ
 0x005e4606	50	erase(iterator,iterator)	unsorted/tMetaMapControl.cpp	vc6 guest	?erase@?$vector@PAUc_tScrollBar_FieldA8@@V?$allocator@PAUc_tScrollBar_FieldA8@@@std@@@std@@QAEPAPAUc_tScrollBar_FieldA8@@PAPAU3@0@Z
 0x005e5800	246	tMetaClientMapPanel::vfunction19()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?vfunction19@tMetaClientMapPanel@@UAEXXZ

@@ -15,7 +15,6 @@ copy	-	??0tPath@@QAE@ABV0@@Z
 copy	-	??1?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAE@XZ
 copy	-	??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
 copy	-	??1?$tAccessPointer@$$CBV?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ
-copy	-	??1?$tAccessPointer@$$CBVtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ
 copy	-	??1?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ
 copy	-	??1?$tAccessPointer@VtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ
 copy	-	??1?$tQuery@VtAuctionItem@@@nDatabase@@UAE@XZ
