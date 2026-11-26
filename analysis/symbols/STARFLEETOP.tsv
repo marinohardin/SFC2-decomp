@@ -6402,7 +6402,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d6fd4	function	fn_004d6fd4					none
 0x004d6fef	function	fn_004d6fef					none
 0x004d703f	function	fn_004d703f		?fn_004d703f@fn_004d703f_Array@@QAEXXZ	claim		none
-0x004d707c	function	fn_004d707c					none
+0x004d707c	function	fn_004d707c		?fn_004d707c@fn_004d703f_Array@@QAEME@Z	claim		none
 0x004d7099	function	fn_004d7099					none
 0x004d70ce	function	fn_004d70ce					none
 0x004d70eb	function	tBaseWeapon::tBaseWeapon	tBaseWeapon	??0tBaseWeapon@@QAE@H@Z	callers		rtti

@@ -7,6 +7,7 @@ struct fn_004d703f_Array
     char m_items[1][16];
 
     void fn_004d703f();
+    float fn_004d707c(unsigned char index);
 };
 
 void fn_004d8999(void* first, void* last, int arg);
@@ -17,4 +18,12 @@ void fn_004d703f_Array::fn_004d703f()
 {
     fn_004d8999(m_items, m_items[m_count], 0);
     m_count = ((char*)fn_004d8967(m_items, m_items[m_count]) - (char*)m_items) >> 4;
+}
+
+// FUNCTION: STARFLEETOP 0x004d707c
+float fn_004d703f_Array::fn_004d707c(unsigned char index)
+{
+    if (index < m_count)
+        return *(float*)m_items[index];
+    return 0.0f;
 }
