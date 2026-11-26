@@ -185,6 +185,7 @@ public:
 	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);
+	void fn_00414b47(int param_1);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
@@ -247,7 +248,8 @@ public:
 	// HYPOTHESIS: an object of 0x20e0 bytes, built by 0x004287d9 with this entity.
 	void *field_a44;
 	char pada48[0xa54 - 0xa48];
-	int field_a54[10];
+	// HYPOTHESIS: records of 100 bytes, allocated and cleared by 0x00414b47.
+	void *field_a54[10];
 	float field_a7c;
 	float field_a80;
 	float field_a84;
