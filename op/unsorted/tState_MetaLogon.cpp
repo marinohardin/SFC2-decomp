@@ -57,3 +57,13 @@ void tState_MetaLogon::fn_0046d3c8()
 	fn_004d34c5( 0x10001, 0 );
 	fn_004d32c4( g_00847250 );
 }
+
+// HYPOTHESIS: the screen's name is a pointer global ("Big Yes No").
+extern char *g_00847254;
+
+// FUNCTION: STARFLEETOP 0x0046d468
+void tState_MetaLogon::fn_0046d468()
+{
+	fn_004d32c4( g_00847254 );
+	field_188 = 0;
+}
