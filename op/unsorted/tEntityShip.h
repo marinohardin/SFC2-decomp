@@ -9,6 +9,8 @@
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tShipSpecs.h"
 
+class tCloakSystem;
+
 // HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
 // three floats from it, at 0x18, 0x1c and 0x20.
 struct tObject_00416d41_bounds
@@ -40,7 +42,10 @@ public:
 	virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8();
 	virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
 	virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14();
-	virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17();
+	virtual void vfunction15();
+	// HYPOTHESIS: a test; 0x00416a0e acts on its result.
+	virtual bool vfunction16();
+	virtual void vfunction17();
 	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
 	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
@@ -66,6 +71,34 @@ public:
 	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
 	virtual void vfunction83(); virtual void vfunction84(); virtual void vfunction85();
 	virtual tObject_00416d41_list *vfunction86();
+	virtual void vfunction87(); virtual void vfunction88(); virtual void vfunction89();
+	virtual void vfunction90(); virtual void vfunction91(); virtual void vfunction92();
+	virtual void vfunction93(); virtual void vfunction94();
+	// HYPOTHESIS: returns the ship's cloak system; 0x00416a0e calls 0x00438390 on it.
+	virtual tCloakSystem *vfunction95();
+	virtual void vfunction96(); virtual void vfunction97(); virtual void vfunction98();
+	virtual void vfunction99(); virtual void vfunction100(); virtual void vfunction101();
+	virtual void vfunction102(); virtual void vfunction103(); virtual void vfunction104();
+	virtual void vfunction105(); virtual void vfunction106(); virtual void vfunction107();
+	virtual void vfunction108(); virtual void vfunction109(); virtual void vfunction110();
+	virtual void vfunction111(); virtual void vfunction112(); virtual void vfunction113();
+	virtual void vfunction114(); virtual void vfunction115(); virtual void vfunction116();
+	virtual void vfunction117(); virtual void vfunction118(); virtual void vfunction119();
+	virtual void vfunction120(); virtual void vfunction121(); virtual void vfunction122();
+	virtual void vfunction123(); virtual void vfunction124(); virtual void vfunction125();
+	virtual void vfunction126(); virtual void vfunction127(); virtual void vfunction128();
+	virtual void vfunction129(); virtual void vfunction130(); virtual void vfunction131();
+	virtual void vfunction132(); virtual void vfunction133(); virtual void vfunction134();
+	virtual void vfunction135(); virtual void vfunction136(); virtual void vfunction137();
+	virtual void vfunction138(); virtual void vfunction139(); virtual void vfunction140();
+	virtual void vfunction141(); virtual void vfunction142(); virtual void vfunction143();
+	// HYPOTHESIS: takes the arguments of tEntityShip::vfunction26 and returns a truth value.
+	virtual bool vfunction144(short a1, int a2, int a3, int a4, int a5);
+	virtual void vfunction145(); virtual void vfunction146(); virtual void vfunction147();
+	virtual void vfunction148(); virtual void vfunction149(); virtual void vfunction150();
+	virtual void vfunction151(); virtual void vfunction152(); virtual void vfunction153();
+	virtual int vfunction154();
+	virtual int vfunction155();
 };
 
 // HYPOTHESIS: the object at 0x1bc; 0x004162b9 calls 0x00426563 on it with the view.
@@ -73,6 +106,9 @@ class tObject_00426563_1bc
 {
 public:
 	void fn_00426563(tObject_00413ac3_arg *aView);
+	// HYPOTHESIS: the object is a fn_00426141_Class (declared only in fn_00426000.cpp), whose
+	// member this is; declared here until that class has a header.
+	void fn_00426886(unsigned int aMask);
 };
 
 // HYPOTHESIS: members are placed by the constructor's stores and the offsets the class's
@@ -146,6 +182,9 @@ public:
 	void fn_004103e2(tObject_00413ac3_arg *aView);
 	// HYPOTHESIS: a test of the ship, called by 0x004162b9 to choose between two ways to draw.
 	bool fn_00419c87();
+	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
+	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
+	void fn_00419e84(int aID);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
