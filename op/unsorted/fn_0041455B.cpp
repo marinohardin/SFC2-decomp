@@ -11,3 +11,9 @@ float tEntityShip::vfunction64()
 {
 	return field_ac8;
 }
+
+// FUNCTION: STARFLEETOP 0x00414b38
+float tEntityShip::vfunction65()
+{
+	return field_8a8;
+}

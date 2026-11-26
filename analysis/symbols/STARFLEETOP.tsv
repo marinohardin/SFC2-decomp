@@ -783,7 +783,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004146d1	function	fn_004146d1					none
 0x00414b2a	function	fn_00414b2a	tEntityShip	?vfunction70@tEntityShip@@UAEHXZ	claim		vtable
 0x00414b31	function	fn_00414b31	tEntityShip	?vfunction64@tEntityShip@@UAEMXZ	claim		vtable
-0x00414b38	function	fn_00414b38	tEntityShip				vtable
+0x00414b38	function	fn_00414b38	tEntityShip	?vfunction65@tEntityShip@@UAEMXZ	claim		vtable
 0x00414b3f	function	fn_00414b3f	tEntityShip				vtable
 0x00414b47	function	fn_00414b47					none
 0x00414b76	function	tNetMsg_kHoldPosition::mGetMap	tNetMsg_kHoldPosition	?mGetMap@tNetMsg_kHoldPosition@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
