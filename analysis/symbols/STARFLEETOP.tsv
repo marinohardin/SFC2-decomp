@@ -4975,7 +4975,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004af6e2	function	fn_004af6e2	tState_Namespace_Tactical::tCameraMgrEx				vtable
 0x004af6f4	function	fn_004af6f4	tState_Namespace_Tactical::tCameraMgrEx				vtable
 0x004af706	function	fn_004af706		?fn_004af706@@YAXABUtPoint3@@00AAVtMatrix@@@Z	claim		none
-0x004af807	function	fn_004af807	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004af807	function	fn_004af807	tState_Namespace_Tactical::tState_Tactical	?vfunction19@tState_Tactical@tState_Namespace_Tactical@@UAEPAXXZ	claim		vtable
 0x004af80d	function	fn_004af80d					none
 0x004af94b	function	fn_004af94b					none
 0x004afa1c	function	fn_004afa1c					none

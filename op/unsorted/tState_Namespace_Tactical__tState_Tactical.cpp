@@ -530,6 +530,15 @@ tState_Tactical *fn_004adc83()
 	return &g_tState_Tactical;
 }
 
+// HYPOTHESIS: an object of unknown type at 0x008515c8; the slot returns only its address.
+extern int g_008515c8;
+
+// FUNCTION: STARFLEETOP 0x004af807
+void *tState_Tactical::vfunction19()
+{
+	return &g_008515c8;
+}
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
