@@ -82,3 +82,11 @@ void *__fastcall fn_004afa1c(void *self, int, unsigned capacity)
 	((void **)self)[0] = operator new( capacity * 0x1c );
 	return self;
 }
+
+// HYPOTHESIS: destructor of the same growable array; frees the element storage.
+// FUNCTION: STARFLEETOP 0x004afa40
+void __fastcall fn_004afa40(void *self)
+{
+	if (((void **)self)[0] != 0)
+		operator delete( ((void **)self)[0] );
+}
