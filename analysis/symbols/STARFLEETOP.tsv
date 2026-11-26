@@ -4949,7 +4949,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004aebea	function	fn_004aebea	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
 0x004aef09	function	fn_004aef09	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
 0x004aef7b	function	fn_004aef7b	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
-0x004aefd4	function	tState_Namespace_Tactical::tCameraMgrEx::tCameraMgrEx	tState_Namespace_Tactical::tCameraMgrEx				rtti
+0x004aefd4	function	tState_Namespace_Tactical::tCameraMgrEx::tCameraMgrEx	tState_Namespace_Tactical::tCameraMgrEx	??0tCameraMgrEx@tState_Namespace_Tactical@@QAE@XZ	add		rtti
 0x004af1bc	function	tState_Namespace_Tactical::tCameraMgr::~tCameraMgr	tState_Namespace_Tactical::tCameraMgr				rtti
 0x004af1c3	function	fn_004af1c3					none
 0x004af1f4	function	fn_004af1f4					none

@@ -139,6 +139,16 @@ public:
 
 typedef char tState_Tactical_size_is_0x4b0[ sizeof( tState_Tactical ) == 0x4b0 ? 1 : -1 ];
 
+// The camera manager (RTTI). Constructor 0x004aefd4, deleting destructor 0x004af2d4; one static
+// object at 0x00918890. HYPOTHESIS: the layout is not recovered yet; only the members the
+// matched code uses are declared.
+class tCameraMgrEx
+{
+public:
+	tCameraMgrEx();
+	virtual ~tCameraMgrEx();
+};
+
 }	// namespace tState_Namespace_Tactical
 
 #endif	// tState_Tactical_h

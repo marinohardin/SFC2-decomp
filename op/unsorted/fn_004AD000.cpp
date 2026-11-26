@@ -21,3 +21,7 @@ int *tState_Tactical::fn_004ad89d()
 		return 0;
 	return rect;
 }
+
+// HYPOTHESIS: the one camera manager; its name is not known.
+// FUNCTION: STARFLEETOP 0x004add21
+tCameraMgrEx g_00918890;
