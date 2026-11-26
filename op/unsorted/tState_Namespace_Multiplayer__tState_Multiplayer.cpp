@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tState_Namespace_Multiplayer__tState_Multiplayer.cpp
-// Functions: 0x0046ed64 to 0x0047156b, 13 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+// tState_Multiplayer: a game state of the multiplayer screens.
+// Evidence:  class (RTTI; original file unknown)
+
+#include "unsorted/tState_Multiplayer.h"
+
+using namespace tState_Namespace_Multiplayer;
+
+// FUNCTION: STARFLEETOP 0x0046ed64
+char *tState_Multiplayer::vfunction13()
+{
+	return "multiplayer";
+}
