@@ -228,7 +228,7 @@ public:
 	virtual void v5();
 	virtual void v6();
 	virtual bool v7();
-	virtual void *v8();
+	virtual bool v8();
 	virtual void *v9();
 	virtual void *v10();
 	virtual unsigned char *v11();
@@ -249,6 +249,17 @@ bool tSWView3D::vfunction11()
 			field_5fb0 = 0;
 		}
 	}
+	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0069fa10
+bool tSWView3D::vfunction12()
+{
+	void *surface = ((fn_0069f510_Device *)field_1f68)->v11();
+	if (field_0x1ee4)
+		((void (*)(void *, void *))field_0x1ee4)(surface, field_0x1ee8);
+	if (surface)
+		return ((fn_0069f990_Surface *)surface)->v8();
 	return false;
 }
 

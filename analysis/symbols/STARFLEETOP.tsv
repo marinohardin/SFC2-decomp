@@ -18564,7 +18564,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f8a0	function	fn_0069f8a0	tSWView3D	?vfunction4@tSWView3D@@UAE_NHHPAUtagRECT@@_N@Z	claim		vtable
 0x0069f900	function	tSWView3D::scalar_deleting_destructor	tSWView3D	?vfunction6@tSWView3D@@UAE_NXZ	claim		rtti
 0x0069f990	function	fn_0069f990	tSWView3D	?vfunction11@tSWView3D@@UAE_NXZ	claim		vtable
-0x0069fa10	function	fn_0069fa10	tSWView3D				vtable
+0x0069fa10	function	fn_0069fa10	tSWView3D	?vfunction12@tSWView3D@@UAE_NXZ	claim		vtable
 0x0069fa50	function	fn_0069fa50	tSWView3D				vtable
 0x0069fa60	function	fn_0069fa60	tSWView3D				vtable
 0x0069fa70	function	fn_0069fa70	tSWView3D				vtable
