@@ -198,3 +198,17 @@ def test_the_command_line_prints_failures_and_exits_1(tmp_path, capsys, monkeypa
     assert capsys.readouterr().out == (
         'FAIL tools/x.py: outside op/\n'
         'guard: 1 problems; see CONTRIBUTING.md, "Find and claim work"\n')
+
+
+def test_an_out_of_claim_vtable_line_fails(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.h', '// VTABLE: STARFLEETOP 0x00790000\nclass tA {};\n')
+    _commit(repo)
+    assert _check(repo).failures == [
+        '0x00790000: the pull request adds or changes this annotation, outside the claimed ranges',
+    ]
+
+
+def test_the_annotation_pattern_is_the_harness_guards():
+    text = (ROOT / 'harness/lib/guard.py').read_text()
+    assert f"CLAIM_LINE = re.compile(r'{guard.ANNOTATION.pattern}')" in text

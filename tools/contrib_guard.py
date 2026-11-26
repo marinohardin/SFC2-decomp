@@ -11,7 +11,8 @@ each reason, when the pull request (the changes from the merge base of <base> an
 - changes a symlink, a submodule or a file mode, or adds a binary file or one over 256 KB;
 - adds an #include that is absolute, names a drive letter, uses `..` to leave op/ or names no
   file (a macro), or adds an #import;
-- adds, changes or removes a `// FUNCTION:` or `// STUB:` address outside its claim's ranges;
+- adds, changes or removes a `// FUNCTION:`, `// STUB:` or `// VTABLE:` address outside its
+  claim's ranges;
 - names no claim: the body needs a line `Claim: #<issue>`, and that issue (open, labelled
   `claim`) holds one or more lines `range: 0x<first>-0x<last>`.
 
@@ -34,7 +35,9 @@ FORBIDDEN = ('op/port/',)
 FORBIDDEN_FILES = ('op/UNITS.tsv', 'op/manifest.tsv')
 CLAIM_LINE = re.compile(r'^\s*Claim:\s*#(\d+)\s*$', re.M | re.I)
 RANGE_LINE = re.compile(r'^\s*range:\s*0x([0-9a-fA-F]{1,8})\s*-\s*0x([0-9a-fA-F]{1,8})\s*$', re.M)
-ANNOTATION = re.compile(r'^\s*//\s*(?:FUNCTION|STUB):\s*\w+\s+0x([0-9a-fA-F]+)\s*$')
+# Any claim line: the same pattern as CLAIM_LINE in harness/lib/guard.py (and ANNOTATION in
+# tools/manifest.py), kept here so the guard imports no harness code.
+ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
 INCLUDE = re.compile(r'^\s*#\s*include\b\s*(.*)$')
 IMPORT = re.compile(r'^\s*#\s*import\b')
 CONTRIBUTING = 'see CONTRIBUTING.md, "Find and claim work"'
@@ -200,7 +203,7 @@ def check(cwd, base, head, body, issues=None, repo=None):
 
 
 def _addresses(lines):
-    return {int(m.group(1), 16) for m in map(ANNOTATION.match, lines) if m}
+    return {int(m.group(3), 16) for m in map(ANNOTATION.match, lines) if m}
 
 
 def _check_claims(res, body, issues, repo):
