@@ -268,6 +268,7 @@ public:
 	// HYPOTHESIS: the base entity's override of the same slot (tEntity::vfunction3), called
 	// directly.
 	void fn_004101d3();
+	tPoint3 fn_004130d0();
 
 	// HYPOTHESIS: a member of the list at 0x1a4, one per tractor beam: the beam entity's ID
 	// and the target's, as 0x00413614 fills them; the two links are cleared on construction.
