@@ -68,6 +68,12 @@ tSWView3D::tSWView3D()
 	field_0x1ed8 = 0;
 }
 
+// FUNCTION: STARFLEETOP 0x0069f480
+int tSWView3D::vfunction86()
+{
+	return (int)field_1f68;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
