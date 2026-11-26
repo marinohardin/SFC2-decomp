@@ -281,3 +281,32 @@ void __fastcall fn_00522c86(fn_0090bed4_Object *self, int, float param_1)
 	*(float *)((char *)self + 0x1b8c) = param_1;
 }
 
+// HYPOTHESIS: the object 0x00523543 returns (tObject_0051c7af, declared only in fn_00523000.cpp)
+// has this member, taking an ID and returning a pointer or 0.
+class tObject_0051bfce {
+public:
+	int fn_0051bfce(int param_1);
+};
+
+// HYPOTHESIS: a member of tAIUnitDataList (declared only in fn_00520AB2.cpp), reached as a
+// fastcall like fn_00522e1b there; the original passes the third argument as a float.
+void __fastcall fn_00520dad(char *self, int, int a, int b, int c, int d);
+
+// FUNCTION: STARFLEETOP 0x00522dc6
+// HYPOTHESIS: a member of fn_0090bed4_Object, a fastcall like its neighbours.
+char __fastcall fn_00522dc6(fn_0090bed4_Object *self, int, int param_1, int param_2, int param_3, int param_4)
+{
+	tObject_0051bfce *pObject = (tObject_0051bfce *)self->fn_00523543(param_1);
+	if (pObject != 0) {
+		int iVar1 = pObject->fn_0051bfce(param_2);
+		if (iVar1 != 0) {
+			int index = ((tObject_00522e1b *)self)->fn_00522e1b(param_1);
+			if (index != -1) {
+				fn_00520dad((char *)self + 0x218, 0, index, param_3, param_4, iVar1);
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
