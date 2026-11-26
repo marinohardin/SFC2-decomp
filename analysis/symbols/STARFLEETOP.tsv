@@ -3606,24 +3606,24 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046d048	function	fn_0046d048					none
 0x0046d090	function	fn_0046d090					none
 0x0046d09a	function	fn_0046d09a					none
-0x0046d0b0	function	tState_MetaLogon::tState_MetaLogon	tState_MetaLogon				rtti
+0x0046d0b0	function	tState_MetaLogon::tState_MetaLogon	tState_MetaLogon	??0tState_MetaLogon@@QAE@XZ	claim		rtti
 0x0046d1ac	function	tState_MetaLogon::scalar_deleting_destructor	tState_MetaLogon				rtti
 0x0046d1c8	function	tState_MetaLogon::~tState_MetaLogon	tState_MetaLogon				rtti
-0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon				vtable
-0x0046d2aa	function	fn_0046d2aa					none
-0x0046d370	function	fn_0046d370	tState_MetaLogon				vtable
-0x0046d38c	function	fn_0046d38c					none
-0x0046d3c8	function	fn_0046d3c8					none
+0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon	?vfunction13@tState_MetaLogon@@UAEPADXZ	claim		vtable
+0x0046d2aa	function	fn_0046d2aa		?fn_0046d2aa@tState_MetaLogon@@QAEXPBD@Z	claim		none
+0x0046d370	function	fn_0046d370	tState_MetaLogon	?vfunction1@tState_MetaLogon@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		vtable
+0x0046d38c	function	fn_0046d38c		?fn_0046d38c@tState_MetaLogon@@QAEXXZ	claim		none
+0x0046d3c8	function	fn_0046d3c8		?fn_0046d3c8@tState_MetaLogon@@QAEXXZ	claim		none
 0x0046d3f3	function	fn_0046d3f3					none
-0x0046d468	function	fn_0046d468					none
-0x0046d480	function	fn_0046d480					none
+0x0046d468	function	fn_0046d468		?fn_0046d468@tState_MetaLogon@@QAEXXZ	claim		none
+0x0046d480	function	fn_0046d480		?fn_0046d480@tState_MetaLogon@@QAEXXZ	claim		none
 0x0046d4d2	function	fn_0046d4d2	tState_MetaLogon				vtable
 0x0046d9cf	function	fn_0046d9cf	tState_MetaLogon				vtable
-0x0046daf2	function	fn_0046daf2					none
-0x0046db16	function	fn_0046db16					none
+0x0046daf2	function	fn_0046daf2		?fn_0046daf2@@YAXXZ	claim		none
+0x0046db16	function	fn_0046db16		?fn_0046db16@@YAXPAD@Z	add		none
 0x0046db64	function	fn_0046db64					none
 0x0046de28	function	fn_0046de28					none
-0x0046de63	function	fn_0046de63					none
+0x0046de63	function	fn_0046de63		?fn_0046de63@fn_0046de63_Object@@QAEXXZ	claim		none
 0x0046de82	function	fn_0046de82					none
 0x0046e178	function	fn_0046e178	tState_MetaLogon				vtable
 0x0046eae8	function	fn_0046eae8					none
@@ -3636,19 +3636,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046ed29	function	fn_0046ed29					none
 0x0046ed35	function	fn_0046ed35					none
 0x0046ed41	function	fn_0046ed41					none
-0x0046ed64	function	fn_0046ed64	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
+0x0046ed64	function	fn_0046ed64	tState_Namespace_Multiplayer::tState_Multiplayer	?vfunction13@tState_Multiplayer@tState_Namespace_Multiplayer@@UAEPADXZ	claim		vtable
 0x0046ed6a	function	fn_0046ed6a	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
-0x0046f160	function	fn_0046f160					none
+0x0046f160	function	fn_0046f160		?fn_0046f160@@YAXXZ	claim		none
 0x0046f197	function	fn_0046f197	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
-0x0046f24b	function	fn_0046f24b					none
+0x0046f24b	function	fn_0046f24b		?fn_0046f24b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHH@Z	claim		none
 0x0046f292	function	fn_0046f292	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
-0x00470b59	function	fn_00470b59					none
-0x00470c38	function	fn_00470c38					none
-0x00470d1b	function	fn_00470d1b					none
-0x00470d4c	function	fn_00470d4c					none
+0x00470b59	function	fn_00470b59		?fn_00470b59@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
+0x00470c38	function	fn_00470c38		?fn_00470c38@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
+0x00470d1b	function	fn_00470d1b		?fn_00470d1b@@YGIPAVtState_Multiplayer@tState_Namespace_Multiplayer@@I@Z	claim		none
+0x00470d4c	function	fn_00470d4c		?fn_00470d4c@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x00470e13	function	fn_00470e13					none
-0x004714b7	function	fn_004714b7	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
-0x0047156b	function	fn_0047156b	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
+0x004714b7	function	fn_004714b7	tState_Namespace_Multiplayer::tState_Multiplayer	?vfunction6@tState_Multiplayer@tState_Namespace_Multiplayer@@UAEXH@Z	claim		vtable
+0x0047156b	function	fn_0047156b	tState_Namespace_Multiplayer::tState_Multiplayer	?vfunction15@tState_Multiplayer@tState_Namespace_Multiplayer@@UAEXPAUc_0046aa10_message@@@Z	claim		vtable
 0x004715c5	function	fn_004715c5					none
 0x004716c1	function	fn_004716c1					none
 0x00471700	function	fn_00471700					none
@@ -3660,7 +3660,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00471f15	function	fn_00471f15					none
 0x00472136	function	fn_00472136					none
 0x00472161	function	fn_00472161					none
-0x00472356	function	fn_00472356					none
+0x00472356	function	fn_00472356		?fn_00472356@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	add		none
 0x00472518	function	fn_00472518					none
 0x00472581	function	fn_00472581					none
 0x004725e5	function	fn_004725e5					none
@@ -3677,30 +3677,30 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00472ce4	function	fn_00472ce4					none
 0x00472d0e	function	fn_00472d0e					none
 0x00472deb	function	fn_00472deb					none
-0x00472e88	function	fn_00472e88					none
+0x00472e88	function	fn_00472e88		?fn_00472e88@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHPAPADH@Z	add		none
 0x00472f2e	function	fn_00472f2e					none
-0x0047301e	function	fn_0047301e					none
-0x00473049	function	fn_00473049					none
+0x0047301e	function	fn_0047301e		?FUN_0047301e@@YGHH@Z	claim		none
+0x00473049	function	fn_00473049		?fn_00473049@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEDPAX@Z	add		none
 0x00473067	function	fn_00473067					none
 0x004730ba	function	tNetMsg_kSetPlayerReady::~tNetMsg_kSetPlayerReady	tNetMsg_kSetPlayerReady				rtti
-0x00473141	function	fn_00473141					none
-0x0047316a	function	fn_0047316a					none
-0x00473194	function	fn_00473194					none
+0x00473141	function	fn_00473141		?FUN_00473141@@YGHPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	claim		none
+0x0047316a	function	fn_0047316a		?FUN_0047316a@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHPAV12@@Z	claim		none
+0x00473194	function	fn_00473194		?fn_00473194@@YGPADPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	add		none
 0x004731cb	function	fn_004731cb					none
 0x00473243	function	tNetMsg_kSetPlayerBPVLimit::~tNetMsg_kSetPlayerBPVLimit	tNetMsg_kSetPlayerBPVLimit				rtti
-0x0047328b	function	fn_0047328b					none
+0x0047328b	function	fn_0047328b		?fn_0047328b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x00473302	function	tNetMsg::~tNetMsg	tNetMsg				rtti
-0x0047339f	function	fn_0047339f					none
+0x0047339f	function	fn_0047339f		?fn_0047339f@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x004733f4	function	tNetMsg_kPlayerInfo::~tNetMsg_kPlayerInfo	tNetMsg_kPlayerInfo				rtti
 0x004734c7	function	tNetMsg_kSetPlayerTeam::~tNetMsg_kSetPlayerTeam	tNetMsg_kSetPlayerTeam				rtti
-0x0047378b	function	fn_0047378b					none
-0x00473792	function	fn_00473792					none
+0x0047378b	function	fn_0047378b		?FUN_0047378b@@YGHH@Z	claim		none
+0x00473792	function	fn_00473792		?FUN_00473792@@YGJJ@Z	claim		none
 0x004737bd	function	fn_004737bd					none
-0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
+0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer	??0tState_Multiplayer@tState_Namespace_Multiplayer@@QAE@XZ	add		rtti
 0x004739e8	function	tState_Namespace_Multiplayer::tState_Multiplayer::scalar_deleting_destructor	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473a04	function	tState_Namespace_Multiplayer::tState_Multiplayer::~tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473c1e	function	fn_00473c1e					none
-0x00473c34	function	fn_00473c34					none
+0x00473c34	function	fn_00473c34		?FUN_00473c34@@YGPAXXZ	claim		none
 0x00473c3a	function	tValue<long>::tValue<long>	tValue<long>				rtti
 0x00473c84	function	fn_00473c84	tState_Namespace_IPandIPX::tState_IPandIPX				vtable
 0x00473c8a	function	fn_00473c8a	tState_Namespace_IPandIPX::tState_IPandIPX				vtable
@@ -3934,52 +3934,52 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047eb28	function	fn_0047eb28					none
 0x0047eb5d	function	fn_0047eb5d		?fn_0047eb5d@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXPAVtListBox_Select@@@Z	callers		none
 0x0047ebca	function	fn_0047ebca	tState_Namespace_SingleCampaignSelector::tState_SingleCampaignSelector	?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ	claim		none
-0x0047f05d	function	fn_0047f05d					none
+0x0047f05d	function	fn_0047f05d		?fn_0047f05d@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x0047f141	function	fn_0047f141					none
 0x0047f41e	function	fn_0047f41e					none
-0x0047f439	function	fn_0047f439					none
-0x0047f4ff	function	fn_0047f4ff					none
+0x0047f439	function	fn_0047f439		?fn_0047f439@c_0047f439_Owner@@QAEXH@Z	claim		none
+0x0047f4ff	function	fn_0047f4ff		?fn_0047f4ff@c_0047f439_Owner@@QAEXXZ	claim		none
 0x0047f53c	function	fn_0047f53c					none
-0x0047f621	function	fn_0047f621					none
+0x0047f621	function	fn_0047f621		?fn_0047f621@@YAXXZ	claim		none
 0x0047f62e	function	fn_0047f62e					none
-0x0047f6b1	function	fn_0047f6b1					none
+0x0047f6b1	function	fn_0047f6b1		?fn_0047f6b1@c_0047f6b1_Owner@@QAEXXZ	claim		none
 0x0047f700	function	fn_0047f700					none
 0x0047f70a	function	fn_0047f70a					none
-0x0047f720	function	fn_0047f720					none
-0x0047f764	function	fn_0047f764					none
-0x0047f770	function	fn_0047f770					none
-0x0047f77c	function	fn_0047f77c					none
-0x0047f79f	function	fn_0047f79f					none
-0x0047f7a5	function	fn_0047f7a5	tState_Skirmish				vtable
-0x0047f7ab	function	tState_Skirmish::tState_Skirmish	tState_Skirmish				rtti
+0x0047f720	function	fn_0047f720		?fn_0047f720@@YAPADXZ	claim		none
+0x0047f764	function	fn_0047f764		?fn_0047f764@@YAXXZ	claim		none
+0x0047f770	function	fn_0047f770		?fn_0047f770@@YAXXZ	claim		none
+0x0047f77c	function	fn_0047f77c		?fn_0047f77c@@YAXXZ	claim		none
+0x0047f79f	function	fn_0047f79f		?fn_0047f79f@@YAPAXXZ	claim		none
+0x0047f7a5	function	fn_0047f7a5	tState_Skirmish	?vfunction13@tState_Skirmish@@UAEPADXZ	claim		vtable
+0x0047f7ab	function	tState_Skirmish::tState_Skirmish	tState_Skirmish	??0tState_Skirmish@@QAE@XZ	claim		rtti
 0x0047f864	function	tReconnector::tReconnector	tReconnector	??0tReconnector@@QAE@XZ	callers		rtti
 0x0047f8af	function	tConnector::tConnector	tConnector				rtti
 0x0047f8ea	function	tConnector::scalar_deleting_destructor	tConnector				rtti
 0x0047f906	function	tReconnector::~tReconnector	tReconnector				rtti
 0x0047f941	function	tReconnector::scalar_deleting_destructor	tReconnector				fid
-0x0047f95d	function	tState_Skirmish::scalar_deleting_destructor	tState_Skirmish				rtti
-0x0047f979	function	tState_Skirmish::~tState_Skirmish	tState_Skirmish				rtti
+0x0047f95d	function	tState_Skirmish::scalar_deleting_destructor	tState_Skirmish	??_GtState_Skirmish@@UAEPAXI@Z	claim		rtti
+0x0047f979	function	tState_Skirmish::~tState_Skirmish	tState_Skirmish	??1tState_Skirmish@@UAE@XZ	claim		rtti
 0x0047fa30	function	fn_0047fa30	tState_Skirmish				vtable
-0x0047feb1	function	fn_0047feb1					none
-0x0047ff4e	function	fn_0047ff4e					none
-0x0047ffe0	function	fn_0047ffe0					none
-0x00480016	function	fn_00480016	tState_Skirmish				vtable
-0x004800f2	function	fn_004800f2	tState_Skirmish				vtable
-0x00480152	function	fn_00480152	tState_Skirmish				vtable
+0x0047feb1	function	fn_0047feb1		?fn_0047feb1@tState_Skirmish@@QAEXXZ	claim		none
+0x0047ff4e	function	fn_0047ff4e		?fn_0047ff4e@tState_Skirmish@@QAEXXZ	claim		none
+0x0047ffe0	function	fn_0047ffe0		?fn_0047ffe0@tState_Skirmish@@QAEXXZ	claim		none
+0x00480016	function	fn_00480016	tState_Skirmish	?vfunction4@tState_Skirmish@@UAE_NXZ	claim		vtable
+0x004800f2	function	fn_004800f2	tState_Skirmish	?vfunction22@tState_Skirmish@@UAEXXZ	claim		vtable
+0x00480152	function	fn_00480152	tState_Skirmish	?vfunction20@tState_Skirmish@@UAEXXZ	claim		vtable
 0x004801a5	function	fn_004801a5	tState_Skirmish				vtable
 0x004802f4	function	fn_004802f4					none
 0x004804c5	function	fn_004804c5					none
 0x00480672	thunk	tMetaLocationSpec::~tMetaLocationSpec	tMetaLocationSpec				sdk
-0x00480677	function	fn_00480677					none
+0x00480677	function	fn_00480677		?fn_00480677@tState_Skirmish@@QAEXPAVC_0060e11e@@@Z	add		none
 0x004807e7	function	fn_004807e7					none
 0x00480abf	function	nDataStore::tStreamable::~tStreamable	nDataStore::tStreamable				rtti
 0x00480ba3	function	fn_00480ba3	tState_Skirmish				vtable
-0x0048179b	function	fn_0048179b					none
-0x004817a9	function	fn_004817a9	tState_Skirmish				vtable
-0x004817b7	function	fn_004817b7	tState_Skirmish				vtable
+0x0048179b	function	fn_0048179b		?fn_0048179b@fn_0048179b_Object@@QAEPADXZ	claim		none
+0x004817a9	function	fn_004817a9	tState_Skirmish	?vfunction6@tState_Skirmish@@UAEXH@Z	claim		vtable
+0x004817b7	function	fn_004817b7	tState_Skirmish	?vfunction15@tState_Skirmish@@UAEXPAUc_0046aa10_message@@@Z	claim		vtable
 0x004817ef	function	fn_004817ef					none
-0x004819a4	function	fn_004819a4					none
-0x00481a1c	function	fn_00481a1c					none
+0x004819a4	function	fn_004819a4		?fn_004819a4@tState_Skirmish@@QAEXXZ	claim		none
+0x00481a1c	function	fn_00481a1c		?fn_00481a1c@@YG_NHH@Z	claim		none
 0x00481a75	function	fn_00481a75					none
 0x00481aef	function	fn_00481aef					none
 0x00481bf2	function	fn_00481bf2					none
