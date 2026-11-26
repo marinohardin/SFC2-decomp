@@ -17797,7 +17797,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067caf0	function	fn_0067caf0					none
 0x0067cb30	function	fn_0067cb30					none
 0x0067cb40	function	fn_0067cb40					none
-0x0067cb70	function	tObjBase::tObjBase	tObjBase	??0tObjBase@@QAE@XZ	callers		rtti
+0x0067cb70	function	tObjBase::tObjBase	tObjBase	??0tObjBase@@QAE@XZ	claim		rtti
 0x0067cbf0	function	fn_0067cbf0	tObjBase				vtable
 0x0067cc10	function	fn_0067cc10	tObjBase				vtable
 0x0067cc50	function	fn_0067cc50					none
