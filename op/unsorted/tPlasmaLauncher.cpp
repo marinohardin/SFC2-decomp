@@ -143,6 +143,18 @@ float tPlasmaLauncher::vfunction143(char param_1, unsigned char param_2)
     return result;
 }
 
+// FUNCTION: STARFLEETOP 0x004e7bb8
+void tPlasmaLauncher::vfunction80()
+{
+    if (field_10 == 0)
+    {
+        if (field_488 == 0.0f)
+            field_488 = 0.25f;
+    }
+    else
+        tBaseWeapon::vfunction80();
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
