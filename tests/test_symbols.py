@@ -457,3 +457,68 @@ def test_a_failed_write_leaves_no_temporary_file(tmp_path, monkeypatch):
         pass
     assert target.read_text() == 'old\n'
     assert not (tmp_path / 'T.tsv.tmp').exists()
+
+
+def reclass(tmp_path, capsys, text, *args):
+    setup(tmp_path, text)
+    rc, out = run(tmp_path, capsys, 'reclass', *args)
+    return rc, out, (tmp_path / 'T.tsv').read_text()
+
+
+DTOR = '0x00401010\tfunction\ttOldView::~tOldView\ttOldView\t\t\t\trtti'
+METH = '0x00401010\tfunction\ttOldView::Draw\ttOldView\t\t\t\trtti'
+
+
+def test_reclass_turns_a_destructor_of_the_old_class_into_the_placeholder(tmp_path, capsys):
+    text = HEAD + DTOR + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'slot 5')
+    assert rc == 0
+    assert got == HEAD + '0x00401010\tfunction\tfn_00401010\ttNewView\t\t\t\tvtable\n'
+    assert out == '0x00401010: class tOldView -> tNewView, name fn_00401010 (slot 5)\n'
+
+
+def test_reclass_moves_the_class_part_of_a_method_name_and_is_idempotent(tmp_path, capsys):
+    text = HEAD + METH + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert got == HEAD + '0x00401010\tfunction\ttNewView::Draw\ttNewView\t\t\t\trtti\n'
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', 'x')
+    assert (rc, out) == (0, '0x00401010: unchanged\n')
+    assert (tmp_path / 'T.tsv').read_text() == got
+
+
+def test_reclass_needs_an_evidence_note(tmp_path, capsys):
+    setup(tmp_path, HEAD + METH + '\n')
+    try:
+        sym.main(['--table', str(tmp_path / 'T.tsv'), 'reclass', '0x00401010', 'tNewView'])
+    except SystemExit as e:
+        assert e.code == 2
+    else:
+        raise AssertionError('no SystemExit')
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', ' ')
+    assert rc == 1 and out.startswith('ERROR --evidence')
+
+
+def test_reclass_refuses_a_mangled_row_and_changes_nothing(tmp_path, capsys):
+    rc, out, got = reclass(tmp_path, capsys, GOOD, '0x00401000', 'tOther', '--evidence', 'x')
+    assert rc == 1 and out.startswith('ERROR 0x00401000 has a decorated name')
+    assert got == GOOD
+
+
+def test_reclass_refuses_a_claimed_row_unless_forced(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttOldView::Draw\ttOldView\t?Draw@tOldView@@QAEXXZ\tclaim\t\tclaim'
+    text = HEAD + row + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and 'is claimed under tOldView' in out and got == text
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1
+    rc, out = run(tmp_path, capsys, 'reclass', '0x00401010', 'tNewView', '--evidence', 'x', '--force')
+    assert rc == 0
+    assert (tmp_path / 'T.tsv').read_text() == HEAD + row.replace('tOldView::', 'tNewView::').replace(
+        '\ttOldView\t', '\ttNewView\t').replace('?Draw@tNewView', '?Draw@tOldView') + '\n'
+
+
+def test_reclass_refuses_to_rename_under_an_add_symbol_unless_forced(tmp_path, capsys):
+    row = '0x00401010\tfunction\ttOldView::Draw\ttOldView\t?Draw@tOldView@@QAEXXZ\tadd\t\trtti'
+    text = HEAD + row + '\n'
+    rc, out, got = reclass(tmp_path, capsys, text, '0x00401010', 'tNewView', '--evidence', 'x')
+    assert rc == 1 and 'has symbol ?Draw@tOldView@@QAEXXZ' in out and got == text

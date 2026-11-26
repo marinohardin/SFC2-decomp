@@ -9,6 +9,7 @@ analysis/scripts/seed_symbols.py.
     python3 tools/symbols.py [--table T] add <address> <symbol> [--declaration TEXT]
     python3 tools/symbols.py [--table T] claim [<address>...] [--build B] [--src-root R]
                                                  [--replace-evidence]
+    python3 tools/symbols.py [--table T] reclass <address> <class> --evidence TEXT [--force]
     python3 tools/symbols.py [--table T] show <address>...
 
 `check` compares the table with <build>/symbols.tsv only when the build was made from the tree
@@ -497,6 +498,67 @@ def cmd_add(a):
     return 0
 
 
+def cmd_reclass(a):
+    """Correct the class of a row (and the class part of its name). The note is printed, not
+    stored: the table has no column for it."""
+    table = a.table or default_table()
+    try:
+        address = address_text(a.address)
+    except ValueError as e:
+        print(f'ERROR {e}')
+        return 1
+    new_class, note = a.new_class, a.evidence.strip()
+    if not note or '\t' in note or '\n' in note:
+        print('ERROR --evidence must be a one-line note that says how the class is known')
+        return 1
+    if not re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*(::[A-Za-z_][A-Za-z0-9_]*)*', new_class) \
+            or has_placeholder(new_class):
+        print(f'ERROR {new_class!r} is not a class name (a placeholder is not evidence)')
+        return 1
+    with open(table, encoding='utf-8', newline='') as f:
+        lines = f.read().split('\n')
+    idx = None
+    for i, line in enumerate(lines[1:], 1):
+        cells = line.split('\t')
+        if len(cells) == len(COLUMNS) and cells[0] == address and cells[1] != 'folded':
+            idx = i
+    if idx is None:
+        print(f'ERROR {address} has no row in {shown(table)}')
+        return 1
+    row = lines[idx].split('\t')
+    old = row[3]
+    if row[5] == 'mangled' or row[7] == 'mangled':
+        print(f'ERROR {address} has a decorated name from the original ({row[4] or row[2]}): '
+              'it is stronger than a correction')
+        return 1
+    new = list(row)
+    new[3] = new_class
+    prefix = old + '::' if old else None
+    if prefix and row[2].startswith(prefix):
+        rest = row[2][len(prefix):]
+        if rest in (old, '~' + old):
+            # a constructor or destructor of the old class names nothing in the new one
+            new[2], new[7] = 'fn_' + address[2:], 'vtable'
+        else:
+            new[2] = new_class + '::' + rest
+    if new == row:
+        print(f'{address}: unchanged')
+        return 0
+    if row[5] == 'claim' or row[7] == 'claim':
+        if not a.force:
+            print(f'ERROR {address} is claimed under {old or "no class"}: the next seed follows '
+                  'the claim; use --force only if the claim is what is wrong')
+            return 1
+    if new[2] != row[2] and row[4] and not a.force:
+        print(f'ERROR {address} has symbol {row[4]}, which names {row[2]}: the symbol is '
+              'stronger than a correction; use --force to rename anyway')
+        return 1
+    lines[idx] = '\t'.join(new)
+    write_atomic(table, '\n'.join(lines))
+    print(f'{address}: class {old or "(none)"} -> {new_class}, name {new[2]} ({note})')
+    return 0
+
+
 def read_result_symbols(path):
     """{address: symbol} of the claims a `build-and-verify.sh <function> --json` output rebuilt
     (every function of the units it built), as harness/lib/verify.symbol_table_rows names them;
@@ -614,6 +676,14 @@ def main(argv=None):
     c.add_argument('--replace-evidence', action='store_true',
                    help='also replace a symbol whose symbol_evidence is mangled or add')
     c.set_defaults(fn=cmd_claim)
+    r = sub.add_parser('reclass', help="correct a row's class (and the class in its name)")
+    r.add_argument('address')
+    r.add_argument('new_class')
+    r.add_argument('--evidence', required=True,
+                   help='how the class is known (printed; the table has no column for it)')
+    r.add_argument('--force', action='store_true',
+                   help='also change a claimed row, or rename a row that has a symbol')
+    r.set_defaults(fn=cmd_reclass)
     h = sub.add_parser('show', help='print rows')
     h.add_argument('address', nargs='+')
     h.set_defaults(fn=cmd_show)
