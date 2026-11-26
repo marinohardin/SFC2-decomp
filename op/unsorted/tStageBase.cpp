@@ -12,9 +12,11 @@ public:
 class fn_00693ef0_Owner
 {
 public:
-	char pad_00[0x14];
+	char pad_00[0x10];
+	void *m10;
 	char *m14;
 	char pad_18[0x4];
+	void fn_00693fc0( int a, int b, int c, int d, short *r, int m );
 	bool fn_00693ef0( void *arg );
 	void fn_00693e90( tObjBase *obj );
 };
@@ -32,4 +34,22 @@ bool fn_00693ef0_Owner::fn_00693ef0( void *arg )
 		return true;
 	}
 	return false;
+}
+
+// HYPOTHESIS: the callee's real class and parameter types are not recovered.
+void fn_006969c0( int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l, int m );
+
+// FUNCTION: STARFLEETOP 0x00693fc0
+void fn_00693ef0_Owner::fn_00693fc0( int a, int b, int c, int d, short *r, int m )
+{
+	if ( m10 != 0 )
+	{
+		char *p = m14;
+		if ( p != 0 )
+		{
+			unsigned int w = *(short *)( p + 0x6a ) - *(short *)( p + 0x66 );
+			w = ( ( (int)w < 0 ) - 1 ) & w;
+			fn_006969c0( a, b, c, d, r[0], r[1], r[2], r[3], *(int *)( p + 0x60 ), *(int *)( p + 0x70 ), w, *(unsigned char *)( p + 0x74 ), m );
+		}
+	}
 }
