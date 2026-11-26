@@ -12,6 +12,10 @@ OBJDIFF_VERSION=v3.8.3
 case "$(uname -s)-$(uname -m)" in
     Darwin-arm64) asset=objdiff-cli-macos-arm64
         sum=27dbd79196394c246dde77ef0a6ac855ff6c568069171dd7db0093f39c03ee8d ;;
+    # Not yet run end to end; the checksum is the release's published digest. The harness finds
+    # it through OBJDIFF (CONTRIBUTING.md, "What you need").
+    Linux-x86_64) asset=objdiff-cli-linux-x86_64
+        sum=e823ae932a56c68dcd86b68d12f2268c953e0c027402162c8a6dfa6a00d65008 ;;
     *) echo "calibrate.sh: add an objdiff-cli asset and checksum for $(uname -s)-$(uname -m)" >&2
        exit 1 ;;
 esac
