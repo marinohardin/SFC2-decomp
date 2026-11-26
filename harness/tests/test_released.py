@@ -1,7 +1,11 @@
 """The owner's released-function list: a listed address may leave the base gate; nothing else may."""
+import json
+from types import SimpleNamespace
+
 import pytest
 
-from harness.lib import matched
+from conftest import FakeIndex
+from harness.lib import funcs, matched, paths, source, verify
 
 HEADER = 'address\tdate\treason\n'
 ROW = '0x00427366\t2026-11-24\tdefined twice\n'
@@ -74,11 +78,6 @@ def test_a_malformed_list_is_an_error(tmp_path, text, message):
 
 # --- the landing step's in-tree check (verify.py --land) -------------------------------------
 
-from types import SimpleNamespace  # noqa: E402
-
-from conftest import FakeIndex  # noqa: E402
-from harness.lib import funcs, paths, source, verify  # noqa: E402
-
 LISTED, UNLISTED = 0x00427366, 0x00401000
 
 
@@ -97,6 +96,14 @@ class _Index(FakeIndex):
 def _recorded(score, exact=False):
     return dict(name='x', symbol='?x@@YAXXZ', unit='u.cpp', size=16, score=score, exact=exact,
                 recorded='2026-11-01')
+
+
+def json_copy(d):
+    return json.loads(json.dumps(d))
+
+
+def _saved(path):
+    return json.loads(path.read_text())['functions']
 
 
 @pytest.fixture
@@ -131,24 +138,20 @@ def landing(tmp_path, monkeypatch):
                     exact=exact, symbol=f'?{fn.name}@@YAXXZ', size=16, rebuilt_size=16,
                     error=None, relocs=[], diff_rows=[], diff_count=0, side_by_side='-')
     monkeypatch.setattr(verify, 'score_function', score_function)
-    base = {'version': 1, 'functions': {'0x00427366': _recorded(37.41),
-                                        '0x00401000': _recorded(50.0)}}
-    matched.save(paths.MATCHED_SET, json_copy(base))
+    state = SimpleNamespace(scores=scores, path=tmp_path / 'matched_set.json')
+
+    def recorded_as(listed):
+        """Records LISTED as `listed` (UNLISTED at 50%) in the tree and the base alike."""
+        state.base = {'version': 1, 'functions': {'0x00427366': listed,
+                                                  '0x00401000': _recorded(50.0)}}
+        matched.save(paths.MATCHED_SET, json_copy(state.base))
 
     def run():
         return verify.run(['0x00401000', '0x00427366'], check_all=True, record=True,
-                          now='2026-11-26', base=(json_copy(base), 'develop'), land=True)
-    return SimpleNamespace(run=run, scores=scores, path=tmp_path / 'matched_set.json')
-
-
-def json_copy(d):
-    import json
-    return json.loads(json.dumps(d))
-
-
-def _saved(path):
-    import json
-    return json.loads(path.read_text())['functions']
+                          now='2026-11-26', base=(json_copy(state.base), 'develop'), land=True)
+    recorded_as(_recorded(37.41))
+    state.recorded_as, state.run = recorded_as, run
+    return state
 
 
 def test_landing_records_a_listed_function_at_its_lower_score(landing):
@@ -166,12 +169,9 @@ def test_landing_records_a_listed_function_at_its_lower_score(landing):
 
 
 def test_landing_records_a_listed_function_that_is_no_longer_exact(landing):
-    base = {'version': 1, 'functions': {'0x00427366': _recorded(100.0, True),
-                                        '0x00401000': _recorded(50.0)}}
-    matched.save(paths.MATCHED_SET, json_copy(base))
+    landing.recorded_as(_recorded(100.0, True))
     landing.scores[LISTED] = (100.0, False)
-    rep = verify.run(['0x00401000', '0x00427366'], check_all=True, record=True,
-                     now='2026-11-26', base=(json_copy(base), 'develop'), land=True)
+    rep = landing.run()
     assert rep.regressions == []
     assert any(ln.startswith('INFO  0x00427366 g 100.00% partial') and
                'released (2026-11-24): defined twice' in ln for ln in rep.lines)
@@ -210,3 +210,14 @@ def test_record_released_stores_only_a_listed_worse_entry():
     assert data['functions']['0x00427366'] == dict(name='f', score=36.38, exact=False,
                                                    recorded='2026-11-26')
     assert data['functions']['0x00401000']['score'] == 50.0
+
+
+def test_a_listed_function_still_exact_keeps_the_stale_row_warning_on_landing(landing):
+    landing.recorded_as(_recorded(100.0, True))
+    landing.scores[LISTED] = (100.0, True)
+    rep = landing.run()
+    assert rep.regressions == []
+    assert ('WARN  0x00427366 is on analysis/results/released.tsv but is still exact: remove '
+            'the row' in rep.lines)
+    assert not any('released (' in ln for ln in rep.lines)
+    assert _saved(landing.path)['0x00427366']['recorded'] == '2026-11-01'
