@@ -109,3 +109,40 @@ void __stdcall fn_005e8be0( std::map< std::pair< int, int >, bool >* known, char
 		*(long*) ( record + 0x44 ) = 0;
 	}
 }
+
+// HYPOTHESIS: the member is a table of seven longs (colours of a palette entry); the class header
+// places only its first byte, so the fields are written through offsets.
+// FUNCTION: STARFLEETOP 0x005e8e55
+void tMetaClientMapQueueMember::fn_005e8e55( int arg )
+{
+	long* p = (long*) this;
+	switch( arg )
+	{
+	case 0:
+		p[ 0 ] = 0x88;
+		p[ 1 ] = 0x72;
+		p[ 2 ] = 0x66;
+		p[ 3 ] = 0x39;
+		p[ 4 ] = 0x11;
+		p[ 5 ] = 0x44;
+		p[ 6 ] = 0x39;
+		break;
+	case 1:
+		p[ 0 ] = 0x68;
+		p[ 1 ] = 0x58;
+		p[ 2 ] = 0x4e;
+		p[ 3 ] = 0x2c;
+		p[ 4 ] = 0xd;
+		p[ 5 ] = 0x34;
+		p[ 6 ] = 0x2c;
+		break;
+	case 2:
+		p[ 0 ] = 0x18;
+		p[ 1 ] = 0x16;
+		p[ 2 ] = 0x12;
+		p[ 3 ] = 0xb;
+		p[ 4 ] = 3;
+		p[ 5 ] = 0xc;
+		p[ 6 ] = 0xb;
+	}
+}
