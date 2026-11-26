@@ -348,3 +348,34 @@ void __fastcall fn_00522e6d(fn_0090bed4_Object *self, int, char param_1, int par
 	*((tObject_00479331 *)((char *)self + 0x1b90))->fn_00479331(&param_1) = param_2;
 }
 
+// HYPOTHESIS: a member of fn_0090bed4_Object that runs after the table is filled; it takes no arguments.
+void fn_00522f1e();
+
+// FUNCTION: STARFLEETOP 0x00522e86
+// HYPOTHESIS: the two blocks at +0x1698 and +0x16a8 are begin/end pairs of 0x1a0-byte records.
+void __fastcall fn_00522e86(char *self)
+{
+	int **pPair = (int **)(self + 0x169c);
+	int n = 2;
+	do {
+		for (int *rec = pPair[-1]; rec != *pPair; rec += 0x68) {
+			int i = 0;
+			if (0 < rec[100]) {
+				int *p = rec;
+				do {
+					*p = *((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)p);
+					int *q = p + 1;
+					int *r = ((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)q);
+					i++;
+					*q = *r;
+					p += 2;
+				} while (i < rec[100]);
+			}
+		}
+		pPair += 4;
+		n--;
+	} while (n != 0);
+	*(char *)(self + 0x16b4) = 1;
+	fn_00522f1e();
+}
+
