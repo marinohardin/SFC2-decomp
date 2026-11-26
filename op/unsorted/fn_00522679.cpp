@@ -230,3 +230,20 @@ void fn_0090bed4_Object::fn_00522bdf(int param_1, tCommandDestination *pDestinat
 	((tObject_00522c00 *)this)->fn_00522c00(pEntity, pDestination);
 }
 
+// HYPOTHESIS: a member of the object fn_00523543 returns (this in ecx), taking the entity's +0x1c value and the destination; that class is not in a header yet.
+char __fastcall fn_0051c5d1(void *self, int, void *pValue, tCommandDestination *pDestination);
+
+// FUNCTION: STARFLEETOP 0x00522c00
+void tObject_00522c00::fn_00522c00(void *pEntity, tCommandDestination *pDestination)
+{
+	vfunction33_result *pShip = (vfunction33_result *)pEntity;
+	fn_0090bed4_Object *self = (fn_0090bed4_Object *)this;
+	if (pShip != 0) {
+		if (pShip->fn_00410223() == -1)
+			self->fn_0052280a((tEntity *)pShip);
+		void *pFleet = self->fn_00523543(pShip->field_60);
+		if (pFleet != 0)
+			fn_0051c5d1(pFleet, 0, (void *)pShip->field_1c, pDestination);
+	}
+}
+
