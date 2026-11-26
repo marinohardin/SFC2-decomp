@@ -454,6 +454,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     cfg = source.load_units()
     data = matched.load(paths.MATCHED_SET)
+    released_list = matched.load_released(paths.RELEASED)
     if base is not None:
         base_data, label = base
         base_data, released = matched.release_listed(
@@ -461,8 +462,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
-        base_data, used, stale = matched.release_released(
-            base_data, data, matched.load_released(paths.RELEASED))
+        base_data, used, stale = matched.release_released(base_data, data, released_list)
         for k, date, reason in used:
             rep.add('INFO', f'{k} released from {label} ({date}): {reason}')
         for k in stale:
@@ -617,7 +617,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                                  table_symbol=row[0] if row and row[1] == 'claim' else None)
             res['claimed'] = a in claimed_addrs
             sub.results.append(res)
-            _report_function(sub, data, fn, res)
+            _report_function(sub, data, fn, res, released_list)
         return sub
 
     for sub in _in_threads(build_and_score, sorted(by_unit.items()), jobs):
@@ -656,6 +656,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                     changed = True
                     rep.add('OK', f'{res["address"]} recorded in matched_set.json at '
                             f'{res["score"]:.2f}%')
+                elif land and matched.record_released(data, int(res['address'], 16), entry, now,
+                                                      released_list):
+                    changed = True
+                    rep.add('INFO', f'{res["address"]} recorded in matched_set.json at its '
+                            f'released score, {res["score"]:.2f}% (analysis/results/released.tsv)')
                 elif land and matched.refresh(data, int(res['address'], 16), entry):
                     changed = True
                     rep.add('INFO', f'{res["address"]} name, symbol, unit or size refreshed from '
@@ -1222,7 +1227,10 @@ def report_table_breaks(rep, claims, rows, check_all, own, evidence):
             rep.add('WARN', text + f' (class {b["class"]})')
 
 
-def _report_function(rep, data, fn, res):
+def _report_function(rep, data, fn, res, released=None):
+    """released: the released-function list (matched.load_released). A listed address that
+    scores lower than its recorded entry, or is no longer exact, is not a regression here: one
+    INFO line gives the list's date and reason, as the base gate does."""
     a = fn.address
     head = f'{res["address"]} {fn.name}'
     if res.get('found_by') == 'line':
@@ -1241,12 +1249,18 @@ def _report_function(rep, data, fn, res):
     detail = (f'{res["score"]:.2f}% {state} ({res["size"]} bytes original, '
               f'{res["rebuilt_size"]} rebuilt; {len(res["relocs"])} relocations, '
               f'{unverified} unverified)')
-    if matched.is_regression(data, a, res['score']) or (old and old.get('exact') and not res['exact']):
+    lowered = matched.is_regression(data, a, res['score']) or bool(
+        old and old.get('exact') and not res['exact'])
+    listed = (released or {}).get(matched.key(a)) if lowered else None
+    if lowered and not listed:
         rep.regressions.append(a)
         rep.add('ERROR', f'{head} {detail} REGRESSION: matched_set.json has {old["score"]:.2f}%')
     elif res['error']:
         rep.add('ERROR', f'{head} {detail}: {res["error"]}')
         rep.failed = rep.failed or res['claimed']
+    elif listed:
+        rep.add('INFO', f'{head} {detail} released ({listed[0]}): {listed[1]}; matched_set.json '
+                f'has {old["score"]:.2f}%')
     else:
         was = f'; matched_set.json has {old["score"]:.2f}%' if old else '; not in matched_set.json'
         rep.add('OK', f'{head} {detail}{was}')

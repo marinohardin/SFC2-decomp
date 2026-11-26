@@ -311,7 +311,12 @@ function, sorted by address). The base gate (`--base`, `scripts/check.sh`, and t
 `scripts/progress.py`) refuses a function that lost its recorded score, its exact status or its
 claim. An address on this list is not held: the run prints one `INFO` line per listed address it
 used, with the date and reason. It releases whatever the gate would call worse for that address,
-a lowered score included. A listed address that is still exact prints a stale-row warning, so the
+a lowered score included. The check of a rebuilt function against the tree's own `matched_set.json`
+does the same: a listed address that scores lower, or is no longer exact, is not a `REGRESSION`
+but one `INFO` line with the date and reason, and the landing step (`harness/landing.sh`) records
+its new, lower score, the one exception to a landing storing only raised scores. An address not
+on the list that scores lower still stops the landing, and nothing is written. A listed address
+that is still exact prints a stale-row warning, so the
 list cannot rot; remove the row then. A malformed row is an error. Adding a row needs the owner's
 approval and a reason a reader can check (for a function given up so that objects link, say); it
 is not a way to pass a lane or to hide a regression, and a lane never adds one.
