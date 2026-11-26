@@ -416,13 +416,13 @@ public:
 	// HYPOTHESIS: 0x004c3a36 sets a gauge's value through vfunction41 and refreshes it
 	// through vfunction42.
 	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	virtual void *vfunction23();
+	// vfunction24: tObjBase
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
+	// vfunction28: tObjBase
+	// vfunction29: tObjBase
 	virtual void vfunction30();
 	virtual void vfunction31();
 	virtual void vfunction32();
@@ -452,7 +452,7 @@ class tSFCStatic : public tVisObject
 public:
 	// HYPOTHESIS: vfunction24 sets the static's text, as 0x004c3a36 calls it.
 	virtual void vfunction22();
-	virtual void vfunction23();
+	virtual void *vfunction23();
 	virtual void vfunction24(const tString &s);
 };
 
@@ -938,7 +938,7 @@ class tObject_0084cfd8 : public tVisObject
 {
 public:
 	virtual void vfunction22();
-	virtual void vfunction23();
+	virtual void *vfunction23();
 	virtual void vfunction24(const tString &s);
 };
 

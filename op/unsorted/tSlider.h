@@ -19,13 +19,13 @@ public:
 	virtual ~tSlider();	// slot 3; the deleting form is 0x0068a270, the body 0x0068a290
 	// Slots 1 to 21 are tObjBase's; the slot n of the vftable is vfunction(n+1).
 	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	// vfunction23: tObjBase
+	// vfunction24: tObjBase
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
+	// vfunction28: tObjBase
+	// vfunction29: tObjBase
 	virtual void vfunction30();
 	virtual void vfunction31();
 	virtual void vfunction32();

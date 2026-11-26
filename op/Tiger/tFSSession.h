@@ -111,6 +111,30 @@ public:
 								tDir dir ) = 0;
 };
 
+// HYPOTHESIS: the platform file system part, named by the exe's RTTI and symbols. It adds no
+// member (0x8 bytes, a vtable pointer and the word tPart's constructor clears) and is the global
+// instance at 0x00905a20, built by STARFLEETOP 0x004350a9. Its vtable at 0x00798890 places the
+// seven part methods in slots 6 to 12, in tgFileSystemPart's order, then these two in slots 13
+// and 14: the exe's symbols for STARFLEETOP 0x00630cf0 and 0x00630d70.
+class twFileSystemPart: public tgFileSystemPart
+{
+public:
+	twFileSystemPart();
+	virtual ~twFileSystemPart();
+
+	virtual tVolIterator	mGetVolIterator( tSession session );
+	virtual tVolume			mGetNamedVolume( tSession session, tString name );
+	virtual tPath			mGetAppPath( tSession session );
+	virtual tDir			mGetSpecialDir( tSession session, eSpecialDir dir );
+	virtual tPath			mDuplicatePath( tSession session, tPath path );
+	virtual tPath			mFileOpenDialog( tSession session, tString &prompt, tString &filter,
+								tDir dir );
+	virtual tPath			mFileSaveDialog( tSession session, tString &prompt, tString &filter,
+								tDir dir );
+	virtual tPath			mPathFromWinString( tSession session, tString name );
+	virtual tString			mWinStringFromPath( tPath path );
+};
+
 class tFSSession
 {
 	friend class tFileSession;
@@ -231,7 +255,11 @@ public:
 	// HYPOTHESIS: the name, the parent volume and the parent directory, as twVolume::mGetRoot
 	// (STARFLEETOP 0x006313e0) passes them; the argument names are not recovered.
 	twDir( const tString &name, tVolume volume, tDir parent );
+	// HYPOTHESIS: named by the exe's symbols, STARFLEETOP 0x00622870 (the copy constructor) and
+	// 0x00636770 (the comparison, which returns a byte); no body is written yet.
+	twDir( const twDir &other );
 	~twDir();
+	iTruth	operator==( const twDir &other );
 
 
 protected:
@@ -240,8 +268,10 @@ protected:
 public:
 	// HYPOTHESIS: the parent volume at +0x04 and the parent directory at +0x14, as
 	// twDir::mMakeFullPath (STARFLEETOP 0x006315d0) reads them; the name at +0x24 and the full
-	// path built from it at +0x8c. The words at +0x4c and +0x50 and the strings at +0x64 are not
-	// recovered.
+	// path built from it at +0x8c. The constructors (STARFLEETOP 0x00621100, 0x00634f80) store a
+	// session at +0x4c, its vtable pointer then its cookie word, which the two words below hold
+	// as plain values; they also build the directory at +0x54 and the string at +0x64, and size
+	// the object at 0xb4.
 	tVolume	f_04;
 	tDir	f_14;
 	tString	f_24;

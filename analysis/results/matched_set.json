@@ -17223,9 +17223,9 @@
    "symbol": "?vfunction2@tSndMgr_Miles@@UAEDPAUHWND__@@@Z",
    "unit": "unsorted/tSndMgr_Miles.cpp",
    "size": 592,
-   "score": 99.937,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0050f0f7": {
    "name": "tSndMgr_Miles::vfunction3",
@@ -22253,10 +22253,10 @@
    "name": "FUN_00569c83",
    "symbol": "?fn_00569c83@tTransactionUpdateStores@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
-   "size": 2650,
-   "score": 56.073,
+   "size": 2622,
+   "score": 99.993,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-26"
   },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
@@ -23091,36 +23091,36 @@
    "symbol": "?fn_00571018@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 374,
-   "score": 99.957,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0057118e": {
    "name": "FUN_0057118e",
-   "symbol": "?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z",
+   "symbol": "?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_0057118e_object@@@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 374,
-   "score": 99.957,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00571304": {
    "name": "FUN_00571304",
-   "symbol": "?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z",
+   "symbol": "?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571304_object@@@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 374,
-   "score": 99.957,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0057147a": {
    "name": "FUN_0057147a",
-   "symbol": "?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z",
+   "symbol": "?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_0057147a_object@@@Z",
    "unit": "unsorted/fn_00571000.cpp",
    "size": 374,
-   "score": 99.957,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005715f0": {
    "name": "FUN_005715f0",
@@ -44571,7 +44571,7 @@
   },
   "0x00708330": {
    "name": "FUN_00708330",
-   "symbol": "_$E22",
+   "symbol": "_$E29",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
    "score": 40.398,
@@ -44580,7 +44580,7 @@
   },
   "0x00708410": {
    "name": "FUN_00708410",
-   "symbol": "_$E25",
+   "symbol": "_$E32",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -44589,7 +44589,7 @@
   },
   "0x00708490": {
    "name": "FUN_00708490",
-   "symbol": "_$E28",
+   "symbol": "_$E35",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
    "score": 40.398,
@@ -44598,7 +44598,7 @@
   },
   "0x00708570": {
    "name": "FUN_00708570",
-   "symbol": "_$E30",
+   "symbol": "_$E37",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -44607,7 +44607,7 @@
   },
   "0x007085f0": {
    "name": "FUN_007085f0",
-   "symbol": "_$E33",
+   "symbol": "_$E40",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
    "score": 40.398,
@@ -44616,7 +44616,7 @@
   },
   "0x007086d0": {
    "name": "FUN_007086d0",
-   "symbol": "_$E35",
+   "symbol": "_$E42",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -44673,9 +44673,9 @@
    "symbol": "?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 784,
-   "score": 79.659,
+   "score": 79.663,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-26"
   },
   "0x0070e250": {
    "name": "tWaitForObject::tResult::tResult",

@@ -632,13 +632,13 @@ void tPhysicalEntity::vfunction39(int aID)
 		field_0x110 = false;
 	}
 }
-// HYPOTHESIS: only the name is known here; the class derives from tPhysicalEntity (its
-// vftable at 0x00797430 shares tPhysicalEntity's slots), which is not declared as a base yet.
-class tEntity_Weapon
-{
-public:
-	~tEntity_Weapon();
-};
+// tEntity_Weapon is declared in its header; the lines here keep the unit's line numbers.
+#include "unsorted/tEntity_Weapon.h"
+
+
+
+
+
 // HYPOTHESIS: the code at 0x00413dd6 (its exception-frame setup and body) is rebuilt as
 // tPhysicalEntity::~tPhysicalEntity, which claims 0x00413dd6. This empty definition is not the original; it stays
 // until that code moves here, because a caller or a vtable needs it.

@@ -135,13 +135,13 @@ public:
 	virtual ~tVisGroup();
 	tVisGroup *scalar_deleting_destructor( unsigned char flags );	// 0x0067dba0
 	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	// vfunction23: tObjBase
+	// vfunction24: tObjBase
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
+	// vfunction28: tObjBase
+	// vfunction29: tObjBase
 	virtual void vfunction30();
 	// HYPOTHESIS: the event handler of tObjBase (slot 31), as in tListBox_Base; 0x0067d1c0 is the base's.
 	virtual bool vfunction31( int *event );	// 0x0067dd00

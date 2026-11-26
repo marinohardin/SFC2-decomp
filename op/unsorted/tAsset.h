@@ -9,6 +9,8 @@
 
 class tStream;
 
+class c_00678500;
+
 // HYPOTHESIS: only what tListBox_Base::vfunction37 reads is declared; slot names unknown.
 class tAsset
 {
@@ -16,6 +18,15 @@ public:
 	tAsset();
 	virtual ~tAsset();
 	short fn_00675bf0();
+	// vftable 0x007b7ad8: slot 0 the destructor (deleting form 0x00677d00), slots 1 to 3 are
+	// empty functions that return 0 or nothing (0x006db8f0, 0x006d1e40, 0x0069f470), and the
+	// two stream slots follow.
+	// The derived assets override them (tVisGroupAsset, the control assets) with a member of
+	// c_00678500's type: slot 1 takes an id and makes an object for it, slot 2 assigns that
+	// member from the argument, slot 3 returns its address.
+	virtual void *vfunction2( int id );
+	virtual void vfunction3( const c_00678500& x );
+	virtual c_00678500 *vfunction4();
 	virtual tStream& vfunction5( tStream& s );
 	virtual tStream& vfunction6( tStream& s );
 
@@ -28,6 +39,7 @@ public:
 	short field_5A;
 #pragma pack(pop)
 };
+typedef char tAsset_size_check[ sizeof( tAsset ) == 0x5c ? 1 : -1 ];
 
 
 // MATCH-ONLY: the original inlines this destructor into the derived ones.
