@@ -911,7 +911,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041a164	function	fn_0041a164					none
 0x0041a1c9	function	fn_0041a1c9					none
 0x0041a2a9	function	fn_0041a2a9					none
-0x0041a2f0	function	fn_0041a2f0					none
+0x0041a2f0	function	fn_0041a2f0		??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@J@Z	add		none
 0x0041a3bc	function	fn_0041a3bc					none
 0x0041a403	function	fn_0041a403					none
 0x0041a483	function	fn_0041a483					none
@@ -13887,7 +13887,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005d8d1d	function	fn_005d8d1d					none
 0x005d8d47	function	fn_005d8d47					none
 0x005d8e02	function	fn_005d8e02					none
-0x005d8e25	function	fn_005d8e25					none
+0x005d8e25	function	fn_005d8e25		??4?$tInterlockedScalar@_N@@QAE_N_N@Z	add		none
 0x005d8e6f	function	fn_005d8e6f					none
 0x005d8e72	function	fn_005d8e72	tWONMemberCallback<tWONInterSwitchConnection,WONAPI::SmartPtr<WONAPI::AsyncOp>_>				vtable
 0x005d8ec8	function	tInterlockedScalar<bool>::scalar_deleting_destructor	tInterlockedScalar<bool>				rtti
@@ -20508,10 +20508,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00703920	function	nDatabase::tDatabase::tLockInfo::operator<	nDatabase::tDatabase::tLockInfo	??MtLockInfo@tDatabase@nDatabase@@QBE_NK@Z	mangled		mangled
 0x00703930	function	nDatabase::tDatabase::tLockInfo::operator==	nDatabase::tDatabase::tLockInfo	??8tLockInfo@tDatabase@nDatabase@@QBE_NK@Z	mangled		mangled
 0x00703940	function	nDatabase::tDatabase::tDatabase	nDatabase::tDatabase	??0tDatabase@nDatabase@@QAE@PAVtDatabaseStorage@1@@Z	mangled		mangled
-0x00703af0	function	nDatabase::tDatabase::`scalar_deleting_destructor'	nDatabase::tDatabase	??_GtDatabase@nDatabase@@UAEPAXI@Z	mangled		mangled
+0x00703af0	function	nDatabase::tDatabase::`scalar_deleting_destructor'	nDatabase::tDatabase	??_GtDatabase@nDatabase@@UAEPAXI@Z	claim		mangled
 0x00703b10	function	fn_00703b10					none
 0x00703be0	function	fn_00703be0					none
-0x00703cb0	function	nDatabase::tDatabase::~tDatabase	nDatabase::tDatabase	??1tDatabase@nDatabase@@UAE@XZ	mangled		mangled
+0x00703cb0	function	nDatabase::tDatabase::~tDatabase	nDatabase::tDatabase	??1tDatabase@nDatabase@@UAE@XZ	claim		mangled
 0x00703ea0	function	nDatabase::tDatabase::OnTick	nDatabase::tDatabase	?OnTick@tDatabase@nDatabase@@IAEXK@Z	mangled		mangled
 0x00704120	function	nDatabase::tDatabase::GetObjectA	nDatabase::tDatabase	?GetObjectA@tDatabase@nDatabase@@MBEPBVtDatabaseObject@2@ABVtID@2@@Z	mangled		mangled
 0x00704290	function	nDatabase::tDatabase::Flush	nDatabase::tDatabase	?Flush@tDatabase@nDatabase@@UAEXXZ	mangled		mangled
@@ -20887,7 +20887,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00715c00	function	fn_00715c00					none
 0x00715cd0	function	fn_00715cd0	nSwitch::tUniqueName				vtable
 0x00715ed0	function	fn_00715ed0	nSwitch::tUniqueName				vtable
-0x00716040	function	fn_00716040					none
+0x00716040	function	fn_00716040		?fn_00716040@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@PAK@Z	add		none
 0x00716190	function	fn_00716190					none
 0x007161a0	function	fn_007161a0					none
 0x007161d0	function	fn_007161d0					none
@@ -21017,19 +21017,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0071c710	function	std::vector<tJobManager::tJobCategory,std::allocator<tJobManager::tJobCategory>_>::`scalar_deleting_destructor'	std::vector<tJobManager::tJobCategory,std::allocator<tJobManager::tJobCategory>_>	??_G?$vector@VtJobCategory@tJobManager@@V?$allocator@VtJobCategory@tJobManager@@@std@@@std@@QAEPAXI@Z	mangled		mangled
 0x0071c750	function	fn_0071c750					none
 0x0071c7b0	function	tMemberCallback<nSwitch::tDataHandler,long>::tMemberCallback<nSwitch::tDataHandler,long>	tMemberCallback<nSwitch::tDataHandler,long>				rtti
-0x0071c8a0	function	nSwitch::tDataHandler::scalar_deleting_destructor	nSwitch::tDataHandler				rtti
-0x0071c8c0	function	nSwitch::tDataHandler::~tDataHandler	nSwitch::tDataHandler				rtti
+0x0071c8a0	function	nSwitch::tDataHandler::scalar_deleting_destructor	nSwitch::tDataHandler	??_GtDataHandler@nSwitch@@UAEPAXI@Z	claim		rtti
+0x0071c8c0	function	nSwitch::tDataHandler::~tDataHandler	nSwitch::tDataHandler	??1tDataHandler@nSwitch@@UAE@XZ	claim		rtti
 0x0071ca10	function	fn_0071ca10	nSwitch::tDataHandler				vtable
 0x0071cc20	function	fn_0071cc20	nSwitch::tDataHandler				vtable
 0x0071cdf0	function	fn_0071cdf0	nSwitch::tDataHandler				vtable
-0x0071d010	function	fn_0071d010	nSwitch::tDataHandler				vtable
-0x0071d090	function	fn_0071d090					none
-0x0071d0a0	function	fn_0071d0a0					none
-0x0071d170	function	fn_0071d170					none
-0x0071d1a0	function	fn_0071d1a0	nSwitch::tDataHandler				vtable
+0x0071d010	function	fn_0071d010	nSwitch::tDataHandler	?fn_slot6@tDataHandler@nSwitch@@UAEXK@Z	claim		vtable
+0x0071d090	function	fn_0071d090		?fn_0071d090@tDataHandler@nSwitch@@QAEXK@Z	claim		none
+0x0071d0a0	function	fn_0071d0a0		?fn_0071d0a0@tDataHandler@nSwitch@@QAEXV?$tSmartPtr@VtAddress@nSwitch@@@@@Z	claim		none
+0x0071d170	function	fn_0071d170		?fn_0071d170@tDataHandler@nSwitch@@QAEXXZ	claim		none
+0x0071d1a0	function	fn_0071d1a0	nSwitch::tDataHandler	?fn_slot7@tDataHandler@nSwitch@@UAE?AV?$tSmartPtr@VtAddress@nSwitch@@@@XZ	claim		vtable
 0x0071d1e0	function	tThread::GetCallstack	tThread	?GetCallstack@tThread@@QAEAAVtCallStack@@XZ	mangled		mangled
-0x0071d1f0	function	fn_0071d1f0	nSwitch::tDataHandler				vtable
-0x0071d220	function	fn_0071d220					none
+0x0071d1f0	function	fn_0071d1f0	nSwitch::tDataHandler	?fn_slot9@tDataHandler@nSwitch@@UAE?AV?$tSmartPtr@VtAddress@nSwitch@@@@XZ	claim		vtable
+0x0071d220	function	fn_0071d220		?fn_0071d220@tDataHandler@nSwitch@@QAEXPAVtRefCount@@@Z	claim		none
 0x0071d2d0	function	fn_0071d2d0					none
 0x0071d2e0	function	fn_0071d2e0					none
 0x0071d310	function	fn_0071d310					none
