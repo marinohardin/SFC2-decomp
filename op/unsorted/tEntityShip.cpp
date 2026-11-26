@@ -335,6 +335,14 @@ bool tEntityShip::fn_00415aed(tEntityShip *aOther)
 	return false;
 }
 
+// FUNCTION: STARFLEETOP 0x00415b6b
+float tEntityShip::vfunction63()
+{
+	if (field_a40 == 7 || field_a40 == 8)
+		return 0.0f;
+	return field_8a4 / vfunction55();
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {
