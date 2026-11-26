@@ -249,3 +249,22 @@ tState_Skirmish::~tState_Skirmish()
     // HYPOTHESIS: the object at 0x1154 is deleted through its virtual destructor; its class is unknown.
     delete (tObject *)field_0x1154;
 }
+
+long fn_004d33a8(long arg1, long arg2);
+// HYPOTHESIS: argument types unknown; returns a count.
+long fn_00482eef(long arg1, long arg2);
+// HYPOTHESIS: five values starting at 0x0084abb8.
+extern long g_0084abb8[5];
+
+// FUNCTION: STARFLEETOP 0x0047ffe0
+void fn_0047ffe0()
+{
+    int i = 1;
+    long *p = g_0084abb8;
+    do {
+        long n = fn_00482eef(i, 0);
+        fn_004d33a8(*p, n + 1);
+        p++;
+        i++;
+    } while (p < g_0084abb8 + 5);
+}
