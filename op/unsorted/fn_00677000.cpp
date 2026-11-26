@@ -1,6 +1,7 @@
 #include <vector>
 #include "unsorted/tAsset.h"
 #include "Tiger/tstring.h"
+#include "Tiger/tStream.h"
 #include <utility>
 // HYPOTHESIS: owning class unknown; this+0x170 is a vector of pointers, as tCastMgr holds there.
 class fn_00677060_Owner
@@ -95,6 +96,7 @@ struct fn_00677bd0_Element
     int field_b;
     int field_c;
     fn_00677bd0_Element();
+    void fn_00677bf0(tStream* stream);
 };
 
 // FUNCTION: STARFLEETOP 0x00677bd0
@@ -103,4 +105,37 @@ fn_00677bd0_Element::fn_00677bd0_Element()
     field_b = 0;
     field_a = 0;
     field_c = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00677bf0
+void fn_00677bd0_Element::fn_00677bf0(tStream* stream)
+{
+    tStream& s = *stream >> name;
+    unsigned short* p = (unsigned short*)&field_a;
+    s.fn_slot2(p, 4);
+    if (s.fSwap)
+    {
+        unsigned short hi = p[1];
+        unsigned short lo = p[0];
+        p[0] = (unsigned short)((hi >> 8) | (hi << 8));
+        p[1] = (unsigned short)((lo >> 8) | (lo << 8));
+    }
+    p = (unsigned short*)&field_b;
+    s.fn_slot2(p, 4);
+    if (s.fSwap)
+    {
+        unsigned short hi = p[1];
+        unsigned short lo = p[0];
+        p[0] = (unsigned short)((hi >> 8) | (hi << 8));
+        p[1] = (unsigned short)((lo >> 8) | (lo << 8));
+    }
+    p = (unsigned short*)&field_c;
+    s.fn_slot2(p, 4);
+    if (s.fSwap)
+    {
+        unsigned short hi = p[1];
+        unsigned short lo = p[0];
+        p[0] = (unsigned short)((hi >> 8) | (hi << 8));
+        p[1] = (unsigned short)((lo >> 8) | (lo << 8));
+    }
 }

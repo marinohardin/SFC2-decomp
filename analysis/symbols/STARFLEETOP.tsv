@@ -17671,7 +17671,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00677b90	function	fn_00677b90		?fn_00677b90@@YGXPAU?$pair@$$CBVtString@@H@std@@0@Z	claim		none
 0x00677bc0	function	fn_00677bc0	tFileStream				vtable
 0x00677bd0	function	fn_00677bd0		??0fn_00677bd0_Element@@QAE@XZ	claim		none
-0x00677bf0	function	fn_00677bf0					none
+0x00677bf0	function	fn_00677bf0		?fn_00677bf0@fn_00677bd0_Element@@QAEXPAVtStream@@@Z	claim		none
 0x00677ca0	function	tAsset::~tAsset	tAsset				rtti
 0x00677d00	function	tAsset::scalar_deleting_destructor	tAsset				rtti
 0x00677d20	function	fn_00677d20	tCastItem	?vfunction5@tCastItem@@UAEAAVtStream@@AAV2@@Z	claim		none
