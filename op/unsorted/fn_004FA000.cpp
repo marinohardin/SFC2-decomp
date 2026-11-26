@@ -196,3 +196,27 @@ tPoint2 tHypermass<20>::fn_004fa58f(unsigned int param_2, unsigned int param_3)
 	p.y = y * s + x * c;
 	return p;
 }
+
+// The N = 20 instance of 0x004fa662.
+// FUNCTION: STARFLEETOP 0x004faf89
+template<>
+void tHypermass<20>::fn_004fa662(tPoint3 *param_1, float param_2, char param_3)
+{
+	float d = param_2 - g_007aa560;
+	if (d >= 1.0f)
+		param_2 = g_007959cc - d * field_18;
+	else
+		param_2 = d;
+	if (param_2 < 0.0f)
+		param_2 = 0.0f;
+	else if (param_2 > g_007959cc)
+		param_2 = 1.0f;
+	if (param_3)
+		param_1->mSet(g_00946158.x * param_2, g_00946158.y * param_2, g_00946158.z * param_2);
+	else
+	{
+		param_1->x = param_2;
+		param_1->y = param_2;
+		param_1->z = param_2;
+	}
+}

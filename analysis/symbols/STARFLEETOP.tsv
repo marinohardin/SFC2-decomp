@@ -7399,7 +7399,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004fab7e	function	fn_004fab7e		?fn_004fa6ec@?$tHypermass@$0BA@@@QAEXXZ	add		none
 0x004fae4d	function	fn_004fae4d		?fn_004fa526@?$tHypermass@$0BE@@@QAE?AUtPoint3@@II@Z	claim		none
 0x004faeb6	function	fn_004faeb6		?fn_004fa58f@?$tHypermass@$0BE@@@QAE?AUtPoint2@@II@Z	claim		none
-0x004faf89	function	fn_004faf89					none
+0x004faf89	function	fn_004faf89		?fn_004fa662@?$tHypermass@$0BE@@@QAEXPAUtPoint3@@MD@Z	claim		none
 0x004fb013	function	fn_004fb013		?fn_004fa6ec@?$tHypermass@$0BE@@@QAEXXZ	add		none
 0x004fb2e3	function	fn_004fb2e3					none
 0x004fb34c	function	fn_004fb34c					none
