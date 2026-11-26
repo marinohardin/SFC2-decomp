@@ -687,7 +687,7 @@ bool tState_NetSetup::fn_004772ce(int id)
 		{
 			result = gNetControl.fn_004325a9(5);
 			fn_00434830("http://www.mplayer.com/mic/sfc.html", "sfc.mpi");
-			vfunction3();
+			vfunction4();
 			gNetControl.fn_00431821();
 			fn_0046aa58();
 		}

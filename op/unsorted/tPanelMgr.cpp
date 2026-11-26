@@ -182,27 +182,16 @@ struct c_tPanelMgr_22c { virtual ~c_tPanelMgr_22c(); };
 class tPanelMgr : public tGameState {
 public:
     virtual ~tPanelMgr();
-    // HYPOTHESIS: virtual slots 1 to 18 are not known; fn_00608bd1 calls slots 19 and 20.
-    virtual void vslot_0x04();
-    virtual void vslot_0x08();
-    virtual void vslot_0x0c();
-    virtual void vslot_0x10();
-    virtual void vslot_0x14();
-    virtual void vslot_0x18();
-    virtual void vslot_0x1c();
-    virtual void vslot_0x20();
-    virtual void vslot_0x24();
-    virtual void vslot_0x28();
-    virtual void vslot_0x2c();
-    virtual void vslot_0x30();
-    virtual void vslot_0x34();
-    virtual void vslot_0x38();
-    virtual void vslot_0x3c();
-    virtual void vslot_0x40();
-    virtual void vslot_0x44();
-    virtual void vslot_0x48();
-    virtual void vslot_0x4c();
-    virtual bool vslot_0x50();
+    // The vtable at 0x007b62a8 overrides slots 1, 2, 3, 12 and 14 of tGameState's, named as the
+    // vtable export names them (slot N is vfunctionN+1), and adds slots 19 and 20, which
+    // 0x00608bc7 calls.
+    virtual bool vfunction2();
+    virtual void vfunction3();
+    virtual bool vfunction4();
+    virtual char *vfunction13();
+    virtual void vfunction15(c_0046aa10_message *msg);
+    virtual void vfunction20();
+    virtual bool vfunction21();
     tPanelMgr *scalar_deleting_destructor(unsigned char flags);
     void fn_006082e2();
     void fn_006082f9();
@@ -213,12 +202,10 @@ public:
     void fn_006086e9();
     void fn_00608766();
 
-    bool vfunction4();
     void fn_0060a6fd();
     void fn_0060a796();
     void fn_006094a3();
     void fn_0060918d();
-    void vfunction3();
     void fn_00609e57(int arg);
     void fn_006099f1();
     void fn_006094c7();
@@ -229,7 +216,6 @@ public:
     void fn_0060a730();
     void fn_00609bce();
     fn_005ed4ad_object *fn_0060a500();
-    char *vfunction13();
     // HYPOTHESIS: 0x00424ee1 destroys 0x28-byte elements by a virtual destructor: strings.
     std::vector<tString> m_0x00c[4];
     c_tPanelMgr_value2c m_0x04c[4];
@@ -576,7 +562,7 @@ void tPanelMgr::vfunction3()
 {
     fn_0046aa10_message msg;
 
-    if (m_0x224 && vslot_0x50())
+    if (m_0x224 && vfunction21())
         return;
 
     if (m_0x170) {
@@ -585,7 +571,7 @@ void tPanelMgr::vfunction3()
                 if (msg.id == 0x10032) {
                     m_0x164 = false;
                     fn_004d32c4(g_0087b6a0);
-                    vslot_0x4c();
+                    vfunction20();
                 }
             }
         } else {
@@ -607,7 +593,7 @@ void tPanelMgr::vfunction3()
             switch (msg.id) {
             case 0x10003:
                 fn_004d32c4(g_0087b688);
-                vslot_0x4c();
+                vfunction20();
                 return;
             case 0x10004:
                 m_0x225 = false;

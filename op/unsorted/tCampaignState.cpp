@@ -3,6 +3,7 @@
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tApplication.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/c_0046aa10_msg.h"
 
 // HYPOTHESIS: a cdecl function of one pointer argument at 0x004d32cf (the call's
 // displacement lands there; the analysis export places it inside FUN_004d32c4).
@@ -85,24 +86,9 @@ public:
 	// no source line, so this declared one (which stores the vtable) stands in for it.
 	virtual ~tCampaignState();
 	tCampaignState *scalar_deleting_destructor(unsigned char flags);
-	virtual int vfunction2();
-	virtual void vfunction3();
+	// 0x0045da31, slot 3. Slot 14 (0x0045dc2b) is this class's too: both vtables hold it.
 	virtual bool vfunction4();
-	// HYPOTHESIS: slots 4 to 11 are placeholders that keep the offset of vfunction13 (0x30).
-	virtual void vfunction5();
-	// HYPOTHESIS: one argument (the original returns with ret 4).
-	virtual void vfunction6(int arg);
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
-	virtual void vfunction12();
-	// HYPOTHESIS: returns the state's name, as tState_NetSetup's slot 0x30 does.
-	virtual const char *vfunction13();
-	// HYPOTHESIS: slot 14 is a placeholder that keeps the offset of vfunction15.
-	virtual void vfunction14();
-	virtual void vfunction15(int *arg);
+	virtual void vfunction15(c_0046aa10_message *msg);
 
 	tShipUI m_0c; int m_1110;
 	c_0045dece m_1114;
@@ -175,9 +161,8 @@ public:
 	virtual void vfunction3();
 	// HYPOTHESIS: the argument is not read here.
 	virtual void vfunction6(int arg);
-	// HYPOTHESIS: remaps a key event in place; arg[0] is the action written back, arg[1] the
-	// key code read (the analysis export names this tCampaignState::vfunction15).
-	virtual void vfunction15(int *arg);
+	// The state's name (0x0045d95d); this state overrides slots 1, 2, 3, 5 and 12 of the base.
+	virtual char *vfunction13();
 
 	void fn_0045dc99(int id);
 	bool fn_0045dd02();
@@ -267,25 +252,25 @@ void tState_Campaign::vfunction6(int arg)
 }
 
 // FUNCTION: STARFLEETOP 0x0045dc2b
-void tState_Campaign::vfunction15(int *arg)
+void tCampaignState::vfunction15(c_0046aa10_message *msg)
 {
-	switch (arg[1])
+	switch (msg->m_04)
 	{
 	case 0x102:
-		arg[0] = 0x103;
+		msg->id = 0x103;
 		break;
 	case 0x103:
-		arg[0] = 0x102;
+		msg->id = 0x102;
 		break;
 	case 0x115:
 		if (g_p008cc580->vfunction5("Debug", "DebugKeys", 0))
 		{
-			if (arg[1] == 0x115)
-				arg[0] = 0x206;
-			if (arg[1] == 0x116)
-				arg[0] = 0x205;
-			if (arg[1] == 0x117)
-				arg[0] = 0x204;
+			if (msg->m_04 == 0x115)
+				msg->id = 0x206;
+			if (msg->m_04 == 0x116)
+				msg->id = 0x205;
+			if (msg->m_04 == 0x117)
+				msg->id = 0x204;
 		}
 		break;
 	}
