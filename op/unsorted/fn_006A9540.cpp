@@ -21,3 +21,15 @@ void tView3DExt::fn_006a9540()
 	field_0x1ee8 = NULL;
 	field_0x1eec.fn_006ac780();
 }
+
+// FUNCTION: STARFLEETOP 0x006a95f0
+bool tView3DExt::vfunction6()
+{
+	if ( mVtxCache )
+	{
+		delete [] mVtxCache;
+		mVtxCache = NULL;
+		mVtxCacheSize = 0;
+	}
+	return true;
+}
