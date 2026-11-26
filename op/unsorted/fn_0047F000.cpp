@@ -181,3 +181,12 @@ void c_0047f6b1_Owner::fn_0047f6b1()
     fn_004d32c4(p);
     g_00893090.assign(g_008930a4, strlen(g_008930a4));
 }
+
+// HYPOTHESIS: returns the address of a global object at 0x00914190 (type unknown).
+extern char g_00914190[];
+
+// FUNCTION: STARFLEETOP 0x0047f720
+char *fn_0047f720()
+{
+    return g_00914190;
+}
