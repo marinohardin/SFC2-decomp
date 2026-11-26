@@ -3644,7 +3644,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046f292	function	fn_0046f292	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
 0x00470b59	function	fn_00470b59		?fn_00470b59@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
 0x00470c38	function	fn_00470c38		?fn_00470c38@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
-0x00470d1b	function	fn_00470d1b					none
+0x00470d1b	function	fn_00470d1b		?fn_00470d1b@@YGIPAVtState_Multiplayer@tState_Namespace_Multiplayer@@I@Z	claim		none
 0x00470d4c	function	fn_00470d4c					none
 0x00470e13	function	fn_00470e13					none
 0x004714b7	function	fn_004714b7	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
@@ -3685,7 +3685,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004730ba	function	tNetMsg_kSetPlayerReady::~tNetMsg_kSetPlayerReady	tNetMsg_kSetPlayerReady				rtti
 0x00473141	function	fn_00473141					none
 0x0047316a	function	fn_0047316a					none
-0x00473194	function	fn_00473194					none
+0x00473194	function	fn_00473194		?fn_00473194@@YGPADPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	add		none
 0x004731cb	function	fn_004731cb					none
 0x00473243	function	tNetMsg_kSetPlayerBPVLimit::~tNetMsg_kSetPlayerBPVLimit	tNetMsg_kSetPlayerBPVLimit				rtti
 0x0047328b	function	fn_0047328b					none

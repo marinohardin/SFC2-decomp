@@ -141,3 +141,21 @@ void tState_Multiplayer::fn_00470c38( unsigned char param_1 )
 		} while ( param_1 != 0 );
 	}
 }
+
+char *__stdcall fn_00473194( tState_Multiplayer *param_1 );
+
+// FUNCTION: STARFLEETOP 0x00470d1b
+unsigned int __stdcall fn_00470d1b( tState_Multiplayer *param_1, unsigned int param_2 )
+{
+	int *p = (int *)fn_00473194( param_1 );
+	if ( p != 0 )
+	{
+		unsigned int i;
+		for ( i = 0, p += 1; i < 6; i++, p += 0x17 )
+		{
+			if ( (int)i < (int)param_2 && *p == -1 )
+				return i;
+		}
+	}
+	return param_2;
+}
