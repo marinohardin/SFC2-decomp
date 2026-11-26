@@ -3609,7 +3609,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046d0b0	function	tState_MetaLogon::tState_MetaLogon	tState_MetaLogon	??0tState_MetaLogon@@QAE@XZ	claim		rtti
 0x0046d1ac	function	tState_MetaLogon::scalar_deleting_destructor	tState_MetaLogon				rtti
 0x0046d1c8	function	tState_MetaLogon::~tState_MetaLogon	tState_MetaLogon				rtti
-0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon				vtable
+0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon	?vfunction13@tState_MetaLogon@@UAEPADXZ	claim		vtable
 0x0046d2aa	function	fn_0046d2aa					none
 0x0046d370	function	fn_0046d370	tState_MetaLogon				vtable
 0x0046d38c	function	fn_0046d38c					none

@@ -8,3 +8,11 @@ tState_MetaLogon::tState_MetaLogon()
 {
 	field_188 = 0;
 }
+
+extern char *g_008471e4;
+
+// FUNCTION: STARFLEETOP 0x0046d2a4
+char *tState_MetaLogon::vfunction13()
+{
+	return g_008471e4;
+}
