@@ -69,3 +69,16 @@ void fn_004af94b()
 	}
 	fn_004bf8d6();
 }
+
+// HYPOTHESIS: constructor of one of tState_Tactical's growable arrays {data, count, capacity}
+// with 0x1c-byte elements (the arrays at +0x410 and +0x41c); the capacity is at least 10.
+// The class is not in a header, so it is written as a free function on the array's words.
+// FUNCTION: STARFLEETOP 0x004afa1c
+void *__fastcall fn_004afa1c(void *self, int, unsigned capacity)
+{
+	if (capacity < 10)
+		capacity = 10;
+	((unsigned *)self)[2] = capacity;
+	((void **)self)[0] = operator new( capacity * 0x1c );
+	return self;
+}
