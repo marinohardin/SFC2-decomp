@@ -21,3 +21,9 @@ void tBitmapFontEx::vfunction11()
 		field_20 = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00538093
+void tBitmapFontEx::vfunction12()
+{
+	vfunction11();
+}

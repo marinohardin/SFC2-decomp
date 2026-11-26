@@ -8996,7 +8996,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00537f66	function	fn_00537f66	tBitmapFontEx	?vfunction8@tBitmapFontEx@@UAEXH@Z	claim		vtable
 0x0053805e	function	fn_0053805e	tBitmapFontEx	?vfunction10@tBitmapFontEx@@UAEXXZ	claim		vtable
 0x00538062	function	fn_00538062	tBitmapFontEx	?vfunction11@tBitmapFontEx@@UAEXXZ	claim		vtable
-0x00538093	function	fn_00538093	tBitmapFontEx				vtable
+0x00538093	function	fn_00538093	tBitmapFontEx	?vfunction12@tBitmapFontEx@@UAEXXZ	claim		vtable
 0x00538098	function	fn_00538098					none
 0x005380dd	function	fn_005380dd					none
 0x005380e3	function	fn_005380e3					none
