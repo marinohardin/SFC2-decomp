@@ -218,6 +218,31 @@ void tEntityShip::fn_00415652(int param_1)
 		fn_00419e4a(0x1f);
 	}
 }
+
+// HYPOTHESIS: slot 93 of the object at 0xad4 returns an object whose slot 97 takes one argument
+// and returns a count; the result is graded by the state at 0x878.
+// MATCH-ONLY: the second call goes through the vtable by hand until that object's class is declared.
+// FUNCTION: STARFLEETOP 0x00415672
+int tEntityShip::fn_00415672(int param_1)
+{
+	if (field_ad4)
+	{
+		void *obj = field_ad4->vfunction93();
+		if (obj)
+		{
+			typedef int (tEntityShip::*tSlot97)(int);
+			int count = (((tEntityShip *)obj)->*(*(tSlot97 *)(*(void ***)obj + 0x184 / 4)))(param_1);
+			if (field_878 <= 11)
+			{
+				if (field_878 <= 4)
+					return count;
+				if (count > 0)
+					return 4;
+			}
+		}
+	}
+	return 0;
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()

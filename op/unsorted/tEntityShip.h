@@ -73,7 +73,9 @@ public:
 	virtual tObject_00416d41_list *vfunction86();
 	virtual void vfunction87(); virtual void vfunction88(); virtual void vfunction89();
 	virtual void vfunction90(); virtual void vfunction91(); virtual void vfunction92();
-	virtual void vfunction93(); virtual void vfunction94();
+	// HYPOTHESIS: returns an object whose slot 97 0x00415672 calls.
+	virtual void *vfunction93();
+	virtual void vfunction94();
 	// HYPOTHESIS: returns the ship's cloak system; 0x00416a0e calls 0x00438390 on it.
 	virtual tCloakSystem *vfunction95();
 	virtual void vfunction96(); virtual void vfunction97(); virtual void vfunction98();
@@ -200,6 +202,7 @@ public:
 	void fn_00415628(int param_1, int param_2);
 	void fn_0041563f(int param_1);
 	void fn_00415652(int param_1);
+	int fn_00415672(int param_1);
 	void fn_00419e4a(int param_1);
 
 	// 0x1bc is cleared by the constructor.
