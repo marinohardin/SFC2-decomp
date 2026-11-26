@@ -1,27 +1,27 @@
 // Tiger/twfsys.cpp
 
 #include <windows.h>
+#include "Tiger/tsay.h"
 #include "Tiger/tstring.h"
-#include "Tiger/tgfsys.h"
+#include "Tiger/tFSSession.h"
 
-// HYPOTHESIS: the enum tgfsys.cpp declares (its enumerators not recovered there); it is not in a
-// header yet, so this unit repeats the name it needs for the mangled signature. The values 4 to 6
+// eSpecialDir (Tiger/tFileSession.h) and twFileSystemPart (Tiger/tFSSession.h) are declared in
+// headers, as the exe's global part instance needs the class too. The values 4 to 6 of the enum
 // are the ones mGetSpecialDir tests.
-enum eSpecialDir
-{
-};
 
-class twFileSystemPart {
-public:
-    virtual tVolIterator mGetVolIterator(tSession session);
-    virtual tVolume mGetNamedVolume(tSession session, tString name);
-    virtual tPath mGetAppPath(tSession session);
-    virtual tPath mDuplicatePath(tSession session, tPath path);
-    virtual tPath mFileOpenDialog(tSession session, tString &prompt, tString &filter, tDir dir);
-    virtual tPath mPathFromWinString(tSession session, tString name);
-    virtual tString mWinStringFromPath(tPath path);
-    virtual tDir mGetSpecialDir(tSession session, eSpecialDir which);
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 tPath WinParsePath(tSession session, tString &path);
 tDir WinParseDir(tSession session, tString &path);
