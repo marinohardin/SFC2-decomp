@@ -194,7 +194,8 @@ int std::string::compare(const std::string& _X) const
     return (compare(0, _Len, _X.c_str(), _X.size()));
 }
 
-// HYPOTHESIS: a caller in the original uses this instantiation.
+// MATCH-ONLY: never called; it makes VC6 emit 0x0040651e out of line, which the class body defines
+// inline and this unit does not otherwise use. HYPOTHESIS: a caller in the original used it so.
 int (std::string::*g_fn_0040651e)(const std::string&) const = &std::string::compare;
 
 // HYPOTHESIS: the library's istreambuf_iterator<char>::equal instance, written on a stand-in
