@@ -299,3 +299,26 @@ void * __fastcall fn_004afd4d(void *self)
 	memset( &block[40], 0, 0x10 );
 	return self;
 }
+
+// HYPOTHESIS: a view-volume test of a sphere (centre, radius): a distance check against the
+// point at +0x1c, a plane test with the normal at +0x0, then four side planes from +0x70.
+// FUNCTION: STARFLEETOP 0x004aff50
+bool __fastcall fn_004aff50(void *self, int, const tPoint3 &point, float radius)
+{
+	char *base = (char *)self;
+	tPoint3 &origin = *(tPoint3 *)(base + 0x1c);
+	tPoint3 &normal = *(tPoint3 *)base;
+	tPoint3 d = point - origin;
+	float distSq = d * d;
+	float reach = radius + *(float *)(base + 0x2c);
+	if (distSq > reach * reach)
+		return false;
+	if (normal * point + *(float *)(base + 0x28) + *(float *)(base + 0xc) - radius >= 0.0f)
+		return false;
+	for (int i = 0; i < 4; i++)
+	{
+		if (((tPoint3 *)(base + 0x70))[i] * d + radius < 0.0f)
+			return false;
+	}
+	return true;
+}
