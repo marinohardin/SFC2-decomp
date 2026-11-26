@@ -98,6 +98,10 @@ public:
 	tString m208;
 };
 
+// No allocation site is named in the executable; the size is the end of the last member: the
+// constructor (0x0047792f) builds tString m208 last, and each tValueI<tString> is 0x40 apart.
+typedef char tState_NetSetup_size_is_0x230[sizeof(tState_NetSetup) == 0x230 ? 1 : -1];
+
 }	// namespace tState_Namespace_NetSetup
 
 #endif	// tState_NetSetup_h
