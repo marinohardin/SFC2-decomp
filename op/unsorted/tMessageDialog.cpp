@@ -10,6 +10,14 @@
 // HYPOTHESIS: the "General_Error" string defined in unsorted/fn_00600208.cpp.
 extern std::string g_00c39ea0;
 
+#include "unsorted/tMessageDialog.h"
+
+// FUNCTION: STARFLEETOP 0x006005aa
+tMessageDialog::tMessageDialog()
+{
+	field_28 = 0;
+}
+
 // FUNCTION: STARFLEETOP 0x006006b3
 void fn_006006b3()
 {
@@ -39,8 +47,6 @@ public:
 fn_00607d61_class* fn_00607d61();
 fn_004bcfd3_class* fn_004bcfd3();
 bool fn_004d31b2( long param_1, long param_2 );
-
-#include "unsorted/tMessageDialog.h"
 
 
 
