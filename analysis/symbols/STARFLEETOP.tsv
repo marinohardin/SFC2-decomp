@@ -600,7 +600,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004102d9	function	fn_004102d9					none
 0x00410339	function	fn_00410339	tEntity				vtable
 0x00410391	function	fn_00410391	tEntity				vtable
-0x004103e2	function	fn_004103e2					none
+0x004103e2	function	fn_004103e2		?fn_004103e2@tEntityShip@@QAEXPAVtObject_00413ac3_arg@@@Z	add		none
 0x00410447	function	fn_00410447					none
 0x0041045f	function	fn_0041045f					none
 0x00410466	function	fn_00410466					none
@@ -829,7 +829,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004160ee	function	fn_004160ee	tEntityShip				vtable
 0x0041613e	function	fn_0041613e		?fn_0041613e@@YA?AUtPoint3@@PAVtObject_00413ac3_arg@@ABU1@@Z	callers		none
 0x004161da	function	fn_004161da	tEntityShip				vtable
-0x004162b9	function	fn_004162b9	tEntityShip				vtable
+0x004162b9	function	fn_004162b9	tEntityShip	?vfunction4@tEntityShip@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		vtable
 0x004165b7	function	fn_004165b7					none
 0x004165d4	function	fn_004165d4					none
 0x004165e0	function	fn_004165e0	tEntityShip				vtable
@@ -898,7 +898,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00419be0	function	fn_00419be0					none
 0x00419be7	function	fn_00419be7					none
 0x00419c3e	function	fn_00419c3e					none
-0x00419c87	function	fn_00419c87					none
+0x00419c87	function	fn_00419c87		?fn_00419c87@tEntityShip@@QAE_NXZ	add		none
 0x00419ca5	function	fn_00419ca5					none
 0x00419cc4	function	fn_00419cc4	tEntityShip				vtable
 0x00419d71	function	fn_00419d71					none

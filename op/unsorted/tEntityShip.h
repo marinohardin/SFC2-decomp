@@ -9,6 +9,72 @@
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tShipSpecs.h"
 
+// HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
+// three floats from it, at 0x18, 0x1c and 0x20.
+struct tObject_00416d41_bounds
+{
+	char pad00[0x18];
+	float field_18;
+	float field_1c;
+	float field_20;
+};
+
+// HYPOTHESIS: the object slot 86 (offset 0x158) of the object at 0xad4 returns; 0x004162b9 calls
+// slot 9 (offset 0x24) for a count.
+class tObject_00416d41_list
+{
+public:
+	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2();
+	virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5();
+	virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8();
+	virtual int vfunction9();
+};
+
+// HYPOTHESIS: the object at 0xad4 (0x00416da2 calls through it); only slots 34 and 86 are called
+// by 0x004162b9, the slots before them are not known.
+class tObject_00416d41_ad4
+{
+public:
+	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2();
+	virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5();
+	virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8();
+	virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+	virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14();
+	virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17();
+	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
+	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
+	virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
+	virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32();
+	virtual void vfunction33();
+	virtual tObject_00416d41_bounds *vfunction34();
+	virtual void vfunction35(); virtual void vfunction36(); virtual void vfunction37();
+	virtual void vfunction38(); virtual void vfunction39(); virtual void vfunction40();
+	virtual void vfunction41(); virtual void vfunction42(); virtual void vfunction43();
+	virtual void vfunction44(); virtual void vfunction45(); virtual void vfunction46();
+	virtual void vfunction47(); virtual void vfunction48(); virtual void vfunction49();
+	virtual void vfunction50(); virtual void vfunction51(); virtual void vfunction52();
+	virtual void vfunction53(); virtual void vfunction54(); virtual void vfunction55();
+	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58();
+	virtual void vfunction59(); virtual void vfunction60(); virtual void vfunction61();
+	virtual void vfunction62(); virtual void vfunction63(); virtual void vfunction64();
+	virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
+	virtual void vfunction68(); virtual void vfunction69(); virtual void vfunction70();
+	virtual void vfunction71(); virtual void vfunction72(); virtual void vfunction73();
+	virtual void vfunction74(); virtual void vfunction75(); virtual void vfunction76();
+	virtual void vfunction77(); virtual void vfunction78(); virtual void vfunction79();
+	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
+	virtual void vfunction83(); virtual void vfunction84(); virtual void vfunction85();
+	virtual tObject_00416d41_list *vfunction86();
+};
+
+// HYPOTHESIS: the object at 0x1bc; 0x004162b9 calls 0x00426563 on it with the view.
+class tObject_00426563_1bc
+{
+public:
+	void fn_00426563(tObject_00413ac3_arg *aView);
+};
+
 // HYPOTHESIS: members are placed by the constructor's stores and the offsets the class's
 // functions use; types follow the store (fstp is a float, a byte move a byte, a pointer
 // is a pointer) and are guesses where only one is seen. Names are field_<offset>: the
@@ -69,13 +135,20 @@ public:
 	// 0x194 to the address given; 0x00417b2a pops 8 bytes, so it takes a second argument.
 	virtual tPoint3 vfunction72(int param_1);
 	virtual void vfunction73(int param_1, int param_2);
-	virtual float vfunction74();
+	// HYPOTHESIS: takes a float (0x004162b9 passes 0.0 or 1.0 minus a ratio) and returns one.
+	virtual float vfunction74(float aValue);
 	// HYPOTHESIS: returns the 16-bit value at 0x92e.
 	virtual short vfunction75();
 	virtual void vfunction76(int param_1);
 
+	// HYPOTHESIS: 0x004103e2 lies in tEntity's range; it is declared here because the headers
+	// of tEntity and tPhysicalEntity are outside this lane. It takes the view.
+	void fn_004103e2(tObject_00413ac3_arg *aView);
+	// HYPOTHESIS: a test of the ship, called by 0x004162b9 to choose between two ways to draw.
+	bool fn_00419c87();
+
 	// 0x1bc is cleared by the constructor.
-	int field_1bc;
+	tObject_00426563_1bc *field_1bc;
 	tShipSpecs field_1c0;
 	int field_86c;
 	int field_870;
@@ -150,7 +223,7 @@ public:
 	int field_acc;
 	char padad0[0xad4 - 0xad0];
 	// HYPOTHESIS: the object 0x00448e4b returns when given this entity and 0.
-	void *field_ad4;
+	tObject_00416d41_ad4 *field_ad4;
 	bool field_ad8;
 	bool field_ad9;
 	bool field_ada;
