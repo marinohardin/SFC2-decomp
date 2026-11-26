@@ -1459,7 +1459,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042c66d	function	fn_0042c66d		?fn_0042c66d@fn_0042c632_Iterator@@QAEXXZ	claim		none
 0x0042c69f	function	fn_0042c69f		?fn_0042c69f@fn_0042c69f_Iterator@@QAEXXZ	claim		none
 0x0042c6da	function	fn_0042c6da		??1?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE@XZ	claim		none
-0x0042c709	function	fn_0042c709					none
+0x0042c709	function	fn_0042c709		?Lock@?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE?AV?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@XZ	claim		none
 0x0042c72f	function	fn_0042c72f		??1?$tSingleAccessWrapper@VtObject_005391b0@@@@QAE@XZ	claim		none
 0x0042c75e	function	fn_0042c75e		??1?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@XZ	claim		none
 0x0042c789	function	fn_0042c789		??1?$tAccessPointer@VtObject_005391b0@@V?$tSingleAccessWrapper@VtObject_005391b0@@@@@@QAE@XZ	claim		none
@@ -13410,7 +13410,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005cacc3	function	fn_005cacc3					none
 0x005cacee	function	fn_005cacee					none
 0x005cad11	function	fn_005cad11					none
-0x005cad49	function	fn_005cad49					none
+0x005cad49	function	fn_005cad49		??0?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@QAE@PAV?$vector@HV?$allocator@H@std@@@std@@PBV?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@Z	callers		none
 0x005cadbb	function	fn_005cadbb					none
 0x005cadc7	function	fn_005cadc7					none
 0x005cadd3	function	fn_005cadd3					none
@@ -14320,16 +14320,16 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e36a3	function	fn_005e36a3	tMetaMapControl	?fn_005e36a3@tMetaMapControl@@QAEXXZ	claim		none
 0x005e36cd	function	fn_005e36cd	tMetaMapControl	?fn_005e36cd@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@H@Z	claim		none
 0x005e370c	function	fn_005e370c	tMetaMapControl	?fn_005e370c@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@H@Z	claim		none
-0x005e374b	function	fn_005e374b	tMetaMapControl	?fn_005e374b@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@HPAUc_tScrollBar_FieldA8@@HHK@Z	claim		none
+0x005e374b	function	fn_005e374b	tMetaMapControl	?fn_005e374b@tMetaMapControl@@QAEXPAVtMetaMapSprite@@HPAUc_tScrollBar_FieldA8@@HHK@Z	claim		none
 0x005e37c4	function	fn_005e37c4	tMetaMapControl	?fn_005e37c4@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@HH@Z	claim		none
 0x005e37d8	function	fn_005e37d8	tMetaMapControl	?fn_005e37d8@tMetaMapControl@@QAEXPAUfn_005e381f_entry@@HH@Z	claim		none
-0x005e381f	function	fn_005e381f	tMetaMapControl	?fn_005e381f@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	claim		none
-0x005e3891	function	fn_005e3891	tMetaMapControl	?fn_005e3891@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	claim		none
-0x005e3903	function	fn_005e3903	tMetaMapControl	?fn_005e3903@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	claim		none
-0x005e3935	function	fn_005e3935	tMetaMapControl	?fn_005e3935@tMetaMapControl@@QAEKPAUfn_005e374b_entry@@@Z	claim		none
+0x005e381f	function	fn_005e381f	tMetaMapControl	?fn_005e381f@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z	claim		none
+0x005e3891	function	fn_005e3891	tMetaMapControl	?fn_005e3891@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z	claim		none
+0x005e3903	function	fn_005e3903	tMetaMapControl	?fn_005e3903@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z	claim		none
+0x005e3935	function	fn_005e3935	tMetaMapControl	?fn_005e3935@tMetaMapControl@@QAEKPAVtMetaMapSprite@@@Z	claim		none
 0x005e396d	function	fn_005e396d	tMetaMapControl	?fn_005e396d@tMetaMapControl@@QAEPAEH@Z	claim		none
 0x005e397b	function	fn_005e397b	tMetaMapControl	?fn_005e397b@tMetaMapControl@@QAEKPAE@Z	claim		none
-0x005e3a37	function	fn_005e3a37	tMetaMapControl	?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z	claim		none
+0x005e3a37	function	fn_005e3a37	tMetaMapControl	?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z	claim		none
 0x005e3ad8	function	fn_005e3ad8	tMetaMapControl	?fn_005e3ad8@tMetaMapControl@@QAEXXZ	claim		none
 0x005e3b6e	function	fn_005e3b6e	tMetaMapControl	?fn_005e3b6e@tMetaMapControl@@QAEXXZ	claim		none
 0x005e3b86	function	fn_005e3b86	tMetaMapControl	?fn_005e3b86@tMetaMapControl@@QAEXXZ	claim		none
@@ -14359,17 +14359,17 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e4470	function	fn_005e4470	tMetaMapControl	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	claim		none
 0x005e4531	function	fn_005e4531	tMetaMapControl	?vfunction43@tMetaMapControl@@QAEXH@Z	claim		none
 0x005e4541	function	fn_005e4541		?assign@?$vector@PAUc_tScrollBar_FieldA8@@V?$allocator@PAUc_tScrollBar_FieldA8@@@std@@@std@@QAEXIABQAUc_tScrollBar_FieldA8@@@Z	callers		none
-0x005e45a0	function	fn_005e45a0		??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ	claim		none
+0x005e45a0	function	fn_005e45a0		??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ	claim		none
 0x005e45d3	function	fn_005e45d3		??1?$vector@Ufn_005e381f_entry@@V?$allocator@Ufn_005e381f_entry@@@std@@@std@@QAE@XZ	claim		none
 0x005e4606	function	fn_005e4606		?erase@?$vector@PAUc_tScrollBar_FieldA8@@V?$allocator@PAUc_tScrollBar_FieldA8@@@std@@@std@@QAEPAPAUc_tScrollBar_FieldA8@@PAPAU3@0@Z	claim		none
-0x005e4638	function	fn_005e4638					none
+0x005e4638	function	fn_005e4638		??1tMetaMapNormalHex@@QAE@XZ	callers		none
 0x005e469e	function	fn_005e469e	tMetaMapControl				vtable
 0x005e46a9	function	tMetaMapSprite::tMetaMapSprite	tMetaMapSprite				rtti
 0x005e46ee	function	fn_005e46ee					none
 0x005e4777	function	fn_005e4777					none
 0x005e4783	function	fn_005e4783	tMetaMapSprite				vtable
 0x005e4789	function	tMetaMapNormalHex::tMetaMapNormalHex	tMetaMapNormalHex				rtti
-0x005e47d0	function	tMetaMapNormalHex::tMetaMapNormalHex	tMetaMapNormalHex				rtti
+0x005e47d0	function	tMetaMapNormalHex::tMetaMapNormalHex	tMetaMapNormalHex	??0tMetaMapNormalHex@@QAE@VtID@nDatabase@@HABVtHexPoint@@ABUtPoint@@ABUfn_0053a6cc_map@@2@Z	callers		rtti
 0x005e4882	function	fn_005e4882					none
 0x005e488e	function	fn_005e488e					none
 0x005e4892	function	fn_005e4892	tMetaMapNormalHex				vtable
@@ -14387,7 +14387,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e4caa	function	fn_005e4caa					none
 0x005e4cc3	function	fn_005e4cc3					none
 0x005e4cd5	function	fn_005e4cd5					none
-0x005e4d1c	function	fn_005e4d1c					none
+0x005e4d1c	function	fn_005e4d1c		??0tMetaMapSprite@@QAE@ABV0@@Z	callers		none
 0x005e4db9	function	fn_005e4db9					none
 0x005e4dec	function	fn_005e4dec					none
 0x005e5041	function	tMetaClientMapPanel::scalar_deleting_destructor	tMetaClientMapPanel				rtti
