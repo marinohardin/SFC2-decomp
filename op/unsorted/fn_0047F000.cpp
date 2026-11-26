@@ -1,4 +1,5 @@
 #include <string>
+#include "Common/Object.h"
 #include "unsorted/tState_Skirmish.h"
 
 // HYPOTHESIS: free function (hidden return slot, one stack argument); the owner class is unknown.
@@ -239,4 +240,12 @@ tState_Skirmish::tState_Skirmish()
     field_0x1120 = 0;
     field_0x1121 = 0;
     g_00915540 = this;
+}
+
+// FUNCTION: STARFLEETOP 0x0047f95d
+// FUNCTION: STARFLEETOP 0x0047f979
+tState_Skirmish::~tState_Skirmish()
+{
+    // HYPOTHESIS: the object at 0x1154 is deleted through its virtual destructor; its class is unknown.
+    delete (tObject *)field_0x1154;
 }

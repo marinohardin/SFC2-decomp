@@ -3957,8 +3957,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f8ea	function	tConnector::scalar_deleting_destructor	tConnector				rtti
 0x0047f906	function	tReconnector::~tReconnector	tReconnector				rtti
 0x0047f941	function	tReconnector::scalar_deleting_destructor	tReconnector				fid
-0x0047f95d	function	tState_Skirmish::scalar_deleting_destructor	tState_Skirmish				rtti
-0x0047f979	function	tState_Skirmish::~tState_Skirmish	tState_Skirmish				rtti
+0x0047f95d	function	tState_Skirmish::scalar_deleting_destructor	tState_Skirmish	??_GtState_Skirmish@@UAEPAXI@Z	claim		rtti
+0x0047f979	function	tState_Skirmish::~tState_Skirmish	tState_Skirmish	??1tState_Skirmish@@UAE@XZ	claim		rtti
 0x0047fa30	function	fn_0047fa30	tState_Skirmish				vtable
 0x0047feb1	function	fn_0047feb1					none
 0x0047ff4e	function	fn_0047ff4e					none
