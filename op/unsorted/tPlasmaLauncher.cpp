@@ -250,6 +250,17 @@ float tPlasmaLauncher::vfunction118(unsigned char param_1)
     return g_007a8cb4[field_10c];
 }
 
+// FUNCTION: STARFLEETOP 0x004e83f3
+void tPlasmaLauncher::vfunction148()
+{
+    float local_8;
+
+    field_148.fn_0050bfaa();
+    field_148.fn_004d6fd4();
+    local_8 = 300.0f;
+    field_148.fn_004d6f22(&local_8, 1);
+}
+
 // FUNCTION: STARFLEETOP 0x004e8a69
 void tPlasmaLauncher::vfunction65(char param_1)
 {
