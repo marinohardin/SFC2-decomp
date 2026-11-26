@@ -1,6 +1,12 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00537BC2.cpp
-// Functions: 0x00537bc2 to 0x00537f66, 11 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: a constructor that zeroes six dwords; the owning class is unknown
+// FUNCTION: STARFLEETOP 0x00537bc2
+int* __fastcall fn_00537bc2(int* self)
+{
+    self[0] = 0;
+    self[1] = 0;
+    self[2] = 0;
+    self[3] = 0;
+    self[4] = 0;
+    self[5] = 0;
+    return self;
+}
