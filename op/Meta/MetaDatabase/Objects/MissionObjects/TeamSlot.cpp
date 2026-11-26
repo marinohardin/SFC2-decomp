@@ -3,6 +3,16 @@
 #include "unsorted/fn_005430ad_owner.h"
 #include "Common/Exceptions/Validate.h"
 
+// The original reports this file under its full source path; a #line directive cannot carry it
+// (the compiler's listing step fails on a file it cannot open), so the macro names it itself.
+#undef validate
+#define validate( expr )											\
+	if( !(expr) )													\
+	{																\
+		nException::tValidationFailed failed( #expr, "F:\\Projects\\Taldren\\Projects\\SFC2_5\\Meta\\MetaDatabase\\Objects\\MissionObjects\\TeamSlot.cpp", __LINE__ );	\
+		failed.ReportException();											\
+	}
+
 // HYPOTHESIS: fills the slot from a character: whether it is not flagged, its ID, the value
 // 0x00543495 reads, and the IDs of its ship caches. The character's members 0x00543495 and
 // 0x005434f7 are declared on the record unsorted/fn_00543000.cpp rebuilds, which reads the same

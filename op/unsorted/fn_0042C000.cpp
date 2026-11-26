@@ -561,7 +561,8 @@ template<> inline tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper
 	Delete();
 }
 
-// Unclaimed: 0x0042c709 is the folded Lock of several wrappers (0x0042aaeb, 0x0042ab08, 0x005434dd).
+// 0x0042c709 is the folded Lock of several wrappers (0x0042aaeb, 0x0042ab08, 0x005434dd, both members of tClientCharacter; tClientCharacter.cpp defines the other wrapper's copy).
+// FUNCTION: STARFLEETOP 0x0042c709
 template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<std::vector<int> >::Lock()
 {
 	fPointerOptex.Enter();

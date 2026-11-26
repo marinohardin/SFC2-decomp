@@ -332,7 +332,7 @@ void tMetaClientMapPanel::fn_005e5ee7( char arg )
 void tMetaClientMapPanel::fn_005e5ef4()
 {
 	tOptex::tGuard guard( &field_dc );
-	tSingleAccessWrapper< std::vector< fn_005e36cd_entry > >::iPtr hexes = field_fc.field_48.Lock();
+	tSingleAccessWrapper< std::vector< tMetaMapNormalHex > >::iPtr hexes = field_fc.field_48.Lock();
 
 	for( int y = 0; y < field_194; y++ )
 	{
@@ -343,7 +343,7 @@ void tMetaClientMapPanel::fn_005e5ef4()
 			fn_0053a6cc_map values( std::allocator< int32 >(), std::less< int32 >(), false );
 			( *values.insert( fn_0053a6cc_map::value_type( 0, 0 ) ).first ).second = 23;
 			( *values.insert( fn_0053a6cc_map::value_type( 1, 0 ) ).first ).second = 23;
-			fn_005e36cd_entry hex( nDatabase::tID( -1 ), 0x18, tHexPoint( -1, -1 ), tPoint( -1, -1 ), values, tPoint( -1, -1 ) );
+			tMetaMapNormalHex hex( nDatabase::tID( -1 ), 0x18, tHexPoint( -1, -1 ), tPoint( -1, -1 ), values, tPoint( -1, -1 ) );
 			( *hexes ).push_back( hex );
 		}
 	}
@@ -565,7 +565,7 @@ void tMetaClientMapPanel::fn_005e6a41()
 
 // FUNCTION: STARFLEETOP 0x005e6d7c
 tMetaMapNormalHex::tMetaMapNormalHex( const tMetaMapNormalHex& other )
-	: fn_005e4d1c_base( other ),
+	: tMetaMapSprite( other ),
 	  m_4c( other.m_4c ),
 	  m_4e( other.m_4e ),
 	  m_50( (const fn_0053a6cc_map::tree*)&other.m_50 )

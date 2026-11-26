@@ -375,7 +375,7 @@ inline tOptex::tGuard::~tGuard()
 
 // HYPOTHESIS: a copy assignment (it returns *this), likely the class's operator=; the name is
 // not recovered. Under the lock at +0xe4 it copies every field but +0x58, the two locked
-// members through the SDK's `*Lock() = *copy.Lock()` idiom.
+// members through the SDK's `*Lock() = *copy.Lock()` idiom; the game calls the one Lock (0x0042c709) on both sides.
 // FUNCTION: STARFLEETOP 0x0042984d
 tClientCharacter &tClientCharacter::fn_0042984d(const tClientCharacter &other)
 {
@@ -394,8 +394,8 @@ tClientCharacter &tClientCharacter::fn_0042984d(const tClientCharacter &other)
 	m_5c = other.m_5c;
 	m_70 = other.m_70;
 	m_84 = other.m_84;
-	*m_b4.Lock() = *other.m_b4.Lock();
-	*m_cc.Lock() = *other.m_cc.Lock();
+	*m_b4.Lock() = *const_cast<tClientCharacter &>(other).m_b4.Lock();
+	*m_cc.Lock() = *const_cast<tClientCharacter &>(other).m_cc.Lock();
 	m_98 = other.m_98;
 	*(char *)&m_9c = *(char *)&other.m_9c;
 
@@ -573,4 +573,12 @@ void tClientCharacter::StreamIn(nDataStore::tInput &input)
 		>> *(nDataStore::tStreamable *)((char *)pObject + 8)
 		>> (int32s &)m_98 >> *(bool *)&m_9c;
 
+}
+
+// The same folded Lock (0x0042c709, claimed in unsorted/fn_0042C000.cpp on the vector's wrapper)
+// for the wrapper at +0xcc. MATCH-ONLY: defined here so that the calls above resolve to a body.
+template<> tSingleAccessWrapper<tObject_005391b0>::iPtr tSingleAccessWrapper<tObject_005391b0>::Lock()
+{
+	fPointerOptex.Enter();
+	return iPtr( fpPointer, this );
 }

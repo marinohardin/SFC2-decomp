@@ -55,7 +55,7 @@ public:
 	unsigned char field_0[ 0x24 ];
 	tMetaClientMapQueueMember field_24;
 	unsigned char field_25[ 0x48 - 0x25 ];
-	tSingleAccessWrapper< std::vector< fn_005e36cd_entry > > field_48;
+	tSingleAccessWrapper< std::vector< tMetaMapNormalHex > > field_48;
 	tSingleAccessWrapper< std::vector< fn_005ea9ce_elem > > field_60;
 	tSingleAccessWrapper< fn_005e907e_object > field_78;
 };
@@ -128,7 +128,7 @@ public:
 	void fn_005e5ef4();
 	// HYPOTHESIS: the callers in unsorted/tMetaMapControl.cpp pass these the lists and areas they
 	// hold; the classes of the arguments are not recovered.
-	void fn_005e6aeb( int param_1, std::vector<fn_005e36cd_entry>& list );
+	void fn_005e6aeb( int param_1, std::vector<tMetaMapNormalHex>& list );
 	void fn_005e6dea( int param_1, std::vector<fn_005e381f_entry>& list );
 	void fn_005e7539( const tRect* area, fn_005eadc8_class* object );
 	void fn_005e7778( int param_1, const tRect* area );

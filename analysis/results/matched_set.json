@@ -6139,6 +6139,15 @@
    "exact": false,
    "recorded": "2026-11-17"
   },
+  "0x0042c709": {
+   "name": "FUN_0042c709",
+   "symbol": "?Lock@?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE?AV?$tAccessPointer@V?$vector@HV?$allocator@H@std@@@std@@V?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@@@XZ",
+   "unit": "unsorted/fn_0042C000.cpp",
+   "size": 38,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
+  },
   "0x0042c72f": {
    "name": "FUN_0042c72f",
    "symbol": "??1?$tSingleAccessWrapper@VtObject_005391b0@@@@QAE@XZ",
@@ -28047,7 +28056,7 @@
   },
   "0x005e374b": {
    "name": "FUN_005e374b",
-   "symbol": "?fn_005e374b@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@HPAUc_tScrollBar_FieldA8@@HHK@Z",
+   "symbol": "?fn_005e374b@tMetaMapControl@@QAEXPAVtMetaMapSprite@@HPAUc_tScrollBar_FieldA8@@HHK@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 121,
    "score": 100.0,
@@ -28074,7 +28083,7 @@
   },
   "0x005e381f": {
    "name": "FUN_005e381f",
-   "symbol": "?fn_005e381f@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z",
+   "symbol": "?fn_005e381f@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 114,
    "score": 100.0,
@@ -28083,7 +28092,7 @@
   },
   "0x005e3891": {
    "name": "FUN_005e3891",
-   "symbol": "?fn_005e3891@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z",
+   "symbol": "?fn_005e3891@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 114,
    "score": 100.0,
@@ -28092,7 +28101,7 @@
   },
   "0x005e3903": {
    "name": "FUN_005e3903",
-   "symbol": "?fn_005e3903@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z",
+   "symbol": "?fn_005e3903@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 50,
    "score": 100.0,
@@ -28101,7 +28110,7 @@
   },
   "0x005e3935": {
    "name": "FUN_005e3935",
-   "symbol": "?fn_005e3935@tMetaMapControl@@QAEKPAUfn_005e374b_entry@@@Z",
+   "symbol": "?fn_005e3935@tMetaMapControl@@QAEKPAVtMetaMapSprite@@@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 56,
    "score": 100.0,
@@ -28128,7 +28137,7 @@
   },
   "0x005e3a37": {
    "name": "FUN_005e3a37",
-   "symbol": "?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z",
+   "symbol": "?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 161,
    "score": 100.0,
@@ -28389,7 +28398,7 @@
   },
   "0x005e45a0": {
    "name": "FUN_005e45a0",
-   "symbol": "??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ",
+   "symbol": "??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 51,
    "score": 100.0,
