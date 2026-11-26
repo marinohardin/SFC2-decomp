@@ -9427,7 +9427,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00544725	function	fn_00544725		?erase@?$vector@Vfn_00544725_elem@@V?$allocator@Vfn_00544725_elem@@@std@@@std@@QAEPAVfn_00544725_elem@@PAV3@@Z	claim		none
 0x0054477b	function	fn_0054477b		?erase@?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@QAEPAVtShipCache@tServCharacter@@PAV34@@Z	claim		none
 0x005447d0	function	fn_005447d0		??1?$tSingleAccessWrapper@V?$vector@Vfn_00544725_elem@@V?$allocator@Vfn_00544725_elem@@@std@@@std@@@@QAE@XZ	claim		none
-0x005447ff	function	fn_005447ff		?Delete@?$tSingleAccessWrapper@V?$vector@Vfn_00544725_elem@@V?$allocator@Vfn_00544725_elem@@@std@@@std@@@@QAEXXZ	add		none
+0x005447ff	function	fn_005447ff		?Delete@?$tSingleAccessWrapper@V?$vector@Vfn_00544725_elem@@V?$allocator@Vfn_00544725_elem@@@std@@@std@@@@QAEXXZ	claim		none
 0x00544830	function	tClassAllocator<tServCharacter>::tClassAllocator<tServCharacter>	tClassAllocator<tServCharacter>				rtti
 0x0054486c	function	fn_0054486c	tClassAllocator<tServCharacter>				vtable
 0x005448b9	function	fn_005448b9	tClassAllocator<tServCharacter>				vtable

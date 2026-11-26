@@ -121,3 +121,16 @@ void fn_005447d0_user( tSingleAccessWrapper< std::vector< fn_00544725_elem > > *
 {
 	w->~tSingleAccessWrapper();
 }
+
+// FUNCTION: STARFLEETOP 0x005447ff
+template<> void tSingleAccessWrapper< std::vector< fn_00544725_elem > >::Delete()
+{
+	fPointerOptex.Enter();
+	std::vector< fn_00544725_elem > *p = fpPointer;
+	if ( p != 0 )
+	{
+		delete p;
+		fpPointer = 0;
+	}
+	fPointerOptex.Leave();
+}
