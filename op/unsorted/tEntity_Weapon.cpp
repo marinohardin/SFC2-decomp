@@ -1,6 +1,15 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tEntity_Weapon.cpp
-// Functions: 0x0041c1ef to 0x0041c9a7, 10 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tEntity_Weapon.h"
+
+// FUNCTION: STARFLEETOP 0x0041c1ef
+tEntity_Weapon::tEntity_Weapon()
+{
+	fProperties |= 1;
+	field_0x1c4 = -1;
+	field_0x1e8 = 0.025f;
+	fClassification |= 4;
+	field_0x1d8 = 0;
+	field_0x1f0 = 0;
+	field_0x1f4 = 0;
+	field_0x244 = 0;
+	field_0x245 = 0;
+}

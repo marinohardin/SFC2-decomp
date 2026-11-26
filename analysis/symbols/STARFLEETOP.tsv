@@ -726,7 +726,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00412f08	function	fn_00412f08		??0tPoint3@@QAE@ABU0@@Z	add		none
 0x00412f21	function	fn_00412f21		?fn_00412f21@@YAMXZ	callers		none
 0x00412f28	function	fn_00412f28					none
-0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity				rtti
+0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity	??0tPhysicalEntity@@QAE@XZ	add		rtti
 0x004130b4	function	tPhysicalEntity::scalar_deleting_destructor	tPhysicalEntity				rtti
 0x004130d0	function	fn_004130d0					none
 0x004130f1	function	fn_004130f1					none
@@ -962,7 +962,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c008	function	tEntity_Transporter::~tEntity_Transporter	tEntity_Transporter				rtti
 0x0041c055	function	fn_0041c055	tEntity_Transporter				vtable
 0x0041c0b9	function	fn_0041c0b9	tEntity_Transporter				vtable
-0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon				rtti
+0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon	??0tEntity_Weapon@@QAE@XZ	claim		rtti
 0x0041c23c	function	fn_0041c23c	tEntity_Placeholder				vtable
 0x0041c242	function	fn_0041c242	tEntity_Weapon				vtable
 0x0041c249	function	fn_0041c249	tEntity_Weapon				vtable
