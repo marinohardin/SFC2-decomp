@@ -19,6 +19,9 @@ class tEntity_Seeker : public tEntity_Weapon
 public:
 	tEntity_Seeker();
 
+	virtual void vfunction11(tSFCStream &s, int32u mode);
+	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
+
 	// HYPOTHESIS: slot 62, returns the float at +0x260 (0x0041e09b).
 	virtual float vfunction63();
 	// HYPOTHESIS: returns a one-byte member at +0x275.
