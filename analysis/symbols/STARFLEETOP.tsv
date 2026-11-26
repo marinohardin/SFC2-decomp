@@ -5116,7 +5116,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b97cc	function	fn_004b97cc					none
 0x004b99a4	function	fn_004b99a4					none
 0x004b99f7	function	fn_004b99f7	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b9a3a	function	fn_004b9a3a	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b9a3a	function	fn_004b9a3a	tState_Namespace_Tactical::tState_Tactical	?vfunction9@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z	claim		vtable
 0x004b9d12	function	fn_004b9d12					none
 0x004b9dd6	function	fn_004b9dd6	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004b9e11	function	fn_004b9e11					none
