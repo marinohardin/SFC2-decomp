@@ -389,3 +389,58 @@ linked:
 	}
 	return child;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d590
+tObjBase *tObjBase::vfunction6( tObjBase *child, char flag )
+{
+	tVisObject *c = (tVisObject *)child;
+	if ( child == field_30 )
+	{
+		c->vfunction3();
+		field_30 = 0;
+	}
+	if ( c != 0 && c->field_0C == (tVisObject *)this )
+	{
+		if ( flag != 0 )
+			c->vfunction18();
+		tVisObject *prev = c->field_08;
+		tVisObject *next = c->field_04;
+		if ( prev == 0 )
+		{
+			field_24 = next;
+			if ( next != 0 )
+				next->field_08 = 0;
+			else
+				field_28 = 0;
+		}
+		else
+		{
+			prev->field_04 = next;
+			if ( next != 0 )
+				next->field_08 = prev;
+			else
+				field_28 = prev;
+		}
+		if ( field_2C == c )
+		{
+			tVisObject *q = field_0C;
+			if ( q != 0 )
+				q->fn_0067d310( this );
+			field_2C = 0;
+		}
+		if ( field_20 != 0 )
+			field_20--;
+		tVisObject *p = field_0C;
+		if ( p != 0 && p->field_18 == c )
+		{
+			p->field_1C |= 1;
+			field_0C->field_18 = c->field_04;
+		}
+		c->field_40 &= ~1;
+		c->field_08 = 0;
+		c->field_04 = 0;
+		c->field_0C = 0;
+		c->vfunction35( 0 );
+	}
+	return child;
+}

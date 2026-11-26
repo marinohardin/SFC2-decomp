@@ -17821,7 +17821,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d450	function	fn_0067d450	tObjBase	?vfunction35@tObjBase@@UAEXPAVc_tObjBase_Field10@@@Z	claim		vtable
 0x0067d4a0	function	fn_0067d4a0		?fn_0067d4a0@tObjBase@@QAEXPAVtSurface@@@Z	claim		none
 0x0067d4d0	function	fn_0067d4d0	tObjBase	?vfunction5@tObjBase@@UAEPAV1@PAV1@@Z	claim		vtable
-0x0067d590	function	fn_0067d590	tObjBase				vtable
+0x0067d590	function	fn_0067d590	tObjBase	?vfunction6@tObjBase@@UAEPAV1@PAV1@D@Z	claim		vtable
 0x0067d660	function	fn_0067d660					none
 0x0067d6a0	function	fn_0067d6a0					none
 0x0067d7b0	function	fn_0067d7b0					none
