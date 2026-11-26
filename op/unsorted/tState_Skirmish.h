@@ -35,6 +35,13 @@ public:
 	long				fWord;
 };
 
+// HYPOTHESIS: the class of the object at 0x1154; only its method 0x00482eef is known.
+class fn_00482eef_Object
+{
+public:
+	long fn_00482eef( int a, int b );
+};
+
 class tState_Skirmish : public tGameState
 {
 public:
@@ -54,6 +61,7 @@ public:
 	void fn_0047ff4e();
 	// HYPOTHESIS: a method of the class of the object at 0x1154 (unknown); declared here until it is known.
 	void fn_00482ed3( int a, int b, int c );
+	void fn_0047ffe0();
 
 	// HYPOTHESIS: 0x0c is the first word after tGameState's, not used in the bodies recovered; 0x10 is
 	// the argument the helper at 0x004817ef gives the global manager's slot at +0x98.

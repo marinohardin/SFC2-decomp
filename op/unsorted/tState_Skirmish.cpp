@@ -40,3 +40,14 @@ void tState_Skirmish::fn_0047ff4e()
 	fn_00482ed3(1, 0, 1);
 	*(int *)((char *)this + 0x11c4) = 2;
 }
+
+long fn_004d33a8( long arg1, long arg2 );
+// HYPOTHESIS: five values starting at 0x0084abb8.
+extern long g_0084abb8[5];
+
+// FUNCTION: STARFLEETOP 0x0047ffe0
+void tState_Skirmish::fn_0047ffe0()
+{
+	for (int i = 1; i < 6; i++)
+		fn_004d33a8( g_0084abb8[i - 1], ((fn_00482eef_Object *)field_0x1154)->fn_00482eef( i, 0 ) + 1 );
+}
