@@ -9437,7 +9437,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00544970	function	fn_00544970					none
 0x00544a0d	function	fn_00544a0d					none
 0x00544b06	function	fn_00544b06		?fn_00544b06@@YAXXZ	claim		none
-0x00544b12	function	fn_00544b12					none
+0x00544b12	function	fn_00544b12		?fn_00544b12@@YAXXZ	claim		none
 0x00544b1e	function	fn_00544b1e					none
 0x00544b2a	function	fn_00544b2a	tServCharacter				vtable
 0x00544b3c	function	fn_00544b3c					none
