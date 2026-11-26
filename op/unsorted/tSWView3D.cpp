@@ -162,6 +162,26 @@ bool tSWView3D::vfunction3(int a, int b, int c, int d, RECT *rect, bool f)
 	return fn_0069f600(a, b, c, d, rect, f, true);
 }
 
+int fn_006b5060(int);
+int fn_006b5090(int);
+
+// FUNCTION: STARFLEETOP 0x0069f8a0
+bool tSWView3D::vfunction4(int a, int b, RECT *rect, bool f)
+{
+	// HYPOTHESIS: the two free functions read the width and height of the object a stands for.
+	int w = fn_006b5060(a);
+	int h = fn_006b5090(a);
+	int local[4];
+	if (!rect) {
+		rect = (RECT *)local;
+		local[0] = 0;
+		local[1] = 0;
+		local[2] = w;
+		local[3] = h;
+	}
+	return fn_0069f600(a, b, w, h, rect, f, false);
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {

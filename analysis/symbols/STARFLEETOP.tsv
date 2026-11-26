@@ -18561,7 +18561,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f510	function	fn_0069f510	tSWView3D	?vfunction2@tSWView3D@@UAE_NHH@Z	claim		vtable
 0x0069f600	function	fn_0069f600		?fn_0069f600@tSWView3D@@QAE_NHHHHPAUtagRECT@@_N1@Z	add		none
 0x0069f850	function	fn_0069f850	tSWView3D	?vfunction3@tSWView3D@@UAE_NHHHHPAUtagRECT@@_N@Z	claim		vtable
-0x0069f8a0	function	fn_0069f8a0	tSWView3D				vtable
+0x0069f8a0	function	fn_0069f8a0	tSWView3D	?vfunction4@tSWView3D@@UAE_NHHPAUtagRECT@@_N@Z	claim		vtable
 0x0069f900	function	tSWView3D::scalar_deleting_destructor	tSWView3D				rtti
 0x0069f990	function	fn_0069f990	tSWView3D				vtable
 0x0069fa10	function	fn_0069fa10	tSWView3D				vtable
@@ -18930,8 +18930,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b4f7d	function	fn_006b4f7d					none
 0x006b4fc0	function	fn_006b4fc0	tDDSurfMgr				vtable
 0x006b4fe0	function	fn_006b4fe0		?fn_006b4fe0@@YAPAXXZ	add		none
-0x006b5060	function	fn_006b5060					none
-0x006b5090	function	fn_006b5090					none
+0x006b5060	function	fn_006b5060		?fn_006b5060@@YAHH@Z	add		none
+0x006b5090	function	fn_006b5090		?fn_006b5090@@YAHH@Z	add		none
 0x006b50c0	function	fn_006b50c0					none
 0x006b5660	function	fn_006b5660					none
 0x006b56f0	function	fn_006b56f0	tGLDC				vtable
