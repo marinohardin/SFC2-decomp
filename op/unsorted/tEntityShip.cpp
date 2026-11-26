@@ -56,13 +56,15 @@ extern double g_00797040;
 // FUNCTION: STARFLEETOP 0x00414bfa
 void tEntityShip::fn_00414bfa(tNetMsg *aMsg)
 {
+	// HYPOTHESIS: the original passes the centre as a short
+	bool (__stdcall *angleTest)(short, short, int) = (bool (__stdcall *)(short, short, int))fn_00414bab;
 	double now = g_00c7c148;
 	double last = field_ac0;
-	if (now <= last + g_00797040 || fn_00414bab(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x16))
+	if (now <= last + g_00797040 || angleTest(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x16))
 	{
 		if (((vfunction33_result *)this)->fn_0041021f())
 			return;
-		if (fn_00414bab(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x72))
+		if (angleTest(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x72))
 			return;
 	}
 	field_ac0 = now;
