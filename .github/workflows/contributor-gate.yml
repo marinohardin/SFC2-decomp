@@ -1,0 +1,73 @@
+name: Contributor gate
+
+# What a pull request can be checked with on a hosted runner, without the game or the compiler.
+# Nothing here runs on the owner's machine: a fork's pull request is matched only by the build
+# review, which the maintainer starts by hand (build-review.yml).
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+concurrency:
+  group: contributor-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # A fork's pull request only: its diff read by tools/contrib_guard.py (CONTRIBUTING.md). This
+  # is the pull request's own copy of the guard, which a fork can edit, so this job is a courtesy
+  # to the contributor, not a protection. The trusted copy is develop's, which
+  # tools/verify_pr.py runs in the build review.
+  guard:
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch the base
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          BASE_REPO: ${{ github.event.pull_request.base.repo.clone_url }}
+        run: git fetch --no-tags "$BASE_REPO" "+refs/heads/$BASE_REF:refs/remotes/base/$BASE_REF"
+
+      - name: Read the diff
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          printf '%s\n' "$PR_BODY" > "$RUNNER_TEMP/body.md"
+          python3 -I tools/contrib_guard.py "base/$BASE_REF" "$HEAD_SHA" \
+            --body "$RUNNER_TEMP/body.md" --repo "$GITHUB_REPOSITORY" --pr "$PR_NUMBER"
+
+  # Every pull request: the definition of done without the rebuild, which needs the game. Its
+  # last line says NOT VERIFIED. The tests job (pull-request.yml) has run the tests.
+  hosted-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # The merge of the pull request into its base: its first parent is the base.
+          fetch-depth: 2
+          persist-credentials: false
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: The definition of done, without the rebuild
+        env:
+          CHECK_SKIP_TESTS: "1"
+        run: sh scripts/check.sh
