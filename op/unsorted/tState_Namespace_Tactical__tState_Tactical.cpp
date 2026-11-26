@@ -441,6 +441,17 @@ bool tState_Tactical::vfunction4()
 	return true;
 }
 
+}	// namespace tState_Namespace_Tactical
+
+// FUNCTION: STARFLEETOP 0x004aba3c
+void __cdecl fn_004aba3c( char value )
+{
+	g_b00850b62 = value;
+}
+
+namespace tState_Namespace_Tactical
+{
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
