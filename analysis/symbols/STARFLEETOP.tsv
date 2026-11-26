@@ -14476,7 +14476,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8f25	function	fn_005e8f25	tBitmapFontEx	?fn_005e8f25@fn_005e89fd_layout@@QAEHXZ	claim		vtable
 0x005e8f29	function	fn_005e8f29		?fn_005e8f29@fn_005e89fd_layout@@QAEHXZ	claim		none
 0x005e8f2d	function	fn_005e8f2d		??A?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@std@@QAEAAVtHexPoint@@ABH@Z	claim		none
-0x005e8f9a	function	fn_005e8f9a					none
+0x005e8f9a	function	fn_005e8f9a		?fn_005e8f9a@fn_005e8f9a_tree@@QAEXXZ	claim		none
 0x005e8fd2	function	fn_005e8fd2					none
 0x005e9002	function	fn_005e9002		?push_back@?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAEXABUfn_005e36cd_entry@@@Z	callers		none
 0x005e9013	function	fn_005e9013					none

@@ -216,3 +216,37 @@ tHexPoint& fn_emit_005e8f2d( std::map<int, tHexPoint>& m, const int& key )
 	tHexPoint& ( std::map<int, tHexPoint>::*f )( const int& ) = &std::map<int, tHexPoint>::operator[];
 	return ( m.*f )( key );
 }
+
+// HYPOTHESIS: the clear() of a tree container: head node at +4, node count at +0x10, and a
+// second block at +8; its class is not known.
+// HYPOTHESIS: an iterator passed by value (one pointer).
+struct fn_005e8f9a_iter
+{
+	void* node;
+};
+
+class fn_005e8f9a_tree
+{
+public:
+	void fn_005e9425( void* result, fn_005e8f9a_iter first, void* last );
+	void fn_005e8f9a();
+	void* field_0;
+	void** field_4;
+	void* field_8;
+	int field_c;
+	int field_10;
+};
+
+// FUNCTION: STARFLEETOP 0x005e8f9a
+void fn_005e8f9a_tree::fn_005e8f9a()
+{
+	char result[ 4 ];
+	void** last = field_4;
+	fn_005e8f9a_iter first = *(fn_005e8f9a_iter*) last;
+	fn_005e9425( result, first, last );
+	operator delete( field_4 );
+	field_4 = 0;
+	field_10 = 0;
+	operator delete( field_8 );
+	field_8 = 0;
+}
