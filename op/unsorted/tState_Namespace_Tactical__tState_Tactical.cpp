@@ -523,6 +523,13 @@ unsigned char tState_Tactical::fn_004adc52()
 // FUNCTION: STARFLEETOP 0x004adc63
 tState_Tactical g_tState_Tactical;
 
+// HYPOTHESIS: a free accessor for the one tactical state; whether it was a static member is not known.
+// FUNCTION: STARFLEETOP 0x004adc83
+tState_Tactical *fn_004adc83()
+{
+	return &g_tState_Tactical;
+}
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
