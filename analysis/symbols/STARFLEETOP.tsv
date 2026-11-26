@@ -344,13 +344,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0040bd70	function	tMouseMgr_Base::scalar_deleting_destructor	tMouseMgr_Base	?scalar_deleting_destructor@tMouseMgr_Base@@QAEPAV1@E@Z	claim		claim
 0x0040bd8d	function	fn_0040bd8d	tMouseMgr_Ex::tTimer	?fn_0040bd8d@tTimer@tMouseMgr_Ex@@UAEXXZ	claim		none
 0x0040bd95	function	tMouseMgr_Ex::scalar_deleting_destructor	tMouseMgr_Ex	?scalar_deleting_destructor@tMouseMgr_Ex@@QAEPAV1@E@Z	claim		claim
-0x0040bdb1	function	tMouseMgr_Ex::~tMouseMgr_Ex	tMouseMgr_Ex	??1fn_0040bdbb@@UAE@XZ	claim		rtti
+0x0040bdb1	function	tMouseMgr_Ex::~tMouseMgr_Ex	tMouseMgr_Ex	??1tMouseMgr_Ex@@UAE@XZ	claim		claim
 0x0040bdf3	function	tSfcMouseMgr::~tSfcMouseMgr	tSfcMouseMgr	??1tSfcMouseMgr@@UAE@XZ	claim		claim
 0x0040bdfa	function	tSfcMouseMgr::scalar_deleting_destructor	tSfcMouseMgr	??_GtSfcMouseMgr@@UAEPAXI@Z	claim		rtti
 0x0040be17	function	tSfcMouseMgr_Ex::scalar_deleting_destructor	tSfcMouseMgr_Ex	??_GtSfcMouseMgr_Ex@@UAEPAXI@Z	claim		rtti
 0x0040be33	function	tSfcMouseMgr::tSfcMouseMgr	tSfcMouseMgr	??1tSfcMouseMgr_Ex@@UAE@XZ	callers		rtti
 0x0040be9b	function	fn_0040be9b	tSfcMouseMgr_Ex	?fn_0040bea5@fn_0040bea5_mgr@@QAE_NXZ	claim		vtable
-0x0040c016	function	fn_0040c016		?fn_0040c016@@YAHPAVfn_00627140_stream@@@Z	claim		none
+0x0040c016	function	fn_0040c016		?fn_0040c016@@YAHPAVtBasicFile@@@Z	claim		none
 0x0040c037	function	tSfcMouseMgr_Ex::scalar_deleting_destructor	tSfcMouseMgr_Ex	?fn_0040c037@fn_0040bea5_mgr@@QAEXXZ	claim		rtti
 0x0040c063	function	fn_0040c063	tSfcMouseMgr_Ex	?fn_0040c063@fn_0040bea5_mgr@@QAEXJJJJJ@Z	claim		vtable
 0x0040c08b	function	fn_0040c08b	tSfcMouseMgr_Ex	?fn_0040c08b@fn_0040bea5_mgr@@QAEXXZ	claim		vtable
@@ -18666,7 +18666,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a2fe0	function	fn_006a2fe0					none
 0x006a30e0	function	fn_006a30e0					none
 0x006a3140	function	fn_006a3140	tMouseMgr_Ex				vtable
-0x006a3350	function	fn_006a3350	tMouseMgr_Ex				vtable
+0x006a3350	function	fn_006a3350	tMouseMgr_Ex	?fn_006a3350@tMouseMgr_Ex@@QAEXXZ	callers		vtable
 0x006a34b0	function	fn_006a34b0	tMouseMgr_Ex				vtable
 0x006a35c0	function	fn_006a35c0	tMouseMgr_Ex				vtable
 0x006a35e0	function	fn_006a35e0		?fn_006a35e0@tMouseMgr_Ex@@QAEXXZ	callers		none
