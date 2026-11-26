@@ -4987,7 +4987,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004afbc4	function	fn_004afbc4		?fn_004afbc4@@YIPAXPAXHI@Z	claim		none
 0x004afbeb	function	fn_004afbeb		?fn_004afbeb@@YIXPAXHHPBUtPoint4@@@Z	claim		none
 0x004afc63	function	fn_004afc63		?fn_004afc63@@YIPAXPAXHI@Z	claim		none
-0x004afc87	function	fn_004afc87					none
+0x004afc87	function	fn_004afc87		?fn_004afc87@@YIXPAXHHH@Z	claim		none
 0x004afcf1	function	fn_004afcf1					none
 0x004afd4d	function	fn_004afd4d					none
 0x004afdb6	function	fn_004afdb6					none

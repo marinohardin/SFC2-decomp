@@ -233,3 +233,28 @@ void *__fastcall fn_004afc63(void *self, int, unsigned capacity)
 	((void **)self)[0] = operator new( capacity * 8 );
 	return self;
 }
+
+// HYPOTHESIS: appends a pair of words to the 8-byte growable array of 0x004afc63, growing it by
+// ten when full.
+// FUNCTION: STARFLEETOP 0x004afc87
+void __fastcall fn_004afc87(void *self, int, int first, int second)
+{
+	int *array = (int *)self;
+	if (array[1] + 1 >= array[2])
+	{
+		int capacity = array[2] + 10;
+		int *data = (int *)operator new( capacity * 8 );
+		if (data == 0)
+			return;
+		if (array[0] != 0)
+		{
+			memcpy( data, (void *)array[0], array[1] * 8 );
+			operator delete( (void *)array[0] );
+		}
+		array[2] = capacity;
+		array[0] = (int)data;
+	}
+	((int *)array[0])[array[1] * 2] = first;
+	((int *)array[0])[array[1] * 2 + 1] = second;
+	array[1]++;
+}
