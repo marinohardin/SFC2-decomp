@@ -27,3 +27,10 @@ tObjBase::tObjBase()
 	field_58 = 0;
 	field_50 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0067cbf0
+void tObjBase::vfunction32( const tRect *area )
+{
+	if ( field_0C )
+		field_0C->vfunction32( area );
+}
