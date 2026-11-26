@@ -51,3 +51,16 @@ float fn_004d703f_Array::fn_004d70ce(unsigned char index)
         return *(float*)(m_items[index] + 4);
     return 0.0f;
 }
+
+#include "unsorted/tBaseWeapon.h"
+#include "unsorted/tIndividualShipSystem.h"
+
+// FUNCTION: STARFLEETOP 0x004d7292
+void tBaseWeapon::vfunction52()
+{
+    ((tIndividualShipSystem *)this)->tIndividualShipSystem::vfunction52();
+    if (vfunction106())
+    {
+        vfunction62();
+    }
+}

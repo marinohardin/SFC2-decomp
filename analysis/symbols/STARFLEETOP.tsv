@@ -6407,7 +6407,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d70ce	function	fn_004d70ce		?fn_004d70ce@fn_004d703f_Array@@QAEME@Z	claim		none
 0x004d70eb	function	tBaseWeapon::tBaseWeapon	tBaseWeapon	??0tBaseWeapon@@QAE@H@Z	callers		rtti
 0x004d7270	function	fn_004d7270	tBaseWeapon				vtable
-0x004d7292	function	fn_004d7292	tBaseWeapon				vtable
+0x004d7292	function	fn_004d7292	tBaseWeapon	?vfunction52@tBaseWeapon@@UAEXXZ	claim		vtable
 0x004d72b4	function	fn_004d72b4	tBaseWeapon				vtable
 0x004d72dc	function	fn_004d72dc	tBaseWeapon				vtable
 0x004d7304	function	fn_004d7304	tBaseWeapon				vtable
