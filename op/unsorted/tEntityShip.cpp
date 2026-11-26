@@ -395,6 +395,18 @@ bool tEntityShip::fn_00416085()
 	return found;
 }
 
+// FUNCTION: STARFLEETOP 0x004160c2
+void tEntityShip::fn_004160c2()
+{
+	fn_00416085_Object *ids = field_ad4->vfunction88();
+	if (ids)
+	{
+		// HYPOTHESIS: the same slot 116 as in 0x00416085, its result unused here
+		for (int i = 0; i < 4; i++)
+			ids->vfunction116(i);
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {
