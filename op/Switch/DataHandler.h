@@ -28,7 +28,8 @@ namespace nSwitch { class tDataHandler
 		// guard at +0x04.
 		virtual void	fn_slot0( int32u arg );
 		// Slots 1 and 2 (0x0071cc20, 0x0071cdf0) take no argument; both lock the guard at +0x04.
-		virtual void	fn_slot1( void );
+		// HYPOTHESIS: slot 1 returns a bool; slot 6 tests it (0x0071d010).
+		virtual bool	fn_slot1( void );
 		virtual void	fn_slot2( void );
 		// Slot 3 (0x00637810) returns true; slot 4 (0x006c9980) does nothing. Both are shared
 		// with other classes' vtables.

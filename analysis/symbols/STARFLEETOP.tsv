@@ -911,7 +911,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041a164	function	fn_0041a164					none
 0x0041a1c9	function	fn_0041a1c9					none
 0x0041a2a9	function	fn_0041a2a9					none
-0x0041a2f0	function	fn_0041a2f0					none
+0x0041a2f0	function	fn_0041a2f0		??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@J@Z	add		none
 0x0041a3bc	function	fn_0041a3bc					none
 0x0041a403	function	fn_0041a403					none
 0x0041a483	function	fn_0041a483					none
@@ -20887,7 +20887,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00715c00	function	fn_00715c00					none
 0x00715cd0	function	fn_00715cd0	nSwitch::tUniqueName				vtable
 0x00715ed0	function	fn_00715ed0	nSwitch::tUniqueName				vtable
-0x00716040	function	fn_00716040					none
+0x00716040	function	fn_00716040		?fn_00716040@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@PAK@Z	add		none
 0x00716190	function	fn_00716190					none
 0x007161a0	function	fn_007161a0					none
 0x007161d0	function	fn_007161d0					none
@@ -21022,7 +21022,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0071ca10	function	fn_0071ca10	nSwitch::tDataHandler				vtable
 0x0071cc20	function	fn_0071cc20	nSwitch::tDataHandler				vtable
 0x0071cdf0	function	fn_0071cdf0	nSwitch::tDataHandler				vtable
-0x0071d010	function	fn_0071d010	nSwitch::tDataHandler				vtable
+0x0071d010	function	fn_0071d010	nSwitch::tDataHandler	?fn_slot6@tDataHandler@nSwitch@@UAEXK@Z	claim		vtable
 0x0071d090	function	fn_0071d090					none
 0x0071d0a0	function	fn_0071d0a0					none
 0x0071d170	function	fn_0071d170					none

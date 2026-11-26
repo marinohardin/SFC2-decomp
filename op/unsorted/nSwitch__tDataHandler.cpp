@@ -1,4 +1,9 @@
 #include "Switch/DataHandler.h"
+#include "Common/Thread/ThreadPool.h"
+#include "Common/Log/LogStream.h"
+
+// HYPOTHESIS: 0x00716040 writes an address to a stream, like an operator<<; not recovered.
+std::ostream& __cdecl fn_00716040( std::ostream& stream, int32u* address );
 
 // The destructor of f_04 is inlined into ~tDataHandler.
 inline tOptex::~tOptex()
@@ -42,5 +47,21 @@ nSwitch::tDataHandler::~tDataHandler()
 	if( f_b0 != NULL )
 	{
 		*f_b0 = true;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x0071d010
+void nSwitch::tDataHandler::fn_slot6( int32u arg )
+{
+	if( fn_slot1() )
+	{
+		// HYPOTHESIS: the argument is a reference-counted object passed on as a long.
+		((tRefCount*)arg)->AddRef();
+		tThreadPool::Instance()->QueueWorkItem( f_78, (int32)arg );
+	}
+	else
+	{
+		// HYPOTHESIS: the stream and the helper that prints the address are not recovered.
+		fn_00716040( nLog::info, f_7c ) << " received packet " << *(int32*)( arg + 0x50 ) << " while waiting to be deleted" << nLog::report;
 	}
 }
