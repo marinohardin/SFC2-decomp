@@ -106,6 +106,12 @@ void tEntityShip::fn_00414d2f(tNetMsg *aMsg)
 	*((int *)field_a24 + 1) = *((int *)aMsg + 1);
 }
 
+// FUNCTION: STARFLEETOP 0x00414d69
+int tEntityShip::fn_00414d69()
+{
+	return field_a94;
+}
+
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
