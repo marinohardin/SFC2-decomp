@@ -170,9 +170,9 @@ void tMetaMapControl::fn_005e326c( int param_1 )
 // FUNCTION: STARFLEETOP 0x005e32d7
 void tMetaMapControl::fn_005e32d7( int param_1 )
 {
-	std::vector<fn_005e36cd_entry> list1;
+	std::vector<tMetaMapNormalHex> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e36cd_entry>::iterator it1;
+	std::vector<tMetaMapNormalHex>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e381f( it1, param_1 );
@@ -201,9 +201,9 @@ void tMetaMapControl::fn_005e32d7( int param_1 )
 // FUNCTION: STARFLEETOP 0x005e33f4
 void tMetaMapControl::fn_005e33f4( int param_1 )
 {
-	std::vector<fn_005e36cd_entry> list1;
+	std::vector<tMetaMapNormalHex> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e36cd_entry>::iterator it1;
+	std::vector<tMetaMapNormalHex>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e3891( it1, param_1 );
@@ -232,9 +232,9 @@ void tMetaMapControl::fn_005e33f4( int param_1 )
 // FUNCTION: STARFLEETOP 0x005e3511
 void tMetaMapControl::fn_005e3511( int param_1 )
 {
-	std::vector<fn_005e36cd_entry> list1;
+	std::vector<tMetaMapNormalHex> list1;
 	fn_00607d61()->fn_0060a54d()->fn_005e6aeb( param_1, list1 );
-	std::vector<fn_005e36cd_entry>::iterator it1;
+	std::vector<tMetaMapNormalHex>::iterator it1;
 	for ( it1 = list1.begin(); it1 != list1.end(); it1++ )
 	{
 		fn_005e3903( it1, param_1 );
@@ -313,7 +313,7 @@ void tMetaMapControl::fn_005e370c( fn_005e381f_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e374b
-void tMetaMapControl::fn_005e374b( fn_005e374b_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color )
+void tMetaMapControl::fn_005e374b( tMetaMapSprite *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color )
 {
 	if ( image != 0 )
 	{
@@ -348,7 +348,7 @@ void tMetaMapControl::fn_005e37d8( fn_005e381f_entry *entry, int param_2, int pa
 }
 
 // FUNCTION: STARFLEETOP 0x005e381f
-void tMetaMapControl::fn_005e381f( fn_005e36cd_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e381f( tMetaMapNormalHex *entry, int param_2 )
 {
 	if ( fn_005e30ac_images( field_184 ).size() != 0 )
 	{
@@ -359,7 +359,7 @@ void tMetaMapControl::fn_005e381f( fn_005e36cd_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e3891
-void tMetaMapControl::fn_005e3891( fn_005e36cd_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e3891( tMetaMapNormalHex *entry, int param_2 )
 {
 	if ( fn_005e30ac_images( field_194 ).size() != 0 )
 	{
@@ -370,7 +370,7 @@ void tMetaMapControl::fn_005e3891( fn_005e36cd_entry *entry, int param_2 )
 }
 
 // FUNCTION: STARFLEETOP 0x005e3903
-void tMetaMapControl::fn_005e3903( fn_005e36cd_entry *entry, int param_2 )
+void tMetaMapControl::fn_005e3903( tMetaMapNormalHex *entry, int param_2 )
 {
 	if ( fn_005e30ac_images( field_1b4 ).size() != 0 )
 	{
@@ -382,7 +382,7 @@ void tMetaMapControl::fn_005e3903( fn_005e36cd_entry *entry, int param_2 )
 extern unsigned long g_00c39058[];
 
 // FUNCTION: STARFLEETOP 0x005e3935
-unsigned long tMetaMapControl::fn_005e3935( fn_005e374b_entry *entry )
+unsigned long tMetaMapControl::fn_005e3935( tMetaMapSprite *entry )
 {
 	int index = entry->vfunction0( field_1c8 );
 	unsigned long color;
@@ -434,7 +434,7 @@ unsigned long tMetaMapControl::fn_005e397b( unsigned char *param_1 )
 extern float g_007b509c;
 
 // FUNCTION: STARFLEETOP 0x005e3a37
-void tMetaMapControl::fn_005e3a37( fn_005e374b_entry *entry, unsigned long *color )
+void tMetaMapControl::fn_005e3a37( tMetaMapSprite *entry, unsigned long *color )
 {
 	if ( color )
 	{
@@ -870,7 +870,7 @@ void tMetaMapControl::vfunction43( int param_1 )
 // line, so that it has source lines in this unit.
 // FUNCTION: STARFLEETOP 0x005e45a0
 template<>
-std::vector<fn_005e36cd_entry>::~vector()
+std::vector<tMetaMapNormalHex>::~vector()
 {
 	_Destroy( _First, _Last );
 	allocator.deallocate( _First, _End - _First );
@@ -900,7 +900,7 @@ std::vector<c_tScrollBar_FieldA8 *>::iterator std::vector<c_tScrollBar_FieldA8 *
 	return ( _F );
 }
 
-// 0x005e4638, next in address order, is fn_005e36cd_entry's implicit destructor: the
+// 0x005e4638, next in address order, is tMetaMapNormalHex's implicit destructor: the
 // compiler generates it from the class (tMetaMapControl.h), so it is not written here.
 //
 //

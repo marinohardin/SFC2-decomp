@@ -13,10 +13,13 @@ class tCompassRose;
 class fn_005eb3c5_class;
 struct c_tListBox_Base_Event;
 
-// HYPOTHESIS: the first 0x50 bytes the two 0x64-byte record types below share: 0x005e374b
-// draws either kind, reading +0x14, +0x2c, +0x40 and +0x44 and calling vtable slot 0.
-struct fn_005e374b_entry
+// The class named by the RTTI string .?AVtMetaMapSprite@@: the first 0x4c bytes the two record
+// types below share (its vtable is 0x007b517c; its one virtual function, 0x005e4783, returns the
+// word at +0x48). 0x005e374b draws either kind, reading +0x14, +0x2c, +0x40 and +0x44. Its copy
+// constructor is 0x005e4d1c.
+class tMetaMapSprite
 {
+public:
 	// HYPOTHESIS: 0x005e3935 calls vtable slot 0 on an entry with the control's +0x1c8 and uses
 	// the answer as an index.
 	virtual int vfunction0( int param_1 );
@@ -32,40 +35,72 @@ struct fn_005e374b_entry
 	unsigned char field_41[ 0x44 - 0x41 ];
 	// HYPOTHESIS: 0x005e3a37 scales the colour when this is 2.
 	int field_44;
-	unsigned char field_48[ 0x4c - 0x48 ];
-	int field_4c;
+	int field_48;
 };
 
-// HYPOTHESIS: the records 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one to
-// 0x005e381f, which calls 0x005e488e on one for a point. 0x005e45a0, the vector's destructor,
-// calls 0x005e4638 on each record; that code stores no vtable and destroys the container of
-// 0x0053a6cc at +0x50, the tHexPoint at +0x18 and the tID at +0x4, so the original declares no
-// destructor: 0x005e4638 is the implicit one the compiler generates, and is left unclaimed.
-struct fn_005e36cd_entry : public fn_005e374b_entry
+// The class named by the RTTI string .?AVtMetaMapNormalHex@@ (vtable 0x007b5184): the records
+// 0x005e32d7 gets in a vector from 0x005e6aeb and hands one by one to 0x005e381f, which calls
+// 0x005e488e on one for a point. 0x005e45a0, the vector's destructor, calls 0x005e4638 on each
+// record; that code stores no vtable and destroys the container of 0x0053a6cc at +0x50, the
+// tHexPoint at +0x18 and the tID at +0x4, so the original declares no destructor of its own.
+class tMetaMapNormalHex : public tMetaMapSprite
 {
-	// HYPOTHESIS: the constructor 0x005e47d0, which stores the vtable of the RTTI class
-	// tMetaMapNormalHex; 0x005e5ef4 passes a tID, 0x18, a tHexPoint, two points and a map.
-	fn_005e36cd_entry( nDatabase::tID id, int type, const tHexPoint &position, const tPoint &point, const fn_0053a6cc_map &values, const tPoint &offset );
+public:
+	// HYPOTHESIS: the constructor 0x005e47d0; 0x005e5ef4 passes a tID, 0x18, a tHexPoint, two points and a map.
+	tMetaMapNormalHex( nDatabase::tID id, int type, const tHexPoint &position, const tPoint &point, const fn_0053a6cc_map &values, const tPoint &offset );
+	// The copy constructor, 0x005e6d7c, is claimed in Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp.
+	tMetaMapNormalHex( const tMetaMapNormalHex &other );
+	// MATCH-ONLY: the container at +0x50 is destroyed by the destructor the compiler would
+	// generate (0x005e4638); it is written out here because the member below is raw storage.
+	~tMetaMapNormalHex();
 	const tPoint &fn_005e488e();
 
-	fn_0053a6cc_map field_50;
+	short m_4c;
+	short m_4e;
+	// MATCH-ONLY: the container at +0x50 (a tree of fn_0053a6cc_map's layout); the copy
+	// constructor expands the tree's copy inline in its initializers, without the unwind
+	// entry a member of the map's own type would add.
+	struct tTreeCopy {
+		__forceinline tTreeCopy( const fn_0053a6cc_map::tree* src )
+		{
+			fn_0053a6cc_map::tree* tree = (fn_0053a6cc_map::tree*)m_tree;
+			tree->m_alloc = src->m_alloc;
+			tree->m_comp = src->m_comp;
+			tree->m_multi = src->m_multi;
+			tree->fn_0042511e();
+			tree->fn_0053a981( *src );
+		}
+		char m_tree[0x14];
+	};
+	tTreeCopy m_50;
 };
+
+inline tMetaMapNormalHex::~tMetaMapNormalHex()
+{
+	( (fn_0053a6cc_map::tree*)m_50.m_tree )->~tree();
+}
 
 // HYPOTHESIS: the records 0x005e32d7 gets in a vector from 0x005e6dea; flag word at +0x4c, the
 // value 0x005e37c4 takes at +0x50; 0x005e3511 compares +0x14 with 5. 0x005e45d3, the vector's
 // destructor, calls 0x005e0d50 on each record; that code stores no vtable and destroys a tID at
 // +0x54, the tHexPoint at +0x18 and the tID at +0x4, so it is the implicit destructor too.
-struct fn_005e381f_entry : public fn_005e374b_entry
+struct fn_005e381f_entry : public tMetaMapSprite
 {
+	int field_4c;
 	// HYPOTHESIS: 0x005e32d7 and its siblings pass this on as the colour.
 	int field_50;
 	nDatabase::tID field_54;
 };
 
+// MATCH-ONLY: the library's _Construct for tMetaMapNormalHex is held out of line (0x005eaa77,
+// an explicit specialization in unsorted/fn_005EA000.cpp); declared here so that every unit that
+// copies a record calls it.
+namespace std { template<> void _Construct( tMetaMapNormalHex*, const tMetaMapNormalHex& ); }
+
 // MATCH-ONLY: the two record vectors' destructors (0x005e45a0, 0x005e45d3) are written out as
 // explicit specializations in unsorted/tMetaMapControl.cpp; declared here so that every unit
 // that destroys one calls them out of line.
-template<> std::vector<fn_005e36cd_entry>::~vector();
+template<> std::vector<tMetaMapNormalHex>::~vector();
 template<> std::vector<fn_005e381f_entry>::~vector();
 
 // HYPOTHESIS: the object at +0x17c; 0x005e3148 calls 0x005eadc8 on it when it is set.
@@ -123,18 +158,18 @@ public:
 	// HYPOTHESIS: 0x005e36cd passes the entry, its second argument, the element of the vector
 	// at +0x1a4 the entry's +0x14 selects, and three -1. It draws that image at a point (the
 	// entry's own when both are -1) in a colour (0x005e3935's when -1), red, green and blue bytes.
-	void fn_005e374b( fn_005e374b_entry *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
-	unsigned long fn_005e3935( fn_005e374b_entry *entry );
+	void fn_005e374b( tMetaMapSprite *entry, int param_2, c_tScrollBar_FieldA8 *image, int x, int y, unsigned long color );
+	unsigned long fn_005e3935( tMetaMapSprite *entry );
 	unsigned char *fn_005e396d( int param_1 );
 	unsigned long fn_005e397b( unsigned char *param_1 );
-	void fn_005e3a37( fn_005e374b_entry *entry, unsigned long *color );
+	void fn_005e3a37( tMetaMapSprite *entry, unsigned long *color );
 	void fn_005e3ad8();
 	void fn_005e3b6e();
 	void fn_005e37c4( fn_005e381f_entry *entry, int param_2, int param_3 );
 	void fn_005e37d8( fn_005e381f_entry *entry, int param_2, int param_3 );
-	void fn_005e381f( fn_005e36cd_entry *entry, int param_2 );
-	void fn_005e3891( fn_005e36cd_entry *entry, int param_2 );
-	void fn_005e3903( fn_005e36cd_entry *entry, int param_2 );
+	void fn_005e381f( tMetaMapNormalHex *entry, int param_2 );
+	void fn_005e3891( tMetaMapNormalHex *entry, int param_2 );
+	void fn_005e3903( tMetaMapNormalHex *entry, int param_2 );
 	void fn_005e3b86();
 	void fn_005e3ba5();
 	void fn_005e3d73();
