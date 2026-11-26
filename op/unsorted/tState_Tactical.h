@@ -8,6 +8,26 @@
 #include "unsorted/tGameState.h"
 #include "unsorted/tTacticalSubStateMan.h"
 
+void __fastcall fn_004afa40( void *self );
+void __fastcall fn_004bc256( void *self );
+
+// HYPOTHESIS: the member type of the seven growable arrays: {data, count, capacity}, whose
+// destructor is the function at 0x004afa40.
+class fn_004afa40_Array
+{
+public:
+	~fn_004afa40_Array() { fn_004afa40( this ); }
+	unsigned char m_data[0xc];
+};
+
+// HYPOTHESIS: the member type of the list head at +0x1ac, whose destructor is 0x004bc256.
+class fn_004bc256_List
+{
+public:
+	~fn_004bc256_List() { fn_004bc256( this ); }
+	unsigned char m_data[0xc];
+};
+
 namespace tState_Namespace_Tactical
 {
 
@@ -23,7 +43,7 @@ class tState_Tactical : public tGameState
 {
 public:
 	tState_Tactical();
-	// No destructor declared: the implicit one is the original's (0x004ab015).
+	virtual ~tState_Tactical();	// 0x004ab015
 	virtual bool vfunction2();	// 0x004ab0f1
 	virtual void vfunction3();	// 0x004abadd, the per-frame update (6690 bytes)
 	virtual bool vfunction4();	// 0x004ab70a
@@ -52,7 +72,7 @@ public:
 	float field_24;	// 1.0
 	unsigned char field_28[0x1ac - 0x28];
 	// 3 dwords zeroed by 0x004230b9, released by 0x004bc256 (a list head).
-	unsigned char field_1ac[0xc];
+	fn_004bc256_List field_1ac;
 	unsigned char field_1b8[0x1e0 - 0x1b8];
 	// Two screen rectangles (left, top, right, bottom): the slots compare a point against them.
 	int field_1e0[4];
@@ -82,13 +102,13 @@ public:
 	// 0x004afa40. Element sizes from the allocating constructors: 0x1c at +0x410 and +0x41c
 	// (0x004afa1c), 4 at +0x428, +0x434 and +0x458 (0x004afb43), 8 at +0x440 (0x004afc63),
 	// 0x14 at +0x44c (0x004afbc4).
-	unsigned char field_410[0xc];
-	unsigned char field_41c[0xc];
-	unsigned char field_428[0xc];
-	unsigned char field_434[0xc];
-	unsigned char field_440[0xc];
-	unsigned char field_44c[0xc];
-	unsigned char field_458[0xc];
+	fn_004afa40_Array field_410;
+	fn_004afa40_Array field_41c;
+	fn_004afa40_Array field_428;
+	fn_004afa40_Array field_434;
+	fn_004afa40_Array field_440;
+	fn_004afa40_Array field_44c;
+	fn_004afa40_Array field_458;
 	int field_464;
 	int field_468;
 	int field_46c;

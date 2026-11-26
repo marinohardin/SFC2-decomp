@@ -114,6 +114,7 @@ extern fn_00918838_object *g_0091885c;
 extern fn_00918838_object *g_00918860;
 extern fn_00969088_object *g_00969088;
 extern fn_0084b47c_object *g_0084b47c;
+extern int *g_00919b44;
 
 // HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
 // global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow).
@@ -193,6 +194,15 @@ extern "C" void __stdcall Sleep( unsigned long ms );
 
 namespace tState_Namespace_Tactical
 {
+
+// FUNCTION: STARFLEETOP 0x004aaff9
+// FUNCTION: STARFLEETOP 0x004ab015
+tState_Tactical::~tState_Tactical()
+{
+	// HYPOTHESIS: the object at 0x00919b44 is owned by the state and deleted with it.
+	if ( g_00919b44 )
+		delete g_00919b44;
+}
 
 // FUNCTION: STARFLEETOP 0x004ab70a
 bool tState_Tactical::vfunction4()
@@ -324,13 +334,13 @@ void tState_Tactical::vfunction9( int *param_1 )
 	if ( param_1 )
 	{
 		// HYPOTHESIS: the counts of the seven growable arrays (+4 of each {data, count, capacity}).
-		*(int *)&field_410[4] = 0;
-		*(int *)&field_41c[4] = 0;
-		*(int *)&field_428[4] = 0;
-		*(int *)&field_434[4] = 0;
-		*(int *)&field_440[4] = 0;
-		*(int *)&field_44c[4] = 0;
-		*(int *)&field_458[4] = 0;
+		*(int *)&field_410.m_data[4] = 0;
+		*(int *)&field_41c.m_data[4] = 0;
+		*(int *)&field_428.m_data[4] = 0;
+		*(int *)&field_434.m_data[4] = 0;
+		*(int *)&field_440.m_data[4] = 0;
+		*(int *)&field_44c.m_data[4] = 0;
+		*(int *)&field_458.m_data[4] = 0;
 		// HYPOTHESIS: the argument is the view (slot 55 returns its matrix, slot 60 its projection).
 		tView3D *view = (tView3D *)param_1;
 		tMatrix *matrix = view->vfunction56();
@@ -357,7 +367,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 		if ( g_00850bd4 != 0 && !g_b008930a2 )
 		{
 			fn_00509aaf( param_1 );
-			( (fn_004bc3e1_owner *)field_1ac )->fn_004bc3e1( param_1 );
+			( (fn_004bc3e1_owner *)&field_1ac )->fn_004bc3e1( param_1 );
 			fn_0050a25d( param_1 );
 			if ( haveTarget )
 			{

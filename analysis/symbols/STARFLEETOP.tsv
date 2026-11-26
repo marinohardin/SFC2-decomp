@@ -4894,8 +4894,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004aa875	function	fn_004aa875					none
 0x004aae0f	function	tState_Namespace_Tactical::tState_Tactical::tState_Tactical	tState_Namespace_Tactical::tState_Tactical				rtti
 0x004aaff4	thunk	fn_004aaff4					none
-0x004aaff9	function	tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor	tState_Namespace_Tactical::tState_Tactical				rtti
-0x004ab015	function	tState_Namespace_Tactical::tState_Tactical::~tState_Tactical	tState_Namespace_Tactical::tState_Tactical				rtti
+0x004aaff9	function	tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor	tState_Namespace_Tactical::tState_Tactical	??_GtState_Tactical@tState_Namespace_Tactical@@UAEPAXI@Z	claim		rtti
+0x004ab015	function	tState_Namespace_Tactical::tState_Tactical::~tState_Tactical	tState_Namespace_Tactical::tState_Tactical	??1tState_Tactical@tState_Namespace_Tactical@@UAE@XZ	claim		rtti
 0x004ab0f1	function	fn_004ab0f1	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004ab4c3	function	fn_004ab4c3					none
 0x004ab4f3	function	fn_004ab4f3					none
