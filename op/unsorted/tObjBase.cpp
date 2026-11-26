@@ -114,3 +114,14 @@ void tObjBase::vfunction18()
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0067ce90
+void tVisObject::fn_0067ce90()
+{
+	tVisObject *parent = field_0C;
+	if ( parent && fn_RectNotEmpty( &field_34 ) )
+		parent->vfunction32( &field_34 );
+	field_40 |= 1;
+	for ( tVisObject *child = field_24; child; child = child->field_04 )
+		child->fn_0067ce90();
+}
