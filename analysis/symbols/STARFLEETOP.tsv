@@ -18316,7 +18316,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006939b0	function	fn_006939b0	tStageBase				vtable
 0x00693a00	function	fn_00693a00	tStageBase				vtable
 0x00693e90	function	fn_00693e90					none
-0x00693ef0	function	fn_00693ef0					none
+0x00693ef0	function	fn_00693ef0		?fn_00693ef0@fn_00693ef0_Owner@@QAE_NPAX@Z	claim		none
 0x00693fa0	function	tObjBase::~tObjBase	tObjBase				rtti
 0x00693fb0	function	fn_00693fb0	tStageBase				vtable
 0x00693fc0	function	fn_00693fc0					none
