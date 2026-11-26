@@ -37,7 +37,12 @@ RELOC_BASELINE = paths.env_path('HARNESS_RELOC_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'reloc_baseline.tsv'))
 OBJECT_BASELINE = paths.env_path('HARNESS_OBJECT_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'object_baseline.tsv'))
-RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
+# Copies of exact claims, in other objects, that differ from the original, known when the check
+# came in (report_exe_copies); a copy not listed here fails an --all run.
+EXE_COPY_BASELINE = paths.env_path('HARNESS_EXE_COPY_BASELINE', os.path.join(
+    paths.REPO, 'analysis', 'results', 'exe_copy_baseline.tsv'))
+EXE_COPIES_FILE = 'exe_copies.tsv'
+RELOC_BASELINE_FIELDS =('function', 'offset', 'symbol', 'target', 'claimed')
 # A relocation that names another symbol than the claim at its target is of one class
 # (classify_break): the first three fail the run, the last two are listed only.
 CLASS_ERRORS = ('other-object', 'other-address', 'wrong-function')
@@ -55,6 +60,7 @@ class Report:
         self.standins = []
         self.table_breaks = []   # report_table_breaks
         self.claimed_credits = []   # claimed_credits
+        self.exe_copies = None   # report_exe_copies: (unit, symbol) of every copy unlike the original
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -636,6 +642,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     if check_all:
         report_comdat_kinds(rep)
         report_object_clashes(rep, table=table)
+        if exe is not None:
+            report_exe_copies(rep, exe, index)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -812,6 +820,72 @@ def report_object_clashes(rep, baseline_path=None, table=None):
     for row in stale:
         rep.add('WARN', f'{_shown(baseline_path or OBJECT_BASELINE)}: the row "{row}" no longer '
                 'occurs: remove it')
+
+
+def exact_claims(results, keys):
+    """{symbol: (int address, unit)} of the exact claims among `results` whose address is still
+    claimed (`keys`). A compiler static (resolved per unit) and a symbol that two claims compile
+    to name no one address, so they are left out."""
+    out, twice = {}, set()
+    for r in results:
+        sym = r.get('symbol')
+        if not (r.get('exact') and sym and r['address'] in keys) or sym.startswith(PER_UNIT_PREFIXES):
+            continue
+        if sym in out:
+            twice.add(sym)
+        out[sym] = (int(r['address'], 16), r['unit'])
+    return {s: v for s, v in out.items() if s not in twice}
+
+
+def exe_copy_compare(exe, index):
+    """compare(obj, symbol, address) for objclash.exe_copy_findings: target.build's strict check
+    of the copy of `symbol` in `obj` against the exe at `address`, the same relocation rules as a
+    claim's own score (functions.csv size, extended up to the next function for a longer copy).
+    The original's size reported is the functions.csv size."""
+    def compare(obj, symbol, address):
+        fn = index.by_address.get(address)
+        t = target.build(address, fn.size if fn else 0, obj, symbol, exe, index)
+        exe_size = (fn.size if fn else 0) or len(t['target'])
+        if t['strict']:
+            return True, len(t['base']), exe_size, ''
+        bad = [r for r in t['relocs'] if r.status == 'mismatch']
+        detail = []
+        if t['first_diff'] is not None:
+            detail.append(f'first differing byte +0x{t["first_diff"]:x}')
+        if bad:
+            r = bad[0]
+            detail.append(f'mismatched relocations: {len(bad)}, the first +0x{r.offset:x} '
+                          f'{r.symbol}: {r.detail}')
+        return False, len(t['base']), exe_size, ''.join(f', {d}' for d in detail)
+    return compare
+
+
+def report_exe_copies(rep, exe, index, baseline_path=None):
+    """An ERROR line, and a failed run, for each copy of an exact claim that another object
+    defines and that differs from the original (objclash.exe_copy_findings), unless the
+    baseline lists it; a WARN line for each baseline row that no longer occurs; an INFO line
+    with the count and the time taken. Every finding is kept in rep.exe_copies for the build
+    folder's exe_copies.tsv."""
+    started = time.monotonic()
+    path = baseline_path or EXE_COPY_BASELINE
+    claims = exact_claims(rep.results, claimed_keys())
+    objs = {}
+    for unit, obj_path in rep.objects.items():
+        try:
+            objs[unit] = unit_object(obj_path)[0]
+        except (OSError, coff.CoffError):
+            continue
+    errors, stale, found = objclash.exe_copy_check(objs, claims, exe_copy_compare(exe, index),
+                                                   objclash.load_exe_copy_baseline(path))
+    rep.exe_copies = found
+    for line in errors:
+        rep.add('ERROR', line)
+        rep.failed = True
+    for row in stale:
+        rep.add('WARN', f'{_shown(path)}: the row "{row}" no longer occurs: remove it')
+    rep.add('INFO', f'{len(found)} copies of exact claims in other objects differ from the '
+            f'original ({len(found) - len(errors)} on the baseline); copies of {len(claims)} exact '
+            f'claims compared in {time.monotonic() - started:.1f} s')
 
 
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
@@ -1357,6 +1431,11 @@ def main(argv=None):
             f.writelines('\t'.join(map(str, row)) + '\n' for row in rep.claimed_credits)
         with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
             f.write(reloc_baseline_text(rep.table_breaks, classes=True))
+        if rep.exe_copies is not None:
+            # What exe_copy_baseline.tsv would hold today (report_exe_copies).
+            with open(os.path.join(paths.BUILD, EXE_COPIES_FILE), 'w') as f:
+                f.write('unit\tsymbol\n')
+                f.writelines(f'{u}\t{s}\n' for u, s in rep.exe_copies)
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
                     for c in CLASS_ERRORS + CLASS_WARNS}
         rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '

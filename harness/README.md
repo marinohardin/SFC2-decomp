@@ -237,6 +237,28 @@ object, and cannot be baselined. COMDAT selection kinds are not compared here (`
 does that); only code bytes and relocation targets. The checkout root is matched on whole path segments; a row that no longer occurs is a `WARN` asking for its removal, so the
 list only shrinks. Only the units a claim builds are read: an unclaimed unit's object is not.
 
+**Every copy of an exact claim equals the original** (`--all` only, `report_exe_copies` in
+`lib/verify.py`, `exe_copy_findings` in `lib/objclash.py`). An inline function or a template
+member is emitted as a COMDAT in every object that uses it, and a linker keeps the first copy it
+sees, so a consumer that links the objects may place any of them at the claimed address. For each
+exact claim, every function COMDAT that another built object defines under the claim's symbol is
+compared with the exe at the claimed address under the same rules as the claim's own score
+(`target.build`: the functions.csv size, relocations masked only where the exe agrees, constants
+compared by value); the claiming unit's own copy is the one scored and is not compared again. A
+copy that differs is an `ERROR` naming the unit, the symbol, the address, the copy's size against
+the original's and the first difference, and fails the run (exit 2). The usual cause is a
+different definition in sight (a hand definition in the claiming unit against the header's in the
+others) or a different compile profile: the SDK profile's `/O2` makes other code than the game
+profile's `/O1` from the same header. The original's own libraries carried such copies as well, so
+a copy of the other profile can be the original's state and not a fault; it stays on the baseline,
+and a consumer links the claiming unit's object first. Known cases are listed in
+`analysis/results/exe_copy_baseline.tsv` (`unit<TAB>symbol`, matched on both, so the same symbol in
+a new unit is a new error); a row that no longer occurs is a `WARN` asking for its removal. Every
+`--all` writes the cases it found to `exe_copies.tsv` in its build folder, in the baseline's
+format. Compiler statics (`_$E`, `$`) and a symbol two claims compile to name no one address and
+are not compared. The check parses no object again (the scoring step's copies are reused) and runs
+no objdiff; comparing the copies of 4,628 exact claims took 0.2 s of an `--all`.
+
 **Units that read a changed file.** A run for some functions (not `--all`) builds their units,
 plus every other unit with a recorded function that reads a file changed since the checkout's
 HEAD (modified, added, deleted or untracked under `op/`): the unit itself, a file it includes
