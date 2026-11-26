@@ -147,6 +147,21 @@ bool tSWView3D::vfunction2(int a, int b)
 	return result;
 }
 
+// FUNCTION: STARFLEETOP 0x0069f850
+bool tSWView3D::vfunction3(int a, int b, int c, int d, RECT *rect, bool f)
+{
+	// HYPOTHESIS: RECT is only forward-declared here, so the rectangle is four ints.
+	int local[4];
+	if (!rect) {
+		rect = (RECT *)local;
+		local[0] = 0;
+		local[1] = 0;
+		local[2] = c;
+		local[3] = d;
+	}
+	return fn_0069f600(a, b, c, d, rect, f, true);
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
