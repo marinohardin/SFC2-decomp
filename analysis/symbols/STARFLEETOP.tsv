@@ -871,7 +871,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004197a1	function	tNetMsg_kBreakDown::mGetMap	tNetMsg_kBreakDown	?mGetMap@tNetMsg_kBreakDown@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x004197a7	function	tNetMsg_kWarpOut::mGetMap	tNetMsg_kWarpOut	?mGetMap@tNetMsg_kWarpOut@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x004197ad	function	tNetMsg_kCorrectPos::mGetMap	tNetMsg_kCorrectPos	?mGetMap@tNetMsg_kCorrectPos@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x004197b3	function	fn_004197b3	tNetMsg_kCreateDirect				vtable
+0x004197b3	function	fn_004197b3	tNetMsg_kCreateDirect	?mGetMap@tNetMsg_kCreateDirect@@UBEPBUtMapItem@tNetMsg@@XZ	claim		vtable
 0x004197b9	function	tNetMsg_kCreateESG::mGetMap	tNetMsg_kCreateESG	?mGetMap@tNetMsg_kCreateESG@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x004197bf	function	fn_004197bf	tNetMsg_kCreateSeeker				vtable
 0x004197c5	function	fn_004197c5	tNetMsg_kCreateSeekerAtPoint				vtable
