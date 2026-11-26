@@ -3979,7 +3979,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004817b7	function	fn_004817b7	tState_Skirmish	?vfunction15@tState_Skirmish@@UAEXPAUc_0046aa10_message@@@Z	claim		vtable
 0x004817ef	function	fn_004817ef					none
 0x004819a4	function	fn_004819a4		?fn_004819a4@tState_Skirmish@@QAEXXZ	claim		none
-0x00481a1c	function	fn_00481a1c					none
+0x00481a1c	function	fn_00481a1c		?fn_00481a1c@@YG_NHH@Z	claim		none
 0x00481a75	function	fn_00481a75					none
 0x00481aef	function	fn_00481aef					none
 0x00481bf2	function	fn_00481bf2					none
