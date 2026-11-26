@@ -224,6 +224,8 @@ public:
 	// HYPOTHESIS: orders two ships by the ratio of slot 13 to slot 62, then by radius and ID.
 	bool fn_00415aed(tEntityShip *aOther);
 	void fn_00419e4a(int param_1);
+	bool fn_00416085();
+	void fn_004160c2();
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

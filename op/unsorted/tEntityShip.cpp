@@ -371,6 +371,14 @@ int tEntityShip::vfunction71(tEntity *aEntity)
 	return result;
 }
 
+// FUNCTION: STARFLEETOP 0x00416067
+void tEntityShip::vfunction13(tID aID)
+{
+	fTargetID = aID;
+	if (fn_00416085())
+		fn_004160c2();
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {
