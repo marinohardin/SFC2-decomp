@@ -10,7 +10,10 @@ each reason, when the pull request (the changes from the merge base of <base> an
 - changes a path outside op/, or changes op/port/, op/UNITS.tsv or op/manifest.tsv;
 - changes a symlink, a submodule or a file mode, or adds a binary file or one over 256 KB;
 - adds an #include that is absolute, names a drive letter, uses `..` to leave op/ or names no
-  file (a macro), or adds an #import;
+  file (a macro), or adds an #import, a #line, a #pragma include_alias, or a #pragma or _Pragma
+  holding a quoted string (a path the compiler could open);
+- adds a line ending in a backslash: a splice can join a line to the next one past every check
+  here, so a contributor writes a multi-line macro on one line, or asks the maintainer;
 - adds, changes or removes a `// FUNCTION:`, `// STUB:` or `// VTABLE:` address outside its
   claim's ranges;
 - names no claim: the body needs a line `Claim: #<issue>`, and that issue (open, labelled
@@ -42,6 +45,8 @@ RANGE_LINE = re.compile(r'^\s*range:\s*0x([0-9a-fA-F]{1,8})\s*-\s*0x([0-9a-fA-F]
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB|VTABLE):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
 INCLUDE = re.compile(r'^\s*#\s*include\b\s*(.*)$')
 IMPORT = re.compile(r'^\s*#\s*import\b')
+LINE_DIRECTIVE = re.compile(r'^\s*#\s*line\b')
+PRAGMA = re.compile(r'^\s*#\s*pragma\b(.*)$|\b_Pragma\s*\((.*)$')
 CONTRIBUTING = 'see CONTRIBUTING.md, "Find and claim work"'
 
 
@@ -101,9 +106,19 @@ def diff_lines(cwd, mb, head, path):
 
 
 def include_problem(path, line):
-    """Why an added preprocessor line is refused, or None."""
+    """Why an added line is refused, or None."""
+    if line.rstrip('\r').endswith('\\'):
+        return ('adds a line ending in a backslash (a line splice); write a multi-line macro on '
+                'one line in a contributor pull request, or ask the maintainer')
     if IMPORT.match(line):
         return 'adds an #import'
+    if LINE_DIRECTIVE.match(line):
+        return 'adds a #line directive; ask the maintainer'
+    m = PRAGMA.search(line)
+    if m:
+        rest = m.group(1) if m.group(1) is not None else m.group(2)
+        if 'include_alias' in rest or '"' in rest:
+            return f'adds a #pragma that can name a file: {line.strip()!r}'
     m = INCLUDE.match(line)
     if not m:
         return None

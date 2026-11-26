@@ -264,3 +264,29 @@ def test_a_claim_overlapping_a_reserved_issue_fails(tmp_path):
     assert _check(repo, body='Claim: #20', issues=issues).failures == [
         'range 0x006000f0-0x00600200 overlaps reserved issue #11 (0x00600000-0x006000ff)',
     ]
+
+
+def test_splices_line_directives_and_file_pragmas_fail(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n'
+           '#define LONG(x) \\\n'
+           '    (x)\n'
+           '// a comment that ends in a splice \\\n'
+           '#line 12 "C:\\\\src\\\\a.cpp"\n'
+           '#pragma include_alias(<a.h>, <b.h>)\n'
+           '#pragma message("see /etc/passwd")\n'
+           '_Pragma("include_alias(\\"a.h\\", \\"b.h\\")")\n'
+           '#pragma warning(disable: 4786)\n'
+           '#pragma once\n'
+           'void f() {}\n')
+    _commit(repo)
+    splice = ('op/unsorted/a.cpp: adds a line ending in a backslash (a line splice); write a '
+              'multi-line macro on one line in a contributor pull request, or ask the maintainer')
+    assert _check(repo).failures == [
+        splice, splice,
+        'op/unsorted/a.cpp: adds a #line directive; ask the maintainer',
+        "op/unsorted/a.cpp: adds a #pragma that can name a file: '#pragma include_alias(<a.h>, <b.h>)'",
+        'op/unsorted/a.cpp: adds a #pragma that can name a file: \'#pragma message("see /etc/passwd")\'',
+        'op/unsorted/a.cpp: adds a #pragma that can name a file: '
+        '\'_Pragma("include_alias(\\\\"a.h\\\\", \\\\"b.h\\\\")")\'',
+    ]
