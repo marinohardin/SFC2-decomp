@@ -98,7 +98,9 @@ public:
 	virtual void vfunction141(); virtual void vfunction142(); virtual void vfunction143();
 	// HYPOTHESIS: takes the arguments of tEntityShip::vfunction26 and returns a truth value.
 	virtual bool vfunction144(short a1, int a2, int a3, int a4, int a5);
-	virtual void vfunction145(); virtual void vfunction146(); virtual void vfunction147();
+	virtual void vfunction145(); virtual void vfunction146();
+	// HYPOTHESIS: returns the system at an index (0x004157ee passes 0x31 to 0x49), or 0.
+	virtual void *vfunction147(int aIndex);
 	virtual void vfunction148(); virtual void vfunction149(); virtual void vfunction150();
 	virtual void vfunction151(); virtual void vfunction152(); virtual void vfunction153();
 	virtual int vfunction154();
@@ -213,6 +215,7 @@ public:
 	int fn_00415672(int param_1);
 	int fn_004156b8(int param_1);
 	fn_004288d1_Object *fn_004156e3();
+	int fn_004157ee(int param_1, int param_2, int param_3);
 	void fn_00419e4a(int param_1);
 
 	// 0x1bc is cleared by the constructor.

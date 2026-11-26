@@ -814,7 +814,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004156b8	function	fn_004156b8		?fn_004156b8@tEntityShip@@QAEHH@Z	claim		none
 0x004156e3	function	fn_004156e3		?fn_004156e3@tEntityShip@@QAEPAVfn_004288d1_Object@@XZ	claim		none
 0x004156f9	function	fn_004156f9					none
-0x004157ee	function	fn_004157ee					none
+0x004157ee	function	fn_004157ee		?fn_004157ee@tEntityShip@@QAEHHHH@Z	claim		none
 0x0041584e	function	fn_0041584e					none
 0x004158c1	function	tEntityShip::~tEntityShip	tEntityShip	??1tEntityShip@@UAE@XZ	claim		rtti
 0x00415ad9	function	fn_00415ad9					none

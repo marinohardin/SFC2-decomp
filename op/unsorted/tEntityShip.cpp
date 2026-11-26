@@ -267,6 +267,30 @@ fn_004288d1_Object *tEntityShip::fn_004156e3()
 	field_a44->fn_004288d1();
 	return field_a44;
 }
+
+// HYPOTHESIS: asks every system of type 0x15 among indices 0x31 to 0x49 (slot 12 gives the type)
+// through its slot 156; stops with 0 at the first that answers 0.
+// MATCH-ONLY: the system's calls go through the vtable by hand until its class is declared.
+// FUNCTION: STARFLEETOP 0x004157ee
+int tEntityShip::fn_004157ee(int param_1, int param_2, int param_3)
+{
+	for (int i = 0; i < 25; i++)
+	{
+		void *sys = field_ad4->vfunction147(i + 0x31);
+		if (sys)
+		{
+			typedef int (tEntityShip::*tSlot12)();
+			typedef int (tEntityShip::*tSlot156)(int, int, int);
+			if ((((tEntityShip *)sys)->*(*(tSlot12 *)(*(void ***)sys + 0x30 / 4)))() == 0x15)
+			{
+				param_1 = (((tEntityShip *)sys)->*(*(tSlot156 *)(*(void ***)sys + 0x270 / 4)))(param_1, param_2, param_3);
+				if (param_1 == 0)
+					return 0;
+			}
+		}
+	}
+	return param_1;
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
