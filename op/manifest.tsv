@@ -5036,7 +5036,7 @@ address	size	symbol	source	modes	decorated
 0x006f6580	66	tHeartbeatTimer::OnAutoRunHB(int32)	Common/Timer/HeartbeatTimer.cpp	vc6 guest	?OnAutoRunHB@tHeartbeatTimer@@SAXJ@Z
 0x006f65d0	316	tHeartbeatTimer::Heartbeat()	Common/Timer/HeartbeatTimer.cpp	vc6 guest	?Heartbeat@tHeartbeatTimer@@SAXXZ
 0x006f6b60	30	tSettings::`scalar deleting destructor'	Common/Settings.cpp	vc6	??_GtSettings@@UAEPAXI@Z
-0x006f6b80	217	tSettings::~tSettings()	Common/Settings.cpp	partial	??1tSettings@@UAE@XZ
+0x006f6b80	217	tSettings::~tSettings()	Common/Settings.cpp	vc6	??1tSettings@@UAE@XZ
 0x006f87d0	33	tDateAndTime::tDateAndTime()	Common/DateAndTime.cpp	vc6	??0tDateAndTime@@QAE@XZ
 0x006f8800	29	tDateAndTime::tDateAndTime(time_t)	Common/DateAndTime.cpp	vc6	??0tDateAndTime@@QAE@J@Z
 0x006f8820	12	tDateAndTime::operator=(time_t)	Common/DateAndTime.cpp	vc6 guest	??4tDateAndTime@@QAEABV0@J@Z
@@ -5056,17 +5056,17 @@ address	size	symbol	source	modes	decorated
 0x006f8e90	29	tStreamable::tObjectIDInfo::tObjectIDInfo()	Common/DataStore/Streamable.cpp	vc6	??0tObjectIDInfo@tStreamable@nDataStore@@QAE@XZ
 0x006f8eb0	25	tStreamable::tStreamable(iObjectVersion)	Common/DataStore/Streamable.cpp	vc6	??0tStreamable@nDataStore@@QAE@E@Z
 0x006f8ed0	7	tStreamable::~tStreamable()	Common/DataStore/Streamable.cpp	vc6	??1tStreamable@nDataStore@@UAE@XZ
-0x006f8ee0	587	tStreamable::GetObjectID() const	Common/DataStore/Streamable.cpp	partial	?GetObjectID@tStreamable@nDataStore@@QBEKXZ
+0x006f8ee0	587	tStreamable::GetObjectID() const	Common/DataStore/Streamable.cpp	vc6 guest	?GetObjectID@tStreamable@nDataStore@@QBEKXZ
 0x006f9130	4	tStreamable::GetVersion() const	Common/DataStore/Streamable.cpp	vc6 guest	?GetVersion@tStreamable@nDataStore@@QBEEXZ
 0x006f9140	384	operator>>(nDataStore::tInput&,tStreamable&)	Common/DataStore/Streamable.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z
-0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	partial	??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z
+0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	vc6	??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z
 0x006f9420	534	operator<<(nDataStore::tOutput&,const tStreamable&)	Common/DataStore/Streamable.cpp	vc6 guest	??6nDataStore@@YAAAVtOutput@0@AAV10@ABVtStreamable@0@@Z
 0x006fa440	9	tID::IsValid() const	Common/Database/DatabaseID.cpp	vc6 guest	?IsValid@tID@nDatabase@@QBE_NXZ
 0x006fa450	8	tgPrefsPart::mActivate()	Common/Database/DatabaseID.cpp	vc6 guest	?mActivate@tgPrefsPart@@UAEXXZ
 0x006fa460	16	tID::operator==(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??8tID@nDatabase@@QBE_NABV01@@Z
 0x006fa470	16	tID::operator!=(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??9tID@nDatabase@@QBE_NABV01@@Z
 0x006fa480	16	tID::operator<(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??MtID@nDatabase@@QBE_NABV01@@Z
-0x006fa540	364	tDatabaseObject::tDatabaseObject(iObjectVersion)	Common/Database/DatabaseObject.cpp	partial	??0tDatabaseObject@nDatabase@@QAE@E@Z
+0x006fa540	364	tDatabaseObject::tDatabaseObject(iObjectVersion)	Common/Database/DatabaseObject.cpp	vc6	??0tDatabaseObject@nDatabase@@QAE@E@Z
 0x006fa6b0	30	tDatabaseObject::`scalar deleting destructor'	Common/Database/DatabaseObject.cpp	vc6	??_GtDatabaseObject@nDatabase@@UAEPAXI@Z
 0x006fa6d0	401	tDatabaseObject::tDatabaseObject(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6	??0tDatabaseObject@nDatabase@@QAE@ABV01@@Z
 0x006fa870	383	tDatabaseObject::operator=(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6 guest	??4tDatabaseObject@nDatabase@@QAEAAV01@ABV01@@Z
@@ -5075,7 +5075,7 @@ address	size	symbol	source	modes	decorated
 0x006fac20	413	tDatabaseObject::MakeReadOnly()	Common/Database/DatabaseObject.cpp	vc6 guest	?MakeReadOnly@tDatabaseObject@nDatabase@@UAEXXZ
 0x006fadc0	25	tDatabaseObject::SetID(const tID&)	Common/Database/DatabaseObject.cpp	vc6 guest	?SetID@tDatabaseObject@nDatabase@@UAEXABVtID@2@@Z
 0x006fade0	324	tDatabaseObject::SetLockID(const int32u)	Common/Database/DatabaseObject.cpp	vc6 guest	?SetLockID@tDatabaseObject@nDatabase@@UAEXK@Z
-0x006faf30	441	tDatabaseObject::AttachToDB(const tID&)	Common/Database/DatabaseObject.cpp	partial	?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z
+0x006faf30	441	tDatabaseObject::AttachToDB(const tID&)	Common/Database/DatabaseObject.cpp	vc6 guest	?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z
 0x006fb0f0	344	tDatabaseObject::RemoveFromDB()	Common/Database/DatabaseObject.cpp	vc6 guest	?RemoveFromDB@tDatabaseObject@nDatabase@@MAEXXZ
 0x006fb3f0	358	tDatabaseObject::UnLock()	Common/Database/DatabaseObject.cpp	vc6 guest	?UnLock@tDatabaseObject@nDatabase@@MAEXXZ
 0x006fb560	317	tDatabaseObject::GetLockID() const	Common/Database/DatabaseObject.cpp	vc6 guest	?GetLockID@tDatabaseObject@nDatabase@@UBEKXZ
@@ -5120,11 +5120,11 @@ address	size	symbol	source	modes	decorated
 0x006fe600	30	tLogStream::tStreamBuf::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6	??_GtStreamBuf@tLogStream@nLog@@UAEPAXI@Z
 0x006fe720	340	tLogStream::tStreamBuf::xsputn(const char*,std::streamsize)	Common/Log/LogStream.cpp	partial	?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z
 0x006fe880	28	tLogStream::tStreamBuf::overflow(int)	Common/Log/LogStream.cpp	vc6 guest	?overflow@tStreamBuf@tLogStream@nLog@@UAEHH@Z
-0x006fe8b0	377	tLogStream::tStreamBuf::Report()	Common/Log/LogStream.cpp	partial	?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ
+0x006fe8b0	377	tLogStream::tStreamBuf::Report()	Common/Log/LogStream.cpp	vc6 guest	?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ
 0x006feda0	25	tLogStream::tStreamBuf::SetEventType(tLog::tEventType)	Common/Log/LogStream.cpp	vc6 guest	?SetEventType@tStreamBuf@tLogStream@nLog@@UAEXW4tEventType@tLog@3@@Z
 0x006fedc0	262	tLogStream::tLogStream(tLog::tEventType)	Common/Log/LogStream.cpp	vc6	??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z
 0x006feed0	45	tLogStream::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6	??_GtLogStream@nLog@@UAEPAXI@Z
-0x006fefd0	406	tThread::tThread()	Common/Thread/Thread.cpp	partial	??0tThread@@QAE@XZ
+0x006fefd0	406	tThread::tThread()	Common/Thread/Thread.cpp	vc6	??0tThread@@QAE@XZ
 0x006ff170	224	tThread::~tThread()	Common/Thread/Thread.cpp	vc6	??1tThread@@QAE@XZ
 0x006ff4f0	471	tThread::StopThread(int32u)	Common/Thread/Thread.cpp	vc6 guest	?StopThread@tThread@@QAEXK@Z
 0x006ff6d0	24	tThread::mSetPriority(ThreadPriority)	Common/Thread/Thread.cpp	vc6 guest	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z
@@ -5136,14 +5136,14 @@ address	size	symbol	source	modes	decorated
 0x00707e80	97	tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo()	Common/Database/FileDatabaseMgr.cpp	vc6	??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ
 0x00707ef0	588	tFileDatabaseMgr::tDatabaseInfo::StreamOut(nDataStore::tOutput&) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?StreamOut@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z
 0x00708140	472	tFileDatabaseMgr::tDatabaseInfo::StreamIn(nDataStore::tInput&)	Common/Database/FileDatabaseMgr.cpp	partial	?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z
-0x00708330	216	tFileDatabaseMgr::kDatabaseInfoFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x00708330	216	tFileDatabaseMgr::kDatabaseInfoFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708410	12	tFileDatabaseMgr::kDatabaseInfoFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
-0x00708490	216	tFileDatabaseMgr::kDatabaseVersionFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x00708490	216	tFileDatabaseMgr::kDatabaseVersionFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708570	12	tFileDatabaseMgr::kDatabaseVersionFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
-0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x007086d0	12	tFileDatabaseMgr::kDatabaseSaveDirectory (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708800	30	tFileDatabaseMgr::`scalar deleting destructor'	Common/Database/FileDatabaseMgr.cpp	vc6	??_GtFileDatabaseMgr@nDatabase@@UAEPAXI@Z
-0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	partial	??1tFileDatabaseMgr@nDatabase@@UAE@XZ
+0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	vc6	??1tFileDatabaseMgr@nDatabase@@UAE@XZ
 0x00708fc0	153	tFileDatabaseMgr::GetCurDBInfo()	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetCurDBInfo@tFileDatabaseMgr@nDatabase@@UAE?AVtDatabaseInfo@12@XZ
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetDBInfo@tFileDatabaseMgr@nDatabase@@UBEPBVtDatabaseInfo@12@J@Z
 0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?New@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z

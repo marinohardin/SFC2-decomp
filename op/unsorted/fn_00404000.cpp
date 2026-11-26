@@ -200,6 +200,10 @@ std::string& std::string::assign(const char* _S, size_type _N)
     return (*this);
 }
 
+// MATCH-ONLY: never called; it makes VC6 emit 0x0040428e, which nothing else in this unit
+// calls out of line. HYPOTHESIS: a caller in the original used it so.
+std::string& (std::string::*g_fn_0040428e)(const char*, std::string::size_type) = &std::string::assign;
+
 // HYPOTHESIS: the out-of-line copy of the library's std::ostream constructor, which the
 // header defines in the class. MATCH-ONLY: written as a specialization with the header's
 // body, since the copy the header instantiates carries no line of this unit.

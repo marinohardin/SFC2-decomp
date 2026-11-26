@@ -45312,9 +45312,9 @@
    "symbol": "??1tSettings@@UAE@XZ",
    "unit": "Common/Settings.cpp",
    "size": 224,
-   "score": 53.025,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f87d0": {
    "name": "tDateAndTime::tDateAndTime",
@@ -45492,9 +45492,9 @@
    "symbol": "?GetObjectID@tStreamable@nDataStore@@QBEKXZ",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 592,
-   "score": 95.483,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f9130": {
    "name": "nDataStore::tStreamable::GetVersion",
@@ -45519,9 +45519,9 @@
    "symbol": "??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 352,
-   "score": 61.587,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f9420": {
    "name": "nDataStore::operator<<",
@@ -45582,9 +45582,9 @@
    "symbol": "??0tDatabaseObject@nDatabase@@QAE@E@Z",
    "unit": "Common/Database/DatabaseObject.cpp",
    "size": 368,
-   "score": 78.022,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006fa6b0": {
    "name": "nDatabase::tDatabaseObject::`scalar_deleting_destructor'",
@@ -45663,9 +45663,9 @@
    "symbol": "?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z",
    "unit": "Common/Database/DatabaseObject.cpp",
    "size": 448,
-   "score": 48.085,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006fb0f0": {
    "name": "nDatabase::tDatabaseObject::RemoveFromDB",
@@ -46050,9 +46050,9 @@
    "symbol": "?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z",
    "unit": "Common/Log/LogStream.cpp",
    "size": 352,
-   "score": 24.719,
+   "score": 41.472,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-26"
   },
   "0x006fe880": {
    "name": "nLog::tLogStream::tStreamBuf::overflow",
@@ -46068,9 +46068,9 @@
    "symbol": "?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ",
    "unit": "Common/Log/LogStream.cpp",
    "size": 384,
-   "score": 28.201,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006feda0": {
    "name": "nLog::tLogStream::tStreamBuf::SetEventType",
@@ -46104,9 +46104,9 @@
    "symbol": "??0tThread@@QAE@XZ",
    "unit": "Common/Thread/Thread.cpp",
    "size": 416,
-   "score": 53.483,
-   "exact": false,
-   "recorded": "2026-11-24"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006ff170": {
    "name": "tThread::~tThread",
@@ -46203,18 +46203,18 @@
    "symbol": "?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 480,
-   "score": 17.57,
+   "score": 22.707,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-26"
   },
   "0x00708330": {
    "name": "FUN_00708330",
    "symbol": "_$E27",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708410": {
    "name": "FUN_00708410",
@@ -46230,9 +46230,9 @@
    "symbol": "_$E33",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708570": {
    "name": "FUN_00708570",
@@ -46248,9 +46248,9 @@
    "symbol": "_$E38",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x007086d0": {
    "name": "FUN_007086d0",
@@ -46275,9 +46275,9 @@
    "symbol": "??1tFileDatabaseMgr@nDatabase@@UAE@XZ",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 288,
-   "score": 44.294,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708fc0": {
    "name": "nDatabase::tFileDatabaseMgr::GetCurDBInfo",
@@ -46311,7 +46311,7 @@
    "symbol": "?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 784,
-   "score": 79.663,
+   "score": 99.996,
    "exact": false,
    "recorded": "2026-11-26"
   },
