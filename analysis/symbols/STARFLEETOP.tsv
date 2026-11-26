@@ -3606,7 +3606,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046d048	function	fn_0046d048					none
 0x0046d090	function	fn_0046d090					none
 0x0046d09a	function	fn_0046d09a					none
-0x0046d0b0	function	tState_MetaLogon::tState_MetaLogon	tState_MetaLogon				rtti
+0x0046d0b0	function	tState_MetaLogon::tState_MetaLogon	tState_MetaLogon	??0tState_MetaLogon@@QAE@XZ	claim		rtti
 0x0046d1ac	function	tState_MetaLogon::scalar_deleting_destructor	tState_MetaLogon				rtti
 0x0046d1c8	function	tState_MetaLogon::~tState_MetaLogon	tState_MetaLogon				rtti
 0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon				vtable
