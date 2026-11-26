@@ -86,6 +86,28 @@ void fn_0054477b_user( std::vector< tServCharacter::tShipCache > *v )
 // MATCH-ONLY: written as a specialization so the out-of-line copy sits in this unit.
 #include "Common/Thread/SingleAccessWrapper.h"
 
+// The SDK's inline tOptex destructor, the same body tClientCharacter.cpp claims as the game's
+// copy (0x004296c8). With its body in view the compiler sets no unwind state before the
+// member's destructor call, as the original does.
+// MATCH-ONLY: the SDK declares no throw(); the operator delete in the body would otherwise keep
+// the unwind state store (as in Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp).
+// HYPOTHESIS: it belongs in Common/Thread/Optex.h, shared by the units, once they can move.
+inline tOptex::~tOptex() throw()
+{
+	if (fUse != tThreadState::kIgnoreThreadObject) {
+		if (fUseCriticalSections && fpSharedInfo != NULL)
+			::DeleteCriticalSection(&fpSharedInfo->fCriticalSection);
+		if (fEvent != NULL)
+			::CloseHandle(fEvent);
+		if (fFileMapping == NULL) {
+			delete fpSharedInfo;
+		} else {
+			::UnmapViewOfFile(fpSharedInfo);
+			::CloseHandle(fFileMapping);
+		}
+	}
+}
+
 template<> void tSingleAccessWrapper< std::vector< fn_00544725_elem > >::Delete();
 
 // FUNCTION: STARFLEETOP 0x005447d0
