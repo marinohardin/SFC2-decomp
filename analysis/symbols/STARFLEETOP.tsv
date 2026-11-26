@@ -3696,7 +3696,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047378b	function	fn_0047378b		?FUN_0047378b@@YGHH@Z	claim		none
 0x00473792	function	fn_00473792		?FUN_00473792@@YGJJ@Z	claim		none
 0x004737bd	function	fn_004737bd					none
-0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
+0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer	??0tState_Multiplayer@tState_Namespace_Multiplayer@@QAE@XZ	add		rtti
 0x004739e8	function	tState_Namespace_Multiplayer::tState_Multiplayer::scalar_deleting_destructor	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473a04	function	tState_Namespace_Multiplayer::tState_Multiplayer::~tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473c1e	function	fn_00473c1e					none
