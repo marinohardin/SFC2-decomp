@@ -91,22 +91,13 @@ public:
     virtual float vfunction110();
     virtual float vfunction111();
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
-    // HYPOTHESIS: slots 135 to 148 are placeholders that only fix the position of slot 149
-    // (offset 0x250), which 0x004e55e9 calls with 0; slot 148 is the one 0x004e558a fills.
     virtual float vfunction135(unsigned char param_1);
     virtual int vfunction136(char param_1);
     virtual void vfunction137();
     virtual bool vfunction138();
-    virtual void vfunction139();
-    virtual void vfunction140();
-    virtual void vfunction141();
-    virtual void vfunction142();
-    virtual float vfunction143(float param_1, float param_2);
-    virtual int vfunction144();
-    virtual void vfunction145(int param_1);
-    virtual int vfunction146();
-    virtual void vfunction147();
-    virtual void vfunction148();
+    virtual float vfunction143(char param_1, unsigned char param_2);
+    // Slot 149 (offset 0x250) is the one slot past tBaseWeapon's vftable; 0x004e55e9 calls it
+    // with 0, and slot 148 (inherited) is the one 0x004e558a fills.
     // HYPOTHESIS: the recovery time left for one bank, as tPhaserBank's 0x004e2243.
     virtual float vfunction149(int param_1);
     // HYPOTHESIS: slot 116, which tBaseWeapon.h declares as void(); its form here follows
@@ -314,10 +305,10 @@ void tPhaserXBank::vfunction65(char param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x004e56dc
-float tPhaserXBank::vfunction143(float param_1, float param_2)
+float tPhaserXBank::vfunction143(char param_1, unsigned char param_2)
 {
     // HYPOTHESIS: the same test as tPhaserBank's slot 143 (0x004e245e); the two parameters
-    // (ret 8) are unused and their types are guessed from slot 74.
+    // (ret 8) are unused and tBaseWeapon reads them as a bank and a mode.
     float max = field_2c->vfunction123();
     float cur = field_2c->vfunction117();
     float rate = field_2c->vfunction112();

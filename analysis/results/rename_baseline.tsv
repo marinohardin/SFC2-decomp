@@ -10,3 +10,5 @@ address	base symbol	new symbol
 0x005e3a37	?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z	?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z
 0x005e45a0	??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
 0x00410667	?vfunction64@tPhysicalEntity@@UAEXXZ	?vfunction64@tPhysicalEntity@@UAEMXZ
+0x004e245e	?vfunction143@tPhaserBank@@UAEMMM@Z	?vfunction143@tPhaserBank@@UAEMDE@Z
+0x004e56dc	?vfunction143@tPhaserXBank@@UAEMMM@Z	?vfunction143@tPhaserXBank@@UAEMDE@Z
