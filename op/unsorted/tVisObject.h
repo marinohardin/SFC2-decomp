@@ -8,6 +8,7 @@ class tScrollBar;
 class tObjBase;
 class tVisObject;
 class tString;
+class tAsset;
 
 // The original takes tRect from tbasic.h. The unit map has no place for a header without a unit of
 // its own yet, so the part of it these units need is kept here. The members the compiler did not
@@ -287,6 +288,10 @@ public:
 		field_60 = 0;
 	}
 	virtual ~tVisObject();
+	// HYPOTHESIS: slot 37 of the vftable (0x004c00a8: takes +0x48 from the asset's +0x4). Declared
+	// non-virtual here until tScrollBar, tVisGroup, tSeqScene and the others that declare their own
+	// vfunction37 with other signatures are given the same one; a virtual would shift their slots.
+	void vfunction37( tAsset *asset );
 	// HYPOTHESIS: a member of tVisObject or tObjBase; it lies in the SDK library range.
 	void fn_006849d0( int a );
 	// HYPOTHESIS: a member of tVisObject; tListBox_Base::vfunction31 calls it directly after scrolling.

@@ -5351,7 +5351,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004c004b	function	fn_004c004b	tRectShape				vtable
 0x004c0067	function	fn_004c0067					none
 0x004c00a1	function	tObjBase::~tObjBase	tObjBase				rtti
-0x004c00a8	function	fn_004c00a8	tVisObject				vtable
+0x004c00a8	function	fn_004c00a8	tVisObject	?vfunction37@tVisObject@@QAEXPAVtAsset@@@Z	claim		vtable
 0x004c00b5	function	tVisObject::scalar_deleting_destructor	tVisObject				rtti
 0x004c00d1	function	tVisObject::~tVisObject	tVisObject				rtti
 0x004c010b	function	fn_004c010b	tShipSpeedBar				vtable
