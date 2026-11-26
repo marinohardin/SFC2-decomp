@@ -40,6 +40,14 @@ def test_the_folded_address_keeps_working(tmp_path):
     assert first_status(idx, callee=0x700000) == ('ok', 'known address')
 
 
+def test_a_symbol_with_no_known_address_is_unchanged_by_its_claim(tmp_path):
+    # it was never a mismatch (unverified, and recorded as used for one address), so a claim adds
+    # nothing and must not change how the function's other relocations are judged
+    idx = index(tmp_path, [])
+    idx.add_claims({CALLEE}, table(SYM))
+    assert first_status(idx)[0] == 'unverified'
+
+
 def test_a_claim_gives_no_credit_to_another_symbol(tmp_path):
     idx = index(tmp_path, [])
     idx.add_claims({CALLEE}, table(OTHER))

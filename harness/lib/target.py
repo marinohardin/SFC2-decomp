@@ -200,12 +200,13 @@ def _check(name, sym, sec, off, s_exe, fn_address, index, seen):
             return 'ok', 'own section'
         return 'mismatch', f'own-section label should be 0x{want:08x}'
     known = index.known.get(name)
-    claimed = getattr(index, 'claimed', {}).get(name, ())
-    if s_exe in claimed:      # claimed in the source with exactly this symbol (funcs.add_claims)
-        return 'ok', 'claimed address'
     if known:
         if s_exe in known:
             return 'ok', 'known address'
+        if s_exe in getattr(index, 'claimed', {}).get(name, ()):
+            # claimed in the source with exactly this symbol (funcs.add_claims); a symbol with
+            # no known address stays on the path below, where it was already not a mismatch
+            return 'ok', 'claimed address'
         return 'mismatch', 'known at ' + ', '.join(f'0x{a:08x}' for a in sorted(known))
     if name in seen and seen[name] != s_exe:
         return 'mismatch', f'used for 0x{seen[name]:08x} earlier in this function'
