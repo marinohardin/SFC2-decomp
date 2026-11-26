@@ -43,6 +43,60 @@ unsigned tPlasmaLauncher::mStreamOutSystemSpecificData(tSFCStream &s, unsigned a
     return aFlags;
 }
 
+// FUNCTION: STARFLEETOP 0x004e779b
+float tPlasmaLauncher::vfunction142(char param_1, unsigned char param_2)
+{
+    if (param_1 != -1 && (param_1 >= field_e8 || param_1 >= vfunction106()))
+        return 0.0f;
+    float result = 0.0f;
+    if (param_2 == 0)
+    {
+        switch (field_10c)
+        {
+        case 0:
+            result = 3.0f;
+            break;
+        case 1:
+            result = 2.0f;
+            break;
+        case 2:
+        case 7:
+            goto L_one;
+        case 3:
+            if (field_f8 == 3)
+                goto L_zero;
+            goto L_one;
+        case 4:
+        case 5:
+        L_zero:
+            result = 0.0f;
+            break;
+        case 6:
+            goto L_five;
+        }
+    }
+    else
+    {
+        switch (field_10c)
+        {
+        case 0:
+        L_five:
+            return 5.0f;
+        case 1:
+            return 4.0f;
+        case 2:
+            return 2.5f;
+        case 6:
+            goto L_five;
+        case 7:
+        L_one:
+            result = 1.0f;
+            break;
+        }
+    }
+    return result;
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
