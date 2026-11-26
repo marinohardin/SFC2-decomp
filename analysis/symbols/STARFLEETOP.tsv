@@ -3612,7 +3612,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046d2a4	function	fn_0046d2a4	tState_MetaLogon	?vfunction13@tState_MetaLogon@@UAEPADXZ	claim		vtable
 0x0046d2aa	function	fn_0046d2aa		?fn_0046d2aa@tState_MetaLogon@@QAEXPBD@Z	claim		none
 0x0046d370	function	fn_0046d370	tState_MetaLogon	?vfunction1@tState_MetaLogon@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		vtable
-0x0046d38c	function	fn_0046d38c					none
+0x0046d38c	function	fn_0046d38c		?fn_0046d38c@tState_MetaLogon@@QAEXXZ	claim		none
 0x0046d3c8	function	fn_0046d3c8					none
 0x0046d3f3	function	fn_0046d3f3					none
 0x0046d468	function	fn_0046d468					none

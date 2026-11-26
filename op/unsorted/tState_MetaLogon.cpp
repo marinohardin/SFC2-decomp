@@ -35,3 +35,16 @@ void tState_MetaLogon::vfunction1( const std::string& text )
 {
 	fn_0046d2aa( text.c_str() );
 }
+
+// HYPOTHESIS: the screen's name is a pointer global ("Need Patching"); the second global's type is not known.
+extern char *g_00847250;
+extern char g_00847228[];
+
+// FUNCTION: STARFLEETOP 0x0046d38c
+void tState_MetaLogon::fn_0046d38c()
+{
+	field_24 = 1;
+	fn_004d34c5( 0x10002, 1 );
+	fn_004d34c5( 0x10001, 1 );
+	fn_004d31ed( g_00847250, 1, g_00847228, 0x280, 0x1e0 );
+}

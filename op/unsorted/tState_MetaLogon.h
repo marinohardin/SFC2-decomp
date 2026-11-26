@@ -43,6 +43,9 @@ public:
 	// 0x0046d2aa: builds a line of text in field_28 and hands it on to 0x004d3179.
 	void fn_0046d2aa( const char *text );
 
+	// 0x0046d38c: sets field_24 and enables two controls, then shows the "Need Patching" screen.
+	void fn_0046d38c();
+
 	// The constructor leaves +0x20 to +0x24, +0x110 to +0x120 and +0x18c alone; 0x0046d4d2
 	// clears the flags.
 	std::vector< std::string > field_10;		// the destructor (0x00402d42) destroys 0x10-byte elements
