@@ -355,22 +355,23 @@ void fn_00522f1e();
 // HYPOTHESIS: the two blocks at +0x1698 and +0x16a8 are begin/end pairs of 0x1a0-byte records.
 void __fastcall fn_00522e86(char *self)
 {
-	int **pPair = (int **)(self + 0x169c);
 	int n = 2;
+	int **pPair = (int **)(self + 0x169c);
 	do {
-		for (int *rec = pPair[-1]; rec != *pPair; rec += 0x68) {
+		int *rec = pPair[-1];
+		while (rec != *pPair) {
 			int i = 0;
 			if (0 < rec[100]) {
 				int *p = rec;
 				do {
 					*p = *((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)p);
-					int *q = p + 1;
-					int *r = ((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)q);
+					int *r = ((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)(p + 1));
 					i++;
-					*q = *r;
+					p[1] = *r;
 					p += 2;
 				} while (i < rec[100]);
 			}
+			rec += 0x68;
 		}
 		pPair += 4;
 		n--;
