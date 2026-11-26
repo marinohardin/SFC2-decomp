@@ -362,13 +362,10 @@ extern tSWView3D *g_00c7c110;
 // FUNCTION: STARFLEETOP 0x0069fd20
 tSWView3D *fn_0069fd20()
 {
-	if (!g_00c7c110) {
-		tSWView3D *view = new tSWView3D;
-		g_00c7c110 = view;
-		if (!g_00c7c110)
-			return 0;
-	}
-	g_00c7c110->vfunction7();
+	if (!g_00c7c110)
+		g_00c7c110 = new tSWView3D;
+	if (g_00c7c110)
+		g_00c7c110->vfunction7();
 	return g_00c7c110;
 }
 
