@@ -617,7 +617,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00410650	function	fn_00410650	tPhysicalEntity	?vfunction59@tPhysicalEntity@@UAEHXZ	claim		none
 0x00410657	function	fn_00410657	tPhysicalEntity	?vfunction61@tPhysicalEntity@@UAEXXZ	claim		none
 0x0041065f	function	fn_0041065f	tPhysicalEntity	?vfunction62@tPhysicalEntity@@UAEXXZ	claim		none
-0x00410667	function	fn_00410667	tPhysicalEntity	?vfunction64@tPhysicalEntity@@UAEXXZ	claim		none
+0x00410667	function	fn_00410667	tPhysicalEntity	?vfunction64@tPhysicalEntity@@UAEMXZ	claim		none
 0x0041066f	function	tEntityAsteroid::scalar_deleting_destructor	tEntityAsteroid				rtti
 0x0041068b	function	tEntityAsteroid::~tEntityAsteroid	tEntityAsteroid				rtti
 0x00410696	function	fn_00410696	tEntityAsteroid				vtable
