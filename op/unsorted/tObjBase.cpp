@@ -187,3 +187,24 @@ void tObjBase::fn_0067cf70( c_tObjBase_Field4C *shape, unsigned char visible )
 		field_34.bottom = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0067d160
+void tObjBase::vfunction30()
+{
+	field_18 = field_24;
+	field_1C &= 0xfffffffe;
+	while ( field_18 )
+	{
+		if ( field_18->field_40 & 8 )
+		{
+			if ( field_18->field_58 )
+				field_18->field_58( field_18 );
+			field_18->vfunction30();
+		}
+		if ( field_1C & 1 )
+			field_1C &= 0xfffffffe;
+		else
+			field_18 = field_18->field_04;
+	}
+	field_18 = 0;
+}

@@ -17811,7 +17811,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067cf70	function	fn_0067cf70		?fn_0067cf70@tObjBase@@QAEXPAUc_tObjBase_Field4C@@E@Z	claim		none
 0x0067d030	function	tFile::gSetFileCallback	tFile				sdk
 0x0067d040	function	fn_0067d040	tObjBase				vtable
-0x0067d160	function	fn_0067d160	tObjBase				vtable
+0x0067d160	function	fn_0067d160	tObjBase	?vfunction30@tObjBase@@UAEXXZ	claim		vtable
 0x0067d1c0	function	fn_0067d1c0	tObjBase	?fn_0067d1c0@tVisGroup@@QAE_NPAH@Z	add		vtable
 0x0067d2d0	function	fn_0067d2d0		?fn_0067d2d0@tVisObject@@QAE_NPAV1@@Z	callers		none
 0x0067d310	function	fn_0067d310		?fn_0067d310@tObjBase@@QAE_NPAV1@@Z	add		none
