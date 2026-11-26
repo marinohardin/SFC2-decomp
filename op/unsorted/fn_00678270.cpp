@@ -1,6 +1,20 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00678270.cpp
-// Functions: 0x00678270 to 0x00678aa0, 9 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include <vector>
+#include "Tiger/tstring.h"
+
+// HYPOTHESIS: class unknown. 0x10..0x24 is a std::map<tString, int> in the original, whose
+// constructor is inlined there; the build does not inline it (see the notes in the handoff).
+class fn_00678500_Class
+{
+public:
+    std::vector<int> field_0;
+    char pad10[0x14];
+    int field_24;
+    tString field_28;
+    fn_00678500_Class();
+};
+
+// FUNCTION: STARFLEETOP 0x00678500
+fn_00678500_Class::fn_00678500_Class()
+{
+    field_24 = 0;
+}

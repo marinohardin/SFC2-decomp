@@ -17688,7 +17688,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00678250	function	tBoundAsset::scalar_deleting_destructor	tBoundAsset	??_GtBoundAsset@@UAEPAXI@Z	claim		rtti
 0x00678270	function	tAsset::~tAsset	tAsset	??1tBoundAsset@@UAE@XZ	callers		rtti
 0x006782d0	function	fn_006782d0					none
-0x00678500	function	fn_00678500					none
+0x00678500	function	fn_00678500		??0fn_00678500_Class@@QAE@XZ	claim		none
 0x006785c0	function	fn_006785c0					none
 0x00678600	function	fn_00678600					none
 0x006786d0	function	fn_006786d0					none
