@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tMapDisplay__tMapFrame.cpp
-// Functions: 0x0046c3ed to 0x0046c4e0, 12 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tVisObject.h"
+
+// FUNCTION: STARFLEETOP 0x0046c408
+void tObjBase::vfunction1( unsigned int n )
+{
+	field_40 = ( ( n & 1 ) << 3 ) | ( field_40 & ~8 );
+	if ( ( field_40 & 8 ) && field_0C )
+	{
+		field_0C->vfunction1( ( field_40 << 28 ) >> 31 );
+	}
+}

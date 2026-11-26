@@ -3574,7 +3574,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046c31b	function	fn_0046c31b					none
 0x0046c34f	function	fn_0046c34f					none
 0x0046c3ed	function	tMapDisplay::tMapFrame::tMapFrame	tMapDisplay::tMapFrame				rtti
-0x0046c408	function	fn_0046c408	tObjBase				vtable
+0x0046c408	function	fn_0046c408	tObjBase	?vfunction1@tObjBase@@UAEXI@Z	claim		vtable
 0x0046c436	function	fn_0046c436	tObjBase				vtable
 0x0046c44f	function	fn_0046c44f	tApplication				vtable
 0x0046c452	function	fn_0046c452	tObjBase				vtable
