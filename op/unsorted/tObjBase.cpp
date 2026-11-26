@@ -300,3 +300,19 @@ void tObjBase::vfunction15( bool a )
 	for ( ; child != 0; child = child->field_04 )
 		child->vfunction15( a );
 }
+
+// FUNCTION: STARFLEETOP 0x0067d450
+void tObjBase::vfunction35( c_tObjBase_Field10 *target )
+{
+	if ( field_10 != target )
+	{
+		tVisObject *child = field_24;
+		field_10 = target;
+		for ( ; child != 0; child = child->field_04 )
+			child->vfunction35( target );
+		if ( field_10 != 0 )
+			field_14 = *(tSurface **)( (char *)field_10 + 0x14 );
+		else
+			field_14 = 0;
+	}
+}
