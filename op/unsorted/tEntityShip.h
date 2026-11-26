@@ -190,6 +190,7 @@ public:
 	void fn_00414bfa(tNetMsg *aMsg);
 	void fn_00414cad(tNetMsg *aMsg);
 	void fn_00414cf5(tNetMsg *aMsg);
+	void fn_00414d2f(tNetMsg *aMsg);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
