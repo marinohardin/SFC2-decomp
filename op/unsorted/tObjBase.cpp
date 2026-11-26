@@ -239,3 +239,27 @@ bool tObjBase::fn_0067d310( tObjBase *child )
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d350
+bool tObjBase::vfunction2( tObjBase *a )
+{
+	if ( field_30 != 0 )
+	{
+		if ( vfunction3() )
+		{
+			if ( a != this )
+				field_30 = a;
+			return true;
+		}
+	}
+	else if ( field_0C != 0 )
+	{
+		if ( field_0C->vfunction2( this ) )
+		{
+			if ( a != this )
+				field_30 = a;
+			return true;
+		}
+	}
+	return false;
+}

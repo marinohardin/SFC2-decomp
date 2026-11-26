@@ -17815,7 +17815,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d1c0	function	fn_0067d1c0	tObjBase	?fn_0067d1c0@tVisGroup@@QAE_NPAH@Z	add		vtable
 0x0067d2d0	function	fn_0067d2d0		?fn_0067d2d0@tVisObject@@QAE_NPAV1@@Z	claim		none
 0x0067d310	function	fn_0067d310		?fn_0067d310@tObjBase@@QAE_NPAV1@@Z	claim		none
-0x0067d350	function	fn_0067d350	tObjBase				vtable
+0x0067d350	function	fn_0067d350	tObjBase	?vfunction2@tObjBase@@UAE_NPAV1@@Z	claim		vtable
 0x0067d3a0	function	fn_0067d3a0	tObjBase				vtable
 0x0067d400	function	fn_0067d400	tObjBase				vtable
 0x0067d450	function	fn_0067d450	tObjBase				vtable
