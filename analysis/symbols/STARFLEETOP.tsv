@@ -664,7 +664,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041165c	function	tEntity_Astral_WormHole::~tEntity_Astral_WormHole	tEntity_Astral_WormHole				rtti
 0x004116af	function	fn_004116af	tEntity_Astral_Hypermass				vtable
 0x004116cc	function	fn_004116cc	tEntity_Astral_WormHole				vtable
-0x00411790	function	fn_00411790	tPhysicalEntity				vtable
+0x00411790	function	fn_00411790	tPhysicalEntity	?vfunction41@tPhysicalEntity@@UAEXH@Z	claim		vtable
 0x004117a5	function	fn_004117a5					none
 0x004117e9	function	fn_004117e9	tEntity_Astral_Fissure				vtable
 0x004117ed	function	tEntity_Astral_Fissure::scalar_deleting_destructor	tEntity_Astral_Fissure				rtti
@@ -21607,7 +21607,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x007363f0	function	fn_007363f0		__chkstk	callers		none
 0x0073641f	function	fn_0073641f					none
 0x007364aa	function	fn_007364aa		_atoi	callers		none
-0x007364c0	function	fn_007364c0					none
+0x007364c0	function	fn_007364c0		?fn_007364c0@@YAXPADPBD@Z	add		none
 0x007364c7	function	fn_007364c7					none
 0x007364d0	function	fn_007364d0					none
 0x007365b0	function	fn_007365b0					none
