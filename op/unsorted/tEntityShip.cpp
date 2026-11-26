@@ -88,6 +88,15 @@ void tEntityShip::fn_00414cad(tNetMsg *aMsg)
 	cur[2] = msg[2];
 }
 
+// HYPOTHESIS: the message is read as one dword at +4
+// FUNCTION: STARFLEETOP 0x00414cf5
+void tEntityShip::fn_00414cf5(tNetMsg *aMsg)
+{
+	gNetControl.mQueueMsg(aMsg, 0x1a, fID, 0.0);
+	field_a10 = 0x1a;
+	*((int *)field_a20 + 1) = *((int *)aMsg + 1);
+}
+
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()

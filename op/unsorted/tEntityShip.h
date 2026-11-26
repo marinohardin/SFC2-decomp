@@ -189,6 +189,7 @@ public:
 	// HYPOTHESIS: queues a movement message; callers reach it through tObject_0042496f.
 	void fn_00414bfa(tNetMsg *aMsg);
 	void fn_00414cad(tNetMsg *aMsg);
+	void fn_00414cf5(tNetMsg *aMsg);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
