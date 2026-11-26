@@ -1,6 +1,19 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00414000.cpp
-// Functions: 0x004140a9 to 0x00414205, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Source/entity/entity_physical.h"
+
+// FUNCTION: STARFLEETOP 0x004140a9
+// HYPOTHESIS: removes the entity ID from the threat list, shifting the later entries down.
+void tPhysicalEntity::vfunction47(int aID)
+{
+	for (int i = field_0x184 - 1; i >= 0; i--)
+	{
+		if (field_0x180[i] == aID)
+		{
+			field_0x184 = field_0x184 - 1;
+			for (int j = i; j < field_0x184; j++)
+			{
+				field_0x180[j] = field_0x180[j + 1];
+			}
+			return;
+		}
+	}
+}

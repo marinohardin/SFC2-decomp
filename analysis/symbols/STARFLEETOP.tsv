@@ -763,7 +763,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00413f8a	function	fn_00413f8a	tPhysicalEntity	?vfunction51@tPhysicalEntity@@UAEXXZ	claim		none
 0x00413fba	function	fn_00413fba	tPhysicalEntity	?vfunction52@tPhysicalEntity@@UAEXXZ	claim		none
 0x00413fe9	function	fn_00413fe9	tPhysicalEntity	?vfunction46@tPhysicalEntity@@UAEXPAV1@H@Z	claim		none
-0x004140a9	function	fn_004140a9	tPhysicalEntity				vtable
+0x004140a9	function	fn_004140a9	tPhysicalEntity	?vfunction47@tPhysicalEntity@@UAEXH@Z	claim		vtable
 0x004140fc	function	fn_004140fc	tPhysicalEntity				vtable
 0x004141fe	function	fn_004141fe	tPhysicalEntity				vtable
 0x00414205	function	fn_00414205	tPhysicalEntity				vtable
