@@ -285,6 +285,15 @@ void tSWView3D::vfunction17(int a, int b, int c, int d)
 	field_1f58 = b + d;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fad0
+int tSWView3D::vfunction10()
+{
+	int result = 0xe;
+	if (field_5fb4)
+		result = 0x1f;
+	return result;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
