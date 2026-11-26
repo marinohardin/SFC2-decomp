@@ -4,7 +4,7 @@
 #include "unsorted/ParseSFCSoundTable.h"
 #include "Common/Thread/Thread.h"
 #include "Tiger/tbasicfile.h"
-#include "Tiger/tZipInfoMgr.h"
+#include "Tiger/tbasicsoundfilezip.h"
 #include "unsorted/mss.h"
 #include "unsorted/tEntity.h"
 #include "Source/entity/entity_physical.h"
@@ -46,24 +46,6 @@ void fn_0050feb2( tBasicFile *param_1, unsigned short param_2 );
 
 // HYPOTHESIS: the member classes below are named after their destructors until evidence names
 // them; sizes come from the member offsets in tSndMgr_Miles.
-// HYPOTHESIS: this is tSndZipInfoMgr (size 0x254, mInit at 0x0066c9b0), which is declared only
-// inside Tiger/tbasicsoundfilezip.cpp; it stays a stand-in until a header holds that class.
-class fn_0050cb19_object : public tZipInfoMgr
-{
-public:
-	~fn_0050cb19_object();
-
-	unsigned char mInit( const char * );
-	// HYPOTHESIS: mDone is inherited; the exe folds tSndZipInfoMgr::mDone with tZipInfoMgr::mDone.
-
-	// HYPOTHESIS: the entry type is tSndZipEntry, laid out as tZipEntry.
-	typedef tZipInfoMgr::tZipEntry tEntry;
-	// HYPOTHESIS: tSndZipInfoMgr's lookup of a name in its directory, as tZipInfoMgr::mFindEntry.
-	const tEntry *fn_0066cec0( const char * ) const;
-
-	char pad_0110[0x254 - 0x110];
-};
-
 class fn_0050bcd4_object
 {
 public:
@@ -285,8 +267,8 @@ public:
 	char pad_1f1c[0x4];
 	long field_1f20;
 	ParseSFCSoundTable field_1f24;
-	fn_0050cb19_object field_1f60;
-	fn_0050cb19_object field_21b4;
+	tSndZipInfoMgr field_1f60;
+	tSndZipInfoMgr field_21b4;
 	tBasicFile *field_2408;
 	tBasicFile *field_240c;
 	unsigned long field_2410;
@@ -578,7 +560,7 @@ long tSndMgr_Miles::vfunction29( long param_1, long param_2, char param_3, unsig
 	if ( name )
 	{
 		char fromSounds = 1;
-		const fn_0050cb19_object::tEntry *entry = field_1f60.fn_0066cec0( name );
+		const tSndZipInfoMgr::tSndZipEntry *entry = field_1f60.fn_0066cec0( name );
 		if ( !entry )
 		{
 			entry = field_21b4.fn_0066cec0( name );

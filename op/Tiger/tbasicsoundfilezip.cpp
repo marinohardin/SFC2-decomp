@@ -7,6 +7,7 @@
 #include "Tiger/tstring.h"
 
 #include "Tiger/tsound_fileio.h"
+#include "Tiger/tbasicsoundfilezip.h"
 
 int		QsortCompare( const void *, const void * );
 
@@ -61,41 +62,6 @@ struct tSndZipLocalHdr
 	unsigned short	fExtraLength;
 };
 #pragma pack( pop )
-
-// HYPOTHESIS: layout from the constructor and mInit; names of the fields are not known.
-class tSndZipInfoMgr
-{
-public:
-	tSndZipInfoMgr();
-
-	unsigned char	mInit( const char * );
-	void			mDone();
-
-protected:
-	class tSndZipEntry
-	{
-		friend class tSndZipInfoMgr;
-
-	protected:
-		tSndZipEntry();
-		~tSndZipEntry();
-
-	public:
-		char			*field_0;	// lower-case name, '/' separated
-		unsigned long	field_4;	// file offset of the data
-		unsigned long	field_8;	// compressed size
-		unsigned long	field_c;	// size
-		unsigned long	field_10;	// compression method
-	};
-
-	tSndZipEntry	*field_0;
-	long			field_4;
-	char			field_8[260];
-	long			field_10c;
-	tString			field_110[8];
-	long			field_250;
-};
-
 
 // FUNCTION: STARFLEETOP 0x0066c970
 tSndZipInfoMgr::tSndZipInfoMgr()
