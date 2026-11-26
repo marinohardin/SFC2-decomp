@@ -42,6 +42,7 @@ class tBitmapFontEx : public tBitmapFont
 {
 public:
 	tBitmapFontEx();
+	~tBitmapFontEx();
 	// 0x00537cf5: the glyph record (0x18 bytes each, from +0x8) for an index, or none past +0xc.
 	virtual void *vfunction1( unsigned short index );
 	// 0x0055f269: returns +0xc (the number of glyphs); a function the vftable of tLogMessage shares.

@@ -80,3 +80,18 @@ void* __fastcall fn_00537c73(void* self, int, unsigned char flags)
     }
     return self;
 }
+
+// FUNCTION: STARFLEETOP 0x00537cbe
+tBitmapFontEx::~tBitmapFontEx()
+{
+    if (field_08 != 0) {
+        fn_00537c73(field_08, 0, 3);
+    }
+    if (field_04 != 0) {
+        operator delete(field_04);
+    }
+    g_00c32454--;
+    if (field_20 != 0) {
+        field_20 = 0;
+    }
+}
