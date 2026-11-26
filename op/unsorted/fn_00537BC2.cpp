@@ -140,3 +140,31 @@ void tBitmapFontEx::vfunction4( void *buffer, int size )
         strncpy((char *)buffer, (char *)field_04, size);
     }
 }
+
+#include <stdio.h>
+
+// FUNCTION: STARFLEETOP 0x00537f66
+void tBitmapFontEx::vfunction8( int name )
+{
+    // HYPOTHESIS: the parameter is a name pointer held as an int; the original reuses its slot as the loop counter
+    FILE *fp = fopen((const char *)name, "wb");
+    fwrite(&field_10, 4, 1, fp);
+    fwrite(&field_14, 4, 1, fp);
+    int *count = &field_0C;
+    fwrite(count, 4, 1, fp);
+    int offset = 0;
+    for (name = 0; name < *count; name++) {
+        fwrite((char *)field_08 + 0x10 + offset, 4, 1, fp);
+        fwrite((char *)field_08 + 0x14 + offset, 4, 1, fp);
+        fwrite((char *)field_08 + 4 + offset, 4, 1, fp);
+        fwrite((char *)field_08 + 8 + offset, 4, 1, fp);
+        fwrite((char *)field_08 + 0xc + offset, 4, 1, fp);
+        int *p = (int *)((char *)field_08 + offset);
+        if (p[3] * p[2] != 0) {
+            fwrite((void *)p[0], 1, p[3] * p[2], fp);
+        }
+        offset += 0x18;
+    }
+    fflush(fp);
+    fclose(fp);
+}

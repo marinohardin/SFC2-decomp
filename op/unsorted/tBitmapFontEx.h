@@ -60,7 +60,7 @@ public:
 	// HYPOTHESIS: 0x00537d88 loads the font from a file named by the string (it opens it first).
 	virtual bool vfunction7( const char *name );
 	// HYPOTHESIS: 0x00537f66 reads the font's values (+0x10, +0x14, +0xc ...) from a file.
-	virtual void vfunction8( const char *name );
+	virtual void vfunction8( int name );
 	// 0x005c7fb7: returns +0x1c.
 	virtual int vfunction9();
 	// 0x0053805e: takes a reference (+0x20 up by one).
