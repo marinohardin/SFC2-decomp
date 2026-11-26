@@ -1,3 +1,5 @@
+#include "unsorted/tBitmapFontEx.h"
+
 // HYPOTHESIS: a constructor that zeroes six dwords; the owning class is unknown
 // FUNCTION: STARFLEETOP 0x00537bc2
 int* __fastcall fn_00537bc2(int* self)
@@ -46,4 +48,12 @@ void __fastcall fn_00537bfd(int* self)
     self[7] = 0;
     self[6] = 0;
     g_00c32450--;
+}
+
+extern int g_00c32454;
+
+// FUNCTION: STARFLEETOP 0x00537c4a
+tBitmapFontEx::tBitmapFontEx()
+{
+    g_00c32454++;
 }
