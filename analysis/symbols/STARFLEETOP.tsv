@@ -5042,7 +5042,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b2ae6	function	tMatrix::tMatrix	tMatrix	??0tMatrix@@QAE@MMMMMMMMMMMMMMMM@Z	claim		claim
 0x004b2b56	function	fn_004b2b56	tMyHud3D	?vfunction11@tMyHud3D@@UAEXHHDH@Z	claim		none
 0x004b2c83	function	fn_004b2c83	tMyHud3D	?vfunction10@tMyHud3D@@UAEXH@Z	claim		none
-0x004b2cd3	function	fn_004b2cd3					none
+0x004b2cd3	function	fn_004b2cd3		?fn_004b2cd3@fn_004b2cd3_View@@QAEXMMMM@Z	claim		none
 0x004b2d5c	function	fn_004b2d5c					none
 0x004b2eb9	function	fn_004b2eb9					none
 0x004b2f6c	function	fn_004b2f6c					none
@@ -21748,7 +21748,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x007392a4	function	fn_007392a4					none
 0x007392ad	function	fn_007392ad					none
 0x00739360	function	fn_00739360					none
-0x00739374	function	fn_00739374					none
+0x00739374	function	fn_00739374		_tan	add		none
 0x0073937d	function	fn_0073937d					none
 0x00739412	function	fn_00739412		_qsort	add		none
 0x00739566	function	fn_00739566					none
