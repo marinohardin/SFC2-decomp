@@ -22,6 +22,34 @@ struct fn_006abe00_Vtx
 	char	data[0x40];
 };
 
+// HYPOTHESIS: the 0x40-byte member at the view's +0x1eec. 0x006a9540 calls 0x006ac780 with its
+// address in ecx, so it is an object of its own; its class has no name in the exe. 0x006ac780
+// sets +0x00 to -1, the next three words to 0 and the following eight to 1.0. Fields carry
+// their offsets in this struct; the view's offset is 0x1eec more.
+struct fn_006ac780_State
+{
+	void	fn_006ac780();
+
+	int					field_0x00;    // -1, or 0..9 (vfunction68)
+	int					field_0x04;    // the next cache entry, below 0x150
+	float				field_0x08;    // vfunction74
+	float				field_0x0c;
+	float				field_0x10;    // vfunction73
+	float				field_0x14;
+	float				field_0x18;
+	float				field_0x1c;    // vfunction77, vfunction76
+	float				field_0x20;
+	float				field_0x24;
+	float				field_0x28;
+	float				field_0x2c;
+	float				field_0x30;
+	int					field_0x34;
+	unsigned int		field_0x38;    // at most 0x1000, vfunction78
+	int					field_0x3c;
+};
+
+typedef char fn_006ac780_State_size_is_0x40[ sizeof( fn_006ac780_State ) == 0x40 ? 1 : -1 ];
+
 // HYPOTHESIS: derived from tView3D (both carry the vtable slots the units call). Its size is
 // 0x1f4c: tSWView3D and tD3DViewMgr (allocated as 0x8010 bytes) both start their own members
 // there, and no method of this class touches a byte beyond it. No member is named in the exe,
@@ -41,6 +69,7 @@ public:
 	virtual ~tView3DExt();    // slot 0, 0x006a9e80 is its deleting destructor
 
 	void	mAssertVtxCache( int count );
+	void	fn_006a9540();    // HYPOTHESIS: a member (it runs on this), resets the view's state
 
 	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
 	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
@@ -155,25 +184,7 @@ public:
 	void				*field_0x1ee0;
 	void				(*field_0x1ee4)();    // vfunction15
 	void				*field_0x1ee8;
-	// HYPOTHESIS: +0x1eec..+0x1f2b is one 0x40-byte member whose function 0x006ac780 (called
-	// with its address) sets +0x1eec to -1, the next three words to 0 and the following eight
-	// to 1.0; kept flat because nothing else is known of its type.
-	int					field_0x1eec;    // -1, or 0..9 (vfunction68)
-	int					field_0x1ef0;    // the next cache entry, below 0x150
-	float				field_0x1ef4;    // vfunction74
-	float				field_0x1ef8;
-	float				field_0x1efc;    // vfunction73
-	float				field_0x1f00;
-	float				field_0x1f04;
-	float				field_0x1f08;    // vfunction77, vfunction76
-	float				field_0x1f0c;
-	float				field_0x1f10;
-	float				field_0x1f14;
-	float				field_0x1f18;
-	float				field_0x1f1c;
-	int					field_0x1f20;
-	unsigned int		field_0x1f24;    // at most 0x1000, vfunction78
-	int					field_0x1f28;
+	fn_006ac780_State	field_0x1eec;    // +0x1eec..+0x1f2b
 	int					field_0x1f2c[8];    // counters, cleared by vfunction87, read by vfunction88..95
 };
 
@@ -192,7 +203,6 @@ typedef char tView3DExt_field_0x1eb8_is_0x1eb8[ offsetof( tView3DExt, field_0x1e
 typedef char tView3DExt_field_0x1ed4_is_0x1ed4[ offsetof( tView3DExt, field_0x1ed4 ) == 0x1ed4 ? 1 : -1 ];
 typedef char tView3DExt_field_0x1edc_is_0x1edc[ offsetof( tView3DExt, field_0x1edc ) == 0x1edc ? 1 : -1 ];
 typedef char tView3DExt_field_0x1eec_is_0x1eec[ offsetof( tView3DExt, field_0x1eec ) == 0x1eec ? 1 : -1 ];
-typedef char tView3DExt_field_0x1f20_is_0x1f20[ offsetof( tView3DExt, field_0x1f20 ) == 0x1f20 ? 1 : -1 ];
 typedef char tView3DExt_field_0x1f2c_is_0x1f2c[ offsetof( tView3DExt, field_0x1f2c ) == 0x1f2c ? 1 : -1 ];
 
 #endif
