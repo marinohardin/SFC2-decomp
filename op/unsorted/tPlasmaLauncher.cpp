@@ -4,3 +4,5 @@
 // Functions: 0x004e72fd to 0x004e8a69, 22 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   game-release (harness/units.json)
+
+#include "unsorted/tPlasmaLauncher.h"
