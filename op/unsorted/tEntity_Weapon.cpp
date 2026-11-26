@@ -31,3 +31,19 @@ int tEntity_Weapon::vfunction69()
 {
 	return field_0x1f0;
 }
+
+// HYPOTHESIS: a three-float setter; the class is unknown (likely tPoint3::mSet's out-of-line copy).
+struct fn_0041c983_Triple
+{
+	float	a, b, c;
+	fn_0041c983_Triple *fn_0041c983(float aA, float aB, float aC);
+};
+
+// FUNCTION: STARFLEETOP 0x0041c983
+fn_0041c983_Triple *fn_0041c983_Triple::fn_0041c983(float aA, float aB, float aC)
+{
+	a = aA;
+	b = aB;
+	c = aC;
+	return this;
+}

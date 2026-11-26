@@ -969,7 +969,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c250	function	tEntity_Weapon::scalar_deleting_destructor	tEntity_Weapon				rtti
 0x0041c26c	thunk	fn_0041c26c					none
 0x0041c271	function	fn_0041c271	tEntity_Weapon				vtable
-0x0041c983	function	fn_0041c983					none
+0x0041c983	function	fn_0041c983		?fn_0041c983@fn_0041c983_Triple@@QAEPAU1@MMM@Z	claim		none
 0x0041c99c	function	fn_0041c99c	tEntity_Weapon				vtable
 0x0041c9a7	function	fn_0041c9a7	tEntity_Weapon				vtable
 0x0041ca85	function	tEntity_DirectFire::tEntity_DirectFire	tEntity_DirectFire	??0tEntity_DirectFire@@QAE@XZ	add		rtti
