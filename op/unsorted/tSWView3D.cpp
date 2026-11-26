@@ -369,6 +369,12 @@ tSWView3D *fn_0069fd20()
 	return g_00c7c110;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fdc0
+int tSWView3D::vfunction43()
+{
+	return 2;
+}
+
 // HYPOTHESIS: the surface's vtable, as 0x006b23c0 reads it (tBmpSurf declares no virtuals yet).
 class fn_006b23c0_Info {
 public:
