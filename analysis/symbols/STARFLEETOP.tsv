@@ -4913,7 +4913,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ad735	function	fn_004ad735					none
 0x004ad78d	function	fn_004ad78d					none
 0x004ad814	function	fn_004ad814					none
-0x004ad878	function	fn_004ad878					none
+0x004ad878	function	fn_004ad878		?fn_004ad878@tState_Tactical@tState_Namespace_Tactical@@QAEPAHXZ	claim		none
 0x004ad89d	function	fn_004ad89d					none
 0x004ad8c2	function	fn_004ad8c2					none
 0x004ada57	function	tNetMsg_kChangeHost::~tNetMsg_kChangeHost	tNetMsg_kChangeHost				rtti

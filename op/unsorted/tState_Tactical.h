@@ -63,6 +63,7 @@ public:
 	void fn_004ba7c7(int *param_1);
 	void fn_004ba9eb(int *param_1);
 	void fn_004aba4f();
+	int *fn_004ad878();
 
 	int field_0c;	// 0x1e
 	float field_10;
