@@ -635,7 +635,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     report_shared_symbols(rep)
     if check_all:
         report_comdat_kinds(rep)
-        report_object_clashes(rep)
+        report_object_clashes(rep, table=table)
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -764,14 +764,43 @@ def report_comdat_kinds(rep):
         rep.failed = True
 
 
-def report_object_clashes(rep, baseline_path=None):
-    """An ERROR line, and a failed run, for each build path an object holds and each claimed
-    function that two objects define differently (harness/lib/objclash.py), unless the object
-    baseline lists it; a WARN line for each baseline row that no longer occurs."""
+def unclaimed_inputs(results, table):
+    """(symbol_addresses, unit_claims) for objclash.check: {symbol: {int address}} from the
+    committed symbol table's rows of evidence claim, mangled or add (a `callers` row is a guess,
+    and a claim row whose address no result claims is stale), plus this run's claims; and
+    {unit: {int address}} of every claim a result names, built or not."""
+    claimed_at = {r['address'] for r in results}
+    addrs = {}
+    for a, (sym, ev) in (table or {}).items():
+        if ev in ('mangled', 'add') or (ev == 'claim' and a in claimed_at):
+            addrs.setdefault(sym, set()).add(int(a, 16))
+    units = {}
+    for r in results:
+        units.setdefault(r['unit'], set()).add(int(r['address'], 16))
+        if r.get('symbol'):
+            addrs.setdefault(r['symbol'], set()).add(int(r['address'], 16))
+    return addrs, units
+
+
+def report_object_clashes(rep, baseline_path=None, table=None):
+    """An ERROR line, and a failed run, for each build path an object holds, each claimed
+    function that two objects define differently, and each original's symbol that an object
+    defines in a unit that does not claim its address (harness/lib/objclash.py), unless the
+    object baseline lists it; a WARN line for each baseline row that no longer occurs. `table` is
+    symtab.load_table's result (read when not given)."""
     keys = claimed_keys()
     claimed = {r['symbol'] for r in rep.results if r.get('symbol') and r['address'] in keys}
     baseline = objclash.load_baseline(baseline_path or OBJECT_BASELINE)
-    errors, stale = objclash.check(rep.objects, claimed, (paths.REPO,), baseline)
+    if table is None:
+        try:
+            table = symtab.load_table()
+        except symtab.TableError as e:
+            rep.add('ERROR', f'unclaimed originals not checked: {e}')
+            rep.failed = True
+            table = {}
+    addrs, units = unclaimed_inputs(rep.results, table)
+    errors, stale = objclash.check(rep.objects, claimed, (paths.REPO,), baseline,
+                                   symbol_addresses=addrs, unit_claims=units)
     for line in errors:
         rep.add('ERROR', line)
         rep.failed = True

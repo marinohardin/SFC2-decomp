@@ -5,6 +5,10 @@
 #         tDatabaseInfo::StreamIn, a partial match whose inlined tBuffer::Get still carries it.
 #   copy: a claimed function two or more units define with different code or relocation targets
 #         (inline expansion or a stand-in name differs from unit to unit); the unit column is "-".
+#   unclaimed: a function the unit's object defines out of line under a decorated symbol that the
+#         symbol table places at an address in the exe, while no // FUNCTION: claim in that unit
+#         covers the address. Each row is a body that carries the original's symbol and is not held
+#         to its bytes: claim it as a real attempt, or remove it, then delete the row.
 kind	unit	symbol
 copy	-	??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDH@Z
 copy	-	??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z
@@ -46,3 +50,9 @@ copy	-	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEA
 copy	-	?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z
 copy	-	?find_if@std@@YAPAUfn_005ea9ce_elem@@PAU2@0Vfn_005ea9ce_pred@@@Z
 path	Common/Database/FileDatabaseMgr.cpp	?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z
+unclaimed	Common/CommandLineArgs.cpp	??1tCommandLineArgs@@EAE@XZ
+unclaimed	Common/DataStore/Streamable.cpp	??1tCRCFailed@tStreamable@nDataStore@@UAE@XZ
+unclaimed	Common/Database/DatabaseObject.cpp	??1tDatabaseObject@nDatabase@@UAE@XZ
+unclaimed	Common/Log/LogStream.cpp	??1tLogStream@nLog@@UAE@XZ
+unclaimed	Common/Log/LogStream.cpp	??1tStreamBuf@tLogStream@nLog@@UAE@XZ
+unclaimed	unsorted/tNetMsg_kNotifyScriptEvent.cpp	?fn_00410223@vfunction33_result@@QAEHXZ

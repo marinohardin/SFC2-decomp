@@ -196,8 +196,8 @@ in another (typically behind a macro the claiming unit sets) cannot be linked: a
 consumer's lifter, refuse the pair. A session gives the function one definition, the same in every
 unit (inline in the header, claimed there), and never an out-of-line variant behind a macro.
 
-**Build paths and clashing copies** (`--all` only, `report_object_clashes` in `lib/verify.py`,
-`lib/objclash.py`). Two more `ERROR` lines that fail the run (exit 2), both read from the built objects:
+**Build paths, clashing copies and unclaimed originals** (`--all` only, `report_object_clashes` in `lib/verify.py`,
+`lib/objclash.py`). Three more `ERROR` lines that fail the run (exit 2), all read from the built objects:
 
 - A data section holds a **build path**: a source path with a `.` segment (`<root>/.\<include>`, how
   the harness joins the source root and an include path) or the checkout's own path. That is a
@@ -212,9 +212,25 @@ unit (inline in the header, claimed there), and never an out-of-line variant beh
   more than one object with different code or relocation targets, the symbol being one a `// FUNCTION:`
   annotation claims. A linker keeps the first copy it sees, which may not be the one that matches.
   Equal copies are fine.
+- An **unclaimed original**: an object defines a function under a decorated symbol (one starting
+  with `?`) that the symbol table places at an address in the exe, while no `// FUNCTION:` claim in
+  that object's unit covers any address of that symbol. The body carries the original's symbol but
+  is not held to the original's bytes, and a consumer that links the objects may bind callers to it
+  (an empty constructor written only to emit a vtable is the usual case). Fix it by claiming the
+  function as a real attempt at the original's code, by removing the body, or by giving it a
+  placeholder name. The check reads out-of-line definitions only: VC6 `/Gy` puts each in a COMDAT
+  of selection "no duplicates" (or outside a COMDAT). It does not read a COMDAT of selection "any"
+  (an inline function or a template), because the object cannot tell an explicit definition from a
+  compiler-generated copy, so an inline body written under an original's symbol is not caught.
+  The addresses a symbol has are
+  the committed table's rows of evidence `mangled` or `add`, its `claim` rows whose address a claim
+  still names, and this run's own claims (`callers` rows are guesses and are not used); a symbol at
+  several addresses (a folded copy) is covered when the unit claims any of them, and a claim of the
+  address in another unit does not cover this unit's body. A claim covers its address whether or not
+  it built.
 
-Known debt is listed in `analysis/results/object_baseline.tsv` (`path<TAB>unit<TAB>symbol` and
-`copy<TAB>-<TAB>symbol` rows; rows are matched on the symbol, never on message text). A `path` row names
+Known debt is listed in `analysis/results/object_baseline.tsv` (`path<TAB>unit<TAB>symbol`,
+`copy<TAB>-<TAB>symbol` and `unclaimed<TAB>unit<TAB>symbol` rows; rows are matched on the symbol, never on message text). A `path` row names
 the *function* that uses the string: the string's own mangled symbol holds the start of the path and is
 not stable across machines, so a build path that no function refers to is always an error, naming the
 object, and cannot be baselined. COMDAT selection kinds are not compared here (`comdat_kind_conflicts`
