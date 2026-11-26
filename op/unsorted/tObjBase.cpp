@@ -263,3 +263,25 @@ bool tObjBase::vfunction2( tObjBase *a )
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d3a0
+bool tObjBase::vfunction3()
+{
+	if ( field_30 != 0 )
+	{
+		if ( field_30->vfunction3() )
+		{
+			field_30 = 0;
+			return true;
+		}
+		return false;
+	}
+	vfunction13();
+	if ( field_0C != 0 )
+	{
+		tRect *r = &field_34;
+		if ( r->left < r->right && r->top < r->bottom )
+			field_0C->vfunction32( r );
+	}
+	return true;
+}
