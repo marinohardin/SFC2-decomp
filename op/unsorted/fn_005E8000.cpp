@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_005E8000.cpp
-// Functions: 0x005e800f to 0x005e8fd2, 23 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Log/LogStream.h"
+#include "unsorted/tMetaClientMapPanel.h"
+
+// HYPOTHESIS: the original is the tMetaClientMapPanel member fn_005e80ef(); the lane may not
+// edit the class header, so this is a free function over the panel until it is declared.
+// FUNCTION: STARFLEETOP 0x005e80ef
+void fn_005e80ef( tMetaClientMapPanel* panel )
+{
+	tOptex::tGuard guard( &panel->field_dc );
+	nLog::info << "x" << nLog::report;
+}
