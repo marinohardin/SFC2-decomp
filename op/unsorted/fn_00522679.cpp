@@ -323,11 +323,12 @@ int tObject_00522e1b::fn_00522e1b(int param_1)
 		iVar2 = fn_0052dab9(iVar1, param_1);
 	}
 	if (0 < iVar2) {
-		if (iVar2 < 6) {
+		if (iVar2 > 5) {
+			if (iVar2 == 6) {
+				return 0;
+			}
+		} else {
 			return 1;
-		}
-		if (iVar2 == 6) {
-			return 0;
 		}
 	}
 	return -1;
