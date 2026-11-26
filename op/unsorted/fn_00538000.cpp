@@ -1,6 +1,7 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00538000.cpp
-// Functions: 0x0053805e to 0x00538a69, 12 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tBitmapFontEx.h"
+
+// FUNCTION: STARFLEETOP 0x0053805e
+void tBitmapFontEx::vfunction10()
+{
+	field_20++;
+}
