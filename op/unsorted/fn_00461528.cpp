@@ -1,6 +1,9 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00461528.cpp
-// Functions: 0x00461528 to 0x00461927, 8 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tCampaignInfo.h"
+
+// MATCH-ONLY: the destructor's own code (0x0042ceae) is the member and base destructors the
+// compiler runs; its recorded boundary stops after 18 bytes, so it is claimed only through the
+// deleting destructor, which is exact.
+// FUNCTION: STARFLEETOP 0x004617f1
+tCampaignInfo::~tCampaignInfo()
+{
+}

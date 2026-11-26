@@ -3304,7 +3304,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004614b5	function	fn_004614b5		??_G?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEPAXI@Z	callers		none
 0x004614d3	function	tDateAndTime::tDateAndTime	tDateAndTime				rtti
 0x00461528	function	tCampaignInfo::tCampaignInfo	tCampaignInfo				rtti
-0x004617f1	function	tCampaignInfo::scalar_deleting_destructor	tCampaignInfo				rtti
+0x004617f1	function	tCampaignInfo::scalar_deleting_destructor	tCampaignInfo	??_GtCampaignInfo@@UAEPAXI@Z	claim		rtti
 0x0046180d	function	fn_0046180d		??0?$vector@HV?$allocator@H@std@@@std@@QAE@ABV01@@Z	callers		none
 0x00461875	function	fn_00461875					none
 0x00461903	function	fn_00461903					none
