@@ -221,7 +221,7 @@ public:
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual bool vfunction28( int a, void *b );	// 0x0046c464: puts a string in the second argument, returns false
+	virtual bool vfunction28( int a, tString *b );	// 0x0046c464: puts a string in the second argument, returns false
 	virtual bool vfunction29( int a, int *b );	// 0x0046c458: clears *b, returns false
 	// 0x0067d160: walks the children, calling a child's +0x58 handler (when bit 3 of its +0x40
 	// is set) and its slot 29 (+0x74).

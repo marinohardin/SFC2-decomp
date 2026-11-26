@@ -1,4 +1,5 @@
 #include "unsorted/tVisObject.h"
+#include "Tiger/tstring.h"
 
 // FUNCTION: STARFLEETOP 0x0046c408
 void tObjBase::vfunction1( unsigned int n )
@@ -33,5 +34,12 @@ void *tObjBase::vfunction23()
 bool tObjBase::vfunction29( int a, int *b )
 {
 	*b = 0;
+	return false;
+}
+
+// FUNCTION: STARFLEETOP 0x0046c464
+bool tObjBase::vfunction28( int a, tString *b )
+{
+	*b = "";
 	return false;
 }
