@@ -10705,7 +10705,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0055f1f8	function	nStoredProcedureArguments::tNotifyEvent::~tNotifyEvent	nStoredProcedureArguments::tNotifyEvent	??1tNotifyEvent@nStoredProcedureArguments@@UAE@XZ	callers		rtti
 0x0055f203	function	fn_0055f203	nStoredProcedureArguments::tNotifyEvent				vtable
 0x0055f23c	function	fn_0055f23c	nStoredProcedureArguments::tNotifyEvent				vtable
-0x0055f269	function	fn_0055f269	tLogMessage				vtable
+0x0055f269	function	fn_0055f269	tLogMessage	?fn_0055f269@tCurrentTime@@QAEJXZ	add		vtable
 0x0055f26d	function	fn_0055f26d					none
 0x0055f292	function	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse::tRegisterForNotifyResponse	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse				rtti
 0x0055f2cb	function	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse::scalar_deleting_destructor	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse				fid
@@ -13317,7 +13317,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c7e54	function	fn_005c7e54	tCurrentTime				vtable
 0x005c7eac	function	fn_005c7eac		?fn_005c7eac@@YI_NPAD@Z	claim		none
 0x005c7eb6	function	fn_005c7eb6		?fn_005c7eb6@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVtCurrentTime@@@Z	claim		none
-0x005c7f5d	function	fn_005c7f5d					none
+0x005c7f5d	function	fn_005c7f5d		?fn_005c7f5d@@YIJPAVtCurrentTime@@@Z	claim		none
 0x005c7f7c	function	fn_005c7f7c					none
 0x005c7fb3	function	fn_005c7fb3					none
 0x005c7fb7	function	fn_005c7fb7	tBitmapFontEx				vtable

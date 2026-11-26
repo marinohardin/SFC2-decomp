@@ -22,3 +22,14 @@ std::string __fastcall fn_005c7eb6(tCurrentTime* param_1)
     stream << fn_005c7fb7(param_1) + fn_005c7f5d(param_1) << "." << param_1->fn_0055f269() % fn_005e8f25(param_1);
     return stream.str();
 }
+
+// FUNCTION: STARFLEETOP 0x005c7f5d
+long __fastcall fn_005c7f5d(tCurrentTime* param_1)
+{
+    long divisor = fn_005e8f25(param_1);
+    if (divisor == 0)
+    {
+        divisor = 1;
+    }
+    return param_1->fn_0055f269() / divisor;
+}
