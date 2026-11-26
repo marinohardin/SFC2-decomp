@@ -9,7 +9,8 @@ records as exact, the symbol this run's build gives it must equal the symbol the
 
 The base is the one the stand-in check uses (harness/lib/standins.py: `HARNESS_STANDIN_BASE`, else
 the merge base with origin/develop). No base, no row at the base, or no symbol in the build (a unit
-that was not built, a symbol two claims share) is not an error. No compile: the symbols are the ones
+that was not built, a symbol two claims share) is not an error. A rename onto a symbol another claim
+already compiles to is not seen, because the symbol record drops shared symbols. No compile: the symbols are the ones
 `build-and-verify.sh --all` already has (`verify.report_renamed_exact`, so the whole-tree checks and
 a layout pass see it), or `<build>/symbols.tsv` of a build of this tree:
 
@@ -63,22 +64,37 @@ def base_symbols(base, repo=None):
             if r.get('symbol') and r.get('kind') != 'folded'}
 
 
-def load_baseline(path=None):
-    """{(address, base symbol, new symbol)} of the allowed renames, empty without the file."""
+def load_baseline(path=None, warn=None):
+    """{(address, base symbol, new symbol)} of the allowed renames, empty without the file. A row
+    of other than three fields is skipped, with a line appended to `warn` naming it; blank lines,
+    `#` comments and the header row are ignored."""
+    path = path or BASELINE
     try:
-        with open(path or BASELINE, encoding='utf-8') as f:
-            rows = [x.rstrip('\n').split('\t') for x in f if x.strip() and not x.startswith('#')]
+        with open(path, encoding='utf-8') as f:
+            lines = f.read().split('\n')
     except OSError:
         return set()
-    return {tuple(r[:3]) for r in rows if len(r) >= 3 and r[0] != 'address'}
+    out = set()
+    for n, text in enumerate(lines, 1):
+        if not text.strip() or text.startswith('#') or text.startswith('address\t'):
+            continue
+        row = text.split('\t')
+        if len(row) != 3:
+            if warn is not None:
+                warn.append(f'{os.path.basename(path)}:{n}: expected 3 tab-separated fields '
+                            f'(address, base symbol, new symbol), got {len(row)}; row ignored')
+            continue
+        out.add(tuple(row))
+    return out
 
 
-def findings(built, base, allowed=None, repo=None):
+def findings(built, base, allowed=None, repo=None, warn=None):
     """[(address, base symbol, new symbol)] of the base's exact functions whose symbol in `built`
-    ({address: symbol}) differs from the base table's, minus the allowed ones."""
+    ({address: symbol}) differs from the base table's, minus the allowed ones (default: the
+    baseline file; its malformed rows go to `warn`)."""
     if base is None:
         return []
-    allowed = load_baseline() if allowed is None else allowed
+    allowed = load_baseline(warn=warn) if allowed is None else allowed
     symbols = base_symbols(base, repo)
     out = []
     for a in sorted(base_exact(base, repo)):

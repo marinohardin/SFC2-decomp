@@ -81,3 +81,38 @@ def test_the_all_report_fails_the_run_on_a_rename_and_not_otherwise(base):
     ok.results = [dict(address=A, symbol=SAME[A], unit='a.cpp')]
     verify.report_renamed_exact(ok, base)
     assert not ok.failed and ok.lines == []
+
+
+def test_no_base_is_a_warning_that_the_guard_did_not_run(monkeypatch):
+    from harness.lib import standins
+    monkeypatch.setattr(standins, 'base_ref', lambda *a, **k: None)
+    rep = verify.Report()
+    rep.results = [dict(address=B, symbol='?Wait@tShip@@UAEXXZ', unit='a.cpp')]
+    verify.report_renamed_exact(rep)
+    assert not rep.failed and len(rep.lines) == 1
+    assert rep.lines[0].startswith('WARN ') and 'rename guard' in rep.lines[0]
+
+
+def test_a_malformed_baseline_row_is_a_warning_and_comments_are_ignored(tmp_path):
+    f = tmp_path / 'rename_baseline.tsv'
+    f.write_text('# why these\naddress\tbase symbol\tnew symbol\n\n'
+                 f'{B}\t?Hold@tShip@@UAEXXZ\t?Wait@tShip@@UAEXXZ\n'
+                 f'{A}\t?Fire@tShip@@UAEXXZ\n'
+                 f'{C}\ta\tb\tc\n')
+    warn = []
+    assert renames.load_baseline(str(f), warn) == {(B, '?Hold@tShip@@UAEXXZ', '?Wait@tShip@@UAEXXZ')}
+    assert warn == ['rename_baseline.tsv:5: expected 3 tab-separated fields (address, base '
+                    'symbol, new symbol), got 2; row ignored',
+                    'rename_baseline.tsv:6: expected 3 tab-separated fields (address, base '
+                    'symbol, new symbol), got 4; row ignored']
+
+
+def test_main_refuses_a_build_of_another_tree(base, tmp_path, monkeypatch, capsys):
+    build = tmp_path / 'build'
+    build.mkdir()
+    (tmp_path / 'op').mkdir()
+    (tmp_path / 'op' / 'a.cpp').write_text('x')
+    monkeypatch.setattr(paths, 'BUILD', str(build))
+    monkeypatch.setattr(paths, 'SRC_ROOT', str(tmp_path / 'op'))     # no symbols.id: not current
+    assert renames.main(['--base', base]) == 1
+    assert 'not made from the current source tree' in capsys.readouterr().out
