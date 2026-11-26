@@ -37,6 +37,7 @@ struct fn_006abe00_Vtx
 // (0x0069f470) and are left undeclared; slots 97 and up are not evidenced.
 class tView3DExt : public tView3D {
 public:
+	tView3DExt();    // 0x006a9c60
 	virtual ~tView3DExt();    // slot 0, 0x006a9e80 is its deleting destructor
 
 	void	mAssertVtxCache( int count );

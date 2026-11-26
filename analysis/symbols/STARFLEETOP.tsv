@@ -18553,7 +18553,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f280	function	tD3DViewMgr::scalar_deleting_destructor	tD3DViewMgr				rtti
 0x0069f2a0	function	tD3DViewMgr::~tD3DViewMgr	tD3DViewMgr				rtti
 0x0069f350	function	fn_0069f350		??1tD3DViewSurfMgr@@UAE@XZ	claim		none
-0x0069f3b0	function	tSWView3D::tSWView3D	tSWView3D				rtti
+0x0069f3b0	function	tSWView3D::tSWView3D	tSWView3D	??0tSWView3D@@QAE@XZ	claim		rtti
 0x0069f470	function	fn_0069f470	tAsset				vtable
 0x0069f480	function	fn_0069f480	tSWView3D				vtable
 0x0069f490	function	tSWView3D::scalar_deleting_destructor	tSWView3D				rtti

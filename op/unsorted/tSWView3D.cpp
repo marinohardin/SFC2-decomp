@@ -47,6 +47,27 @@ public:
 	virtual fn_0069fb90_Fill *Get();
 };
 
+// FUNCTION: STARFLEETOP 0x0069f3b0
+tSWView3D::tSWView3D()
+{
+	field_1f5c = 0;
+	field_1f60 = 0;
+	field_1f64 = 0;
+	field_1f68 = 0;
+	memset(field_1f6c, 0, sizeof(field_1f6c));
+	field_5fc5 = true;
+	field_5fc6 = true;
+	field_5fa8 = 0;
+	field_5fac = 0;
+	field_5fb0 = 0;
+	field_5fb4 = 0;
+	field_5fb8 = 0;
+	field_5fbc = 0;
+	field_5fc0 = 0;
+	field_5fc4 = false;
+	field_0x1ed8 = 0;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
