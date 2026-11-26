@@ -3937,7 +3937,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f05d	function	fn_0047f05d		?fn_0047f05d@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x0047f141	function	fn_0047f141					none
 0x0047f41e	function	fn_0047f41e					none
-0x0047f439	function	fn_0047f439					none
+0x0047f439	function	fn_0047f439		?fn_0047f439@c_0047f439_Owner@@QAEXH@Z	claim		none
 0x0047f4ff	function	fn_0047f4ff					none
 0x0047f53c	function	fn_0047f53c					none
 0x0047f621	function	fn_0047f621					none
