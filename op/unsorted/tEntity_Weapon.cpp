@@ -25,3 +25,9 @@ tID tEntity_Weapon::vfunction68()
 {
 	return field_0x1c4;
 }
+
+// FUNCTION: STARFLEETOP 0x0041c249
+int tEntity_Weapon::vfunction69()
+{
+	return field_0x1f0;
+}

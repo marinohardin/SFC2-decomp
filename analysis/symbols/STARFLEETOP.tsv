@@ -965,7 +965,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon	??0tEntity_Weapon@@QAE@XZ	claim		rtti
 0x0041c23c	function	fn_0041c23c	tEntity_Placeholder	?vfunction66@tEntity_Weapon@@UAEFD@Z	claim		vtable
 0x0041c242	function	fn_0041c242	tEntity_Weapon	?vfunction68@tEntity_Weapon@@UAEJXZ	claim		vtable
-0x0041c249	function	fn_0041c249	tEntity_Weapon				vtable
+0x0041c249	function	fn_0041c249	tEntity_Weapon	?vfunction69@tEntity_Weapon@@UAEHXZ	claim		vtable
 0x0041c250	function	tEntity_Weapon::scalar_deleting_destructor	tEntity_Weapon				rtti
 0x0041c26c	thunk	fn_0041c26c					none
 0x0041c271	function	fn_0041c271	tEntity_Weapon				vtable
