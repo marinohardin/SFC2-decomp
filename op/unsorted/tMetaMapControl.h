@@ -49,7 +49,7 @@ public:
 	// HYPOTHESIS: the constructor 0x005e47d0; 0x005e5ef4 passes a tID, 0x18, a tHexPoint, two points and a map.
 	tMetaMapNormalHex( nDatabase::tID id, int type, const tHexPoint &position, const tPoint &point, const fn_0053a6cc_map &values, const tPoint &offset );
 	// The copy constructor, 0x005e6d7c, is claimed in Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp.
-	tMetaMapNormalHex( const tMetaMapNormalHex &other );
+	tMetaMapNormalHex( const tMetaMapNormalHex& other );
 	// MATCH-ONLY: the container at +0x50 is destroyed by the destructor the compiler would
 	// generate (0x005e4638); it is written out here because the member below is raw storage.
 	~tMetaMapNormalHex();
