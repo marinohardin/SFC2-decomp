@@ -22,7 +22,7 @@ void tSfcMouseMgr_Ex::vfunction2()
 {
 }
 
-// The stream mNewBasicFile hands out; slot 1 opens a named file, slot 4 closes it.
+// The file interface the cursor table is read through (mNewBasicFile hands one out).
 #include "Tiger/tbasicfile.h"
 
 

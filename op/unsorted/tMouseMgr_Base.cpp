@@ -23,6 +23,7 @@ tMouseMgr_Base *tMouseMgr_Base::scalar_deleting_destructor(unsigned char flags)
 // tTimerResponse: the callback interface twClock::mSetTimer takes (SDK
 // symbol). Its first virtual is what a timer calls when it fires.
 #include "Tiger/tTimerResponse.h"
+#include "Tiger/tatomic.h"
 
 
 
@@ -44,6 +45,9 @@ public:
     ~tMouseMgr_Ex();
     tMouseMgr_Ex *scalar_deleting_destructor(unsigned char flags);
     void fn_006a35e0();
+    void fn_006a3350();
+    unsigned char m_4[0x10]; // HYPOTHESIS: fields +4..+0x13, not touched here
+    tAtomicLock m_lock;      // +0x14
 };
 
 // FUNCTION: STARFLEETOP 0x0040bd95
@@ -59,45 +63,14 @@ tMouseMgr_Ex *tMouseMgr_Ex::scalar_deleting_destructor(unsigned char flags)
     return this;
 }
 
-// HYPOTHESIS: the code at 0x0040bdb1 (its exception-frame setup and body) is rebuilt as
-// fn_0040bdbb::~fn_0040bdbb, which claims 0x0040bdb1. This empty definition is not the original; it stays
-// until that code moves here, because a caller or a vtable needs it.
-tMouseMgr_Ex::~tMouseMgr_Ex()
-{
-}
-
-// MATCH-ONLY: placeholder, not original code. 0x0040bdbb is not a function of
-// its own: it is the body of tMouseMgr_Ex::~tMouseMgr_Ex, which runs on from
-// the __EH_prolog call at 0x0040bdb1 (the destructor calls fn_006a3350, then
-// destroys a tAtomicLock member at +0x14, with ~tMouseMgr_Base inlined). It
-// cannot be compiled separately; remove this placeholder once the analysis
-// treats 0x0040bdb1..0x0040bdf2 as one function. The placeholder repeats that
-// destructor's body on a stand-in class of the same layout (named after the
-// address; it is not an original class), so the scored range lines up with
-// the original body after the EH prolog. The original inlines
-// ~tMouseMgr_Base here; the stand-in calls it.
+// The destructor calls fn_006a3350, then destroys the tAtomicLock member at +0x14; the original
+// inlines ~tMouseMgr_Base here.
 #include "Tiger/tatomic.h"
-
-
-
-
-
-
-
-class fn_0040bdbb : public tMouseMgr_Base {
-public:
-    ~fn_0040bdbb();
-    void fn_006a3350();
-    unsigned char m_4[0x10]; // HYPOTHESIS: fields +4..+0x13, not touched here
-    tAtomicLock m_lock;   // +0x14
-};
-
 // FUNCTION: STARFLEETOP 0x0040bdb1
-fn_0040bdbb::~fn_0040bdbb()
+tMouseMgr_Ex::~tMouseMgr_Ex()
 {
     fn_006a3350();
 }
-
 // FUNCTION: STARFLEETOP 0x0040bd8d
 void tMouseMgr_Ex::tTimer::fn_0040bd8d()
 {
