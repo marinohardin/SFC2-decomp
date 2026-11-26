@@ -200,6 +200,9 @@ def _check(name, sym, sec, off, s_exe, fn_address, index, seen):
             return 'ok', 'own section'
         return 'mismatch', f'own-section label should be 0x{want:08x}'
     known = index.known.get(name)
+    claimed = getattr(index, 'claimed', {}).get(name, ())
+    if s_exe in claimed:      # claimed in the source with exactly this symbol (funcs.add_claims)
+        return 'ok', 'claimed address'
     if known:
         if s_exe in known:
             return 'ok', 'known address'

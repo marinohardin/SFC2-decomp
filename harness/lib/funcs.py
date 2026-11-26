@@ -59,6 +59,29 @@ class FunctionIndex:
         for name, addrs in self.known.items():
             for a in addrs:
                 self.names_at.setdefault(a, set()).add(name)
+        self.claimed = {}    # symbol name -> addresses a source claim gives it (add_claims)
+
+    def add_claims(self, addresses, table):
+        """Let an address claimed in the source tree count as the address of the symbol its
+        symbol-table row carries. `addresses` are the ints a `// FUNCTION:` annotation claims;
+        `table` is symtab.load_table's {address: (symbol, evidence)}. It is a separate record
+        (`claimed`), consulted by target._check only to accept a relocation: it never adds to
+        `known` or `names_at`, so it can refuse nothing that passed before. A claim is not
+        credited when its row is not a `claim` row (`mangled`, `add` and `callers` rows are
+        evidence of their own or provisional), or when the evidence already names the address
+        with another mangled name (the claim contradicts it). Returns how many were credited."""
+        n = 0
+        for a in addresses:
+            row = table.get(f'0x{a:08x}')
+            if not row or row[1] != 'claim' or not row[0].startswith('?'):
+                continue
+            sym = row[0]
+            if any(x.startswith('?') and x != sym for x in self.names_at.get(a, ())):
+                continue
+            if a not in self.known.get(sym, ()):
+                self.claimed.setdefault(sym, set()).add(a)
+                n += 1
+        return n
 
     def _load_tsv(self, path):
         with open(path, newline='') as f:

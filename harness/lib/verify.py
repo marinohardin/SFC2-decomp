@@ -381,6 +381,11 @@ def _units_for(addresses, annotations, src_root, units_tsv=None):
     return out, missing, unplaced
 
 
+def annotations_claimed(annotations):
+    """The addresses a FUNCTION annotation claims, from source.scan_annotations."""
+    return {a for a, anns in annotations.items() if any(x.kind == 'FUNCTION' for x in anns)}
+
+
 def claimed_keys(cfg=None):
     """The matched-set keys of every address a FUNCTION annotation in op/ claims."""
     cfg = cfg or source.load_units()
@@ -568,6 +573,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.add('ERROR', f'the symbol table cannot be read: {e}')
         rep.failed = True
         return rep
+    if hasattr(index, 'add_claims'):       # test doubles of the index have none
+        index.add_claims(annotations_claimed(annotations), table)
     if by_unit:
         exe = check_exe(rep)
 
