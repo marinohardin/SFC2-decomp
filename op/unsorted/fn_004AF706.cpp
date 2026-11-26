@@ -4,6 +4,8 @@
 // Profile:   game-release (harness/units.json)
 
 #include "Tiger/tvectormath.h"
+#include "unsorted/tValueBase.h"
+#include "unsorted/fn_004D3143.h"
 
 // HYPOTHESIS: builds a look-at (view) matrix from an eye position, a target and an up vector.
 // FUNCTION: STARFLEETOP 0x004af706
@@ -33,4 +35,37 @@ void fn_004af706(const tPoint3 &eye, const tPoint3 &target, const tPoint3 &up, t
 	mtx[3][2] = 0.0f;
 	mtx[3][3] = 1.0f;
 	m.mTranslate(-eye.x, -eye.y, -eye.z);
+}
+
+// HYPOTHESIS: a table of control names (every other word, up to 0x008515cc), one value name,
+// and two zero-terminated tables of value names, all unbound when the tactical state ends.
+extern const char *g_00850fec[];
+extern const char g_00852424[];
+extern const char *g_0084c540[];
+extern const char *g_0084d1c8[];
+void fn_004bf8d6();
+
+// FUNCTION: STARFLEETOP 0x004af94b
+void fn_004af94b()
+{
+	const char **p;
+	for (p = g_00850fec; (int)p < (int)&g_00850fec[0x178]; p += 2)
+		fn_004d35fa( *p );
+	tValueBase *v = fn_004d35bf( g_00852424, 0 );
+	if (v != 0)
+		delete v;
+	int i;
+	for (i = 0; g_0084c540[i] != 0; i++)
+	{
+		v = fn_004d35bf( g_0084c540[i], 0 );
+		if (v != 0)
+			delete v;
+	}
+	for (i = 0; g_0084d1c8[i] != 0; i++)
+	{
+		v = fn_004d35bf( g_0084d1c8[i], 0 );
+		if (v != 0)
+			delete v;
+	}
+	fn_004bf8d6();
 }

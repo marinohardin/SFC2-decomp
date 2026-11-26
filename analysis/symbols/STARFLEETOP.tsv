@@ -4977,7 +4977,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004af706	function	fn_004af706		?fn_004af706@@YAXABUtPoint3@@00AAVtMatrix@@@Z	claim		none
 0x004af807	function	fn_004af807	tState_Namespace_Tactical::tState_Tactical	?vfunction19@tState_Tactical@tState_Namespace_Tactical@@UAEPAXXZ	claim		vtable
 0x004af80d	function	fn_004af80d					none
-0x004af94b	function	fn_004af94b					none
+0x004af94b	function	fn_004af94b		?fn_004af94b@@YAXXZ	claim		none
 0x004afa1c	function	fn_004afa1c					none
 0x004afa40	function	fn_004afa40		?fn_004afa40@@YIXPAX@Z	add		none
 0x004afa4e	function	fn_004afa4e					none
@@ -5336,7 +5336,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bf7d9	function	fn_004bf7d9					none
 0x004bf81a	function	fn_004bf81a					none
 0x004bf887	function	fn_004bf887					none
-0x004bf8d6	function	fn_004bf8d6					none
+0x004bf8d6	function	fn_004bf8d6		?fn_004bf8d6@@YAXXZ	add		none
 0x004bf915	function	fn_004bf915	tDragBar				vtable
 0x004bf971	function	fn_004bf971	tDragBar				vtable
 0x004bfa5b	function	fn_004bfa5b	tDragBar				vtable
