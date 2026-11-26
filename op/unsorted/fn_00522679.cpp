@@ -2,7 +2,7 @@
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntityMgr.h"
 #include "unsorted/tObject_0090be60.h"
-
+#include "unsorted/tAICaptain.h"
 // FUNCTION: STARFLEETOP 0x00522679
 void __fastcall fn_00522679(char* self)
 {
@@ -249,5 +249,17 @@ char tObject_00522c00::fn_00522c00(void *pEntity, tCommandDestination *pDestinat
 		}
 	}
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00522c46
+// HYPOTHESIS: the object 0x005235c8 returns for the ship is its AI captain; the ship's byte at +0x5c is cleared after.
+// HYPOTHESIS: a member of fn_0090bed4_Object; a fastcall like its neighbours until the header's declaration parses.
+void __fastcall fn_00522c46(fn_0090bed4_Object *self, int, tEntity *pEntity)
+{
+	tAICaptain *pCaptain = (tAICaptain *)self->fn_005235c8((fn_004e2b02_ship_type *)pEntity);
+	if (pCaptain != 0) {
+		pCaptain->fn_0051f0c3(1);
+		*(char *)((char *)pEntity + 0x5c) = 0;
+	}
 }
 
