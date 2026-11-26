@@ -142,3 +142,12 @@ def test_the_harness_environment_drops_overrides(monkeypatch):
     assert env['HARNESS_COMPILER'] == 'native'
     assert env['HARNESS_NO_CACHE'] == '1' and env['HARNESS_STATE'] == '/w/verify/5.state'
     assert os.environ['HARNESS_MATCHED_SET'] == '/elsewhere.json'
+
+
+def test_only_source_files_under_op_are_copied():
+    def change(path):
+        return verify_pr.contrib_guard.Change('100644', '100644', '0' * 40, 'M', path)
+    paths = ['op/a.cpp', 'op/a.h', 'op/a.inl', 'op/README.md', 'op/x.py', 'tools/x.py',
+             'op/b.cpp.orig']
+    assert [c.path for c in verify_pr.copied([change(p) for p in paths])] == \
+        ['op/a.cpp', 'op/a.h', 'op/a.inl']

@@ -7,7 +7,8 @@ It reads git objects only: nothing from the pull request is run or imported. It 
 each reason, when the pull request (the changes from the merge base of <base> and <head> to
 <head>):
 
-- changes a path outside op/, or changes op/port/, op/UNITS.tsv or op/manifest.tsv;
+- changes a path outside op/, or changes op/port/, op/UNITS.tsv or op/manifest.tsv, or a file
+  under op/ that is not source (.cpp, .h, .inl: the suffixes op/ holds);
 - changes a symlink, a submodule or a file mode, or adds a binary file or one over 256 KB;
 - adds an #include that is absolute, names a drive letter, uses `..` to leave op/ or names no
   file (a macro), or adds an #import, a #line, a #pragma include_alias, or a #pragma or _Pragma
@@ -38,6 +39,7 @@ import sys
 MAX_BYTES = 256 * 1024
 FORBIDDEN = ('op/port/',)
 FORBIDDEN_FILES = ('op/UNITS.tsv', 'op/manifest.tsv')
+SOURCE_SUFFIXES = ('.cpp', '.h', '.inl')
 CLAIM_LINE = re.compile(r'^\s*Claim:\s*#(\d+)\s*$', re.M | re.I)
 RANGE_LINE = re.compile(r'^\s*range:\s*0x([0-9a-fA-F]{1,8})\s*-\s*0x([0-9a-fA-F]{1,8})\s*$', re.M)
 # Any claim line: the same pattern as CLAIM_LINE in harness/lib/guard.py (and ANNOTATION in
@@ -138,6 +140,11 @@ def include_problem(path, line):
     return None
 
 
+def is_source(path):
+    """A path a contributor may change: a source file under op/."""
+    return path.startswith('op/') and path.endswith(SOURCE_SUFFIXES)
+
+
 def parse_ranges(body):
     """The (first, last) address ranges of `range:` lines in an issue body."""
     return [(int(a, 16), int(b, 16)) for a, b in RANGE_LINE.findall(body or '')]
@@ -218,6 +225,9 @@ def check(cwd, base, head, body, issues=None, repo=None, author=None):
             continue
         if p.startswith(FORBIDDEN) or p in FORBIDDEN_FILES:
             res.fail(f'{p}: op/port/, op/UNITS.tsv and op/manifest.tsv are the maintainer\'s')
+            continue
+        if not is_source(p):
+            res.fail(f'{p}: not a source file ({", ".join(SOURCE_SUFFIXES)})')
             continue
         modes = {c.old_mode, c.new_mode} - {'000000'}
         if '120000' in modes:

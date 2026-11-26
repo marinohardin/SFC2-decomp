@@ -10,7 +10,8 @@ imported: its op/ files are copied in as text and compiled by develop's harness.
    not --sha.
 2. Runs tools/contrib_guard.py's checks on the diff (the same code), and refuses on a failure.
 3. Makes a detached worktree of <remote>/develop at $SFCOP_WORK/verify/<number>, and writes each
-   changed op/ file into it with `git show <sha>:<path>`, mode 644; deleted files are deleted.
+   changed op/ source file (.cpp, .h, .inl) into it with `git show <sha>:<path>`, mode 644;
+   deleted files are deleted.
 4. In that worktree, under `nice -n 5`, with no cache and a harness state of its own:
    `sh harness/build-and-verify.sh --all --base <remote>/develop <the pull request's addresses>`,
    `python3 tools/lint_claims.py`, and `python3 -m harness.lib.symsync --scratch` (the symbol
@@ -148,6 +149,12 @@ def report(number, sha, base_sha, mb, res, runs, old, body):
     return evidence.mask(clean('\n'.join(out) + '\n'))
 
 
+def copied(changes):
+    """The changes written into the worktree: source files under op/ only, whatever else the
+    list holds."""
+    return [c for c in changes if contrib_guard.is_source(c.path)]
+
+
 def remove_worktree(repo, tree, state):
     subprocess.run(['git', 'worktree', 'remove', '--force', tree], cwd=repo, capture_output=True)
     shutil.rmtree(tree, ignore_errors=True)
@@ -193,7 +200,7 @@ def verify(repo, number, sha, remote='origin', body=None, issues=None, gh_repo=N
     remove_worktree(repo, tree, state)
     git(repo, 'worktree', 'add', '-q', '--detach', tree, base)
     try:
-        for c in res.changes:
+        for c in copied(res.changes):
             dest = os.path.join(tree, c.path)
             if not os.path.realpath(dest).startswith(os.path.realpath(tree) + os.sep):
                 raise contrib_guard.GitError(f'{c.path}: outside the worktree')

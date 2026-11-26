@@ -290,3 +290,17 @@ def test_splices_line_directives_and_file_pragmas_fail(tmp_path):
         'op/unsorted/a.cpp: adds a #pragma that can name a file: '
         '\'_Pragma("include_alias(\\\\"a.h\\\\", \\\\"b.h\\\\")")\'',
     ]
+
+
+def test_only_source_files_under_op_may_change(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/notes.md', 'hello\n')
+    _write(repo, 'op/unsorted/build.py', 'print(1)\n')
+    _write(repo, 'op/unsorted/a.hpp', '\n')
+    _write(repo, 'op/unsorted/a.inl', '\n')
+    _commit(repo)
+    assert _check(repo).failures == [
+        'op/notes.md: not a source file (.cpp, .h, .inl)',
+        'op/unsorted/a.hpp: not a source file (.cpp, .h, .inl)',
+        'op/unsorted/build.py: not a source file (.cpp, .h, .inl)',
+    ]
