@@ -3459,7 +3459,7 @@
   },
   "0x00410667": {
    "name": "tPhysicalEntity::vfunction64",
-   "symbol": "?vfunction64@tPhysicalEntity@@UAEXXZ",
+   "symbol": "?vfunction64@tPhysicalEntity@@UAEMXZ",
    "unit": "unsorted/tPhysicalEntity.cpp",
    "size": 8,
    "score": 100.0,

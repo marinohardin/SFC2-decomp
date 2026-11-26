@@ -160,8 +160,12 @@ public:
 	virtual void vfunction11(tSFCStream &s, int32u mode);
 	// HYPOTHESIS: returns an integer; 0x0041351b subtracts from its result in eax.
 	virtual int vfunction23();
-	virtual void vfunction24();
-	virtual void vfunction25();
+	// HYPOTHESIS: returns a float: 0x00414205 divides by an int with fidiv, and tEntityShip's
+	// override (0x00416c17) loads float constants.
+	virtual float vfunction24();
+	// HYPOTHESIS: takes an entity ID; every override ends with ret 4, and tEntityShip's
+	// (0x00419cc4) indexes the entity table with it.
+	virtual void vfunction25(tID aID);
 	// HYPOTHESIS: five arguments; the first is 2 bytes, pushed unextended by 0x00413614.
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 	// HYPOTHESIS: (source ID, direction, amount, seed, flags), from the tNetMsg_kDamage it
@@ -174,9 +178,13 @@ public:
 	virtual tPoint3 vfunction29(const tPoint3 &aPoint, bool aValue);
 	// HYPOTHESIS: returns the point rotated by the matrix 0x00413b34 builds.
 	virtual tPoint3 vfunction30(const tPoint3 &aPoint);
-	virtual void vfunction31();
-	virtual void vfunction32();
-	virtual void vfunction33();
+	// HYPOTHESIS: slots 30 and 31 return a truth value in al (the default 0x004bc9b0 and
+	// 0x0046c44f are xor al, al; tEntityShip's and tEntity_Seeker's end in mov al, 1 or sete al).
+	virtual bool vfunction31();
+	virtual bool vfunction32();
+	// HYPOTHESIS: slot 32 returns a pointer or an int: the default (0x00402fa5) is xor eax, eax
+	// and tEntityShip's override (0x00416da2) jumps to a slot of the object at 0xad4.
+	virtual void *vfunction33();
 	// HYPOTHESIS: returns the member at 0x10c, archived as "fNumberWeAreTractoring".
 	virtual int vfunction34();
 	// HYPOTHESIS: whether the ID is among the field_0x10c IDs at field_0x100 (the IDs this
@@ -188,7 +196,9 @@ public:
 	virtual void vfunction39(int aID);
 	// HYPOTHESIS: returns a pointer to the member at 0x11c; its type is not known.
 	virtual int *vfunction40();
-	virtual void vfunction41();
+	// HYPOTHESIS: takes one argument (ret 4) and passes it with the member at 0x11c to
+	// 0x007364c0; its type is not known.
+	virtual void vfunction41(int aValue);
 	// HYPOTHESIS: returns the name buffer at 0x13c that vfunction43 sets.
 	virtual char *vfunction42();
 	virtual void vfunction43(char *aName);
@@ -227,9 +237,25 @@ public:
 	virtual void vfunction61();
 	// HYPOTHESIS: clears the one-byte flag at 0x190 that vfunction61 sets.
 	virtual void vfunction62();
-	virtual void vfunction63();
-	// HYPOTHESIS: forwards to vfunction63 (pure in this class) through the vftable.
-	virtual void vfunction64();
+	// Slots 62, 64 and 65 are pure in the original: this class's vftable holds 0x00737f86
+	// (_purecall) in them. They are declared without a body here, not "= 0", because the unit
+	// that defines this class's functions instantiates it (the compiler refuses an abstract
+	// class). The vftable has 66 slots, 0 to 65; tEntity_Weapon, tEntity_Seeker and tEntityShip
+	// override these three.
+	// HYPOTHESIS: returns a float (tEntity_Seeker's override 0x0041e09b loads the member at 0x260,
+	// tEntityShip's 0x00415b6b divides by one; the default shared by the weapons, 0x00504078,
+	// loads a constant).
+	virtual float vfunction63();
+	// HYPOTHESIS: forwards to vfunction63 through the vftable (0x00410667 is mov eax, [ecx];
+	// jmp [eax+0xf8]), so it returns a float as well; tEntityShip overrides it (0x00414b31).
+	virtual float vfunction64();
+	// HYPOTHESIS: returns a float: the shared default 0x00504078 and tEntityShip's override
+	// 0x00414b38 both end in fld.
+	virtual float vfunction65();
+	// HYPOTHESIS: returns a 16-bit value and takes a byte (ret 4): tEntityShip's override
+	// (0x004155ed) tests byte [esp+8] and returns an angle in ax; the default (0x0041c23c) is
+	// xor ax, ax.
+	virtual short vfunction66(char aValue);
 
 	// HYPOTHESIS: the parameter type and the return type; 0x004105dd pushes its one
 	// argument unchanged, and 0x00413ac3 passes the result to its object's slot 57.

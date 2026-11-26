@@ -384,7 +384,7 @@ address	size	symbol	source	modes	decorated
 0x00410650	7	tPhysicalEntity::vfunction59()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction59@tPhysicalEntity@@UAEHXZ
 0x00410657	8	tPhysicalEntity::vfunction61()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction61@tPhysicalEntity@@UAEXXZ
 0x0041065f	8	tPhysicalEntity::vfunction62()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction62@tPhysicalEntity@@UAEXXZ
-0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction64@tPhysicalEntity@@UAEXXZ
+0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction64@tPhysicalEntity@@UAEMXZ
 0x00410a46	6	tNetMsg_kKillEntity::mGetMap() const	unsorted/tNetMsg_kKillEntity.cpp	vc6 guest	?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00413153	640	tPhysicalEntity::vfunction11(tSFCStream &,int32u)	Source/entity/entity_physical.cpp	vc6 guest	?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@K@Z
 0x004133d3	117	tMemoryPart::Search_tMemoryPart()	Source/entity/entity_physical.cpp	vc6 guest	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ

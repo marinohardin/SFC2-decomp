@@ -77,7 +77,7 @@ void tPhysicalEntity::vfunction62()
 }
 
 // FUNCTION: STARFLEETOP 0x00410667
-void tPhysicalEntity::vfunction64()
+float tPhysicalEntity::vfunction64()
 {
-	vfunction63();
+	return vfunction63();
 }
