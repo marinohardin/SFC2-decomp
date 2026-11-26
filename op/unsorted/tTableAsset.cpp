@@ -1,6 +1,13 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tTableAsset.cpp
-// Functions: 0x006896d0 to 0x00689950, 6 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "unsorted/tAsset.h"
+
+// FUNCTION: STARFLEETOP 0x006896d0
+tTableAsset::tTableAsset()
+{
+	field_5E = 0;
+	field_5C = 0;
+	field_62 = 0;
+	field_60 = 0;
+	field_66 = 5;
+	field_64 = 5;
+	field_68 = 0;
+}

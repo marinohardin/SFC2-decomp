@@ -4979,7 +4979,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004af80d	function	fn_004af80d					none
 0x004af94b	function	fn_004af94b					none
 0x004afa1c	function	fn_004afa1c					none
-0x004afa40	function	fn_004afa40					none
+0x004afa40	function	fn_004afa40		?fn_004afa40@@YIXPAX@Z	add		none
 0x004afa4e	function	fn_004afa4e					none
 0x004afac9	function	fn_004afac9					none
 0x004afb43	function	fn_004afb43					none
@@ -5962,9 +5962,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ccfdb	function	fn_004ccfdb					none
 0x004ccffb	function	fn_004ccffb					none
 0x004cd014	function	fn_004cd014					none
-0x004cd034	function	tShipUI::tShipUI	tShipUI	??0tShipUI@@QAE@XZ	callers		rtti
-0x004cd0f9	function	tShipUI::scalar_deleting_destructor	tShipUI				rtti
-0x004cd115	function	tShipUI::~tShipUI	tShipUI				rtti
+0x004cd034	function	tShipUI::tShipUI	tShipUI	??0tShipUI@@QAE@XZ	claim		rtti
+0x004cd0f9	function	tShipUI::scalar_deleting_destructor	tShipUI	??_GtShipUI@@UAEPAXI@Z	claim		rtti
+0x004cd115	function	tShipUI::~tShipUI	tShipUI	??1tShipUI@@UAE@XZ	claim		rtti
 0x004cd1db	function	fn_004cd1db		?fn_004cd1db@tShipUI@@QAEXHHH@Z	callers		none
 0x004cd2c9	function	fn_004cd2c9		?fn_004cd2c9@tShipUI@@QAEXXZ	callers		none
 0x004cd2f6	function	fn_004cd2f6		?fn_004cd2f6@tShipUI@@QAEXXZ	callers		none
@@ -8983,27 +8983,27 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00537b6f	function	tETrait_Creator_PlasmaVent::tETrait_Creator_PlasmaVent	tETrait_Creator_PlasmaVent				rtti
 0x00537b81	function	fn_00537b81	tETrait_Creator_PlasmaVent				vtable
 0x00537b87	function	fn_00537b87	tETrait_Creator_PlasmaVent				vtable
-0x00537bc2	function	fn_00537bc2					none
-0x00537bd8	function	fn_00537bd8					none
-0x00537bfd	function	fn_00537bfd					none
-0x00537c4a	function	fn_00537c4a					none
-0x00537c73	function	fn_00537c73					none
-0x00537cbe	function	fn_00537cbe					none
-0x00537cf5	function	fn_00537cf5	tBitmapFontEx				vtable
-0x00537d0f	function	fn_00537d0f	tBitmapFontEx				vtable
-0x00537d66	function	fn_00537d66	tBitmapFontEx				vtable
+0x00537bc2	function	fn_00537bc2		?fn_00537bc2@@YIPAHPAH@Z	claim		none
+0x00537bd8	function	fn_00537bd8		?fn_00537bd8@@YIXPAH@Z	claim		none
+0x00537bfd	function	fn_00537bfd		?fn_00537bfd@@YIXPAH@Z	claim		none
+0x00537c4a	function	fn_00537c4a		??0tBitmapFontEx@@QAE@XZ	claim		none
+0x00537c73	function	fn_00537c73		?fn_00537c73@@YIPAXPAXHE@Z	claim		none
+0x00537cbe	function	fn_00537cbe		??1tBitmapFontEx@@QAE@XZ	claim		none
+0x00537cf5	function	fn_00537cf5	tBitmapFontEx	?vfunction1@tBitmapFontEx@@UAEPAXG@Z	claim		vtable
+0x00537d0f	function	fn_00537d0f	tBitmapFontEx	?vfunction3@tBitmapFontEx@@UAEHPAGH@Z	claim		vtable
+0x00537d66	function	fn_00537d66	tBitmapFontEx	?vfunction4@tBitmapFontEx@@UAEXPAXH@Z	claim		vtable
 0x00537d88	function	fn_00537d88	tBitmapFontEx				vtable
-0x00537f66	function	fn_00537f66	tBitmapFontEx				vtable
-0x0053805e	function	fn_0053805e	tBitmapFontEx				vtable
-0x00538062	function	fn_00538062	tBitmapFontEx				vtable
-0x00538093	function	fn_00538093	tBitmapFontEx				vtable
-0x00538098	function	fn_00538098					none
-0x005380dd	function	fn_005380dd					none
+0x00537f66	function	fn_00537f66	tBitmapFontEx	?vfunction8@tBitmapFontEx@@UAEXH@Z	claim		vtable
+0x0053805e	function	fn_0053805e	tBitmapFontEx	?vfunction10@tBitmapFontEx@@UAEXXZ	claim		vtable
+0x00538062	function	fn_00538062	tBitmapFontEx	?vfunction11@tBitmapFontEx@@UAEXXZ	claim		vtable
+0x00538093	function	fn_00538093	tBitmapFontEx	?vfunction12@tBitmapFontEx@@UAEXXZ	claim		vtable
+0x00538098	function	fn_00538098		?fn_00538098@@YAPAVtBitmapFontEx@@PBD@Z	claim		none
+0x005380dd	function	fn_005380dd		?fn_005380dd@@YAPAVtBitmapFontEx@@XZ	add		none
 0x005380e3	function	fn_005380e3					none
 0x005381a3	function	fn_005381a3		?fn_005381a3@@YAXHPAVtObjBase@@HHHHHHPAGHPAUtagRECT@@HH@Z	callers		none
-0x0053860e	function	fn_0053860e					none
+0x0053860e	function	fn_0053860e		?fn_0053860e@@YADH@Z	claim		none
 0x00538621	function	fn_00538621					none
-0x005387ee	function	fn_005387ee					none
+0x005387ee	function	fn_005387ee		?fn_005387ee@@YAXXZ	claim		none
 0x00538897	function	fn_00538897					none
 0x00538a69	function	fn_00538a69					none
 0x00538b65	function	tCompressedPosition::tCompressedPosition	tCompressedPosition				rtti
@@ -10705,7 +10705,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0055f1f8	function	nStoredProcedureArguments::tNotifyEvent::~tNotifyEvent	nStoredProcedureArguments::tNotifyEvent	??1tNotifyEvent@nStoredProcedureArguments@@UAE@XZ	callers		rtti
 0x0055f203	function	fn_0055f203	nStoredProcedureArguments::tNotifyEvent				vtable
 0x0055f23c	function	fn_0055f23c	nStoredProcedureArguments::tNotifyEvent				vtable
-0x0055f269	function	fn_0055f269	tLogMessage				vtable
+0x0055f269	function	fn_0055f269	tLogMessage	?fn_0055f269@tCurrentTime@@QAEJXZ	add		vtable
 0x0055f26d	function	fn_0055f26d					none
 0x0055f292	function	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse::tRegisterForNotifyResponse	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse				rtti
 0x0055f2cb	function	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse::scalar_deleting_destructor	nStoredProcedureArguments::tRegisterForNotify::tRegisterForNotifyResponse				fid
@@ -12870,12 +12870,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b6902	function	fn_005b6902					none
 0x005b693b	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@XZ	callers		rtti
 0x005b6957	function	tHexPoint::scalar_deleting_destructor	tHexPoint				rtti
-0x005b6973	function	tHexPoint::tHexPoint	tHexPoint				rtti
+0x005b6973	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@ABV0@@Z	add		rtti
 0x005b69b0	function	fn_005b69b0					none
 0x005b69d7	function	fn_005b69d7		??9tHexPoint@@QBE_NABV0@@Z	callers		none
 0x005b69e9	function	fn_005b69e9					none
 0x005b6a12	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@HH@Z	callers		rtti
-0x005b6a36	function	tHexPoint::~tHexPoint	tHexPoint				rtti
+0x005b6a36	function	tHexPoint::~tHexPoint	tHexPoint	??1tHexPoint@@UAE@XZ	add		rtti
 0x005b6a41	function	fn_005b6a41	tCompressedPosition				vtable
 0x005b6a5c	function	fn_005b6a5c					none
 0x005b6a8b	function	fn_005b6a8b					none
@@ -13315,14 +13315,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c7db6	function	tCurrentTime::tCurrentTime	tCurrentTime				rtti
 0x005c7e00	function	fn_005c7e00	tCurrentTime				vtable
 0x005c7e54	function	fn_005c7e54	tCurrentTime				vtable
-0x005c7eac	function	fn_005c7eac					none
-0x005c7eb6	function	fn_005c7eb6					none
-0x005c7f5d	function	fn_005c7f5d					none
-0x005c7f7c	function	fn_005c7f7c					none
-0x005c7fb3	function	fn_005c7fb3					none
-0x005c7fb7	function	fn_005c7fb7	tBitmapFontEx				vtable
-0x005c7fbb	function	fn_005c7fbb					none
-0x005c7fc6	function	fn_005c7fc6		?fn_005c7fc6@tAIOfficer@@QAEXM@Z	callers		none
+0x005c7eac	function	fn_005c7eac		?fn_005c7eac@@YI_NPAD@Z	claim		none
+0x005c7eb6	function	fn_005c7eb6		?fn_005c7eb6@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVtCurrentTime@@@Z	claim		none
+0x005c7f5d	function	fn_005c7f5d		?fn_005c7f5d@@YIJPAVtCurrentTime@@@Z	claim		none
+0x005c7f7c	function	fn_005c7f7c		?fn_005c7f7c@@YIJPAVtCurrentTime@@@Z	claim		none
+0x005c7fb3	function	fn_005c7fb3		?fn_005c7fb3@@YIJPAD@Z	claim		none
+0x005c7fb7	function	fn_005c7fb7	tBitmapFontEx	?fn_005c7fb7@@YIJPAVtCurrentTime@@@Z	claim		vtable
+0x005c7fbb	function	fn_005c7fbb		?fn_005c7fbb@@YIJPAVtCurrentTime@@J@Z	claim		none
+0x005c7fc6	function	fn_005c7fc6		?fn_005c7fc6@@YIXPADHM@Z	claim		none
 0x005c800e	function	fn_005c800e					none
 0x005c801a	function	fn_005c801a					none
 0x005c8026	function	fn_005c8026					none
@@ -14456,28 +14456,28 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e7d80	function	fn_005e7d80					none
 0x005e7f60	function	fn_005e7f60		?fn_005e7f60@tMetaClientMapPanel@@QAEXPBUtPoint@@PBUtRect@@@Z	callers		none
 0x005e800f	function	fn_005e800f		?fn_005e800f@tMetaClientMapPanel@@QAEXPBUtPoint@@PBUtRect@@@Z	callers		none
-0x005e80ef	function	fn_005e80ef					none
-0x005e8140	function	fn_005e8140					none
+0x005e80ef	function	fn_005e80ef		?fn_005e80ef@@YAXPAVtMetaClientMapPanel@@@Z	claim		none
+0x005e8140	function	fn_005e8140		?fn_005e8140@@YGXPAVtMetaClientMapPanel@@JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x005e818f	function	fn_005e818f					none
 0x005e81db	function	fn_005e81db					none
-0x005e8376	function	fn_005e8376					none
+0x005e8376	function	fn_005e8376		?fn_005e8376@@YGXPAVtMetaClientMapPanel@@J@Z	claim		none
 0x005e843a	function	fn_005e843a					none
-0x005e89fd	function	fn_005e89fd					none
+0x005e89fd	function	fn_005e89fd		?fn_005e89fd@fn_005e89fd_panel@@QAE?AUtPoint@@ABVtHexPoint@@@Z	claim		none
 0x005e8acc	function	fn_005e8acc					none
-0x005e8be0	function	fn_005e8be0					none
+0x005e8be0	function	fn_005e8be0		?fn_005e8be0@@YGXPAV?$map@U?$pair@HH@std@@_NU?$less@U?$pair@HH@std@@@2@V?$allocator@_N@2@@std@@PAD@Z	claim		none
 0x005e8c29	function	fn_005e8c29		?fn_005e8c29@tMetaClientMapPanel@@QAEXABUtRect@@@Z	callers		none
-0x005e8e55	function	fn_005e8e55		?fn_005e8e55@tMetaClientMapQueueMember@@QAEXH@Z	callers		none
-0x005e8ee6	function	fn_005e8ee6					none
-0x005e8ef0	function	fn_005e8ef0					none
-0x005e8efa	function	fn_005e8efa		?fn_005e8efa@tMetaClientMapQueue@@QAEHXZ	callers		none
+0x005e8e55	function	fn_005e8e55		?fn_005e8e55@tMetaClientMapQueueMember@@QAEXH@Z	claim		none
+0x005e8ee6	function	fn_005e8ee6		?fn_005e8ee6@@YIXPAXHJ@Z	claim		none
+0x005e8ef0	function	fn_005e8ef0		?fn_005e8ef0@@YIXPAXHJ@Z	claim		none
+0x005e8efa	function	fn_005e8efa		?fn_005e8efa@@YIJPAX@Z	claim		none
 0x005e8efe	function	fn_005e8efe	tGameState	?fn_005e8efe@tMetaClientMapQueue@@QAEHXZ	callers		vtable
-0x005e8f02	function	fn_005e8f02					none
-0x005e8f21	function	fn_005e8f21	tBitmapFontEx				vtable
-0x005e8f25	function	fn_005e8f25	tBitmapFontEx	?fn_005e8f25@tNotifyEvent@nStoredProcedureArguments@@QAEKXZ	callers		vtable
-0x005e8f29	function	fn_005e8f29					none
-0x005e8f2d	function	fn_005e8f2d					none
-0x005e8f9a	function	fn_005e8f9a					none
-0x005e8fd2	function	fn_005e8fd2					none
+0x005e8f02	function	fn_005e8f02		?fn_005e8f02@fn_005e89fd_layout@@QAEHABVtHexPoint@@@Z	claim		none
+0x005e8f21	function	fn_005e8f21	tBitmapFontEx	?fn_005e8f21@tHexPoint@@QBEJXZ	claim		vtable
+0x005e8f25	function	fn_005e8f25	tBitmapFontEx	?fn_005e8f25@fn_005e89fd_layout@@QAEHXZ	claim		vtable
+0x005e8f29	function	fn_005e8f29		?fn_005e8f29@fn_005e89fd_layout@@QAEHXZ	claim		none
+0x005e8f2d	function	fn_005e8f2d		??A?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@std@@QAEAAVtHexPoint@@ABH@Z	claim		none
+0x005e8f9a	function	fn_005e8f9a		?fn_005e8f9a@fn_005e8f9a_tree@@QAEXXZ	claim		none
+0x005e8fd2	function	fn_005e8fd2		?fn_005e8fd2@fn_005e8fd2_vector@@QAEPAXI@Z	claim		none
 0x005e9002	function	fn_005e9002		?push_back@?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAEXABUfn_005e36cd_entry@@@Z	callers		none
 0x005e9013	function	fn_005e9013					none
 0x005e907e	function	fn_005e907e					none
@@ -14502,7 +14502,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e971b	function	fn_005e971b					none
 0x005e9771	function	fn_005e9771					none
 0x005e9797	function	fn_005e9797					none
-0x005e980b	function	fn_005e980b					none
+0x005e980b	function	fn_005e980b		?insert@?$_Tree@HU?$pair@$$CBHVtHexPoint@@@std@@U_Kfn@?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@2@U?$less@H@2@V?$allocator@VtHexPoint@@@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHVtHexPoint@@@std@@U_Kfn@?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@2@U?$less@H@2@V?$allocator@VtHexPoint@@@2@@std@@_N@2@ABU?$pair@$$CBHVtHexPoint@@@2@@Z	add		none
 0x005e98a6	function	fn_005e98a6					none
 0x005e9b11	function	fn_005e9b11					none
 0x005e9b49	function	fn_005e9b49					none
@@ -15264,17 +15264,17 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0060051b	function	fn_0060051b					none
 0x0060054e	function	fn_0060054e					none
 0x00600581	function	fn_00600581					none
-0x006005aa	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
-0x00600604	function	tMessageDialog::scalar_deleting_destructor	tMessageDialog				rtti
-0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog				rtti
+0x006005aa	function	tMessageDialog::tMessageDialog	tMessageDialog	??0tMessageDialog@@QAE@XZ	claim		rtti
+0x00600604	function	tMessageDialog::scalar_deleting_destructor	tMessageDialog	??_GtMessageDialog@@UAEPAXI@Z	claim		rtti
+0x00600620	function	tMessageDialog::tMessageDialog	tMessageDialog	??0tMessageDialog@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z	claim		rtti
 0x006006b3	function	fn_006006b3		?fn_006006b3@@YAXXZ	claim		none
-0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog				rtti
+0x006006ef	function	tMessageDialog::~tMessageDialog	tMessageDialog	??1tMessageDialog@@UAE@XZ	claim		rtti
 0x0060072f	function	fn_0060072f	tMessageDialog	?fn_0060072f@tMessageDialog@@QAEXHD@Z	claim		none
 0x006007f9	function	fn_006007f9		?fn_006007f9@tMessageDialog@@QAEXH@Z	add		none
 0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
 0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
 0x006009ed	function	fn_006009ed	tMessageDialog	?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
-0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
+0x00600a4c	function	fn_00600a4c	tMessageDialog	?vfunction1@tMessageDialog@@UAEXXZ	claim		vtable
 0x00600a82	function	fn_00600a82					none
 0x00600a91	function	fn_00600a91					none
 0x00600ab8	function	fn_00600ab8		?fn_00600ab8@@YGPAVfn_00600b4a_class@@HHH@Z	add		none
@@ -17659,19 +17659,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00676a00	function	fn_00676a00		?fn_00676a00@@YAXPAG@Z	claim		none
 0x00676a30	function	fn_00676a30		?fn_00676a30@@YAPAVtAsset@@GH@Z	claim		none
 0x00677010	function	fn_00677010	tCastMgr	?vfunction1@tCastMgr@@UAEXXZ	claim		none
-0x00677060	function	fn_00677060					none
+0x00677060	function	fn_00677060		?fn_00677060@fn_00677060_Owner@@QAEPAXI@Z	claim		none
 0x006770a0	function	fn_006770a0					none
-0x00677380	function	fn_00677380					none
-0x006773e0	function	fn_006773e0					none
+0x00677380	function	fn_00677380		?fn_00677380@fn_00677060_Owner@@QAEHI@Z	claim		none
+0x006773e0	function	fn_006773e0		?fn_006773e0@fn_00677060_Owner@@QAEXI@Z	claim		none
 0x00677460	function	fn_00677460					none
 0x006777f0	function	fn_006777f0					none
 0x00677940	function	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>::size	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>	?size@?$vector@PAVtCoopThread@@V?$allocator@PAVtCoopThread@@@std@@@std@@QBEIXZ	mangled		mangled
 0x00677960	function	fn_00677960					none
-0x00677b60	function	fn_00677b60					none
-0x00677b90	function	fn_00677b90					none
+0x00677b60	function	fn_00677b60		?fn_00677b60@fn_00677b60_Owner@@QAEHXZ	claim		none
+0x00677b90	function	fn_00677b90		?fn_00677b90@@YGXPAU?$pair@$$CBVtString@@H@std@@0@Z	claim		none
 0x00677bc0	function	fn_00677bc0	tFileStream				vtable
-0x00677bd0	function	fn_00677bd0					none
-0x00677bf0	function	fn_00677bf0					none
+0x00677bd0	function	fn_00677bd0		??0fn_00677bd0_Element@@QAE@XZ	claim		none
+0x00677bf0	function	fn_00677bf0		?fn_00677bf0@fn_00677bd0_Element@@QAEXPAVtStream@@@Z	claim		none
 0x00677ca0	function	tAsset::~tAsset	tAsset				rtti
 0x00677d00	function	tAsset::scalar_deleting_destructor	tAsset				rtti
 0x00677d20	function	fn_00677d20	tCastItem	?vfunction5@tCastItem@@UAEAAVtStream@@AAV2@@Z	claim		none
@@ -17688,13 +17688,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00678250	function	tBoundAsset::scalar_deleting_destructor	tBoundAsset	??_GtBoundAsset@@UAEPAXI@Z	claim		rtti
 0x00678270	function	tAsset::~tAsset	tAsset	??1tBoundAsset@@UAE@XZ	callers		rtti
 0x006782d0	function	fn_006782d0					none
-0x00678500	function	fn_00678500					none
-0x006785c0	function	fn_006785c0					none
-0x00678600	function	fn_00678600					none
-0x006786d0	function	fn_006786d0					none
+0x00678500	function	fn_00678500		??0fn_00678500_Class@@QAE@XZ	claim		none
+0x006785c0	function	fn_006785c0		?fn_006785c0@fn_006785c0_StringVector@@QAEXXZ	claim		none
+0x00678600	function	fn_00678600		??1fn_00678600_Tree@@QAE@XZ	claim		none
+0x006786d0	function	fn_006786d0		?fn_006786d0@fn_006786d0_Tree@@QAEXPAUfn_006786d0_Node@@@Z	claim		none
 0x00678710	function	std::_Tree<char,std::pair<char_const_,eMapObjectType>,std::map<char,eMapObjectType,std::less<char>,std::allocator<eMapObjectType>_>::_Kfn,std::less<char>,std::allocator<eMapObjectType>_>::iterator::operator++	std::_Tree<char,std::pair<char_const_,eMapObjectType>,std::map<char,eMapObjectType,std::less<char>,std::allocator<eMapObjectType>_>::_Kfn,std::less<char>,std::allocator<eMapObjectType>_>::iterator	??Eiterator@?$_Tree@DU?$pair@$$CBDW4eMapObjectType@@@std@@U_Kfn@?$map@DW4eMapObjectType@@U?$less@D@std@@V?$allocator@W4eMapObjectType@@@3@@2@U?$less@D@2@V?$allocator@W4eMapObjectType@@@2@@std@@QAE?AV012@H@Z	mangled		mangled
 0x00678770	function	fn_00678770					none
-0x00678aa0	function	fn_00678aa0					none
+0x00678aa0	function	fn_00678aa0		?fn_00678aa0@fn_00678aa0_Tree@@QAEXPAUfn_00678aa0_Node@@@Z	claim		none
 0x00678ae0	function	tBmpAsset::tBmpAsset	tBmpAsset	??0tBmpAsset@@QAE@XZ	claim		claim
 0x00678b10	function	tBmpAsset::~tBmpAsset	tBmpAsset	??1tBmpAsset@@UAE@XZ	claim		claim
 0x00678b80	function	fn_00678b80	tBmpAsset	?vfunction5@tBmpAsset@@UAEAAVtStream@@AAV2@@Z	claim		none
@@ -18080,7 +18080,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006893c0	function	fn_006893c0					none
 0x00689480	function	fn_00689480					none
 0x00689590	function	fn_00689590					none
-0x006896d0	function	tTableAsset::tTableAsset	tTableAsset				rtti
+0x006896d0	function	tTableAsset::tTableAsset	tTableAsset	??0tTableAsset@@QAE@XZ	claim		rtti
 0x00689720	function	tTableAsset::scalar_deleting_destructor	tTableAsset				rtti
 0x00689740	function	tAsset::~tAsset	tAsset				rtti
 0x006897e0	function	fn_006897e0	tTableAsset				vtable
