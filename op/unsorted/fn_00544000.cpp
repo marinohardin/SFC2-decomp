@@ -80,3 +80,22 @@ void fn_0054477b_user( std::vector< tServCharacter::tShipCache > *v )
 {
 	v->erase( v->begin() );
 }
+
+// HYPOTHESIS: the destructor of the wrapper at +0x5c of tServCharacter, over the vector whose
+// erase is 0x00544725; 0x005447ff is its Delete.
+// MATCH-ONLY: written as a specialization so the out-of-line copy sits in this unit.
+#include "Common/Thread/SingleAccessWrapper.h"
+
+template<> void tSingleAccessWrapper< std::vector< fn_00544725_elem > >::Delete();
+
+// FUNCTION: STARFLEETOP 0x005447d0
+template<> tSingleAccessWrapper< std::vector< fn_00544725_elem > >::~tSingleAccessWrapper()
+{
+	Delete();
+}
+
+// MATCH-ONLY: a user so that the specialization above is emitted out of line.
+void fn_005447d0_user( tSingleAccessWrapper< std::vector< fn_00544725_elem > > *w )
+{
+	w->~tSingleAccessWrapper();
+}
