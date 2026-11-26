@@ -31,3 +31,20 @@ void fn_0046f160()
 		i++;
 	} while ( i < 6 );
 }
+
+// FUNCTION: STARFLEETOP 0x0046f24b
+int tState_Multiplayer::fn_0046f24b( int param_1 )
+{
+	unsigned int flags = field_2200;
+	if ( ( flags & 8 ) && ( flags & 0x10 ) && ( flags & 0x20 ) && ( flags & 0x40 ) && ( flags & 0x80 ) && ( flags & 0x100 ) )
+	{
+		return 0;
+	}
+	while ( flags & ( 8 << param_1 ) )
+	{
+		param_1++;
+		if ( param_1 >= 6 )
+			param_1 = 0;
+	}
+	return param_1;
+}

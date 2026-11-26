@@ -3640,7 +3640,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046ed6a	function	fn_0046ed6a	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
 0x0046f160	function	fn_0046f160		?fn_0046f160@@YAXXZ	claim		none
 0x0046f197	function	fn_0046f197	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
-0x0046f24b	function	fn_0046f24b					none
+0x0046f24b	function	fn_0046f24b		?fn_0046f24b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHH@Z	claim		none
 0x0046f292	function	fn_0046f292	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
 0x00470b59	function	fn_00470b59					none
 0x00470c38	function	fn_00470c38					none

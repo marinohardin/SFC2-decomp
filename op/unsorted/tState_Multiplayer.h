@@ -42,6 +42,9 @@ public:
 	// 0x0047156b (slot 14)
 	virtual void vfunction15(c_0046aa10_message *param_1);
 
+	// HYPOTHESIS: 0x0046f24b is a method; it reads the flags at +0x2200.
+	int fn_0046f24b( int param_1 );
+
 	int field_0c;
 	unsigned char field_10;
 	unsigned char field_11;
