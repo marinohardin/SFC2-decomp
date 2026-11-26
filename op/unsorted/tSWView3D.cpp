@@ -263,6 +263,12 @@ bool tSWView3D::vfunction12()
 	return false;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fa50
+int tSWView3D::vfunction25(int)
+{
+	return 10;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
