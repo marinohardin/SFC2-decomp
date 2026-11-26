@@ -17689,7 +17689,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00678270	function	tAsset::~tAsset	tAsset	??1tBoundAsset@@UAE@XZ	callers		rtti
 0x006782d0	function	fn_006782d0					none
 0x00678500	function	fn_00678500		??0fn_00678500_Class@@QAE@XZ	claim		none
-0x006785c0	function	fn_006785c0					none
+0x006785c0	function	fn_006785c0		?fn_006785c0@fn_006785c0_StringVector@@QAEXXZ	claim		none
 0x00678600	function	fn_00678600					none
 0x006786d0	function	fn_006786d0					none
 0x00678710	function	std::_Tree<char,std::pair<char_const_,eMapObjectType>,std::map<char,eMapObjectType,std::less<char>,std::allocator<eMapObjectType>_>::_Kfn,std::less<char>,std::allocator<eMapObjectType>_>::iterator::operator++	std::_Tree<char,std::pair<char_const_,eMapObjectType>,std::map<char,eMapObjectType,std::less<char>,std::allocator<eMapObjectType>_>::_Kfn,std::less<char>,std::allocator<eMapObjectType>_>::iterator	??Eiterator@?$_Tree@DU?$pair@$$CBDW4eMapObjectType@@@std@@U_Kfn@?$map@DW4eMapObjectType@@U?$less@D@std@@V?$allocator@W4eMapObjectType@@@3@@2@U?$less@D@2@V?$allocator@W4eMapObjectType@@@2@@std@@QAE?AV012@H@Z	mangled		mangled
