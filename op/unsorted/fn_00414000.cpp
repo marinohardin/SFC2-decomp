@@ -51,3 +51,31 @@ void fn_0041455b(int a, int b)
 // FUNCTION: STARFLEETOP 0x004145e7
 // FUNCTION: STARFLEETOP 0x004145d7
 tString g_008e0d48 = "assets\\WeaponGroups\\";
+
+// HYPOTHESIS: the globals at 0x008e0cd0 are a table of vectors; names unknown.
+extern float g_008e0cd0[36];
+
+// FUNCTION: STARFLEETOP 0x00414602
+void fn_00414602()
+{
+	g_008e0cd0[0] = 0.0f;
+	g_008e0cd0[1] = 0.0f;
+	g_008e0cd0[6] = 2.0f;
+	g_008e0cd0[2] = 0.0f;
+	g_008e0cd0[10] = -3.0f;
+	g_008e0cd0[15] = 2.0f;
+	g_008e0cd0[3] = -2.0f;
+	g_008e0cd0[4] = -2.0f;
+	g_008e0cd0[5] = 0.0f;
+	g_008e0cd0[7] = -2.0f;
+	g_008e0cd0[8] = 0.0f;
+	g_008e0cd0[9] = 0.0f;
+	g_008e0cd0[11] = 0.0f;
+	g_008e0cd0[12] = -2.0f;
+	g_008e0cd0[13] = -4.0f;
+	g_008e0cd0[14] = 0.0f;
+	g_008e0cd0[16] = -4.0f;
+	g_008e0cd0[17] = 0.0f;
+	for (int i = 18; i < 30; i++)
+		g_008e0cd0[i] = 0.0f;
+}
