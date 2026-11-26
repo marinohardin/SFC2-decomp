@@ -174,7 +174,7 @@ def test_only_source_files_under_op_are_copied():
 def test_the_report_fences_log_lines_and_mentions_no_one():
     res = verify_pr.contrib_guard.Result()
     res.added = res.functions = {0x00401010}
-    build =('ERROR 0x00401010 tA::f|@owner 90.00% partial (8 bytes) REGRESSION: ```x``` @someone\n'
+    build = ('ERROR 0x00401010 tA::f|@owner 90.00% partial (8 bytes) REGRESSION: ```x``` @someone\n'
              'RESULT ERROR regression\n')
     text = verify_pr.report(5, 'a' * 40, 'b' * 40, 'c' * 40, res,
                             [('build', 1, build)], {}, 'Claim: #7')
