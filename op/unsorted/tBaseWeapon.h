@@ -38,11 +38,9 @@ struct fn_004d77ec_type
 // HYPOTHESIS: the argument counts and return registers of the virtual slots are read from the
 // implementations across the vftables of the weapon classes: the immediate of each `ret N`, and
 // whether the result is left in eax, al or st(0). An argument whose type the bodies do not show
-// is an int, a return in eax with no further evidence an int. The slots that fix only a position
-// are still placeholders as listed below.
-// HYPOTHESIS: slots 1 to 21 are placeholders that only fix the position of slot 22
-// (offset 0x58, mStreamOutSystemSpecificData, 0x004d76b3 in tBaseWeapon) and slot 23
-// (offset 0x5c, 0x00452f40 in tIndividualShipSystem).
+// is an int, a return in eax with no further evidence an int. Every slot from 1 on is typed this
+// way; slot 22 (offset 0x58) is mStreamOutSystemSpecificData, 0x004d76b3 in tBaseWeapon, and
+// slot 23 (offset 0x5c) is 0x00452f40 in tIndividualShipSystem.
 class tBaseWeapon
 {
 public:
@@ -74,8 +72,8 @@ public:
     virtual unsigned vfunction22(tSFCStream &s, unsigned aFlags, unsigned mode);
     virtual unsigned mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode);
     virtual unsigned vfunction24(tSFCStream &s, unsigned aFlags, unsigned mode);
-    // HYPOTHESIS: the slots from 25 on are placeholders that only fix the positions of the
-    // slots 0x004e20f4 calls: offsets 0xd8, 0xe0, 0x100, 0x108 and 0x110.
+    // HYPOTHESIS: the slots from 25 on are typed from their implementations; 0x004e20f4 calls
+    // those at offsets 0xd8, 0xe0, 0x100, 0x108 and 0x110.
     virtual bool vfunction25();
     virtual bool vfunction26();
     // HYPOTHESIS: the slot at offset 0x68 is a test tShipSystemsExt's 0x0044c9bb compares with true.
@@ -186,8 +184,8 @@ public:
     virtual float vfunction109();
     virtual float vfunction110();
     virtual float vfunction111();
-    // HYPOTHESIS: slots 112 to 133 are placeholders that only fix the position of slot 134
-    // (offset 0x214), a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
+    // HYPOTHESIS: slots 112 to 133 are typed from their implementations; slot 134
+    // (offset 0x214) is a test 0x004e25c0 calls; slot 114 (offset 0x1c4) is the one
     // tPhaserBank overrides at 0x004e25c0.
     virtual void vfunction112(float param_1);
     virtual float vfunction113(float param_1, int param_2, int param_3);
@@ -219,8 +217,8 @@ public:
     virtual int vfunction136(char param_1);
     virtual void vfunction137();
     virtual bool vfunction138();
-    // HYPOTHESIS: slots 139 to 143 are placeholders that only fix the positions of slots 144
-    // and 145 (offsets 0x240 and 0x244), which slot 103 calls.
+    // HYPOTHESIS: slots 139 to 143 are typed from their implementations; slot 103 calls
+    // slots 144 and 145 (offsets 0x240 and 0x244).
     virtual void* vfunction139();
     virtual char vfunction140();
     virtual void vfunction141(char param_1);
