@@ -25,19 +25,23 @@ public:
 	virtual ~tShipUI();
 	// HYPOTHESIS: three arguments; the split of the pushes between this call and the two
 	// virtual calls inside its argument list is read from the register use at the call
-	// sites, not from the callee. Types unknown.
+	// sites, not from the callee. Types unknown. The callee itself reads four stack words
+	// (+0x8 to +0x14 above ebp) and ends with ret 0x10, so the declaration (and the symbol
+	// the callers' evidence gives, three ints) disagrees with it; it stays at three so the
+	// callers, which compile exact, keep their bytes.
 	void fn_004cd1db( int a, int b, int id );
 	void fn_004cd2c9();
 	void fn_004cd2f6();
 	void fn_004cd739();
 
-	// 0x004cd1db stores its first two arguments here.
+	// HYPOTHESIS: 0x004cd1db stores the words at ebp+8 and ebp+0xc here.
 	int					m_04;
 	int					m_08;
 	tShipUI_listEntry	m_0c[0x80];
 	// HYPOTHESIS: an index into the list at +0xc.
 	int					m_100c;
-	// 0x004cd1db sets +0x1010 and +0x1014 (from its fourth argument).
+	// 0x004cd1db sets +0x1010 from a call (0x0040a6cd) and +0x1014 from the stack word at ebp+0x14
+	// (the fourth argument by the callee's ret 0x10).
 	int					m_1010;
 	int					m_1014;
 	// HYPOTHESIS: owned objects: the destructor deletes each and clears it.
