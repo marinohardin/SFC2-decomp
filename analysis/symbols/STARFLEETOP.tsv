@@ -7019,7 +7019,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e8423	function	fn_004e8423	tPlasmaLauncher				vtable
 0x004e861e	function	fn_004e861e	tPlasmaLauncher				vtable
 0x004e88c6	function	fn_004e88c6	tPlasmaLauncher				vtable
-0x004e8a69	function	fn_004e8a69	tPlasmaLauncher				vtable
+0x004e8a69	function	fn_004e8a69	tPlasmaLauncher	?vfunction65@tPlasmaLauncher@@UAEXD@Z	claim		vtable
 0x004e8c69	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker				rtti
 0x004e8e88	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker				rtti
 0x004e8fe4	function	fn_004e8fe4					none
