@@ -29,3 +29,9 @@ void tState_MetaLogon::fn_0046d2aa( const char *text )
 	field_28 = stream.str().c_str();
 	fn_004d3179( g_0084724c, field_28 );
 }
+
+// FUNCTION: STARFLEETOP 0x0046d370
+void tState_MetaLogon::vfunction1( const std::string& text )
+{
+	fn_0046d2aa( text.c_str() );
+}
