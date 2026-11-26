@@ -1426,7 +1426,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0042adc1	function	fn_0042adc1		?push_back@?$vector@EV?$allocator@E@std@@@std@@QAEXABE@Z	callers		none
 0x0042add2	function	fn_0042add2					none
 0x0042ade3	function	fn_0042ade3		??1tObject_0042ade3@@QAE@XZ	claim		none
-0x0042ae1b	function	fn_0042ae1b					none
+0x0042ae1b	function	fn_0042ae1b		??4?$vector@HV?$allocator@H@std@@@std@@QAEAAV01@ABV01@@Z	callers		none
 0x0042aff3	function	fn_0042aff3		?push_back@?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@QAEXABVtShipCache@tServCharacter@@@Z	callers		none
 0x0042b004	function	fn_0042b004					none
 0x0042b077	function	fn_0042b077					none
@@ -9425,7 +9425,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00544719	function	fn_00544719	tServCharacter				vtable
 0x0054471f	function	fn_0054471f	tServCharacter				vtable
 0x00544725	function	fn_00544725					none
-0x0054477b	function	fn_0054477b					none
+0x0054477b	function	fn_0054477b		?erase@?$vector@Vfn_005419e4_entry@@V?$allocator@Vfn_005419e4_entry@@@std@@@std@@QAEPAVfn_005419e4_entry@@PAV3@@Z	callers		none
 0x005447d0	function	fn_005447d0					none
 0x005447ff	function	fn_005447ff					none
 0x00544830	function	tClassAllocator<tServCharacter>::tClassAllocator<tServCharacter>	tClassAllocator<tServCharacter>				rtti
@@ -14194,7 +14194,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e089f	function	nAsyncClientMapProcedures::tReceiveMapData::~tReceiveMapData	nAsyncClientMapProcedures::tReceiveMapData				rtti
 0x005e08aa	function	fn_005e08aa					none
 0x005e09cd	function	fn_005e09cd					none
-0x005e0d3a	function	fn_005e0d3a					none
+0x005e0d3a	function	fn_005e0d3a		??0tPoint@@QAE@FF@Z	callers		none
 0x005e0d50	function	fn_005e0d50					none
 0x005e0d95	function	fn_005e0d95					none
 0x005e0dcb	function	fn_005e0dcb					none
@@ -14478,11 +14478,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8f2d	function	fn_005e8f2d					none
 0x005e8f9a	function	fn_005e8f9a					none
 0x005e8fd2	function	fn_005e8fd2					none
-0x005e9002	function	fn_005e9002					none
+0x005e9002	function	fn_005e9002		?push_back@?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAEXABUfn_005e36cd_entry@@@Z	callers		none
 0x005e9013	function	fn_005e9013					none
 0x005e907e	function	fn_005e907e					none
 0x005e908f	function	fn_005e908f					none
-0x005e92ef	function	fn_005e92ef					none
+0x005e92ef	function	fn_005e92ef		?erase@?$vector@Ufn_005ea9ce_elem@@V?$allocator@Ufn_005ea9ce_elem@@@std@@@std@@QAEPAUfn_005ea9ce_elem@@PAU3@@Z	callers		none
 0x005e9343	function	fn_005e9343					none
 0x005e93c2	function	fn_005e93c2					none
 0x005e93fa	function	fn_005e93fa		??1tValue@tTree_005ea14b@@QAE@XZ	callers		none
