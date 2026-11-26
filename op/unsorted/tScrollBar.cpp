@@ -170,7 +170,7 @@ unsigned char tRect::mPointInside( int x, int y ) const
 }
 
 // FUNCTION: STARFLEETOP 0x004c8587
-unsigned char tScrollBar::vfunction31( c_tListBox_Base_Event *event )
+bool tScrollBar::vfunction31( c_tListBox_Base_Event *event )
 {
 	if ( ( field_40 & 1 ) && event->field_00 >= 1 && event->field_00 <= 7 )
 	{

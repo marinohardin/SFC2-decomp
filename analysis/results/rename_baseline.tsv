@@ -1,0 +1,5 @@
+address	base symbol	new symbol
+0x004c8587	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x005e4089	?vfunction30@tMetaMapControl@@QAEXXZ	?vfunction30@tMetaMapControl@@UAEXXZ
+0x005e4470	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x0067dd00	?vfunction31@tVisGroup@@UAE_NPAH@Z	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z

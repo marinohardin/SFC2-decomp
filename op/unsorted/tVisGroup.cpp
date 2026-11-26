@@ -32,12 +32,12 @@ void tVisGroup::vfunction40()
 }
 
 // FUNCTION: STARFLEETOP 0x0067dd00
-bool tVisGroup::vfunction31( int *event )
+bool tVisGroup::vfunction31( c_tListBox_Base_Event *event )
 {
-	if ( *event == 0x15 )
+	if ( event->field_00 == 0x15 )
 	{
-		if ( field_68.fn_0067f010( this, event + 1 ) )
+		if ( field_68.fn_0067f010( this, &event->field_04 ) )
 			return true;
 	}
-	return fn_0067d1c0( event );
+	return tObjBase::vfunction31( event );
 }
