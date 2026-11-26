@@ -34,3 +34,14 @@ void tObjBase::vfunction32( const tRect *area )
 	if ( field_0C )
 		field_0C->vfunction32( area );
 }
+
+// FUNCTION: STARFLEETOP 0x0067cc10
+void tObjBase::vfunction33( tRect *area )
+{
+	if ( field_40 & 1 )
+	{
+		area->fn_006985f0( &field_34 );
+		for ( tVisObject *child = field_24; child; child = child->field_04 )
+			child->vfunction33( area );
+	}
+}

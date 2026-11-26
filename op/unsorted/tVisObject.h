@@ -37,6 +37,8 @@ struct tRect
 		bottom	= (short)ey;
 	};
 	inline tRect( const tRect &T ) { left = T.left; top = T.top; right = T.right; bottom = T.bottom; }
+	// 0x006985f0: takes the rectangle given into this one.
+	void fn_006985f0( const tRect *r );
 	inline void mSet( int sx, int sy, int ex, int ey )
 	{
 		left	= (short)sx;
