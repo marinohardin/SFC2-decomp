@@ -389,6 +389,30 @@ def test_claim_resets_a_claim_row_that_is_no_longer_claimed_but_only_without_add
     assert ROW_PLAIN in table.read_text()
 
 
+def test_claim_refuses_a_build_of_another_tree_and_changes_nothing(tmp_path, capsys):
+    table, _ = setup(tmp_path)
+    build, src = build_folder(tmp_path)
+    (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid g() {}\n')   # edited since
+    rc, out = claim_run(tmp_path, capsys, '--replace-evidence')
+    assert (rc, out) == (1, 'ERROR the last build was not made from the current source tree: its '
+                            'symbols are not claimed (run harness/build-and-verify.sh --all first)\n')
+    assert table.read_bytes() == GOOD.encode()
+    (build / 'symbols.id').unlink()                 # no identity: the same
+    rc, out = claim_run(tmp_path, capsys, '--replace-evidence')
+    assert rc == 1 and 'not made from the current source tree' in out
+
+
+def test_claim_from_a_single_run_output_does_not_need_the_builds_identity(tmp_path, capsys):
+    table, _ = setup(tmp_path)
+    build, src = build_folder(tmp_path)
+    (build / 'symbols.id').unlink()                 # the folder's record is not what is read
+    res = tmp_path / 'run.json'
+    res.write_text('{"results": [{"address": "0x00401000", "symbol": "?Fire@tTestShip@@QAEHXZ", '
+                   '"unit": "a.cpp"}]}')
+    rc, out = claim_run(tmp_path, capsys, '--results', str(res), '--replace-evidence')
+    assert rc == 0 and '(mangled) -> ?Fire@tTestShip@@QAEHXZ (claim)' in out
+
+
 def test_claim_refuses_a_missing_build_and_an_address_the_build_lacks(tmp_path, capsys):
     setup(tmp_path)
     rc, out = claim_run(tmp_path, capsys)

@@ -511,6 +511,10 @@ def read_result_symbols(path):
     return {a: sym for a, sym, _ in verify.symbol_table_rows(results)}
 
 
+STALE_BUILD = ('ERROR the last build was not made from the current source tree: its symbols are not '
+               'claimed (run harness/build-and-verify.sh --all first)')
+
+
 def cmd_claim(a):
     table = a.table or default_table()
     build, src_root = a.build, a.src_root
@@ -529,6 +533,11 @@ def cmd_claim(a):
             return 0
     else:
         built = read_build_symbols(build)
+        if built is not None:
+            from harness.lib import symtab
+            if not symtab.build_is_current(build, src_root):
+                print(STALE_BUILD)
+                return 1
     if built is None:
         print(f'ERROR no symbols.tsv in {build}: run harness/build-and-verify.sh --all first')
         return 1

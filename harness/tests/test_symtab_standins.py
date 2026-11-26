@@ -206,3 +206,9 @@ def test_an_identity_that_cannot_be_removed_is_an_error(tmp_path, monkeypatch):
     with pytest.raises(OSError):
         symtab.remove_identity(str(tmp_path))
     symtab.remove_identity(str(tmp_path / 'empty'))     # nothing to remove: fine
+
+
+def test_an_identity_failure_other_than_not_found_propagates(tmp_path):
+    (tmp_path / 'symbols.id').mkdir()               # os.remove fails on a directory, not "not found"
+    with pytest.raises(OSError):
+        symtab.remove_identity(str(tmp_path))

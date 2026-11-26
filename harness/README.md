@@ -494,7 +494,10 @@ its unit compiled for it and the claiming file (`lib/symtab.py`), and beside it 
 a hash of every file under the source root the run saw (a run that failed removes it). `tools/symbols.py
 check` compares the table with `symbols.tsv` only when `symbols.id` equals the hash of the tree it is
 checking; a build folder left by another commit (a CI runner's, between runs) gives an `INFO` line and
-no comparison, so a stale record can neither fail nor pass a check. `scripts/check.sh` runs `check`
+no comparison, so a stale record can neither fail nor pass a check. `tools/symbols.py claim` asks the
+same question and refuses (exit 1, "run `--all` first") when the build folder is not of the current tree; with `--results` (the
+symbols of one run's own output, as the loop's `symsync` uses it) the folder is not read, so no identity applies. `landing.sh` names
+which of three it was: a refused replacement of a `mangled`/`add` symbol, a stale build, or another failure (printed as it came). `scripts/check.sh` runs `check`
 before the rebuild (format and coverage) and again after it, when the comparison is this tree's. With `functions.csv`'s mangled
 names and single SDK labels it answers, for an original address, which symbol a call to it must
 name; `python3 -m harness.lib.symtab [<address>...]` prints the rows with the calling convention.
