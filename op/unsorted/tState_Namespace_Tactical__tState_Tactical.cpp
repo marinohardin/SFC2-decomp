@@ -507,6 +507,12 @@ void tState_Tactical::fn_004aba4f()
 	field_46c = name;
 }
 
+// FUNCTION: STARFLEETOP 0x004adc4c
+char *tState_Tactical::vfunction13()
+{
+	return "tactical";
+}
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
