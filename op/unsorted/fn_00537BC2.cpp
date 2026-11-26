@@ -64,7 +64,7 @@ void __stdcall fn_00736273(void* self, unsigned size, int count, void (__fastcal
 // HYPOTHESIS: vector deleting destructor of an unknown 0x18-byte class (destructor 0x004afa40);
 // the class is not in a header, so it is written as a free function
 // FUNCTION: STARFLEETOP 0x00537c73
-void __fastcall fn_00537c73(void* self, int, unsigned char flags)
+void* __fastcall fn_00537c73(void* self, int, unsigned char flags)
 {
     if (flags & 2) {
         int* base = (int*)self - 1;
@@ -72,10 +72,11 @@ void __fastcall fn_00537c73(void* self, int, unsigned char flags)
         if (flags & 1) {
             operator delete(base);
         }
-    } else {
-        fn_004afa40(self);
-        if (flags & 1) {
-            operator delete(self);
-        }
+        return base;
     }
+    fn_004afa40(self);
+    if (flags & 1) {
+        operator delete(self);
+    }
+    return self;
 }

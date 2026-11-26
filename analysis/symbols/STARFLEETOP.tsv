@@ -8987,7 +8987,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00537bd8	function	fn_00537bd8		?fn_00537bd8@@YIXPAH@Z	claim		none
 0x00537bfd	function	fn_00537bfd		?fn_00537bfd@@YIXPAH@Z	claim		none
 0x00537c4a	function	fn_00537c4a		??0tBitmapFontEx@@QAE@XZ	claim		none
-0x00537c73	function	fn_00537c73		?fn_00537c73@@YIXPAXHE@Z	claim		none
+0x00537c73	function	fn_00537c73		?fn_00537c73@@YIPAXPAXHE@Z	claim		none
 0x00537cbe	function	fn_00537cbe					none
 0x00537cf5	function	fn_00537cf5	tBitmapFontEx				vtable
 0x00537d0f	function	fn_00537d0f	tBitmapFontEx				vtable
