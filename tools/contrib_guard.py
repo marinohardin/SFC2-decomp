@@ -11,8 +11,10 @@ each reason, when the pull request (the changes from the merge base of <base> an
   under op/ that is not source (.cpp, .h, .inl: the suffixes op/ holds);
 - changes a symlink, a submodule or a file mode, or adds a binary file or one over 256 KB;
 - adds an #include that is absolute, names a drive letter, uses `..` to leave op/ (a quoted
-  one) or at all (an angle-bracket one), or names no file (a macro), or adds an #import, a #line, a #pragma include_alias, or a #pragma or _Pragma
-  holding a quoted string (a path the compiler could open);
+  one) or at all (an angle-bracket one), or names no file (a macro), or adds an #import, a #line,
+  a #pragma include_alias, or a #pragma or _Pragma holding a quoted string (a path the compiler
+  could open). Comments are removed before matching, and a # after a comment that closes on
+  its line is refused;
 - adds a line ending in a backslash: a splice can join a line to the next one past every check
   here, so a contributor writes a multi-line macro on one line, or asks the maintainer;
 - adds, changes or removes a `// FUNCTION:`, `// STUB:` or `// VTABLE:` address outside its
@@ -116,11 +118,51 @@ def diff_lines(cwd, mb, head, path):
     return added, removed
 
 
+def strip_comments(line):
+    """(code, closes): the line with each comment replaced by a space, as the preprocessor
+    does, and whether a comment opened on an earlier line ends on it. Text inside string and
+    character literals is kept; an unclosed /* drops the rest of the line."""
+    out, i, quote, closes = [], 0, None, False
+    while i < len(line):
+        c, two = line[i], line[i:i + 2]
+        if quote:
+            out.append(c)
+            if c == '\\' and i + 1 < len(line):
+                out.append(line[i + 1])
+                i += 1
+            elif c == quote:
+                quote = None
+        elif c in '"\'':
+            quote = c
+            out.append(c)
+        elif two == '//':
+            break
+        elif two == '/*':
+            end = line.find('*/', i + 2)
+            out.append(' ')
+            if end < 0:
+                break
+            i = end + 1
+        elif two == '*/':
+            # Closes a comment opened on an earlier line: what came before was comment.
+            out, closes = [' '], True
+            i += 1
+        else:
+            out.append(c)
+        i += 1
+    return ''.join(out), closes
+
+
 def include_problem(path, line):
-    """Why an added line is refused, or None."""
+    """Why an added line is refused, or None. Directives are matched on the line with its
+    comments removed, so `/**/#include` or `#/**/include` are seen as the preprocessor sees them."""
     if line.rstrip('\r').endswith('\\'):
         return ('adds a line ending in a backslash (a line splice); write a multi-line macro on '
                 'one line in a contributor pull request, or ask the maintainer')
+    line, closes = strip_comments(line)
+    if closes and '#' in line:
+        return ('adds a # after a comment that ends on its line; write the directive on a line '
+                'of its own')
     if IMPORT.match(line):
         return 'adds an #import'
     if LINE_DIRECTIVE.match(line):

@@ -331,3 +331,26 @@ def test_dot_dot_in_an_angle_include_fails_anywhere(tmp_path):
         "op/unsorted/a.cpp: adds an #include <...> with '..': '../Common/x.h'",
         "op/unsorted/a.cpp: adds an #include <...> with '..': 'sys/../types.h'",
     ]
+
+
+def test_comments_around_a_directive_do_not_hide_it(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n'
+           '/**/#include "/etc/passwd"\n'
+           '#/**/include "/etc/passwd"\n'
+           '# /**/ import "x.tlb"\n'
+           '/* */ #pragma include_alias("a","b")\n'
+           '/* a comment\n'
+           '   that closes here */ #include "/etc/passwd"\n'
+           '//#include "/etc/passwd"\n'
+           'int x; /* fine */ // #include "/etc/passwd"\n'
+           'void f() {}\n')
+    _commit(repo)
+    assert _check(repo).failures == [
+        "op/unsorted/a.cpp: adds an absolute #include: '/etc/passwd'",
+        "op/unsorted/a.cpp: adds an absolute #include: '/etc/passwd'",
+        'op/unsorted/a.cpp: adds an #import',
+        "op/unsorted/a.cpp: adds a #pragma that can name a file: '#pragma include_alias(\"a\",\"b\")'",
+        'op/unsorted/a.cpp: adds a # after a comment that ends on its line; write the directive '
+        'on a line of its own',
+    ]
