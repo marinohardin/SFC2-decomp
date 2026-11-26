@@ -18080,7 +18080,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006893c0	function	fn_006893c0					none
 0x00689480	function	fn_00689480					none
 0x00689590	function	fn_00689590					none
-0x006896d0	function	tTableAsset::tTableAsset	tTableAsset				rtti
+0x006896d0	function	tTableAsset::tTableAsset	tTableAsset	??0tTableAsset@@QAE@XZ	claim		rtti
 0x00689720	function	tTableAsset::scalar_deleting_destructor	tTableAsset				rtti
 0x00689740	function	tAsset::~tAsset	tAsset				rtti
 0x006897e0	function	fn_006897e0	tTableAsset				vtable
