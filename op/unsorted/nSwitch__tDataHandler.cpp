@@ -105,3 +105,9 @@ tSmartPtr<nSwitch::tAddress> nSwitch::tDataHandler::fn_slot7( void )
 	nSwitch::tSwitch::fn_00713b20();
 	return f_ac;
 }
+
+// FUNCTION: STARFLEETOP 0x0071d1f0
+tSmartPtr<nSwitch::tAddress> nSwitch::tDataHandler::fn_slot9( void )
+{
+	return f_ac.Get();
+}
