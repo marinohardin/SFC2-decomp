@@ -74,3 +74,9 @@ void tBaseWeapon::vfunction54(int param_1)
         vfunction62();
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d7304
+int tBaseWeapon::vfunction108()
+{
+    return field_104 + 1;
+}
