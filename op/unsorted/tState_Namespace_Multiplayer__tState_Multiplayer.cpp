@@ -48,3 +48,52 @@ int tState_Multiplayer::fn_0046f24b( int param_1 )
 	}
 	return param_1;
 }
+
+#include "unsorted/tObject_0092deb4.h"
+#include "unsorted/tApplication.h"
+
+long fn_004d33a8( long arg1, long arg2 );
+
+// FUNCTION: STARFLEETOP 0x00470b59
+void tState_Multiplayer::fn_00470b59( unsigned char param_1 )
+{
+	if ( param_1 > 0 )
+	{
+		do
+		{
+			if ( field_d90 == 4 )
+			{
+				field_d90 = 0;
+				fn_004d33a8( 0x10063, 0 );
+			}
+			else if ( field_d90 == 3 )
+			{
+				field_d90 = 4;
+				fn_004d33a8( 0x10063, 3 );
+			}
+			else if ( field_d90 == 2 )
+			{
+				field_d90 = 3;
+				fn_004d33a8( 0x10063, 2 );
+			}
+			else if ( field_d90 == 0 )
+			{
+				field_d90 = 2;
+				fn_004d33a8( 0x10063, 1 );
+			}
+			tShipUI *p = &field_e64;
+			// MATCH-ONLY: the callee takes four words (ret 0x10); tShipUI.h declares three.
+			void ( tShipUI::*f )( int, int, int, int ) = (void ( tShipUI::* )( int, int, int, int ))&tShipUI::fn_004cd1db;
+			( p->*f )( gObject_0092deb4->vfunction39(), field_d90, (int)"HULL_TEMPLATE", field_0c );
+			do
+			{
+				if ( fn_00473049( &p->m_0c[ p->m_100c ] ) )
+					break;
+				p->fn_004cd2f6();
+			} while ( field_e64.m_100c != 0 );
+			if ( fn_00473049( &p->m_0c[ p->m_100c ] ) )
+				return;
+			param_1--;
+		} while ( param_1 != 0 );
+	}
+}
