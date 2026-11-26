@@ -1551,7 +1551,7 @@
   },
   "0x0040bdb1": {
    "name": "tMouseMgr_Ex::~tMouseMgr_Ex",
-   "symbol": "??1fn_0040bdbb@@UAE@XZ",
+   "symbol": "??1tMouseMgr_Ex@@UAE@XZ",
    "unit": "unsorted/tMouseMgr_Base.cpp",
    "size": 66,
    "score": 100.0,
