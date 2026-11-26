@@ -8,6 +8,9 @@
 
 class tBmpSurf;
 class tTexInfo;
+class tMatrix;
+struct tPoint2;
+struct tPoint3;
 struct tagRECT;
 typedef tagRECT RECT;
 
@@ -44,18 +47,18 @@ public:
 	virtual int vfunction10();
 	virtual bool vfunction11();
 	virtual bool vfunction12();
-	virtual void vfunction13(void (*)(), void *);    // +0x30
-	virtual void vfunction14();
-	virtual void vfunction15(void (*)(), void *);    // +0x38
-	virtual void vfunction16();
+	virtual void (*vfunction13(void (*)(), void *))();    // +0x30
+	virtual void (*vfunction14())();
+	virtual void (*vfunction15(void (*)(), void *))();    // +0x38
+	virtual void (*vfunction16())();
 	virtual void vfunction17(int, int, int, int);
-	virtual void vfunction18();
-	virtual void vfunction19();
-	virtual void vfunction20();
-	virtual void vfunction21();
-	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	virtual void vfunction18(int *, int *, int *, int *);
+	virtual int vfunction19(int);
+	virtual int vfunction20();
+	virtual int vfunction21(int);
+	virtual int vfunction22();
+	virtual int vfunction23(int);
+	virtual int vfunction24();
 	virtual int vfunction25(int);
 	virtual int vfunction26();
 	virtual bool vfunction27(unsigned char, unsigned char, unsigned char);
@@ -63,22 +66,22 @@ public:
 	virtual bool vfunction29(int, int, int, int, bool, bool);
 	virtual bool vfunction30(bool, bool);
 	virtual bool vfunction31();
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
+	virtual int vfunction32();
+	virtual void vfunction33(unsigned int, const void *);
+	virtual void vfunction34(unsigned int, void *);
 	virtual void vfunction35(fn_0040105e_Vector *);    // +0x88
-	virtual void vfunction36();
-	virtual void vfunction37();
-	virtual void vfunction38();
-	virtual void vfunction39();
+	virtual fn_0040105e_Vector *vfunction36();
+	virtual bool vfunction37(bool);
+	virtual bool vfunction38();
+	virtual bool vfunction39(unsigned int, bool);
 	virtual void vfunction40();
 	virtual void vfunction41();
 	virtual void vfunction42();
 	virtual int vfunction43();
 	virtual void vfunction44();
-	virtual void vfunction45();
-	virtual void vfunction46();
-	virtual void vfunction47();
+	virtual void vfunction45(float);
+	virtual float vfunction46();
+	virtual bool vfunction47(bool);
 	virtual bool vfunction48(bool);
 	virtual bool vfunction49(bool);
 	virtual bool vfunction50(bool);
@@ -86,33 +89,33 @@ public:
 	virtual void vfunction52();
 	virtual void vfunction53();
 	virtual void vfunction54();
-	virtual void vfunction55();
-	virtual void vfunction56();
-	virtual void vfunction57();
-	virtual void vfunction58();
-	virtual void vfunction59();
-	virtual void vfunction60();
-	virtual void vfunction61();
+	virtual void vfunction55(tMatrix *);
+	virtual tMatrix *vfunction56();
+	virtual void vfunction57(tPoint3 *);
+	virtual void vfunction58(tMatrix *);
+	virtual tMatrix *vfunction59();
+	virtual void vfunction60(tMatrix *);
+	virtual tMatrix *vfunction61();
 	virtual void vfunction62(float, float, float);    // +0xf4
-	virtual void vfunction63();
+	virtual void vfunction63(float, float, float, float, float, float);
 	virtual void vfunction64(float, float);    // +0xfc
-	virtual void vfunction65();
-	virtual void vfunction66();
-	virtual void vfunction67();
-	virtual void vfunction68();
+	virtual void vfunction65(tMatrix *, float, float, float);
+	virtual void vfunction66(tMatrix *, float, float);
+	virtual void vfunction67(tMatrix *, float, float, float, float, float, float);
+	virtual bool vfunction68(int);
 	virtual void vfunction69();
-	virtual void vfunction70();
-	virtual void vfunction71();
-	virtual void vfunction72();
-	virtual void vfunction73();
-	virtual void vfunction74();
-	virtual void vfunction75();
-	virtual void vfunction76();
-	virtual void vfunction77();
-	virtual void vfunction78();
-	virtual void vfunction79();
-	virtual void vfunction80();
-	virtual void vfunction81();
+	virtual void vfunction70(float, float, float);
+	virtual void vfunction71(tPoint3 *);
+	virtual void vfunction72(float, float, float);
+	virtual void vfunction73(tPoint3 *);
+	virtual void vfunction74(float, float);
+	virtual void vfunction75(tPoint2 *);
+	virtual void vfunction76(unsigned int);
+	virtual void vfunction77(float, float, float);
+	virtual void vfunction78(unsigned int);
+	virtual void vfunction79(int, int);
+	virtual void vfunction80(void *);
+	virtual void vfunction81(int, void **, bool);
 	virtual bool vfunction82(void (__stdcall *)(void *, int), int);
 	virtual tTexInfo *vfunction83(int, void *, int, int, int);
 	virtual tTexInfo *vfunction84(int);

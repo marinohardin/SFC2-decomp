@@ -6,13 +6,13 @@
 
 #include "unsorted/tView3DExt.h"
 
-// HYPOTHESIS: the layout below assumes tView3DExt ends at 0x1f4c. Its own code touches members up
-// to 0x1f48 (0x006aa6e0 to 0x006aa790) and tSWView3D's first member is the rectangle at 0x1f4c;
-// the sibling tD3DViewMgr also starts its own members there.
-// The vtable is 0x007b8f38, 100 slots: slots 0 to 85 are tView3D's, 86 to 96 tView3DExt's, and
-// 97 to 99 (vfunction98 to vfunction100) are added here, so tView3DExt must declare
-// vfunction87 to vfunction97 for the three below to land on the right slots. The allocation
-// 0x0069fd44 (operator new of 0x5fc8 bytes, then the constructor 0x0069f3b0) gives the size.
+// The layout below puts tSWView3D's first member at 0x1f4c, where tView3DExt ends (its own code
+// touches members up to 0x1f48, 0x006aa6e0 to 0x006aa790; the sibling tD3DViewMgr also starts
+// its own members there). The vtable is 0x007b8f38, 100 slots: slots 0 to 96 are tView3D's and
+// tView3DExt's, and 97 to 99 (vfunction98 to vfunction100, declared pure in tView3DExt) are
+// implemented here. The allocation 0x0069fd44 (operator new of 0x5fc8 bytes, then the
+// constructor 0x0069f3b0) gives the size. Slots 85 and 95 hold a shared "return 0" function
+// (0x0069f470) in tView3DExt and slot 85 is this class's 0x0069f480 (see below).
 //
 // Slots this class overrides in the exe but this header cannot declare, because tView3D keeps
 // the signature another unit already uses for the same slot:
