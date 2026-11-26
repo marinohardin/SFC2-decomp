@@ -144,3 +144,9 @@ char tBaseWeapon::vfunction140()
     }
     return field_110;
 }
+
+// FUNCTION: STARFLEETOP 0x004d7378
+void tBaseWeapon::vfunction141(char param_1)
+{
+    field_110 = param_1;
+}

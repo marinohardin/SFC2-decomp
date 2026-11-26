@@ -6421,7 +6421,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d7354	function	fn_004d7354	tBaseWeapon	?vfunction139@tBaseWeapon@@UAEPAXXZ	claim		vtable
 0x004d735b	function	fn_004d735b	tBaseWeapon	?vfunction66@tBaseWeapon@@UAEDXZ	claim		vtable
 0x004d7362	function	fn_004d7362	tBaseWeapon	?vfunction140@tBaseWeapon@@UAEDXZ	claim		vtable
-0x004d7378	function	fn_004d7378	tBaseWeapon				vtable
+0x004d7378	function	fn_004d7378	tBaseWeapon	?vfunction141@tBaseWeapon@@UAEXD@Z	claim		vtable
 0x004d7385	function	tBaseWeapon::scalar_deleting_destructor	tBaseWeapon				rtti
 0x004d73a1	function	tTRBeam::~tTRBeam	tTRBeam				rtti
 0x004d7402	function	fn_004d7402	tBaseWeapon	?vfunction101@tBaseWeapon@@UAEHHH@Z	claim		none
