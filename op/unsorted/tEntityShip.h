@@ -10,6 +10,7 @@
 #include "unsorted/tShipSpecs.h"
 
 class tCloakSystem;
+class tSensorGroupSystem;
 
 // HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
 // three floats from it, at 0x18, 0x1c and 0x20.
@@ -69,7 +70,10 @@ public:
 	virtual void vfunction74(); virtual void vfunction75(); virtual void vfunction76();
 	virtual void vfunction77(); virtual void vfunction78(); virtual void vfunction79();
 	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
-	virtual void vfunction83(); virtual void vfunction84(); virtual void vfunction85();
+	virtual void vfunction83();
+	// HYPOTHESIS: returns the ship's sensor group; 0x00415ff4 calls 0x0043eca6 on it.
+	virtual tSensorGroupSystem *vfunction84();
+	virtual void vfunction85();
 	virtual tObject_00416d41_list *vfunction86();
 	virtual void vfunction87(); virtual void vfunction88(); virtual void vfunction89();
 	virtual void vfunction90(); virtual void vfunction91(); virtual void vfunction92();
@@ -180,7 +184,8 @@ public:
 	virtual void vfunction69(int param_1);
 	// HYPOTHESIS: returns the dword at 0x878.
 	virtual int vfunction70();
-	virtual int vfunction71(tID aID);
+	// HYPOTHESIS: takes an entity (0x00415ff4 reads its ID at 0x1c and looks it up).
+	virtual int vfunction71(tEntity *aEntity);
 	// HYPOTHESIS: copies a tPoint3 (three dwords) from the entity table's record for the ID at
 	// 0x194 to the address given; 0x00417b2a pops 8 bytes, so it takes a second argument.
 	virtual tPoint3 vfunction72(int param_1);

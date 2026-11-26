@@ -19,6 +19,7 @@ struct tNetMsg;
 #include "unsorted/tNetControl.h"
 #include "unsorted/tAICaptain.h"
 #include "unsorted/fn_0090bed4_Object.h"
+#include "unsorted/tSensorGroupSystem.h"
 
 extern float g_008e0cd4[];
 extern tEntityMgr g_008e1060;
@@ -341,6 +342,33 @@ float tEntityShip::vfunction63()
 	if (field_a40 == 7 || field_a40 == 8)
 		return 0.0f;
 	return field_8a4 / vfunction55();
+}
+
+// HYPOTHESIS: a grade for the entity given, 0xd meaning none; while the ship's ID is switched to
+// the entity's, the sensor group's answer for 0 is added, capped at 0xc.
+// FUNCTION: STARFLEETOP 0x00415ff4
+int tEntityShip::vfunction71(tEntity *aEntity)
+{
+	tID id = vfunction12();
+	int result = 0;
+	tEntity *entity = g_008e1060.fn_004249c0(aEntity);
+	if (entity)
+	{
+		result = ((tEntityShip *)entity)->vfunction70();
+		if (result != 0xd)
+		{
+			vfunction13(aEntity->fID);
+			tSensorGroupSystem *sensors = field_ad4->vfunction84();
+			if (sensors)
+			{
+				result += sensors->fn_0043eca6(0);
+				if (result > 0xc)
+					result = 0xc;
+			}
+			vfunction13(id);
+		}
+	}
+	return result;
 }
 
 // FUNCTION: STARFLEETOP 0x004162b9

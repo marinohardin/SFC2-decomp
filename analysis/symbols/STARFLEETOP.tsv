@@ -822,7 +822,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00415b6b	function	fn_00415b6b	tEntityShip	?vfunction63@tEntityShip@@UAEMXZ	claim		vtable
 0x00415b96	function	fn_00415b96					none
 0x00415e63	function	fn_00415e63	tEntityShip				vtable
-0x00415ff4	function	fn_00415ff4	tEntityShip				vtable
+0x00415ff4	function	fn_00415ff4	tEntityShip	?vfunction71@tEntityShip@@UAEHPAVtEntity@@@Z	claim		vtable
 0x00416067	function	fn_00416067	tEntityShip				vtable
 0x00416085	function	fn_00416085					none
 0x004160c2	function	fn_004160c2					none
