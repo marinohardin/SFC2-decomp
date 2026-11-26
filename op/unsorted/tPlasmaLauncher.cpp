@@ -97,6 +97,52 @@ float tPlasmaLauncher::vfunction142(char param_1, unsigned char param_2)
     return result;
 }
 
+// FUNCTION: STARFLEETOP 0x004e7869
+float tPlasmaLauncher::vfunction143(char param_1, unsigned char param_2)
+{
+    if (param_1 != -1 && (param_1 < field_e8 || param_1 >= vfunction106()))
+        return 0.0f;
+    float result = 0.0f;
+    switch (field_10c)
+    {
+    case 0:
+        if (field_fc != 0)
+            return 4.66f;
+        goto L_three;
+    case 1:
+        if (field_fc == 0)
+            result = 2.66f;
+        else
+            result = 4.0f;
+        break;
+    case 2:
+        if (field_fc == 0)
+            result = 2.33f;
+        else
+            result = 3.33f;
+        break;
+    case 3:
+        if (field_f8 != 3)
+            goto L_twofive;
+        goto L_one67;
+    case 4:
+    L_one67:
+        result = 1.67f;
+        break;
+    case 5:
+        result = 0.0f;
+        break;
+    case 6:
+    L_three:
+        result = 3.0f;
+        break;
+    case 7:
+    L_twofive:
+        result = 2.5f;
+    }
+    return result;
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
