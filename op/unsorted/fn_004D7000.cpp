@@ -8,6 +8,7 @@ struct fn_004d703f_Array
 
     void fn_004d703f();
     float fn_004d707c(unsigned char index);
+    unsigned char fn_004d7099(float value);
 };
 
 void fn_004d8999(void* first, void* last, int arg);
@@ -26,4 +27,18 @@ float fn_004d703f_Array::fn_004d707c(unsigned char index)
     if (index < m_count)
         return *(float*)m_items[index];
     return 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7099
+unsigned char fn_004d703f_Array::fn_004d7099(float value)
+{
+    unsigned char i = 0;
+    if (m_count <= 0)
+        return 0xff;
+    while (value > *(float*)m_items[i]) {
+        i++;
+        if (i >= m_count)
+            return 0xff;
+    }
+    return i;
 }
