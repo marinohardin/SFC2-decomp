@@ -4900,7 +4900,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ab4c3	function	fn_004ab4c3		?fn_004ab4c3@@YIXPAHH0@Z	claim		none
 0x004ab4f3	function	fn_004ab4f3		?fn_004ab4f3@@YAXPAM@Z	claim		none
 0x004ab5c6	function	fn_004ab5c6		?fn_004ab5c6@@YAXPAM@Z	claim		none
-0x004ab699	function	fn_004ab699					none
+0x004ab699	function	fn_004ab699		?fn_004ab699@@YAXPAE@Z	claim		none
 0x004ab6bc	function	fn_004ab6bc					none
 0x004ab70a	function	fn_004ab70a	tState_Namespace_Tactical::tState_Tactical	?vfunction4@tState_Tactical@tState_Namespace_Tactical@@UAE_NXZ	claim		none
 0x004aba3c	function	fn_004aba3c					none

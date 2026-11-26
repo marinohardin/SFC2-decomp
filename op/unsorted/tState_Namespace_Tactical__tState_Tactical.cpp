@@ -267,6 +267,16 @@ void __cdecl fn_004ab5c6( float *rgb )
 	g_009186c3 = 0xff;
 }
 
+// FUNCTION: STARFLEETOP 0x004ab699
+void __cdecl fn_004ab699( unsigned char *rgba )
+{
+	rgba[2] = g_009186c2;
+	rgba[1] = g_009186c1;
+	unsigned char r = g_009186c0;
+	rgba[3] = 0xff;
+	rgba[0] = r;
+}
+
 namespace tState_Namespace_Tactical
 {
 
