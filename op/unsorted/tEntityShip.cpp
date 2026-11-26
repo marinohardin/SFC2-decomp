@@ -112,6 +112,14 @@ int tEntityShip::fn_00414d69()
 	return field_a94;
 }
 
+// FUNCTION: STARFLEETOP 0x00414d70
+void tEntityShip::vfunction17()
+{
+	if (fField5C == 1)
+		field_ad4->vfunction113(1.0f);
+	tEntity::vfunction17();
+}
+
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()

@@ -81,7 +81,9 @@ public:
 	virtual void vfunction102(); virtual void vfunction103(); virtual void vfunction104();
 	virtual void vfunction105(); virtual void vfunction106(); virtual void vfunction107();
 	virtual void vfunction108(); virtual void vfunction109(); virtual void vfunction110();
-	virtual void vfunction111(); virtual void vfunction112(); virtual void vfunction113();
+	virtual void vfunction111(); virtual void vfunction112();
+		// HYPOTHESIS: takes a float (0x00414d70 passes 1.0).
+		virtual void vfunction113(float aValue);
 	virtual void vfunction114(); virtual void vfunction115(); virtual void vfunction116();
 	virtual void vfunction117(); virtual void vfunction118(); virtual void vfunction119();
 	virtual void vfunction120(); virtual void vfunction121(); virtual void vfunction122();
