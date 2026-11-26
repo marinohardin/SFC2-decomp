@@ -67,6 +67,7 @@ public:
 	int fn_005e8efe();
 	int fn_005e8f02( const tHexPoint& position );
 	int fn_005e8f25();
+	int fn_005e8f29();
 };
 long __fastcall fn_005c7fb3( char* param_1 );
 long __fastcall fn_005c7fb7( class tCurrentTime* param_1 );
@@ -188,4 +189,10 @@ long tHexPoint::fn_005e8f21() const
 int fn_005e89fd_layout::fn_005e8f25()
 {
 	return *(int*)( (char*)this + 0x14 );
+}
+
+// FUNCTION: STARFLEETOP 0x005e8f29
+int fn_005e89fd_layout::fn_005e8f29()
+{
+	return *(int*)( (char*)this + 0x20 );
 }
