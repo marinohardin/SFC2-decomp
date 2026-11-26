@@ -67,6 +67,8 @@ public:
 	virtual void v7();
 	virtual void v8();
 	virtual void v9();
+	virtual void v10();
+	virtual void *v11();
 };
 
 extern char *g_008846b4;
@@ -213,6 +215,41 @@ bool tSWView3D::vfunction6()
 	field_5fac = 0;
 	field_5fb0 = 0;
 	return true;
+}
+
+// HYPOTHESIS: the surface objects behind field_5fa8; only the slots 0x0069f990 calls are named.
+class fn_0069f990_Surface {
+public:
+	virtual void v0();
+	virtual void v1();
+	virtual void v2();
+	virtual void v3();
+	virtual void v4();
+	virtual void v5();
+	virtual void v6();
+	virtual bool v7();
+	virtual void *v8();
+	virtual void *v9();
+	virtual void *v10();
+	virtual unsigned char *v11();
+};
+
+// FUNCTION: STARFLEETOP 0x0069f990
+bool tSWView3D::vfunction11()
+{
+	field_5fa8 = ((fn_0069f510_Device *)field_1f68)->v11();
+	if (field_0x1edc)
+		((void (*)(void *, void *))field_0x1edc)(field_5fa8, field_0x1ee0);
+	if (field_5fa8) {
+		if (((fn_0069f990_Surface *)field_5fa8)->v7()) {
+			field_5fac = (int)((fn_0069f990_Surface *)field_5fa8)->v10();
+			field_5fb0 = ((fn_0069f990_Surface *)field_5fa8)->v11();
+		} else {
+			field_5fac = 0;
+			field_5fb0 = 0;
+		}
+	}
+	return false;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb90
