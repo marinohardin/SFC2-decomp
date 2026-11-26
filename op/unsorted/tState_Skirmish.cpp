@@ -105,3 +105,28 @@ void tState_Skirmish::vfunction22()
 	gObject_0090b730.fn_0060ca42( 1 );
 	gObject_0092deb4->vfunction9();
 }
+
+#include "unsorted/tNetControl.h"
+#include "Source/network/NetMsgClass.h"
+
+// HYPOTHESIS: layout from the constructor stores (a word at 4, a byte at 8); no header declares this message yet.
+struct tNetMsg_kSetPlayerReady : public tNetMsg
+{
+	tNetMsg_kSetPlayerReady() { fField4 = 1; fField8 = 1; }
+	virtual const tNetMsg::tMapItem *mGetMap(void) const;
+	long fField4;
+	unsigned char fField8;
+};
+
+// HYPOTHESIS: the object fn_0060e11e returns; fn_0060C000.cpp declares the same class locally.
+C_0060e11e *fn_0060e11e();
+
+// FUNCTION: STARFLEETOP 0x00480152
+void tState_Skirmish::vfunction20()
+{
+	C_0060e11e *p = fn_0060e11e();
+	vfunction21();
+	fn_00480677( p );
+	tNetMsg_kSetPlayerReady msg;
+	gNetControl.mQueueMsg(&msg, 0x29, -1, -1.0);
+}

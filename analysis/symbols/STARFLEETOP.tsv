@@ -3965,12 +3965,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047ffe0	function	fn_0047ffe0		?fn_0047ffe0@tState_Skirmish@@QAEXXZ	claim		none
 0x00480016	function	fn_00480016	tState_Skirmish	?vfunction4@tState_Skirmish@@UAE_NXZ	claim		vtable
 0x004800f2	function	fn_004800f2	tState_Skirmish	?vfunction22@tState_Skirmish@@UAEXXZ	claim		vtable
-0x00480152	function	fn_00480152	tState_Skirmish				vtable
+0x00480152	function	fn_00480152	tState_Skirmish	?vfunction20@tState_Skirmish@@UAEXXZ	claim		vtable
 0x004801a5	function	fn_004801a5	tState_Skirmish				vtable
 0x004802f4	function	fn_004802f4					none
 0x004804c5	function	fn_004804c5					none
 0x00480672	thunk	tMetaLocationSpec::~tMetaLocationSpec	tMetaLocationSpec				sdk
-0x00480677	function	fn_00480677					none
+0x00480677	function	fn_00480677		?fn_00480677@tState_Skirmish@@QAEXPAVC_0060e11e@@@Z	add		none
 0x004807e7	function	fn_004807e7					none
 0x00480abf	function	nDataStore::tStreamable::~tStreamable	nDataStore::tStreamable				rtti
 0x00480ba3	function	fn_00480ba3	tState_Skirmish				vtable
