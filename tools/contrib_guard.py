@@ -101,8 +101,13 @@ def diff_lines(cwd, mb, head, path):
     """The (added, removed) lines of one file's diff."""
     out = git(cwd, 'diff', '-U0', '--no-renames', mb, head, '--', path, binary=True)
     added, removed = [], []
+    header = True   # a file's header lines come before its first @@; +++ and --- are only there
     for raw in out.decode('utf-8', 'replace').split('\n'):
-        if raw.startswith('+++') or raw.startswith('---'):
+        if raw.startswith('diff --git '):
+            header = True
+        elif raw.startswith('@@'):
+            header = False
+        if header:
             continue
         if raw.startswith('+'):
             added.append(raw[1:])

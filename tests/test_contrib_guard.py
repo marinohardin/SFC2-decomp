@@ -304,3 +304,16 @@ def test_only_source_files_under_op_may_change(tmp_path):
         'op/unsorted/a.hpp: not a source file (.cpp, .h, .inl)',
         'op/unsorted/build.py: not a source file (.cpp, .h, .inl)',
     ]
+
+
+def test_plus_and_minus_lines_inside_a_hunk_are_scanned(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n\n'
+           '-- // FUNCTION: STARFLEETOP 0x00700000\nvoid f() {}\n')
+    _commit(repo)
+    _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n\n'
+           '++ // FUNCTION: STARFLEETOP 0x00700010\nvoid f() {}\n')
+    _commit(repo)
+    added, removed = guard.diff_lines(str(repo), 'HEAD~1', 'HEAD', 'op/unsorted/a.cpp')
+    assert added == ['++ // FUNCTION: STARFLEETOP 0x00700010']
+    assert removed == ['-- // FUNCTION: STARFLEETOP 0x00700000']
