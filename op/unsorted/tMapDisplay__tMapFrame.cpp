@@ -19,3 +19,12 @@ int tObjBase::vfunction10()
 	}
 	return 0;
 }
+
+// HYPOTHESIS: the data at 0x00c692a8 is a global object of unknown type.
+extern char g_00c692a8;
+
+// FUNCTION: STARFLEETOP 0x0046c452
+void *tObjBase::vfunction23()
+{
+	return &g_00c692a8;
+}
