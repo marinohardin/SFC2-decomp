@@ -5,6 +5,8 @@
 #include "Common/Thread/AccessPointer.h"
 #include "Switch/Switch.h"
 #include "unsorted/tCurrentTime.h"
+#include "unsorted/tHexPoint.h"
+#include <map>
 
 // HYPOTHESIS: the original is the tMetaClientMapPanel member fn_005e80ef(); the lane may not
 // edit the class header, so this is a free function over the panel until it is declared.
@@ -91,4 +93,19 @@ tPoint fn_005e89fd_panel::fn_005e89fd( const tHexPoint& position )
 	long x = ( hex->fn_0055f269() - left ) * layout->fn_005e8efe() + fn_005c7fb7( (tCurrentTime*) layout ) + layout->fn_005e8f25();
 	long y = ( position.fn_005e8f21() - ( (tCurrentTime*) queue )->fn_0055f269() ) * layout->fn_005e8efa() + layout->fn_005e8f02( position ) + fn_005c7fb3( (char*) layout ) + fn_005c7fb3( (char*) layout );
 	return tPoint( (short) x, (short) y );
+}
+
+// HYPOTHESIS: the record is an object holding a tHexPoint at +0x18 and a flag at +0x44; its
+// class is not recovered, so it is read through offsets.
+// FUNCTION: STARFLEETOP 0x005e8be0
+void __stdcall fn_005e8be0( std::map< std::pair< int, int >, bool >* known, char* record )
+{
+	long y = ( (tHexPoint*) ( record + 0x18 ) )->fn_005e8f21();
+	// HYPOTHESIS: 0x0055f269 is tCurrentTime's accessor in the symbol table; the hex point shares the getter.
+	long x = ( (tCurrentTime*) ( record + 0x18 ) )->fn_0055f269();
+	std::map< std::pair< int, int >, bool >::iterator it = known->find( std::pair< int, int >( x, y ) );
+	if( it != known->end() )
+	{
+		*(long*) ( record + 0x44 ) = 0;
+	}
 }

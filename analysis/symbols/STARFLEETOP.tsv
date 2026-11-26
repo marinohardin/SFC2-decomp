@@ -14464,7 +14464,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e843a	function	fn_005e843a					none
 0x005e89fd	function	fn_005e89fd		?fn_005e89fd@fn_005e89fd_panel@@QAE?AUtPoint@@ABVtHexPoint@@@Z	claim		none
 0x005e8acc	function	fn_005e8acc					none
-0x005e8be0	function	fn_005e8be0					none
+0x005e8be0	function	fn_005e8be0		?fn_005e8be0@@YGXPAV?$map@U?$pair@HH@std@@_NU?$less@U?$pair@HH@std@@@2@V?$allocator@_N@2@@std@@PAD@Z	claim		none
 0x005e8c29	function	fn_005e8c29		?fn_005e8c29@tMetaClientMapPanel@@QAEXABUtRect@@@Z	callers		none
 0x005e8e55	function	fn_005e8e55		?fn_005e8e55@tMetaClientMapQueueMember@@QAEXH@Z	callers		none
 0x005e8ee6	function	fn_005e8ee6					none
