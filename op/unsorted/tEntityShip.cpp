@@ -164,9 +164,26 @@ void tEntityShip::fn_004155c1(tPoint3 *aPoint)
 	}
 }
 
-
-
-
+// HYPOTHESIS: slot 22 of the object at +0x14 returns a 16-bit angle; the result relative to
+// the angle at 0x90 is folded into -0x1000..0x1000.
+// MATCH-ONLY: the call goes through the vtable by hand until the class of fField14 is declared.
+// FUNCTION: STARFLEETOP 0x004155ed
+short tEntityShip::vfunction66(char param_1)
+{
+	typedef short (tEntityShip::*tSlot22)();
+	if (fField14)
+	{
+		if (param_1)
+		{
+			short angle = ((((tEntityShip *)fField14)->*(*(tSlot22 *)(*(void ***)fField14 + 0x58 / 4)))() - field_0x90) & 0x1fff;
+			if (angle > 0x1000)
+				angle -= 0x2000;
+			return angle;
+		}
+		return (((tEntityShip *)fField14)->*(*(tSlot22 *)(*(void ***)fField14 + 0x58 / 4)))();
+	}
+	return 0;
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
