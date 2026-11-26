@@ -8984,7 +8984,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00537b81	function	fn_00537b81	tETrait_Creator_PlasmaVent				vtable
 0x00537b87	function	fn_00537b87	tETrait_Creator_PlasmaVent				vtable
 0x00537bc2	function	fn_00537bc2		?fn_00537bc2@@YIPAHPAH@Z	claim		none
-0x00537bd8	function	fn_00537bd8					none
+0x00537bd8	function	fn_00537bd8		?fn_00537bd8@@YIXPAH@Z	claim		none
 0x00537bfd	function	fn_00537bfd					none
 0x00537c4a	function	fn_00537c4a					none
 0x00537c73	function	fn_00537c73					none
