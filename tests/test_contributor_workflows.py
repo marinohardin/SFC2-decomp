@@ -28,7 +28,8 @@ def test_the_contributor_gate_runs_on_hosted_runners_only():
 def _job(lines, name):
     """The code lines of one job, from `name:` to the next job or the end."""
     i = lines.index(f'{name}:')
-    nxt = [j for j, l in enumerate(lines) if j > i and l in ('build-review:', 'post:')]
+    nxt = [j for j, l in enumerate(lines)
+           if j > i and l in ('build-review:', 'post:', 'no-report:')]
     return lines[i:nxt[0] if nxt else len(lines)]
 
 
@@ -70,3 +71,12 @@ def test_claim_expiry_is_hosted_and_passes_the_date():
 def test_the_claim_form_labels_its_issue_claim():
     text = (ROOT / '.github' / 'ISSUE_TEMPLATE' / 'claim.yml').read_text()
     assert 'labels: [claim]' in text and 'range: 0x' in text
+
+
+def test_a_build_that_leaves_no_report_still_sets_an_error_status():
+    job = _job(code_lines('build-review.yml'), 'no-report')
+    assert 'needs: build-review' in job and 'runs-on: ubuntu-latest' in job
+    assert "if: always() && needs.build-review.outputs.report == ''" in job
+    i = job.index('permissions:')
+    assert job[i + 1:i + 3] == ['statuses: write', 'steps:']
+    assert any('-f state=error' in l for l in job) and any('target_url="$RUN_URL"' in l for l in job)

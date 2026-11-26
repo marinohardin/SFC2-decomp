@@ -7,7 +7,8 @@ name: Build review
 #
 # Two jobs. The build compiles the contributor's source on the owner's runner with a read-only
 # token. Only the second job, on a hosted runner, which compiles nothing, can write: it posts the
-# report, the status and starts the automated review.
+# report, the status and starts the automated review. A third, `no-report`, sets the status to
+# error when the build stopped before it handed over a report.
 on:
   workflow_dispatch:
     inputs:
@@ -106,3 +107,25 @@ jobs:
             gh workflow run claude-code-review.yml --repo "$GITHUB_REPOSITORY" --ref develop -f pr="$PR"
           fi
           [ "$RC" = 0 ]
+
+  # The build job failed or was cancelled before it handed over a report: the pull request
+  # still gets a status, pointing at this run.
+  no-report:
+    needs: build-review
+    if: always() && needs.build-review.outputs.report == ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - name: Set the build-review status to error
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ inputs.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -eu
+          printf '%s' "$SHA" | grep -Eqx '[0-9a-f]{40}'
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" -f state=error -f context=build-review \
+            -f description="the build review stopped before it wrote a report" \
+            -f target_url="$RUN_URL" >/dev/null
