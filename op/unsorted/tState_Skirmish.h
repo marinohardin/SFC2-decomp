@@ -5,6 +5,8 @@
 #define tState_Skirmish_h 1
 
 #include "unsorted/tGameState.h"
+#include "unsorted/tShipUI.h"
+#include "unsorted/tReconnector.h"
 
 // HYPOTHESIS: derives from tGameState (12 bytes: vtable, the list link, the number). The vtable
 // at 0x0079f9f0 has 22 slots; every slot is declared, in the exe's order, so that the three
@@ -46,9 +48,8 @@ public:
 	// the argument the helper at 0x004817ef gives the global manager's slot at +0x98.
 	char			fUnknown_000c[0x4];
 	long			field_0x10;
-	// The ship display, constructed at 0x14 by 0x004cd034; its last store (a flag) is at 0x1100
-	// of it, and the next member starts at 0x1118.
-	char			fUnknown_0014[0x1104];
+	// The ship display, constructed at 0x14 by 0x004cd034; the next member starts at 0x1118.
+	tShipUI			field_0x14;
 	// HYPOTHESIS: a char * compared with the literal "CustomSkmsh" by vfunction15.
 	const char *	field_0x1118;
 	long			field_0x111c;
@@ -64,8 +65,9 @@ public:
 	char			fUnknown_114c[0x8];
 	// HYPOTHESIS: an object the destructor deletes through its virtual destructor.
 	void *			field_0x1154;
-	// A tReconnector (0x0047f864), up to the next member; its size is not recovered.
-	char			fUnknown_1158[0xd0];
+	// A tReconnector (constructed by 0x0047f864 at 0x1158, 0x3c bytes); the rest up to the next member is not recovered.
+	tReconnector	field_0x1158;
+	char			fUnknown_1194[0xd0 - 0x3c];
 	// The object 0x0046b650 initializes (0x4c bytes at least).
 	char			fUnknown_1228[0x4c];
 	char			fUnknown_1274[0x38];

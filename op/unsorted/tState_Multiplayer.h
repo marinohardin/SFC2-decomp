@@ -8,6 +8,7 @@
 #include "unsorted/tValueI.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/tShipUI.h"
 #include "unsorted/fn_005717f7_vector.h"
 
 namespace tState_Namespace_Multiplayer
@@ -82,9 +83,8 @@ public:
 	int field_d90;
 	char field_d94[0x90];
 	tValueI< tString > field_e24;
-	// HYPOTHESIS: a tShipUI (0x004cd034, destroyed by 0x004cd115), which has no header yet. Its
-	// size is where the next member starts.
-	char field_e64[0x1104];
+	// A tShipUI (0x004cd034, destroyed by 0x004cd115); its size is where the next member starts.
+	tShipUI field_e64;
 	// The destructor (0x00571a7a) is the one shared by every vector of pointers.
 	fn_005717f7_vector field_1f68;
 	// +0x1f7c to +0x1f8c are ints the methods compare and store; +0x1f90, +0x1f98 and +0x1fa0 are

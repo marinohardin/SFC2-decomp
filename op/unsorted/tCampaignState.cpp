@@ -8,35 +8,35 @@
 // displacement lands there; the analysis export places it inside FUN_004d32c4).
 void fn_004d32cf(void *p);
 
-// HYPOTHESIS: a 0x20-byte entry of the list at tCampaignState+0x18.
-struct c_tState_Campaign_entry
-{
-	char m_pad[0x20];
-};
+// The object at tCampaignState+0xc is a tShipUI (tShipUI.h). The id at +0x1110 follows it.
+#include "unsorted/tShipUI.h"
 
-// HYPOTHESIS: the object at tCampaignState+0xc. The list at tCampaignState+0x18, its
-// index at +0x1018 and the id at +0x1110 are taken to be its members: the original computes
-// this object's address before it reads the id, as for a member read through it.
-class c_004cd1db
-{
-public:
-	// HYPOTHESIS: three arguments; the split of the pushes between this call and the two
-	// virtual calls inside its argument list is read from the register use at the call
-	// sites, not from the callee. Types unknown.
-	// HYPOTHESIS: 0x004cd034 and 0x004cd115 (tShipUI's in the unit table); tCampaignState's call them.
-	c_004cd1db();
-	~c_004cd1db();
-	void fn_004cd1db(int a, int b, int id);
-	void fn_004cd2c9();
-	void fn_004cd2f6();
-	void fn_004cd739();
 
-	char m_pad_00[0xc];
-	c_tState_Campaign_entry m_0c[0x80];
-	int m_100c;
-	char m_pad_1010[0xf4];
-	int m_1104;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: an empty allocator, copied from a default one (an uninitialized stack byte).
 struct c_0045dece_allocator {};
@@ -104,7 +104,7 @@ public:
 	virtual void vfunction14();
 	virtual void vfunction15(int *arg);
 
-	c_004cd1db m_0c;
+	tShipUI m_0c; int m_1110;
 	c_0045dece m_1114;
 	// HYPOTHESIS: set once the player's name has been sent.
 	bool m_1130;
@@ -114,7 +114,7 @@ public:
 bool tCampaignState::vfunction4()
 {
 	// HYPOTHESIS: the value at +0x1110, a pointer here.
-	fn_004d32cf((void *)m_0c.m_1104);
+	fn_004d32cf((void *)m_1110);
 	return true;
 }
 
@@ -244,8 +244,8 @@ void tState_Campaign::vfunction3()
 				return;
 			}
 			{
-				c_004cd1db *p = &m_0c;
-				p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), p->m_1104);
+				tShipUI *p = &m_0c;
+				p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), m_1110);
 				p->fn_004cd739();
 			}
 			break;
@@ -257,7 +257,7 @@ void tState_Campaign::vfunction3()
 void tState_Campaign::vfunction6(int arg)
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name here; vfunction3 passes it as an id.
-	const char *name = (const char *)m_0c.m_1104;
+	const char *name = (const char *)m_1110;
 
 	if ((name == vfunction13() && !m_1130) || (name == "playerOptions" && !m_1130))
 	{
@@ -302,7 +302,7 @@ extern char g_00843ed0[];
 void tState_Campaign::fn_0045dc99(int id)
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name, as in vfunction6.
-	const char **name = (const char **)&m_0c.m_1104;
+	const char **name = (const char **)&m_1110;
 
 	fn_004d32c4(*name);
 	m_1114.fn_0045dece(name);
@@ -326,7 +326,7 @@ bool tState_Campaign::fn_0045dd02()
 {
 	// HYPOTHESIS: the value at +0x1110 holds a state name, as in fn_0045dc99; the name
 	// pushed there is popped here.
-	const char **name = (const char **)&m_0c.m_1104;
+	const char **name = (const char **)&m_1110;
 
 	fn_004d32c4(*name);
 	*name = *c_0045dece_iterator(&m_1114).fn_005f7efa();
@@ -338,7 +338,7 @@ bool tState_Campaign::fn_0045dd02()
 	const char *current = *name;
 	if (current == "VesselLibrary")
 	{
-		c_004cd1db *p = &m_0c;
+		tShipUI *p = &m_0c;
 		p->fn_004cd1db(gObject_0092deb4->vfunction39(), gObject_0092deb4->vfunction81(0, "HULL_TEMPLATE"), (int)current);
 		p->fn_004cd739();
 	}
