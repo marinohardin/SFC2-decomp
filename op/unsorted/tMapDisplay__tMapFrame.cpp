@@ -28,3 +28,10 @@ void *tObjBase::vfunction23()
 {
 	return &g_00c692a8;
 }
+
+// FUNCTION: STARFLEETOP 0x0046c458
+bool tObjBase::vfunction29( int a, int *b )
+{
+	*b = 0;
+	return false;
+}
