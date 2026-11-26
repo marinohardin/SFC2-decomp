@@ -9,3 +9,13 @@ void tObjBase::vfunction1( unsigned int n )
 		field_0C->vfunction1( ( field_40 << 28 ) >> 31 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0046c436
+int tObjBase::vfunction10()
+{
+	if ( field_0C && field_0C->field_30 == this && !field_30 )
+	{
+		return 1;
+	}
+	return 0;
+}

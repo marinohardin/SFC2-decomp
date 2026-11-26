@@ -211,7 +211,7 @@ public:
 	virtual void vfunction8( const tRect *area );
 	// 0x0067cc70: sets the rectangle at +0x34 and tells the parent.
 	virtual void vfunction9( short left, short top, short right, short bottom );
-	virtual bool vfunction10();	// 0x0046c436
+	virtual int vfunction10();	// 0x0046c436
 	virtual void vfunction11();
 	virtual void vfunction12();	// +0x2c
 	virtual void vfunction13(); virtual bool vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
