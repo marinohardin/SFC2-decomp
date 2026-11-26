@@ -3580,7 +3580,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046c452	function	fn_0046c452	tObjBase	?vfunction23@tObjBase@@UAEPAXXZ	claim		vtable
 0x0046c458	function	fn_0046c458	tObjBase	?vfunction29@tObjBase@@UAE_NHPAH@Z	claim		vtable
 0x0046c464	function	fn_0046c464	tObjBase	?vfunction28@tObjBase@@UAE_NHPAVtString@@@Z	claim		vtable
-0x0046c477	function	fn_0046c477	tObjBase				vtable
+0x0046c477	function	fn_0046c477	tObjBase	?vfunction34@tObjBase@@UAE?AUtRect@@U2@@Z	claim		vtable
 0x0046c4a0	function	tMapDisplay::tMapFrame::scalar_deleting_destructor	tMapDisplay::tMapFrame				rtti
 0x0046c4bc	function	tObjBase::~tObjBase	tObjBase				rtti
 0x0046c4c3	function	tObjBase::scalar_deleting_destructor	tObjBase				rtti

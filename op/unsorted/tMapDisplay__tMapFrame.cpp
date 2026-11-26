@@ -43,3 +43,9 @@ bool tObjBase::vfunction28( int a, tString *b )
 	*b = "";
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x0046c477
+tRect tObjBase::vfunction34( tRect r )
+{
+	return r;
+}
