@@ -132,6 +132,11 @@ def test_base_is_read_from_a_git_ref_or_a_file(tmp_path, monkeypatch):
 class SizedIndex:
     """A FunctionIndex with only the sizes the gate reads."""
 
+    claimed = {}
+
+    def add_claims(self, addresses, table):
+        return 0
+
     def __init__(self, sizes, joined=()):
         self.by_address = {a: type('F', (), {'size': n, 'tags': ('eh-prolog-joined',) if a in joined
                                              else ()})() for a, n in sizes.items()}
@@ -316,3 +321,19 @@ def test_a_recorded_header_claim_with_no_unit_is_a_regression_under_all(empty_tr
     assert rep.regressions == [0x401010]
     assert any('0x00401010 A::f REGRESSION: 0x00401010 is claimed in the header Test/ship.h, but '
                'no row of op/UNITS.tsv holds that address' in ln for ln in rep.lines)
+
+
+def test_run_hands_the_annotated_addresses_to_the_index(empty_tree, monkeypatch):
+    seen = []
+
+    class Recording(FakeIndex):
+        def add_claims(self, addresses, table):
+            seen.append(set(addresses))
+            return 0
+
+    monkeypatch.setattr(funcs, 'FunctionIndex', lambda *a: Recording())
+    matched.save(paths.MATCHED_SET, matched_set())
+    (empty_tree / 'game' / 'unit.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401010\nvoid f() {}\n'
+                                                 '// STUB: STARFLEETOP 0x00401020\nvoid g() {}\n')
+    verify.run([])
+    assert seen == [{0x401010}]

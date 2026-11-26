@@ -5541,9 +5541,9 @@
    "symbol": "??1tClientCharacter@@UAE@XZ",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 248,
-   "score": 99.776,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004296c8": {
    "name": "FUN_004296c8",
@@ -5586,9 +5586,9 @@
    "symbol": "?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 459,
-   "score": 99.847,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00429a18": {
    "name": "FUN_00429a18",
@@ -5622,9 +5622,9 @@
    "symbol": "?fn_00429d06@tClientCharacter@@QAEXPBVtObject_00543551@@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 519,
-   "score": 99.906,
+   "score": 99.969,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-25"
   },
   "0x00429f0d": {
    "name": "tClientCharacter::vfunction2",
@@ -5883,9 +5883,9 @@
    "symbol": "?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 120,
-   "score": 99.857,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042a92f": {
    "name": "FUN_0042a92f",
@@ -6000,9 +6000,9 @@
    "symbol": "?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 191,
-   "score": 99.918,
-   "exact": false,
-   "recorded": "2026-11-24"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042abe4": {
    "name": "FUN_0042abe4",
@@ -14424,9 +14424,9 @@
    "symbol": "??1tSFCPlayer@@UAE@XZ",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 358,
-   "score": 99.905,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004cfb31": {
    "name": "tSFCPlayer::vfunction2",
@@ -19365,9 +19365,9 @@
    "symbol": "??1tMetaMapHex@@UAE@XZ",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 144,
-   "score": 99.868,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005394f4": {
    "name": "tMetaMapHex::tMetaMapHex",
@@ -20193,9 +20193,9 @@
    "symbol": "?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z",
    "unit": "Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp",
    "size": 308,
-   "score": 99.949,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005430ad": {
    "name": "FUN_005430ad",
@@ -20643,36 +20643,36 @@
    "symbol": "?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 118,
-   "score": 99.861,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005437a5": {
    "name": "FUN_005437a5",
    "symbol": "?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 184,
-   "score": 99.911,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0054385d": {
    "name": "FUN_0054385d",
    "symbol": "?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 231,
-   "score": 99.929,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00543944": {
    "name": "FUN_00543944",
    "symbol": "?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 160,
-   "score": 99.898,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005439e4": {
    "name": "FUN_005439e4",
@@ -20841,9 +20841,9 @@
    "symbol": "?SQLFillInsertStream@fn_005430ad_owner@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 1248,
-   "score": 99.941,
+   "score": 99.964,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-25"
   },
   "0x00544b5c": {
    "name": "tAuctionItem::tAuctionItem",
@@ -27456,18 +27456,18 @@
    "symbol": "?vfunction5@tRequestLogonInformation@nAsyncClientMapProcedures@@UAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp",
    "size": 322,
-   "score": 99.898,
+   "score": 99.949,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e189d": {
    "name": "FUN_005e189d",
    "symbol": "?fn_005e189d@tUpdateFleetIcons@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp",
    "size": 341,
-   "score": 99.904,
+   "score": 99.952,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e2501": {
    "name": "FUN_005e2501",
@@ -28536,9 +28536,9 @@
    "symbol": "?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 100,
-   "score": 99.828,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e5dde": {
    "name": "FUN_005e5dde",
@@ -28590,9 +28590,9 @@
    "symbol": "?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 413,
-   "score": 99.958,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6091": {
    "name": "FUN_005e6091",
@@ -28617,18 +28617,18 @@
    "symbol": "?fn_005e62c4@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 244,
-   "score": 98.015,
+   "score": 98.088,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e6469": {
    "name": "FUN_005e6469",
    "symbol": "?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 129,
-   "score": 99.865,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e64ea": {
    "name": "FUN_005e64ea",
@@ -28662,45 +28662,45 @@
    "symbol": "?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 117,
-   "score": 99.868,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e66b7": {
    "name": "FUN_005e66b7",
    "symbol": "?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 241,
-   "score": 99.934,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e67a8": {
    "name": "FUN_005e67a8",
    "symbol": "?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 489,
-   "score": 99.858,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6991": {
    "name": "FUN_005e6991",
    "symbol": "?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 176,
-   "score": 99.907,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6a41": {
    "name": "FUN_005e6a41",
    "symbol": "?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 170,
-   "score": 99.904,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6d7c": {
    "name": "tMetaMapNormalHex::tMetaMapNormalHex",

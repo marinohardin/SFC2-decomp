@@ -55,6 +55,10 @@ class FakeIndex:
             for a in addrs:
                 self.names_at.setdefault(a, set()).add(name)
         self.starts = sorted(starts)
+        self.claimed = {}
+
+    def add_claims(self, addresses, table):
+        return 0
 
     def next_start(self, address):
         later = [s for s in self.starts if s > address]

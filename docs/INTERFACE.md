@@ -8,7 +8,7 @@ version and says what changed, then the consumer's pull request that moves its p
 
 ## Format version
 
-`2`, the only line of the file `INTERFACE_VERSION` at the root of this repository. A consumer
+`3`, the only line of the file `INTERFACE_VERSION` at the root of this repository. A consumer
 reads it and stops with an error on a version it does not know.
 
 ## Source
@@ -75,6 +75,14 @@ reads it and stops with an error on a version it does not know.
 
 ## Version history
 
+- `3`: `harness/lib/funcs.py` and `harness/lib/target.py` gain a claimed-address rule, additive.
+  `FunctionIndex.add_claims(addresses, table)` fills `FunctionIndex.claimed` (symbol -> addresses
+  a source claim gives it), and `target.build` accepts a relocation to such an address, with
+  detail `claimed address`, where it used to report a mismatch against the symbol's other known
+  address. A consumer that scores with these modules calls `add_claims` once after loading the
+  symbol table, with the annotated addresses and `symtab.load_table()`'s result, to agree with
+  the harness; one that does not behaves as before. A consumer that only reads the matched set
+  and the manifest needs no change.
 - `2`: `op/manifest.tsv` gains a last column, `decorated`, the decorated symbol each claim compiles
   to (empty where the symbol table has none). No other column moved or changed. Version `1` had
   five columns.

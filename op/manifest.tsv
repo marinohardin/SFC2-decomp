@@ -615,12 +615,12 @@ address	size	symbol	source	modes	decorated
 0x004282c7	49	_Construct(tTransporterHoldItem*,const tTransporterHoldItem&)	unsorted/tTransporterHoldItem.cpp	partial	?_Construct@std@@YAXPAUtTransporterHoldItem@@ABU2@@Z
 0x004282f8	27	tTransporterHoldItem::fn_004282f8(fn_0050d6a0_Stream*)	unsorted/tTransporterHoldItem.cpp	vc6 guest	?fn_004282f8@tTransporterHoldItem@@QAEXPAVfn_0050d6a0_Stream@@@Z
 0x0042838f	69	tOutOfBounds::tOutOfBounds(const tOutOfBounds&)	unsorted/nException__tOutOfBounds.cpp	vc6	??0tOutOfBounds@nException@@QAE@ABV01@@Z
-0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial	??1tClientCharacter@@UAE@XZ
+0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	vc6	??1tClientCharacter@@UAE@XZ
 0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6	??1tOptex@@QAE@XZ
 0x00429717	110	tOptex::Enter()	unsorted/tClientCharacter.cpp	vc6 guest	?Enter@tOptex@@QAEXXZ
 0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest	?TryEnter@tOptex@@QAE_NXZ
 0x004297fa	83	tOptex::Leave()	unsorted/tClientCharacter.cpp	vc6 guest	?Leave@tOptex@@QAEXXZ
-0x0042984d	459	tClientCharacter::fn_0042984d(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial	?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z
+0x0042984d	459	tClientCharacter::fn_0042984d(const tClientCharacter &)	unsorted/tClientCharacter.cpp	vc6 guest	?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z
 0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6	??1tGuard@tOptex@@QAE@XZ
 0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	vc6	??0tClientCharacter@@QAE@ABV0@@Z
 0x00429bb2	340	tClientCharacter::tClientCharacter(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	vc6	??0tClientCharacter@@QAE@PBVtObject_00543551@@@Z
@@ -654,7 +654,7 @@ address	size	symbol	source	modes	decorated
 0x0042a73d	112	fn_0042a480_object::FUN_0042a73d()	unsorted/fn_0042A000.cpp	partial	?FUN_0042a73d@fn_0042a480_object@@QAEXXZ
 0x0042a7b2	13	fn_0042a480_object::FUN_0042a7b2(unsigned long)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a7b2@fn_0042a480_object@@QAEXK@Z
 0x0042a7bf	164	fn_0042a480_object::FUN_0042a7bf(const std::vector< fn_0054185f_ship >&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042a7bf@fn_0042a480_object@@QAEXABV?$vector@Vfn_0054185f_ship@@V?$allocator@Vfn_0054185f_ship@@@std@@@std@@@Z
-0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z
+0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z
 0x0042a92f	107	fn_0042a480_object::FUN_0042a92f()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a92f@fn_0042a480_object@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
 0x0042a99a	32	fn_0042a480_object::FUN_0042a99a()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a99a@fn_0042a480_object@@QAEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
 0x0042a9ba	81	fn_0042a480_object::FUN_0042a9ba()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a9ba@fn_0042a480_object@@QAE?AVtID@nDatabase@@XZ
@@ -667,7 +667,7 @@ address	size	symbol	source	modes	decorated
 0x0042aacb	32	fn_0042a480_object::FUN_0042aacb()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042aacb@fn_0042a480_object@@QAEHXZ
 0x0042aaeb	29	fn_0042a480_object::FUN_0042aaeb()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042aaeb@fn_0042a480_object@@QAE?AV?$tAccessPointer@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@V?$tSingleAccessWrapper@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@@@@@XZ
 0x0042ab08	29	fn_0042a480_object::FUN_0042ab08()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ab08@fn_0042a480_object@@QAE?AV?$tAccessPointer@VtMetaMapHex@@V?$tSingleAccessWrapper@VtMetaMapHex@@@@@@XZ
-0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z
+0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z
 0x0042abe4	82	fn_0042a480_object::FUN_0042abe4()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042abe4@fn_0042a480_object@@QAE?AVtHexPoint@@XZ
 0x0042ac36	32	fn_0042a480_object::FUN_0042ac36()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ac36@fn_0042a480_object@@QAEABVtHexPoint@@XZ
 0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	partial	?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ
@@ -1603,7 +1603,7 @@ address	size	symbol	source	modes	decorated
 0x004cf990	7	tSFCPlayer::vfunction106()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction106@tSFCPlayer@@UAEHXZ
 0x004cf997	28	tSFCPlayer::`scalar deleting destructor'	unsorted/tSFCPlayer.cpp	vc6	??_GtSFCPlayer@@UAEPAXI@Z
 0x004cf9b3	19	fn_004cf9b3()	unsorted/tSFCPlayer.cpp	vc6 guest	?fn_004cf9b3@@YAXXZ
-0x004cf9cb	358	tSFCPlayer::~tSFCPlayer()	unsorted/tSFCPlayer.cpp	partial	??1tSFCPlayer@@UAE@XZ
+0x004cf9cb	358	tSFCPlayer::~tSFCPlayer()	unsorted/tSFCPlayer.cpp	vc6	??1tSFCPlayer@@UAE@XZ
 0x004cfb31	1330	tSFCPlayer::vfunction2(tSFCStream &,unsigned mode)	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction2@tSFCPlayer@@UAEXAAVtSFCStream@@I@Z
 0x004d0063	421	tSFCPlayer::vfunction108()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction108@tSFCPlayer@@UAEXXZ
 0x004d0208	411	tSFCPlayer::vfunction109()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction109@tSFCPlayer@@UAEXXZ
@@ -2152,7 +2152,7 @@ address	size	symbol	source	modes	decorated
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest	?scalar_deleting_destructor@?$tClassAllocator@VtMetaMapDesc@@@@QAEPAV1@E@Z
 0x005391b0	654	tMetaMapHex::tMetaMapHex(bool)	unsorted/tMetaMapHex.cpp	vc6	??0tMetaMapHex@@QAE@_N@Z
 0x0053943e	28	tMetaMapHex::`scalar deleting destructor'	unsorted/tMetaMapHex.cpp	vc6	??_GtMetaMapHex@@UAEPAXI@Z
-0x00539464	144	tMetaMapHex::~tMetaMapHex()	unsorted/tMetaMapHex.cpp	partial	??1tMetaMapHex@@UAE@XZ
+0x00539464	144	tMetaMapHex::~tMetaMapHex()	unsorted/tMetaMapHex.cpp	vc6	??1tMetaMapHex@@UAE@XZ
 0x005394f4	190	tMetaMapHex::tMetaMapHex(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6	??0tMetaMapHex@@QAE@ABV0@@Z
 0x005395b2	136	tMetaMapHex::operator=(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6 guest	??4tMetaMapHex@@QAEAAV0@ABV0@@Z
 0x0053963a	455	tMetaMapHex::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapHex.cpp	partial	?StreamOut@tMetaMapHex@@UBEXAAVtOutput@nDataStore@@@Z
@@ -2244,7 +2244,7 @@ address	size	symbol	source	modes	decorated
 0x0053fece	117	operator<<(tOutput&,const std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest	??6nDataStore@@YAAAVtOutput@0@AAV10@ABV?$vector@Vfn_0054340c_owner@@V?$allocator@Vfn_0054340c_owner@@@std@@@std@@@Z
 0x0053ff43	148	operator>>(tInput&,std::vector< fn_0053f491_elem >&)	unsorted/fn_0053F000.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@Vfn_0053f491_elem@@V?$allocator@Vfn_0053f491_elem@@@std@@@std@@@Z
 0x0053ffd7	182	operator>>(tInput&,std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@Vfn_0054340c_owner@@V?$allocator@Vfn_0054340c_owner@@@std@@@std@@@Z
-0x00541499	308	tTeamSlot::fn_00541499(tServCharacter*)	Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp	partial	?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z
+0x00541499	308	tTeamSlot::fn_00541499(tServCharacter*)	Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp	vc6 guest	?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z
 0x005430ad	12	fn_005430ad_owner::fn_005430ad()	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430ad@fn_005430ad_owner@@QAE_NXZ
 0x005430b9	26	fn_005430ad_owner::fn_005430b9(bool)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430b9@fn_005430ad_owner@@QAEX_N@Z
 0x005430d3	32	fn_005430ad_owner::fn_005430d3(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430d3@fn_005430ad_owner@@QAEXH@Z
@@ -2294,10 +2294,10 @@ address	size	symbol	source	modes	decorated
 0x00543702	15	fn_005430ad_owner::fn_00543702(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543702@fn_005430ad_owner@@QAE_NH@Z
 0x00543711	15	fn_005430ad_owner::fn_00543711(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543711@fn_005430ad_owner@@QAE_NH@Z
 0x00543720	15	fn_005430ad_owner::fn_00543720(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543720@fn_005430ad_owner@@QAE_NH@Z
-0x0054372f	118	fn_005430ad_owner::fn_0054372f(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial	?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z
-0x005437a5	184	fn_005430ad_owner::fn_005437a5(const nDatabase::tID &)	unsorted/fn_00543000.cpp	partial	?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z
-0x0054385d	231	fn_005430ad_owner::fn_0054385d(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial	?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z
-0x00543944	160	fn_005430ad_owner::fn_00543944(const nDatabase::tID &) const	unsorted/fn_00543000.cpp	partial	?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z
+0x0054372f	118	fn_005430ad_owner::fn_0054372f(fn_0054385d_source *)	unsorted/fn_00543000.cpp	vc6 guest	?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z
+0x005437a5	184	fn_005430ad_owner::fn_005437a5(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z
+0x0054385d	231	fn_005430ad_owner::fn_0054385d(fn_0054385d_source *)	unsorted/fn_00543000.cpp	vc6 guest	?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z
+0x00543944	160	fn_005430ad_owner::fn_00543944(const nDatabase::tID &) const	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z
 0x005439e4	15	fn_005430ad_owner::fn_005439e4(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005439e4@fn_005430ad_owner@@QAE_NH@Z
 0x005439f3	15	fn_005430ad_owner::fn_005439f3(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005439f3@fn_005430ad_owner@@QAE_NH@Z
 0x00543a02	15	fn_005430ad_owner::fn_00543a02(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543a02@fn_005430ad_owner@@QAE_NH@Z
@@ -3172,25 +3172,25 @@ address	size	symbol	source	modes	decorated
 0x005e5c25	77	tMetaClientMapPanel::fn_005e5c25(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5c25@tMetaClientMapPanel@@QAEXJ@Z
 0x005e5c72	123	tMetaClientMapPanel::fn_005e5c72(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5c72@tMetaClientMapPanel@@QAEXABVtHexPoint@@@Z
 0x005e5ced	141	tMetaClientMapPanel::fn_005e5ced()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ced@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
-0x005e5d7a	100	tMetaClientMapPanel::fn_005e5d7a()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
+0x005e5d7a	100	tMetaClientMapPanel::fn_005e5d7a()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
 0x005e5dde	35	tMetaClientMapPanel::fn_005e5dde()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5dde@tMetaClientMapPanel@@QAEJXZ
 0x005e5e01	35	tMetaClientMapPanel::fn_005e5e01()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5e01@tMetaClientMapPanel@@QAEJXZ
 0x005e5e24	184	tMetaClientMapPanel::fn_005e5e24(int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5e24@tMetaClientMapPanel@@QAEXH@Z
 0x005e5edc	11	tMetaClientMapPanel::fn_005e5edc()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5edc@tMetaClientMapPanel@@QAEXXZ
 0x005e5ee7	13	tMetaClientMapPanel::fn_005e5ee7(char)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ee7@tMetaClientMapPanel@@QAEXD@Z
-0x005e5ef4	413	tMetaClientMapPanel::fn_005e5ef4()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ
+0x005e5ef4	413	tMetaClientMapPanel::fn_005e5ef4()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ
 0x005e6091	160	tMetaClientMapPanel::fn_005e6091()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6091@tMetaClientMapPanel@@QAEXXZ
 0x005e620c	184	tMetaClientMapPanel::fn_005e620c(long,long,bool*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e620c@tMetaClientMapPanel@@QAEXJJPA_N@Z
 0x005e62c4	244	tMetaClientMapPanel::fn_005e62c4(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e62c4@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
-0x005e6469	129	tMetaClientMapPanel::fn_005e6469(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z
+0x005e6469	129	tMetaClientMapPanel::fn_005e6469(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z
 0x005e64ea	83	tMetaClientMapPanel::fn_005e64ea()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e64ea@tMetaClientMapPanel@@QAE_NXZ
 0x005e653d	168	tMetaClientMapPanel::fn_005e653d(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e653d@tMetaClientMapPanel@@QAE_NABVtHexPoint@@@Z
 0x005e65e5	93	tMetaClientMapPanel::fn_005e65e5(const tPoint*,const tRect*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e65e5@tMetaClientMapPanel@@QAE_NPBUtPoint@@PBUtRect@@@Z
-0x005e6642	117	tMetaClientMapPanel::fn_005e6642(const fn_005e6642_record&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z
-0x005e66b7	241	tMetaClientMapPanel::fn_005e66b7(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
-0x005e67a8	489	tMetaClientMapPanel::fn_005e67a8(const nDatabase::tID&,const tHexPoint&,long,nDatabase::tID)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z
-0x005e6991	176	tMetaClientMapPanel::fn_005e6991(const nDatabase::tID&,const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z
-0x005e6a41	170	tMetaClientMapPanel::fn_005e6a41()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ
+0x005e6642	117	tMetaClientMapPanel::fn_005e6642(const fn_005e6642_record&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z
+0x005e66b7	241	tMetaClientMapPanel::fn_005e66b7(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
+0x005e67a8	489	tMetaClientMapPanel::fn_005e67a8(const nDatabase::tID&,const tHexPoint&,long,nDatabase::tID)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z
+0x005e6991	176	tMetaClientMapPanel::fn_005e6991(const nDatabase::tID&,const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z
+0x005e6a41	170	tMetaClientMapPanel::fn_005e6a41()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ
 0x005e6d7c	110	tMetaMapNormalHex::tMetaMapNormalHex(const tMetaMapNormalHex&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6	??0tMetaMapNormalHex@@QAE@ABV0@@Z
 0x005e7744	52	fn_005e7744_vector::fn_005e7744()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e7744@fn_005e7744_vector@@QAEXXZ
 0x005e78c6	95	tMetaClientMapPanel::fn_005e78c6(tSmartPtr< fn_005e78c6_object >,int,int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e78c6@tMetaClientMapPanel@@QAEXV?$tSmartPtr@Vfn_005e78c6_object@@@@HH@Z

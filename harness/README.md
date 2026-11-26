@@ -90,6 +90,25 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    ok and unverified fields are masked so objdiff sees them equal; a mismatch keeps the exe bytes
    and points at a symbol named after the exe address, so objdiff counts it. Identical opcodes
    calling the wrong function therefore do not pass.
+   **Claimed addresses.** A symbol is known at the addresses the evidence gives it
+   (`functions.csv`, the SDK tables). A relocation naming symbol S that reaches address A is also
+   accepted when a `// FUNCTION:` annotation claims A and the symbol table's row for A carries
+   exactly S with evidence `claim` (`FunctionIndex.add_claims`, called by `verify.py` once per
+   run). This is for a function the executable holds twice: the original's own copy is claimed
+   under its own symbol while the evidence knows that symbol only at the SDK library's folded
+   copy. The credit is an extra accept only: it is a separate record (`claimed`), never added to
+   `known` or `names_at`, so it cannot turn any relocation that passed into a mismatch, and a
+   claim under another symbol gives no credit to S. What stops a session claiming an address
+   under the wrong symbol to make its callers pass: a `mangled` or `add` row, or a row with
+   another symbol, gives no credit (only `claim` rows count, and `tools/symbols.py claim` refuses
+   to replace a `mangled` or `add` symbol); an address the evidence already names with another
+   mangled symbol gives no credit; each address has one row and so one symbol; and the stand-in
+   checks of step 8 still reject a caller naming a claimed address by another symbol. Nothing
+   proves the claimed address holds a copy of S's function (the known copy may be folded with
+   another function, so no byte-equality test is made), so every credit is listed: `--all` (and
+   so `harness/landing.sh`) prints one `claimed address credited` line per pair and writes
+   `claimed_credits.tsv` (symbol, claimed address, known addresses, relocations using it) in the
+   build folder beside `reloc_breaks.tsv`. **A reviewer reads this list.**
    **Thread-local variables (`__declspec(thread)`).** Their access is a relocation of type
    `0x0B` (SECREL): the field holds the variable's offset inside the thread-local block. The
    harness turns the exe's field into an address (`tls_start` of the exe's TLS directory, plus the
