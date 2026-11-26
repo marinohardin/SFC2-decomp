@@ -87,7 +87,7 @@ def remove_identity(build):
     try:
         os.remove(target)
     except FileNotFoundError:
-        return
+        return                  # any other OSError (permissions, a directory) propagates
     if os.path.exists(target):
         raise OSError(f'cannot remove {target}')
 
