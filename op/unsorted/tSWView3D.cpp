@@ -391,6 +391,13 @@ bool tSWView3D::vfunction49(bool param_1)
 	return true;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fe20
+bool tSWView3D::vfunction50(bool param_1)
+{
+	field_5fc5 = param_1 ? true : false;
+	return true;
+}
+
 // HYPOTHESIS: the surface's vtable, as 0x006b23c0 reads it (tBmpSurf declares no virtuals yet).
 class fn_006b23c0_Info {
 public:
