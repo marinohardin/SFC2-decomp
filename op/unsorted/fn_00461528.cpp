@@ -99,3 +99,9 @@ void fn_0046190f()
 {
     atexit(fn_004bd431);
 }
+
+// FUNCTION: STARFLEETOP 0x0046191b
+void fn_0046191b()
+{
+    atexit(fn_004bd431);
+}
