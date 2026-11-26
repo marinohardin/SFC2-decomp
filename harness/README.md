@@ -252,7 +252,7 @@ A second run does only the work that changed (`lib/cache.py`):
   following every `#include` line whatever `#if` surrounds it, searched as MSVC searches (a
   quoted include beside its file, then beside each file above it, then the `/I` folders), and
   every path searched before the one found, so a header that appears earlier on the search
-  rebuilds the unit; also the environment the compiler reads (`CL`, `_CL_`, `INCLUDE`, `LIB`). A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
+  rebuilds the unit; also the environment the compiler reads (`CL`, `_CL_`, `INCLUDE`, `LIB`). The closure also follows into the native compiler's own include folder, so a header of the unit's `/I` folders that a compiler header includes (an `xtree` that `<map>` includes), or that newly shadows one, is keyed; the compiler's files themselves are covered by its id. With no such folder on the machine (the image) the closure is as before. A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
   the unit's build folder, `build.key`, and a reused build prints "unchanged, not rebuilt".
 - **Score cache.** A function is rescored only when its score key changes: its object (COFF
   timestamp masked), the symbol scored, its address and size, the judge's own code (every module of `lib/`) and objdiff,
