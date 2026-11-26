@@ -190,3 +190,11 @@ char *fn_0047f720()
 {
     return g_00914190;
 }
+
+void fn_004bd431();
+
+// FUNCTION: STARFLEETOP 0x0047f764
+void fn_0047f764()
+{
+    atexit(fn_004bd431);
+}
