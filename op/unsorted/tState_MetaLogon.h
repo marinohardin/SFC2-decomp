@@ -52,6 +52,9 @@ public:
 	// 0x0046d468: leaves the screen named by 0x00847254 and clears field_188.
 	void fn_0046d468();
 
+	// 0x0046d480: drains the message queue; ids 0x10007 and 0x10008 leave the screen at 0x0046d468.
+	void fn_0046d480();
+
 	// The constructor leaves +0x20 to +0x24, +0x110 to +0x120 and +0x18c alone; 0x0046d4d2
 	// clears the flags.
 	std::vector< std::string > field_10;		// the destructor (0x00402d42) destroys 0x10-byte elements

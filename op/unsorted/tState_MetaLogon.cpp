@@ -1,5 +1,6 @@
 #include "unsorted/tState_MetaLogon.h"
 #include "unsorted/fn_004D3143.h"
+#include "unsorted/c_0046aa10_msg.h"
 #include <sstream>
 
 // HYPOTHESIS: the original also calls 0x0045e574 (the constructor of the 0x64-byte object at
@@ -66,4 +67,27 @@ void tState_MetaLogon::fn_0046d468()
 {
 	fn_004d32c4( g_00847254 );
 	field_188 = 0;
+}
+
+// HYPOTHESIS: 0x0046a713 is defined in tGameState.cpp; its result is unused here.
+char fn_0046a713();
+
+// FUNCTION: STARFLEETOP 0x0046d480
+void tState_MetaLogon::fn_0046d480()
+{
+	c_0046aa10_message msg;
+
+	while (fn_0046aa10(&msg))
+	{
+		switch (msg.id)
+		{
+		case 0x10007:
+			fn_0046d468();
+			fn_0046a713();
+			break;
+		case 0x10008:
+			fn_0046d468();
+			break;
+		}
+	}
 }
