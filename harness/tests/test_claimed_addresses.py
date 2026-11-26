@@ -89,7 +89,8 @@ def test_the_credit_list_names_the_pair_the_known_addresses_and_the_uses(tmp_pat
     from harness.lib import verify
     idx = index(tmp_path, [(0x700000, 'folded', SYM)])
     idx.add_claims({CALLEE}, table(SYM))
-    results = [{'relocs': [{'detail': 'claimed address', 'symbol': SYM, 'exe_address': CALLEE},
-                           {'detail': 'known address', 'symbol': SYM, 'exe_address': 0x700000},
-                           {'detail': 'claimed address', 'symbol': SYM, 'exe_address': CALLEE}]}]
+    results = [{'relocs': [{'detail': 'claimed address', 'symbol': SYM, 'exe_address': f'0x{CALLEE:08x}'},
+                           {'detail': 'known address', 'symbol': SYM, 'exe_address': '0x00700000'},
+                           {'detail': 'claimed address', 'symbol': SYM, 'exe_address': f'0x{CALLEE:08x}'}]}]
     assert verify.claimed_credits(results, idx) == [(SYM, '0x00401200', '0x00700000', 2)]
+    assert verify.claimed_credits([{'relocs': []}], idx) == []     # an unused credit is not listed

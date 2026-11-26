@@ -1065,20 +1065,21 @@ CLAIMED_CREDITS_FILE = 'claimed_credits.tsv'
 def claimed_credits(results, index):
     """[(symbol, claimed address, known addresses, relocations that used the credit)] for every
     address the source claims that the evidence index credits to a symbol it knows elsewhere
-    (funcs.FunctionIndex.add_claims), sorted. Nothing proves such an address holds a copy of the
+    (funcs.FunctionIndex.add_claims) and that a relocation used, sorted. Nothing proves such an address holds a copy of the
     symbol's function (the known copy may be folded with another function), so a reviewer reads
     this list."""
     used = {}
     for res in results:
         for r in res.get('relocs') or []:
             if r['detail'] == 'claimed address':
-                key = (r['symbol'], r['exe_address'])
+                key = (r['symbol'], int(r['exe_address'], 16))
                 used[key] = used.get(key, 0) + 1
     out = []
     for sym, addrs in index.claimed.items():
         known = ' '.join(f'0x{a:08x}' for a in sorted(index.known.get(sym, ())))
         for a in sorted(addrs):
-            out.append((sym, f'0x{a:08x}', known, used.get((sym, a), 0)))
+            if used.get((sym, a)):      # a credit no relocation uses changes nothing
+                out.append((sym, f'0x{a:08x}', known, used[(sym, a)]))
     return sorted(out, key=lambda t: (t[1], t[0]))
 
 
