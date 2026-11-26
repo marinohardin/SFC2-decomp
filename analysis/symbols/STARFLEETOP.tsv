@@ -774,7 +774,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00414546	function	fn_00414546	tEntity				vtable
 0x00414552	function	fn_00414552	tEntity_Placeholder				vtable
 0x00414557	function	fn_00414557	tEntity_Placeholder				vtable
-0x0041455b	function	fn_0041455b		?fn_0041455b@@YAPAVtEntity_Placeholder@@HH@Z	claim		none
+0x0041455b	function	fn_0041455b		?fn_0041455b@@YAXHH@Z	claim		none
 0x004145d7	function	fn_004145d7					none
 0x004145e7	function	fn_004145e7					none
 0x004145fd	thunk	fn_004145fd					none

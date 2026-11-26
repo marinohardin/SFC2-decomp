@@ -41,8 +41,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0041455b
-tEntity_Placeholder* fn_0041455b(int a, int b)
+void fn_0041455b(int a, int b)
 {
-	tEntity_Placeholder* p = new tEntity_Placeholder(a, b);
-	return p;
+	new tEntity_Placeholder(a, b);
 }
