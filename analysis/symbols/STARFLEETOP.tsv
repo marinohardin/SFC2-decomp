@@ -6827,7 +6827,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e22f5	function	fn_004e22f5	tPhaserBank	?vfunction105@tPhaserBank@@UAEXH@Z	claim		none
 0x004e230c	function	fn_004e230c	tPhaserBank	?vfunction102@tPhaserBank@@UAEXXZ	claim		none
 0x004e23b5	function	fn_004e23b5	tPhaserBank	?vfunction74@tPhaserBank@@UAEMMM@Z	claim		none
-0x004e245e	function	fn_004e245e	tPhaserBank	?vfunction143@tPhaserBank@@UAEMMM@Z	claim		none
+0x004e245e	function	fn_004e245e	tPhaserBank	?vfunction143@tPhaserBank@@UAEMDE@Z	claim		none
 0x004e24b0	function	fn_004e24b0	tPhaserBank	?vfunction135@tPhaserBank@@UAEME@Z	claim		none
 0x004e2542	function	fn_004e2542	tPhaserBank	?vfunction80@tPhaserBank@@UAEXXZ	claim		none
 0x004e25c0	function	fn_004e25c0	tPhaserBank	?vfunction114@tPhaserBank@@UAEMEHH@Z	claim		none
@@ -6946,7 +6946,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e5615	function	fn_004e5615	tPhaserXBank	?vfunction149@tPhaserXBank@@UAEMH@Z	claim		none
 0x004e562b	function	fn_004e562b	tPhaserXBank	?vfunction65@tPhaserXBank@@UAEXD@Z	claim		none
 0x004e568c	function	fn_004e568c	tPhaserBank	?vfunction70@tPhaserBank@@UAEMXZ	claim		none
-0x004e56dc	function	fn_004e56dc	tPhaserXBank	?vfunction143@tPhaserXBank@@UAEMMM@Z	claim		none
+0x004e56dc	function	fn_004e56dc	tPhaserXBank	?vfunction143@tPhaserXBank@@UAEMDE@Z	claim		none
 0x004e572e	function	fn_004e572e	tPhaserXBank	?vfunction135@tPhaserXBank@@UAEME@Z	claim		none
 0x004e57c0	function	fn_004e57c0	tPhaserXBank	?vfunction74@tPhaserXBank@@UAEMMM@Z	claim		none
 0x004e5849	function	fn_004e5849	tPhaserXBank	?vfunction80@tPhaserXBank@@UAEXXZ	claim		none

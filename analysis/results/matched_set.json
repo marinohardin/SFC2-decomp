@@ -16599,7 +16599,7 @@
   },
   "0x004e245e": {
    "name": "tPhaserBank::vfunction143",
-   "symbol": "?vfunction143@tPhaserBank@@UAEMMM@Z",
+   "symbol": "?vfunction143@tPhaserBank@@UAEMDE@Z",
    "unit": "unsorted/tPhaserBank.cpp",
    "size": 82,
    "score": 100.0,
@@ -16797,7 +16797,7 @@
   },
   "0x004e56dc": {
    "name": "tPhaserXBank::vfunction143",
-   "symbol": "?vfunction143@tPhaserXBank@@UAEMMM@Z",
+   "symbol": "?vfunction143@tPhaserXBank@@UAEMDE@Z",
    "unit": "unsorted/tPhaserXBank.cpp",
    "size": 82,
    "score": 100.0,

@@ -1845,7 +1845,7 @@ address	size	symbol	source	modes	decorated
 0x004e22f5	23	tPhaserBank::vfunction105(int)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction105@tPhaserBank@@UAEXH@Z
 0x004e230c	169	tPhaserBank::vfunction102()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction102@tPhaserBank@@UAEXXZ
 0x004e23b5	169	tPhaserBank::vfunction74(float,float)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction74@tPhaserBank@@UAEMMM@Z
-0x004e245e	82	tPhaserBank::vfunction143(char,unsigned char)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction143@tPhaserBank@@UAEMMM@Z
+0x004e245e	82	tPhaserBank::vfunction143(char,unsigned char)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction143@tPhaserBank@@UAEMDE@Z
 0x004e24b0	146	tPhaserBank::vfunction135(unsigned char)	unsorted/tPhaserBank.cpp	partial	?vfunction135@tPhaserBank@@UAEME@Z
 0x004e2542	126	tPhaserBank::vfunction80()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction80@tPhaserBank@@UAEXXZ
 0x004e25c0	337	tPhaserBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction114@tPhaserBank@@UAEMEHH@Z
@@ -1867,7 +1867,7 @@ address	size	symbol	source	modes	decorated
 0x004e5615	22	tPhaserXBank::vfunction149(int)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction149@tPhaserXBank@@UAEMH@Z
 0x004e562b	97	tPhaserXBank::vfunction65(char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction65@tPhaserXBank@@UAEXD@Z
 0x004e568c	80	tPhaserBank::vfunction70()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction70@tPhaserBank@@UAEMXZ
-0x004e56dc	82	tPhaserXBank::vfunction143(char,unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction143@tPhaserXBank@@UAEMMM@Z
+0x004e56dc	82	tPhaserXBank::vfunction143(char,unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction143@tPhaserXBank@@UAEMDE@Z
 0x004e572e	146	tPhaserXBank::vfunction135(unsigned char)	unsorted/tPhaserXBank.cpp	partial	?vfunction135@tPhaserXBank@@UAEME@Z
 0x004e57c0	137	tPhaserXBank::vfunction74(float,float)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction74@tPhaserXBank@@UAEMMM@Z
 0x004e5849	31	tPhaserXBank::vfunction80()	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction80@tPhaserXBank@@UAEXXZ
