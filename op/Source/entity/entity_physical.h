@@ -147,7 +147,7 @@ inline tDynamicMemoryFreeList::~tDynamicMemoryFreeList() { mClearList(); }
 class tPhysicalEntity: public tEntity
 {
 public:
-public:
+	tPhysicalEntity();
 	// HYPOTHESIS: the slots not yet recovered are placeholders that keep the vftable order;
 	// vfunctionN is slot N-1 of the vftable; slot 0 is the scalar deleting destructor. Slots 1
 	// to 21 are tEntity's; the ones this class overrides are declared here.
@@ -238,24 +238,22 @@ public:
 	// HYPOTHESIS: clears the one-byte flag at 0x190 that vfunction61 sets.
 	virtual void vfunction62();
 	// Slots 62, 64 and 65 are pure in the original: this class's vftable holds 0x00737f86
-	// (_purecall) in them. They are declared without a body here, not "= 0", because the unit
-	// that defines this class's functions instantiates it (the compiler refuses an abstract
-	// class). The vftable has 66 slots, 0 to 65; tEntity_Weapon, tEntity_Seeker and tEntityShip
-	// override these three.
+	// (_purecall) in them. The vftable has 66 slots, 0 to 65; tEntity_Weapon, tEntity_Seeker
+	// and tEntityShip override these three.
 	// HYPOTHESIS: returns a float (tEntity_Seeker's override 0x0041e09b loads the member at 0x260,
 	// tEntityShip's 0x00415b6b divides by one; the default shared by the weapons, 0x00504078,
 	// loads a constant).
-	virtual float vfunction63();
+	virtual float vfunction63() = 0;
 	// HYPOTHESIS: forwards to vfunction63 through the vftable (0x00410667 is mov eax, [ecx];
 	// jmp [eax+0xf8]), so it returns a float as well; tEntityShip overrides it (0x00414b31).
 	virtual float vfunction64();
 	// HYPOTHESIS: returns a float: the shared default 0x00504078 and tEntityShip's override
 	// 0x00414b38 both end in fld.
-	virtual float vfunction65();
+	virtual float vfunction65() = 0;
 	// HYPOTHESIS: returns a 16-bit value and takes a byte (ret 4): tEntityShip's override
 	// (0x004155ed) tests byte [esp+8] and returns an angle in ax; the default (0x0041c23c) is
 	// xor ax, ax.
-	virtual short vfunction66(char aValue);
+	virtual short vfunction66(char aValue) = 0;
 
 	// HYPOTHESIS: the parameter type and the return type; 0x004105dd pushes its one
 	// argument unchanged, and 0x00413ac3 passes the result to its object's slot 57.
