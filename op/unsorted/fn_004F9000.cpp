@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004F9000.cpp
-// Functions: 0x004f930e to 0x004f9c6b, 6 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tHypermass.h"
+#include <math.h>
+
+// FUNCTION: STARFLEETOP 0x004f930e
+template<>
+tHypermass<24>::tHypermass()
+	: field_04(24), field_08(1.0f / 24), field_0c((float) sqrt(1152.0)),
+	  field_10(field_08 * 64.0f), field_14(32.0f), field_18(0.03125f)
+{
+	fn_004fa6ec();
+}
