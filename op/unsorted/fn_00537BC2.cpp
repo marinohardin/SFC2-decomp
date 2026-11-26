@@ -129,8 +129,14 @@ int tBitmapFontEx::vfunction3( unsigned short *text, int length )
         }
     }
     return width;
+}
 
+#include <string.h>
 
-
-
+// FUNCTION: STARFLEETOP 0x00537d66
+void tBitmapFontEx::vfunction4( void *buffer, int size )
+{
+    if (field_04 != 0 && size != 0) {
+        strncpy((char *)buffer, (char *)field_04, size);
+    }
 }
