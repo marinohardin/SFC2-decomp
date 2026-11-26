@@ -22244,10 +22244,10 @@
    "name": "FUN_00569c83",
    "symbol": "?fn_00569c83@tTransactionUpdateStores@nAsyncDatabaseProcedure@@IAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Meta/MetaDatabase/AsyncDatabaseProcedures/AsyncDBShipProc/AsyncDatabaseProcedure_TransactionUpdateStores.cpp",
-   "size": 2650,
-   "score": 56.073,
+   "size": 2622,
+   "score": 99.993,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-26"
   },
   "0x0056c414": {
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2",
