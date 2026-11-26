@@ -67,3 +67,11 @@ long __fastcall fn_005c7fb7(tCurrentTime* param_1)
     return *(long*)((char*)param_1 + 0x1c);
 }
 
+// FUNCTION: STARFLEETOP 0x005c7fbb
+// MATCH-ONLY: the original is a __thiscall member (one stack argument, ret 4); a free
+// __fastcall function is the closest this unit can write until tCurrentTime.h declares it.
+long __fastcall fn_005c7fbb(tCurrentTime* param_1, long param_2)
+{
+    return *(long*)((char*)param_1 + 0x20 + param_2 * 4);
+}
+

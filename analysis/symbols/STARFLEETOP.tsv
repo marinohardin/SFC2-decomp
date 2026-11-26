@@ -13321,7 +13321,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c7f7c	function	fn_005c7f7c		?fn_005c7f7c@@YIJPAVtCurrentTime@@@Z	claim		none
 0x005c7fb3	function	fn_005c7fb3		?fn_005c7fb3@@YIJPAD@Z	claim		none
 0x005c7fb7	function	fn_005c7fb7	tBitmapFontEx	?fn_005c7fb7@@YIJPAVtCurrentTime@@@Z	claim		vtable
-0x005c7fbb	function	fn_005c7fbb					none
+0x005c7fbb	function	fn_005c7fbb		?fn_005c7fbb@@YIJPAVtCurrentTime@@J@Z	claim		none
 0x005c7fc6	function	fn_005c7fc6		?fn_005c7fc6@tAIOfficer@@QAEXM@Z	callers		none
 0x005c800e	function	fn_005c800e					none
 0x005c801a	function	fn_005c801a					none
