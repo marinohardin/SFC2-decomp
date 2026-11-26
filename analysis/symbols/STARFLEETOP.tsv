@@ -15484,7 +15484,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00606d42	function	tSecurityRelayC::~tSecurityRelayC	tSecurityRelayC				rtti
 0x00606e50	function	fn_00606e50	tSecurityRelayC				vtable
 0x00606e96	function	fn_00606e96	tSecurityRelayC				vtable
-0x00606efd	function	fn_00606efd	tBaseWeapon				vtable
+0x00606efd	function	fn_00606efd	tBaseWeapon	?vfunction145@tBaseWeapon@@UAEXH@Z	claim		vtable
 0x00606f0a	function	fn_00606f0a					none
 0x00606f4b	function	fn_00606f4b					none
 0x00606f87	function	fn_00606f87					none

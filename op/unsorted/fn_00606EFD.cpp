@@ -1,6 +1,7 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00606EFD.cpp
-// Functions: 0x00606efd to 0x00606f87, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tBaseWeapon.h"
+
+// FUNCTION: STARFLEETOP 0x00606efd
+void tBaseWeapon::vfunction145(int param_1)
+{
+    field_d0 = param_1;
+}
