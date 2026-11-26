@@ -146,3 +146,11 @@ void tMetaClientMapQueueMember::fn_005e8e55( int arg )
 		p[ 6 ] = 0xb;
 	}
 }
+
+// HYPOTHESIS: a setter of the long at 0x1c in a class not yet declared; a free __fastcall
+// function with a dummy edx argument until a header holds the class.
+// FUNCTION: STARFLEETOP 0x005e8ee6
+void __fastcall fn_005e8ee6( void* self, int unused, long value )
+{
+	*(long*)( (char*)self + 0x1c ) = value;
+}
