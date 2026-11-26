@@ -4902,7 +4902,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ab5c6	function	fn_004ab5c6					none
 0x004ab699	function	fn_004ab699					none
 0x004ab6bc	function	fn_004ab6bc					none
-0x004ab70a	function	fn_004ab70a	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004ab70a	function	fn_004ab70a	tState_Namespace_Tactical::tState_Tactical	?vfunction4@tState_Tactical@tState_Namespace_Tactical@@UAE_NXZ	claim		vtable
 0x004aba3c	function	fn_004aba3c					none
 0x004aba46	function	fn_004aba46					none
 0x004aba4f	function	fn_004aba4f					none
@@ -5116,7 +5116,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b97cc	function	fn_004b97cc					none
 0x004b99a4	function	fn_004b99a4					none
 0x004b99f7	function	fn_004b99f7	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b9a3a	function	fn_004b9a3a	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b9a3a	function	fn_004b9a3a	tState_Namespace_Tactical::tState_Tactical	?vfunction9@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z	claim		vtable
 0x004b9d12	function	fn_004b9d12					none
 0x004b9dd6	function	fn_004b9dd6	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004b9e11	function	fn_004b9e11					none
@@ -18573,7 +18573,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069faf0	function	fn_0069faf0	tSWView3D				vtable
 0x0069fb10	function	fn_0069fb10	tSWView3D				vtable
 0x0069fb50	function	fn_0069fb50	tSWView3D				vtable
-0x0069fb90	function	fn_0069fb90	tSWView3D				vtable
+0x0069fb90	function	fn_0069fb90	tSWView3D	?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z	claim		vtable
 0x0069fcc0	function	fn_0069fcc0	tSWView3D				vtable
 0x0069fce0	function	fn_0069fce0	tSWView3D				vtable
 0x0069fcf0	function	fn_0069fcf0	tSWView3D				vtable
@@ -18803,7 +18803,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006aa4a0	function	fn_006aa4a0	tView3DExt				vtable
 0x006aa4d0	function	fn_006aa4d0	tView3DExt				vtable
 0x006aa4e0	function	fn_006aa4e0	tView3DExt				vtable
-0x006aa550	function	fn_006aa550	tView3DExt				vtable
+0x006aa550	function	fn_006aa550	tView3DExt	?vfunction58@tView3DExt@@UAEXPAVtMatrix@@@Z	claim		vtable
 0x006aa6c0	function	fn_006aa6c0	tView3DExt				vtable
 0x006aa6d0	function	fn_006aa6d0	tView3DExt				vtable
 0x006aa6e0	function	fn_006aa6e0	tView3DExt				vtable
@@ -18826,7 +18826,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006abf80	function	fn_006abf80	tView3DExt				vtable
 0x006abfb0	function	fn_006abfb0	tView3DExt				vtable
 0x006abfc0	function	fn_006abfc0	tView3DExt				vtable
-0x006ac5a0	function	fn_006ac5a0	tView3DExt				vtable
+0x006ac5a0	function	fn_006ac5a0	tView3DExt	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z	claim		vtable
 0x006ac780	function	fn_006ac780					none
 0x006ac7c0	function	fn_006ac7c0	tView3DExt				vtable
 0x006ac810	function	fn_006ac810	tView3DExt				vtable
@@ -18869,7 +18869,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b05f0	function	fn_006b05f0					none
 0x006b0b00	function	fn_006b0b00					none
 0x006b0b60	function	fn_006b0b60					none
-0x006b1050	function	fn_006b1050	tSWView3D				vtable
+0x006b1050	function	fn_006b1050	tSWView3D	?vfunction98@tSWView3D@@UAE_NHHH_N@Z	claim		vtable
 0x006b11a0	function	fn_006b11a0					none
 0x006b1230	function	fn_006b1230	tSWView3D				vtable
 0x006b1660	function	fn_006b1660	tSWView3D				vtable
@@ -18884,7 +18884,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b20d0	function	fn_006b20d0					none
 0x006b2230	function	fn_006b2230	tSWView3D				vtable
 0x006b2280	function	fn_006b2280	tSWView3D				vtable
-0x006b23c0	function	fn_006b23c0	tSWView3D				vtable
+0x006b23c0	function	fn_006b23c0	tSWView3D	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z	claim		vtable
 0x006b2500	function	fn_006b2500	tSWView3D				vtable
 0x006b2520	function	fn_006b2520					none
 0x006b26a0	function	tGDISurface::scalar_deleting_destructor	tGDISurface				rtti
