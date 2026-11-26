@@ -131,14 +131,20 @@ def landing(tmp_path, monkeypatch):
                  'report_claimed_credits', 'report_renamed_exact'):
         monkeypatch.setattr(verify, name, lambda *a, **k: None)
     scores = {LISTED: (37.41, False), UNLISTED: (50.0, False)}
+    errors = {}   # address: (error, not_scored), what score_function returns when it fails
 
     def score_function(fn, unit, build, exe, index, recorded=None, table_symbol=None):
+        if fn.address in errors:
+            err, not_scored = errors[fn.address]
+            return dict(address=f'0x{fn.address:08x}', name=fn.name, unit='u.cpp', score=0.0,
+                        exact=False, symbol=f'?{fn.name}@@YAXXZ', size=16, error=err,
+                        not_scored=not_scored)
         score, exact = scores[fn.address]
         return dict(address=f'0x{fn.address:08x}', name=fn.name, unit='u.cpp', score=score,
                     exact=exact, symbol=f'?{fn.name}@@YAXXZ', size=16, rebuilt_size=16,
                     error=None, relocs=[], diff_rows=[], diff_count=0, side_by_side='-')
     monkeypatch.setattr(verify, 'score_function', score_function)
-    state = SimpleNamespace(scores=scores, path=tmp_path / 'matched_set.json')
+    state = SimpleNamespace(scores=scores, errors=errors, path=tmp_path / 'matched_set.json')
 
     def recorded_as(listed):
         """Records LISTED as `listed` (UNLISTED at 50%) in the tree and the base alike."""
@@ -146,7 +152,10 @@ def landing(tmp_path, monkeypatch):
                                                   '0x00401000': _recorded(50.0)}}
         matched.save(paths.MATCHED_SET, json_copy(state.base))
 
-    def run():
+    def run(land=True):
+        """Lands the tree (land=False: verifies it, as build-and-verify.sh --all does)."""
+        if not land:
+            return verify.run(['0x00401000', '0x00427366'], check_all=True)
         return verify.run(['0x00401000', '0x00427366'], check_all=True, record=True,
                           now='2026-11-26', base=(json_copy(state.base), 'develop'), land=True)
     recorded_as(_recorded(37.41))
@@ -221,3 +230,93 @@ def test_a_listed_function_still_exact_keeps_the_stale_row_warning_on_landing(la
             'the row' in rep.lines)
     assert not any('released (' in ln for ln in rep.lines)
     assert _saved(landing.path)['0x00427366']['recorded'] == '2026-11-01'
+
+
+# --- a function objdiff does not finish on -----------------------------------------------------
+
+TIMEOUT = ('objdiff failed: objdiff did not finish in 300 s', True)
+LISTED_TIMEOUT_INFO = ('INFO  0x00427366 g released (2026-11-24): defined twice; not scored: '
+                       'objdiff did not finish in 300 s; matched_set.json left at 37.41%')
+
+
+def test_landing_leaves_a_listed_function_objdiff_does_not_finish_on_as_recorded(landing):
+    before = json.loads(landing.path.read_text())['functions']['0x00427366']
+    landing.errors[LISTED] = TIMEOUT
+    rep = landing.run()
+    assert rep.regressions == [] and not rep.failed            # RESULT OK, exit 0
+    assert LISTED_TIMEOUT_INFO in rep.lines
+    assert not any(ln.startswith('ERROR') for ln in rep.lines)
+    assert not any(ln.startswith(('OK    0x00427366', 'INFO  0x00427366 recorded',
+                                  'INFO  0x00427366 name')) for ln in rep.lines)
+    assert _saved(landing.path)['0x00427366'] == before
+
+
+def test_a_listed_entry_stays_byte_for_byte_when_the_landing_writes_others(landing):
+    before = json.loads(landing.path.read_text())['functions']['0x00427366']
+    landing.errors[LISTED] = TIMEOUT
+    landing.scores[UNLISTED] = (60.0, False)
+    rep = landing.run()
+    assert rep.regressions == [] and not rep.failed
+    assert 'OK    0x00401000 recorded in matched_set.json at 60.00%' in rep.lines
+    saved = _saved(landing.path)
+    assert saved['0x00427366'] == before
+    assert saved['0x00401000']['score'] == 60.0
+
+
+def test_verifying_a_listed_function_objdiff_does_not_finish_on_is_not_a_failure(landing):
+    before = landing.path.read_text()
+    landing.errors[LISTED] = TIMEOUT
+    rep = landing.run(land=False)
+    assert rep.regressions == [] and not rep.failed
+    assert LISTED_TIMEOUT_INFO in rep.lines
+    assert landing.path.read_text() == before
+
+
+def test_an_unlisted_function_objdiff_does_not_finish_on_is_an_error(landing):
+    before = landing.path.read_text()
+    landing.errors[UNLISTED] = TIMEOUT
+    rep = landing.run()
+    assert rep.regressions == [UNLISTED] and rep.failed
+    assert ('ERROR 0x00401000 f: could not be scored: objdiff failed: objdiff did not finish in '
+            '300 s; see harness/README.md, "Released functions"' in rep.lines)
+    assert 'INFO  matched_set.json not written: fix the errors above first' in rep.lines
+    assert landing.path.read_text() == before
+
+
+def test_a_listed_function_recorded_exact_that_objdiff_does_not_finish_on_is_an_error(landing):
+    """Exact is a status a score has to show; with no score it cannot be shown, so the list
+    does not cover it."""
+    landing.recorded_as(_recorded(100.0, True))
+    before = landing.path.read_text()
+    landing.errors[LISTED] = TIMEOUT
+    rep = landing.run()
+    assert rep.regressions == [LISTED] and rep.failed
+    assert ('ERROR 0x00427366 g: could not be scored: objdiff failed: objdiff did not finish in '
+            '300 s (on analysis/results/released.tsv, but recorded exact, which a function that '
+            'is not scored cannot show); see harness/README.md, "Released functions"'
+            in rep.lines)
+    assert landing.path.read_text() == before
+
+
+def test_a_listed_function_whose_rebuild_fails_otherwise_is_an_error(landing):
+    before = landing.path.read_text()
+    landing.errors[LISTED] = ('objdiff failed: error: cannot read object', False)
+    rep = landing.run()
+    assert rep.regressions == [LISTED] and rep.failed
+    assert 'ERROR 0x00427366 g: objdiff failed: error: cannot read object' in rep.lines
+    assert not any('released (' in ln for ln in rep.lines)
+    assert landing.path.read_text() == before
+
+
+def test_a_listed_function_with_no_entry_that_objdiff_does_not_finish_on_is_an_error(landing):
+    """Nothing is recorded, so there is no entry to keep."""
+    landing.base = {'version': 1, 'functions': {'0x00401000': _recorded(50.0)}}
+    matched.save(paths.MATCHED_SET, json_copy(landing.base))
+    before = landing.path.read_text()
+    landing.errors[LISTED] = TIMEOUT
+    rep = landing.run()
+    assert rep.regressions == [] and rep.failed
+    assert ('ERROR 0x00427366 g: could not be scored: objdiff failed: objdiff did not finish in '
+            '300 s (on analysis/results/released.tsv, but not in matched_set.json: there is no '
+            'recorded entry to keep); see harness/README.md, "Released functions"' in rep.lines)
+    assert landing.path.read_text() == before

@@ -343,10 +343,25 @@ does the same: a listed address that scores lower, or is no longer exact, is not
 but one `INFO` line with the date and reason, and the landing step (`harness/landing.sh`) records
 its new, lower score, the one exception to a landing storing only raised scores. An address not
 on the list that scores lower still stops the landing, and nothing is written. A listed address
-that is still exact prints a stale-row warning, so the
-list cannot rot; remove the row then. A malformed row is an error. Adding a row needs the owner's
-approval and a reason a reader can check (for a function given up so that objects link, say); it
-is not a way to pass a lane or to hide a regression, and a lane never adds one.
+that is still exact prints a stale-row warning, so the list cannot rot; remove the row then.
+
+A listed address with a recorded entry that is not exact, and that objdiff does not finish on
+within its time limit, is not scored at all. It is neither a `REGRESSION` nor a failure: one
+`INFO` line gives the date and reason and says `not scored: objdiff did not finish`, and its
+`matched_set.json` entry is left exactly as recorded, on a check and on a landing alike, so the
+base gate has nothing to hold. While objdiff does not finish, nothing can show the row stale; it
+stays until objdiff scores the function again, and the rules above apply from then on. Three
+cases stay errors: a listed address recorded exact, since exact status cannot be shown without a
+score; a listed address with no entry, which has nothing to keep; and any other failure to
+rebuild or score a listed address. An address not on the list that objdiff does not finish on is
+an error saying it could not be scored (and a `REGRESSION` when it is recorded). Observed with
+objdiff 3.8.3, not traced in its code: it did not finish on a target that carries two
+relocations which do not sit on an instruction's operand, one of them reaching the padding after
+the function, and finished once either of the two was taken out.
+
+A malformed row is an error. Adding a row needs the owner's approval and a reason a reader can
+check (for a function given up so that objects link, say); it is not a way to pass a lane or to
+hide a regression, and a lane never adds one.
 
 ## Hooks (`hooks/`)
 
