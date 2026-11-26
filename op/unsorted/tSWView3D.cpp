@@ -301,6 +301,16 @@ bool tSWView3D::vfunction28(unsigned int color)
 	return vfunction27(c[2], c[1], c[0]);
 }
 
+// FUNCTION: STARFLEETOP 0x0069fb10
+bool tSWView3D::vfunction27(unsigned char r, unsigned char g, unsigned char b)
+{
+	unsigned short r16 = r;
+	unsigned short g16 = g;
+	unsigned short b16 = b;
+	field_1f5c = (((r16 & 0xfff8) << 5 | (g16 & 0xfff8)) << 2) | (unsigned short)(b16 >> 3);
+	return true;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
