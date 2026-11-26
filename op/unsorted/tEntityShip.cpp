@@ -15,6 +15,8 @@
 #include "unsorted/tObject_0090be60.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tObject_0096ed60.h"
+#include "unsorted/tIndividualShipSystem.h"
+#include "unsorted/tNetControl.h"
 
 extern float g_008e0cd4[];
 extern tEntityMgr g_008e1060;
@@ -43,6 +45,32 @@ bool __stdcall fn_00414bab(int aCenter, short aAngle, int aSpan)
 	else if ((lo <= aAngle && aAngle <= 0x2000) || (aAngle >= 0 && aAngle <= hi))
 		return true;
 	return false;
+}
+
+extern double g_00c7c148;
+extern double g_00797040;
+
+// HYPOTHESIS: the message's angle (short at +4) and flag (byte at +6) are read through a cast; the
+// view of the message at 0x00414bfa is not declared yet. The result of slot 33's class is read
+// through the entity itself.
+// FUNCTION: STARFLEETOP 0x00414bfa
+void tEntityShip::fn_00414bfa(tNetMsg *aMsg)
+{
+	double now = g_00c7c148;
+	double last = field_ac0;
+	if (now <= last + g_00797040 || fn_00414bab(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x16))
+	{
+		if (((vfunction33_result *)this)->fn_0041021f())
+			return;
+		if (fn_00414bab(*(short *)((char *)field_a18 + 4), *(short *)((char *)aMsg + 4), 0x72))
+			return;
+	}
+	field_ac0 = now;
+	gNetControl.mQueueMsg(aMsg, 0x18, fID, 0.0);
+	field_a10 = 0x18;
+	char *cur = (char *)field_a18;
+	*(short *)(cur + 4) = *(short *)((char *)aMsg + 4);
+	cur[6] = ((char *)aMsg)[6];
 }
 
 // FUNCTION: STARFLEETOP 0x00414b8f

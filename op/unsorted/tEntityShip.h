@@ -186,6 +186,8 @@ public:
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);
 	void fn_00414b47(int param_1);
+	// HYPOTHESIS: queues a movement message; callers reach it through tObject_0042496f.
+	void fn_00414bfa(tNetMsg *aMsg);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

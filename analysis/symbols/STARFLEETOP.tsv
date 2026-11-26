@@ -792,7 +792,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00414b88	function	tNetMsg_kOrbit::mGetMap	tNetMsg_kOrbit	?mGetMap@tNetMsg_kOrbit@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b8f	function	tEntityShip::scalar_deleting_destructor	tEntityShip	??_GtEntityShip@@UAEPAXI@Z	claim		rtti
 0x00414bab	function	fn_00414bab		?fn_00414bab@@YG_NHFH@Z	claim		none
-0x00414bfa	function	fn_00414bfa					none
+0x00414bfa	function	fn_00414bfa		?fn_00414bfa@tEntityShip@@QAEXPAVtNetMsg@@@Z	claim		none
 0x00414cad	function	fn_00414cad					none
 0x00414cf5	function	fn_00414cf5					none
 0x00414d2f	function	fn_00414d2f					none
