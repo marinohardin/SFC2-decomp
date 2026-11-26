@@ -766,7 +766,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004140a9	function	fn_004140a9	tPhysicalEntity	?vfunction47@tPhysicalEntity@@UAEXH@Z	claim		vtable
 0x004140fc	function	fn_004140fc	tPhysicalEntity				vtable
 0x004141fe	function	fn_004141fe	tPhysicalEntity	?vfunction23@tPhysicalEntity@@UAEHXZ	claim		vtable
-0x00414205	function	fn_00414205	tPhysicalEntity				vtable
+0x00414205	function	fn_00414205	tPhysicalEntity	?vfunction24@tPhysicalEntity@@UAEMXZ	claim		vtable
 0x0041424a	function	tEntity_Placeholder::~tEntity_Placeholder	tEntity_Placeholder				rtti
 0x004144f7	function	tEntity_Placeholder::scalar_deleting_destructor	tEntity_Placeholder				rtti
 0x00414513	function	tEntity_Placeholder::~tEntity_Placeholder	tEntity_Placeholder				rtti

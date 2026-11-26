@@ -23,3 +23,9 @@ int tPhysicalEntity::vfunction23()
 {
 	return field_0x1b4;
 }
+
+// FUNCTION: STARFLEETOP 0x00414205
+float tPhysicalEntity::vfunction24()
+{
+	return (float)field_0x1b4 / field_0x1b8;
+}
