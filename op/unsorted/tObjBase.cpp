@@ -57,13 +57,11 @@ void tObjBase::vfunction9( short left, short top, short right, short bottom )
 {
 	if ( field_0C && fn_RectNotEmpty( &field_34 ) )
 		field_0C->vfunction32( &field_34 );
-	tRect *r = &field_34;
-	tRect nr( left, top, right, bottom );
-	*r = nr;
+	field_34 = tRect( left, top, right, bottom );
 	if ( field_0C )
 	{
-		*r = field_0C->vfunction34( *r );
-		if ( field_0C && fn_RectNotEmpty( r ) )
-			field_0C->vfunction32( r );
+		field_34 = field_0C->vfunction34( field_34 );
+		if ( field_0C && fn_RectNotEmpty( &field_34 ) )
+			field_0C->vfunction32( &field_34 );
 	}
 }
