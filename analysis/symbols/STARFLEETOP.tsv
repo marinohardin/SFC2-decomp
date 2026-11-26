@@ -21017,8 +21017,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0071c710	function	std::vector<tJobManager::tJobCategory,std::allocator<tJobManager::tJobCategory>_>::`scalar_deleting_destructor'	std::vector<tJobManager::tJobCategory,std::allocator<tJobManager::tJobCategory>_>	??_G?$vector@VtJobCategory@tJobManager@@V?$allocator@VtJobCategory@tJobManager@@@std@@@std@@QAEPAXI@Z	mangled		mangled
 0x0071c750	function	fn_0071c750					none
 0x0071c7b0	function	tMemberCallback<nSwitch::tDataHandler,long>::tMemberCallback<nSwitch::tDataHandler,long>	tMemberCallback<nSwitch::tDataHandler,long>				rtti
-0x0071c8a0	function	nSwitch::tDataHandler::scalar_deleting_destructor	nSwitch::tDataHandler				rtti
-0x0071c8c0	function	nSwitch::tDataHandler::~tDataHandler	nSwitch::tDataHandler				rtti
+0x0071c8a0	function	nSwitch::tDataHandler::scalar_deleting_destructor	nSwitch::tDataHandler	??_GtDataHandler@nSwitch@@UAEPAXI@Z	claim		rtti
+0x0071c8c0	function	nSwitch::tDataHandler::~tDataHandler	nSwitch::tDataHandler	??1tDataHandler@nSwitch@@UAE@XZ	claim		rtti
 0x0071ca10	function	fn_0071ca10	nSwitch::tDataHandler				vtable
 0x0071cc20	function	fn_0071cc20	nSwitch::tDataHandler				vtable
 0x0071cdf0	function	fn_0071cdf0	nSwitch::tDataHandler				vtable

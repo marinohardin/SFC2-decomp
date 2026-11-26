@@ -19,12 +19,8 @@
 #include "Common/Thread/Thread.h"
 #include "unsorted/nSwitch__tAddress.h"
 
-namespace nSwitch
-{
-
-	// 0xb4 bytes, as the constructor (STARFLEETOP 0x0071c7b0) fills them and tObjectDirectory
-	// puts its tRefCount base at +0xb4.
-	class tDataHandler
+// 0xb4 bytes, as the constructor fills them and tObjectDirectory puts its tRefCount base at +0xb4.
+namespace nSwitch { class tDataHandler
 	{
 	public:
 		// The slots are the exe's vtable at 0x007bb7b8 in order; the slot numbers count from 0.
@@ -73,7 +69,8 @@ namespace nSwitch
 		// +0xac: the smart pointer slots 7 and 9 return.
 		tSmartPtr<tAddress>			f_ac;
 		// +0xb0: the argument slot 0 stores; the constructor clears it.
-		int32u						f_b0;
+		// HYPOTHESIS: the destructor sets the byte it points to (0x0071c8c0), so it is a pointer.
+		bool						*f_b0;
 	};
 
 	typedef char tDataHandler_size_is_0xb4[sizeof(tDataHandler) == 0xb4 ? 1 : -1];
