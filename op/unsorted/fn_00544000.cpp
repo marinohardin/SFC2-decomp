@@ -134,3 +134,26 @@ template<> void tSingleAccessWrapper< std::vector< fn_00544725_elem > >::Delete(
 	}
 	fPointerOptex.Leave();
 }
+
+#include "Common/DataStore/DataStoreOutput.h"
+
+// HYPOTHESIS: the vector writer instantiated for std::string (the size, then each string).
+namespace nDataStore
+{
+// FUNCTION: STARFLEETOP 0x0054491b
+template<>
+tOutput& operator<<( tOutput& output, const std::vector< std::string >& value )
+{
+	int32u size = value.size();
+	output.Write( (const byte*)&size, sizeof( size ) );
+
+	for( std::vector< std::string >::const_iterator i = value.begin();
+		 i != value.end();
+		 i++ )
+	{
+		output << *i;
+	}
+
+	return output;
+}
+}
