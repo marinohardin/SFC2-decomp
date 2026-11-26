@@ -277,6 +277,45 @@ void __cdecl fn_004ab699( unsigned char *rgba )
 	rgba[0] = r;
 }
 
+// HYPOTHESIS: the object at 0x009199c8, whose slot 9 takes a mode.
+class fn_009199c8_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9( int mode );
+};
+
+extern fn_009199c8_object *g_009199c8;
+extern int g_009186bc;
+
+// FUNCTION: STARFLEETOP 0x004ab6bc
+void __cdecl fn_004ab6bc( int kind )
+{
+	switch ( kind )
+	{
+	case 0:
+		g_009186bc = 0;
+		g_009199c8->vfunction9( 0 );
+		break;
+	case 1:
+		g_009186bc = 1;
+		g_009199c8->vfunction9( 1 );
+		break;
+	case 2:
+		g_009186bc = 2;
+		g_009199c8->vfunction9( 3 );
+		break;
+	}
+}
+
 namespace tState_Namespace_Tactical
 {
 
