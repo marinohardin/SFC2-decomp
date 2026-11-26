@@ -58,8 +58,8 @@ address-order
 non-source
     A file under op/ that is not a source or header (`.cpp`, `.c`, `.h`, `.inl`), a `README.md`,
     or one of the tables at op/'s root (`UNITS.tsv`, `manifest.tsv`), or one of the original's
-    standard-library headers named in ROOT_LIBRARY_HEADERS at op/'s root (`xstring`, `xtree`). Names
-    beginning with `.` are not read (a desktop's `.DS_Store` is not the tree's).
+    standard-library headers named in ROOT_LIBRARY_HEADERS at op/'s root (`xstring`, `xtree`).
+    Names beginning with `.` are not read (a desktop's `.DS_Store` is not the tree's).
 
 The baseline, analysis/results/lint_baseline.tsv, lists the breaks develop had when the check
 started (columns check, path, address, reason; `-` for a file-level break's address). A break in
