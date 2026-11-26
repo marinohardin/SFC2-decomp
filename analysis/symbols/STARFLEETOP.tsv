@@ -7371,10 +7371,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004f7fee	function	fn_004f7fee					none
 0x004f8057	function	fn_004f8057					none
 0x004f819c	function	fn_004f819c					none
-0x004f81e2	function	tFx_Hypermass::tFx_Hypermass	tFx_Hypermass				rtti
+0x004f81e2	function	tFx_Hypermass::tFx_Hypermass	tFx_Hypermass	??0tFx_Hypermass@@QAE@XZ	add		rtti
 0x004f823d	function	fn_004f823d	tFx_Hypermass				vtable
 0x004f82c6	function	fn_004f82c6	tFx_Hypermass				vtable
-0x004f851f	function	fn_004f851f					none
+0x004f851f	function	fn_004f851f		?fn_004f851f@@YAPAVtFx_Hypermass@@XZ	claim		none
 0x004f857c	function	tHypermass<12>::tHypermass<12>	tHypermass<12>				rtti
 0x004f85cd	function	fn_004f85cd	tHypermass<12>				vtable
 0x004f8a02	function	tHypermass<16>::tHypermass<16>	tHypermass<16>				rtti
