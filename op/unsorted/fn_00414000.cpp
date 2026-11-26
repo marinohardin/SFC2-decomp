@@ -48,5 +48,6 @@ void fn_0041455b(int a, int b)
 }
 
 // HYPOTHESIS: the global's name is unknown; the path string is from the exe.
+// FUNCTION: STARFLEETOP 0x004145e7
 // FUNCTION: STARFLEETOP 0x004145d7
 tString g_008e0d48 = "assets\\WeaponGroups\\";
