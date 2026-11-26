@@ -62,6 +62,7 @@ public:
 	void fn_004ba5ea(int *param_1);
 	void fn_004ba7c7(int *param_1);
 	void fn_004ba9eb(int *param_1);
+	unsigned char fn_004adc52();
 	void fn_004aba4f();
 	int *fn_004ad878();
 	int *fn_004ad89d();

@@ -4918,7 +4918,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ad8c2	function	fn_004ad8c2					none
 0x004ada57	function	tNetMsg_kChangeHost::~tNetMsg_kChangeHost	tNetMsg_kChangeHost				rtti
 0x004adc4c	function	fn_004adc4c	tState_Namespace_Tactical::tState_Tactical	?vfunction13@tState_Tactical@tState_Namespace_Tactical@@UAEPADXZ	claim		vtable
-0x004adc52	function	fn_004adc52					none
+0x004adc52	function	fn_004adc52		?fn_004adc52@tState_Tactical@tState_Namespace_Tactical@@QAEEXZ	claim		none
 0x004adc63	function	fn_004adc63					none
 0x004adc6d	function	fn_004adc6d					none
 0x004adc83	function	fn_004adc83					none
