@@ -114,7 +114,17 @@ extern fn_00918838_object *g_0091885c;
 extern fn_00918838_object *g_00918860;
 extern fn_00969088_object *g_00969088;
 extern fn_0084b47c_object *g_0084b47c;
-extern int *g_00919b44;
+void __fastcall fn_004c5b95( void *self );
+
+// HYPOTHESIS: the type of the object at 0x00919b44, whose destructor is the function at 0x004c5b95.
+class fn_004c5b95_Object
+{
+public:
+	~fn_004c5b95_Object() { fn_004c5b95( this ); }
+	unsigned char m_data[4];
+};
+
+extern fn_004c5b95_Object *g_00919b44;
 
 // HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
 // global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow).

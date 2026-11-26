@@ -5161,7 +5161,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bbda1	function	fn_004bbda1					none
 0x004bbed7	function	fn_004bbed7					none
 0x004bc197	function	fn_004bc197					none
-0x004bc256	function	fn_004bc256					none
+0x004bc256	function	fn_004bc256		?fn_004bc256@@YIXPAX@Z	add		none
 0x004bc282	function	fn_004bc282					none
 0x004bc3e1	function	fn_004bc3e1					none
 0x004bc53a	function	fn_004bc53a					none
@@ -5609,7 +5609,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004c5af7	function	fn_004c5af7					none
 0x004c5b33	function	fn_004c5b33	tHelpWinMgr_SFC::tFrame				vtable
 0x004c5b85	function	fn_004c5b85					none
-0x004c5b95	function	fn_004c5b95					none
+0x004c5b95	function	fn_004c5b95		?fn_004c5b95@@YIXPAX@Z	add		none
 0x004c5bdd	function	fn_004c5bdd					none
 0x004c5be8	function	fn_004c5be8					none
 0x004c5c33	function	fn_004c5c33					none
