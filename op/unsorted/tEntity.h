@@ -84,8 +84,16 @@ public:
 	virtual int vfunction18();
 	virtual void vfunction19();
 	virtual bool vfunction20(tObject_00410391_link *aLink);	// HYPOTHESIS: unlinks the object at +0x68
-	virtual void vfunction21();
-	virtual void vfunction22();
+	// HYPOTHESIS: returns a count (slot 20): the default (0x00402fa5) is xor eax, eax and the
+	// overrides return a constant (`push 1; pop eax`, `push 2; pop eax`, 0x0042167b and
+	// 0x0041d5f9). Slot 21's overrides compare their index with it unsigned (jae).
+	virtual int vfunction21();
+	// HYPOTHESIS: (slot 21) takes an index and a record to fill and ends with ret 8; the default
+	// (0x005d6ef4) is a bare ret 8 and returns nothing. The overrides (0x0041d2ab, 0x00420447, ...)
+	// do nothing unless the index is below slot 20's count, then fill the record: a type word
+	// (5 or 1) at +0x0, the entity's position (+0x34) at +0x10, a 12-byte value at +0x1c and
+	// a float at +0x28.
+	virtual void vfunction22(unsigned aIndex, void *aRecord);
 	// Names of the archived fields come from the labels the archive function (0x0041004d)
 	// writes. HYPOTHESIS: the other field types and meanings are read from the constructor's
 	// stores only.
