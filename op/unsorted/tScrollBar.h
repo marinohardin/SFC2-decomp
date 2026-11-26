@@ -43,13 +43,13 @@ public:
 	virtual int vfunction20();
 	virtual void vfunction21( int n );
 	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	// vfunction23: tObjBase
+	// vfunction24: tObjBase
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual void vfunction28();
-	virtual void vfunction29();
+	// vfunction28: tObjBase
+	// vfunction29: tObjBase
 	virtual void vfunction30();
 	// HYPOTHESIS: +0x7c handles a mouse event (1 press, 4 release, 7 move); true when handled.
 	virtual unsigned char vfunction31( c_tListBox_Base_Event *event );
