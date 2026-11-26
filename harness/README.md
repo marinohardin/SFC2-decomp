@@ -497,7 +497,7 @@ checking; a build folder left by another commit (a CI runner's, between runs) gi
 no comparison, so a stale record can neither fail nor pass a check. `tools/symbols.py claim` asks the
 same question and refuses (exit 1, "run `--all` first") when the build folder is not of the current tree; with `--results` (the
 symbols of one run's own output, as the loop's `symsync` uses it) the folder is not read, so no identity applies. `landing.sh` names
-which of three it was: a refused replacement of a `mangled`/`add` symbol, a stale build, or another failure (printed as it came). `scripts/check.sh` runs `check`
+which of three it was by `claim`'s exit code (3 a refused replacement, 4 a stale build, else other): a refused replacement of a `mangled`/`add` symbol, a stale build, or another failure (printed as it came). `scripts/check.sh` runs `check`
 before the rebuild (format and coverage) and again after it, when the comparison is this tree's. With `functions.csv`'s mangled
 names and single SDK labels it answers, for an original address, which symbol a call to it must
 name; `python3 -m harness.lib.symtab [<address>...]` prints the rows with the calling convention.

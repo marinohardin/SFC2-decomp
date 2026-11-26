@@ -56,7 +56,7 @@ def test_land_verifies_every_claim_records_and_holds_the_run_to_the_base(tmp_pat
 LANDING = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'landing.sh')
 
 
-def _landing(tmp_path, fail=None, said=''):
+def _landing(tmp_path, fail=None, said='', rc=1):
     """Runs landing.sh in a scratch checkout whose python3 only logs what it was asked to run."""
     repo = tmp_path / 'repo'
     (repo / 'harness').mkdir(parents=True)
@@ -64,8 +64,8 @@ def _landing(tmp_path, fail=None, said=''):
     bin_dir = tmp_path / 'bin'
     bin_dir.mkdir()
     shim = bin_dir / 'python3'
-    shim.write_text('#!/bin/sh\necho "$*" >> "%s"\ncase "$*" in *"%s"*) echo "%s"; exit 1 ;; esac\n'
-                    % (tmp_path / 'log', fail or 'no such command', said))
+    shim.write_text('#!/bin/sh\necho "$*" >> "%s"\ncase "$*" in *"%s"*) echo "%s"; exit %d ;; esac\n'
+                    % (tmp_path / 'log', fail or 'no such command', said, rc))
     shim.chmod(0o755)
     env = {k: v for k, v in os.environ.items() if k not in ('HARNESS_MATCHED_SET', 'SFCOP_LANE')}
     env['PATH'] = f'{bin_dir}:{env["PATH"]}'
@@ -102,16 +102,16 @@ def test_landing_says_what_a_refused_claim_means_and_stops_before_the_seed(tmp_p
     assert 'other than a refused replacement or a stale build' in err
 
 
-@pytest.mark.parametrize('said, want, not_want', [
-    ('ERROR 0x1: ... not replaced (the claim must compile the original',
+@pytest.mark.parametrize('said, rc, want, not_want', [
+    ('ERROR 0x1: ... not replaced (the claim must compile the original', 3,
      'ERROR a claim tried to replace a symbol the table holds', 'not of this source tree'),
-    ('ERROR the last build was not made from the current source tree: x',
+    ('ERROR the last build was not made from the current source tree: x', 4,
      'symbols are not of this source tree', 'a claim tried to replace'),
-    ('ERROR something odd', 'other than a refused replacement or a stale build',
+    ('ERROR something odd', 1, 'other than a refused replacement or a stale build',
      'a claim tried to replace')])
 def test_landing_tells_a_refused_replacement_from_a_stale_build_from_anything_else(
-        tmp_path, said, want, not_want):
-    code, _ = _landing(tmp_path, fail='symbols.py claim', said=said)
+        tmp_path, said, rc, want, not_want):
+    code, _ = _landing(tmp_path, fail='symbols.py claim', said=said, rc=rc)
     err = (tmp_path / 'err').read_text()
     assert code == 2 and want in err and not_want not in err
     assert said in err                                # what claim printed is passed through
@@ -148,3 +148,10 @@ def test_a_symbol_table_that_cannot_be_read_is_an_error_not_a_silent_fallback(tm
     assert rep.failed
     assert any(ln.startswith('ERROR') and 'the symbol table cannot be read' in ln
                for ln in rep.lines)
+
+
+def test_claim_exit_codes_are_the_ones_landing_sh_matches():
+    from tools import symbols
+    text = open(LANDING).read()
+    assert (symbols.EXIT_REFUSED, symbols.EXIT_STALE) == (3, 4)
+    assert '        3) echo' in text and '        4) echo' in text

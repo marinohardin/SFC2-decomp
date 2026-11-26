@@ -326,7 +326,7 @@ def test_claim_refuses_to_replace_a_mangled_or_add_symbol_and_changes_nothing(tm
     table, _ = setup(tmp_path)
     build_folder(tmp_path)
     rc, out = claim_run(tmp_path, capsys)
-    assert rc == 1
+    assert rc == 3
     assert out == (f'ERROR 0x00401000: the build compiled ?Fire@tTestShip@@QAEHXZ, but the table '
                    f'has {FIRE} with symbol_evidence mangled; not replaced (the claim must compile '
                    "the original's symbol; --replace-evidence overrides)\n"
@@ -334,7 +334,7 @@ def test_claim_refuses_to_replace_a_mangled_or_add_symbol_and_changes_nothing(tm
     assert table.read_bytes() == GOOD.encode()
     table.write_text(GOOD.replace(ROW_FIRE, ROW_FIRE.replace('mangled', 'add')), newline='')
     rc, out = claim_run(tmp_path, capsys)
-    assert rc == 1 and 'with symbol_evidence add;' in out
+    assert rc == 3 and 'with symbol_evidence add;' in out
 
 
 def test_claim_still_replaces_a_callers_symbol_and_an_equal_mangled_one(tmp_path, capsys):
@@ -394,12 +394,12 @@ def test_claim_refuses_a_build_of_another_tree_and_changes_nothing(tmp_path, cap
     build, src = build_folder(tmp_path)
     (src / 'a.cpp').write_text('// FUNCTION: STARFLEETOP 0x00401000\nvoid g() {}\n')   # edited since
     rc, out = claim_run(tmp_path, capsys, '--replace-evidence')
-    assert (rc, out) == (1, 'ERROR the last build was not made from the current source tree: its '
+    assert (rc, out) == (4, 'ERROR the last build was not made from the current source tree: its '
                             'symbols are not claimed (run harness/build-and-verify.sh --all first)\n')
     assert table.read_bytes() == GOOD.encode()
     (build / 'symbols.id').unlink()                 # no identity: the same
     rc, out = claim_run(tmp_path, capsys, '--replace-evidence')
-    assert rc == 1 and 'not made from the current source tree' in out
+    assert rc == 4 and 'not made from the current source tree' in out
 
 
 def test_claim_from_a_single_run_output_does_not_need_the_builds_identity(tmp_path, capsys):
