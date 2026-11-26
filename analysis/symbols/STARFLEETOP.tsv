@@ -14460,7 +14460,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8140	function	fn_005e8140		?fn_005e8140@@YGXPAVtMetaClientMapPanel@@JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x005e818f	function	fn_005e818f					none
 0x005e81db	function	fn_005e81db					none
-0x005e8376	function	fn_005e8376					none
+0x005e8376	function	fn_005e8376		?fn_005e8376@@YGXPAVtMetaClientMapPanel@@J@Z	claim		none
 0x005e843a	function	fn_005e843a					none
 0x005e89fd	function	fn_005e89fd					none
 0x005e8acc	function	fn_005e8acc					none

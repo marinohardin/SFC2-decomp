@@ -1,5 +1,9 @@
 #include "Common/Log/LogStream.h"
 #include "unsorted/tMetaClientMapPanel.h"
+#include "unsorted/tObject_0092deb4.h"
+#include "unsorted/fn_0042a480_object.h"
+#include "Common/Thread/AccessPointer.h"
+#include "Switch/Switch.h"
 
 // HYPOTHESIS: the original is the tMetaClientMapPanel member fn_005e80ef(); the lane may not
 // edit the class header, so this is a free function over the panel until it is declared.
@@ -22,4 +26,31 @@ void __stdcall fn_005e8140( tMetaClientMapPanel* panel, long param_1, const std:
 {
 	tOptex::tGuard guard( &panel->field_dc );
 	fn_0060a4b8( fn_00607d61(), message, 0x53c05 );
+}
+
+// HYPOTHESIS: the stream object the original builds on its stack (constructor 0x00576d28,
+// insert 0x00535919, destructor 0x0053b311); its class is not recovered.
+class fn_00576d28_object
+{
+public:
+	fn_00576d28_object( int param );
+	~fn_00576d28_object();
+	void fn_00535919( long value );
+	unsigned char field_0[ 0x1c ];
+};
+
+// HYPOTHESIS: a tMetaClientMapPanel member taking a long; the lane may not edit the class
+// header, so this is a free function over the panel. The members at +0xac (destination
+// address) and +0xcc (switch) are read through offsets.
+// FUNCTION: STARFLEETOP 0x005e8376
+void __stdcall fn_005e8376( tMetaClientMapPanel* panel, long value )
+{
+	tOptex::tGuard guard( &panel->field_dc );
+	bool changed = value != ( *gObject_0092deb4->fn_004d16b2() ).FUN_0042aa4b();
+	if( changed )
+	{
+		fn_00576d28_object message( 0 );
+		message.fn_00535919( value );
+		( *(nSwitch::tSwitch**) ( (char*) panel + 0xcc ) )->fn_00714000( *(nSwitch::tAddress**) ( (char*) panel + 0xac ), 8, (const nDataStore::tStreamable*) &message );
+	}
 }
