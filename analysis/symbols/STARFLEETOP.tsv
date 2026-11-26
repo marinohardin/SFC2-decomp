@@ -3693,7 +3693,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047339f	function	fn_0047339f		?fn_0047339f@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x004733f4	function	tNetMsg_kPlayerInfo::~tNetMsg_kPlayerInfo	tNetMsg_kPlayerInfo				rtti
 0x004734c7	function	tNetMsg_kSetPlayerTeam::~tNetMsg_kSetPlayerTeam	tNetMsg_kSetPlayerTeam				rtti
-0x0047378b	function	fn_0047378b					none
+0x0047378b	function	fn_0047378b		?FUN_0047378b@@YGHH@Z	claim		none
 0x00473792	function	fn_00473792					none
 0x004737bd	function	fn_004737bd					none
 0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti

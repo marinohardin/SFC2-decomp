@@ -102,3 +102,9 @@ void tState_Multiplayer::fn_0047339f()
 		enable = ( ~(unsigned char)field_2200 & 1 ) != 0;
 	fn_004d34c5( 0x10062, enable );
 }
+
+// FUNCTION: STARFLEETOP 0x0047378b
+int __stdcall FUN_0047378b( int param_1 )
+{
+	return param_1;
+}
