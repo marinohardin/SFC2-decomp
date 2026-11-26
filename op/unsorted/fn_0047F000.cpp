@@ -210,3 +210,12 @@ void fn_0047f77c()
 {
     atexit(fn_004bd431);
 }
+
+// HYPOTHESIS: the pointer kept at 0x00915540 to the static skirmish state (type unknown here).
+extern void *g_00915540;
+
+// FUNCTION: STARFLEETOP 0x0047f79f
+void *fn_0047f79f()
+{
+    return g_00915540;
+}
