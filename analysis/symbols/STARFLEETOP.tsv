@@ -7799,7 +7799,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0050c715	function	fn_0050c715					none
 0x0050c7c6	function	fn_0050c7c6					none
 0x0050cab5	function	fn_0050cab5					none
-0x0050cb19	function	fn_0050cb19					none
+0x0050cb19	function	fn_0050cb19		??1tSndZipInfoMgr@@QAE@XZ	callers		none
 0x0050cb59	function	fn_0050cb59					none
 0x0050cc11	function	fn_0050cc11					none
 0x0050ccaa	function	fn_0050ccaa					none
@@ -11177,9 +11177,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00570d2c	function	fn_00570d2c					none
 0x00570ea2	function	fn_00570ea2					none
 0x00571018	function	fn_00571018		?fn_00571018@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z	claim		none
-0x0057118e	function	fn_0057118e		?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z	claim		none
-0x00571304	function	fn_00571304		?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z	claim		none
-0x0057147a	function	fn_0057147a		?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_00571018_object@@@Z	claim		none
+0x0057118e	function	fn_0057118e		?fn_0057118e@fn_00571018_owner@@QAEXPAVfn_0057118e_object@@@Z	claim		none
+0x00571304	function	fn_00571304		?fn_00571304@fn_00571018_owner@@QAEXPAVfn_00571304_object@@@Z	claim		none
+0x0057147a	function	fn_0057147a		?fn_0057147a@fn_00571018_owner@@QAEXPAVfn_0057147a_object@@@Z	claim		none
 0x005715f0	function	fn_005715f0		?fn_005715f0@fn_00571018_owner@@QAEXJPAV1@@Z	claim		none
 0x00571648	function	fn_00571648		?fn_00571648@fn_00571648_owner@@QAE_NH@Z	claim		none
 0x0057165f	function	fn_0057165f	nDatabase::tMemberEval<tShip,long,std::less<long>_>	?fn_0057165f@fn_00571648_owner@@QAE_NH@Z	claim		vtable
@@ -20089,7 +20089,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006f284c	thunk	fn_006f284c		_DirectSoundCreate@12	callers		none
 0x006f2860	function	fn_006f2860					none
 0x006f3860	thunk	fn_006f3860					none
-0x006f3870	function	fn_006f3870					none
+0x006f3870	function	fn_006f3870		?fn_006f3870@@YAXXZ	callers		none
 0x006f38b0	function	fn_006f38b0					none
 0x006f38c0	function	fn_006f38c0					none
 0x006f38f0	function	fn_006f38f0					none

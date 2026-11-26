@@ -9,6 +9,7 @@
 #include "Common/Exceptions/Validate.h"
 #include "Common/Database/DatabaseID.h"
 #include "Common/Database/DatabaseObject.h"
+#include "Common/Database/Database.h"
 // Inline in the SDK; Optex.h declares it only.
 inline tOptex::tGuard::~tGuard()
 {
@@ -48,24 +49,23 @@ public:
 	virtual nDatabase::tID AddToStorage(fn_00571018_object* pObject);
 };
 
-// HYPOTHESIS: the callee 0x00705900 is nDatabase::tDatabase::AddObjectToDBIndex(tDatabaseObject*,
-// iAllocatorID); tDatabase is declared only inside Common/Database/FileDatabaseMgr.cpp, so no
-// second copy is made here and the symbol differs until it moves to a header.
-// HYPOTHESIS: stands in for nDatabase::tDatabase (fAccess at +0x4, fDatabaseStorage at +0x40)
-// until its header is rebuilt; VC6 cannot instantiate the SDK's member template here without
-// its caller.
-class fn_00571018_owner {
+// HYPOTHESIS: the other three instantiations' object types, each with its own copy assignment (0x0053edc7, 0x00546b9c, 0x0055f15e).
+class fn_0057118e_object : public fn_00571018_object { public: fn_0057118e_object& operator=(const fn_0057118e_object& other); };
+class fn_00571304_object : public fn_00571018_object { public: fn_00571304_object& operator=(const fn_00571304_object& other); };
+class fn_0057147a_object : public fn_00571018_object { public: fn_0057147a_object& operator=(const fn_0057147a_object& other); };
+// HYPOTHESIS: stands in for the member templates of tDatabase that these functions instantiate
+// (VC6 cannot instantiate them here without their caller); it derives from tDatabase
+// (Common/Database/Database.h) so the callee 0x00705900 and fAccess, fDatabaseStorage are real.
+class fn_00571018_owner : public nDatabase::tDatabase {
 public:
-	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2(); virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5(); virtual void vfunction6(); virtual void vfunction7(); virtual long vfunction8(long a); virtual void vfunction9();
-	void AddObjectToDBIndex(fn_00571018_object* pActualObject, iAllocatorID allocID); void fn_0054e4dc(long a);
+	void fn_0054e4dc(long a);
 	void fn_00571018(fn_00571018_object* pObject);
-	void fn_0057118e(fn_00571018_object* pObject);
-	void fn_00571304(fn_00571018_object* pObject);
-	void fn_0057147a(fn_00571018_object* pObject);
+	void fn_0057118e(fn_0057118e_object* pObject);
+	void fn_00571304(fn_00571304_object* pObject);
+	void fn_0057147a(fn_0057147a_object* pObject);
 	void fn_005715f0(long a, fn_00571018_owner* b);
-	tOptex fAccess;
-	char fn_00571018_pad[0x40 - 4 - sizeof(tOptex)];
-	fn_00571018_storage* fDatabaseStorage;
+	// HYPOTHESIS: the storage's slot 4 is AddToStorage; the base's storage class is empty.
+	fn_00571018_storage* fn_00571018_storage_ptr() { return (fn_00571018_storage*)fDatabaseStorage; }
 };
 
 // FUNCTION: STARFLEETOP 0x00571018
@@ -89,11 +89,11 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
 #line 161 "fn_00571000.cpp"
-	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	const nDatabase::tID& newID = fn_00571018_storage_ptr()->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 	pActualObject->SetLockID(0);
 
-	AddObjectToDBIndex(pActualObject, allocID);
+	AddObjectToDBIndex((nDatabase::tDatabaseObject*)pActualObject, allocID);
 
 	*pObject = *pActualObject;
 	}
@@ -102,7 +102,7 @@ void fn_00571018_owner::fn_00571018(fn_00571018_object* pObject)
 #line 102
 // HYPOTHESIS: a third instantiation of the same member template, for another database object type.
 // FUNCTION: STARFLEETOP 0x00571304
-void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
+void fn_00571018_owner::fn_00571304(fn_00571304_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
@@ -113,19 +113,19 @@ void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
+	fn_00571304_object* pActualObject = static_cast<fn_00571304_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
 #line 161 "fn_00571000.cpp"
-	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	const nDatabase::tID& newID = fn_00571018_storage_ptr()->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
 	pActualObject->SetLockID(0);
 
-	AddObjectToDBIndex(pActualObject, allocID);
+	AddObjectToDBIndex((nDatabase::tDatabaseObject*)pActualObject, allocID);
 
 	*pObject = *pActualObject;
 	}
@@ -136,7 +136,7 @@ void fn_00571018_owner::fn_00571304(fn_00571018_object* pObject)
 // HYPOTHESIS: a second instantiation of the same member template as 0x00571018, for another
 // database object type; names are not recovered.
 // FUNCTION: STARFLEETOP 0x0057118e
-void fn_00571018_owner::fn_0057118e(fn_00571018_object* pObject)
+void fn_00571018_owner::fn_0057118e(fn_0057118e_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
@@ -147,19 +147,19 @@ void fn_00571018_owner::fn_0057118e(fn_00571018_object* pObject)
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
+	fn_0057118e_object* pActualObject = static_cast<fn_0057118e_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
 #line 161 "fn_00571000.cpp"
-	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	const nDatabase::tID& newID = fn_00571018_storage_ptr()->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
 	pActualObject->SetLockID(0);
 
-	AddObjectToDBIndex(pActualObject, allocID);
+	AddObjectToDBIndex((nDatabase::tDatabaseObject*)pActualObject, allocID);
 
 	*pObject = *pActualObject;
 	}
@@ -169,7 +169,7 @@ void fn_00571018_owner::fn_0057118e(fn_00571018_object* pObject)
 #line 170
 // HYPOTHESIS: a fourth instantiation of the same member template, for another database object type.
 // FUNCTION: STARFLEETOP 0x0057147a
-void fn_00571018_owner::fn_0057147a(fn_00571018_object* pObject)
+void fn_00571018_owner::fn_0057147a(fn_0057147a_object* pObject)
 {
 	tOptex::tGuard guard(&fAccess);
 	{
@@ -180,19 +180,19 @@ void fn_00571018_owner::fn_0057147a(fn_00571018_object* pObject)
 	iAllocatorID allocID = tDynamicAllocator::Instance()->mGetAllocatorID(typeid(*pObject));
 #line 154
 	validate(allocID != kInvalidAllocatorID);
-	fn_00571018_object* pActualObject = static_cast<fn_00571018_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
+	fn_0057147a_object* pActualObject = static_cast<fn_0057147a_object*>(tDynamicAllocator::Instance()->mAllocateClass(allocID));
 #line 157
 	validate(pActualObject);
 	*pActualObject = *pObject;
 #line 160
 	validate(pActualObject->GetID().IsValid() == false);
 #line 161 "fn_00571000.cpp"
-	const nDatabase::tID& newID = fDatabaseStorage->AddToStorage(pActualObject);
+	const nDatabase::tID& newID = fn_00571018_storage_ptr()->AddToStorage(pActualObject);
 	pActualObject->AttachToDB(newID);
 
 	pActualObject->SetLockID(0);
 
-	AddObjectToDBIndex(pActualObject, allocID);
+	AddObjectToDBIndex((nDatabase::tDatabaseObject*)pActualObject, allocID);
 
 	*pObject = *pActualObject;
 	}
