@@ -151,6 +151,8 @@ struct c_tObjBase_Field4C
 	short field_02;
 	short field_04;
 	short field_06;
+	// HYPOTHESIS: 0x00696b40 tests whether the point (relative to the object) hits the shape.
+	bool fn_00696b40( int x, int y );
 };
 
 // HYPOTHESIS: the event record that tObjBase::vfunction31 (slot 30, 0x0067d1c0) takes: the
