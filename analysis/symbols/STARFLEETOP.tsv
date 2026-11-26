@@ -3683,7 +3683,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00473049	function	fn_00473049		?fn_00473049@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEDPAX@Z	add		none
 0x00473067	function	fn_00473067					none
 0x004730ba	function	tNetMsg_kSetPlayerReady::~tNetMsg_kSetPlayerReady	tNetMsg_kSetPlayerReady				rtti
-0x00473141	function	fn_00473141					none
+0x00473141	function	fn_00473141		?FUN_00473141@@YGHPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	claim		none
 0x0047316a	function	fn_0047316a					none
 0x00473194	function	fn_00473194		?fn_00473194@@YGPADPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	add		none
 0x004731cb	function	fn_004731cb					none
