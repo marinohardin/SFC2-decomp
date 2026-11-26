@@ -67,16 +67,22 @@ void fn_005387ee()
 		int row = 0;
 		unsigned char *p = g_00c36458;
 		do {
-			for ( col = 0; col < 0x100; col++ )
-				*(unsigned char *)( (int)p + col ) = (unsigned char)( (float)row * (float)(int)col * g_007b06e4 + g_007959c8 );
+			col = 0;
+			do {
+				unsigned char v = (unsigned char)( (float)row * (float)(int)col * g_007b06e4 + g_007959c8 );
+				p[col++] = v;
+			} while ( col < 0x100 );
 			row++;
 			p += 0x100;
 		} while ( (int)p < (int)g_00c36458 + 0x2000 );
 		row = 0;
 		p = g_00c32458;
 		do {
-			for ( col = 0; col < 0x100; col++ )
-				*(unsigned char *)( (int)p + col ) = (unsigned char)( (float)row * (float)(int)col * g_007b06e4 + g_007959c8 );
+			col = 0;
+			do {
+				unsigned char v = (unsigned char)( (float)row * (float)(int)col * g_007b06e4 + g_007959c8 );
+				p[col++] = v;
+			} while ( col < 0x100 );
 			row++;
 			p += 0x100;
 		} while ( (int)p < (int)g_00c32458 + 0x4000 );
