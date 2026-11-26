@@ -16,6 +16,10 @@ public:
 
 tMessageSink *fn_004e824a();
 
+// HYPOTHESIS: a per-kind byte table and a per-step int table, read by vfunction114.
+extern signed char g_007a8cb4[];
+extern int g_007a8cbc[];
+
 // FUNCTION: STARFLEETOP 0x004e770a
 int tPlasmaLauncher::fn_004e770a()
 {
@@ -230,6 +234,14 @@ void tPlasmaLauncher::vfunction125(int aValue)
     vfunction65(field_fc);
     field_4a8 = param_1;
     vfunction126(local_8);
+}
+
+// FUNCTION: STARFLEETOP 0x004e83ab
+float tPlasmaLauncher::vfunction114(unsigned char param_1, int param_2, int param_3)
+{
+    if (param_3 > 10)
+        param_3 = 10;
+    return g_007a8cb4[field_108] * g_007a8cbc[param_3];
 }
 
 // FUNCTION: STARFLEETOP 0x004e8a69
