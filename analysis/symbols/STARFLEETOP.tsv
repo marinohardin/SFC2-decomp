@@ -809,7 +809,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004155ed	function	fn_004155ed	tEntityShip	?vfunction66@tEntityShip@@UAEFD@Z	claim		vtable
 0x00415628	function	fn_00415628		?fn_00415628@tEntityShip@@QAEXHH@Z	claim		none
 0x0041563f	function	fn_0041563f		?fn_0041563f@tEntityShip@@QAEXH@Z	claim		none
-0x00415652	function	fn_00415652					none
+0x00415652	function	fn_00415652		?fn_00415652@tEntityShip@@QAEXH@Z	claim		none
 0x00415672	function	fn_00415672					none
 0x004156b8	function	fn_004156b8					none
 0x004156e3	function	fn_004156e3					none
@@ -904,7 +904,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00419d71	function	fn_00419d71					none
 0x00419d82	function	fn_00419d82					none
 0x00419dd2	function	fn_00419dd2	tEntityShip				vtable
-0x00419e4a	function	fn_00419e4a					none
+0x00419e4a	function	fn_00419e4a		?fn_00419e4a@tEntityShip@@QAEXH@Z	add		none
 0x00419e84	function	tNetMsg_kSendVoice::~tNetMsg_kSendVoice	tNetMsg_kSendVoice				rtti
 0x0041a061	function	fn_0041a061					none
 0x0041a0d4	function	fn_0041a0d4					none

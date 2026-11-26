@@ -206,6 +206,18 @@ void tEntityShip::fn_0041563f(int param_1)
 		(((tEntityShip *)fField14)->*(*(tSlot21 *)(*(void ***)fField14 + 0x54 / 4)))(param_1);
 	}
 }
+
+// HYPOTHESIS: forwards one argument to slot 20 of the object at +0x14, then calls 0x00419e4a with 0x1f.
+// FUNCTION: STARFLEETOP 0x00415652
+void tEntityShip::fn_00415652(int param_1)
+{
+	if (fField14)
+	{
+		typedef void (tEntityShip::*tSlot20)(int);
+		(((tEntityShip *)fField14)->*(*(tSlot20 *)(*(void ***)fField14 + 0x50 / 4)))(param_1);
+		fn_00419e4a(0x1f);
+	}
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
