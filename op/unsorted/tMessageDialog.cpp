@@ -48,13 +48,14 @@ fn_00607d61_class* fn_00607d61();
 fn_004bcfd3_class* fn_004bcfd3();
 bool fn_004d31b2( long param_1, long param_2 );
 
-
-
-
-
-
-
-
+// MATCH-ONLY: empty body; the bytes are only the implicit member and base destruction.
+// FUNCTION: STARFLEETOP 0x00600604
+// FUNCTION: STARFLEETOP 0x006006ef
+tMessageDialog::~tMessageDialog()
+{
+	// Evidence: the original's 64 bytes are exactly the implicit destruction of
+	// field_14, field_04 and the tTopmostWindow base; the body has no statement of its own.
+}
 
 
 
