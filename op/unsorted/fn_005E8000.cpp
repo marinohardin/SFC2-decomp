@@ -168,3 +168,12 @@ long __fastcall fn_005e8efa( void* self )
 {
 	return *(long*)( (char*)self + 4 );
 }
+
+// FUNCTION: STARFLEETOP 0x005e8f02
+int fn_005e89fd_layout::fn_005e8f02( const tHexPoint& position )
+{
+	unsigned long flags = ( (tCurrentTime*) &position )->fn_0055f269();
+	if( flags & 1 )
+		return ( (tCurrentTime*) this )->fn_0055f269();
+	return 0;
+}
