@@ -41,3 +41,26 @@ void fn_006785c0_StringVector::fn_006785c0()
     operator delete(field_4);
     field_C = field_8 = field_4 = 0;
 }
+
+// HYPOTHESIS: the original is the clear-and-free teardown of a tree whose layout (head at +4,
+// nil at +8, size at +0x10) the standard map here does not have; this is a placeholder attempt.
+class fn_00678600_Tree
+{
+public:
+    int field_0;
+    int field_4;
+    int field_8;
+    int field_C;
+    int field_10;
+    ~fn_00678600_Tree();
+};
+
+// FUNCTION: STARFLEETOP 0x00678600
+fn_00678600_Tree::~fn_00678600_Tree()
+{
+    operator delete((void *)field_4);
+    field_4 = 0;
+    field_10 = 0;
+    operator delete((void *)field_8);
+    field_8 = 0;
+}
