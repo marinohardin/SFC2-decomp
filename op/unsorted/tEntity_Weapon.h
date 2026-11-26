@@ -18,6 +18,8 @@ public:
 	tEntity_Weapon();
 	~tEntity_Weapon();
 
+	virtual void vfunction5();
+
 	// Slots 62 and 64 are both filled by 0x00504078, which loads a float constant.
 	virtual float vfunction63();
 	virtual float vfunction65();

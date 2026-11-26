@@ -47,3 +47,13 @@ fn_0041c983_Triple *fn_0041c983_Triple::fn_0041c983(float aA, float aB, float aC
 	c = aC;
 	return this;
 }
+
+// FUNCTION: STARFLEETOP 0x0041c99c
+void tEntity_Weapon::vfunction5()
+{
+	char* p = (char*)&fIsAlive;
+	if (*p != 0)
+	{
+		*p = 0;
+	}
+}
