@@ -4982,7 +4982,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004afa40	function	fn_004afa40		?fn_004afa40@@YIXPAX@Z	claim		none
 0x004afa4e	function	fn_004afa4e		?fn_004afa4e@@YIXPAXHPBUtPoint4@@HHH@Z	claim		none
 0x004afac9	function	fn_004afac9		?fn_004afac9@@YIXPAXHPBUtPoint4@@H@Z	claim		none
-0x004afb43	function	fn_004afb43					none
+0x004afb43	function	fn_004afb43		?fn_004afb43@@YIPAXPAXHI@Z	claim		none
 0x004afb67	function	fn_004afb67					none
 0x004afbc4	function	fn_004afbc4					none
 0x004afbeb	function	fn_004afbeb					none
