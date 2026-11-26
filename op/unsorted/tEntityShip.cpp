@@ -260,6 +260,13 @@ int tEntityShip::fn_004156b8(int param_1)
 	}
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x004156e3
+fn_004288d1_Object *tEntityShip::fn_004156e3()
+{
+	field_a44->fn_004288d1();
+	return field_a44;
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()

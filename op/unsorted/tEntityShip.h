@@ -115,6 +115,14 @@ public:
 	void fn_00426886(unsigned int aMask);
 };
 
+// HYPOTHESIS: the object of 0x20e0 bytes at 0xa44 of the ship, built by 0x004287d9; its class
+// is not known. 0x004156e3 calls 0x004288d1 on it before returning it.
+class fn_004288d1_Object
+{
+public:
+	void fn_004288d1();
+};
+
 // HYPOTHESIS: members are placed by the constructor's stores and the offsets the class's
 // functions use; types follow the store (fstp is a float, a byte move a byte, a pointer
 // is a pointer) and are guesses where only one is seen. Names are field_<offset>: the
@@ -204,6 +212,7 @@ public:
 	void fn_00415652(int param_1);
 	int fn_00415672(int param_1);
 	int fn_004156b8(int param_1);
+	fn_004288d1_Object *fn_004156e3();
 	void fn_00419e4a(int param_1);
 
 	// 0x1bc is cleared by the constructor.
@@ -265,7 +274,7 @@ public:
 	float field_a28[6];
 	int field_a40;
 	// HYPOTHESIS: an object of 0x20e0 bytes, built by 0x004287d9 with this entity.
-	void *field_a44;
+	fn_004288d1_Object *field_a44;
 	char pada48[0xa54 - 0xa48];
 	// HYPOTHESIS: records of 100 bytes, allocated and cleared by 0x00414b47.
 	void *field_a54[10];
