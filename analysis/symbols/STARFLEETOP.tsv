@@ -8370,7 +8370,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00522bdf	function	fn_00522bdf		?fn_00522bdf@fn_0090bed4_Object@@QAEXHPAVtCommandDestination@@@Z	claim		none
 0x00522c00	function	fn_00522c00		?fn_00522c00@tObject_00522c00@@QAEDPAXPAVtCommandDestination@@@Z	claim		none
 0x00522c46	function	fn_00522c46		?fn_00522c46@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
-0x00522c66	function	fn_00522c66					none
+0x00522c66	function	fn_00522c66		?fn_00522c66@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
 0x00522c86	function	fn_00522c86					none
 0x00522c93	function	fn_00522c93					none
 0x00522d1f	function	fn_00522d1f					none

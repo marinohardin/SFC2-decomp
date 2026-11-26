@@ -263,3 +263,14 @@ void __fastcall fn_00522c46(fn_0090bed4_Object *self, int, tEntity *pEntity)
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x00522c66
+// HYPOTHESIS: the counterpart of 0x00522c46: the captain's flag is set and the ship's byte at +0x5c raised.
+void __fastcall fn_00522c66(fn_0090bed4_Object *self, int, tEntity *pEntity)
+{
+	tAICaptain *pCaptain = (tAICaptain *)self->fn_005235c8((fn_004e2b02_ship_type *)pEntity);
+	if (pCaptain != 0) {
+		pCaptain->fn_0051f0c3(0);
+		*(char *)((char *)pEntity + 0x5c) = 1;
+	}
+}
+
