@@ -240,6 +240,13 @@ extern unsigned char g_009186c7;
 
 #define TACT_CLAMP01( x ) ( ( ( ( x ) > 0.0f ? ( x ) : 0.0f ) < g_007959cc ) ? ( ( x ) > 0.0f ? ( x ) : 0.0f ) : 1.0f )
 
+extern unsigned char g_009186c0;
+extern unsigned char g_009186c1;
+extern unsigned char g_009186c2;
+extern unsigned char g_009186c3;
+
+#define TACT_CLAMP01G( x ) ( ( ( ( x ) > zero ? ( x ) : 0.0f ) < g_007959cc ) ? ( ( x ) > zero ? ( x ) : 0.0f ) : 1.0f )
+
 // HYPOTHESIS: sets a global colour from three floats in 0..1 (red, green, blue).
 // FUNCTION: STARFLEETOP 0x004ab4f3
 void __cdecl fn_004ab4f3( float *rgb )
@@ -248,6 +255,16 @@ void __cdecl fn_004ab4f3( float *rgb )
 	g_009186c5 = (unsigned char)( TACT_CLAMP01( rgb[1] ) * g_007961d0 );
 	g_009186c4 = (unsigned char)( TACT_CLAMP01( rgb[2] ) * g_007961d0 );
 	g_009186c7 = 0xff;
+}
+
+// FUNCTION: STARFLEETOP 0x004ab5c6
+void __cdecl fn_004ab5c6( float *rgb )
+{
+	float zero = 0.0f;
+	g_009186c2 = (unsigned char)( TACT_CLAMP01G( rgb[0] ) * g_007961d0 );
+	g_009186c1 = (unsigned char)( TACT_CLAMP01G( rgb[1] ) * g_007961d0 );
+	g_009186c0 = (unsigned char)( TACT_CLAMP01G( rgb[2] ) * g_007961d0 );
+	g_009186c3 = 0xff;
 }
 
 namespace tState_Namespace_Tactical
