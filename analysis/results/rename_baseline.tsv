@@ -1,2 +1,12 @@
+# Deliberate, evidenced renames of exact functions (harness/lib/renames.py): the placeholder
+# classes of the map control's records took the names of the executable's RTTI (tMetaMapSprite,
+# tMetaMapNormalHex).
 address	base symbol	new symbol
+0x005e374b	?fn_005e374b@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@HPAUc_tScrollBar_FieldA8@@HHK@Z	?fn_005e374b@tMetaMapControl@@QAEXPAVtMetaMapSprite@@HPAUc_tScrollBar_FieldA8@@HHK@Z
+0x005e381f	?fn_005e381f@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	?fn_005e381f@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3891	?fn_005e3891@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	?fn_005e3891@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3903	?fn_005e3903@tMetaMapControl@@QAEXPAUfn_005e36cd_entry@@H@Z	?fn_005e3903@tMetaMapControl@@QAEXPAVtMetaMapNormalHex@@H@Z
+0x005e3935	?fn_005e3935@tMetaMapControl@@QAEKPAUfn_005e374b_entry@@@Z	?fn_005e3935@tMetaMapControl@@QAEKPAVtMetaMapSprite@@@Z
+0x005e3a37	?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z	?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z
+0x005e45a0	??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
 0x00410667	?vfunction64@tPhysicalEntity@@UAEXXZ	?vfunction64@tPhysicalEntity@@UAEMXZ
