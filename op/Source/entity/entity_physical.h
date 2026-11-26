@@ -269,6 +269,7 @@ public:
 	// directly.
 	void fn_004101d3();
 	tPoint3 fn_004130d0();
+	tPoint3 fn_004130f1();
 
 	// HYPOTHESIS: a member of the list at 0x1a4, one per tractor beam: the beam entity's ID
 	// and the target's, as 0x00413614 fills them; the two links are cleared on construction.
