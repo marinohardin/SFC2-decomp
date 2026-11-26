@@ -74,6 +74,14 @@ int tSWView3D::vfunction86()
 	return (int)field_1f68;
 }
 
+// FUNCTION: STARFLEETOP 0x0069f490
+// FUNCTION: STARFLEETOP 0x0069f4b0
+tSWView3D::~tSWView3D()
+{
+	// HYPOTHESIS: the original also resets the member at +0x5f6c (vtable 0x007959d8) here.
+	tSWView3D::vfunction6();
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
