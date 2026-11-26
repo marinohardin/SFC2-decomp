@@ -86,3 +86,21 @@ void __stdcall fn_00677b90(std::pair<const tString, int>* first, std::pair<const
     for (; first != last; first = (tPair*)((char*)first + 0x34))
         first->~tPair();
 }
+
+// HYPOTHESIS: 0x34-byte element: a string followed by a second, zero-initialised field group.
+struct fn_00677bd0_Element
+{
+    tString name;
+    int field_a;
+    int field_b;
+    int field_c;
+    fn_00677bd0_Element();
+};
+
+// FUNCTION: STARFLEETOP 0x00677bd0
+fn_00677bd0_Element::fn_00677bd0_Element()
+{
+    field_b = 0;
+    field_a = 0;
+    field_c = 0;
+}
