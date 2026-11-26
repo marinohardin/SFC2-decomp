@@ -3934,7 +3934,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047eb28	function	fn_0047eb28					none
 0x0047eb5d	function	fn_0047eb5d		?fn_0047eb5d@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXPAVtListBox_Select@@@Z	callers		none
 0x0047ebca	function	fn_0047ebca	tState_Namespace_SingleCampaignSelector::tState_SingleCampaignSelector	?fn_0047ebca@tState_SingleCampaignSelector@tState_Namespace_SingleCampaignSelector@@QAEXXZ	claim		none
-0x0047f05d	function	fn_0047f05d					none
+0x0047f05d	function	fn_0047f05d		?fn_0047f05d@@YG?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z	claim		none
 0x0047f141	function	fn_0047f141					none
 0x0047f41e	function	fn_0047f41e					none
 0x0047f439	function	fn_0047f439					none
