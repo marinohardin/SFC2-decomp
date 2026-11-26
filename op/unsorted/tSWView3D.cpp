@@ -134,12 +134,10 @@ bool tSWView3D::vfunction2(int a, int b)
 		void *made = 0;
 		if (!(ini && debug))
 			made = fn_006b4fe0();
-		if (!made)
-			made = fn_006b3260();
-		device = (fn_0069f510_Device *)made;
+		device = (fn_0069f510_Device *)(made ? made : fn_006b3260());
+		if (!device)
+			return false;
 	}
-	if (!device)
-		return false;
 	g_00c7c10c = a;
 	bool result = device->v5(fn_0069f5d0, b);
 	if (created) {
