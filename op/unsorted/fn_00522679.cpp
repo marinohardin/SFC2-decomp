@@ -88,6 +88,7 @@ class tObject_0051c668 {
 public:
 	void fn_0051c668(int param_1);
 	void fn_0051c5f2(int param_1);
+	char fn_0051c5d1(int param_1, tCommandDestination *pDestination);
 };
 
 // HYPOTHESIS: an object in the table of 0x4000 object pointers indexed by ID, with a virtual
@@ -218,7 +219,7 @@ char __fastcall fn_00522b94(fn_0090bed4_Object *self, int, vfunction33_result *p
 // HYPOTHESIS: 0x00522c00 is a member of fn_0090bed4_Object (this in ecx); it is reached through this one-member class until that header declares it.
 class tObject_00522c00 {
 public:
-	void fn_00522c00(void *pEntity, tCommandDestination *pDestination);
+	char fn_00522c00(void *pEntity, tCommandDestination *pDestination);
 };
 
 extern tEntityMgr g_008e1060;
@@ -230,20 +231,23 @@ void fn_0090bed4_Object::fn_00522bdf(int param_1, tCommandDestination *pDestinat
 	((tObject_00522c00 *)this)->fn_00522c00(pEntity, pDestination);
 }
 
-// HYPOTHESIS: a member of the object fn_00523543 returns (this in ecx), taking the entity's +0x1c value and the destination; that class is not in a header yet.
-char __fastcall fn_0051c5d1(void *self, int, void *pValue, tCommandDestination *pDestination);
+// HYPOTHESIS: 0x0051c5d1 is a member of the object fn_00523543 returns, taking the entity's
+// +0x1c value and the destination.
 
 // FUNCTION: STARFLEETOP 0x00522c00
-void tObject_00522c00::fn_00522c00(void *pEntity, tCommandDestination *pDestination)
+char tObject_00522c00::fn_00522c00(void *pEntity, tCommandDestination *pDestination)
 {
 	vfunction33_result *pShip = (vfunction33_result *)pEntity;
 	fn_0090bed4_Object *self = (fn_0090bed4_Object *)this;
 	if (pShip != 0) {
 		if (pShip->fn_00410223() == -1)
 			self->fn_0052280a((tEntity *)pShip);
-		void *pFleet = self->fn_00523543(pShip->field_60);
-		if (pFleet != 0)
-			fn_0051c5d1(pFleet, 0, (void *)pShip->field_1c, pDestination);
+		tObject_0051c668 *pFleet = (tObject_0051c668 *)self->fn_00523543(pShip->field_60);
+		if (pFleet != 0) {
+			int value = pShip->field_1c;
+			return pFleet->fn_0051c5d1(value, pDestination);
+		}
 	}
+	return 0;
 }
 

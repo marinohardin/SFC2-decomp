@@ -8368,7 +8368,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00522b29	function	fn_00522b29		?fn_00522b29@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
 0x00522b94	function	fn_00522b94		?fn_00522b94@@YIDPAVfn_0090bed4_Object@@HPAUvfunction33_result@@H@Z	claim		none
 0x00522bdf	function	fn_00522bdf		?fn_00522bdf@fn_0090bed4_Object@@QAEXHPAVtCommandDestination@@@Z	claim		none
-0x00522c00	function	fn_00522c00		?fn_00522c00@tObject_00522c00@@QAEXPAXPAVtCommandDestination@@@Z	claim		none
+0x00522c00	function	fn_00522c00		?fn_00522c00@tObject_00522c00@@QAEDPAXPAVtCommandDestination@@@Z	claim		none
 0x00522c46	function	fn_00522c46					none
 0x00522c66	function	fn_00522c66					none
 0x00522c86	function	fn_00522c86					none
