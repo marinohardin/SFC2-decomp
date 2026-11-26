@@ -91,3 +91,14 @@ void tState_MetaLogon::fn_0046d480()
 		}
 	}
 }
+
+// HYPOTHESIS: 0x0046db16 takes the program name to start.
+void fn_0046db16( char *name );
+
+// FUNCTION: STARFLEETOP 0x0046daf2
+void fn_0046daf2()
+{
+	char name[25] = "\"SFC2 Refit Utility.exe\"";
+
+	fn_0046db16( name );
+}
