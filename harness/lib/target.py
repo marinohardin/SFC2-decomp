@@ -203,6 +203,10 @@ def _check(name, sym, sec, off, s_exe, fn_address, index, seen):
     if known:
         if s_exe in known:
             return 'ok', 'known address'
+        if s_exe in index.claimed.get(name, ()):
+            # claimed in the source with exactly this symbol (funcs.add_claims); a symbol with
+            # no known address stays on the path below, where it was already not a mismatch
+            return 'ok', 'claimed address'
         return 'mismatch', 'known at ' + ', '.join(f'0x{a:08x}' for a in sorted(known))
     if name in seen and seen[name] != s_exe:
         return 'mismatch', f'used for 0x{seen[name]:08x} earlier in this function'

@@ -522,9 +522,9 @@ address	size	symbol	source	modes	decorated
 0x00424e2a	71	fn_00424d28_class::fn_00424e2a(const tString&)	unsorted/fn_00424D28.cpp	vc6 guest	?fn_00424e2a@fn_00424d28_class@@QAEHABVtString@@@Z
 0x00424e71	56	fn_00424e71_map::fn_00424e71()	unsorted/fn_00424D28.cpp	vc6 guest	?fn_00424e71@fn_00424e71_map@@QAEXXZ
 0x00424ea9	56	fn_00424ea9_map::fn_00424ea9()	unsorted/fn_00424D28.cpp	vc6 guest	?fn_00424ea9@fn_00424ea9_map@@QAEXXZ
-0x00425066	56	fn_00425066_tree::fn_00425066(node*)	unsorted/fn_00425000.cpp	partial	?fn_00425066@fn_00425066_tree@@QAEXPAUnode@1@@Z
+0x00425066	56	fn_00425066_tree::fn_00425066(node*)	unsorted/fn_00425000.cpp	vc6 guest	?fn_00425066@fn_00425066_tree@@QAEXPAUnode@1@@Z
 0x0042509e	80	fn_00425066_tree::fn_0042509e()	unsorted/fn_00425000.cpp	vc6 guest	?fn_0042509e@fn_00425066_tree@@QAEXXZ
-0x004250ee	48	fn_00425066_tree::fn_004250ee(node*)	unsorted/fn_00425000.cpp	partial	?fn_004250ee@fn_00425066_tree@@QAEXPAUnode@1@@Z
+0x004250ee	48	fn_00425066_tree::fn_004250ee(node*)	unsorted/fn_00425000.cpp	vc6 guest	?fn_004250ee@fn_00425066_tree@@QAEXPAUnode@1@@Z
 0x0042511e	80	fn_0042511e_tree::fn_0042511e()	unsorted/fn_00425000.cpp	vc6 guest	?fn_0042511e@fn_0042511e_tree@@QAEXXZ
 0x004253c2	50	fn_004253c2_iterator::fn_004253c2()	unsorted/fn_00425000.cpp	vc6 guest	?fn_004253c2@fn_004253c2_iterator@@QAEXXZ
 0x00425463	29	fn_00425463()	unsorted/fn_00425000.cpp	vc6 guest	?fn_00425463@@YAXXZ
@@ -615,12 +615,12 @@ address	size	symbol	source	modes	decorated
 0x004282c7	49	_Construct(tTransporterHoldItem*,const tTransporterHoldItem&)	unsorted/tTransporterHoldItem.cpp	partial	?_Construct@std@@YAXPAUtTransporterHoldItem@@ABU2@@Z
 0x004282f8	27	tTransporterHoldItem::fn_004282f8(fn_0050d6a0_Stream*)	unsorted/tTransporterHoldItem.cpp	vc6 guest	?fn_004282f8@tTransporterHoldItem@@QAEXPAVfn_0050d6a0_Stream@@@Z
 0x0042838f	69	tOutOfBounds::tOutOfBounds(const tOutOfBounds&)	unsorted/nException__tOutOfBounds.cpp	vc6	??0tOutOfBounds@nException@@QAE@ABV01@@Z
-0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	partial	??1tClientCharacter@@UAE@XZ
+0x004295d0	248	tClientCharacter::~tClientCharacter()	unsorted/tClientCharacter.cpp	vc6	??1tClientCharacter@@UAE@XZ
 0x004296c8	79	tOptex::~tOptex()	unsorted/tClientCharacter.cpp	vc6	??1tOptex@@QAE@XZ
 0x00429717	110	tOptex::Enter()	unsorted/tClientCharacter.cpp	vc6 guest	?Enter@tOptex@@QAEXXZ
 0x00429785	117	tOptex::TryEnter()	unsorted/tClientCharacter.cpp	vc6 guest	?TryEnter@tOptex@@QAE_NXZ
 0x004297fa	83	tOptex::Leave()	unsorted/tClientCharacter.cpp	vc6 guest	?Leave@tOptex@@QAEXXZ
-0x0042984d	459	tClientCharacter::fn_0042984d(const tClientCharacter &)	unsorted/tClientCharacter.cpp	partial	?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z
+0x0042984d	459	tClientCharacter::fn_0042984d(const tClientCharacter &)	unsorted/tClientCharacter.cpp	vc6 guest	?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z
 0x00429a18	14	tOptex::tGuard::~tGuard()	unsorted/tClientCharacter.cpp	vc6	??1tGuard@tOptex@@QAE@XZ
 0x00429a26	396	tClientCharacter::tClientCharacter(const tClientCharacter &)	unsorted/tClientCharacter.cpp	vc6	??0tClientCharacter@@QAE@ABV0@@Z
 0x00429bb2	340	tClientCharacter::tClientCharacter(const tObject_00543551 *)	unsorted/tClientCharacter.cpp	vc6	??0tClientCharacter@@QAE@PBVtObject_00543551@@@Z
@@ -654,7 +654,7 @@ address	size	symbol	source	modes	decorated
 0x0042a73d	112	fn_0042a480_object::FUN_0042a73d()	unsorted/fn_0042A000.cpp	partial	?FUN_0042a73d@fn_0042a480_object@@QAEXXZ
 0x0042a7b2	13	fn_0042a480_object::FUN_0042a7b2(unsigned long)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a7b2@fn_0042a480_object@@QAEXK@Z
 0x0042a7bf	164	fn_0042a480_object::FUN_0042a7bf(const std::vector< fn_0054185f_ship >&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042a7bf@fn_0042a480_object@@QAEXABV?$vector@Vfn_0054185f_ship@@V?$allocator@Vfn_0054185f_ship@@@std@@@std@@@Z
-0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z
+0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z
 0x0042a92f	107	fn_0042a480_object::FUN_0042a92f()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a92f@fn_0042a480_object@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
 0x0042a99a	32	fn_0042a480_object::FUN_0042a99a()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a99a@fn_0042a480_object@@QAEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ
 0x0042a9ba	81	fn_0042a480_object::FUN_0042a9ba()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a9ba@fn_0042a480_object@@QAE?AVtID@nDatabase@@XZ
@@ -667,14 +667,14 @@ address	size	symbol	source	modes	decorated
 0x0042aacb	32	fn_0042a480_object::FUN_0042aacb()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042aacb@fn_0042a480_object@@QAEHXZ
 0x0042aaeb	29	fn_0042a480_object::FUN_0042aaeb()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042aaeb@fn_0042a480_object@@QAE?AV?$tAccessPointer@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@V?$tSingleAccessWrapper@V?$vector@VtShipCache@tServCharacter@@V?$allocator@VtShipCache@tServCharacter@@@std@@@std@@@@@@XZ
 0x0042ab08	29	fn_0042a480_object::FUN_0042ab08()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ab08@fn_0042a480_object@@QAE?AV?$tAccessPointer@VtMetaMapHex@@V?$tSingleAccessWrapper@VtMetaMapHex@@@@@@XZ
-0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z
+0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z
 0x0042abe4	82	fn_0042a480_object::FUN_0042abe4()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042abe4@fn_0042a480_object@@QAE?AVtHexPoint@@XZ
 0x0042ac36	32	fn_0042a480_object::FUN_0042ac36()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ac36@fn_0042a480_object@@QAEABVtHexPoint@@XZ
 0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	partial	?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ
 0x0042ada1	32	fn_0042a480_object::FUN_0042ada1()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ada1@fn_0042a480_object@@QAEHXZ
 0x0042ade3	56	tObject_0042ade3::~tObject_0042ade3()	unsorted/fn_0042A000.cpp	vc6	??1tObject_0042ade3@@QAE@XZ
-0x0042c053	129	fn_0042c053_Tree::fn_0042c053(fn_0042c053_Node*,fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	partial	?fn_0042c053@fn_0042c053_Tree@@QAEPAUfn_0042c053_Node@@PAU2@0@Z
-0x0042c0d4	56	fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	partial	?fn_0042c0d4@fn_0042c053_Tree@@QAEXPAUfn_0042c053_Node@@@Z
+0x0042c053	129	fn_0042c053_Tree::fn_0042c053(fn_0042c053_Node*,fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c053@fn_0042c053_Tree@@QAEPAUfn_0042c053_Node@@PAU2@0@Z
+0x0042c0d4	56	fn_0042c053_Tree::fn_0042c0d4(fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c0d4@fn_0042c053_Tree@@QAEXPAUfn_0042c053_Node@@@Z
 0x0042c10c	596	fn_0042c10c_Vector::fn_0042c10c(fn_0042c10c_Elem*,unsigned int,const fn_0042c10c_Elem&)	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c10c@fn_0042c10c_Vector@@QAEXPAVtHexPoint@@IABV2@@Z
 0x0042c360	332	fn_0042c360_Tree::fn_0042c360(fn_0042c360_Node*,fn_0042c360_Node*,const fn_0042c360_Value&)	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c360@fn_0042c360_Tree@@QAE?AUfn_0042c360_Iterator@@PAUfn_0042c360_Node@@0ABUfn_0042c360_Value@@@Z
 0x0042c4ac	58	fn_0042c4ac_Tree::fn_0042c4ac(const fn_0042c4ac_Key&) const	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c4ac@fn_0042c4ac_Tree@@QBEPAUfn_0042c4ac_Node@@ABUfn_0042c4ac_Key@@@Z
@@ -1198,7 +1198,7 @@ address	size	symbol	source	modes	decorated
 0x00455897	77	tObject_00455897::fn_00455897()	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455897@tObject_00455897@@QAEXXZ
 0x004558e4	23	tObject_00455897::fn_004558e4(int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_004558e4@tObject_00455897@@QAEXH@Z
 0x004558fb	71	tObject_00455897::fn_004558fb(int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_004558fb@tObject_00455897@@QAEXH@Z
-0x00455942	117	tObject_00455897::fn_00455942(tObject_0045565f *,int)	Source/shipsys/tractor.cpp	partial	?fn_00455942@tObject_00455897@@QAEXPAVtObject_0045565f@@H@Z
+0x00455942	117	tObject_00455897::fn_00455942(tObject_0045565f *,int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455942@tObject_00455897@@QAEXPAVtObject_0045565f@@H@Z
 0x004559b7	99	tObject_00455897::fn_004559b7(int,int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_004559b7@tObject_00455897@@QAEXHH@Z
 0x00455a1a	38	tObject_00455897::fn_00455a1a(int,int,int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a1a@tObject_00455897@@QAEXHHH@Z
 0x00455a40	25	tObject_00455897::fn_00455a40(int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a40@tObject_00455897@@QAEPAVtObject_0045565f@@H@Z
@@ -1241,9 +1241,9 @@ address	size	symbol	source	modes	decorated
 0x00460d3b	116	fn_00460b3b_class::fn_00460d3b(fn_00460acb_iterator,fn_00460acb_iterator)	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460d3b@fn_00460b3b_class@@QAE?AVfn_00460acb_iterator@@V2@0@Z
 0x00460daf	100	fn_00460b73_class::erase(fn_0045e63a_record *,fn_0045e63a_record *)	unsorted/fn_00460000.cpp	vc6 guest	?erase@fn_00460b73_class@@QAEPAVfn_0045e63a_record@@PAV2@0@Z
 0x00460e13	43	fn_00460e13_class::str(const std::string &)	unsorted/fn_00460000.cpp	vc6 guest	?str@fn_00460e13_class@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
-0x00460e3e	56	fn_00460acb_class::fn_00460e3e(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial	?fn_00460e3e@fn_00460acb_class@@QAEXPAUfn_00460acb_node@@@Z
-0x00460e76	48	fn_00460b03_class::fn_00460e76(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial	?fn_00460e76@fn_00460b03_class@@QAEXPAUfn_00460acb_node@@@Z
-0x00460ea6	56	fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *)	unsorted/fn_00460000.cpp	partial	?fn_00460ea6@fn_00460b3b_class@@QAEXPAUfn_00460acb_node@@@Z
+0x00460e3e	56	fn_00460acb_class::fn_00460e3e(fn_00460acb_node *)	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460e3e@fn_00460acb_class@@QAEXPAUfn_00460acb_node@@@Z
+0x00460e76	48	fn_00460b03_class::fn_00460e76(fn_00460acb_node *)	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460e76@fn_00460b03_class@@QAEXPAUfn_00460acb_node@@@Z
+0x00460ea6	56	fn_00460b3b_class::fn_00460ea6(fn_00460acb_node *)	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460ea6@fn_00460b3b_class@@QAEXPAUfn_00460acb_node@@@Z
 0x00460ede	646	fn_00460b73_class::insert(fn_0045e63a_record *,unsigned int,const fn_0045e63a_record &)	unsorted/fn_00460000.cpp	partial	?insert@fn_00460b73_class@@QAEXPAVfn_0045e63a_record@@IABV2@@Z
 0x00466674	6	tState_GameConnections::vfunction13()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest	?vfunction13@tState_GameConnections@tState_Namespace_GameConnections@@UAEPADXZ
 0x0046667a	672	tState_GameConnections::vfunction2()	unsorted/tState_Namespace_GameConnections__tState_GameConnections.cpp	vc6 guest	?vfunction2@tState_GameConnections@tState_Namespace_GameConnections@@UAE_NXZ
@@ -1470,7 +1470,7 @@ address	size	symbol	source	modes	decorated
 0x004bd645	140	fn_004bd645(tString *)	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bd645@@YAHPAVtString@@@Z
 0x004bd6d1	144	fn_004bd6d1(tString *,int)	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bd6d1@@YAHPAVtString@@H@Z
 0x004bd805	78	c_004bd805_Object::c_004bd805_Object()	unsorted/fn_004BD43E.cpp	vc6	??0c_004bd805_Object@@QAE@XZ
-0x004bd8d4	318	c_004bd805_Object::fn_004bd8d4(tString *,int)	unsorted/fn_004BD43E.cpp	partial	?fn_004bd8d4@c_004bd805_Object@@QAEXPAVtString@@H@Z
+0x004bd8d4	318	c_004bd805_Object::fn_004bd8d4(tString *,int)	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bd8d4@c_004bd805_Object@@QAEXPAVtString@@H@Z
 0x004bda12	24	c_004bd805_Object::fn_004bda12()	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bda12@c_004bd805_Object@@QAE_NXZ
 0x004bda34	10	g_004bd805_Object (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6	
 0x004bda3e	12	g_004bd805_Object (atexit registration)	unsorted/fn_004BD43E.cpp	vc6	
@@ -1494,7 +1494,7 @@ address	size	symbol	source	modes	decorated
 0x004bdd5b	12	c_004bd805_Entry::c_004bd805_Entry()	unsorted/fn_004BD43E.cpp	vc6	??0c_004bd805_Entry@@QAE@XZ
 0x004bdd67	67	c_004bd805_Object::fn_004bdd67()	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bdd67@c_004bd805_Object@@QAEXXZ
 0x004bddaa	124	c_004bdd0d_Object::~c_004bdd0d_Object()	unsorted/fn_004BD43E.cpp	vc6	??1c_004bdd0d_Object@@QAE@XZ
-0x004bde26	318	c_004bdd0d_Object::fn_004bde26(tString *,int)	unsorted/fn_004BD43E.cpp	partial	?fn_004bde26@c_004bdd0d_Object@@QAEXPAVtString@@H@Z
+0x004bde26	318	c_004bdd0d_Object::fn_004bde26(tString *,int)	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bde26@c_004bdd0d_Object@@QAEXPAVtString@@H@Z
 0x004bdf64	31	c_004bdd0d_Object::fn_004bdf64(int)	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bdf64@c_004bdd0d_Object@@QAEPAUc_004bd805_Entry@@H@Z
 0x004bdf8d	10	g_004bdd0d_Object (dynamic initializer)	unsorted/fn_004BD43E.cpp	vc6	
 0x004bdf97	12	g_004bdd0d_Object (atexit registration)	unsorted/fn_004BD43E.cpp	vc6	
@@ -1603,7 +1603,7 @@ address	size	symbol	source	modes	decorated
 0x004cf990	7	tSFCPlayer::vfunction106()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction106@tSFCPlayer@@UAEHXZ
 0x004cf997	28	tSFCPlayer::`scalar deleting destructor'	unsorted/tSFCPlayer.cpp	vc6	??_GtSFCPlayer@@UAEPAXI@Z
 0x004cf9b3	19	fn_004cf9b3()	unsorted/tSFCPlayer.cpp	vc6 guest	?fn_004cf9b3@@YAXXZ
-0x004cf9cb	358	tSFCPlayer::~tSFCPlayer()	unsorted/tSFCPlayer.cpp	partial	??1tSFCPlayer@@UAE@XZ
+0x004cf9cb	358	tSFCPlayer::~tSFCPlayer()	unsorted/tSFCPlayer.cpp	vc6	??1tSFCPlayer@@UAE@XZ
 0x004cfb31	1330	tSFCPlayer::vfunction2(tSFCStream &,unsigned mode)	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction2@tSFCPlayer@@UAEXAAVtSFCStream@@I@Z
 0x004d0063	421	tSFCPlayer::vfunction108()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction108@tSFCPlayer@@UAEXXZ
 0x004d0208	411	tSFCPlayer::vfunction109()	unsorted/tSFCPlayer.cpp	vc6 guest	?vfunction109@tSFCPlayer@@UAEXXZ
@@ -1784,7 +1784,7 @@ address	size	symbol	source	modes	decorated
 0x004d3843	98	fn_004d3843(char*)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d3843@@YAXPAD@Z
 0x004d38a5	56	fn_004d38a5_list::fn_004d38a5()	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d38a5@fn_004d38a5_list@@QAEXXZ
 0x004d38dd	116	fn_004d38a5_list::fn_004d38dd(iterator,iterator)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d38dd@fn_004d38a5_list@@QAE?AUiterator@1@U21@0@Z
-0x004d3951	56	fn_004d38a5_list::fn_004d3951(int**)	unsorted/fn_004D3143.cpp	partial	?fn_004d3951@fn_004d38a5_list@@QAEXPAPAH@Z
+0x004d3951	56	fn_004d38a5_list::fn_004d3951(int**)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d3951@fn_004d38a5_list@@QAEXPAPAH@Z
 0x004d39aa	44	fn_004d39aa(long)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d39aa@@YAXJ@Z
 0x004d39d6	44	fn_004d39d6(long)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d39d6@@YAXJ@Z
 0x004d3a02	294	fn_004d3a02(long)	unsorted/fn_004D3143.cpp	vc6 guest	?fn_004d3a02@@YAPAVtFlasher@@J@Z
@@ -2152,7 +2152,7 @@ address	size	symbol	source	modes	decorated
 0x00539016	28	scalar_deleting_destructor(unsigned char)	unsorted/tMetaMapDesc.cpp	vc6 guest	?scalar_deleting_destructor@?$tClassAllocator@VtMetaMapDesc@@@@QAEPAV1@E@Z
 0x005391b0	654	tMetaMapHex::tMetaMapHex(bool)	unsorted/tMetaMapHex.cpp	vc6	??0tMetaMapHex@@QAE@_N@Z
 0x0053943e	28	tMetaMapHex::`scalar deleting destructor'	unsorted/tMetaMapHex.cpp	vc6	??_GtMetaMapHex@@UAEPAXI@Z
-0x00539464	144	tMetaMapHex::~tMetaMapHex()	unsorted/tMetaMapHex.cpp	partial	??1tMetaMapHex@@UAE@XZ
+0x00539464	144	tMetaMapHex::~tMetaMapHex()	unsorted/tMetaMapHex.cpp	vc6	??1tMetaMapHex@@UAE@XZ
 0x005394f4	190	tMetaMapHex::tMetaMapHex(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6	??0tMetaMapHex@@QAE@ABV0@@Z
 0x005395b2	136	tMetaMapHex::operator=(const tMetaMapHex&)	unsorted/tMetaMapHex.cpp	vc6 guest	??4tMetaMapHex@@QAEAAV0@ABV0@@Z
 0x0053963a	455	tMetaMapHex::StreamOut(nDataStore::tOutput&) const	unsorted/tMetaMapHex.cpp	partial	?StreamOut@tMetaMapHex@@UBEXAAVtOutput@nDataStore@@@Z
@@ -2200,10 +2200,10 @@ address	size	symbol	source	modes	decorated
 0x0053a9e3	35	fn_0053a73a_map::insert(const value_type&)	unsorted/tMetaMapHex.cpp	vc6 guest	?insert@fn_0053a73a_map@@QAE?AU?$pair@Viterator@fn_0053a73a_map@@_N@std@@ABUvalue_type@1@@Z
 0x0053aa06	116	fn_0053a73a_map::tree::erase(iterator,iterator)	unsorted/tMetaMapHex.cpp	vc6 guest	?erase@tree@fn_0053a73a_map@@QAE?AViterator@2@V32@0@Z
 0x0053aab4	98	fn_0053a73a_map::tree::fn_0053aab4(const tree&)	unsorted/tMetaMapHex.cpp	vc6 guest	?fn_0053aab4@tree@fn_0053a73a_map@@QAEXABV12@@Z
-0x0053ab16	132	fn_0053a6cc_map::tree::fn_0053ab16(node*,node*)	unsorted/tMetaMapHex.cpp	partial	?fn_0053ab16@tree@fn_0053a6cc_map@@QAEPAUnode@2@PAU32@0@Z
-0x0053ab9a	48	fn_0053a6cc_map::tree::fn_0053ab9a(node*)	unsorted/tMetaMapHex.cpp	partial	?fn_0053ab9a@tree@fn_0053a6cc_map@@QAEXPAUnode@2@@Z
-0x0053abca	132	fn_0053a73a_map::tree::fn_0053abca(node*,node*)	unsorted/tMetaMapHex.cpp	partial	?fn_0053abca@tree@fn_0053a73a_map@@QAEPAUnode@2@PAU32@0@Z
-0x0053ac4e	48	fn_0053a73a_map::tree::fn_0053ac4e(node*)	unsorted/tMetaMapHex.cpp	partial	?fn_0053ac4e@tree@fn_0053a73a_map@@QAEXPAUnode@2@@Z
+0x0053ab16	132	fn_0053a6cc_map::tree::fn_0053ab16(node*,node*)	unsorted/tMetaMapHex.cpp	vc6 guest	?fn_0053ab16@tree@fn_0053a6cc_map@@QAEPAUnode@2@PAU32@0@Z
+0x0053ab9a	48	fn_0053a6cc_map::tree::fn_0053ab9a(node*)	unsorted/tMetaMapHex.cpp	vc6 guest	?fn_0053ab9a@tree@fn_0053a6cc_map@@QAEXPAUnode@2@@Z
+0x0053abca	132	fn_0053a73a_map::tree::fn_0053abca(node*,node*)	unsorted/tMetaMapHex.cpp	vc6 guest	?fn_0053abca@tree@fn_0053a73a_map@@QAEPAUnode@2@PAU32@0@Z
+0x0053ac4e	48	fn_0053a73a_map::tree::fn_0053ac4e(node*)	unsorted/tMetaMapHex.cpp	vc6 guest	?fn_0053ac4e@tree@fn_0053a73a_map@@QAEXPAUnode@2@@Z
 0x0053ac7e	60	tClassAllocator()	unsorted/tMetaMapHex.cpp	vc6 guest	??0?$tClassAllocator@VtMetaMapHex@@@@QAE@XZ
 0x0053acba	77	mAllocate()	unsorted/tMetaMapHex.cpp	vc6 guest	?mAllocate@?$tClassAllocator@VtMetaMapHex@@@@UAEPAVtAllocatedClass@@XZ
 0x0053ad07	12	mAssignAllocID(iAllocatorID)	unsorted/tMetaMapHex.cpp	vc6 guest	?mAssignAllocID@?$tClassAllocator@VtMetaMapHex@@@@MAEXJ@Z
@@ -2244,7 +2244,7 @@ address	size	symbol	source	modes	decorated
 0x0053fece	117	operator<<(tOutput&,const std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest	??6nDataStore@@YAAAVtOutput@0@AAV10@ABV?$vector@Vfn_0054340c_owner@@V?$allocator@Vfn_0054340c_owner@@@std@@@std@@@Z
 0x0053ff43	148	operator>>(tInput&,std::vector< fn_0053f491_elem >&)	unsorted/fn_0053F000.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@Vfn_0053f491_elem@@V?$allocator@Vfn_0053f491_elem@@@std@@@std@@@Z
 0x0053ffd7	182	operator>>(tInput&,std::vector< fn_0054340c_owner >&)	unsorted/fn_0053F000.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@Vfn_0054340c_owner@@V?$allocator@Vfn_0054340c_owner@@@std@@@std@@@Z
-0x00541499	308	tTeamSlot::fn_00541499(tServCharacter*)	Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp	partial	?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z
+0x00541499	308	tTeamSlot::fn_00541499(tServCharacter*)	Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp	vc6 guest	?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z
 0x005430ad	12	fn_005430ad_owner::fn_005430ad()	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430ad@fn_005430ad_owner@@QAE_NXZ
 0x005430b9	26	fn_005430ad_owner::fn_005430b9(bool)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430b9@fn_005430ad_owner@@QAEX_N@Z
 0x005430d3	32	fn_005430ad_owner::fn_005430d3(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005430d3@fn_005430ad_owner@@QAEXH@Z
@@ -2294,10 +2294,10 @@ address	size	symbol	source	modes	decorated
 0x00543702	15	fn_005430ad_owner::fn_00543702(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543702@fn_005430ad_owner@@QAE_NH@Z
 0x00543711	15	fn_005430ad_owner::fn_00543711(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543711@fn_005430ad_owner@@QAE_NH@Z
 0x00543720	15	fn_005430ad_owner::fn_00543720(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543720@fn_005430ad_owner@@QAE_NH@Z
-0x0054372f	118	fn_005430ad_owner::fn_0054372f(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial	?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z
-0x005437a5	184	fn_005430ad_owner::fn_005437a5(const nDatabase::tID &)	unsorted/fn_00543000.cpp	partial	?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z
-0x0054385d	231	fn_005430ad_owner::fn_0054385d(fn_0054385d_source *)	unsorted/fn_00543000.cpp	partial	?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z
-0x00543944	160	fn_005430ad_owner::fn_00543944(const nDatabase::tID &) const	unsorted/fn_00543000.cpp	partial	?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z
+0x0054372f	118	fn_005430ad_owner::fn_0054372f(fn_0054385d_source *)	unsorted/fn_00543000.cpp	vc6 guest	?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z
+0x005437a5	184	fn_005430ad_owner::fn_005437a5(const nDatabase::tID &)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z
+0x0054385d	231	fn_005430ad_owner::fn_0054385d(fn_0054385d_source *)	unsorted/fn_00543000.cpp	vc6 guest	?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z
+0x00543944	160	fn_005430ad_owner::fn_00543944(const nDatabase::tID &) const	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z
 0x005439e4	15	fn_005430ad_owner::fn_005439e4(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005439e4@fn_005430ad_owner@@QAE_NH@Z
 0x005439f3	15	fn_005430ad_owner::fn_005439f3(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_005439f3@fn_005430ad_owner@@QAE_NH@Z
 0x00543a02	15	fn_005430ad_owner::fn_00543a02(int)	unsorted/fn_00543000.cpp	vc6 guest	?fn_00543a02@fn_005430ad_owner@@QAE_NH@Z
@@ -2823,16 +2823,16 @@ address	size	symbol	source	modes	decorated
 0x005bc478	35	fn_005bc478_set::FUN_005bc478(const int &)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc478@fn_005bc478_set@@QAE?AU_Pairib@fn_005bc324_tree@@ABH@Z
 0x005bc49b	116	fn_005bc161_tree::FUN_005bc49b(iterator,iterator)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc49b@fn_005bc161_tree@@QAE?AViterator@1@V21@0@Z
 0x005bc50f	97	fn_005bc50f_record::fn_005bc50f_record(const fn_005bc50f_record &)	unsorted/fn_005BC000.cpp	vc6	??0fn_005bc50f_record@@QAE@ABU0@@Z
-0x005bc570	48	fn_005bc161_tree::FUN_005bc570(node *)	unsorted/fn_005BC000.cpp	partial	?FUN_005bc570@fn_005bc161_tree@@QAEXPAUnode@1@@Z
+0x005bc570	48	fn_005bc161_tree::FUN_005bc570(node *)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc570@fn_005bc161_tree@@QAEXPAUnode@1@@Z
 0x005bc5a0	165	fn_005bc5a0_tree::FUN_005bc5a0(const nDatabase::tID &)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc5a0@fn_005bc5a0_tree@@QAE?AU_Pairib@1@ABVtID@nDatabase@@@Z
 0x005bc645	619	fn_005bc1d5_tree::FUN_005bc645(iterator)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc645@fn_005bc1d5_tree@@QAE?AViterator@1@V21@@Z
-0x005bc8b0	56	fn_005bc1d5_tree::FUN_005bc8b0(node *)	unsorted/fn_005BC000.cpp	partial	?FUN_005bc8b0@fn_005bc1d5_tree@@QAEXPAUnode@1@@Z
+0x005bc8b0	56	fn_005bc1d5_tree::FUN_005bc8b0(node *)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc8b0@fn_005bc1d5_tree@@QAEXPAUnode@1@@Z
 0x005bc8e8	80	fn_005bc1d5_tree::FUN_005bc8e8()	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc8e8@fn_005bc1d5_tree@@QAEXXZ
 0x005bc938	547	fn_005bc938_vector::FUN_005bc938(fn_005bc938_elem *,unsigned int,const fn_005bc938_elem &)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bc938@fn_005bc938_vector@@QAEXPAUfn_005bc938_elem@@IABU2@@Z
 0x005bcb5b	566	fn_005bc2a0_vector::FUN_005bcb5b(fn_005bc2cd_elem *,unsigned int,const fn_005bc2cd_elem &)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bcb5b@fn_005bc2a0_vector@@QAEXPAUfn_005bc2cd_elem@@IABU2@@Z
-0x005bcd91	48	fn_005bc161_tree::FUN_005bcd91(node *)	unsorted/fn_005BC000.cpp	partial	?FUN_005bcd91@fn_005bc161_tree@@QAEXPAUnode@1@@Z
-0x005bcdc1	48	fn_005bc161_tree::FUN_005bcdc1(node *)	unsorted/fn_005BC000.cpp	partial	?FUN_005bcdc1@fn_005bc161_tree@@QAEXPAUnode@1@@Z
-0x005bcdf1	48	fn_005bc161_tree::FUN_005bcdf1(node *)	unsorted/fn_005BC000.cpp	partial	?FUN_005bcdf1@fn_005bc161_tree@@QAEXPAUnode@1@@Z
+0x005bcd91	48	fn_005bc161_tree::FUN_005bcd91(node *)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bcd91@fn_005bc161_tree@@QAEXPAUnode@1@@Z
+0x005bcdc1	48	fn_005bc161_tree::FUN_005bcdc1(node *)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bcdc1@fn_005bc161_tree@@QAEXPAUnode@1@@Z
+0x005bcdf1	48	fn_005bc161_tree::FUN_005bcdf1(node *)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bcdf1@fn_005bc161_tree@@QAEXPAUnode@1@@Z
 0x005bce21	645	fn_005bce21_vector::FUN_005bce21(fn_005bb6fc_elem *,unsigned int,const fn_005bb6fc_elem &)	unsorted/fn_005BC000.cpp	vc6 guest	?FUN_005bce21@fn_005bce21_vector@@QAEXPAUfn_005bb6fc_elem@@IABU2@@Z
 0x005c0b85	12	fn_005c0b85()	unsorted/fn_005C0000.cpp	vc6 guest	?fn_005c0b85@@YAXXZ
 0x005c0b91	12	fn_005c0b91()	unsorted/fn_005C0000.cpp	vc6 guest	?fn_005c0b91@@YAXXZ
@@ -2983,8 +2983,8 @@ address	size	symbol	source	modes	decorated
 0x005d92f1	56	fn_005d92f1_list::erase(iterator)	unsorted/fn_005D913F.cpp	vc6 guest	?erase@fn_005d92f1_list@@QAE?AViterator@1@V21@@Z
 0x005d9329	116	fn_005d9281_tree::fn_005d9329(iterator,iterator)	unsorted/fn_005D913F.cpp	vc6 guest	?fn_005d9329@fn_005d9281_tree@@QAE?AViterator@1@V21@0@Z
 0x005d939d	116	fn_005d92b9_object::fn_005d939d(iterator,iterator)	unsorted/fn_005D913F.cpp	vc6 guest	?fn_005d939d@fn_005d92b9_object@@QAE?AViterator@fn_005d9281_tree@@V23@0@Z
-0x005d9411	48	fn_005d9281_tree::fn_005d9411(node *)	unsorted/fn_005D913F.cpp	partial	?fn_005d9411@fn_005d9281_tree@@QAEXPAUnode@1@@Z
-0x005d96ac	56	fn_005d92b9_object::fn_005d96ac(node *)	unsorted/fn_005D913F.cpp	partial	?fn_005d96ac@fn_005d92b9_object@@QAEXPAUnode@fn_005d9281_tree@@@Z
+0x005d9411	48	fn_005d9281_tree::fn_005d9411(node *)	unsorted/fn_005D913F.cpp	vc6 guest	?fn_005d9411@fn_005d9281_tree@@QAEXPAUnode@1@@Z
+0x005d96ac	56	fn_005d92b9_object::fn_005d96ac(node *)	unsorted/fn_005D913F.cpp	vc6 guest	?fn_005d96ac@fn_005d92b9_object@@QAEXPAUnode@fn_005d9281_tree@@@Z
 0x005d9750	15	g_00c38968 (dynamic initializer)	unsorted/fn_005D913F.cpp	vc6	
 0x005d975f	12	g_00c38968 (atexit registration)	unsorted/fn_005D913F.cpp	vc6	
 0x005d978b	29	fn_005d978b_object::~fn_005d978b_object()	unsorted/fn_005D913F.cpp	vc6	??1fn_005d978b_object@@QAE@XZ
@@ -3028,9 +3028,9 @@ address	size	symbol	source	modes	decorated
 0x005de905	130	_Sort_0(tNewsStory**,tNewsStory**,fn_005de0cf_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort_0@std@@YAXPAPAVtNewsStory@@0Ufn_005de0cf_Pred@@0@Z
 0x005de987	130	_Sort_0(tNewsStory**,tNewsStory**,fn_005de1b8_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort_0@std@@YAXPAPAVtNewsStory@@0Ufn_005de1b8_Pred@@0@Z
 0x005dea09	130	_Sort_0(tNewsStory**,tNewsStory**,fn_005de222_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort_0@std@@YAXPAPAVtNewsStory@@0Ufn_005de222_Pred@@0@Z
-0x005deaac	136	_Sort(tNewsStory**,tNewsStory**,fn_005de0cf_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	partial	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de0cf_Pred@@0@Z
-0x005deb34	136	_Sort(tNewsStory**,tNewsStory**,fn_005de1b8_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	partial	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de1b8_Pred@@0@Z
-0x005debbc	136	_Sort(tNewsStory**,tNewsStory**,fn_005de222_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	partial	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de222_Pred@@0@Z
+0x005deaac	136	_Sort(tNewsStory**,tNewsStory**,fn_005de0cf_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de0cf_Pred@@0@Z
+0x005deb34	136	_Sort(tNewsStory**,tNewsStory**,fn_005de1b8_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de1b8_Pred@@0@Z
+0x005debbc	136	_Sort(tNewsStory**,tNewsStory**,fn_005de222_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de222_Pred@@0@Z
 0x005dec44	127	_Insertion_sort_1(tNewsStory**,tNewsStory**,fn_005de0cf_Pred,tNewsStory**)	unsorted/fn_005DE000.cpp	vc6 guest	?_Insertion_sort_1@std@@YAXPAPAVtNewsStory@@0Ufn_005de0cf_Pred@@0@Z
 0x005decc3	104	_Median(tNewsStory*,tNewsStory*,tNewsStory*,fn_005de0cf_Pred)	unsorted/fn_005DE000.cpp	vc6 guest	?_Median@std@@YAPAVtNewsStory@@PAV2@00Ufn_005de0cf_Pred@@@Z
 0x005ded2b	72	_Unguarded_partition(tNewsStory**,tNewsStory**,tNewsStory*,fn_005de0cf_Pred)	unsorted/fn_005DE000.cpp	vc6 guest	?_Unguarded_partition@std@@YAPAPAVtNewsStory@@PAPAV2@0PAV2@Ufn_005de0cf_Pred@@@Z
@@ -3172,31 +3172,31 @@ address	size	symbol	source	modes	decorated
 0x005e5c25	77	tMetaClientMapPanel::fn_005e5c25(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5c25@tMetaClientMapPanel@@QAEXJ@Z
 0x005e5c72	123	tMetaClientMapPanel::fn_005e5c72(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5c72@tMetaClientMapPanel@@QAEXABVtHexPoint@@@Z
 0x005e5ced	141	tMetaClientMapPanel::fn_005e5ced()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ced@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
-0x005e5d7a	100	tMetaClientMapPanel::fn_005e5d7a()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
+0x005e5d7a	100	tMetaClientMapPanel::fn_005e5d7a()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ
 0x005e5dde	35	tMetaClientMapPanel::fn_005e5dde()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5dde@tMetaClientMapPanel@@QAEJXZ
 0x005e5e01	35	tMetaClientMapPanel::fn_005e5e01()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5e01@tMetaClientMapPanel@@QAEJXZ
 0x005e5e24	184	tMetaClientMapPanel::fn_005e5e24(int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5e24@tMetaClientMapPanel@@QAEXH@Z
 0x005e5edc	11	tMetaClientMapPanel::fn_005e5edc()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5edc@tMetaClientMapPanel@@QAEXXZ
 0x005e5ee7	13	tMetaClientMapPanel::fn_005e5ee7(char)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ee7@tMetaClientMapPanel@@QAEXD@Z
-0x005e5ef4	413	tMetaClientMapPanel::fn_005e5ef4()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ
+0x005e5ef4	413	tMetaClientMapPanel::fn_005e5ef4()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ
 0x005e6091	160	tMetaClientMapPanel::fn_005e6091()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6091@tMetaClientMapPanel@@QAEXXZ
 0x005e620c	184	tMetaClientMapPanel::fn_005e620c(long,long,bool*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e620c@tMetaClientMapPanel@@QAEXJJPA_N@Z
 0x005e62c4	244	tMetaClientMapPanel::fn_005e62c4(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e62c4@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
-0x005e6469	129	tMetaClientMapPanel::fn_005e6469(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z
+0x005e6469	129	tMetaClientMapPanel::fn_005e6469(long)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z
 0x005e64ea	83	tMetaClientMapPanel::fn_005e64ea()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e64ea@tMetaClientMapPanel@@QAE_NXZ
 0x005e653d	168	tMetaClientMapPanel::fn_005e653d(const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e653d@tMetaClientMapPanel@@QAE_NABVtHexPoint@@@Z
 0x005e65e5	93	tMetaClientMapPanel::fn_005e65e5(const tPoint*,const tRect*)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e65e5@tMetaClientMapPanel@@QAE_NPBUtPoint@@PBUtRect@@@Z
-0x005e6642	117	tMetaClientMapPanel::fn_005e6642(const fn_005e6642_record&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z
-0x005e66b7	241	tMetaClientMapPanel::fn_005e66b7(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
-0x005e67a8	489	tMetaClientMapPanel::fn_005e67a8(const nDatabase::tID&,const tHexPoint&,long,nDatabase::tID)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z
-0x005e6991	176	tMetaClientMapPanel::fn_005e6991(const nDatabase::tID&,const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z
-0x005e6a41	170	tMetaClientMapPanel::fn_005e6a41()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	partial	?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ
+0x005e6642	117	tMetaClientMapPanel::fn_005e6642(const fn_005e6642_record&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z
+0x005e66b7	241	tMetaClientMapPanel::fn_005e66b7(const fn_005ea9ce_elem&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z
+0x005e67a8	489	tMetaClientMapPanel::fn_005e67a8(const nDatabase::tID&,const tHexPoint&,long,nDatabase::tID)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z
+0x005e6991	176	tMetaClientMapPanel::fn_005e6991(const nDatabase::tID&,const tHexPoint&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z
+0x005e6a41	170	tMetaClientMapPanel::fn_005e6a41()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ
 0x005e6d7c	110	tMetaMapNormalHex::tMetaMapNormalHex(const tMetaMapNormalHex&)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6	??0tMetaMapNormalHex@@QAE@ABV0@@Z
 0x005e7744	52	fn_005e7744_vector::fn_005e7744()	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e7744@fn_005e7744_vector@@QAEXXZ
 0x005e78c6	95	tMetaClientMapPanel::fn_005e78c6(tSmartPtr< fn_005e78c6_object >,int,int)	Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp	vc6 guest	?fn_005e78c6@tMetaClientMapPanel@@QAEXV?$tSmartPtr@Vfn_005e78c6_object@@@@HH@Z
 0x005ea14b	179	tTree_005ea14b::fn_005ea14b(const std::pair<int, int> &)	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea14b@tTree_005ea14b@@QAE?AUtPairib@1@ABU?$pair@HH@std@@@Z
 0x005ea1fe	619	tTree_005ea14b::fn_005ea1fe(iterator)	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea1fe@tTree_005ea14b@@QAE?AViterator@1@V21@@Z
-0x005ea469	56	tTree_005ea14b::fn_005ea469(tNode *)	unsorted/fn_005EA000.cpp	partial	?fn_005ea469@tTree_005ea14b@@QAEXPAUtNode@1@@Z
+0x005ea469	56	tTree_005ea14b::fn_005ea469(tNode *)	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea469@tTree_005ea14b@@QAEXPAUtNode@1@@Z
 0x005ea4a1	324	tTree_005ea4a1::fn_005ea4a1(tNode *,tNode *,const tValue &)	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea4a1@tTree_005ea4a1@@QAE?AViterator@1@PAUtNode@1@0ABUtValue@1@@Z
 0x005ea63f	332	tTree_005ea63f::fn_005ea63f(tNode *,tNode *,const tValue &)	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea63f@tTree_005ea63f@@QAE?AViterator@1@PAUtNode@1@0ABUtValue@1@@Z
 0x005ea78b	59	tTree_005ea14b::iterator::fn_005ea78b()	unsorted/fn_005EA000.cpp	vc6 guest	?fn_005ea78b@iterator@tTree_005ea14b@@QAEXXZ
@@ -3256,10 +3256,10 @@ address	size	symbol	source	modes	decorated
 0x005fb259	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	partial	?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z
 0x005fb2cd	170	insert(const value_type&)	unsorted/fn_005FB000.cpp	partial	?insert@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@@Z
 0x005fb377	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	partial	?_Erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
-0x005fb3af	48	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	partial	?_Erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
+0x005fb3af	48	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	vc6 guest	?_Erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
 0x005fb3df	155	insert(const value_type&)	unsorted/fn_005FB000.cpp	vc6 guest	?insert@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@2@@Z
 0x005fb47a	619	erase(iterator)	unsorted/fn_005FB000.cpp	vc6 guest	?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@@Z
-0x005fb6e5	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	partial	?_Erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXPAU_Node@12@@Z
+0x005fb6e5	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	vc6 guest	?_Erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXPAU_Node@12@@Z
 0x005fb867	324	_Insert(_Nodeptr,_Nodeptr,const _Ty&)	unsorted/fn_005FB000.cpp	vc6 guest	?_Insert@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@IAE?AViterator@12@PAU_Node@12@0ABU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@2@@Z
 0x005fb9ab	31	CreateCallback(tMetaClientChatCtlrC*,void (tMetaClientChatCtlrC::*func)( const tChatChannel& result ))	unsorted/fn_005FB000.cpp	vc6 guest	?CreateCallback@@YA?AV?$tMemberCallback@VtMetaClientChatCtlrC@@ABVtChatChannel@@@@PAVtMetaClientChatCtlrC@@P82@AEXABVtChatChannel@@@Z@Z
 0x005fb9ca	7	~tMemberCallback()	unsorted/fn_005FB000.cpp	vc6 guest	??1?$tMemberCallback@VtMetaClientChatCtlrC@@ABVtChatChannel@@@@UAE@XZ
@@ -4657,7 +4657,7 @@ address	size	symbol	source	modes	decorated
 0x00690340	167	fn_00690340(char *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	vc6 guest	?fn_00690340@@YAPAVfn_0068ff60_Root@@PADAAVtString@@PAV1@VtDir@@@Z
 0x006903f0	14	fn_006903f0(fn_0068ff60_Root *)	unsorted/tSession.cpp	vc6 guest	?fn_006903f0@@YAPAVfn_0068d830_Item@@PAVfn_0068ff60_Root@@@Z
 0x00690400	124	tHtmlParser::fn_00690400()	unsorted/tSession.cpp	vc6 guest	?fn_00690400@tHtmlParser@@QAEXXZ
-0x00690480	67	fn_00690480(tObjBase *)	unsorted/tSession.cpp	partial	?fn_00690480@@YAPAVtBrowser@@PAVtObjBase@@@Z
+0x00690480	67	fn_00690480(tObjBase *)	unsorted/tSession.cpp	vc6 guest	?fn_00690480@@YAPAVtBrowser@@PAVtObjBase@@@Z
 0x006904d0	1072	tHtmlParser::fn_006904d0()	unsorted/tSession.cpp	partial	?fn_006904d0@tHtmlParser@@QAEXXZ
 0x00690900	235	tHtmlParser::fn_00690900()	unsorted/tSession.cpp	vc6 guest	?fn_00690900@tHtmlParser@@QAEXXZ
 0x006909f0	36	tHtmlParser::fn_006909f0()	unsorted/tSession.cpp	vc6 guest	?fn_006909f0@tHtmlParser@@QAEXXZ
@@ -4986,7 +4986,7 @@ address	size	symbol	source	modes	decorated
 0x0070f860	152	tWinTimer::ChangeTiming(int32u,int32u)	Common/Timer/WinTimer.cpp	vc6 guest	?ChangeTiming@tWinTimer@@UAEXKK@Z
 0x0070f900	26	tWinTimer::StopTimer()	Common/Timer/WinTimer.cpp	vc6 guest	?StopTimer@tWinTimer@@UAEXXZ
 0x0070f920	18	tWinTimer::TimePassedSinceStart()	Common/Timer/WinTimer.cpp	vc6 guest	?TimePassedSinceStart@tWinTimer@@UAEKXZ
-0x0070f940	128	tWinTimer::WinTimerCallback(unsigned int,unsigned int,int32u,int32u,int32u)	Common/Timer/WinTimer.cpp	partial	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z
+0x0070f940	128	tWinTimer::WinTimerCallback(unsigned int,unsigned int,int32u,int32u,int32u)	Common/Timer/WinTimer.cpp	vc6	?WinTimerCallback@tWinTimer@@KGXIIKKK@Z
 0x0070fc80	32	tTimer::tTimer()	Common/Timer/Timer.cpp	vc6	??0tTimer@@QAE@XZ
 0x0070fca0	30	tTimer::`scalar deleting destructor'	Common/Timer/Timer.cpp	vc6	??_GtTimer@@UAEPAXI@Z
 0x0070fcc0	7	tTimer::~tTimer()	Common/Timer/Timer.cpp	vc6	??1tTimer@@UAE@XZ

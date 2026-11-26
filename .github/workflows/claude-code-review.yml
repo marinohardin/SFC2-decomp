@@ -3,11 +3,21 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
+  # Started by hand for a pull request the automatic review skipped (a fork's, a draft, a grind
+  # landing): `gh workflow run claude-code-review.yml -f pr=<number>`. Only someone with write
+  # access can start it. It reads the pull request through gh and checks out the base, never the
+  # pull request's head.
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: The pull request number to review
+        required: true
+        type: string
 
 # One review at a time per pull request. A running review is not cancelled by a new push: the
 # push may only merge the base branch, and then it is not reviewed again (see "Decide").
 concurrency:
-  group: claude-code-review-${{ github.event.pull_request.number }}
+  group: claude-code-review-${{ github.event.pull_request.number || inputs.pr }}
   cancel-in-progress: false
 
 jobs:
@@ -16,11 +26,13 @@ jobs:
     # Not for a fork's pull request: it gets no secrets, and its code never runs with them.
     # Not for a grind landing (a `grind/` lane or an `integrate/` batch): its diff is decompiled
     # functions, which the verifier judges byte for byte in `check`, and is too large to read whole.
+    # A dispatched review always runs, whatever the pull request.
     if: >-
-      github.event.pull_request.draft == false &&
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.draft == false &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       !startsWith(github.head_ref, 'grind/') &&
-      !startsWith(github.head_ref, 'integrate/')
+      !startsWith(github.head_ref, 'integrate/'))
     # Reads the pull request through gh only: a hosted runner, so it never waits behind a build.
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -44,7 +56,7 @@ jobs:
       - name: Decide whether this push needs a review
         id: decide
         env:
-          EVENT: ${{ github.event.action }}
+          EVENT: ${{ github.event_name == 'workflow_dispatch' && 'dispatch' || github.event.action }}
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.event.pull_request.head.sha }}
           BASE: origin/${{ github.event.pull_request.base.ref }}
@@ -71,7 +83,7 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: |
-            Review pull request ${{ github.repository }}/pull/${{ github.event.pull_request.number }}.
+            Review pull request ${{ github.repository }}/pull/${{ github.event.pull_request.number || inputs.pr }}.
 
             Read the "When reviewing a pull request" section of AGENTS.md and follow it, then review the change in depth:
             - Read the whole diff with `gh pr diff`. Do not filter it with grep and do not truncate it with head; test files are part of the review.
