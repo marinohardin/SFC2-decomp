@@ -17987,7 +17987,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00686ef0	function	fn_00686ef0	tValueBtn				vtable
 0x00686fc0	function	fn_00686fc0	tRectShape				vtable
 0x00687010	function	tNotifiee::~tNotifiee	tNotifiee				rtti
-0x00687060	function	tNotifiee::~tNotifiee	tNotifiee				rtti
+0x00687060	function	tNotifiee::~tNotifiee	tNotifiee	??0tActionUser@@QAE@XZ	claim		rtti
 0x006870b0	function	tVisObject::tVisObject	tVisObject				rtti
 0x006870d0	function	tVisSprite::scalar_deleting_destructor	tVisSprite				rtti
 0x006870f0	function	fn_006870f0					none

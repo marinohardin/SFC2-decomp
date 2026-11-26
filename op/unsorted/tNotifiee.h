@@ -15,6 +15,7 @@ class tNotifier;
 class tNotifiee
 {
 public:
+	tNotifiee() { field_0x4 = 0; }
 	virtual void vfunction0();
 	virtual ~tNotifiee();
 	// HYPOTHESIS: the member of the destructor body, called by the two destructors.
