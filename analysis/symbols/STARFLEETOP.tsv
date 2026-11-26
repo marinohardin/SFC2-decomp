@@ -7390,7 +7390,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004fa0a0	function	tHypermass<36>::tHypermass<36>	tHypermass<36>	??0?$tHypermass@$0CE@@@QAE@XZ	claim		rtti
 0x004fa0f1	function	fn_004fa0f1	tHypermass<36>				vtable
 0x004fa526	function	fn_004fa526		?fn_004fa526@?$tHypermass@$0M@@@QAE?AUtPoint3@@II@Z	claim		none
-0x004fa58f	function	fn_004fa58f					none
+0x004fa58f	function	fn_004fa58f		?fn_004fa58f@?$tHypermass@$0M@@@QAE?AUtPoint2@@II@Z	claim		none
 0x004fa662	function	fn_004fa662					none
 0x004fa6ec	function	fn_004fa6ec		?fn_004fa6ec@?$tHypermass@$0M@@@QAEXXZ	add		none
 0x004fa9bc	function	fn_004fa9bc					none
