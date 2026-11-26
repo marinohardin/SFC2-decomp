@@ -226,3 +226,16 @@ bool tVisObject::fn_0067d2d0( tVisObject *object )
 	field_2C = object;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d310
+bool tObjBase::fn_0067d310( tObjBase *child )
+{
+	if ( field_2C != child || field_2C == 0 )
+		return false;
+	if ( field_0C == 0 || field_0C->fn_0067d310( this ) )
+	{
+		field_2C = 0;
+		return true;
+	}
+	return false;
+}
