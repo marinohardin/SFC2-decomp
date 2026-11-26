@@ -25,6 +25,17 @@ def test_local_symbols_are_defined_in_the_function_section():
     assert (sym.section, sym.value) == (1, 6)
 
 
+def test_a_relocation_to_the_function_itself_names_the_function_symbol():
+    # Slot 1 of the symbol table is the `.text` auxiliary record, so the function is slot 2: a
+    # self-call must point there, or a reader (objdiff) finds no relocation at all.
+    raw = coff.write_object(b'\xe8\x00\x00\x00\x00\xc3', '?f@@YAXXZ',
+                           [(1, '?f@@YAXXZ', coff.REL_REL32)])
+    obj = coff.CoffObject(raw)
+    (r_off, idx, typ), = obj.sections[1].relocs
+    assert (r_off, obj.symbols[idx].name, typ) == (1, '?f@@YAXXZ', coff.REL_REL32)
+    assert obj.symbols[idx].value == 0 and obj.symbols[idx].section == 1
+
+
 def test_function_ends_at_the_next_function_symbol_in_its_section():
     raw = coff.write_object(b'\xc3' * 4, '_f', [], [])
     obj = coff.CoffObject(raw)

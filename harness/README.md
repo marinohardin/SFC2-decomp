@@ -125,6 +125,11 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    relocation, so objdiff sees the pair equal). Nothing else changes in the copies, the
    result's `relocs` keep the type `SECREL`, `objdiff_rewrites` counts the records rewritten that belong to this function (both sides: its own relocations in the rebuilt object and in the target object, not the unit's), and
    the report prints a line for each function that has such a relocation.
+   **A function that refers to itself** (a recursive call, the address of its own callback) has a
+   relocation to its own symbol. The target object points that relocation at the function's
+   symbol, as the rebuilt object does, so objdiff sees a relocation on both sides and the pair
+   equal; the strict check resolves it as an own-section label (the exe's field must reach this
+   function's own address, else it is a mismatch).
 5. Runs `objdiff-cli diff` for the score, and a strict byte comparison of the masked bytes.
    **Exact** means objdiff 100% and the strict check equal.
 6. Re-scores every other recorded function in the same unit (a header or shared edit can break

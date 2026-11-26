@@ -130,7 +130,8 @@ def write_object(code, func_name, relocs, local_symbols=(), data=()):
     aux = struct.pack('<IHHIHB3x', len(code), len(relocs), 0, 0, 0, 0)
     symbols.append(('.text', 0, 1, 0, SYM_CLASS_STATIC, aux))
     symbols.append((func_name, 0, 1, SYM_TYPE_FUNCTION, SYM_CLASS_EXTERNAL, b''))
-    index = {}
+    # Symbol table slots count each auxiliary record: `.text` takes slots 0 and 1, the function 2.
+    index = {'.text': 0, func_name: 2}
     for i, (name, _) in enumerate(data):
         symbols.append((name, 0, 2 + i, 0, SYM_CLASS_EXTERNAL, b''))
         index[name] = sum(1 + (1 if a else 0) for *_, a in symbols) - 1
@@ -142,8 +143,6 @@ def write_object(code, func_name, relocs, local_symbols=(), data=()):
         if name not in index and name != func_name and name != '.text':
             index[name] = slot()
             symbols.append((name, value, 1, 0, SYM_CLASS_STATIC, b''))
-    index.setdefault('.text', 0)
-    index.setdefault(func_name, 1)
     for _, target, _ in relocs:
         if target not in index:
             index[target] = slot()
