@@ -75,3 +75,11 @@ long __fastcall fn_005c7fbb(tCurrentTime* param_1, long param_2)
     return *(long*)((char*)param_1 + 0x20 + param_2 * 4);
 }
 
+// FUNCTION: STARFLEETOP 0x005c7fc6
+// MATCH-ONLY: the original is a tAIOfficer member taking one float; written as a free
+// __fastcall function with a dummy edx argument until the class is declared here.
+void __fastcall fn_005c7fc6(char* param_1, int, float param_2)
+{
+    *(float*)(param_1 + 0xc) = param_2;
+}
+
