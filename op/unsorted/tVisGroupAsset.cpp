@@ -37,14 +37,14 @@ c_00678500* tVisGroupAsset::vfunction4()
 // (a tVisObject, whose field_48 holds an id, is assumed).
 tVisObject* fn_0067ea20( int id );
 
-// MATCH-ONLY: tObjBase declares its slots only up to +0x50 (tVisObject.h is not this lane's);
+// MATCH-ONLY: tObjBase declares its slots only up to slot 28 (tVisObject.h);
 // the call below needs slot 36 (+0x90), so the slots in between are padded here.
 class tVisObjectSlots : public tVisObject
 {
 public:
-	virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24(); virtual void vfunction25();
-	virtual void vfunction26(); virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
+	// The slots up to 29 come from tObjBase.
 	virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32(); virtual void vfunction33();
+//
 	virtual void vfunction34(); virtual void vfunction35(); virtual void vfunction36();
 	virtual void vfunction37( tVisGroupAsset *asset );
 };
