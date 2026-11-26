@@ -78,8 +78,10 @@ int tSWView3D::vfunction86()
 // FUNCTION: STARFLEETOP 0x0069f4b0
 tSWView3D::~tSWView3D()
 {
-	// HYPOTHESIS: the original also resets the member at +0x5f6c (vtable 0x007959d8) here.
 	tSWView3D::vfunction6();
+	// HYPOTHESIS: the inlined ~tGLPixFmt of the member at +0x5f6c resets its vtable (0x007959d8).
+	// MATCH-ONLY: stored as a raw address, the class is not in a shared header.
+	*(unsigned long *)field_5f6c = 0x007959d8;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb90
