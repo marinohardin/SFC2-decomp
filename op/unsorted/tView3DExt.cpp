@@ -117,12 +117,10 @@ void tView3DExt::vfunction33(unsigned int index, const void *light)
 	if (index < 0x40) {
 		const int *src = (const int *)light;
 		*(int *)&field_0x778[index][0x00] = src[0];
-		*(int *)&field_0x778[index][0x04] = src[1];
-		*(int *)&field_0x778[index][0x08] = src[2];
-		*(int *)&field_0x778[index][0x0c] = src[3];
-		*(int *)&field_0x778[index][0x10] = src[4];
-		*(int *)&field_0x778[index][0x14] = src[5];
-		*(int *)&field_0x778[index][0x18] = src[6];
+		// HYPOTHESIS: the light record holds the direction (+4) and position (+0x10) points that
+		// vfunction58 transforms; copying them as points gives the original's store addressing.
+		*(tPoint3 *)&field_0x778[index][0x04] = *(const tPoint3 *)&src[1];
+		*(tPoint3 *)&field_0x778[index][0x10] = *(const tPoint3 *)&src[4];
 		*(int *)&field_0x778[index][0x1c] = src[7];
 		*(int *)&field_0x778[index][0x20] = src[8];
 		*(int *)&field_0x778[index][0x24] = src[9];
