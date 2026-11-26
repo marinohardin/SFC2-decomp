@@ -1,5 +1,6 @@
 #include <vector>
 #include "unsorted/tAsset.h"
+#include "Tiger/tstring.h"
 
 // HYPOTHESIS: owning class unknown; this+0x170 is a vector of pointers, as tCastMgr holds there.
 class fn_00677060_Owner
@@ -74,4 +75,12 @@ void fn_00677060_Owner::fn_006773e0(unsigned int index)
 int fn_00677b60_Owner::fn_00677b60()
 {
     return field_0.size();
+}
+
+// FUNCTION: STARFLEETOP 0x00677b90
+void __stdcall fn_00677b90(fn_00677b60_Element* first, fn_00677b60_Element* last)
+{
+    // HYPOTHESIS: elements are 0x34 bytes with a tString at offset 0.
+    for (; first != last; ++first)
+        ((tString*)first)->tString::~tString();
 }
