@@ -45,8 +45,8 @@ def code_lines(*parts):
     return [l.strip() for l in text.splitlines() if l.strip() and not l.strip().startswith("#")]
 
 
-def test_pull_request_check_scores_with_the_native_compiler():
-    lines = code_lines(".github", "workflows", "pull-request.yml")
+def test_check_scores_with_the_native_compiler():
+    lines = code_lines(".github", "workflows", "check.yml")
     assert 'HARNESS_COMPILER: native' in lines
     assert not [l for l in lines if l.startswith("HARNESS_COMPILER: docker")]
     assert "compiler: native" in lines
@@ -78,3 +78,91 @@ def test_setup_action_checks_docker_only_for_the_docker_compiler():
     docker = [i for i, l in enumerate(lines) if l.startswith("docker version")]
     assert native < other and docker and all(i > other for i in docker)
     assert any("sh toolchain/fetch-native.sh" in l for l in lines[native:other])
+
+
+WORKFLOWS = ROOT / ".github" / "workflows"
+# Events whose workflow file or payload a stranger can influence.
+UNSAFE_EVENTS = {"pull_request", "pull_request_target", "issue_comment", "pull_request_review",
+                 "pull_request_review_comment", "workflow_run"}
+
+
+def triggers(text):
+    """The event names in a workflow's top-level `on:` (block, list or single-name form)."""
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        m = re.match(r"^(?:on|\"on\"|'on'):\s*(.*?)\s*(?:#.*)?$", line)
+        if not m:
+            continue
+        inline = m.group(1)
+        if inline:
+            return set(re.findall(r"[a-z_]+", inline.strip("[]")))
+        found = set()
+        for nxt in lines[i + 1:]:
+            if nxt.strip() and not nxt.startswith(" ") and not nxt.startswith("#"):
+                break
+            k = re.match(r"^  ([a-z_]+):", nxt)
+            if k:
+                found.add(k.group(1))
+        return found
+    return set()
+
+
+def self_hosted_jobs(text):
+    """Names of the jobs whose `runs-on:` mentions self-hosted."""
+    out, job = [], None
+    for line in text.splitlines():
+        m = re.match(r"^  ([\w-]+):\s*$", line)
+        if m:
+            job = m.group(1)
+        r = re.match(r"^    runs-on:(.*)$", line)
+        if r and job and "self-hosted" in r.group(1):
+            out.append(job)
+    return out
+
+
+def unsafe_self_hosted(text):
+    """Self-hosted jobs of a workflow that an unsafe event triggers."""
+    return self_hosted_jobs(text) if triggers(text) & UNSAFE_EVENTS else []
+
+
+def test_trigger_and_job_parsers_on_hand_written_text():
+    block = "name: x\non:\n  pull_request:\n    types: [opened]\n  workflow_dispatch:\npermissions: {}\n"
+    assert triggers(block) == {"pull_request", "workflow_dispatch"}
+    assert triggers("on: [push, workflow_run]\n") == {"push", "workflow_run"}
+    assert triggers("on: push\n") == {"push"}
+    jobs = "jobs:\n  a:\n    runs-on: ubuntu-latest\n  b:\n    runs-on: [self-hosted, x]\n"
+    assert self_hosted_jobs(jobs) == ["b"]
+    assert unsafe_self_hosted("on:\n  pull_request:\n" + jobs) == ["b"]
+    assert unsafe_self_hosted("on:\n  push:\n" + jobs) == []
+
+
+def test_no_self_hosted_job_runs_on_an_event_a_stranger_can_influence():
+    files = sorted(WORKFLOWS.glob("*.yml"))
+    assert files, "no workflow files found"
+    bad = {f.name: unsafe_self_hosted(f.read_text()) for f in files}
+    assert {n: j for n, j in bad.items() if j} == {}
+
+
+def test_check_runs_on_push_and_dispatch_only():
+    text = (WORKFLOWS / "check.yml").read_text()
+    assert triggers(text) == {"push", "workflow_dispatch"}
+    assert self_hosted_jobs(text) == ["check"]
+
+
+def test_docker_audit_is_schedule_and_dispatch_only():
+    assert triggers((WORKFLOWS / "docker-audit.yml").read_text()) == {"schedule", "workflow_dispatch"}
+
+
+def test_review_can_be_started_by_hand_and_never_checks_out_the_pull_request_head():
+    text = (WORKFLOWS / "claude-code-review.yml").read_text()
+    assert triggers(text) == {"pull_request", "workflow_dispatch"}
+    lines = code_lines(".github", "workflows", "claude-code-review.yml")
+    assert "pr:" in lines and "required: true" in lines
+    assert any("inputs.pr" in l for l in lines)
+    # No checkout names a ref: the default is the base, and the pull request is read through gh.
+    for i, l in enumerate(lines):
+        if l.startswith("uses: actions/checkout@") or l.startswith("- uses: actions/checkout@"):
+            tail = lines[i + 1:i + 6]
+            assert not [t for t in tail if t.startswith(("ref:", "repository:"))]
+    assert not re.search(r"head\.(ref|sha)|refs/pull|pull/\S*/head", "\n".join(
+        l for l in lines if "AFTER:" not in l and "head_ref" not in l and "head.repo" not in l))

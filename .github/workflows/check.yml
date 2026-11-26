@@ -1,0 +1,58 @@
+name: Check
+
+# The definition of done, with the retail files and the native compiler, on the owner's machine.
+# It never runs on a pull request event: a pull request runs the workflow files of its own merge
+# commit, so a fork could rewrite this file and run commands on the owner's machine. A push to a
+# branch of this repository runs the file as it is on that branch, and only someone with write
+# access can push. Commits on a pull request's head carry this run's status, so a pull request
+# from a branch of this repository shows `check` as before. A fork's pull request gets the hosted
+# `tests` job only; the integrator starts `check` for it by hand (workflow_dispatch, after reading
+# the diff).
+#
+# `develop` and `main` are left out: everything reaches them through a pull request whose branch
+# has already passed, and a squash-merge adds no code that run has not seen.
+on:
+  push:
+    branches-ignore: [main, develop]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: A commit SHA or a branch name to check
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+# A new push to a branch replaces the run of the previous one.
+concurrency:
+  group: check-${{ inputs.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: [self-hosted, sfcop-mac]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+          # The whole history: scripts/check.sh holds the branch to its merge base with
+          # origin/develop, and there is no merge commit on a push to find it in.
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+        with:
+          compiler: native
+
+      - name: The definition of done
+        env:
+          # The tests job of the pull request workflow runs them on every pull request.
+          CHECK_SKIP_TESTS: "1"
+          # The runner is a Mac with the native compiler installed (the setup step checks it).
+          # The image stays the compiler of record through the scheduled Docker audit.
+          HARNESS_COMPILER: native
+          # Every unit compiled and every function scored afresh: no cached build or score
+          # stands in CI's result (harness/README.md, "Caches").
+          HARNESS_NO_CACHE: "1"
+        run: nice -n 5 sh scripts/check.sh
