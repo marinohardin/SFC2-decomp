@@ -3,13 +3,6 @@
 
 #include "Source/entity/entity_physical.h"
 
-// MATCH-ONLY: the harness finds a function by the "; File" line that the listing writes
-// with the class's vftable; this empty constructor (not a claim of 0x00412f67) emits it until
-// the real one is decompiled. The class is abstract, so it cannot be built with new.
-tPhysicalEntity::tPhysicalEntity()
-{
-}
-
 // FUNCTION: STARFLEETOP 0x004105dd
 tMatrix *tPhysicalEntity::vfunction28(bool aValue)
 {

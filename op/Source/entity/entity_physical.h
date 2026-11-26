@@ -147,7 +147,7 @@ inline tDynamicMemoryFreeList::~tDynamicMemoryFreeList() { mClearList(); }
 class tPhysicalEntity: public tEntity
 {
 public:
-	tPhysicalEntity();
+public:
 	// HYPOTHESIS: the slots not yet recovered are placeholders that keep the vftable order;
 	// vfunctionN is slot N-1 of the vftable; slot 0 is the scalar deleting destructor. Slots 1
 	// to 21 are tEntity's; the ones this class overrides are declared here.
