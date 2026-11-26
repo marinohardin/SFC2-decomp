@@ -260,3 +260,53 @@ def test_the_compilers_environment_is_part_of_the_key(unit, monkeypatch):
     build()
     monkeypatch.setenv('CL', '/DX=1')
     assert not build().get('cached') and calls() == 2
+
+
+# Headers reached through the compiler's own ----------------------------------------------------
+
+@pytest.fixture
+def through_compiler(cached, monkeypatch):
+    """A unit with <map>, found in a fake compiler folder whose `map` includes <xtree>; /Iop
+    comes first on the search, so an op/xtree shadows the compiler's."""
+    tree(cached, {'op/u.cpp': '#include <map>\n', 'op/other.h': '', 'msvc/Include/map':
+                  '#include <xtree>\n#include MACRO\n', 'msvc/Include/xtree': '// stock\n'})
+    inc = str(cached / 'msvc/Include')
+    monkeypatch.setattr(cache, 'compiler_include_dir', lambda cl, version: inc)
+    monkeypatch.setattr(cache, 'compiler_id', lambda cl, version: 'c')
+    cmd = ['cl-native', '/I', 'op', 'op/u.cpp']
+
+    def key():
+        return cache.build_key(cmd, str(cached), {}, str(cached / 'op/u.cpp'))
+    return cached, key
+
+
+def test_a_header_of_op_reached_through_a_compiler_header_is_in_the_key(through_compiler):
+    root, key = through_compiler
+    (root / 'op/xtree').write_text('// ours\n')
+    before = key()
+    assert before
+    (root / 'op/xtree').write_text('// ours, changed\n')
+    assert key() != before
+
+
+def test_a_header_of_op_that_shadows_a_compiler_header_is_in_the_key(through_compiler):
+    root, key = through_compiler
+    before = key()
+    assert before
+    (root / 'op/xtree').write_text('// new\n')
+    assert key() != before
+
+
+def test_an_unrelated_file_does_not_change_the_key_through_the_compiler(through_compiler):
+    root, key = through_compiler
+    before = key()
+    (root / 'op/other.h').write_text('// not included\n')
+    (root / 'op/unrelated').write_text('x\n')
+    assert key() == before
+
+
+def test_no_compiler_folder_leaves_the_closure_as_it_was(cached, monkeypatch):
+    tree(cached, {'op/u.cpp': '#include <map>\n', 'op/xtree': ''})
+    monkeypatch.setattr(cache, 'compiler_include_dir', lambda cl, version: None)
+    monkeypatch.setattr(cache, 'compiler_id', lambda cl, version: 'c')
+    assert cache.build_key(['cl', '/I', 'op'], str(cached), {}, str(cached / 'op/u.cpp'))
