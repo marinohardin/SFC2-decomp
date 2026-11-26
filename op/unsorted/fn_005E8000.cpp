@@ -196,3 +196,12 @@ int fn_005e89fd_layout::fn_005e8f29()
 {
 	return *(int*)( (char*)this + 0x20 );
 }
+
+// HYPOTHESIS: the original is the out-of-line copy of operator[] of a std::map whose mapped
+// type is tHexPoint; the key type (a 4-byte value) is not known.
+// FUNCTION: STARFLEETOP 0x005e8f2d
+tHexPoint& fn_005e8f2d( std::map<int, tHexPoint>& m, const int& key )
+{
+	tHexPoint& ( std::map<int, tHexPoint>::*f )( const int& ) = &std::map<int, tHexPoint>::operator[];
+	return ( m.*f )( key );
+}
