@@ -61,6 +61,8 @@ public:
     virtual void fn_vfunction0();
     virtual void fn_vfunction1();
     virtual void fn_vfunction2(void* _P);
+    // HYPOTHESIS: an empty inline destructor; the original's frame unwinds the by-value copy.
+    ~fn_00461875_Iterator() {}
     int _A;
     int _B;
 };
@@ -74,6 +76,9 @@ struct fn_00461875_Element
 fn_00461875_Iterator fn_00461875(fn_00461875_Element* _F, fn_00461875_Element* _L, fn_00461875_Iterator _O)
 {
     for (; _F != _L; ++_F)
-        (&_O)->fn_vfunction2(_F);
+    {
+        fn_00461875_Iterator* _P = &_O;
+        _P->fn_vfunction2(_F);
+    }
     return _O;
 }
