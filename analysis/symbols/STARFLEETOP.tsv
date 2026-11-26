@@ -3306,7 +3306,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00461528	function	tCampaignInfo::tCampaignInfo	tCampaignInfo				rtti
 0x004617f1	function	tCampaignInfo::scalar_deleting_destructor	tCampaignInfo	??_GtCampaignInfo@@UAEPAXI@Z	claim		rtti
 0x0046180d	function	fn_0046180d		??0fn_0046180d_Vector@@QAE@ABV0@@Z	claim		none
-0x00461875	function	fn_00461875					none
+0x00461875	function	fn_00461875		?fn_00461875@@YA?AVfn_00461875_Iterator@@PAUfn_00461875_Element@@0V1@@Z	claim		none
 0x00461903	function	fn_00461903					none
 0x0046190f	function	fn_0046190f					none
 0x0046191b	function	fn_0046191b					none

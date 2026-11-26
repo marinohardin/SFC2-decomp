@@ -52,3 +52,28 @@ fn_0046180d_Vector::fn_0046180d_Vector(const fn_0046180d_Vector& _X)
     _Last = fn_0046180d_Ucopy(_X._First, _X._Last, _First);
     _End = _Last;
 }
+
+// HYPOTHESIS: an output iterator of the library's uninitialized-copy helper: a polymorphic
+// object whose second virtual constructs one element, carrying two words of state.
+class fn_00461875_Iterator
+{
+public:
+    virtual void fn_vfunction0();
+    virtual void fn_vfunction1();
+    virtual void fn_vfunction2(void* _P);
+    int _A;
+    int _B;
+};
+
+struct fn_00461875_Element
+{
+    char _Data[0x16c];
+};
+
+// FUNCTION: STARFLEETOP 0x00461875
+fn_00461875_Iterator fn_00461875(fn_00461875_Element* _F, fn_00461875_Element* _L, fn_00461875_Iterator _O)
+{
+    for (; _F != _L; ++_F)
+        (&_O)->fn_vfunction2(_F);
+    return _O;
+}
