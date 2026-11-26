@@ -104,3 +104,34 @@ void *tBitmapFontEx::vfunction1(unsigned short index)
     }
     return 0;
 }
+
+#include "unsorted/tMetaClientMapPanel.h"
+
+// FUNCTION: STARFLEETOP 0x00537d0f
+int tBitmapFontEx::vfunction3( unsigned short *text, int length )
+{
+    int width = 0;
+    if (text == 0) {
+        width = 0;
+    } else {
+        if (length < 0) {
+            unsigned short *p = text + length;
+            while (*p != 0) {
+                length++;
+                p++;
+            }
+        }
+        if (length > 0) {
+            do {
+                // HYPOTHESIS: the glyph record shares the width getter 0x005e8efa with other classes
+                tMetaClientMapQueue *glyph = (tMetaClientMapQueue *)vfunction1(*text);
+                if (glyph != 0) {
+                    width += glyph->fn_005e8efa();
+                }
+                text++;
+                length--;
+            } while (length != 0);
+        }
+    }
+    return width;
+}
