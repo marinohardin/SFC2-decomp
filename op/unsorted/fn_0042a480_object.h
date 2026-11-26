@@ -99,9 +99,6 @@ public:
 	// HYPOTHESIS: a map from an 8-byte key to a byte flag; the callee 0x0042b1d3 is its find, the
 	// node's value sits at +0x14 and end() is the head pointer at +0xa4. The key type is a guess.
 	std::map< std::pair< int, int >, bool > field_a0;
-	// HYPOTHESIS: the original's maps are 0x14 bytes (0x0042ac56 copies _Multi at +0x0c), as in the
-	// SDK's STL, whose tree also holds a _Nil pointer; this unit's 0x10-byte map leaves this gap.
-	byte field_b0[0xb4 - 0xb0];
 	// HYPOTHESIS: the wrapped ship cache vector; its Lock is 0x0042c709.
 	tSingleAccessWrapper< std::vector< tServCharacter::tShipCache > > field_b4;
 	// HYPOTHESIS: tClientCharacter's wrapper at +0xcc of tObject_005391b0, declared only inside

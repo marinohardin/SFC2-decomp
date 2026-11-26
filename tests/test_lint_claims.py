@@ -218,6 +218,15 @@ def test_sources_headers_readmes_and_the_root_tables_pass(tmp_path, capsys):
     assert run(repo, capsys) == (0, [])
 
 
+def test_the_named_library_header_passes_at_the_root_only(tmp_path, capsys):
+    repo = make_repo(tmp_path, {'xtree': '', 'Tiger/xtree': '', 'map': ''})
+    rc, out = run(repo, capsys)
+    assert rc == 1
+    assert out == ["op/Tiger/xtree:1: non-source: not a source, header, README.md or one of "
+                   "op/'s tables",
+                   "op/map:1: non-source: not a source, header, README.md or one of op/'s tables"]
+
+
 # --- the baseline ----------------------------------------------------------------------------
 
 def test_a_break_in_the_baseline_passes_and_a_new_one_still_fails(tmp_path, capsys):
