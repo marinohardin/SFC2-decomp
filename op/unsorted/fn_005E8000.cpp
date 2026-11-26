@@ -250,3 +250,23 @@ void fn_005e8f9a_tree::fn_005e8f9a()
 	operator delete( field_8 );
 	field_8 = 0;
 }
+
+// HYPOTHESIS: bounds-checked element access of a vector of 100-byte elements (first at +4,
+// last at +8); the call is the library's throw helper.
+class fn_005e8fd2_vector
+{
+public:
+	void fn_005e9627();
+	void* field_0;
+	char* first;
+	char* last;
+	void* fn_005e8fd2( unsigned int pos );
+};
+
+// FUNCTION: STARFLEETOP 0x005e8fd2
+void* fn_005e8fd2_vector::fn_005e8fd2( unsigned int pos )
+{
+	if( first == 0 || (unsigned int)( ( last - first ) / 100 ) <= pos )
+		fn_005e9627();
+	return first + pos * 100;
+}
