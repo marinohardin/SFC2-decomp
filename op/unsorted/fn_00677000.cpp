@@ -1,7 +1,7 @@
 #include <vector>
 #include "unsorted/tAsset.h"
 #include "Tiger/tstring.h"
-
+#include <utility>
 // HYPOTHESIS: owning class unknown; this+0x170 is a vector of pointers, as tCastMgr holds there.
 class fn_00677060_Owner
 {
@@ -78,9 +78,11 @@ int fn_00677b60_Owner::fn_00677b60()
 }
 
 // FUNCTION: STARFLEETOP 0x00677b90
-void __stdcall fn_00677b90(fn_00677b60_Element* first, fn_00677b60_Element* last)
+void __stdcall fn_00677b90(std::pair<const tString, int>* first, std::pair<const tString, int>* last)
 {
-    // HYPOTHESIS: elements are 0x34 bytes with a tString at offset 0.
-    for (; first != last; ++first)
-        ((tString*)first)->tString::~tString();
+    // HYPOTHESIS: elements are string/int pairs, as the destructor symbol at the callee says.
+    typedef std::pair<const tString, int> tPair;
+    // HYPOTHESIS: the elements are 0x34 bytes, a pair followed by 8 more bytes.
+    for (; first != last; first = (tPair*)((char*)first + 0x34))
+        first->~tPair();
 }
