@@ -155,6 +155,7 @@ def default_jobs():
 
 
 OBJDIFF_TIMEOUT = 300   # seconds; objdiff has been seen to spin for hours on some objects
+OBJDIFF_UNFINISHED = 'objdiff did not finish'   # the start of objdiff()'s message for a timeout
 
 
 def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
@@ -164,7 +165,7 @@ def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
                             '--format', 'json', symbol], capture_output=True, text=True,
                            timeout=timeout)
     except subprocess.TimeoutExpired:
-        return None, None, f'objdiff did not finish in {timeout} s'
+        return None, None, f'{OBJDIFF_UNFINISHED} in {timeout} s'
     if p.returncode != 0 or not os.path.exists(out):
         return None, None, p.stderr.strip()[-500:]
     with open(out) as f:
@@ -341,6 +342,8 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     left, right, err = objdiff(tpath, bpath, sym, fdir)
     if left is None:
         res['error'] = f'objdiff failed: {err}'
+        # No score at all, which _report_function treats apart from a failed build or diff.
+        res['not_scored'] = err.startswith(OBJDIFF_UNFINISHED)
         return res
     pct = float(left.get('match_percent') or 0.0)
     res.update(score=round(pct, 3), exact=bool(pct >= 100.0 and t['strict']),
@@ -1316,13 +1319,34 @@ def report_table_breaks(rep, claims, rows, check_all, own, evidence):
 def _report_function(rep, data, fn, res, released=None):
     """released: the released-function list (matched.load_released). A listed address that
     scores lower than its recorded entry, or is no longer exact, is not a regression here: one
-    INFO line gives the list's date and reason, as the base gate does."""
+    INFO line gives the list's date and reason, as the base gate does. So is a listed address
+    that objdiff could not finish on (not_scored), when it is recorded and not exact: without a
+    score an exact status cannot be shown, and an address with no entry has nothing to keep. Its
+    entry is left as recorded, since no result means none is written. Any other error stays
+    one, listed or not."""
     a = fn.address
     head = f'{res["address"]} {fn.name}'
     if res.get('found_by') == 'line':
         rep.add('INFO', f'{head}: found by line (table has no current symbol)')
     if res['error'] and 'relocs' not in res:
-        rep.add('ERROR', f'{head}: {res["error"]}')
+        if res.get('not_scored'):
+            old = matched.recorded(data, a)
+            listed = (released or {}).get(matched.key(a))
+            if listed and old and not old.get('exact'):
+                rep.add('INFO', f'{head} released ({listed[0]}): {listed[1]}; not scored: '
+                        f'{res["error"].removeprefix("objdiff failed: ")}; matched_set.json '
+                        f'left at {old["score"]:.2f}%')
+                return
+            why = ''
+            if listed:
+                why = (' (on analysis/results/released.tsv, but recorded exact, which a function '
+                       'that is not scored cannot show)' if old else
+                       ' (on analysis/results/released.tsv, but not in matched_set.json: there '
+                       'is no recorded entry to keep)')
+            rep.add('ERROR', f'{head}: could not be scored: {res["error"]}{why}; see '
+                    'harness/README.md, "Released functions"')
+        else:
+            rep.add('ERROR', f'{head}: {res["error"]}')
         if res['claimed']:
             rep.failed = True
         if matched.recorded(data, a):
