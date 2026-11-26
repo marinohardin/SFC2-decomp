@@ -23,13 +23,8 @@ tFx_Hypermass *fn_004f851f()
 // FUNCTION: STARFLEETOP 0x004f857c
 template<>
 tHypermass<12>::tHypermass()
+	: field_04(12), field_08(1.0f / 12), field_0c((float) sqrt(288.0)),
+	  field_10(field_08 * 64.0f), field_14(32.0f), field_18(0.03125f)
 {
-	field_04 = 12;
-	field_08 = 1.0f / 12;
-	field_0c = (float) sqrt(288.0);
-	float f = field_08;
-	field_14 = 32.0f;
-	field_18 = 0.03125f;
-	field_10 = f * 64.0f;
 	fn_004fa6ec();
 }
