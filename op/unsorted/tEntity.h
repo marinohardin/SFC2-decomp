@@ -63,7 +63,9 @@ public:
 	// override (0x00413ac3) does; the argument's type is not known.
 	virtual void vfunction4(tObject_00413ac3_arg *aObject);
 	virtual void vfunction5();
-	virtual void vfunction6();
+	// HYPOTHESIS: takes one 4-byte argument (every override ends with ret 4); tEntityShip's
+	// (0x00417bc6) subtracts it as a float from the member at 0xa90.
+	virtual void vfunction6(float aValue);
 	virtual void vfunction7(tObject_0041018e_arg *param_1, int param_2);
 	// HYPOTHESIS: returns a pointer to an object; tMyHud3D::vfunction4 (0x004b14db) calls
 	// members of it and of its member at 0x50.

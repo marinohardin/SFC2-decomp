@@ -7,13 +7,11 @@
 #include "Source/entity/entity_physical.h"
 
 // HYPOTHESIS: the entity tMyHud3D draws around; a class derived from tPhysicalEntity, since
-// 0x004b0a39 calls 0x00413b34 on it and slots past tPhysicalEntity's last (vfunction64).
+// 0x004b0a39 calls 0x00413b34 on it and slots past tPhysicalEntity's last (vfunction66).
 // vfunctionN is slot N-1 of its vftable, as for tPhysicalEntity.
 class tObject_004b0a39_entity: public tPhysicalEntity
 {
 public:
-	virtual void vfunction65();
-	virtual void vfunction66();
 	virtual void vfunction67();
 	// HYPOTHESIS: returns a truth value; with the global at 0x00918888 in state 5 it selects
 	// the position from 0x0041613e.
