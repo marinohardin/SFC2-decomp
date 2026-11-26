@@ -495,6 +495,15 @@ void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x004165b7
+void tEntityShip::fn_004165b7()
+{
+	field_add = false;
+	fProperties &= ~3;
+	vfunction17();
+	field_8b8 = 0.0f;
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {

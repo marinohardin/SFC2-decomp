@@ -830,7 +830,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041613e	function	fn_0041613e		?fn_0041613e@@YA?AUtPoint3@@PAVtObject_00413ac3_arg@@ABU1@@Z	callers		none
 0x004161da	function	fn_004161da	tEntityShip				vtable
 0x004162b9	function	fn_004162b9	tEntityShip	?vfunction4@tEntityShip@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
-0x004165b7	function	fn_004165b7					none
+0x004165b7	function	fn_004165b7		?fn_004165b7@tEntityShip@@QAEXXZ	claim		none
 0x004165d4	function	fn_004165d4					none
 0x004165e0	function	fn_004165e0	tEntityShip				vtable
 0x0041677d	function	fn_0041677d					none
