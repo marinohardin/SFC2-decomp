@@ -140,7 +140,7 @@ public:
 	float				field_0x17b8[0x40][3];
 	float				field_0x1ab8[0x40][3];
 	float				field_0x1db8[0x40];    // 1 / range, set by vfunction33
-	char				field_0x1eb8;    // vfunction37, vfunction38
+	bool				field_0x1eb8;   // vfunction37, vfunction38
 	int					field_0x1ebc;    // 6 or 7, vfunction23
 	int					field_0x1ec0;
 	int					field_0x1ec4;    // vfunction19

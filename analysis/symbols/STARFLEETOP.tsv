@@ -18541,7 +18541,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f160	function	fn_0069f160	tD3DViewSurfMgr				vtable
 0x0069f170	function	fn_0069f170	tD3DViewSurfMgr				vtable
 0x0069f180	function	fn_0069f180	tD3DViewSurfMgr				vtable
-0x0069f190	function	fn_0069f190	tView3DExt				vtable
+0x0069f190	function	fn_0069f190	tView3DExt	?vfunction38@tView3DExt@@UAE_NXZ	claim		vtable
 0x0069f1a0	function	fn_0069f1a0	tD3DViewSurfMgr				vtable
 0x0069f1b0	function	fn_0069f1b0	tD3DViewSurfMgr				vtable
 0x0069f1c0	function	fn_0069f1c0	tD3DViewSurfMgr				vtable
