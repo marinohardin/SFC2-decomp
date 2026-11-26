@@ -22,6 +22,7 @@ class fn_0046b650_Object
 public:
 	fn_0046b650_Object();
 	~fn_0046b650_Object();	// 0x0046b6ac
+	void fn_0046b731();
 	char			fUnknown_00[0x4c];
 };
 

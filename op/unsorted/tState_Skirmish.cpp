@@ -5,6 +5,8 @@
 
 #include "unsorted/tState_Skirmish.h"
 #include "unsorted/tObject_0092deb4.h"
+#include "unsorted/tValueBase.h"
+#include "unsorted/fn_004D3143.h"
 
 // HYPOTHESIS: partial. The original also loops i = 0..2 over a tShipSystemMask copied from slot 85
 // of *0x0092deb4 and handed to 0x00482f3b on the object at this+0x1154; the copy constructor
@@ -50,4 +52,43 @@ void tState_Skirmish::fn_0047ffe0()
 {
 	for (int i = 1; i < 6; i++)
 		fn_004d33a8( g_0084abb8[i - 1], ((fn_00482eef_Object *)field_0x1154)->fn_00482eef( i, 0 ) + 1 );
+}
+
+void fn_004d3306( long arg1 );
+// HYPOTHESIS: a table of control names (every other word) and a table of three names.
+extern const char *g_0084a654[];
+extern const char *g_0084a890[];
+// HYPOTHESIS: a stdcall helper taking an output slot, an iterator pair and a range's end.
+int __stdcall fn_0045df74( int *arg1, int arg2, void *arg3, int arg4, void *arg5 );
+
+// FUNCTION: STARFLEETOP 0x00480016
+bool tState_Skirmish::vfunction4()
+{
+	int local[2];
+	if (field_0x129c != 0)
+	{
+		fn_004d32c4( field_0x1118 );
+		return true;
+	}
+	field_0x1120 = 0;
+	const char **p;
+	for (p = g_0084a654; (int)p < (int)&g_0084a654[0x90]; p += 2)
+		fn_004d35fa( *p );
+	for (p = g_0084a890; (int)p < (int)&g_0084a890[3]; p++)
+	{
+		tValueBase *v = fn_004d35bf( *p, 0 );
+		if (v != 0)
+			delete v;
+	}
+	field_0x1228.fn_0046b731();
+	fn_004d3306( (long)"MapIcons" );
+	fn_004d32c4( field_0x1118 );
+	fn_004d3306( (long)"systemicons" );
+	fn_0047f7ab_VectorAndWord *v1 = &field_0x1124;
+	int w1 = v1->fWord;
+	fn_0045df74( local, ((int *)v1)[3], v1, w1 + ((int *)v1)[3], v1 );
+	fn_0047f7ab_VectorAndWord *v2 = &field_0x1138;
+	int w2 = v2->fWord;
+	fn_0045df74( local, ((int *)v2)[3], v2, w2 + ((int *)v2)[3], v2 );
+	return true;
 }
