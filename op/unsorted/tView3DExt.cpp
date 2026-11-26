@@ -65,6 +65,17 @@ int tView3DExt::vfunction20()
 	return field_0x1ec4;
 }
 
+// FUNCTION: STARFLEETOP 0x006a96e0
+int tView3DExt::vfunction21(int mode)
+{
+	int old = field_0x1ecc;
+	// HYPOTHESIS: the original compares unsigned (both tests are unsigned jumps).
+	if ((unsigned int)mode >= 3 && (unsigned int)mode <= 5) {
+		field_0x1ecc = mode;
+	}
+	return old;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
