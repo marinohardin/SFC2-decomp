@@ -145,4 +145,8 @@ class tBasicSoundFileManager : public tPart
 		unsigned char			field_0x2578;
 };
 
+// HYPOTHESIS: the object is a static (0x008ff178); no allocation size is recorded, so this is the
+// size the members above fill: the flag at 0x2578 rounded up to the doubles' alignment.
+typedef char tBasicSoundFileManager_size_is_0x2580[ sizeof( tBasicSoundFileManager ) == 0x2580 ? 1 : -1 ];
+
 #endif // TSNDMGR_H
