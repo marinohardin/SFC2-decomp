@@ -356,6 +356,22 @@ bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 	return true;
 }
 
+// HYPOTHESIS: the shared instance, created on first use.
+extern tSWView3D *g_00c7c110;
+
+// FUNCTION: STARFLEETOP 0x0069fd20
+tSWView3D *fn_0069fd20()
+{
+	if (!g_00c7c110) {
+		tSWView3D *view = new tSWView3D;
+		g_00c7c110 = view;
+		if (!g_00c7c110)
+			return 0;
+	}
+	g_00c7c110->vfunction7();
+	return g_00c7c110;
+}
+
 // HYPOTHESIS: the surface's vtable, as 0x006b23c0 reads it (tBmpSurf declares no virtuals yet).
 class fn_006b23c0_Info {
 public:

@@ -18577,7 +18577,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069fcc0	function	fn_0069fcc0	tSWView3D				vtable
 0x0069fce0	function	fn_0069fce0	tSWView3D				vtable
 0x0069fcf0	function	fn_0069fcf0	tSWView3D				vtable
-0x0069fd20	function	fn_0069fd20		?fn_0069fd20@@YAPAVtView3D@@XZ	callers		none
+0x0069fd20	function	fn_0069fd20		?fn_0069fd20@@YAPAVtSWView3D@@XZ	claim		none
 0x0069fda0	function	fn_0069fda0	tView3DExt				vtable
 0x0069fdc0	function	fn_0069fdc0	tSWView3D				vtable
 0x0069fdd0	function	fn_0069fdd0	tApplication				vtable
