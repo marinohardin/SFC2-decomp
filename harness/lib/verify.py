@@ -1278,6 +1278,12 @@ def main(argv=None):
     if a.all and rep.results:
         # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
         write_symbol_table(rep, tree=built_tree)
+    if not (a.all and rep.results):
+        # No full run: a list left by an earlier --all would be stale.
+        try:
+            os.remove(os.path.join(paths.BUILD, CLAIMED_CREDITS_FILE))
+        except OSError:
+            pass
     if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')

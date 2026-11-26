@@ -63,7 +63,8 @@ def test_a_claim_does_not_make_a_wrong_address_pass(tmp_path):
 
 
 def test_a_claim_against_the_evidence_gives_no_credit(tmp_path):
-    idx = index(tmp_path, [(CALLEE, 'real', OTHER)])
+    # SYM is known elsewhere too, so only the guard on the names at the address refuses the credit
+    idx = index(tmp_path, [(CALLEE, 'real', OTHER), (0x700000, 'folded', SYM)])
     assert idx.add_claims({CALLEE}, table(SYM)) == 0
     assert idx.claimed == {}
     assert first_status(idx)[0] == 'mismatch'
