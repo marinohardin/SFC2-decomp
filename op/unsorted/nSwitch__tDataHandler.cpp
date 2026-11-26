@@ -79,3 +79,13 @@ void nSwitch::tDataHandler::fn_0071d090( int32u arg )
 {
 	((fn_00715500_Object*)f_7c)->fn_00715500( arg );
 }
+
+// HYPOTHESIS: sets the interlocked flag at +0x58, then replaces the smart pointer at +0xac.
+// FUNCTION: STARFLEETOP 0x0071d0a0
+void nSwitch::tDataHandler::fn_0071d0a0( tSmartPtr<tAddress> address )
+{
+	f_58 = true;
+	// HYPOTHESIS: the original inlined the smart pointer's pointer assignment here; SmartPtr.h
+	// declares it without a body, so the build calls it out of line.
+	f_ac = address.Get();
+}
