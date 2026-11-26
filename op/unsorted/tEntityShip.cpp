@@ -4,7 +4,7 @@
 // Functions: 0x00414b8f to 0x00416e4f, 62 in op/UNITS.tsv
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
 // Profile:   game-release (harness/units.json)
-
+struct tNetMsg;
 #include <string.h>
 #include "unsorted/tEntityShip.h"
 #include "unsorted/tObject_0040ce21.h"
@@ -73,6 +73,19 @@ void tEntityShip::fn_00414bfa(tNetMsg *aMsg)
 	char *cur = (char *)field_a18;
 	*(short *)(cur + 4) = *(short *)((char *)aMsg + 4);
 	cur[6] = ((char *)aMsg)[6];
+}
+
+// HYPOTHESIS: the message is read as three dwords at +4, +8 and +0xc
+// FUNCTION: STARFLEETOP 0x00414cad
+void tEntityShip::fn_00414cad(tNetMsg *aMsg)
+{
+	gNetControl.mQueueMsg(aMsg, 0x19, fID, 0.0);
+	field_a10 = 0x19;
+	int *cur = (int *)field_a1c + 1;
+	int *msg = (int *)aMsg + 1;
+	cur[0] = msg[0];
+	cur[1] = msg[1];
+	cur[2] = msg[2];
 }
 
 // FUNCTION: STARFLEETOP 0x00414b8f
