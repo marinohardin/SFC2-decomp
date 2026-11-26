@@ -18533,7 +18533,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069e490	function	fn_0069e490		?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z	claim		none
 0x0069e670	function	fn_0069e670	tSWView3D	?fn_0069e670@tD3DViewMgr_State@@QAEDXZ	claim		vtable
 0x0069e8ea	function	fn_0069e8ea					none
-0x0069e950	function	fn_0069e950					none
+0x0069e950	function	fn_0069e950		?fn_0069e950@@YAKK@Z	claim		none
 0x0069eb90	function	fn_0069eb90					none
 0x0069ed60	function	fn_0069ed60					none
 0x0069efe1	function	fn_0069efe1					none

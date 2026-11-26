@@ -79,3 +79,32 @@ char tD3DViewMgr_State::fn_0069e670()
 {
 	return field_1ed8;
 }
+
+// FUNCTION: STARFLEETOP 0x0069e950
+unsigned long fn_0069e950(unsigned long flags)
+{
+	unsigned long result = 0;
+	if (flags & 0x1)
+		result = 0x1;
+	if (flags & 0x2)
+		result |= 0x2;
+	if (flags & 0x4)
+		result |= 0x4;
+	if (flags & 0x8)
+		result |= 0x8;
+	if (flags & 0x100)
+		result |= 0x10;
+	if (flags & 0x200)
+		result |= 0x20;
+	if (flags & 0x10)
+		result |= 0x40;
+	if (flags & 0x20)
+		result |= 0x80;
+	if (flags & 0x40)
+		result |= 0x100;
+	if (flags & 0x80)
+		result |= 0x200;
+	if (flags & 0x400)
+		result |= 0x400;
+	return result;
+}
