@@ -122,7 +122,7 @@ def report(number, sha, base_sha, mb, res, runs, old, body):
     build = runs[0][2] if runs else ''
     new = scores(build)
     out += ['| Address | Name | Old | New | Exact |', '| --- | --- | --- | --- | --- |']
-    for a in sorted(res.added):
+    for a in sorted(res.functions):
         o = old.get(f'0x{a:08x}')
         name, score, exact = new.get(a, ('(not scored)', None, False))
         was = '%.2f%%' % o['score'] if o else '-'
@@ -142,7 +142,7 @@ def report(number, sha, base_sha, mb, res, runs, old, body):
     out.append('')
     out.append(result[-1] if result else 'RESULT line: none')
     n, addrs = claimed(body)
-    verified = sorted(a for a in res.added if new.get(a, (0, 0, False))[2])
+    verified = sorted(a for a in res.functions if new.get(a, (0, 0, False))[2])
     if n is None:
         out.append(f'Claimed: no `Claimed exact:` line in the description; verified {len(verified)} exact')
     else:
@@ -230,7 +230,8 @@ def verify(repo, number, sha, remote='origin', body=None, issues=None, gh_repo=N
             os.chmod(dest, 0o644)
         env = harness_env(state)
         runs = []
-        for label, cmd in commands(base, res.added):
+        # FUNCTION addresses only: the harness refuses a STUB or VTABLE address as a function.
+        for label, cmd in commands(base, res.functions):
             log('verify: ' + label)
             r = subprocess.run(cmd, cwd=tree, env=env, capture_output=True, text=True,
                                errors='replace')

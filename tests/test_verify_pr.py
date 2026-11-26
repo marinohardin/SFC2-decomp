@@ -96,6 +96,24 @@ def test_a_clean_pull_request_is_rebuilt_and_reported(tmp_path, monkeypatch):
     assert 'ok: claims' in log and 'ok: symbols' in log
 
 
+def test_stub_and_vtable_lines_are_not_built_or_reported_as_functions(tmp_path, monkeypatch):
+    def change(origin):
+        _write(origin, 'op/a.cpp', '// FUNCTION: STARFLEETOP 0x00401010\nvoid f() {}\n'
+               '// STUB: STARFLEETOP 0x00401020\nvoid h() {}\n'
+               '// VTABLE: STARFLEETOP 0x00401030\nclass tA {};\n')
+    main, sha = _setup(tmp_path, monkeypatch, change)
+    body = 'Claim: #7\n\n- Claimed exact: 1 (0x00401010)\n'
+    assert verify_pr.verify(str(main), 5, sha, body=body, issues=ISSUES, log=lambda _: None,
+                            author='ann') == 0
+    work = tmp_path / 'work' / 'verify'
+    log = (work / '5-report-harness.log').read_text()
+    assert 'INFO  args: --all --base origin/develop 0x00401010\n' in log
+    report = (work / '5-report.md').read_text()
+    assert '| 0x00401010 | tFoo::Bar | 50.00% | 100.00% | yes |' in report
+    assert '0x00401020' not in report and '0x00401030' not in report
+    assert 'Claimed 1 exact, verified 1' in report
+
+
 def test_a_head_that_is_not_the_reviewed_sha_is_refused(tmp_path, monkeypatch):
     main, sha = _setup(tmp_path, monkeypatch, _source_change)
     lines = []
@@ -155,8 +173,8 @@ def test_only_source_files_under_op_are_copied():
 
 def test_the_report_fences_log_lines_and_mentions_no_one():
     res = verify_pr.contrib_guard.Result()
-    res.added = {0x00401010}
-    build = ('ERROR 0x00401010 tA::f|@owner 90.00% partial (8 bytes) REGRESSION: ```x``` @someone\n'
+    res.added = res.functions = {0x00401010}
+    build =('ERROR 0x00401010 tA::f|@owner 90.00% partial (8 bytes) REGRESSION: ```x``` @someone\n'
              'RESULT ERROR regression\n')
     text = verify_pr.report(5, 'a' * 40, 'b' * 40, 'c' * 40, res,
                             [('build', 1, build)], {}, 'Claim: #7')
