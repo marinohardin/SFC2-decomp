@@ -14469,7 +14469,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8e55	function	fn_005e8e55		?fn_005e8e55@tMetaClientMapQueueMember@@QAEXH@Z	claim		none
 0x005e8ee6	function	fn_005e8ee6		?fn_005e8ee6@@YIXPAXHJ@Z	claim		none
 0x005e8ef0	function	fn_005e8ef0		?fn_005e8ef0@@YIXPAXHJ@Z	claim		none
-0x005e8efa	function	fn_005e8efa		?fn_005e8efa@tMetaClientMapQueue@@QAEHXZ	callers		none
+0x005e8efa	function	fn_005e8efa		?fn_005e8efa@@YIJPAX@Z	claim		none
 0x005e8efe	function	fn_005e8efe	tGameState	?fn_005e8efe@tMetaClientMapQueue@@QAEHXZ	callers		vtable
 0x005e8f02	function	fn_005e8f02					none
 0x005e8f21	function	fn_005e8f21	tBitmapFontEx	?fn_005e8f21@tHexPoint@@QBEJXZ	add		vtable

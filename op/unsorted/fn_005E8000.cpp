@@ -161,3 +161,10 @@ void __fastcall fn_005e8ef0( void* self, int unused, long value )
 {
 	*(long*)( (char*)self + 0x20 ) = value;
 }
+
+// HYPOTHESIS: a getter of the long at 4 in the same not yet declared class.
+// FUNCTION: STARFLEETOP 0x005e8efa
+long __fastcall fn_005e8efa( void* self )
+{
+	return *(long*)( (char*)self + 4 );
+}
