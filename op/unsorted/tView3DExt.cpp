@@ -15,6 +15,23 @@ bool tView3DExt::vfunction47(bool flag)
 	return old;
 }
 
+// FUNCTION: STARFLEETOP 0x006a9620
+int tView3DExt::vfunction23(int mode)
+{
+	int old = field_0x1ebc;
+	switch (mode) {
+	case 6:
+		field_0x1ebc = 6;
+		field_0x1ec0 = 1;
+		break;
+	case 7:
+		field_0x1ebc = 7;
+		field_0x1ec0 = 0;
+		break;
+	}
+	return old;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550

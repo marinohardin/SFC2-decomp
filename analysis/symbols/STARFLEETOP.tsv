@@ -18764,7 +18764,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a94d0	function	D3DUtil_InitViewport		?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z	claim		claim
 0x006a9540	function	fn_006a9540		?fn_006a9540@tView3DExt@@QAEXXZ	claim		none
 0x006a95f0	function	tSWView3D::~tSWView3D	tSWView3D	?vfunction6@tView3DExt@@UAE_NXZ	claim		rtti
-0x006a9620	function	fn_006a9620	tView3DExt				vtable
+0x006a9620	function	fn_006a9620	tView3DExt	?vfunction23@tView3DExt@@UAEHH@Z	claim		vtable
 0x006a9660	function	fn_006a9660	tView3DExt				vtable
 0x006a9670	function	fn_006a9670	tView3DExt				vtable
 0x006a96d0	function	fn_006a96d0	tView3DExt				vtable
