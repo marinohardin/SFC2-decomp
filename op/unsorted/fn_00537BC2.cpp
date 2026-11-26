@@ -110,28 +110,27 @@ void *tBitmapFontEx::vfunction1(unsigned short index)
 // FUNCTION: STARFLEETOP 0x00537d0f
 int tBitmapFontEx::vfunction3( unsigned short *text, int length )
 {
+    int i;
     int width = 0;
     if (text == 0) {
-        width = 0;
-    } else {
-        if (length < 0) {
-            unsigned short *p = text + length;
-            while (*p != 0) {
-                length++;
-                p++;
-            }
+        return 0;
+    }
+    if (length < 0) {
+        while (text[length] != 0) {
+            length++;
         }
-        if (length > 0) {
-            do {
-                // HYPOTHESIS: the glyph record shares the width getter 0x005e8efa with other classes
-                tMetaClientMapQueue *glyph = (tMetaClientMapQueue *)vfunction1(*text);
-                if (glyph != 0) {
-                    width += glyph->fn_005e8efa();
-                }
-                text++;
-                length--;
-            } while (length != 0);
+    }
+
+    for (i = 0; i < length; i++) {
+        // HYPOTHESIS: the glyph record shares the width getter 0x005e8efa with other classes
+        tMetaClientMapQueue *glyph = (tMetaClientMapQueue *)vfunction1(text[i]);
+        if (glyph != 0) {
+            width += glyph->fn_005e8efa();
         }
     }
     return width;
+
+
+
+
 }
