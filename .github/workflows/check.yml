@@ -5,9 +5,10 @@ name: Check
 # commit, so a fork could rewrite this file and run commands on the owner's machine. A push to a
 # branch of this repository runs the file as it is on that branch, and only someone with write
 # access can push. Commits on a pull request's head carry this run's status, so a pull request
-# from a branch of this repository shows `check` as before. A fork's pull request gets the hosted
-# `tests` job only; the integrator starts `check` for it by hand (workflow_dispatch, after reading
-# the diff).
+# from a branch of this repository shows `check` as before. A fork's pull request never runs
+# here, not even by hand: this job runs the checked-out commit's own scripts. The hand start is
+# for a commit on a branch of this repository, and the first step refuses any other. A fork's
+# work is judged by a build that uses develop's harness and only the fork's source files.
 #
 # `develop` and `main` are left out: everything reaches them through a pull request whose branch
 # has already passed, and a squash-merge adds no code that run has not seen.
@@ -40,6 +41,16 @@ jobs:
           # The whole history: scripts/check.sh holds the branch to its merge base with
           # origin/develop, and there is no merge commit on a push to find it in.
           fetch-depth: 0
+
+      # Before any script of the checked-out commit runs: a hand-started ref must be on a branch
+      # of this repository. A fork's commit can be fetched by its SHA, but no branch here holds it.
+      - name: Refuse a commit that is not on a branch of this repository
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ -z "$(git branch -r --contains HEAD)" ]; then
+            echo "error: $(git rev-parse HEAD) is on no branch of this repository; check does not run it" >&2
+            exit 1
+          fi
 
       - uses: ./.github/actions/setup
         with:
