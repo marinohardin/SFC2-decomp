@@ -310,3 +310,26 @@ char __fastcall fn_00522dc6(fn_0090bed4_Object *self, int, int param_1, int para
 	return 0;
 }
 
+// HYPOTHESIS: really a member of the object at 0x0096ed60 (thiscall on it); that header is
+// outside this lane, so it is declared as a free function until it can be added there.
+int fn_0052dab9(int param_1, int param_2);
+
+// FUNCTION: STARFLEETOP 0x00522e1b
+int tObject_00522e1b::fn_00522e1b(int param_1)
+{
+	int iVar1 = gObject_0092deb4->vfunction33();
+	int iVar2 = gObject_0090be60->fn_00427581(iVar1, param_1);
+	if (iVar2 == 0) {
+		iVar2 = fn_0052dab9(iVar1, param_1);
+	}
+	if (0 < iVar2) {
+		if (iVar2 < 6) {
+			return 1;
+		}
+		if (iVar2 == 6) {
+			return 0;
+		}
+	}
+	return -1;
+}
+
