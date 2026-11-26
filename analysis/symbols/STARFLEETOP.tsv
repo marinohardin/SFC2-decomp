@@ -8989,7 +8989,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00537c4a	function	fn_00537c4a		??0tBitmapFontEx@@QAE@XZ	claim		none
 0x00537c73	function	fn_00537c73		?fn_00537c73@@YIPAXPAXHE@Z	claim		none
 0x00537cbe	function	fn_00537cbe		??1tBitmapFontEx@@QAE@XZ	claim		none
-0x00537cf5	function	fn_00537cf5	tBitmapFontEx				vtable
+0x00537cf5	function	fn_00537cf5	tBitmapFontEx	?vfunction1@tBitmapFontEx@@UAEPAXG@Z	claim		vtable
 0x00537d0f	function	fn_00537d0f	tBitmapFontEx				vtable
 0x00537d66	function	fn_00537d66	tBitmapFontEx				vtable
 0x00537d88	function	fn_00537d88	tBitmapFontEx				vtable

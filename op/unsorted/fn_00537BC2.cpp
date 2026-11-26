@@ -95,3 +95,12 @@ tBitmapFontEx::~tBitmapFontEx()
         field_20 = 0;
     }
 }
+
+// FUNCTION: STARFLEETOP 0x00537cf5
+void *tBitmapFontEx::vfunction1(unsigned short index)
+{
+    if (index < field_0C) {
+        return (char *)field_08 + index * 0x18;
+    }
+    return 0;
+}
