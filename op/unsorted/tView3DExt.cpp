@@ -11,7 +11,7 @@ bool tView3DExt::vfunction38()
 bool tView3DExt::vfunction47(bool flag)
 {
 	bool old = field_0x1ed8;
-	field_0x1ed8 = flag;
+	field_0x1ed8 = flag ? true : false;    // HYPOTHESIS: the original tests the argument again (it may have been a BOOL-like type)
 	return old;
 }
 

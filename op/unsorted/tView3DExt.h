@@ -149,7 +149,7 @@ public:
 	int					field_0x1ecc;    // 3..5, vfunction21
 	char				field_0x1ed0;
 	float				field_0x1ed4;    // vfunction45
-	char				field_0x1ed8;    // vfunction47
+	bool				field_0x1ed8;    // vfunction47
 	unsigned char		field_0x1ed9;
 	void				(*field_0x1edc)();    // vfunction13
 	void				*field_0x1ee0;
