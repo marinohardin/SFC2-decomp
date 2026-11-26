@@ -104,3 +104,9 @@ void tBaseWeapon::vfunction124(int param_1)
 {
     field_e8 = param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x004d732e
+void tBaseWeapon::vfunction125(int param_1)
+{
+    field_10c = param_1;
+}

@@ -271,7 +271,8 @@ public:
     int field_100;
     int field_104;
     int field_108;
-    char pad_10c[8];
+    int field_10c;
+    char pad_110[4];
     int field_114;
     short field_118[6][2];
     int field_130;
