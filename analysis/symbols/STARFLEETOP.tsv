@@ -3700,7 +3700,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004739e8	function	tState_Namespace_Multiplayer::tState_Multiplayer::scalar_deleting_destructor	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473a04	function	tState_Namespace_Multiplayer::tState_Multiplayer::~tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x00473c1e	function	fn_00473c1e					none
-0x00473c34	function	fn_00473c34					none
+0x00473c34	function	fn_00473c34		?FUN_00473c34@@YGPAXXZ	claim		none
 0x00473c3a	function	tValue<long>::tValue<long>	tValue<long>				rtti
 0x00473c84	function	fn_00473c84	tState_Namespace_IPandIPX::tState_IPandIPX				vtable
 0x00473c8a	function	fn_00473c8a	tState_Namespace_IPandIPX::tState_IPandIPX				vtable
