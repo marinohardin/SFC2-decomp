@@ -122,3 +122,10 @@ bool tBaseWeapon::vfunction138()
 {
     return vfunction106() > 0;
 }
+
+// FUNCTION: STARFLEETOP 0x004d7354
+void* tBaseWeapon::vfunction139()
+{
+    // HYPOTHESIS: returns the address of an embedded member at offset 0x80.
+    return (char*)this + 0x80;
+}
