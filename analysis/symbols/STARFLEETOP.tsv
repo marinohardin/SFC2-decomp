@@ -7385,7 +7385,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004f935f	function	fn_004f935f	tHypermass<24>				vtable
 0x004f9794	function	tHypermass<28>::tHypermass<28>	tHypermass<28>	??0?$tHypermass@$0BM@@@QAE@XZ	claim		rtti
 0x004f97e5	function	fn_004f97e5	tHypermass<28>				vtable
-0x004f9c1a	function	tHypermass<32>::tHypermass<32>	tHypermass<32>				rtti
+0x004f9c1a	function	tHypermass<32>::tHypermass<32>	tHypermass<32>	??0?$tHypermass@$0CA@@@QAE@XZ	claim		rtti
 0x004f9c6b	function	fn_004f9c6b	tHypermass<32>				vtable
 0x004fa0a0	function	tHypermass<36>::tHypermass<36>	tHypermass<36>				rtti
 0x004fa0f1	function	fn_004fa0f1	tHypermass<36>				vtable
@@ -7412,7 +7412,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004fbc0a	function	fn_004fbc0a					none
 0x004fbc70	function	fn_004fbc70					none
 0x004fbd42	function	fn_004fbd42					none
-0x004fbdcc	function	fn_004fbdcc					none
+0x004fbdcc	function	fn_004fbdcc		?fn_004fa6ec@?$tHypermass@$0CA@@@QAEXXZ	add		none
 0x004fc09b	function	fn_004fc09b					none
 0x004fc104	function	fn_004fc104					none
 0x004fc1d7	function	fn_004fc1d7					none
