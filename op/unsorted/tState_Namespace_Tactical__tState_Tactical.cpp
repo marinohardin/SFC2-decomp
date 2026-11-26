@@ -455,8 +455,57 @@ void __cdecl fn_004aba46()
 	fn_004aba3c( 0 );
 }
 
+#include "unsorted/tObject_0090b730.h"
+
+// HYPOTHESIS: pointers to the names of the states, held in variables.
+extern const char *g_00850bd0;
+extern const char *g_00850bc4;
+extern int gValue_0090b670;
+
 namespace tState_Namespace_Tactical
 {
+
+// FUNCTION: STARFLEETOP 0x004aba4f
+void tState_Tactical::fn_004aba4f()
+{
+	const char *name;
+	if ( gObject_0092deb4->vfunction57() )
+	{
+		int state = gObject_0090b730.fn_0060ca4f();
+		if ( state != 0 )
+		{
+			if ( state <= 0 )
+				return;
+			if ( state > 5 )
+				return;
+			field_468 = g_00850bc4;
+			name = g_00850bc4;
+		}
+		else
+		{
+			field_468 = g_00850bd0;
+			return;
+		}
+	}
+	else
+	{
+		int state = gObject_0090b730.fn_0060ca4f();
+		if ( state != 0 )
+		{
+			if ( state > 0 && state <= 5 )
+				field_468 = g_00850bc4;
+		}
+		else
+		{
+			if ( gValue_0090b670 != 2 )
+				field_468 = g_00850bd0;
+			else
+				field_468 = "FilmRoom";
+		}
+		name = field_468;
+	}
+	field_46c = name;
+}
 
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )

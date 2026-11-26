@@ -62,6 +62,7 @@ public:
 	void fn_004ba5ea(int *param_1);
 	void fn_004ba7c7(int *param_1);
 	void fn_004ba9eb(int *param_1);
+	void fn_004aba4f();
 
 	int field_0c;	// 0x1e
 	float field_10;
@@ -110,8 +111,9 @@ public:
 	fn_004afa40_Array field_44c;
 	fn_004afa40_Array field_458;
 	int field_464;
-	int field_468;
-	int field_46c;
+	// HYPOTHESIS: names of states (strings), as 0x004aba4f stores them.
+	const char *field_468;
+	const char *field_46c;
 	int field_470;
 	unsigned char field_474;
 	unsigned char field_475[3];
