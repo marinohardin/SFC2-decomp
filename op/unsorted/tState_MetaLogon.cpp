@@ -48,3 +48,12 @@ void tState_MetaLogon::fn_0046d38c()
 	fn_004d34c5( 0x10001, 1 );
 	fn_004d31ed( g_00847250, 1, g_00847228, 0x280, 0x1e0 );
 }
+
+// FUNCTION: STARFLEETOP 0x0046d3c8
+void tState_MetaLogon::fn_0046d3c8()
+{
+	field_24 = 0;
+	fn_004d34c5( 0x10002, 0 );
+	fn_004d34c5( 0x10001, 0 );
+	fn_004d32c4( g_00847250 );
+}

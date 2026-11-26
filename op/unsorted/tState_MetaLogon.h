@@ -46,6 +46,9 @@ public:
 	// 0x0046d38c: sets field_24 and enables two controls, then shows the "Need Patching" screen.
 	void fn_0046d38c();
 
+	// 0x0046d3c8: clears field_24, disables the two controls and leaves the "Need Patching" screen.
+	void fn_0046d3c8();
+
 	// The constructor leaves +0x20 to +0x24, +0x110 to +0x120 and +0x18c alone; 0x0046d4d2
 	// clears the flags.
 	std::vector< std::string > field_10;		// the destructor (0x00402d42) destroys 0x10-byte elements
